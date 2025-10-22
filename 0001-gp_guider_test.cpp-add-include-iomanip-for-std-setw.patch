@@ -1,0 +1,25 @@
+From 7c28d51f68adc1c7f5bdb29b23b125afd1fcbd1b Mon Sep 17 00:00:00 2001
+From: Dariusz Pelowski <dariusz.pelowski@gmail.com>
+Date: Wed, 22 Oct 2025 16:29:27 +0200
+Subject: [PATCH 1/2] gp_guider_test.cpp: add #include <iomanip> for std::setw
+
+Fixes compilation error due to undefined std::setw.
+---
+ .../tests/gaussian_process/gp_guider_test.cpp                    | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/contributions/MPI_IS_gaussian_process/tests/gaussian_process/gp_guider_test.cpp b/contributions/MPI_IS_gaussian_process/tests/gaussian_process/gp_guider_test.cpp
+index 42b72908..c937068d 100644
+--- a/contributions/MPI_IS_gaussian_process/tests/gaussian_process/gp_guider_test.cpp
++++ b/contributions/MPI_IS_gaussian_process/tests/gaussian_process/gp_guider_test.cpp
+@@ -37,6 +37,7 @@
+ 
+ #include <gtest/gtest.h>
+ #include <vector>
++#include <iomanip>
+ #include <iostream>
+ #include "gaussian_process_guider.h"
+ 
+-- 
+2.51.0
+

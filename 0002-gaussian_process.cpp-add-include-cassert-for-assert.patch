@@ -1,0 +1,25 @@
+From 0454f73fe5ff6441b3720657625fb2349aa389c3 Mon Sep 17 00:00:00 2001
+From: Dariusz Pelowski <dariusz.pelowski@gmail.com>
+Date: Wed, 22 Oct 2025 16:32:34 +0200
+Subject: [PATCH 2/2] gaussian_process.cpp: add #include <cassert> for assert
+
+Fixes compilation error due to undefined assert.
+---
+ contributions/MPI_IS_gaussian_process/src/gaussian_process.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/contributions/MPI_IS_gaussian_process/src/gaussian_process.cpp b/contributions/MPI_IS_gaussian_process/src/gaussian_process.cpp
+index b6c140ed..5dccc16c 100644
+--- a/contributions/MPI_IS_gaussian_process/src/gaussian_process.cpp
++++ b/contributions/MPI_IS_gaussian_process/src/gaussian_process.cpp
+@@ -42,6 +42,7 @@
+  */
+ 
+ #include <cstdint>
++#include <cassert>
+ 
+ #include "gaussian_process.h"
+ #include "math_tools.h"
+-- 
+2.51.0
+
