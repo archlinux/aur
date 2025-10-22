@@ -3,14 +3,7 @@
 # Cache Cleaner for Arch Linux
 # AUR package: cache-cleaner
 
-VERSION="1.0.0"
-CACHE_DIRS=(
-    "/var/cache/pacman/pkg"
-    "$HOME/.cache/yay"
-    "$HOME/.cache/paru"
-    "$HOME/.cache"
-    "/var/cache"
-)
+VERSION="1.1.1"
 
 show_help() {
     echo "Cache Cleaner $VERSION"
@@ -21,19 +14,27 @@ show_help() {
     echo "  -a, --aur        Clean AUR helpers cache only"
     echo "  -u, --user       Clean user cache only"
     echo "  -s, --system     Clean system cache only"
-    echo "  -A, --all        Clean all caches (default)"
-    echo "  -n, --dry-run    Show what would be deleted"
+    echo "  -t, --temp       Clean temporary files (/tmp)"
+    echo "  -A, --all        Clean all caches including /tmp"
+    echo "  -v, --version    Show version"
     echo "  -h, --help       Show this help"
     echo ""
 }
 
+show_version() {
+    echo "Cache Cleaner $VERSION"
+}
+
 clean_pacman() {
     echo "🧹 Cleaning pacman cache..."
-    if [[ $DRY_RUN -eq 1 ]]; then
-        echo "Would run: sudo pacman -Sc"
-        sudo pacman -Sc --noconfirm --dry-run
+    if command -v pacman >/dev/null 2>&1; then
+        if sudo pacman -Sc --noconfirm 2>/dev/null; then
+            echo "✅ Pacman cache cleaned"
+        else
+            echo "⚠️  Pacman cache already clean or no access"
+        fi
     else
-        sudo pacman -Sc --noconfirm
+        echo "❌ pacman not found"
     fi
 }
 
@@ -45,44 +46,53 @@ clean_aur() {
         "$HOME/.cache/trizen"
     )
     
+    local cleaned=0
     for dir in "${aur_dirs[@]}"; do
         if [[ -d "$dir" ]]; then
-            if [[ $DRY_RUN -eq 1 ]]; then
-                echo "Would remove: $dir/*"
-                find "$dir" -mindepth 1 -maxdepth 1 | head -10
-            else
-                rm -rf "$dir"/*
-                echo "✅ Cleaned: $dir"
-            fi
+            rm -rf "$dir"/*
+            echo "✅ Cleaned: $dir"
+            cleaned=1
         fi
     done
+    
+    if [[ $cleaned -eq 0 ]]; then
+        echo "ℹ️  No AUR helper caches found"
+    fi
 }
 
 clean_user_cache() {
     echo "🧹 Cleaning user cache..."
-    if [[ $DRY_RUN -eq 1 ]]; then
-        echo "Would remove: $HOME/.cache/*"
-        find "$HOME/.cache" -mindepth 1 -maxdepth 1 | head -10
-    else
+    if [[ -d "$HOME/.cache" ]]; then
         rm -rf "$HOME/.cache"/*
-        echo "✅ Cleaned user cache"
+        echo "✅ User cache cleaned"
+    else
+        echo "ℹ️  User cache directory not found"
     fi
 }
 
 clean_system_cache() {
     echo "🧹 Cleaning system cache..."
-    if [[ $DRY_RUN -eq 1 ]]; then
-        echo "Would clean: /var/cache/*"
-        find "/var/cache" -type f 2>/dev/null | head -10
+    if [[ -d "/var/cache" ]]; then
+        sudo find /var/cache -type f -delete 2>/dev/null
+        echo "✅ System cache cleaned"
     else
-        sudo rm -rf /var/cache/*
-        echo "✅ Cleaned system cache"
+        echo "ℹ️  System cache directory not found"
+    fi
+}
+
+clean_temp() {
+    echo "🧹 Cleaning temporary files (/tmp)..."
+    if [[ -w "/tmp" ]]; then
+        find /tmp -type f -mmin +60 -delete 2>/dev/null
+        find /tmp -type d -empty -mmin +60 -delete 2>/dev/null
+        echo "✅ Temporary files cleaned (files older than 1 hour)"
+    else
+        echo "❌ No write permission for /tmp"
     fi
 }
 
 # Parse arguments
 MODE="all"
-DRY_RUN=0
 
 while [[ $# -gt 0 ]]; do
     case $1 in
@@ -102,13 +112,17 @@ while [[ $# -gt 0 ]]; do
             MODE="system"
             shift
             ;;
+        -t|--temp)
+            MODE="temp"
+            shift
+            ;;
         -A|--all)
             MODE="all"
             shift
             ;;
-        -n|--dry-run)
-            DRY_RUN=1
-            shift
+        -v|--version)
+            show_version
+            exit 0
             ;;
         -h|--help)
             show_help
@@ -124,7 +138,7 @@ done
 
 # Main execution
 echo "🚀 Starting cache cleanup..."
-echo "Mode: $MODE | Dry run: $([ $DRY_RUN -eq 1 ] && echo "yes" || echo "no")"
+echo "Mode: $MODE"
 echo ""
 
 case $MODE in
@@ -140,11 +154,15 @@ case $MODE in
     system)
         clean_system_cache
         ;;
+    temp)
+        clean_temp
+        ;;
     all)
         clean_pacman
         clean_aur
         clean_user_cache
         clean_system_cache
+        clean_temp
         ;;
 esac
 

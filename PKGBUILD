@@ -1,8 +1,8 @@
 # Maintainer: Your Name <your@email.com>
 pkgname=cache-cleaner
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
-pkgdesc="Simple cache cleaner for Arch Linux and AUR helpers"
+pkgdesc="Simple cache and temp cleaner for Arch Linux and AUR helpers"
 arch=('any')
 url="https://github.com/cristofer528yt/cache-cleaner"
 license=('MIT')
