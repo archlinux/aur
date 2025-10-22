@@ -1,5 +1,5 @@
 pkgname=basedpyright
-pkgver=1.31.7
+pkgver=1.32.0
 pkgrel=1
 pkgdesc="pyright fork with various improvements and pylance features"
 arch=("any")
@@ -12,10 +12,12 @@ makedepends=(npm
              python
              tk)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DetachHead/basedpyright/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b70e96ff2e5966aef33a532ca768b7e08bba6c8b2346906a0f9e806fb861ae6e')
+sha256sums=('7dc7330327cf2ea5803dbd3010efb619ec1eb1e0ab8daccf44ce11dd06ff9254')
 
 prepare() {
     cd "$pkgname-$pkgver"
+    # We let uv use system python here.
+    rm -f .python-version
     # ./build/generateAllDocstubs.sh
     uv sync --only-group=docstubs --no-install-project
     uv run --no-sync build/py3_8/generate_docstubs.py
