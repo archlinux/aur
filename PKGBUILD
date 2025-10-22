@@ -1,7 +1,7 @@
 # Maintainer: Daniel Haß <aur@hass.onl>
 
 _pkgname=capacities
-_version=1.54.4
+_version=1.54.16
 _image_url_x86_64="https://capacities-desktop-app.fra1.cdn.digitaloceanspaces.com/Capacities-${_version}.AppImage"
 _image_url_aarch64="https://capacities-desktop-app.fra1.cdn.digitaloceanspaces.com/Capacities-${_version}-arm64.AppImage"
 
@@ -18,8 +18,8 @@ provides=('capacities')
 
 source_x86_64=("${_pkgname}-x86_64.AppImage::${_image_url_x86_64}")
 source_aarch64=("${_pkgname}-aarch64.AppImage::${_image_url_aarch64}")
-sha256sums_x86_64=('76dcde2d796c3921e29b29375e3433d5791813c9cd5cbfe190d1f05d6be11457')
-sha256sums_aarch64=('d64ba613378e4110cda2470d544209809e53d15f6c57caa8580d5b8c1b11456c')
+sha256sums_x86_64=('cec61e0c8571b0886cadc3f2602bee7e0abf12138e791572acb972329d86209c')
+sha256sums_aarch64=('67269f42fa26f8661c050eb7be026589f3d5d908b7a1b78cf09e27bd74d5b60b')
 
 _appimage="${_pkgname}-${CARCH}.AppImage"
 noextract=(
