@@ -15,7 +15,6 @@ depends=(
   'inter-font'
   'gpu-screen-recorder'
   'brightnessctl'
-  'ddcutil'
 )
 
 optdepends=(
@@ -23,6 +22,7 @@ optdepends=(
   'matugen-bin: Material You color scheme generation'
   'cava: Audio visualizer component'
   'wlsunset: For supporting NightLight'
+  'ddcutil: For external display brightness control'
 )
 
 makedepends=('git')
