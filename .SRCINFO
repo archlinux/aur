@@ -1,7 +1,7 @@
 pkgbase = apollo-git
-	pkgdesc = A self-hosted GameStream server
-	pkgver = 0.4.8.r2.gbf47fca
-	pkgrel = 1
+	pkgdesc = A self-hosted game stream server
+	pkgver = 0.4.8.r4.g08757dc
+	pkgrel = 2
 	url = https://github.com/ClassicOldSong/Apollo
 	install = apollo.install
 	arch = x86_64

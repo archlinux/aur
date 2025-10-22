@@ -10,9 +10,9 @@
 
 _pkgname="apollo"
 pkgname="$_pkgname-git"
-pkgver=0.4.8.r2.gbf47fca
-pkgrel=1
-pkgdesc="A self-hosted GameStream server"
+pkgver=0.4.8.r4.g08757dc
+pkgrel=2
+pkgdesc="A self-hosted game stream server"
 url="https://github.com/ClassicOldSong/Apollo"
 license=('GPL-3.0-only')
 arch=('x86_64')
@@ -95,8 +95,15 @@ prepare() {
   ## disable unwanted macros
   sed 's&macro(find_package)&macro(_disable_find_package)&' -i cmake/macros/common.cmake
 
-  ## allow any version of boost
-  sed -E 's&(Boost CONFIG) \S+ EXACT\b&\1&' -i cmake/dependencies/Boost_Sunshine.cmake
+  ## fix for Boost 1.89
+  sed -E -e 's&\b(Boost::)?(system)\b&&' -i third-party/Simple-Web-Server/CMakeLists.txt
+
+  install -Dm644 /dev/stdin cmake/dependencies/Boost_Sunshine.cmake << END
+include_guard(GLOBAL)
+find_package(Boost COMPONENTS filesystem locale log program_options)
+message(STATUS "Boost include dirs: \${Boost_INCLUDE_DIRS}")
+message(STATUS "Boost libraries: \${Boost_LIBRARIES}")
+END
 }
 
 pkgver() {
@@ -163,8 +170,25 @@ package() {
 
   if [[ "$_use_sodeps::1}" == "t" ]]; then
     eval "depends+=(
-      'libicuuc.so'     # icu
-      'libminiupnpc.so' # miniupnpc
+      'libboost_filesystem.so'
+      'libboost_locale.so'
+      'libboost_log.so'
+      'libboost_program_options.so'
+      'libboost_thread.so'
+      'libevdev.so'
+      'libglib-2.0.so'
+      'libgobject-2.0.so'
+      'libgtk-3.so'
+      'libminiupnpc.so'
+      'libnotify.so'
+      'libnuma.so'
+      'libopus.so'
+      'libpulse-simple.so'
+      'libpulse.so'
+      'libssl.so'
+      'libva-drm.so'
+      'libva.so'
+      'libwayland-client.so'
     )"
   fi
 
