@@ -1,0 +1,17 @@
+pkgbase = fireminipro-git
+	pkgdesc = MiniPro GUI wrapper for MiniPro CLI
+	pkgver = r215.a735509
+	pkgrel = 1
+	url = https://github.com/Jartza/fireminipro
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = qt6-base
+	depends = gcc-libs
+	depends = minipro
+	provides = fireminipro
+	conflicts = fireminipro
+	source = git+https://github.com/Jartza/fireminipro.git
+	sha256sums = SKIP
+
+pkgname = fireminipro-git
