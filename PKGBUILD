@@ -2,7 +2,7 @@
 
 _pkgname=swob
 pkgname="${_pkgname}-git"
-pkgver=r23.7898ea7
+pkgver=r24.7156e9f
 pkgrel=1
 pkgdesc="Volume and brightness controls for wayland, using wob"
 arch=('any')

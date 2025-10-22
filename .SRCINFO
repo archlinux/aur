@@ -1,6 +1,6 @@
 pkgbase = swob-git
 	pkgdesc = Volume and brightness controls for wayland, using wob
-	pkgver = r23.7898ea7
+	pkgver = r24.7156e9f
 	pkgrel = 1
 	url = https://git.sr.ht/~blueingreen/swob
 	arch = any
