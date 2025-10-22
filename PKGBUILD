@@ -1,6 +1,6 @@
 # Maintainer: Bernardo Kuri <aur+tofi-cotp@bkuri.com>
 pkgname=tofi-cotp
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A tofi wrapper for cotp (CLI TOTP authenticator)"
 arch=('any')

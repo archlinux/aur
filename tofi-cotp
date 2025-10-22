@@ -57,19 +57,22 @@ trap "rm -f $MAPPING_FILE" EXIT
 
 # Build display list and mapping
 # Format: "Display Name\tActual Label"
-echo "$PASSWORD" | cotp --password-stdin list 2>/dev/null | tail -n +2 | awk '{
-    label = $3;
-    # If column 2 is "<No", then issuer is "<No issuer>" and label is column 4
-    if ($2 == "<No") {
-        display = $4;
-        label = $4;
-    } else {
-        # Normal case: issuer is column 2, label is column 3
-        display = $2 " - " $3;
-        label = $3;
-    }
-    print display "\t" label;
-}' | sort > "$MAPPING_FILE"
+# Parse using column positions since fields can contain spaces
+echo "$PASSWORD" | cotp --password-stdin list 2>/dev/null | tail -n +2 | while read -r line; do
+    # Extract columns by position (space-padded columns)
+    index=$(echo "$line" | awk '{print $1}')
+    # Issuer is columns 8-31 (24 chars), Label is columns 32-83 (52 chars)
+    issuer=$(echo "$line" | cut -c 8-31 | sed 's/[[:space:]]*$//')
+    label=$(echo "$line" | cut -c 32-83 | sed 's/[[:space:]]*$//')
+    
+    if [[ "$issuer" == "<No issuer>" ]]; then
+        display="$label"
+    else
+        display="$issuer - $label"
+    fi
+    
+    echo -e "$display\t$label"
+done | sort > "$MAPPING_FILE"
 
 # Extract just the display names for tofi
 accounts=$(cut -f1 "$MAPPING_FILE")
