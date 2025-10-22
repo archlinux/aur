@@ -2,12 +2,12 @@
 
 ## options
 : ${_install_path:=usr/lib}
-: ${_wmclass:=floorp-default}
+: ${_wmclass:=floorp}
 
 _pkgname="floorp"
 pkgname="$_pkgname-bin"
-pkgver=12.3.2
-pkgrel=2
+pkgver=12.3.3
+pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
 license=('MPL-2.0')
@@ -41,8 +41,8 @@ sha256sums=(
   '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
   '71f1bee3ae03473884d7c202b4dfb260f8d68470d6c79695d1208fb944b6f5c8'
 )
-sha256sums_x86_64=('2aac35fe8c82b8e1751dbacf87b1ddd1020ce614c8e5cbfd6833e7e03044ef2c')
-sha256sums_aarch64=('d1882e1619c4b38480f5520d1c2bac9dfbd3751da456b6951c33e6f6a64aa5fa')
+sha256sums_x86_64=('9bcbfadbae583cdd8a45ab3735fa08e0f613151645fc8ae5ee716cbb6140b76c')
+sha256sums_aarch64=('ad2a957493f2ad9aea294ca0322c6b744f6c1188fbefbd772c0a5c0e65832456')
 
 package() {
   depends=(
@@ -71,7 +71,7 @@ package() {
   done
 
   # launcher
-  local _desktop=$(<"$_pkgname.desktop")
+  local _desktop=$(< "$_pkgname.desktop")
   _desktop=${_desktop//@WMCLASS@/$_wmclass}
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" <<< "$_desktop"
 
