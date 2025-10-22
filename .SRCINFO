@@ -1,0 +1,13 @@
+pkgbase = compose-cli-bin
+	pkgver = 0.0.21
+	pkgrel = 1
+	url = https://mrinmoyin.gitlab.io/compose-cli
+	arch = x86_64
+	license = BSD-4
+	provides = compose
+	conflicts = compose
+	options = !debug
+	source_x86_64 = compose-cli-0.0.21-1.tar.xz::https://gitlab.com/mrinmoyin/compose-cli/-/releases/v0.0.21/downloads/compose-cli-v0.0.21.tar
+	sha256sums_x86_64 = 4c016435d1ea7d7ed62ea6866eb2ed6c85473aed42b8c049689d53701301d3ce
+
+pkgname = compose-cli-bin
