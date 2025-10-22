@@ -5,12 +5,12 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Contributor: Julian Schacher <jspp@posteo.net>
 
-_electron="electron37"  # As of 2025-08-11, electron37 actually works.
+_electron="electron38"  # As of 2025-10-22, electron38 actually works.
 _nodeversion=24         # As of 2025-05-26, the minimum version of `nodejs` is 22. As of 2025-08-11, version 23 does not work, but 22 and 24.
 _pkgname="schildichat-desktop"
 pkgname="${_pkgname}-git"
 pkgver=1.11.112.sc.0.test.0.r547.20250917.4d4dcf1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience. Build of the latest git checkout."
 arch=(
   "x86_64"
