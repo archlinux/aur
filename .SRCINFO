@@ -1,6 +1,6 @@
 pkgbase = jitsi-videobridge
 	pkgdesc = Jitsi Meet Videobridge
-	pkgver = 2.3+217+g125684fc
+	pkgver = 2.3+259+g22868ff7d
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	install = install
@@ -18,13 +18,13 @@ pkgbase = jitsi-videobridge
 	backup = etc/jitsi-videobridge/logging.properties
 	backup = etc/jitsi-videobridge/sip-communicator.properties
 	backup = etc/jitsi-videobridge/jvb.conf
-	source = jitsi-videobridge::git+https://github.com/jitsi/jitsi-videobridge#tag=2.3-217-g125684fc
+	source = jitsi-videobridge::git+https://github.com/jitsi/jitsi-videobridge#tag=2.3-259-g22868ff7d
 	source = config
 	source = sip-communicator.properties
 	source = service
 	source = sysusers.conf
 	source = tmpfiles.conf
-	sha256sums = 91de8b7aea0a17487aad4d77a7192897034b3513b0e0578312283dd776f9bfa8
+	sha256sums = d20668469641855792233a91b839289e014a8b7865bf64dd1322aadc78e9a817
 	sha256sums = 5dbd9e1fec28d8b6eda3ed38b514322dc1386507e0a653c7a73061cdc41d9982
 	sha256sums = cc9fbf77497bce3c9673b2d144928f11cdd0c0823940c2b60c8369a2f086b9b7
 	sha256sums = e433c840c4cac5663ed169e90899efc1d1210649bf828bb412295902985f9ee5
