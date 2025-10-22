@@ -2,7 +2,7 @@
 
 _pkgname=fzf-vjour
 pkgname="${_pkgname}-git"
-pkgver=r45.e6abc10
+pkgver=r51.aaaba3e
 pkgrel=1
 pkgdesc='A fzf-based journaling and notes application with CalDav support.'
 arch=('any')

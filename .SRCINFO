@@ -1,6 +1,6 @@
 pkgbase = fzf-vjour-git
 	pkgdesc = A fzf-based journaling and notes application with CalDav support.
-	pkgver = r45.e6abc10
+	pkgver = r51.aaaba3e
 	pkgrel = 1
 	url = https://github.com/baumea/fzf-vjour
 	arch = any
