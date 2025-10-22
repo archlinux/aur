@@ -1,6 +1,6 @@
 pkgbase = atuin-desktop-bin
 	pkgdesc = Atuin Desktop: Runbooks that Run. A local-first, executable runbook editor for real terminal workflows
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/atuinsh/desktop
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = atuin-desktop-bin
 	depends = zlib
 	provides = atuin-desktop
 	options = !debug
-	source_x86_64 = atuin-desktop-bin-x86_64::https://github.com/atuinsh/desktop/releases/download/v0.1.8/Atuin_Desktop-0.1.8-1.x86_64.rpm
-	b2sums_x86_64 = b8a8255284e69c173d2919f3131d82f6f405bdc24d1928c40b717ede998ea8464317af6aaef717d2874203dece4a2bb2b57223b672903aba5aeb5790721aa9e6
+	source_x86_64 = atuin-desktop-bin-x86_64::https://github.com/atuinsh/desktop/releases/download/v0.1.9/Atuin_Desktop-0.1.9-1.x86_64.rpm
+	b2sums_x86_64 = 5f89883ec4c9258060b2bbda82ee9d924b78294cc0299772b641a8833b1d066211f7d63ad437344b9fd037d4bd1b837671c1b5de1985f6c70ea13f66db488019
 
 pkgname = atuin-desktop-bin
