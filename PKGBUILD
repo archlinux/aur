@@ -2,7 +2,7 @@
 pkgname=deta-surf
 pkgver=1.1.0_beta.1.x86
 pkgdesc="Deta Surf, an AI notebook that brings all your files and the web directly into your stream of thought."
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 source="git+https://github.com/deta/surf"
 url="https://deta.surf"
@@ -29,6 +29,8 @@ package() {
     echo "#  I know, you know, everyone else knows,                   #"
     echo "#  but with a little bit of patience (and updates),         #"
     echo "#  you'll see it!                                           #"
+    echo "#                                                           #"
+    echo "#  You can run the `deta-surf` on your shell from now on.   #"
     echo "#                                                           #"
     echo "#  As we say, thank you for reading this! (the note will    #"
     echo "#  be removed after adding the .desktop file.)              #"
