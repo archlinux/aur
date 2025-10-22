@@ -40,7 +40,6 @@ build() {
 
 package() {
 	cd "democap-$pkgver"/unix
-	find
 	scons version="$pkgver" --install-sandbox="$(realpath "$pkgdir")"
 	cd ..
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/democap/LICENSE
