@@ -51,7 +51,7 @@ StartupNotify=true
 Categories=Network;WebBrowser;
 Keywords=ablaze;web;browser;internet;
 Actions=new-window;new-private-window;profile-manager-window;
-StartupWMClass=floorp
+StartupWMClass=@WMCLASS@
 
 
 [Desktop Action new-window]
