@@ -1,0 +1,16 @@
+pkgbase = elephant-snippets
+	pkgdesc = snippets provider for elephant
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/abenz1267/elephant
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = go
+	depends = wlrctl
+	provides = elephant-snippets
+	conflicts = elephant-snippets
+	source = https://github.com/abenz1267/elephant/archive/refs/tags/v2.5.0.tar.gz
+	sha256sums = e59e873fd3f4d1b8402e146aa36ad7e33c0797a8c7aba3c716dc7b4c91a767d8
+
+pkgname = elephant-snippets
