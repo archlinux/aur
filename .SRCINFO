@@ -1,7 +1,7 @@
 pkgbase = fsp-bin
 	pkgdesc = Flexible Software Package (FSP) for Renesas RA MCU Family
 	pkgver = 6.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/renesas/fsp
 	arch = x86_64
 	license = LicenseRef-scancode-commercial-license
@@ -19,7 +19,7 @@ pkgbase = fsp-bin
 	sha256sums = 694565dfaf7366793952da11f8a4c155a484067ed10d9520ac9ef0de23cc8d43
 
 pkgname = fsp-bin
-	pkgdesc = Flexible Software Package (FSP) for Renesas RA MCU Family - Renesas e² studio
+	pkgdesc = Flexible Software Package (FSP) for Renesas RA MCU Family
 	depends = fsp-e2s
 	depends = fsp-renesas
 	provides = fsp
