@@ -2,7 +2,7 @@
 
 _pyname=google_cloud_trace
 pkgname=python-google-cloud-trace
-pkgver=1.16.2
+pkgver=1.17.0
 pkgrel=1
 pkgdesc='Google Cloud Trace API client library'
 url=https://github.com/googleapis/google-cloud-python
@@ -23,7 +23,7 @@ makedepends=(
 )
 optdepends=()
 source=(${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz)
-b2sums=('48b823d669c7cef80cfa39b6f97f9b58ccf444532fe27c14c3c69e73234a86a02e410f009afe9562281913974840119914df8964365e7a22b3463291210b2322')
+b2sums=('3d7daf198ea5c19f9dad01d613bdd7a26846dd1168ecae190ffed51a34a2f4ad9df3dcd056b60bc6c2811305dfc37045c28aa9dafe619ccd29bffc6eece9d8e7')
 
 build() {
   cd ${_pyname}-${pkgver}
