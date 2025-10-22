@@ -31,6 +31,6 @@ check() {
 }
 
 package() {
-  install -Dm 755 $_name "/usr/bin/$_name"
-  install -Dm 644 LICENSE -t "/usr/share/licenses/$pkgname/"
+  install -Dm 755 $_name-$pkgver "$pkgdir/usr/bin/$_name"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
