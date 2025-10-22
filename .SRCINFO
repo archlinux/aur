@@ -1,17 +1,17 @@
 pkgbase = r-air-bin
 	pkgdesc = An R language server and formatter
-	pkgver = 0.7.1
-	pkgrel = 2
+	pkgver = 0.8.0
+	pkgrel = 1
 	url = https://github.com/posit-dev/air
 	arch = x86_64
 	license = MIT
 	depends = gcc-libs
 	depends = glibc
 	options = !debug
-	source_x86_64 = r-air-bin-0.7.1.tar.gz::https://github.com/posit-dev/air/releases/download/0.7.1/air-x86_64-unknown-linux-gnu.tar.gz
-	source_x86_64 = https://raw.githubusercontent.com/posit-dev/air/refs/tags/0.7.1/LICENSE
-	provides_x86_64 = r-air=0.7.1
-	sha256sums_x86_64 = f066d2d97e3b9960b03da9fdf85e83d5400db346765e274fbba3451349db8755
+	source_x86_64 = r-air-bin-0.8.0.tar.gz::https://github.com/posit-dev/air/releases/download/0.8.0/air-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = https://raw.githubusercontent.com/posit-dev/air/refs/tags/0.8.0/LICENSE
+	provides_x86_64 = r-air=0.8.0
+	sha256sums_x86_64 = 0daf51f1cc6a9be5e79b7c02c235b1ff67877a85e423845862d262c49bb200c1
 	sha256sums_x86_64 = 19713ea69a4231105033c381dc2145148d26eab51e0b7e458ef4e775db531863
 
 pkgname = r-air-bin
