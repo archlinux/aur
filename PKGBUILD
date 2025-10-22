@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.16.r66.gc3b6b3c0
+pkgver=1.0.17.r146.ge47bf906
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -79,6 +79,7 @@ build() {
     -D bpftool=disabled \
     -D b_lto=true \
     -D b_lto_mode=thin \
+    -D force_meson=true \
     -D cargo_home="$srcdir"/scx
   meson compile -C build
 }
