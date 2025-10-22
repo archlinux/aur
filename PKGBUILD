@@ -3,7 +3,7 @@
 pkgname=gnucash-xbt
 _pkgname=gnucash
 pkgver=5.13
-pkgrel=1
+pkgrel=2
 _sourcerel=
 pkgdesc="A personal and small-business financial-accounting application with Bitcoin support"
 arch=(x86_64 aarch64)
@@ -46,7 +46,7 @@ prepare() {
 build() {
   cd "${srcdir}/build"
 
-  make
+  make -j6
 }
 
 package() {
