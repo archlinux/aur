@@ -1,4 +1,2 @@
-2.36.3-1 [2025-10-15]
-- [Windows][Enhancement] Introduced Ulaa Updater V2.
-- [iOS][BugFix] Fixed browser crashes and improved overall stability.
-- Updated with the latest security patches and performance enhancements. Chromium engine updated to 141.0.7390.111.
+2.36.4-1 [2025-10-22]
+- Updated with the latest security patches and performance enhancements. Chromium engine updated to 141.0.7390.123.
