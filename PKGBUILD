@@ -1,7 +1,7 @@
 # Maintainer: Firstp1ck <al.leuzi@hotmail.com>
 # Contributor: Firstp1ck <al.leuzi@hotmail.com>
 pkgname="hyprland-simple-setup-git"
-pkgver=0.4.0.r90.gb84b6d6
+pkgver=0.5.0.r0.gb84b6d6
 pkgrel=1
 pkgdesc="Setup Hyprland the simple way. (Swiss/German Edition)"
 arch=('x86_64')
