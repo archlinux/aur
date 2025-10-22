@@ -2,7 +2,7 @@
 # Contributor: George Woodall <georgewoodall82@gmail.com>
 # Contributor: goll <adrian.goll+aur[at]gmail>
 pkgname=bambustudio-nvidia-bin
-pkgver=02.02.02.56
+pkgver=02.03.00.70
 pkgrel=1
 pkgdesc="PC Software for BambuLab's 3D printers with a fix for nVidia cards"
 arch=("x86_64")
@@ -16,7 +16,7 @@ source=("bambustudio-${pkgver}.AppImage::https://github.com/bambulab/BambuStudio
 	"bambu-studio"
     "mesa.tar.zst::https://archive.archlinux.org/packages/m/mesa/mesa-1%3A24.3.4-1-x86_64.pkg.tar.zst"
     "llvm.tar.zst::https://archive.archlinux.org/packages/l/llvm-libs/llvm-libs-19.1.7-2-x86_64.pkg.tar.zst")
-md5sums=('0fb5c0b222e24b12284b177916763fb0'
+md5sums=('c420a373828f825e7e6edd54ea185b21'
          'c2729c29cbd01844507e1f0562762191'
          '7870efc1c2644441705f8a4316455c5a'
          'e2e9476b8e0924cfc752cce1501b3ea3'
