@@ -1,6 +1,6 @@
 pkgbase = pgbadger
 	pkgdesc = A fast PostgreSQL Log Analyzer
-	pkgver = 12.0
+	pkgver = 13.1
 	pkgrel = 1
 	url = https://github.com/darold/pgbadger
 	arch = any
@@ -10,7 +10,9 @@ pkgbase = pgbadger
 	depends = perl-text-csv-xs
 	depends = perl-json-xs
 	options = !emptydirs
-	source = pgbadger-12.0.tar.gz::https://github.com/darold/pgbadger/archive/v12.0.tar.gz
-	sha256sums = aaac57a573cf769e56d521bfe51c292a1290cb896f67a8751ffaa4db12f1f843
+	source = pgbadger-13.1.tar.gz::https://github.com/darold/pgbadger/archive/v13.1.tar.gz
+	source = 6c388d02d2ac48fbcef742e417dd490308250595.patch
+	sha256sums = 9658ff222ed7b387d3cb76c3e3d90d1862b885c13b26aa9ff652e133f5d018f1
+	sha256sums = 56ee42bfe11df54bc52a08b0e5dbfa5f56ed2db449dc22ac13b34fc3dff65418
 
 pkgname = pgbadger

@@ -2,7 +2,7 @@
 # Cotnributor : François Freitag <mail at franek dot fr>
 # Contributor: Victor van den Elzen <victor.vde at gmail dot com>
 pkgname=pgbadger
-pkgver=12.0
+pkgver=13.1
 pkgrel=1
 pkgdesc="A fast PostgreSQL Log Analyzer"
 arch=("any")
@@ -14,8 +14,9 @@ depends=(
   "perl-text-csv-xs" "perl-json-xs"
 )
 options=('!emptydirs')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('aaac57a573cf769e56d521bfe51c292a1290cb896f67a8751ffaa4db12f1f843')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz" "6c388d02d2ac48fbcef742e417dd490308250595.patch")
+sha256sums=('9658ff222ed7b387d3cb76c3e3d90d1862b885c13b26aa9ff652e133f5d018f1'
+            '56ee42bfe11df54bc52a08b0e5dbfa5f56ed2db449dc22ac13b34fc3dff65418')
 
 build() {
   # Override perl command line options we don't want. Source:
@@ -27,6 +28,9 @@ build() {
     MODULEBUILDRC=/dev/null
 
   cd "${srcdir}/pgbadger-${pkgver}"
+  # Temporary fix until 13.2
+  patch -p1 < ../../6c388d02d2ac48fbcef742e417dd490308250595.patch
+
   /usr/bin/perl Makefile.PL INSTALLDIRS=vendor
   make
 }

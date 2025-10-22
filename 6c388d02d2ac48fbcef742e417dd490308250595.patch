@@ -1,0 +1,32 @@
+From 6c388d02d2ac48fbcef742e417dd490308250595 Mon Sep 17 00:00:00 2001
+From: Gilles Darold <gilles@darold.net>
+Date: Fri, 18 Jul 2025 23:52:36 +0200
+Subject: [PATCH] Fix possible precedence problem between ! and string eq.
+ Thanks to Adrien Nayrat for the report.
+
+---
+ pgbadger | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/pgbadger b/pgbadger
+index 5ed62d1..11bd290 100755
+--- a/pgbadger
++++ b/pgbadger
+@@ -20462,7 +20462,7 @@ sub highlight_code
+     # lowercase/uppercase known functions or words followed by an open parenthesis
+     # if the token is not a keyword, an open parenthesis or a comment
+     if (($self->_is_function( $token, $last_token, $next_token ) && $next_token eq '(')
+-	    || (!$self->_is_keyword( $token, $next_token, $last_token ) && !$next_token eq '('
++	    || (!$self->_is_keyword( $token, $next_token, $last_token ) && $next_token ne '('
+ 		    && $token ne '(' && !$self->_is_comment( $token )) ) {
+         if ($self->{ 'uc_functions' } == 1) {
+             $token = '<span class="kw2_l">' . $token . '</span>';
+@@ -23062,7 +23062,7 @@ sub _add_token
+         # if the token is not a keyword, an open parenthesis or a comment
+         my $fct = $self->_is_function( $token, $last_token, $next_token ) || '';
+         if (($fct and $next_token eq '(' and defined $last_token and uc($last_token) ne 'CREATE')
+-		or (!$self->_is_keyword( $token, $next_token, $last_token ) and !$next_token eq '('
++		or (!$self->_is_keyword( $token, $next_token, $last_token ) and $next_token ne '('
+ 				    and $token ne '(' and !$self->_is_comment( $token )) )
+ 	{
+             $token =~ s/$fct/\L$fct\E/i if ( $self->{ 'uc_functions' } == 1 );
