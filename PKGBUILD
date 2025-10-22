@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=unitizer
-_pkgver=1.4.22
+_pkgver=1.4.23
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('100c27709614db021c487aac86c44d6c')
-b2sums=('503cb2b31ffe80940789aab1b0fb1bf8577ee530b23cff2443d9132296a04783847938baf9f609184f55d846cf75bdc4d71e103bba564d1084f1145e4924b951')
+md5sums=('8520659d16640ec5057db2f3d3d5de76')
+b2sums=('c2bf9c08dd55df44e4ea3c35bf81e76e66ef30bb1cafa7a5be55b4c9643d257b83626bcad8a2fc5d95e344e3599e9507118f99de36f24e3aa66b9a2f4729e1e4')
 
 build() {
   mkdir build

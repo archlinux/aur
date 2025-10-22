@@ -1,6 +1,6 @@
 pkgbase = r-unitizer
 	pkgdesc = Interactive R Unit Tests
-	pkgver = 1.4.22
+	pkgver = 1.4.23
 	pkgrel = 1
 	url = https://cran.r-project.org/package=unitizer
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = r-unitizer
 	depends = r-diffobj
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/unitizer_1.4.22.tar.gz
-	md5sums = 100c27709614db021c487aac86c44d6c
-	b2sums = 503cb2b31ffe80940789aab1b0fb1bf8577ee530b23cff2443d9132296a04783847938baf9f609184f55d846cf75bdc4d71e103bba564d1084f1145e4924b951
+	source = https://cran.r-project.org/src/contrib/unitizer_1.4.23.tar.gz
+	md5sums = 8520659d16640ec5057db2f3d3d5de76
+	b2sums = c2bf9c08dd55df44e4ea3c35bf81e76e66ef30bb1cafa7a5be55b4c9643d257b83626bcad8a2fc5d95e344e3599e9507118f99de36f24e3aa66b9a2f4729e1e4
 
 pkgname = r-unitizer
