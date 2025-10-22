@@ -21,3 +21,6 @@ install_bin
 
 # fichiers de log
 *.log
+
+
+aur/
