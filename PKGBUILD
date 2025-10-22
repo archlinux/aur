@@ -2,13 +2,13 @@
 pkgname=note-gen
 _pkgname=note-gen
 pkgver=0.22.1
-pkgrel=24
+pkgrel=25
 pkgdesc="A cross-platform Markdown note-taking application with AI integration"
 arch=('x86_64')
 url="https://github.com/codexu/note-gen"
 license=('MIT')
 depends=('gtk3' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'librsvg' 'libvips' 'libxcb' 'libxrandr')
-makedepends=('rust' 'nodejs' 'npm' 'pnpm' 'pkgconf' 'clang')
+makedepends=('rust' 'nodejs' 'npm' 'pnpm' 'pkgconf' 'clang' 'sqlite')
 provides=('note-gen')
 conflicts=('note-gen-bin')
 options=('!strip')
@@ -21,6 +21,12 @@ prepare() {
     export npm_config_build_from_source=true
     export CARGO_HOME="$srcdir/.cargo"
 
+    # SQLite构建环境变量
+    export LIBSQLITE3_LIB_DIR=/usr/lib
+    export LIBSQLITE3_INCLUDE_DIR=/usr/include
+    export SQLITE_USE_STATIC=0
+    export PKG_CONFIG_PATH=/usr/lib/pkgconfig:$PKG_CONFIG_PATH
+
     # 安装前端依赖
     pnpm install --frozen-lockfile
 }
@@ -29,6 +35,12 @@ build() {
     cd "$pkgname-$pkgname-v$pkgver"
     export CARGO_HOME="$srcdir/.cargo"
     export npm_config_build_from_source=true
+
+    # SQLite构建环境变量
+    export LIBSQLITE3_LIB_DIR=/usr/lib
+    export LIBSQLITE3_INCLUDE_DIR=/usr/include
+    export SQLITE_USE_STATIC=0
+    export PKG_CONFIG_PATH=/usr/lib/pkgconfig:$PKG_CONFIG_PATH
 
     # 构建前端 (由Tauri的beforeBuildCommand调用)
     pnpm build
