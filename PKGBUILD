@@ -6,7 +6,7 @@ _pkgname=mongodb
 _srcname=mongo
 # #.<odd number>.# releases are unstable development/testing
 pkgver=4.4.29
-pkgrel=9
+pkgrel=10
 pkgdesc="A high-performance, open source, schema-free document-oriented database (last version to support non-avx CPUs)"
 arch=("x86_64" "aarch64")
 url="https://www.mongodb.com/"
@@ -131,6 +131,11 @@ prepare() {
   if check_option lto y; then
     _scons_args+=(--lto=on)
   fi
+  
+  # delete libboost_system references from from scons due to removal
+  # from boost/boost-libs upstream in ver. 1.89.
+  sed -i '/^boostLibs =/s/, "system"//' SConstruct
+  sed -i '348d' src/third_party/SConscript
 
   # apply gentoo patches
   for file in $srcdir/*.patch; do

@@ -1,7 +1,7 @@
 pkgbase = mongodb44
 	pkgdesc = A high-performance, open source, schema-free document-oriented database (last version to support non-avx CPUs)
 	pkgver = 4.4.29
-	pkgrel = 9
+	pkgrel = 10
 	url = https://www.mongodb.com/
 	arch = x86_64
 	arch = aarch64
