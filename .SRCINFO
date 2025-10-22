@@ -1,10 +1,10 @@
 pkgbase = cosmic-ext-applet-caffeine-git
 	pkgdesc = Caffeine Applet for the COSMIC™ desktop
-	pkgver = r29.0e4af3b
+	pkgver = r47.4f74476
 	pkgrel = 1
 	url = https://github.com/tropicbliss/cosmic-ext-applet-caffeine
 	arch = x86_64
-	license = MIT
+	license = GPL-2.0-or-later
 	makedepends = cargo
 	makedepends = git
 	makedepends = just

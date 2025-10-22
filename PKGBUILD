@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-ext-applet-caffeine-git
-pkgver=r29.0e4af3b
+pkgver=r47.4f74476
 pkgrel=1
 pkgdesc="Caffeine Applet for the COSMIC™ desktop"
 arch=('x86_64')
 url="https://github.com/tropicbliss/cosmic-ext-applet-caffeine"
-license=('MIT')
+license=('GPL-2.0-or-later')
 depends=('cosmic-applets')
 makedepends=(
   'cargo'
@@ -37,6 +37,4 @@ build() {
 package() {
   cd "${pkgname%-git}"
   just rootdir="$pkgdir" install
-
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
