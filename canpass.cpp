@@ -7,7 +7,6 @@
 #include <iomanip>
 #include <termios.h>
 #include <unistd.h>
-#include <map>
 #include <random>
 #include <regex>
 #include <sstream>
@@ -16,44 +15,33 @@
 
 namespace fs = std::filesystem;
 
-// Terminal color codes
 class Colors {
 public:
     static const std::string RESET;
-    static const std::string BLACK;
-    static const std::string RED;
     static const std::string GREEN;
+    static const std::string RED;
     static const std::string YELLOW;
     static const std::string BLUE;
     static const std::string MAGENTA;
     static const std::string CYAN;
-    static const std::string WHITE;
-    static const std::string BRIGHT_BLACK;
-    static const std::string BRIGHT_RED;
     static const std::string BRIGHT_GREEN;
+    static const std::string BRIGHT_RED;
     static const std::string BRIGHT_YELLOW;
     static const std::string BRIGHT_BLUE;
     static const std::string BRIGHT_MAGENTA;
     static const std::string BRIGHT_CYAN;
     static const std::string BRIGHT_WHITE;
-    
-    static std::string colorize(const std::string& text, const std::string& color) {
-        return color + text + RESET;
-    }
 };
 
 const std::string Colors::RESET = "\033[0m";
-const std::string Colors::BLACK = "\033[30m";
-const std::string Colors::RED = "\033[31m";
 const std::string Colors::GREEN = "\033[32m";
+const std::string Colors::RED = "\033[31m";
 const std::string Colors::YELLOW = "\033[33m";
 const std::string Colors::BLUE = "\033[34m";
 const std::string Colors::MAGENTA = "\033[35m";
 const std::string Colors::CYAN = "\033[36m";
-const std::string Colors::WHITE = "\033[37m";
-const std::string Colors::BRIGHT_BLACK = "\033[90m";
-const std::string Colors::BRIGHT_RED = "\033[91m";
 const std::string Colors::BRIGHT_GREEN = "\033[92m";
+const std::string Colors::BRIGHT_RED = "\033[91m";
 const std::string Colors::BRIGHT_YELLOW = "\033[93m";
 const std::string Colors::BRIGHT_BLUE = "\033[94m";
 const std::string Colors::BRIGHT_MAGENTA = "\033[95m";
@@ -70,9 +58,7 @@ private:
         std::string service;
         std::string username;
         std::string password;
-        std::string url;
         std::string notes;
-        std::string timestamp;
     };
     
     struct ImportResult {
@@ -101,7 +87,6 @@ private:
     
     std::string getServiceDir(const std::string& service) {
         std::string serviceClean = service;
-        // Replace spaces and special characters with underscores
         std::replace_if(serviceClean.begin(), serviceClean.end(), 
                        [](char c) { return !std::isalnum(c) && c != '-' && c != '_'; }, '_');
         return getPasswordDir() + "/" + serviceClean;
@@ -119,7 +104,6 @@ private:
         return getServiceDir(service) + "/" + usernameClean + ".pwd";
     }
     
-    // Простая генерация соли
     std::string generateSalt(size_t length = 32) {
         const std::string chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         std::random_device rd;
@@ -133,30 +117,24 @@ private:
         return salt;
     }
     
-    // Простой хэш (для демонстрации)
     std::string simpleHash(const std::string& password, const std::string& salt) {
-        // Простой алгоритм хэширования - в реальном приложении используйте bcrypt/scrypt
         std::string data = password + salt;
         std::hash<std::string> hasher;
         size_t hash1 = hasher(data);
         size_t hash2 = hasher(data + std::to_string(hash1));
         
-        // Преобразуем в строку
         std::stringstream ss;
         ss << std::hex << hash1 << hash2;
         std::string hashStr = ss.str();
         
-        // Добавляем соль в начало
         return salt + hashStr;
     }
     
-    // Проверка пароля
     bool verifyPassword(const std::string& password, const std::string& storedHash) {
         if (storedHash.length() <= 32) {
             return false;
         }
         
-        // Извлекаем соль (первые 32 байта) и хэш (остальные)
         std::string salt = storedHash.substr(0, 32);
         std::string storedHashOnly = storedHash.substr(32);
         
@@ -166,9 +144,7 @@ private:
         return storedHashOnly == computedHashOnly;
     }
     
-    // Производный ключ из мастер-пароля
     std::string deriveEncryptionKey(const std::string& password, const std::string& salt) {
-        // Простой алгоритм для демонстрации
         std::string data = password + salt + "encryption-key";
         std::hash<std::string> hasher;
         size_t hash = hasher(data);
@@ -177,14 +153,12 @@ private:
         ss << std::hex << hash;
         std::string key = ss.str();
         
-        // Дополняем до 32 символов
         while (key.length() < 32) {
             key += key;
         }
         return key.substr(0, 32);
     }
     
-    // Простое шифрование XOR
     std::string encryptDecrypt(const std::string& input, const std::string& key) {
         if (input.empty()) return input;
         
@@ -195,7 +169,6 @@ private:
         return result;
     }
     
-    // Convert binary data to hex string
     std::string toHex(const std::string& input) {
         std::stringstream ss;
         for (unsigned char c : input) {
@@ -204,7 +177,6 @@ private:
         return ss.str();
     }
     
-    // Convert hex string to binary data
     std::string fromHex(const std::string& hex) {
         std::string result;
         for (size_t i = 0; i < hex.length(); i += 2) {
@@ -270,7 +242,6 @@ private:
     bool verifyMasterPassword() {
         std::string password = readPassword("Enter master password: ");
         
-        // Загружаем сохраненный хэш
         std::ifstream file(getMasterPasswordFile());
         if (!file.is_open()) {
             return false;
@@ -283,12 +254,10 @@ private:
             return false;
         }
         
-        // Проверяем пароль
         if (!verifyPassword(password, savedHash)) {
             return false;
         }
         
-        // Восстанавливаем ключ шифрования
         std::string salt = savedHash.substr(0, 32);
         encryptionKey = deriveEncryptionKey(password, salt);
         masterPasswordHash = savedHash;
@@ -303,7 +272,6 @@ private:
         }
     }
     
-    // Password generator
     std::string generatePassword(int length = 16, bool useUpper = true, bool useLower = true, 
                                 bool useNumbers = true, bool useSymbols = true) {
         std::string characters;
@@ -314,7 +282,7 @@ private:
         if (useSymbols) characters += "!@#$%^&*()_+-=[]{}|;:,.<>?";
         
         if (characters.empty()) {
-            return "password123"; // fallback
+            return "password123";
         }
         
         std::random_device rd;
@@ -329,7 +297,6 @@ private:
         return password;
     }
     
-    // Search passwords
     std::vector<PasswordEntry> searchPasswords(const std::string& query) {
         std::vector<PasswordEntry> results;
         std::string dir = getPasswordDir();
@@ -344,9 +311,7 @@ private:
             if (serviceEntry.is_directory() && serviceEntry.path().filename() != "." && serviceEntry.path().filename() != "..") {
                 std::string service = serviceEntry.path().filename().string();
                 
-                // Search by service name
                 if (std::regex_search(service, pattern)) {
-                    // Add all accounts from this service
                     for (const auto& accountEntry : fs::directory_iterator(serviceEntry.path())) {
                         if (accountEntry.path().extension() == ".pwd") {
                             std::string username = accountEntry.path().stem().string();
@@ -368,7 +333,6 @@ private:
                         }
                     }
                 } else {
-                    // Search by usernames
                     for (const auto& accountEntry : fs::directory_iterator(serviceEntry.path())) {
                         if (accountEntry.path().extension() == ".pwd") {
                             std::string username = accountEntry.path().stem().string();
@@ -399,7 +363,6 @@ private:
         return results;
     }
     
-    // Safe number input (fixes arrow key issue)
     int getNumberInput() {
         std::string input;
         std::getline(std::cin, input);
@@ -407,11 +370,10 @@ private:
         try {
             return std::stoi(input);
         } catch (const std::exception& e) {
-            return -1; // Invalid input
+            return -1;
         }
     }
 
-    // Save password to file (без подтверждения для импорта)
     bool savePasswordForImport(const std::string& service, const std::string& username, const std::string& password, const std::string& notes = "") {
         std::string serviceDir = getServiceDir(service);
         if (!fs::exists(serviceDir)) {
@@ -420,7 +382,6 @@ private:
         
         std::string filePath = getAccountFile(service, username);
         
-        // Для импорта просто перезаписываем без подтверждения
         std::ofstream file(filePath);
         if (file.is_open()) {
             try {
@@ -435,7 +396,6 @@ private:
         return false;
     }
 
-    // Save password to file (с подтверждением для ручного ввода)
     bool savePasswordToFile(const std::string& service, const std::string& username, const std::string& password, const std::string& notes = "") {
         std::string serviceDir = getServiceDir(service);
         if (!fs::exists(serviceDir)) {
@@ -444,7 +404,6 @@ private:
         
         std::string filePath = getAccountFile(service, username);
         
-        // Check if entry already exists
         if (fs::exists(filePath)) {
             std::cout << Colors::BRIGHT_RED << "⚠ Password for '" << username << "' in service '" << service << "' already exists!" << Colors::RESET << std::endl;
             std::cout << Colors::YELLOW << "Overwrite? (y/N): " << Colors::RESET;
@@ -474,7 +433,6 @@ private:
         }
     }
 
-    // Generate password with options
     std::string generatePasswordWithOptions() {
         std::cout << Colors::BRIGHT_CYAN << "\n=== Password Generator ===" << Colors::RESET << std::endl;
         
@@ -489,7 +447,6 @@ private:
                 if (length < 8) length = 8;
                 if (length > 64) length = 64;
             } catch (...) {
-                // Use default value
             }
         }
         
@@ -514,7 +471,6 @@ private:
         bool numbers = useNumbers != "n" && useNumbers != "N";
         bool symbols = useSymbols != "n" && useSymbols != "N";
         
-        // Generate password
         std::string password = generatePassword(length, upper, lower, numbers, symbols);
         
         std::cout << Colors::BRIGHT_GREEN << "\n🎉 Generated password: " << Colors::BRIGHT_WHITE << password << Colors::RESET << std::endl;
@@ -523,7 +479,6 @@ private:
         return password;
     }
 
-    // Helper function to trim strings
     std::string trim(const std::string& str) {
         if (str.empty()) return "";
         
@@ -534,7 +489,6 @@ private:
         return str.substr(start, end - start + 1);
     }
 
-    // Get current timestamp
     std::string getCurrentTimestamp() {
         auto now = std::time(nullptr);
         auto tm = *std::localtime(&now);
@@ -543,7 +497,6 @@ private:
         return ss.str();
     }
 
-    // Convert to lowercase for search
     std::string toLower(const std::string& str) {
         std::string result = str;
         std::transform(result.begin(), result.end(), result.begin(), 
@@ -551,7 +504,6 @@ private:
         return result;
     }
 
-    // Improved CSV parsing with proper quote handling
     std::vector<std::string> parseCSVLine(const std::string& line) {
         std::vector<std::string> parts;
         bool inQuotes = false;
@@ -567,12 +519,11 @@ private:
                 field += c;
             }
         }
-        parts.push_back(trim(field)); // Последнее поле
+        parts.push_back(trim(field));
         
         return parts;
     }
 
-    // Import from CSV (improved version)
     ImportResult importFromCSV(const std::string& filename) {
         ImportResult result;
         fs::path csvPath = filename;
@@ -591,12 +542,10 @@ private:
         std::string line;
         int lineNumber = 0;
         
-        // Process header and detect format
         if (std::getline(file, line)) {
             lineNumber++;
             std::vector<std::string> headers = parseCSVLine(line);
             
-            // Check if this is a header row
             bool hasHeader = false;
             for (const auto& header : headers) {
                 std::string headerLower = toLower(header);
@@ -608,7 +557,6 @@ private:
                 }
             }
             
-            // If it's not a header, process it as data
             if (!hasHeader) {
                 file.clear();
                 file.seekg(0);
@@ -618,7 +566,6 @@ private:
             }
         }
         
-        // Process data rows
         while (std::getline(file, line)) {
             lineNumber++;
             if (line.empty()) continue;
@@ -631,7 +578,6 @@ private:
                 std::string password = parts.size() > 2 ? parts[2] : "";
                 std::string notes = parts.size() > 3 ? parts[3] : "";
                 
-                // Validate required fields
                 if (service.empty()) {
                     service = "Imported_Service_" + std::to_string(lineNumber);
                 }
@@ -679,15 +625,12 @@ private:
         while (std::getline(file, line)) {
             lineNumber++;
             
-            // Skip empty lines and comments
             line = trim(line);
             if (line.empty() || line[0] == '#') continue;
             
-            // Try different delimiters
             std::vector<std::string> parts;
             size_t pos = 0;
             
-            // First try ::: delimiter (common in exports)
             if (line.find(":::") != std::string::npos) {
                 while ((pos = line.find(":::")) != std::string::npos) {
                     parts.push_back(line.substr(0, pos));
@@ -695,7 +638,6 @@ private:
                 }
                 parts.push_back(line);
             }
-            // Then try : delimiter
             else if (line.find(':') != std::string::npos) {
                 while ((pos = line.find(':')) != std::string::npos) {
                     parts.push_back(line.substr(0, pos));
@@ -703,7 +645,6 @@ private:
                 }
                 parts.push_back(line);
             }
-            // Finally try | delimiter
             else if (line.find('|') != std::string::npos) {
                 while ((pos = line.find('|')) != std::string::npos) {
                     parts.push_back(line.substr(0, pos));
@@ -771,7 +712,6 @@ private:
                 return;
         }
         
-        // Show import results
         std::cout << Colors::BRIGHT_CYAN << "\n=== Import Results ===" << Colors::RESET << std::endl;
         std::cout << Colors::BRIGHT_GREEN << "✓ Total found: " << result.totalFound << Colors::RESET << std::endl;
         std::cout << Colors::BRIGHT_GREEN << "✓ Successfully imported: " << result.successfullyImported << Colors::RESET << std::endl;
@@ -789,7 +729,6 @@ private:
         }
     }
 
-    // Export to CSV function
     void exportToCSV(const std::string& filename) {
         std::string dir = getPasswordDir();
         
@@ -806,7 +745,6 @@ private:
             return;
         }
         
-        // Write CSV header
         file << "Service,Username,Password,Timestamp\n";
         
         int exportedCount = 0;
@@ -827,7 +765,6 @@ private:
                                 std::string encryptedPassword = fromHex(encryptedPasswordHex);
                                 std::string password = encryptDecrypt(encryptedPassword, encryptionKey);
                                 
-                                // Escape quotes for CSV
                                 auto escapeCSV = [](const std::string& str) {
                                     if (str.find(',') != std::string::npos || str.find('"') != std::string::npos || str.find('\n') != std::string::npos) {
                                         return "\"" + std::regex_replace(str, std::regex("\""), "\"\"") + "\"";
@@ -865,7 +802,6 @@ public:
             loadMasterPassword();
         }
         
-        // Verify master password on startup
         int attempts = 3;
         while (attempts > 0) {
             if (verifyMasterPassword()) {
@@ -906,10 +842,8 @@ public:
         std::getline(std::cin, choice);
         
         if (choice == "2") {
-            // Generate password first
             password = generatePasswordWithOptions();
             
-            // Then ask if user wants to save it
             std::cout << Colors::YELLOW << "\nDo you want to save this password? (y/N): " << Colors::RESET;
             std::string saveChoice;
             std::getline(std::cin, saveChoice);
@@ -925,15 +859,12 @@ public:
         std::cout << Colors::BRIGHT_BLUE << "Enter notes (optional): " << Colors::RESET;
         std::getline(std::cin, notes);
         
-        // Save the password
         savePasswordToFile(service, username, password, notes);
     }
     
     void generateAndSavePassword() {
-        // Generate password first
         std::string password = generatePasswordWithOptions();
         
-        // Then ask if user wants to save it
         std::cout << Colors::YELLOW << "\nDo you want to save this password? (y/N): " << Colors::RESET;
         std::string saveChoice;
         std::getline(std::cin, saveChoice);
@@ -943,7 +874,6 @@ public:
             return;
         }
         
-        // Ask for service and username to save
         std::string service, username, notes;
         
         std::cout << Colors::BRIGHT_BLUE << "\nEnter service name: " << Colors::RESET;
@@ -960,7 +890,6 @@ public:
         std::cout << Colors::BRIGHT_BLUE << "Enter notes (optional): " << Colors::RESET;
         std::getline(std::cin, notes);
         
-        // Save the password
         savePasswordToFile(service, username, password, notes);
     }
     
@@ -1055,7 +984,6 @@ public:
                 if (fs::remove(filePath)) {
                     std::cout << Colors::BRIGHT_GREEN << "✓ Password deleted successfully!" << Colors::RESET << std::endl;
                     
-                    // Remove service directory if empty
                     std::string serviceDir = getServiceDir(service);
                     if (fs::exists(serviceDir) && fs::is_empty(serviceDir)) {
                         fs::remove(serviceDir);
@@ -1096,10 +1024,8 @@ public:
         std::getline(std::cin, choice);
         
         if (choice == "2") {
-            // Generate password first
             newPassword = generatePasswordWithOptions();
             
-            // Then ask if user wants to save it
             std::cout << Colors::YELLOW << "\nDo you want to use this password? (y/N): " << Colors::RESET;
             std::string saveChoice;
             std::getline(std::cin, saveChoice);
@@ -1189,7 +1115,6 @@ public:
         while (true) {
             showMenu();
             
-            // Use safe input (fixes arrow key issue)
             int choice = getNumberInput();
             
             switch (choice) {
