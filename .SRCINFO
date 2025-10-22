@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-tophat-bin
 	pkgdesc = View CPU, memory, disk, and network activity in the GNOME top bar.
-	pkgver = 22
+	pkgver = 23
 	pkgrel = 1
 	url = https://github.com/fflewddur/tophat
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = gnome-shell-extension-tophat-bin
 	optdepends = networkmanager: to monitor network devices
 	provides = gnome-shell-extension-tophat
 	conflicts = gnome-shell-extension-tophat
-	source = gnome-shell-extension-tophat-v22.zip::https://github.com/fflewddur/tophat/releases/download/v22/tophat@fflewddur.github.io.v22.shell-extension.zip
-	sha256sums = 28815e5eaafa8ced369034b2ce42986236f2795bad7739fbed9b1ba6fa9c3590
+	source = gnome-shell-extension-tophat-v23.zip::https://github.com/fflewddur/tophat/releases/download/v23/tophat@fflewddur.github.io.v23.shell-extension.zip
+	sha256sums = 57433cf369f980067c8977907606f6174c8a2357cd86152901866254572b5e1f
 
 pkgname = gnome-shell-extension-tophat-bin

@@ -2,7 +2,7 @@
 
 _pkgbase=gnome-shell-extension-tophat
 pkgname="$_pkgbase-bin"
-pkgver=22
+pkgver=23
 pkgrel=1
 pkgdesc="View CPU, memory, disk, and network activity in the GNOME top bar."
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('networkmanager: to monitor network devices')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 source=("$_pkgbase-v$pkgver.zip::https://github.com/fflewddur/tophat/releases/download/v$pkgver/tophat@fflewddur.github.io.v$pkgver.shell-extension.zip")
-sha256sums=('28815e5eaafa8ced369034b2ce42986236f2795bad7739fbed9b1ba6fa9c3590')
+sha256sums=('57433cf369f980067c8977907606f6174c8a2357cd86152901866254572b5e1f')
 
 package() {
 	rm *.zip
