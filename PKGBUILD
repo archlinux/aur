@@ -7,7 +7,7 @@
 _electron=electron
 pkgbase=element-desktop-git
 pkgname=(element-web-git element-desktop-git)
-pkgver=1.11.110.r74.gef3b9eb9e4
+pkgver=1.12.2.r43.gd6e50598cd
 pkgrel=1
 pkgdesc="Glossy Matrix collaboration client — "
 arch=(x86_64)
