@@ -1,6 +1,10 @@
 # Maintainer:
 # Contributor: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
+## options
+: ${_use_sodeps:=false}
+: ${_exclude_tests=}
+
 _pkgname="dwarfs"
 pkgname="$_pkgname-git"
 pkgver=0.14.0.r0.g35dc3e1
@@ -14,20 +18,15 @@ license=(
 arch=('x86_64')
 
 depends=(
-  'libbrotlidec.so' # brotli
-  'libbrotlienc.so' # brotli
+  'boost-libs'
+  'brotli'
   'double-conversion'
+  'flac'
+  'fmt'
   'fuse3'
   'gflags'
   'google-glog'
-  'libFLAC++.so' # flac
-  'libFLAC.so'   # flac
   'libarchive'
-  'libboost_chrono.so'          # boost-libs
-  'libboost_filesystem.so'      # boost-libs
-  'libboost_process.so'         # boost-libs
-  'libboost_program_options.so' # boost-libs
-  'libfmt.so'                   # fmt
   'lz4'
   'openssl'
   'xxhash'
@@ -43,7 +42,7 @@ makedepends=(
   'python'
   'python-mistletoe' # render manpage
   'range-v3'
-  'ruby-ronn'
+  'ruby-ronn-ng'
   'utf8cpp'
 )
 checkdepends=(
@@ -90,14 +89,26 @@ check() {
     --output-on-failure
     --parallel ${_jobs:-}
     --verbose
-
-    # some tests may fail
-    -E 'categorize|dwarfs_automount|dwarfs_fsname_and_subtype|end_to_end|huge_holes_fuse|mutating_and_error_ops|random_large_files|random_small_files_fuse|timestamps_fuse'
+    -E "${_exclude_tests}"
   )
   ctest "${_test_opts[@]}"
 }
 
 package() {
+  if [[ "${_use_sodeps::1}" == "t" ]]; then
+    eval "depends+=(
+      'libbrotlidec.so'
+      'libbrotlienc.so'
+      'libFLAC++.so'
+      'libFLAC.so'
+      'libboost_chrono.so'
+      'libboost_filesystem.so'
+      'libboost_process.so'
+      'libboost_program_options.so'
+      'libfmt.so'
+    )"
+  fi
+
   DESTDIR="$pkgdir" cmake --install build
 
   # fix symlink
