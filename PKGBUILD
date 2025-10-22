@@ -6,11 +6,11 @@ pkgdesc="Human-readable execution time for every command in bash!"
 arch=('any')
 url="https://github.com/hopeseekr/bash-timer"
 license=('APACHE')
-depends=('bash-preexec-git')
+depends=('bash-preexec')
 
 source=("${pkgname}-${pkgver}::https://github.com/hopeseekr/bash-timer/archive/v${pkgver}.tar.gz")
 install=${pkgname}.install
-sha256sums=('75e16d41893074c2f57cb2c8dff1e04c8dc74dd8f43ee3917f9a48982d040753')
+sha256sums=('1428083d09364a7cbc6bef0f1dd358e781bf05cb71df46db110fa01e63d06925')
 
 package() {
   cd "${srcdir}/"

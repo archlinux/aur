@@ -1,28 +1,50 @@
- 
-bash_timer_path=/usr/share/bash-timer/bash-timer.sh
-preexec_path=/usr/share/bash-prexec/bash_preexec.sh         # bash-preexec dependancy
 
-post_install() {
-    printf "\
->    
->   To complete installation, add the following to your bashrc: 
->
->   # Define timer callback functions
->   [[ -f $bash_timer_path ]] && source $bash_timer_path    
->   # Register callback functions with bash-preexec
->   [[ -f $preexec_path ]] && source $preexec_path
->
+preexec_path="/usr/share/bash-preexec/bash-preexec.sh"  # bash-preexec dependancy
+bash_timer_path="/usr/share/bash-timer/bash-timer.sh"
+tag="## MANAGED BY AUR PACKAGE BASH-TIMER"
 
-$ echo \"[[ -f $bash_timer_path ]] && source $bash_timer_path\" >> /etc/bash.bashrc
-$ echo \"[[ -f $preexec_path ]] && source $preexec_path\" >> /etc/bash.bashrc
+bash_timer_bashrc=$(cat <<EOF
 
-"
+$tag
+if [[ -f "$preexec_path" ]]; then source "$preexec_path"; fi; $tag
+if [[ -f "$bash_timer_path" ]]; then source "$bash_timer_path"; fi;       $tag
+$tag
+
+EOF
+)
+
+function remove_managed_blocks() {
+    local file="$1"
+    local tmpfile="${file}.$(date +'%Y%m%d.%H%M%S').tmp"
+    cp "$file" "$tmpfile"
+    cat "$tmpfile" \
+      |grep -v "$tag" \
+      >"$file"
 }
 
-post_remove() {
-    printf "\
->    
->   To complete removal, remove the 'source' directives from your bashrc.
->
-"
+function post_install() {
+
+    bashrc_targets=(
+        $(ls /home/*/.bashrc)
+    )
+
+    echo "Editing .bashrc for each user:"
+    for bashrc in "${bashrc_targets[@]}"; do
+        echo "  * ${bashrc}"
+        remove_managed_blocks "$bashrc"
+        echo "$bash_timer_bashrc" >> $bashrc
+    done
+}
+
+function post_remove() {
+
+    bashrc_targets=(
+        $(ls /home/*/.bashrc)
+    )
+
+    echo "Editing .bashrc for each user:"
+    for bashrc in "${bashrc_targets[@]}"; do
+        echo "  * ${bashrc}"
+        remove_managed_blocks "$bashrc"
+    done
 }
