@@ -1,0 +1,17 @@
+pkgbase = tofi-cotp
+	pkgdesc = A tofi wrapper for cotp (CLI TOTP authenticator)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/bkuri/tofi-cotp
+	arch = any
+	license = MIT
+	depends = cotp
+	depends = tofi
+	depends = libsecret
+	depends = wl-clipboard
+	depends = zenity
+	optdepends = libnotify: for desktop notifications
+	source = tofi-cotp-1.0.0.tar.gz::https://github.com/bkuri/tofi-cotp/archive/v1.0.0.tar.gz
+	sha256sums = 57ce560fb4c7ac3c5a493d6164a0b17acb057dcd6caf6f6a49ee40b2f0effdf9
+
+pkgname = tofi-cotp
