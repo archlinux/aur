@@ -16,8 +16,10 @@ depends=(
 	'perl-list-moreutils'
 	'perl-term-progressbar'
 	'perl-lwp-protocol-https'
+	'dpkg'
 )
 makedepends=('git')
+optdepends=('github-cli')
 conflicts=('pacup')
 source=("git+https://github.com/pacstall/pacup.git")
 sha256sums=('SKIP')
