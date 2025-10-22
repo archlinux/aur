@@ -1,6 +1,6 @@
 pkgbase = brn2-git
 	pkgdesc = fast bulk renamer with swapping
-	pkgver = r1589.4de8d1c
+	pkgver = r1590.de4f003
 	pkgrel = 1
 	url = https://github.com/lucas-mior/brn2
 	arch = x86_64
