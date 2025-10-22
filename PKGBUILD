@@ -5,7 +5,7 @@
 _pkgname=winboat
 pkgname=winboat-electron
 pkgver=0.8.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Run Windows apps on Linux with seamless integration"
 arch=('x86_64')
 url="https://www.winboat.app"
@@ -36,6 +36,10 @@ conflicts=('winboat')
 
 prepare(){
   cd "$_pkgname"
+
+  ## don't use resourcesPath
+  sed --in-place -e "s/process\.resourcesPath, '/'\/usr\/lib\/winboat\//g" ./src/renderer/lib/*.ts
+
   export npm_config_cache="$srcdir/npm_cache"
   npm install
 }
