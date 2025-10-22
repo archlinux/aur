@@ -1,6 +1,6 @@
 pkgbase = godot-export-templates-bin
 	pkgdesc = Godot export templates
-	pkgver = 4.5
+	pkgver = 4.5.1
 	pkgrel = 1
 	url = https://github.com/godotengine/godot
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = godot-export-templates-bin
 	provides = godot-export-templates
 	options = !strip
 	options = !debug
-	source = https://github.com/godotengine/godot/releases/download/4.5-stable/Godot_v4.5-stable_export_templates.tpz
-	source = godot-4.5-LICENSE.MIT::https://github.com/godotengine/godot/raw/refs/tags/4.5-stable/LICENSE.txt
+	source = https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_export_templates.tpz
+	source = godot-4.5.1-LICENSE.MIT::https://github.com/godotengine/godot/raw/refs/tags/4.5.1-stable/LICENSE.txt
 	sha256sums = SKIP
 	sha256sums = b0435e3b3e4e55238f05f4b306f30524a1b2e20147810d436eaa554fa6855c80
 
