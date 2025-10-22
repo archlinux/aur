@@ -1,5 +1,5 @@
 pkgname=canpass
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Cool console password manager for your linux system!"
 arch=('x86_64')
