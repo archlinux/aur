@@ -1,7 +1,7 @@
 pkgbase = gameoflife-git
 	pkgdesc = Simple Game of Life written in C
 	pkgver = r9.ec3b15f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xolider/game-of-life
 	arch = x86_64
 	license = GPL-1.0-or-later

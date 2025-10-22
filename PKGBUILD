@@ -1,7 +1,7 @@
 # Maintainer: Clément Vicart <clem.vicart@gmail.com>
 pkgname=gameoflife-git
 pkgver=r9.ec3b15f
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple Game of Life written in C"
 arch=('x86_64')
 url="https://github.com/xolider/game-of-life"
