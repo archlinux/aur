@@ -2,8 +2,8 @@
 
 pkgname=gnucash-xbt-minimal
 _pkgname=gnucash
-pkgver=5.12
-pkgrel=1
+pkgver=5.13
+pkgrel=2
 _sourcerel=
 pkgdesc="A personal and small-business financial-accounting application with Bitcoin but without ofx/qfx import and aqbanking support"
 arch=(x86_64 aarch64)
