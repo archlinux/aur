@@ -1,6 +1,6 @@
 pkgbase = python-snakemake-interface-common
 	pkgdesc = Common functions and classes for Snakemake and its plugins
-	pkgver = 1.21.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://github.com/snakemake/snakemake-interface-common
 	arch = any
@@ -8,10 +8,11 @@ pkgbase = python-snakemake-interface-common
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-packaging
 	makedepends = python-poetry-core
 	depends = python-argparse_dataclass
 	depends = python-configargparse
-	source = snakemake-interface-common-1.21.0.tar.gz::https://github.com/snakemake/snakemake-interface-common/archive/refs/tags/v1.21.0.tar.gz
-	sha256sums = 81e60ef165f3b7e102af29c29414158d7002d923132ffa971b87037cac1ab221
+	source = snakemake-interface-common-1.22.0.tar.gz::https://github.com/snakemake/snakemake-interface-common/archive/refs/tags/v1.22.0.tar.gz
+	sha256sums = c2f1e1495b5cb37ffec6327003ef29c2a496dbff1fda94b20a821c1cadbbe733
 
 pkgname = python-snakemake-interface-common
