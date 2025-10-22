@@ -8,8 +8,8 @@
 _name=sonic-pi
 
 pkgname=sonic-pi-git
-pkgver=v4.6.0.r12.ge5da6b3
-pkgrel=2
+pkgver=v4.6.0.r0.g9f8f021
+pkgrel=1
 pkgdesc="The Live Coding Music Synth for Everyone"
 
 arch=('x86_64')
@@ -29,15 +29,22 @@ makedepends=('ruby-prime' 'ruby-racc' 'ruby-erb' 'ruby-rexml'
     'elixir' 'erlang-asn1' 'erlang-public_key' 'erlang-ssl' 'erlang-parsetools' 'erlang-sasl'
     'git' 'boost' 'cmake' 'gendesk' 'patchelf')
 
-source=('git+https://github.com/sonic-pi-net/sonic-pi.git'
+source=('git+https://github.com/sonic-pi-net/sonic-pi.git#branch=stable'
+        "boost.patch"
         "${_name}.sh")
 
 sha512sums=('SKIP'
+            '5eacc305934bfb294f830f2ca8ed3cf4b51baef7b5ff98fd282e6f3636aadd34805fe7ce1574bb6d8b6c0dcb5309f6e1128acd226622c5a4c6da0d6fa474a077'
             'bb578996b305fbb07b95610caf1fc1a08c760a49cf3902f012ed49ee4404f7d8c10d66aded88e538b20c811b4bb21c4e17f47761863eebd2bff2792ec38a738d')
 
 pkgver() {
-  cd "${_name}"
-  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${_name}"
+    git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "${_name}"
+    patch -Np1 -i "$srcdir/boost.patch"
 }
 
 build() {
