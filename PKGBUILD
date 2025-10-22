@@ -13,7 +13,6 @@ license=("APSL-2.0")
 depends=(gcc-libs glibc libdispatch)
 makedepends=(clang git llvm)
 optdepends=(
-  'apple-libtapi: for SDKs with .tdb stubs'
   'xar: for bitcode bundle support'
 )
 provides=(x86_64-apple-darwin-binutils)
