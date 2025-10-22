@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=elephant-todo
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='todo provider for elephant'
 url='https://github.com/abenz1267/elephant'
@@ -11,7 +11,7 @@ makedepends=('go')
 conflicts=('elephant-todo')
 provides=('elephant-todo')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('83515238ce74b55f52e5f5dcb0005d70f272a5fe4739258b584c124c759a0470')
+sha256sums=('02a8ff94e2aa0a7927512fbc131e224cbc9eca3f53084a27b002664e186da860')
 
 build() {
     cd elephant-${pkgver}/internal/providers/todo
