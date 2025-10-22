@@ -1,14 +1,14 @@
 pkgbase = bluemap-bin
 	pkgdesc = A Minecraft mapping tool that creates 3D models of your Minecraft worlds and displays them in a web viewer.
-	pkgver = 5.12
+	pkgver = 5.13
 	pkgrel = 1
 	url = https://bluemap.bluecolored.de/
 	arch = any
 	license = MIT
 	depends = java-runtime>=21
 	source = bluemap
-	source = https://github.com/BlueMap-Minecraft/BlueMap/releases/download/v5.12/BlueMap-5.12-cli.jar
-	sha512sums = 00797a52766b1adc3cc8102009d18d1eaa82702aec6fccb45a9c44110e8dd66d058dbab46b3d3622ab77459338080e911fc575d69bcceee8d9ac2be97ff1b8eb
-	sha512sums = aa2771dc021f39c4fc7163de71c434a2e91824852f25214161a3bd00b27963df860782dbb1d99e29120f3042996e6c082d3bf9f707a2f4851f36bf0f23e2145f
+	source = https://github.com/BlueMap-Minecraft/BlueMap/releases/download/v5.13/BlueMap-5.13-cli.jar
+	sha512sums = 5297b4d09ea053958f19c89bf7f298386ee810d8fb242e4a7379b0e29a9c960eaeea76b474198b537f81dc2a6c9bd0ad462adcef0468ee40aabf5b084ec124ff
+	sha512sums = 6c8567f74780288904d464f9fc80c6657c833ac37b72f3d920ae458e72fda105b6824c34c2c57a77d29b23912c5b3c1f736d72eb86aa30993cd60fbea0358ed8
 
 pkgname = bluemap-bin
