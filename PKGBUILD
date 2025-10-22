@@ -2,9 +2,10 @@
 # Contributor: wabi <aschrafl@jetnet.ch>
 # Contributor: pikl <me@pikl.uk>
 # Contributor: caoticofanegas
+# Contributor: Terrence
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
-pkgrel=1
+pkgrel=2
 pkgver=2.1.0
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
@@ -128,6 +129,7 @@ build() {
     # build CLI
     pnpm install --filter @immich/cli --frozen-lockfile
     rm cli/LICENSE  # deploy would've picked this up, duplicating standard /usr/share/licenses/spdx/AGPL-3.0-only
+    pnpm --filter @immich/cli build
     pnpm --filter @immich/cli --prod --no-optional deploy output/cli-pruned
 }
 

@@ -1,7 +1,7 @@
 pkgbase = immich
 	pkgdesc = Self-hosted photos and videos backup tool
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/immich-app/immich
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -13,7 +13,7 @@ pkgbase = immich
 	depends = postgresql>=14
 	depends = nodejs>=20
 	depends = vectorchord>=0.3
-	depends = vectorchord<0.5
+	depends = vectorchord<0.6
 	depends = zlib
 	depends = glib2
 	depends = expat
