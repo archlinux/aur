@@ -1,10 +1,10 @@
 pkgbase = caelestia-gif
 	pkgdesc = A script to manage and change GIFs in Caelestia shell
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://gitlab.com/gnoooo/caelestia-gif.git
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = base-devel
 	depends = imagemagick
@@ -12,7 +12,7 @@ pkgbase = caelestia-gif
 	depends = xdg-utils
 	depends = ncurses
 	depends = bash
-	source = https://gitlab.com/gnoooo/caelestia-gif/-/archive/main/caelestia-gif-main.tar.gz?ref_type=heads
-	sha256sums = f0b8380a23f982acb7b0d896d58f11123adc91e4e6c517971fb29a016cbb4ec1
+	source = https://gitlab.com/gnoooo/caelestia-gif/-/archive/master/caelestia-gif-master.tar.gz?ref_type=heads
+	sha256sums = 4dbdbdfa37c7acc2c60bc336bd07633edca80e47c011c60203a6d5c9d23d2c0d
 
 pkgname = caelestia-gif
