@@ -1,0 +1,29 @@
+---
+ export_presets.cfg | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/export_presets.cfg b/export_presets.cfg
+index 394c4e0..f791d72 100644
+--- a/export_presets.cfg
++++ b/export_presets.cfg
+@@ -75,7 +75,7 @@ texture_format/etc2=false
+ name="Linux"
+ platform="Linux"
+ runnable=true
+-advanced_options=false
++advanced_options=true
+ dedicated_server=false
+ custom_features=""
+ export_filter="all_resources"
+@@ -93,7 +93,7 @@ script_export_mode=2
+ [preset.1.options]
+ 
+ custom_template/debug=""
+-custom_template/release=""
++custom_template/release="export/templates/linux_release.x86_64"
+ debug/export_console_wrapper=1
+ binary_format/embed_pck=true
+ texture_format/s3tc_bptc=true
+-- 
+2.51.1
+
