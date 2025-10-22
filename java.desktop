@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Oracle Java 24 Runtime
-Comment=Oracle Java 24 Runtime
+Name=Oracle Java 25 Runtime
+Comment=Oracle Java 25 Runtime
 Keywords=java;runtime
-Exec=/usr/lib/jvm/java-24-jdk/bin/java -jar
+Exec=/usr/lib/jvm/java-25-jdk/bin/java -jar
 Terminal=false
 Type=Application
 Icon=java-jdk

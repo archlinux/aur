@@ -1,4 +1,4 @@
-THIS_JRE='java-24-jdk'
+THIS_JRE='java-25-jdk'
 
 fix_default() {
   if [ ! -x /usr/bin/java ]; then

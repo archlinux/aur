@@ -1,28 +1,28 @@
 pkgbase = jdk
 	pkgdesc = Oracle Java
-	pkgver = 24.0.2
+	pkgver = 25.0.1
 	pkgrel = 1
 	url = https://www.oracle.com/java/
 	arch = x86_64
 	license = LicenseRef-Custom
 	makedepends = python-html2text
 	makedepends = alsa-lib
-	noextract = jdk-24.0.2_doc-all.zip
-	source = https://download.oracle.com/java/24/archive/jdk-24.0.2_linux-x64_bin.tar.gz
-	source = https://download.oracle.com/otn_software/java/jdk/24.0.2+12/fdc5d0102fe0414db21410ad5834341f/jdk-24.0.2_doc-all.zip
-	source = jdk-24_doc-license.html::https://download.oracle.com/otndocs/jcp/java_se-24-final-spec/license.html
+	noextract = jdk-25.0.1_doc-all.zip
+	source = https://download.oracle.com/java/25/archive/jdk-25.0.1_linux-x64_bin.tar.gz
+	source = https://download.oracle.com/otn_software/java/jdk/25.0.1+8/2fbf10d8c78e40bd87641c434705079d/jdk-25.0.1_doc-all.zip
+	source = jdk-25_doc-license.html::https://download.oracle.com/otndocs/jcp/java_se-25-final-spec/license.html
 	source = java.desktop
 	source = jconsole.desktop
 	source = jshell.desktop
 	source = java_16.png
 	source = java_48.png
 	source = LICENSE
-	sha256sums = 5f9f7c4ca2a6cef0f18a27465e1be81bddd8653218f450a329a2afc9bf2a1dd8
-	sha256sums = 3e951976ad0b1324186a4c01a211df8463d7d14cb0bf9d0239b4aa7e0a8db9a3
-	sha256sums = 44bea749af7428ea023df090874a6826743f387a1e2333edad48ae584989a954
-	sha256sums = a9506d9fa86f02fe86f47529a15e16e24eeb553970d93be9eec7eb1225a91f4f
-	sha256sums = 8870bed1172bd0189c67bcf0f26d36f706cd5d10eb878836be25ca2577d898ca
-	sha256sums = f86a24d8d0cce6ac84e171780811dac70ec94d1f78cadacf7ab67c1ab23dfb0f
+	sha256sums = a159db241c72f804ec7c862d465f8237e31d36a463e0b86e18f68bc654dcef91
+	sha256sums = 5f645d623e2d6510547f039b27c0ccff45cc2c97d1cccb9c9a71e7a2a3f5e470
+	sha256sums = 238ad31acf952842a3161837b70ddc1debb4a9d52f8248bcd7732bed5685976a
+	sha256sums = 9a1bacc67380d4f91a7860d53e995d411e89362b7e941c48d68f069e078e6e2d
+	sha256sums = 0fab4d9fd2a46ff731cbc49a200dede78725a0baea36a3b51719a37250ad36ad
+	sha256sums = aa1c6bc58056a7e0be8094e27b9fb2f0cf00b36fe4370963866e0b4baf64005a
 	sha256sums = d27fec1d74f7a3081c3d175ed184d15383666dc7f02cc0f7126f11549879c6ed
 	sha256sums = 7cf8ca096e6d6e425b3434446b0835537d0fc7fe64b3ccba7a55f7bd86c7e176
 	sha256sums = 20becfcac0bdeaa29a76e6966d727f8cc79381354cbd5d530cdec823954df19f
@@ -42,12 +42,12 @@ pkgname = jre
 	depends = zlib
 	optdepends = alsa-lib: for basic sound support
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
-	provides = java-runtime=24
-	provides = java-runtime-jdk24
-	provides = jre24-jdk=24.0.2-1
-	provides = java-runtime-headless=24
-	provides = java-runtime-headless-jdk=24
-	provides = jre24-jdk-headless=24.0.2-1
+	provides = java-runtime=25
+	provides = java-runtime-jdk25
+	provides = jre25-jdk=25.0.1-1
+	provides = java-runtime-headless=25
+	provides = java-runtime-headless-jdk=25
+	provides = jre25-jdk-headless=25.0.1-1
 	conflicts = jdk
 	backup = etc/java-jdk/management/jmxremote.access
 	backup = etc/java-jdk/management/jmxremote.password.template
@@ -84,16 +84,16 @@ pkgname = jdk
 	depends = hicolor-icon-theme
 	optdepends = alsa-lib: for basic sound support
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
-	provides = java-environment=24
-	provides = java-environment-jdk=24
-	provides = jdk24-jdk=24.0.2-1
-	provides = jre=24
-	provides = java-runtime=24
-	provides = java-runtime-jdk24
-	provides = jre24-jdk=24.0.2-1
-	provides = java-runtime-headless=24
-	provides = java-runtime-headless-jdk=24
-	provides = jre24-jdk-headless=24.0.2-1
+	provides = java-environment=25
+	provides = java-environment-jdk=25
+	provides = jdk25-jdk=25.0.1-1
+	provides = jre=25
+	provides = java-runtime=25
+	provides = java-runtime-jdk25
+	provides = jre25-jdk=25.0.1-1
+	provides = java-runtime-headless=25
+	provides = java-runtime-headless-jdk=25
+	provides = jre25-jdk-headless=25.0.1-1
 	conflicts = jre
 	backup = etc/java-jdk/management/jmxremote.access
 	backup = etc/java-jdk/management/jmxremote.password.template

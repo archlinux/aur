@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Oracle Java 24 Shell
-Comment=Oracle Java 24 Shell
+Name=Oracle Java 25 Shell
+Comment=Oracle Java 25 Shell
 Keywords=java;shell
-Exec=/usr/lib/jvm/java-24-jdk/bin/jshell
+Exec=/usr/lib/jvm/java-25-jdk/bin/jshell
 Terminal=true
 Type=Application
 Icon=java-jdk
