@@ -40,6 +40,7 @@ clean:
 
 # Install the binary
 install: $(BIN)
+	./$(INSBIN)
 	mkdir -p /$(HOME)/.local/bin
 	cp $(BIN) /$(HOME)/.local/bin/$(BIN)
 	chmod +x /$(HOME)/.local/bin/$(BIN)
