@@ -23,13 +23,14 @@ pkgbase = synergy
 	depends = openssl
 	depends = qt6-base
 	optdepends = gdm: login service
+	optdepends = pugixml
 	backup = etc/synergy.conf
 	backup = etc/Synergy/loginInfo
 	source = electron-common.sh
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = synergy-3.4.0-aarch64.flatpak::https://symless.com/synergy/api/download/synergy-3.4.0-linux-noble-aarch64.flatpak?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9kdWN0UGFja2FnZUlkIjo1NTYsInVzZXJJZCI6bnVsbCwiaWF0IjoxNzYxMTU0OTQ4fQ.4lxmfJXk9wH7MaVwa_gEwghjEv6CMsBI2-QrnUzleGI
+	source_aarch64 = synergy-3.4.0-aarch64.flatpak::https://symless.com/synergy/api/download/synergy-3.4.0-linux-noble-aarch64.flatpak?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9kdWN0UGFja2FnZUlkIjo1NTYsInVzZXJJZCI6bnVsbCwiaWF0IjoxNzYxMTU1MjMwfQ.WW7uYYHcmnL05Bdvi0bDsdBgDkkKJTk-M7DJOj_iUnA
 	sha256sums_aarch64 = fdfcc99b9a24833ce9a7323786cb34c6bb1cfb039e1bd47e1306378c54199138
-	source_x86_64 = synergy-3.4.0-x86_64.flatpak::https://symless.com/synergy/api/download/synergy-3.4.0-linux-noble-x86_64.flatpak?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9kdWN0UGFja2FnZUlkIjo1NTYsInVzZXJJZCI6bnVsbCwiaWF0IjoxNzYxMTU0OTQ4fQ.4lxmfJXk9wH7MaVwa_gEwghjEv6CMsBI2-QrnUzleGI
+	source_x86_64 = synergy-3.4.0-x86_64.flatpak::https://symless.com/synergy/api/download/synergy-3.4.0-linux-noble-x86_64.flatpak?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9kdWN0UGFja2FnZUlkIjo1NTYsInVzZXJJZCI6bnVsbCwiaWF0IjoxNzYxMTU1MjMwfQ.WW7uYYHcmnL05Bdvi0bDsdBgDkkKJTk-M7DJOj_iUnA
 	sha256sums_x86_64 = 91f683385aa12e4da6f16bb0bb6d2df5a9b0865c981dce7df5001ddf951c0b7f
 
 pkgname = synergy

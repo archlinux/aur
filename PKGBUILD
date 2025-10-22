@@ -36,6 +36,7 @@ makedepends=(
 )
 optdepends=(
   'gdm: login service'
+  'pugixml'
 )
 backup=(
   "etc/${pkgname}.conf"
