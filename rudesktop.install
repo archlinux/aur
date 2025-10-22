@@ -21,19 +21,20 @@ post_install() {
 
     # Setup systemd services
     systemctl daemon-reload
-    systemctl enable rudesktop
-    systemctl start rudesktop
+    # Disable autostart daemon
+    #systemctl enable rudesktop
+    #systemctl start rudesktop
 
     cp /usr/share/rudesktop-client/files/systemd/rudesktop-user.service /usr/lib/systemd/user/rudesktop-user.service
-    systemctl --global enable rudesktop-user.service
+    #systemctl --global enable rudesktop-user.service
     loginctl list-users --no-legend | awk '{print $1, $2}' | while read -r uid username; do
         sudo -u "$username" \
             DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$uid/bus" \
             systemctl --user daemon-reload || true
 
-        sudo -u "$username" \
-            DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$uid/bus" \
-            systemctl --user start rudesktop-user || true
+        #sudo -u "$username" \
+        #    DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$uid/bus" \
+        #    systemctl --user start rudesktop-user || true
     done
 
     xdg-mime default rudesktop.desktop x-scheme-handler/rudesktop || true
