@@ -5,7 +5,7 @@
 pkgbase=datagrip-eap
 _pkgbase=${pkgbase/-eap/}
 pkgname=(datagrip-eap datagrip-eap-jre)
-pkgver=253.25908.20
+pkgver=253.27642.17
 #_pkgver=2025.3
 _pkgver=${pkgver}
 pkgrel=1
@@ -24,8 +24,8 @@ source_x86_64=("Datagrip-${_dlver}-${arch[0]}.tar.gz::https://download.jetbrains
 source_aarch64=("Datagrip-${_dlver}-${arch[1]}.tar.gz::https://download.jetbrains.com/${_pkgbase}/${_pkgbase}-${_pkgver}-aarch64.tar.gz")
 sha256sums=('140cefe7ca857546ab5b548ff64909dbda6ebdaf735ee203ba02e0a32f217a5e'
             'c37db68dbedb20617a23cf1299cd95e7f114f019ff7f44877409cef916ff6ab1')
-sha256sums_x86_64=('647129167e2a0c921c7a46da0ae00b6cad08d243411c6f09a1b65598ba274bd3')
-sha256sums_aarch64=('9605e71c8acc8cc0144584eaa13ab9ba88bc5325e97da0332a9742ecf28731f6')
+sha256sums_x86_64=('68eacc193d67fe0fab94e000f7f6f3ef5c8c675ec63569ecb2e838c422daa0d2')
+sha256sums_aarch64=('12097c646c55f6c3cf79f78bbc116eb6ba1c8a62c8fe72a39fb91f2b6e787639')
 
 package_datagrip-eap() {
   optdepends=('datagrip-eap-jre: JetBrains custom Java Runtime (Recommended)'
