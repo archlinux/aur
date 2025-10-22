@@ -1,6 +1,6 @@
 # Maintainer: lone-cloud <hoboman313@proton.me>
 pkgname=gerbil
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Run Large Language Models locally"
 arch=('x86_64')
@@ -11,11 +11,11 @@ optdepends=('alsa-lib: Audio support for sound effects'
            'libxss: Screen saver detection support')
 provides=('gerbil')
 conflicts=('gerbil-git')
-source=("gerbil-${pkgver}.AppImage::https://github.com/lone-cloud/gerbil/releases/download/v1.7.0/Gerbil-1.7.0.AppImage"
-        "gerbil.desktop::https://raw.githubusercontent.com/lone-cloud/gerbil/v1.7.0/assets/gerbil.desktop"
-        "gerbil.metainfo.xml::https://raw.githubusercontent.com/lone-cloud/gerbil/v1.7.0/assets/gerbil.metainfo.xml"
-        "LICENSE::https://raw.githubusercontent.com/lone-cloud/gerbil/v1.7.0/LICENSE")
-sha256sums=('c4041a06ed5ed3f0613b6a12b12d33ac3df7f67710abca6f1ebcd4d21dd1f0f8'
+source=("gerbil-${pkgver}.AppImage::https://github.com/lone-cloud/gerbil/releases/download/v1.7.1/Gerbil-1.7.1.AppImage"
+        "gerbil.desktop::https://raw.githubusercontent.com/lone-cloud/gerbil/v1.7.1/assets/gerbil.desktop"
+        "gerbil.metainfo.xml::https://raw.githubusercontent.com/lone-cloud/gerbil/v1.7.1/assets/gerbil.metainfo.xml"
+        "LICENSE::https://raw.githubusercontent.com/lone-cloud/gerbil/v1.7.1/LICENSE")
+sha256sums=('eaa1e1d5103cc27fe076603273a58a567d397f363f50d5b2416e4ff10a97ded0'
            'fa1c8b5029edf44857b517c8a4da95a6900a48b6e2674d1511ee40e292ab6f42'
            '95cfa91e09f17a013503a182fb054be04b27f08f97c73fed6848ee0bc78307a5'
            '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
