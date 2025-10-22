@@ -6,7 +6,7 @@ _electron=38
 _Name="Synergy"
 pkgname="${_Name,,}"
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Share one mouse and keyboard between multiple computers"
 arch=(
   'aarch64'
@@ -42,6 +42,7 @@ backup=(
   "etc/${pkgname}.conf"
   "etc/${_Name}/loginInfo"
 )
+install="${pkgname}.install"
 _pkgsrc="${pkgname}-${pkgver}"
 _landing_html="$(curl -s "${url}/download/package/synergy-personal-v3/flatpak/${_pkgsrc}-linux-noble-${CARCH}.flatpak")"
 _token="$(grep -oP '(?<=\\"token\\":\\")[^\\"]+' <<< "${_landing_html}" | head -n1)"

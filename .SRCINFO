@@ -1,8 +1,9 @@
 pkgbase = synergy
 	pkgdesc = Share one mouse and keyboard between multiple computers
 	pkgver = 3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://symless.com/synergy
+	install = synergy.install
 	arch = aarch64
 	arch = x86_64
 	license = custom:Proprietary
@@ -28,9 +29,9 @@ pkgbase = synergy
 	backup = etc/Synergy/loginInfo
 	source = electron-common.sh
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = synergy-3.4.0-aarch64.flatpak::https://symless.com/synergy/api/download/synergy-3.4.0-linux-noble-aarch64.flatpak?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9kdWN0UGFja2FnZUlkIjo1NTYsInVzZXJJZCI6bnVsbCwiaWF0IjoxNzYxMTU1MjMwfQ.WW7uYYHcmnL05Bdvi0bDsdBgDkkKJTk-M7DJOj_iUnA
+	source_aarch64 = synergy-3.4.0-aarch64.flatpak::https://symless.com/synergy/api/download/synergy-3.4.0-linux-noble-aarch64.flatpak?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9kdWN0UGFja2FnZUlkIjo1NTYsInVzZXJJZCI6bnVsbCwiaWF0IjoxNzYxMTU2MDA4fQ.GTXrswFTwUXzCW2UbZB6qbuuBxrrE199lrzAYGW1aHI
 	sha256sums_aarch64 = fdfcc99b9a24833ce9a7323786cb34c6bb1cfb039e1bd47e1306378c54199138
-	source_x86_64 = synergy-3.4.0-x86_64.flatpak::https://symless.com/synergy/api/download/synergy-3.4.0-linux-noble-x86_64.flatpak?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9kdWN0UGFja2FnZUlkIjo1NTYsInVzZXJJZCI6bnVsbCwiaWF0IjoxNzYxMTU1MjMwfQ.WW7uYYHcmnL05Bdvi0bDsdBgDkkKJTk-M7DJOj_iUnA
+	source_x86_64 = synergy-3.4.0-x86_64.flatpak::https://symless.com/synergy/api/download/synergy-3.4.0-linux-noble-x86_64.flatpak?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9kdWN0UGFja2FnZUlkIjo1NTYsInVzZXJJZCI6bnVsbCwiaWF0IjoxNzYxMTU2MDA4fQ.GTXrswFTwUXzCW2UbZB6qbuuBxrrE199lrzAYGW1aHI
 	sha256sums_x86_64 = 91f683385aa12e4da6f16bb0bb6d2df5a9b0865c981dce7df5001ddf951c0b7f
 
 pkgname = synergy

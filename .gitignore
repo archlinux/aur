@@ -4,3 +4,4 @@
 !.gitignore
 !.nvchecker.toml
 !*.sh
+!*.install
