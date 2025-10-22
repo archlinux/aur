@@ -1,0 +1,11 @@
+--- xpra-html5-18/html5/js/Utilities.js	2025-10-21 15:41:17.000000000 +0000
++++ xpra-html5-18/html5/js/Utilities.js	2025-10-21 15:41:17.000000000 +0000
+@@ -86,7 +86,7 @@
+       return value;
+     }
+     if (type === "string") {
+-      return Uint8Array.from(value.split("").map(x => x.charCodeAt));
++      return Uint8Array.from(value.split("").map(x => x.charCodeAt()));
+     }
+     return new Uint8Array(value);
+   },
