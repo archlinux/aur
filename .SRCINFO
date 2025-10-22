@@ -1,7 +1,7 @@
 pkgbase = wasmcloud-bin
 	pkgdesc = Build, manage, and scale Wasm apps across any cloud, K8s, or edge
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wasmcloud.com
 	arch = x86_64
 	license = Apache-2.0
