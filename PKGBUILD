@@ -1,15 +1,19 @@
 # Maintainer: Firstp1ck <al.leuzi@hotmail.com>
+# Contributor: Firstp1ck <al.leuzi@hotmail.com>
 pkgname="hyprland-simple-setup-git"
-pkgver=0.4.0.r31.ge82583e
+pkgver=0.4.0.r89.g3ac0d04
 pkgrel=1
 pkgdesc="Setup Hyprland the simple way. (Swiss/German Edition)"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/Firstp1ck/Hyprland-Simple-Setup.git"
-license=('GPL3')
-makedepends=('git')
-depends=('git' 'sudo'
-'bash'
-'base-devel'
+license=('GPL-3.0-or-later')
+makedepends=('git' 'rust')
+depends=('bash'
+'python'
+'python-requests'
+'python-pyquery'
+'tk'
+'sudo'
 'xdg-user-dirs')
 source=("$pkgname::git+https://github.com/Firstp1ck/Hyprland-Simple-Setup.git")
 sha256sums=('SKIP')
@@ -26,28 +30,45 @@ pkgver() {
     fi
 }
 
+build() {
+    : "${srcdir:?srcdir is not set}"
+    cd "$srcdir/$pkgname" || exit 1
+    # Some environments may nest the project; ensure we're at the Cargo root
+    if [ ! -f Cargo.toml ] && [ -d Hyprland-Simple-Setup ]; then
+        cd Hyprland-Simple-Setup || exit 1
+    fi
+    cargo build --release --locked
+}
+
 package() {
     : "${pkgdir:?pkgdir is not set}"
     : "${srcdir:?srcdir is not set}"
     cd "$srcdir/$pkgname" || exit 1
-    
-    # Install all files to /usr/share/$pkgname
-    install -dm755 "$pkgdir/usr/share/$pkgname"
-    cp -a . "$pkgdir/usr/share/$pkgname/"
-    
-    # Find and install setup.sh
-    if [ -f "setup.sh" ]; then
-        # If setup.sh is in root directory
-        install -Dm755 "setup.sh" "$pkgdir/usr/bin/hyprland-simple-setup-git"
-    else
-        # Look in subdirectories
-        for dir in */; do
-            if [ -f "${dir}setup.sh" ]; then
-                install -Dm755 "${dir}setup.sh" "$pkgdir/usr/bin/hyprland-simple-setup-git"
-                break
-            fi
-        done
+    # Ensure we operate from the project root where Cargo.toml resides
+    if [ ! -f Cargo.toml ] && [ -d Hyprland-Simple-Setup ]; then
+        cd Hyprland-Simple-Setup || exit 1
     fi
+
+    # Shared assets (used by the TUI and installer)
+    install -dm755 "$pkgdir/usr/share/$pkgname"
+    # Selectively copy project assets instead of the entire git tree
+    cp -a dotfiles "$pkgdir/usr/share/$pkgname/"
+    cp -a Wallpaper "$pkgdir/usr/share/$pkgname/"
+    cp -a system_files "$pkgdir/usr/share/$pkgname/"
+    cp -a packages.json "$pkgdir/usr/share/$pkgname/"
+    install -Dm755 setup.sh "$pkgdir/usr/share/$pkgname/setup.sh"
+
+    # Install compiled binary
+    install -Dm755 "target/release/hyprland_setup_tui" "$pkgdir/usr/bin/hyprland_setup_tui"
+
+    # Launcher that sets HYPR_SETUP_PATH, cds into shared assets (for packages.json), and calls the TUI
+    install -Dm755 /dev/stdin "$pkgdir/usr/bin/hyprland-simple-setup-git" << 'EOF'
+#!/bin/bash
+share="/usr/share/hyprland-simple-setup-git"
+export HYPR_SETUP_PATH="$share/setup.sh"
+cd "$share" 2>/dev/null || true
+exec /usr/bin/hyprland_setup_tui "$@"
+EOF
 }
 
 post_install() {
