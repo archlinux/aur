@@ -1,6 +1,6 @@
 pkgbase = elephant-clipboard
 	pkgdesc = clipboard provider for elephant
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/abenz1267/elephant
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = elephant-clipboard
 	depends = wl-clipboard
 	provides = elephant-clipboard
 	conflicts = elephant-clipboard
-	source = https://github.com/abenz1267/elephant/archive/refs/tags/v2.4.0.tar.gz
-	sha256sums = 83515238ce74b55f52e5f5dcb0005d70f272a5fe4739258b584c124c759a0470
+	source = https://github.com/abenz1267/elephant/archive/refs/tags/v2.4.1.tar.gz
+	sha256sums = 02a8ff94e2aa0a7927512fbc131e224cbc9eca3f53084a27b002664e186da860
 
 pkgname = elephant-clipboard
