@@ -1,0 +1,14 @@
+pkgbase = jinsp-git
+	pkgdesc = Visually inspect JSON data from the terminal.
+	pkgver = r54.e0cefb2
+	pkgrel = 1
+	url = https://github.com/simeonkr/jinsp
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = git
+	depends = glibc
+	source = jinsp::git+https://github.com/simeonkr/jinsp
+	sha256sums = SKIP
+
+pkgname = jinsp-git
