@@ -5,7 +5,7 @@
 
 # Maintainer: Gno <noreply@gno.com>
 pkgname=caelestia-gif
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 epoch=
 pkgdesc="A script to manage and change GIFs in Caelestia shell"
