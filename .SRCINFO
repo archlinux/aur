@@ -1,6 +1,6 @@
 pkgbase = cronet
 	pkgdesc = The networking stack of Chromium put into a library
-	pkgver = 141.0.7390.107
+	pkgver = 141.0.7390.122
 	pkgrel = 1
 	url = https://chromium.googlesource.com/chromium/src/+/refs/heads/main/components/cronet
 	arch = x86_64

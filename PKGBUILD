@@ -4,7 +4,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=141.0.7390.107
+pkgver=141.0.7390.122
 pkgrel=1
 _manual_clone=1
 # The following error occures on Abseil 20250512.0:
