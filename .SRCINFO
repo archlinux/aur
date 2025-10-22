@@ -1,0 +1,18 @@
+pkgbase = tg-git
+	pkgdesc = A program for timing mechanical watches
+	pkgver = r352.c8b313d
+	pkgrel = 1
+	url = https://github.com/xyzzy42/tg
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = git
+	depends = gtk3
+	depends = portaudio
+	depends = fftw
+	provides = tg
+	provides = tg-timer
+	conflicts = tg
+	source = tg-git::git+https://github.com/xyzzy42/tg
+	sha256sums = SKIP
+
+pkgname = tg-git
