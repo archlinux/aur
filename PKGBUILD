@@ -1,28 +1,31 @@
-# https://www.virustotal.com/gui/file/197d55819c9a54085b31c94f8c3f8d395a1f4c8ceff794a606ce5aee3a0f9248
 pkgname=unraid-usb-creator-bin
-pkgver=1.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A tool to create bootable USB drives for Unraid"
 url="https://unraid.net"
 arch=('x86_64')
 license=('custom')
-depends=(glibc  curl  libcurl-gnutls  hicolor-icon-theme  libarchive  openssl  qt5-base qt5-declarative  qt5-quickcontrols2  qt5-svg  zlib)
-optional=(udisks2)
+depends=(fuse2)
 provides=(unraid-usb-creator)
+options=('!strip')
 source=(
-    "https://releases.unraid.net/dl/stable/usb-creator.deb"
+    "https://github.com/unraid/usb-creator-next/releases/download/v${pkgver}/unraid-usb-creator-${pkgver}.appimage"
 )
 
-sha256sums=('197d55819c9a54085b31c94f8c3f8d395a1f4c8ceff794a606ce5aee3a0f9248')
-sha512sums=('83d43788ca4082c91e06fcb0fe24453364ef9b0dab832286bbbfd93bcb7f0e6e0ae7553a5b07aa4fc910471d2bc5a6bb3f6b53b83a6c393dfe2b46aa2e19537f')
+sha256sums=('348fd23203aece27ef8e1b4ae0fcbdea56ee23fbaf24ed0d88caf6ccdb4d4949')
+
+_installdir=/opt/unraid-usb-creator
+
 prepare() {
-    echo "Preparing Unraid USB Creator"
-    ar x "${srcdir}/usb-creator.deb"
-    tar -xf data.tar.* -C "${srcdir}"
+    chmod a+x ./unraid-usb-creator-${pkgver}.appimage
+    ./unraid-usb-creator-${pkgver}.appimage --appimage-extract >/dev/null
+    cp "squashfs-root/usr/share/icons/hicolor/scalable/apps/unraid.svg" "squashfs-root/unraid-usb-creator.svg"
+    cp "squashfs-root/usr/share/applications/com.limetech.unraid-usb-creator.desktop" "squashfs-root/unraid-usb-creator.desktop"
+    sed -i "s#Exec=unraid-usb-creator#Exec=${_installdir}/unraid-usb-creator.appimage#" "squashfs-root/unraid-usb-creator.desktop"
+    sed -i "s+^Icon=.*+Icon=unraid-usb-creator+" "squashfs-root/unraid-usb-creator.desktop"
 }
 package (){
-    echo "Packing Unraid USB Creator..."
-    cp -r "${srcdir}/usr" "${pkgdir}/"
-    mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-    install -Dm644 ${srcdir}/usr/share/doc/unraid-usb-creator/copyright "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 "unraid-usb-creator-${pkgver}.appimage" "${pkgdir}/${_installdir}/unraid-usb-creator.appimage"
+    install -Dm644 "squashfs-root/unraid-usb-creator.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/unraid.svg"
+    install -Dm644 "squashfs-root/unraid-usb-creator.desktop" "${pkgdir}/usr/share/applications/unraid-usb-creator.desktop"
 }
