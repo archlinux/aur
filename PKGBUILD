@@ -2,7 +2,7 @@
 # Contributor: Jack O'Connor <oconnor663@gmail.com>
 
 pkgname=peru
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="A tool for fetching code"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('mercurial: fetching from hg repos'
 url="https://github.com/buildinspace/peru"
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/buildinspace/$pkgname/tar.gz/$pkgver)
-sha256sums=('48bea180e56d08b6e0ca65301875b0311f2ccf56d095e62f7678a8514b102301')
+sha256sums=('be16ebd78f95cbc1698d23404600793868f08d2856b8dd4da793355d48eceeb0')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
