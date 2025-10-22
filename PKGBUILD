@@ -2,7 +2,7 @@
 
 pkgname=elephant-bluetooth
 pkgver=2.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='bluetooth provider for elephant'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
