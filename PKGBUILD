@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=mvfst
-pkgver=2025.10.13.00
+pkgver=2025.10.20.00
 pkgrel=1
 pkgdesc="An implementation of the QUIC transport protocol"
 arch=(x86_64)
@@ -69,11 +69,14 @@ provides=(
   libmvfst_transport_knobs.so
   libmvfst_transport_settings_functions.so
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c6416c6c79c1a4b5b74d1aa1cf8ef8e80f625c28f6afc9154c8d7d77f796fcb6')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+"fix-cmake-remove-boost-system.patch::https://github.com/facebook/mvfst/pull/405.patch")
+sha256sums=('7dbf57ecf0687edb289619dd44de676ee1139badb97908bc275a2ea5ad4ea044'
+            '915ebe2fa55d3ffdcdd14c9c62a1ae7bc80321a337c2e8874d62050b54d0f74e')
 
 prepare() {
   cd $pkgname-$pkgver
+  patch --forward --strip=1 --input="$srcdir/fix-cmake-remove-boost-system.patch"
   # Use system CMake config instead of bundled module
   sed -i 's/find_package(Glog REQUIRED)/find_package(Glog CONFIG REQUIRED)/' \
     CMakeLists.txt
