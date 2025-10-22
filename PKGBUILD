@@ -1,6 +1,6 @@
 # Maintainer: Zacharias Knudsen <zachasme@gmail.com>
 pkgname=gog-unreal-tournament-goty
-pkgver=469e_rc8
+pkgver=469e_rc10
 pkgrel=1
 pkgdesc="Unreal Tournament (99): Game of the Year Edition. GOG Version."
 arch=('x86_64')
@@ -55,7 +55,7 @@ source=("setup_ut_goty.exe::gogdownloader://unreal_tournament_goty/en1installer0
         "fallback_dlagent.sh")
 noextract=("patch-${pkgver}.tar.bz2")
 sha256sums=("4cc257d54d97659c5062f2bf186d0a8c6959561d11e42d8fcf2eac07f1926803"
-            "551e0b75bd8b56a3bfea421920d2f29dd6b17f5ab3981d7126bcd91c06a8394d"
+            "c2a99bf45182d19c4b237f054cf26816ed41f72c410ac23a22c200947fee3b8b"
             "2d40b8b7ea8434e11e27db9c07c0c8fb3aab28013fd3d80a6425e506ef2433ed"
             "518a904603b3971eb516d0c5198031345dd2d3b5e6d87d12e02dccfe169a9505")
 

@@ -1,6 +1,6 @@
 pkgbase = gog-unreal-tournament-goty
 	pkgdesc = Unreal Tournament (99): Game of the Year Edition. GOG Version.
-	pkgver = 469e_rc8
+	pkgver = 469e_rc10
 	pkgrel = 1
 	url = https://www.gog.com/forum/general/delisting_unreal_games_unreal_tournament_2004_ut_goty_unreal_2_the_awakening_special_edition/post1
 	arch = x86_64
@@ -19,13 +19,13 @@ pkgbase = gog-unreal-tournament-goty
 	depends = sdl2
 	depends = libxmp
 	optdepends = wxwidgets-gtk3: wxWidgets-based launcher
-	noextract = patch-469e_rc8.tar.bz2
+	noextract = patch-469e_rc10.tar.bz2
 	source = setup_ut_goty.exe::gogdownloader://unreal_tournament_goty/en1installer0
-	source = patch-469e_rc8.tar.bz2::https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469e-rc8/OldUnreal-UTPatch469e-Linux-amd64.tar.bz2
+	source = patch-469e_rc10.tar.bz2::https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469e-rc10/OldUnreal-UTPatch469e-Linux-amd64.tar.bz2
 	source = gog-unreal-tournament-goty.desktop
 	source = fallback_dlagent.sh
 	sha256sums = 4cc257d54d97659c5062f2bf186d0a8c6959561d11e42d8fcf2eac07f1926803
-	sha256sums = 551e0b75bd8b56a3bfea421920d2f29dd6b17f5ab3981d7126bcd91c06a8394d
+	sha256sums = c2a99bf45182d19c4b237f054cf26816ed41f72c410ac23a22c200947fee3b8b
 	sha256sums = 2d40b8b7ea8434e11e27db9c07c0c8fb3aab28013fd3d80a6425e506ef2433ed
 	sha256sums = 518a904603b3971eb516d0c5198031345dd2d3b5e6d87d12e02dccfe169a9505
 
