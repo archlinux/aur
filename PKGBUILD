@@ -2,7 +2,7 @@
 pkgname=note-gen
 _pkgname=note-gen
 pkgver=0.22.1
-pkgrel=7
+pkgrel=8
 pkgdesc="A cross-platform Markdown note-taking application with AI integration"
 arch=('x86_64')
 url="https://github.com/codexu/note-gen"
