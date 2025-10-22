@@ -1,0 +1,23 @@
+pkgbase = millisecond-git
+	pkgdesc = Optimize your Linux system for low latency audio
+	pkgver = 0.2.0.r4.g818d194
+	pkgrel = 1
+	url = https://github.com/gaheldev/Millisecond
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	depends = hicolor-icon-theme
+	depends = gtk4
+	depends = python-gobject
+	depends = dconf
+	depends = python
+	depends = libadwaita
+	depends = glib2
+	provides = millisecond
+	conflicts = millisecond
+	source = millisecond-git::git+https://github.com/gaheldev/Millisecond.git
+	sha256sums = SKIP
+
+pkgname = millisecond-git
