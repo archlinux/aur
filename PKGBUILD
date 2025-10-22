@@ -2,13 +2,13 @@
 pkgname=note-gen
 _pkgname=note-gen
 pkgver=0.22.1
-pkgrel=31
+pkgrel=32
 pkgdesc="A cross-platform Markdown note-taking application with AI integration"
 arch=('x86_64')
 url="https://github.com/codexu/note-gen"
 license=('MIT')
 depends=('gtk3' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'librsvg' 'libvips' 'libxcb' 'libxrandr')
-makedepends=('rust' 'nodejs' 'npm' 'pnpm' 'pkgconf' 'clang' 'sqlite')
+makedepends=('rust' 'nodejs' 'npm' 'pnpm' 'pkgconf' 'clang' 'sqlite' 'appmenu-gtk-module' 'xdotool')
 provides=('note-gen')
 conflicts=('note-gen-bin')
 options=('!strip' '!lto')
@@ -30,8 +30,8 @@ build() {
     export CARGO_HOME="$srcdir/.cargo"
     export npm_config_build_from_source=true
 
-    # 构建Tauri应用 (包含前端构建，跳过打包)
-    pnpm tauri build --no-bundle
+    # 构建Tauri应用 (包含前端构建)
+    pnpm tauri build
 }
 
 package() {
