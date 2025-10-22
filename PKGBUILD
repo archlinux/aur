@@ -1,5 +1,5 @@
 # Maintainer: Stephan Springer <buzo+arch@Lini.de>
-# Contributor: Christian Pfeiffer <ChrisTX>
+# Maintainer: Christian Pfeiffer <cpfeiffer@live.de>
 # Contributor: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=cryptpad
