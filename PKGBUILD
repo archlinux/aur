@@ -1,17 +1,17 @@
 # Maintainer: AltoXorg <atrl101 AT yahoo DOT com>
 
 _reponame=Shipwright
-_lus_commit=ffc062cbf44ce8dc07ac9fc0185224010bd78cc5
-_ZAPDTR_commit=2aeababbfb81b00d34673406453e8e8e2deaa27b
-_OTRExporter_commit=41052efcdf8df8e67517cc93da8975fcd4e14af9
+_lus_commit=5f4be9b6f5f74917c303ab8b66a0b2f4ef91613d
+_ZAPDTR_commit=684f21a475dcfeee89938ae1f4afc42768a3e7ef
+_OTRExporter_commit=32e088e28c8cdd055d4bb8f3f219d33ad37963f3
 
 pkgbase=soh
 pkgname=(soh soh-otr-exporter)
-pkgver=9.0.5
+pkgver=9.1.0
 pkgrel=1
 arch=("x86_64" "i686" "armv7h" "aarch64")
 url="https://shipofharkinian.com/"
-_depends_soh=("sdl2" "sdl2_net" "zenity" "libzip" "libpng")
+_depends_soh=("sdl2" "sdl2_net" "zenity" "libzip" "libpng" "libogg" "libvorbis" "opus" "opusfile")
 _depends_soh_otr_exporter=("libpng")
 _depends_lus=("fmt" "spdlog" "tinyxml2")  # libzip could be placed here, but ZAPD.out didn't made to use it
 depends=("${_depends_soh[@]}" "${_depends_soh_otr_exporter[@]}" "${_depends_lus[@]}")
@@ -21,10 +21,10 @@ source=("${_reponame}-${pkgver}.tar.gz::https://github.com/HarbourMasters/${_rep
         "ZAPDTR-${_ZAPDTR_commit:0:8}.tar.gz::https://github.com/HarbourMasters/ZAPDTR/archive/${_ZAPDTR_commit}.tar.gz"
         "OTRExporter-${_OTRExporter_commit:0:8}.tar.gz::https://github.com/HarbourMasters/OTRExporter/archive/${_OTRExporter_commit}.tar.gz"
         "soh.desktop")
-sha256sums=('21fbd5318b52f5bc3deb0271a65ea34eabd0ef170fb11f7f4ecaf376b24ab2ae'
-            '0e257911cb69080451c475aac27f78912219d6f2514d661069b7551207dfaf36'
-            'e52682090897c015b129c2a701a47553da648980e1e1e829248e1ad0ff6f3bee'
-            '176ad7bc15d476a271645fb2646450de977cd24d800530baf76b382424f6eb5d'
+sha256sums=('dc6096819cba6074aa2fd183fae79c8cd934313a29a2348a2cdd67d8f6633c8a'
+            '3df918a599a4c6320de36644107075dc9a51eb7bd23130cf8101ceba056fa96d'
+            '8016f735f9ef4e177384b0e51f243e374bf2f67ba66bdd5d21af8b185aed1635'
+            '91a863f8899f2ebfc7868ccad4b5982ae416799c76358ce5b2c0edc11e42a672'
             '25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2')
 
 # NOTE: If compiling complains about missing headers, set __generate_headers below to 1
