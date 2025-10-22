@@ -3,7 +3,7 @@
 # Contributor: Adam S Levy <adam@aslevy.com>
 
 pkgname=telegraf
-pkgver=1.36.2
+pkgver=1.36.3
 pkgrel=1
 pkgdesc='Plugin-driven server agent for reporting metrics into InfluxDB'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -17,7 +17,7 @@ install="${pkgname}.install"
 source=("https://github.com/influxdata/${pkgname}/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"
         "${pkgname}.install"
         "${pkgname}.service")
-b2sums=('bddab3f9dcb51b4678dc2ded3a3d3de217c2cb6800c4a80cc184d46dbe4e91aec2e817ae8770cd0b653a86fb3c2a6e68dcd9c7af64c16a5b0d963ac563ca2586'
+b2sums=('32d8fe7caaf6c8c69c308f1eab61fbfcc7647c306274fc8c6c36ef88cdc2b6cba179b65db4ae72d28992c56bb6a2f6e3536be8f69fbd1769a0ccd520cda656fc'
         'a6b2fd7a688ef5a23539c1256380a6389e6fa474312ad9dee5cc77bcfabe92910a8913ffcf599c940a93bb3a5c89e01f3bedad4176f4d57dd33a68e0499c30bd'
         'd5a6845cb1ddb07f0cac20215c15d059f0c18aa43a7b549e7e738e58b8686b4db26b71426aafc8e682d6fd6f676fc0f468f53ea61968c4184feaaa22a23f5bc5')
 
