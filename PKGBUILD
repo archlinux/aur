@@ -1,23 +1,24 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: aksr <aksr at t-com dot me>
 
 pkgname=icon
-pkgver=9.5.24a
+pkgver=9.5.25a
 pkgrel=1
 epoch=1
-pkgdesc="The Icon programming language"
-url="https://github.com/gtownsend/icon"
+pkgdesc='The Icon programming language'
+url='https://github.com/gtownsend/icon'
 arch=('i686' 'x86_64')
 depends=('sh' 'libx11')
 makedepends=('libxt')
 license=('custom:publicdomain')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz" LICENSE)
-sha256sums=('73eaf9b1bd0d0bb21c252110e7e9e5d146ef37bef2cd72c46e023d71305fa801'
+sha256sums=('ab15b7fc5a96e8b4da1b76cc6c7935400879f8a54b0fcf94a947c02815f21006'
             '57b2b71129aa652ca63b07d3c23564bc7a45444a274d12e50856b46e4d088e35')
 
 build() {
 	cd $pkgname-${pkgver}
 	make X-Configure name=linux
-	make CFLAGS+=" -D_STDIO_USES_IOSTREAM" -j1
+	make CFLAGS+=" -D_STDIO_USES_IOSTREAM -fcommon -fpermissive -std=gnu17" -j$(proc)
 }
 
 package() {
