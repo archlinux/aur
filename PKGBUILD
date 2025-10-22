@@ -1,4 +1,4 @@
-# Maintainer: Aleksey Stepanov <blueingreen@bluig.xyz>
+# Maintainer: Aleksey Stepanov <blueingreen@bluig.space>
 
 _pkgname=fzf-vjour
 pkgname="${_pkgname}-git"
