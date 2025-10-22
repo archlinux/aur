@@ -1,7 +1,7 @@
 pkgbase = qfinderpro-bin
 	pkgdesc = Quickly find and easily access all of the QNAP NAS on the same LAN.
-	pkgver = 7.12.3.0521
-	pkgrel = 5
+	pkgver = 7.13.0.1014
+	pkgrel = 1
 	url = https://www.qnap.com/en/utilities/essentials
 	arch = x86_64
 	license = custom
@@ -19,9 +19,9 @@ pkgbase = qfinderpro-bin
 	depends = qt5-base
 	depends = qt5-svg
 	depends = zlib
-	source = qfinderpro-bin-7.12.3.0521.deb::https://download.qnap.com/Storage/Utility/QNAPQfinderProUbuntux64-7.12.3.0521.deb
+	source = qfinderpro-bin-7.13.0.1014.deb::https://download.qnap.com/Storage/Utility/QNAPQfinderProUbuntux64-7.13.0.1014.deb
 	source = QNAPQfinderPro.desktop.patch
-	sha256sums = 8cae3135ffc614445a58e4b8ab1e0ec58cba5ea23aa91fa00ed9cf681f74071d
+	sha256sums = 47bab0e8a85aee8f00cd73c943b1a24e8fd221adf511a78223859579a5e15365
 	sha256sums = bd3ceb78a908b42ca6d7a6d520216a4fb265edc59d7cde517b66095aeb50869b
 
 pkgname = qfinderpro-bin
