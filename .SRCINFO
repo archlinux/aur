@@ -1,6 +1,6 @@
 pkgbase = r-labelled
 	pkgdesc = Manipulating Labelled Data
-	pkgver = 2.15.0
+	pkgver = 2.16.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=labelled
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-labelled
 	optdepends = r-spelling
 	optdepends = r-testthat
 	optdepends = r-utf8
-	source = https://cran.r-project.org/src/contrib/labelled_2.15.0.tar.gz
-	sha256sums = 5b908d23ee2c0e00b414d72e564a3a7ec159229c17455e7e6878e5b4d613f73b
+	source = https://cran.r-project.org/src/contrib/labelled_2.16.0.tar.gz
+	sha256sums = ba374fb513990e811bf438a7625ce44c3cee2df677c5888b678b387ef3e41fac
 
 pkgname = r-labelled
