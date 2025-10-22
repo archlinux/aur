@@ -5,11 +5,6 @@ pkgbase = cisco-packettracer
 	url = https://www.netacad.com/resources/lab-downloads
 	arch = x86_64
 	license = propietary
-	depends = qt5-base
-	depends = libx11
-	depends = libxslt
-	depends = libpulse
-	depends = nss
 	source = https://git.kizuren.dev/AUR/cisco-packettracer/src/branch/main/CiscoPacketTracer_900_Ubuntu_64bit.deb
 	sha256sums = SKIP
 
