@@ -4,7 +4,7 @@
 
 pkgname=netkit-telnet-ssl
 _debver=0.17.41+really0.17
-_debrel=6
+_debrel=7
 epoch=1
 pkgver=${_debver//+/.}.r${_debrel}
 pkgrel=1
@@ -21,7 +21,7 @@ source=(git+https://salsa.debian.org/debian/$pkgname.git#tag=debian/${_debver}-$
         netkit-telnet-ssl.tmpfiles
         netkit-telnetd{,-ssl}.socket
         netkit-telnetd{,-ssl}@.service)
-sha256sums=('2180cc3785cb2bd9fbe0a9c999020104981967faf03daaa9b2de452a3e8153c8'
+sha256sums=('fd35f427ba7c0a5a95732cbca2ae16559c27e2955a45dceec6794fb1d977f501'
             'f0db9be559e90d7711fb73109b20497325e03917a8e2f85780f95a17c28bdc9c'
             'be6cc69383e1326a9aa49d36bfda856d049f16512655ea83b991910800d540ba'
             '202fbfc51e6f6b92246853342a7ef47a731d64d012c8a8a026f9e9b154b9ade5'
