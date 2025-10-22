@@ -2,7 +2,7 @@
 
 pkgname=python-plyfile
 pkgdesc="Read and write ASCII and binary PLY files"
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 url='https://python-plyfile.readthedocs.io/'
 arch=('any')
@@ -25,7 +25,7 @@ source=(
   "git+https://github.com/dranjan/python-plyfile.git#tag=v$pkgver"
 )
 sha256sums=(
-  '86e213abcd87c1d39d7ff53299ba5c4790e2f93bbe0e2886d0bd22d3e7e6e67d'
+  '840705c8eeb15d1c0951336bd5a21ad51da21330d873cef072ccf2cc78864cf9'
 )
 
 build() {
