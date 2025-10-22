@@ -1,7 +1,7 @@
 pkgbase = note-gen
 	pkgdesc = A cross-platform Markdown note-taking application with AI integration
 	pkgver = 0.22.1
-	pkgrel = 15
+	pkgrel = 16
 	url = https://github.com/codexu/note-gen
 	arch = x86_64
 	license = MIT
