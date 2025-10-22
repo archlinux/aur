@@ -1,0 +1,30 @@
+From d2ba1de6dfcda1ce56b700b1b6853231860c448b Mon Sep 17 00:00:00 2001
+From: shadichy <shadichy@blisslabs.org>
+Date: Thu, 23 Oct 2025 01:19:10 +0700
+Subject: [PATCH] fs/ntfsplus/inode.c: Resolve import for inode_generic_drop
+ (temporarily) for kernels older than 6.18
+
+---
+ fs/ntfsplus/inode.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/fs/ntfsplus/inode.c b/fs/ntfsplus/inode.c
+index 2b8e0d67c..28925d204 100644
+--- a/fs/ntfsplus/inode.c
++++ b/fs/ntfsplus/inode.c
+@@ -9,6 +9,12 @@
+ #include <linux/writeback.h>
+ #include <linux/seq_file.h>
+ 
++// Replace inode_generic_drop with generic_drop_inode
++// for backward compatibility with pre 6.18 kernels
++#ifndef inode_generic_drop
++#define inode_generic_drop generic_drop_inode
++#endif
++
+ #include "lcnalloc.h"
+ #include "misc.h"
+ #include "ntfs.h"
+-- 
+2.51.0
+

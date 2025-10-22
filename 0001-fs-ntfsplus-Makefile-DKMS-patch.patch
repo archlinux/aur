@@ -1,0 +1,32 @@
+From 06fb2343f2c0e4540b60a0e5ed84d6754d877b46 Mon Sep 17 00:00:00 2001
+From: shadichy <shadichy@blisslabs.org>
+Date: Thu, 23 Oct 2025 00:04:34 +0700
+Subject: [PATCH] fs/ntfsplus/Makefile: DKMS patch
+
+---
+ fs/ntfsplus/Makefile | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/fs/ntfsplus/Makefile b/fs/ntfsplus/Makefile
+index 1e7e830db..84f208ce1 100644
+--- a/fs/ntfsplus/Makefile
++++ b/fs/ntfsplus/Makefile
+@@ -16,3 +16,15 @@ ntfsplus-y := aops.o attrib.o collate.o misc.o dir.o file.o index.o inode.o \
+ 	  ntfs_iomap.o
+ 
+ ccflags-$(CONFIG_NTFSPLUS_DEBUG) += -DDEBUG
++
++ccflags-$(CONFIG_NTFSPLUS_FS_POSIX_ACL) += -DCONFIG_NTFSPLUS_FS_POSIX_ACL
++
++KERNEL_SRC ?= /lib/modules/$(KVERSION)/build
++
++ccflags-y += -I$(PWD)/include
++
++all:
++	make -C $(KERNEL_SRC) M=$(PWD) modules
++
++clean:
++	make -C $(KERNEL_SRC) M=$(PWD) clean
+-- 
+2.51.0
+
