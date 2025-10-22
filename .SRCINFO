@@ -1,7 +1,7 @@
 pkgbase = hyprfreeze-git
 	pkgdesc = Utility to suspend a game process (and other programs) in Hyprland
-	pkgver = 1.1.2.r2.6b67416
-	pkgrel = 2
+	pkgver = 1.2.0.r3.882ba13
+	pkgrel = 1
 	url = https://github.com/Zerodya/hyprfreeze
 	arch = any
 	license = GPL
