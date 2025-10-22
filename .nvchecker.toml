@@ -1,0 +1,5 @@
+["lssh-bin"]
+source = "github"
+github = "blacknon/lssh"
+use_latest_release = true
+prefix = "v"

@@ -1,14 +1,14 @@
 pkgbase = lssh-bin
 	pkgdesc = A list-based SSH/SCP/SFTP client supporting single and parallel connections, local bashrc usage on remote machines, and advanced proxying
 	pkgver = 0.6.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/blacknon/lssh
 	arch = x86_64
 	license = MIT
-	makedepends = help2man
-	makedepends = gzip
 	depends = glibc
 	provides = lssh
+	provides = lscp
+	provides = lsftp
 	conflicts = lssh
 	source = LICENSE-0.6.13::https://raw.githubusercontent.com/blacknon/lssh/v0.6.13/LICENSE.md
 	source = README-0.6.13.md::https://raw.githubusercontent.com/blacknon/lssh/v0.6.13/README.md
