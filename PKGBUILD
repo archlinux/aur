@@ -4,7 +4,7 @@
 
 pkgname='sonosano'
 pkgver=0.3.1
-pkgrel=2
+pkgrel=1
 pkgdesc="P2P Song Player"
 arch=('x86_64')
 url=https://github.com/KRSHH/Sonosano
@@ -22,5 +22,5 @@ package() {
   bsdtar -xf data.tar.xz -C "$pkgdir/"
 
   install -d "$pkgdir/usr/bin"
-  ln -s "/opt/Sonosano/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  ln -s "$pkgdir/opt/Sonosano/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
