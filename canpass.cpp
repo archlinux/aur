@@ -10,8 +10,9 @@
 #include <map>
 #include <random>
 #include <regex>
-#include <openssl/sha.h>
-#include <openssl/rand.h>
+#include <sstream>
+#include <cctype>
+#include <ctime>
 
 namespace fs = std::filesystem;
 
@@ -69,6 +70,16 @@ private:
         std::string service;
         std::string username;
         std::string password;
+        std::string url;
+        std::string notes;
+        std::string timestamp;
+    };
+    
+    struct ImportResult {
+        int totalFound;
+        int successfullyImported;
+        int skipped;
+        std::vector<std::string> errors;
     };
     
     std::string getPasswordDir() {
@@ -90,81 +101,116 @@ private:
     
     std::string getServiceDir(const std::string& service) {
         std::string serviceClean = service;
-        serviceClean.erase(std::remove(serviceClean.begin(), serviceClean.end(), ' '), serviceClean.end());
+        // Replace spaces and special characters with underscores
+        std::replace_if(serviceClean.begin(), serviceClean.end(), 
+                       [](char c) { return !std::isalnum(c) && c != '-' && c != '_'; }, '_');
         return getPasswordDir() + "/" + serviceClean;
     }
     
     std::string getAccountFile(const std::string& service, const std::string& username) {
         std::string serviceClean = service;
-        serviceClean.erase(std::remove(serviceClean.begin(), serviceClean.end(), ' '), serviceClean.end());
+        std::replace_if(serviceClean.begin(), serviceClean.end(), 
+                       [](char c) { return !std::isalnum(c) && c != '-' && c != '_'; }, '_');
         
         std::string usernameClean = username;
-        usernameClean.erase(std::remove(usernameClean.begin(), usernameClean.end(), ' '), usernameClean.end());
+        std::replace_if(usernameClean.begin(), usernameClean.end(), 
+                       [](char c) { return !std::isalnum(c) && c != '-' && c != '_' && c != '@' && c != '.'; }, '_');
         
         return getServiceDir(service) + "/" + usernameClean + ".pwd";
     }
     
-    // Генерация случайной соли
-    std::string generateSalt() {
-        std::vector<unsigned char> salt(16);
-        RAND_bytes(salt.data(), salt.size());
-        return std::string(salt.begin(), salt.end());
+    // Простая генерация соли
+    std::string generateSalt(size_t length = 32) {
+        const std::string chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        std::random_device rd;
+        std::mt19937 generator(rd());
+        std::uniform_int_distribution<> distribution(0, chars.size() - 1);
+        
+        std::string salt;
+        for (size_t i = 0; i < length; ++i) {
+            salt += chars[distribution(generator)];
+        }
+        return salt;
     }
     
-    // Безопасный хэш с SHA-512 и итерациями
-    std::string secureHash(const std::string& password, const std::string& salt) {
+    // Простой хэш (для демонстрации)
+    std::string simpleHash(const std::string& password, const std::string& salt) {
+        // Простой алгоритм хэширования - в реальном приложении используйте bcrypt/scrypt
         std::string data = password + salt;
-        unsigned char hash[SHA512_DIGEST_LENGTH];
+        std::hash<std::string> hasher;
+        size_t hash1 = hasher(data);
+        size_t hash2 = hasher(data + std::to_string(hash1));
         
-        // Первое хэширование
-        SHA512(reinterpret_cast<const unsigned char*>(data.c_str()), data.length(), hash);
+        // Преобразуем в строку
+        std::stringstream ss;
+        ss << std::hex << hash1 << hash2;
+        std::string hashStr = ss.str();
         
-        // Многократное хэширование для замедления brute-force
-        for (int i = 0; i < 50000; i++) {
-            SHA512(hash, SHA512_DIGEST_LENGTH, hash);
-        }
-        
-        // Возвращаем соль + хэш для хранения
-        return salt + std::string(reinterpret_cast<char*>(hash), SHA512_DIGEST_LENGTH);
+        // Добавляем соль в начало
+        return salt + hashStr;
     }
     
     // Проверка пароля
     bool verifyPassword(const std::string& password, const std::string& storedHash) {
-        // Проверяем длину хэша
-        if (storedHash.length() != 16 + SHA512_DIGEST_LENGTH) {
+        if (storedHash.length() <= 32) {
             return false;
         }
         
-        // Извлекаем соль (первые 16 байт) и хэш (остальные)
-        std::string salt = storedHash.substr(0, 16);
-        std::string storedHashOnly = storedHash.substr(16);
+        // Извлекаем соль (первые 32 байта) и хэш (остальные)
+        std::string salt = storedHash.substr(0, 32);
+        std::string storedHashOnly = storedHash.substr(32);
         
-        // Вычисляем хэш для проверки
-        std::string computedHash = secureHash(password, salt);
-        std::string computedHashOnly = computedHash.substr(16);
+        std::string computedHash = simpleHash(password, salt);
+        std::string computedHashOnly = computedHash.substr(32);
         
-        return computedHashOnly == storedHashOnly;
+        return storedHashOnly == computedHashOnly;
     }
     
     // Производный ключ из мастер-пароля
     std::string deriveEncryptionKey(const std::string& password, const std::string& salt) {
+        // Простой алгоритм для демонстрации
         std::string data = password + salt + "encryption-key";
-        unsigned char hash[SHA512_DIGEST_LENGTH];
+        std::hash<std::string> hasher;
+        size_t hash = hasher(data);
         
-        // Многократное хэширование для ключа
-        SHA512(reinterpret_cast<const unsigned char*>(data.c_str()), data.length(), hash);
-        for (int i = 0; i < 10000; i++) {
-            SHA512(hash, SHA512_DIGEST_LENGTH, hash);
+        std::stringstream ss;
+        ss << std::hex << hash;
+        std::string key = ss.str();
+        
+        // Дополняем до 32 символов
+        while (key.length() < 32) {
+            key += key;
         }
-        
-        // Используем первые 32 байта для ключа шифрования
-        return std::string(reinterpret_cast<char*>(hash), 32);
+        return key.substr(0, 32);
     }
     
+    // Простое шифрование XOR
     std::string encryptDecrypt(const std::string& input, const std::string& key) {
+        if (input.empty()) return input;
+        
         std::string result = input;
         for (size_t i = 0; i < input.length(); ++i) {
             result[i] = input[i] ^ key[i % key.length()];
+        }
+        return result;
+    }
+    
+    // Convert binary data to hex string
+    std::string toHex(const std::string& input) {
+        std::stringstream ss;
+        for (unsigned char c : input) {
+            ss << std::hex << std::setw(2) << std::setfill('0') << (int)c;
+        }
+        return ss.str();
+    }
+    
+    // Convert hex string to binary data
+    std::string fromHex(const std::string& hex) {
+        std::string result;
+        for (size_t i = 0; i < hex.length(); i += 2) {
+            std::string byteString = hex.substr(i, 2);
+            char byte = (char)strtol(byteString.c_str(), nullptr, 16);
+            result.push_back(byte);
         }
         return result;
     }
@@ -202,8 +248,8 @@ private:
             
             if (password1 == password2) {
                 if (password1.length() >= 6) {
-                    std::string salt = generateSalt();
-                    masterPasswordHash = secureHash(password1, salt);
+                    std::string salt = generateSalt(32);
+                    masterPasswordHash = simpleHash(password1, salt);
                     encryptionKey = deriveEncryptionKey(password1, salt);
                     
                     std::ofstream file(getMasterPasswordFile());
@@ -233,9 +279,7 @@ private:
         std::string savedHash;
         std::getline(file, savedHash);
         
-        // Проверяем длину хэша
-        if (savedHash.length() != 16 + SHA512_DIGEST_LENGTH) {
-            std::cout << Colors::BRIGHT_RED << "✗ Invalid password database format!" << Colors::RESET << std::endl;
+        if (savedHash.empty()) {
             return false;
         }
         
@@ -245,7 +289,7 @@ private:
         }
         
         // Восстанавливаем ключ шифрования
-        std::string salt = savedHash.substr(0, 16);
+        std::string salt = savedHash.substr(0, 32);
         encryptionKey = deriveEncryptionKey(password, salt);
         masterPasswordHash = savedHash;
         
@@ -310,11 +354,16 @@ private:
                             
                             std::ifstream file(filePath);
                             if (file.is_open()) {
-                                std::string encryptedPassword;
-                                std::getline(file, encryptedPassword);
-                                std::string password = encryptDecrypt(encryptedPassword, encryptionKey);
-                                
-                                results.push_back({service, username, password});
+                                std::string encryptedPasswordHex;
+                                std::getline(file, encryptedPasswordHex);
+                                try {
+                                    std::string encryptedPassword = fromHex(encryptedPasswordHex);
+                                    std::string password = encryptDecrypt(encryptedPassword, encryptionKey);
+                                    
+                                    results.push_back({service, username, password});
+                                } catch (const std::exception& e) {
+                                    std::cout << Colors::BRIGHT_RED << "✗ Error decrypting password for " << username << Colors::RESET << std::endl;
+                                }
                             }
                         }
                     }
@@ -329,11 +378,16 @@ private:
                                 std::ifstream file(filePath);
                                 
                                 if (file.is_open()) {
-                                    std::string encryptedPassword;
-                                    std::getline(file, encryptedPassword);
-                                    std::string password = encryptDecrypt(encryptedPassword, encryptionKey);
-                                    
-                                    results.push_back({service, username, password});
+                                    std::string encryptedPasswordHex;
+                                    std::getline(file, encryptedPasswordHex);
+                                    try {
+                                        std::string encryptedPassword = fromHex(encryptedPasswordHex);
+                                        std::string password = encryptDecrypt(encryptedPassword, encryptionKey);
+                                        
+                                        results.push_back({service, username, password});
+                                    } catch (const std::exception& e) {
+                                        std::cout << Colors::BRIGHT_RED << "✗ Error decrypting password for " << username << Colors::RESET << std::endl;
+                                    }
                                 }
                             }
                         }
@@ -357,8 +411,32 @@ private:
         }
     }
 
-    // Save password to file
-    bool savePasswordToFile(const std::string& service, const std::string& username, const std::string& password) {
+    // Save password to file (без подтверждения для импорта)
+    bool savePasswordForImport(const std::string& service, const std::string& username, const std::string& password, const std::string& notes = "") {
+        std::string serviceDir = getServiceDir(service);
+        if (!fs::exists(serviceDir)) {
+            fs::create_directories(serviceDir);
+        }
+        
+        std::string filePath = getAccountFile(service, username);
+        
+        // Для импорта просто перезаписываем без подтверждения
+        std::ofstream file(filePath);
+        if (file.is_open()) {
+            try {
+                std::string encryptedPassword = encryptDecrypt(password, encryptionKey);
+                file << toHex(encryptedPassword);
+                return true;
+            } catch (const std::exception& e) {
+                std::cout << Colors::BRIGHT_RED << "✗ Error encrypting password: " << e.what() << Colors::RESET << std::endl;
+                return false;
+            }
+        }
+        return false;
+    }
+
+    // Save password to file (с подтверждением для ручного ввода)
+    bool savePasswordToFile(const std::string& service, const std::string& username, const std::string& password, const std::string& notes = "") {
         std::string serviceDir = getServiceDir(service);
         if (!fs::exists(serviceDir)) {
             fs::create_directories(serviceDir);
@@ -381,10 +459,15 @@ private:
         
         std::ofstream file(filePath);
         if (file.is_open()) {
-            std::string encryptedPassword = encryptDecrypt(password, encryptionKey);
-            file << encryptedPassword;
-            std::cout << Colors::BRIGHT_GREEN << "✓ Password for '" << username << "' in service '" << service << "' saved successfully!" << Colors::RESET << std::endl;
-            return true;
+            try {
+                std::string encryptedPassword = encryptDecrypt(password, encryptionKey);
+                file << toHex(encryptedPassword);
+                std::cout << Colors::BRIGHT_GREEN << "✓ Password for '" << username << "' in service '" << service << "' saved successfully!" << Colors::RESET << std::endl;
+                return true;
+            } catch (const std::exception& e) {
+                std::cout << Colors::BRIGHT_RED << "✗ Error encrypting password: " << e.what() << Colors::RESET << std::endl;
+                return false;
+            }
         } else {
             std::cout << Colors::BRIGHT_RED << "✗ Error: Could not save password!" << Colors::RESET << std::endl;
             return false;
@@ -440,6 +523,337 @@ private:
         return password;
     }
 
+    // Helper function to trim strings
+    std::string trim(const std::string& str) {
+        if (str.empty()) return "";
+        
+        size_t start = str.find_first_not_of(" \t\n\r\"");
+        size_t end = str.find_last_not_of(" \t\n\r\"");
+        
+        if (start == std::string::npos) return "";
+        return str.substr(start, end - start + 1);
+    }
+
+    // Get current timestamp
+    std::string getCurrentTimestamp() {
+        auto now = std::time(nullptr);
+        auto tm = *std::localtime(&now);
+        std::stringstream ss;
+        ss << std::put_time(&tm, "%Y-%m-%d %H:%M:%S");
+        return ss.str();
+    }
+
+    // Convert to lowercase for search
+    std::string toLower(const std::string& str) {
+        std::string result = str;
+        std::transform(result.begin(), result.end(), result.begin(), 
+                      [](unsigned char c){ return std::tolower(c); });
+        return result;
+    }
+
+    // Improved CSV parsing with proper quote handling
+    std::vector<std::string> parseCSVLine(const std::string& line) {
+        std::vector<std::string> parts;
+        bool inQuotes = false;
+        std::string field;
+        
+        for (char c : line) {
+            if (c == '"') {
+                inQuotes = !inQuotes;
+            } else if (c == ',' && !inQuotes) {
+                parts.push_back(trim(field));
+                field.clear();
+            } else {
+                field += c;
+            }
+        }
+        parts.push_back(trim(field)); // Последнее поле
+        
+        return parts;
+    }
+
+    // Import from CSV (improved version)
+    ImportResult importFromCSV(const std::string& filename) {
+        ImportResult result;
+        fs::path csvPath = filename;
+        
+        if (!fs::exists(csvPath)) {
+            result.errors.push_back("File " + filename + " does not exist");
+            return result;
+        }
+
+        std::ifstream file(csvPath);
+        if (!file.is_open()) {
+            result.errors.push_back("Cannot open file: " + filename);
+            return result;
+        }
+
+        std::string line;
+        int lineNumber = 0;
+        
+        // Process header and detect format
+        if (std::getline(file, line)) {
+            lineNumber++;
+            std::vector<std::string> headers = parseCSVLine(line);
+            
+            // Check if this is a header row
+            bool hasHeader = false;
+            for (const auto& header : headers) {
+                std::string headerLower = toLower(header);
+                if (headerLower.find("service") != std::string::npos || 
+                    headerLower.find("username") != std::string::npos ||
+                    headerLower.find("password") != std::string::npos) {
+                    hasHeader = true;
+                    break;
+                }
+            }
+            
+            // If it's not a header, process it as data
+            if (!hasHeader) {
+                file.clear();
+                file.seekg(0);
+                lineNumber = 0;
+            } else {
+                std::cout << Colors::BRIGHT_BLUE << "📋 Detected CSV header, skipping first line" << Colors::RESET << std::endl;
+            }
+        }
+        
+        // Process data rows
+        while (std::getline(file, line)) {
+            lineNumber++;
+            if (line.empty()) continue;
+            
+            std::vector<std::string> parts = parseCSVLine(line);
+            
+            if (parts.size() >= 3) {
+                std::string service = parts[0];
+                std::string username = parts.size() > 1 ? parts[1] : "";
+                std::string password = parts.size() > 2 ? parts[2] : "";
+                std::string notes = parts.size() > 3 ? parts[3] : "";
+                
+                // Validate required fields
+                if (service.empty()) {
+                    service = "Imported_Service_" + std::to_string(lineNumber);
+                }
+                
+                if (username.empty()) {
+                    result.errors.push_back("Line " + std::to_string(lineNumber) + ": Empty username");
+                    continue;
+                }
+                
+                if (password.empty()) {
+                    result.errors.push_back("Line " + std::to_string(lineNumber) + ": Empty password");
+                    continue;
+                }
+                
+                result.totalFound++;
+                
+                if (savePasswordForImport(service, username, password, notes)) {
+                    result.successfullyImported++;
+                    std::cout << Colors::GREEN << "✓ " << service << " - " << username << Colors::RESET << std::endl;
+                } else {
+                    result.skipped++;
+                    result.errors.push_back("Line " + std::to_string(lineNumber) + ": Failed to save");
+                }
+            } else {
+                result.errors.push_back("Line " + std::to_string(lineNumber) + ": Not enough columns (" + std::to_string(parts.size()) + ")");
+            }
+        }
+        
+        file.close();
+        return result;
+    }
+    
+    ImportResult importFromTXT(const std::string& filename) {
+        ImportResult result;
+        std::ifstream file(filename);
+        
+        if (!file.is_open()) {
+            result.errors.push_back("Cannot open file: " + filename);
+            return result;
+        }
+        
+        std::string line;
+        int lineNumber = 0;
+        
+        while (std::getline(file, line)) {
+            lineNumber++;
+            
+            // Skip empty lines and comments
+            line = trim(line);
+            if (line.empty() || line[0] == '#') continue;
+            
+            // Try different delimiters
+            std::vector<std::string> parts;
+            size_t pos = 0;
+            
+            // First try ::: delimiter (common in exports)
+            if (line.find(":::") != std::string::npos) {
+                while ((pos = line.find(":::")) != std::string::npos) {
+                    parts.push_back(line.substr(0, pos));
+                    line.erase(0, pos + 3);
+                }
+                parts.push_back(line);
+            }
+            // Then try : delimiter
+            else if (line.find(':') != std::string::npos) {
+                while ((pos = line.find(':')) != std::string::npos) {
+                    parts.push_back(line.substr(0, pos));
+                    line.erase(0, pos + 1);
+                }
+                parts.push_back(line);
+            }
+            // Finally try | delimiter
+            else if (line.find('|') != std::string::npos) {
+                while ((pos = line.find('|')) != std::string::npos) {
+                    parts.push_back(line.substr(0, pos));
+                    line.erase(0, pos + 1);
+                }
+                parts.push_back(line);
+            }
+            
+            if (parts.size() >= 3) {
+                std::string service = trim(parts[0]);
+                std::string username = trim(parts[1]);
+                std::string password = trim(parts[2]);
+                std::string notes = parts.size() > 3 ? trim(parts[3]) : "";
+                
+                if (!service.empty() && !username.empty() && !password.empty()) {
+                    result.totalFound++;
+                    if (savePasswordForImport(service, username, password, notes)) {
+                        result.successfullyImported++;
+                        std::cout << Colors::GREEN << "✓ Imported: " << service << " - " << username << Colors::RESET << std::endl;
+                    } else {
+                        result.skipped++;
+                    }
+                }
+            }
+        }
+        
+        return result;
+    }
+    
+    void showImportMenu() {
+        std::cout << Colors::BRIGHT_CYAN << "\n=== Import Passwords ===" << Colors::RESET << std::endl;
+        std::cout << Colors::BRIGHT_GREEN << "1. " << Colors::BRIGHT_WHITE << "CSV File" << Colors::RESET << std::endl;
+        std::cout << Colors::BRIGHT_GREEN << "2. " << Colors::BRIGHT_WHITE << "Text File" << Colors::RESET << std::endl;
+        std::cout << Colors::BRIGHT_GREEN << "3. " << Colors::BRIGHT_WHITE << "Back to Main Menu" << Colors::RESET << std::endl;
+        std::cout << Colors::BRIGHT_BLUE << "Choose format: " << Colors::RESET;
+    }
+    
+    void importPasswords() {
+        showImportMenu();
+        
+        int choice = getNumberInput();
+        
+        if (choice == 3) return;
+        
+        std::cout << Colors::BRIGHT_BLUE << "Enter file path: " << Colors::RESET;
+        std::string filename;
+        std::getline(std::cin, filename);
+        
+        if (!fs::exists(filename)) {
+            std::cout << Colors::BRIGHT_RED << "✗ File not found: " << filename << Colors::RESET << std::endl;
+            return;
+        }
+        
+        ImportResult result;
+        
+        switch (choice) {
+            case 1:
+                result = importFromCSV(filename);
+                break;
+            case 2:
+                result = importFromTXT(filename);
+                break;
+            default:
+                std::cout << Colors::BRIGHT_RED << "✗ Invalid choice!" << Colors::RESET << std::endl;
+                return;
+        }
+        
+        // Show import results
+        std::cout << Colors::BRIGHT_CYAN << "\n=== Import Results ===" << Colors::RESET << std::endl;
+        std::cout << Colors::BRIGHT_GREEN << "✓ Total found: " << result.totalFound << Colors::RESET << std::endl;
+        std::cout << Colors::BRIGHT_GREEN << "✓ Successfully imported: " << result.successfullyImported << Colors::RESET << std::endl;
+        std::cout << Colors::YELLOW << "⚠ Skipped: " << result.skipped << Colors::RESET << std::endl;
+        
+        if (!result.errors.empty()) {
+            std::cout << Colors::BRIGHT_RED << "✗ Errors: " << result.errors.size() << Colors::RESET << std::endl;
+            for (const auto& error : result.errors) {
+                std::cout << Colors::RED << "  - " << error << Colors::RESET << std::endl;
+            }
+        }
+        
+        if (result.successfullyImported > 0) {
+            std::cout << Colors::BRIGHT_GREEN << "\n🎉 Import completed successfully!" << Colors::RESET << std::endl;
+        }
+    }
+
+    // Export to CSV function
+    void exportToCSV(const std::string& filename) {
+        std::string dir = getPasswordDir();
+        
+        if (!fs::exists(dir)) {
+            std::cout << Colors::BRIGHT_RED << "✗ Password directory doesn't exist!" << Colors::RESET << std::endl;
+            return;
+        }
+        
+        fs::path csvPath = filename;
+        std::ofstream file(csvPath);
+        
+        if (!file.is_open()) {
+            std::cout << Colors::BRIGHT_RED << "✗ Cannot open file for writing: " << filename << Colors::RESET << std::endl;
+            return;
+        }
+        
+        // Write CSV header
+        file << "Service,Username,Password,Timestamp\n";
+        
+        int exportedCount = 0;
+        for (const auto& serviceEntry : fs::directory_iterator(dir)) {
+            if (serviceEntry.is_directory() && serviceEntry.path().filename() != "." && serviceEntry.path().filename() != "..") {
+                std::string service = serviceEntry.path().filename().string();
+                
+                for (const auto& accountEntry : fs::directory_iterator(serviceEntry.path())) {
+                    if (accountEntry.path().extension() == ".pwd") {
+                        std::string username = accountEntry.path().stem().string();
+                        std::string filePath = accountEntry.path().string();
+                        
+                        std::ifstream accountFile(filePath);
+                        if (accountFile.is_open()) {
+                            std::string encryptedPasswordHex;
+                            std::getline(accountFile, encryptedPasswordHex);
+                            try {
+                                std::string encryptedPassword = fromHex(encryptedPasswordHex);
+                                std::string password = encryptDecrypt(encryptedPassword, encryptionKey);
+                                
+                                // Escape quotes for CSV
+                                auto escapeCSV = [](const std::string& str) {
+                                    if (str.find(',') != std::string::npos || str.find('"') != std::string::npos || str.find('\n') != std::string::npos) {
+                                        return "\"" + std::regex_replace(str, std::regex("\""), "\"\"") + "\"";
+                                    }
+                                    return str;
+                                };
+                                
+                                file << escapeCSV(service) << ","
+                                     << escapeCSV(username) << ","
+                                     << escapeCSV(password) << ","
+                                     << "\"" << getCurrentTimestamp() << "\"\n";
+                                
+                                exportedCount++;
+                            } catch (const std::exception& e) {
+                                std::cout << Colors::BRIGHT_RED << "✗ Error decrypting password for " << username << Colors::RESET << std::endl;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        file.close();
+        std::cout << Colors::BRIGHT_GREEN << "✓ Exported " << exportedCount << " passwords to " << filename << Colors::RESET << std::endl;
+    }
+
 public:
     PasswordManager() {
         baseDir = getPasswordDir();
@@ -470,7 +884,7 @@ public:
     }
     
     void addPassword() {
-        std::string service, username, password;
+        std::string service, username, password, notes;
         
         std::cout << Colors::BRIGHT_CYAN << "=== Add Password ===" << Colors::RESET << std::endl;
         std::cout << Colors::BRIGHT_BLUE << "Enter service name: " << Colors::RESET;
@@ -508,8 +922,11 @@ public:
             password = readPassword("Enter password: ");
         }
         
+        std::cout << Colors::BRIGHT_BLUE << "Enter notes (optional): " << Colors::RESET;
+        std::getline(std::cin, notes);
+        
         // Save the password
-        savePasswordToFile(service, username, password);
+        savePasswordToFile(service, username, password, notes);
     }
     
     void generateAndSavePassword() {
@@ -527,7 +944,7 @@ public:
         }
         
         // Ask for service and username to save
-        std::string service, username;
+        std::string service, username, notes;
         
         std::cout << Colors::BRIGHT_BLUE << "\nEnter service name: " << Colors::RESET;
         std::getline(std::cin, service);
@@ -540,8 +957,11 @@ public:
         std::cout << Colors::BRIGHT_BLUE << "Enter username: " << Colors::RESET;
         std::getline(std::cin, username);
         
+        std::cout << Colors::BRIGHT_BLUE << "Enter notes (optional): " << Colors::RESET;
+        std::getline(std::cin, notes);
+        
         // Save the password
-        savePasswordToFile(service, username, password);
+        savePasswordToFile(service, username, password, notes);
     }
     
     void getPassword() {
@@ -558,16 +978,21 @@ public:
         std::ifstream file(filePath);
         
         if (file.is_open()) {
-            std::string encryptedPassword;
-            std::getline(file, encryptedPassword);
+            std::string encryptedPasswordHex;
+            std::getline(file, encryptedPasswordHex);
             
-            std::string password = encryptDecrypt(encryptedPassword, encryptionKey);
-            
-            std::cout << Colors::BRIGHT_CYAN << "\n--- Account Data ---" << Colors::RESET << std::endl;
-            std::cout << Colors::BRIGHT_BLUE << "Service: " << Colors::BRIGHT_WHITE << service << Colors::RESET << std::endl;
-            std::cout << Colors::BRIGHT_BLUE << "Username: " << Colors::BRIGHT_WHITE << username << Colors::RESET << std::endl;
-            std::cout << Colors::BRIGHT_BLUE << "Password: " << Colors::BRIGHT_GREEN << password << Colors::RESET << std::endl;
-            std::cout << Colors::BRIGHT_CYAN << "-----------------------" << Colors::RESET << std::endl;
+            try {
+                std::string encryptedPassword = fromHex(encryptedPasswordHex);
+                std::string password = encryptDecrypt(encryptedPassword, encryptionKey);
+                
+                std::cout << Colors::BRIGHT_CYAN << "\n--- Account Data ---" << Colors::RESET << std::endl;
+                std::cout << Colors::BRIGHT_BLUE << "Service: " << Colors::BRIGHT_WHITE << service << Colors::RESET << std::endl;
+                std::cout << Colors::BRIGHT_BLUE << "Username: " << Colors::BRIGHT_WHITE << username << Colors::RESET << std::endl;
+                std::cout << Colors::BRIGHT_BLUE << "Password: " << Colors::BRIGHT_GREEN << password << Colors::RESET << std::endl;
+                std::cout << Colors::BRIGHT_CYAN << "-----------------------" << Colors::RESET << std::endl;
+            } catch (const std::exception& e) {
+                std::cout << Colors::BRIGHT_RED << "✗ Error decrypting password: " << e.what() << Colors::RESET << std::endl;
+            }
         } else {
             std::cout << Colors::BRIGHT_RED << "✗ Error: Password for '" << username << "' in service '" << service << "' not found!" << Colors::RESET << std::endl;
         }
@@ -647,7 +1072,7 @@ public:
     }
     
     void changePassword() {
-        std::string service, username, newPassword;
+        std::string service, username, newPassword, notes;
         
         std::cout << Colors::BRIGHT_CYAN << "=== Change Password ===" << Colors::RESET << std::endl;
         std::cout << Colors::BRIGHT_BLUE << "Enter service name: " << Colors::RESET;
@@ -687,11 +1112,18 @@ public:
             newPassword = readPassword("Enter new password: ");
         }
         
+        std::cout << Colors::BRIGHT_BLUE << "Enter notes (optional): " << Colors::RESET;
+        std::getline(std::cin, notes);
+        
         std::ofstream file(filePath);
         if (file.is_open()) {
-            std::string encryptedPassword = encryptDecrypt(newPassword, encryptionKey);
-            file << encryptedPassword;
-            std::cout << Colors::BRIGHT_GREEN << "✓ Password changed successfully!" << Colors::RESET << std::endl;
+            try {
+                std::string encryptedPassword = encryptDecrypt(newPassword, encryptionKey);
+                file << toHex(encryptedPassword);
+                std::cout << Colors::BRIGHT_GREEN << "✓ Password changed successfully!" << Colors::RESET << std::endl;
+            } catch (const std::exception& e) {
+                std::cout << Colors::BRIGHT_RED << "✗ Error encrypting password: " << e.what() << Colors::RESET << std::endl;
+            }
         } else {
             std::cout << Colors::BRIGHT_RED << "✗ Error: Could not change password!" << Colors::RESET << std::endl;
         }
@@ -726,6 +1158,18 @@ public:
         }
     }
     
+    void exportPasswords() {
+        std::string filename;
+        std::cout << Colors::BRIGHT_BLUE << "Enter CSV filename for export (default: export.csv): " << Colors::RESET;
+        std::getline(std::cin, filename);
+        
+        if (filename.empty()) {
+            filename = "export.csv";
+        }
+        
+        exportToCSV(filename);
+    }
+    
     void showMenu() {
         std::cout << Colors::BRIGHT_MAGENTA << "\n✨ === Password Manager ===" << Colors::RESET << std::endl;
         std::cout << Colors::BRIGHT_GREEN << "1. " << Colors::BRIGHT_WHITE << "Add Password" << Colors::RESET << std::endl;
@@ -735,7 +1179,9 @@ public:
         std::cout << Colors::BRIGHT_GREEN << "5. " << Colors::BRIGHT_WHITE << "Change Password" << Colors::RESET << std::endl;
         std::cout << Colors::BRIGHT_GREEN << "6. " << Colors::BRIGHT_WHITE << "Search Passwords" << Colors::RESET << std::endl;
         std::cout << Colors::BRIGHT_GREEN << "7. " << Colors::BRIGHT_WHITE << "Password Generator" << Colors::RESET << std::endl;
-        std::cout << Colors::BRIGHT_GREEN << "8. " << Colors::BRIGHT_WHITE << "Exit" << Colors::RESET << std::endl;
+        std::cout << Colors::BRIGHT_GREEN << "8. " << Colors::BRIGHT_WHITE << "Import Passwords" << Colors::RESET << std::endl;
+        std::cout << Colors::BRIGHT_GREEN << "9. " << Colors::BRIGHT_WHITE << "Export Passwords" << Colors::RESET << std::endl;
+        std::cout << Colors::BRIGHT_GREEN << "10. " << Colors::BRIGHT_WHITE << "Exit" << Colors::RESET << std::endl;
         std::cout << Colors::BRIGHT_BLUE << "Choose action: " << Colors::RESET;
     }
     
@@ -769,6 +1215,12 @@ public:
                     generateAndSavePassword();
                     break;
                 case 8:
+                    importPasswords();
+                    break;
+                case 9:
+                    exportPasswords();
+                    break;
+                case 10:
                     std::cout << Colors::BRIGHT_CYAN << "👋 Goodbye!" << Colors::RESET << std::endl;
                     return;
                 default:
