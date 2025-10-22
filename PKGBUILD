@@ -11,7 +11,7 @@ conflicts=('mkinitcpio-sd-zfs-git')
 depends=('mkinitcpio' 'systemd')
 
 source=("https://github.com/jkolo/sd-zfs/archive/v${pkgver}.tar.gz")
-sha512sums=('1488d13cb8cd9b9c9c2670ee6c77885de73507bcd55183c013a5be313878b08873ce71b07481b00ab13e1e1d7631f4b1b05e8c4fa4ff3223eef640bf39b981b4')
+sha512sums=('831bb0351085ae55dcbd36265dd1b5d3272cf108e491ec7f3e3872e6341ab056a255094a0ad2ed0012d6f5c26b75d89157aaa334357aea6649fdf84147358807')
 
 #_git_commit="1a36d4fd85377c0b323d8f2ca2039770e5a0fee4"
 #source=("https://github.com/dasJ/sd-zfs/archive/${_git_commit}.tar.gz")
