@@ -2,7 +2,7 @@
 
 _pkgname=inhibit-bridge
 pkgname="${_pkgname}-git"
-pkgver="r54.962b658"
+pkgver=v1.0.0.r14.g962b658
 pkgrel=1
 pkgdesc='A bridge from dbus ScreenSaver inhibit to systemd/logind idle inhibit.'
 arch=('x86_64')
