@@ -3,7 +3,7 @@
 # Maintainer: caarlos0 <carlos@charm.sh>
 
 pkgname='crush-bin'
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc='A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.'
 url='https://charm.sh/crush'
@@ -12,17 +12,17 @@ license=('FSL-1.1-MIT')
 provides=('crush')
 conflicts=('crush')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/crush/releases/download/v0.12.0/crush_0.12.0_Linux_arm64.tar.gz")
-sha256sums_aarch64=('2b86e705558c1e3424ceea116bf82d19e661d9a215b6f7fd39bb0dfd54a64354')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/crush/releases/download/v0.12.1/crush_0.12.1_Linux_arm64.tar.gz")
+sha256sums_aarch64=('d2b0c8209f54e41c7a73f9ecf6ec39020488067fafe8e08589490b5ae444b7e7')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/crush/releases/download/v0.12.0/crush_0.12.0_Linux_armv7.tar.gz")
-sha256sums_armv7h=('43ab1df54d30a8520b4a008148eb49bdb56d2967d4aa83dd32bdf4ee2af8f54c')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/crush/releases/download/v0.12.1/crush_0.12.1_Linux_armv7.tar.gz")
+sha256sums_armv7h=('c1b515944a622411a0dc188e3be8b88a1f721866036ddbcd752125ff7675bddc')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/crush/releases/download/v0.12.0/crush_0.12.0_Linux_i386.tar.gz")
-sha256sums_i686=('6003c194bfcd095cb5d2691f7a5d1b556d15b06ddd5b9a8bd52a8ae99d13d348')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/crush/releases/download/v0.12.1/crush_0.12.1_Linux_i386.tar.gz")
+sha256sums_i686=('23469a459adf38c1000b9e9de3e780c492c44c4ae86b076e4d73fb483fc92009')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/crush/releases/download/v0.12.0/crush_0.12.0_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('34215c65416523bbdd028e0d7c421ba68e4a3e17e655cbed2f3602589ef79356')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/crush/releases/download/v0.12.1/crush_0.12.1_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('7cc9f110f98c1b021ecb527e373b7d903685005bf5f9cefbf7cd516f272dc636')
 
 package() {
   cd "${srcdir}/crush_${pkgver}_Linux_${CARCH}"
