@@ -1,0 +1,82 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index a958bed..4bfd57f 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -35,4 +35,4 @@ $(top_builddir)/thrift_src/libruntimestubs.la
+ endif
+ 
+ libbmall_la_LIBADD += \
+--lboost_system $(THRIFT_LIB) -lboost_program_options -lboost_filesystem
++$(THRIFT_LIB) -lboost_program_options -lboost_filesystem
+diff --git a/targets/l2_switch/Makefile.am b/targets/l2_switch/Makefile.am
+index 5ff496f..36f89fb 100644
+--- a/targets/l2_switch/Makefile.am
++++ b/targets/l2_switch/Makefile.am
+@@ -11,4 +11,4 @@ $(top_builddir)/src/bm_sim/libbmsim.la \
+ $(top_builddir)/thrift_src/libruntimestubs.la \
+ $(top_builddir)/src/BMI/libbmi.la \
+ $(top_builddir)/third_party/jsoncpp/libjson.la \
+--lboost_system $(THRIFT_LIB) -lboost_program_options -lboost_filesystem
++$(THRIFT_LIB) -lboost_program_options -lboost_filesystem
+diff --git a/targets/psa_switch/Makefile.am b/targets/psa_switch/Makefile.am
+index c54cc39..ef1517e 100644
+--- a/targets/psa_switch/Makefile.am
++++ b/targets/psa_switch/Makefile.am
+@@ -21,7 +21,7 @@ libpsaswitch_la_LIBADD = \
+ $(top_builddir)/src/bm_sim/libbmsim.la \
+ $(top_builddir)/src/BMI/libbmi.la \
+ $(top_builddir)/third_party/jsoncpp/libjson.la \
+--lboost_system $(THRIFT_LIB) -lboost_program_options -lboost_filesystem
++$(THRIFT_LIB) -lboost_program_options -lboost_filesystem
+ 
+ if COND_THRIFT
+ 
+diff --git a/targets/simple_router/Makefile.am b/targets/simple_router/Makefile.am
+index b8bd79f..7cd287a 100644
+--- a/targets/simple_router/Makefile.am
++++ b/targets/simple_router/Makefile.am
+@@ -6,4 +6,4 @@ $(top_builddir)/src/bm_sim/libbmsim.la \
+ $(top_builddir)/thrift_src/libruntimestubs.la \
+ $(top_builddir)/src/BMI/libbmi.la \
+ $(top_builddir)/third_party/jsoncpp/libjson.la \
+--lboost_system $(THRIFT_LIB) -lboost_program_options -lboost_filesystem
++$(THRIFT_LIB) -lboost_program_options -lboost_filesystem
+diff --git a/targets/simple_switch/Makefile.am b/targets/simple_switch/Makefile.am
+index 6bd19c3..25e8e9b 100644
+--- a/targets/simple_switch/Makefile.am
++++ b/targets/simple_switch/Makefile.am
+@@ -33,7 +33,7 @@ libsimpleswitch_la_LIBADD = \
+ $(top_builddir)/src/bm_sim/libbmsim.la \
+ $(top_builddir)/src/BMI/libbmi.la \
+ $(top_builddir)/third_party/jsoncpp/libjson.la \
+--lboost_system $(THRIFT_LIB) -lboost_program_options -lboost_filesystem
++$(THRIFT_LIB) -lboost_program_options -lboost_filesystem
+ 
+ libsimpleswitch_runner_la_LIBADD = \
+ $(PI_LIB) \
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index 6b65a12..411434b 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -29,7 +29,7 @@ $(top_builddir)/thrift_src/libruntimestubs.la \
+ $(THRIFT_LIB) \
+ $(top_builddir)/third_party/jsoncpp/libjson.la \
+ $(builddir)/libtestutils.la \
+--lboost_system -lboost_filesystem -lboost_program_options
++-lboost_filesystem -lboost_program_options
+ 
+ # Define unit tests
+ common_source = main.cpp bmi_stubs.c primitives.cpp
+diff --git a/tests/stress_tests/Makefile.am b/tests/stress_tests/Makefile.am
+index dd8c7d8..1190647 100644
+--- a/tests/stress_tests/Makefile.am
++++ b/tests/stress_tests/Makefile.am
+@@ -7,7 +7,7 @@ $(top_builddir)/third_party/gtest/libgtest.la \
+ $(top_builddir)/src/bm_apps/libbmapps.la \
+ $(top_builddir)/src/bm_sim/libbmsim.la \
+ $(top_builddir)/third_party/jsoncpp/libjson.la \
+--lboost_system -lboost_filesystem -lboost_program_options
++-lboost_filesystem -lboost_program_options
+ 
+ # TODO(antonin): should the traffic.bin files be generated at compile time by
+ # running the Python generator (instead of being checked in)?
