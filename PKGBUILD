@@ -24,7 +24,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://gitlab.com/gnoooo/caelestia-gif/-/archive/main/caelestia-gif-main.tar.gz?ref_type=heads")
+source=("https://gitlab.com/gnoooo/caelestia-gif/-/archive/master/caelestia-gif-master.tar.gz?ref_type=heads")
 noextract=()
 sha256sums=('f0b8380a23f982acb7b0d896d58f11123adc91e4e6c517971fb29a016cbb4ec1')
 validpgpkeys=()
