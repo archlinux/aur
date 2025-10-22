@@ -1,7 +1,7 @@
 # Maintainer: Kazoku <k4zoku@pm.me>
 _pkgbase=tosu-overlay
 pkgname=${_pkgbase}-git
-pkgver=2.0.1.r14.g56d645e
+pkgver=2.1.0.r11.g1b8934e
 pkgrel=1
 pkgdesc="Overlay for osu! Powered by tosu, qt6, qt6-webengine and layer-shell-qt"
 arch=('x86_64')
@@ -13,6 +13,7 @@ conflicts=("${_pkgbase}")
 makedepends=('git' 'gcc' 'meson')
 source=("${_pkgbase}::git+${url}.git")
 sha256sums=('SKIP')
+validpgpkeys=('C6797F75E4A487395E79B2D1413897C051068F03')  # k4zoku <k4zoku@pm.me>
 
 pkgver() {
     cd "${_pkgbase}"
