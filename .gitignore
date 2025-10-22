@@ -1,0 +1,20 @@
+# fichiers objets et binaires
+*.o
+*.bin
+*.out
+caelestia-gif
+install_bin
+
+# fichiers temporaires de compilation
+*~
+*.swp
+*.swo
+*.tmp
+.#*
+
+# dossiers de build
+/build/
+/chroot/
+
+# fichiers de log
+*.log
