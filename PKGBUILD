@@ -4,7 +4,7 @@
 
 pkgname=karere
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern, native GTK4/LibAdwaita wrapper for WhatsApp Web"
 arch=('x86_64')
 url="https://github.com/tobagin/karere"
