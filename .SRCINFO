@@ -5,6 +5,7 @@ pkgbase = swob-git
 	url = https://git.sr.ht/~blueingreen/swob
 	arch = any
 	license = GPL-3.0-or-later
+	makedepends = git
 	depends = sh
 	depends = coreutils
 	depends = sed

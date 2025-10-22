@@ -7,6 +7,7 @@ pkgrel=1
 pkgdesc="Volume and brightness controls for wayland, using wob"
 arch=('any')
 url="https://git.sr.ht/~blueingreen/swob"
+makedepends=('git')
 depends=('sh' 'coreutils' 'sed' 'wob' 'alsa-utils' 'brightnessctl')
 optdepends=('wireplumber: wpctl, for pipewire support' 'libpulse: pactl, for pulseaudio support')
 license=(GPL-3.0-or-later)
