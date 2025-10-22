@@ -9,7 +9,7 @@ license=('MIT')
 depends=('cotp' 'tofi' 'libsecret' 'wl-clipboard' 'zenity')
 optdepends=('libnotify: for desktop notifications')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('57ce560fb4c7ac3c5a493d6164a0b17acb057dcd6caf6f6a49ee40b2f0effdf9')
+sha256sums=('d1602e579f22131a494dc3297eeb6ae08427aedb5458b57f3fd76a513b19cc84')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
