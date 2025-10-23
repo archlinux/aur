@@ -1,0 +1,23 @@
+pkgbase = tuios-bin
+	pkgdesc = Terminal UI Operating System - A terminal-based window manager with tmux-style keybindings
+	pkgver = 0.0.21
+	pkgrel = 1
+	url = https://github.com/Gaurav-Gosain/tuios
+	license = MIT
+	depends = glibc
+	conflicts = tuios
+	provides = tuios
+	arch = aarch64
+	source_aarch64 = https://github.com/Gaurav-Gosain/tuios/releases/download/v0.0.21/tuios_0.0.21_Linux_arm64.tar.gz
+	sha256sums_aarch64 = ae42b0ed7cd09440998f70f51f09e0a1ed9a17d00989ea846890a9a0391e138d
+	arch = armv7h
+	source_armv7h = https://github.com/Gaurav-Gosain/tuios/releases/download/v0.0.21/tuios_0.0.21_Linux_armv7.tar.gz
+	sha256sums_armv7h = f7c2542f1ac475ea04d5b8da16ee2d7b4df27efc0ecec511562f85b4639a23b7
+	arch = i686
+	source_i686 = https://github.com/Gaurav-Gosain/tuios/releases/download/v0.0.21/tuios_0.0.21_Linux_i386.tar.gz
+	sha256sums_i686 = 82262d6275f450f688c23fc9330e2557418fa9723c3a5afcbf77f57a8abf24bb
+	arch = x86_64
+	source_x86_64 = https://github.com/Gaurav-Gosain/tuios/releases/download/v0.0.21/tuios_0.0.21_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 4bc57c807a606708ead4614036e4a59873ce46f42717758c4ddf41eebc64683b
+	
+pkgname = tuios-bin
