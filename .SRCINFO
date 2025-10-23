@@ -1,6 +1,6 @@
 pkgbase = pinstall
 	pkgdesc = Installer Tool for Python Programs
-	pkgver = 1.22
+	pkgver = 1.23
 	pkgrel = 1
 	url = https://github.com/bulletmark/pinstall
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = pinstall
 	depends = sudo
 	depends = python-packaging
 	depends = python-argcomplete
-	source = pinstall-1.22.tar.gz::https://github.com/bulletmark/pinstall/archive/1.22.tar.gz
-	sha1sums = 14e6fa4bfe634ac22243ae530bb0b59de40b21ff
+	source = pinstall-1.23.tar.gz::https://github.com/bulletmark/pinstall/archive/1.23.tar.gz
+	sha1sums = 43de9bab0f8c0cfc81e9d8e40398457c4b2cc062
 
 pkgname = pinstall
