@@ -1,6 +1,6 @@
 pkgbase = hypr-mon-switch-git
 	pkgdesc = Configuration-based monitor switching system for Hyprland with YAML configuration support
-	pkgver = r29.51b8af3
+	pkgver = r30.a192963
 	pkgrel = 1
 	url = https://github.com/aujezus/hypr-mon-switch
 	arch = any
