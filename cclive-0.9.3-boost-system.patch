@@ -1,0 +1,12 @@
+diff -rauN cclive-0.9.3/configure.ac cclive-0.9.3-boost-system-patch/configure.ac
+--- cclive-0.9.3/configure.ac	2013-11-23 10:46:27.000000000 +0100
++++ cclive-0.9.3-boost-system-patch/configure.ac	2025-10-23 13:07:10.449893308 +0200
+@@ -73,7 +73,7 @@
+ BOOST_PROGRAM_OPTIONS
+ BOOST_IOSTREAMS
+ BOOST_FILESYSTEM
+-BOOST_SYSTEM
++# BOOST_SYSTEM
+ 
+ # Checks for header files.
+ AC_CHECK_HEADERS([sys/ioctl.h unistd.h sys/types.h sys/stat.h signal.h])
