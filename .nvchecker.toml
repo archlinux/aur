@@ -1,0 +1,5 @@
+["kerminal-bin"]
+source = "github"
+github = "klpod221/kerminal"
+use_latest_release = true
+prefix = "v"
