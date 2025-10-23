@@ -1,6 +1,6 @@
 pkgbase = blackwidow-macro-git
 	pkgdesc = Enable macro keys on Razer BlackWidow keyboards (udev helper)
-	pkgver = 0.r44.gcf687c6
+	pkgver = 0.r45.g6954d10
 	pkgrel = 1
 	url = https://github.com/equk/blackwidow_macro
 	arch = x86_64
