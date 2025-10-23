@@ -17,7 +17,7 @@ HDR = color.h
 
 INSSRC := install.c
 INSOBJ := $(INSSRC:.c=.o)
-INSBIN := install_bin
+INSBIN := caelestia-gif.install
 
 #DESTDIR ?= $(HOME)/.local
 DESTDIR ?= /usr
@@ -42,7 +42,6 @@ clean:
 
 # Install the binary
 install: $(BIN)
-	./$(INSBIN)
 	mkdir -p $(DESTDIR)/bin
 	cp $(BIN) $(DESTDIR)/bin/$(BIN)
 	chmod +x $(DESTDIR)/bin/$(BIN)

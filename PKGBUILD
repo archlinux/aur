@@ -22,7 +22,7 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=
+install=caelestia-gif.install
 changelog=
 #source=("https://gitlab.com/gnoooo/caelestia-gif/-/archive/master/caelestia-gif-master.tar.gz?ref_type=heads")
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
