@@ -1,10 +1,11 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: jetm <floss at jetm.me>
+# Old Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
 
 _pkgauthor=walles
 _pkgname=riff
 pkgname=${_pkgname}-bin
 pkgver=3.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A diff filter highlighting which line parts have changed'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${pkgver}"

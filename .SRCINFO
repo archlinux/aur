@@ -1,7 +1,7 @@
 pkgbase = riff-bin
 	pkgdesc = A diff filter highlighting which line parts have changed
 	pkgver = 3.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/walles/riff
 	arch = x86_64
 	license = MIT
