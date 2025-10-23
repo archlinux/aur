@@ -1,7 +1,7 @@
 # Maintainer: wang1zhen <you@example.com>
 pkgname=lyricbridge
-pkgver=0.1.0
-pkgrel=4
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="LyricBridge – Electron + FastAPI lyrics tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/wang1zhen/lyricbridge"
@@ -25,9 +25,9 @@ makedepends=('git')
 provides=('lyricbridge')
 conflicts=('lyricbridge-git')
 source=(
-  "lyricbridge-${pkgver}.tar.gz::https://github.com/wang1zhen/lyricbridge/archive/refs/tags/v${pkgver}.tar.gz"
+  "lyricbridge-${pkgver}.tar.gz::https://github.com/wang1zhen/lyricbridge/archive/refs/tags/v0.1.1.tar.gz"
 )
-sha256sums=('87f050e9374efc5c2c04e7a122bbe9a7cca0fe1e87c2114aa0e360ecbc1c5b3c')
+sha256sums=('54b09ab393125af76ccfea5a70f008b9483d44dde6d8d4331444cb3dfca59407')
 
 package() {
   cd "${srcdir}/lyricbridge-${pkgver}"
@@ -38,11 +38,11 @@ package() {
 
   # Launcher
   install -d "${pkgdir}/usr/bin"
-  install -m 755 packaging/arch/lyricbridge.sh "${pkgdir}/usr/bin/lyricbridge"
+  install -m 755 packaging/arch/lyricbridge/lyricbridge.sh "${pkgdir}/usr/bin/lyricbridge"
 
   # Desktop entry
   install -d "${pkgdir}/usr/share/applications"
-  install -m 644 packaging/arch/lyricbridge.desktop "${pkgdir}/usr/share/applications/lyricbridge.desktop"
+  install -m 644 packaging/arch/lyricbridge/lyricbridge.desktop "${pkgdir}/usr/share/applications/lyricbridge.desktop"
 
   # Icon (SVG)
   install -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
