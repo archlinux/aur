@@ -12,13 +12,13 @@ provides=('pkgmate')
 conflicts=('pkgmate')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fuad-daoud/pkgmate/releases/download/v0.2.0/pkgmate-debian-linux-arm64.tar.gz")
-sha256sums_aarch64=('929a3e13cdb05d27ead5737cc26a0a2f304e157b6593a894b585375c92e16fa0')
+sha256sums_aarch64=('7a52a33b899c0895764c0fce0f98ad072a452e467d2fcc1c3d18239c69606283')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fuad-daoud/pkgmate/releases/download/v0.2.0/pkgmate-debian-linux-amd64.tar.gz")
-sha256sums_x86_64=('30a2d06f2ceff505b0b373f9d3511ec63bba04a467220bcf535035183960a85a')
+sha256sums_x86_64=('8839ccde3af034d4810b5caefbf2567153034afd1a69f3ffb345a21c8f20db89')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fuad-daoud/pkgmate/releases/download/v0.2.0/pkgmate-arch-linux-amd64.tar.gz")
-sha256sums_x86_64=('dc88f45d28c1967a03323dd6271f7cf975597afca1465a121b1d6deb3e269574')
+sha256sums_x86_64=('0245522316d77ef1096f6c4959f57f2d8abab9269e83a30c8f8781c486b7442a')
 
 package() {
   install -Dm755 "./pkgmate" "${pkgdir}/usr/bin/pkgmate"
