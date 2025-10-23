@@ -5,7 +5,7 @@
 _pkgname=gnss-sdr
 pkgname="${_pkgname}-git"
 pkgver=0.0.20+280.r10135.20251009.df98a4efa
-pkgrel=1
+pkgrel=2
 pkgdesc="GNSS (Global Navigation Satellite System) software receiver"
 arch=(
   "i686"
