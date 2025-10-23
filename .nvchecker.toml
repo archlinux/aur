@@ -1,0 +1,4 @@
+[artemis-lang]
+source = "npm"
+npm = "@artemis-lang/cli"
+prefix = "v"
