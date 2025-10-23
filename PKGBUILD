@@ -44,8 +44,7 @@ options=()
 install=
 changelog=
 source=(
-	"https://raw.githubusercontent.com/develOseven/avoc/766715b7c10eb1b0a7efb6ba76d4dfd05ad4d0d7/requirements-$_python_version.hashes.txt"
-	"https://raw.githubusercontent.com/develOseven/avoc/766715b7c10eb1b0a7efb6ba76d4dfd05ad4d0d7/requirements-licenses-$_python_version.hashes.txt"
+	"git+https://github.com/develOseven/$pkgname.git#tag=$pkgver"
 )
 noextract=()
 validpgpkeys=()
@@ -58,6 +57,7 @@ _pyenv_shell() {
 
 prepare() {
 	_pyenv_shell
+	rm -rf "$pkgname-$pkgver"
 	mkdir -p "$pkgname-$pkgver"
 	cd "$pkgname-$pkgver"
 	pyenv install --skip-existing $_python_version
@@ -72,7 +72,7 @@ build() {
 	# Workaround for onnxsim that uses onnx/optimizer pre 31194ccb971bbbcc8218e103c7b0a8049ddddc3e.
 	CMAKE_ARGS="-DCMAKE_POLICY_VERSION_MINIMUM=3.5" \
 		pip install --require-virtualenv --require-hashes \
-		--requirement ../requirements-$_python_version.hashes.txt \
+		--requirement ../$pkgname/requirements-$_python_version.hashes.txt \
 		--requirement <(echo $pkgname==$pkgver $_pkghashes)
 }
 
@@ -110,7 +110,7 @@ package() {
 	# Generate the license file.
 	_package_python_deps="$(echo $pkgname; pip list --format=json 2>/dev/null | jq -r '.[].name')"
 	pip install --require-virtualenv --require-hashes \
-		--requirement ../requirements-licenses-$_python_version.hashes.txt
+		--requirement ../$pkgname/requirements-licenses-$_python_version.hashes.txt
 	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
 	pip-licenses --with-license-file --format=json --packages $_package_python_deps | \
 		awk -v t="$_o_venv" -v r="$_d_venv" "$_sub" > "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
@@ -125,5 +125,4 @@ package() {
 		"$pkgdir/usr/share/applications/AVoc.desktop"
 	echo "Path=/opt/$pkgname" >> "$pkgdir/usr/share/applications/AVoc.desktop"
 }
-sha256sums=('13907d4d20f157f696ca056a4ee9ab498706f7bfed9adb61fa825e850eeed393'
-            '7e255a21e207f1ff5b41132ee08830850e71da51778611b8653b2b686dc1e39e')
+sha256sums=('3c74c20d06dba02f4d16845b1778127d4854e0c0bba09f0746c47c3c9b122027')

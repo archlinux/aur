@@ -20,9 +20,7 @@ pkgbase = avoc
 	makedepends = jq
 	depends = pyenv
 	depends = python
-	source = https://raw.githubusercontent.com/develOseven/avoc/766715b7c10eb1b0a7efb6ba76d4dfd05ad4d0d7/requirements-3.12.3.hashes.txt
-	source = https://raw.githubusercontent.com/develOseven/avoc/766715b7c10eb1b0a7efb6ba76d4dfd05ad4d0d7/requirements-licenses-3.12.3.hashes.txt
-	sha256sums = 13907d4d20f157f696ca056a4ee9ab498706f7bfed9adb61fa825e850eeed393
-	sha256sums = 7e255a21e207f1ff5b41132ee08830850e71da51778611b8653b2b686dc1e39e
+	source = git+https://github.com/develOseven/avoc.git#tag=0.0.5
+	sha256sums = 3c74c20d06dba02f4d16845b1778127d4854e0c0bba09f0746c47c3c9b122027
 
 pkgname = avoc
