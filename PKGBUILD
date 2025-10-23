@@ -1,18 +1,18 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=elephant-snippets
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.5.1
+pkgrel=1
 pkgdesc='snippets provider for elephant'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
 license=('GPL')
-depends=('wlrctl')
+depends=('wtype')
 makedepends=('go')
 conflicts=('elephant-snippets')
 provides=('elephant-snippets')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("878e275e5dfe5dfca64c11b13ec7a565a0c81d165ccee2ec0940ffe538bf83f8")
+sha256sums=("9994d1db8f3bdc1ce74645ebf626e143b7673f5dd6115791e8b30a39491b244f")
 
 build() {
     cd elephant-${pkgver}/internal/providers/snippets
