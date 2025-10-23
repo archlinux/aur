@@ -2,8 +2,9 @@
 
 pkgname=vramfs-git
 _pkgbase=vramfs
-pkgver=96.829b1f2
+pkgver=r97.6eb95c9
 pkgrel=1
+epoch=1
 pkgdesc="VRAM based file system for Linux"
 arch=('x86_64')
 url="https://github.com/Overv/vramfs"
@@ -16,7 +17,7 @@ md5sums=("SKIP")
 
 pkgver() {
 	cd "$_pkgbase"
-	printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
