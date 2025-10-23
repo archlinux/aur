@@ -1,4 +1,5 @@
 # Maintainer: charlie <github.com/381181295>
+# Co-maintainer: SIGTERM <https://github.com/SIGTERM-015>
 pkgname=chatwise
 pkgver=0.9.38
 pkgrel=1
