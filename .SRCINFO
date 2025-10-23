@@ -1,0 +1,12 @@
+pkgbase = aslookup
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nieldk/aslookup
+	arch = x86_64
+	license = 0BSD
+	depends = curl
+	depends = cjson
+	source = aslookup.c
+	sha256sums = SKIP
+
+pkgname = aslookup
