@@ -16,7 +16,7 @@
 pkgname=loot
 # https://github.com/loot/loot/releases
 pkgver=0.28.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A load order optimisation tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games"
 arch=('x86_64')
 url="https://loot.github.io"
@@ -35,9 +35,12 @@ makedepends=(
 	'boost'
 	'cbindgen'
 	'cmake'
-	#'ogdf' # AUR
+	'ogdf' # AUR
 	'python'
 	'rust')
+optdepends=(
+	'vulkan-headers: Optional build dependency'
+)
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
 	'LOOT.desktop'
