@@ -5,7 +5,7 @@
 pkgname='datomic'
 pkgdesc='A database of flexible, time-based facts, supporting queries and joins, with elastic scalability and ACID transactions.'
 url='https://www.datomic.com/'
-pkgver='1.0.7277'
+pkgver='1.0.7394'
 pkgrel='1'
 arch=('any')
 license=('APACHE')
@@ -14,15 +14,13 @@ install="${pkgname}.install"
 source=(
   "${pkgname}-${pkgver}.zip::https://datomic-pro-downloads.s3.amazonaws.com/${pkgver}/${pkgname}-pro-${pkgver}.zip"
   "transactor.properties"
-  "${pkgname}.service"
 )
-sha256sums=('68d86d5d156066d8817f85631b29be075899096492a82e251428f768b96dadcf'
-            'e622f80994c4c21e52d59f8724d06fc6672c25479224619d3cc172df32fe31de'
-            'e79d27b9127e8f2cdbbde70631d876b4142fd09e2cd44e120d03940ac22bc96d')
+sha256sums=('8e3a6334dfc728c1c431dccc537dc88a9d2baf70f29bad5438df9d7c8c7146ae'
+            'e622f80994c4c21e52d59f8724d06fc6672c25479224619d3cc172df32fe31de')
+
 package() {
     mkdir -p "${pkgdir}/opt"
     cp -r "${srcdir}/${pkgname}-pro-${pkgver}" "${pkgdir}/opt/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system"
     install -Dm644 "${srcdir}/transactor.properties" -t "${pkgdir}/etc/${pkgname}"
     mkdir -p "${pkgdir}/var/lib/${pkgname}" "${pkgdir}/var/log/${pkgname}"
 }
