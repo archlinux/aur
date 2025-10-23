@@ -1,6 +1,6 @@
 pkgbase = vivify
 	pkgdesc = Markdown preview tool which can be used standalone or plug into an editor like (Neo)Vim
-	pkgver = 0.10.1
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/jannis-baum/vivify
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = vivify
 	depends = gcc-libs
 	depends = sh
 	options = !strip
-	source = vivify-0.10.1.tar.gz::https://github.com/jannis-baum/vivify/archive/refs/tags/v0.10.1.tar.gz
-	sha256sums = 360d53f8bd62612e26875ee5c50fdcc552165c0516d4f802cf81ff63be05c9f6
+	source = vivify-0.11.0.tar.gz::https://github.com/jannis-baum/vivify/archive/refs/tags/v0.11.0.tar.gz
+	sha256sums = 8fb7a6bfd3d7fc4cc41bceadb75901f992321abb2250a17575f60a343717955b
 
 pkgname = vivify
