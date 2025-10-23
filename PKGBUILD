@@ -1,6 +1,6 @@
 # Maintainer: ABOhiccups <info@abohiccups.com>
 pkgname=project-plus-netplay
-pkgver='v3.1.2'
+pkgver='v3.1.5'
 pkgrel='1'
 pkgdesc="A Mod of Super Smash Bros. Brawl with Netplay."
 arch=('x86_64')
