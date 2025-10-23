@@ -4,7 +4,7 @@
 
 pkgname=persistent-evdev-rs-bin
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Persistent proxy for evdev devices"
 url="https://github.com/FlorianNAdam/persistent-input-rs"
 license=("MIT")
@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("persistent-evdev-rs")
 conflicts=("persistent-evdev-rs")
 source=("https://github.com/FlorianNAdam/persistent-input-rs/releases/download/v$pkgver/persistent-evdev-rs-$pkgver-x86_64.tar.gz")
-sha256sums=("0503f0a806550d0ac7143c703489fde760b6c914893724b3e1ec87912f2df909")
+sha256sums=("1ded2b75bc818e744bdbafc16f2ddbd6cc5fdd071c2a773ece3009e32007360b")
 backup=(
     "etc/persistent-evdev-rs/config.json"
 )
