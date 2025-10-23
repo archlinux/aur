@@ -1,0 +1,40 @@
+From ebf465d280c1863c9827ac5d1124e9c8bfbc7834 Mon Sep 17 00:00:00 2001
+From: Damglador <vse.stopchanskyi@gmail.com>
+Date: Thu, 23 Oct 2025 23:06:14 +0200
+Subject: [PATCH] Fix console usage
+
+---
+ UE4localizationsTool/Program.cs | 10 +---------
+ 1 file changed, 1 insertion(+), 9 deletions(-)
+
+diff --git a/UE4localizationsTool/Program.cs b/UE4localizationsTool/Program.cs
+index 0565e8e..1bbfe54 100644
+--- a/UE4localizationsTool/Program.cs
++++ b/UE4localizationsTool/Program.cs
+@@ -5,12 +5,6 @@ namespace UE4localizationsTool
+ {
+     internal static class Program
+     {
+-
+-        [DllImport("kernel32.dll", SetLastError = true)]
+-        static extern bool AttachConsole(int dwProcessId);
+-        private const int ATTACH_PARENT_PROCESS = -1;
+-
+-
+         public static string commandlines =
+          $"{AppDomain.CurrentDomain.FriendlyName}  export     <(Locres/Uasset/Umap) FilePath>  <Options>\n" +
+          $"{AppDomain.CurrentDomain.FriendlyName}  import     <(txt) FilePath>  <Options>\n" +
+@@ -111,9 +105,7 @@ namespace UE4localizationsTool
+                     Application.Run(FrmMain);
+                     return;
+                 }
+-
+-
+-                AttachConsole(ATTACH_PARENT_PROCESS);
++                
+                 Console.WriteLine("");
+                 //  Console.SetCursorPosition(0, Console.CursorTop + 1);
+ 
+-- 
+2.51.0
+

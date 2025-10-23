@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=UE4LocalizationsTool
+Exec=ue4localizationstool %f
+Type=Application
+Terminal=false
+Categories=Application;Development;
+Icon=locale
+Comment=Simple tool to edit Unreal Engine 4 text files
