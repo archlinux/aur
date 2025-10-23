@@ -1,26 +1,40 @@
-# Contributor: Popolon <popolon@popolon.org>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: initMayday <initMayday@protonmail.com>
 
 pkgname=yoga
-pkgver=1.1.2
+pkgver=v3.2.1
 pkgrel=1
-pkgdesc="Yummy Optimizer for Gorgeous Assets"
-url="https://github.com/wanadev/yoga"
-depends=(python-cffi python-pillow python-pycparser python-unidecode
-	 python-pyguetzli python-zopfli assimp
-	 python-mozjpeg-lossless-optimization)
-makedepends=('python-setuptools')
-license=('custom')
-arch=('x86_64')
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('745d3323a462d3a8ce3b7db6777dc758120720517a85a2175000b3db1286a68b')
+pkgdesc="Yoga is an embeddable layout engine targeting web standards."
+arch=('any')
+url="https://github.com/facebook/yoga"
+license=('MIT')
+#depends=()
+makedepends=(git cmake)
+source=("git+https://github.com/facebook/yoga.git")
+sha256sums=(SKIP)
 
+#> Override LTO injection - This breaks it for cuarzo, and other software, not expecting LTO
+LTOFLAGS=""
+options=(!lto)
+
+pkgver() {
+    cd "$pkgname"
+    echo "$(git tag | grep -E 'v[0-9]+\.[0-9]+\.[0-9]+' | tail -1)"
+}
 prepare() {
-    cd ${pkgname}-${pkgver}
-    sed -i 's/--std=c++11/-Wno-error=stringop-overflow -Wno-error=array-bounds/' setup.py
+    cd "$pkgname"
+    git checkout $(git tag | grep -E 'v[0-9]+\.[0-9]+\.[0-9]+' | tail -1)
+    #> Don't parse the test suite
+    sed -i '/add_subdirectory(tests)/d' CMakeLists.txt
+}
+
+build() {
+    cd "$pkgname"
+    #> Override LTO
+    cmake -B build -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=OFF
+    cmake --build build
 }
 
 package() {
-    cd ${pkgname}-${pkgver}
-    python setup.py install --root="${pkgdir}" --optimize=1 
+    cd $pkgname
+    DESTDIR="$pkgdir" cmake --install build
 }
