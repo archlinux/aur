@@ -6,7 +6,7 @@ _pkgbase=${pkgbase%-git}
 _pkg1=DankMaterialShell
 _pkg2=danklinux
 pkgname=($_pkgbase-git $_pkgbase-hyprland-git $_pkgbase-niri-git)
-pkgver=0.2.0.r2.gfa44632
+pkgver=0.2.0.r6.g8b0655c
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
@@ -44,12 +44,21 @@ pkgver() {
 
 build() {
 	cd "$_pkg2"
+
+	local VERSION BUILD_TIME COMMIT LDFLAGS_GO
+	VERSION="$(git describe --tags --always 2>/dev/null || echo dev)"
+	BUILD_TIME="$(date -u '+%Y-%m-%d_%H:%M:%S')"
+	COMMIT="$(git rev-parse --short HEAD 2>/dev/null || echo unknown)"
+
 	export CGO_CPPFLAGS="$CPPFLAGS"
 	export CGO_CFLAGS="$CFLAGS"
 	export CGO_CXXFLAGS="$CXXFLAGS"
 	export CGO_LDFLAGS="$LDFLAGS"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	go build -tags distro_binary -o dms ./cmd/dms
+
+	LDFLAGS_GO="-s -w -X main.Version=${VERSION} -X main.buildTime=${BUILD_TIME} -X main.commit=${COMMIT} -linkmode=external"
+
+	GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	go build -tags distro_binary -ldflags "${LDFLAGS_GO}" ${GOFLAGS} -o dms ./cmd/dms
 }
 
 package_dms-shell-git() {
