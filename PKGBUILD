@@ -137,7 +137,7 @@ pkgname=(
 pkgver=R2025b+25.2.0.2998904
 _release="${pkgver%+*}"
 _version="${pkgver##*+}"
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="A high-level language for numerical computation and visualization"
 arch=('x86_64')
@@ -203,7 +203,7 @@ prepare() {
 
   local _product_list=""
   for _product in "${_products[@]}"; do
-    _product_list+="${_product//-/_} "
+    _product_list+="${_product// /_} "
   done
   _product_list="${_product_list% }"
 
@@ -211,7 +211,7 @@ prepare() {
   TMPDIR="${srcdir}/tmp" matlab-mpm download \
     --release="${_release}" \
     --destination="${srcdir}/download" \
-    --products="${_product_list:+${_product_list} }MATLAB" \
+    --products=${_product_list:+${_product_list} }MATLAB \
     --platforms="glnxa64" \
     --no-deps # provides implicit product selection correctness check during install
 
@@ -222,10 +222,11 @@ prepare() {
   echo "  -> Download completed successfully."
 
   echo "  -> Installing archives using MPM. This will take a while..."
-  TMPDIR="${srcdir}/tmp" matlab-mpm install \
+  chmod +x ./download/mpm/glnxa64/mpm
+  TMPDIR="${srcdir}/tmp" ./download/mpm/glnxa64/mpm install \
     --source="${srcdir}/download" \
     --destination="${srcdir}/install" \
-    --products="${_product_list:+${_product_list} }MATLAB" \
+    --products=${_product_list:+${_product_list} }MATLAB \
     --no-jre \
     --no-gpu # is this needed?
 
@@ -301,6 +302,7 @@ package_matlab() {
   )
   conflicts+=(
     "${pkgname}-${_release,,}"
+    "${pkgname}-runtime"
   )
   install="${pkgname}.install"
 
@@ -351,6 +353,7 @@ package_java-matlab() {
   )
   conflicts=(
     "${pkgname}-${_release,,}"
+    "${pkgname}-runtime"
   )
   install="${pkgname}.install"
 

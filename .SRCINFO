@@ -1,7 +1,7 @@
 pkgbase = matlab
 	pkgdesc = A high-level language for numerical computation and visualization
 	pkgver = R2025b+25.2.0.2998904
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://www.mathworks.com/products/matlab.html
 	arch = x86_64
@@ -28,21 +28,23 @@ pkgname = matlab
 	provides = matlab-version=25.2.0.2998904
 	provides = matlab-r2025b=25.2.0.2998904
 	conflicts = matlab-r2025b
+	conflicts = matlab-runtime
 
 pkgname = java-matlab
 	pkgdesc = A high-level language for numerical computation and visualization (Java components)
 	install = java-matlab.install
-	depends = matlab=1:R2025b+25.2.0.2998904-3
+	depends = matlab=1:R2025b+25.2.0.2998904-4
 	depends = java-matlab-meta
 	provides = java-matlab-release=R2025b
 	provides = java-matlab-version=25.2.0.2998904
 	provides = java-matlab-r2025b=25.2.0.2998904
 	conflicts = java-matlab-r2025b
+	conflicts = java-matlab-runtime
 
 pkgname = matlab-gcc
 	pkgdesc = A high-level language for numerical computation and visualization (GCC runtime dependency)
 	arch = any
-	depends = matlab=1:R2025b+25.2.0.2998904-3
+	depends = matlab=1:R2025b+25.2.0.2998904-4
 	depends = gcc10
 	provides = matlab-gcc=10
 	provides = matlab-gcc-release=R2025b
@@ -53,7 +55,7 @@ pkgname = matlab-gcc
 pkgname = matlab-gcc-fortran
 	pkgdesc = A high-level language for numerical computation and visualization (GFortran runtime dependency)
 	arch = any
-	depends = matlab=1:R2025b+25.2.0.2998904-3
+	depends = matlab=1:R2025b+25.2.0.2998904-4
 	depends = gcc10-fortran
 	provides = matlab-gcc-fortran=10
 	provides = matlab-gcc-fortran-release=R2025b
@@ -64,7 +66,7 @@ pkgname = matlab-gcc-fortran
 pkgname = matlab-gcc8
 	pkgdesc = A high-level language for numerical computation and visualization (GCC8 runtime dependency)
 	arch = any
-	depends = matlab=1:R2025b+25.2.0.2998904-3
+	depends = matlab=1:R2025b+25.2.0.2998904-4
 	depends = gcc8
 	provides = matlab-gcc=8
 	provides = matlab-gcc-release=R2025b
@@ -76,7 +78,7 @@ pkgname = matlab-gcc8
 pkgname = matlab-gcc9
 	pkgdesc = A high-level language for numerical computation and visualization (GCC9 runtime dependency)
 	arch = any
-	depends = matlab=1:R2025b+25.2.0.2998904-3
+	depends = matlab=1:R2025b+25.2.0.2998904-4
 	depends = gcc9
 	provides = matlab-gcc=9
 	provides = matlab-gcc-release=R2025b
@@ -88,7 +90,7 @@ pkgname = matlab-gcc9
 pkgname = matlab-gcc11
 	pkgdesc = A high-level language for numerical computation and visualization (GCC11 runtime dependency)
 	arch = any
-	depends = matlab=1:R2025b+25.2.0.2998904-3
+	depends = matlab=1:R2025b+25.2.0.2998904-4
 	depends = gcc11
 	provides = matlab-gcc=11
 	provides = matlab-gcc-release=R2025b
@@ -100,7 +102,7 @@ pkgname = matlab-gcc11
 pkgname = matlab-gcc12
 	pkgdesc = A high-level language for numerical computation and visualization (GCC12 runtime dependency)
 	arch = any
-	depends = matlab=1:R2025b+25.2.0.2998904-3
+	depends = matlab=1:R2025b+25.2.0.2998904-4
 	depends = gcc12
 	provides = matlab-gcc=12
 	provides = matlab-gcc-release=R2025b
@@ -112,7 +114,7 @@ pkgname = matlab-gcc12
 pkgname = matlab-gcc13
 	pkgdesc = A high-level language for numerical computation and visualization (GCC13 runtime dependency)
 	arch = any
-	depends = matlab=1:R2025b+25.2.0.2998904-3
+	depends = matlab=1:R2025b+25.2.0.2998904-4
 	depends = gcc13
 	provides = matlab-gcc=13
 	provides = matlab-gcc-release=R2025b
