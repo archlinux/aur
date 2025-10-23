@@ -1,4 +1,9 @@
-*.sh
-*.json
-*.deb
+# Ignore everything
+/*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!Changelog
 
