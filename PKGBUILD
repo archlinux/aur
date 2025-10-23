@@ -26,7 +26,7 @@ install=
 changelog=
 source=("https://gitlab.com/gnoooo/caelestia-gif/-/archive/master/caelestia-gif-master.tar.gz?ref_type=heads")
 noextract=()
-sha256sums=('4dbdbdfa37c7acc2c60bc336bd07633edca80e47c011c60203a6d5c9d23d2c0d')
+sha256sums=('57876817f0719e272ba87e34e9e16648b5bc272e35d6342331540288caf93cd0')
 validpgpkeys=()
 
 prepare() {
