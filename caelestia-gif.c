@@ -13,6 +13,7 @@
 #include <sys/ioctl.h>
 
 #include "color.h"
+#include "postinstall.h"
 
 #ifndef VERSION
 #define VERSION "unknown"
@@ -425,6 +426,9 @@ int main(int argc,char *argv[]) {
     for (int i = 1; i < argc; i++) {
         if (strcmp(argv[i],"--help")==0 || strcmp(argv[i],"-h")==0) {
             print_help_main();
+            return 0;
+        } else if (strcmp(argv[i],"--init")==0) {
+            postinstall();
             return 0;
         } else if (strcmp(argv[i],"--version")==0 || strcmp(argv[i],"-v")==0) {
             print_version();

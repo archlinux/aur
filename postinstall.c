@@ -206,7 +206,7 @@ int edit_shell_json(void) {
     return 0;
 }
 
-int main(void) {
+int postinstall(void) {
     const char *home = getenv("HOME");
     if (home == NULL) {
         fprintf(stderr, FG_RED "Error: HOME environment variable not set.\n" FG_DEFAULT);

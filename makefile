@@ -10,14 +10,12 @@ CDFLAGS := -Wall -Wextra -O2 -std=c11 -DVERSION=\"$(VERSION)\"
 LDFLAGS := -lcjson
 
 # Directories
-SRC := caelestia-gif.c
+SRC := caelestia-gif.c postinstall.c
 OBJ := $(SRC:.c=.o)
 BIN := caelestia-gif
-HDR = color.h
+HDR = color.h postinstall.h
 
-INSSRC := install.c
-INSOBJ := $(INSSRC:.c=.o)
-INSBIN := caelestia-gif.install
+
 
 #DESTDIR ?= $(HOME)/.local
 DESTDIR ?= /usr
@@ -27,10 +25,8 @@ all: $(BIN) $(INSBIN)
 
 # Build the binary
 $(BIN): $(OBJ) $(HDR)
-	$(CC) $(OBJ) -o $@ 
+	$(CC) $(OBJ) -o $@ $(LDFLAGS)
 
-$(INSBIN): $(INSOBJ)
-	$(CC) $(INSOBJ) -o $@ $(LDFLAGS)
 
 # Compile source files
 %.o: %.c
@@ -38,7 +34,7 @@ $(INSBIN): $(INSOBJ)
 
 # Clean up build files
 clean:
-	rm -f $(OBJ) $(BIN) $(INSOBJ) $(INSBIN)
+	rm -f $(OBJ) $(BIN)
 
 # Install the binary
 install: $(BIN)
