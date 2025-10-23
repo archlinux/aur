@@ -1,0 +1,5 @@
+["snmalloc"]
+source = "github"
+github = "microsoft/snmalloc"
+use_latest_release = true
+
