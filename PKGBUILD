@@ -1,8 +1,9 @@
-# Maintainer: qubidt <qubidt at gmail dot com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: qubidt <qubidt at gmail dot com>
 
 pkgname=riffdiff
 _pkgname=riff
-pkgver=3.2.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="A diff filter highlighting which line parts have changed"
 arch=('i686' 'x86_64' 'aarch64')
@@ -10,9 +11,10 @@ url='https://github.com/walles/riff'
 license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
+provides=("${_pkgname}")
 conflicts=("${_pkgname}") # binary name conflicts with riff dependency manager
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('e3950b5786fc2953d89dccdec29f1092eeab2f0758bdd582229aab4cf5cb4144')
+sha256sums=('0f7a023e3fc0fad8822aa94e52d0c70ece5f0bf1ed4b4fa56d5f12d739bd82d4')
 
 prepare() {
 	cd "${_pkgname}-${pkgver}"
@@ -31,7 +33,9 @@ check() {
 
 package() {
 	cd "${_pkgname}-${pkgver}"
+
 	install -Dm 755 -t "${pkgdir}/usr/bin" "target/release/${_pkgname}"
+
 	install -Dm 644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
 	install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
