@@ -1,18 +1,32 @@
 pkgbase = kerminal
-	pkgdesc = Modern Terminal with SSH, Tunneling & Cross-Device Sync
-	pkgver = 1.1.0
+	pkgdesc = Modern Terminal Emulator & SSH Manager
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/klpod221/kerminal
-	install = kerminal.install
 	arch = x86_64
 	license = MIT
-	source = kerminal-1.1.0.tar.gz::https://github.com/klpod221/kerminal/releases/download/v1.1.0/kerminal-1.1.0.tar.gz
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nodejs>=20
+	makedepends = npm
+	makedepends = webkit2gtk-4.1
+	makedepends = gtk3
+	makedepends = glib2
+	makedepends = cairo
+	makedepends = libsoup3
+	makedepends = gdk-pixbuf2
+	depends = glibc
+	depends = gcc-libs
+	depends = glib2
+	depends = gtk3
+	depends = cairo
+	depends = webkit2gtk-4.1
+	depends = libsoup3
+	depends = gdk-pixbuf2
+	depends = hicolor-icon-theme
+	source = git+https://github.com/klpod221/kerminal.git#tag=v2.0.1
 	source = kerminal.desktop
-	source = kerminal.png
-	source = kerminal.install
-	sha256sums = d172ad76ab30e464c704a76638a21849809fb2f5de62512a46141e221ba4e81c
-	sha256sums = 2df1c604059ef87538597729413712e72248afc3ebbbbc9ba35656aae2fb28da
-	sha256sums = eb1984cf3d4d3a78c013d65da067822f7ef9a6d32ea3a54fa22834d3981702fc
-	sha256sums = 6628d9ee715006d102c7b6fe8108ed6c755f71fa03e948b7f4d0842026645e97
+	sha256sums = e593935268d8f70e33ff35018abfa6b792f5deca565368c6f904dc5323369b9a
+	sha256sums = 2012d68d4a1a7672497eaad7db0d398356e230e588344038d7151d4eeee9d3f6
 
 pkgname = kerminal

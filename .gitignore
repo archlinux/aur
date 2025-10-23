@@ -1,1 +1,6 @@
-*.tar.gz
+*
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!kerminal.desktop
+!PKGBUILD

@@ -1,32 +1,69 @@
 # Maintainer: klpod221 <klpod221@gmail.com>
+
+_pkgauthor=klpod221
+_pkgname=kerminal
 pkgname=kerminal
-pkgver=1.1.0
+pkgver=2.0.1
+_pkgvername=v${pkgver}
 pkgrel=1
-pkgdesc="Modern Terminal with SSH, Tunneling & Cross-Device Sync"
+pkgdesc="Modern Terminal Emulator & SSH Manager"
 arch=('x86_64')
+_barch=('amd64')
 url="https://github.com/klpod221/kerminal"
 license=('MIT')
-install="${pkgname}.install"
-
-source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/klpod221/kerminal/releases/download/v${pkgver}/kerminal-${pkgver}.tar.gz"
-  "kerminal.desktop"
-  "kerminal.png"
-  "kerminal.install"
+makedepends=(
+  'rust'
+  'cargo'
+  'nodejs>=20'
+  'npm'
+  'webkit2gtk-4.1'
+  'gtk3'
+  'glib2'
+  'cairo'
+  'libsoup3'
+  'gdk-pixbuf2'
 )
 
-sha256sums=('d172ad76ab30e464c704a76638a21849809fb2f5de62512a46141e221ba4e81c'
-            '2df1c604059ef87538597729413712e72248afc3ebbbbc9ba35656aae2fb28da'
-            'eb1984cf3d4d3a78c013d65da067822f7ef9a6d32ea3a54fa22834d3981702fc'
-            '6628d9ee715006d102c7b6fe8108ed6c755f71fa03e948b7f4d0842026645e97')
+depends=(
+  'glibc'
+  'gcc-libs'
+  'glib2'
+  'gtk3'
+  'cairo'
+  'webkit2gtk-4.1'
+  'libsoup3'
+  'gdk-pixbuf2'
+  'hicolor-icon-theme'
+)
+
+source=(
+  "git+${url}.git#tag=v${pkgver}"
+  "${pkgname}.desktop"
+)
+sha256sums=('e593935268d8f70e33ff35018abfa6b792f5deca565368c6f904dc5323369b9a'
+            '2012d68d4a1a7672497eaad7db0d398356e230e588344038d7151d4eeee9d3f6')
+
+prepare() {
+  cd "${_pkgname}"
+  git checkout "v${pkgver}"
+  npm install
+}
+
+build() {
+  cd "${_pkgname}"
+  
+  export CARGO_TARGET_DIR="target"
+  cargo tauri build --no-bundle
+}
 
 package() {
-  install -d "${pkgdir}/usr/lib/${pkgname}"
-  cp -r "${srcdir}/kerminal-${pkgver}/"* "${pkgdir}/usr/lib/${pkgname}/"
+    cd "${_pkgname}"
 
-  install -d "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/${pkgname}/Kerminal" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 "src-tauri/target/release/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-  install -Dm644 "${srcdir}/kerminal.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm644 "${srcdir}/kerminal.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
+    install -Dm644 "src-tauri/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    
+    install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+        
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
