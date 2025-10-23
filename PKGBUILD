@@ -19,7 +19,6 @@ source=(
 sha256sums=('05b0e6cc80b84b5693f038272238ae3a2be89d4f728ed548c950043c24aab702')
 
 prepare() {
-    bsdtar -xf "$srcdir/$_package" -C "$srcdir"
 	chmod +x "$srcdir/$_appimage"
 	$srcdir/$_appimage --appimage-extract
 }
