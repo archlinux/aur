@@ -3,6 +3,7 @@ pkgbase = caelestia-gif
 	pkgver = 1.0.1
 	pkgrel = 5
 	url = https://gitlab.com/gnoooo/caelestia-gif
+	install = caelestia-gif.install
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
