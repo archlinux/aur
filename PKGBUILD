@@ -1,12 +1,12 @@
 # Maintainer: Your Name <claudemods101@gmail.com>
 pkgname=archconv
-pkgver=1.0
+pkgver=1.01
 pkgrel=1
 pkgdesc="Convert vanilla Arch Linux to CachyOS"
 arch=('any')  # Changed from x86_64 since it's a bash script
 url="https://github.com/claudemods/vanillaarch-to-cachyos"
 license=('GPL')
-depends=('bash' 'sudo')  # Added sudo as it's commonly needed for system scripts
+depends=('bash' 'sudo' 'git')  # Added sudo as it's commonly needed for system scripts
 source=("git+https://github.com/claudemods/vanillaarch-to-cachyos.git")
 md5sums=('SKIP')
 
