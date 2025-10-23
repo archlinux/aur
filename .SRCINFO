@@ -12,10 +12,8 @@ pkgbase = xpra-html5
 	makedepends = uglify-js
 	conflicts = xpra-html5-git
 	source = xpra-html5-18.tar.gz::https://github.com/Xpra-org/xpra-html5/archive/refs/tags/v18.tar.gz
-	source = fix_395.patch
 	source = fix_396.patch
 	sha256sums = 16cef9dfefea574ee46bebedbb4f4c33dbe797c23099355646f51221905062d8
-	sha256sums = eb75983814352944b896acb641aac750a1eec631af38258af35fad75d0c04d77
 	sha256sums = b06934dfe110bc262eaed0eb3e1f5c0125ad32a6a7de7b022ed5a7a289341f68
 
 pkgname = xpra-html5

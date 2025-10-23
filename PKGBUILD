@@ -20,16 +20,12 @@ makedepends=(
 )
 
 source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "fix_395.patch"
         "fix_396.patch")
+
 sha256sums=('16cef9dfefea574ee46bebedbb4f4c33dbe797c23099355646f51221905062d8'
-            'eb75983814352944b896acb641aac750a1eec631af38258af35fad75d0c04d77'
             'b06934dfe110bc262eaed0eb3e1f5c0125ad32a6a7de7b022ed5a7a289341f68')
 
 package() {
-  # fixes https://github.com/Xpra-org/xpra-html5/issues/395
-  patch -p0 < fix_395.patch
-
   # fixes https://github.com/Xpra-org/xpra-html5/issues/396
   patch -p0 < fix_396.patch
 
