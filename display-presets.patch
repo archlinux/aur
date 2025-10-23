@@ -1,91 +1,8 @@
-From 447620600b2d8fdfaf1aacba8f645b4aa6e5a71e Mon Sep 17 00:00:00 2001
-From: Jerzy Kolosowski <jerzy@kolosowscy.pl>
-Date: Tue, 16 Sep 2025 19:52:41 +0200
-Subject: [PATCH] Add Display Presets feature to KScreen
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
-This comprehensive feature adds display preset functionality to KScreen,
-allowing users to save, manage, and quickly switch between different
-display configurations. The implementation includes:
-
-- Complete preset management system with save/load/delete operations
-- Integration across KCM, KDED daemon, and Plasma applet
-- Real-time preview functionality showing preset configurations
-- Keyboard shortcuts support for quick preset switching
-- File monitoring for automatic preset synchronization
-- Architecture supporting monitor availability detection
-- Enhanced UI with current status detection and improved layouts
-
-The feature is implemented with a clean separation of concerns:
-- Common library for shared preset utilities
-- KDED daemon integration for system-wide preset management
-- KCM interface for comprehensive preset configuration
-- Plasma applet for quick access and switching
-
-FEATURE: Display Presets for KScreen
-CHANGELOG: Add display preset functionality with save/load/preview capabilities
-Signed-off-by: Jerzy Kołosowski <jerzy@kolosowscy.pl>
----
- CMakeLists.txt                         |   2 +
- common/CMakeLists.txt                  |   4 +-
- common/presets.cpp                     | 516 +++++++++++++++++++++++++
- common/presets.h                       | 107 +++++
- kcm/CMakeLists.txt                     |   1 +
- kcm/kcm.cpp                            | 230 +++++++++++
- kcm/kcm.h                              |  24 ++
- kcm/preset_manager.cpp                 | 229 +++++++++++
- kcm/preset_manager.h                   |  57 +++
- kcm/ui/PresetOutput.qml                | 198 ++++++++++
- kcm/ui/PresetPage.qml                  | 356 +++++++++++++++++
- kcm/ui/PresetView.qml                  |  95 +++++
- kcm/ui/ScreenView.qml                  |   7 +
- kcm/ui/main.qml                        |  19 +-
- kded/CMakeLists.txt                    |   1 +
- plasmoid/CMakeLists.txt                |  13 +
- plasmoid/PresetList.qml                | 173 +++++++++
- plasmoid/PresetOutput.qml              | 179 +++++++++
- plasmoid/PresetView.qml                |  96 +++++
- plasmoid/kscreenapplet.cpp             | 237 ++++++++++++
- plasmoid/kscreenapplet.h               |  47 +++
- plasmoid/main.qml                      |  10 +
- presets/CMakeLists.txt                 |  38 ++
- presets/main.cpp                       |  57 +++
- presets/org.kde.kscreen.presets.xml    |  19 +
- presets/plasma-kscreen-presets.service |   8 +
- presets/presetsservice.cpp             | 461 ++++++++++++++++++++++
- presets/presetsservice.h               |  62 +++
- tests/CMakeLists.txt                   |   1 +
- tests/presets/CMakeLists.txt           |  28 ++
- tests/presets/testpresets.cpp          | 507 ++++++++++++++++++++++++
- tests/presets/testsimple.cpp           | 121 ++++++
- 32 files changed, 3895 insertions(+), 8 deletions(-)
- create mode 100644 common/presets.cpp
- create mode 100644 common/presets.h
- create mode 100644 kcm/preset_manager.cpp
- create mode 100644 kcm/preset_manager.h
- create mode 100644 kcm/ui/PresetOutput.qml
- create mode 100644 kcm/ui/PresetPage.qml
- create mode 100644 kcm/ui/PresetView.qml
- create mode 100644 plasmoid/PresetList.qml
- create mode 100644 plasmoid/PresetOutput.qml
- create mode 100644 plasmoid/PresetView.qml
- create mode 100644 presets/CMakeLists.txt
- create mode 100644 presets/main.cpp
- create mode 100644 presets/org.kde.kscreen.presets.xml
- create mode 100644 presets/plasma-kscreen-presets.service
- create mode 100644 presets/presetsservice.cpp
- create mode 100644 presets/presetsservice.h
- create mode 100644 tests/presets/CMakeLists.txt
- create mode 100644 tests/presets/testpresets.cpp
- create mode 100644 tests/presets/testsimple.cpp
-
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index ccc882f0..29c3aa4f 100644
+index a437ed6f..1398d2f1 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -38,6 +38,7 @@ find_package(Qt6 ${QT_MIN_VERSION} REQUIRED COMPONENTS Gui Test Sensors QuickCon
+@@ -41,6 +41,7 @@ endif()
  find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
      Config
      DBusAddons
@@ -93,7 +10,7 @@ index ccc882f0..29c3aa4f 100644
      I18n
      KCMUtils
      Svg
-@@ -92,6 +93,7 @@ add_subdirectory(common)
+@@ -98,6 +99,7 @@ add_subdirectory(common)
  add_subdirectory(kcm)
  add_subdirectory(kded)
  add_subdirectory(osd)
@@ -102,16 +19,16 @@ index ccc882f0..29c3aa4f 100644
  add_subdirectory(tests)
  add_subdirectory(console)
 diff --git a/common/CMakeLists.txt b/common/CMakeLists.txt
-index f7341866..c58f5579 100644
+index c4c8d176..7ce45923 100644
 --- a/common/CMakeLists.txt
 +++ b/common/CMakeLists.txt
 @@ -1,6 +1,6 @@
--add_library(kscreen_common OBJECT control.cpp globals.cpp orientation_sensor.cpp osdaction.cpp output.cpp utils.cpp)
-+add_library(kscreen_common OBJECT control.cpp globals.cpp orientation_sensor.cpp osdaction.cpp output.cpp utils.cpp presets.cpp)
+-add_library(kscreen_common OBJECT control.cpp globals.cpp osdaction.cpp  output.cpp  utils.cpp)
++add_library(kscreen_common OBJECT control.cpp globals.cpp osdaction.cpp output.cpp utils.cpp presets.cpp)
  ecm_qt_declare_logging_category(kscreen_common HEADER kscreen_daemon_debug.h IDENTIFIER KSCREEN_KDED CATEGORY_NAME kscreen.kded DESCRIPTION "kscreen kded (kscreen)" EXPORT KSCREEN)
 +ecm_qt_declare_logging_category(kscreen_common HEADER kscreen_common_debug.h IDENTIFIER KSCREEN_COMMON CATEGORY_NAME kscreen.common DESCRIPTION "kscreen common library (kscreen)" EXPORT KSCREEN)
  set_property(TARGET kscreen_common PROPERTY POSITION_INDEPENDENT_CODE ON)
- target_link_libraries(kscreen_common PRIVATE Qt::Core Qt::Sensors KF6::Screen KF6::CoreAddons KF6::I18n)
+ target_link_libraries(kscreen_common PRIVATE Qt::Core KF6::Screen KF6::CoreAddons KF6::I18n)
  target_include_directories(kscreen_common PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/..>")
 -
 diff --git a/common/presets.cpp b/common/presets.cpp
@@ -752,7 +669,7 @@ index 00000000..42f861bb
 +};
 \ No newline at end of file
 diff --git a/kcm/CMakeLists.txt b/kcm/CMakeLists.txt
-index 982ca94c..192c72ef 100644
+index 3c21e0fd..9fc5121e 100644
 --- a/kcm/CMakeLists.txt
 +++ b/kcm/CMakeLists.txt
 @@ -6,6 +6,7 @@ target_sources(kcm_kscreen PRIVATE
@@ -764,13 +681,13 @@ index 982ca94c..192c72ef 100644
  )
  
 diff --git a/kcm/kcm.cpp b/kcm/kcm.cpp
-index dcbd27ec..3bf5b746 100644
+index e759811d..ce8c61ac 100644
 --- a/kcm/kcm.cpp
 +++ b/kcm/kcm.cpp
 @@ -7,10 +7,13 @@
  
+ 
  #include "common/control.h"
- #include "common/orientation_sensor.h"
 +#include "common/utils.h"
  #include "config_handler.h"
  #include "globalscalesettings.h"
@@ -781,7 +698,7 @@ index dcbd27ec..3bf5b746 100644
  
  #include <kscreen/config.h>
  #include <kscreen/configmonitor.h>
-@@ -51,11 +54,13 @@ KCMKScreen::KCMKScreen(QObject *parent, const KPluginMetaData &data)
+@@ -51,12 +54,14 @@ KCMKScreen::KCMKScreen(QObject *parent, const KPluginMetaData &data)
      qmlRegisterUncreatableType<OutputModel>("org.kde.private.kcm.kscreen", 1, 0, "OutputModel", QStringLiteral("For enums"));
      qmlRegisterType<KScreen::Output>("org.kde.private.kcm.kscreen", 1, 0, "Output");
      qmlRegisterUncreatableType<KCMKScreen>("org.kde.private.kcm.kscreen", 1, 0, "KCMKScreen", QStringLiteral("For InvalidConfig enum"));
@@ -789,13 +706,14 @@ index dcbd27ec..3bf5b746 100644
      Log::instance();
  
      setButtons(Apply);
+     setSupportsInstantApply(false);
  
      m_outputProxyModel = new ScreenSortProxyModel(this);
 +    m_presetManager = new PresetManager(this);
  
      m_loadCompressor = new QTimer(this);
      m_loadCompressor->setInterval(1000);
-@@ -101,6 +106,9 @@ void KCMKScreen::configReady(ConfigOperation *op)
+@@ -97,6 +102,9 @@ void KCMKScreen::configReady(ConfigOperation *op)
      Q_EMIT outputReplicationSupportedChanged();
      Q_EMIT tabletModeAvailableChanged();
      Q_EMIT autoRotationSupportedChanged();
@@ -805,7 +723,7 @@ index dcbd27ec..3bf5b746 100644
  }
  
  void KCMKScreen::save()
-@@ -251,6 +259,11 @@ QAbstractItemModel *KCMKScreen::outputModel() const
+@@ -247,6 +255,11 @@ QAbstractItemModel *KCMKScreen::outputModel() const
      return m_outputProxyModel;
  }
  
@@ -817,7 +735,7 @@ index dcbd27ec..3bf5b746 100644
  void KCMKScreen::identifyOutputs()
  {
      const QString name = QStringLiteral("org.kde.KWin");
-@@ -373,6 +386,9 @@ void KCMKScreen::load()
+@@ -356,6 +369,9 @@ void KCMKScreen::load()
  
          // Reload settings delayed such that daemon can update output values.
          m_loadCompressor->start();
@@ -827,7 +745,7 @@ index dcbd27ec..3bf5b746 100644
      });
      connect(m_configHandler.get(), &ConfigHandler::screenNormalizationUpdate, this, &KCMKScreen::setScreenNormalized);
  
-@@ -559,6 +575,220 @@ void KCMKScreen::startHdrCalibrator(const QString &outputName)
+@@ -542,6 +558,220 @@ void KCMKScreen::startHdrCalibrator(const QString &outputName)
      QProcess::startDetached("hdrcalibrator", {outputName});
  }
  
@@ -1049,7 +967,7 @@ index dcbd27ec..3bf5b746 100644
  
  #include "moc_kcm.cpp"
 diff --git a/kcm/kcm.h b/kcm/kcm.h
-index 773282f8..95c479ee 100644
+index 1d03614c..41437d95 100644
 --- a/kcm/kcm.h
 +++ b/kcm/kcm.h
 @@ -19,6 +19,7 @@ class ConfigOperation;
@@ -1060,7 +978,7 @@ index 773282f8..95c479ee 100644
  
  class QSortFilterProxyModel;
  
-@@ -41,6 +42,7 @@ class KCMKScreen : public KQuickManagedConfigModule
+@@ -39,6 +40,7 @@ class KCMKScreen : public KQuickManagedConfigModule
      Q_PROPERTY(bool xwaylandClientsScale READ xwaylandClientsScale WRITE setXwaylandClientsScale NOTIFY xwaylandClientsScaleChanged)
      Q_PROPERTY(bool tearingAllowed READ allowTearing WRITE setAllowTearing NOTIFY tearingAllowedChanged)
      Q_PROPERTY(bool multipleScreensAvailable READ multipleScreensAvailable NOTIFY multipleScreensAvailableChanged)
@@ -1068,7 +986,7 @@ index 773282f8..95c479ee 100644
  
  public:
      enum InvalidConfigReason {
-@@ -58,6 +60,7 @@ public:
+@@ -56,6 +58,7 @@ public:
      bool isSaveNeeded() const override;
  
      QAbstractItemModel *outputModel() const;
@@ -1076,7 +994,7 @@ index 773282f8..95c479ee 100644
  
      Q_INVOKABLE void identifyOutputs();
  
-@@ -96,6 +99,19 @@ public:
+@@ -92,6 +95,19 @@ public:
  
      Q_INVOKABLE void startHdrCalibrator(const QString &outputName);
  
@@ -1096,7 +1014,7 @@ index 773282f8..95c479ee 100644
  Q_SIGNALS:
      void backendReadyChanged();
      void backendError();
-@@ -123,6 +139,7 @@ Q_SIGNALS:
+@@ -119,6 +135,7 @@ Q_SIGNALS:
  private:
      void setBackendReady(bool error);
      void setScreenNormalized(bool normalized);
@@ -1104,7 +1022,7 @@ index 773282f8..95c479ee 100644
  
      void exportGlobalScale();
  
-@@ -130,6 +147,12 @@ private:
+@@ -126,6 +143,12 @@ private:
      void continueNeedsSaveCheck(bool needs);
      void checkConfig();
  
@@ -1115,9 +1033,9 @@ index 773282f8..95c479ee 100644
 +                             const QVariantMap &presetOutputMap);
 +
      std::unique_ptr<ConfigHandler> m_configHandler;
-     OrientationSensor *m_orientationSensor;
      bool m_backendReady = false;
-@@ -140,6 +163,7 @@ private:
+     bool m_screenNormalized = true;
+@@ -135,6 +158,7 @@ private:
      bool m_needsKwinConfigReload = false;
  
      QSortFilterProxyModel *m_outputProxyModel;
@@ -2114,7 +2032,7 @@ index fb153c2e..007cf929 100644
          const relativeSize = Qt.size(
              totalSize.width / (0.6 * width),
 diff --git a/kcm/ui/main.qml b/kcm/ui/main.qml
-index 4fb182c3..02110a30 100644
+index 45ef2e89..415366b1 100644
 --- a/kcm/ui/main.qml
 +++ b/kcm/ui/main.qml
 @@ -39,12 +39,19 @@ KCM.AbstractKCM {
@@ -2144,10 +2062,10 @@ index 4fb182c3..02110a30 100644
      topPadding: 0
      leftPadding: 0
 diff --git a/kded/CMakeLists.txt b/kded/CMakeLists.txt
-index d06fd6c1..43e16d69 100644
+index 1f8698ac..84a6476a 100644
 --- a/kded/CMakeLists.txt
 +++ b/kded/CMakeLists.txt
-@@ -29,6 +29,7 @@ target_link_libraries(kscreen PRIVATE
+@@ -28,6 +28,7 @@ target_link_libraries(kscreen PRIVATE
                                KF6::DBusAddons
                                KF6::I18n
                                KF6::XmlGui
@@ -4438,6 +4356,3 @@ index 00000000..5f542976
 +
 +#include "testsimple.moc"
 \ No newline at end of file
--- 
-2.51.0
-
