@@ -1,0 +1,25 @@
+pkgbase = renesas-flash-programmer-bin
+	pkgdesc = Renesas Flash Programmer
+	pkgver = 3.21.00
+	pkgrel = 1
+	epoch = 1
+	url = https://www.renesas.com/rfp
+	arch = x86_64
+	license = LicenseRef-scancode-commercial-license
+	makedepends = libarchive
+	depends = gcc-libs
+	depends = glibc
+	depends = libusb
+	depends = zlib
+	optdepends = e2-studio: Eclipse-based IDE for Renesas MCUs
+	optdepends = fsp-bin: Flexible Software Package (FSP) for Renesas RA MCU Family
+	provides = renesas-flash-programmer
+	conflicts = renesas-flash-programmer
+	noextract = RFP_CLI_Linux_V32100_x64.tgz
+	options = !strip
+	options = !debug
+	options = !lto
+	source = file:///RFP_CLI_Linux_V32100_x64.tgz
+	sha256sums = f69ca20487274437f540bc4aae728e366ebc728abe9bdad0791f042fecfdf3c0
+
+pkgname = renesas-flash-programmer-bin
