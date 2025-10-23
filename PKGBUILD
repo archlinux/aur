@@ -3,7 +3,7 @@
 # Maintainer: Jonathan Neidel <aur at jneidel dot com>
 
 pkgname='waitup-bin'
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='A utility to check when a system/service becomes available (RDP/SSH/Port)'
 url='https://github.com/creaked/waitup'
@@ -12,11 +12,11 @@ license=('MIT')
 provides=('waitup')
 conflicts=('waitup')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/creaked/waitup/releases/download/v0.4.2/waitup_Linux_arm64.tar.gz")
-sha256sums_aarch64=('419d8f77c74c0546d36bdcd88ea7bb75ae1e5264e0ae2c827589428409e53793')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/creaked/waitup/releases/download/v0.4.3/waitup_Linux_arm64.tar.gz")
+sha256sums_aarch64=('f70bca8ced32fa7bf800481f605f4fc1ba8184cf08598ff0d486a619ec3cb13b')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/creaked/waitup/releases/download/v0.4.2/waitup_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('7973c439e098619b6be12acbf35ed03bf0ce02bad5f551b5453e7c7daf946d25')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/creaked/waitup/releases/download/v0.4.3/waitup_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('3f0155ed4a3cec309952dedc449fc84e316c7c620ebde13f7294466553349511')
 
 package() {
   # bin
