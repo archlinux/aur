@@ -1,0 +1,5 @@
+["lla-bin"]
+source = "github"
+github = "chaqchase/lla"
+use_latest_release = true
+prefix = "v"
