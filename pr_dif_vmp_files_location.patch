@@ -1,0 +1,277 @@
+diff --git a/scst/include/scst_const.h b/scst/include/scst_const.h
+index 7bbb85cd3..5a4246732 100644
+--- a/scst/include/scst_const.h
++++ b/scst/include/scst_const.h
+@@ -718,8 +718,8 @@ enum scst_tg_sup {
+  *************************************************************/
+ #define SCST_SYSFS_BLOCK_SIZE			PAGE_SIZE
+ 
+-#define SCST_VAR_DIR				"/var/lib/scst"
+-#define SCST_PR_DIR				(SCST_VAR_DIR "/pr")
++#define SCST_VAR_DIR				"/run/scst"
++#define SCST_PR_DIR				(SCST_VAR_DIR "/tp_pr")
+ 
+ #define TID_COMMON_SIZE				24
+ 
+diff --git a/scst/src/dev_handlers/scst_vdisk.c b/scst/src/dev_handlers/scst_vdisk.c
+index 6aa576468..95b3d26b6 100644
+--- a/scst/src/dev_handlers/scst_vdisk.c
++++ b/scst/src/dev_handlers/scst_vdisk.c
+@@ -132,7 +132,7 @@
+ 
+ #define DEF_DPICZ		SCST_DPICZ_CHECK_ON_xPROT_0
+ 
+-#define DEF_DIF_FILENAME_TMPL	SCST_VAR_DIR "/dif_tags/%s.dif"
++#define DEF_DIF_FILENAME_TMPL	SCST_VAR_DIR "/tp_dif_tags/%s.dif"
+ 
+ struct scst_vdisk_dev {
+ 	uint64_t nblocks;
+@@ -238,6 +238,8 @@ struct scst_vdisk_dev {
+ 
+ 	int tgt_dev_cnt;
+ 
++	char *pr_file_name;
++
+ 	char *dif_filename;
+ 
+ 	struct work_struct vdev_inq_changed_work;
+@@ -1107,6 +1109,8 @@ static int vdisk_attach(struct scst_device *dev)
+ 
+ 	virt_dev->dev = dev;
+ 
++	dev->pr_file_name = virt_dev->pr_file_name;
++
+ 	dev->block_shift = virt_dev->blk_shift;
+ 	dev->block_size = 1 << dev->block_shift;
+ 	dev->cluster_mode = virt_dev->initial_cluster_mode;
+@@ -6830,7 +6834,37 @@ static int vdev_parse_add_dev_params(struct scst_vdisk_dev *virt_dev, char *para
+ 			continue;
+ 		}
+ 
++		if (!strcasecmp("pr_file_name", p)) {
++			if (virt_dev->pr_file_name) {
++				PRINT_ERROR("%s specified more than once"
++					    " (device %s)", p, virt_dev->name);
++				res = -EINVAL;
++				goto out;
++			}
++			if (*pp != '/') {
++				PRINT_ERROR("Filename %s must be global "
++					"(device %s)", pp, virt_dev->name);
++				res = -EINVAL;
++				goto out;
++			}
++
++			virt_dev->pr_file_name = kstrdup(pp, GFP_KERNEL);
++			if (virt_dev->pr_file_name == NULL) {
++				PRINT_ERROR("Unable to duplicate file name %s "
++					"(device %s)", pp, virt_dev->name);
++				res = -ENOMEM;
++				goto out;
++			}
++			continue;
++		}
++
+ 		if (!strcasecmp("dif_filename", p)) {
++			if (virt_dev->dif_filename) {
++				PRINT_ERROR("%s specified more than once"
++					    " (device %s)", p, virt_dev->name);
++				res = -EINVAL;
++				goto out;
++			}
+ 			if (*pp != '/') {
+ 				PRINT_ERROR("DIF filename %s must be global (device %s)",
+ 					    pp, virt_dev->name);
+@@ -9477,6 +9511,7 @@ static const char *const fileio_add_dev_params[] = {
+ 	"tst",
+ 	"t10_dev_id",
+ 	"write_through",
++	"pr_file_name",
+ 	NULL
+ };
+ 
+@@ -9569,6 +9604,7 @@ static const char *const blockio_add_dev_params[] = {
+ 	"tst",
+ 	"t10_dev_id",
+ 	"write_through",
++	"pr_file_name",
+ 	NULL
+ };
+ 
+@@ -9642,6 +9678,7 @@ static const char *const nullio_add_dev_params[] = {
+ 	"size_mb",
+ 	"tst",
+ 	"t10_dev_id",
++	"pr_file_name",
+ 	NULL
+ };
+ 
+@@ -9693,6 +9730,7 @@ static const struct attribute *vcdrom_attrs[] = {
+ 
+ static const char *const cdrom_add_dev_params[] = {
+ 	"tst",
++	"pr_file_name",
+ 	NULL,
+ };
+ 
+diff --git a/scst/src/scst_main.c b/scst/src/scst_main.c
+index c7655e643..4d0b3a7bf 100644
+--- a/scst/src/scst_main.c
++++ b/scst/src/scst_main.c
+@@ -1042,10 +1042,22 @@ static int scst_register_device(struct scsi_device *scsidp)
+ 	dev->scsi_dev = scsidp;
+ 
+ 	/* For target ports that function as forwarding source. */
+-	res = scst_pr_set_file_name(dev, NULL, "%s/%s", SCST_PR_DIR,
+-				    dev->virt_name);
+-	if (res != 0)
++	if(dev->pr_file_name == NULL) {
++		res = -ENOMEM;
++		/* set default pr_file_name, kfree-ed by scst_pr_set_file_name */
++		dev->pr_file_name = kasprintf(GFP_KERNEL, "%s/%s", SCST_PR_DIR,
++						    dev->virt_name);
++		if (!dev->pr_file_name) {
++		    PRINT_ERROR("Unable to kasprintf() new PR file name");
++		    goto out_free_dev;
++		}
++	}
++	res = scst_pr_set_file_name(dev, NULL, dev->pr_file_name);
++	if (res != 0) {
++		/* pr_file_name not initialized */
++		dev->pr_file_name = NULL;
+ 		goto out_free_dev;
++	}
+ 
+ 	res = scst_pr_init_dev(dev);
+ 	if (res != 0)
+@@ -1285,10 +1297,22 @@ int scst_register_virtual_device_node(struct scst_dev_type *dev_handler, const c
+ 		scst_virt_dev_last_id = 1;
+ 	}
+ 
+-	res = scst_pr_set_file_name(dev, NULL, "%s/%s", SCST_PR_DIR,
+-				    dev->virt_name);
+-	if (res != 0)
++	if(dev->pr_file_name == NULL) {
++	        res = -ENOMEM;
++	        /* set default pr_file_name, kfree-ed by scst_pr_set_file_name */
++	        dev->pr_file_name = kasprintf(GFP_KERNEL, "%s/%s", SCST_PR_DIR,
++	                                            dev->virt_name);
++	        if (!dev->pr_file_name) {
++	            PRINT_ERROR("Unable to kasprintf() new PR file name");
++	            goto out_free_dev;
++	        }
++	}
++	res = scst_pr_set_file_name(dev, NULL, dev->pr_file_name);
++	if (res != 0) {
++		/* pr_file_name not initialized */
++		dev->pr_file_name = NULL;
+ 		goto out_free_dev;
++	}
+ 
+ 	res = scst_pr_init_dev(dev);
+ 	if (res != 0)
+diff --git a/scst/src/scst_pres.c b/scst/src/scst_pres.c
+index cfff018d9..e95801fe7 100644
+--- a/scst/src/scst_pres.c
++++ b/scst/src/scst_pres.c
+@@ -1035,30 +1035,19 @@ write_error_close:
+  * @prev: If not NULL, the current path will be stored in *@prev. It is the
+  *        responsibility of the caller to invoke kfree(*@prev) at an
+  *        appropriate time.
+- * @fmt:  Full path of the file in which to save PR info.
++ * @pr_file_name:  Full path of the file in which to save PR info.
+  *
+  * This function must be called either while @dev is not on the device list
+  * or with scst_mutex held.
+  */
+-int scst_pr_set_file_name(struct scst_device *dev, char **prev,
+-			  const char *fmt, ...)
++int scst_pr_set_file_name(struct scst_device *dev, char **prev, char *pr_file_name)
+ {
+-	va_list args;
+-	char *pr_file_name = NULL, *bkp = NULL;
++	char *bkp = NULL;
+ 	int file_mode, res = -EINVAL;
+ 
+ 	scst_assert_pr_mutex_held(dev);
+ 
+-	sBUG_ON(!fmt);
+-
+-	res = -ENOMEM;
+-	va_start(args, fmt);
+-	pr_file_name = kvasprintf(GFP_KERNEL, fmt, args);
+-	va_end(args);
+-	if (!pr_file_name) {
+-		PRINT_ERROR("Unable to kvasprintf() new PR file name");
+-		goto out;
+-	}
++	sBUG_ON(!pr_file_name);
+ 
+ 	res = -EINVAL;
+ 	if (pr_file_name[0] != '/') {
+diff --git a/scst/src/scst_pres.h b/scst/src/scst_pres.h
+index 3d68dbfeb..cfa1d2a09 100644
+--- a/scst/src/scst_pres.h
++++ b/scst/src/scst_pres.h
+@@ -99,8 +99,7 @@ static inline void lockdep_assert_pr_write_lock_held(struct scst_device *dev)
+ 	lockdep_assert_held(&dev->dev_pr_mutex);
+ }
+ 
+-int scst_pr_set_file_name(struct scst_device *dev, char **prev,
+-			  const char *fmt, ...) __printf(3, 4);
++int scst_pr_set_file_name(struct scst_device *dev, char **prev, char *pr_file_name);
+ 
+ int scst_pr_init_dev(struct scst_device *dev);
+ void scst_pr_clear_dev(struct scst_device *dev);
+diff --git a/scst/src/scst_sysfs.c b/scst/src/scst_sysfs.c
+index bf4b31e02..dd7bc261a 100644
+--- a/scst/src/scst_sysfs.c
++++ b/scst/src/scst_sysfs.c
+@@ -3150,7 +3150,13 @@ scst_dev_sysfs_pr_file_name_process_store(struct scst_sysfs_work_item *work)
+ 	if (strcmp(dev->pr_file_name, pr_file_name) == 0)
+ 		goto unlock_dev_pr;
+ 
+-	res = scst_pr_set_file_name(dev, &prev, "%s", pr_file_name);
++	res = -ENOMEM;
++	pr_file_name = kstrdup(pr_file_name, GFP_KERNEL);
++	if (!pr_file_name) {
++		PRINT_ERROR("Unable to allocate new PR file name");
++		goto unlock_dev_pr;
++	}
++	res = scst_pr_set_file_name(dev, &prev, pr_file_name);
+ 	if (res != 0)
+ 		goto unlock_dev_pr;
+ 
+@@ -3159,7 +3165,8 @@ scst_dev_sysfs_pr_file_name_process_store(struct scst_sysfs_work_item *work)
+ 		PRINT_ERROR("%s: loading PR from %s failed (%d) - restoring %s",
+ 			    dev->virt_name, dev->pr_file_name, res,
+ 			    prev ? : "");
+-		scst_pr_set_file_name(dev, NULL, "%s", prev);
++		scst_pr_set_file_name(dev, NULL, prev);
++		prev = NULL;
+ 		scst_pr_init_dev(dev);
+ 		goto unlock_dev_pr;
+ 	}
+diff --git a/scstadmin/scstadmin.sysfs/scst-1.0.0/lib/SCST/SCST.pm b/scstadmin/scstadmin.sysfs/scst-1.0.0/lib/SCST/SCST.pm
+index c8d3b2053..06b37d843 100644
+--- a/scstadmin/scstadmin.sysfs/scst-1.0.0/lib/SCST/SCST.pm
++++ b/scstadmin/scstadmin.sysfs/scst-1.0.0/lib/SCST/SCST.pm
+@@ -3907,6 +3907,18 @@ sub openDevice {
+ 	my $device = shift;
+ 	my $attributes = shift;
+ 
++	unless ($self->checkDeviceCreateAttributes($handler, 'pr_file_name')
++		|| exists $$attributes{'pr_file_name'}) {
++
++		$$attributes{'pr_file_name'} = "/var/lib/scst/pr/${device}"
++	}
++	unless (!exists( $$attributes{'dif_type'} )
++		|| $$attributes{'dif_type'} == 0
++		|| $self->checkDeviceCreateAttributes($handler, 'dif_filename')
++		|| exists $$attributes{'dif_filename'}) {
++
++		$$attributes{'dif_filename'} = "/var/lib/scst/dif_tags/${device}.dif"
++	}
+ 	return SCST_C_DEV_OPEN_FAIL
+ 	    if (!valid($handler, $device, $attributes));
+ 

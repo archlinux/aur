@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# current directory is /var/lib/dkms/scst-{module}/{scst-version}/build
+# $1 is set only in scst-dkms building
+
+build_cache="/var/cache/@_PKGPATH@"
+ver="@_PKGVER@"
+
+kvariant="${KVER}-version" # act as bare variant name
+kvariant="${kvariant#*-*-*-}" kversion="${KVER%-"${kvariant%-version}"}"
+# 8.53.42-arch78-43-ultra-sexy -> /ultra-sexy-version/8.53.42-arch78-43-3.9.0pre1
+save_dir="$build_cache/$kvariant/$kversion-$ver"
+
+check_dir="$save_dir"
+# extra check for scst modules : if modules need rebuild, assume scst need full rebuild
+[[ "$1" ]] && check_dir="$check_dir/dh"
+
+# reduce some race conditions surface on /var/cache and building setup/dependencies
+until [[ -d "$check_dir" ]]; do
+	[[ -e "$save_dir" ]] && rm -fr "$save_dir"
+
+	build_dir=.
+	if [[ -z "$1" ]]; then
+		build_dir="/var/lib/@_PKGPATH@"
+		# use same method as dkms itself
+		cp -a scst/ "$build_dir"
+	fi
+
+	# make 'default' target does not work because default(first) target is not .phony, and is required and already included for other modules
+	# SCST_INC_DIR is statically defined because of faulty scst/src/Kbuild flags only catching headers in '../include' (default value)
+	#	so Kbuild header files' location have already been overwritten earlier (at Packaging stage)
+	make -j$(nproc) -sC "$build_dir" all
+
+	mkdir -p "$save_dir/dh"
+	cp "$build_dir"/{*.ko,Module.symvers} "$save_dir/"
+	cp "$build_dir/dev_handlers"/*.ko "$save_dir/dh/"
+
+	make -sC "$build_dir" clean
+	[[ -z "$1" ]] && rm -fr "$build_dir"
+
+	# remove older versions modules of this kvariant (that is not the currently used one)
+	ls -v1 --zero "$build_cache/$kvariant" | head -zn-1 | \
+		grep -vZz "$kversion-$ver" | xargs -0 -I {} rm -fr "$build_cache/$kvariant/{}"
+done
+
+if [[ -z "$1" ]]; then
+	cp "$save_dir/Module.symvers" ./scst-Module.symvers
+else
+	mv "$save_dir"/*.ko ./
+	mv "$save_dir/dh"/*.ko dev_handlers/
+	rm -fr "$save_dir/dh"
+fi

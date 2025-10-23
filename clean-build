@@ -1,0 +1,19 @@
+#!/bin/bash
+
+build_cache="/var/cache/@_PKGPATH@"
+
+[[ -o extglob ]] || shopt -s extglob
+
+for kvariant in "$build_cache"/*; do
+
+	# remove uninstalled kernel variants' cache
+	kname=${kvariant##*/} kname=${kname%%?(-)version} kname=linux${kname:+-$kname}
+	[[ -L "/usr/src/$kname" ]] || [[ -d "/usr/src/$kname" ]] \
+		|| { rm -r "$kvariant" && continue; }
+
+	# remove old kernel versions' cache
+	ls -v1 --zero "$kvariant" | head -zn-1 | xargs -0 -I {} rm -fr "$kvariant/{}"
+
+	# remove any remaining built modules
+	rm -fr "$kvariant"/*/{*.ko,dh}
+done

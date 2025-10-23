@@ -1,0 +1,85 @@
+pkgbase = scst-dkms
+	pkgdesc = Generic SCSI Target Subsystem For Linux
+	pkgver = 3.9.7.7
+	pkgrel = 0
+	url = https://github.com/SCST-project/scst
+	arch = x86_64
+	license = GPL-2.0-only
+	source = git+https://github.com/SCST-project/scst.git#commit=6543c4c316ebe03e6afa5235544df78c26643c14
+	source = pr_dif_vmp_files_location.patch
+	source = servicing.patch.generated
+	source = scstadmin.service
+	source = dkms-scst.conf
+	source = smart-build
+	source = clean-build
+	source = dkms-local.conf
+	source = dkms-fc.conf
+	source = dkms-iscsi.conf
+	source = dkms-rdma.conf
+	source = dkms-qla2x.conf
+	sha512sums = SKIP
+	sha512sums = fbf75e1035bc83a12abb4714ac1692b8db1a9e2c335ca33ec54c224c9762c9a8e3b2f5d46eebb0f5d9e334fb71cac4632c60f27f86d4c1a18055401135b1f59f
+	sha512sums = 1b9c3fb5fe6b81e22b24239fa3913f6ac5f02acee770bc67a0e5ad1e0d961081a20754167bdebdf9f9e156c41f95937de0b2cc306e2aeb252612c3984128f937
+	sha512sums = 7f8f6c127b68c76c7f7cfca9ef802ca7d434bf13e94ab724d06eb7fc2bcd1aefb8ef6782d64ca305e54c8134d8a117725b4d5bad03ed011dcc68ac1f964165da
+	sha512sums = 2c72ed03ade8e591b0efcfdae8260f053a1483f64eef1b25e342d31c334c41ce232120ad8aef00d99e4637334c2bed048245e73038e9b7f49b38ef49b5f4b717
+	sha512sums = 215d4bc7f652f96789ab047a2953893e501552a0e8285ef1529e29fd2d76d0264a7d1dd6c42440a35a324ad35c50c00b8cba713156ef3d39eef48509b25b5613
+	sha512sums = cb8512a8c26fbea5f947e842c1fc0c84775e62cdaeaad33c8a684f4a5ff4eee1747a8022a83cf926bef03f3088dac98f78ab20ee6ba8b17afadd1c8d4a3c0ead
+	sha512sums = d979a94a0e55e1f3199e31cb8eea8781ae67f4be94b3013722851833c6f8068b809b7ca425555e6ae40acb95d880c6cd41a75b5d7b4717a8023321fae2f3d7ea
+	sha512sums = 0531be8bd5c26dd63af87ac373d036a36cc7ad597ce9f882040e3843d2831354b6637e0c557725402dce6e2a3dc47563542aa7585118f5cd104bd09d2c351b20
+	sha512sums = 7bc3ec31058bc4f2d96ad90bfaf5f1babec15e8930e33f36cc302127b745786e2b2ffd889be7ba9d06b5cb662503c5d8de97921267dfa820014d85cb7a3d5321
+	sha512sums = 8cc7aa4603fbd2f3877118f55cf52f25678888f998eb0367059d1895a65f1532934dc9bdb9278fb5063343fbcded6217b11edc34ff45eff94ccff3d2c627250c
+	sha512sums = 0f15119e94f612ce545b9a4f59a5a2d3aa4fbed5edc76f4a25077c38f71cbc03529401a2a643ee96a703706c3df4afd92c65c095c8a11f90ca9ce0266e314ed2
+
+pkgname = scst-dkms
+	pkgdesc = Generic SCSI Target Subsystem For Linux (SCST) kernel modules (dkms)
+	license = GPL-2.0-only
+	depends = dkms
+	provides = scst=3.9.7.7
+	conflicts = scst
+
+pkgname = scst-local-dkms
+	pkgdesc = SCST local target support kernel module (dkms)
+	license = GPL-2.0-or-later
+	depends = scst-dkms=3.9.7.7
+	depends = dkms
+	provides = scst-local=3.9.7.7
+	conflicts = scst-local
+
+pkgname = scst-fc-dkms
+	pkgdesc = SCST fibre-channel target support kernel module (dkms)
+	license = GPL-2.0-only
+	depends = scst-dkms=3.9.7.7
+	depends = dkms
+	provides = scst-fc=3.9.7.7
+	conflicts = scst-fc
+
+pkgname = scst-iscsi-dkms
+	pkgdesc = SCST iscsi/iser target support kernel modules (dkms) and daemon
+	license = GPL-2.0-only
+	depends = scst-dkms=3.9.7.7
+	depends = dkms
+	provides = scst-iscsi=3.9.7.7
+	conflicts = scst-iscsi
+
+pkgname = scst-rdma-dkms
+	pkgdesc = SCST rdma srp target support kernel module (dkms)
+	license = GPL-2.0-only
+	depends = scst-dkms=3.9.7.7
+	depends = dkms
+	provides = scst-rdma=3.9.7.7
+	conflicts = scst-rdma
+
+pkgname = scst-qla2x-dkms
+	pkgdesc = SCST qla2x00 appliance target support kernel modules (dkms)
+	license = GPL-2.0-only
+	depends = scst-dkms=3.9.7.7
+	depends = dkms
+	provides = scst-qla2x=3.9.7.7
+	conflicts = scst-qla2x
+
+pkgname = scst-admin-util
+	pkgdesc = SCST scstadmin administration utility
+	license = GPL-2.0-only
+	depends = scst=3.9.7.7
+	depends = perl
+	conflicts = scst-admin-util

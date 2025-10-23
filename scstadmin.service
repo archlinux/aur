@@ -1,0 +1,17 @@
+[Unit]
+Description=SCST system loading (scstadmin related)
+After=network-online.target remote-fs.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+RuntimeDirectory=scst/tp_pr scst/tp_dif_tags scst/vdev_mode_pages
+StateDirectory=scst/pr scst/dif_tags
+RuntimeDirectoryMode=700
+StateDirectoryMode=700
+ExecStart=/usr/lib/scst/service start
+ExecReload=/usr/lib/scst/service reload
+ExecStop=/usr/lib/scst/service stop
+
+[Install]
+WantedBy=multi-user.target
