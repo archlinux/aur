@@ -39,10 +39,10 @@ pkgbase = dragengine
 	depends = soundtouch
 	depends = xdg-utils
 	depends = zlib
-	source = dragengine-1.28.1::git+https://github.com/LordOfDragons/dragengine.git?signed#commit=7f796cbbef4747b0e84ebce4ce68ec2adbcef331
+	source = dragengine-1.28.1::git+https://github.com/LordOfDragons/dragengine.git?signed#commit=331178e1f330948d5a7b212e6e1551bb61c39033
 	source = custom.py
 	validpgpkeys = E0ECD22F5F70777588450034446C9C667CFC1DF3
-	sha256sums = cfd2e2cb76bb56790b08105adc245df3cd64b92ebc035eb2e1cea9cb19b38bb4
+	sha256sums = d5738c8e8f0c14c410cfc8437c6880c23feab9206ecd914c8e0e70bb20816808
 	sha256sums = ee9228918cd07e17e66ac9a4b1eab1d682678df57d3d3de1e2d3abd89004bdd3
 
 pkgname = dragengine
