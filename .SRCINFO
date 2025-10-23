@@ -1,6 +1,6 @@
 pkgbase = animeko-appimage
 	pkgdesc = 集找番、追番、看番的一站式弹幕追番平台
-	pkgver = 5.0.1
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://github.com/open-ani/animeko/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = animeko-appimage
 	provides = animeko
 	conflicts = animeko
 	options = !strip
-	source_x86_64 = https://d.myani.org/v5.0.1/ani-5.0.1-linux-x86_64.appimage
-	sha512sums_x86_64 = abb373fd2a0637a40178645362f302f20890def5a7100bbd34b0063f408cb57194c0a5fa2753d00bfa5a5991dac1014c87b93b2dc33d9b01f18a80b29b742931
+	source_x86_64 = https://d.myani.org/v5.1.0/ani-5.1.0-linux-x86_64.appimage
+	sha512sums_x86_64 = 70b57003c7edfad4c21f71f21809eb71b62b2ed62f751a22f69b4ad7bbcd3ba2ae24461ee45e97d2344f2c327199441bfca657d8c9c22560213cacd774416124
 
 pkgname = animeko-appimage
