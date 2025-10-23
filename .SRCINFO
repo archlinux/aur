@@ -1,6 +1,6 @@
 pkgbase = hyprdynamicmonitors-bin
 	pkgdesc = Dynamic monitor configuration for Hyprland.
-	pkgver = 1.3.2
+	pkgver = 1.3.3
 	pkgrel = 1
 	url = https://github.com/fiffeek/hyprdynamicmonitors
 	license = MIT
@@ -9,13 +9,13 @@ pkgbase = hyprdynamicmonitors-bin
 	conflicts = hyprdynamicmonitors
 	provides = hyprdynamicmonitors-bin
 	arch = aarch64
-	source_aarch64 = https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v1.3.2/hyprdynamicmonitors_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 5bef6827e31b76d525dcdd67bd7a1f9930f029d5710d326414903e52890d6677
+	source_aarch64 = https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v1.3.3/hyprdynamicmonitors_Linux_arm64.tar.gz
+	sha256sums_aarch64 = d642e0fee1f5a57f26466232dfe92c18f50a02b70a17b2760774289eec354646
 	arch = i686
-	source_i686 = https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v1.3.2/hyprdynamicmonitors_Linux_i386.tar.gz
-	sha256sums_i686 = 489105f0ae44a118230856a3fcb501e8b822648fbb4c564bb703b033afe3664c
+	source_i686 = https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v1.3.3/hyprdynamicmonitors_Linux_i386.tar.gz
+	sha256sums_i686 = 60d5949a101d12a9db2a8da6d1471d626de8cb9e8a14971dbf81dfc009f3061a
 	arch = x86_64
-	source_x86_64 = https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v1.3.2/hyprdynamicmonitors_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 4abdda7c52d232f18382ea3de697e9c82ddb07e8f50956387abde5d8370c2bd1
+	source_x86_64 = https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v1.3.3/hyprdynamicmonitors_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 7009e1a5464e8fc4c9f8fa3782bf54cc5cd86bd65fd9c8b720351db696447453
 	
 pkgname = hyprdynamicmonitors-bin
