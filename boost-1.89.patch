@@ -1,0 +1,50 @@
+--- a/Release/cmake/cpprest_find_boost.cmake
++++ a/Release/cmake/cpprest_find_boost.cmake
+@@ -46,7 +46,11 @@
+     endif()
+     cpprestsdk_find_boost_android_package(Boost ${BOOST_VERSION} EXACT REQUIRED COMPONENTS random system thread filesystem chrono atomic)
+   elseif(UNIX)
+-    find_package(Boost REQUIRED COMPONENTS random system thread filesystem chrono atomic date_time regex)
++    find_package(Boost REQUIRED COMPONENTS random thread filesystem chrono atomic date_time regex)
++    if(Boost_MAJOR_VERSION EQUAL 1 AND Boost_MINOR_VERSION LESS 69)
++        list(APPEND BOOST_REQUIRED_COMPONENTS system)
++        find_package(Boost REQUIRED COMPONENTS ${BOOST_REQUIRED_COMPONENTS})
++    endif()
+   else()
+     find_package(Boost REQUIRED COMPONENTS system date_time regex)
+   endif()
+--- a/Release/src/http/client/http_client_asio.cpp
++++ a/Release/src/http/client/http_client_asio.cpp
+@@ -429,7 +429,7 @@
+         auto& self = *pool;
+         std::weak_ptr<asio_connection_pool> weak_pool = pool;
+ 
+-        self.m_pool_epoch_timer.expires_from_now(boost::posix_time::seconds(30));
++        self.m_pool_epoch_timer.expires_after(std::chrono::seconds(30));
+         self.m_pool_epoch_timer.async_wait([weak_pool](const boost::system::error_code& ec) {
+             if (ec)
+             {
+@@ -467,7 +467,7 @@
+     std::mutex m_lock;
+     std::map<std::string, connection_pool_stack<asio_connection>> m_connections;
+     bool m_is_timer_running;
+-    boost::asio::deadline_timer m_pool_epoch_timer;
++    boost::asio::steady_timer m_pool_epoch_timer;
+ };
+ 
+ class asio_client final : public _http_client_communicator
+--- a/Release/cmake/cpprestsdk-config.in.cmake	2025-10-23 16:09:02.054494762 +0200
++++ a/Release/cmake/cpprestsdk-config.in.cmake	2025-10-23 16:12:53.924916333 +0200
+@@ -17,7 +17,11 @@
+ 
+ if(@CPPREST_USES_BOOST@)
+   if(UNIX)
+-    find_dependency(Boost COMPONENTS random system thread filesystem chrono atomic date_time regex)
++    find_dependency(Boost COMPONENTS random thread filesystem chrono atomic date_time regex)
++    if (Boost_MAJOR_VERSION EQUAL 1 AND  Boost_MINOR_VERSION LESS 69)
++      list(APPEND BOOST_REQUIRED_COMPONENTS system)
++      find_dependency(Boost REQUIRED COMPONENTS %{BOOST_REQUIRED_COMPONENTS})
++    endif()
+   else()
+     find_dependency(Boost COMPONENTS system date_time regex)
+   endif()

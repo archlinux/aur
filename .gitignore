@@ -4,6 +4,7 @@
 !.gitignore
 !.pre-commit-config.yaml
 !boost-1.88.patch
+!boost-1.89.patch
 !warnings.patch
 !REUSE.toml
 !LICENSE
