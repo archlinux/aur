@@ -1,7 +1,7 @@
 pkgbase = lyricbridge
 	pkgdesc = LyricBridge – Electron + FastAPI lyrics tool
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/wang1zhen/lyricbridge
 	arch = x86_64
 	arch = aarch64

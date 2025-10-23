@@ -1,7 +1,7 @@
 # Maintainer: wang1zhen <you@example.com>
 pkgname=lyricbridge
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="LyricBridge – Electron + FastAPI lyrics tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/wang1zhen/lyricbridge"
@@ -48,11 +48,4 @@ package() {
   install -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
   install -m 644 frontend/renderer/favicon.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/lyricbridge.svg"
 
-  # License (fallback to README.md if LICENSE is missing in this tag)
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  if [[ -f LICENSE ]]; then
-    install -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  else
-    install -m 644 README.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  fi
 }
