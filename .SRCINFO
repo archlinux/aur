@@ -8,7 +8,6 @@ pkgbase = project-plus-netplay
 	makedepends = cmake
 	makedepends = git
 	makedepends = qt5-base
-	makedepends = unzip
 	depends = alsa-lib
 	depends = bluez-libs
 	depends = cairo
