@@ -1,6 +1,6 @@
 pkgbase = sunshine-git
 	pkgdesc = A self-hosted game stream host for Moonlight
-	pkgver = 2025.1014.193231.r0.g179c01a
+	pkgver = 2025.1021.185115.r0.g8df1003
 	pkgrel = 1
 	url = https://github.com/LizardByte/Sunshine
 	install = sunshine.install

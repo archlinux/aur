@@ -8,7 +8,7 @@
 
 _pkgname="sunshine"
 pkgname="$_pkgname-git"
-pkgver=2025.1014.193231.r0.g179c01a
+pkgver=2025.1021.185115.r0.g8df1003
 pkgrel=1
 pkgdesc="A self-hosted game stream host for Moonlight"
 url="https://github.com/LizardByte/Sunshine"
@@ -73,8 +73,15 @@ prepare() {
   ## disable unwanted macros
   sed 's&macro(find_package)&macro(_disable_find_package)&' -i cmake/macros/common.cmake
 
-  ## allow boost 1.88
-  sed -E 's&(Boost CONFIG) \S+ EXACT\b&\1&' -i cmake/dependencies/Boost_Sunshine.cmake
+  ## fix for Boost 1.89
+  sed -E -e 's&\b(Boost::)?(system)\b&&' -i third-party/Simple-Web-Server/CMakeLists.txt
+
+  install -Dm644 /dev/stdin cmake/dependencies/Boost_Sunshine.cmake << END
+include_guard(GLOBAL)
+find_package(Boost COMPONENTS filesystem locale log program_options)
+message(STATUS "Boost include dirs: \${Boost_INCLUDE_DIRS}")
+message(STATUS "Boost libraries: \${Boost_LIBRARIES}")
+END
 }
 
 build() {
