@@ -1,7 +1,7 @@
 pkgbase = keybinder2
 	pkgdesc = Library for registering global keyboard shortcuts
 	pkgver = 0.3.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/kupferlauncher/keybinder
 	arch = x86_64
 	license = GPL
