@@ -1,7 +1,7 @@
 # Maintainer: wang1zhen <you@example.com>
 pkgname=lyricbridge
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="LyricBridge – Electron + FastAPI lyrics tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/wang1zhen/lyricbridge"
@@ -33,8 +33,8 @@ package() {
   cd "${srcdir}/lyricbridge-${pkgver}"
 
   install -d "${pkgdir}/usr/lib/lyricbridge"
-  cp -r lyricbridge/backend "${pkgdir}/usr/lib/lyricbridge/"
-  cp -r lyricbridge/frontend "${pkgdir}/usr/lib/lyricbridge/"
+  cp -r backend "${pkgdir}/usr/lib/lyricbridge/"
+  cp -r frontend "${pkgdir}/usr/lib/lyricbridge/"
 
   # Launcher
   install -d "${pkgdir}/usr/bin"
@@ -46,7 +46,7 @@ package() {
 
   # Icon (SVG)
   install -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-  install -m 644 lyricbridge/frontend/renderer/favicon.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/lyricbridge.svg"
+  install -m 644 frontend/renderer/favicon.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/lyricbridge.svg"
 
   # License (fallback to README.md if LICENSE is missing in this tag)
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
