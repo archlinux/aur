@@ -21,7 +21,7 @@ pkgbase = brave-beta-bin
 	source = brave-beta-bin.sh
 	sha512sums = 56be4daa8294c7c3d4b3f1ce7169ac575be0faa623d7cd977eb135e971914b90e3f596ecad72d89178de04e65cd3d49c138e8518d1dccf9fc814d0858b38767e
 	source_x86_64 = https://github.com/brave/brave-browser/releases/download/v1.85.87/brave-browser-beta_1.85.87_amd64.deb
-	sha512sums_x86_64 = SKIP
+	sha512sums_x86_64 = af8648990febc820fd46bf3f1a2e4fa55f75b405cfc9b0efe508fdb26fa5becc8e990d8d1cb69163335927c42dc2fcbe667b5a1bc313021c262aec83fbbc1401
 	source_aarch64 = https://github.com/brave/brave-browser/releases/download/v1.85.87/brave-browser-beta_1.85.87_arm64.deb
 	sha512sums_aarch64 = 043facc9a2bc4960a31ded60bb56c79c67d9eec0fb73b30d9dbf1cdd42ee4d8774dbbbe2da00f53de6d1351ff9ccb491d7fcc75d6ef793396416c84eb357a8bf
 
