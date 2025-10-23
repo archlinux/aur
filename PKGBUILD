@@ -3,8 +3,8 @@
 _pkgauthor=abenz1267
 _pkgname=elephant
 pkgbase=${_pkgname}-bin
-pkgname=(${_pkgname}-bin ${_pkgname}-websearch-bin ${_pkgname}-unicode-bin ${_pkgname}-todo-bin ${_pkgname}-symbols-bin ${_pkgname}-runner-bin ${_pkgname}-providerlist-bin ${_pkgname}-menus-bin ${_pkgname}-files-bin ${_pkgname}-desktopapplications-bin ${_pkgname}-clipboard-bin ${_pkgname}-calc-bin ${_pkgname}-archlinuxpkgs-bin ${_pkgname}-bluetooth-bin ${_pkgname}-windows-bin ${_pkgname}-snippets-bin)
-pkgver=2.6.0
+pkgname=(${_pkgname}-bin ${_pkgname}-websearch-bin ${_pkgname}-unicode-bin ${_pkgname}-todo-bin ${_pkgname}-symbols-bin ${_pkgname}-runner-bin ${_pkgname}-providerlist-bin ${_pkgname}-menus-bin ${_pkgname}-files-bin ${_pkgname}-desktopapplications-bin ${_pkgname}-clipboard-bin ${_pkgname}-calc-bin ${_pkgname}-archlinuxpkgs-bin ${_pkgname}-bluetooth-bin ${_pkgname}-windows-bin ${_pkgname}-snippets-bin ${_pkgname}-nirisessions-bin)
+pkgver=2.6.1
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="general purpose datasource and executor"
@@ -34,7 +34,8 @@ optdepends=("${_pkgname}-providerlist: providerlist provider"
             "${_pkgname}-websearch: websearch provider"
             "${_pkgname}-bluetooth: bluetooth provider"
             "${_pkgname}-windows: windows provider"
-            "${_pkgname}-snippets: snippets provider")
+            "${_pkgname}-snippets: snippets provider"
+            "${_pkgname}-nirisessions: nirisessions provider")
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
@@ -53,25 +54,27 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v
                "archlinuxpkgs-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/archlinuxpkgs-linux-${_barch[0]}.tar.gz"
                "bluetooth-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/bluetooth-linux-${_barch[0]}.tar.gz"
                "windows-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/windows-linux-${_barch[0]}.tar.gz"
-               "snippets-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/snippets-linux-${_barch[0]}.tar.gz")
+               "snippets-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/snippets-linux-${_barch[0]}.tar.gz"
+               "nirisessions-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/nirisessions-linux-${_barch[0]}.tar.gz")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'a502b8bf43bae2385e31a49c8f254867a90d3b82367040d3c5daf49a170b0724')
-sha256sums_x86_64=('d2153df8e0d04596889e01a4d4edc111301cb6cf37bf0aa01df6978d5371d548'
-                   '0920caf1b37d3fb4f977f6f52cca1d90236077da5009624db130223cbc891799'
-                   'a4e268e4c8ad610cde4ea8bbd22f995b3b67f03ecea885eda0779cd4a3ec18ec'
-                   'bca84f68d3234e367b122f7ed4fd99d5b422d824596e62a503ab69092bfab502'
-                   'd68ef900b3128196d4affc0700daf93220a9d05946f211072a48e3f877be008a'
-                   'b4161d54502aa2f121226ff5b31df7b4c15ad2cb2d69f45742aa4dcf56c65f1e'
-                   '091742c8d934e7092519c7cf107b630405deac0b8c33de0f23f61d12103ef880'
-                   'eb7c490f7d53be0539029473aeef5d7d570a68a80ac0ab81ec2078d5d80128a3'
-                   'ba859fc4891a0f2562a8575c5ead72db0ad9cb969298ece8d91ecac653508f6b'
-                   'd279c0984bcef3113d24ce80181748ad870356247cd346961d5be926ecb77321'
-                   '4d81e3ff1c7eb806219afdb256beed7df8c4e59a460090c5108fc9fcbedd9c40'
-                   'eeb70c9315a9090e8cdb323540ddc2059c897dd833d69f2e7ebc8c5561b42844'
-                   'c597d31690552648fcdb8e67bdff264f24c31a4eab54cb63b8c90a32417f49e2'
-                   '450b3f10e0e89b56301e6ebfe8cf2d9b57ff26a018e5b5a4cee7f9d125f57e33'
-                   '8c6b73a86703173d5403f5c55821da53b7bc467a2665fd85bebb43be6052f2fa'
-                   'beb3e197e2ffac05845c5ef2fb146299108997e17c9312e62a50200d1367dc41')
+            '22c48fb3478f4344ce76dbc061716d8ced770645e9009167a4ae2f1126aaf424')
+sha256sums_x86_64=('11193a4f4613ee3d589ccafd701e3e3e86aaf6f83273c3e01f223634438c2a2f'
+                   '48582ef1fc752e6bf505d839d7ba3223636fc587e2297f3a7d00b1cc7f4fa40d'
+                   'c82fb604d827b2a4f9c1425b87721f3bed8562ed300a97f61fca9f92c0e6a5b1'
+                   'd13b81ca97de4047f5d7628f3dd9a43458f49865957462110071bf9ccac539a5'
+                   'c02ecf4faf9d21c9c41ac66b480dab386919cc7130b5a0408d622379847f9a0e'
+                   'f62e05a6c99e7daaaf9bb4edac9ff375fd6ac0f508ead95fb183317879340055'
+                   '588df2e043256b8453f5d28b43d22713c8716860480e137c55abd0e19be148ee'
+                   '38f3d9606e4bd577921e6e413284fe6ca2549f8ff0f2bd61dbf6ccee9a360882'
+                   '0bd617f939ed1ed3846abdf4aee514bd99f50121e2065cb8d8892419b7c1309e'
+                   '918f56e815397ebe2c53d8aa058a9d62c24d1653104a81522bc39411d28da8d9'
+                   'e1bbaaa30883161dc82286e8778f05822aba630b8f9c900df007d9348dade252'
+                   'ff617fc3923f3bfe0cc10fc20f485bd5112632470aeb05424c64b7317d385044'
+                   'de39bb01eefe711f508022bb2aa6ee05cb9e91eae7e168049de657240078275e'
+                   '514dfb0db5ad315a81c5660ab4f52b7c348536b85b4f00f1ebfe6d815c10f523'
+                   '27b7241c589a68b76ce5ed2255d3dbbbe1d78ae9e7af3de2f82d8cc17f66e20a'
+                   'a78ea08bc9fc6b737b87766d57845b6a8403d17ab32f06a70280920fc2b73042'
+                   'afb2c9706213f037b1029a8f9cbd1bdfe5004322aae185fb1eb05eac8827658b')
 
 case $CARCH in
     ${arch[0]})
@@ -295,6 +298,20 @@ package_elephant-snippets-bin() {
     cd "${srcdir}/" || exit
 
     install -Dm755 "snippets-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/snippets.so"
+
+    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_elephant-nirisessions-bin() {
+    pkgdesc="nirisessions provider for ${_pkgname}"
+
+    conflicts=("${_pkgname}-nirisessions")
+    provides=("${_pkgname}-nirisessions")
+    depends+=("${_pkgname}")
+
+    cd "${srcdir}/" || exit
+
+    install -Dm755 "nirisessions-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/nirisessions.so"
 
     install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
