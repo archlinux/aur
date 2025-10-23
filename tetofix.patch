@@ -1,0 +1,20 @@
+diff --git a/tetoservice b/tetoservice
+index a2bad42..531eb13 100755
+--- a/tetoservice
++++ b/tetoservice
+@@ -9,7 +9,7 @@ detect_init() {
+         echo "openrc"
+     elif [ -d /etc/init.d ]; then
+         echo "sysvinit"
+-    elif [ -d /run/parallax-svman.sock ]; then
++    elif [ -S /run/parallax-svman.sock ]; then
+         echo "parallax"
+     else
+         echo "unknown"
+@@ -84,4 +84,4 @@ case $init in
+     unknown)
+         echo "Unknown init system!"
+         exit 1 ;;
+-esac
+\ No newline at end of file
++esac
