@@ -2,12 +2,12 @@
 
 pkgbase=lckfb-meta
 pkgname=(
-	lckfb-meta 
-	lckfb-taishanpi-meta 
-	lckfb-logicalpi-fpga-{g,z}1-meta
-	lckfb-dqx-ra6e2-meta
+    lckfb-meta
+    lckfb-taishanpi-meta
+    lckfb-logicalpi-fpga-{g,z}1-meta
+    lckfb-dqx-ra6e2-meta
 )
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 epoch=
 pkgdesc="立创开发板元包 / LCKFB Development Board meta package"
@@ -43,7 +43,7 @@ package_lckfb-meta() {
     depends=(
         lckfb-taishanpi-meta
         lckfb-logicalpi-fpga-{g,z}1-meta
-	lckfb-dqx-ra6e2-meta
+        lckfb-dqx-ra6e2-meta
     )
 }
 
@@ -122,6 +122,14 @@ package_lckfb-taishanpi-meta() {
 
         # Android debug
         escrcpy
+
+        # baidunetdisk
+        baidupcs
+        baidunetdisk
+
+        # netdisk tools
+        openlist
+        clouddrive
     )
 }
 
@@ -186,6 +194,14 @@ package_lckfb-logicalpi-fpga-g1-meta() {
 
         # Third-party fpga tools
         quartus-free-questa
+
+        # baidunetdisk
+        baidupcs
+        baidunetdisk
+
+        # netdisk tools
+        openlist
+        clouddrive
     )
 }
 
@@ -212,9 +228,17 @@ package_lckfb-logicalpi-fpga-z1-meta() {
         tinyprog
     )
     optdepends=(
-	# serial debug tools
-	windterm
-	serial-studio
+        # serial debug tools
+        windterm
+        serial-studio
+
+        # baidunetdisk
+        baidupcs
+        baidunetdisk
+
+        # netdisk tools
+        openlist
+        clouddrive
     )
 }
 
@@ -234,20 +258,20 @@ package_lckfb-dqx-ra6e2-meta() {
         openssl
 
         # Renesas official tools
-	fsp-bin
+        fsp-bin
+        renesas-flash-programmer
 
         # Third-party fpga tools
         jlink-software-and-documentation
 
     )
     optdepends=(
-        # baidunetdisk 
-	baidupcs
-	baidunetdisk
+        # baidunetdisk
+        baidupcs
+        baidunetdisk
 
-	# netdisk tools
-	openlist
-	clouddrive
-
+        # netdisk tools
+        openlist
+        clouddrive
     )
 }
