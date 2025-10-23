@@ -10,7 +10,7 @@ pkgrel=1
 epoch=
 pkgdesc="A script to manage and change GIFs in Caelestia shell"
 arch=('x86_64')
-url="https://gitlab.com/gnoooo/caelestia-gif.git"
+url="https://gitlab.com/gnoooo/caelestia-gif"
 license=('GPL-3.0-or-later')
 groups=()
 depends=('imagemagick' 'cjson' 'xdg-utils' 'ncurses' 'bash')
@@ -24,27 +24,28 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://gitlab.com/gnoooo/caelestia-gif/-/archive/master/caelestia-gif-master.tar.gz?ref_type=heads")
+#source=("https://gitlab.com/gnoooo/caelestia-gif/-/archive/master/caelestia-gif-master.tar.gz?ref_type=heads")
+source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz?ref_type=tags")
 noextract=()
-sha256sums=('57876817f0719e272ba87e34e9e16648b5bc272e35d6342331540288caf93cd0')
+sha256sums=('6937a818a314a824d9137d2f540241cc1021a40103de4d8b593703962237bc7a')
 validpgpkeys=()
 
 prepare() {
-    cd "$srcdir/$pkgname-main"
+    cd "$srcdir/$pkgname-v$pkgver"
 }
 
 build() {
-    cd "$srcdir/$pkgname-main"
+    cd "$srcdir/$pkgname-v$pkgver"
     make
 }
 
 check() {
-	cd "$srcdir/$pkgname-main"
-	make -k check || true
+    cd "$srcdir/$pkgname-v$pkgver"
+    make -k check || true
 }
 
 package() {
-	cd "$srcdir/$pkgname-main"
-        #fakeroot ./install_bin
-	make DESTDIR="$pkgdir" install
+    cd "$srcdir/$pkgname-v$pkgver"
+    #fakeroot ./install_bin
+    make DESTDIR="$pkgdir" install
 }
