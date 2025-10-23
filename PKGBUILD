@@ -1,6 +1,6 @@
 # Maintainer: Thayne McCombs <bytecurry.software@gmail.com>
 pkgname=openbao-bin
-pkgver=2.4.1
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="solution to manage, store, and distribute sensitive data"
 arch=("x86_64")
@@ -16,7 +16,7 @@ source=(
 # Note: The public key can be downloaded from https://openbao.org/assets/openbao-gpg-pub-20240618.asc
 # See https://openbao.org/docs/install/
 validpgpkeys=('66D15FDD87287219C8E15478D200CD702853E6D0')
-b2sums=('8ba54352a9929c745476eed27e4cd98075c8e51fa4d27b9d1da4e5e479e16901bc1d90470994b125de198fab58acf7dbb5f9b55679372577cf958753248f25a6'
+b2sums=('6300eef73e3c9a5b763c2fe548aac0350a0dddc2c4244608dd9a28b550aff5d07859876c3e7f7f9ff53bf13c635f0ad817a653ea52a3b161959038bebe4857d8'
         'SKIP')
 
 package() {
