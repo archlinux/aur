@@ -5,16 +5,16 @@
 pkgname="nucleus-gtk4-git"
 _pkgname=${pkgname%-git}
 _appname="nucleus"
-pkgver=1.r31.gb17df957
-pkgrel=2
+pkgver=1.r36.g72b9de27
+pkgrel=1
 pkgdesc="Chemistry educational software written in Python"
 arch=(any)
 url="https://codeberg.org/lo-vely/nucleus"
 license=('GPL-3.0-or-later')
 depends=('gtk4' 'libadwaita' 'python-gobject' 'python')
 makedepends=('blueprint-compiler' 'git' 'meson' 'ninja')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=("${_pkgname}" "${_appname}")
+conflicts=("${_pkgname}" "${_appname}")
 source=("git+$url.git")
 sha256sums=('SKIP')
 
