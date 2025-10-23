@@ -1,0 +1,12 @@
+diff --git a/apps/studio/src/common/menus/MenuBuilder.ts b/apps/studio/src/common/menus/MenuBuilder.ts
+index f31896d03..56c3b3f84 100644
+--- a/apps/studio/src/common/menus/MenuBuilder.ts
++++ b/apps/studio/src/common/menus/MenuBuilder.ts
+@@ -44,7 +44,6 @@ export default class extends DefaultMenu {
+       label: "Help",
+       submenu: [
+         this.menuItems.enterLicense,
+-        this.menuItems.checkForUpdate,
+         this.menuItems.opendocs,
+         this.menuItems.support,
+         this.menuItems.addBeekeeper,

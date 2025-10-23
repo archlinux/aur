@@ -1,0 +1,15 @@
+diff --git a/package.json b/package.json
+index c066cd84d..5f85fb494 100644
+--- a/package.json
++++ b/package.json
+@@ -35,5 +35,9 @@
+     "husky": "8.0.3",
+     "pinst": "^3.0.0"
+   },
+-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
++  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
++  "resolutions": {
++    "better-sqlite3": "11.2.0",
++    "kerberos": "2.1.1"
++  }
+ }

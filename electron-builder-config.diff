@@ -1,5 +1,5 @@
 diff --git a/apps/studio/electron-builder-config.js b/apps/studio/electron-builder-config.js
-index 361c7755b..da85570c6 100644
+index 84b31326a..78db7a0c0 100644
 --- a/apps/studio/electron-builder-config.js
 +++ b/apps/studio/electron-builder-config.js
 @@ -33,6 +33,8 @@ module.exports = {
@@ -11,7 +11,7 @@ index 361c7755b..da85570c6 100644
    extraResources: [
      {
        from: './extra_resources/demo.db',
-@@ -129,24 +131,11 @@ module.exports = {
+@@ -133,24 +135,11 @@ module.exports = {
        role: "Editor"
      }
    ],
@@ -37,7 +37,7 @@ index 361c7755b..da85570c6 100644
        'pacman'
      ],
      desktop: {
-@@ -154,61 +143,9 @@ module.exports = {
+@@ -158,61 +147,9 @@ module.exports = {
      },
      publish: ['github']
    },

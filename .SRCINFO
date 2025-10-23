@@ -1,6 +1,6 @@
 pkgbase = beekeeper-studio
 	pkgdesc = Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more
-	pkgver = 5.3.4
+	pkgver = 5.4.9
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/beekeeper-studio/beekeeper-studio
@@ -14,18 +14,22 @@ pkgbase = beekeeper-studio
 	makedepends = python
 	makedepends = yarn
 	depends = electron31
-	provides = beekeeper-studio-ultimate=5.3.4
+	provides = beekeeper-studio-ultimate=5.4.9
 	conflicts = beekeeper-studio-ultimate
-	source = beekeeper-studio-5.3.4.tar.gz::https://github.com/beekeeper-studio/beekeeper-studio/archive/v5.3.4.tar.gz
+	source = beekeeper-studio-5.4.9.tar.gz::https://github.com/beekeeper-studio/beekeeper-studio/archive/v5.4.9.tar.gz
 	source = electron-launcher.sh
 	source = electron-builder-config.diff
 	source = fix-argv.diff
+	source = disable-update-checking.diff
+	source = update-dependencies.diff
 	source = missing-log-app-name.diff
 	source = LICENSE.md
-	b2sums = 61e1bfb3b71758a6c9729f0a99bca0d40187bef39299f312e87dd652365d08e189429dc4327ba3d10a9b5f4dca91c6e2b3e68ec359aa2e9be23ff08691c0d282
+	b2sums = d7f22c13357537ad3e31e18246f40070d08b38b6a0bba1f69c05bb0203c9f6c75d72302dea3bf9f0ad35949418d03d44b371519045fb844d4050177245f72595
 	b2sums = 54b46275a83a6099b22bc511a6293178abccccad6d1cc36bf812166f93f75b1379a3201dac9ee85e05cf7c3b0de7e94829fd3fb619ccca513924ebf3101850f0
-	b2sums = e1642a5e2ec927922ef5eb73a9987779587846de2e175100cfe5dd2d7c8a96bd4d8baa2dca2c67f323ae1d764de747f9c6cebaa5944b3896e2c4d6a2a1ee311a
-	b2sums = 108c2e7da2139dd5dde0a09a5ca31d013da05e58ea0d1239661e397dd4bd109e731d0606f6262b8b6c9f8bea004721da83ab145e2a81de8dbc2657a85922cccf
+	b2sums = d48563db28f1b60f28dceaeb6a4e3864808a394b1ac9a37b1ee7a7efa09c6b271d157fc5fe9b11a1c7df309b714245607666dc568ffe3dd21e61e077a3bcd674
+	b2sums = d6c254a87121792caed6be8619aa51d2dc362342e31bc4268d37cfb72d4e827ad3191b88c3cac25bd7edec7ef47db168dbf1e3b27176efa07d8db4c04a537a76
+	b2sums = 258e8f585fc7f96f4964e9bddd79d7450b028611d63850934361d99e25a37eddcbf7effe3479826f1e508ae4b524870bc2a10b884c8e7bfeb6e298e30e555837
+	b2sums = c6e79c184920f1b04f49050eaedb4d1797131b9dcea26427f8b2608e4b2c08ce97a731b725159392a4b165e29bb48ca91195e5f2cb8bf17741d8478db9637ed5
 	b2sums = 36e0dab7e6e489a19cb6709a39a0f38f2f9a34200c7af297b94b8aa5e24ecdc3ec9451a0791d79ba72b7c51ad156d9abdb2b52deee7c3b3da3a5faa637480ebc
 	b2sums = e3c500691772f577a9f96b7672ba2f823eae58b9a22bd92bc1d9d0da73620d92a9c503b5d8850b59c6e8bf7126dfb0c23e6e2a738fb10865fc85a4a2a572fbdd
 
