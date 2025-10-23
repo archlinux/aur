@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=LyricBridge
+Comment=Fetch and save lyrics as SRT
+Exec=lyricbridge
+Terminal=false
+Type=Application
+Categories=Audio;AudioVideo;Utility;
+Icon=lyricbridge
+StartupWMClass=LyricBridge
+Keywords=music;lyrics;srt;netease;qq;
