@@ -2,7 +2,7 @@
 
 pkgbase=dxvk-git
 pkgname=('dxvk-mingw-git')
-pkgver=2.7.r8.g6a5544f03
+pkgver=2.7.1.r195.g2f9309786
 pkgrel=1
 pkgdesc="A Vulkan-based compatibility layer for Direct3D 9/10/11 which allows running 3D applications on Linux using Wine. Windows DLL version)"
 arch=('x86_64')
@@ -18,14 +18,17 @@ source=(
     "git+https://github.com/Joshua-Ashton/mingw-directx-headers.git"
     "git+https://github.com/KhronosGroup/Vulkan-Headers.git"
     "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
+    "git+https://github.com/doitsujin/dxbc-spirv.git"
+    "git+https://github.com/doitsujin/libdisplay-info.git"
     "setup_dxvk.sh::https://aur.archlinux.org/cgit/aur.git/plain/setup_dxvk.sh?h=dxvk-bin"
 )
-sha256sums=("SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"2ca9ece1b6c36446e9f6955d3d03ab72b173c8f85539a2848febc51b38be705e"
-)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '2ca9ece1b6c36446e9f6955d3d03ab72b173c8f85539a2848febc51b38be705e')
 
 
 pkgver() {
@@ -41,6 +44,17 @@ prepare() {
     git config submodule.include/vulkan.url "$srcdir/Vulkan-Headers"
     git config submodule.include/spirv.url "$srcdir/SPIRV-Headers"
     git -c protocol.file.allow=always submodule update include/{native/directx,vulkan,spirv}
+
+    git submodule init subprojects/{dxbc-spirv,libdisplay-info}
+    git config submodule.subprojects/dxbc-spirv.url "$srcdir/dxbc-spirv"
+    git config submodule.subprojects/libdisplay-info.url "$srcdir/libdisplay-info"
+    git -c protocol.file.allow=always submodule update subprojects/{dxbc-spirv,libdisplay-info}
+
+    cd subprojects/dxbc-spirv
+
+    git submodule init submodules/spirv_headers
+    git config submodule.submodules/spirv_headers.url "$srcdir/SPIRV-Headers"
+    git -c protocol.file.allow=always submodule update submodules/spirv_headers
 }
 
 build() {
