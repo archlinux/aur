@@ -34,7 +34,8 @@ optdepends=('elephant-providerlist: providerlist provider'
             'elephant-websearch: websearch provider'
             'elephant-bluetooth: bluetooth provider'
             'elephant-windows: windows provider'
-            'elephant-snippets: snippets provider')
+            'elephant-snippets: snippets provider'
+            'elephant-nirisessions: nirisessions provider')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md"

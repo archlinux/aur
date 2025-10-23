@@ -28,6 +28,7 @@ pkgbase = walker-bin
 	optdepends = elephant-bluetooth: bluetooth provider
 	optdepends = elephant-windows: windows provider
 	optdepends = elephant-snippets: snippets provider
+	optdepends = elephant-nirisessions: nirisessions provider
 	provides = walker
 	conflicts = walker
 	source = LICENSE-2.6.2::https://raw.githubusercontent.com/abenz1267/walker/v2.6.2/LICENSE
