@@ -4,32 +4,38 @@ pkgname=undertalemodtool-bin
 _pkgname=undertalemodtool
 
 pkgver=0.8.3.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 
 pkgdesc="The most complete tool for modding, decompiling and unpacking Undertale (and other GameMaker games!)"
 url="https://github.com/UnderminersTeam/UndertaleModTool"
 license=("GPL-3.0")
 
-depends=("wine" "bash")
+depends=("wine")
 makedepends=("unzip")
+provides=("$_pkgname")
+options=("!strip" "!debug")
 
-source=("${_pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/UndertaleModTool_v${pkgver}-Windows-SingleFile.zip" 
-        "${_pkgname}.sh"
-		"undertalemodtool.exe.desktop"
-		"gamemaker-data.xml"
-		"icon.png")
-sha256sums=("e793d4c8f6abb631ec20a727e709a1959f10a2a4a1af0a8d58b6aab774d4e264"
-			"25f570aebce260ca02aae2da4c9b6eb4893e90a125886b54c6b89033b84a9c7c"
-			"156ab7105b93ed653aa180e91535e41a5d56de279c8707c6acc23e526209f655"
-			"SKIP"
-			"SKIP")
+source=(
+	"${_pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/UndertaleModTool_v${pkgver}-Windows-SingleFile.zip"
+    "${_pkgname}.sh"
+	"undertalemodtool.exe.desktop"
+	"gamemaker-data.xml"
+	"icon.png"
+	)
+sha256sums=(
+    'e793d4c8f6abb631ec20a727e709a1959f10a2a4a1af0a8d58b6aab774d4e264'
+    'feb2961625d3a959c3c5e06a1dc57451f4baf14e71fa09585f77fb78ba0dd251'
+    'b117db1939eaf99652da0617f82e6994e0e69ac45d993e504fb766793f2d7773'
+	'SKIP'
+	'SKIP'
+	)
 
 
 noextract=("${_pkgname}-${pkgver}.zip")
 
 prepare() {
-	unzip -q "${_pkgname}-${pkgver}.zip" -d "${_pkgname}-${pkgver}"
+	unzip -qo "${_pkgname}-${pkgver}.zip" -d "${_pkgname}-${pkgver}"
 }
 
 
@@ -37,7 +43,7 @@ package(){
 	install -d "$pkgdir"/opt
 
 	# Copy program files
-	cp -rdp --no-preserve=ownership "${_pkgname}-${pkgver}" "$pkgdir"/opt/"${_pkgname}"
+	cp -r --preserve=mode "${_pkgname}-${pkgver}" "$pkgdir"/opt/"${_pkgname}"
 	# Install launcher script
 	install -Dm755 ${_pkgname}.sh "$pkgdir"/usr/bin/${_pkgname}
 	# Install destkop file

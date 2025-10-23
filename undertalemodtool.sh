@@ -10,8 +10,8 @@ fi
 
 # If session is Wayland and file "$WINEPREFIX/forceX" doesn't exit, force Wayland mode
 if [[ "$XDG_SESSION_TYPE" == "wayland" &&  ! -f "$WINEPREFIX/forceX" ]]; then
-    export DISPLAY= 
+    export DISPLAY=
 fi
 
 # Launch
-WINE_D3D_CONFIG="renderer=gdi" wine /opt/undertalemodtool/UndertaleModTool.exe "$1"
+WINE_D3D_CONFIG="renderer=gdi" wine /opt/undertalemodtool/UndertaleModTool.exe "$@"
