@@ -6,7 +6,7 @@ _pkgbase=${pkgbase%-git}
 _pkg1=DankMaterialShell
 _pkg2=danklinux
 pkgname=($_pkgbase-git $_pkgbase-hyprland-git $_pkgbase-niri-git)
-pkgver=0.1.15.r1.g16360dd
+pkgver=0.2.0.r2.gfa44632
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
@@ -16,7 +16,8 @@ depends=(dgop
          inter-font
          quickshell
          ttf-fira-code
-         ttf-material-symbols-variable-git)
+         ttf-material-symbols-variable-git
+         accountsservice)
 optdepends=('brightnessctl: Laptop display brightness control'
             'cava: Audio visualizer'
             'cliphist: Clipboard history functionality'

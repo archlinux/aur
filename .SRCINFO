@@ -1,6 +1,6 @@
 pkgbase = dms-shell-git
 	pkgdesc = Desktop shell for wayland compositors built with Quickshell & GO
-	pkgver = 0.1.15.r4.g3904d6f
+	pkgver = 0.2.1.r1.g16360dd
 	pkgrel = 2
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = dms-shell-git
 	depends = quickshell
 	depends = ttf-fira-code
 	depends = ttf-material-symbols-variable-git
+	depends = accountsservice
 	optdepends = brightnessctl: Laptop display brightness control
 	optdepends = cava: Audio visualizer
 	optdepends = cliphist: Clipboard history functionality
@@ -22,7 +23,7 @@ pkgbase = dms-shell-git
 	optdepends = power-profiles-daemon: Set power profile
 	optdepends = qt6ct: Qt6 application theming
 	optdepends = wl-clipboard: Copy functionality for PIDs and other elements
-	provides = dms-shell=0.1.15.r4.g3904d6f
+	provides = dms-shell=0.2.1.r1.g16360dd
 	conflicts = dms-shell
 	source = git+https://github.com/AvengeMedia/DankMaterialShell.git
 	source = git+https://github.com/AvengeMedia/danklinux.git
