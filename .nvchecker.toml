@@ -1,0 +1,5 @@
+[oksh]
+source = "git"
+git = "https://github.com/ibara/oksh.git"
+include_regex = "oksh-(.+)"
+prefix = "oksh-"
