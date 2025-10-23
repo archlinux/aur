@@ -1,6 +1,6 @@
 # Maintainer: Augustas Vaivada <https://github.com/aujezus>
 pkgname=hypr-mon-switch-git
-pkgver=r29.51b8af3
+pkgver=r30.a192963
 pkgrel=1
 pkgdesc="Configuration-based monitor switching system for Hyprland with YAML configuration support"
 arch=('any')
