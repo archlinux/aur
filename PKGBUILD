@@ -3,11 +3,11 @@ pkgname=bsd-leave
 _debver=1.12
 _debrel=2.2
 pkgver="${_debver}_${_debrel}"
-pkgrel=1
+pkgrel=2
 pkgdesc="program to remind you when to leave"
 arch=('x86_64')
 url="http://ftp.de.debian.org/debian/pool/main/l/leave/"
-license=('BSD')
+license=('BSD-3-Clause') # Debian common license
 depends=('glibc')
 source=("http://ftp.de.debian.org/debian/pool/main/l/leave/${pkgname#bsd-}_${_debver}.orig.tar.gz"
         "http://ftp.de.debian.org/debian/pool/main/l/leave/${pkgname#bsd-}_${_debver}-${_debrel}.diff.gz")

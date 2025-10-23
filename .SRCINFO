@@ -1,10 +1,10 @@
 pkgbase = bsd-leave
 	pkgdesc = program to remind you when to leave
 	pkgver = 1.12_2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ftp.de.debian.org/debian/pool/main/l/leave/
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	depends = glibc
 	source = http://ftp.de.debian.org/debian/pool/main/l/leave/leave_1.12.orig.tar.gz
 	source = http://ftp.de.debian.org/debian/pool/main/l/leave/leave_1.12-2.2.diff.gz
