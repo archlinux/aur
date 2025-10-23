@@ -1,6 +1,6 @@
-# Maintainer: elementh <hello@lucasmarino.me>                                     
+# Maintainer: phil-gru <gphilipp23@gmail.com>                                     
 pkgname=anytype-bin
-pkgver=0.48.5
+pkgver=0.50.5
 pkgrel=1
 pkgdesc="Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users."
 arch=('x86_64')
@@ -19,9 +19,9 @@ source=(
     "anytype.png"
     )
 noextract=("${_appimage}")
-sha256sums=('4b67f6e87265100f3fab7adf82bca2548acca5079d3f890bd29e4ac3ba851acd'
-            'fe5e13adc759f7d93382733ba942b2a49f0ec4817a1be95e1ac6e7d1495002db'
-            '7967ea7a9c6237f7a3d32a6d352d1ac7b18fc29b329e662141bc21bf89d32939')
+sha256sums=('5888f414355a2a2e439bcf42aea779ab3d43af6b4c625fa32cc3157a9a9b4af6'
+            '43312631ff7d43338a0cdc37fbf343a80318459a145c7c983175eed09123ea49'
+            '41dede6dc49b7fc9beebc92437f8d0257f209f149e909b570a877cc1d7463251')
 
 package() {
     install -Dm755 $_appimage "$pkgdir"/usr/bin/anytype
