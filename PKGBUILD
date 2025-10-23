@@ -1,5 +1,5 @@
 # Maintainer: Xubai Wang <18016038327@189.cn>
-pkgname=python-striprtf 
+pkgname=python-striprtf-git
 _name="striprtf"
 pkgver=v0.0.29.r0.g6365066
 pkgrel=1
@@ -30,12 +30,12 @@ prepare() {
 }
 
 build() {
-    cd $_name
-    python -m build --wheel --no-isolation
+  cd $_name
+  python -m build --wheel --no-isolation
 }
 
 package() {
-    cd $_name
-    python -m installer --destdir="$pkgdir" dist/*.whl
+  cd $_name
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
