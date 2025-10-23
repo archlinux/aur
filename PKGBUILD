@@ -1,9 +1,9 @@
 # Maintainer: getzze <getzze at gmail dot com>
 
 pkgname=gnome-shell-extension-logo-menu
-pkgver=23.6
+pkgver=24.2
 _pkgname=Logomenu
-_tag="190125"
+_tag="011025"
 pkgrel=1
 pkgdesc='Quick access menu for the GNOME panel that help ease the workflow for newcomers and power users alike.'
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('gnome-shell')
 makedepends=('unzip')
 source=("${url}/archive/refs/tags/v${pkgver}_${_tag}.tar.gz")
-sha256sums=('06e1f5848527da415c5a840c64c9f055e91ee2ffbd7470eb7da717bc3c4cc4ad')
+sha256sums=('fd05bb7bf2c96e6a11f336d6eab92952ce011ea2ac1519d66f36bcd2ed5192e9')
 
 build() {
     cd "${_pkgname}-${pkgver}_${_tag}"

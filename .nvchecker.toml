@@ -1,0 +1,7 @@
+[gnome-shell-extension-logo-menu]
+source = "github"
+github = "Aryan20/Logomenu"
+use_latest_release = true
+prefix = "v"
+from_pattern = '(?P<ver>\d+\.\d+)_.*'
+to_pattern = '\g<ver>'
