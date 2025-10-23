@@ -3,13 +3,15 @@
 pkgname=libloot
 _pkgname=loot
 # https://github.com/loot/libloot/releases
-pkgver=0.28.2
-pkgrel=2
+pkgver=0.28.3
+pkgrel=1
 pkgdesc="A library for the Load Order Optimisation Tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games"
 arch=('x86_64')
 url="https://loot.github.io"
 license=('GPL-3.0-only')
-depends=('tbb' 'icu' 'fmt' 'spdlog')
+depends=(
+	'gcc-libs'
+)
 makedepends=(
 	'git'
 	'cmake'
@@ -20,7 +22,7 @@ makedepends=(
 	#'uv' # docs
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('c39bae45541dcb56743ce1276854f52fe188394ce427b02539444d84fad56c2d')
+sha256sums=('5becb26d1f84a22f58772fbf840f3688468274e11cb7895fa79af730b57df242')
 build() {
 	# Build docs - Doxygen needs to be installed for C++
 	# They are half a gig, so they are disabled
@@ -30,8 +32,6 @@ build() {
 
 	cd "${srcdir}/${pkgname}-${pkgver}/cpp"
 
-	# Workaround - with LTO some symbols are somehow undefined and building against LOOT fails
-	export CXXFLAGS="${CXXFLAGS} -fno-lto"
 	# https://github.com/loot/libloot/tree/master/cpp#build
 	cmake -B build . \
 		-DCMAKE_BUILD_TYPE=RelWithDebInfo
