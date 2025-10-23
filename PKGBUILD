@@ -11,7 +11,7 @@ depends=('qt6-base' 'qt6-webengine' 'layer-shell-qt' 'tosu')
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 makedepends=('git' 'gcc' 'meson')
-source=("${_pkgbase}::git+${url}?signed.git")
+source=("${_pkgbase}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
