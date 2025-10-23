@@ -3,25 +3,25 @@
 # Contributor: Antonio Rojas <arojas at archlinux dot org>
 _base=webassets
 pkgname=python-${_base}
-pkgver=2.0
-pkgrel=3
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="Asset management application for Python web development"
 arch=(any)
 url="https://github.com/miracle2k/${_base}"
 license=('custom')
 depends=(python)
-makedepends=(python-setuptools)
+makedepends=(python-build python-hatchling python-installer)
 source=(${url}/archive/${pkgver}.tar.gz)
-sha512sums=('6d62d4e5c1ed81a2d235c24776b632574f3670ae3d863c5f5a79d0e1afc7acfa7965e532b7975503df758dbe6c8dbd857b250a6ea8e4b414c8f1ae12fb8addd7')
+sha512sums=('1f0e2c71badbec30c8c2e38de57a3480274cff614d105395777ad9d2d71b7cde9a555b63b799d966852a149bfddc36cca8a034ec3ed744d8f1bd2d16934fcc56')
 
 build() {
   cd ${_base}-${pkgver}
   export PYTHONHASHSEED=0
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
