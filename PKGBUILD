@@ -5,7 +5,7 @@
 _pkgname='pat-aur'
 pkgbase=${_pkgname}-git
 pkgname=(${_pkgname}-client-git ${_pkgname}-host-git)
-pkgver=r517.6bd7268
+pkgver=r518.20248ff
 pkgrel=1
 pkgdesc='AUR helper and tool to build Arch Linux packages in clean containers.'
 url="https://gitlab.com/patlefort/${_pkgname}"
@@ -43,7 +43,6 @@ package_pat-aur-client-git() {
 	provides=(${_pkgname}-client)
 	conflicts=(${_pkgname}-client)
 	pkgdesc+=' (client only)'
-	arch=('any')
 
 	DESTDIR="${pkgdir}" cmake --install build
 }
