@@ -1,11 +1,19 @@
 pkgbase = pkgmate-bin
-	pkgdesc = TUI for application to manage your dependencies
-	pkgver = 0.1.1
+	pkgdesc = TUI application to manage your dependencies
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/fuad-daoud/pkgmate
-	arch = x86_64
 	license = MIT
-	source_x86_64 = pkgmate-bin-0.1.1-x86_64::https://github.com/fuad-daoud/pkgmate/releases/download/0.1.1/pkgmate-linux-amd64
-	sha256sums_x86_64 = SKIP
-
+	conflicts = pkgmate
+	provides = pkgmate
+	arch = aarch64
+	source_aarch64 = https://github.com/fuad-daoud/pkgmate/releases/download/v0.1.2/pkgmate-debian-linux-arm64.tar.gz
+	sha256sums_aarch64 = 7928039e7a071bda152b48fdb5683f11ce00b4f55c3a2a19aa758fe488ddacf4
+	arch = x86_64
+	source_x86_64 = https://github.com/fuad-daoud/pkgmate/releases/download/v0.1.2/pkgmate-debian-linux-amd64.tar.gz
+	sha256sums_x86_64 = c0602fdafacf51d9947565761a691cd87e146134c1056b839bc4b1b86c67676d
+	arch = x86_64
+	source_x86_64 = https://github.com/fuad-daoud/pkgmate/releases/download/v0.1.2/pkgmate-arch-linux-amd64.tar.gz
+	sha256sums_x86_64 = 3d4acba798c55abf33130fcb7aea9a5e913e52a1d4376e30703ab7b97ca2c781
+	
 pkgname = pkgmate-bin
