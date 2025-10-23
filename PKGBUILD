@@ -47,7 +47,7 @@ package () {
 
 	# Install a desktop entry and the license file
 	mkdir -p "${pkgdir}/usr/share/pixmaps"
-	ln -s "/opt/${pkgname}/bitmaps/logo.svg" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+	ln -s "/opt/${pkgname}/bitmaps/logo.svg" "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
 	install -D -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -D -m644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
