@@ -1,0 +1,22 @@
+pkgbase = xpanel-desktop-bin
+	pkgdesc = Cross-platform Electron wrapper for Finalmouse XPANEL
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/diegul/xpanel-desktop
+	arch = x86_64
+	license = MIT
+	depends = hicolor-icon-theme
+	depends = glibc
+	provides = xpanel-desktop
+	conflicts = xpanel-desktop
+	options = !strip
+	source = https://github.com/diegul/xpanel-desktop/releases/download/v1.0.0/xpanel-desktop-1.0.0-x86_64.AppImage
+	source = xpanel-desktop.desktop
+	source = xpanel-desktop.sh
+	source = xpanel-desktop.png
+	sha256sums = 77eb3967e37ad659ee0025696a3cf3a7ce41de30f0f78e4bde0b43c4084e8eaa
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = xpanel-desktop-bin

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=XPANEL Desktop
+Comment=Electron wrapper for Finalmouse XPANEL
+Exec=xpanel-desktop
+Icon=xpanel-desktop
+Terminal=false
+Type=Application
+Categories=Utility;HardwareSettings;
+StartupWMClass=XPANEL Desktop
