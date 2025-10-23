@@ -2,7 +2,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jared Casper <jaredcasper@gmail.com>
 pkgname=magic
-pkgver=8.3.566
+pkgver=8.3.567
 pkgrel=1
 pkgdesc="A VLSI layout system"
 _git_url="https://github.com/RTimothyEdwards/magic"
@@ -32,20 +32,19 @@ optdepends=(
    'blt: to create a tree diagram of the cell hierarchy in a design'
 )
 
-_archive="${pkgname}-${pkgver}"
 source=(
-   "${_archive}::git+${_git_url}#tag=${pkgver}"
+   "${pkgname}::git+${_git_url}#tag=${pkgver}"
    "0001-fixup-magsgtty.patch"
 )
 
-b2sums=('81bd2017a83229ac14eb72d2345e621ed91852bb783f66a1756f9174cc441974550dca3cb15ca916d971d3a1190b73f291be9afc5cdcee0e61b446c3ccd27b8e'
+b2sums=('e4397f5e48a0e9bb89ba3e1060126ec9e712cc3bbeb6ed06283bb82fa2937467bbe12abab370a1c2bad4b5638e8830517f90cd0e139dec56de79b4f7efa1a5d1'
         '72d1a9742c72041204c05aca45639251ab49768c43b1829bc40e6f0857fd93c0a7e32e433a0090996e17af1fc588e26677c24487bf04d5a14a86c8f5e4a2402c')
 
 
 options=()
 
 prepare() {
-   cd "${_archive}"
+   cd "${pkgname}"
 
    # To compile with Glibc v2.42 we need to patch magsgtty
    # See: https://github.com/RTimothyEdwards/magic/issues/434
@@ -53,7 +52,7 @@ prepare() {
 }
 
 build() {
-   cd "${_archive}"
+   cd "${pkgname}"
    # See upstream issue: https://github.com/RTimothyEdwards/magic/issues/401
    # for more details about why we need to use C17
    export CFLAGS="${CFLAGS} -std=c17 -D_DEFAULT_SOURCE=1"
@@ -62,7 +61,7 @@ build() {
 }
 
 package() {
-   cd "${_archive}"
+   cd "${pkgname}"
    make DESTDIR="$pkgdir" MANDIR=/usr/share/man install
 
    # License
