@@ -25,6 +25,10 @@ prepare() {
 
 package() {
 	install -Dm755 "$_appimage" "$pkgdir/usr/bin/$pkgname"
+	cp -a "$_appimage.config" "$pkgdir/usr/bin/$pkgname.config"
+	chmod -R 777 "$pkgdir/usr/bin/$pkgname.config"
+	cp -a "$_appimage.home" "$pkgdir/usr/bin/$pkgname.home"
+	chmod -R 777 "$pkgdir/usr/bin/$pkgname.home"
 	install -Dm644 "squashfs-root/usr/share/icons/hicolor/256x256/apps/project-plus-dolphin.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 	install -dm644 "$pkgdir/usr/share/applications"
 	printf "[Desktop Entry]\nVersion=${pkgver:1}\nName=Project+ Netplay\nComment=A Mod of Super Smash Bros. Brawl with Netplay.\nPath=/usr/bin\nExec=project-plus-netplay\nIcon=project-plus-netplay\nType=Application\nCategories=Game\nKeywords=project+;brawl;netplay\n" > "$pkgdir/usr/share/applications/$pkgname.desktop"
