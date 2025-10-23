@@ -1,7 +1,7 @@
 # Maintainer: Max Rossmannek <max@rossmannek.de>
 
 pkgname=cobib-zotero
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 arch=('any')
 depends=(
@@ -21,8 +21,8 @@ provides=('cobib-zotero')
 conflicts=('cobib-zotero')
 pkgdesc="Zotero importer plugin for coBib"
 url="https://gitlab.com/cobib/${pkgname}"
-source=("https://gitlab.com/cobib/cobib-zotero/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('c1b9393098897b427dce57a51ad92e539ca63e55bad371789bedcb8ea88e06b9cee143265c4859c02b6a9d54df7ebf1a8d3a2d5198e76952e4e9bd3598fce445')
+source=("https://gitlab.com/cobib/cobib-zotero/-/releases/v$pkgver/downloads/$pkgname-v$pkgver.tar.gz")
+sha512sums=('6e8eda1ed8069f81b8cdc0553e65c4bfd4d2b2765669291659d2d3a29b970d904da0a0fb5055c45cf32ecc01aec0886d3d7e3c4bc7177ab92aa6155fcca72342')
 
 build() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
