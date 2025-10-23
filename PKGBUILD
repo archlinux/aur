@@ -6,7 +6,7 @@
 
 pkgname=tinc-pre-git
 pkgver=1.1pre18.236.gf3d5e225
-pkgrel=1
+pkgrel=2
 pkgdesc="VPN (Virtual Private Network) daemon (Latest commit on the pre-release branch)"
 arch=('any')
 url="http://www.tinc-vpn.org/"
@@ -16,8 +16,17 @@ makedepends=('git' 'meson>=0.51')
 optdepends=('python2' 'wxpython: gui support' 'miniupnpc')
 provides=('tinc-pre')
 conflicts=('tinc' 'tinc-pre' 'tinc-pre-systemd')
-source=('git+https://github.com/gsliepen/tinc#branch=1.1')
+source=(
+    'git+https://github.com/gsliepen/tinc#branch=1.1'
+    'tinc-1.1_pre18-fix-upnp.patch'
+)
 _gitname=tinc
+
+prepare() {
+    cd "$_gitname"
+    # apply local patch from PKGBUILD's parent directory
+    patch -p1 <"${srcdir}/tinc-1.1_pre18-fix-upnp.patch"
+}
 
 pkgver() {
     cd "$_gitname"
@@ -35,4 +44,7 @@ package() {
     meson install --destdir="$pkgdir" -C build
 }
 
-md5sums=('SKIP')
+md5sums=(
+    'SKIP'
+    '4f5b3e74c620efd0f16390ce2e61ec3f'
+)

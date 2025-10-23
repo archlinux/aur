@@ -1,7 +1,7 @@
 pkgbase = tinc-pre-git
 	pkgdesc = VPN (Virtual Private Network) daemon (Latest commit on the pre-release branch)
 	pkgver = 1.1pre18.236.gf3d5e225
-	pkgrel = 3
+	pkgrel = 2
 	url = http://www.tinc-vpn.org/
 	arch = any
 	license = GPL
@@ -17,6 +17,8 @@ pkgbase = tinc-pre-git
 	conflicts = tinc-pre
 	conflicts = tinc-pre-systemd
 	source = git+https://github.com/gsliepen/tinc#branch=1.1
+	source = tinc-1.1_pre18-fix-upnp.patch
 	md5sums = SKIP
+	md5sums = 4f5b3e74c620efd0f16390ce2e61ec3f
 
 pkgname = tinc-pre-git
