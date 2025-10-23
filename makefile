@@ -19,6 +19,8 @@ INSSRC := install.c
 INSOBJ := $(INSSRC:.c=.o)
 INSBIN := install_bin
 
+DESTDIR ?= $(HOME)/.local
+
 
 # Default target
 all: $(BIN) $(INSBIN)
@@ -41,13 +43,13 @@ clean:
 # Install the binary
 install: $(BIN)
 	./$(INSBIN)
-	mkdir -p /$(HOME)/.local/bin
-	cp $(BIN) /$(HOME)/.local/bin/$(BIN)
-	chmod +x /$(HOME)/.local/bin/$(BIN)
-	@echo "$(BIN) installed to /$(HOME)/.local/bin/"
-	@echo "Remember to add /$(HOME)/.local/bin to your PATH if it's not already there."
+	mkdir -p $(DESTDIR)/bin
+	cp $(BIN) /$(DESTDIR)/bin/$(BIN)
+	chmod +x /$(DESTDIR)/bin/$(BIN)
+	@echo "$(BIN) installed to /$(DESTDIR)/bin/"
+	@echo "Remember to add /$(DESTDIR)/bin to your PATH if it's not already there."
 	@echo "You can do this by adding the following line to your shell configuration file (e.g., .bashrc, .zshrc):"
-	@echo '	 export PATH="/$(HOME)/.local/bin:$$PATH"'
+	@echo '	 export PATH="/$(DESTDIR)/bin:$$PATH"'
 
 # Phony targets
 .PHONY: all clean install
