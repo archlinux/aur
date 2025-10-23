@@ -1,0 +1,5 @@
+[gnome-shell-extension-tophat]
+source = "github"
+github = "fflewddur/tophat"
+use_latest_release = true
+prefix = "v"
