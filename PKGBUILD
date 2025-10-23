@@ -7,7 +7,7 @@ _crt=msvcrt
 _distro=ubuntu-22.04
 
 pkgname=llvm-mingw-w64-toolchain-${_crt}-bin
-pkgver=20251007
+pkgver=20251021
 pkgrel=1
 pkgdesc="LLVM/Clang/LLD based mingw-w64 toolchain (MSVCRT) targeting i686, x86-64, armv7, and aarch64"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=('gcc-libs' 'glibc' 'python' 'python-yaml' 'sh' 'xz' 'zlib' 'zstd')
 makedepends=('patchelf')
 provides=('llvm-mingw-w64-toolchain')
 source=("https://github.com/mstorsjo/llvm-mingw/releases/download/${pkgver}/llvm-mingw-${pkgver}-${_crt}-${_distro}-x86_64.tar.xz")
-sha256sums=('5ddaa3399fae80b284e91a96e86eaadeb368021209b5d9d482f5a73611ea4d6e')
+sha256sums=('54647f6f9cbabbffe91d7de05500a238e3f7c0e451e3a4ef78b7d81d2c8e830a')
 
 package() {
    mkdir -p "${pkgdir}"/opt/llvm-mingw/llvm-mingw-${_crt}
