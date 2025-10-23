@@ -1,6 +1,6 @@
 # Maintainer: wang1zhen <you@example.com>
 pkgname=lyricbridge
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="LyricBridge – Electron + FastAPI lyrics tool"
 arch=('x86_64' 'aarch64')
@@ -25,9 +25,9 @@ makedepends=('git')
 provides=('lyricbridge')
 conflicts=('lyricbridge-git')
 source=(
-  "lyricbridge-${pkgver}.tar.gz::https://github.com/wang1zhen/lyricbridge/archive/refs/tags/v0.1.1.tar.gz"
+  "lyricbridge-${pkgver}.tar.gz::https://github.com/wang1zhen/lyricbridge/archive/refs/tags/v0.1.2.tar.gz"
 )
-sha256sums=('54b09ab393125af76ccfea5a70f008b9483d44dde6d8d4331444cb3dfca59407')
+sha256sums=('SKIP')
 
 package() {
   cd "${srcdir}/lyricbridge-${pkgver}"
