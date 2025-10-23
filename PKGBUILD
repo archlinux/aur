@@ -4,7 +4,7 @@ pkgname=imgui-full
 _vcpkg_sha=b02e341c927f16d991edbd915d8ea43eac52096c
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-pkgver=1.92.1
+pkgver=1.92.4
 pkgrel=1
 pkgdesc="Bloat-free Graphical User interface for C++"
 license=('MIT')
@@ -15,9 +15,9 @@ makedepends=('cmake' 'glu' 'freeglut' 'sdl3' 'glfw' 'vulkan-headers')
 source=("$_pkgname-$pkgver.tar.gz::https://codeload.github.com/ocornut/imgui/tar.gz/v${pkgver}"
   "CMakeLists.v${pkgver}-${pkgrel}.txt::https://raw.githubusercontent.com/microsoft/vcpkg/${_vcpkg_sha}/ports/imgui/CMakeLists.txt"
   "imgui-config.v${pkgver}-${pkgrel}.cmake.in::https://raw.githubusercontent.com/microsoft/vcpkg/${_vcpkg_sha}/ports/imgui/imgui-config.cmake.in")
-sha256sums=('32c237c2abf67a2ffccaac17192f711d4a787554b4133187a153d49057d6109c'
-  '257e81df093db871165b6ad2f072a613fb84de69e3e45d21d09036a9c840624b'
-  '5da843cca9f52801645959f6318ebcb867837b1523924dc535d9f418abb19ae8')
+sha256sums=('0e175d4d941112532549b418ced0bd546abe9024ecb9b5f431f8a67a2197b0ba'
+            '257e81df093db871165b6ad2f072a613fb84de69e3e45d21d09036a9c840624b'
+            '5da843cca9f52801645959f6318ebcb867837b1523924dc535d9f418abb19ae8')
 
 prepare() {
   cp CMakeLists.v${pkgver}-${pkgrel}.txt ${_pkgname}-${pkgver}/CMakeLists.txt
