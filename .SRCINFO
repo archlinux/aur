@@ -31,6 +31,7 @@ pkgbase = walker-bin
 	optdepends = elephant-nirisessions: nirisessions provider
 	provides = walker
 	conflicts = walker
+	backup = etc/xdg/walker/config.toml
 	source = LICENSE-2.6.2::https://raw.githubusercontent.com/abenz1267/walker/v2.6.2/LICENSE
 	source = README-2.6.2.md::https://raw.githubusercontent.com/abenz1267/walker/v2.6.2/README.md
 	source = config-2.6.2.toml::https://raw.githubusercontent.com/abenz1267/walker/v2.6.2/resources/config.toml

@@ -37,6 +37,8 @@ optdepends=('elephant-providerlist: providerlist provider'
             'elephant-snippets: snippets provider'
             'elephant-nirisessions: nirisessions provider')
 
+backup=("etc/xdg/${_pkgname}/config.toml")
+
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md"
         "config-${pkgver}.toml::${_urlraw}/resources/config.toml"
@@ -95,10 +97,10 @@ package() {
     install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
     cd "${srcdir}/config" || exit 1
-    install -Dm644 config.toml -t "${pkgdir}/etc/xdg/"${_pkgname}""
+    install -Dm644 config.toml -t "${pkgdir}/etc/xdg/${_pkgname}"
 
     cd "${srcdir}/themes" || exit 1
     for theme in ./*; do
-        install -Dm644 ${theme} -t "${pkgdir}/etc/xdg/"${_pkgname}"/themes/default"
+        install -Dm644 ${theme} -t "${pkgdir}/etc/xdg/${_pkgname}/themes/default"
     done
 }
