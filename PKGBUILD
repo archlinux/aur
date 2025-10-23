@@ -2,7 +2,7 @@
 # Contributor: AchmadFathoni <fathoni.id@gmail.com>
 
 pkgname=xgboost
-pkgver=3.0.4
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="An optimized distributed gradient boosting library"
 arch=('x86_64')
@@ -10,18 +10,8 @@ url="https://github.com/dmlc/xgboost"
 license=('Apache')
 depends=(gcc-libs glibc)
 makedepends=(cmake cuda git nccl)
-#"git+$url#tag=v${pkgver}"
-source=("$pkgname.tar.gz"::"$url/releases/download/v$pkgver/xgboost-src-$pkgver.tar.gz"
-        "quantile.patch")
-b2sums=('5cacc0482e3a39a30c76bc72ed6b2f889b8dad509acf4c562d989e695dcd739206cfc027672e884957810bf4472619193db5728b0c11288ccbcdeec89b9c107c'
-        '715904014923edefd2824abb05462578be80f50c5ea76eca2b21f8403d345045917feb837aa67ab7014f07172a48b58e1a7d7f3d63d3f563ceb7dc0125d7a89d')
-
-prepare() {
-    cd "${pkgname}"
-    git submodule update --init --recursive
-    # https://github.com/dmlc/xgboost/pull/10797
-    git apply "${srcdir}/quantile.patch"
-}
+source=("$pkgname.tar.gz"::"$url/releases/download/v$pkgver/xgboost-src-$pkgver.tar.gz")
+b2sums=('73ba26d2ba38b1e9af3d98bff4c8303e31ebbe89e3252592153d865ddf427c00db4f574a7954222a88fbc3510872beccda8da7d96fa1488787484723b0a7cceb')
 
 build() {
     cmake \
