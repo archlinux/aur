@@ -1,13 +1,13 @@
 pkgbase = benchctl-bin
 	pkgdesc = A CLI framework for orchestrating benchmarks across distributed or local setups
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/luccadibe/benchctl
 	arch = x86_64
 	license = MIT
 	depends = python>=3.10
 	optdepends = uv: for seaborn plotting engine
-	source = https://github.com/luccadibe/benchctl/releases/download/v0.1.3/benchctl_Linux_x86_64.tar.gz
-	sha256sums = e71840239a6723cab12f5d4c48b1ff4a24538dad3e05066e902b492948eac80b
+	source = https://github.com/luccadibe/benchctl/releases/download/v0.1.4/benchctl_Linux_x86_64.tar.gz
+	sha256sums = 641aafe70cb1c9c79c15347bbd0c4c8c72dbf803f80ed520a7825b2a7b595208
 
 pkgname = benchctl-bin
