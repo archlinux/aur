@@ -1,7 +1,7 @@
 # Maintainer: Firstpick firstpick1992@proton.me
 pkgname=pacsea-git
-pkgver=0.4.1.r0.gac521539
-pkgrel=2
+pkgver=0.4.1.r38.g07512538
+pkgrel=1
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (git version)"
 arch=('x86_64')
 url="https://github.com/Firstp1ck/Pacsea"
@@ -51,7 +51,7 @@ check() {
   : "${srcdir:?srcdir is not set}"
   cd "$srcdir/Pacsea" || exit 1
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
+  cargo test --frozen --all-features --test-threads=1
 }
 
 package() {
