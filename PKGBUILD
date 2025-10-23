@@ -1,7 +1,7 @@
 # Maintainer: vghbjc
 
 pkgname=edh-logger-cli
-pkgver=0.4.11
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="CLI to log MTG Commander games & view stats (edh --help for usage)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ _upstream="edh-logger-cli"
 
 # Tarball and sha256sum
 source=("https://github.com/GhelloZ/edh-logger-cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('12de161d4f8af950c8ece75f583240770495c46e818f960b86cc5638af5574cd')
+sha256sums=('57dd4c3937bdd8289499e258d44e030fbe2f55a27cded3e030045acaa6766215')
 
 # Build dependencies
 makedepends=('go' 'make' 'sqlite' 'gcc')
