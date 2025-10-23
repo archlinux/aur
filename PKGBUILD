@@ -46,11 +46,11 @@ prepare() {
 }
 
 build() {
-    cd $_name
-    python -m build --wheel --no-isolation
+  cd $_name
+  python -m build --wheel --no-isolation
 }
 
 package() {
-    cd $_name
-    python -m installer --destdir="$pkgdir" dist/*.whl
+  cd $_name
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
