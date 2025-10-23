@@ -1,4 +1,4 @@
-From 0cf683c0f91b7dca32b2efe0d9f1e9ca421680d3 Mon Sep 17 00:00:00 2001
+From ee8351127839b55fa4143a5ed9eb10497cecd495 Mon Sep 17 00:00:00 2001
 From: Jasper van Bourgognie <jasper@knoop.je>
 Date: Mon, 15 Sep 2025 07:42:51 +0200
 Subject: [PATCH] enable 3fg-drag by default
@@ -21,5 +21,5 @@ index 72bc6f2e..d0c29ddb 100644
  
  static enum libinput_config_3fg_drag_state
 -- 
-2.51.0
+2.51.1
 
