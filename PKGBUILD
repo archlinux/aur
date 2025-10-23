@@ -1,4 +1,5 @@
-# Maintainer: piernov <piernov@piernov.org>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: piernov <piernov@piernov.org>
 # Contributor: Dmitry Kharitonov <darksab0r at gmail com>
 # Contributor: Marcin Kornat <rarvolt+aur@gmail.com>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
@@ -7,13 +8,14 @@ pkgname=('boost-65-compat' 'boost-65-compat-libs')
 _pkgname=boost
 pkgver=1.65.1
 _boostver=${pkgver//./_}
-pkgrel=9
+_mainpkgver=1.65
+pkgrel=10
 pkgdesc="Free peer-reviewed portable C++ source libraries - compat version"
 arch=('x86_64')
 url='https://www.boost.org/'
 license=('custom')
-makedepends=('python' 'python-numpy')
-source=(https://boostorg.jfrog.io/artifactory/main/release/${pkgver}/source/${_pkgname}_${_boostver}.tar.bz2
+makedepends=('python312' 'python-numpy')
+source=(https://archives.boost.io/release/${pkgver}/source/boost_${_boostver}.tar.bz2
     https://github.com/boostorg/build/commit/2f84a23f8d747f4ebe9d29ea7e8722a543f33f2b.patch
     https://github.com/boostorg/build/commit/48e9017139dd94446633480661e5447c7e0d8b1b.patch
     https://github.com/boostorg/build/commit/2b44ccf5dc5850c79f6bbe9811a91a1a7ad37f3d.patch
@@ -55,7 +57,7 @@ build() {
    local JOBS="$(sed -e 's/.*\(-j *[0-9]\+\).*/\1/' <<< ${MAKEFLAGS})"
 
    cd ${_pkgname}_${_boostver}
-   ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=/usr/bin/python3
+   ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=/usr/bin/python3.12
 
    _bindir="bin.linuxx86"
    [[ "${CARCH}" = "x86_64" ]] && _bindir="bin.linuxx86_64"
@@ -96,20 +98,21 @@ package_boost-65-compat() {
    pkgdesc+=' - development headers'
    depends=("boost-65-compat-libs=${pkgver}")
    optdepends=('python: for python bindings')
-   conflicts=('boost' 'boost-libs')
    options=('staticlibs')
 
-   install -dm755 "${pkgdir}"/usr
-   cp -a "${_stagedir}"/{bin,include,share} "${pkgdir}"/usr
+   install -dm755 "${pkgdir}"/opt/boost-${_mainpkgver}
+   cp -a "${_stagedir}"/{bin,include,share} "${pkgdir}"/opt/boost-${_mainpkgver}
 
-   install -d "${pkgdir}"/usr/lib
-   cp -a "${_stagedir}"/lib/*.a "${pkgdir}"/usr/lib/
-   cp -a "${_stagedir}"/lib/libboost_*.so "${pkgdir}"/usr/lib/
+   install -d "${pkgdir}"/opt/boost-${_mainpkgver}/lib
+   cp -a "${_stagedir}"/lib/*.a "${pkgdir}"/opt/boost-${_mainpkgver}/lib
+   cp -a "${_stagedir}"/lib/libboost_*.so "${pkgdir}"/opt/boost-${_mainpkgver}/lib
 
    install -Dm644 "${srcdir}/"${_pkgname}_${_boostver}/LICENSE_1_0.txt \
       "${pkgdir}"/usr/share/licenses/boost-65-compat/LICENSE_1_0.txt
 
-   ln -s /usr/bin/b2 "$pkgdir"/usr/bin/bjam
+   install -dm755 "${pkgdir}"/usr
+   install -dm755 "${pkgdir}"/usr/bin
+   ln -s /usr/bin/b2 "$pkgdir"/usr/bin/bjam-1.65
 }
 
 package_boost-65-compat-libs() {
