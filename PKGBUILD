@@ -1,6 +1,6 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=iir1
-pkgver=1.9.4
+pkgver=1.10.0
 pkgrel=1
 epoch=
 pkgdesc="a DSP IIR realtime filter library written in C++"
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('gcc' 'cmake')
 provides=('iir1')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('67d0982356f33fd37522e4711cda12f70a981a9c83de332386f89de3d7601d2b')
+sha256sums=('13b53f14d276adf6cafd3564fcda1d4b3e72342108d1c40ec4b4f0c7fc3ac95a')
 
 build() {
     cmake -B build -S "${pkgname}-${pkgver}" \

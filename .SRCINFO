@@ -1,6 +1,6 @@
 pkgbase = iir1
 	pkgdesc = a DSP IIR realtime filter library written in C++
-	pkgver = 1.9.4
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/berndporr/iir1
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = iir1
 	makedepends = cmake
 	depends = gcc-libs
 	provides = iir1
-	source = https://github.com/berndporr/iir1/archive/refs/tags/1.9.4.tar.gz
-	sha256sums = 67d0982356f33fd37522e4711cda12f70a981a9c83de332386f89de3d7601d2b
+	source = https://github.com/berndporr/iir1/archive/refs/tags/1.10.0.tar.gz
+	sha256sums = 13b53f14d276adf6cafd3564fcda1d4b3e72342108d1c40ec4b4f0c7fc3ac95a
 
 pkgname = iir1
