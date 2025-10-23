@@ -1,0 +1,18 @@
+pkgbase = qdia
+	pkgdesc = Simple schematic/diagram editor with focus on quick diagram generation with high quality graphics, inspired by xcircuit
+	pkgver = 0.57
+	pkgrel = 1
+	url = https://github.com/sunderme/qdia
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = cmake
+	makedepends = qt6-tools
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	depends = qt6-svg
+	depends = hicolor-icon-theme
+	source = qdia-0.57.tar.gz::https://github.com/sunderme/qdia/archive/refs/tags/0.57.tar.gz
+	sha256sums = 9bd589ec712848503551689a5ada11aaa3b87fb279ef9604c332ca30509d24af
+
+pkgname = qdia
