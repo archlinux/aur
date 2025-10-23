@@ -5,8 +5,8 @@
 # Contributor: Bot-wxt1221 <3264117476@qq.com>
 
 pkgname=hmcl-bin
-pkgver=3.7.1
-pkgrel=2
+pkgver=3.7.2
+pkgrel=1
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular."
 arch=('any')
 url="https://github.com/huanghongxun/HMCL"
@@ -20,7 +20,7 @@ source=("hmcl.desktop"
         "${pkgname}-${pkgver}-${pkgrel}.jar::https://github.com/HMCL-dev/HMCL/releases/download/v${pkgver}/HMCL-${pkgver}.jar")
 sha256sums=('9a561081f8f3ece3da114afd4f6d90565ca0e04716eef4ea88c6b4306566ae9b'
             'fe8c663bd3aaee7c70dff4da75781a078993c665e5492883d708e46658e6c0ec'
-            '8e239bcd16f82ba2ed18a1dac4b97a33bec1d8730098a2968df16cc9062d8d6a')
+            'b9d27188f8c35f0a14acc4028c5b3809c4fc52cfe067edd5b4934b2f866e41ac')
 
 noextract=("${pkgname}-${pkgver}-${pkgrel}.jar")
 
