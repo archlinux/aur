@@ -6,6 +6,7 @@ caelestia-gif
 install_bin
 *.sh
 *_old.c
+*.tar.gz
 
 # fichiers temporaires de compilation
 *~
