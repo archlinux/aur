@@ -1,6 +1,6 @@
 pkgbase = r-netrep
 	pkgdesc = Permutation Testing Network Module Preservation Across Datasets
-	pkgver = 1.2.8
+	pkgver = 1.2.9
 	pkgrel = 1
 	url = https://cran.r-project.org/package=NetRep
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = r-netrep
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/NetRep_1.2.8.tar.gz
-	sha256sums = 31c7bba79ab6676c23cf69a380dd0c6bfa4b1e8fbd3dc41c1b19bd9523a0dbf3
+	source = https://cran.r-project.org/src/contrib/NetRep_1.2.9.tar.gz
+	sha256sums = 9adbda49f4f775644bdbb1649e9ce6ddb8abaf05de75451de07b513b41703bf1
 
 pkgname = r-netrep
