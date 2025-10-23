@@ -100,9 +100,9 @@ index 5f9c04279..b85ec82c7 100644
  	    o->obscure_keystroke_timing_interval);
  	dump_cfg_int(oMetricsInterval, o->metrics_interval);
 -	dump_cfg_int(oFallbackPort, o->fallback_port);
+	dump_cfg_int(oHappyDelay, o->happy_delay);
  
  	/* String options */
- 	dump_cfg_string(oBindAddress, o->bind_address);
 diff --git a/readconf.h b/readconf.h
 index 452751b36..953be98ab 100644
 --- a/readconf.h
