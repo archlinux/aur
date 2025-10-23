@@ -1,7 +1,7 @@
 # Maintainer: Andrew Simmons <agsimmons0 at gmail dot com>
 
 pkgname=redocly
-pkgver='2.2.0'
+pkgver='2.8.0'
 pkgrel=1
 pkgdesc="Redocly CLI toolbox with rich validation and bundling features"
 arch=('any')
@@ -14,7 +14,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://registry.npmjs.org/@redocly/cli/-/cli-${pkgver}.tgz"
 )
 sha256sums=(
-  '2fea0dfe796378acb4fe867efc8474cd77c0396bc1445d3967f362e80c9def1b'
+  '50e86c223812eb585cb179cfeb39d36676efc3d20bf9e05833c0251aaa5cc556'
 )
 noextract=("${pkgname}-${pkgver}.tar.gz")
 
