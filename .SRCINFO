@@ -1,4 +1,4 @@
-pkgbase = python-striprtf
+pkgbase = python-striprtf-git
 	pkgdesc = Stripping rtf to plain old text
 	pkgver = v0.0.29.r0.g6365066
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = python-striprtf
 	source = git+https://github.com/joshy/striprtf.git#branch=master
 	sha256sums = SKIP
 
-pkgname = python-striprtf
+pkgname = python-striprtf-git
