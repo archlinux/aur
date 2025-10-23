@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=reel
 _app_id=dev.arsfeld.Reel
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 pkgdesc="A modern GTK frontend for Plex and other media servers"
 arch=('x86_64')
@@ -31,7 +31,7 @@ makedepends=(
 )
 options=('!lto')  # sqlx crate fails with LTO enabled
 source=("git+https://github.com/arsfeld/reel.git#tag=v$pkgver")
-sha256sums=('a94f530e504d022ded260c8e54972bd9ce7465e00d27dcf186771243f6a5fa71')
+sha256sums=('e8de74947f1dd20cfeb4d4a90d8eac4fef8c2b7322a8e9c24e40ffcf57bc4fd4')
 
 prepare() {
   cd "$pkgname"
