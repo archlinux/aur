@@ -1,7 +1,7 @@
 # Maintainer: Prasanth Baskar <bupdprasanth@gmail.com>
 
 pkgname=harbor-cli
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 pkgdesc='Official Harbor CLI'
 arch=('x86_64')
