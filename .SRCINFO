@@ -1,7 +1,7 @@
 pkgbase = kerminal-bin
-	pkgdesc = Modern terminal app with SSH/SFTP support
+	pkgdesc = Modern Terminal Emulator & SSH Manager
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/klpod221/kerminal
 	install = kerminal-bin.install
 	arch = x86_64
