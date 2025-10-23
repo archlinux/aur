@@ -20,7 +20,6 @@ pkgbase = python-fastmcp
 	depends = python-openai
 	depends = python-httpx
 	depends = python-pydantic-core
-	depends = python-fastmcp
 	depends = python-starlette
 	depends = python-typing_extensions
 	depends = python-anyio
