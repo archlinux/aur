@@ -2,8 +2,8 @@
 
 pkgname=python-cmake
 _name=${pkgname#python-}
-pkgver=4.1.0
-pkgrel=4
+pkgver=4.1.2
+pkgrel=1
 epoch=
 pkgdesc="CMake is an open-source, cross-platform family of tools designed to build, test and package software"
 arch=($CARCH)
@@ -33,7 +33,7 @@ optdepends=()
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('bacdd21aebdf9a42e5631cfb365beb8221783fcd27c4e04f7db8b79c43fb12df')
+sha256sums=('bee98458447b3a3b937b72849489e6e37ba0076d46df2fbb3af26739e1a3ed10')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
