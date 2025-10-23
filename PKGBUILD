@@ -25,7 +25,7 @@ prepare() {
 
 package() {
 	install -Dm755 "$_appimage" "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 "squashfs-root/usr/share/icons/hicolor/512x512/apps/ishiiruka.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+	install -Dm644 "squashfs-root/usr/share/icons/hicolor/256x256/apps/project-plus-dolphin.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 	install -dm644 "$pkgdir/usr/share/applications"
 	printf "[Desktop Entry]\nVersion=${pkgver:1}\nName=Project+ Netplay\nComment=A Mod of Super Smash Bros. Brawl with Netplay.\nPath=/usr/bin\nExec=project-plus-netplay\nIcon=project-plus-netplay\nType=Application\nCategories=Game\nKeywords=project+;brawl;netplay\n" > "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
