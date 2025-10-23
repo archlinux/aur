@@ -1,0 +1,60 @@
+diff --git a/src/bwidow.c b/src/bwidow.c
+index e0dcf64..a2a792e 100644
+--- a/src/bwidow.c
++++ b/src/bwidow.c
+@@ -27,6 +27,7 @@
+ // product_id of known blackwidow devices
+ #define DEV_PID_BW_2013 0x011b
+ #define DEV_PID_BW_ULT 0x010d
++#define DEV_PID_BW_ULT_2014 0x011a
+ #define DEV_PID_BW 0x010e
+ #define DEV_PID_BW_CHROMA_V2 0x0221
+ 
+@@ -74,21 +75,27 @@ int init () {
+         // try next device
+         handle = libusb_open_device_with_vid_pid(NULL, DEV_VID, DEV_PID_BW_ULT);
+         if (handle == NULL) {
+-            //try next device
+-            handle = libusb_open_device_with_vid_pid(NULL, DEV_VID, DEV_PID_BW);
++            // try next device
++            handle = libusb_open_device_with_vid_pid(NULL, DEV_VID, DEV_PID_BW_ULT_2014);
+             if (handle == NULL) {
+                 //try next device
+-                handle = libusb_open_device_with_vid_pid(NULL, DEV_VID, DEV_PID_BW_CHROMA_V2);
+-                if(handle == NULL){
+-                    //no devices found
+-                    printf("ERROR - No Known Razer BlackWidow Devices Found\n");
+-                    libusb_exit(NULL);
+-                    return 1;
++                handle = libusb_open_device_with_vid_pid(NULL, DEV_VID, DEV_PID_BW);
++                if (handle == NULL) {
++                    //try next device
++                    handle = libusb_open_device_with_vid_pid(NULL, DEV_VID, DEV_PID_BW_CHROMA_V2);
++                    if(handle == NULL){
++                        //no devices found
++                        printf("ERROR - No Known Razer BlackWidow Devices Found\n");
++                        libusb_exit(NULL);
++                        return 1;
++                    } else {
++                        printf("Razer BlackWidow Chroma V2 Devide Found\n");
++                    }
+                 } else {
+-                    printf("Razer BlackWidow Chroma V2 Devide Found\n");
++                    printf("Razer BlackWidow Device Found\n");
+                 }
+             } else {
+-                printf("Razer BlackWidow Device Found\n");
++                printf("Razer BlackWidow Ultimate 2014 Device Found\n");
+             }
+         } else {
+             printf("Razer BlackWidow Ultimate Device Found\n");
+diff --git a/udev/99-bwidow.rules b/udev/99-bwidow.rules
+index 392baf3..181d8db 100644
+--- a/udev/99-bwidow.rules
++++ b/udev/99-bwidow.rules
+@@ -1,3 +1,5 @@
+ ACTION=="add", SUBSYSTEM=="input",ATTRS{idVendor}=="1532", ATTRS{idProduct}=="011b", RUN+="/usr/bin/bwidow -s"
+ ACTION=="add", SUBSYSTEM=="input",ATTRS{idVendor}=="1532", ATTRS{idProduct}=="010d", RUN+="/usr/bin/bwidow -s"
++ACTION=="add", SUBSYSTEM=="input",ATTRS{idVendor}=="1532", ATTRS{idProduct}=="011a", RUN+="/usr/bin/bwidow -s"
+ ACTION=="add", SUBSYSTEM=="input",ATTRS{idVendor}=="1532", ATTRS{idProduct}=="010e", RUN+="/usr/bin/bwidow -s"
++ACTION=="add", SUBSYSTEM=="input",ATTRS{idVendor}=="1532", ATTRS{idProduct}=="0221", RUN+="/usr/bin/bwidow -s"
