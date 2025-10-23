@@ -1,6 +1,6 @@
 pkgbase = kdisplay-presets
 	pkgdesc = Standalone KDE Plasma utility for managing display configuration presets
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/jkolo/kdisplay-presets
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = kdisplay-presets
 	depends = kxmlgui
 	depends = plasma-workspace
 	depends = libkscreen
-	source = git+https://github.com/jkolo/kdisplay-presets.git#tag=v1.0.1
+	source = git+https://github.com/jkolo/kdisplay-presets.git#tag=v1.0.2
 	sha256sums = SKIP
 
 pkgname = kdisplay-presets
