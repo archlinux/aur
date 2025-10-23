@@ -1,6 +1,6 @@
 pkgbase = splunk
 	pkgdesc = Statistical analysis and search tool for logs and machine data
-	pkgver = 10.0.0.0
+	pkgver = 10.0.1.0
 	pkgrel = 1
 	epoch = 3
 	url = https://www.splunk.com/
@@ -14,7 +14,7 @@ pkgbase = splunk
 	sha256sums = b6e93690f033416fd765fd7cb97147a1872c3f5ecc3dad13714d83f765c6291e
 	sha256sums = 236deb352218f9551df894efd613aad201afb20713ac563ab381f68b6ffce853
 	sha256sums = 56b70a2395270fc038987241504df11c390f3234d5be640bbc6a311b978e8475
-	source_x86_64 = https://download.splunk.com/products/splunk/releases/10.0.0/linux/splunk-10.0.0-e8eb0c4654f8-linux-amd64.tgz
-	sha256sums_x86_64 = ef11531d07fe5384d1f3cd95e469b41388f5bed4bd1cc86503c90228c6863f90
+	source_x86_64 = https://download.splunk.com/products/splunk/releases/10.0.1/linux/splunk-10.0.1-c486717c322b-linux-amd64.tgz
+	sha256sums_x86_64 = 011db463114f8ef8339a982e1770a7083d1364b4a6de8b681eac7f3dd1971c34
 
 pkgname = splunk
