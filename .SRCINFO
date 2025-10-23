@@ -1,6 +1,6 @@
 pkgbase = python-fenics-ffcx
 	pkgdesc = The FEniCSx Form Compiler
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/FEniCS/ffcx
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = python-fenics-ffcx
 	depends = python-setuptools
 	optdepends = python-numba: for Numba C signature for the UFCx support
 	optdepends = python-pygraphviz: utility to draw graph
-	source = ffcx-0.9.0.tar.gz::https://github.com/FEniCS/ffcx/archive/v0.9.0.tar.gz
-	sha512sums = 02526fe6f916ec2ef90171082e1b050605fb9e990a04295c92082e22def309991278cab876611dcd7d6b24ddbc4a5af82e0269a4850ba36f8f084c709946a80a
+	source = ffcx-0.10.0.tar.gz::https://github.com/FEniCS/ffcx/archive/v0.10.0.tar.gz
+	sha512sums = 0297a1733a96baf008835fe384a89196d5369d213b3138a76f894b805ce2bcd9f53681873a921512e2595db06abd05e75c53c1af17ab723f8a068373026ea1a0
 
 pkgname = python-fenics-ffcx
