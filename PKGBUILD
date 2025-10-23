@@ -3,7 +3,7 @@
 
 pkgname=icon
 pkgver=9.5.25a
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='The Icon programming language'
 url='https://github.com/gtownsend/icon'
@@ -18,7 +18,7 @@ sha256sums=('ab15b7fc5a96e8b4da1b76cc6c7935400879f8a54b0fcf94a947c02815f21006'
 build() {
 	cd $pkgname-${pkgver}
 	make X-Configure name=linux
-	make CFLAGS+=" -D_STDIO_USES_IOSTREAM -fcommon -fpermissive -std=gnu17" -j$(proc)
+	make CFLAGS+=" -D_STDIO_USES_IOSTREAM -fcommon -fpermissive -std=gnu17" -j$(nproc)
 }
 
 package() {

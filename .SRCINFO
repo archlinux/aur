@@ -1,7 +1,7 @@
 pkgbase = icon
 	pkgdesc = The Icon programming language
 	pkgver = 9.5.25a
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/gtownsend/icon
 	arch = i686
