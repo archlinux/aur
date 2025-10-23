@@ -1,7 +1,7 @@
 # Maintainer: let <let@notlet.dev>
 
 pkgname=stabilitymatrix
-pkgver=2.15.1
+pkgver=2.15.3
 pkgrel=1
 pkgdesc='Multi-Platform Package Manager for Stable Diffusion'
 arch=('any')

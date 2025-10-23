@@ -1,6 +1,6 @@
 pkgbase = stabilitymatrix
 	pkgdesc = Multi-Platform Package Manager for Stable Diffusion
-	pkgver = 2.15.1
+	pkgver = 2.15.3
 	pkgrel = 1
 	url = https://github.com/LykosAI/StabilityMatrix
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = stabilitymatrix
 	options = !strip
 	source = zone.lykos.stabilitymatrix.png
 	source = zone.lykos.stabilitymatrix.desktop
-	source = git+https://github.com/LykosAI/StabilityMatrix#tag=v2.15.1
+	source = git+https://github.com/LykosAI/StabilityMatrix#tag=v2.15.3
 	sha256sums = 0c32dcd560dfadae6c8cc1486fba1227e9cf93a55e3ba262571e83052e1bf22e
 	sha256sums = d849617e6ade85b61f955d05d176f3ce07af0abb0532f554c4f73c19011ba0af
 	sha256sums = SKIP
