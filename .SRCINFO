@@ -1,7 +1,7 @@
 pkgbase = dms-shell-bin
 	pkgdesc = Desktop shell for wayland compositors built with Quickshell & GO
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,7 @@ pkgbase = dms-shell-bin
 	depends = ttf-material-symbols-variable-git
 	depends = inter-font
 	depends = ttf-fira-code
+	depends = accountsservice
 	optdepends = networkmanager: Required for network management
 	optdepends = matugen-bin: Dynamic wallpaper-based theming
 	optdepends = brightnessctl: Laptop display brightness control

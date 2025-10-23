@@ -2,7 +2,7 @@
 # Maintainer: Your Name <you@example.com>
 pkgname=dms-shell-bin
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=('x86_64' 'aarch64')
 url='https://github.com/AvengeMedia/DankMaterialShell'
@@ -13,6 +13,7 @@ depends=(
     'ttf-material-symbols-variable-git'
     'inter-font'
     'ttf-fira-code'
+    'accountsservice'
 )
 optdepends=(
     'networkmanager: Required for network management'
