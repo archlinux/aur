@@ -2,7 +2,7 @@
 # Maintainer: Caedis
 
 pkgname='noreza-bin'
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='A (unofficial) dedicated mapper for Azeron devices on Linux'
 url='https://github.com/Caedis/noreza'
@@ -11,8 +11,8 @@ license=('LGPL3')
 provides=('noreza')
 conflicts=('noreza')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/caedis/noreza/releases/download/1.2.1/noreza_1.2.1.tar.gz")
-sha256sums_x86_64=('d88970ccb70b007032087d16ffcc7e777198cce2f9f336147065510bb3e7428a')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/caedis/noreza/releases/download/1.2.2/noreza_1.2.2.tar.gz")
+sha256sums_x86_64=('fbdde685cc1d9a68049edf3e6ce2431625cba37f66a8c8c1f4e3e64ce2ead122')
 
 package() {
   # bin
