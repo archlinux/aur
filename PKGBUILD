@@ -15,3 +15,4 @@ package() {
     install -Dm755 "$srcdir/imgtopwd.py" "$pkgdir/usr/bin/imgtopwd"
     install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

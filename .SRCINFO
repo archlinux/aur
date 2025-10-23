@@ -1,0 +1,17 @@
+pkgbase = imgtopwd
+	pkgdesc = Generate deterministic passwords from images
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Zwee42/imgtopwd
+	arch = x86_64
+	license = GPL-3.0
+	depends = python
+	depends = python-pillow
+	source = imgtopwd.py
+	source = README.md
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = imgtopwd
