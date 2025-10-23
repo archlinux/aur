@@ -19,8 +19,8 @@ INSSRC := install.c
 INSOBJ := $(INSSRC:.c=.o)
 INSBIN := install_bin
 
-DESTDIR ?= $(HOME)/.local
-
+#DESTDIR ?= $(HOME)/.local
+DESTDIR ?= /usr
 
 # Default target
 all: $(BIN) $(INSBIN)
