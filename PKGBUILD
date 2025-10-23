@@ -4,7 +4,7 @@
 
 pkgname=python-fugashi
 _gitname=${pkgname#python-}
-pkgver=1.5.2dev0
+pkgver=1.5.2dev3
 pkgrel=1
 
 pkgdesc="MeCab wrapper for pythonic Japanese tokenization and morphological analysis"
@@ -39,7 +39,7 @@ checkdepends=(
 install="$pkgname.install"
 
 source=("git+$url.git#tag=v$pkgver")
-b2sums=('39667e4754fed4fe7d5bb351b778a9c4af37c51105056ed7c42b11e171b4943ac98940cccc9b7db4e4d88cc7024ee4bba878226fa01272e68bb86db98a546f32')
+b2sums=('eb3fb16dbc178c22168cd747e59c3d769fe642b5f4089a00090f2c0f0560b27d35bc45e8c7b56396c66cb6e04b9faac3a5846b87616eaadea0dc427ca155bd00')
 
 build() {
   cd "$_gitname"
