@@ -12,6 +12,7 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 arch=('x86_64' 'aarch64')
 _barch=('amd64' 'arm64')
 license=('MIT')
+
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
 makedepends=('help2man')
@@ -20,8 +21,8 @@ optdepends=()
 
 install=aqua-bin.install
 
-source_x86_64=("${_pkgname}_${arch[0]}_${pkgver}-${pkgrel}.tgz::${url}/releases/download/v${pkgver}/${_pkgname}_linux_${_barch[0]}.tar.gz")
-source_aarch64=("${_pkgname}_${arch[1]}_${pkgver}-${pkgrel}.tgz::${url}/releases/download/v${pkgver}/${_pkgname}_linux_${_barch[1]}.tar.gz")
+source_x86_64=("${_pkgname}_${arch[0]}_${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_pkgname}_linux_${_barch[0]}.tar.gz")
+source_aarch64=("${_pkgname}_${arch[1]}_${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_pkgname}_linux_${_barch[1]}.tar.gz")
 
 sha256sums_x86_64=('cb7780962ca651c4e025a027b7bfc82c010af25c5c150fe89ad72f4058d46540')
 sha256sums_aarch64=('d65369f52c9a74a2b0c24f494bfbe639794f4aab7788274e04272740b2c27a16')
@@ -31,7 +32,7 @@ build() {
 
     mkdir -p ./man
     help2man "./${_pkgname}" --output "man/man.1" --no-info
-    gzip "./man/man.1"
+    gzip -f "./man/man.1"
 
     mkdir -p ./completions
     "./${_pkgname}" completion bash > "completions/fish"
