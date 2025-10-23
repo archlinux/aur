@@ -13,6 +13,7 @@ license=('none')
 
 makedepends=('npm' 'jq')
 provides=("${pkgname%%-legacy}")
+conflicts=("${pkgname%%-cli-legacy}" "${pkgname%%-legacy}")
 
 source=("https://registry.npmjs.org/${_pkgname}/-/${pkgname%%-legacy}-${pkgver}.tgz")
 sha256sums=('72a9b4bd15d3d6d1eb1b7116653819e1b4ee0dc9b18ff7ecbdf57e9c91813b04')
