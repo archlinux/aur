@@ -3,13 +3,12 @@
 
 pkgname=raven-reader
 pkgver=1.0.80
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Desktop RSS Reader made using VueJS"
 url="https://github.com/hello-efficiency-inc/raven-reader"
 license=('MIT')
 makedepends=('yarn')
 depends=("libxss" "libxtst" "libappindicator-gtk2" "gtk2" "libnotify")
-provides=("${pkgname}")
 _pkgname="Raven Reader"
 arch=('x86_64')
 
