@@ -1,6 +1,6 @@
 # Maintainer: Thayne McCombs <bytecurry.software@gmail.com>
 pkgname=openbao
-pkgver=2.4.1
+pkgver=2.4.3
 # NOTE: this commit should match the commit of the release version
 _commit='a2bf51c891680240888f7363322ac5b2d080bb23'
 pkgrel=1
@@ -20,7 +20,7 @@ source=(
   openbao.sysusers
   openbao.tmpfiles
 )
-sha256sums=('51755264feea4924c1ee91780c13312a7f762da7ba01f1ac8bc4bf74734fe322'
+sha256sums=('3e67b9c701d896767baec921a88e928bf4e84120ef76e1b41d21aacd67c6648c'
             'b26bf539f6f8b05a77afed4ba0e05d6012322474703265bc2977dafadaf22d38'
             '0b8a4fa3f09ee89a1383f2ce0eb4acc6b16beebbc7f034b23c6069dfe8a43cc1'
             '6009313cb0aa0b47fe330bdc8a40b9d8ce9142814f4cc61a9d58ab410b8f746a')
