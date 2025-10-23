@@ -4,8 +4,8 @@
 
 pkgname=czmq-git
 _pkgname=${pkgname%-git}
-pkgver=4.2.1.r150.g5b5c6402
-pkgrel=2
+pkgver=4.2.1.r164.gf22f657
+pkgrel=1
 epoch=1
 pkgdesc="High-level C binding for ZeroMQ"
 arch=('i686' 'x86_64' 'aarch64')
@@ -16,53 +16,32 @@ license=('MPL-2.0')
 source=("git+${url}")
 sha256sums=('SKIP')
 provides=("${_pkgname}=${pkgver%.r*}" libczmq.so)
-conflicts=(${_pkgname})
+conflicts=("${_pkgname}")
 
 pkgver() {
-  cd "${_pkgname}/"
-
-  # Generate git tag based version. Count only proper (v)#.#* [#=number] tags.
-  local _gitversion=$(git describe --long --match '[v0-9][0-9.][0-9.]*' | sed -e 's|^v||' | tr '[:upper:]' '[:lower:]')
-
-  # Format git tag based version for pkgver
-  # Expected format: e.g. 1.5.0rc2.r521.g99982a1c
-  echo "${_gitversion}" | sed \
-      -e 's|^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)|\1\2|' \
-      -e 's|\([0-9]\+-g\)|r\1|' \
-      -e 's|-|.|g'
+	git -C "${_pkgname}" describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${_pkgname}/"
+	cd "${_pkgname}/"
 
-  msg2 'Building...'
-  ./autogen.sh
-  ./configure \
-    --prefix=/usr \
-    --sbindir=/usr/bin \
-    --libexecdir=/usr/lib/czmq \
-    --sysconfdir=/etc \
-    --sharedstatedir=/usr/share/czmq \
-    --localstatedir=/var/lib/czmq \
-    --disable-czmq_selftest \
-    --disable-zmakecert \
-    --with-gnu-ld \
-    --with-nss=no
-  make
+	./autogen.sh
+	./configure \
+		--prefix=/usr \
+		--sbindir=/usr/bin \
+		--libexecdir=/usr/lib/czmq \
+		--sysconfdir=/etc \
+		--sharedstatedir=/usr/share/czmq \
+		--localstatedir=/var/lib/czmq \
+		--disable-czmq_selftest \
+		--disable-zmakecert \
+		--with-gnu-ld \
+		--with-nss=no
+
+	make
 }
 
 package() {
-  cd "${_pkgname}/"
-
-  msg2 'Installing...'
-  make DESTDIR="${pkgdir}" install
-
-  msg2 'Renaming binaries...'
-  for _bin in $(find "${pkgdir}/usr/bin" -type f -printf '%f\n'); do
-    mv "${pkgdir}/usr/bin/${_bin}" "${pkgdir}/usr/bin/${_pkgname}_${_bin}"
-  done
-
-  msg2 'Cleaning up pkgdir...'
-  find "${pkgdir}" -type d -name .git -exec rm -r '{}' +
-  find "${pkgdir}" -type f -name .gitignore -exec rm -r '{}' +
+	cd "${_pkgname}/"
+	make DESTDIR="${pkgdir}" install
 }
