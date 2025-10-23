@@ -2,7 +2,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=screamingfrogseospider
-pkgver=22.2
+pkgver=23.0
 pkgrel=1
 pkgdesc="spiders websites’ links, images, CSS, script and apps from an SEO perspective."
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ source=(
   "LICENSE"
   "screamingfrogseospider"
 )
-b2sums=('ad165cc503fa8b07c901cb3136ee9ab94320c5c619e24a2394ad06608abbab4d58a53e57cd42af1c75180990fa2b978f9b96da34d71ad1b49178f07175f209c1'
+b2sums=('d287aa9a6f3714eed481f54d1f4e01d8f96f461251e660bdf5a29fa180e3fe720ac4ee8cb0be0f21f3fc7fdf64d66ab9142c0954e35f2695b67cfefb89ef9bea'
         '6cde786ef5e5bf0e2d1cb9403eb9bbe6923731e22263e1cd2b3c3f0258d6efb4151eba5b59ee9e87894d17af75f1f72509bd389d1425a9fcab37ba51d9b50cd7'
         '1c22167625276543fc356023f1ced343c8efb1ee8267587e6ba2a8a1c6fe6d3f7e0d4c40a048cb51c7131733d49ed4eb7eaececcfb54f1a124ca01bef8549ca4')
 
