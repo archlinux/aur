@@ -1,7 +1,7 @@
 pkgbase = sabnzbd
 	pkgdesc = A web-interface based binary newsgrabber with NZB file support
 	pkgver = 4.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sabnzbd.org
 	install = sabnzbd.install
 	arch = any
@@ -34,6 +34,7 @@ pkgbase = sabnzbd
 	depends = python-pycparser
 	depends = python-pysocks
 	depends = python-pytz
+	depends = python-rarfile
 	depends = python-rebulk
 	depends = python-sabyenc3
 	depends = python-sabctools
