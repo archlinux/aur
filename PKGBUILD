@@ -1,12 +1,12 @@
 # Maintainer: develOseven <devel.oseven@gmail.com>
 pkgname=avoc
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 epoch=
 _python_version=3.12.3
 _pkghashes="
-	--hash=sha256:4d93b23b9686a20a419b32a07103b4ce9676e5eedf8e3024f5625dcd5671dd0a
-	--hash=sha256:fbe9d01d9ac6644ecc46316d292954ad4ace056477555a20c6eeab0d16236032
+	--hash=sha256:ef9be64e5f4d3894856c2602680521a191ac5b2c43834c18a14cccc9eeb1dbe3
+	--hash=sha256:309e5388d459c143f594265def7383c96214d1d6460cf4f9340316a555e54282
 "
 pkgdesc="Local Realtime Voice Changer for Desktop"
 arch=('x86_64')
@@ -44,8 +44,8 @@ options=()
 install=
 changelog=
 source=(
-	"https://raw.githubusercontent.com/develOseven/avoc/24403df3778b7b9346b0fc90894a20e9dfb5325e/requirements-$_python_version.hashes.txt"
-	"https://raw.githubusercontent.com/develOseven/avoc/24403df3778b7b9346b0fc90894a20e9dfb5325e/requirements-licenses-$_python_version.hashes.txt"
+	"https://raw.githubusercontent.com/develOseven/avoc/766715b7c10eb1b0a7efb6ba76d4dfd05ad4d0d7/requirements-$_python_version.hashes.txt"
+	"https://raw.githubusercontent.com/develOseven/avoc/766715b7c10eb1b0a7efb6ba76d4dfd05ad4d0d7/requirements-licenses-$_python_version.hashes.txt"
 )
 noextract=()
 validpgpkeys=()
@@ -125,5 +125,5 @@ package() {
 		"$pkgdir/usr/share/applications/AVoc.desktop"
 	echo "Path=/opt/$pkgname" >> "$pkgdir/usr/share/applications/AVoc.desktop"
 }
-sha256sums=('7e3b8d8056fbfc8d3e2856735e100b08d942de9a969ca30533a5458856588725'
+sha256sums=('13907d4d20f157f696ca056a4ee9ab498706f7bfed9adb61fa825e850eeed393'
             '7e255a21e207f1ff5b41132ee08830850e71da51778611b8653b2b686dc1e39e')

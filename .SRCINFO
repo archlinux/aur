@@ -1,6 +1,6 @@
 pkgbase = avoc
 	pkgdesc = Local Realtime Voice Changer for Desktop
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/develOseven/avoc
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = avoc
 	makedepends = jq
 	depends = pyenv
 	depends = python
-	source = https://raw.githubusercontent.com/develOseven/avoc/24403df3778b7b9346b0fc90894a20e9dfb5325e/requirements-3.12.3.hashes.txt
-	source = https://raw.githubusercontent.com/develOseven/avoc/24403df3778b7b9346b0fc90894a20e9dfb5325e/requirements-licenses-3.12.3.hashes.txt
-	sha256sums = 7e3b8d8056fbfc8d3e2856735e100b08d942de9a969ca30533a5458856588725
+	source = https://raw.githubusercontent.com/develOseven/avoc/766715b7c10eb1b0a7efb6ba76d4dfd05ad4d0d7/requirements-3.12.3.hashes.txt
+	source = https://raw.githubusercontent.com/develOseven/avoc/766715b7c10eb1b0a7efb6ba76d4dfd05ad4d0d7/requirements-licenses-3.12.3.hashes.txt
+	sha256sums = 13907d4d20f157f696ca056a4ee9ab498706f7bfed9adb61fa825e850eeed393
 	sha256sums = 7e255a21e207f1ff5b41132ee08830850e71da51778611b8653b2b686dc1e39e
 
 pkgname = avoc
