@@ -27,7 +27,7 @@ conflicts=('lyricbridge-git')
 source=(
   "lyricbridge-${pkgver}.tar.gz::https://github.com/wang1zhen/lyricbridge/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('SKIP')
+sha256sums=('87f050e9374efc5c2c04e7a122bbe9a7cca0fe1e87c2114aa0e360ecbc1c5b3c')
 
 package() {
   cd "${srcdir}/lyricbridge-${pkgver}"
