@@ -3,7 +3,7 @@
 pkgname=renesas-flash-programmer-bin
 pkgver=3.21.00
 pkgrel=1
-epoch=1
+epoch=
 pkgdesc="Renesas Flash Programmer"
 arch=(x86_64)
 url="https://www.renesas.com/rfp"
