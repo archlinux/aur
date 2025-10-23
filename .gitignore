@@ -5,3 +5,8 @@ src/
 *.log
 *.tar
 *.xz
+*.zst
+.gitignore
+!PKGBUILD
+!.SRCINFO
+!LICENSE
