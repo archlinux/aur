@@ -1,0 +1,5 @@
+["bin-bin"]
+source = "github"
+github = "marcosnils/bin"
+use_latest_release = true
+prefix = "v"
