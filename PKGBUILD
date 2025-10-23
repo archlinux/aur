@@ -5,7 +5,7 @@
 _pkgname='pat-aur'
 pkgbase=${_pkgname}-git
 pkgname=(${_pkgname}-client-git ${_pkgname}-host-git)
-pkgver=r493.d48af4d
+pkgver=r517.6bd7268
 pkgrel=1
 pkgdesc='AUR helper and tool to build Arch Linux packages in clean containers.'
 url="https://gitlab.com/patlefort/${_pkgname}"
@@ -62,7 +62,7 @@ package_pat-aur-host-git() {
 		'pacutils'
 		'aurutils'
 		'bubblewrap'
-		'ninja-jobserver'
+		'ninja'
 		'git'
 		'python'
 		'jq')
