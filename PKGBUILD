@@ -1,16 +1,18 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=python-acestream
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Python interface to interact with the AceStream Engine and the HTTP API"
 arch=("any")
 url="https://github.com/jonian/python-acestream"
 license=("GPL-3.0-only")
-depends=("python")
+depends=(
+  python
+  python-setuptools # for distutils.version.LooseVersion
+)
 makedepends=(
   python-build
   python-installer
-  python-setuptools
   python-wheel
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
