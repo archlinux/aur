@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.1.0-beta.1.x86
+Type=Application
+Name=Deta Surf
+GenericName=Web Browser
+Comment=An AI notebook
+Exec=/usr/bin/deta-surf %U
+Icon=deta-surf
+Terminal=false
+Categories=Network;WebBrowser;Utility;
+MimeType=x-scheme-handler/http;x-scheme-handler/https;text/html;
+StartupNotify=true
+StartupWMClass=Deta Surf
