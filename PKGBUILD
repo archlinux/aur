@@ -6,7 +6,7 @@
 # Maintainer: Gno <noreply@gno.com>
 pkgname=caelestia-gif
 pkgver=1.0.1
-pkgrel=6
+pkgrel=7
 epoch=
 pkgdesc="A script to manage and change GIFs in Caelestia shell"
 arch=('x86_64')
@@ -27,7 +27,7 @@ changelog=
 #source=("https://gitlab.com/gnoooo/caelestia-gif/-/archive/master/caelestia-gif-master.tar.gz?ref_type=heads")
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('717a81126bf22a2749b0998ce703cc2f578f862b5a0ec49698cabbbee41d450e')
+sha256sums=('e1271fb52f3c09ac362e59b8cc41c2062efcc8334326ea8eafcbc82525b82bd4')
 validpgpkeys=()
 
 prepare() {
