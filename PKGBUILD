@@ -1,7 +1,7 @@
 # Maintainer: Luke Wilkinson <wilkinsonluke@proton.me>
 
 pkgname=fmp-git
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="A simple secure password manager written in rust."
 arch=('x86_64')
@@ -9,21 +9,22 @@ url="https://codeberg.org/lwilko/fmp"
 conflicts=('fmp-bin')
 license=('GPL-3.0')
 depends=('gpgme' 'libgpg-error')
-makedepends=('cargo')
+makedepends=('cargo' 'tar')
 source=("fmp-$pkgver.tar.gz::https://codeberg.org/lwilko/fmp/archive/v$pkgver.tar.gz")
-sha512sums=('9272b6c07024362b648874b09577a7c36e6758d4e960545535ed0400693622b26d6459587d69e0c9705ed1e66d28e34245cf7f13f600d20e5f9725125c3f06cb')
+sha512sums=('1ac9edb1692f054c2147b17c73eb356913fa97e02b3a0c1f6dfa2412d55595237bea01e75b5b48ffb9c7d737c0c6e17fc7bdae903828bd19fec147e9078ca282')
 
 build() {
-  cd "fmp-$pkgver"
+  tar -zxvf "fmp-$pkgver.tar.gz"
+  cd "fmp"
 
   cargo build --release
 }
 
 package() {
-  cd "fmp-$pkgver"
+  cd "fmp"
 
   install -Dm755 "target/release/fmp" "$pkgdir/usr/bin/fmp"
- 
+
   install -Dm644 "data/com.fmp.desktop" \
     "$pkgdir/usr/share/applications/com.fmp.desktop"
 
