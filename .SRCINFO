@@ -1,0 +1,27 @@
+pkgbase = lue-reader-git
+	pkgdesc = Terminal eBook Reader with Text-to-Speech
+	pkgver = v0.3.1.r0.g99e95f5
+	pkgrel = 1
+	url = https://github.com/superstarryeyes/lue
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = ffmpeg
+	depends = python-docx
+	depends = python-striprtf
+	depends = python-rich
+	depends = python-pymupdf
+	depends = python-markdown
+	depends = python-platformdirs
+	depends = python-edge-tts
+	optdepends = espeak: Kokoro TTS support
+	optdepends = antiword: .doc file support
+	provides = lue-reader=v0.3.1.r0.g99e95f5
+	conflicts = lue-reader
+	source = git+https://github.com/superstarryeyes/lue.git#branch=main
+	sha256sums = SKIP
+
+pkgname = lue-reader-git
