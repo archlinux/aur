@@ -1,0 +1,26 @@
+pkgbase = kdisplay-presets
+	pkgdesc = Standalone KDE Plasma utility for managing display configuration presets
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jkolo/kdisplay-presets
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	makedepends = git
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = kconfig
+	depends = kcoreaddons
+	depends = kdbusaddons
+	depends = ki18n
+	depends = kglobalaccel
+	depends = kcmutils
+	depends = kxmlgui
+	depends = plasma-workspace
+	depends = libkscreen
+	source = git+https://github.com/jkolo/kdisplay-presets.git#tag=1.0.0
+	sha256sums = SKIP
+
+pkgname = kdisplay-presets
