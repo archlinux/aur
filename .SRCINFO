@@ -1,6 +1,6 @@
 pkgbase = triliumnext-bin
 	pkgdesc = Build your personal knowledge base with TriliumNext Notes.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.99.2
+	pkgver = 0.99.3
 	pkgrel = 1
 	url = https://github.com/TriliumNext/Trilium
 	arch = aarch64
@@ -9,15 +9,15 @@ pkgbase = triliumnext-bin
 	makedepends = asar
 	depends = electron38
 	provides = trilium
-	provides = triliumnext=0.99.2
+	provides = triliumnext=0.99.3
 	conflicts = triliumnext
 	conflicts = trilium
 	conflicts = trilium-cn
 	source = triliumnext.sh
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = triliumnext-0.99.2-aarch64.rpm::https://github.com/TriliumNext/Trilium/releases/download/v0.99.2/TriliumNotes-v0.99.2-linux-arm64.rpm
-	sha256sums_aarch64 = 34992fd96d68332e43b3ff457364717d4c69f1f5797f67cb25496731dcb97c12
-	source_x86_64 = triliumnext-0.99.2-x86_64.rpm::https://github.com/TriliumNext/Trilium/releases/download/v0.99.2/TriliumNotes-v0.99.2-linux-x64.rpm
-	sha256sums_x86_64 = 2b7622c659e2f199aa54bef3c9f0c6ca8ca94ecf79ad611dcdd80e65195ba40b
+	source_aarch64 = triliumnext-0.99.3-aarch64.rpm::https://github.com/TriliumNext/Trilium/releases/download/v0.99.3/TriliumNotes-v0.99.3-linux-arm64.rpm
+	sha256sums_aarch64 = 1236dfe6eda0be8cbfd8a3a29d231aa74187bde3366117d7eeb213e18c3795dd
+	source_x86_64 = triliumnext-0.99.3-x86_64.rpm::https://github.com/TriliumNext/Trilium/releases/download/v0.99.3/TriliumNotes-v0.99.3-linux-x64.rpm
+	sha256sums_x86_64 = bc9038575be44164c1c2ac6f407bc649cbe4846552f517d3b8c37f0e088b67be
 
 pkgname = triliumnext-bin
