@@ -1,7 +1,7 @@
 pkgbase = python-click-option-group
 	pkgdesc = Option groups missing in Click
-	pkgver = 0.5.7
-	pkgrel = 2
+	pkgver = 0.5.9
+	pkgrel = 1
 	url = https://github.com/click-contrib/click-option-group
 	arch = any
 	license = BSD-3-Clause
@@ -13,8 +13,8 @@ pkgbase = python-click-option-group
 	makedepends = python-wheel
 	depends = python
 	depends = python-click
-	source = https://files.pythonhosted.org/packages/source/c/click_option_group/click_option_group-0.5.7.tar.gz
-	sha512sums = 0e6c82b2b6a4a790c767ad775def93c3487e97990bbc172c95b6d90ccc366c8fb9dfe0fff4eecb64538218213c65642732eb1a0d421d2826e1f13689e6d5621a
-	b2sums = 31357084654dc1011eeab64b0298fd5f5a5b417a4621dff7442b6dea02ffbe304d267adccb2f7adef8b7a005ad6055d5982b9e7b7990242fdf3a417c7c817040
+	source = https://files.pythonhosted.org/packages/source/c/click_option_group/click_option_group-0.5.9.tar.gz
+	sha512sums = 7c83a2460c08a3dc2ac129901acda2b19d828d54e7765fe03452648059d27ac98ce68b6ce703fd5c7876f85c6650b943f3e1ebbbe96c44590ed888dccd943314
+	b2sums = 27c1547866ee696b8b822bc3de661c0d2209b2cc7febfdab7f8392616d46d2695b76d0cf4cbfb16482e1ac17c296ee4850d8f811bc721f8876b562afecbb62e3
 
 pkgname = python-click-option-group
