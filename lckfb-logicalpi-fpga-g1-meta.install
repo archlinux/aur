@@ -5,10 +5,12 @@ post_install() {
 	echo ":: logicalpi-fpga-g1 gowin-pro license / 逻辑派 FPGA-G1 高云 Pro 许可： "
 	echo "   124.220.54.112:10559"
 	echo ":: Add yourself to the uucp group to access the serial ports:"
-    echo "   sudo gpasswd -aG \$USER uucp"
-    echo "   sudo udevadm control --reload-rules"
+        echo "   sudo gpasswd -aG \$USER uucp"
+        echo "   sudo udevadm control --reload-rules"
+	echo "   newgrp uucp"
 	echo ":: If adb fails to connect to the phone, add the current user to the adbusers group"
 	echo "   sudo gpasswd -aG \$USER adbusers"
+	echo "   newgrp adbusers"
 	echo "---------------------------------------------------------------"
 }
 

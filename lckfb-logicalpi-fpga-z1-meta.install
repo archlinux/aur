@@ -1,14 +1,13 @@
 post_install() {
 	echo "---------------------------------------------------------------"
-	echo ":: tspi-linux-sdk"
-	echo "   git clone https://github.com/CmST0us/tspi-linux-sdk.git"
+	echo ":: logicalpi-fpga-z1 wiki / 逻辑派 FPGA-z1 维基： "
+	echo "   xdg-open https://wiki.lckfb.com/zh-hans/fpga-ljpi-z1/"
+	echo ":: logicalpi-fpga-z1 pango-design-suite license / 逻辑派 FPGA-Z1 紫光同创设计套件许可： "
+	echo "   https://www.pangomicro.com/resources/software/pds/#sq"
 	echo ":: Add yourself to the uucp group to access the serial ports:"
         echo "   sudo gpasswd -aG \$USER uucp"
         echo "   sudo udevadm control --reload-rules"
-	echo "   newgrp uucp"
-	echo ":: If adb fails to connect to the phone, add the current user to the adbusers group"
-	echo "   sudo gpasswd -aG \$USER adbusers"
-	echo "   newgrp adbusers"
+        echo "   newgrp uucp"
 	echo "---------------------------------------------------------------"
 }
 

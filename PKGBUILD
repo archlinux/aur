@@ -1,8 +1,13 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=lckfb-meta
-pkgname=(lckfb-meta lckfb-taishanpi-meta lckfb-logicalpi-fpga-g1-meta)
-pkgver=0.0.7
+pkgname=(
+	lckfb-meta 
+	lckfb-taishanpi-meta 
+	lckfb-logicalpi-fpga-{g,z}1-meta
+	lckfb-dqx-ra6e2-meta
+)
+pkgver=0.0.8
 pkgrel=1
 epoch=
 pkgdesc="立创开发板元包 / LCKFB Development Board meta package"
@@ -23,18 +28,22 @@ options=()
 # changelog=
 source=(
     lckfb-taishanpi-meta.install
-    lckfb-logicalpi-fpga-g1-meta.install
+    lckfb-logicalpi-fpga-{g,z}1-meta.install
+    lckfb-dqx-ra6e2-meta.install
 )
-sha256sums=('5173de61766b994e3f4dabb707aff92e54c44a6cd8c961b602519f14822c6cce'
-            'cc7a568c7f2051ad7cfb35f79ae8a8d4700e37368807c3b37a8f39d1aa276c26')
+sha256sums=('e6a7e132f58898424825321fe64c91930ffb1696ea6136fbd457d1dddd932fbd'
+            '481fc25f2e1648a11b7400046e44b6f0504370d1747191f1f6a71c13572e6014'
+            '5912348da8d06b0bf6dbd1dd859b8430e167ce54c77f238507158f02d00a7c42'
+            '4ed783d37008e652b99524908f0cf8e59f9943f6b9401e3a1dbb438d9fc7f424')
 # noextract=()
 #validpgpkeys=()
 
 package_lckfb-meta() {
     pkgdesc=${pkgdesc}
-    depends=(l
+    depends=(
         lckfb-taishanpi-meta
-        lckfb-logicalpi-fpga-g1-meta
+        lckfb-logicalpi-fpga-{g,z}1-meta
+	lckfb-dqx-ra6e2-meta
     )
 }
 
@@ -177,5 +186,68 @@ package_lckfb-logicalpi-fpga-g1-meta() {
 
         # Third-party fpga tools
         quartus-free-questa
+    )
+}
+
+package_lckfb-logicalpi-fpga-z1-meta() {
+    pkgdesc="立创开发板逻辑派 FPGA-Z1 元包: 紫光同创 PGC4KD / LCKFB Development Board LogicalPi FGPA-Z1 meta package: Pango PGC4KD"
+    provides=("lckfb-logicalpi-fpga-z1")
+    conflicts=("lckfb-logicalpi-fpga-z1")
+    url="https://lckfb.com/project/detail/lckfb-ljpi-fpga-z1"
+    install=$pkgname.install
+    depends=(
+        # pcb
+        lceda-pro
+
+        # repo
+        git
+        openssh
+        openssl
+
+        # Pango official tools
+        pango-design-suite
+
+        # Third-party fpga tools
+        openfpgaloader
+        tinyprog
+    )
+    optdepends=(
+	# serial debug tools
+	windterm
+	serial-studio
+    )
+}
+
+package_lckfb-dqx-ra6e2-meta() {
+    pkgdesc="立创开发板地奇星 RA6E2 元包: 瑞萨 RA6E2 ARM Cortex-M33 / LCKFB Development Board Earth Star RA6E2 meta package: Renesas RA6E2 ARM Cortex-M33"
+    provides=("lckfb-dqx-ra6e2")
+    conflicts=("lckfb-dqx-ra6e2")
+    url="https://lckfb.com/project/detail/lckfb-dqx-ra6e2"
+    install=$pkgname.install
+    depends=(
+        # pcb
+        lceda-pro
+
+        # repo
+        git
+        openssh
+        openssl
+
+        # Renesas official tools
+	fsp-bin
+
+        # Third-party fpga tools
+        jlink-software-and-documentation
+
+    )
+    optdepends=(
+        # baidunetdisk 
+	baidupcs
+	baidunetdisk
+
+	# netdisk tools
+	openlist
+	clouddrive
+
     )
 }
