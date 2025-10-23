@@ -1,16 +1,18 @@
 pkgname=arch-update-manager
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A Linux Mint inspired GTK4-based update manager for Arch Linux"
 arch=('x86_64')
 url="https://github.com/destbg/arch-update-manager"
 license=('MIT')
 depends=('gtk4' 'vte4' 'polkit' 'pacman' 'timeshift')
+provides=('arch-update-manager')
+conflicts=('arch-update-manager')
 makedepends=('cargo' 'git')
 optdepends=('paru: AUR helper support'
             'yay: AUR helper support')
 source=("git+$url.git#tag=${pkgver}")
-sha256sums=('02c8a32eb1e71cc0499338fb411643a6a393ef1ea0c370465361ff4cd5146523')
+sha256sums=('432a930cc8768929ca589ba0bb9f7a43f2b4ccd70068c400fa64ca52baba7e3e')
 
 prepare() {
 	cd "$pkgname"
@@ -23,12 +25,6 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release --all-features
-}
-
-check() {
-	cd "$pkgname"
-	export RUSTUP_TOOLCHAIN=stable
-    cargo check --frozen --all-features
 }
 
 package() {
