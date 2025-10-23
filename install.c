@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
+#include <unistd.h>
 #include <cjson/cJSON.h>
 #include <string.h>
 
@@ -206,6 +207,17 @@ int edit_shell_json(void) {
 }
 
 int main(void) {
+    const char *home = getenv("HOME");
+    if (home == NULL) {
+        fprintf(stderr, FG_RED "Error: HOME environment variable not set.\n" FG_DEFAULT);
+        return EXIT_FAILURE;
+    }
+
+    if (access("/usr/bin/caelestia-gif", X_OK) != 0) {
+        fprintf(stderr, FG_RED "Error: caelestia-gif executable not found in /usr/bin/. Please install caelestia-sessiongif package first.\n" FG_DEFAULT);
+        return EXIT_FAILURE;
+    }
+
     if (create_env_variable() != 0) {
         return EXIT_FAILURE;
     }
