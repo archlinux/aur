@@ -1,0 +1,15 @@
+pkgbase = gokapi-cli-bin
+	pkgdesc = Lightweight selfhosted Firefox Send alternative without public upload. AWS S3 supported.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/Forceu/Gokapi
+	arch = x86_64
+	license = AGPL-3.0
+	depends = pacman>6.1
+	depends = git
+	provides = gokapi
+	conflicts = gokapi
+	source_x86_64 = https://github.com/Forceu/Gokapi/releases/download/v2.1.0/gokapi-cli-linux_amd64.zip
+	sha256sums_x86_64 = e420a019d12a8ff002a4ae857c1d6e14c9e68cdf199aa44ddf60ffad45a5d1cc
+
+pkgname = gokapi-cli-bin
