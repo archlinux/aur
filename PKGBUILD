@@ -27,7 +27,7 @@ changelog=
 #source=("https://gitlab.com/gnoooo/caelestia-gif/-/archive/master/caelestia-gif-master.tar.gz?ref_type=heads")
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('6937a818a314a824d9137d2f540241cc1021a40103de4d8b593703962237bc7a')
+sha256sums=('717a81126bf22a2749b0998ce703cc2f578f862b5a0ec49698cabbbee41d450e')
 validpgpkeys=()
 
 prepare() {
