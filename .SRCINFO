@@ -1,13 +1,13 @@
 pkgbase = xcursor-openzone
 	pkgdesc = OpenZone X11 cursor theme
 	pkgver = 1.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.opendesktop.org/p/999999/
 	arch = any
 	license = custom:xcursor-openzone
+	makedepends = git
 	makedepends = icon-slicer
 	source = git+https://github.com/ducakar/openzone-cursors.git#tag=v1.2.9
 	sha384sums = SKIP
 
 pkgname = xcursor-openzone
-
