@@ -1,0 +1,12 @@
+pkgbase = tsukiyomi-fetch
+	pkgdesc = Custom configuration and statistics script for Fastfetch \(but can easily be integrated with other programs too\), designed to display personalized system and online profile stats in a clean and minimal way with cool icons
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/thunder-blaze/tsukiyomi-fetch/tree/v0.1.2
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = tsukiyomi-fetch-0.1.2.tar.gz::https://github.com/thunder-blaze/tsukiyomi-fetch/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 197cfef9080148a609d7d5733739df18c0ac75a0d544c8f8c7fca65723339659
+
+pkgname = tsukiyomi-fetch
