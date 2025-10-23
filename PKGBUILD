@@ -3,7 +3,7 @@
 
 pkgname=netradiant-custom
 pkgver=20251023
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source, cross-platform level editor for id Tech based games (NetRadiant fork)"
 arch=('x86_64')
 url="https://garux.github.io/NRC/"
