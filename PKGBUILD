@@ -2,7 +2,7 @@
 pkgname=note-gen
 _pkgname=note-gen
 pkgver=0.22.1
-pkgrel=34
+pkgrel=35
 pkgdesc="A cross-platform Markdown note-taking application with AI integration"
 arch=('x86_64')
 url="https://github.com/codexu/note-gen"
@@ -31,8 +31,8 @@ build() {
     export CARGO_HOME="$srcdir/.cargo"
     export npm_config_build_from_source=true
 
-    # 构建Tauri应用 (包含前端构建)
-    pnpm tauri build
+    # 构建Tauri应用 (包含前端构建，跳过打包)
+    pnpm tauri build --no-bundle
 }
 
 package() {
