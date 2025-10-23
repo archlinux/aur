@@ -1,4 +1,4 @@
-[libfprint]
+[libfprint-06cb-00e9]
 source = "git"
 git = "https://gitlab.freedesktop.org/libfprint/libfprint.git"
 prefix = "v"
