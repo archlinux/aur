@@ -5,7 +5,7 @@ _pkgname=librewolf-extension-ublock-origin
 pkgname=$_pkgname-bin
 _id=uBlock0@raymondhill.net
 url="https://github.com/gorhill/uBlock"
-pkgver=1.66.4
+pkgver=1.67.0
 pkgrel=1
 pkgdesc="uBlock Origin - An efficient blocker for LibreWolf. Fast and lean."
 arch=('any')
@@ -17,7 +17,7 @@ groups=('librewolf-addons')
 noextract=("$_id.xpi")
 source=("$_id.xpi::https://github.com/gorhill/uBlock/releases/download/$pkgver/uBlock0_$pkgver.firefox.signed.xpi"
         "https://raw.githubusercontent.com/gorhill/uBlock/refs/tags/$pkgver/LICENSE.txt")
-b2sums=('3da37de5e93d766cba5655a4878a532b6fe9ef51165248c1a91a82c053d4aaede08746812e420104ea012e9335b25f91e3c6ccaf957b9f1bd52ae0950ba7b4f4'
+b2sums=('6c05826c94a46f6fef82a5b66afd022294a9621f8dde55328dd30d105f0cc65c4f5b5b1777ad28ffc7844d572a4d04d27145cbda67c9cd65a2ef14668e2c92cf'
         '70878e15940b01e24866195829871711509ab49d8aca2ff7bac1d0fade060e409b10c348cc45f290f4d9c32105439fff847d571102ba6688d5b6aa02bd91bc42')
 
 package() {
