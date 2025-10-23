@@ -1,14 +1,14 @@
-pkgbase = tufw-git
+pkgbase = tufw-bin
 	pkgdesc = Terminal UI for ufw
-	pkgver = 0.2.2
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/peltho/tufw
+	arch = x86_64
 	license = MIT
 	depends = ufw
-	conflicts = tufw
 	provides = tufw
-	arch = x86_64
-	source_x86_64 = https://github.com/peltho/tufw/releases/download/v0.2.2/tufw_0.2.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 03c5a5a32b98ec38c1d973862271ed084e3dd93b68538e832b71912eb9109e21
-	
-pkgname = tufw-git
+	conflicts = tufw
+	source_x86_64 = tufw-bin_0.2.6_x86_64.tar.gz::https://github.com/peltho/tufw/releases/download/v0.2.6-forward/tufw_0.2.6-forward_linux_amd64.tar.gz
+	sha256sums_x86_64 = 86aaddaf1532ad00d3d7b0e6165b89cef7f3d483a4b87fa82f029844e6521ac1
+
+pkgname = tufw-bin
