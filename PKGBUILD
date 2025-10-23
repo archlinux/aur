@@ -3,6 +3,7 @@ pkgname=aslookup
 pkgver=1.0.0
 pkgrel=1
 arch=('x86_64')
+pkgdesc="A command-line tool to resolve ASN information and IP ranges for a given IP address, using Cymru and BGPView APIs. Supports colored output and JSON parsing."
 url="https://github.com/nieldk/aslookup"
 license=('0BSD')
 depends=('curl' 'cjson')
