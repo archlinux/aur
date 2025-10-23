@@ -1,20 +1,20 @@
 # Maintainer: shinrax2
 
 # Contributor: Original maintainer from aur/python-pysimplegui SpotlightKid
-# Contributor:Original contributor from aur/python-pysimplegui hawkeye116477 <hawkeye116477 at gmail dot com>
+# Contributor: Original contributor from aur/python-pysimplegui hawkeye116477 <hawkeye116477 at gmail dot com>
 # Contributor: Original contributor from aur/python-pysimplegui Daniel Peukert <daniel@peukert.cc>
 
 pkgbase=python-freesimplegui
 pkgname=('python-freesimplegui')
 _module='FreeSimpleGUI'
 pkgver=5.2.0.post1
-pkgrel=1
+pkgrel=2
 pkgdesc='Super-simple to create custom GUI, free fork of PySimpleGUI'
 arch=('any')
 license=('LGPLv3+')
 url='https://github.com/spyoungtech/FreeSimpleGUI'
 depends=('python' 'tk')
-makedepends=('python-setuptools' 'python-build' 'python-installer')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'git')
 checkdepends=('python-pytest-runner')
 source=("git+https://github.com/spyoungtech/FreeSimpleGUI.git#tag=v$pkgver")
 md5sums=('SKIP')

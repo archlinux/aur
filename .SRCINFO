@@ -1,7 +1,7 @@
 pkgbase = python-freesimplegui
 	pkgdesc = Super-simple to create custom GUI, free fork of PySimpleGUI
 	pkgver = 5.2.0.post1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/spyoungtech/FreeSimpleGUI
 	arch = any
 	license = LGPLv3+
@@ -9,6 +9,7 @@ pkgbase = python-freesimplegui
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = git
 	depends = python
 	depends = tk
 	source = git+https://github.com/spyoungtech/FreeSimpleGUI.git#tag=v5.2.0.post1
