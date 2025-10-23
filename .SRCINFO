@@ -1,6 +1,6 @@
 pkgbase = cutadapt
 	pkgdesc = Remove adapter sequences from high-throughput sequencing reads. doi:10.14806/ej.17.1.200
-	pkgver = 5.1
+	pkgver = 5.2
 	pkgrel = 1
 	url = https://github.com/marcelm/cutadapt
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = cutadapt
 	depends = python
 	depends = python-xopen
 	depends = python-dnaio
-	source = https://files.pythonhosted.org/packages/source/c/cutadapt/cutadapt-5.1.tar.gz
-	sha256sums = 6bc76345c0a45f6b680cb1164e48eb1f81815c764ec471284ab6234c6653b937
+	source = https://files.pythonhosted.org/packages/source/c/cutadapt/cutadapt-5.2.tar.gz
+	sha256sums = 2394deead42ecae5fe0fdf369e35f3e2afed770e14059582272779c2e8295d3c
 
 pkgname = cutadapt
