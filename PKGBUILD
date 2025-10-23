@@ -12,7 +12,7 @@ arch=('i686' 'x86_64' 'armv7h')
 license=('LGPL')
 makedepends=('gstreamer0.10>=0.10.36' 'orc' 'libxv' 'alsa-lib' 'cdparanoia'
              'libvisual' 'libvorbis' 'libtheora' 'pango' 'cairo' 'gobject-introspection'
-             'glib2-devel')
+             'glib2-devel' 'libxml2')
 options=(!emptydirs)
 url='http://gstreamer.freedesktop.org/'
 source=("https://gstreamer.freedesktop.org/src/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"
@@ -46,11 +46,13 @@ prepare() {
 
 build() {
   cd ${_pkgname}-${pkgver}
-  
+
   # When using multiple -D flags, use a single -D with multiple definitions
+  export CPPFLAGS="$(pkg-config --cflags pangocairo pango)"
   export CFLAGS="$CFLAGS -Wno-error -Wno-deprecated-declarations"
   export CXXFLAGS="$CXXFLAGS -Wno-error -Wno-deprecated-declarations"
-  
+  export LDFLAGS="$LDFLAGS $(pkg-config --libs libxml-2.0)"
+
   NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr \
               --sysconfdir=/etc \

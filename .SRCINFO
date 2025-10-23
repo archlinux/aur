@@ -18,6 +18,7 @@ pkgbase = gstreamer0.10-base
 	makedepends = cairo
 	makedepends = gobject-introspection
 	makedepends = glib2-devel
+	makedepends = libxml2
 	options = !emptydirs
 	source = https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-0.10.36.tar.xz
 	source = fix-crash-0-byte-ogg.patch
