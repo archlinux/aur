@@ -1,0 +1,14 @@
+pkgbase = image-analyze
+	pkgdesc = Lightweight image viewer that supports measuring distance in pixels
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/ArthurGuihaire/image-analyze
+	arch = x86_64
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	depends = sfml
+	source = https://github.com/ArthurGuihaire/image-analyze/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = ace1966c5cf0aca8899fd814ea105c1c1770463278d5f71122c4401a60d33f41
+
+pkgname = image-analyze
