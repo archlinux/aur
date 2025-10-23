@@ -2,8 +2,9 @@
 # Contributor: Sam <dev at samarthj dot com>
 # Contributor: Árni Dagur <arnidg at protonmail dot ch>
 
-pkgname=uutils-coreutils-git
-pkgver=0.2.2.r436.g599c1bd
+pkgbase=uutils-coreutils-git
+pkgname=($pkgbase coreutils-uutils)
+pkgver=0.2.2.r458.g909da50
 pkgrel=1
 pkgdesc="Rust rewrite of coreutils"
 url=https://github.com/uutils/coreutils
@@ -37,13 +38,36 @@ prepare(){
 # Packaging guideline cause double build.
 export RUSTONIG_DYNAMIC_LIBONIG=1
 export RUSTFLAGS="-C codegen-units=1 -C panic=abort ${RUSTFLAGS}" # PROFILE=release-fast does not work yet
-package(){
-  cd ${pkgname%-git}
-  if [ $RUSTC_BOOTSTRAP = 1 ];then
-    export CARGOFLAGS="-Zbuild-std=std,panic_abort -Zbuild-std-features=panic_immediate_abort"
-  fi
+if [ $RUSTC_BOOTSTRAP = 1 ];then
+  export CARGOFLAGS="-Zbuild-std=std,panic_abort -Zbuild-std-features=panic_immediate_abort"
+fi
+package_uutils-coreutils-git(){
+  cd ${pkgbase%-git}
   unset optdepends
   make install DESTDIR="$pkgdir" PREFIX=/usr PROFILE=release-fast MULTICALL=y LN="ln -f" \
     PROG_PREFIX=uu- LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} SKIP_UTILS="runcon chcon" #arch kill more uptime hostname"
-  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgname%-git}
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgbase%-git}
+}
+
+package_coreutils-uutils(){
+  pkgdesc='Use uutils as system coreutils'
+  provides=(coreutils b3sum)
+  conflicts=(coreutils b3sum sha3sum)
+  cd ${pkgbase%-git}
+  unset optdepends
+  # We should build smaller non-prefixed binary with SKIP_UTILS, but it is slow and breaks bash-completion...
+  # Or this feature should be included to upstream.
+  depends=(uutils-coreutils)
+  install -d "$pkgdir"/usr/{bin,lib/coreutils,share/{licenses/${pkgname},man/man1,zsh/site-functions,fish/vendor_completions.d}}
+  cd "$pkgdir"/usr
+  ln -sf /usr/lib/${depends[0]}/libstdbuf.so -t lib/coreutils
+  ln -sf uu-coreutils bin/\[ # zsh completion err
+  for _f in $(uu-coreutils --list | grep -v -E '^(kill|more|uptime|hostname|\[)$') chcon runcon; do
+    ln -sf uu-coreutils bin/${_f}
+    ln -sf uu-${_f}.1.gz share/man/man1/${_f}.1.gz
+    # bash completes symlinks
+    echo -e "#compdef ${_f}=uu-${_f}\n_uu-${_f}" > share/zsh/site-functions/_$_f
+    echo "complete -c ${_f} -w uu-${_f}" > share/fish/vendor_completions.d/${_f}.fish
+  done
+  ln -sf /usr/share/licenses/uutils-coreutils/LICENSE -t share/licenses/$pkgname
 }
