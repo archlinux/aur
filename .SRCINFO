@@ -7,6 +7,7 @@ pkgbase = zoekt-git
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = Apache-2.0
 	makedepends = go
 	makedepends = git
