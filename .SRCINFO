@@ -1,17 +1,17 @@
 pkgbase = structure-bin
 	pkgdesc = A knowledge management tool.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.24.1
+	pkgver = 0.24.2
 	pkgrel = 1
 	url = https://structure.love/
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = fuse2
-	depends = electron37
-	provides = structure=0.24.1
+	depends = electron38
+	provides = structure=0.24.2
 	conflicts = structure
-	source = structure-0.24.1-x86_64.AppImage::https://github.com/neopostmodern/structure/releases/download/v0.24.1/Structure-0.24.1-x64.AppImage
+	source = structure-0.24.2-x86_64.AppImage::https://github.com/neopostmodern/structure/releases/download/v0.24.2/Structure-0.24.2-x64.AppImage
 	source = structure.sh
-	sha256sums = 63e89a54c81c68231b1ac8949d001923f2fd47d255fa7b72f7d8af8ec24a75e1
+	sha256sums = e520545ea224a42d72e4d9601b8c1b921d7f4ae4630608d6d2c305df6013e5aa
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = structure-bin
