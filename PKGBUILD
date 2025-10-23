@@ -2,7 +2,7 @@
 #Contributor: Static_Rocket
 
 pkgname=asusctl-devel-git
-pkgver=6.1.16.r1.g180566e
+pkgver=6.1.16.r2.g132a2f3
 pkgrel=1
 pkgdesc="Asus laptop control utilities"
 arch=('x86_64')
@@ -27,19 +27,19 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/$_gitdir"
-	export RUSTUP_TOOLCHAIN=nightly
+	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
 	cd "$srcdir/$_gitdir"
-	export RUSTUP_TOOLCHAIN=nightly
+	export RUSTUP_TOOLCHAIN=stable
 	make build
 }
 
 package() {
 	cd "$srcdir/$_gitdir"
-	export RUSTUP_TOOLCHAIN=nightly
+	export RUSTUP_TOOLCHAIN=stable
 	make DESTDIR="$pkgdir" install
 }
 
