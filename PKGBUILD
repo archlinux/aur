@@ -2,8 +2,8 @@
 
 _name=VectorChord
 pkgname=${_name,,}
-pkgver=0.4.3
-pkgrel=2
+pkgver=0.5.3
+pkgrel=1
 pkgdesc="Scalable, fast, and disk-friendly vector search in Postgres, successor to pgvecto.rs"
 arch=('x86_64')
 url="https://github.com/tensorchord/VectorChord"
@@ -13,29 +13,26 @@ depends=('postgresql'
 )
 conflicts=("${_name,,}-bin") # vectorchord-bin does not use 'provides=vectorchord', requires this to resolve
 makedepends=(
-	'rustup' # currently required to strictly control the toolchain as upstream seems to build with nighly versions and cannot currenty be built with stable
-	'clang>=16' # upstream builds with clang, claims to work with gcc but does not yet
-	# 'gcc>=14' # part of base-devel and hence preferred to clang
+	'cargo'
+	# 'clang>=16' # upstream builds with clang, but gcc also works and is part of base-devel, hence preferred
 	'pgvector'
 )
 
 source=("https://github.com/tensorchord/VectorChord/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('d3045b018ddf22fecbe65e56079e2254869b75f14ed3aa9f7bd0cce81ea727ce')
+sha256sums=('38e20bd299d15a9ffd6464e649f630282a26df7f1a9df3cefe729634e3e1545d')
 install=info.install
 
 prepare(){
 	cd $srcdir/$_name-$pkgver
 	export CARGO_HOME="$srcdir/cargo-cache"       # do not litter in ~
-	# install the toolchain recorded in rust-toolchain.toml
-	_toolchain=$(grep -oP 'channel\s*=\s*"\Knightly-[^"]+' rust-toolchain.toml)
-	msg "Installing required rust toolchain from rust-toolchain.toml: $_toolchain"
-	rustup toolchain install "$_toolchain"
+        #force update for 'rustup' package users (not necesarry for 'rust' package users)
+	pacman -Qo $(which cargo) | grep -q rustup && rustup update && rustup default stable
 	# pre-download rust dependencies already in prepare()
 	cargo fetch --locked --target="$CARCH-unknown-linux-gnu"
 }
 build() {
 	cd $srcdir/$_name-$pkgver
-	# export CC=gcc # does not yet work with gcc
+	export CC=gcc # disable this if you want to build with clang
   	export CARGO_HOME="$srcdir/cargo-cache"       # do not litter in ~
 	export RUST_BACKTRACE=1 # show backtrace on error
   	make build
