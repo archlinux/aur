@@ -1,6 +1,6 @@
 # Maintainer: Augustas Vaivada <https://github.com/aujezus>
 pkgname=hypr-mon-switch-git
-pkgver=r30.a192963
+pkgver=r31.51b8af3
 pkgrel=1
 pkgdesc="Configuration-based monitor switching system for Hyprland with YAML configuration support"
 arch=('any')
@@ -44,9 +44,6 @@ package() {
     install -Dm755 scripts/generate-config.sh "$pkgdir/usr/share/hypr-mon-switch/scripts/generate-config.sh"
     install -Dm755 scripts/test-config.sh "$pkgdir/usr/share/hypr-mon-switch/scripts/test-config.sh"
     
-    # Install test script
-    install -Dm755 simple-test.sh "$pkgdir/usr/share/hypr-mon-switch/simple-test.sh"
-    
     # Install configuration files to system location
     install -Dm644 configs/example-config.yaml "$pkgdir/etc/hypr-mon-switch/config.yaml"
     install -Dm644 configs/example-config.yaml "$pkgdir/etc/hypr-mon-switch/example-config.yaml"
@@ -54,7 +51,6 @@ package() {
     
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/hypr-mon-switch/README.md"
-    install -Dm644 INSTALLATION.md "$pkgdir/usr/share/doc/hypr-mon-switch/INSTALLATION.md"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/hypr-mon-switch-git/LICENSE"
     
     # Install udev rules template
