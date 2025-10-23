@@ -1,0 +1,4 @@
+[github-copilot-cli]
+source = "git"
+git = "https://github.com/github/copilot-cli.git"
+prefix = "v"
