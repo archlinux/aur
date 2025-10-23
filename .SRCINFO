@@ -1,6 +1,6 @@
 pkgbase = hyprdvd
 	pkgdesc = Bouncy DVD-like terminal
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/nevimmu/hyprdvd
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = hyprdvd
 	depends = python
 	depends = python-argcomplete
 	depends = python-dbus
-	source = hyprdvd-0.4.1::https://github.com/nevimmu/hyprdvd/archive/refs/tags/0.4.1.tar.gz
+	source = hyprdvd-0.4.2::https://github.com/nevimmu/hyprdvd/archive/refs/tags/0.4.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = hyprdvd
