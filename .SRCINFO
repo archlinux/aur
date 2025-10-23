@@ -15,7 +15,6 @@ pkgbase = tosu-overlay-git
 	provides = tosu-overlay
 	conflicts = tosu-overlay
 	source = tosu-overlay::git+https://github.com/K4zoku/tosu-overlay-qt?signed.git
-	validpgpkeys = C6797F75E4A487395E79B2D1413897C051068F03
 	sha256sums = SKIP
 
 pkgname = tosu-overlay-git

@@ -13,7 +13,6 @@ conflicts=("${_pkgbase}")
 makedepends=('git' 'gcc' 'meson')
 source=("${_pkgbase}::git+${url}?signed.git")
 sha256sums=('SKIP')
-validpgpkeys=('C6797F75E4A487395E79B2D1413897C051068F03')  # k4zoku <k4zoku@pm.me>
 
 pkgver() {
     cd "${_pkgbase}"
