@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://projectplusgame.com/"
 license=('GPL')
 depends=('alsa-lib' 'bluez-libs' 'cairo' 'curl' 'enet' 'ffmpeg' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk2' 'hidapi' 'libevdev' 'libpng' 'libpulse' 'libsm' 'libusb' 'libx11' 'libxi' 'libxrandr' 'libxxf86vm' 'lzo' 'mbedtls' 'miniupnpc' 'official-gamecube-controller-adapter-rules' 'pango' 'sfml' 'systemd-libs' 'zlib')
-makedepends=('cmake' 'git' 'qt5-base' 'unzip')
+makedepends=('cmake' 'git' 'qt5-base')
 optdepends=('pulseaudio: PulseAudio backend')
 options=('!strip')
 _url="https://github.com/Project-Plus-Development-Team/Project-Plus-Dolphin/releases"
@@ -19,7 +19,7 @@ source=(
 sha256sums=('05b0e6cc80b84b5693f038272238ae3a2be89d4f728ed548c950043c24aab702')
 
 prepare() {
-    unzip -o "$srcdir/$_package" -d "$srcdir"
+    bsdtar -xf "$srcdir/$_package" -C "$srcdir"
 	chmod +x "$srcdir/$_appimage"
 	$srcdir/$_appimage --appimage-extract
 }
