@@ -1,6 +1,6 @@
 pkgbase = tiddlywiki
 	pkgdesc = Personal wiki where everything is in one html-file
-	pkgver = 5.3.6
+	pkgver = 5.3.8
 	pkgrel = 1
 	url = http://www.tiddlywiki.com/
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = tiddlywiki
 	depends = xdg-utils
 	source = http://www.tiddlywiki.com/empty.html
 	source = tiddlywiki.py
-	md5sums = 395b796bf57dfa6654efb421a7a866e1
+	md5sums = 845e14bc3cce4fda7389095ea3f3c6c7
 	md5sums = 219c3db3c4be8d359d3c18e96b171ee3
 
 pkgname = tiddlywiki
