@@ -1,0 +1,4 @@
+[github-copilot-cli-legacy]
+source = "npm"
+npm = "@githubnext/github-copilot-cli"
+prefix = "v"
