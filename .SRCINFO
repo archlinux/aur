@@ -19,6 +19,9 @@ pkgbase = lue-reader-git
 	depends = python-edge-tts
 	optdepends = espeak: Kokoro TTS support
 	optdepends = antiword: .doc file support
+	optdepends = python-kokoro
+	optdepends = python-soundfile
+	optdepends = python-huggingface-hub
 	provides = lue-reader=v0.3.1.r0.g99e95f5
 	conflicts = lue-reader
 	source = git+https://github.com/superstarryeyes/lue.git#branch=main

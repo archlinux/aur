@@ -24,6 +24,9 @@ depends=(
 optdepends=(
   'espeak: Kokoro TTS support'
   'antiword: .doc file support'
+  'python-kokoro'
+  'python-soundfile'
+  'python-huggingface-hub'
 )
 makedepends=(
   # VCS
