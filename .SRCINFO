@@ -1,6 +1,6 @@
 pkgbase = python-fugashi
 	pkgdesc = MeCab wrapper for pythonic Japanese tokenization and morphological analysis
-	pkgver = 1.5.1
+	pkgver = 1.5.2dev0
 	pkgrel = 1
 	url = https://github.com/polm/fugashi
 	install = python-fugashi.install
@@ -13,13 +13,15 @@ pkgbase = python-fugashi
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-wheel
 	depends = cython
 	depends = mecab
 	depends = python
 	optdepends = python-unidic: Use the latest version of UniDic, large install size
 	optdepends = python-unidic-lite: Use the lite version of UniDic
-	source = git+https://github.com/polm/fugashi.git#tag=v1.5.1
-	b2sums = d4a68ee74358e006b1553f14d8d8cfe12d387a510bcc9283e38b7ae08f8d61b700b9d5071b274c68fa0acd1b804cadc2c51647b0b2d316a2fd3e18aeb1c94ebc
+	source = git+https://github.com/polm/fugashi.git#tag=v1.5.2dev0
+	b2sums = 39667e4754fed4fe7d5bb351b778a9c4af37c51105056ed7c42b11e171b4943ac98940cccc9b7db4e4d88cc7024ee4bba878226fa01272e68bb86db98a546f32
 
 pkgname = python-fugashi
