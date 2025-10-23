@@ -5,14 +5,12 @@ pkgbase=ntfsplus-dkms-git
 pkgname=("$pkgbase" "ntfsplus-udev")
 pkgver=2025.10.20.r20.c8a1f11f2
 pkgrel=1
-epoch=1
+# epoch=1
 pkgdesc="A new NTFS driver for Linux promised to be better than NTFS3. These patches are directly taken from the maintainer's mailing list posts. Backported to 6.17."
 arch=('any')
 url="https://lore.kernel.org/all/20251020021227.5965-6-linkinjeon@kernel.org"
 license=('GPL-2.0-only')
 makedepends=('git')
-provides=('ntfsplus' 'NTFSPLUS-MODULE')
-conflicts=('ntfsplus')
 options=('!strip' '!emptydirs')
 
 # Using custom download agent to shallow clone the repo
@@ -31,6 +29,13 @@ verify_dest() {
     cd "${dest}"
     current_url=$(git config --get remote.origin.url)
     if [ "${current_url}" = "${ORIGIN}" ]; then
+
+      # # Abort any in-progress tasks
+      git am --abort || true
+      git merge --abort || true
+      git rebase --abort || true
+
+      # Update the existing shallow clone
       git fetch --depth 1
       git reset --hard FETCH_HEAD
       exit 0
@@ -78,7 +83,7 @@ prepare() {
 
   cd "$srcdir/linux"
 
-  # Apply the ntfsplus patches from the mailing list
+  # Get the experimental ntfsplus driver from the mailing lists
   git am --empty=keep "$srcdir/00-05.mbox" "$srcdir/06-11.mbox"
   _mailbox_last_date=$(git log -1 --format='%ad' --date=iso-strict)
 
@@ -107,12 +112,14 @@ build() {
 }
 
 package_ntfsplus-dkms-git() {
-  pkgdesc="DKMS module for ntfsplus (A new NTFS driver for Linux promised to be better than NTFS3.)"
+  pkgdesc="DKMS module for ntfsplus (A new NTFS driver for Linux promised to be better than NTFS3)."
   depends=('dkms')
-  opdepends+=(
+  opdepends=(
     'ntfsprogs-plus: Recommended NTFS utilities'
     'ntfsplus-udev: udev rules for ntfsplus'
   )
+  provides=('ntfsplus' 'NTFSPLUS-MODULE')
+  conflicts=('ntfsplus')
 
   cd "$srcdir"
 
@@ -123,7 +130,7 @@ package_ntfsplus-dkms-git() {
 }
 
 package_ntfsplus-udev() {
-  pkgdesc="udev rules for ntfsplus"
+  pkgdesc="udev rules for ntfsplus."
   depends=('udev')
 
   cd "$srcdir"
