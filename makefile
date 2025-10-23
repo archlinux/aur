@@ -38,9 +38,9 @@ clean:
 
 # Install the binary
 install: $(BIN)
-	mkdir -p $(DESTDIR)/bin
-	cp $(BIN) $(DESTDIR)/bin/$(BIN)
-	chmod +x $(DESTDIR)/bin/$(BIN)
+	# mkdir -p /usr/bin
+	cp $(BIN) /usr/bin/$(BIN)
+	chmod +x /usr/bin/$(BIN)
 	@echo "$(BIN) installed to $(DESTDIR)/bin/"
 	@echo "Remember to add $(DESTDIR)/bin to your PATH if it's not already there."
 	@echo "You can do this by adding the following line to your shell configuration file (e.g., .bashrc, .zshrc):"
