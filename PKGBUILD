@@ -53,9 +53,6 @@ package() {
     install -dm755 "$pkgdir/usr/share/staticwall/shaders"
     install -m644 examples/shaders/*.glsl "$pkgdir/usr/share/staticwall/shaders/"
 
-    # Install shader README
-    install -Dm644 examples/shaders/README.md "$pkgdir/usr/share/staticwall/shaders/README.md"
-
     # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
