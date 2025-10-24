@@ -3,7 +3,7 @@
 
 pkgbase=ntfsplus-dkms-git
 pkgname=("$pkgbase" "ntfsplus-udev")
-pkgver=2025.10.20.r20.c8a1f11f2
+pkgver=2025.10.20.r30.d2885d40e
 pkgrel=1
 # epoch=1
 pkgdesc="A new NTFS driver for Linux promised to be better than NTFS3. These patches are directly taken from the maintainer's mailing list posts. Backported to 6.17."
@@ -60,15 +60,21 @@ source=(
   '00-05.mbox.gz::https://lore.kernel.org/all/20251020020749.5522-1-linkinjeon@kernel.org/t.mbox.gz'
   '06-11.mbox.gz::https://lore.kernel.org/all/20251020021227.5965-6-linkinjeon@kernel.org/t.mbox.gz'
   '0001-fs-ntfsplus-inode.c-Resolve-import-for-inode_generic.patch'
-  '0001-fs-ntfsplus-Makefile-DKMS-patch.patch'
+  '0002-fs-ntfsplus-aops.c-Resolve-iomap_writepages-temporar.patch'
+  '0003-fs-ntfsplus-file.c-Resolve-iomap_-temporarily-for-ke.patch'
+  '0004-fs-ntfsplus-inode.c-Resolve-iomap_zero_range-argumen.patch'
+  '0099-fs-ntfsplus-Makefile-DKMS-patch.patch'
   'dkms.conf'
   '90-udev-prefer-ntfsplus.rules'
 )
 sha256sums=(
   SKIP
-  00415c42fa5809da14b84a2ecc6623e3e859fa803dfa7bdfa407a83d21d9b744
+  81f7dc0262bf370f8fb7b2408c47c6e8ba834300424ebc38fb8d46696a5ab806
   bede30ed663dada47c946f74a314b8e25817c4cd8b6c39e0cd5810bbd1cddca2
-  6e65520477bf80c9ac76cfc49e2e65eba0d63f1c846d1876c1874bdf2ac24a6c
+  afc465cf70f4e0111d41a758e2db69d0dc6fc48eef10bdb6c38b17100474bf0e
+  7dc8c20ff0e24938fc5ba3ba19f16c7cd1d71ea3cf45375c7963cefef5bf24cf
+  5ef1557329d7dd5dfde93aa23d2ac6f5941880a75151e1234edd73cc19d6001f
+  d1cfa4c9d755393c5b0d7f1770248c56eeb5ab830d7c852e67ac70cdc7542701
   e217fa145f507b1e07e228e746528554f705f44fd5744f293b302b29df764b96
   ed9db8ec0caa09c977529c7ae89b808ee8c238331ec0fdf873525c115fcdfb7c
   e3866cac3d71da15740159c89b233d4d1f61981dbf737d4e3bc9a4c56bfa24be
@@ -87,11 +93,8 @@ prepare() {
   git am --empty=keep "$srcdir/00-05.mbox" "$srcdir/06-11.mbox"
   _mailbox_last_date=$(git log -1 --format='%ad' --date=iso-strict)
 
-  # Apply the inode.c import fix patch
-  git apply "$srcdir/0001-fs-ntfsplus-inode.c-Resolve-import-for-inode_generic.patch"
-
-  # Apply the dkms Makefile patch
-  patch -p1 <"$srcdir/0001-fs-ntfsplus-Makefile-DKMS-patch.patch"
+  # Apply patches
+  git am "$srcdir"/0*-fs-ntfsplus-*.patch
 }
 
 pkgver() {
@@ -100,7 +103,7 @@ pkgver() {
   # Version format: YYYY.MM.DD.r<commitcount>.<commitsha>
   # with date from _mailbox_last_date
   local commit_count commit_sha
-  commit_count=$(git rev-list --count ORIG_HEAD..HEAD)
+  commit_count=$(git rev-list --count origin/master..HEAD)
   commit_sha=$(git rev-parse --short HEAD)
   date +'%Y.%m.%d.r'"${commit_count}"'.'"${commit_sha}" -d "$_mailbox_last_date"
 }

@@ -1,0 +1,105 @@
+From 296597bc6b6a0d7c1493a40278fced0d98bdd454 Mon Sep 17 00:00:00 2001
+From: shadichy <shadichy@blisslabs.org>
+Date: Thu, 23 Oct 2025 10:07:31 +0700
+Subject: [PATCH 3/4] fs/ntfsplus/file.c: Resolve iomap_* (temporarily) for
+ kernels older than 6.17 by removing final NULL arguments
+
+---
+ fs/ntfsplus/file.c | 39 +++++++++++++++++++++++++++++++--------
+ 1 file changed, 31 insertions(+), 8 deletions(-)
+
+diff --git a/fs/ntfsplus/file.c b/fs/ntfsplus/file.c
+index b4114017b..0e808a623 100644
+--- a/fs/ntfsplus/file.c
++++ b/fs/ntfsplus/file.c
+@@ -293,7 +293,11 @@ int ntfs_setattr(struct mnt_idmap *idmap, struct dentry *dentry,
+ 			    attr->ia_size < old_size) {
+ 				err = iomap_truncate_page(vi, attr->ia_size, NULL,
+ 							  &ntfs_read_iomap_ops,
+-							  &ntfs_iomap_folio_ops, NULL);
++							  &ntfs_iomap_folio_ops
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0))
++								, NULL
++#endif
++								);
+ 				if (err)
+ 					goto out;
+ 			}
+@@ -312,7 +316,10 @@ int ntfs_setattr(struct mnt_idmap *idmap, struct dentry *dentry,
+ 							attr->ia_size - old_size);
+ 				err = iomap_zero_range(vi, old_size, len,
+ 						       NULL, &ntfs_read_iomap_ops,
+-						       &ntfs_iomap_folio_ops, NULL);
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0))
++					      	 &ntfs_iomap_folio_ops,
++#endif
++					      	 NULL);
+ 			}
+ 		}
+ 		if (ia_valid == ATTR_SIZE)
+@@ -630,8 +637,11 @@ static ssize_t ntfs_file_write_iter(struct kiocb *iocb, struct iov_iter *from)
+ 			offset = iocb->ki_pos;
+ 			iocb->ki_flags &= ~IOCB_DIRECT;
+ 			written = iomap_file_buffered_write(iocb, from,
+-					&ntfs_write_iomap_ops, &ntfs_iomap_folio_ops,
+-					NULL);
++					&ntfs_write_iomap_ops, &ntfs_iomap_folio_ops
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0))
++					, NULL
++#endif
++					);
+ 			if (written < 0) {
+ 				err = written;
+ 				goto out;
+@@ -650,7 +660,11 @@ static ssize_t ntfs_file_write_iter(struct kiocb *iocb, struct iov_iter *from)
+ 		}
+ 	} else {
+ 		ret = iomap_file_buffered_write(iocb, from, &ntfs_write_iomap_ops,
+-				&ntfs_iomap_folio_ops, NULL);
++				&ntfs_iomap_folio_ops
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0))
++				, NULL
++#endif
++				);
+ 	}
+ out:
+ 	if (ret < 0 && ret != -EIOCBQUEUED) {
+@@ -937,7 +951,10 @@ static long ntfs_fallocate(struct file *file, int mode, loff_t offset, loff_t le
+ 				   end_offset);
+ 			err = iomap_zero_range(vi, offset, to - offset, NULL,
+ 					       &ntfs_read_iomap_ops,
+-					       &ntfs_iomap_folio_ops, NULL);
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0))
++					       &ntfs_iomap_folio_ops,
++#endif
++					       NULL);
+ 			if (err < 0 || (end_vcn - start_vcn) == 1)
+ 				goto out;
+ 			start_vcn++;
+@@ -948,7 +965,10 @@ static long ntfs_fallocate(struct file *file, int mode, loff_t offset, loff_t le
+ 			from = (end_vcn - 1) << vol->cluster_size_bits;
+ 			err = iomap_zero_range(vi, from, end_offset - from, NULL,
+ 					       &ntfs_read_iomap_ops,
+-					       &ntfs_iomap_folio_ops, NULL);
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0))
++					       &ntfs_iomap_folio_ops,
++#endif
++					       NULL);
+ 			if (err < 0 || (end_vcn - start_vcn) == 1)
+ 				goto out;
+ 			end_vcn--;
+@@ -1000,7 +1020,10 @@ static long ntfs_fallocate(struct file *file, int mode, loff_t offset, loff_t le
+ 					   offset - old_size);
+ 			err = iomap_zero_range(vi, old_size, len, NULL,
+ 					       &ntfs_read_iomap_ops,
+-					       &ntfs_iomap_folio_ops, NULL);
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0))
++					       &ntfs_iomap_folio_ops,
++#endif
++					       NULL);
+ 		}
+ 		NInoSetFileNameDirty(ni);
+ 		inode_set_mtime_to_ts(vi, inode_set_ctime_current(vi));
+-- 
+2.51.0
+

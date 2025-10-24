@@ -1,17 +1,17 @@
 # Sources
-linux.part/
-linux/
+/linux.part/
+/linux/
 *.gz
 
 # Download agent
 DLAGENTS
 
 # Build directories
-src/
-pkg/
+/src/
+/pkg/
 
 # Build artifacts
 *.pkg.tar*
 
 # Editor
-.vscode/
+/.vscode/

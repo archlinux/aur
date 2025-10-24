@@ -1,0 +1,29 @@
+From 0d6b7a44c7b12c1cca2e5080397751349e76da92 Mon Sep 17 00:00:00 2001
+From: shadichy <shadichy@blisslabs.org>
+Date: Thu, 23 Oct 2025 10:07:47 +0700
+Subject: [PATCH 4/4] fs/ntfsplus/inode.c: Resolve iomap_zero_range argument
+ count (temporarily) for kernel older than 6.17
+
+---
+ fs/ntfsplus/inode.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/fs/ntfsplus/inode.c b/fs/ntfsplus/inode.c
+index 28925d204..dd0ee4f86 100644
+--- a/fs/ntfsplus/inode.c
++++ b/fs/ntfsplus/inode.c
+@@ -2419,7 +2419,10 @@ int ntfs_extend_initialized_size(struct inode *vi, const loff_t offset,
+ 		err = iomap_zero_range(vi, old_init_size,
+ 				       offset - old_init_size,
+ 				       NULL, &ntfs_read_iomap_ops,
+-				       &ntfs_iomap_folio_ops, NULL);
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0))
++					     &ntfs_iomap_folio_ops,
++#endif
++					     NULL);
+ 		if (err)
+ 			return err;
+ 	}
+-- 
+2.51.0
+
