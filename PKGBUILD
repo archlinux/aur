@@ -1,7 +1,25 @@
 # Maintainer: z3n <z3nlabs at proton dot me>
+
+# Version 11.1.71 - New Features:
+# - Enhanced Hardware Controller Support:
+#   * SSL UF1 controller support
+#   * V1-M and V1-X controller configurations
+#   * Dual controller setups (V1-M + V1-X)
+# - New MIDI Controller Mappings:
+#   * Nektar Impact GX keyboard controller
+#   * Nektar Impact LX keyboard controller
+# - Additional MIDI Patch Files:
+#   * Digitech Whammy DT pedal support
+#   * Roland Boss GT-8 multi-effects
+# - New Lua Scripts:
+#   * blank_midi_region_clone.lua - MIDI region cloning
+#   * s_color_transparency.lua - Color transparency control
+# - Updated Harrison plugins (version 20251014)
+# - Minor updates to gmsynth, midifilter, and tuna LV2 plugins
+
 pkgname=mixbus11
-pkgver=11.0.289
-pkgrel=2
+pkgver=11.1.71
+pkgrel=1
 pkgdesc="Harrison Consoles Mixbus DAW (Version 11)"
 arch=('x86_64')
 url="https://store.harrisonaudio.com/all-products/mixbus"
@@ -16,12 +34,12 @@ optdepends=('avldrums.lv2: AVLinux drumkits'
             'setbfree-lv2: Tonewheel organ'
             'x42-plugins-lv2: Set of plugins and utilities from the X42 Project')
 source=(
-    "Mixbus-${pkgver}-x86_64.run::https://eu1.download.solidstatelogic.com/Mixbus%2011/Mixbus-${pkgver}-x86_64.tar"
+    "Mixbus-${pkgver}-x86_64.tar::https://eu1.download.solidstatelogic.com/Mixbus%2011/Mixbus%2011.1/Mixbus-${pkgver}-x86_64.tar"
     "${pkgname}.install"
 )
 sha256sums=(
-    'SKIP'
-    'SKIP'
+    '924b51e1d4f952690d8bc9fc8c7183a8d57553982e138d9a8330c526edca91b9'
+    'b56e4663d14e856fd88ea1afb3b0bbe907bf0ebe67a6b584d17f9b1157b83abf'
 )
 options=('!strip')
 
@@ -29,6 +47,10 @@ install=${pkgname}.install
 
 prepare() {
     cd "$srcdir"
+
+    # Extract the .run file from the tar archive
+    tar -xf "Mixbus-${pkgver}-x86_64.tar"
+
     chmod +x "Mixbus-${pkgver}-x86_64.run"
 
     # Use a completely clean environment for extraction

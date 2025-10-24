@@ -1,179 +1,156 @@
-# mixbus11 - Harrison Mixbus DAW (Version 11)
+# Mixbus 11 - AUR Package
 
-This is an AUR package for Harrison Mixbus, a professional digital audio workstation based on Ardour with Harrison's renowned analog-modeled mixing console.
+Harrison Consoles Mixbus DAW (Version 11) - Professional Digital Audio Workstation
 
-## Package Information
-
-- **Package Name**: mixbus11
-- **Version**: 11.0.289
-- **Architecture**: x86_64 only
-- **License**: EULA (End User License Agreement)
+## Current Version
+- **Package Version**: 11.1.71-1
+- **Released**: October 2024
 - **Maintainer**: z3n <z3nlabs at proton dot me>
+
+## Description
+Mixbus is a full-featured Digital Audio Workstation (DAW) with "True Analog Mixing"™ that provides professional-grade mixing capabilities based on Harrison's renowned console sound.
+
+## Features
+- Analog console workflow and sound
+- Built on Ardour's robust open-source foundation
+- Harrison's proprietary DSP for EQ and compression
+- Extensive MIDI capabilities
+- Professional mixing and mastering tools
+- Support for VST, LV2, and AU plugins (Linux version supports LV2)
 
 ## Installation
 
 ### From AUR
 ```bash
+# Using an AUR helper (e.g., yay)
 yay -S mixbus11
-# or
-paru -S mixbus11
-# or manually with makepkg
+
+# Manual installation
+git clone https://aur.archlinux.org/mixbus11.git
+cd mixbus11
+makepkg -si
 ```
 
-### Post-Installation Setup
-After installation, you need to add your user to the `audio` group:
-```bash
-sudo usermod -a -G audio $USER
-```
-Log out and back in for the group changes to take effect.
+### Requirements
+- **System**: x86_64 architecture
+- **Audio Group**: User must be in the 'audio' group
+  ```bash
+  sudo usermod -a -G audio $USER
+  # Log out and back in for changes to take effect
+  ```
+- **Dependencies**: 
+  - glibc
+  - libcurl-gnutls
+  - readline
+  - ncurses
+  - zlib
+  - bzip2
 
-## Library Compatibility Improvements
-
-### Recent Arch Updates Issue
-Recent Arch Linux updates have caused compatibility issues with bundled libraries in Mixbus, particularly with readline and ncurses libraries. Users were experiencing errors like:
-```
-/bin/sh: symbol lookup error: /bin/sh: undefined symbol: rl_print_keybinding
-```
-
-### Solution Implemented
-This PKGBUILD has been enhanced to automatically handle these conflicts by:
-
-1. **Removing Conflicting Bundled Libraries**: The package automatically removes these potentially problematic bundled libraries:
-   - `libreadline.so*`
-   - `libhistory.so*`
-   - `libncurses.so*`
-   - `libncursesw.so*`
-   - `libtinfo.so*`
-   - `libz.so*`
-   - `libbz2.so*`
-
-2. **Adding System Dependencies**: The package now explicitly depends on system versions of these libraries:
-   - `readline`
-   - `ncurses`
-   - `zlib`
-   - `bzip2`
-
-3. **Enhanced Wrapper Script**: The launch wrapper ensures proper library loading order, allowing system libraries to take precedence over any remaining bundled libraries.
+### Recommended Optional Dependencies
+- `avldrums.lv2`: AVLinux drumkits
+- `gmsynth.lv2`: General MIDI LV2 Synth
+- `setbfree-lv2`: Tonewheel organ
+- `x42-plugins-lv2`: Comprehensive set of plugins from X42 Project
 
 ## Usage
+Launch Mixbus from your application menu or via terminal:
+```bash
+mixbus11
+```
 
-Launch Mixbus in any of these ways:
-- From the applications menu (Audio/Video category)
-- Command line: `mixbus11`
-- Alternative command: `Mixbus11`
+## Recent Updates
+
+### Version 11.1.71 (October 2024)
+- Updated from 11.0.289 to 11.1.71
+- Improved compatibility with recent Arch Linux updates
+- Enhanced library conflict resolution
+- Added proper SHA256 checksums for source verification
+- Security improvements in package build process
+
+### Key Improvements
+- **Library Conflict Resolution**: Removed bundled libraries that conflict with system versions (readline, ncurses, etc.)
+- **Enhanced Wrapper Script**: Proper environment setup for better compatibility
+- **Wayland Support**: Added GDK_BACKEND=x11 for improved Wayland compatibility
+- **Security**: All source files now use proper SHA256 verification
 
 ## Troubleshooting
 
-### Library Conflicts
-If you experience library-related issues:
+### Common Issues
 
-1. **Check for conflicting libraries**:
-   ```bash
-   ls -la /opt/Mixbus-11.0.289/lib/lib{readline,history,ncurses,z,bz2}*
-   ```
-   These should NOT exist (they're removed by the package).
+#### 1. Symbol Lookup Errors
+If you encounter errors like `undefined symbol: rl_print_keybinding`:
+- **Solution**: This package already removes conflicting bundled libraries. If issues persist, ensure your system is fully updated.
 
-2. **Verify system libraries are available**:
-   ```bash
-   pacman -Q readline ncurses zlib bzip2
-   ```
+#### 2. Audio Issues
+If Mixbus doesn't detect your audio interface:
+- Ensure you're in the 'audio' group
+- Check your audio system (JACK/PipeWire/PulseAudio) is running
+- Try launching with different audio backends
 
-3. **Manual library removal** (if needed):
-   ```bash
-   sudo rm -f /opt/Mixbus-11.0.289/lib/libreadline.so*
-   sudo rm -f /opt/Mixbus-11.0.289/lib/libhistory.so*
-   ```
+#### 3. Plugin Issues
+For LV2 plugin problems:
+- Ensure plugins are installed in standard paths
+- Check plugin compatibility with Mixbus 11
 
-4. **Automated troubleshooting script** (available in AUR repository):
-   A `fix-library-conflicts.sh` script is available in the AUR package repository
-   for automated conflict resolution if needed.
+### Getting Help
+- **AUR Comments**: https://aur.archlinux.org/packages/mixbus11
+- **Harrison Support**: https://harrisonconsoles.com/support/
+- **Mixbus Forum**: https://discourse.ardour.org/c/mixbus/
 
-### Audio Group Issues
-If Mixbus can't access audio devices:
+## File Locations
+- **Installation**: `/opt/Mixbus-11.1.71/`
+- **Executable**: `/usr/bin/mixbus11`
+- **Desktop Entry**: `/usr/share/applications/mixbus11.desktop`
+- **Icons**: `/usr/share/icons/hicolor/*/apps/mixbus11.png`
+
+## License
+This is commercial software. A license must be purchased from Harrison Consoles to use Mixbus beyond the demo period. Visit https://harrisonconsoles.com/products/mixbus/ for pricing and licensing information.
+
+## Security Audit
+This package has undergone comprehensive security testing:
+- ✅ No SUID/SGID binaries
+- ✅ No world-writable files
+- ✅ Proper file permissions
+- ✅ Source integrity verification via SHA256
+- ✅ Clean library dependencies
+
+See `test_report/SECURITY_AUDIT_11.1.71.md` for detailed security audit results.
+
+## Build from Source
+If you want to build the package yourself:
+
 ```bash
-# Check if you're in the audio group
-groups $USER
+# Clone the repository
+git clone https://aur.archlinux.org/mixbus11.git
+cd mixbus11
 
-# Add yourself to audio group if missing
-sudo usermod -a -G audio $USER
+# Download source
+wget "https://eu1.download.solidstatelogic.com/Mixbus%2011/Mixbus%2011.1/Mixbus-11.1.71-x86_64.tar"
+
+# Build package
+makepkg -si
 ```
-
-### Permission Issues
-If you encounter permission errors:
-```bash
-sudo chown -R root:root /opt/Mixbus-11.0.289
-sudo chmod -R 755 /opt/Mixbus-11.0.289
-```
-
-### File Limit Warning
-If you see "Your system is configured to limit Mixbus to 1048576 open files":
-```bash
-# Check current limits
-ulimit -n
-
-# Increase soft limit temporarily
-ulimit -n 4096
-
-# For permanent increase, edit /etc/security/limits.conf
-echo "* soft nofile 4096" | sudo tee -a /etc/security/limits.conf
-echo "* hard nofile 8192" | sudo tee -a /etc/security/limits.conf
-```
-
-## Dependencies
-
-### Required
-- `glibc` - Core C library
-- `libcurl-gnutls` - HTTP library
-- `readline` - Command line editing library
-- `ncurses` - Terminal UI library
-- `zlib` - Compression library
-- `bzip2` - Compression library
-
-### Optional
-- `avldrums.lv2` - AVLinux drumkits
-- `gmsynth.lv2` - General MIDI LV2 Synth
-- `setbfree-lv2` - Tonewheel organ
-- `x42-plugins-lv2` - Set of plugins and utilities from the X42 Project
-
-## Technical Details
-
-### Installation Path
-Mixbus is installed to `/opt/Mixbus-11.0.289/`
-
-### Wrapper Script
-The package installs a wrapper script at `/usr/bin/mixbus11-wrapper` that:
-- Sets proper library paths
-- Configures environment variables
-- Handles library conflicts
-- Forces X11 backend for stability
-
-### Library Path Strategy
-The enhanced library loading strategy:
-1. System libraries take precedence (prevents conflicts)
-2. Mixbus-specific libraries are loaded from `/opt/Mixbus-11.0.289/lib/`
-3. Standard system library paths are preserved
 
 ## Changelog
 
-### Recent Improvements
-- **Library Conflict Resolution**: Automatic removal of conflicting bundled libraries
-- **Enhanced Dependencies**: Added explicit system library dependencies
-- **Improved Wrapper**: Better library path handling and environment setup
-- **Compatibility**: Fixed issues with recent Arch Linux updates
-- **Documentation**: Comprehensive troubleshooting guide
+### 11.1.71-1 (2024-10-24)
+- Version bump to 11.1.71
+- Updated download URL to new version path
+- Added SHA256 checksum verification for all sources
+- Improved security with proper checksums
 
-## Support
+### 11.0.289-2 (Previous)
+- Fixed library conflicts with system readline
+- Removed problematic bundled libraries
+- Added enhanced wrapper script
+- Improved Wayland compatibility
 
-For issues specific to this AUR package:
-- Open an issue on the AUR package page
-- Contact the maintainer: z3n <z3nlabs at proton dot me>
+## Contributing
+Contributions are welcome! Please submit issues and pull requests on the AUR page or contact the maintainer.
 
-For Mixbus software issues:
-- Visit Harrison Consoles support: https://support.harrisonaudio.com/
-- Check the official Mixbus documentation
+## Disclaimer
+Mixbus is a trademark of Harrison Consoles. This AUR package is not officially supported by Harrison Consoles. For official support, please contact Harrison directly.
 
-## License
-
-This package is provided under the terms of Harrison Consoles' End User License Agreement (EULA). By installing this package, you agree to the terms of the Mixbus EULA.
-
-The packaging files (PKGBUILD, install script, etc.) are provided as-is for use by the Arch Linux community.
+---
+*Maintained by z3n <z3nlabs at proton dot me>*
+*Last updated: October 24, 2024*
