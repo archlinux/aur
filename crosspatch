@@ -1,0 +1,2 @@
+#!/usr/bin/sh
+env CROSSPATCH_DISABLE_UPDATES=1 /opt/CrossPatch/CrossPatch.bin "$@"

@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=CrossPatch
+Comment=An easy to use mod manager for Sonic Racing: Crossworlds
+Exec=/usr/bin/crosspatch %U
+Terminal=false
+Categories=Game;
+MimeType=x-scheme-handler/crosspatch
+Type=Application
+Icon=crosspatch
