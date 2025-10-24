@@ -1,5 +1,5 @@
 pkgbase = yaoc-git
-	pkgdesc = Yet Another OpenAI CLI chat client.
+	pkgdesc = Yet Another OpenAI CLI: A simple, feature-rich OpenAI client, with tools and vision.
 	pkgver = r6.fb89fb1
 	pkgrel = 1
 	url = https://github.com/doryiii/openai-cli
