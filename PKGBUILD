@@ -7,7 +7,7 @@ pkgdesc="Xilinx ISE Design Suite"
 url="https://www.xilinx.com/products/design-tools/ise-design-suite.html"
 arch=('i686' 'x86_64')
 license=('custom')
-depends=('libstdc++5' 'ncurses5-compat-libs' 'openmotif' 'qt4' 'rpcbind' 'xorg-fonts-75dpi' 'xorg-fonts-100dpi')
+depends=('libstdc++5' 'ncurses5-compat-libs' 'openmotif' 'qt4' 'rpcbind' 'xorg-fonts-75dpi' 'xorg-fonts-100dpi' 'gcc49')
 optdepends=('fxload: Firmware loader for some programmer dongles'
             'digilent.adept.utilities: Digilent programmer support')
 options=('!strip')
@@ -61,6 +61,10 @@ package() {
 	# https://forums.xilinx.com/t5/Installation-and-Licensing/ISE-14-7-on-CentOS-6-4-missing-libQt-Network-so-workaround/td-p/379325
 	install -d "${pkgdir}"/usr/lib
 	ln -s /usr/lib/libQtNetwork.so "${pkgdir}"/usr/lib/libQt_Network.so
+
+	# Let ISIM/fuse use older gcc to avoid errors from newer gcc
+	install -d "${pkgdir}"/usr/bin
+	ln -s /usr/bin/gcc-4.9 "${pkgdir}"/usr/bin/gcc4
 
 	# Install .desktop file
 	install -Dm 644 "${srcdir}"/xilinx-ise-${_bits}.desktop "${pkgdir}"/usr/share/applications/xilinx-ise.desktop

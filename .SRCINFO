@@ -13,6 +13,7 @@ pkgbase = xilinx-ise
 	depends = rpcbind
 	depends = xorg-fonts-75dpi
 	depends = xorg-fonts-100dpi
+	depends = gcc49
 	optdepends = fxload: Firmware loader for some programmer dongles
 	optdepends = digilent.adept.utilities: Digilent programmer support
 	options = !strip
