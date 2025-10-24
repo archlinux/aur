@@ -3,7 +3,7 @@
 # Maintainer: Loomeh <loomeh at proton dot me>
 pkgname=libresplit-git
 _pkgname=libresplit
-pkgver=r412.28ef2afa6
+pkgver=r457.0d7cdefdb
 pkgrel=1
 pkgdesc="Free speedrun timer with auto splitting and load removal."
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=(
     'git'
-    'xxd'
+    'meson'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -30,11 +30,10 @@ pkgver() {
 }
 
 build() {
-    cd $_pkgname
-    make
+    arch-meson $_pkgname build
+    meson compile -C build
 }
 
 package() {
-    cd $_pkgname
-    make DESTDIR="${pkgdir}" PREFIX="/usr" install
+    meson install -C build --destdir "$pkgdir"
 }
