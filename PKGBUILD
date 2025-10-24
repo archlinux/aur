@@ -2,7 +2,7 @@
 #              M0Rf30
 # Mantainer: XenGi
 pkgname=unrealtournament
-pkgver=469e_rc9
+pkgver=469e_rc10
 pkgrel=1
 pkgdesc="The classic Unreal Tournament from 1999 (GOTY + OldUnreal patches)"
 arch=('i686' 'x86_64' 'aarch64')
@@ -34,9 +34,9 @@ sha256sums=('fea5efdcac67564f2b5b8ef215115990739243a53a5f86e67f9414081d5b28dc'
             'b944b7dec13b3b96230997695c8892ab06b764f004636629b72133d58aa8000f'
             'e184984ca88f001c5ddd52035d76cd64e266e26c74975161b5ed72366c74704f'
             'd95d8ee1cf95562ee023fd54035ec8813d4275f63d1847423220986edc8d00d8')
-sha256sums_i686=('69fa43b65534d6d1291a77e089c856aac523f342e4d8afffb3fea2caa4bf56af')
-sha256sums_x86_64=('d611168948e0cdbd66293b3fda9dbf5a18fc15da6aa6f7da0ed5dfeb74bf5b8e')
-sha256sums_aarch64=('6586f0c1e7e7e627f3cfdae4c7d5fc3d2572d5cf2dd99db8557b7a76282752d8')
+sha256sums_i686=('3e76884a58494eb2ebe36a9f1d2df929f48761a8c7196c7c3515021711ad6172')
+sha256sums_x86_64=('c2a99bf45182d19c4b237f054cf26816ed41f72c410ac23a22c200947fee3b8b')
+sha256sums_aarch64=('253b1969a66663231be6ef6570d31c5ae590d4186d4e8e923bc784e69f7e4584')
 
 prepare() {
     # Extract ISOs manually because makepkg would extract them into the same dir and overwrite the contents
