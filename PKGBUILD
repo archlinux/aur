@@ -11,8 +11,8 @@ arch=('x86_64')
 depends=('bluez' 'libadwaita' 'libpulse')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname-$pkgver.tar.xz::$url/releases/download/v$pkgver/$_pkgname.tar.xz")
-sha256sums=('aaf2ce6ac2d17632024d888591bdbf2be9bb8d5838285b927fdfa7cbaab35587')
+source=("$_pkgname-$pkgver.zip::$url/releases/download/v$pkgver/$_pkgname.zip")
+sha256sums=('7dc231b41578e0d4808880a80f4a93489c2693b4693fb47245d1c7409043bb81')
 
 package() {
   mv package/* "$pkgdir"

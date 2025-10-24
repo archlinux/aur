@@ -10,7 +10,7 @@ pkgbase = overskride-bin
 	depends = libpulse
 	provides = overskride
 	conflicts = overskride
-	source = overskride-0.6.2.tar.xz::https://github.com/kaii-lb/overskride/releases/download/v0.6.2/overskride.tar.xz
-	sha256sums = aaf2ce6ac2d17632024d888591bdbf2be9bb8d5838285b927fdfa7cbaab35587
+	source = overskride-0.6.2.zip::https://github.com/kaii-lb/overskride/releases/download/v0.6.2/overskride.zip
+	sha256sums = 7dc231b41578e0d4808880a80f4a93489c2693b4693fb47245d1c7409043bb81
 
 pkgname = overskride-bin
