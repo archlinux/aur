@@ -18,6 +18,9 @@ pkgbase = wayscriber
 	depends = slurp
 	provides = hyprmarker
 	conflicts = hyprmarker<0.5.1
+	conflicts = hyprmarker-debug<0.5.1
+	replaces = hyprmarker
+	replaces = hyprmarker-debug
 	source = git+https://github.com/devmobasa/wayscriber.git#tag=v0.5.1
 	sha256sums = SKIP
 

@@ -21,7 +21,8 @@ makedepends=(
     'git'
 )
 provides=('hyprmarker')
-conflicts=('hyprmarker<0.5.1')
+conflicts=('hyprmarker<0.5.1' 'hyprmarker-debug<0.5.1')
+replaces=('hyprmarker' 'hyprmarker-debug')
 source=("git+https://github.com/devmobasa/wayscriber.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
