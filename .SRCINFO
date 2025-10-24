@@ -1,6 +1,6 @@
 pkgbase = tabdance
 	pkgdesc = WIP: private preview
-	pkgver = 0.0.24
+	pkgver = 0.0.25
 	pkgrel = 1
 	url = https://tab.dance
 	arch = x86_64

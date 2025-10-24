@@ -1,6 +1,6 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 pkgname=tabdance
-pkgver=0.0.24
+pkgver=0.0.25
 pkgrel=1
 pkgdesc='WIP: private preview'
 arch=('x86_64')
