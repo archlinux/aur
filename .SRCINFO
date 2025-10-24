@@ -1,13 +1,13 @@
 pkgbase = lla
 	pkgdesc = A modern alternative to ls
-	pkgver = 0.4.2
-	pkgrel = 2
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/triyanox/lla
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	options = !lto
-	source = lla-0.4.2.tar.gz::https://github.com/triyanox/lla/archive/refs/tags/v0.4.2.tar.gz
-	sha512sums = 2c8c29596a6092432052288c6ca56d9f1d5185ce320b089ac1a814355468f4640747688d1861b42928e42d42f3d7f3e24ebc0dd403667d6c3a691da13d2bdeda
+	source = lla-0.5.0.tar.gz::https://github.com/triyanox/lla/archive/refs/tags/v0.5.0.tar.gz
+	sha512sums = 23a524b8aef657b902a76ea13b9a0eb9196cd0ffc40a847370ba91e38b81055a0c6096c2b009f1d62ca774777c0cefdc9af8f9a1be37e5eb803562bbaa604b99
 
 pkgname = lla
