@@ -2,7 +2,7 @@
 
 _pkgname="kwin-effect-rounded-corners"
 pkgname="$_pkgname-x11-git"
-pkgver=0.7.2.r61.g6451dfe
+pkgver=0.8.5.r4.g806b6cd
 pkgrel=1
 pkgdesc="Rounds the corners of your windows (x11)"
 url="https://github.com/matinlotfali/KDE-Rounded-Corners"
@@ -19,12 +19,11 @@ makedepends=(
   'git'
   'ninja'
 )
-optdepends=(
-  'kwin-effect-rounded-corners: for Wayland support'
-)
 
 provides=("$_pkgname-x11=${pkgver%%.g*}")
 conflicts=("$_pkgname-x11")
+
+options=('!emptydirs')
 
 _pkgsrc="kde-rounded-corners"
 source=("$_pkgsrc"::"git+$url.git")
@@ -55,8 +54,13 @@ build() {
 }
 
 package() {
+  depends+=(
+    'kwin-effect-rounded-corners' # AUR
+  )
+
   DESTDIR="$pkgdir" cmake --install build
 
   # remove conflicting files
+  rm -rf "$pkgdir"/usr/share/kwin/shaders/
   rm -rf "$pkgdir"/usr/share/locale/
 }
