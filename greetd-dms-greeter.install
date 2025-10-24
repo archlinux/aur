@@ -26,6 +26,38 @@ EOF
 }
 
 post_upgrade() {
+    local old_dir="/etc/xdg/quickshell/dms-greeter"
+    local new_dir="/usr/share/quickshell/dms-greeter"
+
+    # Check if old directory exists
+    if [ -d "$old_dir" ]; then
+        echo "==> Cleaning up old installation directory..."
+        echo "    DMS Greeter has moved from $old_dir to $new_dir"
+
+        # Check if directory has been modified by user
+        if [ -w "$old_dir" ] && [ "$(find "$old_dir" -type f -newer "$old_dir" 2>/dev/null | wc -l)" -gt 0 ]; then
+            echo "    WARNING: $old_dir contains modified files."
+            echo "    If you have customizations, please migrate them to a user config location."
+            echo "    The old directory will be removed."
+        fi
+
+        # Remove old directory
+        rm -rf "$old_dir"
+
+        # Clean up parent directory if empty
+        rmdir /etc/xdg/quickshell 2>/dev/null || true
+
+        echo "    Migration complete. DMS Greeter is now installed in $new_dir"
+        echo ""
+    fi
+
+    echo "==> DMS Greeter"
+    echo "    Installed to: /usr/share/quickshell/dms-greeter"
+    echo "    For customization, copy files to:"
+    echo "      - User:   ~/.config/quickshell/dms-greeter"
+    echo "      - System: /etc/xdg/quickshell/dms-greeter"
+    echo ""
+
     echo "==> Ensuring permissions on cache directory..."
     if [ -d /var/cache/dms-greeter ]; then
         chown greeter:greeter /var/cache/dms-greeter
