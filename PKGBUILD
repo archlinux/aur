@@ -1,7 +1,7 @@
 # Maintainer: wayscriber maintainers <devmobasa+aur@proton.me>
 pkgname=wayscriber
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Screen annotation tool for Wayland compositors (formerly hyprmarker)'
 arch=('x86_64' 'aarch64')
 url='https://wayscriber.com'

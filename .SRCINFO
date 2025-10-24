@@ -1,7 +1,7 @@
 pkgbase = wayscriber
 	pkgdesc = Screen annotation tool for Wayland compositors (formerly hyprmarker)
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wayscriber.com
 	arch = x86_64
 	arch = aarch64
