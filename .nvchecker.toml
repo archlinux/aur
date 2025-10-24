@@ -1,0 +1,4 @@
+[python-phik]
+source = "git"
+git = "https://github.com/kaveio/phik.git"
+prefix = "v"
