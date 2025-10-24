@@ -1,0 +1,12 @@
+pkgbase = OKey
+	pkgdesc = Shows your key presses, with a cute face!
+	pkgver = v1.1.0
+	pkgrel = 1
+	url = https://github.com/New9c/OKey
+	arch = x86_64
+	license = GPL3
+	depends = portaudio
+	source = OKey::https://github.com/New9c/OKey/releases/download/v1.1.0/OKey
+	sha256sums = SKIP
+
+pkgname = OKey
