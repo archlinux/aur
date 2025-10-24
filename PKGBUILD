@@ -2,7 +2,7 @@
 pkgname=note-gen
 _pkgname=note-gen
 pkgver=0.22.1
-pkgrel=37
+pkgrel=38
 pkgdesc="A cross-platform Markdown note-taking application with AI integration (X11/Wayland compatible)"
 arch=('x86_64')
 url="https://github.com/codexu/note-gen"
@@ -16,15 +16,17 @@ options=('!strip' '!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/note-gen-v$pkgver.tar.gz")
 sha256sums=('87b8a5af2c8596304890a275bbbba294a01aeb3040ea3dbb3fb12011425ee06b')
 
+install=$pkgname.install
+
 prepare() {
-    cd "$pkgname-$pkgname-v$pkgver"
+    cd "$pkgname-v$pkgver"
     # Set up build environment
     export npm_config_build_from_source=true
     export CARGO_HOME="$srcdir/.cargo"
 }
 
 build() {
-    cd "$pkgname-$pkgname-v$pkgver"
+    cd "$pkgname-v$pkgver"
     export CARGO_HOME="$srcdir/.cargo"
     export npm_config_build_from_source=true
 
@@ -37,7 +39,7 @@ build() {
 }
 
 package() {
-    cd "$pkgname-$pkgname-v$pkgver/src-tauri"
+    cd "$pkgname-v$pkgver/src-tauri"
     export CARGO_HOME="$srcdir/.cargo"
 
     # Install binary file (renamed to note-gen-real)
@@ -52,10 +54,11 @@ package() {
 
 # Logging function
 log() {
+    local message="$*"
     if [ "$DEBUG" = "1" ]; then
-        echo "$@" >&2
+        echo "$message" >&2
     fi
-    logger -t note-gen-wrapper "$@"
+    logger -t note-gen-wrapper "$message"
 }
 
 # Check if GBM fix should be enabled
@@ -75,6 +78,9 @@ should_enable_gbm_fix() {
     return 1
 }
 
+# Define package name
+_pkgname="note-gen"
+
 # Check if executable exists
 check_executable() {
     local exec_path="/usr/bin/$_pkgname-real"
@@ -83,7 +89,7 @@ check_executable() {
         if [ "$DEBUG" = "1" ]; then
             echo "Error: Executable not found: $exec_path" >&2
         fi
-        exit 1
+        exit 127
     fi
 }
 
@@ -132,60 +138,11 @@ WRAPPER_EOF
 [Desktop Entry]
 Name=NoteGen
 Comment=A cross-platform Markdown note-taking application with AI integration
-Exec=$_pkgname
+Exec=$_pkgname-wrapper %U
 Icon=$_pkgname
 Type=Application
 Categories=Office;Utility;TextEditor;
 StartupNotify=true
 EOF
 
-    # Create cleanup script
-    install -Dm644 /dev/stdin "$pkgdir/usr/share/$_pkgname/cleanup.sh" << 'CLEANUP_EOF'
-#!/bin/bash
-# NoteGen cleanup script for package removal
-
-# Remove user data directory (optional, commented out for safety)
-# rm -rf "$HOME/.config/note-gen"
-# rm -rf "$HOME/.local/share/note-gen"
-
-# Remove cache directory
-if [ -d "$HOME/.cache/note-gen" ]; then
-    rm -rf "$HOME/.cache/note-gen"
-fi
-
-# Remove desktop database cache
-if command -v update-desktop-database &> /dev/null; then
-    update-desktop-database -q /usr/share/applications
-fi
-
-# Update icon cache
-if command -v gtk-update-icon-cache &> /dev/null; then
-    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
-fi
-CLEANUP_EOF
-
-    # Make cleanup script executable
-    chmod +x "$pkgdir/usr/share/$_pkgname/cleanup.sh"
-}
-
-pre_remove() {
-    # Stop any running NoteGen processes
-    pkill -f "note-gen" 2>/dev/null || true
-    sleep 2
-    pkill -9 -f "note-gen" 2>/dev/null || true
-}
-
-post_remove() {
-    # Run cleanup script if it exists
-    if [ -f "/usr/share/$_pkgname/cleanup.sh" ]; then
-        bash "/usr/share/$_pkgname/cleanup.sh"
-    fi
-
-    # Remove the cleanup script itself
-    rm -f "/usr/share/$_pkgname/cleanup.sh"
-    rmdir "/usr/share/$_pkgname" 2>/dev/null || true
-
-    echo "NoteGen has been removed."
-    echo "To remove user data, run:"
-    echo "  rm -rf ~/.config/note-gen ~/.local/share/note-gen"
-}
+  }
