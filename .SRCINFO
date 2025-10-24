@@ -1,7 +1,7 @@
 pkgbase = microsoft-identity-broker-bin
 	pkgdesc = Broker for authentication between device and Microsoft Intune
-	pkgver = 2.0.2
-	pkgrel = 2
+	pkgver = 2.0.3
+	pkgrel = 1
 	url = https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/microsoft-identity-broker
 	install = microsoft-identity-broker-bin.install
 	arch = x86_64
@@ -11,10 +11,12 @@ pkgbase = microsoft-identity-broker-bin
 	depends = curl
 	depends = dbus
 	depends = gdk-pixbuf2
+	depends = glib2
 	depends = glibc
 	depends = gtk3
 	depends = harfbuzz
 	depends = hicolor-icon-theme
+	depends = libp11-kit
 	depends = libsecret
 	depends = libsoup3
 	depends = libx11
@@ -22,13 +24,14 @@ pkgbase = microsoft-identity-broker-bin
 	depends = pango
 	depends = systemd
 	depends = webkit2gtk-4.1
-	provides = msft-identity-broker=2.0.2
+	depends = zlib
+	provides = msft-identity-broker=2.0.3
 	provides = microsoft-identity-broker
 	conflicts = msft-identity-broker
 	conflicts = microsoft-identity-broker
 	replaces = msft-identity-broker
 	replaces = microsoft-identity-broker
-	source = https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/microsoft-identity-broker/microsoft-identity-broker_2.0.2_amd64.deb
-	sha256sums = b7cc769b9fbc9e09ce8f92f793e2bf3c3c4f3fa18083adecdf089938be76e1d0
+	source = https://packages.microsoft.com/ubuntu/24.04/prod/pool/main/m/microsoft-identity-broker/microsoft-identity-broker_2.0.3_amd64.deb
+	sha256sums = be8acf7f9a6f34b001c27b620dd7c34a2b9b8358db1da28afe8d1f1646d9d34d
 
 pkgname = microsoft-identity-broker-bin
