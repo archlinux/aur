@@ -1,0 +1,5 @@
+post_install() {
+    echo "To use fpga_editor:"
+    echo "    enable and start rpcbind to fix slow fpga_editor startup: sudo systemctl enable --now rpcbind.service"
+    echo "    then logout and login to apply X11 font paths"
+}

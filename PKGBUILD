@@ -17,6 +17,7 @@ source_x86_64=('xilinx-ise-64.desktop')
 md5sums=('e8065b2ffb411bb74ae32efa475f9817')
 sha256sums_i686=('ecde1d1a403ccf366def3f6199f84992ded5e4626eeb6399395ad76f0e3d7643')
 sha256sums_x86_64=('74b1bf6d07520314dec833a777ebc47a166992c3aeb771b20dca9562288da47a')
+install=xilinx-ise.install
 
 if [[ $CARCH == 'i686' ]]; then
 	_arch=lin
@@ -65,6 +66,16 @@ package() {
 	# Let ISIM/fuse use older gcc to avoid errors from newer gcc
 	install -d "${pkgdir}"/usr/bin
 	ln -s /usr/bin/gcc-4.9 "${pkgdir}"/usr/bin/gcc4
+
+	# Fix missing XtAsprintf symbol for fpga_editor
+	_preload_paths="/opt/Xilinx/14.7/ISE_DS/ISE/lib/${_arch}/libXm.so.3:/opt/Xilinx/14.7/ISE_DS/ISE/X11R6/lib/${_arch}/libXt.so:/usr/lib${_bits}/libXt.so"
+	echo "setenv LD_PRELOAD ${_preload_paths}:\${LD_PRELOAD}" >> "${pkgdir}"/opt/Xilinx/14.7/ISE_DS/settings${_bits}.csh
+	echo "export LD_PRELOAD=${_preload_paths}:\${LD_PRELOAD}" >> "${pkgdir}"/opt/Xilinx/14.7/ISE_DS/settings${_bits}.sh
+
+	# Add legacy font paths for X11 100dpi and 75dpi font sets for fpga_editor
+	install -d "${pkgdir}/etc/X11/fontpath.d"
+	ln -s /usr/share/fonts/100dpi "${pkgdir}"/etc/X11/fontpath.d/xorg-fonts-100dpi
+	ln -s /usr/share/fonts/75dpi "${pkgdir}"/etc/X11/fontpath.d/xorg-fonts-75dpi
 
 	# Install .desktop file
 	install -Dm 644 "${srcdir}"/xilinx-ise-${_bits}.desktop "${pkgdir}"/usr/share/applications/xilinx-ise.desktop

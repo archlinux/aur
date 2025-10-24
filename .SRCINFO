@@ -3,6 +3,7 @@ pkgbase = xilinx-ise
 	pkgver = 14.7
 	pkgrel = 1
 	url = https://www.xilinx.com/products/design-tools/ise-design-suite.html
+	install = xilinx-ise.install
 	arch = i686
 	arch = x86_64
 	license = custom
