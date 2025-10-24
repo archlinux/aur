@@ -1,7 +1,7 @@
 # Maintainer: Stefan Kupych <stefan@kupy.ch>
 #
 pkgname=rapid-git
-pkgver=0.0.1.r1121447a
+pkgver=v0.0.2.r27528b7a
 pkgrel=1
 pkgdesc="Rapid API Dialogue - A REPL for APIs"
 arch=('x86_64')
