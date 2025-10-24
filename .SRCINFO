@@ -1,14 +1,13 @@
 pkgbase = fcitx-mozc
 	pkgdesc = Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)
 	pkgver = 2.26.4360.102.gca82d39
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/google/mozc
 	arch = x86_64
 	license = custom
 	makedepends = pkg-config
 	makedepends = python
 	makedepends = curl
-	makedepends = gtk2
 	makedepends = mesa
 	makedepends = subversion
 	makedepends = ninja
@@ -24,8 +23,8 @@ pkgbase = fcitx-mozc
 	conflicts = fcitx5-mozc
 	replaces = mozc-fcitx
 	source = git+https://github.com/fcitx/mozc.git#commit=ca82d39
-	source = https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-202104.zip
-	source = https://osdn.net/projects/ponsfoot-aur/storage/mozc/x-ken-all-202104.zip
+	source = https://osdn.ip-connect.vn.ua/storage/g/p/po/ponsfoot-aur/mozc/jigyosyo-202104.zip
+	source = https://osdn.ip-connect.vn.ua/storage/g/p/po/ponsfoot-aur/mozc/x-ken-all-202104.zip
 	source = git+https://chromium.googlesource.com/breakpad/breakpad#commit=216cea7
 	source = git+https://github.com/google/googletest.git#commit=703bd9c
 	source = git+https://chromium.googlesource.com/external/gyp#commit=caa6002

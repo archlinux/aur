@@ -23,17 +23,17 @@ _pkgbase=mozc
 pkgname=fcitx-mozc
 pkgdesc="Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)"
 pkgver=2.26.4360.102.gca82d39
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/google/mozc"
 license=('custom')
 depends=('qt5-base' 'fcitx')
-makedepends=('pkg-config' 'python' 'curl' 'gtk2' 'mesa' 'subversion' 'ninja' 'git' 'clang' 'python-six')
+makedepends=('pkg-config' 'python' 'curl' 'mesa' 'subversion' 'ninja' 'git' 'clang' 'python-six')
 replaces=('mozc-fcitx')
 conflicts=('mozc' 'mozc-server' 'mozc-utils-gui' 'mozc-fcitx' 'fcitx5-mozc')
 source=(git+https://github.com/fcitx/mozc.git#commit=${_mozc_commit}
-        https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-${_zipcode_rel}.zip
-        https://osdn.net/projects/ponsfoot-aur/storage/mozc/x-ken-all-${_zipcode_rel}.zip
+        https://osdn.ip-connect.vn.ua/storage/g/p/po/ponsfoot-aur/mozc/jigyosyo-${_zipcode_rel}.zip
+        https://osdn.ip-connect.vn.ua/storage/g/p/po/ponsfoot-aur/mozc/x-ken-all-${_zipcode_rel}.zip
         git+https://chromium.googlesource.com/breakpad/breakpad#commit=${_breakpad_commit}
         git+https://github.com/google/googletest.git#commit=${_gtest_commit}
         git+https://chromium.googlesource.com/external/gyp#commit=${_gyp_commit}
@@ -72,7 +72,7 @@ prepare() {
   git config submodule.src/third_party/jsoncpp.url "$srcdir/jsoncpp"
   git config submodule.src/third_party/protobuf.url "$srcdir/protobuf"
   git config submodule.src/third_party/abseil-cpp.url "$srcdir/abseil-cpp"
-  git submodule update
+  git -c protocol.file.allow=always submodule update
 
   cd src
   # Generate zip code seed
@@ -93,6 +93,7 @@ prepare() {
   # Fix build with GCC 11
   cd ../abseil-cpp
   git checkout 5bf048b8425cc0a342e4647932de19e25ffd6ad7
+  git cherry-pick -n 36a4b073f1e7e02ed7d1ac140767e36f82f09b7c
 }
 
 build() {
@@ -105,7 +106,7 @@ build() {
 
   _targets="server/server.gyp:mozc_server gui/gui.gyp:mozc_tool unix/fcitx/fcitx.gyp:fcitx-mozc"
 
-  QTDIR=/usr GYP_DEFINES="document_dir=/usr/share/licenses/$pkgname use_libzinnia=1" python build_mozc.py gyp
+  QTDIR=/usr GYP_DEFINES="document_dir=/usr/share/licenses/$pkgname use_libzinnia=1 enable_gtk_renderer=0" python build_mozc.py gyp
   python build_mozc.py build -c $_bldtype $_targets
   #../scripts/build
 
