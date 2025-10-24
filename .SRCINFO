@@ -1,7 +1,7 @@
 pkgbase = plasma6-applets-catwalk
 	pkgdesc = A simple plasmoid showing the total CPU usage. Visually made like RunCat.
 	pkgver = 2.3
-	pkgrel = 2
+	pkgrel = 4
 	url = https://store.kde.org/p/2137844
 	arch = any
 	license = GPL-2.0-or-later
@@ -9,12 +9,13 @@ pkgbase = plasma6-applets-catwalk
 	depends = ksvg
 	depends = libksysguard
 	depends = libplasma
-	depends = kdeplasma-addons
 	depends = qt6-declarative
 	depends = kcmutils
 	depends = kirigami
 	options = !emptydirs
 	source = org.kde.plasma.catwalk.tar.gz
+	source = 0001-patch.patch
 	sha256sums = ff09d115f133ec078fd4bf08f5e72805d075ddda845e845f0b3216e962ac7e3c
+	sha256sums = c6c19ac51097d2d5a093e01a31c2cf6516494478e191f91aa3862aeebfee4d26
 
 pkgname = plasma6-applets-catwalk
