@@ -1,11 +1,13 @@
-# Maintainer: system64 <system64fumo@protonmail>
+# Maintainer: system64 <system64fumo@tuta.io>
 
 pkgname=sysmenu
 pkgver=9.9.9
 pkgrel=9
-pkgdesc="A simple and efficient gtk4 program launcher"
-arch=('aarch64' 'x86_64')
+pkgdesc="Simple program launcher "
+arch=('aarch64' 'riscv64' 'x86_64')
 url="https://github.com/System64fumo/sysmenu"
+license=('GPL3')
+groups=('sysshell')
 depends=('gtkmm-4.0' 'gtk4-layer-shell')
 source=("git+https://github.com/System64fumo/sysmenu")
 sha256sums=('SKIP')

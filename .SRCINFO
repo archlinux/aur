@@ -1,10 +1,13 @@
 pkgbase = sysmenu
-	pkgdesc = A simple and efficient gtk4 program launcher
+	pkgdesc = Simple program launcher
 	pkgver = 9.9.9
 	pkgrel = 9
 	url = https://github.com/System64fumo/sysmenu
 	arch = aarch64
+	arch = riscv64
 	arch = x86_64
+	groups = sysshell
+	license = GPL3
 	depends = gtkmm-4.0
 	depends = gtk4-layer-shell
 	source = git+https://github.com/System64fumo/sysmenu
