@@ -1,0 +1,25 @@
+pkgbase = flowshot
+	pkgdesc = An automatic Flowinity/PrivateUploader upload wrapper for screenshot utilities (KDE Spectacle). (Source version)
+	pkgver = 20.0.0
+	pkgrel = 1
+	url = https://github.com/Flowinity/flameshot
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = qt6-tools
+	makedepends = git
+	makedepends = cmake
+	depends = qt6-base
+	depends = hicolor-icon-theme
+	depends = qt6-svg
+	depends = kguiaddons
+	depends = spectacle
+	optdepends = xdg-desktop-portal: To make Sway, Hyprland, and wlroots work
+	optdepends = xdg-desktop-portal-wlr: To make Sway, Hyprland, and wlroots work
+	optdepends = grim: To make Sway, Hyprland, and wlroots work
+	optdepends = xdg-desktop-portal-kde: For KDE Plasma
+	provides = flowshot
+	source = git+https://github.com/Flowinity/flowshot.git#commit=b28206e74a9702a1e651f3fddb179212cce866f3
+	sha256sums = d4b30a0ae2264d6632752fb742b79c12227961d3651d3370e67f1d8bc93abe0d
+
+pkgname = flowshot
