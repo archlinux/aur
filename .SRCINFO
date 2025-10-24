@@ -1,5 +1,5 @@
 pkgbase = tkginstaller-git
-	pkgdesc = A frog pond command line tool to assist with the installation of TKG packages from the repositories of the Frogging-Family
+	pkgdesc = TKG packages builder (Linux, Wine, Proton, Nvidia and Mesa)
 	pkgver = 0.20.8
 	pkgrel = 1
 	url = https://github.com/damachine/tkginstaller
