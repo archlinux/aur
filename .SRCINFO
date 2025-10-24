@@ -1,0 +1,28 @@
+pkgbase = nvidia-sync
+	pkgver = 0.41.22
+	pkgrel = 1
+	url = https://build.nvidia.com/spark/connect-to-your-spark/sync
+	arch = x86_64
+	license = custom:NVIDIA
+	source = https://workbench.download.nvidia.com/stable/linux/debian/pool/proprietary/n/nvidia-sync/nvidia-sync_0.41.22_amd64.deb
+	source = nvidia-sync-terminal-launcher.sh
+	sha256sums = fc1ed403fc018a000cf03983ce70a7b6736cb8b0c5fbb08a376062f35a2aa36f
+	sha256sums = 1cd21fa2618882fae08d26211638c53d60e54573ca8dee42803692fe71a2af4e
+
+pkgname = nvidia-sync
+	pkgdesc = Desktop client for NVIDIA AI Workbench
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	depends = libsecret
+	optdepends = gnome-terminal: For Terminal button support
+	optdepends = nvidia-sync-terminal-fix: For Terminal button support on non-GNOME desktops
+
+pkgname = nvidia-sync-terminal-fix
+	pkgdesc = Terminal fix for nvidia-sync on non-GNOME desktops
+	depends = nvidia-sync
+	optdepends = ghostty: Preferred terminal
+	optdepends = alacritty: Preferred terminal
+	optdepends = konsole: Preferred terminal
+	provides = gnome-terminal
+	conflicts = gnome-terminal
