@@ -1,0 +1,12 @@
+pkgbase = hyprmarker-debug
+	pkgdesc = Transitional meta package that installs wayscriber-debug
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://wayscriber.com
+	arch = any
+	license = MIT
+	depends = wayscriber-debug
+	provides = hyprmarker-debug
+	conflicts = hyprmarker-debug<0.5.1
+
+pkgname = hyprmarker-debug
