@@ -1,0 +1,9 @@
+/mongodb-bin-*
+/mongodb-org-*
+/mongosh-*
+/mongodb-mongosh_*
+*.log
+/src/
+/pkg/
+pkg/
+src/
