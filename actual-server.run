@@ -1,0 +1,8 @@
+#!/bin/sh
+cd /var/lib/actual
+
+set -a
+. /etc/conf.d/actual-server
+set +a
+
+exec chpst -u actual /usr/bin/actual-server

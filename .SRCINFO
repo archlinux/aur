@@ -1,0 +1,15 @@
+pkgbase = actual-server-runit
+	pkgdesc = Runit service script for Actual Budget
+	pkgver = 20251024
+	pkgrel = 1
+	url = https://actualbudget.org/
+	arch = x86_64
+	license = MIT
+	depends = actual-server
+	depends = runit
+	source = actual-server.run
+	source = actual-server.log.run
+	sha256sums = 7c4e42d9e25370cd671ac08c5c25abf919829334fd48e8e1ab36b1fc1339280b
+	sha256sums = f97551cadd8e6819aead5c6eebd5e4565c43a953b4afcb2de45f279b1b43c812
+
+pkgname = actual-server-runit
