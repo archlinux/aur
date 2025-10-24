@@ -1,7 +1,7 @@
 --- LASlib/src/CMakeLists.txt
 +++ LASlib/src/CMakeLists.txt
 
-@@ -103,16 +103,16 @@ Add a laslib component for library outputs
+@@ -105,16 +105,16 @@ Add a laslib component for library outputs
  endif()
  
 -install(FILES ${LAS_INCLUDES} DESTINATION include/LASlib)
@@ -26,12 +26,12 @@
 --- src/CMakeLists.txt
 +++ src/CMakeLists.txt
 
-@@ -33,7 +33,7 @@ Add a lastools component for compiled tools
+@@ -39,7 +39,7 @@ Add a lastools component for compiled tools
  foreach(TARGET ${ALL_TARGETS})
- 	set_property(TARGET ${TARGET} PROPERTY CXX_STANDARD 14)
- 	target_link_libraries(${TARGET} LASlib)
- 	set_target_properties(${TARGET} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../bin64)
- 	set_target_properties(${TARGET} PROPERTIES OUTPUT_NAME ${TARGET}64)
--	install(TARGETS ${TARGET} RUNTIME DESTINATION bin)
-+	install(TARGETS ${TARGET} COMPONENT lastools RUNTIME DESTINATION bin)
+   set_property(TARGET ${TARGET} PROPERTY CXX_STANDARD 17)
+   target_link_libraries(${TARGET} LASlib ${CMAKE_DL_LIBS})
+   set_target_properties(${TARGET} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/../bin64)
+   set_target_properties(${TARGET} PROPERTIES OUTPUT_NAME ${TARGET}64)
+-  install(TARGETS ${TARGET} RUNTIME DESTINATION bin)
++  install(TARGETS ${TARGET} COMPONENT lastools RUNTIME DESTINATION bin)
  endforeach(TARGET)

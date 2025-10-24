@@ -1,7 +1,7 @@
 --- CMakeLists.txt
 +++ CMakeLists.txt
 
-@@ -12,7 +12,7 @@ Change the runtime path assigned during packaging
+@@ -20,10 +20,8 @@ Change the runtime path assigned during packaging and enable building tools and shared library at the same time
  option(BUILD_SHARED_LIBS "Build LASlib as DLL" OFF)
  
  if (BUILD_SHARED_LIBS AND UNIX AND NOT APPLE)
@@ -10,11 +10,14 @@
  endif()
  
  add_subdirectory(LASlib/src)
+-if (NOT BUILD_SHARED_LIBS)
+ add_subdirectory(src)
+-endif()
 
 --- LASlib/src/CMakeLists.txt
 +++ LASlib/src/CMakeLists.txt
 
-@@ -111,8 +111,8 @@ Change the installation directory
+@@ -113,8 +113,8 @@ Change the installation directory
  else()
  	install(TARGETS LASlib COMPONENT laslib EXPORT laslib-targets
 -		ARCHIVE DESTINATION lib/LASlib

@@ -3,7 +3,7 @@
 pkgbase=lastools
 pkgdesc='Efficient tools for LiDAR processing'
 pkgname=('lastools' 'laslib')
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 url='https://lastools.github.io/'
 license=('LGPL-2.1-only')
@@ -18,9 +18,9 @@ source=(
   'set_libdir.patch'
 )
 sha256sums=(
-  'b6c6ac33835ead2c69d05e282febc266048ba071a71dae6fdad321d532dfcf78'
-  'acc829c7505bf0888253b2e701d959705ca09b4ae3b79c3954e6776f27765bf9'
-  'cc6d5a5c9680bc64387185002014517f16335b749503c4f2816c86238944c8a9'
+  '40009d74dd7e782e2f245f4e35d063db06e74b2948a47157ee41f1cf63057090'
+  'da6c519b33e5a596c0dac0fdfc37b0bf39b6a459a160165ea9cc688b42a363a7'
+  '98870e79ce664e191b9100adafabb1d63c05e9b75e6566e6477eb94d64ee6a96'
 )
 
 prepare() {
