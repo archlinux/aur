@@ -2,7 +2,7 @@
 # Maintainer: Carlos Alexandro Becker <carlos@becker.software>
 
 pkgname='goreleaser-pro-bin'
-pkgver=2.12.6
+pkgver=2.12.7
 pkgrel=1
 pkgdesc='Release engineering, simplified.'
 url='https://goreleaser.com'
@@ -11,14 +11,14 @@ license=('Copyright Becker Software LTDA')
 provides=('goreleaser' 'goreleaser-pro')
 conflicts=('goreleaser' 'goreleaser-pro')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/goreleaser/goreleaser-pro/releases/download/v2.12.6/goreleaser-pro_Linux_arm64.tar.gz")
-sha256sums_aarch64=('08a16768047fe627ad5cb4e9b93c8b3f3bf89ca9795dbd84390a3f3057b9012a')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/goreleaser/goreleaser-pro/releases/download/v2.12.7/goreleaser-pro_Linux_arm64.tar.gz")
+sha256sums_aarch64=('0a852c13720c1fc04d2ee002fde8fca3cc8e26cad5c756bd1db951fe9001c3ed')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/goreleaser/goreleaser-pro/releases/download/v2.12.6/goreleaser-pro_Linux_i386.tar.gz")
-sha256sums_i686=('67ea1229d58391aea0aad593fe96a6206494e35e61621d020a7e7389d1818a38')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/goreleaser/goreleaser-pro/releases/download/v2.12.7/goreleaser-pro_Linux_i386.tar.gz")
+sha256sums_i686=('e9e402001952911b795de067bda7f64d1714efebcbc7e745b65597a386fa6348')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/goreleaser/goreleaser-pro/releases/download/v2.12.6/goreleaser-pro_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('58049883e88a3bf9208b5768d8cf07abb94ff8c3e20a53d2d9d9624f49c5a6ad')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/goreleaser/goreleaser-pro/releases/download/v2.12.7/goreleaser-pro_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('9ac89c9f419067c4c6b7b22a12096a5e45ac812f45192ef230fed67bf266326d')
 
 package() {
   # bin
