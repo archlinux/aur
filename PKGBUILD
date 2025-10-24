@@ -1,15 +1,14 @@
 # Maintainer: wayscriber maintainers <devmobasa+aur@proton.me>
 pkgname=hyprmarker
-pkgver=0.5.1
-pkgrel=2
-pkgdesc='Transitional meta package for the Wayscriber rename'
+pkgver=0.4.0
+pkgrel=7
+pkgdesc='Legacy hyprmarker package (obsolete)'
 arch=('any')
-url='https://wayscriber.com'
+url='https://devmobasa.com/hyprmarker'
 license=('MIT')
-depends=('wayscriber')
+depends=()
 provides=('hyprmarker')
-conflicts=('hyprmarker<0.5.1')
-replaces=('hyprmarker')
+conflicts=()
 
 pkgver() {
     printf '%s' "$pkgver"
@@ -17,12 +16,11 @@ pkgver() {
 
 package() {
     install -d "$pkgdir/usr/share/doc/$pkgname"
-    cat <<'EOF' > "$pkgdir/usr/share/doc/$pkgname/README"
-hyprmarker has been renamed to Wayscriber.
+    cat <<'EOF_DOC' > "$pkgdir/usr/share/doc/$pkgname/README"
+The hyprmarker package has been retired.
 
-This transitional package pulls in the new `wayscriber` package and will be
-removed after the rename grace period. Update your scripts and keybindings to
-invoke `wayscriber` directly. See https://github.com/devmobasa/wayscriber for
-the migration guide.
-EOF
+Remove this package and install the actively maintained successor
+from the project site. Existing configuration files are left untouched
+so you can migrate settings manually.
+EOF_DOC
 }

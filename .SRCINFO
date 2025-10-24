@@ -1,13 +1,10 @@
 pkgbase = hyprmarker
-	pkgdesc = Transitional meta package for the Wayscriber rename
-	pkgver = 0.5.1
-	pkgrel = 2
-	url = https://wayscriber.com
+	pkgdesc = Legacy hyprmarker package (obsolete)
+	pkgver = 0.4.0
+	pkgrel = 7
+	url = https://devmobasa.com/hyprmarker
 	arch = any
 	license = MIT
-	depends = wayscriber
 	provides = hyprmarker
-	conflicts = hyprmarker<0.5.1
-	replaces = hyprmarker
 
 pkgname = hyprmarker
