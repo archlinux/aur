@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 pkgname=openvaf-reloaded
 pkgver=r747.d878f55
-pkgrel=2
+pkgrel=3
 pkgdesc="Continuation of OpenVAF - A Next-generation VerilogA Compiler - OSDI >= 4 support"
 arch=(
 	"x86_64"
