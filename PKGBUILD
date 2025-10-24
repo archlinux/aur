@@ -1,7 +1,7 @@
 # Maintainer: MojArch
 
 pkgname=opera-developer
-pkgver=124.0.5678.0
+pkgver=124.0.5691.0
 pkgrel=1
 pkgdesc='A fast and secure web browser and Internet suite - developer stream'
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=(
     "default"  
 )
 sha256sums=(
-    '0598d99f2142476a7e679a15ac668fbf8746c57fee0ae2edbb59fbecfafa6aea'
+    'e25ec075e2fd03e7de207a8cedb67871982d5b2666931ef4695217754c4715aa'
     '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'  
     '99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231'  
 )
@@ -56,7 +56,7 @@ package() {
     chmod 4755 "$pkgdir/usr/lib/$pkgname/opera_sandbox"
 
     # Install the default configuration file
-    #install -Dm644 "$srcdir/default" "$pkgdir/etc/$pkgname/default"
+    install -Dm644 "$srcdir/default" "$pkgdir/etc/$pkgname/default"
 
     # Replace the original binary with a custom wrapper script
     rm -f "$pkgdir/usr/bin/$pkgname"
