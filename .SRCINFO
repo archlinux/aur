@@ -1,25 +1,19 @@
 pkgbase = easyedit-bin
 	pkgdesc = An easy markdown editor that allows you to write MarkDown (MD) and preview it in real-time. You can save, load .md files and export to PDF.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.4.2
+	pkgver = 1.4.5
 	pkgrel = 1
 	url = https://github.com/gcclinux/EasyEdit
-	arch = aarch64
-	arch = armv7h
 	arch = x86_64
 	license = MIT
 	makedepends = squashfs-tools
 	depends = electron38
-	provides = easyedit=1.4.2
+	provides = easyedit=1.4.5
 	conflicts = easyedit
-	source = LICENSE-1.4.2::https://raw.githubusercontent.com/gcclinux/EasyEdit/1.4.2/LICENSE
+	source = LICENSE-1.4.5::https://raw.githubusercontent.com/gcclinux/EasyEdit/1.4.5/LICENSE
 	source = easyedit.sh
 	sha256sums = 2b94523fd0d3fd7553fcdd10250f68ed5c058749d5d60c8aae906f6f42ace489
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = easyedit-1.4.2-aarch64.snap::https://github.com/gcclinux/EasyEdit/releases/download/1.4.2/EasyEdit-1.4.2-arm64.snap
-	sha256sums_aarch64 = 413d6c5303787029cecf33ac713993450c9af3d0466f3c6a50bf8e831dd97fb6
-	source_armv7h = easyedit-1.4.2-armv7h.snap::https://github.com/gcclinux/EasyEdit/releases/download/1.4.2/EasyEdit-1.4.2-armhf.snap
-	sha256sums_armv7h = 4bab1df4170cfc9ecac56625db5f5782a172f2788abca56d1357d999aaed5c24
-	source_x86_64 = easyedit-1.4.2-x86_64.snap::https://github.com/gcclinux/EasyEdit/releases/download/1.4.2/EasyEdit-1.4.2-amd64.snap
-	sha256sums_x86_64 = 7a2ed2b24c86e3b224b2d988b8dfd5cb866b3630668500af03c5e245219cef30
+	source_x86_64 = easyedit-1.4.5-x86_64.snap::https://github.com/gcclinux/EasyEdit/releases/download/1.4.5/EasyEdit-1.4.5-amd64.snap
+	sha256sums_x86_64 = 2048715ba3a4272491173e6ee3f8fe2e3dacfb3af76cd7f0623417e3e2e22fef
 
 pkgname = easyedit-bin
