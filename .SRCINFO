@@ -1,7 +1,7 @@
 pkgbase = tranzit
 	pkgdesc = A cross-platform app to share files on your local network.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kr5hn4/tranzit
 	arch = x86_64
 	arch = aarch64
@@ -24,7 +24,7 @@ pkgbase = tranzit
 	depends = pango
 	depends = webkit2gtk-4.1
 	provides = tranzit
-	source = https://github.com/kr5hn4/tranzit/releases/download/v0.3.0/tranzit_0.3.0_amd64.deb
+	source = https://github.com/kr5hn4/tranzit/releases/latest/download/tranzit_0.3.0_amd64.deb
 	sha256sums = SKIP
 
 pkgname = tranzit
