@@ -3,7 +3,7 @@
 
 pkgname=alephone-git
 pkgver=1.11.r6318.b3bf5d8d
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, enhanced port of the classic FPS "Marathon 2" by Bungie Software (development version)'
 arch=('i686' 'x86_64')
 url="https://alephone.lhowon.org/"
@@ -46,6 +46,7 @@ prepare() {
 build() {
   cd alephone
 
+  export CXXFLAGS="$CXXFLAGS -fsanitize=undefined" #Issue#518
   autoreconf --install
   PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" ./configure --prefix=/usr
   make
