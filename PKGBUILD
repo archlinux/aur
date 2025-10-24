@@ -7,11 +7,11 @@
 # https://github.com/qtile/qtile
 
 ## options
-: ${_wlrver=0.17}
+: ${_wlrver=0.19}
 
 _pkgname="qtile"
 pkgname="$_pkgname-git"
-pkgver=0.33.0.r20.gfd1a397
+pkgver=0.33.0.r278.g112f60e
 pkgrel=1
 pkgdesc="A full-featured, pure-Python tiling window manager"
 url="https://github.com/qtile/qtile"
@@ -19,7 +19,6 @@ license=('MIT')
 arch=('x86_64')
 
 depends=(
-  "wlroots${_wlrver:?}"
   gdk-pixbuf2
   libnotify
   librsvg
@@ -31,15 +30,17 @@ depends=(
   python-isort
   python-xcffib
 )
-
 makedepends=(
   git
   libpulse
   python-build
   python-installer
-  python-pywlroots
   python-setuptools-scm
   python-wheel
+  "wlroots${_wlrver:?}"
+  wayland
+  wayland-protocols
+  xorg-xwayland
 )
 checkdepends=(
   graphviz
@@ -79,11 +80,8 @@ optdepends=(
   'python-libcst: for migrations'
   'python-mpd2: mpd2widget widget'
   'python-psutil: graph, net and memory widget'
-  'python-pywayland: for Wayland backend'
-  'python-pywlroots: for Wayland backend'
   'python-setproctitle: change process name to qtile'
   'python-xdg: launchbar widget'
-  'python-xkbcommon: for Wayland backend'
   'xorg-xwayland: for XWayland support'
 )
 
@@ -93,7 +91,7 @@ conflicts=("$_pkgname")
 install="$_pkgname.install"
 
 _pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+$url.git")
+source=("$_pkgsrc"::"git+$url.git#branch=wayc")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -102,9 +100,8 @@ pkgver() {
 }
 
 build() (
-  export PKG_CONFIG_PATH="/usr/lib/wlroots${_wlrver:?}/pkgconfig:$PKG_CONFIG_PATH"
-  export CFLAGS+=" $(pkg-config --cflags wlroots)"
-  export LDFLAGS+=" $(pkg-config --libs wlroots)"
+  export CFLAGS="$CFLAGS -I/usr/include/wlroots-${_wlrver}"
+  export LDFLAGS="$LDFLAGS -L/usr/lib/wlroots-${_wlrver}"
 
   cd "$_pkgsrc"
   PYTHONPATH="$PWD" python "./libqtile/backend/wayland/cffi/build.py"
