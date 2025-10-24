@@ -1,6 +1,6 @@
 pkgbase = gale-git
 	pkgdesc = A lightweight mod manager for Thunderstore
-	pkgver = 1.9.1.r1.gfe9d955
+	pkgver = 1.10.0.r12.g1b831e6
 	pkgrel = 1
 	url = https://github.com/Kesomannen/gale
 	arch = x86_64
@@ -25,6 +25,7 @@ pkgbase = gale-git
 	depends = hicolor-icon-theme
 	provides = gale
 	conflicts = gale-bin
+	options = !lto
 	source = git+https://github.com/Kesomannen/gale.git
 	source = Gale.desktop
 	sha256sums = SKIP
