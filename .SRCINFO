@@ -1,6 +1,6 @@
 pkgbase = nvidia-rt
 	pkgdesc = NVIDIA drivers for linux-rt
-	pkgver = 580.82.09
+	pkgver = 580.95.05
 	pkgrel = 2
 	url = http://www.nvidia.com/
 	install = nvidia-rt.install
@@ -8,10 +8,10 @@ pkgbase = nvidia-rt
 	license = custom
 	makedepends = linux-rt-headers
 	depends = linux-rt
-	depends = nvidia-utils=580.82.09
+	depends = nvidia-utils=580.95.05
 	depends = libgl
 	options = !strip
-	source_x86_64 = http://download.nvidia.com/XFree86/Linux-x86_64/580.82.09/NVIDIA-Linux-x86_64-580.82.09.run
-	sha256sums_x86_64 = 3eecf832da2e15e0e09ac34c29d2c7a03803182f9045787a355cacbe5b5695b7
+	source_x86_64 = http://download.nvidia.com/XFree86/Linux-x86_64/580.95.05/NVIDIA-Linux-x86_64-580.95.05.run
+	sha256sums_x86_64 = 849ef0ef8e842b9806b2cde9f11c1303d54f1a9a769467e4e5d961b2fe1182a7
 
 pkgname = nvidia-rt
