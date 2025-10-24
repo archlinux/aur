@@ -1,6 +1,6 @@
 # Maintainer: zyx <d0116u@gmail.com>
 pkgname=authtui-git
-pkgver=r18.aa9bdea
+pkgver=r21.f12b1c2
 pkgrel=1
 pkgdesc="a full rust tui auther"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo' 'git')
 optdepends=('fish: fish completions')
 depends=('rust')
 conflicts=("authtui")
-source=("git+https://github.com/d116u/authtui.git")
+source=("git+https://github.com/zyxisme/authtui.git")
 sha1sums=('SKIP')
 
 pkgver() {
