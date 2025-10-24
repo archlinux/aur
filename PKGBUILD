@@ -1,15 +1,15 @@
 # Maintainer: Ruben Gees <rubengees7@gmail.com>
 
 pkgname=mqttx-clean-bin
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="A Powerful and All-in-One MQTT 5.0 client toolbox for Desktop, CLI and WebSocket."
 arch=('x86_64')
 url="https://mqttx.app"
 license=('Apache')
 depends=()
-source=('https://www.emqx.com/en/downloads/MQTTX/v1.12.0/MQTTX_1.12.0_amd64.deb')
-md5sums=('5de836e13196dca545854b5a500ae395')
+source=('https://www.emqx.com/en/downloads/MQTTX/v1.12.1/MQTTX_1.12.1_amd64.deb')
+md5sums=('19b8af296bae054854736654c0a15953')
 
 package() {
     tar -xf data.tar.xz -C "${pkgdir}"
