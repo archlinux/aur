@@ -1,15 +1,15 @@
 # Maintainer: Dory <dory@dory.moe>
 pkgname=yaoc-git
-_pkgname=openai-cli
+_pkgname=yaoc
 pkgver=r10.5bf9ed3
 pkgrel=1
 pkgdesc="Yet Another OpenAI CLI: A simple, feature-rich OpenAI client, with tools and vision."
 arch=('any')
-url="https://github.com/doryiii/openai-cli"
+url="https://github.com/doryiii/yaoc"
 license=('GPL-3.0-only')
 depends=('python' 'python-html2text' 'python-rich' 'python-termcolor' 'python-requests')
 makedepends=('git')
-source=("git+https://github.com/doryiii/openai-cli.git")
+source=("git+https://github.com/doryiii/yaoc.git")
 sha256sums=('SKIP')
 
 pkgver() {
