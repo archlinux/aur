@@ -1,7 +1,7 @@
 # Maintainer: Dwayne Bent <dbb@dbb.io>
 pkgname=systemd-cron
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='systemd units to run cron scripts'
 arch=('x86_64')
 url='https://github.com/systemd-cron/systemd-cron'
@@ -36,4 +36,6 @@ package() {
     install -d "${pkgdir}"/etc/cron.{boot,minutely,hourly,daily,weekly,monthly,quarterly,semi-annually,yearly}
     install -dm1730 "${pkgdir}/var/spool/cron"
     cat "${srcdir}/sysusers.conf" >>"${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+
+    install -Dm644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
