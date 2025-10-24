@@ -4,7 +4,7 @@
 
 pkgname=orca-slicer-bin
 pkgver=2.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="G-code generator for 3D printers"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
@@ -33,7 +33,7 @@ package() {
 
   install -Dm644 squashfs-root/OrcaSlicer.desktop -t ${pkgdir}/usr/share/applications/
   sed -i 's|Exec=AppRun|Exec=/opt/orca-slicer/bin/orca-slicer|g' ${pkgdir}/usr/share/applications/OrcaSlicer.desktop
-  sed -i '/^MimeType=/ s|$|x-scheme-handler/orcaslicer;|' ${pkgdir}/usr/share/applications/OrcaSlicer.desktop
+  sed -i '/^MimeType=/ s|$|x-scheme-handler/orcaslicer;x-scheme-handler/bambustudio;|' ${pkgdir}/usr/share/applications/OrcaSlicer.desktop
   sed -i '/^Exec=/ s/%F/%U/g' ${pkgdir}/usr/share/applications/OrcaSlicer.desktop
 
   install -d ${pkgdir}/usr/share/icons/
