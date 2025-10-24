@@ -1,7 +1,7 @@
 # Maintainer: Max Berggren <maxberggren@gmail.com>
 pkgname=jotite
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight, fun, distraction-free markdown note-taking app with live markdown rendering"
 arch=('any')
 url="https://github.com/maxberggren/omarchy-jotite"
@@ -12,7 +12,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('c45b54252f13b4c5c4e20461568157ca31617cf21800407f16f1d285f9211722')
 
 package() {
-    cd "$srcdir/omarchy-jotite-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
 
     # Install all application files to /usr/share/jotite
     install -Dm755 jotite.js "$pkgdir/usr/share/jotite/jotite.js"
