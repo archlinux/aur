@@ -1,7 +1,7 @@
 pkgbase = crosspatch-bin
 	pkgdesc = A mod Manager for Sonic Racing: CrossWorlds
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/NickPlayzGITHUB/CrossPatch
 	arch = x86_64
 	license = GPL

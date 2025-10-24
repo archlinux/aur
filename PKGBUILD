@@ -2,7 +2,7 @@
 _pkgname=crosspatch
 pkgname=$_pkgname-bin
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A mod Manager for Sonic Racing: CrossWorlds"
 arch=(x86_64)
 url="https://github.com/NickPlayzGITHUB/CrossPatch"
