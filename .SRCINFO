@@ -1,16 +1,16 @@
 pkgbase = flowinity-bin
 	pkgdesc = The dashboard for your digital life. Store and share images, write documents, and talk with your friends. (Binary version)
-	pkgver = 1.0.7
+	pkgver = 1.0.11
 	pkgrel = 1
 	url = https://flowinity.com
 	arch = x86_64
 	license = GPL-3.0-only
 	provides = flowinity
 	conflicts = flowinity
-	source = https://updates.flowinity.com/download/flavor/default/1.0.7/linux_64/flowinity-desktop-1.0.7.tar.gz
+	source = https://updates.flowinity.com/download/flavor/default/1.0.11/linux_64/flowinity-desktop-1.0.11.tar.gz
 	source = flowinity-desktop.desktop
 	source = flowinity.png
-	sha256sums = 3fa6fa7f9465056fa17580bd5ff43adfa7124cb5e217ccfa0152c178ac203a63
+	sha256sums = 74b344d35bef0e99df1f40b2caacf681c98d9f3f53293fa40cb8791a3839adc4
 	sha256sums = c7c22501503c13cfe7132b8677c6fc1c38471cf02516c55c92888d0afc96fcbb
 	sha256sums = 7e1c3148491581e1e73164402acb5dbd61e60c2143292cf6c4b37a31c07a4c9c
 
