@@ -1,13 +1,21 @@
 pkgbase = yaze
 	pkgdesc = Yet Another z80 (CP/M) Emulator
 	pkgver = 2.51.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mathematik.uni-ulm.de/users/ag/yaze-ag/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	options = !debug
 	source = http://www.mathematik.uni-ulm.de/users/ag/yaze-ag/devel/yaze-ag-2.51.3.tar.gz
+	source = yaze-ag.png
+	source = yaze-ag.desktop
+	source = yaze.sh.patch
+	source = Makefile.patch
 	sha256sums = 2b0a90c3bf3a27574b0427cf4579dc2347b371bec3fea5739e1527edf74b2809
+	sha256sums = 3272ac8db333ad8d285606c371893d8eef7f786c645dfeb5aab3fd2362212cdd
+	sha256sums = f8a03b442cdba46e58bc73818dd66d02c99ecf5f6d6e022b19dbfea629f7b47a
+	sha256sums = ee175608dd75c255cf4e2e35504dff72fc882098f94f6c24ea2d9646f5964311
+	sha256sums = 5ded34c0fc2da43c47f823ad7b3011d22142acbb54f41cca618c002516f2ec93
 
 pkgname = yaze
