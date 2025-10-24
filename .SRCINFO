@@ -1,6 +1,6 @@
 pkgbase = libgit2-glib-git
 	pkgdesc = GLib wrapper for libgit2
-	pkgver = v.0.99.0+17+gcaa0b64
+	pkgver = 1.2.1.r1.gca9e906
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/libgit2-glib
 	arch = any
@@ -8,13 +8,16 @@ pkgbase = libgit2-glib-git
 	makedepends = git
 	makedepends = gnome-common
 	makedepends = gtk-doc
+	makedepends = meson
+	makedepends = vala
+	makedepends = glib2-devel
 	depends = glib2
 	depends = libgit2
 	depends = gobject-introspection
+	depends = python-gobject
 	provides = libgit2-glib
 	conflicts = libgit2-glib
 	source = git+https://gitlab.gnome.org/GNOME/libgit2-glib
 	sha512sums = SKIP
 
 pkgname = libgit2-glib-git
-
