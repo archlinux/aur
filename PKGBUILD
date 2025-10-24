@@ -32,4 +32,5 @@ package() {
   install -Dm755 $_name.toml "$pkgdir/usr/share/$_name/$_name.toml.example"
   install -Dm644 LICENSE-APACHE LICENSE-MIT -t "$pkgdir/usr/share/licenses/${pkgname}"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/${pkgname}"
+  install -Dm644 $_name.desktop -t "$pkgdir/usr/share/applications"
 }
