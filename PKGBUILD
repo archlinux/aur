@@ -52,9 +52,9 @@
 
 pkgname=flowinity-flameshot
 _pkgname=flameshot
-pkgver=r1972
+pkgver=r1973
 pkgrel=1
-pkgdesc="Powerful yet simple to use screenshot software (Unofficial fork that adds the ability to upload to a PrivateUploader/Flowinity server.)"
+pkgdesc="(Deprecated package, superceded by flowshot) Powerful yet simple to use screenshot software (Unofficial fork that adds the ability to upload to a PrivateUploader/Flowinity server.)"
 arch=('i686' 'x86_64')
 url="https://github.com/Flowinity/flameshot"
 license=('GPL')
@@ -79,7 +79,8 @@ build() {
   cmake -S ./ \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DUSE_WAYLAND_CLIPBOARD=1 \
-      -DUSE_WAYLAND_GRIM=true
+      -DUSE_WAYLAND_GRIM=true \
+      -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
   make -j$(nproc --ignore 1)
 }
@@ -87,5 +88,8 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}" install
+  echo ""
+  echo ""
+  echo "!! WARNING !! flowinity-flameshot has been deprecated by upstream, and will no longer receive feature updates. Please install flowshot instead."
 }
-md5sums=('ba3efb5dd168a53ec0861053293f6249')
+sha256sums=('bbddd8d1ceb67a0cb6b4f8a1297f7536532ce73eacc79870d830a5153cce429e')
