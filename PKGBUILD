@@ -1,6 +1,6 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=free-the-bugs-bin
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A short game on solving small java bugs (binary)"
 arch=('x86_64' 'aarch64')
@@ -13,11 +13,11 @@ provides=('free-the-bugs')
 conflicts=('free-the-bugs')
 options=('!strip')
 source=("https://raw.githubusercontent.com/mlm-games/free-the-bugs/refs/heads/main/fastlane/metadata/android/en-US/images/icon.png")
-source_x86_64=("free-the-bugs-0.5.2-x64::https://github.com/mlm-games/free-the-bugs/releases/download/0.5.2/free-the-bugs.x86_64")
-source_aarch64=("free-the-bugs-0.5.2-arm64::https://github.com/mlm-games/free-the-bugs/releases/download/0.5.2/free-the-bugs.arm64")
+source_x86_64=("free-the-bugs-0.6.0-x64::https://github.com/mlm-games/free-the-bugs/releases/download/0.6.0/free-the-bugs.x86_64")
+source_aarch64=("free-the-bugs-0.6.0-arm64::https://github.com/mlm-games/free-the-bugs/releases/download/0.6.0/free-the-bugs.arm64")
 sha256sums=('SKIP')
-sha256sums_x86_64=('2d549eb6035457e1cf8fb62871a6fb00b3cc7f49c66b4f5f95d32cbabac4be73')
-sha256sums_aarch64=('3bd8d7a4a85a1a0d5c145759e4b59bde987076d0572011b9affa1866f01868c4')
+sha256sums_x86_64=('e1fd1fefce8bbdbc8958aa9af6cd0b858fa192acc0f0fafd4f95dfa856a813af')
+sha256sums_aarch64=('ab59d87083a8a6d9276e0fed3f5d2ace5e3a0e04a39c88cd031fc71e70f6adf1')
 
 package() {
     install -d "${pkgdir}/usr/bin/"
@@ -26,9 +26,9 @@ package() {
     install -d "${pkgdir}/opt/${pkgname}/"
 
     if [[ $CARCH == "x86_64" ]]; then
-        install -Dm755 "$srcdir/free-the-bugs-0.5.2-x64" "${pkgdir}/opt/${pkgname}/free-the-bugs"
+        install -Dm755 "$srcdir/free-the-bugs-0.6.0-x64" "${pkgdir}/opt/${pkgname}/free-the-bugs"
     elif [[ $CARCH == "aarch64" ]]; then
-        install -Dm755 "$srcdir/free-the-bugs-0.5.2-arm64" "${pkgdir}/opt/${pkgname}/free-the-bugs"
+        install -Dm755 "$srcdir/free-the-bugs-0.6.0-arm64" "${pkgdir}/opt/${pkgname}/free-the-bugs"
     fi
 
     ln -s "/opt/${pkgname}/free-the-bugs" "${pkgdir}/usr/bin/free-the-bugs"
