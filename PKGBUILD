@@ -2,8 +2,8 @@
 pkgname=note-gen
 _pkgname=note-gen
 pkgver=0.22.1
-pkgrel=35
-pkgdesc="A cross-platform Markdown note-taking application with AI integration"
+pkgrel=36
+pkgdesc="A cross-platform Markdown note-taking application with AI integration (X11/Wayland compatible)"
 arch=('x86_64')
 url="https://github.com/codexu/note-gen"
 license=('MIT')
@@ -18,12 +18,9 @@ sha256sums=('87b8a5af2c8596304890a275bbbba294a01aeb3040ea3dbb3fb12011425ee06b')
 
 prepare() {
     cd "$pkgname-$pkgname-v$pkgver"
-    # 设置构建环境
+    # Set up build environment
     export npm_config_build_from_source=true
     export CARGO_HOME="$srcdir/.cargo"
-
-    # 安装前端依赖
-    pnpm install --frozen-lockfile
 }
 
 build() {
@@ -31,7 +28,11 @@ build() {
     export CARGO_HOME="$srcdir/.cargo"
     export npm_config_build_from_source=true
 
-    # 构建Tauri应用 (包含前端构建，跳过打包)
+    # Build strictly following upstream tauri-action approach
+    # 1. Install frontend dependencies
+    pnpm install
+
+    # 2. Build Tauri application (tauri will handle beforeBuildCommand automatically)
     pnpm tauri build --no-bundle
 }
 
@@ -39,25 +40,89 @@ package() {
     cd "$pkgname-$pkgname-v$pkgver/src-tauri"
     export CARGO_HOME="$srcdir/.cargo"
 
-    # 安装二进制文件
-    install -Dm755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+    # Install binary file (renamed to note-gen-real)
+    install -Dm755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname-real"
 
-    # 安装图标 - 基于实际源码结构
+    # Create professional wrapper script
+    install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname-wrapper" << 'WRAPPER_EOF'
+#!/usr/bin/env bash
+# NoteGen wrapper script for Linux X11 compatibility
+# Automatically detects graphics session environment and applies GBM fix when needed
+# Usage: DEBUG=1 note-gen-wrapper [args...]
+
+# Logging function
+log() {
+    if [ "$DEBUG" = "1" ]; then
+        echo "$@" >&2
+    fi
+    logger -t note-gen-wrapper "$@"
+}
+
+# Check if GBM fix should be enabled
+should_enable_gbm_fix() {
+    # Wayland environment (via session type detection)
+    [ "$XDG_SESSION_TYPE" = "wayland" ] && { log "Wayland session detected, no GBM fix needed"; return 1; }
+
+    # Wayland environment (via environment variable detection)
+    [ -n "$WAYLAND_DISPLAY" ] && { log "Wayland display detected, no GBM fix needed"; return 1; }
+    [ -n "$WAYLAND_SOCKET" ] && { log "Wayland socket detected, no GBM fix needed"; return 1; }
+
+    # X11 environment with display
+    [ -n "$DISPLAY" ] && { log "X11 environment detected, applying GBM fix"; return 0; }
+
+    # Headless/SSH environment
+    log "No graphics environment detected, no modification needed"
+    return 1
+}
+
+# Check if executable exists
+check_executable() {
+    local exec_path="/usr/bin/$_pkgname-real"
+    if [ ! -x "$exec_path" ]; then
+        logger -p err -t note-gen-wrapper "Executable not found: $exec_path"
+        if [ "$DEBUG" = "1" ]; then
+            echo "Error: Executable not found: $exec_path" >&2
+        fi
+        exit 1
+    fi
+}
+
+# Main logic
+log "NoteGen wrapper starting with arguments: $*"
+
+# Detect and set environment variables
+if should_enable_gbm_fix; then
+    export WEBKIT_DISABLE_DMABUF_RENDERER=1
+    log "Applied WEBKIT_DISABLE_DMABUF_RENDERER=1 for X11 compatibility"
+fi
+
+# Verify executable
+check_executable
+
+# Execute original program with all arguments
+log "Executing: $_pkgname-real $*"
+exec "$_pkgname-real" "$@"
+WRAPPER_EOF
+
+    # Create compatibility symlink
+    ln -sf "$_pkgname-wrapper" "$pkgdir/usr/bin/$_pkgname"
+
+    # Install icons - based on actual source code structure
     cd ..
 
-    # 安装存在的图标尺寸 (根据源码实际文件)
+    # Install existing icon sizes (according to actual source files)
     for size in 32x32 64x64 128x128; do
         if [ -f "src-tauri/icons/$size.png" ]; then
             install -Dm644 "src-tauri/icons/$size.png" "$pkgdir/usr/share/icons/hicolor/${size}/apps/$_pkgname.png"
         fi
     done
 
-    # 安装HiDPI图标 (根据源码实际文件)
+    # Install HiDPI icons (according to actual source files)
     if [ -f "src-tauri/icons/128x128@2x.png" ]; then
         install -Dm644 "src-tauri/icons/128x128@2x.png" "$pkgdir/usr/share/icons/hicolor/128x128@2x/apps/$_pkgname.png"
     fi
 
-    # 创建桌面入口和备用图标 (使用实际存在的文件)
+    # Create desktop entry and fallback icon (using actually existing files)
     if [ -f "public/app-icon.png" ]; then
         install -Dm644 "public/app-icon.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
     elif [ -f "src-tauri/icons/128x128.png" ]; then
@@ -74,7 +139,7 @@ Categories=Office;Utility;TextEditor;
 StartupNotify=true
 EOF
 
-    # 创建清理脚本
+    # Create cleanup script
     install -Dm644 /dev/stdin "$pkgdir/usr/share/$_pkgname/cleanup.sh" << 'CLEANUP_EOF'
 #!/bin/bash
 # NoteGen cleanup script for package removal
