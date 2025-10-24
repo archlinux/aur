@@ -1,7 +1,7 @@
 pkgbase = duplicati-bin
 	pkgdesc = A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers
 	pkgver = 2.2.0.0
-	pkgrel = 2
+	pkgrel = 1
 	url = http://duplicati.com
 	install = duplicati.install
 	arch = x86_64
