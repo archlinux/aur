@@ -1,13 +1,17 @@
 pkgbase = python-ewmh
 	pkgdesc = Python implementation of EWMH (Extended Window Manager Hints)
 	pkgver = 0.1.6
-	pkgrel = 7
-	url = https://github.com/parkouss/pyewmh/
+	pkgrel = 8
+	url = https://github.com/parkouss/pyewmh
 	arch = any
-	license = LGPL
+	license = LGPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
 	depends = python-xlib
-	source = python-ewmh-0.1.6.tar.gz::https://github.com/parkouss/pyewmh/archive/v0.1.6.tar.gz
-	sha512sums = 257d59c0927cec3cd75a6084cd484f1dcf9fa882719707078398d2a65e95e975ad9f6225ed1fd8ec1a29badbdc492c84eb4e04640cc6b480b31bc5ae8ab3f7c8
+	source = ewmh-0.1.6.tar.gz::https://files.pythonhosted.org/packages/source/e/ewmh/ewmh-0.1.6.tar.gz
+	sha256sums = c56b093f7d575181e979bb3a7d15c34065755f811c351ff0a31fede12b09343d
 
 pkgname = python-ewmh
