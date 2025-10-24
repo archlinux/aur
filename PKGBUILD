@@ -8,8 +8,7 @@ url="https://github.com/1ay1/staticwall"
 license=('MIT')
 depends=(
     'wayland'
-    'egl'
-    'glesv2'
+    'mesa'
     'libpng'
     'libjpeg-turbo'
 )
@@ -44,8 +43,11 @@ package() {
     # Install binary
     install -Dm755 build/bin/staticwall "$pkgdir/usr/bin/staticwall"
 
-    # Install default config
-    install -Dm644 config/staticwall.vibe "$pkgdir/usr/share/staticwall/staticwall.vibe"
+    # Install example config
+    install -Dm644 config/staticwall.vibe "$pkgdir/usr/share/staticwall/config.vibe.example"
+
+    # Install default wallpaper
+    install -Dm644 assets/default.png "$pkgdir/usr/share/staticwall/default.png"
 
     # Install example shaders
     install -dm755 "$pkgdir/usr/share/staticwall/shaders"
@@ -54,13 +56,6 @@ package() {
     # Install shader README
     install -Dm644 examples/shaders/README.md "$pkgdir/usr/share/staticwall/shaders/README.md"
 
-    # Install documentation
-    install -Dm644 README.md "$pkgdir/usr/share/doc/staticwall/README.md"
-    install -Dm644 docs/CONFIG_GUIDE.md "$pkgdir/usr/share/doc/staticwall/CONFIG_GUIDE.md"
-    install -Dm644 docs/SHADERTOY_SUPPORT.md "$pkgdir/usr/share/doc/staticwall/SHADERTOY_SUPPORT.md"
-    install -Dm644 docs/ICHANNELS.md "$pkgdir/usr/share/doc/staticwall/ICHANNELS.md"
-    install -Dm644 DISPLAY_RECONNECTION.md "$pkgdir/usr/share/doc/staticwall/DISPLAY_RECONNECTION.md"
-
-    # Install license (if you have one)
-    # install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # Install license
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
