@@ -1,7 +1,7 @@
 pkgbase = youtube-downloader-bin
 	pkgdesc = YouTube Downloader by MediaHuman
 	pkgver = 3.9.17
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.mediahuman.com/download.html
 	arch = x86_64
 	license = LicenseRef-custom
@@ -15,7 +15,7 @@ pkgbase = youtube-downloader-bin
 	depends = taglib1
 	provides = youtube-downloader
 	conflicts = youtube-downloader
-	source_x86_64 = youtube-downloader-bin-251015-2.amd64.deb::https://schinfo.de/MediaHuman/YouTubeDownloader.amd64.deb
-	sha256sums_x86_64 = 54afbd5b666b78efde5c5c7c67807397f391f0ada2708c0c98feaada62254408
+	source_x86_64 = youtube-downloader-bin-3.9.17-251022-3.amd64.deb::https://schinfo.de/MediaHuman/YouTubeDownloader.amd64.deb
+	sha256sums_x86_64 = c1358cfa3ede62725b7a0f9a33be729c2ad3d51aa0185d8dd4f5ec038bf5e915
 
 pkgname = youtube-downloader-bin
