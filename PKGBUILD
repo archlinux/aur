@@ -1,7 +1,7 @@
 # Maintainer: Seven Kingdoms: Ambition Team <seven-kingdoms-ambition-discuss@lists.sourceforge.net>
 
 pkgname=7k-ambition
-pkgver=3.2.6
+pkgver=3.2.7
 pkgrel=1
 pkgdesc="Seven Kingdoms: Ambition is a real-time game of epic strategy and empire building featuring economy management, warfare, and intrigue.  It is an updated and enhanced version of 7kaa (7K: Ancient Adversaries) featuring numerous fixes and improvements."
 url="https://seven-kingdoms-ambition.sourceforge.io/"
@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Infiltrator/7k-ambition
         "${pkgname}.sh"
         "${pkgname}.desktop"
         "${pkgname}.png::https://sourceforge.net/projects/seven-kingdoms-ambition/files/${pkgname}.png/download")
-b2sums=("bb8c9e6e7330803533740cf4248fad1bc47b154d3c1ecf2c59f3808be64944c2e0609942352434a0032c68c79ccd133a550348f2428e262641382c91439f4d55"
+b2sums=("63ef5cba37360d51d3d7dff9243c0b39598d3107c91bb9bef37297ff66a8fafcce761ee097034e0f2b4bbd94612dcace786646cd70aaaa34bb6df673a7232360"
         "833ff931d205e7c2c2d2f5f4af6bc1b854344128d4377bb68d694722d1e4af6bdd822280134705286d1fb5fc4f0945d1f38fb24831c31c57c0c8a821765d54f2"
         "e6c5054c5066df0e3afe5d3b2ddea66c6bb20473caa9b223427dc959d9f5161e3ef72fb09c36fedf422ee90b3d919920dcf0887d4048515dc4096e2168afa502"
         "1feaeab6a4538a278578bdbd195d3b809472008fa8d691d564a27d05da3adcc1125f0eafe42c45dd28c8719c62397dedac2f2bf31276430e0e42be246a98f7be")
