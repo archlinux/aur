@@ -1,22 +1,24 @@
 # Maintainer: Kazoku <k4zoku@pm.me>
 _pkgbase=tosu-overlay
+
 pkgname=${_pkgbase}-git
-pkgver=2.1.0.r11.g1b8934e
-pkgrel=1
 pkgdesc="Overlay for osu! Powered by tosu, qt6, qt6-webengine and layer-shell-qt"
-arch=('x86_64')
+pkgver=2.1.1.r0.g2345251
+pkgrel=1
 url="https://github.com/K4zoku/tosu-overlay-qt"
+arch=('x86_64')
 license=('MIT')
+# added cmake to resolve layer-shell-qt build dependency
+makedepends=('git' 'gcc' 'cmake' 'meson') 
 depends=('qt6-base' 'qt6-webengine' 'layer-shell-qt' 'tosu')
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
-makedepends=('git' 'gcc' 'meson')
 source=("${_pkgbase}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${_pkgbase}"
-    git describe --tags | sed 's/^v//;s/_/./;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/_/./;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
