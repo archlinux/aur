@@ -38,7 +38,6 @@ clean:
 
 build: 
 	mkdir -p build
-	cd build
 	$(CC) $(CDFLAGS) $(SRC) -o build/$(BIN) $(LDFLAGS)
 
 # Install the binary
