@@ -6,7 +6,7 @@
 # Maintainer: Gno <noreply@gno.com>
 pkgname=caelestia-gif
 pkgver=1.0.1
-pkgrel=9
+pkgrel=10
 epoch=
 pkgdesc="A script to manage and change GIFs in Caelestia shell"
 arch=('x86_64')
@@ -35,9 +35,7 @@ prepare() {
 
 build() {
     cd "$pkgname-v$pkgver"
-    mkdir build
-    cd build
-    make
+    make build
 }
 
 check() {

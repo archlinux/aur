@@ -36,6 +36,11 @@ $(BIN): $(OBJ) $(HDR)
 clean:
 	rm -f $(OBJ) $(BIN)
 
+build: 
+	mkdir -p build
+	cd build
+	$(CC) $(CDFLAGS) $(SRC) -o build/$(BIN) $(LDFLAGS)
+
 # Install the binary
 install: $(BIN)
 	# mkdir -p /usr/bin
@@ -45,6 +50,10 @@ install: $(BIN)
 	@echo "Remember to add $(DESTDIR)/bin to your PATH if it's not already there."
 	@echo "You can do this by adding the following line to your shell configuration file (e.g., .bashrc, .zshrc):"
 	@echo '	 export PATH="$(DESTDIR)/bin:$$PATH"'
+
+uninstall:
+	rm -f /usr/bin/$(BIN)
+	@echo "$(BIN) removed from /usr/bin/"
 
 # Phony targets
 .PHONY: all clean install
