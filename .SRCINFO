@@ -1,6 +1,6 @@
 pkgbase = flowinity
 	pkgdesc = The dashboard for your digital life. Store and share images, write documents, and talk with your friends. (Source version)
-	pkgver = 1.0.7
+	pkgver = 1.0.11
 	pkgrel = 1
 	url = https://flowinity.com
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = flowinity
 	makedepends = nodejs
 	provides = flowinity-bin
 	conflicts = flowinity-bin
-	source = flowinity-desktop-1.0.7.zip::https://github.com/Flowinity/Desktop/archive/refs/tags/1.0.7.zip
+	source = flowinity-desktop-1.0.11.zip::https://github.com/Flowinity/Desktop/archive/refs/tags/v1.0.11.zip
 	source = flowinity-desktop.desktop
 	source = flowinity.png
-	sha256sums = 1f4d1563e476195a8baceba7a6cfd5b0d16cb3b24e86a9878572de392391099d
+	sha256sums = 6cf5a91c6ea48fbf9a827c43b15902dcc15fa4ef68ba3c0b1a0be04970fdb2b4
 	sha256sums = c7c22501503c13cfe7132b8677c6fc1c38471cf02516c55c92888d0afc96fcbb
 	sha256sums = 7e1c3148491581e1e73164402acb5dbd61e60c2143292cf6c4b37a31c07a4c9c
 

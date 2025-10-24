@@ -1,8 +1,7 @@
 diff --git a/electron-builder.yml b/electron-builder.yml
-index 3e3f7d5..eaf34f4 100644
 --- a/electron-builder.yml
 +++ b/electron-builder.yml
-@@ -11,39 +11,11 @@ files:
+@@ -11,43 +11,13 @@
    - '!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}'
  asarUnpack:
    - resources/**
@@ -26,7 +25,8 @@ index 3e3f7d5..eaf34f4 100644
 -    - NSDownloadsFolderUsageDescription: Application requests access to the user's Downloads folder.
 -  notarize: false
 -  target:
--    - default
+-    target: default
+-    arch: universal
 -dmg:
 -  artifactName: ${name}-${version}.${ext}
  linux:
@@ -37,8 +37,11 @@ index 3e3f7d5..eaf34f4 100644
 -    - rpm
    maintainer: Flowinity
    category: Internet
--appImage:
--  artifactName: ${name}-${version}.${ext}
+ appImage:
+   artifactName: ${name}-${version}.${ext}
  npmRebuild: false
- publish:
-   provider: generic
+-publish:
+-  provider: github
+-  protocol: https
+ electronDownload:
+   mirror: https://npmmirror.com/mirrors/electron/
