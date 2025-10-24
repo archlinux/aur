@@ -3,7 +3,7 @@ pkgname=plexamp-bin
 _pkgname=Plexamp
 pkgver=4.12.4
 _electronversion=28
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern music client for Plex.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://www.plex.tv/plexamp"
@@ -14,16 +14,13 @@ depends=(
     "electron${_electronversion}"
     'pipewire-jack'
 )
-makedepends=(
-    'fuse2'
-)
 source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::https://plexamp.plex.tv/plexamp.plex.tv/desktop/${_pkgname}-${pkgver}.AppImage"
-    "LICENSE.html::https://www.plex.tv/media-server-downloads/?cat=computer&plat=linux#remodal-terms"
+    "LICENSE.html"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('c11a74fd5141db11b11579da649a7a8c539ba81d20104987ada56b86e061f9d2'
-            '6b37bc7f8a9e282ecd87b1c3cfa8e62248db3ff75cc62a53de00855a2de6350f'
+            '4ca4de54abb5b0239320564e0ea21cbfd42d2da2ced5f87740cf9d5c566c1b9b'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
@@ -39,6 +36,9 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
+    if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _get_electron_version
