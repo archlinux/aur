@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=letters
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Modern word processor for the GNOME desktop"
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=(
   'meson'
 )
 source=("git+https://codeberg.org/eyekay/letters.git#tag=$pkgver")
-sha256sums=('98b4c21c81785715c8776a837a99d32426bedf00dcddbb4e4536d634e80367f8')
+sha256sums=('5abd0837c3596bbbe2e45d935dd8bb7649d0a8da55a0bdd07f07ca114fc562f1')
 
 build() {
   arch-meson "$pkgname" build

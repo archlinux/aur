@@ -1,6 +1,6 @@
 pkgbase = letters
 	pkgdesc = Modern word processor for the GNOME desktop
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://codeberg.org/eyekay/letters
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = letters
 	depends = python-pypandoc
 	depends = python-weasyprint
 	depends = webkitgtk-6.0
-	source = git+https://codeberg.org/eyekay/letters.git#tag=0.1.1
-	sha256sums = 98b4c21c81785715c8776a837a99d32426bedf00dcddbb4e4536d634e80367f8
+	source = git+https://codeberg.org/eyekay/letters.git#tag=0.2.0
+	sha256sums = 5abd0837c3596bbbe2e45d935dd8bb7649d0a8da55a0bdd07f07ca114fc562f1
 
 pkgname = letters
