@@ -1,18 +1,18 @@
 pkgbase = env-exec-bin
 	pkgdesc =
-	pkgver = 0.17.1
+	pkgver = 0.17.2
 	pkgrel = 1
 	license = Apache-2.0
 	conflicts = env-exec
 	provides = env-exec
 	arch = aarch64
-	source_aarch64 = https://github.com/polarn/env-exec/releases/download/0.17.1/env-exec_Linux_arm64.tar.gz
-	sha256sums_aarch64 = fc90f1209eba1e45df33741f334c37560f7845ca90c1f7ef6fc6237089eac89e
+	source_aarch64 = https://github.com/polarn/env-exec/releases/download/0.17.2/env-exec_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 317c408859ec563b47955b94a6eba0c7af30988d1d1a72018d384df7adc4e262
 	arch = i686
-	source_i686 = https://github.com/polarn/env-exec/releases/download/0.17.1/env-exec_Linux_i386.tar.gz
-	sha256sums_i686 = f1824b1876cba1d620705750a7795b6802769ff2a6caab1c9ee60a356cbecf48
+	source_i686 = https://github.com/polarn/env-exec/releases/download/0.17.2/env-exec_Linux_i386.tar.gz
+	sha256sums_i686 = 7d085d0a24380a4d4b51da1f2818f0680007d811e6e8d89a021281451daa5297
 	arch = x86_64
-	source_x86_64 = https://github.com/polarn/env-exec/releases/download/0.17.1/env-exec_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 7f9c3c0c3e3efeb1254ba378daae63dee63dc91eff576860da5d645bf3cc7a0e
+	source_x86_64 = https://github.com/polarn/env-exec/releases/download/0.17.2/env-exec_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 382d202c4d559bcf6366d9eba01be00f720d8bb43a37e5230ae1e8f5391c00c7
 	
 pkgname = env-exec-bin
