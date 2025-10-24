@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=elephant-bluetooth
-pkgver=2.6.4
+pkgver=2.6.5
 pkgrel=1
 pkgdesc='bluetooth provider for elephant'
 url='https://github.com/abenz1267/elephant'
@@ -11,7 +11,7 @@ makedepends=('go')
 conflicts=('elephant-bluetooth')
 provides=('elephant-bluetooth')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6c10c2a60ed98e0e917fd79c08123cd2ed6db83edc681d67c5de871cd007e29b')
+sha256sums=('e57b757508a49bd37d31468ca958d4a6e89154c78821d12278ec612190e33a4c')
 
 build() {
     cd elephant-${pkgver}/internal/providers/bluetooth
