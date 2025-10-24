@@ -15,12 +15,8 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/Tusk-Launcher"
-    ver=$(git describe --tags --long 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./g')
-    if [[ -n "$ver" ]]; then
-        echo "$ver"
-    else
+    git describe --tags --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
         echo "0.0.0.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
-    fi
 }
 
 build() {
