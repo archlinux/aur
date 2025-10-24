@@ -1,0 +1,21 @@
+pkgbase = marianne
+	pkgdesc = A blazing-fast parallel downloader with automatic archive extraction and beautiful terminal UI
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/wesraph/marianne
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = go
+	depends = glibc
+	optdepends = tar: for tar archive extraction
+	optdepends = gzip: for .tar.gz archive support
+	optdepends = lz4: for .tar.lz4 archive support
+	optdepends = zstd: for .tar.zst archive support
+	optdepends = xz: for .tar.xz archive support
+	optdepends = bzip2: for .tar.bz2 archive support
+	source = marianne-0.0.7.tar.gz::https://github.com/wesraph/marianne/archive/refs/tags/v0.0.7.tar.gz
+	sha256sums = b10381ee77be4a4df845ce25da48f3c629f338d224e6d6c0445961431ebc12c7
+
+pkgname = marianne
