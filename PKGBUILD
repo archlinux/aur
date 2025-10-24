@@ -31,7 +31,6 @@ b2sums=('749c9f7202cd7bee0329e3fe2cded85479c8fb2f94c7f6f479cd85c9ebaa4c39a26f79f
 
 build() {
   cd $_name-$pkgver
-  CMAKE_GENERATOR="Unix Makefiles" \
   python -m build --wheel --no-isolation
 }
 
