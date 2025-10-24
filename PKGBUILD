@@ -7,7 +7,7 @@ pkgrel=1
 arch=(any)
 url="https://i10git.cs.fau.de/pycodegen/${_base}"
 license=(AGPL-3.0-or-later)
-depends=(python-sympy python-numpy python-appdirs python-joblib python-yaml)
+depends=(python-sympy python-numpy python-appdirs python-joblib python-yaml python-fasteners)
 makedepends=(python-build python-installer python-setuptools python-versioneer python-wheel)
 checkdepends=(python-pytest-cov jupyter-nbformat jupyter-nbconvert python-matplotlib python-pyevtk)
 # python-cupy python-islpy python-randomgen python-walberla python-tabulate

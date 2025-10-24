@@ -20,6 +20,7 @@ pkgbase = python-pystencils
 	depends = python-appdirs
 	depends = python-joblib
 	depends = python-yaml
+	depends = python-fasteners
 	optdepends = python-cupy: for gpu support
 	optdepends = python-py-cpuinfo: for alltrafos support
 	optdepends = python-blitzdb: for benchdb support
