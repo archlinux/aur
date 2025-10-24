@@ -1,6 +1,6 @@
 pkgbase = intellij-idea-community-edition-jre
 	pkgdesc = Intellij Idea Community Edition with bundled JRE
-	pkgver = 2025.2.3
+	pkgver = 2025.2.4
 	pkgrel = 1
 	url = http://www.jetbrains.com/idea/
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = intellij-idea-community-edition-jre
 	depends = libdbusmenu-glib
 	provides = jetbrains-idea-ce
 	conflicts = jetbrains-idea-ce
-	source = https://download.jetbrains.com/idea/ideaIC-2025.2.3.tar.gz
+	source = https://download.jetbrains.com/idea/ideaIC-2025.2.4.tar.gz
 	source = jetbrains-idea-ce.desktop
-	sha256sums = 6b7c671e97b1419ca22ff4c4a32e7ca51577e4177589bfd321bd9a26df16c9ba
+	sha256sums = 3c152de654fa948e12e5fba4c04ed0200e472556a8081ddc2d4c22e5831d6020
 	sha256sums = 4adcbb685898ba54516eeb1fd84ca8f1aa3bf3dca698f84a00eaafd115f5c336
 
 pkgname = intellij-idea-community-edition-jre
