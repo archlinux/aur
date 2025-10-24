@@ -2,12 +2,12 @@
 
 pkgname=securepasswd_mgmt
 pkgver=2025.10.24
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure, cross-platform password manager with TOTP support"
 arch=('x86_64')
 url="https://github.com/fam007e/SecurePasswd_MGMT"
 license=('MIT')
-depends=('libsodium' 'argon2' 'sqlcipher' 'qt6-base' 'openssl' 'curl' 'libcsv')
+depends=('libsodium' 'argon2' 'sqlcipher' 'qt6-base' 'qt6-svg' 'openssl' 'curl' 'cmocka')
 makedepends=('cmake' 'gcc')
 install=securepasswd_mgmt.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fam007e/SecurePasswd_MGMT/archive/refs/tags/v${pkgver}.tar.gz")
@@ -15,12 +15,12 @@ sha256sums=('80900a181a1e5f81550848dbdcbd9ae22ccaf987d180c553559abf82cf3ff25d')
 
 build() {
     cd "$srcdir/SecurePasswd_MGMT-${pkgver}"
-    
+
     cmake -B build \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DPROJECT_VERSION=${pkgver}
-    
+
     cmake --build build
 }
 
@@ -33,7 +33,7 @@ check() {
 package() {
     cd "$srcdir/SecurePasswd_MGMT-${pkgver}/build"
     make DESTDIR="$pkgdir" install
-    
+
     # Install license
     install -Dm644 "$srcdir/SecurePasswd_MGMT-${pkgver}/LICENSE" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
