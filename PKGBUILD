@@ -5,7 +5,7 @@ name=vesktop
 pkgname=vesktop-electron
 pkgdesc="An Electron-based Discord app with Vencord & improved Linux support using system provided electron. Unsupported"
 pkgver=1.6.0
-pkgrel=3
+pkgrel=4
 
 arch=("x86_64" "aarch64")
 url="https://github.com/Vencord/Vesktop"
@@ -41,7 +41,7 @@ package() {
   cd "$srcdir/$_pkgname-$pkgver"
 
   # Create necessary directories
-  install -d "$pkgdir/usr/lib/$_pkgname"
+  install -d "$pkgdir/usr/lib/$name"
   install -d "$pkgdir/usr/bin"
 
   cp dist/linux-*unpacked/resources/app.asar "$pkgdir/usr/lib/$_pkgname"
