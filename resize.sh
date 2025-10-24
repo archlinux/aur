@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 SRC="source-icon.svg"
+SRC_NOTIFICATION="source-icon-notification.svg"
 COLORS_CONF="colors.conf"
 OUT="pack"
 
@@ -22,37 +23,77 @@ if [[ -z "$OUTER_COLOR" || -z "$INNER_COLOR" ]]; then
     exit 1
 fi
 
-if ! magick -list format | grep -q "SVG.*rw"; then
-    echo "Error: ImageMagick lacks SVG support. Install librsvg (e.g., 'sudo apt install librsvg2-bin' or 'brew install librsvg')"
-    exit 1
-fi
-
 rm -rf "$OUT" && mkdir -p "$OUT"
 
-TEMP_SVG="temp-icon.svg"
-cp "$SRC" "$TEMP_SVG"
-sed "s/fill:#5865f2/fill:$OUTER_COLOR/" "$TEMP_SVG" > "$TEMP_SVG.tmp" && mv "$TEMP_SVG.tmp" "$TEMP_SVG"
-sed "s/fill:#e0e3ff/fill:$INNER_COLOR;stroke:none;fill-opacity:1/" "$TEMP_SVG" > "$TEMP_SVG.tmp" && mv "$TEMP_SVG.tmp" "$TEMP_SVG"
+process_svg_with_hicolor() {
+    local src_file="$1"
+    local output_name="$2"
+    local temp_svg="temp-$output_name.svg"
 
-SIZES=(16 32 48 64 128 256 512 1024)
-for SZ in "${SIZES[@]}"; do
-    DEST="$OUT/icons/hicolor/${SZ}x${SZ}/apps"
-    mkdir -p "$DEST"
-    magick -background none "$TEMP_SVG" -resize "${SZ}x${SZ}" "$DEST/vesktop.png" || {
-        echo "Error: Failed to generate $DEST/vesktop.png"
+    cp "$src_file" "$temp_svg"
+    sed "s/fill:#5865f2/fill:$OUTER_COLOR/" "$temp_svg" > "$temp_svg.tmp" && mv "$temp_svg.tmp" "$temp_svg"
+    sed "s/fill:#e0e3ff/fill:$INNER_COLOR;stroke:none;fill-opacity:1/" "$temp_svg" > "$temp_svg.tmp" && mv "$temp_svg.tmp" "$temp_svg"
+
+    SIZES=(16 32 48 64 128 256 512 1024)
+    for SZ in "${SIZES[@]}"; do
+        DEST="$OUT/icons/hicolor/${SZ}x${SZ}/apps"
+        mkdir -p "$DEST"
+        magick -background none "$temp_svg" -resize "${SZ}x${SZ}" "$DEST/$output_name.png" || {
+            echo "Error: Failed to generate $DEST/$output_name.png"
+            exit 1
+        }
+        optipng -o7 -quiet "$DEST/$output_name.png"
+    done
+
+    TRAY_DEST="$OUT/static/tray"
+    mkdir -p "$TRAY_DEST"
+    magick -background none "$temp_svg" -resize "64x64" "$TRAY_DEST/tray.png" || {
+        echo "Error: Failed to generate $TRAY_DEST/tray.png"
         exit 1
     }
-    optipng -o7 -quiet "$DEST/vesktop.png"
-done
+    optipng -o7 -quiet "$TRAY_DEST/tray.png"
 
-mkdir -p "$OUT/static"
-magick -background none "$TEMP_SVG" -resize 1080x1080 "$OUT/static/vesktop.png" || {
-    echo "Error: Failed to generate $OUT/static/vesktop.png"
-    exit 1
+    mkdir -p "$OUT/static"
+    magick -background none "$temp_svg" -resize 1080x1080 "$OUT/static/$output_name.png" || {
+        echo "Error: Failed to generate $OUT/static/$output_name.png"
+        exit 1
+    }
+    optipng -o7 -quiet "$OUT/static/$output_name.png"
+
+    rm "$temp_svg"
 }
-optipng -o7 -quiet "$OUT/static/vesktop.png"
 
-# Windows ICO because we are here... so why not? Maybe it will help dual booters.
+process_svg_notification() {
+    local src_file="$1"
+    local output_name="$2"
+    local temp_svg="temp-$output_name.svg"
+
+    cp "$src_file" "$temp_svg"
+    sed "s/fill:#5865f2/fill:$OUTER_COLOR/" "$temp_svg" > "$temp_svg.tmp" && mv "$temp_svg.tmp" "$temp_svg"
+    sed "s/fill:#e0e3ff/fill:$INNER_COLOR;stroke:none;fill-opacity:1/" "$temp_svg" > "$temp_svg.tmp" && mv "$temp_svg.tmp" "$temp_svg"
+
+    TRAY_DEST="$OUT/static/tray"
+    mkdir -p "$TRAY_DEST"
+    magick -background none "$temp_svg" -resize "64x64" "$TRAY_DEST/$output_name.png" || {
+        echo "Error: Failed to generate $TRAY_DEST/$output_name.png"
+        exit 1
+    }
+    optipng -o7 -quiet "$TRAY_DEST/$output_name.png"
+
+    mkdir -p "$OUT/static"
+    magick -background none "$temp_svg" -resize 1080x1080 "$OUT/static/$output_name.png" || {
+        echo "Error: Failed to generate $OUT/static/$output_name.png"
+        exit 1
+    }
+    optipng -o7 -quiet "$OUT/static/$output_name.png"
+
+    rm "$temp_svg"
+}
+
+process_svg_with_hicolor "$SRC" "vesktop"
+
+process_svg_notification "$SRC_NOTIFICATION" "trayUnread"
+
 ICO_OUT="$OUT/static/icon.ico"
 ICO_SIZES=(16 32 48 64 128 256)
 ICO_PNGS=()
@@ -64,8 +105,7 @@ magick -background none "${ICO_PNGS[@]}" -thumbnail 128x128 "$ICO_OUT" || {
     exit 1
 }
 
-cp "loader.gif" "$OUT/static/shiggy.gif"
-
-rm "$TEMP_SVG"
+#New upstream stopped using a gif. sadge. 
+#cp "loader.gif" "$OUT/static/shiggy.gif"
 
 echo "Icons generated in $OUT"
