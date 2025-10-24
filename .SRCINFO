@@ -1,0 +1,17 @@
+pkgbase = yaoc-git
+	pkgdesc = Yet Another OpenAI CLI chat client.
+	pkgver = r6.fb89fb1
+	pkgrel = 1
+	url = https://github.com/doryiii/openai-cli
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = python
+	depends = python-html2text
+	depends = python-rich
+	depends = python-termcolor
+	depends = python-requests
+	source = git+https://github.com/doryiii/openai-cli.git
+	sha256sums = SKIP
+
+pkgname = yaoc-git
