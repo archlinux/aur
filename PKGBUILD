@@ -9,7 +9,7 @@
 _name=cyaron
 pkgname=python-${_name}
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Random Olympic-informatics test data generator"
 url="https://github.com/luogu-dev/cyaron"
 license=('LGPL3')

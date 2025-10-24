@@ -1,7 +1,7 @@
 pkgbase = python-cyaron
 	pkgdesc = Random Olympic-informatics test data generator
 	pkgver = 0.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/luogu-dev/cyaron
 	arch = any
 	license = LGPL3
