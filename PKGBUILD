@@ -9,6 +9,7 @@ license=('MIT')
 depends=('wayscriber')
 provides=('hyprmarker')
 conflicts=('hyprmarker<0.5.1')
+replaces=('hyprmarker')
 
 pkgver() {
     printf '%s' "$pkgver"
