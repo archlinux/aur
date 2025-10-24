@@ -2,7 +2,7 @@
 #Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=alephone-git
-pkgver=1.10.r6201.38ac5351
+pkgver=1.11.r6318.b3bf5d8d
 pkgrel=1
 pkgdesc='A free, enhanced port of the classic FPS "Marathon 2" by Bungie Software (development version)'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 conflicts=("alephone")
 provides=("alephone")
 depends=('sdl2_ttf' 'sdl2_image' 'sdl2_net' 'libmad' 'glu' 'zziplib' 'ffmpeg4.4'
-         'boost-libs' 'curl' 'openal')
+         'boost-libs' 'curl' 'openal' 'asio')
 optdepends=('alephone-eternalx: community-made scenario'
             'alephone-evil: community-made scenario'
             'alephone-infinity: original data for Marathon Infinity'
