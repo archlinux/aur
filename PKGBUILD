@@ -2,7 +2,7 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=elasticsearch-bin
-pkgver=9.1.4
+pkgver=9.2.0
 pkgrel=0
 pkgdesc="Log analyzer. search, store and analyze logs"
 arch=("x86_64")
@@ -20,7 +20,7 @@ source=("https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${pk
         "elasticsearch.sysusers"
         "elasticsearch.tmpfiles"
         "elasticsearch.sysctl")
-sha512sums=('7ee49bf7ea0f9baed21304cdae43471236bb395c8c87816be71dfcee3bc6e0aadd35089fcf2a5a87a58546d883f7d88abaa25a80c13e05ade28c7ce2cc0381c3'
+sha512sums=('4cb2e84bf1682e353c903571f2519496b5c8f8af1198b9a7b6ac306ca9a972387b392a191376f3b17f67e7959269e1650bf9be6312c2497bb26ce43a71267116'
             '50bd8acc3261eb891bf6f67b814aabb840b35214306b2544ada24a3439c1fe3f7c5854cc2608d97db3a688aaa2aba222e1d4d62ca1fc8d32723bcc5b34b63b57'
             '25b51fcd3913efd826f49543059edb64d1ea47a570acaf4d35131be805106cd4db58611b15d15c2910881feffc5d8f9b243da0f5dc5967574613f8d33569d959'
             '5dddb4d5e35b62d58cab22775c6400f7bef0ea7de32c43960288dcc0029c09f4056275a056f5e43a51545a3dcfe2f726c2ca316b6e9934139cda50d85b742e77'
