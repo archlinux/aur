@@ -1,4 +1,6 @@
-# Maintainer: Huang-Huang Bao <eh5@sokka.cn>
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# Co-Maintainer: Chris Lane <aur at chrislane dot com>
+# Contributor: Huang-Huang Bao <eh5@sokka.cn>
 # Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
@@ -45,6 +47,7 @@ makedepends=(
   jack # jack2 or pipewire-jack
   libcamera
   libcanberra
+  libebur128
   libfdk-aac
   libffado
   libfreeaptx
@@ -145,13 +148,6 @@ package_pipewire-full-git() {
     glibc
     dconf
     avahi
-    fftw
-    libmysofa
-    onnxruntime
-    lilv
-    libsndfile
-    ffmpeg
-    libebur128
     "libpipewire-full-git=$pkgver-$pkgrel"
     libcamera-base.so
     libcamera.so
@@ -314,7 +310,6 @@ package_pipewire-full-audio-git() {
   depends=(
     dbus
     gcc-libs
-    spandsp
     glib2
     glibc
     libasound.so

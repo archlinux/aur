@@ -20,6 +20,7 @@ pkgbase = pipewire-full-git
 	makedepends = jack
 	makedepends = libcamera
 	makedepends = libcanberra
+	makedepends = libebur128
 	makedepends = libfdk-aac
 	makedepends = libffado
 	makedepends = libfreeaptx
