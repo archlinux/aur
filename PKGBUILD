@@ -1,9 +1,8 @@
 # Maintainer: Your Name <you@example.com>
 
 pkgbase=dsearch-git
-_pkgbase=${pkgbase%-git}
 _pkgname=danksearch
-pkgname=($_pkgbase)
+pkgname=("$pkgbase")
 pkgver=0.0.1.r0.g24ea202
 pkgrel=1
 pkgdesc='Fast filesystem search service'
@@ -11,8 +10,8 @@ arch=('x86_64')
 url="https://github.com/AvengeMedia/$_pkgname"
 license=('MIT')
 makedepends=(git go)
-provides=("$_pkgbase=$pkgver")
-conflicts=("$_pkgbase")
+provides=("dsearch=$pkgver")
+conflicts=("dsearch")
 source=("git+$url.git"
         "dsearch.service")
 sha256sums=('SKIP'
