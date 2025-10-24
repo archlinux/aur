@@ -1,0 +1,16 @@
+pkgbase = anyquery-git
+	pkgdesc = Query anything (GitHub, Notion, +40 more) with SQL and let LLMs (ChatGPT, Claude) connect to using MCP
+	pkgver = 0.4.4.r0.g0abd460
+	pkgrel = 1
+	url = https://github.com/julien040/anyquery
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = go
+	makedepends = sqlite
+	depends = glibc
+	depends = sqlite
+	source = anyquery-git::git+https://github.com/julien040/anyquery.git
+	sha256sums = SKIP
+
+pkgname = anyquery-git
