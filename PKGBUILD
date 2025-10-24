@@ -7,7 +7,7 @@
 _jdkname=liberica-jdk-11-lite
 pkgname="${_jdkname}-bin"
 _java_ver=11
-pkgver=11.0.27+9
+pkgver=11.0.29+10
 pkgrel=1
 pkgdesc='BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Lite version has compressed modules.'
 arch=(aarch64 armv7h armv8h x86_64)
@@ -49,10 +49,10 @@ source_i686=(https://download.bell-sw.com/java/$pkgver/bellsoft-jdk$pkgver-linux
 source_x86_64=(https://download.bell-sw.com/java/$pkgver/bellsoft-jdk$pkgver-linux-amd64-lite.tar.gz)
 
 # Upstream-provided
-sha1sums_aarch64=('ff9a69ec04b09b8aa7b4e294a0e588949e7ad543')
-sha1sums_armv7h=('6e52d5db51fa3e7459721f003e785fd54bf165d5')
-sha1sums_armv8h=('6e52d5db51fa3e7459721f003e785fd54bf165d5')
-sha1sums_x86_64=('e0a2f5b5b575a8f5c1575a43ae5d25e4ed3c26a9')
+sha1sums_aarch64=('8079cbe2c4359615370482a8b1ca1d8f9ce8152b')
+sha1sums_armv7h=('6434bd7e9381a7fe71043a2fe0210e626654fb0b')
+sha1sums_armv8h=('6434bd7e9381a7fe71043a2fe0210e626654fb0b')
+sha1sums_x86_64=('c8a37320962d74cd91a94504e970c1de44927ea4')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
