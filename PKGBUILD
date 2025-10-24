@@ -1,11 +1,10 @@
 # Maintainer: zt <zt@zt64.dev>
 # Maintainer: cookie <kyliepc@proton.me>
-_pkgname=Vesktop
-_name=vesktop
+_pkgname=vesktop
 pkgname=vesktop-electron
 pkgdesc="An Electron-based Discord app with Vencord & improved Linux support using system provided electron. Unsupported"
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 
 arch=("x86_64" "aarch64")
 url="https://github.com/Vencord/Vesktop"
@@ -41,14 +40,14 @@ package() {
   cd "$srcdir/$_pkgname-$pkgver"
 
   # Create necessary directories
-  install -d "$pkgdir/usr/lib/$_name"
+  install -d "$pkgdir/usr/lib/$_pkgname"
   install -d "$pkgdir/usr/bin"
 
-  cp dist/linux-*unpacked/resources/app.asar "$pkgdir/usr/lib/$_name"
+  cp dist/linux-*unpacked/resources/app.asar "$pkgdir/usr/lib/$_pkgname"
 
   install -Dm644 "../vesktop.desktop" "$pkgdir/usr/share/applications/vesktop.desktop" # Install desktop entry
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE" # Install license
   install -Dm644 "build/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg" # Install icons
 
-  install -Dm755 "../vesktop.sh" "$pkgdir/usr/bin/$_name" # Start script
+  install -Dm755 "../vesktop.sh" "$pkgdir/usr/bin/$_pkgname" # Start script
 }
