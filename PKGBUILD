@@ -1,6 +1,6 @@
 # Maintainer: Antonio Leal <antonioleal@yahoo.com>
 pkgname=kforth-64
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="64-bit Forth System for GNU/Linux"
 arch=( $CARCH )
@@ -13,9 +13,9 @@ conflicts=('kforth-64')
 replaces=()
 backup=()
 options=(!debug)
-source=( https://github.com/mynenik/kForth-64/archive/refs/tags/v0.5.0/kForth-64-0.5.0.tar.gz )
+source=( https://github.com/mynenik/kForth-64/archive/refs/tags/v0.5.1/kForth-64-0.5.1.tar.gz )
 noextract=()
-sha256sums=( 2c808dbe3774395cc649c7b7a25f788af43f52a6b5eed13f4bec7835e6510387 )
+sha256sums=( 38721240e41317e61a5c8ce106b92e26db10523229f931cc7e7500de32cf1c09 )
 
 prepare() {
   mv "kForth-64-${pkgver}" "${pkgname}-${pkgver}"

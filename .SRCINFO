@@ -1,6 +1,6 @@
 pkgbase = kforth-64
 	pkgdesc = 64-bit Forth System for GNU/Linux
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/mynenik/kforth-64
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = kforth-64
 	provides = kforth-64
 	conflicts = kforth-64
 	options = !debug
-	source = https://github.com/mynenik/kForth-64/archive/refs/tags/v0.5.0/kForth-64-0.5.0.tar.gz
-	sha256sums = 2c808dbe3774395cc649c7b7a25f788af43f52a6b5eed13f4bec7835e6510387
+	source = https://github.com/mynenik/kForth-64/archive/refs/tags/v0.5.1/kForth-64-0.5.1.tar.gz
+	sha256sums = 38721240e41317e61a5c8ce106b92e26db10523229f931cc7e7500de32cf1c09
 
 pkgname = kforth-64
