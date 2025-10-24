@@ -1,0 +1,15 @@
+pkgbase = pantum-universal-driver
+	pkgdesc = Universal driver for Pantum printers
+	pkgver = 1.1.167
+	pkgrel = 1
+	url = https://global.pantum.com/support/
+	install = pantum-universal-driver.install
+	arch = x86_64
+	license = custom
+	depends = cups
+	optdepends = ipp-usb: for IPP over USB support
+	noextract = pantum-universal-driver-1.1.167-1.zip
+	source = pantum-universal-driver-1.1.167-1.zip::https://github.com/osguot/pantum-universal-driver/releases/download/release/Pantum.Linux.Driver.V1_1_167.zip
+	sha256sums = 680a0b3534cd5411207b48382a2c2d266cb86c6c65d6ac0eec5430df00594e09
+
+pkgname = pantum-universal-driver
