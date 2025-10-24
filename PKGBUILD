@@ -6,7 +6,7 @@ _pkgbase=${pkgbase%-git}
 _pkg1=DankMaterialShell
 _pkg2=danklinux
 pkgname=($_pkgbase-git $_pkgbase-hyprland-git $_pkgbase-niri-git)
-pkgver=0.2.0.r6.g8b0655c
+pkgver=0.2.2.r3.g0ac3db6
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
@@ -65,12 +65,13 @@ package_dms-shell-git() {
 	optdepends+=('dms-shell-hyprland: Hyprland specific dependencies')
 	optdepends+=('dms-shell-niri: Niri specific dependencies')
         optdepends+=('greetd-dms-greeter: DMS Greeter')
+	install="$pkgname.install"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "$_pkg2/dms"
-	install -dm0755 "$pkgdir/etc/xdg/quickshell/dms"
-	cp -r "$_pkg1"/* "$pkgdir/etc/xdg/quickshell/dms/"
+	install -dm0755 "$pkgdir/usr/share/quickshell/dms"
+	cp -r "$_pkg1"/* "$pkgdir/usr/share/quickshell/dms/"
 	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" "$_pkg1/README.md"
 	cp -r "$_pkg1/docs/"* "$pkgdir/usr/share/doc/$pkgname/"
-	rm -rf "$pkgdir/etc/xdg/quickshell/dms/.git"*
+	rm -rf "$pkgdir/usr/share/quickshell/dms/.git"*
 }
 
 package_dms-shell-hyprland-git() {
