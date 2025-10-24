@@ -47,8 +47,8 @@ prepare() {
 build() {
   cd ${_pkgname}-${pkgver}
 
-  # When using multiple -D flags, use a single -D with multiple definitions
-  export CPPFLAGS="$(pkg-config --cflags pangocairo pango)"
+  # Set compiler flags before configure
+  export CPPFLAGS="${CPPFLAGS} $(pkg-config --cflags pangocairo pango cairo)"
   export CFLAGS="$CFLAGS -Wno-error -Wno-deprecated-declarations"
   export CXXFLAGS="$CXXFLAGS -Wno-error -Wno-deprecated-declarations"
   export LDFLAGS="$LDFLAGS $(pkg-config --libs libxml-2.0)"
@@ -62,7 +62,7 @@ build() {
               --disable-gnome_vfs \
               --disable-gtk-doc \
               --disable-introspection
-  
+
   make
   sed -e 's/^SUBDIRS_EXT =.*/SUBDIRS_EXT =/' -i Makefile
 }
