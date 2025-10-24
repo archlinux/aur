@@ -1,43 +1,66 @@
-# Maintainer: Ayush <youremail@example.com>
-_pkgname=staticwall
-pkgname=${_pkgname}-git
-pkgver=0.0.r25
+# Maintainer: Your Name <your.email@example.com>
+pkgname=staticwall-git
+pkgver=0.2.0.r0.gcf99dac
 pkgrel=1
-pkgdesc="A lightweight Wayland wallpaper daemon written in C"
-arch=('x86_64')
+pkgdesc="Dynamic Wayland wallpaper manager with live shader support"
+arch=('x86_64' 'aarch64')
 url="https://github.com/1ay1/staticwall"
 license=('MIT')
-depends=('wayland' 'egl-wayland' 'mesa' 'libpng' 'libjpeg-turbo')
-makedepends=('git' 'base-devel' 'wayland' 'wayland-protocols' 'egl-wayland' 'mesa' 'libpng' 'libjpeg-turbo' 'pkgconf')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+depends=(
+    'wayland'
+    'egl'
+    'glesv2'
+    'libpng'
+    'libjpeg-turbo'
+)
+makedepends=(
+    'git'
+    'make'
+    'gcc'
+    'wayland-protocols'
+    'pkgconf'
+)
+provides=('staticwall')
+conflicts=('staticwall')
 source=("git+https://github.com/1ay1/staticwall.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname" || return 1
-  printf "0.0.r%s" "$(git rev-list --count HEAD)"
-}
-
-prepare() {
-  # nothing for now; add steps if repo needs autogen/config
-  return 0
+    cd "$srcdir/staticwall"
+    # Get version from git tags, with format: TAG.rREVISIONS.gHASH
+    # Example: 0.2.0.r12.gabc1234
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || \
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/$_pkgname" || return 1
-  make
+    cd "$srcdir/staticwall"
+    make
 }
 
 package() {
-  cd "$srcdir/$_pkgname" || return 1
+    cd "$srcdir/staticwall"
 
-  # correct path to the built binary
-  install -Dm755 build/bin/staticwall "$pkgdir/usr/bin/staticwall"
+    # Install binary
+    install -Dm755 build/bin/staticwall "$pkgdir/usr/bin/staticwall"
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    # Install default config
+    install -Dm644 config/staticwall.vibe "$pkgdir/usr/share/staticwall/staticwall.vibe"
 
-  # if you have sample config files
-  # install -Dm644 config/config.vibe "$pkgdir/usr/share/doc/$pkgname/config.vibe"
+    # Install example shaders
+    install -dm755 "$pkgdir/usr/share/staticwall/shaders"
+    install -m644 examples/shaders/*.glsl "$pkgdir/usr/share/staticwall/shaders/"
+
+    # Install shader README
+    install -Dm644 examples/shaders/README.md "$pkgdir/usr/share/staticwall/shaders/README.md"
+
+    # Install documentation
+    install -Dm644 README.md "$pkgdir/usr/share/doc/staticwall/README.md"
+    install -Dm644 docs/CONFIG_GUIDE.md "$pkgdir/usr/share/doc/staticwall/CONFIG_GUIDE.md"
+    install -Dm644 docs/SHADERTOY_SUPPORT.md "$pkgdir/usr/share/doc/staticwall/SHADERTOY_SUPPORT.md"
+    install -Dm644 docs/ICHANNELS.md "$pkgdir/usr/share/doc/staticwall/ICHANNELS.md"
+    install -Dm644 DISPLAY_RECONNECTION.md "$pkgdir/usr/share/doc/staticwall/DISPLAY_RECONNECTION.md"
+
+    # Install license (if you have one)
+    # install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
