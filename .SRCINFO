@@ -1,6 +1,5 @@
 pkgbase = xpanel-desktop-bin
-	pkgdesc = A cross-platform Electron wrapper for Finalmouse XPANEL, bringing WebHID support to desktop.
-	pkgver = 1.0.2
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/diegul/xpanel-desktop
 	arch = x86_64
@@ -12,6 +11,7 @@ pkgbase = xpanel-desktop-bin
 	depends = libxss
 	depends = libxtst
 	depends = xdg-utils
+	optdepends = fuse2: run AppImages without extraction
 	provides = xpanel-desktop
 	conflicts = xpanel-desktop
 	source = https://github.com/diegul/xpanel-desktop/releases/latest/download/xpanel-desktop-linux-x86_64.AppImage
