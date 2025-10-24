@@ -1,7 +1,7 @@
 # Maintainer: Adam Wahab <awahab@adhoc.tools>
 _name=wiremix
 pkgname=${_name,,}-git
-pkgver=r431.5efdee6
+pkgver=r6.879c50a
 pkgrel=1
 pkgdesc="A simple TUI audio mixer for PipeWire"
 arch=(x86_64)

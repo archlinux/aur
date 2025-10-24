@@ -1,6 +1,6 @@
 pkgbase = wiremix-git
 	pkgdesc = A simple TUI audio mixer for PipeWire
-	pkgver = r431.5efdee6
+	pkgver = r6.879c50a
 	pkgrel = 1
 	url = https://github.com/tsowell/wiremix
 	arch = x86_64
