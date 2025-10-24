@@ -1,6 +1,6 @@
 pkgbase = python-pyocd
 	pkgdesc = Programming and debugging Arm Cortex-M microcontrollers
-	pkgver = 0.39.0
+	pkgver = 0.40.0
 	pkgrel = 1
 	url = https://github.com/pyocd/pyOCD
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = python-pyocd
 	provides = pyocd
 	conflicts = pyocd
 	replaces = pyocd
-	source = python-pyocd-0.39.0.tar.gz::https://github.com/pyocd/pyOCD/archive/refs/tags/v0.39.0.tar.gz
-	sha512sums = 8b396efc264ba254755c5522f66570d02153c77aab40bece454c78552b972c12ad6dec985262d875c35fe528ebbbc585322dbd690c0e2bf5a3b50e014d4bf08c
+	source = python-pyocd-0.40.0.tar.gz::https://github.com/pyocd/pyOCD/archive/refs/tags/v0.40.0.tar.gz
+	sha512sums = 303106181a14a834f5dd88fc92d476eeb3b5a087b22b1e00af63e11e606083937acd7ed1840324a4ac51c8b5ba60aa4a1551710b5ee64312615909bfb1fe505c
 
 pkgname = python-pyocd
