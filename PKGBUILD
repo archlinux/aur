@@ -4,7 +4,7 @@
 
 pkgname=sigrok-firmware-saleae-logic
 pkgver=1.2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Firmware and FPGA bitstream binaries for Saleae Logic (Pro) devices used with Sigrok."
 arch=(any)
 url="https://support.saleae.com/logic-software/legacy-software/older-software-releases"

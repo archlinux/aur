@@ -1,18 +1,15 @@
 pkgbase = sigrok-firmware-saleae-logic
 	pkgdesc = Firmware and FPGA bitstream binaries for Saleae Logic (Pro) devices used with Sigrok.
 	pkgver = 1.2.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://support.saleae.com/logic-software/legacy-software/older-software-releases
 	arch = any
 	license = custom
 	makedepends = python
 	conflicts = sigrok-firmware-saleae-logic16
-	source = git://sigrok.org/sigrok-util
+	source = git+https://github.com/sigrokproject/sigrok-util#commit=249b79d0a94e
 	source = http://downloads.saleae.com/logic/1.2.10/Logic+1.2.10+(64-bit).zip
-	source = https://trello-attachments.s3.amazonaws.com/55f0a61a10f9f592573a4205/5697d62ba03bdba21581dc15/429ff3e09adc4067ec9984092759897d/License.txt
 	md5sums = SKIP
 	md5sums = 4a621715c73cba3237ae72c04647c53f
-	md5sums = 58d2dcb368ef3586f50f2333ac89e5ff
 
 pkgname = sigrok-firmware-saleae-logic
-
