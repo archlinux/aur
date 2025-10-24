@@ -1,6 +1,6 @@
 pkgbase = pdfsam
 	pkgdesc = A free open source tool to split and merge pdf documents
-	pkgver = 5.4.0
+	pkgver = 5.4.1
 	pkgrel = 1
 	url = https://www.pdfsam.org/
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = pdfsam
 	depends = sh
 	depends = archlinux-java-run
 	noextract = pdfsam--linux-x64.tar.gz
-	source = https://github.com/torakiki/pdfsam/releases/download/v5.4.0/pdfsam-basic-5.4.0-linux-x64.tar.gz
+	source = https://github.com/torakiki/pdfsam/releases/download/v5.4.1/pdfsam-basic-5.4.1-linux-x64.tar.gz
 	source = pdfsam
-	sha512sums = 081aa4e106c21b8dc616c03acbe3495690e014e92725781998cd5d285ed03496076afa1e40317aa419cc5d1141bfde500b9ec9e09f25db9ddf4ac31c0d782165
+	sha512sums = c1f9df2fcfe93911dba443e6a00d8831bfb87879a1865ef42ada48622b1e2930fb8f87c2fdc666e0b2cb13a985bba96378ed873b306bcd4b205aecf0c2e8ec3e
 	sha512sums = 700700b8ad4fb44f6eb1aaff35ede7ac53729c0dce39f23467159b14aadd28705cf5c547c6b8871ecd4afebc1fb479eafdbdad68b95c0114e26438961abf8209
 
 pkgname = pdfsam
