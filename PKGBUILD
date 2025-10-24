@@ -2,7 +2,7 @@
 
 pkgname=renesas-flash-programmer-bin
 pkgver=3.21.00
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Renesas Flash Programmer"
 arch=(x86_64)
@@ -50,6 +50,7 @@ package() {
 
 	ln -sf /opt/renesas/rfp/rfp-cli ${pkgdir}/usr/bin/rfp-cli
 	ln -sf /opt/renesas/rfp/rpe ${pkgdir}/usr/bin/rpe
+	ln -sf /opt/renesas/rfp/libRFP.so ${pkgdir}/usr/lib/libRFP.so
 
 	rm -rf docs *.rules
 	chown root:root -R ${pkgdir}

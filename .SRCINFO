@@ -1,7 +1,7 @@
 pkgbase = renesas-flash-programmer-bin
 	pkgdesc = Renesas Flash Programmer
 	pkgver = 3.21.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.renesas.com/rfp
 	arch = x86_64
 	license = LicenseRef-scancode-commercial-license
