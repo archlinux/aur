@@ -5,7 +5,7 @@
 
 pkgbase=jellyfin-git
 pkgname=(jellyfin-git jellyfin-web-git jellyfin-server-git)
-pkgver=10.11.0.r27401.6d287d5
+pkgver=10.11.0.r27881.d167d59
 pkgrel=1
 pkgdesc='The Free Software Media System'
 arch=('any')
@@ -22,6 +22,8 @@ source=('git+https://github.com/jellyfin/jellyfin.git'
         'tmpfiles.conf'
         'fix-service-file.patch'
         'fix-ffmpeg-default.patch'
+        'fix-npm-max-version.patch'
+        'fix-npm-lockfile.patch'
       )
 sha512sums=('SKIP'
             'SKIP'
@@ -30,6 +32,8 @@ sha512sums=('SKIP'
             '3e12ec3d3fcb15975d5f86bc3ce3363ae89b0e9e0b2580c29fc8a612c0220a74a067138b15c48ae27bb3c5777eca33055f10651949678a1ee7bd094293f6abb6'
             'f2e1c0a6da7a4edc850ab7fb6b93edc3b97c9a1278e3ba88cb86da5260afe21fc59e8f230120119d0998868d99fb85bda4eb17afb1a99a031eabf8941b36cc40'
             '8d04e440cf8f545089d24ad4c4c927141e9f27be75c965decb96b378424bc96253dd5f12ffc62856a8c0b803e586ab2e4f80b911ba1557aeea1470a265d66668'
+            '73604fd359cfa75335d0cde56ce445e4f400cfcfd347f3dad3362d1357bec89d81cb596e088b496c44349838db6929428206e3e7555611fdafa6bed90e44447f'
+            '0d49d770f076ea8b644bf9e0fce49c1e36591625da53220d61cea9980c38aade4b97ef97af9ec2bf9ebe4ce0a9ef6cecf1a9c86e227dc89add50e39bc3fbcce1'
           )
 pkgver() {
   cd jellyfin
@@ -42,10 +46,16 @@ prepare() {
 
   # fix systemd service file
   patch -p1 -i "$srcdir/fix-service-file.patch"
+
+  # Fix ffmpeg default
   patch -p1 -i "$srcdir/fix-ffmpeg-default.patch"
   popd
 
   pushd jellyfin-web
+  # Fix npm max version being set to fix issue with github ci tool
+  patch -p1 -i "$srcdir/fix-npm-max-version.patch"
+  patch -p1 -i "$srcdir/fix-npm-lockfile.patch"
+
   # download dependencies
   # FS#79713 - remove environment variable with 10.9.x release
   SKIP_PREPARE=1 npm ci --no-audit --no-fund --no-update-notifier
