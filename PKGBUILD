@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 _base=testdata
 pkgname=python-${_base}
-pkgver=7.3.0
+pkgver=7.3.1
 pkgrel=1
 pkgdesc="Easily generate random unicode test data among other things"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python-datatypes)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('1da02be2fd596f8c827777ae447d8649933e49685f40e42cd4a66fba03ee117524149185cb01388c660fafef07780cafb473aa6c09bcdec4979232353b2e6895')
+sha512sums=('25c639ca51e822e38fcc1d93a53cf2886f79c97ced8fd60b07d44fe1fcefd1c3972241cb95f85450fa82cae84191230a4e7f69a30f44c5dcfdcf02412043765a')
 
 build() {
   cd ${_base}-${pkgver}
