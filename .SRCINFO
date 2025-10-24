@@ -2,7 +2,7 @@ pkgbase = mwptools-git
 	pkgdesc = mission planner for INAV and MultiWii
 	pkgver = 24.09.29.r0.41ecde7f
 	pkgrel = 1
-	url = https://github.com/stronnag/mwptools
+	url = https://codeberg.org/stronnag/mwptools
 	install = mwp.install
 	arch = i686
 	arch = x86_64
@@ -45,7 +45,7 @@ pkgbase = mwptools-git
 	optdepends = protobuf-c: enable protobuf-c for readsb/ADSB
 	provides = mwptools
 	conflicts = mwptools
-	source = mwptools::git+https://github.com/stronnag/mwptools
+	source = mwptools::git+https://codeberg.org/stronnag/mwptools
 	sha512sums = SKIP
 
 pkgname = mwptools-git
