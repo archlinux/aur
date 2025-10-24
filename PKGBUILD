@@ -2,17 +2,15 @@
 #_gitbranch="master"
 # Maintainer: tuxnix <tuxnix@gmx.com>
 
-
-
-pkgver=1.7
-pkgrel=5
+pkgver="1.8"
+pkgrel="0"
 _name="tvb-recorder"
 pkgname="$_name"
-pkgdesc='TV-recording und live-switch with TV-Browser plugin'
+pkgdesc='TV-Browser plugins for switching and recording'
 url='https://codeberg.org/tuxnix/tvb-recorder'
 arch=('any')
 license=('GLPv2-only')
-depends=('tvbrowser' 'mpv' 'at' 'ffmpeg')
+depends=('at' 'ffmpeg' 'mpv' 'tvbrowser')
 makedepends=('git')
 source=('git+https://codeberg.org/tuxnix/tvb-recorder' $_name.install)
 sha512sums=('SKIP'
