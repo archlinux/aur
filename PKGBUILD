@@ -16,6 +16,8 @@ makedepends=(
     'git'
     'xxd'
 )
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 source=("$_pkgname::git+https://github.com/wins1ey/LibreSplit.git")
 sha256sums=('SKIP')
