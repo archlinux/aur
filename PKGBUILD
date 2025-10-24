@@ -34,7 +34,7 @@ prepare() {
 }
 
 build() {
-    cd "$pkgname-v$pkgver"
+    cd "$pkgname"
     make build
 }
 
@@ -43,7 +43,7 @@ check() {
 }
 
 package() {
-    cd "$pkgname-v$pkgver"
+    cd "$pkgname"
     install -Dm755 ./build/caelestia-gif "$pkgdir/usr/bin/caelestia-gif"
     install -Dm644 ./README.md "$pkgdir/usr/share/doc/caelestia-gif/README.md"
     install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/caelestia-gif/LICENSE"
