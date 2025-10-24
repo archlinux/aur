@@ -2,14 +2,15 @@
 pkgname=gale-git
 pkgdesc='A lightweight mod manager for Thunderstore'
 pkgver=1.10.0.r12.g1b831e6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/Kesomannen/gale'
 license=('GPL-3.0-or-later')
 makedepends=('git' 'cargo' 'cargo-tauri' 'pnpm' 'lld' 'clang')
 depends=('webkit2gtk-4.1' 'cairo' 'desktop-file-utils' 'xdg-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'libsoup3' 'openssl' 'pango' 'sqlite' 'hicolor-icon-theme')
 source=('git+https://github.com/Kesomannen/gale.git' 'Gale.desktop')
-sha256sums=('SKIP' '014a3c5a5a773fc0846e0c08df29e327dee4f05c3a9977dbf853fb7a2910d4f4')
+sha256sums=('SKIP'
+            '169161f9ccc27cd7c0c6ce1ce75d63c15169f91706bd8b8b52d0fe4499ce4f70')
 conflicts=('gale-bin')
 provides=('gale')
 options=('!lto')
