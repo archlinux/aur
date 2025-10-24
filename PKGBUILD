@@ -15,11 +15,8 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/Tusk-Launcher"
-    if git describe --tags --long 2>/dev/null; then
-        git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-    else
+    git describe --tags --long 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./g' || \
         printf "0.0.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    fi
 }
 
 build() {
@@ -29,11 +26,7 @@ build() {
 
 package() {
     cd "$srcdir/Tusk-Launcher"
-
-    # Install the binary
     install -Dm755 "target/release/Tusk-Launcher" "$pkgdir/usr/bin/tusk-launcher"
-
-    # Install documentation
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
