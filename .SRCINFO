@@ -1,6 +1,6 @@
 pkgbase = flowinity-flameshot
-	pkgdesc = (Deprecated package, superceded by flowshot) Powerful yet simple to use screenshot software (Unofficial fork that adds the ability to upload to a PrivateUploader/Flowinity server.)
-	pkgver = r1973
+	pkgdesc = (Deprecated package, superseded by flowshot) Powerful yet simple to use screenshot software (Unofficial fork that adds the ability to upload to a PrivateUploader/Flowinity server.)
+	pkgver = r1974
 	pkgrel = 1
 	url = https://github.com/Flowinity/flameshot
 	arch = i686

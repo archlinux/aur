@@ -52,9 +52,9 @@
 
 pkgname=flowinity-flameshot
 _pkgname=flameshot
-pkgver=r1973
+pkgver=r1974
 pkgrel=1
-pkgdesc="(Deprecated package, superceded by flowshot) Powerful yet simple to use screenshot software (Unofficial fork that adds the ability to upload to a PrivateUploader/Flowinity server.)"
+pkgdesc="(Deprecated package, superseded by flowshot) Powerful yet simple to use screenshot software (Unofficial fork that adds the ability to upload to a PrivateUploader/Flowinity server.)"
 arch=('i686' 'x86_64')
 url="https://github.com/Flowinity/flameshot"
 license=('GPL')
