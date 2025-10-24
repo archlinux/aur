@@ -1,6 +1,6 @@
 pkgbase = scpdiscord-git
 	pkgdesc = A very customisable Discord bot + SCP:SL plugin combo. Dev build.
-	pkgver = 3.3.0.25.git438ab06
+	pkgver = 3.3.0.24.git4fe855e
 	pkgrel = 1
 	url = https://github.com/KarlOfDuty/SCPDiscord
 	install = scpdiscord.install
