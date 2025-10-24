@@ -1,7 +1,7 @@
 pkgbase = perl-alien-proj
 	pkgdesc = Compile the Proj library
-	pkgver = 1.30
-	pkgrel = 2
+	pkgver = 1.31
+	pkgrel = 1
 	url = https://metacpan.org/release/Alien-proj
 	arch = any
 	license = GPL-1.0-or-later OR Artistic-1.0-Perl
@@ -18,7 +18,7 @@ pkgbase = perl-alien-proj
 	depends = perl-scalar-list-utils
 	depends = perl-sort-versions
 	options = !emptydirs
-	source = perl-alien-proj-1.30.tar.gz::https://cpan.metacpan.org/authors/id/S/SL/SLAFFAN/Alien-proj-1.30.tar.gz
-	sha256sums = 49b7b9cdab32bf41ad863501d32e19eba586ba6f43fde465d6c5596fb33dd7a0
+	source = perl-alien-proj-1.31.tar.gz::https://cpan.metacpan.org/authors/id/S/SL/SLAFFAN/Alien-proj-1.31.tar.gz
+	sha256sums = 9d0169833a37d87423830055c2732533dc3907fc32eaa2eec43caf17a3d3e9e7
 
 pkgname = perl-alien-proj
