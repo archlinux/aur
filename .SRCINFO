@@ -1,0 +1,17 @@
+pkgbase = goup-rs
+	pkgdesc = an elegant Go version manager write in rust
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/thinkgos/goup-rs
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	provides = goup
+	options = !debug
+	options = !lto
+	source = goup-rs-0.14.0::https://github.com/thinkgos/goup-rs/archive/refs/tags/v0.14.0.tar.gz
+	b2sums = 9875a7849ceb7e02459cf5552fafc628b39a61c8447121e3fdd1d1661b48afd23aa41d8d2ead304ce280dbf340cac017b1ab8b6439950476e240993b85463989
+
+pkgname = goup-rs
