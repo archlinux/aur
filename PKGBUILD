@@ -16,6 +16,14 @@
 #   * s_color_transparency.lua - Color transparency control
 # - Updated Harrison plugins (version 20251014)
 # - Minor updates to gmsynth, midifilter, and tuna LV2 plugins
+#
+# WARNING - Linux Version Limitations:
+# The Linux version is missing several advertised features present in Windows/Mac:
+# - NO SSL 9KJ Channel Strip (Windows/Mac exclusive)
+# - NO Slate Sounds Starter Pack (replaced with Goldbaby Audio Loops)
+# - Partial/unclear Harrison Creator Pack implementation
+# - Unclear RTA analyzer per-channel implementation
+# Linux users receive core DAW functionality but not all advertised premium features.
 
 pkgname=mixbus11
 pkgver=11.1.71

@@ -18,6 +18,25 @@ Mixbus is a full-featured Digital Audio Workstation (DAW) with "True Analog Mixi
 - Professional mixing and mastering tools
 - Support for VST, LV2, and AU plugins (Linux version supports LV2)
 
+## ⚠️ Important: Linux Version Limitations
+
+The Linux version of Mixbus 11.1 has feature parity issues compared to Windows/Mac versions. The following advertised features are **NOT included** in the Linux build:
+
+### Missing Features:
+- **SSL 9KJ Channel Strip** - Not available on Linux (Windows/Mac exclusive)
+- **Slate Sounds Starter Pack** - Replaced with Goldbaby Audio Loops (107 samples)
+- **Harrison Creator Pack** - Partially implemented or unclear
+- **Per-channel RTA displays** - Implementation status unclear
+
+### What Linux Users Get Instead:
+- Core Mixbus 11.1 DAW functionality
+- Standard Harrison plugins (XT series)
+- Goldbaby Audio Loops (different from advertised Slate content)
+- Full MIDI enhancements and controller support
+- 49 LV2 plugins including AVL Drums, GM Synth, B_synth
+
+**Note**: Linux users pay the same price but receive a reduced feature set. Consider these limitations when purchasing.
+
 ## Installation
 
 ### From AUR
