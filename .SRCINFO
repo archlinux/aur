@@ -13,6 +13,8 @@ pkgbase = libsmu-git
 	depends = libusb
 	depends = openmp
 	depends = python
+	provides = libsmu
+	conflicts = libsmu
 	source = libsmu-git::git+https://github.com/analogdevicesinc/libsmu.git
 	md5sums = SKIP
 

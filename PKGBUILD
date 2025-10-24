@@ -9,6 +9,8 @@ url="https://github.com/analogdevicesinc/libsmu"
 license=('BSD-3-Clause')
 depends=('boost>=1.53' 'libusb' 'openmp' 'python')
 makedepends=('cmake' 'git' 'pkg-config')
+provides=('libsmu')
+conflicts=('libsmu')
 source=("$pkgname::git+https://github.com/analogdevicesinc/libsmu.git")
 md5sums=('SKIP')
 
