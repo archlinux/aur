@@ -1,12 +1,12 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=rpcsx
 pkgname=$_pkgname-git
-pkgver=r18570.a42ab014e
+pkgver=r18656.e27926d
 pkgrel=1
 pkgdesc="Sony PlayStation 4/5 emulator"
 arch=('x86_64')
-url="https://rpcsx.github.io/rpcsx-site/"
-license=('GPL-2.0-only AND MIT')
+url="https://rpcsx.github.io/"
+license=('GPL-2.0-only')
 depends=(
 	'gcc-libs'
 	'glfw'
@@ -44,6 +44,7 @@ source=(
 	'asmjit::git+https://github.com/asmjit/asmjit.git'
 	'cubeb::git+https://github.com/mozilla/cubeb.git'
 	'ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git'
+	'fmt::git+https://github.com/fmtlib/fmt.git'
 	'fusion::git+https://github.com/xioTechnologies/Fusion.git'
 	'glslang::git+https://github.com/KhronosGroup/glslang.git'
 	'miniupnp::git+https://github.com/miniupnp/miniupnp.git'
@@ -77,16 +78,18 @@ b2sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
+	'SKIP'
 )
 
 pkgver() {
 	cd $_pkgname
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
 	cd $_pkgname
 	git config submodule.3rdparty/FFmpeg.url ../ffmpeg
+	git config submodule.3rdparty/fmtlib.url ../fmt
 	git config submodule.3rdparty/glslang.url ../glslang
 	git config submodule.3rdparty/json.url ../nlohmann-json
 	git config submodule.3rdparty/LibAtrac9.url ../$_pkgname-libatrac9
@@ -105,7 +108,7 @@ prepare() {
 	git config submodule.rpcs3/3rdparty/yaml-cpp.url ../rpcs3-yaml-cpp
 	git config submodule.rpcs3/3rdparty/zstd/zstd.url ../zstd
 	git -c protocol.file.allow=always submodule update
-	sed -i '/USE_SYSTEM/s/off/on/' CMakeLists.txt
+	sed -i '/USE_SYSTEM/s/OFF/ON/i' CMakeLists.txt
 }
 
 build() {
@@ -134,11 +137,10 @@ build() {
 package() {
 	depends+=(
 		'libasound.so'
-		'libsox.so'
+		'libsox_ng.so'
 		'libunwind-x86_64.so'
 		'libvulkan.so'
 	)
 	# shellcheck disable=SC2154
 	DESTDIR="$pkgdir" cmake --install build
-	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $_pkgname/orbis-kernel/LICENSE
 }
