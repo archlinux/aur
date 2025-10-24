@@ -10,7 +10,7 @@
 # If upgrading, you must read the guidance at http://www.courier-mta.org/maildirmake.html on "Converting pre-unicode format maildirs"
 
 pkgname=courier-mta
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="IMAP(s)/POP3(s) and SMTP Server with ML-manager, webmail and webconfig"
 arch=(i686 x86_64)
@@ -39,7 +39,7 @@ source=(http://downloads.sourceforge.net/project/courier/courier/${pkgver}/couri
 	webmaild.service
 	courier-courierfilter.service
 	courier-mta.conf)
-sha1sums=('39207f7c70cf39c8f8c111ded8ded55b11cf297e'
+sha1sums=('1fa769d9f567fd90e753d374d99e6907275a7387'
           '68012617edb5d82a99245bd7a7e319d88580e110'
           '8400fc2538aebbb68933eac3c4d82b4303c61315'
           'c52f436744307d3777a852cfaa85b4ff6345f4a4'
