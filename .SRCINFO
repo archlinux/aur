@@ -1,7 +1,7 @@
 pkgbase = python-nxp-codecheck
 	pkgdesc = Simple set of checking tools for accepting code quality for NXP python projects
-	pkgver = 0.3.13
-	pkgrel = 3
+	pkgver = 0.3.14
+	pkgrel = 1
 	url = https://pypi.org/project/nxp-codecheck
 	arch = any
 	groups = spsdk-plugins
@@ -25,7 +25,7 @@ pkgbase = python-nxp-codecheck
 	provides = nxp-codecheck
 	conflicts = nxp-codecheck
 	replaces = nxp-codecheck
-	source = nxp_codecheck-0.3.13.tar.gz::https://files.pythonhosted.org/packages/source/n/nxp_codecheck/nxp_codecheck-0.3.13.tar.gz
-	sha512sums = 2f68243af7117a6e36fa419ba10b5755bf9589cec61ecef1b99592887fa3c8b323fe72ceaf0cda7cc3f0684acddd33de9e2283eddfe9e2e7f538ca7634ed4ee3
+	source = nxp_codecheck-0.3.14.tar.gz::https://files.pythonhosted.org/packages/source/n/nxp_codecheck/nxp_codecheck-0.3.14.tar.gz
+	sha512sums = b94afc1facf64ed777207ab8e5ea4798d440153ac44419bce39df6746cdbdacd17d1abb92118a162a966ccdd48d253ecc8ccfd9e1a28a1d5614c37ccafab0eda
 
 pkgname = python-nxp-codecheck
