@@ -12,6 +12,8 @@ pkgbase = pixelpulse2-git
 	depends = qt5-base
 	depends = qt5-declarative
 	depends = qt5-quickcontrols
+	provides = pixelpulse2
+	conflicts = pixelpulse2
 	source = pixelpulse2-git::git+https://github.com/analogdevicesinc/Pixelpulse2.git
 	md5sums = SKIP
 
