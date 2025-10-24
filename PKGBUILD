@@ -1,6 +1,6 @@
 # Maintainer: Marius Meschter <arch at meschter dot me>
 pkgname=addlicense
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Add license information to source code files'
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=(Apache-2.0)
 depends=()
 makedepends=('go>=1.16')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/google/addlicense/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('db7990c110d2c38d2463425bc5be3617b43dbb64bea6fdd169a77800d755665e')
+sha256sums=('d2e05668e6f3da9b119931c2fdadfa6dd19a8fc441218eb3f2aec4aa24ae3f90')
 
 prepare() {
   cd "$pkgname-$pkgver"
