@@ -1,7 +1,7 @@
 pkgbase = python-dnsstamps
 	pkgdesc = Create and parse DNS stamps with ease.
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chrisss404/python-dnsstamps
 	arch = any
 	license = MIT
