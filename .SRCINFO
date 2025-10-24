@@ -1,0 +1,12 @@
+pkgbase = pyorganize
+	pkgdesc = Automatically organizes files into categorized folders based on file types.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ramackersjp/PyOrganize
+	arch = any
+	license = GPL-3.0
+	depends = python
+	source = https://github.com/ramackersjp/PyOrganize/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = b108c37ae89657e4b1b847abdbb643315e9766ab2aba01c3feb8f03da0ab5f43
+
+pkgname = pyorganize
