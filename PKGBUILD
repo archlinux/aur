@@ -19,7 +19,9 @@ optdepends=(
   'aws-cdk: AWS CDK Toolkit')
 provides=('llrt-lambda')
 conflicts=('llrt-lambda')
-source=("$_pkgid-source.zip::$url/archive/refs/tags/v$_pkgver.zip")
+source=("$_pkgid-LICENSE::https://raw.githubusercontent.com/awslabs/llrt/refs/tags/v$_pkgver/LICENSE"
+        "$_pkgid-THIRD_PARTY_LICENSES::https://raw.githubusercontent.com/awslabs/llrt/refs/tags/v$_pkgver/THIRD_PARTY_LICENSES"
+        "$_pkgid-NOTICE::https://raw.githubusercontent.com/awslabs/llrt/refs/tags/v$_pkgver/NOTICE")
 source_x86_64=(
   "$_pkgid-x86_64-std-sdk.zip::$url/releases/download/v$_pkgver/llrt-lambda-x64.zip"
   "$_pkgid-x86_64-full-sdk.zip::$url/releases/download/v$_pkgver/llrt-lambda-x64-full-sdk.zip"
@@ -29,7 +31,9 @@ source_aarch64=(
   "$_pkgid-aarch64-full-sdk.zip::$url/releases/download/v$_pkgver/llrt-lambda-arm64-full-sdk.zip"
   "$_pkgid-aarch64-no-sdk.zip::$url/releases/download/v$_pkgver/llrt-lambda-arm64-no-sdk.zip")
 noextract=("${source_x86_64[@]%%::*}" "${source_aarch64[@]%%::*}")
-sha256sums=('e8d38b80657ea515366003b217b16a33a0214228f89d6915b52604e0c4e040c6')
+sha256sums=('58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd'
+            '8b5f4183be83b323beab34c21b68add8535c482f939b03c9557dbafb75e92e47'
+            '53c5c653b7164c02212717b494d8010704cf966286b5f6a6e6d185fe8d29ceaf')
 sha256sums_x86_64=('08f1fd1eb349ee0f290875db0d96605a424fc7b197103658def75fd3c41761ed'
                    'adde886660ea8110a4116723712d4b5bc5ae8f9e5efb042d591351a272a8199d'
                    '8d3a59d6eca5de8ea616e607137d051f8fb11b8158f41600b0d22cadc699c542')
@@ -43,9 +47,15 @@ _install_llrt_bootstrap() {
   install -Dm755 "$srcdir/bootstrap" "$pkgdir/usr/share/llrt/lambda/$target_suffix/bootstrap"
 }
 
+_install_licenses() {
+  for file in LICENSE THIRD_PARTY_LICENSES NOTICE; do
+    install -m644 "$srcdir/$_pkgid-$file" "$pkgdir/usr/share/licenses/$pkgname/$file"
+  done
+}
+
 package() {
   _install_llrt_bootstrap "std-sdk"
   _install_llrt_bootstrap "full-sdk"
   _install_llrt_bootstrap "no-sdk"
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/llrt-$_pkgver/"{LICENSE,THIRD_PARTY_LICENSES,NOTICE}
+  _install_licenses
 }
