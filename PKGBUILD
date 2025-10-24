@@ -1,7 +1,7 @@
 #Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 #Maintainer: Rafael Fontenelle <rafaelff at gnome dot org>
 
-pkgname="mongodb-bin"
+pkgname="mongodb80-bin"
 pkgver="8.0.15"
 _basever="8.0"
 _basedist="noble"

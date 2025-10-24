@@ -1,4 +1,4 @@
-pkgbase = mongodb-bin
+pkgbase = mongodb80-bin
 	pkgdesc = A high-performance, open source, schema-free document-oriented database
 	pkgver = 8.0.15
 	pkgrel = 1
@@ -32,4 +32,4 @@ pkgbase = mongodb-bin
 	sha256sums_aarch64 = a03d355b170066370d5499edd7b4162cdb1325459ab52318bd91bd34cddc3af5
 	sha256sums_aarch64 = ad62096f0214bada876c079269d5e63f3ef90f6c0736a36d260c27b4c6e4990a
 
-pkgname = mongodb-bin
+pkgname = mongodb80-bin
