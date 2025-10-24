@@ -2,7 +2,7 @@
 # Contributor: Jordan Day < jordanday444 at gmail dot com >
 _name=dblab
 pkgname=${_name}-bin
-pkgver=0.34.1
+pkgver=0.34.2
 pkgrel=1
 provides=("$_name")
 conflicts=("$_name")
@@ -10,7 +10,7 @@ pkgdesc="Interactive client for PostgreSQL, MySQL, SQLite3, Oracle and SQL Serve
 arch=('x86_64')
 url="https://github.com/danvergara/dblab"
 source=("$url/releases/download/v$pkgver/${_name}_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('7bca40ddbec148812cd28e5a6ca677fc24a89648de6ffbac57cee3855197d6d4')
+sha256sums=('cc5bb0ec1e5777433480e151f2925a1af9d5f61d34d1b111ecba019bcee7f346')
 license=('MIT')
 
 package() {
