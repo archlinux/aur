@@ -1,9 +1,9 @@
 # Maintainer: Alastair Ozmond <alastair.ozmond@gmail.com>
 pkgname=usb-tree-app
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
-pkgdesc="USB device tree viewer with detailed information"
-arch=('x86_64')
+pkgdesc="USB device tree viewer with detailed information and monitor"
+arch=('any')
 url="https://github.com/AOzmond/usb-tree"
 license=('GPL-2.0-or-later')
 depends=('gtk3' 'webkit2gtk-4.1' 'libusb')
@@ -11,7 +11,7 @@ makedepends=('go' 'bun-bin' 'git')
 provides=('usb-tree')
 conflicts=('usb-tree' 'usb-tree-app-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('df49b2b57ead0840f5f977bdc14247642941bc168e969161e8f8c7730c76047b')
+sha256sums=('314fe27303713edebf08773be29df53fcad9de40f168d19cb4f5e0ed706779c4')
 
 build() {
     cd "${srcdir}/usb-tree-${pkgver}"
@@ -23,7 +23,7 @@ build() {
     # Build the application with wails
     cd ../
     go install github.com/wailsapp/wails/v2/cmd/wails@latest
-    $(go env GOPATH)/bin/wails build -clean -platform linux/amd64
+    $(go env GOPATH)/bin/wails build -clean
 }
 
 package() {
