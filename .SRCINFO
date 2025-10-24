@@ -1,13 +1,13 @@
 pkgbase = zxbasic
 	pkgdesc = Basic compiler for ZX Spectrum
-	pkgver = 1.18.1
+	pkgver = 1.18.3
 	pkgrel = 1
 	url = https://github.com/boriel-basic/zxbasic
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = python
 	options = !debug
-	source = https://github.com/boriel-basic/zxbasic/archive/v1.18.1/zxbasic-1.18.1.tar.gz
-	sha256sums = 3234a6e628aae04815300b845d2245380630071a713378692de8d0af2452b448
+	source = https://github.com/boriel-basic/zxbasic/archive/v1.18.3/zxbasic-1.18.3.tar.gz
+	sha256sums = 582ba0259eaaba7b0f47818e410f980a4c5032d632f60b0f1c6e7b704bb67275
 
 pkgname = zxbasic
