@@ -16,7 +16,7 @@ source=("$_pkgname-$pkgver.zip::https://github.com/NickPlayzGITHUB/CrossPatch/re
 sha256sums=("641cea8d61c71ac34c6c22461f84d81f86e7f7c6b3c30b680603b38cf47c828d"
 	SKIP
 	"e956421705ad42d51ba5100d69785a2863958e51e6966e812a97d63f91625dd0"
-	"34dcf2b72239c61ce6e428ed793fe1de43e4732a75e558e9238690321348e396")
+	"02d6958b41176b5f1644f74ec0004af957c9218fc4ad31f3d7cb1282e68c2b0c")
 
 package() {
 cd ${srcdir}
