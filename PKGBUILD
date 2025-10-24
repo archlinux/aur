@@ -1,7 +1,7 @@
 
 pkgname=xpanel-desktop-bin
 pkgver=1.0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Electron wrapper for Finalmouse XPANEL (WebHID). Prebuilt AppImage."
 arch=('x86_64')
 url="https://github.com/diegul/xpanel-desktop"
