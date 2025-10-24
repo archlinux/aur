@@ -5,7 +5,7 @@
 pkgname=alephone
 _pkgdate=20250829
 pkgver=1.11_$_pkgdate
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, enhanced port of the classic FPS "Marathon 2" by Bungie Software'
 arch=('i686' 'x86_64')
 url="https://alephone.lhowon.org/"
@@ -36,6 +36,7 @@ prepare() {
 build() {
   cd AlephOne-$_pkgdate
 
+  export CXXFLAGS="$CXXFLAGS -fsanitize=undefined" #Issue#518
   PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" ./configure --prefix=/usr
   make
 }
