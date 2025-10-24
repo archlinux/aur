@@ -4,7 +4,7 @@ pkgbase=python-astlib
 _pyname=${pkgbase#python-}
 #_pyname=astLib
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.12.1
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="A set of Python modules that provides some tools for research astronomers"
 arch=('i686' 'x86_64')
@@ -15,22 +15,23 @@ makedepends=('python-setuptools'
 #            'python-build'
 #            'python-installer'
              'wcstools-all'
-             'swig'
-             'python-sphinx-epytext'
-             'python-readthedocs-sphinx-ext'
-             'python-sphinx_rtd_theme'
-             'python-astropy'
-             'python-scipy'
-             'python-matplotlib')
-checkdepends=('python-pytest')
+             'swig')
+#            'python-sphinx-epytext'
+##           'python-readthedocs-sphinx-ext'
+#            'python-sphinx_rtd_theme'
+#            'python-astropy'
+#            'python-scipy'
+#            'python-matplotlib'
+#        )
+checkdepends=('python-pytest'
+              'python-astropy'
+              'python-scipy'
+              'python-matplotlib')
 # astropy scipy matplotlib already in makedepends
-##             'python-astropy'
-##             'python-scipy'
-##             'python-matplotlib'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'use_system_wcstools.patch'
         'fix-deprecated-imp.patch')
-sha256sums=('cba26f1c1177ff158fac50326bae15bbb6625e80946b69b1e445862dc8de73a8'
+sha256sums=('4fc5f10396cefe25886c71bf1d6e6d00e730c41b7d122ef56c13d457c094ce45'
             'df8f7b7688db376b041c965727597b78e0911ab92ef467816a8bb7a3a62ffc1f'
             'ea99eedbe5d67ebed17f3383d6b1eaf7a8b1f38a2d3e009fa69a8a084487185b')
 
@@ -42,7 +43,7 @@ prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     patch -Np1 -i "${srcdir}/use_system_wcstools.patch"
-    mkdir -p docs/_static
+#   mkdir -p docs/_static
 }
 
 build() {
@@ -50,8 +51,9 @@ build() {
     python setup.py build
 #   python -m build --wheel --no-isolation
 
-    msg "Building Docs"
-    PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
+#   msg "Building Docs"
+#   mv {,_}PyWCSTools
+#   PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
 }
 
 check(){
