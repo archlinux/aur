@@ -1,6 +1,6 @@
 pkgbase = mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 25.3.0_devel.213035.162cc070f06.d41d8cd
+	pkgver = 26.0.0_devel.214014.fd55e874ed0.d41d8cd
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
@@ -50,7 +50,7 @@ pkgbase = mesa-git
 	depends = zlib
 	depends = python
 	depends = xcb-util-keysyms
-	depends = libLLVM.so=20.1-64
+	depends = libLLVM.so=21.1-64
 	depends = clang
 	depends = libclc
 	depends = spirv-llvm-translator
