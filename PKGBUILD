@@ -2,14 +2,13 @@
 
 pkgname='rustdesk-server'
 pkgver='1.1.14'
-pkgrel=6
+pkgrel=7
 pkgdesc='RustDesk Server Program'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/rustdesk/rustdesk-server'
 license=('AGPL-3.0-or-later')
 depends=('gcc-libs' 'glibc')
 makedepends=('git' 'rust')
-conflicts=("${pkgname}-bin")
 backup=("etc/default/${pkgname}-hbbr"
         "etc/default/${pkgname}-hbbs")
 options=('!lto')

@@ -1,15 +1,15 @@
 pkgbase = rustdesk-server
 	pkgdesc = RustDesk Server Program
 	pkgver = 1.1.14
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/rustdesk/rustdesk-server
 	arch = x86_64
+	arch = aarch64
 	license = AGPL-3.0-or-later
 	makedepends = git
 	makedepends = rust
 	depends = gcc-libs
 	depends = glibc
-	conflicts = rustdesk-server-bin
 	options = !lto
 	backup = etc/default/rustdesk-server-hbbr
 	backup = etc/default/rustdesk-server-hbbs
