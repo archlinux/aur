@@ -1,7 +1,7 @@
 # Maintainer: charlie <github.com/381181295>
 # Co-maintainer: SIGTERM <https://github.com/SIGTERM-015>
 pkgname=chatwise
-pkgver=0.9.38
+pkgver=0.9.39
 pkgrel=1
 pkgdesc="The second fastest AI chatbot"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=('LicenseRef-proprietary')
 depends=(cairo gdk-pixbuf2 glib2 gtk3 hicolor-icon-theme libsoup pango webkit2gtk-4.1 openssl libappindicator-gtk3)
 options=(!strip !debug)
 source=("https://gh-releases.chatwise.app/egoist/chatwise-releases/v${pkgver}/ChatWise_${pkgver}_amd64.deb")
-sha256sums=('b75c4ccf06f4a73d6fe4dd98f1aa2d61e862232ce7b6c23e3fc7aa6ad382a58d')
+sha256sums=('ff03cf0d34f86407a279057e1039c3fe2146c9661a7f103fc7692d4bea4280bd')
 
 package() {
     tar -xvf data.tar.gz -C "${pkgdir}"
