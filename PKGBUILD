@@ -1,15 +1,14 @@
 # Maintainer: Forest Crossman <cyrozap at gmail dot com>
 
 pkgname=pixelpulse2-git
-pkgver=1.0.4.r1.g972b7e8
+pkgver=1.0.4.r44.gd066f2b
 pkgrel=1
 pkgdesc="A user interface for analog systems exploration."
 arch=('i686' 'x86_64')
 url="https://github.com/analogdevicesinc/Pixelpulse2"
-license=('custom:MPLv2')
-depends=('libusb' 'qt5-quickcontrols')
+license=('MPL-2.0')
+depends=('libsmu' 'libusb' 'qt5-base' 'qt5-declarative' 'qt5-quickcontrols')
 makedepends=('git')
-install=${pkgname}.install
 source=("$pkgname::git+https://github.com/analogdevicesinc/Pixelpulse2.git")
 md5sums=('SKIP')
 
@@ -27,7 +26,10 @@ build() {
   cd $pkgname
   mkdir -p build
   cd build
-  qmake-qt5 ..
+  cmake \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    ..
   make
 }
 

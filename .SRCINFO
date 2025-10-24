@@ -1,17 +1,18 @@
 pkgbase = pixelpulse2-git
 	pkgdesc = A user interface for analog systems exploration.
-	pkgver = 1.0.4.r1.g972b7e8
+	pkgver = 1.0.4.r44.gd066f2b
 	pkgrel = 1
 	url = https://github.com/analogdevicesinc/Pixelpulse2
-	install = pixelpulse2-git.install
 	arch = i686
 	arch = x86_64
-	license = custom:MPLv2
+	license = MPL-2.0
 	makedepends = git
+	depends = libsmu
 	depends = libusb
+	depends = qt5-base
+	depends = qt5-declarative
 	depends = qt5-quickcontrols
 	source = pixelpulse2-git::git+https://github.com/analogdevicesinc/Pixelpulse2.git
 	md5sums = SKIP
 
 pkgname = pixelpulse2-git
-
