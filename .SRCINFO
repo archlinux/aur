@@ -1,8 +1,9 @@
 pkgbase = devwp-bin
 	pkgdesc = An Electron-based desktop application for managing local WordPress development sites
-	pkgver = 0.0.26
+	pkgver = 0.0.28
 	pkgrel = 1
 	url = https://github.com/SpiZeak/DevWP
+	install = devwp-bin.install
 	arch = x86_64
 	license = custom
 	depends = docker
@@ -14,9 +15,13 @@ pkgbase = devwp-bin
 	optdepends = git: For version control integration
 	provides = devwp
 	conflicts = devwp
-	noextract = devwp-bin-0.0.26.AppImage
+	noextract = devwp-bin-0.0.28.AppImage
 	options = !strip
-	source = devwp-bin-0.0.26.AppImage::https://github.com/SpiZeak/DevWP/releases/download/v0.0.26/devwp-0.0.26.AppImage
-	sha256sums = aff99a2d3e6174ffbb585066fb83754abdc1d1de89836ff74ac45537b6c93ced
+	source = devwp-bin-0.0.28.AppImage::https://github.com/SpiZeak/DevWP/releases/download/v0.0.28/devwp-0.0.28.AppImage
+	source = devwp-bin-0.0.28-compose.yml::https://github.com/SpiZeak/DevWP/raw/v0.0.28/compose.yml
+	source = devwp-bin-0.0.28-config.tar.gz::https://github.com/SpiZeak/DevWP/archive/refs/tags/v0.0.28.tar.gz
+	sha256sums = 0f3449e57ed76f1062f18efb40237926ceef73c468257e0f04bbb90ebe73a662
+	sha256sums = aca6c0acafc67dae2bd9ead42199ee3f8ba87a2d6625e882c326e17fcae419b8
+	sha256sums = SKIP
 
 pkgname = devwp-bin
