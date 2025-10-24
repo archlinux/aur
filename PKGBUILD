@@ -11,7 +11,7 @@ makedepends=('go' 'bun-bin' 'git')
 provides=('usb-tree')
 conflicts=('usb-tree' 'usb-tree-app-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('0cea900bb4c7ce78e57bf88fc5f7cc9bc30449af2bc36bb3a1feec16d6a858a9')
+sha256sums=('df49b2b57ead0840f5f977bdc14247642941bc168e969161e8f8c7730c76047b')
 
 build() {
     cd "${srcdir}/usb-tree-${pkgver}"
@@ -23,7 +23,7 @@ build() {
     # Build the application with wails
     cd ../
     go install github.com/wailsapp/wails/v2/cmd/wails@latest
-    ~/go/bin/wails build -clean -platform linux/amd64
+    $(go env GOPATH)/bin/wails build -clean -platform linux/amd64
 }
 
 package() {
