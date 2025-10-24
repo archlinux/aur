@@ -1,7 +1,7 @@
 pkgbase = hyprmarker
 	pkgdesc = Transitional meta package for the Wayscriber rename
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wayscriber.com
 	arch = any
 	license = MIT

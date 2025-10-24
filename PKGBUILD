@@ -1,7 +1,7 @@
 # Maintainer: wayscriber maintainers <devmobasa+aur@proton.me>
 pkgname=hyprmarker
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Transitional meta package for the Wayscriber rename'
 arch=('any')
 url='https://wayscriber.com'
