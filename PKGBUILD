@@ -1,15 +1,15 @@
 # Maintainer: Jérôme Mulsant <jerome@rue-de-la-vieille.fr>
 _appname=cca
 pkgname=ccae-git
-pkgver=3.5.4.r2.gc2ab5c0
-pkgrel=3
+pkgver=3.5.5.r0.gc035127
+pkgrel=1
 epoch=
 pkgdesc="Colour Contrast Analyser (CCA) - Checks color contrast against WCAG criteria."
 arch=('x86_64')
-_electron=electron34
+_electron=electron35
 url="https://developer.paciellogroup.com/color-contrast-checker/"
 license=(GPL-3.0-only)
-depends=("$_electron" 'imlib2' 'hicolor-icon-theme')
+depends=("$_electron" 'imlib2' 'hicolor-icon-theme' 'nodejs')
 makedepends=('asar' 'git' 'npm' 'libxcrypt-compat')
 source=("$pkgname::git+https://github.com/ThePacielloGroup/CCAe.git"
     "cca.desktop")
