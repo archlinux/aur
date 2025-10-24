@@ -1,7 +1,7 @@
 pkgbase = caelestia-gif
 	pkgdesc = A script to manage and change GIFs in Caelestia shell
 	pkgver = 1.0.1
-	pkgrel = 9
+	pkgrel = 10
 	url = https://gitlab.com/gnoooo/caelestia-gif
 	install = caelestia-gif.install
 	arch = x86_64
