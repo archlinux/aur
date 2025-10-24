@@ -1,7 +1,7 @@
 pkgbase = liberica-jdk-25-full-bin
 	pkgdesc = BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.
-	pkgver = 25.0.0.u37
-	pkgrel = 2
+	pkgver = 25.0.1.u11
+	pkgrel = 1
 	url = https://bell-sw.com/
 	install = liberica-jdk-25-full.install
 	arch = aarch64
@@ -24,11 +24,11 @@ pkgbase = liberica-jdk-25-full-bin
 	provides = java-runtime-headless-openjdk=25
 	provides = java-runtime=25
 	provides = java-runtime-openjdk=25
-	provides = liberica-jdk-25-bin=25.0.0.u37
-	provides = liberica-jdk-25-full-bin=25.0.0.u37
-	provides = liberica-jdk-25-lite-bin=25.0.0.u37
-	provides = liberica-jre-25-bin=25.0.0.u37
-	provides = liberica-jre-25-full-bin=25.0.0.u37
+	provides = liberica-jdk-25-bin=25.0.1.u11
+	provides = liberica-jdk-25-full-bin=25.0.1.u11
+	provides = liberica-jdk-25-lite-bin=25.0.1.u11
+	provides = liberica-jre-25-bin=25.0.1.u11
+	provides = liberica-jre-25-full-bin=25.0.1.u11
 	backup = etc/liberica-jdk-25-full/logging.properties
 	backup = etc/liberica-jdk-25-full/management/jmxremote.access
 	backup = etc/liberica-jdk-25-full/management/jmxremote.password.template
@@ -57,9 +57,9 @@ pkgbase = liberica-jdk-25-full-bin
 	sha1sums = b8233f9ff931ce97a265827fac18ed90f4e248c6
 	sha1sums = a0da2952bc87a425182c3ac88e88649fbaa7cb65
 	sha1sums = eb36aa73a9be98164447774217865b91e79d503c
-	source_aarch64 = https://download.bell-sw.com/java/25+37/bellsoft-jdk25+37-linux-aarch64-full.tar.gz
-	sha1sums_aarch64 = 3efad8da9c3ae57ca2987d624fdf01c8895cd8fd
-	source_x86_64 = https://download.bell-sw.com/java/25+37/bellsoft-jdk25+37-linux-amd64-full.tar.gz
-	sha1sums_x86_64 = 14109e92d44e1201d9170395d20f78526b8a21ad
+	source_aarch64 = https://download.bell-sw.com/java/25.0.1+11/bellsoft-jdk25.0.1+11-linux-aarch64-full.tar.gz
+	sha1sums_aarch64 = 0f890acb899aa4a6db672402d2bd1e960b26b583
+	source_x86_64 = https://download.bell-sw.com/java/25.0.1+11/bellsoft-jdk25.0.1+11-linux-amd64-full.tar.gz
+	sha1sums_x86_64 = f64052850136dcec8eb4fb7e5db06ae69e22e25c
 
 pkgname = liberica-jdk-25-full-bin
