@@ -1,11 +1,12 @@
 pkgbase = jjui-bin
 	pkgdesc = Text User Interface (TUI) designed for interacting with the Jujutsu version control system.
 	pkgver = 0.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/idursun/jjui
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	depends = jujutsu
 	provides = jjui
 	source = LICENSE-0.9.5::https://raw.githubusercontent.com/idursun/jjui/refs/tags/v0.9.5/LICENSE
 	sha256sums = 287dc795228e18d40fe378a70b577d9fd019b638841af5f3d26c1170cb1ed4df
