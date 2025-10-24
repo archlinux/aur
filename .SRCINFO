@@ -1,18 +1,19 @@
 pkgbase = libsmu-git
 	pkgdesc = Software abstractions for the analog signal exploration tools.
-	pkgver = 1.0.1.r18.gdda38f6
+	pkgver = 1.0.4.r0.gdbb484f
 	pkgrel = 1
 	url = https://github.com/analogdevicesinc/libsmu
 	arch = i686
 	arch = x86_64
-	license = BSD
-	makedepends = git
+	license = BSD-3-Clause
 	makedepends = cmake
+	makedepends = git
 	makedepends = pkg-config
+	depends = boost>=1.53
 	depends = libusb
-	depends = python2
+	depends = openmp
+	depends = python
 	source = libsmu-git::git+https://github.com/analogdevicesinc/libsmu.git
 	md5sums = SKIP
 
 pkgname = libsmu-git
-

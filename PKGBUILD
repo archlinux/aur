@@ -1,14 +1,14 @@
 # Maintainer: Forest Crossman <cyrozap at gmail dot com>
 
 pkgname=libsmu-git
-pkgver=1.0.1.r18.gdda38f6
+pkgver=1.0.4.r0.gdbb484f
 pkgrel=1
 pkgdesc="Software abstractions for the analog signal exploration tools."
 arch=('i686' 'x86_64')
 url="https://github.com/analogdevicesinc/libsmu"
-license=('BSD')
-depends=('libusb' 'python2')
-makedepends=('git' 'cmake' 'pkg-config')
+license=('BSD-3-Clause')
+depends=('boost>=1.53' 'libusb' 'openmp' 'python')
+makedepends=('cmake' 'git' 'pkg-config')
 source=("$pkgname::git+https://github.com/analogdevicesinc/libsmu.git")
 md5sums=('SKIP')
 
@@ -22,7 +22,10 @@ build() {
 
   mkdir -p build && cd build
   cmake \
-    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -DCMAKE_CXX_STANDARD=14 \
+    -DCMAKE_CXX_STANDARD_REQUIRED=ON \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     ..
 
   make
