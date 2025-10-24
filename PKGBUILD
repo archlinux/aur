@@ -1,4 +1,10 @@
 # Maintainer: Hans Kramer <kramer@b1-systems.de>
+# Contributor: Aetf <aetf@unlimitedcodeworks.xyz>
+# Contributor: Sameed Pervaiz <greenbagels@teknik.io>
+# Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+# Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
+# Contributor: mosra <mosra@centrum.cz>
 _pkgname=kdevelop
 pkgname=${_pkgname}-git
 pkgdesc="Cross-platform IDE for C/C++, Python, QML, and more (Git snapshot)"
