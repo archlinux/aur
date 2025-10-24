@@ -2,7 +2,7 @@
 pkgname=rickrack-bin
 _pkgname=Rickrack
 pkgver=2.9.10
-pkgrel=5
+pkgrel=6
 pkgdesc="Generate harmonious colors freely.(Prebuilt version)焰火十二卷(实时色彩工具箱)是一款免费且实用的色彩编辑器."
 arch=('x86_64')
 url="https://eigenmiao.com/rickrack/"
@@ -36,9 +36,12 @@ depends=(
     'openssl-1.0'
     'tk'
     'libxss'
-    'fcitx-qt5'
     'libidn11'
     'unixodbc'
+)
+optdepends=(
+    'fcitx-qt5'
+    'fcitx5-qt'
 )
 noextract=(
     "${pkgname%-bin}-${pkgver}-en.rpm"
