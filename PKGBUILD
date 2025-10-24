@@ -1,4 +1,5 @@
-# Maintainer: Butui Hu <hot123tea123@gmail.com>
+# Maintainer: Jakub Klinkovský <lahwaacz at archlinux dot org>
+# Contributor: Butui Hu <hot123tea123@gmail.com>
 
 _pkgname=PhiK
 pkgname=python-phik
@@ -38,4 +39,3 @@ package() {
   cd "${_pkgname}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
-# vim:set ts=2 sw=2 et:
