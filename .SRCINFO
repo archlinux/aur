@@ -1,12 +1,13 @@
 pkgbase = frogfm
-	pkgdesc = Sleek file manager written in gtkmm 4
+	pkgdesc = Sleek file manager
 	pkgver = 9.9.9
 	pkgrel = 9
 	url = https://github.com/System64fumo/frog
 	arch = aarch64
 	arch = riscv64
 	arch = x86_64
-	license = WTFPL
+	groups = sysshell
+	license = GPL3
 	makedepends = git
 	makedepends = gcc
 	makedepends = make
