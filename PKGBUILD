@@ -1,8 +1,8 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Tuan Anh Tran <me at tuananh dot org>
 
 pkgname=ops
 pkgver=0.1.43
-pkgrel=1
+pkgrel=2
 pkgdesc="Build and run nanos unikernels"
 arch=('x86_64')
 url='https://ops.city'
@@ -14,7 +14,7 @@ makedepends=(
     'buf'
     'protoc-gen-go-grpc'
     'protoc-gen-go'
-    'grpc-gateway'
+    'protoc-gen-grpc-gateway'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nanovms/ops/archive/${pkgver}.tar.gz")
 sha256sums=('06b14a746eefb6b328568c73cded184e66b5fa0671ff5e9fa167bae3d7d8c650')

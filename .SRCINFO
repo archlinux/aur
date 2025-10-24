@@ -1,7 +1,7 @@
 pkgbase = ops
 	pkgdesc = Build and run nanos unikernels
 	pkgver = 0.1.43
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ops.city
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = ops
 	makedepends = buf
 	makedepends = protoc-gen-go-grpc
 	makedepends = protoc-gen-go
-	makedepends = grpc-gateway
+	makedepends = protoc-gen-grpc-gateway
 	depends = glibc
 	optdepends = qemu
 	source = ops-0.1.43.tar.gz::https://github.com/nanovms/ops/archive/0.1.43.tar.gz
