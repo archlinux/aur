@@ -4,7 +4,7 @@
 pkgname=proton-mail-bin
 _name=${pkgname%-bin}
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
 arch=('x86_64')
 url='https://proton.me'
@@ -58,8 +58,9 @@ package() {
     # Fix permissions on misc files
     chmod go-w "$pkgdir"/opt/$_name/resources/*
 
-    # Replace binary symlink
-    ln -sf /opt/$_name/Proton\ Mail\ Beta "$pkgdir/usr/bin/$_name"
+    # Rename binary and replace symlink
+    mv "$pkgdir/opt/$_name/Proton Mail Beta" "$pkgdir/opt/$_name/protonmail"
+    ln -sf /opt/$_name/protonmail "$pkgdir/usr/bin/$_name"
 
     # Remove lintian folder
     rm -rf "$pkgdir/usr/share/lintian"
