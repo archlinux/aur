@@ -1,0 +1,4 @@
+["python-yappi"]
+source = "github"
+github = "sumerc/yappi"
+use_latest_release = true
