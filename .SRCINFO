@@ -1,7 +1,7 @@
 pkgbase = dia-git
 	pkgdesc = A GTK+ based diagram creation program
 	pkgver = 6943.22534d16c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/dia
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -24,6 +24,8 @@ pkgbase = dia-git
 	options = docs
 	options = !emptydirs
 	source = git+https://gitlab.gnome.org/GNOME/dia.git
+	source = 0001-fix-build-for-poppler-25.10.patch
 	sha256sums = SKIP
+	sha256sums = a431c7792c28c16692d80afcf8ddbd294c03dd10a2dfca19be137561cb5c152e
 
 pkgname = dia-git

@@ -1,0 +1,33 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: a821 <a821@nospam.mail.de>
+Date: Fri, 24 Oct 2025 09:03:04 +0200
+Subject: [PATCH] fix build for poppler >= 25.10
+
+adapted from [1]. found by looking at [2]
+
+[1] https://github.com/msys2/MINGW-packages/blob/master/mingw-w64-dia/0001-poppler-fix.patch
+[2] https://gitlab.gnome.org/GNOME/dia/-/issues/570
+---
+ plug-ins/pdf/pdf-import.cpp | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/plug-ins/pdf/pdf-import.cpp b/plug-ins/pdf/pdf-import.cpp
+index c69bc95a0..1288271f2 100644
+--- a/plug-ins/pdf/pdf-import.cpp
++++ b/plug-ins/pdf/pdf-import.cpp
+@@ -776,7 +776,12 @@ void
+ DiaOutputDev::drawString(GfxState *state, GooString *s)
+ {
+   Color text_color = this->fill_color;
++#if (POPPLER_VERSION_MAJOR > 25) || \
++    (POPPLER_VERSION_MAJOR == 25 && POPPLER_VERSION_MINOR >= 10)
++  int len = s->size();
++#else
+   int len = s->getLength();
++#endif
+   DiaObject *obj;
+   gchar *utf8 = NULL;
+   DiaFont *font;
+-- 
+2.51.1
+
