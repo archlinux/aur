@@ -2,7 +2,7 @@
 pkgname=avogadro2-bin
 _pkgname=Avogadro2
 _appname="org.openchemistry.${_pkgname}"
-pkgver=1.101.0
+pkgver=1.102.0
 pkgrel=1
 pkgdesc="An advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas.(Prebuilt version)"
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/OpenChemistry/avogadroapp/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4765b95536f59036c7ec3911a080d7d3f675e66a45c0a231fba62d85ec0ad12e'
+sha256sums=('5ef5894de6c54a7c62fc1816bd23d201dd169e234a256101825a84afae04fce0'
             '3e6a55dc0da9bb56a7f232b1766da524c9d9c1dad61dfeea8424f1df7fb6f2f4'
             '0d625edc1abc14e5971788272ff95412cc4851274633c34b94144541609b92ac')
 prepare() {
@@ -37,6 +37,9 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
+    if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i "s/Icon=${_appname}/Icon=${pkgname%-bin}/g" "${srcdir}/squashfs-root/usr/share/applications/${_appname}.desktop"
