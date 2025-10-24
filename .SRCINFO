@@ -1,6 +1,6 @@
 pkgbase = b-em
 	pkgdesc = BBC Micro emulator
-	pkgver = 20250729_bfa2d43
+	pkgver = 20251008_4e7eaac
 	pkgrel = 1
 	url = https://github.com/stardot/b-em
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = b-em
 	depends = jack
 	depends = zlib
 	options = !debug
-	source = https://github.com/stardot/b-em/archive/bfa2d43f7ce444a078cef27143d5476fb1619208/b-em-bfa2d43f7ce444a078cef27143d5476fb1619208.tar.gz
-	sha256sums = 23cc7587024f6db5ef8466c072f21594afa5e88b03c85cf9910a5f2794e24d27
+	source = https://github.com/stardot/b-em/archive/4e7eaac7acf8cbc7260a4c355d3ccb8d8c73c5c5/b-em-4e7eaac7acf8cbc7260a4c355d3ccb8d8c73c5c5.tar.gz
+	sha256sums = 41258c96ea604365fa9f358b156f4f4a3560ea36c343f23487e95c92bbfe8db2
 
 pkgname = b-em
