@@ -1,7 +1,7 @@
 # Maintainer: Horace Liu <im.liuhq@gmail.com>
 
 pkgname=moyurd
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A keyboard-driven and simple Epub reader"
 arch=('x86_64')
