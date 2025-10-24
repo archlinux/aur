@@ -1,12 +1,13 @@
 pkgbase = progress-tracker
 	pkgdesc = Simple kanban-style task organiser made in Adwaita style
-	pkgver = 1.6
+	pkgver = 1.7
 	pkgrel = 1
 	url = https://github.com/smolBlackCat/progress-tracker
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = catch2
+	makedepends = git
 	depends = libadwaita
 	depends = gtkmm-4.0
 	depends = tinyxml2
@@ -16,7 +17,9 @@ pkgbase = progress-tracker
 	depends = hicolor-icon-theme
 	depends = libsigc++-3.0
 	depends = glibmm-2.68
-	source = progress-tracker-1.6.tar.gz::https://github.com/smolBlackCat/progress-tracker/archive/refs/tags/v1.6.tar.gz
+	depends = spdlog
+	depends = fmt
+	source = progress-tracker-1.7::git+https://github.com/smolBlackCat/progress-tracker.git#tag=v1.7
 	sha256sums = SKIP
 
 pkgname = progress-tracker
