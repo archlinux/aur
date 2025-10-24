@@ -1,12 +1,13 @@
-# Maintainer: system64 <system64fumo@protonmail.com>
+# Maintainer: system64 <system64fumo@tuta.io>
 
 pkgname=sysboard
 pkgver=9.9.9
 pkgrel=9
 pkgdesc="Simple virtual keyboard for wayland"
-arch=('aarch64' 'x86_64')
+arch=('aarch64' 'riscv64' 'x86_64')
 url="https://github.com/System64fumo/sysboard"
-license=('WTFPL')
+license=('GPL3')
+groups=('sysshell')
 depends=('gtkmm-4.0' 'gtk4-layer-shell')
 source=("git+https://github.com/System64fumo/sysboard")
 sha256sums=('SKIP')
