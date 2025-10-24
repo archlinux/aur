@@ -1,0 +1,26 @@
+diff --git a/build/config/BUILDCONFIG.gn b/build/config/BUILDCONFIG.gn
+index 29b0bbeae..e29d74c7b 100644
+--- a/build/config/BUILDCONFIG.gn
++++ b/build/config/BUILDCONFIG.gn
+@@ -569,7 +569,9 @@ foreach(_target_type,
+         public_deps = []
+       }
+ 
+-      if (is_clang) {
++      use_libcxx_modules = false
++
++      if (is_clang && use_libcxx_modules) {
+         # When clang is used, some target may use clang module. This dependency
+         # is required for things to work, regardless of whether the libc++
+         # module is used in this target or not.
+@@ -690,7 +692,9 @@ foreach(_target_type,
+         public_deps = []
+       }
+ 
+-      if (is_clang) {
++      use_libcxx_modules = false
++
++      if (is_clang && use_libcxx_modules) {
+         # When clang is used, some target may use clang module. This dependency
+         # is required for things to work, regardless of whether the libc++
+         # module is used in this target or not.

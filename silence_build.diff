@@ -1,8 +1,8 @@
 diff --git a/BUILD.gn b/BUILD.gn
-index e03e85d2ad7..5d5869a6c7d 100644
+index 66fd5ba389f..fc833d80b7b 100644
 --- a/BUILD.gn
 +++ b/BUILD.gn
-@@ -1633,6 +1633,7 @@ config("toolchain") {
+@@ -1700,6 +1700,7 @@ config("toolchain") {
      # on non-standard-layout types is implementation defined (rather than UB),
      # and our supported compilers have the expected reasonable behaviour.
      "-Wno-invalid-offsetof",
@@ -10,7 +10,7 @@ index e03e85d2ad7..5d5869a6c7d 100644
    ]
  
    if (!is_clang) {
-@@ -1676,6 +1677,12 @@ config("toolchain") {
+@@ -1743,6 +1744,11 @@ config("toolchain") {
        # Disable dangling pointer warnings, which are often false positives when
        # using scopes.
        "-Wno-dangling-pointer",
@@ -19,7 +19,28 @@ index e03e85d2ad7..5d5869a6c7d 100644
 +      "-Wno-template-id-cdtor",
 +      "-Wno-uninitialized",
 +      "-Wno-dangling-reference",
-+      "-Wno-invalid-constexpr",
      ]
    }
  
+@@ -1761,7 +1767,7 @@ config("strict_warnings") {
+     }
+     cflags += [
+       "-Wmissing-field-initializers",
+-      "-Wunnecessary-virtual-specifier",
++      # "-Wunnecessary-virtual-specifier",
+     ]
+   }
+ }
+diff --git a/build/config/compiler/BUILD.gn b/build/config/compiler/BUILD.gn
+index 2ef2d2f85..e8d80db45 100644
+--- a/build/config/compiler/BUILD.gn
++++ b/build/config/compiler/BUILD.gn
+@@ -2179,7 +2179,7 @@ config("default_warnings") {
+       "-Wno-nontrivial-memcall",
+ 
+       # TODO(crbug.com/432275627): Fix and re-enable.
+-      "-Wno-uninitialized-const-pointer",
++      # "-Wno-uninitialized-const-pointer",
+     ]
+ 
+     cflags_cc += [

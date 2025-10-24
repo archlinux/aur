@@ -7,7 +7,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8-r
-pkgver=14.1.143
+pkgver=14.3.120
 pkgrel=1
 pkgdesc="Google's open source JavaScript and WebAssembly engine"
 arch=('x86_64')
@@ -16,7 +16,7 @@ license=('BSD')
 depends=('icu')
 optional=('rlwrap')
 options=(!debug)
-makedepends=('procps-ng' 'git' 'lld' 'python3')
+makedepends=('clang' 'procps-ng' 'git' 'lld' 'llvm' 'python3')
 conflicts=('v8' 'v8-3.14' 'v8.3.14-bin' 'v8-6.7-static' 'v8-static-gyp' 'v8-static-gyp-5.4')
 provides=('v8')
 source=("depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
@@ -24,13 +24,19 @@ source=("depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot
         "v8_libbase.pc"
         "v8_libplatform.pc"
         "d8"
+        "compiler-rt-adjust-paths.patch"
+        "fix_clang.diff"
+        "fix_temporal_icu.diff"
         "silence_build.diff")
 sha256sums=('SKIP'
             'aa704f4549d240b568304e30714e042f6da41b39847949c1018652acf07942a9'
             'efb37bd706e6535abfa20c77bb16597253391619dae275627312d00ee7332fa3'
             'ae23d543f655b4d8449f98828d0aff6858a777429b9ebdd2e23541f89645d4eb'
             '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0'
-            '49f892b60d30724940519391e2a6d80b107945d05f201292ba60e57e6c5fd54b')
+            '3e63769d9eaaeba0ff88e4228ac9bf62f7b841a3e33dfa65e305005ce71d480c'
+            '6e1456f7235e4059e6343ad8a4332f415564131f6dc7b35f608cec66e2f4430f'
+            '676e76700648a6a84f364cfbb956159c7fb74f141b2c32287ed84a9ab59bda70'
+            '04af20e828ac79ae6b0d38ae7b0bd6a88c398d40e12cebdbccc1e6a885c3b27a')
 
 OUTFLD=x64.release
 
@@ -61,7 +67,14 @@ prepare() {
   msg2 "Using system libraries for ICU"
   $srcdir/v8/build/linux/unbundle/replace_gn_files.py --system-libraries icu
 
-  # silence warnings
+  # patches:
+  # 1 - let system clang find compiler-rt (taken from Arch's chromium build)
+  # 2 - if building with clang, avoild pulling in clang modules files
+  # 3 - temporal with icu requires some headers from icu common we don't have
+  # 4 - disable warnings from upstreams clang
+  git apply ${srcdir}/compiler-rt-adjust-paths.patch
+  git apply ${srcdir}/fix_clang.diff
+  git apply ${srcdir}/fix_temporal_icu.diff
   git apply ${srcdir}/silence_build.diff
 
   # provide pkgconfig files
@@ -69,20 +82,30 @@ prepare() {
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/v8_libbase.pc"
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/v8_libplatform.pc"
 
+  # Increase _FORTIFY_SOURCE level to match Arch's default flags
+  sed -i 's/fortify_level = "2"/fortify_level = "3"/' ${srcdir}/v8/build/config/compiler/BUILD.gn
+
+  local _clang_version=$(clang --version | grep -m1 version | sed 's/.* \([0-9]\+\).*/\1/')
+
   msg2 "Running GN..."
   gn gen $OUTFLD \
     -vv --fail-on-unused-args \
-    --args='dcheck_always_on=false
+    --args="clang_base_path=\"/usr\"
+            clang_use_chrome_plugins=false
+            clang_version=\"$_clang_version\"
+            dcheck_always_on=false
+            icu_use_data_file=false
             is_asan=false
-            is_clang=false
+            is_clang=true
             is_component_build=true
             is_debug=false
             is_official_build=false
             treat_warnings_as_errors=false
+            use_clang_modules=false
             use_custom_libcxx=false
             use_lld=true
             use_sysroot=false
-            icu_use_data_file=false
+            symbol_level=0
             v8_enable_backtrace=true
             v8_enable_disassembler=true
             v8_enable_i18n_support=true
@@ -90,7 +113,7 @@ prepare() {
             v8_enable_sandbox=true
             v8_enable_static_roots=true
             v8_enable_verify_heap=true
-            v8_use_external_startup_data=false'
+            v8_use_external_startup_data=false"
 
   # Fixes bug in generate_shim_headers.py that fails to create these dirs
   msg2 "Adding icu missing folders"
@@ -100,6 +123,11 @@ prepare() {
 }
 
 build() {
+
+  export CC=clang
+  export CXX=clang++
+  export AR=ar
+  export NM=nm
 
   export PATH=`pwd`/depot_tools:"$PATH"
 
@@ -130,6 +158,11 @@ package() {
   install -Dm755 $OUTFLD/libv8_libplatform.so ${pkgdir}/usr/lib/libv8_libplatform.so
   install -Dm755 $OUTFLD/libchrome_zlib.so ${pkgdir}/usr/lib/libchrome_zlib.so
   install -Dm755 $OUTFLD/libthird_party_abseil-cpp_absl.so ${pkgdir}/usr/lib/libthird_party_abseil-cpp_absl.so
+  install -Dm755 $OUTFLD/libthird_party_partition_alloc_src_partition_alloc_allocator_base.so ${pkgdir}/usr/lib/libthird_party_partition_alloc_src_partition_alloc_allocator_base.so
+  install -Dm755 $OUTFLD/libthird_party_partition_alloc_src_partition_alloc_allocator_core.so ${pkgdir}/usr/lib/libthird_party_partition_alloc_src_partition_alloc_allocator_core.so
+  install -Dm755 $OUTFLD/libthird_party_partition_alloc_src_partition_alloc_allocator_shim.so ${pkgdir}/usr/lib/libthird_party_partition_alloc_src_partition_alloc_allocator_shim.so
+  install -Dm755 $OUTFLD/libthird_party_partition_alloc_src_partition_alloc_raw_ptr.so ${pkgdir}/usr/lib/libthird_party_partition_alloc_src_partition_alloc_raw_ptr.so
+
 
   # install -Dm755 $OUTFLD/cctest ${pkgdir}/usr/lib/v8/cctest
   # install -Dm755 $OUTFLD/libv8_for_testing.so ${pkgdir}/usr/lib/libv8_for_testing.so
