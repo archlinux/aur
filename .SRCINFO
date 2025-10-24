@@ -1,7 +1,7 @@
 pkgbase = fcitx
 	pkgdesc = Flexible Context-aware Input Tool with eXtension
 	pkgver = 4.2.9.9
-	pkgrel = 4
+	pkgrel = 5
 	url = https://fcitx-im.org
 	arch = x86_64
 	groups = fcitx-im
@@ -9,7 +9,6 @@ pkgbase = fcitx
 	license = LGPL
 	makedepends = extra-cmake-modules
 	makedepends = doxygen
-	makedepends = gtk2
 	makedepends = gtk3
 	makedepends = mesa
 	makedepends = opencc
