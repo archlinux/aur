@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r72097.6f31d9a40d0
+pkgver=r72382.8c8961171c4
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -58,19 +58,13 @@ build() {
 
   export PKG_CONFIG_PATH=$(realpath .)
 
-  local use_linker=
-  if ! echo $'#if defined(__clang__)\nWE ARE ON CLANG\n#endif' | "${CC:-/usr/bin/cc}" -E - | grep -q 'WE ARE ON CLANG'; then
-    echo "Disabling LTO on Release build with GCC"
-    use_linker='-DENABLE_LTO_FOR_RELEASE=OFF'
-  fi
-
   cmake \
     -B build \
     -S ladybird \
     -DBUILD_SHARED_LIBS=OFF \
     -DLADYBIRD_CACHE_DIR=Build/caches \
     -DCMAKE_BUILD_TYPE=Release \
-    $use_linker \
+    -DENABLE_LTO_FOR_RELEASE=OFF \
     -DCMAKE_INSTALL_PREFIX='/opt/ladybird/usr' \
     -DENABLE_INSTALL_HEADERS=OFF \
     -DCMAKE_INSTALL_LIBEXECDIR="lib/${pkgname%-git}" \
