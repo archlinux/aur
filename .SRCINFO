@@ -1,0 +1,21 @@
+pkgbase = lyvoxa-bin
+	pkgdesc = Elegant Linux system monitor with real-time TUI built in Rust (precompiled binary)
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/oxyzenQ/lyvoxa
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	provides = lyvoxa
+	conflicts = lyvoxa
+	conflicts = lyvoxa-git
+	options = !strip
+	source = lyvoxa-3.0.1-linux-amd64.tar.gz::https://github.com/oxyzenQ/lyvoxa/releases/download/3.0.1/lyvoxa-3.0.1-linux-amd64.tar.gz
+	source = lyvoxa-3.0.1-linux-amd64.tar.gz.sha256::https://github.com/oxyzenQ/lyvoxa/releases/download/3.0.1/lyvoxa-3.0.1-linux-amd64.tar.gz.sha256
+	source = lyvoxa-3.0.1-linux-amd64.tar.gz.asc::https://github.com/oxyzenQ/lyvoxa/releases/download/3.0.1/lyvoxa-3.0.1-linux-amd64.tar.gz.asc
+	validpgpkeys = 3495ABF0957D28A7E85013750D8D13BB989AF9F0
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = lyvoxa-bin
