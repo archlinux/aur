@@ -1,0 +1,20 @@
+pkgbase = rustfs-git
+	pkgdesc = High-performance distributed object storage for MinIO alternative.
+	pkgver = 1.0.0.alpha.65.r3.gb47765b4
+	pkgrel = 1
+	url = https://rustfs.com/en/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cargo
+	makedepends = pnpm
+	depends = glibc
+	depends = gcc-libs
+	depends = bzip2
+	options = !lto
+	source = rustfs::git+https://github.com/rustfs/rustfs.git
+	source = console::git+https://github.com/rustfs/console.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rustfs-git
