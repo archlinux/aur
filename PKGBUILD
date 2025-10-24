@@ -3,7 +3,7 @@
 _Name="IronPython"
 _basename="${_Name,,}"
 _commit_rel="bd43cf1cdde50171946da6d3a5b0a62898cdce96" # 2.7.12
-_commit="bd43cf1cdde50171946da6d3a5b0a62898cdce96" # r4
+_commit="d834e174b8e4f75eb98c9f185cc66d094b2dd42c" # r4
 pkgver="2.7.12+r4+g${_commit::7}"
 _pkgver="${pkgver%%+*}"
 pkgrel=1
@@ -38,7 +38,7 @@ _pkgsrc="${_url##*/}-${_commit}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/${_commit}.tar.gz"
         "dlr-60dfacb9852ec022dd076c152e286b116553c905.tar.gz::https://github.com/IronLanguages/dlr/archive/60dfacb9852ec022dd076c152e286b116553c905.tar.gz"
         "${_basename}.sh")
-b2sums=('e8dae5c151b9c8ebcdab8f33dd864aba541f287c4ed3048e7c4dceca56375709584c94431903a6d7877f6dd099de67ab1f4d58639c076d0225641b99efa4b19b'
+b2sums=('2897e097dfb4e16179c2ace34487627d1a0a62a37fdc712e5b673074ad245cbd76eef3f2fb3d4a710008f27e94e9a821598ad04507850e1d31826c70ad9ce887'
         '20a8da80eb7e8605577e57e3ea9bc698c2e7ecc74d1411e6b6647a78d9c99821cc349943e938d136d8029947eec27e13f71c9d4b63dafca95f8e836fd46dc32f'
         'b8fd9254e36ce7bfa00e38c6d5886283c1aed1a530ca65775cf5639b5ff46b8ebe346f674146ed54d24a9793a7d58590673f0334756219ad530741504b4cb722')
 
