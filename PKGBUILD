@@ -3,7 +3,7 @@
 
 pkgbase=ntfsplus-dkms-git
 pkgname=("$pkgbase" "ntfsplus-udev")
-pkgver=2025.10.20.r30.d2885d40e
+pkgver=2025.10.20.r27.2c3335f09
 pkgrel=1
 # epoch=1
 pkgdesc="A new NTFS driver for Linux promised to be better than NTFS3. These patches are directly taken from the maintainer's mailing list posts. Backported to 6.17."
@@ -60,9 +60,7 @@ source=(
   '00-05.mbox.gz::https://lore.kernel.org/all/20251020020749.5522-1-linkinjeon@kernel.org/t.mbox.gz'
   '06-11.mbox.gz::https://lore.kernel.org/all/20251020021227.5965-6-linkinjeon@kernel.org/t.mbox.gz'
   '0001-fs-ntfsplus-inode.c-Resolve-import-for-inode_generic.patch'
-  '0002-fs-ntfsplus-aops.c-Resolve-iomap_writepages-temporar.patch'
-  '0003-fs-ntfsplus-file.c-Resolve-iomap_-temporarily-for-ke.patch'
-  '0004-fs-ntfsplus-inode.c-Resolve-iomap_zero_range-argumen.patch'
+  '0002-ntfsplus-Resolve-iomap_-arguments-temporarily-for-ke.patch'
   '0099-fs-ntfsplus-Makefile-DKMS-patch.patch'
   'dkms.conf'
   '90-udev-prefer-ntfsplus.rules'
@@ -71,10 +69,8 @@ sha256sums=(
   SKIP
   81f7dc0262bf370f8fb7b2408c47c6e8ba834300424ebc38fb8d46696a5ab806
   bede30ed663dada47c946f74a314b8e25817c4cd8b6c39e0cd5810bbd1cddca2
-  afc465cf70f4e0111d41a758e2db69d0dc6fc48eef10bdb6c38b17100474bf0e
-  7dc8c20ff0e24938fc5ba3ba19f16c7cd1d71ea3cf45375c7963cefef5bf24cf
-  5ef1557329d7dd5dfde93aa23d2ac6f5941880a75151e1234edd73cc19d6001f
-  d1cfa4c9d755393c5b0d7f1770248c56eeb5ab830d7c852e67ac70cdc7542701
+  5180804263334deaa3774846d789c1553524f13e2da6149c227f35cf40252976
+  a039bdcbdfcaf1cd22f38d22ecf12d7d1d83989e98b4d122e11e33204c78c0ae
   e217fa145f507b1e07e228e746528554f705f44fd5744f293b302b29df764b96
   ed9db8ec0caa09c977529c7ae89b808ee8c238331ec0fdf873525c115fcdfb7c
   e3866cac3d71da15740159c89b233d4d1f61981dbf737d4e3bc9a4c56bfa24be

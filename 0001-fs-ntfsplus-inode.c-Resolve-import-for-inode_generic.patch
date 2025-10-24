@@ -1,7 +1,7 @@
-From 11340fea6ae4d9867a47248888a3716cb4907d18 Mon Sep 17 00:00:00 2001
+From d13a8f6cac50c99751df17154ed29ff6cc6b3b1e Mon Sep 17 00:00:00 2001
 From: shadichy <shadichy@blisslabs.org>
 Date: Thu, 23 Oct 2025 01:19:10 +0700
-Subject: [PATCH 1/4] fs/ntfsplus/inode.c: Resolve import for
+Subject: [PATCH 1/2] fs/ntfsplus/inode.c: Resolve import for
  inode_generic_drop (temporarily) for kernels older than 6.18
 
 ---
