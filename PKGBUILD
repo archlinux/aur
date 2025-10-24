@@ -2,7 +2,7 @@
 _name=dnsstamps
 pkgname=python-${_name}-git
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Create and parse DNS stamps with ease."
 arch=('any')
 url="https://github.com/chrisss404/python-dnsstamps"
