@@ -5,7 +5,7 @@ pkgver=r412.28ef2afa6
 pkgrel=1
 pkgdesc="Free speedrun timer with auto splitting and load removal."
 arch=('x86_64')
-url='https://github.com/wins1ey/LibreSplit'
+url='https://github.com/LibreSplit/LibreSplit'
 license=('GPL3')
 depends=(
     'gtk3'
@@ -19,7 +19,7 @@ makedepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-source=("$_pkgname::git+https://github.com/wins1ey/LibreSplit.git")
+source=("$_pkgname::git+https://github.com/LibreSplit/LibreSplit.git")
 sha256sums=('SKIP')
 
 pkgver() {
