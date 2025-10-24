@@ -1,7 +1,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 pkgname=xorg-xfsinfo
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="X font server information utility"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=('custom')
 depends=('libfs')
 groups=('xorg-apps' 'xorg')
 source=(https://xorg.freedesktop.org/archive/individual/app/xfsinfo-${pkgver}.tar.gz)
-sha512sums=('b6e4126ec4cb0cf29257d479436f7b9232e9f36a83158ceca70baa45ba43a2af723aa057b21c36c77d6599db975827b5bd3a4500dfe1ced439c05291e8cbc3b0')
+sha512sums=('ec5fbbdcb71b1a8ecde344dce6e01d46b8259a774ed14edbcdb521cdc7be0cb325e87b8c78682b5b8fcb79f3970c1723e37e8bc6a4f907be56e30fa4e4754637')
 
 build() {
   cd xfsinfo-${pkgver}
