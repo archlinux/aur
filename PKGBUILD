@@ -1,7 +1,7 @@
 # Maintainer: Dory <dory@dory.moe>
 pkgname=yaoc-git
 _pkgname=openai-cli
-pkgver=r6.fb89fb1
+pkgver=r10.5bf9ed3
 pkgrel=1
 pkgdesc="Yet Another OpenAI CLI: A simple, feature-rich OpenAI client, with tools and vision."
 arch=('any')
@@ -19,6 +19,6 @@ pkgver() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	install -Dm755 openai_chat.py "${pkgdir}/usr/bin/openai-cli"
+	install -Dm755 src/yaoc/openai_cli.py "${pkgdir}/usr/bin/openai-cli"
 }
 
