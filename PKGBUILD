@@ -1,4 +1,5 @@
 # Maintainer: Jason Go <jasongo@jasongo.net>
+
 pkgbase=llrt-bin
 pkgname=(
   'llrt-bin'
@@ -7,7 +8,8 @@ pkgname=(
   'llrt-all-bin')
 pkgver=0.7.0beta
 _pkgver="${pkgver//beta/-beta}" # For GitHub urls
-pkgrel=5
+_pkgid="$pkgbase-$_pkgver" # For filenames
+pkgrel=6
 arch=('x86_64' 'aarch64')
 url='https://github.com/awslabs/llrt'
 license=('Apache-2.0')
@@ -18,17 +20,23 @@ optdepends=(
   'bun-bin: fast runtime, compiler, and bundler for JavaScript and TypeScript')
 provides=('llrt')
 conflicts=('llrt')
-source=("llrt-bin-$_pkgver-source.zip::$url/archive/refs/tags/v$_pkgver.zip")
+source=(
+  "$_pkgid-LICENSE::https://raw.githubusercontent.com/awslabs/llrt/refs/tags/v$_pkgver/LICENSE"
+  "$_pkgid-THIRD_PARTY_LICENSES::https://raw.githubusercontent.com/awslabs/llrt/refs/tags/v$_pkgver/THIRD_PARTY_LICENSES"
+  "$_pkgid-NOTICE::https://raw.githubusercontent.com/awslabs/llrt/refs/tags/v$_pkgver/NOTICE")
 source_x86_64=(
-  "llrt-bin-$_pkgver-x86_64.zip::$url/releases/download/v$_pkgver/llrt-linux-x64.zip"
-  "llrt-full-sdk-bin-$_pkgver-x86_64.zip::$url/releases/download/v$_pkgver/llrt-linux-x64-full-sdk.zip"
-  "llrt-no-sdk-bin-$_pkgver-x86_64.zip::$url/releases/download/v$_pkgver/llrt-linux-x64-no-sdk.zip")
+  "$_pkgid-x86_64-std-sdk.zip::$url/releases/download/v$_pkgver/llrt-linux-x64.zip"
+  "$_pkgid-x86_64-full-sdk.zip::$url/releases/download/v$_pkgver/llrt-linux-x64-full-sdk.zip"
+  "$_pkgid-x86_64-no-sdk.zip::$url/releases/download/v$_pkgver/llrt-linux-x64-no-sdk.zip")
 source_aarch64=(
-  "llrt-bin-$_pkgver-aarch64.zip::$url/releases/download/v$_pkgver/llrt-linux-arm64.zip"
-  "llrt-full-sdk-bin-$_pkgver-aarch64.zip::$url/releases/download/v$_pkgver/llrt-linux-arm64-full-sdk.zip"
-  "llrt-no-sdk-bin-$_pkgver-aarch64.zip::$url/releases/download/v$_pkgver/llrt-linux-arm64-no-sdk.zip")
+  "$_pkgid-aarch64-std-sdk.zip::$url/releases/download/v$_pkgver/llrt-linux-arm64.zip"
+  "$_pkgid-aarch64-full-sdk.zip::$url/releases/download/v$_pkgver/llrt-linux-arm64-full-sdk.zip"
+  "$_pkgid-aarch64-no-sdk.zip::$url/releases/download/v$_pkgver/llrt-linux-arm64-no-sdk.zip")
 noextract=("${source_x86_64[@]%%::*}" "${source_aarch64[@]%%::*}")
-sha256sums=('e8d38b80657ea515366003b217b16a33a0214228f89d6915b52604e0c4e040c6')
+sha256sums=(
+  '58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd'
+  '8b5f4183be83b323beab34c21b68add8535c482f939b03c9557dbafb75e92e47'
+  '53c5c653b7164c02212717b494d8010704cf966286b5f6a6e6d185fe8d29ceaf')
 sha256sums_x86_64=(
   '12f065250f2c3f165949184017c021c97a2b7ff99fb2b89690488936e3117b14'
   '36a4e66845bab11a82763b0b90502a65d911cf29a752078a2daf34446257a94e'
@@ -39,39 +47,47 @@ sha256sums_aarch64=(
   'efea1bb318d6fddc10d10fa6555a3978156788b16c7518981d214dfcfac4efa0')
 
 _install_llrt() {
-  local target_pkgname="$1"
-  local target_suffix="$2"
-  bsdtar -xf "$target_pkgname-$_pkgver-$CARCH.zip" -C "$srcdir"
-  install -Dm755 "$srcdir/llrt" "$pkgdir/usr/bin/llrt$target_suffix"
+  local target_suffix="$1"
+  local add_suffix="$2"
+
+  bsdtar -xf "$_pkgid-$CARCH-$target_suffix.zip" -C "$srcdir"
+
+  if [[ -n "$add_suffix" ]]; then
+    install -Dm755 "$srcdir/llrt" "$pkgdir/usr/bin/llrt-$target_suffix"
+  else
+    install -Dm755 "$srcdir/llrt" "$pkgdir/usr/bin/llrt"
+  fi
 }
 
 _install_licenses() {
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/llrt-$_pkgver/"{LICENSE,THIRD_PARTY_LICENSES,NOTICE}
+  for file in LICENSE THIRD_PARTY_LICENSES NOTICE; do
+    install -Dm644 "$srcdir/$_pkgid-$file" "$pkgdir/usr/share/licenses/$pkgname/$file"
+  done
 }
 
 package_llrt-bin() {
   pkgdesc='Lightweight JavaScript runtime, compiler, REPL, and test runner (STANDARD @aws-sdk bundled)'
-  _install_llrt "$pkgname"
+  _install_llrt "std-sdk"
   _install_licenses
 }
 
 package_llrt-full-sdk-bin() {
   pkgdesc='Lightweight JavaScript runtime, compiler, REPL, and test runner (FULL @aws-sdk bundled)'
-  _install_llrt "$pkgname"
+  _install_llrt "full-sdk"
   _install_licenses
 }
 
 package_llrt-no-sdk-bin() {
   pkgdesc='Lightweight JavaScript runtime, compiler, REPL, and test runner (NO @aws-sdk bundled)'
-  _install_llrt "$pkgname"
+  _install_llrt "no-sdk"
   _install_licenses
 }
 
 package_llrt-all-bin() {
   pkgdesc='Lightweight JavaScript runtime, compiler, REPL, and test runner (All bundle types included with suffix: llrt, llrt-full-sdk, llrt-no-sdk)'
-  _install_llrt 'llrt-bin'
-  _install_llrt 'llrt-bin' '-std-sdk' # llrt-std-sdk is an alias to llrt
-  _install_llrt 'llrt-full-sdk-bin' '-full-sdk'
-  _install_llrt 'llrt-no-sdk-bin' '-no-sdk'
+  _install_llrt "std-sdk"
+  _install_llrt "std-sdk" true
+  _install_llrt "full-sdk" true
+  _install_llrt "no-sdk" true
   _install_licenses
 }
