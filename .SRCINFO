@@ -1,6 +1,6 @@
 pkgbase = gollama-git
 	pkgdesc = Go manage your Ollama models
-	pkgver = 1.27.6.r0.g5c10f15
+	pkgver = 1.37.3.r0.g1358225
 	pkgrel = 1
 	url = https://github.com/sammcj/gollama
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gollama-git
 	makedepends = go
 	depends = glibc
 	optdepends = ollama: ollama support.
-	provides = gollama=1.27.6
+	provides = gollama=1.37.3
 	conflicts = gollama
 	source = git+https://github.com/sammcj/gollama.git
 	b2sums = SKIP

@@ -1,8 +1,9 @@
-# Maintainer: Self Denial <selfdenial@pm.me>
+# Maintainer: Ryan Steed <ryan.steed.usa@pm.me>
+# Contributor: Self Denial <selfdenial@pm.me>
 _pkgname='gollama'
 pkgname="${_pkgname}-git"
 pkgdesc='Go manage your Ollama models'
-pkgver=1.27.6.r0.g5c10f15
+pkgver=1.37.3.r0.g1358225
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/sammcj/$_pkgname"
@@ -31,13 +32,13 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS='-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw'
+  export GOFLAGS='-buildmode=pie -trimpath -ldflags=-linkmode=external -modcacherw'
   go build -ldflags="-X main.Version=$pkgver" -o build .
 }
 
 check() {
   cd "$_pkgname"
-  go test ./...
+  env CI=1 go test ./...
 }
 
 package() {
