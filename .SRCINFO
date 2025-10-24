@@ -1,6 +1,6 @@
 pkgbase = opentabletdriver-git
 	pkgdesc = A cross-platform open source tablet driver
-	pkgver = 0.6.6.0.r41.g61c2318c
+	pkgver = 0.6.6.1.r125.g14fad7a5
 	pkgrel = 2
 	url = https://opentabletdriver.net
 	install = notes.install
