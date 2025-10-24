@@ -1,5 +1,5 @@
-# Maintainer: Thomas Quillan <tjquillan@gmail.com>
 # Maintainer: Dobromir Marinov <mr.d.marinov@gmail.com>
+# Maintainer: Tomasz Lipinski <aur@t3xh.nl>
 
 pkgname=intellij-idea-community-edition-jre
 _appname=jetbrains-idea-ce
