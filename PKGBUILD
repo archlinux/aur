@@ -3,9 +3,9 @@
 
 pkgname="mongodb-tools-bin"
 pkgver="100.13.0"
-_basever="8.0"
+_basever="8.2"
 _basedist="noble"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="The MongoDB tools provide import, export, and diagnostic capabilities."
 arch=("x86_64" "aarch64")
 url="https://github.com/mongodb/mongo-tools"
