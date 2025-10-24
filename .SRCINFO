@@ -1,13 +1,13 @@
 pkgbase = ruby-tcxread
 	pkgdesc = A parser for TCX files
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/firefly-cpp/tcxread
 	arch = x86_64
 	license = MIT
 	depends = ruby-nokogiri
-	noextract = tcxread-0.2.0.gem
-	source = https://rubygems.org/downloads/tcxread-0.2.0.gem
-	sha256sums = be8a4655c702b5ce2a2609dd4ad391a7a86c56023871e690ef3d5031df9c9d26
+	noextract = tcxread-0.2.1.gem
+	source = https://rubygems.org/downloads/tcxread-0.2.1.gem
+	sha256sums = ebcded758e20b4a30aa6f8fd7406aa9fdd078a2f5698f75d6151948af7fc788e
 
 pkgname = ruby-tcxread
