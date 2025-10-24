@@ -1,0 +1,54 @@
+post_install() {
+
+    RULES_DIR="/usr/lib/udev/rules.d/"
+    SERVICE_DIR="/usr/lib/systemd/system/"
+    IPP_FILTER_DIR="/opt/pantum/ippfilter"
+    PANTUM_BIN_DIR="/opt/pantum/bin"
+
+    IPPUSB_RULES="$IPP_FILTER_DIR/71-ipp-usb.rules"
+    IPPUSB="$IPP_FILTER_DIR/ipp-usb"
+    IPPUSB_SERVICE="$IPP_FILTER_DIR/pt-ipp-usb.service"
+
+    # Check ipp-usb service
+    IPPUSB_EXIST=0
+    if [ -f /usr/lib/udev/rules.d/71-ipp-usb.rules ] && \
+    [ -f /usr/lib/systemd/system/ipp-usb.service ] && \
+    [ -f /usr/bin/ipp-usb ]; then
+        IPPUSB_EXIST=1
+    fi
+
+    echo "ipp-usb: $IPPUSB_EXIST"
+
+    # Processing ipp-usb
+    if [ $IPPUSB_EXIST -eq 1 ]; then
+        cp "$IPPUSB_RULES" "$RULES_DIR"
+        cp "$IPPUSB_SERVICE" "$SERVICE_DIR"
+
+        # Copy ipp-usb into /opt/pantum/bin/
+        mkdir -p "$PANTUM_BIN_DIR"
+        cp "$IPPUSB" "$PANTUM_BIN_DIR/"
+        chmod 755 "$PANTUM_BIN_DIR/ipp-usb"
+
+        systemctl daemon-reload
+        udevadm control --reload
+
+        # Check ipp-usb service status
+        IPPUSB_SERVICE_IS_ACTIVE=$(systemctl is-active ipp-usb)
+        if [ "$IPPUSB_SERVICE_IS_ACTIVE" = "active" ]; then
+            systemctl stop ipp-usb
+            systemctl start pt-ipp-usb
+        fi
+    fi
+
+    # Reload udev rules and activate for USB-device
+    udevadm control --reload-rules
+    udevadm trigger --subsystem-match=usb
+
+    echo "Pantum driver ${pkgver} installed successfully!"
+    echo "Restarting CUPS service..."
+    systemctl restart cups.service
+}
+
+post_upgrade() {
+    post_install
+}
