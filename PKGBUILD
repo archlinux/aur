@@ -4,12 +4,12 @@
 
 pkgname=orca-slicer-bin
 pkgver=2.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="G-code generator for 3D printers"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
 license=('AGPL3')
-depends=('mesa' 'glu' 'gst-libav' 'gst-plugins-base' 'cairo' 'gtk3' 'libsoup' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'webkit2gtk-4.1')
+depends=('mesa' 'glu' 'gst-libav' 'gst-plugins-base' 'cairo' 'gtk3' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'webkit2gtk-4.1')
 optdepends=('ttf-nanum: dependencies for SIGSEGV error')
 provides=("orca-slicer")
 conflicts=("orca-slicer")
