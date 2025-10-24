@@ -1,16 +1,18 @@
 pkgbase = tusk-launcher-git
 	pkgdesc = A Rust written GUI app launcher for wlroots tiling WMs
-	pkgver = 0.0.0.r78.g18e7e36
+	pkgver = r189.46c1f05
 	pkgrel = 1
 	url = https://github.com/padoruuuu/Tusk-Launcher
 	arch = x86_64
-	license = GPL-3
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
+	depends = gtk3
+	depends = glib2
 	provides = tusk-launcher
 	conflicts = tusk-launcher
-	source = git+https://github.com/padoruuuu/Tusk-Launcher.git
+	source = tusk-launcher-git::git+https://github.com/padoruuuu/Tusk-Launcher.git
 	sha256sums = SKIP
 
 pkgname = tusk-launcher-git
