@@ -1,12 +1,12 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=openbsd-netcat-git
-pkgver=1.225.r319.g9e75b2f
+pkgver=1.234.r338.g523d5a8
 pkgrel=1
 pkgdesc="TCP/IP swiss army knife. OpenBSD variant."
 arch=('i686' 'x86_64')
 url="https://salsa.debian.org/debian/netcat-openbsd"
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('glibc' 'libbsd')
 makedepends=('git')
 provides=("openbsd-netcat=$pkgver" 'netcat')
