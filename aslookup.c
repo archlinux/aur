@@ -7,6 +7,9 @@
 #include <arpa/nameser.h>
 #include <cjson/cJSON.h>
 #include <unistd.h> // For getopt
+#include <netdb.h>  // For getaddrinfo, struct addrinfo
+#include <arpa/inet.h> // For inet_ntop, INET6_ADDRSTRLEN
+#include <sys/socket.h> // For AF_INET, SOCK_STREAM
 
 #define GREEN "\033[32m"
 #define CYAN "\033[36m"
@@ -139,16 +142,36 @@ void fetch_bgpview_info(const char *asn) {
 }
 
 void print_help(const char *progname) {
-    printf("Usage: %s -i <IP address>\n", progname);
+    printf("Usage: %s -i <IP address> | -d <domain name>\n", progname);
     printf("Options:\n");
-    printf("  -i <IP>       Specify the IP address to look up\n");
-    printf("  --help        Show this help message\n");
+    printf("  -i <IP>      Specify the IP address to look up\n");
+    printf("  -d <domain>  Specify a domain name to look up\n");
+    printf("  --help       Show this help message\n");
+}
+
+// Domain resolution function
+char *resolve_domain_to_ip(const char *domain) {
+    struct addrinfo hints, *res;
+    static char ip[INET6_ADDRSTRLEN] = {0};
+
+    memset(&hints, 0, sizeof(hints));
+    hints.ai_family = AF_INET; // IPv4
+    hints.ai_socktype = SOCK_STREAM;
+
+    if (getaddrinfo(domain, NULL, &hints, &res) != 0) {
+        return NULL;
+    }
+
+    struct sockaddr_in *ipv4 = (struct sockaddr_in *)res->ai_addr;
+    inet_ntop(AF_INET, &(ipv4->sin_addr), ip, sizeof(ip));
+    freeaddrinfo(res);
+    return ip;
 }
 
 int main(int argc, char *argv[]) {
     char ip[64] = {0};
+    char domain[256] = {0};
 
-    // Parse command-line arguments
     int opt;
     for (int i = 1; i < argc; i++) {
         if (strcmp(argv[i], "--help") == 0) {
@@ -156,21 +179,31 @@ int main(int argc, char *argv[]) {
             return 0;
         }
     }
-    while ((opt = getopt(argc, argv, "i:")) != -1) {
+    while ((opt = getopt(argc, argv, "i:d:")) != -1) {
         switch (opt) {
-            case 'i':
-                strncpy(ip, optarg, sizeof(ip) - 1);
-                break;
-            case '?':
-                print_help(argv[0]);
-                return 1;
+        case 'i':
+            strncpy(ip, optarg, sizeof(ip) - 1);
+            break;
+        case 'd':
+            strncpy(domain, optarg, sizeof(domain) - 1);
+            break;
+        case '?':
+            print_help(argv[0]);
+            return 1;
         }
+    }
+    if (strlen(domain) > 0) {
+        char *resolved_ip = resolve_domain_to_ip(domain);
+        if (!resolved_ip) {
+            fprintf(stderr, RED "Failed to resolve domain to IP.\n" RESET);
+            return 1;
+        }
+        strncpy(ip, resolved_ip, sizeof(ip) - 1);
     }
     if (strlen(ip) == 0) {
         print_help(argv[0]);
         return 1;
     }
-
     char *asn = get_asn_from_ip(ip);
     if (!asn) {
         fprintf(stderr, RED "Failed to resolve ASN from IP.\n" RESET);
