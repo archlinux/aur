@@ -4,7 +4,7 @@ _pkgauthor=abenz1267
 _pkgname=elephant
 pkgbase=${_pkgname}-bin
 pkgname=(${_pkgname}-bin ${_pkgname}-websearch-bin ${_pkgname}-unicode-bin ${_pkgname}-todo-bin ${_pkgname}-symbols-bin ${_pkgname}-runner-bin ${_pkgname}-providerlist-bin ${_pkgname}-menus-bin ${_pkgname}-files-bin ${_pkgname}-desktopapplications-bin ${_pkgname}-clipboard-bin ${_pkgname}-calc-bin ${_pkgname}-archlinuxpkgs-bin ${_pkgname}-bluetooth-bin ${_pkgname}-windows-bin ${_pkgname}-snippets-bin ${_pkgname}-nirisessions-bin)
-pkgver=2.6.1
+pkgver=2.6.4
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="general purpose datasource and executor"
@@ -58,23 +58,23 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v
                "nirisessions-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/nirisessions-linux-${_barch[0]}.tar.gz")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '22c48fb3478f4344ce76dbc061716d8ced770645e9009167a4ae2f1126aaf424')
-sha256sums_x86_64=('11193a4f4613ee3d589ccafd701e3e3e86aaf6f83273c3e01f223634438c2a2f'
-                   '48582ef1fc752e6bf505d839d7ba3223636fc587e2297f3a7d00b1cc7f4fa40d'
-                   'c82fb604d827b2a4f9c1425b87721f3bed8562ed300a97f61fca9f92c0e6a5b1'
-                   'd13b81ca97de4047f5d7628f3dd9a43458f49865957462110071bf9ccac539a5'
-                   'c02ecf4faf9d21c9c41ac66b480dab386919cc7130b5a0408d622379847f9a0e'
-                   'f62e05a6c99e7daaaf9bb4edac9ff375fd6ac0f508ead95fb183317879340055'
-                   '588df2e043256b8453f5d28b43d22713c8716860480e137c55abd0e19be148ee'
-                   '38f3d9606e4bd577921e6e413284fe6ca2549f8ff0f2bd61dbf6ccee9a360882'
-                   '0bd617f939ed1ed3846abdf4aee514bd99f50121e2065cb8d8892419b7c1309e'
-                   '918f56e815397ebe2c53d8aa058a9d62c24d1653104a81522bc39411d28da8d9'
-                   'e1bbaaa30883161dc82286e8778f05822aba630b8f9c900df007d9348dade252'
-                   'ff617fc3923f3bfe0cc10fc20f485bd5112632470aeb05424c64b7317d385044'
-                   'de39bb01eefe711f508022bb2aa6ee05cb9e91eae7e168049de657240078275e'
-                   '514dfb0db5ad315a81c5660ab4f52b7c348536b85b4f00f1ebfe6d815c10f523'
-                   '27b7241c589a68b76ce5ed2255d3dbbbe1d78ae9e7af3de2f82d8cc17f66e20a'
-                   'a78ea08bc9fc6b737b87766d57845b6a8403d17ab32f06a70280920fc2b73042'
-                   'afb2c9706213f037b1029a8f9cbd1bdfe5004322aae185fb1eb05eac8827658b')
+sha256sums_x86_64=('8a96148a098fbc2731ee45b588627120f8686ef7b33b1a0c29687b8929d36086'
+                   'af1aab50d27fbd25bd430368aee2baa1e242f95f50206ab9bfb1a14b4f210b6b'
+                   'c0c31fb7198a124eee4b32c8620ef361a61403c70809f3e844b3d61152024ec9'
+                   'cee624ea2eef661f657065e01d3b7935e040625442927608ef84ebe39462e116'
+                   '236ccf0f1504ad1c608bf7ebce198ff93e11aba3e285043f08170fa99889f88e'
+                   'aeee463719c1a2cad59244e8a6136176b095be53b8f09770f8dcd85c0eb3d252'
+                   '6004272bd7e197f7f3bb6aaa50688166ea13875db20d778daa07d3def4869c02'
+                   'd7cc5026e1df0e9bbdf79f248a6d8dce9111452236e0798bc38c01d21f2e36d1'
+                   'af1e65e9781d3fa9dad41b36c64ec62f561adb699d83b7221081da51b9aa1b24'
+                   'f9b23dfeb4ec7e1634b02653bc485ac918f2ca3aea80e71510e6e625ecaa8b4e'
+                   '3162dd25ba4ab233455af12cdb20f2a8d85db5e4eb7968c34ec863982936d1e4'
+                   'd775b63a3aec7123173bb079f1f7e0c4b9922892727a70d1bd20ef35de5af688'
+                   '3953624b64b8295082a3981d7cb7fe875f2794c9bff6662eb58d625d2f6f9f09'
+                   'bc4db277e905eecb52f8cc61ed568960d2f4fd8db973be28ea8f8281d48a2e9c'
+                   'd4d1f45cdb1c8e4ed65f805829d5542e21d99f891018ebe9d5dd2bd545d8f663'
+                   'cc947ff72363cddcc31987caa44e65ad563e0765dc147be4dd7bce385b4f2c54'
+                   '2f8136b02748b9502dd3b98adaac1240262221eeafb1048f2c0997899b07af18')
 
 case $CARCH in
     ${arch[0]})
