@@ -4,7 +4,7 @@ pkgname=llrt-lambda-bin
 pkgver=0.7.0beta
 _pkgver="${pkgver//beta/-beta}" # For GitHub urls
 _pkgid="$pkgname-$_pkgver" # For filenames
-pkgrel=3
+pkgrel=4
 pkgdesc='Lightweight JavaScript runtime (BOOTSTRAP/LAYER binary for AWS Lambda, AWS SAM, and AWS CDK)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/awslabs/llrt'
@@ -49,7 +49,7 @@ _install_llrt_bootstrap() {
 
 _install_licenses() {
   for file in LICENSE THIRD_PARTY_LICENSES NOTICE; do
-    install -m644 "$srcdir/$_pkgid-$file" "$pkgdir/usr/share/licenses/$pkgname/$file"
+    install -Dm644 "$srcdir/$_pkgid-$file" "$pkgdir/usr/share/licenses/$pkgname/$file"
   done
 }
 
