@@ -1,13 +1,13 @@
 # Maintainer: RiverOnVenus <error@zhui.dev>
 pkgname=terminaltexteffects-git
-pkgver=0.11.0.r6.g0ba769c
+pkgver=0.12.1.r9.g1613a8c
 pkgrel=1
 pkgdesc='Visual effects engine applied to text in the terminal. '
 url="https://github.com/ChrisBuilds/terminaltexteffects"
 arch=('any')
 license=('MIT')
 depends=('python')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-poetry-core')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-hatchling')
 provides=('terminaltexteffects' 'python-terminaltexteffects' 'python-terminaltexteffects-git')
 conflicts=('terminaltexteffects' 'python-terminaltexteffects')
 source=("$pkgname"::"git+${url}")
