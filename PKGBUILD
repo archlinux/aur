@@ -2,7 +2,7 @@
 
 pkgname=python-json2xml
 _name=${pkgname#python-}
-pkgver=5.2.0
+pkgver=5.2.1
 pkgrel=1
 pkgdesc="Simple Python Library to convert JSON to XML"
 arch=('any')
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 makedepends=('python-setuptools')  # unless it only requires distutils
 depends=('python-defusedxml' 'python-urllib3' 'python')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('1ff1fcdc0c8265fcd9006de3018c61dcd2b7a731b69f20feedb2e113a23af89a150537c907163b6a6a5b871225f704ab202f89f3e789064283a0a56e81aa12be')
+sha512sums=('429867f0e409f571442ad0b97e627c717d2cb378b6b511ab72add997865da8dc757cee7e86ac98ea7e857ddf0a9bd303140f8d54484e7931dcc924182938478e')
 
 build() {
     cd "$_name-$pkgver"
