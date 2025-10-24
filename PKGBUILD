@@ -57,7 +57,8 @@ prepare() {
 
     cp -v "$srcdir/pack/static/vesktop.png" "$srcdir/$_pkgname/static/icon.png"
     cp -v "$srcdir/pack/static/icon.ico" "$srcdir/$_pkgname/static/icon.ico"
-    cp -v "$srcdir/pack/static/shiggy.gif" "$srcdir/$_pkgname/static/shiggy.gif"
+#rip the gif intro
+#    cp -v "$srcdir/pack/static/shiggy.gif" "$srcdir/$_pkgname/static/shiggy.gif"
     cp -v "$srcdir/pack/static/tray/tray.png" "$srcdir/$_pkgname/$STATIC_TRAY_DIR/tray.png"
     cp -v "$srcdir/pack/static/tray/trayUnread.png" "$srcdir/$_pkgname/$STATIC_TRAY_DIR/trayUnread.png"
 
@@ -89,7 +90,7 @@ package() {
 
     install -Dm644 "../pack/static/vesktop.png" "$pkgdir/usr/share/icons/hicolor/1080x1080/apps/vesktop.png"
     install -Dm644 "../pack/static/icon.ico" "$pkgdir/usr/share/icons/hicolor/1080x1080/apps/icon.ico"
-    install -Dm644 "../pack/static/shiggy.gif" "$pkgdir/usr/share/icons/hicolor/1080x1080/apps/shiggy.gif"
+#    install -Dm644 "../pack/static/shiggy.gif" "$pkgdir/usr/share/icons/hicolor/1080x1080/apps/shiggy.gif"
 
     install -Dm755 "../vesktop.sh" "$pkgdir/usr/bin/$_pkgname"
 }
