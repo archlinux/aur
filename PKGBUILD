@@ -1,6 +1,6 @@
 _base=pyFFTW
 pkgname=python-${_base,,}
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="A pythonic wrapper around FFTW"
 arch=(x86_64 aarch64)
@@ -12,7 +12,7 @@ checkdepends=(python-pytest python-scipy python-dask)
 optdepends=('python-scipy: scipy.fftpack support'
   'python-dask: dask.fft support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha256sums=('e73f30803272f7fda0952a2e6368358ed15b985ae2e9fe2d63937790b56b5607')
+sha256sums=('62116dee9541b6651330db1b29d05144f7456b7b9785bb42f16083427f680bf1')
 
 build() {
   cd ${_base}-${pkgver}
