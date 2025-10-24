@@ -1,7 +1,7 @@
 pkgbase = asusctl-devel-git
 	pkgdesc = Asus laptop control utilities
 	pkgver = 6.1.16.r2.g132a2f3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/asus-linux/asusctl
 	arch = x86_64
 	license = MPL2
