@@ -2,7 +2,7 @@
 pkgname=pawlette
 conflicts=('pawlette-git')
 provides=('pawlette-git')
-pkgver=0.0.3
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="😺 Utility for changing themes in the meowrch (stable)"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL-3.0')
 depends=('python')
 makedepends=('python-uv' 'python-virtualenv' 'git')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e4e0d331b1161d98dad6377e30ab52530f2ef3dacbbaf8800b9112688ee38a67')
+sha256sums=('d38189c03ec97dca16738c3a932a2ca621833b5090d0d510e855fbd5939c44d7')
 
 package() {
   cd "$srcdir/pawlette-$pkgver"
@@ -25,9 +25,47 @@ package() {
   cp -r . "$pkgdir/opt/$pkgname/"
 
   # Create launch script
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/pawlette" << EOF
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/pawlette" <<EOF
 #!/bin/sh
 cd /opt/pawlette
 exec .venv/bin/python run.py "\$@"
 EOF
+
+  # Create log directory with proper permissions
+  install -d -m755 "$pkgdir/var/log/pawlette"
+
+  # Install systemd tmpfiles config to set correct ownership
+  install -Dm644 /dev/stdin "$pkgdir/usr/lib/tmpfiles.d/pawlette.conf" <<EOF
+d /var/log/pawlette 0755 - users -
+EOF
+}
+
+post_install() {
+  echo "Setting up pawlette configuration..."
+
+  # Apply systemd tmpfiles configuration
+  systemd-tmpfiles --create /usr/lib/tmpfiles.d/pawlette.conf
+
+  # Create default config for all users if they don't have one
+  getent passwd | while IFS=: read -r name _ uid _ _ home _; do
+    # Skip system users (uid < 1000)
+    if [ "$uid" -ge 1000 ] && [ -d "$home" ]; then
+      config_dir="$home/.config/pawlette"
+      config_file="$config_dir/pawlette.json"
+
+      if [ ! -f "$config_file" ]; then
+        echo "Creating default config for user $name"
+        sudo -u "$name" mkdir -p "$config_dir"
+        sudo -u "$name" /usr/bin/pawlette generate-config 2>/dev/null || true
+      fi
+    fi
+  done
+
+  echo "Pawlette installation completed!"
+  echo "Configuration file: ~/.config/pawlette/pawlette.json"
+  echo "Logs: journalctl -t pawlette"
+}
+
+post_upgrade() {
+  post_install
 }
