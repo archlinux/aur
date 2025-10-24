@@ -3,7 +3,7 @@
 _pkgbase=howdy
 pkgname="$_pkgbase-bin"
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Windows Hello style facial authentication for Linux"
 arch=('x86_64')
 url="https://github.com/boltgolt/howdy"
@@ -27,7 +27,7 @@ md5sums=('b3b67e38359aba3860e4931d5dd3340b'
 
 prepare() {
 	ar -x "$_pkgbase.deb" data.tar.xz
-	rm -r howdy && mkdir howdy
+	rm -rf howdy && mkdir howdy
 	tar -xf data.tar.xz -C howdy
 }
 
