@@ -1,12 +1,12 @@
 pkgbase = okey-git
 	pkgdesc = Shows your key presses, with a cute face!
 	pkgver = v1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/New9c/OKey
 	arch = x86_64
 	license = GPL3
 	depends = portaudio
-	source = okey-git::https://github.com/New9c/OKey/releases/download/v1.1.0/OKey
+	source = OKey::https://github.com/New9c/OKey/releases/download/v1.1.0/OKey
 	sha256sums = SKIP
 
 pkgname = okey-git
