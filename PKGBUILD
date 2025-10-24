@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=elephant-archlinuxpkgs
-pkgver=2.6.3
+pkgver=2.6.4
 pkgrel=1
 pkgdesc='archlinuxpkgs provider for elephant'
 url='https://github.com/abenz1267/elephant'
@@ -11,7 +11,7 @@ makedepends=('go')
 conflicts=('elephant-archlinuxpkgs')
 provides=('elephant-archlinuxpkgs')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c3dc42e8e0cf56c373a95b0833aefe823b36d6eb4e06d8f0b8b4e4964845eb15')
+sha256sums=('6c10c2a60ed98e0e917fd79c08123cd2ed6db83edc681d67c5de871cd007e29b')
 
 build() {
     cd elephant-${pkgver}/internal/providers/archlinuxpkgs
