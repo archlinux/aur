@@ -1,12 +1,12 @@
-# Maintainer: system64 <system64fumo@protonmail.com>
+# Maintainer: system64 <system64fumo@tuta.io>
 
 pkgname=sysauth
-pkgver=2025.08.03
-pkgrel=1
+pkgver=9.9.9
+pkgrel=9
 pkgdesc="Simple authentication popup"
-arch=('aarch64' 'x86_64')
+arch=('aarch64' 'riscv64' 'x86_64')
 url="https://github.com/System64fumo/sysauth"
-license=('WTFPL')
+license=('GPL3')
 groups=('sysshell')
 depends=('gtkmm-4.0' 'gtk4-layer-shell' 'polkit')
 source=("git+https://github.com/System64fumo/sysauth")
