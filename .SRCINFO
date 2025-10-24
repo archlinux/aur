@@ -1,7 +1,7 @@
 pkgbase = ironpython2
 	pkgdesc = Implementation of the Python programming language for .NET Framework; built on top of the Dynamic Language Runtime (DLR)
-	pkgver = 2.7.12
-	pkgrel = 3
+	pkgver = 2.7.12+r4+gbd43cf1
+	pkgrel = 1
 	url = https://ironpython.net
 	arch = any
 	license = Apache-2.0
@@ -14,13 +14,11 @@ pkgbase = ironpython2
 	conflicts = ironpython2.7
 	conflicts = ironpython<3
 	replaces = ironpython<3
-	source = ironpython2-ipy-2.7.12.tar.gz::https://github.com/IronLanguages/ironpython2/archive/refs/tags/ipy-2.7.12.tar.gz
+	source = ironpython2-bd43cf1cdde50171946da6d3a5b0a62898cdce96.tar.gz::https://github.com/IronLanguages/ironpython2/archive/bd43cf1cdde50171946da6d3a5b0a62898cdce96.tar.gz
 	source = dlr-60dfacb9852ec022dd076c152e286b116553c905.tar.gz::https://github.com/IronLanguages/dlr/archive/60dfacb9852ec022dd076c152e286b116553c905.tar.gz
-	source = ironpython2_nuget_config_json_url.patch
 	source = ironpython.sh
-	b2sums = df01bb18b07c1fe43fb87990c60dcd342bc861dbc9bd32abdf4f975d8d7275888290b298b8ed65f7131ca22c5cf47537c4d0413cfc760647a68b32e57619f903
+	b2sums = e8dae5c151b9c8ebcdab8f33dd864aba541f287c4ed3048e7c4dceca56375709584c94431903a6d7877f6dd099de67ab1f4d58639c076d0225641b99efa4b19b
 	b2sums = 20a8da80eb7e8605577e57e3ea9bc698c2e7ecc74d1411e6b6647a78d9c99821cc349943e938d136d8029947eec27e13f71c9d4b63dafca95f8e836fd46dc32f
-	b2sums = 65b81a7b6d4b69da948bc834c49609c172beab926fde0d30a90d9c02e0ed9a4bb9c4070b62acd569cba9ba412e0ff58b422d61d33e030bc52cf1fcf34f306152
 	b2sums = b8fd9254e36ce7bfa00e38c6d5886283c1aed1a530ca65775cf5639b5ff46b8ebe346f674146ed54d24a9793a7d58590673f0334756219ad530741504b4cb722
 
 pkgname = ironpython2

@@ -2,9 +2,12 @@
 
 _Name="IronPython"
 _basename="${_Name,,}"
-pkgver=2.7.12
-pkgrel=3
-pkgname="${_basename}${pkgver%%.*}"
+_commit_rel="bd43cf1cdde50171946da6d3a5b0a62898cdce96" # 2.7.12
+_commit="bd43cf1cdde50171946da6d3a5b0a62898cdce96" # r4
+pkgver="2.7.12+r4+g${_commit::7}"
+_pkgver="${pkgver%%+*}"
+pkgrel=1
+pkgname="${_basename}${_pkgver%%.*}"
 pkgdesc="Implementation of the Python programming language for .NET Framework; built on top of the Dynamic Language Runtime (DLR)"
 arch=('any')
 url="https://ironpython.net"
@@ -22,7 +25,7 @@ optdepends=(
   'gtk2: Window Console Help'
 )
 provides=(
-  "${_basename}${pkgver%.*}"
+  "${_basename}${_pkgver%.*}"
 )
 replaces=(
   "${_basename}<3"
@@ -31,14 +34,12 @@ conflicts=(
   "${provides[@]}"
   "${replaces[@]}"
 )
-_pkgsrc="${_url##*/}-ipy-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/ipy-${pkgver}.tar.gz"
+_pkgsrc="${_url##*/}-${_commit}"
+source=("${_pkgsrc}.tar.gz::${_url}/archive/${_commit}.tar.gz"
         "dlr-60dfacb9852ec022dd076c152e286b116553c905.tar.gz::https://github.com/IronLanguages/dlr/archive/60dfacb9852ec022dd076c152e286b116553c905.tar.gz"
-        "${pkgname}_nuget_config_json_url.patch"
         "${_basename}.sh")
-b2sums=('df01bb18b07c1fe43fb87990c60dcd342bc861dbc9bd32abdf4f975d8d7275888290b298b8ed65f7131ca22c5cf47537c4d0413cfc760647a68b32e57619f903'
+b2sums=('e8dae5c151b9c8ebcdab8f33dd864aba541f287c4ed3048e7c4dceca56375709584c94431903a6d7877f6dd099de67ab1f4d58639c076d0225641b99efa4b19b'
         '20a8da80eb7e8605577e57e3ea9bc698c2e7ecc74d1411e6b6647a78d9c99821cc349943e938d136d8029947eec27e13f71c9d4b63dafca95f8e836fd46dc32f'
-        '65b81a7b6d4b69da948bc834c49609c172beab926fde0d30a90d9c02e0ed9a4bb9c4070b62acd569cba9ba412e0ff58b422d61d33e030bc52cf1fcf34f306152'
         'b8fd9254e36ce7bfa00e38c6d5886283c1aed1a530ca65775cf5639b5ff46b8ebe346f674146ed54d24a9793a7d58590673f0334756219ad530741504b4cb722')
 
 _srcenv() {
@@ -49,12 +50,12 @@ prepare() {
   _srcenv
 
   cd "${srcdir}"
-  sed -i "s/@@VERSION_MAJOR_MINOR@@/${pkgver%.*}/g" "${_basename}.sh"
+  sed -i "s/@@VERSION_MAJOR_MINOR@@/${_pkgver%.*}/g" "${_basename}.sh"
 
   cp -RT "dlr-60dfacb9852ec022dd076c152e286b116553c905" "${_pkgsrc}/Src/DLR"
 
   cd "${_pkgsrc}"
-  patch -Np1 -i "${srcdir}/${pkgname}_nuget_config_json_url.patch"
+  rm -vf "NuGet.config"
   sed -i '/<TreatWarningsAsErrors>/d' 'Directory.Build.props'
 
   nuget restore
@@ -99,22 +100,22 @@ build() {
 package() {
   cd "${srcdir}"
   for _exe in ipy ipyc ipyw; do
-    install -vDm755 "${_basename}.sh" "${pkgdir}/usr/bin/${_exe}${pkgver%.*}"
-    sed -i "s/@@EXE@@/${_exe}/g"      "${pkgdir}/usr/bin/${_exe}${pkgver%.*}"
-    ln -vsf "${_exe}${pkgver%.*}"     "${pkgdir}/usr/bin/${_exe}${pkgver%%.*}"
+    install -vDm755 "${_basename}.sh" "${pkgdir}/usr/bin/${_exe}${_pkgver%.*}"
+    sed -i "s/@@EXE@@/${_exe}/g"      "${pkgdir}/usr/bin/${_exe}${_pkgver%.*}"
+    ln -vsf "${_exe}${_pkgver%.*}"     "${pkgdir}/usr/bin/${_exe}${_pkgver%%.*}"
   done
   for _exe in ipy ipyw; do
-    install -vDm755 "${_basename}.sh" "${pkgdir}/usr/bin/${_exe}${pkgver%.*}-32"
-    sed -i "s/@@EXE@@/${_exe}32/g"    "${pkgdir}/usr/bin/${_exe}${pkgver%.*}-32"
-    ln -vsf "${_exe}${pkgver%.*}-32"  "${pkgdir}/usr/bin/${_exe}${pkgver%%.*}-32"
+    install -vDm755 "${_basename}.sh" "${pkgdir}/usr/bin/${_exe}${_pkgver%.*}-32"
+    sed -i "s/@@EXE@@/${_exe}32/g"    "${pkgdir}/usr/bin/${_exe}${_pkgver%.*}-32"
+    ln -vsf "${_exe}${_pkgver%.*}-32"  "${pkgdir}/usr/bin/${_exe}${_pkgver%%.*}-32"
   done
 
   cd "${_pkgsrc}"
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  cd "Package/Release/Stage/${_Name}-${pkgver}"
-  install -vd "${pkgdir}/usr/lib/${_basename}${pkgver%.*}" "${pkgdir}/usr/share/${_basename}${pkgver%.*}"
-  cp -aT --no-preserve=ownership "Lib"   "${pkgdir}/usr/lib/${_basename}${pkgver%.*}"
-  cp -aT --no-preserve=ownership "net45" "${pkgdir}/usr/share/${_basename}${pkgver%.*}"
+  cd "Package/Release/Stage/${_Name}-${_pkgver}"
+  install -vd "${pkgdir}/usr/lib/${_basename}${_pkgver%.*}" "${pkgdir}/usr/share/${_basename}${_pkgver%.*}"
+  cp -aT --no-preserve=ownership "Lib"   "${pkgdir}/usr/lib/${_basename}${_pkgver%.*}"
+  cp -aT --no-preserve=ownership "net45" "${pkgdir}/usr/share/${_basename}${_pkgver%.*}"
 }
