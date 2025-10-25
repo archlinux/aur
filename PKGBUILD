@@ -45,7 +45,7 @@ replaces=('sunshine-bin')
 makedepends=('patchelf')
 provides=('sunshine-bin')
 sha256sums=(
-    '360eff372c4b666f7ca69b07ea0411df9001d44c1f1da0761a5a3aeeb9dabc57'
+    '0230cfba9b45cbe2a417910890a28815c0a39dd5c9d719162423c0ad687cdcd9'
     '733594073f27c818f89ae1b065943384806811f02048376b76f64ce9c8768229'
 )
 
