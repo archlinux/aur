@@ -1,0 +1,26 @@
+diff -rauN trayer-srg-trayer-1.1.8/bg.c trayer-srg-trayer-1.1.8-bg_init_prototype-patch/bg.c
+--- trayer-srg-trayer-1.1.8/bg.c	2018-03-16 11:13:40.000000000 +0100
++++ trayer-srg-trayer-1.1.8-bg_init_prototype-patch/bg.c	2025-10-25 17:00:01.167902263 +0200
+@@ -99,7 +99,7 @@
+ }
+ 
+ void
+-bg_rootbg_changed()
++bg_rootbg_changed(void)
+ {
+     ENTER;
+     xrootbg = bg_get_root_bg();
+diff -rauN trayer-srg-trayer-1.1.8/bg.h trayer-srg-trayer-1.1.8-bg_init_prototype-patch/bg.h
+--- trayer-srg-trayer-1.1.8/bg.h	2018-03-16 11:13:40.000000000 +0100
++++ trayer-srg-trayer-1.1.8-bg_init_prototype-patch/bg.h	2025-10-25 17:00:06.516897101 +0200
+@@ -9,8 +9,8 @@
+ #include <glib.h>
+ #include <gdk-pixbuf/gdk-pixbuf.h>
+ 
+-void bg_init();
+-void bg_rootbg_changed();
++void bg_init(Display *dpyn);
++void bg_rootbg_changed(void);
+ GdkPixmap *bg_new_for_win(Window win);
+ void modify_drawable(GdkDrawable *base, GdkGC *gc, guint32 tintcolor, gint alpha);
+ 
