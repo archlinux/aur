@@ -9,7 +9,7 @@
 _pkgname="equibop"
 pkgname="$_pkgname-git"
 pkgdesc="Forked Custom Discord desktop app with Equicord preinstalled"
-pkgver=3.0.0.r0.g1edfd4f
+pkgver=3.0.1.r0.g72ecac1
 pkgrel=1
 url="https://github.com/Equicord/Equibop"
 license=('GPL-3.0-only')
@@ -39,6 +39,8 @@ depends=(
 makedepends=(
   'git'
   'bun'
+  'cmake'
+  'gcc'
 )
 optdepends=(
   'libnotify: Notifications'
@@ -66,6 +68,7 @@ pkgver() {
 build() {
   cd "$_pkgsrc"
   bun install
+  bun run buildLibVesktop
   bun run package:dir
 }
 
