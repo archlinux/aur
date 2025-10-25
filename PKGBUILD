@@ -102,12 +102,12 @@ package() {
   for _exe in ipy ipyc ipyw; do
     install -vDm755 "${_basename}.sh" "${pkgdir}/usr/bin/${_exe}${_pkgver%.*}"
     sed -i "s/@@EXE@@/${_exe}/g"      "${pkgdir}/usr/bin/${_exe}${_pkgver%.*}"
-    ln -vsf "${_exe}${_pkgver%.*}"     "${pkgdir}/usr/bin/${_exe}${_pkgver%%.*}"
+    ln -vsf "${_exe}${_pkgver%.*}"    "${pkgdir}/usr/bin/${_exe}${_pkgver%%.*}"
   done
   for _exe in ipy ipyw; do
     install -vDm755 "${_basename}.sh" "${pkgdir}/usr/bin/${_exe}${_pkgver%.*}-32"
     sed -i "s/@@EXE@@/${_exe}32/g"    "${pkgdir}/usr/bin/${_exe}${_pkgver%.*}-32"
-    ln -vsf "${_exe}${_pkgver%.*}-32"  "${pkgdir}/usr/bin/${_exe}${_pkgver%%.*}-32"
+    ln -vsf "${_exe}${_pkgver%.*}-32" "${pkgdir}/usr/bin/${_exe}${_pkgver%%.*}-32"
   done
 
   cd "${_pkgsrc}"
