@@ -1,7 +1,7 @@
 pkgbase = forge-gui-desktop
 	pkgdesc = Implementation of Magic the Gathering that lets you play against a computer AI
 	pkgver = 2.0.06
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Card-Forge/forge
 	arch = any
 	license = GPL3
