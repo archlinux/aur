@@ -1,6 +1,6 @@
 # Maintainer: igo95862 at yandex dot ru
 pkgname=bubblejail
-pkgver=0.9.5
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Bubblewrap based sandboxing utility"
 arch=('x86_64')
@@ -11,6 +11,7 @@ depends=(
   'python-pyxdg'
   'bubblewrap'
   'python-tomli-w'
+  'python-cattrs'
   'xdg-dbus-proxy'
   'hicolor-icon-theme'
   'python-pyqt6'
@@ -39,7 +40,7 @@ source=(
 # Alternative if the above keyserver does not work
 # curl -s 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x5a3d06576a6a67443dfbe856f1a55e62951b2143' | gpg --import
 validpgpkeys=('5A3D06576A6A67443DFBE856F1A55E62951B2143')
-sha512sums=('fdf47e32cf9c7994db12731603176f4c4635a30fab7d4abf7167f0e3b06a156d075a979e4a13559e4aeba67bf37712449a5f1fdc5a40a340a9a2c66617ed0a5d'
+sha512sums=('ce0dc3df8295ce9083800ffcd1df3284f289e4b4e64999ed8ad781314eea62dcd767b90443ed87fd81075cc14ee8514ba2c00df2eb7eaedc14097205cc5f99bc'
             'SKIP')
 
 build () {
