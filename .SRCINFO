@@ -1,8 +1,8 @@
 pkgbase = wayfarer-git
 	pkgdesc = Screen recorder for GNOME / Wayland or X11 / Pipewire / XDG Portal
-	pkgver = 1.1.0.r0.b77ac60
-	pkgrel = 3
-	url = https://github.com/stronnag/wayfarer.git
+	pkgver = 1.4.0.r0.b77ac60
+	pkgrel = 4
+	url = https://codeberg.org/stronnag/wayfarer
 	arch = i686
 	arch = x86_64
 	arch = arm
@@ -19,7 +19,7 @@ pkgbase = wayfarer-git
 	depends = libpulse
 	provides = wayfarer
 	conflicts = wayfarer
-	source = wayfarer::git+https://github.com/stronnag/wayfarer.git
+	source = wayfarer::git+https://codeberg.org/stronnag/wayfarer
 	sha512sums = SKIP
 
 pkgname = wayfarer-git
