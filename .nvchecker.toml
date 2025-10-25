@@ -1,0 +1,4 @@
+[bless]
+source = "git"
+git = "https://github.com/afrantzis/bless.git"
+prefix = "v"

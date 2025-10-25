@@ -1,18 +1,15 @@
 pkgbase = bless
 	pkgdesc = High-quality, full-featured hex editor
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 2
 	url = https://github.com/afrantzis/bless
 	arch = any
 	license = GPL
-	makedepends = rarian
-	makedepends = automake
-	makedepends = patch
+	makedepends = meson
+	makedepends = ninja
+	makedepends = itstool
 	depends = gtk-sharp-2
-	source = bless-0.6.2.tar.gz::https://github.com/afrantzis/bless/archive/v0.6.2.tar.gz
-	source = fix-20.patch
-	sha256sums = 1a9a38ec8d29e4cd3991413087a11a935577419ae9d5469edafc18cba157f827
-	sha256sums = e6cc5ae6a63d185721e1273e0336a52ec5130f1dbc238672a2a697fc84498c45
+	source = bless.tar.gz::https://github.com/afrantzis/bless/archive/v0.6.3.tar.gz
+	sha256sums = 547f2f28073fc791c9d52fa5fd7d66d92c42c7d7fecba05ce1e4b55278ff8cd4
 
 pkgname = bless
-
