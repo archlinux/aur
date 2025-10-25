@@ -2,7 +2,7 @@
 # Contributor: Mattia Ronchi <ronchimattia03 at gmail dot com>
 
 pkgname=asm-lsp
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="A language server for NASM/GAS/GO Assembly"
 arch=('x86_64' 'riscv64')
@@ -11,8 +11,8 @@ license=('BSD-2-Clause')
 makedepends=('cargo')
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bergercookie/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('97642c90f665c7cd86c72e0124655799c1773b8cc91915c071af97dd1dfd41881c0a3db187a0278aac887466499ad4dba22a6d7b2d0ad2636a83a88143cd6ef4')
-b2sums=('7e05af30f4eeb8985bdea74edac8495bb41ff24a88ec05f88bdaed1824d286d90bb8ccc76d792d4fb52b285010586e6715a723deaed7a1fd7feb2985e7a5ef67')
+sha512sums=('06951419f6ac1014d581a9263947a9f1fb6d3039aaaf3561c45b1910eeedc519163f1f2afb8e1f511f297aaf971b6c75da97c8d76bde56cebd9859b638f6ff84')
+b2sums=('3bbcef4bf64388214d6f921b019a62a4574c8ff6e8585ba75b23932d1ff559c85e503f930765888a3be42e241733e525c0feee9cba060abb69edd470d2712a8e')
 
 prepare() {
   cd "$pkgname-$pkgver"
