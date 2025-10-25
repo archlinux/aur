@@ -3,12 +3,12 @@
 # Contributor: Clansty <i at gao4 dot pw>
 
 pkgname=("icalingua++-git" "icalingua++-electron-git")
-pkgver=2.12.28.r8.gd36c81a0
+pkgver=2.12.28.r68.gea9f5074
 pkgrel=1
 pkgdesc='A Linux client for QQ and more(fork to upgrading)'
-license=('AGPL')
+license=('GPL-3.0-only')
 depends=('ffmpeg' 'libappindicator-gtk3' 'libvips')
-makedepends=('git' 'ts-node'  'python-setuptools' 'nodejs' 'node-gyp')
+makedepends=('git' 'ts-node'  'python-setuptools' 'nodejs' 'node-gyp' 'corepack')
 optdepends=('mongodb: Provides storage'
             'redis: Provides storage')
 arch=('aarch64' 'x86_64' 'i686')
@@ -18,7 +18,7 @@ conflicts=('electron-qq' 'icalingua')
 replaces=('electron-qq')
 source=("Icalingua::git+${url}#branch=develop")
 sha256sums=('SKIP')
-_electron=electron22
+_electron=electron38
 
 prepare() {
     cd "${srcdir}/Icalingua"
