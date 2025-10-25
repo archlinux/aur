@@ -3,17 +3,44 @@
 
 _pkgname=cuarzo
 pkgname="$_pkgname-git"
-pkgver=r8.51c3759
+pkgver=r12.c504372
 pkgrel=1
 pkgdesc="The Cuarzo Framework"
 arch=('any')
 url="https://github.com/CuarzoSoftware/Cuarzo"
 license=('MIT')
-#> I am aware this is not exhaustive - please contribute new dependencies as you run into them
-depends=('libglvnd' 'libdrm' 'mesa' 'libdisplay-info' 'libinput' 'seatd' 'glibc' 'systemd-libs' 'boost' 'yoga' 'vulkan-headers')
+depends=(
+    'libxkbcommon' #> cz-core, cz-kay, cz-louvre, cz-marco
+    'wayland' #> everything, practically
+    'libinput' #> cz-crystals, cz-louvre
+    'libgl' #> cz-louvre, cz-skia
+    'libegl' #> cz-louvre, cz-skia
+    'libgles' #> cz-louvre, cz-ream, cz-skia
+    'systemd-libs' #> cz-louvre, cz-srm
+    'libxcursor' #> cz-louvre
+    'libdrm' #> cz-louvre, cz-ream, cz-srm
+    'seatd' #> cz-louvre
+    #> [WARNING - cz-louvre also lists pthread and dl found by cpp]
+    'boost' #> cz-ream
+    'vulkan-icd-loader' #> cz-skia
+    'harfbuzz' #> cz-skia
+    'icu' #> cz-skia
+    'fontconfig' #> cz-skia
+    'freetype2' #> cz-skia
+    'zlib' #> cz-skia
+    'libpng' #> cz-skia
+    'libwebp' #> cz-skia
+    'libjpeg' #> cz-skia
+    'libepoxy' #> cz-skia
+    'spirv-tools' #> cz-skia
+    'expat' #> cz-skia
+    #> [WARNING - cz-skia also lists threads]
+    'libdisplay-info' #> cz-srm
+)
 makedepends=('git' 'meson' 'ninja')
 optdepends=()
-provides=("cz-core"
+provides=(
+    "cz-core"
     "cz-crystals"
     "cz-kay"
     "cz-louvre"
