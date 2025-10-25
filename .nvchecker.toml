@@ -1,0 +1,5 @@
+["thoth-bin"]
+source = "github"
+github = "jooaf/thoth"
+use_latest_release = true
+prefix = "v"
