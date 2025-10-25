@@ -4,7 +4,7 @@
 
 pkgname=aegisub-arch1t3cht-git
 pkgver=3.2.2.r1241.9bfd5008d
-pkgrel=2
+pkgrel=3
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
 url="https://github.com/arch1t3cht/Aegisub"
@@ -13,7 +13,7 @@ provides=('aegisub')
 conflicts=('aegisub')
 depends=('alsa-lib'
          'boost-libs'
-         'ffmpeg'
+         'ffmpeg7.1'
          'ffms2'
          'fftw'
          'fontconfig'
@@ -117,6 +117,9 @@ prepare() {
     fi
   )
   local BUILDTYPE="$(check_makepkg_options 2> /dev/null)"
+
+  # Force ffmpeg7.1 to fix build (https://aur.archlinux.org/packages/aegisub-arch1t3cht-git#comment-1044313)
+  export PKG_CONFIG_PATH="/usr/lib/ffmpeg7.1/pkgconfig:$PKG_CONFIG_PATH"
 
   # Disabling LTO because it seems to lead to crashing aegisub scripts for some people
   # (https://aur.archlinux.org/packages/aegisub-arch1t3cht-git#comment-911741)
