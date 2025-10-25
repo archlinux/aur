@@ -2,8 +2,8 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 _pkgname=libretro-citra
 pkgname=$_pkgname-git
-pkgver=r10161.a31aff7e1
-pkgrel=2
+pkgver=r10167.5263fae
+pkgrel=1
 pkgdesc="Nintendo 3DS core"
 arch=('x86_64')
 url="https://github.com/libretro/citra"
@@ -34,13 +34,13 @@ provides=("$_pkgname=${pkgver#r}")
 conflicts=("$_pkgname")
 source=(
 	"$_pkgname::git+$url.git"
+	'azahar-dynarmic::git+https://github.com/azahar-emu/dynarmic.git'
 	'dds-ktx::git+https://github.com/septag/dds-ktx.git'
 	'faad2::git+https://github.com/knik0/faad2.git'
 	'fmt::git+https://github.com/fmtlib/fmt.git'
 	'lodepng::git+https://github.com/lvandeve/lodepng.git'
 	'nihstro::git+https://github.com/neobrain/nihstro.git'
 	'pablomk7-boost::git+https://github.com/PabloMK7/ext-boost.git'
-	'pablomk7-dynarmic::git+https://github.com/PabloMK7/dynarmic.git'
 	'pablomk7-sirit::git+https://github.com/PabloMK7/sirit.git'
 	'soundtouch::git+https://codeberg.org/soundtouch/soundtouch.git'
 	'teakra::git+https://github.com/wwylele/teakra.git'
@@ -65,14 +65,14 @@ b2sums=(
 
 pkgver() {
 	cd $_pkgname
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
 	cd $_pkgname
 	git config submodule.boost.url ../pablomk7-boost
 	git config submodule.dds-ktx.url ../dds-ktx
-	git config submodule.dynarmic.url ../pablomk7-dynarmic
+	git config submodule.dynarmic.url ../azahar-dynarmic
 	git config submodule.faad2.url ../faad2
 	git config submodule.fmt.url ../fmt
 	git config submodule.lodepng.url ../lodepng
@@ -98,6 +98,7 @@ build() {
 		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
 		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
 		-D CMAKE_INCLUDE_PATH="/usr/include/ffmpeg4.4"
+		-D CMAKE_POLICY_VERSION_MINIMUM=3.5
 		-D ENABLE_DEDICATED_ROOM=OFF
 		-D ENABLE_LIBUSB=OFF
 		-D ENABLE_OPENAL=OFF

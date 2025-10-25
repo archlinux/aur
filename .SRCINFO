@@ -1,7 +1,7 @@
 pkgbase = libretro-citra-git
 	pkgdesc = Nintendo 3DS core
-	pkgver = r10161.a31aff7e1
-	pkgrel = 2
+	pkgver = r10167.5263fae
+	pkgrel = 1
 	url = https://github.com/libretro/citra
 	arch = x86_64
 	groups = libretro
@@ -23,16 +23,16 @@ pkgbase = libretro-citra-git
 	depends = glibc
 	depends = glslang
 	depends = libretro-core-info
-	provides = libretro-citra=10161.a31aff7e1
+	provides = libretro-citra=10167.5263fae
 	conflicts = libretro-citra
 	source = libretro-citra::git+https://github.com/libretro/citra.git
+	source = azahar-dynarmic::git+https://github.com/azahar-emu/dynarmic.git
 	source = dds-ktx::git+https://github.com/septag/dds-ktx.git
 	source = faad2::git+https://github.com/knik0/faad2.git
 	source = fmt::git+https://github.com/fmtlib/fmt.git
 	source = lodepng::git+https://github.com/lvandeve/lodepng.git
 	source = nihstro::git+https://github.com/neobrain/nihstro.git
 	source = pablomk7-boost::git+https://github.com/PabloMK7/ext-boost.git
-	source = pablomk7-dynarmic::git+https://github.com/PabloMK7/dynarmic.git
 	source = pablomk7-sirit::git+https://github.com/PabloMK7/sirit.git
 	source = soundtouch::git+https://codeberg.org/soundtouch/soundtouch.git
 	source = teakra::git+https://github.com/wwylele/teakra.git
