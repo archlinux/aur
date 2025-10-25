@@ -2,7 +2,7 @@
 
 _pkgname=jinsp
 pkgname="${_pkgname}-git"
-pkgver=r54.e0cefb2
+pkgver=r56.19cff34
 pkgrel=1
 pkgdesc='Visually inspect JSON data from the terminal.'
 arch=('x86_64')
