@@ -1,0 +1,27 @@
+pkgbase = turbo-chainsaw
+	pkgdesc = A modern, customizable application launcher for Hyprland/Wayland (git version)
+	pkgver = r8.4f0e1b4
+	pkgrel = 1
+	url = https://github.com/patrik-fredon/turbo-chainsaw
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = git
+	depends = python>=3.11
+	depends = python-gobject>=3.42.0
+	depends = gtk3>=3.24.0
+	depends = gtk-layer-shell>=0.8.0
+	depends = gdk-pixbuf2>=2.42.0
+	depends = python-pillow>=9.0.0
+	depends = python-watchdog>=2.1.0
+	optdepends = libnotify: Desktop notifications
+	optdepends = xdg-utils: Default application launching
+	provides = fredon-menu
+	conflicts = fredon-menu
+	source = fredon-menu-git::git+https://github.com/patrik-fredon/turbo-chainsaw.git#branch=main
+	sha256sums = SKIP
+
+pkgname = turbo-chainsaw
