@@ -1,6 +1,6 @@
-pkgbase = turbo-chainsaw
+pkgbase = fredon-menu-git
 	pkgdesc = A modern, customizable application launcher for Hyprland/Wayland (git version)
-	pkgver = r8.4f0e1b4
+	pkgver = r5.466e91d
 	pkgrel = 1
 	url = https://github.com/patrik-fredon/turbo-chainsaw
 	arch = x86_64
@@ -24,4 +24,4 @@ pkgbase = turbo-chainsaw
 	source = fredon-menu-git::git+https://github.com/patrik-fredon/turbo-chainsaw.git#branch=main
 	sha256sums = SKIP
 
-pkgname = turbo-chainsaw
+pkgname = fredon-menu-git
