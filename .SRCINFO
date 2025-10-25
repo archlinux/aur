@@ -1,6 +1,6 @@
 pkgbase = helium-browser-appimage
 	pkgdesc = Private, fast, and honest web browser
-	pkgver = 0.5.7.1
+	pkgver = 0.5.8.1
 	pkgrel = 1
 	url = https://github.com/imputnet/helium-linux
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = helium-browser-appimage
 	provides = helium-browser
 	conflicts = helium-browser-bin
 	options = !strip
-	source = helium-0.5.7.1-x86_64.AppImage::https://github.com/imputnet/helium-linux/releases/download/0.5.7.1/helium-0.5.7.1-x86_64.AppImage
-	source = helium.desktop::https://raw.githubusercontent.com/imputnet/helium-linux/0.5.7.1/package/helium.desktop
+	source = helium-0.5.8.1-x86_64.AppImage::https://github.com/imputnet/helium-linux/releases/download/0.5.8.1/helium-0.5.8.1-x86_64.AppImage
+	source = helium.desktop::https://raw.githubusercontent.com/imputnet/helium-linux/0.5.8.1/package/helium.desktop
 	source = helium.svg::https://raw.githubusercontent.com/imputnet/helium-chromium/refs/heads/main/resources/branding/product_logo.svg
-	sha256sums = 03e7cd716eee8db798a8e6fe831cd0d29d7d275e1cb1f172a24d11551171a3ad
+	sha256sums = 77c9302c453aaa0120a7b9e513075f45ebc1d49adb10a1d17bcf86846a465228
 	sha256sums = cce8668c18d33077a585cb5d96522e5a02ae017a2baf800f8d7214ce6d05d3d2
 	sha256sums = 7eb2b8a0b00a8ccefe2b4712c298a9c320d8bbd44f6de9133621e3f3fdd34e7a
 
