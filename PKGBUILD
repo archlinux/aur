@@ -1,5 +1,5 @@
 pkgname=streambooru-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="StreamBooru — cross‑platform Electron app to browse multiple booru sites"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
   "streambooru.desktop"
 )
 sha256sums=(
-  '44e71ac3ee40c5ee72fc49120af9db08009c7a5cbd1a6bcb707587108586a879'  # SHA256 of v${pkgver}/streambooru-${pkgver}.tar.gz
+  'ec9770dd4bf156bb56813c57deff7316faaeaa76146da6c83ab6dc90e788bd59'  # SHA256 of v${pkgver}/streambooru-${pkgver}.tar.gz
   'SKIP'
   'SKIP'
 )
