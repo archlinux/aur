@@ -19,7 +19,7 @@ depends=(
   dav1d
   freetype2
   gcc-libs
-  gdk-pixbuf2
+  gdk-pixbuf2-noglycin
   glib2
   glibc
   harfbuzz
