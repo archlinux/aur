@@ -1,13 +1,13 @@
 pkgbase = rust-rice-manager
 	pkgdesc = A fast and flexible CLI tool to manage Linux rices using symlinks
-	pkgver = 1.0.0
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/Jpmasr3r/rust-rice-manager
 	arch = x86_64
 	license = GPL3
 	makedepends = rust
 	makedepends = cargo
-	source = rust-rice-manager-1.0.0.tar.gz::https://github.com/Jpmasr3r/rust-rice-manager/archive/v1.0.0.tar.gz
-	sha256sums = 5baa9c66cd6d700bb65801ca82543163faecdf305d5aef7535bb9d2a1f9e7532
+	source = rust-rice-manager-1.0.2.tar.gz::https://github.com/Jpmasr3r/rust-rice-manager/archive/v1.0.2.tar.gz
+	sha256sums = aa3cb56a6dd0eb2b22a625a4859a49f616e277b7031f8f7faf795214d8e19c98
 
 pkgname = rust-rice-manager
