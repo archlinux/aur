@@ -1,7 +1,7 @@
 # Maintainer: noodle <silentnoodle@cock.li>
 pkgname=dwarfs-bin
-pkgver=0.14.0
-pkgrel=2
+pkgver=0.14.1
+pkgrel=1
 pkgdesc='A fast high compression read-only file system (pre-compiled binaries)'
 url='https://github.com/mhx/dwarfs'
 source_x86_64=("dwarfs-${pkgver}-Linux-x86_64.tar.xz::https://github.com/mhx/dwarfs/releases/download/v${pkgver}/dwarfs-${pkgver}-Linux-x86_64.tar.xz")
@@ -18,13 +18,13 @@ depends=(
 )
 conflicts=('dwarfs')
 provides=('dwarfs')
-sha256sums_x86_64=('2b253aec82243437a7913e8a878944d96a7ab308a3861d59ce41aaa15e1409ad')
-sha256sums_aarch64=('ad4c9f31bf292d9a684add611c954f20b9aae698beae9d1a1144e3f9da4e8521')
-sha256sums_i386=('f006e7c2c0d527a3d40cbcdbdbbe339225dc2e0844abba862e684f8c1b79a8db')
-sha256sums_loong64=('4b81e7476eb6286c53137cf6ecd955aec534fb458e983baddfd8a384b064107b')
-sha256sums_powerpc64=('36fd97fd8b36703c416dbe8f24e1642339392bc7134a9f39b3962b84afd6785e')
-sha256sums_powerpc64le=('f4150d897e689dc755233050f948d4c73de426311dee45ca8eed453f678e7e57')
-sha256sums_riscv64=('ff3507cfe450fc2e0c04437901d164d21d322ce0540ef1251be70fbb96c5f557')
+sha256sums_x86_64=('7dba2bc4482defc5987652643ab0d58330b74e73be0f4d2d184879e7815c2476')
+sha256sums_aarch64=('8c17434c4fc8c33ba303e06eb62904047ee1aab3ea7bd98d2797b04d86b426eb')
+sha256sums_i386=('531b2c318a810920d4f11f0efac12cec06627068d91291232000a883108952ab')
+sha256sums_loong64=('93ec3d9d649cdb77eed3d1b5c6533ee05e24589be63cca3b0a9c32c18c55ef1a')
+sha256sums_powerpc64=('1437bd811bfcf0f9d7db080075906086625ab1465ed9a068bb881da1c8f68681')
+sha256sums_powerpc64le=('813d021f3025968dc7fa0797553b55bd7a5ed1c85af1f6b2c36b2ad5897294c8')
+sha256sums_riscv64=('0a6e1e66b0b0ce63acdc37a8a68ce173d37b135cfad9ca652ca2827e4789d3ec')
 
 package() {
   case "$CARCH" in
@@ -57,7 +57,15 @@ package() {
   install -Dm644 share/man/man5/dwarfs-format.5 "$pkgdir/usr/share/man/man5/dwarfs-format.5"
   install -Dm644 share/man/man7/dwarfs-env.7 "$pkgdir/usr/share/man/man7/dwarfs-env.7"
 
-  install -Dm644 share/bash-completion/completions/_mkdwarfs "$pkgdir/usr/share/bash-completion/completions/mkdwarfs"
-  install -Dm644 share/mime/packages/dwarfs.xml "$pkgdir/usr/share/mime/packages/dwarfs.xml"
+  install -Dm644 share/bash-completion/completions/dwarfs "$pkgdir/usr/share/bash-completion/completions/dwarfs"
+  install -Dm644 share/bash-completion/completions/dwarfsck "$pkgdir/usr/share/bash-completion/completions/dwarfsck"
+  install -Dm644 share/bash-completion/completions/dwarfsextract "$pkgdir/usr/share/bash-completion/completions/dwarfsextract"
+  install -Dm644 share/bash-completion/completions/mkdwarfs "$pkgdir/usr/share/bash-completion/completions/mkdwarfs"
+
+  install -Dm644 share/zsh/site-functions/_dwarfs "$pkgdir/usr/share/zsh/site-functions/_dwarfs"
+  install -Dm644 share/zsh/site-functions/_dwarfsck "$pkgdir/usr/share/zsh/site-functions/_dwarfsck"
+  install -Dm644 share/zsh/site-functions/_dwarfsextract "$pkgdir/usr/share/zsh/site-functions/_dwarfsextract"
   install -Dm644 share/zsh/site-functions/_mkdwarfs "$pkgdir/usr/share/zsh/site-functions/_mkdwarfs"
+  
+  install -Dm644 share/mime/packages/dwarfs.xml "$pkgdir/usr/share/mime/packages/dwarfs.xml"
 }
