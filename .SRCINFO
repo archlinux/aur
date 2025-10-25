@@ -1,16 +1,14 @@
 pkgbase = librewolf-extension-kagisearch-bin
-	pkgdesc = A simple helper extension for setting Kagi as a default search engine
-	pkgver = 0.4.3
+	pkgdesc = Kagi Search browser extension for LibreWolf
+	pkgver = 1.3.0
 	pkgrel = 1
-	url = https://addons.mozilla.org/en-US/firefox/addon/kagi-search-for-firefox/
+	url = https://kagi.com/search
 	arch = any
-	groups = librewolf-addons
-	license = MIT
+	license = custom
+	makedepends = unzip
 	depends = librewolf
-	provides = librewolf-extension-kagisearch
-	conflicts = librewolf-extension-kagisearch
-	noextract = kagi-search-for-firefox-0.4.3.xpi
-	source = https://addons.mozilla.org/firefox/downloads/file/4206027/kagi-search-for-firefox-0.4.3.xpi
-	sha256sums = 7e8366d3f6e9e41028c82bc48a7b479ec5ad1dd18b1fa124bde2f30ce7f5776a
+	noextract = kagisearch-1.3.0.xpi
+	source = kagisearch-1.3.0.xpi::https://addons.mozilla.org/firefox/downloads/file/4368880/kagisearch-1.3.0.xpi
+	sha256sums = SKIP
 
 pkgname = librewolf-extension-kagisearch-bin
