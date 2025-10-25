@@ -1,20 +1,21 @@
-# Maintainer: Methanium
-pkgname=tensamin-bin
-pkgver=0.1.2
-pkgrel=1
-pkgdesc="Super secure messaging app"
-arch=('x86_64')
-url="https://tensamin.methanium.net"
-license=('custom')
-depends=('gtk3' 'alsa-lib' 'xdg-utils' 'nss' 'libxss' 'libgcrypt' 'ttf-liberation' 'dbus' 'libpulse' 'libva' 'libffi')
-optdepends=('pipewire: Screen sharing' 'kdialog: Native dialogs on KDE Plasma' 'gtk4: for --gtk-version=4' 'gnome-keyring: Password storage backend (org.freedesktop.secrets)' 'kwallet: Password storage backend on KDE Plasma')
-provides=('tensamin')
-conflicts=()
+# Maintainer: Alois <alois@tensamin.net>
 
-source_x86_64=("https://github.com/Tensamin/Frontend/releases/download/v0.1.2-desktop-apps/tensamin-linux-x64-0.1.2.deb")
-sha256sums_x86_64=("9daef9fb3e2aebddf3090cd76645ebe6427ae598cd03de0a6e5756f51c6e608c")
+pkgname=tensamin-bin
+_pkgname=tensamin
+pkgver=0.1.3
+pkgrel=1
+pkgdesc="True E2EE, decentralized messages. Open source and privacy first."
+arch=('x86_64')
+url="https://github.com/Tensamin/Frontend"
+license=('MIT')
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
+options=('!strip' '!debug')
+install=${_pkgname}.install
+source_x86_64=("${url}/releases/download/v${pkgver}/tensamin_${pkgver}_amd64.deb")
+source_aarch64=("${url}/releases/download/v${pkgver}/tensamin_${pkgver}_arm64.deb")
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
 
 package() {
-  bsdtar -O -xf "${srcdir}/tensamin-linux-x64-0.1.2.deb" data.tar.* \
-    | bsdtar -C "${pkgdir}" --no-same-owner -xv
+  tar -xvf data.tar.gz -C "${pkgdir}"
 }
