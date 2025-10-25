@@ -20,7 +20,7 @@ optdepends=(
 conflicts=('disktui')
 provides=('disktui')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f0f7e46348b146e92f42b514cf4286ff3a945e74bb82d60cda81dc7dbe19a57b')
+sha256sums=('a098d5b1db8e5e71077dfe16837a506f41b145457b5464dd1c546247bc68bd54')
 
 build() {
     cd ${pkgname}-${pkgver}
