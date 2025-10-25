@@ -304,6 +304,12 @@
 			"contribEditSessions",
 			"authenticationChallenges"
 		],
+		"ms-toolsai.vscode-ai": [
+			"authenticationChallenges"
+		],
+		"TeamsDevApp.vscode-ai-foundry": [
+			"authenticationChallenges"
+		],
 		"ms-vscode.vscode-selfhost-test-provider": [
 			"testObserver",
 			"testRelatedCode"
@@ -331,7 +337,8 @@
 			"tunnels"
 		],
 		"ms-toolsai.vscode-ai-remote": [
-			"resolvers"
+			"resolvers",
+			"authenticationChallenges"
 		],
 		"ms-python.python": [
 			"codeActionAI",
@@ -347,7 +354,8 @@
 			"terminalShellEnv"
 		],
 		"ms-python.vscode-python-envs": [
-			"terminalShellEnv"
+			"terminalShellEnv",
+			"terminalDataWriteEvent"
 		],
 		"ms-dotnettools.dotnet-interactive-vscode": [
 			"notebookMessaging"
@@ -525,7 +533,8 @@
 			"taskExecutionTerminal",
 			"dataChannels",
 			"chatSessionsProvider",
-			"devDeviceId"
+			"devDeviceId",
+			"contribEditorContentMenu"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
@@ -543,7 +552,8 @@
 			"timeline"
 		],
 		"ms-python.vscode-pylance": [
-			"terminalShellEnv"
+			"terminalShellEnv",
+			"portsAttributes"
 		],
 		"ms-python.debugpy": [
 			"contribViewsWelcome",
@@ -627,6 +637,13 @@
 		],
 		"Microsoft.foundry-local-chat": [
 			"chatProvider"
+		],
+		"ms-wmcp.windows-mcp-server-extension": [
+			"mcpToolDefinitions"
+		],
+		"openai.chatgpt": [
+			"languageModelProxy",
+			"chatSessionsProvider"
 		]
 	},
 	"tasConfig": {
