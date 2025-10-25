@@ -1,5 +1,5 @@
---- libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc	2013-12-19 13:54:11.000000000 +0100
-+++ libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc	2018-09-16 15:23:46.141733145 +0200
+--- a/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc	2013-12-19 13:54:11.000000000 +0100
++++ b/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc	2018-09-16 15:23:46.141733145 +0200
 @@ -81,7 +81,6 @@
  #include <sys/statvfs.h>
  #include <sys/timex.h>

@@ -1,5 +1,5 @@
 --- a/gcc/cp/Make-lang.in
-++++ b/gcc/cp/Make-lang.in
++++ b/gcc/cp/Make-lang.in
 @@ -111,7 +111,7 @@ else
  # deleting the $(srcdir)/cp/cfns.h file.
  $(srcdir)/cp/cfns.h:
