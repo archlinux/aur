@@ -3,11 +3,11 @@
 pkgname=tensamin-bin
 _pkgname=tensamin
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="True E2EE, decentralized messages. Open source and privacy first."
 arch=('x86_64')
 url="https://github.com/Tensamin/Frontend"
-license=('MIT')
+#license=('')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
 options=('!strip' '!debug')
 install=${_pkgname}.install
