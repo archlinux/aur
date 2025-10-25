@@ -1,5 +1,5 @@
 pkgname=arch-update-manager
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A Linux Mint inspired GTK4-based update manager for Arch Linux"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'git')
 optdepends=('paru: AUR helper support'
             'yay: AUR helper support')
 source=("git+$url.git#tag=${pkgver}")
-sha256sums=('432a930cc8768929ca589ba0bb9f7a43f2b4ccd70068c400fa64ca52baba7e3e')
+sha256sums=('ec8f3ddb9a9f2cfc0377447e1da0d33acf12ef477994b48b99521988fd793d67')
 
 prepare() {
 	cd "$pkgname"
