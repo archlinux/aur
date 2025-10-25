@@ -1,6 +1,6 @@
 pkgbase = find-broken-desktop
 	pkgdesc = Find desktop entry files (*.desktop) with broken executables.
-	pkgver = 1.4.1
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/smac89/find-broken-desktop
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = find-broken-desktop
 	makedepends = python-pdm-backend
 	makedepends = python-installer
 	depends = python-pyxdg
-	source = find-broken-desktop-v1.4.1.tgz::https://github.com/smac89/find-broken-desktop/archive/v1.4.1.tar.gz
-	sha256sums = b482612540335d0c22ed9904588450edb5cc99d5bd3d89ea1d46850f4cb44218
+	source = find-broken-desktop-v1.4.3.tgz::https://github.com/smac89/find-broken-desktop/archive/v1.4.3.tar.gz
+	sha256sums = d44ada8134e15b10314452dbefd641e63a4f3e7da7ed35565525010f604bfdcb
 
 pkgname = find-broken-desktop

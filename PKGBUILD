@@ -1,6 +1,6 @@
 # Maintainer: FirstAirBender <noblechuk5[at]web[dot]de>
 pkgname=find-broken-desktop
-pkgver=1.4.1
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Find desktop entry files (*.desktop) with broken executables."
 arch=("any")
@@ -11,11 +11,11 @@ makedepends=('python-build' 'python-pdm-backend' 'python-installer')
 source=(
     "$pkgname-v${pkgver}.tgz"::$url/archive/v${pkgver}.tar.gz
 )
-sha256sums=('b482612540335d0c22ed9904588450edb5cc99d5bd3d89ea1d46850f4cb44218')
+sha256sums=('d44ada8134e15b10314452dbefd641e63a4f3e7da7ed35565525010f604bfdcb')
 
 build() {
     cd "$pkgname-$pkgver"
-    export PDM_BUILD_SCM_VERSION="$pkgver-$pkgrel"
+    export PDM_BUILD_SCM_VERSION="$pkgver"
     python -m build --wheel --outdir dist
 }
 
