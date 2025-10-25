@@ -1,6 +1,6 @@
 pkgbase = r-cubist
 	pkgdesc = Rule- And Instance-Based Regression Modeling
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=Cubist
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = r-cubist
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tidyrules
-	source = https://cran.r-project.org/src/contrib/Cubist_0.5.0.tar.gz
-	sha256sums = 7c12abc266b374e99b7b06f81a5980356b5901cc89e86a278eaa4ea32ee47254
+	source = https://cran.r-project.org/src/contrib/Cubist_0.5.1.tar.gz
+	sha256sums = 0c08ad0175c13ec60c5d9f121e828a91dfd0e7bc6490ad35b986b61ec953cb8a
 
 pkgname = r-cubist
