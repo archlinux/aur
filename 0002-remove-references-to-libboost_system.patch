@@ -1,0 +1,56 @@
+From eb85b0b178bea5023299fdfcb3d49dae34e2b8b7 Mon Sep 17 00:00:00 2001
+From: Jared Van Bortel <cebtenzzre@gmail.com>
+Date: Sat, 25 Oct 2025 18:56:16 -0400
+Subject: [PATCH 2/2] remove references to libboost_system
+
+libboost_system was removed in Boost 1.89.0 as it had been a stub
+library. Remove -lboost_system linker flags from mlxarchive, mlxlink,
+and mlxreg Makefile.am files to fix build errors with modern Boost.
+---
+ mlxarchive/Makefile.am | 2 +-
+ mlxlink/Makefile.am    | 3 +--
+ mlxreg/Makefile.am     | 2 +-
+ 3 files changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/mlxarchive/Makefile.am b/mlxarchive/Makefile.am
+index 6caef5af..9baa0f3d 100755
+--- a/mlxarchive/Makefile.am
++++ b/mlxarchive/Makefile.am
+@@ -86,7 +86,7 @@ mstarchive_LDADD = libmstarchive.a\
+                    $(USER_DIR)/ext_libs/minixz/libminixz.a\
+ 		   $(USER_DIR)/xz_utils/libxz_utils.a \
+                    $(CURL_LIBS)\
+-                   -lboost_regex -lboost_filesystem -lboost_system \
++                   -lboost_regex -lboost_filesystem \
+                    -llzma -lm $(LIBSTD_CPP) ${LDL}
+ 
+ if ENABLE_OPENSSL
+diff --git a/mlxlink/Makefile.am b/mlxlink/Makefile.am
+index 9469b202..6d06c337 100644
+--- a/mlxlink/Makefile.am
++++ b/mlxlink/Makefile.am
+@@ -68,9 +68,8 @@ mstlink_DEPENDENCIES = modules/libmodules_lib.a \
+                       $(LAYOUTS_DIR)/libtools_layouts.a \
+                       $(USER_DIR)/xz_utils/libxz_utils.a \
+                       $(USER_DIR)/ext_libs/minixz/libminixz.a \
+-                      -lboost_regex -lboost_filesystem -lboost_system \
++                      -lboost_regex -lboost_filesystem \
+                       -llzma $(LIBSTD_CPP) ${LDL} -lexpat \
+                       $(JSON_LIBS)
+ 
+ mstlink_LDADD = $(mstlink_DEPENDENCIES)
+-
+diff --git a/mlxreg/Makefile.am b/mlxreg/Makefile.am
+index 410cf9d9..49055f70 100644
+--- a/mlxreg/Makefile.am
++++ b/mlxreg/Makefile.am
+@@ -65,5 +65,5 @@ mstreg_LDADD =  $(MLXREG_DIR)/mlxreg_lib/libmstreg_lib.a \
+                 $(LAYOUTS_DIR)/libtools_layouts.a \
+                 $(USER_DIR)/xz_utils/libxz_utils.a \
+                 $(USER_DIR)/ext_libs/minixz/libminixz.a \
+-                -lboost_regex -lboost_filesystem -lboost_system \
++                -lboost_regex -lboost_filesystem \
+                 -llzma $(LIBSTD_CPP) ${LDL} -lexpat
+-- 
+2.51.1
+

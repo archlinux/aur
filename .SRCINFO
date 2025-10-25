@@ -1,7 +1,7 @@
 pkgbase = mstflint425
 	pkgdesc = Open-source version of MFT (Mellanox Firmware Tools) - old version for ConnectX-3 Pro
 	pkgver = 4.25.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Mellanox/mstflint
 	arch = x86_64
 	arch = aarch64
@@ -29,7 +29,9 @@ pkgbase = mstflint425
 	conflicts = mstflint
 	source = https://github.com/Mellanox/mstflint/archive/v4.25.0-1/mstflint-4.25.0-1.tar.gz
 	source = 0001-fix-missing-includes.patch
+	source = 0002-remove-references-to-libboost_system.patch
 	sha256sums = 46f5fda9c8687bbcdae62145c17ad70f6b1725d738985eb3c8efd8c71604ddc3
 	sha256sums = 28045b218edba0c38007d6812c38beb1afa05c707e59b49271ff0912e7b0ac74
+	sha256sums = f6c403a0e61d22878be49f384aeabfd383705a351dbe9326c84b0287596d2a03
 
 pkgname = mstflint425
