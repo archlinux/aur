@@ -1,6 +1,6 @@
-diff -aur src.pristine/gcc-6.5.0/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc src.new/gcc-6.5.0/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc
---- src.pristine/gcc-6.5.0/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc	2020-02-26 21:58:22.465728543 -0500
-+++ src.new/gcc-6.5.0/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc	2020-02-26 22:17:14.997803617 -0500
+diff -aur a/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc b/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc
+--- a/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc	2020-02-26 21:58:22.465728543 -0500
++++ b/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc	2020-02-26 22:17:14.997803617 -0500
 @@ -1130,8 +1130,9 @@
  #ifndef __GLIBC_PREREQ
  #define __GLIBC_PREREQ(x, y) 0
@@ -13,9 +13,9 @@ diff -aur src.pristine/gcc-6.5.0/libsanitizer/sanitizer_common/sanitizer_platfor
  CHECK_SIZE_AND_OFFSET(ipc_perm, mode);
  #endif
  
-diff -aur src.pristine/gcc-6.5.0/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.h src.new/gcc-6.5.0/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.h
---- src.pristine/gcc-6.5.0/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.h	2020-02-26 21:58:22.459061884 -0500
-+++ src.new/gcc-6.5.0/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.h	2020-02-26 22:16:16.651201784 -0500
+diff -aur a/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.h b/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.h
+--- a/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.h	2020-02-26 21:58:22.459061884 -0500
++++ b/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.h	2020-02-26 22:16:16.651201784 -0500
 @@ -200,27 +200,28 @@
      unsigned __seq;
      u64 __unused1;
@@ -60,4 +60,4 @@ diff -aur src.pristine/gcc-6.5.0/libsanitizer/sanitizer_common/sanitizer_platfor
      unsigned short __seq;
      unsigned short __pad2;
  #if defined(__x86_64__) && !defined(_LP64)
-Only in src.new/gcc-6.5.0/libsanitizer/sanitizer_common: sanitizer_platform_limits_posix.h~
+Only in b/libsanitizer/sanitizer_common: sanitizer_platform_limits_posix.h~

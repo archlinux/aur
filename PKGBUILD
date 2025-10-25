@@ -12,19 +12,20 @@ _opt_JAVA=0
 # JAVA: 6-20170906: /usr/include/glib-2.0/glib/gmacros.h:232:53: error: size of array ‘_GStaticAssertCompileTimeAssertion_0’ is negative
 # JAVA: -m32 version is using 64 bit include files from /usr/lib instead of the proper include files in /usr/lib32
 _opt_SSP=1  # Stack Smashing Protection
-_cloogver='0.18.4'  # comment out to disable
+_snapshot='' # '6-20181024'
 
 set -u
-_pkgver='6.5'; _pkgver2='0'
-_snapshot='' # '6-20181024'
-pkgname="gcc${_pkgver%%.*}-multilib"
-pkgver="${_pkgver}.${_pkgver2}_${_snapshot#*-}"
+pkgver='6.5.0'
+#pkgver+="_${_snapshot#*-}"
+_majorver="${pkgver: 0:1}"
+pkgname="gcc${_majorver}-multilib"
+_cloogver='0.18.4'  # comment out to disable
 _islver='0.18'
 #_commit='4fc407888a30c5d953816b05c8a8e98ec2ab3101' # Pulling commits this big is too slow!
 pkgrel='1'
-pkgdesc="The GNU Compiler Collection for multilib (${_pkgver%%.*}.x)"
+pkgdesc="The GNU Compiler Collection for multilib (${_majorver}.x)"
 arch=('x86_64')
-url='http://gcc.gnu.org'
+url='https://gcc.gnu.org'
 license=('GPL-2.0-only' 'LGPL-2.1-only' 'GPL-3.0-only' 'LGPL-3.0-only' 'GFDL-1.3-only' 'custom')
 depends=('glibc' 'gcc-libs' 'zlib' 'lib32-zlib' 'libmpc>=0.8.1' 'lib32-glibc')
 makedepends=( # https://gcc.gnu.org/install/prerequisites.html
@@ -53,10 +54,11 @@ if [ ! -z "${_commit:-}" ]; then
   makedepends+=('git')
 fi
 checkdepends=('dejagnu' 'inetutils')
-provides=("gcc${_pkgver%%.*}=${_pkgver}.${_pkgver2}") # no version as it is completely contained in the name
-conflicts=("gcc${_pkgver%%.*}")
-conflicts+=('gcc63-multilib') # temporary
+provides=("gcc${_majorver}=${pkgver}") # no version as it is completely contained in the name
+conflicts=("gcc${_majorver}")
+#conflicts+=('gcc63-multilib') # temporary
 options=('!emptydirs' '!strip' '!buildflags')
+options+=('!lto')
 source=(
   #"git+https://gcc.gnu.org/git/gcc.git#commit=${_commit}"
   #"gcc-${pkgver%%_*}.tgz::https://github.com/gcc-mirror/gcc/archive/${_commit}.tar.gz"
@@ -65,102 +67,46 @@ source=(
   #"http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
   "https://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
   'libsanitizer.patch'
+  '78_all-libsanitizer-Fix-build-with-glibc-2.42.patch'
+  '79_all-sanitizer_common-Remove-reference-to-obsolete-termio.patch'
 )
 if [ ! -z "${_cloogver:=}" ]; then
   source+=("http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz")
 fi
 md5sums=('edaeff1cc020b16a0c19a6d5e80dc2fd'
          '11436d6b205e516635b666090b94ab32'
-         'b685d5d712adc38129cbe4fd426ed703'
+         '2a6c4acbaa7b374b5462f109e2af7076'
+         'd8b68982a243f63234e83287c370d8b2'
+         '97eb6307f4e2616ebd3840dd6cc2ed32'
          'e531f725244856c92c9bba009ff44faf')
 sha256sums=('7ef1796ce497e89479183702635b14bb7a46b53249209a5e0f999bebf4740945'
             '6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b'
-            '82af0b240aba4e39f9dde630313dd620f6856e62343cbcae62c5310153821b65'
+            'ab726012d4240c0aa11ee3f9f1617cef75d1f54fbf72fd495db688691a8dccb8'
+            '87b5d01656a3400250190d4d6e54638805c7bc8e7be061bfacd599984652d4ea'
+            '6a8d3ed842d5b1d99a88dbe758c0eabe59bfe2468cb2c58d9d4d15b6d970c74f'
             '325adf3710ce2229b7eeb9e84d3b539556d093ae860027185e7af8a8b00a750e')
 sha512sums=('ce046f9a50050fd54b870aab764f7db187fe7ea92eb4aaffb7c3689ca623755604e231f2af97ef795f41c406bb80c797dd69957cfdd51dfa2ba60813f72b7eac'
             '85d0b40f4dbf14cb99d17aa07048cdcab2dc3eb527d2fbb1e84c41b2de5f351025370e57448b63b2b8a8cf8a0843a089c3263f9baee1542d5c2e1cb37ed39d94'
-            'e7861f77d54ac9bc12cfc6d3498a9bc284e72f728435c23866ac0763fb93e94e431d819c3def9f5aa03acbafc437141882e7b3746f4574ec6e5eb66b555cebb6'
+            'a92e15d39f8e870bb0f11f97d63757092451917144590af6dbebcab6b9d2fe26b705930f4ec738a065ced51d8fd0d9be43fb4c443c20f6f4afb5705cf240021f'
+            '976f637303e810d415d33cd99a627ae607ad86e6a4f4c615158c4a5b68984536fbca2a87bff78927cccf5d869f64405e5321ac592d4b9c23513f20be59962811'
+            '9944b497e4bc215736b84e0b19196c153082172cbfcf810226ec4f5e56f02f526547c198e709f23f76b181d15dd259aef1bf724fd24cd587bc85b96d5563b2ff'
             'd35d67b08ffe13c1a010b65bfe4dd02b0ae013d5b489e330dc950bd3514defca8f734bd37781856dcedf0491ff6122c34eecb4b0fe32a22d7e6bdadea98c8c23')
-
-#PKGEXT='.pkg.tar.gz' # Uncompressed: 1.3GB, gz=500MB 1.1 minutes, xz=275MB 9.5 minutes
 
 if [ -n "${_snapshot:-}" ]; then
   _basedir="gcc-${_snapshot}"
 else
-  pkgver="${_pkgver}.${_pkgver2}"
   _basedir="gcc-${pkgver}"
-  source[0]="http://www.netgull.com/gcc|releases/gcc-${_pkgver}.${_pkgver2}/gcc-${_pkgver}.${_pkgver2}.tar.xz" # Please do not use a snapshot before it has been announced with a LATEST- symlink.
 fi
 
 #_libdir="usr/lib/gcc/${CHOST:-}/${pkgver%%_*}"
-
-# https://gcc.gnu.org/mirrors.html
-_setmirror() {
-  local _cmd="${BASH_SOURCE[*]}" # want [*] not [@]
-  local _lang="${LANG:-}" # mksrcinfo removes LANG
-  if [ "${_cmd/makepkg/}" != "${_cmd}" ] && [ ! -z "${_lang}" ]; then
-    local _mirrors=()
-    _lang="${_lang%%\.*}"
-    _lang="${_lang##*_}"
-    case "${_lang}" in
-    'CA') _mirrors+=(
-      'http://gcc.parentingamerica.com/'
-      'http://gcc.skazkaforyou.com/'
-      'http://ca.mirror.babylon.network/gcc/'
-      );;
-    'FR') _mirrors+=(
-      # 'ftp://ftp.lip6.fr/pub/gcc/' # no snapshots
-      'ftp://ftp.irisa.fr/pub/mirrors/gcc.gnu.org/gcc/'
-      'http://fr.mirror.babylon.network/gcc/'
-      'ftp://ftp.uvsq.fr/pub/gcc/'
-      );;
-    'DE') _mirrors+=(
-      'ftp://ftp.fu-berlin.de/unix/languages/gcc/'
-      'http://www.bothelp.net/mirrors/gcc/'
-      'ftp://ftp.gwdg.de/pub/misc/gcc/'
-      'ftp://ftp.mpi-sb.mpg.de/pub/gnu/mirror/gcc.gnu.org/pub/gcc/'
-      #'http://gcc.cybermirror.org/' # Maintenance
-      );;
-    'GR') _mirrors+=('ftp://ftp.ntua.gr/pub/gnu/gcc/');;
-    'HU') _mirrors+=('http://robotlab.itk.ppke.hu/gcc/');;
-    'JP') _mirrors+=('http://ftp.tsukuba.wide.ad.jp/software/gcc/');;
-    'NL') _mirrors+=(
-      'http://nl.mirror.babylon.network/gcc/'
-      'ftp://ftp.nluug.nl/mirror/languages/gcc/'
-      );;
-    #'SL') _mirrors+=('http://gcc.fyxm.net/');; # invalid response, no files
-    'UK') _mirrors+=('ftp://ftp.mirrorservice.org/sites/sourceware.org/pub/gcc/');;
-    'US') _mirrors+=(
-      'http://www.netgull.com/gcc/'
-      'http://mirrors-usa.go-parts.com/gcc/'
-      'http://mirrors.concertpass.com/gcc/'
-      );;
-    esac
-    local _mc="${#_mirrors[@]}"
-    if [ "${_mc}" -ne 0 ]; then
-      _mc=$((${RANDOM} % ${_mc}))
-      _mc="${_mirrors[${_mc}]%/}"
-      source[0]="${_mc}/${source[0]##*|}"
-      set +u
-      msg "Alternate mirror: ${_mc}"
-      set -u
-    fi
-  fi
-}
-if [ "${source[0]//|/}" != "${source[0]}" ]; then
-  #_setmirror
-  source[0]="${source[0]//|/\/}"
-fi
-unset -f _setmirror
 
 prepare() {
   set -u
   cd "${_basedir}"
 
-  patch -Nup2 -i "${srcdir}/libsanitizer.patch"
-
-  # Link isl/cloog for in-tree builds
+  # link isl for in-tree build
   ln -s "../isl-${_islver}" 'isl'
+  # Link cloog for in-tree builds
   if [ ! -z "${_cloogver}" ]; then
     ln -s "../cloog-${_cloogver}" 'cloog'
   fi
@@ -185,6 +131,18 @@ prepare() {
 
   # remove -V and -qversion as their aren't supported in gcc7
   sed -e 's/ -V -qversion/ /g' -i $(grep --include='configure' -lrFe '-V -qversion')
+
+  # Apply patches
+  local _pt
+  for _pt in "${source[@]%%::*}"; do
+    _pt="${_pt##*/}"
+    case "${_pt}" in
+    *.patch)
+      set +u; msg2 "*** Applying patch ${_pt}"; set -u
+      patch --no-backup-if-mismatch -Np1 -i "${srcdir}/${_pt}"
+      ;;
+    esac
+  done
 
   rm -rf 'gcc-build'
   mkdir 'gcc-build'
@@ -218,6 +176,7 @@ build() {
       _languages+=',fortran,lto,objc,obj-c++'
     fi
 
+    # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
     local _conf=(
       --build="${CHOST}"
       --disable-libstdcxx-pch
@@ -242,8 +201,8 @@ build() {
       --libdir='/usr/lib'
       --libexecdir='/usr/lib'
       --mandir='/usr/share/man'
-      --program-suffix="-${_pkgver%%.*}"
-      --with-bugurl='https://aur.archlinux.org/packages/gcc63-multilib/'
+      --program-suffix="-${_majorver}"
+      --with-bugurl="https://aur.archlinux.org/packages/${pkgname}/"
       --with-isl
       --with-linker-hash-style='gnu'
       --with-pkgversion='Arch'
@@ -253,10 +212,13 @@ build() {
       #CXX='g++-4.9' CC='gcc-4.9'
     )
     ../configure "${_cfgopts[@]}" "${_conf[@]}"
+
+    #sed -e 's/^STAGE1_CXXFLAGS.*$/& -std=gnu++11/' -i 'Makefile'
   fi
 
+  # The system stdc must be used when gcc links to some system libraries.
   LD_PRELOAD='/usr/lib/libstdc++.so' \
-  nice make -s
+  nice -n1 make -s
 
   set +u; msg 'Compile complete'; set -u
 
@@ -284,7 +246,7 @@ package() {
   cd "${_basedir}/gcc-build"
 
   LD_PRELOAD='/usr/lib/libstdc++.so' \
-  make -j1 DESTDIR="${pkgdir}" install
+  make -j1 -s DESTDIR="${pkgdir}" install
 
   ## Lazy way of dealing with conflicting man and info pages and locales...
   rm -rf "${pkgdir}/usr"/{share,include}/
