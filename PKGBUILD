@@ -1,18 +1,18 @@
 # Maintainer: ezberlin <ezberlin at proton dot me>
 pkgname=lichess-mobile-git
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.3
+pkgrel=3
 pkgdesc="The official Lichess mobile application v2 (Linux desktop build)"
 arch=('x86_64')
 url="https://github.com/lichess-org/mobile"
 license=('GPL-3.0-only')
 depends=('rsync' 'glibc' 'gtk3')
-makedepends=('fvm' 'base-devel' 'git' 'unzip' 'pkg-config')
+makedepends=('fvm' 'base-devel' 'git' 'unzip' 'pkg-config' 'cmake' 'ninja' 'clang' 'java-environment-common')
 source=("https://github.com/lichess-org/mobile/archive/refs/heads/main.zip")
 sha256sums=('SKIP')
 
 prepare() {
-  cd "$srcdir"
+	  cd "$srcdir"
   unzip -q "main.zip" -d "${pkgname}-src"
   cd "${pkgname}-src"/*
 
