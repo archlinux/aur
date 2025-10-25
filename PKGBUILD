@@ -8,17 +8,18 @@
 # NOTE: libtool requires rebuilt with each new gcc version
 
 set -u
-pkgname=('gcc8' 'gcc8-libs' 'gcc8-fortran')
+pkgbase='gcc8'
+pkgname=("${pkgbase}" "${pkgbase}-libs" "${pkgbase}-fortran")
 pkgver='8.5.0'
+_majorver="${pkgver: 0:1}"
 _islver='0.24'
-_pkgver='8'
-_majorver="${pkgver:0:1}"
 pkgrel='2'
-pkgdesc='The GNU Compiler Collection (8.x.x)'
+pkgdesc="The GNU Compiler Collection (${_majorver}.x.x)"
 arch=('x86_64')
-url='http://gcc.gnu.org'
-license=('GPL' 'LGPL' 'FDL' 'custom')
-makedepends=('binutils' 'libmpc' 'doxygen' 'python')
+url='https://gcc.gnu.org'
+license=('GPL-2.0-only' 'LGPL-2.1-only' 'GPL-3.0-only' 'LGPL-3.0-only' 'GFDL-1.3-only' 'custom')
+depends=('glibc' 'gcc-libs' 'binutils' 'python' 'zlib')
+makedepends=('libmpc' 'doxygen')
 checkdepends=('dejagnu' 'inetutils')
 options=('!emptydirs' '!strip' '!buildflags')
 options+=('!lto')
@@ -27,6 +28,8 @@ source=(
   "https://sourceware.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
   'c89'
   'c99'
+  '78_all-libsanitizer-Fix-build-with-glibc-2.42.patch'
+  '79_all-sanitizer_common-Remove-reference-to-obsolete-termio.patch'
 )
 _gentoo=(
   '01_all_default-fortify-source.patch'
@@ -61,9 +64,13 @@ _gentoo=(
   '31_all_powerpcspe-pie-crt.patch'
   '32_all_powerpcspe-march-PLATFORM.patch'
   '33_all_msgfmt-libstdc++-link.patch'
+  '34_all_Fix-build-breakage-with-latest-glibc-release.patch'
+  '35_all_re-PR-ada-81103-gcc-ada-terminals.c-please-remove-un.patch'
+  '36_all_glibc_236.patch'
+  # https://github.com/gentoo/gcc-patches/tree/master/8.5.0/gentoo
 )
 for _gt in "${_gentoo[@]}"; do
-  source+=("https://raw.githubusercontent.com/gentoo/gcc-patches/master/${pkgver}/gentoo/${_gt}")
+  source+=("https://raw.githubusercontent.com/gentoo/gcc-patches/refs/heads/master/${pkgver}/gentoo/${_gt}")
 done
 unset _gt _gentoo
 validpgpkeys=(
@@ -75,6 +82,8 @@ md5sums=('0c1f625768840187ef3b10adebe8e3b0'
          'dd2f7b78e118c25bd96134a52aae7f4d'
          'aab23fb7d3568065e8d16f1cc9502bde'
          'a62bdf6ed6b985e899275f4bdabbb2a0'
+         '5c20615dc4e591bf717132f27431a6ae'
+         'b17da62ec2d4808305088f73f4d20f35'
          '391cd72d845798db8da4886dff4f7b2a'
          '985662123a68a9b441d3e96e08da91aa'
          'd761d480744208495367f3a4cef98374'
@@ -106,12 +115,17 @@ md5sums=('0c1f625768840187ef3b10adebe8e3b0'
          '0a011943098270848d05b3dfecfd79d5'
          'd2aa2fc83388a470a022286eca2736a6'
          '8e3b85e25d2f05423391b97811849e62'
-         '7b113a1e76d277418d77ce6ea72d9f0f')
+         '7b113a1e76d277418d77ce6ea72d9f0f'
+         '59ed3f49a1274229f1d6631545f53316'
+         '29d3b777ebad590b2dbe7aeb04c4ddbc'
+         '9b4934809323ec474a95816a52e777e5')
 sha256sums=('d308841a511bb830a6100397b0042db24ce11f642dab6ea6ee44842e5325ed50'
             'SKIP'
             'fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0'
             '1ec3372373d0e20b9f32057c0e90ad776086f5d407b388b78b9699a272bf5a3f'
             '30e17222514da5a225272aca3da79bdf3e088656a6a00a7cc6ceab91bea1e032'
+            'a20c392af8b730bde85f1e058d1fc97ebf40a1a08ea8ca44fcfbfea3c374861e'
+            '02b4965b25af0e1dcb8670bbcc779edc6fd6f36c238b45a8c6a77ac801dc2d89'
             '84873199a960f17b0dd2aba8a4c699067640d04b23fb5b320e59ca97aab2ec68'
             '964563c4266c7674054debe4f75a045bfa7a793477acdc2deeb04ee832892e85'
             '60e8e26d4ee8a6c732b027c09f7a0e9f3a8e5f88b3201947b6fbbbedb62d560c'
@@ -143,12 +157,17 @@ sha256sums=('d308841a511bb830a6100397b0042db24ce11f642dab6ea6ee44842e5325ed50'
             '983ec8dd701287d9e391332dee7ad888cc421a3d3a28c22438689e3cacd34a65'
             '611f39b256ed4897ef5c8a6ed5418c00cd3f3a65db020ee8f65a15eecff07691'
             'd166e7d8889a73a81df1d307b4fe169bb28be30d2ad8fd3feac4b2ebba31e9de'
-            '2c73f411779114c5e1a971ca19e0ef950a428922ac4845e7666b0fdebe4aa1a1')
+            '2c73f411779114c5e1a971ca19e0ef950a428922ac4845e7666b0fdebe4aa1a1'
+            '3b01e5f63747fa3682431dac998ab23cd697dbab03956cc982763de4074e3a9d'
+            '5f717302056b8610a6812844b7a1475bfba8ddf9d4b695745605f81c5525d52a'
+            '35ae955b7a6b0a542947085a2049eebf760062b3f8d30a7f956011ce3c42daf5')
 sha512sums=('92f599680e6b7fbce88bcdda810f468777d541e5fddfbb287f7977d51093de2a5178bd0e6a08dfe37090ea10a0508a43ccd00220041abbbec33f1179bfc174d8'
             'SKIP'
             'aab3bddbda96b801d0f56d2869f943157aad52a6f6e6a61745edd740234c635c38231af20bc3f1a08d416a5e973a90e18249078ed8e4ae2f1d5de57658738e95'
             'aa3fe5cd3259bc74ed464b4dcccbabe0933628e6f2997d7e9abbfb4fd558dd1f6db79dec55970b9173e49c479e0b87e9d743d8087f3912b256fa78e38e17430d'
             'b3962925604937d49527bf790d15aad2966cca86e419b7f79bff15f971931924af6a57883d8529a72630caac59be1598374793cf152056cda8278f6f6e674834'
+            '665b325b0e5588641f18ebd3571ff0ac5cb9430ff6f89357f0610d18058bb014fa4c4f8e1c55fb0dfd74806d9f745a2315d932b96046aa3c6ebc5f28baeaf675'
+            '4667e948a7f2d2b808381da6522fbee967b41450caa3230bd9c69667c19aa0bb49281082a450935a2605f0fc4ace5faa7a5cbcfdea682f5302cb77a61e340bbf'
             '91181cd5cc9892bcfafb2ee63efe58dcfcd5e35128141ca6aa3dd2add39de3bf060cf98cdfbfc94f802f4de89c55b5e39f897e1b5c445249150acc39c97f1f2c'
             'e026bf9f73ee254528423c6cabdfd7794960c567161581b7d4b7c61c45027e12a6efef79662d4288b9cbaecb4798f01af6a5b4a13b766c2d501444ac1846fd43'
             '37de4cc9061bfe1963e6e6570e1a6bbfd58204bf90e0eef819882599a9a80ea28f3eb815c20c1f173dc25d4bd9971b7c7f7f9512d6f8f91f04de1e1175114d4d'
@@ -180,7 +199,10 @@ sha512sums=('92f599680e6b7fbce88bcdda810f468777d541e5fddfbb287f7977d51093de2a517
             '9ef27df960a82695d7fbc0c732c91620fe0897aefb5ef89eac578a2cde9779b6f4ee6504b7f3e6e1fc26bc41edf938cd680e7c5efde5c314831f7da50ac25e74'
             '0ef43b2a2bb545679854aa1dafdc48e23330722a0ab3e918d2eace376a2f67cd7751b9892ad30ca5d3155c81bad6cb4526acc167ab91b458893ceb80ad85b27e'
             '2b670c704e2aeb8470cc75a56830cc9e4a7a4f13936315b18a06541d938d0c992821b960639c3e44208357f2cbd3bc0915ea156abef9e8c3700f6da804f89ea1'
-            '67b16d9f75f12063ce4aa3dab1ebb99b9e260401e9515011eab0d11f0074ac9e57556ed5cfb0743a8bbe14684847e18a381d5dab2a2e1abed67d9d9b36ed2763')
+            '67b16d9f75f12063ce4aa3dab1ebb99b9e260401e9515011eab0d11f0074ac9e57556ed5cfb0743a8bbe14684847e18a381d5dab2a2e1abed67d9d9b36ed2763'
+            '54afcad162f2e0752c6640884849e259c1b04954850f4eb8bf7da6e9951dd3ae1f2dde8cfe0661e0fe67ec69b7bb716983d7133d84dc0efd847505f03a47bbfa'
+            '50a4f8c9f3245d51ed4e8bd9629fcfb841e9640450988afdaed2ce77e72e7a2e9b541e50bf8e6848bbdd2f0e74419b9129c91d10b61129900b595d0e62bc1282'
+            'acdc29fdd980949c21af13f4997bf55fea0df1e2fe8b8d24479a6331fc46106d68b1ca2c25cfc49ba3d093094a41082064a13bb94aab43dd8a7cda9fecae1c7a')
 
 if [ -n "${_snapshot:-}" ]; then
   _basedir="gcc-${_snapshot}"
@@ -188,7 +210,9 @@ else
   _basedir="gcc-${pkgver}"
 fi
 
-_libdir="usr/lib/gcc/${CHOST}/${pkgver%%+*}"
+_fn_setlibdir() {
+  _libdir="usr/lib/gcc/${CHOST}/${pkgver%%+*}"
+}
 
 prepare() {
   set -u
@@ -206,17 +230,16 @@ prepare() {
   esac
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-  sed -e '/ac_cpp=/s/$CPPFLAGS/$CPPFLAGS -O2/' -i {libiberty,gcc}/configure
+  sed -e '/ac_cpp=/ s/$CPPFLAGS/$CPPFLAGS -O2/' -i {libiberty,gcc}/configure
 
   # Apply patches
-  local _src
-  for _src in "${source[@]}"; do
-    _src="${_src%%::*}"
-    _src="${_src##*/}"
-    case "${_src}" in
+  local _pt
+  for _pt in "${source[@]%%::*}"; do
+    _pt="${_pt##*/}"
+    case "${_pt}" in
     *.patch)
-      set +u; msg2 "*** Applying patch ${_src}..."; set -u
-      patch --no-backup-if-mismatch -Np1 -i "${srcdir}/${_src}"
+      set +u; msg2 "*** Applying patch ${_pt}"; set -u
+      patch --no-backup-if-mismatch -Np1 -i "${srcdir}/${_pt}"
       ;;
     esac
   done
@@ -237,8 +260,8 @@ build() {
   #CXXFLAGS="${CXXFLAGS/-pipe/}"
 
   # Force this for now, doesn't seem to be picked up via patch from https://bugs.archlinux.org/task/70701
-  CFLAGS+=' -Wno-format -Wno-format-security'
-  CXXFLAGS+=' -Wno-format -Wno-format-security'
+  #CFLAGS+=' -Wno-format -Wno-format-security'
+  #CXXFLAGS+=' -Wno-format -Wno-format-security'
 
   if [ ! -s 'Makefile' ]; then
     # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
@@ -250,7 +273,7 @@ build() {
       --disable-multilib
       --disable-werror
       --enable-__cxa_atexit
-      --enable-cet=auto
+      --enable-cet='auto'
       --enable-checking='release'
       --enable-clocale='gnu'
       --enable-default-pie
@@ -270,8 +293,8 @@ build() {
       --libdir='/usr/lib'
       --libexecdir='/usr/lib'
       --mandir='/usr/share/man'
-      --program-suffix="-${_pkgver}"
-      --with-bugurl='https://bugs.archlinux.org/'
+      --program-suffix="-${_majorver}"
+      --with-bugurl="https://aur.archlinux.org/packages/${pkgname}/"
       --with-isl
       --with-linker-hash-style='gnu'
       --with-system-zlib
@@ -284,7 +307,7 @@ build() {
 
   # The system stdc must be used when gcc links to some system libraries.
   LD_PRELOAD='/usr/lib/libstdc++.so' \
-  nice make -s
+  nice -n1 make -s
 
   set +u; msg 'Compile complete'; set -u
 
@@ -293,7 +316,7 @@ build() {
   set +u
 }
 
-check() {
+check_disabled() {
   set -u
   cd "${_basedir}/gcc-build"
 
@@ -306,25 +329,28 @@ check() {
 
 package_gcc8-libs() {
   set -u
-  pkgdesc='Runtime libraries shipped by GCC (8.x.x)'
+  pkgdesc="Runtime libraries shipped by GCC (${_majorver}.x.x)"
   depends=('glibc>=2.27')
   options+=('!strip')
 
   cd "${_basedir}/gcc-build"
-  make -j1 -s -C "${CHOST}/libgcc" DESTDIR="${pkgdir}" install-shared
+  make -j1 -s -C "${CHOST}/libgcc" DESTDIR="${pkgdir}" 'install-shared'
+  local _libdir; _fn_setlibdir
   mv "${pkgdir}/${_libdir}/../lib"/* "${pkgdir}/${_libdir}"
   rmdir "${pkgdir}/${_libdir}/../lib"
   rm -f "${pkgdir}/${_libdir}/libgcc_eh.a"
 
-  local _lib
-  for _lib in libatomic \
-             libgfortran \
-             libgomp \
-             libitm \
-             libquadmath \
-             libsanitizer/{a,l,ub,t}san \
-             libstdc++-v3/src \
-             libvtv; do
+  local _lib _libs=(
+    libatomic
+    libgfortran
+    libgomp
+    libitm
+    libquadmath
+    libsanitizer/{a,l,ub,t}san
+    libstdc++-v3/src
+    libvtv
+  )
+  for _lib in "${_libs[@]}"; do
     make -j1 -s -C "${CHOST}/${_lib}" DESTDIR="${pkgdir}" 'install-toolexeclibLTLIBRARIES'
   done
 
@@ -332,22 +358,23 @@ package_gcc8-libs() {
   rm -f "${pkgdir}/${_libdir}/libmpx.spec"
 
   # Install Runtime Library Exception
-  install -Dm644 '../COPYING.RUNTIME' \
-    "${pkgdir}/usr/share/licenses/gcc8-libs/RUNTIME.LIBRARY.EXCEPTION"
+  install -Dpm644 '../COPYING.RUNTIME' \
+    "${pkgdir}/usr/share/licenses/${pkgbase}-libs/RUNTIME.LIBRARY.EXCEPTION"
   set +u
 }
 
 package_gcc8() {
   set -u
-  pkgdesc='The GNU Compiler Collection - C and C++ frontends (8.x.x)'
-  depends=("gcc8-libs=${pkgver}-${pkgrel}" 'binutils>=2.28' 'libmpc')
+  pkgdesc="The GNU Compiler Collection - C and C++ frontends (${_majorver}.x.x)"
+  depends=("${pkgbase}-libs=${pkgver}-${pkgrel}" 'binutils>=2.28' 'libmpc')
   options+=('staticlibs')
 
   cd "${_basedir}/gcc-build"
 
-  make -j1 -s -C 'gcc' DESTDIR="${pkgdir}" install-driver install-cpp install-gcc-ar \
-    c++.install-common install-headers install-plugin install-lto-wrapper
+  make -j1 -s -C 'gcc' DESTDIR="${pkgdir}" 'install-driver' 'install-cpp' 'install-gcc-ar' \
+    'c++.install-common' 'install-headers' 'install-plugin' 'install-lto-wrapper'
 
+  local _libdir; _fn_setlibdir
   install -m755 -t "${pkgdir}/${_libdir}/" gcc/{cc1,cc1plus,collect2,lto1,gcov,gcov-tool}
 
   make -j1 -s -C "${CHOST}/libgcc" DESTDIR="${pkgdir}" install
@@ -357,21 +384,20 @@ package_gcc8() {
   make -j1 -s -C "${CHOST}/libstdc++-v3/include" DESTDIR="${pkgdir}" install
   make -j1 -s -C "${CHOST}/libstdc++-v3/libsupc++" DESTDIR="${pkgdir}" install
   make -j1 -s -C "${CHOST}/libstdc++-v3/python" DESTDIR="${pkgdir}" install
-  rm "${pkgdir}/${_libdir}"/libstdc++.so*
+  rm -f "${pkgdir}/${_libdir}/"libstdc++.so*
 
-  make -j1 -s DESTDIR="${pkgdir}" install-fixincludes
-  make -j1 -s -C 'gcc' DESTDIR="${pkgdir}" install-mkheaders
-
+  make -j1 -s DESTDIR="${pkgdir}" 'install-fixincludes'
+  make -j1 -s -C 'gcc' DESTDIR="${pkgdir}" 'install-mkheaders'
   make -j1 -s -C 'lto-plugin' DESTDIR="${pkgdir}" install
 
   make -j1 -s -C "${CHOST}/libgomp" DESTDIR="${pkgdir}" install-nodist_{libsubinclude,toolexeclib}HEADERS
-  make -j1 -s -C "${CHOST}/libitm" DESTDIR="${pkgdir}" install-nodist_toolexeclibHEADERS
-  make -j1 -s -C "${CHOST}/libquadmath" DESTDIR="${pkgdir}" install-nodist_libsubincludeHEADERS
+  make -j1 -s -C "${CHOST}/libitm" DESTDIR="${pkgdir}" 'install-nodist_toolexeclibHEADERS'
+  make -j1 -s -C "${CHOST}/libquadmath" DESTDIR="${pkgdir}" 'install-nodist_libsubincludeHEADERS'
   make -j1 -s -C "${CHOST}/libsanitizer" DESTDIR="${pkgdir}" install-nodist_{saninclude,toolexeclib}HEADERS
-  make -j1 -s -C "${CHOST}/libsanitizer/asan" DESTDIR="${pkgdir}" install-nodist_toolexeclibHEADERS
-  make -j1 -s -C "${CHOST}/libsanitizer/tsan" DESTDIR="${pkgdir}" install-nodist_toolexeclibHEADERS
-  make -j1 -s -C "${CHOST}/libsanitizer/lsan" DESTDIR="${pkgdir}" install-nodist_toolexeclibHEADERS
-  make -j1 -s -C "${CHOST}/libmpx" DESTDIR="${pkgdir}" install-nodist_toolexeclibHEADERS
+  make -j1 -s -C "${CHOST}/libsanitizer/asan" DESTDIR="${pkgdir}" 'install-nodist_toolexeclibHEADERS'
+  make -j1 -s -C "${CHOST}/libsanitizer/tsan" DESTDIR="${pkgdir}" 'install-nodist_toolexeclibHEADERS'
+  make -j1 -s -C "${CHOST}/libsanitizer/lsan" DESTDIR="${pkgdir}" 'install-nodist_toolexeclibHEADERS'
+  make -j1 -s -C "${CHOST}/libmpx" DESTDIR="${pkgdir}" 'install-nodist_toolexeclibHEADERS'
 
   make -j1 -s -C 'libcpp' DESTDIR="${pkgdir}" install
 
@@ -383,12 +409,12 @@ package_gcc8() {
   install -Dm755 "${srcdir}/c99" "${pkgdir}/usr/bin/c99-${_majorver}"
 
   # byte-compile python libraries
-  python -m compileall "${pkgdir}/usr/share/gcc-${pkgver%%+*}/"
-  python -O -m compileall "${pkgdir}/usr/share/gcc-${pkgver%%+*}/"
+  python -m 'compileall' "${pkgdir}/usr/share/gcc-${pkgver%%+*}/"
+  python -O -m 'compileall' "${pkgdir}/usr/share/gcc-${pkgver%%+*}/"
 
   # Install Runtime Library Exception
   install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
-  ln -s '/usr/share/licenses/gcc8-libs/RUNTIME.LIBRARY.EXCEPTION' \
+  ln -s "/usr/share/licenses/${pkgbase}-libs/RUNTIME.LIBRARY.EXCEPTION" \
     "${pkgdir}/usr/share/licenses/${pkgname}/"
 
   # Remove conflicting files
@@ -398,21 +424,22 @@ package_gcc8() {
 
 package_gcc8-fortran() {
   set -u
-  pkgdesc='Fortran front-end for GCC (8.x.x)'
-  depends=("gcc8=${pkgver}-${pkgrel}")
+  pkgdesc="Fortran front-end for GCC (${_majorver}.x.x)"
+  depends=("${pkgbase}=${pkgver}-${pkgrel}")
 
   cd "${_basedir}/gcc-build"
-  make -j1 -s -C "${CHOST}/libgfortran" DESTDIR="${pkgdir}" install-cafexeclibLTLIBRARIES \
+  make -j1 -s -C "${CHOST}/libgfortran" DESTDIR="${pkgdir}" 'install-cafexeclibLTLIBRARIES' \
     install-{toolexeclibDATA,nodist_fincludeHEADERS}
-  make -j1 -s -C "${CHOST}/libgomp" DESTDIR="${pkgdir}" install-nodist_fincludeHEADERS
-  make -j1 -s -C 'gcc' DESTDIR="${pkgdir}" fortran.install-common
+  make -j1 -s -C "${CHOST}/libgomp" DESTDIR="${pkgdir}" 'install-nodist_fincludeHEADERS'
+  make -j1 -s -C 'gcc' DESTDIR="${pkgdir}" 'fortran.install-common'
+  local _libdir; _fn_setlibdir
   install -Dm755 'gcc/f951' "${pkgdir}/${_libdir}/f951"
 
   ln -s "gfortran-${_majorver}" "${pkgdir}/usr/bin/f95-${_majorver}"
 
   # Install Runtime Library Exception
   install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
-  ln -s '/usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION' \
+  ln -s "/usr/share/licenses/${pkgbase}-libs/RUNTIME.LIBRARY.EXCEPTION" \
     "${pkgdir}/usr/share/licenses/${pkgname}/"
   set +u
 }
