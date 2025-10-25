@@ -1,6 +1,6 @@
 # Maintainer: Matthew Wolffe <mfwolffe@outlook.com>
 pkgname=fortress
-pkgver=0.9.2
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="A command-line file explorer written in modern Fortran with cd-on-exit"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc' 'gcc-libs' 'fzf' 'git')
 makedepends=('fortran-fpm' 'gcc-fortran')
 install=fortress.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('c3e1543e39be5478e70fc8c46d12d59356fa850cee6c0a8cda7d852084d2a849')
+sha256sums=('4d6bebee4f6a5dcf25cb3f6f8ed83ce63d2c299ce4bc88f5dd8a7e73c9285572')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
