@@ -1,16 +1,16 @@
 pkgbase = librewolf-extension-bitwarden-bin
 	pkgdesc = A secure and free password manager for all of your devices (binary release)
-	pkgver = 2024.2.0
+	pkgver = 2025.10.0
 	pkgrel = 1
 	url = https://addons.mozilla.org/addon/bitwarden-password-manager
 	arch = any
 	groups = librewolf-addons
-	license = GPL3
+	license = GPL-3.0-only
 	depends = librewolf
 	provides = librewolf-extension-bitwarden
 	conflicts = librewolf-extension-bitwarden
-	noextract = bitwarden_password_manager-2024.2.0.xpi
-	source = https://addons.mozilla.org/firefox/downloads/file/4233394/bitwarden_password_manager-2024.2.0.xpi
-	sha256sums = 2c59e7040749dee010b34fb2a9c24b28ada71ad7fa5a23264ff70e63f8f686d1
+	noextract = bitwarden_password_manager-2025.10.0.xpi
+	source = https://addons.mozilla.org/firefox/downloads/file/4599707/bitwarden_password_manager-2025.10.0.xpi
+	sha256sums = 31b88743f36032fa3cfb78e0582fb732ef00a3c5915182ba37fd08b04aac1d3b
 
 pkgname = librewolf-extension-bitwarden-bin
