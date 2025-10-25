@@ -1,6 +1,6 @@
 pkgbase = modustoolbox-setup
 	pkgdesc = The fastest and easiest way to install and update your ModusToolbox environment. Choose the tools, packs and patches you need and add associated packages such as ModusToolbox Machine Learning and ModusToolbox Programming Tools.
-	pkgver = 1.4.0.1161
+	pkgver = 1.5.0.1298
 	pkgrel = 1
 	url = https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxsetup
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = modustoolbox-setup
 	depends = openssl
 	depends = wayland
 	options = !strip
-	source = file://ModusToolboxSetupInstaller_1.4.0.1161_linux_x64.deb
-	sha256sums = 3039d248b551b3b8dcaa16db28775d20aac5d48f661a6bbd255bb5219b92a8c0
+	source = file://ModusToolboxSetupInstaller_1.5.0.1298_linux_x64.deb
+	sha256sums = 495043128b54f87e132ade4345540d1f715f4c031306c71736fadcf178469f48
 
 pkgname = modustoolbox-setup

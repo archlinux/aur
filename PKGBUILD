@@ -8,8 +8,8 @@
 
 _pkgname=ModusToolboxSetup
 pkgname=modustoolbox-setup
-_pkgver=1.4
-pkgver=${_pkgver}.0.1161
+_pkgver=1.5.0
+pkgver=${_pkgver}.1298
 pkgrel=1
 pkgdesc="The fastest and easiest way to install and update your ModusToolbox environment. Choose the tools, packs and patches you \
     need and add associated packages such as ModusToolbox Machine Learning and ModusToolbox Programming Tools."
@@ -20,7 +20,7 @@ depends=('fontconfig' 'libwebp' 'libglvnd' 'dbus' 'libxkbcommon' 'libxkbcommon-x
 url="https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolboxsetup"
 _source="${_pkgname}Installer_${pkgver}_linux_x64.deb"
 source=("file://${_source}")
-sha256sums=('3039d248b551b3b8dcaa16db28775d20aac5d48f661a6bbd255bb5219b92a8c0')
+sha256sums=('495043128b54f87e132ade4345540d1f715f4c031306c71736fadcf178469f48')
 options=('!strip')
 
 
@@ -33,11 +33,21 @@ prepare() {
     rm -r ./opt/Tools
     # Update link in desktop file
     sed -i "s/opt\/Tools/opt/" ./usr/share/applications/ModusToolbox-Setup-${pkgver}.desktop
+    # itb-launcher-service-setup
+    cd ${srcdir}/opt/${_pkgname}/resources
+    mkdir -p itb-launcher-service-setup
+    bsdtar -xf ./itb-launcher-service-setup.deb -C ./
+    mkdir -p data
+    bsdtar -xf data.tar.gz -C data/
 }
 
 package() {
     cp -ar ${srcdir}/opt ${pkgdir}/
     cp -ar ${srcdir}/usr ${pkgdir}/
+    # itb-launcher-service-setup
+    cp -ar ${srcdir}/opt/${_pkgname}/resources/data/opt ${pkgdir}/
+    cp -ar ${srcdir}/opt/${_pkgname}/resources/data/usr ${pkgdir}/
+    rm -rf ${pkgdir}/opt/${_pkgname}/resources
 
     # Install license
     install -d ${pkgdir}/usr/share/licenses/${pkgname}
