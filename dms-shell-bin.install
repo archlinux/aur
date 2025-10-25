@@ -1,0 +1,12 @@
+post_upgrade() {
+  echo "==> DMS Shell"
+  echo "    Installed to: /usr/share/quickshell/dms"
+  echo "    For customization, copy files to:"
+  echo "      - User:   ~/.config/quickshell/dms"
+  echo "      - System: /etc/xdg/quickshell/dms"
+}
+
+post_install() {
+  echo "==> DMS Shell installed to /usr/share/quickshell/dms"
+  echo "    For customization, copy files to ~/.config/quickshell/dms or /etc/xdg/quickshell/dms"
+}

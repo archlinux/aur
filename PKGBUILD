@@ -1,7 +1,7 @@
 
 # Maintainer: Your Name <you@example.com>
 pkgname=dms-shell-bin
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=('x86_64' 'aarch64')
@@ -45,18 +45,18 @@ source_aarch64=(
 )
 
 sha256sums_x86_64=(
-    'b05aee3988f9f0193bc061991f077e5d23d8963b54646980c0df77b885392a77'
+    'd20e55662c81ece71dedb3d1dd7aaf79caa891cc36dbe2e352d54df8de90115d'
 )
 
 sha256sums_aarch64=(
-    '929bf8f208c0da54d2af4051e98e37f74779b00d5a85d9e61e4bac20dc5eea84'
+    'fe7375da25c214c51c48f9c2d5c222bfd4ed4cbb12e99c1294b0114bcc7f45a0'
 )
 
 package() {
     install -Dm755 "${srcdir}/bin/dms-distropkg" "$pkgdir/usr/bin/dms"
 
-    install -dm755 "$pkgdir/etc/xdg/quickshell"
-    cp -r "${srcdir}/dms" "$pkgdir/etc/xdg/quickshell/"
+    install -dm755 "$pkgdir/usr/share/quickshell"
+    cp -r "${srcdir}/dms" "$pkgdir/usr/share/quickshell/"
 
     # Install documentation from dms folders
     if [ -f "${srcdir}/dms/README.md" ]; then
