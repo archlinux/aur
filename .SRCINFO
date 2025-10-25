@@ -1,6 +1,6 @@
 pkgbase = libxml-ruby
 	pkgdesc = Provides Ruby language bindings for the GNOME Libxml2 XML toolkit
-	pkgver = 4.1.1
+	pkgver = 5.0.5
 	pkgrel = 1
 	url = https://xml4r.github.io/libxml-ruby/
 	arch = i686
@@ -9,9 +9,9 @@ pkgbase = libxml-ruby
 	makedepends = ruby-rdoc
 	depends = ruby
 	depends = libxml2
-	noextract = libxml-ruby-4.1.1.gem
+	noextract = libxml-ruby-5.0.5.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/libxml-ruby-4.1.1.gem
-	sha256sums = 432bad1a3af3e4066e32ce3654a7cde2eea227bc2c200b406807153a91a75929
+	source = https://rubygems.org/downloads/libxml-ruby-5.0.5.gem
+	sha256sums = f1bc07152982df555d70159a694ee2a53539de2cdad4b3c8a447fbb15e7e4e9a
 
 pkgname = libxml-ruby
