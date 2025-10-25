@@ -4,16 +4,15 @@
 
 pkgname=netlogo
 pkgver=7.0.1
-pkgrel=3
+pkgrel=1
 pkgdesc="A multi-agent programmable modeling environment."
 arch=('i686' 'x86_64')
 [ "$CARCH" = "i686"  ] && _NARCH=32
 [ "$CARCH" = "x86_64" ] && _NARCH=64
 license=('LGPL' 'custom')
 url="http://ccl.northwestern.edu/netlogo/"
-depends=('java-environment')
+depends=('java-runtime=17')
 makedepends=('gendesk')
-optdepends=('alsa-lib' 'libnet' 'gtk2' 'gcc-libs')
 install=$pkgname.install
 source=(http://ccl.northwestern.edu/netlogo/$pkgver/NetLogo-$pkgver-$_NARCH.tgz
         netlogo.png)
