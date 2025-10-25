@@ -2,18 +2,26 @@
 
 _Name="libE57Format"
 pkgname="${_Name,,}"
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Library for reading & writing the E57 file format"
 arch=('x86_64')
 url="https://github.com/asmaloney/${_Name}"
 license=('BSL-1.0')
-depends=('gcc-libs' 'glibc' 'xerces-c')
-makedepends=('cmake>=3.15')
-provides=("${_Name}.so")
+depends=(
+  'gcc-libs'
+  'glibc'
+  'xerces-c>=3.2'
+)
+makedepends=(
+  'cmake>=3.15'
+)
+provides=(
+  "${_Name}.so"
+)
 _pkgsrc="${url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('076566028701727a746d246908e0b20871fdbb0e4832ec6e57738b0ab4172d3cf179172103de5569cfdab555c70a8cd79a82d70a68d52942e0d51619a5e38091')
+b2sums=('7278504ccc57135975d6b363140d36e3236f1e8e28801407a1085241e960a82c5526668a10543db4733d64a2c60578cbae8dd839bd58bdf0473a213a6f39342b')
 
 build() {
   local cmake_options=(
@@ -23,7 +31,6 @@ build() {
     -W no-dev
     -D CMAKE_BUILD_TYPE:STRING='None'
     -D CMAKE_INSTALL_PREFIX:PATH='/usr'
-    -D CMAKE_INSTALL_LIBDIR='lib' # no GNUInstallDirs?
     -D BUILD_SHARED_LIBS:BOOL=ON
     -D E57_BUILD_TEST:BOOL=OFF
   )
@@ -51,6 +58,7 @@ package() {
   DESTDIR="${pkgdir}" cmake --install "${_pkgsrc}/build"
 
   cd "${_pkgsrc}"
-  install -vDm644 "README.md"  "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -vDm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+  install -vDm644 "CHANGELOG.md"  "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
+  install -vDm644 "README.md"     "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE.md"    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
