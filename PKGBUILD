@@ -7,7 +7,7 @@ depends=(nmap)
 conflicts=(gnu-netcat openbsd-netcat)
 provides=(netcat)
 arch=('i686' 'x86_64')
-license=('GPL')
+license=('GPL-3.0-or-later')
 source=()
 md5sums=()
 
