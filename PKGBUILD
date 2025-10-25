@@ -2,7 +2,7 @@
 
 _pkgname='cobib-zotero'
 pkgname="${_pkgname}-git"
-pkgver=r23.5e951c2
+pkgver=r28.3db2a4f
 pkgrel=1
 arch=('any')
 depends=(
@@ -16,6 +16,7 @@ makedepends=(
     'python-build'
     'python-installer'
     'python-setuptools'
+    'python-setuptools-scm'
     'python-wheel'
     'ruby-ronn-ng'
 )
