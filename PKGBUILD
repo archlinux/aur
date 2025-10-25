@@ -19,7 +19,7 @@ build() {
   cd build
 
   ../configure \
-    --prefix=/usr/${target} \
+    --prefix=/usr/${target}-pass1 \
     --with-sysroot=/mnt/lfs \
     --target=${target} \
     --disable-nls \
