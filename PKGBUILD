@@ -4,7 +4,7 @@
 
 pkgname=crowdsec-bin
 pkgver=1.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source, lightweight agent to detect and respond to bad behaviors. It also automatically benefits from our global community-wide IP reputation database"
 arch=('any')
 url="https://github.com/crowdsecurity/crowdsec"
@@ -42,8 +42,8 @@ source=(
 )
 sha256sums=('f2261585329556cf19049c43dd15e05edf304deec485f319826cb378ff8db9b3'
             'a97e2c4bc07470dad890fca27b6da7c4a9ac9762551a0888dd812d2da63200ad'
-            '77c1d43da0aa748bbd0bd237beffcae0a65006f77f229bc532de4656b5c18b10'
-            'b992a0d859a6ed2adb26bccc36da5e163390e660a442dcdc745b7ed074ee5cab'
+            '7267338c60bdbd11d61aa7cdefedccb610756e4dedc038ee5cc13303e2241a90'
+            '135420c67f937574f45610b0dbeaf1ca7537055b473f80401b78a41165fd40f1'
             'b67441c0532bb899ffbd0b9fd11454e2ff1fea64f86a8da5170178704b750838')
 
 prepare() {
