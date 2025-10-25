@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix Flatpak save file in home directory (make a warning)
 - Save unit file in run 
 
+## [2.6.0] - 2025-10-24
+
+### Added
+- Popup menu reenable option
+
+### Fixed
+- Sorting on user defined unit's property columns wasn't working at initiation time
+
 ## [2.5.2] - 2025-10-23
 
 ### Changed
