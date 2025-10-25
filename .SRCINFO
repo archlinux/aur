@@ -1,0 +1,22 @@
+pkgbase = amphi-cloud
+	pkgdesc = A self-hosted cloud for secure file storage
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://amphi.site
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = fuse2
+	depends = mpv
+	depends = zenity
+	depends = mimalloc
+	depends = ffmpeg
+	depends = imagemagick
+	depends = pdfium-binaries-bin
+	options = !debug
+	source_x86_64 = https://github.com/amphi2024/cloud/releases/download/v1.0.0/Cloud-1.0.0-Linux-x86_64.deb
+	sha256sums_x86_64 = c324afdb378d7642795793a31a4b1f1fc8247ece31b8d0f1ddd89622b4a13f8f
+	source_aarch64 = https://github.com/amphi2024/cloud/releases/download/v1.0.0/Cloud-1.0.0-Linux-arm64.deb
+	sha256sums_aarch64 = c641aa0613225ea094099c8306f8307e5a7be1a92261ed4f46d8a8e025cb11de
+
+pkgname = amphi-cloud
