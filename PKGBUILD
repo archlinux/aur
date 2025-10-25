@@ -4,7 +4,7 @@ _pkgauthor=drunkleen
 _pkgname=leenfetch
 
 pkgname=${_pkgname}
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="modern, minimal, and the fastest neofetch like system information tool, written in Rust."
 arch=('x86_64' 'aarch64')
