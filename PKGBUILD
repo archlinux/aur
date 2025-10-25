@@ -31,8 +31,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('28e852632bc479a8c9bb84c2d9b629c35a621618448fbc1e0bbea21dfaef19a1'
             'e11aa0a6bebe23f473ccb8e7d5577e05e7b9287381de91223f86c79d6729caae')
-sha256sums_aarch64=('f23273e3ba72eafdc5639ebd8922ed957fc3203b5d950fa3056fa0635405b6ef')
-sha256sums_x86_64=('30167f82afb5734f4ca4d70c5b5194a5788cceb7b650336c0829d4cb3e3f2e1c')
+sha256sums_aarch64=('13f6de3add424ca123d964d1f185708e4844d427cc496c707f624f381eb65b77')
+sha256sums_x86_64=('7fa603afc0ebd5d646f4fe9389a24d8c3018b3b535f5b5e5df73a3ff5ea8e46d')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -40,7 +40,8 @@ build() {
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/org.equicord.${pkgname%-bin}.desktop"
+    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    mv "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" "${srcdir}/usr/share/applications/org.equicord.${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
