@@ -1,6 +1,6 @@
 # Maintainer: Sanavi Sonwane <sanvi.harnale@gmail.com>
 pkgname='clipyank' # '-bzr', '-git', '-hg' or '-svn'
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Track clip history for vim"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ISanviI/clipyank/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4ae4341d69ec23775c1763e88f715eef04ed4c4c76d5ccd87a869c8a6754ec50')
+sha256sums=('a4acb01f0e87e03014880a4f33c5432cff61664f55d0acf2b92bbf450880b4bc')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
