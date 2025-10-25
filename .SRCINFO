@@ -1,7 +1,7 @@
 pkgbase = moyurd
 	pkgdesc = A keyboard-driven and simple Epub reader
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/liuhq/moyurd
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = moyurd
 	source = https://github.com/liuhq/moyurd/releases/download/v1.1.1/moyurd-asar-linux-x64-1.1.1.zip
 	source = moyurd.desktop
 	source = LICENSE-SOURCE
-	sha256sums = c458feb27f2c002bc4f7b0efa1615d24af4d0be5403b6c4974ffd15ec3c5ce8c
+	sha256sums = 9e1913f4965299b4157fca416caf1d44860a2df018c855f14b5de62ca4d0dcd8
 	sha256sums = 99aacf06b241b0ec014bf3bd290818c2d554ecc476c7a96715ac9f4b681dd4e5
 	sha256sums = ae584eda9b8f341e819d7b3ffb1be88babe63cfdb6fc16293f10ad0fe0853645
 
