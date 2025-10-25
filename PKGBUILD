@@ -3,7 +3,7 @@
 
 pkgname=libcalfbox-lss
 pkgver=1.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Library for real time midi sequencing and loading of various sampler formats"
 arch=(x86_64)
 url="https://git.laborejo.org/lss/libcalfbox-lss"
