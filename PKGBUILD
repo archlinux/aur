@@ -2,7 +2,7 @@
 
 _pkgname=mwptools
 pkgname=mwptools-git
-pkgver=24.09.29.r0.41ecde7f
+pkgver=25.09.28.r14.cf1ae28b
 pkgrel=1
 pkgdesc='mission planner for INAV and MultiWii'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'pentium4' 'aarch64' 'riscv64')
