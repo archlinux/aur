@@ -1,7 +1,7 @@
 pkgbase = dungeondraft
 	pkgdesc = Dungeondraft is a tabletop encounter map creation tool designed to draw aesthetic maps without the typical frustrations and time investment
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dungeondraft.net
 	arch = x86_64
 	license = custom:TailwindGamesLicense
