@@ -3,7 +3,7 @@
 _name=pytnl
 pkgbase=python-$_name
 pkgname=($pkgbase $pkgbase-cuda)
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Python bindings for the Template Numerical Library"
 arch=(x86_64)
@@ -33,7 +33,7 @@ checkdepends=(
   python-numpy
 )
 source=($url/-/archive/$pkgver/$_name-$pkgver.tar.gz)
-b2sums=('89e3b285a98bd980bb3ba159cf5b1fe076cf4766275e5d543654c373670a5a6fc85845e0463dab1eefb76123ddf0f91f93195144e0ef682fc8e1a95bf4738a42')
+b2sums=('6a85ee53cdb04079f0719af7d560a920393aa12198bc139d5531a6a33e3cd65d3cd2baa2b93691c1b19aaee3e52391738b9f527868da9893f9dd46d20fdc2ab0')
 
 _pick() {
   local p="$1" f d; shift
@@ -83,6 +83,9 @@ package_python-pytnl() {
   cd $_name-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
+
+  # fix the _IMPORT_PREFIX variable
+  sed -i 's|set(_IMPORT_PREFIX "/tmp/.*/wheel/platlib")|set(_IMPORT_PREFIX "/usr")|' "$pkgdir"/usr/lib/cmake/PyTNL/PyTNLTargets.cmake
 
   # split CUDA modules into separate packages
   cd "$pkgdir"
