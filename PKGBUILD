@@ -3,7 +3,7 @@
 _pkgname=Equibop
 pkgname=equibop-bin
 _appname=equibop-desktop
-pkgver=3.0.2
+pkgver=3.0.3
 _electronversion=38
 pkgrel=1
 pkgdesc="A Vesktop fork cross platform electron-based desktop app aiming to give you a snappier Discord experience with Equicord pre-installed"
@@ -31,8 +31,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('28e852632bc479a8c9bb84c2d9b629c35a621618448fbc1e0bbea21dfaef19a1'
             'e11aa0a6bebe23f473ccb8e7d5577e05e7b9287381de91223f86c79d6729caae')
-sha256sums_aarch64=('2fec2cb1e775d753921eeadd5d4ddc4f2f9b9454d7aaeb6dc595de807f189a97')
-sha256sums_x86_64=('3d701a8882531885f25a24adb16f5a2749a15ddcf843f5e066c822129dba1ee2')
+sha256sums_aarch64=('a36766155c09234591180531cd71c032114a20356b4b3137938fc6d1ee97e925')
+sha256sums_x86_64=('e3da9e21eacb8bd423c28c335cfbe23af27d6cdce3d56f907f5c07aab7a0fe9e')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
@@ -47,6 +47,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -r "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    cp -r "${srcdir}/opt/${_pkgname}/resources/bun" "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/applications/org.equicord.${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
 }
