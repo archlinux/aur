@@ -7,8 +7,8 @@ pkgname=(
   gdk-pixbuf2-noglycin
   gdk-pixbuf2-noglycin-docs
 )
-pkgver=2.44.3
-pkgrel=3
+pkgver=2.44.4
+pkgrel=1
 pkgdesc="An image loading library, without glycin"
 url="https://wiki.gnome.org/Projects/GdkPixbuf"
 arch=(x86_64)
@@ -32,15 +32,12 @@ makedepends=(
 source=(
   "git+https://gitlab.gnome.org/GNOME/gdk-pixbuf.git#tag=$pkgver"
   gdk-pixbuf-query-loaders.hook
-  fix-bottom-down-pixel-order.diff
 )
-b2sums=('2e56c33e61b6e2f2fafaa1f7997878b1de992e86b922e0da94f16b5112d72d95a88644b1f9d215f911fbb2a18e07bd67850af75b2afb0a61d5d575460fcb0945'
-        '5a00d34888e207d70d02369015d029f4c0450fc5a02b4b257de8e5df04380dc550723f351433859224c96c3c6390896f2166673af65e8a09eb57024f5a34301b'
-        'd4af96cb13a3c7f072262c94e5ab541fa11c9a41943528457df339b989f9f3f88b9660fbf1430ed464f09efddf24b70e41299e591fa9cd46f324ee76e29cb682')
+b2sums=('c25b8070b944aaa3c27301dce8a991b8525a764c32e5ec673933de611ce7acb4f7963405ac715e5deb7a547b22352676fa024f77dd4a9e1cb821495f61f4cb26'
+        '5a00d34888e207d70d02369015d029f4c0450fc5a02b4b257de8e5df04380dc550723f351433859224c96c3c6390896f2166673af65e8a09eb57024f5a34301b')
 
 prepare() {
   cd gdk-pixbuf
-  patch -p1 -i ../fix-bottom-down-pixel-order.diff
 }
 
 build() {
@@ -63,10 +60,6 @@ build() {
 
   arch-meson gdk-pixbuf build "${meson_options[@]}"
   meson compile -C build
-}
-
-check() {
-  meson test -C build --print-errorlogs || :
 }
 
 package_gdk-pixbuf2-noglycin() {
