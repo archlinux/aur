@@ -4,7 +4,7 @@
 
 pkgname='alice-vision'
 pkgver=3.3.0
-pkgrel=6
+pkgrel=7
 options=('!debug') # debug package is kinda big -- needs investigation!
 pkgdesc="Photogrammetric Computer Vision Framework which provides 3D Reconstruction and Camera Tracking algorithms"
 arch=('x86_64')
@@ -41,8 +41,6 @@ sha256sums=('abdd3b872de2d42d089728fc1ee151c24a1ed78297fc8713c9efd02801bdcc90'
 prepare() {
   #Fix ffmpeg bug
   sed 's|avcodec_close(|avcodec_free_context(\&|g' -i OpenImageIO-2.5.18.0/src/ffmpeg.imageio/ffmpeginput.cpp
-  #sed 's|avcodec_close(|avcodec_free_context(\&|g' -i lib/tlIO/FFmpegReadAudio.cpp
-  #sed 's|FF_PROFILE_UNKNOWN|AV_PROFILE_UNKNOWN|g' -i lib/tlIO/FFmpegWrite.cpp
 
   cd AliceVision
 
@@ -65,8 +63,15 @@ prepare() {
 
   # fix default OCIO config path
   patch -p1 -i ../fix-default-ocio-path.patch
+  
   # fix doc build
   sed -i '/^ *install.*doc/s/doc/htmlDoc/' src/CMakeLists.txt
+
+  # fix build against newer boost
+  sed '/Boost::system/d' -i src/software/convert/CMakeLists.txt
+  sed '/Boost::system/d' -i src/aliceVision/system/CMakeLists.txt
+  sed '/Boost::system/d' -i src/aliceVision/sensorDB/CMakeLists.txt
+  
 }
 
 build() {
