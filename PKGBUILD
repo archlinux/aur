@@ -11,7 +11,7 @@ provides=('windscribe')
 conflicts=('windscribe-cli' 'windscribe')
 options=('!strip')
 install=windscribe-v2-bin.install
-source=("https://deploy.totallyacdn.com/desktop-apps/${pkgver}/windscribe_${pkgver}_amd64.pkg.tar.zst")
+source=("https://github.com/Windscribe/Desktop-App/releases/download/v${pkgver}/windscribe_${pkgver}_amd64.pkg.tar.zst")
 sha1sums=('b5a95c658edcec1992717bdc2fb408e3f36d9b3a')
 
 package() {
