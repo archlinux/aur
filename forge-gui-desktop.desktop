@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Forge Desktop
+Comment=The Magic: The Gathering Rules Engine
+Exec=/usr/bin/forge-gui-desktop
+Terminal=false
+Type=Application
+Categories=Game;
+Keywords=mtg;magic;gathering;
+Icon=forge-gui-desktop
