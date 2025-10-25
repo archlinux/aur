@@ -33,11 +33,21 @@ prepare() {
     rm -r ./opt/Tools
     # Update link in desktop file
     sed -i "s/opt\/Tools/opt/" ./usr/share/applications/ModusToolbox-Programming-Tools-${pkgver}.desktop
+    # itb-launcher-service-setup
+    cd ${srcdir}/opt/${_pkgname}-${_pkgver}/resources
+    mkdir -p itb-launcher-service-setup
+    bsdtar -xf ./itb-launcher-service-setup.deb -C ./
+    mkdir -p data
+    bsdtar -xf data.tar.gz -C data/
 }
 
 package() {
     cp -ar ${srcdir}/opt ${pkgdir}/
     cp -ar ${srcdir}/usr ${pkgdir}/
+    # itb-launcher-service-setup
+    cp -ar ${srcdir}/opt/${_pkgname}-${_pkgver}/resources/data/opt ${pkgdir}/
+    cp -ar ${srcdir}/opt/${_pkgname}-${_pkgver}/resources/data/usr ${pkgdir}/
+    rm -rf ${pkgdir}/opt/${_pkgname}-${_pkgver}/resources
 
     # Install license
     install -d ${pkgdir}/usr/share/licenses/${pkgname}
