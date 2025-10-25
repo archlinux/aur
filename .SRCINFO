@@ -8,12 +8,12 @@ pkgbase = pkgmate-bin
 	provides = pkgmate
 	arch = aarch64
 	source_aarch64 = https://github.com/fuad-daoud/pkgmate/releases/download/v0.3.0/pkgmate-debian-linux-arm64.tar.gz
-	sha256sums_aarch64 = 0a2a1224422dc4a6d412210750e656c9241995179dd2916f01074d2f85dc8b5d
+	sha256sums_aarch64 = 245ff104a6341fc412b8fb9aaa5df42be16a04607711a9e7d1a17e11230c81e3
 	arch = x86_64
 	source_x86_64 = https://github.com/fuad-daoud/pkgmate/releases/download/v0.3.0/pkgmate-debian-linux-amd64.tar.gz
-	sha256sums_x86_64 = ac488f81165145194c2f90b77eec04cc7ce1c584b538b0b11c0b65ed4e666ddb
+	sha256sums_x86_64 = 63c9946241e319ed6bb8bd14eb6358f6c48ded50b7a6a5e557d3ff01a4006e26
 	arch = x86_64
 	source_x86_64 = https://github.com/fuad-daoud/pkgmate/releases/download/v0.3.0/pkgmate-arch-linux-amd64.tar.gz
-	sha256sums_x86_64 = 0426131fbb37ee20f7c1c7f1c008738164aeb61d7c8388b920c6fbb75362d299
+	sha256sums_x86_64 = e18b4064ea4881da28dbf1aba15d3bd972144d90c19d8da71d6eeb09201b4257
 	
 pkgname = pkgmate-bin
