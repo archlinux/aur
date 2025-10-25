@@ -1,5 +1,5 @@
 pkgbase = keyboard-app
-	pkgdesc = Cross-platform on-screen keyboard for different languages
+	pkgdesc = Universal on-screen keyboard
 	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/mrwormhole/keyboard-app
