@@ -1,7 +1,7 @@
 # Maintainer: Fredon Menu Team <contact@fredon-menu.org>
 
 pkgname=fredon-menu-git
-pkgver=r8.4f0e1b4
+pkgver=r5.466e91d
 pkgrel=1
 pkgdesc="A modern, customizable application launcher for Hyprland/Wayland (git version)"
 arch=('x86_64')
@@ -38,7 +38,13 @@ sha256sums=(
 
 pkgver() {
     cd "$pkgname"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-//g'
+    # Try to get version from git tags first
+    if git describe --long --tags >/dev/null 2>&1; then
+        git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-//g'
+    else
+        # Fallback: use commit count and hash
+        echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    fi
 }
 
 build() {
