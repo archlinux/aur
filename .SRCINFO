@@ -1,0 +1,27 @@
+pkgbase = claw-bin
+	pkgdesc = Crustacean powered clipboard manager for X11 & Wayland
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/saltnpepper97/claw
+	install = claw-bin.install
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libappindicator-gtk3
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	optdepends = xclip: X11 clipboard support
+	optdepends = wl-clipboard: Wayland clipboard support
+	options = !strip
+	options = !debug
+	options = !emptydirs
+	source_x86_64 = https://github.com/saltnpepper97/claw/releases/download/v1.2.1/claw_1.2.1_amd64.deb
+	sha256sums_x86_64 = e81ed9f784f1423ef6222b9d96ce008bd09adabb11187493f30f82aea11e7186
+
+pkgname = claw-bin
