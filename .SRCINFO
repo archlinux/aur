@@ -18,7 +18,7 @@ pkgbase = streambooru-bin
 	source = streambooru-1.0.0.tar.gz::https://github.com/Amateur-God/StreamBooru/releases/download/v1.0.0/streambooru-1.0.0.tar.gz
 	source = streambooru.sh
 	source = streambooru.desktop
-	sha256sums = f80832c196d15458c639ac1709897a84c4958e1045b9dbd235579631635dab11
+	sha256sums = 477d51c3002d1f65cd5150328e03eb235b7585d4fbb60b0219ef5d1461abef6c
 	sha256sums = SKIP
 	sha256sums = SKIP
 

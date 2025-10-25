@@ -25,7 +25,7 @@ source=(
   "streambooru.desktop"
 )
 sha256sums=(
-  'f80832c196d15458c639ac1709897a84c4958e1045b9dbd235579631635dab11'  # SHA256 of v${pkgver}/streambooru-${pkgver}.tar.gz
+  '477d51c3002d1f65cd5150328e03eb235b7585d4fbb60b0219ef5d1461abef6c'  # SHA256 of v${pkgver}/streambooru-${pkgver}.tar.gz
   'SKIP'
   'SKIP'
 )
