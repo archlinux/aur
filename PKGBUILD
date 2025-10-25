@@ -2,7 +2,7 @@
 # Contributor: Philipp A. <flying-sheep@web.de>
 
 pkgname=python-stdlib-list
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='A list of Python Standard Libraries'
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=(
 )
 checkdepends=('python-pytest')
 source=("$pkgname::git+$url#commit=v$pkgver")
-b2sums=('b5b32df65b31bcd9c55c41cc5a46707d837e9ffc3180b28ae7509eb3f1b47d757f494d2166616daa94e5c4aa0c4b3423008b24b84699ac39e7f30b19c8c12c27')
+b2sums=('c017ad0067d39415551fb9ae6020965c07136faa0219dcd2880cdc6aecb58ff9191383902973c758b6e134606fb51a64c0ec35f3d8581e4cad4b14f0df95a9a2')
 
 build() {
   cd "$pkgname"
