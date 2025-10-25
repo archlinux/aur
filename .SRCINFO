@@ -1,7 +1,7 @@
 pkgbase = daduda
 	pkgdesc = Cross-platform-avrdude-GUI
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AndrejChoo/Cross-platform-avrdude-GUI/tree/v1.0.0
 	arch = x86_64
 	license = GPL-2.0-only
@@ -9,6 +9,8 @@ pkgbase = daduda
 	makedepends = qt6-tools
 	makedepends = qt6-serialport
 	depends = avrdude
+	depends = qt6-base
+	depends = qt6-serialport
 	source = git+https://github.com/AndrejChoo/Cross-platform-avrdude-GUI
 	source = daduda.desktop
 	source = daduda.png
