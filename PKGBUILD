@@ -9,7 +9,7 @@
 
 pkgname=lib32-audit
 _name=audit-userspace
-pkgver=4.0.5
+pkgver=4.1.2
 pkgrel=1
 pkgdesc='Userspace components of the audit framework'
 url="https://github.com/linux-audit/audit-userspace"
@@ -28,8 +28,8 @@ provides=(
 source=(
   $url/archive/v$pkgver/$_name-v$pkgver.tar.gz
 )
-sha512sums=('14fa19922cf6436284e1448d5a0e069ce5066d2d49d28679fe3ad019be60c133aee6e345b36e0f482ea1fdeadad7d78676f931aab1c25b91a2d0b445dce3eedf')
-b2sums=('eaa3106f4ec4fae9a356e33717922131975c5421977af4baad9364f80a4c72a07d725f32b2bf39f49b6ff6063365fd3f047b3eb209c231abaaff67a4506ec2f7')
+sha512sums=('a47fec1041e11a76ad57b57bcf6e9b454188d95ec26cabf15e92e114d46c7c8f09ddb251d5aebef8bc7faacc6ccffe44c73543d8234af237548b4ad89a408fc3')
+b2sums=('f71fec5698208b2dffe91525f4fa870658a9a16dab8ddd2c99c347eca14d4cf45b0900864f24913adb98891f5da656f5ebf0e0b0b60c7beedcd77ea0a836b697')
 
 prepare() {
   cd $_name-$pkgver
