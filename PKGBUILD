@@ -1,7 +1,7 @@
 # Maintainer: Gilbert Gilb's <gilbsgilbert@gmail.com>
 
 pkgname=fleet-orbit
-pkgver=1.48.1
+pkgver=1.49.0
 pkgrel=1
 pkgdesc='Eases the deployment of osquery connected with a Fleet server.'
 arch=(x86_64)
@@ -15,14 +15,14 @@ makedepends=(go)
 backup=(etc/default/fleet-orbit)
 optdepends=()
 source=(
-  'https://github.com/fleetdm/fleet/archive/refs/tags/orbit-v1.48.1.tar.gz'
+  'https://github.com/fleetdm/fleet/archive/refs/tags/orbit-v1.49.0.tar.gz'
   'fleet-orbit'
   'fleet-orbit-cleanup.hook'
   'fleet-orbit-config'
   'fleet-orbit.service'
 )
 sha512sums=(
-  'cf82e513465161b631617c6e340aa2e2c8a7f95eee0c30630e1f326254711bfd6cb78a3fcae303e041867205c0612c35e9bf321f014fc7d281f46610074a13ec'
+  'bab66c5a2a3562153bcc9d1f86827594f9e2c3643d6250de646a3b769e8a919530888a8a7806bf13959c155b3eb307fa09c0d6091cb8469cae38b34b153859cb'
   'd94ab30cc3543e2cb0abcc520ad2b4a297a22f29798dde7e188caf91e8669d99b60dbde7c513afec908cfd47c74a11537267046f0c8c0ccbcaacb8d1b75dd21d'
   'c4d4fdf980a891f5e56ca82173c57b60d0e157ef4af769fc5d9ecd7b9c70124402d694f35d48101e6633d0134ade9ab33cff3c129e2f603a6b7df1ee560eab5a'
   '781ba7743f8f176aeeef702cce67478af70981596029677e1e50f1a57b479c66832436e39d66b5e7f879477733b661326d306064050968acfb246adddfddf30a'
@@ -37,7 +37,7 @@ build() {
 
   isodate="$(TZ=UTC date +'%Y-%m-%dT%H:%M:%SZ')"
   importpath='github.com/fleetdm/fleet/v4/orbit/pkg/build'
-  commitsha='863ce8b321b199d1b766123d1228bb05cfe91b41'
+  commitsha='6726bb196f368f6bf5bab2fbeebfcfa8790b986e'
 
   ldflags="-s -w"
   ldflags="${ldflags} -X ${importpath}.Version=v${pkgver}"
