@@ -1,6 +1,6 @@
 _pkgname=gamescope
 pkgname=${_pkgname}-sk
-_tag=3.16.ba134
+_tag=3.16.ba135
 pkgver="$_tag"
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
@@ -64,7 +64,7 @@ source=("git+https://github.com/3003n/gamescope.git#tag=${_tag}"
     "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
 )
 
-b2sums=('ad015842c30dd50f35ea73495623adb01253ae3b176b2e1b769c37f5fb143e8af56c329a41c0f01783352879383d3efa201b973e1acca6f2a88eaec35767ae9e'
+b2sums=('a1dcedb126d06cdd9a45aea6eefdc43e48d4c699df10dd210458c6483b8d041c4203de7a20a9cad2c66794a83d62587cd22116d6a06dfe17dd0b9f696fe767d2'
         'SKIP'
         'SKIP'
         'SKIP'
