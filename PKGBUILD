@@ -5,7 +5,7 @@ pkgdesc="a very cool, featureful fork of conduit (rust matrix homeserver)"
 url="https://forgejo.ellis.link/continuwuation/continuwuity"
 license=("Apache-2.0")
 arch=("x86_64")
-pkgver=0.5.0.5414.g4a83df5b
+pkgver=0.5.0.5640.gcff3c277
 pkgrel=1
 epoch=1
 makedepends=("gcc14" "rust" "cargo" "git" "clang" "linux-api-headers" "linux-headers" "llvm" "libc++" "autoconf")
@@ -51,6 +51,6 @@ function check() {
 function package() {
 	install -Dm755 "${srcdir}/continuwuity/target/release/conduwuit" "${pkgdir}/usr/bin/conduwuit"
 	install -Dm644 "${srcdir}/continuwuity/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 "${srcdir}/continuwuity/conduwuit-example.toml" "${pkgdir}/etc/conduwuit/conduwuit.toml"
-	install -Dm644 "${srcdir}/continuwuity/arch/conduwuit.service" "${pkgdir}/usr/lib/systemd/system/continuwuity.service"
+	install -Dm600 "${srcdir}/continuwuity/conduwuit-example.toml" "${pkgdir}/etc/conduwuit/conduwuit.toml"
+	install -Dm644 "${srcdir}/continuwuity/pkg/conduwuit.service" "${pkgdir}/usr/lib/systemd/system/continuwuity.service"
 }
