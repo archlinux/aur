@@ -1,5 +1,5 @@
 pkgbase = darling-git
-	pkgver = r4259.83c14ddd5
+	pkgver = r4302.c431326ef
 	pkgrel = 1
 	url = https://www.darlinghq.org
 	arch = x86_64
@@ -485,12 +485,14 @@ pkgname = darling-python2-git
 	depends = darling-core-git
 	depends = darling-cli-python2-common-git
 	depends = darling-ffi-git
+	optdepends = python2: pre-compilation of Python bytecode
 	provides = darling-python2
 	conflicts = darling-python2
 
 pkgname = darling-cli-python2-common-git
 	pkgdesc = Components of Darling that are shared between the CLI and Python 2 components
 	depends = darling-core-git
+	optdepends = python2: pre-compilation of Python bytecode
 	provides = darling-cli-python2-common
 	conflicts = darling-cli-python2-common
 
@@ -498,6 +500,7 @@ pkgname = darling-pyobjc-git
 	pkgdesc = PyObjC built for use within Darling
 	depends = darling-gui-stubs-git
 	depends = darling-python2-git
+	optdepends = python2: pre-compilation of Python bytecode
 	provides = darling-pyobjc
 	conflicts = darling-pyobjc
 

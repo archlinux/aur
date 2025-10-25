@@ -12,7 +12,7 @@ pkgname=(
     'darling-jsc-webkit-common-git' 'darling-jsc-git' 'darling-iosurface-git' 'darling-cli-devenv-gui-stubs-common-git'
     'darling-gui-stubs-git'
 )
-pkgver=r4259.83c14ddd5
+pkgver=r4302.c431326ef
 pkgrel=1
 arch=('x86_64')
 url="https://www.darlinghq.org"
@@ -213,6 +213,16 @@ md5sums=( 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 options=('!buildflags')
+
+# Use this to select the build tool. ninja may require cleanbuilds more often than make will (due to a bug in cmake), but is much faster.
+if [[ "$DARLING_USE_NINJA_BUILD" == "1" ]]; then
+    _GTool="Ninja"
+    _buildCli="ninja"
+else
+    # Default:
+    _GTool="Unix Makefiles"
+    _buildCli="make"
+fi
 
 pkgver() {
     cd "$srcdir/$_gitname"
@@ -416,10 +426,10 @@ build() {
     cd "$srcdir/$_gitname/build"
 
     echo "Running cmake."
-    CFLAGS="" CXXFLAGS="" CPPFLAGS="" LDFLAGS="" cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DDEBIAN_PACKAGING=ON -DJSC_UNIFIED_BUILD=ON -DENABLE_METAL=ON
+    CFLAGS="" CXXFLAGS="" CPPFLAGS="" LDFLAGS="" cmake .. -G "$_GTool" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DDEBIAN_PACKAGING=ON -DJSC_UNIFIED_BUILD=ON -DENABLE_METAL=ON
 
-    echo "Running make."
-    make
+    echo "Running $_buildCli."
+    $_buildCli
 }
 
 package_darling-git() {
@@ -448,7 +458,7 @@ package_darling-core-git() {
     conflicts=('darling-core')
 
     cd "$srcdir/$_gitname/build"
-    DESTDIR="$pkgdir" cmake -DCOMPONENT=core -P cmake_install.cmake
+    DESTDIR="$pkgdir" cmake -G "$_GTool" -DCOMPONENT=core -P cmake_install.cmake
 }
 
 package_darling-system-git() {
@@ -458,7 +468,7 @@ package_darling-system-git() {
     conflicts=('darling-system')
 
     cd "$srcdir/$_gitname/build"
-    DESTDIR="$pkgdir" cmake -DCOMPONENT=system -P cmake_install.cmake
+    DESTDIR="$pkgdir" cmake -G "$_GTool" -DCOMPONENT=system -P cmake_install.cmake
 }
 
 package_darling-cli-git() {
@@ -472,7 +482,7 @@ package_darling-cli-git() {
     conflicts=('darling-cli')
 
     cd "$srcdir/$_gitname/build"
-    DESTDIR="$pkgdir" cmake -DCOMPONENT=cli -P cmake_install.cmake
+    DESTDIR="$pkgdir" cmake -G "$_GTool" -DCOMPONENT=cli -P cmake_install.cmake
 }
 
 package_darling-ffi-git() {
@@ -482,7 +492,7 @@ package_darling-ffi-git() {
     conflicts=('darling-ffi')
 
     cd "$srcdir/$_gitname/build"
-    DESTDIR="$pkgdir" cmake -DCOMPONENT=ffi -P cmake_install.cmake
+    DESTDIR="$pkgdir" cmake -G "$_GTool" -DCOMPONENT=ffi -P cmake_install.cmake
 }
 
 package_darling-cli-devenv-git() {
@@ -495,7 +505,7 @@ package_darling-cli-devenv-git() {
     conflicts=('darling-cli-devenv' 'darling-gui' 'darling-gui-stubs')
 
     cd "$srcdir/$_gitname/build"
-    DESTDIR="$pkgdir" cmake -DCOMPONENT=cli_dev -P cmake_install.cmake
+    DESTDIR="$pkgdir" cmake -G "$_GTool" -DCOMPONENT=cli_dev -P cmake_install.cmake
 }
 
 package_darling-cli-gui-common-git() {
@@ -505,7 +515,7 @@ package_darling-cli-gui-common-git() {
     conflicts=('darling-cli-gui-common')
 
     cd "$srcdir/$_gitname/build"
-    DESTDIR="$pkgdir" cmake -DCOMPONENT=cli_gui_common -P cmake_install.cmake
+    DESTDIR="$pkgdir" cmake -G "$_GTool" -DCOMPONENT=cli_gui_common -P cmake_install.cmake
 }
 
 package_darling-iokitd-git() {
@@ -515,7 +525,7 @@ package_darling-iokitd-git() {
     conflicts=('darling-iokitd')
 
     cd "$srcdir/$_gitname/build"
-    DESTDIR="$pkgdir" cmake -DCOMPONENT=iokitd -P cmake_install.cmake
+    DESTDIR="$pkgdir" cmake -G "$_GTool" -DCOMPONENT=iokitd -P cmake_install.cmake
 }
 
 package_darling-cli-devenv-gui-common-git() {
@@ -525,7 +535,7 @@ package_darling-cli-devenv-gui-common-git() {
     conflicts=('darling-cli-devenv-gui-common')
 
     cd "$srcdir/$_gitname/build"
-    DESTDIR="$pkgdir" cmake -DCOMPONENT=cli_dev_gui_common -P cmake_install.cmake
+    DESTDIR="$pkgdir" cmake -G "$_GTool" -DCOMPONENT=cli_dev_gui_common -P cmake_install.cmake
 }
 
 package_darling-cli-extra-git() {
@@ -535,7 +545,7 @@ package_darling-cli-extra-git() {
     conflicts=('darling-cli-extra')
 
     cd "$srcdir/$_gitname/build"
-    DESTDIR="$pkgdir" cmake -DCOMPONENT=cli_extra -P cmake_install.cmake
+    DESTDIR="$pkgdir" cmake -G "$_GTool" -DCOMPONENT=cli_extra -P cmake_install.cmake
 }
 
 package_darling-gui-git() {
@@ -556,7 +566,7 @@ package_darling-gui-git() {
     conflicts=('darling-gui')
 
     cd "$srcdir/$_gitname/build"
-    DESTDIR="$pkgdir" cmake -DCOMPONENT=gui -P cmake_install.cmake
+    DESTDIR="$pkgdir" cmake -G "$_GTool" -DCOMPONENT=gui -P cmake_install.cmake
 }
 
 package_darling-python2-git() {
@@ -564,9 +574,12 @@ package_darling-python2-git() {
     depends=('darling-core-git' 'darling-cli-python2-common-git' 'darling-ffi-git')
     provides=('darling-python2')
     conflicts=('darling-python2')
+    optdepends=(
+        'python2: pre-compilation of Python bytecode'
+    )
 
     cd "$srcdir/$_gitname/build"
-    DESTDIR="$pkgdir" cmake -DCOMPONENT=python -P cmake_install.cmake
+    DESTDIR="$pkgdir" cmake -G "$_GTool" -DCOMPONENT=python -P cmake_install.cmake
 }
 
 package_darling-cli-python2-common-git() {
@@ -574,9 +587,12 @@ package_darling-cli-python2-common-git() {
     depends=('darling-core-git')
     provides=('darling-cli-python2-common')
     conflicts=('darling-cli-python2-common')
+    optdepends=(
+        'python2: pre-compilation of Python bytecode'
+    )
 
     cd "$srcdir/$_gitname/build"
-    DESTDIR="$pkgdir" cmake -DCOMPONENT=cli_python_common -P cmake_install.cmake
+    DESTDIR="$pkgdir" cmake -G "$_GTool" -DCOMPONENT=cli_python_common -P cmake_install.cmake
 }
 
 package_darling-pyobjc-git() {
@@ -584,9 +600,12 @@ package_darling-pyobjc-git() {
     depends=('darling-gui-stubs-git' 'darling-python2-git')
     provides=('darling-pyobjc')
     conflicts=('darling-pyobjc')
+    optdepends=(
+        'python2: pre-compilation of Python bytecode'
+    )
 
     cd "$srcdir/$_gitname/build"
-    DESTDIR="$pkgdir" cmake -DCOMPONENT=pyobjc -P cmake_install.cmake
+    DESTDIR="$pkgdir" cmake -G "$_GTool" -DCOMPONENT=pyobjc -P cmake_install.cmake
 }
 
 package_darling-ruby-git() {
@@ -596,7 +615,7 @@ package_darling-ruby-git() {
     conflicts=('darling-ruby')
 
     cd "$srcdir/$_gitname/build"
-    DESTDIR="$pkgdir" cmake -DCOMPONENT=ruby -P cmake_install.cmake
+    DESTDIR="$pkgdir" cmake -G "$_GTool" -DCOMPONENT=ruby -P cmake_install.cmake
 }
 
 package_darling-perl-git() {
@@ -606,7 +625,7 @@ package_darling-perl-git() {
     conflicts=('darling-perl')
 
     cd "$srcdir/$_gitname/build"
-    DESTDIR="$pkgdir" cmake -DCOMPONENT=perl -P cmake_install.cmake
+    DESTDIR="$pkgdir" cmake -G "$_GTool" -DCOMPONENT=perl -P cmake_install.cmake
 }
 
 package_darling-jsc-webkit-common-git() {
@@ -616,7 +635,7 @@ package_darling-jsc-webkit-common-git() {
     conflicts=('darling-jsc-webkit-common')
 
     cd "$srcdir/$_gitname/build"
-    DESTDIR="$pkgdir" cmake -DCOMPONENT=jsc_webkit_common -P cmake_install.cmake
+    DESTDIR="$pkgdir" cmake -G "$_GTool" -DCOMPONENT=jsc_webkit_common -P cmake_install.cmake
 }
 
 package_darling-jsc-git() {
@@ -626,7 +645,7 @@ package_darling-jsc-git() {
     conflicts=('darling-jsc')
 
     cd "$srcdir/$_gitname/build"
-    DESTDIR="$pkgdir" cmake -DCOMPONENT=jsc -P cmake_install.cmake
+    DESTDIR="$pkgdir" cmake -G "$_GTool" -DCOMPONENT=jsc -P cmake_install.cmake
 }
 
 package_darling-iosurface-git() {
@@ -636,7 +655,7 @@ package_darling-iosurface-git() {
     conflicts=('darling-iosurface')
 
     cd "$srcdir/$_gitname/build"
-    DESTDIR="$pkgdir" cmake -DCOMPONENT=iosurface -P cmake_install.cmake
+    DESTDIR="$pkgdir" cmake -G "$_GTool" -DCOMPONENT=iosurface -P cmake_install.cmake
 }
 
 package_darling-cli-devenv-gui-stubs-common-git() {
@@ -646,7 +665,7 @@ package_darling-cli-devenv-gui-stubs-common-git() {
     conflicts=('darling-cli-devenv-gui-stubs-common')
 
     cd "$srcdir/$_gitname/build"
-    DESTDIR="$pkgdir" cmake -DCOMPONENT=cli_dev_gui_stubs_common -P cmake_install.cmake
+    DESTDIR="$pkgdir" cmake -G "$_GTool" -DCOMPONENT=cli_dev_gui_stubs_common -P cmake_install.cmake
 }
 
 package_darling-gui-stubs-git() {
@@ -656,5 +675,5 @@ package_darling-gui-stubs-git() {
     conflicts=('darling-gui-stubs')
 
     cd "$srcdir/$_gitname/build"
-    DESTDIR="$pkgdir" cmake -DCOMPONENT=gui_stubs -P cmake_install.cmake
+    DESTDIR="$pkgdir" cmake -G "$_GTool" -DCOMPONENT=gui_stubs -P cmake_install.cmake
 }
