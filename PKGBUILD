@@ -2,13 +2,13 @@
 
 pkgname=waysn
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Gamma adjustments for Wayland"
 arch=('x86_64')
 url="https://github.com/SashaT9/waysn"
 license=('MIT')
 
-makedepends=('cargo')
+makedepends=('rust' 'cargo')
 depends=('glibc' 'gcc-libs')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SashaT9/$pkgname/archive/v$pkgver.tar.gz")
