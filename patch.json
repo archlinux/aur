@@ -304,6 +304,12 @@
 			"contribEditSessions",
 			"authenticationChallenges"
 		],
+		"ms-toolsai.vscode-ai": [
+			"authenticationChallenges"
+		],
+		"TeamsDevApp.vscode-ai-foundry": [
+			"authenticationChallenges"
+		],
 		"ms-vscode.vscode-selfhost-test-provider": [
 			"testObserver",
 			"testRelatedCode"
@@ -331,7 +337,8 @@
 			"tunnels"
 		],
 		"ms-toolsai.vscode-ai-remote": [
-			"resolvers"
+			"resolvers",
+			"authenticationChallenges"
 		],
 		"ms-python.python": [
 			"codeActionAI",
@@ -465,10 +472,12 @@
 			"treeViewMarkdownMessage"
 		],
 		"GitHub.copilot": [
-			"inlineCompletionsAdditions"
+			"inlineCompletionsAdditions",
+			"devDeviceId"
 		],
 		"GitHub.copilot-nightly": [
-			"inlineCompletionsAdditions"
+			"inlineCompletionsAdditions",
+			"devDeviceId"
 		],
 		"GitHub.copilot-chat": [
 			"interactive",
@@ -518,7 +527,9 @@
 			"resolvers",
 			"taskExecutionTerminal",
 			"dataChannels",
-			"chatSessionsProvider"
+			"chatSessionsProvider",
+			"devDeviceId",
+			"contribEditorContentMenu"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
@@ -536,7 +547,8 @@
 			"timeline"
 		],
 		"ms-python.vscode-pylance": [
-			"terminalShellEnv"
+			"terminalShellEnv",
+			"portsAttributes"
 		],
 		"ms-python.debugpy": [
 			"contribViewsWelcome",
