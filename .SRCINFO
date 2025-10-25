@@ -1,6 +1,6 @@
 pkgbase = jdk21-temurin
 	pkgdesc = Temurin 21 (OpenJDK 21 Java binaries by Adoptium, formerly AdoptOpenJDK)
-	pkgver = 21.0.8.u9
+	pkgver = 21.0.9.u10
 	pkgrel = 1
 	url = https://adoptium.net/
 	install = install_jdk21-temurin.sh
@@ -21,10 +21,10 @@ pkgbase = jdk21-temurin
 	provides = java-runtime-openjdk=21
 	provides = java-environment=21
 	provides = java-environment-openjdk=21
-	provides = jdk21-openjdk=21.0.8.u9
-	provides = jdk-openjdk=21.0.8.u9
-	provides = openjdk21-src=21.0.8.u9
-	provides = openjdk-src=21.0.8.u9
+	provides = jdk21-openjdk=21.0.9.u10
+	provides = jdk-openjdk=21.0.9.u10
+	provides = openjdk21-src=21.0.9.u10
+	provides = openjdk-src=21.0.9.u10
 	options = !strip
 	backup = etc/java-21-temurin/logging.properties
 	backup = etc/java-21-temurin/management/jmxremote.access
@@ -41,11 +41,11 @@ pkgbase = jdk21-temurin
 	backup = etc/java-21-temurin/security/policy/unlimited/default_local.policy
 	backup = etc/java-21-temurin/security/policy/unlimited/default_US_export.policy
 	backup = etc/java-21-temurin/sound.properties
-	source = https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.8%2B9/OpenJDK21U-jdk_x64_linux_hotspot_21.0.8_9.tar.gz
+	source = https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.9%2B10/OpenJDK21U-jdk_x64_linux_hotspot_21.0.9_10.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = f2dc5418092c43003db8f9005c4a286e1c0104fea96ccdd49e8ebd037cac9219
+	sha256sums = 810d3773df7e0d6c4394e4e244b264c8b30e0b05a0acf542d065fd78a6b65c2f
 	sha256sums = 23ced5efdb3381e6318af1acb343c714b2d9aacdb4666fee05dc58cd254b2d07
 	sha256sums = ef7f6465272608a35615665f8e4b0837b43b4db7bf22f8eb7cecdd6170b5b2ee
 	sha256sums = 166b128e025404e7b4048c5b3c958e080a13a98f84b6faa9cfe11530f553e287
