@@ -1,7 +1,7 @@
 pkgbase = crowdsec-bin
 	pkgdesc = An open-source, lightweight agent to detect and respond to bad behaviors. It also automatically benefits from our global community-wide IP reputation database
 	pkgver = 1.7.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/crowdsecurity/crowdsec
 	install = crowdsec-bin.install
 	arch = any

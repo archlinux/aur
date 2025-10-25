@@ -4,7 +4,7 @@
 
 pkgname=crowdsec-bin
 pkgver=1.7.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source, lightweight agent to detect and respond to bad behaviors. It also automatically benefits from our global community-wide IP reputation database"
 arch=('any')
 url="https://github.com/crowdsecurity/crowdsec"
@@ -86,4 +86,9 @@ package() {
   install -m750 ./wizard.sh -t $pkgdir/opt/crowdsec/
   install -m750 $srcdir/hubupdate.sh -t $pkgdir/opt/crowdsec/
   install -m644 "$srcdir/crowdsec.sysusers" "$pkgdir/usr/lib/sysusers.d/crowdsec.conf"
+
+  # completions
+  install -Dm644 <(./cmd/crowdsec-cli/cscli completion bash) $pkgdir/usr/share/bash-completion/completion/cscli
+  install -Dm644 <(./cmd/crowdsec-cli/cscli completion zsh) $pkgdir/usr/share/zsh/site-functions/_cscli
+  install -Dm644 <(./cmd/crowdsec-cli/cscli completion fish) $pkgdir/usr/share/fish/vendor_completions.d/cscli.fish
 }

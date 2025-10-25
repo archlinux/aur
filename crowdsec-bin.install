@@ -41,6 +41,11 @@ post_upgrade() {
     fi
 
     systemctl daemon-reload
+
+    if (( $(vercmp "$2" '1.7.3-3') < 0 )); then
+    	systemctl enable --now crowdsec-hubupdate.timer
+    fi
+
     if systemctl is-active -q crowdsec; then
         systemctl reload crowdsec
     fi
