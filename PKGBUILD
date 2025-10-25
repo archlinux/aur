@@ -1,7 +1,7 @@
 pkgname=greetd-dms-greeter-git
 pkgver=0.2.2.13.g1abd3ef
 #pkgver=r960.7516d44
-pkgrel=1
+pkgrel=2
 pkgdesc='DankMaterialShell greeter for greetd'
 arch=('x86_64' 'aarch64')
 url='https://github.com/AvengeMedia/DankMaterialShell'
@@ -9,7 +9,6 @@ license=('GPL-3.0-only')
 depends=(
     'greetd'
     'quickshell'
-    'ttf-material-symbols-variable-git'
 )
 optdepends=(
     'niri: Niri compositor support'
