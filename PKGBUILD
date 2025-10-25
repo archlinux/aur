@@ -1,7 +1,7 @@
 # Maintainer: Jpmasr3r <https://github.com/Jpmasr3r>
 
 pkgname=rust-rice-manager
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A fast and flexible CLI tool to manage Linux rices using symlinks"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=()
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Jpmasr3r/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('5baa9c66cd6d700bb65801ca82543163faecdf305d5aef7535bb9d2a1f9e7532')
+sha256sums=('aa3cb56a6dd0eb2b22a625a4859a49f616e277b7031f8f7faf795214d8e19c98')
 
 build() {
     cd "$pkgname-$pkgver"
