@@ -7,7 +7,7 @@ install:
 	yes | makepkg -i
 
 clean:
-	rm -rf pkg src
+	sudo rm -rf pkg src
 	rm -rf $(PKG)*
 
 update-srcinfo:
