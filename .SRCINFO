@@ -1,7 +1,7 @@
 pkgbase = busybox-crond
 	pkgdesc = Busybox crond implementation
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.busybox.net
 	arch = x86_64
 	license = GPL
