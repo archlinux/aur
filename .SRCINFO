@@ -1,0 +1,13 @@
+pkgbase = ksl-runner
+	pkgdesc = KSL Runner — Recreate .bat files as .ksl scripts and run them through Konsole.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/bashkonsole/konsole
+	arch = any
+	license = MIT
+	depends = qt6-base
+	depends = konsole
+	source = https://github.com/bashkonsole/konsole/archive/refs/tags/v1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = ksl-runner
