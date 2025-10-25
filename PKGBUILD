@@ -1,9 +1,10 @@
 # Maintainer: Dustin Pilgrim <dustin.pilgrim1997@gmail.com>
 pkgname=claw-bin
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Crustacean powered clipboard manager for X11 & Wayland"
 arch=('x86_64')
+conflicts=('claw')
 url="https://github.com/saltnpepper97/claw"
 license=('MIT')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libsoup' 'pango' 'webkit2gtk-4.1')
