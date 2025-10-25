@@ -1,9 +1,10 @@
+# Contributor: Andreas Baumann <mail@andreasbaumann.cc>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Vinay S Shastry <vinayshastry@gmail.com>
 
 pkgname=mp3info
 pkgver=0.8.5a
-pkgrel=8
+pkgrel=9
 pkgdesc="An MP3 technical info viewer and ID3 1.x tag editor"
 arch=('x86_64')
 url="https://ibiblio.org/mp3info/"
@@ -12,9 +13,17 @@ depends=('ncurses')
 makedepends=('gtk2')
 optdepends=('gtk2: run gmp3info GUI')
 source=(https://ibiblio.org/pub/linux/apps/sound/mp3-utils/$pkgname/$pkgname-$pkgver.tgz
-        gmp3info.desktop)
+        gmp3info.desktop
+        mp3info-0.8.5a-compilation.patch)
 sha256sums=('0438ac68e9f04947fb14ca5573d27c62454cb9db3a93b7f1d2c226cd3e0b4e10'
-            'c2e42945ed41ad97babe4f85c7504bc9be8639aa17466f3723810f4eb615f905')
+            'c2e42945ed41ad97babe4f85c7504bc9be8639aa17466f3723810f4eb615f905'
+            '181432eadf85e69f6671b4bddff3da0e94a284ce6feda03873bd6061268ba36a')
+
+prepare() {
+  cd "$srcdir"/$pkgname-$pkgver
+
+  patch -Np1 < ../mp3info-0.8.5a-compilation.patch
+}
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver

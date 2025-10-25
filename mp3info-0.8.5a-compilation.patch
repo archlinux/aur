@@ -1,0 +1,30 @@
+diff -rauN mp3info-0.8.5a/textfunc.c mp3info-0.8.5a-compilation-patches/textfunc.c
+--- mp3info-0.8.5a/textfunc.c	2006-11-06 09:59:12.000000000 +0100
++++ mp3info-0.8.5a-compilation-patches/textfunc.c	2025-10-25 16:31:34.657112281 +0200
+@@ -34,7 +34,7 @@
+  */
+ 
+ void CenterText(int line, char *text) {
+-   mvprintw(line,(COLS/2)-((int)strlen(text)/2),text);
++   mvprintw(line,(COLS/2)-((int)strlen(text)/2),"%s",text);
+ }
+ 
+ /* Convert hex digit to integer */
+@@ -227,7 +227,7 @@
+ 
+ 	while((percent=strchr(format,'%'))) {
+ 		*percent=0;
+-		printf(format);
++		printf("%s",format);
+ 		*percent='%';
+ 		code=percent+1;
+ 		while(*code && (code[0] != '%' && !isalpha(*code))) code++;
+@@ -354,7 +354,7 @@
+ 		}
+ 		
+ 	}
+-	printf(format);
++	printf("%s",format);
+ }
+ 
+ 
