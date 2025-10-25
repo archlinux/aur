@@ -35,4 +35,3 @@ package() {
   cd "${srcdir}/binutils-${pkgver}/build"
   make DESTDIR="${pkgdir}" install
 }
-/
