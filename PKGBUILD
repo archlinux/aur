@@ -9,7 +9,7 @@ license=('GPL2')
 depends=()
 makedepends=('gcc' 'make' 'texinfo')
 source=("https://ftp.icm.edu.pl/pub/gnu/binutils/binutils-${pkgver}.tar.xz")
-sha256sums=('53ee68eae39d4d3b78812c737c52f2f2b9f1f6f6f0b4f1f9832c4f0f0e7f0d12')
+sha256sums=('c50c0e7f9cb188980e2cc97e4537626b1672441815587f1eab69d2a1bfbef5d2')
 
 target="x86_64-lfs-linux-gnu"
 
