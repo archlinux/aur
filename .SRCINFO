@@ -1,6 +1,6 @@
 pkgbase = opm-common
 	pkgdesc = Open Porous Media Initiative shared infrastructure
-	pkgver = 2025.04
+	pkgver = 2025.10
 	pkgrel = 1
 	url = https://github.com/OPM/opm-common
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = opm-common
 	makedepends = python-setuptools-scm
 	makedepends = python-pytest-runner
 	options = !emptydirs
-	source = opm-common-release-2025.04-final.tar.gz::https://github.com/OPM/opm-common/archive/release/2025.04/final.tar.gz
-	sha512sums = 7eca3251b6e317f6fcaf078970892e64ca149426ae8c5b6369d9ef350977afe1dc6579a8e0962c57deb766542007ef28bfdcce7a55e3c4beee01900f0a7adb14
+	source = opm-common-release-2025.10-final.tar.gz::https://github.com/OPM/opm-common/archive/release/2025.10/final.tar.gz
+	sha512sums = a99c1e4f9166ab48f68a9d952832ddc7625bb76c273c41b365b31b38f26eeb85424c76310245e0f605576066cc3383611f1ff8e320bf2d5e8ea37c00a8880dca
 
 pkgname = opm-common
 	depends = dune-common>=2.10.0
@@ -41,5 +41,5 @@ pkgname = opm-common
 
 pkgname = python-opm-common
 	pkgdesc = Open Porous Media Initiative shared infrastructure (python bindings)
-	depends = opm-common>=2025.04
+	depends = opm-common>=2025.10
 	depends = python-numpy

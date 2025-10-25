@@ -2,7 +2,7 @@
 pkgbase=opm-common
 pkgname=("${pkgbase}" python-"${pkgbase}")
 _dunever=2.10.0
-pkgver=2025.04
+pkgver=2025.10
 pkgrel=1
 pkgdesc="Open Porous Media Initiative shared infrastructure"
 arch=(x86_64)
@@ -12,7 +12,7 @@ makedepends=("dune-common>=${_dunever}" boost fmt cjson suitesparse texlive-basi
   pybind11 python-scikit-build python-setuptools-scm python-pytest-runner)
 options=(!emptydirs)
 source=(${pkgbase}-release-${pkgver}-final.tar.gz::${url}/archive/release/${pkgver}/final.tar.gz)
-sha512sums=('7eca3251b6e317f6fcaf078970892e64ca149426ae8c5b6369d9ef350977afe1dc6579a8e0962c57deb766542007ef28bfdcce7a55e3c4beee01900f0a7adb14')
+sha512sums=('a99c1e4f9166ab48f68a9d952832ddc7625bb76c273c41b365b31b38f26eeb85424c76310245e0f605576066cc3383611f1ff8e320bf2d5e8ea37c00a8880dca')
 
 build() {
   cmake \
