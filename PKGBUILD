@@ -1,23 +1,27 @@
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=xdialog
 pkgver=2.3.1
-pkgrel=9
+pkgrel=10
 pkgdesc="A drop-in replacement for the 'dialog' or 'cdialog' programs"
 url="http://xdialog.free.fr/"
 arch=('x86_64')
 depends=('gtk2')
 license=('GPL')
 source=("http://xdialog.free.fr/Xdialog-${pkgver}.tar.bz2"
-	"xdialog-2.3.1-gtk2.patch")
+	"xdialog-2.3.1-gtk2.patch"
+        "Xdialog-2.3.1-compilation.patch")
 sha512sums=('2a0f6e15297ae3ef54a41da1b1fe2ef376d28757d47433df2b8e9918cd4f95871a630b94ec544bd848e518df7f86934030a71bf0371a1466286bf7d912335525'
-            'e1a1d4e93946f89a9f4d2a619fcb0069cd5e6ec1b0c3a3ebcd87b1b601c07a7941ad1edeb1cbe89f22f993667c4431c496a6c9b35a13fd9e7d1b8dbd89546694')
+            '3dd571b61a70a7215096c0973e9ba88a26d38e0f93e9149c9a386c7d2dee96a3539f27b3654e701b3fb496f245313e6a1ad6e67f95a142b76ede60f054c50ab5'
+            '034b50d9f90e8e47392d584cbf87f9cafcea72145a28caa07f7b7a8da65cc6c1b0e33810452c181a1197030902683882ed1f247c41b259129a663204ec020d5b')
 
 build() {
   cd "$srcdir"/Xdialog-$pkgver
   patch -p1 <../xdialog-$pkgver-gtk2.patch
+  patch -p1 <../Xdialog-2.3.1-compilation.patch
   ./configure --prefix=/usr \
     --mandir="$pkgdir"/usr/share/man --with-gtk2
   # Fix bugs in automake - see Xdialog.spec

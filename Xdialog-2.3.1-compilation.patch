@@ -1,0 +1,12 @@
+diff -rauN Xdialog-2.3.1/src/main.c Xdialog-2.3.1-compilation-patches/src/main.c
+--- Xdialog-2.3.1/src/main.c	2006-08-13 20:22:58.000000000 +0200
++++ Xdialog-2.3.1-compilation-patches/src/main.c	2025-10-25 16:09:44.544389745 +0200
+@@ -268,7 +268,7 @@
+ #endif
+ 
+ 	fprintf(stderr, "%s: %s !\n", cmd, errmsg);
+-	fprintf(stderr, msg);
++	fprintf(stderr, "%s", msg);
+ 
+ 	if (strlen(msg) == HELP_MSG_SIZE-1)
+ 		fprintf(stderr, "\n\nHelp message truncated, please re-compile "\

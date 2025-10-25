@@ -7,7 +7,7 @@ diff -Naur Xdialog-2.3.1-orig/src/interface.c Xdialog-2.3.1/src/interface.c
  
 +	/* Set window icon (in GTK2 mode only)  */
 +	#ifdef USE_GTK2
-+		gtk_window_set_icon_name(window, Xdialog.icon_file);
++		gtk_window_set_icon_name(GTK_WINDOW(window), Xdialog.icon_file);
 +	#endif
 +
  	/* Apply the custom GTK+ theme, if any. */
