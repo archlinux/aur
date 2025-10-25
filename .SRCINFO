@@ -1,6 +1,6 @@
 pkgbase = python-jwst
 	pkgdesc = Library for calibration of science observations from the James Webb Space Telescope
-	pkgver = 1.19.2
+	pkgver = 1.20.1
 	pkgrel = 1
 	url = https://jwst-pipeline.readthedocs.io
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = python-jwst
 	makedepends = python-sphinx-automodapi
 	makedepends = python-sphinxcontrib-jquery
 	makedepends = python-sphinx_rtd_theme
+	makedepends = python-numpydoc
 	makedepends = python-pytest-doctestplus
 	makedepends = python-bayesicfitting
 	makedepends = python-jsonschema
@@ -21,30 +22,27 @@ pkgbase = python-jwst
 	makedepends = python-stdatamodels
 	makedepends = python-stpipe
 	makedepends = python-synphot
-	makedepends = python-wiimatch
 	makedepends = graphviz
-	makedepends = texlive-latexextra
-	source = https://files.pythonhosted.org/packages/source/j/jwst/jwst-1.19.2.tar.gz
-	md5sums = b35dfeb5b3e46f7990434a24dfe67b12
+	source = https://files.pythonhosted.org/packages/source/j/jwst/jwst-1.20.1.tar.gz
+	md5sums = fa9023c1601e92ccce253315474589cc
 
 pkgname = python-jwst
-	depends = python-asdf>=4.0
+	depends = python-asdf>=4.2
 	depends = python-astropy>=6.1
 	depends = python-bayesicfitting>=3.2.2
 	depends = python-crds>=12.0.3
-	depends = python-drizzle>=2.0.1
-	depends = python-gwcs>=0.25.0
+	depends = python-drizzle>=2.1.1
+	depends = python-gwcs>=0.26.0
 	depends = python-numpy>=1.25
-	depends = python-opencv>=4.6.0.66
-	depends = python-photutils>=1.5.0
+	depends = python-photutils>=2.1.0
 	depends = python-pyparsing>=2.2.1
 	depends = python-requests>=2.31
 	depends = python-scikit-image>=0.20.0
 	depends = python-scipy>=1.14.1
 	depends = python-spherical_geometry>=1.3
-	depends = python-stcal>=1.14.0
-	depends = python-stdatamodels>=4.0.1
-	depends = python-stpipe>=0.10.0
+	depends = python-stcal>=1.15.2
+	depends = python-stdatamodels>=4.1.0
+	depends = python-stpipe>=0.11.1
 	depends = python-stsci.imagestats>=1.6.3
 	depends = python-synphot>=1.3
 	depends = python-tweakwcs>=0.8.8
