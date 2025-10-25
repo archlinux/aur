@@ -1,8 +1,8 @@
 # Maintainer: Max Rossmannek <max@rossmannek.de>
 
 pkgname=cobib-zotero
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 arch=('any')
 depends=(
     'cobib'
@@ -14,6 +14,7 @@ makedepends=(
     'python-build'
     'python-installer'
     'python-setuptools'
+    'python-setuptools-scm'
     'python-wheel'
     'ruby-ronn-ng'
 )
@@ -22,7 +23,7 @@ conflicts=('cobib-zotero')
 pkgdesc="Zotero importer plugin for coBib"
 url="https://gitlab.com/cobib/${pkgname}"
 source=("https://gitlab.com/cobib/cobib-zotero/-/releases/v$pkgver/downloads/$pkgname-v$pkgver.tar.gz")
-sha512sums=('6e8eda1ed8069f81b8cdc0553e65c4bfd4d2b2765669291659d2d3a29b970d904da0a0fb5055c45cf32ecc01aec0886d3d7e3c4bc7177ab92aa6155fcca72342')
+sha512sums=('5e353a375073c2ab6887b8a9db1688eeb84eb0c55d5b2e17ca63a4c79a6d1f33d21795b84657b637d264cb4f99d887fb028b5a4640025ee26df9cf09dae7acff')
 
 build() {
   cd "${srcdir}"
