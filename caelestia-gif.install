@@ -1,11 +1,10 @@
 #!/bin/bash
 
 post_install() {
-    echo "Running post-installation configuration..." 
-
-        if [ -x /usr/bin/caelestia-gif ]; then
-        /usr/bin/caelestia-gif --init || echo "Post-installation script failed."
-    else
-        echo "No post-installation script found."
-    fi
+    echo 
+    echo "Caelestia GIF manager has been installed successfully!"
+    echo "IMPORTANT: Please run the following command to finalize the setup:"
+    echo "  caelestia-gif --init"
+    echo
+    echo "For more information, visit: https://gitlab.com/gnoooo/caelestia-gif/-/blob/master/README.md#what-is---init"
 }
