@@ -1,11 +1,11 @@
 # Maintainer: joelvaz0x01 <joelvaz dot whitehat at gmail dot com>
 
 _pkgbase=chordpro
-_pkgbasever=6.070
 pkgname=${_pkgbase}-gui
-pkgver=${_pkgbasever}.7
-pkgrel=5
+pkgver=6.080.1
+pkgrel=1
 _pkgdownload=App-Music-ChordPro-${pkgver}
+_wxlastpkgver=6.070
 _wxver=3.005
 pkgdesc="A lyrics and chords formatting program (CLI and GUI)"
 arch=('x86_64')
@@ -13,34 +13,38 @@ url="https://chordpro.org/"
 _ghurl="https://github.com/ChordPro/chordpro"
 license=('Artistic-2.0')
 depends=(
-    'perl'                           # Provides JSON::PP, Storable, Pod::Usage, File::Copy and ExtUtils::MakeMaker
-    'perl-pdf-api2'                  # PDF::API2
-    'perl-text-layout'               # Text::Layout
-    'perl-json-xs'                   # JSON::XS
-    'perl-string-interpolate-named'  # String::Interpolate::Named
-    'perl-file-loadlines'            # File::LoadLines
-    'perl-lwp-protocol-https'        # LWP::Protocol::https
-    'perl-mozilla-ca'                # Mozilla::CA
-    'perl-file-homedir'              # File::HomeDir
-    'perl-image-info'                # Image::Info
-    'perl-list-allutils'             # List::Util
-    'perl-data-printer'              # Data::Printer
-    'perl-object-pad'                # Object::Pad
-    'perl-ref-util'                  # Ref::Util
+    'perl'                           # Provides JSON::PP, Storable, Pod::Usage, File::Copy, ExtUtils::MakeMaker, Unicode::Collate
+    'perl-pdf-api2>=2.047'           # PDF::API2
+    'perl-json-xs>=4.03'             # JSON::XS
+    'perl-lwp-protocol-https>=6.14'  # LWP::Protocol::https
+    'perl-mozilla-ca>=20230801'      # Mozilla::CA
+    'perl-file-homedir>=1.004'       # File::HomeDir
+    'perl-image-info>=1.41'          # Image::Info
+    'perl-scalar-list-utils>=1.63'   # Scalar::Util and List::Util
+    'perl-ref-util>=0.204'           # Ref::Util
+    'perl-ipc-run3>=0.049'           # IPC::Run3
     'wxwidgets-gtk3'
     'webkit2gtk-4.1'
+
+    'perl-text-layout>=0.045'               # Text::Layout (AUR)
+    #'perl-string-interpolate-named>=1.060' # String::Interpolate::Named (incompatible version on AUR)
+    'perl-file-loadlines>=1.047'            # File::LoadLines (AUR)
+    'perl-data-printer>=0.001001'           # Data::Printer (AUR)
+    'perl-object-pad>=0.818'                # Object::Pad (AUR)
+
+    # Not found: HarfBuzz::Shaper, JavaScript::QuickJS, Unicode::Normalize
 )
 makedepends=('perl-local-lib' 'cpanminus')
 provides=(chordpro)
 conflicts=(chordpro)
 install=chordpro.install
 source=(
-    "${_ghurl}/releases/download/R${_pkgbasever}/${_pkgdownload}.tar.gz"
-    "${_ghurl}/releases/download/R${_pkgbasever}/Wx-${_wxver}.tar.gz"
+    "${_ghurl}/releases/download/R${pkgver}/${_pkgdownload}.tar.gz"
+    "${_ghurl}/releases/download/R${_wxlastpkgver}/Wx-${_wxver}.tar.gz"
     "chordpro.install"
     "chordpro.sh"
 )
-sha256sums=('47f3f202e6afc0f524d0e29ca4776b5eb6b7f3660aeb4b18e499cda7a0f40312'
+sha256sums=('5379a6713a2932c7514ee9bec8976652ea275f5b97b89d00022b5c4d7f2bc086'
             '3f0d7cdfc4997d485ab941b133c849f5dab17a62fb242bee133ce040fead3898'
             'b7e60a00ea16e5f49702591c9e2f4146763ade0d312cd2ab6422219700fab311'
             '259db24404125459b563f049f746c6844cf8eab46728d0c9935cc36765cb722d')
