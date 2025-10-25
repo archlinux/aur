@@ -5,7 +5,7 @@
 _pkgname=gwenview
 pkgname=gwenview-no-purpose
 pkgver=25.08.2
-pkgrel=3
+pkgrel=5
 pkgdesc='A fast and easy to use image viewer, without the dependency on purpose. This disables the share menu'
 url='https://apps.kde.org/gwenview/'
 arch=(x86_64)
