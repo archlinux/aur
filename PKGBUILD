@@ -11,7 +11,7 @@
 
 _pkgname="qtile"
 pkgname="$_pkgname-git"
-pkgver=0.33.0.r278.g112f60e
+pkgver=0.33.0.r282.gc3d4510
 pkgrel=1
 pkgdesc="A full-featured, pure-Python tiling window manager"
 url="https://github.com/qtile/qtile"
@@ -91,7 +91,7 @@ conflicts=("$_pkgname")
 install="$_pkgname.install"
 
 _pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+$url.git#branch=wayc")
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
