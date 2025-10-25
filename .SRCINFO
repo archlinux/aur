@@ -1,12 +1,11 @@
 pkgbase = waysn
 	pkgdesc = Gamma adjustments for Wayland
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/SashaT9/waysn
 	arch = x86_64
 	license = MIT
 	makedepends = rust
-	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
 	source = waysn-0.1.0.tar.gz::https://github.com/SashaT9/waysn/archive/v0.1.0.tar.gz
