@@ -1,0 +1,15 @@
+pkgbase = lexbor
+	pkgdesc = An in-development browser engine with minimal dependencies
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://lexbor.com
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	source = git+https://github.com/lexbor/lexbor.git#tag=7fb22cf5664a331d7c24b113489e566767c9c25a
+	sha256sums = b92011a38bc9d19b065331d2abf7cdd8868264eb170700c7acd1deb76c89c685
+	b2sums = 9c92e798d92bc148efe3fad703d2375a4e73ee594d831e528401588d1badcc5a4a46e878e1100e05ec8979806231e23af77193473c157e317829f7b695dde009
+
+pkgname = lexbor
