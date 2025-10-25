@@ -3,7 +3,7 @@
 pkgname=keyboard-app
 pkgver=0.3.0
 pkgrel=1
-pkgdesc="Cross-platform on-screen keyboard for different languages"
+pkgdesc="Universal on-screen keyboard"
 arch=('x86_64')
 url="https://github.com/mrwormhole/keyboard-app"
 license=('MIT')
