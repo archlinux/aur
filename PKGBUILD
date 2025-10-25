@@ -3,7 +3,7 @@
 _pkgauthor=s0rg
 _pkgname=decompose
 pkgname=${_pkgname}-bin
-pkgver=1.11.3
+pkgver=1.11.4
 pkgrel=1
 pkgdesc="Reverse-engineering tool for docker environments"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('07576c5dbddc76577657b73bc3ccc38237a5cfc4d5f11a3bdfd29deef084b2d2')
-sha256sums_aarch64=('40aeee5bcfc7d432696f6ad718c1487072ea3bdf59fc3509546ae9a7fb525617')
+sha256sums_x86_64=('f1b9a4cf2b01bec5a9e9b58b85599a847dfcc121834079327ade3bf742b9b59b')
+sha256sums_aarch64=('0f4d53dbcf7dcd200be86559d1b5906d9ab904ae92065eb44b8be80d11abcfdb')
 
 
 package() {
