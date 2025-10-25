@@ -3,11 +3,11 @@
 
 pkgname=raven-reader
 pkgver=1.0.80
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple Desktop RSS Reader made using VueJS"
 url="https://github.com/hello-efficiency-inc/raven-reader"
 license=('MIT')
-makedepends=('yarn')
+makedepends=('git' 'yarn' 'nodejs' 'nvm')
 depends=("libxss" "libxtst" "libappindicator-gtk2" "gtk2" "libnotify")
 _pkgname="Raven Reader"
 arch=('x86_64')
@@ -24,12 +24,48 @@ prepare(){
 }
 
 build(){
+	if ! which node &>/dev/null; then
+		echo "node.js not installed!!"
+		exit 1
+	fi
+
+	if ! test -f /usr/share/nvm/init-nvm.sh; then
+		echo "/usr/share/nvm/init-nvm.sh not found!!!"
+		echo "Please install nvm."
+		exit 1
+	fi
+
+	# Get current node.js version
+	nodejs_ver=$(node -v)
+	nodejs_major_ver=$(echo "$nodejs_ver" | sed 's/^v//' | cut -d'.' -f1)
+	source /usr/share/nvm/init-nvm.sh
+	nvm_selection=$(nvm current)
+
+	# Use case to check the major version against the list
+	case "$nodejs_major_ver" in
+	    8|10|12|14|16|17)
+	        echo "Success: Node.js major version $nodejs_major_ver is supported."
+	        ;;
+	    *)
+	        echo "Error: Node.js major version $nodejs_major_ver is NOT supported."
+	        echo "This script requires one of: 8 || 10 || 12 || 14 || 16 || 17."
+		# Switching to a supported version
+		nvm install v17
+		nvm use v17
+	        ;;
+	esac
+
 	export NODE_OPTIONS=--openssl-legacy-provider
 	cd ${srcdir}/${pkgname}
         yarn
         yarn electron:build 
         chmod +x ./dist_electron/"${_pkgname}-${pkgver}.AppImage"
         ./dist_electron/"${_pkgname}-${pkgver}.AppImage" --appimage-extract
+
+	# Switching back to original nodejs version
+	if [ $(nvm current)!="$nvm_selection" ]; then
+		nvm use "$nvm_selection"
+	fi
 }
 package() {
 	mkdir -p ${pkgdir}/usr

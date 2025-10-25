@@ -1,11 +1,14 @@
 pkgbase = raven-reader
 	pkgdesc = Simple Desktop RSS Reader made using VueJS
 	pkgver = 1.0.80
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hello-efficiency-inc/raven-reader
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = yarn
+	makedepends = nodejs
+	makedepends = nvm
 	depends = libxss
 	depends = libxtst
 	depends = libappindicator-gtk2
