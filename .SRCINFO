@@ -1,7 +1,7 @@
 pkgbase = gpgfrontend
 	pkgdesc = An exceptional GUI frontend for the modern GnuPG (gpg)
-	pkgver = 2.1.9
-	pkgrel = 2
+	pkgver = 2.1.10
+	pkgrel = 1
 	url = https://gpgfrontend.bktus.com
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -17,7 +17,7 @@ pkgbase = gpgfrontend
 	depends = libarchive
 	depends = openssl
 	depends = qt6-base
-	source = git+https://github.com/saturneric/GpgFrontend#tag=v2.1.9
+	source = git+https://github.com/saturneric/GpgFrontend#tag=v2.1.10
 	source = git+https://github.com/qt/qttranslations.git
 	source = git+https://git.bktus.com/GpgFrontend/Modules.git
 	source = git+https://git.bktus.com/GpgFrontend/gpgme.git
@@ -25,7 +25,7 @@ pkgbase = gpgfrontend
 	source = git+https://git.bktus.com/GpgFrontend/libgpg-error.git
 	source = git+https://github.com/openssl/openssl.git
 	source = git+https://git.bktus.com/GpgFrontend/vmime.git
-	sha256sums = 2348f6cbb93d7fb089424a5fdabbf71e035ed4fe0773df9739ea37ef699e0202
+	sha256sums = 5f7a8020d8aff09d4d0f9f809d52032bb2cdfdcd7606e90ba4fd40a42de20ca2
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
