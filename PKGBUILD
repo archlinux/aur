@@ -2,22 +2,24 @@
 
 _pkgname=asphalt
 pkgname=asphalt-bin
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Upload and reference Roblox assets in code'
-arch=('x86_64')
+arch=('aarch64' 'x86_64')
 url='https://github.com/jackTabsCode/asphalt'
 license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('libarchive')
 provides=("${_pkgname}=${pkgver}")
 conflicts=($_pkgname)
-source=("${_pkgname}-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/asphalt-x86_64-unknown-linux-gnu.tar.xz")
-b2sums=('f4f0388a703e551981d95575eb7c80c8f317e95ec52f800a56d30600074ec67b15497cd13601658fd6e718ec16595466681f564c239663ad0a2ebe564418e6b5')
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.xz::${url}/releases/download/v${pkgver}/asphalt-aarch64-unknown-linux-gnu.tar.xz")
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.xz::${url}/releases/download/v${pkgver}/asphalt-x86_64-unknown-linux-gnu.tar.xz")
+b2sums_aarch64=('8556823f7cfab1d0037b8e2fee85835cfbd15e6913d6fb3c63fe21ccf867ffe9da8867e71096ea5dd590b11214acbe97366f3793f6937352e30486113919e323')
+b2sums_x86_64=('9c1e245d06c75064e0ef9acbf2a0fa24d108dc967c2b2f18066ef052a6c17a870bb05f455aecd7b90a95090f6757052a44f20df847a47ecd31ed5b54616e8fff')
 
 prepare() {
-    tar -xf "${_pkgname}-${pkgver}.tar.xz"
-    mv asphalt-x86_64-unknown-linux-gnu/* .
+    tar -xf "${_pkgname}-${pkgver}-${CARCH}.tar.xz"
+    mv "asphalt-${CARCH}-unknown-linux-gnu"/* .
 }
 
 package() {
