@@ -8,7 +8,8 @@ arch=('x86_64')
 url="https://github.com/KuznixTeam/kzsh"
 license=('GPL3')
 depends=('glibc')
-makedepends=('meson' 'ninja' 'gcc' 'pkgconf' 'readline')
+makedepends=('meson' 'ninja' 'gcc' 'pkgconf')
+conflicts=('kzsh-git' 'kzsh-bin')
 source=("$url/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('64955528ae5a4c1cf4dd4e150840c862b0545e6dadb52a9b42d25eaa41a76159')
 
