@@ -1,31 +1,33 @@
 pkgbase = chordpro-cli
 	pkgdesc = A lyrics and chords formatting program (CLI)
-	pkgver = 6.070.7
-	pkgrel = 3
+	pkgver = 6.080.1
+	pkgrel = 1
 	url = https://chordpro.org/
-	arch = any
+	arch = x86_64
 	license = Artistic-2.0
 	makedepends = perl-local-lib
 	makedepends = cpanminus
 	depends = perl
-	depends = perl-pdf-api2
-	depends = perl-text-layout
-	depends = perl-json-xs
-	depends = perl-string-interpolate-named
-	depends = perl-file-loadlines
-	depends = perl-lwp-protocol-https
-	depends = perl-mozilla-ca
-	depends = perl-file-homedir
-	depends = perl-image-info
-	depends = perl-list-allutils
-	depends = perl-data-printer
-	depends = perl-object-pad
-	depends = perl-ref-util
+	depends = perl-pdf-api2>=2.047
+	depends = perl-json-xs>=4.03
+	depends = perl-lwp-protocol-https>=6.14
+	depends = perl-mozilla-ca>=20230801
+	depends = perl-file-homedir>=1.004
+	depends = perl-image-info>=1.41
+	depends = perl-scalar-list-utils>=1.63
+	depends = perl-ref-util>=0.204
+	depends = perl-ipc-run3>=0.049
+	depends = wxwidgets-gtk3
+	depends = webkit2gtk-4.1
+	depends = perl-text-layout>=0.045
+	depends = perl-file-loadlines>=1.047
+	depends = perl-data-printer>=0.001001
+	depends = perl-object-pad>=0.818
 	provides = chordpro
 	conflicts = chordpro
-	source = https://github.com/ChordPro/chordpro/releases/download/R6.070/App-Music-ChordPro-6.070.7.tar.gz
+	source = https://github.com/ChordPro/chordpro/releases/download/R6.080.1/App-Music-ChordPro-6.080.1.tar.gz
 	source = chordpro.sh
-	sha256sums = 47f3f202e6afc0f524d0e29ca4776b5eb6b7f3660aeb4b18e499cda7a0f40312
+	sha256sums = 5379a6713a2932c7514ee9bec8976652ea275f5b97b89d00022b5c4d7f2bc086
 	sha256sums = 259db24404125459b563f049f746c6844cf8eab46728d0c9935cc36765cb722d
 
 pkgname = chordpro-cli
