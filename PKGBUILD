@@ -1,7 +1,7 @@
 # Maintainer: Sich <little_sich@tuta.io> 
 # Contributor: Chris Coggburn <chris@coggburn.us>
 pkgname=gpa-git
-pkgver=0.11.base.r206.g596b953
+pkgver=0.11.0.r5.g45fc64a
 pkgrel=1
 pkgdesc="A graphical user interface for the GnuPG"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  ./configure CFLAGS='-fno-exceptions -Wno-implicit-function-declaration' --prefix=/usr
+  ./configure --prefix=/usr
   make
 }
 
