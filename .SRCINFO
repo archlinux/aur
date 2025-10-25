@@ -24,7 +24,7 @@ pkgbase = keyboard-app
 	depends = libsoup3
 	depends = pango
 	depends = webkit2gtk-4.1
-	source = keyboard-app-0.1.0.tar.gz::https://github.com/mrwormhole/keyboard-app/archive/v0.1.0.tar.gz
+	source = keyboard-app-0.3.0.tar.gz::https://github.com/mrwormhole/keyboard-app/archive/v0.3.0.tar.gz
 	sha256sums = df27c4b97f6df6608236b6c5b86c0ed43977e6136904cc866c8fd1e27289555a
 
 pkgname = keyboard-app
