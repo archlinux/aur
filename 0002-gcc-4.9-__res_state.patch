@@ -1,5 +1,5 @@
---- libsanitizer/tsan/tsan_platform_linux.cc.orig	2013-12-05 04:18:38.000000000 -0500
-+++ libsanitizer/tsan/tsan_platform_linux.cc	2017-09-12 19:25:25.698833952 -0400
+--- a/libsanitizer/tsan/tsan_platform_linux.cc.orig	2013-12-05 04:18:38.000000000 -0500
++++ b/libsanitizer/tsan/tsan_platform_linux.cc	2017-09-12 19:25:25.698833952 -0400
 @@ -349,11 +349,11 @@ bool IsGlobalVar(uptr addr) {
  // Extract file descriptors passed to glibc internal __res_iclose function.
  // This is required to properly "close" the fds, because we do not see internal

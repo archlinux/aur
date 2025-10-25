@@ -1,4 +1,4 @@
---- gcc-4.9.4/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc  2020-03-21 17:37:23.620440276 +0100
+--- a/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc  2020-03-21 17:37:23.620440276 +0100
 +++ b/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc  2020-03-21 17:36:36.520276053 +0100
 @@ -939,7 +939,11 @@ CHECK_SIZE_AND_OFFSET(ipc_perm, uid);
  CHECK_SIZE_AND_OFFSET(ipc_perm, gid);
