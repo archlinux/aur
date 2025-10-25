@@ -10,7 +10,7 @@ pkgbase = nvidia-sync
 	sha256sums = 1cd21fa2618882fae08d26211638c53d60e54573ca8dee42803692fe71a2af4e
 
 pkgname = nvidia-sync
-	pkgdesc = Desktop client for NVIDIA AI Workbench
+	pkgdesc = NVIDIA Sync is a desktop app that connects your computer to your DGX Spark over the local network. It gives you a single interface to manage SSH access and launch development tools on your DGX Spark.
 	depends = gtk3
 	depends = libxss
 	depends = nss

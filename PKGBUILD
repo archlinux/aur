@@ -15,7 +15,7 @@ sha256sums=('fc1ed403fc018a000cf03983ce70a7b6736cb8b0c5fbb08a376062f35a2aa36f'
             '1cd21fa2618882fae08d26211638c53d60e54573ca8dee42803692fe71a2af4e')
 
 package_nvidia-sync() {
-  pkgdesc="Desktop client for NVIDIA AI Workbench"
+  pkgdesc="NVIDIA Sync is a desktop app that connects your computer to your DGX Spark over the local network. It gives you a single interface to manage SSH access and launch development tools on your DGX Spark."
   depends=('gtk3' 'libxss' 'nss' 'libsecret') # Common dependencies for Electron apps
   optdepends=(
 	'gnome-terminal: For Terminal button support'
