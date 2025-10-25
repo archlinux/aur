@@ -1,7 +1,7 @@
 
-# Maintainer: Your Name <you@example.com>
+# Maintainer: Avenge Media LLC <avengemediallc at gmail dot com>
 pkgname=dms-shell-bin
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=('x86_64' 'aarch64')
@@ -10,13 +10,10 @@ license=('GPL-3.0-only')
 depends=(
     'quickshell'
     'dgop'
-    'ttf-material-symbols-variable-git'
-    'inter-font'
-    'ttf-fira-code'
     'accountsservice'
 )
 optdepends=(
-    'networkmanager: Required for network management'
+    'networkmanager: For network management'
     'matugen-bin: Dynamic wallpaper-based theming'
     'brightnessctl: Laptop display brightness control'
     'wl-clipboard: Copy functionality for PIDs and other elements'
@@ -45,11 +42,11 @@ source_aarch64=(
 )
 
 sha256sums_x86_64=(
-    'd20e55662c81ece71dedb3d1dd7aaf79caa891cc36dbe2e352d54df8de90115d'
+    'a48eef5ef70379a7af061b3aefe160efd78a1a86cc93654e8d71fd6c70d0f8aa'
 )
 
 sha256sums_aarch64=(
-    'fe7375da25c214c51c48f9c2d5c222bfd4ed4cbb12e99c1294b0114bcc7f45a0'
+    'a1a59a123658d7100dedcc45bb338fa2f1515163aed8f60209d70676b3757577'
 )
 
 package() {
