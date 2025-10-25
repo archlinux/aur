@@ -1,7 +1,7 @@
 pkgbase = jotite
 	pkgdesc = A lightweight, fun, distraction-free markdown note-taking app with live markdown rendering
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maxberggren/omarchy-jotite
 	install = jotite.install
 	arch = any
