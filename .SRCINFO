@@ -1,0 +1,18 @@
+pkgbase = hashsum-git
+	pkgdesc = Fast, parallel hashing utility supporting MD5, SHA-1, SHA-256, SHA-512, and BLAKE3
+	pkgver = r1.a4b530f
+	pkgrel = 1
+	url = https://github.com/chaitanyayeleti/hashsum
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	provides = hashsum
+	conflicts = hashsum
+	source = git+https://github.com/chaitanyayeleti/hashsum.git
+	sha256sums = SKIP
+
+pkgname = hashsum-git
