@@ -1,7 +1,7 @@
 # Maintainer: Ferdi265 <theferdi265 at gmail dot com>
 pkgname=nmap-netcat
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Use nmap's ncat as netcat"
 depends=(nmap)
 conflicts=(gnu-netcat openbsd-netcat)
