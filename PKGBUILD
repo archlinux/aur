@@ -9,11 +9,12 @@
 _pkgname="equibop"
 pkgname="$_pkgname-git"
 pkgdesc="Forked Custom Discord desktop app with Equicord preinstalled"
-pkgver=2.1.7.r0.g3478e96
+pkgver=3.0.0.r0.g1edfd4f
 pkgrel=1
 url="https://github.com/Equicord/Equibop"
 license=('GPL-3.0-only')
 arch=("any")
+install=equibop.install
 
 # electron version detection
 if [ -z "$_electron_version" ]; then
@@ -37,7 +38,7 @@ depends=(
 )
 makedepends=(
   'git'
-  'pnpm'
+  'bun'
 )
 optdepends=(
   'libnotify: Notifications'
@@ -51,8 +52,10 @@ conflicts=(
 )
 
 _pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+$url.git")
-sha256sums=('SKIP')
+source=("$_pkgsrc"::"git+$url.git"
+        'equibop.install')
+sha256sums=('SKIP'
+            '18b5fbb1bf53b47b8a7438b2127b1f1a31d23c69d39a156cde66e1616710a18a')
 
 pkgver() {
   cd "$_pkgsrc"
@@ -62,8 +65,8 @@ pkgver() {
 
 build() {
   cd "$_pkgsrc"
-  pnpm install
-  pnpm package:dir
+  bun install
+  bun run package:dir
 }
 
 package() {
@@ -91,7 +94,7 @@ fi
 exec electron${_electron_version:-} /$_install_path/$_pkgname/app.asar \$_USER_FLAGS \$_WAYLAND_FLAGS "\$@"
 END
 
-  install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
+  install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/org.equicord.$_pkgname.desktop" << END
 [Desktop Entry]
 Name=Equibop
 GenericName=Internet Messenger
