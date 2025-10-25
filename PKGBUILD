@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.17.3.arch1
+pkgver=6.17.5.arch1
 pkgrel=1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -57,14 +57,14 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 
-sha256sums=('3ecc8619d8a5b5f675224d2f52c71d1fc09bc3f9c019d8bd82d0581e03689499'
+sha256sums=('c05faf36e9c2164be723cf6ada8533788804d48f9dd2fe1be2ccee3616a92bce'
             'SKIP'
-            '0f201f1822997ed7942095c2ff9ff1895791921b5d5142b5955be543a6696581'
+            '4d32082c82c9bfd85ff2840ad59a7c073450577be272a3235e1523c45f9d6548'
             'SKIP'
             'e8ca1849fc8c1ebea39d81b4307455c0eb4585aaed606da0c87c023f9807ff6e'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             '11e570d8a355c2c6ccd413b7ecea9ae1f9b9801eb9a16249f8c4c5e6c80a1ead'
-            '6e3b5e44d81980b0c0f381ac5797cabfc34350324f3ee1f34692f73970f084ce'
+            '2b9d31f0fb79dee44171a01bbb8aa505487cf3a96c14738ae6bb717f54a35714'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
