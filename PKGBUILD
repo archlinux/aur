@@ -3,7 +3,7 @@
 
 _pkgname='cobib'
 pkgname="${_pkgname}-git"
-pkgver=r1399.db1c28b
+pkgver=r1403.cce06d1
 pkgrel=1
 arch=('any')
 depends=(
@@ -32,6 +32,7 @@ makedepends=(
     'python-build'
     'python-installer'
     'python-setuptools'
+    'python-setuptools-scm'
     'python-wheel'
     'ruby-ronn-ng'
 )
