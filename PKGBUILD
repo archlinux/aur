@@ -11,7 +11,7 @@
 #
 
 pkgname=dungeondraft
-pkgrel=3
+pkgrel=4
 
 pkgdesc='Dungeondraft is a tabletop encounter map creation tool designed to draw aesthetic maps without the typical frustrations and time investment'
 
@@ -60,16 +60,24 @@ fi
 
 package() {
 	local destdir="$pkgdir/opt/Dungeondraft"
-	mkdir -p "$destdir"
-	mv "data_Dungeondraft" "$destdir"
-	mv "translations" "$destdir" || true  # older versions don't have these folders
-	mv "mods" "$destdir" || true  # older versions don't have these folders
-	mv "Dungeondraft.pck" "$destdir"
-	mv "Dungeondraft.png" "$destdir"
-	mv "Dungeondraft.x86_64" "$destdir"
-	chmod a+x "$destdir/Dungeondraft.x86_64"
-	mv "EULA.txt" "$destdir"
-	mv "example_template.zip" "$destdir"
-	mkdir -p "$pkgdir/usr/share/applications"
-	mv "Dungeondraft.desktop" "$pkgdir/usr/share/applications"
+	install -d "$destdir"
+	install -d "$pkgdir/usr/share/applications"
+
+	if [ -d "data_Dungeondraft" ]; then
+		cp -a "data_Dungeondraft" "$destdir/"
+	fi
+	if [ -d "translations" ]; then
+		cp -a "translations" "$destdir/"
+	fi
+	if [ -d "mods" ]; then
+		cp -a "mods" "$destdir/"
+	fi
+
+	install -m 0644 "Dungeondraft.pck" "$destdir/"
+	install -m 0644 "Dungeondraft.png" "$destdir/"
+	install -m 0644 "EULA.txt" "$destdir/"
+	install -m 0644 "example_template.zip" "$destdir/"
+	install -m 0644 "Dungeondraft.desktop" "$pkgdir/usr/share/applications/"
+
+	install -m 0755 "Dungeondraft.x86_64" "$destdir/"
 }
