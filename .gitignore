@@ -1,0 +1,5 @@
+src/
+pkg/
+LICENSE*
+README*.md
+stash-bin-*

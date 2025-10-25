@@ -1,0 +1,5 @@
+["stash-bin"]
+source = "github"
+github = "stashapp/stash"
+use_latest_release = true
+prefix = "v"
