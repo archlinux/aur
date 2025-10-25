@@ -1,7 +1,7 @@
 # Maintainer: New9c <aimccccccccc@gmail.com>
 pkgname='okey-git'
 pkgver=$(curl -s "https://api.github.com/repos/New9c/OKey/releases/latest" | grep -oP '"tag_name":\s*"\K(.*)(?=")')
-pkgrel=2
+pkgrel=3
 pkgdesc="Shows your key presses, with a cute face!"
 arch=("x86_64")
 url="https://github.com/New9c/OKey"
