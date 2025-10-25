@@ -1,7 +1,7 @@
 # Maintainer: WaiJade <waijade@outlook.com>
 # Contributor: OrPudding <t3164473115@163.com>
 pkgname=astro-box
-pkgver=1.5.2.1
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="A multifunctional toolbox designed for Xiaomi Vela wearable devices"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('astrobox')
 
 # 从GitHub Releases下载deb包
 source=("https://github.com/CheongSzesuen/AstroBox-archLinux/releases/download/v${pkgver}/AstroBox_${pkgver}_amd64.deb")
-sha256sums=('SKIP')
+sha256sums=('09ba0821ab30e24a905d55e8075e2eb5b5c311bb69f60d84427bb8b8967c4ead')
 
 prepare() {
     cd "${srcdir}"
