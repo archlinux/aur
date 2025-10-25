@@ -7,6 +7,7 @@ pkgbase = busybox-crond
 	license = GPL
 	makedepends = gcc
 	depends = busybox
+	depends = glibc
 	provides = cron
 	conflicts = cron
 	source = https://gitlab.alpinelinux.org/alpine/aports/-/raw/master/main/busybox/bbsuid.c

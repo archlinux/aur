@@ -3,12 +3,12 @@
 
 pkgname=busybox-crond
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Busybox crond implementation"
 arch=('x86_64')
 url="https://www.busybox.net"
 license=('GPL')
-depends=('busybox')
+depends=('busybox' 'glibc')
 makedepends=('gcc')
 conflicts=('cron')
 provides=('cron')
