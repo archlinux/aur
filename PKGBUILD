@@ -1,6 +1,6 @@
 # Maintainer: Fredon Menu Team <contact@fredon-menu.org>
 
-pkgname=fredon-menu-git
+pkgname=turbo-chainsaw
 pkgver=r5.466e91d
 pkgrel=1
 pkgdesc="A modern, customizable application launcher for Hyprland/Wayland (git version)"
