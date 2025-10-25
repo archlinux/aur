@@ -5,7 +5,7 @@
 # basic info
 pkgname="vinyl-git"
 _pkgname="vinyl"
-pkgver=r110.f16a505
+pkgver=r139.05d4a60
 pkgrel=1
 pkgdesc="Vinyl Theme for KDE Plasma 6"
 url="https://github.com/ekaaty/vinyl-theme"
