@@ -4,11 +4,11 @@
 pkgname=larksuite-bin
 pkgver=7.50.14
 _pkgtyp=stable
-pkgrel=1
+pkgrel=2
 pkgdesc="Collaboration suite service for office messaging, calendars, meetings, docs..."
 arch=('x86_64')
 url="https://www.larksuite.com"
-_licensever=1.2.1433
+_licensever=1.2.1436
 license=('LicenseRef-Lark-User-${_licensever}')
 depends=('gtk3' 'nspr' 'nss' 'libpulse' 'libmfx' 'alsa-lib')
 optdepends=('appmenu-gtk-module: Appmenu support')
@@ -21,7 +21,7 @@ source=(Lark-linux_x64-${pkgver}.deb::https://www.larksuite.com/api/package_info
 DLAGENTS=("https::/usr/bin/sh -c curl\ -LO\ \"\$\(curl\ \'%u\'\ \|\ grep\ -oP\ \'\(\?\<=\"download_link\":\"\)\[\^\"\]\*\'\ --\ \|\ sed\ \'s/\\\\\\\\u0026/\\\&/g\'\ --\)\""
 	"http::/usr/bin/sh -c curl\ -L\ %u\ \|\ sed\ \'s/abUuid\":\"\[\^\"\]\*/abUuid\":\"418/\'\ \|\ sed\ \'s/countryCode\":\"\[\^\"\]\*/countryCode\":\"LI/\'\ \>\ %o")
 sha256sums=('708d2a0cd1b431c42d6f2d6dcdd566e62c6218cb88bee3687c02ca2a9855b52d'
-            '478c83cddc7f16f5a58d0634503933eff5c3ac1cc07e31e82e95ecf4c3b560a9')
+            'efa190acdb6d4da399cb981de4debdef03dc3e187bcce0ffc8e306f6df386c6e')
 
 package() {
 	# License
