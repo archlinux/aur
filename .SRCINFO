@@ -5,9 +5,11 @@ pkgbase = cpmenu
 	url = https://github.com/Sleep-No-More/cpmenu
 	arch = x86_64
 	license = MIT
+	makedepends = cargo
+	makedepends = gtk3
 	depends = gtk3
 	depends = cairo
-	source = https://github.com/Sleep-No-More/cpmenu/releases/download/v0.2.3/cpmenu
-	sha256sums = 98a2f1ff1b318374aec09715fcb2f878b3bacd2b3362f0525b9a57005079e793
+	source = cpmenu-0.2.3.tar.gz::https://github.com/Sleep-No-More/cpmenu/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = SKIP
 
 pkgname = cpmenu

@@ -7,9 +7,18 @@ arch=('x86_64')
 url="https://github.com/Sleep-No-More/cpmenu"
 license=('MIT')
 depends=('gtk3' 'cairo')
-source=("https://github.com/Sleep-No-More/cpmenu/releases/download/v${pkgver}/cpmenu")
-sha256sums=('98a2f1ff1b318374aec09715fcb2f878b3bacd2b3362f0525b9a57005079e793')
+makedepends=('cargo' 'gtk3')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Sleep-No-More/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+    cd "$pkgname-$pkgver"
+    cargo build --release --locked
+}
 
 package() {
-    install -Dm755 "cpmenu" "$pkgdir/usr/bin/cpmenu"
+    cd "$pkgname-$pkgver"
+    install -Dm755 "target/release/cpmenu" "$pkgdir/usr/bin/cpmenu"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
