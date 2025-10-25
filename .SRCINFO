@@ -1,0 +1,33 @@
+pkgbase = opentype-sanitizer
+	pkgdesc = Sanitizer for OpenType
+	pkgver = 9.2.0
+	pkgrel = 1
+	url = https://github.com/khaledhosny/ots
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = gtest
+	makedepends = meson
+	depends = freetype2
+	depends = gcc-libs
+	depends = glibc
+	depends = lz4
+	depends = woff2
+	depends = zlib
+	provides = ots
+	source = opentype-sanitizer::git+https://github.com/khaledhosny/ots#tag=v9.2.0
+	source = 0001-feat-add-libots-be-built-as-dynamic-library.patch
+	b2sums = 526e0df018de26a3e79cfee57dd2220e7f6585e5863aa6a042e15103be8abec3a6aa96a22dc8c6c57da88796beb77fc07c60d84e66f53e4aed545e094d0ee3a5
+	b2sums = 317ced14e633c409a3c66ac737f2a9b77608c8b7570b13014cb790e5663608f00c0769ed615a0a6f725e468f77deaafcca0b903ed890eaf00bd4b9c239610db7
+
+pkgname = opentype-sanitizer
+	depends = freetype2
+	depends = gcc-libs
+	depends = glibc
+	depends = lz4
+	depends = woff2
+	depends = zlib
+	depends = libfreetype.so
+	depends = liblz4.so
+	depends = libwoff2dec.so
+	depends = libz.so
