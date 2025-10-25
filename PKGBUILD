@@ -3,7 +3,7 @@
 pkgname=nrc
 _pkgver=0.6.12
 _channel=beta
-_rel=1
+_rel=2
 _is_beta=true
 if [ "${_is_beta}" = "false" ]; then
     pkgver=${_pkgver}
@@ -36,12 +36,8 @@ build() {
 }
 
 package() {
-  desktop_file="$srcdir/pkg/usr/share/applications/NoRisk Launcher.desktop"
-
-  # Exec‑Zeile ersetzen wegen einem Bug
-  sed -i 's|^Exec=.*|Exec=env WEBKIT_DISABLE_DMABUF_RENDERER=1 WEBKIT_DISABLE_COMPOSITING_MODE=1 /usr/bin/noriskclient-launcher-v3|' "$desktop_file"
-
   cp -r "$srcdir/pkg/usr/." "$pkgdir/usr/"
 
   ln -s "$pkgdir/usr/bin/noriskclient-launcher-v3" "$pkgdir/usr/bin/nrc"
 }
+
