@@ -1,6 +1,6 @@
 # Maintainer: kneesdev <kneesdev@naver.com>
 pkgname=duelsplus-bin
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Lightweight, custom Minecraft Proxy designed to enhance your experience on Hypixel Duels."
 arch=('x86_64')
