@@ -1,0 +1,36 @@
+# Maintainer: Krzysztof Demir Kuźniak <krzysztofdemirkuzniak@gmail.com>
+
+pkgname=kzsh-git
+pkgver=0.1.2.f893b2f
+pkgrel=1
+pkgdesc="Kuznix Shell (kzsh) — a bash-like shell written in C and C++, latest development version"
+arch=(any)
+url="https://github.com/KuznixTeam/kzsh"
+license=('GPL3')
+depends=('glibc' 'readline')
+makedepends=('git' 'meson' 'ninja' 'gcc' 'pkgconf')
+conflicts=('kzsh' 'kzsh-bin')
+provides=('kzsh')
+source=("${pkgname}::git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  # Extract version from the latest tag and short commit hash
+  local ver_tag
+  ver_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "0.0.0")
+  local commit
+  commit=$(git rev-parse --short HEAD)
+  echo "${ver_tag}.${commit}"
+}
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  meson setup build --prefix=/usr --buildtype=release
+  meson compile -C build
+}
+
+package() {
+  cd "${srcdir}/${pkgname}"
+  DESTDIR="${pkgdir}" meson install -C build
+}

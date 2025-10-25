@@ -1,0 +1,21 @@
+pkgbase = kzsh-git
+	pkgdesc = Kuznix Shell (kzsh) — a bash-like shell written in C and C++, latest development version
+	pkgver = 0.1.2.f893b2f
+	pkgrel = 1
+	url = https://github.com/KuznixTeam/kzsh
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gcc
+	makedepends = pkgconf
+	depends = glibc
+	depends = readline
+	provides = kzsh
+	conflicts = kzsh
+	conflicts = kzsh-bin
+	source = kzsh-git::git+https://github.com/KuznixTeam/kzsh.git
+	sha256sums = SKIP
+
+pkgname = kzsh-git
