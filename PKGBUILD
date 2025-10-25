@@ -1,7 +1,7 @@
 # Maintainer: Codemorra <codemorra@posteo.eu>
 
 pkgname=bulk-rename-py
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Batch rename files with a PySide6 GUI and live preview"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'pyside6' 'shiboken6' 'python-requests')
 makedepends=()
 _srcurl="https://github.com/codemorra/bulk-rename-py/archive/refs/tags/v${pkgver}.tar.gz"
 source=("${pkgname}-${pkgver}.tar.gz::${_srcurl}")
-sha256sums=('09d929f7fdfd52ae3a050dde0eab49529628145fdf8a81bf7fb73abf91904718')
+sha256sums=('442a4ec0ca360f55325c0d7fdd81f2d04e374e825670e08f84092b906ffa8991')
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
