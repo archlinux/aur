@@ -1,0 +1,22 @@
+diff -ruNb a/SConstruct b/SConstruct
+--- a/SConstruct	2025-10-22 05:50:43.402772092 -0500
++++ b/SConstruct	2025-10-24 21:42:31.215354441 -0500
+@@ -2194,6 +2194,7 @@
+             )
+ 
+     # -Winvalid-pch Warn if a precompiled header (see Precompiled Headers) is found in the search path but can't be used.
++    # Add -Wno-sign-compare and -Wno-lto-type-mismatch to clean up warnings from updated gcc/glibc.
+     env.Append( CCFLAGS=["-fno-omit-frame-pointer",
+                          "-fno-strict-aliasing",
+                          "-fasynchronous-unwind-tables",
+@@ -2201,7 +2202,9 @@
+                          "-Wall",
+                          "-Wsign-compare",
+                          "-Wno-unknown-pragmas",
+-                         "-Winvalid-pch"] )
++                         "-Winvalid-pch",
++                         "-Wno-sign-compare",
++                         "-Wno-lto-type-mismatch"] )
+     # env.Append( " -Wconversion" ) TODO: this doesn't really work yet
+     if env.TargetOSIs('linux', 'darwin', 'solaris'):
+         if not has_option("disable-warnings-as-errors"):

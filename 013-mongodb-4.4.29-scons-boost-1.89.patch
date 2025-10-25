@@ -1,0 +1,23 @@
+diff -ruNb a/SConstruct b/SConstruct
+--- a/SConstruct	2025-10-24 15:51:01.406878614 -0500
++++ b/SConstruct	2025-10-22 05:50:43.402772092 -0500
+@@ -1119,7 +1119,7 @@
+ 
+ printLocalInfo()
+ 
+-boostLibs = [ "filesystem", "program_options", "system", "iostreams", "thread", "log" ]
++boostLibs = [ "filesystem", "program_options", "iostreams", "thread", "log" ]
+ 
+ onlyServer = len( COMMAND_LINE_TARGETS ) == 0 or ( len( COMMAND_LINE_TARGETS ) == 1 and str( COMMAND_LINE_TARGETS[0] ) in [ "mongod" , "mongos" , "test" ] )
+ 
+diff -ruNb a/src/third_party/SConscript b/src/third_party/SConscript
+--- a/src/third_party/SConscript	2024-02-13 02:46:45.000000000 -0600
++++ b/src/third_party/SConscript	2025-10-22 05:50:43.294775903 -0500
+@@ -345,7 +345,6 @@
+             SYSLIBDEPS=[
+                 env['LIBDEPS_BOOST_PROGRAM_OPTIONS_SYSLIBDEP'],
+                 env['LIBDEPS_BOOST_FILESYSTEM_SYSLIBDEP'],
+-                env['LIBDEPS_BOOST_SYSTEM_SYSLIBDEP'],
+                 env['LIBDEPS_BOOST_IOSTREAMS_SYSLIBDEP'],
+                 env['LIBDEPS_BOOST_THREAD_SYSLIBDEP'],
+                 env['LIBDEPS_BOOST_LOG_SYSLIBDEP'],
