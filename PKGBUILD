@@ -3,7 +3,7 @@
 pkgname=opentype-sanitizer-git
 _gitname=opentype-sanitizer
 pkgver=9.2.0.r13.gee75ff5
-pkgrel=1
+pkgrel=3
 pkgdesc='Sanitizer for OpenType'
 arch=('x86_64')
 license=('BSD-3-Clause')
@@ -21,7 +21,11 @@ makedepends=(
     'gtest'
     'meson'
 )
-provides=('ots')
+optdepends=(
+    'glibc-tools: provide catchsegv tool to use with ots-validator-checker'
+)
+provides=('ots' 'opentype-sanitizer')
+conflicts=('opentype-sanitizer')
 source=(
     "opentype-sanitizer::git+https://github.com/khaledhosny/ots"
     "0001-feat-add-libots-be-built-as-dynamic-library.patch"
