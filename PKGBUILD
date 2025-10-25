@@ -51,6 +51,7 @@ package() {
   install -d "${pkgdir}/usr/bin"
 
   cp "$_pkgname-$pkgver/dist/linux-unpacked/resources/app.asar" "${pkgdir}/usr/lib/${pkgname}/"
+  cp -r "$_pkgname-$pkgver/dist/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname}/"
   install -Dm755 "./equibop.sh" "$pkgdir/usr/bin/equibop"
 
   install -Dm 644 "org.equicord.equibop.desktop" "$pkgdir/usr/share/applications/org.equicord.equibop.desktop"
