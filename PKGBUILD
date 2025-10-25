@@ -1,8 +1,8 @@
-# Maintainer: ultraviolet <ultravioletnanokitty@gmail.com>
+# Contributor: ultraviolet <ultravioletnanokitty@gmail.com>
 
 pkgname=iioutils
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The Industrial I/O equivalent to pciutils" 
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -13,6 +13,7 @@ md5sums=('8a88b711d3d6a7fedd75af833c5470cb')
 
 build() {
   cd "${pkgname}"
+  export CFLAGS="${CFLAGS} -fcommon"
   ./configure --prefix="/usr" --sbindir="/usr/bin"
   make
 }

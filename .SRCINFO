@@ -1,7 +1,7 @@
 pkgbase = iioutils
 	pkgdesc = The Industrial I/O equivalent to pciutils
 	pkgver = 0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/iioutils/
 	arch = i686
 	arch = x86_64
@@ -11,4 +11,3 @@ pkgbase = iioutils
 	md5sums = 8a88b711d3d6a7fedd75af833c5470cb
 
 pkgname = iioutils
-
