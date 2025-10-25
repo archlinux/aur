@@ -1,6 +1,6 @@
 pkgbase = roaming-profiles
 	pkgdesc = Roaming Profiles for Linux environments.
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://gitlab.com/SkyBeam/linux-roaming-profiles
 	install = .INSTALL
@@ -18,7 +18,7 @@ pkgbase = roaming-profiles
 	depends = kstart
 	backup = etc/roaming-profiles/roaming-profiles.conf
 	backup = etc/roaming-profiles/profile-filter
-	source = roaming-profiles-0.3.3.tar.bz2::https://gitlab.com/SkyBeam/linux-roaming-profiles/-/archive/0.3.3/linux-roaming-profiles-0.3.3.tar.bz2
-	sha512sums = 3b628e316b2bc82e525c7e584ff9b4f5bc06852e8d10d67a0053ca705ed2b974a0bff1ecaed39a0847fc0bd0b17b88f8f18102aea9a3c58171f574d857c5eb93
+	source = roaming-profiles-0.3.4.tar.bz2::https://gitlab.com/SkyBeam/linux-roaming-profiles/-/archive/0.3.4/linux-roaming-profiles-0.3.4.tar.bz2
+	sha512sums = a4264e2363f761d6ac1e619499da4ff45acf64d4aed2971b1829a02058f4254347b7589036e0b314aab776d1d3686d1e09a257001c3db6e96787bcdfe8922cf9
 
 pkgname = roaming-profiles
