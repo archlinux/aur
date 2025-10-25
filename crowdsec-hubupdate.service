@@ -1,0 +1,7 @@
+[Unit]
+Description=CrowdSec Hub update
+
+[Service]
+Type=oneshot
+Environment=LC_ALL=C LANG=C PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+ExecStart=/opt/crowdsec/hubupdate.sh

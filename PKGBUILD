@@ -3,9 +3,9 @@
 # Contributor: Crowdsec Team <debian@crowdsec.net>
 
 pkgname=crowdsec-bin
-pkgver=1.7.0
+pkgver=1.7.3
 pkgrel=1
-pkgdesc="The open-source and participative security solution offering crowdsourced protection against malicious IPs and access to the most advanced real-world CTI"
+pkgdesc="An open-source, lightweight agent to detect and respond to bad behaviors. It also automatically benefits from our global community-wide IP reputation database"
 arch=('any')
 url="https://github.com/crowdsecurity/crowdsec"
 license=('MIT')
@@ -14,16 +14,13 @@ conflicts=('crowdsec')
 install=crowdsec-bin.install
 depends=(
   'ca-certificates'
-  'glibc'
+  'coreutils'
   'sqlite'
   'systemd'
 )
 makedepends=(
   sed
   findutils
-)
-optdepends=(
-  'docker: for running in docker mode'
 )
 backup=(
   etc/crowdsec/config.yaml
@@ -39,9 +36,15 @@ backup=(
 source=(
   "$pkgname-v${pkgver}.tgz"::$url/releases/download/v${pkgver}/crowdsec-release.tgz
   crowdsec.sysusers
+  crowdsec-hubupdate.service
+  crowdsec-hubupdate.timer
+  hubupdate.sh
 )
-sha256sums=('4b318d4a301cb9c88d53a7455d752343112540b88d85c46a63b1fc79f8d712ab'
-            'a97e2c4bc07470dad890fca27b6da7c4a9ac9762551a0888dd812d2da63200ad')
+sha256sums=('f2261585329556cf19049c43dd15e05edf304deec485f319826cb378ff8db9b3'
+            'a97e2c4bc07470dad890fca27b6da7c4a9ac9762551a0888dd812d2da63200ad'
+            '77c1d43da0aa748bbd0bd237beffcae0a65006f77f229bc532de4656b5c18b10'
+            'b992a0d859a6ed2adb26bccc36da5e163390e660a442dcdc745b7ed074ee5cab'
+            'b67441c0532bb899ffbd0b9fd11454e2ff1fea64f86a8da5170178704b750838')
 
 prepare() {
   cd "$srcdir/crowdsec-v${pkgver}"
@@ -64,6 +67,7 @@ package() {
 
   # systemd
   install -m640 ./config/crowdsec.service $pkgdir/usr/lib/systemd/system/crowdsec.service
+  install -m640 $srcdir/crowdsec-hubupdate.{service,timer} -t $pkgdir/usr/lib/systemd/system/
 
   # executables
   install -m755 ./cmd/{crowdsec-cli/cscli,crowdsec/crowdsec} -t $pkgdir/usr/bin/
@@ -80,5 +84,6 @@ package() {
   # extras
   install -m640 ./config/crowdsec.cron.daily -t $pkgdir/opt/crowdsec/
   install -m750 ./wizard.sh -t $pkgdir/opt/crowdsec/
+  install -m750 $srcdir/hubupdate.sh -t $pkgdir/opt/crowdsec/
   install -m644 "$srcdir/crowdsec.sysusers" "$pkgdir/usr/lib/sysusers.d/crowdsec.conf"
 }

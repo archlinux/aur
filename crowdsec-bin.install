@@ -1,20 +1,22 @@
 # https://docs.crowdsec.net/docs/user_guides/building#binary-installation
 
 post_install() {
-    cscli hub update
-    # readarray -t collections < <(cscli collections list --output json --all | jq -r '.[] | map(select(.status | contains ("disabled")) | .name) | unique | .[]')
-    # if [ ${#collections} -gt 0 ]; then
-    #     cscli collections install ${collections[@]} >/dev/null 2>&1
-    # fi
-    cscli collections install crowdsecurity/linux crowdsecurity/whitelist-good-actors
     cscli machines add --force "$(</etc/machine-id)" --auto
-    cscli capi register
-    if systemctl is-active -q crowdsec; then
-        systemctl reload crowdsec
-    else
-        systemctl daemon-reload
-        systemctl enable --now crowdsec
-    fi
+    cscli capi register --error
+
+    cscli hub update
+    cscli hub upgrade
+    cscli collections install crowdsecurity/linux crowdsecurity/whitelist-good-actors
+
+    echo -e "\t** Creating acquisition configuration **\n"
+    cscli setup unattended
+
+    systemctl daemon-reload
+    systemctl enable --now crowdsec >/dev/null 2>&1 || true
+    systemctl enable --now crowdsec-hubupdate.timer >/dev/null 2>&1 || true
+    systemctl reload crowdsec || true
+
+    echo -e "\t** You can always run the configuration again interactively by using 'cscli setup' **\n"
 }
 
 pre_upgrade() {
@@ -27,6 +29,7 @@ pre_upgrade() {
 
 post_upgrade() {
     cscli hub update
+    cscli hub upgrade
     cscli collections upgrade --error --all
 
     if (( $(vercmp "$2" '1.7.0') < 0 )); then
@@ -41,6 +44,11 @@ post_upgrade() {
     if systemctl is-active -q crowdsec; then
         systemctl reload crowdsec
     fi
+}
+
+pre_remove() {
+    systemctl stop crowdsec crowdsec-hubupdate.timer
+    systemctl disable crowdsec crowdsec-hubupdate.timer
 }
 
 post_remove() {
