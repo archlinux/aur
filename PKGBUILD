@@ -1,7 +1,7 @@
 # Maintainer: Mark Karlinsky <mark.devnull@gmail.com>
 pkgname=niri-dinit
 pkgver=25.08
-pkgrel=3
+pkgrel=4
 pkgdesc="A scrollable-tiling Wayland compositor (with dinit dependency instead of systemd)"
 arch=('x86_64')
 url="https://github.com/YaLTeR/niri"
@@ -44,11 +44,14 @@ provides=("niri=${pkgver}")
 conflicts=("niri")
 options=(!lto)
 _tag=d85b524d7c07a47345eab434f471f2b7bfa2c9c3 # git rev-parse "v$pkgver"
-source=("git+${url}.git#tag=${_tag}")
-sha256sums=('841b899aff667b1333feac47853dc12806dccd27df575ba68dbd2a682df08a77')
+source=("git+${url}.git#tag=${_tag}"
+        "0001-Update-libdisplay-info-and-Smithay-popup-destruction.patch")
+sha256sums=('841b899aff667b1333feac47853dc12806dccd27df575ba68dbd2a682df08a77'
+            'd574b6131eda1f133fbc38a270ec9fa00fe03227545e5514f9ec9920619d262e')
 
 prepare() {
     cd "$srcdir/niri"
+    patch -Np1 -i ../0001-Update-libdisplay-info-and-Smithay-popup-destruction.patch
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_HOME="$(pwd)/.cargo"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"

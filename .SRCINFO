@@ -1,7 +1,7 @@
 pkgbase = niri-dinit
 	pkgdesc = A scrollable-tiling Wayland compositor (with dinit dependency instead of systemd)
 	pkgver = 25.08
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/YaLTeR/niri
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -37,6 +37,8 @@ pkgbase = niri-dinit
 	conflicts = niri
 	options = !lto
 	source = git+https://github.com/YaLTeR/niri.git#tag=d85b524d7c07a47345eab434f471f2b7bfa2c9c3
+	source = 0001-Update-libdisplay-info-and-Smithay-popup-destruction.patch
 	sha256sums = 841b899aff667b1333feac47853dc12806dccd27df575ba68dbd2a682df08a77
+	sha256sums = d574b6131eda1f133fbc38a270ec9fa00fe03227545e5514f9ec9920619d262e
 
 pkgname = niri-dinit
