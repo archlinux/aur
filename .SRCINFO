@@ -1,6 +1,6 @@
 pkgbase = jdk-temurin
 	pkgdesc = Temurin (OpenJDK 25 Java binaries by Adoptium, formerly AdoptOpenJDK)
-	pkgver = 25.u36
+	pkgver = 25.0.1.u8
 	pkgrel = 1
 	url = https://adoptium.net/
 	install = install_jdk-temurin.sh
@@ -21,10 +21,10 @@ pkgbase = jdk-temurin
 	provides = java-runtime-openjdk=25
 	provides = java-environment=25
 	provides = java-environment-openjdk=25
-	provides = jdk25-openjdk=25.u36
-	provides = jdk-openjdk=25.u36
-	provides = openjdk25-src=25.u36
-	provides = openjdk-src=25.u36
+	provides = jdk25-openjdk=25.0.1.u8
+	provides = jdk-openjdk=25.0.1.u8
+	provides = openjdk25-src=25.0.1.u8
+	provides = openjdk-src=25.0.1.u8
 	replaces = jdk-adoptopenjdk
 	options = !strip
 	backup = etc/java-temurin/logging.properties
@@ -41,11 +41,11 @@ pkgbase = jdk-temurin
 	backup = etc/java-temurin/security/policy/unlimited/default_local.policy
 	backup = etc/java-temurin/security/policy/unlimited/default_US_export.policy
 	backup = etc/java-temurin/sound.properties
-	source = https://github.com/adoptium/temurin25-binaries/releases/download/jdk-25%2B36/OpenJDK25U-jdk_x64_linux_hotspot_25_36.tar.gz
+	source = https://github.com/adoptium/temurin25-binaries/releases/download/jdk-25.0.1%2B8/OpenJDK25U-jdk_x64_linux_hotspot_25.0.1_8.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = ee04de95ab9da7287d40bd2173076ecc2a6dd662f007bedfc6eb0380c0ef90e8
+	sha256sums = 8daf77d1aacffe38c9889689bc224a13557de77559d9a5bb91991e6a298baa0d
 	sha256sums = 3dfaf29b2913adfb993fc07f3963b6d0f737e8c5f4d2b1b73bb8fcf96bba896b
 	sha256sums = 4898a30b713aef4cbda17727a99a5337ec467126891474454ed8010f4ce8dc7e
 	sha256sums = dcc9cc253e1ceb14f8ebda2b047c1ec2a412eac16da574bd587bd2d5f0a53afe
