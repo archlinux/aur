@@ -1,7 +1,7 @@
 # Maintainer: Yufan You <ouuansteve at gmail>
 
 pkgname=verusfmt-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 provides=('verusfmt')
 conflicts=('verusfmt')
@@ -10,7 +10,7 @@ arch=('x86_64')
 url='https://github.com/verus-lang/verusfmt'
 license=('MIT')
 source=("$url/releases/download/v$pkgver/verusfmt-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums=('49cf2dac2e31e772b0396729b1dc57dc8b30e94f453e8a23ad3e64920dd3670d')
+sha256sums=('5ce204ee58e3c65c0646f37dfd4fe50ad89f246c1a954c1b8d2ba80dc3ca0360')
 
 package() {
     cd verusfmt-x86_64-unknown-linux-gnu
