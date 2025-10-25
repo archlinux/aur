@@ -2,8 +2,8 @@
 
 pkgname=python-p123client
 _name=${pkgname#python-}
-pkgver=0.0.9.1
-pkgrel=2
+pkgver=0.0.9.2
+pkgrel=1
 epoch=
 pkgdesc="Python 123 webdisk client."
 arch=('any')
@@ -43,7 +43,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('e0f43cd55ec88e57e6234802b4f50054312f0c699d636fbce2a9721dd28991a6')
+sha256sums=('2f251c66b722b6499e720eacef9fb3699cb6c2e92682a4ac7ef681401a5b62db')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
