@@ -1,9 +1,9 @@
 _name='syck'
 pkgname="ruby-syck"
 pkgver=1.5.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Syck from stdlib turned in to a gem'
-arch=('any')
+arch=('x86_64')
 url="https://github.com/ruby/${_name}"
 license=('MIT')
 depends=('ruby')
