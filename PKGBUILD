@@ -3,11 +3,11 @@
 pkgname=moneymanagerex
 # HINT: ! ALSO UPDATE COMMIT HASHES IN source !
 pkgver=1.9.1
-pkgrel=5
+pkgrel=6
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('wxwidgets-gtk3' 'webkit2gtk-4.1')
 makedepends=('appstream' 'cmake' 'fakeroot' 'file' 'gawk' 'gcc' 'gettext' 'git' 'jq' 'lsb-release' 'make' 'pkg-config' 'rapidjson')
 optdepends=('cups: for printing support')
@@ -55,6 +55,10 @@ prepare() {
   git config submodule.general-reports.url "$srcdir/general-reports"
   git config submodule.themes.url "$srcdir/themes"
   git -c protocol.file.allow=always submodule update
+  
+  # Workaround for https://github.com/moneymanagerex/moneymanagerex/issues/5243 https://github.com/moneymanagerex/moneymanagerex/issues/7728
+  #  Until my patch is merged and released in a future mmex version
+  git cherry-pick 79a0d96981967096bc7d2ef228177d4d97c3b1ab
 }
 
 build() {
@@ -63,7 +67,7 @@ build() {
   # Disable all warnings when building, then configure CMake
   export CXXFLAGS=-w
 
-  cmake -DCMAKE_BUILD_TYPE=None -DCMAKE_INSTALL_PREFIX='/usr' -Wno-dev -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config .
+  cmake -DCMAKE_BUILD_TYPE=Release -Wno-dev -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config .
 
   cmake --build .
 }
