@@ -4,7 +4,7 @@
 
 pkgname='alice-vision'
 pkgver=3.3.0
-pkgrel=7
+pkgrel=8
 options=('!debug') # debug package is kinda big -- needs investigation!
 pkgdesc="Photogrammetric Computer Vision Framework which provides 3D Reconstruction and Camera Tracking algorithms"
 arch=('x86_64')
@@ -71,6 +71,7 @@ prepare() {
   sed '/Boost::system/d' -i src/software/convert/CMakeLists.txt
   sed '/Boost::system/d' -i src/aliceVision/system/CMakeLists.txt
   sed '/Boost::system/d' -i src/aliceVision/sensorDB/CMakeLists.txt
+  sed 's|serialization system thread|serialization thread|g' -i src/CMakeLists.txt
   
 }
 
