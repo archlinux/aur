@@ -1,0 +1,14 @@
+pkgbase = feeds-to-instapaper
+	pkgdesc = An application that checks RSS, Atom, or JSON feeds and adds new articles to Instapaper.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/kupospelov/feeds-to-instapaper
+	arch = any
+	license = MIT
+	makedepends = go
+	makedepends = make
+	makedepends = scdoc
+	source = https://github.com/kupospelov/feeds-to-instapaper/archive/refs/tags/0.2.tar.gz
+	sha256sums = 8444634e12643410fa236b380b696168397df2947c1fd808ef6e4777e87ac36f
+
+pkgname = feeds-to-instapaper
