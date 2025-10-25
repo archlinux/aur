@@ -2,7 +2,7 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 pkgname=('vulkan-caps-viewer-x11' 'vulkan-caps-viewer-wayland')
 pkgbase=vulkan-caps-viewer
-pkgver=4.02
+pkgver=4.03
 pkgrel=1
 epoch=1
 pkgdesc="Vulkan Hardware Capability Viewer"
@@ -17,7 +17,7 @@ makedepends=(
 )
 source=("git+https://github.com/SaschaWillems/VulkanCapsViewer.git#tag=$pkgver"
         'git+https://github.com/KhronosGroup/Vulkan-Headers.git')
-sha256sums=('d8819dc325c804e3a36575e028240228211ccf21eaf0035506969e6c1ee1cad5'
+sha256sums=('643e4e49a839579552b7a5c272409337ae2a727f4f34e9a87be279ee3be7a259'
             'SKIP')
 
 prepare() {

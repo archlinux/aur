@@ -1,6 +1,6 @@
 pkgbase = vulkan-caps-viewer
 	pkgdesc = Vulkan Hardware Capability Viewer
-	pkgver = 4.02
+	pkgver = 4.03
 	pkgrel = 1
 	epoch = 1
 	url = https://vulkan.gpuinfo.org
@@ -11,9 +11,9 @@ pkgbase = vulkan-caps-viewer
 	makedepends = qt5-wayland
 	makedepends = qt5-x11extras
 	makedepends = vulkan-icd-loader
-	source = git+https://github.com/SaschaWillems/VulkanCapsViewer.git#tag=4.02
+	source = git+https://github.com/SaschaWillems/VulkanCapsViewer.git#tag=4.03
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
-	sha256sums = d8819dc325c804e3a36575e028240228211ccf21eaf0035506969e6c1ee1cad5
+	sha256sums = 643e4e49a839579552b7a5c272409337ae2a727f4f34e9a87be279ee3be7a259
 	sha256sums = SKIP
 
 pkgname = vulkan-caps-viewer-x11
