@@ -1,6 +1,6 @@
 pkgbase = logalize
 	pkgdesc = Fast and extensible log colorizer. Alternative to ccze.
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/deponian/logalize
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = logalize
 	makedepends = go>=1.22
 	depends = glibc
 	backup = etc/logalize/logalize.yaml
-	source = git+https://github.com/deponian/logalize.git#tag=v0.6.1
-	sha256sums = d681e0238ecef94c6f215f5e1d514d528e68291356e7ec5ef7193e74975d41bb
+	source = git+https://github.com/deponian/logalize.git#tag=v0.7.0
+	sha256sums = fa179ee7c9bd698b80469e7915fd0a2910bfc9ddcf5fd4d68abd35a4e2184c59
 
 pkgname = logalize
