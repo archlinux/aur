@@ -1,0 +1,25 @@
+pkgbase = physica
+	pkgdesc = Physical game cartridge manager for PC games - turn USB drives into plug-and-play game cartridges
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/parkerHurst/Physica
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python>=3.11
+	depends = python-dbus
+	depends = python-gobject
+	depends = python-pyudev
+	depends = python-psutil
+	depends = python-toml
+	depends = python-dateutil
+	depends = gtk4
+	depends = libadwaita
+	optdepends = wine: Windows game compatibility
+	optdepends = proton: Steam Proton for better Windows game support
+	provides = physica
+	conflicts = physica-git
+	source = physica-1.0.tar.gz::https://github.com/parkerHurst/Physica/archive/v1.0.tar.gz
+	sha256sums = 723402c61a621d8e9df9db70200f117f8b5ad90ff4767b953e52178c5420d12c
+
+pkgname = physica
