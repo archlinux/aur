@@ -1,6 +1,6 @@
 pkgbase = libenvpp-git
 	pkgdesc = Modern C++ Library for Handling Environment Variables.
-	pkgver = 1.5.1.r201.20241126.86db27f
+	pkgver = 1.5.1+2.r203.20251025.c60ebe4
 	pkgrel = 1
 	url = https://github.com/ph3at/libenvpp
 	arch = i686
@@ -11,16 +11,16 @@ pkgbase = libenvpp-git
 	license = Apache-2.0
 	makedepends = cmake
 	makedepends = git
+	makedepends = catch2
 	makedepends = fmt
 	depends = gcc-libs
 	depends = glibc
-	provides = libenvpp=1.5.1.r201.20241126.86db27f
+	depends = libfmt.so
+	provides = libenvpp=1.5.1+2.r203.20251025.c60ebe4
+	provides = libenvpp.so
 	conflicts = libenvpp
-	source = libenvpp::git+https://github.com/ph3at/libenvpp.git
-	source = fmt::git+https://github.com/fmtlib/fmt.git
-	source = Catch2::git+https://github.com/catchorg/Catch2.git
-	sha256sums = SKIP
-	sha256sums = SKIP
+	conflicts = libenvpp.so
+	source = libenvpp::git+https://github.com/ph3at/libenvpp.git#branch=cmake-reuse-deps
 	sha256sums = SKIP
 
 pkgname = libenvpp-git
