@@ -14,7 +14,7 @@
 
 _pkgname=cockroachdb
 pkgname="$_pkgname-bin"
-pkgver=25.3.2
+pkgver=25.3.3
 pkgrel=1
 pkgdesc="Cloud-native, distributed SQL database"
 url='https://www.cockroachlabs.com'
@@ -41,7 +41,7 @@ source=(
   "$_pkgname-$pkgver-LICENSE.txt"::"https://github.com/cockroachdb/cockroach/raw/v$pkgver/LICENSE"
 )
 sha256sums=(
-  '603887d8a48b8fceee4ffa0e48ff3ce240fc3e2f0fdee2c06be703e3d73dbb75'
+  'ca965ba71396c93d607e08608444d440b7f51c6673e87e48d71462ca0be415ea'
   'cb4f34a516b09ec1815bd8376a34de7ea5e6da06c70bed756110943ad1b340e4'
 )
 
