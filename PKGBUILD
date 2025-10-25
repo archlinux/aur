@@ -10,7 +10,7 @@ pkgname=fritzing
 # We drop the "b" at the end of the version number. It probably means beta
 # while there is also "d" for development versions. This would not be correctly
 # parsed by `pkgver` anyway (d > b), so let's leave out the b suffix entirely.
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 
 # Tag version can be obtained from github release page. Sometimes this is the
@@ -20,7 +20,7 @@ pkgrel=1
 #_tagver=0.9.8
 
 # This is probably close to what has been released
-_gitrev=b9add9eaa7c426963de20c8514a69d3f15e83bdf
+_gitrev=04e5bb0241e8f1de24d0fce9be070041c6d5b68e
 
 # Parts come from a different respository and are not versioned anymore since
 # 2016. Sometimes we can get the revision by downloading the release build,
@@ -28,15 +28,15 @@ _gitrev=b9add9eaa7c426963de20c8514a69d3f15e83bdf
 # release build seems to be hidden behind a paywall. Then we need to guess
 # based on the master branch of the fritzing-parts repository and the date when
 # the release archive was created.
-_partsrev=4f7d39b22a6c307e6cca62c7f78eae96696e8b2c
+_partsrev=73bc0559bb8399b2f895d68f032e41d7efc720c0
 
 pkgdesc='PCB layout prototyping application'
 arch=('aarch64' 'i686' 'x86_64')
 url=http://fritzing.org
 license=('GPL-3.0-only AND CC-BY-SA-3.0 AND BSL-1.0') # fritzing, fritzing-parts, svgpp
 install=fritzing.install
-makedepends=('boost' 'git' 'qt6-tools')
-depends=('libgit2' 'polyclipping' 'qt6-serialport' 'qt6-svg' 'quazip-qt6' 'ngspice')
+makedepends=('boost' 'git' 'patchelf' 'qt6-tools')
+depends=('gcc-libs' 'glibc' 'libgit2' 'polyclipping' 'qt6-base' 'qt6-serialport' 'qt6-svg' 'quazip-qt6' 'ngspice' 'zlib')
 source=("git+https://github.com/fritzing/fritzing-app.git#commit=${_gitrev}"
         "git+https://github.com/fritzing/fritzing-parts.git#commit=${_partsrev}"
         svgpp-1.3.1.tar.gz::https://github.com/svgpp/svgpp/archive/refs/tags/v1.3.1.tar.gz
@@ -44,8 +44,8 @@ source=("git+https://github.com/fritzing/fritzing-app.git#commit=${_gitrev}"
         0002-Quick-Dirty-patch-to-allow-finding-ngspice-on-Arch-L.patch
         0003-Quick-Dirty-patch-to-allow-finding-Clipper1-on-Arch-.patch
         0004-Work-around-build-issues-with-Qt-6.9.patch)
-sha256sums=('78828ce61a3869a81c9bb7b8855108d07cce178a19d555ef4edd92b22e422181'
-            'fb97fdce786c5efdafc7319e4e6a215611dd7b93019ffda9cfc9b429bbca1d36'
+sha256sums=('SKIP'
+            'SKIP'
             'be8a89df72d01cf062cc9815dd64c9576b4d20910d6d7aee7f0ea26484dc5e76'
             'df4cf47c0888e3a718de511080db3844a4664fd316f44bbc6e3f96b2550047c5'
             'b01fe8785cc59545626ec87279fab8b248e0faae8ce2ce0d0b67892cc63f9639'
@@ -58,7 +58,6 @@ prepare() {
   # Allow use of newer Qt versions
   git revert -n 1bf5a03f27b7401631baaedb1ceb9c313a5ffe3d
   git revert -n 20eeb4c2f95f3de669e90a1f3fa2ac49cdcc33ac
-  sed -i 's/RECOMMENDED_QT_VERSION = 6.4.3/RECOMMENDED_QT_VERSION = 6.5.3/g' "${srcdir}"/fritzing-app/phoenix.pro
 
   # Allow finding quazip-qt6 on Arch Linux
   patch -p1 < "${srcdir}/0001-Quick-Dirty-patch-to-allow-finding-quazip-qt6-on-Arc.patch"
@@ -71,9 +70,6 @@ prepare() {
 
   # Fix build issues with Qt 6.9
   patch -p1 < "${srcdir}/0004-Work-around-build-issues-with-Qt-6.9.patch"
-
-  # Dynamically link against system libgit2
-  sed -i 's/LIBGIT_STATIC = true/LIBGIT_STATIC = false/' phoenix.pro
 
   # Disable broken font scaling (#3221)
   sed -i 's/Exec=Fritzing/Exec=env QT_AUTO_SCREEN_SCALE_FACTOR=0 Fritzing/' org.fritzing.Fritzing.desktop
@@ -93,6 +89,9 @@ build() {
 package() {
   cd "${srcdir}"/fritzing-app/build
   make INSTALL_ROOT="${pkgdir}" install
+
+  # Remove RUNPATH that points to build dir from Fritzing binary
+  patchelf --remove-rpath "${pkgdir}"/usr/bin/Fritzing
 
   # We want a system-wide installation of the parts library. Following steps are
   # derived from tools/linux_release_script/release.sh. However, we drop the .git

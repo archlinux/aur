@@ -1,6 +1,6 @@
 pkgbase = fritzing
 	pkgdesc = PCB layout prototyping application
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = http://fritzing.org
 	install = fritzing.install
@@ -10,22 +10,27 @@ pkgbase = fritzing
 	license = GPL-3.0-only AND CC-BY-SA-3.0 AND BSL-1.0
 	makedepends = boost
 	makedepends = git
+	makedepends = patchelf
 	makedepends = qt6-tools
+	depends = gcc-libs
+	depends = glibc
 	depends = libgit2
 	depends = polyclipping
+	depends = qt6-base
 	depends = qt6-serialport
 	depends = qt6-svg
 	depends = quazip-qt6
 	depends = ngspice
-	source = git+https://github.com/fritzing/fritzing-app.git#commit=b9add9eaa7c426963de20c8514a69d3f15e83bdf
-	source = git+https://github.com/fritzing/fritzing-parts.git#commit=4f7d39b22a6c307e6cca62c7f78eae96696e8b2c
+	depends = zlib
+	source = git+https://github.com/fritzing/fritzing-app.git#commit=04e5bb0241e8f1de24d0fce9be070041c6d5b68e
+	source = git+https://github.com/fritzing/fritzing-parts.git#commit=73bc0559bb8399b2f895d68f032e41d7efc720c0
 	source = svgpp-1.3.1.tar.gz::https://github.com/svgpp/svgpp/archive/refs/tags/v1.3.1.tar.gz
 	source = 0001-Quick-Dirty-patch-to-allow-finding-quazip-qt6-on-Arc.patch
 	source = 0002-Quick-Dirty-patch-to-allow-finding-ngspice-on-Arch-L.patch
 	source = 0003-Quick-Dirty-patch-to-allow-finding-Clipper1-on-Arch-.patch
 	source = 0004-Work-around-build-issues-with-Qt-6.9.patch
-	sha256sums = 78828ce61a3869a81c9bb7b8855108d07cce178a19d555ef4edd92b22e422181
-	sha256sums = fb97fdce786c5efdafc7319e4e6a215611dd7b93019ffda9cfc9b429bbca1d36
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = be8a89df72d01cf062cc9815dd64c9576b4d20910d6d7aee7f0ea26484dc5e76
 	sha256sums = df4cf47c0888e3a718de511080db3844a4664fd316f44bbc6e3f96b2550047c5
 	sha256sums = b01fe8785cc59545626ec87279fab8b248e0faae8ce2ce0d0b67892cc63f9639
