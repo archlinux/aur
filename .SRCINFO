@@ -1,4 +1,4 @@
-pkgbase = fredon-menu-git
+pkgbase = turbo-chainsaw
 	pkgdesc = A modern, customizable application launcher for Hyprland/Wayland (git version)
 	pkgver = r8.4f0e1b4
 	pkgrel = 1
@@ -19,9 +19,9 @@ pkgbase = fredon-menu-git
 	depends = python-watchdog>=2.1.0
 	optdepends = libnotify: Desktop notifications
 	optdepends = xdg-utils: Default application launching
-	provides = fredon-menu
-	conflicts = fredon-menu
-	source = fredon-menu-git::git+https://github.com/patrik-fredon/turbo-chainsaw.git#branch=main
+	provides = turbo-chainsaw
+	conflicts = turbo-chainsaw
+	source = turbo-chainsaw::git+https://github.com/patrik-fredon/turbo-chainsaw.git#branch=main
 	sha256sums = SKIP
 
-pkgname = fredon-menu-git
+pkgname = turbo-chainsaw
