@@ -1,6 +1,6 @@
 # Maintainer: Max Berggren <maxberggren@gmail.com>
 pkgname=jotite
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="A lightweight, fun, distraction-free markdown note-taking app with live markdown rendering"
 arch=('any')
@@ -9,10 +9,10 @@ license=('MIT')
 depends=('gjs' 'gtk4' 'libadwaita' 'fontconfig')
 install=jotite.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('14159ff857d5e7732d19b582786fd03b22a6fa51c1df769468260822dc199659')
+sha256sums=('71339e56217fd6961049c6cf4c7cfceb8490049c0e6716f1f2c886b114d031e7')
 
 package() {
-    cd "$srcdir/omarchy-jotite-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
 
     # Install the main script
     install -Dm755 jotite.js "$pkgdir/usr/bin/jotite"
