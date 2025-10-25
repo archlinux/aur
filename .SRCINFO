@@ -1,6 +1,6 @@
 pkgbase = elephant-menus
 	pkgdesc = menus provider for elephant
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://github.com/abenz1267/elephant
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = elephant-menus
 	makedepends = go
 	provides = elephant-menus
 	conflicts = elephant-menus
-	source = https://github.com/abenz1267/elephant/archive/refs/tags/v2.7.0.tar.gz
-	sha256sums = 4de33dea2ff32f6fde9aec82041fdec9aaa458b40ca844971da61c0b0a457095
+	source = https://github.com/abenz1267/elephant/archive/refs/tags/v2.7.1.tar.gz
+	sha256sums = 68f83e5a808ad363a5ddf1754e60d5b71a60c8a9ad406b407ccb863104962d78
 
 pkgname = elephant-menus
