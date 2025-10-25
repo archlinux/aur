@@ -3,20 +3,20 @@
 # thanks to txtsd <aur.archlinux@ihavea.quest> for contributing some parts of the PKGBUILD code
 
 pkgname=openmw-git
-pkgver=0.49.0.r1040.g1403fbce1b
+pkgver=0.50.0.r59.ge3b293c4b7
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64' 'aarch64')
 url="http://www.openmw.org"
 license=('GPL-3.0-or-later' 'MIT' 'custom')
-# openmw doesn't work with ffmpeg 7 , only reliable solution for now is to use ffmpeg4.4 instead
-# see https://gitlab.com/OpenMW/openmw/-/issues/8035 and https://gitlab.com/OpenMW/openmw/-/issues/7182
-depends=('openal' 'openscenegraph-openmw-git' 'mygui-openmw' 'bullet-dp' 'qt6-base' 'qt6-svg' 'ffmpeg' 'sdl2' 'unshield' 'libxt' 'boost-libs' 'luajit' 'recastnavigation-openmw' 'yaml-cpp' 'sqlite')
-makedepends=('git' 'cmake' 'boost' 'debugedit' 'qt6-tools')
+depends=('openal' 'openscenegraph-openmw-git' 'mygui-openmw' 'bullet-dp' 'qt6-base' 'qt6-svg' 'qt6-tools' 'ffmpeg' 'sdl2' 'unshield' 'libxt' 'boost-libs' 'luajit' 'recastnavigation-openmw' 'yaml-cpp' 'sqlite')
+makedepends=('git' 'cmake' 'boost' 'debugedit')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-source=('git+https://gitlab.com/OpenMW/openmw.git')
-sha1sums=('SKIP')
+source=('git+https://gitlab.com/OpenMW/openmw.git'
+        'boost-1.89.patch')
+sha1sums=('SKIP'
+          'c86fe7e28f4c1cecef99e1f02c6787c472851243')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
@@ -43,6 +43,10 @@ pkgver() {
   _numcommits="$(git rev-list  $(git rev-list --tags --no-walk --max-count=1)..HEAD --count)"
   _hash="$(git rev-parse --short HEAD)"
   printf "%s.r%s.g%s" "$_fixed_tag" "$_numcommits" "$_hash"
+}
+
+prepare() {
+    patch --directory="${pkgname%-git}" --forward --strip=1 --input="$srcdir"/boost-1.89.patch
 }
 
 build() {
