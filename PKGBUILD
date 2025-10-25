@@ -7,15 +7,13 @@ _pkg1=DankMaterialShell
 _pkg2=danklinux
 pkgname=($_pkgbase-git $_pkgbase-hyprland-git $_pkgbase-niri-git)
 pkgver=0.2.2.r3.g0ac3db6
-pkgrel=3
+pkgrel=4
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
 url="https://github.com/AvengeMedia/$_pkg1"
 license=(GPL-3.0-only)
 depends=(dgop
-         inter-font
          quickshell
-         ttf-fira-code
          accountsservice)
 optdepends=('brightnessctl: Laptop display brightness control'
             'cava: Audio visualizer'
