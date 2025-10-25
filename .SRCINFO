@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-base
 	pkgdesc = A set of software libraries and tools for building robot applications (base variant)
 	pkgver = 2025.07.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://index.ros.org/p/ros_base/#humble
 	arch = any
 	license = Apache

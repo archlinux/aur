@@ -2,7 +2,7 @@
 
 pkgname=ros2-humble-base
 pkgver=2025.07.21
-pkgrel=1
+pkgrel=2
 _rosdist="Humble Hawksbill"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -94,7 +94,12 @@ build() {
     # THIRDPARTY_Asio: This forces Fast-DDS to use its internal ASIO version.
     #                  They were using deprecated ASIO functionality, which is now removed.
     #                  See the following issue: https://github.com/eProsima/Fast-DDS/issues/5726
-    colcon build --packages-up-to ros_base --merge-install ${COLCON_EXTRA_ARGS} --cmake-args -DBUILD_TESTING=OFF -DTHIRDPARTY_Asio=FORCE
+    colcon build --packages-up-to ros_base --merge-install ${COLCON_EXTRA_ARGS} --cmake-args \
+        -DBUILD_TESTING=OFF  \
+        -DCMAKE_CXX_STANDARD=17 \
+        -DCMAKE_CXX_STANDARD_REQUIRED=ON \
+        -DRMW_IMPLEMENTATION=rmw_fastrtps_cpp \
+        -DTHIRDPARTY_Asio=FORCE
 }
 
 package() {
