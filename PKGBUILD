@@ -5,7 +5,7 @@ _pkgbase=vector
 pkgver=0.50.0
 pkgrel=1
 pkgdesc="A high-performance observability data pipeline"
-arch=("x86_64" "aarch64")
+arch=('x86_64' 'aarch64')
 url="https://vector.dev"
 license=("MPL-2.0")
 backup=(
@@ -16,7 +16,7 @@ backup=(
 depends=("gcc-libs" "zlib")
 
 source=(
-    "https://github.com/vectordotdev/vector/releases/download/v${pkgver}/vector-${pkgver}-${arch}-unknown-linux-gnu.tar.gz"
+    "https://github.com/vectordotdev/vector/releases/download/v${pkgver}/vector-${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz"
     "${_pkgbase}.sysusers"
     "${_pkgbase}.tmpfiles"
 )
@@ -28,7 +28,7 @@ package() {
     install -Dm644 "${_pkgbase}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
     install -Dm644 "${_pkgbase}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 
-    cd "${srcdir}/vector-${arch}-unknown-linux-gnu"
+    cd "${srcdir}/vector-${CARCH}-unknown-linux-gnu"
 
     for f in LICENSE NOTICE; do
         install -Dm644 "$f" "${pkgdir}/usr/share/licenses/${_pkgbase}/$f"
