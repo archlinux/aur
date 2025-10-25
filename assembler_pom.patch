@@ -1,6 +1,6 @@
---- pom.xml	2025-06-18 21:53:27.000000000 +0100
-+++ pom-MODIFIED.xml	2025-06-18 23:41:25.678331045 +0100
-@@ -47,19 +47,6 @@
+--- pom.xml	2025-10-25 18:23:42.000000000 +0100
++++ pom_patched.xml	2025-10-25 19:33:43.071571272 +0100
+@@ -48,19 +48,6 @@
          <artifactId>download-maven-plugin</artifactId>
          <executions>
            <execution>
@@ -20,7 +20,7 @@
              <id>download-jre-linux</id>
              <phase>package</phase>
              <goals>
-@@ -72,19 +59,6 @@
+@@ -73,19 +60,6 @@
                <sha512>07cf8d488c3ab7febe1f046a745cc6d5ecf62ddbe323ddac533278c2b5bc2abbb9407de330d4fa4380c1cdd0617d02a83b7935fbd19f18e11c8be3f31ac77598</sha512>
              </configuration>
            </execution>
@@ -40,7 +40,81 @@
          </executions>
        </plugin>
  
-@@ -110,21 +84,6 @@
+@@ -108,95 +82,9 @@
+       </plugin>
+       <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+-        <artifactId>maven-antrun-plugin</artifactId>
+-        <version>3.2.0</version>
+-        <executions>
+-          <execution>
+-            <id>build-macos-app-bundle</id>
+-            <phase>package</phase>
+-            <goals>
+-              <goal>run</goal>
+-            </goals>
+-            <configuration>
+-              <target>
+-                <property name="app.dir" value="${project.build.directory}/macos/jd-gui-duo.app" />
+-
+-                <mkdir dir="${app.dir}/Contents/MacOS" />
+-                <mkdir dir="${app.dir}/Contents/Resources" />
+-                <mkdir dir="${app.dir}/Contents/lib" />
+-                <mkdir dir="${app.dir}/Contents/runtime" />
+-
+-                <!-- icon -->
+-                <copy file="${app.icon.path}" tofile="${app.dir}/Contents/Resources/JDGUI.icns" overwrite="true" />
+-
+-                <!-- JRE into app -->
+-                <copy todir="${app.dir}/Contents/runtime">
+-                  <fileset dir="${project.build.directory}/macos/jre" />
+-                </copy>
+-
+-                <!-- libraries -->
+-                <copy todir="${app.dir}/Contents/lib">
+-                  <fileset dir="${project.build.directory}/lib" />
+-                </copy>
+-
+-                <!-- Info.plist -->
+-                <echo file="${app.dir}/Contents/Info.plist"><![CDATA[
+-<?xml version="1.0" encoding="UTF-8"?>
+-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+-<plist version="1.0"><dict>
+-  <key>CFBundleName</key><string>JD-GUI Duo</string>
+-  <key>CFBundleIdentifier</key><string>com.github.nbauma109.jd-gui-duo</string>
+-  <key>CFBundleVersion</key><string>${project.version}</string>
+-  <key>CFBundleShortVersionString</key><string>${project.version}</string>
+-  <key>CFBundleIconFile</key><string>JDGUI</string>
+-  <key>CFBundlePackageType</key><string>APPL</string>
+-  <key>LSMinimumSystemVersion</key><string>11.0</string>
+-  <key>NSHighResolutionCapable</key><true/>
+-</dict></plist>
+-]]></echo>
+-
+-                <!-- native launcher -->
+-                <echo file="${app.dir}/Contents/MacOS/jd-gui-duo"><![CDATA[
+-#!/usr/bin/env bash
+-APP_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+-JRE="$APP_DIR/runtime"
+-JAVA="$JRE/bin/java"
+-LIB="$APP_DIR/lib"
+-exec "$JAVA" -ea \
+-  --add-opens=java.base/java.net=ALL-UNNAMED \
+-  --add-opens=java.desktop/javax.swing.text=ALL-UNNAMED \
+-  --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED \
+-  --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED \
+-  --add-opens=java.base/java.lang.ref=ALL-UNNAMED \
+-  -cp "$LIB/jd-gui-duo-app-${project.version}.jar:$LIB/*" \
+-  ${main.class} "$@"
+-]]></echo>
+-                <chmod file="${app.dir}/Contents/MacOS/jd-gui-duo" perm="0755" />
+-              </target>
+-            </configuration>
+-          </execution>
+-        </executions>
+-      </plugin>
+-      <plugin>
+-        <groupId>org.apache.maven.plugins</groupId>
          <artifactId>maven-assembly-plugin</artifactId>
          <executions>
            <execution>
@@ -62,7 +136,7 @@
              <id>assemble-linux</id>
              <phase>package</phase>
              <goals>
-@@ -139,21 +98,6 @@
+@@ -211,21 +99,6 @@
                </descriptors>
              </configuration>
            </execution>
@@ -84,3 +158,25 @@
          </executions>
        </plugin>
        <plugin>
+@@ -269,21 +142,6 @@
+             <phase>none</phase>
+           </execution>
+           <execution>
+-            <id>install-windows-tar.xz</id>
+-            <phase>install</phase>
+-            <goals>
+-              <goal>install-file</goal>
+-            </goals>
+-            <configuration>
+-              <file>${project.build.directory}/jd-gui-duo-windows-${project.version}.tar.xz</file>
+-              <groupId>${project.groupId}</groupId>
+-              <artifactId>${project.artifactId}</artifactId>
+-              <version>${project.version}</version>
+-              <classifier>windows</classifier>
+-              <packaging>tar.xz</packaging>
+-            </configuration>
+-          </execution>
+-          <execution>
+             <id>install-linux-tar.xz</id>
+             <phase>install</phase>
+             <goals>
