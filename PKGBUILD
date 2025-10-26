@@ -40,12 +40,11 @@ build() {
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_C_COMPILER="${CC}" \
     -D CMAKE_CXX_COMPILER="${CXX}" \
-    -D CMAKE_CXX_FLAGS_RELEASE="-ffast-math -march=native" \
+    -D CMAKE_CXX_FLAGS_RELEASE="$CXXFLAGS -ffast-math" \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D ENABLE_CUDA=1 \
     -D USE_NVRTC_STATIC=ON \
-    -D ENABLE_CPU=1 \
-    -W no-dev
+    -D ENABLE_CPU=1
   cmake --build "build" --config Release
 }
 
