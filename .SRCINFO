@@ -1,0 +1,15 @@
+pkgbase = gshell
+	pkgdesc = A customizable terminal system monitor for Kitty with GIF support (BETA)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/echtoplasm/gshell
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = kitty
+	depends = ftxui
+	source = git+https://github.com/echtoplasm/gshell.git#tag=v0.1
+	sha256sums = SKIP
+
+pkgname = gshell
