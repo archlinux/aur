@@ -4,9 +4,9 @@
 pkgname=sdrpp-headers-git
 pkgver=r1604.c89763a9
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('any')
 pkgdesc="SDR++ headers for building out-of-tree modules"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('sdrpp-git')
 makedepends=('git')
 provides=('sdrpp-headers')
