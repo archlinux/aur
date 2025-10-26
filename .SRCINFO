@@ -1,6 +1,6 @@
 pkgbase = ersatztv-bin
 	pkgdesc = Software for configuring and streaming custom live channels using your media library
-	pkgver = 25.7.1
+	pkgver = 25.8.0
 	pkgrel = 1
 	url = https://ersatztv.org/
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = ersatztv-bin
 	sha256sums = 27b89ea376c06600ae7871f4e9db6cafb446e38e59334bdf31983bfa9f8bc550
 	sha256sums = b8fc55ba6da728a51e2d0ce5add05e8a9500a0e7626c55b042d6b55763bc1ad5
 	sha256sums = 95bb7e34c04af1288af7765940fd73c6807bba3fd276a9cb32f243b029d20d66
-	source_x86_64 = https://github.com/ErsatzTV/ErsatzTV/releases/download/v25.7.1/ErsatzTV-v25.7.1-linux-x64.tar.gz
-	sha256sums_x86_64 = fb3ced166f681cb82834d0ec10005fe2b2c79e4bd9183ef6247b181bc99005bb
-	source_aarch64 = https://github.com/ErsatzTV/ErsatzTV/releases/download/v25.7.1/ErsatzTV-v25.7.1-linux-arm64.tar.gz
-	sha256sums_aarch64 = db78931ead623d507bc24198c2d02ab63c43c34f1f40e3a2463c10c76d849dfd
+	source_x86_64 = https://github.com/ErsatzTV/ErsatzTV/releases/download/v25.8.0/ErsatzTV-v25.8.0-linux-x64.tar.gz
+	sha256sums_x86_64 = 4402778c73ea20bc3424d4685cf8b28644a70c58cde1178432ddea4b23eed939
+	source_aarch64 = https://github.com/ErsatzTV/ErsatzTV/releases/download/v25.8.0/ErsatzTV-v25.8.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 2be5ba9208ca7b245e59456d51d4118f5fae296fc05428abb15c2bada02160cc
 
 pkgname = ersatztv-bin
