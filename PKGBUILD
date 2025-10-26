@@ -1,6 +1,6 @@
 # Maintainer: Dennis van der Schagt <dennisschagt@gmail.com>
 pkgname=eprosima-micro-xrce-dds-agent
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="eProsima's XRCE DDS agent"
 arch=('x86_64')
@@ -17,11 +17,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/eProsima/Micro-XRCE-DDS-Agent/archive/v${pkgver}.tar.gz"
-        "git+https://github.com/arsenm/sanitizers-cmake.git")
+source=("https://github.com/eProsima/Micro-XRCE-DDS-Agent/archive/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('08a3f5a71563b72663a51d5bd502099f892a6d73de21631750e1d31922d7c729'
-            'SKIP')
+sha256sums=('489b51d059febf8a2736becb5790ac593784c7d42b821d0d4b2e2f6d197c46a2')
 validpgpkeys=()
 
 build() {
