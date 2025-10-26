@@ -24,7 +24,6 @@ depends=(
   fribidi
   glib2
   glibc
-  glslang
   gmp
   gnutls
   gsm
@@ -69,6 +68,7 @@ depends=(
   rav1e
   rubberband
   sdl2
+  shaderc
   snappy
   speex
   srt
@@ -174,7 +174,6 @@ build() {
     --enable-libdrm \
     --enable-libfreetype \
     --enable-libfribidi \
-    --enable-libglslang \
     --enable-libgsm \
     --enable-libharfbuzz \
     --enable-libiec61883 \
@@ -216,7 +215,8 @@ build() {
     --enable-shared \
     --enable-vapoursynth \
     --enable-version3 \
-    --enable-vulkan
+    --enable-vulkan \
+    --enable-libshaderc
   make
   make tools/qt-faststart
   make doc/ff{mpeg,play}.1
