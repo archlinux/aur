@@ -1,6 +1,6 @@
 # Contributor: CountMurphy <spartan1086@gmail.com>
 pkgname=qtalarm
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 epoch=1
 pkgdesc="Cross-platform Alarm Clock written with QT6"
@@ -17,8 +17,8 @@ ${pkgname}.desktop
 )
 validpgpkeys=('914897EC41BD3AED1CD9EC3DE41FF9C889B141CC')
 sha512sums=(
-2589f812eb0162b8ce173cde93bf566eb4cc3f1b27057b25c10bc83810bc4d83ae19bad998723ec5e2b7a7812680c34c1a141789edbfc449e42f43413c87da93
-0e3c112cec0d386edbbca25f1ce01756602a471243841cc1ccacf9323c8d9da29ab70c9cd1e2573fbce4c0ac7d1ea98948817f38982d3b5e2eef095ceb431193
+d706185a35f90c82f7e7a02174b633318fa88a9c19b2d22b1dfd42ef4a0fd5e4234e72a2ec27de79bccefafe5409fdb9fcb96e68bc0d406978b1355450158c4a
+cfd9a3ec5c22a47461abf9290a632f7c4dc07700444ea18c49e62fcc5209fde29fb8787c40efa00c6447c2e9fe1854c67d6bd211009566dedc9bc1820fd66df7
 'SKIP'
 )
 
