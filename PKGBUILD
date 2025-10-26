@@ -1,11 +1,12 @@
 # Maintainer: Zesko
 pkgname="limine-entry-tool"
-pkgver=1.24.0
+pkgver=1.24.1
 pkgrel=1
+_extver="-${pkgrel}"
 pkgdesc="Install kernel for the Limine bootloader."
 arch=('any')
 url="https://gitlab.com/Zesko/limine-entry-tool"
-source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+source=("$url/-/archive/${pkgver}${_extver}/$pkgname-${pkgver}${_extver}.tar.gz")
 license=("GPL3")
 provides=('limine-entry-tool')
 _jre_version=17
@@ -20,7 +21,7 @@ depends=(
 makedepends=('git' 'jdk21-openjdk' 'maven')
 backup=(etc/limine-entry-tool.conf)
 conflicts=('limine-entry-tool')
-sha256sums=('84312a2e1e30cf85e6d91ec40ae8be5f772e45194c5f9ec9a7c437914c583d4d')
+sha256sums=('a135db0b579f97f358a1210da40d09dda4b221691fb36d046adc35c6c94ae1c5')
 
 prepare() {
 	unset JAVA_OPTS JDK_JAVA_OPTIONS JAVA_TOOL_OPTIONS
@@ -32,12 +33,12 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/${pkgname}-${pkgver}"
+	cd "$srcdir/${pkgname}-${pkgver}${_extver}"
 	JAVA_HOME=/usr/lib/jvm/java-${_jdk_version}-openjdk mvn clean package
 }
 
 package() {
-	cd "$srcdir/${pkgname}-${pkgver}"
+	cd "$srcdir/${pkgname}-${pkgver}${_extver}"
 	src_path="install/arch-linux/${pkgname}"
 	install -dm 755 $src_path/usr/share/java/
 	install -dm 755 $src_path/usr/share/limine-entry-tool.d/
