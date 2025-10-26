@@ -1,6 +1,6 @@
 pkgbase = git-spice-bin
 	pkgdesc = A tool for stacking Git branches.
-	pkgver = 0.19.0
+	pkgver = 0.19.1
 	pkgrel = 1
 	url = https://abhinav.github.io/git-spice/
 	license = GPL-3.0-or-later
@@ -8,13 +8,13 @@ pkgbase = git-spice-bin
 	conflicts = ghostscript
 	provides = git-spice
 	arch = aarch64
-	source_aarch64 = https://github.com/abhinav/git-spice/releases/download/v0.19.0/git-spice.Linux-aarch64.tar.gz
-	sha256sums_aarch64 = a5d9d425bd1857d2dd6c143f3ed6404c66d23ae5d7735b15a2f9bfe17489b8a5
+	source_aarch64 = https://github.com/abhinav/git-spice/releases/download/v0.19.1/git-spice.Linux-aarch64.tar.gz
+	sha256sums_aarch64 = 2432513c63fc0a37bb088c52a112d721a326d164d6af72b32691dc802f2ac24a
 	arch = armv7h
-	source_armv7h = https://github.com/abhinav/git-spice/releases/download/v0.19.0/git-spice.Linux-armv7.tar.gz
-	sha256sums_armv7h = 72b30aec5770e8ee3f84aba6412cee5c7d243993d990c4c29cc7f1ee48eb1038
+	source_armv7h = https://github.com/abhinav/git-spice/releases/download/v0.19.1/git-spice.Linux-armv7.tar.gz
+	sha256sums_armv7h = d793de44da2052025ba51fc08527d0d26d0b2a886407964dd3629c4c2346e32c
 	arch = x86_64
-	source_x86_64 = https://github.com/abhinav/git-spice/releases/download/v0.19.0/git-spice.Linux-x86_64.tar.gz
-	sha256sums_x86_64 = 82f759db438ca5b007850974e643ae68ce3d9065b09629981bfb6216d6fe8096
+	source_x86_64 = https://github.com/abhinav/git-spice/releases/download/v0.19.1/git-spice.Linux-x86_64.tar.gz
+	sha256sums_x86_64 = 8c0524b631fe74d126aa31fb5b1edba8fa186294de562a0dcc1ca51ada6f032c
 	
 pkgname = git-spice-bin
