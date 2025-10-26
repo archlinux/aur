@@ -1,4 +1,4 @@
-pkgbase = rascii
+pkgbase = rasciit
 	pkgdesc = Random ASCII typer
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = rascii
 	source = rasciit.cpp
 	sha256sums = SKIP
 
-pkgname = rascii
+pkgname = rasciit
