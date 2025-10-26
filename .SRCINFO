@@ -8,7 +8,7 @@ pkgbase = tsshd
 	arch = i686
 	arch = aarch64
 	license = MIT
-	makedepends = go>=1.21.11
+	makedepends = go>=1.25.3
 	provides = tsshd
 	source = https://github.com/trzsz/tsshd/archive/refs/tags/v0.1.5.tar.gz
 	md5sums = ce336652d42afff9a65cd1ade6fdad8e

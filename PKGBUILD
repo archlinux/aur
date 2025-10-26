@@ -9,7 +9,7 @@ url="https://trzsz.github.io/ssh"
 license=("MIT")
 groups=()
 depends=()
-makedepends=("go>=1.21.11")
+makedepends=("go>=1.25.3")
 checkdepends=()
 optdepends=()
 provides=("tsshd")
