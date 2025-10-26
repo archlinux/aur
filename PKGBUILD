@@ -48,6 +48,9 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  # The RTC version causes a "corrupted double-linked list" segfault,
+  # so disable it for now. By deleting it.
+  rm -v "${pkgdir}/usr/lib/vapoursynth/libdfttest2_hiprtc.so"
   install -Dm644 "${_plug}/${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
