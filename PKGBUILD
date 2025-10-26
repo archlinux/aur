@@ -1,6 +1,6 @@
 # Maintainer: develOseven <devel.oseven@gmail.com>
 pkgname=avoc
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 epoch=
 _python_version=3.12.3
@@ -125,4 +125,4 @@ package() {
 		"$pkgdir/usr/share/applications/AVoc.desktop"
 	echo "Path=/opt/$pkgname" >> "$pkgdir/usr/share/applications/AVoc.desktop"
 }
-sha256sums=('3c74c20d06dba02f4d16845b1778127d4854e0c0bba09f0746c47c3c9b122027')
+sha256sums=('dbe63ead6848c9ad0147ac22dcc04f1c09d0376d7cf9190bc8790142500d439d')
