@@ -1,6 +1,6 @@
 # Maintainer: Bjarne Øverli <bjarne@oever.li>
 pkgname=aether
-pkgver=2.13.0
+pkgver=2.13.1
 pkgrel=1
 pkgdesc="Omarchy theming application"
 arch=('any')
@@ -9,14 +9,14 @@ license=('MIT')
 depends=('gjs' 'gtk4' 'libadwaita' 'libsoup3' 'imagemagick' 'hyprshade')
 optdepends=('omarchy: Theme application backend')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ba8b752ebc3d3bc85060540280dac6c3c59979d614408b858078687b97d58852')  # Replace with actual checksum after creating GitHub release
+sha256sums=('a8ac364af2034e1162f9c1e316d0b4c4f08579d54958925e40ebf1aac2456c3e')  # Replace with actual checksum after creating GitHub release
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
 
     # Install source files
     install -dm755 "$pkgdir/usr/share/$pkgname"
-    cp -r src templates "$pkgdir/usr/share/$pkgname/"
+    cp -r src templates shaders "$pkgdir/usr/share/$pkgname/"
 
     # Create launcher script
     install -dm755 "$pkgdir/usr/bin"
