@@ -1,6 +1,6 @@
 pkgbase = ufo
 	pkgdesc = A tool for opening files
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 0
 	url = https://gitlab.com/os-18/ufo
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = ufo
 	makedepends = ldc
 	depends = glib2
 	depends = amalthea-ldc2
-	source = ufo-0.7.1.tar.gz::https://gitlab.com/os-18/ufo/-/archive/v0.7.1/ufo-v0.7.1.tar.gz
-	sha256sums = 65b9c51f773fdbe1abf7ff38aa94c51d3db12bb4b9f77b83ba60a9b4bd30e1ee
+	source = ufo-0.7.2.tar.gz::https://gitlab.com/os-18/ufo/-/archive/v0.7.2/ufo-v0.7.2.tar.gz
+	sha256sums = 308b9e1aa5c04efac3250229966b96d1b793d18c58ae68cf237a2cf74c92aa38
 
 pkgname = ufo
