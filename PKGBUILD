@@ -3,13 +3,13 @@
 _perlmod='Mail-Milter-Authentication'
 _modnamespace=Mail
 pkgname=perl-mail-milter-authentication
-pkgver=3.20250611
-pkgrel=2
+pkgver=4.20250811
+pkgrel=1
 pkgdesc="A Perl Mail Authentication Milter"
 arch=("any")
 url="http://search.cpan.org/dist/$_perlmod"
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
-depends=('perl' 'perl-app-cmd' 'perl-clone' 'perl-clone-choose' 'perl-date-manip' 'perl-email-date-format' 'perl-email-sender' 'perl-email-simple' 'perl-import-into' 'perl-json' 'perl-list-moreutils' 'perl-lock-file' 'perl-log-dispatchouli' 'perl-mail-authenticationresults' 'perl-mail-bimi' 'perl-mail-datafeed-abusix' 'perl-mail-dkim' 'perl-mail-dmarc' 'perl-mail-spf' 'perl-net-dns' 'perl-net-ip' 'perl-net-server' 'perl-proc-processtable' 'perl-prometheus-tiny-shared>=0.011' 'perl-super' 'perl-test-file-contents' 'perl-test-perl-critic' 'perl-text-table' 'perl-toml')
+depends=('perl' 'perl-app-cmd' 'perl-clone' 'perl-clone-choose' 'perl-date-manip' 'perl-email-address-xs' 'perl-email-date-format' 'perl-email-sender' 'perl-email-simple' 'perl-import-into' 'perl-json' 'perl-list-moreutils' 'perl-lock-file' 'perl-log-dispatchouli' 'perl-mail-authenticationresults' 'perl-mail-bimi' 'perl-mail-datafeed-abusix' 'perl-mail-dkim' 'perl-mail-dmarc' 'perl-mail-spf' 'perl-net-dns' 'perl-net-ip' 'perl-net-server' 'perl-proc-processtable' 'perl-prometheus-tiny-shared>=0.011' 'perl-super' 'perl-test-file-contents' 'perl-test-perl-critic' 'perl-text-table' 'perl-toml')
 makedepends=('perl-crypt-openssl-rsa' 'perl-file-sharedir-install' 'perl-test-exception')
 checkdepends=('perl-eval-closure' 'perl-namespace-autoclean' 'perl-net-dns-resolver-mock' 'perl-params-validationcompiler' 'perl-specio')
 replaces=('perl-mail-milter-authentication-handler-arc')
@@ -18,7 +18,7 @@ backup=('etc/authentication_milter.json')
 options=('!emptydirs')
 source=("http://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz"
         'authentication_milter.service')
-sha256sums=('5f83ec3e5bcce42fd7498cd3a337d46af5e168d6c782b709b3f858eb83b6e5a6'
+sha256sums=('eaf06533cc33ce3ee588a9a1394a91d85f63ed0a0ecfca1b1d5df2b7fbb65772'
             '8715d45d62859fb3838d0fd31878d59b47da2cb62d55675f828f8b812845526d')
 
 build() {
