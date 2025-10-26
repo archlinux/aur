@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Forge Adventure Mode
 Comment=The Magic: The Gathering - Shandalar reimplementation
-Exec=/usr/bin/forge-adventure.sh
+Exec=/usr/bin/forge-adventure
 Terminal=false
 Type=Application
 Categories=Game;
