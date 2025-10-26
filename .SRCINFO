@@ -1,15 +1,25 @@
 pkgbase = python-dictdiffer
-	pkgdesc = Dictdiffer is a library that helps you to diff and patch dictionaries
+	pkgdesc = Module that helps you to diff and patch dictionaries
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/inveniosoftware/dictdiffer
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	makedepends = python-pip
-	makedepends = binutils
+	checkdepends = python-pytest
+	checkdepends = python-numpy
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pytest-runner
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/d/dictdiffer/dictdiffer-0.9.0.tar.gz
-	md5sums = 524b353b969300d4dc6aa6720c953657
+	optdepends = python-numpy: for comparing numpy arrays
+	source = git+https://github.com/inveniosoftware/dictdiffer#tag=v0.9.0
+	source = pull-179.patch
+	source = fix-deprecations.patch
+	sha256sums = d414e30984aab2e38c2b2886ee152ff9ec84b50b9431469e636315e402b64755
+	sha256sums = e746d0900944b49e4995540667b48476d8f02755a6c95befda4f894d2e97ad44
+	sha256sums = 7e0d69462738ba56a662552498656284a91c49f76fd527126b4cd03fa107aa47
 
 pkgname = python-dictdiffer

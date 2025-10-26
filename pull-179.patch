@@ -1,0 +1,22 @@
+From 1fbce9da4ed8d79044caca996dd894713b5d10d2 Mon Sep 17 00:00:00 2001
+From: Jannik Vogel <jannik.vogel@hd-analytics.com>
+Date: Mon, 22 May 2023 17:43:01 +0200
+Subject: [PATCH] Reverse changes if item is removed
+
+---
+ dictdiffer/__init__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dictdiffer/__init__.py b/dictdiffer/__init__.py
+index fcd528a..505d35d 100644
+--- a/dictdiffer/__init__.py
++++ b/dictdiffer/__init__.py
+@@ -354,7 +354,7 @@ def add(node, changes):
+         return REMOVE, node, list(reversed(changes))
+ 
+     def remove(node, changes):
+-        return ADD, node, changes
++        return ADD, node, list(reversed(changes))
+ 
+     def change(node, changes):
+         first, second = changes
