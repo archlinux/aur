@@ -1,7 +1,7 @@
 # Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 
 pkgname=eigenwallet-developertools-bin
-_pkgver="3.2.1"
+_pkgver="3.2.2"
 pkgver=${_pkgver/-beta./.}
 pkgrel=1
 epoch=
@@ -24,17 +24,17 @@ source=(
 	"https://github.com/eigenwallet/core/releases/download/${_pkgver}/asb_${_pkgver}_Linux_x86_64.tar"
 	"https://github.com/eigenwallet/core/releases/download/${_pkgver}/asb-controller_${_pkgver}_Linux_x86_64.tar"
 	"https://github.com/eigenwallet/core/releases/download/${_pkgver}/orchestrator_${_pkgver}_Linux_x86_64.tar"
-	"https://github.com/eigenwallet/core/releases/download/${_pkgver}/rendezvous-server_${_pkgver}_Linux_x86_64.tar"
+	"https://github.com/eigenwallet/core/releases/download/${_pkgver}/rendezvous-node_${_pkgver}_Linux_x86_64.tar"
 )
-sha256sums=('8da1dca2d98ea50800d4bfedf99ab78edb066efe835a4cb6dee5cffa5ec96673'
-            '4560edcbb918c4b2dd9d8febfba008dfba465863a2e2440edd5a0d9b3b0693bd'
-            '90a8b9a182ac002cb80e3304407522aa0b873a5c63a0e03fa9cebd1da5387e79'
-            '1ad561f65c1c088889f6d405617c58c2547b4230020a6870ab582bbb75721299'
-            'f2c73c711161a26c13180fb66109ba7deb0e347155186c457e2a7eafe5989a20')
+sha256sums=('853d8081220fa9d7869ab6053a6366f77dcfc3c110ad0a7dd1a43c6947726b81'
+            '71134d1cd5f2eb5d5d04433b161876afcaa8af277e5b62d902580297e4948a6b'
+            '5ee2a9d2e31c4b4af689ff2584a6db6aedf64c0ba5225579a1f9295c25a07f42'
+            'b286d0361cf7ea97fc0737f922fdc0265663b39af3adbc5a6ce21c2b4da1bb86'
+            'de31603624c1450862af24a9c9d640fbed2b3e148b1afb1a4b750064b7e3de0f')
 validpgpkeys=()
 
 prepare() {
-	printf "%b" "\n------------------------------------------------------------------------\nInstalled \e[1;34masb\e[0m, \e[1;34masb-controller\e[0m, \e[1;34mswap\e[0m, \e[1;34morchestrator\e[0m, and \e[1;34mrendezvous-server\e[0m\n------------------------------------------------------------------------\n"
+	printf "%b" "\n----------------------------------------------------------------------\nInstalled \e[1;34masb\e[0m, \e[1;34masb-controller\e[0m, \e[1;34mswap\e[0m, \e[1;34morchestrator\e[0m, and \e[1;34mrendezvous-node\e[0m\n----------------------------------------------------------------------\n"
 }
 
 package() {
@@ -42,5 +42,5 @@ package() {
   install -Dm755 "${srcdir}/asb-controller" "$pkgdir/usr/bin/asb-controller"
   install -Dm755 "${srcdir}/swap" "$pkgdir/usr/bin/swap"
   install -Dm755 "${srcdir}/orchestrator" "$pkgdir/usr/bin/orchestrator"
-  install -Dm755 "${srcdir}/rendezvous-server" "$pkgdir/usr/bin/rendezvous-server"
+  install -Dm755 "${srcdir}/rendezvous-node" "$pkgdir/usr/bin/rendezvous-node"
 }
