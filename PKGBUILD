@@ -1,6 +1,6 @@
 # Maintainer: Dennis van der Schagt <dennisschagt@gmail.com>
 pkgname=eprosima-micro-cdr
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=2
 pkgdesc="eProsima's Micro-CDR for serialization and deserialization"
 arch=('x86_64')
@@ -19,7 +19,7 @@ install=
 changelog=
 source=("https://github.com/eProsima/Micro-CDR/archive/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('bcc16517acc55a58fad6d39cfa42ba3658e2c7d0f408af5b1a27b634072d64b6')
+sha256sums=('92f2819f2cb769162358b6f6577000cc5a583ef9c69d13a628ee0abd1f7c3d1f')
 validpgpkeys=()
 
 build() {
