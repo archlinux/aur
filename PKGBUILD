@@ -6,8 +6,8 @@
 # Contributor: trile7 at gmail dot com
 
 pkgname=inadyn
-pkgver=2.12.0
-pkgrel=4
+pkgver=2.13.0
+pkgrel=1
 pkgdesc='Dynamic DNS client with SSL/TLS support'
 arch=(x86_64)
 url=https://troglobit.com/projects/inadyn/
@@ -30,7 +30,7 @@ source=(
   sysusers.conf
   tmpfiles.conf
 )
-b2sums=('ed84213bf6e80931715468a2dda39072b074c64d2a2e83ca780ea7234f1fcb26ae9ad86f879d5c254c1b170d19693445a66b2f781a4a6fd82b8048505560e52b'
+b2sums=('0ed81ff150b7fd56a8cdeafc8765129b3c66a1bb166ea87e9c6f60330071e4a58e0d3d8de5c73bb625db3194925de5c4010f72b2a77a79462b27d1ee4cc9f45c'
         'b8a100c6a219e0888018fece11f3737137fa6fef54ed5f60d383794aa54b66dc49212573ef9e2231a3fb957c0e9c572b2ad0d7602904eb3e431c06178c5a00c2'
         'c640f9fd8384cdb6dcc9c4ea939f1b617d9154bb08f9f85928bdaebd66d7c5d9450f34f44c428197dfd69e44a185b8ecdcbff34168b29f875f908e3ace1d9aaf'
         '5d9633c7258727bb87662273efe6a0862af3dcbe1142b0127d13fad8c365f2a7666aab8ee27958c2d52c0462989d4fd15fe5dbd609a96b2ebdfb41db47b9267f'
