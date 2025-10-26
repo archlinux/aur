@@ -1,0 +1,21 @@
+post_install() {
+    echo ""
+    echo "╔═══════════════════════════════════════════════════════════════╗"
+    echo "║  OptiScaler Universal installed successfully!                ║"
+    echo "╚═══════════════════════════════════════════════════════════════╝"
+    echo ""
+    echo "Commands available:"
+    echo "  optiscaler-install    - Configure OptiScaler for games"
+    echo "  optiscaler-uninstall  - Remove OptiScaler installations"
+    echo "  optiscaler-update     - Update OptiScaler Universal"
+    echo "  optiscaler-diagnose   - Diagnose system and games"
+    echo "  optiscaler-benchmark  - Benchmark performance"
+    echo ""
+    echo "Documentation: /usr/share/doc/optiscaler-universal/"
+    echo "Quick start:   optiscaler-install"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
