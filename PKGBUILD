@@ -100,9 +100,8 @@ prepare() {
 
 build() {
   # Wine requires GCC. Clang-built winegcc misbehaves.
-  : "${CC:=gcc}"
-  : "${CXX:=g++}"
-  export CC CXX
+  export CC=gcc
+  export CXX=g++
 
   # Doesn't compile without remove these flags as of 4.10
   export CFLAGS="$CFLAGS -ffat-lto-objects"
