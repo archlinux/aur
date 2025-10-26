@@ -20,16 +20,15 @@ source=(https://nodejs.org/dist/v${pkgver}/node-v${pkgver}.tar.xz)
 # https://nodejs.org/download/release/latest-iron/SHASUMS256.txt.asc
 sha256sums=('230c899f4e2489c4b8d2232edd6cc02f384fb2397c2a246a22e415837ee5da51')
 
-prepare() {
-  cd node-v${pkgver}
+_set_flags() {
+  # /usr/lib/libnode.so uses malloc_usable_size, which is incompatible with fortification level 3
+  CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+  CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 }
 
 build() {
+  _set_flags
   cd node-v${pkgver}
-
-  # this uses malloc_usable_size, which is incompatible with fortification level 3
-  export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-  export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
 
   ./configure \
     --prefix=/usr \
@@ -50,17 +49,27 @@ build() {
 }
 
 check() {
+  _set_flags
   cd node-v${pkgver}
-  make test-only || :
+  rm test/parallel/test-http2-client-set-priority.js
+  rm test/parallel/test-http2-client-unescaped-path.js
+  rm test/parallel/test-http2-max-invalid-frames.js
+  rm test/parallel/test-http2-misbehaving-flow-control.js
+  rm test/parallel/test-http2-misbehaving-flow-control-paused.js
+  rm test/parallel/test-http2-multi-content-length.js
+  rm test/parallel/test-http2-priority-event.js
+  rm test/parallel/test-http2-reset-flood.js
+  rm test/parallel/test-process-euid-egid.js
+  rm test/parallel/test-process-initgroups.js
+  rm test/parallel/test-process-setgroups.js
+  rm test/parallel/test-process-uid-gid.js
+  rm test/parallel/test-tls-ocsp-callback.js
+  make test-only
 }
 
 package() {
+  _set_flags
   cd node-v${pkgver}
-
-  # this uses malloc_usable_size, which is incompatible with fortification level 3
-  export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-  export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
-
   make DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
