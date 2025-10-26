@@ -1,0 +1,16 @@
+pkgbase = snug
+	pkgdesc = Wrapping your Wayland sessions for a cozy look
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/saltnpepper97/snug
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = wayland
+	depends = libinput
+	conflicts = snug-git
+	options = !debug
+	source = snug-0.1.0.tar.gz::https://github.com/saltnpepper97/snug/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = bd77ab313a306dda3f7bcdc104fff5d6ad9cb229899575df2b22979b5c02725a
+
+pkgname = snug
