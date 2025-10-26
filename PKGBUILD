@@ -1,7 +1,7 @@
 # Maintainer: Maciej <macrionyn@proton.me>
 
 pkgname=disktui
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='A terminal-based disk management utility built with Rust and Ratatui'
 url='https://github.com/Maciejonos/disktui'
@@ -20,7 +20,7 @@ optdepends=(
 conflicts=('disktui')
 provides=('disktui')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dcb2e9e1328990cf9a4ef4dd396d97195bc693008b1f4bbfd7607224d9c0f113')
+sha256sums=('26c71fbcee51250adedef7e36216254e84f974074140c012faba230c0d65817a')
 
 build() {
   cd ${pkgname}-${pkgver}
