@@ -4,7 +4,7 @@
 _pkgauthor=abenz1267
 _pkgname=walker
 pkgname=${_pkgname}-bin
-pkgver=2.6.4
+pkgver=2.7.0
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc='wayland application runner'
@@ -60,11 +60,11 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/downloa
 
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '6da90528fad39c1158ef7240ea70dbef03c0bd0ba3be2d665215e938d0dec3c6'
-            'd31a1cc74f5485bb2c72a2afe2a47fc411d9433ebeb1ee3b74ed1b72033a233c'
+            'ade1fdd7079546f069508fd75f8885e1e571d7cca8fd0a4dd5f175fb1ffae115'
             'd6dac24c66c6e851e4a0f702154ccd92a1b0f64990beeff393b530ccd1089721'
             'e9613245a50e92f6da1e6f09bc84473fae716ee4c30b2536a4f0b285a1536c94'
             '1c08b011b1c28ca332c96888e4b8fc02f36ec1e057986acfca568dfa4cccf73f'
-            '2c4d13df69d24ce6c7b4ff8863ee1b443fefea6c941bb4b4b8393e6e5de4013f'
+            'b3597b72d3b51ecb9cec4aacd0d4a0629938e62e504fa60fdc6261fd092fea51'
             '4fe8af0457cdf1631ff3b6ac4ead13111e9044ab8071bcfe4dcbf48d0af0ff98'
             'd263ce6a3335d42560e7ddbffcdc1186744bcc7ae04cd6282bb188dd7d6f5c9a'
             '4de69a8744729c5a6521d062b541831046c6f06887ac30e22465c1f753764c00'
@@ -75,7 +75,7 @@ sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '5175c88a9bb7db96ea7286eb0226afd89caa2f2aa178a64a00fc2348016db0e3'
             '073a912e3eee95249236af90ce50496a3b94bd840919b2d94e058054dbf3ca25'
             '229596513d82ef486c637c7989e7bd589c1a3f53fcd9d348ae708464a55c5b88')
-sha256sums_x86_64=('0748e8c3151954aa392d2d8a40432c476beef012802d09bd2c63840bddefb828')
+sha256sums_x86_64=('8adf4f31fb55d623455f63e1cdfd61b0dd4e58f555277c95ac51e1bda69e6683')
 
 prepare() {
     cd "${srcdir}" || exit 1
