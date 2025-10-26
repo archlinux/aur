@@ -2,7 +2,7 @@
 pkgname='alacritty-graphics'
 _pkgname="alacritty"
 pkgdesc="A cross-platform, GPU-accelerated terminal emulator"
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/ayosec/alacritty"
@@ -13,7 +13,7 @@ checkdepends=('ttf-dejavu') # for monospace fontconfig test
 provides=('alacritty')
 conflicts=("${_pkgname}" "${_pkgname}-git" "alacritty-sixel-git")
 source=("${_pkgname}-${pkgver}-graphics.tar.gz::${url}/archive/v${pkgver}-graphics.tar.gz")
-sha512sums=('c2155a0e6f01ac5fae827c05d72a7f9b9feede34605d62005a5a0e326b59e02863141c8d7eb3cbec995e13cbe6cbbe55e92646c59d8827944d9c084aa9570fcb')
+sha512sums=('8d68ba728020fd6ae07dafaaeb198cbb25f4dcc1ee688953c5c321f4385d40d44dd5ed10daaf35dc16a5f58a5adef2cdcad998980a47b387b26195779c5d4136')
 
 build(){
   cd "${_pkgname}-${pkgver}-graphics"
