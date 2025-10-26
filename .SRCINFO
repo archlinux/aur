@@ -1,0 +1,19 @@
+pkgbase = hyprmonmon
+	pkgdesc = Manage, remember and monitor different display layouts in hyprland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/iksteen/hyprmonmon
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry
+	depends = python-hyprpy
+	depends = python-click
+	depends = hyprland
+	depends = nwg-displays
+	source = https://github.com/iksteen/hyprmonmon/archive/refs/tags/v0.1.0.zip
+	sha256sums = 58fac3ac10415b6ca410953bdb149ffbd90a42842ffa5722fb9c7f03d89cff67
+
+pkgname = hyprmonmon
