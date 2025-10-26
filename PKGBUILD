@@ -1,7 +1,7 @@
 # Maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
 
 pkgname=what-the-port
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Quickly lookup what a port is used for."
 arch=("x86_64" "i686" "armv6h" "armv7h" "aarch64")
@@ -10,7 +10,7 @@ license=("AGPL-3.0-or-later")
 depends=("gcc-libs" "openssl")
 makedepends=("cargo" "openssl")
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
-sha512sums=('ef0d17a7cbfb97d740a30d0fe31164a17420fd062621f3901bbc499c7e2d6ff3613fdb356fc7af23e6554cebe5c7b84226da50c83323922a7de719d3cb8c31bb')
+sha512sums=('88722ffd20b85e3fa386ffd0c56c2c88b739d8ade8c36015ab24d076c192ea7f888849dfe8c92e83f3940d13cf2d1e20d021863b9c4f3e2d48eebf8c24c1ab91')
 
 prepare() {
   cd ${pkgname}-${pkgver}
