@@ -1,7 +1,7 @@
 pkgbase = mangojuice-bin
 	pkgdesc = A convenient alternative for setting up Mangohud (binary release)
 	pkgver = 0.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/radiolamp/mangojuice
 	arch = x86_64
 	license = GPL-3.0-or-later

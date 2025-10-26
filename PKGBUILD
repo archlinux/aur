@@ -2,7 +2,7 @@
 
 pkgname=mangojuice-bin
 pkgver=0.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A convenient alternative for setting up Mangohud (binary release)"
 url="https://github.com/radiolamp/mangojuice"
 license=('GPL-3.0-or-later')
@@ -24,5 +24,5 @@ package() {
   cd AppDir
   install -Dm644 io.github.radiolamp.mangojuice.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 share/icons/hicolor/scalable/apps/io.github.radiolamp.*.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-  install -Dm755 bin/mangojuice -t "$pkgdir/usr/bin"
+  install -Dm755 shared/bin/mangojuice -t "$pkgdir/usr/bin"
 }
