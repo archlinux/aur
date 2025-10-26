@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=elephant-websearch
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc='websearch provider for elephant'
 url='https://github.com/abenz1267/elephant'
@@ -11,7 +11,7 @@ makedepends=('go')
 conflicts=('elephant-websearch')
 provides=('elephant-websearch')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('68f83e5a808ad363a5ddf1754e60d5b71a60c8a9ad406b407ccb863104962d78')
+sha256sums=('54ed8a3043e26c671c34e9bb312d6b91835571845a4c47a76d083c4f5c9d5edc')
 
 build() {
     cd elephant-${pkgver}/internal/providers/websearch
