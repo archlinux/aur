@@ -1,6 +1,6 @@
 pkgbase = gsettings-desktop-schemas-nofont
 	pkgdesc = Shared GSettings schemas for the desktop, patched to drop font dependencies
-	pkgver = 49.0
+	pkgver = 49.1
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas
 	arch = any
@@ -13,9 +13,9 @@ pkgbase = gsettings-desktop-schemas-nofont
 	depends = gsettings-system-schemas
 	provides = gsettings-desktop-schemas
 	conflicts = gsettings-desktop-schemas
-	source = gsettings-desktop-schemas-nofont::git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git#tag=49.0
+	source = gsettings-desktop-schemas-nofont::git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git#tag=49.1
 	source = 0001-Revert-default-font.patch
-	sha256sums = 21b149cddf6492bd10682daca6f1dab9bcc372c0d7dcdb5e981219af3faf89a5
+	sha256sums = fafd7d56b9cf8fed45fd88ba5bbc32066ee5bd2b2164828195706a8584c6ea8c
 	sha256sums = 25972f235f5e47c9e8208370bdbefeb3a53409a0ad33ffd3f27ac4d8766d2f1f
 
 pkgname = gsettings-desktop-schemas-nofont
