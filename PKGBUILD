@@ -3,12 +3,12 @@
 
 pkgname=asusctl-devel-git
 pkgver=6.1.16.r2.g132a2f3
-pkgrel=3
+pkgrel=4
 pkgdesc="Asus laptop control utilities"
 arch=('x86_64')
 url="https://gitlab.com/asus-linux/asusctl"
 license=('MPL-2.0')
-depends=('libusb' 'udev' 'systemd' 'wayland' 'libxkbcommon' 'mesa' 'xorg-server-xwayland')
+depends=('libusb' 'udev' 'systemd' 'qt6-base' 'qt6-wayland')
 optdepends=(
 	'libappindicator-gtk3: tray icon'
 	'gtk3: control center ui'
@@ -44,7 +44,7 @@ build() {
   export CARGO_HOME="$srcdir/cargo-home"
 # Build with frozen lock (no network) and respect upstream Makefile
 # If Makefile calls cargo, these env vars force system toolchain.
-  make build CARGO="$CARGO" RUSTC="$RUSTC" CARGO_FLAGS="--frozen --locked"
+  make build CARGO="$CARGO" RUSTC="$RUSTC" CARGO_FLAGS="--frozen --locked --features slint/backend-qt"
 }
 
 package() {
