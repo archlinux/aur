@@ -2,7 +2,7 @@
 # Contributor: TwoFinger
 # Contributor: taij33n <bwbuiz@gmail.com>
 pkgname=picolisp
-pkgver=25.6
+pkgver=25.9
 pkgrel=1
 pkgdesc="Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines)."
 url="https://picolisp.com"
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(glibc bash openssl libffi readline ncurses)
 makedepends=(git clang llvm make)
 source=("https://software-lab.de/picoLisp-$pkgver.tgz")
-sha256sums=('6d6eb2c77d32568f69400e25b24e342de3df04d9675ed0ce75377ecd28e12133')
+sha256sums=('904122dd74aee62791211dff64ffd1490ae9849efcd0c6babbec4c21d1536de7')
 
 prepare() {
   MAKEFILE="$srcdir/pil21/src/Makefile"
@@ -28,6 +28,7 @@ build() {
   sed -i "2 s/.*/&\n.NOTPARALLEL:/" Makefile
 
   make
+  make so
 }
 
 package() {
@@ -38,6 +39,8 @@ package() {
   mv "$LIBDIR/bin/picolisp" "$BINDIR"
   mv "$LIBDIR/bin/pil" "$BINDIR"
   mv "$LIBDIR/bin/vip" "$BINDIR"
+
+  install "$srcdir/pil21/lib/picolisp.so" -D "$pkgdir/usr/lib/libpicolisp.so"
 
   install -d -m755 "${MAN1DIR:=$pkgdir/usr/share/man/man1}"
   cp "$LIBDIR"/man/man1/*.1 "$MAN1DIR"
