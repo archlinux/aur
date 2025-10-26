@@ -4,7 +4,7 @@
 
 pkgname=vcmi
 pkgver=1.6.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source engine for Heroes of Might and Magic III"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/vcmi/vcmi"
@@ -27,6 +27,15 @@ prepare() {
   bsdtar -C "$_pkgsrc" -xf "$_pkgsrc.tar.gz"
 
   sed -i 's/find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Network)/find_package(QT NAMES Qt6 REQUIRED COMPONENTS Widgets Network)/' "$_pkgsrc/CMakeLists.txt"
+  sed -i 's/set(BOOST_COMPONENTS .*)/set(BOOST_COMPONENTS date_time filesystem locale program_options)/' "$_pkgsrc/CMakeLists.txt"
+
+
+grep -q 'Boost_MAJOR_VERSION EQUAL 1 AND Boost_MINOR_VERSION LESS 69' "$_pkgsrc/CMakeLists.txt" || cat >> "$_pkgsrc/CMakeLists.txt" <<'EOF'
+if(Boost_MAJOR_VERSION EQUAL 1 AND Boost_MINOR_VERSION LESS 69)
+    list(APPEND BOOST_COMPONENTS system)
+    find_package(Boost 1.48.0 REQUIRED COMPONENTS ${BOOST_COMPONENTS})
+endif()
+EOF
 }
 
 build() {
