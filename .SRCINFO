@@ -1,7 +1,7 @@
 pkgbase = forge-gui-desktop
 	pkgdesc = The Magic: The Gathering Rules Engine (now with Shandalar-style adventure mode)
 	pkgver = 2.0.06
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/Card-Forge/forge
 	arch = any
 	license = GPL3

@@ -1,7 +1,7 @@
 # Maintainer: Nathan Chere <aur at nathanchere dot com dot au>
 pkgname=forge-gui-desktop
 pkgver=2.0.06
-pkgrel=6
+pkgrel=7
 pkgdesc="The Magic: The Gathering Rules Engine (now with Shandalar-style adventure mode)"
 arch=('any')
 url="https://github.com/Card-Forge/forge"
@@ -26,15 +26,18 @@ sha1sums=('aa07a73870fbfdc8a6d8b4c6249e85bc978a8d47'
 
 package() {
 	cd "$srcdir"
+	local extracted="$srcdir/forge-installer"
+	rm -rf "$extracted"
+	mkdir "$extracted"
+	tar xf forge-installer-$pkgver.tar.bz2 -C "$extracted"
 	install -d -m0755 "$pkgdir"/usr/share/$pkgname/res
-	tar xf forge-installer-$pkgver.tar.bz2
-	cp -r res/* "$pkgdir"/usr/share/$pkgname/res
-	install -Dm0664 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+	cp -r "$extracted"/res/* "$pkgdir"/usr/share/$pkgname/res
+	install -Dm0664 "$extracted"/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 	install -Dm0644 "$srcdir"/AppIcon.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
 
-	install -Dm0644 "forge-gui-desktop-$pkgver-jar-with-dependencies.jar" "$pkgdir"/usr/share/java/$pkgname.jar
-	install -Dm0644 "forge-gui-mobile-dev-$pkgver-jar-with-dependencies.jar" "$pkgdir"/usr/share/java/forge-adventure.jar
-	install -Dm0644 "adventure-editor-jar-with-dependencies.jar" "$pkgdir"/usr/share/java/forge-adventure-editor.jar
+	install -Dm0644 "$extracted"/"forge-gui-desktop-$pkgver-jar-with-dependencies.jar" "$pkgdir"/usr/share/java/$pkgname.jar
+	install -Dm0644 "$extracted"/"forge-gui-mobile-dev-$pkgver-jar-with-dependencies.jar" "$pkgdir"/usr/share/java/forge-adventure.jar
+	install -Dm0644 "$extracted"/"adventure-editor-jar-with-dependencies.jar" "$pkgdir"/usr/share/java/forge-adventure-editor.jar
 
 	install -Dm0644 "$srcdir/forge-gui-desktop.desktop" "$pkgdir/usr/share/applications/forge-gui-desktop.desktop"
 	install -Dm0755 "$srcdir/forge-gui-desktop.sh" "$pkgdir/usr/bin/forge-gui-desktop"
