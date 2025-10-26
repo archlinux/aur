@@ -3,7 +3,7 @@
 pkgname=equibop
 _pkgname=Equibop
 pkgdesc="Equibop is a Vesktop fork that gives you the performance of web Discord and the comfort of Discord Desktop, with additional plugins."
-pkgver=3.0.4
+pkgver=3.0.5
 # Reminder for devs: don't forget to update the electron version on equibop.sh
 pkgrel=1
 electron=electron38
@@ -24,7 +24,7 @@ source=("$url/archive/refs/tags/v${pkgver}.tar.gz"
         'org.equicord.equibop.desktop'
         'equibop.sh'
         'equibop.install')
-sha256sums=('ff6ce12e32d5afed2b671d0ee330e2fde0b942150e25c6675ab8ffd727a513b2'
+sha256sums=('530c3070dadc2957168d4577203833fe2581883ff268440a3149476c0c44c6e9'
             '1e4766362fab2657e6b9a6a0a742518b545a5678f211ba25f7fdd3f5080d48d5'
             'c3d06d3b1e2ecb73c082fa1b5f919a6890dab0cae05b7320214031670bf16d36'
             '18b5fbb1bf53b47b8a7438b2127b1f1a31d23c69d39a156cde66e1616710a18a')
