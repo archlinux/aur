@@ -5,8 +5,39 @@ After=network.target
 [Service]
 User=findmydevice
 Group=findmydevice
-ExecStart=/usr/bin/fmdserver serve -c /etc/fmdserver/config.yml -w /usr/share/webapps/fmdserver/ -d /var/lib/fmdserver/db
+Type=simple
+ExecStart=/usr/bin/fmdserver serve -c /etc/fmdserver/config.yml -d /var/lib/fmdserver/db
 Restart=on-abort
+
+# Hardening
+# https://blog.sergeantbiggs.net/posts/hardening-applications-with-systemd/
+# https://www.freedesktop.org/software/systemd/man/latest/systemd.exec.html
+# In the order in which they appear in the systemd.exec docs.
+# Check with "systemd-analyze security fmd-server-{{ fmd_server_env }}.service"
+ProtectProc=invisible
+NoNewPrivileges=true
+CapabilityBoundingSet=
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RemoveIPC=true
+SystemCallFilter=@system-service
+SystemCallArchitectures=native
+
+# Necessary weakening
+ReadWritePaths=/var/lib/fmdserver/
 
 [Install]
 WantedBy=multi-user.target
