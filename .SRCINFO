@@ -1,0 +1,18 @@
+pkgbase = warp-cli
+	pkgdesc = Cloudflare WARP Client for Arch Linux
+	pkgver = 2025.8.779.0
+	pkgrel = 1
+	url = https://www.cloudflare.com/
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = openssl
+	depends = gtk3
+	depends = nftables
+	depends = nss
+	depends = dbus
+	provides = warp-cli
+	source = cloudflare-warp_2025.8.779.0_amd64.deb::https://downloads.cloudflareclient.com/v1/download/jammy-intel/version/2025.8.779.0
+	sha256sums = SKIP
+
+pkgname = warp-cli
