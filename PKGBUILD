@@ -3,12 +3,12 @@
 
 pkgname=asusctl-devel-git
 pkgver=6.1.16.r2.g132a2f3
-pkgrel=2
+pkgrel=3
 pkgdesc="Asus laptop control utilities"
 arch=('x86_64')
 url="https://gitlab.com/asus-linux/asusctl"
-license=('MPL2')
-depends=('libusb' 'udev' 'systemd')
+license=('MPL-2.0')
+depends=('libusb' 'udev' 'systemd' 'wayland' 'libxkbcommon' 'mesa' 'xorg-server-xwayland')
 optdepends=(
 	'libappindicator-gtk3: tray icon'
 	'gtk3: control center ui'
