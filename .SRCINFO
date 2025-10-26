@@ -1,0 +1,22 @@
+pkgbase = vapoursynth-plugin-dfttest2-hip-git
+	pkgdesc = Plugin for Vapoursynth: dfttest2 for HIP (GIT Version)
+	pkgver = v9.1.g705de7d
+	pkgrel = 1
+	url = https://github.com/AmusementClub/vs-dfttest2
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = vapoursynth
+	depends = rocm-hip-runtime
+	depends = rocm-device-libs
+	depends = hip
+	depends = hipfft
+	provides = vapoursynth-plugin-dfttest2
+	conflicts = vapoursynth-plugin-dfttest2
+	options = debug
+	source = dfttest2::git+https://github.com/AmusementClub/vs-dfttest2
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-dfttest2-hip-git
