@@ -4,9 +4,9 @@ pkgname=baba-is-you-hib
 _shortname="${pkgname%-hib}"
 
 # objdump -d 'Baba Is You/bin64/Chowdren' | grep -E -A100 '^\w{16} <_.*VersionString_' | grep -E '<str_[^_]{,5}_\w*>$' | cut -d _ -f 2
-_upstreamver='477'
+_upstreamver='478f'
 
-_hibver=230307 # 2023-03-07
+_hibver=240224 # 2024-02-24
 pkgver="${_upstreamver}.${_hibver}"
 pkgrel=1
 pkgdesc='Puzzle game where the rules are physical objects. Humble Bundle version.'
@@ -24,7 +24,7 @@ source=(
 )
 
 sha512sums=(
-  '007dd7e280524f519162938c94b36cd63ed7820405099aae4fb21ea7bbb92efdc9e3643a7e5bd0a2e2a554ef5cea4f9477df69ca434f9e8c59d4d3e18844938f'
+  '6de35d6c7e0ffc0034c1a86b4d100f5abdde9d1bfddec3f437e528cd3dc1964d13a3ba670eb432f1e2aba4bad016c1d0bf161a03ebe7cadfbb45cdf60f321853'
   '049b2a18b9fbe0088fea47acb1a2ddb6e6cfd78e88c600315f914120fc8d0fcc68fd1d21fb57cbaca0ff01db69f685b96984cd6c149c216ec90134aee7aaf5d8'
   '187d439f7126ddc3ce3220593b2d09725fa57a9d18c622220b3c6fabd1c136e1dafb889ffa058ddeca48ced6b727a5bedac2a481cb6fd5bb471beeb2f1687178'
 )
