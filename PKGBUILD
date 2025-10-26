@@ -75,6 +75,7 @@ build() {
 package() {
   install -d "$pkgdir/$_install_path/$_pkgname"
   cp --reflink=auto -r "$_pkgsrc/dist/linux-unpacked/resources/app.asar" "$pkgdir/$_install_path/$_pkgname/"
+  cp --reflink=auto -r "$_pkgsrc/dist/linux-unpacked/resources/app-update.yml" "$pkgdir/$_install_path/$_pkgname/"
   cp --reflink=auto -r "$_pkgsrc/dist/linux-unpacked/resources/app.asar.unpacked" "$pkgdir/$_install_path/$_pkgname/"
   cp --reflink=auto -r "$_pkgsrc/dist/linux-unpacked/resources/bun" "$pkgdir/$_install_path/$_pkgname/"
 
