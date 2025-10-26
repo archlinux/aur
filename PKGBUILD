@@ -8,7 +8,7 @@
 pkgname=libkml-git
 _pkgname=libkml
 pkgver=1.3.0.r130.g878abd1
-pkgrel=1
+pkgrel=2
 pkgdesc="A KML library written in C++ with bindings to other languages"
 arch=('i686' 'x86_64')
 url="https://github.com/libkml/libkml"
@@ -16,7 +16,7 @@ license=('BSD')
 depends=('expat' 'uriparser')
 optdepends=('swig: bindings for additional languages'
             'python2: python bindings')
-makedepends=('cmake' 'swig' 'boost' 'patchelf' 'git')
+makedepends=('cmake3' 'swig' 'boost' 'patchelf' 'git')
 provides=('libkml')
 conflicts=('libkml')
 source=("${_pkgname}::git+https://github.com/libkml/libkml.git")
@@ -46,7 +46,7 @@ build() {
   rm -rf build && mkdir build
   cd build
 
-   cmake .. \
+   cmake3 .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DWITH_SWIG=OFF \
