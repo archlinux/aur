@@ -3,16 +3,15 @@
 _pkgbase=chordpro
 pkgname=${_pkgbase}-cli
 pkgver=6.080.1
-pkgrel=1
+pkgrel=2
 _pkgdownload=App-Music-ChordPro-${pkgver}
-_wxver=3.005
 pkgdesc="A lyrics and chords formatting program (CLI)"
 arch=('x86_64')
 url="https://chordpro.org/"
 _ghurl="https://github.com/ChordPro/chordpro"
 license=('Artistic-2.0')
 depends=(
-    'perl'                           # Provides JSON::PP, Storable, Pod::Usage, File::Copy, ExtUtils::MakeMaker, Unicode::Collate
+    'perl>=5.26.0'                   # JSON::PP, Storable, Pod::Usage, File::Copy, ExtUtils::MakeMaker, Unicode::Collate, Unicode::Normalize
     'perl-pdf-api2>=2.047'           # PDF::API2
     'perl-json-xs>=4.03'             # JSON::XS
     'perl-lwp-protocol-https>=6.14'  # LWP::Protocol::https
@@ -30,10 +29,15 @@ depends=(
     'perl-file-loadlines>=1.047'            # File::LoadLines (AUR)
     'perl-data-printer>=0.001001'           # Data::Printer (AUR)
     'perl-object-pad>=0.818'                # Object::Pad (AUR)
-
-    # Not found: HarfBuzz::Shaper, JavaScript::QuickJS, Unicode::Normalize
+    'perl-javascript-quickjs>=0.18'         # JavaScript::QuickJS (AUR)
+    #'perl-harfbuzz-shaper>=0.026'          # HarfBuzz::Shaper (not found on AUR)
 )
 makedepends=('perl-local-lib' 'cpanminus')
+optdepends=(
+    'perl-template-toolkit>=3.010: Only used by the LaTeX backend'
+    'perl-latex-encode>=0.092.0: Only used by the LaTeX backend'
+    'lilypond: Embed LilyPond music writing format'
+)
 provides=(chordpro)
 conflicts=(chordpro)
 source=(
