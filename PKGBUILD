@@ -10,11 +10,11 @@ license=('GPL3')
 depends=('glibc' 'zlib')
 makedepends=('gcc' 'make' 'texinfo')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("https://ftp.icm.edu.pl/gnu/binutils/binutils-${pkgver}.tar.xz")
+source=("https://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.xz")
 sha256sums=('SKIP')
 
 _target=x86_64-kuznix-elf
-_prefix=/opt/cross
+_prefix=/opt/kuznix-tools
 
 build() {
   cd "$srcdir"
