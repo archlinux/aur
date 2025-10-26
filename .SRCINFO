@@ -13,6 +13,8 @@ pkgbase = reskin
 	makedepends = desktop-file-utils
 	depends = webkit2gtk-4.1
 	depends = xdg-utils
+	depends = mesa
+	depends = libglvnd
 	source = https://github.com/iamnotmega/reskin/archive/refs/tags/1.5.3.tar.gz
 	sha256sums = 802ef8acb805ed33ffa4fcce546cbece98403d00cd95af925ba3fcff691b3337
 
