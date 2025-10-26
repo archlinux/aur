@@ -1,11 +1,11 @@
 pkgbase = trgui-ng
 	pkgdesc = Remote GUI for Transmission torrent daemon
-	pkgver = 1.4.0
-	pkgrel = 3
+	pkgver = 1.5.0
+	pkgrel = 1
 	url = https://github.com/openscopeproject/TrguiNG
 	arch = x86_64
 	license = AGPL-3.0
-	makedepends = rust>=1.70.0
+	makedepends = rust>=1.77.2
 	makedepends = nodejs>=16.0.0
 	makedepends = npm
 	makedepends = git
@@ -20,18 +20,16 @@ pkgbase = trgui-ng
 	depends = libayatana-appindicator
 	depends = libsoup
 	depends = openssl
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	conflicts = trgui-ng-git
 	conflicts = trgui-ng-bin
 	noextract = dbip.mmdb
 	options = !lto
-	source = git+https://github.com/openscopeproject/TrguiNG#tag=v1.4.0
-	source = https://github.com/openscopeproject/TrguiNG/releases/download/v1.4.0/dbip.mmdb
+	source = git+https://github.com/openscopeproject/TrguiNG#tag=v1.5.0
+	source = https://github.com/openscopeproject/TrguiNG/releases/download/v1.5.0/dbip.mmdb
 	source = TrguiNG.desktop::https://raw.githubusercontent.com/flathub/org.openscopeproject.TrguiNG/master/org.openscopeproject.TrguiNG.desktop
-	source = 0001-Change-webpack-configs-to-mjs.patch
-	sha256sums = d0fea8b3f54282fa28ad589558c4c31ff3c225e14eddc5a4e4c50753e3391eed
-	sha256sums = 0f9a459f66aa99138412213ec9d5a2635ab6e623759a8326f49ea508db0eed62
+	sha256sums = SKIP
+	sha256sums = 15291b7961766f54fc1ff8afac4189a67850920cd8b555b3dc6ddf9d02fc3ada
 	sha256sums = 21bef47c8cddae5365a7af8867d43c25e80db53ec8dbb1940138ad26d02a401a
-	sha256sums = 733b80e9e0adcbbb2d1f5bd1d142e87ceb60397acf7e611b8d5322aecc70fb8a
 
 pkgname = trgui-ng
