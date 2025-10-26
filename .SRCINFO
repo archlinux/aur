@@ -13,7 +13,7 @@ pkgbase = x86_64-kuznix-elf-binutils
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.45.tar.xz
+	source = https://ftp.icm.edu.pl/pub/gnu/binutils/binutils-2.45.tar.xz
 	sha256sums = SKIP
 
 pkgname = x86_64-kuznix-elf-binutils
