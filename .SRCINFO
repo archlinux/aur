@@ -5,6 +5,7 @@ pkgbase = go-hass-agent
 	url = https://github.com/joshuar/go-hass-agent
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = go
 	makedepends = xorg-server
 	makedepends = libxcursor
@@ -14,7 +15,8 @@ pkgbase = go-hass-agent
 	makedepends = libcap
 	depends = libx11
 	depends = libglvnd
-	source = go-hass-agent-14.1.0.tar.gz::https://github.com/joshuar/go-hass-agent/archive/refs/tags/v14.1.0.tar.gz
-	b2sums = 0c4d1a551f260d2c055a27ce1f0a3faf7eb97d64751355d9cac963106da9fac8feb0564d2bc6dff2b9cb6bd51357b979e95ad122b8570a7df2fb1418a975cec2
+	source = go-hass-agent::git+https://github.com/joshuar/go-hass-agent.git#commit=e8ddc8f?signed
+	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
+	b2sums = 44b44fe428144c49525aa3de95b49b02348576d3ab7ab446d42ecea495b0e38938d77be6f58fa7ba75d0584eabc5f422a67b5b7a595634299923325e4f77383d
 
 pkgname = go-hass-agent

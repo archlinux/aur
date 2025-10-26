@@ -3,17 +3,19 @@
 pkgname=go-hass-agent
 pkgver=14.1.0
 pkgrel=1
+_commit=e8ddc8f
 pkgdesc="A Home Assistant, native app for desktop/laptop devices."
 arch=('x86_64')
 url="https://github.com/joshuar/go-hass-agent"
 license=('MIT')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('0c4d1a551f260d2c055a27ce1f0a3faf7eb97d64751355d9cac963106da9fac8feb0564d2bc6dff2b9cb6bd51357b979e95ad122b8570a7df2fb1418a975cec2')
 depends=('libx11' 'libglvnd')
-makedepends=('go' 'xorg-server' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi' 'libcap')
+makedepends=('git' 'go' 'xorg-server' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi' 'libcap')
+source=("go-hass-agent::git+${url}.git#commit=${_commit}?signed")
+validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194')
+b2sums=('44b44fe428144c49525aa3de95b49b02348576d3ab7ab446d42ecea495b0e38938d77be6f58fa7ba75d0584eabc5f422a67b5b7a595634299923325e4f77383d')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -23,8 +25,8 @@ build() {
 }
 
 package() {
-  install -D -m755 "${pkgname}-${pkgver}"/go-hass-agent "${pkgdir}/usr/bin/go-hass-agent"
-  install -D -m644 "${pkgname}-${pkgver}"/README.md "${pkgdir}/usr/share/doc/go-hass-agent/README.md"
-  install -D -m644 "${pkgname}-${pkgver}"/LICENSE "${pkgdir}/usr/share/licenses/go-hass-agent/LICENSE"
-  install -D -m644 "${pkgname}-${pkgver}"/assets/go-hass-agent.service "${pkgdir}/usr/lib/systemd/user/go-hass-agent.service"
+  install -D -m755 "${pkgname}"/go-hass-agent "${pkgdir}/usr/bin/go-hass-agent"
+  install -D -m644 "${pkgname}"/README.md "${pkgdir}/usr/share/doc/go-hass-agent/README.md"
+  install -D -m644 "${pkgname}"/LICENSE "${pkgdir}/usr/share/licenses/go-hass-agent/LICENSE"
+  install -D -m644 "${pkgname}"/assets/go-hass-agent.service "${pkgdir}/usr/lib/systemd/user/go-hass-agent.service"
 }
