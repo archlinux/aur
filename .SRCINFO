@@ -1,10 +1,10 @@
 pkgbase = vapoursynth-plugin-dfttest2-cpu-git
 	pkgdesc = Plugin for Vapoursynth: dfttest2-cpu (GIT Version)
-	pkgver = v7.0.g235f6ef
+	pkgver = v9.1.g705de7d
 	pkgrel = 1
 	url = https://github.com/AmusementClub/vs-dfttest2
 	arch = x86_64
-	license = GPL2
+	license = GPL3
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja

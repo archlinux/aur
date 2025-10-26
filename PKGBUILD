@@ -10,12 +10,12 @@
 
 _plug=dfttest2
 pkgname=vapoursynth-plugin-dfttest2-cpu-git
-pkgver=v7.0.g235f6ef
+pkgver=v9.1.g705de7d
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: dfttest2-cpu (GIT Version)"
 arch=('x86_64')
 url='https://github.com/AmusementClub/vs-dfttest2'
-license=('GPL2')
+license=('GPL3')
 depends=('vapoursynth')
 makedepends=('git' 'cmake' 'ninja' 'gcc')
 provides=("vapoursynth-plugin-dfttest2" "vapoursynth-plugin-dfttest2-git" "vapoursynth-plugin-dfttest2-cpu")
@@ -43,7 +43,7 @@ build() {
     -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_CXX_FLAGS_RELEASE="-ffast-math -march=native" \
+    -DCMAKE_CXX_FLAGS_RELEASE="$CXXFLAGS -ffast-math" \
     -DENABLE_CUDA=0 \
     -DENABLE_CPU=1
   cmake --build "build" --config Release
