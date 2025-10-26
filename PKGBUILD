@@ -3,7 +3,7 @@
 # This file is generated automatically by CI job at https://github.com/openscopeproject/TrguiNG
 pkgname=trgui-ng
 pkgver='1.5.0'
-pkgrel=2
+pkgrel=1
 pkgdesc='Remote GUI for Transmission torrent daemon'
 url="https://github.com/openscopeproject/TrguiNG"
 arch=('x86_64')
@@ -15,8 +15,8 @@ source=("git+https://github.com/openscopeproject/TrguiNG#tag=v$pkgver"
         "https://github.com/openscopeproject/TrguiNG/releases/download/v$pkgver/dbip.mmdb"
         "TrguiNG.desktop"::"https://raw.githubusercontent.com/flathub/org.openscopeproject.TrguiNG/master/org.openscopeproject.TrguiNG.desktop")
 noextract=('dbip.mmdb')
-sha256sums=('f0ecb6a74878bbaa9019f581c0df896a93780cc65e958a2925a2e18011d396fa'
-            '0f9a459f66aa99138412213ec9d5a2635ab6e623759a8326f49ea508db0eed62'
+sha256sums=('SKIP'
+            '15291b7961766f54fc1ff8afac4189a67850920cd8b555b3dc6ddf9d02fc3ada'
             '21bef47c8cddae5365a7af8867d43c25e80db53ec8dbb1940138ad26d02a401a')
 options=('!lto')
 
