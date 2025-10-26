@@ -1,6 +1,6 @@
 pkgbase = tkginstaller-git
 	pkgdesc = TKG packages builder (Linux, Wine, Proton, Nvidia and Mesa)
-	pkgver = 0.21.6
+	pkgver = 0.21.7
 	pkgrel = 1
 	url = https://github.com/damachine/tkginstaller
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = tkginstaller-git
 	depends = onefetch
 	optdepends = bat: for syntax highlighting
 	optdepends = curl: for downloading files
-	optdepends = fzf: for fuzzy finding in menus
-	optdepends = glow: for markdown converting and viewing
-	optdepends = nano: for editing config files
+	optdepends = fzf: for the interactive menu
+	optdepends = glow: for markdown rendering
+	optdepends = nano: fallback for editing config files
 	provides = tkginstaller
 	conflicts = tkginstaller
 	replaces = tkginstaller
 	source = tkginstaller.sh::https://raw.githubusercontent.com/damachine/tkginstaller/refs/heads/master/tkginstaller.sh
-	sha256sums = b383d0b013982389a767f9b97e0987ca17a1352711bf33a822769f2e43a87f9d
+	sha256sums = c32609b20c9f6e9c1f42a60d40d508bd95a6a2dab5f8c97415737eb543efe563
 
 pkgname = tkginstaller-git
