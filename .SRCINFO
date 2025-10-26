@@ -1,0 +1,15 @@
+pkgbase = procreate-thumbnailer-git
+	pkgdesc = Thumbnailer for Procreate (.procreate) files.
+	pkgver = 1.0.1.r0.g609dd88
+	pkgrel = 1
+	url = https://github.com/devlinman/Procreate-thumbnailer
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust
+	depends = shared-mime-info
+	source = git+https://github.com/devlinman/Procreate-thumbnailer.git
+	md5sums = SKIP
+
+pkgname = procreate-thumbnailer-git
