@@ -1,7 +1,7 @@
 # Maintainer: quest <quest at mac dot com>
 
 pkgname="celestial-gtk-theme"
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='A modern, customizable GTK theme with multiple color variants.'
 arch=('any')
@@ -19,14 +19,14 @@ conflicts=("${pkgname}-git")
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
 )
-b2sums=('a32994740b99f26108f85fc04de7eb856681684ea32c75f1e4fb3a2927acd58262c6e5a663787962445900c694255337052f5efad5d8162af261c817c95d4c1d')
+b2sums=('f51596d951b978f0cad823a8f83abfe8780922e626316909a486ed809b1fe5b48d86e2e5d070d9da0e10acf5349445352a01408bd29acca7a54e175429585437')
 
 package() {
   cd "${pkgname}-${pkgver}"
   install -d "${pkgdir}/usr/share/themes"
   install -d "${pkgdir}/usr/share/Kvantum"
 
-  DESTDIR=${pkgdir} ./install.sh -k -b --dest "/usr/share/themes"
+  DESTDIR=${pkgdir} ./install.sh -k -b --ghostty --dest "/usr/share/themes"
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"

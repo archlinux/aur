@@ -1,6 +1,6 @@
 pkgbase = celestial-gtk-theme
 	pkgdesc = A modern, customizable GTK theme with multiple color variants.
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/zquestz/celestial-gtk-theme
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = celestial-gtk-theme
 	optdepends = whitesur-cursor-theme: recommended cursor theme
 	optdepends = kvantum: Qt theme support
 	conflicts = celestial-gtk-theme-git
-	source = celestial-gtk-theme-1.1.1.tar.gz::https://github.com/zquestz/celestial-gtk-theme/archive/refs/tags/1.1.1.tar.gz
-	b2sums = a32994740b99f26108f85fc04de7eb856681684ea32c75f1e4fb3a2927acd58262c6e5a663787962445900c694255337052f5efad5d8162af261c817c95d4c1d
+	source = celestial-gtk-theme-1.1.2.tar.gz::https://github.com/zquestz/celestial-gtk-theme/archive/refs/tags/1.1.2.tar.gz
+	b2sums = f51596d951b978f0cad823a8f83abfe8780922e626316909a486ed809b1fe5b48d86e2e5d070d9da0e10acf5349445352a01408bd29acca7a54e175429585437
 
 pkgname = celestial-gtk-theme
