@@ -10,6 +10,7 @@ license=('MIT')
 depends=("nodejs")
 provides=("yarn" "pnpm")
 conflicts=("yarn" "pnpm")
+optdepends=("corepack: For nodejs versions not ship with corepack binary")
 install="$pkgname.install"
 
 package() {
