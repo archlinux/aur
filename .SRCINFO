@@ -1,0 +1,15 @@
+pkgbase = lunii-qt-bin
+	pkgdesc = GUI to manage Lunii Storyteller devices - pre-built binary
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/o-daneel/Lunii.QT
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = zlib
+	provides = lunii-qt
+	conflicts = lunii-qt
+	source = https://github.com/o-daneel/Lunii.QT/releases/download/v3.0.0/Lunii.Qt-v3.0.0-Linux-x86_64.zip
+	sha256sums = 576262a8c21ef62c3093efd67177592f1aee90873750dc6c9d529716f3e2fe44
+
+pkgname = lunii-qt-bin
