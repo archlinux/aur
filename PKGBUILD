@@ -11,7 +11,7 @@
 
 _pkgname=resolve
 pkgname=davinci-resolve
-pkgver=20.2.1
+pkgver=20.2.2
 pkgrel=1
 pkgdesc='Professional A/V post-production software suite from Blackmagic Design'
 arch=('x86_64')
@@ -25,7 +25,7 @@ makedepends=('libarchive' 'xdg-user-dirs' 'patchelf')
 conflicts=('davinci-resolve-studio' 'davinci-resolve-beta' 'davinci-resolve-studio-beta')
 source=("file://DaVinci_Resolve_${pkgver}_Linux.zip"
         "davinci-control-panels-setup.sh")
-sha256sums=('27e79f62d69eb94544f7b9b8339fe19fe96dee3343eb9e488b25d679a9f2cc2d'
+sha256sums=('b1467f8e66a94c30f6b760c7b71ef14fb888c463716f1fc3423b7a5443d29da2'
             'f17236fd68cead727c647bc31404e402922cdd491df5526f4b62364cbef9d3b8')
 install="${pkgname}.install"
 options=('!strip')
@@ -100,14 +100,10 @@ prepare() {
     sed -i "s|RESOLVE_INSTALL_LOCATION|/opt/${_pkgname}|g" "${_file}"
   done < <(find . -type f '(' -name "*.desktop" -o -name "*.directory" -o -name "*.directory" -o -name "*.menu" ')' -print0)
 
-  rm "squashfs-root/libs/libc++.so.1" \
-    "squashfs-root/libs/libglib-2.0.so.0" \
-    "squashfs-root/libs/libgio-2.0.so.0" \
-    "squashfs-root/libs/libgmodule-2.0.so.0" \
-    "squashfs-root/libs/libc++abi.so.1"
+  rm "squashfs-root/libs/libglib-2.0.so.0" \
+     "squashfs-root/libs/libgio-2.0.so.0" \
+     "squashfs-root/libs/libgmodule-2.0.so.0"
   ln -s "../BlackmagicRAWPlayer/BlackmagicRawAPI" "squashfs-root/bin/"
-  ln -s /usr/lib/libc++.so.1.0 "squashfs-root/libs/libc++.so.1"
-  ln -s /usr/lib/libc++abi.so.1.0 "squashfs-root/libs/libc++abi.so.1"
   ln -s /usr/lib/libglib-2.0.so.0 "squashfs-root/libs/libglib-2.0.so.0"
   ln -s /usr/lib/libgio-2.0.so.0 "squashfs-root/libs/libgio-2.0.so.0"
   ln -s /usr/lib/libgmodule-2.0.so.0 "squashfs-root/libs/libgmodule-2.0.so.0"
