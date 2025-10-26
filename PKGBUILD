@@ -1,5 +1,5 @@
 pkgname=rasciit
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Random ASCII typer"
 arch=('x86_64')

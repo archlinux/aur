@@ -57,11 +57,6 @@ public:
         }
         
         file.close();
-        
-        if (ascii_arts.empty()) {
-            add_default_arts();
-            save_config();
-        }
     }
     
     void create_default_config() {
@@ -69,49 +64,29 @@ public:
         file << "# RASCII Configuration File\n";
         file << "# Add your ASCII arts between ###ART_START### and ###ART_END### markers\n";
         file << "# Each art should be separated by these markers\n\n";
+        file << "# Example:\n";
+        file << "###ART_START###\n";
+        file << "    _____\n";
+        file << "   /     \\\n";
+        file << "  | () () |\n";
+        file << "   \\  ^  /\n";
+        file << "    |||||\n";
+        file << "    |||||\n";
+        file << "###ART_END###\n\n";
+        file << "###ART_START###\n";
+        file << "   .--.\n";
+        file << "  |o_o |\n";
+        file << "  |:_/ |\n";
+        file << " //   \\ \\\n";
+        file << "(|     | )\n";
+        file << "'\\_   _/`\n";
+        file << "  \\___/\n";
+        file << "###ART_END###\n";
+        
         file.close();
         
-        add_default_arts();
-        save_config();
-    }
-    
-    void add_default_arts() {
-        std::vector<std::string> default_arts = {
-            "    _____\n"
-            "   /     \\\n"
-            "  | () () |\n"
-            "   \\  ^  /\n"
-            "    |||||\n"
-            "    |||||\n",
-            
-            "   .--.\n"
-            "  |o_o |\n"
-            "  |:_/ |\n"
-            " //   \\ \\\n"
-            "(|     | )\n"
-            "'\\_   _/`\n"
-            "  \\___/\n",
-            
-            "   ┌─┐\n"
-            "   │ │\n"
-            "   │ │\n"
-            "   │ │\n"
-            "   └─┘\n",
-            
-            "    .-.\n"
-            "   (   )\n"
-            "    '-'\n"
-            "    | |\n"
-            "    | |\n"
-            "    | |\n"
-            "   .' '.\n"
-            "  /     \\\n"
-            " |       |\n"
-            "  \\     /\n"
-            "   '.'\n"
-        };
-        
-        ascii_arts = default_arts;
+        // Перезагружаем конфиг, чтобы загрузить примеры
+        load_config();
     }
     
     void save_config() {
@@ -140,6 +115,7 @@ public:
     void show_random_art() {
         if (ascii_arts.empty()) {
             std::cout << "No ASCII arts found in configuration!\n";
+            std::cout << "Add your arts to: " << config_file << "\n";
             return;
         }
         
@@ -152,6 +128,12 @@ public:
     }
     
     void list_arts() {
+        if (ascii_arts.empty()) {
+            std::cout << "No ASCII arts found.\n";
+            std::cout << "Add your arts to: " << config_file << "\n";
+            return;
+        }
+        
         std::cout << "Total ASCII arts: " << ascii_arts.size() << "\n\n";
         for (size_t i = 0; i < ascii_arts.size(); ++i) {
             std::cout << "Art #" << i + 1 << ":\n";
@@ -175,7 +157,7 @@ void print_help() {
     std::cout << "  rascii --list   - List all ASCII arts\n";
     std::cout << "  rascii --help   - Show this help message\n";
     std::cout << "  rascii --config - Show config file path\n";
-    std::cout << "\nConfiguration file: ~/.config/rascii/rascii.conf\n";
+    std::cout << "\nConfiguration file: ~/.config/rasciit/rasciit.conf\n";
     std::cout << "Add your own ASCII arts between ###ART_START### and ###ART_END### markers\n";
 }
 
