@@ -1,6 +1,6 @@
 pkgbase = crawley-bin
 	pkgdesc = The unix-way web crawler
-	pkgver = 1.7.13
+	pkgver = 1.7.14
 	pkgrel = 1
 	url = https://github.com/s0rg/crawley
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = crawley-bin
 	provides = crawley
 	conflicts = crawley
 	conflicts = crawley-git
-	source_x86_64 = crawley-bin-1.7.13-x86_64.tar.gz::https://github.com/s0rg/crawley/releases/download/v1.7.13/crawley_v1.7.13_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 205e212bc037d0c0ef78b144bd1fe121c083b4d345efaf417fbf643b5d555ecc
-	source_aarch64 = crawley-bin-1.7.13-aarch64.tar.gz::https://github.com/s0rg/crawley/releases/download/v1.7.13/crawley_v1.7.13_linux_arm64.tar.gz
-	sha256sums_aarch64 = 81b701f0c7636df5c75cd3dec2498ce78cffca5ae5b5717bcc434da715bcdd1d
+	source_x86_64 = crawley-bin-1.7.14-x86_64.tar.gz::https://github.com/s0rg/crawley/releases/download/v1.7.14/crawley_v1.7.14_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 497e76463ddb43d7b3feb69d31714627e56e6d8ad333ebd872208fbdb3e49d0f
+	source_aarch64 = crawley-bin-1.7.14-aarch64.tar.gz::https://github.com/s0rg/crawley/releases/download/v1.7.14/crawley_v1.7.14_linux_arm64.tar.gz
+	sha256sums_aarch64 = ec5e59881a1634a644337491fba5d6c7e87bd9d1a71a0c3cc96d8c30515b18a8
 
 pkgname = crawley-bin
