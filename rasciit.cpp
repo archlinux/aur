@@ -24,8 +24,8 @@ public:
             home_dir = pw->pw_dir;
         }
         
-        config_dir = std::string(home_dir) + "/.config/rascii";
-        config_file = config_dir + "/rascii.conf";
+        config_dir = std::string(home_dir) + "/.config/rasciit";
+        config_file = config_dir + "/rasciit.conf";
         
         load_config();
     }
