@@ -51,6 +51,7 @@ package() {
   install -d "${pkgdir}/usr/bin"
 
   cp "$_pkgname-$pkgver/dist/linux-unpacked/resources/app.asar" "${pkgdir}/usr/lib/${pkgname}/"
+  cp "$_pkgname-$pkgver/dist/linux-unpacked/resources/app-update.yml" "${pkgdir}/usr/lib/${pkgname}/"
   cp -r "$_pkgname-$pkgver/dist/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname}/"
   cp -r "$_pkgname-$pkgver/dist/linux-unpacked/resources/bun" "${pkgdir}/usr/lib/${pkgname}/"
   install -Dm755 "./equibop.sh" "$pkgdir/usr/bin/equibop"
