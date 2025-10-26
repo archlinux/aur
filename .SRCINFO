@@ -1,6 +1,6 @@
 pkgbase = yaoc-git
 	pkgdesc = Yet Another OpenAI CLI: A simple, feature-rich OpenAI client, with tools and vision.
-	pkgver = r15.6583961
+	pkgver = r16.d4f0392
 	pkgrel = 1
 	url = https://github.com/doryiii/yaoc
 	arch = any
@@ -8,6 +8,8 @@ pkgbase = yaoc-git
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-pip
 	depends = python
 	depends = python-html2text
 	depends = python-rich
