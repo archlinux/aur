@@ -1,8 +1,8 @@
 # Maintainer: Daniël Nazarkin <aur.danicatgames@pm.me>
 
 pkgname=roblox-blink
-pkgver=0.18.4
-pkgrel=2
+pkgver=0.18.5
+pkgrel=1
 pkgdesc="An IDL compiler written in Luau for ROBLOX buffer networking"
 arch=('x86_64' 'aarch64')
 options=(!strip)
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('darklua' 'lune')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7598bd536e0637967bfea094ec9a2ac8ac48b622842499be4a6a41c9e47087e1')
+sha256sums=('176092f6e84a08d559a5349dcc1df1d9999bff19e222cb821c5c180e574c864e')
 
 build() {
     cd "blink-$pkgver"
