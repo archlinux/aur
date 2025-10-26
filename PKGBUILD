@@ -43,7 +43,7 @@ build() {
     -D CMAKE_CXX_FLAGS_RELEASE="$CXXFLAGS -ffast-math" \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D ENABLE_CUDA=1 \
-    -D USE_NVRTC_STATIC=ON \
+    -D USE_NVRTC_STATIC=OFF \
     -D ENABLE_CPU=1
   cmake --build "build" --config Release
 }
