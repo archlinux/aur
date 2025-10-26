@@ -1,4 +1,4 @@
-pkgname=rascii
+pkgname=rasciit
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Random ASCII typer"
