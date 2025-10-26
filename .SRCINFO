@@ -1,0 +1,27 @@
+pkgbase = x86_64-kuznix-elf-gcc
+	pkgdesc = GCC cross compiler for x86_64-kuznix-elf (C and C++)
+	pkgver = 15.2.0
+	pkgrel = 1
+	url = https://gcc.gnu.org
+	arch = x86_64
+	license = GPL3
+	makedepends = binutils
+	makedepends = x86_64-kuznix-elf-binutils
+	makedepends = make
+	makedepends = texinfo
+	makedepends = flex
+	makedepends = bison
+	makedepends = patch
+	makedepends = gcc
+	depends = glibc
+	depends = gmp
+	depends = mpfr
+	depends = libmpc
+	depends = zlib
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = ftp://ftp.icm.edu.pl/pub/gnu/gcc/gcc-15.2.0/gcc-15.2.0.tar.xz
+	sha256sums = SKIP
+
+pkgname = x86_64-kuznix-elf-gcc
