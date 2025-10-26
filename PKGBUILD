@@ -14,7 +14,7 @@
 pkgname=mesa-rk35xx-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=25.3.0_devel.213318.ca493b5c453.d41d8cd
-pkgrel=1
+pkgrel=2
 arch=($CARCH)
 makedepends=(
     'git'
@@ -282,7 +282,7 @@ case $MESA_WHICH_LLVM in
             'rust-bindgen'
         )
         depends+=(
-            'libLLVM.so=20.1-64'
+            'libLLVM.so>=20.1-64'
             'clang'
             'libclc'
             'spirv-llvm-translator'
