@@ -1,6 +1,6 @@
 pkgbase = f3d-bin
 	pkgdesc = A fast and minimalist 3D viewer
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/f3d-app/f3d
@@ -13,7 +13,7 @@ pkgbase = f3d-bin
 	provides = f3d
 	conflicts = f3d
 	backup = etc/f3d/
-	source = https://github.com/f3d-app/f3d/releases/download/v3.2.0/F3D-3.2.0-Linux-x86_64-raytracing.tar.xz
-	sha256sums = 6ad2dec9545ea93e1bf457363dfa5b9c4293e4af37abe23b142f433484ada56c
+	source = https://github.com/f3d-app/f3d/releases/download/v3.3.0/F3D-3.3.0-Linux-x86_64-raytracing.tar.xz
+	sha256sums = 5b7f116f7edba61b074cf87c52a21e6e2c81aa20079de9d04b2ff58c8b3cffee
 
 pkgname = f3d-bin
