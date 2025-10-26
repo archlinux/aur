@@ -14,8 +14,7 @@ pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
 license=('Apache-2.0')
-depends=('aspnet-runtime>=9.0')
-makedepends=('git' 'dotnet-sdk>=9.0' 'aspnet-runtime>=9.0')
+makedepends=('git' 'dotnet-sdk>=9.0.10' 'aspnet-runtime>=9.0.10')
 changelog=changelog
 install=install
 source=("asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=${pkgver}?signed"
@@ -112,7 +111,7 @@ package_asf-plugin-signinwithsteam() {
 
 package_asf() {
     pkgdesc="Steam cards farmer."
-    depends=('aspnet-runtime>=8.0')
+    depends=('aspnet-runtime>=9.0.10')
     optdepends=('asf-ui: standalone web interface for ASF'
                 'asf-plugin-itemsmatcher'
                 'asf-plugin-mobileauthenticator'

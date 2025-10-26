@@ -9,9 +9,8 @@ pkgbase = asf
 	arch = aarch64
 	license = Apache-2.0
 	makedepends = git
-	makedepends = dotnet-sdk>=9.0
-	makedepends = aspnet-runtime>=9.0
-	depends = aspnet-runtime>=9.0
+	makedepends = dotnet-sdk>=9.0.10
+	makedepends = aspnet-runtime>=9.0.10
 	source = asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=6.2.2.3?signed
 	source = service.patch
 	source = asf.env
@@ -50,7 +49,7 @@ pkgname = asf-plugin-signinwithsteam
 
 pkgname = asf
 	pkgdesc = Steam cards farmer.
-	depends = aspnet-runtime>=8.0
+	depends = aspnet-runtime>=9.0.10
 	optdepends = asf-ui: standalone web interface for ASF
 	optdepends = asf-plugin-itemsmatcher
 	optdepends = asf-plugin-mobileauthenticator
