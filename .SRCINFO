@@ -1,6 +1,6 @@
 pkgbase = himitsu
 	pkgdesc = Secret storage manager (passwords, credentials, miscellaneous)
-	pkgver = 0.8
+	pkgver = 0.9
 	pkgrel = 1
 	url = https://himitsustore.org/
 	install = himitsu.install
@@ -9,9 +9,9 @@ pkgbase = himitsu
 	makedepends = hare
 	makedepends = scdoc
 	optdepends = hiprompt-gtk-py: prompter support (GTK+)
-	source = himitsu-0.8.tar.gz::https://git.sr.ht/~sircmpwn/himitsu/archive/0.8.tar.gz
+	source = himitsu-0.9.tar.gz::https://git.sr.ht/~sircmpwn/himitsu/archive/0.9.tar.gz
 	source = himitsud.service
-	sha256sums = fc670b24984de5d32df2e8ac34284fdbdaf83352c63c7910b334bfe941ea06ab
+	sha256sums = 369e65b7a6fcfd90078a12abc25e25c1d161eb33f9eda01a6ed8d4ade74fbbcc
 	sha256sums = 0d84a1ceb17b6be53066f9f617ee35f233ada2283c3f9b3cbea5f2c8b6c7001e
 
 pkgname = himitsu

@@ -2,7 +2,7 @@
 # Project: https://sr.ht/~sircmpwn/himitsu
 
 pkgname=himitsu
-pkgver='0.8'
+pkgver='0.9'
 pkgrel=1
 pkgdesc='Secret storage manager (passwords, credentials, miscellaneous)'
 arch=(x86_64)
@@ -18,7 +18,7 @@ source=(
 	'himitsud.service'
 )
 sha256sums=(
-	'fc670b24984de5d32df2e8ac34284fdbdaf83352c63c7910b334bfe941ea06ab'
+	'369e65b7a6fcfd90078a12abc25e25c1d161eb33f9eda01a6ed8d4ade74fbbcc'
 	'0d84a1ceb17b6be53066f9f617ee35f233ada2283c3f9b3cbea5f2c8b6c7001e'
 )
 
