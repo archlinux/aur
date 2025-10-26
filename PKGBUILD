@@ -1,14 +1,14 @@
 pkgname=ura-git
 _pkgname=ura
-pkgver=r202.7a0c2a0
+pkgver=r207.62a99dd
 pkgrel=1
 pkgdesc="A highly customizable Wayland compositor driven by Lua"
 url="https://github.com/levinion/ura"
 arch=("any")
 license=("GPLv3")
 depends=("luajit" "glibc" "wlroots0.19" "nlohmann-json" "sol2" "cli11" "spdlog" "libnotify" "libinput" "libxkbcommon")
-makedepends=("cmake" "pkgconf" "cargo" "make")
-optdepends=("xwayland-satellite" "foot" "waybar" "fzfmenu" "swaylock" "swaybg" "swayidle")
+makedepends=("cmake" "pkgconf" "make" "ninja")
+optdepends=("xwayland-satellite" "foot")
 provides=("ura")
 conflicts=("ura")
 source=(
@@ -24,16 +24,16 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
   make build
-  cd "$srcdir/$_pkgname/shell"
-  cargo build --release
 }
 
 package() {
   cd "$srcdir/$_pkgname"
   install -Dm755 ./build/$_pkgname $pkgdir/usr/bin/$_pkgname
+  install -Dm755 ./scripts/* $pkgdir/usr/bin/
   install -Dm644 ./assets/$_pkgname.desktop $pkgdir/usr/share/wayland-sessions/$_pkgname.desktop
   install -d $pkgdir/etc/$_pkgname
   install -Dm644 ./assets/init.lua $pkgdir/etc/$_pkgname/init.lua
   cp -r lua/$_pkgname $pkgdir/usr/share/
-  install -Dm755 shell/target/release/ura-shell $pkgdir/usr/bin/ura-shell
+  install -d $pkgdir/usr/share/zsh/site-functions
+  install -Dm644 ./assets/completions/zsh/_$_pkgname $pkgdir/usr/share/zsh/site-functions/
 }
