@@ -3,7 +3,7 @@
 _pkgbase=chordpro
 pkgname=${_pkgbase}-gui
 pkgver=6.080.1
-pkgrel=1
+pkgrel=2
 _pkgdownload=App-Music-ChordPro-${pkgver}
 _wxlastpkgver=6.070
 _wxver=3.005
@@ -13,7 +13,7 @@ url="https://chordpro.org/"
 _ghurl="https://github.com/ChordPro/chordpro"
 license=('Artistic-2.0')
 depends=(
-    'perl'                           # Provides JSON::PP, Storable, Pod::Usage, File::Copy, ExtUtils::MakeMaker, Unicode::Collate
+    'perl>=5.26.0'                   # JSON::PP, Storable, Pod::Usage, File::Copy, ExtUtils::MakeMaker, Unicode::Collate, Unicode::Normalize
     'perl-pdf-api2>=2.047'           # PDF::API2
     'perl-json-xs>=4.03'             # JSON::XS
     'perl-lwp-protocol-https>=6.14'  # LWP::Protocol::https
@@ -31,10 +31,15 @@ depends=(
     'perl-file-loadlines>=1.047'            # File::LoadLines (AUR)
     'perl-data-printer>=0.001001'           # Data::Printer (AUR)
     'perl-object-pad>=0.818'                # Object::Pad (AUR)
-
-    # Not found: HarfBuzz::Shaper, JavaScript::QuickJS, Unicode::Normalize
+    'perl-javascript-quickjs>=0.18'         # JavaScript::QuickJS (AUR)
+    #'perl-harfbuzz-shaper>=0.026'          # HarfBuzz::Shaper (not found on AUR)
 )
 makedepends=('perl-local-lib' 'cpanminus')
+optdepends=(
+    'perl-template-toolkit>=3.010: Only used by the LaTeX backend'
+    'perl-latex-encode>=0.092.0: Only used by the LaTeX backend'
+    'lilypond: Embed LilyPond music writing format'
+)
 provides=(chordpro)
 conflicts=(chordpro)
 install=chordpro.install
@@ -88,8 +93,9 @@ package() {
     install -Dm644 "${srcdir}/${_pkgdownload}/lib/ChordPro/res/linux/org.chordpro.desktop" "${pkgdir}/usr/share/applications/org.chordpro.desktop"
     desktop-file-validate "${pkgdir}/usr/share/applications/org.chordpro.desktop"
 
-    # install icon
-    install -Dm644 "${srcdir}/${_pkgdownload}/lib/ChordPro/res/icons/chordpro.png" "${pkgdir}/usr/share/pixmaps/chordpro.png"
+    # install icons
+    install -Dm644 "${srcdir}/${_pkgdownload}/lib/ChordPro/res/icons/chordpro.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/chordpro.png"
+    install -Dm644 "${srcdir}/${_pkgdownload}/lib/ChordPro/res/icons/chordpro.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/chordpro.svg"
 
     # install MIME type XML
     install -Dm644 "${srcdir}/${_pkgdownload}/lib/ChordPro/res/linux/chordpro.xml" "${pkgdir}/usr/share/mime/packages/chordpro.xml"

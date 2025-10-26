@@ -1,14 +1,14 @@
 pkgbase = chordpro-gui
 	pkgdesc = A lyrics and chords formatting program (CLI and GUI)
 	pkgver = 6.080.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chordpro.org/
 	install = chordpro.install
 	arch = x86_64
 	license = Artistic-2.0
 	makedepends = perl-local-lib
 	makedepends = cpanminus
-	depends = perl
+	depends = perl>=5.26.0
 	depends = perl-pdf-api2>=2.047
 	depends = perl-json-xs>=4.03
 	depends = perl-lwp-protocol-https>=6.14
@@ -24,6 +24,10 @@ pkgbase = chordpro-gui
 	depends = perl-file-loadlines>=1.047
 	depends = perl-data-printer>=0.001001
 	depends = perl-object-pad>=0.818
+	depends = perl-javascript-quickjs>=0.18
+	optdepends = perl-template-toolkit>=3.010: Only used by the LaTeX backend
+	optdepends = perl-latex-encode>=0.092.0: Only used by the LaTeX backend
+	optdepends = lilypond: Embed LilyPond music writing format
 	provides = chordpro
 	conflicts = chordpro
 	source = https://github.com/ChordPro/chordpro/releases/download/R6.080.1/App-Music-ChordPro-6.080.1.tar.gz
