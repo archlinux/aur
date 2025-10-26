@@ -9,8 +9,8 @@ url="https://github.com/ketch/${_base}"
 license=(BSD-3-Clause-Modification)
 depends=(python-matplotlib python-sympy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('694a1bda042ea2e5902917a836da67f2b6c03d3e58b3c9eea2af04ab532b51dc7a9fc6ae495b82f417a9685ed5fe03e9da0553c177095b1922916f01e7da0520')
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('795626088dc6cb33cd8f53f6139ce697ce317c20253a672ed2fe171004ecb063649847adf9a451acb59f92681a1562feac09a4b61d8dd72fb7891bdb104a2698')
 
 build() {
   cd ${_base}-${pkgver}
@@ -20,5 +20,4 @@ build() {
 package() {
   cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
-  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
