@@ -1,6 +1,6 @@
 pkgbase = python-flake8-builtins
 	pkgdesc = Check for python builtins being used as variables or parameters
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/gforcada/flake8-builtins
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-flake8-builtins
 	makedepends = python-hatchling
 	makedepends = python-wheel
 	depends = flake8
-	source = flake8-builtins-3.0.0.tar.gz::https://github.com/gforcada/flake8-builtins/archive/3.0.0.tar.gz
-	sha512sums = 0d9961a31f3130db1cffad41af0da197eb75210cc194d38a3e302fd2352f9e3acf9b6bd216c41e115df02bd643930d2c2e712c801c301d966c05ea21840e0e89
+	source = flake8-builtins-3.1.0.tar.gz::https://github.com/gforcada/flake8-builtins/archive/3.1.0.tar.gz
+	sha512sums = b0371f28a8db9dea74b4b46adcd279f0c5028a8cd64db911d64180797b84742f74a453b62a98018f5f3bc2228334a1d3092fbc5b766dcdbecea486fdcd5f2649
 
 pkgname = python-flake8-builtins
