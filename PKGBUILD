@@ -2,17 +2,16 @@
 
 pkgname=ntfsprogs-plus
 
-
 # Auto versioning
 get_content_redirected() {
-	if command -v curl >/dev/null; then
-		curl -Ls "$1"
-	elif command -v wget >/dev/null; then
-		wget -qO - "$1"
-	else
-		echo "Could not find curl or wget"
-		return 1
-	fi
+  if command -v curl >/dev/null; then
+    curl -Ls "$1"
+  elif command -v wget >/dev/null; then
+    wget -qO - "$1"
+  else
+    echo "Could not find curl or wget"
+    return 1
+  fi
 }
 
 _repo=ntfsprogs-plus/ntfsprogs-plus
@@ -28,10 +27,10 @@ _upver=${_upstream_version#v}
 pkgver=${_upver%-*}
 pkgrel=${_upver#*-}
 if [ ! "$pkgrel" ] || [ "$pkgrel" = "$_upver" ]; then
-	pkgrel=1
+  pkgrel=1
 fi
 
-pkgdesc='NTFS filesystem driver and utilities'
+pkgdesc='NTFS filesystem utilities'
 arch=('x86_64')
 license=('GPL-2.0-or-later')
 depends=('util-linux')
@@ -44,8 +43,7 @@ makedepends=(
   'libgcrypt'
   'pkgconf'
 )
-conflicts=('ntfsprogs' 'ntfs-3g')
-replaces=('ntfsprogs' 'ntfs-3g')
+conflicts=('ntfsprogs' 'ntfs-3g' 'ntfsprogs-plus-git')
 provides=('ntfsprogs')
 source=("${pkgname}.tar.gz::$(jq -r '.[0].tarball_url' <<<"${_latest_json}")")
 sha256sums=('SKIP')
@@ -68,15 +66,20 @@ build() {
     --enable-xattr-mappings \
     --enable-posix-acls \
     --enable-extras \
-    --enable-crypto \
+    --enable-crypto
 
   make
 }
 
 package() {
   cd ${srcdir}/${pkgname}
-  make DESTDIR="${pkgdir}" rootbindir=/usr/bin rootsbindir=/usr/bin rootlibdir=/usr/lib install
-  
+  make \
+    DESTDIR="${pkgdir}" \
+    rootbindir=/usr/bin \
+    rootsbindir=/usr/bin \
+    rootlibdir=/usr/lib \
+    install
+
   # License
   install -dm644 "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

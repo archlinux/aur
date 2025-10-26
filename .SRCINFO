@@ -1,5 +1,5 @@
 pkgbase = ntfsprogs-plus
-	pkgdesc = NTFS filesystem driver and utilities
+	pkgdesc = NTFS filesystem utilities
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/ntfsprogs-plus/ntfsprogs-plus
@@ -16,8 +16,7 @@ pkgbase = ntfsprogs-plus
 	provides = ntfsprogs
 	conflicts = ntfsprogs
 	conflicts = ntfs-3g
-	replaces = ntfsprogs
-	replaces = ntfs-3g
+	conflicts = ntfsprogs-plus-git
 	source = ntfsprogs-plus.tar.gz::https://api.github.com/repos/ntfsprogs-plus/ntfsprogs-plus/tarball/refs/tags/1.0.0
 	sha256sums = SKIP
 
