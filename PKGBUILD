@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=elephant-clipboard
-pkgver=2.7.3
+pkgver=2.7.4
 pkgrel=1
 pkgdesc='clipboard provider for elephant'
 url='https://github.com/abenz1267/elephant'
@@ -12,7 +12,7 @@ makedepends=('go')
 conflicts=('elephant-clipboard')
 provides=('elephant-clipboard')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0d94484016be37fd067575e341590db94ac7e2c1d185e06b909c50556271cb14')
+sha256sums=('2cc89173d8f94c220218347979e162dcc9fd4a2b38ac652ed3f6c64e9a1a78b4')
 
 build() {
     cd elephant-${pkgver}/internal/providers/clipboard
