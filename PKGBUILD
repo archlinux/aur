@@ -1,9 +1,10 @@
-# Maintainer: Brian Thompson <brianrobt@pm.me>
-# Maintainer: Self Denial <selfdenial at pm dot me>
+# Maintainer: Ryan Steed <ryan.steed.usa@pm.me>
+# Contributor: Brian Thompson <brianrobt@pm.me>
+# Contributor: Self Denial <selfdenial at pm dot me>
 
 pkgname=openmohaa
 pkgver=0.82.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Open re-implementation of Medal of Honor: Allied Assault "
 arch=('i686' 'x86_64')
 url="https://github.com/openmoh/openmohaa"
@@ -29,15 +30,12 @@ build() {
     -G Ninja
     -B "${srcdir}/${pkgname}-${pkgver}/build"
     -S "${srcdir}/${pkgname}-${pkgver}"
-    -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/"
-    -DTARGET_LOCAL_SYSTEM=1
-    -DUSE_SYSTEM_LIBS=0
-    -DPRODUCT_VERSION_STAGE="${_relstage}"
-    -DCMAKE_BUILD_TYPE='None'
-    # TODO: Remove this temporary option once a new release
-    # is available; it's required by CMake 4.
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
-    -Wno-dev
+    -D CMAKE_INSTALL_PREFIX="${pkgdir}/usr/"
+    -D TARGET_LOCAL_SYSTEM=1
+    -D USE_SYSTEM_LIBS=0
+    -D PRODUCT_VERSION_STAGE="${_relstage}"
+    -D CMAKE_BUILD_TYPE=None
+    -W no-dev
   )
 
   cmake "${cmake_options[@]}"
@@ -45,4 +43,7 @@ build() {
 
 package() {
   ninja -C "${srcdir}/${pkgname}-${pkgver}/build" install
+  # Workaround for inclusion of recastnavigation headers
+  # TODO: submit request to fix upstream
+  rm -rf "${pkgdir}/usr/include" 
 }
