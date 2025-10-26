@@ -1,7 +1,7 @@
 # Maintainer: Maciej <macrionyn@proton.me>
 
 pkgname=disktui
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A terminal-based disk management utility built with Rust and Ratatui'
 url='https://github.com/Maciejonos/disktui'
@@ -20,19 +20,19 @@ optdepends=(
 conflicts=('disktui')
 provides=('disktui')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a098d5b1db8e5e71077dfe16837a506f41b145457b5464dd1c546247bc68bd54')
+sha256sums=('8a56ca4c2d50a34098329b4b43ad5ac96cd3afa147ca21fac16669abea083128')
 
 build() {
-    cd ${pkgname}-${pkgver}
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build --release
+  cd ${pkgname}-${pkgver}
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --release
 }
 
 package() {
-    cd ${pkgname}-${pkgver}/target/release
-    install -Dm 755 disktui -t "${pkgdir}/usr/bin"
+  cd ${pkgname}-${pkgver}/target/release
+  install -Dm 755 disktui -t "${pkgdir}/usr/bin"
 
-    cd ../../
-    install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd ../../
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
