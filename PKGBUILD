@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 _target=x86_64-kuznix-elf
 _prefix=/opt/kuznix-tools
-_builddir="$srcdir/build-gcc"
+_builddir="gcc-build"
 
 build() {
   cd "$srcdir"
@@ -41,6 +41,11 @@ build() {
     --with-newlib
 
   make all-gcc
+}
+
+check() {
+  cd "$_builddir"
+  make -k check || true
 }
 
 package() {
