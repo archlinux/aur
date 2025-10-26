@@ -1,0 +1,13 @@
+diff --git a/meson.build b/meson.build
+index 2d689036..953aa6a5 100644
+--- a/meson.build
++++ b/meson.build
+@@ -98,7 +98,7 @@ have_ieee1284 = dep_ieee1284.found() and cc.has_header('ieee1284.h', dependencie
+ 
+ # gpib - optional, Linux only
+ opt_gpib = get_option('with_gpib')
+-dep_gpib = cc.find_library('gpib', required: opt_gpib.enabled())
++dep_gpib = cc.find_library('gpib', required: false)
+ have_gpib = dep_gpib.found() and cc.has_header('gpib/ib.h', dependencies: dep_gpib)
+ 
+ # Configuration and driver tracking
