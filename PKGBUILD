@@ -1,7 +1,7 @@
 # Maintainer: Senan Kelly <senan@senan.xyz>
 
 pkgname=wlr-sunclock
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Displays a sunclock desktop widget using the layer shell protocol'
 arch=(x86_64)
@@ -18,7 +18,7 @@ options=()
 install=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sentriz/${pkgname}/archive/v$pkgver.tar.gz")
 noextract=()
-md5sums=('d06bdbc660446a3835bb8cb538222d11')
+md5sums=('131f7bb474999d911716fa863d48635d')
 
 prepare() {
 	cd "$pkgname-$pkgver"
