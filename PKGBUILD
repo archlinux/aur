@@ -7,7 +7,7 @@ pkgver=4.3.1
 pkgrel=1
 pkgdesc="Generate scripting interfaces to C/C++ code"
 arch=('x86_64')
-url="http://www.swig.org/"
+url="https://www.swig.org/"
 license=(
   GPL-3.0-or-later
   LicenseRef-BSD-Arizona
