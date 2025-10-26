@@ -1,13 +1,13 @@
 pkgbase = rremind
 pkgdesc = A simple alternative to Diane Skoll's remind
-pkgver = 0.0.14
+pkgver = 0.0.15
 pkgrel = 1
 url = https://github.com/Jakubzik/rremind
 arch = x86_64
 license = GPLv3
 provides = rremind
 conflicts = rremind
-source = https://github.com/Jakubzik/rremind/releases/download/v0.0.14/rremind-0.0.14-x86_64.tar.gz
-sha256sums = e537ed0c3f06177d68df9371e1448aa506a9b37adb4dbfbb398597f27aadc45a
+source = https://github.com/Jakubzik/rremind/releases/download/v0.0.15/rremind-0.0.15-x86_64.tar.gz
+sha256sums = 8d1d58b7aaf8a63b0b71d3cb50e976eb1758b3d0f40b5058fe9a89d5e168465f
 
 pkgname = rremind
