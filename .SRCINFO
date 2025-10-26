@@ -1,0 +1,19 @@
+pkgbase = x86_64-kuznix-elf-binutils
+	pkgdesc = GNU Binutils for the x86_64-kuznix-elf cross toolchain
+	pkgver = 2.45
+	pkgrel = 1
+	url = https://www.gnu.org/software/binutils/
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = make
+	makedepends = texinfo
+	depends = glibc
+	depends = zlib
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://ftp.icm.edu.pl/gnu/binutils/binutils-2.45.tar.xz
+	sha256sums = SKIP
+
+pkgname = x86_64-kuznix-elf-binutils
