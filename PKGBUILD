@@ -1,14 +1,15 @@
-# Maintainer: Brian Thompson <brianrobt@pm.me>
+# Maintainer: Ryan Steed <ryan.steed.usa@pm.me>
+# Contributor: Brian Thompson <brianrobt@pm.me>
 # Contributor: Self Denial <selfdenial at pm dot me>
 
 pkgname=openmohaa-git
 _pkgname="${pkgname/-git/}"
-pkgver=0.82.1.r33.555caa1
+pkgver=0.82.1.r150.0487696
 pkgrel=1
 pkgdesc="Open re-implementation of Medal of Honor: Allied Assault "
 arch=('i686' 'x86_64')
 url="https://github.com/openmoh/openmohaa"
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=(
   'openal'
   'sdl2'
@@ -18,7 +19,6 @@ depends=(
 )
 makedepends=(
   'cmake'
-  'git'
   'ninja'
 )
 conflicts=("${_pkgname}")
@@ -40,11 +40,11 @@ build() {
     -G Ninja
     -B "${srcdir}/${_pkgname}/build"
     -S "${srcdir}/${_pkgname}"
-    -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/"
-    -DTARGET_LOCAL_SYSTEM=1
-    -DUSE_SYSTEM_LIBS=0
-    -DCMAKE_BUILD_TYPE='None'
-    -Wno-dev
+    -D CMAKE_INSTALL_PREFIX="${pkgdir}/usr/"
+    -D TARGET_LOCAL_SYSTEM=1
+    -D USE_SYSTEM_LIBS=0
+    -D CMAKE_BUILD_TYPE=None
+    -W no-dev
   )
 
   cmake "${cmake_options[@]}"
@@ -52,4 +52,7 @@ build() {
 
 package() {
   ninja -C "${srcdir}/${_pkgname}/build" install
+  # Workaround for inclusion of recastnavigation headers
+  # TODO: submit request to fix upstream
+  rm -rf "${pkgdir}/usr/include"
 }
