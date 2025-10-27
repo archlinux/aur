@@ -1,6 +1,6 @@
 pkgbase = python-chromadb
 	pkgdesc = the AI-native open-source embedding database
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/chroma-core/chroma
 	arch = any
@@ -41,7 +41,7 @@ pkgbase = python-chromadb
 	depends = python-typing_extensions
 	depends = uvicorn
 	options = !lto
-	source = chromadb-1.2.1.tar.gz::https://files.pythonhosted.org/packages/source/c/chromadb/chromadb-1.2.1.tar.gz
-	b2sums = 1930ba1169b2f0741fad2f55f1fb4a7b4a2309f8a6132fc09600fc06253be7be19fc7269efe8bad4204dfdafacbf5aa93e39be1c57de17948ef0177c66335d16
+	source = chromadb-1.2.2.tar.gz::https://files.pythonhosted.org/packages/source/c/chromadb/chromadb-1.2.2.tar.gz
+	b2sums = 5814a3905b36a4d27d97649a8765b07d85b4633c89fe97b34e7885189921adec25fda5c96240b66b7c47cf64164f2fa9301cbd06f7ebba9eefbb15ce06e7a8c0
 
 pkgname = python-chromadb
