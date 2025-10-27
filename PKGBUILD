@@ -1,15 +1,15 @@
 # Maintainer: getzze <getzze at_gmail dot_com>
 # Based on python-tslearn PKGBUILD
 pkgname=python-tslearn-git
-pkgver=r1625.efa0091
+pkgver=r1694.19e8ab8
 pkgrel=1
 pkgdesc="A machine learning toolkit dedicated to time-series data. Version from the latest commit."
 arch=('x86_64')
 url='https://github.com/rtavenar/tslearn'
 license=('BSD')
 depends=('python' 'python-numpy' 'python-scipy' 'python-numba' 'python-joblib' 'python-scikit-learn')
-optdepends=('python-tensorflow' 'python-h5py' 'python-pytorch' 'python-keras-applications' 'python-keras-preprocessing')
-makedepends=('git' 'python-setuptools')
+optdepends=('python-pytorch' 'python-h5py' 'python-keras-applications' 'python-keras-preprocessing' 'python-pandas' 'python-stumpy' 'python-cesium')
+makedepends=('git' 'python-setuptools' 'python-setuptools-scm' 'python-build' 'python-wheel' 'python-installer')
 provides=('python-tslearn')
 conflicts=('python-tslearn')
 options=(!emptydirs)
@@ -25,13 +25,13 @@ pkgver() {
 
 build() {
   cd "${srcdir}/tslearn"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/tslearn"
-  python setup.py install --root="$pkgdir/" --optimize=1
 
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
