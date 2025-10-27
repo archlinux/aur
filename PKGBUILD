@@ -1,53 +1,51 @@
-# Maintainer: Jameson Pugh <imntreal@gmail.com>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
+# Contributor: Jameson Pugh <imntreal@gmail.com>
 # Contributor: Swift Geek < swift geek Ã¢t gmail dÃ¸t cÃ¸m>
 
-pkgname=lib32-libappindicator-gtk2
-pkgver=12.10.0
-pkgrel=5
-pkgdesc='Allow applications to export a menu into the Unity Menu bar'
-arch=('i686' 'x86_64')
+_pkgname=libappindicator
+pkgname=lib32-${_pkgname}-gtk2
+_bzrtag=12.10.0
+_bzrrev=298
+pkgver=${_bzrtag}.r${_bzrrev}
+pkgrel=3
+pkgdesc='Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 2 library, 32-bit)'
 url='https://launchpad.net/libappindicator'
-license=('LGPL')
-depends=('lib32-libdbusmenu-gtk2' 'lib32-libindicator-gtk2')
-provides=('lib32-libappindicator')
-makedepends=('dbus-glib' 'gobject-introspection'
-             'perl-xml-libxml' 'pygtk' 'vala' 'gtk-sharp-2')
+arch=('x86_64')
+license=('GPL-3.0-only')
+depends=("${_pkgname}-gtk2" 'lib32-libdbusmenu-gtk2')
+makedepends=('breezy' 'dbus-glib' 'glib2-devel' 'gnome-common' 'vala')
 options=('!emptydirs')
-source=("http://launchpad.net/libappindicator/${pkgver%.*}/${pkgver}/+download/libappindicator-${pkgver}.tar.gz"
-        'python-gtfo.patch')
-sha256sums=('d5907c1f98084acf28fd19593cb70672caa0ca1cf82d747ba6f4830d4cc3b49f'
-            'a10e2bc67fdfed814a8b4d56a0bae7db4a642327a2d08305ca15e806b5f6df83')
+source=($_pkgname::bzr+https://code.launchpad.net/~indicator-applet-developers/libappindicator/trunk#revision=$_bzrrev)
+sha512sums=('023cb633e9750e279b19a6dc2d42d37bfc15d6c992017be3a6b71881579654578e9da3058d44ab400752f86411a362e676abb217ca47f14d24e43e6c26107f4d')
+validpgpkeys=('6FC05581A37D71FCECE165DB5BE41E162CD6358E')  # Charles Kerr <charles.kerr@canonical.com>
 
 prepare() {
-  cd libappindicator-${pkgver}
-
-  sed 's|/cli/|/mono/|' -i bindings/mono/{appindicator-sharp-0.1.pc.in,Makefile.in}
-  sed 's/example //g' -i Makefile.in
-
-  rm -rf bindings/python
-  patch -p1 < "${srcdir}/python-gtfo.patch"
+  cd ${_pkgname}
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd libappindicator-${pkgver}
-
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-  export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
+  export CFLAGS="${CFLAGS} -Wno-deprecated-declarations"
+  export CSC='/usr/bin/mcs'
 
-  ./configure --prefix='/usr' --sysconfdir='/etc' --localstatedir='/var' --libdir=/usr/lib32 \
-              --disable-{gtk-doc-html,mono-test,static,tests}
-  make CSC=dmcs -j1
+  cd ${_pkgname}
+  ./configure --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --libdir=/usr/lib32 \
+    --with-gtk=2
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
 }
 
 package() {
-  cd libappindicator-${pkgver}
-
-  make CSC=dmcs -j1 DESTDIR="${pkgdir}" install
-  make CSC=dmcs -j1 -C bindings/mono DESTDIR="${pkgdir}" uninstall
-  rm -rf "${pkgdir}"/usr/share
-  rm -rf "${pkgdir}"/usr/include
+  cd ${_pkgname}
+  make -j1 DESTDIR="${pkgdir}" install
+  rm -rf "${pkgdir}"/usr/{include,share}
 }
 
 # vim: ts=2 sw=2 et:
