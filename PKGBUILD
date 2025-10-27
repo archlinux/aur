@@ -1,12 +1,12 @@
 _pkgname=Arjun
 pkgname=arjun
 pkgver=2.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="HTTP parameter discovery suite."
 arch=("x86_64")
 url="https://github.com/s0md3v/Arjun"
 license=("GPL3")
-depends=("python" "python-requests" "python-dicttoxml")
+depends=("python" "python-requests" "python-dicttoxml" "python-ratelimit")
 makedepends=("python-setuptools")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 b2sums=('SKIP')
