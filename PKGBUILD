@@ -2,7 +2,7 @@
 # Contributor: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=ghost-dl-bin
-pkgver=v1.1.3
+pkgver=v1.1.4
 pkgrel=1
 pkgdesc="Kingdom Hearts Insider Game OST Archive Dowloader CLI"
 arch=(x86_64)
