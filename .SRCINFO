@@ -8,12 +8,13 @@ pkgbase = ibus-lotus-bin
 	makedepends = bash
 	depends = ibus
 	optdepends = kdotool: for switching modes on KDE Plasma
+	optdepends = gnome-shell-extension-window-calls-extended: for switching modes on GNOME Shell
 	provides = ibus-lotus
 	conflicts = ibus-bamboo-git
 	conflicts = ibus-bamboo
 	conflicts = ibus-lotus-git
 	conflicts = ibus-lotus
 	source = ibus-lotus-1.0.2.zip::https://github.com/LotusInputEngine/ibus-lotus/releases/latest/download/ibus-lotus-1.0.2.zip
-	sha256sums = SKIP
+	sha256sums = 08915ed241be90e49eb1e5c2506052a0d6f9cfdf63207b7ca2dff207b5b0a77f
 
 pkgname = ibus-lotus-bin
