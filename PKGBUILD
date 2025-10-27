@@ -5,13 +5,13 @@
 
 pkgname=purple-plugin-pack
 pkgver=2.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugins for libpurple and derived IM clients"
 arch=('x86_64')
 url="https://keep.imfreedom.org/pidgin/purple-plugin-pack"
 license=('GPL')
-depends=('libpurple')
-makedepends=('meson' 'pidgin')
+depends=('libpurple' 'pango')
+makedepends=('meson')
 source=(https://downloads.sourceforge.net/pidgin/purple%20plugin%20pack/$pkgver/$pkgname-$pkgver.tar.xz{,.asc})
 sha256sums=('82ccde9a7251a75b7e03a3f9a929014d8e008c1b6f46e58638f5f476da3e242d'
             'SKIP')

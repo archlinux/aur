@@ -1,13 +1,13 @@
 pkgbase = purple-plugin-pack
 	pkgdesc = Plugins for libpurple and derived IM clients
 	pkgver = 2.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://keep.imfreedom.org/pidgin/purple-plugin-pack
 	arch = x86_64
 	license = GPL
 	makedepends = meson
-	makedepends = pidgin
 	depends = libpurple
+	depends = pango
 	source = https://downloads.sourceforge.net/pidgin/purple%20plugin%20pack/2.8.0/purple-plugin-pack-2.8.0.tar.xz
 	source = https://downloads.sourceforge.net/pidgin/purple%20plugin%20pack/2.8.0/purple-plugin-pack-2.8.0.tar.xz.asc
 	validpgpkeys = 40DE1DC7288FE3F50AB938C548F66AFFD9BDB729
