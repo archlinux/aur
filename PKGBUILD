@@ -2,7 +2,7 @@
 
 _pkgname=pvsneslib
 pkgname=${_pkgname}-git
-pkgver=r1722.a3b165d7
+pkgver=r1735.2aee3286
 pkgrel=1
 pkgdesc="A free/libre toolchain to program the SNES using assembler and C"
 arch=('x86_64')
