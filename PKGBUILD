@@ -3,7 +3,7 @@
 _pkgauthor=keircn
 _pkgname=archium
 pkgname=${_pkgname}-bin
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Archium is a wrapper for AUR helpers such as YAY and Paru"
 arch=('x86_64')
