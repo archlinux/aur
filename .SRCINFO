@@ -1,0 +1,13 @@
+pkgbase = swaytreesave
+	pkgdesc = swaytreesave is a command-line tool that enables users of the Sway window manager to save and restore their window layouts effortlessly.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/fabienjuif/swaytreesave.git
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = https://github.com/fabienjuif/swaytreesave/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 2b31fcbf97bea73d197a8f233a8cfbd872c5daa1856cbc51b642d9ac57b75f3b
+
+pkgname = swaytreesave
