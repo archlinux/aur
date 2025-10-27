@@ -2,8 +2,8 @@
 
 _pkgname=openjph
 pkgname=mingw-w64-${_pkgname}
-pkgver=0.24.2
-pkgrel=2
+pkgver=0.24.3
+pkgrel=1
 pkgdesc='Open-source implementation of JPEG2000 Part-15 (mingw-w64)'
 url='https://github.com/aous72/OpenJPH'
 arch=(any)
@@ -17,17 +17,14 @@ source=(
 	'62450e6cc3110731bee703719145f852610ce632.patch'
 	'77f287df698ecddcfa44c5080ed7ed2069714ec4.patch'
 )
-sha256sums=('c99218752b15b5b2afca3b0e4d4f0ddf1ac19f94dbcbe11874fe492d44ed3e2d'
+sha256sums=('3166bcc5fdec011c7070dbb09e6446656f53c21b9875ad3977f4fe5e280f0db1'
             '1542ae0f12957dd20dc81b26197be2d1fab1a251493be3c64888d7a034c78ec7'
             'a7c57736232b778f77564862495d46be5a7349f379b2330d0342efe7ca7ffdb3')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release
 	-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
-	-DCMAKE_C_FLAGS_RELEASE='-DNDEBUG'
-	-DOJPH_DISABLE_AVX:BOOL='ON'
-	-DOJPH_DISABLE_AVX2:BOOL='ON'
-	-DOJPH_DISABLE_AVX512:BOOL='ON' )
+	-DCMAKE_C_FLAGS_RELEASE='-DNDEBUG' )
 _srcdir="OpenJPH-${pkgver}"
 
 prepare() {
