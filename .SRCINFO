@@ -1,0 +1,23 @@
+pkgbase = pianoteq8-stage
+	pkgdesc = Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions.
+	pkgver = 8.4.3
+	pkgrel = 1
+	url = https://www.pianoteq.com/pianoteq
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = custom
+	makedepends = gendesk
+	makedepends = p7zip
+	depends = alsa-lib
+	depends = freetype2
+	depends = ttf-font
+	depends = libx11
+	provides = pianoteq
+	conflicts = pianoteq
+	source = local://pianoteq_stage_linux_v843.7z
+	source = https://www.pianoteq.com/images/logo/pianoteq_icon_128.png
+	b2sums = c78a40cfbc433d79c2d6ea6fbe63d86c7644816f536904939b5c9687810cf86a08ff2d647205e930acc265bf9b8773c20795960c085c11b1d95e93af264e63e7
+	b2sums = bbb48b5b2bd5bbe52a39c84f42ea6c12a3633e4713e00d8132654ddf5adc5d7da1b7951c683cb11446ee847a388a775eb48591089a4e8dc69ed6d97cfc80d56d
+
+pkgname = pianoteq-stage
