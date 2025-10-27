@@ -9,7 +9,7 @@ provides=('path-of-building-community')
 conflicts=('path-of-building-community')
 url='https://github.com/PathOfBuildingCommunity/PathOfBuilding'
 license=('MIT')
-pkgver=2.52.3.r8417.62.517
+pkgver=2.56.0.r8701.65.517
 
 depends=('zlib' 'qt6-base' 'luajit' 'libgl' 'curl' 'ttf-liberation' 'ttf-bitstream-vera' 'lua51-utf8')
 makedepends=('meson' 'ninja' 'unzip' 'rsync' 'git')
