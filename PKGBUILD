@@ -6,7 +6,7 @@
 # Contributor: ssfdust@gmail.com <ssfdust@gmail.com>
 
 pkgname=cairo-dock-plug-ins-wayland-git
-pkgver=3.5.99.rc2.20250501.d41b3c27f
+pkgver=3.6.90.20251025.8aacf61f8
 pkgrel=1
 pkgdesc='Plugins for Cairo-Dock with wayland support'
 arch=('x86_64')
@@ -20,7 +20,6 @@ makedepends=('alsa-lib'
              'fftw'
              'git'
              'gnome-menus'
-             'gtk-sharp-2'
              'gtk-sharp-3'
              'gvfs'
              'libayatana-indicator'

@@ -1,6 +1,6 @@
 pkgbase = cairo-dock-plug-ins-wayland-git
 	pkgdesc = Plugins for Cairo-Dock with wayland support
-	pkgver = 3.5.99.rc2.20250501.d41b3c27f
+	pkgver = 3.6.90.20251025.8aacf61f8
 	pkgrel = 1
 	url = https://github.com/Cairo-Dock/cairo-dock-plug-ins
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = cairo-dock-plug-ins-wayland-git
 	makedepends = fftw
 	makedepends = git
 	makedepends = gnome-menus
-	makedepends = gtk-sharp-2
 	makedepends = gtk-sharp-3
 	makedepends = gvfs
 	makedepends = libayatana-indicator
