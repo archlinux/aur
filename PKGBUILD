@@ -13,7 +13,7 @@ provides=("simplemoji")
 conflicts=("simplemoji")
 depends=("noto-fonts-emoji" "noto-fonts")
 source=("https://github.com/SergioRibera/Simplemoji/releases/download/v1.2.0/simplemoji-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums=("d47733a43e578c27b2ab9aadf4dec6cd01580dba085feb635a0dc71389f0ef5a")
+sha256sums=('d47733a43e578c27b2ab9aadf4dec6cd01580dba085feb635a0dc71389f0ef5a')
 
 package() {
     find . -name 'simplemoji' -type f -executable -exec install -Dm755 {} -t "$pkgdir/usr/bin" \;
