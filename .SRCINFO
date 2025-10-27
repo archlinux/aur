@@ -10,6 +10,7 @@ pkgbase = openturns
 	makedepends = boost
 	makedepends = spectra
 	makedepends = nanoflann
+	makedepends = mold
 	depends = libxml2
 	depends = onetbb
 	depends = libcuba
