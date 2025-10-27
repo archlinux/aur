@@ -1,7 +1,7 @@
 pkgbase = flowinity-bin
 	pkgdesc = The dashboard for your digital life. Store and share images, write documents, and talk with your friends. (Binary version)
 	pkgver = 1.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flowinity.com
 	arch = x86_64
 	license = GPL-3.0-only
