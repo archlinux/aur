@@ -6,6 +6,7 @@ _plugins_ver=3.16
 pkgname=nomacs
 pkgver=3.21.1
 pkgrel=1
+epoch=1
 pkgdesc="A Qt image viewer"
 arch=(x86_64)
 url="https://github.com/nomacs/nomacs"
