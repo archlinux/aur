@@ -1,15 +1,13 @@
 pkgbase = ac-library
 	pkgdesc = AC Library is the official library of AtCoder.
 	pkgver = 1.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/atcoder/ac-library
 	arch = x86_64
 	license = CC0
 	makedepends = unzip
 	depends = gcc
 	source = https://github.com/atcoder/ac-library/releases/download/v1.5.1/ac-library.zip
-	source = ac-expander
 	sha256sums = 6dc0becebba69bb523ce907a31966fe30d39098935ec6b4b5289c94e42634be1
-	sha256sums = 66fa65aa235655190559873cdd9491031149cee0c5c4c7c53086b07f677014ab
 
 pkgname = ac-library
