@@ -27,7 +27,6 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" "pianoteq-stage-bin" "pianoteq-standard-trial-bin")
 _name="Pianoteq 9"
 
-echo "This package has been updated to Pianoteq 9. If you do not wish to update uninstall this package and see package : pianoteq8-stage"
 #Source file download guide
 _sourcefile="./pianoteq_setup_v${pkgver//./}.tar.xz"
 if [ ! -f ${_sourcefile} ]; then
@@ -51,7 +50,7 @@ fi
 
 source=("local://pianoteq_setup_v${pkgver//./}.tar.xz"
   'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
-b2sums=('c78a40cfbc433d79c2d6ea6fbe63d86c7644816f536904939b5c9687810cf86a08ff2d647205e930acc265bf9b8773c20795960c085c11b1d95e93af264e63e7'
+b2sums=('25895a8cf5265f5111f65a28cced5c9efc340dcdf225263bd99ad3b2a71f64fc981a561338ad4ef0f83d1ed187e7606d8eaf6ae26048c2a9d975f18783d49cbc'
         'bbb48b5b2bd5bbe52a39c84f42ea6c12a3633e4713e00d8132654ddf5adc5d7da1b7951c683cb11446ee847a388a775eb48591089a4e8dc69ed6d97cfc80d56d')
 
 prepare() {
