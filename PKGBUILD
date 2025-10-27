@@ -3,7 +3,7 @@
 # Contributor: lsf
 # Contributor: Adam Hose <adis@blad.is>
 pkgname=opensnitch-git
-pkgver=1.7.2.r29.4b22fde1
+pkgver=1.7.2.r34.cb2feeb6
 pkgrel=1
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -121,7 +121,10 @@ build() {
   popd
 
   pushd ui
-  pyrcc5 -o opensnitch/resources_rc.py opensnitch/res/resources.qrc
+  # https://stackoverflow.com/questions/66099225/how-can-resources-be-provided-in-pyqt6-which-has-no-pyrcc
+  /usr/lib/qt6/rcc -g python opensnitch/res/resources.qrc | \
+    sed '0,/PySide6/s//PyQt6/' > opensnitch/resources_rc.py
+
   # NOTE: yes, we do need this.
   # Arch upstream uses a patch, but _also_ includes pb files pre-generated
   # so it fails for this PKGBUILD.
