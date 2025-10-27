@@ -2,6 +2,7 @@
 # Based on john-git PKGBUILD
 
 pkgname=john-bj-git
+pkgver=r17193.cb0c337e7
 pkgrel=1
 pkgdesc="John the Ripper – bleeding-jumbo branch (all features enabled)"
 arch=('x86_64' 'aarch64' 'i686')
