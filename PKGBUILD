@@ -3,8 +3,8 @@
 # shellcheck disable=SC2034
 _pkgname=waybar-lyric
 pkgname=${_pkgname}-git
-pkgver=0.10.0.r48.g90959cb
-pkgrel=2
+pkgver=0.13.1.r0.g015fbe7
+pkgrel=1
 pkgdesc="A waybar module for song lyric"
 arch=('x86_64')
 url="https://github.com/Nadim147c/waybar-lyric"
@@ -24,11 +24,10 @@ pkgver() {
 
 build() {
     cd "$srcdir/${_pkgname}" || exit
-    make
+    make VERSION="$pkgver"
 }
 
 package() {
     cd "$srcdir/${_pkgname}" || exit
     make install PREFIX="$pkgdir/usr/"
 }
-
