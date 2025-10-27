@@ -23,8 +23,6 @@ license=('custom')
 depends=('alsa-lib' 'freetype2' 'ttf-font' 'libx11')
 makedepends=('gendesk' 'p7zip')
 optdepends=()
-provides=("${pkgname%-*}")
-conflicts=("${pkgname%-*}")
 _name="pianoteq8-stage"
 
 #Source file download guide
