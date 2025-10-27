@@ -1,13 +1,13 @@
 # Contributor: holishing
 # Contributor: axzxc1236
 pkgname=oxwu
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="The GUI software using P2P networking to fastly report Earthquakes in Taiwan"
 arch=('x86_64')
 url="https://eew.earthquake.tw"
 source=("oxwu-$pkgver.AppImage::https://eew.earthquake.tw/releases/linux/x64/oxwu-linux-x86_64.AppImage")
-sha512sums=('e80169b193a627a57b8947456ff368103b34492fa36ae7a08f53c8b18957228b67e235b8ce410cb24017d76ec1e7f4f9201cb5eb2a1f974d52757e81f5df441c')
+sha512sums=('479d620d6f31e13d85b9b41058b37831296919b6f45cbad894e71439c9377d7a474a3b860d4636495e818a2ebe0cfe3e4654136fadd706020f58c646c50aa4a3')
 noextract=("oxwu-$pkgver.AppImage")
 options+=('!strip')
 
