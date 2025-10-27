@@ -1,38 +1,13 @@
 # AUR Maintainer: Shadichy <shadichy@blisslabs.org>
 
 pkgname=ntfsprogs-plus
-
-# Auto versioning
-get_content_redirected() {
-  if command -v curl >/dev/null; then
-    curl -Ls "$1"
-  elif command -v wget >/dev/null; then
-    wget -qO - "$1"
-  else
-    echo "Could not find curl or wget"
-    return 1
-  fi
-}
-
-_repo=ntfsprogs-plus/ntfsprogs-plus
-
-url="https://github.com/${_repo}"
-
-_latest_json=$(get_content_redirected "https://api.github.com/repos/${_repo}/tags?per_page=1")
-
-_upstream_version=$(jq -r '.[0].name' <<<"${_latest_json}")
-_upstream_version=${_upstream_version##*/}
-
-_upver=${_upstream_version#v}
-pkgver=${_upver%-*}
-pkgrel=${_upver#*-}
-if [ ! "$pkgrel" ] || [ "$pkgrel" = "$_upver" ]; then
-  pkgrel=1
-fi
-
+_repo=ntfsprogs-plus/$pkgname
+pkgver=1.0.0
+pkgrel=1
 pkgdesc='NTFS filesystem utilities'
 arch=('x86_64')
 license=('GPL-2.0-or-later')
+url="https://github.com/${_repo}"
 depends=('util-linux')
 makedepends=(
   'git'
@@ -44,19 +19,21 @@ makedepends=(
   'pkgconf'
 )
 conflicts=('ntfsprogs' 'ntfs-3g' 'ntfsprogs-plus-git')
-provides=('ntfsprogs')
-source=("${pkgname}.tar.gz::$(jq -r '.[0].tarball_url' <<<"${_latest_json}")")
-sha256sums=('SKIP')
+provides=('ntfsprogs' "$pkgname")
+source=("${pkgname}.tar.gz::https://api.github.com/repos/ntfsprogs-plus/ntfsprogs-plus/tarball/refs/tags/1.0.0")
+sha256sums=('32cf8c6a876efa9dbb7418187b3d00e6004d1894518e75047eb7ed338dcbf9e6')
 
 prepare() {
   rm -f ${srcdir}/${pkgname}.tar.gz
   mv ${srcdir}/${pkgname}-* ${srcdir}/${pkgname}
+
   cd ${srcdir}/${pkgname}
   ./autogen.sh
 }
 
 build() {
   cd ${srcdir}/${pkgname}
+
   ./configure \
     --prefix=/usr \
     --sbin=/usr/bin \
@@ -67,12 +44,12 @@ build() {
     --enable-posix-acls \
     --enable-extras \
     --enable-crypto
-
   make
 }
 
 package() {
   cd ${srcdir}/${pkgname}
+
   make \
     DESTDIR="${pkgdir}" \
     rootbindir=/usr/bin \
