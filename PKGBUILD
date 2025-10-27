@@ -31,7 +31,7 @@ prepare() {
 
 pkgver() {
     cd "$srcdir/yafu"
-    git describe --long --tags | sed 's/^v//;s/-/./g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
