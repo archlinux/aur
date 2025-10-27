@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# License: GPLv3
+# Credits: Felipe Facundes
+
+libtorch_cuda="/opt/libtorch-cuda"
+libtorch_cpu="/opt/libtorch-cpu"
+
+if [ -d "$libtorch_cuda" ]; then
+	export LD_LIBRARY_PATH="/opt/libtorch-cuda/lib:/usr/lib"
+elif [ -d "$libtorch_cpu" ]; then
+	export LD_LIBRARY_PATH="/opt/libtorch-cpu/lib:/usr/lib"
+fi
+
+audacity "$@"
