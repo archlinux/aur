@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=vulkan-caps-viewer-x11-bin
-pkgver=4.02
-pkgrel=2
+pkgver=4.03
+pkgrel=1
 epoch=1
 pkgdesc="Vulkan Hardware Capability Viewer"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ provides=('vulkan-caps-viewer')
 conflicts=('vulkan-caps-viewer')
 source_x86_64=("https://vulkan.gpuinfo.org/downloads/vulkancapsviewer_${pkgver}_linux64.AppImage")
 source_aarch64=("https://vulkan.gpuinfo.org/downloads/vulkancapsviewer_${pkgver}_linux64_aarch64.AppImage")
-sha256sums_x86_64=('9695992ade2913c76f8458319ef2a4dd79e4c7dfe645759a4940ae72a4424ab7')
-sha256sums_aarch64=('a5c0bca37122228911e5e7c004111540405dae9114dc262c735a02d9a27c7bd8')
+sha256sums_x86_64=('2a984f5a58a8b9427db7db6579d92c1185cfbbf47a1efc0c2137e478d75378b3')
+sha256sums_aarch64=('1f810af40c8085fcda5e2fa1d1087df6b347676e14374858e6b1a75ad4657109')
 
 prepare() {
   if [ $CARCH == "aarch64" ]; then
