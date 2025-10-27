@@ -1,7 +1,7 @@
 pkgbase = java-openjfx
 	pkgdesc = Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version
 	pkgver = 26.13
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.openjdk.java.net/display/OpenJFX/Main
 	arch = x86_64
 	arch = x86_64_v3
@@ -33,11 +33,13 @@ pkgbase = java-openjfx
 	source = java-openjfx-flags.patch
 	source = java-openjfx-profile.sh
 	source = java-openjfx-profile.csh
+	source = java-openjfx-env.sh
 	b2sums = 4a3b40f3f576ae3563dfa1438fa2b1b03e6600e2d95d2fee83cb187a675fa0f297d70d991a5c2656cb766541f8fe5114f146e61bbdb8842c1ee2719c6fea6a07
 	b2sums = 0c023ef99e7ee600710c54dad0ad59070620595109ca42c5057fa2ab74ef6d244631745f5cd4c1bea9c0321ee69f1e1efaab820ff124ad1d4f453121e77fd14f
 	b2sums = 5b6dafc22995b57564fda89aaedeb2b6ee58b2c635336ac43a123ea4ac6ced3a20eba39d99cc4eb7ec7b29fc7541f5c3bee454ee55ca79fd2d7ce5ef4ed65cd3
-	b2sums = 5bc46ef388be132fcec4cf53241598e54c041d0c0ae187dbd3a00a16f124b022aaf340cc7783caa98001fef66a553623c22423184342d26f17165cbaf4d4046a
+	b2sums = 73cc0da90136a8a564599fb23c321bae64c35c4381e74d00f24604ed9a46dc2c7aa988077846160e8cb6a61e0eaa80d1e153d89a93fb4818d2589b067eff2522
 	b2sums = 740cf91ce2753953da39082b3923f950ee05f1a1f0129d8766f7eda2579a8acac7a89834014ed5a3a1b511bc8784b955ebeadc57e523823f6df53f45ebf98a99
+	b2sums = d29bf9c99adc1769fb3eee9f2fd0d50fb7dc7bcfdd8f25f29b068dbc9be04676a970059f01651fdabac2f290dd8352e649960cafe538d903c48b9e10be20e7c6
 
 pkgname = java-openjfx
 	depends = java-runtime-openjdk=24
