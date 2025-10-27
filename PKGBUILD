@@ -1,7 +1,7 @@
 # Maintainer: Corentin Cadiou <contact@cphyc.me>
 pkgname=python-unyt
 _module_name=unyt
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="A package for handling numpy arrays with units."
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python-setuptools-scm' 'python-build' 'python-
 checkdepends=('python-pytest')
 options=(!emptydirs)
 source=("https://pypi.io/packages/source/u/${_module_name}/${_module_name}-${pkgver}.tar.gz")
-sha256sums=('d1d6f481186c663b2631fe129e82abdf0aed61a93a70662040020aabe016384b')
+sha256sums=('17ea7013ef4004507fe193193e80b30645ec269b5b3f5fca80eda8f7cb961213')
 
 build() {
     cd "${srcdir}/${_module_name}-$pkgver"
