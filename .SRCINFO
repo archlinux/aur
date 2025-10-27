@@ -1,7 +1,7 @@
 pkgbase = krunner-yubikey-oath
 	pkgdesc = KDE Plasma 6 KRunner plugin for YubiKey OATH (TOTP/HOTP) integration
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jkolo/yubikey-oath-krunner
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -22,6 +22,6 @@ pkgbase = krunner-yubikey-oath
 	depends = libxkbcommon
 	depends = zxing-cpp
 	source = krunner-yubikey-oath-1.0.2.tar.gz::https://github.com/jkolo/yubikey-oath-krunner/archive/v1.0.2.tar.gz
-	sha256sums = d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
+	sha256sums = 68685417a97adabed055ad765bfc98e21e50c2973aff69f76a04bc11ffc1250e
 
 pkgname = krunner-yubikey-oath
