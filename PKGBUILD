@@ -19,8 +19,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}::${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '4ea39cd8682ecda4674e2f5bf39f7e2d16335c62572cd95ae251bd52375091a9')
-sha256sums_x86_64=('fb9911c5e60bb4280dc8cc1322c33cd2408d5f286aa32f5b83420e913c1867f3')
+            'ee816979e468f51598ff1ecf1c55b0a175ca05f469d495a715cf48892cf9f0e6')
+sha256sums_x86_64=('6e69cf660548c37d87f72fbdb7c037c6c02181a9d2f5af3ec9dbd538583ed0bd')
 
 
 prepare() {
