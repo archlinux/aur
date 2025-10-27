@@ -6,7 +6,7 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=sway-scroll-stable
-pkgver=1.11.7
+pkgver=1.11.8
 epoch=1
 pkgrel=1
 pkgdesc='Fork of the sway Wayland compositor with a scrolling layout like PaperWM or niri (stable version)'
