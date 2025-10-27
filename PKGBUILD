@@ -1,6 +1,6 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=thorium
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 _rustupver=nightly-2025-08-01
 pkgdesc="A highly scalable, distributed malware analysis and data generation framework"
@@ -19,7 +19,7 @@ makedepends=(
     git
 )
 source=($pkgname::git+https://github.com/cisagov/thorium.git#tag=$pkgver)
-b2sums=('1daa732b255640839d733ed2de410d0e0422371a71734cc51baea6cae7822dec3d7fe57c8e268596bde88b8ab19c88ebac33e30af28d04a0ffa374c6c18e3399')
+b2sums=('dbccc9517af9827368c422b4776248dabc0690645c52a71fc967a85dca1537a053a172ec6b10deb3c4da15697d1d1f5b3eeeeb3f35af756b1e8d7c9881af1174')
 options=(!lto)
 
 prepare() {
@@ -53,8 +53,8 @@ package() {
     cd $pkgname/target/release
     install -Dm0755 -t "$pkgdir"/usr/bin/ thoradm
     install -Dm0755 -t "$pkgdir"/usr/bin/ thorctl
-    install -Dm0755 -t "$pkgdir"/usr/bin/ thorium
     install -Dm0755 -t "$pkgdir"/usr/bin/ thorium-agent
+    install -Dm0755 -t "$pkgdir"/usr/bin/ thorium-api
     install -Dm0755 -t "$pkgdir"/usr/bin/ thorium-event-handler
     install -Dm0755 -t "$pkgdir"/usr/bin/ thorium-operator
     install -Dm0755 -t "$pkgdir"/usr/bin/ thorium-reactor
