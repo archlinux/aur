@@ -1,12 +1,12 @@
 pkgbase = cq-editor-bin
 	pkgdesc = CadQuery GUI editor based on PyQT
-	pkgver = 0.2
-	pkgrel = 3
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/CadQuery/CQ-editor
 	arch = x86_64
 	license = Apache 2.0
 	provides = cq-editor
-	source = https://github.com/CadQuery/CQ-editor/releases/download/0.2/CQ-editor-Linux-x86_64.zip
+	source = https://github.com/CadQuery/CQ-editor/releases/download/0.5.0/CQ-editor-Linux-x86_64.zip
 	source = https://raw.githubusercontent.com/CadQuery/CQ-editor/master/icons/cadquery_logo_dark.svg
 	source = cq-editor.desktop
 	sha256sums = 9a39fcf938112993290c058c67b1ac92f2560fd459de2f0f94b29a74954df47c

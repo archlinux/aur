@@ -2,8 +2,8 @@
 
 pkgname=cq-editor-bin
 _gitname=CQ-editor
-pkgver=0.2
-pkgrel=3
+pkgver=0.5.0
+pkgrel=1
 url="https://github.com/CadQuery/CQ-editor"
 pkgdesc="CadQuery GUI editor based on PyQT"
 provides=("cq-editor")
@@ -14,9 +14,9 @@ source=("https://github.com/CadQuery/${_gitname}/releases/download/${pkgver}/${_
         "https://raw.githubusercontent.com/CadQuery/CQ-editor/master/icons/cadquery_logo_dark.svg"
         "cq-editor.desktop")
 
-sha256sums=("9a39fcf938112993290c058c67b1ac92f2560fd459de2f0f94b29a74954df47c"
-            "54eca787b08c860682339d28cd3795448118f29f3a7988cdcbc7e671e58cabfa"
-            "867b2a5dfaa56aec9a0bdfcd53ae8b857fc4adb1ea15c48b74e351c9a1bfb8c7")
+sha256sums=('9a39fcf938112993290c058c67b1ac92f2560fd459de2f0f94b29a74954df47c'
+            '54eca787b08c860682339d28cd3795448118f29f3a7988cdcbc7e671e58cabfa'
+            '867b2a5dfaa56aec9a0bdfcd53ae8b857fc4adb1ea15c48b74e351c9a1bfb8c7')
 
 package() {
   cd $srcdir/${_gitname}
