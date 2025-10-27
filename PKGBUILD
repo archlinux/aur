@@ -2,7 +2,7 @@
 pkgname=flowinity
 pkgname_internal=flowinity-desktop
 pkgver=1.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="The dashboard for your digital life. Store and share images, write documents, and talk with your friends. (Source version)"
 arch=('x86_64')
 url="https://flowinity.com"
@@ -33,7 +33,11 @@ package() {
   tar -xzf $tarball -C "${pkgdir}/opt/${pkgname_internal}"
 
   mv "${pkgdir}/opt/${pkgname_internal}/flowinity-${pkgver}"/* "${pkgdir}/opt/${pkgname_internal}/"
-  ln -s "${pkgdir}/opt/${pkgname_internal}/flowinity" "${pkgdir}/opt/${pkgname_internal}/flowinity-desktop"
+
+  # Package name was renamed to flowinity from flowinity-desktop, for old references to the original binary
+  # we will create a symlink
+  ln -s "/opt/${pkgname_internal}/flowinity" "${pkgdir}/opt/${pkgname_internal}/flowinity-desktop"
+
   rm -rf "${pkgdir}/opt/${pkgname_internal}/flowinity-${pkgver}"
 
   install -Dm644 ${srcdir}/${pkgname_internal}.desktop ${pkgdir}/usr/share/applications/${pkgname_internal}.desktop
