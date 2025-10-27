@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-br
 	pkgdesc = Breton language pack for Firefox Nightly
-	pkgver = 146.0a1.20251024.094538
+	pkgver = 146.0a1.20251026.204257
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-br
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-br-146.0a1.20251024.094538.xpi
-	source = firefox-nightly-i18n-br-146.0a1.20251024.094538.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-146.0a1.br.langpack.xpi
-	sha256sums = a0d9b400ebbf96cc7020fa7ad4408cf1e680dc6a347561fd11113209d1af58e6
+	noextract = firefox-nightly-i18n-br-146.0a1.20251026.204257.xpi
+	source = firefox-nightly-i18n-br-146.0a1.20251026.204257.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-146.0a1.br.langpack.xpi
+	sha256sums = 5ba9ba12794783d3fc1f04faa73a5f1ec93de7c5e4812b125cd368fed1cdce93
 
 pkgname = firefox-nightly-i18n-br
