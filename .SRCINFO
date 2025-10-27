@@ -1,6 +1,6 @@
 pkgbase = pvsneslib-git
 	pkgdesc = A free/libre toolchain to program the SNES using assembler and C
-	pkgver = r1722.a3b165d7
+	pkgver = r1735.2aee3286
 	pkgrel = 1
 	url = https://github.com/alekmaul/pvsneslib
 	arch = x86_64
