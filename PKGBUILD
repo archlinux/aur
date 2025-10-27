@@ -4,37 +4,25 @@
 : ${_pkgtype:=-bin}
 
 pkgname="unlock-music-cli$_pkgtype"
-pkgver=0.2.0.beta.2
+pkgver=0.2.17
 pkgrel=1
 pkgdesc="Unlock Music Project - CLI Edition"
-arch=("arm" "x86_64"  "i686")
+arch=("aarch64" "x86_64")
 license=('MIT')
-url="https://git.unlock-music.dev/um/cli"
+url="https://git.um-react.app/um/cli"
 
-if [ $CARCH = "x86_64" ]; then
-  _arch="amd64"
-  sha256sums=('ac223b14bd9ca850cbc006860667a38ade222af572d4ed774a1937a27d0adef1')
-elif [ $CARCH = "i686" ]; then
-  _arch="386"
-  sha256sums=('5e86178f10add4760e4e734acd8b6ec58380d48a4a5d08013bb7f6de21dc2e2f')
-elif [ $CARCH = "arm" ]; then
-  _arch="arm64"
-  sha256sums=('7270f06a9630cfc59d6ea28e67dab44c1e0a417fd7d89a13c509a4991e6f619c')
-fi
-
-source=(
-  https://git.unlock-music.dev/um/cli/releases/download/v0.2.0-beta.2/um-linux-$_arch.tar.gz
+source_aarch64=(
+  "um-linux-arm64-v$pkgver.tar.gz::$url/releases/download/v$pkgver/um-linux-arm64-v$pkgver.tar.gz"
+)
+source_x86_64=(
+  "um-linux-amd64-v$pkgver.tar.gz::$url/releases/download/v$pkgver/um-linux-amd64-v$pkgver.tar.gz"
 )
 
+sha256sums_aarch64=('7a9fc5fec9ec2dd060ed7558789c908539399b9f1f3b26f17db3f3b959e1a427')
+sha256sums_x86_64=('748791a962da6492f1d468b30064a83cdfe7dad02ccec913ab5f2b82366d83b2')
 
 package() {
 
-  tar -xf "um-linux-$_arch.tar.gz"
-
   install -Dm755 "$srcdir/um" -t "$pkgdir/usr/bin/"
-
-  echo "Usage"
-  echo "./um [-o <output dir>] [-i] <input dir/file>"
-  echo "./um -h to show help menu"
 
 }
