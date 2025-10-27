@@ -1,5 +1,4 @@
 [luau]
-source = "github"
-github = "luau-lang/luau"
-prefix = "v"
-use_latest_release = true
+source = "git"
+git = "https://github.com/luau-lang/luau.git"
+include_regex = '0\.\d+'

@@ -3,8 +3,9 @@
 # Contributor: BrinkerVII <brinkervii@gmail.com>
 
 pkgname=luau
-pkgver=696
+pkgver=0.697
 pkgrel=1
+epoch=1
 pkgdesc='A fast, small, safe, gradually typed embeddable scripting language derived from Lua'
 arch=(x86_64)
 url="https://github.com/luau-lang/$pkgname"
@@ -15,7 +16,15 @@ depends=(
 )
 makedepends=(cmake)
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('95e5727b50547fd6021ef98234bd8b04410b7198d78d05e0faddee9c52b3602f')
+sha256sums=('e3f4f90e4ee35ba4264242e84fa496c93c5bd216cb3d16a237c9f17d9573ba43')
+
+prepare() {
+	cd $pkgname-$pkgver
+	[ ${pkgver:0:2} = "0." ] || {
+		echo "Possibly misstagged version, please verify"
+		return 1
+	}
+}
 
 build() {
 	cd $pkgname-$pkgver
@@ -25,7 +34,6 @@ build() {
 		-D CMAKE_CXX_FLAGS='-Wstringop-overread'
 		-D LUAU_BUILD_TESTS=On
 		-W no-dev
-		-D CMAKE_POLICY_VERSION_MINIMUM=3.5
 	)
 	cmake -S . -B build "${cmake_options[@]}"
 	cmake --build build
