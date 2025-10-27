@@ -6,7 +6,7 @@
 
 pkgname=suwayomi-server-bin
 pkgver=2.1.1867
-pkgrel=1
+pkgrel=2
 _pkgver="${pkgver%_*}"
 pkgdesc="A free and open source manga reader that runs extensions built for Tachiyomi"
 arch=("any")
@@ -17,14 +17,15 @@ optdepends=("electron: running in Electron"
     "xorg-server-xvfb: Virtual framebuffer X server to run suwayomi in headless mode")
 provides=("suwayomi" "suwayomi-webui" "$pkgname" "tachidesk" "tachidesk-server")
 conflicts=("tachidesk" "suwayomi-server-preview-bin")
-_pkgname=$(printf "${pkgname//s/S}" | cut -d - -f -2)
+_pkgname=$(printf "${pkgname}" | cut -d - -f -2)
+_PkgName=${_pkgname//s/S}
 _jar="${_pkgname}-v$_pkgver.jar"
-_assets="${_pkgname}-v$_pkgver-linux-assets"
+_assets="${_PkgName}-v$_pkgver-linux-assets"
 backup=("etc/suwayomi/server.conf")
 source=(
     "$url/releases/download/v$_pkgver/${_jar}"
     "$url/releases/download/v$_pkgver/$_assets.tar.gz"
-    "https://raw.githubusercontent.com/Suwayomi/${_pkgname}/refs/tags/v${pkgver}/scripts/resources/catch_abort.c"
+    "https://raw.githubusercontent.com/Suwayomi/${_PkgName}/refs/tags/v${pkgver}/scripts/resources/catch_abort.c"
 )
 noextract=("$_jar")
 sha256sums=('51e307c2581e4e1a002991ab3e3a77503c8b074c42695987a984a7382d0ac5af'
@@ -39,16 +40,16 @@ build() {
 
 package() {
   cd "$srcdir/"
-  install -Dm644 "catch_abort.so"                  "$pkgdir/usr/share/java/$pkgname/bin/catch_abort.so"
-  install -Dm644 "$_jar"                           "$pkgdir/usr/share/java/$pkgname/bin/$_pkgname.jar"
+  install -Dm644 "catch_abort.so"                         "$pkgdir/usr/share/java/$_pkgname/bin/catch_abort.so"
+  install -Dm644 "$_jar"                                  "$pkgdir/usr/share/java/$_pkgname/bin/$_PkgName.jar"
   cd "$srcdir/$_assets/"
   install -Dm644 "${pkgname%-bin}.conf"                   "$pkgdir/etc/suwayomi/server.conf"
-  install -Dm644 "${pkgname%-bin}.service"                "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-  install -Dm644 "${pkgname%-bin}.sysusers"               "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-  install -Dm644 "${pkgname%-bin}.tmpfiles"               "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
-  install -Dm644 "${pkgname%-bin}.desktop"                "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 "${pkgname%-bin}.png"                    "$pkgdir/usr/share/pixmaps/$pkgname.png"
-  install -Dm755 "${pkgname%-bin}.sh"                     "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "${pkgname%-bin}.service"                "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
+  install -Dm644 "${pkgname%-bin}.sysusers"               "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
+  install -Dm644 "${pkgname%-bin}.tmpfiles"               "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
+  install -Dm644 "${pkgname%-bin}.desktop"                "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm644 "${pkgname%-bin}.png"                    "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  install -Dm755 "${pkgname%-bin}.sh"                     "$pkgdir/usr/bin/$_pkgname"
   # keep backwards compatibility
-  ln -sr "$pkgdir/usr/bin/${pkgname%-bin}"                "$pkgdir/usr/bin/suwayomi"
+  ln -sr "$pkgdir/usr/bin/${_pkgname}"                "$pkgdir/usr/bin/suwayomi"
 }
