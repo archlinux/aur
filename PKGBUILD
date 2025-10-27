@@ -3,7 +3,7 @@ pkgname=tusd-bin
 _gitname='tusd'
 provides=('tusd')
 conflicts=('tusd')
-pkgver=1.11.0
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='Server implementation of tus in Go'
 arch=('x86_64')
@@ -18,11 +18,9 @@ source=(
   "https://raw.githubusercontent.com/tus/tusd/master/LICENSE.txt"
 )
 
-sha256sums=(
-  'a83378b969ef0f4ca7eba194704c4a53650a7015201cc9148003d4d1a9a0d671'
-  '76dabcd71977e5ceed1d731ce7864bdd020f83ac503d8c974548b2927830f926'
-  '6ffc8271ebdc9f41112f385e7a80ca0c5167650883c90c4727848f5dc291fb5c'
-)
+sha256sums=('a83378b969ef0f4ca7eba194704c4a53650a7015201cc9148003d4d1a9a0d671'
+            'e13c8adc9bed4c993a72f60140f688736058d2c3f4a18fb6e59ca26e829fb93b'
+            '6ffc8271ebdc9f41112f385e7a80ca0c5167650883c90c4727848f5dc291fb5c')
 
 package() {
   install -Dm755 "${srcdir}/${_gitname}_linux_${_archname}/${_gitname}" "${pkgdir}/usr/bin/${_gitname}"
