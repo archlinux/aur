@@ -2,7 +2,7 @@
 # Maintainer: Marcus Johansson <polarn@gmail.com>
 
 pkgname='fwatch-bin'
-pkgver=0.1.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='A lightweight, configurable file organizer that automatically moves files based on their extensions'
 url='https://github.com/polarn/fwatch'
@@ -12,14 +12,14 @@ provides=('fwatch')
 conflicts=('fwatch')
 depends=('glibc')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/polarn/fwatch/releases/download/0.1.2/fwatch_Linux_arm64.tar.gz")
-sha256sums_aarch64=('bdd571c60f5a5192217496acbe5166c959f6725568b5dcb81e1385e11b201b94')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/polarn/fwatch/releases/download/1.0.0/fwatch_Linux_arm64.tar.gz")
+sha256sums_aarch64=('924e90350fdc8805007d349e649eb36b96e65c66e835776b0038d8d47415fea9')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/polarn/fwatch/releases/download/0.1.2/fwatch_Linux_i386.tar.gz")
-sha256sums_i686=('422778be39b8cb47df2ba9435d08acb0bc324f77dd602e080b46018b4918d9b8')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/polarn/fwatch/releases/download/1.0.0/fwatch_Linux_i386.tar.gz")
+sha256sums_i686=('6770e64c386bd290d57164f47d20164c9f548a00d2f45981f4cb028815536b5f')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/polarn/fwatch/releases/download/0.1.2/fwatch_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('c8518c61498d759eb2ae9a62ce04c40158bbef7b0cc633be05632d8679780440')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/polarn/fwatch/releases/download/1.0.0/fwatch_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('cdc9d4c67d6a905bd6f4ed09e5dce595fc8d04e840571d54c0ebf60efeaf623a')
 
 package() {
   # bin
