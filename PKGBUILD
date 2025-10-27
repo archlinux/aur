@@ -15,7 +15,7 @@
 
 pkgname=pianoteq-stage
 pkgver=9.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=(x86_64 aarch64)
 url="https://www.pianoteq.com/pianoteq"
