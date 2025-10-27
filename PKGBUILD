@@ -3,7 +3,7 @@
 pkgname=python-blacksheep-rich-log
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=0.0.1.1
+pkgver=0.0.2
 pkgrel=1
 epoch=
 pkgdesc="BlackSheep access log middleware."
@@ -30,7 +30,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('5e361c00b7926f81df8560b247467ebb7e68494fdae84ebf9e8852faff30c625')
+sha256sums=('61c90834dc19ee85def363ff035a0bbadbf00a367661bafd2fae92909671371d')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
