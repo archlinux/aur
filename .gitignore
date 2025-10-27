@@ -1,0 +1,10 @@
+# Build artifacts
+*.tar.gz
+*.pkg.tar.zst
+*.pkg.tar.xz
+pkg/
+src/
+
+# Vim/editor files
+*.swp
+*~
