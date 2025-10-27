@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (mingw-w64)
 	pkgver = 8.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://ffmpeg.org
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = mingw-w64-ffmpeg
 	makedepends = mingw-w64-pkg-config
 	makedepends = mingw-w64-vulkan-headers
 	makedepends = git
-	makedepends = yasm
+	makedepends = nasm
 	depends = mingw-w64-aom
 	depends = mingw-w64-bzip2
 	depends = mingw-w64-crt
