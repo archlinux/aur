@@ -1,6 +1,6 @@
 pkgbase = serial-monitor-rust-bin
 	pkgdesc = Serial Monitor and Plotter written in Rust (pre-compiled binary)
-	pkgver = 0.3.5.1
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://github.com/hacknus/serial-monitor-rust
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = serial-monitor-rust-bin
 	conflicts = serial-monitor-rust
 	options = !strip
 	options = !debug
-	source = serial-monitor-rust-src-0.3.5.1.zip::https://github.com/hacknus/serial-monitor-rust/archive/v0.3.5.1.zip
-	sha256sums = f9b1b60a288aeec12c1e68309f6032cb8210d22a50f0e918008131d77019e2f7
-	source_x86_64 = serial-monitor-rust-0.3.5.1-x86_64.zip::https://github.com/hacknus/serial-monitor-rust/releases/download/v0.3.5.1/serial-monitor-x86_64-unknown-linux-gnu.zip
-	sha256sums_x86_64 = 982f26839d0495cb04d602f5d6ae6883f2a5f6db3fb9dfa85e7b570bfee8d89c
-	source_aarch64 = serial-monitor-rust-0.3.5.1-aarch64.zip::https://github.com/hacknus/serial-monitor-rust/releases/download/v0.3.5.1/serial-monitor-aarch64-unknown-linux-gnu.zip
-	sha256sums_aarch64 = a7c465846eda346a0a62c1879729d97ea9b23f542a0ce0464f4ee6efa6266674
+	source = serial-monitor-rust-src-0.3.6.zip::https://github.com/hacknus/serial-monitor-rust/archive/v0.3.6.zip
+	sha256sums = b0cf6ced0874f893fc71da034a54f588c1af34d09edca54c300ff1b1e75565fd
+	source_x86_64 = serial-monitor-rust-0.3.6-x86_64.zip::https://github.com/hacknus/serial-monitor-rust/releases/download/v0.3.6/serial-monitor-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = 6a691a0e7f43321361d7003a4666271e862f0ba7e632d6d69f58b7ea6030d0ca
+	source_aarch64 = serial-monitor-rust-0.3.6-aarch64.zip::https://github.com/hacknus/serial-monitor-rust/releases/download/v0.3.6/serial-monitor-aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = 12f4395d359102ee213c7a1f44f2ef51d218ad6c93de13fe42b41b615e558b10
 
 pkgname = serial-monitor-rust-bin
