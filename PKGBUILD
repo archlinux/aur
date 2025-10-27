@@ -1,11 +1,11 @@
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 # Contributor: ianux
 # Contributor: priyank
 # Contributor: etix
-
 pkgname="ices0"
 pkgver=0.4.11
-pkgrel=7
+pkgrel=8
 pkgdesc="A source client for broadcasting in MP3, FLAC, AAC and OGG Vorbis formats to an icecast2 server"
 license=("GPL2")
 arch=("i686" "x86_64" "armv7h" "aarch64")
@@ -16,9 +16,7 @@ optdepends=("flac: flac audio support"
             "libmp4v2: aac audio support"
             "libogg: vorbis audio support"
             "libvorbis: vorbis audio support"
-            "perl: playlist scripting engine"
-            "python2: playlist scripting engine")
-makedepends=("autoconf" "automake" "pkgconf")
+            "perl: playlist scripting engine")
 source=("$url/archive/v$pkgver.tar.gz"
         "example.xml"
         "ices0@.service"
@@ -37,14 +35,7 @@ build(){
  aclocal
  autoreconf -fi
  automake --add-missing
- if [ -f "/usr/bin/python2" ]; then
-  ./configure --prefix="/usr" --sysconfdir="/usr/share/$pkgname" --mandir="/usr/share" --with-python="/usr/bin/python2"
- else
   ./configure --prefix="/usr" --sysconfdir="/usr/share/$pkgname" --mandir="/usr/share"
- fi
- echo "Please check that all the features you want are available, otherwise install optional dependencies before installing ices0"
- echo "Waiting 5 seconds"
- sleep 5
  make
 }
 
