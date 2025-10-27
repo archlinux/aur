@@ -1,6 +1,6 @@
 pkgbase = mutt-language-server
 	pkgdesc = mutt/neomutt's language server
-	pkgver = 0.0.12
+	pkgver = 0.0.13
 	pkgrel = 1
 	url = https://github.com/neomutt/mutt-language-server
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = mutt-language-server
 	optdepends = python-pypandoc: generate json schema
 	optdepends = python-markdown-it-py: generate json schema: generate json schema
 	optdepends = neomutt: generate json schema
-	source = https://files.pythonhosted.org/packages/py3/m/mutt_language_server/mutt_language_server-0.0.12-py3-none-any.whl
-	sha256sums = 20bcb7073cd8d4b3f5c61a09e2c5b77a3667437167db45577690ae58a8489227
+	source = https://files.pythonhosted.org/packages/py3/m/mutt_language_server/mutt_language_server-0.0.13-py3-none-any.whl
+	sha256sums = 9eeee6912450624fb620ccc36ef522b676a95832d8177d17b389c45e304cf021
 
 pkgname = mutt-language-server
