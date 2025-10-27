@@ -3,7 +3,7 @@
 
 _pkgname=pocket-sync
 pkgname=$_pkgname-bin
-pkgver=5.9.1
+pkgver=5.9.2
 pkgrel=1
 pkgdesc='A GUI to do stuff with the Analogue Pocket'
 url='https://github.com/neil-morrison44/pocket-sync'
@@ -15,7 +15,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 options=('!strip')
 source=("https://github.com/neil-morrison44/pocket-sync/releases/download/v${pkgver}/Pocket.Sync_${pkgver}_amd64.deb")
-sha512sums=('887b5f2d8b1ff72eaa776fbefa5ec180c4cdf1170d5942ddb516490c4f4842a2965c855a0ac1f11d183304a0131223cf1d4747ce1b85ca2262bbfe72cecbfbe4')
+sha512sums=('fecb4f8ba607066460a1d17f925abbd5e00431053778e096febd4adfe6a36f5b287d56482f88032fd46058b32b533184ffe7f74d625a962d755a2923c99d6e34')
 
 prepare() {
   tar -zxvf data.tar.gz
