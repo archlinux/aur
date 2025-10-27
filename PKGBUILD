@@ -2,7 +2,7 @@
 
 _name=langgraph-cli
 pkgname=python-$_name
-pkgver=0.4.2
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='CLI for interacting with LangGraph API.'
 arch=('any')
@@ -13,8 +13,7 @@ makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel'
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-msgspec')
 optdepends=('python-langgraph-api: inmem' 'python-langgraph-runtime-inmem: inmem' 'python-dotenv: inmem')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-validpgpkeys=('2EECE5156D8DE0C50636E37621707FBE029E96B5')
-sha256sums=('074d93a2ebb9c60629a83bc4c149e837bd09e51222d48daacb498299d818ee9f')
+sha256sums=('bcc959c9270115e6b1be3971d98924552731d67ef2d4f2d05eadccf9b53d00a5')
 
 prepare(){
   # Fix tests
@@ -38,7 +37,7 @@ check() {
     --deselect tests/unit_tests/cli/test_cli.py::test_build_command_with_api_version
   )
   cd "$srcdir"/${_name//-/_}-$pkgver
-  PYTHONPATH="$srcdir"/${_name//-/_}-$pkgver pytest "${pytest_options[@]}" tests
+  PYTHONPATH=$PWD pytest "${pytest_options[@]}" tests
 }
 
 package() {
