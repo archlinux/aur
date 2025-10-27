@@ -1,0 +1,20 @@
+pkgbase = pidgin-talkfilters
+	pkgdesc = Implements GNU talkfilters in pidgin chats
+	pkgver = 2.7.0
+	pkgrel = 7
+	url = https://keep.imfreedom.org/pidgin/purple-plugin-pack/
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = gettext
+	makedepends = python
+	makedepends = pidgin
+	makedepends = mercurial
+	depends = libpurple
+	depends = talkfilters
+	source = hg+https://keep.imfreedom.org/pidgin/purple-plugin-pack/
+	source = python3.patch
+	sha256sums = SKIP
+	sha256sums = 842292c95e61fb5a45b30eaed490d29ee67f725b46301e3590feafeb10014980
+
+pkgname = pidgin-talkfilters
