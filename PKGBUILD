@@ -22,12 +22,12 @@ build() {
   cd "${srcdir}/hashcc"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --release --locked --features progress,archives
+  cargo build --release --features progress,archives
 }
 
 check() {
   cd "${srcdir}/hashcc"
-  cargo test --release --locked --features progress,archives || true
+  cargo test --release --features progress,archives || true
 }
 
 package() {
