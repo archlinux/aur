@@ -3,7 +3,7 @@
 _pkgauthor=TheSillyBoi
 _pkgname=wretch
 pkgname=${_pkgname}-bin
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A simple Fetch CLI program Built with Rust"
 arch=('x86_64')
@@ -21,8 +21,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-release-${pkgver}-linux")
 sha256sums=('f12c6f6b5b0accd597242e5c91fb886d89442197119da9b96a6a96bc7de06243'
             '7e55751225a2d5cc9ce3730729b5095b32c904f2a667809fb8bea6f4daca953f'
-            '64030bc38687696bd79c5dcbe6e261c94e25a11c19f9beb562e10d8209cc7a61')
-sha256sums_x86_64=('72086adb21854f421e6a96175b585a8de9a4afb9ee2c07fffbe4d64653ea7dcd')
+            'ca9d64280219f04dc518c1d9defe0c61f6649cbbd352f77780430d8e3a2ae37e')
+sha256sums_x86_64=('1828a38341e768cd1d14cb6e0f54cf9531ca2d9ff6ed2e142164e01e67e9fb6b')
 
 
 package() {

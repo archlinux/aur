@@ -1,0 +1,5 @@
+["wretch-bin"]
+source = "github"
+github = "TheSillyBoi/wretch"
+use_latest_release = true
+prefix = "v"

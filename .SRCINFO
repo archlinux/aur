@@ -1,6 +1,6 @@
 pkgbase = wretch-bin
 	pkgdesc = A simple Fetch CLI program Built with Rust
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/TheSillyBoi/wretch
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = wretch-bin
 	depends = glibc
 	provides = wretch
 	conflicts = wretch
-	source = LICENSE-1.4.0::https://raw.githubusercontent.com/TheSillyBoi/wretch/v1.4.0/LICENSE
-	source = README-1.4.0.md::https://raw.githubusercontent.com/TheSillyBoi/wretch/v1.4.0/README.md
-	source = CHANGELOG-1.4.0.md::https://raw.githubusercontent.com/TheSillyBoi/wretch/v1.4.0/CHANGELOG.md
+	source = LICENSE-1.4.1::https://raw.githubusercontent.com/TheSillyBoi/wretch/v1.4.1/LICENSE
+	source = README-1.4.1.md::https://raw.githubusercontent.com/TheSillyBoi/wretch/v1.4.1/README.md
+	source = CHANGELOG-1.4.1.md::https://raw.githubusercontent.com/TheSillyBoi/wretch/v1.4.1/CHANGELOG.md
 	sha256sums = f12c6f6b5b0accd597242e5c91fb886d89442197119da9b96a6a96bc7de06243
 	sha256sums = 7e55751225a2d5cc9ce3730729b5095b32c904f2a667809fb8bea6f4daca953f
-	sha256sums = 64030bc38687696bd79c5dcbe6e261c94e25a11c19f9beb562e10d8209cc7a61
-	source_x86_64 = wretch-1.4.0::https://github.com/TheSillyBoi/wretch/releases/download/v1.4.0/wretch-release-1.4.0-linux
-	sha256sums_x86_64 = 72086adb21854f421e6a96175b585a8de9a4afb9ee2c07fffbe4d64653ea7dcd
+	sha256sums = ca9d64280219f04dc518c1d9defe0c61f6649cbbd352f77780430d8e3a2ae37e
+	source_x86_64 = wretch-1.4.1::https://github.com/TheSillyBoi/wretch/releases/download/v1.4.1/wretch-release-1.4.1-linux
+	sha256sums_x86_64 = 1828a38341e768cd1d14cb6e0f54cf9531ca2d9ff6ed2e142164e01e67e9fb6b
 
 pkgname = wretch-bin
