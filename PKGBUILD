@@ -3,7 +3,7 @@
 _pkgauthor=marcosnils
 _pkgname=bin
 pkgname=${_pkgname}-bin
-pkgver=0.24.0
+pkgver=0.24.1
 pkgrel=1
 pkgdesc=" Effortless binary manager"
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ source_x86_64=("${_pkgname}-${pkgver}-${arch[0]}::${url}/releases/download/v${pk
 source_aarch64=("${_pkgname}-${pkgver}-${arch[1]}::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_${_barch[1]}")
 sha256sums=('73624cfa33d3785e80ae8d5402f9857396c0cb3e9d945615a603b50eb0d04a99'
             '13260ae768e4c5a330397e8e2cc14a849bf6b1d0687823a5371fc9ba09a98638')
-sha256sums_x86_64=('901b2ad65e660ccd88cacf78e0c6ff1f73c2f2aaf6f56e8fa114932895f6d34c')
-sha256sums_aarch64=('a3f9bbeebdd583069ec4d838e6b2836f4ece35d14fbc1dbc38f92615dfabd274')
+sha256sums_x86_64=('79da3c1530f533e430e852814adbbc8a21bf1c393ed4a32842c883d9a08ecc6f')
+sha256sums_aarch64=('670fe3915bd5fdbd7dce70ccc585648c9e542f58b3481c0e58bca0830822164d')
 
 
 package() {
