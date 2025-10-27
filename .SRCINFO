@@ -1,6 +1,6 @@
 pkgbase = h2
 	pkgdesc = Java SQL database engine.
-	pkgver = 2.3.232
+	pkgver = 2.4.240
 	pkgrel = 1
 	url = http://www.h2database.com
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = h2
 	license = EPL
 	depends = java-runtime>=7
 	depends = bash
-	source = https://github.com/h2database/h2database/releases/download/version-2.3.232/h2-2024-08-11.zip
-	sha256sums = aa95a3433b6f434cac43b072b52756fa46c611239b7a0de3a8038501b8dae2af
+	source = https://github.com/h2database/h2database/releases/download/version-2.4.240/h2-2025-09-22.zip
+	sha256sums = 154d7aac3c33cae3dc361ad0c5296040be08ed0508acde6560c03842088d147e
 
 pkgname = h2
