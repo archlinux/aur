@@ -2,7 +2,11 @@
 
 pkgname=tinydng-cli-bin
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
+
+pkgver() {
+    curl -s https://tinydng.com | grep -oP 'tinydng-cli-\K[0-9]+\.[0-9]+\.[0-9]+(?=-linux-x64\.zip)' | head -1
+}
 
 provides=("tinydng-cli=${pkgver}")
 conflicts=("tinydng-cli")
