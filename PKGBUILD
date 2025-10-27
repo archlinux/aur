@@ -3,13 +3,13 @@
 pkgname=mainsail-git
 _pkgname="${pkgname%-git}"
 pkgver=r2484.12ade8ba
-pkgrel=1
+pkgrel=2
 pkgdesc="Klipper web frontend"
 arch=(any)
 url="https://docs.mainsail.xyz/"
 license=('GPL3')
 depends=()
-makedepends=('git' 'npm')
+makedepends=('git' 'npm' 'zip')
 optdepends=('nginx: serve via HTTP'
             'ustreamer: webcam streaming support')
 provides=("$_pkgname")
