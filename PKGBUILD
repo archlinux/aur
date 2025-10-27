@@ -2,7 +2,7 @@
 
 pkgname=mainsail-git
 _pkgname="${pkgname%-git}"
-pkgver=r2110.1a7aca66
+pkgver=r2484.12ade8ba
 pkgrel=1
 pkgdesc="Klipper web frontend"
 arch=(any)
