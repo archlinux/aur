@@ -1,4 +1,3 @@
-You can start I2P+ with '/opt/i2pplus/i2prouter start', consider running '/opt/i2pplus/i2prouter install' too (optionally).
 pkgbase = i2pplus
 	pkgdesc = enhanced version of the Java I2P anonymizing network
 	pkgver = 2.10.0
