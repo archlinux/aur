@@ -12,11 +12,11 @@ conflicts=('trgui-ng' 'trgui-ng-bin')
 depends=('alsa-lib' 'cairo' 'desktop-file-utils' 'fontconfig' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libayatana-appindicator' 'libsoup' 'openssl' 'webkit2gtk-4.1')
 makedepends=('rust>=1.70.0' 'nodejs>=16.0.0' 'npm' 'git')
 source=("TrguiNG::git+https://github.com/openscopeproject/TrguiNG"
-        "https://github.com/openscopeproject/TrguiNG/releases/download/v1.0.0/dbip.mmdb"
+        "https://github.com/openscopeproject/TrguiNG/releases/download/v1.5.0/dbip.mmdb"
         "TrguiNG.desktop"::"https://raw.githubusercontent.com/flathub/org.openscopeproject.TrguiNG/master/org.openscopeproject.TrguiNG.desktop")
 noextract=('dbip.mmdb')
 sha256sums=('SKIP'
-            '00199d1a2c79882d77f502cc1253f174cf0160321dbd176ac0c5340a4f720a07'
+            '15291b7961766f54fc1ff8afac4189a67850920cd8b555b3dc6ddf9d02fc3ada'
             '21bef47c8cddae5365a7af8867d43c25e80db53ec8dbb1940138ad26d02a401a')
 options=('!lto' '!debug')
 
