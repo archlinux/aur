@@ -1,14 +1,15 @@
 pkgbase = azure2
 	pkgdesc = Bayesian R-Matrix Inference Code
-	pkgver = v1.0.r53.gbc81ba3
-	pkgrel = 1
+	pkgver = v1.0.r117.gd7deab6
+	pkgrel = 2
 	url = https://azure.nd.edu/
 	arch = any
 	makedepends = root
 	makedepends = qt5-base
 	makedepends = qwt
+	makedepends = git
 	provides = azure2
-	source = Azure2::git+https://github.com/rdeboer1/AZURE2#branch=qwt6
+	source = Azure2::git+https://github.com/rdeboer1/AZURE2#branch=api
 	sha256sums = SKIP
 
 pkgname = azure2
