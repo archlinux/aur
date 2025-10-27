@@ -1,0 +1,4 @@
+[python-wyoming-openwakeword]
+source = "git"
+git = "https://github.com/rhasspy/wyoming-openwakeword.git"
+prefix = "v"
