@@ -6,14 +6,14 @@
 
 _pkgbase=libdbusmenu
 pkgbase=lib32-${_pkgbase}
-pkgname=("${pkgbase}-glib" "${pkgbase}-gtk"{2,3})
+pkgname=("${pkgbase}-glib" "${pkgbase}-gtk3")
 pkgver=16.04.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Library for passing menus over DBus (32-bit)'
 url='https://launchpad.net/libdbusmenu'
 arch=('x86_64')
-license=('GPL3' 'LGPL2.1' 'LGPL3')
-makedepends=('gnome-common' 'gobject-introspection' 'lib32-gtk'{2,3} 'intltool' 'vala' 'valgrind-multilib' 'glib2-devel')
+license=('LGPL-2.1-only OR LGPL-3.0-only')
+makedepends=('gnome-common' 'gobject-introspection' 'lib32-gtk3' 'intltool' 'vala' 'valgrind-multilib' 'glib2-devel')
 options=('!emptydirs')
 source=(https://launchpad.net/${_pkgbase}/${pkgver%.?}/${pkgver}/+download/${_pkgbase}-${pkgver}.tar.gz{,.asc})
 sha512sums=('ee9654ac4ed94bdebc94a6db83b126784273a417a645b2881b2ba676a5f67d7fc95dd2bb37bfb0890aa47299ed73cb21ed7de8b75f3fed6b69bfd39065062241'
@@ -24,9 +24,6 @@ prepare() {
   cd ${_pkgbase}-${pkgver}
   # don't treat warnings as errors
   sed -i 's/-Werror//' libdbusmenu-*/Makefile.{am,in}
-  cd ..
-
-  cp -ra ${_pkgbase}-${pkgver}{,-gtk2}
 }
 
 build() {
@@ -37,27 +34,15 @@ build() {
   export HAVE_VALGRIND_TRUE='#'
   export HAVE_VALGRIND_FALSE=''
 
-  msg2 "Building gtk3..."
-  (cd ${_pkgbase}-${pkgver}
-    ./configure --prefix=/usr \
-      --sysconfdir=/etc \
-      --localstatedir=/var \
-      --disable-{dumper,static,tests} \
-      --libdir=/usr/lib32 \
-      --with-gtk=3
-    make
-  )
-
-  msg2 "Building gtk2..."
-  (cd ${_pkgbase}-${pkgver}-gtk2
-    ./configure --prefix=/usr \
-      --sysconfdir=/etc \
-      --localstatedir=/var \
-      --disable-{dumper,static,tests} \
-      --libdir=/usr/lib32 \
-      --with-gtk=2
-    make
-  )
+  cd ${_pkgbase}-${pkgver}
+  ./configure --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --disable-{dumper,static,tests} \
+    --libdir=/usr/lib32 \
+    --with-gtk=3
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
 }
 
 package_lib32-libdbusmenu-glib() {
@@ -65,17 +50,6 @@ package_lib32-libdbusmenu-glib() {
 
   cd ${_pkgbase}-${pkgver}
   make -j1 -C libdbusmenu-glib DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}"/usr/{include,share,lib,bin}
-}
-
-package_lib32-libdbusmenu-gtk2() {
-  pkgdesc+=" (GTK+ 2 library)"
-  depends=('lib32-gtk2' "${pkgbase}-glib" "${_pkgbase}-gtk2")
-
-  cd ${_pkgbase}-${pkgver}-gtk2
-  make -j1 -C libdbusmenu-glib DESTDIR="${pkgdir}" install
-  make -j1 -C libdbusmenu-gtk DESTDIR="${pkgdir}" install
-  make -j1 -C libdbusmenu-glib DESTDIR="${pkgdir}" uninstall
   rm -rf "${pkgdir}"/usr/{include,share,lib,bin}
 }
 
