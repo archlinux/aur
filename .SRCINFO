@@ -1,7 +1,7 @@
 pkgbase = inputactions-kwin
 	pkgdesc = Mouse and touchpad gestures for Plasma 6 Wayland
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/taj-ny/InputActions
 	install = inputactions-kwin.install
 	arch = x86_64

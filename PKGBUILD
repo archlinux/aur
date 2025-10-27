@@ -2,7 +2,7 @@
 # Contributor: Bruce Zhang <zttt183525594<at>gmail.com>
 pkgname=inputactions-kwin
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Mouse and touchpad gestures for Plasma 6 Wayland"
 arch=('x86_64')
 url="https://github.com/taj-ny/InputActions"
@@ -49,7 +49,7 @@ build() {
     -D INPUTACTIONS_BUILD_KWIN=ON
   )
   cmake "${cmake_options[@]}"
-  cmake --build build
+  cmake --build build --parallel "$(nproc)"
 }
 
 check() {
