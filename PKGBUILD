@@ -5,12 +5,12 @@ pkgdesc="Featureful Matrix homeserver"
 url="https://github.com/matrix-construct/tuwunel"
 license=("Apache-2.0")
 arch=("x86_64")
-pkgver=1.4.4.0
+pkgver=1.4.5
 pkgrel=1
 makedepends=("rust" "cargo" "git" "clang" "linux-api-headers" "linux-headers" "llvm" "libc++" "autoconf")
 depends=("gcc-libs" "glibc" "liburing")
 source=("git+https://github.com/matrix-construct/tuwunel#tag=v${pkgver}")
-sha256sums=('6bdec85a9fb1196f30dad68b4ac47a96747c97a4cac1d7085fe663d9698fd1ed')
+sha256sums=('10f32c2990503d6865b22d119486a1ed958ebb789192878b16cd08527329170d')
 provides=("tuwunel")
 options=(!lto)
 backup=("etc/tuwunel/tuwunel.toml")
@@ -32,6 +32,7 @@ function build() {
 function check() {
 	cd "${srcdir}/tuwunel"
 	export RUSTUP_TOOLCHAIN=stable
+	export TUWUNEL_DATABASE_PATH=/tmp/tuwunel-smoketest.db
 	cargo test --frozen --release --locked
 }
 
