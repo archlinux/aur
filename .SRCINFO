@@ -1,0 +1,13 @@
+pkgbase = nasc-tui
+	pkgdesc = Terminal calculator with mathematical expression evaluation
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/parnoldx/nascTUI
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = go
+	depends = libqalculate
+	source = https://github.com/parnoldx/nascTUI/archive/refs/tags/v1.0.4.tar.gz
+	sha256sums = 55e20b26f48dbc75d500a65abb6566ca5a35a7eb6d73495d4931527af4c5fa47
+
+pkgname = nasc-tui

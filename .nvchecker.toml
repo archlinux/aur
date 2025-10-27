@@ -1,0 +1,5 @@
+[nasc-tui]
+source = 'github'
+github = 'parnoldx/nascTUI'
+use_max_tag = true
+prefix = 'v'
