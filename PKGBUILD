@@ -3,7 +3,7 @@
 _pkgauthor=loeffel-io
 _pkgname=ls-lint
 pkgname=${_pkgname}-bin
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='An extremely fast directory and filename linter'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -18,9 +18,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64.tar.gz")
 sha256sums=('d78562c5bf32368fd877e0de68c2914b6b6f41b38b60c65cbf0f193c114ae31d'
-            'e458869c1b07baaf5b78faf172ad8d7d1706fc17cbcf28e007f1f6615e7d68f2')
-sha256sums_x86_64=('eb1477360768bf0d717954a36dac155bbed6fce3c7bc6d87c4a8153b8c9da76a')
-sha256sums_aarch64=('d1247dfff2a38362ac8ae54c8e90b68175a1dc4e7bf7d6f49a59770062250937')
+            'a8c1de40591cadc33fdc3584e19b15e44ced82cf94e5cf7b3d58dfce884e34d7')
+sha256sums_x86_64=('3275a459183f50fa299d27512774af1ac9817f23e2409c89fa25558a310530b9')
+sha256sums_aarch64=('a835b97d7a369fa428572ce9cac98a5453b5af351e3647e0b80b4769d1001367')
 
 package() {
   cd "${srcdir}/" || exit

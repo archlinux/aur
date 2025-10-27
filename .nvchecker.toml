@@ -1,0 +1,5 @@
+["ls-lint-bin"]
+source = "github"
+github = "loeffel-io/ls-lint"
+use_latest_release = true
+prefix = "v"
