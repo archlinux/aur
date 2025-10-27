@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/pop-os/system76-wallpapers"
 license=('CC-BY-SA-4.0')
 options=('!strip')
-source=("https://launchpad.net/~system76-dev/+archive/ubuntu/stable/+sourcefiles/$pkgname/$pkgver~dev/${pkgname}_${pkgver}~dev.tar.xz")
+source=("https://launchpad.net/~system76-dev/+archive/ubuntu/stable/+sourcefiles/$pkgname/${pkgver}~dev/${pkgname}_${pkgver}~dev.tar.xz")
 sha256sums=('5abb37d8a516807cf244725e33af273b916f629705abe3313b83f2a9690eeb4d')
 
 package() {
