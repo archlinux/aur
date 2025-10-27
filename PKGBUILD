@@ -3,7 +3,7 @@
 
 pkgname=asusctl-devel-git
 pkgver=6.1.16.r2.g132a2f3
-pkgrel=5
+pkgrel=6
 pkgdesc="Asus laptop control utilities"
 arch=('x86_64')
 url="https://gitlab.com/asus-linux/asusctl"
@@ -13,7 +13,8 @@ optdepends=(
 	'libappindicator-gtk3: tray icon'
 	'gtk3: control center ui'
 )
-makedepends=('git' 'cargo' 'clang' 'cmake' 'pango' 'gdk-pixbuf2' 'at-spi2-core' 'gtk3' 'sdl2' 'seatd' 'libinput')
+makedepends=('git' 'cargo' 'clang' 'cmake' 'pango' 'gdk-pixbuf2' 'at-spi2-core' 
+        'qt6-base' 'gtk3' 'sdl2' 'seatd' 'libinput')
 provides=('asusctl' 'rog-control-center')
 conflicts=('asusctl' 'rog-control-center')
 source=('git+https://gitlab.com/asus-linux/asusctl.git#branch=devel')
@@ -44,7 +45,7 @@ build() {
   export CARGO_HOME="$srcdir/cargo-home"
 # Build with frozen lock (no network) and respect upstream Makefile
 # If Makefile calls cargo, these env vars force system toolchain.
-  make build CARGO="$CARGO" RUSTC="$RUSTC" CARGO_FLAGS="--frozen --locked --features slint/backend-qt"
+  make build CARGO="$CARGO" RUSTC="$RUSTC" CARGO_FLAGS="--frozen --locked --no-default-features --features slint/backend-qt"
 }
 
 package() {
@@ -56,7 +57,6 @@ package() {
 # If the Makefile calls cargo internally, these vars keep it on system rust
   make DESTDIR="$pkgdir" \
        CARGO="$CARGO" RUSTC="$RUSTC" \
-       CARGO_FLAGS="--locked --frozen" \
+       CARGO_FLAGS="--locked --frozen --no-default-features --features slint/backend-qt" \
        install
 }
-
