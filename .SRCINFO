@@ -43,7 +43,7 @@ pkgname = libpurple
 	optdepends = tk: Tcl/Tk scripting support
 
 pkgname = finch
-	pkgdesc = A ncurses-based messaging client
+	pkgdesc = ncurses-based messaging client
 	depends = libpurple
 	depends = libgnt
 	depends = libx11

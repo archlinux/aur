@@ -60,7 +60,7 @@ package_libpurple(){
 }
 
 package_finch(){
-  pkgdesc="A ncurses-based messaging client"
+  pkgdesc="ncurses-based messaging client"
   depends=('libpurple' 'libgnt' 'libx11')
 
   cd $pkgbase-$pkgver
