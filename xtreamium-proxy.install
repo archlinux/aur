@@ -1,27 +1,55 @@
 post_install() {
-    # Create config directory and copy default config for all users
-    # This runs as root during installation, but we'll set proper permissions
+    # Install application to each user's ~/.local/opt directory
+    # This ensures all native libraries (like SQLite) are found
     for user_home in /home/*; do
         if [ -d "$user_home" ]; then
             username=$(basename "$user_home")
+            
+            # Check if user actually exists (not just a directory in /home)
+            if ! id "$username" >/dev/null 2>&1; then
+                continue
+            fi
+            
+            # Install app to ~/.local/opt/xtreamium-proxy
+            app_dir="$user_home/.local/opt/xtreamium-proxy"
+            mkdir -p "$app_dir"
+            cp -r /usr/share/xtreamium-proxy/app/* "$app_dir/"
+            chown -R "$username:$username" "$app_dir"
+            chmod +x "$app_dir/xtreamium-proxy"
+            
+            # Create config directory
             config_dir="$user_home/.config/xtreamium-proxy"
             config_file="$config_dir/appsettings.json"
             
-            # Only create if it doesn't exist (don't overwrite existing configs)
+            # Only create config if it doesn't exist (don't overwrite existing configs)
             if [ ! -f "$config_file" ]; then
                 mkdir -p "$config_dir"
-                cp /usr/share/xtreamium-proxy/appsettings.json "$config_file"
+                cp "$app_dir/appsettings.json" "$config_file"
                 chown -R "$username:$username" "$config_dir"
                 chmod 755 "$config_dir"
                 chmod 644 "$config_file"
             fi
+            
+            # Create wrapper script in ~/.local/bin
+            local_bin="$user_home/.local/bin"
+            mkdir -p "$local_bin"
+            cat > "$local_bin/xtreamium-proxy" << 'EOF'
+#!/bin/bash
+exec "$HOME/.local/opt/xtreamium-proxy/xtreamium-proxy" "$@"
+EOF
+            chmod +x "$local_bin/xtreamium-proxy"
+            chown "$username:$username" "$local_bin/xtreamium-proxy"
         fi
     done
     
     echo ""
     echo "==> Xtreamium Proxy has been installed as a user service"
     echo ""
+    echo "Application installed to: ~/.local/opt/xtreamium-proxy/"
     echo "Configuration created at: ~/.config/xtreamium-proxy/appsettings.json"
+    echo "Wrapper script created at: ~/.local/bin/xtreamium-proxy"
+    echo ""
+    echo "Make sure ~/.local/bin is in your PATH to run 'xtreamium-proxy' from anywhere."
     echo ""
     echo "To start the service:"
     echo "  systemctl --user enable xtreamium-proxy"
@@ -39,6 +67,37 @@ post_install() {
 }
 
 post_upgrade() {
+    # Update application files for all users
+    for user_home in /home/*; do
+        if [ -d "$user_home" ]; then
+            username=$(basename "$user_home")
+            
+            # Check if user actually exists
+            if ! id "$username" >/dev/null 2>&1; then
+                continue
+            fi
+            
+            # Update app in ~/.local/opt/xtreamium-proxy
+            app_dir="$user_home/.local/opt/xtreamium-proxy"
+            if [ -d "$app_dir" ]; then
+                # Backup config if it exists in app dir
+                if [ -f "$app_dir/appsettings.json" ]; then
+                    cp "$app_dir/appsettings.json" "$app_dir/appsettings.json.bak"
+                fi
+                
+                # Update application files
+                cp -r /usr/share/xtreamium-proxy/app/* "$app_dir/"
+                chown -R "$username:$username" "$app_dir"
+                chmod +x "$app_dir/xtreamium-proxy"
+                
+                # Restore config backup
+                if [ -f "$app_dir/appsettings.json.bak" ]; then
+                    mv "$app_dir/appsettings.json.bak" "$app_dir/appsettings.json"
+                fi
+            fi
+        fi
+    done
+    
     echo ""
     echo "==> Xtreamium Proxy has been upgraded"
     echo ""
@@ -61,11 +120,15 @@ post_remove() {
     echo ""
     echo "==> Xtreamium Proxy has been removed"
     echo ""
-    echo "Your configuration files remain at:"
-    echo "  ~/.config/xtreamium-proxy/"
+    echo "Your application and configuration files remain at:"
+    echo "  ~/.local/opt/xtreamium-proxy/ (application)"
+    echo "  ~/.config/xtreamium-proxy/ (configuration)"
+    echo "  ~/.local/bin/xtreamium-proxy (wrapper script)"
     echo ""
     echo "To completely remove all data:"
+    echo "  rm -rf ~/.local/opt/xtreamium-proxy"
     echo "  rm -rf ~/.config/xtreamium-proxy"
+    echo "  rm -f ~/.local/bin/xtreamium-proxy"
     echo ""
 }
 

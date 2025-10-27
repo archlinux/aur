@@ -1,6 +1,6 @@
 # Maintainer: Fergal Moran <fergal.moran@gmail.com>
 pkgname=xtreamium-proxy
-pkgver=1.4.22
+pkgver=1.4.23
 pkgrel=1
 pkgdesc="Xtreamium Proxy Service - runs as user service"
 arch=('x86_64')
@@ -15,14 +15,17 @@ sha256sums=('SKIP')
 options=('!strip')
 
 package() {
-    # Install binary to /usr/bin
-    install -Dm755 "${srcdir}/xtreamium-proxy" "${pkgdir}/usr/bin/xtreamium-proxy"
+    # Install all application files to /usr/share (will be copied to user directory on install)
+    install -dm755 "${pkgdir}/usr/share/xtreamium-proxy/app"
     
-    # Install user systemd service (not system service)
+    # Copy all files from the tarball to the app directory
+    cp -r "${srcdir}"/* "${pkgdir}/usr/share/xtreamium-proxy/app/"
+    
+    # Make the binary executable
+    chmod +x "${pkgdir}/usr/share/xtreamium-proxy/app/xtreamium-proxy"
+    
+    # Install user systemd service (modified to use ~/.local/opt)
     install -Dm644 "${srcdir}/xtreamium-proxy-user.service" "${pkgdir}/usr/lib/systemd/user/xtreamium-proxy.service"
-    
-    # Install default configuration template to /usr/share
-    install -Dm644 "${srcdir}/appsettings.json" "${pkgdir}/usr/share/xtreamium-proxy/appsettings.json"
     
     # Install documentation
     install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
