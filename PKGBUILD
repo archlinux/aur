@@ -11,7 +11,7 @@ conflicts=("$_pkgname" "$_pkgname-alpha" "$_pkgname-alpha-bin" "$_pkgname-git" "
 options=(!strip)
 install=.install
 
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/autobuild/Clash.Verge_${pkgver}_amd64.deb")
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/autobuild/Clash.Verge_${pkgver}_amd64_linux.deb")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/autobuild/Clash.Verge_${pkgver}_arm64.deb")
 source_armv7h=("${_pkgname}-${pkgver}-armv7h.deb::${url}/releases/download/autobuild/Clash.Verge_${pkgver}_armhf.deb")
 
