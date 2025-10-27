@@ -1,6 +1,6 @@
 pkgbase = ecapture
 	pkgdesc = capture SSL/TLS text content without CA cert using eBPF
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/gojue/ecapture
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = ecapture
 	makedepends = llvm
 	makedepends = pkgconf
 	depends = glibc
-	source = ecapture::git+https://github.com/gojue/ecapture#tag=v1.4.2
-	sha256sums = fe8bf998edef599fecea58df488c6189cef0a3b0ef7ec1418f0fe1e88cbeb9eb
+	source = ecapture::git+https://github.com/gojue/ecapture#tag=v1.4.3
+	sha256sums = a78f7b6bd50deb96ef7e785a6dd3f3df02d3a4990b5cc29a29d7ae2476dd3511
 
 pkgname = ecapture
