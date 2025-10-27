@@ -1,0 +1,4 @@
+[kibi]
+source = "git"
+git = "https://github.com/ilai-deutel/kibi.git"
+prefix = "v"
