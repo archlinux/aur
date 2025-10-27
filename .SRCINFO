@@ -1,6 +1,6 @@
 pkgbase = snooze
 	pkgdesc = Run a command at a particular time
-	pkgver = 0.5
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/leahneukirchen/snooze
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = snooze
 	makedepends = make
 	makedepends = gcc
 	provides = snooze
-	source = https://github.com/leahneukirchen/snooze/archive/refs/tags/v0.5.tar.gz
-	sha256sums = d63fde85d9333188bed5996baabd833eaa00842ce117443ffbf8719c094be414
+	source = snooze-0.5.1.tgz::https://github.com/leahneukirchen/snooze/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = abb0df288e8fe03ae25453d5f0b723b03a03bcc7afa41b9bec540a7a11a9f93e
 
 pkgname = snooze

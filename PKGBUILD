@@ -1,8 +1,8 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgauthor=leahneukirchen
 pkgname=snooze
-pkgver=0.5
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Run a command at a particular time"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ license=('CC0')
 provides=("${pkgname}")
 makedepends=('git' 'make' 'gcc')
 
-source=("https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d63fde85d9333188bed5996baabd833eaa00842ce117443ffbf8719c094be414')
+source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('abb0df288e8fe03ae25453d5f0b723b03a03bcc7afa41b9bec540a7a11a9f93e')
 
 
 build() {

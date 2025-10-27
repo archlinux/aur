@@ -1,0 +1,5 @@
+["snooze"]
+source = "github"
+github = "leahneukirchen/snooze"
+use_max_tag = true
+prefix = "v"
