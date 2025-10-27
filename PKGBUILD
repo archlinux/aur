@@ -3,28 +3,29 @@
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 # Contributor: Swift Geek < swift geek Ã¢t gmail dÃ¸t cÃ¸m>
 
-_pkgbase=libappindicator
-pkgbase=lib32-${_pkgbase}
-pkgname=("${pkgbase}-gtk"{2,3})
+_pkgname=libappindicator
+pkgname=lib32-${_pkgname}
 _bzrtag=12.10.0
 _bzrrev=298
 pkgver=${_bzrtag}.r${_bzrrev}
-pkgrel=2
+pkgrel=3
 pkgdesc='Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray (32-bit)'
 url='https://launchpad.net/libappindicator'
 arch=('x86_64')
-license=('LGPL2.1' 'GPL3')
-makedepends=('breezy' 'dbus-glib' 'gnome-common' 'lib32-libdbusmenu-gtk'{2,3} 'vala')
+license=('GPL-3.0-only')
+depends=("${_pkgname}-gtk3" 'lib32-libdbusmenu-gtk3')
+makedepends=('breezy' 'dbus-glib' 'glib2-devel' 'gnome-common' 'vala')
+conflicts=("${_pkgname}-gtk3")
+provides=("${_pkgname}-gtk3=$pkgver")
+replaces=("${_pkgname}-gtk3")
 options=('!emptydirs')
-source=($_pkgbase::bzr+https://code.launchpad.net/~indicator-applet-developers/libappindicator/trunk#revision=$_bzrrev)
-sha512sums=('SKIP')
+source=($_pkgname::bzr+https://code.launchpad.net/~indicator-applet-developers/libappindicator/trunk#revision=$_bzrrev)
+sha512sums=('023cb633e9750e279b19a6dc2d42d37bfc15d6c992017be3a6b71881579654578e9da3058d44ab400752f86411a362e676abb217ca47f14d24e43e6c26107f4d')
 validpgpkeys=('6FC05581A37D71FCECE165DB5BE41E162CD6358E')  # Charles Kerr <charles.kerr@canonical.com>
 
 prepare() {
-  (cd ${_pkgbase}
-    NOCONFIGURE=1 ./autogen.sh
-  )
-  cp -ra ${_pkgbase}{,-gtk2}
+  cd ${_pkgname}
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
@@ -34,44 +35,19 @@ build() {
   export CFLAGS="${CFLAGS} -Wno-deprecated-declarations"
   export CSC='/usr/bin/mcs'
 
-  msg2 'Building gtk3...'
-  (cd ${_pkgbase}
-    ./configure --prefix=/usr \
-      --sysconfdir=/etc \
-      --localstatedir=/var \
-      --libdir=/usr/lib32 \
-      --with-gtk=3
-    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-    make
-  )
-
-  msg2 'Building gtk2...'
-  (cd ${_pkgbase}-gtk2
-    ./configure --prefix=/usr \
-      --sysconfdir=/etc \
-      --localstatedir=/var \
-      --libdir=/usr/lib32 \
-      --with-gtk=2
-    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-    make
-  )
+  cd ${_pkgname}
+  ./configure --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --libdir=/usr/lib32 \
+    --with-gtk=3
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
 }
 
-package_lib32-libappindicator-gtk2() {
-  pkgdesc+=" (GTK+ 2 library)"
-  depends=('lib32-libdbusmenu-gtk2')
-
-  cd ${_pkgbase}-gtk2
-  make DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}"/usr/{include,share}
-}
-
-package_lib32-libappindicator-gtk3() {
-  pkgdesc+=" (GTK+ 3 library)"
-  depends=('lib32-libdbusmenu-gtk3')
-
-  cd ${_pkgbase}
-  make DESTDIR="${pkgdir}" install
+package() {
+  cd ${_pkgname}
+  make -j1 DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/usr/{include,share}
 }
 
