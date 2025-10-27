@@ -1,6 +1,6 @@
 pkgbase = python-ytfetcher
 	pkgdesc = Effortlessly fetch thousands of YouTube video transcripts and metadata in bulk
-	pkgver = 1.0
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://pypi.org/project/ytfetcher/
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-ytfetcher
 	depends = python-requests
 	depends = python-dotenv
 	depends = python-httpx
-	source = https://files.pythonhosted.org/packages/source/y/ytfetcher/ytfetcher-1.0.tar.gz
-	sha256sums = 721891833ad84a3a81fa472feb5dbc494a638e68611e7d1934fb6f718ad41428
+	source = https://files.pythonhosted.org/packages/source/y/ytfetcher/ytfetcher-1.4.tar.gz
+	sha256sums = 90da778463d0782e1cadff76a0c735382f3af0fce6c77f254cc7093923cbf9c0
 
 pkgname = python-ytfetcher
