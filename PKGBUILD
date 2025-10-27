@@ -22,8 +22,6 @@ build() {
 check() {
   local pytest_options=(
     -vv
-    # Need running PostgreSQL server
-    -k "not postgres"
   )
   cd "${srcdir}"/${_name//-/_}-$pkgver
   PYTHONPATH=$PWD pytest "${pytest_options[@]}" tests
