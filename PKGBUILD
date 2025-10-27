@@ -10,8 +10,8 @@
 # https://www.modartt.com/download?file=pianoteq_stage_linux_v843.7z
 # The downloaded files must be placed in the appropriate directory
 # - makepkg: The same directory as this PKGBUILD
-# - yay: /home/<user>/.cache/yay/pianoteq-stage
-# - paru: /home/<user>/.cache/paru/clone/pianoteq-stage/ 
+# - yay: /home/<user>/.cache/yay/pianoteq8-stage
+# - paru: /home/<user>/.cache/paru/clone/pianoteq8-stage/ 
 
 pkgname=pianoteq8-stage
 pkgver=8.4.3
@@ -40,8 +40,8 @@ if [ ! -f ${_sourcefile} ]; then
   echo ""
   echo "	The Downloaded file must be placed in the appropriate directory depending on your AUR helper (or lack of thereof) here:"
   echo "		- makepkg: Same directory as this PKGBUILD"
-  echo "		- yay: /home/<user>/.cache/yay/pianoteq-stage"
-  echo "		- paru: /home/<user>/.cache/paru/clone/pianoteq-stage/                                                                                                    "
+  echo "		- yay: /home/<user>/.cache/yay/pianoteq8-stage"
+  echo "		- paru: /home/<user>/.cache/paru/clone/pianoteq8-stage/                                                                                                    "
   echo ""
   echo "Operation Aborted"
   echo ""
