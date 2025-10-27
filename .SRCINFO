@@ -1,18 +1,16 @@
 pkgbase = dbschema
 	pkgdesc = Relational Data Browse, Query Builder, SQL Editor, schema deployment and synchronization.
-	pkgver = 9.5.4
+	pkgver = 9.9.3
 	pkgrel = 1
 	url = http://www.dbschema.com/
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = java-runtime
-	depends = java-openjfx
-	source = dbschema-9.5.4.tar.gz::https://www.dbschema.com/download/DbSchema_unix_9_5_4.tar.gz
+	source = dbschema-9.9.3.tar.gz::https://dbschema.com/download/dbschema_unix_9_9_3.tar.gz
 	source = dbschema.desktop
-	md5sums = dac7a57db10d66c4a39daff4d923795a
-	md5sums = 6ee4511b39884a2e6fdd63fd6bbdea8e
-	sha512sums = 3a5a4f291c91a38382d3716e362954004df78f6bcfa6e7ef1cc7e01b28db185cbd5d1e6c851438a12c2e33bf082bec152208a45593d9da91d0ca951ad16c17f2
-	sha512sums = 1f82da894596bc44d77a179e56750e86628ed522cee68755ef348d4ba7cd53776783acf87592a1fa238eee09eb377a52406c04bd56e88701decb0c8ca985bbb3
+	source = https://dbschema.com/img/favicon/favicon.svg
+	md5sums = 9b3af8394fb33bd5225d3e9ec8267b1d
+	md5sums = fd70b65c057119c0290bf9f4b51be830
+	md5sums = f52f8d76f63ae513fda70b4ef53ebbc5
 
 pkgname = dbschema
