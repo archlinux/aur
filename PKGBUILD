@@ -12,7 +12,7 @@ depends=()
 makedepends=('git' 'python-build' 'python-setuptools' 'python-installer' 'python-wheel')
 conflicts=('python-aio-mqtt-mod-git' 'python-aio-mqtt-mod' 'python-aio-mqtt')
 provides=('python-aio-mqtt-mod')
-source=('git+https://github.com/devbis/aio-mqtt.git')
+source=('git+https://github.com/syyyr/aio-mqtt.git#branch=makepkg')
 md5sums=('SKIP')
 
 pkgver() {

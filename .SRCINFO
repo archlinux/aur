@@ -14,7 +14,7 @@ pkgbase = python-aio-mqtt-mod-git
 	conflicts = python-aio-mqtt-mod-git
 	conflicts = python-aio-mqtt-mod
 	conflicts = python-aio-mqtt
-	source = git+https://github.com/devbis/aio-mqtt.git
+	source = git+https://github.com/syyyr/aio-mqtt.git#branch=makepkg
 	md5sums = SKIP
 
 pkgname = python-aio-mqtt-mod-git
