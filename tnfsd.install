@@ -1,0 +1,22 @@
+post_install() {
+  cat <<'EOF'
+==> tnfsd installed.
+    To run as a user service:
+      1) (optional) Pick a directory to serve, default is $HOME/TNFS.
+         You can override by creating ~/.config/tnfsd/env with:
+           TNFS_DIR=/path/you/want
+      2) Enable and start:
+           systemctl --user enable --now tnfsd.service
+      3) Check status/logs:
+           systemctl --user status tnfsd.service
+           journalctl --user -u tnfsd.service
+
+    Upstream project and latest release info:
+      https://github.com/FujiNetWIFI/tnfsd  (release v24.0522.1)
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+

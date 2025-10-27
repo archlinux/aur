@@ -1,0 +1,25 @@
+[Unit]
+Description=TNFS Server (user)
+Documentation=https://github.com/FujiNetWIFI/tnfsd
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Default to $HOME/TNFS; allow override via ~/.config/tnfsd/env
+Environment=TNFS_DIR=%h/TNFS
+EnvironmentFile=-%h/.config/tnfsd/env
+
+# tnfsd takes the served directory as its sole argument
+ExecStart=/usr/bin/tnfsd $TNFS_DIR
+
+# Helpful restarts for a long-running user service
+Restart=on-failure
+RestartSec=2
+
+# Reasonable hardening for a user daemon (keep simple to avoid home perms issues)
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target
+

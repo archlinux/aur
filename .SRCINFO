@@ -1,0 +1,21 @@
+pkgbase = tnfsd
+	pkgdesc = TNFS (Trivial Network File System) server for 8-bit systems (FujiNet, Spectranet, etc.)
+	pkgver = 24.0522.1
+	pkgrel = 1
+	url = https://github.com/FujiNetWIFI/tnfsd
+	install = tnfsd.install
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	license = MIT
+	makedepends = make
+	makedepends = gcc
+	source = tnfsd-24.0522.1.tar.gz::https://github.com/FujiNetWIFI/tnfsd/archive/refs/tags/v24.0522.1.tar.gz
+	source = tnfsd.user.service
+	source = tnfsd.install
+	sha256sums = 35b1e4c7446e276577a87996c9c09d78694253ca3b2dbc7dc59efa231338fed8
+	sha256sums = 1ca9bbe1d47cc899027c3b05b4315433be9e84e76d5d0a956332fbe18a44dd89
+	sha256sums = 0fcd854606deec68a778e71139d8216bc286e7de6ba1a57387822e3f448c3718
+
+pkgname = tnfsd
