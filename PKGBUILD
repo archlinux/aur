@@ -4,7 +4,7 @@
 
 _pkgname=cup
 pkgname=$_pkgname-docker
-pkgver=3.4.2
+pkgver=3.4.3
 pkgrel=1
 pkgdesc="Cup is the easiest way to check for container image updates."
 url="https://github.com/sergi0g/cup"
@@ -12,7 +12,7 @@ makedepends=('cargo' 'bun' 'typescript')
 arch=('x86_64' 'aarch64')
 license=('AGPL-3')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/sergi0g/cup/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c501c86c5d558745b03f3aa4bdfc0d3f1aef2fca6e127c47dd19928936a2d4f9')
+sha256sums=('480c5f63e6ebb862fd6eb65fbff472b79c066b66b7110f7ebf380b50b1465a18')
 options=(!lto)
 prepare() {
   cd "$_pkgname-$pkgver"
