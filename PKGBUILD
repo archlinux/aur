@@ -2,11 +2,11 @@
 # Contributor: Alexey Stukalov <astukalov-at-gmail-dot-com>
 
 pkgname=ilorest
-pkgver=6.2.0.0
-pkgrel=2
+pkgver=6.3.0.0
+pkgrel=1
 pkgdesc="HPE RESTful Interface Tool"
 arch=(x86_64)
-url="https://support.hpe.com/connect/s/softwaredetails?language=en_US&softwareId=MTX_8b4b824586db4353bbfebe795f&tab=releaseNotes"
+url="https://support.hpe.com/connect/s/softwaredetails?language=en_US&softwareId=MTX_dd07980aee654032ab5c80d725&tab=releaseNotes"
 depends=('bash' 'libxcrypt-compat' 'python' 'python-urllib3'
          'python-pyaes' 'python-colorama' 'python-jsonpointer'
          'python-six' 'python-ply' 'python-decorator'
@@ -19,7 +19,7 @@ provides=('ilorest')
 groups=(hpproliant)
 license=("DMTF")
 source=("https://github.com/HewlettPackard/python-redfish-utility/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('bf058b52d0de365b284fb7d9951a28c7dd3654d7e7ffd9b1e768a12f9e2ccade')
+sha256sums=('2192b412083cc7b3e7a450e5d923f1f60bf03b6e535099de5394ada822e59d49')
 changelog=ChangeLog
 
 package() {
