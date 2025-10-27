@@ -1,6 +1,6 @@
 pkgbase = simplex-desktop-appimage
 	pkgdesc = The latest release of Simplex Desktop, the first messaging platform operating without user identifiers of any kind - 100% private by design!
-	pkgver = 6.4.5
+	pkgver = 6.4.6
 	pkgrel = 1
 	url = https://simplex.chat/
 	arch = x86_64
@@ -8,6 +8,6 @@ pkgbase = simplex-desktop-appimage
 	makedepends = fuse2
 	options = !strip
 	options = !debug
-	source = simplex-desktop-x86_64-6.4.5-a1a2dd049af2c339d55fab54069b993e057caf89406fdc51344dc94b63133313.AppImage::https://github.com/simplex-chat/simplex-chat/releases/download/v6.4.5/simplex-desktop-x86_64.AppImage
-	sha256sums = a1a2dd049af2c339d55fab54069b993e057caf89406fdc51344dc94b63133313
+	source = simplex-desktop-x86_64-6.4.6-677ea35988963f93dd8831dacd79d9c3d3db142eec0760d5f5cdbd6048cd0c47.AppImage::https://github.com/simplex-chat/simplex-chat/releases/download/v6.4.6/simplex-desktop-x86_64.AppImage
+	sha256sums = 677ea35988963f93dd8831dacd79d9c3d3db142eec0760d5f5cdbd6048cd0c47
 pkgname = simplex-desktop-appimage
