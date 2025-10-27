@@ -1,4 +1,4 @@
 [system-monitoring-center]
 source = "git"
-git = "https://github.com/hakandundar34coding/system-monitoring-center.git"
+git = "https://github.com/mamolinux/system-monitoring-center.git"
 prefix = "v"
