@@ -1,6 +1,6 @@
 pkgbase = termpicker-git
 	pkgdesc = A color picker for the terminal
-	pkgver = v1.5.0
+	pkgver = v1.5.1
 	pkgrel = 1
 	url = https://github.com/ChausseBenjamin/termpicker
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = termpicker-git
 	conflicts = termpicker
 	conflicts = termpicker-bin
 	options = !debug
-	source = termpicker-git::git+https://github.com/ChausseBenjamin/termpicker.git#tag=v1.5.0
+	source = termpicker-git::git+https://github.com/ChausseBenjamin/termpicker.git#tag=v1.5.1
 	sha256sums = SKIP
 
 pkgname = termpicker-git
