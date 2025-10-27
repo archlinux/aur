@@ -24,6 +24,7 @@ build() {
       -Bbuild \
       -GNinja \
       -DCMAKE_BUILD_TYPE=None \
+      -DCMAKE_UNITY_BUILD=ON \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DBLA_VENDOR=Generic \
       -DEIGENSPARSE=ON \
