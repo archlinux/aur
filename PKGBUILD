@@ -2,17 +2,66 @@
 # Contributor: Firepal <firepal@cyberdude.com>
 
 pkgname=wivrn-multilib-git
-pkgver=25.8.62.g8f8e583
+pkgver=25.9.129.g2204fdd3
 pkgrel=1
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets. (32-bit support)"
-arch=('x86_64')
+arch=("x86_64")
 url="https://github.com/WiVRn/WiVRn"
 license=("GPL-3.0-or-later")
-makedepends=('cmake' 'git' 'gcc-multilib' 'ninja' 'pkgconf')
-provides=('wivrn-server')
-conflicts=('wivrn-server')
+depends=(
+	"avahi"
+	"cairo"
+	"ffmpeg"
+	"gcc-libs"
+	"glib2"
+	"glibc"
+	"libarchive"
+	"libbsd"
+	"libgl"
+	"libnotify"
+	"libpipewire"
+	"libpng"
+	"libpulse"
+	"librsvg"
+	"libx11"
+	"libxcb"
+	"openssl"
+	"systemd-libs"
+	"vulkan-icd-loader"
+    "lib32-vulkan-icd-loader"
+	"x264"
+)
+makedepends=(
+	"boost"
+	"cli11"
+	"cmake"
+	"eigen"
+	"git"
+	"glib2-devel"
+	"libdrm"
+	"libxrandr"
+	"nlohmann-json"
+	"vulkan-headers"
+	"wayland"
+    "lib32-wayland"
+    "gcc-multilib"
+	"lib32-gcc-libs"
+    "ninja"
+    "pkgconf"
+    "lib32-libegl"
+)
+optdepends=(
+    "opencomposite: OpenVR to OpenXR translation layer"
+    "xrizer: Another OpenVR to OpenXR translation layer"
+)
+provides=(
+	"openxr-runtime"
+	"wivrn-server"
+)
+conflicts=("wivrn-server")
 source=("git+$url")
-sha256sums=('SKIP')
+sha256sums=("SKIP")
+install=$pkgname.install
 
 pkgver() {
     cd "$srcdir/WiVRn"
@@ -45,6 +94,7 @@ build() {
     cmake -B build32 -S . \
         -DWIVRN_BUILD_CLIENT=OFF \
         -DWIVRN_BUILD_SERVER=OFF \
+        -DWIVRN_BUILD_WIVRNCTL=OFF \
         -DWIVRN_BUILD_SERVER_LIBRARY=ON \
         -DWIVRN_OPENXR_MANIFEST_TYPE=filename \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
