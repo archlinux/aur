@@ -1,7 +1,7 @@
 pkgbase = uzdoom-bin
 	pkgdesc = A fork of GZDoom, a feature-centric fork of ZDoom
 	pkgver = 4.15pre
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/linuxbombay/gzdoom
 	arch = x86_64
 	arch = aarch64

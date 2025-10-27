@@ -1,6 +1,6 @@
 pkgname=uzdoom-bin
 pkgver=4.15pre
-pkgrel=1
+pkgrel=2
 pkgdesc='A fork of GZDoom, a feature-centric fork of ZDoom'
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/linuxbombay/gzdoom"
@@ -23,4 +23,6 @@ package() {
     install -dm755 "$pkgdir/usr/share/applications"
     
     cp -r "$srcdir/usr" "$pkgdir"
+   #Libfix
+    [ -e "/usr/lib/libvpx.so.9" ] || ln -s /usr/lib/libvpx.so "$pkgdir/usr/lib/libvpx.so.9"    
 }
