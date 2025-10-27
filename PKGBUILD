@@ -16,13 +16,16 @@
 
 : ${_build_limit_cores:=false}
 
-: ${_tag_runtime:=passed-20251005094429}
-: ${_hash_floorp=610b5ed98aaa796c563bc9175c8f251477b2d7d61fdfe8c931f45e3aa779e100}
-: ${_hash_runtime=715868a7630195812dcf276b2b2e23480308c8014f8c2f12015bd8e653144e7d}
+: ${_install_path:=usr/lib}
+: ${_wmclass:=floorp-default}
+
+: ${_tag_runtime:=daily-532}
+: ${_hash_floorp=cdb51929790ac5c0ceccab572b30973387ad29e2272e877d538cdcafecb3fdce}
+: ${_hash_runtime=733b9816d6c623dc59dcda44fbd433132e3f5cc6c19d7893bdf136dbcc68d740}
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=12.2.1
+pkgver=12.3.5
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -31,7 +34,7 @@ arch=('x86_64')
 
 depends=(
   dbus
-  ffmpeg
+  ffmpeg4.4
   gtk3
   libevent
   libjpeg
@@ -108,7 +111,7 @@ _pkgsrc_runtime="Floorp-runtime-$_tag_runtime"
 _pkgext="tar.gz"
 source=(
   "$_pkgname-components-$pkgver.$_pkgext"::"https://github.com/Floorp-Projects/Floorp/archive/refs/tags/v$pkgver.$_pkgext"
-  "$_pkgname-runtime-${_tag_runtime#passed-}.$_pkgext"::"https://github.com/Floorp-Projects/Floorp-runtime/archive/refs/tags/$_tag_runtime.$_pkgext"
+  "$_pkgname-runtime-${_tag_runtime#[a-z]*[a-z]-}.$_pkgext"::"https://github.com/Floorp-Projects/Floorp-runtime/archive/refs/tags/$_tag_runtime.$_pkgext"
   "floorp-projects.floorp-core"::"git+https://github.com/Floorp-Projects/Floorp-core.git"
   #"floorp-projects.unified-l10n-central"::"git+https://github.com/Floorp-Projects/Unified-l10n-central.git"
   "$_pkgname.desktop"
@@ -118,11 +121,11 @@ sha256sums=(
   "${_hash_runtime:-SKIP}"
   'SKIP'
   #'SKIP'
-  '00ac63fe0331de13e418b5d6552bda95cb3a00267feccf07afa49600e810f65a'
+  '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
 )
 
 _deno() {
-  pushd "$srcdir/$_pkgsrc_runtime/floorp" > /dev/null || return
+  pushd "$srcdir/$_pkgsrc_runtime/noraneko" > /dev/null || return
   deno "$@"
   popd > /dev/null || return
 }
@@ -131,15 +134,15 @@ prepare() (
   mkdir -p mozbuild
 
   # prepare directory structure
-  cp -r "$srcdir/$_pkgsrc"/* "$_pkgsrc_runtime/floorp/"
-  cp -r "$_pkgsrc"/gecko/branding/* "$_pkgsrc_runtime"/browser/branding/
+  rsync -aL "$_pkgsrc/" "$_pkgsrc_runtime/noraneko/"
+  rsync -aL "$_pkgsrc_runtime/.github/assets/branding/" "$_pkgsrc_runtime/browser/branding/"
 
-  sed -i 's|https://@MOZ_APPUPDATE_HOST@/update/6/%PRODUCT%/%VERSION%/%BUILD_ID%/%BUILD_TARGET%/%LOCALE%/%CHANNEL%/%OS_VERSION%/%SYSTEM_CAPABILITIES%/%DISTRIBUTION%/%DISTRIBUTION_VERSION%/update.xml|https://%NORA_UPDATE_HOST%update.xml|g' "$_pkgsrc_runtime"/build/application.ini.in
+  # prevent error from unsupported variables
+  rm -f "$_pkgsrc_runtime/browser/branding/floorp-official/configure.sh"
 
   # clear forced startup pages
   sed -E -e 's&^\s*pref\("startup\.homepage.*$&&' \
-    -i "$_pkgsrc"/gecko/branding/*/pref/firefox-branding.js \
-    "$_pkgsrc_runtime"/browser/branding/*/pref/firefox-branding.js
+    -i "$_pkgsrc_runtime"/browser/branding/*/pref/firefox-branding.js
 
   # prepare api keys
   cp floorp-projects.floorp-core/apis/api-*-key ./
@@ -148,7 +151,7 @@ prepare() (
   cat > mozconfig << END
 ac_add_options --enable-application=browser
 ac_add_options --disable-artifact-builds
-mk_add_options MOZ_OBJDIR=${PWD@Q}/$_pkgsrc_runtime/obj-artifact-build-output
+mk_add_options MOZ_OBJDIR="$srcdir/$_pkgsrc_runtime/obj-artifact-build-output"
 
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
@@ -164,7 +167,6 @@ ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 ac_add_options --with-app-basename=$_pkgname
 ac_add_options --with-app-name=$_pkgname
 ac_add_options --with-branding=browser/branding/floorp-official
-ac_add_options --with-version-file-path=floorp/gecko/config
 ac_add_options --enable-update-channel=nightly
 ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --with-unsigned-addon-scopes=app,system
@@ -174,12 +176,12 @@ export MOZ_APP_REMOTINGNAME=$_pkgname
 MOZ_REQUIRE_SIGNING=
 
 # Localization
-#ac_add_options --with-l10n-base=${PWD@Q}/floorp-projects.unified-l10n-central
+#ac_add_options --with-l10n-base="$srcdir/floorp-projects.unified-l10n-central"
 
 # Keys
-ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/api-mozilla-key
-ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/api-google-location-service-key
-ac_add_options --with-google-safebrowsing-api-keyfile=${PWD@Q}/api-google-safe-browsing-key
+ac_add_options --with-mozilla-api-keyfile="$srcdir/api-mozilla-key"
+ac_add_options --with-google-location-service-api-keyfile="$srcdir/api-google-location-service-key"
+ac_add_options --with-google-safebrowsing-api-keyfile="$srcdir/api-google-safe-browsing-key"
 
 # Features
 ac_add_options --enable-alsa
@@ -259,8 +261,6 @@ END
 )
 
 build() (
-  cd "$_pkgsrc_runtime"
-
   export RUSTUP_TOOLCHAIN=stable
 
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$srcdir/xdg-runtime}"
@@ -282,33 +282,14 @@ build() (
   # LTO/PGO needs more open files
   ulimit -n 4096
 
+  cd "$_pkgsrc_runtime"
+
   # Do 3-tier PGO
-  if [[ "${_build_pgo::1}" == "t" ]]; then
-    # find previous profile file...
-    local _old_profdata _old_jarlog _pkgver_old tmp_old tmp_new
-    _pkgver_prof=$(
-      cd "$SRCDEST"
-      for i in *.profdata; do [ -f "$i" ] && echo "$i"; done \
-        | sort -rV | head -1 | sed -E -e 's&^[^0-9]+-([0-9\.]+)-merged.profdata&\1&'
-    )
-
-    # new profile for new major version
-    if [ "${_pkgver_prof%%.*}" != "${pkgver%%.*}" ]; then
-      _build_pgo_reuse=false
-      _pkgver_prof="$pkgver"
-    fi
-
-    # new profile for new minor version
-    _tmp_old=$(echo "${_pkgver_prof}" | cut -d'-' -f2 | cut -d'.' -f2)
-    _tmp_new=$(echo "${pkgver}" | cut -d'-' -f2 | cut -d'.' -f2)
-
-    if [ "${_tmp_new:-0}" -gt "${_tmp_old:-0}" ]; then
-      _build_pgo_reuse=false
-      _pkgver_prof="$pkgver"
-    fi
-
-    local _old_profdata="$SRCDEST/$_pkgname-$_pkgver_prof-merged.profdata"
-    local _old_jarlog="$SRCDEST/$_pkgname-$_pkgver_prof-jarlog"
+  if [[ "${_build_pgo::1}" == "t" ]] && [ "${_build_artifact_mode::1}" != "t" ]; then
+    # Old profile loction
+    local _pkgver_prof="${_tag_runtime#[a-z]*[a-z]-}"
+    local _old_profdata="$SRCDEST/floorp-runtime-$_pkgver_prof-merged.profdata"
+    local _old_jarlog="$SRCDEST/floorp-runtime-$_pkgver_prof-jarlog"
 
     # Restore old profile
     if [[ "${_build_pgo_reuse::1}" == "t" ]]; then
@@ -337,7 +318,7 @@ END
 
       local _headless_env=(
         LLVM_PROFDATA=llvm-profdata
-        JARLOG_FILE="${PWD@Q}/jarlog"
+        JARLOG_FILE="$srcdir/$_pkgsrc_runtime/jarlog"
         LIBGL_ALWAYS_SOFTWARE=true
         dbus-run-session
       )
@@ -359,15 +340,17 @@ END
       echo "Removing instrumented browser..."
       ./mach clobber objdir
     fi
+  fi
 
-    echo "Building optimized browser..."
-    cat > .mozconfig ../mozconfig
+  # Prepare to rebuild browser
+  cat > .mozconfig ../mozconfig
 
+  if [ "${_build_artifact_mode::1}" != "t" ]; then
     if [[ -s merged.profdata ]]; then
       stat -c "Profile data found (%s bytes)" merged.profdata
       cat >> .mozconfig - << END
 ac_add_options --enable-profile-use=cross
-ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+ac_add_options --with-pgo-profile-path="$srcdir/$_pkgsrc_runtime/merged.profdata"
 END
 
       # save profdata for reuse
@@ -379,7 +362,7 @@ END
     if [[ -s jarlog ]]; then
       stat -c "Jar log found (%s bytes)" jarlog
       cat >> .mozconfig - << END
-ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+ac_add_options --with-pgo-jarlog="$srcdir/$_pkgsrc_runtime/jarlog"
 END
 
       # save jarlog for reuse
@@ -387,39 +370,51 @@ END
     else
       echo "Jar log not found."
     fi
-
-    ./mach build --priority normal
-  else
-    echo "Building browser..."
-    cat > .mozconfig ../mozconfig
-
-    ./mach build --priority normal
   fi
 
+  # Final build
+  echo "Building browser..."
+  ./mach build --priority normal
+
   # inject floorp
-  export PATH="$srcdir:$PATH"
   export DENO_DIR="$srcdir/.deno"
 
   _deno install --allow-scripts
-  _deno task build --write-version
-  NODE_ENV=production _deno task build --release-build-before
+  _deno task feles-build misc writeVersion
+  NODE_ENV=production _deno task feles-build build --phase before-mach
 
-  git apply --ignore-space-change --ignore-whitespace .github/patches/packaging/*.patch
-  ./mach build faster
+  for i in .github/patches/packaging/*.patch; do
+    git apply --ignore-space-change --ignore-whitespace "$i" || true
+  done
 
-  _deno task build --release-build-after
+  # set floorp version
+  local _floorp_ver=$(cat "noraneko/static/gecko/config/version.txt")
+  local _firefoxf_ver=$(cat "browser/config/version.txt")
+  echo "${_floorp_ver}@${_firefoxf_ver}" | tee "browser/config/"{version,version_display}.txt
+
+  ./mach build faster --priority normal
+
+  # missing on install
+  cp noraneko/_dist/buildid2 obj-artifact-build-output/dist/bin/browser
+
+  # dereference symlinks
   rsync -aL obj-artifact-build-output/ obj-artifact-build-output_new/
+  rm -rf obj-artifact-build-output_old
   mv obj-artifact-build-output obj-artifact-build-output_old
   mv obj-artifact-build-output_new obj-artifact-build-output
 
-  git apply --reject floorp/scripts/git-patches/patches/*.patch --directory obj-artifact-build-output/dist/bin --unsafe-paths --check --apply
+  _deno task feles-build build --phase after-mach
+
+  for i in noraneko/tools/patches/*.patch; do
+    git apply --reject "$i" --directory obj-artifact-build-output/dist/bin --unsafe-paths --check --apply || true
+  done
 )
 
 package() {
   cd "$_pkgsrc_runtime"
   DESTDIR="$pkgdir" ./mach install
 
-  local vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
+  local vendorjs="$pkgdir/$_install_path/$_pkgname/browser/defaults/preferences/vendor.js"
   install -Dm644 /dev/stdin "$vendorjs" << END
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
@@ -446,7 +441,7 @@ pref("browser.aboutConfig.showWarning", false);
 pref("services.settings.main.search-telemetry-v2.last_check", $(date +%s));
 END
 
-  local distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
+  local distini="$pkgdir/$_install_path/$_pkgname/distribution/distribution.ini"
   install -Dm644 /dev/stdin "$distini" << END
 [Global]
 id=archlinux
@@ -470,11 +465,11 @@ Version=2
 END
 
   # Replace duplicate binary
-  ln -sf "$_pkgname" "$pkgdir/usr/lib/$_pkgname/$_pkgname-bin"
+  ln -sf "$_pkgname" "$pkgdir/$_install_path/$_pkgname/$_pkgname-bin"
 
-  # desktop file
-  install -Dm644 ../$_pkgname.desktop \
-    "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  # launcher
+  local _desktop=$(sed -e "s/@WMCLASS@/$_wmclass/" "$_pkgname.desktop")
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" <<< "$_desktop"
 
   # icons
   local i theme=floorp-official
