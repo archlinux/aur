@@ -25,6 +25,7 @@ SPDX-License-Identifier = "0BSD"
 path = [
     "program-suffix.patch",
     "systemd-unit-conflicts.diff",
+    "0001-Allow-to-run-32-bit-pcscd-on-64-bit-systems.patch"
 ]
 SPDX-FileCopyrightText = "lib32-pcsclite contributors"
 SPDX-License-Identifier = "BSD-3-Clause"

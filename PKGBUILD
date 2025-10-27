@@ -8,8 +8,8 @@ _pkgname=pcsclite
 pkgname=lib32-$_pkgname
 # https://gitlab.archlinux.org/archlinux/packaging/packages/pcsclite/-/commits/main
 # https://salsa.debian.org/rousseau/PCSC/blob/master/ChangeLog
-pkgver=2.3.3
-pkgrel=1
+pkgver=2.4.0
+pkgrel=3
 pkgdesc="PC/SC Architecture smartcard middleware library (32-bit)"
 arch=('x86_64')
 url='https://pcsclite.apdu.fr/'
@@ -29,8 +29,8 @@ depends=(
 makedepends=(
   'git'
   'meson'
-  'lib32-systemd'
   'lib32-polkit'
+  'lib32-systemd'
 )
 provides=(
   'libpcsclite.so'
@@ -42,22 +42,26 @@ source=(
   "git+https://github.com/LudovicRousseau/PCSC.git#tag=${pkgver}?signed"
   "program-suffix.patch"
   "systemd-unit-conflicts.diff"
+  "0001-Allow-to-run-32-bit-pcscd-on-64-bit-systems.patch"
 )
-sha256sums=('b1cd0ef7b75b3daf8230a9a824a4c4797e26e235bb884b5ec4d7eef85b46a890'
-            'f81b5f1ad38fabf6f18d75164264bfe5ba42aed092cc52b30341948b5324388d'
-            '98c6c4084a875f52e02fecdc3ae46b4752e16b637af2dc3ca9a36fb3aa96fe0f')
+sha256sums=('441ca8dd35b6c8b8363cbac72b1d9a97d0e482f48ab51b9766cbab304e81305e'
+            '73831a681d3dd5f0198b9f09e2a69db5e70abe3e4c04fa242452076af1c174fd'
+            '207a2109c954ae75ba31e607f8da587f7053c6fe2f9e3ae17090acfb0c680b36'
+            '6623cfd64ce75c3c8a4274210a437f3d192908bd3b5505f5c529c2aebd581581')
 
 prepare() {
   cd PCSC
   patch -Np1 -i ../program-suffix.patch
   # Seems pcscd-32 needs exclusive access to devices
   patch -Np1 -i ../systemd-unit-conflicts.diff
+  patch -Np1 -i ../0001-Allow-to-run-32-bit-pcscd-on-64-bit-systems.patch
 }
 
 build() {
   local meson_options=(
     --cross-file lib32
     -D program_suffix="-32"
+    -D libsystemd=true
     -D libudev=true
     -D polkit=true
     -D serial=true
@@ -78,13 +82,13 @@ package() {
   meson install -C build --destdir "${pkgdir}"
 
   # Remove files shared with pcsclite
-  rm -rv "$pkgdir"/{etc,usr/{include,share}}
+  rm -rv "$pkgdir"/{etc,usr/{include,lib/sysusers.d,share}}
   # pcsc-spy is just a Python script, and thus the one from 64-bit pcsclite works with this package
   rm -v "$pkgdir"/usr/bin/pcsc-spy
   # Keep pcscd-32 as it's useful for using with 32-bit only drivers
 
-  install -D -m0644 LICENSE.* -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -d "$pkgdir/usr/lib32/pcsc/drivers"
+  install -D -m0644 LICENSE.* -t "${pkgdir}"/usr/share/licenses/$pkgname
+  install -d "${pkgdir}"/usr/lib32/pcsc/drivers
 }
 
 # vim:set sw=2 sts=-1 et:

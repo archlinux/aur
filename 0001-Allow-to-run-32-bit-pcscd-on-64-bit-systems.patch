@@ -1,0 +1,24 @@
+From 3dabd3a8b24c1703158475123d7d0ed21cec9dc5 Mon Sep 17 00:00:00 2001
+From: Chih-Hsuan Yen <645432-yan12125@users.noreply.gitlab.com>
+Date: Sat, 1 Nov 2025 11:56:06 +0800
+Subject: [PATCH] Allow to run 32-bit pcscd on 64-bit systems
+
+---
+ etc/pcscd.service.in | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/etc/pcscd.service.in b/etc/pcscd.service.in
+index 60732c17..b3ad500d 100644
+--- a/etc/pcscd.service.in
++++ b/etc/pcscd.service.in
+@@ -46,7 +46,6 @@ RestrictSUIDSGID=yes
+ # System Call Filtering
+ SystemCallFilter=@system-service
+ SystemCallFilter=~@resources @privileged
+-SystemCallArchitectures=native
+ 
+ [Install]
+ Also=pcscd@program_suffix@.socket
+-- 
+2.51.2
+
