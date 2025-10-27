@@ -1,0 +1,71 @@
+post_install() {
+    # Create config directory and copy default config for all users
+    # This runs as root during installation, but we'll set proper permissions
+    for user_home in /home/*; do
+        if [ -d "$user_home" ]; then
+            username=$(basename "$user_home")
+            config_dir="$user_home/.config/xtreamium-proxy"
+            config_file="$config_dir/appsettings.json"
+            
+            # Only create if it doesn't exist (don't overwrite existing configs)
+            if [ ! -f "$config_file" ]; then
+                mkdir -p "$config_dir"
+                cp /usr/share/xtreamium-proxy/appsettings.json "$config_file"
+                chown -R "$username:$username" "$config_dir"
+                chmod 755 "$config_dir"
+                chmod 644 "$config_file"
+            fi
+        fi
+    done
+    
+    echo ""
+    echo "==> Xtreamium Proxy has been installed as a user service"
+    echo ""
+    echo "Configuration created at: ~/.config/xtreamium-proxy/appsettings.json"
+    echo ""
+    echo "To start the service:"
+    echo "  systemctl --user enable xtreamium-proxy"
+    echo "  systemctl --user start xtreamium-proxy"
+    echo ""
+    echo "(Optional) Enable lingering to start service on boot:"
+    echo "  loginctl enable-linger \$USER"
+    echo ""
+    echo "Manage the service with:"
+    echo "  Status:  systemctl --user status xtreamium-proxy"
+    echo "  Logs:    journalctl --user -u xtreamium-proxy -f"
+    echo "  Stop:    systemctl --user stop xtreamium-proxy"
+    echo "  Restart: systemctl --user restart xtreamium-proxy"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> Xtreamium Proxy has been upgraded"
+    echo ""
+    echo "Restart the service with:"
+    echo "  systemctl --user restart xtreamium-proxy"
+    echo ""
+}
+
+pre_remove() {
+    # Stop and disable the service if it's running
+    if systemctl --user is-active xtreamium-proxy >/dev/null 2>&1; then
+        systemctl --user stop xtreamium-proxy
+    fi
+    if systemctl --user is-enabled xtreamium-proxy >/dev/null 2>&1; then
+        systemctl --user disable xtreamium-proxy
+    fi
+}
+
+post_remove() {
+    echo ""
+    echo "==> Xtreamium Proxy has been removed"
+    echo ""
+    echo "Your configuration files remain at:"
+    echo "  ~/.config/xtreamium-proxy/"
+    echo ""
+    echo "To completely remove all data:"
+    echo "  rm -rf ~/.config/xtreamium-proxy"
+    echo ""
+}
+
