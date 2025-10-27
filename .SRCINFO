@@ -1,0 +1,17 @@
+pkgbase = root_boot
+	pkgdesc = A Rust program that helps you boot into bootable devices directly from the os you're running (Windows/Linux compatable)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/execRooted/root_boot
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = https://github.com/execRooted/root_boot/archive/main.tar.gz
+	source = install.sh
+	source = uninstall.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = root_boot
