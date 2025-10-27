@@ -1,7 +1,7 @@
 pkgbase = python-p115cipher
 	pkgdesc = 115 cipher module.
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://pypi.org/project/p115cipher
 	arch = any
 	license = MIT
