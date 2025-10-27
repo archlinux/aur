@@ -1,0 +1,5 @@
+["json-log-viewer-bin"]
+source = "github"
+github = "hedhyw/json-log-viewer"
+use_latest_release = true
+prefix = "v"
