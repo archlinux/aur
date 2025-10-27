@@ -1,4 +1,4 @@
-# Maintainer: 
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 # Contributor: Antoine Viallon <antoine.viallon@gmail.com>
 # Contributor: agvares <omen13@bk.ru>
@@ -10,9 +10,8 @@ pkgrel=1
 pkgdesc="A cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=(x86_64)
 url="https://codelite.org/"
-license=(GPL2)
-depends=(webkit2gtk gtk3 gcc-libs
-        )
+license=(GPL-2.0)
+depends=(gtk3 gcc-libs webkit2gtk)
 optdepends=( 'graphviz: callgraph visualization'
              'gcc: compiler'
              'gdb: debugger'

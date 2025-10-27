@@ -1,0 +1,4 @@
+[codelite-bin]
+source = "github"
+github = "eranif/codelite"
+use_latest_release = true
