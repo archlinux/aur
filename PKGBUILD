@@ -24,7 +24,7 @@ build() {
   cd $srcdir/ceres-solver-$pkgver
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake \
+    ${_arch}-cmake -DCMAKE_UNITY_BUILD=ON \
       -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF -DBUILD_BENCHMARKS=OFF -DGFLAGS=OFF -DBLA_VENDOR=Generic ..
     make
     popd
