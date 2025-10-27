@@ -1,8 +1,8 @@
 # Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=volatile-git
-pkgver=0.49.592aad3
-pkgrel=2
+pkgver=0.53.8b53d06
+pkgrel=1
 pkgdesc="ALSA status icon and volume control"
 arch=('any')
 url="https://github.com/gavinhungry/volatile"
