@@ -1,7 +1,7 @@
 # Maintainer: Nichlas Severinzen <ns@nsz.no>
 
 pkgname=xr0
-pkgver=0.15.1
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="A verifier for C that aims to guarantee the safety of C programs at compile time"
 arch=("any")
@@ -11,9 +11,12 @@ makedepends=("gcc" "git" "make")
 provides=("xr0")
 source=("https://github.com/xr0-org/xr0/archive/refs/tags/v${pkgver}.zip")
 sha256sums=("SKIP")
+options=("!buildflags" "!makeflags")
 
 build() {
+  export CFLAGS="-Wno-unused-variable -Wno-unused-function"
   cd "${srcdir}/xr0-${pkgver}"
+  ./configure
   make
 }
 

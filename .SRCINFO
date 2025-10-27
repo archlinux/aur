@@ -1,6 +1,6 @@
 pkgbase = xr0
 	pkgdesc = A verifier for C that aims to guarantee the safety of C programs at compile time
-	pkgver = 0.15.1
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/xr0-org/xr0
 	arch = any
@@ -9,7 +9,9 @@ pkgbase = xr0
 	makedepends = git
 	makedepends = make
 	provides = xr0
-	source = https://github.com/xr0-org/xr0/archive/refs/tags/v0.15.1.zip
+	options = !buildflags
+	options = !makeflags
+	source = https://github.com/xr0-org/xr0/archive/refs/tags/v0.18.0.zip
 	sha256sums = SKIP
 
 pkgname = xr0
