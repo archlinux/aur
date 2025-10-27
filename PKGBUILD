@@ -1,27 +1,22 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
 _name=ormsgpack
-pkgname=python-${_name}
-pkgver=1.10.0
+pkgname=python-$_name
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Fast, correct Python msgpack library supporting dataclasses, datetimes, and numpy."
 arch=('any')
 url='https://github.com/aviramha/ormsgpack'
 license=('Apache-2.0 OR MIT')
-source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('5a9ab2b3eac58362e86db43c9fbfd5702795b389a6f981a631228c044af60c21')
-depends=('python' 'gcc-libs')
+depends=('python' 'glibc' 'gcc-libs')
 makedepends=('python-maturin' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-msgpack' 'python-numpy' 'python-pendulum' 'python-pydantic' 'python-pytest' 'python-pytest-benchmark' 'python-dateutil' 'python-pytz' 'python-tzdata')
 optdepends=('python-aiohttp: aiohttp')
-
-prepare(){
-  cd "${srcdir}"/${_name}-${pkgver}
-
-}
+source=("$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('d1c1503124e32c864a16083f7819e2b24a84375f08ecc094478052ea75b69d67')
 
 build() {
-  cd "${srcdir}"/${_name}-${pkgver}
+  cd "$srcdir"/$_name-$pkgver
   python -m build --wheel --no-isolation
 }
 
@@ -30,13 +25,13 @@ check() {
     -vv
 
   )
-  cd "${srcdir}"/${_name}-${pkgver}
+  cd "$srcdir"/$_name-$pkgver
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m pytest "${pytest_options[@]}" tests
 }
 
 package() {
-  cd "${srcdir}"/${_name}-${pkgver}
+  cd "$srcdir"/$_name-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
