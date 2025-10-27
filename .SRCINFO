@@ -14,7 +14,9 @@ pkgbase = lib32-libappindicator-gtk2
 	depends = lib32-libdbusmenu-gtk2
 	options = !emptydirs
 	source = libappindicator::bzr+https://code.launchpad.net/~indicator-applet-developers/libappindicator/trunk#revision=298
+	source = libappindicator-fix-unfallback.patch
 	validpgpkeys = 6FC05581A37D71FCECE165DB5BE41E162CD6358E
 	sha512sums = 023cb633e9750e279b19a6dc2d42d37bfc15d6c992017be3a6b71881579654578e9da3058d44ab400752f86411a362e676abb217ca47f14d24e43e6c26107f4d
+	sha512sums = ace190fea1b0e21fb164ff531788ce8c2ad9fc00c23227a75d844b1c89f78e8da705f35dac09677f92f053561f89a9c0a73b23af07cb22f9fdaa28afbd10a516
 
 pkgname = lib32-libappindicator-gtk2
