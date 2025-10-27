@@ -1,0 +1,5 @@
+["yara-x-bin"]
+source = "github"
+github = "VirusTotal/yara-x"
+use_latest_release = true
+prefix = "v"
