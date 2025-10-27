@@ -1,6 +1,6 @@
 pkgbase = ghostmirror
 	pkgdesc = modern alternative to reflector, true check mirror status, mirror download speed and more.
-	pkgver = 0.17.8
+	pkgver = 0.17.9
 	pkgrel = 1
 	url = https://github.com/vbextreme/ghostmirror.git
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ghostmirror
 	depends = curl
 	depends = zlib-ng
 	depends = systemd-libs
-	source = ghostmirror-0.17.8.tar.gz::https://github.com/vbextreme/ghostmirror/archive/v0.17.8.tar.gz
-	sha256sums = 8f6d4e4cc74feb5ec600360c4a6f6ff20e1e4bdc9f1cfb200a2a13475121bdd9
+	source = ghostmirror-0.17.9.tar.gz::https://github.com/vbextreme/ghostmirror/archive/v0.17.9.tar.gz
+	sha256sums = b739f4cf4c4c7f150dbf640e6ab0489ce2068565bc7a981fff31ee45069ad829
 
 pkgname = ghostmirror
