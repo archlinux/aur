@@ -4,7 +4,7 @@
 
 pkgname=lib32-libcap
 _name=${pkgname#lib32-}
-pkgver=2.76
+pkgver=2.77
 pkgrel=1
 pkgdesc="POSIX 1003.1e capabilities (32-bit)"
 arch=(x86_64)
@@ -25,8 +25,8 @@ provides=(
 )
 # NOTE: we rely on a specific tagging scheme to verify with the latest signing key: https://bugzilla.kernel.org/show_bug.cgi?id=218860#c3
 source=(git+$_url?signed#tag=sig-$_name-$pkgver)
-sha512sums=('27824e220e33eb1075e07649c50b774ad37d96f85d67f41c928c3da6b87a750b0b614767fce08300bb88449f9d15a555a38dad75a867d44b512c4c6f853ad74d')
-b2sums=('baf649813cd56ca8561a2d5906d653e8c72ca4f2701c675ef14102802f08858ffe4acc4eadff80618d5dce78babce82e5854ada4bca56edca240a14dde3d7544')
+sha512sums=('0b141758aa723be0ac266e3b4d9ed9b74b0bea595474352226a7b85bc669ca6b37a3130049031799166eb80ece3cbaa043a52aa1fb6755e193b57289cc45fa13')
+b2sums=('28e1b5f827c0a91182d85469c51d80cdbc2906bbdb17d144d518c5a77369cda9ecb3c88a3fbd5d975cd5b225b46ce4fb44010238f5f6ec4a697b9623f7cff8bb')
 validpgpkeys=(
   38A644698C69787344E954CE29EE848AE2CCF3F4  # Andrew G. Morgan <morgan@kernel.org>
   0D23D34C577B08C4082CFD76430C5CFF993116B1  # Andrew G. Morgan (2024+ libcap signing key) <morgan@kernel.org>
