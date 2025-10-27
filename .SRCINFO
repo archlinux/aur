@@ -1,0 +1,16 @@
+pkgbase = epicenter-whispering-bin
+	pkgdesc = Local-first AI voice notebook for capturing and refining spoken thoughts
+	pkgver = 7.5.5
+	pkgrel = 1
+	url = https://github.com/epicenter-md/epicenter
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	provides = epicenter-whispering
+	conflicts = epicenter-whispering
+	source = epicenter-whispering-bin-7.5.5.deb::https://github.com/epicenter-md/epicenter/releases/download/v7.5.5/Whispering_7.5.5_amd64.deb
+	sha256sums = SKIP
+
+pkgname = epicenter-whispering-bin
