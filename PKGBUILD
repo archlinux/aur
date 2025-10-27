@@ -1,8 +1,8 @@
 # Maintainer: Wilhelm Schuster <aur [aT] rot13 dot io>
 _pkgname=moonraker
 pkgname="${_pkgname}-git"
-pkgver=0.9.3.r0.g71f9e67
-pkgrel=2
+pkgver=0.9.3.r123.g8426f41
+pkgrel=1
 pkgdesc="HTTP frontend for Klipper 3D printer firmware"
 arch=(any)
 url="https://github.com/Arksine/moonraker"
@@ -52,6 +52,12 @@ pkgver() {
   cd "$srcdir/$_pkgname"
 
   git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$srcdir/$_pkgname"
+
+  sed -i 's/"pdm-backend<=2.4.4"/"pdm-backend"/' pyproject.toml
 }
 
 build() {
