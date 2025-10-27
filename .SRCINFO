@@ -1,6 +1,6 @@
 pkgbase = phd2-git
 	pkgdesc = Open PHD Guiding - PHD2 astrophotography autoguiding tool
-	pkgver = 2.6.13dev7
+	pkgver = 2.6.13dev7.52.g59c76e38
 	pkgrel = 1
 	url = http://openphdguiding.org/
 	arch = i686
@@ -28,11 +28,7 @@ pkgbase = phd2-git
 	depends = glew
 	depends = fmt
 	depends = zlib
-	source = https://github.com/OpenPHDGuiding/phd2/archive/refs/tags/v2.6.13dev7.tar.gz
-	source = 0001-gp_guider_test.cpp-add-include-iomanip-for-std-setw.patch
-	source = 0002-gaussian_process.cpp-add-include-cassert-for-assert.patch
-	sha256sums = c7916966e16c307544acc10a82ccafd0cd54757d019e42b8d1a12c3e1096d53d
-	sha256sums = d465c3aa0c3be079e802e79883c04bd31f69ff12e5805d76df91fc64435ea32d
-	sha256sums = ba647dbc28d23109e5a3b301d34b751c229eabd2daedcc9d257cf7ee3538087d
+	source = git+https://github.com/OpenPHDGuiding/phd2.git
+	sha256sums = SKIP
 
 pkgname = phd2-git

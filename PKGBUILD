@@ -1,5 +1,5 @@
 pkgname=phd2-git
-pkgver=2.6.13dev7
+pkgver=2.6.13dev7.52.g59c76e38
 pkgrel=1
 pkgdesc="Open PHD Guiding - PHD2 astrophotography autoguiding tool"
 url="http://openphdguiding.org/"
@@ -25,21 +25,12 @@ depends=(
     'zlib'
 )
 makedepends=('git' 'cmake' 'gtest' 'eigen')
-source=(
-    "https://github.com/OpenPHDGuiding/phd2/archive/refs/tags/v${pkgver}.tar.gz"
-    "0001-gp_guider_test.cpp-add-include-iomanip-for-std-setw.patch"
-    "0002-gaussian_process.cpp-add-include-cassert-for-assert.patch"
-)
-sha256sums=('c7916966e16c307544acc10a82ccafd0cd54757d019e42b8d1a12c3e1096d53d'
-            'd465c3aa0c3be079e802e79883c04bd31f69ff12e5805d76df91fc64435ea32d'
-            'ba647dbc28d23109e5a3b301d34b751c229eabd2daedcc9d257cf7ee3538087d')
+source=("git+https://github.com/OpenPHDGuiding/phd2.git")
+sha256sums=('SKIP')
 
-prepare() {
-    cd "phd2-${pkgver}"
-
-    for p in ../*.patch; do
-        patch -p1 < "$p"
-    done
+pkgver() {
+    cd phd2
+    echo "$(git describe --tags --long | sed 's/^v//;s/-/./g')"
 }
 
 build() {
@@ -53,7 +44,7 @@ build() {
         -DUSE_SYSTEM_GTEST=ON \
         -DEIGEN_SRC=/usr/include/eigen3 \
         -DOPENSOURCE_ONLY=1 \
-        ../phd2-${pkgver}
+        ../phd2
 
     make -j$(nproc)
 }
