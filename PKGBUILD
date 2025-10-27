@@ -8,6 +8,7 @@ url="https://github.com/Skardyy/mcat"
 license=('MIT')
 depends=('gcc-libs')
 provides=('mcat')
+conflicts=('mcat')
 
 source_x86_64=("https://github.com/Skardyy/mcat/releases/download/v$pkgver/mcat-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("https://github.com/Skardyy/mcat/releases/download/v$pkgver/mcat-aarch64-unknown-linux-gnu.tar.xz")
