@@ -1,6 +1,7 @@
 # Maintainer: x9x
 
 pkgname=yafu-git-gcc9
+pkgver=r804.f86148e
 pkgrel=1
 pkgdesc="Automated integer factorization."
 url=https://github.com/bbuhrow/yafu
