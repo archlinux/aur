@@ -1,0 +1,5 @@
+["lazysql-bin"]
+source = "github"
+github = "jorgerojas26/lazysql"
+use_latest_release = true
+prefix = "v"
