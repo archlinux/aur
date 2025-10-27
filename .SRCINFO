@@ -1,7 +1,7 @@
 pkgbase = silentdragonlite
 	pkgdesc = HUSH Lite wallet that supports z-addresses
-	pkgver = 2.0.2
-	pkgrel = 3
+	pkgver = 2.0.3
+	pkgrel = 1
 	url = http://git.hush.is/hush/SilentDragonLite
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -11,10 +11,10 @@ pkgbase = silentdragonlite
 	depends = qt5-websockets
 	depends = qt5-base
 	depends = qt5-tools
-	source = silentdragonlite-2.0.2-3.tar.gz::http://git.hush.is/hush/SilentDragonLite/archive/v2.0.2.tar.gz
+	source = silentdragonlite-2.0.3-1.tar.gz::http://git.hush.is/hush/SilentDragonLite/archive/v2.0.3.tar.gz
 	source = silentdragonlite.desktop
 	source = silentdragonlite.png
-	sha512sums = 5140be37f6e43ed2d1dbb6df1c0c233bab8e14db27b25c0539808bea7b2a97d88dca1e6d3bb15248908e30304dfc79d414fd299c56f15cbf0fe45e116d02f6c2
+	sha512sums = 505c2f07b2c2e4c3c47c1e49c5d4460cd2ecf8e8a8d43043c77ba913988c64f19672ec19e772a888051882bba24a50d66111513116ab94e97a00ad81ea47bd28
 	sha512sums = 580379c88ef67d15cf1ac1e14899a0159230a2fd59f2400b864ee4d6711f0fcef29ccf84562a3cbdb7caa021271a4fab8210e228c9279ab0854eb1c668f1debd
 	sha512sums = 0b887786a3be6e0643f8d047b0c934036bb71d203e09e692bc2af056d8b23d8469feaff0f952642b1a087f09db159c692fe89aaa4e49802602c4044f9f0620a5
 

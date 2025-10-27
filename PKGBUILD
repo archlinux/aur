@@ -1,8 +1,8 @@
 # Maintainer: Jah Way <jahway603 at protonmail dot com>
 
 pkgname=silentdragonlite
-pkgver=2.0.2
-pkgrel=3
+pkgver=2.0.3
+pkgrel=1
 pkgdesc='HUSH Lite wallet that supports z-addresses'
 url='http://git.hush.is/hush/SilentDragonLite'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('qtcreator' 'rustup')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz"
         'silentdragonlite.desktop'
         'silentdragonlite.png')
-sha512sums=('5140be37f6e43ed2d1dbb6df1c0c233bab8e14db27b25c0539808bea7b2a97d88dca1e6d3bb15248908e30304dfc79d414fd299c56f15cbf0fe45e116d02f6c2'
+sha512sums=('505c2f07b2c2e4c3c47c1e49c5d4460cd2ecf8e8a8d43043c77ba913988c64f19672ec19e772a888051882bba24a50d66111513116ab94e97a00ad81ea47bd28'
             '580379c88ef67d15cf1ac1e14899a0159230a2fd59f2400b864ee4d6711f0fcef29ccf84562a3cbdb7caa021271a4fab8210e228c9279ab0854eb1c668f1debd'
             '0b887786a3be6e0643f8d047b0c934036bb71d203e09e692bc2af056d8b23d8469feaff0f952642b1a087f09db159c692fe89aaa4e49802602c4044f9f0620a5')
 
