@@ -4,16 +4,16 @@
 
 pkgname=lib32-libcanberra
 pkgver=0.30+r2+gc0620e4
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="A small and lightweight implementation of the XDG Sound Theme Specification (32-bit)"
 url="https://0pointer.net/lennart/projects/libcanberra/"
 arch=(x86_64)
-license=(LGPL)
+license=(LGPL-2.1-or-later)
 depends=(lib32-libvorbis lib32-libltdl lib32-alsa-lib lib32-libpulse lib32-tdb
          libcanberra)
-makedepends=(gtk-doc lib32-gtk2 lib32-gtk3 git)
-provides=(lib32-libcanberra-pulse libcanberra{,-gtk,-gtk3}.so)
+makedepends=(gtk-doc lib32-gtk3 git)
+provides=(lib32-libcanberra-pulse libcanberra{,-gtk3}.so)
 replaces=("lib32-libcanberra-pulse<0.30+2+gc0620e4-4")
 options=(libtool)
 _commit=c0620e432650e81062c1967cc669829dbd29b310  # master
@@ -59,7 +59,7 @@ package() {
   make -j1 DESTDIR="$pkgdir" install
 
   rm "$pkgdir"/usr/lib32/*.la
-  rm "$pkgdir"/usr/lib32/gtk-{2,3}.0/modules/*.la
+  rm "$pkgdir"/usr/lib32/gtk-3.0/modules/*.la
 
   rm -r "$pkgdir"/usr/{include,share,bin,lib,lib32/gnome-settings-daemon-3.0}
 }
