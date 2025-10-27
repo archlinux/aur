@@ -1,7 +1,7 @@
 # Maintainer: ElmForestW <elmforestw@proton.me>
 
 pkgname=treefmt
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=2
 pkgdesc="The formatter multiplexer"
 arch=("x86_64")
@@ -10,8 +10,8 @@ license=("MIT")
 depends=("glibc")
 makedepends=("gcc-objc" "go")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("02d29561b92110e83596ec93e19c8787b31f4b3211bd0a9d2c384d1b09f74c94")
-b2sums=("ac749a60c0c48f234c9c9a32aec82fb8f0103fc4aaf43d09cd91de7f2b2f8833550c39aa0653c02b81c8386831684418c862f0992bfd826ae6d3a9d97d9ee6e5")
+sha256sums=('2b67a03045e8d31c6018d2149438d544c1c9dae7db44510cdd596030a13b38fd')
+b2sums=('56a70828e61a2bff39454108e7dc156212d918ad5922a0679d310a58cb50417f898a957a0844f03335a5a64bb76d461125b90c72ca39dce66851afdaefe4762b')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
