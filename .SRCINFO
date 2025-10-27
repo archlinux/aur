@@ -1,6 +1,6 @@
 pkgbase = cli11-compiled
 	pkgdesc = Command line parser for C++.
-	pkgver = 2.6.0
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://github.com/CLIUtils/CLI11
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = cli11-compiled
 	makedepends = doxygen
 	conflicts = cli11
 	options = !strip
-	source = cli11-compiled-v2.6.0.tar.gz::https://github.com/CLIUtils/CLI11/archive/refs/tags/v2.6.0.tar.gz
-	sha512sums = 341e1f0ef06952645960cda60429ea48fa9b1c7e10eebb5544abfebb59a7a43f9beb9a3d4380fb59888579f301f5ad9e374457c370db3c3b8135c7b7fa9732dd
+	source = cli11-compiled-v2.6.1.tar.gz::https://github.com/CLIUtils/CLI11/archive/refs/tags/v2.6.1.tar.gz
+	sha512sums = 28ff846ca0b736c784d1660b4d1470f34f55fed650c80fb6a2ec26519eaacbb80dd1aa951a4517097579f4aa0cf9527a13f3359744e589e31f852d1bea0ecfc8
 
 pkgname = cli11-compiled
