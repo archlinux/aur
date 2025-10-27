@@ -9,7 +9,7 @@ pkgbase = azure2
 	makedepends = qwt
 	makedepends = git
 	provides = azure2
-	source = Azure2::git+https://github.com/rdeboer1/AZURE2#branch=api
+	source = Azure2::git+https://github.com/rdeboer1/AZURE2#branch=qwt6
 	sha256sums = SKIP
 
 pkgname = azure2
