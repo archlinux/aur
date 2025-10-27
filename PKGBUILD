@@ -12,7 +12,7 @@ depends=('librewolf')
 makedepends=('unzip')
 _file_id="kagisearch-${pkgver}.xpi"
 source=("${_file_id}::https://addons.mozilla.org/firefox/downloads/file/4368880/kagisearch-${pkgver}.xpi")
-sha256sums=('SKIP')
+sha256sums=('63572c9b5c2d1d8f48722e25ab36e618c9be63c293b02fdff9c7a6d9c9cce0f8')
 noextract=("${_file_id}")
 
 package() {

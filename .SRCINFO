@@ -9,6 +9,6 @@ pkgbase = librewolf-extension-kagisearch-bin
 	depends = librewolf
 	noextract = kagisearch-1.3.0.xpi
 	source = kagisearch-1.3.0.xpi::https://addons.mozilla.org/firefox/downloads/file/4368880/kagisearch-1.3.0.xpi
-	sha256sums = SKIP
+	sha256sums = 63572c9b5c2d1d8f48722e25ab36e618c9be63c293b02fdff9c7a6d9c9cce0f8
 
 pkgname = librewolf-extension-kagisearch-bin
