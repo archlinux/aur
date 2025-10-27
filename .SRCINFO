@@ -1,6 +1,6 @@
 pkgbase = reel-bin
 	pkgdesc = A modern GTK frontend for Plex and other media servers
-	pkgver = 0.7.5
+	pkgver = 0.7.6
 	pkgrel = 1
 	url = https://github.com/arsfeld/reel
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = reel-bin
 	depends = hicolor-icon-theme
 	provides = reel
 	conflicts = reel
-	source_x86_64 = reel-x86_64-0.7.5.deb::https://github.com/arsfeld/reel/releases/download/v0.7.5/reel-0.7.5-amd64.deb
-	sha256sums_x86_64 = 3b5617fd8251e3582abd5617a166b8ead991c1ea86b755de35577498ac07dc83
-	source_aarch64 = reel-aarch64-0.7.5.deb::https://github.com/arsfeld/reel/releases/download/v0.7.5/reel-0.7.5-arm64.deb
-	sha256sums_aarch64 = a1b54edc02ca7381ff5e40148a31ac21506e615543cbbfc93c3021654da2eb9d
+	source_x86_64 = reel-x86_64-0.7.6.deb::https://github.com/arsfeld/reel/releases/download/v0.7.6/reel-0.7.6-amd64.deb
+	sha256sums_x86_64 = 61e0cf24d4d7bd123b7430eff999c66b0af80fe2876f9e34e6ae2fb6a8384e49
+	source_aarch64 = reel-aarch64-0.7.6.deb::https://github.com/arsfeld/reel/releases/download/v0.7.6/reel-0.7.6-arm64.deb
+	sha256sums_aarch64 = 5a7ee76aec4886db0167b27d86feee6098c6e054100af69bd8ca4564e6b4acb3
 
 pkgname = reel-bin

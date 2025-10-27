@@ -3,7 +3,7 @@
 _pkgauthor=arsfeld
 _pkgname=reel
 pkgname=${_pkgname}-bin
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="A modern GTK frontend for Plex and other media servers"
@@ -20,8 +20,8 @@ depends=('glibc' 'gcc-libs' 'glib2' 'dbus' 'pango' 'gtk4' 'openssl' 'mpv' 'libad
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.deb::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[0]}.deb")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.deb::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[1]}.deb")
-sha256sums_x86_64=('3b5617fd8251e3582abd5617a166b8ead991c1ea86b755de35577498ac07dc83')
-sha256sums_aarch64=('a1b54edc02ca7381ff5e40148a31ac21506e615543cbbfc93c3021654da2eb9d')
+sha256sums_x86_64=('61e0cf24d4d7bd123b7430eff999c66b0af80fe2876f9e34e6ae2fb6a8384e49')
+sha256sums_aarch64=('5a7ee76aec4886db0167b27d86feee6098c6e054100af69bd8ca4564e6b4acb3')
 
 package() {
     cd "${pkgdir}"
