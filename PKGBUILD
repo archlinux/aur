@@ -1,4 +1,5 @@
-# Maintainer: Wilhelm Schuster <aur [aT] rot13 dot io>
+# Contributor: Wilhelm Schuster <aur [at] rot13 [dot] io>
+
 pkgname=mainsail-git
 _pkgname="${pkgname%-git}"
 pkgver=r2110.1a7aca66
