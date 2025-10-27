@@ -5,8 +5,8 @@ pkgrel=1
 epoch=
 _python_version=3.12.3
 _pkghashes="
-	--hash=sha256:ef9be64e5f4d3894856c2602680521a191ac5b2c43834c18a14cccc9eeb1dbe3
-	--hash=sha256:309e5388d459c143f594265def7383c96214d1d6460cf4f9340316a555e54282
+	--hash=sha256:958b008b09ce54be63e0134de5d4c3c142bb1d729c760148c5a39a664b1b2eff
+	--hash=sha256:5e2c0084374d781ca21386b466e1dee9a7103b2d67bc713572f4e7f465bc030d
 "
 pkgdesc="Local Realtime Voice Changer for Desktop"
 arch=('x86_64')
