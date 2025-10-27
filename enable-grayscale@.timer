@@ -3,7 +3,7 @@ Description=Daily timer to enable grayscale effect at %i
 
 [Timer]
 OnCalendar=%i
-Persistent=false
+Persistent=true
 
 [Install]
 WantedBy=timers.target
