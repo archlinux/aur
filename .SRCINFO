@@ -1,6 +1,6 @@
 pkgbase = waveloggate-git
-	pkgdesc = CAT and WSJT-X Bridge for Wavelog
-	pkgver = 1.1.8
+	pkgdesc = CAT-Bridge for WSJT-* and FLRig to Wavelog
+	pkgver = 1.1.10
 	pkgrel = 0
 	url = https://github.com/wavelog/WaveLogGate
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = waveloggate-git
 	depends = nodejs
 	options = !lto
 	options = !debug
-	source = WaveLogGate::git+https://github.com/wavelog/WaveLogGate#tag=v1.1.8
+	source = WaveLogGate::git+https://github.com/wavelog/WaveLogGate#tag=v1.1.10
 	source = WaveLogGate.sh
 	source = WaveLogGate.desktop
 	source = wavelog_icon_only.png
