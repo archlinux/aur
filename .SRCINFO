@@ -1,7 +1,7 @@
 pkgbase = python-p115updatedb
 	pkgdesc = 把 115 网盘的文件列表导出到数据库
 	pkgver = 0.0.12.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://pypi.org/project/p115updatedb
 	arch = any
 	license = MIT
