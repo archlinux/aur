@@ -1,7 +1,8 @@
-# Maintainer: Balló György <ballogyor+arch at gmail dot com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=delineate
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='View and edit graphs'
 arch=(x86_64)
@@ -27,25 +28,20 @@ makedepends=(
 )
 options=(!lto)
 source=("git+https://github.com/SeaDve/Delineate.git#tag=v$pkgver")
+sha256sums=('bc7b5481771586e9f61841e8727b356c9409446bfc044fafdd3099a8fa244665')
 
 prepare() {
   cd Delineate
 
-  CARGO_HOME="$srcdir/build/cargo-home" \
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  CARGO_HOME="$srcdir/build/cargo-home" cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   arch-meson Delineate build
 
-  CARGO_PROFILE_RELEASE_LTO=true \
-    CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1 \
-    CARGO_PROFILE_RELEASE_DEBUG=2 \
-    CARGO_PROFILE_RELEASE_STRIP=false \
-    meson compile -C build
+  CARGO_PROFILE_RELEASE_LTO=true CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1 CARGO_PROFILE_RELEASE_DEBUG=2 CARGO_PROFILE_RELEASE_STRIP=false meson compile -C build
 }
 
 package() {
   meson install -C build --destdir "$pkgdir" --no-rebuild
 }
-sha256sums=('ea6af7ff4920c504edbe10ec91366fe46a74115583fcfac0e5b88718c88b4ca5')

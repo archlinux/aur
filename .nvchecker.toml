@@ -1,4 +1,4 @@
-[mousai]
+[delineate]
 source = "git"
 git = "https://github.com/SeaDve/Delineate.git"
 prefix = "v"
