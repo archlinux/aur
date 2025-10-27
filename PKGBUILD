@@ -8,16 +8,25 @@ url="https://github.com/Firstp1ck/Pacsea"
 license=('MIT')
 depends=('pacman' 'curl' 'bash' 'sudo')
 optdepends=(
-  'paru: AUR package installation'
-  'yay: alternative AUR helper'
-  'wl-clipboard: clipboard support on Wayland'
-  'xclip: clipboard support on X11'
-  'xdg-utils: open URLs (xdg-open)'
-  'reflector: update Arch mirrors'
-  'pacman-mirror: Manjaro mirrorlist'
-  'alacritty: run external commands in a terminal'
-  'neovim: external editor'
-  'downgrade: Downgrade of Packages'
+    'paru: AUR package installation'
+    'yay: alternative AUR helper'
+    'wl-clipboard: clipboard support on Wayland'
+    'xclip: clipboard support on X11'
+    'reflector: update Arch mirrors'
+    'pacman-mirror: Manjaro mirrorlist'
+    'alacritty: run external commands in a terminal'
+    'kitty: run external commands in a terminal'
+    'xterm: run external commands in a terminal'
+    'gnome-terminal: run external commands in a terminal'
+    'konsole: run external commands in a terminal'
+    'xfce4-terminal: run external commands in a terminal'
+    'tilix: run external commands in a terminal'
+    'mate-terminal: run external commands in a terminal'
+    'neovim: external editor'
+    'vim: external editor'
+    'emacs: external editor'
+    'helix: external editor'
+    'downgrade: Downgrade of Packages'
 )
 makedepends=('cargo' 'git')
 conflicts=('pacsea' 'pacsea-bin')
