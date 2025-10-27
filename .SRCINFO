@@ -1,7 +1,7 @@
 pkgbase = python-p115qrcode
 	pkgdesc = 115 网盘二维码扫码登录.
 	pkgver = 0.0.5.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://pypi.org/project/p115qrcode
 	arch = any
 	license = MIT
@@ -17,6 +17,7 @@ pkgbase = python-p115qrcode
 	depends = python-requests
 	depends = python-orjson
 	depends = python-httpx-request
+	depends = python-iterutils
 	depends = python-startfile
 	provides = p115qrcode
 	provides = python-p115qrcode
