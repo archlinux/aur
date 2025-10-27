@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=mesen
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-system emulator (NES, SNES, GB, GBA, PCE, SMS/GG, WS) for Windows, Linux and macOS"
 arch=('x86_64')
 url="https://github.com/SourMesen/Mesen2"
@@ -27,7 +27,9 @@ prepare() {
 
 build() {
 	cd "${pkgname/m/M}2-$pkgver"
-	CFLAGS+=" -fuse-ld=lld" CXXFLAGS+=" -fuse-ld=lld" SYSTEM_LIBEVDEV=true STATICLINK=false USE_AOT=true make
+	NUGET_PACKAGES="${srcdir}/.nuget" DOTNET_CLI_TELEMETRY_OPTOUT=true \
+	CFLAGS+=" -fuse-ld=lld" CXXFLAGS+=" -fuse-ld=lld" SYSTEM_LIBEVDEV=true \
+	STATICLINK=false USE_AOT=true make
 }
 
 package() {

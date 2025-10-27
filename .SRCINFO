@@ -1,7 +1,7 @@
 pkgbase = mesen
 	pkgdesc = Multi-system emulator (NES, SNES, GB, GBA, PCE, SMS/GG, WS) for Windows, Linux and macOS
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SourMesen/Mesen2
 	install = mesen.install
 	arch = x86_64
