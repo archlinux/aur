@@ -4,7 +4,7 @@ _name1=logfire-api
 _name0=logfire
 pkgbase=python-$_name0
 pkgname=(python-$_name1 python-$_name0)
-pkgver=4.10.0
+pkgver=4.14.2
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/logfire'
@@ -84,7 +84,7 @@ checkdepends=('python-httpx'
               # 'python-openinference-instrumentation-litellm'
               'litellm')
 source=("$_name0-$pkgver::git+$url.git#tag=v$pkgver")
-sha256sums=('6f13429c29b9d0e8ebc0d5b20cdd784db1cffd9743f29e3a710593d1df2a0918')
+sha256sums=('b534a73c26821e499808b0ef17538377e3d862a29b68e207d11de5c6db0b0b9b')
 
 prepare(){
   cd "$srcdir"/$_name0-$pkgver
@@ -110,7 +110,9 @@ check() {
     --ignore tests/otel_integrations/test_redis.py
     # Failed
     --deselect tests/test_cli.py::test_inspect
-    --deselect tests/otel_integrations/test_aiohttp_client.py::test_aiohttp_client_capture_headers
+    # Need to update packages
+    --deselect tests/otel_integrations/test_pydantic_ai_mcp.py::test_pydantic_ai_mcp_sampling
+    --deselect tests/otel_integrations/test_langchain.py::test_instrument_langchain
   )
   cd "$srcdir"/$_name0-$pkgver
   python -m venv --system-site-packages test-env
@@ -138,6 +140,7 @@ package_python-logfire() {
               'python-opentelemetry-instrumentation-aiohttp-server: aiohttp-server'
               'python-opentelemetry-instrumentation-celery: celery'
               'python-opentelemetry-instrumentation-django: django'
+              'python-opentelemetry-instrumentation-asgi: django'
               'python-opentelemetry-instrumentation-fastapi: fastapi'
               'python-opentelemetry-instrumentation-flask: flask'
               'python-opentelemetry-instrumentation-httpx: httpx'

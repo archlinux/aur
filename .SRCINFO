@@ -1,5 +1,5 @@
 pkgbase = python-logfire
-	pkgver = 4.10.0
+	pkgver = 4.14.2
 	pkgrel = 1
 	url = https://github.com/pydantic/logfire
 	arch = any
@@ -80,8 +80,8 @@ pkgbase = python-logfire
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = logfire-4.10.0::git+https://github.com/pydantic/logfire.git#tag=v4.10.0
-	sha256sums = 6f13429c29b9d0e8ebc0d5b20cdd784db1cffd9743f29e3a710593d1df2a0918
+	source = logfire-4.14.2::git+https://github.com/pydantic/logfire.git#tag=v4.14.2
+	sha256sums = b534a73c26821e499808b0ef17538377e3d862a29b68e207d11de5c6db0b0b9b
 
 pkgname = python-logfire-api
 	pkgdesc = Shim for the Logfire SDK which does nothing unless Logfire is installed.
@@ -106,6 +106,7 @@ pkgname = python-logfire
 	optdepends = python-opentelemetry-instrumentation-aiohttp-server: aiohttp-server
 	optdepends = python-opentelemetry-instrumentation-celery: celery
 	optdepends = python-opentelemetry-instrumentation-django: django
+	optdepends = python-opentelemetry-instrumentation-asgi: django
 	optdepends = python-opentelemetry-instrumentation-fastapi: fastapi
 	optdepends = python-opentelemetry-instrumentation-flask: flask
 	optdepends = python-opentelemetry-instrumentation-httpx: httpx
