@@ -24,6 +24,6 @@ package(){
 
     destdir=$pkgdir/usr/share/icons/
     mkdir -p "$destdir"
-    cp -r "$srcdir/build" "$destdir/${pkgname_orig}"
+    cp -r $srcdir/build/* "$destdir/"
     chmod -R 755 "$destdir"
 }
