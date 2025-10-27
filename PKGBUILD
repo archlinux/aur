@@ -2,7 +2,7 @@
 
 pkgname=python-p115open302
 _name=${pkgname#python-}
-pkgver=0.0.5.3
+pkgver=0.0.5.4
 pkgrel=1
 epoch=
 pkgdesc="115 open 302 backend."
@@ -22,7 +22,7 @@ depends=(
     python-blacksheep-rich-log
     python-cachedict
     python-dicttools
-    python-p115cient
+    python-p115client
     python-p115pickcode
 )
 makedepends=(
@@ -35,7 +35,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('b08ca18eb93f3941f183221667d43b3f4f1c52c7d1429be8bd4a0507c1488dea')
+sha256sums=('fb0b0677b773c63e9ebbc6c9da2aa08cbc4891687de9ccb6ae3ad40aab7d4a0c')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"

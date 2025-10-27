@@ -1,6 +1,6 @@
 pkgbase = python-p115open302
 	pkgdesc = 115 open 302 backend.
-	pkgver = 0.0.5.3
+	pkgver = 0.0.5.4
 	pkgrel = 1
 	url = https://pypi.org/project/p115open302
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-p115open302
 	depends = python-blacksheep-rich-log
 	depends = python-cachedict
 	depends = python-dicttools
-	depends = python-p115cient
+	depends = python-p115client
 	depends = python-p115pickcode
 	provides = p115open302
 	provides = python-p115open302
@@ -26,7 +26,7 @@ pkgbase = python-p115open302
 	conflicts = python-p115open302
 	options = !strip
 	options = !debug
-	source = p115open302-0.0.5.3.tar.gz::https://files.pythonhosted.org/packages/source/p/p115open302/p115open302-0.0.5.3.tar.gz
-	sha256sums = b08ca18eb93f3941f183221667d43b3f4f1c52c7d1429be8bd4a0507c1488dea
+	source = p115open302-0.0.5.4.tar.gz::https://files.pythonhosted.org/packages/source/p/p115open302/p115open302-0.0.5.4.tar.gz
+	sha256sums = fb0b0677b773c63e9ebbc6c9da2aa08cbc4891687de9ccb6ae3ad40aab7d4a0c
 
 pkgname = python-p115open302
