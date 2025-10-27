@@ -1,0 +1,5 @@
+["tocry-bin"]
+source = "github"
+github = "ralsina/tocry"
+use_latest_release = true
+prefix = "v"

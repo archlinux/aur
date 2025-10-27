@@ -1,0 +1,25 @@
+pkgbase = tocry-bin
+	pkgdesc = A TODO app
+	pkgver = 0.24.0
+	pkgrel = 1
+	url = https://github.com/ralsina/tocry
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tocry
+	conflicts = tocry
+	options = !strip
+	source = tocry.service
+	source = LICENSE-0.24.0::https://raw.githubusercontent.com/ralsina/tocry/v0.24.0/LICENSE
+	source = README-0.24.0.md::https://raw.githubusercontent.com/ralsina/tocry/v0.24.0/README.md
+	source = CHANGELOG-0.24.0.md::https://raw.githubusercontent.com/ralsina/tocry/v0.24.0/CHANGELOG.md
+	sha256sums = 518dc937443f7b87751b691d7ba2760632a3e8c70c894970db0c7bb091838c06
+	sha256sums = 5e12cdb77daa2372d7232dc9ceeec7084f14afee0cf2db28e5ed2df9bb0e1cbf
+	sha256sums = 322fc6700985541c381870eba5eb6bfb7a1ac86cab6c5ca21647d37a7fa17746
+	sha256sums = 088d3196a8e3d52e5f2d21dde61cbbbc4c3ddc478c341b029deeffd040ee3a2a
+	source_x86_64 = https://github.com/ralsina/tocry/releases/download/v0.24.0/tocry-static-linux-amd64
+	sha256sums_x86_64 = 9b84fafb835c5d8384946e25a39d65feade99b920a3052f9ab4fd7319f758247
+	source_aarch64 = https://github.com/ralsina/tocry/releases/download/v0.24.0/tocry-static-linux-arm64
+	sha256sums_aarch64 = 4828378e234d4827bb0f69e8462a0c1acf9af090a7af089b8bb7cb1bb1dc0a76
+
+pkgname = tocry-bin

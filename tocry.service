@@ -1,0 +1,27 @@
+[Unit]
+Description=ToCry TODO App
+After=network.target
+
+[Service]
+Type=simple
+
+# --- Authentication Configuration ---
+# Set these environment variables to enable Basic Authentication.
+# If TOCRY_AUTH_USER and TOCRY_AUTH_PASS are not set, ToCry will run without authentication.
+#Environment="TOCRY_AUTH_USER=your_tocry_username"
+#Environment="TOCRY_AUTH_PASS=your_strong_tocry_password"
+
+# Replace with the actual path to your ToCry directory
+ExecStart=/usr/bin/tocry -b 127.0.0.1 -p 3000
+WorkingDirectory=%h
+RestartSec=5
+TimeoutStartSec=60
+TimeoutStopSec=60
+CapabilityBoundingSet=
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=full
+ProtectHome=false
+
+[Install]
+WantedBy=default.target
