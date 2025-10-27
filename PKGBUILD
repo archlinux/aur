@@ -10,7 +10,6 @@ license=('PD with exeptions')
 arch=('any')
 depends=('java-runtime>=13' 'java-service-wrapper' 'sed')
 noextract=('i2pinstall.exe')
-provides=('i2p')
 
 source=("https://i2pplus.github.io/installers/i2pinstall.exe")
 # For better security, the sha256sum is provided by the .onion and .i2p mirror.

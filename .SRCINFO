@@ -8,7 +8,6 @@ pkgbase = i2pplus
 	depends = java-runtime>=13
 	depends = java-service-wrapper
 	depends = sed
-	provides = i2p
 	noextract = i2pinstall.exe
 	source = https://i2pplus.github.io/installers/i2pinstall.exe
 	sha256sums = 04010ae71be97d114210504d95f65948600fc2294902dd8175287af2ddd56ce5
