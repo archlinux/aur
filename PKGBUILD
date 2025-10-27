@@ -1,19 +1,19 @@
 # Maintainer: Bjorn Pagen <bjornpagenatgmaildotcom>
 
 _srcname=systemf
-pkgname=${_srcname}
+pkgname="${_srcname}"
 pkgver=1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A brainfuck interpreter supporting Linux syscalls"
 arch=('x86_64')
 url="https://github.com/ajyoon/systemf"
-license=('unknown')
+license=('GPL-3.0-or-later')
 makedepends=('nasm')
-source=("git://github.com/ajyoon/systemf")
-md5sums=('SKIP')
+source=("git+$url")
+sha1sums=('SKIP')
 
 build() {
-	cd ${srcdir}/${_srcname}
+	cd "${srcdir}/${_srcname}"
 	make build
 }
 

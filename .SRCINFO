@@ -1,11 +1,12 @@
 pkgbase = systemf
 	pkgdesc = A brainfuck interpreter supporting Linux syscalls
 	pkgver = 1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ajyoon/systemf
 	arch = x86_64
-	license = unknown
+	license = GPL-3.0-or-later
 	makedepends = nasm
-	source = git://github.com/ajyoon/systemf
+	source = git+https://github.com/ajyoon/systemf
+	sha1sums = SKIP
 
 pkgname = systemf
