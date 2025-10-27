@@ -15,6 +15,8 @@ license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
+options=(!strip)
+
 source=("${_pkgname}.service"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md"

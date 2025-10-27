@@ -8,6 +8,7 @@ pkgbase = grafito-bin
 	license = MIT
 	provides = grafito
 	conflicts = grafito
+	options = !strip
 	source = grafito.service
 	source = LICENSE-0.12.0::https://raw.githubusercontent.com/ralsina/grafito/v0.12.0/LICENSE
 	source = README-0.12.0.md::https://raw.githubusercontent.com/ralsina/grafito/v0.12.0/README.md
