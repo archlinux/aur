@@ -11,6 +11,7 @@ pkgbase = ibus-lotus
 	makedepends = libxtst
 	depends = ibus
 	optdepends = kdotool: for switching modes on KDE Plasma
+	optdepends = gnome-shell-extension-window-calls-extended: for switching modes on GNOME Shell
 	provides = ibus-lotus
 	conflicts = ibus-bamboo-git
 	conflicts = ibus-bamboo

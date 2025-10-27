@@ -9,7 +9,10 @@ arch=(any)
 license=('GPL3')
 url=https://github.com/LotusInputEngine/$pkgname
 depends=('ibus')
-optdepends=('kdotool: for switching modes on KDE Plasma')
+optdepends=(
+	'kdotool: for switching modes on KDE Plasma'
+	'gnome-shell-extension-window-calls-extended: for switching modes on GNOME Shell'
+)
 makedepends=('go' 'gtk3' 'libx11' 'libxtst')
 conflicts=('ibus-bamboo-git' 'ibus-bamboo' 'ibus-lotus-git' 'ibus-lotus-bin')
 provides=('ibus-lotus')
