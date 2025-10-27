@@ -1,16 +1,15 @@
 # Maintainer: JisuWoniu <jswn@jswn9945.xyz>
 
 pkgname='yarn-pnpm-corepack'
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Using corepack shim to provide yarn and pnpm, while preserving npm.'
 arch=('any')
 url='https://github.com/nodejs/corepack/'
 license=('MIT')
-depends=("nodejs")
+depends=("corepack")
 provides=("yarn" "pnpm")
 conflicts=("yarn" "pnpm")
-optdepends=("corepack: For nodejs versions not ship with corepack binary")
 install="$pkgname.install"
 
 package() {
