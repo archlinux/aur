@@ -8,16 +8,16 @@ pkgname=lib32-${_pkgname}
 _bzrtag=12.10.0
 _bzrrev=298
 pkgver=${_bzrtag}.r${_bzrrev}
-pkgrel=3
+pkgrel=4
 pkgdesc='Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray (32-bit)'
 url='https://launchpad.net/libappindicator'
 arch=('x86_64')
 license=('GPL-3.0-only')
 depends=("${_pkgname}-gtk3" 'lib32-libdbusmenu-gtk3')
 makedepends=('breezy' 'dbus-glib' 'glib2-devel' 'gnome-common' 'vala')
-conflicts=("${_pkgname}-gtk3")
-provides=("${_pkgname}-gtk3=$pkgver")
-replaces=("${_pkgname}-gtk3")
+conflicts=("lib32-${_pkgname}-gtk3")
+provides=("lib32-${_pkgname}-gtk3=$pkgver")
+replaces=("lib32-${_pkgname}-gtk3")
 options=('!emptydirs')
 source=($_pkgname::bzr+https://code.launchpad.net/~indicator-applet-developers/libappindicator/trunk#revision=$_bzrrev)
 sha512sums=('023cb633e9750e279b19a6dc2d42d37bfc15d6c992017be3a6b71881579654578e9da3058d44ab400752f86411a362e676abb217ca47f14d24e43e6c26107f4d')

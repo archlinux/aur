@@ -1,7 +1,7 @@
 pkgbase = lib32-libappindicator
 	pkgdesc = Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray (32-bit)
 	pkgver = 12.10.0.r298
-	pkgrel = 3
+	pkgrel = 4
 	url = https://launchpad.net/libappindicator
 	arch = x86_64
 	license = GPL-3.0-only
@@ -12,9 +12,9 @@ pkgbase = lib32-libappindicator
 	makedepends = vala
 	depends = libappindicator-gtk3
 	depends = lib32-libdbusmenu-gtk3
-	provides = libappindicator-gtk3=12.10.0.r298
-	conflicts = libappindicator-gtk3
-	replaces = libappindicator-gtk3
+	provides = lib32-libappindicator-gtk3=12.10.0.r298
+	conflicts = lib32-libappindicator-gtk3
+	replaces = lib32-libappindicator-gtk3
 	options = !emptydirs
 	source = libappindicator::bzr+https://code.launchpad.net/~indicator-applet-developers/libappindicator/trunk#revision=298
 	validpgpkeys = 6FC05581A37D71FCECE165DB5BE41E162CD6358E
