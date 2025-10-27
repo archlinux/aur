@@ -2,7 +2,7 @@
 
 _name=pyhmmer
 pkgname=python-${_name}
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="Cython bindings and Python interface to HMMER3"
 url="https://github.com/althonos/pyhmmer"
@@ -11,7 +11,7 @@ license=("MIT")
 makedepends=('cython' 'python-build' 'python-installer' 'cmake' 'ninja' 'python-scikit-build-core')
 depends=('python' 'python-psutil')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=(f83e9a7d80f31713c52291b5c888dddb98c1e765222e064c40d56e87ad91cc4e)
+sha256sums=(03092aa24e3d9e177aee41812ab19aa341d49abe3c25f2f8c274a30b6839cb1f)
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
