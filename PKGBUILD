@@ -3,7 +3,7 @@
 pkgname=python-httpcore-request
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=0.0.6.1
+pkgver=0.0.6.2
 pkgrel=1
 epoch=
 pkgdesc="httpcore request extension."
@@ -37,7 +37,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('1791ac19ff6567fc8fe1bc63e5d17435485bca1ebfb8c5043ae0f26e8cb044a2')
+sha256sums=('071bed7fc8de5010103b9f5258f2feb7026c59d1700cd2d7095a1b2bcf5b0ece')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
