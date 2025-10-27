@@ -1,0 +1,5 @@
+["ttdl-bin"]
+source = "github"
+github = "VladimirMarkelov/ttdl"
+use_latest_release = true
+prefix = "v"

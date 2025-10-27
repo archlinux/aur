@@ -1,6 +1,6 @@
 pkgbase = ttdl-bin
 	pkgdesc = TTDL - Terminal Todo List Manager. A CLI tool to manage todo lists in todo.txt format.
-	pkgver = 4.11.0
+	pkgver = 4.12.0
 	pkgrel = 1
 	url = https://github.com/VladimirMarkelov/ttdl
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = ttdl-bin
 	depends = glibc
 	provides = ttdl
 	conflicts = ttdl
-	source = LICENSE-4.11.0::https://raw.githubusercontent.com/VladimirMarkelov/ttdl/v4.11.0/LICENSE
-	source = README-4.11.0.md::https://raw.githubusercontent.com/VladimirMarkelov/ttdl/v4.11.0/README.md
+	source = LICENSE-4.12.0::https://raw.githubusercontent.com/VladimirMarkelov/ttdl/v4.12.0/LICENSE
+	source = README-4.12.0.md::https://raw.githubusercontent.com/VladimirMarkelov/ttdl/v4.12.0/README.md
 	sha256sums = 234f3f9b9f2d3d402a89072e424f4d69625d831ce858d7cdd5c4e57169b96211
 	sha256sums = 5653d79bb56bc67a2b80df9e47e3881809553be8202eb7be60e314761df91cc1
-	source_x86_64 = https://github.com/VladimirMarkelov/ttdl/releases/download/v4.11.0/ttdl_4.11.0_linux-x64-musl.tar.gz
-	sha256sums_x86_64 = 7eb9dfa9318b3e5780d97d00b0b1790abe5f913d38f0c59cd5519be733fd2d9e
+	source_x86_64 = https://github.com/VladimirMarkelov/ttdl/releases/download/v4.12.0/ttdl_4.12.0_linux-x64-musl.tar.gz
+	sha256sums_x86_64 = bbcf69c2b86f17219eae5c64b3a90dc5f2d6cc4c31bbf2a9ee364d8e69cfdac5
 
 pkgname = ttdl-bin
