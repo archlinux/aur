@@ -1,0 +1,15 @@
+pkgbase = turbosqueeze-git
+	pkgdesc = Realtime Multithreaded Compression Library for C/C++ (git version)
+	pkgver = r21.351e6ef
+	pkgrel = 1
+	url = https://github.com/julienperriercornet/turbosqueeze/
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	provides = turbosqueeze
+	conflicts = turbosqueeze
+	source = git+https://github.com/julienperriercornet/turbosqueeze.git
+	sha256sums = SKIP
+
+pkgname = turbosqueeze-git
