@@ -1,0 +1,5 @@
+["updo-bin"]
+source = "github"
+github = "Owloops/updo"
+use_latest_release = true
+prefix = "v"
