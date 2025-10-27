@@ -7,6 +7,7 @@ pkgbase = dataplaneapi-bin
 	license = Apache-2.0
 	makedepends = binutils
 	depends = haproxy
+	provides = dataplaneapi
 	source = dataplaneapi_3.2.4.deb::https://github.com/haproxytech/dataplaneapi/releases/download/v3.2.4/dataplaneapi_3.2.4_linux_amd64.deb
 	sha256sums = d9543599f3cd0de5b77d49605da894227cea5c40c48746776662fa093e2f98a9
 

@@ -9,6 +9,7 @@ arch=('x86_64')
 url="https://github.com/haproxytech/dataplaneapi"
 license=('Apache-2.0')
 depends=('haproxy')
+provides=('dataplaneapi')
 makedepends=('binutils')  # 'ar' is part of the binutils package
 source=("${_pkgname}_${pkgver}.deb::https://github.com/haproxytech/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.deb")
 sha256sums=('d9543599f3cd0de5b77d49605da894227cea5c40c48746776662fa093e2f98a9')
