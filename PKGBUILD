@@ -2,13 +2,13 @@
 
 _pkgname=viu
 pkgname="${_pkgname}-media-git"
-pkgver=3.2.7.r4.de8b6b7
-pkgrel=3
+pkgver=3.2.8.r5.5634214
+pkgrel=1
 pkgdesc="Viu, your browser anime experience, from the terminal."
 arch=('x86_64')
 url="https://github.com/viu-media/viu"
 license=('Unlicense')
-makedepends=('python>=3.10' 'git' 'uv' 'python-installer')
+makedepends=('python>=3.11' 'git' 'uv' 'python-installer')
 depends=('python'
          'python-click'
          'python-httpx'

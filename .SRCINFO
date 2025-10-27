@@ -1,12 +1,12 @@
 pkgbase = viu-media-git
 	pkgdesc = Viu, your browser anime experience, from the terminal.
-	pkgver = 3.2.7.r4.de8b6b7
-	pkgrel = 3
+	pkgver = 3.2.8.r5.5634214
+	pkgrel = 1
 	url = https://github.com/viu-media/viu
 	install = viu.install
 	arch = x86_64
 	license = Unlicense
-	makedepends = python>=3.10
+	makedepends = python>=3.11
 	makedepends = git
 	makedepends = uv
 	makedepends = python-installer
