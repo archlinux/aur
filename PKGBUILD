@@ -9,7 +9,7 @@
 _pkgname=librm
 pkgname="${_pkgname}"-git
 pkgver=2.3.4+2.r154.20250629.9dabfe1
-pkgrel=3
+pkgrel=4
 pkgdesc="Offers FRITZ!Box related core functionality for Roger Router (GUI), Roger CLI (CLI) and Roger Rabbit (ncurses) interfaces."
 arch=(
   'aarch64'
@@ -31,8 +31,8 @@ depends=(
   'gstreamer'
   'json-glib'
   'libcapi'
-  'libgssdp-1.2.so'
-  'libgupnp-1.2.so'
+  'libgssdp-1.6.so'
+  'libgupnp-1.6.so'
   'libsecret'
   'libsndfile'
   'libsoup3'
@@ -46,8 +46,8 @@ makedepends=(
   'gdk-pixbuf2'
   'gettext'
   'gtk-doc'   # To build GTK documentation.
-  'gssdp-1.2'
-  'gupnp-1.2'
+  'gssdp>=1.6'
+  'gupnp>=1.6'
   'meson>=0.59.0'
   'ninja'
   'speex'

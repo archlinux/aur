@@ -1,7 +1,7 @@
 pkgbase = librm-git
 	pkgdesc = Offers FRITZ!Box related core functionality for Roger Router (GUI), Roger CLI (CLI) and Roger Rabbit (ncurses) interfaces.
 	pkgver = 2.3.4+2.r154.20250629.9dabfe1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/tabos/librm
 	arch = aarch64
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = librm-git
 	makedepends = gdk-pixbuf2
 	makedepends = gettext
 	makedepends = gtk-doc
-	makedepends = gssdp-1.2
-	makedepends = gupnp-1.2
+	makedepends = gssdp>=1.6
+	makedepends = gupnp>=1.6
 	makedepends = meson>=0.59.0
 	makedepends = ninja
 	makedepends = speex
@@ -28,8 +28,8 @@ pkgbase = librm-git
 	depends = gstreamer
 	depends = json-glib
 	depends = libcapi
-	depends = libgssdp-1.2.so
-	depends = libgupnp-1.2.so
+	depends = libgssdp-1.6.so
+	depends = libgupnp-1.6.so
 	depends = libsecret
 	depends = libsndfile
 	depends = libsoup3
