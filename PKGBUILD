@@ -52,7 +52,7 @@ package() {
     cp -r ../Include/* "$pkgdir"/usr/${_arch}/include/python${_pybasever}
     chmod a+r -R "$pkgdir"/usr/${_arch}/include
     chmod a+x "$pkgdir"/usr/${_arch}/include/python${_pybasever}/{cpython,internal}
-    #install -m644 ../PC/pyconfig.h.in "$pkgdir"/usr/${_arch}/include/python${_pybasever}/pyconfig.h
+    install -m644 ../PC/pyconfig.h "$pkgdir"/usr/${_arch}/include/python${_pybasever}/pyconfig.h
     install -m755 python*.dll "$pkgdir"/usr/${_arch}/bin
     install -d "$pkgdir"/usr/${_arch}/lib/python${_pybasever}
     install -m644 *.pyd "$pkgdir"/usr/${_arch}/lib/python${_pybasever}
