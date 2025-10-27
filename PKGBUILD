@@ -1,7 +1,7 @@
-# Maintainer: Sam Ezeh <sam@ezeh.uk>
+# Maintainer: gwydd <gwydd12@proton.me>
 # Contributor: Seth Galasso <seth.galasso@gmail.com>
 pkgname=flix
-pkgver='0.35.0'
+pkgver='0.65.0'
 pkgrel=1
 pkgdesc='Next-generation reliable, safe, concise, and functional-first programming language.'
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('java-runtime>=11')
 source=("https://github.com/flix/flix/releases/download/v$pkgver/flix.jar"
         "run.sh")
-sha256sums=('1c084d360f1ffae0b640a62a92e8092321fb55a90d03adf54b6fd4136bc6fb93'
+sha256sums=('5cab00e9b5d30f48cd905f4971562e722621e1bc2d135077c67e86ff02c7cb13'
             'a51177acf0372c1c45110136341662617a2e2313c78a7fe8eaf9df22cdb17aa5')
 noextract=('flix.jar')
 
