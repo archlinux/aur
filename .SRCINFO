@@ -1,6 +1,6 @@
 pkgbase = wazuh-agent
 	pkgdesc = Wazuh Agent actively protects Arch Linux systems with advanced threat prevention, detection, and response capabilities.
-	pkgver = 4.13.1
+	pkgver = 4.14.0
 	pkgrel = 1
 	url = https://wazuh.com/
 	install = wazuh-agent.install
@@ -18,9 +18,9 @@ pkgbase = wazuh-agent
 	backup = var/ossec/etc/client.keys
 	backup = var/ossec/etc/local_internal_options.conf
 	backup = var/ossec/etc/ossec.conf
-	source_x86_64 = https://packages.wazuh.com/4.x/yum/wazuh-agent-4.13.1-1.x86_64.rpm
-	sha512sums_x86_64 = 3005046b3c9af416f26ea66ce01c20c72070d3ecc042b8bccf8d1f7ebe0876e3328cc62d7d1290af6d7819ad06502faf891620bbe1c019466d52a85a3cc66162
-	source_aarch64 = https://packages.wazuh.com/4.x/yum/wazuh-agent-4.13.1-1.aarch64.rpm
-	sha512sums_aarch64 = 5fd09e2f0d5f33b46b638739e0ca6628b242cf8b7c61b921d56068b27a146ef78c9ed264e95497e03b62ed90779f749f21a01387bb1f0d3ef69e9af1252cf1f6
+	source_x86_64 = https://packages.wazuh.com/4.x/yum/wazuh-agent-4.14.0-1.x86_64.rpm
+	sha512sums_x86_64 = ea138efec495293fe934ac09d8753f63f8b192d713fbdb76ec84d2458c7383cac86fdd223b461f5b9add5d2a38d4322832b2d6e78973e076815c53554d7a0aa7
+	source_aarch64 = https://packages.wazuh.com/4.x/yum/wazuh-agent-4.14.0-1.aarch64.rpm
+	sha512sums_aarch64 = 8b5a8a98b4f162377c7d884f9f3c6996ec42e261a07b90ef6d416d1e30f04e75a9ec5785a442d6863bcdfa0e5f4f653ea84795eb98900682c2d169c7cff83ef6
 
 pkgname = wazuh-agent
