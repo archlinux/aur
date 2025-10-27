@@ -2,7 +2,7 @@
 pkgname=cantaloupe
 provides=('cantaloupe')
 conflicts=('cantaloupe')
-pkgver=5.0.5
+pkgver=5.0.7
 pkgrel=1
 pkgdesc='High-performance dynamic image server in Java'
 arch=('any')
@@ -18,12 +18,10 @@ source=(
   "https://raw.githubusercontent.com/cantaloupe-project/cantaloupe/develop/LICENSE.txt"
 )
 
-sha256sums=(
-  '241a5ed6e3bbc69a62d4ccd5d59069e4cad44b665d91c378ad41338e8beaf311'
-  'c07c4de8512dd32bc6c2e5b810c428a3f5d4f10e39ca5de63d8a679aa4fe3f20'
-  'f8494ff940841e7b897b22d680e4bf87baf8fb1d6ced87117538dd5abaa1fc34'
-  'f8d04dd2e3ebe8950b6eca7c140f34cc9690e6224351c170042bb06eaa729dc3'
-)
+sha256sums=('241a5ed6e3bbc69a62d4ccd5d59069e4cad44b665d91c378ad41338e8beaf311'
+            'c07c4de8512dd32bc6c2e5b810c428a3f5d4f10e39ca5de63d8a679aa4fe3f20'
+            '741ddee3f5284b179cd2555dc545a8afcb02534f03896cfa9235249fd66b0665'
+            'f8d04dd2e3ebe8950b6eca7c140f34cc9690e6224351c170042bb06eaa729dc3')
 
 package() {
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
