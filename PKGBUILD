@@ -1,7 +1,7 @@
 # Maintainer: Boris-Chengbiao Zhou <bobo1239@web.de>
 
 pkgname=mobilesheets-companion
-pkgver=4.1.5
+pkgver=4.1.7
 pkgrel=1
 pkgdesc='Companion app for MobileSheets to remotely manage sheet libraries.'
 url='https://www.zubersoft.com/mobilesheets/companion/'
