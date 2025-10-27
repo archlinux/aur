@@ -1,24 +1,26 @@
-# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Archisman Panigrahi <apandada1ATgmail.com>
+# Contributor:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Excitable Snowball <excitablesnowball@gmail.com>
 
 pkgname="doi2bib"
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Generate a bibtex given a doi"
 arch=('any')
 url="https://github.com/bibcure/${pkgname}"
 license=('MIT')
 depends=('python' 'python-bibtexparser' 'python-requests')
 makedepends=('python-build' 'python-installer' 'python-setuptools'
-             'python-wheel')
+             'python-wheel' 'python-packaging')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('272458eb88a34ab0fd4c69c6a4f2698496ccd9791d827f52b6c2b3ae6a3a221c')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
-  python -m build --wheel --no-isolation
+  # Prevent user site-packages (e.g. ~/.local) from shadowing system packages
+  PYTHONNOUSERSITE=1 python -m build --wheel --no-isolation
 }
 
 package() {

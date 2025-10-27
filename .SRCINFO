@@ -1,7 +1,7 @@
 pkgbase = doi2bib
 	pkgdesc = Generate a bibtex given a doi
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bibcure/doi2bib
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = doi2bib
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = python-packaging
 	depends = python
 	depends = python-bibtexparser
 	depends = python-requests
