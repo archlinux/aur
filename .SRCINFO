@@ -1,6 +1,6 @@
 pkgbase = smug-bin
 	pkgdesc = A session manager for tmux written in Go
-	pkgver = 0.3.10
+	pkgver = 0.3.11
 	pkgrel = 1
 	url = https://github.com/ivaaaan/smug
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = smug-bin
 	depends = glibc
 	provides = smug
 	conflicts = smug
-	source_x86_64 = https://github.com/ivaaaan/smug/releases/download/v0.3.10/smug_0.3.10_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = f70fdac52c71eafb061b177f34b2c365748f34fef82ef1829b70496a3b7d2022
-	source_i686 = https://github.com/ivaaaan/smug/releases/download/v0.3.10/smug_0.3.10_Linux_i386.tar.gz
-	sha256sums_i686 = d890269f33853638ebbf313aed5939834a2de1fc757fd12f81d254979328dca3
-	source_aarch64 = https://github.com/ivaaaan/smug/releases/download/v0.3.10/smug_0.3.10_Linux_arm64.tar.gz
-	sha256sums_aarch64 = cd664b40bd7eb068eb5af490d292c278fdfdd34368eaed74d2dfa5c73400ce6f
+	source_x86_64 = https://github.com/ivaaaan/smug/releases/download/v0.3.11/smug_0.3.11_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = d8e1a87c3fee1fef851b9ab19a6350afcf1ae3ff1cca8713102973c79a34ad74
+	source_i686 = https://github.com/ivaaaan/smug/releases/download/v0.3.11/smug_0.3.11_Linux_i386.tar.gz
+	sha256sums_i686 = 7ca63299a8cd3909eba671688094e88587971efa3b3cc98e95995c238c8c51fb
+	source_aarch64 = https://github.com/ivaaaan/smug/releases/download/v0.3.11/smug_0.3.11_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 62575c49b5049305db7dd11e8e6aa7fa40e756c09ffd02f3f35cf6964c5e8b9f
 
 pkgname = smug-bin

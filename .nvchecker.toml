@@ -1,0 +1,5 @@
+["smug-bin"]
+source = "github"
+github = "ivaaaan/smug"
+use_latest_release = true
+prefix = "v"
