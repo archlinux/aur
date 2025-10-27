@@ -1,6 +1,6 @@
 pkgbase = assistant
 	pkgdesc = Secure remote access to computers over a local network or over the Internet.
-	pkgver = 6.4.0
+	pkgver = 6.5.0
 	pkgrel = 1
 	url = https://xn--80akicokc0aablc.xn--p1ai/
 	install = assistant.install
@@ -12,7 +12,7 @@ pkgbase = assistant
 	depends = hicolor-icon-theme
 	depends = v4l-utils
 	options = !strip
-	source = assistant-6.4.0.deb::https://xn--80akicokc0aablc.xn--p1ai/%D1%81%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C/Download/1318
-	md5sums = D4B5EBBFC53B9190E56DEB74063F1A9C
+	source = assistant-6.5.0.deb::https://xn--80akicokc0aablc.xn--p1ai/%D1%81%D0%BA%D0%B0%D1%87%D0%B0%D1%82%D1%8C/Download/1375
+	md5sums = EB340B7FDDBEC5F05BAB7F64D9261D14
 
 pkgname = assistant
