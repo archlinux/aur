@@ -1,4 +1,6 @@
-# Maintainer: Wilhelm Schuster <aur [aT] rot13 dot io>
+# Maintainer: Hannele Ruiz <justlemoncl [at] gmail [dot] com>
+# Contributor: Wilhelm Schuster <aur [at] rot13 [dot] io>
+
 _pkgname=moonraker
 pkgname="${_pkgname}-git"
 pkgver=0.9.3.r123.g8426f41
