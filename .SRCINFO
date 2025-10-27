@@ -1,7 +1,7 @@
 pkgbase = alistral
 	pkgdesc = Power tools for Listenbrainz
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RustyNova016/Alistral
 	arch = x86_64
 	license = MIT

@@ -2,7 +2,7 @@
 pkgname=alistral
 _reponame=Alistral
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Power tools for Listenbrainz"
 arch=('x86_64')
 url="https://github.com/RustyNova016/$_reponame"
@@ -23,6 +23,7 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export SQLX_OFFLINE=true
     cargo build --frozen --release --all-features --no-default-features
 }
 
