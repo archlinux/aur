@@ -1,0 +1,5 @@
+["astroterm-bin"]
+source = "github"
+github = "da-luce/astroterm"
+use_latest_release = true
+prefix = "v"

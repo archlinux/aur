@@ -3,7 +3,7 @@
 _pkgauthor=da-luce
 _pkgname=astroterm
 pkgname=${_pkgname}-bin
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="A planetarium for your terminal"
 arch=('x86_64')
@@ -20,8 +20,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-${arch[0]}")
 sha256sums=('dcf125d76a777af20283b8cc797ded8d3eeb7d57a1ad1f642493a13764c60a29'
-            'fc9a15d68ecf9e85ac60c3a01fbdb802b38efcf04c3a27050334327679c1a208')
-sha256sums_x86_64=('ce68e7ef5092c7dca86dfe3e0e1bb070f9ba08f0091a2923228e2beef7ef88e1')
+            'e2c694d890af48965c251519f6dd7c4c96aa314c8f2bf3ddd265ec6100acd874')
+sha256sums_x86_64=('c4c1b5f5d0f57675ca0d9cbc298403ffe45152686e8b4a56382862dc763cc0c4')
 
 
 prepare() {
