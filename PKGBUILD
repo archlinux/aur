@@ -3,7 +3,7 @@
 _branch=main # Don't forget to reset back to main after 49.x work merge
 pkgname=gnome-shell-extension-tiling-shell-git
 pkgdesc="Extend GNOME Shell with advanced tiling window management"
-pkgver=r57.088ecf6
+pkgver=r58.1a88d90
 pkgrel=1
 arch=('any')
 url="https://github.com/domferr/tilingshell"
