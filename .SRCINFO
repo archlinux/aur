@@ -1,0 +1,14 @@
+pkgbase = dovecot-tools-git
+	pkgdesc = tools to decrypt encrypted dovecot emails (with lz4 support)
+	pkgver = r23.9d7ad3a
+	pkgrel = 1
+	url = https://github.com/dovecot/tools
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-asn1
+	depends = python-lz4
+	source = git+https://github.com/dovecot/tools.git
+	sha256sums = SKIP
+
+pkgname = dovecot-tools-git
