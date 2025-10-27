@@ -1,8 +1,8 @@
 pkgbase = contextfree
 	pkgdesc = A program that generates images from written instructions called a grammar
-	pkgver = 3.3
-	pkgrel = 2
-	url = https://www.contextfreeart.org/
+	pkgver = 3.4.2_2
+	pkgrel = 1
+	url = https://github.com/MtnViewJohn/context-free
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -10,8 +10,7 @@ pkgbase = contextfree
 	makedepends = flex
 	depends = libpng
 	depends = gcc-libs
-	source = https://www.contextfreeart.org/download/ContextFreeSource3.3.tgz
-	sha256sums = bd51dcc5ea2a7af03918d7e22992b3c1508fd49b52ef7599ab1ad68eae67b3e0
+	source = https://github.com/MtnViewJohn/context-free/archive/refs/tags/Version3.4.2_2.tar.gz
+	sha256sums = a3e294a31afa596a0bbbe271b88d5ca19f8b7c5e54f6a48256878fa797b8dc77
 
 pkgname = contextfree
-
