@@ -1,6 +1,6 @@
 pkgbase = python-p115pickcode
 	pkgdesc = 115 transcoding between pickcode and id.
-	pkgver = 0.0.5.3
+	pkgver = 0.0.5.4
 	pkgrel = 1
 	url = https://pypi.org/project/p115pickcode
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-p115pickcode
 	conflicts = python-p115pickcode
 	options = !strip
 	options = !debug
-	source = p115pickcode-0.0.5.3.tar.gz::https://files.pythonhosted.org/packages/source/p/p115pickcode/p115pickcode-0.0.5.3.tar.gz
-	sha256sums = 04992a38acdd9e157e6bc14b8db63c3af4bfe1dbdb6776c3d17c75eeba676af9
+	source = p115pickcode-0.0.5.4.tar.gz::https://files.pythonhosted.org/packages/source/p/p115pickcode/p115pickcode-0.0.5.4.tar.gz
+	sha256sums = b2f4480cc4b34674d5e90288e6d699e1d837b74172af913dfa3b4b084e957512
 
 pkgname = python-p115pickcode
