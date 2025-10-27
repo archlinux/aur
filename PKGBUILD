@@ -3,16 +3,13 @@
 
 pkgname=ilorest
 pkgver=6.3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="HPE RESTful Interface Tool"
 arch=(x86_64)
 url="https://support.hpe.com/connect/s/softwaredetails?language=en_US&softwareId=MTX_dd07980aee654032ab5c80d725&tab=releaseNotes"
-depends=('bash' 'libxcrypt-compat' 'python' 'python-urllib3'
-         'python-pyaes' 'python-colorama' 'python-jsonpointer'
-         'python-six' 'python-ply' 'python-decorator'
-         'python-jsonpatch' 'python-jsonpath-rw' 'python-setproctitle'
-         'python-jsondiff' 'python-tabulate' 'python-prompt_toolkit'
-         'python-certifi' 'python-wcwidth' 'python-ilorest-library')
+depends=('bash' 'libxcrypt-compat' 'python' 'python-urllib3' 'python-pyaes' 'python-colorama' 'python-jsonpointer' 'python-six' 'python-ply'
+         'python-decorator' 'python-jsonpatch' 'python-jsonpath-rw' 'python-setproctitle' 'python-jsondiff' 'python-tabulate' 
+         'python-prompt_toolkit' 'python-certifi' 'python-wcwidth' 'python-ilorest-library')
 makedepends=('python-pip')
 conflicts=('ilorest-bin')
 provides=('ilorest')
