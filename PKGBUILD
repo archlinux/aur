@@ -1,25 +1,26 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=cargo-dfu
-pkgver=0.1.0
-pkgrel=15
+pkgver=0.1.3
+pkgrel=6
 pkgdesc="cargo extension for flashing embedded rust programs via dfu based on jacobrosenthals cargo-hf2"
 arch=($CARCH)
 url="https://github.com/dfu-rs/cargo-dfu"
 license=('MIT')
-provides=()
-conflicts=(${pkgname}-git)
+provides=(${pkgname})
+conflicts=(${pkgname} ${pkgname}-git)
 #replaces=(${pkgname})
-depends=('cargo')
+depends=()
 makedepends=('git' 'rust')
 backup=()
 options=()
 #install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6760a77f43721b2b516e5046a56c23e66a5e8f3bc187ccd69531494af445c188')
+sha256sums=('66e5c4481da5894278a8d52617f912c376988c19a1f0aabcf671b22722adf680')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}/"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
