@@ -4,7 +4,7 @@
 pkgname=jalbum
 _basedir=/usr/lib/$pkgname
 pkgver=37.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Free web photo album software and photo gallery software"
 arch=('any')
 url="http://jalbum.net/"
@@ -17,7 +17,7 @@ source=(
 
 sha256sums=('950f625fa3e839b542c37f4fe1951cf6bbb435c8325b6aea5551832672d4cc97'
             'ff38b467146b3304edd76c81d058adbe67534a51500886a6bfd1f962ea276901'
-            '5d7d0d4bc17d3f23da9b6e5ad5ec12eed8047ba1a142a7a2d74b40fd8b83c958')
+            'c32767813689fca7c97af47f9edb1b8a07f0e65e03174d8f8e4f712d9663ac74')
 
 package() {
 	depends+=('java-openjfx' 'java-runtime>=24')
@@ -26,7 +26,7 @@ package() {
 	install -Dm755 "$srcdir/jalbum.sh" "$pkgdir/usr/bin/jalbum"
 
 	install -dm755 "$pkgdir/usr/lib"
-	install -dm755 "$pkgdir/usr/share/licenses"j
+	install -dm755 "$pkgdir/usr/share/licenses"
 	install -dm755 "$pkgdir/usr/share/pixmaps"
 
 	# install files
