@@ -1,132 +1,65 @@
 post_install() {
 	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
-set -e
-set -u
+	set -u
 
-DISPLAY=''
+	DISPLAY=''
 
-echo "Running post install script..."
+	echo "Running post install script..."
 
-# This script may run not from the app's dist directory (this true in case of DEB package)
-# The placeholder is overriden during the package configuration
-SCRIPT_DIR="/opt/myoffice-standard-home-edition"
-CO_PRODUCT_ARTIFACT_SUFFIX="-home-edition"
+	# This script may run not from the app's dist directory (this true in case of DEB package)
+	# The placeholder is overriden during the package configuration
+	SCRIPT_DIR="/opt/myoffice-standard-home-edition"
+	CO_PRODUCT_ARTIFACT_SUFFIX="-home-edition"
 
-source "${SCRIPT_DIR}/Common.3.3.1.sh"
+	source "${SCRIPT_DIR}/Common.3.5.1.sh"
+	source "${SCRIPT_DIR}/LkSdkUtils.sh"
 
-# Initialize licensing - for linux create cache of HW ids, due to reading of them requires root access
-createHardwareIdCache()
-{
-    local boardSerial=$(cat /sys/devices/virtual/dmi/id/board_serial | tr -d '\n')
-    local productUuid=$(cat /sys/devices/virtual/dmi/id/product_uuid | tr -d '\n' | tr '[:lower:]' '[:upper:]')
-    local idFile="${RESOURCES_DIR}/revision.dat"
-    mkdir -p "${RESOURCES_DIR}"
+	# Initialize licensing - for linux create cache of HW ids, due to reading of them requires root access
+	createHardwareIdCache()
+	{
+	    local boardSerial=$(cat /sys/devices/virtual/dmi/id/board_serial | tr -d '\n')
+	    local productUuid=$(cat /sys/devices/virtual/dmi/id/product_uuid | tr -d '\n' | tr '[:lower:]' '[:upper:]')
+	    local idFile="${RESOURCES_DIR}/revision.dat"
+	    mkdir -p "${RESOURCES_DIR}"
 
-    echo "${boardSerial} | ${productUuid}" > "${idFile}"
-    chmod go=r "${idFile}"
-}
+	    echo "${boardSerial} | ${productUuid}" > "${idFile}"
+	    chmod go=r "${idFile}"
+	}
 
-if [[ "revision.dat" != "" ]]; then
-    createHardwareIdCache
-fi
+	if [[ "revision.dat" != "" ]]; then
+	    createHardwareIdCache
+	fi
 
-# Workaround for bug in xdg. See https://bugs.archlinux.org/task/33316 for details
-mkdir -p /usr/share/desktop-directories/
 
-registerAppMime()
-{
-    # Set default mimetypes for apps https://jira.ncloudtech.ru:8090/browse/DES-905
-    xdg-mime default "$1" $(grep ^MimeType "/usr/share/applications/$1" | cut -d = -f 2- | tr ';' ' ') > /dev/null 2> /dev/null || true
-}
 
-# register in desktop environment
-for name in "${APPS[@]}"; do
-    registerAppMime "${name}.desktop"
-done
 
-# Registering our own mime types
-if [[ "${ENABLE_MIME_REGISTRATION}" != "0" ]]; then
-    xdg-mime install --mode system --novendor "${SCRIPT_DIR}/myoffice_mimes.xml" > /dev/null 2> /dev/null
-fi
 
-registerIcon()
-{
-    # Workaround for an issue in the xdg-icon-resource utility
-    # For details see https://bugs.launchpad.net/ubuntu/+source/xdg-utils/+bug/1488787
-    xdg-icon-resource install --noupdate --theme "$1" --mode system --novendor --context "$2" --size "$4" /usr/share/icons/hicolor/$4x$4/$3${CO_PRODUCT_ARTIFACT_SUFFIX}_$4.png "$5"
-}
+	createAdminSettingsFile()
+	{
+	    mkdir -p "${ADMIN_SETTINGS_PATH}"
+	    if [ ! -f "${ADMIN_SETTINGS_FILE}" ]; then
+	        echo "[General]" > "${ADMIN_SETTINGS_FILE}"
+	    fi
+	}
 
-for size in "${IFW_ICON_SIZE[@]}"; do
-    for (( i=0; i<${#APP_ICON_SRC[*]}; i++ )); do
-        registerIcon hicolor apps "${APP_ICON_SRC[i]}" "${size}" "${APPS[i]}"
-    done
-done
+	# Add vendor id to admin settings file
+	createAdminSettingsFile
+	if [[ "${MO_VENDOR_ID:-}" != "" ]]; then
+	    echo -e "\nVendorId=\"${MO_VENDOR_ID}\"\n" >> "${ADMIN_SETTINGS_FILE}"
+	else
+	    echo -e "\nVendorId=\"\"\n" >> "${ADMIN_SETTINGS_FILE}"
+	fi
 
-if [[ "${INSTALL_SVG_ICONS}" == "0" ]]; then
-    IFW_ICON_THEME_NAME="hicolor"
-    for size in "${IFW_ICON_SIZE[@]}"; do
-        for (( i=0; i<${#MIME_ICON_SRC[*]}; i++ )); do
-            registerIcon "${IFW_ICON_THEME_NAME}" mimetypes "${MIME_ICON_SRC[i]}" "${size}" "${MIME_ICON_DEST[i]}"
-        done
-    done
-fi
+	#Unsigned extensions administration default settings
+	CO_ENABLE_QT_DESKTOP_USING_UNSAFE_EXTENSIONS="FALSE"
+	if [ "${CO_ENABLE_QT_DESKTOP_USING_UNSAFE_EXTENSIONS,,}" = "false" ] || [ "${CO_ENABLE_QT_DESKTOP_USING_UNSAFE_EXTENSIONS}" = "0" ]; then
+	    createAdminSettingsFile
+	    if [ -z $(grep "UnsafeExtensionsEnabled" "${ADMIN_SETTINGS_FILE}") ]; then
+	      echo -e "\nUnsafeExtensionsEnabled=false\n" >> "${ADMIN_SETTINGS_FILE}"
+	    fi
+	fi
 
-# TODO: register own mime types if Libre was not installed
-if [[ ${UPDATE_MIME_DATABASE_WORKAROUND} -eq 0 ]]; then
-    update-mime-database /usr/share/mime
-else
-    PKGSYSTEM_ENABLE_FSYNC=0 update-mime-database /usr/share/mime
-fi
-
-# Fonts
-fc-cache
-
-# We need to turn on antialiasing in Astra Linux to make fonts rendering better in our app.
-# It has been agreed with the developers of Astra. These changes are restored during the uninstallation.
-backupFontConfig()
-{
-    local fontConfigFolder="/etc/fonts/conf.avail"
-
-    if [ -f "${fontConfigFolder}/${1}" ]; then
-        mv "${fontConfigFolder}/${1}" "${fontConfigFolder}/${1}.backup"
-    fi
-}
-
-if [[ "$IFW_LINUX_DISTRIBUTION" == "astra" ]]; then
-    backupFontConfig "19-fly-no-antialiasing.conf" # Used in version 1.4
-    backupFontConfig "29-fly-rendering.conf" # Used in version 1.5
-fi
-
-# Apps icons registered to hicolor theme, so need to refresh it
-xdg-icon-resource forceupdate --theme hicolor --mode system
-gtk-update-icon-cache -ft "${DEFAULT_ICON_PREFIX}/hicolor" > /dev/null 2> /dev/null || true
-
-# Send installation telemetry
-if [ $SUDO_USER ]; then auser=$SUDO_USER; else auser=`whoami`; fi
-echo "Install app as user ${auser}"
-if [[ " ${ARTIFACTS} " == *"text"* ]]; then
-    runAs "${auser}" "cd ${SCRIPT_DIR} && \"./MyOffice Text Home Edition.sh\" --install -platform offscreen" || true
-elif [[ " ${ARTIFACTS} " == *"spreadsheet"* ]]; then
-    runAs "${auser}" "cd ${SCRIPT_DIR} && \"./MyOffice Spreadsheet Home Edition.sh\" --install -platform offscreen" || true
-elif [[ " ${ARTIFACTS} " == *"presentation-home-edition "* ]]; then
-    runAs "${auser}" "cd ${SCRIPT_DIR} && \"./MyOffice Presentation Home Edition.sh\" --install -platform offscreen" || true
-fi
-
-# Unsigned extensions administration default settings
-ADMIN_SETTINGS_PATH="/etc/xdg/MyOffice Standard. Home Edition"
-ADMIN_SETTINGS_FILE="${ADMIN_SETTINGS_PATH}/Global.conf"
-CO_ENABLE_QT_DESKTOP_USING_UNSAFE_EXTENSIONS="FALSE"
-if [ "${CO_ENABLE_QT_DESKTOP_USING_UNSAFE_EXTENSIONS,,}" = "false" ] || [ "${CO_ENABLE_QT_DESKTOP_USING_UNSAFE_EXTENSIONS}" = "0" ]; then
-    mkdir -p "${ADMIN_SETTINGS_PATH}"
-    if [ ! -f "${ADMIN_SETTINGS_FILE}" ]; then
-        echo "[General]" > "${ADMIN_SETTINGS_FILE}"
-    fi
-    if [ -z $(grep "UnsafeExtensionsEnabled" "${ADMIN_SETTINGS_FILE}") ]; then
-      echo -e "\nUnsafeExtensionsEnabled=false\n" >> "${ADMIN_SETTINGS_FILE}"
-    fi
-fi
-
-echo "Done."
+	echo "Done."
 	update-desktop-database -q
 }
 
@@ -135,156 +68,37 @@ post_upgrade() {
 }
 
 pre_remove() {
-set -e
-set -u
+	set -u
 
-DISPLAY=''
+	DISPLAY=''
 
-# This script may run not from the app's dist directory (this true in case of DEB package)
-# The placeholder is overriden during the package configuration
-SCRIPT_DIR="/opt/myoffice-standard-home-edition"
-CONFIG_DIR="New Cloud Technologies Ltd."
-LKSDK_DIR_NAME="LkSdkWorkingDir"
+	# This script may run not from the app's dist directory (this true in case of DEB package)
+	# The placeholder is overriden during the package configuration
+	SCRIPT_DIR="/opt/myoffice-standard-home-edition"
+	CONFIG_DIR="New Cloud Technologies Ltd."
+	LKSDK_DIR_NAME="LkSdkWorkingDir"
 
-source "${SCRIPT_DIR}/Common.3.3.1.sh"
+	source "${SCRIPT_DIR}/Common.3.5.1.sh"
 
-if [[ "${TAG}" == "upgrade" || "${TAG}" == "1" ]]; then
-    echo "Skipping uninstall step..."
-    exit 0
-fi
+	if [[ "${TAG}" == "upgrade" || "${TAG}" == "1" ]]; then
+	    echo "Skipping uninstall step..."
+	    exit 0
+	fi
 
-IFW_MENU_DEST_DIR=$(probe_menu_installation_path)
 
-# Unistalling icons
-for size in "${IFW_ICON_SIZE[@]}"; do
-    for name in "${APPS[@]}"; do
-        xdg-icon-resource uninstall --theme hicolor --mode system --size "${size}" --context apps --size "${size}" "${name}"
-    done
-done
 
-uninstallIconsForTheme()
-{
-    for size in "${IFW_ICON_SIZE[@]}"; do
-        for name in "${MIME_ICON_DEST[@]}"; do
-            xdg-icon-resource uninstall --theme "${1}" --mode system --context mimetypes --size "${size}" "${name}"
-        done
-    done
-}
+	source "${SCRIPT_DIR}/LkSdkUtils.sh"
 
-if [[ "${INSTALL_SVG_ICONS}" == "0" ]]; then
-    uninstallIconsForTheme hicolor
-fi
 
-if [[ "${INSTALL_RASTER_ICONS_ONLY}" == "1" ]]; then
-    for IFW_ICON_THEME_NAME in ${ICON_THEMES}; do
-        INDEX_FILE="${DEFAULT_ICON_PREFIX}/${IFW_ICON_THEME_NAME}/index.theme"
-        if [ ! -e "${INDEX_FILE}" ]; then
-            continue
-        fi
 
-        if [[ "${IFW_ICON_THEME_NAME}" == "hicolor" ]]; then
-            # This theme is already uninstalled
-            continue
-        fi
+	# Remove vendor id in admin settings file
+	if [ -f "${ADMIN_SETTINGS_FILE}" ]; then
+	    sed -i "/VendorId=/c\VendorId=\"\"" "${ADMIN_SETTINGS_FILE}"
+	fi
 
-        uninstallIconsForTheme "${IFW_ICON_THEME_NAME}"
-    done
-fi
 
-restoreFileFromBackup()
-{
-    local target=$1
 
-    if [ -f "${target}" ]; then
-        local backupHash=$(cat "${BACKUP_DIR}/icons/${target}.md5")
-        local targetHash=$(md5sum "${target}" | cut -d ' ' -f 1)
-
-        if [[ "${backupHash}" == "${targetHash}" ]]; then
-            cp --remove-destination -f "${BACKUP_DIR}/icons/${target}" "${target}" || true
-        fi
-    elif [[ -L "${target}" && ! -e "${target}" ]]; then
-        cp --remove-destination -f "${BACKUP_DIR}/icons/${target}" "${target}" || true
-    fi
-}
-
-findAndRestore()
-{
-    if [ -f "$1" ]; then
-        if [[ "$1" == *.png || "$1" == *.svg ]]; then
-            restoreFileFromBackup "${1#'.'}"
-        fi
-    elif [ -d "$1" ]; then
-        for f in "$1"/*; do
-            findAndRestore "${f}"
-        done
-    fi
-}
-
-# Restoring overwritten icons
-if [ -d "${BACKUP_DIR}/icons" ]; then
-    cd "${BACKUP_DIR}/icons/"
-    findAndRestore .
-    cd "${MAINTENANCE_DIR}"
-    rm -rf "${BACKUP_DIR}/icons"
-fi
-
-# Deleting added icons
-if [ -f "${MAINTENANCE_DIR}/icons.list" ]; then
-    for f in $(cat "${MAINTENANCE_DIR}/icons.list"); do
-        rm -f "${f}" || true
-    done
-fi
-
-# Restoring font config changes
-restoreFontConfig()
-{
-    local fontConfigFolder="/etc/fonts/conf.avail"
-
-    if [ -f "${fontConfigFolder}/${1}.backup" ]; then
-        mv "${fontConfigFolder}/${1}.backup" "${fontConfigFolder}/${1}"
-    fi
-}
-
-if [[ "$IFW_LINUX_DISTRIBUTION" == "astra" ]]; then
-    restoreFontConfig "19-fly-no-antialiasing.conf" # Used in version 1.4
-    restoreFontConfig "29-fly-rendering.conf" # Used in version 1.5
-fi
-
-updateCacheForTheme()
-{
-    xdg-icon-resource forceupdate --theme "${1}" --mode system || true
-    gtk-update-icon-cache -ft "${DEFAULT_ICON_PREFIX}/${1}" > /dev/null 2> /dev/null || true
-}
-
-for IFW_ICON_THEME_NAME in ${ICON_THEMES}; do
-    INDEX_FILE="${DEFAULT_ICON_PREFIX}/${IFW_ICON_THEME_NAME}/index.theme"
-    if [ ! -e "${INDEX_FILE}" ]; then
-        continue
-    fi
-
-    updateCacheForTheme "${IFW_ICON_THEME_NAME}"
-done
-
-# Send uninstall statistics and telemetry
-if [[ " ${ARTIFACTS} " == *"text"* ]]; then
-    runAs "root" "cd ${SCRIPT_DIR} && \"./MyOffice Text Home Edition.sh\" --log-file=CONSOLE --uninstall -platform offscreen" || true
-elif [[ " ${ARTIFACTS} " == *"spreadsheet"* ]]; then
-    runAs "root" "cd ${SCRIPT_DIR} && \"./MyOffice Spreadsheet Home Edition.sh\" --log-file=CONSOLE --uninstall -platform offscreen" || true
-elif [[ " ${ARTIFACTS} " == *"presentation-home-edition "* ]]; then
-    runAs "root" "cd ${SCRIPT_DIR} && \"./MyOffice Presentation Home Edition.sh\" --log-file=CONSOLE --uninstall -platform offscreen" || true
-fi
-
-# Deleting LkSdk working directory for all users
-for TARGET_USER in $(getent passwd | cut -d: -f1); do
-    runAs "${TARGET_USER}" "xdg-user-dir DESKTOP" || true
-    DESK=$RET
-    case "$DESK" in
-        /*) rm -rf "${DESK}/${LKSDK_DIR_NAME}" ;;
-        * ) ;;
-    esac
-done
-
-echo "Done"
+	echo "Done"
 }
 
 post_remove() {
