@@ -4,7 +4,7 @@
 
 pkgbase=uutils-coreutils-git
 pkgname=($pkgbase coreutils-uutils)
-pkgver=0.2.2.r458.g909da50
+pkgver=0.3.0.r46.g870bc29
 pkgrel=1
 pkgdesc="Rust rewrite of coreutils"
 url=https://github.com/uutils/coreutils
@@ -28,19 +28,17 @@ pkgver() {
   git describe --long --tags --abbrev=7 | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
+noextract=(nix-rust0.30.1.tar.gz)
 prepare(){
   cd ${pkgname%-git}
-  rm -rf rust-vendor; mkdir -p rust-vendor
-  mv "${srcdir}/nix-0.30.1" rust-vendor/nix
+  mkdir -p rust-vendor/nix; bsdtar -xf ../nix-rust0.30.1.tar.gz -C rust-vendor/nix --strip-components=1
   patch -Np1 -i "${srcdir}/glibc-2.42.patch"
   echo -e "[patch.crates-io]\nnix = { path = \"rust-vendor/nix\" }" >> Cargo.toml
 }
 # Packaging guideline cause double build.
 export RUSTONIG_DYNAMIC_LIBONIG=1
 export RUSTFLAGS="-C codegen-units=1 -C panic=abort ${RUSTFLAGS}" # PROFILE=release-fast does not work yet
-if [ $RUSTC_BOOTSTRAP = 1 ];then
-  export CARGOFLAGS="-Zbuild-std=std,panic_abort -Zbuild-std-features=panic_immediate_abort"
-fi
+test $RUSTC_BOOTSTRAP = 1 && export CARGOFLAGS="-Zbuild-std=std,panic_abort -Zbuild-std-features=panic_immediate_abort"
 package_uutils-coreutils-git(){
   cd ${pkgbase%-git}
   unset optdepends
@@ -51,19 +49,18 @@ package_uutils-coreutils-git(){
 
 package_coreutils-uutils(){
   pkgdesc='Use uutils as system coreutils'
-  provides=(coreutils b3sum)
-  conflicts=(coreutils b3sum sha3sum)
+  provides=(coreutils)
+  conflicts=(coreutils)
   cd ${pkgbase%-git}
   unset optdepends
   # We should build smaller non-prefixed binary with SKIP_UTILS, but it is slow and breaks bash-completion...
   # Or this feature should be included to upstream.
   depends=(uutils-coreutils)
-  install -d "$pkgdir"/usr/{bin,lib/coreutils,share/{licenses/${pkgname},man/man1,zsh/site-functions,fish/vendor_completions.d}}
+  install -d "$pkgdir"/usr/{bin,share/{licenses/${pkgname},man/man1,zsh/site-functions,fish/vendor_completions.d}}
   cd "$pkgdir"/usr
-  ln -sf /usr/lib/${depends[0]}/libstdbuf.so -t lib/coreutils
-  ln -sf uu-coreutils bin/\[ # zsh completion err
-  for _f in $(uu-coreutils --list | grep -v -E '^(kill|more|uptime|hostname|\[)$') chcon runcon; do
-    ln -sf uu-coreutils bin/${_f}
+  ln -sf uu-\[ bin/\[ # zsh completion err
+  for _f in $(uu-coreutils --list | grep -v -E '^(kill|more|uptime|hostname|hashsum|b3sum|sha3sum|sha3^*sum|shake*sum|\[)$') chcon runcon; do
+    ln -sf uu-$_f bin/$_f
     ln -sf uu-${_f}.1.gz share/man/man1/${_f}.1.gz
     # bash completes symlinks
     echo -e "#compdef ${_f}=uu-${_f}\n_uu-${_f}" > share/zsh/site-functions/_$_f

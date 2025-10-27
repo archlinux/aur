@@ -1,6 +1,6 @@
 pkgbase = uutils-coreutils-git
 	pkgdesc = Rust rewrite of coreutils
-	pkgver = 0.2.2.r458.g909da50
+	pkgver = 0.3.0.r46.g870bc29
 	pkgrel = 1
 	url = https://github.com/uutils/coreutils
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = uutils-coreutils-git
 	optdepends = rust-src: optimize with RUSTC_BOOTSTRAP=1
 	provides = uutils-coreutils
 	conflicts = uutils-coreutils
+	noextract = nix-rust0.30.1.tar.gz
 	options = zipman
 	source = uutils-coreutils::git+https://github.com/uutils/coreutils.git
 	source = glibc-2.42.patch::https://git.launchpad.net/~juliank/ubuntu/+source/rust-coreutils/plain/debian/patches/glibc-2.42.patch?h=ubuntu/devel&id=a16e77bec0546ee51770a891a24468e8048242e3
@@ -27,7 +28,4 @@ pkgname = coreutils-uutils
 	pkgdesc = Use uutils as system coreutils
 	depends = uutils-coreutils
 	provides = coreutils
-	provides = b3sum
 	conflicts = coreutils
-	conflicts = b3sum
-	conflicts = sha3sum
