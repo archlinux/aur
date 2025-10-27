@@ -13,12 +13,12 @@
 
 pkgname=codelite-git
 _gitname=codelite
-pkgver=18.1.0.r49.gcbcefb7be
+pkgver=18.2.0.r1.g3a07c3025
 pkgrel=1
 pkgdesc="Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://codelite.org/"
-license=('GPL')
+license=("GPL-2.0-or-later")
 
 makedepends=('cmake' 'ninja' 'clang' 'git')
 
@@ -35,7 +35,6 @@ depends=(
     #'wget'
     #'curl'
     #'python'
-    #'python2'
 )
 
 optdepends=(
@@ -114,7 +113,8 @@ build() {
 
   # generate
   #  -DWITH_NATIVEBOOK=1 \
-  cmake -G "Unix Makefiles" -S . -B "${BUILD_DIR}" \
+  cmake S . -B "${BUILD_DIR}" \
+    -G "Ninja" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCL_PREFIX=/usr \
@@ -122,7 +122,6 @@ build() {
     -DWITH_WX_CONFIG="${WX_CONFIG}" \
     -DENABLE_LLDB=1 \
     -DENABLE_SFTP=1 \
-    -DWITH_CHATAI=1 \
     -DWITH_MYSQL=0 \
     -DCOPY_WX_LIBS=0 \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
