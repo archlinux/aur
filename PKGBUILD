@@ -2,7 +2,7 @@
 
 pkgname=netcat-cpi-git
 pkgver=20140424
-pkgrel=4
+pkgrel=5
 pkgdesc="netcats 'cycles per instruction' album as a kernel module"
 arch=('i686' 'x86_64')
 url="http://netcat.co"
@@ -12,8 +12,13 @@ optdepends=('vorbis-tools: contains a convenient player (ogg123)')
 install="cpi.install"
 source=("git+https://github.com/usrbinnc/netcat-cpi-kernel-module.git"
         "cpi.install")
-md5sums=("SKIP"
-        "967d79015184d7d58963870ff6b8b1a1")
+md5sums=('SKIP'
+         '967d79015184d7d58963870ff6b8b1a1')
+
+prepare() {
+    echo 'MODULE_LICENSE("GPL");' | cat "$srcdir/netcat-cpi-kernel-module/netcat_main.c" - > "$srcdir/netcat-cpi-kernel-module/netcat_main.c_"
+    mv "$srcdir/netcat-cpi-kernel-module/netcat_main.c_" "$srcdir/netcat-cpi-kernel-module/netcat_main.c"
+}
 
 build() {
     cd "$srcdir/netcat-cpi-kernel-module"

@@ -1,7 +1,7 @@
 pkgbase = netcat-cpi-git
 	pkgdesc = netcats 'cycles per instruction' album as a kernel module
 	pkgver = 20140424
-	pkgrel = 4
+	pkgrel = 5
 	url = http://netcat.co
 	install = cpi.install
 	arch = i686
@@ -16,4 +16,3 @@ pkgbase = netcat-cpi-git
 	md5sums = 967d79015184d7d58963870ff6b8b1a1
 
 pkgname = netcat-cpi-git
-
