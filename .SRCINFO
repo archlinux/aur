@@ -1,6 +1,6 @@
 pkgbase = vdr-softhddevice-drm-gles
 	pkgdesc = VDR output plugin for software HD based on DRM interface
-	pkgver = r981.4306716
+	pkgver = r1128.897b4ff
 	pkgrel = 1
 	arch = aarch64
 	license = AGPL3
@@ -9,8 +9,6 @@ pkgbase = vdr-softhddevice-drm-gles
 	depends = alsa-lib
 	depends = glm
 	source = vdr-softhddevice-drm-gles::git+https://github.com/rellla/vdr-plugin-softhddevice-drm-gles.git
-	source = fix-compiler.patch
 	sha256sums = SKIP
-	sha256sums = cb995a0efd779e92556e45267589f20a27bed035c4be80229cdeb83d0b89f08f
 
 pkgname = vdr-softhddevice-drm-gles
