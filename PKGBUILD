@@ -1,7 +1,7 @@
 # Maintainer: Caden Finley <caden@cadenfinley.com>
 pkgname=cjsh
 pkgver=3.10.8
-pkgrel=1
+pkgrel=2
 pkgdesc="POSIX shell scripting with modern shell features"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
 url="https://github.com/CadenFinley/CJsShell"
