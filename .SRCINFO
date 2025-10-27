@@ -1,0 +1,13 @@
+pkgbase = ratyper
+	pkgdesc = Random ASCII typer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://thendsoft.su/ratyper.html
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	depends = gcc-libs
+	source = rasciit.cpp
+	sha256sums = SKIP
+
+pkgname = ratyper
