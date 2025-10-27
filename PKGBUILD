@@ -1,9 +1,7 @@
 # Maintainer: x9x
 
-_pkgbase=yafu
 pkgname=yafu-git-gcc9
 pkgrel=1
-pkgver=r804.f86148e
 pkgdesc="Automated integer factorization."
 url=https://github.com/bbuhrow/yafu
 license=("MIT")
@@ -32,11 +30,8 @@ prepare() {
 }
 
 pkgver() {
-	cd "${_pkgbase}"
-	( set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+    cd "$srcdir/yafu"
+    git describe --long --tags | sed 's/^v//;s/-/./g'
 }
 
 build() {
