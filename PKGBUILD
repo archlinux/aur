@@ -2,7 +2,7 @@
 
 pkgname=tensamin-git
 _pkgname=tensamin
-pkgver=r431.08f70aa
+pkgver=0
 _pkgver=0.1.3
 pkgrel=1
 pkgdesc="True E2EE, decentralized messages. Open source and privacy first."
@@ -10,7 +10,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/Tensamin/Frontend"
 license=('Custom')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
-makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'cargo' 'pnpm' 'nodejs')
+makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'cargo' 'npm' 'nodejs')
 provides=('tensamin')
 conflicts=('tensamin-bin' 'tensamin')
 source=("git+${url}.git")
@@ -24,13 +24,9 @@ pkgver() {
   )
 }
 
-prepare() {
-  cd Frontend
-  npx bun install
-}
-
 build() {
   cd Frontend
+  npx bun install
   npx bun tauri build -b deb
 }
 
