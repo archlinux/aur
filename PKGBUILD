@@ -1,6 +1,6 @@
 # Maintainer: Choi Madeleine <gankiann.niu@gmail.com>
 pkgname=mwcli
-pkgver=v0.26.0
+pkgver=v0.28.0
 pkgrel=1
 pkgdesc="MediaWiki focused command line tool targeting developers"
 arch=('x86_64')
