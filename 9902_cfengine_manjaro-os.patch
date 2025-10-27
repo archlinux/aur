@@ -1,0 +1,13 @@
+diff --git a/rudder-sources/rudder/policies/lib/tree/20_cfe_basics/cfengine/paths.cf b/rudder-sources/rudder/policies/lib/tree/20_cfe_basics/cfengine/paths.cf
+index 390a2c81f2..3b4c9f9d6e 100644
+--- a/rudder-sources/rudder/policies/lib/tree/20_cfe_basics/cfengine/paths.cf
++++ b/rudder-sources/rudder/policies/lib/tree/20_cfe_basics/cfengine/paths.cf
+@@ -177,7 +177,7 @@ bundle common paths
+       "path[tr]"       string => "/usr/bin/tr";
+       "path[yum]"      string => "/usr/bin/yum";
+ 
+-    archlinux::
++    archlinux|manjaro::
+ 
+       "path[awk]"               string => "/usr/bin/awk";
+       "path[bc]"                string => "/usr/bin/bc";
