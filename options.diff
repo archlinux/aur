@@ -1,0 +1,24 @@
+--- A/makefile	2025-10-27 01:14:59.480984167 -0500
++++ B/makefile	2025-10-27 01:15:31.846563322 -0500
+@@ -4,6 +4,9 @@
+ #The emulation core also requires SDL2.
+ #Run "make" to build, "make run" to run
+ 
++ENV_CFLAGS := $(CFLAGS)
++ENV_CXXFLAGS := $(CXXFLAGS)
++
+ MESENFLAGS=
+ 
+ ifeq ($(USE_GCC),true)
+@@ -110,9 +113,9 @@
+ 	LINKOPTIONS += -framework Foundation -framework Cocoa -framework GameController -framework CoreHaptics -Wl,-rpath,/opt/local/lib
+ endif
+ 
+-CXXFLAGS = -fPIC -Wall --std=c++17 $(MESENFLAGS) $(SDL2INC) -I $(realpath ./) -I $(realpath ./Core) -I $(realpath ./Utilities) -I $(realpath ./Sdl) -I $(realpath ./Linux) -I $(realpath ./MacOS)
++CXXFLAGS = $(ENV_CXXFLAGS) -fPIC -Wall --std=c++17 $(MESENFLAGS) $(SDL2INC) -I $(realpath ./) -I $(realpath ./Core) -I $(realpath ./Utilities) -I $(realpath ./Sdl) -I $(realpath ./Linux) -I $(realpath ./MacOS)
+ OBJCXXFLAGS = $(CXXFLAGS)
+-CFLAGS = -fPIC -Wall $(MESENFLAGS)
++CFLAGS = $(ENV_CFLAGS) -fPIC -Wall $(MESENFLAGS)
+ 
+ OBJFOLDER := obj.$(MESENPLATFORM)
+ DEBUGFOLDER := bin/$(MESENPLATFORM)/Debug

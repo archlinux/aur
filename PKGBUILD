@@ -1,51 +1,47 @@
-# Maintainer:  Andrew O'Neill <andrew at meanjollies dot com>
-# Contributor: John Jenkins <twodopeshaggy@gmail.com>
-
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=mesen
-_pkgname=Mesen
-pkgver=0.9.9
-pkgrel=2
-pkgdesc='A cross-platform NES/Famicom emulator'
+pkgver=2.1.1
+pkgrel=1
+pkgdesc="Multi-system emulator (NES, SNES, GB, GBA, PCE, SMS/GG, WS) for Windows, Linux and macOS"
 arch=('x86_64')
-makedepends=('clang' 'gendesk' 'zip' 'mono-msbuild')
-depends=('mono' 'sdl2')
-url='https://github.com/SourMesen/Mesen'
-license=('GPL3')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('8c638a9910b8de6cf628ceefb226c2f636e4397b0629f58a8ffb304984d68ea9')
+url="https://github.com/SourMesen/Mesen2"
+license=('GPL-3.0-or-later')
+depends=(sdl2 fontconfig libevdev glibc libx11 gcc-libs zlib)
+makedepends=(dotnet-sdk-8.0 meson ninja clang lld zip unzip)
+checkdepends=()
+optdepends=()
+provides=('mesen2')
+conflicts=('mesen2')
+install=$pkgname.install
+options=(!lto)
+source=("$url/archive/refs/tags/${pkgver}.tar.gz"
+	"options.diff")
+sha256sums=('ce845c15e9aba9a65557760bd24376767becf7232e9a03222ce85e0e608d7822'
+            'c97321bfec6748e8aed96340bcb6e49d35f204ae9c72afbcfadfca11aef80a31')
 
 prepare() {
-  cd "${_pkgname}-${pkgver}"
-
-  # Prevent duplicate .desktop from getting created
-  sed -i 's/CreateShortcutFile(desktopFile, mimeTypes);//' GUI.NET/Config/FileAssociationHelper.cs
-
-  gendesk --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" --exec "/usr/bin/mesen" -n
-
-  # Invoke using mono in a wrapper, since wine (if installed) would open it otherwise
-  cat > "${pkgname}" << EOF
-#!/bin/sh
-/usr/bin/mono /opt/Mesen/Mesen "\$@"
-EOF
+	cd "$srcdir"
+	cd "${pkgname/m/M}2-$pkgver"
+	patch -Np1 < "$srcdir/options.diff"
 }
 
 build() {
-  cd "${_pkgname}-${pkgver}"
-
-  make
+	cd "${pkgname/m/M}2-$pkgver"
+	CFLAGS+=" -fuse-ld=lld" CXXFLAGS+=" -fuse-ld=lld" SYSTEM_LIBEVDEV=true STATICLINK=false USE_AOT=true make
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
-  install -Dm755 ${pkgname} "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 ${_pkgname}.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-
-  cd "${srcdir}/${_pkgname}-${pkgver}/GUI.NET/Resources"
-  install -Dm644 ${_pkgname}Icon.png "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-
-  cd "${srcdir}/${_pkgname}-${pkgver}/bin/x64/Release"
-  install -Dm755 ${_pkgname}.exe "${pkgdir}/opt/${_pkgname}/${_pkgname}"
-
-  cd "${srcdir}/${_pkgname}-${pkgver}/InteropDLL/obj.x64"
-  install -Dm644 lib${_pkgname}Core.x64.dll "${pkgdir}/usr/lib/lib${_pkgname}Core.dll"
+	cd "${pkgname/m/M}2-$pkgver/bin/linux-x64/Release"
+	install -Dm755 {Mesen,Mesen.dll} -t "$pkgdir/usr/lib/$pkgname"
+	install -dm755 "$pkgdir/usr/bin"
+	for file in *.so
+	do
+		install -Dm755 ${file} "$pkgdir/usr/lib/$pkgname/$file"
+	done
+	for file in *.dll
+	do
+		install -Dm755 ${file} "$pkgdir/usr/lib/$pkgname/$file"
+	done
+	install -Dm644 Mesen.runtimeconfig.json -t "$pkgdir/usr/lib/$pkgname"
+	ln -s "/usr/lib/${pkgname}/Mesen" "$pkgdir/usr/bin/${pkgname}"
 }

@@ -1,0 +1,10 @@
+post_install() {
+	echo "==============================================================================="
+	echo "Run mesen in the terminal once to generate the necessary desktop and icon files"
+	echo "==============================================================================="
+}
+post_upgrade() {
+	echo "==============================================================================="
+	echo "Run mesen in the terminal once to generate the necessary desktop and icon files"
+	echo "==============================================================================="
+}
