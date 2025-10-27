@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=elephant-providerlist
-pkgver=2.7.6
+pkgver=2.7.7
 pkgrel=1
 pkgdesc='providerlist provider for elephant'
 url='https://github.com/abenz1267/elephant'
@@ -11,7 +11,7 @@ makedepends=('go')
 conflicts=('elephant-providerlist')
 provides=('elephant-providerlist')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('20cfc2b27667c24ea29697fe377d5a5da5cae4daff1c8a13d8e3c99e121c9607')
+sha256sums=('8eeaeeb23923197483f6c64b605981e3f9d85c087b5bf43dd20ce49b11b0b6b4')
 
 build() {
     cd elephant-${pkgver}/internal/providers/providerlist
