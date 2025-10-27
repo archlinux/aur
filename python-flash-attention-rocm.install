@@ -1,0 +1,21 @@
+README="$(cat << EOF
+
+===============================================================================
+
+You need to set the following in your environment.
+Otherwise the CUDA backend will be imported, which will fail.
+
+export FLASH_ATTENTION_TRITON_AMD_ENABLE=TRUE
+
+===============================================================================
+
+EOF
+)"
+
+post_install() {
+	echo "${README}"
+}
+
+post_upgrade() {
+	echo "${README}"
+}

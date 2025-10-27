@@ -3,6 +3,7 @@ pkgbase = python-flash-attention-rocm-triton
 	pkgver = 2.8.3
 	pkgrel = 1
 	url = https://github.com/Dao-AILab/flash-attention
+	install = python-flash-attention-rocm.install
 	arch = any
 	license = BSD-3-Clause
 	makedepends = ninja
