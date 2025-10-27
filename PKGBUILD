@@ -3,6 +3,7 @@
 
 _pkgauthor=klpod221
 _pkgname=kerminal
+appname=Kerminal
 pkgname=${_pkgname}-bin
 pkgver=2.1.1
 _pkgvername=v${pkgver}
@@ -19,7 +20,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 install="${pkgname}.install"
-source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.deb::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.deb")
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.deb::${url}/releases/download/${_pkgvername}/${appname}_${pkgver}_${_barch[0]}_linux.deb")
 sha256sums_x86_64=('71584bdac9c3f0da8caa54ca6a2ddf8c012489cc3c58885690ce3ec8c814b67c')
 
 

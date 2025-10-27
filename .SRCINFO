@@ -17,7 +17,7 @@ pkgbase = kerminal-bin
 	depends = hicolor-icon-theme
 	provides = kerminal
 	conflicts = kerminal
-	source_x86_64 = kerminal-x86_64-2.1.1.deb::https://github.com/klpod221/kerminal/releases/download/v2.1.1/kerminal_2.1.1_amd64.deb
+	source_x86_64 = kerminal-x86_64-2.1.1.deb::https://github.com/klpod221/kerminal/releases/download/v2.1.1/Kerminal_2.1.1_amd64_linux.deb
 	sha256sums_x86_64 = 71584bdac9c3f0da8caa54ca6a2ddf8c012489cc3c58885690ce3ec8c814b67c
 
 pkgname = kerminal-bin
