@@ -1,5 +1,5 @@
 pkgbase = smoothdev-commit
-  pkgdesc=A CLI tool that generates commit messages using AI. This tool integrates with your git workflow to analyze staged changes and generate meaningful commit messages.
+	pkgdesc = A CLI tool that generates commit messages using AI. This tool integrates with your git workflow to analyze staged changes and generate meaningful commit messages.
 	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://www.smoothdev.io/about

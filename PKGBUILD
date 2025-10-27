@@ -4,7 +4,6 @@ pkgdesc="A CLI tool that generates commit messages using AI. This tool integrate
 _name="${pkgname}-message-cli"
 pkgver=1.0.5
 pkgrel=1
-pkgdesc=""
 arch=("x86_64")
 url="https://www.smoothdev.io/about"
 license=('MIT')
