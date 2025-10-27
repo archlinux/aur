@@ -7,7 +7,7 @@ url="https://thendsoft.su/ratyper.html"
 license=('GPL')
 depends=('gcc-libs')
 makedepends=('gcc')
-source=("rasciit.cpp")
+source=("ratyper.cpp")
 sha256sums=('SKIP')
 
 build() {

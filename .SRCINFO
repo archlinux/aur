@@ -7,7 +7,7 @@ pkgbase = ratyper
 	license = GPL
 	makedepends = gcc
 	depends = gcc-libs
-	source = rasciit.cpp
+	source = ratyper.cpp
 	sha256sums = SKIP
 
 pkgname = ratyper
