@@ -4,7 +4,7 @@
 _pkgname=moonraker
 pkgname="${_pkgname}-git"
 pkgver=0.9.3.r123.g8426f41
-pkgrel=1
+pkgrel=2
 pkgdesc="HTTP frontend for Klipper 3D printer firmware"
 arch=(any)
 url="https://github.com/Arksine/moonraker"
@@ -21,7 +21,7 @@ depends=(klipper
          python-libnacl
          python-paho-mqtt
          python-jinja
-         python-dbus-next
+         python-dbus-fast
          python-periphery
          curl)
 #checkdepends=("python-pytest>=7.0" python-pytest-asyncio python-pytest-timeout)
