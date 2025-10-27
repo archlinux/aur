@@ -3,7 +3,7 @@
 _pkgauthor=jmelahman
 _pkgname=check-symlinks
 pkgname=${_pkgname}-bin
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Check for broken symlinks"
 arch=('x86_64' 'i686' 'aarch64')
@@ -18,9 +18,9 @@ conflicts=("${_pkgname}")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_${_barch[0]}.tar.gz")
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_${_barch[2]}.tar.gz")
-sha256sums_x86_64=('f1faaa0caebe0ec4eb863f2fe4ff628d5914923d84bc5933af4733fbe54c9308')
-sha256sums_i686=('2c469893c33d8dae1f23f0ee716718ca964717cd38ad060692361130cac284e7')
-sha256sums_aarch64=('07317e4a38aa01ef11028ed3fedece4f003611f5095714ca06467b5b4c0e8b81')
+sha256sums_x86_64=('61a852a503a05188297fc70b1344d4ab272050131fa0f9ee4fb51d9f305e8f88')
+sha256sums_i686=('1cc49c4a07e0a79dee4533a4fda3deb0a3793c354867d6ff1158e7486adf851e')
+sha256sums_aarch64=('183eb7cb24949cb0fcce2766a6fb81f1957e9a675851a19520294578d8bf3a4e')
 
 
 package() {

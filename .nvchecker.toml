@@ -1,0 +1,5 @@
+["check-symlinks-bin"]
+source = "github"
+github = "jmelahman/check-symlinks"
+use_latest_release = true
+prefix = "v"
