@@ -1,0 +1,5 @@
+["sift-bin"]
+source = "github"
+github = "svent/sift"
+use_latest_release = true
+prefix = "v"
