@@ -1,0 +1,18 @@
+pkgbase = bazecor-beta
+	pkgdesc = Graphical configurator for Dygma keyboards
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/Dygmalab/Bazecor
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = zlib
+	depends = fuse2
+	depends = bazecor
+	provides = bazecor-beta
+	conflicts = bazecor-beta-git
+	noextract = Bazecor-1.8.0-x64.AppImage
+	options = !strip
+	source = https://github.com/Dygmalab/Bazecor/releases/download/v1.8.0/Bazecor-1.8.0-x64.AppImage
+	sha256sums = 9b175e5ff696ee033ea3b998c779f07954a25ab58c6eec1fe145e9c63049addb
+
+pkgname = bazecor-beta
