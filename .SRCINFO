@@ -1,0 +1,18 @@
+pkgbase = zeptofetch-git
+	pkgdesc = Blazingly fast, ultra-minimal system information tool for Linux (git version)
+	pkgver = r50.abc1234
+	pkgrel = 1
+	url = https://github.com/Gur0v/zeptofetch
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	provides = zeptofetch
+	conflicts = zeptofetch
+	conflicts = zeptofetch-bin
+	source = git+https://github.com/Gur0v/zeptofetch.git
+	sha256sums = SKIP
+
+pkgname = zeptofetch-git
