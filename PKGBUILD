@@ -1,8 +1,7 @@
 # Maintainer: Filippo Falezza <filippo dot falezza at outlook dot it>
 
 pkgname='azure2'
-_pkgname='AZURE2-git'
-#_pkgname='Azure2'
+_pkgname="Azure2"
 pkgver=v1.0.r117.gd7deab6
 pkgrel=2
 pkgdesc='Bayesian R-Matrix Inference Code'
@@ -16,8 +15,8 @@ makedepends=(
   'git'
 )
 source=(
- "Azure2::git+https://github.com/rdeboer1/AZURE2#branch=qwt6"
-#  "Azure2::git+https://github.com/rdeboer1/AZURE2#branch=api"
+# "Azure2::git+https://github.com/rdeboer1/AZURE2#branch=qwt6"
+  "Azure2::git+https://github.com/rdeboer1/AZURE2#branch=api"
   )
 sha256sums=('SKIP')
 
