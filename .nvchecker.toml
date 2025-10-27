@@ -1,0 +1,5 @@
+["alist-bin"]
+source = "github"
+github = "AlistGo/alist"
+use_latest_release = true
+prefix = "v"
