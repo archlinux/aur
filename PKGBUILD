@@ -2,13 +2,13 @@
 # Contributor: Alexandr Parkhomenko <it@52tour.ru>
 
 pkgname=python-opentsne-git
-pkgver=1.0.2.r0.g9715ac8
+pkgver=1.0.4.r2.g6287bbf
 pkgrel=1
 pkgdesc="Extensible, parallel implementations of t-SNE"
 url="https://opentsne.readthedocs.io/en/latest/"
 arch=('x86_64')
 license=('BSD-3-Clause')
-depends=('fftw' 'python-scikit-learn')
+depends=('fftw' 'python' 'python-joblib' 'python-numpy' 'python-scipy' 'python-scikit-learn')
 makedepends=('cython' 'git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 optdepends=(
   'python-pynndescent: for nearest neighbor descent search'
