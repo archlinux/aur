@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-bin
 	pkgdesc = LLM inference in C/C++ (precompiled Linux binaries)
-	pkgver = b6838
+	pkgver = b6853
 	pkgrel = 1
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = llama.cpp-bin
 	conflicts = llama.cpp
 	conflicts = libggml
 	conflicts = ggml
-	source = llama.cpp-b6838.zip::https://github.com/ggerganov/llama.cpp/releases/download/b6838/llama-b6838-bin-ubuntu-x64.zip
-	source = README-b6838.md::https://raw.githubusercontent.com/ggml-org/llama.cpp/b6838/README.md
-	sha256sums = 4ebab2b21224318c158a31588e8c90d9f208c3187a30044129cdd1151ad0b3d6
-	sha256sums = a53f90e1e655619d4a7226ddab7942282ae733c5beae8437836e8a326e4eef1c
+	source = llama.cpp-b6853.zip::https://github.com/ggerganov/llama.cpp/releases/download/b6853/llama-b6853-bin-ubuntu-x64.zip
+	source = README-b6853.md::https://raw.githubusercontent.com/ggml-org/llama.cpp/b6853/README.md
+	sha256sums = fb65cfa7b7d2b7e2c20123c680293576688fc67a30a914f05a14f94aac844486
+	sha256sums = f15a4d2a8f51e5cd1cee1e814a8239896a024495526984c6cd558ef6b31200b6
 
 pkgname = llama.cpp-bin
