@@ -1,6 +1,6 @@
 pkgbase = wireguard-gui-bin
 	pkgdesc = A wireguard client GUI for Linux made with nextauri.
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/0xle0ne/wireguard-gui
 	arch = x86_64
@@ -9,6 +9,6 @@ pkgbase = wireguard-gui-bin
 	conflicts = wireguard-gui
 	options = !strip
 	source_x86_64 = wireguard-gui-0.AppImage::https://github.com/0xle0ne/wireguard-gui/releases/download/0-stable/wireguard-gui_0_amd64.AppImage
-	sha256sums_x86_64 = e76f04ab067d5e049b21d5f31c7c506f0c131c16a6d6ff920efea90de3e28f76
+	sha256sums_x86_64 = 5aea6245ffe6b3d142841f930ffeab9e14c9ae1488e40c203971f0b1e49b4e55
 
 pkgname = wireguard-gui-bin
