@@ -1,0 +1,5 @@
+["tagspaces-bin"]
+source = "github"
+github = "tagspaces/tagspaces"
+use_latest_release = true
+prefix = "v"
