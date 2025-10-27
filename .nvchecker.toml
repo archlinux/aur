@@ -1,0 +1,5 @@
+["sixteen-bin"]
+source = "github"
+github = "ralsina/sixteen"
+use_latest_release = true
+prefix = "v"
