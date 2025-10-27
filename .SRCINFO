@@ -1,0 +1,21 @@
+pkgbase = python-p115pickcode
+	pkgdesc = 115 transcoding between pickcode and id.
+	pkgver = 0.0.5.3
+	pkgrel = 1
+	url = https://pypi.org/project/p115pickcode
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-p115pickcode
+	conflicts = python-p115pickcode
+	options = !strip
+	options = !debug
+	source = p115pickcode-0.0.5.3.tar.gz::https://files.pythonhosted.org/packages/source/p/p115pickcode/p115pickcode-0.0.5.3.tar.gz
+	sha256sums = 04992a38acdd9e157e6bc14b8db63c3af4bfe1dbdb6776c3d17c75eeba676af9
+
+pkgname = python-p115pickcode
