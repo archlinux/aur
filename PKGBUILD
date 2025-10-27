@@ -2,15 +2,15 @@
 # Contributor: Timo Schwichtenberg <therealbassx at yahoo dot de>
 # Contributor: Link Dupont <link@fastmail.com>
 pkgname=system76-wallpapers
-pkgver=18.04.2~1714172930~24.04~ff1e25c
-pkgrel=2
+pkgver=18.04.2~1714172930~26.04~ff1e25c
+pkgrel=1
 pkgdesc="A collection of System76 Wallpapers"
 arch=('any')
 url="https://github.com/pop-os/system76-wallpapers"
-license=('LGPL-2.0-or-later')
+license=('CC-BY-SA-4.0')
 options=('!strip')
 source=("https://launchpad.net/~system76-dev/+archive/ubuntu/stable/+sourcefiles/$pkgname/$pkgver~dev/${pkgname}_${pkgver}~dev.tar.xz")
-sha256sums=('50ab4160dd63ff88d5d5b9354e19e070445d37e04b04771d79cb368cc79e8949')
+sha256sums=('5abb37d8a516807cf244725e33af273b916f629705abe3313b83f2a9690eeb4d')
 
 package() {
   install -Dm644 archive/backgrounds/* -t "$pkgdir/usr/share/backgrounds/"
