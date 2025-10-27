@@ -1,0 +1,4 @@
+["simplearchiver-bin"]
+source = "github"
+github = "Stephen-Seo/SimpleArchiver"
+use_latest_release = true
