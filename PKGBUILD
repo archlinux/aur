@@ -1,16 +1,16 @@
 # Maintainer: Ilaï Deutel <PlMWPh1WSmypRv0JQljz> (echo ... | tr 'A-Za-z' 'l-za-kL-ZA-K' | base64 -d)
 
 pkgname=kibi-git
-pkgver=0.2.2.r44.g6fd5b66
+pkgver=0.3.0.r0.g4f72bed
 pkgrel=1
 pkgdesc="A tiny text editor, written in Rust"
 url="https://github.com/ilai-deutel/kibi"
 makedepends=('cargo' 'git')
-depends=('gcc-libs')
+depends=('gcc-libs' 'glibc')
 conflicts=('kibi')
 provides=('kibi')
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
-license=('MIT' 'APACHE')
+license=('MIT OR Apache-2.0')
 backup=('etc/kibi/config.ini')
 source=("$pkgname::git+https://github.com/ilai-deutel/kibi.git")
 sha256sums=('SKIP')
@@ -22,7 +22,8 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  cargo fetch --locked
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -51,7 +52,6 @@ package() {
   # Install license
   install -Dm644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname"
 
-  # Install desktop file and logo
+  # Install desktop file
   install -Dm644 kibi.desktop -t "$pkgdir/usr/share/applications"
-  install -Dm644 assets/logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/kibi.svg"
 }
