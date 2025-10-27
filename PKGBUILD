@@ -1,13 +1,13 @@
 # Maintainer: Dory <dory@dory.moe>
 pkgname=yaoc-git
 _pkgname=yaoc
-pkgver=r16.d4f0392
+pkgver=r18.b8c217a
 pkgrel=1
 pkgdesc="Yet Another OpenAI CLI: A simple, feature-rich OpenAI client, with tools and vision."
 arch=('any')
 url="https://github.com/doryiii/yaoc"
 license=('GPL-3.0-only')
-depends=('python' 'python-html2text' 'python-rich' 'python-termcolor' 'python-requests')
+depends=('python' 'python-html2text' 'python-rich' 'python-termcolor' 'python-requests' 'python-pydantic')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-pip')
 source=("git+https://github.com/doryiii/yaoc.git")
 sha256sums=('SKIP')
@@ -19,11 +19,11 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    python -m build --wheel
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    pip install --root="${pkgdir}" --no-deps --no-warn-script-location dist/*.whl
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
