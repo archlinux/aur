@@ -1,0 +1,29 @@
+pkgbase = paru-key-git
+	pkgdesc = Feature packed AUR helper (custom fork with QOL improvements)
+	pkgver = 2.1.0.r1277.g789bead
+	pkgrel = 1
+	url = https://github.com/keircn/paru
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = git
+	depends = pacman
+	depends = libalpm.so>=14
+	optdepends = bat: colored pkgbuild printing
+	optdepends = devtools: build in chroot and downloading pkgbuilds
+	provides = paru
+	conflicts = paru
+	conflicts = paru-bin
+	conflicts = paru-git
+	backup = etc/paru.conf
+	source = paru-key-git::git+https://github.com/keircn/paru.git
+	sha256sums = SKIP
+
+pkgname = paru-key-git
