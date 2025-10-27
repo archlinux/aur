@@ -7,8 +7,8 @@
 
 pkgbase=pagure
 pkgname=("$pkgbase" "$pkgbase-apache" "$pkgbase-mariadb" "$pkgbase-postgresql" "$pkgbase-sqlite")
-pkgver=5.13.3
-pkgrel=0.4
+pkgver=5.14.1
+pkgrel=1
 pkgdesc='A git-centered forge based on python using pygit2'
 arch=(any)
 url="https://pagure.io/$pkgbase"
@@ -53,8 +53,8 @@ optdepends=('clamav: Scan uploaded attachments')
 makedepends=(python-{build,installer,wheel}
              python-setuptools)
 _archive="$pkgname-$pkgver"
-source=("https://releases.pagure.org/$pkgbase/$_archive.tar.gz")
-sha256sums=('f684d8193d4c4cf637b465c80cbfece6eb2b1646df3ec4f993adf75ea78d5a1a')
+source=("https://pagure.io/pagure/archive/$pkgver/$_archive.tar.gz")
+sha256sums=('4bdab80fb36b161cef6805dcadaa6db5513898e213ca15f9684be06d24b71a54')
 _homedir="/var/lib/$pkgbase"
 _user=$pkgbase
 

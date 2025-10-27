@@ -1,7 +1,7 @@
 pkgbase = pagure
 	pkgdesc = A git-centered forge based on python using pygit2
-	pkgver = 5.13.3
-	pkgrel = 0.4
+	pkgver = 5.14.1
+	pkgrel = 1
 	url = https://pagure.io/pagure
 	arch = any
 	license = GPL-2.0-only
@@ -45,18 +45,18 @@ pkgbase = pagure
 	depends = python-wtforms
 	depends = redis
 	optdepends = clamav: Scan uploaded attachments
-	source = https://releases.pagure.org/pagure/pagure-5.13.3.tar.gz
-	sha256sums = f684d8193d4c4cf637b465c80cbfece6eb2b1646df3ec4f993adf75ea78d5a1a
+	source = https://pagure.io/pagure/archive/5.14.1/pagure-5.14.1.tar.gz
+	sha256sums = 4bdab80fb36b161cef6805dcadaa6db5513898e213ca15f9684be06d24b71a54
 
 pkgname = pagure
-	depends = pagure-database=5.13.3
+	depends = pagure-database=5.14.1
 	optdepends = pagure-apache: Apache host configuration files
 	backup = etc/pagure/alembic.ini
 	backup = etc/pagure/pagure.cfg
 
 pkgname = pagure-apache
 	pkgdesc = A git-centered forge based on python using pygit2 (Apache host configuration)
-	depends = pagure=5.13.3
+	depends = pagure=5.14.1
 	depends = apache
 	depends = mod_wsgi
 	backup = etc/httpd/conf/extra/pagure.conf
@@ -64,7 +64,7 @@ pkgname = pagure-apache
 pkgname = pagure-mariadb
 	pkgdesc = A git-centered forge based on python using pygit2 (MariaDB database configuration)
 	install = pagure-mariadb.install
-	depends = pagure=5.13.3
+	depends = pagure=5.14.1
 	depends = mariadb
 	depends = python-mysqlclient
 	provides = pagure-database
@@ -75,7 +75,7 @@ pkgname = pagure-mariadb
 pkgname = pagure-postgresql
 	pkgdesc = A git-centered forge based on python using pygit2 (PostgreSQL database configuration)
 	install = pagure-postgresql.install
-	depends = pagure=5.13.3
+	depends = pagure=5.14.1
 	depends = postgresql
 	depends = python-psycopg2
 	provides = pagure-database
@@ -86,7 +86,7 @@ pkgname = pagure-postgresql
 pkgname = pagure-sqlite
 	pkgdesc = A git-centered forge based on python using pygit2 (SQLite database configuration)
 	install = pagure-sqlite.install
-	depends = pagure=5.13.3
+	depends = pagure=5.14.1
 	depends = sqlite
 	provides = pagure-database
 	conflicts = pagure-mariadb
