@@ -2,7 +2,7 @@
 
 _name=mcp
 pkgname=python-$_name
-pkgver=1.15.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc='Model Context Protocol SDK.'
 arch=('any')
@@ -12,12 +12,15 @@ depends=('python' 'python-anyio' 'python-httpx' 'python-httpx-sse' 'python-pydan
 makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel' 'git')
 checkdepends=('python-pytest' 'python-trio' 'python-pytest-xdist' 'python-pytest-examples' 'python-inline-snapshot' 'python-dirty-equals' 'python-rich' 'python-typer' 'python-dotenv' 'python-websockets' 'python-requests' 'uv' 'ruff')
 optdepends=('python-rich: rich' 'python-typer: cli' 'python-dotenv: cli' 'python-websockets: ws')
-source=("$_name-$pkgver::git+$url.git#tag=v$pkgver")
-sha256sums=('e6c3b3b03e596b79b766b3f625b7a86396831b37eb16ad610beed9a30d4e7467')
+source=("$_name-$pkgver::git+$url.git#tag=v$pkgver"
+        "fix-pydantic-2.12.x.patch")
+sha256sums=('b64025854b69f58ac909b2d90e11a95df497b03ab16a79284c6d1b1a748c0839'
+            '30f3aa2c6c50f6c3b5ac19ea43af30e0f037d6b88f91c2d9b658329ea1ef23b8')
 
 prepare(){
   cd "$srcdir"/$_name-$pkgver
   sed -i 's/timeout=5/timeout=60/' tests/client/test_config.py # Increate time limit
+  patch -Np1 -i ../fix-pydantic-2.12.x.patch # Fix compatibility with Pydantic >= 2.12
 }
 
 build() {
