@@ -22,7 +22,7 @@ pkgname=(
 _java_ver=24
 _tag='26+13'
 pkgver=${_tag//+/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
 arch=(x86_64 x86_64_v3)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
@@ -63,12 +63,13 @@ source=(
   "${pkgbase}-${pkgver}.tar.gz::https://github.com/openjdk/jfx/archive/refs/tags/${_tag}.tar.gz"
   gradle.properties
   "${pkgbase}-flags.patch"
-  "${pkgbase}-profile.sh"
+  "${pkgbase}-profile"{.sh,.csh}
 )
 b2sums=('4a3b40f3f576ae3563dfa1438fa2b1b03e6600e2d95d2fee83cb187a675fa0f297d70d991a5c2656cb766541f8fe5114f146e61bbdb8842c1ee2719c6fea6a07'
         '0c023ef99e7ee600710c54dad0ad59070620595109ca42c5057fa2ab74ef6d244631745f5cd4c1bea9c0321ee69f1e1efaab820ff124ad1d4f453121e77fd14f'
         '5b6dafc22995b57564fda89aaedeb2b6ee58b2c635336ac43a123ea4ac6ced3a20eba39d99cc4eb7ec7b29fc7541f5c3bee454ee55ca79fd2d7ce5ef4ed65cd3'
-        '5bc46ef388be132fcec4cf53241598e54c041d0c0ae187dbd3a00a16f124b022aaf340cc7783caa98001fef66a553623c22423184342d26f17165cbaf4d4046a')
+        '5bc46ef388be132fcec4cf53241598e54c041d0c0ae187dbd3a00a16f124b022aaf340cc7783caa98001fef66a553623c22423184342d26f17165cbaf4d4046a'
+        '740cf91ce2753953da39082b3923f950ee05f1a1f0129d8766f7eda2579a8acac7a89834014ed5a3a1b511bc8784b955ebeadc57e523823f6df53f45ebf98a99')
 
 _jfxdir="jfx-${_tag//+/-}"
 if (( _use_gradle_wrapper )); then
@@ -121,8 +122,7 @@ package_java-openjfx() {
   cp -dr --no-preserve=ownership build/jmods "${pkgdir}"/usr/share/java/$pkgbase/
   cp -dr --no-preserve=ownership build/sdk/legal "${pkgdir}"/usr/share/licenses/java-openjfx
 
-  install -Dm644 "${srcdir}/${pkgbase}-profile.sh" "${pkgdir}/etc/profile.d/${pkgbase}-profile.sh"
-  install -Dm644 "${srcdir}/${pkgbase}-profile.sh" "${pkgdir}/etc/profile.d/${pkgbase}-profile.csh"
+  install -Dm644 "${srcdir}/${pkgbase}-profile"{.sh,.csh} -t "${pkgdir}/etc/profile.d"
 }
 
 package_java-openjfx-doc() {
