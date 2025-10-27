@@ -36,7 +36,7 @@ conflicts=('waynewolf-bin')
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('SKIP')  # Update this with actual checksum
+sha256sums=('8285a06120c73219e8c4d07c89720aadbd581b33760c68bafb0bec16c6e1df84')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver/WayneWolf"

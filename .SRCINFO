@@ -27,6 +27,6 @@ pkgbase = waynewolf
 	provides = waynewolf
 	conflicts = waynewolf-bin
 	source = waynewolf-141.0.tar.gz::https://github.com/WTmartin8089/waynewolf/archive/v141.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 8285a06120c73219e8c4d07c89720aadbd581b33760c68bafb0bec16c6e1df84
 
 pkgname = waynewolf
