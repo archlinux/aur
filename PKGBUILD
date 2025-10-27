@@ -4,13 +4,12 @@
 
 pkgname=orca-slicer-bin
 pkgver=2.3.1
-pkgrel=5
+pkgrel=6
 pkgdesc="G-code generator for 3D printers"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
 license=('AGPL3')
 depends=('mesa' 'glu' 'gst-libav' 'gst-plugins-base' 'cairo' 'gtk3' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'webkit2gtk-4.1')
-optdepends=('ttf-nanum: dependencies for SIGSEGV error')
 provides=("orca-slicer")
 conflicts=("orca-slicer")
 options=(!strip !zipman !debug)
@@ -26,15 +25,14 @@ prepare() {
 package() {
   install -d ${pkgdir}/opt/${pkgname%-bin}/
   cp -av squashfs-root/* ${pkgdir}/opt/${pkgname%-bin}/
-  rm -rf ${pkgdir}/opt/${pkgname%-bin}/{usr,OrcaSlicer.desktop,AppRun,OrcaSlicer.png}
+  rm -rf ${pkgdir}/opt/${pkgname%-bin}/{usr,OrcaSlicer.desktop,OrcaSlicer.png}
 
   install -d $pkgdir/usr/bin
-  ln -s /opt/${pkgname%-bin}/bin/orca-slicer ${pkgdir}/usr/bin/
+  ln -s /opt/${pkgname%-bin}/AppRun ${pkgdir}/usr/bin/orca-slicer
 
   install -Dm644 squashfs-root/OrcaSlicer.desktop -t ${pkgdir}/usr/share/applications/
-  sed -i 's|Exec=AppRun|Exec=/opt/orca-slicer/bin/orca-slicer|g' ${pkgdir}/usr/share/applications/OrcaSlicer.desktop
+  sed -i '/^Exec=/ c\Exec=/opt/orca-slicer/AppRun %U' ${pkgdir}/usr/share/applications/OrcaSlicer.desktop
   sed -i '/^MimeType=/ s|$|x-scheme-handler/orcaslicer;x-scheme-handler/bambustudio;|' ${pkgdir}/usr/share/applications/OrcaSlicer.desktop
-  sed -i '/^Exec=/ s/%F/%U/g' ${pkgdir}/usr/share/applications/OrcaSlicer.desktop
 
   install -d ${pkgdir}/usr/share/icons/
   cp -r squashfs-root/usr/share/icons/hicolor/ ${pkgdir}/usr/share/icons/
