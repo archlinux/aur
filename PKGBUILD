@@ -14,7 +14,7 @@ sha256sums=('75df0bfa9fe226ec768e3c74264e2bfa14c4a8189991ccb36ab21ea00517d6f7')
 build() {
     cd "CJsShell-$pkgver"
     cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-    cmake --build build --config Release
+    cmake --build build --config Release -j$(nproc)
 }
 
 package() {
