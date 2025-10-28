@@ -1,7 +1,7 @@
 pkgbase = electrotility
 	pkgdesc = Ultimate Linux Power Utility Tool
 	pkgver = 2.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Rronnurboja/electrotility
 	arch = any
 	license = GPL3
