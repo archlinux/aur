@@ -3,7 +3,7 @@
 
 pkgname=steam-native-runtime
 pkgver=1.0.0.75
-pkgrel=4
+pkgrel=5
 pkgdesc='Native replacement for the Steam runtime using system libraries'
 arch=('x86_64')
 url='https://wiki.archlinux.org/index.php/Steam/Troubleshooting#Native_runtime'
@@ -39,7 +39,7 @@ depends=(
   'lib32-libappindicator-gtk2' 'lib32-libindicator-gtk2' 'lib32-libdbusmenu-glib' 'lib32-libdbusmenu-gtk2'
 )
 source=(steam-native.sh)
-sha512sums=('03e969de86a69b0d9d86508a0a0cdd13be7c0c63076f6bc77c3685839a6784e8041528f5a1e9bfcb51d27c6c9994fab591c7d70fc44cc4673a1384781433041b')
+sha512sums=('0715b35160436c6bc6da5a02ebe3550e4a5c4354c01fa42dc09af7e2e6b0f993193d33fb9726b60e4969a1637545f453d527b0115e229bca0f6ffc84a17d69cc')
 
 prepare() {
   cp /usr/share/applications/steam.desktop steam-native.desktop

@@ -6,4 +6,5 @@ export STEAM_RUNTIME_HEAVY=0
 export DBUS_FATAL_WARNINGS=0
 # Override some libraries as these are what games linked against.
 export LD_LIBRARY_PATH="/usr/lib/steam:/usr/lib32/steam${LD_LIBRARY_PATH:+:}$LD_LIBRARY_PATH"
-exec /usr/lib/steam/steam "$@"
+# -compat-force-slr off disables the forced Scount runtime on all games
+exec /usr/lib/steam/steam -compat-force-slr off "$@"
