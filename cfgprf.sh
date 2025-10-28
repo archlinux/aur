@@ -143,17 +143,22 @@ fi
 
 if [ $MODE == "NONE" ]; then
     help
-    exit 1
+    exit
 elif [ $MODE == "ERROR" ]; then
-    echo "error: both import and export modes selected, that cannot be done. use -h for commands."
+    echo "error: both import and export modes selected, that cannot be done. see --help for more info."
     exit 1
 fi
 
-# default to --all if neither --packages or --configs or --aur
-if ! [ $PACKAGES ] && ! [ $CONFIGS ] && ! [ $AUR ]; then
-    PACKAGES=1
-    AUR=1
-    CONFIGS=1
+if ! [ $PROFILE ]; then
+    echo "profile file not selected at all, please atleast give a path with --profile /path/to/config.cfgprf"
+    exit 1
+fi
+
+# don't default now
+if ! [ $PACKAGES ] && ! [ $CONFIGS ] && ! [ $AUR ] && ! [ $ETC ] && ! [ $DOTDIRS ]; then
+    echo "no options to import/export were selected, please select atleast one or --all. see --help for more info."
+    echo "it previously did default to --all if nothing were selected, but that is now not the case"
+    exit 1
 fi
 
 if [ $MODE == "IMPORT" ]; then
@@ -161,7 +166,7 @@ if [ $MODE == "IMPORT" ]; then
 
     # file stuff
     # checks if file is a valid tar and has the cfgprf file
-    if ! [ -f $PROFILE ] || ! tar -tf $PROFILE &> /dev/null || ! tar -tf $PROFILE | grep -q "cfgprf"; then
+    if ! [[ -f $PROFILE ]] || ! tar -tf $PROFILE &> /dev/null || ! tar -tf $PROFILE | grep -q "cfgprf"; then
         echo "error: invalid file"
         exit 1
     fi
