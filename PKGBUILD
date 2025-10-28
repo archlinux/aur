@@ -6,7 +6,7 @@
 pkgname=recoil_engine-rc
 #pkgname=recoil_engine
 pkgver=2025.06.07
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful free cross-platform RTS game engine. (GitHub — lates Release Candidate tag). \
 This version is used for public engine testing in BAR — Join the Discord if you want to help"
 arch=('x86_64')
@@ -167,7 +167,7 @@ _get_pkgver ### Get short pkgver to name engine properly.
 ### adding .local to the end of the name allows us to name it however we want!
 mkdir -p "${pkgdir}/usr/share/recoil-engine"
 mv ${srcdir}/install "${srcdir}/stemwide_managed_by_pkgmngr-${_pkgver}.local"
-cp --reflink=auto --no-preserve=ownership --recursive --no-dereference "${srcdir}/stemwide_managed_by_pkgmngr-${_pkgver}.local" "${pkgdir}/usr/share/recoil-engine/"
+cp --reflink=auto --no-preserve=ownership --recursive --no-dereference "${srcdir}/stemwide_managed_by_pkgmngr-${_pkgver}-RC.local" "${pkgdir}/usr/share/recoil-engine/"
 
 }
 
