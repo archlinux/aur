@@ -2,7 +2,7 @@
 
 pkgname=tensamin-git
 _pkgname=tensamin
-pkgver=r438.d23f7b4
+pkgver=r440.74ebc42
 _pkgver=0.1.3
 pkgrel=1
 pkgdesc="True E2EE, decentralized messages. Open source and privacy first."
@@ -11,8 +11,7 @@ url="https://github.com/Tensamin/Frontend"
 license=('Custom')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
 makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'cargo' 'npm' 'nodejs')
-provides=('tensamin')
-conflicts=('tensamin-bin' 'tensamin')
+conflicts=('tensamin-bin')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
