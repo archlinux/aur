@@ -1,7 +1,7 @@
 pkgbase = python-adafruit-circuitpython-framebuf
 	pkgdesc = CircuitPython frambuf module, based on the Python frambuf module
-	pkgver = 1.6.7
-	pkgrel = 0
+	pkgver = 1.6.10
+	pkgrel = 1
 	url = https://github.com/adafruit/Adafruit_CircuitPython_framebuf
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = python-adafruit-circuitpython-framebuf
 	depends = python
 	depends = python-adafruit-blinka
 	optdepends = python-rpi-gpio
-	source = https://pypi.io/packages/source/a/adafruit-circuitpython-framebuf/adafruit-circuitpython-framebuf-1.6.7.tar.gz
-	sha256sums = 92426cec877840f79b94583f0e7b34f879c73410dcabdd97e3ad0631b4983310
+	source = https://pypi.io/packages/source/a/adafruit-circuitpython-framebuf/adafruit-circuitpython-framebuf-1.6.10.tar.gz
+	sha256sums = a8e83c3eab5fd3ef134a805f560e64a6703039e6ed2619d8b00f2b86683145db
 
 pkgname = python-adafruit-circuitpython-framebuf
