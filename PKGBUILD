@@ -1,5 +1,5 @@
 # Maintainer: Vincenzo Fehring <vinfehring@gmail.com>
-pkgname=linux-wave
+pkgname=linuxwave
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="Linux facial recognition authentication system with PAM integration"
