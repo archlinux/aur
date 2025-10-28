@@ -1,3 +1,18 @@
+pre_upgrade()
+{
+  echo ""
+  systemctl stop wazuh-dashboard
+  cp /etc/wazuh-dashboard/opensearch_dashboards.yml /etc/wazuh-dashboard/opensearch_dashboards.yml.old
+}
+
+post_upgrade()
+{
+  cp /etc/wazuh-dashboard/opensearch_dashboards.yml /etc/wazuh-dashboard/opensearch_dashboards.yml.pacnew
+  cp /etc/wazuh-dashboard/opensearch_dashboards.yml.old /etc/wazuh-dashboard/opensearch_dashboards.yml
+  systemctl daemon-reload
+  systemctl start wazuh-dashboard
+}
+
 post_install()
 {
   echo "creating wazuh-indexer user and group"
