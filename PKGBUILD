@@ -4,7 +4,7 @@
 # Contributor: rcf <ryan.farley@gmx.com>
 _pkgname=eden
 pkgname=$_pkgname-beta
-pkgver=0.0.4
+pkgver=0.0.4.rc1
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu - beta and test releases"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ depends=('libusb' 'libva' 'qt6-webengine' 'brotli' 'hicolor-icon-theme' 'qt6-bas
 makedepends=('git' 'cmake' 'catch2' 'boost' 'cpp-httplib' 'spirv-headers' 'boost-libs' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'enet' 'gamemode' 'renderdoc' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers' 'doxygen' 'cpp-jwt' 'cubeb')
 optdepends=('gamemode: Gamemoded support')
 options=('!lto' '!debug')
-source=("git+https://git.eden-emu.dev/eden-emu/eden.git#tag=v${pkgver}.test")
-sha256sums=('f66a4c0667535439e5620447c726d902a37b480fce0f5e3d5349fab4df8224a9')
+source=("git+https://git.eden-emu.dev/eden-emu/eden.git#tag=v0.0.4-rc1")
+sha256sums=('7182a8b7e0f2ef40395fd6a1caa0b58252bd1f55a81b3b452461d3af9267e314')
 build() {
 	cd "$srcdir"
 	cmake -B build -S $_pkgname -GNinja \
