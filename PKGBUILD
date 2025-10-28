@@ -2,7 +2,7 @@
 
 # run pgo build or not; with X(vfb) or wayland
 : ${_build_profiled:=true}
-: ${_build_profiled_xvfb:=false}
+: ${_build_profiled_xvfb:=true}
 
 pkgname=librewolf-allow-dark
 provides=(librewolf)
@@ -10,7 +10,7 @@ conflicts=(librewolf)
 __pkgname=librewolf
 _pkgname=LibreWolf
 epoch=1
-pkgver=142.0.1_1
+pkgver=144.0.0_1
 _fixedfirefoxver="${pkgver%_*}" # Version of Firefox this LibreWolf version is based on, but the Firefox patch number is always included
 _librewolfver="${pkgver#*_}"
 _firefoxver="${_fixedfirefoxver%.0}" # Removes ".0" from the end. For "136.0.0" this will result in "136.0" but for "136.0.1" won't do anything.
@@ -26,7 +26,7 @@ depends=(
   at-spi2-core
   bash
   cairo
-  ffmpeg
+  ffmpeg4.4
   fontconfig
   freetype2
   gcc-libs
@@ -94,7 +94,6 @@ if [[ "${_build_profiled}" == "true" ]]; then
   else
     makedepends+=(
       weston
-      xorg-xwayland
       wlheadless-run # aur/xwayland-run-git
     )
   fi
@@ -117,10 +116,10 @@ source=(
   allow_dark.patch
 )
 
-sha256sums=('770fd784b91a836edd327e816d735a91852872909933dd8a167cd59f388ffbe1'
+sha256sums=('7dbf8ebee436fd3efc5895b5151af0e23063ef1d3a47ff3da6d55dfcc1b047c6'
             '7d01d317b7db7416783febc18ee1237ade2ec86c1567e2c2dd628a94cbf2f25d'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
-            '31c03500abdaca276ed6851e48f0232d898f1b2102e9c3ac9dbfff676f973bca')
+            '000a61125339b13bee1695c644b4fe935a3ef0f1f44cc0bef8f682c281a75d81')
 validpgpkeys=('034F7776EF5E0C613D2F7934D29FBD5F93C0CFC3') # maltej(?)
 
 
