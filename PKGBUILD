@@ -1,6 +1,6 @@
 # Maintainer: Matthew Gamble <git@matthewgamble.net>
 
-pkgname="nodejs-lts"
+pkgname="nodejs-meta-lts"
 pkgver=22
 pkgrel=1
 pkgdesc="Metapackage tracking NodeJS LTS release"
