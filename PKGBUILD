@@ -11,7 +11,7 @@ url="https://wazuh.com/"
 license=('gpl2')
 groups=("wazuh-siem")
 depends=(
-    'filebeat'
+    'wazuh-filebeat'
 );
 optdepends=(
 );
