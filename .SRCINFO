@@ -39,6 +39,7 @@ pkgbase = lib32-gtk2
 
 pkgname = lib32-gtk2
 	install = lib32-gtk2.install
+	optdepends = adwaita-fonts: Default font
 	optdepends = adwaita-icon-theme: Default icon theme
 	optdepends = gnome-themes-extra-gtk2: Default widget theme
 	provides = libgailutil.so

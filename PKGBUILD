@@ -83,6 +83,7 @@ build() {
 
 package() {
   optdepends=(
+    'adwaita-fonts: Default font'
     'adwaita-icon-theme: Default icon theme'
     'gnome-themes-extra-gtk2: Default widget theme'
   )
