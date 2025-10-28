@@ -1,0 +1,16 @@
+post_install() {
+    echo ""
+    echo "==> ChartDB installed to /usr/share/webapps/chartdb"
+    echo ""
+    echo "To configure ChartDB and serve it with nginx:"
+    echo "  1. Create and copy the example config:"
+    echo "       sudo mkdir -p /etc/nginx/conf.d"
+    echo "       sudo cp /usr/share/doc/chartdb/nginx.conf.example /etc/nginx/conf.d/chartdb.conf"
+    echo "  2. Edit /etc/nginx/nginx.conf and ensure this line is inside the 'http' block:"
+    echo "       include /etc/nginx/conf.d/*.conf;"
+    echo "  3. Configure runtime options in: /etc/nginx/conf.d/chartdb.conf"
+    echo "  4. Reload or start nginx:"
+    echo "       sudo systemctl reload nginx   # or 'start' if not running"
+    echo "  5. Open ChartDB in your browser: http://localhost:8080"
+    echo ""
+}

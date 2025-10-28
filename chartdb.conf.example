@@ -1,0 +1,28 @@
+server {
+    listen       8080;
+    listen  [::]:8080;
+    server_name localhost;
+
+    location / {
+        root   /usr/share/webapps/chartdb;
+        index  index.html index.htm;
+        try_files  $uri $uri/ /index.html;
+    }
+
+    # Configuration
+    # Uncomment and configure if you want runtime AI features
+    location /config.js {
+        default_type application/javascript;
+        return 200 "window.env = {
+            // OPENAI_API_KEY: \"KEY-HERE\",
+            // OPENAI_API_ENDPOINT: \"ENDPOINT-HERE\",
+            // LLM_MODEL_NAME: \"MODEL-HERE\",
+            DISABLE_ANALYTICS: \"true\"
+        };";
+    }
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+}
