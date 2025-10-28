@@ -1,7 +1,7 @@
 pkgbase = python-google-genai
 	pkgdesc = GenAI Python SDK.
 	pkgver = 1.46.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googleapis/python-genai
 	arch = any
 	license = Apache-2.0
@@ -30,6 +30,8 @@ pkgbase = python-google-genai
 	optdepends = python-sentencepiece: local-tokenizer
 	optdepends = python-protobuf: local-tokenizer
 	source = https://github.com/googleapis/python-genai/archive/refs/tags/v1.46.0.tar.gz
+	source = fix-pydantic-2.12.patch
 	sha256sums = 553bbeb2f0c16fb6c48b6d55fb530be5c3fc45480534033c00cb3b261103ecaf
+	sha256sums = 44637dfd53fd07aa930998c840ccb930f76773d89a2c1a4e453fb70c63f8f42f
 
 pkgname = python-google-genai

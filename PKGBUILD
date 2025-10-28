@@ -3,7 +3,7 @@
 _name=google-genai
 pkgname=python-$_name
 pkgver=1.46.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GenAI Python SDK."
 arch=('any')
 url='https://github.com/googleapis/python-genai'
@@ -12,12 +12,15 @@ depends=('python' 'python-anyio' 'python-google-auth' 'python-httpx' 'python-pyd
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-certifi' 'python-pillow' 'python-pytest' 'python-pytest-asyncio' 'python-mcp' 'python-aiohttp' 'python-sentencepiece' 'python-protobuf')
 optdepends=('python-aiohttp: aiohttp' 'python-sentencepiece: local-tokenizer' 'python-protobuf: local-tokenizer')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('553bbeb2f0c16fb6c48b6d55fb530be5c3fc45480534033c00cb3b261103ecaf')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz"
+        "fix-pydantic-2.12.patch")
+sha256sums=('553bbeb2f0c16fb6c48b6d55fb530be5c3fc45480534033c00cb3b261103ecaf'
+            '44637dfd53fd07aa930998c840ccb930f76773d89a2c1a4e453fb70c63f8f42f')
 
 prepare(){
   cd "$srcdir"/${pkgname//google-/}-$pkgver
   sed -i 's/, "twine>=6.1.0", "packaging>=24.2", "pkginfo>=1.12.0"//g' pyproject.toml
+  patch -Np1 -i ../fix-pydantic-2.12.patch # Fix compatibility with Pydantic >= 2.12
 }
 
 build() {
