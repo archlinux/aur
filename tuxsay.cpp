@@ -40,7 +40,7 @@ public:
     
     void say() {
         if (message.empty()) {
-            std::cout << "Usage: ./tuxsay \"your message here\"" << std::endl;
+            std::cout << "Usage: tuxsay \"your message here\"" << std::endl;
             return;
         }
         

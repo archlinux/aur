@@ -1,5 +1,5 @@
 pkgname=tuxsay
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Tux penguin that can speak"
 arch=('x86_64')
