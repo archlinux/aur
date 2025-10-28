@@ -100,7 +100,7 @@ package_python-pydantic-ai-slim() {
               'python-pillow: outlines-transformers'
               'python-outlines: outlines-llamacpp'
               'python-huggingface-hub: outlines-llamacpp'
-              'python-python-llama-cpp: outlines-llamacpp'
+              'python-llama-cpp: outlines-llamacpp'
               'python-numba: outlines-llamacpp'
               'python-outlines: outlines-mlxlm'
               'python-datasets: outlines-mlxlm'
@@ -113,7 +113,7 @@ package_python-pydantic-ai-slim() {
               'python-ddgs: duckduckgo'
               'python-tavily: tavily'
               'python-rich: cli'
-              'python-prompt-toolkit: cli'
+              'python-prompt_toolkit: cli'
               'python-argcomplete: cli'
               'python-pyperclip: cli'
               'python-mcp: mcp'
@@ -150,7 +150,7 @@ package_python-pydantic-ai-examples() {
 
 package_python-pydantic-ai() {
   pkgdesc='Agent Framework / shim to use Pydantic with LLMs.'
-  depends+=('python-pydantic-ai-slim' 'python-openai' 'python-google-auth' 'python-requests' 'python-google-genai' 'python-groq' 'python-anthropic' 'python-mistralai' 'python-cohere' 'python-boto3' 'python-huggingface-hub' 'python-aiohttp' 'python-rich' 'python-prompt-toolkit' 'python-argcomplete' 'python-pyperclip' 'python-mcp' 'python-fastmcp' 'python-pydantic-evals' 'python-ag-ui-protocol' 'python-starlette' 'python-tenacity' 'python-temporalio' 'python-logfire' 'python-opentelemetry-instrumentation-httpx')
+  depends+=('python-pydantic-ai-slim' 'python-openai' 'python-google-auth' 'python-requests' 'python-google-genai' 'python-groq' 'python-anthropic' 'python-mistralai' 'python-cohere' 'python-boto3' 'python-huggingface-hub' 'python-aiohttp' 'python-rich' 'python-prompt_toolkit' 'python-argcomplete' 'python-pyperclip' 'python-mcp' 'python-fastmcp' 'python-pydantic-evals' 'python-ag-ui-protocol' 'python-starlette' 'python-tenacity' 'python-temporalio' 'python-logfire' 'python-opentelemetry-instrumentation-httpx')
   optdepends=('python-pydantic-ai-examples: examples' 'python-fasta2a: a2a' 'python-dbos: dbos' 'python-prefect: prefect')
   url='https://github.com/pydantic/pydantic-ai/'
   cd "$srcdir"/$_name0-$pkgver
