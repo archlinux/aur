@@ -1,10 +1,10 @@
 pkgbase = ding
 	pkgdesc = A Dictionary Lookup program and EN<->DE Dictionary
 	pkgver = 1.9
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www-user.tu-chemnitz.de/~fri/ding
 	arch = any
-	license = GPL
+	license = GPL-2.0-only
 	depends = sh
 	depends = tk
 	depends = tre
@@ -13,4 +13,3 @@ pkgbase = ding
 	sha256sums = 69a6c81fcf785a286c053a352f3201cc8671c72851615c4b707a434309b098e5
 
 pkgname = ding
-
