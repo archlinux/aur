@@ -1,7 +1,7 @@
 # Maintainer: WeeXnes <weexnes@weexnes.dev>
 pkgname=checkmate-capture-bin
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Checkmate Capture Monitoring Tool (binary release)"
 arch=('x86_64')
 url="https://github.com/bluewave-labs/capture"
