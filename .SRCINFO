@@ -1,0 +1,14 @@
+pkgbase = c64tapedecode-svn
+	pkgdesc = C64 Datasette tape utilities for tape preservation and restoration
+	pkgver = 0.r69
+	pkgrel = 1
+	url = https://sourceforge.net/projects/c64tapedecode/
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = glibc
+	conflicts = c64tapedecode
+	source = c64tapedecode::svn+https://svn.code.sf.net/p/c64tapedecode/code/trunk
+	md5sums = SKIP
+
+pkgname = c64tapedecode-svn
