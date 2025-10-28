@@ -8,7 +8,7 @@ pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=10.3.0
 _xaliaver=0.4.6
-pkgrel=1
+pkgrel=2
 epoch=1
 
 source=(
@@ -31,7 +31,7 @@ options=(!staticlibs !lto !debug emptydirs)
 license=('custom')
 depends=(
   attr            lib32-attr
-  blas            lib32-blas
+#  blas            lib32-blas
   cabextract
   desktop-file-utils
   fontconfig      lib32-fontconfig
@@ -39,7 +39,7 @@ depends=(
   gcc-libs        lib32-gcc-libs
   gettext         lib32-gettext
   glib2           lib32-glib2
-  lapack          lib32-lapack
+#  lapack          lib32-lapack
   libgudev        lib32-libgudev
   libpcap         lib32-libpcap
   libsoup         lib32-libsoup
@@ -54,7 +54,46 @@ depends=(
   python-six
   sdl2            lib32-sdl2
   speex           lib32-speex
-  steam-native-runtime
+  steam
+# Start of old steam-native-runtime
+  atk             lib32-atk
+  cairo           lib32-cairo
+  curl            lib32-curl
+  dbus-glib       lib32-dbus-glib
+  freeglut        lib32-freeglut
+  gdk-pixbuf2     lib32-gdk-pixbuf2
+  glu             lib32-glu
+  lcms2           lib32-lcms2
+  libcaca         lib32-libcaca
+  libcanberra     lib32-libcanberra
+  libcurl-compat  lib32-libcurl-compat
+  libcurl-gnutls  lib32-libcurl-gnutls
+  dbus            lib32-dbus
+  libdrm          lib32-libdrm
+  libice          lib32-libice
+  libibus
+  libnm           lib32-libnm
+  libusb          lib32-libusb
+  libvdpau        lib32-libvdpau
+  libvorbis       lib32-libvorbis
+  libxft          lib32-libxft
+  libxmu          lib32-libxmu
+  libxrender      lib32-libxrender
+  libxtst         lib32-libxtst
+  nspr            lib32-nspr
+  openal          lib32-openal
+  openssl-1.1     lib32-openssl-1.1
+  pango           lib32-pango
+  sdl2            lib32-sdl2
+  sdl2_image      lib32-sdl2_image
+  sdl2_mixer      lib32-sdl2_mixer
+  sdl2_ttf        lib32-sdl2_ttf
+  pipewire        lib32-pipewire
+  librsvg
+  libsm           lib32-libsm
+  libtheora       lib32-libtheora
+  vulkan-driver   lib32-vulkan-driver
+# End of old steam-native-runtime
   unzip
   wayland         lib32-wayland
 )
@@ -88,6 +127,7 @@ makedepends=(
   nasm
   opencl-headers
   opencl-icd-loader     lib32-opencl-icd-loader
+  pcsclite              lib32-pcsclite
   perl
   perl-json
   rsync
@@ -95,7 +135,9 @@ makedepends=(
   python
   python-pefile
   python-setuptools-scm
+  samba
   sdl2                  lib32-sdl2
+  unixodbc
   v4l-utils             lib32-v4l-utils
   vulkan-headers
   vulkan-icd-loader     lib32-vulkan-icd-loader
@@ -106,9 +148,13 @@ makedepends=(
 optdepends=(
   alsa-lib              lib32-alsa-lib
   alsa-plugins          lib32-alsa-plugins
-  giflib                lib32-giflib
+  ffmpeg
   gnutls                lib32-gnutls
+  gst-plugins-bad
+  gst-plugins-base      lib32-gst-plugins-base
   gst-plugins-base-libs lib32-gst-plugins-base-libs
+  gst-plugins-good      lib32-gst-plugins-good
+  gst-plugins-ugly
   gtk3                  lib32-gtk3
   libgphoto2
   libpulse              lib32-libpulse
@@ -116,7 +162,10 @@ optdepends=(
   libxcomposite         lib32-libxcomposite
   libxinerama           lib32-libxinerama
   opencl-icd-loader     lib32-opencl-icd-loader
+  pcsclite              lib32-pcsclite
+  samba
   sdl2                  lib32-sdl2
+  unixodbc
   v4l-utils             lib32-v4l-utils
   vulkan-icd-loader     lib32-vulkan-icd-loader
 )
