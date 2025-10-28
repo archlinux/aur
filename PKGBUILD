@@ -2,8 +2,8 @@
 # Maintainer: freb
 
 pkgname=burpsuite-pro
-pkgver=2025.10
-pkgrel=2
+pkgver=2025.10.1
+pkgrel=1
 pkgdesc='An integrated platform for performing security testing of web applications (professional edition)'
 url='https://portswigger.net/burp/'
 depends=('java-runtime>=24.0.2' 'hicolor-icon-theme')
@@ -22,7 +22,7 @@ source=("${pkgname}-${pkgver}-orig.jar::https://portswigger.net/burp/releases/do
         'icon256.png'
         'icon512.png'
         'icon.svg')
-sha256sums=('ee02e5900877f47f7a4b0d89a066c4a4067e68b25beafc28684d353199d1b47e'
+sha256sums=('68b3fc8d51ee2a6a78cb371dd4ab2089d021594c68268d1b786c2affa2389f80'
             '939b66c99461307d361c91b811785b92a3cd376a4ac8e72dbf76af1b75503d78'
             'f442258c5616969bfaad7c20b2ff99f05696ad04c2e2c3d145a360615650b9ec'
             'ff0b230af06fb76af053090ac021bf45b88341d746e67f6bb9e94ba40957d9d8'
