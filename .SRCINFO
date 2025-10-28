@@ -1,13 +1,13 @@
 pkgbase = zandronum
 	pkgdesc = OpenGL ZDoom port with Client/Server multiplayer
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zandronum.com/
 	install = zandronum.install
 	arch = x86_64
 	license = custom
 	depends = sdl
-	depends = libjpeg6-turbo
+	depends = libjpeg-turbo
 	depends = glu
 	depends = openssl-1.1
 	depends = fluidsynth

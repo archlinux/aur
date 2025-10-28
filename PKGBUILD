@@ -2,13 +2,13 @@
 # Contributor: brent s. <bts[at]square-r00t[dot]net>
 pkgname=zandronum
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 _fmodex_ver=4.44.64
 pkgdesc="OpenGL ZDoom port with Client/Server multiplayer"
 arch=('x86_64')
 url="https://zandronum.com/"
 license=('custom')
-depends=('sdl' 'libjpeg6-turbo' 'glu' 'openssl-1.1' 'fluidsynth')
+depends=('sdl' 'libjpeg-turbo' 'glu' 'openssl-1.1' 'fluidsynth')
 optdepends=('timidity++: midi support' 'freedoom: free IWAD' 'gtk2: for a GUI selection screen' 'doomseeker: a GUI server browser')
 _pkgname=zandronum
 conflicts=('zandronum2')
