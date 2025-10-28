@@ -1,7 +1,7 @@
 # Maintainer: Lysec
 
 pkgname=swiftfetch
-pkgver=1.0.4
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A fast and efficient fetch utility written in Rust"
 arch=('x86_64')
@@ -27,6 +27,7 @@ build() {
 
 package() {
   cd "$pkgname"
+  rm -f flake.nix flake.lock 2>/dev/null || true
   install -Dm755 target/release/swiftfetch "$pkgdir/usr/bin/swiftfetch"
 
   install -Dm644 config/config.toml "$pkgdir/usr/share/$pkgname/config.toml"
