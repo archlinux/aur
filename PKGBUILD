@@ -1,4 +1,4 @@
-pkgname=startheme
+pkgname=startheme-git
 pkgver=v1.0.0
 pkgrel=1
 pkgdesc="a Starship theming tool in Go"

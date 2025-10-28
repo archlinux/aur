@@ -1,4 +1,4 @@
-pkgbase = startheme
+pkgbase = startheme-git
 	pkgdesc = a Starship theming tool in Go
 	pkgver = v1.0.0
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = startheme
 	source = git+https://github.com/isoextension/startheme
 	sha256sums = SKIP
 
-pkgname = startheme
+pkgname = startheme-git
