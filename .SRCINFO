@@ -1,4 +1,4 @@
-pkgbase = linux-wave
+pkgbase = linuxwave
 	pkgdesc = Linux facial recognition authentication system with PAM integration
 	pkgver = 0.1.0
 	pkgrel = 1
