@@ -17,7 +17,7 @@ optdepends=('dosfstools: for fat operations'
             'xfsprogs: for xfs operations'
             'jfsutils: for jfs operations'
             'f2fs-tools: for f2fs operations')
-source=(https://github.com/Kagamma/tparted/releases/download/2025-10-28_3/linux_x86-64_tparted_3025-10-28_3.tar.gz)
+source=(https://github.com/Kagamma/tparted/releases/download/2025-10-28_3/linux_x86-64_tparted_2025-10-28_3.tar.gz)
 md5sums=(f6d730a3b0d0033b8043698e0f5f9131)
 
 pkgver() {
@@ -25,12 +25,12 @@ pkgver() {
 }
 
 package() {
-          tar xf ./linux_x86-64_tparted_3025-10-28_3.tar.gz
+          tar xf ./linux_x86-64_tparted_2025-10-28_3.tar.gz
           # Install binaries & desktop file
           install -Dm755 tparted "${pkgdir}/usr/bin/tparted"
           mkdir -p ${pkgdir}/opt/tparted
           mv locale "${pkgdir}/opt/tparted/locale"
           # Cleanup
           rm -f tparted
-          rm -f linux_x86-64_tparted_3025-10-28_3.tar.gz
+          rm -f linux_x86-64_tparted_2025-10-28_3.tar.gz
 }
