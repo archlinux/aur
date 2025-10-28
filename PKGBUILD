@@ -19,7 +19,7 @@ package() {
 
     install -Dm755 "capture" "$pkgdir/usr/bin/capture"
 
-    install -Dm644 /dev/stdin "$pkgdir/etc/systemd/system/checkmate-capture.service" <<EOF
+    install -Dm644 /dev/stdin "$pkgdir/etc/systemd/system/checkmate-capture@.service" <<EOF
 [Unit]
 Description=Checkmate Capture System Monitor
 After=network.target
