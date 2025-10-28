@@ -1,10 +1,11 @@
 # Maintainer: Adam Perkowski <adas1per@protonmail.com>
+# Contributor: Sebaguardian <sebaguardian13@gmail.com>
 # https://github.com/adamperkowski/PKGBUILDs
 _pkgname=jule
 pkgname="${_pkgname}c"
-pkgver=0.1.6
+pkgver=0.1.7
 _pkgver="$_pkgname$pkgver"
-_irsha='aebbd12c0f89f6a04f856f3e23d5ea39741c3e0f'
+_irsha='81ddbed06a715428a90d3645f7242fa4e522ea16'
 pkgrel=1
 pkgdesc='The Jule Programming Language Compiler'
 arch=('x86_64' 'aarch64' 'i386')
@@ -16,10 +17,10 @@ source=("$_pkgname-$pkgver.tar.gz::$url/archive/$_pkgver.tar.gz")
 source_x86_64=("$_pkgname-ir-$pkgver-$CARCH.cpp::$_url_raw/$_irsha/src/linux-amd64.cpp")
 source_aarch64=("$_pkgname-ir-$pkgver-aarch64.cpp::$_url_raw/$_irsha/src/linux-arm64.cpp")
 source_i386=("$_pkgname-ir-$pkgver-i386.cpp::$_url_raw/$_irsha/src/linux-i386.cpp")
-sha256sums=('0fb93dc0e60ea8e5403ac3015fdcbed798525b614924b61bbe32621ce6dff5ac')
-sha256sums_x86_64=('66c33a2a045dd08e2d2ef6b142729af091457ed460a3c530ad7b173ac4bfcf48')
-sha256sums_aarch64=('e570d28d64c5876adaa6657a894567e0de7d73c87a806c10d6b8bea779cdb5a7')
-sha256sums_i386=('13bfefaebd30f4967f25660bdeb836de2369b74a6802ea8384ff74d456b30800')
+sha256sums=('d6cc0ec48f35258b918718cd1766a8f9913fc536d5ddfe95e79bbc0d49d0e8ab')
+sha256sums_x86_64=('39222afc208b7fe92161ef262dc0f13a972dd8e9b22f5b2f07b148529036011e')
+sha256sums_aarch64=('0a232e6777a193e65de20afeacd68f76cc4eede58c1e926c101807a6170e0904')
+sha256sums_i386=('5bcc7a0edd842ffe5c3ca9ccb939789252594c3f340468d6dc2d522510471cbd')
 depends=('glibc' 'gcc-libs')
 makedepends=('clang')
 optdepends=('clang: clang backend support'
@@ -53,13 +54,13 @@ build() {
         -o "bin/$pkgname-dev"
 
     echo "Building $pkgname for $CARCH..."
-    "./bin/$pkgname-dev" -p --opt L2 -o "bin/$pkgname" "src/$pkgname"
+    "./bin/$pkgname-dev" build -p --opt L2 -o "bin/$pkgname" "src/$pkgname"
 }
 
 check() {
     cd "$_pkgname-$_pkgver/tests/std"
     "../../bin/$pkgname" mod init
-    "../../bin/$pkgname" -t .
+    "../../bin/$pkgname" build -t .
 }
 
 package() {
