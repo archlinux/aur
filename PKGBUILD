@@ -5,16 +5,16 @@
 # Maintainer: RAMChYLD <ramchyld@gmail.com>
 
 pkgname=('ogdf' 'ogdf-docs')
-pkgtreename=elderberry
-pkgver=202309
-pkgrel=2
+pkgtreename=foxglove
+pkgver=202510
+pkgrel=1
 pkgdesc="The Open Graph Drawing Framework/Open Graph algorithms and Data structure Framework."
 arch=('i686' 'x86_64')
 url="https://ogdf.uos.de/"
 license=('LicenseRef-custom AND GPL-2.0-or-later AND GPL-3.0-or-later')
 makedepends=('cmake' 'doxygen' 'graphviz' 'bash')
 source=('https://github.com/ogdf/ogdf/archive/refs/tags/'${pkgtreename}-${pkgver}'.tar.gz')
-sha256sums=('3438205d3a6ff69d24c3a6db748d2a5a78688605baf3092456073901a2b623f3')
+sha256sums=('e0496c2ac53f5bef3639ebac0f6110323bdd938b7d29ea5da79aced4a28f99b5')
 options=('staticlibs')
 
 # Updated build and package methods contributed by yochananmarqos
