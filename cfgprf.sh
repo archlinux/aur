@@ -213,9 +213,9 @@ if [ $MODE == "IMPORT" ]; then
 
             echo "importing packages"
 
-            PACKAGELIST= tar -xf $PROFILE packages -O
+            PACKAGELIST=$(tar -xf $PROFILE packages -O)
 
-            sudo pacman -S $PACKAGELIST
+            sudo pacman -S ${PACKAGELIST}
 
         else
             echo "skipping importing packages because profile does not have package info"
@@ -229,7 +229,7 @@ if [ $MODE == "IMPORT" ]; then
 
             echo "importing AUR packages"
 
-            PACKAGELIST= tar -xf $PROFILE aur -O
+            PACKAGELIST=$(tar -xf $PROFILE aur -O)
 
             if command -v yay >/dev/null; then
                 yay -S $PACKAGELIST
