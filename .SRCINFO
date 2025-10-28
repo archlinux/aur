@@ -1,7 +1,7 @@
 pkgbase = libudev0-shim
 	pkgdesc = libudev.so.0 compatibility library for systems with newer udev versions
 	pkgver = 2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/archlinux/libudev0-shim
 	arch = x86_64
 	license = LGPL-2.1-or-later

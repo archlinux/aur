@@ -2,7 +2,7 @@
 
 pkgname=libudev0-shim
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc='libudev.so.0 compatibility library for systems with newer udev versions'
 url='https://github.com/archlinux/libudev0-shim'
 arch=('x86_64')
@@ -26,5 +26,3 @@ package() {
 
   make DESTDIR="${pkgdir}" install
 }
-
-# vim: ts=2 sw=2 et:
