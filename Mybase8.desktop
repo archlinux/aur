@@ -2,7 +2,7 @@
 Name=myBase Desktop
 Comment=A high-quality free-form database program for personal note-taking and knowledgebase management
 GenericName=Database Client
-Exec=/opt/Mybase8/Mybase.run
+Exec=sh -c 'export LD_LIBRARY_PATH=/opt/Mybase8; exec /opt/Mybase8/Mybase'
 Terminal=false
 Type=Application
 Categories=Office;Utility;

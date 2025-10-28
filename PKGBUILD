@@ -1,19 +1,19 @@
 pkgname=mybase-desktop-bin
-pkgver=8220
+pkgver=831
 pkgrel=1
 pkgdesc='A high-quality free-form database program for personal note-taking and knowledgebase management'
 arch=('x86_64')
 url='http://www.wjjsoft.com'
 license=('custom: commercial')
-depends=()
+depends=(libxml2-legacy)
 provides=('mybase-desktop')
 conflicts=('mybase-desktop')
 source=(
 	"http://www.wjjsoft.com/downloads/Mybase-Desktop-Ver${pkgver}-Linux-amd64.tar.xz"
 	"Mybase8.desktop"
 )
-sha512sums=('dca1dbf5eb81d7c6756c1b8d42cd459512914250fb341a69e31969561c1df99967f8706240e444c01ab5ee07d9dd96063d6ad1ad8b69fc36d2bcc644d41e6242'
-	'ae55b128ab75c47a2897f1ff29ee118d5e4bbdd24e5e998a065bd31c7f42d815fc364d7b3007a6c26f006fa5bee204bdc5164cb5e638ce4ddb2c3096c7fc8a01')
+sha512sums=('729754fe94bbb1a52f31017c85590be1b58488cbbc11f1fb6b8e18447c59639a18cf3cb37470bb5eef7e7299efc85999a8b70225198cc51a56542e62c76d91c0'
+	'0d74a4161edd7efd49bf5950d9ad9bae183e20044dbb53e49e403275d0308d9850a48fb9546f482e5e9cb32b57e1d37e50ec3d21cdb91e97cc8b1b406c30b0c7')
 
 package() {
 	install -d "${pkgdir}/usr/share/applications"
@@ -24,5 +24,5 @@ package() {
 	cp -r "${srcdir}/Mybase8" "${pkgdir}/opt/"
 	install -m644 "${srcdir}/Mybase8/nyf8_logo_256.png" "${pkgdir}/usr/share/icons/Mybase8.png"
 	install -m644 "${srcdir}/Mybase8.desktop" "${pkgdir}/usr/share/applications/Mybase8.desktop"
-	ln -s /opt/MyBase8/Mybase.run "${pkgdir}/usr/bin/Mybase8"
+	#ln -s /opt/MyBase8/Mybase.run "${pkgdir}/usr/bin/Mybase8"
 }
