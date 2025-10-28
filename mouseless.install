@@ -1,0 +1,37 @@
+#!/bin/bash
+
+post_install() {
+    cat << 'EOF'
+########################
+installation succeeded!
+
+(1) If you want to run mouselss without "sudo"
+or root permission,
+please add your username into "input" group:
+
+    sudo gpasswd -a $USER input
+
+
+(2) System service config file:
+/etc/mouseless/config.yaml
+
+To start a system-wide service, please run:
+
+    systemctl start mouseless.service
+
+
+(3) User service config file:
+$HOME/.config/mouseless/config.yaml
+
+To start a user-scoped service, please run:
+
+    systemctl --user start mouseless.service
+
+
+(4) About config file example, please refer:
+/usr/share/doc/mouseless/example_configs
+
+
+########################
+EOF
+}
