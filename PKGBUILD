@@ -1,7 +1,7 @@
 # Maintainer: Hunter Davenport <mallow.boxes6w@icloud.com>
 
 pkgname=boxunbox
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='A Rust-based alternative to GNU stow'
 url='https://github.com/dablenparty/boxunbox'
@@ -11,7 +11,7 @@ depends=()
 arch=('x86_64')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 provides=(unbox)
-sha256sums=('04c687660dafcf7bdc9dec72b6f4e1013fd3eb0d1163c8faabf184dd47cccca3')
+sha256sums=('931003a31225db6dcca2e10ec81dfde257a2464971ab8ea27d819c5a43733261')
 conflicts=('boxunbox-git')
 
 prepare() {
