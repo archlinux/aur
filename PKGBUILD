@@ -5,9 +5,9 @@
 pkgbase=flutter
 _group=flutter
 groups=("$_group")
-pkgver=3.32.8
+pkgver=3.35.7
 _dartver=(3.8.0 3.9.0)
-_enginever=ef0cd000916d64fa0c5d09cc809fa7ad244a5767
+_enginever=035316565ad77281a75305515e4682e6c4c6f7ca
 _materialfontsver=3012db47f3130e62f7cc0beabff968a33cbec8d8
 _gradlewver=fd5c1f2c013565a3bea56ada6df9d2b8e96d56aa
 _flutterarch=$(echo "$CARCH" | sed s/aarch64/arm64/ | sed s/x86_64/x64/)
@@ -40,14 +40,14 @@ source=(
   "opt-in-analytics.patch"
 )
 
-sha256sums=('a2d41fed024b4f3479445ac54c6b50f28ff4462959a5f4724238f2e78aae936d'
-            '1a04bc4aaf6ed3e8810d0a441b7365bc5fd0b8d0d40da1632d22635a0c327824'
+sha256sums=('33db09dbcc934ddb5edc4622518bbc5e23098a00a432e780c6f645aee34cb9ba'
+            'e3ef4149b6d42456a20935fefcae14cb65961842dea246f703aac4ee584b0109'
             'e41d25d8cba8b0bb51ee0b20cb6b730bfb2c491d67c669ab8e3550d60b37fb5c'
             'b4c104129eb57e7e3edca2e23376b8b034de2d466189bdc1c3e2a304506889a3'
-            '188ed17e40baa273563aa53a71fb28911aa39d8e37c66f73e37a50e2915861ce'
-            '544d08716332a9f9358b21010d468b84a9edff0da7bbb1baf0cf4d6322821ea5'
-            '6ade3168ced2090b7811b4efbe9b6cd021704baaa8cf2be7ece3500d44d404c6'
-            '3080f2b7f6de05aa5aece9a98702718c9e5feb99c935f8295fbdbcab80e269ba'
+            'a72389a713d9572c9656a93319915d292879e09d9dbc8e025eb2db0ed1e04292'
+            'cadd32aaac6beeb91052174d50494bb7e16444759fcdc8224ea13550657f525f'
+            'e26c476ad75647fe4441d56888b95837f586db5feb0fada5e51005eb0582ce32'
+            '34b02703c48f6686ffb2691a510607cfbe69beff9e726b47834b3298839542ca'
             '1578e819b6ee479b6db7a095bcfa74372d3ff555642c6d6ea7112e97bb6f2027')
 
 prepare() {
