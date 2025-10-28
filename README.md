@@ -1,10 +1,11 @@
 # cfgprf
 
-tool for exporting and importing files in ~/.config, packages and AUR packages for Arch Linux.
+a tool for exporting and importing files in ~/.config, /etc/, dot directories in ~, pacman packages & AUR packages for Arch Linux.
 
 it is [available on the AUR](https://aur.archlinux.org/packages/cfgprf)
 
 usage examples:
+
 to export just ~/.config/
 ```
 cfgprf --export --configs --profile ~/myconfig.cfgprf
