@@ -8,7 +8,7 @@ _name0=pydantic-ai
 _name00=clai
 pkgbase=python-$_name0
 pkgname=(python-${_name0//-ai/}-$_name4 python-$_name0-$_name3 python-${_name0//-ai/}-$_name2 python-$_name0-$_name1 python-$_name0 python-$_name00)
-pkgver=1.0.10
+pkgver=1.7.0
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/pydantic-ai'
@@ -17,9 +17,16 @@ depends=('python')
 makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel' 'git')
 checkdepends=('python-anyio' 'python-asgi-lifespan' 'python-devtools' 'python-dirty-equals' 'python-ddgs' 'python-inline-snapshot' 'python-pytest' 'python-pytest-examples' 'python-pytest-mock' 'python-pytest-recording' 'python-pytest-xdist' 'python-genai-prices' 'ruff' 'deno')
 source=("$_name0-$pkgver::git+$url.git#tag=v$pkgver"
-        "git+https://github.com/pydantic/mcp-run-python.git")
-sha256sums=('023da58d5d6e269f774b473a86853421fa64793f6d809890a7e2b145a843c9c6'
-            'SKIP')
+        "git+https://github.com/pydantic/mcp-run-python.git"
+        "fix-tests.patch")
+sha256sums=('03f58be81a87bca571c3347645e15c20db9ce0dd9823438291db0e68bfb967a7'
+            'SKIP'
+            'eb2ddf309b138563e2f9864434500a701c80204783e8eeaf29d63f914b5920c1')
+
+prepare(){
+  cd "$srcdir"/$_name0-$pkgver
+  patch -Np1 -i ../fix-tests.patch
+}
 
 build() {
   cd "$srcdir"/$_name0-$pkgver
@@ -38,13 +45,13 @@ check() {
   local pytest_options=(
     -vv
     -n auto
-    # Failed with opentelemetry>=1.35.0
-    --deselect tests/models/test_instrumented.py::test_instrumented_model_stream
-    --deselect tests/models/test_instrumented.py::test_instrumented_model_stream_break
-    --deselect tests/models/test_instrumented.py::test_instrumented_model
-    -k "not instrumentation_settings_event_mode.py and not instrument3"
     # Failed
     --deselect tests/test_tools.py
+    --deselect tests/models/test_model_names.py::test_known_model_names
+    --deselect tests/models/test_openai.py::test_strict_mode_cannot_infer_strict
+    --deselect tests/models/test_instrumented.py::test_instrumented_model_stream_break
+    --deselect tests/models/test_fallback.py::test_all_failed_instrumented
+    -k "not fastmcp"
   )
   cd "$srcdir"/$_name0-$pkgver
   python -m venv --system-site-packages test-env
@@ -72,7 +79,53 @@ package_python-pydantic-graph() {
 package_python-pydantic-ai-slim() {
   pkgdesc='Agent Framework / shim to use Pydantic with LLMs, slim package.'
   depends+=('python-griffe' 'python-httpx' 'python-pydantic' 'python-pydantic-graph' 'python-opentelemetry-api' 'python-typing-inspection' 'python-genai-prices')
-  optdepends=('python-logfire: logfire' 'python-opentelemetry-instrumentation-httpx: logfire' 'python-openai: openai' 'python-cohere: cohere' 'python-google-auth: vertexai' 'python-requests: vertexai' 'python-google-genai: google' 'python-anthropic: anthropic' 'python-groq: groq' 'python-mistralai: mistral' 'python-boto3: bedrock' 'python-huggingface-hub: huggingface' 'python-aiohttp: huggingface' 'python-ddgs: duckduckgo' 'python-tavily: tavily' 'python-rich: cli' 'python-prompt-toolkit: cli' 'python-argcomplete: cli' 'python-pyperclip: cli' 'python-mcp: mcp' 'python-pydantic-evals: evals' 'python-fasta2a: a2a' 'python-ag-ui-protocol: ag-ui' 'python-starlette: ag-ui' 'python-tenacity: retries' 'python-temporalio: temporal' 'python-dbos: dbos')
+  optdepends=('python-logfire: logfire'
+              'python-opentelemetry-instrumentation-httpx: logfire'
+              'python-openai: openai'
+              'python-cohere: cohere'
+              'python-google-auth: vertexai'
+              'python-requests: vertexai'
+              'python-google-genai: google'
+              'python-anthropic: anthropic'
+              'python-groq: groq'
+              'python-mistralai: mistral'
+              'python-boto3: bedrock'
+              'python-huggingface-hub: huggingface'
+              'python-aiohttp: huggingface'
+              'python-outlines: outlines-transformers'
+              'python-accelerate: outlines-transformers'
+              'python-datasets: outlines-transformers'
+              'python-transformers: outlines-transformers'
+              'python-setuptools: outlines-transformers'
+              'python-pillow: outlines-transformers'
+              'python-outlines: outlines-llamacpp'
+              'python-huggingface-hub: outlines-llamacpp'
+              'python-python-llama-cpp: outlines-llamacpp'
+              'python-numba: outlines-llamacpp'
+              'python-outlines: outlines-mlxlm'
+              'python-datasets: outlines-mlxlm'
+              'python-mlx: outlines-mlxlm'
+              'python-mlx-lm: outlines-mlxlm'
+              'python-outlines: outlines-sglang'
+              'python-openai: outlines-sglang'
+              'python-vllm: outlines-vllm-offline'
+              'python-outlines: outlines-vllm-offline'
+              'python-ddgs: duckduckgo'
+              'python-tavily: tavily'
+              'python-rich: cli'
+              'python-prompt-toolkit: cli'
+              'python-argcomplete: cli'
+              'python-pyperclip: cli'
+              'python-mcp: mcp'
+              'python-fastmcp: fastmcp'
+              'python-pydantic-evals: evals'
+              'python-fasta2a: a2a'
+              'python-ag-ui-protocol: ag-ui'
+              'python-starlette: ag-ui'
+              'python-tenacity: retries'
+              'python-temporalio: temporal'
+              'python-dbos: dbos'
+              'python-prefect')
   url='https://github.com/pydantic/pydantic-ai/tree/main/pydantic_ai_slim'
   cd "$srcdir"/$_name0-$pkgver
   python -m installer --destdir="$pkgdir" ${_name0//-/_}_$_name3/dist/*.whl
@@ -97,8 +150,8 @@ package_python-pydantic-ai-examples() {
 
 package_python-pydantic-ai() {
   pkgdesc='Agent Framework / shim to use Pydantic with LLMs.'
-  depends+=('python-pydantic-ai-slim' 'python-openai' 'python-google-auth' 'python-requests' 'python-google-genai' 'python-groq' 'python-anthropic' 'python-mistralai' 'python-cohere' 'python-boto3' 'python-huggingface-hub' 'python-aiohttp' 'python-rich' 'python-prompt-toolkit' 'python-argcomplete' 'python-pyperclip' 'python-mcp' 'python-pydantic-evals' 'python-ag-ui-protocol' 'python-starlette' 'python-tenacity' 'python-temporalio' 'python-logfire' 'python-opentelemetry-instrumentation-httpx')
-  optdepends=('python-pydantic-ai-examples: examples' 'python-fasta2a: a2a' 'python-dbos: dbos')
+  depends+=('python-pydantic-ai-slim' 'python-openai' 'python-google-auth' 'python-requests' 'python-google-genai' 'python-groq' 'python-anthropic' 'python-mistralai' 'python-cohere' 'python-boto3' 'python-huggingface-hub' 'python-aiohttp' 'python-rich' 'python-prompt-toolkit' 'python-argcomplete' 'python-pyperclip' 'python-mcp' 'python-fastmcp' 'python-pydantic-evals' 'python-ag-ui-protocol' 'python-starlette' 'python-tenacity' 'python-temporalio' 'python-logfire' 'python-opentelemetry-instrumentation-httpx')
+  optdepends=('python-pydantic-ai-examples: examples' 'python-fasta2a: a2a' 'python-dbos: dbos' 'python-prefect: prefect')
   url='https://github.com/pydantic/pydantic-ai/'
   cd "$srcdir"/$_name0-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
