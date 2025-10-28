@@ -2,7 +2,7 @@
 
 pkgname='pepecoin'
 pkgver='1.1.0'
-pkgrel=3
+pkgrel=4
 pkgdesc="The world's first fully decentralized and secure blockchain for Pepe."
 arch=('x86_64')
 url='https://github.com/pepecoinppc/pepecoin'
@@ -56,7 +56,7 @@ build() {
 
   #remove _FORTIFY_SOURCE from CXXFLAGS to prevent a duplicate definition warning as configure adds _FORTIFY_SOURCE itself
   CXXFLAGS=${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}
-  ./configure --prefix=/usr --with-gui=qt5
+  ./configure --prefix=/usr --with-gui=qt5 --with-boost-system=no
 
   make -j$(nproc)
 }

@@ -1,7 +1,7 @@
 pkgbase = pepecoin
 	pkgdesc = The world's first fully decentralized and secure blockchain for Pepe.
 	pkgver = 1.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pepecoinppc/pepecoin
 	arch = x86_64
 	license = MIT
