@@ -1,7 +1,7 @@
 pkgbase = jupyterlab_code_formatter
 	pkgdesc = A universal code formatter for JupyterLab.
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jupyterlab-code-formatter.readthedocs.io/
 	arch = any
 	license = MIT
@@ -9,6 +9,8 @@ pkgbase = jupyterlab_code_formatter
 	checkdepends = python-isort
 	checkdepends = python-pytest
 	checkdepends = python-pytest-jupyter
+	checkdepends = python-jupyter-server-terminals
+	checkdepends = python-ruff
 	checkdepends = yapf
 	makedepends = python-build
 	makedepends = python-hatch-jupyter-builder

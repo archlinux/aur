@@ -4,7 +4,7 @@
 
 pkgname=jupyterlab_code_formatter
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A universal code formatter for JupyterLab.'
 arch=(any)
 url=https://jupyterlab-code-formatter.readthedocs.io/
@@ -38,6 +38,8 @@ checkdepends=(
   python-isort
   python-pytest
   python-pytest-jupyter
+  python-jupyter-server-terminals
+  python-ruff
   yapf
 )
 optdepends=(
@@ -64,11 +66,10 @@ build() {
 check() {
   cd $srcdir/$pkgname-$pkgver
 
-  # Build an array of tests to skip based on what the user has installed.
-  local skip_tests=('test_can_apply_ruff_formatter')
-  if ! pacman -Qqs python-ruff > /dev/null; then
-    skip_tests+=('test_can_apply_ruff')
-  fi
+  # Skip a test that seems to use an outdated error message from black.
+  local skip_tests=('test_return_error_if_any')
+
+  # Skip r-styler tests if not installed.
   if ! pacman -Qqs r-styler > /dev/null; then
     skip_tests+=('test_can_use_styler')
   fi
