@@ -13,6 +13,8 @@ post_upgrade()
 {
   echo "Manually reapply any custom settings to the /etc/wazuh-indexer/jvm.options file, check /etc/wazuh-indexer/jvm.options.old"
   /usr/share/wazuh-indexer/bin/indexer-security-init.sh
+  chown -R wazuh-indexer:wazuh-indexer /usr/share/wazuh-indexer/*
+  chown -R wazuh-indexer:wazuh-indexer /etc/wazuh-indexer/*
   systemctl daemon-reload
   systemctl start wazuh-indexer
   echo "finished"
