@@ -2,7 +2,7 @@
 
 pkgname=python-adafruit-circuitpython-typing
 _pypi_pkgname=adafruit_circuitpython_typing
-pkgver=1.11.2
+pkgver=1.12.3
 pkgrel=1
 pkgdesc="Definitions not in the standard typing module that are needed for type annotation of CircuitPython code"
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=(
 depends=('python')
 optdepends=()
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('c7ac8532a9ad7e4a65d5588764b7483c0b6967d305c37faebcc0c5356d677e33')
+sha256sums=('63f196f834e47842bcd4cf8c37aaa0c61e1aeb5d07f056c875fc3016cda91a12')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
