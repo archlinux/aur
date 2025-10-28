@@ -2,7 +2,7 @@
 _pkgname=doi2bib3
 pkgname=doi2bib3-git
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fetch BibTeX for DOIs or resolve arXiv ids to DOIs and fetch BibTeX"
 arch=('any')
 provides=('doi2bib3')
