@@ -8,7 +8,7 @@ pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=10.3.0
 _xaliaver=0.4.6
-pkgrel=2
+pkgrel=3
 epoch=1
 
 source=(
@@ -66,8 +66,6 @@ depends=(
   lcms2           lib32-lcms2
   libcaca         lib32-libcaca
   libcanberra     lib32-libcanberra
-  libcurl-compat  lib32-libcurl-compat
-  libcurl-gnutls  lib32-libcurl-gnutls
   dbus            lib32-dbus
   libdrm          lib32-libdrm
   libice          lib32-libice
@@ -82,7 +80,6 @@ depends=(
   libxtst         lib32-libxtst
   nspr            lib32-nspr
   openal          lib32-openal
-  openssl-1.1     lib32-openssl-1.1
   pango           lib32-pango
   sdl2            lib32-sdl2
   sdl2_image      lib32-sdl2_image
