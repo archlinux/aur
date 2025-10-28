@@ -1,0 +1,15 @@
+pkgbase = resemb
+	pkgdesc = Tool to bake assets into your executable
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/2IMT/resemb
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	depends = glibc
+	depends = gcc-libs
+	source = resemb-0.1.0.tar.gz::https://github.com/2IMT/resemb/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 54fa8522e424001fa2ac500e104ba0b2ffeae166fdd82b7b1ee991b821870ff7
+
+pkgname = resemb
