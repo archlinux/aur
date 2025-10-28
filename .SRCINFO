@@ -1,0 +1,30 @@
+pkgbase = liquidctl-lianli-git
+	pkgdesc = Cross-platform tool and drivers for liquid coolers and other devices. RavenX8s fork with support for Lian Li Uni Fan controllers
+	pkgver = r0b03358
+	pkgrel = 1
+	url = https://github.com/RavenX8/liquidctl
+	arch = any
+	license = GPL3
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = i2c-tools
+	depends = python
+	depends = python-colorlog
+	depends = python-crcmod
+	depends = python-docopt
+	depends = python-hidapi
+	depends = python-pillow
+	depends = python-pyusb
+	depends = python-setuptools
+	optdepends = python-psutil: use system/hwmon sensors in yoda
+	optdepends = python-prometheus_client: export data to Prometheus
+	provides = liquidctl-lianli
+	conflicts = liquidctl-lianli
+	source = liquidctl-lianli-git::git+https://github.com/RavenX8/liquidctl.git#branch=lian-li
+	sha256sums = SKIP
+
+pkgname = liquidctl-lianli-git
