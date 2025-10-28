@@ -6,7 +6,7 @@
 #_with_usermode=1
 
 pkgname=mock
-pkgver=6.4
+pkgver=6.5
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -35,7 +35,7 @@ backup=("etc/$pkgname/logging.ini"
 source=("$url/archive/$_pkgtag.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha256sums=('a26605466917b9c589ecda928d0f3e0ee2bed59cf8e8819b3dd85095a63c3cff'
+sha256sums=('156347eeccb20e0ff9055ad58868668e58f5c58972947c9e8b4cd5b1fa2f5716'
             'f6cba3f7e7f35c3d811f548af9ff2044764b6b65eb9bd74f035904c0c8463651'
             'a32ef4b3a19490280d3e8fcdebe9dd3348636a97e214850ce6cfc6bffa56a5d3')
 
