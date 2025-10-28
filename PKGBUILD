@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="Fetch BibTeX for DOIs or resolve arXiv ids to DOIs and fetch BibTeX"
 arch=('any')
 provides=('doi2bib3')
+conflicts=('doi2bib3')
 url="https://github.com/archisman-panigrahi/doi2bib3"
 license=('GPL')
 depends=('python' 'python-requests' 'python-bibtexparser')
