@@ -198,6 +198,9 @@ if [ $MODE == "IMPORT" ]; then
     echo
     echo "importing"
 
+    TEMP=$(mktemp -d)
+    cd $TEMP
+
     if [ $PACKAGES ]; then
 
         if tar -tf $PROFILE packages >/dev/null 2>&1; then
@@ -260,6 +263,8 @@ if [ $MODE == "IMPORT" ]; then
         fi
 
     fi
+
+    rm -r $TEMP
 
     echo
     echo "finished importing"
