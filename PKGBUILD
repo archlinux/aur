@@ -9,7 +9,7 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='2509.r182.g81f620ba97'
+pkgver='2509.r221.gc22a483431'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -55,7 +55,7 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'decfdc4c9a1e0715502bc492e6cc0f1217a486a5ca503d7246fe5dc6fd05799156a49f19f65cb0b6e6b56bbc8db2a6b5be0535ccd56b28a31f329ec506d0bb96'
+        'c8581dd720ad919a555ccd6dd79a579d60d669562b14eb866a9aae5ce87e861f6e73721b4f1c13c0cf65e9f1f0122cf295f92a99798ac386c10690eb8c93a2c9'
         'd9e6ba73de8e1c49a7ebf9efe6caffcffbe1a545dfb61caebe2b830d8f496aaa221269c25a3f849ba02228dfb866b362c8c74f7e897e66a9362469dea679721d')
 
 _sourcedirectory="$pkgbase"
