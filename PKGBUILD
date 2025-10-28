@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="mapcidr"
-pkgver=1.1.96
+pkgver=1.1.97
 pkgrel=1
 pkgdesc="Utility program to perform multiple operations for a given subnet/CIDR ranges"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -11,14 +11,13 @@ depends=('glibc')
 makedepends=('git' 'go')
 _pkgsrc="${url##*/}"
 source=("${_pkgsrc}::git+${url}.git#tag=v${pkgver}")
-b2sums=('ee61db13fa7482265e4348d9f96191631e6e9588a409c79b93b8d03287c4951acdd46b4993ba6e2fe78e7ec2b1156e4c130bd10b8dcb590f97c72d456dec844a')
+b2sums=('912858e92066e4306e02d79395c0c336715a62f28f05bc5493aac9f102c021ca0205e3accc8731d6c120b34a45391885217fe81824811c2de4db435dc9697fb9')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
-  go mod download -x
-  chmod -R ug+Xwr "${GOMODCACHE}"
+  go mod download -modcacherw -x
 
   mkdir -p "build"
 }
