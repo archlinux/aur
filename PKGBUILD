@@ -1,4 +1,5 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: Damian "G'lek" Mulligan <glek[at]glektarssza[dot]com>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 # Contributor: FadeMind <fademind at gmail dot com>
 # Contributor: Maxime Gauduin <alucryd at archlinux dot org>
@@ -11,13 +12,13 @@ _pkgname=libappindicator
 _bzrtag=12.10.0
 _bzrrev=298
 pkgver=${_bzrtag}.r${_bzrrev}
-pkgrel=5
+pkgrel=6
 pkgdesc='Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 2 library)'
 url='https://launchpad.net/libappindicator'
 arch=('x86_64')
 license=('GPL-3.0-only')
-depends=('glib2' 'glibc' 'gtk2' 'libdbusmenu-glib' 'libdbusmenu-gtk2')
-makedepends=('breezy' 'dbus-glib' 'glib2-devel' 'gnome-common' 'gobject-introspection' 'gtk-doc' 'vala')
+depends=('glib2' 'glibc' 'gtk2' 'libdbusmenu-glib' 'libdbusmenu-gtk2' 'gtk-sharp-2')
+makedepends=('breezy' 'dbus-glib' 'glib2-devel' 'gnome-common' 'gobject-introspection' 'gtk-doc' 'vala' 'perl-xml-libxml')
 options=('!emptydirs')
 source=($_pkgname::bzr+https://code.launchpad.net/~indicator-applet-developers/libappindicator/trunk#revision=$_bzrrev
         libappindicator-fix-unfallback.patch)
@@ -42,7 +43,7 @@ build() {
     --with-gtk=2 \
     --disable-introspection
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+  make CSC="$(which csc)"
 }
 
 package() {
