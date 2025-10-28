@@ -275,7 +275,7 @@ if [ $MODE == "IMPORT" ]; then
 
                 echo "importing etc"
 
-                tar -xf $PROFILE &>/dev/null
+                tar -xf $PROFILE >/dev/null 2>&1
 
                 if [ $FOLLOWSYMLINKS ]; then
                     rsync -aK "etc/" "/etc/"
@@ -300,9 +300,9 @@ if [ $MODE == "IMPORT" ]; then
             tar -xf $PROFILE >/dev/null 2>&1
 
             if [ $FOLLOWSYMLINKS ]; then
-                rsync -aK "dotdirs/" "~/"
+                rsync -aK "dotdirs/" "${HOME}/"
             else
-                rsync -a "dotdirs/" "~/"
+                rsync -a "dotdirs/" "${HOME}/"
             fi
 
         else
@@ -397,7 +397,7 @@ elif [ $MODE == "EXPORT" ]; then
             rsync -am "/etc/" "etc/"
 
             if [ $FOLLOWSYMLINKS ]; then
-                tar -rhf $PROFILE "etc" > dev/null 2>&1
+                tar -rhf $PROFILE "etc" > /dev/null 2>&1
             else
                 tar -rf $PROFILE "etc" >/dev/null 2>&1
             fi
