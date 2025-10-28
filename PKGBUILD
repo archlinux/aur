@@ -1,7 +1,7 @@
 # Maintainer:  NourEddine Yassine <NourEddineX at protonmail dot com>
 # Contributor: Albert Latham <me@albertlatham.com>
 pkgname=deepagent-bin
-pkgver=1.101.24230
+pkgver=1.101.24301
 pkgrel=1
 pkgdesc="A powerful desktop AI assistant with agentic browsing, listening, coding CLI and editor"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ conflicts=('deepagent' 'codellm' 'codellm-bin')
 source_x86_64=("https://github.com/abacusai/deepagent-releases/releases/download/${pkgver}/DeepAgent-linux-x64-${pkgver}.tar.gz")
 source_aarch64=("https://github.com/abacusai/deepagent-releases/releases/download/${pkgver}/DeepAgent-linux-arm64-${pkgver}.tar.gz")
 
-sha256sums_x86_64=('cadc677b12ee28039539175c30aa3b4cac2d731c8c2d099345fda2e61ef2ba58')
-sha256sums_aarch64=('ed76e9f053937ad0b7cb41e162e117c355080d36834b8b201998c8db6a523afe')
+sha256sums_x86_64=('b52f183c48b4ebddc8928eecb2aa4d56433836b9968c3a9af16c5c6fee529802')
+sha256sums_aarch64=('718c695cc187544b290ca0e52ed11046420f75aa4afeedf029a0c0b4b967317b')
 
 package() {
     cd "$srcdir"
