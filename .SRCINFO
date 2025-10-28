@@ -1,6 +1,6 @@
 pkgbase = libastal-git
 	pkgdesc = Building blocks for building desktop shells.
-	pkgver = r786.ca3190d
+	pkgver = r849.189bf73
 	pkgrel = 2
 	url = https://github.com/Aylur/astal
 	arch = x86_64
@@ -18,7 +18,6 @@ pkgbase = libastal-git
 	depends = gtk-layer-shell
 	depends = gdk-pixbuf2
 	depends = wayland
-	depends = libastal-io
 	provides = libastal
 	provides = libastal.so=3-64
 	source = git+https://github.com/Aylur/astal.git
