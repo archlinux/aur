@@ -1,13 +1,13 @@
 pkgbase = rf24-network
 	pkgdesc = Networking with RF24 radio modules
-	pkgver = 2.0.3
-	pkgrel = 0
+	pkgver = 2.0.5
+	pkgrel = 1
 	url = http://tmrh20.github.io/RF24Network/
 	arch = any
 	license = GPL2
 	depends = rf24
 	depends = pigpio
-	source = https://github.com/nRF24/RF24Network/archive/v2.0.3.tar.gz
-	sha256sums = 3354dc290cc6143998a358a1a0eea5980667dd21c1582b55ecf09047856b4055
+	source = https://github.com/nRF24/RF24Network/archive/v2.0.5.tar.gz
+	sha256sums = 54a0c34cc0774be36fb63200710ede44468dbdf7109bbe9de35ab073d25e4b70
 
 pkgname = rf24-network
