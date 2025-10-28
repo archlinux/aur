@@ -2,14 +2,14 @@ pkgbase = cpmenu
 	pkgdesc = Modern circular power menu for Wayland desktop environments
 	pkgver = 0.3.0
 	pkgrel = 1
-	url = https://github.com/Sleep-No-More/cpmenu
+	url = https://github.com/Sleep-No-More/SNMenu
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = rust
 	depends = gtk3
 	depends = cairo
-	source = cpmenu-0.3.0.tar.gz::https://github.com/Sleep-No-More/cpmenu/archive/refs/tags/v0.3.0.tar.gz
+	source = snmenu-0.3.0.tar.gz::https://github.com/Sleep-No-More/SNMenu/archive/refs/tags/v0.3.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = cpmenu
