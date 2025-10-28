@@ -3,7 +3,7 @@
 pkgname=wlr-sunclock-git
 _pkgname=wlr-sunclock
 pkgver=r48.8d5a6c1
-pkgrel=1
+pkgrel=2
 pkgdesc='Displays a sunclock desktop widget using the layer shell protocol'
 arch=(x86_64)
 url='https://github.com/sentriz/wlr-sunclock'
@@ -32,11 +32,11 @@ prepare() {
 
 build() {
 	cd "$_pkgname"
-	meson --prefix /usr "$srcdir/build"
-	ninja -C "$srcdir/build"
+	meson setup --prefix /usr build
+	ninja -C build
 }
 
 package() {
 	cd "$_pkgname"
-	DESTDIR="$pkgdir" ninja -C "$srcdir/build" install
+	DESTDIR="$pkgdir" ninja -C build install
 }
