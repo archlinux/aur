@@ -2,28 +2,28 @@
 
 _pkgname=dfshow
 pkgname=${_pkgname}
-pkgver=0.10.3
-_pkgversub=-1-beta
+_pkgver=1.0.0
+pkgver=${_pkgver}
 pkgrel=1
-pkgdesc="An interactive directory/file browser written for Unix-like systems."
+pkgdesc="An interactive directory/file browser written for Unix-like systems. Release Candidate"
 arch=('i686' 'x86_64' 'arm')
-url="https://github.com/roberthawdon/dfshow"
+url="https://github.com/roberthawdon/${_pkgname}"
 license=('GPL3')
 depends=('ncurses' 'libconfig')
-makedepends=('autoconf' 'automake' 'libconfig' 'acl' 'gettext')
-source=(https://github.com/roberthawdon/dfshow/archive/v${pkgver}${_pkgversub}.tar.gz)
-sha1sums=('6c3c5eafccba461f421ae55381c9371552069fa3')
+makedepends=('libconfig' 'acl' 'gettext')
+source=(https://github.com/roberthawdon/${_pkgname}/releases/download/v${_pkgver}/${_pkgname}-v${_pkgver}.tar.gz)
+sha256sums=('080d832fea50c381f3ef4d7d1ffe71bbbe2a1ce284e49dd05267d7f195077ea0')
+conflicts=('dfshow' 'dfshow-git')
 options=('!buildflags' '!makeflags')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}${_pkgversub}"
-  ./bootstrap
+  cd "${srcdir}/${_pkgname}-v${_pkgver}"
   ./configure --prefix=/usr --sysconfdir=/etc --datadir=/usr/share
   make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}${_pkgversub}"
+  cd "${srcdir}/${_pkgname}-v${_pkgver}"
   make DESTDIR="${pkgdir}" install
 
   install -Dm644 misc/auto-completion/bash/show-completion.bash "${pkgdir}/usr/share/bash-completion/completions/show"
