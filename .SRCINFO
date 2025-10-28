@@ -1,7 +1,7 @@
 pkgbase = cloudemoticon-rs
 	pkgdesc = A cloud solution to your favorite emoticons.
-	pkgver = 0.1.6
-	pkgrel = 3
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/TransparentLC/cloudemoticon-rs
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -17,7 +17,7 @@ pkgbase = cloudemoticon-rs
 	depends = libappindicator-gtk3
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = cloudemoticon-rs_0.1.6_amd64.deb::https://github.com/TransparentLC/cloudemoticon-rs/releases/download/v0.1.6/cloudemoticon-rs_0.1.6_amd64.deb
-	sha256sums_x86_64 = 03dd507000b38d1e75b934fe6c107dd5f7cb95e2dc65f291e013cdfc4279b0c4
+	source_x86_64 = cloudemoticon-rs_1.0.0_amd64.deb::https://github.com/TransparentLC/cloudemoticon-rs/releases/download/v1.0.0/cloudemoticon-rs_1.0.0_amd64.deb
+	sha256sums_x86_64 = ecf2e08897fd78980092b1e291b35e4f87fe5063e0887214da8658bf234f1605
 
 pkgname = cloudemoticon-rs
