@@ -1,7 +1,7 @@
 # Maintainer: Matsaa93 <matsaa93@gmail.com>
 pkgname=sddm_theme_selector
 _pkgname=sddm_theme_selector
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 
 pkgdesc="a script that lets you shange Sddm Theme"
@@ -18,7 +18,7 @@ source=("LICENSE" "sddm_theme_selector.desktop" "sddm_theme_selector.sh")
 noextract=()
 sha256sums=('8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643'
 	    '34dda4240fb314d8f07130946001d34a794483a345f2fcfe6087602ed046319c'
-	    'f72aa734f2317771d1e6a09e8fbcdbec209c8af81520cacdddb09a730fb11e2a')
+	    'd4a2a97f2a68250b624451d24eb268b1a9a0ae355004327a86bfa1b367cf55dc')
 
 package() {
 	cd "$srcdir"
