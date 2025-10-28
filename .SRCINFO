@@ -1,6 +1,6 @@
 pkgbase = echoplayer-bin
 	pkgdesc = A video player designed for language learners, helping users learn foreign languages through sentence-by-sentence intensive listening.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/mkdir700/EchoPlayer
 	arch = aarch64
@@ -9,15 +9,15 @@ pkgbase = echoplayer-bin
 	depends = electron37
 	depends = python
 	depends = python-pydantic
-	provides = echoplayer=1.4.0
+	provides = echoplayer=1.4.1
 	conflicts = echoplayer
 	options = !strip
 	options = !emptydirs
 	source = echoplayer.sh
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = echoplayer-1.4.0-aarch64.deb::https://github.com/mkdir700/EchoPlayer/releases/download/v1.4.0/EchoPlayer-1.4.0-arm64.deb
-	sha256sums_aarch64 = 1c5ca16024b701dd81d88f558420b1478866152d795a68be37609ae400c78409
-	source_x86_64 = echoplayer-1.4.0-x86_64.deb::https://github.com/mkdir700/EchoPlayer/releases/download/v1.4.0/EchoPlayer-1.4.0-amd64.deb
-	sha256sums_x86_64 = 4a30ab78bb74c653f930751018ddcb30246944ddec419ea49afc304d677699ad
+	source_aarch64 = echoplayer-1.4.1-aarch64.deb::https://github.com/mkdir700/EchoPlayer/releases/download/v1.4.1/EchoPlayer-1.4.1-arm64.deb
+	sha256sums_aarch64 = 2b9545551308392ea9eb46ca4652192baf2da810fa9ac8e101d007f0bfa264cd
+	source_x86_64 = echoplayer-1.4.1-x86_64.deb::https://github.com/mkdir700/EchoPlayer/releases/download/v1.4.1/EchoPlayer-1.4.1-amd64.deb
+	sha256sums_x86_64 = 34a173f206fb936c9c82b7deed61e59f918240aa3972d9ed07603e526f896c49
 
 pkgname = echoplayer-bin

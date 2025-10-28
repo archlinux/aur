@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=echoplayer-bin
 _pkgname=EchoPlayer
-pkgver=1.4.0
+pkgver=1.4.1
 _electronversion=37
 pkgrel=1
 pkgdesc="A video player designed for language learners, helping users learn foreign languages through sentence-by-sentence intensive listening.(Prebuilt version.Use system-wide electron)"
@@ -26,8 +26,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-amd64.deb")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('1c5ca16024b701dd81d88f558420b1478866152d795a68be37609ae400c78409')
-sha256sums_x86_64=('4a30ab78bb74c653f930751018ddcb30246944ddec419ea49afc304d677699ad')
+sha256sums_aarch64=('2b9545551308392ea9eb46ca4652192baf2da810fa9ac8e101d007f0bfa264cd')
+sha256sums_x86_64=('34a173f206fb936c9c82b7deed61e59f918240aa3972d9ed07603e526f896c49')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
