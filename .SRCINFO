@@ -1,6 +1,6 @@
 pkgbase = madcow
 	pkgdesc = ZFS snapshot manager command line tool
-	pkgver = 0.0.10
+	pkgver = 0.0.11
 	pkgrel = 1
 	url = https://codeberg.org/dimus/madcow
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = madcow
 	depends = pv
 	provides = madcow
 	conflicts = madcow
-	source = https://codeberg.org/dimus/madcow/archive/v0.0.10.tar.gz
-	sha256sums = 50853c8c55671aec661b67c934ba2f998139e6d4f74ed4e6335e4c98a169367c
+	source = https://codeberg.org/dimus/madcow/archive/v0.0.11.tar.gz
+	sha256sums = 93755b7ae28a98569198d73a3ffe689046fe5e39aaaa2a8e1224202f620d7a23
 
 pkgname = madcow
