@@ -4,7 +4,7 @@ pkgname=scorecard
 pkgver=5.3.0 # renovate: datasource=github-tags depName=ossf/scorecard
 pkgrel=1
 pkgdesc='Security health metrics for Open Source'
-arch=(any)
+arch=('x86_64')
 url='https://github.com/ossf/scorecard'
 license=(APACHE)
 makedepends=(go)
