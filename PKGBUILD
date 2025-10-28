@@ -1,16 +1,15 @@
-# Maintainer: Javier Tiá <javier dot tia at gmail dot com>
+# Maintainer: Javier Tia <floss dot jetm dot me>
 
 pkgname=c
-pkgver=0.14
+pkgver=0.15.1
 pkgrel=1
 pkgdesc='Compile and execute C "scripts" in one go'
 arch=('any')
 url="https://github.com/ryanmjacobs/c"
 license=('MIT')
 provides=('c')
-conflicts=('c')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('2b66d79d0d5c60b8e6760dac734b8ec9a7d6a5e57f033b97086821b1985a870b')
+sha256sums=('ecfad78cb0ab56da44dcfed805f5c261ddefd6dc4a4e57eb2dcfcffa85330605')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
