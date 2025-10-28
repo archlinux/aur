@@ -1,6 +1,6 @@
 pkgbase = amazon-q-bin
 	pkgdesc = Amazon Q CLI for Linux. See: https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line.html for details
-	pkgver = 1.19.0
+	pkgver = 1.19.1
 	pkgrel = 1
 	url = https://github.com/aws/q-cli
 	install = amazon-q-bin.install
@@ -12,9 +12,9 @@ pkgbase = amazon-q-bin
 	conflicts = amazon-q
 	options = !debug
 	options = !strip
-	source_x86_64 = amazon-q-bin-1.19.0-x86_64.zip::https://desktop-release.q.us-east-1.amazonaws.com/1.19.0/q-x86_64-linux.zip
-	sha256sums_x86_64 = a87281b71662d41171cf111929a85c77d16507814e751d2b1b524e206b46527c
-	source_aarch64 = amazon-q-bin-1.19.0-aarch64.zip::https://desktop-release.q.us-east-1.amazonaws.com/1.19.0/q-aarch64-linux.zip
-	sha256sums_aarch64 = 97f308901a0643bf5dfc6673b3c0751fb2fa7adfd47f3572921c1d3fa39d9929
+	source_x86_64 = amazon-q-bin-1.19.1-x86_64.zip::https://desktop-release.q.us-east-1.amazonaws.com/1.19.1/q-x86_64-linux.zip
+	sha256sums_x86_64 = 0bf6d60cde90e4822c53617987641c94f7b08c8747f80d5987be7059eef129b8
+	source_aarch64 = amazon-q-bin-1.19.1-aarch64.zip::https://desktop-release.q.us-east-1.amazonaws.com/1.19.1/q-aarch64-linux.zip
+	sha256sums_aarch64 = 47ed94f7bea6ecfbe3cbe9f94c7580930c705c5f6fcd1bba38d7334de455d713
 
 pkgname = amazon-q-bin
