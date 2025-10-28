@@ -4,7 +4,7 @@ _Name="Odin"
 _basename="${_Name,,}"
 pkgname="${_basename}-build"
 pkgver=1.17.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Build system that provides a simpler, more powerful, more efficient, and more reliable replacement for Make"
 arch=('x86_64')
 url="https://sourceforge.net/projects/odin-build"
@@ -44,8 +44,8 @@ package() {
   ./INSTALL "${pkgdir}/usr"
 
   cd "${pkgdir}/usr"
-  install -vd "share"
-  mv -v "man" "share/man"
+  install -vDm644 "man/man1/${_basename}.1" "share/man/man1/${pkgname}.1"
+  rm -rf "man"
 
   cd "bin"
   sed -i "s|${pkgdir}||g" "${_basename}"
