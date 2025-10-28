@@ -2,7 +2,7 @@ pkgbase = jelly
 	pkgdesc = Explore & Stream Jellyfin from Terminal 🪼
 	pkgver = 3.0.2
 	pkgrel = 1
-	url = https://github.com/AzureHound/jelly
+	url = https://github.com/AzureHound/src/jelly
 	arch = x86_64
 	arch = armv7h
 	license = 0BSD
@@ -12,7 +12,7 @@ pkgbase = jelly
 	depends = jq
 	depends = mpv
 	depends = socat
-	source = jelly-3.0.2.tar.gz::https://github.com/AzureHound/jelly/archive/refs/tags/v3.0.2.tar.gz
+	source = jelly-3.0.2.tar.gz::https://github.com/AzureHound/src/jelly/archive/refs/tags/v3.0.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = jelly

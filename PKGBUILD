@@ -4,10 +4,10 @@ pkgver=3.0.2
 pkgrel=1
 pkgdesc="Explore & Stream Jellyfin from Terminal 🪼"
 arch=('x86_64' 'armv7h')
-url="https://github.com/AzureHound/jelly"
+url="https://github.com/AzureHound/src/jelly"
 license=('0BSD')
 depends=('bash' 'curl' 'fzf' 'jq' 'mpv' 'socat')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/AzureHound/jelly/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/AzureHound/src/jelly/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
