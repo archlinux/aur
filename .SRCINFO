@@ -1,7 +1,7 @@
 pkgbase = basex
 	pkgdesc = Light-weight, high-performance XML database system and XPath/XQuery processor.
 	pkgver = 12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://basex.org/
 	arch = i686
 	arch = x86_64

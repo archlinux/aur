@@ -4,7 +4,7 @@
 
 pkgname=basex
 pkgver=12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Light-weight, high-performance XML database system and XPath/XQuery processor."
 arch=('i686' 'x86_64')
 url="https://basex.org/"
