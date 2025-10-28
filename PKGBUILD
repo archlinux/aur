@@ -8,7 +8,7 @@ arch=('x86_64')
 url="http://www.fadeinpro.com/"
 # No license file is provided.
 license=('custom')
-depends=('gtk2' 'webkit2gtk-4.1' 'libtiff5')
+depends=('gtk3' 'webkit2gtk-4.1' 'libtiff5')
 source=("$pkgname-$pkgver.tar.gz::https://www.fadeinpro.com/download/demo/fadein-linux-x64-demo.tar.gz")
 sha512sums=('2034fa4d1f9cf0434c6fa74e105386e7e9ac2dd8db853d31ce2e3b3da541e6bb5d32d085f24bc66dda56ccf1094fbc2f1eb371a396a5904a283b772f8724a462')
 
