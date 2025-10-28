@@ -10,7 +10,7 @@ license=('GPL')
 depends=('git' 'readline')
 makedepends=('gcc' 'make')
 source=("git+https://github.com/keircn/archium.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('a7ee9ab64b9c8f8a0a6b15fd9ff568e657d2210e17f17da0e801a338fb7510ff')
 
 build() {
   cd "${srcdir}/${pkgname}"
