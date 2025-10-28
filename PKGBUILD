@@ -1,7 +1,7 @@
 # Maintainer: kotontrion <kotontrion@tutanota.de>
 pkgname=aylurs-gtk-shell-git
 _pkgname=ags
-pkgver=2.3.0.r75.gd303d09
+pkgver=3.0.0.r2.g83f4895
 pkgrel=2
 pkgdesc="Aylurs's Gtk Shell (AGS), An eww inspired gtk widget system."
 arch=('x86_64')
@@ -11,7 +11,6 @@ makedepends=('git' 'meson' 'go')
 depends=('gjs'
          'gtk4-layer-shell'
          'gobject-introspection'
-         'libastal-io'
          'libastal'
          'libastal-4'
          'npm'
