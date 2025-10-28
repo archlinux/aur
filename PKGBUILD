@@ -1,4 +1,5 @@
-# Maintainer: tobias <tobias@archlinux.org>
+# Damian "G'lek" Mulligan <glek@glektarssza.com>
+# Contributor: tobias <tobias@archlinux.org>
 
 pkgname=gtk-sharp-2
 pkgver=2.12.45
