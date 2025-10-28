@@ -1,0 +1,9 @@
+pkgbase = osinfo-db-xinuos
+	pkgdesc = OSInfo metadata for SCO/Xinuos operating systems
+	pkgver = 20231215
+	pkgrel = 4
+	arch = any
+	source = osinfo-db-xinuos-20231215-4.noarch.rpm
+	sha256sums = 82da3caa64c874448631ebf88aba3fe15c1fc357ca0e84d33bc1c0b00c77548d
+
+pkgname = osinfo-db-xinuos
