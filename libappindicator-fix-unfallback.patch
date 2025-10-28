@@ -1,0 +1,69 @@
+=== modified file 'src/app-indicator.c'
+--- src/app-indicator.c	2020-07-03 10:12:45 +0000
++++ src/app-indicator.c	2024-07-15 04:37:39 +0000
+@@ -101,6 +101,7 @@
+ 	/* StatusNotifierWatcher */
+ 	GDBusProxy           *watcher_proxy;
+ 	guint                 watcher_id;
++	gboolean              is_host_registered;
+ 
+ 	/* Might be used */
+ 	IndicatorDesktopShortcuts * shorties;
+@@ -216,18 +217,16 @@
+ check_is_host_registered (AppIndicator *self)
+ {
+ 	GVariant *variant;
+-	gboolean is_host_registered;
+ 
+ 	variant = g_dbus_proxy_get_cached_property (self->priv->watcher_proxy,
+ 	                                            "IsStatusNotifierHostRegistered");
+ 
+-	is_host_registered = FALSE;
+ 	if (variant != NULL) {
+-		is_host_registered = g_variant_get_boolean (variant);
++		self->priv->is_host_registered = g_variant_get_boolean (variant);
+ 		g_variant_unref (variant);
+ 	}
+ 
+-	if (!is_host_registered) {
++	if (!self->priv->is_host_registered) {
+ 		start_fallback_timer (self, FALSE);
+ 		return;
+ 	}
+@@ -302,6 +301,7 @@
+ 	/* Emit the AppIndicator::connection-changed signal*/
+ 	g_signal_emit (self, signals[CONNECTION_CHANGED], 0, FALSE);
+ 
++	self->priv->is_host_registered = FALSE;
+ 	start_fallback_timer (self, FALSE);
+ }
+ 
+@@ -720,6 +720,7 @@
+ 	                                     (GBusNameAppearedCallback) name_appeared_handler,
+ 	                                     (GBusNameVanishedCallback) name_vanished_handler,
+ 	                                     self, NULL);
++	priv->is_host_registered = FALSE;
+ 
+ 	/* Start getting the session bus */
+ 	g_object_ref(self); /* ref for the bus creation callback */
+@@ -1448,7 +1449,18 @@
+ 	/* Emit the AppIndicator::connection-changed signal*/
+     g_signal_emit (app, signals[CONNECTION_CHANGED], 0, TRUE);
+ 
+-	if (priv->status_icon) {
++	/* If no StatusNotifierHost is registered, don't do unfallback */
++	if (!priv->is_host_registered) {
++		g_object_unref(G_OBJECT(user_data));
++		return;
++	}
++
++	if (priv->fallback_timer != 0) {
++		g_source_remove (priv->fallback_timer);
++		priv->fallback_timer = 0;
++	}
++
++	if (priv->status_icon != NULL) {
+ 		AppIndicatorClass * class = APP_INDICATOR_GET_CLASS(app);
+ 		if (class->unfallback != NULL) {
+ 			class->unfallback(app, priv->status_icon);
+
