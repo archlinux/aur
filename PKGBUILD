@@ -6,7 +6,7 @@
 _name=pytango
 pkgname=python-${_name}
 pkgver=10.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A python binding for the Tango control system"
 arch=("x86_64" "armv7h" "aarch64")
 url="https://gitlab.com/tango-controls/${_name}"
@@ -29,18 +29,18 @@ optdepends=(
   "python-opentelemetry-exporter-otlp-proto-http: to add telemetry"
 )
 source=(
-  "https://gitlab.com/tango-controls/${_name}/-/releases/v${pkgver}rc1/downloads/${_name}-with-submodules-v${pkgver}rc1.tar.gz"
+  "https://gitlab.com/tango-controls/${_name}/-/releases/v${pkgver}/downloads/${_name}-with-submodules-v${pkgver}.tar.gz"
 )
 sha256sums=(
-  "37c3649e5d2d39c40ecb0a6a865f47e80c7292717f40de7bc606454fb3818d01"
+  "945acbdb15b26a975b23db262182e6b517605fb573c3d7f0ef7214aa842e7acb"
 )
 
 build() {
-  cd "${_name}-with-submodules-v${pkgver}rc1"
+  cd "${_name}-with-submodules-v${pkgver}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${_name}-with-submodules-v${pkgver}rc1"
+  cd "${_name}-with-submodules-v${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 }
