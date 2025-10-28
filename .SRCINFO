@@ -1,6 +1,6 @@
 pkgbase = unicodeit-gtk
 	pkgdesc = A GTK IME popup for entering symbols via (La)TeX
-	pkgver = 1.2.4
+	pkgver = 1.2.6
 	pkgrel = 1
 	url = https://github.com/v--/unicodeit-gtk
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = unicodeit-gtk
 	depends = python-unicodeit
 	depends = python-setproctitle
 	depends = wtype
-	source = https://github.com/v--/unicodeit-gtk/archive/refs/tags/v1.2.4.tar.gz
-	sha256sums = e614e070c4b1edba627a3ae4abd54b2b54b661eee6f8fa25b08a17d814bcadff
+	source = https://github.com/v--/unicodeit-gtk/archive/refs/tags/v1.2.6.tar.gz
+	sha256sums = 90950a5eb188b0c0839d22eaf485e5ac96d5c90687e18c935c809ce2ec4c45c2
 
 pkgname = unicodeit-gtk
