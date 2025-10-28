@@ -1,6 +1,6 @@
 # Maintainer: Daniel Escoz <darkhogg+aur.nosqlbooster-mongodb@gmail.com>
 pkgname=nosqlbooster-mongodb
-pkgver=10.0.0
+pkgver=10.0.7
 _majorver="$(echo $pkgver | sed -E 's/\..+$//')"
 pkgrel=1
 pkgdesc="Shell-centric GUI tool for MongoDB"
@@ -13,11 +13,11 @@ optdepends=()
 source=(nsqlb4m-${pkgver}.AppImage::https://s3.nosqlbooster.com/download/releasesv${_majorver}/nosqlbooster4mongo-${pkgver}.AppImage
         LICENSE)
 noextract=(nsqlb4m-${pkgver}.AppImage)
-md5sums=('fc66d819a04f39cf0c954575ca8d843c'
+md5sums=('1edec0ceb6f3605fec3c95d7b88697eb'
          'fab008e596133037239e4a206bba3ccf')
-sha1sums=('026c8c1fa043d1b9cea8ac86d61f45dece8b8c8e'
+sha1sums=('2edfb918517f709b7c43d3fdf32e1de4a4ac32a2'
           'de718440354eb3c4844eda1b90bf092dcec4cf87')
-sha256sums=('1e3420720eed1bc27b6e2cef132df6377fdeeb26c140ed1721251d0ae1a2e923'
+sha256sums=('2f544928eb6535682ecc948bd868b17a6bb8c3b5250e9b533b0ee8b1aa3be4b5'
             '1640d17baeee24279f7d998719e37a331c8e12627c755b4b250f1c95b16f032f')
 
 build() {
@@ -48,4 +48,8 @@ package() {
   find "$pkgdir" -type d -exec chmod 755 {} +
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  install -d "${pkgdir}/usr/bin"
+  ln -s /opt/nosqlbooster-mongodb/nosqlbooster4mongo "$pkgdir/usr/bin/nosqlbooster4mongo"
+  ln -s /opt/nosqlbooster-mongodb/nbcli "$pkgdir/usr/bin/nbcli"
 }
