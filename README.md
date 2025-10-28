@@ -2,16 +2,10 @@
 
 tool for exporting and importing files in ~/.config, packages and AUR packages for Arch Linux.
 
-it is on the AUR, so install with:
-```
-yay -S cfgprf
-```
-or
-```
-paru -S cfgprf
-```
+it is [available on the AUR](https://aur.archlinux.org/packages/cfgprf)
 
-usage:
+usage examples:
+to export just ~/.config/
 ```
 cfgprf --export --configs --profile ~/myconfig.cfgprf
 cfgprf --import --configs --profile ~/myconfig.cfgprf
@@ -22,4 +16,4 @@ cfgprf -ecP ~/myconfig.cfgprf
 cfgprf -icP ~/myconfig.cfgprf
 ```
 
-use `--help` or `-h` for commands
+see `--help` or `-h` for more info
