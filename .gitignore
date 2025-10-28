@@ -1,4 +1,6 @@
 *
+!*.desktop
+!*.sh
 !.gitignore
 !PKGBUILD
 !.SRCINFO

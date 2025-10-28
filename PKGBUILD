@@ -1,7 +1,7 @@
 # Maintainer: Nathan Chere <aur@nathanchere.com.au>
 pkgname="livebook-git"
 pkgver=nightly.r0.g8514f12d2
-pkgrel=1
+pkgrel=2
 pkgdesc="Automate code & data workflows with interactive Elixir notebooks (git version)"
 arch=('any')
 url='https://livebook.dev'
@@ -40,4 +40,25 @@ check() {
 package() {
     cd "${srcdir}/livebook"
     install -Dm755 livebook "${pkgdir}/usr/bin/livebook"
+
+    mkdir -p "${pkgdir}/usr/bin"
+    cat <<'EOF' > "${pkgdir}/usr/bin/livebook-desktop"
+#!/bin/sh
+set -eu
+exec /usr/bin/livebook server @home "$@"
+EOF
+    chmod 755 "${pkgdir}/usr/bin/livebook-desktop"
+
+    mkdir -p "${pkgdir}/usr/share/applications"
+    cat <<'EOF' > "${pkgdir}/usr/share/applications/livebook.desktop"
+[Desktop Entry]
+Name=Livebook (Git)
+Comment=Interactive Elixir notebooks (latest)
+Exec=/usr/bin/livebook-desktop
+Terminal=false
+Type=Application
+Categories=Development;
+Keywords=elixir;notebook;code;
+Icon=utilities-terminal
+EOF
 }
