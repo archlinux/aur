@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 OPTS=$(getopt -o hiepcAaysP: --long help,import,export,packages,configs,aur,all,yes,follow-symlinks,profile: -n 'cfgprf' -- "$@")
 
