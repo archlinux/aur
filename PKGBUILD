@@ -2,7 +2,7 @@
 
 _name=guidata
 pkgname="python-${_name}"
-pkgver=3.13.0
+pkgver=3.13.1
 pkgrel=1
 pkgdesc="guidata: Automatic GUI generation for easy dataset editing and display with Python"
 arch=("any")
@@ -16,7 +16,7 @@ optdepends=(
   "python-pytest: for running tests"
 )
 source=("$_name-$pkgver.tar.gz::https://github.com/PlotPyStack/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("8636accf02e9d3d2755cadaf616a7dd2e405deaea0b0a083c8d7cbfb364526ed")
+sha256sums=("2e0e006fde339c947f2f0a269928c429ca85e7749d642e651eebb618141e013d")
 
 build() {
   cd "${_name}-${pkgver}"
