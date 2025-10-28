@@ -7,25 +7,23 @@
 # https://github.com/Floorp-Projects/Floorp-runtime
 
 ## options
-: ${_build_pgo:=true}
-: ${_build_pgo_reuse:=try}
-: ${_build_pgo_xvfb:=true}
+: ${_build_pgo:=true}      # profile-guided optimization; ~20% better benchmarks, 3x build time
+: ${_build_pgo_reuse:=try} # reuse previously generated profile
+: ${_build_pgo_xvfb:=true} # use xfvb for profiling, otherwise xwayland-run
 
-: ${_build_lto:=false}
-: ${_build_system_libs:=true}
+: ${_build_lto:=false}        # link-time optimization; may cause spurious errors
+: ${_build_system_libs:=true} # use system libraries, reduces build time
 
-: ${_build_limit_cores:=false}
+: ${_build_limit_cores:=true} # detect usable cores for parallelism, limited by RAM
 
 : ${_install_path:=usr/lib}
-: ${_wmclass:=floorp-default}
+: ${_wmclass:=floorp}
 
-: ${_tag_runtime:=daily-532}
-: ${_hash_floorp=cdb51929790ac5c0ceccab572b30973387ad29e2272e877d538cdcafecb3fdce}
-: ${_hash_runtime=733b9816d6c623dc59dcda44fbd433132e3f5cc6c19d7893bdf136dbcc68d740}
+: ${_runtime_commit:=6da4f95733aa77941e91eb549d0ea0f24489ff10}
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=12.3.5
+pkgver=12.4.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -107,24 +105,24 @@ options=(
 )
 
 _pkgsrc="Floorp-$pkgver"
-_pkgsrc_runtime="Floorp-runtime-$_tag_runtime"
+_pkgsrc_runtime="Floorp-runtime-$_runtime_commit"
 _pkgext="tar.gz"
 source=(
   "$_pkgname-components-$pkgver.$_pkgext"::"https://github.com/Floorp-Projects/Floorp/archive/refs/tags/v$pkgver.$_pkgext"
-  "$_pkgname-runtime-${_tag_runtime#[a-z]*[a-z]-}.$_pkgext"::"https://github.com/Floorp-Projects/Floorp-runtime/archive/refs/tags/$_tag_runtime.$_pkgext"
+  "$_pkgname-runtime-${_runtime_commit::7}.$_pkgext"::"https://github.com/Floorp-Projects/Floorp-runtime/archive/$_runtime_commit.$_pkgext"
   "floorp-projects.floorp-core"::"git+https://github.com/Floorp-Projects/Floorp-core.git"
   #"floorp-projects.unified-l10n-central"::"git+https://github.com/Floorp-Projects/Unified-l10n-central.git"
   "$_pkgname.desktop"
 )
 sha256sums=(
-  "${_hash_floorp:-SKIP}"
-  "${_hash_runtime:-SKIP}"
+  'fc9d520390923f771f21db4285f478406a5b3a2d51eebe5164785893810bce3b'
+  'a70b205730b077dcbfdd37138e589c877c1fa35797aea8c2e873ff7bf5877ab3'
   'SKIP'
-  #'SKIP'
   '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
 )
 
 _deno() {
+  export DENO_DIR="$srcdir/.deno"
   pushd "$srcdir/$_pkgsrc_runtime/noraneko" > /dev/null || return
   deno "$@"
   popd > /dev/null || return
@@ -133,16 +131,9 @@ _deno() {
 prepare() (
   mkdir -p mozbuild
 
-  # prepare directory structure
+  # prepare directories
   rsync -aL "$_pkgsrc/" "$_pkgsrc_runtime/noraneko/"
   rsync -aL "$_pkgsrc_runtime/.github/assets/branding/" "$_pkgsrc_runtime/browser/branding/"
-
-  # prevent error from unsupported variables
-  rm -f "$_pkgsrc_runtime/browser/branding/floorp-official/configure.sh"
-
-  # clear forced startup pages
-  sed -E -e 's&^\s*pref\("startup\.homepage.*$&&' \
-    -i "$_pkgsrc_runtime"/browser/branding/*/pref/firefox-branding.js
 
   # prepare api keys
   cp floorp-projects.floorp-core/apis/api-*-key ./
@@ -164,14 +155,15 @@ ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 
 # Branding
-ac_add_options --with-app-basename=$_pkgname
+ac_add_options --with-app-basename=${_pkgname^}
 ac_add_options --with-app-name=$_pkgname
 ac_add_options --with-branding=browser/branding/floorp-official
 ac_add_options --enable-update-channel=nightly
 ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
-export MOZILLA_OFFICIAL=1
+ac_add_options --enable-official-branding
+export MOZ_APP_NAME=$_pkgname
 export MOZ_APP_REMOTINGNAME=$_pkgname
 MOZ_REQUIRE_SIGNING=
 
@@ -244,19 +236,27 @@ ac_add_options --enable-lto=cross,full
 END
   fi
 
+  # build paralleism
+  local _mem _nproc _cores
+  _mem=$(grep -Pom1 '^MemFree.*\b\K[0-9]+' /proc/meminfo)
+  _nproc=$(nproc)
+
   if [[ "${_build_limit_cores::1}" == "t" ]]; then
-    # calculate core availability
-    local _mem _nproc _cores
-    _mem=$(cat /proc/meminfo | grep MemFree | grep -Eom1 '[0-9]+')
-    _nproc=$(nproc)
+    # calculate core availability based on free RAM and CPU count
     _cores=$((_mem / (1024 * 1024) < _nproc ? _mem / (1024 * 1024) : _nproc))
     _cores=$((_cores < 1 ? 1 : _cores))
+  elif ((${_build_limit_cores:-0} > 0)); then
+    # user-specified, capped by CPU count
+    _cores=$((_build_limit_cores > _nproc ? _nproc : _build_limit_cores))
+  fi
 
+  if [ -n "${_cores:-}" ]; then
     printf '\nFree RAM: %s\nCores: %s\nUsing: %s\n\n' "$((_mem / (1024 * 1024)))" "$_nproc" "$_cores"
-
     cat >> mozconfig << END
-mk_add_options MOZ_PARALLEL_BUILD=${_cores:-4}
+mk_add_options MOZ_PARALLEL_BUILD=${_cores}
 END
+  else
+    printf '\nFree RAM: %s\nCores: %s\nUsing: auto\n\n' "$((_mem / (1024 * 1024)))" "$_nproc"
   fi
 )
 
@@ -287,7 +287,7 @@ build() (
   # Do 3-tier PGO
   if [[ "${_build_pgo::1}" == "t" ]] && [ "${_build_artifact_mode::1}" != "t" ]; then
     # Old profile loction
-    local _pkgver_prof="${_tag_runtime#[a-z]*[a-z]-}"
+    local _pkgver_prof="${_runtime_commit::7}"
     local _old_profdata="$SRCDEST/floorp-runtime-$_pkgver_prof-merged.profdata"
     local _old_jarlog="$SRCDEST/floorp-runtime-$_pkgver_prof-jarlog"
 
@@ -342,7 +342,7 @@ END
     fi
   fi
 
-  # Prepare to rebuild browser
+  # Prepare to rebuild
   cat > .mozconfig ../mozconfig
 
   if [ "${_build_artifact_mode::1}" != "t" ]; then
@@ -373,26 +373,34 @@ END
   fi
 
   # Final build
-  echo "Building browser..."
-  ./mach build --priority normal
+  echo "Preparing floorp..."
 
-  # inject floorp
-  export DENO_DIR="$srcdir/.deno"
+  # floorp patches 1/3
+  for i in .github/patches/upstream/*.patch; do
+    git apply --ignore-space-change --ignore-whitespace "$i" || true
+  done
 
+  # floorp pre-mach
   _deno install --allow-scripts
   _deno task feles-build misc writeVersion
   NODE_ENV=production _deno task feles-build build --phase before-mach
 
+  # floorp patches 2/3
   for i in .github/patches/packaging/*.patch; do
     git apply --ignore-space-change --ignore-whitespace "$i" || true
   done
 
   # set floorp version
   local _floorp_ver=$(cat "noraneko/static/gecko/config/version.txt")
-  local _firefoxf_ver=$(cat "browser/config/version.txt")
+  local _firefoxf_ver=$(sed -E -e 's&^.*@&&' "browser/config/version.txt")
   echo "${_floorp_ver}@${_firefoxf_ver}" | tee "browser/config/"{version,version_display}.txt
 
-  ./mach build faster --priority normal
+  # clear forced startup pages
+  sed -E -e 's&^\s*pref\("startup\.homepage.*$&&' \
+    -i browser/branding/*/pref/firefox-branding.js
+
+  echo "Building browser..."
+  ./mach build --priority normal
 
   # missing on install
   cp noraneko/_dist/buildid2 obj-artifact-build-output/dist/bin/browser
@@ -403,11 +411,16 @@ END
   mv obj-artifact-build-output obj-artifact-build-output_old
   mv obj-artifact-build-output_new obj-artifact-build-output
 
+  # floorp post-mach
   _deno task feles-build build --phase after-mach
 
+  # floorp patches 3/3
   for i in noraneko/tools/patches/*.patch; do
     git apply --reject "$i" --directory obj-artifact-build-output/dist/bin --unsafe-paths --check --apply || true
   done
+
+  # preference override
+  bash noraneko/static/gecko/pref/override.sh obj-artifact-build-output/dist/bin/browser/defaults/preferences/firefox.js
 )
 
 package() {
