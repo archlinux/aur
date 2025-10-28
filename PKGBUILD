@@ -1,7 +1,7 @@
 # Maintainer: execRooted <execrooted@gmail.com>
 
 pkgname=root_boot
-pkgver=0.1.0
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A Rust program that helps you boot into bootable devices directly from the os you're running (Windows/Linux compatable)"
 arch=('x86_64')
