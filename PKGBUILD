@@ -11,8 +11,13 @@ options=(!emptydirs)
 depends=(
 ruby-rack
 )
-makedepends=('ruby-rake' 'ruby-bundler')
-checkdepends=('ruby-minitest')
+makedepends=(
+ruby-bundler
+ruby-rake
+)
+checkdepends=(
+ruby-minitest
+)
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('c644d6bb405327c04cf172a88189791db934e8359ea7f2ea186040b01774bbeeb90d7db3858be8d3cc49a3f51d19277d944370017ef92f88561812fd3d94495e')
 
