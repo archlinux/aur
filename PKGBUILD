@@ -2,7 +2,7 @@
 # Contributor: ava1ar <mail(at)ava1ar(dot)me>
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
-pkgver=24.04.13
+pkgver=24.04.14
 pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
@@ -53,12 +53,10 @@ checkdepends=('python-pytest')
 install="$pkgname.install"
 source=("git+https://github.com/pop-os/system76-driver.git#tag=$pkgver"
         'cli.patch'
-        'actions.patch'
-        'products.patch')
-sha256sums=('3440013c7dd405eb2ae191c376129eb19875def67f560e1d84819f45e32eabed'
+        'actions.patch')
+sha256sums=('56ae7ae5034a4676fdc6e171518bd6d9508ece4baab0010dc3f6078ee0e4e9e0'
             'ef027346c439561dc01f906ae7bd961100aedf9125fd86bb0eb89a87b683fdc3'
-            '3ade740c1681f8f33ef78e1e6c087e4002d14c888d7a5bf6bfbeb2aa70111119'
-            'd6635721e76f523219f5bc4b738eafd5c86e00adf68c2563c0c4c6b9535ee693')
+            '3ade740c1681f8f33ef78e1e6c087e4002d14c888d7a5bf6bfbeb2aa70111119')
 
 prepare() {
   cd "$pkgname"
@@ -68,9 +66,6 @@ prepare() {
 
   # Use mkinitcpio instead of initramfs-tools
   patch -Np1 --no-backup-if-mismatch -i "$srcdir/actions.patch"
-
-  # Do not blacklist nvidia_i2c, do not Force Composition Pipeline
-  patch -Np1 --no-backup-if-mismatch -i "$srcdir/products.patch"
 }
 
 build() {
