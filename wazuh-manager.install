@@ -1,3 +1,28 @@
+pre_upgrade()
+{
+  echo "check https://documentation.wazuh.com/current/upgrade-guide/upgrading-central-components.html#upgrading-the-wazuh-server"
+  systemctl stop wazuh-manager
+  cp /var/ossec/etc/ossec.conf /var/ossec/etc/ossec.conf.old
+}
+
+post_upgrade()
+{
+  cp /var/ossec/etc/ossec.conf /var/ossec/etc/ossec.conf.pacnew
+  cp /var/ossec/etc/ossec.conf.old /var/ossec/etc/ossec.conf
+  echo "/var/ossec/etc/ossec.conf created as /var/ossec/etc/ossec.conf.pacnew"
+  echo "manually run echo '<INDEXER_USERNAME>' | /var/ossec/bin/wazuh-keystore -f indexer -k username"
+  echo "manually run echo '<INDEXER_USERNAME>' | /var/ossec/bin/wazuh-keystore -f indexer -k password"
+  curl -so /etc/filebeat/wazuh-template.json https://raw.githubusercontent.com/wazuh/wazuh/v4.14.0/extensions/elasticsearch/7.x/wazuh-template.json
+  chmod go+r /etc/filebeat/wazuh-template.json
+  curl -s https://packages.wazuh.com/4.x/filebeat/wazuh-filebeat-0.4.tar.gz | tar -xvz -C /usr/share/filebeat/module
+  systemctl daemon-reload
+  systemctl start filebeat
+  systemctl start wazuh-manager
+  filebeat setup --pipelines
+  filebeat setup --index-management -E output.logstash.enabled=false
+
+}
+
 post_install()
 {
   echo "creating wazuh user and group"
