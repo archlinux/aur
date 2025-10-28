@@ -1,0 +1,15 @@
+pkgbase = odin-build
+	pkgdesc = Build system that provides a simpler, more powerful, more efficient, and more reliable replacement for Make
+	pkgver = 1.17.13
+	pkgrel = 1
+	url = https://sourceforge.net/projects/odin-build
+	arch = x86_64
+	license = GPL-1.0-or-later
+	depends = glibc
+	depends = sh
+	source = odin-build-1.17.13.tar.bz2::https://sourceforge.net/projects/odin-build/files/Odin%201.17.13/odin-1.17.13.tar.bz2/download
+	md5sums = b8cf64a17b528cbaa653d56bfd4c2414
+	sha1sums = ea5c125c79752c5f603276253da76f5f8ff28d30
+	b2sums = 2ec30f7287818d9b84c2fcbd4a0907b1afeb21a76cc946e5856e9a2287627358dd290b82714c8475d9e4661af7d938ead9cde16398ee9940d4aa19985f1554a2
+
+pkgname = odin-build

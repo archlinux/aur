@@ -1,0 +1,4 @@
+[odin-build]
+source = "regex"
+url = "https://sourceforge.net/projects/odin-build/files/"
+regex = "Odin%20(.*)/"
