@@ -1,0 +1,13 @@
+# Ignore everything
+*
+
+# Whitelist specific files or directories
+!.gitignore
+!.SRCINFO
+!bar-lobby.install
+!bar-lobby.sh
+!LICENSE
+!REUSE.toml
+!PKGBUILD
+
+!LICENSES/

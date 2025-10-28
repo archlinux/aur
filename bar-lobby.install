@@ -1,0 +1,4 @@
+#!/bin/bash
+post_remove() {
+    echo -e "\033[1;32mINFO:\033[0m \033[1;33mTo completely remove all user data for Beyond All Reason, delete: \033[1;34m∼/.local/share/BeyondAllReason\033[0m."
+}
