@@ -1,12 +1,12 @@
 pkgbase = mingw-w64-llvm
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (mingw-w64)
-	pkgver = 20.1.8
-	pkgrel = 2
+	pkgver = 21.1.4
+	pkgrel = 1
 	url = http://llvm.org/
 	arch = any
 	license = custom:Apache 2.0 with LLVM Exception
 	makedepends = mingw-w64-cmake
-	makedepends = llvm>=20
+	makedepends = llvm>=21
 	makedepends = python
 	depends = mingw-w64-zlib
 	depends = mingw-w64-libxml2
@@ -15,15 +15,20 @@ pkgbase = mingw-w64-llvm
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.8/llvm-20.1.8.src.tar.xz
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.8/llvm-20.1.8.src.tar.xz.sig
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.8/cmake-20.1.8.src.tar.xz
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.8/cmake-20.1.8.src.tar.xz.sig
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.4/llvm-21.1.4.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.4/llvm-21.1.4.src.tar.xz.sig
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.4/cmake-21.1.4.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.4/cmake-21.1.4.src.tar.xz.sig
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.4/third-party-21.1.4.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.4/third-party-21.1.4.src.tar.xz.sig
 	validpgpkeys = 474E22316ABF4785A88C6E8EA2C794A986419D8A
 	validpgpkeys = D574BD5D1D0E98895E3BF90044F2485E45D59042
-	sha256sums = e1363888216b455184dbb8a74a347bf5612f56a3f982369e1cba6c7e0726cde1
+	validpgpkeys = FFB3368980F3E6BB5737145A316C56D064CACBA5
+	sha256sums = f311681255deb37f74bbf950a653e9434e7d8383a7b46a603a323c46cd4bf50e
 	sha256sums = SKIP
-	sha256sums = 3319203cfd1172bbac50f06fa68e318af84dcb5d65353310c0586354069d6634
+	sha256sums = f4316d84a862ba3023ca1d26bd9c6a995516b4fa028b6fb329d22e24cc6d235e
+	sha256sums = SKIP
+	sha256sums = ae8658390504e08e464f65ecea838a0584df4734c27cecedfe7eb32780e81564
 	sha256sums = SKIP
 
 pkgname = mingw-w64-llvm
