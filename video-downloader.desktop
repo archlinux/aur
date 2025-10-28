@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=
+Comment=A Tauri App
+Exec=video-downloader
+Icon=/usr/share/icons/hicolor/scalable/apps/video-downloader.svg
+Name=video-downloader
+Terminal=false
+Type=Application
