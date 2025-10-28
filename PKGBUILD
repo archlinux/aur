@@ -9,7 +9,7 @@
 _debname=stremio-service
 
 pkgname="$_debname-bin"
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="The companion app of Stremio Web"
 arch=('x86_64')
@@ -19,12 +19,13 @@ depends=('cairo'
          'gcc-libs'
          'gdk-pixbuf2'
          'glib2'
+         'glibc'
          'gtk3'
          'libayatana-appindicator')
 conflicts=("$_debname")
 provides=("$_debname")
 source=("${_debname}_v${pkgver}-${arch}.deb::https://github.com/Stremio/stremio-service/releases/download/v${pkgver}/${_debname}_amd64.deb")
-sha256sums=('36c2d83f43a2af84ae47ca41eb4d7bca636b70af2ed7e85f67a43ad864104f0a')
+sha512sums=('1487c6a8cf48a46156938b92747d62284599e0eb6d0215d746b6badf48aa61a253953be1f1b11a568efe19303c0e2cb4936ace3e812596f129d557a88e18e58e')
 
 package() {
   bsdtar -xf data.tar.xz -C "$pkgdir/"
