@@ -1,6 +1,5 @@
 # Maintainer: Swarnaditya Singh <demonkingswarn@protonmail.com>
-pkgname='python-flix-cli'
-_pkgname='flix-cli'
+pkgname='flix-cli'
 pkgver=1.7.10.8
 pkgrel=1
 pkgdesc="Watch movies and series from your commandline"
