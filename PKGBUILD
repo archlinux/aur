@@ -1,8 +1,8 @@
 # Maintainer: Sleep-No-More <sleepnomore@example.com>
 pkgname=snmenu
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
-pkgdesc="Modern circular power menu for Wayland desktop environments"
+pkgdesc="Modern circular menu for Wayland desktop environments with submenu support"
 arch=('x86_64')
 url="https://github.com/Sleep-No-More/SNMenu"
 license=('MIT')
@@ -18,6 +18,6 @@ build() {
 
 package() {
     cd "SNMenu-${pkgver}"
-    install -Dm755 target/release/cpmenu "$pkgdir/usr/bin/snmenu"
+    install -Dm755 target/release/snmenu "$pkgdir/usr/bin/snmenu"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
