@@ -1,7 +1,7 @@
 # Maintainer: Voxan24 <admin@hessfr.fr>
 
 pkgname=1panel
-pkgver=2.0.11
+pkgver=2.0.12
 pkgrel=1
 pkgdesc="1Panel, a modern open source linux panel."
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ source=(
     "1panel.service"
 )
 b2sums=(
-    "d678e83480a045b76d04b4ad4492c9b216d6cbf8e5036906834eba6e1b85607bbf1819e509ef5b6d4dd03b57ccdf936198b1229d2c1d4f424a3fa6e0c1637ef0"
+    "c0fe60246ebdd160586d15f5c45447edf535973dd8393de2e7b8232ba81941aa1516d80b33afd273daa40811903c08c9db98160960566cf69c7510f842f9553a"
     "8276ffae854ad7ae4d6ca35bd673b2401dd8e59bff8515921f76fc83a65db672d2de9167ccd32d5b4bb2b5cc4a646f5047c04baf295050dd64fd1370c490680e"
     "b4ca01c4f5027fc121e293df86e9caeaabce732f5d93ea4f0c6b670aceb851943d1f32d11e76f1b1a5780774d35d3b04c1abb9c84d2b0695d04d9938c8771845"
 )
