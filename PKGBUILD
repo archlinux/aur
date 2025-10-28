@@ -12,8 +12,8 @@ pkgname=sunvox
 # - properly signals updates to pacman/AUR helpers, and
 # - looks absolutely horrible. I am truly sorry.
 # On upgrade, remember to bump $pkgver *and* $_pkgver_upstream.
-pkgver=2.1.2.b
-_pkgver_upstream=2.1.2b
+pkgver=2.1.3
+_pkgver_upstream=2.1.3
 pkgrel=1
 pkgdesc="Small, fast and powerful modular synthesizer with pattern-based sequencer (tracker)."
 arch=('i686' 'x86_64')
@@ -33,10 +33,11 @@ if [[ "$CARCH" == "x86_64" ]]; then
                'libxcb: required for sunvox_opengl'
                'libxdmcp: required for sunvox_opengl'
                'libxext: required for sunvox_opengl'
-               'libxi: required for sunvox_opengl')
+               'libxi: required for sunvox_opengl'
+               'libxrandr: required for sunvox_opengl')
 fi
 source=(http://warmplace.ru/soft/sunvox/$pkgname-$_pkgver_upstream.zip sunvox.desktop sunvox.xml)
-sha256sums=('281e98e6e2855ed06b98965c18b3f174b9425e77bf8b06c5c17f5aa64f2c9f6f'
+sha256sums=('fb8adacd99aa6cdde1364e67c85ae6f2433d69f040fac62b48f1f29f66380cca'
             'b45ee10df93982ac0d36c6887fe637c28b3c3de7013aa3462291629eed2dcc8d'
             '7ac2192298abdda802832518c98721b08881e32e8b470f2989c614852dd44f67')
 
