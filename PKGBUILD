@@ -1,7 +1,7 @@
 # Maintainer: Nathan Chere <aur@nathanchere.com.au>
 pkgname="livebook"
 pkgver=0.17.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Automate code & data workflows with interactive Elixir notebooks"
 arch=('any')
 url='https://livebook.dev'
