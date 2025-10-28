@@ -29,6 +29,7 @@ depends=('curl' 'sdl2' 'devil' 'p7zip' 'openal' 'libogg' 'libvorbis' 'libunwind'
 makedepends=('git' 'curl' 'jq'
              'ninja' 'lld' 'socat' 'clang' 'python-pip' 'cmake3' 'ccache'
              'compdb' 'gflags')
+optdepends=('bar-lobby' 'bar-lobby-git')
 #install="${pkgname%-git}.install"
 source=("${pkgname%-git}::git+${_ghurl}.git${_tag}${_git_commit}"
 #        "${pkgname%-git}.sh"
