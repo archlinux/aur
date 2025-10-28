@@ -41,8 +41,6 @@ sha256sums=('SKIP'
             'db54cc94fe78ebee246f2eb57e3eb4152772fde136a316e89cb595b13518491d'
             '12727ff1a9df0deda4637f54b903107f133d76f03dad3e4c61d32369c81df619')
 
-#prepare(){ _get_electron_version
-#}
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}"
@@ -51,7 +49,7 @@ pkgver() {
 
 _get_electron_version() {
     _electronversion="$(strings "squashfs-root/${pkgname%-git}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "\033[1;32mThe electron version is: \033[1;33m${_electronversion}\033[0m"
+    echo -e "\033[1;32mINFO: \033[1;33mThe electron version is: \033[1;36m${_electronversion}\033[0m"
 }
 
 _ensure_local_nvm() {
@@ -71,13 +69,11 @@ cd "${pkgname%-git}"
     _ensure_local_nvm
     nvm install
     npm install
-#echo '^^^^^^^^^^^^^^^ install ^^^^^^^^^^^^^^^^^^^^'
     #npm run package
-#echo '^^^^^^^^^^^^^^^^^^^^^^^^^^^^ run package ^^^^^^^^^^^^^^^^^'
     #npm run build:unpack
     #npm run build:linux
     npm run buildall:linux
-#echo '^^^^^^^^^^^^^^^^^^^^^^^^^^^^ in buildall:linux ^^^^^^^^^^^^^^^^^'
+
 
 }
 
@@ -111,7 +107,6 @@ package() {
     }
 
     _install() {
-#echo "In _install FN"
         install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname}"
         install -Dm644 "squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
         cp -Pr --no-preserve=ownership "squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname}"

@@ -4,7 +4,7 @@ version = 1
 path = [
     "PKGBUILD",
     "bar-lobby.sh",
-    ".gitignore"
+    ".gitignore",
     "README.md",
     "keys/**",
     ".SRCINFO",
