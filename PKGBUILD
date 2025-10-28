@@ -37,8 +37,8 @@ package() {
   install -D -m644 basex/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   
   # extract and install logo
-  jar -xf basex/BaseX.jar img/logo_256.png
-  install -m644 img/logo_256.png ${pkgdir}/${BASEX_HOME}/img || return 1	 
+  jar -xf basex/BaseX.jar img/logo_large-0.png
+  install -m644 img/logo_large-0.png ${pkgdir}/${BASEX_HOME}/img || return 1	 
 
   install -m644 basex/*.jar ${pkgdir}/${BASEX_HOME} || return 1
   install -m644 basex/lib/*.jar ${pkgdir}/${BASEX_HOME}/lib || return 1
