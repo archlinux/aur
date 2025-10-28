@@ -13,4 +13,4 @@ pkgbase = linuxwave
 	source = linuxwave-0.1.1.tar.gz::https://github.com/vinisadev/linux-wave/archive/refs/tags/0.1.1.tar.gz
 	sha256sums = SKIP
 
-pkgname = linuxwave
+pkgname = linux-wave
