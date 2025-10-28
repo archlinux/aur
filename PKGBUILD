@@ -166,8 +166,8 @@ _get_pkgver ### Get short pkgver to name engine properly.
 ### The Lobby only recognizes engines following the official versioning scheme!
 ### adding .local to the end of the name allows us to name it however we want!
 mkdir -p "${pkgdir}/usr/share/recoil-engine"
-mv ${srcdir}/install "${srcdir}/stemwide_managed_by_pkgmngr-${_pkgver}.local"
-cp --reflink=auto --no-preserve=ownership --recursive --no-dereference "${srcdir}/stemwide_managed_by_pkgmngr-${_pkgver}-RC.local" "${pkgdir}/usr/share/recoil-engine/"
+mv ${srcdir}/install "${srcdir}/sytemwide_managed_by_pkgmngr-${_pkgver}-RC.local"
+cp --reflink=auto --no-preserve=ownership --recursive --no-dereference "${srcdir}/styemwide_managed_by_pkgmngr-${_pkgver}-RC.local" "${pkgdir}/usr/share/recoil-engine/"
 
 }
 
