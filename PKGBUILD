@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Capps <cappsy at gmail dot com>
 pkgname=cosmic-ext-applet-logomenu-git
-pkgver="0.6.6"
-pkgrel=2
+pkgver="0.6.7"
+pkgrel=3
 pkgdesc="Logo Menu applet for the COSMIC™ desktop"
 arch=('x86_64')
 url="https://github.com/cappsyco/cosmic-ext-applet-logomenu-git"
