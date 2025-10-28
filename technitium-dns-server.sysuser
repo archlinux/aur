@@ -1,1 +1,9 @@
-u technitium - "Technitium DNS server user"
+# Create the service user
+# Type Name      ID     GECOS                            Home Directory               Shell
+u technitium     -      "Technitium DNS server user"     /opt/technitium-dns-server   /usr/bin/nologin
+
+# Create additional groups if they don't exist
+g technitium     -
+
+# Add user to multiple groups (supplementary)
+m technitium technitium

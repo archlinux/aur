@@ -6,6 +6,7 @@ pkgbase = technitium-dns-server-git
 	install = technitium-dns-server.install
 	arch = x86_64
 	license = GPL-3.0-only
+	makedepends = dotnet-sdk
 	depends = aspnet-runtime-9.0
 	depends = glibc
 	depends = gcc-libs
@@ -21,7 +22,7 @@ pkgbase = technitium-dns-server-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 7562b6cd4fed82adf2b1e568a64914158938851448d29a8795aa163a77949286
-	sha256sums = 464dbfe1038e4737ca83c60617a5a4e334cdd948fe41315a3a36913011680952
-	sha256sums = d349d144faf8932c56a054b22721420f1eb68adf7bc226f174654b33510f75e4
+	sha256sums = ef8ba3853d515060fd44f1128a5da5d356596643e2f307c41390798ac3bf73d6
+	sha256sums = 6749b3890661cbdd88b33daaf619d64b25287d9a4c3d05d4b4e351212d0c96b8
 
 pkgname = technitium-dns-server-git

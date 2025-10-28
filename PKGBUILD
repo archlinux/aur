@@ -9,6 +9,7 @@ arch=('x86_64')
 url="https://technitium.com/dns/"
 license=('GPL-3.0-only')
 depends=('aspnet-runtime-9.0' 'glibc' 'gcc-libs')
+makedepends=('dotnet-sdk')
 conflicts=('technitium-dns-server')
 provides=('technitium-dns-server')
 source=("TechnitiumLibrary::git+https://github.com/TechnitiumSoftware/TechnitiumLibrary.git"
@@ -20,8 +21,8 @@ source=("TechnitiumLibrary::git+https://github.com/TechnitiumSoftware/Technitium
 sha256sums=('SKIP'
             'SKIP'
             '7562b6cd4fed82adf2b1e568a64914158938851448d29a8795aa163a77949286'
-            '464dbfe1038e4737ca83c60617a5a4e334cdd948fe41315a3a36913011680952'
-            'd349d144faf8932c56a054b22721420f1eb68adf7bc226f174654b33510f75e4')
+            'ef8ba3853d515060fd44f1128a5da5d356596643e2f307c41390798ac3bf73d6'
+            '6749b3890661cbdd88b33daaf619d64b25287d9a4c3d05d4b4e351212d0c96b8')
 options=(
 	!strip     # Stripping symbols would break the binary
 	!emptydirs # Do not remove empty directories from package
