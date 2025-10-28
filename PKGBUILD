@@ -10,9 +10,9 @@ url="http://cannonsmash.sourceforge.net"
 license=('GPL')
 depends=('libxmu' 'gtk2' 'mesa' 'sdl_image' 'sdl_mixer')
 source=(http://prdownloads.sourceforge.net/cannonsmash/$pkgname-$pkgver.tar.gz
-        https://ftp5.gwdg.de/pub/linux/gentoo/gentoo-portage/games-simulation/cannonsmash/files/cannonsmash-0.6.6-gcc41.patch
-        https://ftp5.gwdg.de/pub/linux/gentoo/gentoo-portage/games-simulation/cannonsmash/files/cannonsmash-0.6.6-sizeof-cast.patch
-        https://ftp5.gwdg.de/pub/linux/gentoo/gentoo-portage/games-simulation/cannonsmash/files/cannonsmash-0.6.6-x-inc.patch)
+        cannonsmash-0.6.6-gcc41.patch
+        cannonsmash-0.6.6-sizeof-cast.patch
+        cannonsmash-0.6.6-x-inc.patch)
 sha256sums=('1be0b27dac46ba891b955bf8f122151baea6ee05b3c29616a09423250cfd9d3d'
             'ddb1ba2f17057f72d620437fdfc7248199009464fae276a297ae0ecbe43b81f3'
             '6696f48e3aae40a23461f628ec2919850a54b6c4e0818641cefd4f41183cf310'
