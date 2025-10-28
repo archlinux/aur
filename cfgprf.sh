@@ -1,6 +1,6 @@
 #!/bin/sh
 
-OPTS=$(getopt -o hiepcAaysP: --long help,import,export,packages,configs,aur,all,yes,follow-symlinks,profile: -n 'cfgprf' -- "$@")
+OPTS=$(getopt -o hiepcAEdaysP: --long help,import,export,packages,configs,configs-opts,etc,dotdirs,dotdirs-opts:,aur,all,yes,follow-symlinks,profile: -n 'cfgprf' -- "$@")
 
 if [ $? -ne 0 ]; then
   echo "failed to parse options" >&2
@@ -31,6 +31,14 @@ while true; do
       CONFIGS=1
       shift # past argument
       ;;
+    -E|--etc)
+      ETC=1
+      shift # past argument
+      ;;
+    -d|--dotdirs)
+      DOTDIRS=1
+      shift # past argument
+      ;;
     -A|--aur)
       AUR=1
       shift # past argument
@@ -38,6 +46,9 @@ while true; do
     -a|--all)
       CONFIGS=1
       PACKAGES=1
+      AUR=1
+      ETC=1
+      DOTDIRS=1
       shift # past argument
       ;;
     -y|--yes)
@@ -80,17 +91,21 @@ help() {
     echo "          -p | --packages: export packages with pacman"
     echo "          -A | --aur: export AUR packages with yay or paru"
     echo "          -c | --configs: export files in ~/.config/"
-    echo "          -a | --all: shorthard for --packages, --aur and --configs together. not having either will default to this"
-    echo "          -s | --follow-symlinks: will follow symlinks, export actual files"
+    echo "          -E | --etc: export files in /etc/, requires to be ran as sudo (but not as root user)"
+    echo "          -d | --dotdirs: i don't recommend this. export dot directories in ~, excludes ssh & gpg keys, .steam/, .wine/ & obviously .config/, use --configs for that"
+    echo "          -a | --all: shorthard for --packages, --aur, --configs, --etc & --dotdirs together"
+    echo "          -s | --follow-symlinks: will follow symlinks, export actual files. affects --configs and --etc"
     echo
     echo "      -i | --import: import mode"
     echo "          -P | --profile {path}: REQUIRED. path to file to import from, usually .cfgprf"
     echo "          -p | --packages: import packages with pacman"
     echo "          -A | --aur: import AUR packages with yay or paru"
     echo "          -c | --configs: import files to ~/.config/"
-    echo "          -a | --all: shorthard for --packages, --aur and --configs together. not having either will default to this"
+    echo "          -E | --etc: import files to /etc/, requires to be ran as sudo (but not as root user)"
+    echo "          -d | --dotdirs: i don't recommend this. import dot directories in ~"
+    echo "          -a | --all: shorthard for --packages, --aur, --configs, --etc & --dotdirs together"
     echo "          -y | --yes: will skip confirmation"
-    echo "          -s | --follow-symlinks: will not override symlinks in ~/.config/ if they're a directory, will follow them and put the files there"
+    echo "          -s | --follow-symlinks: will follow symlinks and put the files there. affects --configs and --etc"
     echo
     echo "  other commands:"
     echo "      -h | --help: show this menu"
