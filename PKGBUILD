@@ -3,7 +3,7 @@
 # thanks to txtsd <aur.archlinux@ihavea.quest> for contributing some parts of the PKGBUILD code
 
 pkgname=openmw-git
-pkgver=0.50.0.r59.ge3b293c4b7
+pkgver=0.50.0.r64.g23f843c552
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64' 'aarch64')
@@ -14,9 +14,9 @@ makedepends=('git' 'cmake' 'boost' 'debugedit')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=('git+https://gitlab.com/OpenMW/openmw.git'
-        'boost-1.89.patch')
+)
 sha1sums=('SKIP'
-          'c86fe7e28f4c1cecef99e1f02c6787c472851243')
+)
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
@@ -43,10 +43,6 @@ pkgver() {
   _numcommits="$(git rev-list  $(git rev-list --tags --no-walk --max-count=1)..HEAD --count)"
   _hash="$(git rev-parse --short HEAD)"
   printf "%s.r%s.g%s" "$_fixed_tag" "$_numcommits" "$_hash"
-}
-
-prepare() {
-    patch --directory="${pkgname%-git}" --forward --strip=1 --input="$srcdir"/boost-1.89.patch
 }
 
 build() {
