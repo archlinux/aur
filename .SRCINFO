@@ -1,7 +1,7 @@
 pkgbase = flix-cli
 	pkgdesc = Watch movies and series from your commandline
 	pkgver = 1.7.10.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/demonkingswarn/flix-cli
 	arch = any
 	license = GPL3

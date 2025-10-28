@@ -1,7 +1,7 @@
 # Maintainer: Swarnaditya Singh <demonkingswarn@protonmail.com>
 pkgname='flix-cli'
 pkgver=1.7.10.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Watch movies and series from your commandline"
 arch=('any')
 url="https://github.com/demonkingswarn/flix-cli"
