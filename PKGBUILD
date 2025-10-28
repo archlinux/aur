@@ -24,7 +24,7 @@
 _pkgname="floorp"
 pkgname="$_pkgname"
 pkgver=12.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
 license=('MPL-2.0')
@@ -162,7 +162,6 @@ ac_add_options --enable-update-channel=nightly
 ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
-ac_add_options --enable-official-branding
 export MOZ_APP_NAME=$_pkgname
 export MOZ_APP_REMOTINGNAME=$_pkgname
 MOZ_REQUIRE_SIGNING=
