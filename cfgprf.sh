@@ -122,6 +122,14 @@ if [ $HELP ]; then
     exit
 fi
 
+if [ $HOME == "/root" ]; then
+    HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
+    if [ $HOME == "/root" ]; then
+        echo "cannot run as root, you need to run this as user, but sudo works"
+        exit 1
+    fi
+fi
+
 # setting mode
 MODE=NONE
 
