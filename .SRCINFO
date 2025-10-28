@@ -1,5 +1,5 @@
 pkgbase = c64tapedecode-svn
-	pkgdesc = C64 Datasette tape utilities for tape preservation and restoration
+	pkgdesc = Commodore C64 Datasette tape utilities for tape preservation and restoration
 	pkgver = 0.r69
 	pkgrel = 1
 	url = https://sourceforge.net/projects/c64tapedecode/
