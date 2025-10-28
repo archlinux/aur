@@ -551,7 +551,7 @@ _package-intellij-patch() {
 
 # ARTIFACTS
 
-_package-engine-common-google-bin() {
+_package-artifacts-engine-common-google-bin() {
   pkgdesc="${_pkgdesc} - common engine files"
   depends=(
 	"${_group}-common"
@@ -572,7 +572,7 @@ _package-engine-common-google-bin() {
   cp -ra "${srcdir}/${_group}/bin/cache/artifacts/engine/common" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine/common"
 }
 
-_package-sky-engine-google-bin() {
+_package-artifacts-sky-engine-google-bin() {
   pkgdesc="${_pkgdesc} - sky-engine"
   provides=(
 	"${_group}-sky-engine=${pkgver}"
@@ -586,7 +586,7 @@ _package-sky-engine-google-bin() {
   cp -ra "${srcdir}/${_group}/bin/cache/pkg" "${pkgdir}/usr/lib/${_group}/bin/cache/pkg"
 }
 
-_package-material-fonts-google-bin() {
+_package-artifacts-material-fonts-google-bin() {
   pkgdesc="${_pkgdesc} - material fonts"
   provides=(
 	"${_group}-material-fonts=${pkgver}"
@@ -600,7 +600,7 @@ _package-material-fonts-google-bin() {
   cp -ra "${srcdir}/${_group}/bin/cache/artifacts/material_fonts" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/material_fonts"
 }
 
-_package-engine-linux-google-bin() {
+_package-artifacts-engine-linux-google-bin() {
   pkgdesc="${_pkgdesc} - linux engine"
   depends=(
 	"${_group}-engine-common"
@@ -619,7 +619,7 @@ _package-engine-linux-google-bin() {
   cp -ra "${srcdir}/${_group}/bin/cache/artifacts/engine/linux-${_flutterarch}-release" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
 }
 
-_package-engine-web-google-bin() {
+_package-artifacts-engine-web-google-bin() {
   pkgdesc="${_pkgdesc} - web engine"
   depends=(
 	"${_group}-engine-common"
@@ -636,7 +636,7 @@ _package-engine-web-google-bin() {
   cp -ra "${srcdir}/${_group}/bin/cache/flutter_web_sdk" "${pkgdir}/usr/lib/${_group}/bin/cache"
 }
 
-_package-gradle-google-bin() {
+_package-artifacts-gradle-google-bin() {
   pkgdesc="${_pkgdesc} - gradle wrapper"
   depends=(
 	"${_group}-common"
@@ -645,7 +645,7 @@ _package-gradle-google-bin() {
 	"${_group}-gradle=${pkgver}"
   )
   conflicts=(
-	"${_group}-arficats-gradle"
+	"${_group}-gradle"
   )
 
   install -dm755 "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts"
@@ -653,7 +653,7 @@ _package-gradle-google-bin() {
   cp -ra "${srcdir}/${_group}/bin/cache/artifacts/gradle_wrapper" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts"
 }
 
-_package-engine-android-google-bin() {
+_package-artifacts-engine-android-google-bin() {
   pkgdesc="${_pkgdesc} - android engine"
   depends=(
 	"${_group}-engine-common"
@@ -682,7 +682,7 @@ _package-engine-android-google-bin() {
   cp -ra "${srcdir}/${_group}/bin/cache/artifacts/engine/android-x86" "${pkgdir}/usr/lib/${_group}/bin/cache/artifacts/engine"
 }
 
-_package-dart-google-bin() {
+_package-artifacts-dart-google-bin() {
   pkgdesc="${_pkgdesc} - Dart SDK"
   depends=(
 	"glibc"
@@ -706,7 +706,7 @@ _package-dart-google-bin() {
   ln -sf "/opt/dart-sdk/bin/dartaotruntime" "${pkgdir}/usr/bin/dartaotruntime"
 }
 
-pkgname=("${_group}" "${_group}-common" "${_group}-gradle" "${_group}-tool" "${_group}-devel" "${_group}-target-linux" "${_group}-target-android" "${_group}-target-web" "${_group}-intellij-patch" "${_group}-engine-common-google-bin" "${_group}-engine-linux-google-bin" "${_group}-engine-web-google-bin" "${_group}-engine-android-google-bin" "${_group}-sky-engine-google-bin" "${_group}-material-fonts-google-bin" "${_group}-gradle-google-bin" "${_group}-dart-google-bin")
+pkgname=("${_group}" "${_group}-common" "${_group}-gradle" "${_group}-tool" "${_group}-devel" "${_group}-target-linux" "${_group}-target-android" "${_group}-target-web" "${_group}-intellij-patch" "${_group}-artifacts-engine-common-google-bin" "${_group}-artifacts-engine-linux-google-bin" "${_group}-artifacts-engine-web-google-bin" "${_group}-artifacts-engine-android-google-bin" "${_group}-artifacts-sky-engine-google-bin" "${_group}-artifacts-material-fonts-google-bin" "${_group}-artifacts-gradle-google-bin" "${_group}-artifacts-dart-google-bin")
 
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
