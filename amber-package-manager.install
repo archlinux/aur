@@ -1,0 +1,77 @@
+# apm.install
+post_install() {
+    echo "Configuring APM..."
+    export PACKAGE_NAME="apm"
+    
+    # 检查并运行初始化脚本
+    if [ -x "/var/lib/apm/$PACKAGE_NAME/files/bin/ace-init" ]; then
+        "/var/lib/apm/$PACKAGE_NAME/files/bin/ace-init"
+    fi
+    
+    systemctl daemon-reload
+    
+    # 启用并启动服务
+    for service in apm-daily-update; do
+        if systemctl list-unit-files | grep -q "$service.service"; then
+            echo "Start Service: $service"
+            systemctl enable "$service" 2>/dev/null || true
+            systemctl start "$service" 2>/dev/null || true
+        fi
+    done
+
+    # 应用 sysctl 配置
+    if [ -f /usr/lib/sysctl.d/apm.conf ]; then
+        sysctl -p /usr/lib/sysctl.d/apm.conf 2>/dev/null || true
+    fi
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    export PACKAGE_NAME="apm"
+    
+    # 停止服务
+    for service in gxde-apm-fixer apm-daily-update; do
+        if systemctl is-active --quiet "$service"; then
+            echo "Stop Service: $service"
+            systemctl stop "$service" 2>/dev/null || true
+        fi
+    done
+}
+
+post_remove() {
+    export PACKAGE_NAME="apm"
+    
+    for service in gxde-apm-fixer apm-daily-update; do
+        if systemctl is-enabled --quiet "$service" 2>/dev/null; then
+            echo "Disable Service: $service"
+            systemctl disable "$service" 2>/dev/null || true
+        fi
+    done
+    
+    systemctl daemon-reload 2>/dev/null || true
+    
+    cleanup_apm_data
+}
+
+cleanup_apm_data() {
+    echo "Clean APM data..."
+    
+    local remove_paths=(
+        "/var/lib/apm/apm"
+        "/var/lib/apm"
+        "/etc/profile.d/apm.sh"
+        "/etc/X11/Xsession.d/20apm"
+        "/usr/lib/sysctl.d/apm.conf"
+        "/usr/lib/systemd/user-environment-generators/60-apm"
+        "/usr/share/bash-completion/completions/apm"
+    )
+    
+    for path in "${remove_paths[@]}"; do
+        if [ -e "$path" ]; then
+            rm -rf "$path"
+        fi
+    done
+}
