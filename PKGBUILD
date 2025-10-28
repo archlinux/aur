@@ -3,7 +3,7 @@
 
 pkgname="redact-bin"
 pkgdesc="Customize Redact to remove the content you'd like. Remove old tweets, images, discord messages, and much more."
-pkgver="0.19.1"
+pkgver="0.20.0"
 pkgrel=1
 arch=('x86_64')
 url="https://redact.dev/"
@@ -12,7 +12,7 @@ provides=('redact')
 conflicts=('redact')
 source=("https://update-desktop.redact.dev/build/Redact-${pkgver}.zip"
   "redact.desktop")
-sha256sums=('3c346888eef64cec41f3554d760ad93f68f5e953c1000197b532a1ccaacdebe6'
+sha256sums=('4ecf2d224986b1e5d915e4011f6d62975d4581eff4b980a001d9fe7c06e638a6'
             'a05e8dd421979d3342dfaa011129ef3fdf0905b6bcf26646c687a3b63504081b')
 
 package() {
