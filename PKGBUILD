@@ -2,7 +2,7 @@
 
 pkgname=rudder-agent
 pkgver=9.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Configuration management and audit tool - agent for Rudder managed systems'
 arch=('x86_64' 'aarch64')
 url='https://www.rudder.io'
@@ -26,29 +26,37 @@ sha256sums=('SKIP'
 
 prepare() {
   # Example using the souces tarball without further patching
-  # mv rudder-sources-${pkgver}.tar.bz2 ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/rudder-sources.tar.bz2
+  mv rudder-sources-${pkgver}.tar.bz2 ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/rudder-sources.tar.bz2
+  touch ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/rudder-sources.tar.bz2
   #
   # Example applying patch only to cfengine source code
   # cp ${srcdir}/../9901_cfengine_manjaro-os.patch ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/patches/cfengine/
   #
   # Untarring source tarball for applying additional build patches
-  tar -jf ${srcdir}/../rudder-sources-${pkgver}.tar.bz2 -C ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/ -x
+  # tar -jf ${srcdir}/../rudder-sources-${pkgver}.tar.bz2 -C ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/ -x
   # Move extracted source dir to final build location
-  mv ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/rudder-sources-${pkgver} ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/rudder-sources
+  # mv ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/rudder-sources-${pkgver} ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/rudder-sources
   # Applying patches to source tree
-  patch -d ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES -p1 < ${srcdir}/../9902_cfengine_manjaro-os.patch || exit 1
+  # patch -d ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES -p1 < ${srcdir}/../9902_cfengine_manjaro-os.patch || exit 1
   # Touch source tree so it appears more recent than anything else here
-  touch ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/rudder-sources/rudder-sources
+  # touch ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/rudder-sources/rudder-sources
   #
   # Edit Makefile.in to
   # - Update package version to build
   # - Comment out downloading of source code and overwriting it, as we already provided it
   sed -i -E -e "s/^RUDDER_VERSION_TO_PACKAGE =.*$/RUDDER_VERSION_TO_PACKAGE = ${pkgver}/i" \
 	  -e 's/^([[:space:]]*)chown root fusion(.*)$/\1# chown root fusion\2/' \
-	  -e 's/^rudder-sources: rudder-sources.tar.bz2/rudder-sources:/' \
-	  -e 's/^([[:space:]]*)bunzip2 < rudder-sources.tar.bz2(.*)$/\1# bunzip2 < rudder-sources.tar.bz2\2/' \
-	  -e 's/^([[:space:]]*)(mv rudder-sources-\$\(RUDDER_VERSION_TO_PACKAGE\)\*\/ rudder-sources\/)(.*)$/\1# \2\3/' \
 	  ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/Makefile.in
+  #
+  # Edit Makefile.in to
+  # - Update package version to build
+  # - Comment out downloading of source code and overwriting it, as we already provided it
+  # sed -i -E -e "s/^RUDDER_VERSION_TO_PACKAGE =.*$/RUDDER_VERSION_TO_PACKAGE = ${pkgver}/i" \
+  #         -e 's/^([[:space:]]*)chown root fusion(.*)$/\1# chown root fusion\2/' \
+  #         -e 's/^rudder-sources: rudder-sources.tar.bz2/rudder-sources:/' \
+  #         -e 's/^([[:space:]]*)bunzip2 < rudder-sources.tar.bz2(.*)$/\1# bunzip2 < rudder-sources.tar.bz2\2/' \
+  #         -e 's/^([[:space:]]*)(mv rudder-sources-\$\(RUDDER_VERSION_TO_PACKAGE\)\*\/ rudder-sources\/)(.*)$/\1# \2\3/' \
+  #         ${srcdir}/rudder-packages-${pkgver}/rudder-agent/SOURCES/Makefile.in
 }
 
 build() {

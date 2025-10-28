@@ -1,7 +1,7 @@
 pkgbase = rudder-agent
 	pkgdesc = Configuration management and audit tool - agent for Rudder managed systems
 	pkgver = 9.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.rudder.io
 	install = .install
 	arch = x86_64
