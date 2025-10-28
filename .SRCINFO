@@ -1,5 +1,5 @@
 pkgbase = emopick-git
-	pkgdesc = A tiny, emoji picker using awk and fzf for the terminal (git development version)
+	pkgdesc = A tiny emoji picker for the terminal. Built with awk, fzf and unicode-emoji. (git development version)
 	pkgver = r1.e6c4f35
 	pkgrel = 1
 	url = https://gitlab.com/greyxor/emopick
