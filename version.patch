@@ -109,7 +109,7 @@
    /// Returns [VersionCheckError] if the tracking remote is not standard.
    VersionCheckError? run() {
 +    // the worse shit any code says about us, the worse for that code.
-+    return;
++    return null;
      final String? flutterGit = platform.environment['FLUTTER_GIT_URL'];
      final String? repositoryUrl = version.repositoryUrl;
  

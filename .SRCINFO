@@ -1,7 +1,7 @@
 pkgbase = flutter
 	pkgdesc = A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android.
 	pkgver = 3.35.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flutter.dev
 	arch = x86_64
 	arch = aarch64
@@ -28,7 +28,7 @@ pkgbase = flutter
 	sha256sums = e3ef4149b6d42456a20935fefcae14cb65961842dea246f703aac4ee584b0109
 	sha256sums = e41d25d8cba8b0bb51ee0b20cb6b730bfb2c491d67c669ab8e3550d60b37fb5c
 	sha256sums = b4c104129eb57e7e3edca2e23376b8b034de2d466189bdc1c3e2a304506889a3
-	sha256sums = a72389a713d9572c9656a93319915d292879e09d9dbc8e025eb2db0ed1e04292
+	sha256sums = 0c7d73f81f973b72383fac1dbeb980dc1389cd22a2e3fb4897f841a8fd6af213
 	sha256sums = cadd32aaac6beeb91052174d50494bb7e16444759fcdc8224ea13550657f525f
 	sha256sums = e26c476ad75647fe4441d56888b95837f586db5feb0fada5e51005eb0582ce32
 	sha256sums = 34b02703c48f6686ffb2691a510607cfbe69beff9e726b47834b3298839542ca
