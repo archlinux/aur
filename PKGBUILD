@@ -4,7 +4,7 @@ pkgname=backseat-signed
 pkgver=0.1.0
 pkgrel=3
 pkgdesc='Authenticate cryptographic links from a signed derivate to its source input.'
-url='https://crates.io/crates/backseat-signed'
+url="https://crates.io/crates/$pkgname"
 arch=('x86_64')
 license=('GPL-3.0-or-later')
 depends=('gcc-libs'  'glibc' 'openssl')
@@ -30,5 +30,5 @@ check() {
 package() {
   cd $pkgname-$pkgver
   install -Dm 755 -t "${pkgdir}/usr/bin" \
-    target/release/backseat-signed
+    target/release/$pkgname
 }
