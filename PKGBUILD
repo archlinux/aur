@@ -24,7 +24,7 @@ prepare() {
 
 package() {
   install -d ${pkgdir}/opt/${pkgname%-bin}/
-  cp -av squashfs-root/* ${pkgdir}/opt/${pkgname%-bin}/
+  cp -a squashfs-root/* ${pkgdir}/opt/${pkgname%-bin}/
   rm -rf ${pkgdir}/opt/${pkgname%-bin}/{usr,OrcaSlicer.desktop,OrcaSlicer.png}
 
   install -d $pkgdir/usr/bin
