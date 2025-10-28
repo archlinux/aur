@@ -1,0 +1,15 @@
+pkgbase = gnome-themes-extra-gtk2
+	pkgdesc = Extra Themes for GNOME Applications (GTK2 themes)
+	pkgver = 3.28+r6+g45b1d457
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/gnome-themes-extra
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = intltool
+	makedepends = git
+	depends = gtk-engines
+	options = !emptydirs
+	source = git+https://gitlab.gnome.org/GNOME/gnome-themes-extra.git#commit=45b1d457c63b1c7f6c8dcb7fe29b23ec7cd63a14
+	sha256sums = 80722bc5cafa1e58b416f752d1cd03b04bc0a7b7f2b9a17f8486b6068f550d73
+
+pkgname = gnome-themes-extra-gtk2
