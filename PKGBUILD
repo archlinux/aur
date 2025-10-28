@@ -2,14 +2,14 @@
 # Contributor: LordBlick <Lord.Blick@gmail.com>
 
 pkgname='path-of-building-community-git'
-pkgrel=2
+pkgrel=1
 pkgdesc="An offline build planner for Path of Exile using PoBFrontend, LocalIdentity's fork"
 arch=('x86_64')
 provides=('path-of-building-community')
 conflicts=('path-of-building-community')
 url='https://github.com/PathOfBuildingCommunity/PathOfBuilding'
 license=('MIT')
-pkgver=2.56.0.r8701.65.517
+pkgver=2.56.0.r8703.65.517
 
 depends=('zlib' 'qt6-base' 'luajit' 'libgl' 'curl' 'ttf-liberation' 'ttf-bitstream-vera' 'lua51-utf8')
 makedepends=('meson' 'ninja' 'unzip' 'rsync' 'git')
@@ -22,7 +22,6 @@ source=(
 	'PathOfBuilding.sh'
 	'lzip-linux.patch'
 	'PathOfBuilding-force-disable-devmode.patch'
-	'PathOfBuilding-getscreenscale.patch'
 	'PathOfBuilding-logo.svg'
 	'PathOfBuilding-logo.png'
 	'PathOfBuildingCommunity.desktop'
@@ -35,7 +34,6 @@ sha256sums=(
 	'30118e22623b645a5e2cc81240fcf36d5189613383a09d1225aa3a76f7eba245'
 	'9dbc8802b74ceed78f1a6ba1d5b90251f5ae7f9a8cf5497426e4a35001112fcd'
 	'cab009c706747d45f654a3afc2a3cde3a650eb84cd4230353b40df5a4ad1d68b'
-	'49e047f00770811c26037c885e469749801e42dd4a085673cc89e72405eb6a5e'
 	'2467d10c7b5e201e337ba334a829e293a07027251bcda2b1f39774a62e8ff194'
 	'a64198061f60168ec07df33c37948e343eced7eeafe574cc20bdcf3a1d480cbc'
 	'079eff1a5e74cb6d776723f7c3d36349e426edaa332a8177ff8f5e78af56cf64'
@@ -54,8 +52,7 @@ prepare() {
 	(cd "${srcdir}/PathOfBuilding-runtime-src/LZip" && patch -p1 <"${srcdir}/lzip-linux.patch")
 	# disable devmode
 	(cd "${srcdir}/PathOfBuilding" \
-		&& patch --no-backup-if-mismatch -p1 <"${srcdir}/PathOfBuilding-force-disable-devmode.patch" \
-		&& patch --no-backup-if-mismatch -p1 <"${srcdir}/PathOfBuilding-getscreenscale.patch"
+		&& patch --no-backup-if-mismatch -p1 <"${srcdir}/PathOfBuilding-force-disable-devmode.patch"
 	)
 }
 
