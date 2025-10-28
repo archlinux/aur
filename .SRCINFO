@@ -1,0 +1,14 @@
+pkgbase = obs-source-profiler-bin
+	pkgdesc = A profiler for the sources in OBS.
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/exeldro/obs-source-profiler
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = obs-studio
+	provides = obs-source-profiler
+	conflicts = obs-source-profiler
+	source = obs-source-profiler-bin-0.0.9.deb::https://github.com/exeldro/obs-source-profiler/releases/download/0.0.9/source-profiler-0.0.9-x86_64-linux-gnu.deb
+	sha256sums = SKIP
+
+pkgname = obs-source-profiler-bin
