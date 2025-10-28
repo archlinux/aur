@@ -1,3 +1,5 @@
+# Maintainer: Damian "G'lek" Mulligan <glek@glektarssza.com>
+
 _pkgname=imgui
 pkgname=imgui-full
 # On each update, keep up to date with latest sha in https://github.com/microsoft/vcpkg/commits/master/ports/imgui
