@@ -483,7 +483,7 @@ function passwords_generateHash() {
         common_logger -d "Generating password hashes."
         for i in "${!passwords[@]}"
         do
-            nhash=$(bash /usr/share/wazuh-indexer/plugins/opensearch-security/tools/hash.sh -p "${passwords[i]}" 2>&1 | grep -A 2 'issues' | tail -n 1)
+            nhash=$(bash /usr/share/wazuh-indexer/plugins/opensearch-security/tools/hash.sh -p "${passwords[i]}" 2>&1)
             if [  "${PIPESTATUS[0]}" != 0  ]; then
                 common_logger -e "Hash generation failed."
                 if [[ $(type -t installCommon_rollBack) == "function" ]]; then
@@ -496,7 +496,7 @@ function passwords_generateHash() {
         common_logger -d "Password hashes generated."
     else
         common_logger "Generating password hash"
-        hash=$(bash /usr/share/wazuh-indexer/plugins/opensearch-security/tools/hash.sh -p "${password}" 2>&1 | grep -A 2 'issues' | tail -n 1)
+        hash=$(bash /usr/share/wazuh-indexer/plugins/opensearch-security/tools/hash.sh -p "${password}" 2>&1)
         if [  "${PIPESTATUS[0]}" != 0  ]; then
             common_logger -e "Hash generation failed."
             if [[ $(type -t installCommon_rollBack) == "function" ]]; then
@@ -1010,7 +1010,7 @@ function common_checkInstalled() {
     elif [ "${sys_type}" == "apt-get" ]; then
         indexer_installed=$(apt list --installed 2>/dev/null | grep wazuh-indexer)
     elif [ "${sys_type}" == "pacman" ]; then
-	wazuh_installed=$(pacman -Qs wazuh-indexer)
+	indexer_installed=$(pacman -Qs wazuh-indexer)
     fi
 
     if [ -d "/var/lib/wazuh-indexer/" ] || [ -d "/usr/share/wazuh-indexer" ] || [ -d "/etc/wazuh-indexer" ] || [ -f "${base_path}/search-guard-tlstool*" ]; then
@@ -1023,7 +1023,7 @@ function common_checkInstalled() {
     elif [ "${sys_type}" == "apt-get" ]; then
         filebeat_installed=$(apt list --installed  2>/dev/null | grep filebeat)
     elif [ "${sys_type}" == "pacman" ]; then
-	wazuh_installed=$(pacman -Qs wazuh-filebeat)
+	filebeat_installed=$(pacman -Qs wazuh-filebeat)
     fi
 
     if [ -d "/var/lib/filebeat/" ] || [ -d "/usr/share/filebeat" ] || [ -d "/etc/filebeat" ]; then
@@ -1036,7 +1036,7 @@ function common_checkInstalled() {
     elif [ "${sys_type}" == "apt-get" ]; then
         dashboard_installed=$(apt list --installed  2>/dev/null | grep wazuh-dashboard)
     elif [ "${sys_type}" == "pacman" ]; then
-	wazuh_installed=$(pacman -Qs wazuh-dashboard)
+	dashboard_installed=$(pacman -Qs wazuh-dashboard)
     fi
 
     if [ -d "/var/lib/wazuh-dashboard/" ] || [ -d "/usr/share/wazuh-dashboard" ] || [ -d "/etc/wazuh-dashboard" ] || [ -d "/run/wazuh-dashboard/" ]; then
@@ -1060,7 +1060,7 @@ function common_checkSystem() {
         sep="="
         common_logger -d "Pacman package manager will be used."
     else
-        common_logger -e "Couldn't find YUM, APT or PACMAN package manager. Try installing the one corresponding to your operating system and then, launch the installation assistant again."
+        common_logger -e "Couldn't find YUM, APT, or Pacman package manager. Try installing the one corresponding to your operating system and then, launch the installation assistant again."
         exit 1
     fi
 

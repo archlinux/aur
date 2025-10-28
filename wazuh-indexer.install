@@ -1,3 +1,23 @@
+pre_upgrade()
+{
+  echo "Note that the upgrade process doesn't update plugins installed manually. Outdated plugins might cause the upgrade to fail."
+  echo "visit https://documentation.wazuh.com/current/upgrade-guide/upgrading-central-components.html for more details"
+  echo "backup the existing Wazuh indexer security configuration files"
+  /usr/share/wazuh-indexer/bin/indexer-security-init.sh --options "-backup /etc/wazuh-indexer/opensearch-security -icl -nhnv"
+  systemctl stop wazuh-indexer
+  cp /etc/wazuh-indexer/jvm.options /etc/wazuh-indexer/jvm.options.old
+  echo "pre_upgrade finished"
+}
+
+post_upgrade()
+{
+  echo "Manually reapply any custom settings to the /etc/wazuh-indexer/jvm.options file, check /etc/wazuh-indexer/jvm.options.old"
+  /usr/share/wazuh-indexer/bin/indexer-security-init.sh
+  systemctl daemon-reload
+  systemctl start wazuh-indexer
+  echo "finished"
+}
+
 post_install()
 {
   echo "creating wazuh-indexer user and group"
