@@ -7,7 +7,7 @@
 pkgname=('ogdf' 'ogdf-docs')
 pkgtreename=foxglove
 pkgver=202510
-pkgrel=1
+pkgrel=2
 pkgdesc="The Open Graph Drawing Framework/Open Graph algorithms and Data structure Framework."
 arch=('i686' 'x86_64')
 url="https://ogdf.uos.de/"
@@ -20,12 +20,11 @@ options=('staticlibs')
 # Updated build and package methods contributed by yochananmarqos
 
 build() {
-	CFLAGS+=" -ffat-lto-objects"
-	CXXFLAGS+=" -ffat-lto-objects"
 	cd "$srcdir"
 	cmake -B build -S "$pkgbase-${pkgtreename}-$pkgver" \
 	  -DCMAKE_BUILD_TYPE='None' \
 	  -DCMAKE_INSTALL_PREFIX='/usr' \
+          -DBUILD_SHARED_LIBS='ON' \
 	  -Wno-dev
 	cmake --build build
 	
