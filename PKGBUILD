@@ -1,3 +1,5 @@
+# Maintainer: Damian "G'lek" Mulligan <glek@glektarssza.com>
+
 pkgbase=gvfs-git
 _pkgbase=gvfs
 pkgname=(gvfs-git gvfs-{smb,afc,gphoto2,goa,mtp,nfs,google}-git)
