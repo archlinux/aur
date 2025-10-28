@@ -30,8 +30,8 @@ build() {
 	cd "${pkgname}-${pkgver%_p*}"
 	CFLAGS="$CFLAGS -Wno-error=incompatible-pointer-types"
 	./configure --with-tcl --with-tk
-	make prefix=/usr
-	make -C hfsck prefix=/usr
+	make
+	make -C hfsck
 }
 
 package() {
