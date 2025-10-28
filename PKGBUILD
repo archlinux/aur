@@ -1,6 +1,7 @@
 # Maintainer: Swarnaditya Singh <demonkingswarn@protonmail.com>
-pkgname=flix-cli
-pkgver=1.7.0
+pkgname='python-flix-cli'
+_pkgname='flix-cli'
+pkgver=1.7.10.8
 pkgrel=1
 pkgdesc="Watch movies and series from your commandline"
 arch=('any')
@@ -8,11 +9,18 @@ url="https://github.com/demonkingswarn/flix-cli"
 license=('GPL3')
 depends=('mpv' 'ffmpeg' 'fzf' 'catt' 'python' 'python-httpx' 'python-regex' 'python-beautifulsoup4' 'python-krfzf')
 makedepends=('python-pip')
-source=("https://files.pythonhosted.org/packages/c8/7c/104cb34c7ed34e05ab6776ad679dedb1889a4d9e1c08666f5b85a428063d/flix_cli-${pkgver}-py3-none-any.whl")
-sha256sums=('6bf5c466b6441a67f1ba4bf3d9e2183934a7c35984a861c6303552bffe98caa0')
+source=("https://files.pythonhosted.org/packages/ca/ae/772e63fc8b5c7ff92f5d4161b7ff2711810cb514e696bfcfa3c3da60cbb2/flix_cli-${pkgver}-py3-none-any.whl")
+sha256sums=('172e5410fbbe7b638da8687dd120a6bc54325977c13abc9bd410652c1a373641')
 
-package() {
-    cd "$srcdir"
-    python -m pip install --root="$pkgdir" --no-deps --ignore-installed flix_cli-${pkgver}-py3-none-any.whl
+build(){
+        python -m build --no-isolation --wheel "${_pkgname/-/_}-$pkgver"
+}
+
+package(){
+        _py=$(python --version)
+        _py=${_py%%.*}
+
+        python -m installer --destdir="$pkgdir" \
+                "$srcdir/${_pkgname/-/_}-$pkgver/dist/${_pkgname/-/_}-${pkgver%.r*}-py${_py##* }-none-any.whl"
 }
 
