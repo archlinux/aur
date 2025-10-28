@@ -3,8 +3,7 @@ pkgbase = jelly
 	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/AzureHound/jelly
-	arch = x86_64
-	arch = armv7h
+	arch = any
 	license = 0BSD
 	depends = bash
 	depends = curl
@@ -13,6 +12,6 @@ pkgbase = jelly
 	depends = mpv
 	depends = socat
 	source = jelly-3.0.2.tar.gz::https://github.com/AzureHound/jelly/archive/refs/tags/v3.0.2.tar.gz
-	sha256sums = SKIP
+	sha256sums = 3898eec37df4635e658503e4f70f7e6e976cd16225a6f6e77ffef4cf7446cc8f
 
 pkgname = jelly
