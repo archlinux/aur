@@ -16,7 +16,7 @@
 pkgname=loot
 # https://github.com/loot/loot/releases
 pkgver=0.28.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A load order optimisation tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games"
 arch=('x86_64')
 url="https://loot.github.io"
@@ -25,6 +25,7 @@ depends=(
 	'fmt'
 	'icu'
 	'hicolor-icon-theme'
+	'ogdf' # AUR
 	'onetbb'
 	'qt6-base'
 	'libloot'
@@ -35,7 +36,6 @@ makedepends=(
 	'boost'
 	'cbindgen'
 	'cmake'
-	'ogdf' # AUR
 	'python'
 	'rust')
 optdepends=(
