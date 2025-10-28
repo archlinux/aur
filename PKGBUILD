@@ -4,7 +4,7 @@ _pkgauthor=hedhyw
 _pkgname=json-log-viewer
 _pkgexec=jlv
 pkgname=${_pkgname}-bin
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc='Interactive viewer for JSON logs.'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -17,9 +17,9 @@ provides=("${_pkgexec}")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgexec}_linux_amd64.tar.gz")
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgexec}_linux_386.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgexec}_linux_arm64.tar.gz")
-sha256sums_x86_64=('9cb57d61162e6dd58a8bff37af19a5027d47b9474d59179dd14007bbd57ca171')
-sha256sums_i686=('6a571f1529ca063a164632931ef806492223b88a12b32c4c346d411d4e7f7434')
-sha256sums_aarch64=('9cb50b2c5f3fd0f370f1a6bf2941efa78fda7f49814ef090ecbd43b8a5513f41')
+sha256sums_x86_64=('b7b4dc1ee290d7b787b80d407ab3fc0b8e37c95ee31ef92f8e1d91ec81f3df65')
+sha256sums_i686=('0c6a33e4620a7c98e312dda299b7f8d7f1423a74ca76ce52653df820fbc2ca93')
+sha256sums_aarch64=('3f78c123a4cb97f0e2aec2c071fc7ca134e8e5d52c454108f0ccf0627197d633')
 
 package() {
   cd "${srcdir}/" || exit
