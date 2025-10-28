@@ -37,6 +37,8 @@ optdepends=("${_pkgname}-providerlist: providerlist provider"
             "${_pkgname}-snippets: snippets provider"
             "${_pkgname}-nirisessions: nirisessions provider")
 
+options=(!strip)
+
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_pkgname}-linux-${_barch[0]}.tar.gz"

@@ -24,6 +24,7 @@ pkgbase = elephant-bin
 	optdepends = elephant-nirisessions: nirisessions provider
 	provides = elephant
 	conflicts = elephant
+	options = !strip
 	source = LICENSE-2.7.9::https://raw.githubusercontent.com/abenz1267/elephant/v2.7.9/LICENSE
 	source = README-2.7.9.md::https://raw.githubusercontent.com/abenz1267/elephant/v2.7.9/README.md
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
