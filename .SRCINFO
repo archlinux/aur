@@ -1,7 +1,7 @@
 pkgbase = razer-cli
 	pkgdesc = CLI for configuring Razer devices.
 	pkgver = 2.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lolei/razer-cli
 	arch = any
 	license = GPL-3.0-or-later

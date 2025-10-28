@@ -2,7 +2,7 @@
 
 pkgname=razer-cli
 pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI for configuring Razer devices."
 arch=(any)
 url="https://github.com/lolei/razer-cli"
@@ -19,20 +19,21 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('0f2a0d1f5b187209e33f4476807de226fe8c3215ca9a4f43021fb49d70adbbbe')
 
 build() {
-	cd "$pkgname-$pkgver"
-	python -m build --wheel --no-isolation
+    cd "$pkgname-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 check() {
-	cd "$pkgname-$pkgver"
-	pytest
+    cd "$pkgname-$pkgver"
+    pytest
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	python -m installer --destdir="$pkgdir" dist/*.whl
+    cd "$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
-	# Remove installed tests
-	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-	rm -r "${pkgdir}${site_packages}/razer_cli/tests/"
+    # Remove installed tests
+    local site_packages
+    site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+    rm -r "${pkgdir}${site_packages}/razer_cli/tests/"
 }
