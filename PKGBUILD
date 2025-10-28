@@ -1,5 +1,5 @@
 pkgname=('mingw-w64-highs')
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Linear optimization software (mingw-w64)'
 url='https://github.com/ERGO-Code/HiGHS'
@@ -9,14 +9,14 @@ makedepends=('mingw-w64-cmake')
 options=('!strip' '!buildflags' 'staticlibs')
 depends=('mingw-w64-zlib')
 source=("https://github.com/ERGO-Code/HiGHS/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2b44b074cf41439325ce4d0bbdac2d51379f56faf17ba15320a410d3c1f07275')
+sha256sums=('cd0daddaca57e66b55524588d715dc62dcee06b5ab9ad186412dc23bc71ae342')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd HiGHS-${pkgver}
   for _arch in ${_architectures}; do
-    ${_arch}-cmake -DBUILD_CXX_EXE=OFF -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=OFF -B build-${_arch} .
+    ${_arch}-cmake -DBUILD_CXX_EXE=OFF -DBUILD_EXAMPLES=OFF -DBUILD_TESTING=OFF -DCMAKE_UNITY_BUILD=ON -B build-${_arch} .
     make -C build-${_arch}
   done
 }
