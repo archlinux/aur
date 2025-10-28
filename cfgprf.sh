@@ -251,7 +251,7 @@ if [ $MODE == "IMPORT" ]; then
 
             echo "importing configs"
 
-            tar -xf $PROFILE &>/dev/null
+            tar -xf $PROFILE >/dev/null 2>&1
 
             if [ $FOLLOWSYMLINKS ]; then
                 rsync -aK "config/" "$HOME/.config/" >/dev/null
@@ -293,7 +293,7 @@ if [ $MODE == "IMPORT" ]; then
 
     if [ $DOTDIRS ]; then
 
-        if tar -tf $PROFILE etc/ >/dev/null 2>&1; then
+        if tar -tf $PROFILE dotdirs/ >/dev/null 2>&1; then
 
             echo "importing dot directories"
 

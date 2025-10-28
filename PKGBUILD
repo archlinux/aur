@@ -21,7 +21,7 @@ install=
 changelog=
 source=($pkgname.sh)
 noextract=()
-sha256sums=('156de49bcbe7bdfacaa1ed474d45c7372efed5b65f89d1dddd7c02f69ee3d62d')
+sha256sums=('87c03116d12a7668109f69dac40e3c8c314fab86448d6ace03702906e3a45463')
 
 package() {
 	install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
