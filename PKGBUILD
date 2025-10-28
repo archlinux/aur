@@ -1,4 +1,4 @@
-# Maintainer: Sophie Tauchert <sophie@999eagle.moe>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 _Name="Odin"
 _basename="${_Name,,}"
