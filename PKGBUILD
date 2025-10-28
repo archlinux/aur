@@ -3,7 +3,7 @@
 
 pkgname=jdk8-temurin
 _majorver=8
-_jdkver=8u462-b08
+_jdkver=8u472-b08
 _jvmdir=/usr/lib/jvm/java-${_majorver}-temurin
 _majorver=8
 pkgver=${_jdkver//-/}
@@ -15,7 +15,7 @@ license=('custom')
 depends=('java-runtime-common>=3' 'java-environment-common' 'ca-certificates-utils' 'desktop-file-utils' 'libxrender' 'libxtst' 'alsa-lib')
 options=('!strip') # Disable stripping of binaries
 source=("https://github.com/adoptium/temurin8-binaries/releases/download/jdk${_jdkver}/OpenJDK${_majorver}U-jdk_x64_linux_hotspot_${pkgver}.tar.gz")
-sha256sums=('5d64ae542b59a962b3caadadd346f4b1c3010879a28bb02d928326993de16e79')
+sha256sums=('5becaa4ac660e844c5a39e2ebc39ff5ac824c37ff1b625af8c8b111dc13c3592')
 replaces=("jdk${_majorver}-adoptopenjdk")                              # Replaces the old 'jdk8-adoptopenjdk' package
 install=install_jdk${_majorver}-temurin.sh                             # Script to be executed after package installation
 provides=("java-environment=${_majorver}" "java-runtime=${_majorver}") # Provides the 'java-environment=8' and 'java-runtime=8' virtual packages
