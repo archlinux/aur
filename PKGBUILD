@@ -1,7 +1,7 @@
 # Maintainer:   Razer <razer[AT]neuf[DOT]fr>
 pkgname=python-rf24
-pkgver=1.4.11
-pkgrel=0
+pkgver=1.5.0
+pkgrel=1
 pkgdesc='Python bindings for RF24 radio modules'
 arch=(any)
 url='http://tmrh20.github.io/RF24/'
@@ -16,7 +16,7 @@ makedepends=(
 'python-setuptools'
 )
 source=("https://github.com/nRF24/RF24/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('43596c36065980e6b98cac3f0504b3f562ab1b88f954f6f7cd765de456536d38')
+sha256sums=('fd66d5f4fa0b8153231b4863f4c9747aad4484e61461076919cb8dbaabfc8a36')
 
 build() {
   cd "$srcdir/RF24-$pkgver"
