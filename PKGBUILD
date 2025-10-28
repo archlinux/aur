@@ -39,6 +39,8 @@ optdepends=('elephant-providerlist: providerlist provider'
 
 backup=("etc/xdg/${_pkgname}/config.toml")
 
+options=(!strip)
+
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md"
         "config-${pkgver}.toml::${_urlraw}/resources/config.toml"
