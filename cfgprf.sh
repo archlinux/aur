@@ -182,7 +182,13 @@ if [ $MODE == "IMPORT" ]; then
             echo "  AUR packages, will be installed using yay or paru"
         fi
         if [ $CONFIGS ]; then
-            echo "  configs, will override your dotfiles in ~/.config"
+            echo "  configs, will override your dotfiles in ~/.config/"
+        fi
+        if [ $ETC ]; then
+            echo "  etc, will override your files in /etc/"
+        fi
+        if [ $DOTDIRS ]; then
+            echo "  dot directories, will override your files in dot directories which are located at ~"
         fi
 
         read -p "(Y/n): " CONFIRM
