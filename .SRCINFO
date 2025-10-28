@@ -1,0 +1,14 @@
+pkgbase = checkmate-capture-bin
+	pkgdesc = Checkmate Capture Monitoring Tool (binary release)
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/bluewave-labs/capture
+	arch = x86_64
+	license = AGPL-3.0
+	provides = checkmate-capture
+	conflicts = checkmate-capture
+	options = !strip
+	source = checkmate-capture-bin-1.3.2.tar.gz::https://github.com/bluewave-labs/capture/releases/download/v1.3.2/capture_1.3.2_linux_amd64.tar.gz
+	sha256sums = aa7ea22d35eedd3be80b69d55899d8a56d10b4d874e8cbb114ebad8be923dd2a
+
+pkgname = checkmate-capture-bin
