@@ -1,9 +1,10 @@
 # Maintainer: osoite <osoite@firemail.cc>
 pkgname=eyerest
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Script to remind your eyes to have a little break from the screen."
 arch=('any')
+url="https://git.sr.ht/~syntax/eyerest"
 license=('GPL3')
 depends=('bash' 'coreutils' 'libnotify')
 source=("git+https://git.sr.ht/~syntax/eyerest")
