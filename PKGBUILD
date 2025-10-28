@@ -1,52 +1,52 @@
-# Maintainer: Arthur Zamarin <arthurzam@gmail.com>
-# Contributor:	dorphell			<archlinux.org: dorphell>
-# Contributor:	Travis Willard			<archlinux.org: travis>
-# Contributor:	Douglas Soares de Andrade	<archlinux.org: douglas>
-# Contributor:	Jesse Jaara			<gmail.com: jesse.jaara>
+# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Arthur Zamarin <arthurzam@gmail.com>
+# Contributor: trya <tryagainprod@gmail.com>
+# Contributor: Jan de Groot <jgc@archlinux.org>
+# Contributor: dorphell <dorphell@archlinux.org>
+# Contributor: Travis Willard <travis@archlinux.org>
+# Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 
 pkgname=libpng12
-_realname=libpng
-pkgver=1.2.56
-pkgrel=3
-pkgdesc="A collection of routines used to create PNG format graphics files"
-arch=('i686' 'x86_64' 'armv7h' 'armv6h')
-url="http://www.libpng.org/pub/png/libpng.html"
+pkgver=1.2.59
+pkgrel=2
+pkgdesc='A collection of routines used to create PNG format graphics files'
+arch=('x86_64')
+url='http://www.libpng.org/pub/png/libpng.html'
 license=('custom')
-depends=('zlib')
-source=("http://sourceforge.net/projects/libpng/files/libpng12/${pkgver}/libpng-${pkgver}.tar.xz"
-        "http://sourceforge.net/projects/libpng-apng/files/libpng12/${pkgver}/libpng-${pkgver}-apng.patch.gz")
+depends=('glibc' 'zlib')
+source=("https://sourceforge.net/projects/libpng/files/libpng-${pkgver}.tar.xz"{,.asc}
+        "https://sourceforge.net/projects/libpng-apng/files/libpng12/${pkgver}/libpng-${pkgver}-apng.patch.gz")
+validpgpkeys=('8048643BA2C840F4F92A195FF54984BFA16C640F') # Glenn Randers-Pehrson
+sha256sums=('b4635f15b8adccc8ad0934eea485ef59cc4cae24d0f0300a9a941e51974ffcc7'
+            'SKIP'
+            '281fd5f0165762967a18302dca217de3212be4a3437f95805be44f1ac9db1a5d')
 
-sha256sums=('24ce54581468b937734a6ecc86f7e121bc46a90d76a0d948dca08f32ee000dbe'
-            'b689af23e7c399b1f5d1fc0a7ed0540a5e678bcb665bc70f377d0569b278f3d9')
 prepare() {
-  cd "${srcdir}/${_realname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/libpng-${pkgver}-apng.patch"
+  cd libpng-${pkgver}
+
+  patch -Np1 -i ../libpng-${pkgver}-apng.patch
+
+  libtoolize --force --copy
+  aclocal
+  autoconf
+  automake --add-missing
 }
 
 build() {
-  cd "${srcdir}/${_realname}-${pkgver}"
+  cd libpng-${pkgver}
 
-  # Removed bacause problems with automake system; Check in future updates
-  #libtoolize --force --copy
-  #aclocal
-  #autoconf
-  #automake --add-missing
-
-  ./configure --prefix=/usr
-
-  make ECHO=echo
+  ./configure \
+    --prefix='/usr'
+  make
 }
 
 package() {
-  cd "${srcdir}/${_realname}-${pkgver}"
+  cd libpng-${pkgver}
 
-  make ECHO=echo DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install
+  rm -rf "${pkgdir}"/usr/{bin,include/*.h,lib/{libpng.{a,so},pkgconfig},share}
 
-  rm -rf "${pkgdir}/usr/share"
-  rm -rf "${pkgdir}/usr/bin/libpng-config"
-  rm -rf "${pkgdir}/usr/lib/"{libpng.so,libpng.a}
-  rm -fr "${pkgdir}/usr/lib/pkgconfig/libpng.pc"
-  rm -rf "${pkgdir}/usr/include/"{pngconf.h,png.h}
-
-  install -Dm644 LICENSE $pkgdir/usr/share/licenses/libpng12/LICENSE
+  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/libpng12/
 }
+
+# vim: ts=2 sw=2 et:
