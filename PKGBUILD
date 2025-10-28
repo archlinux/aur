@@ -1,7 +1,7 @@
 # Maintainer: firstpick <you@example.com>
 pkgname=usrgrp-manager-bin
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Keyboard-driven TUI to view and manage UNIX users and groups (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/Firstp1ck/UsrGrp-Manager-TUI"
@@ -16,8 +16,10 @@ _binname=usrgrp-manager
 #   x86_64:  ${_binname}
 
 # under tag v${pkgver}
-source_x86_64=("${url}/releases/download/v${pkgver}/${_binname}")
-sha256sums_x86_64=('088016db811c47244a7c0fa8dce94bf2fa53fedb60ff9633de72170596143b61')
+source_x86_64=("${url}/releases/download/v${pkgver}/${_binname}"
+               "${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums_x86_64=('088016db811c47244a7c0fa8dce94bf2fa53fedb60ff9633de72170596143b61'
+                   '9b7e07e60eb6b94575270dd23268b0dc092d0335af36dcf1482b46830cec4181')
 
 prepare() {
 	chmod +x "${srcdir}/${_binname}" 2>/dev/null || true

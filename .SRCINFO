@@ -1,7 +1,7 @@
 pkgbase = usrgrp-manager-bin
 	pkgdesc = Keyboard-driven TUI to view and manage UNIX users and groups (prebuilt binary)
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Firstp1ck/UsrGrp-Manager-TUI
 	arch = x86_64
 	license = MIT
@@ -12,6 +12,8 @@ pkgbase = usrgrp-manager-bin
 	conflicts = usrgrp-manager-git
 	options = !strip
 	source_x86_64 = https://github.com/Firstp1ck/UsrGrp-Manager-TUI/releases/download/v0.3.0/usrgrp-manager
+	source_x86_64 = https://github.com/Firstp1ck/UsrGrp-Manager-TUI/archive/refs/tags/v0.3.0.tar.gz
 	sha256sums_x86_64 = 088016db811c47244a7c0fa8dce94bf2fa53fedb60ff9633de72170596143b61
+	sha256sums_x86_64 = 9b7e07e60eb6b94575270dd23268b0dc092d0335af36dcf1482b46830cec4181
 
 pkgname = usrgrp-manager-bin
