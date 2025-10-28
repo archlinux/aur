@@ -1,0 +1,19 @@
+pkgbase = libindicator-gtk2
+	pkgdesc = Set of symbols and convenience functions for Ayatana indicators (GTK+ 2 library)
+	pkgver = 12.10.1
+	pkgrel = 11
+	url = https://launchpad.net/libindicator
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = glib2-devel
+	makedepends = python
+	depends = gtk2
+	source = https://launchpad.net/libindicator/12.10/12.10.1/+download/libindicator-12.10.1.tar.gz
+	source = https://launchpad.net/libindicator/12.10/12.10.1/+download/libindicator-12.10.1.tar.gz.asc
+	source = fix-build.patch
+	validpgpkeys = 6FC05581A37D71FCECE165DB5BE41E162CD6358E
+	sha512sums = d6d77d0309b15cf6b52539323920ab0c1594cb1c1cef8a8d67cd0f76f8ceeeac28eb6db6227563df1932e6f1fadcffac68d82982182b745257dfaf91f1c945af
+	sha512sums = SKIP
+	sha512sums = bfb6942ce9d113c0dbe00fb3faed610c5b61f2cb1f30735418b3bea17b2ae7b8f672770e6aa93d7d4b2a2dbe2b26be41f0acb85503a7aea0c72c1da3c2bc1662
+
+pkgname = libindicator-gtk2
