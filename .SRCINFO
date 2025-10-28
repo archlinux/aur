@@ -1,4 +1,4 @@
-pkgbase = python-flix-cli
+pkgbase = flix-cli
 	pkgdesc = Watch movies and series from your commandline
 	pkgver = 1.7.10.8
 	pkgrel = 1
@@ -18,4 +18,4 @@ pkgbase = python-flix-cli
 	source = https://files.pythonhosted.org/packages/ca/ae/772e63fc8b5c7ff92f5d4161b7ff2711810cb514e696bfcfa3c3da60cbb2/flix_cli-1.7.10.8-py3-none-any.whl
 	sha256sums = 172e5410fbbe7b638da8687dd120a6bc54325977c13abc9bd410652c1a373641
 
-pkgname = python-flix-cli
+pkgname = flix-cli
