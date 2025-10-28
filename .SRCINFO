@@ -1,18 +1,18 @@
 pkgbase = peersky-browser-bin
 	pkgdesc = A minimal local-first p2p web browser: access, communicate, and publish offline.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.0.0_beta.11
+	pkgver = 1.0.0_beta.12
 	pkgrel = 1
 	url = https://peersky.p2plabs.xyz/
 	arch = x86_64
 	license = MIT
 	depends = electron29
-	provides = peersky-browser=1.0.0_beta.11
+	provides = peersky-browser=1.0.0_beta.12
 	conflicts = peersky-browser
 	options = !emptydirs
-	source = peersky-browser-1.0.0_beta.11.pacman::https://github.com/p2plabsxyz/peersky-browser/releases/download/v1.0.0-beta.11/peersky-browser-1.0.0-beta.11-linux-x64.pacman
-	source = LICENSE-1.0.0_beta.11::https://raw.githubusercontent.com/p2plabsxyz/peersky-browser/v1.0.0-beta.11/LICENSE
+	source = peersky-browser-1.0.0_beta.12.pacman::https://github.com/p2plabsxyz/peersky-browser/releases/download/v1.0.0-beta.12/peersky-browser-1.0.0-beta.12-linux-x64.pacman
+	source = LICENSE-1.0.0_beta.12::https://raw.githubusercontent.com/p2plabsxyz/peersky-browser/v1.0.0-beta.12/LICENSE
 	source = peersky-browser.sh
-	sha256sums = d34e0fa2cb6e3e64290dd9ad9f2c19ce232d94b2ec945810ccd634dec3d776e6
+	sha256sums = 681b90b221b54b4bfa48147c7450d4cabc5caa30b26de659b16dae7c7bad5c6c
 	sha256sums = 4a67a49c9cb2c0a80dcb67bb35bb7c10691b1460200398866df24cd0b8e00cab
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
