@@ -1,0 +1,16 @@
+pkgbase = fossglaze-git
+	pkgdesc = Rub your Linux distro into every Discord user's face via Discord RPC
+	pkgver = 1.0.r4.g97aef0f
+	pkgrel = 1
+	url = https://github.com/szoltysek/fossglaze
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-pypresence
+	provides = fossglaze
+	conflicts = fossglaze
+	source = git+https://github.com/szoltysek/fossglaze#branch=main
+	sha256sums = SKIP
+
+pkgname = fossglaze-git
