@@ -4,7 +4,7 @@
 
 pkgname=vcmi
 pkgver=1.6.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Open-source engine for Heroes of Might and Magic III"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/vcmi/vcmi"
@@ -26,16 +26,32 @@ prepare() {
   mkdir -p "$_pkgsrc"
   bsdtar -C "$_pkgsrc" -xf "$_pkgsrc.tar.gz"
 
+  # force qt6
   sed -i 's/find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Network)/find_package(QT NAMES Qt6 REQUIRED COMPONENTS Widgets Network)/' "$_pkgsrc/CMakeLists.txt"
   sed -i 's/set(BOOST_COMPONENTS .*)/set(BOOST_COMPONENTS date_time filesystem locale program_options)/' "$_pkgsrc/CMakeLists.txt"
 
-
+  # fix for boost 1.89 until 1.7.0+ released
 grep -q 'Boost_MAJOR_VERSION EQUAL 1 AND Boost_MINOR_VERSION LESS 69' "$_pkgsrc/CMakeLists.txt" || cat >> "$_pkgsrc/CMakeLists.txt" <<'EOF'
 if(Boost_MAJOR_VERSION EQUAL 1 AND Boost_MINOR_VERSION LESS 69)
     list(APPEND BOOST_COMPONENTS system)
     find_package(Boost 1.48.0 REQUIRED COMPONENTS ${BOOST_COMPONENTS})
 endif()
 EOF
+
+  # fix for innoextract until 1.7.0+ released
+_cmakefile="$_pkgsrc/launcher/lib/innoextract/CMakeLists.txt"
+sed -i '/find_package(Boost REQUIRED COMPONENTS/,/)/c\
+set(BOOST_REQUIRED_COMPONENTS\
+    iostreams\
+    filesystem\
+    date_time\
+    program_options\
+)\
+find_package(Boost REQUIRED COMPONENTS ${BOOST_REQUIRED_COMPONENTS})\
+if(Boost_MAJOR_VERSION EQUAL 1 AND Boost_MINOR_VERSION LESS 69)\
+    list(APPEND BOOST_REQUIRED_COMPONENTS system)\
+    find_package(Boost REQUIRED COMPONENTS ${BOOST_REQUIRED_COMPONENTS})\
+endif()' "$_cmakefile"
 }
 
 build() {
