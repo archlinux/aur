@@ -245,9 +245,6 @@ if [ $MODE == "IMPORT" ]; then
 
             echo "importing configs"
 
-            TEMP=$(mktemp -d)
-            cd $TEMP
-
             tar -xf $PROFILE &>/dev/null
 
             if [ $FOLLOWSYMLINKS ]; then
@@ -255,8 +252,6 @@ if [ $MODE == "IMPORT" ]; then
             else
                 rsync -a "config/" "$HOME/.config/" >/dev/null
             fi
-
-            rm -r $TEMP
 
         else
             echo "skipping importing configs because profile does not have config info"
