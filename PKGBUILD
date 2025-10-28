@@ -1,7 +1,7 @@
 # PKGBUILD
 pkgname=opencode-ui-bin
-pkgver=0.1.0
-pkgrel=0
+pkgver=0.1.6
+pkgrel=1
 pkgdesc="OpenCode Desktop Client"
 arch=('x86_64')
 url="https://github.com/marmotz-dev/opencode-ui"
@@ -11,7 +11,7 @@ source=(
   "https://github.com/marmotz-dev/opencode-ui/releases/download/v${pkgver}/opencode-ui-${pkgver}.AppImage"
 )
 sha256sums=(
-  '4cb773711784f19b8c2223964127700a73e29babe81b70179e3b946c9d0b57f5'
+  '2f6b30d3a566a1732bdef06ecc3be851986f3aa3e5606bfd99c147792f55a84c'
 )
 
 package() {
