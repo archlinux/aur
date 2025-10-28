@@ -4,5 +4,6 @@
 !PKGBUILD
 !README.md
 !.gitignore
+!REUSE.toml
 
 !cfgprf.sh
