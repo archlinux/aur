@@ -1,6 +1,7 @@
 # Maintainer: Dustin Pilgrim <dustin.pilgrim1997@gmail.com>
+
 pkgname=claw-bin
-pkgver=1.2.2
+pkgver=1.2.21
 pkgrel=2
 pkgdesc="Crustacean powered clipboard manager for X11 & Wayland"
 arch=('x86_64')
@@ -15,12 +16,11 @@ optdepends=(
 options=('!strip' '!debug' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("${url}/releases/download/v${pkgver}/claw_${pkgver}_amd64.deb")
-sha256sums_x86_64=('8be578a30c2bcdeadfc80f4909167d189ad5d18dcdc539464ebcaad02c0ed87b')
+sha256sums_x86_64=('6ae7f6240458a136702ea185829b824465b7c458832743f19383d7dd8d3983f5')
 
 package() {
   tar -xf data.tar.gz -C "${pkgdir}"
   
-  # Use 'claw' (not 'claw-bin') for the actual directory name
   local _appname="claw"
   
   if [ -d "${pkgdir}/usr/lib/${_appname}/_up_/examples" ]; then
