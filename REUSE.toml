@@ -29,6 +29,7 @@ path = [
     "fixes_nanosvg.patch",
     "integrate_occtwrapper.patch",
     "boost-1.89.patch",
+    "allow_wayland.patch",
 ]
 SPDX-FileCopyrightText = "prusa-slicer contributors"
 SPDX-License-Identifier = "AGPL-3.0-only"
