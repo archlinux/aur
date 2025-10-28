@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=p3x-redis-ui-bin
 _pkgname=P3X-Redis-UI
-pkgver=2025.4.136
-_electronversion=37
+pkgver=2025.10.107
+_electronversion=38
 pkgrel=1
 pkgdesc="A very functional handy database GUI and works in your pocket on the responsive web or as a desktop app.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -26,13 +26,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('1847e0e0698142ed4347c1441a9fa81c8fbddd44b1d8bbcd5e3647f991759d7f'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
-sha256sums_aarch64=('471f8a639de900feb29f6cd5f0b74a85c88169a74f72766c96cb7cb18cb45e86')
-sha256sums_armv7h=('3fc909d21c93980942796508e79f7c4c2baa1f6409d4072eb5794518b6994e53')
-sha256sums_x86_64=('c7d43e173b1017c78438b75735a8e7888ee934e6a84cd7cfee81efd85a91f74a')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums_aarch64=('d4da2ea9d505dbc680c0a3f88a47f6595e71b1e2f3bb40bb4b3730f87e4bd9b1')
+sha256sums_armv7h=('5ae22b6e2f0322312eeec640df0c71b0f80927a4ab2cbebcaf510dee24f6d942')
+sha256sums_x86_64=('0abc05c03e427ed34be9dc1bd3f961dd95f6df1787685ef188ceab0f231ed2af')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
@@ -48,7 +48,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    #cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
     _icon_sizes=(128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
