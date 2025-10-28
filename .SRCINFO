@@ -1,7 +1,7 @@
 pkgbase = grayjay
 	pkgdesc = Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)
-	pkgver = 11
-	pkgrel = 3
+	pkgver = 12
+	pkgrel = 1
 	url = https://grayjay.app/desktop/
 	arch = x86_64
 	license = custom:Source-First-License-1.1
