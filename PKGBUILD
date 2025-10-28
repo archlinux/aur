@@ -7,7 +7,7 @@ pkgver=1.17.13
 pkgrel=2
 pkgdesc="Build system that provides a simpler, more powerful, more efficient, and more reliable replacement for Make"
 arch=('x86_64')
-url="https://sourceforge.net/projects/odin-build"
+url="https://sourceforge.net/projects/odin-build/"
 license=('GPL-1.0-or-later')
 depends=(
   'glibc'
