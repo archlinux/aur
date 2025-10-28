@@ -7,7 +7,7 @@
 # Test if login works: https://iamapps.belgium.be/tma/
 
 pkgname=eid-mw
-pkgver=5.1.24
+pkgver=5.1.25
 #_pkgverlong=5.1.20.1.gb3056f4d
 pkgrel=1
 pkgdesc="The Belgian e-ID (electronic identity card) viewer and Firefox extension"
@@ -26,7 +26,7 @@ source=(
     "https://dist.eid.belgium.be/continuous/sources/$pkgname-$pkgver-v${pkgver}.tar.gz"
     "https://dist.eid.belgium.be/continuous/sources/$pkgname-$pkgver-v${pkgver}.tar.gz.asc"
 )
-sha256sums=('b16b97f3db59b7c6b1e46c91daa427dfa6e9e9b9ee13ee5c4809eeb859a7ae43'
+sha256sums=('95c6488f5418475bba7fd1cc72c1e80a8fd44a312118a57bd0568fec084cfd2d'
             'SKIP')
 #    Upstream only signs the "continuous releases" of the software, so that is the version
 #    we are using..
