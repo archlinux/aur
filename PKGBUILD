@@ -1,14 +1,15 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 # Contributor: Martin Stolpe <martinstolpe@gmail.com>
 
 pkgname=lib32-libjpeg6-turbo
 pkgver=1.5.3
-pkgrel=3
+pkgrel=4
 pkgdesc='libjpeg derivative with accelerated baseline JPEG compression and decompression'
 arch=('x86_64')
 url="https://libjpeg-turbo.org/"
-license=('BSD')
+license=('BSD-3-Clause AND Zlib AND IJG')
 depends=('lib32-glibc')
 makedepends=('nasm')
 provides=('lib32-libjpeg6')
@@ -47,6 +48,7 @@ package() {
   rm "${pkgdir}"/usr/lib32/lib{jpeg.{a,so},turbojpeg.{a,so*}}
 
   install -Dm 644 LICENSE.md -t "${pkgdir}"/usr/share/licenses/lib32-libjpeg6-turbo/
+  install -Dm 644 README.ijg "${pkgdir}"/usr/share/licenses/lib32-libjpeg6-turbo/LICENSE-IJG.md
 }
 
 # vim: ts=2 sw=2 et:
