@@ -3,33 +3,34 @@
 pkgname=tidal-dl-ng
 _pkgname=${pkgname//-/_}
 pkgver=0.31.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for downloading music and albums from TIDAL'
 arch=(any)
 url='https://pypi.org/project/tidal-dl-ng/'
 license=(AGPL-3.0-only)
 depends=(
     'python>=3.13'
-    'python-requests'
-    'python-mutagen'
-    'python-pycryptodome'
-    'python-tidalapi'
-    'python-dataclasses-json'
-    'python-pathvalidate'
-    'python-m3u8'
+    'pyqtdarktheme'
+    'pyside6'
+    'python-ansi2html'
     'python-coloredlogs'
+    'python-darkdetect'
+    'python-dataclasses-json'
+    'python-m3u8'
+    'python-mutagen'
+    'python-pathvalidate'
+    'python-pycryptodome'
+    'python-python-ffmpeg'
+    'python-requests'
     'python-rich'
+    'python-tidalapi'
     'python-toml'
     'python-typer'
-    'python-python-ffmpeg'
-    'pyside6'
-    'python-darkdetect'
-    'pyqtdarktheme'
 )
 makedepends=(
-    'python-poetry-core'
-    'python-installer'
     'python-build'
+    'python-installer'
+    'python-poetry-core'
 )
 source=(
     "https://files.pythonhosted.org/packages/source/t/$_pkgname/$_pkgname-$pkgver.tar.gz"
