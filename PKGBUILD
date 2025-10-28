@@ -1,6 +1,6 @@
 # Maintainer: calamity <calamity dot aur at mailban dot de>
 pkgname=doasedit-alternative
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Edit files as root using an unprivileged editor"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('doas')
 provides=('doasedit')
 conflicts=('doasedit')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('de7dfc450568d14f1ff473aa4a50a0d0505e188e117cc12cf3a2b0ea5da8af10')
+sha256sums=('bb02ab7a86b44f9128f6216946c8d21b41a1a4cc9acc06055d4774105a2239ee')
 
 package() {
 	cd doasedit
