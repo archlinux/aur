@@ -9,6 +9,8 @@ post_upgrade()
 {
   cp /etc/wazuh-dashboard/opensearch_dashboards.yml /etc/wazuh-dashboard/opensearch_dashboards.yml.pacnew
   cp /etc/wazuh-dashboard/opensearch_dashboards.yml.old /etc/wazuh-dashboard/opensearch_dashboards.yml
+  chown -R wazuh-dashboard:wazuh-dashboard /usr/share/wazuh-dashboard/*
+  chown -R wazuh-dashboard:wazuh-dashboard /etc/wazuh-dashboard/*
   systemctl daemon-reload
   systemctl start wazuh-dashboard
 }
