@@ -2,7 +2,7 @@
 
 pkgname=chromium-material-icons-for-github-bin
 pkgver=1.10.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Browser Addon that enhances file browsers of version controls with material icons.'
 arch=(any)
 url='https://github.com/material-extensions/material-icons-browser-extension'
@@ -15,11 +15,11 @@ source=("$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/github-material-i
 sha256sums=('500105200ba8ee98c14200d98c11ef60773da9a7117e3f73d595240ae47fd075')
 
 build() {
-	cd "$srcdir"/$_dirname
-	unzip $pkgname-$pkgver.zip -d extension-chrome
+    cd "$srcdir"/"$_dirname"
+    unzip $pkgname-$pkgver.zip -d extension-chrome
 }
 
 package() {
-	install -dm755 "$pkgdir"/usr/lib/material-icons-for-github-chromium
-	cp -r -- extension-chrome/* "$pkgdir"/usr/lib/material-icons-for-github-chromium
+    install -dm755 "$pkgdir"/usr/lib/material-icons-for-github-chromium
+    cp -r -- extension-chrome/* "$pkgdir"/usr/lib/material-icons-for-github-chromium
 }
