@@ -8,8 +8,8 @@ arch=('any')
 provides=('doi2bib3')
 url="https://github.com/archisman-panigrahi/doi2bib3"
 license=('GPL')
-depends=('python' 'python-requests')
-makedepends=('python-pip' 'python-packaging' 'git')
+depends=('python' 'python-requests' 'python-bibtexparser')
+makedepends=('python-pip' 'python-packaging' 'python-build' 'git')
 source=("git+https://github.com/archisman-panigrahi/doi2bib3.git")
 md5sums=('SKIP')
 
@@ -19,14 +19,14 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  # build a wheel (optional, requires python-build)
-  python -m build --no-isolation --wheel
+  python -m build --wheel
 }
 
 package() {
   cd "$srcdir/$_pkgname"
-  # install package into the package root
-  python -m pip install --root="$pkgdir" --prefix=/usr --no-deps .
-  # install README
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
+  python -m pip install --root="$pkgdir" --prefix=/usr --no-deps dist/*.whl
+
+  # install README under the real package name
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
+
