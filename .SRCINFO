@@ -1,0 +1,13 @@
+pkgbase = wefetch
+	pkgdesc = A fast, customizable system information tool for Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Nick-cpp/wefetch
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gcc-libs
+	source = wefetch.cpp
+	sha256sums = SKIP
+
+pkgname = wefetch
