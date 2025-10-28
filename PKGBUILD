@@ -1,73 +1,79 @@
-# Maintainer:
-# Contributor: xiretza <xiretza+aur@xiretza.xyz>
-# Contributor: Falk Alexander Seidl <fa@terminal.run>
+# Maintainer: Bruno Pagani <archange@archlinux.org>
 
-# Note: upstream uses custom CARGO_HOME
-: ${CARGO_TARGET_DIR:=target}
-: ${RUSTUP_TOOLCHAIN:=stable}
-export CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
-
-_pkgname="fractal"
-pkgname="fractal-git"
-pkgver=12.r122.g7c56918
+pkgname=fractal-git
+pkgver=13.rc.r12.g65d041b3
 pkgrel=1
-pkgdesc="Matrix messaging app for GNOME written in Rust"
+pkgdesc="Matrix group messaging app"
+arch=(x86_64)
 url="https://gitlab.gnome.org/World/fractal"
-license=('GPL-3.0-only')
-arch=('i686' 'x86_64')
-
+license=(GPL-3.0-only)
 depends=(
-  'gst-plugins-base-libs'
-  'gtk4'
-  'gtksourceview5'
-  'libadwaita'
-  'libshumate'
+  dconf
+  fontconfig
+  gcc-libs
+  gdk-pixbuf2
+  glib2
+  glibc
+  glycin1  # dlopen'ed
+  graphene
+  gst-plugins-bad-libs
+  gst-plugins-base-libs
+  gst-plugin-gtk4
+  gstreamer
+  gtk4
+  gtksourceview5
+  hicolor-icon-theme
+  lcms2
+  libadwaita
+  libpipewire
+  libseccomp
+  libshumate
+  openssl
+  org.freedesktop.secrets
+  pango
+  sqlite
 )
 makedepends=(
-  'blueprint-compiler'
-  'clang'
-  'git'
-  'meson'
-  'rust'
-  'sass'
-  'xdg-desktop-portal'
+	clang
+	blueprint-compiler
+	cmake
+	dart-sass
+	libwebp
+	meson
+	rust
+	cargo
+	xdg-desktop-portal
+	git
 )
-
-provides=("$_pkgname=${pkgver%%.g*}")
-conflicts=("$_pkgname")
-
-_pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+$url.git")
-sha256sums=('SKIP')
+source=(
+	"source::git+$url.git"
+)
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgsrc"
-  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+	cd source
+	git describe --long | sed -E 's/^v//g;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-  # speed up compilation
-  sed -E \
-    -e 's&^(\s*debug) = .*$&\1 = false&' \
-    -e 's&^(\s*codegen-units) = .*$&\1 = 8&' \
-    -i "$_pkgsrc/Cargo.toml"
-
-  cd "$_pkgsrc"
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cd source
+	git reset --hard
+	git clean -f
+	export CARGO_HOME="$(pwd)/build/cargo-home"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  CFLAGS+=" -ffat-lto-objects"
-  arch-meson "$_pkgsrc" build
-  meson compile -C build
+	CFLAGS+=' -ffat-lto-objects'
+	arch-meson source build
+	meson compile -C build
 }
 
 check() {
-  meson test -C build --print-errorlogs
+	meson test -C build --print-errorlogs
 }
 
 package() {
-  # NOTE: explicitly prevent rebuild: https://gitlab.gnome.org/GNOME/fractal/-/issues/1327
-  meson install -C build --destdir "$pkgdir" --no-rebuild
+	meson install -C build --destdir "$pkgdir" --no-rebuild
 }
