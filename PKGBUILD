@@ -3,7 +3,7 @@
 
 _pkgname=polychromatic
 pkgname=$_pkgname-git
-pkgver=0.9.3.r8.g54590f8
+pkgver=0.9.5.r11.g4564dfe
 pkgrel=1
 pkgdesc='RGB lighting management front-end application for OpenRazer'
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 source=("git+https://github.com/polychromatic/polychromatic.git")
 url='https://github.com/polychromatic/polychromatic'
 depends=(
-  libappindicator-gtk3
+  libappindicator
   python
   python-colorama
   python-colour
