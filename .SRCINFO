@@ -1,17 +1,17 @@
 pkgbase = pyrefly-bin
 	pkgdesc = A faster Python type checker written in Rust
-	pkgver = 0.38.2
+	pkgver = 0.39.1
 	pkgrel = 1
 	url = https://pyrefly.org/
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = MIT
-	source_aarch64 = pyrefly-aarch64-0.38.2.vsix::https://meta.gallery.vsassets.io/_apis/public/gallery/publisher/meta/extension/pyrefly/0.38.2/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage?targetPlatform=linux-arm64
-	sha256sums_aarch64 = 3e3b53f9210f8a80cdb6515e0d24c4a979977054133a6d4868eab3fdd9a18abf
-	source_armv7h = pyrefly-armv7h-0.38.2.vsix::https://meta.gallery.vsassets.io/_apis/public/gallery/publisher/meta/extension/pyrefly/0.38.2/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage?targetPlatform=linux-armhf
-	sha256sums_armv7h = da32ce5a96d242928aa768fe2f1b18c43b30fb15b452ca569b3b9a8121c8aecc
-	source_x86_64 = pyrefly-x86_64-0.38.2.vsix::https://meta.gallery.vsassets.io/_apis/public/gallery/publisher/meta/extension/pyrefly/0.38.2/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage?targetPlatform=linux-x64
-	sha256sums_x86_64 = 085032b548e7a475856c5a4c6425692cf1f2cbc3aef1b1b5427d1673576345db
+	source_aarch64 = pyrefly-aarch64-0.39.1.vsix::https://meta.gallery.vsassets.io/_apis/public/gallery/publisher/meta/extension/pyrefly/0.39.1/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage?targetPlatform=linux-arm64
+	sha256sums_aarch64 = ff90967c9515641a3dd204465347648666cbb46b2776775ce8258c5ed8c33195
+	source_armv7h = pyrefly-armv7h-0.39.1.vsix::https://meta.gallery.vsassets.io/_apis/public/gallery/publisher/meta/extension/pyrefly/0.39.1/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage?targetPlatform=linux-armhf
+	sha256sums_armv7h = 42d4cad90a603d65594b7b971a87cb5a608f7e7aebed7dc849ec32233aa68985
+	source_x86_64 = pyrefly-x86_64-0.39.1.vsix::https://meta.gallery.vsassets.io/_apis/public/gallery/publisher/meta/extension/pyrefly/0.39.1/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage?targetPlatform=linux-x64
+	sha256sums_x86_64 = a81d50f6d32b47795d49ae3d49ca57960b9667504cba4853f2aef328a8455e82
 
 pkgname = pyrefly-bin
