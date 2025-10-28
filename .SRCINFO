@@ -1,0 +1,16 @@
+pkgbase = flix-cli
+	pkgdesc = Watch movies and series from your commandline
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/demonkingswarn/flix-cli
+	arch = any
+	license = GPL3
+	makedepends = python-pip
+	depends = mpv
+	depends = ffmpeg
+	depends = fzf
+	depends = python
+	source = https://files.pythonhosted.org/packages/c8/7c/104cb34c7ed34e05ab6776ad679dedb1889a4d9e1c08666f5b85a428063d/flix_cli-1.7.0-py3-none-any.whl
+	sha256sums = 6bf5c466b6441a67f1ba4bf3d9e2183934a7c35984a861c6303552bffe98caa0
+
+pkgname = flix-cli
