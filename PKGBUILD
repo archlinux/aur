@@ -1,7 +1,7 @@
 # Maintainer: mh4ckwascut <mh4ckt3mh4ckt1c4s@archlinux.org>
 
 pkgname=wit-bindgen
-pkgver=0.46.0
+pkgver=0.47.0
 pkgrel=1
 pkgdesc="A language binding generator for WebAssembly interface types"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("Apache-2.0")
 depends=("glibc" "gcc-libs")
 makedepends=("cargo")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bytecodealliance/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('407fbd9858f84b7179bad3f32e7bf9cf01f1657f263f4ba937e87d9011d54410')
+sha256sums=('6b7de2fcbce039d0fc085b81f2523c4db38ab290e46907985595140361404a3c')
 
 prepare() {
 	cd "$pkgname-$pkgver"
