@@ -1,6 +1,6 @@
 pkgbase = peersky-browser
 	pkgdesc = A minimal local-first p2p web browser: access, communicate, and publish offline.(Use system-wide electron)
-	pkgver = 1.0.0_beta.11
+	pkgver = 1.0.0_beta.12
 	pkgrel = 1
 	url = https://peersky.p2plabs.xyz/
 	arch = any
@@ -15,9 +15,9 @@ pkgbase = peersky-browser
 	depends = nodejs
 	conflicts = peersky-browser
 	options = !strip
-	source = peersky-browser-1.0.0_beta.11::git+https://github.com/p2plabsxyz/peersky-browser#tag=v1.0.0-beta.11
+	source = peersky-browser-1.0.0_beta.12::git+https://github.com/p2plabsxyz/peersky-browser#tag=v1.0.0-beta.12
 	source = peersky-browser.sh
-	sha256sums = 9abae856a9c0e4351b08637bffc393a870215e03b1cd98729bca1ee1532a51e4
+	sha256sums = e46d4e3161b62915ffa063d7ceef9009106997a70210abe9b85976b6bba4ab4d
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = peersky-browser
