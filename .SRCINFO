@@ -11,6 +11,6 @@ pkgbase = cfgprf
 	optdepends = yay: working with AUR packages
 	optdepends = paru: working with AUR packages
 	source = cfgprf.sh
-	sha256sums = f85ae2db98e4af58e3731237004e5fb861c1ed4a37fb5de603f03397cb3c7311
+	sha256sums = 156de49bcbe7bdfacaa1ed474d45c7372efed5b65f89d1dddd7c02f69ee3d62d
 
 pkgname = cfgprf
