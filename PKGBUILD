@@ -9,7 +9,7 @@ arch=('any')
 url='https://github.com/polychromatic/polychromatic'
 license=('GPL-3.0-or-later')
 depends=(
-  libappindicator-gtk3
+  libappindicator
   python
   python-colorama
   python-colour
