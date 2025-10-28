@@ -1,0 +1,9 @@
+pkgbase = nodejs-lts
+	pkgdesc = Metapackage tracking NodeJS LTS release
+	pkgver = 22
+	pkgrel = 1
+	arch = any
+	license = Unlicense
+	depends = nodejs-lts-jod
+
+pkgname = nodejs-lts
