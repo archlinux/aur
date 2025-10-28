@@ -2,7 +2,7 @@
 pkgname=hotshots-updated-git
 pkgver=r33.9a67f69
 pkgrel=1
-pkgdesc="Screenshot and annotation software - updated"
+pkgdesc="A HotShots fork mainly focused on using the editor standalone"
 arch=('x86_64')
 url="https://github.com/boussou/HotShots"
 license=('GPL-2.0-or-later')
