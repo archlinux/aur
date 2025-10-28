@@ -2,9 +2,10 @@
 pkgname=bundletool
 pkgdesc="A command-line tool for manipulating Android App Bundles"
 pkgver=1.18.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/google/bundletool'
+license=('Apache-2.0')
 depends=('java-runtime')
 jarname=bundletool-all-$pkgver.jar
 source=(
