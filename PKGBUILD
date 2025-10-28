@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-ffmpeg
 pkgver=8.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
 arch=('any')
@@ -170,7 +170,8 @@ build() {
       --enable-version3 \
       --enable-vulkan \
       --disable-doc \
-      --disable-w32threads
+      --disable-w32threads \
+      --pkg-config="${_arch}-pkg-config"
 
       # fix linking of mbedtls
       sed -i -e 's/-lmbedtls/-lmbedtls -lmbedx509 -lmbedcrypto/' ./ffbuild/config.mak
