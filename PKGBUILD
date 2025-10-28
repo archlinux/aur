@@ -84,7 +84,7 @@ build() {
 package() {
   optdepends=(
     'adwaita-icon-theme: Default icon theme'
-    'gnome-themes-standard: Default widget theme'
+    'gnome-themes-extra-gtk2: Default widget theme'
   )
   provides=(
     libgailutil.so
