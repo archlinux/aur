@@ -1,4 +1,5 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: Damian "G'lek" Mulligan <glek[at]glektarssza[dot]com>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 # Contributor: Swift Geek < swift geek Ã¢t gmail dÃ¸t cÃ¸m>
@@ -8,13 +9,13 @@ pkgname=lib32-${_pkgname}-gtk2
 _bzrtag=12.10.0
 _bzrrev=298
 pkgver=${_bzrtag}.r${_bzrrev}
-pkgrel=3
+pkgrel=4
 pkgdesc='Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 2 library, 32-bit)'
 url='https://launchpad.net/libappindicator'
 arch=('x86_64')
 license=('GPL-3.0-only')
-depends=("${_pkgname}-gtk2" 'lib32-libdbusmenu-gtk2')
-makedepends=('breezy' 'dbus-glib' 'glib2-devel' 'gnome-common' 'vala')
+depends=('lib32-glib2' 'lib32-glibc' 'lib32-gtk2' 'lib32-libdbusmenu-glib' 'lib32-libdbusmenu-gtk2')
+makedepends=('breezy' 'lib32-dbus-glib' 'glib2-devel' 'gnome-common' 'gobject-introspection' 'gtk-doc' 'vala' 'perl-xml-libxml')
 options=('!emptydirs')
 source=($_pkgname::bzr+https://code.launchpad.net/~indicator-applet-developers/libappindicator/trunk#revision=$_bzrrev
         libappindicator-fix-unfallback.patch)
