@@ -1,8 +1,8 @@
 # Maintainer: Sébastien TERRIER <ouinouin at ouinouin dot eu>
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=citron
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://citron-emu.org
@@ -36,7 +36,7 @@ source=(${pkgname}::git+https://git.citron-emu.org/citron/emulator.git#tag=${pkg
         tz::git+https://github.com/eggert/tz.git
 	SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
 )
-b2sums=('e490bdf8cd38cbfd788bc74fc3cf8626b631aa0a59748ad372fbb40593ed718fce966cefe79f9afeb1cc9e14ed4f79e6e5cefb75f2c5ee05d31d4c4495cc6ce0'
+b2sums=('67b8a61fe87f2205827fefd655b7f7af14902aa1c41fc26953c80d3b1f35f6319091ca666213c352b314374215b2a001d4bc5b5ea81f478367a101c845c2b668'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -108,7 +108,7 @@ prepare() {
   find . -type f \( -name '*.cpp' -o -name '*.h' \) | xargs sed -i 's/\bboost::process::async_pipe\b/boost::process::v1::async_pipe/g'
 
   # Ensure cubeb is used from externals
-  sed -i '366d;367d;368d' CMakeLists.txt
+  sed -i '377d;378d;379d' CMakeLists.txt
 
   # Fix QT for 6.10.0
   sed -i 's/find_package(Qt6 REQUIRED COMPONENTS Widgets/find_package(Qt6 REQUIRED COMPONENTS Widgets GuiPrivate/g;s/set(CITRON_QT_COMPONENTS2 Core/set(CITRON_QT_COMPONENENTS2 Core GuiPrivate/g' CMakeLists.txt
