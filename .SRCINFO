@@ -1,0 +1,17 @@
+pkgbase = hotshots-updated-git
+	pkgdesc = Screenshot and annotation software - updated
+	pkgver = r33.9a67f69
+	pkgrel = 1
+	url = https://github.com/boussou/HotShots
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-x11extras
+	depends = qt5-multimedia
+	provides = hotshots-updated
+	conflicts = hotshots-updated
+	source = hotshots-updated::git+https://github.com/boussou/HotShots.git
+	sha256sums = SKIP
+
+pkgname = hotshots-updated-git
