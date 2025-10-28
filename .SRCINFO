@@ -1,6 +1,6 @@
 pkgbase = nessus-agent
 	pkgdesc = Nessus vulnerability scanner agent
-	pkgver = 10.8.2
+	pkgver = 11.0.2
 	pkgrel = 1
 	url = https://www.tenable.com/downloads/nessus-agents
 	install = nessus-agent.install
@@ -13,10 +13,10 @@ pkgbase = nessus-agent
 	conflicts = nessus
 	options = !strip
 	options = debug
-	source = NessusAgent-10.8.2-fc38.x86_64.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus-agents/downloads/24929/download?i_agree_to_tenable_license_agreement=true
+	source = NessusAgent-11.0.2-fc38.x86_64.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus-agents/downloads/26783/download?i_agree_to_tenable_license_agreement=true
 	source = LICENSE
 	source = get_nessus_link.rb
-	sha256sums = b41c599850a91319322d1cd0c392136d70ead55e22c2bb870f69fc0000889c4a
+	sha256sums = 4b7639f4ebd9bd18a24d9bca7f136b82c5561e684ea48fcf4a1413f9a5aef13f
 	sha256sums = d647aedd39d571faa3f1a9906db561eecbd9c41605ba7f562261ffb04877ba26
 	sha256sums = 191603f44668b2f7dbafde4faef75ace91590d5c07a7a146601834ebe65a4734
 
