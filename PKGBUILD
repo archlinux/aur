@@ -1,7 +1,7 @@
 # Maintainer: Jian Wei Cheong <aur at jianwei dot anonaddy dot com>
 
 pkgname=bibiman
-pkgver=0.15.0
+pkgver=0.16.3
 pkgrel=1
 pkgdesc='A TUI for fast and simple interacting with your BibLaTeX database.'
 url='https://codeberg.org/lukeflo/bibiman'
@@ -12,7 +12,7 @@ conflicts=('bibiman-bin' 'bibiman-git')
 arch=('x86_64')
 options=(!debug !lto)
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/lukeflo/bibiman/archive/v$pkgver.tar.gz")
-b2sums=('e2c4aa1eead5a0adc8e8c8be1fba095e26b53fce79b3d36ceecb0f0e1450129d52b18320d97e5679dd1745ed980744f35ebe307c44ddb204c73843b2d4e5ea2a')
+b2sums=('20d65e4a0c71ef8bde491868770433d1c8d97b3eb3d7660fa68f7f63ce904fc2cf475e09ef3fc03edc51d6693b23cf8dd9e299cc8f2835557e57d2a391ae763d')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
