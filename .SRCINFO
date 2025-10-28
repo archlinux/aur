@@ -1,0 +1,14 @@
+pkgbase = penguin
+	pkgdesc = Dev server with auto-reload, static file server, proxy support, and more. Language and framework agnostic.
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/LukasKalbertodt/penguin
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	makedepends = cargo
+	options = !debug
+	source = https://github.com/LukasKalbertodt/penguin/archive/refs/tags/app-v0.2.7.tar.gz
+	sha256sums = 2e8f3f5eec4f265997f3c6f39d6f58d16e842b515b3a992e8c8b0837425efc3e
+
+pkgname = penguin
