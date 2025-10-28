@@ -3,7 +3,7 @@
 # Contributor: J0k3r <moebius282 at gmail dot com>
 
 pkgname=netradiant-git
-pkgver=r2615.0cd06ff4
+pkgver=r2618.04201ff5
 pkgrel=1
 epoch=1
 pkgdesc='The open source, cross platform level editor for idtech games (GtkRadiant fork)'
@@ -13,6 +13,7 @@ arch=('i686' 'x86_64')
 depends=('bash' 'cairo' 'gdk-pixbuf2' 'gcc-libs' 'glibc' 'glib2' 'gtk2' 'gtkglext' 'libglvnd' 'libjpeg-turbo'
          'libpng' 'libwebp' 'libxml2' 'libx11' 'minizip' 'pango' 'zlib')
 makedepends=('cmake' 'git' 'make' 'svn' 'unzip' 'wget')
+optdepends=('gtk3: compile and run netradiant with gtk3, it works but with some drawbacks')
 provides=('netradiant' 'h2data' 'q2map' 'q3data' 'q3map2' 'qdata3')
 source=("${pkgname}::git+https://gitlab.com/xonotic/netradiant.git"
         "git+https://github.com/DaemonEngine/crunch.git")
@@ -40,6 +41,10 @@ build() {
     # If you only want to fetch the Unvanquished and Xonotic gamepacks for example,
     # use -DGAMEPACKS_LICENSE_LIST=none and -DGAMEPACKS_NAME_LIST="Unvanquished Xonotic".
     # See https://gitlab.com/xonotic/netradiant/-/blob/master/README.md for further instructions.
+
+    # Add -DGTK_TARGET=3 to build and run NetRadiant with gtk3 instead of gtk2 + gtkglext, don't forget
+    # to edit the package dependencies accordingly.
+
     cmake -G "Unix Makefiles" -S. -Bbuild \
     -DCMAKE_BUILD_TYPE=Release \
     -DOpenGL_GL_PREFERENCE=GLVND \
