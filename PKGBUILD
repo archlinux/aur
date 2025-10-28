@@ -1,6 +1,6 @@
 # Maintainer: Nevimmu <nevimmu@gmail.com>
 pkgname=hyprdvd
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 epoch=
 pkgdesc="Bouncy DVD-like terminal"
