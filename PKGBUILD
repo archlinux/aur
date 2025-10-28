@@ -5,10 +5,10 @@
 
 pkgname=ffmpeg-amd-full
 pkgver=8.0
-pkgrel=1
+pkgrel=2
 _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
 _obs_studio_ver='32.0.1'
-_whispercpp_ver='1.8.0'
+_whispercpp_ver='1.8.2'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD)'
 arch=('x86_64')
 url='https://ffmpeg.org/'
@@ -163,17 +163,19 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '060-ffmpeg-whisper.cpp-fix-pkgconfig.patch'
         '070-ffmpeg-lcevcdec4.0.0-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/fa23202cc7baab899894e8d22d82851a84967848'
+        '090-ffmpeg-glslang16-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/f1e9032a2000b8b885cffd6fed8eacd47b37673f'
         'LICENSE')
 sha256sums=('b2751fccb6cc4c77708113cd78b561059b6fa904b24162fa0be2d60273d27b8e'
             'SKIP'
             '906278ccedb5ed919e586697467eb7fa4205fceeda127386ce5b74026113ba96'
-            'c006a5e472ee41e7a733d0bf7326e339c8b281d3a91a1c8a35468fa0a051940f'
+            'bcee25589bb8052d9e155369f6759a05729a2022d2a8085c1aa4345108523077'
             '4b1053cc01244c79e3b23dc696eaff1aeb0627a2098e1a720a025d4ad75b5c16'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
             'da01eb3ca31d35d23257760875e14bed808b3fea02f290028adaed76062125a0'
             '5cb2475de410f5696072687af88e91461cdacd1bb636ac14a3b348e3383934f1'
             '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
             'd2bacb3a5b0201503554c3394ea1f3fbc8ad79d5c2721e0c226134d40812ad08'
+            '0010bf826a7008452ccc8a072b0186688e8687be0dbe2be2ca7540e26ca076f1'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
@@ -185,6 +187,7 @@ prepare() {
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d "whisper.cpp-${_whispercpp_ver}" -Np1 -i "${srcdir}/060-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/070-ffmpeg-lcevcdec4.0.0-fix.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/090-ffmpeg-glslang16-fix.patch"
 }
 
 build() {
