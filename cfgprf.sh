@@ -264,6 +264,52 @@ if [ $MODE == "IMPORT" ]; then
 
     fi
 
+    if [ $ETC ]; then
+
+        if [[ $EUID -ne 0 ]]; then
+            echo "skipping importing etc because script was not run as root"
+        else
+
+            if tar -tf $PROFILE etc/ >/dev/null 2>&1; then
+
+                echo "importing etc"
+
+                tar -xf $PROFILE &>/dev/null
+
+                if [ $FOLLOWSYMLINKS ]; then
+                    rsync -aK "etc/" "/etc/"
+                else
+                    rsync -a "etc/" "/etc/"
+                fi
+
+            else
+                echo "skipping importing etc because profile does not have etc info"
+            fi
+
+        fi
+
+    fi
+
+    if [ $DOTDIRS ]; then
+
+        if tar -tf $PROFILE etc/ >/dev/null 2>&1; then
+
+            echo "importing dot directories"
+
+            tar -xf $PROFILE >/dev/null 2>&1
+
+            if [ $FOLLOWSYMLINKS ]; then
+                rsync -aK "dotdirs/" "~/"
+            else
+                rsync -a "dotdirs/" "~/"
+            fi
+
+        else
+            echo "skipping importing dot directories because profile does not have dot directory info"
+        fi
+
+    fi
+
     rm -r $TEMP
 
     echo
@@ -318,7 +364,7 @@ elif [ $MODE == "EXPORT" ]; then
 
         mkdir "config"
 
-        # so many excludes cause some programs like vscode and discord abuse ~/.config/
+        # so many excludes cause some programs like vscode and discord (electron in general) abuse ~/.config/
         EXCLUDE=(
             "--exclude=*.log"
             "--exclude=*.tmp"
@@ -327,18 +373,86 @@ elif [ $MODE == "EXPORT" ]; then
             "--exclude=sessionData"
         )
 
-        rsync "${EXCLUDE[@]}" -a "$HOME/.config/" "config/"
+        rsync ${EXCLUDE[@]} -am "$HOME/.config/" "config/"
 
         if [ $FOLLOWSYMLINKS ]; then
-            tar -rhf $PROFILE "config"
+            tar -rhf $PROFILE "config" >/dev/null 2>&1
         else
-            tar -rf $PROFILE "config"
+            tar -rf $PROFILE "config" >/dev/null 2>&1
+        fi
+
+    fi
+
+    if [ $ETC ]; then
+
+        if [[ $EUID -ne 0 ]]; then
+            echo "skipping importing etc because script was not run as root"
+        else
+
+            echo "exporting etc"
+
+            mkdir "etc"
+
+            rsync -am "/etc/" "etc/"
+
+            if [ $FOLLOWSYMLINKS ]; then
+                tar -rhf $PROFILE "etc" > dev/null 2>&1
+            else
+                tar -rf $PROFILE "etc" >/dev/null 2>&1
+            fi
+
+        fi
+
+    fi
+
+    if [ $DOTDIRS ]; then
+
+        echo "exporting dot directories"
+
+        mkdir "dotdirs"
+
+        # this is even more absurd than ~/.config/
+        EXCLUDE=(
+            "--exclude=.config/"
+            "--exclude=*.ssh"
+            "--exclude=*gnupg"
+            "--exclude=*gpg"
+            "--exclude=.steam/"
+            "--exclude=Steam/"
+            "--exclude=.wine/"
+            "--exclude=.cache/"
+            "--exclude=pnpm/"
+            "--exclude=packages/"
+            "--exclude=node_modules/"
+            "--exclude=src/"
+            "--exclude=*.log"
+            "--exclude=*.tmp"
+            "--exclude=*cache*"
+            "--exclude=*Cache*"
+            "--exclude=session*"
+            "--exclude=bin"
+            "--exclude=bin32"
+            "--exclude=bin64"
+            "--exclude=lib"
+            "--exclude=lib32"
+            "--exclude=lib64"
+            "--exclude=sdk32"
+            "--exclude=sdk64"
+        )
+
+        # i'm sorry for this
+        rsync "${EXCLUDE[@]}" -am --include=.*/*** --include=*/ --exclude=* $HOME/ dotdirs/
+
+        if [ $FOLLOWSYMLINKS ]; then
+            tar -rhf $PROFILE "dotdirs" >/dev/null 2>&1
+        else
+            tar -rf $PROFILE "dotdirs" >/dev/null 2>&1
         fi
 
     fi
 
     touch "cfgprf"
-    tar -rf $PROFILE "cfgprf"
+    tar -rf $PROFILE "cfgprf" >/dev/null
 
     rm -r $TEMP
 
