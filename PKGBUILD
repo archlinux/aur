@@ -6,5 +6,5 @@ pkgrel=1
 pkgdesc="Metapackage tracking NodeJS LTS release"
 url=""
 arch=("any")
-license=("Unlicense")
+license=("0BSD")
 depends=("nodejs-lts-jod")

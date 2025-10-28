@@ -3,7 +3,7 @@ pkgbase = nodejs-meta-lts
 	pkgver = 22
 	pkgrel = 1
 	arch = any
-	license = Unlicense
+	license = 0BSD
 	depends = nodejs-lts-jod
 
 pkgname = nodejs-meta-lts
