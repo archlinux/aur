@@ -1,7 +1,7 @@
 pkgbase = ziti-edge-tunnel
 	pkgdesc = The linux tunneller for your Ziti network.
 	pkgver = 1.7.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openziti.github.io/ziti/clients/linux.html
 	install = ziti-edge-tunnel.install
 	arch = x86_64

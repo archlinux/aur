@@ -3,7 +3,7 @@
 
 pkgname=ziti-edge-tunnel
 pkgver=1.7.12
-pkgrel=1
+pkgrel=2
 pkgdesc="The linux tunneller for your Ziti network."
 arch=(x86_64 arm64 armhf arm)
 depends=('polkit')
