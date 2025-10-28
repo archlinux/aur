@@ -1,0 +1,16 @@
+pkgbase = linux-wave
+	pkgdesc = Linux facial recognition authentication system with PAM integration
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/vinisadev/linux-wave
+	arch = x86_64
+	license = MIT
+	optdepends = opencv: Face detection support (future)
+	optdepends = tensorflow: Face recognition engine (future)
+	optdepends = bluez: Bluetooth proximity detection (future)
+	optdepends = gtk3: Enrollment GUI with GTK (future)
+	optdepends = qt5-base: Enrollement GUI with Qt (future)
+	source = linux-wave-0.1.0.tar.gz::https://github.com/vinisadev/linux-wave/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = linux-wave
