@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _name=dspy
 pkgname=python-$_name
-pkgver=2.6.22
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="The framework for programming (not prompting) language models"
 arch=(any)
@@ -14,21 +14,21 @@ depends=(
     python-backoff
     python-cachetools
     python-cloudpickle
-    python-datasets
     python-diskcache
+    # python-gepa
     python-joblib
     python-json_repair
     python-magicattr
     python-importlib-metadata
     python-openai
     python-optuna
-    python-pandas
+    python-orjson
     python-pydantic
     python-regex
     python-requests
     python-tenacity
     python-tqdm
-    python-ujson
+    python-xxhash
     python-yaml
 )
 optdepends=(
@@ -37,11 +37,13 @@ optdepends=(
     "python-chromadb: support for Chroma"
     "python-fastembed: required to use Qdrant"
     "python-lancedb: support for LanceDB"
+    "python-langchain: support composability of multiple LLMs"
     "python-marqo: support for Marqo"
-    "python-qdrant-client: support for Qdrant"
+    "python-mcp: support Model Context Protocol"
     "python-pillow: support for signatures"
     "python-pinecone-client: support for Pinecone"
     "python-pyepsilla: support for EpsillaDB"
+    "python-qdrant-client: support for Qdrant"
     "python-redis: support for FalkorDB"
     "python-rich: synthesizer submodule"
     "python-weaviate-client: support for Weaviate"
@@ -53,10 +55,9 @@ makedepends=(
     python-build
     python-installer
     python-setuptools
-    python-wheel
 )
 source=($_name::git+https://github.com/stanfordnlp/dspy.git#tag=$pkgver)
-b2sums=('2f8803ddceed0326ddad6964554e47af3d013d5f7321a3194577d2d2a361e99eb17085f2cec355000708fc8c4d0ce73cb220ff5e2ca33c35c276925e9221353c')
+b2sums=('c653becc2b353abbe5fa12aacc2d184d2a7f660c74977aa22904856d0673409682ec0d7e0740a46041f7262d7fb8e5152b1391f0102350a0512e46cca8aa11d5')
 
 build() {
     cd $_name
