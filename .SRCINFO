@@ -1,7 +1,7 @@
 pkgbase = livebook-git
 	pkgdesc = Automate code & data workflows with interactive Elixir notebooks (git version)
 	pkgver = nightly.r0.g8514f12d2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://livebook.dev
 	arch = any
 	license = Apache-2.0

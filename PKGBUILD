@@ -52,7 +52,7 @@ EOF
     mkdir -p "${pkgdir}/usr/share/applications"
     cat <<'EOF' > "${pkgdir}/usr/share/applications/livebook.desktop"
 [Desktop Entry]
-Name=Livebook (Git)
+Name=Livebook
 Comment=Interactive Elixir notebooks (latest)
 Exec=/usr/bin/livebook-desktop
 Terminal=false
