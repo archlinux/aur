@@ -1,6 +1,6 @@
 pkgbase = plasma-nm-qtkeychain
 	pkgdesc = Plasma applet written in QML for managing network connections. This fork replaces kwallet with qtkeychain. All secrets should be enrolled again.
-	pkgver = 6.2.2_1
+	pkgver = 6.5.0_1
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = plasma-nm-qtkeychain
 	optdepends = qt6-webengine: Cisco AnyConnect VPN plugin
 	provides = plasma-nm
 	conflicts = plasma-nm
-	source = https://invent.kde.org/jaminfan/plasma-nm/-/archive/v6.2.2-1/plasma-nm-v6.2.2-1.tar.gz
-	sha256sums = 8d7b6c5d382738792af1e7ce7e13d9f805c6932baac94d64d380aff8b44af9ec
+	source = https://invent.kde.org/jaminfan/plasma-nm/-/archive/v6.5.0-1/plasma-nm-v6.5.0-1.tar.gz
+	sha256sums = 614c826477d2a5b6f91e04751b8d13dea2812d9711b60c2e74ad567a76eccc06
 
 pkgname = plasma-nm-qtkeychain
