@@ -1,7 +1,7 @@
 pkgbase = iipython-feishin-bin
 	pkgdesc = Fork of Feishin with additional features.
-	pkgver = 25.10.14
-	pkgrel = 2
+	pkgver = 25.10.26
+	pkgrel = 1
 	url = https://github.com/iipythonx/feishin
 	arch = x86_64
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = iipython-feishin-bin
 	conflicts = feishin-debug
 	source = feishin.desktop
 	sha256sums = 30c140178d7eaf8f7daf100ce73757b4ee521b47465b611263123d5228b81eaf
-	source_x86_64 = https://github.com/iipythonx/feishin/releases/download/25.10.14/feishin-25.10.14-linux-x64.tar.xz
-	sha256sums_x86_64 = d2feb8380459cc96f947999b7ec0774aed72efbfc1fb1e18c440178f3857d280
+	source_x86_64 = https://github.com/iipythonx/feishin/releases/download/25.10.26/feishin-25.10.26-linux-x64.tar.xz
+	sha256sums_x86_64 = 5b20cb68c35e52a67c17c4d84931ec3aa31ff1f5ae90e79430325ee0969dfe7d
 
 pkgname = iipython-feishin-bin
