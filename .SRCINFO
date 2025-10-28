@@ -1,7 +1,7 @@
 pkgbase = gtk-sharp-2
 	pkgdesc = gtk2 bindings for C#
 	pkgver = 2.12.45
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.mono-project.com/docs/gui/gtksharp/
 	arch = x86_64
 	license = LGPL
@@ -12,7 +12,9 @@ pkgbase = gtk-sharp-2
 	options = !makeflags
 	source = https://download.mono-project.com/sources/gtk-sharp212/gtk-sharp-2.12.45.tar.gz
 	source = gtk-sharp2-2.12.12-gtkrange.patch
+	source = gtk-sharp2-invalid-gpointer-cast.patch
 	sha256sums = 02680578e4535441064aac21d33315daa009d742cab8098ac8b2749d86fffb6a
 	sha256sums = 26a1ade869ba1b54f37e544332e6e40cc6d3c93414a712d8605cb44fc212acf9
+	sha256sums = 82482309cab86f8321cd5ccccf41adf6026b8464c70f5a34266c8ab64ed78540
 
 pkgname = gtk-sharp-2

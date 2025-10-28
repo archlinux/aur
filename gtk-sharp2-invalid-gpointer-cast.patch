@@ -1,0 +1,10 @@
+--- a/gdk/glue/windowmanager.c	2016-09-22 04:17:18.000000000 -0600
++++ b/gdk/glue/windowmanager.c	2025-10-28 15:27:04.138317968 -0600
+@@ -110,7 +110,7 @@
+ 	list = g_malloc (*count * sizeof (gpointer));
+ 	/* Put all of the windows into a GList to return */
+ 	for (i = 0; i < *count; i ++) {
+-		list [i] = data [i];
++		list [i] = (gpointer) data [i];
+ 		g_message ("WinID: %d", list [i]);
+ 	}

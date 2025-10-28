@@ -2,7 +2,7 @@
 
 pkgname=gtk-sharp-2
 pkgver=2.12.45
-pkgrel=4
+pkgrel=5
 pkgdesc="gtk2 bindings for C#"
 arch=(x86_64)
 license=('LGPL')
@@ -12,13 +12,16 @@ makedepends=('monodoc')
 optdepends=('perl: for gapi2xml.pl and gapi_pp.pl')
 options=('!makeflags')
 source=(https://download.mono-project.com/sources/gtk-sharp212/gtk-sharp-${pkgver}.tar.gz
-        gtk-sharp2-2.12.12-gtkrange.patch)
+        gtk-sharp2-2.12.12-gtkrange.patch
+        gtk-sharp2-invalid-gpointer-cast.patch)
 sha256sums=('02680578e4535441064aac21d33315daa009d742cab8098ac8b2749d86fffb6a'
-            '26a1ade869ba1b54f37e544332e6e40cc6d3c93414a712d8605cb44fc212acf9')
+            '26a1ade869ba1b54f37e544332e6e40cc6d3c93414a712d8605cb44fc212acf9'
+            '82482309cab86f8321cd5ccccf41adf6026b8464c70f5a34266c8ab64ed78540')
 
 prepare() {
   cd gtk-sharp-${pkgver}
   patch -Np1 -i ../gtk-sharp2-2.12.12-gtkrange.patch
+  patch -Np1 -i ../gtk-sharp2-invalid-gpointer-cast.patch
 }
 
 build() {
