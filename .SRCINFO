@@ -5,7 +5,7 @@ pkgbase = flix-cli
 	url = https://github.com/demonkingswarn/flix-cli
 	arch = any
 	license = GPL3
-	makedepends = python-pip
+	makedepends = python-installer
 	depends = mpv
 	depends = ffmpeg
 	depends = fzf
@@ -15,6 +15,7 @@ pkgbase = flix-cli
 	depends = python-regex
 	depends = python-beautifulsoup4
 	depends = python-krfzf
+	noextract = flix_cli-1.7.10.8-py3-none-any.whl
 	source = https://files.pythonhosted.org/packages/ca/ae/772e63fc8b5c7ff92f5d4161b7ff2711810cb514e696bfcfa3c3da60cbb2/flix_cli-1.7.10.8-py3-none-any.whl
 	sha256sums = 172e5410fbbe7b638da8687dd120a6bc54325977c13abc9bd410652c1a373641
 
