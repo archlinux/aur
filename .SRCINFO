@@ -1,6 +1,6 @@
 pkgbase = elephant-symbols
 	pkgdesc = symbols provider for elephant
-	pkgver = 2.7.7
+	pkgver = 2.7.8
 	pkgrel = 1
 	url = https://github.com/abenz1267/elephant
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = elephant-symbols
 	makedepends = go
 	provides = elephant-symbols
 	conflicts = elephant-symbols
-	source = https://github.com/abenz1267/elephant/archive/refs/tags/v2.7.7.tar.gz
-	sha256sums = 8eeaeeb23923197483f6c64b605981e3f9d85c087b5bf43dd20ce49b11b0b6b4
+	source = https://github.com/abenz1267/elephant/archive/refs/tags/v2.7.8.tar.gz
+	sha256sums = f53b6e0c56e320010fdba67dff07173a70e5c7d8d032c960436e1d8db76c5fa9
 
 pkgname = elephant-symbols
