@@ -2,7 +2,7 @@
 # Contributor: Franck Stauffer <franck.stauffer@monaco.mc>
 
 pkgname='librewolf-extension-cookie-autodelete'
-pkgver=3.6.0
+pkgver=3.8.2
 pkgrel=2
 pkgdesc="Librewolf extension that automatically deletes cookies."
 license=('MIT')
@@ -11,7 +11,7 @@ groups=('librewolf-addons')
 makedepends=('npm')
 url="https://github.com/Cookie-AutoDelete/Cookie-AutoDelete"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Cookie-AutoDelete/Cookie-AutoDelete/archive/v$pkgver.tar.gz")
-b2sums=('314fe6ab5c30eed49c5ef54c31d8ff9c8c978e00e1a0f17cb1b4139bde49479a78ea74f791030fe98b05adac2d781fd9099c8623ae92c365180372fd2bbf8497')
+b2sums=('07b643fa8ed7af27ce89751c1a8ca1829336f09706ee1d3b59a44823cf0af31dd9bc9772b5619f5e1327957b2bf69f7866b8ffa0fab90961c130668e37c22ccf')
 
 prepare() {
     npm --silent -C "Cookie-AutoDelete-$pkgver" install
