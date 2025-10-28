@@ -150,14 +150,14 @@ elif [ $MODE == "ERROR" ]; then
 fi
 
 if ! [ $PROFILE ]; then
-    echo "profile file not selected at all, please atleast give a path with --profile /path/to/config.cfgprf"
+    echo "error: profile file not selected at all, please atleast give a path with --profile /path/to/config.cfgprf"
     exit 1
 fi
 
 # don't default now
 if ! [ $PACKAGES ] && ! [ $CONFIGS ] && ! [ $AUR ] && ! [ $ETC ] && ! [ $DOTDIRS ]; then
-    echo "no options to import/export were selected, please select atleast one or --all. see --help for more info."
-    echo "it previously did default to --all if nothing were selected, but that is now not the case"
+    echo "error: no options to import/export were selected, please select atleast one or --all. see --help for more info."
+    echo "    it previously did default to --all if nothing were selected, but that is now not the case."
     exit 1
 fi
 
@@ -167,7 +167,7 @@ if [ $MODE == "IMPORT" ]; then
     # file stuff
     # checks if file is a valid tar and has the cfgprf file
     if ! [[ -f $PROFILE ]] || ! tar -tf $PROFILE &> /dev/null || ! tar -tf $PROFILE | grep -q "cfgprf"; then
-        echo "error: invalid file"
+        echo "error: invalid profile file. either not a file or not a cfgprf."
         exit 1
     fi
 
@@ -182,13 +182,13 @@ if [ $MODE == "IMPORT" ]; then
             echo "  AUR packages, will be installed using yay or paru"
         fi
         if [ $CONFIGS ]; then
-            echo "  configs, will override your dotfiles in ~/.config/"
+            echo "  configs, will override your dotfiles (if they already exist) in ~/.config/"
         fi
         if [ $ETC ]; then
-            echo "  etc, will override your files in /etc/"
+            echo "  etc, will override your files (if they already exist) in /etc/"
         fi
         if [ $DOTDIRS ]; then
-            echo "  dot directories, will override your files in dot directories which are located at ~"
+            echo "  dot directories, will override your files (if they already exist) in dot directories which are located at ~"
         fi
 
         read -p "(Y/n): " CONFIRM
@@ -218,7 +218,7 @@ if [ $MODE == "IMPORT" ]; then
             sudo pacman -S ${PACKAGELIST}
 
         else
-            echo "skipping importing packages because profile does not have package info"
+            echo "warning: skipping importing packages because profile does not have package info"
         fi
 
     fi
@@ -260,7 +260,7 @@ if [ $MODE == "IMPORT" ]; then
             fi
 
         else
-            echo "skipping importing configs because profile does not have config info"
+            echo "warning: skipping importing configs because profile does not have config info"
         fi
 
     fi
@@ -268,7 +268,7 @@ if [ $MODE == "IMPORT" ]; then
     if [ $ETC ]; then
 
         if [[ $EUID -ne 0 ]]; then
-            echo "skipping importing etc because script was not run as root"
+            echo "warning: skipping importing etc because script was not run as root"
         else
 
             if tar -tf $PROFILE etc/ >/dev/null 2>&1; then
@@ -284,7 +284,7 @@ if [ $MODE == "IMPORT" ]; then
                 fi
 
             else
-                echo "skipping importing etc because profile does not have etc info"
+                echo "warning: skipping importing etc because profile does not have etc info"
             fi
 
         fi
@@ -306,7 +306,7 @@ if [ $MODE == "IMPORT" ]; then
             fi
 
         else
-            echo "skipping importing dot directories because profile does not have dot directory info"
+            echo "warning: skipping importing dot directories because profile does not have dot directory info"
         fi
 
     fi
@@ -387,7 +387,7 @@ elif [ $MODE == "EXPORT" ]; then
     if [ $ETC ]; then
 
         if [[ $EUID -ne 0 ]]; then
-            echo "skipping importing etc because script was not run as root"
+            echo "warning: skipping importing etc because script was not run as root"
         else
 
             echo "exporting etc"
