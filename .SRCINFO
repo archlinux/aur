@@ -1,13 +1,15 @@
 pkgbase = jnv-bin
 	pkgdesc = Interactive JSON filter using jq
-	pkgver = 0.5.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/ynqa/jnv
 	arch = x86_64
 	license = MIT
 	depends = gcc-libs
 	depends = glibc
-	source = jnv-bin-0.5.0.tar.xz::https://github.com/ynqa/jnv/releases/download/v0.5.0/jnv-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums = 14c6a3c8a985e107e8fbb7e014fac0d4e256df31c6f95c6cf004bdd0ea0f0dd3
+	provides = jnv
+	conflicts = jnv
+	source = jnv-bin-0.6.1.tar.xz::https://github.com/ynqa/jnv/releases/download/v0.6.1/jnv-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = 02e8546c2936ab57de78199099288e67ed7926ebbad50e503e4502be5df7f3bf
 
 pkgname = jnv-bin
