@@ -1,6 +1,6 @@
 pkgbase = dnsdiag
 	pkgdesc = DNS Measurement, Troubleshooting and Security Auditing Toolset
-	pkgver = 2.8.1
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://dnsdiag.org
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = dnsdiag
 	depends = python-dnspython
 	depends = python-h2
 	depends = python-httpx
-	source = dnsdiag-2.8.1.tar.gz::https://github.com/farrokhi/dnsdiag/archive/refs/tags/v2.8.1.tar.gz
-	sha256sums = 6bebdbb3fc9f4163adf822030d500fc717e8a20436d7ec0f409ca986760b7357
+	source = dnsdiag-2.9.0.tar.gz::https://github.com/farrokhi/dnsdiag/archive/refs/tags/v2.9.0.tar.gz
+	sha256sums = c70287ae3f1f827aa8c5904251b692dec8ea370f36ec5585c660975471e70c03
 
 pkgname = dnsdiag
