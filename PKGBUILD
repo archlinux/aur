@@ -3,7 +3,7 @@
 
 pkgname=mate-menu
 pkgver=22.04.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Advanced menu for MATE Panel, a fork of MintMenu"
 arch=('any')
 url="https://github.com/ubuntu-mate/mate-menu"
@@ -12,6 +12,7 @@ depends=('mate-panel' 'python-configobj' 'python-gobject' 'python-pyinotify' 'py
 makedepends=('python-distutils-extra' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ubuntu-mate/mate-menu/archive/$pkgver.tar.gz")
 sha256sums=('36aa865b72664b8cc90d9c1c429fd3c44e2c198369aae4eaaa87228a5add075c')
+install=$pkgname.install
 
 package() {
   cd $pkgname-$pkgver
