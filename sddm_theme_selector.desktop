@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Sddm Theme Selector
+
+Type=Application
+
+Version=1.0
+
+Comment=A tool to Select the Theme for Sddm
+
+Exec=sddm_theme_selector
+Icon=jmemorize
+Terminal=true
+
