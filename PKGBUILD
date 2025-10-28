@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-instructor
 _pkgname=${pkgname#python-}
-pkgver=1.11.3
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Structured outputs for LLMs"
 arch=(any)
@@ -41,7 +41,7 @@ optdepends=(
   'python-writerai: Writer authenticates your API requests using your account’s API keys.'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ab4c3a44a01836cf842f41be7091577056d691bd99a5ba9075b946c22cd8812e')
+sha256sums=('f0707a06bbae4a49de24e4a6f4fa4953cf2dfa915450dcc9aeecee3940e97f81')
 
 _archive="$_pkgname-$pkgver"
 
