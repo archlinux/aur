@@ -1,6 +1,6 @@
 pkgbase = exim-heavy
 	pkgdesc = Message Transfer Agent with maximal-enabled features
-	pkgver = 4.98.2
+	pkgver = 4.99
 	pkgrel = 1
 	url = https://www.exim.org/
 	arch = x86_64
@@ -26,8 +26,8 @@ pkgbase = exim-heavy
 	depends = libidn2
 	depends = opendmarc>=1.4.0
 	depends = perl-file-fcntllock
-	source = https://ftp.exim.org/pub/exim/exim4/exim-4.98.2.tar.xz
-	source = https://ftp.exim.org/pub/exim/exim4/exim-4.98.2.tar.xz.asc
+	source = https://ftp.exim.org/pub/exim/exim4/exim-4.99.tar.xz
+	source = https://ftp.exim.org/pub/exim/exim4/exim-4.99.tar.xz.asc
 	source = aliases
 	source = exim.logrotate
 	source = exim.Makefile
@@ -43,7 +43,7 @@ pkgbase = exim-heavy
 	validpgpkeys = E5CA331D44AB8E4C806FDBEE26101B62F69376CE
 	validpgpkeys = D0BFD6B9ECA5694A6F149DCEAF4CC676A6B6C142
 	validpgpkeys = A986F3A6BD6377D8730958DEBCE58C8CE41F32DF
-	sha256sums = 88b8e8a67c1db6cc0b1d148161aa36e662f4ca2fef25d5b6f3694d490e42dcae
+	sha256sums = 5df38b042ffa9a9c8d31b20bc8481558070e361b06f657608622a62a327adcba
 	sha256sums = SKIP
 	sha256sums = 932c9149b6809c70e94c1256e28325d197bbf80d27322793e217d4b692d49c5a
 	sha256sums = 7f1408f9c5d905968e665941f5c5efcf9da53e7a0bbef6c66220343bc2ae994b
