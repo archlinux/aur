@@ -1,20 +1,21 @@
 pkgbase = libdbusmenu-gtk2
-	pkgdesc = A library for passing menus over DBus
-	pkgver = 12.10.2
-	pkgrel = 4
+	pkgdesc = Library for passing menus over DBus (GTK+ 2 library)
+	pkgver = 16.04.0.r498
+	pkgrel = 3
 	url = https://launchpad.net/libdbusmenu
-	arch = i686
 	arch = x86_64
-	license = GPL3
-	makedepends = gnome-doc-utils
+	license = LGPL-2.1-only OR LGPL-3.0-only
+	makedepends = breezy
+	makedepends = gnome-common
+	makedepends = glib2-devel
 	makedepends = gobject-introspection
 	makedepends = intltool
 	makedepends = vala
-	depends = gtk2
 	depends = libdbusmenu-glib
+	depends = gtk2
 	options = !emptydirs
-	source = http://launchpad.net/dbusmenu/12.10/12.10.2/+download/libdbusmenu-12.10.2.tar.gz
-	sha512sums = cf2e50dc3adbf35d0a4ccdd62a3efd9fae2d079b8d06e6522b70f077f89ac2cf72188e380f476e38d184b69549e90b801bf1e32174fa94bbe612dd52aec94496
+	source = libdbusmenu::bzr+https://code.launchpad.net/~dbusmenu-team/libdbusmenu/trunk.16.10#revision=498
+	validpgpkeys = 45B1103FB93ACBD90296DBCAE83D089481836EBF
+	sha512sums = 416e027702b1868e79266a763fc61395abecf3a0aa606243f56a385f4e2c619a744531e2c26bafb55c26b0123061078416e903f39046e8b0a7c5473c2bc5cac2
 
 pkgname = libdbusmenu-gtk2
-
