@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=ytm-dlp
 pkgname="${_pkgname}-gui-bin"
-pkgver=1.3.3
+pkgver=1.3.4
 _electronversion=26
-pkgrel=3
+pkgrel=1
 pkgdesc="An ElectronJS app for downloading music off Youtube Music.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/RENOMIZER/ytm-dlp-gui"
@@ -18,9 +18,13 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/RENOMIZER/ytm-dlp-gui/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0c350d3207b8eea26e5d18dbf4ca9f54bcbb2428982c60edc74de4f81328d0b6'
-            '2808073b5ff6a6b6f653ef61c6154b545c2dc47f5026683ae5e72c7c3d5632f6'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('1fcbd01b2b355490e8a0105fd36d8e75d4e70a5d5f72cf6bdbe6d398f355388e'
+            'f3f3a28ea1857068409ba80b8a2bd033dcf91d8889a37652425bdb6f6250cd79'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/usr/lib/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -29,6 +33,7 @@ prepare() {
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
+    _get_electron_version
     sed -i "s/Audio;/AudioVideo;/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {

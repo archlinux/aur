@@ -1,18 +1,18 @@
 pkgbase = ytm-dlp-gui-bin
 	pkgdesc = An ElectronJS app for downloading music off Youtube Music.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.3.3
-	pkgrel = 3
+	pkgver = 1.3.4
+	pkgrel = 1
 	url = https://github.com/RENOMIZER/ytm-dlp-gui
 	arch = x86_64
 	license = Unlicense
 	depends = electron26
-	provides = ytm-dlp-gui-1.3.3
+	provides = ytm-dlp-gui-1.3.4
 	conflicts = ytm-dlp-gui
-	source = ytm-dlp-gui-1.3.3.rpm::https://github.com/RENOMIZER/ytm-dlp-gui/releases/download/v1.3.3/ytm-dlp-1.3.3-1.x86_64.rpm
-	source = LICENSE-1.3.3::https://raw.githubusercontent.com/RENOMIZER/ytm-dlp-gui/v1.3.3/LICENSE
+	source = ytm-dlp-gui-1.3.4.rpm::https://github.com/RENOMIZER/ytm-dlp-gui/releases/download/v1.3.4/ytm-dlp-1.3.4-1.x86_64.rpm
+	source = LICENSE-1.3.4::https://raw.githubusercontent.com/RENOMIZER/ytm-dlp-gui/v1.3.4/LICENSE
 	source = ytm-dlp-gui.sh
-	sha256sums = 0c350d3207b8eea26e5d18dbf4ca9f54bcbb2428982c60edc74de4f81328d0b6
-	sha256sums = 2808073b5ff6a6b6f653ef61c6154b545c2dc47f5026683ae5e72c7c3d5632f6
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 1fcbd01b2b355490e8a0105fd36d8e75d4e70a5d5f72cf6bdbe6d398f355388e
+	sha256sums = f3f3a28ea1857068409ba80b8a2bd033dcf91d8889a37652425bdb6f6250cd79
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = ytm-dlp-gui-bin
