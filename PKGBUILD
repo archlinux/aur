@@ -1,7 +1,7 @@
 # Maintainer: wayscriber maintainers <devmobasa+aur@proton.me>
 pkgname=wayscriber
-pkgver=0.5.1
-pkgrel=2
+pkgver=0.5.2
+pkgrel=1
 pkgdesc='Screen annotation tool for Wayland compositors (formerly hyprmarker)'
 arch=('x86_64' 'aarch64')
 url='https://wayscriber.com'
@@ -21,7 +21,7 @@ makedepends=(
     'git'
 )
 provides=('hyprmarker')
-conflicts=('hyprmarker<0.5.1' 'hyprmarker-debug<0.5.1')
+conflicts=('hyprmarker<0.5.2' 'hyprmarker-debug<0.5.2')
 replaces=('hyprmarker' 'hyprmarker-debug')
 source=("git+https://github.com/devmobasa/wayscriber.git#tag=v$pkgver")
 sha256sums=('SKIP')
