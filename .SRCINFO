@@ -1,6 +1,6 @@
 pkgbase = dms-shell-bin
 	pkgdesc = Desktop shell for wayland compositors built with Quickshell & GO
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = dms-shell-bin
 	conflicts = dms-shell-git
 	conflicts = dms-shell
 	conflicts = dms-git
-	source_x86_64 = dms-full-amd64-0.2.4.tar.gz::https://github.com/AvengeMedia/DankMaterialShell/releases/download/v0.2.4/dms-full-amd64.tar.gz
-	sha256sums_x86_64 = a48eef5ef70379a7af061b3aefe160efd78a1a86cc93654e8d71fd6c70d0f8aa
-	source_aarch64 = dms-full-arm64-0.2.4.tar.gz::https://github.com/AvengeMedia/DankMaterialShell/releases/download/v0.2.4/dms-full-arm64.tar.gz
-	sha256sums_aarch64 = a1a59a123658d7100dedcc45bb338fa2f1515163aed8f60209d70676b3757577
+	source_x86_64 = dms-full-amd64-0.2.5.tar.gz::https://github.com/AvengeMedia/DankMaterialShell/releases/download/v0.2.5/dms-full-amd64.tar.gz
+	sha256sums_x86_64 = 788432968868338edb29acf4cb91b878b55302f0b71977cd5496b7b97689a538
+	source_aarch64 = dms-full-arm64-0.2.5.tar.gz::https://github.com/AvengeMedia/DankMaterialShell/releases/download/v0.2.5/dms-full-arm64.tar.gz
+	sha256sums_aarch64 = 30f306d9b13858153aca5ddc01c909707d11f47526163fa2fc1bea606455a4c9
 
 pkgname = dms-shell-bin
