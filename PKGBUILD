@@ -12,7 +12,7 @@ _pkgname=libappindicator
 _bzrtag=12.10.0
 _bzrrev=298
 pkgver=${_bzrtag}.r${_bzrrev}
-pkgrel=6
+pkgrel=8
 pkgdesc='Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 2 library)'
 url='https://launchpad.net/libappindicator'
 arch=('x86_64')
@@ -32,10 +32,21 @@ prepare() {
   # Fix unfallback from status icon
   patch -Np0 -i ../libappindicator-fix-unfallback.patch
 
+  # Disable Mono
+  # Thanks to Ioqs (https://bbs.archlinux.org/profile.php?id=80022)
+  # https://bbs.archlinux.org/viewtopic.php?pid=2270123#p2270123
+  sed -i 's/has_mono=true/has_mono=false/' configure.ac
+
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
+  export CC='gcc'
+  export CXX='g++'
+  export PKG_CONFIG_PATH='/usr/lib/pkgconfig'
+  export CFLAGS="${CFLAGS} -Wno-deprecated-declarations"
+  export MONO_DEPEDENCY_LIBS="NO"
+
   cd ${_pkgname}
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
@@ -43,7 +54,7 @@ build() {
     --with-gtk=2 \
     --disable-introspection
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make CSC="$(which csc)"
+  make
 }
 
 package() {

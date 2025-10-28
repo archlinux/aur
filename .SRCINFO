@@ -1,7 +1,7 @@
 pkgbase = libappindicator-gtk2
 	pkgdesc = Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 2 library)
 	pkgver = 12.10.0.r298
-	pkgrel = 6
+	pkgrel = 8
 	url = https://launchpad.net/libappindicator
 	arch = x86_64
 	license = GPL-3.0-only
