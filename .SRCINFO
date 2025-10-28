@@ -1,16 +1,18 @@
 pkgbase = hr-zig
 	pkgdesc = hr in zig
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/djmattyg007/hr-zig
 	arch = i686
 	arch = x86_64
-	license = custom:Public Domain
+	arch = armv7h
+	arch = aarch64
+	license = Unlicense
 	makedepends = zig
 	depends = glibc
 	provides = hr
 	conflicts = hr
-	source = https://github.com/djmattyg007/hr-zig/archive/1.0.1.tar.gz
-	sha512sums = 11c7e89584b7e45ec75ad08121d7542a1c7a743052c3333c4c4b31fedb11a50f1aa6a62f997aca74ea1b22211673786ba87581f9d67d8876590339491e55ae2e
+	source = https://github.com/djmattyg007/hr-zig/archive/v1.0.2.tar.gz
+	sha512sums = fe116b38d382a14d156cfbd3723507121c7db073bed7f6620b471ac554c00eb81780acccc5963bf624be74bdb0125fe1b9c98d8d4b472d8b6d7642d1d8cd0836
 
 pkgname = hr-zig

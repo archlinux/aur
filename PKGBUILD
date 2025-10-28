@@ -1,28 +1,28 @@
 # Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=hr-zig
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="hr in zig"
-arch=("i686" "x86_64")
+arch=("i686" "x86_64" "armv7h" "aarch64")
 url="https://github.com/djmattyg007/hr-zig"
-license=('custom:Public Domain')
+license=('Unlicense')
 depends=("glibc")
 makedepends=("zig")
 conflicts=("hr")
 provides=("hr")
-source=("https://github.com/djmattyg007/hr-zig/archive/${pkgver}.tar.gz")
-sha512sums=("11c7e89584b7e45ec75ad08121d7542a1c7a743052c3333c4c4b31fedb11a50f1aa6a62f997aca74ea1b22211673786ba87581f9d67d8876590339491e55ae2e")
+source=("https://github.com/djmattyg007/hr-zig/archive/v${pkgver}.tar.gz")
+sha512sums=('fe116b38d382a14d156cfbd3723507121c7db073bed7f6620b471ac554c00eb81780acccc5963bf624be74bdb0125fe1b9c98d8d4b472d8b6d7642d1d8cd0836')
 
 build() {
     cd "${srcdir}/hr-zig-${pkgver}"
 
-    zig build install -Drelease-small
+    zig build -Doptimize=ReleaseSmall
 }
 
 package() {
     cd "${srcdir}/hr-zig-${pkgver}"
 
-    zig build install -Drelease-small --prefix "${pkgdir}/usr"
+    zig build install -Doptimize=ReleaseSmall --prefix "${pkgdir}/usr"
     install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/hr-zig/LICENSE.txt"
 }
