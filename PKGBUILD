@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=zen-adblocker
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 _nodeversion=22
 pkgdesc="Simple, free and efficient ad-blocker and privacy guard"
@@ -24,7 +24,7 @@ makedepends=(
 )
 source=("git+https://github.com/ZenPrivacy/zen-desktop.git#tag=v$pkgver"
         "$pkgname.desktop")
-sha256sums=('cd50bc7c18fd149f51224facdd4085c1bffe48eb8be3f4410dfbd5678cc9013e'
+sha256sums=('efdee5f184061716d279692d75454cbc8a2c56a4de653f6a3ad8ee1579b1545e'
             '83ba6731812f400d32e595b893e8b1e42a8df5c32d11637976c39dad40e243cf')
 
 _ensure_local_nvm() {
