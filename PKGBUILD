@@ -1,7 +1,7 @@
 # Maintainer: <agustinballesteros04@gmail.com>
 pkgname=kew-git
 pkgrel=1
-pkgver=v3.6.4.e2332c1
+pkgver=v3.6.4.bd39ae2
 pkgdesc="A command-line music player"
 arch=('x86_64')
 url="https://github.com/ravachol/kew"
@@ -30,5 +30,6 @@ package() {
     install -Dm755 kew "$pkgdir/usr/bin/kew"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "$srcdir/kew/docs/kew.1" "$pkgdir/usr/share/man/man1/kew.1"
+    install -Dm644 "locale/zh_CN/LC_MESSAGES/kew.mo" "$pkgdir/usr/share/locale/zh_CN/LC_MESSAGES/kew.mo"
 }
 
