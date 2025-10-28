@@ -1,0 +1,14 @@
+pkgbase = eyerest
+	pkgdesc = Script to remind your eyes to have a little break from the screen.
+	pkgver = 0.0.3
+	pkgrel = 1
+	install = eyerest.install
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = coreutils
+	depends = libnotify
+	source = git+https://git.sr.ht/~syntax/eyerest
+	sha256sums = SKIP
+
+pkgname = eyerest

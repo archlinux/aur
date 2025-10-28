@@ -1,0 +1,7 @@
+post_install() {
+    echo "Copy /etc/eyerest into ~/.config/eyerest for personal configuration."
+}
+
+post_remove() {
+    echo "Config files in ~/.config/eyerest not removed."
+}
