@@ -19,4 +19,15 @@ build() {
 
 package() {
     cd "$pkgname-$pkgver"
+    
+    # Install to /usr/lib/cognito-local
+    install -dm755 "${pkgdir}/usr/lib/${pkgname}"
+    cp -r lib node_modules package.json "${pkgdir}/usr/lib/${pkgname}/"
+    
+    # Create symlink for the binary
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s "/usr/lib/${pkgname}/lib/bin/start.js" "${pkgdir}/usr/bin/cognito-local"
+    
+    # Install license
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
