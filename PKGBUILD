@@ -1,7 +1,7 @@
 # Maintainer: Rron Nurboja <rronnurboja@gmail.com>
 pkgname=electrotility
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Ultimate Linux Power Utility Tool"
 arch=('any')
 url="https://github.com/Rronnurboja/electrotility"
