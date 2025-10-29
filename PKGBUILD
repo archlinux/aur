@@ -35,7 +35,7 @@ depends=(
   'webrtc-audio-processing'
   'zita-convolver'
 )
-makedepends=('appstream-glib' 'cmake' 'extra-cmake-modules' 'git' 'intltool' 'ladspa' 'ninja')
+makedepends=('appstream' 'cmake' 'extra-cmake-modules' 'git' 'intltool' 'ladspa' 'ninja')
 optdepends=(
   'calf: limiter, exciter, bass enhancer and others'
   'lsp-plugins: equalizer, compressor, delay, loudness'
