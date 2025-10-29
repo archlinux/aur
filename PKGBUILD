@@ -32,12 +32,12 @@
 #   All dependencies are documented in 'README.md'.
 # -----------------------------------------------------------------------------
 pkgname=coolerdash-git
-pkgver=1.87.r0.g6dfdce2
+pkgver=1.88.r0.gd16bfa0
 pkgrel=1
 provides=('coolerdash')
 replaces=('coolerdash')
 conflicts=('coolerdash')
-pkgdesc="Displays real-time sensor on an AIO liquid cooler with integrated LCD displays."
+pkgdesc="Displays real-time sensor on an AIO liquid cooler with integrated LCD displays"
 arch=('x86_64')
 url="https://github.com/damachine/coolerdash"
 license=('MIT')
@@ -45,7 +45,7 @@ depends=('cairo' 'coolercontrol' 'jansson' 'libcurl-gnutls' 'libinih' 'ttf-robot
 makedepends=('gcc' 'make' 'pkg-config' 'git')
 backup=('etc/coolerdash/config.ini')
 install=coolerdash.install
-_commit=6dfdce2996bbdc726c83ac80180766b7688f42b3
+_commit=d16bfa069398a6520defcbe534335d79b663f379
 source=("git+https://github.com/damachine/coolerdash.git#commit=$_commit")
 sha256sums=('SKIP') # SKIP for git repo source
 
