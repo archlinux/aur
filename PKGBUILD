@@ -28,7 +28,7 @@ LDFLAGS_VERSION="-X 'main.buildTime=$TIME' -X 'main.commit=$GIT_COMMIT' -X 'main
 build() {
   cd "${srcdir}/startheme"
   mkdir -p "${OUTDIR}"
-  $GO build -o "${OUTDIR}/${APP}" ./src/main.go
+  $GO build -o -trimpath -ldflags="-s -w" ${OUTDIR}/${APP}" ./src/main.go
 }
 
 package() {
