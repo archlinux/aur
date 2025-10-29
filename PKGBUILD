@@ -1,5 +1,5 @@
 pkgname=openmodelica-omc
-pkgver=1.25.4
+pkgver=1.25.5
 pkgrel=1
 pkgdesc="The Open Source Modelica Suite - OpenModelica Compiler"
 arch=('x86_64')
@@ -18,8 +18,6 @@ prepare() {
   cd "$srcdir/OpenModelica"
   git remote set-url origin ${_giturl}
   git submodule update --force --init --recursive OMCompiler/3rdParty
-  curl -L https://github.com/OpenModelica/OpenModelica/pull/14377.patch | patch -p1
-  curl -L https://github.com/OpenModelica/OpenModelica/pull/14391.patch | patch -p1
 }
 
 build() {
