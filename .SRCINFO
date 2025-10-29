@@ -1,7 +1,7 @@
 pkgbase = ue4localizationstool-zenity
 	pkgdesc = Simple tool to edit Unreal Engine 4 text files (patched to use native filepicker)
 	pkgver = 2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/amrshaheen61/UE4LocalizationsTool
 	arch = any
 	license = MIT
@@ -19,7 +19,7 @@ pkgbase = ue4localizationstool-zenity
 	source = 0001-Use-zenity-for-file-dialogs.patch
 	source = 0002-Fix-console-usage.patch
 	sha256sums = 80f64c65c346ae577a7329f7ddf30a417ed67ea9e24923a5cad896a07aa87056
-	sha256sums = b8db3e5321ddfa7785f4a4b52eba5a10c02eabb01731fd23db3524988a76e2cf
+	sha256sums = 648b7b6aaacb9bc966e830098f177c3ae6cc4dfdc327d9f50a78e3bb6c4d1ab7
 	sha256sums = 37bde904ad38840bd1f500d6dcef84eea8526db683b2895c910ed294c6fc144c
 	sha256sums = be7c9a25534eefd9dc80b9a2928d296395759a21ca8552b332429a7e88f79271
 	sha256sums = 678d1b77ee44fe43e47ac5911cd76c1ed1575aae5fe4eca94953d03339472b9a

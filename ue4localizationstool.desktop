@@ -1,8 +1,9 @@
 [Desktop Entry]
 Name=UE4LocalizationsTool
 Exec=ue4localizationstool %f
+Icon=locale
 Type=Application
 Terminal=false
-Categories=Application;Development;
-Icon=locale
+Categories=Application;Development;Translation;
+Keywords=translate;translation;
 Comment=Simple tool to edit Unreal Engine 4 text files
