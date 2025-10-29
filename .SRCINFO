@@ -14,5 +14,6 @@ pkgbase = echomind
 	provides = echomind
 	conflicts = echomind-git
 	source = echomind::git+https://github.com/thepinak503/echomind.git
+	sha256sums = SKIP
 
 pkgname = echomind

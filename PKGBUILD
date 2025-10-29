@@ -12,6 +12,7 @@ optdepends=('jq: for JSON output formatting')
 provides=('echomind')
 conflicts=('echomind-git')
 source=("$pkgname::git+https://github.com/thepinak503/echomind.git")
+sha256sums=('SKIP')
 
 build() {
   cd "$pkgname" && cargo clean && cargo build --release
