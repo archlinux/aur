@@ -15,7 +15,9 @@ pkgbase = wvkbd-deskintl
 	depends = pango
 	depends = cairo
 	depends = glibc
-	source = wvkbd-deskintl-0.18.tar.gz::https://git.sr.ht/~proycon/wvkbd/archive/v0.18.tar.gz
+	conflicts = wvkbd
+	conflicts = wvkbd-git
+	source = wvkbd-0.18.tar.gz::https://git.sr.ht/~proycon/wvkbd/archive/v0.18.tar.gz
 	sha512sums = SKIP
 
 pkgname = wvkbd-deskintl
