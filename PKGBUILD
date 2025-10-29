@@ -4,8 +4,8 @@
 pkgname=vesktop-bin
 _pkgname=Vesktop
 _appname=vencord-desktop
-pkgver=1.6.0
-_electronversion=37
+pkgver=1.6.1
+_electronversion=39
 pkgrel=1
 pkgdesc="A cross platform electron-based desktop app aiming to give you a snappier Discord experience with Vencord pre-installed.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -33,8 +33,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
 source=("${pkgname%-bin}.sh")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('b83e3b6f71c35c282af28578195fae83342fe6e61a5e6a31eefde650d673b1d5')
-sha256sums_x86_64=('edd04c851c61d4c0a07e146f2e77797a1f28adf081e9cef2c17b415b1eb1e391')
+sha256sums_aarch64=('48a300590a798b61995fb9bd911b0133db62414cf81e2520946dc39323ff8789')
+sha256sums_x86_64=('9507076a2b3fb231044a8af9a8203d231e1dafa8200bcbe47d60da93e1a3fe26')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
