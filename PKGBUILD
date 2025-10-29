@@ -2,8 +2,8 @@
 # Contributor: George Tsiamasiotis <gtsiam@windowslive.com>
 
 pkgname=topiary
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc='The universal code formatter'
 arch=('x86_64')
 url='https://topiary.tweag.io/'
@@ -13,7 +13,7 @@ makedepends=(cargo)
 options=(!debug !lto)
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tweag/topiary/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e2bbac9cb46a3743cc41ca55245026580308722242c9df84bc0ef3cbb989aa81')
+sha256sums=('88f90418b9a87f8b80d914f8cae00b173b5db9961ac9bcda4c063d6ed4b76aa8')
 
 export RUSTUP_TOOLCHAIN=stable
 export CARGO_TARGET_DIR=target
