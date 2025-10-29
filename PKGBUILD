@@ -2,10 +2,10 @@
 
 _name0=livekit-agents
 _name1=livekit-plugins
-_plugins=(anam anthropic assemblyai aws azure baseten bey bithuman cartesia clova deepgram elevenlabs fal gladia google groq hedra hume inworld langchain lmnt minimal mistralai neuphonic nltk openai playai resemble rime sarvam silero simli smallestai soniox speechify speechmatics spitch tavus turn-detector ultravox upliftai)
+_plugins=(anam anthropic assemblyai aws azure baseten bey bithuman cartesia clova deepgram elevenlabs fal fireworksai gladia google groq hedra hume inworld langchain lmnt minimal minimax mistralai neuphonic nltk openai resemble rime rtzr sarvam silero simli smallestai soniox speechify speechmatics spitch tavus turn-detector ultravox upliftai)
 pkgbase=python-$_name0
 pkgname=(python-$_name0 ${_plugins[@]/#/python-$_name1-})
-pkgver=1.2.11
+pkgver=1.2.16
 pkgrel=1
 _plugins_pkgdesc=('Agent Framework plugin for anam.'
                   'Agent Framework plugin for services from Anthropic.'
@@ -20,6 +20,7 @@ _plugins_pkgdesc=('Agent Framework plugin for anam.'
                   "Agent Framework plugin for services using Deepgram's API."
                   "Agent Framework plugin for voice synthesis with ElevenLabs' API."
                   'fal plugin template for LiveKit Agents.'
+                  'LiveKit Agents Plugin for Fireworks AI.'
                   "Agent Framework plugin for services using Gladia's API."
                   'Agent Framework plugin for services from Google Cloud.'
                   'Groq inference plugin for LiveKit Agents.'
@@ -29,13 +30,14 @@ _plugins_pkgdesc=('Agent Framework plugin for anam.'
                   'LangChain/LangGraph plugin for LiveKit agents.'
                   'LMNT TTS plugin for LiveKit agents.'
                   'Minimal plugin template for LiveKit Agents.'
+                  'LiveKit Agents Plugin for services from AWS'
                   'LiveKit Agents Plugin for services from AWS.'
                   'Neuphonic inference plugin for LiveKit Agents.'
                   'Agent Framework plugin for NLTK-based text processing.'
                   'Agent Framework plugin for services from OpenAI.'
-                  "Agent Framework plugin for voice synthesis with PlayAI's API."
                   'LiveKit Agents Plugin for Resemble AI.'
                   'LiveKit Agents Plugin for Rime.'
+                  'Agent Framework plugin for RTZR Streaming STT.'
                   "Agent Framework plugin for services using Sarvam.ai's API."
                   'Agent Framework Plugin for Silero.'
                   'Agent Framework plugin for Simli.'
@@ -61,6 +63,7 @@ _plugins_depends=("'python-livekit-agents'"
                   "'python-livekit-agents' 'python-av' 'python-numpy'"
                   "'python-livekit-agents' 'python-av' 'python-numpy'"
                   "'python-livekit-agents' 'python-fal-client'"
+                  "'python-livekit-agents'"
                   "'python-livekit-agents' 'python-av' 'python-numpy' 'python-aiohttp'"
                   "'python-google-auth' 'python-google-cloud-speech' 'python-google-cloud-texttospeech' 'python-google-genai' 'python-livekit-agents'"
                   "'python-livekit-agents' 'python-av' 'python-numpy' 'python-livekit-plugins-openai' 'python-aiohttp' 'python-livekit'"
@@ -70,13 +73,14 @@ _plugins_depends=("'python-livekit-agents'"
                   "'python-livekit-agents' 'python-langchain-core' 'python-langgraph'"
                   "'python-livekit-agents'"
                   "'python-livekit-agents'"
-                  "'python-livekit-agents' 'livekit-plugins-openai' 'python-mistralai'"
+                  "'python-livekit-agents' 'python-av' 'python-numpy'"
+                  "'python-livekit-agents' 'python-livekit-plugins-openai' 'python-mistralai'"
                   "'python-livekit-agents'"
                   "'python-livekit-agents' 'python-nltk'"
-                  "'python-livekit-agents' 'python-av' 'python-numpy' 'python-openai' 'python-websockets'"
-                  "'python-livekit-agents' 'python-av' 'python-numpy' 'python-pyht' 'python-aiohttp' 'python-livekit'"
+                  "'python-livekit-agents' 'python-av' 'python-numpy' 'python-pillow' 'python-openai'"
                   "'python-livekit-agents'"
                   "'python-livekit-agents' 'python-av' 'python-numpy'"
+                  "'python-livekit-agents' 'python-httpx' 'python-aiohttp'"
                   "'python-livekit-agents' 'python-av' 'python-numpy'"
                   "'python-livekit-agents' 'python-onnxruntime' 'python-numpy'"
                   "'python-livekit-agents'"
@@ -92,7 +96,9 @@ _plugins_depends=("'python-livekit-agents'"
 _plugins__optdepends=(""
                       ""
                       ""
-                      "'python-aws-sdk-bedrock-runtime: realtime' 'python-boto3: realtime'"
+                      "'python-aws-sdk-bedrock-runtime: realtime' 'python-aws-sdk-signers: realtime' 'python-boto3: realtime'"
+                      ""
+                      ""
                       ""
                       ""
                       ""
@@ -128,17 +134,16 @@ _plugins__optdepends=(""
                       ""
                       ""
                       ""
-                      ""
                       "")
 arch=('x86_64' 'aarch64')
 _repo='https://github.com/livekit/agents'
 license=('Apache-2.0')
 depends=('python')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-dotenv' 'python-pytest' 'python-pytest-asyncio' 'python-jiwer' 'python-tiktoken' 'python-nltk' 'nltk-data' 'python-docstring-parser' 'python-speechmatics-rt')
+checkdepends=('python-dotenv' 'python-pytest' 'python-pytest-asyncio' 'python-jiwer' 'python-scipy' 'python-tiktoken' 'python-nltk' 'nltk-data' 'python-docstring-parser' 'python-speechmatics-rt')
 source=("$_repo/archive/refs/tags/$_name0@$pkgver.tar.gz"
         "$_repo/raw/refs/tags/$_name0@$pkgver/$_name1/$_name1-silero/${_name1//-//}/silero/resources/silero_vad.onnx")
-sha256sums=('5bc90646b5d64a6e39fb25fdd854ae1ada60bfb8e111436cdd987497e67de9b6'
+sha256sums=('92d89bb0da07c3e54015035fb61a83c2f0faebf54729a263a8d024f1138714f8'
             '597d30b3ec076608d059477bb14cfeffdf951bf5cae370d38f65d33bbfe82004')
 
 prepare(){
@@ -164,10 +169,9 @@ check() {
     -vv
     # Import problem need to be fixed by developers
     --ignore tests/test_llm.py
-    # Need to be fixed by developers
-    --deselect tests/test_vad.py
-    --deselect tests/test_connection_pool.py
-    --deselect tests/test_ipc.py
+    --ignore tests/test_vad.py
+    --ignore tests/test_ipc.py
+    --ignore tests/test_connection_pool.py
     -k "not test_two_speakers_simple_alternation and not test_none_speaker_id"
     # Need API's
     --deselect tests/test_audio_decoder.py::test_decode_and_transcribe
@@ -194,7 +198,7 @@ check() {
 package_python-livekit-agents() {
   pkgdesc='A powerful framework for building realtime voice AI agents.'
   url='https://github.com/livekit/agents/tree/main/livekit-agents'
-  depends+=('python-click' 'python-livekit' 'python-livekit-api' 'python-livekit-protocol' 'python-livekit-blingfire' 'python-protobuf' 'python-pyjwt' 'python-watchfiles' 'python-psutil' 'python-aiohttp' 'python-typing_extensions' 'python-sounddevice' 'python-docstring-parser' 'python-colorama' 'python-av' 'python-numpy' 'python-pydantic' 'python-nest-asyncio' 'python-opentelemetry-api' 'python-opentelemetry-sdk' 'python-opentelemetry-exporter-otlp' 'python-prometheus_client' 'python-openai')
+  depends+=('python-click' 'python-certifi' 'python-livekit' 'python-livekit-api' 'python-livekit-protocol' 'python-livekit-blingfire' 'python-protobuf' 'python-pyjwt' 'python-watchfiles' 'python-psutil' 'python-aiohttp' 'python-typing_extensions' 'python-sounddevice' 'python-docstring-parser' 'python-colorama' 'python-av' 'python-numpy' 'python-pydantic' 'python-nest-asyncio' 'python-opentelemetry-api' 'python-opentelemetry-sdk' 'python-opentelemetry-exporter-otlp' 'python-prometheus_client' 'python-openai')
   optdepends=('python-mcp: mcp'
               'python-av: codecs' 'python-numpy: codecs'
               'python-pillow: images'
@@ -211,6 +215,7 @@ package_python-livekit-agents() {
               'python-livekit-plugins-deepgram: deepgram'
               'python-livekit-plugins-elevenlabs: elevenlabs'
               'python-livekit-plugins-fal: fal'
+              'python-livekit-plugins-fireworksai: fireworksai'
               'python-livekit-plugins-gladia: gladia'
               'python-livekit-plugins-google: google'
               'python-livekit-plugins-groq: groq'
@@ -219,24 +224,25 @@ package_python-livekit-agents() {
               'python-livekit-plugins-inworld: inworld'
               'python-livekit-plugins-langchain: langchain'
               'python-livekit-plugins-lmnt: lmnt'
+              'python-livekit-plugins-minimax-ai: minimax'
               'python-livekit-plugins-mistralai: mistralai'
               'python-livekit-plugins-neuphonic: neuphonic'
               'python-livekit-plugins-nltk: nltk'
               'python-livekit-plugins-openai: openai'
-              'python-livekit-plugins-playai: playai'
               'python-livekit-plugins-resemble: resemble'
               'python-livekit-plugins-rime: rime'
               'python-livekit-plugins-sarvam: sarvam'
               'python-livekit-plugins-silero: silero'
               'python-livekit-plugins-simli: simli'
               'python-livekit-plugins-smallestai: smallestai'
+              'python-livekit-plugins-soniox: soniox'
               'python-livekit-plugins-speechify: speechify'
               'python-livekit-plugins-speechmatics: speechmatics'
               'python-livekit-plugins-spitch: spitch'
               'python-livekit-plugins-tavus: tavus'
               'python-livekit-plugins-turn-detector: turn-detector'
-              'python-livekit-plugins-upliftai: upliftai'
-              'python-livekit-plugins-ultravox: ultravox')
+              'python-livekit-plugins-ultravox: ultravox'
+              'python-livekit-plugins-upliftai: upliftai')
   cd "$srcdir"/${_name0//livekit-/}-$_name0-$pkgver
   python -m installer --destdir="$pkgdir" $_name0/dist/*.whl
 }
