@@ -3,30 +3,29 @@
 pkgname=equibop
 _pkgname=Equibop
 pkgdesc="Equibop is a Vesktop fork that gives you the performance of web Discord and the comfort of Discord Desktop, with additional plugins."
-pkgver=3.0.8
+pkgver=3.0.9
 # Reminder for devs: don't forget to update the electron version on equibop.sh
 pkgrel=1
-electron=electron38
+electron=electron39
 arch=('x86_64' 'aarch64')
 url="https://github.com/Equicord/Equibop"
 license=('GPL3')
 install=equibop.install
-depends=("${electron}")
+depends=("${electron}" 'bun-bin')
 makedepends=('bun' 'cmake' 'gcc')
 optdepends=(
   'libnotify: Notifications'
   'xdg-utils: Open links, files, etc'
   'xdg-desktop-portal: Screensharing with Wayland'
-  'arrpc: Rich presence support'
 )
 conflicts=('equibop-bin')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz"
         'org.equicord.equibop.desktop'
         'equibop.sh'
         'equibop.install')
-sha256sums=('7ae2a04717be460e0a48e35e57f4d6e196619e06837a22a960d82594ba0a0e61'
+sha256sums=('341aa312a5b268af335908f8a239e6d7d4c3ac79a499a8cae54a87c80d22af52'
             '1e4766362fab2657e6b9a6a0a742518b545a5678f211ba25f7fdd3f5080d48d5'
-            'c3d06d3b1e2ecb73c082fa1b5f919a6890dab0cae05b7320214031670bf16d36'
+            '837f21015857b60fb7a9de2e7f7e1865d4c42ca5b8c96927208b6bdf28ec4e06'
             '18b5fbb1bf53b47b8a7438b2127b1f1a31d23c69d39a156cde66e1616710a18a')
 
 prepare() {
@@ -39,6 +38,7 @@ prepare() {
 build() {
   cd "$_pkgname-$pkgver"
 
+  export SKIP_BUN_DOWNLOAD=true
   bun install
   bun run buildLibVesktop
   bun run package:dir
@@ -53,7 +53,6 @@ package() {
   cp "$_pkgname-$pkgver/dist/linux-unpacked/resources/app.asar" "${pkgdir}/usr/lib/${pkgname}/"
   cp "$_pkgname-$pkgver/dist/linux-unpacked/resources/app-update.yml" "${pkgdir}/usr/lib/${pkgname}/"
   cp -r "$_pkgname-$pkgver/dist/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname}/"
-  cp -r "$_pkgname-$pkgver/dist/linux-unpacked/resources/bun" "${pkgdir}/usr/lib/${pkgname}/"
   install -Dm755 "./equibop.sh" "$pkgdir/usr/bin/equibop"
 
   install -Dm 644 "org.equicord.equibop.desktop" "$pkgdir/usr/share/applications/org.equicord.equibop.desktop"
