@@ -2,7 +2,7 @@
 # contributor: Asuka Minato <asukaminato at nyan dot eu dot org>
 pkgname=open-ai-translator-bin
 _pkgname=OpenAI.Translator
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Browser extension and cross-platform desktop application for translation based on ChatGPT API.(Prebuilt version)基于 ChatGPT API 的划词翻译浏览器插件和跨平台桌面端应用"
 arch=('x86_64')
@@ -21,7 +21,7 @@ depends=(
 source=(
 	"${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64_linux.deb"
 )
-sha256sums=('aec30b6c6f0cfb9064b36d3a0aab7f918bea9ce6f13392404230064cfd7c9510')
+sha256sums=('2528d1552b15c7c8033416770484f6b43f728f9958401113d89912fb8e96aed0')
 prepare() {
 	bsdtar -xf "${srcdir}/data."*
 	sed -i -e "
