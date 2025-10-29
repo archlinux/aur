@@ -1,6 +1,6 @@
 pkgbase = r-tractor.base
 	pkgdesc = Read, Manipulate and Visualise Magnetic Resonance Images
-	pkgver = 3.4.5.1
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=tractor.base
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-tractor.base
 	optdepends = r-oro.nifti
 	optdepends = r-testthat
 	optdepends = r-yaml
-	source = https://cran.r-project.org/src/contrib/tractor.base_3.4.5.1.tar.gz
-	sha256sums = 40db0a9735acde0c511ec67ee0ab55e2b739352260cc2d5458f5b42de30fc574
+	source = https://cran.r-project.org/src/contrib/tractor.base_3.5.0.tar.gz
+	sha256sums = 04ab80116966ad99b081d4575c70777b8b80c1fff2ef9ccfc898430f24bc5270
 
 pkgname = r-tractor.base
