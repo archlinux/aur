@@ -1,6 +1,6 @@
 pkgbase = dooit
 	pkgdesc = A TUI Todo Manager
-	pkgver = 3.2.2
+	pkgver = 3.3.3
 	pkgrel = 1
 	url = https://github.com/dooit-org/dooit
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = dooit
 	depends = python-sqlalchemy>=2.0.36
 	depends = python-platformdirs>=4.3.6
 	depends = python-click>=8.1.7
-	source = dooit-3.2.2.tar.gz::https://github.com/dooit-org/dooit/archive/v3.2.2.tar.gz
-	sha256sums = ca54bfd5b15e7fb824b8ca624d5820adc1d44279391b80c6b1cf7570af8c71c3
+	source = dooit-3.3.3.tar.gz::https://github.com/dooit-org/dooit/archive/v3.3.3.tar.gz
+	sha256sums = b69aad735d779dfc9a006e2f040d8802ef4fc1a2a2dfa338eeb2ec49e2140f8b
 
 pkgname = dooit
