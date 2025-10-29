@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=librelinkupdesktop-bin
 _pkgname=LibreLinkUpDesktop
-pkgver=0.1.13
+pkgver=0.1.15
 _electronversion=34
-pkgrel=2
+pkgrel=1
 pkgdesc="A desktop application that fetches your blood sugar from LibreLinkUp.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://crazymarvin.com/librelinkupdesktop/"
@@ -21,8 +21,12 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f06d48339243dbb5fec082e46bfdd3019c774c4ccab89b03e1931a292f0bdd11'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('0c38c77e5dcb15e82c5ac392ff2fc0903d0d605ce981d0fad358d10748bd50bb'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -32,6 +36,7 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin} --no-sandbox/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
