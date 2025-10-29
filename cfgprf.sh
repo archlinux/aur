@@ -337,7 +337,7 @@ elif [ $MODE == "EXPORT" ]; then
 
         echo "exporting packages"
 
-        pacman -Qe > "packages"
+        pacman -Qqe > "packages"
 
         tar -rf $PROFILE "packages"
 
@@ -348,10 +348,10 @@ elif [ $MODE == "EXPORT" ]; then
         echo "exporting AUR packages"
 
         if command -v yay >/dev/null; then
-            yay -Qem > "aur"
+            yay -Qqm > "aur"
             tar -rf $PROFILE "aur"
         elif command -v paru >/dev/null; then
-            paru -Qem > "aur"
+            paru -Qqm > "aur"
             tar -rf $PROFILE "aur"
         else
             echo "error: yay nor paru found"

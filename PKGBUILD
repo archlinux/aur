@@ -1,7 +1,7 @@
 # Maintainer: Violet (violetemailwastaken@gmail.com)
 pkgname=cfgprf
-pkgver=1.0.2
-pkgrel=4
+pkgver=1.0.3
+pkgrel=5
 epoch=
 pkgdesc="tool for exporting and importing dotfiles, packages and AUR packages."
 arch=(any)
@@ -21,7 +21,7 @@ install=
 changelog=
 source=($pkgname.sh)
 noextract=()
-sha256sums=('6ae219a02d8a239fe0f81e87bc6fa652d7b9b3a99a8263e52c477eb4138612b1')
+sha256sums=('7be9601d459a7273ff5a810c4a33f190717a008721595ecb59c89523effb584c')
 
 package() {
 	install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
