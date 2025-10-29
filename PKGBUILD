@@ -79,7 +79,7 @@ prepare() {
     git checkout  "${_tag}"
     git submodule update --init --recursive
 
-    mkdir toolchain
+    mkdir -p toolchain
 
 cat > toolchain/clang_x86_64-pc-linux-gnu.cmake<< EOF
 SET(CMAKE_SYSTEM_NAME Linux)
