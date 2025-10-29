@@ -1,7 +1,7 @@
 pkgbase = mouseless
 	pkgdesc = A replacement for the mouse in Linux
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jbensmann/mouseless
 	install = mouseless.install
 	arch = x86_64

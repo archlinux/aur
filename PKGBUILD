@@ -2,7 +2,7 @@
 
 pkgname='mouseless'
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A replacement for the mouse in Linux"
 arch=('x86_64' 'aarch64')
 license=('MIT')
@@ -102,7 +102,7 @@ ExecStartPre=/bin/sleep 2
 ExecStart=/usr/bin/mouseless --config %h/.config/mouseless/config.yaml
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
 
 EOF
 
