@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  pnpm i
+  pnpm i --frozen-lockfile
   pnpm run build:unpack
 }
 
