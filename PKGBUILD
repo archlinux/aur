@@ -275,6 +275,7 @@ _prepare() {
   export USE_OBSERVERS=ON
   export USE_MAGMA=ON
   # export USE_SYSTEM_LIBS=ON  # experimental, not all libs present in repos
+  # USE_SYSTEM_ONNX=ON does not work and onnx itself should be removed from pytorch: https://github.com/pytorch/pytorch/issues/166546#issuecomment-3463370459
   export USE_NCCL=ON
   export USE_SYSTEM_NCCL=ON
   export USE_SYSTEM_PYBIND11=ON
