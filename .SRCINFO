@@ -1,7 +1,7 @@
 pkgbase = steam-native-runtime
 	pkgdesc = Native replacement for the Steam runtime using system libraries
 	pkgver = 1.0.0.75
-	pkgrel = 5
+	pkgrel = 6
 	url = https://wiki.archlinux.org/index.php/Steam/Troubleshooting#Native_runtime
 	arch = x86_64
 	license = None
