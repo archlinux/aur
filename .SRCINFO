@@ -1,6 +1,6 @@
 pkgbase = bwbasic
 	pkgdesc = Bywater BASIC
-	pkgver = 3.30
+	pkgver = 3.40
 	pkgrel = 1
 	url = https://sourceforge.net/projects/bwbasic
 	arch = aarch64
@@ -15,8 +15,8 @@ pkgbase = bwbasic
 	makedepends = dos2unix
 	depends = xdg-utils
 	depends = glibc
-	source = https://sourceforge.net/projects/bwbasic/files/bwbasic/version%203.30/bwbasic-3.30.zip
-	md5sums = a37262807cb7c497e6767bdfd704537d
-	sha256sums = 09a6fcfc3bd88f0e8af1ce3a65324898849ad2f26de547850c1f994d255f9064
+	source = https://sourceforge.net/projects/bwbasic/files/bwbasic/version%203.40/bwbasic-3.40.zip
+	md5sums = 5af04a96067672cea4b59a6acb7ae840
+	sha256sums = b5689422a09d05aae1143497d22579e55c4e121ee2b806e738b483b8c000a20f
 
 pkgname = bwbasic
