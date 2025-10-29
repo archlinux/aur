@@ -1,6 +1,6 @@
 # Maintainer: vociferous <vociferous@fail.pm>
 # Contributor: Stetsed <aur.arch@stetsed.xyz>
-pkgname=caddy-hetzner
+pkgname=caddy-multiplugins
 pkgver=2.10.2
 pkgrel=1
 pkgdesc="Caddy web server"
@@ -17,16 +17,14 @@ source=(
   "caddy.tmpfiles"
   "Caddyfile-example"
 )
-sha256sums=(
-  "SKIP"
-  "SKIP"
-  "SKIP"
-  "SKIP"
-  "SKIP"
-)
+sha256sums=('9bca9b879484cd1e6c7191c83e077ba9c851c2c10c998333219179bfb0fb93f7'
+            'dbaedf6929f5292d9ec32d2bcb4990cb3747b58940b385d26564e1abb5dd89ab'
+            'a9294eeba17a8fd57cf11cef21e2eb3719a016646eeac0764a0d9f9f380a40ef'
+            'c3119c98b285c4bf10c0581fba09b87df3999e0e5a335d94f074eae454a99e70'
+            '3620f8e4ffad2c1324aaceff368ddbd742c58b82cc6f277ade45e9c2201c21cf')
 
 build() {
-  xcaddy build v${pkgver} --with github.com/caddy-dns/hetzner
+  xcaddy build v${pkgver} --with github.com/greenpau/caddy-security --with github.com/techknowlogick/certmagic-s3 --with github.com/pberkel/caddy-storage-redis --with github.com/pteich/caddy-tlsconsul --with github.com/mholt/caddy-l4 --with github.com/caddy-dns/powerdns
 }
 
 package() {
