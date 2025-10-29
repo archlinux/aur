@@ -12,9 +12,9 @@ arch=('x86_64')
 license=('GPL3' 'LGPL')
 depends=('lib32-glibc')
 makedepends=('git' 'gperf' 'gtk-doc')
-source=("git+https://git.savannah.gnu.org/git/libidn.git?signed#tag=libidn-${pkgver//./-}"
+source=("git+https://git.savannah.gnu.org/git/libidn.git#tag=libidn-${pkgver//./-}"
         'libidn11-subdirs.patch')
-validpgpkeys=('9AA9BDB11BB1B99A21285A330664A76954265E8C') # Simon Josefsson <simon@josefsson.org>
+#validpgpkeys=('9AA9BDB11BB1B99A21285A330664A76954265E8C') # Simon Josefsson <simon@josefsson.org>
 sha256sums=('SKIP'
             '0c440fe12da1372e8f9388e6b2bed3f0dd57d2696e08cb8d92e9880fd315ca63')
 
