@@ -19,7 +19,7 @@ case $selected in
         if [[ -f $astro_themes_dir/$selectedA.conf ]]; then
             echo "file exists: $selectedA.conf"
             sudo sed -i "/Current/s/.*/Current=$selected/" $sddm_cfg
-            sudo sed -i "/ConfigFile/s/.*/ConfigFile=${selectedA}.conf/" $astro_cfg
+            sudo sed -i "/ConfigFile/s/.*/ConfigFile=Themes/${selectedA}.conf/" $astro_cfg
         else
             echo "canceled"
             exit 1
