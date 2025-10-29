@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flashpoint-launcher
 _pkgname='Flashpoint Launcher'
-pkgver=14.0.2
+pkgver=14.0.3
 _electronversion=19
 _nodeversion=20
 pkgrel=1
@@ -26,17 +26,21 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=${pkgver}"
 )
-sha256sums=('fa9b95543a67e1cc3c2cdddcec1f4307bce506b0219ae86a2ed1e947532a886d')
+sha256sums=('40a79cd538bafbae6865c6f9a687081c78f19dd5e0f65525718016004a0c840f')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh // [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver="$(grep -m 1 '"electron":' "${srcdir}/${pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
-    _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Game" --name="${_pkgname}" --exec="${pkgname} --no-sandbox %U"
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _get_electron_version
+    gendesk -q -f -n --pkgname="${pkgname}" --pkgdesc="${pkgdesc}" --categories="Game" --name="${_pkgname}" --exec="${pkgname} --no-sandbox %U"
     export CARGO_HOME="${srcdir}/.cargo"
     HOME="${srcdir}/.electron-gyp"
     {
@@ -52,14 +56,16 @@ prepare() {
         } >> .npmrc
         find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
         export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
-	    export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
+        export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
     fi
+    _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i 's/"deb", "7z"/"dir"/g' gulpfile.js
     NODE_ENV=development    npm install --leagcy-peer-deps
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _ensure_local_nvm
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm run pack
     _file_list=(chrome_100_percent.pak chrome_200_percent.pak chrome-sandbox icudtl.dat libEGL.so libffmpeg.so \
