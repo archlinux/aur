@@ -1,13 +1,14 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpeghdec-git
-pkgver=3.0.1.r0.g5f8e051
+pkgver=3.0.2.r0.g335a258
 pkgrel=1
 pkgdesc='Fraunhofer MPEG-H audio decoder (git version)'
 arch=('x86_64')
 url='https://mpegh.com/'
 license=('LicenseRef-Custom')
 depends=(
+    'gcc-libs'
     'glibc')
 makedepends=(
     'cmake'
@@ -27,13 +28,14 @@ build() {
         -DBUILD_SHARED_LIBS:BOOL='ON' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -Dmpeghdec_BUILD_BINARIES:BOOL='OFF' \
+        -DCMAKE_SKIP_RPATH:BOOL='YES' \
         -Wno-dev
     cmake --build build
 }
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
+    install -D -m755 build/bin/* -t "${pkgdir}/usr/bin"
     install -D -m644 mpeghdec/LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
     mv "${pkgdir}/usr/share/pkgconfig" "${pkgdir}/usr/lib"
 }
