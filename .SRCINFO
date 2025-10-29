@@ -1,0 +1,16 @@
+pkgbase = krep-git
+	pkgdesc = Fast text search tool with advanced algorithms, SIMD acceleration, multi-threading, and regex support (development version)
+	pkgver = v1.3.0.r0.g2850dc3
+	pkgrel = 1
+	url = https://github.com/davidesantangelo/krep
+	arch = aarch64
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	depends = glibc
+	provides = krep
+	conflicts = krep
+	source = git+https://github.com/davidesantangelo/krep.git
+	sha256sums = SKIP
+
+pkgname = krep-git
