@@ -1,0 +1,10 @@
+--- configure	2024-09-16 08:43:39.000000000 -0600
++++ configure	2025-10-28 21:28:16.924499015 -0600
+
+@@ -4990,1 +4990,1 @@
+-  CFLAGS="$CFLAGS  -Werror"
++  CFLAGS="$CFLAGS  -Wnoerror"
+ 
+@@ -5015,1 +5015,1 @@
+-  CFLAGS="$CFLAGS -Werror"
++  CFLAGS="$CFLAGS -Wnoerror"

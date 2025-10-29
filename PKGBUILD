@@ -3,21 +3,24 @@
 # Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=xlog
-pkgver=2.0.24
-pkgrel=2
+pkgver=2.0.25
+pkgrel=1
 pkgdesc="Ham Radio general purpose logging program."
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/xlog/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gtk2>=2.12.0' 'hamlib' 'winkeydaemon' 'hamradio-menus')
 optdepends=(	'cwdaemon: serial external-keyer - not usb'
 		'glabels: print log')
-makedepends=('pkg-config' 'libgnomeprint')
-source=(http://download.savannah.nongnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz)
+makedepends=('pkg-config')
+# 'libgnomeprint')
+source=(http://download.savannah.nongnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz
+	diff.configure)
 
 prepare() {
 	cd $srcdir/$pkgname-$pkgver
 	sed -i -e "s:icons:pixmaps:" data/pixmaps/Makefile.in
+	patch -p0 < ../diff.configure
 }
 
 build() {
@@ -39,7 +42,9 @@ package() {
 	make DESTDIR=$pkgdir install
 
 	rm $pkgdir/usr/share/applications/mimeinfo.cache
-	rm $pkgdir/usr/share/pixmaps/gnome-mime-text-x-xlog.png
+#	rm $pkgdir/usr/share/pixmaps/gnome-mime-text-x-xlog.png
 }
-md5sums=('4d18ae8b68e8dffa57f46695eb899f19')
-sha256sums=('8d453ac6ddc7f5b63d0804114c5423a6b96c0bbed5c23201ffab1244dcc4f8bc')
+md5sums=('29733f6a6914178823beee70fd4b4e83'
+         '46e099bcef62b854cedbf91ef52e2ada')
+sha256sums=('3580b72e0a0b5e72505117194dcdb11cecce95ea2dad6b4e11330181a75fdaa5'
+            '46f2eface766047ca0ca238e6afc0ab2f7a6af08548f06c73ef0c0263191d7b8')
