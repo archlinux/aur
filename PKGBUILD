@@ -3,7 +3,7 @@
 
 pkgname=openroad-git
 pkgver=r34136.5114b0e881
-pkgrel=1
+pkgrel=2
 pkgdesc='A framework for RTL synthesis'
 arch=('x86_64')
 url='https://theopenroadproject.org/'
@@ -58,8 +58,11 @@ build() {
 package() {
   cd $srcdir/OpenROAD
   DESTDIR="$pkgdir" cmake --install build
+  # Remove gtest related files, which cause confilct
   rm -r "$pkgdir"/usr/lib/cmake
   rm -r "$pkgdir"/usr/lib/pkgconfig
+  rm -r "$pkgdir"/usr/include/gtest
+  rm -r "$pkgdir"/usr/include/gmock
   rm "$pkgdir"/usr/lib/{libgmock.a,libgmock_main.a,libgtest.a,libgtest_main.a}
   install -Dm644 "$srcdir/OpenROAD/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

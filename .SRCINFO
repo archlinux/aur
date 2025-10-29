@@ -1,7 +1,7 @@
 pkgbase = openroad-git
 	pkgdesc = A framework for RTL synthesis
 	pkgver = r34136.5114b0e881
-	pkgrel = 1
+	pkgrel = 2
 	url = https://theopenroadproject.org/
 	arch = x86_64
 	license = BSD-3-Clause
