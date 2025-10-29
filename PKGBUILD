@@ -2,7 +2,7 @@
 # Maintainer: Charles Dong <chardon_cs@proton.me>
 
 pkgname='downjack-bin'
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Set up your gitignore and license files like using a lumberjack'
 url='https://github.com/chardoncs/downjack'
@@ -12,17 +12,17 @@ provides=('downjack')
 conflicts=('downjack')
 optdepends=('git')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/chardoncs/downjack/releases/download/v0.1.2/downjack_Linux_arm64.tar.gz")
-sha256sums_aarch64=('67effb0864081065f1be77116f1a1e263c72b7bb031203f0ea250a726a899085')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/chardoncs/downjack/releases/download/v0.2.0/downjack_Linux_arm64.tar.gz")
+sha256sums_aarch64=('601318845ffadb8d6906f1f9b19085b60f5c7ea5830f00f4ab2feab10a2063de')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/chardoncs/downjack/releases/download/v0.1.2/downjack_Linux_armv7.tar.gz")
-sha256sums_armv7h=('980d90aed11530c2671e6c85d0927be9acc5051d8b536466558ab3d2a7a8a073')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/chardoncs/downjack/releases/download/v0.2.0/downjack_Linux_armv7.tar.gz")
+sha256sums_armv7h=('4466c06db0ee2fe3ee0cc0c82f416d3f731f32a7df452b1a90b541cfdd6e6b08')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/chardoncs/downjack/releases/download/v0.1.2/downjack_Linux_i386.tar.gz")
-sha256sums_i686=('073b07c5247a80ea9d7d36f3b50121d9ee2009e96e71ea053cbf9b2df872bdb7')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/chardoncs/downjack/releases/download/v0.2.0/downjack_Linux_i386.tar.gz")
+sha256sums_i686=('ae0ecf367b1662cbb2ead8b15e05db24784e3c930b960396f19e6a86d9857813')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chardoncs/downjack/releases/download/v0.1.2/downjack_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('436678066d93c5d86bb118d991d1c2cdc05a59f1d1f09a51b5e55ca3f8cae95b')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chardoncs/downjack/releases/download/v0.2.0/downjack_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('f0d79938fe4d15b0a71ac75a86ff2fc26de08b5825ca1084c4762868ebf50405')
 
 package() {
   cd "${srcdir}/downjack_Linux_${CARCH}"
