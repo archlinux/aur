@@ -16,8 +16,8 @@ source_aarch64=("${_source[@]}")
 sha256sums=('1d38ec31ae3f8528b0bd6c49157196f3db398f7a0d00f6fe2ad3ffcf1383adde'
             'eaea8602c1b2808683100112f58fa5261ba01cb621aed236bab31537560a3529'
             '2a31e8040c5177900122e8aeacb333742676b5e8f05046b53dc1f8f7ff62de60')
-sha256sums_x86_64=('5b89e2a4f64b81164f983a16dbcdeb9c2bded04090107159e929a171df1ace5e')
-sha256sums_aarch64=('942cc61748416d28ba067faca9df69c89bface07a1f2f6cca83244ec2962f65e')
+sha256sums_x86_64=('aab423cb35fad916a33622549b92786b4181d4fe5e6ebcf5115ce051dab50073')
+sha256sums_aarch64=('80e726f20f4a823d71fae2b62822123baad4208c239aead4a0fad4bf7c08f6a7')
 
 _package() {
 	install -Dm644 "spacetime-BSL-${pkgver}.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
