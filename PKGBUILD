@@ -2,7 +2,7 @@
 
 _extname=spx
 pkgname=php-${_extname}
-pkgver=0.4.18
+pkgver=0.4.22
 pkgrel=2
 pkgdesc="A simple & straight-to-the-point PHP profiling extension with its built-in web UI"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('php>=5.6')
 license=('GPL3')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/NoiseByNorthwest/php-spx/archive/refs/tags/v${pkgver}.tar.gz"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/NoiseByNorthwest/php-spx/v${pkgver}/LICENSE")
-sha256sums=('1f0554080cb5aec5803b0773daefc23ef6ab4faa3e4554e2302d739c127da210'
+sha256sums=('6f89addd100d3d71168c094612eb8e1c06fd8062da6ee4d9df5b31bdfc4de160'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 build() {
