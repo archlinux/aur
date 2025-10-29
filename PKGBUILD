@@ -3,7 +3,7 @@
 
 pkgbase=ntfsplus-dkms-git
 pkgname=("$pkgbase" "ntfsplus-udev")
-pkgver=2025.10.20.r27.2c3335f09
+pkgver=2025.10.20.r28.1fa37cd35
 pkgrel=1
 # epoch=1
 pkgdesc="A new NTFS driver for Linux promised to be better than NTFS3. These patches are directly taken from the maintainer's mailing list posts. Backported to 6.17."
@@ -11,6 +11,9 @@ arch=('any')
 url="https://lore.kernel.org/all/20251020021227.5965-6-linkinjeon@kernel.org"
 license=('GPL-2.0-only')
 makedepends=('git')
+optdepends=(
+  'ntfsprogs-plus: Recommended NTFS utilities'
+)
 options=('!strip' '!emptydirs')
 
 # Using custom download agent to shallow clone the repo
@@ -57,20 +60,20 @@ export DLAGENTS="shallowclone::$(realpath "./DLAGENTS") %u %o"
 
 source=(
   'linux::shallowclone+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
-  '00-05.mbox.gz::https://lore.kernel.org/all/20251020020749.5522-1-linkinjeon@kernel.org/t.mbox.gz'
-  '06-11.mbox.gz::https://lore.kernel.org/all/20251020021227.5965-6-linkinjeon@kernel.org/t.mbox.gz'
+  'ntfsplus-00-05.mbox.gz::https://lore.kernel.org/all/20251020020749.5522-1-linkinjeon@kernel.org/t.mbox.gz'
+  'ntfsplus-06-11.mbox.gz::https://lore.kernel.org/all/20251020021227.5965-6-linkinjeon@kernel.org/t.mbox.gz'
   '0001-fs-ntfsplus-inode.c-Resolve-import-for-inode_generic.patch'
-  '0002-ntfsplus-Resolve-iomap_-arguments-temporarily-for-ke.patch'
+  # '0002-ntfsplus-Resolve-iomap_-arguments-temporarily-for-ke.patch'
   '0099-fs-ntfsplus-Makefile-DKMS-patch.patch'
   'dkms.conf'
   '90-udev-prefer-ntfsplus.rules'
 )
 sha256sums=(
   SKIP
-  81f7dc0262bf370f8fb7b2408c47c6e8ba834300424ebc38fb8d46696a5ab806
+  03b57c05e6f9fbf5b5bf34507aa212f6491967f21c53a73352e7f78ebfaf66a8
   bede30ed663dada47c946f74a314b8e25817c4cd8b6c39e0cd5810bbd1cddca2
   5180804263334deaa3774846d789c1553524f13e2da6149c227f35cf40252976
-  a039bdcbdfcaf1cd22f38d22ecf12d7d1d83989e98b4d122e11e33204c78c0ae
+  # a039bdcbdfcaf1cd22f38d22ecf12d7d1d83989e98b4d122e11e33204c78c0ae
   e217fa145f507b1e07e228e746528554f705f44fd5744f293b302b29df764b96
   ed9db8ec0caa09c977529c7ae89b808ee8c238331ec0fdf873525c115fcdfb7c
   e3866cac3d71da15740159c89b233d4d1f61981dbf737d4e3bc9a4c56bfa24be
@@ -86,7 +89,7 @@ prepare() {
   cd "$srcdir/linux"
 
   # Get the experimental ntfsplus driver from the mailing lists
-  git am --empty=keep "$srcdir/00-05.mbox" "$srcdir/06-11.mbox"
+  git am --empty=keep "$srcdir/ntfsplus-00-05.mbox" "$srcdir/ntfsplus-06-11.mbox"
   _mailbox_last_date=$(git log -1 --format='%ad' --date=iso-strict)
 
   # Apply patches
@@ -113,10 +116,7 @@ build() {
 package_ntfsplus-dkms-git() {
   pkgdesc="DKMS module for ntfsplus (A new NTFS driver for Linux promised to be better than NTFS3)."
   depends=('dkms')
-  opdepends=(
-    'ntfsprogs-plus: Recommended NTFS utilities'
-    'ntfsplus-udev: udev rules for ntfsplus'
-  )
+  optdepends+=("ntfsplus-udev: udev rules for ntfsplus")
   provides=('ntfsplus' 'NTFSPLUS-MODULE')
   conflicts=('ntfsplus')
 
