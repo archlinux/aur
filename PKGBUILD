@@ -4,7 +4,7 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20251002.1f68e3eac
+pkgver=20251029.65ee995ad
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=(x86_64 armv7h aarch64)
@@ -43,6 +43,9 @@ prepare() {
 	# Should be in mujs package.
 	mkdir thirdparty/mujs
 	cp ../regexp.h thirdparty/mujs
+
+	# disable features not yet in a sipped mujs release
+	sed -i 's:js_setlimit://js_setlimit:g' -i source/pdf/pdf-js.c
 }
 
 build() {
