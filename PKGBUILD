@@ -3,7 +3,7 @@
 _reponame=DatasetEditor
 pkgname=dataset-editor
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A tag-based dataset editor for image generation AI'
 arch=(x86_64)
 url="https://github.com/Jelosus2/$_reponame"
@@ -39,6 +39,7 @@ package() {
     install -Dm755 /dev/null "${pkgdir}/usr/bin/$pkgname"
     cat >>"${pkgdir}/usr/bin/$pkgname" <<EOD
 #! /usr/bin/sh
+export PROGRAMDATA="\$HOME/.local/share/$pkgname"
 exec $_electron /usr/lib/$pkgname "\$@"
 EOD
     cd "$_reponame-$pkgver"
@@ -46,6 +47,7 @@ EOD
     for r in 16 32 48 64 128 256; do
         install -dm755 "${pkgdir}/usr/share/icons/hicolor/${r}x${r}/apps/"
         install -m644 "public/doro_${icon_map[$r]}_${r}x${r}x32.png" "${pkgdir}/usr/share/icons/hicolor/${r}x${r}/apps/${pkgname}.png"
+        rm --force "public/doro_${icon_map[$r]}_${r}x${r}x32.png"
     done
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
     install -d "$pkgdir/usr/lib/$pkgname/"

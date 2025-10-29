@@ -1,7 +1,7 @@
 pkgbase = dataset-editor
 	pkgdesc = A tag-based dataset editor for image generation AI
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jelosus2/DatasetEditor
 	arch = x86_64
 	license = MIT
