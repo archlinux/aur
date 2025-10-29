@@ -1,6 +1,6 @@
 # Maintainer: Ryan Rhee <ryanrhee@icloud.com>
 pkgname=ltris2
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="A tetris clone with many features"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('sdl2' 'sdl2_ttf' 'sdl2_image' 'sdl2_mixer' 'hicolor-icon-theme')
 backup=('var/games/ltris2.hscr')
 source=("https://sourceforge.net/projects/lgames/files/ltris/$pkgname-$pkgver.tar.gz")
-sha256sums=('fb0f164c04988ff01670183d5b77666747320a69593610d9d25fd6c2145f2519')
+sha256sums=('482150495f9d87bb139d5af1abec7030383c37fdb3e75a45e9bad67ead798eda')
 
 prepare() {
 	cd "$pkgname-$pkgver"
