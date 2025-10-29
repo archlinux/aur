@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elephicon
-pkgver=3.8.5
-_electronversion=38
+pkgver=3.9.0
+_electronversion=39
 _nodeversion=24
 pkgrel=1
 pkgdesc="A GUI wrapper for png2icons, generates Apple ICNS and Microsoft ICO files from PNG files.(Use system-wide electron)"
@@ -24,7 +24,7 @@ source=(
     "electron-builder.yml"
     "${pkgname}.sh"
 )
-sha256sums=('99bc1f6fcbeb63ad083ff7086ca6c30bed4bc01eb30be7f5f94847bf9e7837dc'
+sha256sums=('749e3a9e982180ba3d51ebf136cc6644ea04899a2ad1a0c468c5d6535a15aac6'
             'be2680fcb083b9a45ebc2bea0a192e158707ad88336444c4c94d5d0fcdfdde6b'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
