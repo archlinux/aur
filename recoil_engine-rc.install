@@ -1,0 +1,7 @@
+#!/bin/bash
+pre_install() {
+    echo -e "\033[1;31mWARNING:\033[0m \033[1;33mDO NOT USE — ABOUT TO BE DELETED, \033[1;34mnaming error\033[0m."
+}
+pre_upgrade(){
+    pre_install
+}
