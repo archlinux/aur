@@ -1,0 +1,14 @@
+pkgbase = pacostrap-archiso
+	pkgdesc = Arch Linux's Unofficial Offline Installation Helper Tool (For Arch Linux ISO)
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/npc-gnu/pacostrap/tree/ArchISO_Edition
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	source = https://raw.githubusercontent.com/npc-gnu/pacostrap/ArchISO_Edition/pacostrap_ArchISO-0.9.0-PKGBUILD/pacostrap-0.9.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = pacostrap-archiso
