@@ -1,0 +1,3 @@
+[pwalinks-git]
+source = "git"
+git = "https://github.com/Onred/pwalinks.git"

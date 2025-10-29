@@ -1,0 +1,15 @@
+pkgbase = pwalinks-git
+	pkgdesc = Firefox native messaging host to open external links in default browser
+	pkgver = 0.r11.f85ff15
+	pkgrel = 1
+	url = https://github.com/Onred/pwalinks
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = python
+	provides = pwalinks
+	conflicts = pwalinks
+	source = git+https://github.com/Onred/pwalinks.git
+	sha256sums = SKIP
+
+pkgname = pwalinks-git
