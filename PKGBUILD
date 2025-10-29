@@ -1,5 +1,6 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Maintainer: Torsten Keßler <tpkessler@archlinux.org>
+# Maintainer: Jakub Klinkovský <lahwaacz at archlinux dot org>
 # Contributor: Stephen Zhang <zsrkmyn at gmail dot com>
 
 _pkgname=pytorch
