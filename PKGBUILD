@@ -2,7 +2,7 @@
 # Contributor: Stetsed <aur.arch@stetsed.xyz>
 pkgname=caddy-multiplugins
 pkgver=2.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Caddy web server"
 arch=('any')
 url="https://github.com/caddyserver/caddy"
