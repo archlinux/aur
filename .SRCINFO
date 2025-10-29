@@ -23,6 +23,6 @@ pkgbase = hyperrogue
 	options = !strip
 	options = !debug
 	source = hyperrogue-13.1f.tgz::https://github.com/zenorogue/hyperrogue/archive/refs/tags/v13.1f.tar.gz
-	sha256sums = 3a49067ecfb940b1c056b70d3e558db8fe3c988a62adfca11d5317255ba8b384
+	sha256sums = 2d1a83b078cd9801dec44f91626eb62cb8376e19a2954daaa1b8529d292d3bfb
 
 pkgname = hyperrogue
