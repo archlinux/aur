@@ -1,0 +1,20 @@
+pkgbase = spek-rs-bin
+	pkgdesc = Acoustic spectrum analyser. Spek alternative written in Rust.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/patryk-ku/spek-rs
+	arch = x86_64
+	license = MIT
+	depends = ffmpeg
+	provides = spek-rs
+	conflicts = spek-rs
+	source = spek-rs-v0.1.0::https://github.com/patryk-ku/spek-rs/releases/download/v0.1.0/spek-rs
+	source = spek-rs-v0.1.0.desktop::https://raw.githubusercontent.com/patryk-ku/spek-rs/refs/tags/v0.1.0/packaging/spek-rs.desktop
+	source = spek-rs-v0.1.0-icon.png::https://raw.githubusercontent.com/patryk-ku/spek-rs/refs/tags/v0.1.0/assets/icon.png
+	source = LICENSE-v0.1.0::https://raw.githubusercontent.com/patryk-ku/spek-rs/refs/tags/v0.1.0/LICENSE
+	sha512sums = e7b983d1bd75c9fbfada01e47607c9fd3e48b4b5643ad602dcf9cd794c864ac750ce06baac439703e0db430aa262c4c807a6e19f66a1ccbcc1bf98985a03a59c
+	sha512sums = 867cd03d4886ebc852efa272e4d4a7923a3d50249f0e1c629a862a4a7531241b59063269bb53b7e8fc7ec2bd9a71457ead3de64f20eb7749d9aaf3e91bd32eed
+	sha512sums = c9723f88751e7f8017d6f1e45ffc79db68816be98c385728dcee2b45bd6e178f0a6fc42ebceb794b238df93bce9ca81633bdf92e7d01a0f4943b6aa0a59f5ffa
+	sha512sums = 958949735e9c09b4111851ea918a539876c129a68a41a2037715a557affd43d13b82181e43ed99e783309f7e3886310c9c396baca993bc742d82fde8b2b0a45e
+
+pkgname = spek-rs-bin
