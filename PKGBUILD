@@ -1,7 +1,7 @@
 # Maintainer: Andrej Radović <r.andrej@gmail.com>
 
 pkgname=litecli
-pkgver=1.15.0
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="A command-line client for SQLite databases that has auto-completion ""\
 and syntax highlighting."
@@ -16,12 +16,13 @@ depends=(
 	'python-sqlparse'
 	'python-configobj'
 	'python-cli_helpers'
+	'python-llm'
 )
 makedepends=(python-build python-installer python-wheel python-setuptools python-setuptools-scm)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 provides=('litecli')
 conflicts=('litecli-git')
-md5sums=('dbd18eb142960e1efb0a926161188506')
+md5sums=('077268db8fae3f1f9078fa9b84e5fc54')
 
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}"
