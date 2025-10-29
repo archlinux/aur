@@ -2,6 +2,7 @@
             "65370e5aa8edb5cb8a3c66b385a782370cc5d5c578f7e4073f66e17fbc98ff5d")
 _pkgname=hmcl-dev
 pkgname=hmcl-dev-bin
+pkgrel=1
 pkgdesc="A Minecraft Launcher which is multi-functional, cross-platform and popular"
 url="https://github.com/huanghongxun/HMCL"
 license=("GPL3")
