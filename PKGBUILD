@@ -3,7 +3,7 @@
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgver=3.24.0
-pkgrel=1
+pkgrel=2
 pkgname=petsc
 pkgdesc="Portable, extensible toolkit for scientific computation"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://petsc.org"
 license=('BSD-2-Clause')
 options=(staticlibs)
 # note: zlib is not really needed by PETSc, but netcdf requires an HDF5 version with zlib
-depends=('openmpi' 'lapack' 'hdf5-openmpi' 'fftw-openmpi' 'superlu' 'suitesparse' 'libyaml' 'gsl' 'libjpeg-turbo' 'netcdf-openmpi' 'zfp' 'zlib'
+depends=('openmpi' 'lapack' 'hdf5-openmpi' 'fftw-openmpi' 'hwloc' 'pastix' 'superlu' 'suitesparse' 'libyaml' 'gsl' 'libjpeg-turbo' 'netcdf-openmpi' 'zfp' 'zlib'
          'python-numpy' 'python-mpi4py')
 makedepends=('gcc' 'gcc-fortran' 'cmake' 'cython' 'python-setuptools')
 provides=('petsc4py')
@@ -32,7 +32,7 @@ install=petsc.install
 source=(http://web.cels.anl.gov/projects/petsc/download/release-snapshots/${pkgname}-${pkgver}.tar.gz
         test_optdepends.sh)
 sha512sums=('359df81bd502ffe2b508fd7e20e5279e85c095cb2c67fcce2b1f302c73f4b3a2ec419b625b57e13bd95e1453c9f17de47f6dbba0e2a10a34d41814c1abde5b6e'
-            '809e956a60be3604db08d523faba0de26f97d63e9ceb174e06202ca6f742df917670821246349974662d8e98f7a166c107d2f1627a6aa256a4b69efd1576b891')
+            '9ac5c2a56e28f2f72452abd4338f8518be718d5b2b82264c20b628fb136f7973225be5b12db79413cb6f7231b2d8e050f3fb1361516f07044b2c17c28bc3dc7c')
 
 PETSC_ARCH=linux-c-opt
 _install_dir=/opt/petsc/${PETSC_ARCH}
@@ -47,16 +47,18 @@ build() {
             --with-mpi-f90module-visibility=0 \
             --with-cmake=0 \
             --with-mpi-dir=/usr \
-            --with-zfp=1 \
-            --with-netcdf=1 \
-            --with-libjpeg=1 \
-            --with-yaml=1 \
             --with-fftw=1 \
             --with-gsl=1 \
-            --with-zlib=1 \
-            --with-superlu-lib=-lsuperlu --with-superlu-include=/usr/include/superlu \
-            --with-suitesparse=1 \
             --with-hdf5=1 --with-hdf5-fortran-bindings=1 \
+            --with-hwloc=1 \
+            --with-libjpeg=1 \
+            --with-netcdf=1 \
+            --with-pastix=1 \
+            --with-suitesparse=1 \
+            --with-superlu-lib=-lsuperlu --with-superlu-include=/usr/include/superlu \
+            --with-yaml=1 \
+            --with-zfp=1 \
+            --with-zlib=1 \
             $(sh ${srcdir}/test_optdepends.sh)"
 
   echo './configure' ${CONFOPTS}
