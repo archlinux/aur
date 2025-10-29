@@ -4,8 +4,8 @@
 # Michael Lass <bevan at bi-co dot net>
 
 _major=25
-_minor=0.0
-_build=+37.1
+_minor=0.1
+_build=+8.1
 
 pkgname="jdk${_major}-graalvm-bin"
 pkgver="${_major}.${_minor}"
@@ -19,13 +19,13 @@ depends=('ca-certificates-java' 'java-runtime-common' 'java-environment-common')
 provides=("java-runtime=${_major}" "java-runtime-headless=${_major}" "java-environment=${_major}")
 options=('staticlibs' !debug !strip)
 install=install_jdk25-graalvm.sh
-source_x86_64=("https://download.oracle.com/graalvm/25/archive/graalvm-jdk-25_linux-x64_bin.tar.gz")
-source_aarch64=("https://download.oracle.com/graalvm/25/archive/graalvm-jdk-25_linux-aarch64_bin.tar.gz")
-sha256sums_x86_64=('04dba85ddce0df752d6d69e0476676fdad0998b7da5d3a0f9aad1fe6e3ffa1c5')
-sha256sums_aarch64=('a468ab5483d74f3d29dfdaa9c9b29b29261a3a9e49786d21c4a9c00b06c156ea')
+source_x86_64=("https://download.oracle.com/graalvm/25/archive/graalvm-jdk-${pkgver}_linux-x64_bin.tar.gz")
+source_aarch64=("https://download.oracle.com/graalvm/25/archive/graalvm-jdk-${pkgver}_linux-aarch64_bin.tar.gz")
+sha256sums_x86_64=('d4ab02ba1029e639f03374fdf91c242e1d0d49079880e1af1932ea7b7c431837')
+sha256sums_aarch64=('edd77565c76570a6df5f38e53d54524102f2c1b1cf74eebd9f51e7fc19f667cd')
 
 _jvmdir=/usr/lib/jvm/java-${_major}-graalvm
-_jdkdir="graalvm-jdk-${_major}${_build}"
+_jdkdir="graalvm-jdk-${pkgver}${_build}"
 
 package() {
 
