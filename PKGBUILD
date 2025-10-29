@@ -1,6 +1,6 @@
 #Maintainer: Archisman Panigrahi <apandada1ATgmail.com>
 pkgname=quickbib
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="QuickBib — DOI/arXiv → BibTeX desktop utility"
 url="https://github.com/archisman-panigrahi/quickbib"
@@ -9,7 +9,7 @@ arch=('any')
 depends=(python python-pyqt6 doi2bib3)
 makedepends=(meson ninja pkgconf)
 source=("https://github.com/archisman-panigrahi/quickbib/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b43aebe416c79fda915b2a9a8dc9a0a60b127f711a17b00b0d151aa7fb81b820')
+sha256sums=('e28a81a66fc486fde6cd1aae6e0208f21899d258d24cc33a607a19c8f6c309e1')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver" || return 1
