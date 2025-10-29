@@ -1,0 +1,4 @@
+pkg/
+src/
+warp-packer/
+*.pkg.tar.zst

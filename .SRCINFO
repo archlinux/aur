@@ -1,0 +1,12 @@
+pkgbase = warp-packer
+	pkgdesc = Create self-contained single binary applications making it sipmler and more ergonomic to deliver your application to your customers
+	pkgver = 0.4.5.1
+	pkgrel = 1
+	url = https://github.com/OpenHelios/warp
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	source = warp-packer::git+https://github.com/OpenHelios/warp.git#tag=v0.4.5.1
+	sha1sums = SKIP
+
+pkgname = warp-packer
