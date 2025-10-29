@@ -1,17 +1,17 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=insipid
 pkgname=python-sphinx-${_base}-theme
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="An insipid Sphinx theme"
 arch=(any)
 url="https://github.com/mgeier/${_base}-sphinx-theme"
-license=('custom:BSD-2-clause')
+license=(BSD-2-Clause)
 depends=(python-sphinx)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-sphinx-last-updated-by-git)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('90bf1c8bc62ddbe8013884207b409202da075bf189ca8d9a96c5b105bb04b34db9b3f80047d4b1afe1183bb674e9eaf2da64c02ed875149177168390a5f80221')
+sha512sums=('c604a86d5b3110725a2cb559c213dadef8367e6b72cfc6139ede7a38422ade0314c4e076e887ed735b27aaf8693145998352d4eccd264213863dc452377c1136')
 
 build() {
   cd ${_base}-sphinx-theme-${pkgver}

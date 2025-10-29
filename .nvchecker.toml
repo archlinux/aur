@@ -1,0 +1,4 @@
+[python-sphinx-insipid-theme]
+source = "github"
+github = "mgeier/insipid-sphinx-theme"
+use_latest_release = "true"
