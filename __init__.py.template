@@ -1,0 +1,10 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
+"""Allow cropgui to work without exposing its top-level module
+names to the global module namespace."""
+
+import python_qualify
+python_qualify.enable_submodules(__name__)
+
+__version__ = '{{ version }}'

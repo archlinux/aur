@@ -1,0 +1,7 @@
+/.vscode/
+/cropgui/
+/src/
+/pkg/
+*.log
+*.pkg.*
+*.tar.*

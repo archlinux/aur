@@ -1,0 +1,23 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools"]
+
+[project]
+name = "cropgui"
+version = "{{ version }}"
+
+[project.gui-scripts]
+cropgui = "cropgui.__main__:main"
+
+[tool.setuptools]
+packages = ["cropgui"]
+
+[tool.setuptools.package-data]
+cropgui = [
+    "cropgui.glade",
+    "stock-rotate-90-16.png",
+    "stock-rotate-270-16.png",
+]
