@@ -9,7 +9,7 @@ _sdk_ver=110
 
 pkgname='vrcx-bin'
 pkgdesc='Friendship management tool for VRChat (extracted AppImage version)'
-pkgver='2025.10.11'
+pkgver='2025.10.27'
 pkgrel='1'
 arch=('x86_64')
 url='https://vrcx.app/'
@@ -22,7 +22,7 @@ source=("https://github.com/vrcx-team/VRCX/releases/download/v$pkgver/VRCX_${pkg
         "LICENSE-v$pkgver::https://raw.githubusercontent.com/vrcx-team/VRCX/refs/tags/v$pkgver/LICENSE"
         'vrcx'
         'VRCX.desktop')
-sha256sums=('ee4e07ecdae30fe1810467cfbb9e5c7238c4f7163d05c9296f98244b03234957'
+sha256sums=('81c6c4ec5586718164835571ff1bf12778549f8134cc3023dae0c71a820d1410'
             '1927804117a7ac55e00646df36f77edd09d2cfee850588fc453a81d01bad90d1'
             'f7b1a299fe162337a9a3b066478b38a1cb524dae7a7e55669d3c6f02dc5f361b'
             '7582adf143859d66d1b75fd13f4d5be6041fb99bc949764f247ba8c3d790e76c')
@@ -216,8 +216,8 @@ build() {
             _locale="${pak%.pak}"
             _locale="${_locale//-/_}"
             mkdir -p -- "../../../usr/share/locale/$_locale"
-            mv -t "../../../usr/share/locale/$_locale" -- "$pak"
-            ln -s -- "../../../usr/share/locale/$_locale/$pak" "$pak"
+            mv -- "$pak" "../../../usr/share/locale/$_locale/vrcx.pak"
+            ln -s -- "../../../usr/share/locale/$_locale/vrcx.pak" "$pak"
         done
     )
     if rm opt/vrcx/resources/VRCX.png 2>/dev/null; then
