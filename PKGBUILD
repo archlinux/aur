@@ -24,7 +24,7 @@
 _pkgname="floorp"
 pkgname="$_pkgname"
 pkgver=12.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
 license=('MPL-2.0')
@@ -483,7 +483,7 @@ END
   ln -sf "$_pkgname" "$pkgdir/$_install_path/$_pkgname/$_pkgname-bin"
 
   # launcher
-  local _desktop=$(sed -e "s/@WMCLASS@/$_wmclass/" "$_pkgname.desktop")
+  local _desktop=$(sed -e "s/@WMCLASS@/$_wmclass/" "$srcdir/$_pkgname.desktop")
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" <<< "$_desktop"
 
   # icons

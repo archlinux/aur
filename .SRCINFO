@@ -1,7 +1,7 @@
 pkgbase = floorp
 	pkgdesc = Firefox-based web browser focused on performance and customizability
 	pkgver = 12.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Floorp-Projects/Floorp
 	arch = x86_64
 	license = MPL-2.0
