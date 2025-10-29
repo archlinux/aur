@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname='sonosano'
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=2
 pkgdesc="P2P Song Player"
 arch=('x86_64')
