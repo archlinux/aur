@@ -3,6 +3,7 @@ version = 1
 [[annotations]]
 path = [
     "PKGBUILD",
+    "recoil_engine-rc.install",
     ".gitignore",
     "README.md",
     "keys/**",

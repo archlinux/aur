@@ -7,9 +7,8 @@
 
 pkgname=recoil_engine-rc
 pkgver=2025.06.07
-pkgrel=2
-pkgdesc="A powerful free cross-platform RTS game engine. (GitHub — latest Release Candidate tag). \
-This version is used for public engine testing in BAR — Join the Discord if you want to help"
+pkgrel=3
+pkgdesc="DO NOT USE — ABOUT TO BE DELETED, naming error"
 arch=('x86_64')
 url="https://beyond-all-reason.github.io/RecoilEngine/"
 _ghurl="https://github.com/beyond-all-reason/RecoilEngine"
@@ -29,7 +28,7 @@ makedepends=('git' 'curl' 'jq'
 #            'clang' 'lld' ### Only needed if you want to build with the included clang toolchain
              'compdb' 'gflags')
 optdepends=('bar-lobby' 'bar-lobby-git')
-#install="${pkgname%-git}.install"
+install="${pkgname%-git}.install"
 source=("${pkgname%-git}::git+${_ghurl}.git${_tag}${_git_commit}"
 #        "${pkgname%-git}.sh"
 )
