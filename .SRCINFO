@@ -1,13 +1,13 @@
 pkgbase = picsort-bin
-	pkgdesc = post to multiple social networks simultaneously from your CLI
+	pkgdesc = PicSort is a simple tool to sort your pictures using only your keyboard
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coolapso/picsort
-	license = MIT
-	conflicts = PicSort
-	provides = PicSort
 	arch = x86_64
-	source_x86_64 = https://github.com/coolapso/PicSort/releases/download/v0.1.1/PicSort_0.1.1_linux_amd64.tar.gz
+	license = MIT
+	provides = PicSort
+	conflicts = PicSort
+	source_x86_64 = picsort-bin_0.1.1_x86_64.tar.gz::https://github.com/coolapso/PicSort/releases/download/v0.1.1/PicSort_0.1.1_linux_amd64.tar.gz
 	sha256sums_x86_64 = 2b53d243fcff53a3ef7314298791bc8e5846d606eeaff8801e3703c2f601e1e5
-	
+
 pkgname = picsort-bin

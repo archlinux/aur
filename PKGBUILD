@@ -3,8 +3,8 @@
 
 pkgname='picsort-bin'
 pkgver=0.1.1
-pkgrel=1
-pkgdesc='post to multiple social networks simultaneously from your CLI'
+pkgrel=2
+pkgdesc='PicSort is a simple tool to sort your pictures using only your keyboard'
 url='https://github.com/coolapso/picsort'
 arch=('x86_64')
 license=('MIT')
