@@ -1,4 +1,5 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: dorphell <dorphell@archlinux.org>
@@ -97,8 +98,6 @@ prepare() {
   patch -Np1 -i ../SDL-1.2.15-CVE-2019-13616-validate_image_size_when_loading_BMP_files.patch
   patch -Np1 -i ../SDL-1.2.15-CVE-2019-7577-Fix-a-buffer-overread-in-MS_ADPCM_nibb.patch
   patch -Np1 -i ../SDL-1.2.15-Reject-2-3-5-6-7-bpp-BMP-images.patch
-
-  #sed -i 's///'
 }
 
 build() {
