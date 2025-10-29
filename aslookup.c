@@ -6,10 +6,10 @@
 #include <netinet/in.h>
 #include <arpa/nameser.h>
 #include <cjson/cJSON.h>
-#include <unistd.h> // For getopt
-#include <netdb.h>  // For getaddrinfo, struct addrinfo
-#include <arpa/inet.h> // For inet_ntop, INET6_ADDRSTRLEN
-#include <sys/socket.h> // For AF_INET, SOCK_STREAM
+#include <unistd.h>
+#include <netdb.h>
+#include <arpa/inet.h>
+#include <sys/socket.h>
 
 #define GREEN "\033[32m"
 #define CYAN "\033[36m"
@@ -56,7 +56,7 @@ char *get_asn_from_ip(const char *ip) {
     return asn;
 }
 
-void fetch_ip_ranges(const char *asn) {
+void fetch_ip_ranges(const char *asn, FILE *output) {
     CURL *curl = curl_easy_init();
     if (!curl) return;
     char url[256];
@@ -68,7 +68,7 @@ void fetch_ip_ranges(const char *asn) {
     curl_easy_setopt(curl, CURLOPT_USERAGENT, "asnlookup-c-client/1.0");
     CURLcode res = curl_easy_perform(curl);
     if (res == CURLE_OK) {
-        printf(CYAN "\nIP Ranges:\n" RESET "%s\n", chunk.memory);
+        fprintf(output, "\nIP Ranges:\n%s\n", chunk.memory);
     } else {
         fprintf(stderr, RED "Error fetching IP ranges: %s\n" RESET, curl_easy_strerror(res));
     }
@@ -76,7 +76,7 @@ void fetch_ip_ranges(const char *asn) {
     free(chunk.memory);
 }
 
-void fetch_bgpview_info(const char *asn) {
+void fetch_bgpview_info(const char *asn, FILE *output) {
     CURL *curl = curl_easy_init();
     if (!curl) return;
     char url[256];
@@ -108,60 +108,65 @@ void fetch_bgpview_info(const char *asn) {
         free(chunk.memory);
         return;
     }
-    printf(GREEN "\n\nASN Number: %d\n" RESET, cJSON_GetObjectItem(data, "asn")->valueint);
-    printf(GREEN "Name: %s\n" RESET, cJSON_GetObjectItem(data, "name")->valuestring);
-    printf(GREEN "Description: %s\n" RESET, cJSON_GetObjectItem(data, "description_short")->valuestring);
-    printf(GREEN "Country: %s\n" RESET, cJSON_GetObjectItem(data, "country_code")->valuestring);
-    printf(GREEN "Website: %s\n" RESET, cJSON_GetObjectItem(data, "website")->valuestring);
+
+    fprintf(output, "\nASN Number: %d\n", cJSON_GetObjectItem(data, "asn")->valueint);
+    fprintf(output, "Name: %s\n", cJSON_GetObjectItem(data, "name")->valuestring);
+    fprintf(output, "Description: %s\n", cJSON_GetObjectItem(data, "description_short")->valuestring);
+    fprintf(output, "Country: %s\n", cJSON_GetObjectItem(data, "country_code")->valuestring);
+    fprintf(output, "Website: %s\n", cJSON_GetObjectItem(data, "website")->valuestring);
+
     cJSON *emails = cJSON_GetObjectItem(data, "email_contacts");
     if (emails) {
-        printf(CYAN "\nEmail Contacts:\n" RESET);
+        fprintf(output, "\nEmail Contacts:\n");
         for (int i = 0; i < cJSON_GetArraySize(emails); i++) {
-            printf(" - %s\n", cJSON_GetArrayItem(emails, i)->valuestring);
+            fprintf(output, " - %s\n", cJSON_GetArrayItem(emails, i)->valuestring);
         }
     }
+
     cJSON *abuse = cJSON_GetObjectItem(data, "abuse_contacts");
     if (abuse) {
-        printf(RED "\nAbuse Contacts:\n" RESET);
+        fprintf(output, "\nAbuse Contacts:\n");
         for (int i = 0; i < cJSON_GetArraySize(abuse); i++) {
-            printf(" - %s\n", cJSON_GetArrayItem(abuse, i)->valuestring);
+            fprintf(output, " - %s\n", cJSON_GetArrayItem(abuse, i)->valuestring);
         }
     }
+
     cJSON *address = cJSON_GetObjectItem(data, "owner_address");
     if (address) {
-        printf(YELLOW "\nOwner Address:\n" RESET);
+        fprintf(output, "\nOwner Address:\n");
         for (int i = 0; i < cJSON_GetArraySize(address); i++) {
-            printf(" %s\n", cJSON_GetArrayItem(address, i)->valuestring);
+            fprintf(output, " %s\n", cJSON_GetArrayItem(address, i)->valuestring);
         }
     }
-    printf(GREEN "\nTraffic Ratio: %s\n" RESET, cJSON_GetObjectItem(data, "traffic_ratio")->valuestring);
-    printf(GREEN "Updated: %s\n" RESET, cJSON_GetObjectItem(data, "date_updated")->valuestring);
+
+    fprintf(output, "Traffic Ratio: %s\n", cJSON_GetObjectItem(data, "traffic_ratio")->valuestring);
+    fprintf(output, "Updated: %s\n", cJSON_GetObjectItem(data, "date_updated")->valuestring);
+
     cJSON_Delete(root);
     curl_easy_cleanup(curl);
     free(chunk.memory);
 }
 
-void print_help(const char *progname) {
-    printf("Usage: %s -i <IP address> | -d <domain name>\n", progname);
-    printf("Options:\n");
-    printf("  -i <IP>      Specify the IP address to look up\n");
-    printf("  -d <domain>  Specify a domain name to look up\n");
-    printf("  --help       Show this help message\n");
+void print_help(const char *progname, FILE *output) {
+    fprintf(output, "Usage: %s -i <IP address>\n"
+                    "       -d <domain name>\n"
+                    "       -f <filename>\n", progname);
+    fprintf(output, "Options:\n");
+    fprintf(output, "  -i <IP>       Specify the IP address to look up\n");
+    fprintf(output, "  -d <domain>   Specify a domain name to look up\n");
+    fprintf(output, "  -f <file>     Save output to a formatted text file\n");
+    fprintf(output, "  --help        Show this help message\n");
 }
 
-// Domain resolution function
 char *resolve_domain_to_ip(const char *domain) {
     struct addrinfo hints, *res;
     static char ip[INET6_ADDRSTRLEN] = {0};
-
     memset(&hints, 0, sizeof(hints));
-    hints.ai_family = AF_INET; // IPv4
+    hints.ai_family = AF_INET;
     hints.ai_socktype = SOCK_STREAM;
-
     if (getaddrinfo(domain, NULL, &hints, &res) != 0) {
         return NULL;
     }
-
     struct sockaddr_in *ipv4 = (struct sockaddr_in *)res->ai_addr;
     inet_ntop(AF_INET, &(ipv4->sin_addr), ip, sizeof(ip));
     freeaddrinfo(res);
@@ -171,27 +176,42 @@ char *resolve_domain_to_ip(const char *domain) {
 int main(int argc, char *argv[]) {
     char ip[64] = {0};
     char domain[256] = {0};
-
+    char filename[256] = {0};
+    FILE *output = stdout;
     int opt;
+
     for (int i = 1; i < argc; i++) {
         if (strcmp(argv[i], "--help") == 0) {
-            print_help(argv[0]);
+            print_help(argv[0], stdout);
             return 0;
         }
     }
-    while ((opt = getopt(argc, argv, "i:d:")) != -1) {
+
+    while ((opt = getopt(argc, argv, "i:d:f:")) != -1) {
         switch (opt) {
-        case 'i':
-            strncpy(ip, optarg, sizeof(ip) - 1);
-            break;
-        case 'd':
-            strncpy(domain, optarg, sizeof(domain) - 1);
-            break;
-        case '?':
-            print_help(argv[0]);
+            case 'i':
+                strncpy(ip, optarg, sizeof(ip) - 1);
+                break;
+            case 'd':
+                strncpy(domain, optarg, sizeof(domain) - 1);
+                break;
+            case 'f':
+                strncpy(filename, optarg, sizeof(filename) - 1);
+                break;
+            case '?':
+                print_help(argv[0], stdout);
+                return 1;
+        }
+    }
+
+    if (strlen(filename) > 0) {
+        output = fopen(filename, "w");
+        if (!output) {
+            fprintf(stderr, "Failed to open file for writing.\n");
             return 1;
         }
     }
+
     if (strlen(domain) > 0) {
         char *resolved_ip = resolve_domain_to_ip(domain);
         if (!resolved_ip) {
@@ -200,17 +220,24 @@ int main(int argc, char *argv[]) {
         }
         strncpy(ip, resolved_ip, sizeof(ip) - 1);
     }
+
     if (strlen(ip) == 0) {
-        print_help(argv[0]);
+        print_help(argv[0], output);
+        if (output != stdout) fclose(output);
         return 1;
     }
+
     char *asn = get_asn_from_ip(ip);
     if (!asn) {
         fprintf(stderr, RED "Failed to resolve ASN from IP.\n" RESET);
+        if (output != stdout) fclose(output);
         return 1;
     }
-    printf(GREEN "\nResolved ASN: %s\n" RESET, asn);
-    fetch_ip_ranges(asn);
-    fetch_bgpview_info(asn);
+
+    fprintf(output, "Resolved ASN: %s\n", asn);
+    fetch_ip_ranges(asn, output);
+    fetch_bgpview_info(asn, output);
+
+    if (output != stdout) fclose(output);
     return 0;
 }
