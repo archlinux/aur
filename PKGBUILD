@@ -2,17 +2,17 @@
 
 pkgname=organicmaps
 pkgver=2025.10.07_1
-tag="${pkgver%%_*}-${pkgver##*_}-android"
-pkgrel=2
+_tag="${pkgver%%_*}-${pkgver##*_}-android"
+pkgrel=3
 pkgdesc="Organic Maps: Offline Hike, Bike, Trails and Navigation"
 arch=(x86_64)
 makedepends=(cmake git jq gcc ninja mold)
 depends=(mesa libglvnd freetype2 sqlite icu qt6-svg qt6-base zlib libpng glibc
-  qt6-positioning gcc-libs harfbuzz libxrandr libxi libxcursor)
+  qt6-positioning gcc-libs harfbuzz libxrandr libxi libxcursor hicolor-icon-theme libxinerama python)
 optdepends=("ccache: faster re-compilation" "qt6-wayland: for Wayland users")
-license=("Apache")
+license=("Apache-2.0")
 url="https://organicmaps.app"
-source_url="https://github.com/organicmaps/organicmaps.git"
+_source_url="https://github.com/organicmaps/organicmaps.git"
 source=(organicmaps.desktop)
 sha256sums=('8205a6abb2c053380940d5c2e83cf10b5b889544e2d36c1c777778bf35772729')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
@@ -22,17 +22,17 @@ prepare() {
     printf "need at least 5 GiB of free space\n"
     exit 1
   fi
-  src_url=$source_url
+  src_url=$_source_url
   if [ -n "$SOURCE_URL_REWRITER" ]; then
-    src_url=$($SOURCE_URL_REWRITER $source_url)
+    src_url=$($SOURCE_URL_REWRITER $_source_url)
     case $src_url in
       file://*)
-        git -C ${src_url#file://} fetch --depth=1 origin "$tag"
+        git -C ${src_url#file://} fetch --depth=1 origin "$_tag"
         ;;
     esac
   fi
   if [ ! -d $pkgname ]; then
-    git clone --depth=1 --single-branch -b "$tag" --filter=blob:limit=128k \
+    git clone --depth=1 --single-branch -b "$_tag" --filter=blob:limit=128k \
       $src_url $pkgname
   fi
   if [ -n "$SOURCE_URL_REWRITER" ]; then
