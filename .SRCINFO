@@ -1,0 +1,18 @@
+pkgbase = systemdunitparser-git
+	pkgdesc = SystemdUnitParser is an extension to Python's configparser.RawConfigParser to properly parse systemd unit files
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/sgallagher/systemdunitparser.git
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = systemdunitparser
+	conflicts = systemdunitparser
+	source = git+https://github.com/sgallagher/systemdunitparser.git
+	b2sums = SKIP
+
+pkgname = systemdunitparser-git
