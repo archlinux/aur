@@ -2,9 +2,11 @@
 _pkgname=quickbib
 pkgname=quickbib-git
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="QuickBib — DOI/arXiv → BibTeX desktop utility"
 url="https://github.com/archisman-panigrahi/quickbib"
+provides=('quickbib')
+conflicts=('quickbib')
 license=('GPL3')
 arch=('any')
 depends=(python python-pyqt6 doi2bib3)
