@@ -1,4 +1,5 @@
-# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-libgcrypt
 pkgver=1.11.2
