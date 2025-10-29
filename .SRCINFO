@@ -1,6 +1,6 @@
 pkgbase = qobuz-player
 	pkgdesc = High resolution audio player backed by Qobuz
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/SofusA/qobuz-player
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = qobuz-player
 	makedepends = npm
 	conflicts = qobuz-player-git
 	options = !lto
-	source = qobuz-player-0.4.1.tar.gz::https://github.com/SofusA/qobuz-player/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = 949c6301ebd9632967effafe180b5fbf7fa8c75b0f8ed0e9e5e5e38c7181536a
+	source = qobuz-player-0.4.2.tar.gz::https://github.com/SofusA/qobuz-player/archive/refs/tags/v0.4.2.tar.gz
+	sha256sums = a33ac5e3d8e3851eca1084ea903bf490d2ca0ff8fda881ef2a52c79e44b12212
 
 pkgname = qobuz-player
