@@ -1,7 +1,7 @@
 # MAINTAINER username227 gfrank227[at]gmail[dot]com
 # MAINTAINER qu1ck anlutsenko[at]gmail[dot]com
 pkgname=trgui-ng-git
-pkgver=r459.e54faf1
+pkgver=r460.a377568
 pkgrel=1
 pkgdesc='Remote GUI for Transmission torrent daemon'
 url="https://github.com/openscopeproject/TrguiNG"
@@ -17,7 +17,7 @@ source=("TrguiNG::git+https://github.com/openscopeproject/TrguiNG"
 noextract=('dbip.mmdb')
 sha256sums=('SKIP'
             '15291b7961766f54fc1ff8afac4189a67850920cd8b555b3dc6ddf9d02fc3ada'
-            '21bef47c8cddae5365a7af8867d43c25e80db53ec8dbb1940138ad26d02a401a')
+            'b349711b9c7c2df5d328fc1b29c31174389fce7b53869b7b3c5c305f2cc0e5bd')
 options=('!lto' '!debug')
 
 pkgver() {
