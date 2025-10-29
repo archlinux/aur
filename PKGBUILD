@@ -1,7 +1,7 @@
 # Maintainer: Archisman Panigrahi <apandada1 at gmail dot com>
 # Special thanks to: Mark Wagie (yochananmarqos) https://aur.archlinux.org/account/yochananmarqos
 pkgname=webfontkitgenerator-git
-pkgver=1.0.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Create @font-face kits easily"
 arch=('any')
@@ -10,7 +10,7 @@ provides=('webfontkitgenerator')
 conflicts=('webfontkitgenerator')
 license=('GPL3')
 depends=('gtk4' 'gtksourceview5' 'gst-python' 'libadwaita' 'python-fonttools' 'python-brotli')
-makedepends=('meson' 'git')
+makedepends=('meson' 'git' 'blueprint-compiler')
 source=("git+https://github.com/rafaelmardojai/webfontkitgenerator.git")
 sha256sums=('SKIP')
 
