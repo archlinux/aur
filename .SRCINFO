@@ -1,13 +1,15 @@
 pkgbase = mpeghdec
 	pkgdesc = Fraunhofer MPEG-H audio decoder
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://mpegh.com/
 	arch = x86_64
 	license = LicenseRef-Custom
 	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
 	depends = glibc
-	source = https://github.com/Fraunhofer-IIS/mpeghdec/archive/r3.0.1/mpeghdec-3.0.1.tar.gz
-	sha256sums = f5fdacc185f62923738b0760745ee8545b6c81fcbdf7e90b7b922b5070cb83d0
+	source = https://github.com/Fraunhofer-IIS/mpeghdec/archive/r3.0.2/mpeghdec-3.0.2.tar.gz
+	sha256sums = a2108be60a98ec2736b42edb2f5727f3cc22d49196f3802a981f242dd38f136c
 
 pkgname = mpeghdec
