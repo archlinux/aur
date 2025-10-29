@@ -1,0 +1,23 @@
+pkgbase = pixsaur
+	pkgdesc = Image converter for Amstrad CPC
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/IIIvan37/pixsaur
+	arch = x86_64
+	license = MIT
+	makedepends = pnpm
+	makedepends = typescript
+	makedepends = cargo
+	makedepends = webkit2gtk-4.1
+	options = !lto
+	source = pixsaur-0.1.6.tar.gz::https://github.com/IIIvan37/pixsaur/archive/refs/tags/v0.1.6.tar.gz
+	sha256sums = da50f211f45ac1a57b555bb97335636a036af339b323257d681dfa5435471792
+
+pkgname = pixsaur
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = cairo
+	depends = libsoup3
+	depends = glib2
+	depends = hicolor-icon-theme
+	depends = webkit2gtk-4.1
