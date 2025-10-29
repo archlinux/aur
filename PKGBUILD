@@ -2,7 +2,7 @@
 # Maintainer: adam
 
 pkgname='opencode'
-pkgver=0.15.23
+pkgver=0.15.24
 _subver=
 options=('!debug' '!strip')
 pkgrel=1
