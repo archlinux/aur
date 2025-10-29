@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=matugen
-pkgver=2.4.1
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc='A material you color generation too '
 arch=(x86_64)
 url="https://github.com/InioX/$pkgname"
@@ -12,7 +12,7 @@ depends=(gcc-libs
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('6655bd898c30730cfc9d0e6e6689021afbcb6a24de9df3ac6344c72833b6d9fa')
+sha256sums=('6756fa0e5014871924e1e99df37ceda72a1589f5299753765e8cd012a8c86886')
 
 prepare() {
 	cd "$_archive"
