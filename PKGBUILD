@@ -16,7 +16,7 @@ source=(
     "lyvoxa-${pkgver}-linux-amd64.tar.gz.sha256::https://github.com/oxyzenQ/lyvoxa/releases/download/${pkgver}/lyvoxa-${pkgver}-linux-amd64.tar.gz.sha256"
     "lyvoxa-${pkgver}-linux-amd64.tar.gz.asc::https://github.com/oxyzenQ/lyvoxa/releases/download/${pkgver}/lyvoxa-${pkgver}-linux-amd64.tar.gz.asc"
 )
-sha256sums=('3238aae2b8b862482ff6bba155460d6d80014b19e98d11b054d6f5e4bfacc337' '0ab8373534d1ecc5db9b43320bad655516545a2aa2efaa79fe0c709d01d7f3ab' 'SKIP' )
+sha256sums=('dc3156638609708618206713411058bba95514343a58871ecb07260fb5b3a13a' '0824ce2cc353a7500b326ef938967cc1de948c36700eb11a6f893561d5f805ac' 'e90b2f677e081c2516efbc0f09c94785b7366a82d33e9091409e390a8aa5449c' )
 validpgpkeys=('3495ABF0957D28A7E85013750D8D13BB989AF9F0') # Rezky Cahya Sahputra (Investor)
 
 prepare() {
