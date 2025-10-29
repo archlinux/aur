@@ -3,7 +3,7 @@
 pkgname=technitium-dns-server-git
 _pkgname=technitium-dns-server
 pkgver=r3436.g767f764f
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source authoritative and recursive DNS server focused on privacy and security"
 arch=('x86_64')
 url="https://technitium.com/dns/"
@@ -35,7 +35,7 @@ pkgver() {
 }
 
 build() {
-	cd "TechnitiumLibrary" 
+    cd "TechnitiumLibrary"
     echo "::: Setting target .NET version to 9.0"
     for pp in $(grep -Rl "<TargetFramework>net8.0</TargetFramework>")
     do
@@ -50,7 +50,7 @@ build() {
     dotnet build TechnitiumLibrary.ByteTree/TechnitiumLibrary.ByteTree.csproj -c Release
     dotnet build TechnitiumLibrary.Net/TechnitiumLibrary.Net.csproj -c Release
     
-    cd "../DnsServer" 
+    cd "../DnsServer"
     
     echo "::: Setting target .NET version to 9.0"
     for pp in $(grep -Rl "<TargetFramework>net8.0</TargetFramework>")
@@ -63,7 +63,7 @@ build() {
 }
 
 package() {
-#	cd "DnsServer/DnsServerApp/bin/Release/publish" 
+    cd "DnsServer/DnsServerApp/bin/Release/publish"
     echo "::: Installing binaries"
     install -Dm755 "DnsServer/DnsServerApp/bin/Release/publish/DnsServerApp" "${pkgdir}/opt/${_pkgname}/DnsServerApp"
     install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/DnsServerApp.deps.json" "${pkgdir}/opt/${_pkgname}/DnsServerApp.deps.json"
