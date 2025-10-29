@@ -3,7 +3,7 @@
 _reponame=DatasetEditor
 pkgname=dataset-editor
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A tag-based dataset editor for image generation AI'
 arch=(x86_64)
 url="https://github.com/Jelosus2/$_reponame"
@@ -11,18 +11,19 @@ license=(MIT)
 _electron=electron34
 depends=("$_electron" nodejs)
 makedepends=(pnpm asar icoutils)
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+# This app requires .git to build, so use the git+url syntax instead of a tarball
+source=("$pkgname-$pkgver::git+$url.git#tag=v$pkgver"
         dataset-editor.desktop)
-sha256sums=('8d4e591a08617a71263a71a054e858879621259f98e24e1a9fa0234a1acd764f'
+sha256sums=('fba15e074ff72ae9dc499655a15698f6a51fd897ef59158152562d5c8b6c1505'
             '093e593e92ffe3a44380d3bc7d90baf302ebeb24ab4ec221e79311a22929fcfa')
 
 prepare() {
-    cd "$_reponame-$pkgver"
+    cd "$pkgname-$pkgver"
     pnpm install
 }
 
 build() {
-    cd "$_reponame-$pkgver"
+    cd "$pkgname-$pkgver"
     local i686=ia32 x86_64=x64
     export NODE_ENV=production
     export NODE_OPTIONS='--openssl-legacy-provider'
@@ -42,7 +43,7 @@ package() {
 export PROGRAMDATA="\$HOME/.local/share/$pkgname"
 exec $_electron /usr/lib/$pkgname "\$@"
 EOD
-    cd "$_reponame-$pkgver"
+    cd "$pkgname-$pkgver"
     local -A icon_map=([256]=1 [128]=2 [64]=3 [48]=4 [32]=5 [16]=6)
     for r in 16 32 48 64 128 256; do
         install -dm755 "${pkgdir}/usr/share/icons/hicolor/${r}x${r}/apps/"
