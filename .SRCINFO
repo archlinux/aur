@@ -9,6 +9,6 @@ pkgbase = zeptofetch
 	makedepends = make
 	depends = glibc
 	source = zeptofetch-1.0.tar.gz::https://github.com/Gur0v/zeptofetch/archive/refs/tags/v1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 940a3a4d384e0a1338bab1fda002c4d195fa83e44969f14469754acb1948eb9a
 
 pkgname = zeptofetch
