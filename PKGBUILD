@@ -1,7 +1,7 @@
 # Maintainer: Matsaa93 <matsaa93@gmail.com>
 pkgname=sddm_theme_selector
 _pkgname=sddm_theme_selector
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 
 pkgdesc="a script that lets you shange Sddm Theme"

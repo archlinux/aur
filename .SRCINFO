@@ -1,6 +1,6 @@
 pkgbase = sddm_theme_selector
 	pkgdesc = a script that lets you shange Sddm Theme
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/matsaa93/uni-sync-timer
 	arch = any
