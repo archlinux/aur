@@ -1,6 +1,6 @@
 pkgbase = doi2bib3
 	pkgdesc = Fetch BibTeX for DOIs or resolve arXiv ids to DOIs and fetch BibTeX
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/archisman-panigrahi/doi2bib3
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = doi2bib3
 	depends = python
 	depends = python-requests
 	depends = python-bibtexparser
-	source = https://github.com/archisman-panigrahi/doi2bib3/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 5df697498807a8ea9a8035ec48a436d31e81a26680c34eb1a457640a5c9c3a2d
+	source = https://github.com/archisman-panigrahi/doi2bib3/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 61b4d077d46f39ae99fd67c60455c847fded24c168300ca62dcc4e999d229f45
 
 pkgname = doi2bib3
