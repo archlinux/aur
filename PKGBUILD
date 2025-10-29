@@ -2,7 +2,7 @@
 
 pkgname=canonical-multipass
 _realname=multipass
-pkgver=1.15.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc="Multipass is a lightweight VM manager for Linux, Windows and macOS."
 arch=('x86_64')
@@ -30,6 +30,7 @@ build() {
       -Wno-dev \
       -DMULTIPASS_ENABLE_FLUTTER_GUI=OFF \
       -DMULTIPASS_ENABLE_TESTS=OFF \
+      -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
       -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build ${_builddir}
 }
