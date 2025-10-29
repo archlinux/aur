@@ -5,7 +5,7 @@
 # Contributor: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 pkgname=appimagelauncher
-pkgver=3.0.0_beta_2
+pkgver=3.0.0_beta_3
 _pkgname=AppImageLauncher
 _pkgver=${pkgver//_/-}
 pkgrel=1
@@ -24,7 +24,7 @@ source=(
   "$pkgname-$pkgver.tag.gz::$url/archive/refs/tags/v$_pkgver.tar.gz"
   appimage-binfmt-remove.hook)
 sha256sums=(
-  '3cd3c2557c3d54b6d6085fc84a6fea279c3eff5bc6f315ef99bd216ff5ba4dd1'
+  '288a39c1a57b2017acf7e81dc4f0576c8ddb0035ed29187d74b1f4ffa8d630b4'
   '72a2630cf79b8f90bc21eae1d9f40c07fe77ce22df46c511b500f514455d7c81')
 
 prepare() {
