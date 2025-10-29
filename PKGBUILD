@@ -4,7 +4,7 @@ pkgbase=python-sshfs
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=2025.2.0
+pkgver=2025.10.0
 pkgrel=1
 pkgdesc="SSH Filesystem -- Async SSH/SFTP backend for fsspec"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('python-setuptools-scm'
              'python-installer')  # wheel required by new setuptools
 #            'python-sphinx'
 checkdepends=('python-pytest-asyncio'
-             'python-pytest-xdist'
+#             'python-pytest-xdist'
               'python-fsspec'
               'python-asyncssh'
               'python-typing_extensions'
@@ -25,7 +25,7 @@ checkdepends=('python-pytest-asyncio'
 #             'openssh'
 #             'openbsd-netcat'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('684941eaf3f8471a3335cce5502c2e51')
+md5sums=('6dfc136422a93e5704c2106dc2655a5d')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}

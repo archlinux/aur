@@ -1,12 +1,11 @@
 pkgbase = python-sshfs
 	pkgdesc = SSH Filesystem -- Async SSH/SFTP backend for fsspec
-	pkgver = 2025.2.0
+	pkgver = 2025.10.0
 	pkgrel = 1
 	url = https://github.com/fsspec/sshfs
 	arch = any
 	license = Apache-2.0
 	checkdepends = python-pytest-asyncio
-	checkdepends = python-pytest-xdist
 	checkdepends = python-fsspec
 	checkdepends = python-asyncssh
 	checkdepends = python-typing_extensions
@@ -16,8 +15,8 @@ pkgbase = python-sshfs
 	makedepends = python-setuptools-scm
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/s/sshfs/sshfs-2025.2.0.tar.gz
-	md5sums = 684941eaf3f8471a3335cce5502c2e51
+	source = https://files.pythonhosted.org/packages/source/s/sshfs/sshfs-2025.10.0.tar.gz
+	md5sums = 6dfc136422a93e5704c2106dc2655a5d
 
 pkgname = python-sshfs
 	depends = python>=3.7
