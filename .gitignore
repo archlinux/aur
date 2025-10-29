@@ -2,6 +2,8 @@
 !/.gitignore
 !/.SRCINFO
 !/PKGBUILD
-!/makepkg.conf*
-!/MKPKG
-!/pacman.conf*
+!/*.conf*
+!/.patch*
+/revertme-makepkg-remove-libdepends-and-libprovides.patch
+!/mkconfig
+!/alpm.sysusers
