@@ -1,0 +1,10 @@
+--- zaap.desktop	2025-10-29 14:16:51.237566875 +0100
++++ zaap.desktop.new	2025-10-29 14:43:04.820920792 +0100
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Name=Ankama Launcher
+-Exec=AppRun --no-sandbox %U
++Exec=/usr/bin/dofus-launcher
+ Terminal=false
+ Type=Application
+ Icon=zaap
