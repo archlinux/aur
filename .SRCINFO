@@ -1,13 +1,13 @@
 pkgbase = picsort-bin
 	pkgdesc = post to multiple social networks simultaneously from your CLI
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/coolapso/picsort
 	license = MIT
 	conflicts = PicSort
 	provides = PicSort
 	arch = x86_64
-	source_x86_64 = https://github.com/coolapso/PicSort/releases/download/v0.1.0/PicSort_0.1.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 6b01c26ed656c8beec9a357b50d80e62e3edd805d18610451b7d74a1a29b4cf3
+	source_x86_64 = https://github.com/coolapso/PicSort/releases/download/v0.1.1/PicSort_0.1.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2b53d243fcff53a3ef7314298791bc8e5846d606eeaff8801e3703c2f601e1e5
 	
 pkgname = picsort-bin

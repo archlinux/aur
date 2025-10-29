@@ -2,7 +2,7 @@
 # Maintainer: coolapso <coolapso@coolapso.tech>
 
 pkgname='picsort-bin'
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='post to multiple social networks simultaneously from your CLI'
 url='https://github.com/coolapso/picsort'
@@ -11,8 +11,8 @@ license=('MIT')
 provides=('PicSort')
 conflicts=('PicSort')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/coolapso/PicSort/releases/download/v0.1.0/PicSort_0.1.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('6b01c26ed656c8beec9a357b50d80e62e3edd805d18610451b7d74a1a29b4cf3')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/coolapso/PicSort/releases/download/v0.1.1/PicSort_0.1.1_linux_amd64.tar.gz")
+sha256sums_x86_64=('2b53d243fcff53a3ef7314298791bc8e5846d606eeaff8801e3703c2f601e1e5')
 
 package() {
   # bin
@@ -22,5 +22,5 @@ package() {
   install -Dm644 ./build/picsort.desktop "$pkgdir/usr/share/applications/picsort.desktop"
 
   # Icon
-  install -Dm644 ./build/logo.png "$pkgdir/usr/share/pixmaps/picsort.png"
+  install -Dm644 ./media/logo.png "$pkgdir/usr/share/pixmaps/picsort.png"
 }
