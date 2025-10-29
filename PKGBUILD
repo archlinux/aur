@@ -97,10 +97,12 @@ prepare() {
   patch -Np1 -i ../SDL-1.2.15-CVE-2019-13616-validate_image_size_when_loading_BMP_files.patch
   patch -Np1 -i ../SDL-1.2.15-CVE-2019-7577-Fix-a-buffer-overread-in-MS_ADPCM_nibb.patch
   patch -Np1 -i ../SDL-1.2.15-Reject-2-3-5-6-7-bpp-BMP-images.patch
+
+  #sed -i 's///'
 }
 
 build() {
-  export CC="gcc -m32"
+  export CC="gcc -m32 -std=c11"
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
