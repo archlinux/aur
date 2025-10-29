@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Baballonia
+Comment=A cross-platform, hardware-agnostic VR eye and face tracking application
+Exec=/usr/bin/baballonia %U
+Icon=baballonia
+Categories=Utility;

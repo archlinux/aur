@@ -1,0 +1,29 @@
+pkgbase = baballonia
+	pkgdesc = A cross-platform, hardware-agnostic VR eye and face tracking application.
+	pkgver = v1.1.0.8
+	pkgrel = 1
+	url = https://github.com/Project-Babble/Baballonia
+	arch = x86_64
+	license = LicenseRef-Babble Software Distribution License 1.0
+	makedepends = dotnet-sdk-8.0
+	makedepends = git
+	makedepends = ca-certificates
+	depends = dotnet-sdk-8.0
+	depends = lttng-ust
+	depends = fontconfig
+	depends = libglvnd
+	depends = libjpeg
+	depends = hicolor-icon-theme
+	depends = gstreamer
+	depends = gst-plugins-base-libs
+	depends = glib2
+	source = baballonia::git+https://github.com/Project-Babble/Baballonia.git#tag=v1.1.0.8
+	source = baballonia.sh
+	source = Baballonia.desktop
+	source = LICENSE
+	sha256sums = f1cbcecc2e12dd4b625062f6e03d05f0d2d0284a97f636d01d8b988237b15ed7
+	sha256sums = f14601e1bca1b90fa4a83198fe7982cc4503efd83d2f5094fdfafc9abb66d760
+	sha256sums = c79d564f433ef8786b125c58da586c2f40779d8978bf0d708ce68e02823ff450
+	sha256sums = a0c3fedbc0083597993489730d8178d2e79fdb6c03d596cb4bebfafc819d063f
+
+pkgname = baballonia
