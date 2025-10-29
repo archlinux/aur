@@ -14,13 +14,14 @@ conflicts=('echomind-git')
 source=("$pkgname::git+https://github.com/thepinak503/echomind.git")
 
 build() {
+  cd "$pkgname"
   export RUSTFLAGS="--remap-path-prefix=$(pwd)=."
   cargo clean
   cargo build --release
 }
 
 package() {
-  cd ..
+  cd "$pkgname"
   install -Dm755 target/release/echomind "$pkgdir/usr/bin/echomind"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 CONTRIBUTING.md "$pkgdir/usr/share/doc/$pkgname/CONTRIBUTING.md"
