@@ -2,7 +2,7 @@
 
 pkgname=(spacetimedb{,-cli}-bin)
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A relational database and a server combined into one (bin version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/clockworklabs/SpacetimeDB"

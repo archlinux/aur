@@ -1,7 +1,7 @@
 pkgbase = spacetimedb-bin
 	pkgdesc = A relational database and a server combined into one (bin version)
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clockworklabs/SpacetimeDB
 	arch = x86_64
 	arch = aarch64
