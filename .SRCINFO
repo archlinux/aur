@@ -1,6 +1,6 @@
 pkgbase = zeptofetch-git
 	pkgdesc = Blazingly fast, ultra-minimal system information tool for Linux (git version)
-	pkgver = r50.abc1234
+	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/Gur0v/zeptofetch
 	arch = x86_64
