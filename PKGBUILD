@@ -20,7 +20,8 @@ sha256sums=('f311681255deb37f74bbf950a653e9434e7d8383a7b46a603a323c46cd4bf50e'
             'SKIP')
 validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstellar@redhat.com>
               'D574BD5D1D0E98895E3BF90044F2485E45D59042'  # Tobias Hieta <tobias@hieta.se>
-              'FFB3368980F3E6BB5737145A316C56D064CACBA5') # Douglas Yung <douglas.yung@sony.com>
+              'FFB3368980F3E6BB5737145A316C56D064CACBA5'  # Douglas Yung <douglas.yung@sony.com>
+              '71046D1E9C6656BDD61171873E83BABF4A4F9E85') # Cullen Rhodes <cullen.rhodes@arm.com>
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
