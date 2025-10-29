@@ -1,7 +1,7 @@
 # Maintainer: Aaron Bockelie <aaronsb@gmail.com>
 pkgname=obsbot-camera-control
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Native Linux control app for OBSBOT cameras with PTZ, auto-framing, presets, and live preview"
 arch=('x86_64')
 url="https://github.com/aaronsb/${pkgname}"
@@ -48,6 +48,11 @@ package() {
     # Install binaries (built in bin/ directory)
     install -Dm755 bin/obsbot-gui "${pkgdir}/usr/bin/obsbot-gui"
     install -Dm755 bin/obsbot-cli "${pkgdir}/usr/bin/obsbot-cli"
+
+    # Install SDK library
+    install -Dm755 sdk/lib/libdev.so.1.0.2 "${pkgdir}/usr/lib/libdev.so.1.0.2"
+    ln -s libdev.so.1.0.2 "${pkgdir}/usr/lib/libdev.so.1"
+    ln -s libdev.so.1.0.2 "${pkgdir}/usr/lib/libdev.so"
 
     # Install desktop file
     install -Dm644 obsbot-control.desktop \
