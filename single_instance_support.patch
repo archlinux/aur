@@ -1,0 +1,34 @@
+Subject: [PATCH] add single instance support
+---
+Index: src-tauri/Cargo.toml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src-tauri/Cargo.toml b/src-tauri/Cargo.toml
+--- a/src-tauri/Cargo.toml	(revision 6523a85cbde5fcadbc0c9a2f30f7e634d77b8263)
++++ b/src-tauri/Cargo.toml	(revision eea19b2f16814b19c7cb1e48ab532d11aa50bd99)
+@@ -19,6 +19,7 @@
+ serde = { version = "1.0.193", features = ["derive"] }
+ tauri = { version = "1.8.0", features = ["api-all", "devtools", "system-tray", "updater"] }
+ tauri-plugin-localhost = "0.1.0"
++tauri-plugin-single-instance = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1" }
+ tauri-plugin-window-state = "0.1.1"
+ 
+ [features]
+Index: src-tauri/src/main.rs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src-tauri/src/main.rs b/src-tauri/src/main.rs
+--- a/src-tauri/src/main.rs	(revision 6523a85cbde5fcadbc0c9a2f30f7e634d77b8263)
++++ b/src-tauri/src/main.rs	(revision eea19b2f16814b19c7cb1e48ab532d11aa50bd99)
+@@ -29,6 +29,7 @@
+ 
+     builder
+         .plugin(tauri_plugin_localhost::Builder::new(port).build())
++        .plugin(tauri_plugin_single_instance::init(|_, _, _| {}))
+         .plugin(tauri_plugin_window_state::Builder::default().build())
+         .on_window_event(tray::window_event_handler)
+         .run(context)

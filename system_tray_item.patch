@@ -1,0 +1,179 @@
+Subject: [PATCH] add system tray item
+---
+Index: src-tauri/Cargo.toml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src-tauri/Cargo.toml b/src-tauri/Cargo.toml
+--- a/src-tauri/Cargo.toml	(revision 22f7d58c9fc5b772cfa2406b01513ff84830870a)
++++ b/src-tauri/Cargo.toml	(revision 6523a85cbde5fcadbc0c9a2f30f7e634d77b8263)
+@@ -17,7 +17,7 @@
+ [dependencies]
+ serde_json = "1.0.109"
+ serde = { version = "1.0.193", features = ["derive"] }
+-tauri = { version = "1.8.0", features = ["api-all", "devtools", "updater"] }
++tauri = { version = "1.8.0", features = ["api-all", "devtools", "system-tray", "updater"] }
+ tauri-plugin-localhost = "0.1.0"
+ tauri-plugin-window-state = "0.1.1"
+ 
+Index: src-tauri/build.rs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src-tauri/build.rs b/src-tauri/build.rs
+--- a/src-tauri/build.rs	(revision 22f7d58c9fc5b772cfa2406b01513ff84830870a)
++++ b/src-tauri/build.rs	(revision 6523a85cbde5fcadbc0c9a2f30f7e634d77b8263)
+@@ -1,3 +1,3 @@
+ fn main() {
+-  tauri_build::build()
++    tauri_build::build()
+ }
+Index: src-tauri/src/main.rs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src-tauri/src/main.rs b/src-tauri/src/main.rs
+--- a/src-tauri/src/main.rs	(revision 22f7d58c9fc5b772cfa2406b01513ff84830870a)
++++ b/src-tauri/src/main.rs	(revision 6523a85cbde5fcadbc0c9a2f30f7e634d77b8263)
+@@ -5,6 +5,7 @@
+ 
+ #[cfg(target_os = "macos")]
+ mod menu;
++mod tray;
+ 
+ use tauri::{utils::config::AppUrl, WindowUrl};
+ 
+@@ -19,12 +20,17 @@
+     context.config_mut().build.dev_path = AppUrl::Url(window_url.clone());
+     let builder = tauri::Builder::default();
+ 
++    let builder = builder
++        .system_tray(tray::system_tray())
++        .on_system_tray_event(tray::system_tray_handler);
++
+     #[cfg(target_os = "macos")]
+     let builder = builder.menu(menu::menu());
+ 
+     builder
+         .plugin(tauri_plugin_localhost::Builder::new(port).build())
+         .plugin(tauri_plugin_window_state::Builder::default().build())
++        .on_window_event(tray::window_event_handler)
+         .run(context)
+         .expect("error while building tauri application")
+ }
+Index: src-tauri/src/tray.rs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src-tauri/src/tray.rs b/src-tauri/src/tray.rs
+new file mode 100644
+--- /dev/null	(revision 6523a85cbde5fcadbc0c9a2f30f7e634d77b8263)
++++ b/src-tauri/src/tray.rs	(revision 6523a85cbde5fcadbc0c9a2f30f7e634d77b8263)
+@@ -0,0 +1,83 @@
++use tauri::{
++    CustomMenuItem, GlobalWindowEvent, Manager, SystemTray, SystemTrayEvent, SystemTrayHandle,
++    SystemTrayMenu, SystemTrayMenuItem, Window, WindowEvent,
++};
++
++pub const TRAY_LABEL: &'static str = "main-tray";
++
++pub fn window_event_handler<R: tauri::Runtime>(event: GlobalWindowEvent<R>) {
++    match event.event() {
++        // Prevent Cinny from closing, instead hide it and let it be
++        // reopened through the tray.
++        WindowEvent::CloseRequested { api, .. } => {
++            api.prevent_close();
++
++            let window = event.window();
++            window.hide().unwrap();
++            window
++                .app_handle()
++                .tray_handle_by_id(TRAY_LABEL)
++                .unwrap()
++                .get_item("toggle")
++                .set_title("Show Cinny")
++                .unwrap();
++        }
++        _ => {}
++    }
++}
++
++/// Build the system tray object
++pub fn system_tray() -> SystemTray {
++    let toggle = CustomMenuItem::new("toggle".to_owned(), "Hide Cinny");
++    let quit = CustomMenuItem::new("quit".to_owned(), "Quit");
++    let menu = SystemTrayMenu::new()
++        .add_item(toggle)
++        .add_native_item(SystemTrayMenuItem::Separator)
++        .add_item(quit);
++
++    SystemTray::new()
++        .with_menu(menu)
++        .with_id(TRAY_LABEL.to_owned())
++}
++
++pub fn toggle_window_state<R: tauri::Runtime>(window: Window<R>, tray_handle: SystemTrayHandle<R>) {
++    // Hide the window if it's visible, show it if not
++    // `is_visible` returns true for minimized state for whatever reason
++    if window.is_visible().unwrap() {
++        window.hide().unwrap();
++        tray_handle
++            .get_item("toggle")
++            .set_title("Show Cinny")
++            .unwrap();
++    } else {
++        window.unminimize().unwrap();
++        window.show().unwrap();
++        window.set_focus().unwrap();
++        tray_handle
++            .get_item("toggle")
++            .set_title("Hide Cinny")
++            .unwrap();
++    };
++}
++
++pub fn system_tray_handler<R: tauri::Runtime>(app: &tauri::AppHandle<R>, event: SystemTrayEvent) {
++    let tray_handle = match app.tray_handle_by_id(TRAY_LABEL) {
++        Some(h) => h,
++        None => return,
++    };
++    let window = app.get_window("main").unwrap();
++
++    match event {
++        SystemTrayEvent::LeftClick { .. } => {
++            toggle_window_state(window, tray_handle);
++        }
++        SystemTrayEvent::MenuItemClick { id, .. } => match id.as_str() {
++            "quit" => {
++                app.exit(0);
++            }
++            "toggle" => toggle_window_state(window, tray_handle),
++            _ => {}
++        },
++        _ => {}
++    }
++}
+Index: src-tauri/tauri.conf.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src-tauri/tauri.conf.json b/src-tauri/tauri.conf.json
+--- a/src-tauri/tauri.conf.json	(revision 22f7d58c9fc5b772cfa2406b01513ff84830870a)
++++ b/src-tauri/tauri.conf.json	(revision 6523a85cbde5fcadbc0c9a2f30f7e634d77b8263)
+@@ -72,6 +72,11 @@
+     ],
+     "security": {
+       "csp": "script-src blob: data: filesystem: ws: wss: http: https: tauri: 'unsafe-eval' 'unsafe-inline' 'self' img-src: 'self'"
++    },
++    "systemTray": {
++      "iconPath": "icons/32x32.png",
++      "iconAsTemplate": true,
++      "menuOnLeftClick": false
+     }
+   }
+ }
