@@ -3,7 +3,7 @@
 pkgname=python-http-client-request
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=0.0.10
+pkgver=0.1.0
 pkgrel=1
 epoch=
 pkgdesc="http.client request extension."
@@ -37,7 +37,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('6bfe1080008a6179596c3a478bdfb3bde3176ccc969b44b24b4b6c40ad130157')
+sha256sums=('069da724d0dd5e8cb15a2708640b716524bca0e0093056009f326e05d39a05f1')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
