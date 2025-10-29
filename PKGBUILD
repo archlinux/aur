@@ -1,7 +1,7 @@
 # Maintainer: Andy Bao <contact@andybao.me>
 _pkgname=cinny-electron
 pkgname="${_pkgname}-git"
-pkgver=r6.59d4b7f
+pkgver=r5.afeeed0
 pkgrel=1
 pkgdesc="Yet another matrix client — unofficial electron version"
 arch=("x86_64")
@@ -26,7 +26,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
   pnpm i
-  pnpm run package:dir
+  pnpm run build:unpack
 }
 
 package() {
@@ -35,11 +35,11 @@ package() {
   install -d "$pkgdir/usr/lib/$_pkgname"
   install -d "$pkgdir/usr/bin"
 
-  cp -R dist/linux-*unpacked/. "$pkgdir/usr/lib/$_pkgname"
+  cp -R dist/linux-unpacked/. "$pkgdir/usr/lib/$_pkgname"
 
   install -Dm644 "../../cinny-electron.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop" # Install desktop entry
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE" # Install license
-  install -Dm644 "src/res/cinny.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg" # Install icons
+  install -Dm644 "resources/cinny.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg" # Install icons
 
   install -Dm755 "../../cinny-electron.sh" "$pkgdir/usr/bin/$_pkgname" # Start script
 }
