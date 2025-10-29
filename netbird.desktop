@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Netbird
-Exec=/usr/bin/netbird-ui
+Exec=/usr/bin/netbird-ui --daemon-addr unix:///var/run/netbird/main.sock
 Icon=netbird
 Type=Application
 Terminal=false
