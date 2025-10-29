@@ -265,6 +265,7 @@ _prepare() {
   export PYTORCH_BUILD_NUMBER=1
 
   # Check tools/setup_helpers/cmake.py, setup.py and CMakeLists.txt for a list of flags that can be set via env vars.
+  export BUILD_TEST=OFF  # do not build tests
   export ATEN_NO_TEST=ON  # do not build ATen tests
   export USE_MKLDNN=ON
   export BUILD_CUSTOM_PROTOBUF=OFF
