@@ -10,7 +10,8 @@ pkgbase = equibop-git
 	makedepends = bun
 	makedepends = cmake
 	makedepends = gcc
-	depends = electron38
+	depends = electron39
+	depends = bun-bin
 	optdepends = libnotify: Notifications
 	optdepends = xdg-utils: Open links, files, etc
 	provides = equibop=3.0.8

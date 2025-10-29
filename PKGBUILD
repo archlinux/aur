@@ -35,6 +35,7 @@ fi
 # continue package
 depends=(
   "electron${_electron_version:-}"
+  'bun-bin'
 )
 makedepends=(
   'git'
@@ -67,6 +68,7 @@ pkgver() {
 
 build() {
   cd "$_pkgsrc"
+  export SKIP_BUN_DOWNLOAD=true
   bun install
   bun run buildLibVesktop
   bun run package:dir
@@ -77,7 +79,6 @@ package() {
   cp --reflink=auto -r "$_pkgsrc/dist/linux-unpacked/resources/app.asar" "$pkgdir/$_install_path/$_pkgname/"
   cp --reflink=auto -r "$_pkgsrc/dist/linux-unpacked/resources/app-update.yml" "$pkgdir/$_install_path/$_pkgname/"
   cp --reflink=auto -r "$_pkgsrc/dist/linux-unpacked/resources/app.asar.unpacked" "$pkgdir/$_install_path/$_pkgname/"
-  cp --reflink=auto -r "$_pkgsrc/dist/linux-unpacked/resources/bun" "$pkgdir/$_install_path/$_pkgname/"
 
   install -Dm644 "$_pkgsrc/static/icon.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
   install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
