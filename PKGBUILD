@@ -1,7 +1,7 @@
 # Maintainer: Aaron Bockelie <aaronsb@gmail.com>
 pkgname=obsbot-camera-control
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Native Linux control app for OBSBOT cameras with PTZ, auto-framing, presets, and live preview"
 arch=('x86_64')
 url="https://github.com/aaronsb/${pkgname}"
@@ -43,25 +43,25 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}/build"
+    cd "${srcdir}/${pkgname}"
 
-    # Install binaries
-    install -Dm755 obsbot-gui "${pkgdir}/usr/bin/obsbot-gui"
-    install -Dm755 obsbot-cli "${pkgdir}/usr/bin/obsbot-cli"
+    # Install binaries (built in bin/ directory)
+    install -Dm755 bin/obsbot-gui "${pkgdir}/usr/bin/obsbot-gui"
+    install -Dm755 bin/obsbot-cli "${pkgdir}/usr/bin/obsbot-cli"
 
     # Install desktop file
-    install -Dm644 "${srcdir}/${pkgname}/obsbot-control.desktop" \
+    install -Dm644 obsbot-control.desktop \
         "${pkgdir}/usr/share/applications/obsbot-control.desktop"
 
     # Install icon
-    install -Dm644 "${srcdir}/${pkgname}/resources/icons/camera.svg" \
+    install -Dm644 resources/icons/camera.svg \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/obsbot-control.svg"
 
     # Install license
-    install -Dm644 "${srcdir}/${pkgname}/LICENSE" \
+    install -Dm644 LICENSE \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     # Install documentation
-    install -Dm644 "${srcdir}/${pkgname}/README.md" \
+    install -Dm644 README.md \
         "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }

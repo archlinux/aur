@@ -1,7 +1,7 @@
 pkgbase = obsbot-camera-control
 	pkgdesc = Native Linux control app for OBSBOT cameras with PTZ, auto-framing, presets, and live preview
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/aaronsb/obsbot-camera-control
 	arch = x86_64
 	groups = video
