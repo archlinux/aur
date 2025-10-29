@@ -2,7 +2,7 @@
 
 pkgname=python-colorful
 _name=${pkgname#python-}
-pkgver=0.5.7
+pkgver=0.5.8
 pkgrel=1
 pkgdesc="Terminal string styling done right, in Python"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 checkdepends=('python-pytest')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('c5452179b56601c178b03d468a5326cc1fe37d9be81d24d0d6bdab36c4b93ad8')
+sha256sums=('bb16502b198be2f1c42ba3c52c703d5f651d826076817185f0294c1a549a7445')
 
 prepare() {
   cd "$_name-$pkgver"
