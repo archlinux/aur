@@ -2,7 +2,7 @@
 
 pkgname=python-errno2
 _name=${pkgname#python-}
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 epoch=
 pkgdesc="Python another errno."
@@ -25,7 +25,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('b1b04351ad3f3f4d2b22367023ff7568286563a7d44b34184224e18e50847de7')
+sha256sums=('351062c72696c7e847b024be9d9f6870529931b6304b684b9832cdddf09d40e5')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
