@@ -3,6 +3,7 @@ version = 1
 [[annotations]]
 path = [
     "PKGBUILD",
+    "chartdb.conf.example",
     "README.md",
     "keys/**",
     ".SRCINFO",
