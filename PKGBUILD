@@ -1,6 +1,6 @@
-# Maintainer: wayscriber maintainers <devmobasa+aur@proton.me>
+# Maintainer: hyprarcher <hyprarcher@proton.me>
 pkgname=wayscriber
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Screen annotation tool for Wayland compositors (formerly hyprmarker)'
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ makedepends=(
     'git'
 )
 provides=('hyprmarker')
-conflicts=('hyprmarker<0.5.2' 'hyprmarker-debug<0.5.2')
+conflicts=('hyprmarker<0.6.0' 'hyprmarker-debug<0.6.0')
 replaces=('hyprmarker' 'hyprmarker-debug')
 source=("git+https://github.com/devmobasa/wayscriber.git#tag=v$pkgver")
 sha256sums=('SKIP')
@@ -38,31 +38,18 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --bins
-    # Build configurator using same target directory
-    cd configurator
-    export CARGO_TARGET_DIR=../target
-    cargo build --frozen --release --bins
-    cd ..
+    cargo build --frozen --release --bins --manifest-path configurator/Cargo.toml
 }
 
 package() {
     cd "$pkgname"
 
-    # Install binaries (new names + compatibility aliases)
     install -Dm755 "target/release/wayscriber" "$pkgdir/usr/bin/wayscriber"
-    install -Dm755 "target/release/hyprmarker" "$pkgdir/usr/bin/hyprmarker"
     install -Dm755 "target/release/wayscriber-configurator" "$pkgdir/usr/bin/wayscriber-configurator"
 
-    # Create symlink for configurator compatibility
-    ln -s wayscriber-configurator "$pkgdir/usr/bin/hyprmarker-configurator"
-
-    # Install systemd user service
     install -Dm644 packaging/wayscriber.service "$pkgdir/usr/lib/systemd/user/wayscriber.service"
-
-    # Install documentation and example config
     install -Dm644 config.example.toml "$pkgdir/usr/share/doc/$pkgname/config.example.toml"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 
-    # Install license if available
     [ -f LICENSE ] && install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE" || true
 }
