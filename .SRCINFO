@@ -1,0 +1,18 @@
+pkgbase = deadlock-api-ingest-git
+	pkgdesc = Client for uploading match data to deadlock-api
+	pkgver = 0.1.187.5bc2879
+	pkgrel = 1
+	url = https://github.com/deadlock-api/deadlock-api-ingest
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = libpcap
+	provides = deadlock-api-ingest
+	conflicts = deadlock-api-ingest
+	source = git+https://github.com/deadlock-api/deadlock-api-ingest.git
+	source = deadlock-api-ingest.service
+	sha512sums = SKIP
+	sha512sums = 7b8e5ab4cb002134533095f2fd7c07c392efdaa01ec6c60ed180b7331c58c322466f327716c48dcb8068ac9df605e5937f80770d048f486f2906cdb20f47193e
+
+pkgname = deadlock-api-ingest-git
