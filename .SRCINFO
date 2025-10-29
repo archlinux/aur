@@ -1,0 +1,21 @@
+pkgbase = wvkbd-deskintl
+	pkgdesc = On-screen keyboard for wlroots. Wvkbd requires desktop version to be configured at compile time, so this is to make that easier.
+	pkgver = 0.18
+	pkgrel = 1
+	url = https://git.sr.ht/~proycon/wvkbd
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = fontconfig
+	makedepends = libxkbcommon
+	makedepends = scdoc
+	depends = wayland
+	depends = pango
+	depends = cairo
+	depends = glibc
+	source = wvkbd-deskintl-0.18.tar.gz::https://git.sr.ht/~proycon/wvkbd/archive/v0.18.tar.gz
+	sha512sums = SKIP
+
+pkgname = wvkbd-deskintl
