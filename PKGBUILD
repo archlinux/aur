@@ -43,8 +43,8 @@ sha512sums=('0715b35160436c6bc6da5a02ebe3550e4a5c4354c01fa42dc09af7e2e6b0f993193
 
 prepare() {
   cp /usr/share/applications/steam.desktop steam-native.desktop
-  sed -r 's|(Name=Steam) \(Runtime\)|\1 (Native)|' -i steam-native.desktop
-  sed -r 's|(/usr/bin/steam)-runtime|\1-native|' -i steam-native.desktop
+  sed -r 's|(Name=Steam)|\1 (Native)|' -i steam-native.desktop
+  sed -r 's|(/usr/bin/steam)|\1-native|' -i steam-native.desktop
   sed '/^Icon=.*/i StartupWMClass=Steam' -i steam-native.desktop
 }
 
