@@ -1,0 +1,20 @@
+pkgbase = libefex-git
+	pkgdesc = library and cli for embedded firmware exchange protocol, support fel and fes protocol
+	pkgver = r48.98db4cf
+	pkgrel = 1
+	url = https://github.com/YuzukiTsuru/libefex
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = pkgconf
+	depends = glibc
+	depends = libusb
+	optdepends = openixcard: Open Source Version of Allwinner PhoenixCard on Linux
+	optdepends = openiximg: A comprehensive toolset for handling Allwinner IMAGEWTY format firmware images
+	provides = libefex
+	conflicts = libefex
+	source = libefex-git::git+https://github.com/YuzukiTsuru/libefex.git
+	sha256sums = SKIP
+
+pkgname = libefex-git
