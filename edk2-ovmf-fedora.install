@@ -16,7 +16,35 @@ post_install() {
 	# - This means they are named distinctly
 	# - Which also means these files can co-exist in the same folder
 	ln -s /usr/share/edk2-ovmf-fedora/qemu/firmware/* /usr/share/qemu/firmware/
+
+    # Latest news regarding this package
+    echo
+    echo "What's new on the edk2-ovmf-fedora package?"
+    echo "- Upgraded to the latest version from Fedora 43"
+    echo "  (latest Fedora OS release on Oct. 28, 2025)"
+    echo
+    echo "You can read more here:"
+    echo "- https://fedoramagazine.org/announcing-fedora-linux-43/"
+    echo "- https://packages.fedoraproject.org/pkgs/edk2/edk2-ovmf/fedora-43-updates.html"
+    echo
+    echo "Keep securing your systems! (Even virtual ones.)"    
+    echo
 }
+
+#pre_upgrade() {
+    # Remove symbolic links for JSON files in /usr/share/qemu/firmware/
+    # Ensure that we only remove the symbolic links pointing to edk2-ovmf-fedora
+    #
+    # NOTE:
+    # The following snippet comes from ChatGPT
+    # - Although AI-generated, it works remarkably well
+    for link in /usr/share/qemu/firmware/*; do
+        # Check if it's a symlink pointing to "edk2-ovmf-fedora"
+        if [ -L "$link" ] && [[ $(readlink "$link") == /usr/share/edk2-ovmf-fedora/* ]]; then
+            rm -f "$link"
+        fi
+    done   
+#}
 
 post_upgrade() {
 	# Create symbolic firmware JSON files
@@ -32,6 +60,19 @@ post_upgrade() {
             ln -s "$json_file" "$dest_file"
         fi
     done   
+
+    # Latest news regarding this package
+    echo
+    echo "What's new on the edk2-ovmf-fedora package?"
+    echo "- Upgraded to the latest version from Fedora 43"
+    echo "  (latest Fedora OS release on Oct. 28, 2025)"
+    echo
+    echo "You can read more here:"
+    echo "- https://fedoramagazine.org/announcing-fedora-linux-43/"
+    echo "- https://packages.fedoraproject.org/pkgs/edk2/edk2-ovmf/fedora-43-updates.html"
+    echo
+    echo "Keep securing your systems! (Even virtual ones.)"    
+    echo
 }
 
 post_remove() {
