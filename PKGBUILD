@@ -14,17 +14,15 @@ conflicts=('echomind-git')
 source=("$pkgname::git+https://github.com/thepinak503/echomind.git")
 
 build() {
-  cd "$pkgname"
   export RUSTFLAGS="--remap-path-prefix=$(pwd)=."
-  cargo clean
-  cargo build --release
+  cargo clean --manifest-path "$pkgname/Cargo.toml"
+  cargo build --release --manifest-path "$pkgname/Cargo.toml"
 }
 
 package() {
-  cd "$pkgname"
-  install -Dm755 target/release/echomind "$pkgdir/usr/bin/echomind"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 CONTRIBUTING.md "$pkgdir/usr/share/doc/$pkgname/CONTRIBUTING.md"
-  install -Dm644 config.example.toml "$pkgdir/usr/share/doc/$pkgname/config.example.toml"
-  install -Dm644 echomind.1 "$pkgdir/usr/share/man/man1/echomind.1"
+  install -Dm755 "$pkgname/target/release/echomind" "$pkgdir/usr/bin/echomind"
+  install -Dm644 "$pkgname/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 "$pkgname/CONTRIBUTING.md" "$pkgdir/usr/share/doc/$pkgname/CONTRIBUTING.md"
+  install -Dm644 "$pkgname/config.example.toml" "$pkgdir/usr/share/doc/$pkgname/config.example.toml"
+  install -Dm644 "$pkgname/echomind.1" "$pkgdir/usr/share/man/man1/echomind.1"
 }
