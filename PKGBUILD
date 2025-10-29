@@ -3,7 +3,7 @@
 
 pkgname=python-llm-anthropic
 _gitpkgname=llm-anthropic
-pkgver=0.20
+pkgver=0.21.1
 pkgrel=1
 pkgdesc='LLM plugin for models hosted by Anthropic, including the Claude series'
 arch=('any')
@@ -12,11 +12,6 @@ license=('Apache-2.0')
 depends=(
   'python'
   'python-anthropic>=0.70'
-
-  # Undeclared transitive dependency of `python-anthropic`.
-  # Remove once added there.
-  'python-docstring-parser'
-
   'python-llm'
   'python-pydantic'
 )
@@ -36,7 +31,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/simonw/llm-anthropic/archive/${pkgver}.tar.gz"
 )
 
-sha512sums=('edbd2d340cecf22322ccde73f9c68cbdb517714c719dbf61dc1cfea5b6e5064bf8ffd1bf8cf6b3923608019093ed7855757a9b5fe43f5b56cf55f112f05a515b')
+sha512sums=('988f80a61e3b8953a22223938685091f5eeafb8a348b492110660dd35050d5e77b85b9ae3b8f70c6435d4ebe91a880ebc72ed220db8caf3110944dd4f1ca410f')
 
 build() {
   cd "${_gitpkgname}-${pkgver}"
