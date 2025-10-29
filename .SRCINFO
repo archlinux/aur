@@ -1,0 +1,17 @@
+pkgbase = astro_modloader
+	pkgdesc = A modloader for Astroneer in Rust.
+	pkgver = 0.1.14
+	pkgrel = 1
+	url = https://github.com/AstroTechies/astro_modloader
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo-about
+	makedepends = gendesk
+	optdepends = steam: For Astroneer on Linux
+	options = !lto
+	source = git+https://github.com/AstroTechies/astro_modloader.git
+	sha256sums = SKIP
+
+pkgname = astro_modloader
