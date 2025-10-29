@@ -11,6 +11,7 @@ depends=('wayland' 'pango' 'cairo' 'glibc')
 makedepends=('fontconfig' 'libxkbcommon' 'scdoc')
 source=("wvkbd-$pkgver.tar.gz::https://git.sr.ht/~proycon/wvkbd/archive/v$pkgver.tar.gz")
 sha512sums=('SKIP')
+conflicts=('wvkbd' 'wvkbd-git')
 
 build() {
   make LAYOUT=deskintl -C "wvkbd-v$pkgver"
