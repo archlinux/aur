@@ -15,11 +15,11 @@
 #LogFile     = /var/log/pacman.log
 #GPGDir      = /etc/pacman.d/gnupg/
 #HookDir     = /etc/pacman.d/hooks/
-HoldPkg     = pacman glibc
+HoldPkg     = pacman-git glibc
 #XferCommand = /usr/bin/curl -L -C - -f -o %o %u
 #XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
 #CleanMethod = KeepInstalled
-Architecture = aarch64
+Architecture = @CARCH@
 
 # Pacman won't upgrade packages listed in IgnorePkg and members of IgnoreGroup
 #IgnorePkg   =
@@ -34,9 +34,7 @@ Architecture = aarch64
 #NoProgressBar
 CheckSpace
 #VerbosePkgLists
-ParallelDownloads = 5
-DownloadUser = alpm
-#DisableSandbox
+#ParallelDownloads = 5
 
 # By default, pacman accepts packages signed by keys that its local keyring
 # trusts (see pacman-key and its man page), as well as unsigned packages.

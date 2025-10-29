@@ -15,7 +15,7 @@
 #LogFile     = /var/log/pacman.log
 #GPGDir      = /etc/pacman.d/gnupg/
 #HookDir     = /etc/pacman.d/hooks/
-HoldPkg     = pacman glibc
+HoldPkg     = pacman-git glibc
 #XferCommand = /usr/bin/curl -L -C - -f -o %o %u
 #XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
 #CleanMethod = KeepInstalled
@@ -35,8 +35,6 @@ Architecture = auto
 CheckSpace
 #VerbosePkgLists
 #ParallelDownloads = 5
-DownloadUser = alpm
-DisableSandbox
 
 # By default, pacman accepts packages signed by keys that its local keyring
 # trusts (see pacman-key and its man page), as well as unsigned packages.
@@ -45,9 +43,8 @@ LocalFileSigLevel = Optional
 #RemoteFileSigLevel = Required
 
 # NOTE: You must run `pacman-key --init` before first using pacman; the local
-# keyring can then be populated with the keys of all official Arch Linux and
-# Arch Linux 32 packagers with `pacman-key --populate archlinux` and
-# `pacman-key --populate archlinux32` respectively.
+# keyring can then be populated with the keys of all official Arch Linux
+# packagers with `pacman-key --populate archlinux`.
 
 #
 # REPOSITORIES
@@ -72,14 +69,11 @@ LocalFileSigLevel = Optional
 # repo name header and Include lines. You can add preferred servers immediately
 # after the header, and they will be used before the default mirrors.
 
-#[core-testing]
+#[testing]
 #Include = /etc/pacman.d/mirrorlist
 
 [core]
 Include = /etc/pacman.d/mirrorlist
-
-#[extra-testing]
-#Include = /etc/pacman.d/mirrorlist
 
 [extra]
 Include = /etc/pacman.d/mirrorlist
