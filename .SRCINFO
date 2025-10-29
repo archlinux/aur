@@ -1,13 +1,14 @@
 pkgbase = cutekit-git
-	pkgdesc = An operating system development kit.
-	pkgver = 0.9.3
+	pkgdesc = The magical build system and package manager
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://github.com/cute-engineering/cutekit
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = git
 	makedepends = python-setuptools
-	depends = python
+	depends = python>=3.11
 	depends = ninja
 	depends = python-requests
 	depends = python-graphviz
