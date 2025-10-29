@@ -7,8 +7,8 @@ _rpmRelease=21
 
 pkgname=$_pkgnameMeta-fedora
 pkgver=20250812
-pkgrel=1
-pkgdesc="UEFI firmware for x86_64 virtual machines from Fedora ${_fedoraVersion} — pre-configured with Secure Boot"
+pkgrel=2
+pkgdesc="UEFI firmware for x86_64 virtual machines (from Fedora ${_fedoraVersion}) — with Secure Boot enabled"
 arch=('any')
 url="https://packages.fedoraproject.org/pkgs/edk2/${_pkgnameMeta}/"
 license=('BSD')
