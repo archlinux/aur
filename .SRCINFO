@@ -1,7 +1,7 @@
 pkgbase = opencode-ui-bin
 	pkgdesc = OpenCode Desktop Client
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marmotz-dev/opencode-ui
 	arch = x86_64
 	license = CC-BY-NC-SA-4.0
