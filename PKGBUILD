@@ -3,8 +3,8 @@
 _pkgname=Equibop
 pkgname=equibop-bin
 _appname=equibop-desktop
-pkgver=3.0.8
-_electronversion=38
+pkgver=3.0.9
+_electronversion=39
 pkgrel=1
 pkgdesc="A Vesktop fork cross platform electron-based desktop app aiming to give you a snappier Discord experience with Equicord pre-installed"
 arch=(
@@ -24,31 +24,44 @@ conflicts=(
 )
 depends=(
     "electron${_electronversion}"
+    'bun-bin'
 )
 source=("${pkgname%-bin}.sh"
-        "equibop.install")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
+        "equibop.install"
+        "icon.png::${url}/raw/v${pkgver}/static/icon.png")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-arm64-packager.tar.gz")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-packager.tar.gz")
 sha256sums=('28e852632bc479a8c9bb84c2d9b629c35a621618448fbc1e0bbea21dfaef19a1'
-            'e11aa0a6bebe23f473ccb8e7d5577e05e7b9287381de91223f86c79d6729caae')
-sha256sums_aarch64=('9045ef526f39632e25f83a213739088ef7aeef50232c60af2277b9a0ae1f1d6d')
-sha256sums_x86_64=('89ef011d975443f5dc480e51ed1f93744b6d500bd0284dea49c55a2d5c8dca51')
+            'e11aa0a6bebe23f473ccb8e7d5577e05e7b9287381de91223f86c79d6729caae'
+            '92ceea804d5a3eaf0c7b696bb3b4026f21962d2c2ef91fbf295eab95855797b2')
+sha256sums_aarch64=('b2ea50aad21ceb7b77eedfb23b637d1c73eae580db4f5c2f5387be75c9a14cbf')
+sha256sums_x86_64=('b2ea50aad21ceb7b77eedfb23b637d1c73eae580db4f5c2f5387be75c9a14cbf')
 build() {
     sed -e "s|@electronversion@|${_electronversion}|" \
         -e "s|@appname@|${pkgname%-bin}|g" \
         -e "s|@runname@|app.asar|g" \
         -e "s|@options@|env ELECTRON_OZONE_PLATFORM_HINT=auto|g" \
         -i "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/data."*
-    sed "s|/opt/${_pkgname}/${pkgname%-bin}|${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    mv "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" "${srcdir}/usr/share/applications/org.equicord.${pkgname%-bin}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app-update.yml" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -r "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    cp -r "${srcdir}/opt/${_pkgname}/resources/bun" "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    install -Dm644 "${srcdir}/usr/share/applications/org.equicord.${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+
+    install -Dm644 "${srcdir}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/resources/app-update.yml" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -r "${srcdir}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}/"
+
+    install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/org.equicord.${pkgname%-bin}.desktop" << END
+[Desktop Entry]
+Name=Equibop
+GenericName=Internet Messenger
+Type=Application
+Categories=Network;InstantMessaging;Chat;
+Keywords=discord;vencord;electron;chat;equibop
+MimeType=x-scheme-handler/discord
+Exec=${pkgname%-bin}
+Icon=${pkgname%-bin}
+StartupWMClass=equibop
+END
 }
