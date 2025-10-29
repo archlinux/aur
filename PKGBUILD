@@ -5,7 +5,7 @@
 # basic info
 pkgname="darkly"
 _gitname="Darkly"
-pkgver=0.5.23
+pkgver=0.5.24
 pkgrel=1
 pkgdesc="Fork of Lightly (A modern style for Qt applications)"
 url="https://github.com/Bali10050/darkly"
@@ -23,11 +23,11 @@ makedepends=(
 options=(!emptydirs !debug)
 
 source=(
-    "${url}/archive/refs/tags/v0.5.23.tar.gz"
+    "${url}/archive/refs/tags/v0.5.24.tar.gz"
 )
 
 sha256sums=(
-  'a897784e4e43fe7947afe65fd91e796f98f8eec6beec7f94a04f3c102c5d5577'
+  '83f299e92978b98b6e43de14fa6402dc9c2fb3110e554506d1d00d0ba8b0b92b'
 )
 
 # KF6/Qt6
