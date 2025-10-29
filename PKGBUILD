@@ -1,7 +1,7 @@
 # Maintainer: Gurov
 pkgname=zeptofetch-bin
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Blazingly fast, ultra-minimal system information tool for Linux (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/Gur0v/zeptofetch"
