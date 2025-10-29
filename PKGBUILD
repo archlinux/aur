@@ -1,7 +1,7 @@
 # Maintainer: Emiliopg91 <ojosdeserbio@gmail.com>
 pkgname=rog-perf-tuner
 pkgver=4.5.19
-pkgrel=2
+pkgrel=3
 pkgdesc="RogPerfTuner - An utility to manage Asus Rog laptop performance and RGB lighting"
 arch=(
     'x86_64'
@@ -84,6 +84,7 @@ build() {
 
     export CFLAGS="${CFLAGS}"
     export CXXFLAGS="${CXXFLAGS}"
+    export RCC_VERSION="${pkgver}-${pkgrel}"
 
     cd "$srcdir/RogPerfTuner"
     make pkgbuild
