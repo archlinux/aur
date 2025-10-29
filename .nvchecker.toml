@@ -1,0 +1,4 @@
+["conan-bin"]
+source = "github"
+github = "conan-io/conan"
+use_latest_release = true
