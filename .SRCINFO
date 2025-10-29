@@ -1,6 +1,6 @@
 pkgbase = claw-bin
 	pkgdesc = Crustacean powered clipboard manager for X11 & Wayland
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/saltnpepper97/claw
 	install = claw-bin.install
@@ -22,7 +22,7 @@ pkgbase = claw-bin
 	options = !strip
 	options = !debug
 	options = !emptydirs
-	source_x86_64 = https://github.com/saltnpepper97/claw/releases/download/v1.3.0/claw_1.3.0_amd64.deb
-	sha256sums_x86_64 = 55cca0752c748817e665863f8126106baa5b06b457706cb6a03b9c9351d2fbd1
+	source_x86_64 = https://github.com/saltnpepper97/claw/releases/download/v1.4.0/claw_1.4.0_amd64.deb
+	sha256sums_x86_64 = facc9ceb55f34ff939d6cce35e8af8e6be6134d6060b7d32accf9d924f2b6819
 
 pkgname = claw-bin
