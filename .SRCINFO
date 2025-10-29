@@ -1,11 +1,12 @@
 pkgbase = foxit-pdf-editor
 	pkgdesc = Foxit PDF Editor
 	pkgver = 12.3.3.0409
-	pkgrel = 3
+	pkgrel = 4
 	url = https://developer.android.com/
 	arch = x86_64
 	license = custom
 	makedepends = patchelf
+	depends = openssl-1.1
 	depends = icu66-bin
 	depends = libvpx1.10
 	depends = libwebp

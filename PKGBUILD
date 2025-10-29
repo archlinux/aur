@@ -2,15 +2,14 @@
 
 pkgname=foxit-pdf-editor
 pkgver=12.3.3.0409
-pkgrel=3
+pkgrel=4
 pkgdesc="Foxit PDF Editor"
 arch=('x86_64')
 url="https://developer.android.com/"
 license=('custom')
 makedepends=('patchelf')
-depends=('icu66-bin' 'libvpx1.10' 'libwebp' 'libxml2-legacy' )
+depends=('openssl-1.1' 'icu66-bin' 'libvpx1.10' 'libwebp' 'libxml2-legacy')
 options=('!strip')
-DLAGENTS=("https::")
 source=('foxit-pdf-editor'
         'foxit-linux-login.js')
 sha256sums=('c04f8252a7bccaca174da9afb27d7622029f4dc192ff264520833a8eccff05c5'
