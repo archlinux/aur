@@ -1,14 +1,22 @@
+From c1e4cdcb68c40e723c2f58c3ed319c506e03122c Mon Sep 17 00:00:00 2001
+From: bytedream <me@bytedream.dev>
+Date: Wed, 29 Oct 2025 15:37:57 +0100
 Subject: [PATCH] add system tray item
+
 ---
-Index: src-tauri/Cargo.toml
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
+ src-tauri/Cargo.toml      |  2 +-
+ src-tauri/build.rs        |  2 +-
+ src-tauri/src/main.rs     |  6 +++
+ src-tauri/src/tray.rs     | 77 +++++++++++++++++++++++++++++++++++++++
+ src-tauri/tauri.conf.json |  5 +++
+ 5 files changed, 90 insertions(+), 2 deletions(-)
+ create mode 100644 src-tauri/src/tray.rs
+
 diff --git a/src-tauri/Cargo.toml b/src-tauri/Cargo.toml
---- a/src-tauri/Cargo.toml	(revision 22f7d58c9fc5b772cfa2406b01513ff84830870a)
-+++ b/src-tauri/Cargo.toml	(revision 6523a85cbde5fcadbc0c9a2f30f7e634d77b8263)
-@@ -17,7 +17,7 @@
+index 16d846a..371df47 100644
+--- a/src-tauri/Cargo.toml
++++ b/src-tauri/Cargo.toml
+@@ -17,7 +17,7 @@ tauri-build = { version = "1.5.5", features = [] }
  [dependencies]
  serde_json = "1.0.109"
  serde = { version = "1.0.193", features = ["derive"] }
@@ -17,27 +25,19 @@ diff --git a/src-tauri/Cargo.toml b/src-tauri/Cargo.toml
  tauri-plugin-localhost = "0.1.0"
  tauri-plugin-window-state = "0.1.1"
  
-Index: src-tauri/build.rs
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
 diff --git a/src-tauri/build.rs b/src-tauri/build.rs
---- a/src-tauri/build.rs	(revision 22f7d58c9fc5b772cfa2406b01513ff84830870a)
-+++ b/src-tauri/build.rs	(revision 6523a85cbde5fcadbc0c9a2f30f7e634d77b8263)
+index 795b9b7..d860e1e 100644
+--- a/src-tauri/build.rs
++++ b/src-tauri/build.rs
 @@ -1,3 +1,3 @@
  fn main() {
 -  tauri_build::build()
 +    tauri_build::build()
  }
-Index: src-tauri/src/main.rs
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
 diff --git a/src-tauri/src/main.rs b/src-tauri/src/main.rs
---- a/src-tauri/src/main.rs	(revision 22f7d58c9fc5b772cfa2406b01513ff84830870a)
-+++ b/src-tauri/src/main.rs	(revision 6523a85cbde5fcadbc0c9a2f30f7e634d77b8263)
+index 4231f30..0682873 100644
+--- a/src-tauri/src/main.rs
++++ b/src-tauri/src/main.rs
 @@ -5,6 +5,7 @@
  
  #[cfg(target_os = "macos")]
@@ -46,7 +46,7 @@ diff --git a/src-tauri/src/main.rs b/src-tauri/src/main.rs
  
  use tauri::{utils::config::AppUrl, WindowUrl};
  
-@@ -19,12 +20,17 @@
+@@ -19,12 +20,17 @@ fn main() {
      context.config_mut().build.dev_path = AppUrl::Url(window_url.clone());
      let builder = tauri::Builder::default();
  
@@ -64,16 +64,12 @@ diff --git a/src-tauri/src/main.rs b/src-tauri/src/main.rs
          .run(context)
          .expect("error while building tauri application")
  }
-Index: src-tauri/src/tray.rs
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
 diff --git a/src-tauri/src/tray.rs b/src-tauri/src/tray.rs
 new file mode 100644
---- /dev/null	(revision 6523a85cbde5fcadbc0c9a2f30f7e634d77b8263)
-+++ b/src-tauri/src/tray.rs	(revision 6523a85cbde5fcadbc0c9a2f30f7e634d77b8263)
-@@ -0,0 +1,83 @@
+index 0000000..7dd5f72
+--- /dev/null
++++ b/src-tauri/src/tray.rs
+@@ -0,0 +1,77 @@
 +use tauri::{
 +    CustomMenuItem, GlobalWindowEvent, Manager, SystemTray, SystemTrayEvent, SystemTrayHandle,
 +    SystemTrayMenu, SystemTrayMenuItem, Window, WindowEvent,
@@ -88,15 +84,9 @@ new file mode 100644
 +        WindowEvent::CloseRequested { api, .. } => {
 +            api.prevent_close();
 +
-+            let window = event.window();
-+            window.hide().unwrap();
-+            window
-+                .app_handle()
-+                .tray_handle_by_id(TRAY_LABEL)
-+                .unwrap()
-+                .get_item("toggle")
-+                .set_title("Show Cinny")
-+                .unwrap();
++            let window = event.window().clone();
++            let tray_handle = window.app_handle().tray_handle_by_id(TRAY_LABEL).unwrap();
++            toggle_window_state(window, tray_handle);
 +        }
 +        _ => {}
 +    }
@@ -157,14 +147,10 @@ new file mode 100644
 +        _ => {}
 +    }
 +}
-Index: src-tauri/tauri.conf.json
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
 diff --git a/src-tauri/tauri.conf.json b/src-tauri/tauri.conf.json
---- a/src-tauri/tauri.conf.json	(revision 22f7d58c9fc5b772cfa2406b01513ff84830870a)
-+++ b/src-tauri/tauri.conf.json	(revision 6523a85cbde5fcadbc0c9a2f30f7e634d77b8263)
+index c5fa963..30df2f3 100644
+--- a/src-tauri/tauri.conf.json
++++ b/src-tauri/tauri.conf.json
 @@ -72,6 +72,11 @@
      ],
      "security": {
@@ -177,3 +163,6 @@ diff --git a/src-tauri/tauri.conf.json b/src-tauri/tauri.conf.json
      }
    }
  }
+-- 
+2.51.2
+

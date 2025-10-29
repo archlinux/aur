@@ -1,7 +1,7 @@
 pkgbase = cinny-desktop-system-tray
 	pkgdesc = Yet another matrix client - with support for system tray minimization
 	pkgver = 4.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cinny.in/
 	arch = x86_64
 	license = MIT
@@ -22,7 +22,7 @@ pkgbase = cinny-desktop-system-tray
 	source = system_tray_item.patch
 	source = single_instance_support.patch
 	md5sums = eeba3b5ab6e9eca71a011b12c4609660
-	md5sums = b575791ddb2254d82fb7213d6daeff87
-	md5sums = f3411638db6e586559b03dcf493a0d08
+	md5sums = f9489548639237caa6f29fd2218b9d3b
+	md5sums = 79d8f8ca0527a2a51ee9080bf69c94da
 
 pkgname = cinny-desktop-system-tray

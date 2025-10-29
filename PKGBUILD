@@ -3,7 +3,7 @@
 # This file is copied from the 'cinny-desktop' package (https://aur.archlinux.org/packages/cinny-desktop) and modified to include the system tray patches.
 pkgname='cinny-desktop-system-tray'
 pkgver='4.10.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Yet another matrix client - with support for system tray minimization'
 arch=('x86_64')
 url='https://cinny.in/'
@@ -15,8 +15,8 @@ source=("cinny-desktop-${pkgver}.zip::https://github.com/cinnyapp/cinny-desktop/
         "system_tray_item.patch"
         "single_instance_support.patch")
 md5sums=('eeba3b5ab6e9eca71a011b12c4609660'
-         'b575791ddb2254d82fb7213d6daeff87'
-         'f3411638db6e586559b03dcf493a0d08')
+         'f9489548639237caa6f29fd2218b9d3b'
+         '79d8f8ca0527a2a51ee9080bf69c94da')
 
 prepare() {
     patch -d cinny-desktop -Np1 -i ../system_tray_item.patch || true

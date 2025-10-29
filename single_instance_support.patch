@@ -1,14 +1,18 @@
+From ababdf4ae3f10f94241f14c1c87a2f6ba05d7557 Mon Sep 17 00:00:00 2001
+From: bytedream <me@bytedream.dev>
+Date: Wed, 29 Oct 2025 15:40:28 +0100
 Subject: [PATCH] add single instance support
+
 ---
-Index: src-tauri/Cargo.toml
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
+ src-tauri/Cargo.toml  |  1 +
+ src-tauri/src/main.rs | 10 +++++++++-
+ 2 files changed, 10 insertions(+), 1 deletion(-)
+
 diff --git a/src-tauri/Cargo.toml b/src-tauri/Cargo.toml
---- a/src-tauri/Cargo.toml	(revision 6523a85cbde5fcadbc0c9a2f30f7e634d77b8263)
-+++ b/src-tauri/Cargo.toml	(revision eea19b2f16814b19c7cb1e48ab532d11aa50bd99)
-@@ -19,6 +19,7 @@
+index 371df47..bc354dd 100644
+--- a/src-tauri/Cargo.toml
++++ b/src-tauri/Cargo.toml
+@@ -19,6 +19,7 @@ serde_json = "1.0.109"
  serde = { version = "1.0.193", features = ["derive"] }
  tauri = { version = "1.8.0", features = ["api-all", "devtools", "system-tray", "updater"] }
  tauri-plugin-localhost = "0.1.0"
@@ -16,19 +20,34 @@ diff --git a/src-tauri/Cargo.toml b/src-tauri/Cargo.toml
  tauri-plugin-window-state = "0.1.1"
  
  [features]
-Index: src-tauri/src/main.rs
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
 diff --git a/src-tauri/src/main.rs b/src-tauri/src/main.rs
---- a/src-tauri/src/main.rs	(revision 6523a85cbde5fcadbc0c9a2f30f7e634d77b8263)
-+++ b/src-tauri/src/main.rs	(revision eea19b2f16814b19c7cb1e48ab532d11aa50bd99)
-@@ -29,6 +29,7 @@
+index 0682873..02733d8 100644
+--- a/src-tauri/src/main.rs
++++ b/src-tauri/src/main.rs
+@@ -7,7 +7,7 @@
+ mod menu;
+ mod tray;
+ 
+-use tauri::{utils::config::AppUrl, WindowUrl};
++use tauri::{utils::config::AppUrl, Manager, WindowUrl};
+ 
+ fn main() {
+     let port = 44548;
+@@ -29,6 +29,14 @@ fn main() {
  
      builder
          .plugin(tauri_plugin_localhost::Builder::new(port).build())
-+        .plugin(tauri_plugin_single_instance::init(|_, _, _| {}))
++        .plugin(tauri_plugin_single_instance::init(|app, _, _| {
++            let window = app.get_window("main").unwrap();
++            let tray_handle = match app.tray_handle_by_id(tray::TRAY_LABEL) {
++                Some(h) => h,
++                None => return,
++            };
++            tray::toggle_window_state(window, tray_handle)
++        }))
          .plugin(tauri_plugin_window_state::Builder::default().build())
          .on_window_event(tray::window_event_handler)
          .run(context)
+-- 
+2.51.2
+
