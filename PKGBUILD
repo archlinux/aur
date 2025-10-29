@@ -3,7 +3,7 @@
 pkgname=technitium-dns-server-git
 _pkgname=technitium-dns-server
 pkgver=r3436.g767f764f
-pkgrel=3
+pkgrel=4
 pkgdesc="Open source authoritative and recursive DNS server focused on privacy and security"
 arch=('x86_64')
 url="https://technitium.com/dns/"
@@ -63,7 +63,7 @@ build() {
 }
 
 package() {
-    cd "DnsServer/DnsServerApp/bin/Release/publish"
+    #cd "DnsServer/DnsServerApp/bin/Release/publish"
     echo "::: Installing binaries"
     install -Dm755 "DnsServer/DnsServerApp/bin/Release/publish/DnsServerApp" "${pkgdir}/opt/${_pkgname}/DnsServerApp"
     install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/DnsServerApp.deps.json" "${pkgdir}/opt/${_pkgname}/DnsServerApp.deps.json"
