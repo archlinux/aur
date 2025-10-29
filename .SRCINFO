@@ -1,7 +1,7 @@
 pkgbase = echomind
 	pkgdesc = AI-powered CLI tool with multiple provider support, streaming, and interactive mode
 	pkgver = 0.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/thepinak503/echomind
 	arch = x86_64
 	license = MIT
