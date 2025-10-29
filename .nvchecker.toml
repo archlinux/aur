@@ -1,0 +1,4 @@
+[protoc-gen-js]
+source = "git"
+git = "https://github.com/protocolbuffers/protobuf-javascript.git"
+prefix = "v"
