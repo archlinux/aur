@@ -1,6 +1,6 @@
 # Maintainer: Aaron Bockelie <aaronsb@gmail.com>
 pkgname=obsbot-camera-control
-pkgver=0.2.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Qt-based control application for OBSBOT cameras (Meet 2, Tiny 2, Tiny 2 Lite)"
 arch=('x86_64')
