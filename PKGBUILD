@@ -1,19 +1,23 @@
 # Maintainer: Andrej Radović <r.andrej@gmail.com>
 pkgname=python-inventree-part-import-git
-pkgver=1.6.r15.g22ff740
+pkgver=1.9.0.r0.gc2b7d84
 pkgrel=1
 pkgdesc="CLI to import parts from into your InvenTree instance"
 url="https://github.com/30350n/inventree_part_import"
 depends=(
     'python-beautifulsoup4'
+    'python-browser-cookie3'
     'python-click'
     'python-cutie'
     'python-digikey-api'
+    'python-error-helper'
     'python-fake-useragent'
     'python-inventree'
     'python-isocodes'
+    'python-mouser'
     'python-platformdirs'
     'python-requests'
+    'python-requests-oauthlib'
     'python-tablib'
     'python-thefuzz'
     'python-yaml'
@@ -44,6 +48,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname"
+	rm -rf build/ dist/ *.egg-info/
     python -m build --wheel --no-isolation
 }
 
