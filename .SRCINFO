@@ -1,18 +1,17 @@
 pkgbase = elecap-bin
 	pkgdesc = Playback video in a frameless electron app for screen-sharing and window capture.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.20.1
+	pkgver = 2.21.0
 	pkgrel = 1
 	url = http://electroncapture.app
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = asar
-	makedepends = fuse2
 	depends = electron36
-	provides = elecap=2.20.1
+	provides = elecap=2.21.0
 	conflicts = elecap
 	source = elecap.sh
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_x86_64 = elecap-2.20.1-x86_64.rpm::https://github.com/steveseguin/electroncapture/releases/download/2.20.1/elecap-2.20.1-x86_64.rpm
-	sha256sums_x86_64 = da7389f53ab80a107d3cb92718f140d039eca80704b0b71e8d08784f36f42fcf
+	source_x86_64 = elecap-2.21.0-x86_64.AppImage::https://github.com/steveseguin/electroncapture/releases/download/2.21.0/elecap-2.21.0-x86_64.AppImage
+	sha256sums_x86_64 = 7a427651559b841e7749f4eaca36f4b8fa6f3f6bfd9dd8dcd327af440d9f1654
 
 pkgname = elecap-bin
