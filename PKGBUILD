@@ -382,7 +382,7 @@ export WX_CONFIG
 mkdir -p "${BUILD_DIR}"
 
 # -DWITH_NATIVEBOOK=1
-cmake -S. -B "${BUILD_DIR}" \
+cmake -S . -B "${BUILD_DIR}" \
     -G "Ninja" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_LIBDIR=lib \
