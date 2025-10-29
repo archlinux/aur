@@ -1,7 +1,7 @@
 # Maintainer: Phillip Schichtel <phillip@schich.tel>
 
 pkgname=spicedb
-pkgver=1.46.0
+pkgver=1.46.2
 pkgrel=1
 pkgdesc="Open Source, Google Zanzibar-inspired database for scalably storing and querying fine-grained authorization data"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -12,8 +12,8 @@ makedepends=(git go)
 optdepends=()
 provides=("$pkgname")
 validpgpkeys=(968479a1aff927e37d1a566bb5690eeebb952194)
-source=("git+https://github.com/authzed/spicedb.git#commit=5d778d4e70a3a908395b8a75a01443552811a9e9")
-sha256sums=('006d2a142ce4aaa3fe1f511224cbfa281f37fc20942d606860c0dc49a1648651')
+source=("git+https://github.com/authzed/spicedb.git#commit=afd982cf7b0997eaa5ee60016e820b5d789d1c0a")
+sha256sums=('5617324dd1ea73f726a8397d4125d5660c5581143dc51ebaf983b26a5ec01332')
 
 build() {
   cd "$srcdir/$pkgname"
