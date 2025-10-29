@@ -1,0 +1,21 @@
+diff --git a/src/dst/CMakeLists.txt b/src/dst/CMakeLists.txt
+index ec003656c2..839896609f 100644
+--- a/src/dst/CMakeLists.txt
++++ b/src/dst/CMakeLists.txt
+@@ -9,7 +9,7 @@ project(dst
+   LANGUAGES CXX
+ )
+ 
+-find_package(Boost CONFIG REQUIRED COMPONENTS serialization system thread)
++find_package(Boost CONFIG REQUIRED COMPONENTS serialization thread)
+ swig_lib(NAME      dst
+          NAMESPACE dst
+          I_FILE    src/Distributed.i
+@@ -36,7 +36,6 @@ target_link_libraries(dst_lib
+     ${TCL_LIBRARY}
+     ${ZLIB_LIBRARIES}
+     Boost::serialization
+-    Boost::system
+     Boost::thread
+ )
+ 
