@@ -1,6 +1,6 @@
 pkgbase = ggc-git
 	pkgdesc = A modern Git CLI tool with both traditional command-line and interactive incremental-search UI
-	pkgver = r568.c3cf13e
+	pkgver = r602.2ceb3bc
 	pkgrel = 1
 	url = https://github.com/bmf-san/ggc
 	arch = x86_64
