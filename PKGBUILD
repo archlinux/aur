@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Cairo
-_pkgver=1.6-5
+_pkgver=1.7-0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,8 +25,8 @@ optdepends=(
   r-png
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c1909e48d6ab36e5f813d1407e8fabe9')
-b2sums=('9d7e36be305f0bcdaa68054da6c1a4a9ade287d11a616fb435b27c0514cd96056800fb9571200f24544baca3c235663428134e4f989127cbac410e0492270041')
+md5sums=('f3cbf08167279c9ebef64fd74565f025')
+b2sums=('14028722d9d362e450f1a3cad9f26092efaf936c98f735e266efe6ff044f2c801d4dc4f98b00c9b7521c5fe232cfc8df3299f103f568e865e0c2983d2eb924e8')
 
 build() {
   mkdir build
