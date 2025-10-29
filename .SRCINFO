@@ -1,9 +1,10 @@
 pkgbase = obsbot-camera-control
-	pkgdesc = Qt-based control application for OBSBOT cameras (Meet 2, Tiny 2, Tiny 2 Lite)
+	pkgdesc = Native Linux control app for OBSBOT cameras with PTZ, auto-framing, presets, and live preview
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aaronsb/obsbot-camera-control
 	arch = x86_64
+	groups = video
 	license = MIT
 	makedepends = cmake
 	makedepends = git
@@ -11,8 +12,9 @@ pkgbase = obsbot-camera-control
 	depends = qt6-multimedia
 	depends = glibc
 	depends = gcc-libs
-	optdepends = v4l2loopback-dkms: Virtual camera support
-	optdepends = lsof: Camera usage detection
+	optdepends = v4l2loopback-dkms: Virtual camera support for OBS/streaming
+	optdepends = lsof: Detect when camera is in use by other applications
+	provides = obsbot-control
 	source = git+https://github.com/aaronsb/obsbot-camera-control.git#tag=v1.0.0
 	sha256sums = SKIP
 

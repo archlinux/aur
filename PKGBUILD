@@ -1,11 +1,13 @@
 # Maintainer: Aaron Bockelie <aaronsb@gmail.com>
 pkgname=obsbot-camera-control
 pkgver=1.0.0
-pkgrel=1
-pkgdesc="Qt-based control application for OBSBOT cameras (Meet 2, Tiny 2, Tiny 2 Lite)"
+pkgrel=2
+pkgdesc="Native Linux control app for OBSBOT cameras with PTZ, auto-framing, presets, and live preview"
 arch=('x86_64')
 url="https://github.com/aaronsb/${pkgname}"
 license=('MIT')
+groups=('video')
+keywords=('obsbot' 'camera' 'webcam' 'ptz' 'streaming' 'conference' 'video' 'uvc')
 depends=(
     'qt6-base'
     'qt6-multimedia'
@@ -17,9 +19,10 @@ makedepends=(
     'git'
 )
 optdepends=(
-    'v4l2loopback-dkms: Virtual camera support'
-    'lsof: Camera usage detection'
+    'v4l2loopback-dkms: Virtual camera support for OBS/streaming'
+    'lsof: Detect when camera is in use by other applications'
 )
+provides=('obsbot-control')
 source=("git+https://github.com/aaronsb/${pkgname}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
