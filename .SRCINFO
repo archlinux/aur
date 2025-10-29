@@ -12,5 +12,6 @@ pkgbase = hypr-dock
 	depends = gtk-layer-shell
 	provides = hypr-dock
 	source = hypr-dock-1.1.1.tar.gz::https://github.com/lotos-linux/hypr-dock/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = 7135f743f804c0747928dd0204c3663ecd0e20c1aa8f187b8fa69096417d337d
 
 pkgname = hypr-dock
