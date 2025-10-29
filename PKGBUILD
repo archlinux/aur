@@ -1,7 +1,7 @@
 
 
 pkgname=brush-git
-pkgver=0.2.23.32.g9351ecb
+pkgver=0.2.23.35.gbd6cbc9
 pkgver() {
   cd brush
   git describe --long --abbrev=7 | sed -e 's/brush-shell-v//' -e 's/\-/\./g'
@@ -13,7 +13,7 @@ url=https://github.com/reubeno/brush
 license=(MIT)
 depends=(gcc-libs)
 makedepends=(rust)
-optdepends=("rust-src: optimization with RUSTC_BOOTSTRAP=1")
+optdepends=("rust-src: optimize with RUSTC_BOOTSTRAP=1")
 conflicts=(brush)
 provides=(brush)
 source=("git+${url}.git")
@@ -21,10 +21,7 @@ sha256sums=('SKIP')
 
 build() {
   cd brush
-  if [ $RUSTC_BOOTSTRAP = 1 ];then
-    echo Building with build-std...
-    _cargoflags="-Zbuild-std=std,panic_abort -Zbuild-std-features=panic_immediate_abort"
-  fi
+  test $RUSTC_BOOTSTRAP = 1 && _cargoflags="-Zbuild-std=std,panic_abort -Zbuild-std-features=panic_immediate_abort"
   cargo build --release $_cargoflags
 }
 
