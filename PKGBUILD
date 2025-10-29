@@ -1,8 +1,8 @@
 # former Maintainer: Bjoern Franke <bjo@nord-west.org>
 pkgname=jameica
-pkgver=2.10.5
-_pkgver=2.10
-pkgrel=3
+pkgver=2.12.0
+_pkgver=2.12
+pkgrel=1
 pkgdesc="free runtime environment for java applications"
 #arch=('i686' 'x86_64' 'aarch64')
 arch=('x86_64' 'aarch64')
@@ -25,10 +25,10 @@ source=("jameica-start-script.patch" "jameicaserver-start-script.patch"
 sha1sums=('a7b8b39822ac22d830aae03f292fda623977e526'
           '0664650342635fa5b0a9413dc8c22a65053ef234'
           'a7769ea23e837bd6e7f2ca73a1fe76f9b90a43b3')
-sha1sums_x86_64=('08c9a7b2792b26fbc8c154315cc01db1dff6a981'
+sha1sums_x86_64=('c5759973677a019c2ef4fbca9c60dde585a59e48'
                  'SKIP'
                  'fcdac6b73564535571f9fd555d252560393ca32b')
-sha1sums_aarch64=('34fef026ad0fd07b62ebd1982aedf4eb818550f6'
+sha1sums_aarch64=('d89cbe72520d6ef7bd064ce4303066dd5d45ad80'
                   'SKIP'
                   '558fac4952b2ae424010baf793fe0bbcbd92bfae')
 #sha1sums_i686=('7afbc5bb10e43479e100536559d174fb4259b1c7'
