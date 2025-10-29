@@ -8,7 +8,6 @@ post_install() {
     echo "   This will:"
     echo "   • Copy themes to ~/.config/zed/themes/"
     echo "   • Set up omarchy hook integration (or systemd fallback)"
-    echo "   • Test the installation"
     echo ""
     echo "Then change your Omarchy theme and watch Zed follow along!"
     echo ""
