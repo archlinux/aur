@@ -1,6 +1,6 @@
 pkgbase = ggc-bin
 	pkgdesc = A modern Git CLI tool with both traditional command-line and interactive incremental-search UI
-	pkgver = 7.0.3
+	pkgver = 7.0.4
 	pkgrel = 1
 	url = https://github.com/bmf-san/ggc
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = ggc-bin
 	provides = ggc
 	conflicts = ggc
 	conflicts = ggc-git
-	source_x86_64 = ggc-7.0.3-x86_64.tar.gz::https://github.com/bmf-san/ggc/releases/download/v7.0.3/ggc_7.0.3_linux_amd64.tar.gz
-	source_x86_64 = LICENSE::https://raw.githubusercontent.com/bmf-san/ggc/refs/tags/v7.0.3/LICENSE
-	b2sums_x86_64 = 6243e0ca8b0bc98e02463bb3f5be437c79fec3fdc87e06750655cf2c082cc6dd0932c0d8d6b458da4dc8d63bf9b5151450da571271156f00ff29e43a399bc169
+	source_x86_64 = ggc-7.0.4-x86_64.tar.gz::https://github.com/bmf-san/ggc/releases/download/v7.0.4/ggc_7.0.4_linux_amd64.tar.gz
+	source_x86_64 = LICENSE::https://raw.githubusercontent.com/bmf-san/ggc/refs/tags/v7.0.4/LICENSE
+	b2sums_x86_64 = 2367f50f8ba3c5c3aef226658aa75301f3856d7cbd31d9169a86073b1d06a40bafab64105d280753709b2f16ab457a21ad9e9410db716f4ed1439507b54dc979
 	b2sums_x86_64 = 549edae63d8fa8f73000d9edac22b3db17e880e1867a617ac995ad6af54d2331080df7dfef962e9f316b3744d42986edb52e15fbe2c07ad2e9bf8b7b8a300be1
-	source_aarch64 = ggc-7.0.3-arm64.tar.gz::https://github.com/bmf-san/ggc/releases/download/v7.0.3/ggc_7.0.3_linux_arm64.tar.gz
-	source_aarch64 = LICENSE::https://raw.githubusercontent.com/bmf-san/ggc/refs/tags/v7.0.3/LICENSE
-	b2sums_aarch64 = bbff548a304d07d9e9986564768b6056cb244d51628f8d8d72b1fb664d3b5c5438e409d3914937396a3c9c6899dd20a2bc824f7d90c00896a224b71ac2e8fe5a
+	source_aarch64 = ggc-7.0.4-arm64.tar.gz::https://github.com/bmf-san/ggc/releases/download/v7.0.4/ggc_7.0.4_linux_arm64.tar.gz
+	source_aarch64 = LICENSE::https://raw.githubusercontent.com/bmf-san/ggc/refs/tags/v7.0.4/LICENSE
+	b2sums_aarch64 = 694317ba445d848755c5d0479f77299e3f096370a5a4fb36a5cc6a600cb4518222ede08652fb65a09e9d59c9d72901cd3a5c867cb5da191d1f2d89c41d34cd76
 	b2sums_aarch64 = 549edae63d8fa8f73000d9edac22b3db17e880e1867a617ac995ad6af54d2331080df7dfef962e9f316b3744d42986edb52e15fbe2c07ad2e9bf8b7b8a300be1
 
 pkgname = ggc-bin
