@@ -2,11 +2,13 @@
 # Contributor: Firstp1ck <al.leuzi@hotmail.com>
 pkgname="hyprland-simple-setup-git"
 pkgver=0.5.0.r0.gb84b6d6
-pkgrel=1
-pkgdesc="Setup Hyprland the simple way. (Swiss/German Edition)"
+pkgrel=2
+pkgdesc="Setup Hyprland the simple way (TUI)."
 arch=('x86_64')
 url="https://github.com/Firstp1ck/Hyprland-Simple-Setup.git"
 license=('GPL-3.0-or-later')
+provides=('hyprland-simple-setup')
+conflicts=('hyprland-simple-setup')
 makedepends=('git' 'rust')
 depends=('bash'
 'python'
@@ -51,7 +53,6 @@ package() {
 
     # Shared assets (used by the TUI and installer)
     install -dm755 "$pkgdir/usr/share/$pkgname"
-    # Selectively copy project assets instead of the entire git tree
     cp -a dotfiles "$pkgdir/usr/share/$pkgname/"
     cp -a Wallpaper "$pkgdir/usr/share/$pkgname/"
     cp -a system_files "$pkgdir/usr/share/$pkgname/"
@@ -62,15 +63,18 @@ package() {
     install -Dm755 "target/release/hyprland_setup_tui" "$pkgdir/usr/bin/hyprland_setup_tui"
 
     # Launcher that sets HYPR_SETUP_PATH, cds into shared assets (for packages.json), and calls the TUI
-    install -Dm755 /dev/stdin "$pkgdir/usr/bin/hyprland-simple-setup-git" << 'EOF'
+    install -Dm755 /dev/stdin "$pkgdir/usr/bin/hyprland-simple-setup" << 'EOF'
 #!/bin/bash
 share="/usr/share/hyprland-simple-setup-git"
 export HYPR_SETUP_PATH="$share/setup.sh"
 cd "$share" 2>/dev/null || true
 exec /usr/bin/hyprland_setup_tui "$@"
 EOF
+
+    # Compatibility symlink
+    ln -s "/usr/bin/hyprland-simple-setup" "$pkgdir/usr/bin/hyprland-simple-setup-git"
 }
 
 post_install() {
-    echo "==> Run 'hyprland-simple-setup-git' to start the Hyprland setup."
+    echo "==> Run 'hyprland-simple-setup' to start the Hyprland setup."
 }
