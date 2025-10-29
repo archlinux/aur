@@ -12,7 +12,6 @@ pkgbase = grapheneos-devel
 	depends = ttf-dejavu
 	depends = openssl
 	depends = nodejs-lts-jod
-	depends = e2fsprogs
 	depends = yarn
 	depends = gperf
 	depends = lib32-glibc

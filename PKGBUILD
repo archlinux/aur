@@ -6,4 +6,4 @@ pkgdesc="metapackage of all the dependencies for building GrapheneOS"
 arch=('x86_64')
 url='https://grapheneos.org/Build'
 license=('None')
-depends=('aosp-devel' 'diffutils' 'freetype2' 'fontconfig' 'ttf-dejavu' 'openssl' 'nodejs-lts-jod' 'e2fsprogs' 'yarn' 'gperf' 'lib32-glibc' 'lib32-gcc-libs' 'openssh')
+depends=('aosp-devel' 'diffutils' 'freetype2' 'fontconfig' 'ttf-dejavu' 'openssl' 'nodejs-lts-jod' 'yarn' 'gperf' 'lib32-glibc' 'lib32-gcc-libs' 'openssh')
