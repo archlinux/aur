@@ -1,4 +1,4 @@
-pkgname=mongodb-compass
+pkgname=mongodb-compass-stable
 pkgver=1.39.4
 pkgrel=1
 pkgdesc="The MongoDB GUI"

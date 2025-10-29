@@ -1,4 +1,4 @@
-pkgbase = mongodb-compass
+pkgbase = mongodb-compass-stable
 	pkgdesc = The MongoDB GUI
 	pkgver = 1.39.4
 	pkgrel = 1
@@ -12,8 +12,8 @@ pkgbase = mongodb-compass
 	depends = libxtst
 	depends = nss
 	optdepends = org.freedesktop.secrets
-	noextract = mongodb-compass_1.39.4_amd64.deb
-	source = https://downloads.mongodb.com/compass/mongodb-compass_1.39.4_amd64.deb
+	noextract = mongodb-compass-stable_1.39.4_amd64.deb
+	source = https://downloads.mongodb.com/compass/mongodb-compass-stable_1.39.4_amd64.deb
 	b2sums = cf2f8d9eeaefcda7abb20fd491d7ff2f805f37eb2df5b238b47a6ca976a3f2a8d173d6e07388f028ddd8b7cd0af9426bd1842fc53d307c67c2cf403ff29487d3
 
-pkgname = mongodb-compass
+pkgname = mongodb-compass-stable
