@@ -1,18 +1,19 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Fabio Castelli <muflone@archlinux.org>
 
 pkgname=libvpx1.3
 pkgver=1.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='VP8 and VP9 codec'
 arch=('x86_64')
 url='http://www.webmproject.org/'
 license=('BSD')
 depends=('glibc')
 makedepends=('yasm' 'git')
-provides=('libvpx.so')
+options=('!lto')
 source=("libvpx-${pkgver}.tar.gz::https://github.com/webmproject/libvpx/archive/v${pkgver}.tar.gz"
         'libvpx-1.3-gcc-5.2.patch')
 sha256sums=('db72881e1c34e4ae92666847844f35dd2dd431bcf6284500b1b396464f882f64'
@@ -42,6 +43,8 @@ build() {
 }
 
 package() {
+  provides+=('libvpx.so')
+
   cd libvpx-${pkgver}
 
   make DIST_DIR="${pkgdir}"/usr install
