@@ -4,7 +4,7 @@
 
 pkgname='sonosano'
 pkgver=0.3.2
-pkgrel=2
+pkgrel=1
 pkgdesc="P2P Song Player"
 arch=('x86_64')
 url=https://github.com/KRSHH/Sonosano
