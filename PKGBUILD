@@ -2,7 +2,7 @@
 # Maintainer: Fuad Daoud <aur@fuad-daoud.com>
 
 pkgname='pkgmate-bin'
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='TUI application to manage your dependencies'
 url='https://github.com/fuad-daoud/pkgmate'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('pkgmate')
 conflicts=('pkgmate')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fuad-daoud/pkgmate/releases/download/v0.6.2/pkgmate-debian-linux-arm64.tar.gz")
-sha256sums_aarch64=('d415fe457aacb7ceb3f4cdd29d631ceaca176893f4501b5ff74eab5f7d3e3170')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fuad-daoud/pkgmate/releases/download/v0.6.3/pkgmate-debian-linux-arm64.tar.gz")
+sha256sums_aarch64=('aef12012903ef162959cd9230e7e583b8d740a264bedb08ce7f2dea6224062f5')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fuad-daoud/pkgmate/releases/download/v0.6.2/pkgmate-debian-linux-amd64.tar.gz")
-sha256sums_x86_64=('9c04e38b49c72630c435770469f77bd98888b19665b9ebbd0943a0483155749d')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fuad-daoud/pkgmate/releases/download/v0.6.3/pkgmate-debian-linux-amd64.tar.gz")
+sha256sums_x86_64=('5ae747475a3298551fc4bad5f039b264ac8ba2553ea87aecf8961706da0a91c1')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fuad-daoud/pkgmate/releases/download/v0.6.2/pkgmate-arch-linux-amd64.tar.gz")
-sha256sums_x86_64=('feaed0b93ffde7628adec854673fbd768e135f17fd418f90e9de9949f38c32cd')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fuad-daoud/pkgmate/releases/download/v0.6.3/pkgmate-arch-linux-amd64.tar.gz")
+sha256sums_x86_64=('113c0fc0704ad09b46a46323f4656830b4dd377291f936b48ebd601548cbb112')
 
 package() {
   install -Dm755 "./pkgmate" "${pkgdir}/usr/bin/pkgmate"
