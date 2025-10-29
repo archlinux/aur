@@ -1,21 +1,21 @@
 pkgbase = smassh
-        pkgdesc = TUI based typing test application inspired by MonkeyType
-        pkgver = 3.1.6
-        pkgrel = 1
-        url = https://github.com/kraanzu/smassh
-        arch = any
-        license = GPL-3.0-only
-        makedepends = python-build
-        makedepends = python-installer
-        makedepends = python-wheel
-        makedepends = python-poetry-core>=1.0.0
-        depends = python>=3.8.1
-        depends = python-textual>=0.81.0
-        depends = python-click>=8.1.7
-        depends = python-requests>=2.31.0
-        depends = python-platformdirs>=4.3.6
-        depends = python-rich
-        source = smassh-3.1.6.tar.gz::https://github.com/kraanzu/smassh/archive/v3.1.6.tar.gz
-        sha256sums = d20535c2324cff24bfe0cd5259640bb8b07eef421be1bd1a1a24514664d2c14e
+	pkgdesc = TUI based typing test application inspired by MonkeyType
+	pkgver = 3.1.7
+	pkgrel = 1
+	url = https://github.com/kraanzu/smassh
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core>=1.0.0
+	depends = python>=3.8.1
+	depends = python-textual>=0.81.0
+	depends = python-click>=8.1.7
+	depends = python-requests>=2.31.0
+	depends = python-platformdirs>=4.3.6
+	depends = python-rich
+	source = smassh-3.1.7.tar.gz::https://github.com/kraanzu/smassh/archive/v3.1.7.tar.gz
+	sha256sums = d4ec9674325212c2cefa33a954c633d16aad02ce2cbac8a25f9eddff52456c65
 
 pkgname = smassh
