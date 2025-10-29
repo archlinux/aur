@@ -1,7 +1,7 @@
 pkgbase = kwin-without-gestures
 	pkgdesc = An easy to use, but flexible, wayland compositor. Patched to get rid of hardcoded touchpad gestures
-	pkgver = 6.5.0
-	pkgrel = 2
+	pkgver = 6.5.1
+	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	install = kwin.install
 	arch = x86_64
@@ -72,19 +72,19 @@ pkgbase = kwin-without-gestures
 	depends = xcb-util-keysyms
 	depends = xcb-util-wm
 	optdepends = maliit-keyboard: virtual keyboard
-	provides = kwin=6.5.0
+	provides = kwin=6.5.1
 	provides = kwin-heddxh
 	conflicts = kwin
 	conflicts = kwin-heddxh
-	source = https://download.kde.org/stable/plasma/6.5.0/kwin-6.5.0.tar.xz
-	source = https://download.kde.org/stable/plasma/6.5.0/kwin-6.5.0.tar.xz.sig
+	source = https://download.kde.org/stable/plasma/6.5.1/kwin-6.5.1.tar.xz
+	source = https://download.kde.org/stable/plasma/6.5.1/kwin-6.5.1.tar.xz.sig
 	source = 0001-feature-allow-disable-hardcoded-touchpad-gestures.patch
 	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 90A968ACA84537CC27B99EAF2C8DF587A6D4AAC1
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = e0eaa67980266fe27fe32d15c9f18f8206776919f81d4e1a889d34c5f65cf982
+	sha256sums = c436a00728842e92f65beb6558e057754845f4634e5bec2914a2d1b1b38bcafb
 	sha256sums = SKIP
 	sha256sums = c821314c83316a1f80b32eddf5095692b433ec91c0767796692f4de2e497ee2c
 
