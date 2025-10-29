@@ -10,6 +10,6 @@ pkgbase = zeptofetch-bin
 	conflicts = zeptofetch
 	conflicts = zeptofetch-git
 	source = zeptofetch-bin-1.0.tar.zst::https://github.com/Gur0v/zeptofetch/releases/download/v1.0/zeptofetch.tar.zst
-	sha256sums = SKIP
+	sha256sums = f0335457c51d8588b086ae9086fbc2536bad0d748033f9b7d3da348c2c9abcd5
 
 pkgname = zeptofetch-bin
