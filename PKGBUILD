@@ -1,11 +1,12 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Llewelyn Trahaearn <woefulderelict@gmail.com>
 # Contributor: TheWaffleGuy <gvxq@hotmail.com>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname=libgcrypt15
 pkgver=1.5.6
-pkgrel=6
+pkgrel=7
 pkgdesc='General purpose cryptographic library based on the code from GnuPG'
 arch=(x86_64)
 url=http://www.gnupg.org
@@ -13,6 +14,7 @@ license=(LGPL)
 depends=(
   glibc
   libgpg-error
+  gpgme
 )
 makedepends=(git)
 replaces=(libgcrypt11)
@@ -27,6 +29,7 @@ prepare() {
   # disable doc
   sed '/doc\/Makefile/d' -i configure.ac
   sed 's/src doc tests/src tests/g' -i Makefile.am
+  sed -i 's/AC_PATH_TOOL(GPG_ERROR_CONFIG, gpg-error-config, no)/AC_PATH_TOOL(GPG_ERROR_CONFIG, gpgrt-config, no)/' 'm4/gpg-error.m4'
   autoreconf -fiv
 }
 
