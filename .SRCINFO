@@ -1,0 +1,23 @@
+pkgbase = openiximg-git
+	pkgdesc = A comprehensive toolset for handling Allwinner IMAGEWTY format firmware images
+	pkgver = r17.9c7d143
+	pkgrel = 1
+	url = https://github.com/YuzukiTsuru/OpenixIMG
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = glibc
+	optdepends = openixcard: Open Source Version of Allwinner PhoenixCard on Linux
+	provides = openiximg
+	conflicts = openiximg
+	source = openiximg-git::git+https://github.com/YuzukiTsuru/OpenixIMG.git
+	source = git+https://github.com/YuzukiTsuru/twofish.git
+	source = git+https://github.com/YuzukiTsuru/rc6.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = openiximg-git
