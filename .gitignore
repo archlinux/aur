@@ -1,0 +1,11 @@
+# Ignore everything
+*
+
+# Whitelist specific files or directories
+!.gitignore
+!.SRCINFO
+!LICENSE
+!REUSE.toml
+!PKGBUILD
+
+!LICENSES/
