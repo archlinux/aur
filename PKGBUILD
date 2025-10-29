@@ -65,7 +65,7 @@ package_quartus-free() {
 
 package_quartus-free-quartus() {
     depends=(ld-lsb alsa-lib bzip2 dbus expat fontconfig freetype2 gcc-libs glib2 lib32-gcc-libs lib32-glibc
-             libdrm libice libjpeg6 libpng12 libpulse libsm libudev0-shim libx11 libxau libxext libxi libxml2
+             libdrm libice libpulse libsm libx11 libxau libxext libxi libxml2
              libxrender libxtst libxcrypt-compat ncurses5-compat-libs util-linux-libs zlib quartus-free-devinfo)
     optdepends=("eclipse: For Nios II EDS")
 
@@ -119,7 +119,7 @@ package_quartus-free-quartus() {
 
 package_quartus-free-questa() {
     depends=(expat fontconfig freetype2 gcc-libs gd lib32-gcc-libs lib32-glibc lib32-libxml2
-             libjpeg6 libpng12 libx11 libxext libxft libxml2 libxpm ncurses5-compat-libs zlib)
+             libx11 libxext libxft libxml2 libxpm ncurses5-compat-libs zlib)
     pkgdesc="Quartus Prime Lite - Questa-Intel FPGA Starter Edition"
 
     DISPLAY="" ./QuestaSetup-${_litever}-linux.run \
