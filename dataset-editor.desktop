@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Dataset Editor
+Comment=A tag-based dataset editor for image generation AI.
+Exec=dataset-editor
+Icon=dataset-editor
+Terminal=false
+Categories=Graphics

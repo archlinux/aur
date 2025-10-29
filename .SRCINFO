@@ -1,0 +1,18 @@
+pkgbase = dataset-editor
+	pkgdesc = A tag-based dataset editor for image generation AI
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Jelosus2/DatasetEditor
+	arch = x86_64
+	license = MIT
+	makedepends = pnpm
+	makedepends = asar
+	makedepends = icoutils
+	depends = electron34
+	depends = nodejs
+	source = dataset-editor-0.2.0.tar.gz::https://github.com/Jelosus2/DatasetEditor/archive/refs/tags/v0.2.0.tar.gz
+	source = dataset-editor.desktop
+	sha256sums = 8d4e591a08617a71263a71a054e858879621259f98e24e1a9fa0234a1acd764f
+	sha256sums = 093e593e92ffe3a44380d3bc7d90baf302ebeb24ab4ec221e79311a22929fcfa
+
+pkgname = dataset-editor
