@@ -1,7 +1,7 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=python-types-fpdf2
 _pkgbasename=${pkgname:7}
-pkgver=2.8.3.20250516
+pkgver=2.8.4.20250822
 pkgrel=1
 pkgdesc='Typing stubs for fpdf2'
 arch=(any)
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=(python)
 makedepends=(python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_pkgbasename::1}/${_pkgbasename//-/_}/${_pkgbasename//-/_}-$pkgver.tar.gz")
-sha256sums=('323c1bd6a60d5a37f95fbe832e7254b627b7379411591099c74eaabd5334527d')
+sha256sums=('912ae08ae8e65d08f448f627a02ed952bd097b40123e604a629be0cc48620cce')
 arch=(any)
 
 _fullsrcdir() {
