@@ -1,6 +1,6 @@
 # Maintainer: Gurov
 pkgname=zeptofetch-git
-pkgver=r50.abc1234
+pkgver=latest
 pkgrel=1
 pkgdesc="Blazingly fast, ultra-minimal system information tool for Linux (git version)"
 arch=('x86_64')
