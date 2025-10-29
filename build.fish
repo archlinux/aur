@@ -22,5 +22,5 @@ cat PKGBUILD.part1 >>PKGBUILD
 # build
 makepkg -f
 makepkg --printsrcinfo >.SRCINFO
-#git commit -a -m "$ver"
+git commit -a -m "$ver"
 makepkg -i
