@@ -1,6 +1,6 @@
 pkgbase = kernel-hardening-checker-git
 	pkgdesc = A tool for checking the security hardening options of the Linux kernel
-	pkgver = 0.6.10.2.r37.gc01a624
+	pkgver = 0.6.10.2.r77.g206f902
 	pkgrel = 1
 	url = https://github.com/a13xp0p0v/kernel-hardening-checker
 	arch = any
