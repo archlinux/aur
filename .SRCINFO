@@ -1,6 +1,6 @@
 pkgbase = gazelle-tui
 	pkgdesc = Minimal NetworkManager TUI with complete 802.1X enterprise WiFi support
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/Zeus-Deus/gazelle-tui
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = gazelle-tui
 	depends = networkmanager
 	depends = networkmanager-openvpn
 	depends = wireguard-tools
-	source = gazelle-tui-1.7.1.tar.gz::https://github.com/Zeus-Deus/gazelle-tui/archive/v1.7.1.tar.gz
-	sha256sums = c607827502bad1e4ba8459ea9ee982521394eb089939e63f6e95fb5183c74efe
+	source = gazelle-tui-1.7.2.tar.gz::https://github.com/Zeus-Deus/gazelle-tui/archive/v1.7.2.tar.gz
+	sha256sums = dde76d06ebe30afb11b7f1013279f86533667d119859eee28323d12acf3ffe00
 
 pkgname = gazelle-tui
