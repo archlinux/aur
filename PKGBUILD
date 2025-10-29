@@ -15,7 +15,6 @@ source=("$pkgname::git+https://github.com/thepinak503/echomind.git")
 
 build() {
   cd "$pkgname"
-  export RUSTFLAGS="--remap-path-prefix=$(pwd)=."
   cargo clean
   cargo build --release
 }
