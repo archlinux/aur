@@ -9,7 +9,7 @@ url="https://github.com/kupych/rapid"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kupych/rapid/archive/v$pkgver.tar.gz")
-sha256sums=('0d4f6c33e3f9ea74359c3eec9a3c6350f7123c99126512ab396e95c9b9e87dd0')
+sha256sums=('b62307fd4048413edaa08ab9fc50dd20a1db6bbe9924a3eb532d7bbab0060efa')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
