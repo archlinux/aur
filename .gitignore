@@ -4,3 +4,4 @@
 !.gitignore
 !.nvchecker.toml
 !*.patch
+osgearth_blend2d0.20.patch
