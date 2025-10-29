@@ -1,6 +1,6 @@
 pkgbase = aslookup
 	pkgdesc = A command-line tool to resolve ASN information and IP ranges for a given IP address, using Cymru and BGPView APIs. Supports colored output and JSON parsing.
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/nieldk/aslookup
 	arch = x86_64
