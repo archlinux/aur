@@ -1,18 +1,21 @@
 pkgbase = materia-theme-git
-	pkgdesc = upstream git package for the Material Design-like flat theme for GTK4, GTK3, GTK2, Metacity, and GNOME-Shell.
-	pkgver = 20210322.r49.g76cac96c
+	pkgdesc = A Material Design theme for GNOME/GTK+ based desktop environments
+	pkgver = 20210322.r53.gd7f59a37
 	pkgrel = 1
 	url = https://github.com/nana-4/materia-theme
 	arch = any
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = git
-	makedepends = npm
-	makedepends = meson>=0.47.0
-	depends = gtk3>=3.22
-	depends = gnome-themes-extra
+	makedepends = meson
+	makedepends = dart-sass
+	makedepends = gtk3
+	makedepends = gtk4
+	makedepends = gnome-shell
+	optdepends = gnome-themes-extra: for gtk2 theme
 	optdepends = gtk-engine-murrine: for gtk2 theme
 	provides = materia-theme
-	conflicts = materia-theme
+	provides = materia-gtk-theme
+	conflicts = materia-gtk-theme
 	source = materia-theme-git::git+https://github.com/nana-4/materia-theme.git
 	sha256sums = SKIP
 
