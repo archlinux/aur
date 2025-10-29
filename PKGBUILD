@@ -2,7 +2,7 @@
 # Contributor: Firstp1ck <al.leuzi@hotmail.com>
 pkgname="hyprland-simple-setup-git"
 pkgver=0.5.0.r2.g2b27612
-pkgrel=1
+pkgrel=3
 pkgdesc="Setup Hyprland the simple way (TUI)."
 arch=('x86_64')
 url="https://github.com/Firstp1ck/Hyprland-Simple-Setup.git"
