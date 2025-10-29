@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=p3x-onenote-bin
 _pkgname=P3X-OneNote
-pkgver=2025.10.110
+pkgver=2025.10.111
 _electronversion=39
 pkgrel=1
 pkgdesc="Linux Electron Onenote - A Linux compatible version of OneNote.(Prebuilt version.Use system-wide electron)"
@@ -27,9 +27,9 @@ source=(
 )
 sha256sums=('1847e0e0698142ed4347c1441a9fa81c8fbddd44b1d8bbcd5e3647f991759d7f'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('3577567fb7d8c1132658cf907b34cd54196e395ad26be4cd9e137def70a9e054')
-sha256sums_armv7h=('dc82007977c2956b0a9d25c4412fa7ad49d4f34a8196e57c431a372f02027389')
-sha256sums_x86_64=('5888b86e378d7a52a0162b5c0b55d0d2940c86bc0058b2592489f0a9bf8daee6')
+sha256sums_aarch64=('234227875eb44f29853eb8e552c47cf4cf9a43ecd6f8644453f84da6cd9f34ee')
+sha256sums_armv7h=('b2a6113c9856be92c696144eb2680347d3386d1e7cbe4c016f6d7dc3d78bc8e6')
+sha256sums_x86_64=('ea59c1c32b2498e6ae9b1ae6ef12256ebcb9c2a026f76e23be9e2875f2f8eb18')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
