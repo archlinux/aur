@@ -1,8 +1,8 @@
 # Maintainer: Firstp1ck <al.leuzi@hotmail.com>
 # Contributor: Firstp1ck <al.leuzi@hotmail.com>
 pkgname="hyprland-simple-setup-git"
-pkgver=0.5.0.r0.gb84b6d6
-pkgrel=2
+pkgver=0.5.0.r2.g2b27612
+pkgrel=1
 pkgdesc="Setup Hyprland the simple way (TUI)."
 arch=('x86_64')
 url="https://github.com/Firstp1ck/Hyprland-Simple-Setup.git"
@@ -11,10 +11,6 @@ provides=('hyprland-simple-setup')
 conflicts=('hyprland-simple-setup')
 makedepends=('git' 'rust')
 depends=('bash'
-'python'
-'python-requests'
-'python-pyquery'
-'tk'
 'sudo'
 'xdg-user-dirs')
 source=("$pkgname::git+https://github.com/Firstp1ck/Hyprland-Simple-Setup.git")
