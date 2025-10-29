@@ -1,0 +1,22 @@
+pkgbase = voxdroid-kemono
+	pkgdesc = VoxDroid's Kemono Downloader - A cross-platform Python app built with PyQt6 to download posts and creator content from Kemono.su
+	pkgver = 5.4.0.r7.gc97e6fb
+	pkgrel = 1
+	url = https://github.com/VoxDroid/KemonoDownloader
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-aiohttp
+	depends = python-fake-useragent
+	depends = python-pillow
+	depends = python-requests
+	depends = python-qtawesome
+	depends = python-beautifulsoup4
+	depends = python-pyqt6
+	source = git+https://github.com/VoxDroid/KemonoDownloader.git
+	source = launcher.sh
+	sha256sums = SKIP
+	sha256sums = 3f008b0e8e3f0049c1595f12bff5db07fc845eb2da8eadf4e34521ac4c187488
+
+pkgname = voxdroid-kemono
