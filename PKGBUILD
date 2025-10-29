@@ -2,7 +2,7 @@
 
 pkgname=elephant-todo
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='todo provider for elephant'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('go')
 conflicts=('elephant-todo')
 provides=('elephant-todo')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2eb9a7ddb5bb17aa9cb870879b5f54a99355b2a0894ef32b6319652f3805e650')
+sha256sums=('232328f033b1a2eb21e24fb2063894bd0c1bea55943d05c0eb9705148e2441e4')
 
 build() {
     cd elephant-${pkgver}/internal/providers/todo
