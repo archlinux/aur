@@ -1,7 +1,7 @@
 # Maintainer: oxyzenq <with dot rezky at gmail dot com>
 
 pkgname=lyvoxa-bin
-pkgver=3.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='Optimize Linux system monitor with real-time TUI built in Rust (precompiled binary)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     "lyvoxa-${pkgver}-linux-amd64.tar.gz.sha256::https://github.com/oxyzenQ/lyvoxa/releases/download/${pkgver}/lyvoxa-${pkgver}-linux-amd64.tar.gz.sha256"
     "lyvoxa-${pkgver}-linux-amd64.tar.gz.asc::https://github.com/oxyzenQ/lyvoxa/releases/download/${pkgver}/lyvoxa-${pkgver}-linux-amd64.tar.gz.asc"
 )
-sha256sums=('38efbc27d3afac3fa87861c52e1e42436665fc6fdac0b6b9f8d70c7e1be82f61' 'dc18a8e8eb43f69bccc4718702c1f727df50b84791c261ff8be088adc1cdfcc1' '9479eaa553c1edd0686757197f580dee7a901f9abd3e02c2452937e4327a7ae4' )
+sha256sums=('3238aae2b8b862482ff6bba155460d6d80014b19e98d11b054d6f5e4bfacc337' '0ab8373534d1ecc5db9b43320bad655516545a2aa2efaa79fe0c709d01d7f3ab' 'SKIP' )
 validpgpkeys=('3495ABF0957D28A7E85013750D8D13BB989AF9F0') # Rezky Cahya Sahputra (Investor)
 
 prepare() {
