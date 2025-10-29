@@ -4,7 +4,7 @@
 
 pkgname=fish-lsp-git
 _pkgname=${pkgname%-git}
-pkgver=r354.440de78
+pkgver=r381.cc77cf3
 pkgrel=1
 pkgdesc="LSP implementation for the fish shell language"
 # tree-sitter contains compiled files
@@ -30,24 +30,15 @@ prepare() {
 
 build() {
 	cd $pkgname
-	./node_modules/.bin/tsc
+	yarn build:all
 	./bin/fish-lsp complete >./fish-lsp.fish
 }
 
 package() {
 	cd $pkgname
-	mkdir -p "$pkgdir/usr/bin"
-	mkdir -p "$pkgdir/usr/lib/node_modules/fish-lsp"
 
-	rm -r node_modules/@types
-	cp -r node_modules out package.json fish_files "$pkgdir/usr/lib/node_modules/fish-lsp/"
-	# nvim-lspconfig doesn’t work without this symlink
-	ln -s /usr/lib/node_modules/fish-lsp/node_modules/@esdmr/tree-sitter-fish/tree-sitter-fish.wasm \
-		"$pkgdir/usr/lib/node_modules/fish-lsp/"
-
-	printf "%s\n" "#!/usr/bin/env node" "require('/usr/lib/node_modules/fish-lsp/out/cli');" >"$pkgdir/usr/bin/fish-lsp"
-	chmod 755 "$pkgdir/usr/bin/fish-lsp"
-
+	install -Dm755 bin/fish-lsp -t "$pkgdir/usr/bin/"
 	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 fish-lsp.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+	install -Dm644 man/fish-lsp.1 -t "$pkgdir/usr/share/man/man1/"
 }
