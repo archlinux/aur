@@ -2,7 +2,7 @@
 # Contributor: fanyujun <dlutfyj@outlook.com>
 
 pkgname=python-lapx
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Customized Tomas Kazmar's lap, Linear Assignment Problem solver (LAPJV/LAPMOD)."
 arch=(any)
@@ -13,7 +13,7 @@ provides=(python-lap)
 conflicts=(python-lap)
 makedepends=(pybind11 python-build python-installer python-setuptools python-wheel cython)
 source=(${pkgname}-${pkgver}.tar.gz::"$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('06d55e067aa05a7820989bc150edfbac4c55b14b09706906cb572fc0d70dc786')
+sha256sums=('89a7510f35ef436d92ce95e742a73282d95a491ff1a91afd7751fd4105f05a78')
 
 build() {
   cd "lapx-${pkgver}"
