@@ -309,6 +309,9 @@ build() (
       cat > .mozconfig ../mozconfig - << END
 ac_add_options --enable-profile-generate=cross
 export MOZ_ENABLE_FULL_SYMBOLS=1
+
+# prevent error during instrumented build
+ac_add_options --enable-official-branding
 END
       ./mach build --priority normal
 
