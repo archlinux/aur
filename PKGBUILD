@@ -3,8 +3,8 @@
 
 _pkgname=smassh
 pkgname="$_pkgname-bin"
-pkgver=3.1.6
-pkgrel=2
+pkgver=3.1.7
+pkgrel=1
 pkgdesc="TUI based typing test application inspired by MonkeyType"
 url="https://github.com/kraanzu/smassh"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('smassh')
 conflicts=('smassh')
 _binary="$_pkgname-$pkgver"
 source=("$_binary::${url}/releases/download/v${pkgver}/linux-$_pkgname")
-sha256sums=('6b5ca506bb74ebc4a35bef7a32ac844317f6ac19a78ab777cd61748a9bc5b65c')
+sha256sums=('d8bd5f5467276612e2da3230b248bf82bb58272a8d2da6b4b359fc302f0a2cc2')
 
 package() {
     install -Dm0755 "$_binary" "$pkgdir/usr/bin/$_pkgname"
