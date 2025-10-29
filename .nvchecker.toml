@@ -1,0 +1,4 @@
+[ripdrag]
+source = "git"
+git = "https://github.com/nik012003/ripdrag"
+prefix = "v"

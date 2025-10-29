@@ -1,13 +1,19 @@
 pkgbase = ripdrag
 	pkgdesc = Drag and drop files to and from the terminal
-	pkgver = 0.3.2
+	pkgver = 0.4.11
 	pkgrel = 1
 	url = https://github.com/nik012003/ripdrag
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0
 	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = glib2
+	depends = gdk-pixbuf2
 	depends = gtk4
-	source = ripdrag-0.3.2.tar.gz::https://github.com/nik012003/ripdrag/archive/refs/tags/v0.3.2.tar.gz
-	sha256sums = 569f96b2fb5d071f207884d2b9b184b100dd0f964c7e338249533e813e860cc0
+	depends = pango
+	provides = ripdrag
+	source = ripdrag-0.4.11.tgz::https://github.com/nik012003/ripdrag/archive/refs/tags/v0.4.11.tar.gz
+	sha256sums = 269234abfc3977828e5fdcf0a915df00a130f03d3d7efde897d875607be19ada
 
 pkgname = ripdrag
