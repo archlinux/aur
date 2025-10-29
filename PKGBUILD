@@ -4,7 +4,7 @@ pkgname=modelsim-intel-starter
 # Keep dot in _patchver
 _mainver=20.1; _patchver=.1; _buildver=720
 pkgver=${_mainver}${_patchver}.${_buildver}
-pkgrel=1
+pkgrel=2
 pkgdesc="ModelSim-Intel FPGA Starter Edition - last version"
 arch=('x86_64')
 url="http://fpgasoftware.intel.com"
@@ -13,7 +13,7 @@ license=('custom')
 _inteldir="/opt/intelFPGA/${_mainver}"
 
 # According to the installer script, these dependencies are needed for the installer
-depends=('ld-lsb' 'lib32-expat' 'lib32-fontconfig' 'lib32-freetype2' 'lib32-glibc' 'lib32-gtk2'
+depends=('ld-lsb' 'lib32-expat' 'lib32-fontconfig' 'lib32-freetype2' 'lib32-glibc'
          'lib32-libcanberra' 'lib32-libpng' 'lib32-libice' 'lib32-libsm' 'lib32-util-linux'
          'lib32-ncurses' 'lib32-ncurses5-compat-libs' 'lib32-zlib' 'lib32-libx11' 'lib32-libxau'
          'lib32-libxdmcp' 'lib32-libxext' 'lib32-libxft' 'lib32-libxrender' 'lib32-libxt'

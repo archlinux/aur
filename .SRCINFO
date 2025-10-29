@@ -1,7 +1,7 @@
 pkgbase = modelsim-intel-starter
 	pkgdesc = ModelSim-Intel FPGA Starter Edition - last version
 	pkgver = 20.1.1.720
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fpgasoftware.intel.com
 	arch = x86_64
 	license = custom
@@ -10,7 +10,6 @@ pkgbase = modelsim-intel-starter
 	depends = lib32-fontconfig
 	depends = lib32-freetype2
 	depends = lib32-glibc
-	depends = lib32-gtk2
 	depends = lib32-libcanberra
 	depends = lib32-libpng
 	depends = lib32-libice
