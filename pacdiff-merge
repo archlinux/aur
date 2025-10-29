@@ -5,8 +5,20 @@ set -euo pipefail
 MERGE_TOOL="${MERGE_TOOL:-/usr/bin/meld}"
 REQUIRED_CMDS=(pacdiff sudo snapper "$MERGE_TOOL")
 
+function check_can_write {
+    local target_file="$1"
+    if lsattr "$target_file" 2>/dev/null | grep -q '^.\{4\}i'; then
+        echo "Error: $target_file is immutable (chattr +i). Remove immutable flag with: sudo chattr -i $target_file"
+        return 1
+    fi
+    return 0
+}
+
 for cmd in "${REQUIRED_CMDS[@]}"; do
-    command -v "${cmd%% *}" >/dev/null 2>&1 || { echo "Missing required command: $cmd"; exit 1; }
+    command -v "${cmd%% *}" >/dev/null 2>&1 || {
+        echo "Missing required command: $cmd"
+        exit 1
+    }
 done
 
 export SUDO_EDITOR="$MERGE_TOOL"
@@ -25,15 +37,27 @@ echo "Created snapshot ${snap}"
 
 for i in "${pacfiles[@]}"; do
     echo -e "\nMerging ${i} ..."
+    if ! check_can_write "${i/.pacnew/}"; then
+        echo "Skipping ${i} due to immutability."
+        continue
+    fi
+
     /usr/bin/sudo -e "${i}" "${i/.pacnew/}"
 
     while true; do
         read -erp 'Were the files successfully merged? (delete .pacnew) [y/N/q] ' answer
         case "$answer" in
-            [Yy]*) echo "Deleting ${i}..."; sudo rm "${i}"; break ;;
-            [Qq]*) echo "Aborting."; exit 1 ;;
-            [Nn]*|"") break ;;
-            *) echo "Invalid input. Please enter 'y', 'n', or 'q'." ;;
+        [Yy]*)
+            echo "Deleting ${i}..."
+            sudo rm "${i}"
+            break
+            ;;
+        [Qq]*)
+            echo "Aborting."
+            exit 1
+            ;;
+        [Nn]* | "") break ;;
+        *) echo "Invalid input. Please enter 'y', 'n', or 'q'." ;;
         esac
     done
 
