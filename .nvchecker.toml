@@ -1,0 +1,5 @@
+[rdt-client]
+source = "github"
+github = "rogerfar/rdt-client"
+use_latest_release = true
+prefix = "v"
