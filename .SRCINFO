@@ -1,6 +1,6 @@
 pkgbase = disktui
 	pkgdesc = A terminal-based disk management utility built with Rust and Ratatui
-	pkgver = 1.1.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Maciejonos/disktui
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = disktui
 	depends = gcc-libs
 	depends = parted
 	depends = e2fsprogs
+	depends = cryptsetup
 	optdepends = dosfstools: FAT32 filesystem support
 	optdepends = ntfs-3g: NTFS filesystem support
 	optdepends = exfatprogs: exFAT filesystem support
@@ -17,7 +18,7 @@ pkgbase = disktui
 	optdepends = smartmontools: SMART disk health monitoring
 	provides = disktui
 	conflicts = disktui
-	source = https://github.com/Maciejonos/disktui/archive/refs/tags/v1.1.2.tar.gz
-	sha256sums = 26c71fbcee51250adedef7e36216254e84f974074140c012faba230c0d65817a
+	source = https://github.com/Maciejonos/disktui/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = abd6617b2b5153f41615a0eabeca934bf9ff39a81855f74b513bafd766fdad2e
 
 pkgname = disktui
