@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Dušan Simić <dusan.simic1810@gmail.com>
 pkgname=slidev-cli
-pkgver=52.2.5
+pkgver=52.6.0
 pkgrel=1
 pkgdesc='Presentation Slides for Developers'
 arch=(any)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(nodejs)
 makedepends=(npm)
 source=(https://registry.npmjs.org/@slidev/cli/-/cli-$pkgver.tgz)
-sha512sums=('e6b2eca2597b12b86b2ab3a5ccbc3596acecd9e7ab3166a0a06392a1dedcad7a30bfefbf59fe222234bec0fa69db13e3157978acf6ab316c35b97836d850a7b8')
+sha512sums=('0ffb0e7fe97f8680ab5c0ba98a7d835b6c60e0357057f7a4df16c2164e136bc54a7c615941d867e8990cdd282ec18826fda6f5d66601ea80d7fb739e1f56e6f2')
 
 package() {
   npm i -g --prefix "$pkgdir/usr" "cli-$pkgver.tgz"
