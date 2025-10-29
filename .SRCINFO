@@ -1,13 +1,33 @@
 pkgbase = bertini-bin
 	pkgdesc = Homotopy continuation solver for systems of polynomial equations
-	pkgver = 1.6
-	pkgrel = 2
+	pkgver = 1.7
+	pkgrel = 1
 	url = https://bertini.nd.edu
 	arch = x86_64
 	license = custom:Bertini license
-	provides = bertini
-	conflicts = bertini
-	source_x86_64 = https://bertini.nd.edu/BertiniLinux64_v1.6.tar.gz
-	sha256sums_x86_64 = 9ea47e60f21bcc5668eb2909a08b0fac8827c7f48f4ca6f410fa9c2000b4838d
+	makedepends = patchelf
+	source = bertini.sh
+	sha256sums = 2b1ebb5e9004c3f8bdcc097cfe9c2fffd7e0ab0fe967adeb6f413f5c085f9cf3
+	source_x86_64 = bertini-1.7-x86_64.tar.gz::https://bertini.nd.edu/BertiniLinux64_OpenMPI_v1.7.tar.gz
+	sha256sums_x86_64 = 9699ed260068540c1c4f4127a20f2a8a5128bd6b0bcd8ec0a814f415baac6244
 
-pkgname = bertini-bin
+pkgname = bertini-common-bin
+	pkgdesc = Homotopy continuation solver for systems of polynomial equations (common files)
+	arch = any
+	depends = sh
+	conflicts = bertini-common
+
+pkgname = bertini-serial-bin
+	pkgdesc = Homotopy continuation solver for systems of polynomial equations (serial)
+	depends = bertini-common-bin=1.7-1
+	depends = glibc
+	provides = bertini-bin=1.7
+	conflicts = bertini-serial
+
+pkgname = bertini-parallel-bin
+	pkgdesc = Homotopy continuation solver for systems of polynomial equations (parallel)
+	depends = bertini-common-bin=1.7-1
+	depends = glibc
+	depends = openmpi4
+	provides = bertini-bin=1.7
+	conflicts = bertini-parallel

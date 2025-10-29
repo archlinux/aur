@@ -1,26 +1,97 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-_pkgname="bertini"
-pkgname="${_pkgname}-bin"
-pkgver=1.6
-pkgrel=2
+_modules=(
+  'serial'
+  'parallel'
+)
+_pkgbase="bertini"
+_pkgname=(
+  "${_pkgbase}-common"
+  "${_modules[@]/#/"${_pkgbase}-"}"
+)
+pkgbase="${_pkgbase}-bin"
+pkgname=(
+  "${_pkgname[@]/%/"-bin"}"
+)
+pkgver=1.7
+pkgrel=1
 pkgdesc="Homotopy continuation solver for systems of polynomial equations"
 arch=('x86_64')
 url="https://bertini.nd.edu"
 license=('custom:Bertini license')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source_x86_64=("${url}/BertiniLinux64_v${pkgver}.tar.gz")
-sha256sums_x86_64=('9ea47e60f21bcc5668eb2909a08b0fac8827c7f48f4ca6f410fa9c2000b4838d')
+makedepends=(
+  'patchelf'
+)
+_pkgsrc="BertiniLinux64_OpenMPI_v${pkgver}"
+source=("${_pkgbase}.sh")
+source_x86_64=("${_pkgbase}-${pkgver}-x86_64.tar.gz::${url}/${_pkgsrc}.tar.gz")
+sha256sums=('2b1ebb5e9004c3f8bdcc097cfe9c2fffd7e0ab0fe967adeb6f413f5c085f9cf3')
+sha256sums_x86_64=('9699ed260068540c1c4f4127a20f2a8a5128bd6b0bcd8ec0a814f415baac6244')
 
-package() {
-  cd "${srcdir}/BertiniLinux64_v${pkgver}"
-  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "README" "${pkgdir}/usr/share/doc/${_pkgname}/README"
-  install -Dm644 "BertiniUsersManual.pdf" "${pkgdir}/usr/share/doc/${_pkgname}/MANUAL.pdf"
-  find "examples" -type f -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${_pkgname}/{}" \;
+prepare() {
+  cd "${srcdir}/${_pkgsrc}"
+  patchelf --remove-rpath "${_pkgbase}-parallel"
+}
 
-  cd "LICENSES"
-  install -Dm644 "Bertini_License"  "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  # install -Dm644 "GMP_MPFR_License" "${pkgdir}/usr/share/licenses/${_pkgname}/GMP_MPFR_License"
+package_bertini-common-bin() {
+  pkgdesc+=" (common files)"
+  arch=('any')
+  depends=(
+    'sh'
+  )
+  # provides=(
+  #   "${pkgname%-bin}=${pkgver}"
+  # )
+  conflicts=(
+    "${pkgname%-bin}"
+  )
+
+  cd "${srcdir}"
+  install -vDm755 "${_pkgbase}.sh" "${pkgdir}/usr/bin/${_pkgbase}"
+
+  cd "${_pkgsrc}"
+  install -vDm644 "README" "${pkgdir}/usr/share/doc/${_pkgbase}/README"
+  install -vDm644 "BertiniUsersManual.pdf" "${pkgdir}/usr/share/doc/${_pkgbase}/MANUAL.pdf"
+  install -vDm644 "Bertini_License" "${pkgdir}/usr/share/licenses/${_pkgbase}/LICENSE"
+
+  cp -va --no-preserve=mode,ownership "examples" -t "${pkgdir}/usr/share/doc/${_pkgbase}"
+}
+
+package_bertini-serial-bin() {
+  pkgdesc+=" (serial)"
+  depends=(
+    "${_pkgbase}-common-bin=${pkgver}-${pkgrel}"
+    'glibc'
+  )
+  provides=(
+    # "${pkgname%-bin}=${pkgver}"
+    "${pkgbase}=${pkgver}"
+  )
+  conflicts=(
+    "${pkgname%-bin}"
+  )
+
+  cd "${srcdir}/${_pkgsrc}"
+  install -vDm755 "${pkgname%-bin}" -t "${pkgdir}/usr/bin"
+  install -vDm644 "lib${pkgname%-bin}.a" -t "${pkgdir}/usr/lib"
+}
+
+package_bertini-parallel-bin() {
+  pkgdesc+=" (parallel)"
+  depends=(
+    "${_pkgbase}-common-bin=${pkgver}-${pkgrel}"
+    'glibc'
+    'openmpi4'
+  )
+  provides=(
+    # "${pkgname%-bin}=${pkgver}"
+    "${pkgbase}=${pkgver}"
+  )
+  conflicts=(
+    "${pkgname%-bin}"
+  )
+
+  cd "${srcdir}/${_pkgsrc}"
+  install -vDm755 "${pkgname%-bin}" -t "${pkgdir}/usr/bin"
+  install -vDm644 "lib${pkgname%-bin}.a" -t "${pkgdir}/usr/lib"
 }

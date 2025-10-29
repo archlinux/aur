@@ -1,0 +1,4 @@
+[bertini-bin]
+source = "regex"
+url = "https://bertini.nd.edu/download.html"
+regex = 'BertiniLinux64_OpenMPI_v(.*).tar.gz'
