@@ -1,10 +1,12 @@
-# Maintainer: Ong Yong Xin <ongyongxin2020+github@gmail.com>
+# Maintainer: Evert Vorster <superchief@evertvorster.com>
+# Contributor:  Ong Yong Xin <ongyongxin2020+github@gmail.com>
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Bernhard Landauer <oberon@manjaro.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=audacity-git
-pkgver=3.6.3.r257.g652bfea82
+_pkgname=audacity
+pkgver=3.6.4.r1832.gcb75634dcc
 pkgrel=1
 pkgdesc="A program that lets you manipulate digital audio waveforms"
 arch=('i686' 'x86_64')
@@ -12,49 +14,13 @@ url="https://www.audacityteam.org/"
 license=('GPL2' 'CCPL')
 groups=('pro-audio')
 depends=(
-  alsa-lib
-  expat
-  ffmpeg
-  flac
-  gcc-libs
-  gdk-pixbuf2
-  glib2
-  glibc
-  gtk3
-  gtkmm3
-  jack
-  lame
-  libid3tag
-  libmad
-  libogg
-  libsbsms
-  libsndfile
-  libsoxr
-  libvorbis
-  libxkbcommon-x11
-  lilv
-  lv2
-  mpg123
-  opusfile
-  portaudio
-  portmidi
-  portsmf
-  rapidjson
-  soundtouch
-  serd
-  sord
-  sratom
-  sqlite
-  suil
-  twolame
-  vamp-plugin-sdk
-  vst3sdk
-  wavpack
-  wxwidgets-gtk3
-  xcb-util
-  xcb-util-cursor
-  xcb-util-keysyms
-  zlib
+  'libxtst'
+  'perl'
+  'qt6-networkauth'
+  'qt6-5compat'
+  'qt6-svg'
+  'qt6-base'
+  'qt6-declarative'
 )
 makedepends=('cmake' 'gcc' 'git' 'nasm')
 optdepends=('ffmpeg: additional import/export capabilities')
@@ -67,37 +33,61 @@ provides=(
   'vst3-host'
 )
 conflicts=('audacity')
-source=("git+https://github.com/audacity/audacity.git")
-sha256sums=('SKIP')
+source=(
+  "git+https://github.com/audacity/audacity.git"
+  "git+https://github.com/musescore/framework_tmp.git"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
 
 pkgver() {
-  cd audacity
+  cd ${srcdir}/${_pkgname}
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -d'.' -f2-
 }
 
+prepare(){
+  cd "${srcdir}/${_pkgname}"
+  echo "Initialize Submodules"
+  git submodule init
+  echo "Updating git submodule paths"
+#  git config submodule.src/external/glaxnimate.url "$srcdir/glaxnimate"
+
+ echo "Updating git submodules"
+ git -c protocol.file.allow=always submodule update
+}
+
+
 build() {
-  export CC=gcc
-  export VST3_SDK_DIR=/usr/src/vst3sdk
+#  export CC=gcc
+#  export VST3_SDK_DIR=/usr/src/vst3sdk
+  echo "Build Step"
 
   local cmake_args=(
-    -B build
+    -B build/
     -D CMAKE_BUILD_TYPE=Release
     -D CMAKE_INSTALL_PREFIX=/usr
-    -D audacity_conan_enabled=OFF
-    -D audacity_has_networking=OFF
-    -D audacity_has_crashreports=OFF
-    -D audacity_has_updates_check=OFF
-    -D audacity_has_sentry_reporting=OFF
-    -D audacity_lib_preference=system
-    -D audacity_obey_system_dependencies=ON
-    -S audacity
+    -DCMAKE_C_FLAGS="-D_GNU_SOURCE"
+    -S .
   )
 
+#    -D audacity_conan_enabled=OFF
+#    -D audacity_has_networking=OFF
+#    -D audacity_has_crashreports=OFF
+#    -D audacity_has_updates_check=OFF
+#    -D audacity_has_sentry_reporting=OFF
+#    -D audacity_lib_preference=system
+#    -D audacity_obey_system_dependencies=ON
+
+
+
+  cd ${srcdir}/${_pkgname}
   cmake "${cmake_args[@]}"
-  cmake --build build
+  cmake --build build/
 }
 
 package() {
-  cd build
-  make DESTDIR="${pkgdir}" install
+  cd ${srcdir}/${_pkgname}
+  DESTDIR="${pkgdir}" cmake --install build/
 }
