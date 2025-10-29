@@ -1,13 +1,14 @@
 # Maintainer: Wabuo <Spam [.] Wabuo [at] GoogleMail [.] Com>
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 
-### Choose between the RELEASE type you are after
-#pkgname=recoil_engine-git
+###
+### This PGKGBUILD implements the build instructions from https://github.com/beyond-all-reason/RecoilEngine/wiki/Building-and-developing-engine-without-docker
+###
+
 pkgname=recoil_engine-rc
-#pkgname=recoil_engine
 pkgver=2025.06.07
 pkgrel=2
-pkgdesc="A powerful free cross-platform RTS game engine. (GitHub — lates Release Candidate tag). \
+pkgdesc="A powerful free cross-platform RTS game engine. (GitHub — latest Release Candidate tag). \
 This version is used for public engine testing in BAR — Join the Discord if you want to help"
 arch=('x86_64')
 url="https://beyond-all-reason.github.io/RecoilEngine/"
@@ -19,15 +20,13 @@ _ghurl="https://github.com/beyond-all-reason/RecoilEngine"
 #_tag="#tag=2025.06.06"
 #_tag="${pkgver}"
 
-license=(
-'GPL-2.0-or-later'
-
-)
+license=('GPL-2.0-or-later')
 #conflicts=("${pkgname%-git}")
 provides=("${pkgname}")
 depends=('curl' 'sdl2' 'devil' 'p7zip' 'openal' 'libogg' 'libvorbis' 'libunwind' 'freetype2' 'glew' 'minizip' 'fontconfig' 'jsoncpp' )
 makedepends=('git' 'curl' 'jq'
-             'ninja' 'lld' 'socat' 'clang' 'python-pip' 'cmake3' 'ccache'
+             'ninja' 'socat' 'python-pip' 'cmake3'
+#            'clang' 'lld' ### Only needed if you want to build with the included clang toolchain
              'compdb' 'gflags')
 optdepends=('bar-lobby' 'bar-lobby-git')
 #install="${pkgname%-git}.install"
@@ -35,10 +34,6 @@ source=("${pkgname%-git}::git+${_ghurl}.git${_tag}${_git_commit}"
 #        "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP')
-
-###
-### This PGKGBUILD implements the build instructions from https://github.com/beyond-all-reason/RecoilEngine/wiki/Building-and-developing-engine-without-docker
-###
 
 pkgver() {
   # Set the repository owner and name
@@ -60,7 +55,7 @@ pkgver() {
     # Clean the version number for PKGBUILD standard (replaces hyphens with underscores)
     printf "%s" "${latest_tag//-/_}"
   else
-    # Fail loud and hard incase we cant get a tag to checkout
+    # Fail loud and hard in case we can't get a tag to checkout
     exit 1
   fi
 }
@@ -135,7 +130,6 @@ echo "_pkgver is: ${_pkgver} @@@@@@@@@@@@@@@@@@@@@@@@@@"
 
                                 #-G Ninja -G "Unix Makefiles"
     cmake3 -S "${pkgname%-git}"  -G Ninja \
-            -DCMAKE_TOOLCHAIN_FILE="toolchain/clang_x86_64-pc-linux-gnu.cmake" \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-O3 -g -DNDEBUG -fdiagnostics-color=always" \
             -DCMAKE_C_FLAGS_RELWITHDEBINFO="-O3 -g -DNDEBUG -fdiagnostics-color=always" \
@@ -147,6 +141,8 @@ echo "_pkgver is: ${_pkgver} @@@@@@@@@@@@@@@@@@@@@@@@@@"
             -DLIBDIR:PATH=./ \
             -DDATADIR:PATH=./ \
             -DCMAKE_INSTALL_PREFIX="$(pwd)/install"
+## Disabled in favor of using the settings from makepkg.conf
+#           -DCMAKE_TOOLCHAIN_FILE="toolchain/clang_x86_64-pc-linux-gnu.cmake" \
 
 # V=1 make VERBOSE=1 -j1
         ninja #--verbose
