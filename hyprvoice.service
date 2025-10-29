@@ -1,9 +1,8 @@
 [Unit]
 Description=Hyprvoice voice-to-text daemon
 Documentation=https://github.com/leonardotrapani/hyprvoice
-After=pipewire.service graphical-session.target
+After=pipewire.service
 Wants=pipewire.service
-Requisite=graphical-session.target
 
 [Service]
 Type=simple

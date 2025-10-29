@@ -1,6 +1,6 @@
 pkgbase = hyprvoice-bin
 	pkgdesc = Voice-powered typing for Wayland/Hyprland
-	pkgver = v0.1.7
+	pkgver = v0.1.8
 	pkgrel = 1
 	url = https://github.com/leonardotrapani/hyprvoice
 	install = hyprvoice.install
@@ -17,9 +17,9 @@ pkgbase = hyprvoice-bin
 	optdepends = sway: For Sway window manager integration
 	provides = hyprvoice
 	conflicts = hyprvoice
-	source = hyprvoice-v0.1.7::https://github.com/leonardotrapani/hyprvoice/releases/download/v0.1.7/hyprvoice-linux-x86_64
+	source = hyprvoice-v0.1.8::https://github.com/leonardotrapani/hyprvoice/releases/download/v0.1.8/hyprvoice-linux-x86_64
 	source = hyprvoice.service
-	sha256sums = 89657cb1a29aa56fb995d54f7fc4ed66ec315eb799cc66dff3c5dbfa59e0eef4
-	sha256sums = bc4d17afa3a56fc50b09faae4cef9faf2a4ec7f08798b4098ba41ad78b02ab20
+	sha256sums = dbd1c13a774cafdb852de18d6670314027afa272d1f007d258f7f17551f86693
+	sha256sums = 5631c957777882870e61934176d2142fab6c553bb650ffd8b3eb74b8dce955bd
 
 pkgname = hyprvoice-bin
