@@ -4,7 +4,7 @@
 
 _name=llm-ollama
 pkgname="python-${_name}"
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="LLM plugin providing access to models running on an Ollama server"
 arch=("any")
@@ -16,7 +16,7 @@ makedepends=("python-build" "python-installer" "python-poetry" "python-wheel")
 checkdepends=("python-nest-asyncio" "python-pytest-asyncio" "python-pytest-recording" "python-deepmerge")
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/taketwo/llm-ollama/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('160aaf3bb66f96c037919236166edc66e8af007467970f7fd22e0998f34bc9d5')
+sha256sums=('c237b719911e821c95c260421e174d7c61b420e7e06df1c84ab71287b378b0d7')
 
 build() {
   cd "${_name}-${pkgver}"
