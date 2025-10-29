@@ -1,6 +1,6 @@
 pkgbase = uutils-tar-git
 	pkgdesc = Rust implementation of tar
-	pkgver = 0.0.1.r122.20c6be3
+	pkgver = 0.0.1.r150.1578d39
 	pkgrel = 1
 	url = https://github.com/uutils/tar
 	arch = x86_64

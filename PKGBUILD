@@ -1,7 +1,7 @@
 
 
 pkgname=uutils-tar-git
-pkgver=0.0.1.r122.20c6be3
+pkgver=0.0.1.r150.1578d39
 pkgver() {
   cd uutils-tar
   printf 0.0.1."r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
@@ -19,10 +19,7 @@ sha256sums=('SKIP')
 
 build(){
   cd uutils-tar
-  if [ ${RUSTC_BOOTSTRAP} = 1 ];then
-    echo Building with build-std...
-    _cargoflags="-Zbuild-std=std,panic_abort -Zbuild-std-features=panic_immediate_abort"
-  fi
+  test $RUSTC_BOOTSTRAP = 1 && _cargoflags="-Zbuild-std=std,panic_abort -Zbuild-std-features=panic_immediate_abort"
   cargo build --profile=release-fast $_cargoflags
 }
 
