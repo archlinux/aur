@@ -49,7 +49,7 @@ pkgver() {
   # We fetch the first page (up to 30 releases) and pipe it to jq.
   # The 'latest_tag' variable will hold the version string.
   local latest_tag
-  
+
   # --- MODIFIED API CALL AND JQ FILTER ---
   # Filters for the first entry where "prerelease" is true and extracts the tag_name.
   latest_tag=$(curl -s "https://api.github.com/repos/${owner}/${repo}/releases" | \
@@ -135,21 +135,21 @@ echo "_pkgver is: ${_pkgver} @@@@@@@@@@@@@@@@@@@@@@@@@@"
 
                                 #-G Ninja -G "Unix Makefiles"
     cmake3 -S "${pkgname%-git}"  -G Ninja \
-	    -DCMAKE_TOOLCHAIN_FILE="toolchain/clang_x86_64-pc-linux-gnu.cmake" \
-	    -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-	    -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-O3 -g -DNDEBUG -fdiagnostics-color=always" \
-	    -DCMAKE_C_FLAGS_RELWITHDEBINFO="-O3 -g -DNDEBUG -fdiagnostics-color=always" \
-	    -DCMAKE_BUILD_TYPE=RELWITHDEBINFO \
-	    -DAI_TYPES=NATIVE \
-	    -DINSTALL_PORTABLE=ON \
-	    -DCMAKE_USE_RELATIVE_PATHS:BOOL=1 \
-	    -DBINDIR:PATH=./ \
-	    -DLIBDIR:PATH=./ \
-	    -DDATADIR:PATH=./ \
-	    -DCMAKE_INSTALL_PREFIX="$(pwd)/install"
+            -DCMAKE_TOOLCHAIN_FILE="toolchain/clang_x86_64-pc-linux-gnu.cmake" \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-O3 -g -DNDEBUG -fdiagnostics-color=always" \
+            -DCMAKE_C_FLAGS_RELWITHDEBINFO="-O3 -g -DNDEBUG -fdiagnostics-color=always" \
+            -DCMAKE_BUILD_TYPE=RELWITHDEBINFO \
+            -DAI_TYPES=NATIVE \
+            -DINSTALL_PORTABLE=ON \
+            -DCMAKE_USE_RELATIVE_PATHS:BOOL=1 \
+            -DBINDIR:PATH=./ \
+            -DLIBDIR:PATH=./ \
+            -DDATADIR:PATH=./ \
+            -DCMAKE_INSTALL_PREFIX="$(pwd)/install"
 
 # V=1 make VERBOSE=1 -j1
-	ninja #--verbose
+        ninja #--verbose
 }
 
 
@@ -157,19 +157,26 @@ package() {
 
     cd "${srcdir}/${pkgname%-git}"
     git submodule update --init --recursive
-    
+
     cd "${srcdir}"
     ninja install
 
-_get_pkgver ### Get short pkgver to name engine properly.
+    _get_pkgver ### Get short pkgver to name engine properly.
 
-### The Lobby only recognizes engines following the official versioning scheme!
-### adding .local to the end of the name allows us to name it however we want!
-mkdir -p "${pkgdir}/usr/share/recoil-engine"
-mv ${srcdir}/install "${srcdir}/sytemwide_managed_by_pkgmngr-${_pkgver}-RC.local"
-cp --reflink=auto --no-preserve=ownership --recursive --no-dereference "${srcdir}/styemwide_managed_by_pkgmngr-${_pkgver}-RC.local" "${pkgdir}/usr/share/recoil-engine/"
+    ### The Lobby only recognizes engines following the official versioning scheme!
+    ### adding .local to the end of the name allows us to name it however we want!
+    mkdir -p "${pkgdir}/usr/share/recoil-engine"
+
+    ### Check if if folder already exists and if so delete it — this is needed for dirty rebuilds
+    if [ -d "${srcdir}/sytemwide_managed_by_pkgmngr-${_pkgver}-RC.local" ]; then
+        rm -rd "${srcdir}/sytemwide_managed_by_pkgmngr-${_pkgver}-RC.local"
+    fi
+    ### rename install folder aka give the engine folder a decent name that will be recognized by bar-lobby
+    ### naming the engine folder with .local at the end allows us to name it how ever we want
+    ### otherwise bar-lobby will only recognize folders named after the official versioning scheme
+    mv --force ${srcdir}/install "${srcdir}/sytemwide_managed_by_pkgmngr-${_pkgver}-RC.local"
+    cp --reflink=auto --no-preserve=ownership --recursive --no-dereference "${srcdir}/sytemwide_managed_by_pkgmngr-${_pkgver}-RC.local" "${pkgdir}/usr/share/recoil-engine/"
 
 }
 
 # vim:set ts=4 sw=4 et:
-
