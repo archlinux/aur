@@ -7,10 +7,11 @@ arch=('x86_64')
 url="https://github.com/thepinak503/echomind"
 license=('MIT')
 depends=('openssl' 'gcc-libs')
-makedepends=('rust' 'cargo')
+makedepends=('rust' 'cargo' 'git')
 optdepends=('jq: for JSON output formatting')
 provides=('echomind')
 conflicts=('echomind-git')
+source=("$pkgname::git+https://github.com/thepinak503/echomind.git")
 
 build() {
   export RUSTFLAGS="--remap-path-prefix=$(pwd)=."
