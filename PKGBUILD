@@ -13,7 +13,7 @@ provides=('gdal')
 conflicts=('gdal')
 pkgname=(gdal-hdf4 python-gdal-hdf4)
 pkgver=3.11.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Translator library for raster and vector geospatial data formats"
 arch=(x86_64)
 url="https://gdal.org/"
@@ -25,12 +25,14 @@ makedepends=(cmake opencl-headers python-setuptools python-numpy
              libxml2 lz4 mariadb-libs netcdf unixodbc ocl-icd openexr openjpeg2
              openssl pcre2 libpng podofo poppler postgresql-libs qhull
              libspatialite sqlite swig libtiff libwebp xerces-c zlib zstd hdf4
-             libaec libkml-git filegdb-api
+             libaec
              ) 
 
 optdepends=('postgresql: when present while building, postgresql database support'
             'mariadb: when present while building, mariadb database support'
             'perl: perl binding support'
+            'libkml-git: KML support'
+            'filegdb-api: filegdb support'
 )
 options=('!emptydirs')
 changelog=$pkgbase.changelog
@@ -38,6 +40,14 @@ changelog=$pkgbase.changelog
 source=(https://github.com/OSGeo/${_pkgbase}/releases/download/v${pkgver}/${_pkgbase}-${pkgver}.tar.gz)
 md5sums=('9f4fa4b3be48fb60d5dd76fecb11a5f6')
 
+prepare() {
+  cd $_pkgbase-$pkgver
+  # Fix Poppler compatibility - use c_str() and size() for newer Poppler
+  sed -i 's/gstr\.getLength()/gstr.size()/g' frmts/pdf/pdfobject.cpp
+  
+  # Also check if there are getCString() calls that need to be replaced with c_str()
+  sed -i 's/getCString()/c_str()/g' frmts/pdf/pdfobject.cpp
+}
 
 build() {
   export PATH="$(pwd)/build/apps:$PATH"

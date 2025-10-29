@@ -1,3 +1,8 @@
+2025-10-29 Guillermo Duran gds506@gmail.com
+	* gdal 3.11.4
+		- As suggested by user, added libkml-git and filegdb-api as optdepends
+		- Added a prepare() section to fix a poppler compatibility issue I was having while installing GDAL. It might be related with poppler 25.10. Will remove it on the new GDAL version. 
+
 2025-02-14 Guillermo Duran <gds506@gmail.com>
 	* gdal 3.10.2
 
