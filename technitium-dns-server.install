@@ -35,11 +35,11 @@ post_install() {
         ;;
         systemd)
             echo "::: Detected `systemd`"
-            echo " :: Creating user and group"
-            systemd-sysusers
             echo " :: Installing systemd service files"
             ln -s /opt/technitium-dns-server/service/technitium-dns-server.service /usr/lib/systemd/system/technitium-dns-server.service
             ln -s /opt/technitium-dns-server/service/technitium-dns-server.sysuser /usr/lib/sysusers.d/technitium-dns-server.conf
+            echo " :: Creating user and group"
+            systemd-sysusers
         ;;
         *)
             echo "::: Unknown init system"
