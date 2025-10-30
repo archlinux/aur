@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=COMPASS
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Combinatorial Polyfunctionality Analysis of Single Cells'
 arch=('x86_64')
@@ -42,7 +42,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('511648cf2c5bc9248f4df76d31fe203b5849aefb8af039a218ec63e6461db225')
+sha256sums=('b1e278c1407385ca170165109217f1dd7a13fcf242b7b0ead4f05a8539d74070')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
