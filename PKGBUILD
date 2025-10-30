@@ -10,7 +10,6 @@ pkgdesc="NordVPN CLI tool for Linux"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64' 'armeabi')
 url="https://nordvpn.com/download/linux/"
 license=('GPL3')
-depends=('libxml2')
 optdepends=('nordvpn-gui: Graphical Interface for NordVPN')
 provides=('nordvpn')
 conflicts=('openvpn-nordvpn')

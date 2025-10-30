@@ -10,7 +10,6 @@ pkgbase = nordvpn-bin
 	arch = aarch64
 	arch = armeabi
 	license = GPL3
-	depends = libxml2
 	optdepends = nordvpn-gui: Graphical Interface for NordVPN
 	provides = nordvpn
 	conflicts = openvpn-nordvpn
