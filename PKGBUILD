@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CGHcall
-_pkgver=2.70.0
+_pkgver=2.72.0
 pkgname=r-${_pkgname,,}
-pkgver=2.70.0
+pkgver=2.72.0
 pkgrel=1
 pkgdesc='Calling aberrations for array CGH tumor profiles.'
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
   r-snowfall
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('96b1fa2ecb0144b73908de834612cae310fbd9a31d2022937c6b403314fdeef9')
+sha256sums=('ec270a321d23fe14bd6e648a614ade9abbb2c7bc6d0d25f0728d098772756371')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
