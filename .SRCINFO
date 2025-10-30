@@ -1,6 +1,6 @@
 pkgbase = r-hubpub
 	pkgdesc = Utilities to create and use Bioconductor Hubs
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/HubPub
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-hubpub
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HubPub_1.16.0.tar.gz
-	sha256sums = 7a1c9b0edc3339d43e6359272fe92a83052cbcd3bb8ee0a6b460897369398017
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HubPub_1.18.0.tar.gz
+	sha256sums = e835cf35170d0f86d33e473f5cfd32bcd2558f771d98519fe53aade498e5d26d
 
 pkgname = r-hubpub
