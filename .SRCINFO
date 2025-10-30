@@ -1,0 +1,16 @@
+pkgbase = brother-dcp-t780dw
+	pkgdesc = LPR and CUPS driver for the Brother DCP-T780DW
+	pkgver = 3.6.1_1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadend.aspx?c=us&lang=en&prod=mfcl3780cdw_us_as&os=128&dlid=dlf105764_000&flang=4&type3=10283
+	arch = x86_64
+	license = LicenseRef-brother
+	depends = cups
+	depends = ghostscript
+	depends = perl
+	depends = lib32-glibc
+	optdepends = brscan4: scanner support
+	source = https://download.brother.com/welcome/dlf106531/dcpt780dwpdrv-3.6.1-1.amd64.deb
+	sha256sums = 1013896a946f14781e62f8a42b6e219bd0de4ca7e03bbdc28feb9e55329d6026
+
+pkgname = brother-dcp-t780dw
