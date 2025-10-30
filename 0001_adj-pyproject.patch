@@ -1,8 +1,8 @@
---- a/papermerge-core-3.4/pyproject.toml
-+++ b/papermerge-core-3.4/pyproject.toml
+--- a/papermerge-core-3.5/pyproject.toml
++++ b/papermerge-core-3.5/pyproject.toml
 @@ -8,10 +8,7 @@
  maintainers = [
-     { name = "Eugen Ciur", email = "eugen@papermerge.com"}
+     { name = "Eugen Ciur", email = "eugen@papermerge.com" }
  ]
 -license = "Apache 2.0"
  readme = "README.md"
@@ -12,9 +12,9 @@
      "License :: OSI Approved :: Apache Software License",
      "Operating System :: OS Independent",
 @@ -28,10 +25,6 @@
-   "document-management",
-   "paperless",
-   "archives"
+     "document-management",
+     "paperless",
+     "archives"
 -]
 -packages = [
 -    { include = "papermerge/core" },
@@ -22,7 +22,7 @@
  ]
  requires-python = ">=3.13,<4"
  dependencies = [
-@@ -109,6 +102,9 @@
+@@ -110,6 +103,9 @@
      "UP007"
  ]
  
