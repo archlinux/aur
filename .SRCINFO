@@ -1,6 +1,6 @@
 pkgbase = mackup
 	pkgdesc = a small Python utitlity to keep your application settings in sync.
-	pkgver = 0.9.0
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://github.com/lra/mackup
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = mackup
 	makedepends = python-hatchling
 	depends = python
 	depends = python-docopt-ng
-	source = mackup-0.9.0.tar.gz::https://github.com/lra/mackup/archive/refs/tags/0.9.0.tar.gz
-	sha256sums = cdf565dfe577ac5907257c34abe3aa2625905b462c2f3936a61662aa806bc172
+	source = mackup-0.9.5.tar.gz::https://github.com/lra/mackup/archive/refs/tags/0.9.5.tar.gz
+	sha256sums = c8b995f8bd7725ecf58544e389ee191dc0ba3ef5e682e0884ba44e2b9d6945f6
 
 pkgname = mackup
