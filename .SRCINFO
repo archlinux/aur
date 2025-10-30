@@ -1,0 +1,19 @@
+pkgbase = scrollmpris-git
+	pkgdesc = Scrolling MPRIS module for waybar
+	pkgver = 1.0.0_r24.3e79f70
+	pkgrel = 1
+	url = https://github.com/BEST8OY/ScrollMPRIS
+	arch = x86_64
+	license = Unlicense
+	makedepends = rust
+	makedepends = git
+	depends = dbus
+	depends = glibc
+	depends = gcc-libs
+	optdepends = waybar: for integration with Waybar
+	provides = scrollmpris-git
+	conflicts = scrollmpris-git
+	source = scrollmpris-git::git+https://github.com/BEST8OY/ScrollMPRIS
+	sha256sums = SKIP
+
+pkgname = scrollmpris-git
