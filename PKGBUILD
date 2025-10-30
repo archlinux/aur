@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ai-browser-git
 _pkgname=AI-Browser
-pkgver=1.6.3.r0.g3fe1eb3
-_electronversion=38
+pkgver=1.6.5.r1.g5002091
+_electronversion=39
 _nodeversion=22
 pkgrel=1
 pkgdesc='Client app for ChatGPT, Gemini, Claude, Phind, Perplexity, Genspark and Google AI Studio with Monaco Editor integration.(Use system-wide electron)'
