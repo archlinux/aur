@@ -3,7 +3,7 @@
 
 pkgname=steam-native-runtime
 pkgver=1.0.0.75
-pkgrel=6
+pkgrel=7
 pkgdesc='Native replacement for the Steam runtime using system libraries'
 arch=('x86_64')
 url='https://wiki.archlinux.org/index.php/Steam/Troubleshooting#Native_runtime'
@@ -24,7 +24,7 @@ depends=(
   'lib32-libvorbis' 'lib32-libvpx1.3' 'lib32-libxcomposite'
   'lib32-libxcursor' 'lib32-libxft' 'lib32-libxi' 'lib32-libxinerama'
   'lib32-libxmu' 'lib32-libxrandr' 'lib32-libxrender' 'lib32-libxtst'
-  'lib32-libxxf86vm' 'lib32-nspr' 'lib32-openal'
+  'lib32-libxxf86vm' 'lib32-nspr' 'lib32-openal' 'lib32-openssl-1.0'
   'lib32-openssl-1.1' 'lib32-pango' 'lib32-sdl' 'lib32-sdl2' 'lib32-sdl2_image'
   'lib32-sdl2_mixer' 'lib32-sdl2_ttf' 'lib32-sdl_image' 'lib32-sdl_mixer'
   'lib32-sdl_ttf' 'libcaca' 'libcanberra' 'libcups'
@@ -33,7 +33,7 @@ depends=(
   'libsm' 'libtheora' 'libtiff4' 'libudev0-shim' 'libusb' 'libva' 'libvdpau'
   'libvorbis' 'libvpx1.3' 'libxcomposite' 'libxcursor' 'libxft'
   'libxi' 'libxinerama' 'libxmu' 'libxrandr' 'libxrender' 'libxtst'
-  'libxxf86vm' 'nspr' 'openal' 'openssl-1.1' 'pango' 'sdl' 'sdl2'
+  'libxxf86vm' 'nspr' 'openal' 'openssl-1.0' 'openssl-1.1' 'pango' 'sdl' 'sdl2'
   'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'sdl_image' 'sdl_mixer' 'sdl_ttf'
   'vulkan-icd-loader' 'vulkan-driver' 'lib32-vulkan-driver' 'lib32-vulkan-icd-loader'
   'lib32-libappindicator-gtk2' 'lib32-libindicator-gtk2' 'lib32-libdbusmenu-glib' 'lib32-libdbusmenu-gtk2'
@@ -46,6 +46,23 @@ prepare() {
   sed -r 's|(Name=Steam)|\1 (Native)|' -i steam-native.desktop
   sed -r 's|(/usr/bin/steam)|\1-native|' -i steam-native.desktop
   sed '/^Icon=.*/i StartupWMClass=Steam' -i steam-native.desktop
+}
+
+check() {
+    local missing=()
+
+    [[ -f "steam-native.desktop" ]] || { error "steam-native.desktop not found"; return 1; }
+
+    grep -q "Steam (Native)" "steam-native.desktop" || missing+=("Steam (Native)")
+    grep -q "/usr/bin/steam-native" "steam-native.desktop" || missing+=("/usr/bin/steam-native")
+
+    if [[ ${#missing[@]} -gt 0 ]]; then
+        error "Missing strings in steam-native.desktop:"
+        printf "  - %s\n" "${missing[@]}" >&2
+        return 1
+    fi
+
+    msg2 "All required strings found in steam-native.desktop"
 }
 
 package() {
@@ -64,4 +81,5 @@ package() {
   fi
 }
 
+# shellcheck source=/usr/bin/makepkg
 # vim: ts=2 sw=2 et:
