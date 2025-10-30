@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sevenbridges
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Seven Bridges Platform API Client and Common Workflow Language Tool Builder in R'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2c415fe318d9b74cc5010c8f30056011fef69c7cb890ca72b6f9a427e91d8991')
+sha256sums=('9db5d65089e6e10fbf1dbd4886d864b6008da6cdd653e4d98936c9d1a1ef5ecd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
