@@ -1,7 +1,7 @@
 pkgbase = anydesk-bin
 	pkgdesc = The Fast Remote Desktop Application
 	pkgver = 7.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://anydesk.com
 	arch = x86_64
 	license = custom
@@ -33,7 +33,7 @@ pkgbase = anydesk-bin
 	provides = anydesk
 	conflicts = anydesk
 	options = !strip
-	source = https://download.anydesk.com/linux/anydesk-latest-amd64.tar.gz
+	source = https://download.anydesk.com/linux/anydesk-7.1.1-amd64.tar.gz
 	sha256sums = a46cd4e1d05e5a500200ebec841cd33cde8f70d7509105c08c61672becab280e
 
 pkgname = anydesk-bin

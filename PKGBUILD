@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=anydesk-bin
 pkgver=7.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Fast Remote Desktop Application"
 arch=('x86_64')
 url="https://anydesk.com"
@@ -11,9 +11,7 @@ optdepends=('libpulse: audio support' 'gnome-themes-extra: adwaita theme')
 conflicts=('anydesk')
 provides=('anydesk')
 options=('!strip')
-# Temporary workaround: upstream versioned URL returns 404; use latest endpoint
-#source=("https://download.anydesk.com/linux/anydesk-${pkgver}-amd64.tar.gz")
-source=("https://download.anydesk.com/linux/anydesk-latest-amd64.tar.gz")
+source=("https://download.anydesk.com/linux/anydesk-${pkgver}-amd64.tar.gz")
 sha256sums=('a46cd4e1d05e5a500200ebec841cd33cde8f70d7509105c08c61672becab280e')
 
 package() {
