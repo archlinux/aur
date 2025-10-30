@@ -1,14 +1,14 @@
 pkgbase = bigcty
 	pkgdesc = The package represents databases of entities (countries), prefixes and callsigns that are used by amateur (ham) radio logging software - EVERYDAY LOGGING VERSION.
-	pkgver = 20250809
+	pkgver = 20251028
 	pkgrel = 1
 	url = http://www.country-files.com/bigcty
 	arch = any
 	license = GPL-3.0-only
 	provides = cty
 	conflicts = cty
-	source = http://www.country-files.com/bigcty/download/2025/bigcty-20250809.zip
-	md5sums = 33d746c32c45b743e4e141b4b09888d3
-	sha256sums = e5c5f9a42c2f1f333e6829195477371141aa0cfcf3266eb89f77f59fc2ba18c6
+	source = http://www.country-files.com/bigcty/download/2025/bigcty-20251028.zip
+	md5sums = 1ff4cf83dc7ca7f334373d064cac2e31
+	sha256sums = 4213cd6e518d121a581d023be859fba7b535383e427ee8f8ae7aeb119722a5ca
 
 pkgname = bigcty
