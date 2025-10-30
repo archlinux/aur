@@ -6,7 +6,7 @@ _pkgname='hacki'
 pkgname=${_pkgname}
 _pkgreponame='Hacki'
 pkgver=2.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Hacker News reader.'
 url='https://github.com/Livinglist/Hacki'
 arch=('x86_64')
@@ -25,10 +25,8 @@ _engine_version=3.32.5
 
 prepare() {
 	cd "${_srcdir}"
-	#sed -i \
-	#	-e 's/flutter_slidable: ^3.0.0/flutter_slidable: ^3.1.2/' \
-	#	-e 's/flutter_secure_storage: ^9.2.2/flutter_secure_storage: ^9.2.4/' \
-	#	'pubspec.yaml'
+
+	sed -i 's/ref: 6ab5a79f1f8f984ad5b5733fd94e90c8f97a0c8d/ref: 0563760f9dcf22f5498a3126deec611af5604072/' 'pubspec.yaml'
 }
 
 build() {
