@@ -1,16 +1,15 @@
 pkgbase = nordzy-icon-theme-git
-	pkgdesc = Nordzy is a free and open source icon theme for Linux desktops using the Nord color palette from Arctic Ice Studio and based on WhiteSur and Numix Icon Theme.
-	pkgver = r86.7e6d2474
+	pkgdesc = An icon theme based on WhiteSur and Numix with Nord colors
+	pkgver = 1.8.7.r10.gb981f11
 	pkgrel = 1
-	url = https://github.com/alvatip/Nordzy-icon
+	url = https://github.com/MolassesLover/Nordzy-icon
 	arch = any
-	license = GPL
+	license = GPL-3.0-only
 	makedepends = git
-	depends = hicolor-icon-theme
 	provides = nordzy-icon-theme
 	conflicts = nordzy-icon-theme
 	options = !strip
-	source = git+https://github.com/alvatip/Nordzy-icon.git
+	source = nordzy-icon-theme::git+https://github.com/MolassesLover/Nordzy-icon.git
 	sha256sums = SKIP
 
 pkgname = nordzy-icon-theme-git
