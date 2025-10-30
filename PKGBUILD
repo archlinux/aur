@@ -3,7 +3,7 @@
 pkgname=polypane
 _pkgname=Polypane
 pkgver=26.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Browser for building responsive websites and apps."
 arch=('x86_64' 'i686')
 url="https://polypane.app"
@@ -15,29 +15,36 @@ options=('!strip')
 
 source=(${_pkgname}-${pkgver}.AppImage::https://github.com/firstversionist/polypane/releases/download/v${pkgver}/polypane-${pkgver}.AppImage)
 
-
 prepare() {
-    cd "${srcdir}"
+	cd "${srcdir}"
 
-    # Extract AppImage Files
-    7z x -y ${_pkgname}-${pkgver}.AppImage usr/share/icons > /dev/null
-    7z x -y ${_pkgname}-${pkgver}.AppImage ${pkgname}.desktop > /dev/null
+	# Extract AppImage Files
+	7z x -y ${_pkgname}-${pkgver}.AppImage usr/share/icons >/dev/null
+	7z x -y ${_pkgname}-${pkgver}.AppImage ${pkgname}.desktop >/dev/null
+
+	# Prevent duplicate .desktop entries that include "(version)"
+	sed -i "s/ (${pkgver})//" "${pkgname}.desktop"
+
+	# Make the .desktop launch the installed binary instead of 'AppRun'
+	sed -i -E 's|^Exec=.*|Exec=/usr/bin/polypane %U|' "${pkgname}.desktop"
+	# If TryExec exists, point it to our symlink as well (no-op if not present)
+	sed -i -E 's|^TryExec=.*|TryExec=/usr/bin/polypane|' "${pkgname}.desktop"
 }
 
 package() {
-    cd "${srcdir}"
+	cd "${srcdir}"
 
-    # Copy Icons
-    install -dm644 "${pkgdir}/usr/share/icons"
-    cp -dpr --no-preserve=ownership "usr/share/icons" "${pkgdir}/usr/share"
-    find "${pkgdir}/usr/share/icons" -type d -exec chmod 755 {} \;
+	# Icons
+	install -dm755 "${pkgdir}/usr/share"
+	cp -dr --no-preserve=ownership "usr/share/icons" "${pkgdir}/usr/share"
 
-    # Install to /opt/appimage/
-    sed -i "s/ (${pkgver})//" "${pkgname}.desktop" # prevent multiple .desktop entries
-    install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    install -Dm755 "${_pkgname}-${pkgver}.AppImage" "${pkgdir}/opt/appimages/${_pkgname}-${pkgver}.AppImage"
+	# Desktop file
+	install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
-    # Create Link in /usr/bin/
-    install -d "${pkgdir}/usr/bin"
-    ln -s "/opt/appimages/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/usr/bin/${pkgname}"
+	# AppImage payload
+	install -Dm755 "${_pkgname}-${pkgver}.AppImage" "${pkgdir}/opt/appimages/${_pkgname}-${pkgver}.AppImage"
+
+	# Symlink in PATH
+	install -d "${pkgdir}/usr/bin"
+	ln -s "/opt/appimages/${_pkgname}-${pkgver}.AppImage" "${pkgdir}/usr/bin/${pkgname}"
 }
