@@ -2,7 +2,7 @@
 
 pkgname=eez-studio-appimage
 pkgver=0.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform low-code GUI and automation"
 arch=('x86_64' 'aarch64')
 url="https://github.com/eez-open/studio/releases"
@@ -10,6 +10,11 @@ license=('GPL')
 options=(!strip)
 
 depends=(
+    'nss'
+    'atkmm'
+    'cups'
+    'gtk3'
+    'alsa-lib'
     'python'
 )
 
