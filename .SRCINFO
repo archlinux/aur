@@ -1,6 +1,6 @@
 pkgbase = r-bus
 	pkgdesc = Gene network reconstruction
-	pkgver = 1.64.0
+	pkgver = 1.66.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BUS
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-bus
 	depends = r
 	depends = r-infotheo
 	depends = r-minet
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BUS_1.64.0.tar.gz
-	sha256sums = 7f62009478931e171b0ddbbb1cf1cfd81c3b73a5b410e92c1cfc8715103a01f4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BUS_1.66.0.tar.gz
+	sha256sums = b78a95b6625fb5d0d70553f3e9744732e021cc7620fac2dd6666276c40f5b85a
 
 pkgname = r-bus
