@@ -1,6 +1,6 @@
 pkgbase = gh-dash
 	pkgdesc = A beautiful CLI dashboard extension for GitHub to display pull requests and issues with filters you care about
-	pkgver = 4.18.0
+	pkgver = 4.19.0
 	pkgrel = 1
 	url = https://github.com/dlvhdr/gh-dash
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = gh-dash
 	optdepends = ttf-font-nerd: icons support
 	options = strip
 	options = buildflags
-	source = https://github.com/dlvhdr/gh-dash/archive/refs/tags/v4.18.0/gh-dash-4.18.0.tar.gz
-	sha256sums = b7766e1710a0efcd142eed73f7dbc9ea9e86c6fa81103bace9b86c7ba513fc95
+	source = https://github.com/dlvhdr/gh-dash/archive/refs/tags/v4.19.0/gh-dash-4.19.0.tar.gz
+	sha256sums = 47e0e783293b8eab9f29f46e35d9aeec2fdcb96e9a6fb3ee3068a1a730b6a62e
 
 pkgname = gh-dash

@@ -1,6 +1,6 @@
 # Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
 pkgname=gh-dash
-pkgver=4.18.0
+pkgver=4.19.0
 pkgrel=1
 pkgdesc="A beautiful CLI dashboard extension for GitHub to display pull requests and issues with filters you care about"
 arch=("i686" "x86_64" "armv6h" "aarch64")
@@ -11,7 +11,7 @@ optdepends=("ttf-font-nerd: icons support")
 depends=("glibc" "github-cli>=2.0.0")
 options=("strip" "buildflags")
 source=("${url}/archive/refs/tags/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('b7766e1710a0efcd142eed73f7dbc9ea9e86c6fa81103bace9b86c7ba513fc95')
+sha256sums=('47e0e783293b8eab9f29f46e35d9aeec2fdcb96e9a6fb3ee3068a1a730b6a62e')
     
 prepare(){
     cd "${pkgname}-${pkgver}"
