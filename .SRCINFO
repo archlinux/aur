@@ -1,6 +1,6 @@
 pkgbase = semgrep-bin
 	pkgdesc = Lightweight static analysis for many languages. Find bug variants with patterns that look like source code.
-	pkgver = 1.140.0
+	pkgver = 1.141.1
 	pkgrel = 1
 	url = https://github.com/returntocorp/semgrep
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = semgrep-bin
 	optdepends = jsonnet: experimental jsonnet support
 	provides = semgrep
 	options = !strip
-	source = https://files.pythonhosted.org/packages/45/f4/0d72ffb4573c4bbfcec2c31c5c519f43a2595b3855c30b3bed5f8e53a4f7/semgrep-1.140.0-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-musllinux_1_0_x86_64.manylinux2014_x86_64.whl
-	sha512sums = 974f53da41333e33b88d9e1e2c5fed50c3bd2811205c3d9d324f52e7440da5703299b1c6f0504e140bf937bc68d12724584680ce0ae04eeacda2a459e6eb2ad6
+	source = https://files.pythonhosted.org/packages/01/90/41649b6bada59f32f36c1adc2253c5d437e4603df575ebd8f19b25cf6e87/semgrep-1.141.1-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-musllinux_1_0_x86_64.manylinux2014_x86_64.whl
+	sha512sums = ebcfa38b96f02021501a08aa197a8e20fb9ef49afbed89d8f0ff9bba5365772c9fced9dc2dd6f350414ce6d309b283a543691399f41d5f1506461a259c10bf70
 
 pkgname = semgrep-bin
