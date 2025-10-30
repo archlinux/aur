@@ -1,6 +1,6 @@
 pkgbase = r-clst
 	pkgdesc = Classification by local similarity threshold
-	pkgver = 1.56.0
+	pkgver = 1.58.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/clst
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-clst
 	depends = r
 	depends = r-roc
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/clst_1.56.0.tar.gz
-	sha256sums = 6425b908aa1fbb583bef7585d769d873789218c3b70f0dd443da916cc8ae866a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/clst_1.58.0.tar.gz
+	sha256sums = 4295cef855717fa25bcaf9be7ed7684dee01d216be614aabaa88e3b59f2b3438
 
 pkgname = r-clst
