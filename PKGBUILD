@@ -3,7 +3,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=beautysh
-pkgver=6.3.3
+pkgver=6.4.0
 pkgrel=1
 pkgdesc="A Bash beautifier for the masses"
 arch=(
@@ -17,18 +17,22 @@ depends=(
 	python-colorama
 	python-editorconfig
 )
+checkdepends=(
+	python-pytest
+	python-hypothesis
+	python-yaml
+)
 makedepends=(
 	python-build
 	python-hatchling
 	python-installer
-	python-pytest
 	python-wheel
 )
 source=(
 	"${url}/releases/download/v${pkgver}/beautysh-${pkgver}.tar.gz"
 )
 sha256sums=(
-	a86e1ea1bc42c9251eb2543403156356805b0983f29b4139b5cc27f270f963a7
+	d758d74e81ed11d073e0ebafe817b030f7745773a648748f68dbd5e9ecd1c8a0
 )
 
 : "${pkgname}"
@@ -37,6 +41,7 @@ sha256sums=(
 : "${arch[@]}"
 : "${license[@]}"
 : "${depends[@]}"
+: "${checkdepends[@]}"
 : "${makedepends[@]}"
 : "${source[@]}"
 : "${sha256sums[@]}"
