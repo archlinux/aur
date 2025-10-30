@@ -1,0 +1,16 @@
+pkgbase = pg_auto_failover-old-upgrade
+	pkgdesc = pg_auto_failover build against postgresql-old-upgrade package for pg_upgrade
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/citusdata/pg_auto_failover
+	arch = x86_64
+	license = PostgreSQL
+	makedepends = clang
+	makedepends = llvm
+	depends = postgresql-old-upgrade
+	depends = ncurses
+	options = !buildflags
+	source = pg_auto_failover-old-upgrade-2.2.tar.gz::https://github.com/citusdata/pg_auto_failover/archive/refs/tags/v2.2.tar.gz
+	sha256sums = 0f4018564e620592fcfb43d52ea2bc3ccba33bd824352fa9c7e55eb2ba0a4f6c
+
+pkgname = pg_auto_failover-old-upgrade
