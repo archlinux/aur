@@ -1,6 +1,6 @@
 pkgbase = r-smad
 	pkgdesc = Statistical Modelling of AP-MS Data (SMAD)
-	pkgver = 1.24.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SMAD
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = r-smad
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SMAD_1.24.0.tar.gz
-	sha256sums = feec298aadb1ff8d2532752042d98b8765fc31917bf5fe1fc8c356c2ccd5492f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SMAD_1.26.0.tar.gz
+	sha256sums = 0b89ea3b8b4e64de8f5c38771c2067eb6162057b6fd81004283657ea73a70442
 
 pkgname = r-smad
