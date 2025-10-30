@@ -1,6 +1,6 @@
 pkgbase = protonup-rs
 	pkgdesc = CLI program to automate the installation and update of Proton-GE
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/auyer/Protonup-rs
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = protonup-rs
 	makedepends = cargo
 	depends = glibc
 	depends = xz
-	source = Protonup-rs-0.9.1.tar.gz::https://github.com/auyer/Protonup-rs/archive/refs/tags/v0.9.1.tar.gz
-	sha256sums = 670d69b8bf0fb7c44383fedc7917ee6e08ff63cecf7aeac05f7f7337f71ed91a
+	source = Protonup-rs-0.9.2.tar.gz::https://github.com/auyer/Protonup-rs/archive/refs/tags/v0.9.2.tar.gz
+	sha256sums = ae59b8a74987264d621d9b02466e0846aa126a015db0871f98650d1f07ed5986
 
 pkgname = protonup-rs
