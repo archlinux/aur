@@ -1,7 +1,7 @@
 # Maintainer: Lysec
 
 pkgname=swiftfetch
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A fast and efficient fetch utility written in Rust"
 arch=('x86_64')
