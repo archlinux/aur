@@ -3,7 +3,7 @@
 pkgname=python-pydns
 _realname=py3dns
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A module for looking up DNS entries in Python applications"
 arch=('any')
 url="https://launchpad.net/py3dns"
