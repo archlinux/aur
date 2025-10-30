@@ -1,6 +1,6 @@
 # Maintainer: Omar Emara <mail@OmarEmara.dev>
 pkgname=halide
-pkgver=19.0.0
+pkgver=21.0.0
 pkgrel=1
 pkgdesc="A language for fast and portable data-parallel computation."
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
   'libpng: PNG support in the Image IO Utility.'
   'libjpeg: JPEG support in the Image IO Utility.')
 source=("https://github.com/halide/Halide/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('83bae1f0e24dc44d9d85014d5cd0474df2dd03975680894ce3fafd6e97dffee2')
+sha256sums=('aa6b6f5e89709ca6bc754ce72b8b13b2abce0d6b001cb2516b1c6f518f910141')
 
 build() {
   cmake -B build -S "Halide-$pkgver" \
