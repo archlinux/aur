@@ -1,7 +1,7 @@
 pkgbase = llrt-full-sdk
 	pkgdesc = Lightweight JavaScript runtime, compiler, REPL, and test runner (FULL @aws-sdk bundled)
 	pkgver = 0.7.0beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/awslabs/llrt
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,7 @@ pkgbase = llrt-full-sdk
 	makedepends = rustup
 	makedepends = zig
 	makedepends = zip
+	makedepends = zstd
 	optdepends = typescript: transpiler for TypeScript code with type checking support
 	optdepends = esbuild: fast compiler and bundler for JavaScript and TypeScript
 	optdepends = swc-js-bin: drop-in replacement for Babel with compilation and polyfill support
@@ -19,6 +20,7 @@ pkgbase = llrt-full-sdk
 	conflicts = llrt
 	options = !buildflags
 	options = !makeflags
+	options = !debug
 	source = git+https://github.com/awslabs/llrt.git#tag=v0.7.0-beta
 	source = https://github.com/yarnpkg/yarn/releases/download/v1.22.22/yarn-v1.22.22.tar.gz
 	sha256sums = 20058c4d89e6f1675885b835aef2d3215b85fa0d55bba62d07de5481aa847e5d

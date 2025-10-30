@@ -2,12 +2,12 @@
 
 pkgname=llrt-full-sdk
 pkgver=0.7.0beta
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight JavaScript runtime, compiler, REPL, and test runner (FULL @aws-sdk bundled)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/awslabs/llrt'
 license=('Apache-2.0')
-makedepends=('cmake' 'nodejs' 'rustup' 'zig' 'zip')
+makedepends=('cmake' 'nodejs' 'rustup' 'zig' 'zip' 'zstd')
 optdepends=(
   'typescript: transpiler for TypeScript code with type checking support'
   'esbuild: fast compiler and bundler for JavaScript and TypeScript'
@@ -16,7 +16,7 @@ optdepends=(
 )
 provides=('llrt')
 conflicts=('llrt')
-options=(!buildflags !makeflags)
+options=(!buildflags !makeflags !debug)
 source=(
   "git+$url.git#tag=v${pkgver//beta/-beta}"
   "https://github.com/yarnpkg/yarn/releases/download/v1.22.22/yarn-v1.22.22.tar.gz"
