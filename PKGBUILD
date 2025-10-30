@@ -6,7 +6,7 @@ _gitname=rogerrouter
 _pkgname=roger-router
 pkgname="${_pkgname}-git"
 pkgver=2.4.90+5.r1430.20250629.8c754a6
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility to control and monitor AVM Fritz!Box Routers. E.g. Journal, fax software and call monitor."
 arch=(
   'aarch64'
@@ -31,7 +31,7 @@ depends=(
   "libhandy-1.so"
   "libpango-1.0.so"
   "libpangocairo-1.0.so"
-  "libsoup-2.4.so"
+  "libsoup-3.0.so"
   "libtiff.so"
 )
 makedepends=(
@@ -47,8 +47,7 @@ makedepends=(
   "intltool"
   "librm"
   "libhandy"
-  "libsoup>=2"
-  "libsoup<3"
+  "libsoup3"
   "libtiff"
   "meson"
   "ninja"
