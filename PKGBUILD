@@ -2,7 +2,7 @@
 # Contributor: Klaus Alexander Seiﬆrup <klaus@seistrup.dk>
 
 pkgname=icann-rdap
-pkgver=0.0.24
+pkgver=0.0.25
 pkgrel=1
 pkgdesc='ICANN implementation of the Registry Data Access Protocol (RDAP)'
 arch=('aarch64' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('cargo')
 provides=('rdap')
 conflicts=('rdap')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('53121b4caa1bdbc61ca2a122b7b915035553618616b9c47095821a9391aceddf')
+sha256sums=('c8747f0c5a1bbc475018b76046db9c40b85018b239f2a9ba8b1fcdca295eef68')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
