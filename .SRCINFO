@@ -1,6 +1,6 @@
 pkgbase = r-genomes
 	pkgdesc = Genome sequencing project metadata
-	pkgver = 3.38.0
+	pkgver = 3.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/genomes
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-genomes
 	depends = r
 	depends = r-curl
 	depends = r-readr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/genomes_3.38.0.tar.gz
-	sha256sums = b75d9f5b694e56fb06fc9f7c9bd54369963262d41618ea708808e1f039b5a8c7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/genomes_3.40.0.tar.gz
+	sha256sums = 09962d7f9a2570a4f748242db5a232ee8f141ef301f813bc9d30a463d93bf7f9
 
 pkgname = r-genomes
