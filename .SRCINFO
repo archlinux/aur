@@ -1,6 +1,6 @@
 pkgbase = r-hpaanalyze
 	pkgdesc = Retrieve and analyze data from the Human Protein Atlas
-	pkgver = 1.26.1
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/HPAanalyze
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-hpaanalyze
 	optdepends = r-knitr
 	optdepends = r-markdown
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HPAanalyze_1.26.1.tar.gz
-	sha256sums = 48ec31c2fbc7e2f68765afe45d7c9cb74cca03a19e9b9a2599d741f402995953
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HPAanalyze_1.28.0.tar.gz
+	sha256sums = 20d8a4324466dac77f9f1863ae2034b9c34aac0aaa678a9041fee94dfb4b76d7
 
 pkgname = r-hpaanalyze
