@@ -7,9 +7,9 @@ pkgname=(
   processing
   processing-examples
 )
-pkgver=4.4.8
-_build=1308
-pkgrel=2
+pkgver=4.4.10
+_build=1310
+pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://www.processing.org/'
@@ -20,7 +20,7 @@ options=(!strip)
 source=("https://github.com/processing/processing4/archive/processing-$_build-$pkgver.tar.gz"
 	    'disable_update_check.patch'
 	    'no_jdk_download.patch')
-sha256sums=('05c1603a6e5b791126e76b595edc3ad044809fba45ea09fb6e21f64adca87a65'
+sha256sums=('e121c282ccb2ad5734404da6afcaa2c25bdbf1a17eed03e8ffee8f1799be995c'
             '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
             '603378fb933f4e15301e74426e5c877f5ad65dfc51d96819e1eaabfe4ff0baab')
 
