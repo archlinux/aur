@@ -1,7 +1,7 @@
 pkgbase = python-pytorch
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration
 	pkgver = 2.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pytorch.org
 	arch = x86_64
 	license = BSD-3-Clause-Modification
@@ -52,6 +52,7 @@ pkgbase = python-pytorch
 	depends = python-yaml
 	depends = qt6-base
 	depends = vulkan-icd-loader
+	optdepends = python-onnxscript: for the ONNX exporter
 	options = !lto
 	options = !debug
 	source = pytorch::git+https://github.com/pytorch/pytorch.git#tag=v2.9.0
