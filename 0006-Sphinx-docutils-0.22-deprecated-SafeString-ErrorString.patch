@@ -1,0 +1,58 @@
+Simpler variant of patch at
+https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/0004-handle_the_obsolescensce_of_docutils.ErrorString.patch?ref_type=heads
+
+The cmake people have better replacements than the docutils people.
+Why change the code when I can just change the imports and python changes the code!
+
+diff -pNaru5 a/Documentation/sphinx/kernel_abi.py b/Documentation/sphinx/kernel_abi.py
+--- a/Documentation/sphinx/kernel_abi.py	2025-10-29 09:01:25.000000000 -0400
++++ b/Documentation/sphinx/kernel_abi.py	2025-10-30 16:03:37.005858111 -0400
+@@ -42,11 +42,12 @@ import kernellog
+ from os import path
+ 
+ from docutils import nodes, statemachine
+ from docutils.statemachine import ViewList
+ from docutils.parsers.rst import directives, Directive
+-from docutils.utils.error_reporting import ErrorString
++#from docutils.utils.error_reporting import ErrorString
++from docutils.io import error_string as ErrorString # https://gitlab.kitware.com/cmake/cmake/-/issues/24039
+ 
+ #
+ # AutodocReporter is only good up to Sphinx 1.7
+ #
+ import sphinx
+diff -pNaru5 a/Documentation/sphinx/kernel_include.py b/Documentation/sphinx/kernel_include.py
+--- a/Documentation/sphinx/kernel_include.py	2025-10-29 09:01:25.000000000 -0400
++++ b/Documentation/sphinx/kernel_include.py	2025-10-30 16:04:06.332298495 -0400
+@@ -32,11 +32,13 @@ u"""
+ # ==============================================================================
+ 
+ import os.path
+ 
+ from docutils import io, nodes, statemachine
+-from docutils.utils.error_reporting import SafeString, ErrorString
++#from docutils.utils.error_reporting import SafeString, ErrorString
++from docutils.io import error_string as ErrorString # https://gitlab.kitware.com/cmake/cmake/-/issues/24039
++SafeString = str # Google AI
+ from docutils.parsers.rst import directives
+ from docutils.parsers.rst.directives.body import CodeBlock, NumberLines
+ from docutils.parsers.rst.directives.misc import Include
+ 
+ __version__  = '1.0'
+diff -pNaru5 a/Documentation/sphinx/maintainers_include.py b/Documentation/sphinx/maintainers_include.py
+--- a/Documentation/sphinx/maintainers_include.py	2025-10-29 09:01:25.000000000 -0400
++++ b/Documentation/sphinx/maintainers_include.py	2025-10-30 16:03:42.642481288 -0400
+@@ -20,11 +20,12 @@ u"""
+ import sys
+ import re
+ import os.path
+ 
+ from docutils import statemachine
+-from docutils.utils.error_reporting import ErrorString
++#from docutils.utils.error_reporting import ErrorString
++from docutils.io import error_string as ErrorString # https://gitlab.kitware.com/cmake/cmake/-/issues/24039
+ from docutils.parsers.rst import Directive
+ from docutils.parsers.rst.directives.misc import Include
+ 
+ __version__  = '1.0'
+ 
