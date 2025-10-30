@@ -1,7 +1,7 @@
 pkgbase = tbox
 	pkgdesc = A glib-like multi-platform C library
-	pkgver = 1.7.7
-	pkgrel = 1
+	pkgver = 1.7.8
+	pkgrel = 2
 	url = https://github.com/tboox/tbox
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = tbox
 	license = Apache-2.0
 	depends = glibc
 	provides = libtbox.so
-	source = tbox-1.7.7.tar.gz::https://github.com/tboox/tbox/archive/refs/tags/v1.7.7.tar.gz
-	sha256sums = ae387dcf1952aca572516bdce4a47d04e9b411f5bf7add281247af7c874f3c3f
+	source = tbox-1.7.8.tar.gz::https://github.com/tboox/tbox/archive/refs/tags/v1.7.8.tar.gz
+	sha256sums = eda4ea0fe53b55594a0c4842fcf1f3510fec5b183936142873c47455fdaefa4a
 
 pkgname = tbox
