@@ -1,6 +1,6 @@
 pkgbase = r-nparc
 	pkgdesc = Non-parametric analysis of response curves for thermal proteome profiling experiments
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/NPARC
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-nparc
 	optdepends = r-rmarkdown
 	optdepends = r-rprojroot
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/NPARC_1.20.0.tar.gz
-	sha256sums = 293600e2a224845d7985ec6d2554e812aed481a768ba92949718646be8d4ef5d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/NPARC_1.22.0.tar.gz
+	sha256sums = 926c90243ffbaa096172bf88148cf7f96efa5c67fbfa196e4b7455b580f31547
 
 pkgname = r-nparc
