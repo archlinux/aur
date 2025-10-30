@@ -12,7 +12,7 @@ conflicts=('vesc_tool-git')
 source=("$pkgname"::"git+https://github.com/vedderb/vesc_tool.git#branch=release_$_pkgver"
         'vesc-tool.desktop')
 sha256sums=('SKIP'
-            'a0d31826279e900ab614744afad1a26b849440c298d8a5e6e318df554beebdde')
+            '8984cc19ffc82a56d700dde8d49c189c70ec9c6a5f0309871cdfe052121907f5')
 options=(!debug)
 
 build() {
