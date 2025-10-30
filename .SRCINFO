@@ -1,7 +1,7 @@
 pkgbase = cctools
 	pkgdesc = Apple's cross-compiling toolchain ported to Linux
-	pkgver = 1024.3+geea1c9e
-	pkgrel = 2
+	pkgver = 1030.6.3+ge5dfc56
+	pkgrel = 1
 	url = https://github.com/tpoechtrager/cctools-port
 	arch = x86_64
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = cctools
 	optdepends = tapi-git: for SDKs with .tdb stubs
 	provides = x86_64-apple-darwin-binutils
 	conflicts = x86_64-apple-darwin-binutils
-	source = git+https://github.com/tpoechtrager/cctools-port.git#commit=eea1c9ee2a3a386d96898b39feaa62a58a33f82a
+	source = git+https://github.com/tpoechtrager/cctools-port.git#commit=e5dfc5633cb9060a94d16b8d78a01eb0b3620021
 	md5sums = SKIP
 
 pkgname = cctools

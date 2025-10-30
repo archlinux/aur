@@ -1,15 +1,15 @@
-# Maintainer: kazzakali <bradyhickey at outlookdot com>
+# Maintainer: lekker <bradyhickey at outlookdot com>
 # Contributor: Michal Wojdyla
 # Contributor: Schala
 
-_cctools_ver=1024.3
-_ld64_ver=955.13
-_commit=eea1c9ee2a3a386d96898b39feaa62a58a33f82a
+_cctools_ver=1030.6.3
+_ld64_ver=956.6
+_commit=e5dfc5633cb9060a94d16b8d78a01eb0b3620021
 _pkgrev=1
 pkgname=cctools
 pkgdesc="Apple's cross-compiling toolchain ported to Linux"
 pkgver=${_cctools_ver}+g${_commit:0:7}
-pkgrel=2
+pkgrel=1
 arch=(x86_64 i686)
 url="https://github.com/tpoechtrager/cctools-port"
 license=("APSL-2.0")
