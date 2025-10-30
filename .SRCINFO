@@ -1,7 +1,7 @@
 pkgbase = codetantra-sea
 	pkgdesc = Platform for online teaching.
-	pkgver = 4.0.0
-	pkgrel = 2
+	pkgver = 4.1.0
+	pkgrel = 1
 	url = https://www.codetantra.com
 	arch = x86_64
 	depends = alsa-lib
@@ -11,9 +11,9 @@ pkgbase = codetantra-sea
 	depends = gtk3
 	options = !strip
 	options = !debug
-	source = https://github.com/ct-code/sea/releases/download/v4.0.0/codetantra-sea_4.0.0_amd64.deb
+	source = https://github.com/ct-code/sea/releases/download/v4.1.0/codetantra-sea_4.1.0_amd64.deb
 	source = sea.sh
-	sha256sums = 3d7fee503f980e5cf16039ddb7ecc3ae9d2b14f8cd106305939950ed0b36a5e9
+	sha256sums = d05d82471cbb2a64aa1b1cf54e3148307d7e3690c32c3238b14a3816a6351107
 	sha256sums = 1b1da4bc2ba74572ca909bf48fd635e0113ca410a678210c0b2ce59b61267810
 
 pkgname = codetantra-sea
