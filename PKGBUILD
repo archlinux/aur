@@ -1,7 +1,7 @@
 # Maintainer: Adam Cihelka <haziness_droop794@slmail.me>
 
 pkgname=gowatch
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A simple terminal stopwatch, written in Go"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=()
 makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/buxxket/gowatch/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ff20884c6e4c9a5413b71c9902ae4ea1f5df256b71545ee7ac3fca0fec66163b')
+sha256sums=('d870cd9dedfeb35f4471be4112945ffe618f8cdf547d9ea4ab7c3e462f508be9')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
