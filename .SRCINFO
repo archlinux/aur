@@ -1,6 +1,6 @@
 pkgbase = lib32-mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 25.3.0_devel.211812.0fe652971e9.d41d8cd
+	pkgver = 26.0.0_devel.214240.b2badb2b241.d41d8cd
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
@@ -53,12 +53,14 @@ pkgbase = lib32-mesa-git
 	provides = lib32-mesa-libgl
 	provides = lib32-opengl-driver
 	provides = lib32-vulkan-driver
+	provides = lib32-vulkan-mesa-device-select
 	conflicts = lib32-mesa
 	conflicts = lib32-vulkan-intel
 	conflicts = lib32-vulkan-radeon
 	conflicts = lib32-vulkan-mesa-layers
 	conflicts = lib32-libva-mesa-driver
 	conflicts = lib32-mesa-libgl
+	conflicts = lib32-vulkan-mesa-device-select
 	source = mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main
 	source = LICENSE
 	source = llvm32.native
