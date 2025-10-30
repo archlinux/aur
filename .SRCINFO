@@ -1,13 +1,13 @@
 pkgbase = system-bridge-git
 	pkgdesc = A bridge for your systems (git version)
-	pkgver = 5.1.4.r5227.g797707a
+	pkgver = 5.1.5.r5228.g79740f1
 	pkgrel = 1
 	url = https://github.com/timmo001/system-bridge
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
 	makedepends = go
-	makedepends = bun-bin
+	makedepends = pnpm
 	depends = libx11
 	depends = libxtst
 	depends = libxkbcommon
