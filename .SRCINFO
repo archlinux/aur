@@ -1,0 +1,18 @@
+pkgbase = nerd-patcher
+	pkgdesc = The official patching script for Nerd Fonts
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://github.com/ryanoasis/nerd-fonts
+	arch = any
+	license = MIT
+	makedepends = unzip
+	depends = fontforge
+	depends = python
+	depends = argparse
+	conflicts = font-patcher
+	source = nerd-patcher-3.4.0.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FontPatcher.zip
+	source = nerd-patcher.sh
+	sha256sums = a8f11e511ed7c69e96680858c06b50a643ea7752e26d5cd13dd5e5cc53ab1760
+	sha256sums = e2da19f1ff1fbd494ed9f46502d74e356a75243d8ecaa2dd5141a132ad5f4f61
+
+pkgname = nerd-patcher

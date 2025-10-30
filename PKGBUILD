@@ -1,0 +1,25 @@
+# Maintainer: lekker <bradyhickey at outlookdotcom>
+
+pkgname=nerd-patcher
+pkgver=3.4.0
+pkgrel=1
+pkgdesc="The official patching script for Nerd Fonts"
+arch=(any)
+url="https://github.com/ryanoasis/nerd-fonts"
+license=('MIT')
+depends=('fontforge' 'python' 'argparse')
+conflicts=('font-patcher')
+makedepends=('unzip')
+source=("${pkgname}-${pkgver}.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v${pkgver}/FontPatcher.zip"
+'nerd-patcher.sh')
+sha256sums=('a8f11e511ed7c69e96680858c06b50a643ea7752e26d5cd13dd5e5cc53ab1760'
+            'e2da19f1ff1fbd494ed9f46502d74e356a75243d8ecaa2dd5141a132ad5f4f61')
+
+package() {
+    install -Dm755 nerd-patcher.sh "$pkgdir/usr/bin/nerd-patcher"
+    mkdir -p "$pkgdir/usr/share/nerd-patcher"
+    mv * "$pkgdir/usr/share/nerd-patcher/"
+    rm "$pkgdir/usr/share/nerd-patcher/nerd-patcher.sh"
+    rm "$pkgdir/usr/share/nerd-patcher/nerd-patcher-$pkgver.zip"
+    rm "$srcdir/../nerd-patcher-3.4.0.zip"
+}
