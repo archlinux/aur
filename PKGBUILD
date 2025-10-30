@@ -34,8 +34,4 @@ package() {
 
   # delete broken symlinks
   find "$pkgdir" -xtype l -delete
-
-  # hardlink duplicates, space savings is significant
-  # namcap complains, but there is no prohibition on archwiki
-  hardlink -c "$pkgdir"
 }
