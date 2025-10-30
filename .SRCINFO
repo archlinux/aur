@@ -1,7 +1,7 @@
 pkgbase = librm-git
 	pkgdesc = Offers FRITZ!Box related core functionality for Roger Router (GUI), Roger CLI (CLI) and Roger Rabbit (ncurses) interfaces.
 	pkgver = 2.3.4+2.r154.20250629.9dabfe1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.com/tabos/librm
 	arch = aarch64
 	arch = x86_64
@@ -12,31 +12,42 @@ pkgbase = librm-git
 	arch = armv7h
 	license = LGPL-2.1-only
 	makedepends = git
-	makedepends = gdk-pixbuf2
-	makedepends = gettext
-	makedepends = gtk-doc
-	makedepends = gssdp>=1.6
-	makedepends = gupnp>=1.6
 	makedepends = meson>=0.59.0
 	makedepends = ninja
+	makedepends = gdk-pixbuf2
+	makedepends = gettext
+	makedepends = glib2
+	makedepends = gtk-doc
+	makedepends = gssdp>=1.6
+	makedepends = gssdp<1.7
+	makedepends = gupnp>=1.6
+	makedepends = json-glib>=1
+	makedepends = json-glib<2
+	makedepends = libcapi
+	makedepends = libsecret
+	makedepends = libsndfile
+	makedepends = libsoup3
+	makedepends = libtiff>=4
+	makedepends = libtiff<5
+	makedepends = libxml2
 	makedepends = speex
-	depends = gdk-pixbuf2
 	depends = gcc-libs
-	depends = glib2
 	depends = glibc
 	depends = gst-plugins-base-libs
 	depends = gstreamer
-	depends = json-glib
-	depends = libcapi
+	depends = libcapi20.so
+	depends = libgdk_pixbuf-2.0.so
+	depends = libgmodule-2.0.so
 	depends = libgssdp-1.6.so
 	depends = libgupnp-1.6.so
-	depends = libsecret
-	depends = libsndfile
-	depends = libsoup3
-	depends = libtiff
-	depends = libxml2
+	depends = libjson-glib-1.0.so
+	depends = libsecret-1.so
+	depends = libsndfile.so
+	depends = libsoup-3.0.so
+	depends = libtiff.so
+	depends = libxml2.so
 	depends = spandsp
-	depends = speex
+	depends = libspeex.so
 	optdepends = dconf: For provided glib schemas.
 	provides = librm=2.3.4+2.r154.20250629.9dabfe1
 	provides = librm.so
@@ -46,6 +57,8 @@ pkgbase = librm-git
 	conflicts = librm-doc
 	options = !emptydirs
 	source = librm::git+https://gitlab.com/tabos/librm.git
+	source = remove-old-gssdp-gupnp.patch::https://gitlab.com/-/project/8677787/uploads/1e5d9c6728e5426c57807bd69540617d/remove-old-gssdp-gupnp.patch
 	sha256sums = SKIP
+	sha256sums = a977c492850b1440ece7db51dd5ef356b49eaba3d2be3c4170812ed5a5ac3bd9
 
 pkgname = librm-git
