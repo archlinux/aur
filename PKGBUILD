@@ -1,8 +1,8 @@
 # Maintainer: osoite <osoite@firemail.cc>
 pkgname=eyerest
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
-pkgdesc="Script to remind your eyes to have a little break from the screen."
+pkgdesc="Remind your eyes via libnotify to have a little break from the screen."
 arch=('any')
 url="https://git.sr.ht/~syntax/eyerest"
 license=('GPL3')
@@ -13,8 +13,8 @@ install=eyerest.install
 
 package() {
     cd "$srcdir/$pkgname"
-    install -Dm755 "bin/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 "etc/conf" "$pkgdir/etc/$pkgname/conf"
-    install -Dm644 "etc/messages" "$pkgdir/etc/$pkgname/messages"
+    install -Dm755 "usr/bin/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 "etc/eyerest/config.ini" "$pkgdir/etc/$pkgname/config.ini"
+    install -Dm644 "etc/eyerest/messages.txt" "$pkgdir/etc/$pkgname/messages.txt"
 }
 

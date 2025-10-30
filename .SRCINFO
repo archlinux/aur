@@ -1,6 +1,6 @@
 pkgbase = eyerest
-	pkgdesc = Script to remind your eyes to have a little break from the screen.
-	pkgver = 0.0.4
+	pkgdesc = Remind your eyes via libnotify to have a little break from the screen.
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://git.sr.ht/~syntax/eyerest
 	install = eyerest.install
