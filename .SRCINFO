@@ -1,6 +1,6 @@
 pkgbase = r-biocstyle
 	pkgdesc = Standard styles for vignettes and other Bioconductor documents
-	pkgver = 2.36.0
+	pkgver = 2.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BiocStyle
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-biocstyle
 	optdepends = r-biocgenerics
 	optdepends = r-htmltools
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocStyle_2.36.0.tar.gz
-	sha256sums = d4ba63f39b30785a6840f6e71dd8467822a8bcd50392b21f8bcfa015b33528e0
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocStyle_2.38.0.tar.gz
+	sha256sums = a884cf0727e6e921c774ac883e247946c5b4f22e6f0f759ec69a8636dc9b2720
 
 pkgname = r-biocstyle
