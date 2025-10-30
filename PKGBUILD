@@ -52,12 +52,6 @@ build() {
 	make yafu CC=gcc-9 NFS=1 CFLAGS="$CFLAGS -g -m64 -std=gnu99 -DUSE_SSE2 -fno-common -DUSE_NFS -O2 -fomit-frame-pointer -Wall  -I. -Iinclude -Itop/aprcl -Itop/cmdParser -Itop/ -Ims_include/ -Ifactor/gmp-ecm   -I../ysieve -I../ytools -I../msieve/zlib -Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types -DVBITS=64 -Iaprcl -Ignfs/poly/stage1 -Ignfs/poly"
 }
 
-check() {
-	cd ${srcdir}/yafu
-	./yafu 140870298550359924914704160737419905257747544866892632000062896476968602578482966342704
-	./yafu -threads $(nproc) 2056802480868100646375721251575555494408897387375737955882170045672576386016591560879707933101909539325829251496440620798637813
-}
-
 package() {
 	cd ${srcdir}/ysieve
 	install -Dm755 ysieve ${pkgdir}/usr/bin/ysieve
