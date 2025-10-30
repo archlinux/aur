@@ -5,6 +5,8 @@ pkgbase = ollama-bin
 	url = https://github.com/ollama/ollama
 	arch = x86_64
 	license = MIT
+	depends = glibc
+	depends = gcc-libs
 	optdepends = ollama-cuda: NVIDIA GPU Support
 	provides = ollama
 	conflicts = ollama
@@ -28,12 +30,16 @@ pkgname = ollama-bin
 
 pkgname = ollama-cuda12-bin
 	pkgdesc = Create, run and share large language models (LLMs) with CUDA 12
+	depends = glibc
+	depends = gcc-libs
 	depends = ollama-bin
 	provides = ollama-cuda
 	conflicts = ollama-cuda
 
 pkgname = ollama-cuda13-bin
 	pkgdesc = Create, run and share large language models (LLMs) with CUDA 13
+	depends = glibc
+	depends = gcc-libs
 	depends = ollama-bin
 	provides = ollama-cuda
 	conflicts = ollama-cuda

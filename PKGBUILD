@@ -13,6 +13,7 @@ license=('MIT')
 
 provides=("ollama")
 conflicts=("ollama")
+depends=("glibc" "gcc-libs")
 optdepends=("ollama-cuda: NVIDIA GPU Support")
 
 backup=('etc/ollama.conf')
