@@ -1,6 +1,6 @@
 pkgbase = git-withme
 	pkgdesc = Encrypted, peer-to-peer Git for two+ people
-	pkgver = 25.10.0
+	pkgver = 25.10.1
 	pkgrel = 1
 	url = https://pypi.org/project/git-withme
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = git-withme
 	depends = python-click
 	depends = python-humanize
 	depends = python-rich
-	source = https://files.pythonhosted.org/packages/source/g/git-withme/git_withme-25.10.0.tar.gz
-	sha256sums = d5a178718658f8e69e364bcc6cecc22475698b98023de9f2a31d830b3642d3ec
+	source = https://files.pythonhosted.org/packages/source/g/git-withme/git_withme-25.10.1.tar.gz
+	sha256sums = 7e373523e96922dec6cd6f03eeb25b09d032c89f2913e6400abac02292bd3396
 
 pkgname = git-withme

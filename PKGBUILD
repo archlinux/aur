@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=git-withme
-pkgver=25.10.0
+pkgver=25.10.1
 pkgrel=1
 pkgdesc='Encrypted, peer-to-peer Git for two+ people'
 arch=(any)
@@ -19,7 +19,7 @@ makedepends=(python-{build,installer,wheel}
 checkdepends=(python-pytest)
 _archive="${pkgname/-/_}-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('d5a178718658f8e69e364bcc6cecc22475698b98023de9f2a31d830b3642d3ec')
+sha256sums=('7e373523e96922dec6cd6f03eeb25b09d032c89f2913e6400abac02292bd3396')
 
 build() {
 	cd "$_archive"
