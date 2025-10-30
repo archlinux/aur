@@ -1,7 +1,7 @@
 pkgbase = mbctl-git
 	pkgdesc = 一种基于systemd-nspawn实现的、支持网络隔离和现代网络栈的容器运行时方案，兼容OCI与Docker。
-	pkgver = 0.3
-	pkgrel = 3
+	pkgver = 0.3.0
+	pkgrel = 2
 	url = https://github.com/Neboer/Man8S-oci.git
 	arch = any
 	license = Apache-2.0

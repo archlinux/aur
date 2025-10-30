@@ -11,7 +11,7 @@ pkgver() {
     printf %s "${v//-/+}"
 }
 
-pkgrel=1
+pkgrel=2
 pkgdesc='一种基于systemd-nspawn实现的、支持网络隔离和现代网络栈的容器运行时方案，兼容OCI与Docker。'
 
 arch=('any')
