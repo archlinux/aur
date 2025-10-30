@@ -13,7 +13,7 @@
 pkgdesc='A fancy custom distribution of Valves Proton with various patches'
 pkgname=proton-ge-custom-rtsp-bin
 pkgver=GE_Proton10_20_rtsp19
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 changelog=changelog.md
@@ -34,9 +34,9 @@ depends=('python'
   # gstreamer support #
   'gst-plugins-bad-libs'
   'lib32-gst-plugins-base-libs'
-  'libjpeg6-turbo'
+  'libjpeg-turbo'
   'graphene'
-  'lib32-libjpeg6-turbo'
+  'lib32-libjpeg-turbo'
   'lib32-libgudev'
   'lib32-mpg123'
   'libsoup'
