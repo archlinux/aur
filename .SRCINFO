@@ -1,0 +1,12 @@
+pkgbase = amber-pm-store
+	pkgdesc = Get apps and run in Amber-PM container
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitee.com/amber-ce/amber-pm-store/
+	arch = x86_64
+	license = custom
+	depends = amber-package-manager
+	source = amber-pm-store-0.1.tar.gz::https://gitee.com/amber-ce/amber-pm-store/repository/archive/0.1.tar.gz
+	sha256sums = 3b487400db675c684ec6568ea50136f3bb3d98163e727ae8135f798c87930f4f
+
+pkgname = amber-pm-store
