@@ -15,7 +15,7 @@ sha256sums=('ae387dcf1952aca572516bdce4a47d04e9b411f5bf7add281247af7c874f3c3f')
 build() {
 	cd "${pkgname}-${pkgver}/"
 	./configure --prefix=/usr --kind=shared
-	CFLAGS+=" -fPIC" make
+	make
 }
 
 package() {
