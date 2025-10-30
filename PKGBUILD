@@ -11,7 +11,7 @@ source=(
   "https://github.com/marmotz-dev/opencode-ui/releases/download/v${pkgver}/opencode-ui-${pkgver}.AppImage"
 )
 sha256sums=(
-  '5f99fcd06656280108ae10d13375737417cbbf5bb24eadc4b99cde843c908791'
+  'dbab843227b1f53d3d5dcab3d82a69bc7cfaf050d554f9981633a652c85867dd'
 )
 
 package() {

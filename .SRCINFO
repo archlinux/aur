@@ -7,6 +7,6 @@ pkgbase = opencode-ui-bin
 	license = CC-BY-NC-SA-4.0
 	depends = opencode-bin
 	source = https://github.com/marmotz-dev/opencode-ui/releases/download/v0.2.0/opencode-ui-0.2.0.AppImage
-	sha256sums = 5f99fcd06656280108ae10d13375737417cbbf5bb24eadc4b99cde843c908791
+	sha256sums = dbab843227b1f53d3d5dcab3d82a69bc7cfaf050d554f9981633a652c85867dd
 
 pkgname = opencode-ui-bin
