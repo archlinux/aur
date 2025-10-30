@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TPP2D
-_pkgver=1.24.1
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.1
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='Detection of ligand-protein interactions from 2D thermal profiles (DLPTP)'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ea91eb2aaa32ab894cc0eb614788c7df48aab4efb50c9e569abe0e7e92f76560')
+sha256sums=('76410ccd932f2db2f1f6394ce01df5094621897ed1a1496d89d26ebbd7daea84')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
