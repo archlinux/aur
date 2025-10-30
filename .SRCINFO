@@ -1,0 +1,14 @@
+pkgbase = avx-turbo
+	pkgdesc = Test the non-AVX, AVX2 and AVX-512 speeds across various active core counts
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/travisdowns/avx-turbo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	source = git+https://github.com/travisdowns/avx-turbo.git#commit=9cfe8bf3089636b98d9a7eaa97b9fef268004a1b
+	sha256sums = a6ce9639fa99f54c0fbd96488038f4ab4423e2a2566944c4ee78536ac4cb6f77
+
+pkgname = avx-turbo
