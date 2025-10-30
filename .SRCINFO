@@ -1,6 +1,6 @@
 pkgbase = abacus-lts
 	pkgdesc = Atomic-orbital Based Ab-initio Computation at UStc
-	pkgver = 3.10.0
+	pkgver = 3.10.1
 	pkgrel = 1
 	url = https://github.com/deepmodeling/abacus-develop
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = abacus-lts
 	depends = scalapack
 	optdepends = elpa
 	optdepends = libxc
-	source = https://github.com/deepmodeling/abacus-develop/archive/refs/tags/LTSv3.10.0.tar.gz
-	sha256sums = 332ed08bb18489f50dcaacdcca8f6ee7ff68e485d49585a2eb9797547898021b
+	source = git+https://github.com/deepmodeling/abacus-develop.git
+	sha256sums = SKIP
 
 pkgname = abacus-lts
