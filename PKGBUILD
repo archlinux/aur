@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=normalize450K
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='Preprocessing of Illumina Infinium 450K data'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   r-quadprog
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('630fdec14840493e7cb6f43a4f304d63aaf5e64aff2f310a7f264efba10740bd')
+sha256sums=('f0db89595702ebf2f112d4cafe303b0a2202f48b592489ff149ed403cf2e7ca5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
