@@ -4,7 +4,7 @@
 _pkgname=uproot
 pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-docs")
-pkgver=5.6.7
+pkgver=5.6.8
 pkgrel=1
 pkgdesc="Minimalist CERN ROOT I/O in pure Python and Numpy"
 arch=(any)
@@ -43,7 +43,7 @@ checkdepends=(
     xrootd
 )
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha256sums=('8274d24b5977f57cde0e91df837f5e9ceb55ab9e4775cd8bbc90dcf00393264b')
+sha256sums=('a00038784cc906adb734ae2aff47ed6fa8c14e72ce159a64d19b1e2c71a9c3e2')
 
 build() {
     cd ${_pkgname}5-$pkgver
