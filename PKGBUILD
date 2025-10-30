@@ -17,10 +17,10 @@ depends=(
     'libpipewire'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgname%-bin}-v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}_linux.rpm"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgname%-bin}-v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/codexu/note-gen/${pkgname%-bin}-v${pkgver}/LICENSE"
 )
-sha256sums=('8078395e5eefd0cd58a3deee3b10366bd44acbc5db9bfc2a209613e48bb6224f'
+sha256sums=('6ea82aba1e49d1ee7d43e5aa2e8bc5067743b1ce4e9a935253bc8e8bafdf137b'
             'b55c98ae197475e699fccf634d9fff328b4552cc7143f9e7055f5bc71e55a949')
 prepare() {
     sed -i -e "
