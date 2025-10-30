@@ -1,6 +1,6 @@
 pkgbase = blender-bin
 	pkgdesc = A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)
-	pkgver = 4.5.3
+	pkgver = 4.5.4
 	pkgrel = 1
 	url = https://blender.org
 	arch = x86_64
@@ -60,9 +60,9 @@ pkgbase = blender-bin
 	optdepends = hip-runtime-amd: HIP renderer AMD support
 	provides = blender
 	conflicts = blender
-	source = https://download.blender.org/release/Blender4.5/blender-4.5.3-linux-x64.tar.xz
+	source = https://download.blender.org/release/Blender4.5/blender-4.5.4-linux-x64.tar.xz
 	source = x-blender.xml
-	sha256sums = 975c58fcb244273838534bba771e64ad87739216b0f9b39a888531a49a72d845
+	sha256sums = 2e6ef8e99fc36327270429ddc8e7bad2859dd878a5a137d2e0bf0f02f6792505
 	sha256sums = 230fc11e49d647215f4735117761d887756823ee1c8fab08987218fd037de75c
 
 pkgname = blender-bin
