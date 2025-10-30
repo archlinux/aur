@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=marray
-_pkgver=1.86.0
+_pkgver=1.88.0
 pkgname=r-${_pkgname,,}
-pkgver=1.86.0
+pkgver=1.88.0
 pkgrel=1
 pkgdesc='Exploratory analysis for two-color spotted microarray data'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=(
   r-tkwidgets
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5dda85e1abfaa3f09a92fe45d7f0e907fab57ea1b46ae54f4a83bd196126d2e7')
+sha256sums=('2807d9179a1f5904e25c0be5e856760f693feaf3dfad3ae64731388fba43fb07')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
