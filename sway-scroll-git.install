@@ -1,7 +1,17 @@
+upgrade_wlroots_message() {
+	cat <<END
+
+scroll no longer needs wlroots-git, you can remove the package from your system
+
+END
+}
+
 pre_install() {
+	upgrade_wlroots_message
 }
 
 pre_upgrade() {
+	upgrade_wlroots_message
 }
 
 post_install() {
