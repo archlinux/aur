@@ -1,7 +1,7 @@
 pkgbase = python-pyfftw
 	pkgdesc = A pythonic wrapper around FFTW
 	pkgver = 0.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyFFTW/pyFFTW
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = python-pyfftw
 	checkdepends = python-dask
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	makedepends = cython
 	depends = fftw
