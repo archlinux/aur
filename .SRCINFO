@@ -1,6 +1,6 @@
 pkgbase = r-rtpca
 	pkgdesc = Thermal proximity co-aggregation with R
-	pkgver = 1.18.1
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Rtpca
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-rtpca
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tpp
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rtpca_1.18.1.tar.gz
-	sha256sums = 3065a56f9afc90a64ccd15e2112d01c8a9faa135c21a03e2f99db34926461908
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rtpca_1.20.0.tar.gz
+	sha256sums = e3072d15e944987894da528bd2cb8752c3e44b5def97df96c1436d9649fde124
 
 pkgname = r-rtpca
