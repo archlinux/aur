@@ -1,19 +1,19 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-taskipy
 _pkgname="${pkgname#python-}"
-pkgver=1.10.3
+pkgver=1.14.1
 pkgrel=1
 pkgdesc="The complementary task runner for Python"
 arch=('any')
-url="https://github.com/illBeRoy/taskipy"
+url="https://github.com/taskipy/taskipy"
 license=('MIT')
 depends=('python-tomli' 'python-psutil' 'python-colorama')
 makedepends=('python-build' 'python-poetry' 'python-installer' 'python-wheel')
 # checkdepends=('python-parameterized' 'python-pytest')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/t/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('112beaf21e3d5569950b99162a1de003fa885fabee9e450757a6b874be914877')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/taskipy/taskipy/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('4d740ed123e56ec096139a9ae9532d0caa290a31e7dcf4a4f4d25118f308852d')
 
 build() {
 	cd "$_pkgname-$pkgver"
