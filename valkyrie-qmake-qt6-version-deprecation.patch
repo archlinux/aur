@@ -1,0 +1,12 @@
+diff -rauN a/vk_config.pri b/vk_config.pri
+--- a/vk_config.pri	2025-10-30 10:52:24.512928401 +0100
++++ b/vk_config.pri	2025-10-30 10:53:30.165165142 +0100
+@@ -35,7 +35,7 @@
+ greaterThan(QT_MAJOR_VERSION, 5) {
+     QT += core5compat
+ }
+-DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x000000
++DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x061000
+ 
+ ######################################################################
+ # Project configuration & compiler options

@@ -1,51 +1,52 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
-pkgname=valkyrie
-pkgver=2.0.0
+pkgname=valkyrie-qt6
+_pkgname=valkyrie
+pkgver=2.0.1.SVN
 pkgrel=1
 epoch=
-pkgdesc="a Qt4-based GUI for the Memcheck and Helgrind tools in Valgrind"
+pkgdesc="a GUI for the Memcheck and Helgrind tools in Valgrind (Qt5/Qt6 version)"
 arch=(x86_64)
 url="https://www.valgrind.org/downloads/guis.html"
 license=('GPL2')
 groups=()
 depends=(
 	'valgrind>=3.6.0'
-	'qt4'
+	'qt6-base'
 )
 makedepends=('gendesk')
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=()
-replaces=()
+conflicts=(valkyrie)
+replaces=(valkyrie)
 backup=()
 options=()
 install=
 changelog=
 source=(
-	"https://sourceware.org/pub/valgrind/$pkgname-$pkgver.tar.bz2"
-	"includes.patch"
+	git+https://github.com/barsnick/valkyrie#branch=valkyrie-qt5-qt6
+	"valkyrie-qmake-qt6-version-deprecation.patch"
 )
 noextract=()
-sha512sums=('435abb17ecad114c3e492fa193e508bad7ca61884bd09bf1bf0b8398c63151d33e571fea927b84f05bc2b647183af441da1550161a6f766db9e9a15d00cfc888'
-            'f1ff0ebdeb6b2e865e6442df629f3f67d146f178f6fd1ea03a74a511d58a661e11fe8d10c16935b8adbdfd01b0d70d23e9f42b6925b9660c89ba41ac5be3dd31')
+sha512sums=('SKIP'
+            'e6afd0422189b9c7fbaef8a2e9e568ce4d2aa6b26f1a4fb2efe7258389241bd7aac02b3166f199a91db388abc0c3627885f81aaef242bb2e65c74f2743622b0b')
 validpgpkeys=()
 
 prepare() {
-	cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir/includes.patch"
+	cd "$_pkgname"
+	patch -Np1 < "$srcdir/valkyrie-qmake-qt6-version-deprecation.patch"
 }
 
 build() {
-	cd "$pkgname-$pkgver"
-	qmake-qt4 PREFIX="/usr"
+	cd "$_pkgname"
+	qmake6 PREFIX="/usr"
 	make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$_pkgname"
 	make INSTALL_ROOT="$pkgdir" install
-	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc"
-	install -Dt "$pkgdir/usr/share/applications/" -m644 "$pkgname.desktop"
-	install -Dt "$pkgdir/usr/share/pixmaps/" -m644 "icons/$pkgname.xpm"
+	gendesk -f -n --pkgname "$_pkgname" --pkgdesc "$pkgdesc"
+	install -Dt "$pkgdir/usr/share/applications/" -m644 "$_pkgname.desktop"
+	install -Dt "$pkgdir/usr/share/pixmaps/" -m644 "icons/$_pkgname.xpm"
 }
