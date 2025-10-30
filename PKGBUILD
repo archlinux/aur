@@ -4,13 +4,13 @@ _pkgname=torzu
 pkgname=torzu
 pkgver=2025.04.16
 _pkgver=2025-04-16
-pkgrel=2
+pkgrel=3
 pkgdesc="Torzu is a fork of yuzu, the world's most popular, open-source, Nintendo Switch emulator. It is written in C++ with portability in mind."
 arch=(x86_64)
 url=https://notabug.org/litucks/torzu
 license=(GPL-3.0-or-later)
-depends=('brotli' 'enet' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'lz4' 'qt5-base' 'qt5-multimedia' 'qt5-webengine' 'sdl2' 'zlib' 'zydis' 'boost-libs' 'fmt' 'ffmpeg4.4' 'spirv-tools' 'zstd' 'libva' 'openssl' 'libusb' 'opus' 'speexdsp')
-makedepends=('git' 'cmake' 'ninja' 'boost' 'catch2' 'llvm-libs' 'llvm' 'spirv-headers' 'nlohmann-json' 'doxygen' 'vulkan-headers')
+depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'qt5-base' 'qt5-multimedia' 'qt5-webengine' 'sdl2' 'zydis' 'ffmpeg4.4' 'zstd' 'libva' 'openssl' 'libusb' 'speexdsp')
+makedepends=('git' 'cmake' 'ninja' 'catch2' 'llvm-libs' 'llvm' 'spirv-headers' 'nlohmann-json' 'doxygen' 'vulkan-headers')
 optdepends=('gamemode: gamemode support')
 options=(!debug)
 source=(git+https://notabug.org/litucks/torzu#tag=$_pkgver
@@ -90,6 +90,7 @@ build() {
     -DYUZU_USE_BUNDLED_VCPKG=OFF \
     -DYUZU_USE_QT_WEB_ENGINE=ON \
     -DYUZU_CHECK_SUBMODULES=OFF \
+    -DYUZU_USE_CPM=ON \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_BUILD_TYPE=None \
     -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
