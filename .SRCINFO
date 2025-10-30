@@ -1,6 +1,6 @@
 pkgbase = linglong-pica-git
 	pkgdesc = deb package to Linglong package tool.
-	pkgver = 1.2.5.r0.g1a7be60
+	pkgver = 1.2.6.r3.g65a2ede
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/linglong-pica
 	arch = x86_64

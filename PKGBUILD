@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linglong-pica-git
-pkgver=1.2.5.r0.g1a7be60
+pkgver=1.2.6.r3.g65a2ede
 pkgrel=1
 pkgdesc='deb package to Linglong package tool.'
 arch=($CARCH)
@@ -53,8 +53,9 @@ build() {
 
   export GO111MODULE=on
   export GOPROXY=https://goproxy.cn,direct
-  make build
-
+  
+  sed -i 's|${PREFIX}/libexec|${PREFIX}/lib|g' Makefile
+   make build
 }
 
 # check() {
