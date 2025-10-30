@@ -1,7 +1,7 @@
 # Maintainer: dawsers <dawser at gmx dot com>
 pkgname=sway-scroll-git
 pkgver=1.12.r7546.c33803e
-pkgrel=3
+pkgrel=4
 pkgdesc='Fork of the sway Wayland compositor with a scrolling layout like PaperWM or niri (git development version)'
 arch=('x86_64')
 url="https://github.com/dawsers/scroll"
@@ -19,9 +19,21 @@ depends=(
 	"pcre2"
 	"pixman"
 	"wayland"
-	"wlroots-git"
 	"xcb-util-wm"
     "lua"
+    "glibc"
+	"libliftoff"
+	"libglvnd"
+    "lcms2"
+    "systemd-libs"
+    "opengl-driver"
+    "xcb-util-errors"
+    "xcb-util-renderutil"
+    "xcb-util-wm"
+    "seatd"
+    "glslang"
+    "vulkan-icd-loader"
+    "libdisplay-info"
 )
 makedepends=(
 	"git"
@@ -29,6 +41,9 @@ makedepends=(
 	"meson"
 	"scdoc"
 	"wayland-protocols"
+    "vulkan-headers"
+    "xorgproto"
+    "xorg-wayland"
 )
 optdepends=(
 	'wmenu: Application launcher used in default configuration'
@@ -39,6 +54,7 @@ optdepends=(
 	'swaylock: Screen locker'
 	'xdg-desktop-portal-gtk: Portal used for default file picking'
 	'xdg-desktop-portal-wlr: Portal used for screen sharing'
+	'xorg-wayland: Enable X11 support'
 )
 provides=("sway-scroll-git" "wayland-compositor")
 conflicts=("sway-scroll-stable")
