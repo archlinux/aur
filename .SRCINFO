@@ -1,6 +1,6 @@
 pkgbase = r-geneoverlap
 	pkgdesc = Test and visualize gene overlaps
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GeneOverlap
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-geneoverlap
 	optdepends = r-biocgenerics
 	optdepends = r-biocstyle
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeneOverlap_1.44.0.tar.gz
-	sha256sums = d70e2b2c390c52cb3cc87c6d8829db72aa3de4fd6d075f913ecb66fe19406339
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeneOverlap_1.46.0.tar.gz
+	sha256sums = 5b71b34a316bd25b4c03fc796c496cd1f789f8c134cbf98b7dae6eae0334ce17
 
 pkgname = r-geneoverlap
