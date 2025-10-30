@@ -10,7 +10,7 @@
 _base=petsc
 pkgname=${_base}-complex
 pkgver=3.24.1
-pkgrel=1
+pkgrel=2
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -23,7 +23,7 @@ options=(staticlibs)
 conflicts=(${_base})
 provides=("${_base}=${pkgver}")
 depends=(hdf5-openmpi fftw-openmpi gsl lapack libjpeg-turbo libyaml netcdf-openmpi
-  python-numpy python-mpi4py superlu suitesparse zlib)
+  python-numpy python-mpi4py pastix scotch superlu suitesparse zfp zlib hwloc)
 makedepends=(cmake cython gcc gcc-fortran python-setuptools)
 # checkdepends=()
 optdepends=('hypre: support for the hypre sparse system solver'
@@ -31,9 +31,7 @@ optdepends=('hypre: support for the hypre sparse system solver'
   'metis: support for metis graph partitioning library'
   'mumps: support for the mumps sparse solver'
   'parmetis: support for parmetis parallel graph partitioning library'
-  'pastix: support for the pastix solver'
   'scalapack: support for ScaLAPACK'
-  'scotch: support for Scotch'
   'superlu_dist: support for the superlu_dist sparse solver'
   'triangle: support for the two-dimensional quality mesh generator and Delaunay triangulator'
   'valgrind: support for valgrind to help find memory-management problems in programs'
@@ -42,7 +40,7 @@ install=${_base}.install
 source=(https://web.cels.anl.gov/projects/${_base}/download/release-snapshots/${_base}-lite-${pkgver}.tar.gz
   test_optdepends.sh)
 sha512sums=('c6bc69f85e5965f5492eb9a66e045967b6ba04bb894778e0c07f65adb516b78f0cda3754ee012b770f8ab0677b247d72cd67eb1e2952d2bbc89568b13e16763b'
-            '6babb4f04fe8a503743cd0876cf75d8bcf2ebb1cfd2d89bcf10109721335b19f8b1b6ccb27cc8b85ea21597c2f1edd8f30824be614072a6498a6a92e39632468')
+            'ecffd8038523be647d730d4148fc2edf68a7ac2681433ff1d8377ad65fc871c19b4de78e09796e3968d7589c506dd436c16a52927f8503bd6a44604c45ff30ce')
 
 _install_dir=/opt/${_base}/${_config}
 _petsc_arch=arch-${_config}
@@ -58,10 +56,10 @@ build() {
   CONFOPTS="--with-shared-libraries=1 \
             --with-petsc4py=1 \
             --with-mpi-f90module-visibility=0 \
-            --with-bison=0 \
+            --with-bison=1 \
             --with-cmake=0 \
             --with-mpi-dir=/usr \
-            --with-zfp=0 \
+            --with-zfp=1 \
             --with-netcdf=1 \
             --with-libjpeg=1 \
             --with-yaml=1 \
@@ -71,6 +69,9 @@ build() {
             --with-superlu-lib=-lsuperlu --with-superlu-include=/usr/include/superlu \
             --with-suitesparse=1 \
             --with-hdf5=1 --with-hdf5-fortran-bindings=1 \
+            --with-hwloc=1 \
+            --with-pastix=1 \
+            --with-ptscotch=1 --with-bison=1 --with-ptscotch-lib=[libesmumps.so,libptscotch.so,libptscotcherr.so,libscotch.so,libscotcherr.so] --with-ptscotch-include=/usr/include \
             --with-scalar-type=complex \
             $(sh ${srcdir}/test_optdepends.sh)"
 
