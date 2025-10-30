@@ -1,6 +1,6 @@
 pkgbase = r-gwastools
 	pkgdesc = Tools for Genome Wide Association Studies
-	pkgver = 1.54.0
+	pkgver = 1.56.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GWASTools
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = r-gwastools
 	optdepends = r-snprelate
 	optdepends = r-snpstats
 	optdepends = r-variantannotation
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GWASTools_1.54.0.tar.gz
-	sha256sums = 33c8b1ad72175ef146880982e28c5d0b4c3f4156a468f19fa8618946957a522c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GWASTools_1.56.0.tar.gz
+	sha256sums = f370b9d6aa63a8161334901b040c36e94ec04a8e27487207af07ca1519137b52
 
 pkgname = r-gwastools
