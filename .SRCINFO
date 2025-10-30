@@ -1,6 +1,6 @@
 pkgbase = r-clusterjudge
 	pkgdesc = Judging Quality of Clustering Methods using Mutual Information
-	pkgver = 1.30.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ClusterJudge
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-clusterjudge
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-yeastexpdata
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ClusterJudge_1.30.0.tar.gz
-	sha256sums = 6b1126bbc0a54e7b51efd09f6ef1f8c2a15792d82eff1d185518b25184db14c3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ClusterJudge_1.32.0.tar.gz
+	sha256sums = 1fd622fb9c69dad2eef76e27759aec8611d06a3cf6eea7fe882ec33632a1cb03
 
 pkgname = r-clusterjudge
