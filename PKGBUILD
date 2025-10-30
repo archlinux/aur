@@ -1,5 +1,6 @@
-# Maintainer: username227
-# Maintainer: ejedev <evan@ejedev.com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: username227
+# Contributor: ejedev <evan@ejedev.com>
 # Contributor: Aloxaf <aloxafx@gmail.com>
 
 _name=semgrep
