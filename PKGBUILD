@@ -1,7 +1,7 @@
 # Maintainer: Coraline Shuryn <coraline.shuryn@gmail.com>
 pkgname=gemini-cli-git
 _pkgname=gemini-cli
-pkgver=0.1.12.r397.gc184ec322
+pkgver=0.11.0.r0.g92f5355d8
 pkgrel=1
 pkgdesc="An open-source AI agent that brings the power of Gemini directly into your terminal (git version)"
 arch=('any')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags $(git rev-list --tags --max-count=1) | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
