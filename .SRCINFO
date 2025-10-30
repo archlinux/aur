@@ -1,10 +1,11 @@
 pkgbase = alipay-keytool
 	pkgdesc = 支付宝开放平台密钥工具
 	pkgver = 2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opendocs.alipay.com/open/02kipk?pathHash=3dce99f3
 	arch = x86_64
 	license = unknown
+	makedepends = imagemagick
 	depends = electron
 	depends = java-runtime
 	source = AlipayKeyTool-2.0.3.exe::https://mdn.alipayobjects.com/ind_developertool/afts/file/A*kxmIR56rP-UAAAAAAAAAAAAADlx-AQ?af_fileName=AlipayKeyTool-2.0.3.exe

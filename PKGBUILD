@@ -1,12 +1,13 @@
 # Maintainer: Bruceutut
 pkgname=alipay-keytool
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="支付宝开放平台密钥工具"
 arch=('x86_64')
 url="https://opendocs.alipay.com/open/02kipk?pathHash=3dce99f3"
 license=('unknown')
 depends=('electron' 'java-runtime')
+makedepends=('imagemagick')
 source=("AlipayKeyTool-$pkgver.exe::https://mdn.alipayobjects.com/ind_developertool/afts/file/A*kxmIR56rP-UAAAAAAAAAAAAADlx-AQ?af_fileName=AlipayKeyTool-$pkgver.exe")
 sha256sums=('bf7845513fc759110ba56617fa28abccc70833855ec540741571375f5889993c')
 
@@ -29,6 +30,13 @@ electron /opt/$pkgname/resources/app
 	mkdir -p "$pkgdir/usr/bin"
 	ln -s /opt/$pkgname/alipay-keytool "$pkgdir/usr/bin/alipay-keytool"
 
+	# generate icons
+	icon=/opt/$pkgname/resources/app/static/keyToolLogo.7d74dc81.png
+	for size in 16 32 48 64 128 256; do
+		mkdir -p "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps"
+		convert "$icon" -resize ${size}x "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/alipay-keytool.png"
+	done
+
 	# Desktop entry
 	mkdir -p "$pkgdir/usr/share/applications"
 	echo """[Desktop Entry]
@@ -37,7 +45,7 @@ Comment=Alipay open platform key tool
 Name[zh_CN]=支付宝开放平台密钥工具
 Comment[zh_CN]=支付宝开放平台密钥工具
 Exec=alipay-keytool %U
-Icon=/opt/$pkgname/resources/app/static/keyToolLogo.7d74dc81.png
+Icon=alipay-keytool
 Terminal=false
 Type=Application
 Categories=Development;
