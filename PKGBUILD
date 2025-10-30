@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FRGEpistasis
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.46.0
 pkgrel=1
 pkgdesc='Epistasis Analysis for Quantitative Traits by Functional Regression Model'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-fda
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('70daf82f50576b55328d49e66c3fdb315a1f41e73f2c2cf6f67767f1efa6c003')
+sha256sums=('818c2aa65b2eef01ad6a6e07499d89768c0dce0369f80a598a00ca0536f2f2a3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
