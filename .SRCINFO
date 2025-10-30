@@ -1,0 +1,18 @@
+pkgbase = nautilus-raw-thumbnails-git
+	pkgdesc = Preview RAW files in Nautilus (a.k.a. Gnome Files)
+	pkgver = r16.74dc75b
+	pkgrel = 1
+	url = https://github.com/emuskardin/nautilus-raw-thumbnails
+	install = nautilus-raw-thumbnails.install
+	arch = any
+	depends = nautilus
+	depends = bash
+	depends = exiv2
+	depends = imagemagick
+	depends = perl-image-exiftool
+	source = git+https://github.com/emuskardin/nautilus-raw-thumbnails.git
+	source = exiv2raw.thumbnailer.patch
+	b2sums = SKIP
+	b2sums = 03bfef5222e7b8cbcfb2dde81be42551f40873bc57ea2fbc00e88e31a25438163fcfde48c2970e0acf57ffbf3c0bc604e124a63e490658dbce77356aa32003f1
+
+pkgname = nautilus-raw-thumbnails-git

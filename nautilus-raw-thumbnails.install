@@ -1,0 +1,7 @@
+post_install() {
+cat << EOD
+WARNING: Raw file thumbnails might not appear right away in Nautilus.
+   - You may first restart Nautilus to apply the changes: nautilus -q
+   - If that doesn't work yet, you may also try clearing the thumbnail cache: rm -rf "~/.cache/thumbnails/*"
+EOD
+}

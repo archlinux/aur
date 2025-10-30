@@ -1,0 +1,9 @@
+--- exiv2raw.thumbnailer	2025-10-29 16:47:53.964031062 +0100
++++ exiv2raw.thumbnailer.patched	2025-10-30 11:29:37.860195279 +0100
+@@ -1,4 +1,4 @@
+ [Thumbnailer Entry]
+-TryExec=/usr/local/bin/exiv2-thumbnailer.sh
+-Exec=/usr/local/bin/exiv2-thumbnailer.sh %i %o
++TryExec=exiv2-thumbnailer.sh
++Exec=exiv2-thumbnailer.sh %i %o
+ MimeType=image/x-3fr;image/x-adobe-dng;image/x-arw;image/x-bay;image/x-canon-cr2;image/x-canon-cr3;image/x-canon-crw;image/x-cap;image/x-cr2;image/x-crw;image/x-dcr;image/x-dcraw;image/x-dcs;image/x-dng;image/x-drf;image/x-eip;image/x-erf;image/x-fff;image/x-fuji-raf;image/x-iiq;image/x-k25;image/x-kdc;image/x-mef;image/x-minolta-mrw;image/x-mos;image/x-mrw;image/x-nef;image/x-nikon-nef;image/x-nrw;image/x-olympus-orf;image/x-orf;image/x-panasonic-raw;image/x-pef;image/x-pentax-pef;image/x-ptx;image/x-pxn;image/x-r3d;image/x-raf;image/x-raw;image/x-rw2;image/x-rwl;image/x-rwz;image/x-sigma-x3f;image/x-sony-arw;image/x-sony-sr2;image/x-sony-srf;image/x-sr2;image/x-srf;image/x-x3f;image/x-panasonic-rw2;
