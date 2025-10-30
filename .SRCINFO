@@ -1,7 +1,7 @@
 pkgbase = caffeine-ng-git
 	pkgdesc = Status bar application able to temporarily inhibit the screensaver and sleep mode.
 	pkgver = 4.2.0.r45.g8318401
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/WhyNotHugo/caffeine-ng
 	arch = any
 	license = GPL-3.0-or-later
@@ -21,8 +21,8 @@ pkgbase = caffeine-ng-git
 	depends = libayatana-indicator
 	depends = xdg-utils
 	optdepends = xfconf: Optional configuration hook when using XFCE, not needed for other desktops
-	optdepends = libindicator-gtk3: Original now unmaintained library, kept as optdepends for backwards compatibility
-	optdepends = libappindicator-gtk3: Original now unmaintained library, kept as optdepends for backwards compatibility
+	optdepends = libindicator: Original now unmaintained library, kept as optdepends for backwards compatibility
+	optdepends = libappindicator: Original now unmaintained library, kept as optdepends for backwards compatibility
 	provides = caffeine
 	provides = caffeine-bzr
 	provides = caffeine-ng
@@ -32,6 +32,6 @@ pkgbase = caffeine-ng-git
 	conflicts = caffeine-ng
 	conflicts = caffeine-ng-regex
 	source = git+https://codeberg.org/WhyNotHugo/caffeine-ng.git
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = caffeine-ng-git
