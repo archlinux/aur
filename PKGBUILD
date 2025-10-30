@@ -1,14 +1,14 @@
 # Maintainer: Sylvester Keil <sylvester@keil.or.at>
 
 pkgname='tropy'
-pkgver='1.16.2'
-pkgrel=2
+pkgver='1.17.0'
+pkgrel=1
 pkgdesc='Explore your research photos'
 arch=('x86_64')
 url='https://tropy.org'
 license=('AGPL-3.0-or-later')
 depends=(
-  'electron34'
+  'electron38'
   'gcc-libs'
   'glib2'
   'glibc'
@@ -18,7 +18,6 @@ depends=(
   'xdg-utils')
 optdepends=(
   'libheif: for heif support'
-  'imagemagick: for loading loading images via imagemagick'
   'poppler-glib: for pdf support')
 makedepends=(
   'nodejs'
@@ -31,14 +30,14 @@ source=(
   'tropy.sh'
   "https://github.com/tropy/tropy/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('080928f5d2ca7e5e5db55e959f1dc62e15e2906fe2f5838b150d1814263b6fd0'
-            '03cad845625f6ae8e44cba1add522090212bf1c4607f51b234b375eda56054de')
+sha256sums=('034914456ca6e70ebd929ffd96cce2d7b84744d5eae2ce0467fa42ade71f7f92'
+            '3352ae1b4530da35e09a79c3da09f1fc7ccc4a3a8f390f28356e0612b78fec24')
 
 build() {
   cd "${srcdir}/tropy-${pkgver}"
   npm clean-install --no-progress 2&> /dev/null
-  npm run rebuild -- --force --global-libvips
-  npm run build
+  node scripts/rebuild.js --force --global-libvips
+  SHARP_FORCE_GLOBAL_LIBVIPS=true npm run build
 }
 
 package() {
