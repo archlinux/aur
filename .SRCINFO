@@ -1,11 +1,11 @@
 pkgbase = tinkerwell
 	pkgdesc = The code runner for PHP
-	pkgver = 5.4.1
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = https://tinkerwell.app
 	arch = x86_64
 	license = custom
-	source = https://download.tinkerwell.app/tinkerwell/Tinkerwell-5.4.1.AppImage
-	sha256sums = 5f8f0c3de081fa380d5108d4303ba639f488ab0ca70a548a36a9394345c72061
+	source = https://download.tinkerwell.app/tinkerwell/Tinkerwell-5.5.0.AppImage
+	sha256sums = e94026cc0dcf236f5ab1749d340b6c69d0c0f133aaf52630223a9f045eb325ad
 
 pkgname = tinkerwell
