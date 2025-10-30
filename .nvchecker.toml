@@ -1,0 +1,4 @@
+[nwg-launchers]
+source = "git"
+git = "https://github.com/nwg-piotr/nwg-launchers.git"
+prefix = "v"
