@@ -1,6 +1,6 @@
 pkgbase = r-dearseq
 	pkgdesc = Differential Expression Analysis for RNA-seq data through a robust variance component test
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/dearseq
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = r-dearseq
 	optdepends = r-s4vectors
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/dearseq_1.20.0.tar.gz
-	sha256sums = 82aa923118e9f953dbeb94d0959d564db22da7b46510335af450e39e1f6f462b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/dearseq_1.22.0.tar.gz
+	sha256sums = 9f479a66cb1d05628d6011a736cc3c75718755c8ecf31cf18ee0af71be8b4411
 
 pkgname = r-dearseq
