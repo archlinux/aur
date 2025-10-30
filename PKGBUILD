@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=gog-rail-route
-pkgver=2.3.22
+pkgver=2.3.23
 pkgrel=1
 pkgdesc='Design and automate your own railway network. GOG version.'
 _shortname="${pkgname#gog-}"
@@ -10,13 +10,8 @@ url="https://www.gog.com/en/game/${_shortname//-/_}"
 license=('LicenseRef-eula')
 depends=(
   'bash'
-  'cairo'
   'gcc-libs'
-  'gdk-pixbuf2'
-  'glib2'
   'glibc'
-  'gtk2'
-  'pango'
   'zlib'
 )
 makedepends=('execstack' 'lgogdownloader')
@@ -29,9 +24,9 @@ source=(
   "${_shortname}.bash"
 )
 
-sha512sums=('c266c33e915df8ea740e6e558107748d3c0b344ee169ea3ac632e76be4c0da15766c795d6581ce89772c81ac0db2bff40c22567496a11fd31dd77e488d25ce63'
+sha512sums=('d4875a18571f824619e9a480bc900cdcc48554524de6d5df205ccf7eba0f4a01ab5dda1ed24602709555240a13a411c8b5afbcee951cbe5af05273afafa36183'
             '2ca22352d18d7409cd68a47434d499c0f01fccff998ed890e893cad284eae2cc798d1c3fdb2a669642feb87fda5b5ac2f934b6afd59fec5b277b6e8f999c197b'
-            'aadace0dcf1f13359966cae76dde2b125187480501d2ac6d6569327ecece78f91f881bf74c207703a63477de86b7d537aa40b553d73e8d7aa79fef2e13376d8a')
+            '33368df35f53e8252a1a132008227a56372fbf84cbe66d46f62e6612f01b1d2ef8990a771ab4d5e866e5ead892e5b4da6f130243ec128025720e08329904f132')
 
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 PKGEXT=.pkg.tar
@@ -47,9 +42,8 @@ prepare() {
   find "${srcdir}"/data/noarch/game -name 'libfmod*.so' -exec \
     execstack -c '{}' +
 
-  # Remove unneeded 32-bit executable
-  # Fixes false alarm in rebuild-detector
-  rm -rfv "${srcdir}/data/noarch/support/yad/32"
+  # Remove unneeded executables
+  rm -rfv "${srcdir}/data/noarch/support/yad"
 }
 
 package() {
