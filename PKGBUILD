@@ -2,7 +2,7 @@
 # Contributor: Aki-nyan <aur@catgirl.link>
 
 pkgname=prjtrellis-git-pinned
-pkgver=1.5_alpha20250914
+pkgver=1.5_alpha20251027
 pkgrel=1
 epoch=1
 pkgdesc="Documenting the Lattice ECP5 bit-stream format."
@@ -24,7 +24,7 @@ conflicts=(
 )
 replaces=()
 source=(
-	"prjtrellis::git+https://github.com/YosysHQ/prjtrellis.git#commit=92345b77edf775fe5668700dd9931e19db2d36b0"
+	"prjtrellis::git+https://github.com/YosysHQ/prjtrellis.git#commit=73bd411731808d80ead650bbc9840d9e02911e9e"
 	"prjtrellis-db::git+https://github.com/YosysHQ/prjtrellis-db.git#commit=015e0330630d7c238c0e4f2cdd9c8157eb78c54a"
 )
 sha256sums=(
