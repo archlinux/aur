@@ -1,6 +1,6 @@
 pkgbase = r-igc
 	pkgdesc = An integrated analysis package of Gene expression and Copy number alteration
-	pkgver = 1.38.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/iGC
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-igc
 	optdepends = r-domc
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/iGC_1.38.0.tar.gz
-	sha256sums = 0308c0524a004f7f2b845574985294af88f7ab50f4878b95bce7c3a9f0e40d83
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/iGC_1.40.0.tar.gz
+	sha256sums = ac1b0285b29fe18b9ff341cffb125856ae589b100195390799f37aff3d26914a
 
 pkgname = r-igc
