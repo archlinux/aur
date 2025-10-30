@@ -1,7 +1,7 @@
 pkgbase = bertini-bin
 	pkgdesc = Homotopy continuation solver for systems of polynomial equations
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bertini.nd.edu
 	arch = x86_64
 	license = custom:Bertini license
@@ -19,15 +19,15 @@ pkgname = bertini-common-bin
 
 pkgname = bertini-serial-bin
 	pkgdesc = Homotopy continuation solver for systems of polynomial equations (serial)
-	depends = bertini-common-bin=1.7-1
+	depends = bertini-common-bin=1.7-2
 	depends = glibc
 	provides = bertini-bin=1.7
 	conflicts = bertini-serial
 
 pkgname = bertini-parallel-bin
 	pkgdesc = Homotopy continuation solver for systems of polynomial equations (parallel)
-	depends = bertini-common-bin=1.7-1
+	depends = bertini-common-bin=1.7-2
 	depends = glibc
-	depends = openmpi4
+	depends = openmpi
 	provides = bertini-bin=1.7
 	conflicts = bertini-parallel

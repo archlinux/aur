@@ -14,7 +14,7 @@ pkgname=(
   "${_pkgname[@]/%/"-bin"}"
 )
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Homotopy continuation solver for systems of polynomial equations"
 arch=('x86_64')
 url="https://bertini.nd.edu"
@@ -81,7 +81,7 @@ package_bertini-parallel-bin() {
   depends=(
     "${_pkgbase}-common-bin=${pkgver}-${pkgrel}"
     'glibc'
-    'openmpi4'
+    'openmpi'
   )
   provides=(
     # "${pkgname%-bin}=${pkgver}"
