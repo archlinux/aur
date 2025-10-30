@@ -1,0 +1,4 @@
+[netbird-ui]
+source = "git"
+git = "https://github.com/netbirdio/netbird.git"
+prefix = "v"

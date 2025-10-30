@@ -1,74 +1,62 @@
-# Maintainer: none
+# Maintainer:
 # Contributor: tarball <bootctl@gmail.com>
 # Contributor: Brody <archfan at brodix dot de>
 
-pkgname=netbird-ui
-pkgver=0.56.1
+_pkgname="netbird-ui"
+pkgname="$_pkgname"
+pkgver=0.59.11
 pkgrel=1
-pkgdesc='Official GUI for the Netbird client'
-url='https://netbird.io'
-arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
-license=(BSD-3-Clause)
+pkgdesc="GUI for the Netbird client"
+url="https://github.com/netbirdio/netbird"
+arch=('x86_64')
+license=('BSD-3-Clause')
 
 depends=(
-  at-spi2-core
-  ayatana-ido
-  cairo
-  gdk-pixbuf2
-  glib2
-  glibc
-  gtk3
-  harfbuzz
-  libayatana-appindicator
-  libayatana-indicator
-  libdbusmenu-glib
-  libglvnd
-  libx11
-  libxcursor
-  libxi
-  libxinerama
-  libxrandr
-  libxxf86vm
-  netbird
-  pango
-  zlib
+  'libglvnd'
+  'libx11'
+  'libxcursor'
+  'libxi'
+  'libxinerama'
+  'libxrandr'
 )
-makedepends=(go)
-
-source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v$pkgver.tar.gz"
+makedepends=(
+  'go'
 )
-sha256sums=('b236757234ed35545ac8b7adef617b32cecb5f54e9ae5a102cd0c2a05c67e239')
 
-prepare() {
-  cd "$srcdir/netbird-$pkgver"
-  mkdir -p build
-  go mod download -x
-}
+_pkgsrc="netbird-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
+sha256sums=('039bce1f40ac9623369eb482077591530c83799519e8bb5c348aa58176d76e19')
 
 build() {
-  export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
-  cd "$srcdir/netbird-$pkgver/client/ui"
+  export GOPATH="${srcdir}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -ldflags=-linkmode=external -trimpath -mod=readonly -modcacherw"
 
-  go build \
-    -ldflags "-s -w -linkmode=external -extldflags \"$LDFLAGS\"" \
-    -o ../../build/"$pkgname"
+  cd "$_pkgsrc/client/ui"
+  go build -o "build/$_pkgname"
 }
 
 package() {
-  cd "$srcdir/netbird-$pkgver"
+  install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 
-  install -Dm755 build/$pkgname \
-    "$pkgdir/usr/bin/$pkgname"
+  cd "$_pkgsrc/client/ui"
+  install -Dm755 build/$_pkgname -t "$pkgdir/usr/bin/"
 
-  install -Dm644 LICENSE \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 assets/netbird.png "$pkgdir/usr/share/pixmaps/netbird.png"
 
-  cd client/ui
-
-  install -Dm644 build/netbird.desktop \
-    "$pkgdir/usr/share/applications/netbird.desktop"
-
-  install -Dm644 assets/netbird.png \
-    "$pkgdir/usr/share/icons/hicolor/256x256/apps/netbird.png"
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
+[Desktop Entry]
+Name=Netbird
+Exec=$_pkgname
+Comment=$pkgdesc
+Icon=netbird
+Type=Application
+Terminal=false
+Categories=Utility;
+Keywords=netbird;
+END
 }
