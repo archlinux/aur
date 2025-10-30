@@ -4,7 +4,7 @@ _pkgname='Flashpoint Launcher'
 pkgver=14.0.3
 _electronversion=19
 _nodeversion=20
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop application used to browse, manage and play games from Flashpoint Archive"
 arch=('x86_64')
 url="http://bluemaxima.org/flashpoint/"
@@ -79,6 +79,6 @@ package() {
     cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/"* "${pkgdir}/usr/lib/${pkgname}"
     ln -sf "/usr/lib/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
