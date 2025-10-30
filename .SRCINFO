@@ -1,6 +1,6 @@
 pkgbase = r-switchbox
 	pkgdesc = Utilities to train and validate classifiers based on pair switching using the K-Top-Scoring-Pair (KTSP) algorithm
-	pkgver = 1.44.0
+	pkgver = 1.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/switchBox
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = r-switchbox
 	depends = r
 	depends = r-gplots
 	depends = r-proc
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/switchBox_1.44.0.tar.gz
-	sha256sums = eff19d60f45fb3187b69b60ceb3df588979599082c06e7bd2040f79639fb36f1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/switchBox_1.46.0.tar.gz
+	sha256sums = 6a49ea03484007c323e5a00414dc030744c40507f2e7c3af06a94bc609485ab5
 
 pkgname = r-switchbox
