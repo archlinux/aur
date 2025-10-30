@@ -1,0 +1,31 @@
+post_install() {
+  local target_user_home
+
+  # detect the invoking user's home
+  if [[ -n "$SUDO_USER" ]]; then
+    target_user_home=$(eval echo "~$SUDO_USER")
+  else
+    target_user_home="$HOME"
+  fi
+
+  local target="$target_user_home/.config/hypr-dock"
+  mkdir -p "$target"
+  cp -rn /usr/share/hypr-dock/configs/* "$target"/ 2>/dev/null || true
+  chown -R "$SUDO_USER":"$SUDO_USER" "$target" 2>/dev/null || true
+
+  echo ">>> hypr-dock configs installed to $target"
+}
+
+post_upgrade() {
+  echo ">>> hypr-dock upgraded."
+  echo ">>> Existing ~/.config/hypr-dock preserved."
+}
+
+pre_remove() {
+  echo ">>> Uninstalling hypr-dock..."
+}
+
+post_remove() {
+  echo ">>> hypr-dock removed."
+  echo ">>> User config in ~/.config/hypr-dock not deleted."
+}
