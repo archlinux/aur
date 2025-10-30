@@ -5,8 +5,9 @@
 # Maintainer: Harvey <harv at gmx dot de>
 
 pkgname=jameica-nightly
-pkgver=2.11.0
-pkgrel=5
+pkgver=2.13.0
+# Revision ändern wegen Updatescripts!
+pkgrel=1
 pkgdesc="Free Java application platform"
 arch=('x86_64')
 url="http://www.willuhn.de/products/jameica/"
