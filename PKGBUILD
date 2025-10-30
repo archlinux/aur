@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GAprediction
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Prediction of gestational age with Illumina HumanMethylation450 data'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('60c625623439bd7667a2e59f6826f3f87227b161487ab878676f93cdd5d32baa')
+sha256sums=('ca4e8807b971767264fe45fc7a8361c629a4644b76d813f0417e9e3ee7b8dd83')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
