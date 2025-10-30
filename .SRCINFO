@@ -1,15 +1,18 @@
 pkgbase = beautysh
 	pkgdesc = A Bash beautifier for the masses
-	pkgver = 6.2.1
+	pkgver = 6.3.3
 	pkgrel = 1
-	url = https://github.com/bemeurer/beautysh
+	url = https://github.com/lovesegfault/beautysh
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-pytest
+	makedepends = python-wheel
 	depends = python-colorama
-	depends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/b/beautysh/beautysh-6.2.1.tar.gz
-	source = setup.patch
-	sha256sums = 423e0c87cccf2af21cae9a75e04e0a42bc6ce28469c001ee8730242e10a45acd
-	sha256sums = SKIP
+	depends = python-editorconfig
+	source = https://github.com/lovesegfault/beautysh/releases/download/v6.3.3/beautysh-6.3.3.tar.gz
+	sha256sums = a86e1ea1bc42c9251eb2543403156356805b0983f29b4139b5cc27f270f963a7
 
 pkgname = beautysh

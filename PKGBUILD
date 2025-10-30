@@ -1,33 +1,62 @@
+#!/bin/bash -e
+#
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=beautysh
-pkgver=6.2.1
+pkgver=6.3.3
 pkgrel=1
 pkgdesc="A Bash beautifier for the masses"
-arch=('any')
-url='https://github.com/bemeurer/beautysh'
-license=('MIT')
+arch=(
+	any
+)
+url=https://github.com/lovesegfault/beautysh
+license=(
+	MIT
+)
 depends=(
-    python-colorama
-    python-setuptools
+	python-colorama
+	python-editorconfig
+)
+makedepends=(
+	python-build
+	python-hatchling
+	python-installer
+	python-pytest
+	python-wheel
 )
 source=(
-    "https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-    setup.patch
+	"${url}/releases/download/v${pkgver}/beautysh-${pkgver}.tar.gz"
 )
 sha256sums=(
-    423e0c87cccf2af21cae9a75e04e0a42bc6ce28469c001ee8730242e10a45acd
-    SKIP
+	a86e1ea1bc42c9251eb2543403156356805b0983f29b4139b5cc27f270f963a7
 )
 
-prepare() {
-    cd "${pkgname}-${pkgver}"
+: "${pkgname}"
+: "${pkgrel}"
+: "${pkgdesc}"
+: "${arch[@]}"
+: "${license[@]}"
+: "${depends[@]}"
+: "${makedepends[@]}"
+: "${source[@]}"
+: "${sha256sums[@]}"
 
-    patch < ../setup.patch
+build() {
+	cd "beautysh-${pkgver}"
+
+	python -m build --no-isolation --wheel
+}
+
+check() {
+	cd "beautysh-${pkgver}"
+
+	pytest
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+	: "${pkgdir:?}"
 
-    python setup.py install --root="${pkgdir}" --optimize=1
+	cd "beautysh-${pkgver}"
+
+	python -m installer --destdir "${pkgdir}" dist/beautysh-"${pkgver}"-*-none-any.whl
 }
