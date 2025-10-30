@@ -3,23 +3,23 @@
 
 pkgname=osrm-backend
 pkgver=6.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="High performance routing engine written in C++14 designed to run on OpenStreetMap data."
 arch=('x86_64')
 url="https://github.com/Project-OSRM/${pkgname}"
 license=('BSD')
 depends=(
-	'expat'
 	'boost-libs'
-	'lua'
-	'intel-tbb'
-	'libxml2'
-	'libzip'
 	'bzip2'
 	'doxygen'
+	'expat'
+	'intel-tbb'
 	'libc++'
-	'protozero'
 	'libosmium'
+	'libxml2'
+	'libzip'
+	'lua'
+	'protozero'
 )
 makedepends=(
 	'cmake'
@@ -43,6 +43,7 @@ build() {
 		# -S <path-to-source>          = Explicitly specify a source directory.
 		-S "${srcdir}/${pkgname}-${pkgver}"
 		-D CMAKE_BUILD_TYPE=RelWithDebInfo
+		# -D CMAKE_BUILD_TYPE=Release
 		-D CMAKE_INSTALL_PREFIX=/usr
 		-D CMAKE_INSTALL_LIBDIR=lib
 		-D BUILD_SHARED_LIBS=ON
