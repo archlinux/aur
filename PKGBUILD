@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=EBcoexpress
-_pkgver=1.52.0
+_pkgver=1.54.0
 pkgname=r-${_pkgname,,}
-pkgver=1.52.0
+pkgver=1.54.0
 pkgrel=1
 pkgdesc='EBcoexpress for Differential Co-Expression Analysis'
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=(
   r-igraph
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3ef3015259329a7a35224b163184127fd49a1d5e257fc0032ac9a8c291ce5228')
+sha256sums=('b04eea6d89c1d9f658772d328f6479271e89de49daac8d287737242dcbf15523')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
