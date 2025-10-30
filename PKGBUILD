@@ -9,7 +9,6 @@ url="https://github.com/ryanoasis/nerd-fonts"
 license=('MIT')
 depends=('fontforge' 'python' 'argparse')
 conflicts=('font-patcher')
-makedepends=('unzip')
 source=("${pkgname}-${pkgver}.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v${pkgver}/FontPatcher.zip"
 'nerd-patcher.sh')
 sha256sums=('a8f11e511ed7c69e96680858c06b50a643ea7752e26d5cd13dd5e5cc53ab1760'

@@ -5,7 +5,6 @@ pkgbase = nerd-patcher
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	license = MIT
-	makedepends = unzip
 	depends = fontforge
 	depends = python
 	depends = argparse
