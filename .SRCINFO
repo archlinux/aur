@@ -1,6 +1,6 @@
 pkgbase = r-progeny
 	pkgdesc = Pathway RespOnsive GENes for activity inference from gene expression
-	pkgver = 1.30.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/progeny
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-progeny
 	optdepends = r-singlecellexperiment
 	optdepends = r-testthat
 	optdepends = r-tibble
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/progeny_1.30.0.tar.gz
-	sha256sums = 4f4e7ccc4d4e2b0f1d7577bd4b6b2d67cbdbdb1cd6a23ab8b2c18a9e9a21b0f7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/progeny_1.32.0.tar.gz
+	sha256sums = 2443eed59b6e368ff42a9b43c5374671e34ca12a93f28b07b225ac33355f9142
 
 pkgname = r-progeny
