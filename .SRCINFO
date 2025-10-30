@@ -1,6 +1,6 @@
 pkgbase = r-geofastq
 	pkgdesc = Downloads ENA Fastqs With GEO Accessions
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GEOfastq
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-geofastq
 	optdepends = r-rmarkdown
 	optdepends = r-roxygen2
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GEOfastq_1.16.0.tar.gz
-	sha256sums = b9d10167f92eb7f0b7b8bc21a0df1b3c1953ac3868c54b50757add5f7ff872f8
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GEOfastq_1.18.0.tar.gz
+	sha256sums = 187c362879314a79d7bdedcd51f78d776f81fc8888eeafacfb703bf78f9f4a8c
 
 pkgname = r-geofastq
