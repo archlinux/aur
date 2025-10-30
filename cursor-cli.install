@@ -1,0 +1,12 @@
+post_upgrade() {
+    cat << 'EOF'
+
+==> The AUR package will now block cursor-agent automatic updates.
+    Clean up old auto-update files from previous installations:
+
+  rm ~/.local/bin/cursor-agent
+  chmod +x ~/.local/share/cursor-agent/versions/
+  rm -r ~/.local/share/cursor-agent/versions/
+
+EOF
+}

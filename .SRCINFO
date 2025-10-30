@@ -4,6 +4,7 @@ pkgbase = cursor-cli
 	pkgrel = 1
 	epoch = 1
 	url = https://cursor.com
+	install = cursor-cli.install
 	arch = x86_64
 	arch = aarch64
 	license = LicenseRef-Cursor

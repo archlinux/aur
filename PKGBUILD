@@ -11,6 +11,7 @@ arch=('x86_64' 'aarch64')
 url="https://cursor.com"
 license=('LicenseRef-Cursor')
 depends=('gcc-libs' 'bash' 'glibc' 'nodejs' 'ripgrep')
+install=cursor-cli.install
 source=('Cursor-TOS')
 source_x86_64=("cursor-cli-${_upstream_ver}-x86_64.tar.gz::https://downloads.cursor.com/lab/${_upstream_ver}/linux/x64/agent-cli-package.tar.gz")
 source_aarch64=("cursor-cli-${_upstream_ver}-aarch64.tar.gz::https://downloads.cursor.com/lab/${_upstream_ver}/linux/arm64/agent-cli-package.tar.gz")
