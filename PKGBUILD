@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HIREewas
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Detection of cell-type-specific risk-CpG sites in epigenome-wide association studies'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1a6e05c4b7e989731ad370fe0619e03db1aaa3502b5266053b9454d7d3e0b280')
+sha256sums=('90deb7de00123148826cfb421fc3546031169969ea8e94551c46dac43d054397')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
