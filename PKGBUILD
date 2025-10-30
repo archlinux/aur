@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=REBET
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='The subREgion-based BurdEn Test (REBET)'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ed640a275c479a0ca3e9e9f26e84c6562244c6401731ef1b21d7a91ec7d6391b')
+sha256sums=('3f77319b161d4226317e90623015f3687f9e64b885cb99c62cfdd9bd31cc469f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
