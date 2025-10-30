@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=AffyRNADegradation
-_pkgver=1.54.0
+_pkgver=1.56.0
 pkgname=r-${_pkgname,,}
-pkgver=1.54.0
+pkgver=1.56.0
 pkgrel=1
 pkgdesc='Analyze and correct probe positional bias in microarray data due to RNA degradation'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-hgu133acdf
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0d4025179d3ac874fc0a23fc4145b11823d66eaba420c3f726a14d5fb9aa05eb')
+sha256sums=('c6e36fec3338ffcdecd9bc2b622e147b323f8b5b5a05931f633e51a123583a86')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
