@@ -1,0 +1,19 @@
+pkgbase = mkdocs-marimo
+	pkgdesc = A plugin to embed interactive marimo notebooks in your MkDocs documentation.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://marimo-team.github.io/mkdocs-marimo/
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-htmlmin2>=0.1.13
+	depends = marimo>=0.8.15
+	depends = mkdocs>=1.5.2
+	depends = python-pymdown-extensions>=10.7
+	options = !debug
+	source = https://files.pythonhosted.org/packages/source/m/mkdocs_marimo/mkdocs_marimo-0.2.1.tar.gz
+	sha256sums = 9e4cf8005b79856beb3e9db48e7c8fa7f94a5d00c05aa6877f44a173c0ec9bb0
+
+pkgname = mkdocs-marimo
