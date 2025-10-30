@@ -1,0 +1,27 @@
+post_install() {
+    echo "==> Enabling SPM update cache timer..."
+    systemctl enable --now spm_updates.timer 2>/dev/null || true
+    
+    echo
+    echo "==> SPM installed successfully!"
+    echo
+    echo "Run 'spm' to start the interactive menu"
+    echo "Run 'spm --help' for command-line options"
+    echo
+    echo "Timer status: systemctl status spm_updates.timer"
+}
+
+post_upgrade() {
+    systemctl daemon-reload 2>/dev/null || true
+    if systemctl is-enabled spm_updates.timer &>/dev/null; then
+        systemctl restart spm_updates.timer 2>/dev/null || true
+        echo "==> SPM upgraded and timer restarted"
+    else
+        echo "==> SPM upgraded (timer not enabled)"
+    fi
+}
+
+pre_remove() {
+    systemctl disable --now spm_updates.timer 2>/dev/null || true
+    echo "==> SPM timer disabled"
+}
