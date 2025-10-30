@@ -1,0 +1,5 @@
+[highs-bin]
+source = "github"
+github = "JuliaBinaryWrappers/HiGHSstatic_jll.jl"
+use_latest_release = true
+prefix = "HiGHSstatic-v"
