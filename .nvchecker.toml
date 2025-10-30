@@ -1,4 +1,4 @@
 [gog-cuphead]
 source = "jq"
 url = "https://www.gogdb.org/data/products/1963513391/product.json"
-filter = ".dl_installer | map(select(.os == \"windows\"))[0] | .version"
+filter = ".builds | map(select(.os == \"windows\")) | sort_by(.date_published)[-1].version"
