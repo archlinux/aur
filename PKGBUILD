@@ -1,7 +1,7 @@
 pkgname=vesc-tool
 pkgver=6.06
 _pkgver=6_06
-pkgrel=1
+pkgrel=2
 pkgdesc="VESC ESC graphical configuration tool"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="https://vesc-project.com/vesc_tool"
@@ -17,7 +17,7 @@ options=(!debug)
 
 build() {
   cd "${srcdir}/${pkgname}"
-  qmake-qt5 PREFIX=/usr LIBDIR=/usr/lib -config release "CONFIG += release_lin build_original exclude_fw"
+  qmake-qt5 PREFIX=/usr target.path=/usr/bin LIBDIR=/usr/lib INSTALLS+=target -config release "CONFIG += release_lin build_original exclude_fw"
   make
 }
 
