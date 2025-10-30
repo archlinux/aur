@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/Zeus-Deus/gazelle-tui"
 license=('MIT')
 depends=('python' 'python-textual' 'networkmanager' 'networkmanager-openvpn' 'wireguard-tools')
+optdepends=('python-tomli: Omarchy theme detection for Python < 3.11')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Zeus-Deus/gazelle-tui/archive/v$pkgver.tar.gz")
 sha256sums=('dde76d06ebe30afb11b7f1013279f86533667d119859eee28323d12acf3ffe00')
 

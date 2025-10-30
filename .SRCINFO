@@ -10,6 +10,7 @@ pkgbase = gazelle-tui
 	depends = networkmanager
 	depends = networkmanager-openvpn
 	depends = wireguard-tools
+	optdepends = python-tomli: Omarchy theme detection for Python < 3.11
 	source = gazelle-tui-1.7.2.tar.gz::https://github.com/Zeus-Deus/gazelle-tui/archive/v1.7.2.tar.gz
 	sha256sums = dde76d06ebe30afb11b7f1013279f86533667d119859eee28323d12acf3ffe00
 
