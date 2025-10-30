@@ -1,6 +1,6 @@
 pkgbase = r-htqpcr
 	pkgdesc = Automated analysis of high-throughput qPCR data
-	pkgver = 1.62.0
+	pkgver = 1.64.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/HTqPCR
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = r-htqpcr
 	depends = r-limma
 	depends = r-rcolorbrewer
 	optdepends = r-statmod
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/HTqPCR_1.62.0.tar.gz
-	sha256sums = cfbc8e3829fd4998a644df9a1bd26078fd8858ac6dd1391c4e1e48a9974f7eae
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/HTqPCR_1.64.0.tar.gz
+	sha256sums = 79d6092d24a296d91f60ca88757e9aa7158a6e0154acce8bbbb5e65f4c2ae2b8
 
 pkgname = r-htqpcr
