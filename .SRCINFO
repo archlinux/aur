@@ -3,6 +3,7 @@ pkgbase = wayscriber-bin
 	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://wayscriber.com
+	install = wayscriber-bin.install
 	arch = x86_64
 	license = MIT
 	depends = cairo

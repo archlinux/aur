@@ -6,6 +6,7 @@ pkgdesc='Screen annotation tool for Wayland compositors (prebuilt binaries)'
 arch=('x86_64')
 url='https://wayscriber.com'
 license=('MIT')
+install=wayscriber-bin.install
 depends=(
     'cairo'
     'wayland'
