@@ -1,6 +1,6 @@
 # Maintainer: Pol Rivero <aur at polrivero dot com>
 pkgname=pkgstate-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="The perfect companion your dotfiles repo: declaratively define your installed packages, systemd services, and user groups (binary release)"
 arch=('x86_64' 'aarch64')
@@ -16,10 +16,10 @@ optdepends=(
     'paru: To be able to install AUR packages'
 )
 
-source_x86_64=("$pkgname-$pkgver-linux-x86_64::https://github.com/pol-rivero/pkgstate/releases/download/0.1.1/pkgstate-linux-x86_64")
-sha256sums_x86_64=('35612cf7926d21a902fb02197c3b59a854e3043d8555d89e4f081da3141aff1a')
-source_aarch64=("$pkgname-$pkgver-linux-arm64::https://github.com/pol-rivero/pkgstate/releases/download/0.1.1/pkgstate-linux-arm64")
-sha256sums_aarch64=('f18527762d98b5390590c1f779311959ece9a5707d95587f65e6ce5c5a6eb1fe')
+source_x86_64=("$pkgname-$pkgver-linux-x86_64::https://github.com/pol-rivero/pkgstate/releases/download/0.1.2/pkgstate-linux-x86_64")
+sha256sums_x86_64=('6218c757ffcdf4c39b69967f7b441ca0f5fe22ac5087b65be8902027d4d789b7')
+source_aarch64=("$pkgname-$pkgver-linux-arm64::https://github.com/pol-rivero/pkgstate/releases/download/0.1.2/pkgstate-linux-arm64")
+sha256sums_aarch64=('ee17aa25a866626476edfce67dec91263289227ab95923258fc1e5c56a42b507')
 
 package() {
     # Install binary
