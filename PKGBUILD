@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CellMapper
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Predict genes expressed selectively in specific cell types'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-humanaffydata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8e9bc915015401a00d734eea60fc8620007c041026b9fbba360a40a5b1c1db21')
+sha256sums=('73a99a8056e59d0db5911ac9d0d1713b5221d6fbf79e90679031d8bc70ec3c6f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
