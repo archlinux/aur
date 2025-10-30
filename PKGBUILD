@@ -4,7 +4,7 @@
 # Contributor: mareex <marcus dot behrendt dot 86 at gmail dot com>
 
 pkgname=gnome-shell-extension-lockkeys
-pkgver=74
+pkgver=75
 pkgrel=1
 pkgdesc="Lock key state indicator for GNOME Shell."
 arch=('any')
@@ -13,8 +13,8 @@ license=('GPL-2.0-only')
 depends=('gnome-shell' 'hicolor-icon-theme')
 makedepends=('git')
 source=("$pkgname::git+$url.git#tag=$pkgver")
-sha256sums=('1bbd6729c7b3afee322b9be71e39c386155034f2726bbe4972b5282d2e76de08')
-sha512sums=('9ce5c1af3a9bb1fd0d8913196ff54ea403ae6fc021fa2844f394ce6c36f9b216bb9207a6172b7037831c358b4c1dc6cfe796eeee0ca2ca7cb7f74cf0449a978c')
+sha256sums=('dd91ad38be8e3a307f9e1eaf79bb0d4d08f7eb5b401ad5de191c5e1769c8895f')
+sha512sums=('0b222630ee763de02110487bebb1a40c7020afffb6ac911177c7bc9f3e68ed5585910c2e0be0de8add1d7d0179fa99d63b86daa2a3803fac476a1c8fbeac11bb')
 
 package() {
   local extension_dir="$srcdir/$pkgname/lockkeys@vaina.lt"
