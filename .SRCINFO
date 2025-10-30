@@ -1,12 +1,13 @@
 pkgbase = basedpyright-git
 	pkgdesc = Fork of pyright, a static type checker for Python, with various improvements and new features
-	pkgver = v1.22.0.r7.ge25e9a8e2
+	pkgver = v1.32.1.r23.gf88523c13
 	pkgrel = 1
 	url = https://github.com/DetachHead/basedpyright
 	arch = any
 	license = MIT
 	makedepends = npm
 	makedepends = python-installer
+	makedepends = uv
 	depends = nodejs
 	depends = python
 	provides = basedpyright

@@ -2,14 +2,14 @@
 # Contributor: Sainnhe Park <sainnhe@gmail.com>
 pkgname=basedpyright-git
 _pkgname=basedpyright
-pkgver=v1.22.0.r7.ge25e9a8e2
+pkgver=v1.32.1.r23.gf88523c13
 pkgrel=1
 pkgdesc="Fork of pyright, a static type checker for Python, with various improvements and new features"
 arch=('any')
 url="https://github.com/DetachHead/basedpyright"
 license=('MIT')
 depends=('nodejs' 'python')
-makedepends=('npm' 'python-installer')
+makedepends=('npm' 'python-installer' 'uv')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/DetachHead/basedpyright.git")
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  ./pw uv build
+  uv build
 }
 
 package() {
