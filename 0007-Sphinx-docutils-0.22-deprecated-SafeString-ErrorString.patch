@@ -1,0 +1,75 @@
+Simpler variant of patch at
+https://gitlab.archlinux.org/archlinux/packaging/packages/linux-lts/-/raw/main/0004-handle_the_obsolescensce_of_docutils.ErrorString.patch?ref_type=heads
+
+The cmake people have better replacements than the docutils people.
+Why change the code when I can just change the imports and python changes the code!
+
+diff -pNaru5 a/Documentation/sphinx/kernel_abi.py b/Documentation/sphinx/kernel_abi.py
+--- a/Documentation/sphinx/kernel_abi.py	2025-10-23 10:16:45.000000000 -0400
++++ b/Documentation/sphinx/kernel_abi.py	2025-10-30 12:42:10.749755633 -0400
+@@ -40,11 +40,12 @@ import re
+ import kernellog
+ 
+ from docutils import nodes, statemachine
+ from docutils.statemachine import ViewList
+ from docutils.parsers.rst import directives, Directive
+-from docutils.utils.error_reporting import ErrorString
++#from docutils.utils.error_reporting import ErrorString
++from docutils.io import error_string as ErrorString # https://gitlab.kitware.com/cmake/cmake/-/issues/24039
+ from sphinx.util.docutils import switch_source_input
+ 
+ __version__  = '1.0'
+ 
+ def setup(app):
+diff -pNaru5 a/Documentation/sphinx/kernel_feat.py b/Documentation/sphinx/kernel_feat.py
+--- a/Documentation/sphinx/kernel_feat.py	2025-10-23 10:16:45.000000000 -0400
++++ b/Documentation/sphinx/kernel_feat.py	2025-10-30 12:42:05.789759152 -0400
+@@ -38,11 +38,12 @@ import subprocess
+ import sys
+ 
+ from docutils import nodes, statemachine
+ from docutils.statemachine import ViewList
+ from docutils.parsers.rst import directives, Directive
+-from docutils.utils.error_reporting import ErrorString
++#from docutils.utils.error_reporting import ErrorString
++from docutils.io import error_string as ErrorString # https://gitlab.kitware.com/cmake/cmake/-/issues/24039
+ from sphinx.util.docutils import switch_source_input
+ 
+ __version__  = '1.0'
+ 
+ def setup(app):
+diff -pNaru5 a/Documentation/sphinx/kernel_include.py b/Documentation/sphinx/kernel_include.py
+--- a/Documentation/sphinx/kernel_include.py	2025-10-23 10:16:45.000000000 -0400
++++ b/Documentation/sphinx/kernel_include.py	2025-10-30 12:41:31.489789020 -0400
+@@ -32,11 +32,13 @@ u"""
+ # ==============================================================================
+ 
+ import os.path
+ 
+ from docutils import io, nodes, statemachine
+-from docutils.utils.error_reporting import SafeString, ErrorString
++#from docutils.utils.error_reporting import SafeString, ErrorString
++from docutils.io import error_string as ErrorString # https://gitlab.kitware.com/cmake/cmake/-/issues/24039
++SafeString = str # Google AI
+ from docutils.parsers.rst import directives
+ from docutils.parsers.rst.directives.body import CodeBlock, NumberLines
+ from docutils.parsers.rst.directives.misc import Include
+ 
+ __version__  = '1.0'
+diff -pNaru5 a/Documentation/sphinx/maintainers_include.py b/Documentation/sphinx/maintainers_include.py
+--- a/Documentation/sphinx/maintainers_include.py	2025-10-23 10:16:45.000000000 -0400
++++ b/Documentation/sphinx/maintainers_include.py	2025-10-30 12:41:43.703110592 -0400
+@@ -20,11 +20,12 @@ u"""
+ import sys
+ import re
+ import os.path
+ 
+ from docutils import statemachine
+-from docutils.utils.error_reporting import ErrorString
++#from docutils.utils.error_reporting import ErrorString
++from docutils.io import error_string as ErrorString # https://gitlab.kitware.com/cmake/cmake/-/issues/24039
+ from docutils.parsers.rst import Directive
+ from docutils.parsers.rst.directives.misc import Include
+ 
+ __version__  = '1.0'
+ 

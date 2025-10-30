@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts61
-pkgver=6.1.157
+pkgver=6.1.158
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -34,6 +34,7 @@ source=(
   0004-Sphinx-7.2.2-8.0-PosixPath.patch
   '0005-depmod-remove-depmod_hack_needed.patch'
   '0006-kernel-6.1-depmod-disable-for-packaging.patch'
+  '0007-Sphinx-docutils-0.22-deprecated-SafeString-ErrorString.patch'
   config  # the main kernel config file
 )
 validpgpkeys=(
@@ -41,26 +42,29 @@ validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-md5sums=('37944daf8e758b07452441271d9b14b9'
+md5sums=('b05c98624fa6da6a616268c1959152f7'
          'SKIP'
          'cb32cb125ea45ac05782630dfc9fc951'
          '806e76e95002ecbf49b03d6e655dc567'
          'd15820a808c3cc159e6e5916a8c05e8f'
          'f24ee48c4c30cb428d0258aa3c25bd19'
+         '25032e45b830ad198d84d7bb4a239da6'
          'c7f23b1bcb226f29451d47bb7ae8604b')
-sha256sums=('a0a184e10221afcce4e87fcbec6af2ae9f63f64ad1985aa61e80c9596696f66e'
+sha256sums=('ad068bfdb604ec0f4f7de385c8e7ab944008aa78a4aeeca94f53206e6726bfda'
             'SKIP'
             '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
             '08ef05d8a4fc8117d131f219d753caa138a0fb7c8f00690ff6dc35ac6aacdb83'
             '64b521b3963781c60e9a33db40c523bf65a119cb1dfec182a737e90d2609df5a'
             '20d2afcc83f04d5409dcb5452763c625069dc00bfa7e60457902256dfbb58bdd'
+            '6d886ff7f1fed2f32a9f2d8932c11786bb06742e203a55990c6b1f77a247be59'
             'ea7a177caf7170b9f3746732e3d32703357d19cbafd463069aa34a8d8386c1e9')
-b2sums=('89d1556f245d0b26c21c644dc78f6e7400567c21556af580455c322a4a188173b7e7371cf1e4bd1c01b4a7f2eeb66abb5490cbb3c2b8f676a8b87899f0e051f5'
+b2sums=('ef86103aa6f3bb15770c38e47294f475fc8d879954ceca78b0b7f936f4800c6abc76a92aa8b75809ed5a83625ca442795a3d69c5afb4ef82d010cc89dfd632ca'
         'SKIP'
         '02a10396c92ab93124139fc3e37b1d4d8654227556d0d11486390da35dfc401ff5784ad86d0d2aa7eacac12bc451aa2ff138749748c7e24deadd040d5404734c'
         'a208eece0028ca98e64637b58d0d4c2e641a111d2f8f9f4a9c71531bb12f75edae14c9e7dbeb840d88be9fdc0b0022cf0a30e3f6a9c34d58e068e02a79940ea8'
         'a0cb29f2c4a4bbd815daa2fc399c7014dcc880a73130f5cf26a0e428b73e23911858a9274e15b62c3cd90a82f6c46c83ecfb4b2fdcdaef8e10bf24f6766ae049'
         '7b24fa23ffb4ef7c998e7b43a60d3df094220ff6e60f49cb4a9dcd712f657b40c022bf1b94f81d41ddb4008ef3200649a672025ccf63f50079320a951538cb4f'
+        'f96a0bd31cf73a712347fc95dbffbc1979f4e8db93323a78717907904789dad99da9cc2d69d24f5b75a437874676ca7c12608691d0c301535867b9ddb09d621e'
         'c277e4a3bb39e126fc10d37fe98e34c93332c8f7db6d134fd6d2e7ce30ae4840596eff5fdf3ce85f923b944981bd3a2fea912c11dedaa25d04d460b6d112806a')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -74,14 +78,14 @@ prepare() {
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    src="${src%.zst}"
-    [[ $src = *.patch ]] || continue
-    msg2 "Applying patch $src..."
-    patch -Np1 < "../$src"
+  local _src
+  for _src in "${source[@]}"; do
+    _src="${_src%%::*}"
+    _src="${_src##*/}"
+    _src="${_src%.zst}"
+    [[ $_src = *.patch ]] || continue
+    msg2 "Applying patch $_src..."
+    patch -Np1 < "../$_src"
   done
 
   #cd '..'; cp -pr "${_srcname}" 'a'; ln -s "${_srcname}" 'b'; cd "${_srcname}"; false
@@ -109,8 +113,10 @@ exec /usr/bin/gcc -std='gnu17' "\$@"
 EOF
     chmod 755 'gcc'
   fi
-  nice -n1 make all
-  nice -n1 make -i htmldocs SPHINXOPTS='--keep-going'
+  nice -n1 make -j1 htmldocs < /dev/null & # SPHINXOPTS='--keep-going'
+  local _pid_docs="$!"
+  nice -n2 make all
+  wait "${_pid_docs}"
 }
 
 _package() {
