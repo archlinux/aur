@@ -1,6 +1,6 @@
 pkgbase = r-anota
 	pkgdesc = ANalysis Of Translational Activity (ANOTA).
-	pkgver = 1.56.0
+	pkgver = 1.58.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/anota
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-anota
 	depends = r
 	depends = r-multtest
 	depends = r-qvalue
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/anota_1.56.0.tar.gz
-	sha256sums = aefc530a8ed00a9d50e65b6587964241887c69140fdd839dd75a2e043d4579c1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/anota_1.58.0.tar.gz
+	sha256sums = 99359ae839189f64e943e1f2820c45f4aeada52214523ffa1301392dbb569e96
 
 pkgname = r-anota
