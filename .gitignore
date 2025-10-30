@@ -1,0 +1,9 @@
+# Ignore everything
+*
+
+# But not these files...
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.editorconfig
+!Distribution.toml
