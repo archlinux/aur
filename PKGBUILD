@@ -1,14 +1,14 @@
 # Maintainer: Sylvester Keil <sylvester@keil.or.at>
 
 pkgname='tropy-bin'
-pkgver='1.16.2'
+pkgver='1.17.0'
 pkgrel=2
 pkgdesc='Explore your research photos'
 arch=('x86_64')
 url='https://tropy.org'
 license=('AGPL-3.0-or-later')
 depends=(
-  'electron34'
+  'electron38'
   'gcc-libs'
   'glib2'
   'glibc'
@@ -25,8 +25,8 @@ source=(
   'tropy.sh'
   "https://github.com/tropy/tropy/releases/download/v${pkgver}/tropy-${pkgver}-x64.tar.bz2")
 
-sha256sums=('080928f5d2ca7e5e5db55e959f1dc62e15e2906fe2f5838b150d1814263b6fd0'
-            '351af6990ca00c8648c92bdb330d7d3a20018a125c934a8440c29e11a79fd1a1')
+sha256sums=('034914456ca6e70ebd929ffd96cce2d7b84744d5eae2ce0467fa42ade71f7f92'
+            '23c61a88bd1cd9655899b6525bece6943a4c33c28464d1c6048ab5f8a466b625')
 
 package() {
   install -dm755 "${pkgdir}/usr/lib/tropy"
@@ -38,6 +38,8 @@ package() {
 
   cd "${srcdir}"
   install -Dm755 tropy.sh "${pkgdir}/usr/bin/tropy"
+  
+  cd "tropy-${pkgver}-x64"
   install -m644 -t "${pkgdir}/usr/share/applications" \
     org.tropy.Tropy.desktop
   install -m644 -t "${pkgdir}/usr/share/metainfo" \
