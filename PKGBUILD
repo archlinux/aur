@@ -2,8 +2,8 @@
 
 pkgname=kwin-x11-lite
 _pkgname=kwin-x11
-pkgver=6.5.0
-_pkgver=6.5.0
+pkgver=6.5.1
+_pkgver=6.5.1
 pkgrel=1
 pkgdesc='kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for XLibre'
 arch=(x86_64)

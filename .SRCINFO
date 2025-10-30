@@ -1,6 +1,6 @@
 pkgbase = kwin-x11-lite
 	pkgdesc = kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for XLibre
-	pkgver = 6.5.0
+	pkgver = 6.5.1
 	pkgrel = 1
 	url = https://github.com/KDE-Lite/kwin-x11-lite
 	install = kwin-x11-lite.install
@@ -52,7 +52,7 @@ pkgbase = kwin-x11-lite
 	depends = libxi
 	depends = libxkbcommon
 	depends = libxkbcommon-x11
-	depends = libplasma=6.5.0
+	depends = libplasma=6.5.1
 	depends = mesa
 	depends = plasma-x11-session
 	depends = qt6-5compat
