@@ -1,6 +1,6 @@
 pkgbase = r-survcomp
 	pkgdesc = Performance Assessment and Comparison for Survival Analysis
-	pkgver = 1.58.0
+	pkgver = 1.60.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/survcomp
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-survcomp
 	optdepends = r-clinfun
 	optdepends = r-hmisc
 	optdepends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/survcomp_1.58.0.tar.gz
-	sha256sums = 70a0b1d17146c34cbac93072ad2bcef5e03d87107c3086f7162fc2a8f68cbd35
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/survcomp_1.60.0.tar.gz
+	sha256sums = 7ca2a49d230eb7fa3d0cf3cbb3caeacaf3b8d8544806884187da88c6e43c113a
 
 pkgname = r-survcomp
