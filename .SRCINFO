@@ -1,14 +1,14 @@
 pkgbase = eclair
 	pkgdesc = A Scala implementation of the Lightning Network (GUI)
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/ACINQ/eclair
 	arch = any
 	license = Apache
 	makedepends = maven
-	depends = java-environment=11
+	depends = java-environment=21
 	depends = jq
-	source = eclair-0.11.0.tar.gz::https://github.com/ACINQ/eclair/archive/v0.11.0.tar.gz
-	sha256sums = 4fbd19b0caea6c2e9844c0e40d91cec491ba14de7fbfa9fe9701f483a5065138
+	source = eclair-0.12.0.tar.gz::https://github.com/ACINQ/eclair/archive/v0.12.0.tar.gz
+	sha256sums = da0c0e078bebda0497950d0d9c6c55eb4f6e522057b662ddbb9d0f0e7bbcd8ab
 
 pkgname = eclair
