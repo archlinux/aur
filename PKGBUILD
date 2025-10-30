@@ -7,7 +7,7 @@ pkgname=duckstation-qt-bin
 _pkgname="${pkgname%-bin}"
 _fullname=org.duckstation.DuckStation
 pkgver=0.1.r9787
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast PlayStation 1 emulator for PC and Android"
 arch=('x86_64')
 url='https://github.com/stenzek/duckstation'
@@ -38,7 +38,7 @@ package() {
 	cp -avR squashfs-root/ "$pkgdir/opt/$_pkgname"
 	cat <<- EOF > "${_pkgname}.sh"
 		#!/usr/bin/env sh
-		cd /opt/$_pkgname && ./AppRun
+		cd /opt/$_pkgname && ./AppRun "\$@"
 	EOF
 	install -Dm755 "${_pkgname}.sh" "$pkgdir/usr/bin/$_pkgname"
 	find "$pkgdir/opt/$_pkgname" -type d -exec chmod 755 {} +

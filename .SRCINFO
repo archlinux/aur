@@ -1,7 +1,7 @@
 pkgbase = duckstation-qt-bin
 	pkgdesc = Fast PlayStation 1 emulator for PC and Android
 	pkgver = 0.1.r9787
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stenzek/duckstation
 	arch = x86_64
 	license = CC-BY-NC-ND-4.0
