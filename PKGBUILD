@@ -4,7 +4,7 @@
 # Contributor: relrel <relrelbachar@gmail.com>
 _pkgname=chromedriver
 pkgname=${_pkgname}-beta
-pkgver=142.0.7444.52
+pkgver=143.0.7499.4
 pkgrel=1
 pkgdesc="Standalone server that implements the W3C WebDriver standard (for google-chrome-beta)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(google-chrome-beta)
 provides=(${_pkgname})
 conflicts=(chromium ${_pkgname})
 source=("${_pkgname}_${pkgver}_linux64.zip::https://storage.googleapis.com/chrome-for-testing-public/${pkgver}/linux64/${_pkgname}-linux64.zip")
-sha512sums=('a7dd58954018be572f78d7b9f258a3739c95d8e91cc80b512f86d2c5a625dc7eb85cc0b309b19cf87b11ecb601c5b872a7bcf92eb2c6ca96ddb69e1c09c02ae8')
+sha512sums=('4eb0d44a2fa77ac63a43a3522d99584c58d6ace03e3fd5bf7d109533644d2d4fd7221b0a382fdadb2ec4c7f002f8013f6ae8bf3d1a32abd18a2ba8219ef635a3')
 
 package() {
     install -Dm755 -t "$pkgdir/usr/bin/" "$srcdir/${_pkgname}-linux64/${_pkgname}"
