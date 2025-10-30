@@ -8,7 +8,7 @@ pkgdesc="An advanced minecraft launcher written in java"
 arch=("x86_64")
 url="https://git.jfronny.dev/JfMods/Inceptum"
 license=("GPL3")
-depends=("java-runtime>=23" 'bash')
+depends=("java-runtime>=25" 'bash')
 makedepends=('git' 'java-environment>=23' 'gradle')
 source=(git+"${url}".git
         "$_name.desktop"
