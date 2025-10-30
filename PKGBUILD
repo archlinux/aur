@@ -2,14 +2,14 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=proton-mail
-pkgver=1.9.1
-pkgrel=2
+pkgver=1.10.0
+pkgrel=1
 pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
 arch=('any')
 url='https://proton.me/mail'
 license=('GPL-3.0-or-later')
 depends=('bash' 'electron35' 'hicolor-icon-theme')
-makedepends=('git' 'nodejs-lts' 'yarn')
+makedepends=('git' 'nodejs-lts-jod' 'yarn')
 source=("WebClients-proton-inbox-desktop::git+https://github.com/ProtonMail/WebClients.git#branch=release/inbox-desktop@$pkgver"
         'proton-mail.desktop'
         'proton-mail.sh')
