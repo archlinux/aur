@@ -1,7 +1,7 @@
 # Maintainer: VC365
 pkgname=volume-pulse
 pkgver=0.2.9
-pkgrel=1
+pkgrel=3
 pkgdesc="a lightweight volume control applet utility for Linux"
 arch=('x86_64')
 url="https://github.com/VC365/volume-pulse"
@@ -10,7 +10,7 @@ depends=('pulseaudio' 'libnotify' 'gtk2')
 makedepends=('git')
 optdepends=('pavucontrol: For mixer functionality')
 source=("https://github.com/VC365/volume-pulse/releases/download/v$pkgver/volume-pulse_v$pkgver.tar.xz")
-sha256sums=('ac46f47a45500a1421096eacac5d329388a9cb57a43a26fb0b77d22ea08d2013')
+sha256sums=('0c299019f983ba583a54ea05cc8e607dbeb424bb1d84943987e96e2aa4877e41')
 
 package() {
   cd "$srcdir"
