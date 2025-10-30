@@ -1,0 +1,17 @@
+pkgbase = ohmyvpn
+	pkgdesc = OpenVPN integrated with pass (Standard Unix Password Manager)
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://git.sr.ht/~syntax/ohmyvpn
+	install = ohmyvpn.install
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = procps-ng
+	depends = openvpn
+	depends = gnupg
+	depends = pass
+	source = git+https://git.sr.ht/~syntax/ohmyvpn
+	sha256sums = SKIP
+
+pkgname = ohmyvpn

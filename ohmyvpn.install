@@ -1,0 +1,7 @@
+post_install() {
+    echo "Copy /etc/ohmyvpn into ~/.config/ohmyvpn for personal configuration."
+}
+
+post_remove() {
+    echo "Config files in ~/.config/ohmyvpn not removed."
+}
