@@ -1,12 +1,12 @@
 # Maintainer: Hakan İSMAİL <hakanismail53@gmail.com>
 pkgname=rclone-manager
 appname='Rclone.Manager'
-releasetag=0.1.4
-pkgver=0.1.4
+releasetag=0.1.5
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="User-friendly GUI for Rclone"
 arch=('x86_64' 'aarch64')
-url="https://github.com/RClone-Manager/rclone-manager"
+url="https://github.com/Zarestia-Dev/rclone-manager"
 license=('GPL-3.0-or-later')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'rclone')
 optdepends=('7zip: Encrypt/decrypt backup data')
