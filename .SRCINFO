@@ -1,6 +1,6 @@
 pkgbase = r-mzid
 	pkgdesc = An mzIdentML parser for R
-	pkgver = 1.46.0
+	pkgver = 1.48.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/mzID
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-mzid
 	depends = r-xml
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/mzID_1.46.0.tar.gz
-	sha256sums = 82137a61154cb1b4f4f47482959942c4bc2ede133c0fe52e2d87632fc73b5377
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mzID_1.48.0.tar.gz
+	sha256sums = 83f0be01ee37196e370ace0704b4a3578c513362d5e49ea7207900ebaed88a8e
 
 pkgname = r-mzid
