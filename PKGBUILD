@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=M3C
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='Monte Carlo Reference-based Consensus Clustering'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4124d3e194226e398e1ea92b24e71ba6adc9421eabdeb05289f09471dc102195')
+sha256sums=('bfe4a279f1a37dc491e961d7820a34d896fbc107d0dd9fc0a206270813c2b43c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
