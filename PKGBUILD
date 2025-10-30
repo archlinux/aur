@@ -2,7 +2,7 @@
 
 pkgname=visual-studio-code-insiders-bin
 _pkgname=visual-studio-code-insiders
-pkgver=1761801613
+pkgver=1761821411
 pkgrel=1
 pkgdesc="Visual Studio Code Insiders (vscode): Editor for building and debugging modern web and cloud applications (official binary version)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -26,9 +26,9 @@ source=(code-${pkgver}.desktop.in::https://raw.githubusercontent.com/microsoft/v
         code-${pkgver}-url-handler.desktop.in::https://raw.githubusercontent.com/microsoft/vscode/master/resources/linux/code-url-handler.desktop
         code-${pkgver}-workspace.xml.in::https://raw.githubusercontent.com/microsoft/vscode/master/resources/linux/code-workspace.xml
         ${_pkgname}-bin.sh)
-source_x86_64=(code_x64_1761801613.tar.gz::https://vscode.download.prss.microsoft.com/dbazure/download/insider/888fc66f61dc6606e0bf5588ee593399143bbdb0/code-insider-x64-1761801613.tar.gz)
-source_aarch64=(code_arm64_1761801615.tar.gz::https://vscode.download.prss.microsoft.com/dbazure/download/insider/888fc66f61dc6606e0bf5588ee593399143bbdb0/code-insider-arm64-1761801615.tar.gz)
-source_armv7h=(code_armhf_1761801605.tar.gz::https://vscode.download.prss.microsoft.com/dbazure/download/insider/888fc66f61dc6606e0bf5588ee593399143bbdb0/code-insider-armhf-1761801605.tar.gz)
+source_x86_64=(code_x64_1761821411.tar.gz::https://vscode.download.prss.microsoft.com/dbazure/download/insider/ec7b5e7fa4f16991c7024a4224b790436d15a789/code-insider-x64-1761821411.tar.gz)
+source_aarch64=(code_arm64_1761821500.tar.gz::https://vscode.download.prss.microsoft.com/dbazure/download/insider/ec7b5e7fa4f16991c7024a4224b790436d15a789/code-insider-arm64-1761821500.tar.gz)
+source_armv7h=(code_armhf_1761821448.tar.gz::https://vscode.download.prss.microsoft.com/dbazure/download/insider/ec7b5e7fa4f16991c7024a4224b790436d15a789/code-insider-armhf-1761821448.tar.gz)
 
 sha256sums=('2f1782b30c4e040efff655fd9cf477930c5a0c81ddae27749b0cbb922c1d248e'
             'c361efa7e02fcad759ed80d2fbab67877f33219b981578af6fffaf18aeb12d9b'
