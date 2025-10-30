@@ -1,12 +1,13 @@
 [Desktop Entry]
 Name=TIDAL Hi-Fi
-GenericName=tidal-hifi
+GenericName=Music Streaming Service
 Icon=tidal-hifi
 Comment=The web version of Tidal running in electron with hifi support thanks to widevine.
 Exec=tidal-hifi %u
 StartupNotify=true
 Terminal=false
 Type=Application
-Categories=Network;Application;Audio;Video
+Categories=Audio;Video;AudioVideo;
 StartupWMClass=tidal-hifi
 X-PulseAudio-Properties=media.role=music
+MimeType=x-scheme-handler/tidal;

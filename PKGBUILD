@@ -3,7 +3,7 @@
 
 pkgname=tidal-hifi
 pkgver=5.20.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The web version of Tidal running in electron with hifi support thanks to widevine."
 arch=(x86_64)
 url="https://github.com/Mastermindzh/tidal-hifi"
@@ -13,7 +13,7 @@ makedepends=(nodejs npm libxcrypt-compat python)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Mastermindzh/tidal-hifi/archive/refs/tags/${pkgver}.tar.gz"
         "tidal-hifi.desktop")
 sha256sums=('f0d21c54aae1ee5cb85a059abd4bfdca72dbe962796f6ca3e90a4b977d3814f4'
-            '7cfd50a00f85a83f6208e2e013d7b254dd769a2a05b35fea2a2b045d86ce475a')
+            'e5162e47d42be3b95a943d8f8c0129f2483e097ccdccb59e566d19368537337e')
 
 build() {
     cd "tidal-hifi-${pkgver}"
