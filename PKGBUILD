@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=nnNorm
-_pkgver=2.72.0
+_pkgver=2.74.0
 pkgname=r-${_pkgname,,}
-pkgver=2.72.0
+pkgver=2.74.0
 pkgrel=1
 pkgdesc='Spatial and intensity based normalization of cDNA microarray data based on robust neural nets'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   r-marray
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f7eafcc9701e64b97572e959154a470f85bf857b81e5524e36f3d712b3a7833c')
+sha256sums=('067032c078cdf328c0fe166080538d6f4d4845c4018c75b3e5f4c9219dbd9b8d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
