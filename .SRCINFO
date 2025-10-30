@@ -1,6 +1,6 @@
 pkgbase = fractal-git
 	pkgdesc = Matrix group messaging app
-	pkgver = 13.rc.r12.g65d041b3
+	pkgver = 13.rc.r13.ga87f9a15
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/fractal
 	arch = x86_64
@@ -39,6 +39,8 @@ pkgbase = fractal-git
 	depends = org.freedesktop.secrets
 	depends = pango
 	depends = sqlite
+	provides = fractal
+	conflicts = fractal
 	source = source::git+https://gitlab.gnome.org/World/fractal.git
 	sha512sums = SKIP
 

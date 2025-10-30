@@ -1,7 +1,7 @@
 # Maintainer: Bruno Pagani <archange@archlinux.org>
 
 pkgname=fractal-git
-pkgver=13.rc.r12.g65d041b3
+pkgver=13.rc.r13.ga87f9a15
 pkgrel=1
 pkgdesc="Matrix group messaging app"
 arch=(x86_64)
@@ -48,6 +48,8 @@ makedepends=(
 source=(
 	"source::git+$url.git"
 )
+provides=(fractal)
+conflicts=(fractal)
 sha512sums=('SKIP')
 
 pkgver() {
