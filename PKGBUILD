@@ -4,8 +4,8 @@
 
 _pkgname=webargs
 pkgname=python-$_pkgname
-pkgver=8.7.0
-pkgrel=4
+pkgver=8.7.1
+pkgrel=1
 pkgdesc='A friendly library for parsing HTTP request arguments, with built-in support for popular web frameworks'
 arch=('any')
 url='https://github.com/marshmallow-code/webargs'
@@ -24,7 +24,7 @@ optdepends=(
   'python-aiohttp'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('b833a4c37ad1fdf78e9142c7fef0998ff4f91ff1a4255117cfe21d91631aa04ad9811d0a752647e49bcc87216fc2f49475dc056ce23d68c57541bafe78b10db5')
+sha512sums=('124597165b4624b95c1ac1b29e2f6afd8ccd78e0957af1cd31f4598f34e3aeb46f8e0d3c4aab3aa45d7baa660f63ea991a43b09d987861bfb588f9e5987955d7')
 
 prepare() {
   cd $_pkgname-$pkgver
