@@ -1,0 +1,23 @@
+pkgbase = paper-muncher-git
+	pkgdesc = Convert web pages (HTML, XHTML, or SVG) into printable or viewable documents like PDFs or images.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://odoo.github.io/paper-muncher
+	arch = any
+	license = LGPL-3.0-or-later
+	makedepends = base-devel
+	makedepends = git
+	makedepends = ninja
+	makedepends = llvm
+	makedepends = clang
+	makedepends = cutekit
+	makedepends = jq
+	depends = sdl3
+	depends = liburing
+	depends = libseccomp
+	provides = paper-muncher
+	conflicts = paper-muncher
+	source = paper-muncher::git+https://github.com/odoo/paper-muncher.git
+	md5sums = SKIP
+
+pkgname = paper-muncher-git
