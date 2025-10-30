@@ -1,4 +1,4 @@
 [openarc]
-source = "github"
-github = "flowerysong/OpenARC"
-use_latest_release = true
+source = "git"
+git = "https://github.com/flowerysong/OpenARC.git"
+prefix = "v"

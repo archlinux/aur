@@ -6,8 +6,8 @@
 ##	 currently maintained.
 
 pkgname=openarc
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Open source implementation of the ARC email authentication system"
 arch=(x86_64)
 url="https://github.com/flowerysong/OpenARC"
@@ -31,7 +31,7 @@ source=("https://github.com/flowerysong/OpenARC/releases/download/v${pkgver}/${p
 	"Patch02-Remove-config-for-other-OSs.patch"
 )
 backup=('etc/openarc/openarc.conf')
-b2sums=('f25703bff38012ffc8d4e223671193ad0d6f910eea70c4e00b165fc928795bc0ad4ddefba59dcb78f0940c42651295f275c2b042896c34061f4f7c44a0c7cab8'
+b2sums=('11b94e3a839ba0c5b1942c875ae1c10e199cf35e633ef6880e39bd731dbd1d204ff34402660e19c6b5e2cd65d517709b56671825b658e461d488d044b898d7eb'
         '0e752b2322a8fcfd593ac03b4ec678b962530d7f390199ebe9aa98a3cba6a906e59f1dbe321cc5c9acb4bf92a670d1ab56ccbbf8e14d5c754f6467b416c54f25'
         '300b0f94ad747572b9f8b54304b7c784f8c3bbfd82f1ca65f49e3822a52fe16380326ec724fb02fffdbbedd5e064d4414d8810c571412a80327ee45885c3223c'
         'f51ffb557e267e3ada10e208684ac11464b09a6af2f25ff2edb915c12b0803d0d13b1427da69b5d077a5d590dc74928ce4b1d49c826c203a797171cd4eddb40b'
