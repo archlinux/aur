@@ -1,6 +1,6 @@
 pkgbase = mattermost-plugin-focalboard
 	pkgdesc = an open source, self-hosted alternative to Trello, Notion, and Asana
-	pkgver = 9.1.7
+	pkgver = 9.2.0
 	pkgrel = 1
 	url = https://github.com/mattermost/mattermost-plugin-boards
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = mattermost-plugin-focalboard
 	makedepends = jq
 	replaces = mattermost-plugin-focalboard
 	options = !strip
-	source = https://github.com/mattermost/mattermost-plugin-boards/releases/download/v9.1.7/mattermost-plugin-boards-v9.1.7.tar.gz
-	source = https://github.com/mattermost/mattermost-plugin-boards/releases/download/v9.1.7/mattermost-plugin-boards-v9.1.7.tar.gz.asc
+	source = https://github.com/mattermost/mattermost-plugin-boards/releases/download/v9.2.0/mattermost-plugin-boards-v9.2.0.tar.gz
+	source = https://github.com/mattermost/mattermost-plugin-boards/releases/download/v9.2.0/mattermost-plugin-boards-v9.2.0.tar.gz.asc
 	validpgpkeys = C55881B80F69E863B85AD5D1D1B54B47A5CEFEC4
-	sha256sums = 2095323e3cec2189d7342d582d71ac5ba747016f5f6906f31f33084dd7ccad0b
+	sha256sums = f6a28dfa14b1daea185c1bf7f36e71b2c97e426348094ae0936a4fc057d6d09c
 	sha256sums = SKIP
 
 pkgname = mattermost-plugin-boards
