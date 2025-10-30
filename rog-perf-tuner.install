@@ -29,8 +29,12 @@ post_upgrade() {
     reload_udev_rules
 }
 
-post_remove() {
-    echo "🗑️ Performing remove actions..."
-    reload_udev_rules
+pre_remove() {
+    echo "🗑️ Performing pre remove actions..."
     stop_application
+}
+
+post_remove() {
+    echo "🗑️ Performing post remove actions..."
+    reload_udev_rules
 }

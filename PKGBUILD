@@ -1,7 +1,7 @@
 # Maintainer: Emiliopg91 <ojosdeserbio@gmail.com>
 pkgname=rog-perf-tuner
 pkgver=4.5.22
-pkgrel=2
+pkgrel=3
 pkgdesc="RogPerfTuner - An utility to manage Asus Rog laptop performance and RGB lighting"
 arch=(
     'x86_64'
