@@ -1,6 +1,6 @@
 # Maintainer: Musagy <diegomusagy@gmail.com>
 pkgname=hypremoji
-pkgver=1.0.4
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A modern emoji picker for Hyprland, written in Rust + GTK4"
 arch=('x86_64')
