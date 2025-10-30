@@ -1,11 +1,11 @@
 pkgbase = wifitui-bin
 	pkgdesc = Fast featureful friendly wifi terminal UI.
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/shazow/wifitui
 	arch = x86_64
 	license = MIT
-	source = https://github.com/shazow/wifitui/releases/download/v0.6.1/wifitui_0.6.1_linux_x86_64.pkg.tar.zst
-	sha256sums = 22a09e6e6d875e906737a80db49acc9fac1301b3da8d065fc1aa44b72ef6ef74
+	source = https://github.com/shazow/wifitui/releases/download/v0.7.0/wifitui-0.7.0-linux-x86_64.pkg.tar.zst
+	sha256sums = c21b0232917f463806565a7446048f049c19fa037fcb40314a8d2b5f2e9c9cfe
 
 pkgname = wifitui-bin

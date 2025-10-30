@@ -1,13 +1,13 @@
 # Maintainer: Jett Scythe
 pkgname=wifitui-bin
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Fast featureful friendly wifi terminal UI."
 arch=('x86_64')
 url="https://github.com/shazow/wifitui"
 license=('MIT')
-source=("https://github.com/shazow/wifitui/releases/download/v${pkgver}/wifitui_${pkgver}_linux_${CARCH}.pkg.tar.zst")
-sha256sums=('22a09e6e6d875e906737a80db49acc9fac1301b3da8d065fc1aa44b72ef6ef74')
+source=("https://github.com/shazow/wifitui/releases/download/v${pkgver}/wifitui-${pkgver}-linux-${CARCH}.pkg.tar.zst")
+sha256sums=('c21b0232917f463806565a7446048f049c19fa037fcb40314a8d2b5f2e9c9cfe')
 
 package() {
   cd "$srcdir"
