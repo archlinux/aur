@@ -1,7 +1,7 @@
 # Maintainer: osoite <osoite@firemail.cc>
 pkgname=eyerest
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Remind your eyes via libnotify to have a little break from the screen."
 arch=('any')
 url="https://git.sr.ht/~syntax/eyerest"
@@ -15,6 +15,6 @@ package() {
     cd "$srcdir/$pkgname"
     install -Dm755 "usr/bin/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 "etc/eyerest/config.ini" "$pkgdir/etc/$pkgname/config.ini"
-    install -Dm644 "etc/eyerest/messages.txt" "$pkgdir/etc/$pkgname/messages.txt"
+    install -Dm644 "etc/eyerest/notifications.txt" "$pkgdir/etc/$pkgname/notifications.txt"
 }
 
