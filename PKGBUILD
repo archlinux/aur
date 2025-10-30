@@ -1,6 +1,6 @@
 # Maintainer: Pol Rivero <aur at polrivero dot com>
 pkgname=pkgstate
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="The perfect companion your dotfiles repo: declaratively define your installed packages, systemd services, and user groups"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ optdepends=(
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pol-rivero/pkgstate/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('9bfe898fc1b49a345a4bbd013f0c76da04f89bc574b38c83c0591328fa154279')
+sha256sums=('3e2765eaef057cea55fb9a52fee0da1f8121953e405567e890150ff9c9adf4cb')
 
 build() {
     tar -xzf "${pkgname}-${pkgver}.tar.gz"
