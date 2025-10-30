@@ -1,18 +1,21 @@
 pkgbase = ghidra-git
 	pkgdesc = Software reverse engineering framework (git)
-	pkgver = 11.2.r98.23b75ec040
+	pkgver = 11.4.2.r872.d4c463fa9a
 	pkgrel = 1
 	url = https://www.nsa.gov/ghidra
 	arch = x86_64
 	arch = aarch64
-	license = Apache
-	makedepends = fop
+	license = Apache-2.0
+	makedepends = java-environment=21
 	makedepends = git
 	makedepends = gradle
 	makedepends = unzip
+	makedepends = python-pip
 	depends = bash
 	depends = java-environment>=21
+	depends = python
 	depends = polkit
+	optdepends = python-protobuf: GDB integration
 	provides = ghidra
 	conflicts = ghidra
 	conflicts = ghidra-dev

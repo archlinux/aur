@@ -1,33 +1,38 @@
-# Maintainer: Luke Street <luke@street.dev>
+# Maintainer: kStor2poche <kStor2poche [at] orange [dot] fr>
+# Contributor: Luke Street <luke@street.dev>
 # Contributor: Arnaud Dovi <mr.dovi@gmail.com>
 # Contributor: Jean Lucas <jean@4ray.co>
 # Contributor: Danny Bautista <pyrolagus@gmail.com>
 # Contributor: nullableVoidPtr <nullableVoidPtr _ gmail _ com>
 
 pkgname=ghidra-git
-pkgver=11.2.r98.23b75ec040
+pkgver=11.4.2.r872.d4c463fa9a
 pkgrel=1
 pkgdesc='Software reverse engineering framework (git)'
-arch=('x86_64' 'aarch64')
+arch=('x86_64' 'aarch64') # Not sure aarch64 is correct here. Please confirm it to me in the comments if you can test that!
 options=(!strip)
 url='https://www.nsa.gov/ghidra'
-license=(Apache)
+license=('Apache-2.0')
 provides=('ghidra')
 conflicts=(
   'ghidra'
-  'ghidra-dev'
   'ghidra-desktop'
 )
 depends=(
   'bash'
   'java-environment>=21'
+  'python'
   'polkit'
 )
 makedepends=(
-  'fop'
+  'java-environment=21'
   'git'
   'gradle'
   'unzip'
+  'python-pip'
+)
+optdepends=(
+  'python-protobuf: GDB integration'
 )
 source=(
   "git+https://github.com/NationalSecurityAgency/ghidra"
@@ -35,10 +40,12 @@ source=(
   'ghidra-root.desktop'
   'ghidra.policy'
 )
-sha512sums=('SKIP'
-            'a85b8b3276e2ff4ed8bda6470c15d02711ebaa48463c775cd2a36549fad738e9fe073dab80f8c57646490ffc959cdc27e9d25b1dc2a5810b0ddb249b5dc99a9b'
-            'c717029cf31860e27b5563c3ff4b2740d4b1997bc50481214e24c38f12d9acbfa9ca2cbfe594d43071fbf8420ac8f022119c2c23ddef0c717d96860e22eb35c3'
-            '0a35f58b1820ac65ce37d09b0a6904ab7018c773c73ecd29bcfda37cbd27f34af868585084b5cd408b1066b7956df043cb1573a1e3d890e173be737d2de51401')
+sha512sums=(
+  'SKIP'
+  'a85b8b3276e2ff4ed8bda6470c15d02711ebaa48463c775cd2a36549fad738e9fe073dab80f8c57646490ffc959cdc27e9d25b1dc2a5810b0ddb249b5dc99a9b'
+  'c717029cf31860e27b5563c3ff4b2740d4b1997bc50481214e24c38f12d9acbfa9ca2cbfe594d43071fbf8420ac8f022119c2c23ddef0c717d96860e22eb35c3'
+  '0a35f58b1820ac65ce37d09b0a6904ab7018c773c73ecd29bcfda37cbd27f34af868585084b5cd408b1066b7956df043cb1573a1e3d890e173be737d2de51401'
+)
 _pkgname="${pkgname/-git/}"
 _stop='\e[m'
 _color="\e[33m"
@@ -67,7 +74,7 @@ prepare() {
 #  patch --no-backup-if-mismatch --forward --strip=2 --input="${srcdir}/0000-GP-793-corrected-missing-IP-info.patch"
 
   echo -e "${_prefix}Setting up the build dependencies"
-  gradle --parallel --init-script gradle/support/fetchDependencies.gradle init
+  gradle --parallel --init-script gradle/support/fetchDependencies.gradle
 
   ##
   ## FOR GHIDRA DEVELOPERS
@@ -91,7 +98,7 @@ prepare() {
 build() {
   cd "$_pkgname"
   echo -e "${_prefix}Building Ghidra"
-  gradle --parallel buildGhidra -x ip
+  gradle buildGhidra
 }
 
 package() {
