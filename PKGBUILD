@@ -3,53 +3,57 @@
 # Contributor: Frank Vanderham <twelve_dot_eighty_at_gmail_dot_com>
 
 pkgname=pam_mount-git
-pkgver=2.21
+pkgver=2.21.r0.g18ae8ad
 pkgrel=1
 pkgdesc='A PAM module that can mount volumes for a user session'
 arch=(x86_64)
-url='http://pam-mount.sourceforge.net/'
-license=(GPL-2.0-or-later
-         LGPL-2.1-or-later)
-depends=(cryptsetup
-         glibc
-         libhx
-         libxml2
-         openssl
-         pam
-         pcre2
-         util-linux-libs)
+url='https://inai.de/projects/pam_mount/'
+license=(LGPL-2.1-or-later)
+depends=(cryptsetup glibc libhx libxml2 openssl pam pcre2 util-linux-libs)
 makedepends=(git)
 provides=(pam_mount)
 conflicts=(pam_mount)
 backup=('etc/security/pam_mount.conf.xml')
 options=(!emptydirs)
-source=("${pkgname}::git+git://git.code.sf.net/p/pam-mount/pam-mount")
-sha256sums=('SKIP')
+source=("${pkgname}::git+https://codeberg.org/jengelh/pam_mount.git")
+b2sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-VCS}"
-    printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
+  cd "${srcdir}/${pkgname}"
+
+  GIT_TAG="$(git describe --long --tags)"
+  echo "${GIT_TAG}" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-  cd -- "$srcdir/$pkgname"
+prepare() {
+  cd "${srcdir}/${pkgname}"
+
   aclocal
   libtoolize
   autoreconf --install
   automake --add-missing
   autoreconf
+}
+
+build() {
+  cd "${srcdir}/${pkgname}"
+
   ./configure \
-	--prefix=/usr \
-	--with-ssbindir=/usr/bin \
-	--sbindir=/usr/bin \
-	--with-slibdir=/usr/lib \
-	--sysconfdir=/etc \
-	--localstatedir=/var
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool # Fix overlinking
+    --prefix=/usr \
+    --with-ssbindir=/usr/bin \
+    --sbindir=/usr/bin \
+    --with-slibdir=/usr/lib \
+    --sysconfdir=/etc \
+    --localstatedir=/var
+
+  # Fix overlinking
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
   make
 }
 
 package() {
-  cd -- "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir" install
+  cd "${srcdir}/${pkgname}"
+
+  make DESTDIR="${pkgdir}" install
 }
