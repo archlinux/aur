@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RIVER
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='R package for RIVER (RNA-Informed Variant Effect on Regulation)'
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6679b237455ff62f9c59d00c1b9a51cd21bcaa00484e1698b436247e139b7d90')
+sha256sums=('461c1424eeb554c723311b0c64a8af11ee33a99ad83fb90c47c7ec022937c5d9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
