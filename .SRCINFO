@@ -1,0 +1,15 @@
+pkgbase = holyc-lang
+	pkgdesc = A C compiler for TempleOS's HolyC programming language
+	pkgver = 0.0.10
+	pkgrel = 1
+	url = https://github.com/Jamesbarford/holyc-lang
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	source = holyc-lang-0.0.10.tar.gz::https://github.com/Jamesbarford/holyc-lang/archive/refs/tags/beta-v0.0.10.tar.gz
+	sha256sums = be664891b02e68424299d1ad874bddce84e46476a23436973865dd190731d3e4
+
+pkgname = holyc-lang
