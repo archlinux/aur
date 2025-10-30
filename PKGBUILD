@@ -1,7 +1,7 @@
 # Maintainer: Jerzy Kołosowski <jerzy@kolosowscy.pl>
 
 pkgname=kdisplay-presets
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Standalone KDE Plasma utility for managing display configuration presets"
 arch=('x86_64')
