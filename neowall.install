@@ -1,0 +1,38 @@
+# NeoWall post-install script for Arch Linux packages
+
+post_install() {
+    echo ""
+    echo "==> NeoWall installed successfully!"
+    echo ""
+    echo "    Quick Start:"
+    echo "    1. Run 'neowall' (Matrix rain starts automatically)"
+    echo "    2. Edit ~/.config/neowall/config.vibe"
+    echo ""
+    echo "    Installed files:"
+    echo "    /usr/share/neowall/config.vibe (default)"
+    echo "    /usr/share/neowall/neowall.vibe (example)"
+    echo "    /usr/share/neowall/shaders/ (12+ shaders)"
+    echo ""
+    echo "    GPU shaders as wallpapers."
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> NeoWall upgraded to $(pacman -Q neowall-git | awk '{print $2}')"
+    echo ""
+    echo "    Restart if running:"
+    echo "    pkill neowall && neowall"
+    echo ""
+}
+
+post_remove() {
+    echo ""
+    echo "==> NeoWall removed"
+    echo ""
+    echo "    Config preserved at ~/.config/neowall/"
+    echo ""
+    echo "    To remove:"
+    echo "    rm -rf ~/.config/neowall"
+    echo ""
+}
