@@ -1,14 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: JakobDev<jakobdev at gmx dot de>
-
 pkgname=jddesktopentryedit
 _app_id=page.codeberg.JakobDev.jdDesktopEntryEdit
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 pkgdesc="A graphical program to create and edit desktop entries"
 arch=('any')
 url="https://codeberg.org/JakobDev/jdDesktopEntryEdit"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 depends=(
   'hicolor-icon-theme'
   'python-desktop-entry-lib'
@@ -22,10 +21,13 @@ makedepends=(
   'python-wheel'
   'qt6-tools'
 )
-checkdepends=('appstream')
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz")
-sha256sums=('499ed8398b2a7d0cf35034e86eeee477ac2ded015c2f301a0c18413375499550')
+sha256sums=('eac1be655743ccf64a233b704b088005d12d8ba0d4653c49ca0aa94020392a41')
 
 prepare() {
   mkdir -p "$pkgname-$pkgver"
