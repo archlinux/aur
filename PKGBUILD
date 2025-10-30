@@ -1,9 +1,9 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-graphics-compiler-git
-pkgver=2.15.3.r95.g323eca95f
-_llvmmaj=15
-_llvmver="${_llvmmaj}.0.7"
+pkgver=2.22.0.r100.g29d2efd56
+_llvmmaj=16
+_llvmver="${_llvmmaj}.0.6"
 pkgrel=1
 epoch=1
 pkgdesc='Intel Graphics Compiler for OpenCL (git version)'
@@ -21,7 +21,7 @@ makedepends=(
     'python'
     'python-mako'
     'python-yaml')
-provides=('intel-graphics-compiler' "intel-opencl-clang=${_llvmmaj}.0.0")
+provides=('intel-graphics-compiler' "intel-opencl-clang=${_llvmmaj}")
 conflicts=('intel-graphics-compiler' 'intel-opencl-clang')
 options=('!emptydirs' '!lto')
 source=('git+https://github.com/intel/intel-graphics-compiler.git'
@@ -36,10 +36,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '5e0b72ca37446fdf0fa54f1bb4cea6d3a53c19bdf373fa054b6a8ce640519024'
+            'b47ada280614670a467f80e9f8c67542050983f238f2f4b3fa17682855faf9bf'
             'SKIP'
             'SKIP'
-            'ea06a84995007be8940d8e3d53dd7969375fd7644a4b40d334ff214ac12005d9')
+            'fead474a0cde0cd5b66619780dd3f7b902b3d1ab2296ee27ca8f0cadc4eb67f7')
 
 prepare() {
     # rename to prevent SPIRV-LLVM-Translator from being included
@@ -86,7 +86,7 @@ build() {
         -DCMAKE_INSTALL_LIBDIR:PATH='lib' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_POLICY_VERSION_MINIMUM:STRING='3.5.0' \
-        -DIGC_OPTION__ARCHITECTURE_TARGET:STRING='Linux64' \
+        -DCMAKE_SKIP_RPATH:BOOL='YES' \
         -DIGC_OPTION__CLANG_MODE:STRING='Source' \
         -DIGC_OPTION__LINK_KHRONOS_SPIRV_TRANSLATOR:BOOL='ON' \
         -DIGC_OPTION__LLD_MODE:STRING='Source' \
@@ -107,7 +107,7 @@ package() {
     rm "${pkgdir}/usr/bin/lld"
     
     # additional files for opencl-clang
-    install -D -m644 opencl-clang/common_clang.h -t "${pkgdir}/usr/include/cclang"
+    install -D -m644 opencl-clang/opencl_clang.h -t "${pkgdir}/usr/include/cclang"
     install -D -m644 opencl-clang/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-opencl-clang"
     ln -s "libopencl-clang.so.${_llvmmaj}" "${pkgdir}/usr/lib/libopencl-clang.so"
 }
