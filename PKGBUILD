@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=matter
-_pkgver=2.10.0
+_pkgver=2.12.0
 pkgname=r-${_pkgname,,}
-pkgver=2.10.0
+pkgver=2.12.0
 pkgrel=1
 pkgdesc='A framework for rapid prototyping with file-based data structures'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b20bb8638d71526090cd0020025c750d323de04a8a21df5f0bc22f90068e6371')
+sha256sums=('f110695405e74f47573b2e2181fdfb03d7167926838284a44389e43f7abf1265')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
