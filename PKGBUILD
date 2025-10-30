@@ -2,7 +2,7 @@
 
 _module=django-dynamic-preferences
 pkgname=python-${_module}
-pkgver=1.16.0
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="Dynamic global and instance settings for your django project"
 arch=(any)
@@ -10,8 +10,8 @@ url="https://github.com/agateblue/django-dynamic-preferences"
 license=(BSD)
 depends=(python-django python-six python-persisting-theory)
 makedepends=(python-setuptools)
-source=(https://files.pythonhosted.org/packages/source/${_module::1}/$_module/${_module}-$pkgver.tar.gz)
-sha256sums=('0d3d456626244d0bdaf312c81f2b3e14bd16134e8fcf53a33fd12e5d0bdd88dd')
+source=(${_module}-${pkgver}.tar.gz::https://github.com/agateblue/django-dynamic-preferences/archive/refs/tags/${pkgver}.tar.gz)
+sha256sums=('00a66a054cedc2f656b99b6e49f322a232167fef7219f5f01e7940c3ec862e15')
 
 
 build() {
