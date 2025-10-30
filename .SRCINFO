@@ -6,6 +6,7 @@ pkgbase = ophis-git
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = python-pip
 	depends = python
 	conflicts = ophis
 	source = git+https://github.com/michaelcmartin/Ophis.git
