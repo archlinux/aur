@@ -1,3 +1,4 @@
 [cropgui-git]
 source = "aur"
 aur = "cropgui-git"
+prefix = "1:"

@@ -29,7 +29,6 @@ makedepends=(
   'python-installer'
   'python-j2cli'
   'python-setuptools'
-  # 'python-setuptools-scm'
   'python-wheel'
 )
 checkdepends=(
@@ -129,7 +128,7 @@ package() {
     "${_gitpkgname}.desktop" \
     "${pkgdir}/usr/share/applications/${_gitpkgname}.desktop"
 
-  echo >&2 'Packaging game icon'
+  echo >&2 'Packaging app icon'
   install -D -m 644 -T \
     "${_gitpkgname}.png" \
     "${pkgdir}/usr/share/pixmaps/${_gitpkgname}.png"
