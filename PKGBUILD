@@ -3,19 +3,19 @@
 
 pkgname=proton-mail
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
 arch=('any')
 url='https://proton.me/mail'
 license=('GPL-3.0-or-later')
-depends=('bash' 'electron35' 'hicolor-icon-theme')
+depends=('bash' 'electron36' 'hicolor-icon-theme')
 makedepends=('git' 'nodejs-lts-jod' 'yarn')
 source=("WebClients-proton-inbox-desktop::git+https://github.com/ProtonMail/WebClients.git#branch=release/inbox-desktop@$pkgver"
         'proton-mail.desktop'
         'proton-mail.sh')
 b2sums=('SKIP'
         'dbaec179f629964aac699677b09219e0494426c624d00896c18177263e38dac7fb0383702d9cf22fc617a77809d826d5a8a2348f4a31a6ec069ce642af3671be'
-        '21605b0d31062d2b355e8422f319521a775efd41ef34571a114fd7f9f1ba07b39b4a27998fd11d2039baa7ba0650b804dfd41e0d591ead622fce68243dca1d88')
+        'd71722fd78770b2025464fcde201b4ab18e58afc269105ea389a6d4665a6a0801adcece53507004c56722ba8954ee7fd6b5de3eec3b099c6cc67e206f14cf4aa')
 
 prepare() {
     cd WebClients-proton-inbox-desktop
