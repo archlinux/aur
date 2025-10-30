@@ -11,7 +11,9 @@ optdepends=('libpulse: audio support' 'gnome-themes-extra: adwaita theme')
 conflicts=('anydesk')
 provides=('anydesk')
 options=('!strip')
-source=("https://download.anydesk.com/linux/anydesk-${pkgver}-amd64.tar.gz")
+# Temporary workaround: upstream versioned URL returns 404; use latest endpoint
+#source=("https://download.anydesk.com/linux/anydesk-${pkgver}-amd64.tar.gz")
+source=("https://download.anydesk.com/linux/anydesk-latest-amd64.tar.gz")
 sha256sums=('a46cd4e1d05e5a500200ebec841cd33cde8f70d7509105c08c61672becab280e')
 
 package() {
