@@ -1,0 +1,9 @@
+--- a/src/cbang/js/v8/V8.h
++++ b/src/cbang/js/v8/V8.h
+@@ -41,5 +41,6 @@
+ #define V8STDINT_H_
+
+ #define V8_ENABLE_CHECKS
++#define V8_ENABLE_SANDBOX
+
+ #include <v8.h>
