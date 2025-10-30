@@ -9,9 +9,8 @@ pkgdesc="Micro-library to easily write custom Django template tags"
 arch=('any')
 url="https://github.com/edoburu/django-tag-parser"
 license=('Apache')
-depends=('python')
+depends=('python-django')
 makedepends=('python-setuptools')
-checkdepends=('python-django')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/edoburu/django-tag-parser/archive/v$pkgver.tar.gz")
 sha512sums=('ab39dcf847b1da473ded83655bd8ba7a6e376de68668cd9dc7b2019d8666864ed5665ab162f4a7df56cb7a3eb32e83c8fad3fdecf5774140effc643853997879')
 
