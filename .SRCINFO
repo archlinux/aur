@@ -1,6 +1,6 @@
 pkgbase = zen-browser-bin
 	pkgdesc = Performance oriented Firefox-based web browser
-	pkgver = 1.17.3b
+	pkgver = 1.17.4b
 	pkgrel = 1
 	url = https://github.com/zen-browser/desktop
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = zen-browser-bin
 	optdepends = pulse-native-provider: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = zen-browser=1.17.3b
+	provides = zen-browser=1.17.4b
 	conflicts = zen-browser
 	options = !strip
 	source = zen-browser.sh
@@ -28,9 +28,9 @@ pkgbase = zen-browser-bin
 	sha256sums = 642bcde5b15fddb712d10ed53299781108a265432237ab27a96c5c5c489718db
 	sha256sums = a6371aa853b095d1c223f955e97a390b905abe5bcba38bbddd17408dd46fec94
 	sha256sums = e977c3d690224dd727d8761d2c0a66ba41bfd02ae0fd7850c4545d06b5a8e63c
-	source_x86_64 = zen-browser-1.17.3b-1-x86_64.tar.xz::https://github.com/zen-browser/desktop/releases/download/1.17.3b/zen.linux-x86_64.tar.xz
-	sha256sums_x86_64 = af6769492f8179f30d681c17777de1da79a6b1a44c97a1cb6a0340d497b19eb7
-	source_aarch64 = zen-browser-1.17.3b-1-aarch64.tar.xz::https://github.com/zen-browser/desktop/releases/download/1.17.3b/zen.linux-aarch64.tar.xz
-	sha256sums_aarch64 = f483fe8898fc39afcc236f0203ce1f8fc84aad35d2bfd1219a0548474fb238fd
+	source_x86_64 = zen-browser-1.17.4b-1-x86_64.tar.xz::https://github.com/zen-browser/desktop/releases/download/1.17.4b/zen.linux-x86_64.tar.xz
+	sha256sums_x86_64 = f717aa700bc54214e958ef825ffb219250e8ad9f802c72178a43257358e585f3
+	source_aarch64 = zen-browser-1.17.4b-1-aarch64.tar.xz::https://github.com/zen-browser/desktop/releases/download/1.17.4b/zen.linux-aarch64.tar.xz
+	sha256sums_aarch64 = d88bb2a81289f912d3b716f0995c74daecc9ada158bdeff930cfd7123f6e3320
 
 pkgname = zen-browser-bin
