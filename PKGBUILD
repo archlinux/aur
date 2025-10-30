@@ -6,6 +6,7 @@ pkgdesc='Screen annotation tool for Wayland compositors (formerly hyprmarker)'
 arch=('x86_64' 'aarch64')
 url='https://wayscriber.com'
 license=('MIT')
+install=wayscriber.install
 depends=(
     'cairo'
     'wayland'
