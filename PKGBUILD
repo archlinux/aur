@@ -2,12 +2,12 @@
 
 pkgname='rusty-path-of-building'
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An offline build planner for Path of Exile using the cross-platform 'rusty-path-of-building' runtime"
 url='https://github.com/meehl/rusty-path-of-building'
 license=('MIT')
 makedepends=('cargo' 'git' 'zlib')
-depends=('luajit' 'lua51-curl' 'lua51-luautf8' 'lua51-socket')
+depends=('desktop-file-utils' 'luajit' 'lua51-curl' 'lua51-luautf8' 'lua51-socket')
 arch=('x86_64')
 provides=("rusty-path-of-building")
 # LTO causes problems with 'ring' (dependency of ureq)
