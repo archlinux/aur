@@ -1,6 +1,6 @@
 pkgbase = dbeaver-ue
 	pkgdesc = A universal database tool for developers and database administrators. Multifunctional database tool with native AWS, Azure, and Google Cloud support.
-	pkgver = 24.3.0
+	pkgver = 25.2.0
 	pkgrel = 1
 	url = http://dbeaver.com/
 	arch = x86_64
@@ -22,10 +22,10 @@ pkgbase = dbeaver-ue
 	conflicts = dbeaver-ee
 	options = !strip
 	source = dbeaver.sh
-	sha256sums = 9ee119a8b9b5b5f1382d23f88b8e433743e7a7fe6191be1103bd23ba84abfee5
-	source_x86_64 = dbeaver-ue-24.3.0-x86_64.tar.gz::https://dbeaver.com/files/24.3.0/dbeaver-ue-24.3.0-linux.gtk.x86_64-nojdk.tar.gz
-	sha256sums_x86_64 = e85a36d479cdeb2367da15158b52e45eb84d7ff3d665276ec34b5c78c8a5692c
-	source_aarch64 = dbeaver-ue-24.3.0-aarch64.tar.gz::https://dbeaver.com/files/24.3.0/dbeaver-ue-24.3.0-linux.gtk.aarch64-nojdk.tar.gz
-	sha256sums_aarch64 = 2951b8fe34ba9b62d43e5e887d06869c5eb595e5312491f65b91e8a0736a9b17
+	sha256sums = 31b14de25fbaa1e5acc9063d9cddb3c78c44d02d415438126cd513c67df227a0
+	source_x86_64 = dbeaver-ue-25.2.0-x86_64.tar.gz::https://dbeaver.com/files/25.2.0/dbeaver-ue-25.2.0-linux.gtk.x86_64-nojdk.tar.gz
+	sha256sums_x86_64 = ab314ec876b2e6ddc6032779630765a50de1b106dc7988a0e343528903d0a4ca
+	source_aarch64 = dbeaver-ue-25.2.0-aarch64.tar.gz::https://dbeaver.com/files/25.2.0/dbeaver-ue-25.2.0-linux.gtk.aarch64-nojdk.tar.gz
+	sha256sums_aarch64 = 8a9fc4a091d8f26943bf7e3c274a370b096a728017b69533312532ba36c3b70d
 
 pkgname = dbeaver-ue

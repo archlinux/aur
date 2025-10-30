@@ -2,7 +2,7 @@
 # Maintainer: witt <1989161762 at qq dot com>
 
 pkgname=dbeaver-ue
-pkgver=24.3.0
+pkgver=25.2.0
 pkgrel=1
 pkgdesc="A universal database tool for developers and database administrators. Multifunctional database tool with native AWS, Azure, and Google Cloud support."
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ source=("dbeaver.sh")
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://dbeaver.com/files/${pkgver}/${pkgname}-${pkgver}-linux.gtk.x86_64-nojdk.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://dbeaver.com/files/${pkgver}/${pkgname}-${pkgver}-linux.gtk.aarch64-nojdk.tar.gz")
 sha256sums=('31b14de25fbaa1e5acc9063d9cddb3c78c44d02d415438126cd513c67df227a0')
-sha256sums_x86_64=('e85a36d479cdeb2367da15158b52e45eb84d7ff3d665276ec34b5c78c8a5692c')
-sha256sums_aarch64=('2951b8fe34ba9b62d43e5e887d06869c5eb595e5312491f65b91e8a0736a9b17')
+sha256sums_x86_64=('ab314ec876b2e6ddc6032779630765a50de1b106dc7988a0e343528903d0a4ca')
+sha256sums_aarch64=('8a9fc4a091d8f26943bf7e3c274a370b096a728017b69533312532ba36c3b70d')
 
 
 package() {
