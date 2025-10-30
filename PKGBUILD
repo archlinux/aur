@@ -24,7 +24,7 @@ check() {
     -vv
   )
   cd "$srcdir"/${_name//-/_}-$pkgver
-  PYTHONPATH=$PWD/${_name//-prebuilt/} pytest "${pytest_options[@]}" tests
+  PYTHONPATH=$PWD pytest "${pytest_options[@]}" tests
 }
 
 package() {
