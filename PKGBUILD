@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mirTarRnaSeq
-_pkgver=1.16.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='mirTarRnaSeq'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-sponge
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6b59e8cb83a46680fbbead78c14f449fc128553016535456dd1d1c70239b907e')
+sha256sums=('ea43374edbee8bf938f2ac08177721d8fd13a19331a5037d54ead62a0483c914')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
