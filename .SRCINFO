@@ -1,6 +1,6 @@
 pkgbase = r-randrotation
 	pkgdesc = Random Rotation Methods for High Dimensional Data with Batch Structure
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/randRotation
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-randrotation
 	optdepends = r-rmarkdown
 	optdepends = r-sva
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/randRotation_1.20.0.tar.gz
-	sha256sums = 64edd7351fc81609d949b90a2bce9c7f47d15dba09decd5be6e8a32e828310a7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/randRotation_1.22.0.tar.gz
+	sha256sums = ed10e889bce73b2dca3a2a3bd81fe8d8376ce013f094805b0ddb457feb6fdc19
 
 pkgname = r-randrotation
