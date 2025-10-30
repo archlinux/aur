@@ -1,7 +1,7 @@
 pkgbase = qt6ct-kde
 	pkgdesc = Qt 6 Configuration Utility, patched to work correctly with KDE applications
 	pkgver = 0.11
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.opencode.net/trialuser/qt6ct
 	arch = x86_64
 	license = BSD
@@ -14,6 +14,6 @@ pkgbase = qt6ct-kde
 	source = git+https://www.opencode.net/trialuser/qt6ct#tag=0.11
 	source = qt6ct-shenanigans.patch
 	sha256sums = 76bfc26838b8ec7dd049da54bd812d8c526986024845a30d1e546e43555e52bf
-	sha256sums = fd21dc3a6109a6d2b9de3218aedcfb4af565c6f86b6c559e91421f1b3a9f23e8
+	sha256sums = b92c46de0599f2e180c288d9df30a23d5344a60a0f626ba3ec446381137e1b7c
 
 pkgname = qt6ct-kde

@@ -194,10 +194,10 @@ index f3e9ef6..a05a9b7 100644
  
  OTHER_FILES += qt6ct.json
 diff --git a/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp b/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
-index 569b13f..5497ea9 100644
+index 569b13f..0380ea6 100644
 --- a/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
 +++ b/src/qt6ct-qtplugin/qt6ctplatformtheme.cpp
-@@ -41,38 +41,59 @@
+@@ -41,38 +41,65 @@
  #include <QStyleFactory>
  #include <QApplication>
  #include <QWidget>
@@ -238,8 +238,14 @@ index 569b13f..5497ea9 100644
      if(QGuiApplication::desktopSettingsAware())
      {
          readSettings();
-         QMetaObject::invokeMethod(this, &Qt6CTPlatformTheme::applySettings, Qt::QueuedConnection);
--#ifdef QT_WIDGETS_LIB
+-        QMetaObject::invokeMethod(this, &Qt6CTPlatformTheme::applySettings, Qt::QueuedConnection);
+ #ifdef QT_WIDGETS_LIB
++        if(hasWidgets())
++            QMetaObject::invokeMethod(this, [=] {
++                m_style.reset(QStyleFactory::create(u"qt6ct-style"_s));
++            }, Qt::QueuedConnection);
++#endif
++        QMetaObject::invokeMethod(this, &Qt6CTPlatformTheme::applySettings, Qt::QueuedConnection);
          QMetaObject::invokeMethod(this, &Qt6CTPlatformTheme::createFSWatcher, Qt::QueuedConnection);
 +        //must be applied before Q_COREAPP_STARTUP_FUNCTION execution
 +        if(Qt6CT::isKColorScheme(m_schemePath))
@@ -261,7 +267,7 @@ index 569b13f..5497ea9 100644
  }
  
  Qt6CTPlatformTheme::~Qt6CTPlatformTheme()
-@@ -90,10 +111,33 @@ QPlatformDialogHelper *Qt6CTPlatformTheme::createPlatformDialogHelper(DialogType
+@@ -90,10 +117,41 @@ QPlatformDialogHelper *Qt6CTPlatformTheme::createPlatformDialogHelper(DialogType
                       QGenericUnixTheme::createPlatformDialogHelper(type);
  }
  
@@ -274,15 +280,23 @@ index 569b13f..5497ea9 100644
 +        return QGenericUnixTheme::colorScheme();
 +
 +    m_inColorScheme = true;
-+    const QPalette *palette = this->palette();
++#ifdef QT_WIDGETS_LIB
++    //follow QApplicationPrivate::basePalette() logic
++    QPalette palette = m_style ? m_style->standardPalette() : Qt::gray;
++    if(const QPalette *themePalette = this->palette())
++        palette = themePalette->resolve(palette);
++    palette.setResolveMask(0);
++    if (m_style)
++        m_style->polish(palette);
++#else
++    //follow QGuiApplicationPrivate::basePalette() logic
++    const QPalette palette = this->palette() ? *this->palette() : Qt::gray;
++#endif
 +    m_inColorScheme = false;
 +
-+    if(!palette)
-+        return QGenericUnixTheme::colorScheme();
-+
-+    return palette->windowText().color().lightness() > palette->window().color().lightness()
++    return palette.windowText().color().lightness() > palette.window().color().lightness()
 +        ? Qt::ColorScheme::Dark
-+        : palette->windowText().color().lightness() < palette->window().color().lightness()
++        : palette.windowText().color().lightness() < palette.window().color().lightness()
 +        ? Qt::ColorScheme::Light
 +        : QGenericUnixTheme::colorScheme();
 +}
@@ -297,7 +311,7 @@ index 569b13f..5497ea9 100644
      return QGenericUnixTheme::palette(type);
  }
  
-@@ -148,6 +192,13 @@ QIcon Qt6CTPlatformTheme::fileIcon(const QFileInfo &fileInfo, QPlatformTheme::Ic
+@@ -148,6 +206,13 @@ QIcon Qt6CTPlatformTheme::fileIcon(const QFileInfo &fileInfo, QPlatformTheme::Ic
      return QIcon::fromTheme(type.iconName());
  }
  
@@ -311,7 +325,7 @@ index 569b13f..5497ea9 100644
  void Qt6CTPlatformTheme::applySettings()
  {
      if(!QGuiApplication::desktopSettingsAware() || m_isIgnored)
-@@ -156,18 +207,18 @@ void Qt6CTPlatformTheme::applySettings()
+@@ -156,18 +221,18 @@ void Qt6CTPlatformTheme::applySettings()
          return;
      }
  
@@ -336,7 +350,7 @@ index 569b13f..5497ea9 100644
              Qt6CT::reloadStyleInstanceSettings();
          }
  
-@@ -193,25 +244,26 @@ void Qt6CTPlatformTheme::applySettings()
+@@ -193,25 +258,28 @@ void Qt6CTPlatformTheme::applySettings()
  
      if(m_update)
      {
@@ -345,6 +359,8 @@ index 569b13f..5497ea9 100644
 +        QWindowSystemInterface::handleThemeChange();
 +        QCoreApplication::postEvent(qGuiApp, new QEvent(QEvent::ApplicationFontChange));
      }
++    else if(hasWidgets()) //update color scheme after m_style has created
++        QWindowSystemInterface::handleThemeChange();
  
  #ifdef QT_WIDGETS_LIB
      if(hasWidgets() && m_update)
@@ -371,7 +387,7 @@ index 569b13f..5497ea9 100644
  void Qt6CTPlatformTheme::createFSWatcher()
  {
      QFileSystemWatcher *watcher = new QFileSystemWatcher(this);
-@@ -230,7 +282,6 @@ void Qt6CTPlatformTheme::updateSettings()
+@@ -230,21 +298,16 @@ void Qt6CTPlatformTheme::updateSettings()
      readSettings();
      applySettings();
  }
@@ -379,10 +395,10 @@ index 569b13f..5497ea9 100644
  
  void Qt6CTPlatformTheme::readSettings()
  {
-@@ -238,13 +289,10 @@ void Qt6CTPlatformTheme::readSettings()
+     QSettings settings(Qt6CT::configFile(), QSettings::IniFormat);
  
      settings.beginGroup("Appearance"_L1);
-     m_style = settings.value("style"_L1, u"Fusion"_s).toString();
+-    m_style = settings.value("style"_L1, u"Fusion"_s).toString();
 -    m_palette = *QGenericUnixTheme::palette(SystemPalette);
 -    QString schemePath = settings.value("color_scheme_path"_L1).toString();
 -    if(!schemePath.isEmpty() && settings.value("custom_palette"_L1, false).toBool())
@@ -397,7 +413,18 @@ index 569b13f..5497ea9 100644
      m_iconTheme = settings.value("icon_theme"_L1).toString();
      //load dialogs
      if(!m_update)
-@@ -262,10 +310,10 @@ void Qt6CTPlatformTheme::readSettings()
+@@ -252,8 +315,9 @@ void Qt6CTPlatformTheme::readSettings()
+         //do not mix gtk2 style and gtk3 dialogs
+         QStringList keys = QPlatformThemeFactory::keys();
+         QString dialogs = settings.value("standard_dialogs"_L1, u"default"_s).toString();
++        QString style = settings.value("style"_L1, u"Fusion"_s).toString();
+ 
+-        if(m_style.endsWith(u"gtk2"_s) && dialogs == QLatin1String("gtk3"))
++        if(style.endsWith(u"gtk2"_s) && dialogs == QLatin1String("gtk3"))
+             dialogs = u"gtk2"_s;
+         if(keys.contains(dialogs))
+             m_theme.reset(QPlatformThemeFactory::create(dialogs));
+@@ -262,10 +326,10 @@ void Qt6CTPlatformTheme::readSettings()
      settings.endGroup();
  
      settings.beginGroup("Fonts"_L1);
@@ -412,7 +439,7 @@ index 569b13f..5497ea9 100644
      settings.endGroup();
  
      settings.beginGroup("Interface"_L1);
-@@ -354,3 +402,17 @@ QString Qt6CTPlatformTheme::loadStyleSheets(const QStringList &paths)
+@@ -354,3 +418,17 @@ QString Qt6CTPlatformTheme::loadStyleSheets(const QStringList &paths)
      content.replace(regExp, u"\n"_s);
      return content;
  }
@@ -431,10 +458,19 @@ index 569b13f..5497ea9 100644
 +    return QObject::eventFilter(obj, e);
 +}
 diff --git a/src/qt6ct-qtplugin/qt6ctplatformtheme.h b/src/qt6ct-qtplugin/qt6ctplatformtheme.h
-index b2a7bcf..f43ed30 100644
+index b2a7bcf..9327ef0 100644
 --- a/src/qt6ct-qtplugin/qt6ctplatformtheme.h
 +++ b/src/qt6ct-qtplugin/qt6ctplatformtheme.h
-@@ -58,6 +58,9 @@ public:
+@@ -43,6 +43,8 @@
+ #include <QFileInfo>
+ #include <memory>
+ 
++class QStyle;
++
+ Q_DECLARE_LOGGING_CATEGORY(lqt6ct)
+ 
+ class Qt6CTPlatformTheme : public QObject, public QGenericUnixTheme
+@@ -58,6 +60,9 @@ public:
      //virtual void showPlatformMenuBar() {}
      virtual bool usePlatformNativeDialog(DialogType type) const override;
      virtual QPlatformDialogHelper *createPlatformDialogHelper(DialogType type) const override;
@@ -444,7 +480,7 @@ index b2a7bcf..f43ed30 100644
      virtual const QPalette *palette(Palette type = SystemPalette) const override;
      virtual const QFont *font(Font type = SystemFont) const override;
      virtual QVariant themeHint(ThemeHint hint) const override;
-@@ -66,16 +69,19 @@ public:
+@@ -66,16 +71,19 @@ public:
      //virtual QPixmap fileIconPixmap(const QFileInfo &fileInfo, const QSizeF &size,
      //                               QPlatformTheme::IconOptions iconOptions = 0) const;
  
@@ -467,25 +503,29 @@ index b2a7bcf..f43ed30 100644
  
  private:
      void readSettings();
-@@ -83,8 +89,8 @@ private:
+@@ -83,8 +91,8 @@ private:
      bool hasWidgets();
  #endif
      QString loadStyleSheets(const QStringList &paths);
 -    QString m_style, m_iconTheme, m_userStyleSheet, m_prevStyleSheet;
 -    QPalette m_palette;
-+    QString m_style, m_schemePath, m_iconTheme, m_userStyleSheet, m_prevStyleSheet;
++    QString m_schemePath, m_iconTheme, m_userStyleSheet, m_prevStyleSheet;
 +    std::optional<QPalette> m_palette;
      QFont m_generalFont, m_fixedFont;
      int m_doubleClickInterval;
      int m_cursorFlashTime;
-@@ -96,6 +102,7 @@ private:
+@@ -96,7 +104,11 @@ private:
      int m_wheelScrollLines = 3;
      bool m_showShortcutsInContextMenus = false;
      bool m_isIgnored = false;
 +    mutable bool m_inColorScheme = false;
      std::unique_ptr<QPlatformTheme> m_theme;
++#ifdef QT_WIDGETS_LIB
++    std::unique_ptr<QStyle> m_style;
++#endif
  };
  
+ Q_DECLARE_LOGGING_CATEGORY(lqt6ct)
 diff --git a/src/qt6ct-style/CMakeLists.txt b/src/qt6ct-style/CMakeLists.txt
 index 5ab1c21..c8870b3 100644
 --- a/src/qt6ct-style/CMakeLists.txt
