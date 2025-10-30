@@ -2,11 +2,11 @@
 
 pkgname=python-gbinder
 pkgver=1.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Python bindings for libgbinder"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/erfanoabdi/gbinder-python"
-license=('GPL')
+license=('GPL-3.0-only')
 depends=('libgbinder')
 makedepends=('git' 'python-setuptools' 'cython')
 _commit="a2c5093c734e59df9f592010020cf081dadce81f"
