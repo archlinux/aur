@@ -1,6 +1,6 @@
 # Maintainer: Anes Belfodil <ans.belfodil@gmail.com>
 pkgname=randwall-bin
-pkgver=0.2.4
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Randomly changes desktop wallpaper'
 arch=('x86_64')
