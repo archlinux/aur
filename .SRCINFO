@@ -1,6 +1,6 @@
 pkgbase = wg_tool
 	pkgdesc = Manages wireguard VPN configuration (servers and users).
-	pkgver = 8.2.0
+	pkgver = 9.0.1
 	pkgrel = 1
 	url = https://github.com/gene-git/wg_tool
 	changelog = Changelog.rst
@@ -15,12 +15,14 @@ pkgbase = wg_tool
 	depends = python>=3.13
 	depends = python-cryptography
 	depends = py-cidr
-	depends = python-tomli-w
 	depends = python-qrcode
 	depends = wireguard-tools
 	depends = nftables
+	depends = pyconcurrent
+	depends = python-yaml
+	depends = python-dnspython
 	optdepends = python-argcomplete: For command line option completion
-	source = git+https://github.com/gene-git/wg_tool#tag=8.2.0
+	source = git+https://github.com/gene-git/wg_tool#tag=9.0.1
 	validpgpkeys = 7CCA1BA66669F3273DB52678E5B81343AB9809E1
 	sha512sums = SKIP
 

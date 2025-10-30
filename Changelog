@@ -1,14 +1,35 @@
 -------------------------------------------------------
  Changelog    : wg_tool
- Tags         : 7.5.1 ➙ 8.2.0
-              : 2025-08-19 ➙ 2025-09-18
+ Tags         : 8.0.rc2 ➙ 9.0.1
+              : 2025-09-16 ➙ 2025-10-30
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-10-30   : 9.0.1
+              - * Add support for *IP Groups*.
+            
+                  This is helpful when managing routes for *groups* of users.
+                  By designating some peers as members of an *ip-group*, network routes can now be
+                  for specific groups. The IPs for an ip group must be a proper subnet
+                  of the VPN network.
+            
+                  An ip group is created using the *--add-ip-group <name> <subnet(s)>* option.
+            
+                  Note that since an ip group is defined by the IP subnet of the vpn network, a
+                  peer can only be a member of one group since it only has 1 IP.
+            
+                * Switch File Data from TOML to YAML format.
+            
+                  YAML is more robust than toml . Existing files are auto converted,
+                  the first time version *9.x* is used.
+                  *Edit* files now use yaml format as well. Docs updated to reflect this.
+ 2025-09-18   ⋯
+              - update Docs Changelogs
 
  2025-09-18   : 8.2.0
               - Command line option completion optionally available
                   If desired, then python-argcomplete package should be installed.
- 2025-09-17
+ 2025-09-17   ⋯
               - update Docs Changelogs
 
  2025-09-17   : 8.1.0
@@ -23,7 +44,7 @@
                   When true, hostnames listed in "dns" lists are now queried for
                   IPv6 as well as IPv4 address(es). These are used in the wireguard configs.
                   Defaults to false.
- 2025-09-16
+ 2025-09-16   ⋯
               - fix couple typos
               - Add html link in Docs pointing to pre-build html docs.
                 Remove old license file
@@ -68,9 +89,5 @@
             
                 * Document most features including migration, importing, and
                   making modifications.
- 2025-08-19
-              - update Docs/Changelogs Docs/wg_tool.pdf
-
- 2025-08-19   : 7.5.1
-              - update pyproject version
+ 2025-08-19   ⋯
               - update Docs/Changelogs Docs/wg_tool.pdf

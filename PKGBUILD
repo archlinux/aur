@@ -10,15 +10,16 @@ pkgname='wg_tool'
 pkgdesc='Manages wireguard VPN configuration (servers and users).'
 _gitname='wg_tool'
 
-pkgver=8.2.0
+pkgver=9.0.1
 pkgrel=1
 url="https://github.com/gene-git/wg_tool"
 
 arch=(any)
 license=('GPL-2.0-or-later')
 depends=('python>=3.13' 'python-cryptography' 'py-cidr'
-         'python-tomli-w' 'python-qrcode' 'wireguard-tools'
-         'nftables'
+         'python-qrcode' 'wireguard-tools' 'nftables'
+         'pyconcurrent' 'python-yaml'
+         'python-dnspython'
         )
 optdepends=(
     'python-argcomplete: For command line option completion'
