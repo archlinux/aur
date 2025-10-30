@@ -122,9 +122,10 @@ pkgver() {
 }
 
 build() {
+  cd "$_pkgsrc"
   local cmake_options=(
     -B build
-    -S "$_pkgsrc"
+    -S .
     -G Ninja
     -W no-dev
     -D CMAKE_BUILD_TYPE=None
@@ -135,9 +136,10 @@ build() {
 }
 
 package() {
+  cd "$_pkgsrc"
   DESTDIR="$pkgdir" cmake --install build
-  install -Dm0644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/${pkgname}/"
-  install -Dm0644 "$_pkgsrc/subprojects/udis86/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-udis86"
+  install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname}/"
+  install -Dm0644 subprojects/udis86/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-udis86"
 
   # Avoid conflict w/ extra/xdg-desktop-portal-hyprland
   rm -rf "$pkgdir/usr/share/xdg-desktop-portal"
