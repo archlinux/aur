@@ -1,6 +1,6 @@
 pkgbase = r-biomformat
 	pkgdesc = An interface package for the BIOM file format
-	pkgver = 1.36.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/biomformat
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-biomformat
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/biomformat_1.36.0.tar.gz
-	sha256sums = 66c1d68c9b056d83e9e4d8ae1cb044aef46804ce4baefc82f002fa0941759c36
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/biomformat_1.38.0.tar.gz
+	sha256sums = cc87ee37ada8ec29953bc18e39a61f5e8c01c1e00fbc8e8f47e4bddc5c7cacf9
 
 pkgname = r-biomformat
