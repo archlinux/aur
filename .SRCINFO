@@ -1,7 +1,7 @@
 pkgbase = libidn11
 	pkgdesc = Implementation of the Stringprep, Punycode and IDNA specifications
 	pkgver = 1.33
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/libidn/
 	arch = x86_64
 	license = GPL3
