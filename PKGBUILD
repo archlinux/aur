@@ -1,7 +1,7 @@
 # Maintainer: dawsers <dawser at gmx dot com>
 pkgname=sway-scroll-git
 pkgver=1.12.r7546.c33803e
-pkgrel=6
+pkgrel=7
 pkgdesc='Fork of the sway Wayland compositor with a scrolling layout like PaperWM or niri (git development version)'
 arch=('x86_64')
 url="https://github.com/dawsers/scroll"
@@ -77,7 +77,7 @@ prepare() {
 pkgver() {
 	(
 		set -o pipefail
-		meson introspect --projectinfo build-pkgver | sed -n 's/.*"version": "\([^"]*\)".*/\1/;s/-dev//p' | tr -d '\n'
+		meson introspect --projectinfo build-pkgver | sed -n 's/.*{"version": "\([^"]*\)".*/\1/;s/-dev//p' | tr -d '\n'
 	)
 	cd "$pkgname"
 	printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
