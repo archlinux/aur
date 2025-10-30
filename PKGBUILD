@@ -1,10 +1,10 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=CardinalIO
-_pkgver=1.6.0
+_pkgver=1.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
-pkgrel=7
+pkgrel=8
 pkgdesc='Read and write mass spectrometry imaging files'
 arch=('x86_64')
 url="https://bioconductor.org/packages/${_pkgname}"
@@ -22,7 +22,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('69ce730dd8177a1b64a95648ba87e0bfecd360bec837b450d23cf2d5269cfe18')
+sha256sums=('d7ba6e9b16e109dabc64d3de294bc8fbb147c0dcadea515a2b00cbbc5e30cbe1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

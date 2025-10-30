@@ -1,7 +1,7 @@
 pkgbase = r-cardinalio
 	pkgdesc = Read and write mass spectrometry imaging files
-	pkgver = 1.6.0
-	pkgrel = 7
+	pkgver = 1.8.0
+	pkgrel = 8
 	url = https://bioconductor.org/packages/CardinalIO
 	arch = x86_64
 	license = Artistic2.0
@@ -13,7 +13,7 @@ pkgbase = r-cardinalio
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CardinalIO_1.6.0.tar.gz
-	sha256sums = 69ce730dd8177a1b64a95648ba87e0bfecd360bec837b450d23cf2d5269cfe18
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CardinalIO_1.8.0.tar.gz
+	sha256sums = d7ba6e9b16e109dabc64d3de294bc8fbb147c0dcadea515a2b00cbbc5e30cbe1
 
 pkgname = r-cardinalio
