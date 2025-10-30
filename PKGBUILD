@@ -1,7 +1,8 @@
 # Maintainer: Michael Langer <laminarlade at t-online DOT de>
 pkgname=gradia
-pkgver=1.11.1
+pkgver=1.11.2
 pkgrel=1
+pkghash=166290f8be8a525cc9c51a851b9e3e8921bf1017
 pkgdesc="Make your screenshots ready for the world."
 arch=('x86_64')
 url="https://github.com/AlexanderVanhee/Gradia"
@@ -24,12 +25,13 @@ makedepends=(
     'blueprint-compiler'
 )
 source=(
-    "$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz"
+#    "$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz"
+    "$pkgname-$pkgver.zip::${url}/archive/$pkghash.zip"
 )
-sha256sums=('8ae8f77aaa95c0baf9f302eec86973415e7c50d6d9d0aebcfe079adcbafce3f0')
+sha256sums=('d6d6d25f213aee9c85034ed0b8e982958cb7bab9a91b7cd2da3d79e7a44fe825')
 
 prepare() {
-  mv Gradia-$pkgver $pkgname-$pkgver
+  mv Gradia-$pkghash $pkgname-$pkgver
 }
 
 build() {
