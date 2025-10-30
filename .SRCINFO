@@ -1,8 +1,8 @@
 pkgbase = rclone-manager-git
 	pkgdesc = User-friendly GUI for Rclone
-	pkgver = 0.1.4
-	pkgrel = 2
-	url = https://github.com/RClone-Manager/rclone-manager
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/Zarestia-Dev/rclone-manager
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
@@ -29,7 +29,7 @@ pkgbase = rclone-manager-git
 	conflicts = rclone-manager
 	options = !strip
 	options = !debug
-	source = git+https://github.com/RClone-Manager/rclone-manager.git
+	source = git+https://github.com/Zarestia-Dev/rclone-manager.git
 	sha256sums = SKIP
 
 pkgname = rclone-manager-git
