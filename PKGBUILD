@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dorothea
-_pkgver=1.20.0
+_pkgver=1.21.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.21.0
 pkgrel=1
 pkgdesc='Collection Of Human And Mouse TF Regulons'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-viper
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0bd8b28f978a0a85d79cb8f72989a5f2e4fcc5a8d20aa33720601bf8ec5435f9')
+sha256sums=('6eefcfc68fbbe840b357632dcf847e4a710339ffc283fb4c3c9e72098689cc70')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
