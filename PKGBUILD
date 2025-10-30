@@ -1,6 +1,6 @@
 # Maintainer: Hairy <renhongxu0820@hotmail.com>
 pkgname=abacus-lts
-pkgver=3.10.0
+pkgver=3.10.1
 pkgrel=1
 pkgdesc="Atomic-orbital Based Ab-initio Computation at UStc"
 arch=('x86_64')
@@ -25,12 +25,14 @@ optdepends=(
     'libxc' 
 )
 source=(
-    "https://github.com/deepmodeling/abacus-develop/archive/refs/tags/LTSv$pkgver.tar.gz"
+    "git+https://github.com/deepmodeling/abacus-develop.git"
 )
-sha256sums=('332ed08bb18489f50dcaacdcca8f6ee7ff68e485d49585a2eb9797547898021b')  
+sha256sums=('SKIP')
+_gitdir=("abacus-develop")
 
 build() {
-    cd "$srcdir/abacus-develop-LTSv$pkgver"
+    cd "$srcdir/$_gitdir"
+    git checkout LTS
     
     mkdir -p build && cd build
 
@@ -62,6 +64,6 @@ build() {
 }
 
 package() {
-    cd "$srcdir/abacus-develop-LTSv$pkgver/build"
+    cd "$srcdir/abacus-develop/build"
     make DESTDIR="$pkgdir/" install
 }
