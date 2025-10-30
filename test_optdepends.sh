@@ -9,14 +9,14 @@ CONFOPTS=""
   #CONFOPTS="${CONFOPTS} --download-${external_pkg}=1"
 #done
 
-# Kokkos
-if [ -f "/usr/lib/libkokkoscore.so" ]; then
-  CONFOPTS="${CONFOPTS} --with-kokkos=1"
-fi
-
 # HYPRE
 if [ -f "/usr/lib/libHYPRE.so" ]; then
   CONFOPTS="${CONFOPTS} --with-hypre-lib=/usr/lib/libHYPRE.so --with-hypre-include=/usr/include/hypre"
+fi
+
+# Kokkos
+if [ -f "/usr/lib/libkokkoscore.so" ]; then
+ CONFOPTS="${CONFOPTS} --with-kokkos=1"
 fi
 
 # (Par)METIS
@@ -36,17 +36,6 @@ fi
 if [ -f "/usr/lib/pkgconfig/scalapack.pc" ]; then
   CONFOPTS="${CONFOPTS} --with-scalapack=1"
 fi
-
-# Scotch
-#if [ -f /usr/include/scotch.h ]; then
-#  SCOTCH_LIBS="libesmumps.so,libptscotch.so,libptscotcherr.so,libscotch.so,libscotcherr.so"
-#  # Include bzip2 if scotch was build with bzip2 support
-#  if [ -f /usr/include/bzlib.h ];then
-#    SCOTCH_LIBS="${SCOTCH_LIBS},libbz2.so"
-#  fi
-#  SCOTCH_LIBS="[${SCOTCH_LIBS}]"
-#  CONFOPTS="${CONFOPTS} --with-ptscotch=1 --with-bison=1"
-#fi
 
 # SuperLU_DIST
 if [ -f "/usr/lib/pkgconfig/superlu_dist.pc" ]; then
