@@ -1,6 +1,6 @@
 pkgbase = r-macsquantifyr
 	pkgdesc = Fast treatment of MACSQuantify FACS data
-	pkgver = 1.22.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MACSQuantifyR
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-macsquantifyr
 	optdepends = r-r.utils
 	optdepends = r-spelling
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MACSQuantifyR_1.22.0.tar.gz
-	sha256sums = 67815894c0d4da44d41d8dd4d090a786bccb57c7d8fff74d2563685241eac8f5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MACSQuantifyR_1.24.0.tar.gz
+	sha256sums = 4a4f72217d93136f15c21a6ee815336233321c419783eec235fec091c1168dca
 
 pkgname = r-macsquantifyr
