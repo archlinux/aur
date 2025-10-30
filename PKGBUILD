@@ -8,8 +8,8 @@ url="https://github.com/ahpohl/libfronius"
 license=('MIT')
 depends=('libmodbus' 'fmt')
 makedepends=('cmake' 'git')
-source=("$pkgname-$pkgver::git+https://github.com/ahpohl/libsunspec.git#tag=v${pkgver}")
-sha256sums=('bed54303df8525dedb12a556a31614420400ea7346b0a2fe481bbd6c1083e21b')
+source=("$pkgname-$pkgver::git+https://github.com/ahpohl/libfronius.git#tag=v${pkgver}")
+sha256sums=('6e376251d9401d92ef730a72ff6cb9950a48b077def1c6c3c81f2a3ec4f1af53')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
