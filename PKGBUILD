@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=grx-bin
 _appname=GRX
-pkgver=4.1.1
+pkgver=4.1.2
 _electronversion=38
 pkgrel=1
 pkgdesc="Fastest Web Gerber Renderer.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/hpcreery/GRX/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e15127afd662c902d50e53df2db884da4b3d9b848cf7a89885db8a92b05429d9'
+sha256sums=('18e1a4115fbdfc259f867ffbc3b40231375678a7b4e4cba35b3ce95005ddd39a'
             '6af73551667116d187b1a4e5dac0933f99a4c1151bd1a44c12249cd540a69444'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
