@@ -1,15 +1,19 @@
 pkgbase = ohmysvg
 	pkgdesc = SVG optimizer
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/sonnyp/OhMySVG/
 	arch = any
 	license = GPL-3.0-or-later
+	makedepends = blueprint-compiler
+	makedepends = git
 	makedepends = meson
 	depends = gjs
 	depends = hicolor-icon-theme
 	depends = libadwaita
-	source = ohmysvg-1.4.tar.gz::https://github.com/sonnyp/OhMySVG//archive/refs/tags/v1.4.tar.gz
-	b2sums = 587939aeda42a416d680a3ed346be2645b669906c858b84a762989ace0b4d4f56174d7f95ee9e679e1021db6b9ed245e496381413718c6ccaf28b3282e0350fb
+	source = ohmysvg-1.5.tar.gz::https://github.com/sonnyp/OhMySVG//archive/refs/tags/v1.5.tar.gz
+	source = git+https://github.com/sonnyp/troll#commit=8b0275948eedec9ed0378f9bdda1aa4aac3062ba
+	b2sums = e2bb03c8e86149efd17db43500d36503e7ad0d61979707f6ae9e94704e23289c7c22e6b1e9cffcf150101b5c39a896f3c1d0bcdc07efa5c5f84184cc4aead191
+	b2sums = 19bd1ff8c832c4bda4a055e28fdbf3ca64d431179f8c06f1611634918c9a9000de0aa40fd9f79b6d142b07ee13c31818b84a01f412a48a4f11b028b0f73d01b0
 
 pkgname = ohmysvg
