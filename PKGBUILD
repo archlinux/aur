@@ -1,7 +1,7 @@
 # Maintainer: osoite <osoite@firemail.cc>
 pkgname=eyerest
 pkgver=0.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Remind your eyes via libnotify to have a little break from the screen."
 arch=('any')
 url="https://git.sr.ht/~syntax/eyerest"
