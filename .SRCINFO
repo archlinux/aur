@@ -1,7 +1,7 @@
 pkgbase = nerd-patcher
 	pkgdesc = The official patching script for Nerd Fonts
 	pkgver = 3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	license = MIT

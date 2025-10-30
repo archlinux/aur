@@ -2,7 +2,7 @@
 
 pkgname=nerd-patcher
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The official patching script for Nerd Fonts"
 arch=(any)
 url="https://github.com/ryanoasis/nerd-fonts"
