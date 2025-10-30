@@ -1,0 +1,4 @@
+[olivetin-bin]
+source = "github"
+github = "OliveTin/OliveTin"
+use_latest_release = true
