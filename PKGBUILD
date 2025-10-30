@@ -4,7 +4,7 @@
 pkgname=flowshot
 _pkgname=flowshot
 pkgver=20.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An automatic Flowinity/PrivateUploader upload wrapper for screenshot utilities (KDE Spectacle). (Source version)"
 arch=('i686' 'x86_64')
 url="https://github.com/Flowinity/flameshot"
@@ -16,7 +16,7 @@ optdepends=('xdg-desktop-portal: To make Sway, Hyprland, and wlroots work'
             'grim: To make Sway, Hyprland, and wlroots work'
             'xdg-desktop-portal-kde: For KDE Plasma')
 provides=(flowshot)
-source=("git+https://github.com/Flowinity/flowshot.git#commit=2de5bd00c31652fa51ab77bf282487b0d7856949")
+source=("git+https://github.com/Flowinity/flowshot.git#commit=120da074de9863ed2291936b131e019a5c0124a3")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -38,4 +38,4 @@ package() {
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}" install
 }
-sha256sums=('e0ceaea051289da65fc207c37736dd6205abfa980737c4b9fe13deffc01fe0f9')
+sha256sums=('f0a9e54bee78fa1abb01369afbb6caf4982041af2a9b609628a9ce999a5dfee8')
