@@ -1,6 +1,6 @@
 pkgbase = factorio-headless
 	pkgdesc = A 2D game about building and maintaining factories - Server version (stable branch)
-	pkgver = 2.0.69
+	pkgver = 2.0.72
 	pkgrel = 1
 	url = http://www.factorio.com/
 	install = factorio-headless.install
@@ -20,12 +20,12 @@ pkgbase = factorio-headless
 	source = factorio-headless.conf
 	source = factorio-headless.sysusers
 	source = factorio-headless.tmpfiles
-	source = factorio_headless_x64_2.0.69.tar.xz::https://www.factorio.com/get-download/2.0.69/headless/linux64
+	source = factorio_headless_x64_2.0.72.tar.xz::https://www.factorio.com/get-download/2.0.72/headless/linux64
 	sha256sums = e15ac4bbd0ccf3956a0a281535045e0ffb163bf10f0e3fde6b71642921bf6310
 	sha256sums = 72bbef31fced163e5993eff0e73a836a557165775eb77e0d69b24fe5ec4690a7
 	sha256sums = 40931abfd15db6027c02471c20f86923e74471a9eb91453638c42e0f968027f5
 	sha256sums = 87dae15d1bcfb4683faea9c66498bd916bd27f8aa0dc724c4e21076dcf17da64
 	sha256sums = 76d9de57f9a7b14266e09f77f176a8430508d8778ebfec3c5c5125a54806bb90
-	sha256sums = 235147bb3ed6b5f0a6993893c6c92fdfe535ba95ab866046f51f865284b57341
+	sha256sums = cf3057340dbc9d82bd5161949ae3e7b8fad912ec7ca07b8a3151e0424a5568cd
 
 pkgname = factorio-headless
