@@ -7,7 +7,7 @@ _script=main.py
 pkgname=waydroid-script-git
 _pkgname=waydroid-script
 pkgver=r177.1a2d3ad
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Python Script to add OpenGapps, Magisk, libhoudini translation library and libndk translation library to waydroid"
 arch=('any')
@@ -33,7 +33,6 @@ package() {
     chmod +x ${pkgdir}/opt/${_pkgname}/main.py
     install -d ${pkgdir}/usr/bin
     ln -s /opt/${_pkgname}/main.py ${pkgdir}/usr/bin/waydroid-extras
-    install -Dm755 ${pkgdir}/opt/${_pkgname}/LICENSE ${pkgdir}/usr/share/licenses/$pkgname/LICENSE
     install -Dm755 ${pkgdir}/opt/${_pkgname}/README.md ${pkgdir}/usr/share/doc/$pkgname/README.md
     rm -rf ${pkgdir}/opt/${_pkgname}/{LICENSE,README.md,requirements.txt,assets}
 }
