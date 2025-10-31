@@ -1,8 +1,8 @@
 pkgbase = plasma6-applets-catwalk-git
 	pkgdesc = A simple plasmoid showing the total CPU usage. Visually made like RunCat.
-	pkgver = r11.01a51e7
+	pkgver = r12.eded6e7
 	pkgrel = 2
-	url = https://invent.kde.org/rocka/applet-catwalk
+	url = https://invent.kde.org/heddxh/applet-catwalk
 	arch = any
 	license = GPL-2.0-or-later
 	makedepends = cmake
@@ -17,7 +17,8 @@ pkgbase = plasma6-applets-catwalk-git
 	depends = kirigami
 	provides = plasma6-applets-catwalk
 	conflicts = plasma6-applets-catwalk
-	source = plasma6-applets-catwalk-git::git+https://invent.kde.org/rocka/applet-catwalk.git
+	replaces = plasma6-applets-catwalk
+	source = plasma6-applets-catwalk-git::git+https://invent.kde.org/heddxh/applet-catwalk.git
 	sha256sums = SKIP
 
 pkgname = plasma6-applets-catwalk-git
