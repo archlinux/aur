@@ -13,7 +13,7 @@
 pkgbase=bcompare
 pkgname=('bcompare' 'bcompare-kde6' 'bcompare-kde5' 'bcompare-kde4' 'bcompare-nautilus' 'bcompare-thunar' 'bcompare-cinnamon' 'bcompare-mate')
 pkgver=5.1.6.31527
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.scootersoftware.com'
 license=('custom')
@@ -37,6 +37,7 @@ options=('!strip') # Do not strip binaries because it breaks them down
   install -m 755 -d "${_install_dir}/usr/share/kde4/services"
 
   # Set up Gnome service menus
+  install -m 755 -d "${_install_dir}/usr/lib/nautilus/extensions-4"
   install -m 755 -d "${_install_dir}/usr/lib/nautilus/extensions-3.0"
   install -m 755 -d "${_install_dir}/usr/lib/nemo/extensions-3.0"
   install -m 755 -d "${_install_dir}/usr/lib/caja/extensions-3.0"
