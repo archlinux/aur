@@ -1,4 +1,5 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer: Magillos <kerown at gmail com>
+# Contributor: Carl Smedstad <carsme@archlinux.org>
 # Contributor: Andrew Steinke <rkcf@rkcf.me>
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: speps <speps at aur dot archlinux dot org>
