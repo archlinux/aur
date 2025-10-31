@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=pfamAnalyzeR
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('478cac0e5de36598963c2a633e337339')
-b2sums=('b5aa79be22a41968796c6d081d4f98215ffa3ee61b29853b7953650805576cbd8aa0d9a72d7aa9d34e55cb6ac755989f5c65fa735e7afc3e94e40b59397b641a')
+md5sums=('a6dd9cce90164364eff0d0f50c69a671')
+b2sums=('787d53d6762ab4c75200556ac7ec2ad54226419de03779b9165ece9b9cda74599fe6ddc97887aab2b017a5770a85360856e94d0dc7d0f7445bd56362d6fcefba')
 
 build() {
   mkdir build
