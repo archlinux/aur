@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=minet
-_pkgver=3.66.0
+_pkgver=3.68.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-infotheo
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f06cfbfd8fa78e4180d2ec7ceb1e2ed0')
-b2sums=('46d5f700d590828fc396f5972c1a8eae73d49291583b2db35bff3af1b805a294e9bc3a2a6c2bb7ec97ffa4817ef09a1eb8850f4861c160c64f5dbd5414a43cb2')
+md5sums=('fc1e11cc8030fcf8564e23b335fa181a')
+b2sums=('db1b2bc8a54262990ab9ab73975109c2011eea92637d33823ff81d61aae1f2cf3a3a9de11aed5c615b2358f1fd12615f3887f0b2361e8ee95870b0dcf2633728')
 
 build() {
   mkdir build
