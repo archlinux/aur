@@ -1,6 +1,6 @@
 pkgbase = debops-git
 	pkgdesc = Your Debian-based data center in a box
-	pkgver = 0.8.0
+	pkgver = 3.2.0.r210.gb5c5029ce
 	pkgrel = 1
 	url = https://github.com/debops/debops/
 	arch = any
@@ -10,10 +10,12 @@ pkgbase = debops-git
 	depends = python
 	depends = ansible
 	depends = python-dnspython
-	depends = python-netaddr
 	depends = python-ldap
-	depends = python-passlib
-	depends = python-future
+	depends = python-dotenv
+	depends = python-toml
+	depends = python-pyxdg
+	depends = python-distro
+	depends = python-gitpython
 	depends = util-linux
 	depends = encfs
 	depends = gnupg
@@ -23,4 +25,3 @@ pkgbase = debops-git
 	sha256sums = SKIP
 
 pkgname = debops-git
-
