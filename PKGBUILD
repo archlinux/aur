@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=TargetScore
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-targetscoredata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d91a9870c186da58f55e173c47055557')
-b2sums=('e9dbc1056147d236067442ef9cb36e5e775582b8c511a8079f47c26652c372f117d8d5866bc543555565349a953f9334475eaee91f47cf9737e6bc27fc422bbc')
+md5sums=('4a9ead8a97577086a52660386e3b6262')
+b2sums=('e70f483fe3bb6c0e43b1feaec76d0204ff95c9f148d06488532424c9f7772da3eff0806539144b89e8b23a1148c2f3711075195cac2fb1976af1da4cbaa4e2f7')
 
 build() {
   mkdir build
