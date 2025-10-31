@@ -31,7 +31,7 @@ sha256sums=('699f957a41d52c0b4fcbc2899a15a9182e91c1906e8b7d6534208004387161f4'
 package() {
     cd "$srcdir"
 
-    jar xf "${_name}-${pkgver}.jar" "resources/logisim/img/"
+    unzip "${_name}-${pkgver}.jar" -d "resources/logisim/img/"
 
     install -Dm644 ${_name}-${pkgver}.jar "${pkgdir}/usr/share/java/${_name}/${_name}.jar"
     install -Dm644 ${_name}.xml "${pkgdir}/usr/share/mime/packages/${_name}.xml"
