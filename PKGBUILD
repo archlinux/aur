@@ -5,7 +5,7 @@
 
 _pkgname="mindustry"
 pkgbase="$_pkgname"
-pkgver=152.2
+pkgver=153
 pkgrel=1
 pkgdesc="A sandbox tower defense game"
 url="https://github.com/Anuken/Mindustry"
@@ -29,15 +29,15 @@ source=(
   "$_pkgname-arc-$_build.$_pkgext"::"https://github.com/Anuken/Arc/archive/refs/tags/v$_build.$_pkgext"
 )
 sha256sums=(
-  'cf9f99cbbcba32ec931c4dfb6831d8dc5c713216b9e23e4da8227ba3c1271892'
-  '4fe52c9e25f1b05b3d2438c76ac7ef151ac77ad3199d091a50637aac9688ede5'
+  'aad8a07a27dc3e91dc1aff01fadefefda0fb3b8a431069d69798122af91ce714'
+  'd70e227aab93f9321997038fb19b10b8ee5d44405384513bde047c1d5a14ac48'
 )
 
 prepare() {
   ln -sf "$_pkgsrc_arc" Arc
 
   cd "$_pkgsrc"
-  sed -E -e '/archash/s&archash=.*$&archash='v${_build}'&' -i gradle.properties
+  sed -E -e '/archash/s&archash=.*$&'"archash=v${_build}&" -i gradle.properties
 }
 
 build() {
@@ -49,8 +49,7 @@ build() {
   JAVA_HOME="/usr/lib/jvm/java-${_java_ver}-openjdk" \
     ./gradlew --warning-mode=all --no-daemon dist -Pbuildversion="${_build}" desktop:dist server:dist
 
-  cd core/assets/icons
-  icns2png --extract icon.icns
+  icns2png --extract core/assets/icons/icon.icns
 }
 
 _package_common() {
@@ -78,7 +77,7 @@ END
   cd "$_pkgsrc"
   local icon_size
   for icon_size in 256 512 1024; do
-    install -Dm644 "core/assets/icons/icon_${icon_size}x${icon_size}x32.png" \
+    install -Dm644 "icon_${icon_size}x${icon_size}x32.png" \
       "$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/${pkgname%$_pkgtype}.png"
   done
 }
