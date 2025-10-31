@@ -35,6 +35,7 @@ source=(
   '0005-depmod-remove-depmod_hack_needed.patch'
   '0006-kernel-6.1-depmod-disable-for-packaging.patch'
   '0007-Sphinx-docutils-0.22-deprecated-SafeString-ErrorString.patch'
+  '0008-perl-5.41-precedence-warning-kernel-doc.patch'
   config  # the main kernel config file
 )
 validpgpkeys=(
@@ -49,6 +50,7 @@ md5sums=('b05c98624fa6da6a616268c1959152f7'
          'd15820a808c3cc159e6e5916a8c05e8f'
          'f24ee48c4c30cb428d0258aa3c25bd19'
          '25032e45b830ad198d84d7bb4a239da6'
+         'd7169181793cabdf3d7decb350db26b5'
          'c7f23b1bcb226f29451d47bb7ae8604b')
 sha256sums=('ad068bfdb604ec0f4f7de385c8e7ab944008aa78a4aeeca94f53206e6726bfda'
             'SKIP'
@@ -57,6 +59,7 @@ sha256sums=('ad068bfdb604ec0f4f7de385c8e7ab944008aa78a4aeeca94f53206e6726bfda'
             '64b521b3963781c60e9a33db40c523bf65a119cb1dfec182a737e90d2609df5a'
             '20d2afcc83f04d5409dcb5452763c625069dc00bfa7e60457902256dfbb58bdd'
             '6d886ff7f1fed2f32a9f2d8932c11786bb06742e203a55990c6b1f77a247be59'
+            '51a883e3151cbe3c565f4cdbca015c3b3979bec438b11f9716cb978f7f63e108'
             'ea7a177caf7170b9f3746732e3d32703357d19cbafd463069aa34a8d8386c1e9')
 b2sums=('ef86103aa6f3bb15770c38e47294f475fc8d879954ceca78b0b7f936f4800c6abc76a92aa8b75809ed5a83625ca442795a3d69c5afb4ef82d010cc89dfd632ca'
         'SKIP'
@@ -65,6 +68,7 @@ b2sums=('ef86103aa6f3bb15770c38e47294f475fc8d879954ceca78b0b7f936f4800c6abc76a92
         'a0cb29f2c4a4bbd815daa2fc399c7014dcc880a73130f5cf26a0e428b73e23911858a9274e15b62c3cd90a82f6c46c83ecfb4b2fdcdaef8e10bf24f6766ae049'
         '7b24fa23ffb4ef7c998e7b43a60d3df094220ff6e60f49cb4a9dcd712f657b40c022bf1b94f81d41ddb4008ef3200649a672025ccf63f50079320a951538cb4f'
         'f96a0bd31cf73a712347fc95dbffbc1979f4e8db93323a78717907904789dad99da9cc2d69d24f5b75a437874676ca7c12608691d0c301535867b9ddb09d621e'
+        'd1d8c0f1eae4fd6e45be97939a9ffbce90cd0561e4c2757da8d35ce7a01b9323a2c594225ef7c9383fef44786c71b8dfd2fb579f53529b66b7c6712c7f67d518'
         'c277e4a3bb39e126fc10d37fe98e34c93332c8f7db6d134fd6d2e7ce30ae4840596eff5fdf3ce85f923b944981bd3a2fea912c11dedaa25d04d460b6d112806a')
 
 export KBUILD_BUILD_HOST=archlinux
