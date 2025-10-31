@@ -1,7 +1,7 @@
 pkgbase = plasma6-applets-background-apps-git
 	pkgdesc = An Plasma applet to list XDG Desktop Background Apps
 	pkgver = r14.94fa3fa
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/jinliu/plasma-applet-background-apps
 	arch = x86_64
 	license = GPL-3.0-or-later
