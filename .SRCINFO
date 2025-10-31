@@ -1,0 +1,13 @@
+pkgbase = utctimerightnow
+	pkgdesc = Print real time UTC time
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://git.opentty.xyz/robogg133/utctimerightnow
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	source = git+https://git.opentty.xyz/robogg133/utctimerightnow.git
+	sha256sums = SKIP
+
+pkgname = utctimerightnow
