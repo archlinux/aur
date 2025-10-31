@@ -2,8 +2,8 @@
 
 _pkgbase=chordpro
 pkgname=${_pkgbase}-cli
-pkgver=6.080.1
-pkgrel=2
+pkgver=6.090.0
+pkgrel=1
 _pkgdownload=App-Music-ChordPro-${pkgver}
 pkgdesc="A lyrics and chords formatting program (CLI)"
 arch=('x86_64')
@@ -21,8 +21,6 @@ depends=(
     'perl-scalar-list-utils>=1.63'   # Scalar::Util and List::Util
     'perl-ref-util>=0.204'           # Ref::Util
     'perl-ipc-run3>=0.049'           # IPC::Run3
-    'wxwidgets-gtk3'
-    'webkit2gtk-4.1'
 
     'perl-text-layout>=0.045'               # Text::Layout (AUR)
     #'perl-string-interpolate-named>=1.060' # String::Interpolate::Named (incompatible version on AUR)
@@ -32,7 +30,7 @@ depends=(
     'perl-javascript-quickjs>=0.18'         # JavaScript::QuickJS (AUR)
     #'perl-harfbuzz-shaper>=0.026'          # HarfBuzz::Shaper (not found on AUR)
 )
-makedepends=('perl-local-lib' 'cpanminus')
+makedepends=('cpanminus')
 optdepends=(
     'perl-template-toolkit>=3.010: Only used by the LaTeX backend'
     'perl-latex-encode>=0.092.0: Only used by the LaTeX backend'
@@ -44,14 +42,17 @@ source=(
     "${_ghurl}/releases/download/R${pkgver}/${_pkgdownload}.tar.gz"
     "chordpro.sh"
 )
-sha256sums=('5379a6713a2932c7514ee9bec8976652ea275f5b97b89d00022b5c4d7f2bc086'
+sha256sums=('57c5e656f523bbb8250faedf3e5a138f2c5ada9daffa518e0bf05587c592140f'
             '259db24404125459b563f049f746c6844cf8eab46728d0c9935cc36765cb722d')
 
 build() {
     cd "${srcdir}/${_pkgdownload}"
     export PERL_MM_USE_DEFAULT=1
+    export PERL5LIB="${srcdir}/lib/perl5"
+    export PERL_LOCAL_LIB_ROOT="${srcdir}"
+    export PERL_MB_OPT="--install_base ${srcdir}"
+    export PERL_MM_OPT="INSTALL_BASE=${srcdir}"
     cpanm --notest --skip-satisfied --local-lib="${srcdir}" --verbose --installdeps .
-    eval "$(perl -I "${srcdir}/lib/perl5" -Mlocal::lib="${srcdir}")"
     perl Makefile.PL INSTALL_BASE="${srcdir}"
     make install
 }
@@ -59,7 +60,10 @@ build() {
 check() {
     cd "${srcdir}/${_pkgdownload}"
     export PERL_MM_USE_DEFAULT=1
-    eval "$(perl -I "${srcdir}/lib/perl5" -Mlocal::lib="${srcdir}")"
+    export PERL5LIB="${srcdir}/lib/perl5"
+    export PERL_LOCAL_LIB_ROOT="${srcdir}"
+    export PERL_MB_OPT="--install_base ${srcdir}"
+    export PERL_MM_OPT="INSTALL_BASE=${srcdir}"
     make test
 }
 

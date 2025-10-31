@@ -1,0 +1,4 @@
+[chordpro-cli]
+source = 'github'
+github = 'ChordPro/chordpro'
+use_latest_release = 'true'
