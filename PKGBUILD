@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Heatplus
-_pkgver=3.16.0
+_pkgver=3.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-limma
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('daee2daff8205bd63acb252c388b0097')
-b2sums=('2c68aa85d692b36a13b1d1afe8f0cd35047a69f59ee917b194100a05f26b1bcd94e24341c63aad06228cbc5b75fd696a2706f4152efd014d73154c5e5bcf75ad')
+md5sums=('2fc31223abae7097ed60fe4a2a61e26f')
+b2sums=('53d16939266a56feec3060c38c6237949254221cf125bc841fc6656d4e2cd5786e1a00a12b4a5d15ffd3f8a1d339dc10ad63e316fc2b5ef8ab3a785a9b80b077')
 
 build() {
   mkdir build
