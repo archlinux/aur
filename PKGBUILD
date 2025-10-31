@@ -1,7 +1,7 @@
 # Maintainer: Luke Arms <luke@arms.to>
 
 pkgname=babel-preset-env
-pkgver=7.28.3
+pkgver=7.28.5
 pkgrel=1
 pkgdesc="A Babel preset for each environment."
 arch=('any')
@@ -15,7 +15,7 @@ replaces=('nodejs-babel-preset-env')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/@babel/preset-env/-/preset-env-$pkgver.tgz"
     LICENSE)
 noextract=($pkgname-$pkgver.tgz)
-sha512sums=('44e88370cf866d854f60139e091eae0572a4429044c4b97c93d1ced7281713276cdfd8febc20ac8e68fb4bc18e9e2650944b3cd5096474965eefa2292d28aaa6'
+sha512sums=('4b7ea63a88b549be85cfdf1f05f13e5194a9630e66266d0d507b482ab3ae35ca9e15abb2d49e9d22f5e6d8a4552a86ce49a1aae2dfe105774de07194df02fd5a'
             '29844c3773154ee8b2e579050c77793e74261da427b77cf5ea7b010de3f167d60d9aaec8165b25a41065477508fb3be56c47a6ce8c0e61e2a297d6b4664398c5')
 
 package() {
