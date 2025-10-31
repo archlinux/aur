@@ -67,5 +67,5 @@ package() {
   # Link to /usr/bin
   chmod 755 "${pkgdir}/opt/${pkgname}/chrome-wrapper"
   install -dm755 "${pkgdir}/usr/bin"
-  ln -sf ${pkgdir}/opt/${pkgname}/chrome-wrapper ${pkgdir}/usr/bin/${_binaryname}
+  ln -sf /opt/${pkgname}/chrome-wrapper ${pkgdir}/usr/bin/${_binaryname}
 }
