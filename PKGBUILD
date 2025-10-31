@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SNAGEE
-_pkgver=1.48.0
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-hgu95av2.db
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cbe4d8f47e3e360a7fad46dc4608f181')
-b2sums=('bfaaa92dbd66f15a92728f5daaf80cc5446ca276ce1744d74ed97b036da628af954a5bef4f447e6059442b914a5701b6497325d7d18c43d13ba58a91356e6032')
+md5sums=('e532f75e1f86bc1115152898f4c47cbc')
+b2sums=('99f6add80e2e233d75d34673b947444a5bfd822285525f22d439f738837771eead03abd6b2ff537c653053b87df812d97d5d437153f855ae9afa95f2a8b6b9fe')
 
 build() {
   mkdir build
