@@ -10,7 +10,7 @@ url="https://github.com/Radekyspec/StartLive"
 license=('GPL-3.0-only')
 depends=('python' 'pyside6' 'python-pillow' 'python-qrcode' 'python-requests'
          'python-pysocks' 'python-obsws' 'python-keyring' 'python-darkdetect'
-         'python-pyqtdarktheme-fork')
+         'python-pyqtdarktheme-fork' 'python-semver')
 makedepends=('git')
 source=("${_pkgname}::git+https://github.com/Radekyspec/StartLive.git")
 sha256sums=('SKIP')

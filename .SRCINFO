@@ -16,6 +16,7 @@ pkgbase = startlive-git
 	depends = python-keyring
 	depends = python-darkdetect
 	depends = python-pyqtdarktheme-fork
+	depends = python-semver
 	provides = startlive
 	source = startlive::git+https://github.com/Radekyspec/StartLive.git
 	sha256sums = SKIP
