@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=flowWorkspaceData
-_pkgver=3.20.0
+_pkgver=3.21.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('1ecd3bd13070d38b09b8cdb45c165d94')
-b2sums=('31dc84623286d6102ddaf27147b007370a4f51916daac2029c50a6b9b36ac807baaca1d456ea715239dcbff627ebfc7b4ce588eced8b397f576c3f271ab32ab9')
+md5sums=('7f18f05a6cc28a35c52dd7ee63f897d7')
+b2sums=('d8394349b9fa68dc2c5b0202354f878e9132c98e34458748798b90e3e468b9499fbc9fa58ccb5c417c68b353ff4f00f553abc794be1b54d59e46723bd37f84be')
 
 build() {
   mkdir build
