@@ -1,0 +1,7 @@
+type          = process
+command       = /usr/bin/ivpn-service
+restart       = true
+working-dir   = /
+logfile       = /var/log/dinit/ivpn-service.log
+start-timeout = 0
+after         = network.target
