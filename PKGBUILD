@@ -5,7 +5,7 @@ pkgdesc='An open-source EDA infracstructure and tools from Netlist to GDS for AS
 arch=('x86_64')
 url='https://ieda.oscc.cc/'
 license=('MulanPSL-2.0')
-depends=('boost-libs' 'tcl' 'gflags' 'google-glog' 'python' 'zlib' 'eigen' 'libunwind' 'gmp' 'gtest')
+depends=('boost-libs' 'tcl' 'gflags' 'google-glog' 'python' 'zlib' 'eigen' 'libunwind' 'gmp' 'gtest' 'curl' 'qt5-base' 'onetbb')
 makedepends=('git' 'cmake' 'boost' 'swig' 'bison' 'flex' 'rust' 'ninja')
 source=(
     'git+https://gitee.com/oscc-project/iEDA'
@@ -51,10 +51,13 @@ package() {
     mkdir -p "$pkgdir"/usr/lib/ieda/
     find "$srcdir"/iEDA/build -iname '*.so' -exec install -Dm 755 {} "$pkgdir"/usr/lib/ieda/ ';'
     find "$srcdir"/iEDA/bin -iname '*.so' -exec install -Dm 755 {} "$pkgdir"/usr/lib/ieda/ ';'
+    find "$pkgdir"/usr/lib/ieda/ -iname '*.so' -exec patchelf --set-rpath '$ORIGIN' {} ';'
     mkdir -p "$pkgdir"/usr/bin/
     for bin in iEDA iSTA iIR iPower; do
         patchelf --set-rpath '$ORIGIN/../lib/ieda' "$srcdir"/iEDA/bin/"$bin"
         install -Dm 755 "$srcdir"/iEDA/bin/"$bin" "$pkgdir"/usr/bin/
     done
+    mkdir -p "$pkgdir"/usr/share/licenses/ieda-git/
+    install -Dm 644 "$srcdir"/iEDA/LICENSE "$pkgdir"/usr/share/licenses/ieda-git/
 }
 
