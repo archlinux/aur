@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=MsBackendMsp
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('77951b1e6ac0a91ddf04005372b6d76f')
-b2sums=('5dcf59c2690ea9d986b94a2da105e99a33a42a363456b6bbc0cd9324d1829156de70cb3b4a49416e4ea980a2f7e6172acb399b80879974cc6655122ffc68a86e')
+md5sums=('5afad68330fe13f7bd928e466f92efaf')
+b2sums=('87c01363cfb765ceff0f0bd82f708a7e9aab1ef47980259072043091a44ba102228a2ac2615707c80c81e98971c521e4967bc2f78bee37c9fcb9c9ae57e74a4f')
 
 build() {
   mkdir build
