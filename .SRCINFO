@@ -1,13 +1,13 @@
 pkgbase = r-fabia
 	pkgdesc = Factor Analysis for Bicluster Acquisition
-	pkgver = 2.54.0
+	pkgver = 2.56.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/fabia
 	arch = x86_64
 	license = LGPL-2.1-or-later
 	depends = r-biobase
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/fabia_2.54.0.tar.gz
-	md5sums = 5065f3343173e451c285d04027282204
-	b2sums = 9b9b5dd25fc320c8dc5e3ba6ebba51e394f6f16b64b2ab16a06c38ad0e35c692d86cc5b58c5de91841ed0005ca24763a955a5451d6e65d61f1c3be6df765a8c4
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/fabia_2.56.0.tar.gz
+	md5sums = ec80856950c59c5bdf2678571e9e1336
+	b2sums = ecfad713457ad1107934b18d3e6219a349d1ed6afc417f08ec9eb212f583916c09a12d88ce759e2e78ce408bf584829dbc5e887aea946055d2209db7c611192f
 
 pkgname = r-fabia
