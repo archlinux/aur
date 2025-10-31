@@ -1,13 +1,13 @@
 pkgbase = grist-desktop-bin
 	pkgdesc = Desktop Grist, packaged with Electron. Grist is a modern relational spreadsheet. It combines the flexibility of a spreadsheet with the robustness of a database.
 	pkgver = 0.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gristlabs/grist-desktop
 	arch = x86_64
 	license = Apache
 	depends = libxss
 	depends = libxtst
-	depends = libappindicator-gtk2
+	depends = libappindicator
 	depends = libnotify
 	depends = libxcrypt-compat
 	provides = grist-desktop

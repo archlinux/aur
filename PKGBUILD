@@ -4,13 +4,13 @@
 _app_name=grist-desktop
 pkgname="${_app_name}-bin"
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop Grist, packaged with Electron. Grist is a modern relational spreadsheet. It combines the flexibility of a spreadsheet with the robustness of a database."
 arch=('x86_64')
 url='https://github.com/gristlabs/grist-desktop'
 license=('Apache')
 provides=("${_app_name}")
-depends=('libxss' 'libxtst' 'libappindicator-gtk2' 'libnotify' 'libxcrypt-compat')
+depends=('libxss' 'libxtst' 'libappindicator' 'libnotify' 'libxcrypt-compat')
 options=(!debug)
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/gristlabs/${_app_name}/releases/download/v${pkgver}/${_app_name}-${pkgver}-linux-x86_64.AppImage"
         "grist16.png"

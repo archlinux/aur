@@ -7,6 +7,7 @@ set -e
 VERSION=$(wget --quiet -O - https://api.github.com/repos/gristlabs/grist-desktop/releases/latest | jq -r .tag_name)
 VERSION=${VERSION/v/}
 sed -i "s/pkgver=.*$/pkgver=$VERSION/" PKGBUILD
+sed -i "s/pkgrel=.*$/pkgrel=1/" PKGBUILD
 updpkgsums
 makepkg --printsrcinfo > .SRCINFO
 makepkg
