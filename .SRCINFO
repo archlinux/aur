@@ -1,6 +1,6 @@
 pkgbase = apifox-bin
 	pkgdesc = Apifox=Postman+Swagger+Mock+JMeter(Prebuilt version.Use system-wide electron).API 文档、API 调试、API Mock、API 自动化测试
-	pkgver = 2.7.44
+	pkgver = 2.7.45
 	pkgrel = 1
 	url = https://apifox.com/
 	arch = aarch64
@@ -10,16 +10,16 @@ pkgbase = apifox-bin
 	depends = java-runtime
 	depends = libxcrypt-compat
 	depends = python
-	provides = apifox=2.7.44
+	provides = apifox=2.7.45
 	conflicts = apifox
 	options = !strip
 	source = apifox.sh
 	source = LICENSE.html
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 	sha256sums = 3884df6451dd5aaadc867c2b6882a7feabccb10c7e1df98e48e9fe2414c9fe19
-	source_aarch64 = apifox-2.7.44-aarch64.zip::https://file-assets.apifox.com/download/Apifox-linux-arm64-latest.zip
-	sha256sums_aarch64 = 933646628e1b7994fffdd929d4a15d82112599852bf2ab20d261ad2145e278c5
-	source_x86_64 = apifox-2.7.44-x86_64.zip::https://file-assets.apifox.com/download/Apifox-linux-latest.zip
-	sha256sums_x86_64 = 98f1261e8c455f43f67c64c13c263ab353570dd181bd05b55d8d7c5a70ce39cb
+	source_aarch64 = apifox-2.7.45-aarch64.zip::https://file-assets.apifox.com/download/Apifox-linux-arm64-latest.zip
+	sha256sums_aarch64 = dc5c90e9fdc1d67c37835da82995cfd957057eb11de39d325e0317bc068b0093
+	source_x86_64 = apifox-2.7.45-x86_64.zip::https://file-assets.apifox.com/download/Apifox-linux-latest.zip
+	sha256sums_x86_64 = 326d64f0665d41cf37565c33bc21183e3fe22a161d15af25cf20926bbb70d7bd
 
 pkgname = apifox-bin
