@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=SUITOR
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('67328fb0eada749b897c5a0c1503c1bd')
-b2sums=('4a42cc01cebb171584b3efd734af9588af9137235f6499cf2d06c8452312f13f9125439083d6c752b1b1dcd2a6d421bbbedcc4665ecc1edbe4aee3fcacb3d72c')
+md5sums=('f8f5f1d3712f8f1d2e56bc0b20892b80')
+b2sums=('28a9bc674dd04373f2b1bf61149f26ba9a9d7844f985fd11918e34239121835f84edd3f11f4b25912127abbd3139a669ae94dfda6b5e0444f6a6bf43a662e8e0')
 
 build() {
   mkdir build
