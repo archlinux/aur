@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MANOR
-_pkgver=1.80.0
+_pkgver=1.82.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('81c11270ee4dc859c21b63ed99d378f3')
-b2sums=('7e017b70ff6b905225c0474c5a7b5fb3b493249d2a171f3d2c5af9097f16fe018a4c27926f7b415f181dd1bbc420d24a131a08d9dd38d1b7e6ac9b0d61ed6a77')
+md5sums=('0a7339813e2abfc11d36bcd1cfeb4987')
+b2sums=('87809e89e2f3a27620d7788520e276f8cd190abc1fee24a2ac0853cf57a9a86c00eb7a0522d3d3a1a8b3033f00dc59e16d836eec67eb6e0f0562c5fa5a7bd45b')
 
 build() {
   mkdir build
