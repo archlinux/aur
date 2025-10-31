@@ -1,0 +1,15 @@
+pkgbase = python-odsexport
+	pkgdesc = Python-native library to create ODS (Open Document Spreadsheet) documents
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/johndoe31415/odsexport
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	source = python-odsexport-0.0.4.tar.gz::https://github.com/johndoe31415/odsexport/archive/refs/tags/v0.0.4.tar.gz
+	sha256sums = d3ff6ebe53a2c1e511d54bae6d55929fea418f9c9f91328b71871ce4fcde66c0
+
+pkgname = python-odsexport
