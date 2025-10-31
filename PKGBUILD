@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rhdf5lib
-_pkgver=1.30.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,8 +21,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('09e9637ae298d6aa6919acd6c85659a8')
-b2sums=('52aa29b159b84eba44580c17608fff56cd02e38b631ddbd60f95e96179e7583c284e5811d0ec6977af216b15d8bc2175fc6c516dfcc37c8047b370e06268947a')
+md5sums=('3d99201552c1f32a3054e23f727daf28')
+b2sums=('4787a96eb24ffc9fa9fd6700cb7d09e253b60753875edcc7f47e3fba9563014cfc85c37c39d7b190b9c1b4ea6f9da581bd85b984895a7b4b88a1cccb4f1036b6')
 
 build() {
   mkdir build
