@@ -1,17 +1,17 @@
-# Maintainer: Ivan Zenin <i.zenin@gmx.com>
+# Contributor: Ivan Zenin <i.zenin@gmx.com>
 
 pkgname=linkchecker-git
-pkgver=latest
-pkgrel=4
+pkgver=v10.6.0.r38.gc9b07de2
+pkgrel=1
 pkgdesc="Check websites for broken links (development version)"
 arch=('i686' 'x86_64')
 url="https://linkchecker.github.io/linkchecker"
 license=("GPL")
-depends=("python>=3.5" "python-beautifulsoup4" "python-requests>=2.4" "python-xdg" "python-dnspython" "python-future")
+depends=("python>=3.5" "python-beautifulsoup4" "python-requests>=2.4" "python-dnspython")
 optdepends=("python-argcomplete")
 provides=('linkchecker')
 conflicts=('linkchecker')
-makedepends=('git')
+makedepends=('git' 'python-build' 'python-hatchling' 'python-installer' 'python-setuptools-scm' 'python-hatch-vcs')
 source=("git+https://github.com/linkchecker/linkchecker.git")
 md5sums=('SKIP')
 
@@ -25,8 +25,7 @@ pkgver() {
 
 package() {
   cd "${srcdir}"/linkchecker
-  python setup.py install \
-      --prefix=/usr \
-      --root="${pkgdir}"
+  python -m build --wheel --no-isolation
+  python -m installer --destdir="$pkgdir" dist/*.whl
   find "${pkgdir}" -type d -name .git -exec rm -r '{}' +
 }
