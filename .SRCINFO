@@ -1,13 +1,14 @@
 pkgbase = proxysql-bin
 	pkgdesc = High-performance MySQL proxy with query routing, caching, and load balancing
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://proxysql.com/
 	install = proxysql-bin.install
 	arch = x86_64
 	license = GPL3
 	depends = gnutls
-	depends = python
+	depends = openssl
+	optdepends = perl: for Galera cluster tools
 	provides = proxysql
 	conflicts = proxysql
 	backup = etc/proxysql.cnf

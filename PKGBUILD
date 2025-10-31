@@ -2,12 +2,13 @@
 
 pkgname=proxysql-bin
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='High-performance MySQL proxy with query routing, caching, and load balancing'
 arch=('x86_64')
 url="https://proxysql.com/"
 license=('GPL3')
-depends=('gnutls' 'python')
+depends=('gnutls' 'openssl')
+optdepends=('perl: for Galera cluster tools')
 provides=('proxysql')
 conflicts=('proxysql')
 backup=('etc/proxysql.cnf')
