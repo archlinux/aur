@@ -2,7 +2,7 @@
 
 _pkgname="kwin-effect-rounded-corners"
 pkgname="$_pkgname-x11-git"
-pkgver=0.8.5.r4.g806b6cd
+pkgver=0.8.5.r5.ge7462df
 pkgrel=1
 pkgdesc="Rounds the corners of your windows (x11)"
 url="https://github.com/matinlotfali/KDE-Rounded-Corners"
@@ -54,9 +54,7 @@ build() {
 }
 
 package() {
-  depends+=(
-    'kwin-effect-rounded-corners' # AUR
-  )
+  depends+=('kwin-effect-rounded-corners-git') # AUR
 
   DESTDIR="$pkgdir" cmake --install build
 
