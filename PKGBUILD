@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pgca
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('adbc99f3265bfad731f57185ee120dec')
-b2sums=('3610ab73817d30baf2c0b61c2edc83dd129e7d4bd2157a9229855aab698d2f1377e9a1f7ddfbf9b4bffc62d4296d43682bcbe58cae3d50b4a0a4579324fcca11')
+md5sums=('4464dffa04b3dc70617c800d03267d08')
+b2sums=('d35b103f35f14e62c485343d51ff52417cdf93725836d2947765eeb3c8f2e3bbe8dabb40bf8f645c287bed4f0822baecf91a803866d35bde72e68cdce1816fc6')
 
 build() {
   mkdir build
