@@ -10,7 +10,7 @@ arch=(
   'i686'
   'x86_64'
 )
-url="https://scm-pc-card.de"
+url="https://www.scm-pc-card.de/driver"
 license=('custom:Proprietary')
 depends=(
   'glibc'
@@ -24,8 +24,8 @@ backup=(
   "usr/lib/identiv/ini/${pkgname}.ini"
 )
 _pkgsrc="${pkgname}_${pkgver}_linux"
-source_i686=("${pkgname}-${pkgver}-i686.tar.gz::${url}/file/driver/Readers_Writers/${_pkgsrc//-/_}_rel.tar.gz")
-source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/file/driver/Readers_Writers/${_pkgsrc//-/_}_rel_64.tar.gz")
+source_i686=("${pkgname}-${pkgver}-i686.tar.gz::https://www.scm-pc-card.de/file/driver/Readers_Writers/${_pkgsrc//-/_}_rel.tar.gz")
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://www.scm-pc-card.de/file/driver/Readers_Writers/${_pkgsrc//-/_}_rel_64.tar.gz")
 sha256sums_i686=('791a80a1eeee6544d32e1dcaddb7383e6566a89b6f4a97ce0565dd8f274def65')
 sha256sums_x86_64=('4857f7402fb585909622020e1007c81d1ebc3c71574d6f1a993e03e5431331e4')
 
