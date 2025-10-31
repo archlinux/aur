@@ -1,0 +1,38 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "README.md",
+    "keys/**",
+    ".SRCINFO",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*.tmpfiles",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "desktop.patch",
+    "fix-shared-tinyxml2.patch",
+    "include_cstdint.patch",
+    "optional-pixman.patch",
+    "shared-fmt.patch",
+    "shared-libarchive.patch",
+    "shared-libwebp-found.patch",
+    "shared-libwebp.patch",
+    "shared-skia-deps.patch",
+    "shared_libjpeg-turbo.patch",
+]
+SPDX-FileCopyrightText = "Aseprite contributors"
+SPDX-License-Identifier = "LicenseRef-Aseprite-EULA"
