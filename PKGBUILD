@@ -51,7 +51,7 @@ prepare() {
      git revert --mainline 1 --no-commit "${_c}"
    done
 
-   local src
+  local src
    for src in "${source[@]}"; do
      src="${src%%::*}"
      src="${src##*/}"
@@ -60,8 +60,8 @@ prepare() {
      patch -Np1 < "../$src"
    done
 
-   export RUSTUP_TOOLCHAIN=stable
-   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
