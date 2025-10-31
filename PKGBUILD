@@ -2,7 +2,7 @@
 
 pkgname=repak
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Unreal Engine .pak file library and CLI in rust'
 url='https://github.com/trumank/repak'
 license=('Apache-2.0' 'MIT')
@@ -35,7 +35,4 @@ check() {
 package() {
 	cd $srcdir/repak
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/repak"
-    # for custom license, e.g. MIT
-    install -Dm644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 LICENSE-APACHE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
