@@ -6,8 +6,8 @@ _pkgbase=${pkgbase%-git}
 _pkg1=DankMaterialShell
 _pkg2=danklinux
 pkgname=($_pkgbase-git $_pkgbase-hyprland-git $_pkgbase-niri-git)
-pkgver=0.2.2.r3.g0ac3db6
-pkgrel=4
+pkgver=0.3.0.r3.g4ab5776.3c20e9e
+pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
 url="https://github.com/AvengeMedia/$_pkg1"
@@ -19,7 +19,6 @@ optdepends=('brightnessctl: Laptop display brightness control'
             'cava: Audio visualizer'
             'cliphist: Clipboard history functionality'
             'matugen: Dynamic wallpaper-based theming'
-            'networkmanager: Required for network management'
             'qt6-multimedia: Sound effect support'
             'power-profiles-daemon: Set power profile'
             'qt6ct: Qt6 application theming'
@@ -34,9 +33,15 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-	cd "$_pkg2"
-	git describe --long --tags --abbrev=7 --match="v*" HEAD |
-		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$_pkg2"
+    local VERSION1
+    VERSION1=$(git describe --long --tags --abbrev=7 --match="v*" HEAD 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || echo "0.0.0.r0.$(git rev-parse --short=7 HEAD)")
+    
+    cd "$srcdir/$_pkg1"
+    local VERSION2
+    VERSION2=$(git rev-parse --short=7 HEAD)
+    
+    echo "${VERSION1}.${VERSION2}"
 }
 
 build() {
