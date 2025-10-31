@@ -1,6 +1,6 @@
 pkgbase = wev-git
-	pkgdesc = Print wayland events, like xev(1)
-	pkgver = 1.0.0.r2.g54de46d
+	pkgdesc = A tool for debugging wayland events on a Wayland window, analagous to the X11 tool xev
+	pkgver = 1.1.0.r1.gb09b664
 	pkgrel = 1
 	url = https://git.sr.ht/~sircmpwn/wev
 	arch = i686
@@ -14,10 +14,8 @@ pkgbase = wev-git
 	depends = wayland
 	depends = libxkbcommon
 	provides = wev
-	source = wev::git+https://git.sr.ht/~sircmpwn/wev
-	source = wev-git.patch
+	conflicts = wev
+	source = wev-git::git+https://git.sr.ht/~sircmpwn/wev
 	sha256sums = SKIP
-	sha256sums = d93b7cfbee98559178b1e650ae1bbdd7bb2fe07376c76a0312cb17c7529472f9
 
 pkgname = wev-git
-

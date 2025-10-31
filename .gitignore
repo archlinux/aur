@@ -1,5 +1,5 @@
 *
+
+!.gitignore
 !.SRCINFO
 !PKGBUILD
-!.gitignore
-!wev-git.patch
