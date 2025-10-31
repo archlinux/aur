@@ -67,12 +67,6 @@ _get_pkgver() {
 
 
 prepare() {
-    _tag="${pkgver}"
-
-    cd "${srcdir}/${pkgname%-git}"
-    git checkout  "${_tag}"
-    git submodule update --init --recursive
-
     mkdir -p toolchain
 
 cat > toolchain/clang_x86_64-pc-linux-gnu.cmake<< EOF
@@ -121,6 +115,13 @@ EOF
 }
 
 build() {
+
+    _tag="${pkgver}"
+
+    cd "${srcdir}/${pkgname%-git}"
+    git checkout  "${_tag}"
+    git submodule update --init --recursive
+
 
 ### use the AUR package instead
 ##  pip install compdb
