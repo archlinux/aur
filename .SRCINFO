@@ -6,8 +6,8 @@ pkgbase = jellyfin-vue-git
 	install = jellyfin-vue.install
 	arch = any
 	license = GPL3
-	makedepends = nodejs>=22.11.0
-	makedepends = nodejs<23.0.0
+	makedepends = nodejs>=24.11.0
+	makedepends = nodejs<25.0.0
 	makedepends = npm>=10.9.0
 	makedepends = git
 	conflicts = jellyfin-vue

@@ -2,15 +2,15 @@
 
 pkgname=jellyfin-vue-git
 _pkgname=jellyfin-vue
-pkgver=r5325.32fb1c7f
+pkgver=r5709.961f50e1
 pkgrel=1
 pkgdesc='A modern web client for Jellyfin based on Vue'
 arch=('any')
 url='https://github.com/jellyfin/jellyfin-vue'
 license=('GPL3')
 makedepends=(
-  'nodejs>=22.11.0'
-  'nodejs<23.0.0'
+  'nodejs>=24.11.0'
+  'nodejs<25.0.0'
   'npm>=10.9.0'
   'git'
 )
