@@ -35,11 +35,16 @@ build() {
     # pip install of uv not required because uv is a makedep
     export PYTHONUNBUFFERED=1  # for logging
     uv sync --frozen --extra cpu --no-dev --no-editable --no-progress --python 3.12 --no-managed-python
+
     # delete any uv bytecode
     find ".venv" -type f -name "*.py[co]" -delete
     find ".venv" -type d -name "__pycache__" -delete
     # relocate without breaking
     sed -i "s|${srcdir}/immich-${pkgver}/machine-learning/\.venv|${_venvdir}|g" ".venv/bin/"*
+    ## I personally build this together with the immich PKGBASE with a symlinked srcdir which needs this
+    if [ -n "${override_srcdir}" ]; then
+        sed -i "s|${override_srcdir}/immich-${pkgver}/machine-learning/\.venv|${_venvdir}|g" ".venv/bin/"*
+    fi
 }
 
 package() {
