@@ -1,0 +1,16 @@
+pkgbase = yesvgmap-bin
+	pkgdesc = CLI app for generating SVG sprite maps from any number of standalone SVG images.
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/Blobfolio/yesvgmap
+	arch = x86_64
+	license = WTFPL
+	makedepends = tar
+	depends = glibc
+	depends = gcc-libs
+	provides = yesvgmap
+	conflicts = yesvgmap
+	source_x86_64 = https://github.com/Blobfolio/yesvgmap/releases/download/v0.8.2/yesvgmap_0.8.2-1_amd64.deb
+	sha256sums_x86_64 = 5056f1f87161e9cfade744fd0c824fc53d8d12bf409aba64fdf6fedbd23a3046
+
+pkgname = yesvgmap-bin

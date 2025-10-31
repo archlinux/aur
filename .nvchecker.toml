@@ -1,0 +1,5 @@
+[yesvgmap-bin]
+source = "github"
+github = "Blobfolio/yesvgmap"
+use_latest_release = true
+prefix = "v"
