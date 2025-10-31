@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rnaseqcomp
-_pkgver=1.38.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('723a0d8d2e5770ef70322d5d94907af1')
-b2sums=('43b73be293b8f2d746536ba4328af53036bcb8f695c8abebd4f428fcca1b251a25dbb1e3b70b402db20196c5b28f6337428a964dd0e4916e0b7703efc80f8e21')
+md5sums=('83c1b04f775c91892a2629a3da5465b2')
+b2sums=('a49d9a6b9368ac76e8ab824a7e560e5218a6ac3e0bd32a90f0a10878c3a1443acbdbff61ae318b03b59b31b7881677f2f14263741a6bb731a85a0d66476a6b3a')
 
 build() {
   mkdir build
