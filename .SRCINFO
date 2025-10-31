@@ -1,17 +1,17 @@
 pkgbase = utools-bin
 	pkgdesc = uTools Utilities.(Prebuilt version)新一代效率工具平台,自由组合插件应用,打造专属你的趁手工具集
-	pkgver = 7.3.1
+	pkgver = 7.3.2
 	pkgrel = 1
 	url = https://u.tools
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = electron22
-	provides = utools=7.3.1
+	provides = utools=7.3.2
 	conflicts = utools
 	options = !strip
-	source = utools-7.3.1.deb::https://open.u-tools.cn/download/utools_7.3.1_amd64.deb
-	source = LICENSE-7.3.1.html::https://u.tools/agreement.html
-	sha256sums = 89d1a81a63cb147e1ed4067dc6c7ba6158c9250e3e34d9e5d55e8988981a6a58
+	source = utools-7.3.2.deb::https://open.u-tools.cn/download/utools_7.3.2_amd64.deb
+	source = LICENSE-7.3.2.html::https://u.tools/agreement.html
+	sha256sums = ce0203a968a99b361b8ca29f017f37d3087a9a455c43004530c85d71dbae1fe2
 	sha256sums = 986625f2970528f051391a41b1ede526de70c896209fc5bf818934b88cc12cfd
 
 pkgname = utools-bin

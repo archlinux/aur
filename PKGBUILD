@@ -2,7 +2,7 @@
 pkgname=utools-bin
 _pkgname=uTools
 # 更新日志 https://www.u-tools.cn/docs/guide/changelog.html
-pkgver=7.3.1
+pkgver=7.3.2
 _electronversion=22
 pkgrel=1
 pkgdesc="uTools Utilities.(Prebuilt version)新一代效率工具平台,自由组合插件应用,打造专属你的趁手工具集"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::https://open.u-tools.cn/download/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE-${pkgver}.html::${url}/agreement.html"
 )
-sha256sums=('89d1a81a63cb147e1ed4067dc6c7ba6158c9250e3e34d9e5d55e8988981a6a58'
+sha256sums=('ce0203a968a99b361b8ca29f017f37d3087a9a455c43004530c85d71dbae1fe2'
             '986625f2970528f051391a41b1ede526de70c896209fc5bf818934b88cc12cfd')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
