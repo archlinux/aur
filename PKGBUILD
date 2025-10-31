@@ -1,16 +1,17 @@
-# Maintainer: PRESFIL <echo cHJlc2ZpbEBwcm90b25tYWlsLmNvbQo= | base64 -d>
+# Contributor: PRESFIL <echo cHJlc2ZpbEBwcm90b25tYWlsLmNvbQo= | base64 -d>
 # Contributor: Falk Alexander Seidl <fa@terminal.run>
 
 pkgname=python-pykeepass-git
 _gitname=pykeepass
-pkgver=4.0.7.r4.ge43ca6c # renovate: datasource=github-tags depName=libkeepass/pykeepass
+pkgver=v4.1.1.post1.r1.g2b051d9 # renovate: datasource=github-tags depName=libkeepass/pykeepass
 pkgrel=1
 pkgdesc="Python library to interact with keepass databases"
 arch=("any")
 license=("GPL3")
 url="https://github.com/libkeepass/pykeepass"
-depends=("python-argon2_cffi" "python-construct" "python-dateutil" "python-future" "python-lxml" "python-pycryptodomex" "python-setuptools")
+depends=("python-argon2_cffi" "python-construct" "python-lxml" "python-pycryptodomex" "python-setuptools")
 makedepends=("git" "python-build" "python-installer" "python-wheel")
+checkdepends=("python-pyotp")
 provides=(python-pykeepass)
 conflicts=(python-pykeepass)
 source=("git+https://github.com/libkeepass/pykeepass.git")
