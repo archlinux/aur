@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=valent-git
-pkgver=1.0.0.alpha.48.r16.gd7a6acd
+pkgver=1.0.0.alpha.48.r105.g46c87c9
 pkgrel=1
 pkgdesc="Connect, control and sync devices"
 arch=('x86_64' 'aarch64')
@@ -76,4 +76,7 @@ check() {
 
 package() {
   meson install -C build --no-rebuild --destdir "$pkgdir"
+
+  # No, really. Don't install the tests
+  rm -rfv "$pkgdir/usr/lib/installed-tests/"
 }
