@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-export WINEARCH=win32 WINEPREFIX="$HOME/.yatqa/wine" WINEDLLOVERRIDES="mscoree,mshtml="
+export WINEPREFIX="$HOME/.yatqa/wine" WINEDLLOVERRIDES="mscoree,mshtml="
 
 if [ ! -d "$HOME/.yatqa" ] ; then
     mkdir -p "$HOME/.yatqa/wine"

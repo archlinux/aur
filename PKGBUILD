@@ -4,7 +4,7 @@ pkgname="yatqa"
 _realpkgver="3.9.9b"
 pkgver="3.9.9.b"
 epoch="1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Tool for managing TeamSpeak 3 servers and instances"
 arch=("x86_64" "i686")
 url="http://yat.qa/"
@@ -18,7 +18,7 @@ source=("https://dl.yat.qa/stable/YaTQA-Setup_${_realpkgver}.exe"
         "yatqa.install"
         "LICENSE")
 sha256sums=('6695d89c716c34c849f301f627671fd76e93c84404c83de75664821d39a23524'
-            '57fcd761e93b6f5d8bd6f4e354aafc9174ecdeea0fe39ea89dc68245b3c9ce02'
+            '470b2fb010ae0c4424bc91e241735d9f984f3102a7c3ea4b5a941b6c9b3de55f'
             '98c8f8313858f9fd7a00f75001effcf298b8b1bc43e142ac3e361016f5be9c6f'
             '45fe54d9f4655abb6774a01c961ee547507a92c2499645164f14ea5b1dc1a55a'
             '252bc5cb7f5378f218d45cd1c27d59815074087f2c20314d68b4226730d417ad')
