@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154,SC2164,SC2148
 pkgname=memsed-git
 pkgver=0.1.r19.gcafbbe9
-pkgrel=2
+pkgrel=3
 pkgdesc="MEMory Search and EDit for Linux, inspired by Cheat Engine"
 arch=(x86_64)
 url="https://github.com/Willy-JL/MemSed"
@@ -56,5 +56,4 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 	#DESTDIR="$pkgdir/" cmake --install build //NYI
 	install -D -m755 "$srcdir/${pkgname%-git}"/build/memsed "${pkgdir}"/usr/bin/memsed
-    install -D -m644 "$srcdir/${pkgname%-git}"/LICENSE  "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }

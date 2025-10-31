@@ -1,7 +1,7 @@
 pkgbase = memsed-git
 	pkgdesc = MEMory Search and EDit for Linux, inspired by Cheat Engine
 	pkgver = 0.1.r19.gcafbbe9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Willy-JL/MemSed
 	arch = x86_64
 	license = GPL-3.0-only
