@@ -1,7 +1,7 @@
 # Maintainer: drzee <info@drzee.net>
 
 pkgname=aws-mountpoint-s3-bin
-pkgver=1.20.0
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="Offical AWS S3 mount tools. This allows mounting S3 buckets into the file system. Not full POSIX support, see: https://docs.aws.amazon.com/AmazonS3/latest/userguide/mountpoint.html for details"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ conflicts=("${pkgname%-bin}")
 source_x86_64=(https://s3.amazonaws.com/mountpoint-s3-release/${pkgver}/x86_64/mount-s3-${pkgver}-x86_64.tar.gz)
 source_aarch64=(https://s3.amazonaws.com/mountpoint-s3-release/${pkgver}/arm64/mount-s3-${pkgver}-arm64.tar.gz)
 # Checksums 
-sha256sums_aarch64=('117fefad5d6d63715ec1b77bbbd8b4bff43286e57365dc62509f027381dc0064')
-sha256sums_x86_64=('d31b3ab08c0cbe7fcf7c498e41f892f46c1082c18ba7e08b1db2afc9237bfb95')
+sha256sums_aarch64=('5b872a75fe7b86fb24f49d29d05c12590d5b4d69cc5bd274791778da9c558a9e')
+sha256sums_x86_64=('e4e04a0f2bb2bd5302084e3f96ea17671d0f85f67b2fd87fc6995ce729c62d28')
 noextract=()
 # We set options here to superseed the default makepkg.conf options. We dont whant debug build or strip debug info from the package. Its not relevant for a binary repackage of the upstream package.
 options=(!debug !strip)
