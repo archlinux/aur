@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=impute
-_pkgver=1.82.0
+_pkgver=1.84.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ makedepends=(
   gcc-fortran
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b0fba3dbe3128aaaf38e983413833383')
-b2sums=('8c411b3677125a53c8f8a3a51ae2c1e00d9ef332b53e8d5bb39918b0d87bf51e1950493773ca3beb34e5a1d888df634274f2efdd13e0368787b47136179334d3')
+md5sums=('ee7140a3554580cc68febaeb4612935c')
+b2sums=('bdf8598b844ca87fc999acf50e815930a8eb4e9bbf6d2cb5d5ff3edccdec8cf47e0eb64d4b0caef10c3d1f16a11b3af6baeecb0a7e8cb81b8002ff93bb1d48e3')
 
 build() {
   mkdir build
