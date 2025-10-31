@@ -3,7 +3,7 @@
 pkgname=certiliamiddleware
 pkgver=3.9.6
 pkgrel=1
-pkgdesc="Certilia Middleware for Certilia smart cards"
+pkgdesc="Certilia Middleware for AKD smart cards (Croatian eID, Certilia)"
 arch=("x86_64")
 url="https://www.certilia.com"
 license=("custom")

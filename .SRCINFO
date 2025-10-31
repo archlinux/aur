@@ -1,5 +1,5 @@
 pkgbase = certiliamiddleware
-	pkgdesc = Certilia Middleware for Certilia smart cards
+	pkgdesc = Certilia Middleware for AKD smart cards (Croatian eID, Certilia)
 	pkgver = 3.9.6
 	pkgrel = 1
 	url = https://www.certilia.com
