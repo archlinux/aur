@@ -1,6 +1,6 @@
 # Maintainer: Christopher Cooper <christopher@cg505.com>
 pkgname=openai-codex
-pkgver=0.52.0
+pkgver=0.53.0
 pkgrel=1
 pkgdesc="Lightweight coding agent that runs in your terminal"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ optdepends=(
 # LTO seems to cause build failures, details unclear
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/rust-v${pkgver}.tar.gz")
-b2sums=('08d8f582897dbbcaf871561648a48f1ac422ce3b5b04dfd6bf8cfa7a42fc33693c84dcb7fc46854812abbdbac301bd7072f1c94e54f77ac69b4043bdcc1193c1')
+b2sums=('cc97f0199630fca60269ffe1980e4ec72aa4b4e9148091b55a6c41c8626e5d30285a1e63ba2aca5e6b6cf3bbc4a5590ecee3491e0f08b0f7292f8eec7fac85a7')
 
 prepare() {
     cd "codex-rust-v${pkgver}/codex-rs"
@@ -38,7 +38,9 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 
-    cargo build --release --frozen
+	# Only build needed packages to save on build time.
+	# Skip dev dependencies like *_test_support.
+	cargo build --release --frozen -p codex-cli -p codex-exec -p codex-linux-sandbox
 }
 
 # check() omitted - there seems to be some irrelevant test failures
