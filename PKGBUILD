@@ -5,8 +5,8 @@
 # Contributor: Terrence
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
-pkgrel=2
-pkgver=2.1.0
+pkgrel=1
+pkgver=2.2.0
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('AGPL-3.0-only')
@@ -17,10 +17,6 @@ makedepends=('git' 'pnpm' 'jq' 'ts-node')
 # combination of server/CLI deps, see split package functions
 # for individual deps and commentary
 
-# PYTHON V3.12 REQUIRED
-#   Current incompatibility with arch base version of python (3.13)
-#   so depend on python312. Cannot use python=3.12 since the AUR
-#   package does not contain a provides=.
 # dependencies generated from base-images repository
 # https://github.com/immich-app/base-images/blob/main/server/Dockerfile
 # 1.101.0-2: liborc dep found to be not required
@@ -46,7 +42,7 @@ depends=('valkey' 'postgresql>=14' 'nodejs>=20'
     # need to ensure this matches sharp depend version
     # because otherwise a local copy will be built
     # breaking heif conversion
-    'libvips>=8.17.1'
+    'libvips>=8.17.2'
     'openslide'
     'poppler-glib'
     'imagemagick'
@@ -75,8 +71,8 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
         'https://download.geonames.org/export/dump/cities500.zip'
         'https://download.geonames.org/export/dump/admin1CodesASCII.txt'
         'https://download.geonames.org/export/dump/admin2Codes.txt'
-        'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson')
-sha256sums=('acc20b8d4cc2b9024f934bd74f9a544493ea13b3bd0a8039ddd70677a5fb071c'
+        'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/latest/geojson/ne_10m_admin_0_countries.geojson')
+sha256sums=('9a10c6ff35191787f6a42c79fe1ac83be950eaa2a2723eb936a132ed3b639b94'
             '475291c45ec0a20b52f7ff927ddd7299f6f9e848e01145817066ff194cd50f07'
             'SKIP'
             'f7821053ceb6f0cf3a2b9a53b7795a7c56a74d3e0239ac38fa734642e9faf833'
