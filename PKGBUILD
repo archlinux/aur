@@ -2,46 +2,54 @@
 
 pkgname=ymir-emu
 _pkgname=ymir
-pkgver=0.1.8
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Sega Saturn Emulator"
 arch=("x86_64")
 url="https://github.com/StrikerX3/Ymir"
 license=("GPL3")
 depends=("sdl3")
-makedepends=("cmake" "clang" "git" "ninja")
+makedepends=("cmake" "clang" "git" "ninja" "python-jinja")
 source=(
     "ymir::git+${url}.git#tag=v${pkgver}"
     ymir-emu.desktop
+    v0.2.0.patch # Fixed in b2ef0f52e1666335fc95e56c1fe0ebae086cd175 but needs to be applied to the 0.2.0 release
 )
 sha256sums=(
     "SKIP"
     "60aa8a14977ebe5a4510c20a9da6bf31a86bb6525e50692d8d0cf71d515c6bd8"
+    "9fafa7633fc4349ccb7ef5b2dac126f11ea2c2ae4c0a0d855b87bb5cf2638592"
 )
 
 prepare() {
     cd $srcdir/ymir
+    patch -uN apps/ymir-sdl3/src/util/std_lib.cpp $srcdir/v0.2.0.patch
     git submodule update --init --recursive
 }
 
 build() {
+    export CC=clang
+    export CXX=clang++
+    cd $srcdir/ymir
     local cmake_options=(
-        -B "build"
-        -S "ymir"
-        -D CMAKE_C_COMPILER="clang"
-        -D CMAKE_CXX_COMPILER="clang++"
+        -S .
+        -B build
+        -G Ninja
+        -D CMAKE_TOOLCHAIN_FILE=vcpkg/scripts/buildsystems/vcpkg.cmake
         -D Ymir_AVX2=ON
+        -D Ymir_ENABLE_TESTS=OFF
         -D Ymir_ENABLE_DEVLOG=OFF
         -D Ymir_ENABLE_IMGUI_DEMO=OFF
-        -G Ninja
+        -D Ymir_ENABLE_SANDBOX=OFF
         --fresh
     )
     cmake "${cmake_options[@]}"
-    cmake --build "build"
+    cmake --build build
 }
 
 package() {
+    cd $srcdir/ymir
     DESTDIR="${pkgdir}" cmake --install "build"
-    install -Dm644 ymir-emu.desktop -t ${pkgdir}/usr/share/applications
-    install -Dm644 "ymir/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -Dm644 $srcdir/ymir-emu.desktop -t ${pkgdir}/usr/share/applications
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
