@@ -59,7 +59,7 @@ prepare() {
   msg2 "Patching software Arch Linux ready ..."
   patch -N -p1 --follow-symlinks -i "${srcdir}/arch-adaption.patch"
 
-  msg2 "Patching shabeng line to bne explicitly 'python2' ..."
+  msg2 "Patching shebang line to be explicitly 'python2' ..."
   patch -N -p1 --follow-symlinks -i "${srcdir}/python2.patch"
 
   printf '%s\n' "${url}" > "${srcdir}/website.url"
