@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=BG2
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,8 +23,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9676112992c1f1a21f62d31bae00303b')
-b2sums=('dedc8eb10f2ed115ebcbf2e165952b0472aa7c9b85a7a86330703d896cf84d9e5cdf134ddb9bcd81d7f43b4fb555516ae6156eca484b235d66aa0cfe29f33e73')
+md5sums=('ce53e5c51ae65c0a155f5938bf2076f6')
+b2sums=('f0e304e481b19e6140090668d1e704a36f2422906e88cb7e5ffdc62f4c53a6dfc34a01ee0e5b4073a23227d9e9e6103c92b50126c11f7e06d80791bae73742a1')
 
 build() {
   mkdir build
