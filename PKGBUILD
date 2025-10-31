@@ -1,52 +1,82 @@
-# Maintainer: Bjoern Franke <bjo@nord-west.org>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Bjoern Franke <bjo@nord-west.org>
 # Contributor: egore911
+
 pkgname=scmccid
 pkgver=5.0.35
-pkgrel=5
+pkgrel=6
 pkgdesc="Binary driver for the SCM smart card readers"
-arch=('i686' 'x86_64')
-url="http://support.identiv.com/products/"
-license=('custom')
-depends=('pcsclite' 'libusb-compat')
-makedepends=('unzip')
-backup=('usr/local/scm/ini/scmccid.ini')
-install=$pkgname.install
-source_x86_64=(https://scm-pc-card.de/file/driver/Readers_Writers/scmccid_5.0.35_linux_rel_64.tar.gz)
-source_i686=(https://scm-pc-card.de/file/driver/Readers_Writers/scmccid_5.0.35_linux_rel.tar.gz)
-
+arch=(
+  'i686'
+  'x86_64'
+)
+url="https://scm-pc-card.de"
+license=('custom:Proprietary')
+depends=(
+  'glibc'
+  'pcsclite'
+  'libusb-compat'
+)
+makedepends=(
+  'xxd'
+)
+backup=(
+  "usr/lib/identiv/ini/${pkgname}.ini"
+)
+_pkgsrc="${pkgname}_${pkgver}_linux"
+source_i686=("${pkgname}-${pkgver}-i686.tar.gz::${url}/file/driver/Readers_Writers/${_pkgsrc//-/_}_rel.tar.gz")
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/file/driver/Readers_Writers/${_pkgsrc//-/_}_rel_64.tar.gz")
 sha256sums_i686=('791a80a1eeee6544d32e1dcaddb7383e6566a89b6f4a97ce0565dd8f274def65')
 sha256sums_x86_64=('4857f7402fb585909622020e1007c81d1ebc3c71574d6f1a993e03e5431331e4')
 
+# https://everydaywithlinux.blogspot.com/2012/11/patch-strings-in-binary-files-with-sed.html
+_patch_strings_in_file() {
+  local FILE="$1"
+  local PATTERN="$2"
+  local REPLACEMENT="$3"
+  
+  STRINGS=$(strings ${FILE} | grep ${PATTERN} | sort -u -r)
+  if [ "${STRINGS}" != "" ] ; then
+    echo "Patching file '${FILE}'"
+    for OLD_STRING in ${STRINGS} ; do
+      NEW_STRING=${OLD_STRING//${PATTERN}/${REPLACEMENT}}
+      OLD_STRING_HEX="$(echo -n "${OLD_STRING}" | xxd -g 0 -u -ps -c 256 | tr -d '\n')"
+      NEW_STRING_HEX="$(echo -n "${NEW_STRING}" | xxd -g 0 -u -ps -c 256 | tr -d '\n')"
+      if [ ${#NEW_STRING_HEX} -le ${#OLD_STRING_HEX} ] ; then
+        while [ ${#NEW_STRING_HEX} -lt ${#OLD_STRING_HEX} ] ; do
+          NEW_STRING_HEX="${NEW_STRING_HEX}00"
+        done
+        echo -n "Replacing ${OLD_STRING} with ${NEW_STRING}... "
+        hexdump -ve '1/1 "%.2X"' ${FILE} | \
+          sed "s/${OLD_STRING_HEX}/${NEW_STRING_HEX}/g" | \
+          xxd -r -p > ${FILE}.tmp
+        chmod --reference ${FILE} ${FILE}.tmp
+        mv ${FILE}.tmp ${FILE}
+        echo "Done!"
+      else
+        echo "New string '${NEW_STRING}' is longer than old string '${OLD_STRING}'. Skipping."
+      fi
+    done
+  fi
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgsrc}"
+  sed -i 's|/usr/local/scm/ini|/usr/lib/identiv/ini|g' 'ReadmeFirst.txt'
+
+  cd "proprietary/scmccid.bundle/Contents/Linux"
+  _patch_strings_in_file libscmccid.so.* '/usr/local' '/usr/lib'
+}
+
 package() {
-	cd "scmccid_${pkgver}_linux"
+  cd "${srcdir}/${_pkgsrc}"
+  install -vDm644 "${pkgname}.ini"  "${pkgdir}/usr/lib/identiv/ini/${pkgname}.ini"
+  install -vDm644 "ReadmeFirst.txt" "${pkgdir}/usr/share/doc/${pkgname}/README.txt"
 
-	bundle_path=`pkg-config libpcsclite --variable=usbdropdir`
-
-	# Installation of ini file
-	# This path seems to be hardcoded in the driver. Maybe it can be modified with sed
-	mkdir -p $pkgdir/usr/local/scm/ini
-	cp -f scmccid.ini $pkgdir/usr/local/scm/ini/
-
-	# Installation of the driver bundle(s)
-	mkdir -p $pkgdir/$bundle_path
-	cp -rf ./proprietary/*.bundle $pkgdir/$bundle_path
-	chmod -R 755 $pkgdir/$bundle_path
-
-	# Create symbolic link from open source pcscd bundle path
-	mkdir -p $pkgdir/usr/local/pcsc/drivers
-
-	cd ./proprietary
-	for bundle in *.bundle; do
-		ln -sf $bundle_path/$bundle $pkgdir/usr/local/pcsc/drivers/$bundle
-	done
-	cd ..
-
-	# Copy license to standard location
-	mkdir -p $pkgdir/usr/share/licenses/$pkgname
-	cp ./proprietary/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-
-	# Copy help to standard location
-	# Contains instructions to customize the scmccid.ini
-	mkdir -p $pkgdir/usr/share/doc/$pkgname
-	cp ./ReadmeFirst.txt $pkgdir/usr/share/doc/$pkgname/
+  cd "proprietary"
+  local pcslite_usbdropdir="$(pkg-config libpcsclite --variable=usbdropdir)"
+  install -vd "${pkgdir}${pcslite_usbdropdir}"
+  cp -va --no-preserve=ownership ./*.bundle -t "${pkgdir}${pcslite_usbdropdir}"
+  
+  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
