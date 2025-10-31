@@ -1,9 +1,9 @@
-# Maintainer: Andy Bao <contact@andybao.me>
+# Maintainer: Enova
 _pkgname=cinny-electron
 pkgname="${_pkgname}-git"
 pkgver=r5.afeeed0
 pkgrel=1
-pkgdesc="Yet another matrix client — unofficial electron version"
+pkgdesc="Yet another matrix client — Unofficial electron version"
 arch=("x86_64")
 url="https://github.com/Enovale/cinny-electron"
 license=('AGPL3')
