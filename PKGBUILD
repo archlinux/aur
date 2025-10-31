@@ -1,7 +1,7 @@
 # Maintainer: Robin Ekman < robin.seth.ekman [at] gmail [dot] com >
 
 pkgname=python-ass
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A library for parsing and manipulating Advanced SubStation Alpha subtitle files."
 url='http://github.com/chireiden/python-ass'
@@ -19,9 +19,7 @@ checkdepends=(
 source=(
     "https://github.com/chireiden/python-ass/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=(
-    "4135bcab58910707c63c2011a242b19cc1b0e39265fc2f325abf02fde0a6415f"
-)
+sha256sums=('70fa1b1b8ec73caeba6255b2c1f393868941f7fcfe380ca9d7babc5293f86770')
 
 build() {
     cd "${pkgname}-${pkgver}"
