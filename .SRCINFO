@@ -1,6 +1,6 @@
 pkgbase = xlibre-server-bin
 	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org X server (binary release)
-	pkgver = 25.0.0.13
+	pkgver = 25.0.0.14
 	pkgrel = 1
 	url = https://x11libre.net
 	install = xlibre-server-bin.install
@@ -54,9 +54,9 @@ pkgbase = xlibre-server-bin
 	conflicts = xf86-video-modesetting
 	replaces = glamor-egl
 	replaces = xf86-video-modesetting
-	noextract = xlibre-server-25.0.0.13-1-x86_64.pkg.tar.zst
+	noextract = xlibre-server-25.0.0.14-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://x11libre.net/repo/arch_based/x86_64/xlibre-xserver-25.0.0.13-1-x86_64.pkg.tar.zst
-	sha256sums = 55071a030c017f55e697122d642dbffc1a5f2f261ad85266a8068e68b3cd3057
+	source = https://x11libre.net/repo/arch_based/x86_64/xlibre-xserver-25.0.0.14-1-x86_64.pkg.tar.zst
+	sha256sums = 52af189da3e146f060dce4dff2afd7884fd5538042667a9e28518f3da53c562a
 
 pkgname = xlibre-server-bin
