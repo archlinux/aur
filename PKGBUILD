@@ -5,7 +5,7 @@
 pkgname=python-galsim-git
 _pkgname="${pkgname%-git}"
 _pkg=GalSim
-pkgver=2.7.0.r0.g41106ab80
+pkgver=2.7.2.r0.g4c04a1ea4
 _pkgver="${pkgver%.r*}"
 pkgrel=1
 pkgdesc="Modular galaxy image simulation toolkit"
@@ -30,6 +30,7 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
+	sed -e 's/=c++11/=c++14/g' -i setup.py
 	python -m build --wheel --no-isolation --skip-dependency-check
 }
 
