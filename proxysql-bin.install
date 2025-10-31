@@ -1,0 +1,47 @@
+post_install() {
+  # Create /var/lib/proxysql directory
+  if [ ! -d /var/lib/proxysql ]; then
+    mkdir /var/lib/proxysql
+  fi
+
+  # Create proxysql system user if it doesn't exist
+  if ! id -u proxysql > /dev/null 2>&1; then
+    useradd -r -U -s /bin/false -d /var/lib/proxysql -c "ProxySQL Server" proxysql
+  fi
+
+  # Set ownership
+  chown -R proxysql: /var/lib/proxysql
+  chown root:proxysql /etc/proxysql.cnf
+  chmod 640 /etc/proxysql.cnf
+
+  echo "==> ProxySQL has been installed."
+  echo "==> To start ProxySQL: systemctl start proxysql"
+  echo "==> To enable on boot: systemctl enable proxysql"
+}
+
+post_upgrade() {
+  # Set ownership on upgrade
+  chown -R proxysql: /var/lib/proxysql
+  chown root:proxysql /etc/proxysql.cnf
+  chmod 640 /etc/proxysql.cnf
+}
+
+pre_remove() {
+  # Stop service before removal
+  if systemctl is-active proxysql.service >/dev/null 2>&1; then
+    systemctl stop proxysql.service
+  fi
+  if systemctl is-active proxysql-initial.service >/dev/null 2>&1; then
+    systemctl stop proxysql-initial.service
+  fi
+}
+
+post_remove() {
+  # Note: We don't remove the user/group or data directory
+  # This follows Arch Linux packaging guidelines for daemon users
+  echo "==> The proxysql user, group, and /var/lib/proxysql have been preserved."
+  echo "==> Remove them manually if no longer needed:"
+  echo "    userdel proxysql"
+  echo "    groupdel proxysql"
+  echo "    rm -rf /var/lib/proxysql"
+}
