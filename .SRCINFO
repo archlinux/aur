@@ -1,0 +1,40 @@
+pkgbase = shadps4-qtlauncher-git
+	pkgdesc = Official Qt launcher for shadps4 emulator
+	pkgver = r144.55bb7f7
+	pkgrel = 1
+	url = https://shadps4.net/
+	arch = aarch64
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = cmake>=3.16.3
+	makedepends = fmt>=10.2
+	makedepends = git
+	makedepends = qt6-base
+	makedepends = qt6-multimedia
+	makedepends = qt6-tools
+	makedepends = toml11>=4.2
+	makedepends = vulkan-headers>=1:1.4.329
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = pugixml>=1.14
+	depends = sdl3>=3.1.8
+	optdepends = shadps4
+	provides = shadps4-qtlauncher=r144.55bb7f7
+	conflicts = shadps4-qtlauncher
+	source = shadps4-qtlauncher::git+https://github.com/shadps4-emu/shadps4-qtlauncher.git
+	source = nlohmann-json::git+https://github.com/nlohmann/json.git
+	source = volk::git+https://github.com/zeux/volk.git
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = shadps4-qtlauncher-git
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = pugixml>=1.14
+	depends = sdl3>=3.1.8
+	depends = libfmt.so
+	depends = qt6-base
+	depends = qt6-multimedia
