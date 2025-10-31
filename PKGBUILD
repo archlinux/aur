@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ACME
-_pkgver=2.64.0
+_pkgver=2.66.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   r-biocgenerics
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('20a96ce1d2b153d4b2f669a868e78aa3')
-b2sums=('8603290b8aeff0a6a6afceb4e26eff9a00714e9a80be5324a25097e65144219600e8135588c872b3c6caa44821d5a2af49c23154bc50f4ba9e792d964a0a2ca3')
+md5sums=('25c0151143b6187331f05e8c8c5cb027')
+b2sums=('191e9cfb6b492fa35211fe6e9ffedc7ca617eb35c05b06e2a3f07b053dfbb9efc8a6f3d62a2aff3c5be4c1b288e4972839adc19359f1f0628f2066171f620e16')
 
 prepare() {
   sed -i ${srcdir}/${_pkgname}/src/*.c \
