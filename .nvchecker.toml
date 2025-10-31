@@ -1,0 +1,5 @@
+[guff-bin]
+source = "github"
+github = "Blobfolio/guff"
+use_latest_release = true
+prefix = "v"
