@@ -1,7 +1,7 @@
 pkgbase = kwin-effect-rounded-corners-git
 	pkgdesc = Rounds the corners of your windows (wayland)
-	pkgver = 0.7.2.r61.g6451dfe
-	pkgrel = 1
+	pkgver = 0.8.5.r5.ge7462df
+	pkgrel = 2
 	url = https://github.com/matinlotfali/KDE-Rounded-Corners
 	arch = x86_64
 	license = GPL-3.0-only
@@ -10,8 +10,8 @@ pkgbase = kwin-effect-rounded-corners-git
 	makedepends = git
 	makedepends = ninja
 	depends = kwin
-	optdepends = kwin-effect-rounded-corners-x11: for X11 support
-	provides = kwin-effect-rounded-corners=0.7.2.r61
+	optdepends = kwin-effect-rounded-corners-x11-git: for X11 support
+	provides = kwin-effect-rounded-corners=0.8.5.r5
 	conflicts = kwin-effect-rounded-corners
 	source = kde-rounded-corners::git+https://github.com/matinlotfali/KDE-Rounded-Corners.git
 	sha256sums = SKIP

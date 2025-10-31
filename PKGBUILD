@@ -3,8 +3,8 @@
 
 _pkgname="kwin-effect-rounded-corners"
 pkgname="$_pkgname-git"
-pkgver=0.7.2.r61.g6451dfe
-pkgrel=1
+pkgver=0.8.5.r5.ge7462df
+pkgrel=2
 pkgdesc="Rounds the corners of your windows (wayland)"
 url="https://github.com/matinlotfali/KDE-Rounded-Corners"
 license=("GPL-3.0-only")
@@ -20,7 +20,7 @@ makedepends=(
   'ninja'
 )
 optdepends=(
-  'kwin-effect-rounded-corners-x11: for X11 support'
+  'kwin-effect-rounded-corners-x11-git: for X11 support'
 )
 
 provides=("$_pkgname=${pkgver%%.g*}")
