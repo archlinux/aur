@@ -1,13 +1,13 @@
 pkgbase = r-yeastcc
 	pkgdesc = Spellman et al. (1998) and Pramila/Breeden (2006) yeast cell cycle microarray data
-	pkgver = 1.48.0
+	pkgver = 1.49.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/yeastCC
 	arch = any
 	license = Artistic-2.0
 	depends = r-biobase
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/yeastCC_1.48.0.tar.gz
-	md5sums = fb9396dbcff7442cb6fc4b047b57ccc8
-	b2sums = e502adbfe120f3a078a48dc9e3df40a6448e5e3f82e60ab6ef235e3c363b4deb7f03720b8864fac2b4cbc629a7113fc4ad8227f3182296c02a1eaed192e5a94a
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/yeastCC_1.49.0.tar.gz
+	md5sums = e344a4f8bfa91dbb6000b04143d6209a
+	b2sums = f037fee0f9ffa0a8646aa5d4c13f9c319912c524980f71328b61bdddb09f07fc03985d1007ee75943d3cc6b0e981de6ede44c218d2e0b544b3277dac03620178
 
 pkgname = r-yeastcc
