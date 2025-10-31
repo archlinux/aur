@@ -1,7 +1,7 @@
 # Maintainer: Luis Bocanegra <luisbocanegra17b at gmail dot com>
 _gitname=plasma-panel-colorizer
 pkgname=plasma6-applets-panel-colorizer
-pkgver=5.2.0
+pkgver=5.2.1
 pkgrel=1
 pkgdesc="Latte-Dock and WM status bar customization features for the KDE Plasma panels"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('libplasma' 'python' 'python-dbus')
 makedepends=('gcc' 'extra-cmake-modules' 'gettext')
 optdepends=('spectacle: take preset preview support')
 source=("${_gitname}-${pkgver}.tar.gz::$url/archive/v${pkgver}/${_gitname}-${pkgver}.tar.gz")
-sha256sums=('c814dca64cbc638402c45a6fb1557b820579ee9234b4df45a787a7ba750c1bb2')
+sha256sums=('1a46e5adb4339807732488f8cf7506d37462928b5824313614c5e7bd43ebb463')
 
 build() {
   cd "${srcdir}/${_gitname}-$pkgver"
