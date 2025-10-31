@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts54
-pkgver=5.4.300
+pkgver=5.4.301
 pkgrel=1
 pkgdesc='LTS 5.4 Linux'
 url="https://www.kernel.org/"
@@ -17,7 +17,6 @@ options=('!strip')
 _srcname=linux-$pkgver
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
-  config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
   0003-Add-support-for-ZSTD-compressed-kernel.patch
@@ -25,22 +24,27 @@ source=(
   '0004-Sphinx-7.2.2-8.0-PosixPath.patch'
   '0005-depmod-remove-depmod_hack_needed.patch'
   '0006-kernel-5.4-depmod-disable-for-packaging.patch'
+  '0007-Sphinx-docutils-0.22-deprecated-SafeString-ErrorString.patch'
+  '0008-perl-5.41-precedence-warning-kernel-doc.patch'
+  config         # the main kernel config file
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('9949210093ca924d7b41162bb4772becd3f28ff726a09d061558929690a1815a'
+sha256sums=('b7718766d060e6714bbe47004c71c360e844758f42fbf62cbaa5571119527962'
             'SKIP'
-            'bffa24efd9e84ffd48069947cc5ed52827d280dbd303f50e6286c48c89613b3f'
             'b439f57b84bc98730c0265695abb92385ee4dcd35a5c00d4cb3d3155c75fb491'
             '4fd74bb2a7101d700fba91806141339d8c9e46a14f8fc1fe276cfb68f1eec0f5'
             '8b604b7dc447b5f1f6f0b6239d5dd3ec6a5336cba78ac6dcef8f3e59357bd8c0'
             'b7c814c8183e4645947a6dcc3cbf80431de8a8fd4e895b780f9a5fd92f82cb8e'
             'ab751955fa6c43afd812863dc65ced6fe3ebf80a6746e894576459358ca53f36'
             '64b521b3963781c60e9a33db40c523bf65a119cb1dfec182a737e90d2609df5a'
-            '444e4f6db856002ee23841e20cc2aa1b8543ac6ef37b30edd1eb6846ba48e2b4')
+            '444e4f6db856002ee23841e20cc2aa1b8543ac6ef37b30edd1eb6846ba48e2b4'
+            '35cc0e06698ee790776213c52e169bfc9c8c529f18cab585fdff98694b569411'
+            '69df07f9d1c97a8dba0cbeeddd799471b8a05f358cbec2780a15284ff37fee26'
+            'bffa24efd9e84ffd48069947cc5ed52827d280dbd303f50e6286c48c89613b3f')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -54,13 +58,13 @@ prepare() {
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    [[ $src = *.patch ]] || continue
-    msg2 "Applying patch $src..."
-    patch -Np1 < "../$src"
+  local _src
+  for _src in "${source[@]}"; do
+    _src="${_src%%::*}"
+    _src="${_src##*/}"
+    [[ $_src = *.patch ]] || continue
+    msg2 "Applying patch $_src..."
+    patch -Np1 < "../$_src"
   done
 
   #cd '..'; cp -pr "${_srcname}" 'a'; ln -s "${_srcname}" 'b'; cd "${_srcname}"; false
@@ -87,8 +91,10 @@ exec /usr/bin/gcc -std='gnu17' "\$@"
 EOF
     chmod 755 'gcc'
   fi
-  nice -n1 make all
-  nice -n1 make -i htmldocs SPHINXOPTS='-T --keep-going'
+  nice -n1 make -j1 htmldocs & # -i SPHINXOPTS='-T --keep-going' &
+  local _pid_docs="$!"
+  nice -n2 make all
+  wait "${_pid_docs}"
 }
 
 _package() {
