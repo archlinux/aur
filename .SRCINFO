@@ -1,6 +1,6 @@
 pkgbase = idos-timetable-tariff-chaps-trains-cz+sk-latest
 	pkgdesc = Tariff data for the timetable search engines by CHAPS: Czech ans Slovak trains.
-	pkgver = 2025_10_10
+	pkgver = 2025_10_31
 	pkgrel = 1
 	epoch = 0
 	url = https://chaps.cz/eng/download/idos/zip#kotvatar
@@ -9,15 +9,15 @@ pkgbase = idos-timetable-tariff-chaps-trains-cz+sk-latest
 	license = custom
 	makedepends = wget
 	depends = idos-timetable-data-trains
-	provides = idos-timetable-tariff-chaps-trains-cz+sk=2025_10_10
-	provides = idos-timetable-tariff=2025_10_10
-	provides = idos-timetable-tariff-trains=2025_10_10
-	provides = idos-timetable-tariff-trains-cz=2025_10_10
-	provides = idos-timetable-tariff-trains-sk=2025_10_10
+	provides = idos-timetable-tariff-chaps-trains-cz+sk=2025_10_31
+	provides = idos-timetable-tariff=2025_10_31
+	provides = idos-timetable-tariff-trains=2025_10_31
+	provides = idos-timetable-tariff-trains-cz=2025_10_31
+	provides = idos-timetable-tariff-trains-sk=2025_10_31
 	conflicts = idos-timetable-tariff-chaps-trains-cz+sk
 	conflicts = idos-timetable-tariff-chaps-all
 	conflicts = idos-timetable-tariff-trains-cz
-	source = vlak_p-2025_10_10.zip::https://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK_P.ZIP
+	source = vlak_p-2025_10_31.zip::https://ttakt.chaps.cz/TTAktual/Win/Zip/VLAK_P.ZIP
 	source = IDOS-Licence.pdf::https://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = license-dummy.txt
 	sha256sums = SKIP
