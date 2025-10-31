@@ -1,13 +1,13 @@
 pkgbase = r-multiscan
 	pkgdesc = R package for combining multiple scans
-	pkgver = 1.68.0
+	pkgver = 1.70.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/multiscan
 	arch = x86_64
 	license = GPL-2.0-or-later
 	depends = r-biobase
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/multiscan_1.68.0.tar.gz
-	md5sums = 93865b85f485cd61d19fde9386e3df9d
-	b2sums = bad818a60d2f01e70cd71ebac5ba4363916651ec7d4e7a595acb1ca548654c3174d97292e285692156ad0b3c334d658f1165146c1abb49579700ae656c21cd5f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/multiscan_1.70.0.tar.gz
+	md5sums = f95ece4ba1ae1a0bd8be9c30063965d1
+	b2sums = a8b3e79cd1017c0a9fc7004ed34bced2792125f588fb730026e7841d94e8306ee63a2ddc7bde9daa6d01056f8a7d142823980f307f85e7bcc4aaec97c2df5732
 
 pkgname = r-multiscan
