@@ -1,6 +1,6 @@
 # Maintainer: Caden Finley <caden@cadenfinley.com>
 pkgname=cjsh
-pkgver=3.11.0
+pkgver=3.11.1
 pkgrel=1
 pkgdesc="POSIX shell scripting meets Modern Shell Features"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cmake' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/CadenFinley/CJsShell/archive/$pkgver.tar.gz")
-sha256sums=('d2ad46a2a9f475082d4ce7a83882d7c1ba2207ffdd505bdc46a59f71c6f43c14')
+sha256sums=('352dfb3d6276652684f38ca110cd9bf8a445babdb4b8d710769ea409ab0d7613')
 
 build() {
     cd "CJsShell-$pkgver"
