@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-no-extras
-pkgver=141.0.7390.122
+pkgver=142.0.7444.59
 pkgrel=1
 # optionally modify to fit your specific hardware
 # hacky way to determine subarch
@@ -32,7 +32,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
          'libffi' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
-             'rust' 'rust-bindgen' 'qt6-base' 'java-runtime-headless'
+             'rustup' 'rust-bindgen' 'qt6-base' 'java-runtime-headless'
              'git' 'compiler-rt')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
@@ -53,7 +53,7 @@ sha256sums=('720a1196410080056cd97a1f5ec34d68ba216a281d9b5157b7ea81ea018ec661'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '5abc8611463b3097fc5ce58017ef918af8b70d616ad093b8b486d017d021bbdf'
-            '81ba390a500a38c50b5adad9d185d08685cdf9a9d9448e1e33cfff4f2388618d'
+            'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             'e6da901e4d0860058dc2f90c6bbcdc38a0cf4b0a69122000f62204f24fa7e374'
             'de5c873564b09713b65dd9e6a0b9049d7b3cf8f881436f36e1c091824b63e876')
@@ -103,6 +103,8 @@ depends+=(${_system_libs[@]})
 _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 
 prepare() {
+  rustup toolchain install 1.91.0
+
   if (( _manual_clone )); then
     ./fetch-chromium-release $pkgver
   fi
@@ -172,6 +174,11 @@ prepare() {
 
   ./build/linux/unbundle/replace_gn_files.py \
     --system-libraries "${!_system_libs[@]}"
+
+  # Generate missing header
+  python3 build/util/lastchange.py -m DAWN_COMMIT_HASH \
+    -s third_party/dawn --revision gpu/webgpu/DAWN_VERSION \
+    --header gpu/webgpu/dawn_commit_hash.h
 }
 
 build() {
