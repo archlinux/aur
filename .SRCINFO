@@ -1,7 +1,7 @@
 pkgbase = startlive-git
 	pkgdesc = 绕过B站直播姬获取推流地址
 	pkgver = 0.7.1.r9.g5cbb403
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Radekyspec/StartLive
 	arch = any
 	license = GPL-3.0-only
