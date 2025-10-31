@@ -1,6 +1,6 @@
 pkgbase = nextpnr-all-nightly
 	pkgdesc = nextpnr portable FPGA place and route tool - ice40, ecp5, machxo2, nexus, and generic
-	pkgver = 20251030_nextpnr_0.9_38_g30669eca
+	pkgver = 20251031_nextpnr_0.9_38_g30669eca
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/nextpnr
