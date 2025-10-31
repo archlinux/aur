@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RITANdata
-_pkgver=1.32.0
+_pkgver=1.33.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b88ca49dc419bc7657725fd9a71194e2')
-b2sums=('46078ba9f94a1f1bfbeafb805cc340048740c7a303d7c81353d9b2578f149d3bbbf7443c2a8ddd8fd59ff7b6c82e88ef00644860fec8c78e6d13a90f22ffa9a6')
+md5sums=('fa3d5b254bab91f18674119f79197e6b')
+b2sums=('de8635d06cb4ffca8f4363cacc6f5be5650cf23f1a802400409d9de340dce036c23cd451e2dfd9f283b3203c96afbe0e29fff07b5fd3867a120e2ba391316860')
 
 build() {
   mkdir build
