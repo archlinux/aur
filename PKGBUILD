@@ -1,17 +1,17 @@
-# Maintainer: Gabriel-Andrew Pollo-Guilbert <gabrielpolloguilbert@gmail.com>
+# Contributor: Gabriel-Andrew Pollo-Guilbert <gabrielpolloguilbert@gmail.com>
 
 pkgname=canmatrix-git
-pkgver=0.4.r327.g53e47b2
+pkgver=1.2.r76.ge063926
 pkgrel=1
 pkgdesc='Utility for converting CAN database formats'
 arch=('any')
 url='https://github.com/ebroecker/canmatrix'
 license=('BSD')
 depends=(
-    'python' 'python-lxml' 'python-xlwt' 'python-xlrd' 'python-xlsxwriter'
-    'python-yaml' 'python-future'
+    'python' 'python-lxml' 'python-xlwt' 'python-xlrd'
+    'python-yaml' 'python-attrs' 'python-click'
 )
-
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools')
 source=("git+https://github.com/ebroecker/canmatrix.git")
 sha256sums=('SKIP')
 
@@ -22,6 +22,7 @@ pkgver() {
 
 package() {
     cd $srcdir/canmatrix
-    python setup.py install --root="${pkgdir}/" --optimize=1
+    python -m build --wheel --no-isolation
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
