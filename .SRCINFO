@@ -1,6 +1,6 @@
 pkgbase = alice-tools-git
 	pkgdesc = This is a collection of command-line tools for viewing and editing file formats used in AliceSoft games
-	pkgver = 0.13.0.r21.gec996c0
+	pkgver = 0.13.0.r79.gd229d31
 	pkgrel = 1
 	url = https://github.com/nunuhara/alice-tools
 	arch = x86_64
@@ -13,7 +13,9 @@ pkgbase = alice-tools-git
 	depends = libwebp
 	depends = zlib
 	depends = qt5-base
+	source = alice-tools-git::git+https://github.com/nunuhara/alice-tools.git
 	source = galice.desktop
+	sha256sums = SKIP
 	sha256sums = 8854d6ff3523f1209e781b04308d572b35d089f7c336d5e01cfdb8b45a5c6a54
 
 pkgname = alice-tools-git
