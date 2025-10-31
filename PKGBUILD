@@ -1,14 +1,16 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: matthewq337 <matt at mattquintanilla dot xyz>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+ 
 
 pkgname=vivarium-git
 _pkg="${pkgname%-git}"
 pkgver=0.0.4.r30.g1ffa436
-pkgrel=2
+pkgrel=3
 pkgdesc="A dynamic tiling Wayland compositor inspired by xmonad"
 arch=('x86_64')
 url="https://github.com/inclement/vivarium"
 license=('GPL3')
-depends=('wlroots0.15' 'xcb-util-renderutil')
+depends=('wlroots0.15' 'xcb-util-renderutil' 'xorg-xwayland')
 makedepends=('git' 'meson' 'wayland-protocols' 'cpptoml')
 optdepends=('xorg-xwayland: X.org support under Wayland'
             'waybar: Bar program for Wayland; the only tested one')

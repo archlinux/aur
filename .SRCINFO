@@ -1,7 +1,7 @@
 pkgbase = vivarium-git
 	pkgdesc = A dynamic tiling Wayland compositor inspired by xmonad
 	pkgver = 0.0.4.r30.g1ffa436
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/inclement/vivarium
 	install = vivarium-git.install
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = vivarium-git
 	makedepends = cpptoml
 	depends = wlroots0.15
 	depends = xcb-util-renderutil
+	depends = xorg-xwayland
 	optdepends = xorg-xwayland: X.org support under Wayland
 	optdepends = waybar: Bar program for Wayland; the only tested one
 	provides = vivarium
