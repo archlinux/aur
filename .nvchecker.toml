@@ -1,0 +1,5 @@
+[fyi-bin]
+source = "github"
+github = "Blobfolio/fyi"
+use_latest_release = true
+prefix = "v"
