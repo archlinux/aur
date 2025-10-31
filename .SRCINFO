@@ -1,6 +1,6 @@
 pkgbase = eden-nightly-bin
 	pkgdesc = Nightly release of the Eden Nintendo Switch emulator (PGO optimized)
-	pkgver = 2025.10.29.27918
+	pkgver = 2025.10.30.27931
 	pkgrel = 1
 	url = https://github.com/pflyly/eden-nightly
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = eden-nightly-bin
 	provides = eden
 	conflicts = eden
 	options = !strip
-	source = Eden-27918-Common-PGO-x86_64.AppImage::https://github.com/pflyly/eden-nightly/releases/download/2025-10-29-27918/Eden-27918-Common-PGO-x86_64.AppImage
+	source = Eden-27931-Common-PGO-x86_64.AppImage::https://github.com/pflyly/eden-nightly/releases/download/2025-10-30-27931/Eden-27931-Common-PGO-x86_64.AppImage
 	sha256sums = SKIP
 
 pkgname = eden-nightly-bin
