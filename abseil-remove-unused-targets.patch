@@ -1,8 +1,8 @@
 These targets are dead code and they aren't available with system Abseil. Based on:
 https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electron
 
---- third_party/abseil-cpp/BUILD.gn	2025-09-29 19:05:47.000000000 +0200
-+++ third_party/abseil-cpp/BUILD.gn	2025-10-02 10:41:06.584562397 +0200
+--- third_party/abseil-cpp/BUILD.gn	2025-10-24 18:42:30.000000000 +0200
++++ third_party/abseil-cpp/BUILD.gn	2025-10-31 10:32:27.540854353 +0100
 @@ -67,8 +67,6 @@
      "//third_party/abseil-cpp/absl/base",
      "//third_party/abseil-cpp/absl/base:config",
@@ -57,7 +57,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
      "//third_party/abseil-cpp/absl/flags:parse",
      "//third_party/abseil-cpp/absl/flags:reflection",
      "//third_party/abseil-cpp/absl/flags:usage",
-@@ -256,16 +245,10 @@
+@@ -256,20 +245,10 @@
        deps = [
          "absl/algorithm:algorithm_test",
          "absl/algorithm:container_test",
@@ -67,14 +67,18 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/base:no_destructor_test",
 -        "absl/base:nullability_default_nonnull_test",
          "absl/base:nullability_test",
+-        "absl/base:nullability_traits_test",
 -        "absl/base:poison_test",
          "absl/base:prefetch_test",
+-        "absl/base:raw_logging_test",
+-        "absl/base:sysinfo_test",
+-        "absl/base:thread_identity_test",
 -        "absl/base:tracing_internal_strong_test",
 -        "absl/base:tracing_internal_weak_test",
          "absl/cleanup:cleanup_test",
          "absl/container:common_policy_traits_test",
          "absl/container:fixed_array_test",
-@@ -273,21 +256,15 @@
+@@ -277,21 +256,15 @@
          "absl/container:flat_hash_set_test",
          "absl/container:hash_function_defaults_test",
          "absl/container:inlined_vector_test",
@@ -96,7 +100,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/flags:flag_test",
          "absl/functional:any_invocable_test",
          "absl/functional:function_ref_test",
-@@ -311,7 +288,6 @@
+@@ -315,7 +288,6 @@
          "absl/log:vlog_is_on_test",
          "absl/log/internal:fnmatch_test",
          "absl/log/internal:stderr_log_sink_test",
@@ -104,7 +108,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/memory:memory_test",
          "absl/meta:type_traits_test",
          "absl/numeric:int128_test",
-@@ -332,12 +308,9 @@
+@@ -336,12 +308,9 @@
          "absl/strings:cord_rep_btree_reader_test",
          "absl/strings:cord_rep_btree_test",
          "absl/strings:cord_rep_crc_test",
@@ -117,7 +121,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/strings:cordz_test",
          "absl/strings:cordz_update_scope_test",
          "absl/strings:cordz_update_tracker_test",
-@@ -345,7 +318,6 @@
+@@ -349,7 +318,6 @@
          "absl/strings:has_absl_stringify_test",
          "absl/strings:has_ostream_operator_test",
          "absl/strings:match_test",
@@ -125,7 +129,7 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/strings:str_format_arg_test",
          "absl/strings:str_format_bind_test",
          "absl/strings:str_format_checker_test",
-@@ -356,11 +328,7 @@
+@@ -360,11 +328,7 @@
          "absl/strings:str_format_test",
          "absl/strings:str_replace_test",
          "absl/strings:string_view_test",
@@ -137,8 +141,8 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
          "absl/synchronization:waiter_test",
          "absl/time:time_test",
          "absl/types:span_test",
---- third_party/abseil-cpp/absl/profiling/BUILD.gn	2025-09-29 19:05:47.000000000 +0200
-+++ third_party/abseil-cpp/absl/profiling/BUILD.gn	2025-10-02 10:41:06.609564294 +0200
+--- third_party/abseil-cpp/absl/profiling/BUILD.gn	2025-10-24 18:42:30.000000000 +0200
++++ third_party/abseil-cpp/absl/profiling/BUILD.gn	2025-10-31 10:32:27.553808497 +0100
 @@ -70,7 +70,6 @@
    deps = [
      "//third_party/abseil-cpp/absl/base",
@@ -155,8 +159,8 @@ https://build.opensuse.org/package/view_file/openSUSE:Factory:ARM/nodejs-electro
      "//third_party/abseil-cpp/absl/status:statusor",
      "//third_party/abseil-cpp/absl/strings",
      "//third_party/abseil-cpp/absl/strings:string_view",
---- third_party/abseil-cpp/absl/random/internal/BUILD.gn	2025-09-29 19:05:47.000000000 +0200
-+++ third_party/abseil-cpp/absl/random/internal/BUILD.gn	2025-10-02 10:41:06.680632420 +0200
+--- third_party/abseil-cpp/absl/random/internal/BUILD.gn	2025-10-24 18:42:30.000000000 +0200
++++ third_party/abseil-cpp/absl/random/internal/BUILD.gn	2025-10-31 10:32:27.614957300 +0100
 @@ -18,7 +18,6 @@
    public = [ "distribution_caller.h" ]
    deps = [
