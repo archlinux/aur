@@ -4,7 +4,7 @@ _pkgbase='frp'
 pkgbase='frp-bin'
 pkgname=('frpc-bin' 'frps-bin')
 pkgver=0.65.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet."
 arch=('x86_64' 'arm' 'aarch64')
 license=('Apache')
@@ -40,6 +40,11 @@ packaging() {
   install -Dm640 "${srcdir}/${1}.ini" "${pkgdir}/etc/frp/${1}.ini"
 
   install -Dm644 "${srcdir}/${1}".service "${pkgdir}/usr/lib/systemd/system/${1}".service
+
+  # completions
+  install -Dm644 <(${_srcdir}/${1} completion bash) $pkgdir/usr/share/bash-completion/completion/${1}
+  install -Dm644 <(${_srcdir}/${1} completion zsh) $pkgdir/usr/share/zsh/site-functions/_${1}
+  install -Dm644 <(${_srcdir}/${1} completion fish) $pkgdir/usr/share/fish/vendor_completions.d/${1}.fish
 }
 
 package_frpc-bin() {
