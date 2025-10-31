@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RTCA
-_pkgver=1.60.0
+_pkgver=1.62.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5f6b3b0e952a7d74e38f0be63df0c991')
-b2sums=('7b1843634db4fd74efb6970fb6e0a594fd7a3fa946ee2c59bbf629077c40b61cad66d2b6a7701445e3e49f228c61f01342f9d067b9fe51dc5012af228e364c43')
+md5sums=('6dc361bdd0779a6f1db81bd1a52ee9f7')
+b2sums=('77bb28e2491659025c506a93563265aec71ede591f70b8886e1ed413592a4c92a2d89d72e80041617c86d4ed2be0579834b70bad2f70aec3fb4b5bc1da3a783f')
 
 build() {
   mkdir build
