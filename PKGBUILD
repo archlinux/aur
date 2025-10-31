@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ARRmNormalization
-_pkgver=1.48.0
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-arrmdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('bb56662f4afcc36acf6dcb32326161c3')
-b2sums=('7bebd7a873ee51995dce79d1d408009b8c9696bfc2350e2621a48db888256f1c3e02d76be7e7d29421fb6fee3afc1b5c137872e3ab5b0ba9d0b2a1d4bc7e01db')
+md5sums=('18afc86b2ad195a417a2393582ff125a')
+b2sums=('c0ef685011d29ffe9daed24b02f3a0150d1af05ffc821053acfe2546a7022035279165b6297acb46ecd26de2ccc46bb5f43e8803df363513e927dc1ebcb0f68b')
 
 build() {
   mkdir build
