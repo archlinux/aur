@@ -1,0 +1,92 @@
+# indielinks configuration file for my prototype local installation
+version = "1"
+log-file = "/var/log/indielinks.log"
+public-address = "0.0.0.0:20676"
+private-address = "127.0.0.1:20677"
+raft-grpc-address = "127.0.0.1:20678"
+user-agent = "indielinks/0.0.1; +sp1ff@pobox.com"
+collection-page-size = 64
+assets = "/usr/share/indielinks/assets"
+
+[otlp-export]
+endpoint = "http://localhost:9090/api/v1/otlp/v1/metrics"
+
+[public-origin]
+scheme = "http"
+port = 20676
+
+[public-origin.host]
+RegName = "indielinks.local"
+
+[storage-config.Scylla]
+hosts = ["127.0.0.1:9042"]
+
+[pepper.peppers]
+"pepper-ver:20250213" = [0xb2, 0x91, 0x48, 0x34, 0x4d, 0x5f, 0xd3, 0x7e, 0x59, 0x71, 0x57, 0x91, 0xdd, 0x00, 0x32, 0x92, 0x62, 0xe9, 0x19, 0x77, 0x6d, 0xae, 0x4b, 0x5b, 0x6a, 0xab, 0x00, 0x67, 0x0e, 0x8c, 0xf4, 54]
+
+[signing-keys]
+"token-lifetime" = [300, 0] # seconds, nanoseconds => 5 min
+"refresh-token-lifetime" = [259200, 0] # seconds, nanoseconds => 72 hours
+
+[signing-keys.signing-keys.keys]
+"keyid:20250214" = [0xcf, 0x1e, 0x25, 0xb2, 0xde, 0x2a, 0x44, 0xde, 0xd1, 0xce, 0xc7, 0xfa, 0xdb, 0x5e, 0x03, 0xa3, 0x1e, 0x15, 0xa1, 0x8c, 0x01, 0xaa, 0x8c, 0xbb, 0xb9, 0xe4, 0x2f, 0xb1, 0xd7, 0x0b, 0xc4, 0x98, 0xdd, 0x80, 0xd0, 0x4d, 0x68, 0xf7, 0x1c, 0xb2, 0xcf, 0xf1, 0x06, 0xef, 0x47, 0x0b, 0x16, 0xdd, 0x69, 0x98, 0x3c, 0x6d, 0x79, 0xd6, 0xc9, 0x0c, 0xfc, 0x60, 0x13, 0xa0, 0x5f, 0x7c, 0x64, 0xea]
+
+[users-config]
+same-site = "Lax"
+secure-cookies = true
+[[users-config.allowed-origins]]     # http://localhost:18080
+scheme = "http"
+port = 18080
+[users-config.allowed-origins.host]
+RegName = "localhost"
+[[users-config.allowed-origins]]     # http://127.0.0.1:18080
+scheme = "http"
+port = 18080
+[users-config.allowed-origins.host]
+Ipv4Address = "127.0.0.1"
+[[users-config.allowed-origins]]     # http://localhost:20676
+scheme = "http"
+port = 20676
+[users-config.allowed-origins.host]
+RegName = "localhost"
+[[users-config.allowed-origins]]     # http://127.0.0.1:20676
+scheme = "http"
+port = 20676
+[users-config.allowed-origins.host]
+Ipv4Address = "127.0.0.1"
+[[users-config.allowed-origins]]     # http://localhost:18443
+scheme = "http"
+port = 18443
+[users-config.allowed-origins.host]
+RegName = "localhost"
+[[users-config.allowed-origins]]     # http://127.0.0.1:18443
+scheme = "http"
+port = 18443
+[users-config.allowed-origins.host]
+Ipv4Address = "127.0.0.1"
+
+[background-tasks]
+default-timeout = { secs = 5, nanos = 0 }
+max-concurrent-tasks = 16
+sleep-duration = { secs = 1, nanos = 0 }
+shutdown-timeout = { secs = 0, nanos = 500000000 } # "500ms"
+pickup-timeout = { secs = 1, nanos = 0 }
+
+[raft-config]
+cluster-name = "indielinks"
+this-node = 0
+heartbeat-interval   = { secs = 0, nanos =  500000000 } # 500ms
+election-timeout-min = { secs = 0, nanos = 1500000000 } # 1500ms
+election-timeout-max = { secs = 0, nanos = 3000000000 } # 3000ms
+
+
+[client-exponential-backoff]
+jitter = 10.0
+num-attempts = 3
+
+[client-exponential-backoff.durations.min]
+secs = 1
+nanos = 0
+[client-exponential-backoff.durations.max]
+secs = 3
+nanos = 0
