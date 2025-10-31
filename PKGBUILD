@@ -86,7 +86,7 @@ source=(
   0004-fix-package-json.zen.patch
   0005-source-firefox-language-packs.patch
   )
-sha256sums=('92c7304443e97bf84768f40ffcef0e3bb65460947f4195d4a10b3a1090391765'
+sha256sums=('SKIP'
             '17f1dc1ece789ee81f1a3e9ee9bc7619de3a5481e802d83f2a3160f2f60c3957'
             'SKIP'
             '523fba56892357a1b37811021e06d548cb94af58948294a436c566581e7454a9'
