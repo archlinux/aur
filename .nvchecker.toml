@@ -1,0 +1,5 @@
+[htminl-bin]
+source = "github"
+github = "Blobfolio/htminl"
+use_latest_release = true
+prefix = "v"
