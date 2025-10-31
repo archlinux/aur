@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gcatest
-_pkgver=2.8.0
+_pkgver=2.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,8 +24,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('db6e195456836124ba246bdcd4a313e7')
-b2sums=('f3dbd539979827d78dcde0fec587e7be6f594de20d0c0801154fd40d06f575bef1721db416483eb97244ddd1b693c562e1ce921c4d5de4a5994854fef355b952')
+md5sums=('967584f0c568a8749909183bac0b0730')
+b2sums=('543f051c0472cf7e9f1c0b63ef3a0faf222114d428ae07850718d3095a990d7f32370c562dc1648bf471f76ece57c3953e0a634e35af43a0c2ceb872d7463613')
 
 build() {
   mkdir build
