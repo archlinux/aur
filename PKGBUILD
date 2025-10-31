@@ -1,7 +1,7 @@
 # Maintainer: eNV25 <env252525@gmail.com>
 
 pkgname=zig-bin
-pkgver=0.15.1
+pkgver=0.15.2
 pkgrel=1
 pkgdesc='a general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software'
 arch=('x86_64' 'pentium4' 'aarch64' 'armv7h' 'riscv64')
@@ -9,6 +9,7 @@ url='https://ziglang.org/'
 license=('MIT')
 provides=("zig=$pkgver")
 conflicts=('zig')
+options=(!strip !debug)
 source_x86_64=("https://ziglang.org/download/$pkgver/zig-x86_64-linux-$pkgver.tar.xz")
 source_pentium4=("https://ziglang.org/download/$pkgver/zig-x86-linux-$pkgver.tar.xz")
 source_aarch64=("https://ziglang.org/download/$pkgver/zig-aarch64-linux-$pkgver.tar.xz")
@@ -41,8 +42,8 @@ package() {
 	install -D -t "$pkgdir/usr/share/licenses/zig/" LICENSE
 }
 
-sha256sums_x86_64=('c61c5da6edeea14ca51ecd5e4520c6f4189ef5250383db33d01848293bfafe05')
-sha256sums_pentium4=('dff166f25fdd06e8341d831a71211b5ba7411463a6b264bdefa8868438690b6a')
-sha256sums_aarch64=('bb4a8d2ad735e7fba764c497ddf4243cb129fece4148da3222a7046d3f1f19fe')
-sha256sums_armv7h=('3f4bf3b06b67d14e3f38be30798488c1abe3cf5b33de570cd0e87bbf09b978ad')
-sha256sums_riscv64=('7ca7a3e621436fb31d66a253132fc39574a13d2a1b4d8458af4f2e7c6e4374fe')
+sha256sums_x86_64=('02aa270f183da276e5b5920b1dac44a63f1a49e55050ebde3aecc9eb82f93239')
+sha256sums_pentium4=('4c6e23f39daa305e274197bfdff0d56ffd1750fc1de226ae10505c0eff52d7a5')
+sha256sums_aarch64=('958ed7d1e00d0ea76590d27666efbf7a932281b3d7ba0c6b01b0ff26498f667f')
+sha256sums_armv7h=('7d8401495065dae45d6249c68d5faf10508f8203c86362ccb698aeaafc66b7cd')
+sha256sums_riscv64=('493512bdca485be3c6a9b0f69dcb4cbe4587f3af8e1be282fdd827108ba39930')
