@@ -2,7 +2,7 @@
 
 pkgname=python-flifile
 _name=flifile
-pkgver=1.4.2
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Python code for opening a lambert instruments .fli file"
 arch=('any')
@@ -23,8 +23,8 @@ makedepends=(
     'python-pytest'
 )
 
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('b07f0ae7a8e758a14ab519e34894f3f199c2e48af0a3e9e161c7841150716489d34be96ff16bb50a88b56f9a7c69e3ab3a385073dee438b1133174e9fe4ae340')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+b2sums=('9a90af2911db1743eb48d925d6b4397a25da8c20855761ab8adf288838ff07f7513805dab4b1752115767b803ad34f0b42e10381b5744e0b2bcd79d7f70add44')
 
 build() {
   cd "${_name}-${pkgver}"
