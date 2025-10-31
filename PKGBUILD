@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=garfield
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b0c6eaa6d177ed32384fbc8629751ce1')
-b2sums=('e96b1842c51a1094d9c5ee27bba68fa18af02be11c34be2af35cd91e1c9d984d3848ba0feba8d98f71b207ec9e8be4248717c34223844e558305f085f5a71578')
+md5sums=('85d053b4ee493af6ae7d903c96fea93c')
+b2sums=('43e929c0bebf13d7c6362be83c216b7fc6d44f8f206cf1cde0dc2e837d5746105619d59a2d56dbb65310e0e23cbb7fb3beadd7d25b3a06c9fa22dfda6a5d8b54')
 
 build() {
   mkdir build
