@@ -2,7 +2,7 @@
 # Contributor: jstoik1 <joshstoik@gmail.com>
 
 pkgname=refract-bin
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Guided AVIF/JPEG XL/WebP conversion for JPEG and PNG sources."
 arch=('x86_64')
@@ -15,7 +15,7 @@ install=${pkgname}.install
 source=(
 	"https://github.com/Blobfolio/refract/releases/download/v${pkgver}/refract_${pkgver}-1_amd64.deb")
 sha512sums=(
-	'cf535c7ebdf6b30d42459ead7898b140b7839aaa7a4895e7d17e5d0c69488baa80176ae3d75b90e91ab30dc71666eaf2d50855c1839f537a91b7b5d461956807')
+	'c275eebe0392d4379f781c874779dcd7c3c50ef38da101ab0937e7531c2bb1b992285fa05eb7417a1b9144b83e0e1d2dd6b2f71c74496800f88b5e3b38c89d3f')
 
 package(){
 
