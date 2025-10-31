@@ -1,0 +1,20 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 9edd60a..583164d 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -20,14 +20,13 @@ build-backend = "setuptools.build_meta"
+ name = "grpc-google-iam-v1"
+ version = "0.14.3"
+ authors = [{ name = "Google LLC", email = "googleapis-packages@google.com" }]
+-license = { text = "Apache 2.0" }
++license = "Apache-2.0"
+ requires-python = ">=3.7"
+ description = "IAM API client library"
+ readme = "README.rst"
+ classifiers = [
+   "Development Status :: 4 - Beta",
+   "Intended Audience :: Developers",
+-  "License :: OSI Approved :: Apache Software License",
+   "Programming Language :: Python",
+   "Programming Language :: Python :: 3",
+   "Programming Language :: Python :: 3.7",
