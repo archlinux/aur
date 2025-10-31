@@ -1,0 +1,11 @@
+pkgbase = evcolors
+	pkgdesc = Ev color themes
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	optdepends = btop: using the btop theme
+	source = evcolors.theme
+	sha256sums = d0a2f1649a5998381df25d8a5c14ca2f2ecfcb6db538affc92095cb5aa1ddc44
+
+pkgname = evcolors
