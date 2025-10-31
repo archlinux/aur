@@ -4,7 +4,7 @@
 
 pkgname=cpufrequtils
 pkgver=008
-pkgrel=3
+pkgrel=4
 pkgdesc="This package provides very useful tools to get information about the CPUFreq and to set."
 arch=('x86_64' 'aarch64' 'i686')
 url="https://kernel.org/pub/linux/utils/kernel/cpufreq/cpufreq-info.html"
@@ -15,6 +15,9 @@ depends=(
 )
 provides=(
   "libcpufreq.so"
+)
+conflicts=(
+  "cpupower"  # Conflict over /usr/lib/libcpupower.so*
 )
 source=(
   "https://mirrors.edge.kernel.org/pub/linux/utils/kernel/cpufreq/$pkgname-$pkgver.tar".{xz,sign}

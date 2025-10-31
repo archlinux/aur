@@ -1,7 +1,7 @@
 pkgbase = cpufrequtils
 	pkgdesc = This package provides very useful tools to get information about the CPUFreq and to set.
 	pkgver = 008
-	pkgrel = 3
+	pkgrel = 4
 	url = https://kernel.org/pub/linux/utils/kernel/cpufreq/cpufreq-info.html
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = cpufrequtils
 	depends = glibc
 	depends = linux
 	provides = libcpufreq.so
+	conflicts = cpupower
 	source = https://mirrors.edge.kernel.org/pub/linux/utils/kernel/cpufreq/cpufrequtils-008.tar.xz
 	source = https://mirrors.edge.kernel.org/pub/linux/utils/kernel/cpufreq/cpufrequtils-008.tar.sign
 	source = 0001-Only-x86-has-cpuid-instruction.patch
