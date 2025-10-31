@@ -1,6 +1,6 @@
 # Maintainer: Your Name <alex@ahpohl.com>
 pkgname=libfronius
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Library to access Fronius inverters and smart meters"
 arch=('x86_64' 'aarch64')
