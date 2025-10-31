@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=iASeq
-_pkgver=1.52.0
+_pkgver=1.54.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('837bda6d3d2a3748e71987902e52d664')
-b2sums=('c1680fbe117e0e3a0b05110e8cdc741de46d51a1c1b3873243caac2cae0a57a7fb5a4fc571ac502edafc90cc73869894b40c5afeb3081400f241b8f013507ef4')
+md5sums=('46dab4e90f0ec409a636e27775ce87ad')
+b2sums=('a6eecefd42a18f100642e7dc1558de1319c024fdd416c9be40f950e52d470101822f03d7fb405e478914c26bf547270dc7b2d7aeb8ace7076c54da048436c2dc')
 
 build() {
   mkdir build
