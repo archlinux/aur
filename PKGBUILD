@@ -4,8 +4,8 @@
 _gitname=gpufetch
 _pkgname="${_gitname}-nocuda"
 pkgname="${_pkgname}-git"
-pkgver=0.25+15.r128.20251016.82ea16f
-pkgrel=2
+pkgver=0.25+18.r131.20251026.5f619dc
+pkgrel=1
 pkgdesc="Simple yet fancy GPU architecture fetching tool. Intel backend only."
 arch=(
   'x86_64'
