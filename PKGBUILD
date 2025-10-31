@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=miRcompData
-_pkgver=1.38.0
+_pkgver=1.39.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3937f01289eda62df3a1ee05c28f3ee8')
-b2sums=('91df780209012d97282951fb6b0f4710e1273514679e8cf46a56269c1fbd749769a0cdf7fcd45807d4a2c6697812645c5d12318527ffbddf3d155864f3cc59e7')
+md5sums=('f8a39d7a7951bbbdd919da8696a2a60f')
+b2sums=('22bb307632edba1e5b09ce0af99964e5e0bf2b5677f7ccba84f8127cbdc4ba39c296afa7a51138dee0b4da339aa157a49369d149c28f931fc645c23ca0ba0bd4')
 
 build() {
   mkdir build
