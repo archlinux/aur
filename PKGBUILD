@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cola
-_pkgver=2.14.0
+_pkgver=2.16.0
 pkgname=r-${_pkgname,,}
-pkgver=2.14.0
+pkgver=2.16.0
 pkgrel=1
 pkgdesc='A Framework for Consensus Partitioning'
 arch=('x86_64')
@@ -67,7 +67,7 @@ optdepends=(
   r-wgcna
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('32cda6d139fa3019962d48143e72c7cef0c2183a2062f35ecb0a2f67c6440454')
+sha256sums=('87876670960cf7500c3ba86c7c3f1f16b3ea0e085ae2d1ece60832b52c21dcc0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
