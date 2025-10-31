@@ -32,6 +32,7 @@ RestrictRealtime=true
 RestrictSUIDSGID=true
 SystemCallFilter=@system-service
 SystemCallArchitectures=native
+ReadWritePaths=/var/lib/reitti
 
 [Install]
 WantedBy=multi-user.target
