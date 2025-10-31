@@ -1,0 +1,6 @@
+[ica-securestore]
+source = "regex"
+url = "https://ca.ica.cz/pub/SecureStore/linux/"
+regex = '>ica-securestore_(.*)_amd64.deb<'
+from_pattern = '-'
+to_pattern = '_'

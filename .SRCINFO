@@ -1,0 +1,23 @@
+pkgbase = ica-securestore
+	pkgdesc = Manage I.CA Starcos smart cards
+	pkgver = 6.3.3_1
+	pkgrel = 1
+	url = https://ca.ica.cz/pub/SecureStore/linux/
+	arch = x86_64
+	license = custom:Proprietary
+	depends = curl
+	depends = gcc-libs
+	depends = glibc
+	depends = ica-securestore-pkcs11>=5.1.8
+	depends = libgl
+	depends = pcsclite
+	depends = qt5-base>=5.9.0
+	depends = qt5-declarative>=5.9.0
+	depends = qt5-graphicaleffects>=5.9.0
+	depends = qt5-quickcontrols>=5.9.0
+	noextract = ica-securestore-6.3.3-1-x86_64.deb
+	backup = etc/ICA/cz.ica.SecureStore.ini
+	source_x86_64 = ica-securestore-6.3.3-1-x86_64.deb::https://ca.ica.cz/pub/SecureStore/linux/ica-securestore_6.3.3-1_amd64.deb
+	sha256sums_x86_64 = 9bfa4fe89d8eacf3e79b40b886c5199c0f850d814ef9cecb0236dd75102deb31
+
+pkgname = ica-securestore
