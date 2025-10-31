@@ -8,7 +8,7 @@ arch=('x86_64' 'i686' 'aarch64')
 url='https://github.com/FortranGoingOnForty/facsimile'
 license=('MIT')
 depends=('glibc')
-makedepends=('gcc-fortran' 'fpm')
+makedepends=('gcc-fortran' 'fortran-fpm')
 source=("git+https://github.com/FortranGoingOnForty/facsimile.git#tag=v$pkgver")
 sha256sums=('SKIP')
 

@@ -8,7 +8,7 @@ pkgbase = facsimile
 	arch = aarch64
 	license = MIT
 	makedepends = gcc-fortran
-	makedepends = fpm
+	makedepends = fortran-fpm
 	depends = glibc
 	source = git+https://github.com/FortranGoingOnForty/facsimile.git#tag=v0.5.2
 	sha256sums = SKIP
