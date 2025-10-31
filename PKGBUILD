@@ -2,9 +2,9 @@
 # Contributor: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgbase=minizip-git
-pkgname=(minizip-git minizip-static-git)
+pkgname=minizip-git
 pkgdesc="Fork of the popular zip manipulation library found in the zlib distribution."
-pkgver=4.0.5.r7.g990f512
+pkgver=4.0.10.r27.gf890d80
 pkgrel=2
 arch=('x86_64' 'aarch64' 'i686')
 license=('Zlib')
@@ -13,7 +13,6 @@ depends=('zstd' 'bzip2' 'openssl>=3.0.7' 'libbsd')
 makedepends=('git' 'cmake')
 source=("${pkgname}::git+https://github.com/zlib-ng/minizip-ng#branch=develop")
 sha256sums=('SKIP')
-options=(staticlibs)
 
 pkgver() {
   cd ${srcdir}/${pkgbase}
@@ -49,24 +48,10 @@ build() {
         -DCMAKE_BUILD_TYPE=None \
         ..
     make
-    cd ../build-static
-    cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DBUILD_SHARED_LIBS=OFF \
-        -DMZ_COMPAT=ON \
-        -DCMAKE_INSTALL_INCLUDEDIR=/usr/include/minizip \
-        -DCMAKE_BUILD_TYPE=None \
-        ..
-    make
     cd ../build-ng
     cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DMZ_PROJECT_SUFFIX="-ng" \
         -DBUILD_SHARED_LIBS=ON \
-        ..
-    make
-    cd ../build-ng-static
-    cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DMZ_PROJECT_SUFFIX="-ng" \
-        -DBUILD_SHARED_LIBS=OFF \
         ..
     make
 }
@@ -79,13 +64,4 @@ package_minizip-git() {
     cd ${srcdir}/${pkgbase}/build-ng
     make DESTDIR="${pkgdir}" install
     rm -rf "${pkgdir}/usr/include/"{,un}"zip.h" # conflict with libzip
-    install -D -m644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/minizip/LICENSE"
-}
-package_minizip-static-git() {
-    depends=(minizip-git)
-    conflicts=('minizip-static' 'minizip-ng-static')
-    provides=('minizip-static' 'minizip-ng-static')
-    mkdir -p "${pkgdir}/usr/lib/"
-    mv "${srcdir}/minizip-git/build-static/"*.a  "${pkgdir}/usr/lib/"
-    mv "${srcdir}/minizip-git/build-ng-static/"*.a  "${pkgdir}/usr/lib/"
 }
