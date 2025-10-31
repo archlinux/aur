@@ -4,6 +4,7 @@ set -euo pipefail
 # pacdiff-merge - Merge .pacnew files using pacdiff and meld (or $MERGE_TOOL)
 MERGE_TOOL="${MERGE_TOOL:-/usr/bin/meld}"
 REQUIRED_CMDS=(pacdiff sudo snapper "$MERGE_TOOL")
+SKIP_MERGE=("/etc/pacman.d/mirrorlist")
 
 function check_can_write {
     local target_file="$1"
@@ -39,6 +40,11 @@ for i in "${pacfiles[@]}"; do
     echo -e "\nMerging ${i} ..."
     if ! check_can_write "${i/.pacnew/}"; then
         echo "Skipping ${i} due to immutability."
+        continue
+    fi
+    if [[ " ${SKIP_MERGE[*]} " =~ [[:space:]]${i/.pacnew/}[[:space:]] ]]; then
+        echo "Skipping ${i}, in skip list. (Deleting .pacnew file.)"
+        /usr/bin/sudo rm -f "${i}"
         continue
     fi
 
