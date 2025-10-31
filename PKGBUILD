@@ -21,6 +21,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma'
             'upower: Battery Status API support')
+conflicts=('helium-browser-bin' 'helium-browser-appimage')
 
 source=("helium.desktop::https://raw.githubusercontent.com/imputnet/helium-linux/${pkgver}/package/helium.desktop")
 source_x86_64=(
