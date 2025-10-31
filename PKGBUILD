@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=iSeq
-_pkgver=1.60.0
+_pkgver=1.62.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fce059e128fa5013227326899ac4e687')
-b2sums=('52425723efcb6dcc91ec7e652effaeb629715a0e7bf49773ae7bc2f6a98445a6933f976e4572790f0a8d258a20c689d83ed99ee6b423a9f630f61db7bb08ee2e')
+md5sums=('6481c80648649279a6d158ac2946e61a')
+b2sums=('a80c28f182540204d86c402ae12c2f8e2cb7f59058d6a5ab08b447cb37250a19adc8ecd420db927c639bc684e11e894ed0419070668ed2f19bfc4d2ff3fb5acc')
 
 build() {
   mkdir build
