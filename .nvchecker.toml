@@ -1,0 +1,4 @@
+[gitopolis]
+source = "git"
+git = "https://github.com/timabell/gitopolis.git"
+prefix = "v"

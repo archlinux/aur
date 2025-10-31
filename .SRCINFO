@@ -1,0 +1,20 @@
+pkgbase = gitopolis
+	pkgdesc = CLI tool to manage multiple git repositories; run commands, clone, and organize repos with tags
+	pkgver = 1.12.4
+	pkgrel = 1
+	url = https://github.com/timabell/gitopolis
+	arch = x86_64
+	license = AGPL-3.0-only
+	checkdepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = libgit2
+	depends = libgit2.so
+	depends = openssl
+	depends = libcrypto.so
+	depends = libssl.so
+	source = https://github.com/timabell/gitopolis/archive/v1.12.4/gitopolis-1.12.4.tar.gz
+	sha256sums = 00a2e2935a7461ed979aade1af946f57fae24004e3558798b38a5669f238efca
+
+pkgname = gitopolis
