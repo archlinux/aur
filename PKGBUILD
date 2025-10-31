@@ -3,7 +3,7 @@
 _pkgname=drasl
 pkgname="${_pkgname}"
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Yggdrasil-compatible API server for Minecraft"
 arch=('x86_64' 'aarch64')
 url="https://github.com/unmojang/drasl"
@@ -19,6 +19,11 @@ sha256sums=('cc70e0d0ec9d2e982c08012b537dbc94857a53514e5e99b66a76c476c152e371')
 #	cd "${srcdir}/${_pkgname}"
 #	git describe --long --tags --abbrev=8 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 #}
+
+function prepare() {
+	cd "${srcdir}/${_pkgname}"
+	git cherry-pick --no-commit 52a7df7a1b5bc7f75232b06802cb5c2d8089a3a3
+}
 
 function build() {
 	cd "${srcdir}/${_pkgname}"
