@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MassSpecWavelet
-_pkgver=1.74.0
+_pkgver=1.76.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -22,8 +22,8 @@ optdepends=(
   r-waveslim
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('86c088c7f5e64563b10f43bcc3f46d23')
-b2sums=('80392b29af1517867ffb09c673363cfd6d8dc22d6d09e5d3099509dbaae80d4124b6e4932158991749ed740493acea9cf602140a3e1e5c4a1ce6c32c66f1982f')
+md5sums=('222930862724b90388337a655785a01d')
+b2sums=('bc8a8f6789dd14dc3e73df8fe55fb7d0755c8748d62e737d3370837f2a7f2a0f1e0643c04261489fb3219a6c51605963e2bd100da4b0ec0f3cf8662470b83832')
 
 build() {
   mkdir build
