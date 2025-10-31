@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DriverNet
-_pkgver=1.48.0
+_pkgver=1.50.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4ba142fb130cd5d4ae002d7437be71e1')
-b2sums=('22142695d44dce68367080c18da29c61cf728cec23a3171bd37f2ecb45883e8f74b9b656ec22bda0acc88d13a96a6cd138a18b6ea7a3308709151175873e8bdb')
+md5sums=('d7da5285b2e2d8a1c6b97928743be533')
+b2sums=('0266cd923496cc99232a03e0a288600d49772641982e97a7125d49b572c1467bbcb3995dc6a4b35ce577170e08e04aaeda1351d8855f54b0dd43da992dbbcf53')
 
 build() {
   mkdir build
