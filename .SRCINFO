@@ -1,14 +1,14 @@
 pkgbase = r-metacca
 	pkgdesc = Summary Statistics-Based Multivariate Meta-Analysis of Genome-Wide Association Studies Using Canonical Correlation Analysis
-	pkgver = 1.36.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/metaCCA
 	arch = any
 	license = MIT
 	depends = r
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/metaCCA_1.36.0.tar.gz
-	md5sums = 284c8a72494a5276cce46276b093f2a8
-	b2sums = 446d5a429e3f0b871dc7559cacf191454b673f675d9508b32cf82bc3ec899e8757334999bb4976923c395f72f53c90dc59068aca524bb2e6088d0bf7a314bd9a
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/metaCCA_1.38.0.tar.gz
+	md5sums = 4f8195eb994c78937b7e8ded637444d9
+	b2sums = a72b8c6c0b5840753634a0509d0639f29e46187e2de22cd2a2838742e8a35ea4bf2ecfeb5786fb9248ec125407a25f9e9ebaede9193054a47db6d42a5681fb04
 
 pkgname = r-metacca
