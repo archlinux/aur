@@ -10,8 +10,8 @@
 _pyver=3.10
 _ubuntuver=22.04
 pkgname=acestream-engine
-pkgver=3.2.3
-pkgrel=2
+pkgver=3.2.11
+pkgrel=1
 pkgdesc="Ace Stream engine"
 arch=("x86_64")
 url="https://acestream.org"
@@ -44,7 +44,7 @@ noextract=(
   "pycryptodome-3.20.0-cp35-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
   "setuptools-69.5.1-py3-none-any.whl"
 )
-sha256sums=('ad11060410c64f04c8412d7dc99272322f7a24e45417d4ef2644b26c64ae97c9'
+sha256sums=('9b6bbd76a55e5a434641afae3b9cf8e6154ce1cf392152ec3aed5ac265432b2e'
             'c4400eaf60ab9bb33b998e81fbc404bcba5aecefc59bf7e4e5a17ea39c4b82cd'
             'e4108df7fe9b707191e55f33efbcb2d81928e10cea45527879a4749cbe472614'
             'a2b44bec7adf3e9305ce6cbfa47a4395667e744097faed97abb4728748ba7d47'
