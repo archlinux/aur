@@ -1,0 +1,5 @@
+[adbyss-bin]
+source = "github"
+github = "Blobfolio/adbyss"
+use_latest_release = true
+prefix = "v"
