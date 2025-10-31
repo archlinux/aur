@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BayesKnockdown
-_pkgver=1.34.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2d9019ace8748600ac205d9524c7537a')
-b2sums=('9ebdd25a3712608139a330cd3ed37919fa6166a6956080ba18d2bcc61eab312361f1bdb16bd9d0122dd89709fa03e8605a06634e1ffb3ed4b8078c46703e640e')
+md5sums=('ee211bdf1eb84fdc6010d1ab368a540e')
+b2sums=('f97c8e61594f57262b31db300d55325761071e02e5ac97c835dffc70465741c83e983ac58aadd24714025c6150b199f4dcecd1039fe382a483b3da74b351575c')
 
 build() {
   mkdir build
