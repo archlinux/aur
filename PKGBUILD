@@ -5,17 +5,17 @@
 
 pkgname=libidn11
 pkgver=1.33
-pkgrel=2
+pkgrel=3
 pkgdesc='Implementation of the Stringprep, Punycode and IDNA specifications'
 url='https://www.gnu.org/software/libidn/'
 arch=('x86_64')
 license=('GPL3' 'LGPL')
 depends=('glibc')
 makedepends=('git' 'gperf' 'gtk-doc')
-source=("git+https://git.savannah.gnu.org/git/libidn.git?signed#tag=libidn-${pkgver//./-}"
+source=("git+https://gitlab.com/libidn/libidn.git?signed#tag=libidn-${pkgver//./-}"
         'libidn11-subdirs.patch')
 validpgpkeys=('9AA9BDB11BB1B99A21285A330664A76954265E8C') # Simon Josefsson <simon@josefsson.org>
-sha256sums=('SKIP'
+sha256sums=('3516eda29474ff5a349e1fa091eaa11e6b6f25eeadc9392c3ba91f4a6899c507'
             '0c440fe12da1372e8f9388e6b2bed3f0dd57d2696e08cb8d92e9880fd315ca63')
 
 prepare() {
