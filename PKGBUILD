@@ -1,34 +1,60 @@
-# Maintainer: Your Name <alex@ahpohl.com>
-pkgname=libfronius
+# Maintainer: Alexander Pohl <alex@ahpohl.com>
+
+pkgbase=libfronius
+pkgname=('libfronius' 'libfronius-docs')
 pkgver=1.0.2
-pkgrel=1
-pkgdesc="Library to access Fronius inverters and smart meters"
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://github.com/ahpohl/libfronius"
 license=('MIT')
-depends=('libmodbus')
-makedepends=('cmake' 'git' 'doxygen')
+makedepends=('cmake' 'git' 'doxygen' 'pkgconf' 'libmodbus')
 source=("$pkgname-$pkgver::git+https://github.com/ahpohl/libfronius.git#tag=v${pkgver}")
-sha256sums=('2cccd7d52c939ad1a920ddf630d473d7a6f54b91da61f76e2ebc11f554854b8f')
+sha256sums=('1b4ab2151124ed826fc363f5e370733ff225d62aa018cec7a8b8b6c4f8b372a2')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  cd "$srcdir/$pkgbase-$pkgver"
+  cmake -B build -S . \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build
+
+  # Generate Doxygen docs
   doxygen Doxyfile
 }
 
-package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  cmake --install build --prefix "${pkgdir}/usr"
+package_libfronius() {
+  pkgdesc="Library to access Fronius inverters"
+  depends=('libmodbus')
+  optdepends=('libfronius-docs: HTML documentation')
+  options=('strip' 'debug')
   
-  install -d "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir/$pkgbase-$pkgver"
+  cmake --install build --prefix "${pkgdir}/usr"
 
-  install -d "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm644 "$srcdir/$pkgname-$pkgver/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-  if [[ -d "$srcdir/$pkgname-$pkgver/docs/html" ]]; then
-    cp -r "$srcdir/$pkgname-$pkgver/docs/html" "$pkgdir/usr/share/doc/$pkgname"
+  # License
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_libfronius-docs() {
+  pkgdesc="HTML documentation for ${pkgbase}"
+  optdepends=('graphviz: diagrams for docs')
+  options=('!strip' '!debug')
+  arch=('any')
+  
+  cd "$srcdir/$pkgbase-$pkgver"
+
+  # Readme
+  install -d "$pkgdir/usr/share/doc/$pkgbase"
+  install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgbase/README.md"
+
+  # License
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  
+  # HTML files
+  if [[ -d "docs/html" ]]; then
+    cp -a "docs/html" "$pkgdir/usr/share/doc/$pkgbase/"
   else
     echo "Warning: Doxygen HTML documentation not found. Did you run doxygen in build()?"
   fi
