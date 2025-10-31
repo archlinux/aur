@@ -1,6 +1,6 @@
 pkgbase = python-scikit-misc
 	pkgdesc = Miscellaenous tools for scientific computing
-	pkgver = 0.5.1
+	pkgver = 0.5.2a1
 	pkgrel = 1
 	url = https://github.com/has2k1/scikit-misc
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = python-scikit-misc
 	depends = python-numpy>=2.0.0
 	depends = glibc
 	optdepends = python-yaml: Better output during compilation
-	source = scikit-misc-0.5.1::git+https://github.com/has2k1/scikit-misc#tag=v0.5.1
-	sha256sums = 8e8c9b5501b320f65ce1cab1e54297653b8dd2099f43cc4fc5342cf8d6e8827d
+	source = scikit-misc-0.5.2a1::git+https://github.com/has2k1/scikit-misc#tag=v0.5.2a1
+	sha256sums = 2eac275ef525c050cb48d01817517cc3abcdb6194ca55b333a2798159a8e88ff
 
 pkgname = python-scikit-misc
