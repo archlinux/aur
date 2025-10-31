@@ -2,7 +2,7 @@
 
 pkgname=python-httpfile
 _name=${pkgname//-/_}
-pkgver=0.0.5.2
+pkgver=0.0.5.4
 pkgrel=1
 epoch=
 pkgdesc="Python httpfile."
@@ -14,22 +14,24 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 depends=(
     python
-    python-poetry
     #AUR
     python-asynctools
     python-filewrap
     python-http-response
+    python-property
     python-urlopen
 )
 makedepends=(
+    python-poetry
     python-build
     python-installer
     python-wheel
-    python-setuptools)
+    python-setuptools
+)
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('10a9201ae62e9927f3c6109192499093aef97b36ce13bd8253fc2b8545aedf4f')
+sha256sums=('37fa7cb57609f77993267978cfb4556135aaec156e5f39071cd4a1fb7ca6f319')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
