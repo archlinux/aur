@@ -25,6 +25,7 @@ source=(
   '0004-depmod-remove-depmod_hack_needed.patch'
   '0005-kernel-5.10-depmod-disable-for-packaging.patch'
   '0006-Sphinx-docutils-0.22-deprecated-SafeString-ErrorString.patch'
+  '0007-perl-5.41-precedence-warning-kernel-doc.patch'
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -38,7 +39,8 @@ md5sums=('8732ec98a206b17ffd7ae820d3ba8cc5'
          'c1f10e50f7ca23d07ae83ae6252854d5'
          'd15820a808c3cc159e6e5916a8c05e8f'
          '32277e1b48dd6f00b5e31f3cb3f0f44c'
-         '80c6b8ddceb9e0cb9b432d5ec4cdf5ff')
+         '80c6b8ddceb9e0cb9b432d5ec4cdf5ff'
+         '6140c1a5cd25145548ed5867d13ee7d9')
 sha256sums=('eb6b76c269d2dc09791638b10b9dcb9d79fd2abd45113a31fc03f68731caa875'
             'SKIP'
             'ddc8d7c604a2f8373a25674d06cd377fdf80adca9bd426f4c8a50f3d52403001'
@@ -46,7 +48,8 @@ sha256sums=('eb6b76c269d2dc09791638b10b9dcb9d79fd2abd45113a31fc03f68731caa875'
             '453ad77883c50b5d5b1373241a5a27a5f7cdc11c5b66dd929338fc622de6cf14'
             '64b521b3963781c60e9a33db40c523bf65a119cb1dfec182a737e90d2609df5a'
             '0514cb38c60afd7ae113f679508b83d253c6415a19c4a4a94e514c7f5b877bf2'
-            '0403b5a981af43c7a5f4a74f879cc9ca08e43f5eda7b67a5be68855d3eb3f273')
+            '0403b5a981af43c7a5f4a74f879cc9ca08e43f5eda7b67a5be68855d3eb3f273'
+            '54e863f094c1fb8901f29f73c86d4a05ffb1836b12c2edbc811ba0621b7b8391')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
