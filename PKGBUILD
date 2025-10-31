@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ProtGenerics
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3ed4167c27adeb7b887aaf84b6fa7f2b')
-b2sums=('7873eb3c0a46cfd0e45bab0aa95539a9e8a91468ce85e7f3f1f573839ef6f3200dbe4c6d9a7d2a35210960afdca730435facb04feafead1cb5b4cd023ce15668')
+md5sums=('096214a880a202170f14a2a72155a234')
+b2sums=('0d42ac206fd232409ded464e8605791cdb346050ae9dd369c3794dfc14f10ab593d99ea659acad67c27f073a9bc95e51f254cf75ee3ead6c363dca80cafe50ed')
 
 build() {
   mkdir build
