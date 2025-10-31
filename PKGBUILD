@@ -2,13 +2,13 @@
 
 pkgname=kpa-bin
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="KevinCrrl Python AUR helper"
 arch=('x86_64' 'aarch64')
 url="https://github.com/KevinCrrl/kpa"
 license=('GPL-3')
 options=('!debug')
-depends=('pacman' 'git' 'base-devel' 'zlib' 'glibc')
+depends=('pacman' 'git' 'fakeroot' 'zlib' 'glibc')
 optdepends=('torsocks' 'tor' 'sudo' 'doas')
 source_x86_64=("https://github.com/KevinCrrl/kpa/releases/download/${pkgver}/kpa-x86_64-${pkgver}")
 sha256sums_x86_64=('0b73fe9454257e20611a02dd9126bb7a4eb6e072aab25c06217e01d52feaadda')

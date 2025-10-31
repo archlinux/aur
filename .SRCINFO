@@ -1,14 +1,14 @@
 pkgbase = kpa-bin
 	pkgdesc = KevinCrrl Python AUR helper
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KevinCrrl/kpa
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3
 	depends = pacman
 	depends = git
-	depends = base-devel
+	depends = fakeroot
 	depends = zlib
 	depends = glibc
 	optdepends = torsocks
