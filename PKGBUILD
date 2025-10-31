@@ -2,7 +2,7 @@
 
 _name=modelscope
 pkgname=python-$_name
-pkgver=1.30.0
+pkgver=1.31.0
 pkgrel=1
 pkgdesc='ModelScope: bring the notion of Model-as-a-Service to life.'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python' 'python-filelock' 'python-requests>=2.25' 'python-setuptools' 
 makedepends=('python-pip')
 # It seems that .tar.gz source cannot be easily built, so we're heading the .whl file
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
-sha512sums=('c515a5ae0b60d5c7a6658780c3516498226430c4c299e47afb7966a45f3b173c289b1b9ad31961912ba1aa3a7bad3f7955b2f5aeb52a369628a81c457595de0c')
+sha512sums=('5b73e3f1bfa604aa349195ab276422703123b7eb80633e2eafd6301823154152ac0b88c3ba40c67a2d012d83c70c5d763cb1e0ad49f8639bea7ca0385e5515c2')
 
 package() {
   pip install \
