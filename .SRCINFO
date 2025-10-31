@@ -1,0 +1,19 @@
+pkgbase = python-reals-git
+	pkgdesc = A lightweight Python library for arithmetic with real numbers (development version)
+	pkgver = 0.0.6.r0.g6716e37
+	pkgrel = 1
+	url = https://github.com/rubenvannieuwpoort/reals
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = python-reals
+	conflicts = python-reals
+	source = reals::git+https://github.com/rubenvannieuwpoort/reals.git
+	sha256sums = SKIP
+
+pkgname = python-reals-git
