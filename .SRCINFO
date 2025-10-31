@@ -1,6 +1,6 @@
 pkgbase = decompose-bin
 	pkgdesc = Reverse-engineering tool for docker environments
-	pkgver = 1.11.4
+	pkgver = 1.11.5
 	pkgrel = 1
 	url = https://github.com/s0rg/decompose
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = decompose-bin
 	license = MIT
 	provides = decompose
 	conflicts = decompose
-	source_x86_64 = decompose-x86_64-1.11.4.tar.gz::https://github.com/s0rg/decompose/releases/download/v1.11.4/decompose_v1.11.4_linux_x86_64.tar.gz
-	sha256sums_x86_64 = f1b9a4cf2b01bec5a9e9b58b85599a847dfcc121834079327ade3bf742b9b59b
-	source_aarch64 = decompose-aarch64-1.11.4.tar.gz::https://github.com/s0rg/decompose/releases/download/v1.11.4/decompose_v1.11.4_linux_arm64.tar.gz
-	sha256sums_aarch64 = 0f4d53dbcf7dcd200be86559d1b5906d9ab904ae92065eb44b8be80d11abcfdb
+	source_x86_64 = decompose-x86_64-1.11.5.tar.gz::https://github.com/s0rg/decompose/releases/download/v1.11.5/decompose_v1.11.5_linux_x86_64.tar.gz
+	sha256sums_x86_64 = dccb38a9caff263e106027f1376a539c6cb856ba1fa90045f588fd8a36f0cbbb
+	source_aarch64 = decompose-aarch64-1.11.5.tar.gz::https://github.com/s0rg/decompose/releases/download/v1.11.5/decompose_v1.11.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = f8718c2d939cb3d637c49db7a0e7d7f8326a4e61fbd97f355b33bf68b4523900
 
 pkgname = decompose-bin
