@@ -1,8 +1,8 @@
 # Maintainer: Martin Chang <marty188586@gmail.com>
 
 pkgname=python-ttnn-git
-pkgver=0.62.0.dev20251019.r0.gbb02171262f
-pkgrel=4
+pkgver=0.64.0.dev20251031.r9.g646de0ddcdb
+pkgrel=1
 pkgdesc='TT-NN operator and Tensor library for Tenstorrent hardware'
 arch=('x86_64')
 url='https://github.com/tenstorrent/tt-metal'
@@ -13,7 +13,7 @@ provides=("python-ttnn")
 conflicts=("python-ttnn")
 source=("tt-metal::git+https://github.com/tenstorrent/tt-metal")
 sha256sums=('SKIP')
-options=(!strip)
+options=(!strip) # We don't want PKGBUILD stripping RISC-V binaries shipped with it
 
 pkgver() {
     cd "$srcdir/tt-metal"
@@ -30,10 +30,10 @@ prepare() {
     # Dirty source patches (patching using the patch command is not stable enough)
     sed -i 's/\(setuptools.*\)==.*"/\1"/' pyproject.toml # Forced version but it doesn't really need it
     sed -i 's/\(numpy\)>.*"/\1"/' pyproject.toml # DITTO
-    sed -i 's/\[tool.scikit-build.cmake.define\]/\[tool.scikit-build.cmake.define\]\nENABLE_DISTRIBUTED = "OFF"\n/' pyproject.toml
+    sed -i 's/"-DENABLE_CCACHE=TRUE"/"-DENABLE_CCACHE=TRUE", "-DENABLE_DISTRIBUTED=OFF", "-DTT_USE_SYSTEM_SFPI=ON", "-DCMAKE_CXX_COMPILER=c++", "-DCMAKE_C_COMPILER=cc", "-DCMAKE_CXX_FLAGS=-s"/' setup.py
 
     # Disable -Werror (sometimes triggers on GCC)
-    find -name CMakeLists.txt | grep -v './build' | grep -v './.cpmcache' | xargs -n 1 sed -i -E 's/-Werror([[:space:]]|$)/ /g'
+    find -name CMakeLists.txt | grep -v umd | grep -v './build' | grep -v './.cpmcache' | xargs -n 1 sed -i -E 's/-Werror([[:space:]]|$)/ /g'
 }
 
 build() {
@@ -43,7 +43,7 @@ build() {
     [[ -d dist ]] && (rm -r dist && mkdir dist)
     # makepkg generates debug symbols - they take forever to compress
     # and we are going to decompress it and repackage anyway
-    WHEEL_COMPRESSION_LEVEL=0 python -m build --wheel --no-isolation
+    CIBUILDWHEEL=1 WHEEL_COMPRESSION_LEVEL=0 python -m build --wheel --no-isolation
 }
 
 package() {
@@ -51,8 +51,6 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
 
     rm -rf $pkgdir/usr/lib/python*/site-packages/debian/ || true
-
-    strip --strip-unneeded "$pkgdir"/usr/lib/python*/site-packages/ttnn/*.so
 
     # Delete pyc
     find "$pkgdir" -name '*.pyc' -delete
