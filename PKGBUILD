@@ -1,22 +1,22 @@
 # Maintainer: Certilia <support@certilia.com>
 
 pkgname=certiliamiddleware
-pkgver=3.9.6
+pkgver=3.9.8
 pkgrel=1
 pkgdesc="Certilia Middleware for AKD smart cards (Croatian eID, Certilia)"
 arch=("x86_64")
 url="https://www.certilia.com"
 license=("LicenseRef-AKD-Middleware-EULA")
 depends=("ca-certificates-utils" "ccid" "xcb-util-cursor" "xcb-util-keysyms" "xcb-util-wm")
-source=("${url}/update/${pkgname}_${pkgver}-${pkgrel}_amd64.deb")
+source=("https://repo.certilia.com/repository/debian/pool/c/${pkgname}/${pkgname}_${pkgver}-${pkgrel}_amd64.deb")
 options=("!strip" "staticlibs")
 install="certiliamiddleware.install"
-sha512sums=("01f1469ce414112aa5612f93c1df184caad36508007f4ea62a604808569a7dc3a98297d2f1ee9e60bfdfe30164214ab739a182d99394d214fd5ad4d2043d9806")
+sha512sums=("7c42e2c5a9b8ca6901c1d8612acdd8c39eff496ba629107b232f7551fd647175ee0f01332ee31d7836284e62cbabfd2426a1aec7b7e08be9624811493df08206")
 
 package() {
   tar --no-same-owner --zstd -xvf data.tar.zst -C ${pkgdir}
   rm -rv ${pkgdir}/etc/apt
   mkdir -pv ${pkgdir}/usr/share/ca-certificates/trust-source
   mv -v ${pkgdir}/usr/share/ca-certificates/akd ${pkgdir}/usr/share/ca-certificates/trust-source/anchors
-  install -vDm644 "${pkgdir}/usr/share/doc/${pkgname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm644 "${pkgdir}/opt/${pkgname}/licenses/MiddlewareLicense" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
