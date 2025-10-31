@@ -3,7 +3,7 @@
 pkgbase=wps-office-365
 pkgname=('wps-office-365' 'wps-office-365-xiezuo' 'wps-office-365-fonts')
 pkgver=12.1.2.22550
-pkgrel=1
+pkgrel=2
 pkgdesc="WPS Office, is an office productivity suite."
 arch=('x86_64' 'aarch64' 'loong64')
 url="https://365.wps.cn/"
@@ -13,7 +13,7 @@ makedepends=(
 depends=(
   'fontconfig' 'libxrender' 'xdg-utils' 'glu'
   'libpulse' 'libxss' 'sqlite' 'libtool' 'libtiff'
-  'libxslt' 'libjpeg-turbo' 'libpng12' 'freetype2')
+  'libxslt' 'libjpeg-turbo' 'libpng' 'freetype2')
 optdepends=(
   'wps-office-365-fonts: FZ TTF fonts provided by wps office 365'
   'cups: for printing support')

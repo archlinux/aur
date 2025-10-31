@@ -1,7 +1,7 @@
 pkgbase = wps-office-365
 	pkgdesc = WPS Office, is an office productivity suite.
 	pkgver = 12.1.2.22550
-	pkgrel = 1
+	pkgrel = 2
 	url = https://365.wps.cn/
 	arch = x86_64
 	arch = aarch64
@@ -19,7 +19,7 @@ pkgbase = wps-office-365
 	depends = libtiff
 	depends = libxslt
 	depends = libjpeg-turbo
-	depends = libpng12
+	depends = libpng
 	depends = freetype2
 	optdepends = wps-office-365-fonts: FZ TTF fonts provided by wps office 365
 	optdepends = cups: for printing support
