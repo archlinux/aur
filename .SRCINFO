@@ -1,13 +1,13 @@
 pkgbase = r-mdqc
 	pkgdesc = Mahalanobis Distance Quality Control for microarrays
-	pkgver = 1.70.0
+	pkgver = 1.72.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/mdqc
 	arch = any
 	license = LGPL-2.0-or-later
 	depends = r
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/mdqc_1.70.0.tar.gz
-	md5sums = ddc0391339b870a36de1f989bd5934ce
-	b2sums = 80b19b2d609a8f567f83d4821867f3fbc0cb9cd0014e8781d7fda359f42ff39fc9d770b58707558c5f9d5564aeae3b487030359f2de615e38031daf581e7a0cf
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/mdqc_1.72.0.tar.gz
+	md5sums = 73e5b149f797730798161c6210e16f04
+	b2sums = a9e30d9f7dc6d06307a6a9703e0db42d03981db7effde2109564063606fc62c93ce27b3686e81b08464ea63d9a26f5229d51de732d949d0aafea5f6fac9944b7
 
 pkgname = r-mdqc
