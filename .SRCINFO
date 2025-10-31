@@ -1,6 +1,6 @@
 pkgbase = r-mergeomics
 	pkgdesc = Integrative network analysis of omics data
-	pkgver = 1.36.0
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Mergeomics
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = r-mergeomics
 	depends = r
 	optdepends = r-biocgenerics
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Mergeomics_1.36.0.tar.gz
-	md5sums = 7b0c1de0d51b78e824f4469c04b11fb8
-	b2sums = 9712975431a354909f87d0ab5dca3159286deb66d5c14d36d82445512b216bee4ffef593d9620ddb1142acf47d562838dc3fa43f4f2a7330f0815cbb0ae5d93b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Mergeomics_1.38.0.tar.gz
+	md5sums = 03087aabc797e9f8c777718625320ffd
+	b2sums = ab1ca521ebd4ecc2c21c1a1f7bed56fcba8abe0f7c9f4c61f75fb7ece4e6353de939d395f71891e101f102ddfab7e26da7010942a77971ee602dac5a4fb54883
 
 pkgname = r-mergeomics

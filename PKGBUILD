@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Mergeomics
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7b0c1de0d51b78e824f4469c04b11fb8')
-b2sums=('9712975431a354909f87d0ab5dca3159286deb66d5c14d36d82445512b216bee4ffef593d9620ddb1142acf47d562838dc3fa43f4f2a7330f0815cbb0ae5d93b')
+md5sums=('03087aabc797e9f8c777718625320ffd')
+b2sums=('ab1ca521ebd4ecc2c21c1a1f7bed56fcba8abe0f7c9f4c61f75fb7ece4e6353de939d395f71891e101f102ddfab7e26da7010942a77971ee602dac5a4fb54883')
 
 build() {
   mkdir build
