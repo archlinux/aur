@@ -10,19 +10,21 @@ post_install() {
     
     systemctl daemon-reload
     
-    # 启用并启动服务
-    for service in apm-daily-update; do
-        if systemctl list-unit-files | grep -q "$service.service"; then
-            echo "Start Service: $service"
-            systemctl enable "$service" 2>/dev/null || true
-            systemctl start "$service" 2>/dev/null || true
-        fi
-    done
+    # # 启用并启动服务
+    # for service in apm-daily-update; do
+    #     if systemctl list-unit-files | grep -q "$service.service"; then
+    #         echo "Start Service: $service"
+    #         systemctl enable "$service" 2>/dev/null || true
+    #         systemctl start "$service" 2>/dev/null || true
+    #     fi
+    # done
 
     # 应用 sysctl 配置
     if [ -f /usr/lib/sysctl.d/apm.conf ]; then
         sysctl -p /usr/lib/sysctl.d/apm.conf 2>/dev/null || true
     fi
+
+    echo "Use \"systemctl enable apm-daily-update\" to enable daily updates."
 }
 
 post_upgrade() {
