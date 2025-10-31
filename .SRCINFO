@@ -1,6 +1,6 @@
 pkgbase = r-redisparam
 	pkgdesc = Provide a 'redis' back-end for BiocParallel
-	pkgver = 1.10.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RedisParam
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = r-redisparam
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RedisParam_1.10.0.tar.gz
-	md5sums = 8ba19d6ef0437a763a045b7619d943cb
-	b2sums = 4a469bf6ecd33bf0af4aa8f658af88077552a230b5ac8bbeb7c448cdba029fee84ac531bff783324c805e2d756941fc89acda8f127022216f90ba40e836c2c26
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RedisParam_1.12.0.tar.gz
+	md5sums = dc36e237c1b81b5aebc31cb75c258f95
+	b2sums = 1c9f908222c623f3d811f41ed6f59fd9b36c0a5359d5d8779bd0085dd113eaec6562fcaf6bdc7407acc0701510f93996084f0ba29f586e729400f795fa03af75
 
 pkgname = r-redisparam
