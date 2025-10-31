@@ -1,6 +1,6 @@
 pkgbase = cairo-profiler-bin
 	pkgdesc = Profiler for Cairo programming language & Starknet
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/software-mansion/cairo-profiler
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = cairo-profiler-bin
 	license = MIT
 	provides = cairo-profiler
 	conflicts = cairo-profiler
-	source_x86_64 = https://github.com/software-mansion/cairo-profiler/releases/download/v0.13.0/cairo-profiler-v0.13.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 3d56ed1d8e91a3e391f9af19f385bf4a67b2a069db64ae7f337f432d537110c5
-	source_aarch64 = https://github.com/software-mansion/cairo-profiler/releases/download/v0.13.0/cairo-profiler-v0.13.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 01be3d3bd463c38b0418fcb4a9ad55c91a90ebee59eb3c71f6c1954ab819e854
+	source_x86_64 = https://github.com/software-mansion/cairo-profiler/releases/download/v0.14.0/cairo-profiler-v0.14.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 4ee1d3e1821713bc82371eadc14044e7090527f8abb09d047258c85d7bc5b835
+	source_aarch64 = https://github.com/software-mansion/cairo-profiler/releases/download/v0.14.0/cairo-profiler-v0.14.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = c01fc4ed88e5e358068968cc3cb82fa6254e05dd7faed79ae077b20d88602e81
 
 pkgname = cairo-profiler-bin
