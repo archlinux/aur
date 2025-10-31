@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=demuxmix
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -26,8 +26,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cddbd546e57f348b8d285b4f9e26cb9f')
-b2sums=('7016cbf180ead581de3fb486f7cb7d93c146b8fbab7dc1c90536ec2dfcca65b9cc607c9138a1b9408884c61d07ef4cb7ce0b41aa42c674fd2564a120f4408b45')
+md5sums=('862b1d0b58bb9a89020d1e5302f5101b')
+b2sums=('3f82dbfc46e7d8e5fc247427ec5c507ba9f98072ea7f15fc97f1cd17af27f0ab342d4aa5524e01f84086746d584b95694d416690da4d62d9bfbe2b7b92e9fb17')
 
 build() {
   mkdir build
