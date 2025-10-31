@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ASGSCA
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0c91383d4c7be98a6504665f3c91b37e')
-b2sums=('76e0dd1dc31cff3476348e7556959fae960979314ab17b3c1537e182d50876db71125711f7f5a2951f0775a53bb890ed664e2c4d28df8560fe93e8c7bef94423')
+md5sums=('11f2643464453174a6901d518ca68edd')
+b2sums=('38ec8ca15d4526fa9048c32baa2474fecdfd66304091f59ab5f1745efef8727909d400e2a3a1e68646232a473a10e9d22571e02794c4ff90df00cad4497d2e46')
 
 build() {
   mkdir build
