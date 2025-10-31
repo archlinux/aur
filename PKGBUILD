@@ -1,7 +1,7 @@
 # Maintainer: pierspad <pierpaolospadafora@proton.me>
 pkgname=textmerger
 pkgver=1.0.7
-pkgrel=5
+pkgrel=6
 pkgdesc="A Python GUI application for merging text files"
 arch=('any')
 url="https://github.com/pierspad/TextMerger"
@@ -13,22 +13,22 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/pierspad/TextMerger/archive
 sha256sums=('dc23c9dcfd673a86ce3bbee9d7b585586d6f982cc17c13f5e5d0996f55fb1056')
 
 prepare() {
-  cd "$srcdir/TextMerger-$pkgver"
+  cd "$srcdir/textmerger-$pkgver"
 }
 
 build() {
-  cd "$srcdir/TextMerger-$pkgver"
+  cd "$srcdir/textmerger-$pkgver"
   unset VIRTUAL_ENV
   export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
   /usr/bin/python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$srcdir/TextMerger-$pkgver"
+  cd "$srcdir/textmerger-$pkgver"
 }
 
 package() {
-  cd "$srcdir/TextMerger-$pkgver"
+  cd "$srcdir/textmerger-$pkgver"
   /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 docs/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
