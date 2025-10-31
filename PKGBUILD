@@ -1,11 +1,8 @@
-# Maintainer: envolution
-# Contributor: Gavin Luo <lunt.luo@gmail.com>
-# shellcheck shell=bash disable=SC2034,SC2154
-# ci|prebuild=setffver.sh| https://github.com/envolution/aur/blob/main/maintain/build/zen-browser/setffver.sh
+# Maintainer: StaticNullException <aurcontact@teto.party>
 
 pkgbase=zen-browser
 pkgname=("$pkgbase")
-pkgver=1.16.4b
+pkgver=1.17.4b
 _zen_version=${pkgver//_/-}
 _firefox_version=143.0.1
 pkgrel=1
