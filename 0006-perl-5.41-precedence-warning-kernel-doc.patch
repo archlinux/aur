@@ -1,0 +1,127 @@
+https://patchew.org/QEMU/20250819115648.2125709-1-peter.maydell@linaro.org/
+
+From nobody Thu Oct 30 23:03:57 2025
+Delivered-To: importer@patchew.org
+Authentication-Results: mx.zohomail.com;
+Return-Path: <qemu-devel-bounces+importer=patchew.org@nongnu.org>
+
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Subject: [PATCH] scripts/kernel-doc: Avoid new Perl precedence warning
+Date: Tue, 19 Aug 2025 12:56:48 +0100
+Message-ID: <20250819115648.2125709-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass (zohomail.com: domain of gnu.org designates 209.51.188.17
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+Errors-To: qemu-devel-bounces+importer=patchew.org@nongnu.org
+Sender: qemu-devel-bounces+importer=patchew.org@nongnu.org
+X-ZohoMail-DKIM: pass (identity @linaro.org)
+X-ZM-MESSAGEID: 1755604681064116600
+Content-Type: text/plain; charset="utf-8"
+
+Newer versions of Perl (5.41.x and up) emit a warning for code in
+kernel-doc:
+ Possible precedence problem between ! and pattern match (m//) at /scripts/=
+kernel-doc line 1597.
+
+This is because the code does:
+            if (!$param =3D~ /\w\.\.\.$/) {
+
+In Perl, the !  operator has higher precedence than the =3D~
+pattern-match binding, so the effect of this condition is to first
+logically-negate the string $param into a true-or-false value and
+then try to pattern match it against the regex, which in this case
+will always fail.  This is almost certainly not what the author
+intended.
+
+In the new Python version of kernel-doc in the Linux kernel,
+the equivalent code is written:
+
+            if KernRe(r'\w\.\.\.$').search(param):
+                # For named variable parameters of the form `x...`,
+                # remove the dots
+                param =3D param[:-3]
+            else:
+                # Handles unnamed variable parameters
+                param =3D "..."
+
+which is a more sensible way of writing the behaviour you would
+get if you put in brackets to make the regex match first and
+then negate the result.
+
+Take this as the intended behaviour, and update the Perl to match.
+
+For QEMU, this produces no change in output, presumably because we
+never used the "unnamed variable parameters" syntax.
+
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
+Reviewed-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+---
+This obviously will clash with the "import the python script"
+patchseries, but I figured it was worth providing the minimal
+fix for the benefit of stable backports.
+
+The kernel's copy of kernel-doc.pl still has this bug.
+---
+ scripts/kernel-doc | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+#diff --git a/scripts/kernel-doc b/scripts/kernel-doc
+#index fec83f53eda..117ec8fcd1f 100755
+#--- a/scripts/kernel-doc
+#+++ b/scripts/kernel-doc
+#@@ -1594,13 +1594,12 @@ sub push_parameter($$$$$) {
+# 
+# 	if ($type eq "" && $param =~ /\.\.\.$/)
+# 	{
+#-	    if (!$param =~ /\w\.\.\.$/) {
+#-	      # handles unnamed variable parameters
+#-	      $param = "...";
+#-	    }
+#-	    elsif ($param =~ /\w\.\.\.$/) {
+#+	    if ($param =~ /\w\.\.\.$/) {
+# 	      # for named variable parameters of the form `x...`, remove the dots
+# 	      $param =~ s/\.\.\.$//;
+#+	    } else {
+#+	      # handles unnamed variable parameters
+#+	      $param = "...";
+# 	    }
+# 	    if (!defined $parameterdescs{$param} || $parameterdescs{$param} eq "") {
+# 		$parameterdescs{$param} = "variable arguments";
+#-- 
+#2.43.0
+
+The mail list coloring mangled this patch pretty bad.
+I redid the original patch to create a clean version above.
+
+I think the patch unnecessairly rearranged code so I redid it my way.
+
+Cleaned and fixed for Arch linux-lts66
+
+diff -pNaru3 a/scripts/kernel-doc b/scripts/kernel-doc
+--- a/scripts/kernel-doc	2025-10-29 09:04:43.000000000 -0400
++++ b/scripts/kernel-doc	2025-10-30 19:54:05.146063059 -0400
+@@ -1567,11 +1567,11 @@ sub push_parameter($$$$$) {
+ 
+ 	if ($type eq "" && $param =~ /\.\.\.$/)
+ 	{
+-	    if (!$param =~ /\w\.\.\.$/) {
++	    if (!($param =~ /\w\.\.\.$/)) {
+ 	      # handles unnamed variable parameters
+ 	      $param = "...";
+ 	    }
+-	    elsif ($param =~ /\w\.\.\.$/) {
++	    else {
+ 	      # for named variable parameters of the form `x...`, remove the dots
+ 	      $param =~ s/\.\.\.$//;
+ 	    }
