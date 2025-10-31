@@ -1,10 +1,11 @@
 # Maintainer: aliu <aaronliu 0 1 3 0  gmail com>
 # Contributor: pikl <me@pikl.uk>
 pkgname=immich-machine-learning
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Machine learning server for the Immich photo management system"
 arch=(any)
+
 # PYTHON V3.12 REQUIRED
 #   Current incompatibility with arch base version of python (3.13)
 #   so depend on python312. Cannot use python=3.12 since the AUR
@@ -21,7 +22,7 @@ optdepends=(
 )
 source=("immich-${pkgver}.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v${pkgver}.tar.gz"
 	"immich-machine-learning.service")
-sha256sums=('acc20b8d4cc2b9024f934bd74f9a544493ea13b3bd0a8039ddd70677a5fb071c'
+sha256sums=('9a10c6ff35191787f6a42c79fe1ac83be950eaa2a2723eb936a132ed3b639b94'
             'ce6fae49e23d705b8d08205d981bb217eaf55347a499a8d0492b7ed95b520cff')
 
 _installdir=/usr/lib/immich/immich-machine-learning
