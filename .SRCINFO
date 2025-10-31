@@ -1,7 +1,7 @@
 pkgbase = shadps4-qtlauncher-git
-	pkgdesc = Official Qt launcher for shadps4 emulator
+	pkgdesc = Sony PlayStation 4 emulator (Qt GUI)
 	pkgver = r144.55bb7f7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://shadps4.net/
 	arch = aarch64
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = shadps4-qtlauncher-git
 	depends = hicolor-icon-theme
 	depends = pugixml>=1.14
 	depends = sdl3>=3.1.8
-	optdepends = shadps4
+	optdepends = shadps4: for emulation support
 	provides = shadps4-qtlauncher=r144.55bb7f7
 	conflicts = shadps4-qtlauncher
 	source = shadps4-qtlauncher::git+https://github.com/shadps4-emu/shadps4-qtlauncher.git

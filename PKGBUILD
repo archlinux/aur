@@ -2,8 +2,8 @@
 _pkgname=shadps4-qtlauncher
 pkgname=$_pkgname-git
 pkgver=r144.55bb7f7
-pkgrel=1
-pkgdesc="Official Qt launcher for shadps4 emulator"
+pkgrel=2
+pkgdesc="Sony PlayStation 4 emulator (Qt GUI)"
 arch=('aarch64' 'x86_64')
 url="https://shadps4.net/"
 license=('GPL-2.0-or-later')
@@ -24,7 +24,7 @@ makedepends=(
 	'toml11>=4.2'
 	'vulkan-headers>=1:1.4.329'
 )
-optdepends=('shadps4')
+optdepends=('shadps4: for emulation support')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=(
