@@ -1,0 +1,49 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c60be1d5c..a0c8d9ee8 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -121,6 +121,9 @@ add_definitions(-DENABLE_AI)
+ add_subdirectory(src/ai)
+ endif()
+ 
++find_package(Eigen3 REQUIRED)
++include_directories(SYSTEM /usr/include/eigen3)
++
+ add_subdirectory(src/third_party)
+ add_subdirectory(src/utility)
+ add_subdirectory(src/apps)
+diff --git a/src/operation/iPA/test/CMakeLists.txt b/src/operation/iPA/test/CMakeLists.txt
+index 93e87f184..7c4be6537 100644
+--- a/src/operation/iPA/test/CMakeLists.txt
++++ b/src/operation/iPA/test/CMakeLists.txt
+@@ -15,7 +15,6 @@ target_link_libraries(
+   PUBLIC
+   gtest
+   gtest_main
+-  boost_system
+   PRIVATE
+   vcd_wrapper
+   log
+diff --git a/src/operation/iPNP/CMakeLists.txt b/src/operation/iPNP/CMakeLists.txt
+index b8f308a6e..4749d5024 100644
+--- a/src/operation/iPNP/CMakeLists.txt
++++ b/src/operation/iPNP/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.5)
+ set (CMAKE_CXX_STANDARD 20)
+ 
+ add_subdirectory(api)
+diff --git a/src/third_party/pybind11/CMakeLists.txt b/src/third_party/pybind11/CMakeLists.txt
+index 0d9320388..5b5967713 100644
+--- a/src/third_party/pybind11/CMakeLists.txt
++++ b/src/third_party/pybind11/CMakeLists.txt
+@@ -5,7 +5,7 @@
+ # All rights reserved. Use of this source code is governed by a
+ # BSD-style license that can be found in the LICENSE file.
+ 
+-cmake_minimum_required(VERSION 3.4)
++cmake_minimum_required(VERSION 3.5)
+ 
+ # The `cmake_minimum_required(VERSION 3.4...3.22)` syntax does not work with
+ # some versions of VS that have a patched CMake 3.11. This forces us to emulate

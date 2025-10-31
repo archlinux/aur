@@ -1,0 +1,179 @@
+diff --git a/src/database/data/design/db_layout/IdbLayer.h b/src/database/data/design/db_layout/IdbLayer.h
+index 00239857a..ee803ca2e 100644
+--- a/src/database/data/design/db_layout/IdbLayer.h
++++ b/src/database/data/design/db_layout/IdbLayer.h
+@@ -766,9 +766,13 @@ class IdbLayerImplant : public IdbLayer
+   ////getter
+   int32_t get_min_spacing()
+   {
+-    if (_spacing_list->get_num() == 1) {
+-      return _spacing_list->get_min_spacing(0)->get_min_spacing();
++    int32_t min_spacing = INT32_MAX;
++    int32_t n = _spacing_list->get_num();
++    for (size_t i=0; i<n; ++i)
++    {
++      min_spacing = std::min(_spacing_list->get_min_spacing(i)->get_min_spacing(), min_spacing);
+     }
++    return min_spacing;
+   }
+   IdbLayerImplantSpacingList* get_min_spacing_list() { return _spacing_list; }
+   int32_t get_min_width() { return _min_width; }
+diff --git a/src/operation/iNO/api/NoApi.cpp b/src/operation/iNO/api/NoApi.cpp
+index f84f255fd..49bf3d641 100644
+--- a/src/operation/iNO/api/NoApi.cpp
++++ b/src/operation/iNO/api/NoApi.cpp
+@@ -137,9 +137,26 @@ ieda_feature::NetOptSummary NoApi::outputSummary() {
+     clock_timing.hold_wns = eval_data.hold_wns;
+     clock_timing.suggest_freq = eval_data.freq;
+ 
+-    ieda_feature::NOClockTimingCmp clock_cmp;
+-    memset(&clock_cmp, 0, sizeof(ieda_feature::NOClockTimingCmp));
+-    clock_cmp.origin = clock_timing;
++    ieda_feature::NOClockTimingCmp clock_cmp {
++      .clock_name = "",
++      .origin = clock_timing,
++      .opt = {
++        .clock_name = "",
++        .setup_tns = 0,
++        .setup_wns = 0,
++        .hold_tns = 0,
++        .hold_wns = 0,
++        .suggest_freq=0,
++      },
++      .delta = {
++        .clock_name = "",
++        .setup_tns = 0,
++        .setup_wns = 0,
++        .hold_tns = 0,
++        .hold_wns = 0,
++        .suggest_freq=0,
++      },
++    };
+     summary_map[clock_name] = clock_cmp;
+   }
+ 
+diff --git a/src/operation/iPL/source/module/detail_placer/database/DPBin.hh b/src/operation/iPL/source/module/detail_placer/database/DPBin.hh
+index 90ba779c3..95c588a3b 100644
+--- a/src/operation/iPL/source/module/detail_placer/database/DPBin.hh
++++ b/src/operation/iPL/source/module/detail_placer/database/DPBin.hh
+@@ -21,8 +21,8 @@
+ #include <set>
+ 
+ #include "DPNode.hh"
+-#include "DPSegment.hh"
+ #include "data/Rectangle.hh"
++
+ namespace ipl{
+ 
+ class DPSegment;
+diff --git a/src/operation/iPL/source/module/detail_placer/database/DPSegment.hh b/src/operation/iPL/source/module/detail_placer/database/DPSegment.hh
+index 34108a636..bdf42005e 100644
+--- a/src/operation/iPL/source/module/detail_placer/database/DPSegment.hh
++++ b/src/operation/iPL/source/module/detail_placer/database/DPSegment.hh
+@@ -20,12 +20,12 @@
+ 
+ #include <set>
+ 
++#include "DPBin.hh"
+ #include "DPNode.hh"
+ 
+ namespace ipl{
+ 
+ class DPRow;
+-class DPBin;
+ 
+ class DPSegment{
+ 
+diff --git a/src/operation/iPL/source/module/detail_placer/operation/NFSpread.hh b/src/operation/iPL/source/module/detail_placer/operation/NFSpread.hh
+index 213e29afc..6219a36e5 100644
+--- a/src/operation/iPL/source/module/detail_placer/operation/NFSpread.hh
++++ b/src/operation/iPL/source/module/detail_placer/operation/NFSpread.hh
+@@ -27,6 +27,8 @@
+ #include "database/DPDatabase.hh"
+ #include "DPOperator.hh"
+ #include "database/DPNode.hh"
++#include "database/DPBin.hh"
++#include "database/DPSegment.hh"
+ 
+ namespace ipl {
+ 
+diff --git a/src/operation/iRT/source/toolkit/logger/Logger.hpp b/src/operation/iRT/source/toolkit/logger/Logger.hpp
+index ac0d87479..834fa1369 100644
+--- a/src/operation/iRT/source/toolkit/logger/Logger.hpp
++++ b/src/operation/iRT/source/toolkit/logger/Logger.hpp
+@@ -68,7 +68,7 @@ class Logger
+   }
+ 
+   template <typename T, typename... Args>
+-  void error(Loc location, const T& value, const Args&... args)
++  [[noreturn]] void error(Loc location, const T& value, const Args&... args)
+   {
+     printLog(LogLevel::kError, location, value, args...);
+     closeLogFileStream();
+diff --git a/src/third_party/salt/base/rsa.h b/src/third_party/salt/base/rsa.h
+index 172829fa7..41dd6222b 100644
+--- a/src/third_party/salt/base/rsa.h
++++ b/src/third_party/salt/base/rsa.h
+@@ -37,7 +37,7 @@ class InnerNode
+ class CompInnerNode
+ {
+  public:
+-  bool operator()(const InnerNode* a, const InnerNode* b)
++  bool operator()(const InnerNode* a, const InnerNode* b) const
+   {
+     return a->dist > b->dist ||  // prefer fathest one
+            (a->dist == b->dist
+@@ -88,4 +88,4 @@ class RsaBuilder : public RSABase
+   void PrintOuterNodes();
+ };
+ 
+-}  // namespace salt
+\ No newline at end of file
++}  // namespace salt
+diff --git a/src/vectorization/src/feature/vec_feature_drc.cpp b/src/vectorization/src/feature/vec_feature_drc.cpp
+index 967d79689..5a705e930 100644
+--- a/src/vectorization/src/feature/vec_feature_drc.cpp
++++ b/src/vectorization/src/feature/vec_feature_drc.cpp
+@@ -71,7 +71,9 @@ void VecFeatureDrc::markNodes()
+ 
+   for (auto& [rule, drc_list_map] : detail_drc_map) {
+     for (auto& [layer_name, drc_spot_list] : drc_list_map) {
+-#pragma omp parallel for schedule(dynamic)
++#if defined(__GNUC__) && !defined(__clang__) && !defined(__INTEL_COMPILER)
++      #pragma omp parallel for schedule(dynamic)
++#endif
+       for (int i = 0; i < (int) drc_spot_list.size(); ++i) {
+         /// set to node if node data exist
+         auto& drc_spot = drc_spot_list[i];
+@@ -291,4 +293,4 @@ void VecFeatureDrc::markNets()
+   LOG_INFO << "Vectorization mark net drc end...";
+ }
+ 
+-}  // namespace ivec
+\ No newline at end of file
++}  // namespace ivec
+diff --git a/src/vectorization/src/layout/data_manager/vec_wire_pattern.cc b/src/vectorization/src/layout/data_manager/vec_wire_pattern.cc
+index 02484af5b..bbdd366b1 100644
+--- a/src/vectorization/src/layout/data_manager/vec_wire_pattern.cc
++++ b/src/vectorization/src/layout/data_manager/vec_wire_pattern.cc
+@@ -85,11 +85,11 @@ std::vector<Point> VecWirePatternGenerator::getPointList(VecNetWire& wire)
+   auto& path = wire.get_paths();
+   std::vector<Point> points;
+   for (auto& [start, end] : path) {
+-    auto start_point = Point{start->get_x(), start->get_y(), start->get_layer_id()};
++    auto start_point = Point{static_cast<int>(start->get_x()), static_cast<int>(start->get_y()), start->get_layer_id()};
+     points.push_back(start_point);
+   }
+   auto end = path.back().second;
+-  points.push_back(Point{end->get_x(), end->get_y(), end->get_layer_id()});
++  points.push_back(Point{static_cast<int>(end->get_x()), static_cast<int>(end->get_y()), end->get_layer_id()});
+   return points;
+ }
+ 
+@@ -160,4 +160,4 @@ VecWirePatternSequence VecWirePatternGenerator::calcPattern(const std::vector<Po
+   return pattern;
+ }
+ 
+-}  // namespace ivec
+\ No newline at end of file
++}  // namespace ivec
