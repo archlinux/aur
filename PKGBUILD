@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=msdata
-_pkgver=0.48.0
+_pkgver=0.49.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-xcms
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ab0242b8a187e6823f428e4fe4933f69')
-b2sums=('35062654af9f337a88468aca162230b5121545a4af401236c1d4243ca3f9f29f9dc94fea17e8d11542b5f01d997b627d470277c844cbb641928df87e1f51135c')
+md5sums=('fa67a230113d85da109ced6c44896ffc')
+b2sums=('0643fbad23e1fbdec0df284329af1796098939dd496e768e73defcd41f5f0c32e63b0335289d70bd220466df709fb95d51d16663e97d74fbc5615940575b4965')
 
 build() {
   mkdir build
