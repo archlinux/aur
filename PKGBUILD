@@ -1,6 +1,6 @@
 # Maintainer: ERSocalypse <ERSocalypse at gmail dot com>
 pkgname=hypr-dock
-pkgver=1.1.1
+pkgver=1.1.0
 pkgrel=2
 options=('!debug')
 pkgdesc="Interactive Dock Panel for Hyprland"
