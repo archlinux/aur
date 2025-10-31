@@ -32,4 +32,7 @@ package() {
 
   # Set permissions
   chmod -R 755 "$pkgdir/opt/mybatop"
+
+  # Set ownership
+  chown -R $USER:$USER "$pkgdir/opt/mybatop"
 }
