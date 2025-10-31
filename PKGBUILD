@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=geneClassifiers
-_pkgver=1.32.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('769c98b508b255757477a05add2a4b65')
-b2sums=('8ec2b4964ad0f47da47f28f2ca9fa46757d5e642fd98da28a21f1a4f70ef006a0f0f65363f35c053b8ee7927595991842b2706faccf7c560c0d801f35b5e29bb')
+md5sums=('b948829b5a445d143fe4b022cc2b76b4')
+b2sums=('09e204a8fa6c85a14c0fe7d07312ae03202ab34cbd2c8b084c35552b7ab61f13095ffbe7ee42a1934ccb94705139244029d6cc2ea723cee46398a7833b74b7a5')
 
 build() {
   mkdir build
