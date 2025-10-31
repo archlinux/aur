@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=metabinR
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fdffc34e821e2d0496f332e0b7929dce')
-b2sums=('9bc50ad167d1ebcf4b79da18deebbd4c55565e08f567ff1c9603741825673d0ad73dd9f42595a9c583aa1181967079aaf55893f3259ade0c0cbfe200b811695b')
+md5sums=('d4e1bf7ff3769d94c6fc7dd9ec5dfdd6')
+b2sums=('a538880b384495be8dec20b7496dde72311d8208d0a29a93d9fc205b91faa58726b4b5282ef531d70f1eb20cdaf886d7f9950da277a76bc08837d5a7eef3c60d')
 
 build() {
   mkdir build
