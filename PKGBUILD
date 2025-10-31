@@ -6,18 +6,18 @@
 # Contributor: Martin Corley <Martin.Corley@ed.ac.uk>
 
 pkgname=psychopy
-pkgver=2025.1.1
+pkgver=2025.2.1
 pkgrel=1
 pkgdesc="Free software for creating psychology, economics, neuroscience, psycholinguistics, behavioural experiments."
 arch=('any')
 url="http://www.psychopy.org"
 license=('GPL3')
-makedepends=(python-build python-installer python-pdm-backend python-tomlkit python-six python-polib)
-depends=(python-distro)
+makedepends=(python-build python-installer python-pdm-backend python-tomlkit python-polib)
+depends=(python-distro python-six)
 
 optdepends=('python-seaborn: For nice graphs')
 source=("https://github.com/psychopy/psychopy/archive/${pkgver}.tar.gz")
-sha512sums=('7bae62b926c8e5e0e840964eb8a6ffe84a1ce5bbe579d1c15484013226df78f2ddb1779f96a8f9deba7b600f932740d23225c1aa87bfb28931426c92674a27f1')
+sha512sums=('9a52691c9d3e7ccb95f9e0ad28c758a5973c42c15aab7fc0525a044aee8c3fa6b415cab914135dcbf52c0f7cbc998e4513ef46ee70e8fcdf44b84ff1dac96e1f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
