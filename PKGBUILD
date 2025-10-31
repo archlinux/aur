@@ -37,6 +37,7 @@ prepare() {
 
 build() {
   cd postgresql-${pkgver}
+  # removed --with-llvm giving error not finding llvm::GlobalValue::getGUID(char*&) in llvmjit_inline.cpp
   local options=(
     --prefix=/opt/${pkgbase}
     --sysconfdir=/etc
@@ -52,7 +53,6 @@ build() {
     --with-icu
     --with-systemd
     --with-ldap
-    --with-llvm
     --with-libxslt
     --enable-nls
     --enable-thread-safety
