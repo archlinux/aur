@@ -1,6 +1,6 @@
 pkgbase = r-antiprofiles
 	pkgdesc = Implementation of gene expression anti-profiles
-	pkgver = 1.48.0
+	pkgver = 1.50.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/antiProfiles
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = r-antiprofiles
 	depends = r-matrixstats
 	optdepends = r-antiprofilesdata
 	optdepends = r-rcolorbrewer
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/antiProfiles_1.48.0.tar.gz
-	md5sums = f28fd1160f9d0cfd2304586cd54761a6
-	b2sums = 9e5258dd984b931605d3afe91ffb704311849060767c9125e8ed13fb7b2318ad30782e5b6a5d8f328b67705c71f90d0679caa984e83119047a5cbc7a58cf333f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/antiProfiles_1.50.0.tar.gz
+	md5sums = 3d54d5391d53938f594495229ee4a838
+	b2sums = 4ddd3202ec7f1116cf81a8626ccb1c1237ba8a9fc0c87fd1e47e0fed9343404abd8e9c03375cf4825f7223516553a65ffd21839c6b89f7d374d7891710ab169d
 
 pkgname = r-antiprofiles
