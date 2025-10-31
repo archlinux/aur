@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _appname=soundcloud
 pkgname="${_appname}-rpc-bin"
-pkgver=0.1.4
+pkgver=0.1.5
 _electronversion=37
 pkgrel=1
 pkgdesc="🎵 A SoundCloud Client with Discord Rich Presence, Dark Mode, Last.fm, and AdBlock Support.(Prebuilt version.Use system-wide electron)"
@@ -18,7 +18,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/richardhbtz/soundcloud-rpc/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('419a2da3664ca603ead352b6bbd1e5cde3cc5f4ed85695bf8970a7b8abc1b1f0'
+sha256sums=('8c7242d0c6a9ec80269a84e4f71a77e84636bacebbf32f72d3349af7299f6d1d'
             'de7ae1038162d14df6bc9ec2a6f717a46d0c57deba4e4fffe4cea07595b0c68d'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
@@ -35,6 +35,9 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
+    if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _get_electron_version
