@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=breastCancerVDX
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-survcomp
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e1d65698ad2cd168932d99c56fda1b5c')
-b2sums=('c4bbc170dd3c1eca43afe0a889f42cd0dfcc83dd8fd07694bf7542f7b3f351b61cc1558397331d1e83d63f67a15a52c6f447b789ad0829da7dea88768c016068')
+md5sums=('a0573c86b9bcadf46d0e9da24ab2e5fd')
+b2sums=('16d3227e40441efa956d30cf6ce5e883fbd0e64d4c3c9022988aad1796fa48e9ec1eb844d315dad1dfcb518e45a792ce7a0ff343cb38b87f113c09324e27fef6')
 
 build() {
   mkdir build
