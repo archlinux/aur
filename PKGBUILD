@@ -1,10 +1,10 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=torch
-_pkgver=0.16.1
+_pkgver=0.16.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Tensors and Neural Networks with 'GPU' Acceleration"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5deb6bf5ca67bd649d77e2919c212149')
-b2sums=('ff6b668dee6ae9f386c11c9cdd99ab092c28045d148ebdaf3de6bd1ef89a5be51756b7627b49e19b7bcef5b1c0a3ea2cff4c4fc3e1769ee887c7e4683ccecc95')
+md5sums=('f40b600eba0b72c5aa2aea37089b3832')
+b2sums=('06174c09a75c0592fa571ccba980ba17f6de1c558e7da4485018ae21d6bcaeaaa07a973b0d085847e240d4265600e2704dde0a3a012320417204a3eac6229cb1')
 
 build() {
   mkdir build
