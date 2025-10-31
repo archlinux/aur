@@ -1,6 +1,6 @@
 pkgbase = r-multtest
 	pkgdesc = Resampling-based multiple hypothesis testing
-	pkgver = 2.64.0
+	pkgver = 2.66.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/multtest
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = r-multtest
 	depends = r-biobase
 	depends = r-biocgenerics
 	optdepends = r-snow
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/multtest_2.64.0.tar.gz
-	md5sums = f620ed0f9828f1bf7038aa979479ec6f
-	b2sums = eb47e0516f5306db4fce736ac8d3f40b818ba928e9139f3b2f6e5ac901e88c44b8374e39d7d225207cc7bf66af4a0f3834e33c515ce35fab6582fe481ac0fea5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/multtest_2.66.0.tar.gz
+	md5sums = 267407926d63a1a6d1f35019bfd3e0b5
+	b2sums = 1f16b42b0b580b08307ca8cf166d12ba89ed6db4466ec37bae74202237779ccb250c2e3a4d3911f9c172e9bc04a6919f6096fd69d6c1416f4cf6ed85067a17ab
 
 pkgname = r-multtest
