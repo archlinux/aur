@@ -1,7 +1,7 @@
 #Maintainer: Ludwintor <ludwintor at proton dot me>
 
 pkgname=tonkeeper-bin
-pkgver=4.3.0
+pkgver=4.3.2
 pkgrel=1
 pkgdesc='Your desktop wallet on The Open Network (Static binaries from upstream)'
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ source_aarch64=(
     "tonkeeper_${pkgver}_aarch64.deb::${_repo_url}/v${pkgver}/tonkeeper_${pkgver}_arm64.deb"
 )
 noextract=("tonkeeper_${pkgver}_${CARCH}.deb")
-sha256sums_x86_64=('f2b26eec9e640435c07378fb41b52d84d07e5b0334c09dabc4490fa966948752')
-sha256sums_aarch64=('6df58a5ed1f3b46e5f8b9dbf5c6b046771151a8ad7def378b9bf2513f144e272')
+sha256sums_x86_64=('931e106cc40055d61e1f3dab3d877dbbd95236b3706a5e3f311589135cce8d36')
+sha256sums_aarch64=('27483f0e24bff3dace51f44e89b9eb0e9c9f096b81f05047ec10c1e7b1b9ec7d')
 
 prepare() {
     mkdir -p out
