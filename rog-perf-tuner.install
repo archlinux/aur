@@ -15,12 +15,12 @@ reload_udev_rules() {
 }
 
 unenroll() {
-    run_as_user rog-perf-tuner -u
+    run_as_user rog-perf-tuner -u &>> /dev/null
 }
 
 stop_application() {
     echo "  ⏹️  Stopping application if running..."
-    run_as_user rog-perf-tuner -k
+    run_as_user rog-perf-tuner -k &>> /dev/null
 }
 
 post_install() {
