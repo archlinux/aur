@@ -4,19 +4,23 @@ pkgname=openmodelica-bin
 _omver=1.25.5
 _debver=1
 pkgver=${_omver}
-pkgrel=2
+pkgrel=3
 pkgdesc="A complete Modelica modeling and simulation environment (from pre-compiled Debian Trixie binaries)"
 arch=('x86_64')
 url="https://openmodelica.org/"
 license=('OSMC-PL')
-provides=('openmodelica')
-conflicts=('openmodelica' 'openmodelica-git')
+provides=('openmodelica' 'openmodelica-omc')
+conflicts=('openmodelica' 'openmodelica-omc' 'openmodelica-git')
 
-depends=('blas' 'boost-libs' 'clang' 'cmake' 'curl' 'expat' 'glibc' 'gcc-libs' 'hdf5' 'hwloc' 'icu' 'lapack' 'mesa' 'ncurses' 'openscenegraph' 'qt6-5compat' 'qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-tools' 'qt6-webengine' 'readline')
+depends=('blas' 'boost' 'clang' 'cmake' 'curl' 'expat' 'glibc' 'gcc-libs' 'hdf5' 'hwloc' 'icu' 'lapack' 'mesa' 'ncurses' 'omniorb' 'openmp' 'openscenegraph' 'python-numpy' 'python-simplejson' 'python-svgwrite' 'python-pyzmq' 'qt6-5compat' 'qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-tools' 'qt6-webengine' 'readline' 'sundials' 'suitesparse')
 
 optdepends=(
     'java-runtime: For Java CORBA interface'
-    'omniorb: For OMOptim, OMShell, and OMPython'
+    'python-ompython: For OpenModelica-Python Integration'
+    'python-statsmodels: For running test/doc scripts'
+    'python-junit-xml: For running test/doc scripts'
+    'python-natsort: For running test/doc scripts'
+    'ruby: For running test/doc scripts'
     'texlive-bin: For LaTeX documentation generation in OMNotebook'
     'texlive-latex: For LaTeX documentation generation in OMNotebook'
 )
@@ -72,4 +76,8 @@ package() {
     mv "$pkgdir/usr/share/applications/"{omedit,openmodelica-omedit}.desktop
     mv "$pkgdir/usr/share/applications/"{omnotebook,openmodelica-omnotebook}.desktop
     mv "$pkgdir/usr/share/applications/"{omshell,openmodelica-omshell}.desktop
+
+    # Remove broken symlinks from Debian package
+    rm "$pkgdir/usr/include/omc/cpp/boost"
+    rm "$pkgdir/usr/include/omc/omsicpp/boost"
 }
