@@ -1,6 +1,6 @@
 pkgbase = r-rgraphviz
 	pkgdesc = Provides plotting capabilities for R graph objects
-	pkgver = 2.52.0
+	pkgver = 2.54.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Rgraphviz
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = r-rgraphviz
 	optdepends = r-biocgenerics
 	optdepends = r-runit
 	optdepends = r-xml
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rgraphviz_2.52.0.tar.gz
-	md5sums = fffe5a22eee71f93408d1d6b40806949
-	b2sums = 88d3a1f1acd2d27b5eba367217e509280359ede9de1b4d0924f4d8414b88e5bc8014ea620872e7b893ff4133c13c98203b70d54f05d6eaf7cc6b9004199bee7d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rgraphviz_2.54.0.tar.gz
+	md5sums = 7c56d75e456cbb5772ce70e28f252b49
+	b2sums = 2826f155311934a179fac5502d84e42c3f5e36aa89cd7a4d0ea9cef90eb511a1f28ffb0664adc497e4abd322ee69bdeaeabddef593da654efa26e1cf364c05eb
 
 pkgname = r-rgraphviz
