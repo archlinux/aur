@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SLqPCR
-_pkgver=1.74.0
+_pkgver=1.76.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-rcolorbrewer
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ea61ea2111a9338781851eb04833a213')
-b2sums=('33c1d27bdc43b818ce59c31a88d8e215a4eaba16da5d54ffcb321191a68161681fa9b4b457de78753ff2578610c2098120c01deb58d044b30e83ad125b04d451')
+md5sums=('c4dbb4de74a7431ed96e2a11d6d6b130')
+b2sums=('dad0f1686a30c99d80316f8c9cfaae43f7b0642d45bf5977dd00d717a78c3e0555599cbbb48ae8257c9a2ee7d79685994150401ba91a6e254d34893aef81e9c6')
 
 build() {
   mkdir build
