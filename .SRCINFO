@@ -1,0 +1,20 @@
+pkgbase = textmerger
+	pkgdesc = A Python GUI application for merging text files
+	pkgver = 1.0.6
+	pkgrel = 4
+	url = https://github.com/pierspad/TextMerger
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyqt5
+	depends = python-flask
+	depends = python-werkzeug
+	optdepends = python-pip: for installing optional dependencies like nbformat for Jupyter notebook support
+	source = textmerger-1.0.6.tar.gz::https://github.com/pierspad/TextMerger/archive/v1.0.6.tar.gz
+	sha256sums = f826b409f088304280278cd79d2b960ae7d545826c3ce3fc469bfdc50db2bce8
+
+pkgname = textmerger
