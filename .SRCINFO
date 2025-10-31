@@ -1,13 +1,13 @@
 pkgbase = r-gcspikelite
 	pkgdesc = Spike-in data for GC/MS data and methods within flagme
-	pkgver = 1.46.0
+	pkgver = 1.47.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/gcspikelite
 	arch = any
 	license = LGPL-2.0-or-later
 	depends = r
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/gcspikelite_1.46.0.tar.gz
-	md5sums = 2b763d12fd7f405c2f3bf395c8b47746
-	b2sums = 3c1bb951399bf58e642accc28ca740322a989c38e0ef61e34e2aa175d75e4897bb802a95f24ed96c9787a41dbc3fe7cba7f502d68c196a37a8ef86c983106604
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/gcspikelite_1.47.0.tar.gz
+	md5sums = 4680647f8b2aadc99abe563b2f04ef0d
+	b2sums = 0a069512c2f18db1c16341a5b06ad6f0af69a93b1c8a5ad40efa70e2b50ac97ac90b93c20213afd994109f8e0d4d8c741331b5dd3a9ba83cc3771d025c561778
 
 pkgname = r-gcspikelite
