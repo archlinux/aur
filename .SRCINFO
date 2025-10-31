@@ -1,0 +1,15 @@
+pkgbase = ica-securestore-pkcs11
+	pkgdesc = I.CA SecureStore PKCS#11 module (smart-card crypto token support)
+	pkgver = 6.13.0
+	pkgrel = 1
+	url = https://ca.ica.cz/pub/SecureStore/linux/
+	install = ica-securestore-pkcs11.install
+	arch = x86_64
+	license = proprietary
+	depends = gcc-libs
+	depends = pcsclite
+	provides = ica-securestore-pkcs11
+	source = https://ca.ica.cz/pub/SecureStore/linux/ica-securestore-pkcs11_6.13.0-0_amd64.deb
+	sha256sums = eb13b0ba96366011dd30bf5231885ae2120e7475d1ee5faedaf549e883c74354
+
+pkgname = ica-securestore-pkcs11

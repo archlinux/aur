@@ -1,0 +1,14 @@
+post_install() {
+  echo "Running ldconfig..."
+  ldconfig
+}
+
+post_upgrade() {
+  echo "Running ldconfig..."
+  ldconfig
+}
+
+post_remove() {
+  echo "Running ldconfig..."
+  ldconfig
+}
