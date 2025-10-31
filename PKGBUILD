@@ -3,13 +3,13 @@
 pkgbase=rmm
 pkgname=(rmm python-rmm)
 pkgver=25.10.00
-pkgrel=2
+pkgrel=3
 pkgdesc="RAPIDS Memory Manager"
 url="https://github.com/rapidsai/rmm"
 arch=('x86_64')
 license=('Apache-2.0')
 depends=('gcc-libs' 'cuda' 'nvtx3' 'rapids-logger')
-makedepends=('cmake' 'gcc' 'ninja' 'cython' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('cmake' 'gcc' 'ninja' 'cython' 'python-build' 'python-installer' 'python-wheel' 'python-rapids-build-backend')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz" "system-lib.patch" "missing-pkg.patch" "fix-cudf-compile.patch")
 sha256sums=(
     '33d1972bce23e9b45d0c1aedabfbc3fd2d2cb30715fa66d17088dd276d01e56c'

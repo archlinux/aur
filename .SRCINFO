@@ -1,7 +1,7 @@
 pkgbase = rmm
 	pkgdesc = RAPIDS Memory Manager
 	pkgver = 25.10.00
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rapidsai/rmm
 	arch = x86_64
 	license = Apache-2.0
@@ -12,6 +12,7 @@ pkgbase = rmm
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-rapids-build-backend
 	depends = gcc-libs
 	depends = cuda
 	depends = nvtx3
