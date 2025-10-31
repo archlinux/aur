@@ -15,7 +15,7 @@ pkgname=(
   ${_pkgbase}-double-pinyin-jiajia-git
 )
 
-pkgver=r799.7acdee6
+pkgver=r845.0d85dd5
 pkgrel=1
 pkgdesc="Rime 配置：雾凇拼音 | 长期维护的简体词库"
 arch=("any")
@@ -256,6 +256,7 @@ package_rime-ice-git() {
   install='post.install'
   conflicts=(
     rime-emoji
+    rime-double-pinyin
     # ${_pkgbase}
     ${_pkgbase}-pinyin
     ${_pkgbase}-double-pinyin
@@ -298,6 +299,7 @@ package_rime-ice-double-pinyin-git() {
   install='post.install'
   conflicts=(
     rime-emoji
+    rime-double-pinyin
     ${_pkgbase}
     ${_pkgbase}-pinyin
     # ${_pkgbase}-double-pinyin
@@ -318,6 +320,7 @@ package_rime-ice-double-pinyin-abc-git() {
   install='post.install'
   conflicts=(
     rime-emoji
+    rime-double-pinyin
     ${_pkgbase}
     ${_pkgbase}-pinyin
     ${_pkgbase}-double-pinyin
@@ -338,6 +341,7 @@ package_rime-ice-double-pinyin-mspy-git() {
   install='post.install'
   conflicts=(
     rime-emoji
+    rime-double-pinyin
     ${_pkgbase}
     ${_pkgbase}-pinyin
     ${_pkgbase}-double-pinyin
@@ -358,6 +362,7 @@ package_rime-ice-double-pinyin-sogou-git() {
   install='post.install'
   conflicts=(
     rime-emoji
+    rime-double-pinyin
     ${_pkgbase}
     ${_pkgbase}-pinyin
     ${_pkgbase}-double-pinyin
@@ -378,6 +383,7 @@ package_rime-ice-double-pinyin-flypy-git() {
   install='post.install'
   conflicts=(
     rime-emoji
+    rime-double-pinyin
     ${_pkgbase}
     ${_pkgbase}-pinyin
     ${_pkgbase}-double-pinyin
@@ -398,6 +404,7 @@ package_rime-ice-double-pinyin-ziguang-git() {
   install='post.install'
   conflicts=(
     rime-emoji
+    rime-double-pinyin
     ${_pkgbase}
     ${_pkgbase}-pinyin
     ${_pkgbase}-double-pinyin
@@ -418,6 +425,7 @@ package_rime-ice-double-pinyin-jiajia-git() {
   install='post.install'
   conflicts=(
     rime-emoji
+    rime-double-pinyin
     ${_pkgbase}
     ${_pkgbase}-pinyin
     ${_pkgbase}-double-pinyin
