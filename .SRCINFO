@@ -1,6 +1,6 @@
 pkgbase = stabilitymatrix-bin
 	pkgdesc = Multi-Platform Package Manager for Stable Diffusion. Binary version.
-	pkgver = 2.15.3
+	pkgver = 2.15.4
 	pkgrel = 1
 	url = https://github.com/LykosAI/StabilityMatrix
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = stabilitymatrix-bin
 	provides = stabilitymatrix
 	conflicts = stabilitymatrix
 	options = !strip
-	source = stabilitymatrix-2.15.3.zip::https://github.com/LykosAI/StabilityMatrix/releases/download/v2.15.3/StabilityMatrix-linux-x64.zip
-	sha256sums = ba11a023e1e0c89be84214e12f659d3298c651c940872b7a57e9ffc13dd93a2d
+	source = stabilitymatrix-2.15.4.zip::https://github.com/LykosAI/StabilityMatrix/releases/download/v2.15.4/StabilityMatrix-linux-x64.zip
+	sha256sums = e327e654bd4f9c0958f3d829f183d5279815177d1c07b37d6aeda713634a1193
 
 pkgname = stabilitymatrix-bin
