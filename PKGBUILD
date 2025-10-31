@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=alabaster.schemas
-_pkgver=1.8.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('52cf3e0088341853865549764f48251f')
-b2sums=('48ccab867cb2cb8cce29bafd202c472f36b6c4b00f7b3ca1547ee39ae926bbf12f8766b97ff75c282f7fd516a0997d261c114a29e0854f04bf0fe2a1b5784df5')
+md5sums=('8d1caf02385b413a86ba8e068723b977')
+b2sums=('b5bd746a078abfed371d6910e3ec78b9c6ff144858d956aae63a469b73bcf20755a59a214387088a6483609d6b7f04892f3fe54976aa8ca732415632f4d077cd')
 
 build() {
   mkdir build
