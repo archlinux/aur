@@ -1,0 +1,17 @@
+pkgbase = my-femboy-roommate-bin
+	pkgdesc = Visual novel about moving in with your new femboy roommate. (bundled Ren'Py)
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://nuteku.itch.io/my-femboy-roommate
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	depends = bash
+	options = !strip
+	options = !debug
+	source = my-femboy-roommate.desktop
+	source = file://My-Femboy-Roommate-1.1-pc.zip
+	b2sums = 86e7b4a935c5bc204e683357222879d206aa695686be7435a711c12b6aaac1f846d4707dd1ab7f9cb56102e0b4f49ae826b1d1e525a7ce3c63157e34f7de038f
+	b2sums = c48d65671f1523ce9108720767b5d047717542012a4482f4fe822358ea13ec5d38fd7f51e87cf72b88543dd35c8841a4d6627f3744a2f91eb437c7b5a7a9044c
+
+pkgname = my-femboy-roommate-bin
