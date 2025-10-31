@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=vbmp
-_pkgver=1.76.0
+_pkgver=1.78.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-statmod
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d3d4645ebdf8180d95ebef835a94cfb0')
-b2sums=('a575c10fa7ca9d9ea5bccb682ae8414a2c6036849abc56bff5afb8c5cc363f403efd85eae7214488e3a9a4ef7131dad762c20f9b686f192eacaf92d3fdeefa00')
+md5sums=('6c515e2307bec899e07ba2a4262386a7')
+b2sums=('2cc8e546dccce5f4c3d1548c8b4581662d633d171de7a31f23f8fa42be20ad034570aa5dd3d446cd174be354aa8b623eb488e8bf64f4df465c5ec50c3a81d672')
 
 build() {
   mkdir build
