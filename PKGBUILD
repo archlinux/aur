@@ -1,15 +1,16 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname=ymir-emu
-_pkgname=ymir
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Sega Saturn Emulator"
 arch=("x86_64")
 url="https://github.com/StrikerX3/Ymir"
 license=("GPL3")
 depends=("sdl3")
 makedepends=("cmake" "clang" "git" "ninja" "python-jinja")
+provides=($pkgname)
+conflicts=($pkgname)
 source=(
     "ymir::git+${url}.git#tag=v${pkgver}"
     ymir-emu.desktop
@@ -35,6 +36,9 @@ build() {
         -S .
         -B build
         -G Ninja
+        -D CMAKE_C_COMPILER=clang
+        -D CMAKE_CXX_COMPILER=clang++
+        -D CMAKE_MAKE_PROGRAM=ninja
         -D CMAKE_TOOLCHAIN_FILE=vcpkg/scripts/buildsystems/vcpkg.cmake
         -D Ymir_AVX2=ON
         -D Ymir_ENABLE_TESTS=OFF
@@ -51,5 +55,5 @@ package() {
     cd $srcdir/ymir
     DESTDIR="${pkgdir}" cmake --install "build"
     install -Dm644 $srcdir/ymir-emu.desktop -t ${pkgdir}/usr/share/applications
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
