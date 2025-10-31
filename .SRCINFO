@@ -1,6 +1,6 @@
 pkgbase = r-spectra
 	pkgdesc = Spectra Infrastructure for Mass Spectrometry Data
-	pkgver = 1.18.2
+	pkgver = 1.19.11
 	pkgrel = 1
 	url = https://bioconductor.org/packages/Spectra
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-spectra
 	optdepends = r-roxygen2
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Spectra_1.18.2.tar.gz
-	sha256sums = 79349e0c30c06fe75e3392aea6890764c5666183b5f08fa668396b7c3d2a0d48
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Spectra_1.19.11.tar.gz
+	sha256sums = d54accf685bf74b1630125a070ca25340f0f5845d2b73e6a07b8d8c9ae9f4eb5
 
 pkgname = r-spectra
