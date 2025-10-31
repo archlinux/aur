@@ -1,10 +1,9 @@
 pkgbase = nethole
 	pkgdesc = A wifi tool which uses arpspoof to exploit WPA3 and deauthenticate it regardless of its MFP
-	pkgver = 1.0
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/Saffron-sh/nethole
 	arch = any
-	license = LicenseRef-MIT
 	depends = dsniff
 	source = https://raw.githubusercontent.com/saffron-sh/nethole/master/nethole.sh
 	md5sums = SKIP
