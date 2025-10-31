@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spikeLI
-_pkgver=2.68.0
+_pkgver=2.70.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fb0dbc671cac1463d0399ac73ef2adf2')
-b2sums=('5d6334b617dedd64f7c54e9c30fa78cdf94842280bd25da1e196c40dcb18bab91c77745df8a8b95ac6d28ee7e51b40b5ca457c7f9465253d7b23632ca6c74e2f')
+md5sums=('8ee55371b7e195c216bdd219f988aa98')
+b2sums=('3964bc0419c6f4f72a7b31b988befbb5a1a3bcf4fccad0499ff7ca397c6e16727c21e46fc3eaad17be8e6b021b7f84557d4ad8b86ae253f0095ba7593ccd54a5')
 
 build() {
   mkdir build
