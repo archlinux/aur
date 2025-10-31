@@ -2,7 +2,7 @@
 
 pkgname=startlive-git
 _pkgname=startlive
-pkgver=0.6.5.r11.geb42a13
+pkgver=0.7.1.r9.g5cbb403
 pkgrel=1
 pkgdesc="绕过B站直播姬获取推流地址"
 arch=('any')
@@ -19,11 +19,6 @@ provides=('startlive')
 pkgver() {
   cd "$_pkgname"
   git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//'
-}
-
-prepare() {
-  cd "$_pkgname"
-  sed -i 's|os.path.join("var", "log", "StartLive")|os.path.join(os.path.expanduser("~/.cache"), "StartLive", "logs")|g' models/log/__init__.py
 }
 
 package() {
