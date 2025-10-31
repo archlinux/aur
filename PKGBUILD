@@ -3,7 +3,7 @@
 
 pkgname=scx-tools-git
 _gitname=scx-loader
-pkgver=20251030.r358.g9929a16
+pkgver=20251030.r361.gc922e29
 pkgrel=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
@@ -71,8 +71,7 @@ build() {
   cargo build \
      --release \
      --frozen \
-     --all-features \
-     --workspace
+     --all-features
 }
 
 check() {
@@ -80,8 +79,7 @@ check() {
   export RUSTUP_TOOLCHAIN=stable
   cargo test \
      --frozen \
-     --all-features \
-     --workspace
+     --all-features
 }
 
 package() {
