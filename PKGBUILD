@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.11.0.r70.gbf34665
+pkgver=0.12.0.r5.g6c7c5eb
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('aarch64' 'x86_64')
@@ -24,9 +24,6 @@ makedepends=(
 	'half>=1.12'
 	'libpng>=1.6'
 	'magic_enum>=0.9.7'
-	'qt6-base'
-	'qt6-multimedia'
-	'qt6-tools'
 	'rapidjson'
 	'renderdoc'
 	'robin-map>=1.3'
@@ -57,9 +54,11 @@ source=(
 	"$_pkgname-libusb::git+https://github.com/shadps4-emu/ext-libusb.git"
 	"$_pkgname-sirit::git+https://github.com/shadps4-emu/sirit.git"
 	"$_pkgname-tracy::git+https://github.com/shadps4-emu/tracy.git"
+	"nlohmann-json::git+https://github.com/nlohmann/json.git"
 	"zydis::git+https://github.com/zyantific/zydis.git"
 )
 b2sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -85,6 +84,7 @@ prepare() {
 	git config submodule.externals/LibAtrac9.url ../$_pkgname-libatrac9
 	git config submodule.externals/sirit.url ../$_pkgname-sirit
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
+	git config submodule.externals/json.url ../nlohmann-json
 	git config submodule.externals/zydis.url ../zydis
 	git -c protocol.file.allow=always submodule update
 	# remove hardcoded flag
@@ -100,7 +100,6 @@ build() {
 		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
 		-D CMAKE_INSTALL_PREFIX=/usr
 		-D CMAKE_SKIP_INSTALL_RPATH=ON
-		-D ENABLE_QT_GUI=ON
 		-D ENABLE_UPDATER=OFF
 		-D SIRIT_USE_SYSTEM_SPIRV_HEADERS=ON
 		-Wno-dev
@@ -123,8 +122,6 @@ package() {
 		'libxxhash.so'
 		'libz.so'
 		# 'libZydis.so'
-		'qt6-base'
-		'qt6-multimedia'
 	)
 	# shellcheck disable=SC2154
 	DESTDIR="$pkgdir" cmake --install build
