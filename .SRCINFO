@@ -1,0 +1,15 @@
+pkgbase = rofi-qalc-git
+	pkgdesc = Rofi calculator mode using libqalculate
+	pkgver = 1.0.0.r11.g65dc74a
+	pkgrel = 1
+	url = https://github.com/svenvvv/rofi-qalc
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = meson
+	makedepends = git
+	depends = rofi
+	depends = libqalculate
+	source = git+https://github.com/svenvvv/rofi-qalc#branch=master
+	sha512sums = SKIP
+
+pkgname = rofi-qalc-git
