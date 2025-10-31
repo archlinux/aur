@@ -1,0 +1,14 @@
+pkgbase = lichess-cli
+	pkgdesc = A command-line client for Lichess.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/mattcanty/lichess-cli
+	install = lichess-cli.install
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = lichess-cli-1.0.2.tar.gz::https://github.com/mattcanty/lichess-cli/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 03cee9fa5be85aa50933cebb196f58caaccb5083ccaf4131eb6311f4bd62a0b9
+
+pkgname = lichess-cli

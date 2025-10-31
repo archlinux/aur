@@ -1,0 +1,25 @@
+post_install() {
+  cat << EOF
+==> Lichess-CLI Setup Required <==
+
+Lichess-CLI requires an API Token to function.
+Please follow these steps to complete the setup:
+
+1. Create token lichess from this link:
+   https://lichess.org/account/oauth/token
+
+2. Create the configuration directory:
+   mkdir -p ~/.config/lichess-cli/
+
+3. Copy the sample configuration file and edit it:
+   cp /usr/share/doc/lichess-cli/config.json.example ~/.config/lichess-cli/config.json
+
+4. Open ~/.config/lichess-cli/config.json and replace the placeholder "YOUR_API_KEY_HERE" with your actual Lichess API Token.
+
+For more details, please check the lichess-cli GitHub page.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
