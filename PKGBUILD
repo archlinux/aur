@@ -2,8 +2,8 @@
 _pkgname=shadps4
 pkgname=$_pkgname-git
 pkgver=0.12.0.r5.g6c7c5eb
-pkgrel=1
-pkgdesc="Sony PlayStation 4 emulator"
+pkgrel=2
+pkgdesc="Sony PlayStation 4 emulator (CLI)"
 arch=('aarch64' 'x86_64')
 url="https://shadps4.net/"
 license=('GPL-2.0-or-later')
@@ -41,6 +41,7 @@ makedepends=(
 )
 optdepends=(
 	'renderdoc: for graphics debugging'
+	'shadps4-qtlauncher: for official Qt GUI'
 	'vulkan-validation-layers: for vulkan debugging'
 )
 provides=("$_pkgname=$pkgver")

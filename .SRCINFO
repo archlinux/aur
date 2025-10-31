@@ -1,7 +1,7 @@
 pkgbase = shadps4-git
-	pkgdesc = Sony PlayStation 4 emulator
+	pkgdesc = Sony PlayStation 4 emulator (CLI)
 	pkgver = 0.12.0.r5.g6c7c5eb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://shadps4.net/
 	arch = aarch64
 	arch = x86_64
@@ -35,6 +35,7 @@ pkgbase = shadps4-git
 	depends = pugixml>=1.14
 	depends = sdl3>=3.1.8
 	optdepends = renderdoc: for graphics debugging
+	optdepends = shadps4-qtlauncher: for official Qt GUI
 	optdepends = vulkan-validation-layers: for vulkan debugging
 	provides = shadps4=0.12.0.r5.g6c7c5eb
 	conflicts = shadps4
