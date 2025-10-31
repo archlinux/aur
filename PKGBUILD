@@ -9,6 +9,7 @@ url='https://tinygo.org'
 license=('custom: BSD 3-clause')
 depends=('gcc-libs'
          'go>=1.11.0'
+         'debugedit'
 )
 optdepends=('avr-gcc: Arduino Uno support'
             'avrdude: Arduino Uno support'

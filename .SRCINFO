@@ -7,6 +7,7 @@ pkgbase = tinygo-bin
 	license = custom: BSD 3-clause
 	depends = gcc-libs
 	depends = go>=1.11.0
+	depends = debugedit
 	optdepends = avr-gcc: Arduino Uno support
 	optdepends = avrdude: Arduino Uno support
 	optdepends = openocd: BBC Micro:bit support
