@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NuPoP
-_pkgver=2.16.0
+_pkgver=2.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c8d2cd43b5c47e2efe8a8da3895dba0c')
-b2sums=('e922e89745479f9be6d8d8ca4a9d3bf3dd9f932f840315b6b9d5981a024b0e4f927aed5a3778b0941f116e3dada27f6551923087725a13bec92392d0537a4fb2')
+md5sums=('dff2ad4b2a7ac40a584bcc89c2fa6f64')
+b2sums=('8059144e5f4ed7fba71b54e860eae5e3566056f1db8956ebf1a6c6be619d89f4de33262b9f74a482a00bdf6fb8336ab7975c1b0237b19dbcab7b7c39e68cf20f')
 
 build() {
   mkdir build
