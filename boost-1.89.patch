@@ -1,0 +1,14 @@
+diff --git a/configure.ac b/configure.ac
+index 7fadfb9d963a1d4925e48b4aa766bb70303af12b..19a0f630942e3dc751bb52fbe40bafe2af235e5c 100755
+--- a/configure.ac
++++ b/configure.ac
+@@ -48,7 +48,7 @@ case "$host" in
+     PKG_CHECK_MODULES([SQLITE3],[sqlite3])
+     ;;
+ esac
+-boost="-lboost_filesystem -lboost_system"
++boost="-lboost_filesystem"
+ AC_SUBST([BOOST_LIBS],[${boost}])
+ AC_CHECK_LIB([pthread],[pthread_create])
+ AC_CHECK_LIB([iconv],[iconv_open])
+ 
