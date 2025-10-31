@@ -1,0 +1,18 @@
+pkgbase = did-i-break-it
+	pkgdesc = Dibi or 'Did-I-Break-It' is a simple snapshot tool written in C. It will create a .DIBI file in your /home/nikzo directory and a snapshot directory. It'll run basic tests and compare them.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/NikzoOff/DIBI
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	depends = systemd
+	source = did-i-break-it-0.1.0.tar.gz::https://github.com/NikzoOff/DIBI/archive/v0.1.0.tar.gz
+	sha256sums = a7beeb0161dc599ccc044c211dd51161d3a86cb49cfe0b38bfb72636f3db6503
+
+pkgname = did-i-break-it
