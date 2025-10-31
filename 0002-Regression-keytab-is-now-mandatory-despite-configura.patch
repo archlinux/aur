@@ -1,0 +1,29 @@
+From f0febc3af49e95e9bdc64e7cc4e6e82fdd9788c5 Mon Sep 17 00:00:00 2001
+Message-ID: <f0febc3af49e95e9bdc64e7cc4e6e82fdd9788c5.1761901009.git.s.brunner@stephan-brunner.net>
+From: Stephan Brunner <s.brunner@stephan-brunner.net>
+Date: Fri, 31 Oct 2025 09:55:38 +0100
+Subject: [PATCH] Regression: keytab is now mandatory despite configuration
+ saying otherwise
+
+This regression is being tracked in
+https://github.com/openSUSE/cepces/issues/57
+---
+ conf/cepces.conf.dist | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/conf/cepces.conf.dist b/conf/cepces.conf.dist
+index 8816e6b..3d82b63 100644
+--- a/conf/cepces.conf.dist
++++ b/conf/cepces.conf.dist
+@@ -61,7 +61,7 @@ poll_interval=3600
+ # Use the specified keytab. If unspecified, the system default is used.
+ #
+ # Default: <not defined>
+-#keytab=
++keytab=/etc/krb5.keytab
+ 
+ # An optional explicit realm to use. If unspecified, the default system realm
+ # is used.
+-- 
+2.51.1
+

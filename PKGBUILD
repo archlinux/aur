@@ -1,7 +1,7 @@
 # Maintainer: Stephan Brunner <s.brunner@stephan-brunner.net>
 
 pkgname=cepces
-pkgver=0.3.9
+pkgver=0.3.10
 pkgrel=1
 pkgdesc='certmonger plugin to enroll certificates through Active Directory Certificate Services CEP and CES.'
 arch=(any)
@@ -12,6 +12,7 @@ depends=(
   python-cryptography
   python-requests
   python-requests-gssapi
+  python-keyring
 )
 makedepends=(
   git
@@ -23,10 +24,12 @@ makedepends=(
 source=(
   "git+https://github.com/openSUSE/$pkgname.git#tag=v$pkgver"
   0001-Remove-insecure-enctypes.patch
+  0002-Regression-keytab-is-now-mandatory-despite-configura.patch
 )
 sha256sums=(
-  'a28e198c8c851ec2453cea9f52df120441785fda1bf4cffda9d0c2ac76157ecf'
+  'b60a3196d8d7448ad58a5d452ea418d1f338a35ed7205e531e71caa299757c41'
   'a60a241a0da7ce380f5bd11cff18e8d0dacab5613a08107720f8889ae42734f2'
+  '6a68fd9393291a294e18388fefe68e1b81c3b084acb3c15a075c39e5a3e108b7'
 )
 validpgpkeys=(968479A1AFF927E37D1A566BB5690EEEBB952194) # GitHub <noreply@github.com>
 backup=(
