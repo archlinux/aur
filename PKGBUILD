@@ -25,6 +25,10 @@ package() {
   cp -a bin lib \
     "${pkgdir}/opt/hachimi-world"
 
+  # bin link
+  install -dm 755 "${pkgdir}/usr/bin"
+  ln -sf "/opt/hachimi-world/bin/Hachimi World" "${pkgdir}/usr/bin/Hachimi_World"
+
   # desktop dir
   install -dm 755 "${pkgdir}/usr/share/applications"
   install -dm 755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
