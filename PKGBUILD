@@ -4,11 +4,11 @@ _name=FotoKilof
 
 pkgname=${_name,,}
 pkgver=5.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for ImageMagick"
 url="https://github.com/TeaM-TL/FotoKilof"
 makedepends=(python-build python-installer python-setuptools python-wheel)
-depends=('imagemagick' 'tk' 'python-pillow' 'python-wand' 'python-ttkbootstrap' 'python-requests' 'python-findsystemfontsfilename' 'python-pyperclipimg' 'python-darkdetect')
+depends=('imagemagick' 'tk' 'python-pillow' 'python-wand' 'python-ttkbootstrap' 'python-requests' 'python-findsystemfontsfilename' 'python-pyperclipimg' 'python-darkdetect' 'xclip')
 license=('MIT')
 arch=('any')
 source=("https://github.com/TeaM-TL/${_name}/archive/refs/tags/$pkgver.tar.gz"
