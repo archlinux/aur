@@ -47,6 +47,7 @@ source=(
   0004-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
   0005-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
   0007-workaround_hardware_decoding_amdgpu.patch
+  0084-enable-steam-deck-hdr.patch
   0009-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch
   0010-asus-nb-wmi-fix-tablet_mode_sw_int.patch
   0011-amdgpu-adjust_plane_init_off_by_one.patch
@@ -69,6 +70,7 @@ sha256sums=('8ecfbc6b693448abb46144a8d04d1e1631639c7661c1088425a2e5406f13c69c'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
             'e41198b29cee4de7a5132d8df606f48c2d0f9c9076fe4230b00a33c7e0b22c71'
+            'd89bedd7ef4d7bfe5c5d8b1f3c2e12cbb293ce7e11647700cc077e772d5f7fe8'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
             '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85'
             'e90bb17f74c5b232001de5558ff96e09612f35a8552e1fa506c8a3451b0516b7')
@@ -167,6 +169,7 @@ prepare() {
   scripts/config --enable CONFIG_ASUS_WMI_DEPRECATED_ATTRS \
                  --enable CONFIG_ASUS_ARMOURY \
                  --enable CONFIG_ASUS_WMI_BIOS \
+                 --enable CONFIG_DRM_AMD_COLOR_STEAMDECK \
                  --module CONFIG_HID_ASUS_ALLY \
                  --enable CONFIG_CRYPTO_LZ4 \
                  --enable CONFIG_CRYPTO_LZO \
