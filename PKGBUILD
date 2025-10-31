@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=widgetTools
-_pkgver=1.86.0
+_pkgver=1.88.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-biobase
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a507d62aff8f2558258ad4d9e357bd30')
-b2sums=('fdb840f1500f4bd7a3fd481130ce7858d9985bc0f028c48bed3830c2d9f6c86b1fac3b1a1bff433de8c799f82934552afe87d774c9c28848dfa6d01c76c5fc5c')
+md5sums=('93b5df792dd32f0f138024e839773543')
+b2sums=('267400744acfa5b05c3628a9d40d1f99b3ebd64cbf952b0cd33f934bcb15f96936c2b37d883889857d49841996dbfeeb53ebb39420ff11173ac33fb7e61ff342')
 
 build() {
   mkdir build
