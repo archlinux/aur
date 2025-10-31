@@ -3,7 +3,7 @@
 _reponame=2ship2harkinian
 pkgbase=2s2h-git
 pkgname=(2s2h-git 2s2h-otr-exporter-git)
-pkgver=2.0.0.r0.g5139d60c4
+pkgver=3.0.0.r1.g8c9e6dca0
 pkgrel=1
 arch=("x86_64" "i686" "armv7h" "aarch64")
 #url="https://shipofharkinian.com/"
@@ -79,6 +79,9 @@ build() {
 
   export CFLAGS="${CFLAGS/-Werror=format-security/}"
   export CXXFLAGS="${CXXFLAGS/-Werror=format-security/}"
+
+  # Compile error fix, might be committed to upstream
+  CFLAGS+=" -Wno-return-mismatch"
 
   cmake . \
     -Bbuild \

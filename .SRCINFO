@@ -1,5 +1,5 @@
 pkgbase = 2s2h-git
-	pkgver = 2.0.0.r0.g5139d60c4
+	pkgver = 3.0.0.r1.g8c9e6dca0
 	pkgrel = 1
 	url = https://github.com/HarbourMasters/2ship2harkinian
 	arch = x86_64
