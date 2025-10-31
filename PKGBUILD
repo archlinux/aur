@@ -2,7 +2,7 @@
 # Maintainer: coolapso <coolapso@coolapso.tech>
 
 pkgname='picsort-bin'
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc='PicSort is a simple tool to sort your pictures using only your keyboard'
 url='https://github.com/coolapso/picsort'
@@ -11,8 +11,8 @@ license=('MIT')
 provides=('picsort')
 conflicts=('picsort')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/coolapso/picsort/releases/download/v0.1.12/picsort_0.1.12_linux_amd64.tar.gz")
-sha256sums_x86_64=('05d9868441a0b0ea39aa5d391dde09f52a7e55750860187598d48f4b51b9b89b')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/coolapso/picsort/releases/download/v0.1.13/picsort_0.1.13_linux_amd64.tar.gz")
+sha256sums_x86_64=('71566c253c409312078e680f9e549c3ba6262b49e59018eb4a63e99ef7574ebf')
 
 package() {
   # bin
