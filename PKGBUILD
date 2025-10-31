@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BAGS
-_pkgver=2.48.0
+_pkgver=2.50.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   r-breastcancervdx
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8030ae4b5bcf74fef10a3c5930cc8c56')
-b2sums=('5afcd675dcb41a3929d0f1c3c54da3d103eeff3fd51b7097a27e5560acdf9ad5666398ba4bd07ea7f37ff5a8e60985923a237b6880033b555708348b0229be5c')
+md5sums=('8b4495813d2b53e9fbd50ffae5e8ce24')
+b2sums=('f6d4b67087e265fb3e50255f0a764bde87d63136137881354d8a2de771f20859a0c98621e9312ec79871c1954929f7bb5f110ba85f1892bd2ea231ad01acf3e5')
 
 build() {
   mkdir build
