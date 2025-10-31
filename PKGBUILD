@@ -2,7 +2,7 @@
 # Maintainer: oss@fastly.com
 
 pkgname='fastly-bin'
-pkgver=12.1.0
+pkgver=13.0.0
 pkgrel=1
 pkgdesc='A CLI for interacting with the Fastly platform'
 url='https://github.com/fastly/cli'
@@ -12,14 +12,14 @@ provides=('fastly')
 conflicts=('fastly')
 optdepends=('viceroy: for running service locally')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fastly/cli/releases/download/v12.1.0/fastly_v12.1.0_linux-arm64.tar.gz")
-sha256sums_aarch64=('78d7dd92632a3cec506f9f52f5c274dc45a4543d6e321f9c58795846dd36526f')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fastly/cli/releases/download/v13.0.0/fastly_v13.0.0_linux-arm64.tar.gz")
+sha256sums_aarch64=('3c46c5872b4e017798d70c08b013496aa414b6cac9f9b60a1ccd24c8bc2b47ad')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/fastly/cli/releases/download/v12.1.0/fastly_v12.1.0_linux-386.tar.gz")
-sha256sums_i686=('10d96ca8e4166fc6852655373d4e39929ca3a10a249354d6b1be7de3a1eea742')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/fastly/cli/releases/download/v13.0.0/fastly_v13.0.0_linux-386.tar.gz")
+sha256sums_i686=('17b1f01698560f1cbfffefbdeb6a5ddf45ce779e1781709959065547a0872dd0')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fastly/cli/releases/download/v12.1.0/fastly_v12.1.0_linux-amd64.tar.gz")
-sha256sums_x86_64=('5c43ec9190b6b2316da59b8b13ff3bd2fea76f782c1d1cde556df8a0d52a2dfd')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fastly/cli/releases/download/v13.0.0/fastly_v13.0.0_linux-amd64.tar.gz")
+sha256sums_x86_64=('f473bd72c1335c4d3906de3ceaf3a7109892ea6be2ba76f259959e0bed1187d4')
 
 package() {
   install -Dm755 "./fastly" "${pkgdir}/usr/bin/fastly"
