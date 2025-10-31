@@ -1,14 +1,14 @@
 pkgbase = r-dexmadata
 	pkgdesc = Data package for DExMA package
-	pkgver = 1.16.0
+	pkgver = 1.17.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/DExMAdata
 	arch = any
 	license = GPL-2.0-only
 	depends = r-biobase
 	optdepends = r-biocstyle
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/DExMAdata_1.16.0.tar.gz
-	md5sums = 9dcb774069c3aabd3fd234b880e792fa
-	b2sums = 811b87b78a1acad8112f55850d088ccdd8ff85af3f924286f24118ede2ed10bb54f8423437524a3ca0f4fbeab506fea2a676fc86d245aebbe9eba46e110f03b8
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/DExMAdata_1.17.0.tar.gz
+	md5sums = afff18473c4feacd20e6eaef9e71f67b
+	b2sums = 938f5f7388bd5ca930c34f65aa7bc241a990c429703c8a2b1c93f529666263deb9b5176409bf81849d050df9e22e3e650bacbeeccffb2203364d49ded75f18de
 
 pkgname = r-dexmadata
