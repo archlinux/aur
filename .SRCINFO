@@ -1,6 +1,6 @@
 pkgbase = limine-mkinitcpio-hook
 	pkgdesc = Install kernel for the Limine bootloader.
-	pkgver = 1.25.0
+	pkgver = 1.25.1
 	pkgrel = 1
 	url = https://gitlab.com/Zesko/limine-entry-tool
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = limine-mkinitcpio-hook
 	provides = limine-entry-tool
 	conflicts = limine-entry-tool
 	backup = etc/limine-entry-tool.conf
-	source = https://gitlab.com/Zesko/limine-entry-tool/-/archive/1.25.0-1/limine-entry-tool-1.25.0-1.tar.gz
-	sha256sums = 90b869cf7466b31a2ea72a84c2e79cc58da60ebc935280724d6ac2aa93e77c64
+	source = https://gitlab.com/Zesko/limine-entry-tool/-/archive/1.25.1-1/limine-entry-tool-1.25.1-1.tar.gz
+	sha256sums = 8fad428cb3e5cb99448ac1b58edc913e500a2a4ea0566d255071cb4225cdfd71
 
 pkgname = limine-mkinitcpio-hook
