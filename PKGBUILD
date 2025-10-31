@@ -1,26 +1,26 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Joe Pizzimenti <joe.pizzimenti2@gmail.com>
+# Contributor Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-beetle-ngp-git
-pkgver=r845.69293c9
+pkgver=r1051.139fe34
 pkgrel=1
 pkgdesc='Neo Geo Pocket/Color core'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/libretro/beetle-ngp-libretro'
-license=('GPL2')
-groups=('libretro-unstable')
-depends=('libretro-core-info')
-makedepends=('git')
-provides=('libretro-beetle-ngp' 'libretro-mednafen-ngp-git')
-conflicts=('libretro-beetle-ngp' 'libretro-mednafen-ngp-git')
+license=('GPL-2.0-only')
+groups=('libretro')
+depends=('gcc-libs' 'glibc' 'libretro-core-info')
+makedepends=('git' 'make')
+provides=('libretro-beetle-ngp')
+conflicts=('libretro-beetle-ngp')
 
 source=('libretro-beetle-ngp::git+https://github.com/libretro/beetle-ngp-libretro.git')
 sha256sums=('SKIP')
 
 pkgver() {
   cd libretro-beetle-ngp
-
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
@@ -28,7 +28,5 @@ build() {
 }
 
 package() {
-  install -Dm 644 libretro-beetle-ngp/mednafen_ngp_libretro.so -t "${pkgdir}"/usr/lib/libretro/
+  install -D -t "${pkgdir}"/usr/lib/libretro/ libretro-beetle-ngp/mednafen_ngp_libretro.so
 }
-
-# vim: ts=2 sw=2 et:
