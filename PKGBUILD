@@ -1,13 +1,13 @@
 # Maintainer: hanion <hanion@duck.com>
 pkgname=mite
-pkgver=1.3.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Static site generator with C templates"
 arch=('x86_64')
 url="https://github.com/hanion/mite"
 license=('MIT')
 source=("https://github.com/hanion/mite/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5bfc5bda1352fb9e0b5c7f0fd8171c33759fd8d1121d15076cf1071a5641b101')
+sha256sums=('40727df3d1d405749208078b472695218ef8d43dd3344a4480ec77f7dfdbbaee')
 
 build() {
 	cd "$srcdir/mite-$pkgver"
