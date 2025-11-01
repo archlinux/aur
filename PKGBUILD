@@ -1,9 +1,10 @@
 _godot_repo=https://github.com/godotengine/godot/releases/download
-_godot=4.4.1
-_system_godot=true
+# See Scripts/GodotVersion.cs
+_godot=4.5
+_system_godot=false
 
 pkgname=thrive
-pkgver=0.8.3
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="the evolution game Thrive."
 arch=("x86_64" "aarch64")
@@ -17,6 +18,8 @@ source=("git+https://github.com/Revolutionary-Games/Thrive.git#tag=v$pkgver"
         "git+https://github.com/jrouwe/JoltPhysics.git"
         "git+https://github.com/cameron314/concurrentqueue.git"
         "git+https://github.com/godotengine/godot-cpp.git"
+        "git+https://github.com/Revolutionary-Games/Arch.Extended.git"
+        "git+https://github.com/Revolutionary-Games/Arch.git"
         "godot-mono-export-templates-$_godot.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_export_templates.tpz")
 if "$_system_godot"
 then
@@ -26,12 +29,16 @@ else
     source_aarch64+=("godot-$_godot-aarch64.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_linux_arm64.zip")
 fi
 
-sha256sums=('8c283379367c1911a04d354db42e770736cde0ac67adbbfc4ad8c75d1b6f58ff'
+sha256sums=('1ab7f1e83e3a34c49a31e295412c9dc6e33e9254d2d8067eb7bbdc86456d6f78'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'b64d164b96b19dd7175a1ba3f3a6e583e9d4dc507b3d1333563f246b5811823e')
+            'SKIP'
+            'SKIP'
+            'ad118205d8ae304bab84fa937590bd1b43a9567bb7f82be778678c891ce858bb')
+sha256sums_x86_64=('54563c82bf3b6c1329e74862df1ee23f653e8a41355140434649bb6479158100')
+sha256sums_aarch64=('cb4c86d9e92130db51ae1b98ef9c0ffc212ba4f9e5d4141370fdf59279cec8d1')
 
 options=("!lto") # -flto=thin is added in CMakeLists.txt
 
@@ -117,5 +124,5 @@ package(){
     # Hack to fix permission
     find "$pkgdir/usr/lib/thrive" -type f -perm 666 -exec chmod 644 {} +
     # Hack to fix native lib searching
-    install -Dm644 native_libs/linux/19/release/lib/libthrive_native.so -t "$pkgdir/usr/lib/thrive/data_Thrive_linuxbsd_$_godot_arch"
+    install -Dm644 native_libs/linux/20/release/lib/libthrive_native.so -t "$pkgdir/usr/lib/thrive/data_Thrive_linuxbsd_$_godot_arch"
 }
