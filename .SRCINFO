@@ -1,0 +1,23 @@
+pkgbase = deletor-bin
+	pkgdesc = Manage and delete files efficiently with an interactive TUI and scriptable CLI
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/pashkov256/deletor
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = deletor
+	conflicts = deletor
+	source = LICENSE-1.5.0::https://raw.githubusercontent.com/pashkov256/deletor/v1.5.0/LICENSE
+	source = README-1.5.0.md::https://raw.githubusercontent.com/pashkov256/deletor/v1.5.0/README.md
+	sha256sums = 94358cdafa825e27dbac87bafb10fe4805fcec387d8c587554fe6fcb85bb14e0
+	sha256sums = 41ecc03e20f85a2e4f7dd47754c7509607005132f05f540ed2872f5d7eaef990
+	source_x86_64 = deletor-x86_64-1.5.0::https://github.com/pashkov256/deletor/releases/download/v1.5.0/deletor-v1.5.0-linux-amd64
+	sha256sums_x86_64 = 557f43ee75e70728c62f3fd13ac13c946bb58bfe9a2986ff394bd8c9e45c8ddb
+	source_i686 = deletor-i686-1.5.0::https://github.com/pashkov256/deletor/releases/download/v1.5.0/deletor-v1.5.0-linux-386
+	sha256sums_i686 = bc4fd205039c330e954ec1d5b5ae0aa5b55c3027a6069f1159f5da8c86f0a19b
+	source_aarch64 = deletor-aarch64-1.5.0::https://github.com/pashkov256/deletor/releases/download/v1.5.0/deletor-v1.5.0-linux-arm64
+	sha256sums_aarch64 = ad01df77af56b8326951c2d29ee193b58a17044a518dac406318f32f290c3427
+
+pkgname = deletor-bin

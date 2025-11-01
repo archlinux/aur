@@ -1,0 +1,5 @@
+[deletor-bin]
+source = "github"
+github = "pashkov256/deletor"
+use_latest_release = true
+prefix = "v"
