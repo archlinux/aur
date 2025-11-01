@@ -1,7 +1,7 @@
 pkgbase = aimp
 	pkgdesc = A powerful free audio player (v6 Alpha, Unstable)
 	pkgver = 6.00.3015a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.aimp.ru
 	arch = x86_64
 	license = Freeware

@@ -4,7 +4,7 @@
 _pkver=(6.00 3015a)
 pkgname=aimp
 pkgver=${_pkver[0]}.${_pkver[1]}
-pkgrel=1
+pkgrel=2
 url="https://www.aimp.ru"
 pkgdesc="A powerful free audio player (v6 Alpha, Unstable)"
 arch=('x86_64')
@@ -21,5 +21,7 @@ package(){
    find "${pkgdir}" -type d -exec chmod 755 {} \;
    find "${pkgdir}" -type f -exec chmod 644 {} \;
    chmod 755 "${pkgdir}/opt/aimp/AIMP"
+   chmod 755 "${pkgdir}/opt/aimp/AIMPate"
+   chmod 755 "${pkgdir}/opt/aimp/AIMPac"
 }
 
