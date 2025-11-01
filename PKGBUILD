@@ -16,9 +16,6 @@ build() {
   chmod +x configure
   ./configure ARCH=arch
   make
-  if [ ! -f libfile.a ] && [ -f src/libfile.o ]; then
-    ar rcs libfile.a src/libfile.o
-  fi
 }
 
 package() {
