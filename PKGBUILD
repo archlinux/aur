@@ -123,13 +123,13 @@ build() {
     cd "${srcdir}/${pkgname%-git}"
     git checkout  "${_tag}"
     git submodule update --init --recursive
-
+    
 
 ### use the AUR package instead
 ##  pip install compdb
 
                               ###-G Ninja | -G "Unix Makefiles"
-    cmake3 -S "${pkgname%-git}"  -G Ninja \
+    cmake3 -S "${srcdir}/${pkgname%-git}"  -G Ninja \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-O3 -g -DNDEBUG -fdiagnostics-color=always" \
             -DCMAKE_C_FLAGS_RELWITHDEBINFO="-O3 -g -DNDEBUG -fdiagnostics-color=always" \
