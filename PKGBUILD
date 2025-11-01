@@ -3,12 +3,12 @@
 _pkgname=backintime-git
 _pkgname_cli=backintime-cli-git
 pkgname=($_pkgname $_pkgname_cli)
-pkgver=1.4.3.r54.g50c74444
+pkgver=1.5.4.r145.g9b8291cf
 pkgrel=1
 url=https://github.com/bit-team/backintime
 license=(GPL-2.0-or-later)
 arch=(any)
-makedepends=(asciidoctor git man-db python) # mkdocs mkdocs-material
+makedepends=(asciidoctor git librsvg man-db optipng python) # mkdocs mkdocs-material
 #checkdepends=(openssh python-dbus python-pyfakefs python-pylint rsync systemd)
 install=$_pkgname.install
 source=($_pkgname::git+$url.git)
@@ -19,8 +19,9 @@ pkgver() {
 }
 
 prepare() {
-  sed -i 's/^\(update_man_page common.*\)/#\1/' "$_pkgname/updateversion.sh"
-  sed -i 's/^\(update_man_page qt.*\)/#\1/' "$_pkgname/updateversion.sh"
+  sed -i 's/^\(update_man_page common.*\)/#\1/' $_pkgname/updateversion.sh
+  sed -i 's/^\(update_man_page qt.*\)/#\1/' $_pkgname/updateversion.sh
+  sed -i '/gtk-update-icon-cache/d' $_pkgname/qt/configure
 }
 
 build() {
@@ -63,7 +64,7 @@ package_backintime-cli-git() {
 package_backintime-git() {
   pkgdesc='Simple backup/snapshot system inspired by Flyback and TimeVault. Qt6 GUI version'
   #depends=("${_pkgname_cli%-git}" libnotify polkit python-dbus python-pyqt6 xorg-xdpyinfo)
-  depends=($_pkgname_cli libnotify polkit python-dbus python-pyqt6 xorg-xdpyinfo)
+  depends=($_pkgname_cli libnotify polkit python-dbus python-pyqt6 qt6-svg xorg-xdpyinfo)
   # NOTE: Users can optionally install either kompare or meld but not both
   ##'python-secretstorage: store passwords'
   optdepends=(
