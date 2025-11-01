@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=4.9.6
+Name=壁纸生成器 Next
+Comment=壁纸生成器
+Exec="/opt/wallpaper-genrator-next/Wallpaper Generator NEXT"
+Icon=/opt/wallpaper-genrator-next/_internal/NewIcon.ico
+Terminal=false
+Categories=Graphics;2DGraphics
