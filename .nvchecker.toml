@@ -1,0 +1,5 @@
+[mdtt-bin]
+source = "github"
+github = "szktkfm/mdtt"
+use_latest_release = true
+prefix = "v"
