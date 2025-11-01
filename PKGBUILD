@@ -13,6 +13,7 @@ md5sums=('SKIP') # Replace with actual checksum if using tarball
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+  chmod +x configure
   ./configure ARCH=arch
   make
 }
