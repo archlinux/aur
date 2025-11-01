@@ -1,6 +1,6 @@
 pkgbase = poop
 	pkgdesc = Performance Optimizer Observation Platform
-	pkgver = 0.5.0
+	pkgver = 0.5.0+r8+g67ab663
 	pkgrel = 1
 	url = https://github.com/andrewrk/poop
 	arch = aarch64
@@ -8,8 +8,8 @@ pkgbase = poop
 	arch = riscv64
 	arch = x86_64
 	license = MIT
-	makedepends = zig
-	source = poop-0.5.0.tar.gz::https://github.com/andrewrk/poop/archive/refs/tags/0.5.0.tar.gz
-	sha256sums = b67d62c3583994fb262ccaf05094b215d3514d4d2935a25a3867dcab0cf89c93
+	makedepends = zig>=0.15
+	source = poop-67ab6632c53af751a4d9cfb214ff67ef55fd1ceb.tar.gz::https://github.com/andrewrk/poop/archive/67ab6632c53af751a4d9cfb214ff67ef55fd1ceb.tar.gz
+	sha256sums = 4aa25c114067433399caad57e66cf483e36d028ff48c2d1d0edf511bfade2c1a
 
 pkgname = poop
