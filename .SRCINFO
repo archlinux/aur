@@ -1,0 +1,16 @@
+pkgbase = igrok
+	pkgdesc = Play YouTube audio with real-time visualization using mpv, yt-dlp, and cava
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mrwildfoxgamer/Igrok
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = yt-dlp
+	depends = mpv
+	depends = cava
+	source = https://github.com/mrwildfoxgamer/Igrok/archive/refs/heads/main.tar.gz
+	sha256sums = SKIP
+
+pkgname = igrok
