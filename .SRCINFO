@@ -6,7 +6,6 @@ pkgbase = loggo-bin
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	depends = glibc
 	provides = loggo
 	conflicts = loggo
 	source_x86_64 = loggo-x86_64-0.3.21.tgz::https://github.com/aurc/loggo/releases/download/v0.3.21/loggo_0.3.21_linux_amd64.tar.gz
