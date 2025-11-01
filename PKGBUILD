@@ -4,7 +4,7 @@
 
 pkgname=lmstudio-beta
 _appname=lm-studio
-pkgver=0.3.31.5
+pkgver=0.3.31.6
 _pkgver="${pkgver%.*}-${pkgver##*.}"
 pkgrel=1
 pkgdesc="Discover, download, and run local LLMs"
@@ -16,7 +16,7 @@ makedepends=('squashfs-tools' 'graphicsmagick')
 options=(!strip !debug)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source=("${_appimage}::https://installers.lmstudio.ai/linux/x64/${_pkgver}/LM-Studio-${_pkgver}-x64.AppImage")
-sha256sums=('859939086b548548d2b6dadcc9a1c83b57b2e2b971702fe2594c9dc64f4a5ef9')
+sha256sums=('d6ab1c469e03415d8aec77596d84f3aeeb4b1a6dad0d59ee7cd70d2e784a4931')
 noextract=("${_appimage}")
 
 prepare() {
