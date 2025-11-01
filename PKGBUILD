@@ -2,7 +2,7 @@
 
 pkgname='zl-equalizer'
 pkgver=0.6.2
-pkgrel=1
+pkgrel=2
 options=()
 pkgdesc="Parametric, dynamic equalizer plugin by ZL Audio"
 arch=('x86_64')
@@ -31,7 +31,7 @@ prepare() {
 	git -c protocol.file.allow=always submodule update
 	
 	cmake -B Builds -G Ninja \
-	      -DCMAKE_INSTALL_PREFIX=/usr \
+	      -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_FLAGS="$CFLAGS" -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
 	      -DZL_JUCE_COPY_PLUGIN=FALSE -DKFR_ENABLE_DFT=ON -DKFR_ENABLE_MULTIARCH=ON -DKFR_ARCHS="sse2;avx;avx2" -DZL_JUCE_FORMATS="VST3;LV2" -DZL_EQ_BAND_NUM=24 .
 }
 
