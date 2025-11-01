@@ -2,14 +2,14 @@
 # Contributor:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="euporie"
-pkgver=2.8.11
-pkgrel=3
+pkgver=2.9.1
+pkgrel=1
 pkgdesc="Jupyter notebooks in the terminal"
 arch=('any')
 url="https://${pkgname}.readthedocs.io"
 _url="https://github.com/joouha/${pkgname}"
 license=('MIT')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling' 'python-pathlib-abc')
 checkdepends=('python-pytest' 'python-pytest-asyncio')
 depends=(
   # from pyproject.toml
@@ -28,7 +28,7 @@ depends=(
 optdepends=('python-asyncssh: for Euporie hub support')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/v${pkgver}.tar.gz")
-sha256sums=('a0def66b9e0d064dbe2bfb4ec1af9876e19631943ed7f50742249da195f773c7')
+sha256sums=('462e4e942b9f6990f5ac9cb61f7547cdbf5b7cf56b792f6065c78ffd2b4bdd2a')
 
 build () {
   cd "${srcdir}/${_pkgsrc}"
