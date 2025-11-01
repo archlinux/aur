@@ -7,7 +7,7 @@
 pkgname=('ogdf' 'ogdf-docs')
 pkgtreename=foxglove
 pkgver=202510
-pkgrel=2
+pkgrel=3
 pkgdesc="The Open Graph Drawing Framework/Open Graph algorithms and Data structure Framework."
 arch=('i686' 'x86_64')
 url="https://ogdf.uos.de/"
@@ -15,7 +15,7 @@ license=('LicenseRef-custom AND GPL-2.0-or-later AND GPL-3.0-or-later')
 makedepends=('cmake' 'doxygen' 'graphviz' 'bash')
 source=('https://github.com/ogdf/ogdf/archive/refs/tags/'${pkgtreename}-${pkgver}'.tar.gz')
 sha256sums=('e0496c2ac53f5bef3639ebac0f6110323bdd938b7d29ea5da79aced4a28f99b5')
-options=('staticlibs')
+# options=('staticlibs')
 
 # Updated build and package methods contributed by yochananmarqos
 
