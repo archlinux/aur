@@ -1,0 +1,23 @@
+pkgbase = collapseloader-git
+	pkgdesc = GUI utility for launching Minecraft clients, built with Rust and Tauri (git version)
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/dest4590/CollapseLoader
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = npm
+	makedepends = nodejs
+	makedepends = git
+	makedepends = clang
+	makedepends = base-devel
+	depends = webkit2gtk
+	depends = gtk3
+	depends = libayatana-appindicator
+	provides = collapseloader
+	conflicts = collapseloader
+	source = git+https://github.com/dest4590/CollapseLoader.git
+	sha256sums = SKIP
+
+pkgname = collapseloader-git
