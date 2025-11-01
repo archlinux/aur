@@ -1,0 +1,33 @@
+From 8a3719277e6ec1527828322929cf2a99871ccd22 Mon Sep 17 00:00:00 2001
+From: FabioLolix <fabio.loli@disroot.org>
+Date: Wed, 29 Oct 2025 19:07:46 +0100
+Subject: [PATCH] Remove demos leftovers
+
+---
+ filezilla-server/configure | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/filezilla-server/configure b/filezilla-server/configure
+index 630bcb5..0fa716a 100755
+--- a/filezilla-server/configure
++++ b/filezilla-server/configure
+@@ -21827,7 +21827,7 @@ rm -f confcache
+ 
+ ###
+ 
+-ac_config_files="$ac_config_files Makefile src/Makefile src/filezilla/Makefile src/filezilla/webui/app/Makefile src/server/Makefile src/gui/Makefile src/tools/Makefile src/tools/configconverter/Makefile src/tools/crypt/Makefile src/tools/impersonator/Makefile res/Makefile res/filezilla-server-gui.manifest.xml res/filezilla-server-gui.version.rc res/filezilla-server.version.rc res/org.filezilla-project.filezilla-server.service.plist res/share/Makefile res/share/icons/Makefile res/share/icons/hicolor/Makefile pkg/Makefile pkg/windows/Makefile pkg/windows/install.nsi pkg/unix/Makefile pkg/unix/control pkg/unix/templates pkg/unix/filezilla-server-gui.desktop pkg/unix/filezilla-server.service pkg/mac/Makefile pkg/mac/Info.plist pkg/mac/server.dist pkg/mac/component.plist demos/Makefile tests/Makefile"
++ac_config_files="$ac_config_files Makefile src/Makefile src/filezilla/Makefile src/filezilla/webui/app/Makefile src/server/Makefile src/gui/Makefile src/tools/Makefile src/tools/configconverter/Makefile src/tools/crypt/Makefile src/tools/impersonator/Makefile res/Makefile res/filezilla-server-gui.manifest.xml res/filezilla-server-gui.version.rc res/filezilla-server.version.rc res/org.filezilla-project.filezilla-server.service.plist res/share/Makefile res/share/icons/Makefile res/share/icons/hicolor/Makefile pkg/Makefile pkg/windows/Makefile pkg/windows/install.nsi pkg/unix/Makefile pkg/unix/control pkg/unix/templates pkg/unix/filezilla-server-gui.desktop pkg/unix/filezilla-server.service pkg/mac/Makefile pkg/mac/Info.plist pkg/mac/server.dist pkg/mac/component.plist tests/Makefile"
+ 
+ 
+ ac_config_files="$ac_config_files pkg/mac/scripts/service/postinstall"
+@@ -23024,7 +23024,6 @@ do
+     "pkg/mac/Info.plist") CONFIG_FILES="$CONFIG_FILES pkg/mac/Info.plist" ;;
+     "pkg/mac/server.dist") CONFIG_FILES="$CONFIG_FILES pkg/mac/server.dist" ;;
+     "pkg/mac/component.plist") CONFIG_FILES="$CONFIG_FILES pkg/mac/component.plist" ;;
+-    "demos/Makefile") CONFIG_FILES="$CONFIG_FILES demos/Makefile" ;;
+     "tests/Makefile") CONFIG_FILES="$CONFIG_FILES tests/Makefile" ;;
+     "pkg/mac/scripts/service/postinstall") CONFIG_FILES="$CONFIG_FILES pkg/mac/scripts/service/postinstall" ;;
+     "determine-execobjdir") CONFIG_COMMANDS="$CONFIG_COMMANDS determine-execobjdir" ;;
+-- 
+2.51.1
+
