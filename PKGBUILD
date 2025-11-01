@@ -9,7 +9,7 @@
 _pkgname="equibop"
 pkgname="$_pkgname-git"
 pkgdesc="Forked Custom Discord desktop app with Equicord preinstalled"
-pkgver=3.0.8.r0.g72ecac1
+pkgver=3.1.0.r0.gad7cfa2
 pkgrel=1
 url="https://github.com/Equicord/Equibop"
 license=('GPL-3.0-only')
@@ -35,18 +35,19 @@ fi
 # continue package
 depends=(
   "electron${_electron_version:-}"
-  'bun-bin'
 )
 makedepends=(
   'git'
-  'bun'
+  'bun-bin'
   'cmake'
   'gcc'
+  'nodejs'
 )
 optdepends=(
   'libnotify: Notifications'
   'xdg-utils: Open links, files, etc'
 )
+options=('!strip')
 
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=(
@@ -69,7 +70,7 @@ pkgver() {
 build() {
   cd "$_pkgsrc"
   export SKIP_BUN_DOWNLOAD=true
-  bun install
+  CI=true bun install
   bun run buildLibVesktop
   bun run package:dir
 }
@@ -78,7 +79,7 @@ package() {
   install -d "$pkgdir/$_install_path/$_pkgname"
   cp --reflink=auto -r "$_pkgsrc/dist/linux-unpacked/resources/app.asar" "$pkgdir/$_install_path/$_pkgname/"
   cp --reflink=auto -r "$_pkgsrc/dist/linux-unpacked/resources/app-update.yml" "$pkgdir/$_install_path/$_pkgname/"
-  cp --reflink=auto -r "$_pkgsrc/dist/linux-unpacked/resources/app.asar.unpacked" "$pkgdir/$_install_path/$_pkgname/"
+  cp --reflink=auto -r "$_pkgsrc/dist/linux-unpacked/resources/arrpc" "$pkgdir/$_install_path/$_pkgname/"
 
   install -Dm644 "$_pkgsrc/static/icon.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
   install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
