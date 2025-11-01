@@ -1,0 +1,15 @@
+pkgbase = musl-cross-bin
+	pkgdesc = Prebuilt musl cross compiler toolchain (x86_64-linux-musl) from musl.cc
+	pkgver = 11.2.1
+	pkgrel = 1
+	url = https://musl.cc
+	arch = x86_64
+	license = MIT
+	makedepends = coreutils
+	makedepends = tar
+	makedepends = gzip
+	provides = musl-cross
+	source = https://more.musl.cc/11.2.1/x86_64-linux-musl/x86_64-linux-musl-cross.tgz
+	sha256sums = SKIP
+
+pkgname = musl-cross-bin
