@@ -1,0 +1,19 @@
+pkgbase = brother-dcpt535dw
+	pkgdesc = Driver for the Brother DCP-T535DW wifi multifuncional printer
+	pkgver = 3.6.1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=eu_ot&lang=en&prod=dcpt535dw_eu_as
+	arch = i686
+	arch = x86_64
+	license = custom: Brother License
+	license = EULA
+	license = GPL
+	depends = cups
+	optdepends = sane: scanning support
+	optdepends = sane-airscan: SANE backend for AirScan (eSCL) and WSD document scanners
+	optdepends = brscan5: making dcpt525w scaner available to sane
+	optdepends = brscan-skey: scankey support if connected via usb
+	source = https://download.brother.com/welcome/dlf106521/dcpt535dwpdrv-3.6.1-1.amd64.deb
+	sha256sums = 84106fd5ea07c072ecd12a815bcb9bea4efc02b7cbc29573bec1a96c9516d79d
+
+pkgname = brother-dcpt535dw
