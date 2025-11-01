@@ -1,0 +1,18 @@
+pkgbase = collapseloader-bin
+	pkgdesc = GUI utility for launching Minecraft clients (precompiled binary)
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/dest4590/CollapseLoader
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk
+	depends = gtk3
+	depends = libayatana-appindicator
+	provides = collapseloader
+	conflicts = collapseloader
+	conflicts = collapseloader-git
+	noextract = collapseloader-0.2.2.AppImage
+	source = collapseloader-0.2.2.AppImage::https://github.com/dest4590/CollapseLoader/releases/download/prerelease-v0.2.2-494cbb5/collapseloader_0.2.2_amd64.AppImage
+	sha256sums = SKIP
+
+pkgname = collapseloader-bin
