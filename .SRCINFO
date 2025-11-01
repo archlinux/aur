@@ -1,6 +1,6 @@
 pkgbase = qt5-datavis3d
 	pkgdesc = Qt Data Visualization module
-	pkgver = 5.15.17
+	pkgver = 5.15.18
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
