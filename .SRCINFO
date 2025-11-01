@@ -1,6 +1,6 @@
 pkgbase = fladder-bin
 	pkgdesc = A Simple Jellyfin Frontend
-	pkgver = 0.7.5
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/Fladder-App/Fladder
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = fladder-bin
 	depends = gtk3
 	provides = fladder
 	conflicts = fladder
-	source = fladder-bin-0.7.5.zip::https://github.com/DonutWare/Fladder/releases/download/v0.7.5/Fladder-Linux-0.7.5.zip
+	source = fladder-bin-0.8.0.zip::https://github.com/DonutWare/Fladder/releases/download/v0.8.0/Fladder-Linux-0.8.0.zip
 	source = https://raw.githubusercontent.com/DonutWare/Fladder/refs/heads/main/LICENSE
 	source = fladder.desktop
-	sha256sums = 61f4b629585b5b181fd618578fb244262636356dcdb77c06c684ed829e91f016
+	sha256sums = bb43dd2c018579c1dfb888fee8562e594e845abf0213c968dad8cb37f0767d50
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 	sha256sums = 76f8c52297b4f423dd6767a37b56c30ea3398e16f2e0500911ba01df40635ce1
 
