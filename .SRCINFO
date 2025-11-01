@@ -1,22 +1,23 @@
 pkgbase = godsvg-git
 	pkgdesc = An editor for Scalable Vector Graphics (SVG) files. Built with Godot
-	pkgver = 1.0.alpha11.13.gf19a85f8
+	pkgver = 1.0.alpha12
 	pkgrel = 1
 	url = godsvg.com
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = godot
 	depends = glibc
 	depends = libglvnd
 	provides = godsvg
 	conflicts = godsvg
 	conflicts = godsvg-bin
 	source = git+https://github.com/MewPurPur/GodSVG.git
+	source = https://github.com/godotengine/godot-builds/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
 	source = https://github.com/godotengine/godot-builds/releases/download/4.5.1-stable/Godot_v4.5.1-stable_export_templates.tpz
 	source = add-custom-template.patch
 	sha256sums = SKIP
+	sha256sums = 02ec53d1cc7dbb9cc6355393c61b9ab43d1244751a124f10248a4802830788cd
 	sha256sums = 1998af37f1387684e2c211cdb483daf492fc64dc6b12096bddcdca25b6910c86
-	sha256sums = SKIP
+	sha256sums = c48cf5c2d298fc6638cced0c1d04f9665d7815b4042115a2748f2f2de0012be4
 
 pkgname = godsvg-git
