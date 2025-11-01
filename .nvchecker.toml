@@ -1,0 +1,5 @@
+[gitnr-bin]
+source = "github"
+github = "reemus-dev/gitnr"
+use_latest_release = true
+prefix = "v"
