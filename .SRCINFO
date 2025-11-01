@@ -7,6 +7,7 @@ pkgbase = cursor-bin
 	license = LicenseRef-Cursor_EULA
 	depends = xdg-utils
 	depends = electron34
+	depends = nodejs
 	depends = gcc-libs
 	depends = hicolor-icon-theme
 	depends = libxkbfile
