@@ -7,23 +7,22 @@
 _pkgbase=libdbusmenu
 pkgbase=lib32-${_pkgbase}
 pkgname=("${pkgbase}-glib" "${pkgbase}-gtk3")
-pkgver=16.04.0
-pkgrel=7
+_pkgver=18.10.20180917~bzr492+repack1
+pkgver=${_pkgver%~*}
+pkgrel=1
 pkgdesc='Library for passing menus over DBus (32-bit)'
 url='https://launchpad.net/libdbusmenu'
 arch=('x86_64')
 license=('LGPL-2.1-only OR LGPL-3.0-only')
 makedepends=('gnome-common' 'gobject-introspection' 'lib32-gtk3' 'intltool' 'vala' 'valgrind-multilib' 'glib2-devel')
 options=('!emptydirs')
-source=(https://launchpad.net/${_pkgbase}/${pkgver%.?}/${pkgver}/+download/${_pkgbase}-${pkgver}.tar.gz{,.asc})
-sha512sums=('ee9654ac4ed94bdebc94a6db83b126784273a417a645b2881b2ba676a5f67d7fc95dd2bb37bfb0890aa47299ed73cb21ed7de8b75f3fed6b69bfd39065062241'
-            'SKIP')
+source=(https://deb.debian.org/debian/pool/main/libd/libdbusmenu/libdbusmenu_${_pkgver}.orig.tar.xz)
+sha512sums=('d69b723015015ea454e681fa6b91a922b6809756979b576554f48bd955768bd082882d76b832af21a66d6a231e04ff01f0febfd9f36231b9dc385fc15a5db089')
 validpgpkeys=('45B1103FB93ACBD90296DBCAE83D089481836EBF')  # Marco Trevisan (at 3v1n0.net) <marco.trevisan@3v1n0.net>
 
 prepare() {
-  cd ${_pkgbase}-${pkgver}
-  # don't treat warnings as errors
-  sed -i 's/-Werror//' libdbusmenu-*/Makefile.{am,in}
+  cd ${_pkgbase}-${_pkgver%+*}
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
@@ -34,7 +33,7 @@ build() {
   export HAVE_VALGRIND_TRUE='#'
   export HAVE_VALGRIND_FALSE=''
 
-  cd ${_pkgbase}-${pkgver}
+  cd ${_pkgbase}-${_pkgver%+*}
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
@@ -46,18 +45,18 @@ build() {
 }
 
 package_lib32-libdbusmenu-glib() {
-  depends=('lib32-glib2' "${_pkgbase}-glib")
+  depends=("${_pkgbase}-glib" 'lib32-glib2' 'lib32-glibc')
 
-  cd ${_pkgbase}-${pkgver}
+  cd ${_pkgbase}-${_pkgver%+*}
   make -j1 -C libdbusmenu-glib DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/usr/{include,share,lib,bin}
 }
 
 package_lib32-libdbusmenu-gtk3() {
   pkgdesc+=" (GTK+ 3 library)"
-  depends=('lib32-gtk3' "${pkgbase}-glib" "${_pkgbase}-gtk3")
+  depends=("${_pkgbase}-gtk3" "${pkgbase}-glib" 'lib32-at-spi2-core' 'lib32-gdk-pixbuf2' 'lib32-glib2' 'lib32-glibc' 'lib32-gtk3' 'lib32-pango')
 
-  cd ${_pkgbase}-${pkgver}
+  cd ${_pkgbase}-${_pkgver%+*}
   make -j1 -C libdbusmenu-glib DESTDIR="${pkgdir}" install
   make -j1 -C libdbusmenu-gtk DESTDIR="${pkgdir}" install
   make -j1 -C libdbusmenu-glib DESTDIR="${pkgdir}" uninstall
