@@ -1,6 +1,6 @@
 # Maintainer: NebulaBC <ufrii.print@nebulabc.net>
 pkgname='ufrii-print'
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="Install the official Canon UFRII/UFRII LT driver made for Debian on ArchLinux"
 url="https://www.usa.canon.com/support/p/color-imageclass-mf644cdw"
@@ -15,9 +15,9 @@ depends=('cups'
 
 install=install.sh
 
-source=("https://gdlp01.c-wss.com/gds/6/0100009236/20/linux-UFRII-drv-v600-us-02.tar.gz")
+source=("https://gdlp01.c-wss.com/gds/0/0100009240/39/linux-UFRII-drv-v620-m17n-20.tar.gz")
 
-sha256sums=("964b5eb0a706b0739432099eab4e0a61c93aa9a8bfb52fd9376a6d07c17f9f8b")
+sha256sums=("e9025a68006e6c46844692717d51b182107cc886f6a4269067af95a2a8e662b9")
 
 build() {
     tar -xf linux-UFRII-drv-*.tar.gz
