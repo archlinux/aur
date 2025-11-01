@@ -1,7 +1,7 @@
 pkgbase = rstudio-desktop
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
-	pkgver = 2025.09.1.401
-	pkgrel = 2
+	pkgver = 2025.09.2.418
+	pkgrel = 1
 	url = https://github.com/rstudio/rstudio
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -47,7 +47,7 @@ pkgbase = rstudio-desktop
 	options = !emptydirs
 	options = !debug
 	options = !strip
-	source = rstudio-2025.09.1.401-20de356.tar.gz::https://github.com/rstudio/rstudio/archive/20de356561bd58a6d88927cce948bd076d06e4ca.tar.gz
+	source = rstudio-2025.09.2.418-12f6d5e.tar.gz::https://github.com/rstudio/rstudio/archive/12f6d5e22720bd78dbd926bb344efe12d0dce83d.tar.gz
 	source = quarto::git+https://github.com/quarto-dev/quarto.git#branch=release/rstudio-cranberry-hibiscus
 	source = 0001-steady_timer.patch
 	source = https://rstudio-buildtools.s3.us-east-1.amazonaws.com/gwt/gwt-2.12.2.tar.gz
