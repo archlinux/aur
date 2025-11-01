@@ -2,7 +2,7 @@
 
 pkgname=mqttx-bin
 _pkgname=${pkgname%-bin}
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="A cross-platform MQTT 5.0 client tool open sourced by EMQ"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('electron33')
 makedepends=('squashfs-tools')
 source=(${_pkgname^^}-${pkgver}.snap::"https://github.com/emqx/MQTTX/releases/download/v${pkgver}/${_pkgname^^}_${pkgver}_amd64.snap"
         "${_pkgname}.sh")
-sha256sums=('19ab5baec968ad9a45729275a16dd3cf8d772189913081db9a4a6ef3a54dc998'
+sha256sums=('791a1f227ea5a68475a574d2d63c025d848d5ba340ca3d0f428c741806003fda'
             '735d91b5f674b830d761a56fdef8e577077e9738e92143e75394acdecf38cba1')
 
 prepare() {
