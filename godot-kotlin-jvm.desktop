@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Godot Kotlin/JVM
 Comment=Multi-platform 2D and 3D game engine with Kotlin/JVM bindings
-Exec=/usr/bin/godot-kotlin-jvm
+Exec=env JAVA_HOME=/usr/lib/jvm/default /usr/bin/godot-kotlin-jvm
 Icon=godot
 Terminal=false
 Type=Application
