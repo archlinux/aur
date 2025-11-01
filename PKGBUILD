@@ -3,7 +3,7 @@
 pkgname=openmv-ide-bin
 _pkgname=${pkgname%-bin}
 pkgver=4.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="QtCreator based OpenMV IDE."
 arch=('x86_64')
 url="https://github.com/openmv/openmv-ide"
@@ -19,39 +19,14 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip')
 source_x86_64=("https://github.com/openmv/openmv-ide/releases/download/v${pkgver}/${_pkgname}-linux-x86_64-${pkgver}.tar.gz")
-sha256sums_x86_64=('3cc9ad75eb1daab97656513bacc4ccd55e70b7c5c9f1fedcdb5c9e7d8053542f')
-
-_install() {
-  find ${@: 2} -type f -exec install -Dm$1 {} ${pkgdir}/opt/${_pkgname}/{} \;
-}
-
+sha256sums_x86_64=('378ca14a990b4e72e19c2cdc59c5518eeb3538d0bbdc32918eeb27923287f2fe')
 
 package() {
   cd ${srcdir}/${_pkgname}
-
-  # binary
-  install -Dm755 bin/${_pkgname/-} -t ${pkgdir}/opt/${_pkgname}/bin/
-
-  # wrapper
-  install -Dm755 bin/${_pkgname/-}.sh -t ${pkgdir}/opt/${_pkgname}/bin/
-
-  # qt.conf
-  install -Dm644 bin/qt.conf ${pkgdir}/opt/${_pkgname}/bin/qt.conf
-
-  # lib
-  _install 644 -L lib/qtcreator
-  _install 644 -L lib/Qt
-
-  # doc
-  #install -Dm644 README.txt -t ${pkgdir}/usr/share/doc/${_pkgname}/
-
-  # share
-  _install 644 share/qtcreator
   
-  # metainfo
-  _install 644 share/metainfo/
+  install -dm755 ${pkgdir}/opt/${_pkgname}
+  cp -r * ${pkgdir}/opt/${_pkgname}
 
-  # desktop
   install -Dm644 share/applications/io.openmv.openmvide.desktop \
                  ${pkgdir}/usr/share/applications/${_pkgname}.desktop
 
