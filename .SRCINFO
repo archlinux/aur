@@ -1,6 +1,6 @@
 pkgbase = libfronius
-	pkgver = 1.0.6
-	pkgrel = 4
+	pkgver = 1.0.7
+	pkgrel = 1
 	url = https://github.com/ahpohl/libfronius
 	arch = x86_64
 	arch = aarch64
@@ -10,8 +10,8 @@ pkgbase = libfronius
 	makedepends = doxygen
 	makedepends = pkgconf
 	makedepends = libmodbus
-	source = libfronius-1.0.6::git+https://github.com/ahpohl/libfronius.git#tag=v1.0.6
-	sha256sums = 18a66d5609ef2af2d3e0ea5c320d5350ad80082b03091fb1634cb3f2bf60e77a
+	source = libfronius-1.0.7::git+https://github.com/ahpohl/libfronius.git#tag=v1.0.7
+	sha256sums = 0c905959ac80932b756d69bb3efa99b4c53fc584721eb4ca4ffb18bd3a558455
 
 pkgname = libfronius
 	pkgdesc = Library to access Fronius inverters
