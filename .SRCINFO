@@ -1,6 +1,6 @@
 pkgbase = wechat-bin
 	pkgdesc = 微信是一种生活方式. This is a repackage of WeChat.
-	pkgver = 4.1.0.10
+	pkgver = 4.1.0.13
 	pkgrel = 1
 	url = https://weixin.qq.com/
 	arch = x86_64
@@ -47,11 +47,11 @@ pkgbase = wechat-bin
 	optdepends = at-spi2-core: Accessibility in the browser part
 	options = !debug
 	options = !strip
-	source_x86_64 = wechat-x86-4.1.0.10.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_x86_64.deb
-	md5sums_x86_64 = 9b6614538cfadb976cdc6cedcf610970
-	source_aarch64 = wechat-arm-4.1.0.10.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_arm64.deb
-	md5sums_aarch64 = 8c67f41b98f5177daeda8f5669d9788b
-	source_loong64 = wechat-loong64-4.1.0.10.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_LoongArch.deb
-	md5sums_loong64 = 2191f011c02f7c4f6f07da5c51abe844
+	source_x86_64 = wechat-x86-4.1.0.13.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_x86_64.deb
+	md5sums_x86_64 = 751b07bc155bb94f0847fc0cfa49072c
+	source_aarch64 = wechat-arm-4.1.0.13.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_arm64.deb
+	md5sums_aarch64 = efede0dc70321cf2f0b0bf8d94e0a811
+	source_loong64 = wechat-loong64-4.1.0.13.deb::https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_LoongArch.deb
+	md5sums_loong64 = 77491b597beaa51125c76934a1f1c179
 
 pkgname = wechat-bin
