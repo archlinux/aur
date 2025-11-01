@@ -1,11 +1,13 @@
-# Ignore everything
+### Ignore everything
 *
 
-# Whitelist specific files or directories
+### Whitelist specific files or directories
+### Files:
 !.gitignore
 !.SRCINFO
 !LICENSE
 !REUSE.toml
 !PKGBUILD
 
+### Directories
 !LICENSES/
