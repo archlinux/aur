@@ -6,7 +6,7 @@ pkgdesc='Highly accurate C64/Amiga emulator'
 url='https://sourceforge.net/projects/deniseemu/'
 license=('GPL-3.0-or-later')
 pkgver=2.7
-pkgrel=1
+pkgrel=2
 
 _commit="500936ad0f81"
 _srcdir="piciji-$pkgname-$_commit"
@@ -26,5 +26,6 @@ build() {
 package() {
   cd "$srcdir/$_srcdir"
   DESTDIR="${pkgdir}" cmake --build builds/release --target install
+  rm -fr "${pkgdir}"/usr/share/appdata
 }
 
