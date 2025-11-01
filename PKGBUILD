@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=elephant-snippets
-pkgver=2.13.0
+pkgver=2.13.1
 pkgrel=1
 pkgdesc='snippets provider for elephant'
 url='https://github.com/abenz1267/elephant'
@@ -12,7 +12,7 @@ makedepends=('go')
 conflicts=('elephant-snippets')
 provides=('elephant-snippets')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("a79ae3978084d1069bd40f9301062747889fc8de02523ce1c4af2796640f02d4")
+sha256sums=("30ec74d3d431fae1d5634b9d523e44abc8a2bb51a2507401beae8949f3050b34")
 
 build() {
     cd elephant-${pkgver}/internal/providers/snippets
