@@ -3,7 +3,7 @@
 
 pkgname=vue
 pkgver=3.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Visual Understanding Environment"
 arch=('any')
 url="https://github.com/VUE/VUE"
