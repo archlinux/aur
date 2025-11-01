@@ -24,10 +24,10 @@ sed -i \
     PKGBUILD
 
 # Check whether this changed anything
-# if (git diff --exit-code PKGBUILD); then
-#     echo "Package ${PKG} has most recent version ${VER}"
-#     exit 0
-# fi
+if (git diff --exit-code PKGBUILD); then
+    echo "Package ${PKG} has most recent version ${VER}"
+    exit 0
+fi
 
 SUM256=$(curl -sSf https://packages.microsoft.com/repos/edge/dists/stable/main/binary-amd64/Packages |
 	grep -A15 "Package: ${PKG}" |
