@@ -1,7 +1,7 @@
 pkgbase = klatexformula
 	pkgdesc = Provides GUI for generating images from LaTeX equations
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://klatexformula.sourceforge.io/
 	arch = x86_64
 	license = GPL2
@@ -16,4 +16,3 @@ pkgbase = klatexformula
 	sha256sums = 7af0999eeee38176ea34f9f96b358e43e343c73edf6f56143f18794303ca8702
 
 pkgname = klatexformula
-

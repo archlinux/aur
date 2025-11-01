@@ -2,7 +2,7 @@
 
 pkgname=klatexformula
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides GUI for generating images from LaTeX equations"
 arch=(x86_64)
 url='https://klatexformula.sourceforge.io/'
@@ -15,6 +15,7 @@ sha256sums=('7af0999eeee38176ea34f9f96b358e43e343c73edf6f56143f18794303ca8702')
 prepare() {
   cd $pkgname-$pkgver
   sed -i "41i#include <QPainterPath>" src/klftools/klfflowlistwidget_p.h
+  sed -i 's/cmake_minimum_required(VERSION 3\.1)/cmake_minimum_required(VERSION 3.1...3.10)/' CMakeLists.txt
 }
 
 build() {
