@@ -1,0 +1,11 @@
+pkgbase = ttf-promptfont
+	pkgdesc = A font for button prompts and glyphs in games and game-related applications
+	pkgver = 1.12
+	pkgrel = 1
+	url = https://shinmera.com/promptfont
+	arch = any
+	license = OFL-1.0
+	source = https://shinmera.com/projects/promptfont/releases/download/v1.12/promptfont.zip
+	sha1sums = ffd13bf5979f953a9ff007c69cda093a0af47715
+
+pkgname = ttf-promptfont
