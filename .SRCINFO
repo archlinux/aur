@@ -1,6 +1,6 @@
 pkgbase = dtop-bin
 	pkgdesc = Terminal dashboard for Docker
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/amir20/dtop
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = dtop-bin
 	provides = dtop
 	conflicts = dtop
 	options = !strip
-	source_x86_64 = dtop-x86_64-0.3.3.tar.gz::https://github.com/amir20/dtop/releases/download/v0.3.3/dtop-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 20ceec95e212164403dd8e44ac8598d9d35e04157617311f97a0a95d315717b2
-	source_aarch64 = dtop-aarch64-0.3.3.tar.gz::https://github.com/amir20/dtop/releases/download/v0.3.3/dtop-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = c10d40bf751d195a0d9927643bd9f75fb02e7cd15ba6b9d26f9e3c5ddbe272cd
+	source_x86_64 = dtop-x86_64-0.3.4.tar.gz::https://github.com/amir20/dtop/releases/download/v0.3.4/dtop-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = a6aace42f4d357eb92761bcca1e99b8819f72bf8a7edd1bb562b8c5d58fc21a2
+	source_aarch64 = dtop-aarch64-0.3.4.tar.gz::https://github.com/amir20/dtop/releases/download/v0.3.4/dtop-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 528607ace881e33d5e61e552772f5efb4676ee114046c25cfe83a13c10bf5acd
 
 pkgname = dtop-bin
