@@ -1,6 +1,6 @@
 # Maintainer: Daniele Basso <d dot bass 05 at proton dot me>
 pkgname=bun
-pkgver=1.2.22
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Bun is a fast JavaScript all-in-one toolkit. This PKGBUILD builds from source, resulting into a smaller and faster binary depending on your CPU."
 arch=(x86_64)
@@ -8,14 +8,14 @@ url="https://github.com/oven-sh/bun"
 license=('GPL')
 #depends=(c-ares libarchive libuv mimalloc tcc zlib zstd)
 makedepends=(
-	ccache clang cmake git go icu libdeflate libiconv libtool lld llvm ninja mold pkgconf python ruby ruby-getoptlong rust unzip
+  ccache clang cmake git go icu libdeflate libiconv libtool lld llvm ninja mold pkgconf python ruby ruby-getoptlong rust unzip zig
 )
 conflicts=(bun-bin bun-git)
 source=(bun::git+$url.git#tag=bun-v$pkgver
-		        bun-linux-x64-$pkgver.zip::https://github.com/oven-sh/bun/releases/download/bun-v$pkgver/bun-linux-x64.zip # add "baseline" here to download the avx2-less build of bun!
+        bun-linux-x64-$pkgver.zip::https://github.com/oven-sh/bun/releases/download/bun-v$pkgver/bun-linux-x64.zip # add "baseline" here to download the avx2-less build of bun!
         brotliFlag.patch)
-b2sums=('a44e6aeda3a92d42243f9db59ea958b530f7e53467486753bcf23e642cce5649705554eede280c7aa2e4d15c9ff9cff0c4122fc93f3da1f664d360ffe90714e1'
-        'd3f01dc8e900a37895e9e1550d968cd59e53818dce5b82384db5bc43178d5673e936d3d0a549222e565ad1930e544351724f7f359636760bd6a471bebe40675c'
+b2sums=('94363b5541a31f2cf00696a3992a35e24a3330a473a9acea707c5dd614d82f00161e913f7fdc5161cc7951a2d4ca9d93504b52be81cb878b2b0d5c24f1ee61ae'
+        '00679241e9bc5518892772b6704d204689762c800c7df65b5a0c53bd11a53e6a7dc802711f325671a74be89c5c322ca869680d3a3eb3baa348b2036dd337674c'
         'ba86bf7d8ff3c6b0aa1b26a2eaf7d0ca480ff42fde59b75f3290de3f197a07ec8fd926c96287436e29d5dedb9632ffe9e1f8d44ebfa7f9df804874bc889afc2d')
 options=(ccache lto)
 
@@ -25,13 +25,17 @@ prepare() {
   _webkitver=$(grep -Eom1 [a-f0-9]{40} $srcdir/bun/cmake/tools/SetupWebKit.cmake) #https://github.com/oven-sh/bun/blob/main/cmake/tools/SetupWebKit.cmake#L5
   # rm -rf WebKit
   if ! [[ -d WebKit ]]; then
-      git clone --filter=tree:0 https://github.com/oven-sh/WebKit.git -b autobuild-$_webkitver
+      git clone --filter=tree:0 --sparse https://github.com/oven-sh/WebKit.git -b autobuild-$_webkitver
   else
-      git -C WebKit fetch --filter=tree:0
+      git -C WebKit fetch --filter=tree:0 # --sparse
       git -C WebKit switch --detach autobuild-$_webkitver
   fi
 
-  cd bun
+  cd WebKit
+
+  git sparse-checkout set Source
+
+  cd ../bun
 
   # mkdir -p ./vendor
   # ln -sf $srcdir/WebKit ./vendor/WebKit
@@ -53,11 +57,16 @@ build() {
 
   # rm -vf build/CMakeCache.txt
   cd bun
+
+  rm -rf vendor/zig
+  mkdir -p vendor/zig
+  ln -sf /usr/lib/zig vendor/zig/lib 
+  ln -sf /usr/bin/zig vendor/zig/zig
   # CC="/usr/lib/llvm19/bin/clang" CXX="/usr/lib/llvm19/bin/clang++" \
   CMAKE_LINKER_TYPE="mold" \
-  CXXFLAGS="-Wno-unused-result ${CXXFLAGS}" bun ./scripts/build.mjs -GNinja -B $srcdir/build -S $srcdir/bun -Wno-dev -DCMAKE_BUILD_TYPE=Release -DUSE_STATIC_LIBATOMIC=OFF \
+  CXXFLAGS="-Wno-unused-result -Wno-character-conversion ${CXXFLAGS}" bun ./scripts/build.mjs -GNinja -B $srcdir/build -S $srcdir/bun -Wno-dev -DCMAKE_BUILD_TYPE=Release -DUSE_STATIC_LIBATOMIC=OFF \
         -DENABLE_CCACHE=ON -DENABLE_LTO=ON -DENABLE_ASAN=OFF -DUSE_STATIC_SQLITE=OFF -DWEBKIT_LOCAL=ON -DWEBKIT_PATH=$srcdir/WebKitBuild/output  -j$_j -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-        -DFETCHCONTENT_FULLY_DISCONNECTED=ON -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=mold" -DLLVM_VERSION=20.1.8
+        -DFETCHCONTENT_FULLY_DISCONNECTED=ON -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=mold" -DLLVM_VERSION=20.1.8 -DZIG_PATH="/usr/lib/zig" -DLLVM_VERSION=21.1.4
 }
 
 build_webkit(){
@@ -132,11 +141,7 @@ package() {
   install -Dm755 $srcdir/build/bun $pkgdir/usr/bin/bun
   ln -s /usr/bin/bun $pkgdir/usr/bin/bunx
 
-  SHELL=zsh $pkgdir/usr/bin/bun completions > bun.zsh
-  SHELL=bash $pkgdir/usr/bin/bun completions > bun.bash
-  SHELL=fish $pkgdir/usr/bin/bun completions > bun.fish
-
-  install -Dm644 bun.zsh $pkgdir/usr/share/zsh/site-functions/_bun
-  install -Dm644 bun.bash $pkgdir/usr/share/bash-completion/completions/bun
-  install -Dm644 bun.fish $pkgdir/usr/share/fish/vendor_completions.d/bun.fish
+  install -Dm644 $srcdir/bun/completions/bun.zsh $pkgdir/usr/share/zsh/site-functions/_bun
+  install -Dm644 $srcdir/bun/completions/bun.bash $pkgdir/usr/share/bash-completion/completions/bun
+  install -Dm644 $srcdir/bun/completions/bun.fish $pkgdir/usr/share/fish/vendor_completions.d/bun.fish
 }
