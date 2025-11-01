@@ -13,12 +13,12 @@ This version is used for public engine testing in BAR — Join the Discord if yo
 arch=('x86_64')
 url="https://beyond-all-reason.github.io/RecoilEngine/"
 _ghurl="https://github.com/beyond-all-reason/RecoilEngine"
-### Only use _tag or _git_commit never use both at the same time! Default is neither to build latest Pre-release.
+### Only use _tag or _git_commit never use both at the same time! Default is neither to build the latest Pre-release.
 ### https://github.com/beyond-all-reason/RecoilEngine/releases
 #_git_commit='#commit=2bf7e22d2792236377c218f8c06e27ded2984f81'
 #_tag="#tag=2025.04.11"
 #_tag="#tag=2025.06.06"
-#_tag="${pkgver}"
+
 
 license=('GPL-2.0-or-later')
 #conflicts=("${pkgname%-git}") ### Not needed, multiple versions of the engine can be installed besides each other
@@ -115,8 +115,10 @@ EOF
 }
 
 build() {
+    ### Checks if _tag is set. If it is not set (or is empty), it will use the value of ${pkgver}
+    ### Default behavior should be that _tag is unset and therefore gets set to ${pkgver}
+    _tag="${_tag:-${pkgver}}"
 
-    _tag="${pkgver}"
 
     cd "${srcdir}/${pkgname%-git}"
     git checkout  "${_tag}"
