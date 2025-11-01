@@ -9,6 +9,7 @@ pkgbase = ewwii
 	makedepends = gtk4
 	makedepends = pkgconf
 	makedepends = gtk-layer-shell
+	makedepends = graphene
 	provides = ewwii
 	conflicts = ewwii-bin
 	conflicts = ewwii-git
