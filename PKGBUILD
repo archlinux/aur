@@ -1,8 +1,8 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=guitar-git
-pkgver=1.3.0.r4.g11ab43f
-pkgrel=2
+pkgver=1.3.1.r1.gc8b114c
+pkgrel=1
 pkgdesc="Open source Git GUI Client"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://soramimi.github.io/Guitar/"
@@ -21,8 +21,7 @@ pkgver() {
 
 build() {
   cd "Guitar/filetype"
-  qmake6 libfiletype.pro
-  make
+  ./build-gcc.sh
 
   cd "${srcdir}/Guitar"
   qmake6 Guitar.pro
