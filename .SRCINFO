@@ -1,6 +1,6 @@
 pkgbase = sjmcl-bin
 	pkgdesc = An open source Minecraft launcher designed by SJTU Minecraft Club
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/UNIkeEN/SJMCL
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = sjmcl-bin
 	depends = libsoup
 	depends = pango
 	depends = webkit2gtk-4.1
-	source = https://github.com/UNIkeEN/SJMCL/releases/download/v0.5.0/SJMCL_0.5.0_linux_x86_64.deb
-	source = https://raw.githubusercontent.com/UNIkeEN/SJMCL/v0.5.0/LICENSE.EXTRA
-	sha256sums = d8efa28a754b7fbec1dadabb99811587b6353ac35acd012fde65e210bbb92e4f
+	source = https://github.com/UNIkeEN/SJMCL/releases/download/v0.5.1/SJMCL_0.5.1_linux_x86_64.deb
+	source = https://raw.githubusercontent.com/UNIkeEN/SJMCL/v0.5.1/LICENSE.EXTRA
+	sha256sums = f90ab1ce3d885f226c3b0543f9fe61f14eafe5de32dc48ed22ea7193a040fdbb
 	sha256sums = eb66a5cf3243a98ddd8f6cc76fb8835e651df7b8c0d48e59d9dda7ea4ed2386a
 
 pkgname = sjmcl-bin
