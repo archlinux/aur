@@ -1,6 +1,6 @@
 pkgbase = python-pycallgraph
 	pkgdesc = Library and command line tool that visualises the flow of your Python application.
-	pkgver = 1.0.1
+	pkgver = 2.1.6
 	pkgrel = 3
 	url = http://pycallgraph.slowchop.com/
 	arch = any
@@ -8,9 +8,7 @@ pkgbase = python-pycallgraph
 	makedepends = python-setuptools
 	makedepends = python-pygraphviz
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pycallgraph/pycallgraph-1.0.1.tar.gz
-	sha256sums = b1262b0f9831da889c6e9a9a82a22267df497013cd2f5b36c39359a607c91e71
+	source = https://files.pythonhosted.org/packages/source/p/python-call-graph/python-call-graph-2.1.6.tar.gz
+	sha256sums = 24d49b1f348b6d85ab5ee886b240d38b983574e995bf38c18bbbe4c01865d950
 
 pkgname = python-pycallgraph
-	depends = python
-
