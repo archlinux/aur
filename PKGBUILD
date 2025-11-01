@@ -191,10 +191,10 @@
 
 
 # Kernel version
-_kernel_major=6.16
-_kernel_minor=10
+_kernel_major=6.17
+_kernel_minor=6
 # Tachyon patches version
-_tachyon=6.16.1-1593
+_tachyon=6.17.6-1594
 # kernel_compiler_patch version
 _kernelcompilerpatch="20250818.2"
 # kernel_compiler_patch name
@@ -226,9 +226,9 @@ source=(
 # -> SHA-256 checksums of the package's sources
 #    These need to be updated each release; see the 'source' array 
 sha256sums=(
-    "1a4be2fe6b5246aa4ac8987a8a4af34c42a8dd7d08b46ab48516bcc1befbcd83"
+    "9b607166a1c999d8326098121222feb080a20a3253975fcdfa2de96ba7f757a7"
     "SKIP"
-    "fa6382642302a4e865ca2bd506530a51c7088e2064e9a59587e921a3273f9879"
+    "54427fe08bcd055c963c579fa61ed23f7be7c1c4e73e85fd53774c72d356d994"
     "SKIP"
     "326701c512295d50b7ee5b281287959b0e318bba8fed7abe746099e5b658849a"
 )
