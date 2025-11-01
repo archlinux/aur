@@ -6,7 +6,7 @@
 ###
 
 pkgname=recoil-engine-rc
-pkgver=2025.06.07
+pkgver=2025.06.08
 pkgrel=1
 pkgdesc="A powerful free cross-platform RTS game engine. (GitHub — latest Release Candidate tag). \
 This version is used for public engine testing in BAR — Join the Discord if you want to help"
