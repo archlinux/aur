@@ -24,6 +24,7 @@ prepare() {
 
 build() {
     cd ProtonWebClients-$pkgver
+    export YARN_CACHE_FOLDER="$srcdir/.yarn-cache"
     yarn install
     yarn workspace proton-inbox-desktop package
 }
