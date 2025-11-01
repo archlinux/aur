@@ -1,3 +1,5 @@
 [ccusage-statusline-rs]
 source = "github"
 github = "ticpu/ccusage-statusline-rs"
+use_latest_release = true
+prefix = "v"
