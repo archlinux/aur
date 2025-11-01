@@ -1,0 +1,17 @@
+pkgbase = buf-git
+	pkgdesc = A tool for working with Protocol Buffers
+	pkgver = 1.9.0.r1491.g5401b58ca
+	pkgrel = 1
+	url = https://buf.build
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = buf
+	conflicts = buf
+	options = !lto
+	source = buf-git::git+https://github.com/bufbuild/buf#branch=main
+	sha512sums = SKIP
+
+pkgname = buf-git
