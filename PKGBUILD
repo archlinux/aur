@@ -1,31 +1,29 @@
-# Maintainer: Your Name <your@email.com>
 pkgname=mqtt-console-client
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Console-based MQTT client in C++ with JSON parsing and wildcards"
+pkgdesc="A simple console-based MQTT client"
 arch=('x86_64')
 url="https://github.com/liljamartin/mqtt_console_client"
 license=('MIT')
-depends=('paho-mqtt-cpp' 'nlohmann-json')
-makedepends=('cmake' 'gcc' 'git')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')  # Replace with real checksum later
-
+depends=('openssl' 'paho-mqtt-c')
+makedepends=('cmake' 'make' 'gcc')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/liljamartin/mqtt_console_client/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')  # replace with real checksum if you want
 
 build() {
     cd "${srcdir}/mqtt_console_client-${pkgver}"
-    rm -rf build CMakeCache.txt CMakeFiles  # remove any possible leftovers
-    mkdir -p build
-    cd build
-    cmake .. -DCMAKE_BUILD_TYPE=Release
-    make
+    cmake -B build -S . -DCMAKE_BUILD_TYPE=Release
+    cmake --build build
 }
-
 
 package() {
     cd "${srcdir}/mqtt_console_client-${pkgver}/build"
     install -Dm755 mqtt_client "$pkgdir/usr/bin/mqtt_client"
-    install -Dm644 ../README.md "$pkgdir/usr/share/doc/mqtt_console_client/README.md"    
-    install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/mqtt_console_client/LICENSE"
-}
 
+    # Documentation and license
+    install -Dm644 "$srcdir/mqtt_console_client-${pkgver}/README.md" \
+        "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+    install -Dm644 "$srcdir/mqtt_console_client-${pkgver}/LICENSE" \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

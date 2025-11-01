@@ -1,15 +1,15 @@
 pkgbase = mqtt-console-client
-	pkgdesc = Console-based MQTT client in C++ with JSON parsing and wildcards
+	pkgdesc = A simple console-based MQTT client
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/liljamartin/mqtt_console_client
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = make
 	makedepends = gcc
-	makedepends = git
-	depends = paho-mqtt-cpp
-	depends = nlohmann-json
+	depends = openssl
+	depends = paho-mqtt-c
 	source = mqtt-console-client-1.0.0.tar.gz::https://github.com/liljamartin/mqtt_console_client/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
