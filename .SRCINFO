@@ -1,10 +1,10 @@
 pkgbase = python-pynotify
 	pkgdesc = Python Inotify Class
-	pkgver = 1.6.0
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/gene-git/pynotify
 	arch = any
-	license = MIT
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-wheel
@@ -12,7 +12,7 @@ pkgbase = python-pynotify
 	makedepends = python-installer
 	makedepends = rsync
 	depends = python>=3.13
-	source = git+https://github.com/gene-git/pynotify#tag=1.6.0
+	source = git+https://github.com/gene-git/pynotify#tag=1.6.2
 	validpgpkeys = 7CCA1BA66669F3273DB52678E5B81343AB9809E1
 	sha512sums = SKIP
 

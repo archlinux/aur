@@ -10,12 +10,12 @@ pkgname='python-pynotify'
 pkgdesc='Python Inotify Class'
 _gitname='pynotify'
 
-pkgver=1.6.0
+pkgver=1.6.2
 pkgrel=1
 url="https://github.com/gene-git/pynotify"
 
 arch=(any)
-license=(MIT)
+license=(GPL-2.0-or-later)
 
 # To build docs uncommont sphinx/texlive
 depends=('python>=3.13')
