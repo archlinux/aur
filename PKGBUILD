@@ -3,7 +3,7 @@
 pkgbase=libfronius
 pkgname=('libfronius' 'libfronius-docs')
 pkgver=1.0.6
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 url="https://github.com/ahpohl/libfronius"
 license=('MIT')
@@ -39,7 +39,7 @@ package_libfronius() {
 package_libfronius-docs() {
   pkgdesc="HTML documentation for ${pkgbase}"
   optdepends=('graphviz: diagrams for docs')
-  options=('!strip' '!debug')
+  options=('!strip' '!debug' 'staticlibs')
   arch=('any')
   
   cd "$srcdir/$pkgbase-$pkgver"
