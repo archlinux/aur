@@ -1,12 +1,12 @@
 pkgbase = xremap-wlroots-bin
 	pkgdesc = Dynamic key remapper for X11 and Wayland
-	pkgver = 0.14.2
+	pkgver = 0.14.3
 	pkgrel = 1
 	url = https://github.com/k0kubun/xremap
 	arch = x86_64
 	license = MIT
 	provides = xremap
-	source_x86_64 = xremap-wlroots-bin-0.14.2.zip::https://github.com/k0kubun/xremap/releases/download/v0.14.2/xremap-linux-x86_64-wlroots.zip
-	sha256sums_x86_64 = bbce7ef4b15b6138bfca0170b49549b41672fdaa889816ada87594fceaba1a65
+	source_x86_64 = xremap-wlroots-bin-0.14.3.zip::https://github.com/k0kubun/xremap/releases/download/v0.14.3/xremap-linux-x86_64-wlroots.zip
+	sha256sums_x86_64 = cc5af803d27b8e031b027ed919d058d44562666956c683ae39b9d0365344a929
 
 pkgname = xremap-wlroots-bin
