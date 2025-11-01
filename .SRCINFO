@@ -1,6 +1,6 @@
 pkgbase = shadps4-pre-release-bin
 	pkgdesc = Sony PlayStation 4 emulator (Pre-release version)
-	pkgver = 20250605.93222c6
+	pkgver = 20251031.430f2e4
 	pkgrel = 1
 	url = https://shadps4.net/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = shadps4-pre-release-bin
 	conflicts = shadps4
 	replaces = shadps4
 	options = !strip
-	source = https://github.com/shadps4-emu/shadPS4/releases/download/Pre-release-shadPS4-2025-06-05-93222c6f9f01c15855b3cee23c7856b963b6b1e2/shadps4-linux-qt-2025-06-05-93222c6.zip
+	source = https://github.com/shadps4-emu/shadPS4/releases/download/Pre-release-shadPS4-2025-10-31-430f2e4700eb89bb7756f439d2c50517e3080e92/shadps4-linux-sdl-2025-10-31-430f2e4.zip
 	sha256sums = SKIP
 
 pkgname = shadps4-pre-release-bin
