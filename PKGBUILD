@@ -11,8 +11,9 @@ arch=('x86_64' 'i686' 'aarch64')
 _barch=('amd64' '386' 'arm64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
-license=('GPL-3.0-only ')
+license=('GPL-3.0-only')
 
+depends=('glibc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 

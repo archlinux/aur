@@ -7,6 +7,7 @@ pkgbase = pvw-bin
 	arch = i686
 	arch = aarch64
 	license = GPL-3.0-only
+	depends = glibc
 	provides = pvw
 	conflicts = pvw
 	source_x86_64 = pvw-x86_64-2.0.0.tar.gz::https://github.com/allyring/pvw/releases/download/v2.0.0/pvw_2.0.0_linux_amd64.tar.gz
