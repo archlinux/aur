@@ -1,13 +1,13 @@
 pkgbase = garuda-rani
 	pkgdesc = Garuda's Reliable Assistant for Native Installations
-	pkgver = 3.2.0
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://gitlab.com/garuda-linux/applications/rani
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = base-devel
-	makedepends = nodejs-lts-jod
+	makedepends = nodejs-lts-krypton
 	makedepends = pnpm
 	depends = bash
 	depends = curl
@@ -30,7 +30,7 @@ pkgbase = garuda-rani
 	options = !strip
 	options = !emptydirs
 	options = !debug
-	source = git+https://gitlab.com/garuda-linux/applications/rani.git#commit=ba3d582fcd538c628076e07c8a4131ddef3f442d
+	source = git+https://gitlab.com/garuda-linux/applications/rani.git#commit=e2f2d8f64b9d1baf2b44f36395ed8a2599045076
 	sha256sums = SKIP
 
 pkgname = garuda-rani
