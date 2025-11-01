@@ -1,0 +1,5 @@
+[lstr-bin]
+source = "github"
+github = "bgreenwell/lstr"
+use_latest_release = true
+prefix = "v"

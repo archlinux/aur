@@ -1,0 +1,13 @@
+pkgbase = lstr-bin
+	pkgdesc = A fast, minimalist directory tree viewer, written in Rust
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/bgreenwell/lstr
+	arch = x86_64
+	license = MIT
+	provides = lstr
+	conflicts = lstr
+	source_x86_64 = lstr-x86_64-0.2.1.tar.gz::https://github.com/bgreenwell/lstr/releases/download/v0.2.1/lstr-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 4408ed12f10fa596ae12a20108cfe5ead4a938a3a6a4b5ce5d1c7cdb696add3f
+
+pkgname = lstr-bin
