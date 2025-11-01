@@ -1,5 +1,5 @@
 pkgname=pokeclicker-platinum
-pkgver=0.10.25_4  # Arch-friendly version string
+pkgver=0.10.25_5  # Arch-friendly version string
 pkgrel=1
 epoch=1
 pkgdesc="PokéClicker Platinum – Game about catching Pokémon, defeating gym leaders, and watching numbers get bigger (Electron AppImage)"
