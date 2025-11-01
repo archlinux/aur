@@ -1,8 +1,8 @@
 _pkgname=folo
 _Pkgname=Folo
 _disname=Folo
-major_version=0
-minor_version=9
+major_version=1
+minor_version=0
 patch_version=0
 # phase='beta.0'
 
@@ -11,7 +11,7 @@ replaces=('follow-appimage')
 conflicts=('follow-appimage')
 pkgver="${major_version}.${minor_version}.${patch_version}"
 pkgrel=1
-pkgdesc="🧡 Next generation information browser"
+pkgdesc="🧡 Folo is the AI Reader"
 arch=('x86_64')
 url="https://github.com/RSSNext/Folo"
 license=('GPL-3')
@@ -19,8 +19,8 @@ options=('!strip' '!debug')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 provides=('follow')
 
-source_x86_64=("${_Pkgname}-${major_version}.${minor_version}.${patch_version}-linux-amd64.AppImage::https://github.com/RSSNext/Folo/releases/download/v${major_version}.${minor_version}.${patch_version}/${_Pkgname}-${major_version}.${minor_version}.${patch_version}-linux-x64.AppImage")
-sha256sums_x86_64=("71c0764c371e1ca8ec56439fb15af19fefed45e92c4c6e29285706fdb4068fc1")
+source_x86_64=("${_Pkgname}-${major_version}.${minor_version}.${patch_version}-linux-amd64.AppImage::https://github.com/RSSNext/Folo/releases/download/desktop%2Fv${major_version}.${minor_version}.${patch_version}/${_Pkgname}-${major_version}.${minor_version}.${patch_version}-linux-x64.AppImage")
+sha256sums_x86_64=("924a489bdb52fabc1125d2bb9fc3d0fb6b75f7862672e151d20bcf37d5cc0586")
 
 _appimage="${_Pkgname}-${major_version}.${minor_version}.${patch_version}-linux-amd64.AppImage"
 noextract=("${_appimage}")
