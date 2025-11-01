@@ -1,7 +1,7 @@
 pkgbase = heroic-games-launcher-git
 	pkgdesc = Native GOG, Epic Games and Amazon games launcher for Linux
-	pkgver = 2.18.1.r1.g161028280
-	pkgrel = 1
+	pkgver = 2.18.1.r18.gd827d7053
+	pkgrel = 2
 	url = https://heroicgameslauncher.com/
 	arch = x86_64
 	license = GPL-3.0-only
