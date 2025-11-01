@@ -1,7 +1,7 @@
 pkgbase = libxfce4ui-devel
 	pkgdesc = Commonly used Xfce widgets among Xfce applications (Development version)
 	pkgver = 4.21.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.xfce.org/xfce/libxfce4ui/start
 	arch = i686
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = libxfce4ui-devel
 	depends = xfconf
 	depends = libsm
 	depends = startup-notification
+	depends = libgudev
 	depends = libgtop
 	depends = libepoxy
 	depends = hicolor-icon-theme

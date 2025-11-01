@@ -6,13 +6,13 @@
 _pkgname=libxfce4ui
 pkgname=${_pkgname}-devel
 pkgver=4.21.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Commonly used Xfce widgets among Xfce applications (Development version)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://docs.xfce.org/xfce/libxfce4ui/start"
 license=('GPL-2.0-or-later')
 groups=('xfce4-devel')
-depends=('libxfce4util' 'gtk3' 'xfconf' 'libsm' 'startup-notification'
+depends=('libxfce4util' 'gtk3' 'xfconf' 'libsm' 'startup-notification' 'libgudev' 
          'libgtop' 'libepoxy' 'hicolor-icon-theme')
 makedepends=('gtk-doc' 'gobject-introspection' 'vala' 'glade' 'xfce4-dev-tools' 'meson')
 optdepends=('glade: Glade designer plugin')
