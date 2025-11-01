@@ -123,6 +123,7 @@ build() {
     cd "${srcdir}/${pkgname%-git}"
     git checkout  "${_tag}"
     git submodule update --init --recursive
+    cd "${srcdir}"
     
 
 ### use the AUR package instead
@@ -145,7 +146,7 @@ build() {
 #           -DCMAKE_TOOLCHAIN_FILE="toolchain/clang_x86_64-pc-linux-gnu.cmake" \
 
 # V=1 make VERBOSE=1 -j1
-        ninja #--verbose
+        cd "${srcdir}"; ninja #--verbose
 }
 
 
