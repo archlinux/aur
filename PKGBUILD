@@ -2,7 +2,7 @@
 
 pkgname=flameshot-imgur
 _pkgname=flameshot
-pkgver=13.1.0
+pkgver=13.3.0
 pkgrel=1
 pkgdesc="Powerful yet simple to use screenshot software with Imgur upload support enabled"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -18,8 +18,9 @@ optdepends=(
 )
 provides=('flameshot')
 conflicts=('flameshot' 'flameshot-git' 'flameshot-imgur-git')
+options=('!debug')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/flameshot-org/flameshot/archive/v${pkgver}.tar.gz")
-sha256sums=('1d755a618bdcb3e739f691cea55ed2d432f93e521a504f95b74abed0c595f6f7')
+sha256sums=('b079da2af1b356d94619fa1e4024f0e4fb546ecaf1952285286b8483e7b43012')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
