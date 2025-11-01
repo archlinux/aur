@@ -1,0 +1,5 @@
+[sou-bin]
+source = "github"
+github = "knqyf263/sou"
+use_latest_release = true
+prefix = "v"

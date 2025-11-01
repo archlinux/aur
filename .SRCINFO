@@ -1,0 +1,16 @@
+pkgbase = sou-bin
+	pkgdesc = A tool for exploring files in container image layers
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/knqyf263/sou
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = sou
+	conflicts = sou
+	source_x86_64 = sou-x86_64-0.2.0.tgz::https://github.com/knqyf263/sou/releases/download/v0.2.0/sou_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = a60a5c0ada9c6cbf9219ecc065f8b8c56cb64bdf91b468bcda638954e44d33c7
+	source_aarch64 = sou-aarch64-0.2.0.tgz::https://github.com/knqyf263/sou/releases/download/v0.2.0/sou_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 1af4e102a2fa9375e35499997cf84c5f33f61ab43be17c0039908b4af247b9de
+
+pkgname = sou-bin
