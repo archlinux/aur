@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Godot Kotlin/JVM
+Comment=Multi-platform 2D and 3D game engine with Kotlin/JVM bindings
+Exec=/usr/bin/godot-kotlin-jvm
+Icon=godot
+Terminal=false
+Type=Application
+Categories=Development;Game;IDE;
+StartupWMClass=Godot

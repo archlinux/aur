@@ -1,11 +1,14 @@
 pkgbase = godot-kotlin-jvm-bin
-	pkgdesc = Kotlin/JVM binding for the Godot Game Engine
+	pkgdesc = Custom Godot Game Engine build for Kotlin/JVM binding
 	pkgver = 0.14.3
 	pkgrel = 1
 	url = https://github.com/utopia-rise/godot-kotlin-jvm
 	arch = x86_64
 	license = MIT
+	depends = glibc
 	source = godot-kotlin-jvm-bin_0.14.3_4.5.1.zip::https://github.com/utopia-rise/godot-kotlin-jvm/releases/download/0.14.3-4.5.1/godot-kotlin-jvm_editor_linuxbsd_x86_64_release_0.14.3-4.5.1.zip
+	source = godot-kotlin-jvm.desktop
 	sha256sums = a3c89c3f555a566b62625ca38976fbe68ada38bb509a9b809601e303888661aa
+	sha256sums = 296e75a51329252c9626401a9c0ea2e428f188f2733ce3305fa978376f0c3354
 
 pkgname = godot-kotlin-jvm-bin
