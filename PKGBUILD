@@ -1,7 +1,7 @@
 # Maintainer: Aikawa Yataro <aikawayataro at protonmail dot com>
 
 pkgname=sourcegit
-pkgver=2025.36
+pkgver=2025.37
 pkgrel=1
 pkgdesc="GUI client for GIT users"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('git-credential-manager: third-party authentication support')
 makedepends=('dotnet-sdk-9.0' 'desktop-file-utils')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sourcegit-scm/sourcegit/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('69652acba911d4ddf59cfeac94fcf370d722cc838a66c22b3aac4a590b3d5626')
+sha256sums=('b376e6ba3ba04ac158b2759c90d924fb6b3814f6557acee712ff406671db16cd')
 
 
 
@@ -24,11 +24,12 @@ prepare() {
 }
 
 build() {
+    cd "$pkgname-$pkgver"
+
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
     export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
     export DOTNET_NOLOGO=true
-
-    cd "$pkgname-$pkgver"
+    export NUGET_PACKAGES="$PWD/nuget"
 
     dotnet publish src/SourceGit.csproj -c Release -r linux-x64 -o publish \
         -p:DisableAot=true \
