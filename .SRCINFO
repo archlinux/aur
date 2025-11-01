@@ -1,6 +1,6 @@
 pkgbase = equibop-bin
 	pkgdesc = A Vesktop fork cross platform electron-based desktop app aiming to give you a snappier Discord experience with Equicord pre-installed
-	pkgver = 3.0.9
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/Equicord/Equibop
 	install = equibop.install
@@ -8,20 +8,24 @@ pkgbase = equibop-bin
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = electron39
-	depends = bun-bin
-	provides = equibop=3.0.9
-	provides = equibop-desktop=3.0.9
+	provides = equibop=3.1.0
+	provides = equibop-desktop=3.1.0
 	conflicts = equibop
 	conflicts = equibop-desktop
+	options = !strip
 	source = equibop.sh
 	source = equibop.install
-	source = icon.png::https://github.com/Equicord/Equibop/raw/v3.0.9/static/icon.png
+	source = icon.png::https://github.com/Equicord/Equibop/raw/v3.1.0/static/icon.png
 	sha256sums = 28e852632bc479a8c9bb84c2d9b629c35a621618448fbc1e0bbea21dfaef19a1
 	sha256sums = e11aa0a6bebe23f473ccb8e7d5577e05e7b9287381de91223f86c79d6729caae
 	sha256sums = 92ceea804d5a3eaf0c7b696bb3b4026f21962d2c2ef91fbf295eab95855797b2
-	source_aarch64 = equibop-3.0.9-aarch64.tar.gz::https://github.com/Equicord/Equibop/releases/download/v3.0.9/equibop-3.0.9-arm64-packager.tar.gz
-	sha256sums_aarch64 = b2ea50aad21ceb7b77eedfb23b637d1c73eae580db4f5c2f5387be75c9a14cbf
-	source_x86_64 = equibop-3.0.9-x86_64.tar.gz::https://github.com/Equicord/Equibop/releases/download/v3.0.9/equibop-3.0.9-packager.tar.gz
-	sha256sums_x86_64 = b2ea50aad21ceb7b77eedfb23b637d1c73eae580db4f5c2f5387be75c9a14cbf
+	source_aarch64 = equibop-3.1.0-aarch64.tar.gz::https://github.com/Equicord/Equibop/releases/download/v3.1.0/equibop-3.1.0-arm64.tar.gz
+	source_aarch64 = arrpc-linux-arm64::https://github.com/Creationsss/arrpc-bun/releases/download/v1.2.9/arrpc-bun-linux-arm64
+	sha256sums_aarch64 = 18c85f9f306bee61cdad4abf1b2841f41d4d294b94f0bdff79886e9d5989218c
+	sha256sums_aarch64 = 164aacb6f5c6af949d0bbba415b97305c7b0a4b8de1562c31b75cd9f3bcb6d44
+	source_x86_64 = equibop-3.1.0-x86_64.tar.gz::https://github.com/Equicord/Equibop/releases/download/v3.1.0/equibop-3.1.0.tar.gz
+	source_x86_64 = arrpc-linux-x64::https://github.com/Creationsss/arrpc-bun/releases/download/v1.2.9/arrpc-bun-linux-x64
+	sha256sums_x86_64 = bd248b51bdac34d7a009a80a2999628b4e5bc3c49bf1813b669c6788fcca87f4
+	sha256sums_x86_64 = 12bd168df2a594370c2672de2365714de8daf205e50d28dd5fd1267776dafed3
 
 pkgname = equibop-bin
