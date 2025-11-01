@@ -1,7 +1,7 @@
 pkgbase = kodi-addon-pvr-waipu
 	pkgdesc = Waipu.tv PVR Plugin for Kodi
 	pkgver = 21.12.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flubshi/pvr.waipu
 	arch = any
 	groups = kodi
@@ -13,8 +13,8 @@ pkgbase = kodi-addon-pvr-waipu
 	provides = kodi-addon-pvr-waipu
 	conflicts = kodi-addon-pvr-waipu
 	source = https://github.com/flubshi/pvr.waipu/archive/21.12.5-Omega.tar.gz
-	source = https://github.com/xbmc/xbmc/archive/21.2-Omega.tar.gz
+	source = https://github.com/xbmc/xbmc/archive/21.3-Omega.tar.gz
 	sha256sums = 28750b8513ca2df69d2d661a1d832689a1571b6793e98243eb29e3aed03c7f26
-	sha256sums = da3a5df663684664b9383b65f1c06568222629d935084a59e4e641fcdcb6c383
+	sha256sums = a60afcb556e4a00cb19fc35b7e77758107c9a8096c6ce9b66af5f92396be31aa
 
 pkgname = kodi-addon-pvr-waipu
