@@ -2,7 +2,7 @@
 [Desktop Entry]
 Name=LauncherX
 Comment=下一代 Minecraft 启动器
-Exec=env LC_ALL=zh_CN.UTF-8 /usr/bin/LauncherX.Avalonia
+Exec=env LC_ALL=zh_CN.UTF-8 /usr/bin/launcherx
 Icon=LauncherX
 Terminal=false
 Type=Application
