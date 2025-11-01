@@ -9,10 +9,10 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=rider-eap
-pkgver=253.27864.44
+pkgver=253.28086.30
 pkgrel=1
 _eapver=2025.3
-_eaprelease=EAP7
+_eaprelease=EAP8
 # _eaprelease=RC2
 epoch=1
 pkgdesc="A cross-platform .NET IDE by JetBrains."
@@ -26,7 +26,7 @@ source=(
     "https://download-cdn.jetbrains.com/rider/JetBrains.Rider-${_eapver}-${_eaprelease}-${pkgver}.Checked.tar.gz"
     "${pkgname}.desktop"
 )
-sha256sums=('787afb88db9a3fce8df2b62aecad8cfd3e2e3e619fce9550350a2fe1addbb383'
+sha256sums=('613def95c031b4d5499d9e810a9d5e069807ffd3f8b2915d10378df7ad438017'
             'cbb7c9b847c92c95403be237ab01183eb0516b4a9b46c8ba27c87243fed8cbb8')
 
 package() {
