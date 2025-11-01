@@ -3,7 +3,7 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=shader-slang
-pkgver=2025.20
+pkgver=2025.21
 pkgrel=1
 pkgdesc='Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion'
 url='https://github.com/shader-slang/slang'
@@ -13,7 +13,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 	"lua::git+https://github.com/lua/lua#commit=3fe7be956f23385aa1950dc31e2f25127ccfc0ea"
 )
-sha256sums=('f22304f2a582d5594eb534b7ede2e47ed85f3d78b666af4838dcc242b3402d78'
+sha256sums=('108e1e616769a8b75376c564c3b7722633b79c824d0b68ca6c607f9e00890791'
             '265ad53dcb67390ce21acb8165841439ca7bdd1e09a000a6c4e4d38b3a40a598')
 makedepends=(
 	cmake
@@ -49,10 +49,6 @@ prepare() {
 		-exec \
 			sed -e 's/"spirv-tools\/include\/\(.*\)"/<\1>/g' \
 			-i {} \+
-
-	# Change libslang.so -> libslang-compiler.so
-	sed -e "s/LINK_WITH_PRIVATE slang-common-objects/&\nOUTPUT_NAME slang-compiler/g" \
-		-i source/slang/CMakeLists.txt
 
 	# Add include prefix
 	sed -e 's/${CMAKE_INSTALL_INCLUDEDIR}/&\/'"$pkgname"'/g' \
@@ -98,4 +94,7 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
+
+	# Delete Unix backward compatibility symlink (libslang -> libslang-compiler)
+	rm -f "$pkgdir/usr/lib/libslang.so"
 }
