@@ -39,7 +39,6 @@ build() {
 
 check() {
     cd ProtonWebClients
-    export YARN_CACHE_FOLDER="$srcdir/.yarn-cache"
     yarn workspace proton-inbox-desktop test
 }
 
