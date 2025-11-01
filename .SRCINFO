@@ -1,8 +1,8 @@
 pkgbase = fbpanel-git
 	pkgdesc = NetWM compliant desktop panel (git)
-	pkgver = 44.478754b
-	pkgrel = 3
-	url = https://github.com/aanatoly/fbpanel
+	pkgver = 102.bc8bcfe
+	pkgrel = 1
+	url = https://github.com/akozlins/fbpanel
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = fbpanel-git
 	provides = fbpanel-svn
 	conflicts = fbpanel
 	conflicts = fbpanel-svn
-	source = git+https://github.com/aanatoly/fbpanel.git
+	source = git+https://github.com/akozlins/fbpanel.git
 	sha512sums = SKIP
 
 pkgname = fbpanel-git
