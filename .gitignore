@@ -1,0 +1,11 @@
+# Ignore build outputs
+pkg/
+src/
+*.tar.*
+*.tar.zst
+*.zip
+*.deb
+*.AppImage
+*.log
+*.sig
+
