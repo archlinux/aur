@@ -1,0 +1,5 @@
+[guitar-bin]
+source = "github"
+github = "soramimi/Guitar"
+use_latest_release = true
+prefix = "v"
