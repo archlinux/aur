@@ -1,34 +1,21 @@
 pkgname=arrpc-bun-bin
 pkgver=1.2.8
 pkgrel=1
-pkgdesc="TypeScript/Bun port of arRPC - Open Discord RPC server"
-arch=('any')
+pkgdesc="TypeScript/Bun port of arRPC - Open Discord RPC server (prebuilt binary)"
+arch=('x86_64' 'aarch64')
 url="https://github.com/Creationsss/arrpc-bun"
 license=('MIT')
-depends=('bun-bin')
+depends=()
 provides=('arrpc-bun')
 conflicts=('arrpc-bun')
-source=("arrpc-bun-${pkgver}.tar.gz::https://github.com/Creationsss/arrpc-bun/archive/v${pkgver}.tar.gz")
-sha256sums=('c7f7439cfaa5f246f74249c64d771ca7364d9a922faa739592a1e73d7c54dd73')
+source=("arrpc-bun.service")
+source_x86_64=("arrpc-bun-${pkgver}-x86_64::https://github.com/Creationsss/arrpc-bun/releases/download/v${pkgver}/arrpc-bun-linux-x64")
+source_aarch64=("arrpc-bun-${pkgver}-aarch64::https://github.com/Creationsss/arrpc-bun/releases/download/v${pkgver}/arrpc-bun-linux-arm64")
+sha256sums=('f1e20a82f8cb2fa8d5f007511ca78eed8eda44dbe1cef596afb2ec3bf03c66e9')
+sha256sums_x86_64=('362d7f38794654b5e4ce3ae59bef2511f60baa173c2b92f8945061aaebcb6f32')
+sha256sums_aarch64=('7c1d6b97e2aec11102c0b22f16e0ecc84a83ddffddcc492cef263a6610e36c88')
 
 package() {
-    cd "${srcdir}/arrpc-bun-v${pkgver}"
-
-    install -dm755 "${pkgdir}/usr/lib/arrpc-bun"
-
-    cp -r src "${pkgdir}/usr/lib/arrpc-bun/"
-    cp -r scripts "${pkgdir}/usr/lib/arrpc-bun/"
-    install -Dm644 detectable.json "${pkgdir}/usr/lib/arrpc-bun/detectable.json"
-    install -Dm644 detectable_fixes.json "${pkgdir}/usr/lib/arrpc-bun/detectable_fixes.json"
-    install -Dm644 package.json "${pkgdir}/usr/lib/arrpc-bun/package.json"
-
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-
-    install -dm755 "${pkgdir}/usr/bin"
-    cat > "${pkgdir}/usr/bin/arrpc-bun" << 'EOF'
-#!/bin/bash
-exec bun run /usr/lib/arrpc-bun/src/index.ts "$@"
-EOF
-    chmod +x "${pkgdir}/usr/bin/arrpc-bun"
+    install -Dm755 "arrpc-bun-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/arrpc-bun"
+    install -Dm644 arrpc-bun.service "${pkgdir}/usr/lib/systemd/user/arrpc-bun.service"
 }

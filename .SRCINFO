@@ -1,14 +1,18 @@
 pkgbase = arrpc-bun-bin
-	pkgdesc = TypeScript/Bun port of arRPC - Open Discord RPC server
+	pkgdesc = TypeScript/Bun port of arRPC - Open Discord RPC server (prebuilt binary)
 	pkgver = 1.2.8
 	pkgrel = 1
 	url = https://github.com/Creationsss/arrpc-bun
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = MIT
-	depends = bun-bin
 	provides = arrpc-bun
 	conflicts = arrpc-bun
-	source = arrpc-bun-1.2.8.tar.gz::https://github.com/Creationsss/arrpc-bun/archive/v1.2.8.tar.gz
-	sha256sums = c7f7439cfaa5f246f74249c64d771ca7364d9a922faa739592a1e73d7c54dd73
+	source = arrpc-bun.service
+	sha256sums = f1e20a82f8cb2fa8d5f007511ca78eed8eda44dbe1cef596afb2ec3bf03c66e9
+	source_x86_64 = arrpc-bun-1.2.8-x86_64::https://github.com/Creationsss/arrpc-bun/releases/download/v1.2.8/arrpc-bun-linux-x64
+	sha256sums_x86_64 = 362d7f38794654b5e4ce3ae59bef2511f60baa173c2b92f8945061aaebcb6f32
+	source_aarch64 = arrpc-bun-1.2.8-aarch64::https://github.com/Creationsss/arrpc-bun/releases/download/v1.2.8/arrpc-bun-linux-arm64
+	sha256sums_aarch64 = 7c1d6b97e2aec11102c0b22f16e0ecc84a83ddffddcc492cef263a6610e36c88
 
 pkgname = arrpc-bun-bin

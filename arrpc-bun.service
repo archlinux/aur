@@ -1,0 +1,12 @@
+[Unit]
+Description=arRPC (Bun) - Open Discord RPC server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/arrpc-bun
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=default.target
