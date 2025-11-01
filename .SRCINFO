@@ -1,7 +1,7 @@
 pkgbase = lmdbal-qt6
 	pkgdesc = LMDB Abstraction Layer, qt6 version
-	pkgver = 0.6.1
-	pkgrel = 2
+	pkgver = 0.6.2
+	pkgrel = 1
 	url = https://git.macaw.me/blue/lmdbal
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = lmdbal-qt6
 	makedepends = gcc
 	depends = lmdb
 	depends = qt6-base
-	source = lmdbal-0.6.1-2.tar.gz::https://git.macaw.me/blue/lmdbal/archive/0.6.1.tar.gz
-	sha256sums = 87c4e5cdbf01411a4c5f7f8df0f3e368de57043386311c34cf223bff4cd129ab
+	source = lmdbal-0.6.2-1.tar.gz::https://git.macaw.me/blue/lmdbal/archive/0.6.2.tar.gz
+	sha256sums = 1fcc92fe030794cffe5b1d18c8d7845bab9369dee83f640e862aa060a0a68d1d
 
 pkgname = lmdbal-qt6
