@@ -1,6 +1,6 @@
 pkgbase = ewwii-git
 	pkgdesc = Powerful and flexible widget system for Linux
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/Ewwii-sh/ewwii
 	arch = x86_64
