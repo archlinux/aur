@@ -1,7 +1,7 @@
 # Maintainer: SClause <arch at sclause dot net>
 _pkgname=grandorgue
 pkgname="$_pkgname"
-_version=3.16.0
+_version=3.16.1
 _build=1
 pkgver="${_version}.${_build}"
 pkgrel=1

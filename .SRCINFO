@@ -1,6 +1,6 @@
 pkgbase = grandorgue
 	pkgdesc = Virtual Pipe Organ Software
-	pkgver = 3.16.0.1
+	pkgver = 3.16.1.1
 	pkgrel = 1
 	url = https://github.com/GrandOrgue/grandorgue
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = grandorgue
 	conflicts = grandorgue-git
 	conflicts = grandorgue-bin
 	options = !debug
-	source = git+https://github.com/GrandOrgue/grandorgue.git#tag=3.16.0-1
+	source = git+https://github.com/GrandOrgue/grandorgue.git#tag=3.16.1-1
 	sha256sums = SKIP
 
 pkgname = grandorgue
