@@ -12,7 +12,7 @@ url="https://github.com/Equicord/Equibop"
 license=('GPL3')
 install=equibop.install
 depends=("${electron}")
-makedepends=('bun' 'cmake' 'gcc' 'nodejs')
+makedepends=('bun-bin' 'cmake' 'gcc' 'nodejs')
 optdepends=(
   'libnotify: Notifications'
   'xdg-utils: Open links, files, etc'
