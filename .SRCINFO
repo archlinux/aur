@@ -1,6 +1,6 @@
 pkgbase = libfronius
 	pkgver = 1.0.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ahpohl/libfronius
 	arch = x86_64
 	arch = aarch64
@@ -19,6 +19,7 @@ pkgname = libfronius
 	optdepends = libfronius-docs: HTML documentation
 	options = strip
 	options = debug
+	options = staticlibs
 
 pkgname = libfronius-docs
 	pkgdesc = HTML documentation for libfronius
@@ -26,4 +27,3 @@ pkgname = libfronius-docs
 	optdepends = graphviz: diagrams for docs
 	options = !strip
 	options = !debug
-	options = staticlibs

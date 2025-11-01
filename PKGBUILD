@@ -3,7 +3,7 @@
 pkgbase=libfronius
 pkgname=('libfronius' 'libfronius-docs')
 pkgver=1.0.6
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'aarch64')
 url="https://github.com/ahpohl/libfronius"
 license=('MIT')
@@ -26,7 +26,7 @@ package_libfronius() {
   pkgdesc="Library to access Fronius inverters"
   depends=('libmodbus')
   optdepends=('libfronius-docs: HTML documentation')
-  options=('strip' 'debug')
+  options=('strip' 'debug' 'staticlibs')
   
   cd "$srcdir/$pkgbase-$pkgver"
   cmake --install build --prefix "${pkgdir}/usr"
@@ -39,7 +39,7 @@ package_libfronius() {
 package_libfronius-docs() {
   pkgdesc="HTML documentation for ${pkgbase}"
   optdepends=('graphviz: diagrams for docs')
-  options=('!strip' '!debug' 'staticlibs')
+  options=('!strip' '!debug')
   arch=('any')
   
   cd "$srcdir/$pkgbase-$pkgver"
