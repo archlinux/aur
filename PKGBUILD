@@ -5,7 +5,7 @@
 
 pkgname=lidarr
 _pkgname=Lidarr
-pkgver=2.14.5.4836
+pkgver=3.0.1.4866
 pkgrel=1
 pkgdesc='Music collection manager for newsgroup and torrent users.'
 arch=(x86_64 aarch64 armv7h)
@@ -13,12 +13,12 @@ url='https://lidarr.audio'
 license=('GPL-3.0-or-later')
 groups=(servarr)
 depends=(
-  aspnet-runtime-6.0
+  aspnet-runtime-8.0
   gcc-libs
   glibc
   sqlite
 )
-makedepends=(dotnet-sdk-6.0 yarn)
+makedepends=(dotnet-sdk-8.0 yarn)
 optdepends=(
   'postgresql: postgresql database'
   'sabnzbd: usenet downloader'
@@ -45,7 +45,7 @@ source=(
   lidarr.tmpfiles
   package_info
 )
-sha256sums=('c8e8cb72ccfdca038eaeb8830584915fecf3748a8b41fffeafaa80547149ee0d'
+sha256sums=('1f396cb5b7d800083bbfc0b90df617ae18e9bed1585c7bfaaa334ba3e1ec3a54'
             '48f4cc5040b1a51e624f5be4977078b77bf7f87b9c1fb7fa34e844da4c831401'
             '85098d47734e8087480f8a29eafec50faa453487221ef01173888155d2b06e42'
             'd71e37213ac65722e42f6f2c5772d4515c2d28a77b9f7608dc05c787d86ebaa5'
@@ -57,7 +57,7 @@ case ${CARCH} in
   armv7h) _CARCH='arm' ;;
 esac
 
-_framework='net6.0'
+_framework='net8.0'
 _runtime="linux-${_CARCH}"
 _output="_output"
 _artifacts="${_output}/${_framework}/${_runtime}/publish"
@@ -66,10 +66,15 @@ _branch='master'
 prepare() {
   cd "${_pkgname}-${pkgver}"
 
-  # Prepare backend
+  # Remove upstream dotnet version
+  rm global.json
+
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
   export DOTNET_NOLOGO=1
   export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
+  dotnet new globaljson --sdk-version 8.0.112 --force
+
+  # Prepare backend
   dotnet restore "src/${_pkgname}.sln" \
     --runtime "${_runtime}" \
     --locked-mode
