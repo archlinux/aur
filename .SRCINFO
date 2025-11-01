@@ -1,0 +1,19 @@
+pkgbase = pvw-bin
+	pkgdesc = A simple and intuitive TUI to monitor the ports used on a computer
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/allyring/pvw
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = pvw
+	conflicts = pvw
+	source_x86_64 = pvw-x86_64-2.0.0.tar.gz::https://github.com/allyring/pvw/releases/download/v2.0.0/pvw_2.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = af778f44a47c1bba7496edbc3eac489c43431a740e7065cbfaa60c06726163c1
+	source_i686 = pvw-i686-2.0.0.tar.gz::https://github.com/allyring/pvw/releases/download/v2.0.0/pvw_2.0.0_linux_386.tar.gz
+	sha256sums_i686 = 899cd0ff1e191950db32ff5930403fc3165c77763bc87faf73536a7cf317730f
+	source_aarch64 = pvw-aarch64-2.0.0.tar.gz::https://github.com/allyring/pvw/releases/download/v2.0.0/pvw_2.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = bb5e02dd418a7c37dd649dba6d5d18b7ca72dfd3b1bd1eb85cd43ebb4e40c0c0
+
+pkgname = pvw-bin

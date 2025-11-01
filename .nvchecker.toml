@@ -1,0 +1,5 @@
+[pvw-bin]
+source = "github"
+github = "allyring/pvw"
+use_latest_release = true
+prefix = "v"
