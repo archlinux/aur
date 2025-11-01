@@ -12,5 +12,3 @@ post_upgrade() {
 post_remove() {
   sed -i -e '/librl_custom_function.so/d' /etc/ld.so.preload
 }
-
-
