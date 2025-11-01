@@ -1,0 +1,20 @@
+pkgbase = roumon-bin
+	pkgdesc = Universal goroutine monitor using pprof and termui
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/becheran/roumon
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = roumon
+	conflicts = roumon
+	source_x86_64 = roumon-x86_64-1.2.0.tar.gz::https://github.com/becheran/roumon/releases/download/v1.2.0/roumon_1.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 346505bd7b3750d39ae5c085aa7b17f29ccc70930a5424e5f1df287802050acf
+	source_i686 = roumon-i686-1.2.0.tar.gz::https://github.com/becheran/roumon/releases/download/v1.2.0/roumon_1.2.0_linux_386.tar.gz
+	sha256sums_i686 = a2a3defc0453f9db3f89fa1f24e9fe280d9f7d2802fb479a1b6a863e9f0936cc
+	source_aarch64 = roumon-aarch64-1.2.0.tar.gz::https://github.com/becheran/roumon/releases/download/v1.2.0/roumon_1.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7bcf9c82b4a50de820231c194978fba6939998b25b3069f8800cc4340a679de6
+
+pkgname = roumon-bin

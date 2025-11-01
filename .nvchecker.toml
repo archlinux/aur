@@ -1,0 +1,5 @@
+[roumon-bin]
+source = "github"
+github = "becheran/roumon"
+use_latest_release = true
+prefix = "v"
