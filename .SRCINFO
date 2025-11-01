@@ -1,13 +1,15 @@
 pkgbase = gliv
 	pkgdesc = OpenGL image viewer
 	pkgver = 1.9.7
-	pkgrel = 6
+	pkgrel = 7
 	url = http://guichaz.free.fr/gliv/
 	arch = x86_64
 	arch = i686
 	license = GPL2
 	depends = gtkglext
 	source = http://guichaz.free.fr/gliv/files/gliv-1.9.7.tar.bz2
+	source = patch2025.diff
 	sha1sums = b040a08ac81d17e7dd872d67662378f4f95f7820
+	sha1sums = 726978e6c8372503168c70a5b7a383f5dce3625a
 
 pkgname = gliv

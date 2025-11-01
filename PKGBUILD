@@ -8,14 +8,23 @@
 
 pkgname=gliv
 pkgver=1.9.7
-pkgrel=6
+pkgrel=7
 pkgdesc='OpenGL image viewer'
 arch=(x86_64 i686)
 url='http://guichaz.free.fr/gliv/'
 license=('GPL2')
 depends=('gtkglext')
-source=("http://guichaz.free.fr/gliv/files/$pkgname-$pkgver.tar.bz2")
-sha1sums=('b040a08ac81d17e7dd872d67662378f4f95f7820')
+source=(
+	"http://guichaz.free.fr/gliv/files/$pkgname-$pkgver.tar.bz2"
+	"patch2025.diff"
+)
+sha1sums=('b040a08ac81d17e7dd872d67662378f4f95f7820'
+          '726978e6c8372503168c70a5b7a383f5dce3625a')
+
+prepare() {
+  cd $pkgname-$pkgver
+  patch -d ./src -Np1 -i "${srcdir}/patch2025.diff"
+}
 
 build() {
   cd $pkgname-$pkgver

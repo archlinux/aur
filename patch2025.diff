@@ -1,0 +1,34 @@
+diff --git a/options.c b/options.c
+index 298c83f..4eac2a2 100644
+--- a/options.c
++++ b/options.c
+@@ -178,9 +178,9 @@ static void add_spin_button(GtkWidget * button, gint * value)
+ 
+ /* GtkCheckButton */
+ 
+-static gboolean toggled_button(GtkToggleButton * button, gboolean * bool)
++static gboolean toggled_button(GtkToggleButton * button, gboolean * bool_value)
+ {
+-    *bool = gtk_toggle_button_get_active(button);
++    *bool_value = gtk_toggle_button_get_active(button);
+     return TRUE;
+ }
+ 
+diff --git a/rcfile.c b/rcfile.c
+index 6fd683e..c0d77d3 100644
+--- a/rcfile.c
++++ b/rcfile.c
+@@ -223,10 +223,10 @@ static void process_line(const gchar * line)
+             /* Option found. */
+ 
+             if (opt->is_bool) {
+-                gboolean *bool;
++                gboolean *bool_option;
+ 
+-                bool = (gboolean *) opt->option;
+-                *bool = g_strcasecmp(res[1], "true") ? FALSE : TRUE;
++                bool_option = (gboolean *) opt->option;
++                *bool_option = g_strcasecmp(res[1], "true") ? FALSE : TRUE;
+             } else {
+                 /* opt->is_bool == FALSE */
+                 gint *value;
