@@ -1,6 +1,6 @@
 pkgname=libfile
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="File library for checking types and architecture."
 arch=('x86_64')
 url="https://github.com/coolguy-09/libfile"
@@ -14,7 +14,7 @@ options=('strip' 'staticlibs')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   chmod +x configure
-  ./configure ARCH=arch
+  ./configure ARCH=x86_64
   make
 }
 
