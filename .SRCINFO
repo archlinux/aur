@@ -1,7 +1,7 @@
 pkgbase = archium
 	pkgdesc = Fast & Easy Package Management for Arch Linux
-	pkgver = 1.9.1
-	pkgrel = 2
+	pkgver = 1.9.2
+	pkgrel = 1
 	url = https://github.com/keircn/archium
 	arch = x86_64
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = archium
 	makedepends = make
 	depends = git
 	depends = readline
-	source = git+https://github.com/keircn/archium.git#tag=v1.9.1
-	sha256sums = a7ee9ab64b9c8f8a0a6b15fd9ff568e657d2210e17f17da0e801a338fb7510ff
+	source = git+https://github.com/keircn/archium.git#tag=v1.9.2
+	sha256sums = 816d2118aa4cba96b05f47be48839a7cbde8071e30cad990912652638c03cf57
 
 pkgname = archium
