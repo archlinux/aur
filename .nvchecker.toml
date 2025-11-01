@@ -1,0 +1,5 @@
+[andcli-bin]
+source = "github"
+github = "tjblackheart/andcli"
+use_latest_release = true
+prefix = "v"
