@@ -3,13 +3,13 @@ pkgver=1.2.7
 pkgrel=1
 pkgdesc="TypeScript/Bun port of arRPC - Open Discord RPC server"
 arch=('any')
-url="https://heliopolis.live/creations/arrpc-bun"
+url="https://github.com/Creationsss/arrpc-bun"
 license=('MIT')
 depends=('bun-bin')
 provides=('arrpc-bun')
 conflicts=('arrpc-bun')
-source=("arrpc-bun-${pkgver}.tar.gz::https://heliopolis.live/creations/arrpc-bun/-/archive/v${pkgver}/arrpc-bun-v${pkgver}.tar.gz")
-sha256sums=('69c577a26473ac25599da0ec5ec444159f1ba0f59a839a6854a482f43bb935ff')
+source=("arrpc-bun-${pkgver}.tar.gz::https://github.com/Creationsss/arrpc-bun/archive/v${pkgver}.tar.gz")
+sha256sums=('fe9c6f39b26bfd5db333a95658ebf3922c1135abe2bdf4f2bde73eddf9ac17f7')
 
 package() {
     cd "${srcdir}/arrpc-bun-v${pkgver}"
