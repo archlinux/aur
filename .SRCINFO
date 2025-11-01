@@ -1,0 +1,23 @@
+pkgbase = zmate-bin
+	pkgdesc = Instant terminal sharing using Zellij and SSH
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/ziinaio/zmate
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = zmate
+	conflicts = zmate
+	source = LICENSE-0.3.1::https://raw.githubusercontent.com/ziinaio/zmate/v0.3.1/LICENSE.md
+	source = README-0.3.1.md::https://raw.githubusercontent.com/ziinaio/zmate/v0.3.1/README.md
+	source = SECURITY-0.3.1.md::https://raw.githubusercontent.com/ziinaio/zmate/v0.3.1/SECURITY.md
+	sha256sums = 4a6e49b536b97ff4c90017dc3879b51595a9e31d44ae68a1738b32f17a81a6df
+	sha256sums = 2c970705a635bdb075bff88fff48555148d69f2963eb326d3ec765ac8b1bea75
+	sha256sums = 4cb473572e710dab2df9d520b329b29734cf12cd90f7e192aa2290c523d33cc0
+	source_x86_64 = zmate-x86_64-0.3.1::https://github.com/ziinaio/zmate/releases/download/v0.3.1/zmate-linux-amd64
+	sha256sums_x86_64 = 224ccf11a83a11f1e1437d6bb06e2faa52a73658a6a73e19773c0c801d24b4ff
+	source_aarch64 = zmate-aarch64-0.3.1::https://github.com/ziinaio/zmate/releases/download/v0.3.1/zmate-linux-arm64
+	sha256sums_aarch64 = e57357ea9f8667099dda6c1d1ded0e6e8ecc435f6da47925be8fa89f5e580e96
+
+pkgname = zmate-bin

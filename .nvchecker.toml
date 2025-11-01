@@ -1,0 +1,5 @@
+[zmate-bin]
+source = "github"
+github = "ziinaio/zmate"
+use_latest_release = true
+prefix = "v"
