@@ -4,7 +4,7 @@
 pkgname=rl_custom_function-git
 _pkgname=${pkgname%-git}
 pkgver=r30.398f757
-pkgrel=1
+pkgrel=2
 pkgdesc="Enable to inject custom functions into any readline applications"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/lincheney/rl_custom_function"
