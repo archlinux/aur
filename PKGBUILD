@@ -1,10 +1,9 @@
-# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
 # Contributor: morpheusthewhite <zffromGerace@hotmail.it>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=ddd
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical front-end for command-line debuggers such as GDB, JDB, pydb, perl debugger..."
 arch=('x86_64')
 url="http://www.gnu.org/software/ddd/"
