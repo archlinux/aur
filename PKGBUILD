@@ -2,8 +2,8 @@
 
 pkgbase=libfronius
 pkgname=('libfronius' 'libfronius-docs')
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.6
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/ahpohl/libfronius"
 license=('MIT')
