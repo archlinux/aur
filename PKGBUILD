@@ -4,7 +4,7 @@
 
 pkgname=matugen-bin
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A material you color generation tool with templates"
 url="https://github.com/InioX/matugen"
 license=("GPL-2.0")
@@ -12,7 +12,7 @@ arch=("x86_64")
 provides=("matugen")
 conflicts=("matugen")
 source=("https://github.com/InioX/matugen/releases/download/v$pkgver/matugen-$pkgver-x86_64.tar.gz")
-sha256sums=("76c7ed2cff39b28edb1cf6af5fe73ef2827d92c8de40cc4f4c6d87569be0e1bb")
+sha256sums=("60d5014e4d4fdedc494d48f4136d338319ea34b37c254b27678e1e0fe994e8d5")
 
 package() {
     install -Dm755 matugen -t "$pkgdir/usr/bin"

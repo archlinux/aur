@@ -1,13 +1,13 @@
 pkgbase = matugen-bin
 	pkgdesc = A material you color generation tool with templates
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/InioX/matugen
 	arch = x86_64
 	license = GPL-2.0
 	provides = matugen
 	conflicts = matugen
 	source = https://github.com/InioX/matugen/releases/download/v3.0.0/matugen-3.0.0-x86_64.tar.gz
-	sha256sums = 76c7ed2cff39b28edb1cf6af5fe73ef2827d92c8de40cc4f4c6d87569be0e1bb
+	sha256sums = 60d5014e4d4fdedc494d48f4136d338319ea34b37c254b27678e1e0fe994e8d5
 
 pkgname = matugen-bin
