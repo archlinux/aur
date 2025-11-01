@@ -4,7 +4,7 @@ pkgname=godsvg-bin
 _pkgbase=godsvg
 _pkgname=GodSVG
 
-_pkgver=1.0-alpha11
+_pkgver=1.0-alpha12
 pkgver=${_pkgver//-/_}
 pkgrel=1
 
@@ -35,7 +35,7 @@ source=(
     "godsvg.svg::${_url}/raw/refs/heads/main/assets/logos/icon.svg"
     "godsvg.desktop::${_url}/raw/main/assets/GodSVG.desktop"
 )
-sha256sums=('1a22ef7e9d931bdd07193da0f794a55adc8e045f655b09b97dbcfa23715bf970'
+sha256sums=('f801a759d6c025689004c43c1a36cfadc1864d1d4a2e947ab30672ba21d3a5d2'
             'a2e1a9795671794be3a25bd921a16f0fa9819ede1ead54a13da6edb34bfc0ee1'
             'c809390a25c9a922a1f122d48492dac8ed32c288df827c5605e86358d84cd1c1'
             '856be8b9a058cb35e1a75d50408d21498b127d68d47836787336cad740593f18'
