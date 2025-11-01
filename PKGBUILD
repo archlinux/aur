@@ -2,13 +2,13 @@
 
 pkgname=ymir-emu
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Sega Saturn Emulator"
 arch=("x86_64")
 url="https://github.com/StrikerX3/Ymir"
 license=("GPL3")
 depends=("sdl3")
-makedepends=("cmake" "clang" "git" "ninja" "python-jinja")
+makedepends=("cmake" "clang" "git" "ninja" "python-jinja" "unzip" "zip")
 provides=($pkgname)
 conflicts=($pkgname)
 source=(
