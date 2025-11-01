@@ -1,6 +1,6 @@
 pkgbase = ik-llama.cpp-vulkan
 	pkgdesc = llama.cpp fork with additional SOTA quants and improved performance (Vulkan Backend)
-	pkgver = r3940.14760aaf
+	pkgver = r3944.58922c23
 	pkgrel = 1
 	url = https://github.com/ikawrakow/ik_llama.cpp
 	arch = x86_64
