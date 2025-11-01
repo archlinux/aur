@@ -4,7 +4,7 @@ pkgname=gitfourchette-bin
 _pkgname=gitfourchette
 
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 
 pkgdesc="The comfortable Qt-based Git GUI"
@@ -18,7 +18,6 @@ depends=(
     python-pygments
     python-pyqt6
 )
-makedepends=("unzip")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
@@ -34,12 +33,6 @@ sha256sums_aarch64=(
 sha256sums_x86_64=(
     d67ca3faf5913feb141e5506360535cf333b57f47562baeeecd622991be8f508
 )
-
-noextract=("${_pkgname}-${pkgver}.zip")
-
-prepare() {
-	unzip -qo "${_pkgname}-${pkgver}.zip"
-}
 
 package(){
     ./GitFourchette-${pkgver}-${arch}.AppImage --appimage-extract
@@ -62,5 +55,3 @@ if __name__ == '__main__':
 EOF
     install -Dm755 ${_pkgname}.py "$pkgdir"/usr/bin/${_pkgname}
 }
-
-# shellcheck source=/usr/bin/makepkg
