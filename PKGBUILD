@@ -4,7 +4,7 @@ pkgname=undertalemodtool-bin
 _pkgname=undertalemodtool
 
 pkgver=0.8.3.0
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 
 pkgdesc="The most complete tool for modding, decompiling and unpacking Undertale (and other GameMaker games!)"
@@ -12,7 +12,6 @@ url="https://github.com/UnderminersTeam/UndertaleModTool"
 license=("GPL-3.0")
 
 depends=("wine")
-makedepends=("unzip")
 provides=("$_pkgname")
 options=("!strip" "!debug")
 
@@ -31,13 +30,12 @@ sha256sums=(
 	'SKIP'
 	)
 
-
 noextract=("${_pkgname}-${pkgver}.zip")
 
 prepare() {
-	unzip -qo "${_pkgname}-${pkgver}.zip" -d "${_pkgname}-${pkgver}"
+    mkdir -p "${_pkgname}-${pkgver}"
+    bsdtar -xf "${_pkgname}-${pkgver}.zip" -C "${_pkgname}-${pkgver}"
 }
-
 
 package(){
 	install -d "$pkgdir"/opt

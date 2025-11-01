@@ -1,11 +1,10 @@
 pkgbase = undertalemodtool-bin
 	pkgdesc = The most complete tool for modding, decompiling and unpacking Undertale (and other GameMaker games!)
 	pkgver = 0.8.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/UnderminersTeam/UndertaleModTool
 	arch = x86_64
 	license = GPL-3.0
-	makedepends = unzip
 	depends = wine
 	provides = undertalemodtool
 	noextract = undertalemodtool-0.8.3.0.zip
