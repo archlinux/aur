@@ -1,0 +1,14 @@
+pkgbase = arrpc-bun-bin
+	pkgdesc = TypeScript/Bun port of arRPC - Open Discord RPC server
+	pkgver = 1.2.7
+	pkgrel = 1
+	url = https://heliopolis.live/creations/arrpc-bun
+	arch = any
+	license = MIT
+	depends = bun-bin
+	provides = arrpc-bun
+	conflicts = arrpc-bun
+	source = arrpc-bun-1.2.7.tar.gz::https://heliopolis.live/creations/arrpc-bun/-/archive/v1.2.7/arrpc-bun-v1.2.7.tar.gz
+	sha256sums = SKIP
+
+pkgname = arrpc-bun-bin
