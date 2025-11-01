@@ -1,0 +1,21 @@
+pkgbase = wallpaper-generator-next
+	pkgdesc = 壁纸生成器
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = http://www.sr-studio.cn
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = python>=3.12
+	depends = tk
+	source = https://github.com/SRInternet-Studio/Wallpaper-generator/archive/refs/tags/v5.0.1.zip
+	source = https://github.com/SRON-org/APICORE_Python/archive/refs/heads/main.zip
+	source = Pre-Use.zip
+	source = requirements-linux.txt
+	source = wallpaper-generator-next.desktop
+	sha256sums = SKIP
+	sha256sums = 109ef954864f7796918be28e409644c427a25bee060a0c9c426a36ba44165036
+	sha256sums = 6384e3c64ef38190129c55e415dc4f02f375e89e61bcaf61db3640d6934749a1
+	sha256sums = 4f025bced3d1dac244c4c3c5721338f2c5797397d590ea36260746b1dcf03b01
+	sha256sums = a92fef2d9a2421532f83cae2af7a3bf21e4108fd5ee5b509749494c92cce7481
+
+pkgname = wallpaper-generator-next
