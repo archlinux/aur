@@ -9,12 +9,12 @@ _buildid_i686=20251009122045
 _buildid_aarch64=20251009122125
 _date=2025.10.10
 pkgver=52.9.${_date}
-pkgrel=1
+pkgrel=2
 pkgdesc="A XUL-based web-browser demonstrating the Unified XUL Platform (UXP)."
 url="https://www.basilisk-browser.org"
 arch=('x86_64' 'aarch64' 'i686')
 license=('GPL')
-depends=('gtk2' 'gtk3' 'dbus-glib' 'libxt' 'mime-types' 'nss' 'alsa-lib' 'icu')
+depends=('gtk3' 'dbus-glib' 'libxt' 'mime-types' 'nss' 'alsa-lib' 'icu')
 optdepends=('hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification'
             'ffmpeg: record, convert, and stream audio and video')

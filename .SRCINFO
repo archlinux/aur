@@ -1,14 +1,13 @@
 pkgbase = basilisk-bin
 	pkgdesc = A XUL-based web-browser demonstrating the Unified XUL Platform (UXP).
 	pkgver = 52.9.2025.10.10
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.basilisk-browser.org
 	arch = x86_64
 	arch = aarch64
 	arch = i686
 	license = GPL
-	depends = gtk2
 	depends = gtk3
 	depends = dbus-glib
 	depends = libxt
