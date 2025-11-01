@@ -2,12 +2,12 @@
 
 pkgname=overseerr
 pkgver=1.34.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Request management and media discovery tool for the Plex ecosystem'
 arch=('x86_64')
 url='https://github.com/sct/overseerr'
 license=('MIT')
-depends=('nodejs')
+depends=('nodejs-lts-krypton')
 makedepends=('yarn')
 options=('!strip')
 backup=('etc/conf.d/overseerr')
