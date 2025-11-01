@@ -3,14 +3,14 @@
 
 pkgname=proton-mail-git
 _name=${pkgname%-git}
-pkgver=r49800.69d7bdb
+pkgver=r50739.4d9be15
 pkgrel=1
 pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
 arch=('any')
 url='https://proton.me/mail'
 license=('GPL-3.0-or-later')
-depends=('bash' 'electron35' 'hicolor-icon-theme')
-makedepends=('git' 'nodejs-lts' 'yarn')
+depends=('bash' 'electron36' 'hicolor-icon-theme')
+makedepends=('git' 'nodejs-lts-jod' 'yarn')
 provides=("$_name")
 conflicts=("$_name")
 source=("ProtonWebClients::git+https://github.com/ProtonMail/WebClients.git"
@@ -18,7 +18,7 @@ source=("ProtonWebClients::git+https://github.com/ProtonMail/WebClients.git"
         'proton-mail.sh')
 b2sums=('SKIP'
         'dbaec179f629964aac699677b09219e0494426c624d00896c18177263e38dac7fb0383702d9cf22fc617a77809d826d5a8a2348f4a31a6ec069ce642af3671be'
-        '21605b0d31062d2b355e8422f319521a775efd41ef34571a114fd7f9f1ba07b39b4a27998fd11d2039baa7ba0650b804dfd41e0d591ead622fce68243dca1d88')
+        'd71722fd78770b2025464fcde201b4ab18e58afc269105ea389a6d4665a6a0801adcece53507004c56722ba8954ee7fd6b5de3eec3b099c6cc67e206f14cf4aa')
 
 pkgver() {
     cd ProtonWebClients
