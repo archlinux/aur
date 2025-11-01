@@ -8,8 +8,10 @@ license=('MIT')
 depends=('bun-bin')
 makedepends=('git')
 conflicts=('arrpc-bun-bin')
-source=("git+https://github.com/Creationsss/arrpc-bun.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/Creationsss/arrpc-bun.git"
+        "arrpc-bun.service")
+sha256sums=('SKIP'
+            'f1e20a82f8cb2fa8d5f007511ca78eed8eda44dbe1cef596afb2ec3bf03c66e9')
 
 pkgver() {
     cd "${srcdir}/arrpc-bun"
@@ -39,4 +41,6 @@ package() {
 exec bun run /usr/lib/arrpc-bun/src/index.ts "$@"
 EOF
     chmod +x "${pkgdir}/usr/bin/arrpc-bun"
+
+    install -Dm644 "${srcdir}/arrpc-bun.service" "${pkgdir}/usr/lib/systemd/user/arrpc-bun.service"
 }

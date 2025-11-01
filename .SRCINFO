@@ -9,6 +9,8 @@ pkgbase = arrpc-bun
 	depends = bun-bin
 	conflicts = arrpc-bun-bin
 	source = git+https://github.com/Creationsss/arrpc-bun.git
+	source = arrpc-bun.service
 	sha256sums = SKIP
+	sha256sums = f1e20a82f8cb2fa8d5f007511ca78eed8eda44dbe1cef596afb2ec3bf03c66e9
 
 pkgname = arrpc-bun
