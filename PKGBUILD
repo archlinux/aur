@@ -1,7 +1,7 @@
 # Maintainer: Sylvain F <thektalog@free.fr>
 # Maintainer : Florent H. CARRÉ <colundrum@gmail.com>
 pkgname=qarte
-pkgver=5.13.0
+pkgver=5.14.0
 pkgrel=1
 pkgdesc='Allow you to browse into the archive of arte+7 & arteLiveWeb sites and to record your prefered videos.'
 url='https://launchpad.net/qarte'
@@ -10,7 +10,7 @@ license=('GPL3')
 source=(http://www.oqapy.eu/releases/${pkgname}-${pkgver}.tar.gz)
 depends=('qt5-translations' 'python-pyqt5' 'qt5-svg' 'qt5-multimedia' 'python-m3u8')
 optdepends=('cronie: for differed download')
-sha256sums=('f3ac2739fdc6a78f8e7adcd828fb3148c6a71451dfb7bd140c2b0e875433a5ba')
+sha256sums=('efcb829da9c39380d8afdfdefa4d78d91f231468774782cc98d4e010f9a3a37e')
 
 package() {
   cd $pkgname-$pkgver
