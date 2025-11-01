@@ -1,0 +1,28 @@
+pkgbase = zl-equalizer
+	pkgdesc = Parametric, dynamic equalizer plugin by ZL Audio
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://zl-audio.github.io/plugins/zlequalizer/
+	arch = x86_64
+	license = AGPL-3.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = alsa-lib
+	depends = libx11
+	depends = libxinerama
+	depends = libxext
+	depends = freetype2
+	depends = fontconfig
+	depends = webkit2gtk
+	depends = glu
+	source = git+https://github.com/ZL-Audio/ZLEqualizer#tag=0.6.2
+	source = git+https://github.com/ZL-Audio/JUCE#tag=b251f82
+	source = git+https://github.com/ZL-Audio/kfr#tag=9a35250
+	source = git+https://github.com/ZL-Audio/nlopt#tag=ab0fd1c
+	sha256sums = 2f5e8a6cae87515b3f01f4dd7be60ee94f2ca3e87306964aad616a50114c8daf
+	sha256sums = 01016c0970367a0da9f4bf3b9191334dbdbf8902e2acb6f47be0ede2acf598d7
+	sha256sums = 7aaa927395bce6845b844e775786859e79b2e41dd857a0adee923b93dd183213
+	sha256sums = b93b67f7a7533fc22b07f2bade668c169435db98a18a1cf39ed497cf8db78f33
+
+pkgname = zl-equalizer
