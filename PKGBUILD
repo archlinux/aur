@@ -1,6 +1,6 @@
 # Maintainer: PanNNN <cool.panjianhao@gmail.com>
 pkgname=frame0
-pkgver=1.0.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A Balsamiq-alternative wireframming tool for modern apps"
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
   'pulseaudio'
 )
 source=("https://files.frame0.app/releases/linux/x64/frame0_${pkgver}_amd64.deb")
-sha256sums=('045910d3be7d5430f1f17dda2dedee1a04036c64e52a7209ae9cd6eef3ca33ad')
+sha256sums=('1fd9cbad0ccecfb0bd839dd15408a6343e0ad01168f983cca57d9d74b14896ce')
 
 package() {
   cd "${srcdir}"
