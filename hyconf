@@ -1,0 +1,28 @@
+#!/bin/bash
+
+config="$HOME/.hyconf"
+
+if [[ ! -f "$config" || -z "$(cat "$config")" ]]; then
+    while true; do
+        read -p "Enter your preferred editor command (e.g., nano, vim, code): " editor_cmd
+        if [[ -n "$editor_cmd" ]]; then
+            echo "$editor_cmd" > "$config"
+            break
+        else
+            echo "Editor command cannot be empty. Press Ctrl+C to cancel or enter a valid editor command."
+        fi
+    done
+fi
+
+muh_editor=$(cat "$config")
+
+file=$(find $HOME/.config/hypr \( -name "*.conf" -o -name "*.yaml" -o -name "*.yml" -o -name "*.toml" \) -type f | sed "s|$HOME/.config/hypr/||" | while read -r path; do
+    dir=$(dirname "$path")
+    file=$(basename "$path")
+    echo -e "\033[1;34m${dir}/\033[0m\033[1;32m${file}\033[0m"
+done | fzf --height 40% --reverse --no-info --ansi)
+
+if [[ -n "$file" ]]; then
+    clean_file=$(echo -e "$file" | sed 's/\x1b\[[0-9;]*m//g')
+    $muh_editor "$HOME/.config/hypr/$clean_file"
+fi
