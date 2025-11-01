@@ -1,0 +1,4 @@
+[yr-bin]
+source = "regex"
+url = "https://git.sr.ht/~timharek/yr"
+regex = "<dt>v([\\d\\.]*)</dt>"

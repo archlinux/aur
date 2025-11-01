@@ -1,0 +1,17 @@
+pkgbase = yr-bin
+	pkgdesc = Get the weather delivered to your command-line
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://git.sr.ht/~timharek/yr
+	arch = x86_64
+	license = MIT
+	provides = yr
+	conflicts = yr
+	source = LICENSE-1.0.0::https://git.sr.ht/~timharek/yr/blob/v1.0.0/LICENSE.md
+	source = README-1.0.0.md::https://git.sr.ht/~timharek/yr/blob/v1.0.0/README.md
+	sha256sums = ae722945d7ed59cedb32ceca21ce674d4db89e362a182fe5f745eb52648c37b7
+	sha256sums = d35580bbb62d458031047617ac9d7d94a0276df20b4ace5e97b2791fee812748
+	source_x86_64 = yr-x86_64-1.0.0.tar.gz::https://git.sr.ht/~timharek/yr/refs/download/v1.0.0/yr-v1.0.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = b0b0bef81ab4bdbb0b614c0c859aaaf75b671e31aefb73737f9ed5cbc451b306
+
+pkgname = yr-bin
