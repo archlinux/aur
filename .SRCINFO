@@ -7,11 +7,11 @@ pkgbase = garuda-rani-git
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = base-devel
-	makedepends = nodejs-lts-jod
+	makedepends = nodejs-lts-krypton
 	makedepends = pnpm
 	depends = bash
 	depends = curl
-	depends = electron36
+	depends = electron38
 	depends = pacman-contrib
 	depends = garuda-libs>=1.6.0
 	optdepends = paru: show pending AUR updates

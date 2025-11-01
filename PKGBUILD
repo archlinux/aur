@@ -10,7 +10,7 @@ arch=('any')
 url="https://gitlab.com/garuda-linux/applications/rani"
 license=('GPL-3.0-or-later')
 depends=('bash' 'curl' "electron${_electronversion}" 'pacman-contrib' 'garuda-libs>=1.6.0')
-makedepends=('git' 'base-devel' 'nodejs-lts-jod' 'pnpm')
+makedepends=('git' 'base-devel' 'nodejs-lts-krypton' 'pnpm')
 optdepends=('paru: show pending AUR updates'
   'meld: compare pacdiff files via a GUI on GTK systems'
   'pace: manage Pacman repositories via a GUI'
