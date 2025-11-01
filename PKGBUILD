@@ -2,7 +2,7 @@
 
 _pkgname=thunar
 pkgname=${_pkgname}-devel
-pkgver=4.21.2
+pkgver=4.21.3
 pkgrel=1
 pkgdesc='File manager for Xfce (development version)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('GPL-2.0-or-later')
 groups=('xfce4-devel')
 url='https://thunar.xfce.org'
 depends=('desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libgudev'
-         'libgexiv2' 'libnotify' 'libpng' 'libxfce4ui>=4.21.0' 'libxfce4util')
+         'libgexiv2' 'libnotify' 'libpng' 'libxfce4ui>=4.21.2' 'libxfce4util')
 makedepends=('meson' 'xfce4-dev-tools' 'xfce4-panel' 'gtk-doc' 'gobject-introspection')
 optdepends=('gvfs: trash support, mounting with udisks, and remote filesystems'
             'xfce4-panel: trash applet'
@@ -22,7 +22,7 @@ optdepends=('gvfs: trash support, mounting with udisks, and remote filesystems'
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('8711e630e667ae8ed892976d6cc0f5825efe5c16668efb2ed724626910207598')
+sha256sums=('77e1681e073891e80025e6f915fe21ab02eff45bf111871667b8b8498eb45d37')
 
 build() {
   local meson_options=(
