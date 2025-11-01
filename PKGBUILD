@@ -1,7 +1,7 @@
 # Maintainer : imnyang <me@imnya.ng>
 
 pkgname='dsync'
-pkgver=25.10.3
+pkgver=25.11.1
 pkgrel=3
 pkgdesc='A tool that makes it easy to mirror Linux repositories.'
 arch=('x86_64')

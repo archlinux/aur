@@ -1,6 +1,6 @@
 pkgbase = dsync
 	pkgdesc = A tool that makes it easy to mirror Linux repositories.
-	pkgver = 25.10.3
+	pkgver = 25.11.1
 	pkgrel = 3
 	url = https://docs.krfoss.org/rokfoss/dsync
 	arch = x86_64
