@@ -3,7 +3,7 @@
 _pkgname=wyoming-openwakeword
 pkgname=python-$_pkgname
 pkgdesc="Wyoming Server for OpenWakeWord"
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 arch=(any)
 url="https://github.com/rhasspy/wyoming-openwakeword"
@@ -14,7 +14,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 source=(https://github.com/rhasspy/$_pkgname/archive/refs/tags/v$pkgver.tar.gz
         wyoming-openwakeword.conf
         wyoming-openwakeword.service)
-sha256sums=('ccfbedf3a34c3598ea3dd4be9148489936c4e7e2dd4bc684078ac60bc39772fe'
+sha256sums=('b8ccb3666d31bd55c6e8850bd60ac82225780570b11898354f48fc17f29c06a8'
             '522aa6621f5a69eb1e60b0be483859c3611f43fb071c310c3ab4a74a7e0637a7'
             '23b19f25f5d5d5d734f3fbd2fd16a794e907df8ba80d0612debe0c45515343b5')
 
