@@ -1,7 +1,7 @@
 
 # Maintainer: Avenge Media LLC <avengemediallc at gmail dot com>
 pkgname=dms-shell-bin
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=('x86_64' 'aarch64')
@@ -15,6 +15,7 @@ depends=(
 optdepends=(
     'matugen-bin: Dynamic wallpaper-based theming'
     'brightnessctl: Laptop display brightness control'
+    'dsearch-bin: Filesystem search'
     'wl-clipboard: Copy functionality for PIDs and other elements'
     'cliphist: Clipboard history functionality'
     'cava: Audio visualizer'
@@ -40,8 +41,8 @@ source_aarch64=(
     "dms-full-arm64-${pkgver}.tar.gz::$url/releases/download/v$pkgver/dms-full-arm64.tar.gz"
 )
 
-sha256sums_x86_64=('4fa416e266e0969280982581cfa57093cfff036a4b07be1214464fbff1e01bc8')
-sha256sums_aarch64=('c88fd885cde01707b5bccda0b1984d258bde9b275c58533c40b494d6751c2c23')
+sha256sums_x86_64=('080bc1121a09a37d30cf9e851be62e66ad0039cf209155bf318c27ab1b4b6643')
+sha256sums_aarch64=('c29c64ad349fad9bd40d0658d7e2699ef6317adf133ebdd4ba9f3822eda2a6bf')
 
 package() {
     install -Dm755 "${srcdir}/bin/dms-distropkg" "$pkgdir/usr/bin/dms"
