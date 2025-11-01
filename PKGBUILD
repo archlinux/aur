@@ -1,7 +1,7 @@
 # Maintainer: Hunter Davenport <mallow.boxes6w@icloud.com>
 _pkgname=boxunbox
 pkgname="${_pkgname}-git"
-pkgver=0.2.0.r1.gdcf2950
+pkgver=0.2.5.r10.g32ab434
 pkgrel=1
 pkgdesc='A Rust-based alternative to GNU stow'
 url="https://github.com/dablenparty/$_pkgname"
@@ -24,8 +24,21 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname" || exit 1
 
+  # first, fetch all dependencies
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+
+  # add commit hash to version string
+  local commitish
+  commitish="$(git describe --always --abbrev=7)"
+  sed -Ei "s/^version = \"(.+?)\"$/version = \"\1-g$commitish\"/" boxunbox/Cargo.toml
+
+  # update Cargo.lock with new version
+  local pkgid
+  pkgid="$(cargo pkgid --manifest-path boxunbox/Cargo.toml)"
+  pkgid="${pkgid%#*}"
+  # using the pkgid and --offline are imperative, otherwise all other deps will get updated too
+  cargo update --offline -w "$pkgid"
 }
 
 build() {

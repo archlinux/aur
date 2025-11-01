@@ -1,6 +1,6 @@
 pkgbase = boxunbox-git
 	pkgdesc = A Rust-based alternative to GNU stow
-	pkgver = 0.2.0.r1.gdcf2950
+	pkgver = 0.2.5.r10.g32ab434
 	pkgrel = 1
 	url = https://github.com/dablenparty/boxunbox
 	arch = x86_64
