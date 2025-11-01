@@ -1,6 +1,6 @@
 pkgname=libfile
 pkgver=1.0.2
-pkgrel=4
+pkgrel=1
 pkgdesc="File library for checking types and architecture."
 arch=('x86_64')
 url="https://github.com/coolguy-09/libfile"
@@ -9,6 +9,7 @@ depends=('glibc')
 makedepends=('gcc' 'make' 'binutils')
 source=("https://github.com/coolguy-09/libfile/archive/refs/tags/v$pkgver.tar.gz")
 md5sums=('SKIP')
+options=('!strip' '!staticlibs')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
