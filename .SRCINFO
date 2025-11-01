@@ -1,7 +1,7 @@
 pkgbase = libfile
 	pkgdesc = File library for checking types and architecture.
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coolguy-09/libfile
 	arch = x86_64
 	license = MIT
@@ -9,8 +9,8 @@ pkgbase = libfile
 	makedepends = make
 	makedepends = binutils
 	depends = glibc
-	options = !strip
-	options = !staticlibs
+	options = strip
+	options = staticlibs
 	source = https://github.com/coolguy-09/libfile/archive/refs/tags/v1.0.2.tar.gz
 	md5sums = SKIP
 
