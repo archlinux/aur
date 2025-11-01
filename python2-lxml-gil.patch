@@ -1,0 +1,191 @@
+diff --color -ur lxml-lxml-5.0.1-1.orig/src/lxml/includes/tree.pxd lxml-lxml-5.0.1-1/src/lxml/includes/tree.pxd
+--- lxml-lxml-5.0.1-1.orig/src/lxml/includes/tree.pxd	2024-01-08 15:12:04.000000000 -0500
++++ lxml-lxml-5.0.1-1/src/lxml/includes/tree.pxd	2024-01-25 06:08:38.566896953 -0500
+@@ -84,6 +84,36 @@
+     cdef int xmlDictOwns(xmlDict* dict, const_xmlChar* name)
+     cdef size_t xmlDictSize(xmlDict* dict)
+ 
++cdef extern from "libxml/xmlIO.h":
++    cdef int xmlOutputBufferWrite(xmlOutputBuffer* out,
++                                  int len, const_char* str) nogil
++    cdef int xmlOutputBufferWriteString(xmlOutputBuffer* out, const_char* str) nogil
++    cdef int xmlOutputBufferWriteEscape(xmlOutputBuffer* out,
++                                        const_xmlChar* str,
++                                        xmlCharEncodingOutputFunc escapefunc) nogil
++    cdef int xmlOutputBufferFlush(xmlOutputBuffer* out) nogil
++    cdef int xmlOutputBufferClose(xmlOutputBuffer* out) nogil
++
++    ctypedef int (*xmlInputReadCallback)(void* context,
++                                         char* buffer, int len) noexcept nogil
++    ctypedef int (*xmlInputCloseCallback)(void* context) noexcept nogil
++
++    ctypedef int (*xmlOutputWriteCallback)(void* context,
++                                           char* buffer, int len) noexcept
++    ctypedef int (*xmlOutputCloseCallback)(void* context) noexcept
++
++    cdef xmlOutputBuffer* xmlAllocOutputBuffer(
++        xmlCharEncodingHandler* encoder) nogil
++    cdef xmlOutputBuffer* xmlOutputBufferCreateIO(
++        xmlOutputWriteCallback iowrite,
++        xmlOutputCloseCallback ioclose,
++        void * ioctx, 
++        xmlCharEncodingHandler* encoder) nogil
++    cdef xmlOutputBuffer* xmlOutputBufferCreateFile(
++        stdio.FILE* file, xmlCharEncodingHandler* encoder) nogil
++    cdef xmlOutputBuffer* xmlOutputBufferCreateFilename(
++        char* URI, xmlCharEncodingHandler* encoder, int compression) nogil
++
+ cdef extern from "libxml/tree.h" nogil:
+     ctypedef struct xmlDoc
+     ctypedef struct xmlAttr
+@@ -318,7 +348,21 @@
+         int error
+ 
+     const_xmlChar* XML_XML_NAMESPACE
+-        
++
++    ctypedef xmlBuf* xmlBufPtr
++
++    ctypedef struct xmlParserInputBuffer:
++        void* context
++        xmlInputReadCallback readcallback
++        xmlInputCloseCallback closecallback
++        xmlCharEncodingHandler* encoder
++        xmlBufPtr buffer
++        xmlBufPtr raw
++        int compressed
++        int error
++        unsigned long rawconsumed
++    ctypedef xmlParserInputBuffer* xmlParserInputBufferPtr
++
+     cdef void xmlFreeDoc(xmlDoc* cur)
+     cdef void xmlFreeDtd(xmlDtd* cur)
+     cdef void xmlFreeNode(xmlNode* cur)
+@@ -414,36 +458,6 @@
+                                    xmlNotationTable* table)
+     cdef int xmlValidateNameValue(const_xmlChar* value)
+ 
+-cdef extern from "libxml/xmlIO.h":
+-    cdef int xmlOutputBufferWrite(xmlOutputBuffer* out,
+-                                  int len, const_char* str) nogil
+-    cdef int xmlOutputBufferWriteString(xmlOutputBuffer* out, const_char* str) nogil
+-    cdef int xmlOutputBufferWriteEscape(xmlOutputBuffer* out,
+-                                        const_xmlChar* str,
+-                                        xmlCharEncodingOutputFunc escapefunc) nogil
+-    cdef int xmlOutputBufferFlush(xmlOutputBuffer* out) nogil
+-    cdef int xmlOutputBufferClose(xmlOutputBuffer* out) nogil
+-
+-    ctypedef int (*xmlInputReadCallback)(void* context,
+-                                         char* buffer, int len) noexcept nogil
+-    ctypedef int (*xmlInputCloseCallback)(void* context) noexcept nogil
+-
+-    ctypedef int (*xmlOutputWriteCallback)(void* context,
+-                                           char* buffer, int len) noexcept
+-    ctypedef int (*xmlOutputCloseCallback)(void* context) noexcept
+-
+-    cdef xmlOutputBuffer* xmlAllocOutputBuffer(
+-        xmlCharEncodingHandler* encoder) nogil
+-    cdef xmlOutputBuffer* xmlOutputBufferCreateIO(
+-        xmlOutputWriteCallback iowrite,
+-        xmlOutputCloseCallback ioclose,
+-        void * ioctx, 
+-        xmlCharEncodingHandler* encoder) nogil
+-    cdef xmlOutputBuffer* xmlOutputBufferCreateFile(
+-        stdio.FILE* file, xmlCharEncodingHandler* encoder) nogil
+-    cdef xmlOutputBuffer* xmlOutputBufferCreateFilename(
+-        char* URI, xmlCharEncodingHandler* encoder, int compression) nogil
+-
+ cdef extern from "libxml/xmlsave.h" nogil:
+     ctypedef struct xmlSaveCtxt
+ 
+diff --color -ur lxml-lxml-5.0.1-1.orig/src/lxml/includes/xmlparser.pxd lxml-lxml-5.0.1-1/src/lxml/includes/xmlparser.pxd
+--- lxml-lxml-5.0.1-1.orig/src/lxml/includes/xmlparser.pxd	2024-01-08 15:12:04.000000000 -0500
++++ lxml-lxml-5.0.1-1/src/lxml/includes/xmlparser.pxd	2024-01-25 06:05:20.493852715 -0500
+@@ -2,11 +2,15 @@
+ 
+ from lxml.includes.tree cimport (
+     xmlDoc, xmlNode, xmlEntity, xmlDict, xmlDtd, xmlChar, const_xmlChar)
+-from lxml.includes.tree cimport xmlInputReadCallback, xmlInputCloseCallback
++from lxml.includes.tree cimport xmlInputReadCallback, xmlInputCloseCallback, xmlParserInputBufferPtr
+ from lxml.includes.xmlerror cimport xmlError, xmlStructuredErrorFunc, xmlErrorLevel
+ 
+ 
+ cdef extern from "libxml/parser.h" nogil:
++    ctypedef xmlEntity* xmlEntityPtr
++
++    ctypedef void (*xmlParserInputDeallocate)(xmlChar *str) noexcept
++
+     ctypedef void (*startElementNsSAX2Func)(void* ctx,
+                                             const_xmlChar* localname,
+                                             const_xmlChar* prefix,
+@@ -53,13 +57,23 @@
+ 
+ cdef extern from "libxml/tree.h" nogil:
+     ctypedef struct xmlParserInput:
+-        int line
+-        int col
+-        int length
++        xmlParserInputBufferPtr buf
++        const_char *filename
++        const_char *directory
+         const_xmlChar* base
+         const_xmlChar* cur
+         const_xmlChar* end
+-        const_char *filename
++        int length
++        int line
++        int col
++        unsigned int consumed
++        xmlParserInputDeallocate free
++        const_xmlChar* encoding
++        const_xmlChar* version
++        int flags
++        int id
++        unsigned long parentConsumed
++        xmlEntityPtr entity
+ 
+     ctypedef struct xmlParserInputBuffer:
+         void* context
+diff --color -ur lxml-lxml-5.0.1-1.orig/src/lxml/parser.pxi lxml-lxml-5.0.1-1/src/lxml/parser.pxi
+--- lxml-lxml-5.0.1-1.orig/src/lxml/parser.pxi	2024-01-08 15:12:04.000000000 -0500
++++ lxml-lxml-5.0.1-1/src/lxml/parser.pxi	2024-01-25 05:19:03.336730854 -0500
+@@ -1269,22 +1269,23 @@
+         if parser_input and parser_input.filename is NULL and c_ctxt.inputNr > 1:
+             parser_input = c_ctxt.inputTab[c_ctxt.inputNr - 2]
+ 
+-        c_error = xmlerror.xmlError(
+-            domain=xmlerror.xmlErrorDomain.XML_FROM_PARSER,
+-            code=xmlerror.xmlParserErrors.XML_ERR_EXT_ENTITY_STANDALONE,
+-            level=xmlerror.xmlErrorLevel.XML_ERR_FATAL,
+-            message=b"External entity resolution is disabled for security reasons "
+-                    b"when resolving '&%s;'. Use 'XMLParser(resolve_entities=True)' "
+-                    b"if you consider it safe to enable it.",
+-            file=parser_input.filename,
+-            node=entity,
+-            str1=<char*> name,
+-            str2=NULL,
+-            str3=NULL,
+-            line=parser_input.line if parser_input else 0,
+-            int1=0,
+-            int2=parser_input.col if parser_input else 0,
+-        )
++        with cython.gil:
++            c_error = xmlerror.xmlError(
++                domain=xmlerror.xmlErrorDomain.XML_FROM_PARSER,
++                code=xmlerror.xmlParserErrors.XML_ERR_EXT_ENTITY_STANDALONE,
++                level=xmlerror.xmlErrorLevel.XML_ERR_FATAL,
++                message=b"External entity resolution is disabled for security reasons "
++                        b"when resolving '&%s;'. Use 'XMLParser(resolve_entities=True)' "
++                        b"if you consider it safe to enable it.",
++                file=parser_input.filename,
++                node=entity,
++                str1=<char*> name,
++                str2=NULL,
++                str3=NULL,
++                line=parser_input.line if parser_input else 0,
++                int1=0,
++                int2=parser_input.col if parser_input else 0,
++            )
+         err_context = xmlerror.xmlStructuredErrorContext
+         err_func(err_context, &c_error)
+ 
