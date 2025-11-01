@@ -1,7 +1,7 @@
 # Maintainer: Your Name <you@example.com>
 pkgname=libfile
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="File library for checking types and architecture. "
 arch=('x86_64')
 url="https://github.com/coolguy-09/libfile"
@@ -20,5 +20,9 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install-arch
+  install -Dm755 libfile.so.1.0.2 "$pkgdir/usr/lib/libfile.so.1.0.2"
+  ln -sf libfile.so.1.0.2 "$pkgdir/usr/lib/libfile.so.1"
+  ln -sf libfile.so.1 "$pkgdir/usr/lib/libfile.so"
+  install -Dm644 libfile.a "$pkgdir/usr/lib/libfile.a"
+  install -Dm644 include/file.h "$pkgdir/usr/include/file.h"
 }
