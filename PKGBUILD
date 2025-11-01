@@ -2,21 +2,21 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=('opencl-caps-viewer-x11' 'opencl-caps-viewer-wayland')
 pkgbase=opencl-caps-viewer
-pkgver=1.20
-pkgrel=4
+pkgver=1.30
+pkgrel=1
 pkgdesc="OpenCL Hardware Capability Viewer"
 arch=('x86_64')
 url="https://opencl.gpuinfo.org/"
 license=('GPL-2.0-or-later')
-makedepends=(
-  'git'
+depends=(
+  'hicolor-icon-theme'
   'opencl-icd-loader'
-  'qt5-wayland'
-  'qt5-x11extras'
+  'qt6-base'
 )
+makedepends=('git')
 source=("git+https://github.com/SaschaWillems/OpenCLCapsViewer.git#tag=$pkgver"
         'git+https://github.com/KhronosGroup/OpenCL-Headers.git')
-sha256sums=('510e3f05f1ce2cda5fc4812f2693e15a672de393b984ad2df5ab8f29f74f2594'
+sha256sums=('ef0f857ada1312c641c3b9fc61bdd6dc7f079fb902fb9d7717ac6f90a3e7c288'
             'SKIP')
 
 prepare() {
@@ -37,7 +37,7 @@ build() {
 
   # X11
   pushd build-x11
-  qmake-qt5 ../OpenCLCapsViewer.pro \
+  qmake6 ../OpenCLCapsViewer.pro \
     DEFINES+=X11 \
     CONFIG+=release \
     PREFIX=/usr
@@ -46,7 +46,7 @@ build() {
 
   # Wayland
   pushd build-wayland
-  qmake-qt5 ../OpenCLCapsViewer.pro \
+  qmake6 ../OpenCLCapsViewer.pro \
     DEFINES+=WAYLAND \
     CONFIG+=release \
     PREFIX=/usr
@@ -56,10 +56,6 @@ build() {
 
 package_opencl-caps-viewer-x11() {
   pkgdesc+=" (X11)"
-  depends=(
-    'opencl-icd-loader'
-    'qt5-x11extras'
-  )
   provides=('opencl-caps-viewer')
   conflicts=('opencl-caps-viewer')
 
@@ -72,10 +68,6 @@ package_opencl-caps-viewer-x11() {
 
 package_opencl-caps-viewer-wayland() {
   pkgdesc+=" (Wayland)"
-  depends=(
-    'opencl-icd-loader'
-    'qt5-wayland'
-  )
   provides=('opencl-caps-viewer')
   conflicts=('opencl-caps-viewer')
 
