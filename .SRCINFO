@@ -1,6 +1,6 @@
 pkgbase = com.qq.weixin.work.deepin
 	pkgdesc = Deepin Wine 版企业微信 | Deepin-wine Wecom
-	pkgver = 4.1.32.6005deepin11_spark1
+	pkgver = 4.1.32.6005deepin11~spark1
 	pkgrel = 1
 	url = https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin/
 	install = wecom.install
@@ -8,7 +8,7 @@ pkgbase = com.qq.weixin.work.deepin
 	arch = x86_64
 	license = custom
 	depends = spark-dwine-helper
-	source = https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin/com.qq.weixin.work.deepin_4.1.32.6005deepin11-spark1_all.deb
+	source = https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/com.qq.weixin.work.deepin/com.qq.weixin.work.deepin_4.1.32.6005deepin11~spark1_all.deb
 	source = https://github.com/anthonyfok/fonts-wqy-microhei/raw/refs/heads/master/wqy-microhei.ttc
 	sha256sums = ed8e18e77aeda8defb4d6bfab629f17bb8311176d6e9eb71578af4b87e0b70fc
 	sha256sums = e4bca8df123ce01b104780f576ea1a58b9a5ff1662a91124b6d3180cb6c88212
