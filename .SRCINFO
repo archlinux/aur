@@ -1,19 +1,13 @@
 pkgbase = gtklevel9
 	pkgdesc = An interpreter for British text adventures by Level 9.
-	pkgver = 5.1
-	pkgrel = 5
+	pkgver = 5.2
+	pkgrel = 1
 	url = http://mirror.ifarchive.org/indexes/if-archiveXlevel9XinterpretersXlevel9.html
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = gtk2
-	source = http://mirror.ifarchive.org/if-archive/level9/interpreters/level9/Level9_5.1_Source.zip
-	source = gargoyle.patch
-	source = gtklevel9.desktop
-	source = gtklevel9.png
-	md5sums = bd8f8483d23a5da590c65b85882e86a0
-	md5sums = 57df12cb8ff5fa80d2ac3f7aaefc1f2c
-	md5sums = 8611e0ea83131a909395d2be3fd0fb22
-	md5sums = 4eb964f974666388080af3bc8eaba9d8
+	depends = gtk3
+	source = http://mirror.ifarchive.org/if-archive/level9/interpreters/level9/Level9_5.2_Source.zip
+	md5sums = b6f0aa9e4048ad33dc0a7d1b10eb31c0
 
 pkgname = gtklevel9
