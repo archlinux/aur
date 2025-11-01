@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-greet-hyprland
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Graphical console greeter for greetd with ASCII art and themes (Hyprland compositor)"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('go>=1.21')
 provides=('sysc-greet')
 conflicts=('sysc-greet-niri' 'sysc-greet-sway' 'sysc-greet')
 source=("${pkgname%-*}-${pkgver}.tar.gz::https://github.com/Nomadcxx/sysc-greet/archive/v${pkgver}.tar.gz")
-sha256sums=('cc0b8b01caf6fb418b25af670976aec86e04fdb52ebefa8c20ab8ef2875e259b')
+sha256sums=('2e7354d6096b36bcd4a2d19668a97c859624c654c74b07eb83d41a2fdc5df36f')
 backup=('etc/greetd/config.toml' 'etc/greetd/hyprland-greeter-config.conf')
 install=sysc-greet-hyprland.install
 
