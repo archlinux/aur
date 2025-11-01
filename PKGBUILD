@@ -21,6 +21,7 @@ build() {
   	${_arch}-cmake \
 			-DCMAKE_INSTALL_BINDIR=/usr/${_arch}/bin \
 			-DCMAKE_INSTALL_INCLUDEDIR=/usr/${_arch}/include \
+			-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 			..
 		make
 		popd
