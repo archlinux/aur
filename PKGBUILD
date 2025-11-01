@@ -2,13 +2,13 @@
 
 _pkgname=firefly-luciferin
 pkgname=${_pkgname}-git
-pkgver=2.21.3r6.gf2b1aaaa
-pkgrel=2
+pkgver=2.24.5r7.gda5e947a
+pkgrel=1
 pkgdesc="Screen capture software for ambient and bias lighting"
 arch=('any')
 url="https://github.com/sblantipodi/firefly_luciferin"
 license=('GPL-3.0-or-later')
-depends=('jdk-openjdk>=24' 'jdk-openjdk<25' 'hicolor-icon-theme')
+depends=('jdk-openjdk>=25' 'jdk-openjdk<26' 'hicolor-icon-theme')
 makedepends=('git' 'maven')
 optdepends=(
   'xdg-desktop-portal-wlr: For PipeWire XDG screen capture support (Wayland)'
@@ -21,7 +21,7 @@ provides=('firefly-luciferin')
 conflicts=('firefly-luciferin')
 source=("git+$url.git" "firefly-luciferin")
 sha256sums=('SKIP'
-            'a31350c0314182dfa63efd77f940e56049a1f46ba3faa47ec2e64b89129b33b3')
+            'e19e4af469c6df0261697fb8c193821372c0b6d25da82899073378017d53d72d')
 
 pkgver() {
   cd "$srcdir/firefly_luciferin"
@@ -30,7 +30,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/firefly_luciferin"
-  JAVA_HOME=/usr/lib/jvm/java-24-openjdk mvn package
+  JAVA_HOME=/usr/lib/jvm/java-25-openjdk mvn package
 }
 
 package() {

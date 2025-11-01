@@ -1,6 +1,6 @@
 #!/bin/sh
-JAVA_HOME=/usr/lib/jvm/java-24-openjdk exec \
-  /usr/lib/jvm/java-24-openjdk/bin/java \
+JAVA_HOME=/usr/lib/jvm/java-25-openjdk exec \
+  /usr/lib/jvm/java-25-openjdk/bin/java \
   -XX:+UseZGC -XX:+UseStringDeduplication -Xms64m -Xmx1024m \
   --add-modules jdk.incubator.vector \
   --enable-native-access=ALL-UNNAMED \
