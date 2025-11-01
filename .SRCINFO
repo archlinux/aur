@@ -1,6 +1,6 @@
 pkgbase = connex
 	pkgdesc = Modern Wi-Fi Manager for Hyprland/ArchLinux with GTK3 interface
-	pkgver = 1.0.1
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/Lluciocc/connex
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = connex
 	depends = libnotify
 	optdepends = papirus-icon-theme: Better icons
 	optdepends = hyprland: Recommended window manager
-	source = connex-1.0.1.tar.gz::https://github.com/Lluciocc/connex/archive/v1.0.1.tar.gz
-	sha256sums = 07dc1802fe10aed570e560f70277eb548115eea3095a46923202592bc4178129
+	source = connex-1.1.1.tar.gz::https://github.com/Lluciocc/connex/archive/v1.1.1.tar.gz
+	sha256sums = 0330660982139c74f89b143d8778ab9d2179c54d87d779041b1912fbbff2b117
 
 pkgname = connex
