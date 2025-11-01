@@ -4,7 +4,7 @@
 _pkver=(6.00 3015a)
 pkgname=aimp
 pkgver=${_pkver[0]}.${_pkver[1]}
-pkgrel=2
+pkgrel=3
 url="https://www.aimp.ru"
 pkgdesc="A powerful free audio player (v6 Alpha, Unstable)"
 arch=('x86_64')
@@ -16,6 +16,7 @@ source=("https://imister.kz/linux/aimp-${_pkver[0]}-${_pkver[1]}-${arch}.pkg.tar
 sha256sums=('270d7c472d9ff671111a99b33bce71c474f3b90263a9b60d37ac3322c3730e24')
 
 package(){
+   rm -fr "${srcdir}/usr/share/lintian"
    cp -r "${srcdir}/usr" "${pkgdir}/"
    cp -r "${srcdir}/opt" "${pkgdir}/"
    find "${pkgdir}" -type d -exec chmod 755 {} \;
