@@ -1,0 +1,5 @@
+["alt-sendme-bin"]
+source = "github"
+github = "tonyantony300/alt-sendme"
+use_latest_release = true
+prefix = "v"
