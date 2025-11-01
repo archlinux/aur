@@ -1,21 +1,23 @@
-# Maintainer: Your Name <you@example.com>
 pkgname=libfile
 pkgver=1.0.2
-pkgrel=3
-pkgdesc="File library for checking types and architecture. "
+pkgrel=4
+pkgdesc="File library for checking types and architecture."
 arch=('x86_64')
 url="https://github.com/coolguy-09/libfile"
 license=('MIT')
-depends=()
+depends=('glibc')
 makedepends=('gcc' 'make' 'binutils')
 source=("https://github.com/coolguy-09/libfile/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('SKIP') # Replace with actual checksum if using tarball
+md5sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   chmod +x configure
   ./configure ARCH=arch
   make
+  if [ ! -f libfile.a ] && [ -f src/libfile.o ]; then
+    ar rcs libfile.a src/libfile.o
+  fi
 }
 
 package() {
