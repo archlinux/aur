@@ -6,6 +6,7 @@ pkgbase = hyconf
 	arch = any
 	license = GPL3
 	depends = fzf
+	depends = hyprland
 	provides = hyconf
 	source = hyconf
 	sha256sums = SKIP
