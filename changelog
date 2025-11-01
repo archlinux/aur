@@ -1,3 +1,9 @@
+2025-11-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.2.3.1-1:
+    Improved Steam parental code recovery process (@JustArchi #3483, coded live on livestream!).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2025-09-28 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.2.2.3-1:
     Added MachineName bot config property, which allows to modify the machine name that Steam displays for ASF session (@JustArchi).
