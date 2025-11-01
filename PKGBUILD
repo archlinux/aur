@@ -5,7 +5,7 @@
 _pkgbase=yafu
 pkgname=yafu-git
 pkgrel=1
-pkgver=r782.b357004
+pkgver=r807.ada8bf3
 pkgdesc="Automated integer factorization."
 url=https://github.com/bbuhrow/yafu
 license=("MIT")
@@ -55,7 +55,7 @@ build() {
 	make all NO_ZLIB=1
 
 	cd ${srcdir}/yafu
-	make yafu CC=gcc NFS=1 CFLAGS="$CFLAGS -g -m64 -std=gnu99 -DUSE_SSE2 -fno-common -DUSE_NFS -O2 -fomit-frame-pointer -Wall  -I. -Iinclude -Itop/aprcl -Itop/cmdParser -Itop/ -Ims_include/ -Ifactor/gmp-ecm   -I../ysieve -I../ytools -I../msieve/zlib -Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types -Wno-error=return-mismatch -DVBITS=64 -Iaprcl -Ignfs/poly/stage1 -Ignfs/poly"
+	make yafu CC=gcc NFS=1 CFLAGS="$CFLAGS -g -m64 -std=gnu99 -DUSE_SSE2 -fno-common -DUSE_NFS -O2 -fomit-frame-pointer -Wall  -I. -Iinclude -Itop/aprcl -Itop/cmdParser -Itop/ -Ims_include/ -Ifactor/gmp-ecm   -I../ysieve -I../ytools -I../msieve/zlib -Wno-error=implicit-function-declaration -Wno-error=incompatible-pointer-types -Wno-error=return-mismatch -Wno-int-conversion -DVBITS=64 -Iaprcl -Ignfs/poly/stage1 -Ignfs/poly"
 }
 
 check() {
