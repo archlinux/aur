@@ -12,7 +12,7 @@ license=('GPL')
 makedepends=('git')
 options=('!strip')
 source=("git+${url}.git#commit=${_commit}")
-sha256sums=('e7cef593f9797eec91cb8cce99e90f11f0e08755a264300874570e39c823db7e')
+sha256sums=('a8c1f193a4e7b1c14b1abc202a760adae8160afe0033b2731fab67589c6fc542')
 
 package() {
     _move=(actions apps devices index.theme mimetypes places preferences)
