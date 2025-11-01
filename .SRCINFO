@@ -1,5 +1,5 @@
 pkgbase = tuime-bin
-	pkgdesc = A colorful and fun TUI clock written in Rust, with a screensaver mode
+	pkgdesc = A colorful and fun TUI clock, with a screensaver mode
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/nthnd/tuime
