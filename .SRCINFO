@@ -1,7 +1,7 @@
 pkgbase = nemu
 	pkgdesc = ncurses interface for QEMU
-	pkgver = 3.3.1
-	pkgrel = 3
+	pkgver = 3.4.0
+	pkgrel = 1
 	url = https://github.com/nemuTUI/nemu
 	arch = x86_64
 	license = BSD-2-Clause
@@ -15,7 +15,7 @@ pkgbase = nemu
 	depends = libarchive
 	depends = glibc
 	depends = sh
-	source = git+https://github.com/nemuTUI/nemu.git#tag=v3.3.1
-	sha256sums = 76e63121d68ede54b4274d6918a3344a46fc65420b0744947029f95076c2a193
+	source = git+https://github.com/nemuTUI/nemu.git#tag=v3.4.0
+	sha256sums = a55ed3cf0d1c102db09c4169b9ef33b5264045bc27660d9032c72bd7ae3f5485
 
 pkgname = nemu
