@@ -1,8 +1,9 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+
 pkgbase=python-astroscrappy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Speedy Cosmic Ray Annihilation Package in Python"
 arch=('i686' 'x86_64')
@@ -13,14 +14,15 @@ makedepends=('python-setuptools-scm>=6.2'
              'python-build'
              'python-installer'
              'python-extension-helpers>=1'
-             'python-numpy'
+             'python-numpy>=2.0.0'
              'python-sphinx-astropy')  # wheel required by new setuptools
 checkdepends=('python-pytest-doctestplus'
+#             'python-pytest-xdist'
               'python-astropy'
               'python-scipy')
 source=("https://files.pythonhosted.org/packages/source/a/astroscrappy/astroscrappy-${pkgver}.tar.gz"
         'setup.cfg')
-md5sums=('1242aa6f352cb23a9a94cc494ab02447'
+md5sums=('bd0c78bc649d54a01548d437031ead5e'
          '60e14b6062e639028bf12059193ae884')
 
 get_pyver() {
@@ -35,7 +37,8 @@ prepare() {
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    CFLAGS="${CFLAGS} -std=gnu17" python -m build --wheel --no-isolation --skip-dependency-check
+#   CFLAGS="${CFLAGS} -std=gnu17" python -m build --wheel --no-isolation --skip-dependency-check
+    python -m build --wheel --no-isolation --skip-dependency-check
 
     msg "Building Docs"
     PYTHONPATH="../build/lib.linux-${CARCH}-cpython-$(get_pyver)" make -C docs html
@@ -44,11 +47,11 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package_python-astroscrappy() {
-    depends=('python' 'python-astropy')
+    depends=('python>=3.10' 'python-astropy')
     optdepends=('python-astroscrappy-doc: Documentation for Astro-SCRAPPY')
     cd ${srcdir}/${_pyname}-${pkgver}
 

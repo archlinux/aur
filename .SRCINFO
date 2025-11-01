@@ -1,6 +1,6 @@
 pkgbase = python-astroscrappy
 	pkgdesc = Speedy Cosmic Ray Annihilation Package in Python
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://astroscrappy.readthedocs.io
 	arch = i686
@@ -14,15 +14,15 @@ pkgbase = python-astroscrappy
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-extension-helpers>=1
-	makedepends = python-numpy
+	makedepends = python-numpy>=2.0.0
 	makedepends = python-sphinx-astropy
-	source = https://files.pythonhosted.org/packages/source/a/astroscrappy/astroscrappy-1.2.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/a/astroscrappy/astroscrappy-1.3.0.tar.gz
 	source = setup.cfg
-	md5sums = 1242aa6f352cb23a9a94cc494ab02447
+	md5sums = bd0c78bc649d54a01548d437031ead5e
 	md5sums = 60e14b6062e639028bf12059193ae884
 
 pkgname = python-astroscrappy
-	depends = python
+	depends = python>=3.10
 	depends = python-astropy
 	optdepends = python-astroscrappy-doc: Documentation for Astro-SCRAPPY
 
