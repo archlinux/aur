@@ -1,0 +1,5 @@
+[tuime-bin]
+source = "github"
+github = "nthnd/tuime"
+use_latest_release = true
+prefix = "v"
