@@ -1,6 +1,6 @@
 pkgbase = cinny-electron-git
 	pkgdesc = Yet another matrix client — Unofficial electron version
-	pkgver = r5.afeeed0
+	pkgver = r10.79afa5e
 	pkgrel = 1
 	url = https://github.com/Enovale/cinny-electron
 	arch = x86_64

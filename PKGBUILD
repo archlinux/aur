@@ -1,7 +1,7 @@
 # Maintainer: Enova
 _pkgname=cinny-electron
 pkgname="${_pkgname}-git"
-pkgver=r5.afeeed0
+pkgver=r10.79afa5e
 pkgrel=1
 pkgdesc="Yet another matrix client — Unofficial electron version"
 arch=("x86_64")
