@@ -1,0 +1,16 @@
+pkgbase = marp-bin
+	pkgdesc = A CLI interface for Marp and Marpit-based converters
+	pkgver = 4.2.3
+	pkgrel = 1
+	url = https://github.com/marp-team/marp-cli
+	arch = x86_64
+	license = MIT
+	optdepends = chromium: for exporting to PDF, PPTX, and image formats
+	optdepends = microsoft-edge-stable-bin: for exporting to PDF, PPTX, and image formats
+	optdepends = firefox: for exporting to PDF, PPTX, and image formats
+	provides = marp
+	conflicts = marp
+	source = https://github.com/marp-team/marp-cli/releases/download/v4.2.3/marp-cli-v4.2.3-linux.tar.gz
+	sha256sums = 8badbf06aedd1971be305445959724f3cbafe62c9b47035f0bde5388f01f6e4b
+
+pkgname = marp-bin
