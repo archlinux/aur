@@ -1,3 +1,4 @@
+# Maintainer: Matt Quintanilla <matt @ matt quintanilla . xyz>
 # Contributor: morpheusthewhite <zffromGerace@hotmail.it>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
@@ -12,9 +13,8 @@ depends=('gcc-libs' 'openmotif' 'libxaw' 'libxt' 'libxft' 'libxmu' 'fontconfig' 
 optdepends=('gdb: to use the Gnu debugger' 
         'java-runtime-openjdk: to use the Java debugger' 
         'perl: to use the Perl debugger')
-source=(http://ftp.gnu.org/gnu/ddd/${pkgname}-${pkgver}.tar.gz)
-sha1sums=('0e9271aeeded16f0414b3877a25f3a15acb40fb4')
-  
+source=(https://ftp.gnu.org/gnu/ddd/${pkgname}-${pkgver}.tar.gz)
+sha256sums=('b87517a6c3f9611566347e283a2cf931fa369919b553536a2235e63402f4ee89')
 prepare() {
   cd ${pkgname}-${pkgver}
 }
