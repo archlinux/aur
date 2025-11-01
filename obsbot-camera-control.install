@@ -1,0 +1,19 @@
+post_install() {
+    if command -v systemctl >/dev/null 2>&1; then
+        systemctl daemon-reload >/dev/null 2>&1 || true
+    fi
+
+    printf '%s\n' "==> Virtual camera support is available but not enabled"
+    printf '%s\n' "==> To enable: sudo systemctl enable --now obsbot-virtual-camera.service"
+    printf '%s\n' "==> Or load manually: sudo modprobe v4l2loopback video_nr=42 card_label=\"OBSBOT Virtual Camera\" exclusive_caps=1"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    if command -v systemctl >/dev/null 2>&1; then
+        systemctl daemon-reload >/dev/null 2>&1 || true
+    fi
+}
