@@ -4,7 +4,7 @@
 pkgname=intel-sgx-psw-bin
 pkgdesc='Intel® Software Guard Extensions Platform Software for Linux* OS'
 pkgver=2.26
-pkgrel=2
+pkgrel=3
 url='https://github.com/intel/linux-sgx'
 arch=('x86_64')
 license=('BSD-3-Clause AND LicenseRef-IntelSgx-ThirdParty') # https://github.com/intel/linux-sgx?tab=License-1-ov-file
@@ -20,7 +20,7 @@ provides=('intel-sgx-psw')
 conflicts=('intel-sgx-psw')
 backup=('etc/aesmd.conf' 'etc/mpa_registration.conf' 'etc/qgs.conf' 'etc/sgx_default_qcnl.conf')
 source=("sgx_${pkgver}_debian_local_repo.tgz::https://download.01.org/intel-sgx/sgx-linux/${pkgver}/distro/ubuntu24.04-server/sgx_debian_local_repo.tgz")
-b2sums=('19160e74631e1c70db43c43165b381c0523eb1703ce9fa0efec317d81e2fc3cb28d3fd77c3a2c67e99cb50a84f4475d1c1962df4b6c8818098e6ba163b78601e')
+b2sums=('6c298b4dd0705ea62dbe9a55f733ff19a66f0cc53834175ac08e8fd576718f5be5d081902720ae84b77e565dd9e8054414c3a2b5c146d3c58ef8bd3ef81bd8d3')
 
 package() {
   find "${srcdir}"/sgx_debian_local_repo -name "*.deb" -exec dpkg-deb -x {} "${pkgdir}" \;
