@@ -1,6 +1,6 @@
 pkgbase = guitar
 	pkgdesc = Open source Git GUI Client
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://soramimi.github.io/Guitar/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = guitar
 	depends = qt6-base
 	depends = qt6-svg
 	depends = git
-	source = guitar-1.3.0.tar.gz::https://github.com/soramimi/Guitar/archive/v1.3.0.tar.gz
-	sha256sums = d1de24ded13dd554b7fde75bee61c6c5f641514df0706823079cf79c0c6b8108
+	source = guitar-1.3.1.tar.gz::https://github.com/soramimi/Guitar/archive/v1.3.1.tar.gz
+	sha256sums = ea75f76f4b11875fae52f83178d152dee2dec8a1c2e01111cec91fed130ca084
 
 pkgname = guitar
