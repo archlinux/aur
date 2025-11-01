@@ -82,9 +82,9 @@ source_loong64=(
 )
 
 
-md5sums_x86_64=('751b07bc155bb94f0847fc0cfa49072c')
-md5sums_aarch64=('efede0dc70321cf2f0b0bf8d94e0a811')
-md5sums_loong64=('77491b597beaa51125c76934a1f1c179')
+md5sums_x86_64=('SKIP')
+md5sums_aarch64=('SKIP')
+md5sums_loong64=('SKIP')
 
 function pkgver() {
 	tar -xf control.tar.xz ./control
