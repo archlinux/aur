@@ -20,12 +20,8 @@ pkgbase = equibop-bin
 	sha256sums = e11aa0a6bebe23f473ccb8e7d5577e05e7b9287381de91223f86c79d6729caae
 	sha256sums = 92ceea804d5a3eaf0c7b696bb3b4026f21962d2c2ef91fbf295eab95855797b2
 	source_aarch64 = equibop-3.1.0-aarch64.tar.gz::https://github.com/Equicord/Equibop/releases/download/v3.1.0/equibop-3.1.0-arm64.tar.gz
-	source_aarch64 = arrpc-linux-arm64::https://github.com/Creationsss/arrpc-bun/releases/download/v1.2.9/arrpc-bun-linux-arm64
-	sha256sums_aarch64 = 18c85f9f306bee61cdad4abf1b2841f41d4d294b94f0bdff79886e9d5989218c
-	sha256sums_aarch64 = 164aacb6f5c6af949d0bbba415b97305c7b0a4b8de1562c31b75cd9f3bcb6d44
+	sha256sums_aarch64 = eb67c99d2bf331c59b7a174b62e0488b019886bec09ea61dfc4202ded7d8ad5d
 	source_x86_64 = equibop-3.1.0-x86_64.tar.gz::https://github.com/Equicord/Equibop/releases/download/v3.1.0/equibop-3.1.0.tar.gz
-	source_x86_64 = arrpc-linux-x64::https://github.com/Creationsss/arrpc-bun/releases/download/v1.2.9/arrpc-bun-linux-x64
-	sha256sums_x86_64 = bd248b51bdac34d7a009a80a2999628b4e5bc3c49bf1813b669c6788fcca87f4
-	sha256sums_x86_64 = 12bd168df2a594370c2672de2365714de8daf205e50d28dd5fd1267776dafed3
+	sha256sums_x86_64 = a07d42e29dd7b8a9451f6f3762a9a4578b2afa87c83b24916e903fb8b16a66c2
 
 pkgname = equibop-bin
