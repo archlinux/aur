@@ -1,0 +1,5 @@
+[loggo-bin]
+source = "github"
+github = "aurc/loggo"
+use_latest_release = true
+prefix = "v"
