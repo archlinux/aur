@@ -1,21 +1,32 @@
 # Maintainer: fishy <me at fishies dot dev>
 
 pkgname=godsvg-git
-pkgver=1.0.alpha11.13.gf19a85f8
+pkgver=1.0.alpha12
 _godotver=4.5.1-stable
+_godotname="Godot_v${_godotver}_linux.x86_64"
 _templatename="Godot_v${_godotver}_export_templates"
 pkgrel=1
 pkgdesc="An editor for Scalable Vector Graphics (SVG) files. Built with Godot"
 url="godsvg.com"
 license=("MIT")
 arch=("x86_64")
-makedepends=(git godot)
+makedepends=(git)
 depends=(glibc libglvnd)
 provides=(godsvg)
 conflicts=(godsvg godsvg-bin)
 
-source=("git+https://github.com/MewPurPur/GodSVG.git" "https://github.com/godotengine/godot-builds/releases/download/${_godotver}/${_templatename}.tpz" "add-custom-template.patch")
-sha256sums=("SKIP" "1998af37f1387684e2c211cdb483daf492fc64dc6b12096bddcdca25b6910c86" "SKIP")
+source=(
+    "git+https://github.com/MewPurPur/GodSVG.git"
+    "https://github.com/godotengine/godot-builds/releases/download/${_godotver}/${_godotname}.zip"
+    "https://github.com/godotengine/godot-builds/releases/download/${_godotver}/${_templatename}.tpz"
+    "add-custom-template.patch"
+)
+sha256sums=(
+    "SKIP"
+    "02ec53d1cc7dbb9cc6355393c61b9ab43d1244751a124f10248a4802830788cd"
+    "1998af37f1387684e2c211cdb483daf492fc64dc6b12096bddcdca25b6910c86"
+    "c48cf5c2d298fc6638cced0c1d04f9665d7815b4042115a2748f2f2de0012be4"
+)
 
 pkgver() {
     cd "GodSVG" || return
@@ -27,7 +38,7 @@ build() {
     cp -r "templates" "GodSVG/export/"
     cd "GodSVG" || return
     git apply ../add-custom-template.patch
-    godot --headless --export-release "Linux" export/godsvg
+    "./../${_godotname}" --headless --export-release "Linux" export/godsvg
 }
 
 package() {
