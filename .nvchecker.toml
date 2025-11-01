@@ -1,0 +1,4 @@
+[zune]
+source = "git"
+git = "https://github.com/Scythe-Technology/zune.git"
+prefix = "v"
