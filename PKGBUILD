@@ -2,7 +2,7 @@
 
 pkgname=beautyline
 pkgver=20250720
-_commit=0df6f5df71c19496f9a873f8a52fbb5e84e95b12
+_commit=9def5490c528453eeeb41eafe3abeae425e92f02
 pkgrel=1
 epoch=1
 pkgdesc="Outlined icons designed to have unified look and comprehensive coverage with the Candy icon pack (best suited to use with Sweet theme)"
