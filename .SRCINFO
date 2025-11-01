@@ -5,7 +5,23 @@ pkgbase = jailer
 	url = https://github.com/Wisser/Jailer
 	arch = x86_64
 	license = Apache-2.0
-	depends = java-runtime>=8
+	depends = glibc
+	depends = gcc-libs
+	depends = java-runtime
+	depends = libxi
+	depends = libxtst
+	depends = harfbuzz
+	depends = freetype2
+	depends = alsa-lib
+	depends = libpng
+	depends = libxext
+	depends = bash
+	depends = giflib
+	depends = libjpeg-turbo
+	depends = libx11
+	depends = libxrender
+	depends = lcms2
+	depends = zlib
 	source = jailer-16.10.deb::https://github.com/Wisser/Jailer/releases/download/v16.10/jailer-database-tools_16.10-x64.deb
 	b2sums = 23d68e1ad6378451499503b054d60c1dacb3105f1282731f5ec8675ed99c45d42f4c7c7fdee9781578bda6046df8a92ad74604ade704f3ea3f4c090dd259a0bc
 
