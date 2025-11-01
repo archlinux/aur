@@ -1,6 +1,6 @@
 pkgbase = crawley
 	pkgdesc = Simple web scraper
-	pkgver = 1.7.14
+	pkgver = 1.7.15
 	pkgrel = 1
 	url = https://github.com/s0rg/crawley
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = crawley
 	provides = crawley
 	conflicts = crawley-bin
 	conflicts = crawley-git
-	source = crawley-1.7.14.tar.gz::https://github.com/s0rg/crawley/archive/v1.7.14.tar.gz
-	sha512sums = bd373cbb96f32ffcd6fdbc6876d8bd1994fb4add44948bfbc1b026a21bdcfb9a4f0608980f1844f9722bbf892fc65ffaf091ee9cc778db61770dae379f406e19
+	source = crawley-1.7.15.tar.gz::https://github.com/s0rg/crawley/archive/v1.7.15.tar.gz
+	sha512sums = 5adb9f1e97a9ee783b468eaccc9c3ddfeb3e7f0ea53e08424b059edd556dc3e27045a842cd10636fe411ae24c3b97f3ad57531c1f9237d85a5f01601480a153b
 
 pkgname = crawley
