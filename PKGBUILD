@@ -1,17 +1,13 @@
 # Maintainer:
 # Contributor: twa022 <twa022 at gmail dot com>
 
-## links
-# https://www.libreoffice.org/
-# https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64/
-
 : ${_pkgtype=-dev-bin}
 : ${_pkgnamefmt:=LibreOffice}
 
 _pkgname="libreoffice"
 pkgname="${_pkgname}${_pkgtype:-}"
 pkgdesc="A free and powerful office suite - development branch"
-pkgver=25.8.2.2
+pkgver=25.8.3.1
 pkgrel=1
 url="https://www.libreoffice.org/"
 license=('MPL-2.0' 'LGPL-3.0-or-later')
