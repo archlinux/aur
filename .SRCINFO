@@ -1,0 +1,15 @@
+pkgbase = chrona-bin
+	pkgdesc = Cross-platform text-to-speech and MP3 converter with a modern GUI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Cypher-Monarch/Chrona
+	arch = x86_64
+	license = custom
+	depends = ffmpeg
+	depends = espeak-ng
+	provides = chrona
+	conflicts = chrona
+	source = https://github.com/Cypher-Monarch/Chrona/releases/download/v1.0.0/Chrona-linux-v1.0.0.tar.xz
+	sha256sums = SKIP
+
+pkgname = chrona-bin
