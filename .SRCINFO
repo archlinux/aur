@@ -1,6 +1,6 @@
 pkgbase = peerbanhelper
 	pkgdesc = PeerBanHelper is a tool to auto ban peers on the bitorrent network.
-	pkgver = 9.0.9
+	pkgver = 9.0.10
 	pkgrel = 1
 	url = https://github.com/PBH-BTN/PeerBanHelper
 	install = peerbanhelper.install
@@ -9,7 +9,7 @@ pkgbase = peerbanhelper
 	depends = java-runtime>=21
 	backup = etc/peerbanhelper/config.yml
 	backup = etc/peerbanhelper/profile.yml
-	source = https://github.com/PBH-BTN/PeerBanHelper/releases/download/v9.0.9/peerbanhelper_9.0.9_all.deb
-	sha512sums = 483e5804080c426ebcfbdc32324fd285e268133b5b68989bdbbd0d3f17a7d8948e12100a944036a23606b1dc305e71caf13528eb143d607777c4b344c28319e6
+	source = https://github.com/PBH-BTN/PeerBanHelper/releases/download/v9.0.10/peerbanhelper_9.0.10_all.deb
+	sha512sums = c7ae62279349c28068df76da24ff40f04dad184c1df884aa30ff36ce9b6f966de2e2e3a209f3245e352483859e96020aa783417fcd3e380559e1dddbb5f50f7c
 
 pkgname = peerbanhelper
