@@ -1,6 +1,6 @@
 pkgbase = mts-linkchats
 	pkgdesc = MTS Linkchats desktop application based on Electron and React
-	pkgver = 0.78.1
+	pkgver = 0.79.0
 	pkgrel = 1
 	url = https://mts-link.ru
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = mts-linkchats
 	provides = mts-linkchats
 	source = https://apps.webinar.ru/weteams/linkchats-desktop.tar.gz
 	source = mts-linkchats.desktop
-	b2sums = 87d9a23ac250426ad5ec0f591bdcd54031a633d6ecc38b3deb49cb2fa318aa12c869df08ed2c453bc42b07772ab7c9cd3a358c141a0f27a8122e6fce0ef13e0b
+	b2sums = 9621b85b5c002a5312379f8d67ec37a6c17ab0a3b19c097c7270ba4e99be3a42f3f83a0ba550b2eb71bb434eb2e23205bd270d7d1d3abaddff0f10bb6f78417b
 	b2sums = SKIP
 
 pkgname = mts-linkchats
