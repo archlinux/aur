@@ -1,0 +1,5 @@
+[ssl-checker-bin]
+source = "github"
+github = "fabio42/ssl-checker"
+use_latest_release = true
+prefix = "v"

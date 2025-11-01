@@ -1,0 +1,19 @@
+pkgbase = ssl-checker-bin
+	pkgdesc = Fast and beautiful program to check all your https endpoint
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/fabio42/ssl-checker
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = ssl-checker
+	conflicts = ssl-checker
+	source_x86_64 = ssl-checker-x86_64-0.1.7.tar.gz::https://github.com/fabio42/ssl-checker/releases/download/v0.1.7/ssl-checker_0.1.7_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 198e194120ce2eacc1f13d80b476451f4311e3bdc453ac741779ff7962649c56
+	source_i686 = ssl-checker-i686-0.1.7.tar.gz::https://github.com/fabio42/ssl-checker/releases/download/v0.1.7/ssl-checker_0.1.7_linux_i386.tar.gz
+	sha256sums_i686 = 7d2832cb2194b7d0eafa4ec3c51304186d239c16aafb1b7f8d5000b480bb6e68
+	source_aarch64 = ssl-checker-aarch64-0.1.7.tar.gz::https://github.com/fabio42/ssl-checker/releases/download/v0.1.7/ssl-checker_0.1.7_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4ac7e1b7d8a22ed2a5b255e18bf7143727e90ce15080567b5337025fecd445cb
+
+pkgname = ssl-checker-bin
