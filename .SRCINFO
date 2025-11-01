@@ -1,6 +1,6 @@
 pkgbase = mpv-amd-full-git
 	pkgdesc = A free, open source, and cross-platform media player (git version with all possible libs except Nvidia)
-	pkgver = 0.40.0.r329.gee0f701347
+	pkgver = 0.40.0.r429.g0a606d9e18
 	pkgrel = 1
 	url = https://mpv.io/
 	arch = x86_64
