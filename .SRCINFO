@@ -1,13 +1,13 @@
 pkgbase = dsearch-git
 	pkgdesc = Fast filesystem search service
-	pkgver = 0.0.1.r0.g24ea202
-	pkgrel = 1
+	pkgver = 0.0.7.r0.g24ea202
+	pkgrel = 2
 	url = https://github.com/AvengeMedia/danksearch
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = go
-	provides = dsearch=0.0.1.r0.g24ea202
+	provides = dsearch=0.0.7.r0.g24ea202
 	conflicts = dsearch
 	source = git+https://github.com/AvengeMedia/danksearch.git
 	source = dsearch.service

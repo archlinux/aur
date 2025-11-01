@@ -3,7 +3,7 @@
 pkgbase=dsearch-git
 _pkgname=danksearch
 pkgname=("$pkgbase")
-pkgver=0.0.1.r0.g24ea202
+pkgver=0.0.7.r6.gdb48a1c
 pkgrel=1
 pkgdesc='Fast filesystem search service'
 arch=('x86_64')
