@@ -1,17 +1,18 @@
 pkgbase = arch-upgrade
 	pkgdesc = Desktop app to upgrade your Arch Linux system
-	pkgver = 1.23
+	pkgver = 1.24
 	pkgrel = 1
 	url = https://github.com/bulletmark/arch-upgrade
 	install = install.sh
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = curl
 	depends = xmlstarlet
 	depends = python-unidecode
+	depends = recode
 	optdepends = zenity: popups if run in GUI mode
 	backup = etc/arch-upgrade.conf
-	source = arch-upgrade-1.23.tar.gz::https://github.com/bulletmark/arch-upgrade/archive/1.23.tar.gz
-	md5sums = 19a21032fc397ae7e25315ef4adbeedf
+	source = arch-upgrade-1.24.tar.gz::https://github.com/bulletmark/arch-upgrade/archive/1.24.tar.gz
+	md5sums = a99873db7d53df713f677c8013f6ad9e
 
 pkgname = arch-upgrade
