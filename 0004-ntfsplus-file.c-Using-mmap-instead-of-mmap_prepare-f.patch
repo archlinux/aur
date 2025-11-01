@@ -1,0 +1,78 @@
+From b2be21a87f6f9104fef7cece84642166abae55b6 Mon Sep 17 00:00:00 2001
+From: shadichy <shadichy@blisslabs.org>
+Date: Sun, 2 Nov 2025 04:20:28 +0700
+Subject: [PATCH 4/5] ntfsplus: file.c: Using `mmap` instead of `mmap_prepare`
+ for kernels older than 6.15
+
+---
+ fs/ntfsplus/file.c | 39 +++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 39 insertions(+)
+
+diff --git a/fs/ntfsplus/file.c b/fs/ntfsplus/file.c
+index 633f83261..f9caddf0b 100644
+--- a/fs/ntfsplus/file.c
++++ b/fs/ntfsplus/file.c
+@@ -706,6 +706,7 @@ static const struct vm_operations_struct ntfs_file_vm_ops = {
+ 	.page_mkwrite	= ntfs_filemap_page_mkwrite,
+ };
+ 
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 16, 0))
+ static int ntfs_file_mmap_prepare(struct vm_area_desc *desc)
+ {
+ 	struct file *file = desc->file;
+@@ -739,6 +740,40 @@ static int ntfs_file_mmap_prepare(struct vm_area_desc *desc)
+ 	return 0;
+ }
+ 
++#else
++static int ntfs_file_mmap(struct file *file, struct vm_area_struct *vma)
++{
++	struct inode *inode = file_inode(file);
++
++	if (NVolShutdown(NTFS_SB(file->f_mapping->host->i_sb)))
++		return -EIO;
++
++	if (NInoCompressed(NTFS_I(inode)))
++		return -EOPNOTSUPP;
++
++	if (vma->vm_flags & VM_WRITE) {
++		struct inode *inode = file_inode(file);
++		loff_t from, to;
++		int err;
++
++		from = ((loff_t)vma->vm_pgoff << PAGE_SHIFT);
++		to = min_t(loff_t, i_size_read(inode),
++			   from + vma->vm_end - vma->vm_start);
++
++		if (NTFS_I(inode)->initialized_size < to) {
++			err = ntfs_extend_initialized_size(inode, to, to);
++			if (err)
++				return err;
++		}
++	}
++
++
++	file_accessed(file);
++	vma->vm_ops = &ntfs_file_vm_ops;
++	return 0;
++}
++#endif
++
+ static int ntfs_fiemap(struct inode *inode, struct fiemap_extent_info *fieinfo,
+ 		u64 start, u64 len)
+ {
+@@ -1037,7 +1072,11 @@ const struct file_operations ntfs_file_ops = {
+ 	.read_iter	= ntfs_file_read_iter,
+ 	.write_iter	= ntfs_file_write_iter,
+ 	.fsync		= ntfs_file_fsync,
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 16, 0))
+ 	.mmap_prepare	= ntfs_file_mmap_prepare,
++#else
++	.mmap		= ntfs_file_mmap,
++#endif
+ 	.open		= ntfs_file_open,
+ 	.release	= ntfs_file_release,
+ 	.splice_read	= ntfs_file_splice_read,
+-- 
+2.51.2
+

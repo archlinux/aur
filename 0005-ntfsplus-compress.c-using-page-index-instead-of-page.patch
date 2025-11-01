@@ -1,0 +1,78 @@
+From 445a442563ad21156f748d45c652618921b29ebd Mon Sep 17 00:00:00 2001
+From: shadichy <shadichy@blisslabs.org>
+Date: Sun, 2 Nov 2025 04:35:50 +0700
+Subject: [PATCH 5/5] ntfsplus: compress.c: using `page->index` instead of
+ `page->__folio_index` for kernels older than 6.15
+
+---
+ fs/ntfsplus/compress.c | 33 +++++++++++++++++++++++++++++----
+ 1 file changed, 29 insertions(+), 4 deletions(-)
+
+diff --git a/fs/ntfsplus/compress.c b/fs/ntfsplus/compress.c
+index 5de465a00..4f741c890 100644
+--- a/fs/ntfsplus/compress.c
++++ b/fs/ntfsplus/compress.c
+@@ -109,7 +109,14 @@ static void zero_partial_compressed_page(struct page *page,
+ 	unsigned int kp_ofs;
+ 
+ 	ntfs_debug("Zeroing page region outside initialized size.");
+-	if (((s64)page->__folio_index << PAGE_SHIFT) >= initialized_size) {
++
++	if (((s64)page->
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 16, 0))
++		__folio_index
++#else
++		index
++#endif
++		<< PAGE_SHIFT) >= initialized_size) {
+ 		clear_page(kp);
+ 		return;
+ 	}
+@@ -123,7 +130,13 @@ static void zero_partial_compressed_page(struct page *page,
+ static inline void handle_bounds_compressed_page(struct page *page,
+ 		const loff_t i_size, const s64 initialized_size)
+ {
+-	if ((page->__folio_index >= (initialized_size >> PAGE_SHIFT)) &&
++	if ((page->
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 16, 0))
++		__folio_index
++#else
++		index
++#endif
++		>= (initialized_size >> PAGE_SHIFT)) &&
+ 			(initialized_size < i_size))
+ 		zero_partial_compressed_page(page, initialized_size);
+ }
+@@ -470,7 +483,13 @@ int ntfs_read_compressed_block(struct folio *folio)
+ 	struct runlist_element *rl;
+ 	unsigned long flags;
+ 	u8 *cb, *cb_pos, *cb_end;
+-	unsigned long offset, index = page->__folio_index;
++	unsigned long offset, index = page->
++	#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 16, 0))
++		__folio_index
++	#else
++		index
++	#endif
++		;
+ 	u32 cb_size = ni->itype.compressed.block_size;
+ 	u64 cb_size_mask = cb_size - 1UL;
+ 	s64 vcn;
+@@ -827,7 +846,13 @@ int ntfs_read_compressed_block(struct folio *folio)
+ 		if (page) {
+ 			ntfs_error(vol->sb,
+ 				"Still have pages left! Terminating them with extreme prejudice.  Inode 0x%lx, page index 0x%lx.",
+-				ni->mft_no, page->__folio_index);
++				ni->mft_no, page->
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 16, 0))
++					__folio_index
++#else
++					index
++#endif
++					);
+ 			flush_dcache_page(page);
+ 			kunmap_local(page_address(page));
+ 			unlock_page(page);
+-- 
+2.51.2
+
