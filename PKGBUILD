@@ -2,7 +2,7 @@
 
 pkgname=doggo-bin
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line DNS client for humans "
 arch=('x86_64' 'aarch64')
 url="https://github.com/mr-karan/doggo"
@@ -44,6 +44,9 @@ package() {
         "${pkgdir}/usr/share/doc/${pkgname}"
 
     # Install completions
+    mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
+    "${pkgdir}/usr/bin/doggo" completions bash > "${pkgdir}/usr/share/bash-completion/completions/doggo"
+
     mkdir -p "${pkgdir}/usr/share/zsh/site-functions"
     "${pkgdir}/usr/bin/doggo" completions zsh > "${pkgdir}/usr/share/zsh/site-functions/_doggo"
 
