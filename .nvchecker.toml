@@ -1,0 +1,5 @@
+[codanna-bin]
+source = "github"
+github = "bartolli/codanna"
+use_latest_release = true
+prefix = "v"
