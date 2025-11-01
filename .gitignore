@@ -4,8 +4,6 @@ src/
 *.tar.*
 *.tar.zst
 *.zip
-*.deb
-*.AppImage
 *.log
 *.sig
 

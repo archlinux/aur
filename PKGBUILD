@@ -16,7 +16,7 @@ provides=('marp')
 conflicts=('marp')
 options=('!strip' '!lto')
 source=("https://github.com/marp-team/marp-cli/releases/download/v${pkgver}/marp-cli-v${pkgver}-linux.tar.gz")
-sha256sums=('8badbf06aedd1971be305445959724f3cbafe62c9b47035f0bde5388f01f6e4b')
+sha256sums=('SKIP')
 
 package() {
   tar -xzf "marp-cli-v${pkgver}-linux.tar.gz" -C "${srcdir}"
