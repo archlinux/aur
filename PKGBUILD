@@ -1,0 +1,48 @@
+# Maintainer: Andrew Relative <kezin636 at gmail dot com>
+
+pkgname=aegnux
+pkgver=0.1.4
+pkgrel=1
+pkgdesc="A convenient way to install Adobe After Effects on Linux using Wine."
+arch=('x86_64')
+url="https://github.com/relativemodder/aegnux"
+license=('GPL-3.0-only')
+depends=('pyside6' 'python-requests' 'cabextract' 'winetricks')
+makedepends=('curl' 'tar' 'unzip' 'libarchive')
+checkdepends=()
+optdepends=('kitty')
+backup=()
+options=(!strip)
+install=
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/relativemodder/aegnux/archive/refs/tags/v${pkgver}.tar.gz")
+md5sums=('SKIP')
+
+build() {
+    rootdir="$srcdir/${pkgname}-${pkgver}"
+    cd "$rootdir"
+    sed -i '4,25d' "$rootdir/prepare.sh"
+    ./prepare.sh
+
+    cp /usr/bin/cabextract "$rootdir/bin/"
+    cp /usr/bin/winetricks "$rootdir/bin/"
+
+    rm -rf $rootdir/assets/wine/lib/wine/i386*
+    rm -rf "$rootdir/assets/wine/include"
+
+    sed -i "s|\['./bin/kitty/bin/kitty', 'bash'\]|['kitty']|g" $rootdir/src/mainwindow.py
+
+    rm $rootdir/run.sh
+    cp ../../run.sh $rootdir/
+    chmod +x $rootdir/run.sh
+}
+
+package() {
+    rootdir="$srcdir/${pkgname}-${pkgver}"
+    cd $rootdir
+    mkdir -p "$pkgdir/opt/aegnux"
+
+    cp -r $rootdir/* "$pkgdir/opt/aegnux/"
+    install -Dm644 "$rootdir/icons/aegnux.png" "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.relative.Aegnux.png"
+    cd ../..
+    install -Dm644 com.relative.Aegnux.desktop "$pkgdir/usr/share/applications/com.relative.Aegnux.desktop"
+}

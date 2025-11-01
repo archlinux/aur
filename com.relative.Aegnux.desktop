@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Aegnux
+Comment=A convenient way to install Adobe After Effects on Linux using Wine.
+StartupWMClass=com.relative.Aegnux
+Exec=/opt/aegnux/run.sh
+Icon=com.relative.Aegnux
+Type=Application
+Categories=Utility;
