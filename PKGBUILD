@@ -13,8 +13,8 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.21.9_1.1.0_0.17.2-1"
-_minecraft_ver_latest="1.21.9"
+_ver="1.21.10_1.1.0_0.17.3-1"
+_minecraft_ver_latest="1.21.10"
 
 IFS="-" read -ra _ver_temp <<<"$_ver"
 IFS="_" read -ra _pkgver_temp <<<"${_ver_temp[0]}"
@@ -54,8 +54,8 @@ backup=("etc/conf.d/${_fabric_name}")
 install="fabric-server.install"
 
 source=(
-	"minecraft-server-${_mng_ver}.tar.gz"::"https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v${_mng_ver}.tar.gz"
-	"fabric-installer-${_fabric_ver}.jar"::"https://maven.fabricmc.net/net/fabricmc/fabric-installer/${_fabric_ver}/fabric-installer-${_fabric_ver}.jar"
+	"minecraft-server-${_mng_ver}.tar.gz::https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v${_mng_ver}.tar.gz"
+	"fabric-installer-${_fabric_ver}.jar::https://maven.fabricmc.net/net/fabricmc/fabric-installer/${_fabric_ver}/fabric-installer-${_fabric_ver}.jar"
 )
 noextract=("fabric-${_pkgver}.jar")
 sha512sums=(
@@ -106,15 +106,12 @@ package() {
 	install -Dm644 "server.jar" "${_server_root}/server.jar"
 
 	# install the libraries subfolder
-	# 1 create the emptyfolder structure
-	install -dm755 "libraries" "${_server_root}/libraries"
-	for d in $(find "libraries" -type d); do
-		install -d --mode 755 "$d" "${_server_root}/${d}"
-	done
-	# 2 install all files
-	for f in $(find "libraries" -type f); do
-		install -D --mode 755 "$f" "${_server_root}/${f}"
-	done
+    # 1 create the emptyfolder structure
+    install -dm755 "libraries" "${_server_root}/libraries"
+    find "libraries" -type d -exec install -d --mode 755 {} "${_server_root}/{}" \;
+
+    # 2 install all files
+    find "libraries" -type f -exec install -D --mode 755 {} "${_server_root}/{}" \;
 
 	# Link log files
 	mkdir -p "${pkgdir}/var/log/"
