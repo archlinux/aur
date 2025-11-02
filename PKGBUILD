@@ -1,7 +1,7 @@
 # Maintainer: amadejk <amadejkastelic7@gmail.com>
 pkgname=hyprlux
-pkgver=0.1.6
-pkgrel=3
+pkgver=0.1.7
+pkgrel=1
 pkgdesc="Hyprland utility that automates vibrance and night light control"
 arch=('x86_64')
 url="https://github.com/amadejkastelic/Hyprlux"
@@ -16,7 +16,7 @@ source=(
     "config.toml"
 )
 sha256sums=(
-    'ee1e24153f12a732eff6bf430ca773e0ebb4b16ec2688956913a917d0410a78a'
+    'b98eb99b3aa5d61fe897f9b75661b6abe5c8d66326a58100e8ffe83264453686'
     '7e2586a52438688fb3fc1dfe0ac073b2751a4155cd6fc99b52abc0f152a2b0a8'
     '727f8015318fbf5914f3d8cda1302214e4f72da4b16296e4f140f1e9e4e6292f'
 )
