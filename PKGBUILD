@@ -2,11 +2,11 @@
 
 _pkgname=wayshot
 pkgname="$_pkgname-git"
-pkgver=1.3.0.r5.43fae61e
+pkgver=1.3.1.r65
 pkgrel=1
 pkgdesc="Screenshot tool for wlroots compositors"
 arch=(x86_64)
-url="https://git.sr.ht/~shinyzenith/$_pkgname"
+url="https://github.com/waycrate/$_pkgname"
 license=(BSD)
 depends=(gcc-libs glibc)
 makedepends=(cargo git scdoc)
@@ -28,10 +28,10 @@ prepare() {
 
 pkgver() {
 	cd $_pkgname/$_pkgname
-	git blame -s -L"/^version =/,+1" Cargo.toml | awk '{
-		ver = gensub(/[^0-9.]/, "", "g", $5);
+	git tag --list --sort=-version:refname | head -n1 | awk '{
+		ver = gensub(/[^0-9.]/, "", "g", $1);
 		"git rev-list --count "$1"..HEAD" | getline commit_count;
-		print ver".r"commit_count"."$1
+		print ver".r"commit_count
 	}'
 }
 
