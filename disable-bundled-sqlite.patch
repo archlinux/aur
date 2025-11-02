@@ -1,0 +1,21 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 1e42a4c..9e9936c 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -17,10 +17,15 @@ serde_yaml = "0.9"
+ dirs = "5"
+ chrono = { version = "0.4", features = ["serde"] }
+ notify = "6"
+-rusqlite = { version = "0.31", features = ["bundled", "column_decltype"] }
++rusqlite = { version = "0.31", default-features = false, features = ["column_decltype"] }
+ reqwest = { version = "0.12", features = ["blocking"] }
+ open = "5"
+ regex = "1"
+ webkit6 = "0.5"
+ tiny_http = "0.12"
+ yt-transcript-rs = "0.1.8"
++
++[features]
++default = ["sqlite-bundled"]
++sqlite-bundled = ["rusqlite/bundled"]
++sqlite-system = []
