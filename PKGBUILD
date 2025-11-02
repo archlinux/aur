@@ -25,5 +25,5 @@ package() {
   find "${pkgdir}/usr" -type f -exec chmod 644 {} \;
   find "${pkgdir}/usr" -type d -exec chmod 755 {} \;
 
-  install -Dm644 "${srcdir}/${pkgname}/COPYING" "${pkgdir}/usr/share/licenses/beautyLine/LICENSE"
+  install -Dm644 "${srcdir}/${pkgname}-${_commit}/COPYING" "${pkgdir}/usr/share/licenses/beautyLine/LICENSE"
 }
