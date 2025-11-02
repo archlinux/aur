@@ -1,0 +1,24 @@
+[Unit]
+Description=vLLama - vLLM + Ollama Hybrid Server
+After=network.target ollama.service
+Requires=ollama.service
+Documentation=https://github.com/erkkimon/vllama
+
+[Service]
+Type=simple
+User=vllama
+Group=vllama
+WorkingDirectory=/opt/vllama
+Environment=PATH=/opt/vllama/venv312/bin:/usr/bin
+# Use wrapper script that activates venv312
+ExecStart=/usr/bin/vllama
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+ReadWritePaths=/tmp /var/tmp /opt/vllama
+
+# Resource limits
+LimitNOFILE=65536
+MemoryMax=20G
+
+[Install]
+WantedBy=multi-user.target
