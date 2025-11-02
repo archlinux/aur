@@ -1,0 +1,14 @@
+pkgbase = steamaudio-bin
+	pkgdesc = A cross-platform software toolkit for spatial audio.
+	pkgver = 4.7.0
+	pkgrel = 1
+	url = https://github.com/ValveSoftware/steam-audio
+	arch = x86_64
+	license = Apache-2.0
+	depends = gcc-libs
+	depends = glibc
+	provides = libphonon.so
+	source = https://github.com/ValveSoftware/steam-audio/releases/download/v4.7.0/steamaudio_4.7.0.zip
+	sha256sums = ff3a7283bf7428c963dd2f9ba63738fc43e688ecb4727f7574e0ccf92c91bfb4
+
+pkgname = steamaudio-bin
