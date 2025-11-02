@@ -15,10 +15,6 @@ optdepends=('python-cryptography: s3cse' 'chalice: chalice')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('ea8d8787d315594842fbfcf2c4dce3bac2ad61be275bc8584b2ce9a3402a6979')
 
-prepare(){
-  cd "$srcdir"/$_name-$pkgver
-}
-
 build() {
   cd "$srcdir"/$_name-$pkgver
   python -m build --wheel --no-isolation
