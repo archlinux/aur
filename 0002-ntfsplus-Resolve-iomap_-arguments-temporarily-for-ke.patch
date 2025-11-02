@@ -1,7 +1,7 @@
-From a6d86e81b1193f8a5efa4cfd7fdcc206d6ec77fe Mon Sep 17 00:00:00 2001
+From d43da5e38d8b88cac71e06f9fe32c8cb731b1a3d Mon Sep 17 00:00:00 2001
 From: shadichy <shadichy@blisslabs.org>
 Date: Fri, 24 Oct 2025 01:48:52 +0700
-Subject: [PATCH 2/5] ntfsplus: Resolve iomap_* arguments (temporarily) for
+Subject: [PATCH 2/8] ntfsplus: Resolve iomap_* arguments (temporarily) for
  kernel older than 6.17
 
 ---

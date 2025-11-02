@@ -1,8 +1,8 @@
-From 445a442563ad21156f748d45c652618921b29ebd Mon Sep 17 00:00:00 2001
+From c95407b12bdad7c7940c4e288a2c9ec0465d5d91 Mon Sep 17 00:00:00 2001
 From: shadichy <shadichy@blisslabs.org>
 Date: Sun, 2 Nov 2025 04:35:50 +0700
-Subject: [PATCH 5/5] ntfsplus: compress.c: using `page->index` instead of
- `page->__folio_index` for kernels older than 6.15
+Subject: [PATCH 5/8] ntfsplus: compress.c: using `page->index` instead of
+ `page->__folio_index` for kernels older than 6.16
 
 ---
  fs/ntfsplus/compress.c | 33 +++++++++++++++++++++++++++++----

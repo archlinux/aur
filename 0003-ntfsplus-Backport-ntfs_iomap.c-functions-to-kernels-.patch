@@ -1,7 +1,7 @@
-From 5d4d8d657172d010a4bc953f600c0f40ce86a3ab Mon Sep 17 00:00:00 2001
+From 39b4718e8057dbee6c5f4b9ea9fbbf42f9ebec7a Mon Sep 17 00:00:00 2001
 From: shadichy <shadichy@blisslabs.org>
 Date: Sun, 2 Nov 2025 03:43:12 +0700
-Subject: [PATCH 3/5] ntfsplus: Backport ntfs_iomap.c functions to kernels
+Subject: [PATCH 3/8] ntfsplus: Backport ntfs_iomap.c functions to kernels
  older than 6.17
 
 ---

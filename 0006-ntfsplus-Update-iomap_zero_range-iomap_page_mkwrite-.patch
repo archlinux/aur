@@ -1,0 +1,145 @@
+From 4d56e31f40c7000df3c700df0d9aad6ff536a0b4 Mon Sep 17 00:00:00 2001
+From: shadichy <shadichy@blisslabs.org>
+Date: Sun, 2 Nov 2025 13:42:58 +0700
+Subject: [PATCH 6/8] ntfsplus: Update `iomap_zero_range`, `iomap_page_mkwrite`
+ and `iomap_truncate_page` for kernels older than 6.15
+
+---
+ fs/ntfsplus/file.c  | 47 ++++++++++++++++++++++++++++++---------------
+ fs/ntfsplus/inode.c |  8 +++++---
+ 2 files changed, 36 insertions(+), 19 deletions(-)
+
+diff --git a/fs/ntfsplus/file.c b/fs/ntfsplus/file.c
+index f9caddf0b..ed90c14a1 100644
+--- a/fs/ntfsplus/file.c
++++ b/fs/ntfsplus/file.c
+@@ -292,11 +292,13 @@ int ntfs_setattr(struct mnt_idmap *idmap, struct dentry *dentry,
+ 			if (NInoNonResident(NTFS_I(vi)) &&
+ 			    attr->ia_size < old_size) {
+ 				err = iomap_truncate_page(vi, attr->ia_size, NULL,
+-							  &ntfs_read_iomap_ops,
++							  &ntfs_read_iomap_ops
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0))
+-							  &ntfs_iomap_folio_ops,
++								, &ntfs_iomap_folio_ops, NULL
++#elif (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 15, 0))
++								, NULL
+ #endif
+-								NULL);
++								);
+ 				if (err)
+ 					goto out;
+ 			}
+@@ -314,11 +316,13 @@ int ntfs_setattr(struct mnt_idmap *idmap, struct dentry *dentry,
+ 							round_up(old_size, PAGE_SIZE) - old_size,
+ 							attr->ia_size - old_size);
+ 				err = iomap_zero_range(vi, old_size, len,
+-						       NULL, &ntfs_read_iomap_ops,
++						       NULL, &ntfs_read_iomap_ops
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0))
+-					      	 &ntfs_iomap_folio_ops,
++					      	 , &ntfs_iomap_folio_ops, NULL
++#elif (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 15, 0))
++					      	 , NULL
+ #endif
+-					      	 NULL);
++					      	 );
+ 			}
+ 		}
+ 		if (ia_valid == ATTR_SIZE)
+@@ -695,7 +699,11 @@ static vm_fault_t ntfs_filemap_page_mkwrite(struct vm_fault *vmf)
+ 	sb_start_pagefault(inode->i_sb);
+ 	file_update_time(vmf->vma->vm_file);
+ 
+-	ret = iomap_page_mkwrite(vmf, &ntfs_page_mkwrite_iomap_ops, NULL);
++	ret = iomap_page_mkwrite(vmf, &ntfs_page_mkwrite_iomap_ops
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 15, 0))
++		, NULL
++#endif
++		);
+ 	sb_end_pagefault(inode->i_sb);
+ 	return ret;
+ }
+@@ -707,6 +715,7 @@ static const struct vm_operations_struct ntfs_file_vm_ops = {
+ };
+ 
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 16, 0))
++
+ static int ntfs_file_mmap_prepare(struct vm_area_desc *desc)
+ {
+ 	struct file *file = desc->file;
+@@ -983,11 +992,13 @@ static long ntfs_fallocate(struct file *file, int mode, loff_t offset, loff_t le
+ 			to = min_t(loff_t, (start_vcn + 1) << vol->cluster_size_bits,
+ 				   end_offset);
+ 			err = iomap_zero_range(vi, offset, to - offset, NULL,
+-					       &ntfs_read_iomap_ops,
++					       &ntfs_read_iomap_ops
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0))
+-					       &ntfs_iomap_folio_ops,
++					       , &ntfs_iomap_folio_ops, NULL
++#elif (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 15, 0))
++					       , NULL
+ #endif
+-					       NULL);
++					       );
+ 			if (err < 0 || (end_vcn - start_vcn) == 1)
+ 				goto out;
+ 			start_vcn++;
+@@ -997,11 +1008,13 @@ static long ntfs_fallocate(struct file *file, int mode, loff_t offset, loff_t le
+ 
+ 			from = (end_vcn - 1) << vol->cluster_size_bits;
+ 			err = iomap_zero_range(vi, from, end_offset - from, NULL,
+-					       &ntfs_read_iomap_ops,
++					       &ntfs_read_iomap_ops
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0))
+-					       &ntfs_iomap_folio_ops,
++					       , &ntfs_iomap_folio_ops, NULL
++#elif (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 15, 0))
++					       , NULL
+ #endif
+-					       NULL);
++					       );
+ 			if (err < 0 || (end_vcn - start_vcn) == 1)
+ 				goto out;
+ 			end_vcn--;
+@@ -1052,11 +1065,13 @@ static long ntfs_fallocate(struct file *file, int mode, loff_t offset, loff_t le
+ 					   round_up(old_size, PAGE_SIZE) - old_size,
+ 					   offset - old_size);
+ 			err = iomap_zero_range(vi, old_size, len, NULL,
+-					       &ntfs_read_iomap_ops,
++					       &ntfs_read_iomap_ops
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0))
+-					       &ntfs_iomap_folio_ops,
++					       , &ntfs_iomap_folio_ops, NULL
++#elif (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 15, 0))
++					       , NULL
+ #endif
+-					       NULL);
++					       );
+ 		}
+ 		NInoSetFileNameDirty(ni);
+ 		inode_set_mtime_to_ts(vi, inode_set_ctime_current(vi));
+diff --git a/fs/ntfsplus/inode.c b/fs/ntfsplus/inode.c
+index dd0ee4f86..520190307 100644
+--- a/fs/ntfsplus/inode.c
++++ b/fs/ntfsplus/inode.c
+@@ -2418,11 +2418,13 @@ int ntfs_extend_initialized_size(struct inode *vi, const loff_t offset,
+ 	if (!NInoCompressed(ni) && old_init_size < offset) {
+ 		err = iomap_zero_range(vi, old_init_size,
+ 				       offset - old_init_size,
+-				       NULL, &ntfs_read_iomap_ops,
++				       NULL, &ntfs_read_iomap_ops
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0))
+-					     &ntfs_iomap_folio_ops,
++							 , &ntfs_iomap_folio_ops, NULL
++#elif (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 15, 0))
++							 , NULL
+ #endif
+-					     NULL);
++							 );
+ 		if (err)
+ 			return err;
+ 	}
+-- 
+2.51.2
+

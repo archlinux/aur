@@ -1,8 +1,8 @@
-From b2be21a87f6f9104fef7cece84642166abae55b6 Mon Sep 17 00:00:00 2001
+From 22e77c8f27a99be70759f6ae9d044020ae7d5c0b Mon Sep 17 00:00:00 2001
 From: shadichy <shadichy@blisslabs.org>
 Date: Sun, 2 Nov 2025 04:20:28 +0700
-Subject: [PATCH 4/5] ntfsplus: file.c: Using `mmap` instead of `mmap_prepare`
- for kernels older than 6.15
+Subject: [PATCH 4/8] ntfsplus: file.c: Using `mmap` instead of `mmap_prepare`
+ for kernels older than 6.16
 
 ---
  fs/ntfsplus/file.c | 39 +++++++++++++++++++++++++++++++++++++++

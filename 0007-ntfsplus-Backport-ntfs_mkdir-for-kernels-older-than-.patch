@@ -1,0 +1,76 @@
+From 6a0254517a8684e2081fd4fe85f2d727b3653d85 Mon Sep 17 00:00:00 2001
+From: shadichy <shadichy@blisslabs.org>
+Date: Sun, 2 Nov 2025 14:20:59 +0700
+Subject: [PATCH 7/8] ntfsplus: Backport `ntfs_mkdir` for kernels older than
+ 6.15
+
+---
+ fs/ntfsplus/namei.c | 22 ++++++++++++++++------
+ 1 file changed, 16 insertions(+), 6 deletions(-)
+
+diff --git a/fs/ntfsplus/namei.c b/fs/ntfsplus/namei.c
+index d3f9dc629..d9731f7fb 100644
+--- a/fs/ntfsplus/namei.c
++++ b/fs/ntfsplus/namei.c
+@@ -968,7 +968,7 @@ static int ntfs_unlink(struct inode *dir, struct dentry *dentry)
+ 	return err;
+ }
+ 
+-static struct dentry *ntfs_mkdir(struct mnt_idmap *idmap, struct inode *dir,
++static int __ntfs_mkdir_compat(struct mnt_idmap *idmap, struct inode *dir,
+ 		struct dentry *dentry, umode_t mode)
+ {
+ 	struct super_block *sb = dir->i_sb;
+@@ -979,20 +979,20 @@ static struct dentry *ntfs_mkdir(struct mnt_idmap *idmap, struct inode *dir,
+ 	int uname_len;
+ 
+ 	if (NVolShutdown(vol))
+-		return ERR_PTR(-EIO);
++		return -EIO;
+ 
+ 	uname_len = ntfs_nlstoucs(vol, dentry->d_name.name, dentry->d_name.len,
+ 				  &uname, NTFS_MAX_NAME_LEN);
+ 	if (uname_len < 0) {
+ 		if (uname_len != -ENAMETOOLONG)
+ 			ntfs_error(sb, "Failed to convert name to unicode.");
+-		return ERR_PTR(-ENOMEM);
++		return -ENOMEM;
+ 	}
+ 
+ 	err = ntfs_check_bad_char(uname, uname_len);
+ 	if (err) {
+ 		kmem_cache_free(ntfs_name_cache, uname);
+-		return ERR_PTR(err);
++		return err;
+ 	}
+ 
+ 	if (!(vol->vol_flags & VOLUME_IS_DIRTY))
+@@ -1002,13 +1002,23 @@ static struct dentry *ntfs_mkdir(struct mnt_idmap *idmap, struct inode *dir,
+ 	kmem_cache_free(ntfs_name_cache, uname);
+ 	if (IS_ERR(ni)) {
+ 		err = PTR_ERR(ni);
+-		return ERR_PTR(err);
++		return err;
+ 	}
+ 
+ 	d_instantiate_new(dentry, VFS_I(ni));
+-	return ERR_PTR(err);
++	return err;
+ }
+ 
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 15, 0))
++static struct dentry *ntfs_mkdir(struct mnt_idmap *idmap, struct inode *dir,
++	struct dentry *dentry, umode_t mode)
++{
++	return ERR_PTR(__ntfs_mkdir_compat(idmap, dir, dentry, mode));
++}
++#else
++#define ntfs_mkdir __ntfs_mkdir_compat
++#endif
++
+ static int ntfs_rmdir(struct inode *dir, struct dentry *dentry)
+ {
+ 	struct inode *vi = dentry->d_inode;
+-- 
+2.51.2
+
