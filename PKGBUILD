@@ -1,12 +1,14 @@
 # Maintainer: Taha YVR <taha@noiserandom.com>
 pkgname=omarchist-bin
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI app for Omarchy."
 arch=('x86_64' 'aarch64')
 url="https://github.com/tahayvr/omarchist"
 license=('MIT')
 depends=('cairo' 'zstd' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
+provides=('omarchist')
+conflicts=('omarchist' 'omarchist-git')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("${url}/releases/download/v${pkgver}/Omarchist_${pkgver}_amd64.deb")
