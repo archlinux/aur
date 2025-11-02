@@ -19,7 +19,7 @@ pkgbase = dude-bin
 	sha256sums = 6d9d4f05cee53e12936415b68727492c083f80073313787ab13b720d840bfb34
 	sha256sums = 83e55e082ef396c6b632f12ddbd576a1a0da16ff5985973f1fb8f1b4b98fa8ee
 	sha256sums = 7b9ef2f3db7150f04f4af8fe33ecad3d37a647f1bc0b5f21980617fd6989a863
-	source_x86_64 = https://github.com/seeyebe/dude/releases/download/v0.1.1/dude-0.1.1-x86_64-notify.tar.zst
+	source_x86_64 = dude-x86_64-0.1.1.tar.zst::https://github.com/seeyebe/dude/releases/download/v0.1.1/dude-0.1.1-x86_64-notify.tar.zst
 	sha256sums_x86_64 = cc35f686f4b647f62fc8fc186e279ac07ffc6790cc26434e0959f83fd0e08183
 
 pkgname = dude-bin
