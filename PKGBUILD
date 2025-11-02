@@ -4,7 +4,7 @@
 
 pkgname=asciidocfx
 pkgver=1.8.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Asciidoc FX is a book / document editor to build PDF, Epub, Mobi and HTML books, documents and slides"
 arch=('any')
 
@@ -35,7 +35,7 @@ prepare() {
         --pkgdesc "$pkgdesc" \
         --name "AsciidocFX" \
         --exec "/usr/bin/asciidocfx" \
-        --categories "Development;Office;WordProcessor;TextTools;ComputerScience;Documentation;Java"
+        --categories "Development;Office;TextTools;ComputerScience;Documentation;Java"
 }
 
 package() {
