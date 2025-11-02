@@ -2,7 +2,7 @@
 pkgname=miro-pdf
 _pkgname=miro
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A native pdf viewer for Windows and Linux (Wayland/X11) with configurable keybindings."
 arch=('x86_64')
 url="https://github.com/vincent-uden/miro"
@@ -10,6 +10,7 @@ license=('AGPL-3.0-or-later')
 depends=('glibc' 'gcc-libs' 'fontconfig')
 makedepends=('cargo' 'clang')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
+install=$pkgname.install
 sha256sums=('cea71eb4912feb726c53fa2c53d8da6a96d44343d73584ae639092c5a4de0997')
 validpgpkeys=()
 
@@ -30,4 +31,5 @@ build() {
 package() {
 	cd "$srcdir/${_pkgname}-$pkgver"
 	install -Dm755 "$srcdir/${_pkgname}-$pkgver/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 "$srcdir/${_pkgname}-$pkgver/assets/default.conf" "$pkgdir/usr/share/${pkgname}/miro.conf"
 }
