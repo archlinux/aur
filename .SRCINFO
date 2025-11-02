@@ -1,6 +1,6 @@
 pkgbase = gswatcher
 	pkgdesc = A simple game server browser and an administrative tool
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://github.com/lxndr/gswatcher
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = gswatcher
 	depends = geoip
 	depends = geoip-database-extra
 	depends = iso-flag-png
-	source = https://github.com/lxndr/gswatcher/archive/refs/tags/v1.7.2.tar.gz
-	sha256sums = 2c512a431b989e6045e50eb5d0dd661a72e25c4fa9327eeac289f4a06972d5ac
+	source = https://github.com/lxndr/gswatcher/archive/refs/tags/v1.7.3.tar.gz
+	sha256sums = a481917a21e4c9c17e2cb924203737cb92208dc710e77e46c4d938080ad15830
 
 pkgname = gswatcher
