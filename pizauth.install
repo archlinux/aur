@@ -1,0 +1,27 @@
+post_upgrade() {
+    _inRange() {
+        test "$(vercmp "$1" "$3")" = '-1' &&
+        test "$(vercmp "$2" "$4")" = '-1'
+    }
+
+    oldVer="$2"
+    newVer="$1"
+
+    if _inRange 1.0.7.r11.gdeb9691 1.0.11.r69.g7633984 "$oldVer" "$newVer"; then
+        cat <<'EOF'
+pizauth no longer ships the pizauth-state-*.service units
+
+If you've been using them, you need to reconfigure pizauth for state
+dump/reload and reload the configuration.
+(Failure to do so will lose the state updates until this is done,
+potentially requiring reauthentication)
+
+Upstream recommendation is to now instead configure this in startup_cmd
+and token_event_cmd in pizauth.conf.
+
+This can be as simple as
+startup_cmd = "systemd-creds --user decrypt FILE | pizauth restore";
+token_event_cmd = "pizauth dump | systemd-creds --user encrypt FILE";
+EOF
+    fi
+}

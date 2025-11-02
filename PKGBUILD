@@ -2,7 +2,7 @@
 
 pkgname=pizauth-git
 _pkgname="${pkgname%-git}"
-pkgver=1.0.8.r0.g617fff4
+pkgver=1.1.0.r0.g8d38f95
 pkgrel=1
 pkgdesc="OAuth2 token requester daemon"
 arch=('i686' 'x86_64')
@@ -12,6 +12,7 @@ provides=("$_pkgname")
 makedepends=(git cargo)
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
+install=pizauth.install
 
 pkgver() {
     cd "$pkgname"

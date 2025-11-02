@@ -1,8 +1,9 @@
 pkgbase = pizauth-git
 	pkgdesc = OAuth2 token requester daemon
-	pkgver = 1.0.8.r0.g617fff4
+	pkgver = 1.1.0.r0.g8d38f95
 	pkgrel = 1
 	url = https://github.com/ltratt/pizauth
+	install = pizauth.install
 	arch = i686
 	arch = x86_64
 	license = MIT
