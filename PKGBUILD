@@ -13,6 +13,8 @@ url="https://gitlab.freedesktop.org/xorg/lib/libx11"
 depends=('libxcb' 'glibc' 'xorgproto')
 makedepends=('xorg-util-macros' 'xtrans')
 license=('MIT AND X11')
+provides=('libx11')
+conflicts=('libx11')
 source=(https://xorg.freedesktop.org//releases/individual/lib/libX11-${pkgver}.tar.xz{,.sig}
         'mr293.patch::https://gitlab.freedesktop.org/xorg/lib/libx11/-/merge_requests/293.diff')
 sha512sums=('cb7a284d9081a8b67f7d8568d56dc403a4b787e46ac497b07768d236084c01f80f4ea2ebd814f950ac9738adc3baea3912932fc333858195c4f8217744b6f730'
