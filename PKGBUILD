@@ -5,7 +5,7 @@
 
 pkgname=qt5-datavis3d
 _basever=5.15.17
-pkgver=5.15.17
+pkgver=5.15.18
 pkgrel=1
 _commit=a57e633b675d7886c3e5c64441f50ffe831f2de8
 arch=('x86_64')
@@ -22,7 +22,7 @@ sha256sums=('8f264ff76d4899955fb1b820a8f38f197b1a8febd8930bacffcf5affe0733fe8')
 
 pkgver() {
   cd kde-$_pkgfqn
-  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit` | sed -e 's|+kde+r0||'
+  echo "$_basever+kde+r"$(git rev-list --count v$_basever-lts-lgpl..$_commit) | sed -e 's|+kde+r0||'
 }
 
 prepare() {
