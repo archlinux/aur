@@ -1,12 +1,12 @@
-# Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
+# Contributor: Kewl <xrjy@nygb.rh.bet(rot13)>
 
 pkgname='python-korean_lunar_calendar'
 _pkgname=${pkgname#python-}
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to convert Korean lunar-calendar to Gregorian calendar"
 arch=('any')
-depends=()
+depends=('python')
 makedepends=('python-setuptools')
 url="https://github.com/usingsky/korean_lunar_calendar_py"
 license=('GPL3')
