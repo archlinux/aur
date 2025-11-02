@@ -3,12 +3,13 @@
 _pkgname=drasl
 pkgname="${_pkgname}"
 pkgver=3.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Yggdrasil-compatible API server for Minecraft"
 arch=('x86_64' 'aarch64')
 url="https://github.com/unmojang/drasl"
 license=('GPL-3.0-only')
 makedepends=('git' 'go' 'gcc' 'nodejs' 'npm' 'swag')
+depends+=(glibc)
 conflicts=("${_pkgname}")
 source=(
 	"${_pkgname}::git+https://github.com/unmojang/drasl.git#tag=v${pkgver}"
@@ -38,6 +39,6 @@ function package() {
 	make install prefix="${pkgdir}/usr"
 	install -D -m644 ./example/config-example.toml "${pkgdir}/etc/drasl/config-example.toml"
 	install -D -m644 ./example/config-example.toml "${pkgdir}/etc/drasl/config.toml"
-	install -D -m644 ./example/drasl.service "${pkgdir}/etc/systemd/system/${_pkgname}.service"
+	install -D -m644 ./example/drasl.service "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
 }
 
