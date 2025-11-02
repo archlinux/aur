@@ -14,8 +14,7 @@ sha256sums=('SKIP')  # Actualizar después de crear el primer release en GitHub
 build() {
     cd "$pkgname-$pkgver"
     export CARGO_TARGET_DIR=target
-    export RUSQLITE_USE_PKG_CONFIG=1
-    export RUSTFLAGS="-C link-arg=-lsqlite3"
+    export RUSTFLAGS="-C link-arg=-L/usr/lib -C link-arg=-lsqlite3"
     cargo build --release --locked --all-features
 }
 
