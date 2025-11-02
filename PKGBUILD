@@ -1,6 +1,6 @@
 # Maintainer: Arvid Norlander <VorpalBlade@users.noreply.github.com>
 pkgname=filkoll
-_pkgver=0.2.7
+_pkgver=0.2.8
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc="Fast command-not-found handler for Arch Linux"
@@ -10,7 +10,7 @@ license=('GPL-3.0-only')
 makedepends=('cargo')
 options=('!lto') # LTO breaks with C dependencies
 source=("$pkgname-${_pkgver}.tar.gz::https://github.com/VorpalBlade/$pkgname/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('c6dceb46dc4c5db5fec647f9a1de292df5bcd1d503a53b75768bbd065520ee77')
+sha256sums=('f71e64413218f2dc5740ed2612cbee1549956f14973bbe4396f0224f3806a74d')
 _unpacked_dir="${pkgname}-${_pkgver}"
 
 prepare() {
