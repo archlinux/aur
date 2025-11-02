@@ -1,36 +1,96 @@
 # Based on the file created by the Manjaro Team:
 # Maintainer: Philip Müller <philm[AT]manjaro[DOT]org>
 # Contributor: Helmut Stult <helmut[AT]manjaro[DOT]org>
+# Contributor: Steven Seifried <gitlab@canox.net>
 
-# Maintainer: Steven Seifried <gitlab@canox.net>
+# Maintainer: sukanka <su975853527 [AT] gmail [DOT] com>
 
 pkgname=tuxedo-control-center
-pkgver=1.0.14
+pkgver=2.1.20
 pkgrel=1
-pkgdesc="A tool to help you control performance, energy, fan and comfort settings on TUXEDO laptops. "
+pkgdesc="A tool to control performance, energy, fan and comfort settings on TUXEDO laptops. (With system-wide electron) "
 arch=(x86_64)
 url="https://github.com/tuxedocomputers/tuxedo-control-center"
 license=('GPL3')
-depends=('tuxedo-keyboard' 'libxss' 'nss' 'gtk3')
-options=(!strip)
+_electron='electron38'
+depends=(
+  'tuxedo-drivers-dkms'
+  ${_electron}
+  python
+)
+makedepends=('npm' 'git'
+  'openssh'
+)
+options=('!strip' '!debug')
 install=${pkgname}.install
 
-source=(https://rpm.tuxedocomputers.com/opensuse/15.2/x86_64/tuxedo-control-center_${pkgver}.rpm tuxedo-control-center.install)
-sha256sums=('a1a1bd8547209e908df6cc720d36fdeba18a0e35bf4b3f6f3a4bac268deb0cba'
-            'fef8f708ff4ba19921f167ff9bffd2536cc0c128dfe418a30f7e5e0d04fca6e3')
-sha512sums=('01b95c71651ea9ce3b64ebfadf6094b1d607173a3627bbc9efc5fc7a912032005f5dfbc0433462cc7ed5d86026f7c697ab27f090e4210f2799856f8e8b16f4d1'
-            'b70d3412f07c72d6de2cf18e75a184741d8f5db7f144c4d8e8c0dde752e197d831fc8f8b6c095c9b6387ff97b36567f9cf5167dbb23ebc392f7b3cc47a78111a')
+source=(
+  ${url}/archive/refs/tags/v${pkgver}.tar.gz
+  tuxedo-control-center.install
+  tuxedo-control-center.sh
+)
+sha256sums=('d4dead48dc97e547f0b7bcdd2f4cbe18fdf523be251ad040162185ad1d5c0583'
+            'fef8f708ff4ba19921f167ff9bffd2536cc0c128dfe418a30f7e5e0d04fca6e3'
+            '6c393c72100131320be982b52124cda0a56f1f49b9f45b41ab1efb02ade250b7')
+sha512sums=('4db8fad6588809dd2115faff59415009ac343f75b22594f8e0a0ff6d105fc0ca0c4a53978e7e118e10eddd587f674cf19147c50fd906a67db190b2ac9501c761'
+            'b70d3412f07c72d6de2cf18e75a184741d8f5db7f144c4d8e8c0dde752e197d831fc8f8b6c095c9b6387ff97b36567f9cf5167dbb23ebc392f7b3cc47a78111a'
+            '344dd01d332f1288388502c8436728153daa9db974623cd1ad5c340ef21c28a55e23fc139ec25eee1f422eb97d4793d24b9f89010210979ec7bcfc630a6599d6')
 
-package() {
-  cp -av usr "${pkgdir}"
-  cp -av opt "${pkgdir}"
-  chmod -R 755 "${pkgdir}"/opt/tuxedo-control-center/
-  mkdir -p "${pkgdir}/usr/bin"
-  ln -sfv /opt/tuxedo-control-center/tuxedo-control-center "${pkgdir}/usr/bin/tuxedo-control-center"
-  install -Dm644 "${srcdir}/opt/tuxedo-control-center/resources/dist/tuxedo-control-center/data/dist-data/tuxedo-control-center.desktop" "${pkgdir}/usr/share/applications/tuxedo-control-center.desktop"
-  install -Dm644 "${srcdir}/opt/tuxedo-control-center/resources/dist/tuxedo-control-center/data/dist-data/de.tuxedocomputers.tcc.policy" "${pkgdir}/usr/share/polkit-1/actions/de.tuxedocomputers.tcc.policy"
-  install -Dm644 "${srcdir}/opt/tuxedo-control-center/resources/dist/tuxedo-control-center/data/dist-data/com.tuxedocomputers.tccd.conf" "${pkgdir}/usr/share/dbus-1/system.d/com.tuxedocomputers.tccd.conf"
-  install -Dm644 "${srcdir}/opt/tuxedo-control-center/resources/dist/tuxedo-control-center/data/dist-data/tccd.service" "${pkgdir}/etc/systemd/system/tccd.service"
-  install -Dm644 "${srcdir}/opt/tuxedo-control-center/resources/dist/tuxedo-control-center/data/dist-data/tccd-sleep.service" "${pkgdir}/etc/systemd/system/tccd-sleep.service"
+_patch() {
+  cd "${srcdir}/${pkgname}-${pkgver}"/src/dist-data
+  sed -i tccd.service \
+    -e "s|^ExecStart.*|ExecStart=/usr/lib/$pkgname/data/service/tccd  --start|g" \
+    -e "s|^ExecStop.*|ExecStop=/usr/lib/$pkgname/data/service/tccd  --stop|g"
+  sed -i tuxedo-control-center-tray.desktop \
+    -e "s|^Exec=.*|Exec=$pkgname --tray|g"
+  sed -i tuxedo-control-center.desktop \
+    -e "s|^Exec=.*|Exec=$pkgname %U|g" \
+    -e "s|^Icon=.*|Icon=$pkgname|g"
+  sed -i "${srcdir}/${pkgname}-${pkgver}"/src/udev/99-webcam.rules \
+    -e "s|/opt/tuxedo-control-center/resources/dist/|/usr/lib/|g"
 }
+prepare() {
+  sed -i "s|__ELECTRON__|${_electron}|g" "${pkgname}.sh"
 
+  # keep for future, now we have to build with electron13, but use electron38 at runtime
+
+  # cd "${srcdir}/${pkgname}-${pkgver}"
+  # local electronDist="/usr/lib/${_electron}"
+  # local electronVersion="$(<$electronDist/version)"
+
+  # jq ".devDependencies.electron = \"$electronVersion\"" package.json |
+  #   jq ".build.electronDist = \"$electronDist\"" |
+  #   jq ".build.electronVersion = \"$electronVersion\"" |
+  #   sponge package.json
+
+  (
+    _patch
+  )
+}
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+  export NODE_OPTIONS=--openssl-legacy-provider
+  npm install
+  npm run build
+  cd dist/${pkgname}
+  npm install tslib dbus-next rxjs node-ble xliff
+}
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"/src/dist-data
+  install -Dm644 tuxedo-control-center{,-tray}.desktop -t "${pkgdir}/usr/share/applications"
+  install -Dm644 tuxedo-control-center_256.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
+  install -Dm644 tuxedo-control-center_256.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+
+  install -Dm644 com.tuxedocomputers.{tccd,tomte}.policy -t "${pkgdir}/usr/share/polkit-1/actions"
+  install -Dm644 com.tuxedocomputers.tcc.metainfo.xml -t "${pkgdir}/usr/share/metainfo"
+
+  install -Dm644 "com.tuxedocomputers.tccd.conf" -t "${pkgdir}/usr/share/dbus-1/system.d"
+  install -Dm644 tccd{,-sleep}.service -t "${pkgdir}/usr/lib/systemd/system"
+
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  cp -r dist/${pkgname} "${pkgdir}/usr/lib/${pkgname}"
+  install -Dm644 "src/udev/99-webcam.rules" -t "${pkgdir}/usr/lib/udev/rules.d"
+
+  install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+}
