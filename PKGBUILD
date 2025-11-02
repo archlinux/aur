@@ -1,5 +1,5 @@
 pkgname=scopehal-apps-git
-pkgver=0.0.e0dd8c5a
+pkgver=r3579.47ce3fbf
 pkgrel=1
 pkgdesc="glscopeclient and other client applications for libscopehal"
 arch=('x86_64')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/scopehal-apps"
-  echo "0.0."$(git describe --always)
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
