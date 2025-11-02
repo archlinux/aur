@@ -1,10 +1,10 @@
 # Maintainer: badcast <lmecomposer@gmail.com>
 # Contributor: Artem Izmaylov <support@aimp.ru>
 
-_pkver=(6.00 3015a)
+_pkver=(6.00 3016)
 pkgname=aimp
 pkgver=${_pkver[0]}.${_pkver[1]}
-pkgrel=3
+pkgrel=1
 url="https://www.aimp.ru"
 pkgdesc="A powerful free audio player (v6 Alpha, Unstable)"
 arch=('x86_64')
@@ -12,8 +12,8 @@ conflicts=('aimp')
 provides=('aimp')
 license=('Freeware')
 depends=('hicolor-icon-theme' 'gtk2' 'gdk-pixbuf2' 'cairo' 'pango' 'sqlite' 'libvorbis' 'libao' 'opus-tools')
-source=("https://imister.kz/linux/aimp-${_pkver[0]}-${_pkver[1]}-${arch}.pkg.tar.zst")
-sha256sums=('270d7c472d9ff671111a99b33bce71c474f3b90263a9b60d37ac3322c3730e24')
+source=("https://www.aimp.ru/files/windows/builds/aimp-nightly-${arch}.pkg.tar.zst")
+sha256sums=('c521c66fa60778eb19037d9b96e6a5f54aeb96c911375ce6c35753a263bb2663')
 
 package(){
    rm -fr "${srcdir}/usr/share/lintian"
