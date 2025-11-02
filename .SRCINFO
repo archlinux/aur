@@ -1,7 +1,7 @@
 pkgbase = zl-equalizer
 	pkgdesc = Parametric, dynamic equalizer plugin by ZL Audio
 	pkgver = 0.6.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://zl-audio.github.io/plugins/zlequalizer/
 	arch = x86_64
 	license = AGPL-3.0
