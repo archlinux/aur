@@ -1,8 +1,8 @@
-# Maintainer: Abel <tu-email@dominio.com>
+# Maintainer: k4ditano <k4ditano@h2r.es>
 pkgname=notnative-app
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
-pkgdesc="Note-taking application with Vim-like keybindings"
+pkgdesc="Blazingly fast native note-taking app with vim-like keybindings, built for Omarchy OS"
 arch=('x86_64')
 url="https://github.com/k4ditano/notnative-app"
 license=('MIT')
@@ -10,15 +10,8 @@ depends=('gtk4' 'webkitgtk-6.0' 'libadwaita' 'gtksourceview5' 'libpulse' 'sqlite
 makedepends=('cargo' 'rust' 'git' 'pkgconf')
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-    "disable-bundled-sqlite.patch"
 )
-sha256sums=('SKIP'
-            'SKIP')
-
-prepare() {
-    cd "$pkgname-$pkgver"
-    patch -Np1 -i "$srcdir/disable-bundled-sqlite.patch"
-}
+sha256sums=('c5483995631ee79889b12dfa6e4434ea0a333f4dde8e4a164f14adb1514ea8fc')
 
 build() {
     cd "$pkgname-$pkgver"
