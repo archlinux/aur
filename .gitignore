@@ -1,0 +1,14 @@
+# Build artifacts
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+pkg/
+src/
+sunsetr/
+
+# Source tarballs
+*.tar.gz
+*.tar.xz
+*.tar.bz2
+*.zip
+
+*.log
