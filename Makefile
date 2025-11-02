@@ -20,7 +20,7 @@ PKGBUILD: version
 	m4 $< > $*
 
 .SRCINFO: PKGBUILD
-	mksrcinfo
+	makepkg --printsrcinfo > $@
 
 commit: .SRCINFO version
 	git diff --exit-code > /dev/null || git commit -am "`cat version`"
