@@ -2,10 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-connectivity
-_basever=5.15.17
-pkgver=5.15.17+kde+r2
+_basever=5.15.18
+pkgver=5.15.18+kde+r1
 pkgrel=1
-_commit=15961348aa26b73248432a0a274b332c36cd0054
+_commit=f1be05c8efeb65b77a8bfd21763ab55bb5c04906
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -16,7 +16,7 @@ optdepends=('qt5-declarative: QML bindings')
 groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('cb9dbca7aaaa873cad2611c7afa5e95a8edb81f3a9622acbabbad8e0145a8149')
+sha256sums=('0f5d727328575d49386b72b7580c1d50eb5a55451e0217ba2e81d4dfb8e3f836')
 
 pkgver() {
   cd kde-$_pkgfqn
