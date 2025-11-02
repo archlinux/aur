@@ -1,0 +1,32 @@
+## arg 1:  the new package version
+post_install() {
+	echo "==========================================================================="
+	echo "Miro-pdf comes with a binding configuration file"
+	echo "that needs to be installed into your home directory."
+	echo ""
+	echo "Please copy the file at /usr/share/miro-pdf/miro.conf"
+	echo "to ~/.config/miro-pdf/miro.conf"
+	echo ""
+	echo "This needs to be done for every version of miro-pdf."
+	echo ""
+	echo "This can be done with the following command:"
+	echo "install -Dm644 /usr/share/miro-pdf/miro.conf ~/.config/miro-pdf/miro.conf"
+	echo "========================================================================="
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	echo "==========================================================================="
+	echo "Miro-pdf comes with a binding configuration file"
+	echo "that needs to be installed into your home directory."
+	echo ""
+	echo "Please copy the file at /usr/share/miro-pdf/miro.conf"
+	echo "to ~/.config/miro-pdf/miro.conf"
+	echo ""
+	echo "This needs to be done for every version of miro-pdf."
+	echo ""
+	echo "This can be done with the following command:"
+	echo "install -Dm644 /usr/share/miro-pdf/miro.conf ~/.config/miro-pdf/miro.conf"
+	echo "========================================================================="
+}
