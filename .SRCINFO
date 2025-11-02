@@ -1,7 +1,7 @@
 pkgbase = walker-git
 	pkgdesc = wayland application runner (git version)
 	pkgver = r1622.2058de1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/abenz1267/walker
 	arch = x86_64
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = walker-git
 	depends = cairo
 	provides = walker
 	conflicts = walker
-	source = walker-git::git+https://github.com/abenz1267/walker.git
+	source = walker-git::git+https://github.com/abenz1267/walker.git#branch=dev
 	sha256sums = SKIP
 
 pkgname = walker-git

@@ -2,7 +2,7 @@
 
 pkgname=walker-git
 pkgver=r1622.2058de1
-pkgrel=1
+pkgrel=2
 pkgdesc='wayland application runner (git version)'
 url='https://github.com/abenz1267/walker'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('cargo' 'gobject-introspection' 'glibc' 'protobuf' 'git')
 depends=('gtk4-layer-shell' 'poppler-glib' 'cairo')
 conflicts=('walker')
 provides=('walker')
-source=("${pkgname}::git+${url}.git")
+source=("${pkgname}::git+${url}.git#branch=dev")
 sha256sums=('SKIP')
 
 pkgver() {
