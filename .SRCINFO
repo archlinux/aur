@@ -1,0 +1,16 @@
+pkgbase = perforator-git
+	pkgdesc = Continuous profiling tool designed for large data centers (git version)
+	pkgver = 0.0.7.r2.g4a716a938
+	pkgrel = 1
+	url = https://github.com/yandex/perforator/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python
+	depends = glibc
+	provides = perforator
+	conflicts = perforator
+	source = git+https://github.com/yandex/perforator.git
+	sha256sums = SKIP
+
+pkgname = perforator-git
