@@ -1,14 +1,14 @@
 pkgbase = gonzo-bin
 	pkgdesc = The Go based TUI log analysis tool
-	pkgver = 0.1.4
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/control-theory/gonzo
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	source_x86_64 = gonzo_0.1.4_x86_64.gz::https://github.com/control-theory/gonzo/releases/download/v0.1.4/gonzo-0.1.4-linux-amd64.tar.gz
-	sha256sums_x86_64 = fde5908552a1158fa6e7cf9d4b3c87300ec099ad9eff800e7e39e035588be157
-	source_aarch64 = gonzo_0.1.4_aarch64.gz::https://github.com/control-theory/gonzo/releases/download/v0.1.4/gonzo-0.1.4-linux-arm64.tar.gz
-	sha256sums_aarch64 = 1a3e268b7e8410c43210e8a9a5f126b8c088284e270e5d7872ff432e3a84d489
+	source_x86_64 = gonzo_0.2.1_x86_64.gz::https://github.com/control-theory/gonzo/releases/download/v0.2.1/gonzo-0.2.1-linux-amd64.tar.gz
+	sha256sums_x86_64 = 119f687d2c9a62aa21e2992f4db129a774e8251bc16851a9efc4a8ea3f45e394
+	source_aarch64 = gonzo_0.2.1_aarch64.gz::https://github.com/control-theory/gonzo/releases/download/v0.2.1/gonzo-0.2.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 732fe2549334ba410cd5c6af24135bfc4e497adb175efe3f9dc29fbb1612efa9
 
 pkgname = gonzo-bin
