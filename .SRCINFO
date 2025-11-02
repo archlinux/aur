@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-tools-static
 	pkgdesc = A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)
-	pkgver = 5.15.17+kde+r3
+	pkgver = 5.15.18+kde+r3
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -20,11 +20,11 @@ pkgbase = mingw-w64-qt5-tools-static
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://invent.kde.org/qt/qt/qttools#commit=e02ce0dfa692913bd5dcc50917f7e21f5a41cd2b
+	source = git+https://invent.kde.org/qt/qt/qttools#commit=fa40a2d3373b89be0cd0a43fe0c1d047e3d34058
 	source = 0001-Fix-linguist-macro.patch
 	source = 0002-Avoid-build-error-in-qcollectiongenerator.patch
-	sha256sums = 5085b155531670bbc019bb7a29eebc333f26e5f8076ef6c2593b22a25daccccf
-	sha256sums = 10fc2ce11300a73acdbac4d84391fefccae89ab105416a98a2dfb074d3d601e7
-	sha256sums = 863a628588e0a608dfbf4dc94a2e9de50afb8e61a7ef09544d4c9db51823d968
+	sha256sums = 6cb7ecf17d6d62b786b40c38fdcd2243d95944d58240a66c7e0b27b867ea8b44
+	sha256sums = f4d318743d1fc962bee6e241dc810042bd662fd14b808820083e22254b56cb39
+	sha256sums = 7bbf04b0a2cc4b9a42793873c5f721e1c2e0c2d1c4c0887135b800a6a50d4f59
 
 pkgname = mingw-w64-qt5-tools-static
