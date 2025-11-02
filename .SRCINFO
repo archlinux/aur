@@ -1,5 +1,5 @@
 pkgbase = python-langgraph-api
-	pkgver = 0.4.46
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://pypi.org/project/langgraph-api/
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = python-langgraph-api
 	depends = python-opentelemetry-api
 	depends = python-opentelemetry-sdk
 	depends = python-opentelemetry-exporter-otlp-proto-http
-	source = https://files.pythonhosted.org/packages/source/l/langgraph-api/langgraph_api-0.4.46.tar.gz
-	sha256sums = b1c544216cb512c42422a03dd0c95407ea44e37454959e3ee273425f1bb7329b
+	source = https://files.pythonhosted.org/packages/source/l/langgraph-api/langgraph_api-0.5.0.tar.gz
+	sha256sums = 9dc5c711f20a2c8a50b890fd6ddf0ecc5baa0e2f0609f2befe9f4744d375a180
 
 pkgname = python-langgraph-api

@@ -2,7 +2,7 @@
 
 _name=langgraph-api
 pkgname=python-$_name
-pkgver=0.4.46
+pkgver=0.5.0
 pkgrel=1
 pkgdesc=""
 arch=('any')
@@ -11,7 +11,7 @@ license=('Elastic-2.0')
 depends=('python' 'python-sse-starlette' 'python-starlette' 'python-watchfiles' 'python-langgraph' 'python-langgraph-checkpoint' 'python-orjson' 'uvicorn' 'python-langsmith' 'python-httpx' 'python-langchain-core' 'python-tenacity' 'python-jsonschema-rs' 'python-structlog' 'python-pyjwt' 'python-cryptography' 'python-langgraph-sdk' 'python-cloudpickle' 'python-langgraph-runtime-inmem' 'python-truststore' 'python-protobuf' 'python-grpcio' 'python-grpcio-tools' 'python-opentelemetry-api' 'python-opentelemetry-sdk' 'python-opentelemetry-exporter-otlp-proto-http')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('b1c544216cb512c42422a03dd0c95407ea44e37454959e3ee273425f1bb7329b')
+sha256sums=('9dc5c711f20a2c8a50b890fd6ddf0ecc5baa0e2f0609f2befe9f4744d375a180')
 
 build() {
     cd "$srcdir"/${_name//-/_}-$pkgver
