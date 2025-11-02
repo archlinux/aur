@@ -9,7 +9,7 @@
 
 _qt_module=qtspeech
 pkgname=mingw-w64-qt5-speech
-pkgver=5.15.17
+pkgver=5.15.18
 pkgrel=1
 arch=('any')
 pkgdesc="Qt module to make text to speech and speech recognition easy (mingw-w64)"
@@ -20,7 +20,7 @@ makedepends=('mingw-w64-gcc')
 #optdepends=('mingw-w64-flite: flite TTS backend' 'mingw-w64-speech-dispatcher: speech-dispatcher TTS backend')
 #makedepends=('mingw-w64-gcc' 'mingw-w64-flite' 'mingw-w64-speech-dispatcher')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-_commit=088b86a0e53ebb714c1276d041ab2c06fee58e6e
+_commit=aa2376f9b1302222edcd16b4641bbd7004318c00
 _basever=${pkgver%%+*}
 pkgver+=+kde+r1
 makedepends+=('git')
@@ -29,7 +29,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('02cec0b6b5876b6980f67adeb12a892436cb76a487dde1008c9f9d9347643c5a')
+sha256sums=('7904658d80ef1c517edc8cf223da2e0b5be4ebd3909cbd604b8b19c2e50c9a92')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
