@@ -13,9 +13,9 @@
  // PHP minimum requirement
  if (!defined('GRAV_PHP_MIN')) {
      define('GRAV_PHP_MIN', '7.3.6');
---- a/system/src/Grav/Console/Gpm/SelfupgradeCommand.php	2021-04-15 20:04:58.000000000 +0200
-+++ b/system/src/Grav/Console/Gpm/SelfupgradeCommand.php	2021-04-21 21:14:16.576531405 +0200
-@@ -94,6 +94,10 @@
+--- a/system/src/Grav/Console/Gpm/SelfupgradeCommand.php	2025-10-31 20:13:23.000000000 +0100
++++ b/system/src/Grav/Console/Gpm/SelfupgradeCommand.php	2025-11-02 16:20:21.525422475 +0100
+@@ -108,6 +108,10 @@
          $input = $this->getInput();
          $io = $this->getIO();
  
