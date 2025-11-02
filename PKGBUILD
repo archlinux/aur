@@ -3,7 +3,7 @@
 _pkgname="ymir-emu"
 pkgname="$_pkgname-git"
 pkgver=0.2.0.r33.g84bd519
-pkgrel=1
+pkgrel=2
 pkgdesc="Sega Saturn emulator"
 url="https://github.com/StrikerX3/Ymir"
 license=('GPL-3.0-only')
@@ -43,6 +43,9 @@ sha256sums=(
 prepare() {
   cd "$_pkgsrc"
   git submodule update --init --recursive --depth=1
+
+  # force xwayland to avoid scaling bug
+  sed -e '/int main/a setenv("SDL_VIDEODRIVER", "x11", 1);' -i apps/ymir-sdl3/src/main.cpp
 
   # allow find modules; config may not exist
   sed -E -e '/find_package/s&\bCONFIG\b&&g' \
@@ -114,8 +117,8 @@ build() {
     -DYmir_VERSION_PRERELEASE=AUR
 
     # extra binaries
-    -DYmir_ENABLE_SANDBOX=ON
-    -DYmir_ENABLE_YMDASM=ON
+    -DYmir_ENABLE_SANDBOX=OFF
+    -DYmir_ENABLE_YMDASM=OFF
 
     -DStb_INCLUDE_DIR=/usr/include/stb
   )
