@@ -5,8 +5,9 @@
 
 _reponame=mu
 pkgname=mu-git
-pkgver=1.12.14.dev1.r7608
+pkgver=1.12.14.dev2.r7631
 pkgrel=1
+epoch=2
 pkgdesc="mu and mu4e from git"
 arch=(i686 x86_64)
 url="http://www.djcbsoftware.nl/code/mu"

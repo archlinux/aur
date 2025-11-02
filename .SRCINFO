@@ -1,7 +1,8 @@
 pkgbase = mu-git
 	pkgdesc = mu and mu4e from git
-	pkgver = 1.12.14.dev1.r7608
+	pkgver = 1.12.14.dev2.r7631
 	pkgrel = 1
+	epoch = 2
 	url = http://www.djcbsoftware.nl/code/mu
 	arch = i686
 	arch = x86_64
