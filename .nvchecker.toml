@@ -1,0 +1,5 @@
+[airwindows-lv2]
+source = "git"
+git = "https://git.sr.ht/~hannes/airwindows-lv2"
+use_max_tag = true
+prefix = "v"
