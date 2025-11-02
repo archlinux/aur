@@ -1,6 +1,6 @@
 pkgbase = liblxi
 	pkgdesc = LXI library
-	pkgver = 1.17
+	pkgver = 1.22
 	pkgrel = 1
 	url = https://github.com/lxi/liblxi
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = liblxi
 	optdepends = lxi-tools
 	provides = liblxi
 	conflicts = liblxi-git
-	source = https://github.com/lxi/liblxi/releases/download/v1.17/liblxi-1.17.tar.xz
-	sha256sums = 4c0f15cbc07e8df4f7519e61d2d28f8f4479865af55fa195a9e8f9032126e58a
+	source = https://github.com/lxi/liblxi/releases/download/v1.22/liblxi-1.22.tar.xz
+	sha256sums = 14d46cc60f38998bccb6d6cda020048340bb9e0bc0afabbd77ff89b6bb05ccdb
 
 pkgname = liblxi

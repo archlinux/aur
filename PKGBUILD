@@ -1,6 +1,6 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 pkgname=liblxi
-pkgver=1.17
+pkgver=1.22
 pkgrel=1
 pkgdesc="LXI library"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('libxml2' 'avahi' 'libadwaita')
 makedepends=('meson')
 optdepends=('lxi-tools')
 source=("https://github.com/lxi/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('4c0f15cbc07e8df4f7519e61d2d28f8f4479865af55fa195a9e8f9032126e58a')
+sha256sums=('14d46cc60f38998bccb6d6cda020048340bb9e0bc0afabbd77ff89b6bb05ccdb')
 
 
 build() {
