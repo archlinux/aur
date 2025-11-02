@@ -1,7 +1,7 @@
 # Maintainer: Dustin Pilgrim <dustin.pilgrim1997@gmail.com>
 
 pkgname=snug
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Wrapping your Wayland sessions for a cozy look"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('wayland' 'libinput')
 makedepends=('cargo')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ddf811b6e4eb8153b4139282245ddd3f07610d2a6bd2614f43e4305f6717494e')
+sha256sums=('380e4b53c3eb15ebce60e7d29f3218743b300ae2d0e8740ac8ab95154c6b6965')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
