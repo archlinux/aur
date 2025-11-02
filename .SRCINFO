@@ -1,13 +1,13 @@
 pkgbase = beautyline
 	pkgdesc = Outlined icons designed to have unified look and comprehensive coverage with the Candy icon pack (best suited to use with Sweet theme)
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.com/garuda-linux/themes-and-settings/artwork/beautyline
 	arch = any
 	license = GPL
 	options = !strip
-	source = https://gitlab.com/garuda-linux/themes-and-settings/artwork/beautyline/-/archive/b9cadf376d2e472dc43cc370aaf7bed4c727f0ec/beautyline-b9cadf376d2e472dc43cc370aaf7bed4c727f0ec.tar.gz
+	source = https://gitlab.com/garuda-linux/themes-and-settings/artwork/beautyline/-/archive/1b123f5004f9c77a77d778f02064ecd9b415aa3e/beautyline-1b123f5004f9c77a77d778f02064ecd9b415aa3e.tar.gz
 	sha256sums = SKIP
 
 pkgname = beautyline
