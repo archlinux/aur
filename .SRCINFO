@@ -1,7 +1,7 @@
 pkgbase = vllama
 	pkgdesc = vLLM + Ollama hybrid server - Fast inference with Ollama model management
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/erkkimon/vllama
 	install = vllama.install
 	arch = x86_64
