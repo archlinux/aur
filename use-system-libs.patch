@@ -1,5 +1,5 @@
 diff --git a/Makefile.common b/Makefile.common
-index 09d2356..a5e2293 100644
+index a6c7a6d..ad5447d 100644
 --- a/Makefile.common
 +++ b/Makefile.common
 @@ -1,3 +1,4 @@
@@ -7,11 +7,7 @@ index 09d2356..a5e2293 100644
  LIBRETRO_DEPS_DIR    = $(CORE_DIR)/deps
  LIBOGG_DIR           = $(LIBRETRO_DEPS_DIR)/libogg
  LIBVORBIS_DIR        = $(LIBRETRO_DEPS_DIR)/libvorbis
-@@ -8,15 +9,10 @@ LZMA_DIR             = $(LIBCHDR_DIR)/deps/lzma-19.00
- LIBRETRO_COMM_DIR    = $(LIBRETRO_DEPS_DIR)/libretro-common
- 
- INCFLAGS :=  \
-+	$(shell pkg-config --cflags libchdr vorbisfile zlib) \
+@@ -12,14 +13,8 @@ INCFLAGS :=  \
  	-I$(CORE_DIR)/src \
  	-I$(LIBRETRO_COMM_DIR)/include \
  	-I$(LIBRETRO_DEPS_DIR)/ \
@@ -21,10 +17,13 @@ index 09d2356..a5e2293 100644
 -	-I$(LIBVORBIS_DIR)/include \
 -	-I$(LIBVORBIS_DIR)/lib \
 -	-I$(ZLIB_DIR) \
- 	-I$(MINIZIP_DIR)
+ 	-I$(MINIZIP_DIR) \
+-	-I$(ZSTD_DIR)/lib 
++	$(shell pkg-config --cflags libchdr vorbisfile zlib)
  
  SOURCES_CXX :=\
-@@ -71,12 +67,6 @@ SOURCES_C := \
+ 	$(CORE_DIR)/src/archive.cpp \
+@@ -73,12 +68,6 @@ SOURCES_C := \
  	$(CORE_DIR)/src/3rdparty/musashi/m68kops.c \
  	$(CORE_DIR)/src/3rdparty/musashi/softfloat/softfloat.c
  
@@ -37,12 +36,13 @@ index 09d2356..a5e2293 100644
  
  SRC_LIBRETRO_COMMON = \
  	$(LIBRETRO_COMM_DIR)/compat/compat_posix_string.c \
-@@ -100,54 +90,6 @@ SRC_LIBRETRO_COMMON = \
- 	$(LIBRETRO_COMM_DIR)/string/stdstring.c \
- 	$(LIBRETRO_COMM_DIR)/vfs/vfs_implementation.c
+@@ -109,72 +98,11 @@ SRC_LIBRETRO_COMMON += \
+ 	 $(LIBRETRO_COMM_DIR)/vfs/vfs_implementation_cdrom.c
+ endif
  
 -SRC_LIBRETRO_COMMON += \
 -	$(LZMA_DIR)/src/Alloc.c \
+-	$(LZMA_DIR)/src/Bra.c \
 -	$(LZMA_DIR)/src/Bra86.c \
 -	$(LZMA_DIR)/src/BraIA64.c \
 -	$(LZMA_DIR)/src/CpuArch.c \
@@ -92,6 +92,23 @@ index 09d2356..a5e2293 100644
  
  SOURCES_C += \
  	$(MINIZIP_DIR)/ioapi.c \
+ 	$(MINIZIP_DIR)/unzip.c
+ 
+-SOURCES_C += \
+-	$(ZSTD_DIR)/lib/common/entropy_common.c \
+-	$(ZSTD_DIR)/lib/common/fse_decompress.c \
+-	$(ZSTD_DIR)/lib/common/threading.c \
+-	$(ZSTD_DIR)/lib/common/pool.c \
+-	$(ZSTD_DIR)/lib/common/zstd_common.c \
+-	$(ZSTD_DIR)/lib/common/error_private.c \
+-	$(ZSTD_DIR)/lib/common/xxhash.c \
+-	$(ZSTD_DIR)/lib/decompress/huf_decompress.c \
+-	$(ZSTD_DIR)/lib/decompress/zstd_decompress.c \
+-	$(ZSTD_DIR)/lib/decompress/zstd_decompress_block.c \
+-	$(ZSTD_DIR)/lib/decompress/zstd_ddict.c
+ 
+ ifneq ($(STATIC_LINKING),1)
+ SOURCES_C +=	$(SRC_LIBRETRO_COMMON)
 diff --git a/src/flacfile.cpp b/src/flacfile.cpp
 index 12118d6..2734165 100644
 --- a/src/flacfile.cpp
