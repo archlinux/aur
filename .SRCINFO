@@ -12,6 +12,7 @@ pkgbase = notnative-app
 	depends = webkit2gtk-4.1
 	depends = libadwaita
 	depends = gtksourceview5
+	depends = sqlite
 	source = notnative-app-0.1.0.tar.gz::https://github.com/k4ditano/notnative-app/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = SKIP
 
