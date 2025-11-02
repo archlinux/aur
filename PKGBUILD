@@ -1,7 +1,7 @@
 # Maintainer: Khaled Eldoheiri <khaled@eldoheiri.com>
 pkgname=wltile
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="A CLI tool that positions outputs/displays for wlroots based compositors"
 url="https://gitlab.com/eldoheiri/wltile"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
