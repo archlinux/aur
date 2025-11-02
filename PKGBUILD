@@ -11,9 +11,18 @@ makedepends=('cargo' 'rust' 'git' 'pkg-config')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')  # Actualizar después de crear el primer release en GitHub
 
+prepare() {
+    cd "$pkgname-$pkgver"
+    # Use system SQLite when building from source packages
+    sed -i 's/"bundled",\s*//g' Cargo.toml
+}
+
 build() {
     cd "$pkgname-$pkgver"
     export CARGO_TARGET_DIR=target
+    export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+    export LIBSQLITE3_SYS_BUNDLED=0
+    export RUSQLITE_SYS_BUNDLED=0
     cargo build --release --locked --all-features
 }
 
