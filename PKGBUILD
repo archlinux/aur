@@ -1,6 +1,7 @@
 # Maintainer: sfn
 
-pkgname='zl-equalizer'
+pkgbase='zl-equalizer'
+pkgname=('zl-equalizer-vst' 'zl-equalizer-lv2')
 groups=('zl-audio' 'pro-audio')
 pkgver=0.6.2
 pkgrel=4
@@ -41,9 +42,16 @@ build() {
 	cmake --build Builds
 }
 
-package() {
-	mkdir -p ${pkgdir}/usr/lib/{vst3/ZL\ Equalizer.vst3,lv2/ZL\ Equalizer.lv2}
-	cp -r "${srcdir}/ZLEqualizer/Builds/ZLEqualizer_artefacts/VST3/ZL Equalizer.vst3" "${pkgdir}/usr/lib/vst3/ZL Equalizer.vst3"
-	cp -r "${srcdir}/ZLEqualizer/Builds/ZLEqualizer_artefacts/LV2/ZL Equalizer.lv2" "${pkgdir}/usr/lib/lv2/ZL Equalizer.lv2"
+package_zl-equalizer-vst() {
+	groups+=('vst-plugins')
+	mkdir -p ${pkgdir}/usr/lib/vst3/ZL\ Equalizer.vst3
+	cp -r ${srcdir}/ZLEqualizer/Builds/ZLEqualizer_artefacts/VST3/* ${pkgdir}/usr/lib/vst3/
+	install -Dm755 ${srcdir}/ZLEqualizer/LICENSE.md ${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.md"
+}
+
+package_zl-equalizer-lv2() {
+	groups+=('lv2-plugins')
+	mkdir -p ${pkgdir}/usr/lib/lv2/ZL\ Equalizer.lv2
+	cp -r ${srcdir}/ZLEqualizer/Builds/ZLEqualizer_artefacts/LV2/* ${pkgdir}/usr/lib/lv2/
 	install -Dm755 ${srcdir}/ZLEqualizer/LICENSE.md ${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.md"
 }
