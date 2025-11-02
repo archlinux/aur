@@ -1,7 +1,7 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname="gearboy"
-pkgver=3.7.3
+pkgver=3.7.4
 pkgrel=1
 pkgdesc="Game Boy / Gameboy Color emulator"
 url="https://github.com/drhelius/Gearboy"
@@ -13,14 +13,11 @@ source=(
     "gearboy.desktop"
 )
 sha256sums=(
-    "d8fb5f229addbfce51fb341db2c341666f343eebdbbf23b52bb47b7c62bc1fd6"
+    "ba1bbe255c547c51ca42943e5212f62febc511cbc6445d91078fa6b67a57d2fb"
     "14488a013717c4d59eabd11dd852c167fc7d9eff702a2691f1089317faaf0f24"
 )
 
 build() {
-    # Temporary change to fix a build error from an invalid sdl2-compat flag
-    # See https://github.com/drhelius/Gearboy/issues/194 for more details
-    sed -i '55s/static-libs/libs/' $srcdir/Gearboy-${pkgver}/platforms/desktop-shared/Makefile.common
     cd $srcdir/Gearboy-${pkgver}/platforms/linux
     make
 }
