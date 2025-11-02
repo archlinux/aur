@@ -1,6 +1,7 @@
 # Maintainer: sfn
 
 pkgname='zl-equalizer'
+groups=('zl-audio' 'pro-audio')
 pkgver=0.6.2
 pkgrel=4
 options=()
