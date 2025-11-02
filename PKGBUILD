@@ -2,8 +2,8 @@
 
 pkgname=pizauth-git
 _pkgname="${pkgname%-git}"
-pkgver=1.0.4.r0.gcaf045c
-pkgrel=2
+pkgver=1.0.8.r0.g617fff4
+pkgrel=1
 pkgdesc="OAuth2 token requester daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/ltratt/${_pkgname}"
@@ -43,6 +43,7 @@ check() {
 package() {
     cd "$pkgname"
     make \
+        USESYSTEMD=1 \
         PREFIX='/usr' \
         EXAMPLESDIR='/usr/share/' \
         DESTDIR="$pkgdir/" \
