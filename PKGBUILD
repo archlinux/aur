@@ -2,7 +2,7 @@
 
 pkgname=vi-fortune
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Vietnamese fortune cookies for fortune-mod"
 arch=('any')
 url="https://github.com/dino9193/vi-fortune"
@@ -23,4 +23,6 @@ package() {
     install -d -m755 "${pkgdir}/usr/share/fortune"
     install -m644 vi-fortune "${pkgdir}/usr/share/fortune/"
     install -m644 vi-fortune.dat "${pkgdir}/usr/share/fortune/"
+    install -d "$pkgdir/usr/share/licenses/$pkgname"
+    install -m644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/"
 }

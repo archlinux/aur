@@ -1,7 +1,7 @@
 pkgbase = vi-fortune
 	pkgdesc = Vietnamese fortune cookies for fortune-mod
 	pkgver = 0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/dino9193/vi-fortune
 	arch = any
 	groups = fortune-mods
