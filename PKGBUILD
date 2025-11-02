@@ -2,13 +2,13 @@
 pkgdesc='Modern programming font with ligatures'
 pkgbase=ttf-lilex
 pkgname=(ttf-lilex ttf-lilex-variable)
-pkgver=2.610
+pkgver=2.620
 pkgrel=1
 license=(OFL-1.1)
 url=https://github.com/mishamyrt/Lilex
 arch=(any)
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/Lilex.zip")
-b2sums=('3890a9a3e8bea0e66efb42c8f43c51255cfa60c661fa4fce4f08c25177d9336154065528f98af518ba1dca11c86f8ab35313f30822c86f1df6b3235660ee77fb')
+b2sums=('d6a8ed08879e8ad3bb027be77268e7930d952b0ea4ff50ffae78f4b8d41e0bebda346d5aeea325f2d5f0eb3b07f9721cac10b1182099a82410062c934da434ff')
 
 package_ttf-lilex () {
 	install -Dm644 -t "${pkgdir}/usr/share/fonts/${pkgname}" ttf/*.ttf
