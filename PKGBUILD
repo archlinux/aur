@@ -1,7 +1,7 @@
 # Maintainer: Alteriks <aur@kil.ovh>
 
 pkgname="nirius"
-pkgver=0.5.4
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Utility commands for the niri compositor"
 arch=("i686" "x86_64")

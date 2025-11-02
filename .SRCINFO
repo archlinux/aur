@@ -1,6 +1,6 @@
 pkgbase = nirius
 	pkgdesc = Utility commands for the niri compositor
-	pkgver = 0.5.4
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://sr.ht/~tsdh/nirius
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = nirius
 	depends = niri
 	provides = niriusd
 	conflicts = nirius-git
-	source = nirius::git+https://git.sr.ht/~tsdh/nirius#tag=nirius-0.5.4
+	source = nirius::git+https://git.sr.ht/~tsdh/nirius#tag=nirius-0.6.1
 	sha256sums = SKIP
 
 pkgname = nirius
