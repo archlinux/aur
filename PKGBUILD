@@ -10,7 +10,7 @@ fi
 
 _pkgname="ryujinx"
 pkgname="$_pkgname-canary"
-pkgver=1.3.153
+pkgver=1.3.203
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://git.ryujinx.app/ryubing/ryujinx"
@@ -60,7 +60,7 @@ build() (
     -p:DebugType=none
     -p:ExtraDefineConstants=DISABLE_UPDATER
     -p:PublishSingleFile=true
-    -p:Version="${pkgver%%.[A-Za-z]*}"
+    -p:Version="$pkgver"
     -p:RuntimeIdentifiers="$_runtime"
   )
 
