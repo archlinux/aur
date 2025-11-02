@@ -1,7 +1,7 @@
 # Maintainer: Sean E. Russell <ser@ser1.net> -> also the developer
 
 pkgname=lbb
-pkgver=0.10.2
+pkgver=0.10.4
 pkgrel=1
 pkgdesc="A CLI address book application for CardDAV servers and vcard (e.g. vdirsyncer) directries. (qcard fork)"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -32,4 +32,4 @@ package() {
   install -Dm644 CHANGELOG.md        "${pkgdir}/usr/share/doc/lbb/CHANGELOG.md"
   install -Dm644 config-sample.json  "${pkgdir}/usr/share/doc/lbb/config-sample.json"
 }
-sha256sums=('f3d49bdc87ffd9380472efa13ac05b5c38ced576e87b905bd12614f062fc0dcf')
+sha256sums=('d7bab5d424cb2141ebf5a4fb222f5c0a091b0e1815c750a31a068c4b0fd7eff0')
