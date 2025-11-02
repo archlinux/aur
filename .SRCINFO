@@ -1,21 +1,22 @@
 pkgbase = libinput-gestures-qt
 	pkgdesc = Qt-based GUI for libinput-gestures
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OneAdder/libinput_gestures_qt
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = libinput-gestures
-	depends = python-pyqt5
-	depends = qt5-tools
-	provides = libinput_gestures_qt
-	conflicts = libinput_gestures_qt
-	source = libinput-gestures-qt::git+https://github.com/OneAdder/libinput_gestures_qt.git#tag=v.0.4
-	sha256sums = SKIP
+	depends = python-pyqt6
+	depends = qt6-tools
+	optdepends = xdotool: X11 keyboard shortcut gesture actions
+	source = libinput-gestures-qt::git+https://github.com/OneAdder/libinput_gestures_qt.git#commit=0868859f62e9050c33cfd55df0ffe3ac024cc45d
+	source = 0001-pyqt6.patch
+	sha256sums = 444103bff0393362c976166771668d436428fb510e873a45b312c7db3c22a869
+	sha256sums = bc08788a12fbc49a942bc1f946350cde514f9f50908354080f8a0a5bb0f0f15a
 
 pkgname = libinput-gestures-qt

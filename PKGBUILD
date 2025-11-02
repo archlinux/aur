@@ -1,18 +1,20 @@
 # Maintainer: aur.chaotic.cx
 
+: ${_commit:=0868859f62e9050c33cfd55df0ffe3ac024cc45d} # 0.4.r7
+
 _pkgname="libinput-gestures-qt"
 pkgname="$_pkgname"
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt-based GUI for libinput-gestures"
-arch=('any')
 url="https://github.com/OneAdder/libinput_gestures_qt"
-license=('GPL3')
+license=('GPL-3.0-only')
+arch=('any')
 
 depends=(
   'libinput-gestures'
-  'python-pyqt5'
-  'qt5-tools'
+  'python-pyqt6'
+  'qt6-tools' # for qdbus6
 )
 makedepends=(
   'git'
@@ -21,49 +23,36 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
+optdepends=(
+  'xdotool: X11 keyboard shortcut gesture actions'
+)
 
-provides=('libinput_gestures_qt')
-conflicts=('libinput_gestures_qt')
-
-if [ x"$pkgname" == x"$_pkgname" ] ; then
-  # normal package
-  _commit=''
-  _pkgsrc="$_pkgname"
-  source=("$_pkgsrc::git+$url.git#tag=v.$pkgver")
-  sha256sums=('SKIP')
-else
-  # git package
-  provides+=("$_pkgname")
-  conflicts+=("$_pkgname")
-
-  _pkgsrc="$_pkgname"
-  source=("$_pkgsrc::git+$url.git")
-  sha256sums=('SKIP')
-
-  pkgver() {
-    cd "$_pkgsrc"
-
-    _regex='^\s*version='\''([0-9]+\.[0-9]+(\.[0-9]+)?)'\'',$'
-    _file="setup.py"
-
-    _line=$(
-      grep -E "$_regex" "$_file" | head -1
-    )
-    _version=$(
-      printf '%s' "$_line" | sed -E "s@$_regex@\1@"
-    )
-
-    git describe --long --tags --match="v.$_version" | sed -E 's/^v\.?//;s/([^-]*-g)/r\1/;s/-/./g'
-  }
-fi
+_pkgsrc="$_pkgname"
+source=(
+  "$_pkgsrc::git+$url.git#commit=$_commit"
+  '0001-pyqt6.patch'
+)
+sha256sums=(
+  '444103bff0393362c976166771668d436428fb510e873a45b312c7db3c22a869'
+  'bc08788a12fbc49a942bc1f946350cde514f9f50908354080f8a0a5bb0f0f15a'
+)
 
 prepare() {
+  cd "$_pkgsrc"
+
+  # update to PyQt6
+  patch -Np1 -F100 -i ../0001-pyqt6.patch
+
+  # regenerate
+  pyuic6 libinput_gestures_qt/edit_window.ui -o libinput_gestures_qt/edit_window.py
+  pyuic6 libinput_gestures_qt/main_window.ui -o libinput_gestures_qt/main_window.py
+
   # don't install duplicate files
-  sed -E '/local\/share/d' -i "$srcdir/$_pkgsrc/setup.py" 
+  sed -E '/local\/share/d' -i setup.py
 
   # fix .desktop file
   sed -E 's@^Icon=.*$@Icon=libinput-gestures-qt@g' \
-    -i "$srcdir/$_pkgsrc/libinput_gestures_qt/logo/libinput-gestures-qt.desktop"
+    -i libinput_gestures_qt/logo/libinput-gestures-qt.desktop
 }
 
 build() {
