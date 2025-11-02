@@ -2,7 +2,7 @@
 
 pkgname=sleepy-launcher-bin
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Sleepy game launcher for Linux with telemetry disabling"
 url="https://github.com/an-anime-team/sleepy-launcher"
 conflicts=("sleepy-launcher")
@@ -34,7 +34,7 @@ source=(
 
 md5sums=('6df33504ddef29ea09b65baee82d98c0'
          '808f0ccaac7bac70b56e400760f0b764'
-         '197cbd9229e69679a6cc5ec01341556f')
+         'a039b4bdbc28710d8784c84e2da16785')
 
 prepare() {
   chmod +x "${srcdir}/sleepy-launcher_${pkgver}"
