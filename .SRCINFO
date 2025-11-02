@@ -1,7 +1,7 @@
 pkgbase = python-langgraph
 	pkgdesc = Building stateful, multi-actor applications with LLMs.
-	pkgver = 0.6.4
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://github.com/langchain-ai/langgraph/tree/main/libs/langgraph
 	arch = any
 	license = MIT
@@ -30,7 +30,7 @@ pkgbase = python-langgraph
 	depends = python-langgraph-prebuilt
 	depends = python-xxhash
 	depends = python-pydantic
-	source = https://files.pythonhosted.org/packages/source/l/langgraph/langgraph-0.6.4.tar.gz
-	sha256sums = 5d591646b4c5bfc86d5fb0baf3407ba55b37f6ee1c22613e9ed084090357fccd
+	source = https://files.pythonhosted.org/packages/source/l/langgraph/langgraph-1.0.2.tar.gz
+	sha256sums = dae1af08d6025cb1fcaed68f502c01af7d634d9044787c853a46c791cfc52f67
 
 pkgname = python-langgraph
