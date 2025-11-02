@@ -1,7 +1,7 @@
 pkgbase = whatpulse
 	pkgdesc = Measures your keyboard, mouse, app usage, network traffic and uptime.
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.whatpulse.org
 	arch = x86_64
 	license = custom:whatpulse_tos
