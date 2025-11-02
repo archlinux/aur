@@ -1,7 +1,7 @@
 # Maintainer: Jaron Kent-Dobias <jaron@kent-dobias.com>
 
 pkgname=clad
-pkgver=2.0
+pkgver=2.2
 pkgrel=1
 pkgdesc='Enables automatic differentiation for C++'
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(llvm clang)
 makedepends=(cmake python git)
 optdepends=()
 source=("git+https://github.com/vgvassilev/clad#tag=v${pkgver}")
-sha256sums=('24eb4e03c4c212dd875b3b470314c7b47cf0a60ce9a8417b82f923c52e9ddad4')
+sha256sums=('e20bca441bf9175bc14691789896d6e37533c086728733b845f455a0fafc4bad')
 
 build() {
   cmake -B build -S "$pkgname" \
