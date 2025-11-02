@@ -5,7 +5,7 @@ _name1=livekit-plugins
 _plugins=(anam anthropic assemblyai aws azure baseten bey bithuman cartesia clova deepgram elevenlabs fal fireworksai gladia google groq hedra hume inworld langchain lmnt minimal minimax mistralai neuphonic nltk openai resemble rime rtzr sarvam silero simli smallestai soniox speechify speechmatics spitch tavus turn-detector ultravox upliftai)
 pkgbase=python-$_name0
 pkgname=(python-$_name0 ${_plugins[@]/#/python-$_name1-})
-pkgver=1.2.16
+pkgver=1.2.17
 pkgrel=1
 _plugins_pkgdesc=('Agent Framework plugin for anam.'
                   'Agent Framework plugin for services from Anthropic.'
@@ -143,7 +143,7 @@ makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel'
 checkdepends=('python-dotenv' 'python-pytest' 'python-pytest-asyncio' 'python-jiwer' 'python-scipy' 'python-tiktoken' 'python-nltk' 'nltk-data' 'python-docstring-parser' 'python-speechmatics-rt')
 source=("$_repo/archive/refs/tags/$_name0@$pkgver.tar.gz"
         "$_repo/raw/refs/tags/$_name0@$pkgver/$_name1/$_name1-silero/${_name1//-//}/silero/resources/silero_vad.onnx")
-sha256sums=('92d89bb0da07c3e54015035fb61a83c2f0faebf54729a263a8d024f1138714f8'
+sha256sums=('b5ee0d3938ebdfe35c5f15f053739983337a45f4a391a1336d14684da1d0b9b0'
             '597d30b3ec076608d059477bb14cfeffdf951bf5cae370d38f65d33bbfe82004')
 
 prepare(){
