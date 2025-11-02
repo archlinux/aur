@@ -1,7 +1,7 @@
 pkgbase = elephant-all-git
 	pkgdesc = elephant + all official elephant providers
 	pkgver = r405.bfd423d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/abenz1267/elephant
 	arch = x86_64
 	arch = aarch64
@@ -47,7 +47,7 @@ pkgbase = elephant-all-git
 	conflicts = elephant-unicode
 	conflicts = elephant-websearch
 	conflicts = elephant-windows
-	source = elephant-all::git+https://github.com/abenz1267/elephant.git
+	source = elephant-all::git+https://github.com/abenz1267/elephant.git#branch=dev
 	sha256sums = SKIP
 
 pkgname = elephant-all-git

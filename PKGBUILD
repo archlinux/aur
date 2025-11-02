@@ -2,7 +2,7 @@
 
 pkgname=elephant-all-git
 pkgver=r405.bfd423d
-pkgrel=1
+pkgrel=2
 pkgdesc='elephant + all official elephant providers'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('libqalculate' 'wl-clipboard' 'imagemagick' 'fd' 'wtype')
 makedepends=('go' 'git')
 conflicts=('elephant' 'elephant-archlinuxpkgs' 'elephant-bluetooth' 'elephant-calc' 'elephant-clipboard' 'elephant-desktopapplications' 'elephant-files' 'elephant-menus' 'elephant-nirisessions' 'elephant-providerlist' 'elephant-runner' 'elephant-snippets' 'elephant-symbols' 'elephant-todo' 'elephant-unicode' 'elephant-websearch' 'elephant-windows')
 provides=('elephant' 'elephant-archlinuxpkgs' 'elephant-bluetooth' 'elephant-calc' 'elephant-clipboard' 'elephant-desktopapplications' 'elephant-files' 'elephant-menus' 'elephant-nirisessions' 'elephant-providerlist' 'elephant-runner' 'elephant-snippets' 'elephant-symbols' 'elephant-todo' 'elephant-unicode' 'elephant-websearch' 'elephant-windows')
-source=("${pkgname%-git}::git+${url}.git")
+source=("${pkgname%-git}::git+${url}.git#branch=dev")
 sha256sums=('SKIP')
 
 pkgver() {
