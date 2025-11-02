@@ -1,5 +1,5 @@
 pkgbase = goawk-bin
-	pkgdesc = AWK interpreter written in go
+	pkgdesc = A POSIX-compliant AWK interpreter written in Go, with CSV support
 	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://github.com/benhoyt/goawk
