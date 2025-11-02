@@ -3,7 +3,7 @@
 _pkgauthor=benhoyt
 _pkgname=goawk
 pkgname=${_pkgname}-bin
-pkgver=1.29.1
+pkgver=1.30.0
 pkgrel=1
 pkgdesc="AWK interpreter written in go"
 arch=('x86_64' 'i686' 'aarch64')
@@ -18,9 +18,9 @@ conflicts=("${_pkgname}")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_${_barch[0]}.tar.gz")
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_${_barch[1]}.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_${_barch[2]}.tar.gz")
-sha256sums_x86_64=('ac8dd2b2d9d52c9c163e22d718d75d4d10f500405d6e71ce2cee3007b6b5d7cc')
-sha256sums_i686=('5210b83e9fc9ea4fd7aa37cc4b066742158f0699993468165df8ca07adfe9e54')
-sha256sums_aarch64=('f3cc9566319ae4dea403a0667f5ad8fd2851f51f9030b4ac817d1b40ca24181a')
+sha256sums_x86_64=('8247cebc687e0014414b2ae6f6de7e785beb43f76683234c84cff57a5330ad6d')
+sha256sums_i686=('369fc80b38276ae00b1ef756388bb5ece02025193ee647d842055baff5b31981')
+sha256sums_aarch64=('847c6c1e0bde20458271361e6d9da2d75e2bf291f6a6b638e7e128f7337b3426')
 
 
 package() {
