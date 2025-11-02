@@ -17,7 +17,7 @@ optdepends=('dosfstools: for fat operations'
             'xfsprogs: for xfs operations'
             'jfsutils: for jfs operations'
             'f2fs-tools: for f2fs operations'
-            'nilfs-tools: for nilfs2 operations'
+            'nilfs-utils: for nilfs2 operations'
             'cryptsetup: LUKS')
 source=(https://github.com/Kagamma/tparted/releases/download/2025-11-02/linux_x86-64_tparted_2025-11-02.tar.gz)
 sha256sums=(75554dafc54bf123f6802772b1b136f1080a5863b37c6a08755233251c51a7d3)
