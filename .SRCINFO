@@ -16,3 +16,39 @@ pkgbase = mapwizard-git
 	sha256sums = 47c200402dd7ba247e29b945e4367b4f126951cb0d3456e44ab2707dfc268215
 
 pkgname = mapwizard-git
+pkgbase = mapwizard-git
+	pkgdesc = MapWizard - An open-source osu! mapping toolset (Git version)
+	pkgver = 20250903.076b9fc
+	pkgrel = 1
+	url = https://github.com/maotovisk/MapWizard
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk>=9.0
+	makedepends = git
+	depends = dotnet-runtime>=9.0
+	source = git+https://github.com/maotovisk/MapWizard.git
+	source = mapwizard.desktop
+	source = mapwizard.png
+	sha256sums = SKIP
+	sha256sums = 00fe2d035637266874b2f986ff4ba2093ba6d287c348780026228ed5ec9c2607
+	sha256sums = 47c200402dd7ba247e29b945e4367b4f126951cb0d3456e44ab2707dfc268215
+
+pkgname = mapwizard-git
+pkgbase = mapwizard-git
+	pkgdesc = MapWizard - An open-source osu! mapping toolset (Git version)
+	pkgver = 20251102.8b9af66
+	pkgrel = 1
+	url = https://github.com/maotovisk/MapWizard
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk>=9.0
+	makedepends = git
+	depends = dotnet-runtime>=9.0
+	source = git+https://github.com/maotovisk/MapWizard.git
+	source = mapwizard.desktop
+	source = mapwizard.png
+	sha256sums = SKIP
+	sha256sums = 00fe2d035637266874b2f986ff4ba2093ba6d287c348780026228ed5ec9c2607
+	sha256sums = 47c200402dd7ba247e29b945e4367b4f126951cb0d3456e44ab2707dfc268215
+
+pkgname = mapwizard-git
