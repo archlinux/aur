@@ -1,9 +1,10 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Maintainer:  Gilwiljam <gillbilljam@gmail.com>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=alsaplayer
-pkgver=0.99.81
-pkgrel=10
+pkgver=0.99.82
+pkgrel=1
 pkgdesc="A heavily multi-threaded PCM player that tries to excercise the ALSA library and driver quite a bit"
 arch=('x86_64' 'i686')
 url="http://alsaplayer.sourceforge.net/"
@@ -21,7 +22,7 @@ optdepends=('gtk2: for the gtk2 GUI interface' \
             'libvorbis: for ogg vorbis support' \
             'libmikmod: for mod, s3m, it and xm formats supports')
 source=(http://alsaplayer.sourceforge.net/${pkgname}-${pkgver}.tar.bz2)
-sha1sums=('25817ebd1e5c36da31a88363315a1bf7a945ddfd')
+sha1sums=('d18dbabbc72d5011c1b282ebaff0921ab653a9ef')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

@@ -1,7 +1,7 @@
 pkgbase = alsaplayer
 	pkgdesc = A heavily multi-threaded PCM player that tries to excercise the ALSA library and driver quite a bit
-	pkgver = 0.99.81
-	pkgrel = 10
+	pkgver = 0.99.82
+	pkgrel = 1
 	url = http://alsaplayer.sourceforge.net/
 	arch = x86_64
 	arch = i686
@@ -27,8 +27,7 @@ pkgbase = alsaplayer
 	optdepends = libsndfile: for sndfile support
 	optdepends = libvorbis: for ogg vorbis support
 	optdepends = libmikmod: for mod, s3m, it and xm formats supports
-	source = http://alsaplayer.sourceforge.net/alsaplayer-0.99.81.tar.bz2
-	sha1sums = 25817ebd1e5c36da31a88363315a1bf7a945ddfd
+	source = http://alsaplayer.sourceforge.net/alsaplayer-0.99.82.tar.bz2
+	sha1sums = d18dbabbc72d5011c1b282ebaff0921ab653a9ef
 
 pkgname = alsaplayer
-
