@@ -1,7 +1,7 @@
 # Maintainer: Ilaï Deutel <PlMWPh1WSmypRv0JQljz> (echo ... | tr 'A-Za-z' 'l-za-kL-ZA-K' | base64 -d)
 
 pkgname=kibi-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A tiny text editor, written in Rust"
 url="https://github.com/ilai-deutel/kibi"
@@ -27,15 +27,15 @@ source_aarch64=(
   "https://github.com/ilai-deutel/kibi/releases/download/v${pkgver}/kibi-v${pkgver}-i686-unknown-linux-gnu.tar.gz.asc"
   "https://github.com/ilai-deutel/kibi/releases/download/v${pkgver}/kibi-v${pkgver}-i686-unknown-linux-gnu.tar.gz.intoto.jsonl"
 )
-sha256sums_x86_64=('4697e9cca0539774f938a7a29ed0f3aac1a62fc683b8dd1ed85f5e8c183360ce'
+sha256sums_x86_64=('8039228b5231a0c925b8948aecc24d0e22b2ae58a73f8da25384fb18376abbd1'
                    'SKIP'
-                   '1c567a8a164dfb6c31f86a22cd9527499eb1f81ca459bfd54e0ab4b97cfd5097')
-sha256sums_i686=('cf8b90ea9e8b922964bc6b154030d5bdb5f66a421e42e019aae34dc37839609e'
+                   'be0358f92b0e49304ab5bf4766a6e4b9b440cf4b360167bb80b87ce106d33c88')
+sha256sums_i686=('77f83de4007ce38a4c4cc159675355ceadbd2a35e4c716922190e9a2d609d5cb'
                  'SKIP'
-                 'ba8ed0ddf96befc0264bc8eb5dd28aed3bd1de9b61f1ed2241039883020fdc66')
-sha256sums_aarch64=('cf8b90ea9e8b922964bc6b154030d5bdb5f66a421e42e019aae34dc37839609e'
+                 '20ed3bb1c7a5fd1edb45591cc2f2a7a90da6c14418b31412a123da4221277134')
+sha256sums_aarch64=('77f83de4007ce38a4c4cc159675355ceadbd2a35e4c716922190e9a2d609d5cb'
                     'SKIP'
-                    'ba8ed0ddf96befc0264bc8eb5dd28aed3bd1de9b61f1ed2241039883020fdc66')
+                    '20ed3bb1c7a5fd1edb45591cc2f2a7a90da6c14418b31412a123da4221277134')
 validpgpkeys=(
   '102588418FF7E165696490A206E8A973494808A2'  # Ilaï Deutel
 )
@@ -52,6 +52,8 @@ verify() {
 }
 
 package() {
+  cd "kibi-v${pkgver}-$CARCH-unknown-linux-gnu"
+
   # Install binary
   install -Dm755 "kibi" -t "$pkgdir/usr/bin"
 
