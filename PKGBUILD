@@ -1,5 +1,5 @@
 pkgname=stasis-git
-pkgver=0.1.46.r1.gc843162   # auto-generated
+pkgver=0.5.2.r35.g4bd98dd   # auto-generated
 pkgrel=1
 pkgdesc="A modern Wayland idle manager designed for simplicity and effectiveness (git version)"
 arch=('x86_64')
@@ -22,8 +22,12 @@ build() {
   cargo build --release --locked
 }
 
+
 package() {
   cd "$srcdir/stasis"
+
   install -Dm755 "target/release/stasis" "$pkgdir/usr/bin/stasis"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "examples/stasis.rune" "$pkgdir/etc/stasis/stasis.rune"
 }
+
