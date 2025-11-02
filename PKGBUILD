@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: slact
 pkgname=tlpui-git
 _app_id="com.github.d4nj1.${pkgname%-git}"
