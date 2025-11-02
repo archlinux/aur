@@ -9,6 +9,7 @@ license=('GPL3')
 url="https://protonvpn.com"
 depends=(
   'python>=3.13'
+  'python-click'
   'python-dbus-fast'
   'python-packaging'
   'python-proton-keyring-linux>=0.1.0'

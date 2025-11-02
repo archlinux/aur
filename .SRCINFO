@@ -6,6 +6,7 @@ pkgbase = proton-vpn-cli
 	arch = any
 	license = GPL3
 	depends = python>=3.13
+	depends = python-click
 	depends = python-dbus-fast
 	depends = python-packaging
 	depends = python-proton-keyring-linux>=0.1.0
