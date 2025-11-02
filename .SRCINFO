@@ -1,6 +1,6 @@
 pkgbase = tlpui-git
 	pkgdesc = A GTK user interface for TLP written in Python
-	pkgver = 1.8.0.r0.g77d7dc5
+	pkgver = 1.8.1.r0.gd7e4fb9
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/d4nj1/TLPUI
