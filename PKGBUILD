@@ -2,10 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-quick3d
-_basever=5.15.17
-pkgver=5.15.17+kde+r1
-pkgrel=2
-_commit=de6e8026c116a47029f4307fd8a62b5f630f33bf
+_basever=5.15.18
+pkgver=5.15.18+kde+r1
+pkgrel=1
+_commit=47a325358078b72016081a86be628411df2728a9
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3')
@@ -17,7 +17,7 @@ groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         qt5-quick3d-assimp-5.1.patch)
-sha256sums=('cfe50e78da8241929bfc0af6aecdf342a617f151e83299104ab941f4cb76376d'
+sha256sums=('25d252c34007d0bdb7344bfd971024a7e768750d7945761bc78b8de5afd19846'
             '57a3ac54c46f86d1f99ce20653bb34215cbd65fbd36f7ee802360336e88f268e')
 
 pkgver() {
