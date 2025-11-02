@@ -3,12 +3,12 @@
 pkgbase='zl-equalizer'
 pkgname=('zl-equalizer-vst' 'zl-equalizer-lv2')
 groups=('zl-audio' 'pro-audio')
-pkgver=0.6.2
-pkgrel=4
+pkgver=1.0.0
+pkgrel=1
 options=()
 pkgdesc="Parametric, dynamic equalizer plugin by ZL Audio"
 arch=('x86_64')
-url="https://zl-audio.github.io/plugins/zlequalizer/"
+url="https://zl-audio.github.io/plugins/zlequalizer2/"
 license=('AGPL-3.0')
 depends=('alsa-lib' 'libx11' 'libxinerama' 'libxext' 'freetype2' 'fontconfig' 'webkit2gtk' 'glu')
 makedepends=('git' 'cmake' 'ninja')
@@ -17,7 +17,7 @@ source=("git+https://github.com/ZL-Audio/ZLEqualizer#tag=${pkgver}"
 		"git+https://github.com/ZL-Audio/JUCE#tag=b251f82"
 		"git+https://github.com/ZL-Audio/kfr#tag=9a35250"
 		"git+https://github.com/ZL-Audio/nlopt#tag=ab0fd1c")
-sha256sums=('2f5e8a6cae87515b3f01f4dd7be60ee94f2ca3e87306964aad616a50114c8daf'
+sha256sums=('4909c86a67544b6c7d7858d5945401941f8e6690ebe6d00638313ff2a60e20fa'
             '01016c0970367a0da9f4bf3b9191334dbdbf8902e2acb6f47be0ede2acf598d7'
             '7aaa927395bce6845b844e775786859e79b2e41dd857a0adee923b93dd183213'
             'b93b67f7a7533fc22b07f2bade668c169435db98a18a1cf39ed497cf8db78f33')
@@ -26,7 +26,6 @@ prepare() {
 	cd ZLEqualizer
 	
 	git submodule init
-	git update-index --add --cacheinfo 160000,b251f82228e35a11644e94db8fc806672a0fd3b7,JUCE # change commit because we can't pull upstream otherwise
 	git config submodule."JUCE".url "${srcdir}/JUCE"
 	git config submodule."kfr".url "${srcdir}/kfr"
 	git config submodule."nlopt".url "${srcdir}/nlopt"
