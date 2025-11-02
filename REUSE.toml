@@ -29,10 +29,10 @@ path = [
     "0004-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch",
     "0005-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch",
     "0007-workaround_hardware_decoding_amdgpu.patch",
-    "0008-amd-tablet-sfh.patch",
     "0009-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch",
     "0010-asus-nb-wmi-fix-tablet_mode_sw_int.patch",
     "0011-amdgpu-adjust_plane_init_off_by_one.patch",
+    "0084-enable-steam-deck-hdr.patch",
     "config",
 ]
 SPDX-FileCopyrightText = "upstream linux kernel contributors"
