@@ -1,15 +1,13 @@
 pkgbase = kdnssd5
 	pkgdesc = Abstraction to system DNSSD features
 	pkgver = 5.116.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
 	groups = kf5
 	license = LGPL
 	makedepends = extra-cmake-modules
-	makedepends = doxygen
 	makedepends = qt5-tools
-	makedepends = qt5-doc
 	depends = qt5-base
 	conflicts = kdnssd<5.111
 	replaces = kdnssd<5.111
