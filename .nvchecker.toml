@@ -1,0 +1,5 @@
+["svu-bin"]
+source = "github"
+github = "caarlos0/svu"
+use_latest_release = true
+prefix = "v"
