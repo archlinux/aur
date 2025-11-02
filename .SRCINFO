@@ -9,10 +9,9 @@ pkgbase = notnative-app
 	makedepends = rust
 	makedepends = git
 	depends = gtk4
-	depends = webkit2gtk-6.0
+	depends = webkit2gtk-4.1
 	depends = libadwaita
 	depends = gtksourceview5
-	depends = pulseaudio
 	source = notnative-app-0.1.0.tar.gz::https://github.com/k4ditano/notnative-app/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = SKIP
 
