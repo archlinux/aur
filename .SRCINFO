@@ -1,0 +1,27 @@
+pkgbase = vllama
+	pkgdesc = vLLM + Ollama hybrid server - Fast inference with Ollama model management
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/erkkimon/vllama
+	install = vllama.install
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = ollama
+	depends = python-pip
+	depends = python-setuptools
+	source = vllama.py
+	source = vllama.service
+	source = multiuser.conf
+	source = requirements.txt
+	source = install_venv.sh
+	source = vllama.install
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vllama
