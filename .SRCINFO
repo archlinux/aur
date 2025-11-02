@@ -1,15 +1,12 @@
 pkgbase = bluez-qt5
 	pkgdesc = Qt wrapper for Bluez 5 DBus API
 	pkgver = 5.116.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
 	groups = kf5
 	license = GPL2
 	makedepends = extra-cmake-modules
-	makedepends = doxygen
-	makedepends = qt5-tools
-	makedepends = qt5-doc
 	makedepends = qt5-declarative
 	depends = qt5-base
 	depends = bluez
