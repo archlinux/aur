@@ -1,0 +1,10 @@
+--- main.cpp	2025-11-01 18:03:15.417619804 -0700
++++ main.cpp	2025-11-01 18:08:17.675727184 -0700
+@@ -73,6 +73,7 @@
+ 	}
+ 
+ 
++	glfwInitHint(GLFW_PLATFORM, GLFW_PLATFORM_X11);
+ 	if (!glfwInit()) {
+ 		QMessageBox::critical(&capsViewer, "Critical error", "Could not initialize glfw!");
+ 		exit(EXIT_FAILURE);
