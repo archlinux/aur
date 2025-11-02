@@ -9,7 +9,7 @@
 
 _qt_module=qtdatavis3d
 pkgname=mingw-w64-qt5-datavis3d
-pkgver=5.15.17
+pkgver=5.15.18
 pkgrel=1
 arch=('any')
 pkgdesc="Qt Data Visualization module (mingw-w64)"
@@ -17,29 +17,16 @@ depends=('mingw-w64-qt5-base')
 optdepends=('mingw-w64-qt5-declarative: QML bindings')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-qt5-declarative')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-_commit=a57e633b675d7886c3e5c64441f50ffe831f2de8
-_basever=${pkgver%%+*}
-pkgver+=+kde+r0
-makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
-_pkgfqn=${_qt_module}
-source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
+_pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
 sha256sums=('8f264ff76d4899955fb1b820a8f38f197b1a8febd8930bacffcf5affe0733fe8')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
 _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
-
-pkgver() {
-  cd $_pkgfqn
-  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
-}
-
-prepare() {
-  cd "${srcdir}/${_pkgfqn}"
-}
 
 build() {
   cd "${srcdir}/${_pkgfqn}"
