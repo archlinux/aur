@@ -18,7 +18,7 @@ source=("${pkgname}-${_commit}.tar.gz::https://github.com/erkkimon/vllama/archiv
 sha256sums=('3d44dc6d049708f7f4fc53960e32938f098b8e956e51815ac8378ae57e561882'
             '893c64bce6b1f96db758e407fa8a7703f749036de028b67a5b1a6e4438f59764'
             '316d741d3c15533002b0607d88ac9231c72258e5e856bd470805a8ba1b9ee29f'
-            'c5053477faadca94e9d61beacff94cfe841776009e0b448a4fcf6f4507bbbce7')
+            '723a4a98ff2652f68e8d1e76d3d4f99e8d756f7b3aed6ec4694a97029119c1be')
 
 build() {
     cd "${srcdir}/${pkgname}-${_commit}"

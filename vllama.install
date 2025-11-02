@@ -1,6 +1,9 @@
 post_install() {
     mkdir -p /opt/vllama/models
     chown -R vllama:vllama /opt/vllama
+    # Create vllama user and group if they don't exist
+    getent group vllama >/dev/null || groupadd -r vllama
+    getent passwd vllama >/dev/null || useradd -r -g vllama -d /opt/vllama -s /usr/bin/nologin vllama
     if [ ! -f "/opt/vllama/models/Devstral-Small-2505-abliterated.i1-Q2_K_S.gguf" ]; then
         echo "Downloading GGUF model..."
         wget -O /opt/vllama/models/Devstral-Small-2505-abliterated.i1-Q2_K_S.gguf "https://huggingface.co/mradermacher/Devstral-Small-2505-abliterated-i1-GGUF/resolve/main/Devstral-Small-2505-abliterated.i1-Q2_K_S.gguf"
