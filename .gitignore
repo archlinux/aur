@@ -1,0 +1,8 @@
+# Build artifacts
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+pkg/
+src/
+sunsetr/
+
+*.log
