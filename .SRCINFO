@@ -1,21 +1,21 @@
 pkgbase = ocaml-uucp
 	pkgdesc = Unicode character properties for OCaml
-	pkgver = 16.0.0
-	pkgrel = 2
+	pkgver = 17.0.0
+	pkgrel = 1
 	url = https://erratique.ch/software/uucp
 	arch = x86_64
 	arch = aarch64
 	license = ISC
 	makedepends = ocamlbuild
 	makedepends = ocaml-findlib
-	makedepends = ocaml-topkg>=1.0.3
+	makedepends = ocaml-topkg>=1.1.0
 	makedepends = opam
 	depends = ocaml>=4.14.0
 	depends = ocaml-cmdliner>=1.1.0
-	depends = ocaml-uucd>=16.0.0
-	depends = ocaml-uunf>=16.0.0
+	depends = ocaml-uucd>=17.0.0
+	depends = ocaml-uunf>=17.0.0
 	options = !strip
-	source = ocaml-uucp-16.0.0.tar.gz::https://github.com/dbuenzli/uucp/archive/v16.0.0.tar.gz
-	b2sums = 7b9142a3095a6c85f04a692b9a62696868ec16a91094dc42d67dc1d04cd3090c3020b7ac1d2b68b69ae24b8fb2807aa6880ab9af6ac26470c7e2efe89ebcba06
+	source = ocaml-uucp-17.0.0.tar.gz::https://github.com/dbuenzli/uucp/archive/v17.0.0.tar.gz
+	b2sums = bf9912a19d18d2da9520c41b18f036f94686fdcbab0a8baf6a48b9f2ae5b723ec5a81da163d5009998fbe7d90fdbc2c3201e2381d631b6809e2738615dbf101e
 
 pkgname = ocaml-uucp
