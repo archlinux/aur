@@ -15,6 +15,7 @@ build() {
     cd "$pkgname-$pkgver"
     export CARGO_TARGET_DIR=target
     export RUSQLITE_USE_PKG_CONFIG=1
+    export RUSTFLAGS="-C link-arg=-lsqlite3"
     cargo build --release --locked --all-features
 }
 
