@@ -3,7 +3,7 @@
 pkgname=kdenlive-appimage-pure
 _pkgname=kdenlive
 pkgver=25.08.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A non-linear video editor for Linux using the MLT video framework (AppImage build)"
 arch=('x86_64')
 url="https://www.kdenlive.org"
@@ -34,31 +34,23 @@ package() {
 
 	install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_pkgname}" <<EOF
 #!/bin/sh
+export QT_IM_MODULE=\${QT_IM_MODULE:-ibus}
+export IBUS_USE_PORTAL=\${IBUS_USE_PORTAL:-1}
 exec /opt/appimages/${_pkgname}/${_filename} "\$@"
 EOF
 
-	if [[ -d squashfs-root/usr/share/icons/hicolor ]]; then
-		while IFS= read -r -d '' icon; do
-			local rel="${icon#squashfs-root/usr/share/icons/hicolor/}"
-			local target_dir="${pkgdir}/usr/share/icons/hicolor/${rel%/*}"
-			local filename="${rel##*/}"
-			install -Dm644 "${icon}" "${target_dir}/${filename}"
+	# Install icons (all sizes)
+	for size in 16x16 22x22 32x32 48x48 64x64 128x128 256x256 512x512 scalable; do
+		if [[ -f "squashfs-root/usr/share/icons/hicolor/${size}/apps/kdenlive.png" ]]; then
+			install -Dm644 "squashfs-root/usr/share/icons/hicolor/${size}/apps/kdenlive.png" \
+				"${pkgdir}/usr/share/icons/hicolor/${size}/apps/kdenlive.png"
+		elif [[ -f "squashfs-root/usr/share/icons/hicolor/${size}/apps/kdenlive.svg" ]]; then
+			install -Dm644 "squashfs-root/usr/share/icons/hicolor/${size}/apps/kdenlive.svg" \
+				"${pkgdir}/usr/share/icons/hicolor/${size}/apps/kdenlive.svg"
+		fi
+	done
 
-			case "${filename}" in
-				org.kde.kdenlive.*)
-					local ext="${filename##*.}"
-					install -Dm644 "${icon}" "${target_dir}/kdenlive.${ext}"
-					;;
-				kdenlive.*)
-					local ext="${filename##*.}"
-					install -Dm644 "${icon}" "${target_dir}/org.kde.kdenlive.${ext}"
-					;;
-			esac
-		done < <(find squashfs-root/usr/share/icons/hicolor -type f \( -name 'kdenlive.*' -o -name 'org.kde.kdenlive.*' \) -print0)
-	fi
-
-	if [[ -f squashfs-root/usr/share/applications/org.kde.kdenlive.desktop ]]; then
-		install -Dm644 squashfs-root/usr/share/applications/org.kde.kdenlive.desktop \
-			"${pkgdir}/usr/share/applications/org.kde.kdenlive.desktop"
-	fi
+	# Install desktop file
+	install -Dm644 squashfs-root/usr/share/applications/org.kde.kdenlive.desktop \
+		"${pkgdir}/usr/share/applications/org.kde.kdenlive.desktop"
 }

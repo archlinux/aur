@@ -1,7 +1,7 @@
 pkgbase = kdenlive-appimage-pure
 	pkgdesc = A non-linear video editor for Linux using the MLT video framework (AppImage build)
 	pkgver = 25.08.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kdenlive.org
 	arch = x86_64
 	license = GPL
