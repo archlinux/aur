@@ -2,7 +2,7 @@
 
 pkgname=kexi
 pkgver=3.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc='A visual database applications creator'
 arch=(x86_64)
 url='https://kexi-project.org/'
@@ -30,12 +30,9 @@ depends=(breeze-icons
          kwidgetsaddons5
          kxmlgui5
          qt5-base)
-makedepends=(doxygen
-             extra-cmake-modules
-             kdoctools5
+makedepends=(extra-cmake-modules
              mariadb-libs
-             postgresql
-             qt5-tools)
+             postgresql)
 source=(https://download.kde.org/stable/$pkgname/src/$pkgname-$pkgver.tar.xz{,.sig}
         kexi-qt-5.13.patch::https://invent.kde.org/office/kexi/-/commit/511d99b7.patch
         kexi-glib-2.70.patch::https://invent.kde.org/office/kexi/-/commit/79894e15.patch)
@@ -48,11 +45,14 @@ validpgpkeys=(4866BAF713B465677A4059643C7C0E201B6524DB) # Jarosław Staniek <sta
 prepare() {
   patch -d $pkgname-$pkgver -p1 < kexi-qt-5.13.patch # Fix build with Qt 5.13
   patch -d $pkgname-$pkgver -p1 < kexi-glib-2.70.patch # Fix build with glib 2.70
+  sed -e '/SetKexiCMakePolicies/d' -i $pkgname-$pkgver/CMakeLists.txt
 }
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF \
+    -DSHOULD_BUILD_DOC=OFF \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake --build build
 }
 
