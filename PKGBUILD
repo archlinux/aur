@@ -2,7 +2,7 @@
 # Contributor: Mario Finelli <mario at finel dot li>
 
 pkgname=prql
-pkgver=0.13.5
+pkgver=0.13.6
 pkgrel=1
 pkgdesc="a simple, powerful, pipelined SQL replacement"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(Apache-2.0)
 depends=(gcc-libs)
 makedepends=(cargo python)
 source=(https://github.com/PRQL/prql/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('487c710f8b810bb8457ffab944f62930791f23e5ddb25f2bf3257001f07ae0eb')
+sha256sums=('929f9c76b685029b5bf7d5852bb735558ff664290b766fe3d531893377d1c67e')
 
 prepare() {
   cd $pkgname-$pkgver
