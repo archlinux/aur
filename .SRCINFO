@@ -1,5 +1,5 @@
 pkgbase = helium-bin
-	pkgdesc = Private, fast, and honest web browser based on ungoogled-chromium
+	pkgdesc = Private, fast, and honest web browser based on ungoogled-chromium (Stable Linux release)
 	pkgver = 0.5.8.1
 	pkgrel = 2
 	url = https://github.com/imputnet/helium-linux
