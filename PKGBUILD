@@ -1,7 +1,7 @@
 # Maintainer: hikyae <h1ky43@gmail.com>
 
 pkgname=proslenkey
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A lightweight GTK4 application launcher for Wayland'
 arch=(any)
@@ -17,7 +17,7 @@ makedepends=(
 	python-installer
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hikyae/proslenkey/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7afc4443242085dbff7fece5ea85052089fd8d0a5c999069a1893709e4c47065')
+sha256sums=('36bc3f7dbeeba44e3ca7556c75850e8f279bcd746799a83c090345a51e91bf2a')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
