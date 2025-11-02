@@ -13,7 +13,7 @@ url="https://www.microsoftedgeinsider.com/en-us/download"
 license=('custom')
 provides=('microsoft-edge-beta' 'edge-beta')
 conflicts=('microsoft-edge-beta' 'edge-beta' 'edge-beta-bin' 'edge')
-depends=('gtk3' 'libcups' 'nss' 'alsa-lib' 'libxtst' 'libdrm' 'mesa')
+depends=('gtk3' 'libcups' 'nss' 'alsa-lib' 'libxtst' 'libdrm' 'mesa' 'libxml2-legacy')
 makedepends=('imagemagick')
 optdepends=('libpipewire: WebRTC desktop sharing under Wayland'
             'kdialog: for file dialogs in KDE'

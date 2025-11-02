@@ -13,6 +13,7 @@ pkgbase = microsoft-edge-beta-bin
 	depends = libxtst
 	depends = libdrm
 	depends = mesa
+	depends = libxml2-legacy
 	optdepends = libpipewire: WebRTC desktop sharing under Wayland
 	optdepends = kdialog: for file dialogs in KDE
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
