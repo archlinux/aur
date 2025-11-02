@@ -27,7 +27,7 @@ build() {
     
     # Install dependencies in venv
     source venv312/bin/activate
-    pip install --no-deps -r requirements.txt
+    pip install -r requirements.txt
     
     # We don't install vllama.py or install_venv.sh directly here,
     # they will be moved to pkgdir in the package() function.
