@@ -3,8 +3,8 @@
 pkgname=bind-git
 reponame=bind9
 branch=main
-pkgver=9.21.11.r126.gd468180
-pkgrel=4
+pkgver=9.21.14.r209.g056a327
+pkgrel=1
 pkgdesc='A complete, highly portable implementation of the DNS protocol: development version'
 url='https://www.isc.org/software/bind/'
 license=('MPL-2.0')
@@ -52,7 +52,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${reponame}"
-  meson setup build --buildtype debug --prefix=/usr --sbindir=bin -D{cap,dnstap,doc,doh,geoip,gssapi,idn,jemalloc,leak-detection,line,lmdb,stats-json,stats-xml,zlib}=enabled
+  meson setup build --buildtype debug --prefix=/usr --sbindir=bin -D{dnstap,doc,doh,geoip,gssapi,idn,jemalloc,leak-detection,line,lmdb,stats-json,stats-xml,zlib}=enabled
   ninja -C build
 }
 
