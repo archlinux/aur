@@ -6,8 +6,7 @@ pkgdesc="LibCppBor: A Modern C++ CBOR Parser and Generator"
 arch=("x86_64")
 url="https://android.googlesource.com/platform/system/libcppbor"
 license=("Apache-2.0")
-makedepends=("openssl")
-#depends=("")
+depends=("openssl")
 provides=("${pkgname}")
 
 _build_directory=${pkgname}
