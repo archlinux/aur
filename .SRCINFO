@@ -1,6 +1,6 @@
 pkgbase = qbittorrent-cli
 	pkgdesc = Command line interface for qBittorrent
-	pkgver = 1.8.24012.1
+	pkgver = 1.8.24285.1
 	pkgrel = 1
 	url = https://github.com/fedarovich/qbittorrent-cli
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = qbittorrent-cli
 	makedepends = dotnet-sdk-6.0
 	depends = dotnet-runtime-6.0
 	options = !strip
-	source = qbittorrent-cli-1.8.24012.1.tar.gz::https://github.com/fedarovich/qbittorrent-cli/archive/refs/tags/v1.8.24012.1.tar.gz
-	sha256sums = 395277f785bdc6773b57112cf3060151123728539cbf29445530d1d34671a031
+	source = qbittorrent-cli-1.8.24285.1.tar.gz::https://github.com/fedarovich/qbittorrent-cli/archive/refs/tags/v1.8.24285.1.tar.gz
+	sha256sums = b32f912d854550cdf3523b7c75f8fc9e8201a6c2b8a7d5f217c438e2e7e6af1b
 
 pkgname = qbittorrent-cli
