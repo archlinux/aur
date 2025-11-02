@@ -1,7 +1,7 @@
 # Maintainer: Andrew Relative <kezin636 at gmail dot com>
 
 pkgname=aegnux
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="A convenient way to install Adobe After Effects on Linux using Wine."
 arch=('x86_64')
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 build() {
     rootdir="$srcdir/${pkgname}-${pkgver}"
     cd "$rootdir"
-    sed -i '4,25d' "$rootdir/prepare.sh"
+    sed -i '3,27d' "$rootdir/prepare.sh" # removing bloat
     ./prepare.sh
 
     cp /usr/bin/cabextract "$rootdir/bin/"
