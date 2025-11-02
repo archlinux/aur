@@ -1,6 +1,6 @@
-pkgbase = kontainer-git
+pkgbase = kontainer
 	pkgdesc = A simple Kirigami GUI for Distrobox
-	pkgver = 1.2.1.r0.g94e8b21
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/DenysMb/Kontainer
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = kontainer-git
 	source = denysmb.kontainer::git+https://github.com/DenysMb/Kontainer.git
 	sha256sums = SKIP
 
-pkgname = kontainer-git
+pkgname = kontainer
 	depends = kirigami
 	depends = kirigami-addons
 	depends = kio

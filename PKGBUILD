@@ -1,8 +1,7 @@
-# Maintainer:
+# Maintainer: Daniele <d bas dot so at poul.org>
 
-_pkgname="kontainer"
-pkgname="$_pkgname-git"
-pkgver=1.2.1.r0.g94e8b21
+pkgname="kontainer"
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="A simple Kirigami GUI for Distrobox"
 url="https://github.com/DenysMb/Kontainer"
@@ -22,18 +21,12 @@ makedepends=(
   'ninja'
 )
 
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=("$pkgname")
+conflicts=("$pkgname")
 
 _pkgsrc="denysmb.kontainer"
 source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd "$_pkgsrc"
-  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
-}
 
 build() {
   local _cmake_options=(
