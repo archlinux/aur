@@ -1,6 +1,6 @@
 pkgbase = apkeep
 	pkgdesc = CLI tool from EFF for downloading APK files from various sources
-	pkgver = 0.17.0
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/EFForg/apkeep
 	arch = i686
@@ -10,10 +10,9 @@ pkgbase = apkeep
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
-	makedepends = mold
 	depends = openssl
 	depends = gcc-libs
-	source = apkeep-0.17.0.tar.gz::https://github.com/EFForg/apkeep/archive/0.17.0.tar.gz
-	sha256sums = f5fa0d8c02d5c078f69ec18e080463113c3794be8b94130f6a81f463c36bca0b
+	source = apkeep-0.18.0.tar.gz::https://github.com/EFForg/apkeep/archive/0.18.0.tar.gz
+	sha256sums = 627f2382c3c849cbf872c512cf5f7293d31714b630afdf531ec8a9263bea207e
 
 pkgname = apkeep
