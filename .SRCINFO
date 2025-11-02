@@ -1,7 +1,7 @@
 pkgbase = roccat-tools
 	pkgdesc = Userland applications to configure and make extended use of ROCCAT devices
 	pkgver = 5.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://roccat.sourceforge.net
 	arch = i686
 	arch = x86_64
@@ -134,4 +134,3 @@ pkgname = roccat-tools-tyon
 pkgname = roccat-tools-nyth
 	pkgdesc = Userland applications to configure and make extended use of ROCCAT Nyth devices
 	depends = roccat-tools-common
-
