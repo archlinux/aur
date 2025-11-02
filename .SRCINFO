@@ -1,0 +1,19 @@
+pkgbase = notnative-app
+	pkgdesc = Note-taking application with Vim-like keybindings
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/k4ditano/notnative-app
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	makedepends = git
+	depends = gtk4
+	depends = webkit2gtk-6.0
+	depends = libadwaita
+	depends = gtksourceview5
+	depends = pulseaudio
+	source = notnative-app-0.1.0.tar.gz::https://github.com/k4ditano/notnative-app/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = notnative-app
