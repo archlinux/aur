@@ -11,12 +11,15 @@ pkgbase = flang
 	depends = mlir>=21
 	depends = clang
 	depends = llvm-libs
+	options = staticlibs
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.4/flang-21.1.4.src.tar.xz
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.4/flang-21.1.4.src.tar.xz.sig
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.4/cmake-21.1.4.src.tar.xz
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.4/cmake-21.1.4.src.tar.xz.sig
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.4/clang-21.1.4.src.tar.xz
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.4/clang-21.1.4.src.tar.xz.sig
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.4/llvm-project-21.1.4.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.4/llvm-project-21.1.4.src.tar.xz.sig
 	validpgpkeys = 474E22316ABF4785A88C6E8EA2C794A986419D8A
 	validpgpkeys = D574BD5D1D0E98895E3BF90044F2485E45D59042
 	validpgpkeys = FFB3368980F3E6BB5737145A316C56D064CACBA5
@@ -26,6 +29,8 @@ pkgbase = flang
 	sha256sums = f4316d84a862ba3023ca1d26bd9c6a995516b4fa028b6fb329d22e24cc6d235e
 	sha256sums = SKIP
 	sha256sums = 3e8e25a7478bfb0ef510fff35d1a43bdfb62c7727bf98bb43ad33deef2f9f1a2
+	sha256sums = SKIP
+	sha256sums = a01ad7e5167780c945871d75c0413081d12067607a6de5cf71dc3e8d1a82112c
 	sha256sums = SKIP
 
 pkgname = flang
