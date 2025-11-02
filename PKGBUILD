@@ -13,7 +13,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/bluesky-social/goat/archive
 sha256sums=('3a341fe0cee62cf4dd025db9fb220d06c954f70250812a14bb51a7ba3380f9a4')
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "goat-$pkgver"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -23,7 +23,7 @@ build() {
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "goat-$pkgver"
 	install -Dm755 goat "$pkgdir/usr/bin/goat"
 	install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
