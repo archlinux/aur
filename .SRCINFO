@@ -7,6 +7,6 @@ pkgbase = dsync
 	license = unlicense
 	depends = rsync
 	source = http://download.krfoss.org/dsync
-	sha256sums = 010a0802baf4293fca7444b3d9cd59bb8fc5ced1b3e4adc7cd6eea2d79ab5e78
+	sha256sums = 6c6f5499dc023c11579ef48829f6c0bd7a48ff9edb87a07e9f251ea1f0a6f7ba
 
 pkgname = dsync
