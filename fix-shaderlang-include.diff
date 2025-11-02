@@ -1,0 +1,13 @@
+diff --git a/Source/Core/VideoCommon/ShaderCompileUtils.h b/Source/Core/VideoCommon/ShaderCompileUtils.h
+index c302392248..0e7c5eed5f 100644
+--- a/Source/Core/VideoCommon/ShaderCompileUtils.h
++++ b/Source/Core/VideoCommon/ShaderCompileUtils.h
+@@ -8,7 +8,7 @@
+ #include <string>
+ #include <vector>
+ 
+-#include "ShaderLang.h"
++#include <glslang/Public/ShaderLang.h>
+ 
+ namespace VideoCommon
+ {
