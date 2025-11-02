@@ -19,7 +19,7 @@ url="https://www.microsoftedgeinsider.com/en-us/download"
 license=(custom)
 provides=("microsoft-edge=$pkgver")
 conflicts=(microsoft-edge)
-depends=(gtk3 libcups nss alsa-lib libxtst libdrm mesa)
+depends=(gtk3 libcups nss alsa-lib libxtst libdrm mesa libxml2-legacy)
 makedepends=(imagemagick)
 optdepends=('gnome-keyring: for storing passwords in GNOME keyring'
             'gtk3: for printing'

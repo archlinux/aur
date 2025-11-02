@@ -13,6 +13,7 @@ pkgbase = microsoft-edge-dev-bin
 	depends = libxtst
 	depends = libdrm
 	depends = mesa
+	depends = libxml2-legacy
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
 	optdepends = gtk3: for printing
 	optdepends = kdialog: for file dialogs in KDE
