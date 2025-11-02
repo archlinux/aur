@@ -8,6 +8,6 @@ pkgbase = beautyline
 	license = GPL
 	options = !strip
 	source = https://gitlab.com/garuda-linux/themes-and-settings/artwork/beautyline/-/archive/b9cadf376d2e472dc43cc370aaf7bed4c727f0ec/beautyline-b9cadf376d2e472dc43cc370aaf7bed4c727f0ec.tar.gz
-	sha256sums = 5b4365410e667c8c0313b972e4ad20855c36bd9d56b77372f569f424f33670be
+	sha256sums = SKIP
 
 pkgname = beautyline

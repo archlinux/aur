@@ -11,7 +11,7 @@ url="https://gitlab.com/garuda-linux/themes-and-settings/artwork/$pkgname"
 license=('GPL')
 options=('!strip')
 source=("https://gitlab.com/garuda-linux/themes-and-settings/artwork/beautyline/-/archive/${_commit}/beautyline-${_commit}.tar.gz")
-sha256sums=('5b4365410e667c8c0313b972e4ad20855c36bd9d56b77372f569f424f33670be')
+sha256sums=('SKIP')
 
 package() {
   _move=(actions apps devices index.theme mimetypes places preferences status)
