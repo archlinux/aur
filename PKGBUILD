@@ -5,7 +5,7 @@
 # Before attempting to build this package, ensure all AUR dependencies are installed.
 pkgname=alpaca-ai
 _pkgname=alpaca
-pkgver=8.3.0
+pkgver=8.3.1
 pkgrel=1
 pkgdesc="An Ollama client. Chat with local AI models or connect to third party AI providers like ChatGPT , Gemini and more"
 arch=(any) # 'any' is generally suitable for Python applications, but specific arch (e.g., 'x86_64') might be used if native components are present.
@@ -15,7 +15,7 @@ options=(!debug) # Disable debug symbols for a smaller package
 
 # Corrected source URL format for GitHub tags
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Jeffser/$_pkgname/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('2a545be988032160540de1b3452de72a9951fe5df93c4b5c80e24f9695d294a993f6062dcc418c3bed2023136350995647ea0c85a1c3d5d7db23ffaab41620dc')
+b2sums=('5076701dedf97d7fd540b37cfbe70e9ac6e771a07b1dd0f0257c544d3349ce4a60daa1d9e5002c4d15d4817661e451b883fba1e09766624e5150c50989bcb78b')
 
 # List of runtime dependencies
 depends=(
