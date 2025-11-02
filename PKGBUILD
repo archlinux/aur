@@ -3,7 +3,7 @@
 
 _pkgname=dexed
 pkgname=$_pkgname-git
-pkgver=0.9.8.r0.gfe6efbc
+pkgver=0.9.8.r16.gf20667e
 pkgrel=1
 pkgdesc='A software synth closely modelled on the Yamaha DX7 (git version)'
 arch=(x86_64)
@@ -140,7 +140,7 @@ build() {
 package() {
   cd $_pkgname
   # desktop icon/file
-  install -vDm644 Resources/ui/dexedIcon.png "$pkgdir"/usr/share/icons/hicolor/512x512/apps/dexed.png
+  install -vDm644 assets/ui/dexedIcon.png "$pkgdir"/usr/share/icons/hicolor/512x512/apps/dexed.png
   install -vDm644 com.digitalsuburban.Dexed.desktop -t "$pkgdir"/usr/share/applications
 
   # documentation
