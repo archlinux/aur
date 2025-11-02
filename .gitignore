@@ -1,0 +1,6 @@
+pkg/
+src/
+*.zst
+*.log
+libfronius-*
+fronius-bridge-*

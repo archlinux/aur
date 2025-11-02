@@ -1,0 +1,29 @@
+pkgbase = fronius-bridge
+	pkgdesc = Lightweight Modbus-to-MQTT bridge for Fronius inverters
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/ahpohl/fronius-bridge
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = pkgconf
+	depends = libfronius
+	depends = yaml-cpp
+	depends = nlohmann-json
+	depends = spdlog
+	depends = cli11
+	depends = mosquitto
+	depends = fmt
+	backup = etc/fronius-bridge/config.yaml
+	source = fronius-bridge-1.0.1::git+https://github.com/ahpohl/fronius-bridge.git#tag=v1.0.1
+	source = config.yaml
+	source = sysusers-fronius.conf
+	source = fronius-bridge.service
+	sha256sums = a5b89d1d4d99dd8503381dcccdffbbfa0822d639022a83ab08540dff67a01ff1
+	sha256sums = 515958171b67f25e07a470d5fb9b3da392b234861aeed1f4dc81d8499706851d
+	sha256sums = f93532f32babcf1c4cce79a1bfc49cca702e1cfd41267d6b580181af277009f2
+	sha256sums = 5047953f514a345441fb69ee5c60e79acf7ccb387d206ae7d0e11a2550683060
+
+pkgname = fronius-bridge
