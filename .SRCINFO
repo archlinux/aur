@@ -1,14 +1,12 @@
 pkgbase = libkscreen5
 	pkgdesc = KDE screen management software
 	pkgver = 5.27.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	license = LGPL
 	makedepends = extra-cmake-modules
-	makedepends = doxygen
 	makedepends = qt5-tools
-	makedepends = qt5-doc
 	makedepends = plasma-wayland-protocols
 	depends = qt5-x11extras
 	depends = kwayland5
