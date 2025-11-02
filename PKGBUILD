@@ -4,7 +4,7 @@
 
 pkgname=kio5-extras
 pkgver=24.02.2
-pkgrel=5
+pkgrel=6
 pkgdesc='Additional components to increase the functionality of KIO'
 arch=(x86_64)
 url='https://www.kde.org/'
@@ -33,7 +33,6 @@ depends=(gcc-libs
          syntax-highlighting5)
 makedepends=(extra-cmake-modules
              gperf
-             kdoctools5
              libappimage
              openexr
              taglib)
@@ -54,6 +53,8 @@ validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aac
 prepare() {
 # Fix build with libxml2 2.15
   sed -e 's|"extension "|"extension"|' -i kio-extras-kf5-$pkgver/po/it/docs/kioslave5/bzip2/index.docbook
+# Drop docs
+  sed -e '/DocTools/d' -e '/( doc )/d' -e '/kdoctools_install/d' -i kio-extras-kf5-$pkgver/CMakeLists.txt
 }
 
 build() {
