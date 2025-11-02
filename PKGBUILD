@@ -3,7 +3,7 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=swig
-pkgver=4.3.1
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Generate scripting interfaces to C/C++ code"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=('gcc-libs' 'glibc' 'pcre2' 'zlib')
 checkdepends=('ruby' 'python' 'java-environment' 'tcl' 'php' 'lua' 'r' 'go' 'boost')
 makedepends=('git')
 source=(git+https://github.com/swig/swig#tag=v$pkgver)
-sha512sums=('614ae5f9cb6c3c49b44398d93e3c42f837a7b0d62410049085ed10e85bd14b69fd5916c0cbb43afba01ed1f3abcc4a4b6e8d8f85bba4b752a4f0737f4904d118')
+sha512sums=('eed3eb9b8c769661e039718982a17c2a39907023085ec2e7f957664456a8816c376756278cc2667ce73818fe986f26d4479819c7f0d50e43fa5dea012d742c90')
 
 prepare() {
   sed -n '5,32p' $pkgname/LICENSE-UNIVERSITIES > LicenseRef-BSD-Utah-California.txt
