@@ -1,15 +1,16 @@
-# Maintainer: Michael J. Pento <mpento darkforge net>
+# Maintainer: Mike Pento <mjpento@gmail.com>
 
 pkgname=objconv
-pkgver=2.54
-pkgrel=2
+pkgver=2.56
+pkgrel=1
 pkgdesc='Object file converter and disassembler'
 arch=('i686' 'x86_64')
 url="http://www.agner.org/optimize/#objconv"
-license=('GPL')
+license=('GPL-3.0-or-later')
+options+=('!debug')
 depends=('gcc-libs')
 source=("$pkgname-$pkgver.zip::http://www.agner.org/optimize/objconv.zip")
-sha256sums=('0c5ca8fbc7ef1c4afe3cc7cc9018711a5885afacbe8bcebc48028d1ec90ccc7c')
+sha256sums=('301149c271ffaf7b11a14d7aff637ecd580f8591bb8992b8e399af7ed4779bf9')
 
 prepare() {
   mkdir build
