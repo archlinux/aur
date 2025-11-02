@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=miro-pdf-bin
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A native pdf viewer for Windows and Linux (Wayland/X11) with configurable keybindings."
 arch=('x86_64')
 url="https://github.com/vincent-uden/miro"
@@ -20,5 +20,5 @@ validpgpkeys=()
 package() {
 	cd "$srcdir"
 	install -Dm775 ${pkgname::-4}-${pkgver} "$pkgdir/usr/bin/${pkgname::-4}"
-	install -Dm644 "$srcdir/${pkgname::-8}-$pkgver/assets/default.conf" "$pkgdir/usr/share/${pkgname}/miro.conf"
+	install -Dm644 "$srcdir/${pkgname::-8}-$pkgver/assets/default.conf" "$pkgdir/usr/share/${pkgname::-4}/miro.conf"
 }
