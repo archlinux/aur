@@ -3,7 +3,7 @@
 # Contributor: Matej Horváth <matej.horvath@gmail.com>
 
 pkgname=gscreenshot
-pkgver=3.10.0
+pkgver=3.11.0
 pkgrel=1
 epoch=
 pkgdesc="A simple screenshot tool supporting multiple backends"
@@ -32,14 +32,14 @@ optdepends=('xclip: command line clipboard support'
             'wl-clipboard: Wayland clipboard support'
             'python-dbus: required when using the XDG desktop portal backend')
 provides=()
-conflicts=()
+conflicts=('gscreenshot-git')
 replaces=()
 backup=()
 options=()
 install=
 changelog=
 source=("https://github.com/thenaterhood/gscreenshot/archive/v$pkgver.tar.gz")
-sha256sums=('25620d68704ee220cf84860a0c144d57889410a733549d1c6a252b740c98b368')
+sha256sums=('a78e89e890b33636d6c0df7f61a3ced03764cf02b37f070f5b64b2b8025fbde6')
 validpgpkeys=()
 
 prepare() {
