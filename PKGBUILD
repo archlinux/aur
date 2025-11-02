@@ -11,14 +11,14 @@
 
 _qt_module=qtquickcontrols
 pkgname=mingw-w64-qt5-quickcontrols
-pkgver=5.15.17
+pkgver=5.15.18
 pkgrel=1
 arch=('any')
 pkgdesc="Reusable Qt Quick based UI controls to create classic desktop-style user interfaces (mingw-w64)"
 depends=('mingw-w64-qt5-declarative')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-_commit=37ee5e07e82296e24cc02c8bf6f31cb6bd8846b1
+_commit=0c3c18bf8bdac1ef1afdb8aade903edb5c2bc041
 _basever=${pkgver%%+*}
 pkgver+=+kde+r0
 makedepends+=('git')
@@ -27,7 +27,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('f9f0c19d964feae084e3fccc15da8de093b3321a3ae1ea5f07eecbc4a9412a4a')
+sha256sums=('6077b6c8c1580c5dd9acd0ded83ab22653357f2deff3d8f42f07827f8fd7cc90')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
