@@ -2,7 +2,7 @@
 
 pkgname=kreport
 pkgver=3.2.0
-pkgrel=6
+pkgrel=7
 pkgdesc='A framework for creation and generation of reports in multiple formats'
 arch=(x86_64)
 url='https://apps.kde.org/es/kexi-3.3/'
@@ -14,12 +14,10 @@ depends=(gcc-libs
          kwidgetsaddons5
          kproperty
          qt5-base
-         qt5-declarative)
-makedepends=(doxygen
-             extra-cmake-modules
-             python
-             qt5-doc
-             qt5-tools)
+         qt5-declarative
+         qt5-tools)
+makedepends=(extra-cmake-modules
+             python)
 source=(https://download.kde.org/stable/$pkgname/src/$pkgname-$pkgver.tar.xz{,.sig}
         https://invent.kde.org/libraries/kreport/-/commit/5d3053ea.patch)
 sha256sums=('22716d719654e8f887fe4d33654e252ddf3d3d818c44e15a8af0e6f2e7d6ccd7'
@@ -29,13 +27,14 @@ validpgpkeys=(4866BAF713B465677A4059643C7C0E201B6524DB) # Jarosław Staniek <sta
 
 prepare() {
   patch -d $pkgname-$pkgver -p1 < 5d3053ea.patch # Fix missing symbols with GCC 10
+  sed -e '/SetKReportCMakePolicies/d' -i $pkgname-$pkgver/CMakeLists.txt # Fix build with cmake 4
 }
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTING=OFF \
-    -DBUILD_QCH=ON
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake --build build
 }
 
