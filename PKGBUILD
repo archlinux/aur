@@ -9,16 +9,13 @@
 
 pkgname=sonic-pi
 pkgver=4.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The Live Coding Music Synth for Everyone"
 arch=(x86_64)
 url="https://sonic-pi.net/"
 license=(CC-BY-SA-4.0 LGPL-2.1-only GPL-2.0-only GPL-3.0-only MIT CC0-1.0 BSL-1.0 Ruby Apache-2.0 BSD-3-Clause custom:ISC)
 groups=(pro-audio)
-depends=(
-  aubio ruby ruby-racc supercollider
-  qscintilla-qt6 qt6-base qt6-svg qt6-wayland which
-)
+depends=(aubio ruby ruby-racc supercollider qscintilla-qt6 qt6-base qt6-svg qt6-wayland which)
 makedepends=(
   'boost>=1.74.0'  # match vendored version
   erlang-asn1 erlang-public_key erlang-ssl erlang-parsetools erlang-sasl
@@ -36,12 +33,14 @@ source=(
   $pkgname-$pkgver-gui_paths.patch
   $pkgname-$pkgver-ruby_paths.patch
   $pkgname-$pkgver-devendor_boost.patch
+  $pkgname-$pkgver-boost_deprecated_lib.patch
 )
 sha512sums=(
   'd99d25bbb2e8b556156252140484502ce5bf2869f846b7aff69dae549812d18769b8cd6d9c474be36819d7a831b170553690906d89ece74cd9df2f80289d5892'
   '625b08cd7b1bbe93f898e36183badafed5e056b18df8d923b2ddb964fe358060501fcf63b9c8a05b95a5d9ab8d6dfb0419a7ed519b511c8e1612a7698df3f44a'
   'fa091666d493f302b507a8c8ccaf1992ee64214ec0f45b92198f724fce2b1cee718204afeba4de5ab6d2849a1e9a1933b623054fc459227a15529146d9937d7e'
   '841265559a7551d87750dffb4e224da4fdfd0657627ea8c7e61a996c2c854ee5773525b66cb1d750a5193e65f7e5f13cc5729f95d1d3d86b01d7a1a8be97226c'
+  '5eacc305934bfb294f830f2ca8ed3cf4b51baef7b5ff98fd282e6f3636aadd34805fe7ce1574bb6d8b6c0dcb5309f6e1128acd226622c5a4c6da0d6fa474a077'
 )
 
 prepare() {
@@ -59,6 +58,9 @@ prepare() {
 
   printf "Apply patch to devendor boost\n"
   patch -Np1 -i "../$pkgname-$pkgver-devendor_boost.patch"
+
+  printf "Apply patch to remove reference to deprecated boost system lib\n"
+  patch -Np1 -i "../$pkgname-$pkgver-boost_deprecated_lib.patch"
 
 #   # TODO: devendor ast-2.0.0
 #   # TODO: devendor atomic (bin)
