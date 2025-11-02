@@ -2,7 +2,7 @@
 
 _name=mcp
 pkgname=python-$_name
-pkgver=1.19.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Model Context Protocol SDK.'
 arch=('any')
@@ -14,7 +14,7 @@ checkdepends=('python-pytest' 'python-trio' 'python-pytest-xdist' 'python-pytest
 optdepends=('python-rich: rich' 'python-typer: cli' 'python-dotenv: cli' 'python-websockets: ws')
 source=("$_name-$pkgver::git+$url.git#tag=v$pkgver"
         "fix-pydantic-2.12.x.patch")
-sha256sums=('b64025854b69f58ac909b2d90e11a95df497b03ab16a79284c6d1b1a748c0839'
+sha256sums=('fd98c19073debacade9dd842b88c850edbf11cd0c37c9ce217ff8863b78d484b'
             '30f3aa2c6c50f6c3b5ac19ea43af30e0f037d6b88f91c2d9b658329ea1ef23b8')
 
 prepare(){
