@@ -1,15 +1,15 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: SierraKiloBravo <aur at hillebrand dot io>
 
-pkgname=vieb-bin
 _pkgname=vieb
-pkgver=12.5.0
+pkgname=${_pkgname}-bin
+pkgver=12.6.0
 pkgrel=1
 pkgdesc="Vim Inspired Electron Browser - Vim bindings for the web by design"
 arch=('x86_64')
-url="https://vieb.dev"
+url="https://${_pkgname}.dev"
 license=('GPL-3.0')
 depends=('c-ares'
   'ffmpeg'
@@ -26,7 +26,7 @@ depends=('c-ares'
   'libnotify')
 install="${_pkgname}.install"
 source=("https://github.com/Jelmerro/Vieb/releases/download/${pkgver}/${_pkgname}-${pkgver}.pacman")
-sha512sums=('8746f434429474889c75e4fe2a3cf481d484d5c007631a3ec9355f2906483cc46074aec024dcf9863cd1edba8728731a279ac43802fb0142d2d268b5c00218bc')
+sha512sums=('480d464a291bda8e311bda6c6abae564a97bfd1044009372b4146060ed0a450f42ea6f9642579c373eac73165a11f3007752746be41a8c943c6a6f7aef166d9b')
 
 package() {
   cd "$srcdir"
@@ -36,6 +36,5 @@ package() {
 
   # Create a symlink to the binary in /opt
   mkdir -p "${pkgdir}"/usr/bin
-  ln -sf /opt/Vieb/vieb "${pkgdir}/usr/bin/vieb"
+  ln -sf /opt/Vieb/vieb "${pkgdir}/usr/bin/${_pkgname}"
 }
-# vim:set ts=2 sw=2 et:

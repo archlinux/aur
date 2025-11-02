@@ -1,8 +1,3 @@
 post_install() {
-    :
-#!/bin/bash
-
-# SUID chrome-sandbox for Electron 5+
-chmod 4755 '/opt/Vieb/chrome-sandbox' || true
-
+    chmod 4755 '/opt/Vieb/chrome-sandbox' || true
 }

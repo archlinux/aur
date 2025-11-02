@@ -1,0 +1,5 @@
+[vieb-bin]
+source = "github"
+github = "Jelmerro/Vieb"
+use_latest_release = true
+prefix = "v"
