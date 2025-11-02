@@ -11,14 +11,14 @@ _qt_module=qtvirtualkeyboard
 pkgname=mingw-w64-qt5-virtualkeyboard-static
 #_fix_deps_of_static_3rdparty_libs='s:\(-L\/.*\/lib.*\.a\) \(\/.*\/libqt\)\(openwnn\|pinyin\|tcime\)\(d*\.a\)\(.*\):\2\3\4 \1 \5:g'        # -L is used (pre Qt 5.13)
 _fix_deps_of_static_3rdparty_libs='s:\(LIBS *= *\)\(.*\)\(\/build\/.*\/libqt\)\(openwnn\|pinyin\|tcime\)\(d*\.a\)\(.*\):\1 \3\4\5 \2 \6:g' # absolute paths are used (Qt 5.13 and above)
-pkgver=5.15.17
+pkgver=5.15.18
 pkgrel=1
 arch=('any')
 pkgdesc="Virtual keyboard framework (translations, mingw-w64)"
 depends=('mingw-w64-pkg-config' 'mingw-w64-qt5-declarative-static' 'mingw-w64-qt5-svg-static')
 makedepends=('mingw-w64-gcc')
 license=('GPL3')
-_commit=0d229d587e578fb4a5144594b926d5d3138c407e
+_commit=859d2a6ee329cc08414410b2ef8c0af77a6853d3
 _basever=${pkgver%%+*}
 pkgver+=+kde+r0
 makedepends+=('git')
@@ -27,7 +27,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('c7c355c8a30f781c907c7e69d44ea0600e3fe41ba8e655943f86a7b44c6f4a40')
+sha256sums=('9cd5cff3ee836c37ac1c8e06c88a8c144af450aae39460977e14438187020d97')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
