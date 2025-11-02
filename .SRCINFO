@@ -1,6 +1,6 @@
 pkgbase = zeptofetch-bin
 	pkgdesc = Blazingly fast, ultra-minimal system information tool for Linux (prebuilt binary)
-	pkgver = 1.3
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://github.com/Gur0v/zeptofetch
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = zeptofetch-bin
 	provides = zeptofetch
 	conflicts = zeptofetch
 	conflicts = zeptofetch-git
-	source = zeptofetch-bin-1.3.tar.zst::https://github.com/Gur0v/zeptofetch/releases/download/v1.3/zeptofetch.tar.zst
-	sha256sums = 38f19c22385bf338fcb4b3721d0eaa32a8110fcca9d6424571d3ef9f281b143a
+	source = zeptofetch-bin-1.4.tar.zst::https://github.com/Gur0v/zeptofetch/releases/download/v1.4/zeptofetch.tar.zst
+	sha256sums = f73cfbd063e1725488fbf559902c916b17f2df6753f84d206bfa774def35535e
 
 pkgname = zeptofetch-bin
