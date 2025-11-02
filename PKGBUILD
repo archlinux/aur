@@ -5,7 +5,7 @@
 
 pkgname=dev86
 pkgver=0.16.21
-pkgrel=8
+pkgrel=9
 pkgdesc="Simple C compiler to generate 8086 code"
 arch=('x86_64')
 url='https://v3.sk/~lkundrak/dev86/'
@@ -35,7 +35,7 @@ prepare() {
 build() {
   cd "$srcdir"/$pkgname-$pkgver
 
-  export COMPILE_FLAGS="-O2 -ffat-lto-objects -Wno-implicit-function-declaration -Wno-implicit-int -Wno-return-mismatch"
+  export COMPILE_FLAGS="-O2 -ffat-lto-objects -Wno-implicit-function-declaration -Wno-implicit-int -Wno-return-mismatch -std=gnu99"
   make bcc86 unproto copt as86 ld86 DIST="$pkgdir" PREFIX="/usr" CFLAGS="$COMPILE_FLAGS"
   make -C cpp DIST="$pkgdir" PREFIX="/usr" CFLAGS="$COMPILE_FLAGS"
   make -C ar DIST="$pkgdir" PREFIX="/usr" CFLAGS="$COMPILE_FLAGS"
