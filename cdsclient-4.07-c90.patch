@@ -1,0 +1,675 @@
+diff --git a/aclient.c b/aclient.c
+index d60d722..c8d8742 100644
+--- a/aclient.c
++++ b/aclient.c
+@@ -105,9 +105,9 @@ static char *getpasswd()
+ .RETURNS  Number of characters
+ -----------------*/
+ {
++  static char pass[] = "Password: ";
+ #ifdef USE_TERMIO
+   static char buf[20];	/* Buffer which will contain Password, limited */
+-  static char pass[] = "Password: ";
+   struct termio tty0, tty1;
+   int n;
+ 
+@@ -122,8 +122,7 @@ static char *getpasswd()
+     buf[--n] = 0;
+     return(buf);
+ #else
+-  char *getpass();
+-    return(getpass("Password: "));
++  return getpass(pass);
+ #endif
+ }
+ 
+diff --git a/sk.h b/sk.h
+index 57b4af3..fd0c965 100644
+--- a/sk.h
++++ b/sk.h
+@@ -14,41 +14,36 @@
+ #ifndef sk_DEF
+ #define sk_DEF	0	/* To avoid recursive inclusions */
+ 
+-#ifndef _PARAMS
+-#ifdef __STDC__
+-#define _PARAMS(A)      A       /* ANSI */
+ #include <stdio.h>
+-#else
+-#define _PARAMS(A)      ()      /* Traditional */
+-#endif
+-#endif
+ 
+-extern int sk_open      _PARAMS((char *machine, char *service));
+-extern int sk_connect   _PARAMS((char *machine, char *service, 
+-			char *username, char *password));
+-extern int sk_obeyserver _PARAMS((int plug, 
++typedef void (*FCT)(const char *);
++
++extern int sk_open      (char *machine, char *service);
++extern int sk_connect   (char *machine, char *service,
++			char *username, char *password);
++extern int sk_obeyserver (int plug,
+ 			int (*digest)(char *, int), 
+-			int (*more)(char *, int)));
+-extern int sk_fromserver _PARAMS((int plug, int fput, int fget));
++			int (*more)(char *, int));
++extern int sk_fromserver (int plug, int fput, int fget);
+ 
+-extern int sk_read     _PARAMS((int plug, char *buf, int len));
+-extern int sk_get      _PARAMS((int plug, char *buf, int len));
+-extern int sk_gets     _PARAMS((int plug, char *buf, int len));
+-extern int sk_getl     _PARAMS((int plug));
+-extern int sk_write    _PARAMS((int plug, char *buf, int len));
+-extern int sk_put      _PARAMS((int plug, char *buf));
+-extern int sk_puts     _PARAMS((int plug, char *buf));
+-extern int sk_putl     _PARAMS((int plug, int val));
+-extern int sk_close    _PARAMS((int plug));
+-extern int sk_iosave   _PARAMS((int plug, char *buf, int len));
++extern int sk_read     (int plug, char *buf, int len);
++extern int sk_get      (int plug, char *buf, int len);
++extern int sk_gets     (int plug, char *buf, int len);
++extern int sk_getl     (int plug);
++extern int sk_write    (int plug, char *buf, int len);
++extern int sk_put      (int plug, char *buf);
++extern int sk_puts     (int plug, char *buf);
++extern int sk_putl     (int plug, int val);
++extern int sk_close    (int plug);
++extern int sk_iosave   (int plug, char *buf, int len);
+ 
+-extern int sk_setb     _PARAMS((int blocksize));
+-extern void *sk_setlog _PARAMS((FILE *newlog));
+-extern void *sk_iolog  _PARAMS((FILE *newlog));
+-extern char *sk_error  _PARAMS((void));
++extern int sk_setb     (int blocksize);
++extern FILE *sk_setlog (FILE *newlog);
++extern FILE *sk_iolog  (FILE *newlog);
++extern char *sk_error  (void);
+ 
+-extern int sk_kill     _PARAMS((int plug, int sig));	/* INTERRUPT */
+-extern int sk_umatch   _PARAMS((char *string, char *template));	/* case-insen */
+-extern int sk_match    _PARAMS((char *string, char *template));
+-/* extern int sk_log   _PARAMS((int level, char *fmt, ...));	-- problems */
++extern int sk_kill     (int plug, int sig);	/* INTERRUPT */
++extern int sk_umatch   (char *string, char *template);	/* case-insen */
++extern int sk_match    (char *string, char *template);
++/* extern int sk_log   (int level, char *fmt, ...)	-- problems */
+ #endif /* sk_DEF */
+diff --git a/skclient.c b/skclient.c
+index 7b4a020..a2d7177 100644
+--- a/skclient.c
++++ b/skclient.c
+@@ -62,7 +62,7 @@ typedef struct {		/* Buffer */
+ 
+ extern char *getlogin();
+ extern FILE *sk_getlog();
+-extern void (*sk_errfct())();
++extern FCT sk_errfct(FCT);
+ 
+ static PLUG plugs[NSOCKS];
+ static ABUF errs;		/* Error message */
+@@ -71,33 +71,30 @@ static char in_open;		/* Set to 1 if in sk_open */
+ /*==================================================================
+ 		BSD Utilities
+  *==================================================================*/
+-static int getHostname(host, len)
++static int getHostname(char *host, int len)
+ /*++++++++++++++++
+ .PURPOSE  Get name of host
+ .RETURNS  0 (OK) / 1 (truncated) /-1(error)
+ .REMARKS  BSD compatibility routine
+ -----------------*/
+-  char *host;	/* OUT: Name of host 	*/
+-  int len;	/* IN: Size of name	*/
+ {
+   struct utsname name; 
+   int status;
+-    status = uname(&name);
+-    if (status < 0) return(status);
+-    strncpy(host, name.nodename, len);
+-    if ((int)strlen(name.nodename) >= len) status = 1;
+-    return(0);
++  status = uname(&name);
++  if (status < 0) return status;
++  strncpy(host, name.nodename, len);
++  if ((int)strlen(name.nodename) >= len) return 1;
++  return 0;
+ }
+ 
+ /*============================================================================
+  *		Error routines
+  *============================================================================*/
+-static int cat_err(msg)
++static int cat_err(const char *msg)
+ /*++++++++++++++++
+ .PURPOSE  Append error to error buffer
+ .RETURNS  Length of full message
+ -----------------*/
+-  char *msg;	/* IN: Message to append	*/
+ {
+   int len;
+     len = errs.ubytes + strlen(msg);
+@@ -110,13 +107,11 @@ static int cat_err(msg)
+     return(errs.ubytes);
+ }
+ 
+-static void err2(msg, text)
++static void err2(const char *msg, char *text)
+ /*++++++++++++++++
+ .PURPOSE  Write msg: text to log file
+ .RETURNS  ---
+ -----------------*/
+-  char *msg;	/* IN: Message to append	*/
+-  char *text;	/* IN: Second message		*/
+ {
+   FILE *logfile;
+ 
+@@ -129,12 +124,11 @@ static void err2(msg, text)
+     }
+ }
+ 
+-static void put_err(msg)
++static void put_err(const char *msg)
+ /*++++++++++++++++
+ .PURPOSE  Write msg: error message
+ .RETURNS  ---
+ -----------------*/
+-  char *msg;	/* IN: Message to append	*/
+ {   
+   char buf[32], *errmsg ;
+     errmsg = strerror(errno);
+@@ -145,13 +139,11 @@ static void put_err(msg)
+ /*============================================================================
+  *		Internal routines
+  *============================================================================*/
+-static int set_slot(plug, val)
++static int set_slot(int plug, int val)
+ /*++++++++++++++++
+ .PURPOSE  Set the plug slot to a value
+ .RETURNS  Previous value of the slot
+ -----------------*/
+-  int plug;	/* IN: Started Socket Number 	*/
+-  int val;	/* IN: Value to set to slot	*/
+ {
+   int ret;
+     if (plug < 0) return(-1);
+@@ -173,13 +165,11 @@ char *sk_error()
+     return(errs.buffer);
+ }
+ 
+-int sk_kill(plug, sig)
++int sk_kill(int plug, int sig)
+ /*++++++++++++++++
+ .PURPOSE  Interrupt the exchange with Server
+ .RETURNS  Number of bytes transmitted (1) / Error
+ -----------------*/
+-  int plug;		/* IN: Started Socket Number 	*/
+-  int sig;		/* IN: Signal to send to Server */
+ {
+   static char bsig[2];
+   int stat;
+@@ -195,7 +185,7 @@ int sk_kill(plug, sig)
+ 
+ /*============================================================================*/
+ 
+-int sk_obeyserver(plug, digest, more)
++int sk_obeyserver(int plug, int (*digest)(char *, int), int (*more)(char *, int))
+ /*++++++++++++++++
+ .PURPOSE  Dialog with the server using two routines, 
+ 	. digest which gets what comes from the Server, and
+@@ -210,9 +200,6 @@ int sk_obeyserver(plug, digest, more)
+ 	     In this case, data acquired from more file are sent to Server.
+ .RETURNS  Number of bytes transferred / -1=Error 
+ -----------------*/
+-  int plug;		/* IN: Started Socket Number 	*/
+-  int (*digest)();	/* IN: Routine getting what's sent by Server */
+-  int (*more)();	/* IN: Routine generating data    for Server */
+ {
+ 
+   char bufop, eof, c;
+@@ -299,13 +286,11 @@ int sk_obeyserver(plug, digest, more)
+ static int fdigest = 1;		/* File number from sk_fromserver */
+ static int fmore   = 0;		/* File number from sk_fromserver */
+ 
+-static int mydigest(buf, len)
++static int mydigest(char *buf, int len)
+ /*++++++++++++++++
+ .PURPOSE  Function to write to fdigest
+ .RETURNS  Number of bytes written
+ -----------------*/
+-  char *buf;	/* IN: Buffer to write   */
+-  int  len;	/* IN: Bytes written out */
+ {
+   int n;
+ 
+@@ -314,13 +299,11 @@ static int mydigest(buf, len)
+     return(n);
+ }
+ 
+-static int mymore(buf, len)
++static int mymore(char *buf, int len)
+ /*++++++++++++++++
+ .PURPOSE  Function to write to fmore
+ .RETURNS  Number of bytes written
+ -----------------*/
+-  char *buf;	/* IN: Buffer to write   */
+-  int  len;	/* IN: Bytes written out */
+ {
+   int n;
+ 
+@@ -329,7 +312,7 @@ static int mymore(buf, len)
+     return(n);
+ }
+ 
+-int sk_fromserver(plug, fh, fsend)
++int sk_fromserver(int plug, int fh, int fsend)
+ /*++++++++++++++++
+ .PURPOSE  Copy what comes from server to fh file. This function obey to
+ 	the following conventions:
+@@ -339,9 +322,6 @@ int sk_fromserver(plug, fh, fsend)
+ 	     In this case, data from fsend file are sent to Server.
+ .RETURNS  Number of bytes transferred / -1=Error 
+ -----------------*/
+-  int plug;	/* IN: Started Socket Number 	*/
+-  int fh;		/* IN: OUTput file handle	*/
+-  int fsend;	/* IN: INput file to send if Server asks to */
+ {
+     fdigest = fh; fmore = fsend;
+     return(sk_obeyserver(plug, mydigest, mymore));
+@@ -353,14 +333,12 @@ int sk_fromserver(plug, fh, fsend)
+ static char *user;	/* Set by sk_connect */
+ static char *pswd;	/* Set by sk_connect */
+ 
+-static int open_digest(buf, len)
++static int open_digest(char *buf, int len)
+ /*++++++++++++++++
+ .PURPOSE  At Open, writes what comes from Server
+ .RETURNS  0 = OK
+ .REMARKS  At this connection level, what comes is just written on stderr.
+ -----------------*/
+-  char *buf;	/* IN: Buffer to write   */
+-  int  len;	/* IN: Bytes written out */
+ {
+     if (len <= 0) return(len);
+     buf[len] = 0;
+@@ -371,13 +349,11 @@ static int open_digest(buf, len)
+     return(len);
+ }
+ 
+-static int open_more(buf, len)
++static int open_more(char *buf, int len)
+ /*++++++++++++++++
+ .PURPOSE  At Open (Connect), write the Password
+ .RETURNS  Number of bytes 
+ -----------------*/
+-  char *buf;	/* IN: Buffer to write   */
+-  int  len;	/* IN: Size of  buf	 */
+ {
+   int n;
+ #ifdef DEBUG
+@@ -388,7 +364,7 @@ static int open_more(buf, len)
+     return(n);
+ }
+ 
+-int sk_open(machine, service)
++int sk_open(char *machine, char *service)
+ /*++++++++++++++++
+ .PURPOSE  Start a client connecting to a machine / Service
+ .RETURNS  File number; -1 when can't connect, -2 when connection refused
+@@ -397,15 +373,16 @@ int sk_open(machine, service)
+ 	At the prompt (\n-terminated) sent by the Server, the client
+ 	replies with User@Machine
+ -----------------*/
+-  char *machine;	/* IN: Machine to connect to */
+-  char *service;	/* IN: Service to connect to */
+ {
+   int plug;			     	/* socket to "plug" into the socket */
+   struct sockaddr_in socketname; 	/* mode, addr, and port for socket */
+   struct hostent *remote_host;		/* internet numbers, names   */
+   struct servent *ps;			/* Returned by getservbyname */
+   char buf[120];
+-  int  len, stat;
++  int len;
++#ifdef NODELAY
++  int stat;
++#endif
+   char *p, *pu;
+ 
+     sk_errfct(put_err);			/* Save & Print error messages */
+@@ -512,7 +489,7 @@ int sk_open(machine, service)
+     return(plug);
+ }
+ 
+-int sk_connect(machine, service, username, password)
++int sk_connect(char *machine, char *service, char *username, char *password)
+ /*++++++++++++++++
+ .PURPOSE  Start a client connecting to a machine / Service,
+ 		and send User/Password
+@@ -521,10 +498,6 @@ int sk_connect(machine, service, username, password)
+ 	it sends otherwise an error message which is reproduced
+ 	on stderr.
+ -----------------*/
+-  char *machine;	/* IN: Machine to connect to */
+-  char *service;	/* IN: Service to connect to */
+-  char *username;	/* IN: A username for Server */
+-  char *password;	/* IN: A password for Server */
+ {
+   int plug;		/* socket to "plug" into the socket */
+ 
+diff --git a/skio.c b/skio.c
+index 778e903..54e714d 100644
+--- a/skio.c
++++ b/skio.c
+@@ -10,7 +10,7 @@
+ .VERSION  2.0   10-May-1993:
+ .VERSION  2.1   03-Nov-1994: Added sk_iolog
+ .VERSION  2.2   16-Jan-1995: BASIC option; added sk_setlog
+-.VERSION  2.3   21-Mar-2000: Gnu C compiler dones't accept iinit stderr
++.VERSION  2.3   21-Mar-2000: Gnu C compiler doesn't accept iinit stderr
+ .VERSION  2.4   27-Oct-2005: log functions... confusion with math !!
+ .COMMENTS       Read/Write on Sockets
+ ---------------*/
+@@ -30,14 +30,15 @@
+ #include <sys/types.h>  /* ntohl */
+ #include <netinet/in.h> /* Byte order */
+ #endif
++
++#include "sk.h"
+ static FILE *logfile = (FILE *)(-1);	/* VAX and GNU can't assign stderr !! */
+ 
+-typedef void (*FCT)();
+ typedef struct {	/* A buffer to save what's read */
+     int size, offset;	/* Size of buf, position in buf */
+     char *buf;		/* Buffer 			*/
+ } BUF;
+-extern void perror();
++extern void perror(const char *msg);
+ 
+ static BUF *inputs[NSOCKS]; 
+ static FCT errfct = perror;	/* Function used to report errors */
+@@ -48,12 +49,11 @@ static int sksize = 0;		/* Individual size of sockets */
+ 
+ static FILE *iologfile;		/* Debugging Log-file (set by sk_iolog) */
+ 
+-static void log_b(fct, buf, len)
++static void log_b(char *fct, char *buf, int len)
+ /*++++++++++++++++
+ .PURPOSE  Log what's comes in
+ .RETURNS  ---
+ -----------------*/
+-  char *fct, *buf; int len;
+ { 
+   int i; char c;
+     if (!iologfile) return;
+@@ -81,12 +81,11 @@ static void log_b(fct, buf, len)
+     return;
+ }
+ 
+-static void log_l(fct, val)
++static void log_l(char *fct, int val)
+ /*++++++++++++++++
+ .PURPOSE  Log what's comes in
+ .RETURNS  0
+ -----------------*/
+-  char *fct; int val;
+ { 
+     if (!iologfile) return;
+     fprintf(iologfile, "....%8s= %d\n", fct, val);
+@@ -94,14 +93,11 @@ static void log_l(fct, val)
+     return;
+ }
+ 
+-static int err3(ssp, plug, len)
++static int err3(char *ssp, int plug, int len)
+ /*++++++++++++++++
+ .PURPOSE  Error report
+ .RETURNS  0
+ -----------------*/
+-  char *ssp;	/* IN: Subroutine name */
+-  int  plug;	/* IN: Socket number */
+-  int len;	/* IN: Length variable */
+ {
+   char buffer[128];
+     sprintf(buffer, "****%s plug#%d for %d bytes", ssp, plug, len);
+@@ -109,14 +105,11 @@ static int err3(ssp, plug, len)
+     return(0);
+ }
+ 
+-static int bread(fno, buf, len)
++static int bread(int fno, char *buf, int len)
+ /*++++++++++++++++
+ .PURPOSE  Internal read from associated buffer
+ .RETURNS  Length of what's read
+ -----------------*/
+-  int fno;	/* IN: File Descriptor */
+-  char *buf;	/* OUT: Buffer filled  */
+-  int  len;	/* IN: Max len to read */
+ { 
+   int bytes; BUF *b;
+     b = inputs[fno]; if (!b) return(0);
+@@ -127,13 +120,12 @@ static int bread(fno, buf, len)
+     return(bytes);
+ }
+ 
+-int sk_setb(block)
++int sk_setb(int block)
+ /*++++++++++++++++
+ .PURPOSE  Set the size of blocks for socket transfer
+ .RETURNS  The previous value of the socket size
+ .REMARKS  A value < 1 does not change the socket blocksize.
+ -----------------*/
+-  int block;	/* IN: Size of socket blocks in bytes (< 511) of blocks */
+ {
+   int ob;
+     ob = sksize; 
+@@ -144,13 +136,12 @@ int sk_setb(block)
+     return(ob);
+ }
+ 
+-FCT sk_errfct(f)
++FCT sk_errfct(FCT f)
+ /*++++++++++++++++
+ .PURPOSE  Set the error function
+ .RETURNS  The previous errfct function
+ .REMARKS  Default is perror.
+ -----------------*/
+-  FCT f;	/* IN: New errfct function */
+ {
+   FCT o;
+     o = errfct;
+@@ -168,13 +159,12 @@ FILE *sk_getlog()
+     return(logfile);
+ }
+ 
+-FILE *sk_setlog(f)
++FILE *sk_setlog(FILE *f)
+ /*++++++++++++++++
+ .PURPOSE  Set the logfile (where to write errors)
+ .RETURNS  The previous DEBUG logfile
+ .REMARKS  Default is no debugging log
+ -----------------*/
+-  FILE *f;	/* IN: New log file	*/
+ {
+   FILE *o;
+     if (logfile == (FILE *)(-1)) logfile = stderr ;
+@@ -183,13 +173,12 @@ FILE *sk_setlog(f)
+     return(o);
+ }
+ 
+-FILE *sk_iolog(f)
++FILE *sk_iolog(FILE *f)
+ /*++++++++++++++++
+ .PURPOSE  Set the DEBUG logfile
+ .RETURNS  The previous DEBUG logfile
+ .REMARKS  Default is no debugging log
+ -----------------*/
+-  FILE *f;	/* IN: New log file; value -1 to get only current */
+ {
+   FILE *o;
+     o = iologfile;
+@@ -197,15 +186,12 @@ FILE *sk_iolog(f)
+     return(o);
+ }
+ 
+-int sk_iosave(fno, buf, len)
++int sk_iosave(int fno, char *buf, int len)
+ /*++++++++++++++++
+ .PURPOSE  Save in a buffer the provided data
+-.RETURNS  Number of bytes in buffer associated to fno
++.RETURNS  Number of bytes in buffer associated with fno
+ .REMARKS  Can't save in existing buffer
+ -----------------*/
+-  int fno;	/* IN: File Descriptor 	*/
+-  char *buf;	/* IN: Data to save    	*/
+-  int  len;	/* IN: Length of data 	*/
+ {
+   BUF *b; 
+     if (len <= 0) return(0);
+@@ -228,15 +214,12 @@ int sk_iosave(fno, buf, len)
+     return (b->size - b->offset);
+ }
+ 
+-int sk_read(fno, buf, len)
++int sk_read(int fno, char *buf, int len)
+ /*++++++++++++++++
+ .PURPOSE  Read up to a specified number of bytes on a socket.
+ .RETURNS  Number of bytes read
+ .REMARKS  No attempt to fill the buffer.
+ -----------------*/
+-  int fno;	/* IN: File Descriptor */
+-  char *buf;	/* OUT: Buffer filled  */
+-  int  len;	/* IN: Max len to read */
+ {
+   int i;
+     if (inputs[fno]) i = bread(fno, buf, len);
+@@ -246,14 +229,11 @@ int sk_read(fno, buf, len)
+     return(i);
+ }
+ 
+-int sk_get(fno, buf, len)
++int sk_get(int fno, char *buf, int len)
+ /*++++++++++++++++
+ .PURPOSE  Read the specified number of bytes on a socket.
+ .RETURNS  Number of bytes read. Is normally equal to len.
+ -----------------*/
+-  int fno;	/* IN: File Descriptor */
+-  char *buf;	/* OUT: Buffer filled  */
+-  int  len;	/* IN: Max len to read */
+ {
+   char *p, *pe;
+   int i;
+@@ -268,15 +248,12 @@ int sk_get(fno, buf, len)
+     return (p - buf);
+ }
+ 
+-int sk_gets(fno, buf, len)
++int sk_gets(int fno, char *buf, int len)
+ /*++++++++++++++++
+ .PURPOSE  Read a line (terminated by a newline) on a socket
+ .RETURNS  Number of bytes read, including the \n. 
+ .REMARKS  No NUL character appended.
+ -----------------*/
+-  int fno;	/* IN: File Descriptor */
+-  char *buf;	/* OUT: Buffer filled  */
+-  int  len;	/* IN: Max len to read */
+ {
+   char *p, *n, *pe;
+   int i;
+@@ -294,14 +271,13 @@ int sk_gets(fno, buf, len)
+     return (p - buf);
+ }
+ 
+-int sk_getl(fno)
++int sk_getl(int fno)
+ /*++++++++++++++++
+ .PURPOSE  Read a 32-bit integer on a socket
+ .RETURNS  What's read; -1 when error
+ -----------------*/
+-  int fno;        /* IN: opened socket */
+ {
+-  int stat;
++  char stat;
+     if (sk_get(fno, &stat, sizeof(stat)) < 0) return(-1);
+     if (iologfile) log_l("sk_getl", ntohl(stat));
+     return(ntohl(stat));
+@@ -309,15 +285,12 @@ int sk_getl(fno)
+ 
+ /*============================================================================*/
+ 
+-int sk_write(fno, buf, len)
++int sk_write(int fno, char *buf, int len)
+ /*++++++++++++++++
+ .PURPOSE  Write a specified number of bytes on a socket.
+ .RETURNS  Number of bytes written, normally identical to len
+ .REMARKS  Several trials if necessary
+ -----------------*/
+- int fno;	/* IN: File Descriptor */
+- char *buf;	/* IN: Buffer to send  */
+- int  len;	/* IN: Max len to read */
+ {
+  char *p, *pe;
+  int i, b;
+@@ -335,26 +308,22 @@ int sk_write(fno, buf, len)
+     return (p - buf);
+ }
+ 
+-int sk_put(fno, buf)
++int sk_put(int fno, char *buf)
+ /*++++++++++++++++
+ .PURPOSE  Write a text terminated by a NUL character
+ .RETURNS  Number of bytes written
+ .REMARKS  Several trials if necessary
+ -----------------*/
+-  int fno;	/* IN: File Descriptor */
+-  char *buf;	/* IN: Buffer to send  */
+ {
+     return(sk_write(fno, buf, strlen(buf)));
+ }
+ 
+-int sk_puts(fno, buf)
++int sk_puts(int fno, char *buf)
+ /*++++++++++++++++
+ .PURPOSE  Write a line (followed by a \n)
+ .RETURNS  Number of bytes written
+ .REMARKS  Several trials if necessary
+ -----------------*/
+-  int fno;	/* IN: File Descriptor */
+-  char *buf;	/* IN: Buffer to send  */
+ {
+   char *p;
+   int i;
+@@ -365,15 +334,13 @@ int sk_puts(fno, buf)
+     return (i);
+ }
+ 
+-int sk_putl(fno, val)
++int sk_putl(int fno, int val)
+ /*++++++++++++++++
+ .PURPOSE  Write a 32-bit integer on a socket
+ .RETURNS  Number of bytes written
+ -----------------*/
+-  int fno; 	/* IN: opened socket */
+-  int val;	/* IN: Value to write */
+ {
+-  int nval;
++  char nval;
+   int  stat;
+ 
+     if (iologfile) log_l("sk_putl", val);
+@@ -382,12 +349,11 @@ int sk_putl(fno, val)
+     return (stat != 4 ? -1 : stat);
+ }
+ 
+-int sk_close(fno)
++int sk_close(int fno)
+ /*++++++++++++++++
+ .PURPOSE  Close the opened socket
+ .RETURNS  -1 = error
+ -----------------*/
+-  int fno;        /* IN: socket to close */
+ {
+   int  stat;
+     stat = close(fno);
+-- 
+GitLab
+

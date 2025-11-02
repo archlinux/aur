@@ -12,15 +12,18 @@ depends=("glibc" "python" "sh" "tcsh")
 source=(
   "${pkgname}-${pkgver}.tar.gz::http://cdsarc.cds.unistra.fr/ftp/pub/sw/cdsclient.tar.gz"
   "${pkgname}-${pkgver}.patch"
+  "${pkgname}-${pkgver}-c90.patch"
 )
 sha512sums=(
   "9f1aeabf3714ba5c972c1da4cbbfc903635b511f2cf5ad6b53a9234cf3cfba74a06ba70d1d961620eaa57dfee7027479467689e9e03ceb032448281e6542cc9e"
   "291ce57bb7ee92bc02fdc88ccdb4697357b8698ede4fd3d93f1907db54433eea6e8c5c60ff2470be1daec21a216ef77f62fd7f7eb793ecac3330b6d16ee4affd"
+  "6b4ce4920a0bb9945590f453fa9653336e62956f4f36b821f86a8d0f224d47a5667952604693ba9ce68ad48ed8b5e93aa335061bff85ddde2219b357492905b7"
 )
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
   patch -p1 -i "../${pkgname}-${pkgver}.patch"
+  patch -p1 -i "../${pkgname}-${pkgver}-c90.patch"
 }
 
 build() {

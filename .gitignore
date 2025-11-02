@@ -1,5 +1,6 @@
 /*
 !cdsclient-4.07.patch
+!cdsclient-4.07-c90.patch
 !.gitignore
 !.gitlab-ci.yml
 !PKGBUILD
