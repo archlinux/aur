@@ -1,0 +1,18 @@
+pkgbase = akvis-alivecolors-bin
+	pkgdesc = Powerful photo/image editing tool by AKVIS Lab
+	pkgver = 10.0+svn4853.29044_jks351
+	pkgrel = 1
+	url = https://alivecolors.com
+	arch = x86_64
+	license = custom
+	makedepends = wget
+	makedepends = tar
+	makedepends = libarchive
+	depends = glibc
+	depends = gcc-libs
+	depends = mesa
+	depends = libglvnd
+	depends = qt-akvis2
+	sha256sums = SKIP
+
+pkgname = akvis-alivecolors-bin
