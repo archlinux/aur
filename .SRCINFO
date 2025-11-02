@@ -1,14 +1,12 @@
 pkgbase = kproperty
 	pkgdesc = A property editing framework with editor widget similar to what is known from Qt Designer
 	pkgver = 3.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://apps.kde.org/kexi-3.3/
 	arch = x86_64
 	license = GPL2
-	makedepends = doxygen
 	makedepends = extra-cmake-modules
 	makedepends = python
-	makedepends = qt5-doc
 	makedepends = qt5-tools
 	depends = gcc-libs
 	depends = glibc
