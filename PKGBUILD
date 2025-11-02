@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=torch
-_pkgver=0.16.2
+_pkgver=0.16.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -36,8 +36,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f40b600eba0b72c5aa2aea37089b3832')
-b2sums=('06174c09a75c0592fa571ccba980ba17f6de1c558e7da4485018ae21d6bcaeaaa07a973b0d085847e240d4265600e2704dde0a3a012320417204a3eac6229cb1')
+md5sums=('b3c960dfeb24b8aec01e0e9c0a75e200')
+b2sums=('d1b2a670a958c8f4624e9cc7e896e000bc4a25eda8aa35f9e045657454a6f04c192853521c96fe756dc314155bf0d8b45d6af0096b6ec7b521f0fb491f6564c6')
 
 build() {
   mkdir build
