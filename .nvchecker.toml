@@ -1,0 +1,5 @@
+[sip-bin]
+source = "github"
+github = "lipoyl/sip"
+use_latest_release = true
+prefix = "v"
