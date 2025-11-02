@@ -11,14 +11,14 @@
 
 _qt_module=qtsensors
 pkgname=mingw-w64-qt5-sensors-static
-pkgver=5.15.17
+pkgver=5.15.18
 pkgrel=1
 arch=('any')
 pkgdesc="Provides access to sensor hardware and motion gesture recognition (mingw-w64)"
 depends=('mingw-w64-qt5-base-static' 'mingw-w64-qt5-declarative-static')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-_commit=79ed5db98f36b8ca70b077edef46fc793debb3ab
+_commit=50a61b360877e7c1300df76b5aabf8d75554a398
 _basever=${pkgver%%+*}
 pkgver+=+kde+r0
 makedepends+=('git')
@@ -27,7 +27,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn=${_qt_module}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('3db71225f5cadc1c145e7d581514512f10ad93543e9cc94da1d46c5a97c7958d')
+sha256sums=('0074fc66476c3b9b1d2d3e64dec60f2766bc93a1957fd538b0fbfdd080ccd979')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
