@@ -8,6 +8,7 @@ pkgbase = notnative-app
 	makedepends = cargo
 	makedepends = rust
 	makedepends = git
+	makedepends = pkg-config
 	depends = gtk4
 	depends = webkit2gtk-4.1
 	depends = libadwaita

@@ -7,13 +7,14 @@ arch=('x86_64')
 url="https://github.com/k4ditano/notnative-app"
 license=('MIT')
 depends=('gtk4' 'webkit2gtk-4.1' 'libadwaita' 'gtksourceview5' 'sqlite' 'libpulse')
-makedepends=('cargo' 'rust' 'git')
+makedepends=('cargo' 'rust' 'git' 'pkg-config')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')  # Actualizar después de crear el primer release en GitHub
 
 build() {
     cd "$pkgname-$pkgver"
     export CARGO_TARGET_DIR=target
+    export RUSQLITE_USE_PKG_CONFIG=1
     cargo build --release --locked --all-features
 }
 
