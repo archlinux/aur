@@ -1,3 +1,0 @@
-post_install() {
-    chmod 4755 '/opt/Vieb/chrome-sandbox' || true
-}
