@@ -6,13 +6,6 @@ green="\033[1;32m"
 yellow="\033[1;33m"
 blue="\033[1;34m"
 
-if [[ $# -gt 2 ]]; then
-	echo -e "$red[!] Usage:m2m <universal_resource_locater> <filename.ext>$norm"
-	echo "Or for multiple downloads"
-	echo -e "$red[!] Usage: m2m -m <download_count>$norm"
-	exit 1
-fi
-
 #Making arrangements before executing the script
 
 mkdir -p "$HOME/Music/ytdownloads"
@@ -29,6 +22,18 @@ multiple_switch=false
 case $1 in
 	-m)	multiple_switch=true;multiple_switch_counter=$2;;
 esac
+
+if [[ $# -ne 2 ]]; then
+	if [[ $multiple_switch == false ]];then
+		echo -e "$red[!] Usage:m2m <universal_resource_locater> <filename.ext>$norm"
+		exit 1
+	else
+		echo -e "$red[!] Usage: m2m -m <download_count>$norm"
+		echo "For infinite downloads"
+		echo -e "$red[!] Usage: m2m -m n$norm"
+		exit 1
+	fi
+fi
 
 multi_dnc(){
 	counter=1
