@@ -13,7 +13,7 @@ provides=("python-${pkgname}")
 conflicts=("python-${pkgname}")
 replaces=("python-${pkgname}")
 depends=("python-aiofiles" "python-arrow" "python-asgiref" "python-asgi-middleware-static-file" "python-brotli" "python-chardet"
-         "python-click" "python-dataclass-wizard" "python-httptools" "python-pydantic" "python-uvloop" "python-xmltodict" "uvicorn")
+         "python-click" "python-dataclass-wizard" "python-httptools" "python-uvloop" "python-xmltodict" "uvicorn")
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 # checkdepends=("python-httpx" "python-icecream" "python-pytest" "python-pytest-asyncio" "python-pytest-cov" "python-requests")
 optdepends=("python-bonsai: LDAP support"

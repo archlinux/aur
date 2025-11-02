@@ -19,7 +19,6 @@ pkgbase = asgi-webdav
 	depends = python-click
 	depends = python-dataclass-wizard
 	depends = python-httptools
-	depends = python-pydantic
 	depends = python-uvloop
 	depends = python-xmltodict
 	depends = uvicorn
