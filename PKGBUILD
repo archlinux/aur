@@ -9,7 +9,7 @@ groups=()
 depends=('gtkmm3' 'libsigc++' 'ffts-git' 'openmp' 'glfw' 'yaml-cpp' 'glew' 'libsigc++-3.0' 'hidapi>=0.13.1')
 # could be also built against 'libsigc++' (2.x version) instead of 'libsigc++-3.0', what should be our target?
 optdepends=('libvulkan.so'  'spirv-tools' 'shaderc' 'liblxi' 'linux-gpib' )
-makedepends=('cmake' 'git' 'vulkan-headers' 'catch2')
+makedepends=('cmake' 'git' 'vulkan-headers' 'catch2' 'lsb-release')
 source=("git+https://github.com/ngscopeclient/scopehal-apps.git")
 sha256sums=('SKIP')
 
