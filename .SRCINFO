@@ -1,6 +1,6 @@
 pkgbase = python-aioboto3
 	pkgdesc = Async boto3 wrapper.
-	pkgver = 15.1.0
+	pkgver = 15.5.0
 	pkgrel = 1
 	url = https://github.com/terricain/aioboto3
 	arch = any
@@ -36,9 +36,7 @@ pkgbase = python-aioboto3
 	depends = python-aiofiles
 	optdepends = python-cryptography: s3cse
 	optdepends = chalice: chalice
-	source = https://files.pythonhosted.org/packages/source/a/aioboto3/aioboto3-15.1.0.tar.gz
-	source = https://github.com/terricain/aioboto3/pull/377.patch
-	sha256sums = 37763bbc6321ceb479106dc63bc84c8fdb59dd02540034a12941aebef2057c5c
-	sha256sums = 2ae48fac21eda84393914fa814c9c80a30656ac67a600b093387eeea92344958
+	source = https://files.pythonhosted.org/packages/source/a/aioboto3/aioboto3-15.5.0.tar.gz
+	sha256sums = ea8d8787d315594842fbfcf2c4dce3bac2ad61be275bc8584b2ce9a3402a6979
 
 pkgname = python-aioboto3
