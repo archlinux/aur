@@ -4,7 +4,7 @@ pkgname=('seanime-server-git' 'seanime-denshi-git')
 _pkgname=seanime
 _electronver=36
 pkgver=v3.0.0.r0.g7930aa8
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source media server with a web interface and desktop app for anime and manga."
 arch=('x86_64' 'aarch64')
 url="https://github.com/5rahim/seanime"
@@ -33,6 +33,7 @@ pkgver() {
 prepare() {
     
     # Add the electron version for denshi
+    
     sed "s/@ELECTRON@/electron$_electronver/" ${_pkgname}-denshi.sh.in > ${_pkgname}-denshi.sh
 }
 
@@ -49,6 +50,10 @@ build() {
     
     make build-web
     
+    # Import web-denshi to seanime denshi
+    
+    cp -r ../web-denshi ../seanime-denshi/web-denshi
+
     cd "${srcdir}/${_pkgname}"
 
     # Prepare for server
