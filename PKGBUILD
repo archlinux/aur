@@ -11,7 +11,7 @@ depends=('wayland' 'libinput')
 makedepends=('cargo')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('380e4b53c3eb15ebce60e7d29f3218743b300ae2d0e8740ac8ab95154c6b6965')
+sha256sums=('36a7ca1c6ebe06327a6217d4da674c4e3a2a97887c06ddccba0b37e0eb742644')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"

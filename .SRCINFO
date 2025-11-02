@@ -10,6 +10,6 @@ pkgbase = snug
 	depends = libinput
 	options = !debug
 	source = snug-0.2.1.tar.gz::https://github.com/saltnpepper97/snug/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = 380e4b53c3eb15ebce60e7d29f3218743b300ae2d0e8740ac8ab95154c6b6965
+	sha256sums = 36a7ca1c6ebe06327a6217d4da674c4e3a2a97887c06ddccba0b37e0eb742644
 
 pkgname = snug
