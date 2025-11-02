@@ -9,7 +9,7 @@
 pkgname=xmind
 _pkgver=26.01.03145-202510170359
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Brainstorming and Mind Mapping Software"
 arch=(x86_64)
 url="https://www.xmind.net"
@@ -28,7 +28,7 @@ sha256sums_x86_64=('87bab10dfdb5f7eb7ca0093c20006ceccc9ab0d7772bf3c033a6bbf64c9a
                    '686e5f4c0f4b26c9e66903d18550730b7496a155cfe46e2361b7293dd20677eb')
 
 package() {
-  bsdtar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/
+  bsdtar -xf ${srcdir}/data.tar.gz -C ${pkgdir}/
   install -d "$pkgdir/usr/bin"
 
   # Add custom desktop file
