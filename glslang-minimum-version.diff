@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 7c708e9987..2112de665b 100644
+index 77eb170452..f7450ce583 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -653,7 +653,7 @@ dolphin_find_optional_system_library_pkgconfig(FMT
+@@ -642,7 +642,7 @@ dolphin_find_optional_system_library_pkgconfig(FMT
  add_subdirectory(Externals/imgui)
  add_subdirectory(Externals/implot)
  

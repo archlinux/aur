@@ -9,7 +9,7 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='2509.r292.gcc69cc3f2e'
+pkgver='2509.r294.g9c28f19e56'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -45,7 +45,6 @@ source=(
 	"$pkgbase-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
 	"$pkgbase-watcher::git+https://github.com/e-dant/watcher.git"
 	'glslang-minimum-version.diff'
-	'fix-shaderlang-include.diff'
 	'cmake-mgba.diff'
 )
 b2sums=('SKIP'
@@ -58,8 +57,7 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'c8581dd720ad919a555ccd6dd79a579d60d669562b14eb866a9aae5ce87e861f6e73721b4f1c13c0cf65e9f1f0122cf295f92a99798ac386c10690eb8c93a2c9'
-        '0af1e3525d83854aa69d426fa6ad9e1bf87740ced22e73cab2e0208e4b3d67b2d03311a9ab1e385c887e1352a957537d5f3da207408de3b04ed0e43a030388b8'
+        'ec983a1f046d8325cdea98adb682fb1b93b8f09eaee0cbd969c8fb7b904f2e08003cc097f1e06859e05b603e77320aeed078c33ecbfe27333247864727651c1e'
         'd9e6ba73de8e1c49a7ebf9efe6caffcffbe1a545dfb61caebe2b830d8f496aaa221269c25a3f849ba02228dfb866b362c8c74f7e897e66a9362469dea679721d')
 
 _sourcedirectory="$pkgbase"
@@ -91,9 +89,6 @@ prepare() {
 
 	# Get rid of glslang version, as it's used as an exact match (ABI v16 is compatible, see https://github.com/dolphin-emu/dolphin/pull/13974/files/cdfb389509b560b4a70661571d12edcebfb77fdf#r2384216168)
 	patch --forward -p1 < "$srcdir/glslang-minimum-version.diff"
-
-	# Fix ShaderLang.h include
-	patch --forward -p1 < "$srcdir/fix-shaderlang-include.diff"
 
 	# Patch cmake_minimum_required below 3.5.0
 	cd "$srcdir/$_sourcedirectory/Externals/mGBA/mgba/"
