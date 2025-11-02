@@ -2,10 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-3d
-_basever=5.15.17
-pkgver=5.15.17
-pkgrel=2
-_commit=73c1dda553f338c5a3b9ebbfd0e7de114f0c93dc
+_basever=5.15.18
+pkgver=5.15.18
+pkgrel=1
+_commit=208f5835e6c2415c9dc5cbe92bba83aa28bab7ea
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -16,7 +16,7 @@ optdepends=('assimp: assimp import plugin')
 groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('73ed1001fda2391f19b15324b7175fe5ae38ea27d5167fa25606aaeb654a04fc')
+sha256sums=('3d1aa6e17f32bea2ad8fd60d161986d2d9d10a193de1420976023b2f027e252e')
 
 pkgver() {
   cd kde-$_pkgfqn
