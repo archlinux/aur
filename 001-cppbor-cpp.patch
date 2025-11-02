@@ -1,0 +1,12 @@
+diff --git a/src/cppbor.cpp b/src/cppbor.cpp
+index 1877c67..f0ac526 100644
+--- a/src/cppbor.cpp
++++ b/src/cppbor.cpp
+@@ -20,6 +20,7 @@
+ #include <openssl/sha.h>
+ #include <cstdint>
+ #include <cstdio>
++#include <limits>
+ 
+ #include "cppbor_parse.h"
+ 

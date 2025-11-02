@@ -1,0 +1,12 @@
+diff --git a/src/cppbor_parse.cpp b/src/cppbor_parse.cpp
+index 060d9bf..d26b668 100644
+--- a/src/cppbor_parse.cpp
++++ b/src/cppbor_parse.cpp
+@@ -20,6 +20,7 @@
+ #include <cstddef>
+ #include <cstdint>
+ #include <cstring>
++#include <limits>
+ #include <memory>
+ #include <optional>
+ #include <sstream>
