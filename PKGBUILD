@@ -2,14 +2,14 @@
 # Contributor: steeltitanium <steeltitanium1 at gmail dot com>
 
 pkgname=ringracers-data
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc="Data files for Dr. Robotnik's Ring Racers"
 arch=('any')
 license=('custom')
 url='https://www.kartkrew.org'
 source=("https://github.com/KartKrewDev/RingRacers/releases/download/v$pkgver/Dr.Robotnik.s-Ring-Racers-v$pkgver-Assets.zip")
-sha256sums=('9797d0886e9dc57e86e55d3893cc2872f771365056c1104b2effe01d18c2da44')
+sha256sums=('eebad71b872c20f3323425bc4f4321b9b6256472bc485010d0a73c43fe0af120')
 
 package() {
 	mkdir -p "$pkgdir"/usr/share/games/RingRacers/data

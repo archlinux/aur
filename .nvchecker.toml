@@ -1,0 +1,4 @@
+[ringracers-data]
+source = "git"
+git = "https://github.com/KartKrewDev/RingRacers.git"
+prefix = "v"
