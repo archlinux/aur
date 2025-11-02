@@ -7,7 +7,7 @@
 
 pkgname=whatpulse
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="Measures your keyboard, mouse, app usage, network traffic and uptime."
 arch=('x86_64')
 url="https://www.whatpulse.org"
