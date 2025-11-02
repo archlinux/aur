@@ -4,9 +4,9 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=qt5-datavis3d
-_basever=5.15.17
+_basever=5.15.18
 pkgver=5.15.18
-pkgrel=1
+pkgrel=2
 _commit=a57e633b675d7886c3e5c64441f50ffe831f2de8
 arch=('x86_64')
 url='https://www.qt.io'
