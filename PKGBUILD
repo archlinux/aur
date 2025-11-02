@@ -3,7 +3,7 @@
 # Contributor: slact
 pkgname=tlpui-git
 _app_id="com.github.d4nj1.${pkgname%-git}"
-pkgver=1.8.1.r0.gd7e4fb9
+pkgver=1.8.1.r0.g6c585cd
 pkgrel=1
 epoch=2
 pkgdesc="A GTK user interface for TLP written in Python"
@@ -45,7 +45,7 @@ build() {
 check() {
   cd "${pkgname%-git}"
   desktop-file-validate "${pkgname%-git}.desktop"
-  appstreamcli validate --no-net "AppImage/${_app_id}.appdata.xml" || :
+  appstreamcli validate --no-net "AppImage/${_app_id}.appdata.xml"
 
   pytest
 }
