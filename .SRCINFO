@@ -1,7 +1,7 @@
 pkgbase = dev86
 	pkgdesc = Simple C compiler to generate 8086 code
 	pkgver = 0.16.21
-	pkgrel = 8
+	pkgrel = 9
 	url = https://v3.sk/~lkundrak/dev86/
 	arch = x86_64
 	license = GPL
