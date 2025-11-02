@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-xmlpatterns
 	pkgdesc = Support for XPath, XQuery, XSLT and XML schema validation (mingw-w64)
-	pkgver = 5.15.17+kde+r0
+	pkgver = 5.15.18+kde+r0
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = mingw-w64-qt5-xmlpatterns
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://invent.kde.org/qt/qt/qtxmlpatterns#commit=e645537910450ba8bf5ecfbb735f69acdeeef046
-	sha256sums = 7b9feb7227e92b9bfff83b2e1447cea7c315c223c3d7229ee78deaceb8050b51
+	source = git+https://invent.kde.org/qt/qt/qtxmlpatterns#commit=0b644263abca66503db1ce8a4e126cf358a34685
+	sha256sums = b3344a9dc35bb12608d554f70289a974fdb735c0dbaa974d255cd048733aa809
 
 pkgname = mingw-w64-qt5-xmlpatterns
