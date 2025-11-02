@@ -1,7 +1,7 @@
 # Maintainer: Ilaï Deutel <PlMWPh1WSmypRv0JQljz> (echo ... | tr 'A-Za-z' 'l-za-kL-ZA-K' | base64 -d)
 
 pkgname=kibi
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A tiny text editor, written in Rust"
 url="https://github.com/ilai-deutel/kibi"
@@ -11,7 +11,7 @@ arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 license=('MIT OR Apache-2.0')
 backup=('etc/kibi/config.ini')
 source=("https://github.com/ilai-deutel/kibi/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('086eeb4c9ffaae98c02c39d932796987590978b5907ed3e6ac5d44aeabec176c')
+sha256sums=('2905743c8fc065054d3776e9b16fe89903cc0547eaedd8d33b66d2e29ceb0191')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
