@@ -1,0 +1,27 @@
+pkgbase = qt-akvis2
+	pkgdesc = Akvis-patched Qt 5.9.7 runtime
+	pkgver = 5.9.7_30
+	pkgrel = 1
+	url = https://alivecolors.com
+	arch = x86_64
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = wget
+	makedepends = tar
+	makedepends = libarchive
+	depends = double-conversion
+	depends = libinput
+	depends = libproxy
+	depends = libwacom
+	depends = libxkbcommon-x11
+	depends = md4c
+	depends = tslib
+	depends = xcb-util-image
+	depends = xcb-util-keysyms
+	depends = xcb-util-renderutil
+	depends = xcb-util-wm
+	sha256sums = SKIP
+
+pkgname = qt-akvis2
