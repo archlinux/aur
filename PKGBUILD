@@ -2,29 +2,22 @@
 # Contributor: steelt <steeltitanium1 at gmail dot com>
 
 pkgname=ringracers
-pkgver=2.3
-_dataver=2.3
-pkgrel=4
+pkgver=2.4
+_dataver=2.4
+pkgrel=1
 pkgdesc="Kart racing video game originally based on the 3D Sonic the Hedgehog fangame Sonic Robo Blast 2"
 arch=('x86_64' 'aarch64')
-license=(GPL-2.0-only)
+license=(GPL-2.0)
 url='https://www.kartkrew.org'
-depends=("ringracers-data>=$_dataver" 'curl' 'zlib' 'libpng' 'libvorbis' 'libvpx' 'libyuv' 'sdl2')
+depends=("ringracers-data>=$_dataver" 'curl' 'zlib' 'libpng' 'libvorbis' 'libvpx' 'libyuv' 'sdl2' 'opus')
 makedepends=('cmake' 'ninja')
 _archive="RingRacers-$pkgver"
 
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/KartKrewDev/RingRacers/archive/refs/tags/v$pkgver.tar.gz"
-  "org.kartkrew.RingRacers.desktop"
-  "acsvm-cmake-ver.patch")
+  "org.kartkrew.RingRacers.desktop")
 
-sha256sums=('68b1022f6ef92c178ca3b046b86a477edaec436ecd3c90a10221f3dcc2d45d81'
-            '812a12ad6a7e5ef7bea3ef3b24bc4e686e9b8df16221c478f202c96ee6ce413d'
-            '725e101d5298480c956a51e1ed8378f278b83954905accd8ab2371c9f3026535')
-
-prepare() {
-    cd "$_archive"
-    patch -Np1 -i ../acsvm-cmake-ver.patch
-}
+sha256sums=('f9f3970b9398783c3ba07bcd10ddb0256086896ce81cdfbe0457593ed04e9fcb'
+            '812a12ad6a7e5ef7bea3ef3b24bc4e686e9b8df16221c478f202c96ee6ce413d')
 
 build() {
   # Unset D_GLIBCXX_ASSERTIONS as a workaround until crashes related to it are fixed
