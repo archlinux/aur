@@ -1,6 +1,6 @@
 pkgbase = hitpag
 	pkgdesc = An intelligent compression/decompression software.
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/Hitmux/hitpag
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = hitpag
 	makedepends = cmake
 	makedepends = make
 	options = !debug
-	source = hitpag-2.0.2-tarball::https://api.github.com/repos/Hitmux/hitpag/tarball/v2.0.2
-	sha256sums = SKIP
+\tsource = hitpag-2.0.3.tar.gz::https://api.github.com/repos/Hitmux/hitpag/tarball/v2.0.3
+	sha256sums = ('SKIP')
 
 pkgname = hitpag
