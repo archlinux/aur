@@ -1,7 +1,7 @@
 # Maintainer: Gary Wang <wzc782970009@gmail.com>
 
 pkgname=distro-rack
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Qt/QML-based Distrobox GUI'
 arch=('x86_64' 'aarch64')
@@ -20,12 +20,13 @@ makedepends=(
 optdepends=(
     'dtk6declarative: for native-looking when using Deepin Desktop Environment'
     'kirigami: for native-looking when using KDE Plasma'
+    'papirus-icon-theme: fallback icon theme for distro logos'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/BLumia/distro-rack/archive/${pkgver}.tar.gz"
 )
 sha256sums=(
-    '36936382e29ac113c938a474e650eb103db1b8b28895207ca8450ce79f403a3d'
+    '58cf82c12f13c2b506fa9be32e4c3e5a66e2c5b0d149411a5d749b4f0b671c09'
 )
 
 build () {

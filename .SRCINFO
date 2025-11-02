@@ -1,6 +1,6 @@
 pkgbase = distro-rack
 	pkgdesc = Qt/QML-based Distrobox GUI
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/BLumia/distro-rack/
 	arch = x86_64
@@ -14,7 +14,8 @@ pkgbase = distro-rack
 	depends = distrobox
 	optdepends = dtk6declarative: for native-looking when using Deepin Desktop Environment
 	optdepends = kirigami: for native-looking when using KDE Plasma
-	source = distro-rack-0.2.0.tar.gz::https://github.com/BLumia/distro-rack/archive/0.2.0.tar.gz
-	sha256sums = 36936382e29ac113c938a474e650eb103db1b8b28895207ca8450ce79f403a3d
+	optdepends = papirus-icon-theme: fallback icon theme for distro logos
+	source = distro-rack-0.2.1.tar.gz::https://github.com/BLumia/distro-rack/archive/0.2.1.tar.gz
+	sha256sums = 58cf82c12f13c2b506fa9be32e4c3e5a66e2c5b0d149411a5d749b4f0b671c09
 
 pkgname = distro-rack
