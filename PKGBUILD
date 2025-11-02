@@ -5,9 +5,10 @@ pkgver=0.24.1
 pkgrel=1
 pkgdesc='A http server for text-to-speech'
 arch=('x86_64')
-license=('LGPL-3.0-only' 'nonfree')
+license=('LGPL-3.0-only+nonfree')
 url=https://github.com/VOICEVOX/voicevox_engine
-_syspymods=(fastapi importlib-metadata jaraco.text jinja markupsafe numpy platformdirs pydantic pydantic-core python-multipart semver soxr soundfile yaml)
+_syspymods=(fastapi importlib-metadata jaraco.text jinja markupsafe numpy platformdirs pydantic pydantic-core python-multipart semver soxr soundfile yaml
+pyworld) #AUR
 depends=(python ${_syspymods[@]/#/python-})
 makedepends=(python-{build,setuptools,installer})
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
@@ -23,7 +24,7 @@ build(){
   bsdtar -xf voicevox_engine-linux-cpu-x64-${pkgver}.7z.001 linux-cpu-x64/{*.json,libonnxruntime.so,libvoicevox_core.so,*.json,model,resources}
   # buldle missing modules as a workaround
   python -m venv venv --system-site-packages
-  venv/bin/pip install kanalizer pyopenjtalk pyworld
+  venv/bin/pip install kanalizer pyopenjtalk
 
   cd ${pkgname/-/_}-$pkgver
   rm -rf resources # avoid build err. non production engine
@@ -35,7 +36,7 @@ package() {
   install -d "$pkgdir"/usr/lib/VOICEVOX
   mv linux-cpu-x64 "$pkgdir"/usr/lib/VOICEVOX/vv-engine
   mv usr/lib/python*/site-packages/* -t "$pkgdir"/usr/lib/VOICEVOX/vv-engine
-  mv venv/lib/python*/site-packages/{kanalizer,pyopenjtalk,pyworld}* -t "$pkgdir"/usr/lib/VOICEVOX/vv-engine
+  mv venv/lib/python*/site-packages/{kanalizer,pyopenjtalk}* -t "$pkgdir"/usr/lib/VOICEVOX/vv-engine
   mv open_jtalk* -t "$pkgdir"/usr/lib/VOICEVOX/vv-engine/pyopenjtalk
   sed '1c#!/usr/bin/python' voicevox_engine-${pkgver}/run.py | install -Dm755 /dev/stdin "$pkgdir"/usr/lib/VOICEVOX/vv-engine/run
 }
