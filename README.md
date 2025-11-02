@@ -16,7 +16,7 @@ A minimal bash tool to convert YouTube video files to any other supported media 
 
 ## Usage:
 ### For single downloads:
- ```bash
+```bash
 m2m "https://www.youtube.com/watch?v=EYI489Dc4Sc" outputfile.mp3
 ```
 Change the extension form `.mp3` to anything you like.
@@ -25,8 +25,8 @@ Change the extension form `.mp3` to anything you like.
 ```bash
 m2m -m 5
 ```
-You can change the **5** to the number of files you want to download.
-(Or you can set is as **n** if you want it to run infinitely until you type `done` as the url.)
+You can change the **5** to the number of files you want to download.  
+(Or you can set is as **n** if you want it to run infinitely until you type `done` as the url.)  
 It would prompt you for the *URL* and then for the name you want to save the file as
 ```bash
 m2m -m 2
@@ -45,6 +45,26 @@ Enter the name to save it as: song_two.mkv
 [✓] Stream 2 saved to filesystem
 
 ... #And so on
+```
+
+### Infinite batch downloads:
+```bash
+m2m -m n
+
+Enter the URL(type 'done' when you are done): https://youtu.be/oUfjhrSOFw8?si=GGCoI5J-5w4ejof-
+Enter the name to save it as: stream01.mp4
+Enter the URL(type 'done' when you are done): https://youtu.be/wN0x9eZLix4?si=2OXL-z7ldy7gAckO
+Enter the name to save it as: stream02.mp4
+Enter the URL(type 'done' when you are done): done
+[*] Initiating download for stream 1 
+[✓] Stream 1 downloaded 
+[*] Converting stream 1 
+[✓] Stream 1 saved to filesystem 
+
+[*] Initiating download for stream 2 
+[✓] Stream 2 downloaded 
+[*] Converting stream 2 
+[✓] Stream 2 saved to filesystem 
 ```
 
 ## Notes

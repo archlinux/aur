@@ -42,7 +42,7 @@ multi_dnc(){
 	
 			echo -e "$green[✓] Stream $counter downloaded $norm"
 			echo -e "$blue[*] Converting stream $counter $norm"
-			ffmpeg -i "$MULTI_DIR/ytvideo.webm" "$MULTI_DIR/$file" 1> /dev/null 2>"$ERROR_LOG/$DATE-ffmpeg-multi-download.log"
+			ffmpeg -i "$MULTI_DIR/ytvideo.webm" -map 0:a:0 -map 0:v:0 -c copy "$MULTI_DIR/$file" 1> /dev/null 2>"$ERROR_LOG/$DATE-ffmpeg-multi-download.log"
 
 			if [[ $? -eq 0  ]];then
 				echo -e "$green[✓] Stream $counter saved to filesystem$norm \n"
@@ -84,7 +84,7 @@ if [[ $multiple_switch != true ]];then
 	fi
 	
 	echo -e "$blue[*] Converting the stream...$norm"
-	ffmpeg -i "$YTDIR/ytvideo.webm" "$YTDIR/$file_save_location/$file_name" 1> /dev/null 2>"$ERROR_LOG/$DATE-ffmpeg.log"
+	ffmpeg -i "$YTDIR/ytvideo.webm" -map 0:a:0 -map 0:v:0 -c copy "$YTDIR/$file_save_location/$file_name" 1> /dev/null 2>"$ERROR_LOG/$DATE-ffmpeg.log"
 
 	#Block telling the user the final action and removing the ghost file.
 
