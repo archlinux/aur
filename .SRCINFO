@@ -1,19 +1,19 @@
 pkgbase = krr
 	pkgdesc = Kubernetes requests recommendations
-	pkgver = 1.26.1
+	pkgver = 1.27.0
 	pkgrel = 1
 	url = https://github.com/robusta-dev/krr
 	arch = any
 	license = MIT
 	makedepends = unzip
 	depends = python>=3.9
-	provides = krr=1.26.1
-	noextract = krr-ubuntu-latest-v1.26.1.zip
+	provides = krr=1.27.0
+	noextract = krr-ubuntu-latest-v1.27.0.zip
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
 	options = !debug
-	source = https://github.com/robusta-dev/krr/releases/download/v1.26.1/krr-ubuntu-latest-v1.26.1.zip
-	sha256sums = d6fb477a90b868c6e6ce3ec2a58ed8d07968b4b3eab8ac6c53ba57e6dcaca468
+	source = https://github.com/robusta-dev/krr/releases/download/v1.27.0/krr-ubuntu-latest-v1.27.0.zip
+	sha256sums = 03cc5836efcddaa8ba95af07ac0949c23c3f57e85c097531c97351b729bb75f9
 
 pkgname = krr
