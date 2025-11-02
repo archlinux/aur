@@ -1,0 +1,3 @@
+[crosspatch-bin]
+source = "git"
+git = "https://github.com/NickPlayzGITHUB/CrossPatch.git"
