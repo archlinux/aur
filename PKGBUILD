@@ -6,19 +6,14 @@ pkgdesc="Note-taking application with Vim-like keybindings"
 arch=('x86_64')
 url="https://github.com/k4ditano/notnative-app"
 license=('MIT')
-depends=('gtk4' 'webkit2gtk-4.1' 'libadwaita' 'gtksourceview5' 'libpulse')
-makedepends=('cargo' 'rust' 'git')
+depends=('gtk4' 'webkit2gtk-4.1' 'libadwaita' 'gtksourceview5' 'libpulse' 'sqlite')
+makedepends=('cargo' 'rust' 'git' 'pkg-config')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')  # Actualizar después de crear el primer release en GitHub
 
 build() {
     cd "$pkgname-$pkgver"
     export CARGO_TARGET_DIR=target
-    # Force bundled SQLite compilation - disable system sqlite detection
-    export LIBSQLITE3_SYS_USE_PKG_CONFIG=0
-    export RUSQLITE_SYS_BUNDLED=1
-    # Clean any cached builds that might be using system sqlite
-    cargo clean
     cargo build --release --locked --all-features
 }
 

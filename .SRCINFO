@@ -8,11 +8,13 @@ pkgbase = notnative-app
 	makedepends = cargo
 	makedepends = rust
 	makedepends = git
+	makedepends = pkg-config
 	depends = gtk4
 	depends = webkit2gtk-4.1
 	depends = libadwaita
 	depends = gtksourceview5
 	depends = libpulse
+	depends = sqlite
 	source = notnative-app-0.1.0.tar.gz::https://github.com/k4ditano/notnative-app/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = SKIP
 
