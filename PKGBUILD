@@ -3,7 +3,7 @@
 # Contributor: Florian Hülsmann <fh@cbix.de>
 
 pkgname=jack_link
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='JACK transport bridge to Ableton Link'
 arch=(aarch64 x86_64)
@@ -14,7 +14,7 @@ makedepends=(asio git jack)
 groups=(pro-audio)
 source=("git+https://github.com/rncbc/$pkgname#tag=v$pkgver"
         'git+https://github.com/Ableton/link')
-sha256sums=('6f19378c1004f2512758c6f91bd5fad230526f6a11a5daabf3d33549749bdf9f'
+sha256sums=('3a621ff1a7d97dcf95541f571a31898b7c01cb973c9505e8e5cdcb60fbf56783'
             'SKIP')
 
 prepare() {
