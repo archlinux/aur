@@ -2,7 +2,7 @@
 
 pkgname=kdb
 pkgver=3.2.0
-pkgrel=15
+pkgrel=16
 pkgdesc="A database connectivity and creation framework for various database vendors"
 arch=(x86_64)
 url="http://www.kexi-project.org/"
@@ -13,12 +13,10 @@ depends=(gcc-libs
          kcoreaddons5
          qt5-base
          sqlite)
-makedepends=(doxygen
-             extra-cmake-modules
+makedepends=(extra-cmake-modules
              mariadb-libs
              postgresql
              python
-             qt5-doc
              qt5-tools)
 optdepends=('mariadb-libs: MySQL plugin'
             'postgresql: PostgreSQL plugin')
@@ -33,18 +31,18 @@ sha256sums=('8f8983bc8d143832dc14bc2003ba6af1af27688e477c0c791fd61445464f2069'
             '7338a79cbdc44cfc389b4c5c08696f70a437179a9ae10a4d3a56f50f85cbaeb1')
 validpgpkeys=(4866BAF713B465677A4059643C7C0E201B6524DB) # Jarosław Staniek <staniek@kde.org>
 
-
 prepare() {
   patch -d $pkgname-$pkgver -p1 < kdb-postgresql-12.patch # Fix build with postgresql 12
   patch -d $pkgname-$pkgver -p1 < kdb-mkspecs-path.patch # Fix mkspecs install dir
   patch -d $pkgname-$pkgver -p1 < kdb-fix-build.patch # Fix build with Qt post 5.15.2
+  sed -e '/SetKDbCMakePolicies/d' -i $pkgname-$pkgver/CMakeLists.txt # Fix build with cmake 4
 }
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
     -DBUILD_TESTING=OFF \
-    -DBUILD_QCH=ON \
-    -DCMAKE_CXX_STANDARD=17
+    -DCMAKE_CXX_STANDARD=17 \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake --build build
 }
 
