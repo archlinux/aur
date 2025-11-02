@@ -1,0 +1,21 @@
+pkgbase = libx11-mr293
+	pkgdesc = X11 client-side library (with patch from merge request 293)
+	pkgver = 1.8.12
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/xorg/lib/libx11
+	arch = x86_64
+	license = MIT AND X11
+	makedepends = xorg-util-macros
+	makedepends = xtrans
+	depends = libxcb
+	depends = glibc
+	depends = xorgproto
+	source = https://xorg.freedesktop.org//releases/individual/lib/libX11-1.8.12.tar.xz
+	source = https://xorg.freedesktop.org//releases/individual/lib/libX11-1.8.12.tar.xz.sig
+	source = mr293.patch::https://gitlab.freedesktop.org/xorg/lib/libx11/-/merge_requests/293.diff
+	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
+	sha512sums = cb7a284d9081a8b67f7d8568d56dc403a4b787e46ac497b07768d236084c01f80f4ea2ebd814f950ac9738adc3baea3912932fc333858195c4f8217744b6f730
+	sha512sums = SKIP
+	sha512sums = db4487a29b8031121eeaa1b2a32e9104914db2ec16fb7f8b294fe59463f0b82a9fa0fded3a064d5e37f3565693255f97aadcaf40c252afe3924ca29d4dd702ec
+
+pkgname = libx11-mr293
