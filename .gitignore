@@ -4,4 +4,6 @@
 !PKGBUILD
 !.SRCINFO
 !plplot-numpy.patch
+!plplot-numpy-init.patch
+!plplot-signal.patch
 !plplot-swig.patch
