@@ -1,0 +1,5 @@
+[gmap-bin]
+source = "github"
+github = "seeyebe/gmap"
+use_latest_release = true
+prefix = "v"
