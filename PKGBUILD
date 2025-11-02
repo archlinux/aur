@@ -2,8 +2,8 @@
 
 _name=KDDockWidgets
 pkgname=kddockwidgets-qt6
-pkgver=2.3.0
-pkgrel=4
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="KDAB's Dock Widget Framework for Qt 6"
 arch=('x86_64')
 url="https://github.com/KDAB/KDDockWidgets"
@@ -11,7 +11,7 @@ license=('GPL-2.0-only OR GPL-3.0-only')
 depends=(gcc-libs glibc fmt nlohmann-json qt6-base qt6-declarative spdlog)
 makedepends=(cmake qt6-tools)
 source=("$url/archive/v$pkgver.tar.gz")
-b2sums=('ae89557839afd7c7557e4268175f43b58724c4f275aefdcdd6d329128bdecb12cf17af465749354055e11718511164252da15cf1f52b53d50be069de84ef2142')
+b2sums=('aaf800d7359b350d69a9b72e513cb06fe32d8a7791519267e1102732294bbc679dd9ad0ea32c229133d66833f8dd9ed63d7dc58c92dededfb3fddc93e4c9fb56')
 
 build() {
     cd $_name-$pkgver
