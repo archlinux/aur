@@ -1,0 +1,15 @@
+pkgbase = sherlock-clp-git
+	pkgdesc = A custom plugin for Sherlock adding clipboard history support.
+	pkgver = r5.234f9bb
+	pkgrel = 1
+	url = https://github.com/Skxxtz/sherlock-clipboard
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = cargo
+	provides = sherlock-clp
+	conflicts = sherlock-clp
+	source = git+https://github.com/Skxxtz/sherlock-clipboard.git
+	sha256sums = SKIP
+
+pkgname = sherlock-clp-git
