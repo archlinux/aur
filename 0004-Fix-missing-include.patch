@@ -1,4 +1,4 @@
-From 81056d7ebcf045822915d59249b28243f4157ecf Mon Sep 17 00:00:00 2001
+From 818defbb8ba039fdcd043ae843d9391b84191d55 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 23 May 2025 18:01:59 +0200
 Subject: [PATCH 4/4] Fix missing include
@@ -21,5 +21,5 @@ index 18e19cf01c..e71c86e9c6 100644
  static inline size_t roundUpToMultipleOf(size_t divisor, size_t x)
  {
 -- 
-2.49.0
+2.51.2
 
