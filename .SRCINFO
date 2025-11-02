@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-activeqt
 	pkgdesc = ActiveX integration framework (mingw-w64)
-	pkgver = 5.15.17+kde+r0
+	pkgver = 5.15.18+kde+r0
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -21,11 +21,11 @@ pkgbase = mingw-w64-qt5-activeqt
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://invent.kde.org/qt/qt/qtactiveqt#commit=57ffe4b2b86854c60d85c263fde9a56a891b578e
+	source = git+https://invent.kde.org/qt/qt/qtactiveqt#commit=e4c93bc7cac45bac6bccda3310947e8fe026a9ed
 	source = 0001-Don-t-require-windows.h-when-using-native-Linux-gcc.patch
 	source = 0002-Handle-win64-in-dumpcpp-and-MetaObjectGenerator-read.patch
 	source = cmake-config-template.cmake
-	sha256sums = ba9243b2c93ed83b4ac67136bf4eef80bfaaf707b86b6b2cca1112eb933a4aa8
+	sha256sums = 1df02fdf99d1bb20cd11142b2b1fff19a1921bc5112a9bd827093b8ed3bf8b75
 	sha256sums = 05443c9a67b30160a7d4264da9c57b1a2fdbc3c74bab8e9f69c51ac8feeac2cb
 	sha256sums = 06aa9413f31edd4f8c51d65cf6a8e1add8d5a6af2588f18bdc2e67164ebdaea7
 	sha256sums = 89d091e4d5692eceeecc7ffef3c054fa47652458986beb98c4dc2c6b4e55ab26
