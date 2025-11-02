@@ -1,16 +1,10 @@
 pkgbase = uqm-full
-	pkgdesc = Complete Ur-Quan Masters data pack with voices and 3DO music for Arch/Garuda
+	pkgdesc = Voice and 3DO music data pack for The Ur-Quan Masters (manual local install)
 	pkgver = 0.8.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://sc2.sourceforge.net/
 	arch = any
 	license = GPL-1.0-or-later
 	depends = uqm
-	noextract = uqm-0.8.0-voice.uqm
-	noextract = uqm-0.8.0-3domusic.uqm
-	source = uqm-0.8.0-voice.uqm
-	source = uqm-0.8.0-3domusic.uqm
-	sha256sums = SKIP
-	sha256sums = SKIP
 
 pkgname = uqm-full
