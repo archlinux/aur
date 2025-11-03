@@ -1,7 +1,7 @@
 # Maintainer: Guillermo Duran < gds506 at gmail dot com >
 # Previous Maintainer: Baudouin Feildel <baudouin_aur@feildel.fr>
 pkgname=pgsql-ogr-fdw
-pkgver=1.1.5
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="PostgreSQL foreign data wrapper for OGR"
 arch=('i686' 'x86_64')
@@ -12,17 +12,14 @@ depends=('gdal')
 makedepends=('postgresql' 'llvm')
 source=("https://github.com/pramsey/$pkgname/archive/v$pkgver.tar.gz"
 	"$pkgname-$pkgver-fix-bin-install-path.patch"
-#	"$pkgname-$pkgver-use-cflags-from-env.patch"
 )
-sha256sums=('820842a4bd3889d82e767f4eea49954daa894f315e24614650022154446a55d0'
+sha256sums=('ba1f81c4d10b91b89cb775519b3749d584c0d4de3c01fe032de0f1ae62da3c78'
 	'bbde8139a04293d0c51ed13a4baedddfe206a19f34b27084776032d715847822'
-#	'bf052972161e4b5317d747dca15bccd7538daf6441722ee74b2fb068a72fd0e3'
 )
 
 prepare() {
 	cd "$pkgname-$pkgver"
 	patch -p1 -i "$srcdir/$pkgname-$pkgver-fix-bin-install-path.patch"
-#	patch -p1 -i "$srcdir/$pkgname-$pkgver-use-cflags-from-env.patch"
 }
 
 build() {
