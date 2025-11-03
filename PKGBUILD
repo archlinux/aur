@@ -2,7 +2,7 @@
 # Contributor: Michel Zou <xantares09@hotmail.com>
 pkgname=codon
 pkgver=0.19.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A high-performance, zero-overhead, extensible Python compiler using LLVM"
 license=(Apache-2.0)
 arch=(x86_64)
@@ -16,7 +16,7 @@ sha512sums=('ac56e61a95a2c44dee4a1bcc81e23b8429cd0379a009cefa00f9555bfa2a07f0f15
 
 prepare() {
   cd ${pkgname}-${pkgver}
-  sed -i 's|VERSION 2022-06-01|# VERSION 2022-06-01|g' cmake/deps.cmake
+  # sed -i 's|VERSION 2022-06-01|# VERSION 2022-06-01|g' cmake/deps.cmake
   # sed -i 's|CPMAddPackage(|# CPMAddPackage(|g' cmake/deps.cmake
   # link to the single lib
   # sed -i "s|\${LLVM_LIBS}|LLVM-20|g" CMakeLists.txt
