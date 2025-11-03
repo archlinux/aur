@@ -1,7 +1,7 @@
 pkgbase = pacsea-git
 	pkgdesc = Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (git version)
 	pkgver = 0.4.4.r27.g02b6a762
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Firstp1ck/Pacsea
 	arch = x86_64
 	license = MIT
