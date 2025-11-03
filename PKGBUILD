@@ -2,8 +2,8 @@
 # Contributor: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
 pkgname=vieb
 _pkgname=Vieb
-pkgver=12.5.0
-_electronversion=38
+pkgver=12.6.0
+_electronversion=39
 _nodeversion=22
 pkgrel=1
 pkgdesc="Vim Inspired Electron Browser - Vim bindings for the web by design.(Use system-wide electron)"
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('474f990063c98ae44ebf13a77a97648a9fd4275b0315548215a5491dd744f8e5'
+sha256sums=('79f3399e9d471eaa370e1726ae7e0bcfda68dfd030c9dbf51775afae13850484'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
