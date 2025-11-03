@@ -2,7 +2,7 @@
 
 pkgname=cepces
 pkgver=0.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc='certmonger plugin to enroll certificates through Active Directory Certificate Services CEP and CES.'
 arch=(any)
 url=https://github.com/openSUSE/cepces
@@ -39,6 +39,7 @@ backup=(
 prepare() {
   cd "$pkgname"
   patch -p1 -i ../0001-Remove-insecure-enctypes.patch
+  patch -p1 -i ../0002-Regression-keytab-is-now-mandatory-despite-configura.patch
 }
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = cepces
 	pkgdesc = certmonger plugin to enroll certificates through Active Directory Certificate Services CEP and CES.
 	pkgver = 0.3.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openSUSE/cepces
 	arch = any
 	license = GPL-3.0
