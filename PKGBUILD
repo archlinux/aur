@@ -2,7 +2,7 @@
 # Contributor: Julian Leyh <julian@vgai.de>
 
 pkgname=ahven
-pkgver=2.8
+pkgver=2.9
 pkgrel=1
 pkgdesc="A simple unit test framework for the Ada programming language."
 
@@ -13,8 +13,8 @@ license=(ISC)
 depends=(gcc-ada)
 makedepends=(sphinxcontrib-adadomain)
 
-source=(https://www.ahven-framework.com/releases/ahven-2.8.tar.gz)
-sha256sums=(6ead94fbd1b95454e959cc2a343acfb2f733bcbf10d9a286214d1dec1b9e8e0c)
+source=(https://www.ahven-framework.com/releases/ahven-2.9.tar.gz)
+sha256sums=(35187a3833c2fe62710f47e5bde3ee1c32fd964bcedf2ca65c3f324e82a8a1fa)
 
 
 build()
