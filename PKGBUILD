@@ -108,7 +108,7 @@ package() {
 check() {
   cd "$srcdir/$pkgname"
   make -f Makefile.autotools install DESTDIR="$srcdir/test"
-  printf '#include <vgmstream/%s.h>\n' vgmstream api | gcc -E - -I "$srcdir/test/usr/include" -o /dev/null
+  printf '#include <vgmstream/%s.h>\n' vgmstream libvgmstream | gcc -E - -I "$srcdir/test/usr/include" -o /dev/null
 }
 
 # vim:set sw=2 et:

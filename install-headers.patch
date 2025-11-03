@@ -5,7 +5,7 @@ diff --git src/Makefile.autotools.am src/Makefile.autotools.am
  ## vgmstream autotools script
  
 +__vgmstream_includedir = $(includedir)/vgmstream
-+__vgmstream_include_HEADERS = vgmstream.h streamfile.h util.h streamtypes.h vgmstream_types.h api.h libvgmstream.h libvgmstream_streamfile.h
++__vgmstream_include_HEADERS = vgmstream.h streamfile.h util.h streamtypes.h vgmstream_types.h libvgmstream.h libvgmstream_streamfile.h
 +__coding_includedir = $(includedir)/vgmstream/coding
 +__coding_include_HEADERS = coding/g72x_state.h
 +__util_includedir = $(includedir)/vgmstream/util
