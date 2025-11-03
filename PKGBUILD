@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 pkgname=moor
-pkgver=2.7.1
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="A pager designed to just do the right thing without any configuration."
 arch=('x86_64' 'i686' 'pentium4' 'armv6h' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ depends=(glibc)
 makedepends=(go)
 conflicts=(moar moar-bin moar-git)
 source=("$pkgname-$pkgver.tar.gz"::"$url/archive/v$pkgver.tar.gz")
-sha256sums=('2b9a26b7000a92778802138b92bfe6134723e2c72ba1829ca7da04efd314620a')
+sha256sums=('f4fa51463b8e9f28088de017a45a06550071383fdd846ad924e7e80b2b5cb72c')
 
 prepare() {
 	cd "$pkgname-$pkgver/cmd/moor"
