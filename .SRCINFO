@@ -7,7 +7,7 @@ pkgbase = tsui
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	optdepends = libx11-dev: for clipboard support
+	optdepends = libx11: for clipboard support
 	source = tsui-0.2.0.tar.gz::https://github.com/neuralink/tsui/archive/v0.2.0.tar.gz
 	sha256sums = 1ae87ad281587efbf80ef0bf9cc0b519dd4f08465cb378e34e97230f2f3526f0
 

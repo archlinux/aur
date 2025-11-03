@@ -8,7 +8,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/neuralink/tsui/archive/v$pk
 arch=('x86_64' 'aarch64')
 license=('MIT')
 makedepends=('go')
-optdepends=('libx11-dev: for clipboard support')
+optdepends=('libx11: for clipboard support')
 sha256sums=('1ae87ad281587efbf80ef0bf9cc0b519dd4f08465cb378e34e97230f2f3526f0')
 
 prepare() {
