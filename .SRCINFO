@@ -1,6 +1,6 @@
 pkgbase = nomachine-enterprise-client
 	pkgdesc = Remote desktop application, client only
-	pkgver = 9.1.24
+	pkgver = 9.2.18
 	pkgrel = 1
 	url = http://www.nomachine.com
 	install = nomachine-client.install
@@ -22,9 +22,9 @@ pkgbase = nomachine-enterprise-client
 	sha256sums = 05cd2ff2a6b613f0502d0abbf8f063b6fbd4f06f6a4ff6ba55756fabe11afd8e
 	sha256sums = 81489fe47c19685bc06cc3a0bc35ade4915a36d80b550608e952c675f1c0e3d8
 	sha256sums = f6c071ad1d4b167fd3395536baabf954e6bd8d567e734bb5a58eacaaab15e9a1
-	source_x86_64 = http://download.nomachine.com/download/9.1/Linux/nomachine-enterprise-client_9.1.24_6_x86_64.tar.gz
-	sha256sums_x86_64 = 12da61ef41b6dc4cf53a86a7d63071ac2da9d12f4e37fe47f2f22a71bc19dd9e
-	source_i686 = http://download.nomachine.com/download/9.1/Linux/nomachine-enterprise-client_9.1.24_6_i686.tar.gz
-	sha256sums_i686 = 9cb45de2426e2c7efcf5c7d717915a9432cce547f2f163f34f20d1a32591f14b
+	source_x86_64 = https://download.nomachine.com/download/9.2/Linux/nomachine-enterprise-client_9.2.18_3_x86_64.tar.gz
+	sha256sums_x86_64 = df57aa0f0a4f0ea339c54ed41ec6c733abc113612a0a607b441616f3e90ed96d
+	source_i686 = https://download.nomachine.com/download/9.2/Linux/nomachine-enterprise-client_9.2.18_3_i686.tar.gz
+	sha256sums_i686 = 3309213a2a0bf0437a90984b8a445500898579fcbb2ddb3b53362820a24f4261
 
 pkgname = nomachine-enterprise-client
