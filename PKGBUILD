@@ -4,11 +4,11 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="Unified SIM/USIM card reader tool with complete analysis capabilities"
 arch=('x86_64')
-url="https://github.com/mango/simreader"
+url="https://github.com/TheOnlyMango/simreader"
 license=('MIT')
 depends=('pcsclite')
 makedepends=('gcc')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mango/simreader/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/TheOnlyMango/simreader/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
