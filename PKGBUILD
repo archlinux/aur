@@ -2,7 +2,7 @@
 
 pkgname='rusty-path-of-building'
 pkgver=0.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="An offline build planner for Path of Exile using the cross-platform 'rusty-path-of-building' runtime"
 url='https://github.com/meehl/rusty-path-of-building'
 license=('MIT')
@@ -18,8 +18,8 @@ source=(
     "rusty-path-of-building-2.desktop"
 )
 b2sums=('41b74c2e5bab1b97c57488e89bb3eb151f5a00a051dd3ef6dae3749992d65be8ebbe6fea867892f26e8a6f0d3154553d0f7513a6429e13b982c436c567221335'
-        'd94331a4f795395a581a0bac7339fa0c444b96271f8ac9245b2e6e0f8a9a3e8a885c917b25e5b952edb2e616522c7dd5a8b560f0275452f64999ea1b5c53110e'
-        '0b1331dfaba5d5e767a8ca9b8919ccff22b7c3591f4e5b375c96257e45a3abc9a947b1e6bbec7335fad9ae0e063da195808d3d67a82f785fab6f033067d53d4d')
+        'aee0f8d3e6171cbe4a331af35125948f2a8398ec9d59d899f58133355cae67ac4fd0b87f38b2efe1f8cf23870bbbb2ac534a6992b5ab31189a9ed42a9d637db6'
+        'c2af601318bda69c8c7eba72b37cb6c1a63e052ee50c9e62fe257e2e820952ea92475ce25a573970d0ea3d80348dee7b9e9460563d4e4a1e02064e175a1d0968')
 
 prepare() {
     cd "${pkgname}-${pkgver}"

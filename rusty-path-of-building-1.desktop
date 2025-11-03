@@ -8,3 +8,4 @@ Categories=Game
 Keywords=poe;pob;poe1;pob1;path;exile;
 MimeType=x-scheme-handler/pob;
 Icon=rusty-path-of-building
+StartupWMClass=rusty-path-of-building-1
