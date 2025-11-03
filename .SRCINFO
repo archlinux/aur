@@ -1,15 +1,15 @@
 pkgbase = wslu
-	pkgdesc = A collection of utilities for Windows Subsystem for Linux
-	pkgver = 4.0.0
-	pkgrel = 1
-	url = https://wslutiliti.es/wslu
-	install = wslu.install
+	pkgdesc = A collection of utilities for the Windows Subsystem for Linux
+	pkgver = 4.1.0
+	pkgrel = 0
+	url = https://github.com/wslutilities/wslu
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = bc
-	depends = imagemagick
-	optdepends = bash-completion: for CLI args completion
-	source = wslu-4.0.0.tar.gz::https://github.com/wslutilities/wslu/archive/refs/tags/v4.0.0.tar.gz
-	sha256sums = f3fc0191306496e8794397ba7623754b834603fd3f37bef40a858c0fe1ac3e08
+	depends = psmisc
+	optdepends = imagemagick: custom icon support
+	optdepends = bash-completion: for bash completion
+	source = git+https://github.com/wslutilities/wslu.git#tag=v4.1.0
+	sha256sums = 12943003d4936b1dc8b9449fd1864960e8a05fa6d7cad89de47269572ff713ff
 
 pkgname = wslu
