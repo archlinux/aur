@@ -1,0 +1,21 @@
+diff --git a/src/amdgpu_kms.c b/src/amdgpu_kms.c
+index 1f049c9..71722a0 100644
+--- a/src/amdgpu_kms.c
++++ b/src/amdgpu_kms.c
+@@ -1510,14 +1510,14 @@ static void amdgpu_determine_cursor_size(int fd, AMDGPUInfoPtr info)
+ 	else if (info->family < AMDGPU_FAMILY_CI)
+ 		info->cursor_w = CURSOR_WIDTH;
+ 	else
+-		info->cursor_w = CURSOR_WIDTH_CIK;
++		info->cursor_w = CURSOR_WIDTH;
+
+ 	if (drmGetCap(fd, DRM_CAP_CURSOR_HEIGHT, &value) == 0)
+ 		info->cursor_h = value;
+ 	else if (info->family < AMDGPU_FAMILY_CI)
+ 		info->cursor_h = CURSOR_HEIGHT;
+ 	else
+-		info->cursor_h = CURSOR_HEIGHT_CIK;
++		info->cursor_h = CURSOR_HEIGHT;
+ }
+
+ /* When the root window is mapped, set the initial modes */
