@@ -1,0 +1,6 @@
+[llrt]
+source = "github"
+github = "awslabs/llrt"
+use_latest_release = true
+from_pattern = '^\D*(\d+\.\d+\.\d+)(?:-([a-zA-Z]+))*.*$'
+to_pattern = '\1\2'
