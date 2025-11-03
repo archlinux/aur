@@ -3,7 +3,7 @@
 pkgbase=radicle-bin
 pkgname=(radicle-bin radicle-{cli,node}-bin)
 epoch=1
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="open source, peer-to-peer code collaboration stack built on Git"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source_x86_64=("https://files.radicle.xyz/releases/$pkgver/radicle-$pkgver-x86_6
 source_aarch64=("https://files.radicle.xyz/releases/$pkgver/radicle-$pkgver-aarch64-unknown-linux-musl.tar.xz")
 sha512sums=('76235a3247342b8531cb259a1a51c9789be81e5332f210949063e4444edc2659eebe0afb0c2aae9e9c6989599d29beca0ca57a7839156c92b195bdb54c7ca448'
             '66bd43b60b73fd832a23ad7a280f77d06398c55b4e8572200ad95acc42da84e6a44c7deeb1fec91d11e29678d1abd2f74c45099ae31141ee1b6945568501bceb')
-sha512sums_x86_64=('1cba2c71f0cd95201dd63251c2ff53533c85ea664ff9cd8f30a4f8ea57770101f4c50489c1547b3bab7204bf93337e472b1c3fd0609f85564297068f3c47476d')
-sha512sums_aarch64=('e90c5a4afb84b30c6912d8fa3566c18a698998bc8d753b32e0fb2be45579d515d32044d6111752137cf01a907afc9ef582f180c0606a19bf3a66d08f2daab62d')
+sha512sums_x86_64=('e5ef1c5069f730dc8f5f6ab78de1b1c4c7af8e4e6b5eeb74046e175f1c4ca031afae1114c3aec1f536122059bbf60b9a2162820a9fba090beb0eac96cabaa526')
+sha512sums_aarch64=('346a94e33df7918731597df39ba237539d87a27f0b239a8020e0f464f7452eb713ae684e0aa5ebc72e88691b9aff15fcf31fbbcd5b8d49e1bb5e9abbd60d567b')
 
 package_radicle-bin() {
     provides=('radicle')
