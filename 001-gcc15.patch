@@ -1,0 +1,24 @@
+From 9c1058e4a851f29ae82a80a4e3578b620c2ea03d Mon Sep 17 00:00:00 2001
+From: 2876225417 <2876225417@qq.com>
+Date: Thu, 19 Jun 2025 15:59:11 +0800
+Subject: [PATCH] Fix(tests): Add missing <cstdint> for modern compilers
+
+---
+ tests/featuremap/featuremaptest.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/tests/featuremap/featuremaptest.cpp b/tests/featuremap/featuremaptest.cpp
+index 5eb240c8..c919dc1e 100644
+--- a/tests/featuremap/featuremaptest.cpp
++++ b/tests/featuremap/featuremaptest.cpp
+@@ -9,6 +9,10 @@
+ #include <string>
+ #include <vector>
+ 
++#include <cstdint>
++
++
++
+ #include <graphite2/Font.h>
+ 
+ #include "inc/Endian.h"
