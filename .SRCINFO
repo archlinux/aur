@@ -1,7 +1,7 @@
 pkgbase = vllama
 	pkgdesc = vLLM + Ollama hybrid server - Fast inference with Ollama model management
 	pkgver = 0.1.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/erkkimon/vllama
 	install = vllama.install
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = vllama
 	depends = ollama
 	depends = python-pip
 	depends = python-setuptools
-	source = vllama-4143fc1ac8b587641b2fdfcc67591a0605c4e078.tar.gz::https://github.com/erkkimon/vllama/archive/4143fc1ac8b587641b2fdfcc67591a0605c4e078.tar.gz
+	source = vllama-75f0778cb3118fc6a5f31cd03c28552ba95d4c58.tar.gz::https://github.com/erkkimon/vllama/archive/75f0778cb3118fc6a5f31cd03c28552ba95d4c58.tar.gz
 	source = vllama.service
 	source = multiuser.conf
 	source = vllama.install
-	sha256sums = 877c3fb69f1e24fc0b2856f9981cf51323a0dc5ed2ab3c02a5e3a70a67dd0a98
+	sha256sums = c596e7d375fa2b0d22e374bdbdf7d384e171d6a1d304a0385b0d3b2da318bdd8
 	sha256sums = 32f30f302919e881bf3205320b9f8c5dc7720738223bb035a26f856cdc9cf882
 	sha256sums = 316d741d3c15533002b0607d88ac9231c72258e5e856bd470805a8ba1b9ee29f
-	sha256sums = 31f4c14151724ea11aa539510d91f793ded6a02ce871aa457e0d7acd854aa339
+	sha256sums = 1d84cd4dab610669264163810c15a0101750a5764ccdd37f13aab061094f23bf
 
 pkgname = vllama
