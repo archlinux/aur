@@ -2,7 +2,7 @@
 
 pkgname='rusty-path-of-building'
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="An offline build planner for Path of Exile using the cross-platform 'rusty-path-of-building' runtime"
 url='https://github.com/meehl/rusty-path-of-building'
 license=('MIT')
@@ -18,8 +18,8 @@ source=(
     "rusty-path-of-building-2.desktop"
 )
 b2sums=('41b74c2e5bab1b97c57488e89bb3eb151f5a00a051dd3ef6dae3749992d65be8ebbe6fea867892f26e8a6f0d3154553d0f7513a6429e13b982c436c567221335'
-        '7d7699827022631eae06dd7a163cb9bf1e7f82aa4f6053492ebca3662a3346e382c2603162975001c76a45b977af184848073bbc1d1f08e3516a71764f86865e'
-        '89e0359429a91d5a6de7de9764bb3b18d4b7f02aafc0e6fd872ee7e3b64cfa30c8491476574fe2615184aa2236dd34af3fe5acab41fe50a55bb327c523d56f11')
+        'd94331a4f795395a581a0bac7339fa0c444b96271f8ac9245b2e6e0f8a9a3e8a885c917b25e5b952edb2e616522c7dd5a8b560f0275452f64999ea1b5c53110e'
+        '0b1331dfaba5d5e767a8ca9b8919ccff22b7c3591f4e5b375c96257e45a3abc9a947b1e6bbec7335fad9ae0e063da195808d3d67a82f785fab6f033067d53d4d')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -53,4 +53,7 @@ package() {
     # install desktop entries
     install -Dm644 "${srcdir}/rusty-path-of-building-1.desktop" "${pkgdir}/usr/share/applications/rusty-path-of-building-1.desktop"
     install -Dm644 "${srcdir}/rusty-path-of-building-2.desktop" "${pkgdir}/usr/share/applications/rusty-path-of-building-2.desktop"
+
+    # install icon
+    install -Dm644 "assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/rusty-path-of-building.png"
 }
