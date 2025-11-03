@@ -4,7 +4,7 @@
 pkgname=libresplit-git
 _pkgname=libresplit
 pkgver=r477.51f97f7e2
-pkgrel=2
+pkgrel=1
 pkgdesc="Free speedrun timer with auto splitting and load removal."
 arch=('x86_64')
 url='https://libresplit.org'
