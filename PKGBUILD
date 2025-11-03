@@ -3,7 +3,7 @@
 
 pkgname=cthulock
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 license=('GPL-3.0-only')
 pkgdesc='Wayland screen locker focused on customizability'
 url='https://github.com/FriederHannenheim/cthulock'
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 makedepends=('cargo')
 depends=('egl-wayland' 'glibc' 'gcc-libs' 'libxkbcommon' 'pam')
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('9aeaeaa0ac4de9dfd85fc46815dde0452cbc3dd4b45fc1e96d8357c36af6857265efecfef03bb399b22ca61f814df97c83e2a6bcc91430711614d18a52b2e380')
+b2sums=('cc4da0f76e40cd6e63bffe5b2b2a3b3bffa328519e96b4fa5d98e68783b20c0a4a49c7699846c475c59d81d104f8cb8ffb1797b82c9cbbd881d0ca1d048b74fe')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
