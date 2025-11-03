@@ -8,16 +8,15 @@
 
 pkgname=kdenlive-git
 pkgver=25.11.70.r22821
-pkgrel=1
+pkgrel=2
 pkgdesc="A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (Latest Applications GIT Version)"
 arch=('i686' 'x86_64')
 url="http://www.kdenlive.org/"
 license=('GPL-2.0-or-later')
 depends=( 'kfilemetadata' 'knewstuff' 'knotifyconfig' 'doxygen' 'ktextwidgets' 'qt6-multimedia'
 	  'mlt' 'hicolor-icon-theme' 'purpose' 'qt6-networkauth' 'python' 'imath' 'opentimelineio'
-	  'kddockwidgets-qt6' 'python-requests' 'python-pillow' 'python-opencv-cuda' 'python-omegaconf'
-	  'python-sam2-git' 'python-hydra-core' 'python-numpy' 'python-srt' 'python-openai-whisper'
-	  'python-pytorch-cuda' 'ffmpeg'
+	  'kddockwidgets-qt6' 'python-requests' 'python-pillow' 'python-omegaconf' 
+	  'python-sam2-git' 'python-hydra-core' 'python-numpy' 'ffmpeg'
 	)
 makedepends=('extra-cmake-modules' 'kdoctools5' 'git' 'v4l-utils' 'qt6-tools')
 optdepends=(
@@ -30,20 +29,18 @@ optdepends=(
 	    'perl-image-exiftool: for exif information'
 	    'mediainfo: for exif information'
 	    'oxygen-icons: optional for xfce'
-	    'breeze-icons: otional for default theme'
+	    'breeze-icons: optional for default theme'
 	    'python-setuptools: for python modules'
+	    'python-opencv-cuda: for motion tracking'
+	    'python-sam2-git: for background removal'
+            'python-srt: for subtitle formatting'
+	    'python-openai-whisper: for ai speech to text'
+            'python-pytorch-cuda: for AI speech to text'
 	    'python-vosk-bin: open source speech recognition')
 provides=('kdenlive' )
 conflicts=('kdenlive')
-#source=(${pkgname}::git://anongit.kde.org/kdenlive)
-#source=(git://anongit.kde.org/kdenlive) 
-#The git repo has changed recently. To update your git repo to the new one
-#and save yourself from downloading the entire repo again, do:
-#git remote set-url https://invent.kde.org/multimedia/kdenlive
-#in the kdenlive git directory
 source=('git+https://invent.kde.org/multimedia/kdenlive')
 sha1sums=('SKIP')
-#install=$pkgname.install
 #options=(debug !strip)
 
 pkgver() {
