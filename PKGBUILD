@@ -2,7 +2,7 @@
 
 pkgname=sunsetr-git
 _realname=sunsetr
-pkgver=r332.8fb1629
+pkgver=r335.89e4a49
 pkgrel=1
 pkgdesc="Automatic blue light filter for Hyprland, Niri, and everything Wayland (git version)"
 arch=('x86_64')
