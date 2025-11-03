@@ -3,8 +3,8 @@
 _pkgauthor=keircn
 _pkgname=archium
 pkgname=${_pkgname}-bin
-pkgver=1.9.0
-pkgrel=2
+pkgver=1.9.3
+pkgrel=1
 pkgdesc="Archium is a wrapper for AUR helpers such as YAY and Paru"
 arch=('x86_64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -16,26 +16,25 @@ conflicts=("${_pkgname}")
 depends=('glibc' 'readline')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
-        "README-${pkgver}::${_urlraw}/README.md")
+  "README-${pkgver}::${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'ee816979e468f51598ff1ecf1c55b0a175ca05f469d495a715cf48892cf9f0e6')
-sha256sums_x86_64=('6e69cf660548c37d87f72fbdb7c037c6c02181a9d2f5af3ec9dbd538583ed0bd')
-
+sha256sums=('66a37b615c2d3d566fb792cf78eed43cbc6806a5a7241e7d4b43e475b610443e'
+            '3067d2a9287529c972c7ad5c546660eacdaae88040308b0ca3dbfc8a312a88b8')
+sha256sums_x86_64=('b8d62807c11a6edd76ed0b5248a2c395e74434a5775fdcf55b89199085505084')
 
 prepare() {
-	cd "${srcdir}/" || exit
+  cd "${srcdir}/" || exit
 
-	mv "release/${_pkgname}" ./
-	rm -rf "release"
+  mv "release/${_pkgname}" ./
+  rm -rf "release"
 }
 
 package() {
-	cd "${srcdir}/" || exit
+  cd "${srcdir}/" || exit
 
-	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 
-	install -Dm644 "README-${pkgver}" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 "README-${pkgver}" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
