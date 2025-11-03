@@ -1,0 +1,5 @@
+[ssrv-bin]
+source = "github"
+github = "VHSgunzo/ssrv"
+use_latest_release = true
+prefix = "v"

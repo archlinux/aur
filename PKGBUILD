@@ -1,19 +1,22 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgauthor=VHSgunzo
 _pkgname=ssrv
 pkgname=${_pkgname}-bin
 pkgver=0.3.4
-_pkgstr=g85a1f7f
 pkgrel=1
+_pkgstr=g85a1f7f
 pkgdesc='Shell server/client'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 arch=('x86_64' 'i386' 'aarch64')
 license=('MIT')
+
 depends=('glibc')
-conflicts=("${_pkgname}")
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+
+options=('!strip')
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${arch[0]}-v${pkgver}.r0.${_pkgstr}-tls.tar.zst")
@@ -31,6 +34,6 @@ package() {
 
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-  install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

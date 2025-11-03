@@ -10,6 +10,7 @@ pkgbase = ssrv-bin
 	depends = glibc
 	provides = ssrv
 	conflicts = ssrv
+	options = !strip
 	source = LICENSE-0.3.4::https://raw.githubusercontent.com/VHSgunzo/ssrv/v0.3.4/LICENSE
 	source = README-0.3.4.md::https://raw.githubusercontent.com/VHSgunzo/ssrv/v0.3.4/README.md
 	sha256sums = ed1795c447be9b4ae96262f583b559f733a82f627b0265f860f22488c7f8b2ff
