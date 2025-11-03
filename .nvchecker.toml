@@ -1,0 +1,6 @@
+[raysession]
+source = "github"
+github = "Houston4444/RaySession"
+use_max_tag = true
+prefix = "v"
+exclude_regex = 'v\d+\.\d+\.\d+-alpha.*'
