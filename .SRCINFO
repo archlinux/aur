@@ -1,6 +1,6 @@
 pkgbase = ixgo
 	pkgdesc = The Go/XGo Interpreter
-	pkgver = 0.55.0
+	pkgver = 0.57.0
 	pkgrel = 1
 	url = https://github.com/goplus/ixgo
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ixgo
 	provides = ixgo
 	conflicts = igop
 	replaces = igop
-	source = https://github.com/goplus/ixgo/archive/refs/tags/v0.55.0.tar.gz
-	sha256sums = 2e6f55a7e67a793675052b4bc4e9b9f82e0c2fa04d8748c277f283271d250662
+	source = https://github.com/goplus/ixgo/archive/refs/tags/v0.57.0.tar.gz
+	sha256sums = 841c6cfc5c94d06273e247f9304e974b383e8592f37953a8fc518741885c1909
 
 pkgname = ixgo
