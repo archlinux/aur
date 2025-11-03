@@ -18,6 +18,7 @@ depends=(
     'tuned-ppd'
     'bluez'
     'geoclue'
+    'libadwaita'
     # aur:
     'aylurs-gtk-shell-git'
     'libastal-meta'

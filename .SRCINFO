@@ -19,6 +19,7 @@ pkgbase = delta-shell-git
 	depends = tuned-ppd
 	depends = bluez
 	depends = geoclue
+	depends = libadwaita
 	depends = aylurs-gtk-shell-git
 	depends = libastal-meta
 	depends = libastal-niri-git
