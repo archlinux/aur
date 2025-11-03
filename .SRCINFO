@@ -1,0 +1,14 @@
+pkgbase = zrok
+	pkgdesc = Secure internet sharing made simple.
+	pkgver = 1.1.10
+	pkgrel = 1
+	url = https://zrok.io
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = npm
+	makedepends = go
+	depends = glibc
+	source = zrok-1.1.10.tar.gz::https://github.com/openziti/zrok/archive/refs/tags/v1.1.10.tar.gz
+	sha256sums = 1567de28d6e2c123f52069889fce8715263596b2eba9001b98f2a9f72d37ba53
+
+pkgname = zrok
