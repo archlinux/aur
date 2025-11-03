@@ -1,0 +1,44 @@
+diff --git a/data/amdgpu.ids b/data/amdgpu.ids
+index 6a50c97d..aad127e2 100644
+--- a/data/amdgpu.ids
++++ b/data/amdgpu.ids
+@@ -325,6 +325,10 @@
+ 699F,	C9,	AMD Radeon 540
+ 6FDF,	E7,	AMD Radeon RX 590 GME
+ 6FDF,	EF,	AMD Radeon RX 580 2048SP
++9920,  00,     AMD Liverpool (PlayStation 4)
++9922,  00,     AMD Liverpool (PlayStation 4)
++9923,  00,     AMD Liverpool (PlayStation 4)
++9924,  11,     AMD Gladius (PlayStation 4)
+ 7300,	C1,	AMD FirePro S9300 x2
+ 7300,	C8,	AMD Radeon R9 Fury Series
+ 7300,	C9,	AMD Radeon Pro Duo
+diff --git a/radeon/r600_pci_ids.h b/radeon/r600_pci_ids.h
+index a3b2eac8..5e5d1e90 100644
+--- a/radeon/r600_pci_ids.h
++++ b/radeon/r600_pci_ids.h
+@@ -473,6 +473,11 @@ CHIPSET(0x131B, KAVERI_131B, KAVERI)
+ CHIPSET(0x131C, KAVERI_131C, KAVERI)
+ CHIPSET(0x131D, KAVERI_131D, KAVERI)
+
++CHIPSET(0x9920, LIVERPOOL_9920, LIVERPOOL)
++CHIPSET(0x9922, LIVERPOOL_9922, LIVERPOOL)
++CHIPSET(0x9923, LIVERPOOL_9923, LIVERPOOL)
++CHIPSET(0x9924, GLADIUS_9924, GLADIUS)
++
+ CHIPSET(0x67A0, HAWAII_67A0, HAWAII)
+ CHIPSET(0x67A1, HAWAII_67A1, HAWAII)
+ CHIPSET(0x67A2, HAWAII_67A2, HAWAII)
+diff --git a/radeon/radeon_surface.c b/radeon/radeon_surface.c
+index ea0a27a9..594f2354 100644
+--- a/radeon/radeon_surface.c
++++ b/radeon/radeon_surface.c
+@@ -86,6 +86,8 @@ enum radeon_family {
+     CHIP_HAINAN,
+     CHIP_BONAIRE,
+     CHIP_KAVERI,
++    CHIP_LIVERPOOL,
++    CHIP_GLADIUS,
+     CHIP_KABINI,
+     CHIP_HAWAII,
+     CHIP_MULLINS,
