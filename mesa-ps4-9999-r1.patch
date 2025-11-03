@@ -1,0 +1,218 @@
+diff --git a/include/pci_ids/radeonsi_pci_ids.h b/include/pci_ids/radeonsi_pci_ids.h
+index 8c4567e8483..49f8ae7513d 100644
+--- a/include/pci_ids/radeonsi_pci_ids.h
++++ b/include/pci_ids/radeonsi_pci_ids.h
+@@ -122,6 +122,11 @@ CHIPSET(0x985D, KABINI)
+ CHIPSET(0x985E, KABINI)
+ CHIPSET(0x985F, KABINI)
+ 
++CHIPSET(0x9920, LIVERPOOL)
++CHIPSET(0x9922, LIVERPOOL)
++CHIPSET(0x9923, LIVERPOOL)
++CHIPSET(0x9924, GLADIUS)
++
+ CHIPSET(0x1304, KAVERI)
+ CHIPSET(0x1305, KAVERI)
+ CHIPSET(0x1306, KAVERI)
+diff --git a/src/amd/addrlib/src/amdgpu_asic_addr.h b/src/amd/addrlib/src/amdgpu_asic_addr.h
+index a047a8340a5..baad4d6ccfb 100644
+--- a/src/amd/addrlib/src/amdgpu_asic_addr.h
++++ b/src/amd/addrlib/src/amdgpu_asic_addr.h
+@@ -62,7 +62,9 @@
+ #define AMDGPU_HAWAII_RANGE     0x28, 0x3C //# 40 <= x < 60
+ 
+ #define AMDGPU_SPECTRE_RANGE    0x01, 0x41 //#   1 <= x < 65
+-#define AMDGPU_SPOOKY_RANGE     0x41, 0x81 //#  65 <= x < 129
++#define AMDGPU_SPOOKY_RANGE     0x41, 0x61
++#define AMDGPU_STARSHA_RANGE    0x61, 0x71
++#define AMDGPU_STARSHP_RANGE    0x71, 0x81
+ #define AMDGPU_KALINDI_RANGE    0x81, 0xA1 //# 129 <= x < 161
+ #define AMDGPU_GODAVARI_RANGE   0xA1, 0xFF //# 161 <= x < max
+ 
+@@ -134,6 +136,8 @@
+ 
+ #define ASICREV_IS_SPECTRE(r)          ASICREV_IS(r, SPECTRE)
+ #define ASICREV_IS_SPOOKY(r)           ASICREV_IS(r, SPOOKY)
++#define ASICREV_IS_STARSHA(r)          ASICREV_IS(r, STARSHA)
++#define ASICREV_IS_STARSHP(r)          ASICREV_IS(r, STARSHP)
+ #define ASICREV_IS_KALINDI(r)          ASICREV_IS(r, KALINDI)
+ #define ASICREV_IS_KALINDI_GODAVARI(r) ASICREV_IS(r, GODAVARI)
+ 
+diff --git a/src/amd/common/ac_gpu_info.c b/src/amd/common/ac_gpu_info.c
+index 2c1cd5e8152..1b78c2fdf3f 100644
+--- a/src/amd/common/ac_gpu_info.c
++++ b/src/amd/common/ac_gpu_info.c
+@@ -793,6 +793,8 @@ bool ac_query_gpu_info(int fd, void *dev_p, struct radeon_info *info,
+       case FAMILY_KV:
+          identify_chip2(SPECTRE, KAVERI);
+          identify_chip2(SPOOKY, KAVERI);
++         identify_chip2(STARSHA, LIVERPOOL);
++         identify_chip2(STARSHP, GLADIUS);
+          identify_chip2(KALINDI, KABINI);
+          identify_chip2(GODAVARI, KABINI);
+          break;
+@@ -1129,6 +1131,8 @@ bool ac_query_gpu_info(int fd, void *dev_p, struct radeon_info *info,
+       case CHIP_VERDE:
+       case CHIP_HAINAN:
+       case CHIP_BONAIRE:
++      case CHIP_LIVERPOOL:
++      case CHIP_GLADIUS:
+       case CHIP_KAVERI:
+       case CHIP_ICELAND:
+       case CHIP_CARRIZO:
+@@ -2137,6 +2141,8 @@ int ac_get_gs_table_depth(enum amd_gfx_level gfx_level, enum radeon_family famil
+    case CHIP_TAHITI:
+    case CHIP_PITCAIRN:
+    case CHIP_VERDE:
++   case CHIP_LIVERPOOL:
++   case CHIP_GLADIUS:
+    case CHIP_BONAIRE:
+    case CHIP_HAWAII:
+    case CHIP_TONGA:
+@@ -2207,6 +2213,14 @@ void ac_get_raster_config(const struct radeon_info *info, uint32_t *raster_confi
+       raster_config = 0x3a00161a;
+       raster_config_1 = 0x0000002e;
+       break;
++   case CHIP_LIVERPOOL:
++      raster_config = 0x2a00161a;
++      raster_config_1 = 0x00000000;
++      break;
++   case CHIP_GLADIUS:
++      raster_config = 0x2a00161a;
++      raster_config_1 = 0x0000002e;
++      break;
+    default:
+       fprintf(stderr, "ac: Unknown GPU, using 0 for raster_config\n");
+       raster_config = 0x00000000;
+diff --git a/src/amd/common/amd_family.c b/src/amd/common/amd_family.c
+index 09e84127439..8fb27434cf7 100644
+--- a/src/amd/common/amd_family.c
++++ b/src/amd/common/amd_family.c
+@@ -23,6 +23,8 @@ const char *ac_get_family_name(enum radeon_family family)
+    CASE(OLAND);
+    CASE(HAINAN);
+    CASE(BONAIRE);
++   CASE(LIVERPOOL);
++   CASE(GLADIUS);
+    CASE(KABINI);
+    CASE(KAVERI);
+    CASE(HAWAII);
+@@ -89,6 +91,10 @@ enum amd_gfx_level ac_get_gfx_level(enum radeon_family family)
+       return GFX8;
+    if (family >= CHIP_BONAIRE)
+       return GFX7;
++   if (family >= CHIP_LIVERPOOL)
++      return GFX7;
++   if (family >= CHIP_GLADIUS)
++      return GFX7;
+ 
+    return GFX6;
+ }
+@@ -108,6 +114,10 @@ const char *ac_get_llvm_processor_name(enum radeon_family family)
+       return "hainan";
+    case CHIP_BONAIRE:
+       return "bonaire";
++   case CHIP_LIVERPOOL:
++      return "bonaire";
++   case CHIP_GLADIUS:
++      return "bonaire";
+    case CHIP_KABINI:
+       return "kabini";
+    case CHIP_KAVERI:
+diff --git a/src/amd/common/amd_family.h b/src/amd/common/amd_family.h
+index d9d67a2b57d..e19ccfa33a1 100644
+--- a/src/amd/common/amd_family.h
++++ b/src/amd/common/amd_family.h
+@@ -79,6 +79,8 @@ enum radeon_family
+    CHIP_OLAND,
+    CHIP_HAINAN,
+    /* GFX7 (Sea Islands) */
++   CHIP_LIVERPOOL,
++   CHIP_GLADIUS,
+    CHIP_BONAIRE,
+    CHIP_KAVERI,
+    CHIP_KABINI,
+diff --git a/src/amd/vulkan/meta/radv_meta_fast_clear.c b/src/amd/vulkan/meta/radv_meta_fast_clear.c
+index b4e3ef5295c..b617a4cc8ce 100644
+--- a/src/amd/vulkan/meta/radv_meta_fast_clear.c
++++ b/src/amd/vulkan/meta/radv_meta_fast_clear.c
+@@ -347,7 +347,7 @@ radv_process_color_image(struct radv_cmd_buffer *cmd_buffer, struct radv_image *
+ 
+    switch (op) {
+    case FAST_CLEAR_ELIMINATE:
+-      pred_offset = image->fce_pred_offset;
++      pred_offset = 0;
+       break;
+    case FMASK_DECOMPRESS:
+       pred_offset = 0; /* FMASK_DECOMPRESS is never predicated. */
+diff --git a/src/amd/vulkan/winsys/null/radv_null_winsys.c b/src/amd/vulkan/winsys/null/radv_null_winsys.c
+index e0c0a04856a..cf367b77832 100644
+--- a/src/amd/vulkan/winsys/null/radv_null_winsys.c
++++ b/src/amd/vulkan/winsys/null/radv_null_winsys.c
+@@ -27,6 +27,10 @@ static const struct {
+    [CHIP_OLAND] = {0x6060, 2, true},
+    [CHIP_HAINAN] = {0x6660, 2, true},
+    [CHIP_BONAIRE] = {0x6640, 4, true},
++   [CHIP_LIVERPOOL] = { 0x9920, 2, false },
++   [CHIP_LIVERPOOL] = { 0x9922, 2, false },
++   [CHIP_LIVERPOOL] = { 0x9923, 2, false },
++   [CHIP_GLADIUS] = { 0x9924, 4, false },
+    [CHIP_KAVERI] = {0x1304, 2, false},
+    [CHIP_KABINI] = {0x9830, 2, false},
+    [CHIP_HAWAII] = {0x67A0, 16, true},
+diff --git a/src/gallium/winsys/radeon/drm/radeon_drm_winsys.c b/src/gallium/winsys/radeon/drm/radeon_drm_winsys.c
+index 05981835935..aee2562f751 100644
+--- a/src/gallium/winsys/radeon/drm/radeon_drm_winsys.c
++++ b/src/gallium/winsys/radeon/drm/radeon_drm_winsys.c
+@@ -259,6 +259,8 @@ static bool do_winsys_init(struct radeon_drm_winsys *ws)
+       ws->info.gfx_level = GFX6;
+       break;
+    case CHIP_BONAIRE:
++   case CHIP_LIVERPOOL:
++   case CHIP_GLADIUS:
+    case CHIP_KAVERI:
+    case CHIP_KABINI:
+    case CHIP_HAWAII:
+@@ -472,6 +474,8 @@ static bool do_winsys_init(struct radeon_drm_winsys *ws)
+    case CHIP_VERDE:
+    case CHIP_OLAND:
+    case CHIP_BONAIRE:
++   case CHIP_LIVERPOOL:
++   case CHIP_GLADIUS:
+    case CHIP_KAVERI:
+       ws->info.max_tcc_blocks = 4;
+       break;
+@@ -501,9 +505,11 @@ static bool do_winsys_init(struct radeon_drm_winsys *ws)
+       case CHIP_TAHITI:
+       case CHIP_PITCAIRN:
+       case CHIP_BONAIRE:
++      case CHIP_LIVERPOOL:
+          ws->info.max_se = 2;
+          break;
+       case CHIP_HAWAII:
++      case CHIP_GLADIUS:
+          ws->info.max_se = 4;
+          break;
+       }
+@@ -608,6 +614,8 @@ static bool do_winsys_init(struct radeon_drm_winsys *ws)
+    case CHIP_VERDE:
+    case CHIP_HAINAN:
+    case CHIP_BONAIRE:
++   case CHIP_LIVERPOOL:
++   case CHIP_GLADIUS:
+    case CHIP_KAVERI:
+       ws->info.l2_cache_size = ws->info.num_tcc_blocks * 128 * 1024;
+       break;
+diff --git a/src/gallium/winsys/radeon/drm/radeon_surface.c b/src/gallium/winsys/radeon/drm/radeon_surface.c
+index 8a3302df684..d8331abebde 100644
+--- a/src/gallium/winsys/radeon/drm/radeon_surface.c
++++ b/src/gallium/winsys/radeon/drm/radeon_surface.c
+@@ -78,6 +78,8 @@ enum radeon_family {
+     CHIP_OLAND,
+     CHIP_HAINAN,
+     CHIP_BONAIRE,
++    CHIP_LIVERPOOL,
++    CHIP_GLADIUS,
+     CHIP_KAVERI,
+     CHIP_KABINI,
+     CHIP_HAWAII,
