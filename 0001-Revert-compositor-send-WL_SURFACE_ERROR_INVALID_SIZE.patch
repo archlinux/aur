@@ -1,4 +1,4 @@
-From 8fbdf00990a7195b6fa7c338b496bc07005dd51c Mon Sep 17 00:00:00 2001
+From 43742dd96cc531a9915c93c0cbb3fcd029c0c024 Mon Sep 17 00:00:00 2001
 From: q234rty <q23456yuiop@gmail.com>
 Date: Sat, 27 Jan 2024 21:06:42 +0800
 Subject: [PATCH] Revert "compositor: send WL_SURFACE_ERROR_INVALID_SIZE for
@@ -10,10 +10,10 @@ This reverts commit 18595000f3a21502fd60bf213122859cc348f9af.
  1 file changed, 5 insertions(+), 14 deletions(-)
 
 diff --git a/types/wlr_compositor.c b/types/wlr_compositor.c
-index c5a604ac..95c23ed7 100644
+index d2c881e2a..c587258bf 100644
 --- a/types/wlr_compositor.c
 +++ b/types/wlr_compositor.c
-@@ -191,21 +191,12 @@ static void surface_finalize_pending(struct wlr_surface *surface) {
+@@ -209,21 +209,12 @@ static void surface_finalize_pending(struct wlr_surface *surface) {
  	if (!pending->viewport.has_src &&
  			(pending->buffer_width % pending->scale != 0 ||
  			pending->buffer_height % pending->scale != 0)) {
@@ -41,5 +41,5 @@ index c5a604ac..95c23ed7 100644
  
  	if (pending->viewport.has_dst) {
 -- 
-2.43.0
+2.51.2
 
