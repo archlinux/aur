@@ -1,7 +1,7 @@
-From 53685b913a613023a3e3a037b5cc479bbcebdc2a Mon Sep 17 00:00:00 2001
+From f0723b804c7376c44672ab99ac9393caee03bd63 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Hubert=20Figui=C3=A8re?= <hub@figuiere.net>
 Date: Sat, 1 Jun 2024 19:42:38 -0400
-Subject: [PATCH 3/4] Use XDG open to open the directory
+Subject: [PATCH 3/5] Use XDG open to open the directory
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -12,14 +12,13 @@ Signed-off-by: Hubert Figuière <hub@figuiere.net>
  1 file changed, 8 insertions(+), 1 deletion(-)
 
 diff --git a/src/Standalone/savedestfolder.cpp b/src/Standalone/savedestfolder.cpp
-index 7480631..7df5941 100755
+index 9efb17f..20f0d50 100644
 --- a/src/Standalone/savedestfolder.cpp
 +++ b/src/Standalone/savedestfolder.cpp
-@@ -43,7 +43,14 @@ bool SaveDestFolder::open_folder(Supervisor* sv)
-     int cmd_size = 0;
+@@ -35,9 +35,16 @@ bool SaveDestFolder::open_folder(Supervisor* sv)
+     //保存先のディレクトリが存在しているか確認する
      const bool result = ES_CMN_FUNCS::PATH::ES_IsExistFile(sv->device_data.SelectPath);
      if (result) {
--        if(system("which nautilus > /dev/null") == 0){
 +        if(system("which xdg-open > /dev/null") == 0){
 +            cmd_size = strlen("xdg-open ");
 +            failer = (char *)malloc(cmd_size+1);
@@ -27,10 +26,12 @@ index 7480631..7df5941 100755
 +               memset(failer, 0, cmd_size+1);
 +               memcpy(failer, "xdg-open", cmd_size);
 +            }
+         //同じディレクトリを保存後に何度も開いてしまうためコマンドで開く仕様に
+         //上に記載されているほど使用優先度が高い
+-        if(system("which nautilus > /dev/null") == 0){
 +        } else if(system("which nautilus > /dev/null") == 0){
              cmd_size = strlen("nautilus ");
              failer = (char *)malloc(cmd_size+1);
              if(failer){
 -- 
-2.45.0
-
+2.51.0

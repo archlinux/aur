@@ -1,7 +1,7 @@
-From 09a0f982bd1601c7cd2ed28490e4d54a635b0838 Mon Sep 17 00:00:00 2001
+From 6bb06529b7534e7d12179e99e58b3f63a79bfc5b Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Hubert=20Figui=C3=A8re?= <hub@figuiere.net>
 Date: Sat, 1 Jun 2024 19:43:11 -0400
-Subject: [PATCH 4/4] Fix a crash on an OOB container access
+Subject: [PATCH 4/5] Fix a crash on an OOB container access
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -12,19 +12,18 @@ Signed-off-by: Hubert Figuière <hub@figuiere.net>
  1 file changed, 3 insertions(+)
 
 diff --git a/src/Controller/Src/Finder/Finder.cpp b/src/Controller/Src/Finder/Finder.cpp
-index aa6b853..5e063e8 100755
+index 9f993a1..e306b8c 100644
 --- a/src/Controller/Src/Finder/Finder.cpp
 +++ b/src/Controller/Src/Finder/Finder.cpp
-@@ -52,6 +52,9 @@ namespace epsonscan {
-   }
-   SDIDeviceInfo* Finder::GetDevicesPointer()
-   {
-+   if (devices_.size() == 0) {
-+    return nullptr;
-+   }
-    return &devices_[0];
-   }
-   int32_t Finder::GetDevicesCount() const
+@@ -41,6 +41,9 @@ namespace epsonscan {
+ 		}
+ 		SDIDeviceInfo* Finder::GetDevicesPointer()
+ 		{
++			if (devices_.size() == 0) {
++				return nullptr;
++			}
+ 			return &devices_[0];
+ 		}
+ 	
 -- 
-2.45.0
-
+2.51.0
