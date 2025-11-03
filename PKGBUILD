@@ -1,6 +1,6 @@
 # Maintainer: Firstpick firstpick1992@proton.me
 pkgname=pacsea-git
-pkgver=0.4.4.r2.gc06a32db
+pkgver=0.4.4.r27.g02b6a762
 pkgrel=1
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (git version)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=(
     'wl-clipboard: clipboard support on Wayland'
     'xclip: clipboard support on X11'
     'reflector: update Arch mirrors'
-    'pacman-mirror: Manjaro mirrorlist'
+    'pacman-mirrors: Manjaro mirrorlist'
     'alacritty: run external commands in a terminal'
     'kitty: run external commands in a terminal'
     'xterm: run external commands in a terminal'
@@ -26,6 +26,12 @@ optdepends=(
     'vim: external editor'
     'emacs: external editor'
     'helix: external editor'
+    'nano: external editor'
+    'klipper: clipboard manager on X11'
+    'clamav: malware scanning of files'
+    'trivy: vulnerability scanning'
+    'semgrep-bin: static analysis checks'
+    'shellcheck: lint shell scripts'
     'downgrade: Downgrade of Packages'
 )
 makedepends=('cargo' 'git')
