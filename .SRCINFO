@@ -1,0 +1,14 @@
+pkgbase = vidocq-bin
+	pkgdesc = Advanced OSINT tool for username searching across 100+ platforms
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/r3dg0d/vidocq
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	source = https://github.com/r3dg0d/vidocq/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = vidocq-bin
