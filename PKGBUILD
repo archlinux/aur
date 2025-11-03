@@ -15,7 +15,7 @@ pkgname=(
     ${_packages[@]}
 )
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A framework for creating, editing, and invoking Noisy Intermediate Scale Quantum (NISQ) circuits"
 arch=(any)
 url=https://github.com/quantumlib/Cirq
@@ -28,6 +28,7 @@ makedepends=(
     python-setuptools
     python-wheel
 )
+checkdepends=(python-pytest)
 source=($_name::git+https://github.com/quantumlib/Cirq#tag=v$pkgver)
 b2sums=('dc62bbf21a5347b3cfb71d779057e03cdbdad9cf10d9dfbaf585c93d5aab271be36492766a68ca12fb9ae6b54a4a11c5c6807a5709c11b558b83c25b21558bee')
 
@@ -36,6 +37,21 @@ build() {
     for _package in ${_packages[@]}; do
         cd $srcdir/$_name/${_package:7} # remove "python-"
         python -m build --wheel --no-isolation
+    done
+}
+
+check() {
+    cd $_name
+    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+    # Install generated wheel packages
+    for _package in ${_packages[@]}; do
+        cd $srcdir/$_name/${_package:7}
+        python -m installer --destdir=../test_dir dist/*.whl
+    done
+    # Tests are included in the source code directories
+    for _package in ${_packages[@]}; do
+        cd $srcdir/$_name/${_package:7}
+        PYTHONPATH="$PWD/../test_dir/usr/lib/python$python_version/site-packages" pytest -v ${_package:7//-/_}
     done
 }
 
