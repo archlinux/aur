@@ -1,4 +1,5 @@
-# Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
+# Maintainer:  Levinit <levinit at outlook dot com> 
+# Contributor: Jeremy Gust <jeremy AT plasticsoup DOT net>
 # Contributor: Angel de Vicente <angel.de.vicente at iac dot es>
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux at free.fr>
 # Contributor: kfgz <kfgz at interia pl>
@@ -6,7 +7,7 @@
 # Contributor: maleadt <tim dot besard at gmail dot com>
 pkgname="turbovnc"
 pkgdesc="A derivative of Virtual Network Computing that is tuned to provide peak performance for 3D and video workloads"
-pkgver=3.2
+pkgver=3.2.1
 pkgrel=1
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="http://www.turbovnc.org/"
@@ -40,8 +41,8 @@ conflicts=('tigervnc' 'tigervnc-git' 'tightvnc' 'tightvnc-git')
 backup=(etc/turbovnc/turbovncserver.conf
         etc/turbovnc/turbovncserver-security.conf)
 source=("https://github.com/TurboVNC/turbovnc/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('a4fd895ebb8a40a5962db8c38e3de61e4d22c77d64d2ea0afe8fd78c7a8aff72'
-            'c48fe608bbf82c100e19aebd2f3a09cc423cf1bf7e7775275416979dac1dfab0')
+sha256sums=('e5b853b832808d796764e17a85396de62bc65f21e8b98056f6de333a2ef64720'
+            'SKIP')
 validpgpkeys=(AE1A7BA4EFFF9A9987E1474C4BACCAB36E7FE9A1) # The VirtualGL Project <information@VirtualGL.org>
 
 build() {
