@@ -1,5 +1,5 @@
 pkgname=vgmstream-git
-pkgver=r2023.29.g0dca1628
+pkgver=r2055.50.g9cbf6d5c
 pkgrel=1
 pkgdesc='Library for playback of various streamed audio formats used in video games'
 arch=(x86_64)
@@ -15,14 +15,12 @@ source=(${pkgname}::git+https://github.com/vgmstream/vgmstream.git
         https://downloads.xiph.org/releases/celt/celt-0.6.1.tar.gz
         https://downloads.xiph.org/releases/celt/celt-0.11.0.tar.gz
         remove-bogus-gtk2.patch
-        install-headers.patch
-        add-missing-include.patch)
+        install-headers.patch)
 sha256sums=('SKIP'
             'a991dff4a9e0772ede0881d81cdc7ac559148c2194885cbdd534fe4af43779da'
             'c94d4d34f5a2caa1574b1a94869202cacd959b55f643a8bafe0660008acad9c3'
             '0290744235adb549c66643dfebc728ceeb81dd53ab5cd867a8e8bf75cd17e63c'
-            'ff4cb151baa0530a29a9e6c2f6e7d1ac3099feb21d26c5f1e3a92f1808913916'
-            'da37589638f1879155f50124fb2eca8b7ad41250b89f13018efbfc53a1c03693')
+            'ff4cb151baa0530a29a9e6c2f6e7d1ac3099feb21d26c5f1e3a92f1808913916')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -33,7 +31,6 @@ prepare() {
   cd "$srcdir/$pkgname"
   patch -p0 < "$srcdir"/remove-bogus-gtk2.patch
   patch -p0 < "$srcdir"/install-headers.patch
-  patch -p0 < "$srcdir"/add-missing-include.patch
 }
 
 celt_symbols=(
