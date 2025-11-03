@@ -1,7 +1,7 @@
 pkgbase = heidisql
 	pkgdesc = A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases.
-	pkgver = 12.12.1.208
-	pkgrel = 2
+	pkgver = 12.13.1.1
+	pkgrel = 1
 	url = http://www.heidisql.com/
 	install = heidisql.install
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = heidisql
 	depends = postgresql-libs
 	depends = libperconaserverclient
 	depends = sqlite
-	source = https://www.heidisql.com/downloads/releases/HeidiSQL_12.12.1.208.deb
-	sha256sums = 085219bec7bbe74e30a8c300eada1af5ad08f7136ee8cd2f3b18dff0656aecf2
+	source = https://github.com/HeidiSQL/HeidiSQL/releases/download/v12.13.1.1/heidisql_12.13.1.1_amd64.deb
+	sha256sums = ff6381d9ec4e66c7c02a59bda9f24b35817bd31129152ed7f861414b4514f2c5
 
 pkgname = heidisql
