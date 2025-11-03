@@ -1,0 +1,40 @@
+pkgbase = optim
+	pkgdesc = Lightweight C++ library of numerical optimization methods for nonlinear functions
+	pkgver = 3.1.3
+	pkgrel = 1
+	url = https://optimlib.readthedocs.io/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = armadillo
+	makedepends = basematrixops
+	makedepends = blas
+	makedepends = eigen>=3.4.0
+	makedepends = gcc-libs
+	makedepends = glibc
+	makedepends = lapack
+	source = optim-f9d9357169ce4b497a677faa9ce85e901e77275d.tar.gz::https://github.com/kthohr/optim/archive/f9d9357169ce4b497a677faa9ce85e901e77275d.tar.gz
+	sha256sums = 3809f753fc75c007c55ee995264c72487415a22dacc0846ba8ac0c1d1c24b91a
+
+pkgname = optim-common
+	pkgdesc = Lightweight C++ library of numerical optimization methods for nonlinear functions (common files)
+	arch = any
+
+pkgname = optim-armadillo
+	pkgdesc = Lightweight C++ library of numerical optimization methods for nonlinear functions (armadillo wrapper)
+	depends = optim-common>=3.1.3-1
+	depends = armadillo
+	depends = blas
+	depends = gcc-libs
+	depends = glibc
+	depends = lapack
+	provides = optim
+	conflicts = optim
+
+pkgname = optim-eigen
+	pkgdesc = Lightweight C++ library of numerical optimization methods for nonlinear functions (eigen wrapper)
+	depends = optim-common>=3.1.3-1
+	depends = eigen>=3.4.0
+	depends = gcc-libs
+	depends = glibc
+	provides = optim
+	conflicts = optim
