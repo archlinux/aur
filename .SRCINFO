@@ -1,6 +1,6 @@
 pkgbase = gephgui-wry-bin
 	pkgdesc = Geph desktop GUI
-	pkgver = 5.2.3
+	pkgver = 5.3.0
 	pkgrel = 1
 	url = https://github.com/geph-official/gephgui-wry
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = gephgui-wry-bin
 	depends = webkit2gtk-4.1
 	provides = gephgui-wry
 	conflicts = gephgui-wry
-	source = gephgui-wry-bin-5.2.3.deb::https://github.com/geph-official/gephgui-pkg/releases/download/v5.2.3/gephgui-wry_5.2.3_amd64.deb
+	source = gephgui-wry-bin-5.3.0.deb::https://github.com/geph-official/gephgui-pkg/releases/download/v5.3.0/gephgui-wry_5.3.0_amd64.deb
 	source = geph.png::https://raw.githubusercontent.com/geph-official/gephgui-pkg/refs/heads/master/flatpak/icons/256x256/apps/io.geph.GephGui.png
-	md5sums = 7662bb1058ba2f06a78502e6ca93c523
+	md5sums = 8060fa023754f46e6b2fa9e789669826
 	md5sums = 4655e64a5d56c316383e1ffa79ddc772
 
 pkgname = gephgui-wry-bin
