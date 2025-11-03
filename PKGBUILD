@@ -2,8 +2,8 @@
 
 pkgname=python-kinet2pcb
 _name=${pkgname#python-}
-pkgver=1.1.2
-pkgrel=7
+pkgver=1.1.3
+pkgrel=1
 epoch=
 pkgdesc="Convert KiCad netlist into a PCBNEW .kicad_pcb file."
 arch=('any')
@@ -25,7 +25,7 @@ makedepends=(python-build
 options=('!emptydirs' '!strip')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('7ea2713a25cb2535cf2714fddad47b6a95928cef91684056f4b2779fd10ec193')
+sha256sums=('6fc01dbe1c07dbb03729ce60036ce9e40e7819a197c9e158882cecd93c527dd6')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
