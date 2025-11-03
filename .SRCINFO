@@ -1,0 +1,13 @@
+pkgbase = e2ecp
+	pkgdesc = End-to-end encrypted file transfer tool
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://github.com/schollz/e2ecp
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = npm
+	source = e2ecp-3.0.2.tar.gz::https://github.com/schollz/e2ecp/archive/v3.0.2.tar.gz
+	sha256sums = 6b91b8fd9aea380ccacae72564d4d0056c4b9fda28cf65cf83f353c6a392e175
+
+pkgname = e2ecp
