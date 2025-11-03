@@ -6,8 +6,8 @@ _pkgbase=${pkgbase%-git}
 _pkg1=DankMaterialShell
 _pkg2=danklinux
 pkgname=($_pkgbase-git $_pkgbase-hyprland-git $_pkgbase-niri-git)
-pkgver=0.3.2.r16.g118ab4e.b9f0c27
-pkgrel=3
+pkgver=0.3.2.r27.gbb0c672.1d3e59b
+pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
 url="https://github.com/AvengeMedia/$_pkg1"
@@ -26,11 +26,10 @@ makedepends=(git
              go)
 provides=("$_pkgbase=$pkgver")
 conflicts=("dms-shell")
-source=(90-dms.rules
+source=(
         "git+$url.git"
         "git+${url/$_pkg1/$_pkg2}.git")
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -75,7 +74,6 @@ package_dms-shell-git() {
 	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" "$_pkg1/README.md"
 	cp -r "$_pkg1/docs/"* "$pkgdir/usr/share/doc/$pkgname/"
 	rm -rf "$pkgdir/usr/share/quickshell/dms/.git"*
-	install -Dm0644 "$srcdir/90-dms.rules" "$pkgdir/usr/lib/udev/rules.d/90-dms.rules"
 }
 
 package_dms-shell-hyprland-git() {
