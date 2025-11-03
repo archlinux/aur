@@ -2,7 +2,7 @@
 
 _pkgname=box64
 pkgname=${_pkgname}-git
-pkgver=0.2.6.r74.g3454afb3
+pkgver=0.3.8.r107.g1a552f210
 pkgrel=1
 pkgdesc='Linux Userspace x86_64 Emulator with a twist'
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -14,6 +14,7 @@ depends=('gcc-libs')
 makedepends=('git' 'cmake' 'python')
 provides=(box64)
 conflicts=(box64)
+options=('!strip')
 source=("git+https://github.com/ptitSeb/box64.git#branch=main"
         "box64-git.install")
 sha256sums=('SKIP'
@@ -29,16 +30,19 @@ build() {
     if [[ $CARCH == "aarch64" ]]; then 
         cmake -B build -S . \
               -DARM_DYNAREC=ON \
+              -DBOX32=1 \
               -DCMAKE_BUILD_TYPE=RelWithDebInfo \
               -DCMAKE_INSTALL_PREFIX=/usr
     elif [[ $CARCH == "x86_64" ]]; then
         cmake -B build -S . \
               -DLD80BITS=1 -DNOALIGN=1 \
+              -DBOX32=1 \
               -DCMAKE_BUILD_TYPE=RelWithDebInfo \
               -DCMAKE_INSTALL_PREFIX=/usr
     elif [[ $CARCH == "riscv64" ]]; then
         cmake -B build -S . \
               -DRV64=1 \
+              -DBOX32=1 \
               -DCMAKE_BUILD_TYPE=RelWithDebInfo \
               -DCMAKE_INSTALL_PREFIX=/usr
     fi
