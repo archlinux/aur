@@ -2,7 +2,7 @@
 # Maintainer: Avenge Media LLC <avengemediallc at gmail dot com>
 pkgname=dms-shell-bin
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=('x86_64' 'aarch64')
 url='https://github.com/AvengeMedia/DankMaterialShell'
@@ -35,16 +35,21 @@ _get_arch() {
 }
 
 source_x86_64=(
+    90-dms.rules
     "dms-full-amd64-${pkgver}.tar.gz::$url/releases/download/v$pkgver/dms-full-amd64.tar.gz"
 )
 source_aarch64=(
+    90-dms.rules
     "dms-full-arm64-${pkgver}.tar.gz::$url/releases/download/v$pkgver/dms-full-arm64.tar.gz"
 )
 
-sha256sums_x86_64=('080bc1121a09a37d30cf9e851be62e66ad0039cf209155bf318c27ab1b4b6643')
-sha256sums_aarch64=('c29c64ad349fad9bd40d0658d7e2699ef6317adf133ebdd4ba9f3822eda2a6bf')
+sha256sums_x86_64=('cc573824dbedc094f9f99698ee74bd5cf61dd10c4481c251df0ff3f097751bc3'
+                   '080bc1121a09a37d30cf9e851be62e66ad0039cf209155bf318c27ab1b4b6643')
+sha256sums_aarch64=('cc573824dbedc094f9f99698ee74bd5cf61dd10c4481c251df0ff3f097751bc3'
+                    'c29c64ad349fad9bd40d0658d7e2699ef6317adf133ebdd4ba9f3822eda2a6bf')
 
 package() {
+    install -Dm0644 "$srcdir/90-dms.rules" "$pkgdir/usr/lib/udev/rules.d/90-dms.rules"
     install -Dm755 "${srcdir}/bin/dms-distropkg" "$pkgdir/usr/bin/dms"
 
     install -dm755 "$pkgdir/usr/share/quickshell"
