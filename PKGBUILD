@@ -9,13 +9,7 @@ arch=('any')
 license=('MIT')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
-depends(
-    'libdrm-ps4'
-    'lib32-libdrm-ps4'
-    'mesa-ps4'
-    'lib32-mesa-ps4'
-    'xf86-video-amdgpu-ps4'
-)
+depends=( 'libdrm-ps4' 'lib32-libdrm-ps4' 'mesa-ps4' 'lib32-mesa-ps4' 'xf86-video-amdgpu-ps4')
 package() {
     mkdir -p "$pkgdir/usr/share/"
 

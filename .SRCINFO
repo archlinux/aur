@@ -1,0 +1,15 @@
+pkgbase = video-drivers-ps4
+	pkgdesc = metapackage for ps4 video drivers
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = libdrm-ps4
+	depends = lib32-libdrm-ps4
+	depends = mesa-ps4
+	depends = lib32-mesa-ps4
+	depends = xf86-video-amdgpu-ps4
+	source = /archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = video-drivers-ps4
