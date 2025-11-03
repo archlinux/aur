@@ -76,4 +76,13 @@ cleanup_apm_data() {
             rm -rf "$path"
         fi
     done
+
+    for username in $(ls /home)
+    do
+        echo /home/$username
+        if [ -d "/home/$username/.apm/" ]
+        then
+            rm -fr "/home/$username/.apm/"
+        fi
+    done
 }
