@@ -1,6 +1,6 @@
 # Maintainer: mango <mango@archlinux.org>
 pkgname=simreader
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Unified SIM/USIM card reader tool with complete analysis capabilities"
 arch=('x86_64')
