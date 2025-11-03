@@ -3,7 +3,7 @@
 # Ex-Maintainer: end222 <pabloorduna98 at gmail dot com>
 
 pkgname="nautilus-megasync"
-pkgver="5.3.0"
+pkgver="5.4.0"
 pkgrel="1"
 pkgdesc="Upload your files to your Mega account from nautilus."
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("${pkgname}")
 
 source=("https://mega.nz/linux/repo/Arch_Extra/x86_64/${pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 
-sha256sums=('d82125e1f864fb5fb696a1bd2ddd6ce834c3667b4a75d65d27495326ab23826f')
+sha256sums=('06cf0e89933756c958e50d3d1ffef2f8389deaa16d05101279345215408f3ce5')
 
 install="${pkgname}.install"
 
