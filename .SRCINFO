@@ -1,0 +1,25 @@
+pkgbase = libdrm-ps4
+	pkgdesc = Userspace interface to kernel DRM services, master git version
+	pkgver = 2.4.128.r0.g679c4749
+	pkgrel = 1
+	url = http://dri.freedesktop.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	checkdepends = cairo
+	checkdepends = cunit
+	makedepends = python-docutils
+	makedepends = meson
+	makedepends = git
+	makedepends = ninja
+	depends = libpciaccess
+	provides = libdrm
+	conflicts = libdrm
+	source = libdrm::git+https://gitlab.freedesktop.org/mesa/drm.git
+	source = COPYING
+	source = libdrm-2.4.120.patch
+	sha512sums = SKIP
+	sha512sums = b0ca349b882a4326b19f81f22804fabdb6fb7aef31cdc7b16b0a7ae191bfbb50c7daddb2fc4e6c33f1136af06d060a273de36f6f3412ea326f16fa4309fda660
+	sha512sums = SKIP
+
+pkgname = libdrm-ps4
