@@ -1,0 +1,5 @@
+[sharun-bin]
+source = "github"
+github = "VHSgunzo/sharun"
+use_latest_release = true
+prefix = "v"
