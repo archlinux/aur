@@ -4,7 +4,7 @@ _Name="BaseMatrixOps"
 pkgname="${_Name,,}"
 _commit="9e5beec15d803f0429dadae5e9218ef907271383" # r40
 pkgver="r40+g${_commit::7}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Wrappers to C++ linear algebra libraries"
 arch=('any')
 url="https://github.com/kthohr/${_Name}"
@@ -44,4 +44,7 @@ package() {
   cd "${srcdir}/${_pkgsrc}"
   install -vd "${pkgdir}/usr/include/${_Name}"
   cp -vaT --no-preserve=ownership "include" "${pkgdir}/usr/include/${_Name}"
+
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

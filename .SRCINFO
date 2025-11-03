@@ -1,7 +1,7 @@
 pkgbase = basematrixops
 	pkgdesc = Wrappers to C++ linear algebra libraries
 	pkgver = r40+g9e5beec
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kthohr/BaseMatrixOps
 	arch = any
 	license = Apache-2.0
