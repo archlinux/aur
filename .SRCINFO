@@ -10,6 +10,7 @@ pkgbase = zl-equalizer
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = kfr
 	depends = alsa-lib
 	depends = libx11
 	depends = libxinerama
@@ -20,12 +21,8 @@ pkgbase = zl-equalizer
 	depends = glu
 	source = git+https://github.com/ZL-Audio/ZLEqualizer#tag=1.0.0
 	source = git+https://github.com/ZL-Audio/JUCE#tag=b251f82
-	source = git+https://github.com/ZL-Audio/kfr#tag=9a35250
-	source = git+https://github.com/ZL-Audio/nlopt#tag=ab0fd1c
-	sha256sums = 4909c86a67544b6c7d7858d5945401941f8e6690ebe6d00638313ff2a60e20fa
+	sha256sums = 921797264eba7f8ac5ce12675e7d870ae192f4afc310ed20ada464f36f19731c
 	sha256sums = 01016c0970367a0da9f4bf3b9191334dbdbf8902e2acb6f47be0ede2acf598d7
-	sha256sums = 7aaa927395bce6845b844e775786859e79b2e41dd857a0adee923b93dd183213
-	sha256sums = b93b67f7a7533fc22b07f2bade668c169435db98a18a1cf39ed497cf8db78f33
 
 pkgname = zl-equalizer-vst
 	groups = zl-audio
