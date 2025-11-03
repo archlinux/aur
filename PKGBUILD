@@ -9,7 +9,7 @@ pkgname=(qt6-base-scrollfix
          qt6-xcb-private-headers-scrollfix)
 _pkgver=6.10.0
 pkgver=${_pkgver/-/}
-pkgrel=1.1
+pkgrel=2.1
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL-3.0-only
@@ -107,7 +107,8 @@ sha256sums=('be60bf981a67824c2a27155d794eb30d10a6daa71db37695668a8a703acff929'
 prepare() {
   patch -d $_pkgfn -p1 < qt6-base-cflags.patch # Use system CFLAGS
   patch -d $_pkgfn -p1 < qt6-base-nostrip.patch # Don't strip binaries with qmake
-  git -C $_pkgfn cherry-pick -n a374ab6ce9f01f1f559403ec377cde990a689890 # Fix yakuake
+
+  git -C $_pkgfn cherry-pick -n 2974b3d740a705767a1b6ca0779eb0d989364769 # Fix window positioning
 
   # GG: fix scrolling in libreoffice on wayland
   echo "Apply additional patches for optimizing scrolling ..."
