@@ -17,6 +17,6 @@ pkgbase = pkgstate
 	provides = pkgstate
 	conflicts = pkgstate
 	source = pkgstate-0.1.3.tar.gz::https://github.com/pol-rivero/pkgstate/archive/refs/tags/0.1.3.tar.gz
-	sha256sums = 2dd344d8bb49d72dd6d9bc71ff79df4bf701ad214218b00b929506df3ce960b4
+	sha256sums = 7a6e0fcb0ef9a117b37de128f8b9973bcd7eeaad41507c752c5215ed7d44d99e
 
 pkgname = pkgstate

@@ -18,7 +18,7 @@ optdepends=(
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pol-rivero/pkgstate/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('2dd344d8bb49d72dd6d9bc71ff79df4bf701ad214218b00b929506df3ce960b4')
+sha256sums=('7a6e0fcb0ef9a117b37de128f8b9973bcd7eeaad41507c752c5215ed7d44d99e')
 
 build() {
     tar -xzf "${pkgname}-${pkgver}.tar.gz"
@@ -43,6 +43,6 @@ package() {
     install -d "$pkgdir/usr/share/fish/vendor_completions.d"
 
     "$pkgdir/usr/bin/pkgstate" completion bash > "$pkgdir/usr/share/bash-completion/completions/pkgstate"
-    "$pkgdir/usr/bin/pkgstate" completion zsh > "$pkgdir/usr/share/zsh/site-functions/_doot"
+    "$pkgdir/usr/bin/pkgstate" completion zsh > "$pkgdir/usr/share/zsh/site-functions/_pkgstate"
     "$pkgdir/usr/bin/pkgstate" completion fish > "$pkgdir/usr/share/fish/vendor_completions.d/pkgstate.fish"
 }
