@@ -1,0 +1,18 @@
+pkgbase = sqlite-dist
+	pkgdesc = A CLI tool for packing and distributing pre-compiled SQLite extensions.
+	pkgver = 0.0.1.alpha.19
+	pkgrel = 1
+	url = https://github.com/asg017/sqlite-dist
+	arch = x86_64
+	arch = aarch64
+	makedepends = rust
+	depends = zstd
+	depends = bzip2
+	depends = gcc-libs
+	depends = glibc
+	options = !strip
+	options = lto
+	source = https://github.com/asg017/sqlite-dist/archive/refs/tags/v0.0.1-alpha.19.tar.gz
+	sha256sums = 9e660b02cec0d0e0f28777bbbc0ed2a4393394a8d8d1d2e2fb592a735e865fcf
+
+pkgname = sqlite-dist
