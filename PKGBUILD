@@ -2,12 +2,12 @@
 
 pkgname=elephant-all-git
 pkgver=r405.bfd423d
-pkgrel=3
+pkgrel=4
 pkgdesc='elephant + all official elephant providers'
 url='https://github.com/abenz1267/elephant'
 arch=('x86_64' 'aarch64')
 license=('GPL')
-depends=('libqalculate' 'wl-clipboard' 'imagemagick' 'fd' 'wtype')
+depends=('libqalculate' 'wl-clipboard' 'imagemagick' 'fd' 'wtype' 'sqlite3' 'jq')
 makedepends=('go' 'git')
 conflicts=('elephant' 'elephant-bookmarks' 'elephant-archlinuxpkgs' 'elephant-bluetooth' 'elephant-calc' 'elephant-clipboard' 'elephant-desktopapplications' 'elephant-files' 'elephant-menus' 'elephant-nirisessions' 'elephant-providerlist' 'elephant-runner' 'elephant-snippets' 'elephant-symbols' 'elephant-todo' 'elephant-unicode' 'elephant-websearch' 'elephant-windows')
 provides=('elephant' 'elephant-bookmarks' 'elephant-archlinuxpkgs' 'elephant-bluetooth' 'elephant-calc' 'elephant-clipboard' 'elephant-desktopapplications' 'elephant-files' 'elephant-menus' 'elephant-nirisessions' 'elephant-providerlist' 'elephant-runner' 'elephant-snippets' 'elephant-symbols' 'elephant-todo' 'elephant-unicode' 'elephant-websearch' 'elephant-windows')
