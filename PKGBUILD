@@ -1,12 +1,12 @@
 # Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
 # Contributor: Dušan Simić <dusan.simic1810@gmail.com>
 
-_electron=electron35
+_electron=electron38
 _appname=insomnia
 pkgname="$_appname-electron"
 _dirname="$_appname-core"
 epoch=1
-pkgver=11.0.1
+pkgver=12.0.0 # renovate: datasource=github-tags depName=Kong/insomnia extractVersion=^core@(?<version>(?:[^2].*|2(?:$|[^0].*)|20(?:$|[^2].*)|202(?:$|[^0-3].*|[0-3](?:$|[^.].*))))
 pkgrel=1
 pkgdesc='Cross-platform HTTP and GraphQL Client'
 arch=(any)
@@ -19,11 +19,13 @@ conflicts=("$_appname")
 source=("$url/archive/core@$pkgver.tar.gz"
         "$_appname.sh"
         "$_appname.desktop"
+				"disable_verify_bundle_plugins.patch"
         "electron_target.patch")
-b2sums=('a8e15157321bf1bdd01d3a2610be39e240bdacf913294d1ccdbb6f41586f5d0c37e879cdebca14e278b94117199d084c2afedc85844dbfce1b7972aa103f45c3'
+b2sums=('b7a30f88c50ed1a65b02e446cb472191e3a58fa5d0ce3780b7b9510494a75080ba75ef2be007e00aaa6104807d260938246bed2b9dce9db7fdaf1779c5b46c07'
         '6fa7a0c1709a354a8d189b477f170bc04721a6236e7ffbd3eedb252e5b7c00da38619b958253c7f3a244c02fcbeafc9431779978b10de4ed308ed8c825e9e410'
         'd7f795312b38ccd63cdc9a9333a5cdb3d1271b07d6855bc10c4711e143f0a30bd819cda931d99ed0090536ffa84b551a8d134299f614506b0e344c15afe19f6c'
-        '64002d1772108caa6d6b725fdff1c86b0b092e7a169b947e4521be93358096ac47fe5c954fda116c5a27f5a466fd4c10ee0e6f170cb1524a26f636da7618c0ae')
+        'b095c6b47d62670cb70c8bfb3ed7d605472522581b0a8a16ea2d3159bf4d44c57ae1347f98bdbc2ff1749f22f792b72cb965e9ade60aad8eb3bff06cf4db65ec'
+        '27358ae8207d91b06ee4ff98c4ddf5b206c7869ca2fb00be3f38b49c2c7fc5268557f4166977f5804d17ab14f3d8a43b5951a52c24557721b973d832d3a35ed9')
 
 _ensure_local_nvm() {
 	# lets be sure we are starting clean
@@ -41,6 +43,7 @@ prepare() {
 	sed -i "s~@ELECTRON@~$_electron~" "$_appname.sh"
 	cd "$_dirname-$pkgver"
 	nvm install
+	patch -p1 -i "$srcdir/disable_verify_bundle_plugins.patch"
 	patch -p1 -i "$srcdir/electron_target.patch"
 }
 
