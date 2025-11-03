@@ -1,25 +1,25 @@
 pkgbase = gecko-arkenfox-autoconfig
 	pkgdesc = A split package which installs arkenfox as autoconfig.js policy on many browsers.
-	pkgver = 140.0
+	pkgver = 140.1
 	pkgrel = 1
 	url = https://github.com/arkenfox/user.js
 	arch = any
 	license = MIT
 	source = autoconfig.js
 	source = https://gist.githubusercontent.com/SpacingBat3/d9b56e0ee88f7a7201e6a45f4858b5e0/raw/d37c1853333fb7448ecb7124671a40f792751cac/ujs2cfg.sh
-	source = arkenfox-v140.0.js::https://raw.githubusercontent.com/arkenfox/user.js/140.0/user.js
-	source = LICENSE-arkenfox-v140.0.txt::https://raw.githubusercontent.com/arkenfox/user.js/140.0/LICENSE.txt
+	source = arkenfox-v140.1.js::https://raw.githubusercontent.com/arkenfox/user.js/140.1/user.js
+	source = LICENSE-arkenfox-v140.1.txt::https://raw.githubusercontent.com/arkenfox/user.js/140.1/LICENSE.txt
 	md5sums = f500bce7ef057a7db6c78bed2fe38609
 	md5sums = 121a7c8c67b8668f8553fcc49e18b4b2
-	md5sums = 328d74c119f494bf40ad7707740d0812
+	md5sums = 2b82928022eac5c23753974cd9f4cbf9
 	md5sums = 05ef200686826459427e9769f7aa2c53
 	sha512sums = 695695e1279b829b4999bd0c55ad9ab5a1fca4bf67a58568c072a324781df0a712597192005ed69dc63d22cd58bd057d24858a3e445518265d785b0d0f24a9ed
 	sha512sums = 7d66fce8be8ac9ec2df5fe14c5492401e6d5deb04134232e94358f6bd2535ec14245d22194d9da6c93b972fa12d66e0029be8d233c1e0e497d673fd59a1674ec
-	sha512sums = 4a725737c9d1255606dd32a09f7789a976597e8d1937bb3761cf3ba5e5f168d75c2c428a13258008d688992266bf0f64656810cdfb57cdbc06c7a047e2140b07
+	sha512sums = 50c23dd0e5b819ee4e73e9dae90f0929e028271cd455b8ec72a826ef31ccd5de61714eca0a6b042920eef5d530408adc20f35fedf654911e5f8f7843c43edc52
 	sha512sums = e6bda049f5a259d23026c2e7f294d6c0e7eec3be21e07e734e83c89f1509df62112b4d4ef6474593e564a55ed511d17f9294a22b47ebe4dade825c92100b4e1d
 	b2sums = 6b379e58ee3768d70cd6abdd61e36c4c01f2903ec2c24bcdae4a71d5e5f1c1961eeced5e5c63474566c9369e50f28338066e1ad3ecdf5bcbd54630b9d510340b
 	b2sums = dc413423d7c55223b8dbb61f8417ea199ed53af910d3bdd29add4c0dd2bf9a011535125fbbd74c1a3031be48d48e91f9d63ef4be21e214c8c428014d64595e7c
-	b2sums = 33f9cdd08445fe9b037480a905e4d94623c7b96210a051b87af7af1e0bebffa502b0249b00fba147ee33fbc273b9bdf215e0b1ab8aa28a050ee39257465c6529
+	b2sums = add9a17e0d1be73773a810c8330c656e7fae790e8379dd6073e4ddf23bbbac8b22bbbfeda80a5606f6995e73302169f5913b494137d9e7d9c33682f1da49e568
 	b2sums = c6a031cb7012627068355909c9ffd70a8d94edc9ddb5834fc6d7722856b21747671f5070c59e73b240303346ee98d117e8cfc656d11caddebf61ac43516f4cc2
 
 pkgname = arkenfox-autoconfig
@@ -28,7 +28,7 @@ pkgname = arkenfox-autoconfig
 pkgname = firefox-arkenfox-autoconfig
 	pkgdesc = Use arkenfox user.js system-wide, as Firefox autoconfig.js policy
 	depends = firefox
-	depends = arkenfox-autoconfig=140.0
+	depends = arkenfox-autoconfig=140.1
 	provides = firefox-autoconfig
 	provides = firefox-policy
 	conflicts = firefox-autoconfig
@@ -38,7 +38,7 @@ pkgname = firefox-arkenfox-autoconfig
 pkgname = firefox-esr-arkenfox-autoconfig
 	pkgdesc = Use arkenfox user.js system-wide, as Firefox ESR autoconfig.js policy
 	depends = firefox-esr
-	depends = arkenfox-autoconfig=140.0
+	depends = arkenfox-autoconfig=140.1
 	provides = firefox-esr-autoconfig
 	provides = firefox-esr-policy
 	conflicts = firefox-esr-autoconfig
@@ -48,7 +48,7 @@ pkgname = firefox-esr-arkenfox-autoconfig
 pkgname = firefox-developer-edition-arkenfox-autoconfig
 	pkgdesc = Use arkenfox user.js system-wide, as Firefox Developer Edition autoconfig.js policy
 	depends = firefox-developer-edition
-	depends = arkenfox-autoconfig=140.0
+	depends = arkenfox-autoconfig=140.1
 	provides = firefox-developer-edition-autoconfig
 	provides = firefox-developer-edition-policy
 	conflicts = firefox-developer-edition-autoconfig
@@ -58,7 +58,7 @@ pkgname = firefox-developer-edition-arkenfox-autoconfig
 pkgname = icecat-arkenfox-autoconfig
 	pkgdesc = Use arkenfox user.js system-wide, as GNU IceCat autoconfig.js policy
 	depends = icecat
-	depends = arkenfox-autoconfig=140.0
+	depends = arkenfox-autoconfig=140.1
 	provides = icecat-autoconfig
 	provides = icecat-policy
 	conflicts = icecat-autoconfig
@@ -68,7 +68,7 @@ pkgname = icecat-arkenfox-autoconfig
 pkgname = palemoon-arkenfox-autoconfig
 	pkgdesc = Use arkenfox user.js system-wide, as Palemoon autoconfig.js policy
 	depends = palemoon
-	depends = arkenfox-autoconfig=140.0
+	depends = arkenfox-autoconfig=140.1
 	provides = palemoon-autoconfig
 	provides = palemoon-policy
 	conflicts = palemoon-autoconfig
@@ -78,7 +78,7 @@ pkgname = palemoon-arkenfox-autoconfig
 pkgname = waterfox-g-arkenfox-autoconfig
 	pkgdesc = Use arkenfox user.js system-wide, as Waterfox autoconfig.js policy
 	depends = waterfox-g
-	depends = arkenfox-autoconfig=140.0
+	depends = arkenfox-autoconfig=140.1
 	provides = waterfox-g-autoconfig
 	provides = waterfox-g-policy
 	conflicts = waterfox-g-autoconfig
