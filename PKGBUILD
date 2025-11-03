@@ -4,7 +4,7 @@
 pkgname="alpine-make-rootfs"
 pkgver=0.7.2
 pkgrel=1
-pkgdesc="Builds customized Alpine Linux rootfs for containers"
+pkgdesc="Make customized Alpine Linux rootfs (base image) for containers"
 arch=('any')
 url="https://github.com/alpinelinux/${pkgname}"
 license=('MIT')

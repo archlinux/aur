@@ -1,5 +1,5 @@
 pkgbase = alpine-make-rootfs
-	pkgdesc = Builds customized Alpine Linux rootfs for containers
+	pkgdesc = Make customized Alpine Linux rootfs (base image) for containers
 	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/alpinelinux/alpine-make-rootfs
