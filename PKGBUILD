@@ -1,33 +1,41 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
-_name='pymunk'
+_name=pymunk
 pkgname=python-${_name}
-pkgver=7.0.1
-pkgrel=2
-pkgdesc="Pymunk is a easy-to-use pythonic 2D physics library."
+pkgver=7.2.0
+pkgrel=1
+pkgdesc='Pymunk is a easy-to-use pythonic 2D physics library.'
 arch=('any')
-url='http://www.pymunk.org/'
+url='https://github.com/viblo/pymunk'
 license=('MIT')
-source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('96a38e8123f4d89f8820b43640f1f623d6844f1f97eea09c4660f031780a9ff8')
 depends=('python' 'python-cffi')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-cffi' 'cmake' 'gcc')
-checkdepends=('python-pygame')
-optdepends=('python-pyglet' 'python-pygame' 'python-aafigure' 'python-matplotlib' 'python-numpy')
+checkdepends=('python-pyglet' 'python-pygame' 'python-pillow' 'python-aafigure' 'python-matplotlib' 'python-numpy')
+optdepends=('python-pyglet' 'python-pygame' 'python-pillow' 'python-aafigure' 'python-matplotlib' 'python-numpy')
+source=("$url/archive/refs/tags/$pkgver.tar.gz"
+				"https://github.com/viblo/Munk2D/archive/refs/tags/2.0.1.tar.gz")
+sha256sums=('653f7ae05711b885a48b84004721bde165f119d51365d12efbffb717c1920e21'
+						'622fd376e95d3adf49ff8681081ec6b4cc6b082649164633ae4ce7b86c9cce93')
 
-build() {
-	cd "$srcdir"/${_name}-$pkgver
+prepare(){
+	cd "$srcdir"
+	rm -rf "$srcdir"/$_name-$pkgver/Munk2D
+	mv Munk2D-2.0.1 "$srcdir"/$_name-$pkgver/Munk2D
+}
+
+build(){
+	cd "$srcdir"/$_name-$pkgver
 	python -m build --wheel --no-isolation
 }
 
 
-check() {
+check(){
   local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
-  cd "${srcdir}"/${_name}-${pkgver}/build/lib.linux-$CARCH-cpython-$python_version
+  cd "$srcdir"/$_name-$pkgver/build/lib.linux-$CARCH-cpython-$python_version
   python -m pymunk.tests
 }
 
-package() {
-	cd "$srcdir"/${_name}-$pkgver
+package(){
+	cd "$srcdir"/$_name-$pkgver
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
