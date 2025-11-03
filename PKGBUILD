@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-bin
-pkgver=314.251030.0
+pkgver=310.251016.1
 pkgrel=1
 pkgdesc="The desktop client for Tutanota, the secure e-mail service."
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
 makedepends=('openssl')
 source=("${pkgname%-bin}-$pkgver.AppImage::https://app.tuta.com/desktop/${pkgname%-bin}-linux.AppImage"
         "linux-sig-$pkgver.bin::https://app.tuta.com/desktop/linux-sig.bin"
-        "tutao-pub-$pkgver.pem::https://github.com/tutao/tutanota/raw/tutanota-release-$pkgver/tutao-pub.pem")
+        "tutao-pub-$pkgver.pem::https://github.com/tutao/tutanota/raw/${pkgname%-bin}-release-$pkgver/tutao-pub.pem")
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-linux")
 sha512sums=('2b259fc2ea8db0e8855d50300faf32fb83d26323ec5cb0898b2ef01d0de1ba0b459c084e061568f89fd7d5744f6f8686b721d97a0da4ac13b6b6c51b25a5bb3c'
