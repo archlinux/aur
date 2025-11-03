@@ -3,9 +3,9 @@
 # Thank you inversechi and eschwartz
 
 pkgname=lando
-pkgver=3.24.3
+pkgver=3.25.6
 _target_version=${pkgver//_/-}
-pkgrel=3
+pkgrel=1
 pkgdesc="A free, open source, cross-platform, local development environment and DevOps tool built on Docker container technology"
 arch=('x86_64')
 url="https://docs.lando.dev"
@@ -15,7 +15,7 @@ optdepends=('gcc-libs')
 makedepends=('npm' 'git')
 source=("${pkgname}-core::git+https://github.com/lando/core.git#tag=v${_target_version}"
         "lando.sh")
-sha256sums=('0390d33a1c50adb0aaba376ddc8f24ceb86b6b22891d160af91babb91584b15e'
+sha256sums=('acfd1e2f58b0f572fa028342a99f6c26675c6e115108b39055f701363f82a550'
             'e539ba6ea3311d9fb012a9e751998543a1518a6ae0b9fd508d77ae145a1d210b')
 conflicts=("lando-git")
 provides=("lando")
@@ -26,8 +26,8 @@ options=(!strip)
 prepare() {
   cd "${srcdir}/$pkgname-core" || exit
 
-  npm clean-install --prefer-offline --frozen-lockfile --omit=dev
-  # scripts/fatcore-install.sh
+  npm ci --prefer-offline --omit=dev
+  scripts/install-plugins.sh || echo err
 
   # mkdir -p ./dist/@lando
   # npx @yao-pkg/pkg --config package.json --target node22 --compress GZip --options dns-result-order=ipv4first bin/lando
@@ -39,7 +39,7 @@ package() {
 
   mkdir -p "${pkgdir}/usr/lib/node_modules/lando"
 
-  cp -a * "${pkgdir}/usr/lib/node_modules/lando"
+  rsync -zav ./* "${pkgdir}/usr/lib/node_modules/lando"
 
   install -D -m 755 "${srcdir}/lando.sh" "${pkgdir}/usr/bin/lando"
 }
