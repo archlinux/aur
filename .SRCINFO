@@ -1,0 +1,17 @@
+pkgbase = memreserver-git
+	pkgdesc = Workaround for AMGPU's inability to use swap for VRAM eviction when suspending
+	pkgver = 480253e5
+	pkgrel = 1
+	url = https://git.dolansoft.org/lorenz/memreserver
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = libdrm
+	provides = memreserver
+	conflicts = memreserver
+	source = memreserver::git+https://git.dolansoft.org/lorenz/memreserver
+	sha256sums = SKIP
+
+pkgname = memreserver-git
