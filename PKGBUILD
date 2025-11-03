@@ -2,8 +2,8 @@
 # Contributor: skrewball <aur at joickle dot com> gitlab.com/skrewball/aur
 # Contributor: malacology <guoyizhang at malacology dot net>
 pkgname=gnome-shell-extension-blur-my-shell
-pkgver=69
-pkgrel=2
+pkgver=70
+pkgrel=1
 pkgdesc="Extension that adds a blur look to different parts of the GNOME Shell"
 arch=('any')
 url="https://github.com/aunetx/blur-my-shell"
@@ -13,17 +13,11 @@ makedepends=(
   'git'
   'jq'
 )
-source=("git+https://github.com/aunetx/blur-my-shell.git#tag=v$pkgver"
-        'gnome49.patch')
-sha256sums=('64103381d0063b3c95918f55a31af5b4725968a067f3dab34fea32c8615da943'
-            '5ed2fb6995cec024fac667c12a769d5b11d9f8ac657def4895c647fd64cc99b5')
+source=("git+https://github.com/aunetx/blur-my-shell.git#tag=v$pkgver")
+sha256sums=('f41f55c7e01ec748caa553e541fbe615ccc0cabc023b69f2dd754e112b0626f7')
 
 prepare() {
   cd blur-my-shell
-
-  # GNOME 49
-  # https://github.com/aunetx/blur-my-shell/pull/791
-  patch -Np1 -i ../gnome49.patch
 }
 
 build() {
