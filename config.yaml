@@ -21,14 +21,14 @@ mqtt:
   topic: fronius-ng
   #user: mqtt
   #password: "your-secret-password"
-  queue_size: 10
+  queue_size: 100
   reconnect_delay:
     min: 2
     max: 64
     exponential: true
   
 logger:
-  level: info
+  level: info     # global default: off | error | warn | info | debug | trace
   modules:
     main: info
     modbus: info
