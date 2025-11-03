@@ -1,0 +1,18 @@
+pkgbase = koxtoolchain
+	pkgdesc = Build script for various toolchains used by KOReader.
+	pkgver = 2025.05
+	pkgrel = 1
+	url = https://github.com/koreader/koxtoolchain
+	arch = any
+	license = unknown
+	depends = base-devel
+	depends = curl
+	depends = git
+	depends = gperf
+	depends = help2man
+	depends = unzip
+	depends = wget
+	source = koxtoolchain-2025.05.tar.gz::https://github.com/koreader/koxtoolchain/archive/refs/tags/2025.05.tar.gz
+	b2sums = 7f1e8da60ebe2afb305c0d8dd3f3b5f21f30688786787c80a2f70f26b7b890a1b536863b1fb800c333470197a46968afc7cbf3890f7a2a494b1988b51f091b66
+
+pkgname = koxtoolchain
