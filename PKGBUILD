@@ -22,7 +22,34 @@ source=(http://developer.download.nvidia.com/compute/cuda/${pkgver}/local_instal
         cuda.sh
         cuda.conf
         cuda-findgllib_mk.diff
-        *.pc
+        accinj64.pc
+        cublas.pc
+        cuda.pc
+        cudart.pc
+        cufft.pc
+        cufftw.pc
+        cuinj64.pc
+        curand.pc
+        cusolver.pc
+        cusparse.pc
+        nppc.pc
+        nppial.pc
+        nppicc.pc
+        nppicom.pc
+        nppidei.pc
+        nppif.pc
+        nppig.pc
+        nppim.pc
+        nppi.pc
+        nppist.pc
+        nppisu.pc
+        nppitc.pc
+        npps.pc
+        nvgraph.pc
+        nvidia-ml.pc
+        nvjpeg.pc
+        nvrtc.pc
+        nvToolsExt.pc
         fix-glibc241.patch
         fix-glibc242.patch
         4972.patch)
