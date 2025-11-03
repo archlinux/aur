@@ -3,8 +3,8 @@
 
 pkgname=fluffychat-localflutter
 _pkgname=fluffychat
-pkgver=2.1.0
-pkgrel=6
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Chat with your friends, be careful about your flutter environment"
 arch=('x86_64' 'aarch64')
 url="https://fluffychat.im/"
@@ -21,19 +21,16 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
   "fluffychat-v${pkgver}.tar.gz::https://github.com/krille-chan/fluffychat/archive/refs/tags/v${pkgver}.zip"
-  "xdp_selector.patch"
   'notification.patch'
 )
 options+=(!lto)
 sha256sums=(
-  'b43807318a246bfe5080a56ab96e3c6560686c6c8d0cebd909d1dc684e76b0ae'
-  'f34e424d55dfab98534de55623b58875bbd5b3e50a66c248730fe7a4676f7eb2'
+  '5fb969531a17905623c7d0d69be66e791d86e112a1097427576abab2a3b21538'
   'ec299c4ba1ea8cc254f22307fb9267ac456b47e3275d2eb6cfec4aada0d6b390'
 )
 
 prepare() {
   cd ${_pkgname}-$pkgver
-  patch -Np1 -i "$srcdir/xdp_selector.patch"
   patch -Np1 -i "$srcdir/notification.patch"
 }
 
