@@ -1,6 +1,6 @@
 pkgbase = rclone-ui-bin
 	pkgdesc = The cross-platform desktop GUI for rclone & S3.(Prebuilt version)
-	pkgver = 2.7.16
+	pkgver = 2.7.28
 	pkgrel = 1
 	url = https://rcloneui.com/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = rclone-ui-bin
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
 	depends = rclone
-	provides = rclone-ui=2.7.16
+	provides = rclone-ui=2.7.28
 	conflicts = rclone-ui
-	source_x86_64 = rclone-ui-2.7.16-x86_64.rpm::https://github.com/rclone-ui/rclone-ui/releases/download/v2.7.16/Rclone.UI_x86_64.rpm
-	sha256sums_x86_64 = 349c4732726b10c06daeb2aa34ef577b12260fb7153e525915e05981c69fedde
+	source_x86_64 = rclone-ui-2.7.28-x86_64.rpm::https://github.com/rclone-ui/rclone-ui/releases/download/v2.7.28/Rclone.UI_x86_64.rpm
+	sha256sums_x86_64 = 48bc5f697998533a66a9f34defbc4095f3c9fa839183cd10bb7ad9f7e30882c2
 
 pkgname = rclone-ui-bin
