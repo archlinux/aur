@@ -7,7 +7,7 @@ url="https://github.com/d3b0o/ascii-2048"
 license=('MIT')
 depends=('bash' 'make' 'gcc')
 source=("https://github.com/d3b0o/ascii-2048/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('648a5601465f3e20b84739089bbedcae90aeedc05accf17c05e3e62c8cf112ec')
+sha256sums=('9c55de07df8d0e3523113382fe0fd2d6c3ec71ebe01467f0192b5aab10c9181e')
 
 build() {
     cd "$srcdir/ascii-2048-${pkgver}"
