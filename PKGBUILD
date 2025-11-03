@@ -1,123 +1,125 @@
-# Maintainer: username227 <gfrank227 [at] gmail [dot] com>
-# Contributor: Alexandre Bouvier <contact@amb.tf>
-pkgname=shadps4
-pkgver=0.11.0
-_pkgname=shadPS4
-pkgrel=4
+# Maintainer:
+# Contributor: username227 <gfrank227 [at] gmail [dot] com>
+
+## options
+: ${_use_clang:=false}
+
+_pkgname="shadps4"
+pkgname="$_pkgname"
+pkgver=0.12.0
+pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
-arch=('aarch64' 'x86_64')
-url="https://shadps4.net/"
+url="https://github.com/shadps4-emu/shadPS4"
 license=('GPL-2.0-or-later')
+arch=('aarch64' 'x86_64')
+
 depends=(
-	'crypto++>=8.9'
-	'gcc-libs'
-	'glibc'
-	'glslang>=15'
-	'hicolor-icon-theme'
-	'pugixml>=1.14'
-	'sdl3>=3.1.8'
+  'glslang'
+  'libavcodec.so'    # ffmpeg
+  'libavformat.so'   # ffmpeg
+  'libavutil.so'     # ffmpeg
+  'libfmt.so'        # fmt
+  'libpng16.so'      # libpng
+  'libswresample.so' # ffmpeg
+  'libswscale.so'    # ffmpeg
+  'libudev.so'       # systemd-libs
+  'libuuid.so'       # util-linux-libs
+  'libxxhash.so'     # xxhash
+  'libz.so'          # zlib
+  'pugixml'
+  'sdl3'
 )
 makedepends=(
-	'boost>=1.84'
-	'cmake>=3.16.3'
-	'ffmpeg'
-	'git'
-	'half>=1.12'
-	'libpng>=1.6'
-	'libusb>=1.0.27'
-	'magic_enum>=0.9.7'
-	'qt6-base'
-	'qt6-multimedia'
-	'qt6-tools'
-	'rapidjson'
-	'renderdoc'
-	'robin-map>=1.3'
-	'spirv-headers'
-	'toml11>=4.2'
-	'vulkan-headers>=1:1.4.314'
-	'vulkan-memory-allocator>=3.1'
-	'xbyak>=7.07'
-	'xxhash>=0.8.2'
-	'zlib'
-	'zlib-ng>=2.1.7'
-	'zycore-c' # 'zydis>=5'
+  'boost'
+  'cmake'
+  'git'
+  'half'
+  'ninja'
+  'robin-map'
+  'spirv-headers'
+  'toml11'
+  'nlohmann-json'
 )
-optdepends=(
-	'renderdoc: for graphics debugging'
-	'vulkan-validation-layers: for vulkan debugging'
-)
-conflicts=("$pkgname-git")
-options=("!debug")
-source=(
-	"git+https://github.com/shadps4-emu/shadPS4.git#tag=v.${pkgver}"
-	"git+https://github.com/zyantific/zydis.git"
-	"git+https://github.com/shadps4-emu/sirit.git"
-	"git+https://github.com/shadps4-emu/tracy.git"
-	"git+https://github.com/shadps4-emu/ext-imgui.git"
-	"git+https://github.com/shadps4-emu/ext-discord-rpc.git"
-	"git+https://github.com/shadps4-emu/ext-LibAtrac9.git"
-	"git+https://github.com/shadps4-emu/ext-hwinfo"
-	"git+https://github.com/shadps4-emu/ext-libusb.git"
-	"git+https://github.com/KhronosGroup/glslang.git"
-	"git+https://github.com/shadps4-emu/ext-fmt.git"
-)
-b2sums=('95f369b4cd97757730b8f0f36c94ab0a7b36a6297e7291643943049733cb05bc939776152d4ddb68941ef948e399b113f59ed3e3773e591c4ef302d622f74def'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP')
 
+if [[ "${_use_clang::1}" == "t" ]]; then
+  makedepends+=(
+    'clang'
+    'lld'
+  )
+fi
+
+options=('!lto')
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git#tag=v.$pkgver")
+sha256sums=('SKIP')
 
 prepare() {
-    cd "$_pkgname"
-	git config submodule.externals/dear_imgui.url "../ext-imgui"
-	git config submodule.externals/discord-rpc.url "../ext-discord-rpc"
-	git config submodule.externals/LibAtrac9.url "../ext-LibAtrac9"
-	git config submodule.externals/sirit.url "../sirit"
-	git config submodule.externals/tracy.url "../tracy"
-	git config submodule.externals/zydis.url "../zydis"
-	git config submodule.externals/ext-libusb.url "../ext-libusb"
-	git config submodule.externals/hwinfo.url "../ext-hwinfo"
-	git config submodule.externals/glslang.url "../glslang"
-	git config submodule.externals/fmt.url "../ext-fmt"
-    git -c protocol.file.allow=always submodule update
+  cd "$_pkgsrc"
+  git rm -r externals/MoltenVK
+  git rm -r externals/date
+  git rm -r externals/ext-boost
+  git rm -r externals/ffmpeg-core
+  git rm -r externals/fmt
+  git rm -r externals/glslang
+  git rm -r externals/half
+  git rm -r externals/libpng
+  git rm -r externals/pugixml
+  git rm -r externals/robin-map
+  git rm -r externals/sdl3
+  git rm -r externals/toml11
+  git rm -r externals/xxhash
+  git rm -r externals/zlib-ng
+  git submodule update --init --recursive --depth 1
 
+  # remove vendored modules
+  sed -E -e '/add_subdirectory/s&^.*\b(ext-boost)\b.*&&' \
+    -i externals/CMakeLists.txt
+
+  # disable tracy
+  sed -E -e 's&if\s*\(CMAKE_BUILD_TYPE STREQUAL "Release"\)&if (TRUE)&' -i externals/CMakeLists.txt
+
+  # allow any version
+  sed -E -e '/find_package/s&(glslang) \S+ (CONFIG)&\1 \2&' -i CMakeLists.txt
+
+  # respect system build flags
+  sed -E -e '/march/d' -i CMakeLists.txt
+
+  sed -E -e 's&@APP_IS_RELEASE@&true&' \
+    -e 's&@APP_VERSION@&'"${pkgver:?}&" \
+    -i src/common/scm_rev.cpp.in
+
+  sed -E -e 's&(fmt::format)\("shadPS4 v&\1("shadPS4 &' \
+    -i src/emulator.cpp
 }
 
 build() {
-	sed -i s/"find_package(fmt 10.2.0 CONFIG)"// $srcdir/shadPS4/CMakeLists.txt
-	cmake -B build -S $_pkgname \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_SKIP_INSTALL_RPATH=ON \
-		-DENABLE_QT_GUI=ON \
-		-DENABLE_UPDATER=OFF \
-		-DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON \
-		-Wno-dev
-	cmake --build build
+  if [[ "${_use_clang::1}" == "t" ]]; then
+    export CC CXX LDFLAGS
+    CC=clang
+    CXX=clang++
+    LDFLAGS="$(sed -E -e 's&\S*fuse-ld\S*&&g' -e 's&\s+& &g' <<< "$LDFLAGS") -fuse-ld=lld"
+  fi
+
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_SKIP_RPATH=ON
+    -DBUILD_TESTING=OFF
+    -Wno-dev
+
+    -DTRACY_ENABLE=OFF
+    -DENABLE_UPDATER=OFF
+    -DSIRIT_USE_SYSTEM_SPIRV_HEADERS=ON
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-	depends+=(
-		'libavcodec.so'
-		'libavformat.so'
-		'libavutil.so'
-		'libfmt.so'
-		'libpng16.so'
-		'libswresample.so'
-		'libswscale.so'
-		'libuuid.so'
-		'libxxhash.so'
-		'libz.so'
-		'qt6-base'
-		'qt6-multimedia')
-	DESTDIR="$pkgdir" cmake --install build
+  install -Dm755 build/shadps4 "$pkgdir/usr/bin/${_pkgname}"
 }

@@ -1,0 +1,5 @@
+[shadps4]
+source = "git"
+git = "https://github.com/shadps4-emu/shadPS4.git"
+prefix = "v."
+include_regex = 'v\.[0-9\.]+'
