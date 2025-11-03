@@ -1,0 +1,14 @@
+pkgbase = tree-sitter-matlab
+	pkgdesc = MATLAB tree-sitter parser
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://github.com/acristoffers/tree-sitter-matlab
+	arch = x86_64
+	license = MIT
+	makedepends = cmake>=3.13
+	depends = glibc
+	provides = libtree-sitter-matlab.so
+	source = tree-sitter-matlab-1.2.5.tar.gz::https://github.com/acristoffers/tree-sitter-matlab/archive/refs/tags/v1.2.5.tar.gz
+	b2sums = 7b7f82f7d4bd00ffa780c4ed99ebe954dd861ddcf3d9ff7241a2dd46f431254b92d4153d71eeaa4dee371fabf88c120549ec24ce4a6807b209c746ad09a9d113
+
+pkgname = tree-sitter-matlab

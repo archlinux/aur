@@ -1,0 +1,4 @@
+[tree-sitter-matlab]
+source = "git"
+git = "https://github.com/acristoffers/tree-sitter-matlab.git"
+prefix = "v"
