@@ -6,12 +6,12 @@ pkgname=${_pkgname}-bin
 pkgver=0.2.4
 pkgrel=1
 _pkgvername=v${pkgver}
-pkgdesc="Run multiple commands in parallel"
+pkgdesc="Generate random numbers from CLI"
 arch=('x86_64' 'aarch64')
 _barch=('x86_64' 'aarch64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
-license=('MIT')
+license=('GPL-3.0')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")

@@ -1,11 +1,11 @@
 pkgbase = random-rs-bin
-	pkgdesc = Run multiple commands in parallel
+	pkgdesc = Generate random numbers from CLI
 	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/one-d-wide/random-rs
 	arch = x86_64
 	arch = aarch64
-	license = MIT
+	license = GPL-3.0
 	provides = random-rs
 	conflicts = random-rs
 	source = LICENSE-0.2.4::https://raw.githubusercontent.com/one-d-wide/random-rs/v0.2.4/LICENSE
