@@ -1,12 +1,12 @@
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Aurélien Wailly <aurelien.wailly@gmail.com>
 
 pkgname=netcf
 pkgver=0.2.8
-pkgrel=9
+pkgrel=10
 pkgdesc="A library for configuring network interfaces"
 arch=('x86_64')
-license=('LGPL')
+license=('LGPL-2.1-or-later')
 url="https://pagure.io/netcf"
 depends=('augeas>=0.7.4' 'libxslt' 'libxml2' 'libnl')
 makedepends=('gcc')
