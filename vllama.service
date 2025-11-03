@@ -11,7 +11,7 @@ Group=vllama
 WorkingDirectory=/opt/vllama
 Environment=PATH=/opt/vllama/venv312/bin:/usr/bin
 # Use wrapper script that activates venv312
-ExecStart=/usr/bin/vllama
+ExecStart=/opt/vllama/venv312/bin/python /opt/vllama/vllama.py
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=always
 ReadWritePaths=/tmp /var/tmp /opt/vllama
