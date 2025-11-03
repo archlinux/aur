@@ -10,6 +10,7 @@ pkgbase = pgadmin4-server
 	makedepends = postgresql-libs
 	makedepends = gcc
 	makedepends = nodejs
+	makedepends = corepack
 	makedepends = pkgconf
 	makedepends = cmake
 	makedepends = dbus
