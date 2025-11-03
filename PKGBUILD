@@ -5,7 +5,7 @@
 # Contributor: eolianoe <eolianoe [at] gmail [DoT] com>
 
 pkgname=seadrive-gui
-pkgver=3.0.16
+pkgver=3.0.17
 pkgrel=1
 pkgdesc="GUI part of seadrive"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
