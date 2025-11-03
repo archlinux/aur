@@ -1,7 +1,7 @@
 # Maintainer: Christian Holme (Nordwin) <hcmh [at] mailbox [dot] org>
 # Contributor: Nicolas Stalder <n+archlinux@stalder.io>
 pkgname=grml-full-systemd-boot
-pkgver="2025.05"
+pkgver="2025.08"
 pkgrel=1
 pkgdesc="GRML-full as systemd-boot loader entry"
 url="https://wiki.archlinux.org/title/Systemd-boot#Grml_on_ESP"
@@ -16,7 +16,7 @@ source=(
 )
 noextract=(grml-full-"${pkgver}"-amd64.iso)
 
-sha256sums=('8ddf650a98c12406e5976243d8ebac3796a00f86e198ab1a2b70755ce90c7365'
+sha256sums=('3095df671a477304f2bf68c14494a4fb7becc7260497fa2e937e75de08bdba4c'
             'c5fbdf83f1dcf220ad764175ab0eda013edd7d86ffccda747ea41ce1a8ba7b1f')
 
 prepare() {

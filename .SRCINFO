@@ -1,17 +1,17 @@
 pkgbase = grml-full-systemd-boot
 	pkgdesc = GRML-full as systemd-boot loader entry
-	pkgver = 2025.05
+	pkgver = 2025.08
 	pkgrel = 1
 	url = https://wiki.archlinux.org/title/Systemd-boot#Grml_on_ESP
 	arch = x86_64
 	license = GPL
 	depends = systemd
-	noextract = grml-full-2025.05-amd64.iso
+	noextract = grml-full-2025.08-amd64.iso
 	options = !debug
 	backup = boot/loader/entries/grml-full.conf
-	source = https://download.grml.org/grml-full-2025.05-amd64.iso
+	source = https://download.grml.org/grml-full-2025.08-amd64.iso
 	source = grml-full.conf
-	sha256sums = fb3bd00b032c128a2db50e5d086b2c0859a4597330d8b683d38d6f979bc68213
+	sha256sums = 3095df671a477304f2bf68c14494a4fb7becc7260497fa2e937e75de08bdba4c
 	sha256sums = c5fbdf83f1dcf220ad764175ab0eda013edd7d86ffccda747ea41ce1a8ba7b1f
 
 pkgname = grml-full-systemd-boot
