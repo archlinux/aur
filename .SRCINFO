@@ -1,0 +1,27 @@
+pkgbase = heidisql-bin
+	pkgdesc = A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases.
+	pkgver = 12.13.1.1
+	pkgrel = 1
+	url = https://github.com/HeidiSQL/HeidiSQL
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = tar
+	depends = glibc
+	depends = glib2
+	depends = pango
+	depends = gtk2
+	depends = cairo
+	depends = bash
+	depends = gdk-pixbuf2
+	depends = libx11
+	depends = at-spi2-core
+	depends = libperconaserverclient
+	depends = mariadb-libs
+	depends = postgresql-libs
+	depends = sqlite
+	provides = heidisql
+	conflicts = heidisql
+	source_x86_64 = heidisql_12.13.1.1_x86_64.deb::https://github.com/HeidiSQL/HeidiSQL/releases/download/v12.13.1.1/heidisql_12.13.1.1_amd64.deb
+	sha256sums_x86_64 = ff6381d9ec4e66c7c02a59bda9f24b35817bd31129152ed7f861414b4514f2c5
+
+pkgname = heidisql-bin

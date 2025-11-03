@@ -1,0 +1,5 @@
+["heidisql-bin"]
+source = "github"
+github = "HeidiSQL/HeidiSQL"
+use_latest_release = true
+prefix = "v"
