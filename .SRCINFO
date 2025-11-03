@@ -1,0 +1,13 @@
+pkgbase = simreader
+	pkgdesc = Unified SIM/USIM card reader tool with complete analysis capabilities
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mango/simreader
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	depends = pcsclite
+	source = simreader-1.0.0.tar.gz::https://github.com/mango/simreader/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = simreader
