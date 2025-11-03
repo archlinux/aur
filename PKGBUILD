@@ -5,7 +5,7 @@
 pkgname=micromamba
 _pkgname=${pkgname/micro/}
 pkgver=2.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc="The fast cross-platform package manager"
 arch=(i686 x86_64)
 url="https://github.com/${_pkgname}-org/${_pkgname}"
@@ -36,7 +36,7 @@ prepare() {
 build() {
   cmake \
     -S "${_pkgname}-${pkgver}" \
-    -B build/ \
+    -B build \
     -G Ninja \
     -D CMAKE_INSTALL_PREFIX="/usr" \
     -D CMAKE_BUILD_TYPE=Release \
@@ -49,7 +49,7 @@ build() {
   cmake --install build --prefix install
 
   cd "${_pkgname}-${pkgver}/libmambapy"
-  export SKBUILD_CONFIGURE_OPTIONS="\
+  export CMAKE_ARGS="\
     -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
     -DBUILD_LIBMAMBA=ON \
     -DBUILD_LIBMAMBAPY=ON \

@@ -1,7 +1,7 @@
 pkgbase = micromamba
 	pkgdesc = The fast cross-platform package manager
 	pkgver = 2.3.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/mamba-org/mamba
 	arch = i686
 	arch = x86_64
