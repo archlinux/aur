@@ -1,0 +1,4 @@
+[alpine-make-rootfs]
+source = "git"
+git = "https://github.com/alpinelinux/alpine-make-rootfs.git"
+prefix = "v"

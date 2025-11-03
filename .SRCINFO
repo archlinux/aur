@@ -1,11 +1,13 @@
 pkgbase = alpine-make-rootfs
-	pkgdesc = Builds customized Alpine Linux rootfs for containers.
-	pkgver = 0.5.1
+	pkgdesc = Builds customized Alpine Linux rootfs for containers
+	pkgver = 0.7.2
 	pkgrel = 1
+	url = https://github.com/alpinelinux/alpine-make-rootfs
 	arch = any
 	license = MIT
-	source = alpine-make-rootfs-0.5.1.tar.gz::https://github.com/alpinelinux/alpine-make-rootfs/archive/v0.5.1.tar.gz
-	md5sums = cc05fef878335316a8ae2c13658c505f
+	depends = sh
+	depends = wget
+	source = alpine-make-rootfs-0.7.2.tar.gz::https://github.com/alpinelinux/alpine-make-rootfs/archive/refs/tags/v0.7.2.tar.gz
+	sha256sums = a9a562f4bdcb2e2eb50cb7b1b83e48a458b613f412f128b27afb06b75735604f
 
 pkgname = alpine-make-rootfs
-
