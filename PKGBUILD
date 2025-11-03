@@ -3,7 +3,7 @@
 
 pkgname=bottles
 _pkgname=Bottles
-pkgver=51.24
+pkgver=52.0
 pkgrel=1
 epoch=2
 pkgdesc='Easily manage wine and proton prefix'
@@ -58,8 +58,8 @@ source=(
   disable-flatpak-check.patch
 )
 sha256sums=(
-  15aafb191fb51e0565959e69836089031dee2d660f5447c7bd9a65f672b58fa5 
-  012f00b6678ff20bb0a43c592c8f6b6af0d315053bf0473aa3f3b56c74845b73
+  b684e9b1699351f40f345312404870916502e75c168fcbca11310effff23bb90 
+  4430a665cf13658232b10d1a79ff92c1f6763ee7222ae623c82a4cc0e0636626
 )
 
 prepare() {
