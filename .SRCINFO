@@ -1,6 +1,6 @@
 pkgbase = fatscript-fry
 	pkgdesc = fry - FatScript Interpreter
-	pkgver = 4.2.1
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://fatscript.org/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = fatscript-fry
 	depends = libcurl-compat
 	optdepends = openssl: for SSL/TLS support
 	optdepends = libffi: for DLL/FFI support
-	source = git+https://gitlab.com/fatscript/fry.git#tag=v4.2.1
+	source = git+https://gitlab.com/fatscript/fry.git#tag=v4.3.0
 	sha256sums = SKIP
 
 pkgname = fatscript-fry
