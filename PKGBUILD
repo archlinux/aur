@@ -1,20 +1,20 @@
 # Maintainer: k4ditano <k4ditano@h2r.es>
 pkgname=notnative-app
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Blazingly fast native note-taking app with vim-like keybindings, built for Omarchy OS"
 arch=('x86_64')
 url="https://github.com/k4ditano/notnative-app"
 license=('MIT')
-depends=('gtk4' 'webkitgtk-6.0' 'libadwaita' 'gtksourceview5' 'libpulse' 'sqlite')
+depends=('gtk4' 'webkitgtk-6.0' 'libadwaita' 'gtksourceview5' 'libpulse' 'sqlite' 'mpv')
 makedepends=('cargo' 'rust' 'git' 'pkgconf')
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('c5483995631ee79889b12dfa6e4434ea0a333f4dde8e4a164f14adb1514ea8fc')
+sha256sums=('a03849f532f461be9e842d6d045691d1014f747ef5bf4aaf6186ac1f3c0c49ca')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "notnative-omarchy-$pkgver"
     export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
     export LIBSQLITE3_SYS_BUNDLED=0
     export RUSQLITE_SYS_BUNDLED=0
@@ -23,7 +23,7 @@ build() {
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "notnative-omarchy-$pkgver"
     export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
     export LIBSQLITE3_SYS_BUNDLED=0
     export RUSQLITE_SYS_BUNDLED=0
@@ -31,7 +31,7 @@ check() {
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "notnative-omarchy-$pkgver"
 
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 "notnative.desktop" "$pkgdir/usr/share/applications/notnative.desktop"

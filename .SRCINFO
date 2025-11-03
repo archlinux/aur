@@ -1,6 +1,6 @@
 pkgbase = notnative-app
 	pkgdesc = Blazingly fast native note-taking app with vim-like keybindings, built for Omarchy OS
-	pkgver = 0.1.1
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/k4ditano/notnative-app
 	arch = x86_64
@@ -15,7 +15,8 @@ pkgbase = notnative-app
 	depends = gtksourceview5
 	depends = libpulse
 	depends = sqlite
-	source = notnative-app-0.1.1.tar.gz::https://github.com/k4ditano/notnative-app/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = c5483995631ee79889b12dfa6e4434ea0a333f4dde8e4a164f14adb1514ea8fc
+	depends = mpv
+	source = notnative-app-0.1.3.tar.gz::https://github.com/k4ditano/notnative-app/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = a03849f532f461be9e842d6d045691d1014f747ef5bf4aaf6186ac1f3c0c49ca
 
 pkgname = notnative-app
