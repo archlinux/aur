@@ -8,8 +8,10 @@ pkgbase = geysermc-bin
 	depends = java-runtime
 	backup = etc/geysermc/config.yml
 	source = Geyser-Standalone.jar::https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/standalone
+	source = https://github.com/GeyserMC/Geyser/raw/refs/heads/master/LICENSE
 	source = geysermc.service
 	md5sums = SKIP
+	md5sums = d87a7cfc78cfb45f6f4827b263e3e0a0
 	md5sums = 7043a1445d39f7ee753c9c1513472890
 
 pkgname = geysermc-bin
