@@ -1,0 +1,5 @@
+[python-tree-sitter-matlab]
+source = "github"
+github = "acristoffers/tree-sitter-matlab"
+use_latest_release = "true"
+prefix = "v"
