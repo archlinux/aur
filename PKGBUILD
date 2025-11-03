@@ -3,12 +3,12 @@
 # Maintainer: Loomeh <loomeh at proton dot me>
 pkgname=libresplit-git
 _pkgname=libresplit
-pkgver=r457.0d7cdefdb
+pkgver=r477.51f97f7e2
 pkgrel=1
 pkgdesc="Free speedrun timer with auto splitting and load removal."
 arch=('x86_64')
 url='https://libresplit.org'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
     'gtk3'
     'jansson'
