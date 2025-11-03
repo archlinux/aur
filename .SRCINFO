@@ -1,6 +1,6 @@
 pkgbase = ferdium-bin
 	pkgdesc = A messaging browser that allows you to combine your favorite messaging services into one application (binary release).
-	pkgver = 7.1.0
+	pkgver = 7.1.1
 	pkgrel = 1
 	url = https://ferdium.org
 	arch = x86_64
@@ -35,11 +35,11 @@ pkgbase = ferdium-bin
 	conflicts = ferdium-electron
 	options = !strip
 	options = !debug
-	source_x86_64 = ferdium-bin-7.1.0-1-amd64.zip::https://github.com/ferdium/ferdium-app/releases/download/v7.1.0/Ferdium-linux-7.1.0-amd64.deb
-	sha512sums_x86_64 = c31b63e51b94ab6083c2c41c15b0f12b029ac622551d9aaf500543b7806ef417f7800b7a12d4b40f66431878a1adcbc2d49c9b4f53c401c1aabab80c1ed0eee7
-	source_armv7l = ferdium-bin-7.1.0-1-armv7l.zip::https://github.com/ferdium/ferdium-app/releases/download/v7.1.0/Ferdium-linux-7.1.0-armv7l.deb
-	sha512sums_armv7l = 7bf3c3ff72c143920cbede59baafccaf802f3523091f427683eff1d807c3acb0af30959b364eec7e86f77cd74756b6111b88c4c6b12140c18c79d6bcd5510ce6
-	source_aarch64 = ferdium-bin-7.1.0-1-arm64.zip::https://github.com/ferdium/ferdium-app/releases/download/v7.1.0/Ferdium-linux-7.1.0-arm64.deb
-	sha512sums_aarch64 = 35e3d953a9e47462fcf2521c2043b2726dc494d031be4c812748bcbfa789178b5a60dee77a24672fe6da2a28d64e1237b1c48643fbbca347df4570b39b3ddb8d
+	source_x86_64 = ferdium-bin-7.1.1-1-amd64.zip::https://github.com/ferdium/ferdium-app/releases/download/v7.1.1/Ferdium-linux-7.1.1-amd64.deb
+	sha512sums_x86_64 = 46a8e4df01408dc2477167690d566247996d679d3c3a42bfaab3cac61629ba40b37c0309b6b3e99f3aa48bef787c930aeb4b9de3ac4dc1830f497dbeeb83892c
+	source_armv7l = ferdium-bin-7.1.1-1-armv7l.zip::https://github.com/ferdium/ferdium-app/releases/download/v7.1.1/Ferdium-linux-7.1.1-armv7l.deb
+	sha512sums_armv7l = 932478686dabb1be494ad0dd53d864a8e4d055d37a410301f0c43cb2f594be4435a29f52cf76b2dddf86a788a8534cd91f3222a68c196ea351003d6cb1e778c2
+	source_aarch64 = ferdium-bin-7.1.1-1-arm64.zip::https://github.com/ferdium/ferdium-app/releases/download/v7.1.1/Ferdium-linux-7.1.1-arm64.deb
+	sha512sums_aarch64 = c3fd492f65d7ee7f144723074f64caba88fee335c57ae229d1fc7ba961e2a4a1d390af5b6a459cb60263dce2a9467eb05cc3bb0e29a993590931d6a032cb02d3
 
 pkgname = ferdium-bin
