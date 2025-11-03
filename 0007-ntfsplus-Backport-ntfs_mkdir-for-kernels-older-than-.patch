@@ -1,7 +1,7 @@
-From 6a0254517a8684e2081fd4fe85f2d727b3653d85 Mon Sep 17 00:00:00 2001
+From b8791b1f1092cab6bf0da0d40780aa160e16bfef Mon Sep 17 00:00:00 2001
 From: shadichy <shadichy@blisslabs.org>
 Date: Sun, 2 Nov 2025 14:20:59 +0700
-Subject: [PATCH 7/8] ntfsplus: Backport `ntfs_mkdir` for kernels older than
+Subject: [PATCH 7/7] ntfsplus: Backport `ntfs_mkdir` for kernels older than
  6.15
 
 ---

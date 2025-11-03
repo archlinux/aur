@@ -1,7 +1,7 @@
-From 22e77c8f27a99be70759f6ae9d044020ae7d5c0b Mon Sep 17 00:00:00 2001
+From 0182fed91bf397fed59bacc49664e64a98404280 Mon Sep 17 00:00:00 2001
 From: shadichy <shadichy@blisslabs.org>
 Date: Sun, 2 Nov 2025 04:20:28 +0700
-Subject: [PATCH 4/8] ntfsplus: file.c: Using `mmap` instead of `mmap_prepare`
+Subject: [PATCH 4/7] ntfsplus: file.c: Using `mmap` instead of `mmap_prepare`
  for kernels older than 6.16
 
 ---
@@ -9,7 +9,7 @@ Subject: [PATCH 4/8] ntfsplus: file.c: Using `mmap` instead of `mmap_prepare`
  1 file changed, 39 insertions(+)
 
 diff --git a/fs/ntfsplus/file.c b/fs/ntfsplus/file.c
-index 633f83261..f9caddf0b 100644
+index 27c9e47d8..ea32d8091 100644
 --- a/fs/ntfsplus/file.c
 +++ b/fs/ntfsplus/file.c
 @@ -706,6 +706,7 @@ static const struct vm_operations_struct ntfs_file_vm_ops = {

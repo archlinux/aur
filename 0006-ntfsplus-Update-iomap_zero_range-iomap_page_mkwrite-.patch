@@ -1,7 +1,7 @@
-From 4d56e31f40c7000df3c700df0d9aad6ff536a0b4 Mon Sep 17 00:00:00 2001
+From 6d17e2b940d8ea4f84c221f025b65403f5b9b239 Mon Sep 17 00:00:00 2001
 From: shadichy <shadichy@blisslabs.org>
 Date: Sun, 2 Nov 2025 13:42:58 +0700
-Subject: [PATCH 6/8] ntfsplus: Update `iomap_zero_range`, `iomap_page_mkwrite`
+Subject: [PATCH 6/7] ntfsplus: Update `iomap_zero_range`, `iomap_page_mkwrite`
  and `iomap_truncate_page` for kernels older than 6.15
 
 ---
@@ -10,7 +10,7 @@ Subject: [PATCH 6/8] ntfsplus: Update `iomap_zero_range`, `iomap_page_mkwrite`
  2 files changed, 36 insertions(+), 19 deletions(-)
 
 diff --git a/fs/ntfsplus/file.c b/fs/ntfsplus/file.c
-index f9caddf0b..ed90c14a1 100644
+index ea32d8091..232bfae24 100644
 --- a/fs/ntfsplus/file.c
 +++ b/fs/ntfsplus/file.c
 @@ -292,11 +292,13 @@ int ntfs_setattr(struct mnt_idmap *idmap, struct dentry *dentry,
@@ -37,13 +37,13 @@ index f9caddf0b..ed90c14a1 100644
 -						       NULL, &ntfs_read_iomap_ops,
 +						       NULL, &ntfs_read_iomap_ops
  #if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0))
--					      	 &ntfs_iomap_folio_ops,
-+					      	 , &ntfs_iomap_folio_ops, NULL
+-						 &ntfs_iomap_folio_ops,
++						 , &ntfs_iomap_folio_ops, NULL
 +#elif (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 15, 0))
-+					      	 , NULL
++						 , NULL
  #endif
--					      	 NULL);
-+					      	 );
+-						 NULL);
++						 );
  			}
  		}
  		if (ia_valid == ATTR_SIZE)

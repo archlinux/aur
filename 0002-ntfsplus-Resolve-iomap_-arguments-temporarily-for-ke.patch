@@ -1,7 +1,7 @@
-From d43da5e38d8b88cac71e06f9fe32c8cb731b1a3d Mon Sep 17 00:00:00 2001
+From 5ef66cd78fe6dda6bdcaa5c954f16b3b15a28bd1 Mon Sep 17 00:00:00 2001
 From: shadichy <shadichy@blisslabs.org>
 Date: Fri, 24 Oct 2025 01:48:52 +0700
-Subject: [PATCH 2/8] ntfsplus: Resolve iomap_* arguments (temporarily) for
+Subject: [PATCH 2/7] ntfsplus: Resolve iomap_* arguments (temporarily) for
  kernel older than 6.17
 
 ---
@@ -42,7 +42,7 @@ index 50c804be3..b90b40aa8 100644
  
  static int ntfs_swap_activate(struct swap_info_struct *sis,
 diff --git a/fs/ntfsplus/file.c b/fs/ntfsplus/file.c
-index b4114017b..633f83261 100644
+index b4114017b..27c9e47d8 100644
 --- a/fs/ntfsplus/file.c
 +++ b/fs/ntfsplus/file.c
 @@ -293,7 +293,10 @@ int ntfs_setattr(struct mnt_idmap *idmap, struct dentry *dentry,
@@ -63,9 +63,9 @@ index b4114017b..633f83261 100644
  						       NULL, &ntfs_read_iomap_ops,
 -						       &ntfs_iomap_folio_ops, NULL);
 +#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0))
-+					      	 &ntfs_iomap_folio_ops,
++						 &ntfs_iomap_folio_ops,
 +#endif
-+					      	 NULL);
++						 NULL);
  			}
  		}
  		if (ia_valid == ATTR_SIZE)

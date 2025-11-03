@@ -3,7 +3,7 @@
 
 pkgbase=ntfsplus-dkms-git
 pkgname=("$pkgbase" "ntfsplus-udev")
-pkgver=2025.10.20.r35.8d8af2b59
+pkgver=2025.10.20.r34.496db7027
 pkgrel=1
 # epoch=1
 pkgdesc="A new NTFS driver for Linux promised to be better than NTFS3. These patches are directly taken from the maintainer's mailing list posts. Backported to 6.17."
@@ -69,7 +69,6 @@ source=(
   '0005-ntfsplus-compress.c-using-page-index-instead-of-page.patch'
   '0006-ntfsplus-Update-iomap_zero_range-iomap_page_mkwrite-.patch'
   '0007-ntfsplus-Backport-ntfs_mkdir-for-kernels-older-than-.patch'
-  '0008-ntfsplus-Backport-_ntfs_finish_ioend_buffered-and-nt.patch'
   '0099-fs-ntfsplus-Makefile-DKMS-patch.patch'
   'dkms.conf'
   '90-udev-prefer-ntfsplus.rules'
@@ -78,14 +77,13 @@ sha256sums=(
   SKIP
   03b57c05e6f9fbf5b5bf34507aa212f6491967f21c53a73352e7f78ebfaf66a8
   bede30ed663dada47c946f74a314b8e25817c4cd8b6c39e0cd5810bbd1cddca2
-  dd682c4ac17dd2b6cf83b1c9bb72054fe80b3ebfe2811759cacce3f238194435
-  e2076bb0aa0ee00b52a07f6158028023af5bcbff9c47060cad35bd37675da841
-  b4ebc8c9a4db7293f293a8276f70dc4a7799812a9a73d681b3b732a0beaaa326
-  1fcc9a36238d5aa779b8a1b1171c5f2a6b493f5eedaa30815e3793afe68be653
-  6a7dd17acf94f2741105c45acc53b04bfe0fd13b9f3c3b79bf4e533db78f7262
-  1624bf66ab17ed7fd564ad83b01b172b27dad02087f1e28c024f89024d71ec2a
-  3b6f8efd31053e1bdba0a149a97ba2cab9fa7a841b73e08f09116edcbef4971c
-  9d75ed62e696e295140c7e61c1e8e781a619406cab9f60f51393dfb763bfd33d
+  0eb24ef10bcfe46dbb56a8e8fe111b30e0969c0ff19b64b802939929773e616f
+  7a9305d0b4c874878d527ec7b8ed4dd61c8f973d3064eee80b6cc54375ef7515
+  105a4a70c4aae4cfa65a677139a5b737b902d5be27ea246fdc04149198360f18
+  c56243dedd1cb4155b03ef824725658ef22e5227c39bac3551ffa8bae676d090
+  1e97bca1a60febbe56eee2a30ff37f71ff6b2341fc6f1f89d3c920e896f20c32
+  c16bbd7aefc178c8d6e6fda8761589145475dd6205266820a7a8d95d88dc9dec
+  dd75e9962be5563921101a7b5d2b852ae04cda9301ffb11c6ea574046f9f9474
   e217fa145f507b1e07e228e746528554f705f44fd5744f293b302b29df764b96
   ed9db8ec0caa09c977529c7ae89b808ee8c238331ec0fdf873525c115fcdfb7c
   e3866cac3d71da15740159c89b233d4d1f61981dbf737d4e3bc9a4c56bfa24be
