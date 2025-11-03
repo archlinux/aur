@@ -1,16 +1,16 @@
 pkgbase = rustrover
 	pkgdesc = JetBrains IDE for Rust Developers
-	pkgver = 2025.2.4
+	pkgver = 2025.2.4.1
 	pkgrel = 1
 	url = https://www.jetbrains.com/rust/
 	arch = x86_64
 	license = custom:jetbrains
 	depends = glib2
 	options = !strip
-	source = https://download.jetbrains.com/rustrover/RustRover-2025.2.4.tar.gz
+	source = https://download.jetbrains.com/rustrover/RustRover-2025.2.4.1.tar.gz
 	source = jetbrains-rustrover.desktop
 	source = LICENSE
-	b2sums = bdcac06d481f1f452723bb5ea40d2d7a6230b07a9aabc49d5754483975298c9c2fe6c8e2079e7beb5b454ba32b7006f627558fd90c9dbc5c226426d66fe04f17
+	b2sums = 6107b2d45c975ab36e8de104eb992a4e4822f0adde9a0cf3cec49501283c261ad9b1935ecb826999f862701242769722827216b5c0924fffb37ecfa8d14bba5d
 	b2sums = 90abe1f33f60937648959e3a46c3d975ceeb09d0e7b2af535d310557c73ae865d8de29481d854e7503b913448ca54924a0fe07040e93216f0f368f2da827e70c
 	b2sums = dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77
 
