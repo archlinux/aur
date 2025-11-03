@@ -3,7 +3,7 @@
 
 pkgname="alpine-make-rootfs"
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Make customized Alpine Linux rootfs (base image) for containers"
 arch=('any')
 url="https://github.com/alpinelinux/${pkgname}"
@@ -12,9 +12,13 @@ depends=(
   'sh'
   'wget'
 )
-_pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a9a562f4bdcb2e2eb50cb7b1b83e48a458b613f412f128b27afb06b75735604f')
+makedepends=(
+  'git'
+)
+_pkgsrc="${url##*/}"
+source=("${_pkgsrc}::git+${url}.git#tag=v${pkgver}?signed")
+sha256sums=('bcea5da00a69e97f1d4d2d4736ead6fbf7aa3216787bad51f263ce457a71260c')
+validpgpkeys=('D7858912669D3A20F4F46BD2F95BD679104D3115') # Jakub Jirutka <jakub@jirutka.cz>
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
