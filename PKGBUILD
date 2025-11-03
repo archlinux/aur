@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _name="scikit-misc"
 pkgname="python-${_name}"
-pkgver=0.5.2a1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Miscellaenous tools for scientific computing"
 arch=('x86_64')
@@ -35,7 +35,7 @@ source=(
   "${_name}-${pkgver}"::"git+${url}#tag=v${pkgver}"
 )
 
-sha256sums=('2eac275ef525c050cb48d01817517cc3abcdb6194ca55b333a2798159a8e88ff')
+sha256sums=('3582a72cdd8a9e4986b160df9d49fedc8c93a5952c2eec3749d7b265d0395fca')
 
 _archive="${_name}-${pkgver}"
 
