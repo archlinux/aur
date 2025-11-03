@@ -2,7 +2,7 @@
 # Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=sway-systemd
-pkgver=0.4.1
+pkgver=0.4.1 # renovate: datasource=github-tags depName=alebastr/sway-systemd
 pkgrel=2
 pkgdesc="Systemd integration for Sway session"
 arch=(any)
