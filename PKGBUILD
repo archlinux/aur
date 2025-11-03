@@ -2,7 +2,7 @@
 
 _pkgname=stackablectl
 pkgname="${_pkgname}-bin"
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 # We moved to epoch=1 because we moved from CalVer to SemVer
 epoch=1
@@ -12,7 +12,7 @@ url="https://github.com/stackabletech/stackable-cockpit/"
 license=('Apache-2.0')
 depends=('gcc-libs' 'glibc')
 source=("stackablectl-${pkgver}::https://github.com/stackabletech/stackable-cockpit/releases/download/stackablectl-${pkgver}/stackablectl-$CARCH-unknown-linux-gnu")
-b2sums=('2dc0fecca7f0ec2fb2d012fe171a108acc4143b8ad2eb5c89154f3dc350999f1452376bbe3c3f9307c00a3e8e436e6a688d4c75c224a6cf7e3da8abfbd63e1c1')
+b2sums=('add1b0195519c3921d09001d4506563d64b2a5ad0dc11ea2e07d59470b0a3aaf730e67908c4c8fe1124a5f22df62879de0df28fa099d7e435aa1de39d3488d9f')
 provides=(${_pkgname})
 conflicts=(${_pkgname} ${_pkgname}-git)
 
