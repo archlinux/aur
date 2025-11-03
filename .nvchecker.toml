@@ -1,0 +1,4 @@
+[python-sphinxcontrib-matlabdomain]
+source = "github"
+github = "sphinx-contrib/matlabdomain"
+use_latest_release = "true"

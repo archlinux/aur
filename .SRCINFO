@@ -1,0 +1,19 @@
+pkgbase = python-sphinxcontrib-matlabdomain
+	pkgdesc = A Sphinx extension for documenting Matlab code
+	pkgver = 0.22.1
+	pkgrel = 1
+	url = https://github.com/sphinx-contrib/matlabdomain
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python-sphinx
+	depends = python-tree-sitter
+	depends = python-tree-sitter-matlab
+	source = matlabdomain-0.22.1.tar.gz::https://github.com/sphinx-contrib/matlabdomain/archive/0.22.1.tar.gz
+	sha512sums = d0ddee6465d4b4becce61efcf6964c879aa98f0fcc54d07c334f8753a488b966be52913833d5404ed5e1177df7b218b84c5918f4a83e571d4323933421a44c07
+
+pkgname = python-sphinxcontrib-matlabdomain
