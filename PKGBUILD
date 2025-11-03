@@ -10,7 +10,7 @@ depends=("python-requests" "python-readchar")
 makedepends=("python-requests" "python-readchar" "python-pip")
 provides=('gitfetch')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Matars/gitfetch/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('8f3ec7969798dbc929f07665d980b51d4b27d420240a249989edd2b1bda4b4c4')
 
 package() {
     cd "gitfetch-$pkgver"
