@@ -1,6 +1,6 @@
 pkgbase = python-rns
 	pkgdesc = Self-configuring, encrypted and resilient mesh networking stack
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://reticulum.network/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-rns
 	optdepends = python-adafruit-nrfutil: for flashing NRF52-based devices
 	provides = rnodeconf
 	conflicts = rnodeconf
-	source = python-rns-1.0.0::https://github.com/markqvist/Reticulum/archive/refs/tags/1.0.0.tar.gz
-	sha256sums = 25769ce1e439734a10b0fb9e82eafa5289fb4d4e1be80d78ff64ef207603860c
+	source = python-rns-1.0.1::https://github.com/markqvist/Reticulum/archive/refs/tags/1.0.1.tar.gz
+	sha256sums = 9da6e17efd5c06bd1cf999176525c5d6e75914bb2c3a6817288282dd90647aec
 
 pkgname = python-rns
