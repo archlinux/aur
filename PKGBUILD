@@ -1,9 +1,10 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Damglador <damglador@gmail.com>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=steam-native-runtime
 pkgver=1.0.0.75
-pkgrel=7
+pkgrel=8
 pkgdesc='Native replacement for the Steam runtime using system libraries'
 arch=('x86_64')
 url='https://wiki.archlinux.org/index.php/Steam/Troubleshooting#Native_runtime'
@@ -34,7 +35,7 @@ depends=(
   'libvorbis' 'libvpx1.3' 'libxcomposite' 'libxcursor' 'libxft'
   'libxi' 'libxinerama' 'libxmu' 'libxrandr' 'libxrender' 'libxtst'
   'libxxf86vm' 'nspr' 'openal' 'openssl-1.0' 'openssl-1.1' 'pango' 'sdl' 'sdl2'
-  'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'sdl_image' 'sdl_mixer' 'sdl_ttf'
+  'sdl2_image' 'sdl2_mixer' 'sdl2_net' 'sdl2_ttf' 'sdl_image' 'sdl_mixer' 'sdl_ttf'
   'vulkan-icd-loader' 'vulkan-driver' 'lib32-vulkan-driver' 'lib32-vulkan-icd-loader'
   'lib32-libappindicator-gtk2' 'lib32-libindicator-gtk2' 'lib32-libdbusmenu-glib' 'lib32-libdbusmenu-gtk2'
 )
@@ -81,5 +82,4 @@ package() {
   fi
 }
 
-# shellcheck source=/usr/bin/makepkg
 # vim: ts=2 sw=2 et:
