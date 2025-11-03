@@ -1,0 +1,20 @@
+pkgbase = random-rs-bin
+	pkgdesc = Run multiple commands in parallel
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/one-d-wide/random-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = random-rs
+	conflicts = random-rs
+	source = LICENSE-0.2.4::https://raw.githubusercontent.com/one-d-wide/random-rs/v0.2.4/LICENSE
+	source = README-0.2.4.md::https://raw.githubusercontent.com/one-d-wide/random-rs/v0.2.4/README.md
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = 07b4482f421835de0bb214b5df789358d5d43d3979bd79d4ff39c38d46d214b1
+	source_x86_64 = random-rs-x86_64-0.2.4::https://github.com/one-d-wide/random-rs/releases/download/v0.2.4/random-rs-linux-x86_64
+	sha256sums_x86_64 = 10bb7d41b241fba516acee4fbfedca23b28e0c7d49c26c5d3389cc317919341e
+	source_aarch64 = random-rs-aarch64-0.2.4::https://github.com/one-d-wide/random-rs/releases/download/v0.2.4/random-rs-linux-aarch64
+	sha256sums_aarch64 = f1c91bdc24270978fc6c382fa4de6d6f6fe50377f2b4b7d1c15d3e0f707a686b
+
+pkgname = random-rs-bin

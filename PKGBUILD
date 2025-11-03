@@ -1,0 +1,37 @@
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+
+_pkgauthor=one-d-wide
+_pkgname=random-rs
+pkgname=${_pkgname}-bin
+pkgver=0.2.4
+pkgrel=1
+_pkgvername=v${pkgver}
+pkgdesc="Run multiple commands in parallel"
+arch=('x86_64' 'aarch64')
+_barch=('x86_64' 'aarch64')
+url="https://github.com/${_pkgauthor}/${_pkgname}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
+license=('MIT')
+
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+
+source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
+        "README-${pkgver}.md::${_urlraw}/README.md")
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[0]}")
+source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[1]}")
+sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
+            '07b4482f421835de0bb214b5df789358d5d43d3979bd79d4ff39c38d46d214b1')
+sha256sums_x86_64=('10bb7d41b241fba516acee4fbfedca23b28e0c7d49c26c5d3389cc317919341e')
+sha256sums_aarch64=('f1c91bdc24270978fc6c382fa4de6d6f6fe50377f2b4b7d1c15d3e0f707a686b')
+
+
+package() {
+	cd "${srcdir}/" || exit
+
+	install -Dm755 "${_pkgname}-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
+
+	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}

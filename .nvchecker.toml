@@ -1,0 +1,5 @@
+[random-rs-bin]
+source = "github"
+github = "one-d-wide/random-rs"
+use_latest_release = true
+prefix = "v"
