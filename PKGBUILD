@@ -10,7 +10,7 @@ _pkgname="equibop"
 pkgname="$_pkgname-git"
 pkgdesc="Forked Custom Discord desktop app with Equicord preinstalled"
 pkgver=3.1.0.r0.gad7cfa2
-pkgrel=1
+pkgrel=2
 url="https://github.com/Equicord/Equibop"
 license=('GPL-3.0-only')
 arch=("any")
@@ -42,6 +42,7 @@ makedepends=(
   'cmake'
   'gcc'
   'nodejs'
+  'npm'
 )
 optdepends=(
   'libnotify: Notifications'
