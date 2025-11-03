@@ -1,8 +1,8 @@
 
 # Maintainer: Avenge Media LLC <avengemediallc at gmail dot com>
 pkgname=dms-shell-bin
-pkgver=0.3.3
-pkgrel=2
+pkgver=0.3.4
+pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=('x86_64' 'aarch64')
 url='https://github.com/AvengeMedia/DankMaterialShell'
@@ -40,8 +40,8 @@ source_aarch64=(
     "dms-full-arm64-${pkgver}.tar.gz::$url/releases/download/v$pkgver/dms-full-arm64.tar.gz"
 )
 
-sha256sums_x86_64=('0606b196a83c56d6f756098ef11129b1aaeedc8eb3c3897fc3bb24051f6e6960')
-sha256sums_aarch64=('7ddbfa788c9ff774d8bba95bbad5923fe3032e475d01efd0095e5097e7899f3f')
+sha256sums_x86_64=('bdf4caeab76e5932630e5f77bb050cba8cf0513438f2fa23a7e108a4d09020cf')
+sha256sums_aarch64=('57abd2192066783caefba1ebdfcfbeb6604b2b7e0266d07bfe72c6ab2f2e9449')
 
 package() {
     install -Dm755 "${srcdir}/bin/dms-distropkg" "$pkgdir/usr/bin/dms"
