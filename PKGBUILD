@@ -1,8 +1,8 @@
 # Maintainer: Alexander Pohl <alex@ahpohl.com>
 
 pkgname=fronius-bridge
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 arch=('x86_64' 'aarch64')
 pkgdesc="Lightweight Modbus-to-MQTT bridge for Fronius inverters"
 url="https://github.com/ahpohl/fronius-bridge"
@@ -11,12 +11,10 @@ makedepends=('cmake' 'git' 'pkgconf')
 depends=('libfronius' 'yaml-cpp' 'nlohmann-json' 'spdlog' 'cli11' 'mosquitto' 'fmt')
 source=(
   "$pkgname-$pkgver::git+https://github.com/ahpohl/fronius-bridge.git#tag=v${pkgver}"
-  "config.yaml"
   "sysusers-fronius.conf"
   "fronius-bridge.service"
 )
-sha256sums=('cb94e27368a7d103a48d74c4010851ef6a5265be4827c85710cc1db550f83930'
-            '4774ed82adbb56567860f4a2218a37e863ec94b8218996aac4d20c3aed87521c'
+sha256sums=('5a94daa02cad2919600539c02212a3a7aa3589349d25ffa3208c71fa8f1e6be1'
             'f93532f32babcf1c4cce79a1bfc49cca702e1cfd41267d6b580181af277009f2'
             '5047953f514a345441fb69ee5c60e79acf7ccb387d206ae7d0e11a2550683060')
 backup=('etc/fronius-bridge/config.yaml')
@@ -43,7 +41,7 @@ package() {
 
   # Config file
   install -d "$pkgdir/etc/$pkgbase"
-  install -Dm644 "$srcdir/config.yaml" "$pkgdir/etc/$pkgbase/config.yaml"
+  install -Dm644 "config.yaml" "$pkgdir/etc/$pkgbase/config.yaml"
 
   # Systemd service
   install -Dm644 "$srcdir/fronius-bridge.service" \
