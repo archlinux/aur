@@ -1,7 +1,7 @@
 pkgbase = libbass
 	pkgdesc = BASS audio library
-	pkgver = 2.4.17
-	pkgrel = 2
+	pkgver = 2.4.18
+	pkgrel = 1
 	url = https://www.un4seen.com/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = libbass
 	arch = aarch64
 	license = custom
 	depends = alsa-lib
-	source = libbass-2.4.17.zip::http://www.un4seen.com/files/bass24-linux.zip
-	sha256sums = fc9025bed66d9f3bb36635b2de7d564fc4396552ced012490094fbfdd10b4b7a
+	source = libbass-2.4.18.zip::http://www.un4seen.com/files/bass24-linux.zip
+	sha256sums = d15ce4b0bc98a9e1c9e5a108607ae891287b5951327fb0b55692f2ea40d3772a
 
 pkgname = libbass

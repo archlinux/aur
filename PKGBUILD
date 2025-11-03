@@ -3,15 +3,15 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=libbass
-pkgver=2.4.17
-pkgrel=2
+pkgver=2.4.18
+pkgrel=1
 pkgdesc='BASS audio library'
 arch=(i686 x86_64 armv6h armv7h aarch64)
 url='https://www.un4seen.com/'
 license=(custom)
 depends=(alsa-lib)
 source=("$pkgname-$pkgver.zip::http://www.un4seen.com/files/bass24-linux.zip")
-sha256sums=('fc9025bed66d9f3bb36635b2de7d564fc4396552ced012490094fbfdd10b4b7a')
+sha256sums=('d15ce4b0bc98a9e1c9e5a108607ae891287b5951327fb0b55692f2ea40d3772a')
 
 prepare() {
   grep Lic "$srcdir/bass.txt" -A62 > LICENSE
@@ -30,7 +30,7 @@ package() {
 	  ;;
   esac
 
-  install -D -m644 bass.h "$pkgdir/usr/include/bass.h"
+  install -D -m644 c/bass.h "$pkgdir/usr/include/bass.h"
   install -D -m644 bass.chm "$pkgdir/usr/share/doc/libbass/bass.chm"
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
