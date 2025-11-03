@@ -16,9 +16,9 @@ pkgbase = vllama
 	source = vllama.service
 	source = multiuser.conf
 	source = vllama.install
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 3d44dc6d049708f7f4fc53960e32938f098b8e956e51815ac8378ae57e561882
+	sha256sums = 32f30f302919e881bf3205320b9f8c5dc7720738223bb035a26f856cdc9cf882
+	sha256sums = 316d741d3c15533002b0607d88ac9231c72258e5e856bd470805a8ba1b9ee29f
+	sha256sums = 31f4c14151724ea11aa539510d91f793ded6a02ce871aa457e0d7acd854aa339
 
 pkgname = vllama

@@ -1,5 +1,6 @@
 post_install() {
     mkdir -p /opt/vllama/models
+    mkdir -p /opt/vllama/logs
     chown -R vllama:vllama /opt/vllama
     # Create vllama user and group if they don't exist
     getent group vllama >/dev/null || groupadd -r vllama

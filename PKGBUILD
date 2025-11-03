@@ -15,10 +15,6 @@ source=("${pkgname}-${_commit}.tar.gz::https://github.com/erkkimon/vllama/archiv
         "vllama.service"
         "multiuser.conf"
         "vllama.install")
-sha256sums=('3d44dc6d049708f7f4fc53960e32938f098b8e956e51815ac8378ae57e561882'
-            '32f30f302919e881bf3205320b9f8c5dc7720738223bb035a26f856cdc9cf882'
-            '316d741d3c15533002b0607d88ac9231c72258e5e856bd470805a8ba1b9ee29f'
-            '723a4a98ff2652f68e8d1e76d3d4f99e8d756f7b3aed6ec4694a97029119c1be')
 
 build() {
     cd "${srcdir}/${pkgname}-${_commit}"
@@ -26,22 +22,21 @@ build() {
     python3.12 -m venv venv312
     
     # Install dependencies in venv
-    source venv312/bin/activate
-    pip install -r requirements.txt
-    
-    # We don't install vllama.py or install_venv.sh directly here,
-    # they will be moved to pkgdir in the package() function.
-    # This build step ensures they are present in srcdir from the tarball extraction.
+    venv312/bin/pip install -r requirements.txt
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${_commit}"
-    
     # Install main script
     install -Dm755 vllama.py "${pkgdir}/opt/vllama/vllama.py"
-    install -Dm755 install_venv.sh "${pkgdir}/usr/bin/vllama"
+
+    # Copy venv
+    cp -r venv312 "${pkgdir}/opt/vllama/"
 
     # Install systemd service
     install -Dm644 "${srcdir}/vllama.service" "${pkgdir}/usr/lib/systemd/system/vllama.service"
     install -Dm644 "${srcdir}/multiuser.conf" "${pkgdir}/etc/systemd/system/vllama.service.d/multiuser.conf"
 }
+sha256sums=('3d44dc6d049708f7f4fc53960e32938f098b8e956e51815ac8378ae57e561882'
+            '32f30f302919e881bf3205320b9f8c5dc7720738223bb035a26f856cdc9cf882'
+            '316d741d3c15533002b0607d88ac9231c72258e5e856bd470805a8ba1b9ee29f'
+            '31f4c14151724ea11aa539510d91f793ded6a02ce871aa457e0d7acd854aa339')
