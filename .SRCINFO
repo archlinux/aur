@@ -1,0 +1,19 @@
+pkgbase = python-httpx-kerberos
+	pkgdesc = Kerberos authentication for HTTPX
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/raid-newvicx/httpx_kerberos
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-hatch-fancy-pypi-readme
+	makedepends = python-wheel
+	depends = python-cryptography
+	depends = python-httpx
+	depends = python-pyspnego
+	source = httpx-kerberos-0.1.2.tar.gz::https://files.pythonhosted.org/packages/source/h/httpx-kerberos/httpx_kerberos-0.1.2.tar.gz
+	sha256sums = ae47ddbe9468dfee49e79477baeb5237143ecf483ecef15ea4b4a9c86a961264
+
+pkgname = python-httpx-kerberos
