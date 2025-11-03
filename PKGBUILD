@@ -1,6 +1,6 @@
 # Maintainer: Zesko
 pkgname="limine-entry-tool"
-pkgver=1.25.2
+pkgver=1.25.3
 pkgrel=1
 _extver="-${pkgrel}"
 pkgdesc="Install kernel for the Limine bootloader."
@@ -21,7 +21,7 @@ depends=(
 makedepends=('git' 'jdk21-openjdk' 'maven')
 backup=(etc/limine-entry-tool.conf)
 conflicts=('limine-entry-tool')
-sha256sums=('27005f2b4bcb716eaff1759a20a62d0ea036da56594033b2947db51ae5393f40')
+sha256sums=('de961bc2222e540dea28a1ffc6d266a7bae3bde9db4a68ee919ced455acd4404')
 
 prepare() {
 	unset JAVA_OPTS JDK_JAVA_OPTIONS JAVA_TOOL_OPTIONS
