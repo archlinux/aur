@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 
 pkgname=leveldb-cli
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc=" A command-line interface for LevelDB"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('go')
 url="https://github.com/cions/leveldb-cli"
 source=("${pkgname}-${pkgver}::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('2435050650c79e748bf17721f54ea43daba6f87c02e0044b5dbb6d52a74a025c')
+sha256sums=('d1b8c8ac6bd6a63a9dceebc116b9df2e27692b7c73aae9cf6c3fa60f0ce0146d')
 
 _basename="leveldb"
 _dirname="${pkgname}-${pkgver}/cmd/leveldb"
