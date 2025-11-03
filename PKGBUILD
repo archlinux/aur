@@ -7,7 +7,7 @@ pkgver=r457.0d7cdefdb
 pkgrel=1
 pkgdesc="Free speedrun timer with auto splitting and load removal."
 arch=('x86_64')
-url='https://github.com/LibreSplit/LibreSplit'
+url='https://libresplit.org'
 license=('GPL3')
 depends=(
     'gtk3'
