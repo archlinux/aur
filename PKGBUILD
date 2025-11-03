@@ -8,7 +8,7 @@ url="https://github.com/r3dg0d/vidocq"
 license=('MIT')
 depends=('glibc')
 makedepends=('rust' 'cargo')
-source=("https://github.com/r3dg0d/vidocq/archive/v${pkgver}.tar.gz")
+source=("https://github.com/r3dg0d/vidocq/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {

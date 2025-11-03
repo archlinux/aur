@@ -8,7 +8,7 @@ pkgbase = vidocq-bin
 	makedepends = rust
 	makedepends = cargo
 	depends = glibc
-	source = https://github.com/r3dg0d/vidocq/archive/v0.1.0.tar.gz
+	source = https://github.com/r3dg0d/vidocq/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = vidocq-bin
