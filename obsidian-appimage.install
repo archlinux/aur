@@ -1,0 +1,14 @@
+#!/bin/bash
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} %s${all_off}\n" "${1}"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+post_install() {
+    note "Custom flags should be put directly in: ~/.config/obsidian-flags.conf"
+}
