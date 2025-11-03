@@ -2,7 +2,7 @@
 # Contributor: Hilton Medeiros <medeiros.hilton@gmail.com>
 
 pkgname=pixelorama
-pkgver=1.1.4
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="A free & open-source 2D sprite editor"
 arch=('x86_64')
@@ -13,35 +13,23 @@ depends=('hicolor-icon-theme' 'libglvnd' 'libxcursor' 'libxi' 'libxinerama' 'lib
 makedepends=('curl' 'godot>=4.3' 'godot-export-templates-linux' 'unzip')
 provides=('pixelorama')
 source=("${pkgname^}-${pkgver}.tar.gz::${_url}/archive/v${pkgver}.tar.gz")
-b2sums=('8a68071187e05bf982b5e8f625aaf34deef4b265c37f27e4f387d11f644a42688e537cec901f838c0eed91706e9f9618c937daeed0b408c5d7c71ff6485da5a6')
+b2sums=('e12f32858d21253e4ab11f9447590ed0be2cf7e4589802ab34739d0de056d209d78cff3256ea9f24e413cca52e457fc76730879a5a5936395eed7025272eee74')
 
 prepare() {
-   # Checks if the user's directory has the export templates
-   # and creates a symbolic link if necessary
- 
-   # Get Godot Engine version
-   _godot_version_full_string=$(godot --version)
-   _godot_version=${_godot_version_full_string%.*}
- 
-   _templates_home_dir="$HOME/.local/share/godot/export_templates/${_godot_version}"
-   _template_file="linux_release.$CARCH"
-   
-   if [ ! -d ${_templates_home_dir} ]
-   then
-     mkdir -p $_templates_home_dir
-   fi
- 
-   if [ ! -f ${_templates_home_dir}/${_template_file} ]
-   then
-     ln -s "/usr/share/godot/export_templates/${_godot_version}/${_template_file}" \
-           "${_templates_home_dir}/${_template_file}"
-   fi
+  # Set godot templates location
+  # Adapted from the "luxtorpeda-git" PKGBUILD
+  for mode in debug release; do
+          local _template=$(find /usr/share/godot/export_templates -type f -name "linux_${mode}.$(uname -m)" -print -quit)
+    [[ -z "$_template" ]] && echo "Missing Godot template for $mode" && return 1
+    sed -E -e 's&^(custom_template/'${mode}')=.*$&\1="'"${_template}"'"&' \
+        -i "${srcdir}/${pkgname^}-${pkgver}/export_presets.cfg"
+  done
 
-   sed -i "/enable_file_logging/ s/true/false/" \
-          "${srcdir}/${pkgname^}-${pkgver}/project.godot"
+  sed -i "/enable_file_logging/ s/true/false/" \
+         "${srcdir}/${pkgname^}-${pkgver}/project.godot"
  
-   echo '#!/bin/sh' > "${srcdir}/${pkgname^}-${pkgver}/Misc/Linux/${pkgname}.sh"
-   echo "exec /usr/lib/${pkgname}/${pkgname} \"\$@\"" >> "${srcdir}/${pkgname^}-${pkgver}/Misc/Linux/${pkgname}.sh"
+  echo '#!/bin/sh' > "${srcdir}/${pkgname^}-${pkgver}/Misc/Linux/${pkgname}.sh"
+  echo "exec /usr/lib/${pkgname}/${pkgname} \"\$@\"" >> "${srcdir}/${pkgname^}-${pkgver}/Misc/Linux/${pkgname}.sh"
 }
 
 build() {
