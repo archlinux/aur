@@ -1,0 +1,17 @@
+pkgbase = python-chromaterm
+	pkgdesc = Color your Terminal with RegEx!
+	pkgver = 0.10.7
+	pkgrel = 1
+	url = https://github.com/hSaria/ChromaTerm
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-psutil
+	depends = python-pyaml
+	source = ChromaTerm-0.10.7.tar.gz::https://github.com/hSaria/ChromaTerm/archive/refs/tags/0.10.7.tar.gz
+	sha256sums = 73c2d359127a07af29ceaf2a7f4f21b9568d99ca462c24925022fd0680b15d13
+
+pkgname = python-chromaterm
