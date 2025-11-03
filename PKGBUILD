@@ -14,20 +14,32 @@ sha256sums=('SKIP')
 prepare() {
     cd "$srcdir/$pkgname"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    if [ -f Cargo.lock ]; then
+        cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    else
+        cargo fetch --target "$CARCH-unknown-linux-gnu"
+    fi
 }
 
 build() {
     cd "$srcdir/$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+    if [ -f Cargo.lock ]; then
+        cargo build --frozen --release --all-features
+    else
+        cargo build --release --all-features
+    fi
 }
 
 check() {
     cd "$srcdir/$pkgname"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
+    if [ -f Cargo.lock ]; then
+        cargo test --frozen --all-features
+    else
+        cargo test --all-features
+    fi
 }
 
 package() {
