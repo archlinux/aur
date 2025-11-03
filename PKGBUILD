@@ -9,8 +9,8 @@ license=('GPL-3.0')
 makedepends=(git cargo)
 options=(!debug)
 backup=("etc/otter-launcher/config.toml")
-source=("https://github.com/kuokuo123/otter-launcher/archive/refs/tags/v0.6.3.tar.gz")
-sha256sums=('7cf3834706cb1342e44ee3e5f78fddfac42af16798231f411af95ee682ad8a9c')
+source=("https://github.com/kuokuo123/otter-launcher/archive/refs/tags/v0.6.4.tar.gz")
+sha256sums=('3335e1cad6feb644d09bc272a9313f330ca5b6a768fb6e86357b04d0ccdd95b9')
 
 build() {
 	cd "$pkgname-$pkgver"
