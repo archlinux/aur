@@ -1,0 +1,14 @@
+pkgbase = ascii-2048
+	pkgdesc = 2048 game for terminal in ASCII
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/d3b0o/ascii-2048
+	arch = any
+	license = MIT
+	depends = bash
+	depends = make
+	depends = gcc
+	source = https://github.com/d3b0o/ascii-2048/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 648a5601465f3e20b84739089bbedcae90aeedc05accf17c05e3e62c8cf112ec
+
+pkgname = ascii-2048
