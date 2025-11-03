@@ -5,7 +5,7 @@ pkgdesc="A tile server able to generate and serve vector tiles on the fly"
 url="https://maplibre.org/martin/"
 _git_organisation=maplibre
 
-pkgver=0.19.3
+pkgver=0.20.0
 pkgrel=1
 _tag="martin-v${pkgver}"
 
@@ -33,7 +33,7 @@ source=(
     "${pkgname}-config.yaml"
 )
 b2sums=(
-    "2665271503f8166ca66bce2645026164a1fc090968a5d7c9f23bc72f52906d012101f8d5271794f3879c4c8557222826cac2bb41e9856e0cab2670c3b4a2c2be"
+    "a7a295123a9430ce1c07e2182c2ac282d506bb32471e5d901eb443da71d9853379a97963aa2e79eb5fdbfb688904a2238733ca07db26ceca5d1e3cb90ba9ed5a"
     "cb5ba44d3653218aa76bc8b1d7c1d26b3a72dd35da7490d430a5dda727e9750015c28206d8d7e7c29701dd0c3d24198ff159f2566aff72f9f6edb1f493c0a968"
     "fc19c34e958648930a8d8cc56542ffd8eabdea36954d61e9e2f8c6b7f48bef66a61233c5097a5b4f40b79321bfb16b8ef445de0460af115413f7fd3dea825bc9"
     "c3b79402f4ae27fd46915e5aab9efb7722ccc2c1d37155119c32e59fce695b784b98bf83aa46e80f6a83756850b8794ee0752eaebd9a9001d48b0f4d5ae791ca"
