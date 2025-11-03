@@ -4,14 +4,14 @@
 
 pkgname=libbassflac
 pkgver=2.4.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc='BASS audio library FLAC plugin'
 arch=(i686 x86_64 armv6h armv7h aarch64)
 url='https://www.un4seen.com/'
 license=(custom)
 depends=(alsa-lib libbass)
 source=("$pkgname-$pkgver.zip::http://www.un4seen.com/files/bassflac24-linux.zip")
-sha256sums=('df56c4299aa92ae5cc609968235e82edb12bf0c013a788a9df9adbc710e546f3')
+sha256sums=('2fb18d55b99b162067156bcdc4d99e7098e047222b1b4e5023ef4c2f8fe73560')
 
 prepare() {
   grep Lic "$srcdir/bassflac.txt" -A14 > LICENSE
