@@ -6,10 +6,10 @@ pkgbase = cyphergatevpn-bin
 	arch = x86_64
 	license = MIT
 	depends = openvpn
-	depends = unzip
+	depends = tar
 	provides = cyphergate-vpn
 	conflicts = cyphergate-vpn
-	source = https://github.com/Cypher-Monarch/CypherGate/releases/download/v1.0.1/CypherGate-Linux-v1.0.1.zip
+	source = https://github.com/Cypher-Monarch/CypherGate/releases/download/v1.0.1/CypherGate-Linux-v1.0.1.tar.xz
 	sha256sums = SKIP
 
 pkgname = cyphergatevpn-bin
