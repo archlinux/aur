@@ -1,12 +1,12 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=sleipnirgroup-sleipnir-git
-pkgver=0.1.0.r34.g7f89d55
+pkgver=0.1.0.r120.g1f8f93c
 pkgrel=1
 pkgdesc="A sparsity and linearity-exploiting interior-point solver, now with readable internals"
 arch=('x86_64')
 url='https://github.com/SleipnirGroup/Sleipnir'
-depends=('eigen' 'python-numpy' 'python-scipy')
+depends=('eigen-git' 'python-numpy' 'python-scipy')
 makedepends=('cmake' 'nanobind' 'python-build' 'python-installer')
 checkdepends=('python-pytest')
 license=('BSD')
@@ -41,9 +41,8 @@ check() {
   ctest --test-dir build
 
   cd "$srcdir"/Sleipnir
-  local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
   local glibc_version=$(pacman -Q glibc | cut -d ' ' -f 2 | cut -d '+' -f 1 | sed 's/\./_/')
-  cp .py-build-cmake_cache/cp${python_version}-cp${python_version}-manylinux_${glibc_version}_$CARCH/_jormungandr.cpython-${python_version}-$CARCH-linux-gnu.so jormungandr
+  cp .py-build-cmake_cache/cp312-abi3-manylinux_${glibc_version}_$CARCH/_jormungandr.abi3.so jormungandr
   PYTHONPATH=. pytest
 }
 
