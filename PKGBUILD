@@ -1,4 +1,4 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgauthor=VHSgunzo
 _pkgname=sharun
@@ -10,9 +10,11 @@ url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 arch=('x86_64' 'aarch64')
 license=('MIT')
+
 depends=('glibc')
-conflicts=("${_pkgname}")
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+
 options=('!strip')
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
