@@ -5,10 +5,10 @@
 # Contributor: dalto <dalto at fastmail dot com>
 pkgname=slimjet
 _pkgname="flashpeak-${pkgname}"
-pkgver=47.0.2.0
+pkgver=48.0.0.0
 # curl -s https://nwjs.io/versions.json | jq -r 'limit(1; .versions[] | select(.components.chromium | startswith("137.")) | .version)'
 # strings src/opt/slimjet/slimjet | grep -Eo '^Chrome/([0-9]+(\.[0-9]+)+)' | head -n 1
-_libffmpegver=0.99.1
+_libffmpegver=0.102.1
 pkgrel=1
 pkgdesc="Fast, smart and powerful browser based on Blink.(Prebuilt version)"
 arch=('x86_64')
@@ -46,8 +46,8 @@ source=(
     #"${pkgname}-${pkgver}.deb::${url}/release/${pkgname}_amd64.deb"
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/releases/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
 )
-sha256sums=('7d37208fed8a64dee80469e84283c222d34978d597d8878303205946c93b9c71'
-            'db0ffaba9e65ef018a673e9d01acc6111f1f7d2b474f0fbcdd8e190ff416c16d')
+sha256sums=('f42f0216ff82cd2670d6e5ead2d71bb9040b47f1d4c467ce435f9fd02cc3813d'
+            '9fe1ef70e837422794bbfd84cdcfab93cd1771e8a89c78c813ec401ff324a007')
 _get_versions() {
     _slimjetver="$(strings ${srcdir}/opt/${pkgname}/${pkgname} | grep -oP 'Chrome/\K[0-9]+' | head -n 1)"
     _slimjetver="${_slimjetver}."
