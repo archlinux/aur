@@ -1,6 +1,6 @@
 pkgbase = cargo-visualize
 	pkgdesc = Know your dependencies via interactive cargo dependency graph visualization
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/kxxt/cargo-visualize
 	arch = x86_64

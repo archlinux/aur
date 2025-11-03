@@ -3,7 +3,7 @@
 _pkgname=cargo-visualize
 pkgname=cargo-visualize
 _asset_dir="/usr/share/$_pkgname/resources" 
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Know your dependencies via interactive cargo dependency graph visualization"
 arch=('x86_64' 'aarch64' 'riscv64' 'loong64' 'ppc64le')
