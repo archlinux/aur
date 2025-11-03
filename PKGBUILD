@@ -23,18 +23,18 @@
 # -b release", as documented in btdu's README.
 
 pkgname=btdu
-pkgver=0.6.0
-pkgrel=1
+pkgver=0.6.1
+pkgrel=5
 pkgdesc='sampling disk usage profiler for btrfs'
 arch=('aarch64' 'i686' 'x86_64')
 url='https://github.com/CyberShadow/btdu'
 license=('GPL2')
 depends=('ncurses' 'd-runtime')
-_d_compiler_spec='d-compiler>=2.97.0'
-makedepends=("$_d_compiler_spec" 'dub' 'dtools')
+# Using ldc instead of generic d-compiler to avoid DMD 2.111.0 which hangs on btdu 0.6.x
+makedepends=('ldc>=1:1.28.0' 'dub' 'dtools')
 
 # These should match dub.selections.json from the btdu repository:
-_d_ae_ver=0.0.3461
+_d_ae_ver=0.0.3655
 _d_btrfs_ver=0.0.21
 _d_ncurses_ver=1.0.0
 _d_emsi_containers_ver=0.9.0
@@ -45,8 +45,8 @@ source=(${pkgname}-${pkgver}.tar.gz::https://github.com/CyberShadow/${pkgname}/a
 		ncurses-${_d_ncurses_ver}.tar.gz::https://github.com/D-Programming-Deimos/ncurses/archive/v${_d_ncurses_ver}.tar.gz
 		emsi_containers-${_d_emsi_containers_ver}.tar.gz::https://github.com/dlang-community/containers/archive/v${_d_emsi_containers_ver}.tar.gz
 	   )
-sha256sums=('cbab7a250c8ba8d3ec6c49062ee7de4d0888e88e4959df349bc991aa9948e326'
-            '8141af9830c30ad58933a022c4b8b84e3c1f476343abaa552cb2ce0fa72b537a'
+sha256sums=('20a9beb6a5b02199df553eb1b24ce53d895ed0a70d3ec258f8294206ab7ca475'
+            '5adc509dc64358eeee6a43b207b7b7ce3c523dd8a5a1be2a3d4eb3dbdd00dd02'
             '343bef0cd60f4708fdab721a2aff003d0921267cc99ebfb778e93793433e3970'
             'b5db677b75ebef7a1365ca4ef768f7344a2bc8d07ec223a2ada162f185d0d9c6'
             '5e256b84bbdbd2bd625cba0472ea27a1fde6d673d37a85fe971a20d52874acaa')
@@ -64,12 +64,8 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  # Ensure Dub doesn't try to use GDC
-  local d_compiler
-  d_compiler=$(pacman -Qq "$_d_compiler_spec")
-
-  HOME="${srcdir}/_dub" dub --skip-registry=all build --compiler="$d_compiler" -b release --rdmd || # --rdmd creates smaller binaries
-  HOME="${srcdir}/_dub" dub --skip-registry=all build --compiler="$d_compiler" -b release # retry without --rdmd - https://github.com/dlang/dub/pull/2033
+  HOME="${srcdir}/_dub" dub --skip-registry=all build --compiler=ldc2 -b release --rdmd || # --rdmd creates smaller binaries
+  HOME="${srcdir}/_dub" dub --skip-registry=all build --compiler=ldc2 -b release # retry without --rdmd - https://github.com/dlang/dub/pull/2033
 }
 
 package() {
