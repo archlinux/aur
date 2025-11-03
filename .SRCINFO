@@ -1,6 +1,6 @@
 pkgbase = charta-bin
 	pkgdesc = Charta is a utility written in Go to display small colored charts in the terminal.
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://spn109.fr/charta
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = charta-bin
 	makedepends = go>=1.25
 	provides = charta
 	conflicts = charta
-	source = charta-bin::git+https://codeberg.org/spn109/charta.git#tag=v0.3.2
+	source = charta-bin::git+https://codeberg.org/spn109/charta.git#tag=v0.4.0
 	md5sums = SKIP
 
 pkgname = charta-bin
