@@ -1,0 +1,18 @@
+pkgbase = arch-rich-presence
+	pkgdesc = Discord Rich Presence for Arch Linux with Hyprland window tracking
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/r3dg0d/arch-rich-presence
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = nodejs
+	depends = hyprland
+	depends = libnotify
+	optdepends = waybar: For waybar integration
+	optdepends = chromium: For browser automation features
+	source = arch-rich-presence::git+https://github.com/r3dg0d/arch-rich-presence.git
+	sha256sums = SKIP
+
+pkgname = arch-rich-presence
