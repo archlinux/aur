@@ -1,7 +1,7 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
 _name=pymunk
-pkgname=python-${_name}
+pkgname=python-$_name
 pkgver=7.2.0
 pkgrel=1
 pkgdesc='Pymunk is a easy-to-use pythonic 2D physics library.'
