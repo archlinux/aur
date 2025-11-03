@@ -1,32 +1,26 @@
-# Maintainer: seth <getchoo at tuta dot io>
+# Maintainer: Mark Hegreberg<mark@archlinux.org>
 # Contributor: Patrick Wu <me@patrickwu.space>
 
 pkgname=wslu
-pkgver=4.0.0
-pkgrel=1
-pkgdesc="A collection of utilities for Windows Subsystem for Linux"
+pkgver=4.1.0
+pkgrel=0
+pkgdesc="A collection of utilities for the Windows Subsystem for Linux"
 arch=(any)
-url="https://wslutiliti.es/wslu"
-license=('GPL3')
-depends=('bc' 'imagemagick')
-optdepends=('bash-completion: for CLI args completion')
-install=wslu.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/wslutilities/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f3fc0191306496e8794397ba7623754b834603fd3f37bef40a858c0fe1ac3e08')
+url='https://github.com/wslutilities/wslu'
+license=('GPL-3.0-or-later')
+depends=('bc' 'psmisc')
+optdepends=('imagemagick: custom icon support' 'bash-completion: for bash completion')
+source=("git+https://github.com/wslutilities/wslu.git#tag=v${pkgver}")
+sha256sums=('12943003d4936b1dc8b9449fd1864960e8a05fa6d7cad89de47269572ff713ff')
 
 build() {
-	cd "${srcdir}/$pkgname-$pkgver"
-
-  chmod 755 configure.sh
-  ./configure.sh --build
-	make
+  cd wslu
+  bash ./configure.sh --build
+  make
 }
 
 package() {
-	cd "${srcdir}/$pkgname-$pkgver"
-
-	make DESTDIR="${pkgdir}" install
-  install -Dm0644 LICENSE -t "${pkgdir}/usr/share/licenses/wslu/"
+  cd wslu
+  make DESTDIR="${pkgdir}" install
+  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/wslu/
 }
-
-# nvim: ts=2 sw=2 et:
