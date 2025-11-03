@@ -1,7 +1,7 @@
 pkgbase = dms-shell-git
 	pkgdesc = Desktop shell for wayland compositors built with Quickshell & GO
 	pkgver = 0.3.2.r16.g118ab4e.b9f0c27
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,6 @@ pkgbase = dms-shell-git
 	depends = dgop
 	depends = quickshell
 	depends = accountsservice
-	optdepends = brightnessctl: Laptop display brightness control
 	optdepends = cava: Audio visualizer
 	optdepends = cliphist: Clipboard history functionality
 	optdepends = matugen: Dynamic wallpaper-based theming
@@ -30,7 +29,6 @@ pkgbase = dms-shell-git
 
 pkgname = dms-shell-git
 	install = dms-shell-git.install
-	optdepends = brightnessctl: Laptop display brightness control
 	optdepends = cava: Audio visualizer
 	optdepends = cliphist: Clipboard history functionality
 	optdepends = matugen: Dynamic wallpaper-based theming
