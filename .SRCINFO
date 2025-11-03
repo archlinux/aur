@@ -1,7 +1,7 @@
 pkgbase = cryptodev-linux
 	pkgdesc = Kernel module providing access to Linux kernel cryptographic drivers from userspace
 	pkgver = 1.14
-	pkgrel = 2
+	pkgrel = 3
 	url = http://cryptodev-linux.org/
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,9 @@ pkgbase = cryptodev-linux
 	conflicts = cryptodev_friendly
 	source = https://github.com/cryptodev-linux/cryptodev-linux/archive/cryptodev-linux-1.14.tar.gz
 	source = 0001-Fix-cryptodev_verbosity-sysctl-for-Linux-6.11-rc1.patch
+	source = 0001-Fix-build-for-Linux-6.18-rc1.patch
 	sha256sums = 67223d5bee4749028e78e87372cee3bca79d9a20f7b6cb915aa080c59d2a2d98
 	sha256sums = 6cab9c5c813c06f462c485e37c52c84c5283b197e205424fdc0a7a31ed50e62a
+	sha256sums = 1ec54ad33558812a0e7af6a540a64b338524928647f7dc811e8058e022939812
 
 pkgname = cryptodev-linux
