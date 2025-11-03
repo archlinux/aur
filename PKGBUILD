@@ -13,7 +13,6 @@ license=("GPL-3.0")
 
 depends=(
     hicolor-icon-theme
-    python
     python-pygit2
     python-pygments
     python-pyqt6

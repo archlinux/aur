@@ -7,7 +7,6 @@ pkgbase = gitfourchette-bin
 	arch = aarch64
 	license = GPL-3.0
 	depends = hicolor-icon-theme
-	depends = python
 	depends = python-pygit2
 	depends = python-pygments
 	depends = python-pyqt6
