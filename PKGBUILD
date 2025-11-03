@@ -2,7 +2,7 @@
 
 pkgname=pgadmin4-server
 pkgver=9.9
-pkgrel=1
+pkgrel=2
 pkgdesc='The core server package for pgAdmin. pgAdmin is the most popular and feature rich Open Source administration and development platform for PostgreSQL, the most advanced Open Source database in the world.'
 arch=('x86_64')
 license=('PostgreSQL')
