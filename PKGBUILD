@@ -11,7 +11,7 @@
 
 pkgname=ungoogled-chromium
 pkgver=142.0.7444.59
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _manual_clone=1
 _system_clang=1
@@ -104,6 +104,7 @@ depends+=(${_system_libs[@]})
 
 prepare() {
   rustup toolchain install 1.91.0
+  rustup default 1.91.0
 
   if (( _manual_clone )); then
     ./fetch-chromium-release $pkgver
