@@ -1,7 +1,7 @@
 pkgbase = libbass_mpc
 	pkgdesc = BASS audio library Musepack plugin
 	pkgver = 2.4.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.un4seen.com/
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,6 @@ pkgbase = libbass_mpc
 	depends = alsa-lib
 	depends = libbass
 	source = libbass_mpc-2.4.1.2.zip::http://www.un4seen.com/files/z/2/bass_mpc24-linux.zip
-	sha256sums = 95957d167fac4badf675cdefed113279a273edab7798cb72dbe06dccf32d59a3
+	sha256sums = e29b46aefed9bc519610dfa3e4c860c0abbab95c06a613f726121cff7445470f
 
 pkgname = libbass_mpc

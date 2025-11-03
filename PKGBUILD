@@ -4,14 +4,14 @@
 
 pkgname=libbass_mpc
 pkgver=2.4.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='BASS audio library Musepack plugin'
 arch=(i686 x86_64 armv6h armv7h aarch64)
 url='https://www.un4seen.com/'
 license=(custom)
 depends=(alsa-lib libbass)
 source=("$pkgname-$pkgver.zip::http://www.un4seen.com/files/z/2/bass_mpc24-linux.zip")
-sha256sums=('95957d167fac4badf675cdefed113279a273edab7798cb72dbe06dccf32d59a3')
+sha256sums=('e29b46aefed9bc519610dfa3e4c860c0abbab95c06a613f726121cff7445470f')
 
 prepare() {
   grep Dis "$srcdir/readme.txt" -A13 > LICENSE
