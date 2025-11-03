@@ -1,23 +1,30 @@
-# Maintainer: Bruce Zhang <zttt183525594@gmail.com>
+# Contributor: Bruce Zhang <zttt183525594@gmail.com>
 
 pkgname=python-bilibili-api
-pkgver=9.0.2
+pkgver=17.4.0
 pkgrel=1
-pkgdesc=""
+pkgdesc="哔哩哔哩常用API调用。支持视频、番剧、用户、频道、音频等功能。"
 arch=('any')
-url="https://github.com/MoyuScript/bilibili-api"
-license=('GPL3')
-depends=('feeluown' 'python-aiohttp' 'python-beautifulsoup4' 'python-colorama' 'python-yaml' 'python-brotli' 'python-yarl' 'python-lxml')
-makedepends=('python-setuptools' 'python-pip')
-source=("https://pypi.io/packages/source/b/bilibili-api/bilibili-api-$pkgver.tar.gz")
-sha512sums=('0f4967318aa30ce94b8a665fe2c83ea8a12c804841ebb98da6d817ce026ebea81edaa31a43961add9c848ad724cc51fca635a8228e174940e9921be6e45a3732')
+url="https://nemo2011.github.io/bilibili-api/"
+license=('GPL-3.0-or-later')
+depends=('python' 'python-beautifulsoup4' 'python-yaml' 'python-brotli' 'python-yarl' 'python-lxml'
+         'python-qrcode' 'python-apscheduler' 'python-pillow' 'python-pycryptodomex' 'python-qrcode_terminal'
+         'python-pyjwt')
+makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools-scm')
+optdepends=('python-curl-cffi: At least one is required to send http request.'
+            'python-aiohttp: At least one is required to send http request.'
+            'python-httpx: At least one is required to send http request.'
+            'python-pyqt6: Run ivitools.'
+            'python-colorama: Run ivitools.')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Nemo2011/bilibili-api/archive/refs/tags/$pkgver.tar.gz")
+sha512sums=('1c051df89a427181023788ef11656ab732fc4b8bee01fc5fcb4397dafd01aa69855e8a5cadfe62e0e81e0764a29f88a04ca8abfb67063e06a002ed4d4d3db2a6')
 
 build() {
   cd bilibili-api-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd bilibili-api-$pkgver
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
