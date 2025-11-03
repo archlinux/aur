@@ -2,7 +2,7 @@
 
 _pkgname="dstask"
 pkgname="${_pkgname}-bin"
-pkgver=0.28
+pkgver=1.0
 pkgrel=1
 pkgdesc="A terminal-based TODO manager with git-based sync + markdown notes per task"
 arch=('armv7h' 'x86_64')
@@ -19,12 +19,12 @@ source_armv7h=("${_pkgname}-${pkgver}-armv7h::${_url}/releases/download/${pkgver
                "${_pkgname}-import-${pkgver}-armv7h::${_url}/releases/download/${pkgver}/${_pkgname}-import-linux-arm5")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64::${_url}/releases/download/${pkgver}/${_pkgname}-linux-amd64"
                "${_pkgname}-import-${pkgver}-x86_64::${_url}/releases/download/${pkgver}/${_pkgname}-import-linux-amd64")
-sha256sums=('db4a716da2d5a5a234eb138980e33cf6a1fe411eae068e8db6f41e73a9a67103'
+sha256sums=('36620010be81ccfd933c1c8ccf6fc21f227a2a9922cccdea16212a64ec0e7efd'
             'f1630544f9da6d125967a9224cee919b686a7b2b3ea37d7ecbfa8216b2837534')
-sha256sums_armv7h=('6453441ee0821c19ed72d62aa4c2ca1f589dcde1bb3ae17880295229c8de15a7'
-                   '534ec1eb621a9fa928b793e65bb751c8eded14b6faee2c8d448259063666d760')
-sha256sums_x86_64=('eedf5f445fde57d4262554b61b9bb085b12df7968a29c6e78a0e8b1d73793f42'
-                   '3fba8f27324a1617d2813d58840d32293d878b9bc69cf540343468173b68dbad')
+sha256sums_armv7h=('719ee1aa2aaa30fc4405cb1a4e2ba34ba4382c1cdb438f7f92aba77256e20ac5'
+                   'b62d1b4de96d702d9a915b122bf4405869560e57bf56794c372f7b166c5c042e')
+sha256sums_x86_64=('060553b091411d5f6799ebe2fb4cf56c5f082a90f99b59859de84b097e6fa263'
+                   '117ee9891dd327dfe04f122569dde4e8167bcfe44665ee2052f1733c90480c8b')
 
 prepare() {
   cd "${srcdir}"
