@@ -3,11 +3,12 @@
 # Contributor: Fredrick Brennan <copypaste@kittens.ph>
 # Contributor: mutantmonkey <aur@mutantmonkey.in>
 # Contributor: Stephan Eisvogel <eisvogel at embinet dot de>
+# Maintainer: SecByShresth <Shresthpaul133@gmail.com>
 
 pkgname=python-ruffus
 _pkg="${pkgname#python-}"
 pkgver=2.8.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight Python library for computational pipelines"
 arch=('any')
 url='https://github.com/cgat-developers/ruffus'
@@ -30,9 +31,21 @@ build() {
 package() {
 	cd "$_pkg-$pkgver"
 	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
-	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+
+	local _site
+	_site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+
 	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s \
-		"$_site/$_pkg-$pkgver.dist-info/LICENSE.TXT" \
-		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+	# Copy the license file (don't symlink!)
+	if [[ -f "$_site/$_pkg-$pkgver.dist-info/LICENSE.TXT" ]]; then
+		install -m644 "$_site/$_pkg-$pkgver.dist-info/LICENSE.TXT" \
+			"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	elif [[ -f LICENSE.TXT ]]; then
+		install -m644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	elif [[ -f LICENSE ]]; then
+		install -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	else
+		echo "Warning: License file not found!"
+	fi
 }

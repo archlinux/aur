@@ -1,7 +1,7 @@
 pkgbase = python-ruffus
 	pkgdesc = Lightweight Python library for computational pipelines
 	pkgver = 2.8.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cgat-developers/ruffus
 	arch = any
 	license = MIT
