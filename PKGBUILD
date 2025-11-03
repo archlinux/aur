@@ -5,14 +5,14 @@
 # Contributor: rabyte <rabyte*gmail>
 
 pkgname='dtrx'
-pkgver='8.6.0'
+pkgver='8.7.0'
 pkgrel='1'
 pkgdesc='An intelligent archive extraction tool'
 arch=('any')
 url='http://github.com/dtrx-py/dtrx'
 license=('GPL3')
 depends=('python3')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=(
   'tar: to extract tar, deb, and gem archives'
   'unzip: to extract zip archives'
@@ -29,9 +29,15 @@ optdepends=(
   'lha: to extract lzh archives'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('94697941b640ffcd3c689895df8fb88e52ea98dec05dc181b9e996df761311a1')
+sha256sums=('c966c8911a56207fa05d51add755e6e8d4b74322aef8ef8169d81b2cad577342')
+
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python -m build --wheel --no-isolation
+}
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
