@@ -2,7 +2,7 @@
 # Contributor: Antony Ho <ntonyworkshop@gmail.com>
 
 pkgname=session-desktop
-pkgver=1.17.1
+pkgver=1.17.2
 pkgrel=1
 pkgdesc="A Decentralized, Onion Routed, Private Messenger"
 arch=('x86_64')
@@ -11,10 +11,10 @@ license=('GPL-3.0-only')
 _electron=electron34
 depends=('bash' "${_electron}" 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'python')
 makedepends=('cmake' 'git' 'nvm' 'python-setuptools' 'yarn')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/session-foundation/session-desktop/archive/refs/tags/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/session-foundation/session-desktop/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('552d9ace54b292fd0b139f2196013c52c57fd0ed3118a72c761b0a89667f7716'
+sha256sums=('125e3cd4bb6b58f582ee1fe83ce2e062abcf987b3206c157ddd3aec5d4031022'
             '267d772a94ba49b19e799e7ecee25c0077ded4dd9c853c073ec386a8ab6a7e5c'
             'a5279447d005060aa77536dcabe0ab66226f9cffa668dc0b6e07a2f1e52ab5ce')
 
@@ -33,6 +33,8 @@ prepare() {
 }
 
 build() {
+    source /usr/share/nvm/init-nvm.sh
+
     cd "${pkgname}-${pkgver}"
     export NODE_ENV=production
     yarn build
