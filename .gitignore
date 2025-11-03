@@ -1,0 +1,11 @@
+*
+!/.gitignore
+!/.nvchecker.toml
+!/.SRCINFO
+!/LICENSE
+!/LICENSES
+!/LICENSES/**
+!/PKGBUILD
+!/REUSE.toml
+!/*.patch
+!/dolphin-memory-engine.install

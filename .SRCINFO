@@ -1,0 +1,22 @@
+pkgbase = dolphin-memory-engine
+	pkgdesc = RAM search for the Dolphin emulator
+	pkgver = 1.2.6
+	pkgrel = 1
+	url = https://github.com/aldelaro5/dolphin-memory-engine
+	install = dolphin-memory-engine.install
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = bash
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = qt6-base
+	depends = qt6-svg
+	source = git+https://github.com/aldelaro5/dolphin-memory-engine.git#tag=1.2.6
+	source = 0001-desktop-exec.patch
+	sha256sums = 662e70523513113153f05d5b7fa254068c43f9ac00a4914b8943675759793dc7
+	sha256sums = f90dbab8b97ed03249be5ab31cdf871424550ee73e5972ebe9afa0a5ca41f9b4
+
+pkgname = dolphin-memory-engine

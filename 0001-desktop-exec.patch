@@ -1,0 +1,10 @@
+diff --git a/.github/assets/dolphin-memory-engine.desktop b/.github/assets/dolphin-memory-engine.desktop
+index 8605ba7..fba4534 100644
+--- a/.github/assets/dolphin-memory-engine.desktop
++++ b/.github/assets/dolphin-memory-engine.desktop
+@@ -5,4 +5,5 @@ GenericName=Dolphin emulator memory searcher
+ Comment=A RAM search program designed to search, track, and edit the emulated memory of the Dolphin emulator during runtime
+ Icon=dolphin-memory-engine
+ TryExec=dolphin-memory-engine
++Exec=dolphin-memory-engine
+ Categories=Game;
