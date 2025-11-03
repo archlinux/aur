@@ -1,0 +1,3 @@
+[llrt-no-sdk-git]
+source = "github"
+github = "awslabs/llrt"
