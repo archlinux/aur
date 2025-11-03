@@ -1,79 +1,21 @@
---- a/package-lock.json
-+++ b/package-lock.json
-@@ -1,10 +1,10 @@
- {
--    "name": "VRCX",
-+    "name": "vrcx",
-     "lockfileVersion": 3,
-     "requires": true,
-     "packages": {
-         "": {
--            "name": "VRCX",
-+            "name": "vrcx",
-             "license": "MIT",
-             "dependencies": {
-                 "hazardous": "^0.3.0",
 --- a/package.json
 +++ b/package.json
-@@ -1,5 +1,5 @@
- {
+@@ -2 +2 @@
 -    "name": "VRCX",
 +    "name": "vrcx",
-     "description": "Friendship management tool for VRChat",
-     "private": true,
-     "main": "src-electron/main.js",
---- a/src/views/Settings/Settings.vue
-+++ b/src/views/Settings/Settings.vue
-@@ -46,31 +46,0 @@
--                <!--//- General | VRCX Updater-->
--                <div class="options-container">
--                    <span class="header">{{ t('view.settings.general.vrcx_updater.header') }}</span>
--                    <div class="options-container-item">
--                        <el-button size="small" :icon="Document" @click="showChangeLogDialog">{{
--                            t('view.settings.general.vrcx_updater.change_log')
--                        }}</el-button>
--                        <el-button size="small" :icon="Upload" @click="showVRCXUpdateDialog()">{{
--                            t('view.settings.general.vrcx_updater.change_build')
--                        }}</el-button>
--                    </div>
--                    <div class="options-container-item">
--                        <span class="name">{{ t('view.settings.general.vrcx_updater.update_action') }}</span>
--                        <br />
--                        <el-radio-group
--                            :model-value="autoUpdateVRCX"
--                            size="small"
--                            style="margin-top: 5px"
--                            @change="setAutoUpdateVRCX">
--                            <el-radio-button label="Off">{{
--                                t('view.settings.general.vrcx_updater.auto_update_off')
--                            }}</el-radio-button>
--                            <el-radio-button label="Notify">{{
--                                t('view.settings.general.vrcx_updater.auto_update_notify')
--                            }}</el-radio-button>
--                            <el-radio-button label="Auto Download">{{
--                                t('view.settings.general.vrcx_updater.auto_update_download')
--                            }}</el-radio-button>
--                        </el-radio-group>
--                    </div>
--                </div>
 
 --- a/src/stores/vrcxUpdater.js
 +++ b/src/stores/vrcxUpdater.js
-@@ -18,1 +18,1 @@
--        autoUpdateVRCX: 'Auto Download',
-+        autoUpdateVRCX: 'Off',
+@@ -22 +22 @@ export const useVRCXUpdaterStore = defineStore('VRCXUpdater', () => {
+-    const autoUpdateVRCX = ref('Auto Download');
++    const autoUpdateVRCX = ref('Off');
 
 --- a/src/views/Login/Login.vue
 +++ b/src/views/Login/Login.vue
-@@ -1,8 +1,5 @@
- <template>
-     <div style="float: left; margin: 5px">
+@@ -3,3 +2,0 @@
 -        <el-tooltip placement="top" :content="t('view.login.updater')">
 -            <el-button type="default" size="small" :icon="Download" circle @click="showVRCXUpdateDialog"></el-button>
 -        </el-tooltip>
-         <el-tooltip placement="top" :content="t('view.login.proxy_settings')">
-             <el-button
-                 type="default"
 
 --- a/src/components/NavMenu.vue
 +++ b/src/components/NavMenu.vue
@@ -81,7 +23,7 @@
 -        <div v-if="updateInProgress" class="pending-update" @click="showVRCXUpdateDialog">
 -            <el-progress
 -                type="circle"
--                width="50"
+-                :width="50"
 -                :stroke-width="3"
 -                :percentage="updateProgress"
 -                :format="updateProgressText"></el-progress>
@@ -95,3 +37,38 @@
 -                style="font-size: 14px; height: 50px; width: 50px"
 -                @click="showVRCXUpdateDialog" />
 -        </div>
+@@ -36 +18,0 @@
+-    import { Download } from '@element-plus/icons-vue';
+@@ -60,3 +41,0 @@
+-    const VRCXUpdaterStore = useVRCXUpdaterStore();
+-    const { pendingVRCXUpdate, pendingVRCXInstall, updateInProgress, updateProgress } = storeToRefs(VRCXUpdaterStore);
+-    const { showVRCXUpdateDialog, updateProgressText } = VRCXUpdaterStore;
+
+--- a/src/views/Settings/components/Tabs/GeneralTab.vue
++++ b/src/views/Settings/components/Tabs/GeneralTab.vue
+@@ -12 +12 @@
+-                <div class="x-friend-item" @click="checkForVRCXUpdate">
++                <div class="x-friend-item" style="cursor: default">
+@@ -41,22 +40,0 @@
+-                <el-button size="small" :icon="Upload" @click="showVRCXUpdateDialog()">{{
+-                    t('view.settings.general.vrcx_updater.change_build')
+-                }}</el-button>
+-            </div>
+-            <div class="options-container-item">
+-                <span class="name">{{ t('view.settings.general.vrcx_updater.update_action') }}</span>
+-                <br />
+-                <el-radio-group
+-                    :model-value="autoUpdateVRCX"
+-                    size="small"
+-                    style="margin-top: 5px"
+-                    @change="setAutoUpdateVRCX">
+-                    <el-radio-button label="Off">{{
+-                        t('view.settings.general.vrcx_updater.auto_update_off')
+-                    }}</el-radio-button>
+-                    <el-radio-button label="Notify">{{
+-                        t('view.settings.general.vrcx_updater.auto_update_notify')
+-                    }}</el-radio-button>
+-                    <el-radio-button label="Auto Download">{{
+-                        t('view.settings.general.vrcx_updater.auto_update_download')
+-                    }}</el-radio-button>
+-                </el-radio-group>
