@@ -6,7 +6,7 @@ arch=(x86_64)
 url='https://github.com/vgmstream/vgmstream'
 license=(ISC)
 depends=(ffmpeg libao libatrac9-git libogg libvorbis mpg123 speex)
-makedepends=(audacious git gtk2)
+makedepends=(audacious git glib2 pango)
 optdepends=('audacious: for using the bundled plugin')
 provides=(vgmstream)
 conflicts=(vgmstream vgmstream-kode54-git)
@@ -14,12 +14,14 @@ replaces=(vgmstream-kode54-git)
 source=(${pkgname}::git+https://github.com/vgmstream/vgmstream.git
         https://downloads.xiph.org/releases/celt/celt-0.6.1.tar.gz
         https://downloads.xiph.org/releases/celt/celt-0.11.0.tar.gz
+        remove-bogus-gtk2.patch
         install-headers.patch
         add-missing-include.patch)
 sha256sums=('SKIP'
             'a991dff4a9e0772ede0881d81cdc7ac559148c2194885cbdd534fe4af43779da'
             'c94d4d34f5a2caa1574b1a94869202cacd959b55f643a8bafe0660008acad9c3'
-            '96fef7e4d9908974ec0e399379df6100be1ceb5db522d33b6d8fa3ccaae578d6'
+            '0290744235adb549c66643dfebc728ceeb81dd53ab5cd867a8e8bf75cd17e63c'
+            'ff4cb151baa0530a29a9e6c2f6e7d1ac3099feb21d26c5f1e3a92f1808913916'
             'da37589638f1879155f50124fb2eca8b7ad41250b89f13018efbfc53a1c03693')
 
 pkgver() {
@@ -29,6 +31,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
+  patch -p0 < "$srcdir"/remove-bogus-gtk2.patch
   patch -p0 < "$srcdir"/install-headers.patch
   patch -p0 < "$srcdir"/add-missing-include.patch
 }
