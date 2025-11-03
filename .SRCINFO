@@ -1,0 +1,19 @@
+pkgbase = xiaomi-cloud-tokens-extractor
+	pkgdesc = Extract tokens for devices connected to Xiaomi cloud
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/PiotrMachowski/Xiaomi-cloud-tokens-extractor
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-charset-normalizer
+	depends = python-colorama
+	depends = python-pillow
+	depends = python-pycryptodome
+	depends = python-requests
+	source = xiaomi-cloud-tokens-extractor-1.5.1.tar.gz::https://github.com/PiotrMachowski/Xiaomi-cloud-tokens-extractor/archive/refs/tags/v1.5.1.tar.gz
+	source = launcher.sh
+	b2sums = 7a275a2c7dcdb02c0b60a94912f7f2da12b4134bec95787ccacadcefed8e2276c62518c40ae74f3b88ae63f3de74571c355e912bbd7cc15b441a1f7d2f3306fd
+	b2sums = 2af6f5f46cb3ea61e251db141b25d20161797822c3533acae03aaef0176c2cfc94706b54f81a04a3977aee0442f7bb7e3ab38e5bd2ac9f946ad7128dfd4a8e4c
+
+pkgname = xiaomi-cloud-tokens-extractor
