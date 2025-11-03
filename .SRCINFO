@@ -1,7 +1,7 @@
 pkgbase = chkbit
 	pkgdesc = Check your files for data corruption and deduplicate.
-	pkgver = 6.4.0
-	pkgrel = 2
+	pkgver = 6.5.0
+	pkgrel = 1
 	url = https://github.com/laktak/chkbit
 	arch = x86_64
 	arch = arm64
@@ -10,7 +10,8 @@ pkgbase = chkbit
 	makedepends = go
 	makedepends = help2man
 	provides = chkbit
-	source = https://github.com/laktak/chkbit/archive/refs/tags/v6.4.0.tar.gz
-	sha256sums = 99a69e05172ed27f0cf60d4aa967bc3f00a34f49c0d6529f6df41242cab789f8
+	options = !debug
+	source = https://github.com/laktak/chkbit/archive/refs/tags/v6.5.0.tar.gz
+	sha256sums = c1ec3df9885c18fbd5746ee64c371c06210908c7f6f33816f2249a09382b46e1
 
 pkgname = chkbit
