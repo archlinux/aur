@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bar-lobby-bin
 _pkgname=BeyondAllReason
-pkgver=0.15.1
+pkgver=0.15.2
 _electronversion=37
 pkgrel=1
 pkgdesc="a new WIP lobby for the RTS game Beyond All Reason.(Prebuilt version.Use system-wide electron)"
@@ -42,7 +42,7 @@ source=(
     "Unlicense-${pkgver}.txt::https://raw.githubusercontent.com/beyond-all-reason/bar-lobby/v${pkgver}/LICENSES/Unlicense.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5088d05d3c0ec3b51a3c5797619486aad1eef18fb7db0cf371112b3b55f316fe'
+sha256sums=('a230b8a29a0cb82c75fac5d1e22cb56077e040dfeb51aa06e5f978b43597e5c7'
             'e6bc9e9c474700b708f568bac9e5a8a9bcb2b1dad53442f5ba449fcb848b8e76'
             '4f3c4a321eb0c73182eee7afa3fe0111e24dec193f2d6febcf4207f26af26839'
             '3f941b3b89cf7b8370ceb83cc76d2120d471b58735d8ca60238a751a48d7f72f'
@@ -68,6 +68,9 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
+    if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _get_electron_version
