@@ -1,5 +1,5 @@
 pkgbase = python-pydantic-ai
-	pkgver = 1.7.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://github.com/pydantic/pydantic-ai
 	arch = any
@@ -25,10 +25,10 @@ pkgbase = python-pydantic-ai
 	makedepends = python-wheel
 	makedepends = git
 	depends = python
-	source = pydantic-ai-1.7.0::git+https://github.com/pydantic/pydantic-ai.git#tag=v1.7.0
+	source = pydantic-ai-1.9.1::git+https://github.com/pydantic/pydantic-ai.git#tag=v1.9.1
 	source = git+https://github.com/pydantic/mcp-run-python.git
 	source = fix-tests.patch
-	sha256sums = 03f58be81a87bca571c3347645e15c20db9ce0dd9823438291db0e68bfb967a7
+	sha256sums = 5faca813d0b33ea9d47e20c670926a4b2d874e93bacf3ff28922998f86d1194f
 	sha256sums = SKIP
 	sha256sums = eb2ddf309b138563e2f9864434500a701c80204783e8eeaf29d63f914b5920c1
 
@@ -92,6 +92,7 @@ pkgname = python-pydantic-ai-slim
 	optdepends = python-mcp: mcp
 	optdepends = python-fastmcp: fastmcp
 	optdepends = python-pydantic-evals: evals
+	optdepends = python-starlette: ui
 	optdepends = python-fasta2a: a2a
 	optdepends = python-ag-ui-protocol: ag-ui
 	optdepends = python-starlette: ag-ui
@@ -174,10 +175,29 @@ pkgname = python-pydantic-ai
 	depends = python-temporalio
 	depends = python-logfire
 	depends = python-opentelemetry-instrumentation-httpx
+	depends = python-starlette
 	optdepends = python-pydantic-ai-examples: examples
 	optdepends = python-fasta2a: a2a
 	optdepends = python-dbos: dbos
 	optdepends = python-prefect: prefect
+	optdepends = python-outlines: outlines-transformers
+	optdepends = python-accelerate: outlines-transformers
+	optdepends = python-datasets: outlines-transformers
+	optdepends = python-transformers: outlines-transformers
+	optdepends = python-setuptools: outlines-transformers
+	optdepends = python-pillow: outlines-transformers
+	optdepends = python-outlines: outlines-llamacpp
+	optdepends = python-huggingface-hub: outlines-llamacpp
+	optdepends = python-llama-cpp: outlines-llamacpp
+	optdepends = python-numba: outlines-llamacpp
+	optdepends = python-outlines: outlines-mlxlm
+	optdepends = python-datasets: outlines-mlxlm
+	optdepends = python-mlx: outlines-mlxlm
+	optdepends = python-mlx-lm: outlines-mlxlm
+	optdepends = python-outlines: outlines-sglang
+	optdepends = python-openai: outlines-sglang
+	optdepends = python-vllm: outlines-vllm-offline
+	optdepends = python-outlines: outlines-vllm-offline
 
 pkgname = python-clai
 	pkgdesc = PydanticAI CLI: command line interface to chat to LLMs.
