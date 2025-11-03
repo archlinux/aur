@@ -1,4 +1,4 @@
-[llrt]
+[llrt-no-sdk]
 source = "github"
 github = "awslabs/llrt"
 use_latest_release = true
