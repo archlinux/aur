@@ -1,0 +1,13 @@
+pkgbase = confert
+	pkgdesc = confert is command line tool to turn config files into html code blocks.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/darrkenn/confert
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = confert-1.0.0.tar.gz::https://github.com/darrkenn/confert/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 8c8bd196885b24ffd55e7e368eaabefd15c959171e37d4a13d16eeefd6a85c51
+
+pkgname = confert
