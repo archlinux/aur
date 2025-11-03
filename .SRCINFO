@@ -12,6 +12,8 @@ pkgbase = mediaharbor-bin
 	depends = libnotify
 	depends = libxss
 	depends = libsecret
+	depends = python-isodate
+	depends = streamrip
 	optdepends = ffmpeg
 	provides = mediaharbor=1.1.0
 	conflicts = mediaharbor

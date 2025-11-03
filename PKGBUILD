@@ -17,6 +17,7 @@ depends=(
   'libxss'
   'libsecret'
   'python-isodate'
+  'streamrip'
 )
 optdepends=('ffmpeg')
 provides=("mediaharbor=${pkgver}")
