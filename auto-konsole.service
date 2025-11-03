@@ -1,0 +1,10 @@
+[Unit]
+Description=Auto Konsole Theme Daemon (User)
+After=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/auto-konsole --daemon
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

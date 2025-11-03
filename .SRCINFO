@@ -1,0 +1,15 @@
+pkgbase = auto-konsole
+	pkgdesc = 自动切换konsole主题
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/leessmin/auto-konsole
+	arch = x86_64
+	license = MIT
+	depends = plasma-desktop>=6.5.0
+	options = !strip
+	source = https://github.com/leessmin/auto-konsole/releases/download/0.1.0/auto-konsole
+	source = auto-konsole.service
+	sha256sums = 1ef5e00d88a9b9d436fda1c1503125ec511195b71ad5b528d5e5dc9bcad13a22
+	sha256sums = ceff590d976ff482dd03393e4bf5a33cb550cb4dbaf5b6e25c65ada7cbedd235
+
+pkgname = auto-konsole
