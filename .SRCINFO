@@ -1,0 +1,15 @@
+pkgbase = basematrixops
+	pkgdesc = Wrappers to C++ linear algebra libraries
+	pkgver = r40+g9e5beec
+	pkgrel = 1
+	url = https://github.com/kthohr/BaseMatrixOps
+	arch = any
+	license = Apache-2.0
+	checkdepends = armadillo
+	checkdepends = eigen
+	optdepends = armadillo: supported linear algebra library
+	optdepends = eigen: supported linear algebra library
+	source = BaseMatrixOps-9e5beec15d803f0429dadae5e9218ef907271383.tar.gz::https://github.com/kthohr/BaseMatrixOps/archive/9e5beec15d803f0429dadae5e9218ef907271383.tar.gz
+	sha256sums = 974f3f89e9c93ebfb54f5f680323b880c248e1d9a9c505213ee4fa951202f108
+
+pkgname = basematrixops
