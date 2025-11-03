@@ -17,9 +17,9 @@ optdepends=(
 )
 
 source_x86_64=("$pkgname-$pkgver-linux-x86_64::https://github.com/pol-rivero/pkgstate/releases/download/0.1.3/pkgstate-linux-x86_64")
-sha256sums_x86_64=('a2baf53807b59321fe61b02a9f2dd03b06ab4d4c7acdf3df15ac3d3b455d9312')
+sha256sums_x86_64=('48ba0e725f2479ca538ed9ec550b6cc79b4a6b86c18a28d9f0174dac901c5876')
 source_aarch64=("$pkgname-$pkgver-linux-arm64::https://github.com/pol-rivero/pkgstate/releases/download/0.1.3/pkgstate-linux-arm64")
-sha256sums_aarch64=('e563a87bec32356cb3f88bc47273adf100b7dee977d1fe6539af38bbf8aaeb89')
+sha256sums_aarch64=('6af18ec497d7bf48076dd8e88421d51c50350e24aad9fc6167a996941e16f8dd')
 
 package() {
     # Install binary
