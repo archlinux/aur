@@ -26,6 +26,7 @@ build() {
 }
 
 package() {
+  unset optdepends
   cd brush
   install -Dm 755 target/release/brush "$pkgdir"/usr/bin/brush
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
