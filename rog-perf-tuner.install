@@ -14,10 +14,6 @@ reload_udev_rules() {
     udevadm trigger
 }
 
-unenroll() {
-    run_as_user rog-perf-tuner -u &>> /dev/null
-}
-
 stop_application() {
     echo "  ⏹️  Stopping application if running..."
     run_as_user rog-perf-tuner -k &>> /dev/null
@@ -36,7 +32,6 @@ post_upgrade() {
 pre_remove() {
     echo "🗑️ Performing pre remove actions..."
     stop_application
-    unenroll
 }
 
 post_remove() {
