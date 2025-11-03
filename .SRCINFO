@@ -1,14 +1,22 @@
 pkgbase = python-quantities
-	pkgdesc = Support for physical quantities with units, based on numpy
-	pkgver = 0.14.1
+	pkgdesc = Support for physical quantities with units, based on NumPy
+	pkgver = 0.16.2
 	pkgrel = 1
-	url = https://pypi.org/project/quantities/#files
+	url = https://github.com/python-quantities/python-quantities
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/q/quantities/quantities-0.14.1.tar.gz
-	sha256sums = efeafffc0c0364f891a9327239cd12496bccb55cd037a6d1bf44de706f722877
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python-numpy
+	optdepends = python-scipy: integrate using SciPy's trapezoid implementation
+	source = quantities::git+https://github.com/python-quantities/python-quantities#tag=v0.16.2
+	source = fix-tests.patch
+	b2sums = 50760e4efa1a981811dfe3b26593688846532d1b9f3f73846e266f5fcbf03668b374ef10e91ec2e1a3607c75ae4983cc7dbee21be50bbf913dcf7067f809c34b
+	b2sums = dba5b5a95edb249d8d430500724e34eafe4a87a935eb6147c019797c437bba38bcbf3ffd6ca131cebec03e09674579add64d6ed63383308ce341049bb688ff70
 
 pkgname = python-quantities
-	depends = python

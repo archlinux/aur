@@ -1,0 +1,184 @@
+diff --git a/quantities/tests/common.py b/quantities/tests/common.py
+index ed28c83..e70ec6f 100644
+--- a/quantities/tests/common.py
++++ b/quantities/tests/common.py
+@@ -3,8 +3,8 @@ import unittest
+ 
+ import numpy as np
+ 
+-from ..quantity import Quantity
+-from ..units import set_default_units
++from quantities.quantity import Quantity
++from quantities.units import set_default_units
+ 
+ class TestCase(unittest.TestCase):
+ 
+diff --git a/quantities/tests/test_arithmetic.py b/quantities/tests/test_arithmetic.py
+index 1b6aeeb..f0377a9 100644
+--- a/quantities/tests/test_arithmetic.py
++++ b/quantities/tests/test_arithmetic.py
+@@ -3,8 +3,8 @@ from functools import partial
+ import sys
+ 
+ import numpy as np
+-from .. import units as pq
+-from ..quantity import Quantity
++from quantities import units as pq
++from quantities.quantity import Quantity
+ from .common import TestCase
+ 
+ 
+diff --git a/quantities/tests/test_comparison.py b/quantities/tests/test_comparison.py
+index 523dc3b..9499c28 100644
+--- a/quantities/tests/test_comparison.py
++++ b/quantities/tests/test_comparison.py
+@@ -1,6 +1,6 @@
+ import operator as op
+ 
+-from .. import units as pq
++from quantities import units as pq
+ from .common import TestCase
+ 
+ 
+diff --git a/quantities/tests/test_constants.py b/quantities/tests/test_constants.py
+index 363e5fb..641138f 100644
+--- a/quantities/tests/test_constants.py
++++ b/quantities/tests/test_constants.py
+@@ -1,4 +1,4 @@
+-from .. import units as pq
+-from .. import constants as pc
++from quantities import units as pq
++from quantities import constants as pc
+ from .common import TestCase
+ 
+diff --git a/quantities/tests/test_conversion.py b/quantities/tests/test_conversion.py
+index 7ae0384..ce36f73 100644
+--- a/quantities/tests/test_conversion.py
++++ b/quantities/tests/test_conversion.py
+@@ -1,7 +1,7 @@
+ import unittest
+ import numpy as np
+-from .. import units as pq
+-from .. import quantity
++from quantities import units as pq
++from quantities import quantity
+ from .common import TestCase
+ 
+ 
+diff --git a/quantities/tests/test_dimensionality.py b/quantities/tests/test_dimensionality.py
+index 6d20ca2..1f335b4 100644
+--- a/quantities/tests/test_dimensionality.py
++++ b/quantities/tests/test_dimensionality.py
+@@ -1,7 +1,7 @@
+ import operator as op
+ 
+-from .. import units as pq
+-from ..dimensionality import Dimensionality
++from quantities import units as pq
++from quantities.dimensionality import Dimensionality
+ from .common import TestCase
+ 
+ meter = Dimensionality({pq.m: 1})
+diff --git a/quantities/tests/test_formatting.py b/quantities/tests/test_formatting.py
+index 7f0e465..2d8b1e6 100644
+--- a/quantities/tests/test_formatting.py
++++ b/quantities/tests/test_formatting.py
+@@ -1,4 +1,4 @@
+-from .. import units as pq
++from quantities import units as pq
+ from .common import TestCase
+ 
+ 
+diff --git a/quantities/tests/test_methods.py b/quantities/tests/test_methods.py
+index ff84210..2183d18 100644
+--- a/quantities/tests/test_methods.py
++++ b/quantities/tests/test_methods.py
+@@ -1,5 +1,5 @@
+ import warnings
+-from .. import QuantitiesDeprecationWarning, units as pq
++from quantities import QuantitiesDeprecationWarning, units as pq
+ from .common import TestCase
+ import numpy as np
+ 
+@@ -109,7 +109,7 @@ class TestQuantityMethods(TestCase):
+ 
+     def methodWithOut(self, name, result, q=None, *args, **kw):
+         import numpy as np
+-        from .. import Quantity
++        from quantities import Quantity
+ 
+         if q is None:
+             q = self.q
+@@ -351,7 +351,7 @@ class TestQuantityMethods(TestCase):
+             self.assertQuantityEqual(q.units, pq.m)
+ 
+     def test_rescale_integer_argument(self):
+-        from .. import Quantity
++        from quantities import Quantity
+         self.assertQuantityEqual(
+             Quantity(10, pq.deg).rescale(pq.rad),
+             np.pi/18*pq.rad
+diff --git a/quantities/tests/test_persistence.py b/quantities/tests/test_persistence.py
+index da26924..0b22c4c 100644
+--- a/quantities/tests/test_persistence.py
++++ b/quantities/tests/test_persistence.py
+@@ -1,10 +1,10 @@
+ import pickle
+ import copy
+ 
+-from .. import units as pq
+-from ..quantity import Quantity
+-from ..uncertainquantity import UncertainQuantity
+-from .. import constants
++from quantities import units as pq
++from quantities.quantity import Quantity
++from quantities.uncertainquantity import UncertainQuantity
++from quantities import constants
+ from .common import TestCase
+ 
+ 
+@@ -75,4 +75,4 @@ class TestPersistence(TestCase):
+         for dtype in [float, object]:
+             x = UncertainQuantity(20, 'm', 0.2).astype(dtype)
+             y = copy.copy(x)
+-            self.assertQuantityEqual(x, y)
+\ No newline at end of file
++            self.assertQuantityEqual(x, y)
+diff --git a/quantities/tests/test_umath.py b/quantities/tests/test_umath.py
+index a29231d..886c1da 100644
+--- a/quantities/tests/test_umath.py
++++ b/quantities/tests/test_umath.py
+@@ -1,6 +1,6 @@
+ import numpy as np
+ 
+-from .. import units as pq
++from quantities import units as pq
+ from .common import TestCase, unittest
+ 
+ _np_version = tuple(map(int, np.__version__.split(".dev")[0].split(".")))
+diff --git a/quantities/tests/test_uncertainty.py b/quantities/tests/test_uncertainty.py
+index 85296d2..61c0c57 100644
+--- a/quantities/tests/test_uncertainty.py
++++ b/quantities/tests/test_uncertainty.py
+@@ -1,6 +1,6 @@
+-from .. import units as pq
+-from ..quantity import Quantity
+-from ..uncertainquantity import UncertainQuantity
++from quantities import units as pq
++from quantities.quantity import Quantity
++from quantities.uncertainquantity import UncertainQuantity
+ from .common import TestCase
+ import numpy as np
+ 
+diff --git a/quantities/tests/test_units.py b/quantities/tests/test_units.py
+index 1912a3a..ed090c3 100644
+--- a/quantities/tests/test_units.py
++++ b/quantities/tests/test_units.py
+@@ -1,6 +1,6 @@
+ import pytest
+ 
+-from .. import units as pq
++from quantities import units as pq
+ from .common import TestCase
+ 
+ 
