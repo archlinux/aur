@@ -1,12 +1,12 @@
 pkgbase = retro-imitator
 	pkgdesc = 6502-based retro system interpreter
-	pkgver = 1.6.5
+	pkgver = 1.6.6
 	pkgrel = 1
 	url = https://jroatch.nfshost.com/retro-imitator
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = sdl
-	source = https://jroatch.nfshost.com/dl/retro-imitator-v1.6.5.c
-	sha256sums = f7e6daaa1597a3ab0fa592f8604cd4ce5f13dc8f89ddb43786b8cffc2114d15a
+	source = https://jroatch.nfshost.com/dl/retro-imitator-v1.6.6.c
+	sha256sums = f0ff833a76a2d7b408c8f47bc70c2389822d12c19b5a1256595b11906c525249
 
 pkgname = retro-imitator

@@ -1,7 +1,7 @@
 # Maintainer: Technochips <thetechnochips at protonmail dot com>
 
 pkgname=retro-imitator
-pkgver=1.6.5
+pkgver=1.6.6
 pkgrel=1
 pkgdesc='6502-based retro system interpreter'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('sdl')
 
 source=("https://jroatch.nfshost.com/dl/${pkgname}-v${pkgver}.c")
-sha256sums=('f7e6daaa1597a3ab0fa592f8604cd4ce5f13dc8f89ddb43786b8cffc2114d15a')
+sha256sums=('f0ff833a76a2d7b408c8f47bc70c2389822d12c19b5a1256595b11906c525249')
 
 build() {
 	gcc -O2 -std=c99 -Wall -Wextra -Wpedantic -lc -lm -o ${pkgname} ${pkgname}-v${pkgver}.c `sdl-config --cflags --libs`
