@@ -1,18 +1,18 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='libdecaf'
 pkgver='1.0.2'
-pkgrel=4
+pkgrel=5
 pkgdesc="A 448-bit Edwards curve"
 url="https://sourceforge.net/projects/ed448goldilocks/"
 depends=('glibc')
 makedepends=('cmake' 'git' 'python')
 license=('MIT')
 arch=('x86_64')
-source=("libdecaf-1.0.2::git://git.code.sf.net/p/ed448goldilocks/code#commit=e5cc62")
-sha256sums=('SKIP')
+source=("${pkgname}::git://git.code.sf.net/p/ed448goldilocks/code#commit=e5cc62")
+sha256sums=('9cb125750d64bc46fdbe75ff57993a36410d245a369b1ce76ae673c6df7efc51')
 
 build() {
-    cmake -B build -S "${pkgname}-${pkgver}" \
+    cmake -B build -S "${pkgname}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DENABLE_STATIC=OFF \
@@ -26,7 +26,7 @@ build() {
 
 package() {
     make DESTDIR="${pkgdir}" -C build install
-    install -D -m644 "${pkgname}-${pkgver}/LICENSE.txt" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE.txt"
+    install -D -m644 "${pkgname}/LICENSE.txt" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE.txt"
 }
 
 check() {
