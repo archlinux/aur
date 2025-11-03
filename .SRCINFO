@@ -1,0 +1,21 @@
+pkgbase = mediaharbor-bin
+	pkgdesc = MediaHarbor is your all-in-one media downloader.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/MediaHarbor/mediaharbor
+	arch = x86_64
+	license = GPL3
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxtst
+	depends = libnotify
+	depends = libxss
+	depends = libsecret
+	optdepends = ffmpeg
+	provides = mediaharbor=1.1.0
+	conflicts = mediaharbor
+	source = MediaHarbor-1.1.0.deb::https://github.com/MediaHarbor/mediaharbor/releases/download/v1.1.0/MediaHarbor-1.1.0.deb
+	sha256sums = 470b5ba9025c6b04da2b6504c8b162c880ba3b05f55a9d2f7657e4d8479c13aa
+
+pkgname = mediaharbor-bin
