@@ -1,24 +1,24 @@
 pkgbase='python-proglog'
 pkgname=('python-proglog')
 _module='proglog'
-pkgver='0.1.11'
+pkgver='0.1.12'
 pkgrel=1
 pkgdesc="Log and progress bar manager for console, notebooks, web..."
 url=""
-depends=('python')
-makedepends=('python-setuptools')
+depends=('python' 'python-tqdm')
+makedepends=('python-build' 'python-installer' 'python-setuptools')
 license=('unknown')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('ce35a0f9d1153e69d0063cdae6e6f2d8708fa0a588fc4e089501b77005e72884')
+sha256sums=('361ee074721c277b89b75c061336cb8c5f287c92b043efa562ccf7866cda931c')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
