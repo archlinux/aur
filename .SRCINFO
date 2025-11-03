@@ -1,15 +1,17 @@
 pkgbase = patchance
 	pkgdesc = A modern graphical patchbay for JACK
-	pkgver = 1.1.0
-	pkgrel = 3
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://github.com/Houston4444/Patchance
 	arch = any
 	groups = pro-audio
 	license = GPL-2.0-only
-	makedepends = qt5-tools
+	makedepends = qt6-tools
 	depends = hicolor-icon-theme
-	depends = python-pyqt5
-	source = https://github.com/Houston4444/Patchance/releases/download/v1.1.0/Patchance-1.1.0-source.tar.gz
-	sha256sums = c259042a43c7d82ff2ed34227085727166ed2d4757da12027145a2ee714de75c
+	depends = python-pyqt6
+	depends = python-qtpy
+	depends = python-jack-client
+	source = https://github.com/Houston4444/Patchance/releases/download/v1.3.0/Patchance-1.3.0-source.tar.gz
+	sha256sums = 2df4604f5b87ebd78fbea3708465114b623173fb0b78f6f7a9c0e36418c4cdf3
 
 pkgname = patchance
