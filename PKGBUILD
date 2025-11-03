@@ -1,7 +1,7 @@
 # Maintainer: Swarnaditya Singh <demonkingswarn@protonmail.com>
 pkgname='flix-cli'
 _name="${pkgname#python-}"
-pkgver=1.7.11.4
+pkgver=1.7.11.5
 pkgrel=1
 pkgdesc="Watch movies and series from your commandline"
 arch=('any')
@@ -9,8 +9,8 @@ url="https://github.com/demonkingswarn/flix-cli"
 license=('GPL3')
 depends=('mpv' 'ffmpeg' 'fzf' 'yt-dlp' 'catt' 'python' 'python-httpx' 'python-regex' 'python-beautifulsoup4' 'python-krfzf')
 makedepends=('python-installer')
-source=("https://files.pythonhosted.org/packages/87/ec/a8d9cfd0424907848c58e9e5c3071b88bf60848b2976a80dde5f119b6d6b/flix_cli-${pkgver}-py3-none-any.whl")
-sha256sums=('43523404c1689294d17376dbef6792fc208759ce012e52984631eae2c48866fc')
+source=("https://files.pythonhosted.org/packages/60/26/fb56f053713badfd5ed1e5ad621da5ce4246efc613ca5b6cd414621c71e2/flix_cli-${pkgver}-py3-none-any.whl")
+sha256sums=('ff3189019893e6a908b9b8301c53f9c4443252808038cf1579f2cd7f5f9871ef')
 noextract=("flix_cli-${pkgver}-py3-none-any.whl")
 
 package(){
