@@ -1,6 +1,6 @@
 pkgbase = python-lsp-tree-sitter
 	pkgdesc = a library to create language servers
-	pkgver = 0.0.18
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/neomutt/lsp-tree-sitter
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-lsp-tree-sitter
 	optdepends = python-yaml
 	optdepends = python-tomli-w
 	replaces = python-tree-sitter-lsp
-	source = https://files.pythonhosted.org/packages/py3/l/lsp_tree_sitter/lsp_tree_sitter-0.0.18-py3-none-any.whl
-	sha256sums = 357a89b389c3e59cc6c4e9104fc36d32a62dba4574b7606244ff43db4ea85491
+	source = https://files.pythonhosted.org/packages/py3/l/lsp_tree_sitter/lsp_tree_sitter-0.1.0-py3-none-any.whl
+	sha256sums = 0ee1d77b14ea74157dacffef14da89999cabc1532d16ba2dd78eebb2b04752f1
 
 pkgname = python-lsp-tree-sitter
