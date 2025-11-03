@@ -1,6 +1,6 @@
-# Maintainer: Bjarne Øverli <bjarne.oeverli@gmail.com>
+# Maintainer: Bjarne Øverli <bjarne@oever.li>
 pkgname=jot-git
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A single-purpose tool for capturing a thought before it disappears"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/bjarneo/omarchy-jot"
 license=('MIT')
 depends=('gjs' 'gtk4' 'libadwaita')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b2f756958ad6af7ef375f0286028bf0fc4f7f533e073f10b77b3b6bdeea31c12')
+sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/omarchy-jot-$pkgver"
@@ -23,7 +23,7 @@ package() {
     cat > "$pkgdir/usr/bin/jot" << 'EOF'
 #!/bin/bash
 cd /usr/share/jot || exit
-exec gjs jot.js "$@"
+exec gjs -m jot.js "$@"
 EOF
     chmod 755 "$pkgdir/usr/bin/jot"
 
