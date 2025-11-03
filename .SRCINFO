@@ -1,7 +1,7 @@
 pkgbase = wslu
 	pkgdesc = A collection of utilities for the Windows Subsystem for Linux
 	pkgver = 4.1.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/wslutilities/wslu
 	arch = any
 	license = GPL-3.0-or-later

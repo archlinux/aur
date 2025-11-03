@@ -3,7 +3,7 @@
 
 pkgname=wslu
 pkgver=4.1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="A collection of utilities for the Windows Subsystem for Linux"
 arch=(any)
 url='https://github.com/wslutilities/wslu'
