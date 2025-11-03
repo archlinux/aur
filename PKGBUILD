@@ -2,9 +2,9 @@
 # Contributor: Ali Molaei <ali dot molaei at protonmail dot com>
 # Contributor: algebro <algebro at tuta dot io>
 
-_pkgname=frida-tools
+_pkgname=frida_tools
 pkgname=python-frida-tools
-pkgver=14.4.5
+pkgver=14.4.6
 pkgrel=1
 pkgdesc="CLI tools for Frida. Python 3 version from PyPi."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ makedepends=(python-build python-installer python-wheel python-setuptools)
 # Sourced from https://pypi.org/project/frida-tools/#files
 source=("https://files.pythonhosted.org/packages/source/f/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "COPYING")
-sha256sums=('b0877dd4a076a8b6ac247b1fad2e8d7ea72d9f49023d2ea278dc2d7e179a8bc3'
+sha256sums=('0666fa1f8f5888d7044b08ef785fa45813ed92a14f90e898e86d4e9c7dde0306'
             '5ea1544b51a28bc823b03159190d4108f9fb4f4ef912389f5137c6d295e175b2')
 conflicts=("python2-${_pkgname}")
 
