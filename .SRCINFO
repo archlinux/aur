@@ -1,7 +1,7 @@
 pkgbase = libbassopus
 	pkgdesc = BASS audio library Opus plugin
 	pkgver = 2.4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.un4seen.com/
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,6 @@ pkgbase = libbassopus
 	depends = alsa-lib
 	depends = libbass
 	source = libbassopus-2.4.3.zip::http://www.un4seen.com/files/bassopus24-linux.zip
-	sha256sums = 97b036a27afb78257ee4e96f2f1ab629baa5496475562a905603944af7ec5cbd
+	sha256sums = 6040edfde70c8c10bfa99e4f109510d9fc2fb578c5149a1390d6f7da2eea50c0
 
 pkgname = libbassopus
