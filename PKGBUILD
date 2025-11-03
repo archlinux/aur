@@ -1,18 +1,17 @@
-# Maintainer: Cortex
-# Forked from vesktop
+# Maintainer: creations
 pkgname=equibop
 _pkgname=Equibop
 pkgdesc="Equibop is a Vesktop fork that gives you the performance of web Discord and the comfort of Discord Desktop, with additional plugins."
 pkgver=3.1.0
 # Reminder for devs: don't forget to update the electron version on equibop.sh
-pkgrel=1
+pkgrel=2
 electron=electron39
 arch=('x86_64' 'aarch64')
 url="https://github.com/Equicord/Equibop"
 license=('GPL3')
 install=equibop.install
 depends=("${electron}")
-makedepends=('bun-bin' 'cmake' 'gcc' 'nodejs')
+makedepends=('bun-bin' 'cmake' 'gcc' 'nodejs' 'npm')
 optdepends=(
   'libnotify: Notifications'
   'xdg-utils: Open links, files, etc'
