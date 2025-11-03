@@ -1,0 +1,51 @@
+post_install() {
+    echo "==> Reloading systemd daemon..."
+    systemctl daemon-reload
+
+    echo ""
+    cat <<'EOF'
+█▀▄▀█ ▄▀▀▀▄ ▄▀▀▀▄ █▄  █ █▀▀▀▄ ▀▀█▀▀ ▀▀█▀▀    ▄▀    ▄▀
+█   █ █   █ █   █ █ ▀▄█ █▀▀▀▄   █     █    ▄▀    ▄▀
+▀   ▀  ▀▀▀   ▀▀▀  ▀   ▀ ▀▀▀▀  ▀▀▀▀▀   ▀   ▀     ▀
+
+EOF
+    echo "==> MoonBit installed successfully!"
+    echo ""
+    echo "Usage:"
+    echo "  moonbit                    # Interactive TUI"
+    echo "  moonbit scan               # Scan system"
+    echo "  moonbit clean --force      # Clean files"
+    echo ""
+    echo "To enable automated cleaning:"
+    echo "  sudo systemctl enable --now moonbit-scan.timer   # Daily scans"
+    echo "  sudo systemctl enable --now moonbit-clean.timer  # Weekly cleaning"
+    echo ""
+    echo "Check timer status:"
+    echo "  systemctl list-timers moonbit-*"
+    echo ""
+}
+
+post_upgrade() {
+    echo "==> Reloading systemd daemon..."
+    systemctl daemon-reload
+
+    echo ""
+    cat <<'EOF'
+█▀▄▀█ ▄▀▀▀▄ ▄▀▀▀▄ █▄  █ █▀▀▀▄ ▀▀█▀▀ ▀▀█▀▀    ▄▀    ▄▀
+█   █ █   █ █   █ █ ▀▄█ █▀▀▀▄   █     █    ▄▀    ▄▀
+▀   ▀  ▀▀▀   ▀▀▀  ▀   ▀ ▀▀▀▀  ▀▀▀▀▀   ▀   ▀     ▀
+
+EOF
+    echo "==> MoonBit upgraded successfully!"
+    echo ""
+    echo "If you have enabled timers, they will continue running."
+    echo "Check status: systemctl list-timers moonbit-*"
+    echo ""
+}
+
+pre_remove() {
+    echo "==> Disabling MoonBit timers..."
+    systemctl disable --now moonbit-scan.timer 2>/dev/null || true
+    systemctl disable --now moonbit-clean.timer 2>/dev/null || true
+    systemctl daemon-reload
+}
