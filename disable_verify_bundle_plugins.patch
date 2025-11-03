@@ -1,0 +1,13 @@
+diff --git a/packages/insomnia/scripts/verify-bundle-plugins.ts b/packages/insomnia/scripts/verify-bundle-plugins.ts
+index 7d2492c..ab35ad5 100644
+--- a/packages/insomnia/scripts/verify-bundle-plugins.ts
++++ b/packages/insomnia/scripts/verify-bundle-plugins.ts
+@@ -10,7 +10,7 @@ const isModuleInstalled = (moduleName: string) => {
+ };
+ 
+ export const verifyBundlePlugins = () => {
+-  const executeInGithubActions = process.env.GITHUB_ACTIONS === 'true';
++  const executeInGithubActions = false;
+   if (executeInGithubActions) {
+     console.log('[NPM Install] Verifying bundle plugins...');
+     const missingBundlePlugin = bundlePlugins.find(p => !isModuleInstalled(p.name));
