@@ -4,49 +4,46 @@
 _gitname="qogir-theme"
 _pkgname="qogir-gtk-theme"
 pkgname="$_pkgname-git"
-pkgver=2023.05.24.r6.ga25bc47
+pkgver=2025.08.17.r4.g10fb12a
 pkgrel=1
 pkgdesc='Qogir is a flat Design theme for GTK'
+url="https://github.com/vinceliuice/Qogir-theme"
+license=('GPL-3.0-or-later')
 arch=('any')
-url='https://github.com/vinceliuice/Qogir-theme'
-license=('GPL3')
 
-depends=(
-  'gtk-engine-murrine'
-  'gtk-engines'
-  'gtk3'
-  'gtk4'
-)
 makedepends=(
   'git'
   'sassc'
 )
-
 optdepends=(
+  'gtk-engine-murrine: For GTK2 support'
+  'gtk-engines: For GTK2 support'
+  'kvantum-theme-qogir-git: Matching Kvantum theme'
   'qogir-icon-theme: Matching icon theme'
+  'tela-icon-theme: Recommended icon theme'
+  'vimix-cursors: Matching cursor theme'
 )
 
 provides=('qogir-gtk-theme')
 conflicts=('qogir-gtk-theme')
 
-source=(
-  "$_gitname"::"git+$url"
-)
-sha256sums=(
-  'SKIP'
-)
+options=('!strip')
 
 _pkgsrc="$_gitname"
+source=("$_pkgsrc"::"git+$url")
+sha256sums=('SKIP')
+
 pkgver() {
-  cd "$srcdir/$_pkgsrc"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 package() {
-  cd "$srcdir/$_pkgsrc"
+  cd "$_pkgsrc"
 
-  install -dm755 "$pkgdir/usr/share/themes"
-  
+  mkdir -pm755 "$pkgdir/usr/share/themes"
+
   ./install.sh \
     --dest "$pkgdir/usr/share/themes" \
     --theme all \
