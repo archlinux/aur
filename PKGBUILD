@@ -8,18 +8,18 @@ url="https://github.com/mango/simreader"
 license=('MIT')
 depends=('pcsclite')
 makedepends=('gcc')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mango/simreader/archive/v$pkgver.tar.gz")
+source=("git+https://github.com/mango/simreader.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   gcc -o simreader src/simreader.c -lpcsclite -I/usr/include/PCSC
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   install -Dm755 simreader "$pkgdir/usr/bin/simreader"
-  install -Dm644 simreader.1 "$pkgdir/usr/share/man/man1/simreader.1"
+  install -Dm644 man/simreader.1 "$pkgdir/usr/share/man/man1/simreader.1"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }

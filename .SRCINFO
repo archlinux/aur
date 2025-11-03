@@ -7,7 +7,7 @@ pkgbase = simreader
 	license = MIT
 	makedepends = gcc
 	depends = pcsclite
-	source = simreader-1.0.0.tar.gz::https://github.com/mango/simreader/archive/v1.0.0.tar.gz
+	source = git+https://github.com/mango/simreader.git#tag=v1.0.0
 	sha256sums = SKIP
 
 pkgname = simreader
