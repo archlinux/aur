@@ -1,0 +1,16 @@
+pkgbase = knxmonitor
+	pkgdesc = KNX/EIB bus monitoring and debugging tool
+	pkgver = 0.10.14
+	pkgrel = 1
+	url = https://github.com/metaneutrons/KnxMonitor
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = dotnet-sdk>=9.0
+	depends = glibc
+	depends = gcc-libs
+	depends = openssl
+	source = knxmonitor-0.10.14.tar.gz::https://github.com/metaneutrons/KnxMonitor/archive/refs/tags/v0.10.14.tar.gz
+	sha256sums = 7a4641feae44a47985791488b9812a5c373a77c7abbcbe955b8d67247bc44840
+
+pkgname = knxmonitor
