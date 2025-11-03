@@ -1,12 +1,12 @@
 pkgbase = yt-dlp-drop-in
 	pkgdesc = Provide both youtube-dl command and python imports using yt-dlp
-	pkgver = 2025.06.30
+	pkgver = 2025.10.22
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/yt-dlp-drop-in
 	arch = any
 	license = Unlicense
 	depends = python
-	provides = youtube-dl=2025.06.30
+	provides = youtube-dl=2025.10.22
 	conflicts = youtube-dl
 
 pkgname = yt-dlp-drop-in
