@@ -2,8 +2,8 @@
 _pkgname=swc_ytdownloader
 pkgname="${_pkgname//_/-}-bin"
 _appname=YT-Downloader
-pkgver=0.1.40
-_electronversion=28
+pkgver=0.1.42
+_electronversion=39
 pkgrel=1
 pkgdesc="Download and convert Videos from YouTube and other sites with thumbnail and metadata support.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Davis-Software/YTDownloader/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('641c04479fbeb7f72ae0631b16521b1d7019baacf5e02c1020054a56728f36b1'
+sha256sums=('ed4aded03b418044d0ff8e4fbf223b60e70e108a1cf2e2d7a71b5509a1ff2384'
             '6c05069775fad84e1ae33b25f8dee3ec183ea8bf2270df24485de616237443bd'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
@@ -52,6 +52,6 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/1024x1024/apps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
