@@ -5,8 +5,8 @@ _sdk='no-sdk'
 _suffix="$( [ "$_sdk" == "std-sdk" ] && echo "" || echo "-$_sdk" )"
 pkgname="llrt$_suffix"
 pkgver=0.7.0beta
-pkgrel=1
-pkgdesc='Lightweight JavaScript runtime, compiler, REPL, and test runner (STANDARD @aws-sdk bundled)'
+pkgrel=2
+pkgdesc='Lightweight JavaScript runtime, compiler, REPL, and test runner (NO @aws-sdk bundled)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/awslabs/llrt'
 license=('Apache-2.0')
