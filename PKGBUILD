@@ -2,7 +2,7 @@
 
 pkgname=fvwm3-git
 _pkgname=fvwm3
-pkgver=1.1.3.r7.g600017546
+pkgver=1.1.3.r29.g6a9b86f20
 pkgrel=1
 pkgdesc="A powerful ICCCM2 compliant multiple virtual desktop window manager for X11"
 arch=('i686' 'x86_64')
@@ -31,14 +31,14 @@ pkgver(){
 build() {
   cd "${srcdir}/${_pkgname}"
 
-   meson setup build --prefix /usr --libexecdir /usr/lib --sysconfdir /etc --wipe --strip \
+   meson setup compile --prefix /usr --libexecdir /usr/lib --sysconfdir /etc --wipe --strip \
       -Dbidi=enabled -Dnls=enabled -Diconv=enabled -Dgolang=enabled -Dmandoc=true
-   meson compile -C build
+   meson compile -C compile
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  DESTDIR="${pkgdir}" meson install -C build
+  DESTDIR="${pkgdir}" meson install -C compile
   install -d "${pkgdir}/usr/share/doc/${_pkgname}"
   install -D -m644 ../fvwm3.desktop "${pkgdir}/usr/share/xsessions/fvwm3.desktop"
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
