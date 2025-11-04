@@ -1,6 +1,6 @@
 # Maintainer: Meir Kriheli <mkriheli@gmail.com>
 pkgname=rusmux
-pkgver=0.8.1
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="tmux automation tool"
 arch=("x86_64")
@@ -8,7 +8,7 @@ url="https://github.com/MeirKriheli/rusmux"
 license=("MIT")
 makedepends=("cargo")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0968e48f9b38fe7e78e42bbf84f5538feb242a399b6598e22861b44efd965d9e')
+sha256sums=('076d87dd109aeac6ebb8d0adaf71105d26a60ccbe7dce05dea78be7a81fb26ea')
 
 prepare() {
   cd "$pkgname-$pkgver"
