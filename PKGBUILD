@@ -1,7 +1,7 @@
 # Maintainer: Sébastien TERRIER <ouinouin at ouinouin dot eu>
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=citron
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
@@ -36,7 +36,7 @@ source=(${pkgname}::git+https://git.citron-emu.org/citron/emulator.git#tag=${pkg
         tz::git+https://github.com/eggert/tz.git
 	SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
 )
-b2sums=('67b8a61fe87f2205827fefd655b7f7af14902aa1c41fc26953c80d3b1f35f6319091ca666213c352b314374215b2a001d4bc5b5ea81f478367a101c845c2b668'
+b2sums=('7996fb34ac2403fde74f4691d4fdefa288f275d5cfbbdb1322a37d58da516b7b484ec945781101067f5f4a9e669ef7ee616345a74b255797d0947825880f7544'
         'SKIP'
         'SKIP'
         'SKIP'
