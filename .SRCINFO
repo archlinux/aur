@@ -1,0 +1,18 @@
+pkgbase = wofi-pubs
+	pkgdesc = A wofi interface for the reference manager pubs
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/cristobaltapia/wofi-pubs
+	arch = any
+	license = MIT
+	makedepends = uv
+	makedepends = python-setuptools
+	depends = python
+	depends = python-setuptools
+	depends = python-wofi
+	depends = dpt-rp1-py
+	depends = pygobject-devel
+	source = wofi-pubs-0.10.1.tar.gz::https://github.com/cristobaltapia/wofi-pubs/archive/v0.10.1.tar.gz
+	sha256sums = c0ebbd7ddc6e3c19213ba41477c0110db6b0b576c150c6b2114b78b3c88cf114
+
+pkgname = wofi-pubs
