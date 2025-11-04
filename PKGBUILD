@@ -12,11 +12,13 @@ url="https://github.com/lensfun/lensfun"
 license=('LGPL-3.0-only')
 arch=('i686' 'x86_64')
 
-depends=('glibc' 'glib2')
+depends=(
+  'glib2'
+  'libpng'
+)
 makedepends=(
   'cmake'
   'git'
-  'libpng'
   'ninja'
   'python-build'
   'python-installer'
@@ -113,5 +115,5 @@ package() {
   done
 
   # unwanted; use lensfun2-update-data
-  rm "$pkgdir/usr/lib/${_pkgname}2/g-lensfun-update"
+  rm "$pkgdir/usr/lib/${_pkgname}2/g-lensfun-update-data"
 }
