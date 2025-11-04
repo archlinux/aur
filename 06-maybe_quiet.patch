@@ -160,7 +160,7 @@ diff --git a/grub-core/kern/main.c b/grub-core/kern/main.c
 index 73967e2..d753d81 100644
 --- a/grub-core/kern/main.c
 +++ b/grub-core/kern/main.c
-@@ -265,15 +265,25 @@ reclaim_module_space (void)
+@@ -265,17 +265,27 @@ reclaim_module_space (void)
  void __attribute__ ((noreturn))
  grub_main (void)
  {
@@ -178,10 +178,13 @@ index 73967e2..d753d81 100644
 +  FOR_ACTIVE_TERM_OUTPUTS(term)
 +    grub_term_setcursor (term, 0);
 +#else
+   /* This breaks flicker-free boot on EFI systems, so disable it there. */
+ #ifndef GRUB_MACHINE_EFI
    /* Hello.  */
    grub_setcolorstate (GRUB_TERM_COLOR_HIGHLIGHT);
    grub_printf ("Welcome to GRUB!\n\n");
    grub_setcolorstate (GRUB_TERM_COLOR_STANDARD);
+ #endif
 +#endif
  
    /* Init verifiers API. */
@@ -247,35 +250,39 @@ diff --git a/grub-core/normal/menu.c b/grub-core/normal/menu.c
 index c2943c6..338f5a5 100644
 --- a/grub-core/normal/menu.c
 +++ b/grub-core/normal/menu.c
-@@ -826,12 +826,18 @@ run_menu (grub_menu_t menu, int nested, int *auto_boot)
+@@ -833,15 +833,21 @@ run_menu (grub_menu_t menu, int nested, int *auto_boot, int *notify_boot)
  
  /* Callback invoked immediately before a menu entry is executed.  */
  static void
--notify_booting (grub_menu_entry_t entry,
+-notify_booting (grub_menu_entry_t entry, void *userdata)
 +notify_booting (grub_menu_entry_t entry
 +#ifdef QUIET_BOOT
 +		__attribute__((unused))
 +#endif
-+		,
- 		void *userdata __attribute__((unused)))
++		, void *userdata)
  {
+   int *notify_boot = userdata;
+ 
+   if (*notify_boot)
+     {
 +#ifndef QUIET_BOOT
-   grub_printf ("  ");
-   grub_printf_ (N_("Booting `%s'"), entry->title);
-   grub_printf ("\n\n");
+       grub_printf ("  ");
+       grub_printf_ (N_("Booting `%s'"), entry->title);
+       grub_printf ("\n\n");
 +#endif
+     }
  }
  
- /* Callback invoked when a default menu entry executed because of a timeout
-@@ -879,6 +885,9 @@ show_menu (grub_menu_t menu, int nested, int autobooted)
+@@ -890,7 +896,10 @@ show_menu (grub_menu_t menu, int nested, int autobooted)
        int boot_entry;
        grub_menu_entry_t e;
        int auto_boot;
 +#ifdef QUIET_BOOT
 +      int initial_timeout = grub_menu_get_timeout ();
 +#endif
+       int notify_boot;
  
-       boot_entry = run_menu (menu, nested, &auto_boot);
+       boot_entry = run_menu (menu, nested, &auto_boot, &notify_boot);
        if (boot_entry < 0)
 @@ -888,7 +897,11 @@ show_menu (grub_menu_t menu, int nested, int autobooted)
        if (! e)
