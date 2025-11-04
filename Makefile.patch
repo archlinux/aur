@@ -1,14 +1,14 @@
---- kraken2-2.14/src/Makefile	2025-02-18 09:29:30.000000000 +0530
-+++ kraken2-2.14.new/src/Makefile	2025-02-19 22:39:05.587331135 +0530
+--- kraken2-2.1.6/src/Makefile	2025-07-08 20:33:01.000000000 +0530
++++ kraken2-2.1.6.new/src/Makefile	2025-11-04 23:07:17.629870378 +0530
 @@ -1,6 +1,6 @@
  CXX ?= g++
  KRAKEN2_SKIP_FOPENMP ?= -fopenmp
 -CXXFLAGS = $(KRAKEN2_SKIP_FOPENMP) -Wall -std=c++11 -O3
-+CXXFLAGS = $(KRAKEN2_SKIP_FOPENMP) -Wall -std=c++11 -O2
++CXXFLAGS += $(KRAKEN2_SKIP_FOPENMP) -Wall -std=c++11 -O2
  CXXFLAGS += -DLINEAR_PROBING
+ CFLAGS = -Wall -std=c99 -O2 -g3
  
- .PHONY: all clean install
-@@ -10,7 +10,7 @@
+@@ -11,7 +11,7 @@
  all: $(PROGS)
  
  install: $(PROGS)
@@ -17,8 +17,8 @@
  
  clean:
  	rm -f *.o $(PROGS)
-@@ -34,19 +34,19 @@
- k2mask.o: k2mask.cc gzstream.h threadpool.h
+@@ -39,22 +39,22 @@
+ blast_utils.o: blast_utils.c
  
  build_db: build_db.o mmap_file.o compact_hash.o taxonomy.o seqreader.o mmscanner.o omp_hack.o utilities.o
 -	$(CXX) $(CXXFLAGS) -o $@ build_db.o mmap_file.o compact_hash.o taxonomy.o seqreader.o mmscanner.o omp_hack.o utilities.o
@@ -43,3 +43,7 @@
  k2mask: k2mask.o seqreader.o
 -	$(CXX) $(CXXFLAGS) -o $@ k2mask.o seqreader.o -lz -pthread
 +	$(CXX) $(CXXFLAGS) -o $@ $(LDFLAGS) k2mask.o seqreader.o -lz -pthread
+ 
+ blast_to_fasta: blast_to_fasta.o blast_defline.o blast_utils.o
+-	$(CC) $(CFLAGS) -o $@  blast_to_fasta.o blast_utils.o blast_defline.o -lm -lc #-fsanitize=address,undefined
++	$(CC) $(CFLAGS) -o $@ $(LDFLAGS)  blast_to_fasta.o blast_utils.o blast_defline.o -lm -lc #-fsanitize=address,undefined

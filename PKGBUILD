@@ -1,39 +1,33 @@
 pkgname=kraken2
-pkgver=2.14
-_pkgver=$(echo "$pkgver" | sed 's/\.//2')
+pkgver=2.1.6
+# _pkgver=$(echo "$pkgver" | sed 's/\.//2')
 pkgrel=1
 pkgdesc="Improved vesion of kraken ultrafast metagenomic sequence classification tool. https://doi.org/10.1186/s13059-019-1891-0"
 arch=('i686' 'x86_64')
 url="https://github.com/DerrickWood/kraken2"
 license=('MIT')
 depends=('glibc' 'gcc-libs' 'blast+' 'perl' 'bash' 'python' 'zlib')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/DerrickWood/kraken2/archive/refs/tags/v${_pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/DerrickWood/kraken2/archive/refs/tags/v${pkgver}.tar.gz"
         'Makefile.patch'
-        'fastaread.patch')
-sha256sums=('75ffbf82bd13232ec8d39990f48454c6f7d98ceb589af80a60c7e9ed046e7f18'
-            'e08f748b3e34ec5efd05756886e8b8901ff5710f8ea67927e2666166c3e7d9ca'
-            '40bdae9d36e7212197f32d5dc49d7d676593e0a0e0f51e7ef8c0c20ccd2d999e')
+        )
+sha256sums=('5bbd79392ff7c530124986dfdfe126bf638477db94fb7a901ec2daf9261707f3'
+            'a67dd3b50c599b8b08d1cd1e2796f7b937d17543400ba53766a53263a734c7c1')
 
 prepare() {
-    cp Makefile.patch ${pkgname}-${_pkgver}/
-    cp fastaread.patch ${pkgname}-${_pkgver}/scripts
-    cd ${pkgname}-${_pkgver}
+    cd ${pkgname}-${pkgver}
     # patch makefile to use $(DESTDIR) and LDFLAGS
-    patch -p1 < Makefile.patch
-    cd scripts/
-    # Slighly more robust method to obtain taxid of fasta files
-    patch -p1 < fastaread.patch  
+    patch -p1 < ${srcdir}/Makefile.patch
 }
 
 build() {
-    cd ${pkgname}-${_pkgver}/src
+    cd ${pkgname}-${pkgver}/src
     export KRAKEN2_DIR=/usr/lib/kraken2
     make
 
 }
 
 package() {
-  cd ${pkgname}-${_pkgver}/src
+  cd ${pkgname}-${pkgver}/src
     install -d ${pkgdir}/usr/bin
     install -d ${pkgdir}/usr/lib/kraken2
     install -d ${pkgdir}/usr/share/${pkgname}
