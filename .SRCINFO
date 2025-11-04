@@ -1,13 +1,15 @@
 pkgbase = nym-vpnd-bin
 	pkgdesc = NymVPN daemon as a systemd service
 	pkgver = 1.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nymtech/nym-vpn-client
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = glibc
 	depends = gcc-libs
 	depends = dbus
+	depends = libnftnl
+	depends = libmnl
 	provides = nym-vpnd
 	conflicts = nym-vpnd
 	options = !debug
