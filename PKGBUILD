@@ -3,7 +3,7 @@
 
 _pkgname="qlcplus"
 pkgname="$_pkgname-git"
-pkgver=5.0.0.r41.g0516035
+pkgver=5.0.0.r96.g0dda4e7
 pkgrel=1
 pkgdesc="Q Light Controller Plus to control professional DMX lighting fixtures"
 url="https://github.com/mcallegari/qlcplus"
@@ -40,8 +40,13 @@ source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
 prepare() {
+  cd "$_pkgsrc"
+
   # unset unnecessary warnings and errors
-  sed -E -e 's&^.*set\(.*-W.*$&&' -i "$_pkgsrc/variables.cmake"
+  sed -E -e 's&^.*set\(.*-W.*$&&' -i variables.cmake
+
+  # force Qt6
+  sed -e 's&Qt5 Qt6&Qt6&' CMakeLists.txt
 }
 
 pkgver() {
@@ -60,7 +65,6 @@ build() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -DQT_VERSION_MAJOR=6
     -Wno-dev
   )
 
