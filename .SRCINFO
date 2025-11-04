@@ -1,6 +1,6 @@
 pkgbase = plasma6-wallpapers-komplex-bin
 	pkgdesc = Complex shader arrangements as a desktop background
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/DigitalArtifex/kde-komplex-wallpaper-engine
 	install = komplex.install
@@ -27,7 +27,7 @@ pkgbase = plasma6-wallpapers-komplex-bin
 	provides = plasma6-wallpapers-komplex
 	conflicts = plasma6-wallpapers-komplex
 	backup = etc/profile
-	source = https://github.com/DigitalArtifex/kde-komplex-wallpaper-engine/releases/download/1.0.6/plasma6-wallpapers-komplex_1-0-6_linux_x86.tar.gz
+	source = https://github.com/DigitalArtifex/kde-komplex-wallpaper-engine/releases/download/1.0.7/plasma6-wallpapers-komplex_1-0-7_linux_x86_64.tar.gz
 	sha256sums = SKIP
 
 pkgname = plasma6-wallpapers-komplex-bin
