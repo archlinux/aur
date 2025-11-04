@@ -9,7 +9,6 @@ pkgbase = zl-equalizer
 	license = AGPL-3.0
 	makedepends = git
 	makedepends = cmake
-	makedepends = ninja
 	makedepends = kfr
 	depends = alsa-lib
 	depends = libx11

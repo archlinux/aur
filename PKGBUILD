@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://zl-audio.github.io/plugins/zlequalizer2/"
 license=('AGPL-3.0')
 depends=('alsa-lib' 'libx11' 'libxinerama' 'libxext' 'freetype2' 'fontconfig' 'webkit2gtk' 'glu')
-makedepends=('git' 'cmake' 'ninja' 'kfr')
+makedepends=('git' 'cmake' 'kfr')
 
 source=("git+https://github.com/ZL-Audio/ZLEqualizer#tag=${pkgver}"
 		"git+https://github.com/ZL-Audio/JUCE#tag=b251f82")
@@ -28,14 +28,14 @@ prepare() {
 	# Use system kfr
 	sed 's|add_subdirectory(kfr)|find_package(KFR CONFIG REQUIRED)|' -i CMakeLists.txt
 	
-	cmake -B Builds -G Ninja \
+	cmake -B Builds \
 	      -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_FLAGS="$CFLAGS" -DCMAKE_CXX_FLAGS="$CXXFLAGS" -DCMAKE_SKIP_INSTALL_RPATH=YES \
 	      -DZL_JUCE_COPY_PLUGIN=FALSE -DZL_JUCE_FORMATS="VST3;LV2" -DZL_EQ_BAND_NUM=24 .
 }
 
 build() {
 	cd ZLEqualizer
-	cmake --build Builds
+	make -C Builds
 }
 
 package_zl-equalizer-vst() {
