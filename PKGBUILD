@@ -1,5 +1,5 @@
-_pkgname=steamvr-lighthouse-manager
-pkgname='$_pkgname-git'
+_pkgname="steamvr-lighthouse-manager"
+pkgname="$_pkgname-git"
 pkgrel=1
 pkgver=1.1.main.r6.g173d2b9
 epoch=
