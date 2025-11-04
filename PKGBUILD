@@ -2,7 +2,7 @@
 
 _pkgname=scopebuddy
 pkgname=$_pkgname-git
-pkgver=1.1.0.r0.g170e154
+pkgver=1.2.3.r0.g5a04aca
 pkgrel=1
 pkgdesc="gamescope helper script"
 arch=(any)
@@ -17,11 +17,10 @@ depends=(
 )
 makedepends=('git')
 optdepends=(
-    'steam: Steam integration'
-    'gamemode: gamemode integration'
-    'plasma-desktop: Automatic display detection'
-    'libkscreen: Automatic display detection'
     'jq: Automatic display detection'
+    'libkscreen: Automatic display detection (Plasma)'
+    'mutter: Automatic display detection (GNOME)'
+    'gnome-randr-rust: Automatic display detection (GNOME fallback)'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
