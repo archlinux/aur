@@ -4,7 +4,7 @@ pkgname=('seanime-server-git' 'seanime-denshi-git')
 _pkgname=seanime
 _electronver=36
 pkgver=v3.0.0.r0.g7930aa8
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source media server with a web interface and desktop app for anime and manga."
 arch=('x86_64' 'aarch64')
 url="https://github.com/5rahim/seanime"
@@ -25,7 +25,7 @@ sha256sums=('SKIP'
             '7f36f983c1313bba1b5d718865fe6115764429ffad3886a6863ec309f78cbb0c'
             )
 pkgver() {
-    cd "$_pkgname"
+    cd "${_pkgname}"
     # Cutting off 'foo-' prefix that presents in the git tag
     git describe --long --tags --abbrev=7 | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
@@ -63,8 +63,10 @@ build() {
 
     if [ "$CARCH" = aarch64 ]; then
     export GOARCH=arm64
+    export _Arch=${GOARCH}
     else
     export GOARCH=amd64
+    export _Arch=x64
     fi
 
     # https://wiki.archlinux.org/title/Go_package_guidelines#Flags_and_build_options
@@ -99,7 +101,7 @@ build() {
 
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     npm ci
-    npm run build:linux -- --dir -c.electronDist=$electronDist -c.electronVersion=$electronVer
+    npm exec -- electron-builder build --linux --${_Arch}  --dir -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
 
 package_seanime-server-git() {
