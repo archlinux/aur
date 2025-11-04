@@ -1,12 +1,12 @@
 pkgbase = boundary-bin
 	pkgdesc = Network resources access controller
-	pkgver = 0.20.0
+	pkgver = 0.20.1
 	pkgrel = 1
 	url = https://www.boundaryproject.io/
 	arch = x86_64
 	license = MPL2
 	makedepends = unzip
-	provides = boundary=0.20.0
+	provides = boundary=0.20.1
 	options = !strip
 	source = boundary-controller.service
 	source = boundary-worker.service
@@ -18,7 +18,7 @@ pkgbase = boundary-bin
 	sha256sums = d4616a93ee3bb1a503d34ad49a36ead7d7a070efb9ee9eb2ccbdd59d70c17cf2
 	sha256sums = 64864d13c5cbe2fc29ea6cb8311d43d20abf3080fa3d7fc6c57dd5375954d8d6
 	sha256sums = 367519191efd5764f25d8e170d9eebc880802f563f8347fc2688d9386f950222
-	source_x86_64 = boundary-0.20.0.zip::https://releases.hashicorp.com/boundary/0.20.0/boundary_0.20.0_linux_amd64.zip
-	sha256sums_x86_64 = 86ea36272497cdabf98e659025db86ba4234c1d88ae78e0b264d70dacf2eb122
+	source_x86_64 = boundary-0.20.1.zip::https://releases.hashicorp.com/boundary/0.20.1/boundary_0.20.1_linux_amd64.zip
+	sha256sums_x86_64 = 00e7145c483d38b21d48ebb13d63c73aaed9771baa13e9d8a4d34da24aea4240
 
 pkgname = boundary-bin
