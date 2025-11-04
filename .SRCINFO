@@ -1,0 +1,25 @@
+pkgbase = xlibre-xorgxrdp
+	pkgdesc = XLibre drivers for xrdp
+	pkgver = 0.10.4
+	pkgrel = 1
+	url = https://github.com/neutrinolabs/xorgxrdp
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = X11
+	makedepends = libxfont2
+	makedepends = nasm
+	makedepends = xorg-server-devel
+	makedepends = xrdp
+	depends = glibc
+	depends = xlibre-xserver
+	provides = xorgxrdp
+	conflicts = xorgxrdp
+	options = staticlibs
+	source = https://github.com/neutrinolabs/xorgxrdp/releases/download/v0.10.4/xorgxrdp-0.10.4.tar.gz
+	source = https://github.com/neutrinolabs/xorgxrdp/releases/download/v0.10.4/xorgxrdp-0.10.4.tar.gz.asc
+	validpgpkeys = 61ECEABBF2BB40E3A35DF30A9F72CDBC01BF10EB
+	sha256sums = c2585c73916d68123320c3b3d077d3596c50d71466dbd59e780ca247f9124f14
+	sha256sums = SKIP
+
+pkgname = xlibre-xorgxrdp
