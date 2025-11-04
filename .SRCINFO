@@ -1,6 +1,6 @@
 pkgbase = iocaine-git
 	pkgdesc = The deadliest poison known to AI
-	pkgver = r520.b0baa9b
+	pkgver = r565.f72e9ac
 	pkgrel = 1
 	url = https://iocaine.madhouse-project.org/
 	arch = any

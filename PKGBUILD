@@ -1,7 +1,7 @@
 # Maintainer: 30p87 <30p87@30p87.de>
 
 pkgname=iocaine-git
-pkgver=r520.b0baa9b
+pkgver=r565.f72e9ac
 pkgrel=1
 pkgdesc='The deadliest poison known to AI'
 arch=('any')
@@ -50,7 +50,7 @@ package() {
 	install -dm755 "${pkgdir}/usr/share/webapps/iocaine"
 
 	# Docs/Example configs
-	install -Dm644 "data/defaults/config.kdl" "${pkgdir}/etc/iocaine/config.toml"
+	install -Dm644 "data/defaults/config.kdl" "${pkgdir}/etc/iocaine/config.kdl"
 	install -Dm644 "${srcdir}/nginx_filter.conf" "${pkgdir}/usr/share/doc/${pkgname}/nginx/iocaine_filter.conf"
 	install -Dm644 "${srcdir}/nginx_component.conf" "${pkgdir}/usr/share/doc/${pkgname}/nginx/iocaine.component"
 
