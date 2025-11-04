@@ -1,7 +1,7 @@
 pkgbase = python-mcp
 	pkgdesc = Model Context Protocol SDK.
 	pkgver = 1.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/modelcontextprotocol/python-sdk
 	arch = any
 	license = MIT
@@ -35,11 +35,13 @@ pkgbase = python-mcp
 	depends = python-pydantic-settings
 	depends = uvicorn
 	depends = python-jsonschema
+	depends = python-pyjwt
+	depends = python-cryptography
 	optdepends = python-rich: rich
 	optdepends = python-typer: cli
 	optdepends = python-dotenv: cli
 	optdepends = python-websockets: ws
-	source = mcp-1.20.0::git+https://github.com/modelcontextprotocol/python-sdk.git#tag=v1.20.0
+	source = mcp::git+https://github.com/modelcontextprotocol/python-sdk.git#tag=v1.20.0
 	source = fix-pydantic-2.12.x.patch
 	sha256sums = fd98c19073debacade9dd842b88c850edbf11cd0c37c9ce217ff8863b78d484b
 	sha256sums = 30f3aa2c6c50f6c3b5ac19ea43af30e0f037d6b88f91c2d9b658329ea1ef23b8
