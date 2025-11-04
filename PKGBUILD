@@ -3,8 +3,8 @@
 _pkgauthor=abenz1267
 _pkgname=elephant
 pkgbase=${_pkgname}-bin
-pkgname=(${_pkgname}-bin ${_pkgname}-websearch-bin ${_pkgname}-unicode-bin ${_pkgname}-todo-bin ${_pkgname}-symbols-bin ${_pkgname}-runner-bin ${_pkgname}-providerlist-bin ${_pkgname}-menus-bin ${_pkgname}-files-bin ${_pkgname}-desktopapplications-bin ${_pkgname}-clipboard-bin ${_pkgname}-calc-bin ${_pkgname}-archlinuxpkgs-bin ${_pkgname}-bluetooth-bin ${_pkgname}-windows-bin ${_pkgname}-snippets-bin ${_pkgname}-nirisessions-bin)
-pkgver=2.14.0
+pkgname=(${_pkgname}-bin ${_pkgname}-websearch-bin ${_pkgname}-unicode-bin ${_pkgname}-todo-bin ${_pkgname}-symbols-bin ${_pkgname}-runner-bin ${_pkgname}-providerlist-bin ${_pkgname}-menus-bin ${_pkgname}-files-bin ${_pkgname}-desktopapplications-bin ${_pkgname}-clipboard-bin ${_pkgname}-calc-bin ${_pkgname}-archlinuxpkgs-bin ${_pkgname}-bluetooth-bin ${_pkgname}-windows-bin ${_pkgname}-snippets-bin ${_pkgname}-nirisessions-bin ${_pkgname}-bookmarks-bin)
+pkgver=2.14.1
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="general purpose datasource and executor"
@@ -35,7 +35,8 @@ optdepends=("${_pkgname}-providerlist: providerlist provider"
             "${_pkgname}-bluetooth: bluetooth provider"
             "${_pkgname}-windows: windows provider"
             "${_pkgname}-snippets: snippets provider"
-            "${_pkgname}-nirisessions: nirisessions provider")
+            "${_pkgname}-nirisessions: nirisessions provider"
+            "${_pkgname}-bookmarks: bookmarks provider")
 
 options=(!strip)
 
@@ -57,26 +58,28 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v
                "bluetooth-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/bluetooth-linux-${_barch[0]}.tar.gz"
                "windows-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/windows-linux-${_barch[0]}.tar.gz"
                "snippets-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/snippets-linux-${_barch[0]}.tar.gz"
-               "nirisessions-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/nirisessions-linux-${_barch[0]}.tar.gz")
+               "nirisessions-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/nirisessions-linux-${_barch[0]}.tar.gz"
+               "bookmarks-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/bookmarks-linux-${_barch[0]}.tar.gz")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             'b7588cd186b1e534a5fafe14578f88685daae66abae7be582beead897df5d077')
-sha256sums_x86_64=('f25c938fe47022a3878b10dbebd8aec85543291b2f95b278c1b8b232a4c50e50'
-                   '3c14405ddc3ebdfad0e81bc2098b0582f722135617e032bde796ae6de086f149'
-                   'c9dfa7544dd517c122868c544c66a9111b9e2131ff6f27d209877f19e5d1d78a'
-                   'e953ab83363a8e32cef6ce89aa25741de06d6d26362f8ac8460a6fe6879789d0'
-                   'dc033bc3128f07c3400406dcbcce8c356855abbd9db4084ca5284ecfcfc938dc'
-                   '219bf72847f9a5dfeb0dc9269d01e6a70bc8743fc8129ac7e9ed276de44ac488'
-                   '61ee4a16317aaa594512c2a16a043646faf3e78bd92ef1a1edbc9c75158fb726'
-                   '4f853835b8a2da9fd538706e1833f6d9d61a6e64ff38d7da5dac26a0e8500320'
-                   '8b217ee01aebff58f9b8c3362d26fb21e27d5e6f9e17a086cc7af7379dd3172d'
-                   '12bef301fd71113f94e6b423060852221425da4030521b8cdcd15b515856e15c'
-                   'bc5770827526185ac06d3791a19140d812d25b4b0944a9a0a49955c99d9aaab2'
-                   '5303af48ad6ffc1a3034a663137131bbbbd258f6ee5a21d0fae680f5e5376df7'
-                   'f00faeb189db04f0466e32e8e736f9836e629c40d8c45257f87d7aac0a215bbf'
-                   '26a1d073a18ccdcf23c428f324f920bd5c7cd55b766e7b52806f84d9138c0038'
-                   'f88284427776338cbd722552cecfed19425a6ca86f19a260d1eafc04bfb89ece'
-                   '3274976ac2603da6902707eb73e8d0aa1ab1fef897137b28ae83b85b3594f972'
-                   '72f3d80ac524e5a77b7518f0e458a8cec8a783394bbec4bc0aca1c498d6c5730')
+sha256sums_x86_64=('593208655daa9eee86eb7d3dc259b67465887ede9c6e5b9d3bd76cbbdde84c09'
+                   'c27d593a4aa5d322f70fa35d050c6c6308a436f80f77b32945e1edc5fd7e5a9e'
+                   '4dddc70012b5641c7f412b589de756f55fae55a92cf410d13f7d0800b0df050e'
+                   'a93053e5cd7f168ce439320fe7b8e7b7ff4ce76b026cf1e65ee90ba138303f37'
+                   'cff5d04822c300edf9b93da0ff86dffdf40e2bad51202b9a129abc0b7394bdfa'
+                   '3d7ab81b05e9b139b9a8590550a7ccbe7020e37ce7eb9fd2e4f235c0d4ca1e8c'
+                   '459e9dd439969c737213f0c241091b02a556cc65db16d7d3e482e2ca0dba6c38'
+                   '3e6f39d30f4ef2b3f12b25d3155a347b7b5b4558c21f4709b82600bc120bc30b'
+                   'eacadbb4f343db579529665fd4f74163062d56d7e9c71288690cc52a3bc92fb6'
+                   '185c7ad9894e3e28ced686029cfa6a773069646e63bd9bca9a3ff8bc5cc33d96'
+                   '7df0107c9cc32b9ee3ed3a2b5f58ed965cbfc145a6ec59de4ad84a0e4674e13d'
+                   '2346d6d84afc2c393e6ffb36b2951ce7a83331d27ba09178031d499ca633019e'
+                   '5c5c9e8dbd75c6ebf1bcd9e7a5e0288d4a1d6ce88d6f12ac4eb9f63ecc602ffa'
+                   'ce49049f6392de4f13d4f5dbeba0542e55b140043d396daaf6e55e8f5a398bea'
+                   '262f0ee7813181bc0e0e40e215822c745eaace2e21c42eb5072f5d32706e8850'
+                   'e44255f4f0ac4363e287f6c1498cf54a2d481dbeda73d48e7264b5a3234cc691'
+                   'c107ffefbeb48ff0bfb5a6b7ec4c8a9a7be930cf0166fc053d90860c1949331b'
+                   '47b9d834079c6429f158cf7666f5b91a87f71fa6f4109f31536abc36aa1f61c0')
 
 case $CARCH in
     ${arch[0]})
@@ -314,6 +317,20 @@ package_elephant-nirisessions-bin() {
     cd "${srcdir}/" || exit
 
     install -Dm755 "nirisessions-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/nirisessions.so"
+
+    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_elephant-bookmarks-bin() {
+    pkgdesc="bookmarks provider for ${_pkgname}"
+
+    conflicts=("${_pkgname}-bookmarks")
+    provides=("${_pkgname}-bookmarks")
+    depends+=("${_pkgname}" "jq" "sqlite")
+
+    cd "${srcdir}/" || exit
+
+    install -Dm755 "bookmarks-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/bookmarks.so"
 
     install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
