@@ -82,10 +82,9 @@ verify_dest() {
   
   # Abort any in-progress tasks
   git am --abort ||
-    git apply --abort ||
     git merge --abort ||
     git rebase --abort ||
-    git cherrypick --abort || :
+    git cherry-pick --abort || :
 
   # Update the existing shallow clone
   update_src
