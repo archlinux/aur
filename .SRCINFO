@@ -11,6 +11,14 @@ pkgbase = python-bip_utils
 	makedepends = python-setuptools-scm>=6.2
 	makedepends = python-wheel
 	depends = python>=3.7
+	depends = python-cbor2
+	depends = python-coincurve
+	depends = python-crcmod
+	depends = python-ecdsa
+	depends = python-ed25519-blake2b
+	depends = python-pycryptodome
+	depends = python-pynacl
+	depends = python-py-sr25519-bindings
 	source = https://github.com/ebellocchia/bip_utils/archive/refs/tags/v2.10.0.tar.gz
 	sha256sums = SKIP
 
