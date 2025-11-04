@@ -1,11 +1,12 @@
 # Based off of: https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
-# Maintainer: Paul Sauve <paul@technove.co>
+# Maintainer: Dillan Mills <archlinux@dillan.org>
+# Contributor: Paul Sauve <paul@technove.co>
 
 _pkgname=actual
 _Pkgname=Actual
 
 pkgname=${_pkgname}-appimage
-pkgver=v25.10.0
+pkgver=v25.11.0
 pkgrel=1
 pkgdesc="Actual Budget is a local-first personal finance tool. It is 100% free and open-source, written in NodeJS, it has a synchronization element so that all your changes can move between devices without any heavy lifting."
 arch=('x86_64')
@@ -16,7 +17,7 @@ options=(!strip)
 _appimage="${_Pkgname}-linux-${arch}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/actualbudget/${_pkgname}/releases/download/${pkgver}/${_appimage}")
 noextract=("${_appimage}")
-sha256sums_x86_64=('32ce63434995ba9b48704fc56a9df4276f70829b62a69fb18d61ba870262f625')
+sha256sums_x86_64=('45d3a11d7997c742e2fe715872b4e7360040bf3e821570313f799c2bfdc3410d')
 
 prepare() {
     chmod +x "${_appimage}"
