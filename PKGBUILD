@@ -12,7 +12,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
     "mujs-linking.patch"
 )
-sha256sums=('SKIP'
+sha256sums=('a03849f532f461be9e842d6d045691d1014f747ef5bf4aaf6186ac1f3c0c49ca'
             'SKIP')
 
 prepare() {
