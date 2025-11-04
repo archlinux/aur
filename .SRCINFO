@@ -1,6 +1,6 @@
 pkgbase = mewline
 	pkgdesc = 😺 Elegant and extensible status bar for the meowrch distribution (stable)
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/meowrch/mewline
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = mewline
 	depends = cliphist
 	provides = mewline-git
 	conflicts = mewline-git
-	source = https://github.com/meowrch/mewline/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = cc10ff141088e70dced8c3a9a6121b40e11a31cb4f7deef9f6a6ef2f4e611115
+	source = https://github.com/meowrch/mewline/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 81790e71a8b1f3e847e910396bfac4898e617be9ce5a32b9ae7ac1fe5f956dcc
 
 pkgname = mewline
