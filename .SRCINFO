@@ -1,0 +1,23 @@
+pkgbase = python-ledgered
+	pkgdesc = Python tools, utils, libraries, to be used with Ledger cryptodevices
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://github.com/LedgerHQ/ledgered
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools>=65
+	makedepends = python-setuptools-scm>=6.2
+	makedepends = python-wheel
+	depends = python>=3.9
+	depends = python-pydantic
+	depends = python-pyelftools
+	depends = python-pygithub
+	depends = python-tomli
+	optdepends = python-pytest: Run tests
+	optdepends = python-pytest-cov: Code coverage
+	source = https://github.com/LedgerHQ/ledgered/releases/download/v0.12.1/ledgered-0.12.1.tar.gz
+	sha256sums = 34d0022b6373e5f478722bb2ebc044a5f8af3e3d77831b494f3da7e16471f9d1
+
+pkgname = python-ledgered
