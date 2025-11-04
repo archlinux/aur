@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=viper
-_pkgver=1.42.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='Virtual Inference of Protein-activity by Enriched Regulon analysis'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-bcellviper
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5f51d69e4173a365cc36511a1a9bcd82b1b8b4727395402134079da8f74e1224')
+sha256sums=('d213b970be4d125971c1abd8af09005e422e0624c4fa98a107f15ebd6a3795be')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
