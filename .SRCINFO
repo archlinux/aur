@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-openvdb
 	pkgdesc = A large suite of tools for the efficient storage and manipulation of sparse volumetric data discretized on three-dimensional grids (mingw-w64)
-	pkgver = 12.1.1
+	pkgver = 13.0.0
 	pkgrel = 1
 	url = https://github.com/AcademySoftwareFoundation/openvdb
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = mingw-w64-openvdb
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = openvdb-12.1.1.tar.gz::https://github.com/AcademySoftwareFoundation/openvdb/archive/refs/tags/v12.1.1.tar.gz
-	sha512sums = 3ca5f7656aa0bf753ae2bd4f8c40f2e0eec48a22a187fbd519e6a42c2f2b3c9a4b2f32d4a2daa692894af712e13172dfb4ca2e9af99b4d63196bf6b74c87ffb5
+	source = openvdb-13.0.0.tar.gz::https://github.com/AcademySoftwareFoundation/openvdb/archive/refs/tags/v13.0.0.tar.gz
+	sha512sums = d5cb9e4ab6a1434c9d30fd645a4c1154ce6a16c711e48ca5643fa748d8f51c9920b5bdeb5496ccf0908c6f085b7afcbb0ed2b9387e1ab471ec262733eb6fde4d
 
 pkgname = mingw-w64-openvdb

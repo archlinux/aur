@@ -2,7 +2,7 @@
 
 _pkgname=openvdb
 pkgname=mingw-w64-${_pkgname}
-pkgver=12.1.1
+pkgver=13.0.0
 pkgrel=1
 pkgdesc='A large suite of tools for the efficient storage and manipulation of sparse volumetric data discretized on three-dimensional grids (mingw-w64)'
 url='https://github.com/AcademySoftwareFoundation/openvdb'
@@ -22,7 +22,7 @@ makedepends=('mingw-w64-cmake')
 arch=('any')
 options=(!strip !buildflags staticlibs)
 source=("$_pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('3ca5f7656aa0bf753ae2bd4f8c40f2e0eec48a22a187fbd519e6a42c2f2b3c9a4b2f32d4a2daa692894af712e13172dfb4ca2e9af99b4d63196bf6b74c87ffb5')
+sha512sums=('d5cb9e4ab6a1434c9d30fd645a4c1154ce6a16c711e48ca5643fa748d8f51c9920b5bdeb5496ccf0908c6f085b7afcbb0ed2b9387e1ab471ec262733eb6fde4d')
 
 _srcdir="${_pkgname}-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
