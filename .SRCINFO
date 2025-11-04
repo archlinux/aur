@@ -1,6 +1,6 @@
 pkgbase = modsecurity-crs
 	pkgdesc = OWASP ModSecurity Core Rule Set
-	pkgver = 4.19.0
+	pkgver = 4.20.0
 	pkgrel = 1
 	url = https://github.com/coreruleset/coreruleset
 	install = modsecurity-crs.install
@@ -16,10 +16,10 @@ pkgbase = modsecurity-crs
 	backup = etc/modsecurity/crs/crs-setup.conf
 	backup = etc/modsecurity/crs/REQUEST-900-EXCLUSION-RULES-BEFORE-CRS.conf
 	backup = etc/modsecurity/crs/RESPONSE-999-EXCLUSION-RULES-AFTER-CRS.conf
-	source = https://github.com/coreruleset/coreruleset/archive/refs/tags/v4.19.0.tar.gz
+	source = https://github.com/coreruleset/coreruleset/archive/refs/tags/v4.20.0.tar.gz
 	source = https://raw.githubusercontent.com/owasp-modsecurity/ModSecurity/v3/master/modsecurity.conf-recommended
 	source = https://raw.githubusercontent.com/owasp-modsecurity/ModSecurity/v3/master/unicode.mapping
-	b2sums = 9a5f02a54f8787a672300464cb72eab45dfd571965b47170582c239f5e7abf0c973019d37f62fbe8a3485716829ad729b9f3961530d046d5cbc201067a391d6e
+	b2sums = 6c6d91a83e0b0c5d5df532b12bb2539495a81648ac307b40242cf2e73f07546fae9a370fa3cafb6870f61d285a68357c234bed760ac80ff70731e70129a2785b
 	b2sums = 378937cb32877e1bb22a2e08389da144be8004233e6d77c917c848ecfba5897cae85bd5c921e5a8eefb14a12b07050e6cd642c485351d25b6e9e8aef9ab84c1f
 	b2sums = 81760f570952b472dcdd3a5b5a2214136e21d1a1cdf65b6d16c615ef4ac6df056b37eebe9ce1f175aa72c664fa7405b1e6edc57847e64511cc64d969ad4490e7
 
