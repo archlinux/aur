@@ -1,6 +1,6 @@
 pkgbase = quill-editor
 	pkgdesc = A simple CLI Text Editor
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	arch = x86_64
 	license = MIT
