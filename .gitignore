@@ -1,4 +1,4 @@
 /pkg/
 /src/
-/ais-catcher/
+*.tar.gz
 *.pkg.tar.zst
