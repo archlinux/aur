@@ -1,0 +1,25 @@
+pkgbase = xlibre-xorgxrdp-nvidia
+	pkgdesc = XLibre drivers for xrdp, with NVIDIA GPU support.
+	pkgver = 0.10.4
+	pkgrel = 1
+	url = https://github.com/neutrinolabs/xorgxrdp
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = X11
+	makedepends = nvidia-utils
+	makedepends = libxfont2
+	makedepends = nasm
+	makedepends = xorg-server-devel
+	makedepends = xrdp
+	makedepends = git
+	depends = glibc
+	depends = xlibre-xserver
+	provides = xorgxrdp
+	conflicts = xorgxrdp
+	options = staticlibs
+	source = git+https://github.com/neutrinolabs/xorgxrdp#branch=gfx_mainline_merge
+	validpgpkeys = 61ECEABBF2BB40E3A35DF30A9F72CDBC01BF10EB
+	sha256sums = SKIP
+
+pkgname = xlibre-xorgxrdp-nvidia
