@@ -12,8 +12,8 @@ _pkgbase=gdal
 provides=('gdal')
 conflicts=('gdal')
 pkgname=(gdal-hdf4 python-gdal-hdf4)
-pkgver=3.11.4
-pkgrel=2
+pkgver=3.11.5
+pkgrel=1
 pkgdesc="Translator library for raster and vector geospatial data formats"
 arch=(x86_64)
 url="https://gdal.org/"
@@ -38,16 +38,7 @@ options=('!emptydirs')
 changelog=$pkgbase.changelog
 
 source=(https://github.com/OSGeo/${_pkgbase}/releases/download/v${pkgver}/${_pkgbase}-${pkgver}.tar.gz)
-md5sums=('9f4fa4b3be48fb60d5dd76fecb11a5f6')
-
-prepare() {
-  cd $_pkgbase-$pkgver
-  # Fix Poppler compatibility - use c_str() and size() for newer Poppler
-  sed -i 's/gstr\.getLength()/gstr.size()/g' frmts/pdf/pdfobject.cpp
-  
-  # Also check if there are getCString() calls that need to be replaced with c_str()
-  sed -i 's/getCString()/c_str()/g' frmts/pdf/pdfobject.cpp
-}
+md5sums=('0f7c1d9f29422f0fd2a3d60658599bad')
 
 build() {
   export PATH="$(pwd)/build/apps:$PATH"
