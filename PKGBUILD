@@ -1,17 +1,18 @@
-# Maintainer: Jiachen Yang <farseerfc@gmail.com>
-# Maintainer: Ariel AxionL <axiionl@aosc.io>
+# Contributor: Jiachen Yang <farseerfc@gmail.com>
+# Contributor: Ariel AxionL <axiionl@aosc.io>
 
 pkgname=netease-musicbox
 _gitname=musicbox
-_pyname=NetEase-MusicBox
+_pyname=netease_musicbox
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A sexy command line interface musicbox for NetEase based on Python"
 arch=(any)
 url="https://github.com/darknessomi/musicbox"
-depends=('mpg123' 'python-pycryptodomex' 'python-requests' 'python-future' 
-         'python-fuzzywuzzy' 'python-requests-cache' 'python-importlib-metadata')
-makedepends=('python-setuptools' 'python-poetry')
+depends=('mpg123' 'python-pycryptodomex' 'python-requests'
+         'python-requests-cache' 'python-importlib-metadata'
+         'python-thefuzz')
+makedepends=('python-build' 'python-installer' 'python-poetry-core')
 optdepends=('aria2: music caching'
             'libnotify: notifications'
             'qt5-base: lyrics support'
@@ -31,14 +32,13 @@ sha256sums=('b7f984b0462b553ebc8fccb414783b07936efa49fdd1822d2c79a4c8aa624f4e'
 
 build() {
     cd "${srcdir}/musicbox-${pkgver}"
-    poetry build -f sdist
-    tar xvf "./dist/${_pyname}-${pkgver}.tar.gz"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    cd "${srcdir}/musicbox-${pkgver}"/${_pyname}-${pkgver}
-    python setup.py install --root="${pkgdir}/" --optimize=1
+    cd "${srcdir}/musicbox-${pkgver}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 # vim:set ts=4 sw=4 et:
