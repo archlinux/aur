@@ -7,8 +7,10 @@ pkgrel=1
 arch=(any)
 url="https://github.com/aeturrell/${_base}"
 license=(MIT)
-depends=(python-click python-ipykernel python-pandas-stubs
-  python-pandas python-pygments python-rich python-typeguard)
+depends=(python-click python-ipykernel python-pandas-stubs python-pandas
+	python-polars python-pygments python-rich python-typeguard python-pyarrow
+	#python-pydoclint
+	python-duckdb)
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest python-polars)
 optdepends=('python-polars: for polars data frame support')
