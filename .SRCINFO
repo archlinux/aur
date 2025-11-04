@@ -1,0 +1,24 @@
+pkgbase = psi-plus-nowebengine
+	pkgdesc = Psi+ is a powerful XMPP client (Qt, C++) designed for the XMPP power users (with all plugins and basic chat support with no WebEngine)
+	pkgver = 1.5.2127
+	pkgrel = 1
+	url = https://psi-im.org
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt6-multimedia
+	depends = qca-qt6
+	depends = qt6-svg
+	depends = hunspell
+	depends = qtkeychain-qt6
+	depends = libotr
+	depends = tidy
+	depends = http-parser
+	depends = libusrsctp
+	depends = libomemo-c
+	depends = libb2
+	source = https://github.com/psi-plus/psi-plus-snapshots/archive/1.5.2127.tar.gz
+	sha256sums = f56e5374d7a6cf23f3a02827887cf3ec752043b67bf0404d536b9190c90deab8
+
+pkgname = psi-plus-nowebengine
