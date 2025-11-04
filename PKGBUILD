@@ -1,12 +1,12 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=eternity-engine-git
-pkgver=4.01.00.r65.76d93cb3
+pkgver=4.05.04.r70.887c62029
 pkgrel=1
 pkgdesc="An advanced Doom port with vanilla compatibility"
 url="http://eternity.youfailit.net/"
 arch=('i686' 'x86_64')
-license=('GPL3')
+license=('GPL3', 'EE-COPYING')
 depends=('sdl2' 'sdl2_mixer' 'sdl2_net' 'zlib')
 makedepends=('git' 'cmake')
 conflicts=(${pkgname%-git})
