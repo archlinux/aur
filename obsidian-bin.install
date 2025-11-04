@@ -12,7 +12,7 @@ yellow="${bold}$(tput setaf 3)"
 post_install() {
     note "Custom flags should be put directly in: ~/.config/obsidian-flags.conf"
 
-    #ln -sf '/opt/Obsidian/obsidian' '/usr/bin/obsidian'
+    # ln -sf '/opt/Obsidian/obsidian' '/usr/bin/obsidian'
 
     if ! { [[ -L /proc/self/ns/user ]] && unshare --user true; }; then
         chmod 4755 '/opt/Obsidian/chrome-sandbox' || true
@@ -41,7 +41,7 @@ post_install() {
 }
 
 post_remove() {
-    rm -f '/usr/bin/obsidian'
+    # rm -f '/usr/bin/obsidian'
 
     APPARMOR_PROFILE_DEST='/etc/apparmor.d/obsidian'
     if [ -f "$APPARMOR_PROFILE_DEST" ]; then
