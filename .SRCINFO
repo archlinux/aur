@@ -17,6 +17,7 @@ pkgbase = refind-r
 	makedepends = efibootmgr
 	makedepends = gnu-efi
 	makedepends = make
+	makedepends = gcc
 	depends = bash
 	depends = dosfstools
 	depends = efibootmgr

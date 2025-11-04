@@ -16,6 +16,7 @@ makedepends=(
   efibootmgr
   gnu-efi
   make
+  gcc
 )
 license=(
   BSD-2-Clause
