@@ -2,7 +2,7 @@
 # Maintainer: John Mylchreest <jmylchreest at gmail dot com>
 
 pkgname='refind-btrfs-snapshots-bin'
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc='Generate rEFInd boot entries for btrfs snapshots'
 url='https://github.com/jmylchreest/refind-btrfs-snapshots'
@@ -13,11 +13,11 @@ conflicts=('refind-btrfs-snapshots')
 depends=('btrfs-progs' 'util-linux')
 backup=('etc/refind-btrfs-snapshots.conf')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/refind-btrfs-snapshots/releases/download/v0.0.5/refind-btrfs-snapshots_0.0.5_linux_arm64.tar.gz")
-sha256sums_aarch64=('8c5b9d26f4b02c27a8034776dc0f83ac445f661d8d7298e9bde589a72d9dcd15')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/refind-btrfs-snapshots/releases/download/v0.0.6/refind-btrfs-snapshots_0.0.6_linux_arm64.tar.gz")
+sha256sums_aarch64=('e0fa22cd746672d6558109d5df3bc0311f5f7d372f964e3062033c93d269c854')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/refind-btrfs-snapshots/releases/download/v0.0.5/refind-btrfs-snapshots_0.0.5_linux_amd64.tar.gz")
-sha256sums_x86_64=('cb6cc842b4b6f538ee20081468f97d971c0b03cd3858744bfb3b6ff1f1d21fa3')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/refind-btrfs-snapshots/releases/download/v0.0.6/refind-btrfs-snapshots_0.0.6_linux_amd64.tar.gz")
+sha256sums_x86_64=('b79589f2d531555669e113ea8188565f0b1c212e3eb988745948f7bb6a029f5e')
 
 package() {
   # binaries
