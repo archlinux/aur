@@ -7,7 +7,16 @@ pkgdesc='Manage all your JetBrains Projects and Tools'
 arch=('x86_64' 'i686')
 url='https://www.jetbrains.com/toolbox/'
 license=('custom:jetbrains')
-depends=('fuse' 'glib2' 'libxslt' 'libxss' 'xcb-util-keysyms' 'xdg-utils' 'nss')
+depends=(
+  fuse
+  glib2
+  libxslt
+  libxss
+  nss
+  org.freedesktop.secrets
+  xcb-util-keysyms
+  xdg-utils
+)
 optdepends=('xdg-utils: open URLs')
 options=('!strip' '!debug')
 source=("https://download.jetbrains.com/toolbox/${pkgname}-${pkgver}.tar.gz"
