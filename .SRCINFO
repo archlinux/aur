@@ -1,8 +1,8 @@
 pkgbase = libadwaita-without-adwaita-git
-	pkgdesc = libadwaita; Includes a patch to not overwrite the system theme
-	pkgver = 1.7.0
-	pkgrel = 17
-	url = https://gnome.pages.gitlab.gnome.org/libadwaita
+	pkgdesc = Building blocks for modern adaptive GNOME applications - patched to respect system theme
+	pkgver = 1.8.1.r64.g55e1e5e
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/libadwaita
 	arch = i686
 	arch = x86_64
 	arch = armv7h
@@ -10,26 +10,19 @@ pkgbase = libadwaita-without-adwaita-git
 	arch = aarch64
 	license = LGPL-2.1-or-later
 	makedepends = git
-	makedepends = meson
-	makedepends = gi-docgen
-	makedepends = sassc
-	makedepends = gobject-introspection
-	makedepends = vala
-	makedepends = pkg-config
-	makedepends = patch
-	makedepends = cmake
-	makedepends = meson
-	makedepends = libsass
-	makedepends = gcc
 	makedepends = glib2-devel
-	depends = gtk4
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = sassc
+	makedepends = vala
 	depends = appstream
-	provides = libadwaita=1.7.0
-	provides = libadwaita-1.so=0-64
+	depends = gtk4
+	provides = libadwaita=1:1.8.1.r64.g55e1e5e
+	provides = libadwaita-1.so
 	conflicts = libadwaita
-	source = libadwaita-without-adwaita-git::git+https://gitlab.gnome.org/GNOME/libadwaita.git
-	source = theming_patch.diff
+	source = libadwaita::git+https://gitlab.gnome.org/GNOME/libadwaita.git
+	source = 0001-respect_system_theme.patch
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = efcd44b8fdd4a6a4afaf278c55525b9b28010170bfdf72f51a1e38f1049dfa91
 
 pkgname = libadwaita-without-adwaita-git

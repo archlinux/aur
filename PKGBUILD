@@ -1,37 +1,70 @@
-# Maintainer: ich <remove dashes in s-c--25-ni at gmail dot com>
+# Maintainer:
+# Contributor: ich <remove dashes in s-c--25-ni at gmail dot com>
 
-pkgname=libadwaita-without-adwaita-git
-pkgver=1.7.0
-pkgrel=17
-url="https://gnome.pages.gitlab.gnome.org/libadwaita"
-pkgdesc='libadwaita; Includes a patch to not overwrite the system theme'
+_pkgname="libadwaita-without-adwaita"
+pkgname="$_pkgname-git"
+pkgver=1.8.1.r64.g55e1e5e
+pkgrel=1
+pkgdesc="Building blocks for modern adaptive GNOME applications - patched to respect system theme"
+url="https://gitlab.gnome.org/GNOME/libadwaita"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
-license=(LGPL-2.1-or-later)
+license=('LGPL-2.1-or-later')
 
-provides=("libadwaita=${pkgver}" "libadwaita-1.so=0-64")
+depends=(
+  'appstream'
+  'gtk4'
+)
+makedepends=(
+  'git'
+  'glib2-devel'
+  'gobject-introspection'
+  'meson'
+  'sassc'
+  'vala'
+)
+
+provides=(
+  "libadwaita=1:$pkgver"
+  "libadwaita-1.so"
+)
 conflicts=('libadwaita')
 
+_pkgsrc="libadwaita"
 source=(
-    "${pkgname}::git+https://gitlab.gnome.org/GNOME/libadwaita.git"
-    theming_patch.diff
+  "$_pkgsrc"::"git+https://gitlab.gnome.org/GNOME/libadwaita.git"
+  '0001-respect_system_theme.patch'
 )
 sha256sums=(
-    SKIP
-    SKIP
+  'SKIP'
+  'efcd44b8fdd4a6a4afaf278c55525b9b28010170bfdf72f51a1e38f1049dfa91'
 )
 
-depends=(gtk4 appstream)
-makedepends=(git meson gi-docgen sassc gobject-introspection vala pkg-config patch cmake meson libsass gcc glib2-devel)
+prepare() {
+  cd "$_pkgsrc"
+  patch -Np1 -F100 -i ../0001-respect_system_theme.patch
+}
+
+pkgver() (
+  cd "$_pkgsrc"
+  local _tmp _tag _version _revision _hash
+  _tmp=$(git tag | grep -Ev '[A-Za-z][A-Za-z]' | sed -E 's&([^0-9]*)(\S+)$&\2 \1\2&' | sort -rV | head -1)
+  _version=$(cut -f1 -d' ' <<< ${_tmp:?})
+  _tag=$(cut -f2 -d' ' <<< ${_tmp:?})
+  _revision=$(git rev-list --count --cherry-pick "$_tag"...HEAD)
+  _commit=$(git rev-parse --short=7 HEAD)
+  printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_commit:?}"
+)
 
 build() {
-  cd "${srcdir}/${pkgname}"
-  git checkout "${pkgver}"
-  <"${srcdir}"/theming_patch.diff patch src/adw-style-manager.c
-  meson build --prefix=/usr -Dexamples=false
-  ninja -C build 
+  local meson_options=(
+    -Dexamples=false
+    -Dtests=false
+  )
+
+  arch-meson "$_pkgsrc" build "${meson_options[@]}"
+  meson compile -C build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  DESTDIR="$pkgdir" ninja -C build install
+  meson install -C build --destdir "$pkgdir"
 }
