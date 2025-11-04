@@ -1,6 +1,6 @@
 pkgbase = python-autoray
 	pkgdesc = Abstract your array operations
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/jcmgray/autoray
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-autoray
 	optdepends = python-matplotlib: for visualizations
 	optdepends = python-networkx: for computational graph drawing
 	optdepends = python-pygraphviz: for graph layouts
-	source = autoray-0.8.1.tar.gz::https://github.com/jcmgray/autoray/archive/v0.8.1.tar.gz
-	sha512sums = 214723dccdd9d1e40ca8ea175c4eaf38b789ece3eda4a9d18810989b07c8f93b41f562eef5d68e6a5abef0360c86cd06f89337d93abbe390c3597d0b97506bbc
+	source = autoray-0.8.2.tar.gz::https://github.com/jcmgray/autoray/archive/v0.8.2.tar.gz
+	sha512sums = 35b96b7555fb8f9314058907a2443df15183814defbb47dd1a8d5f47199e49ceb23df4cc1a574f52aeb5295568b7460f8ea1e8a257a5f9037ab0b116eb66ecdf
 
 pkgname = python-autoray
