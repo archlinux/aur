@@ -1,7 +1,7 @@
 pkgbase = zrok
-	pkgdesc = Secure internet sharing made simple.
+	pkgdesc = zrok is a next-generation sharing platform, designed to make sharing network and file resources simple and secure.
 	pkgver = 1.1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zrok.io
 	arch = x86_64
 	license = Apache-2.0
@@ -12,3 +12,11 @@ pkgbase = zrok
 	sha256sums = 1567de28d6e2c123f52069889fce8715263596b2eba9001b98f2a9f72d37ba53
 
 pkgname = zrok
+
+pkgname = zrok-agent
+	pkgdesc = This package provides zrok-agent.service.
+	depends = zrok
+
+pkgname = zrok-share
+	pkgdesc = This package provides zrok-share.service.
+	depends = zrok
