@@ -1,0 +1,21 @@
+pkgbase = notnative-app-bin
+	pkgdesc = Note-taking application with Vim-like keybindings (binary package)
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/k4ditano/notnative-app
+	arch = x86_64
+	license = MIT
+	depends = gtk4
+	depends = webkitgtk-6.0
+	depends = libadwaita
+	depends = gtksourceview5
+	depends = libpulse
+	depends = sqlite
+	depends = mpv
+	depends = mujs
+	provides = notnative-app
+	conflicts = notnative-app
+	source = notnative-app-bin-0.1.4.tar.gz::https://github.com/k4ditano/notnative-app/releases/download/v0.1.4/notnative-app-bin-0.1.4-x86_64.tar.gz
+	sha256sums = 51dd5080c6843c52e0b5ef2785daffeb56d5d3b8a931e8d3dba4f389dedb292a
+
+pkgname = notnative-app-bin
