@@ -1,6 +1,6 @@
 pkgbase = r-gpa
 	pkgdesc = GPA (Genetic analysis incorporating Pleiotropy and Annotation)
-	pkgver = 1.20.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GPA
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = r-gpa
 	depends = r-vegan
 	depends = make
 	optdepends = r-gpaexample
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GPA_1.20.0.tar.gz
-	sha256sums = 8292d240e7f554917fdc122705d554c8a7cb37a04921b177d7d906fb431598ad
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GPA_1.22.0.tar.gz
+	sha256sums = d99293d1aea39d6e25b96bef54ddf054cd828f9a5b79a403523d461f3a7b1571
 
 pkgname = r-gpa
