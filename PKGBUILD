@@ -1,6 +1,6 @@
 # Maintainer: Guillermo Quinteros <gu.quinteros@gmail.com>
 pkgname=listen
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Minimal audio transcription tool - 100% on-premise"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-numpy' 'python-sounddevice' 'portaudio' 'ffmpeg')
 makedepends=('python-pip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gmoqa/listen/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('34a952001197d0039d23407fc7721dbf145cb8a983a762a62748a5ce9ddd3c20')
+sha256sums=('ebb477792215e5d6bf1076118652078d8789d143ad7b3d4ca5a1f8661071df46')
 
 build() {
   cd "$pkgname-$pkgver"
