@@ -1,6 +1,6 @@
 pkgbase = qsv-bin
 	pkgdesc = CSVs sliced, diced & analyzed. Quicksilver (qsv) is a fork of the popular xsv utility
-	pkgver = 8.1.1
+	pkgver = 9.1.0
 	pkgrel = 1
 	url = https://github.com/dathere/qsv
 	arch = x86_64
@@ -9,19 +9,19 @@ pkgbase = qsv-bin
 	depends = python>=3.13
 	provides = qsv
 	conflicts = qsv
-	source = https://github.com/dathere/qsv/raw/8.1.1/LICENSE-MIT
-	source = https://github.com/dathere/qsv/raw/8.1.1/UNLICENSE
-	source = 8.1.1.bash::https://github.com/dathere/qsv/raw/8.1.1/contrib/completions/examples/qsv.bash
-	source = 8.1.1.elv::https://github.com/dathere/qsv/raw/8.1.1/contrib/completions/examples/qsv.elv
-	source = 8.1.1.fish::https://github.com/dathere/qsv/raw/8.1.1/contrib/completions/examples/qsv.fish
-	source = 8.1.1.zsh::https://github.com/dathere/qsv/raw/8.1.1/contrib/completions/examples/qsv.zsh
+	source = https://github.com/dathere/qsv/raw/9.1.0/LICENSE-MIT
+	source = https://github.com/dathere/qsv/raw/9.1.0/UNLICENSE
+	source = qsv-9.1.0.bash::https://github.com/dathere/qsv/raw/9.1.0/contrib/completions/examples/qsv.bash
+	source = qsv-9.1.0.elv::https://github.com/dathere/qsv/raw/9.1.0/contrib/completions/examples/qsv.elv
+	source = qsv-9.1.0.fish::https://github.com/dathere/qsv/raw/9.1.0/contrib/completions/examples/qsv.fish
+	source = qsv-9.1.0.zsh::https://github.com/dathere/qsv/raw/9.1.0/contrib/completions/examples/qsv.zsh
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 233c90818eee08eae874ceea1610cf6d9afe3c0c9c7568ce23a838aea831c2d1
 	sha256sums = 215a1bd3fd3d1bca8acdc6d9e9a0ac68d32093153847c7d486d06d8910e8daf7
 	sha256sums = 360b157e3b3fc9b27156c69bc2885bd52c4d21539213cd72052fd5254eec8761
 	sha256sums = 3e9655bdf946b412518fcfe6b628ab2a0c041c918b7302405ceb08a02779425c
-	source_x86_64 = https://github.com/dathere/qsv/releases/download/8.1.1/qsv-8.1.1-x86_64-unknown-linux-gnu.zip
-	sha256sums_x86_64 = 3d532e9af2ef9a7b274b8ee3f84eaa2b32732511ea6b8354747b1934605473fd
+	source_x86_64 = https://github.com/dathere/qsv/releases/download/9.1.0/qsv-9.1.0-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = 7434226f5b6ab6aaeffcb1b0a15c69cd00598ac1f86d3b619bc83ec500cb2b7c
 
 pkgname = qsv-bin
