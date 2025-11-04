@@ -1,4 +1,5 @@
-pkgname='steamvr-lighthouse-manager-git'
+_pkgname=steamvr-lighthouse-manager
+pkgname='$_pkgname-git'
 pkgrel=1
 pkgver=1.1.main.r6.g173d2b9
 epoch=
@@ -43,6 +44,6 @@ check() {
 package() {
 	cd "$pkgname"
     install -Dm755 -t "$pkgdir/usr/bin/" "build/bin/base-station-manager"
-    install -Dm644 -t "$pkgdir/usr/share/applications/$pkgname.desktop" "resources/go-steamvr-lighthouse-manager.desktop"
-    install -Dm644 -t "$pkgdir/usr/share/icons/hicolor/256x256/apps/" "$pkgname.png"
+    install -Dm644 -t "$pkgdir/usr/share/applications/$_pkgname.desktop" "resources/go-steamvr-lighthouse-manager.desktop"
+    install -Dm644 -t "$pkgdir/usr/share/icons/hicolor/256x256/apps/" "$_pkgname.png"
 }
