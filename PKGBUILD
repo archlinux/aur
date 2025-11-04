@@ -4,7 +4,7 @@
 _pkgauthor=abenz1267
 _pkgname=walker
 pkgname=${_pkgname}-bin
-pkgver=2.9.0
+pkgver=2.9.1
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc='wayland application runner'
@@ -35,7 +35,8 @@ optdepends=('elephant-providerlist: providerlist provider'
             'elephant-bluetooth: bluetooth provider'
             'elephant-windows: windows provider'
             'elephant-snippets: snippets provider'
-            'elephant-nirisessions: nirisessions provider')
+            'elephant-nirisessions: nirisessions provider'
+            'elephant-bookmarks: bookmarks provider')
 
 backup=("etc/xdg/${_pkgname}/config.toml")
 
@@ -62,7 +63,7 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/downloa
 
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '08387c89b86a82db9d206fd960735f6ae859f62acc8a21dfe99b7558f1d689b4'
-            '452feeaed111246bcfea018cb0389b67d6037032f589227d1f8c2467292744bd'
+            '258713b666c67ef32467875eba6526563f860055c0b7af3dad6ce6c3084c9ba2'
             'd6dac24c66c6e851e4a0f702154ccd92a1b0f64990beeff393b530ccd1089721'
             'e9613245a50e92f6da1e6f09bc84473fae716ee4c30b2536a4f0b285a1536c94'
             '1c08b011b1c28ca332c96888e4b8fc02f36ec1e057986acfca568dfa4cccf73f'
@@ -77,7 +78,7 @@ sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '0a13000aa81a10b4550a7551943b3698a7982b98bbd33ebec6492a89662cbaf0'
             '073a912e3eee95249236af90ce50496a3b94bd840919b2d94e058054dbf3ca25'
             '229596513d82ef486c637c7989e7bd589c1a3f53fcd9d348ae708464a55c5b88')
-sha256sums_x86_64=('6b75beb19c6c793c3d05f613becbff001d605c1fc262c9fc6f04a6cdb357b6e1')
+sha256sums_x86_64=('2dc9c52582c319e672e520db55ce986fc8a5a958dc9cc286a845c7d07a9e5655')
 
 prepare() {
     cd "${srcdir}" || exit 1
