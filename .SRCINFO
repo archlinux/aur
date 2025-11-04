@@ -1,27 +1,31 @@
 pkgbase = r-promises
 	pkgdesc = Abstractions for Promise-Based Asynchronous Programming
-	pkgver = 1.3.3
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=promises
-	arch = x86_64
+	arch = any
 	license = MIT
 	checkdepends = r-future
 	checkdepends = r-testthat
 	depends = r-fastmap
 	depends = r-later
+	depends = r-lifecycle
 	depends = r-magrittr
+	depends = r-otel
 	depends = r-r6
-	depends = r-rcpp
 	depends = r-rlang
 	optdepends = r-future
 	optdepends = r-knitr
+	optdepends = r-mirai
+	optdepends = r-otelsdk
 	optdepends = r-purrr
+	optdepends = r-rcpp
 	optdepends = r-rmarkdown
 	optdepends = r-spelling
 	optdepends = r-testthat
 	optdepends = r-vembedr
-	source = https://cran.r-project.org/src/contrib/promises_1.3.3.tar.gz
-	md5sums = e74634d4396c08089405809a610c58e4
-	b2sums = 8a82bd1735c03247cb882ff404b0c4e7c6c6eae734c63f26f283db8c039008c5e073082c58753fd9c5c9896752cdc7e42dc2de5509afef96b631366b8ad2fc49
+	source = https://cran.r-project.org/src/contrib/promises_1.5.0.tar.gz
+	md5sums = 365a4097be36772605653818da60eae6
+	b2sums = 10f2f90785e56e8e2c133651bb47214ff408a8bdafe54c79646d7d143a70e6089263e0952afc4e5af1d978c4e15dd4c62fe077cfda5e0fd48832b00d22bdb670
 
 pkgname = r-promises
