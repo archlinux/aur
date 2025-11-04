@@ -1,6 +1,6 @@
 pkgbase = archium-bin
 	pkgdesc = Archium is a wrapper for AUR helpers such as YAY and Paru
-	pkgver = 1.9.3
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/keircn/archium
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = archium-bin
 	depends = readline
 	provides = archium
 	conflicts = archium
-	source = LICENSE-1.9.3::https://raw.githubusercontent.com/keircn/archium/v1.9.3/LICENSE
-	source = README-1.9.3::https://raw.githubusercontent.com/keircn/archium/v1.9.3/README.md
+	source = LICENSE-1.10.0::https://raw.githubusercontent.com/keircn/archium/v1.10.0/LICENSE
+	source = README-1.10.0::https://raw.githubusercontent.com/keircn/archium/v1.10.0/README.md
 	sha256sums = 66a37b615c2d3d566fb792cf78eed43cbc6806a5a7241e7d4b43e475b610443e
-	sha256sums = 3067d2a9287529c972c7ad5c546660eacdaae88040308b0ca3dbfc8a312a88b8
-	source_x86_64 = https://github.com/keircn/archium/releases/download/v1.9.3/archium-1.9.3.tar.gz
-	sha256sums_x86_64 = b8d62807c11a6edd76ed0b5248a2c395e74434a5775fdcf55b89199085505084
+	sha256sums = eb8b14dffaa8d20b14937dcf3ada5a63fe3b6602fa2bf53c5961f92f5490bf44
+	source_x86_64 = https://github.com/keircn/archium/releases/download/v1.10.0/archium-1.10.0.tar.gz
+	sha256sums_x86_64 = 2a52552e508704633ce9d60da4981e8e4668b021a7077c7758a5949157647c4b
 
 pkgname = archium-bin
