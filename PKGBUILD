@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dtv-bin
 _pkgname=DTV
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="Lightweight Douyu Douyin Bilibili Tigertooth live streaming desktop client.(Prebuilt version.Use system-wide electron)抖音、b站、斗鱼、虎牙跨平台轻量化桌面客户端"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64_linux.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/chen-zeong/DTV/v${pkgver}/LICENSE"
 )
-sha256sums=('0ad22badb4e5261507fe570c1ce33b7b67552ad40f91589a7360e35b764b18ae'
+sha256sums=('79997e2f6f72465820ca3544004fafad4d94238d76fdcec1a871159d5891219d'
             'ca61883629a40325b21aa31860f834ebfee4c71cce39a519c80732183ac73315')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
