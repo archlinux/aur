@@ -1,7 +1,7 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 # Contributor: Magnus Anderson <magnus@iastate.edu>
 pkgname=px_ptop
-pkgver=3.8.0
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="ps and top for Human Beings"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python')
 source=("px-$pkgver.pex"::"https://github.com/walles/px/releases/download/$pkgver/px.pex")
 noextract=("px-$pkgver.pex")
-sha256sums=('c98ae60a38d5260e129a1a86f8bf1d810ede42dac81b13d912f41c52bc8a3b2e')
+sha256sums=('1eecd028ee1d2c2ff85aa34599b92e541a1b696eb54263476b97578a3dcdf315')
 
 package() {
 	mkdir -p "${pkgdir}/usr/bin"
