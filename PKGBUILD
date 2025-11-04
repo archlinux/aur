@@ -27,7 +27,7 @@ depends=(
     libcec
     man-db
     python-systemd
-    refind
+    refind-r
     wlr-randr
     zram-generator
 )
@@ -38,7 +38,7 @@ provides=(sk-chos-addon)
 conflicts=(sk-chos-addon-git)
 replaces=(sk-chos-addon-git)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/honjow/sk-chos-config/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('b613d77a45a3049792ac7ce64e9e8df3c7631d50ae61a4f358e7bbb692496e85')
 options=(!strip)
 backup=('etc/sk-chos-tool/github_cdn.conf')
 install=sk-chos-addon.install
@@ -88,8 +88,6 @@ package() {
     find "${source_dir}/systemd/system" -maxdepth 1 -type f -exec install -m644 -D {} "${pkgdir}/usr/lib/systemd/system/" \;
     install -dm755 "${pkgdir}/usr/lib/systemd/system/hhd@.service.d"
     install -m644 -t "${pkgdir}/usr/lib/systemd/system/hhd@.service.d" "${source_dir}/systemd/system/hhd@.service.d"/*
-    install -dm755 "${pkgdir}/usr/lib/systemd/system/hhd.service.d"
-    install -m644 -t "${pkgdir}/usr/lib/systemd/system/hhd.service.d" "${source_dir}/systemd/system/hhd.service.d"/*
 
     # user service
     install -dm755 "${pkgdir}/usr/lib/systemd/user"
