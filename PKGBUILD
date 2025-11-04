@@ -1,10 +1,11 @@
-# Maintainer: Denis Alevi <mail at denisalevi dot de>
+# Maintainer: Cristóbal Tapia <crtapia at gmail dot com>
+# Contributor: Denis Alevi <mail at denisalevi dot de>
 
 pkgname=dpt-rp1-py
 _name=${pkgname}
 pkgver=0.1.18
-pkgrel=3
-pkgdesc='Python package to manage a Sony DPT-RP1'
+pkgrel=4
+pkgdesc='Python package to manage a Sony DPT-RP1 or Fujitsu Quaderno'
 url='https://github.com/janten/dpt-rp1-py'
 arch=('any')
 license=('MIT')
