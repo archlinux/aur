@@ -1,7 +1,7 @@
 pkgbase = brainparty
 	pkgdesc = 36 challenging mini games for testing your IQ
 	pkgver = 0.61
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/brainparty
 	arch = i686
 	arch = x86_64
@@ -18,9 +18,8 @@ pkgbase = brainparty
 	source = brainparty.xpm
 	source = brainparty.desktop
 	md5sums = d6bcdf6261697d206dbbda3362632002
-	md5sums = 66aa5acbcb0bfa1c8799ae02318ac8d2
+	md5sums = 1bc4705756c7b78f23e3d373ed48c529
 	md5sums = e9c0a2036e1966cc0b78a8ba1b45aafd
 	md5sums = ace494d9bd4b2442cb2400ca8228f5e1
 
 pkgname = brainparty
-

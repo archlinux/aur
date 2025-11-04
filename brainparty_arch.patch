@@ -112,3 +112,16 @@ diff -ruN brainparty_orig/symboliclogic.h brainparty/symboliclogic.h
  	void Tick();
  	
  	void OnMouseDown();
+diff --git a/BPGame.h b/BPGame.h
+index 19e5721..ebcbfa3 100644
+--- a/BPGame.h
++++ b/BPGame.h
+@@ -53,7 +53,7 @@ class BPMiniGame;
+ class SpriteFont;
+ 
+ struct cmp_str {
+-	bool operator()(char const *a, char const *b) {
++	bool operator()(char const *a, char const *b) const {
+ 		return std::strcmp(a, b) < 0;
+ 	}
+ };
