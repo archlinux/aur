@@ -1,0 +1,24 @@
+diff -ruN a/app/gui/CMakeLists.txt b/app/gui/CMakeLists.txt
+--- a/app/gui/CMakeLists.txt	2025-11-03 12:00:00.000000000 +0000
++++ b/app/gui/CMakeLists.txt	2025-11-03 12:15:00.000000000 +0000
+@@ -57,11 +57,11 @@
+
+ if(NOT (APPLE OR WIN32))
+   # Try to find the system-installed QScintilla without immediately failing
+-  find_package(QScintilla QUIET)
++  find_library(QSCINTILLA_QT6 qscintilla2_qt6)
+ endif()
+
+ # If QScintilla wasn’t found use the vendored version.
+-if(NOT QScintilla_FOUND)
++if(NOT QSCINTILLA_QT6)
+   message(STATUS "System QScintilla not found. Falling back to bundled QScintilla.")
+   add_subdirectory(QScintilla_src-2.14.1)
+ endif()
+@@ -307,5 +307,5 @@
+ target_link_libraries(${APP_NAME}
+     PRIVATE
+     SonicPi::API
+-    QScintilla
++    ${QSCINTILLA_QT6}
+     Threads::Threads)

@@ -9,22 +9,26 @@
 
 pkgname=sonic-pi
 pkgver=4.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The Live Coding Music Synth for Everyone"
 arch=(x86_64)
 url="https://sonic-pi.net/"
 license=(CC-BY-SA-4.0 LGPL-2.1-only GPL-2.0-only GPL-3.0-only MIT CC0-1.0 BSL-1.0 Ruby Apache-2.0 BSD-3-Clause custom:ISC)
 groups=(pro-audio)
-depends=(aubio ruby ruby-racc supercollider qscintilla-qt6 qt6-base qt6-svg qt6-wayland which)
+depends=(
+  'ruby-rugged>=1.9.0' 'ruby-i18n>=1.14.7' 'ruby-kramdown>=2.1.0' 'ruby-multi_json>=1.9.2' 'ruby-memoist>=0.16.2'
+  'ruby-tomlrb>=2.0.0' # devendored
+  aubio ruby ruby-racc supercollider
+  qscintilla-qt6 qt6-base qt6-svg qt6-wayland which
+)
 makedepends=(
-  'boost>=1.74.0'  # match vendored version
+  'boost>=1.74.0' 'ruby-gettext>=3.4.4'  # devendored
   erlang-asn1 erlang-public_key erlang-ssl erlang-parsetools erlang-sasl
   elixir git cmake gendesk chrpath qt6-tools
   ruby-prime ruby-erb ruby-rexml
 )
-checkdepends=(ruby-rake)
+#checkdepends=(ruby-rake)  # cannot run tests right now, see below
 optdepends=(
-  'jack2: JACK audio server for low-latency audio routing'
   'sc3-plugins: additional synthesis UGens for SuperCollider'
   'sox: audio processing and sample manipulation'
 )
@@ -34,6 +38,7 @@ source=(
   $pkgname-$pkgver-ruby_paths.patch
   $pkgname-$pkgver-devendor_boost.patch
   $pkgname-$pkgver-boost_deprecated_lib.patch
+  $pkgname-$pkgver-devendor_qscintilla_qt6.patch
 )
 sha512sums=(
   'd99d25bbb2e8b556156252140484502ce5bf2869f846b7aff69dae549812d18769b8cd6d9c474be36819d7a831b170553690906d89ece74cd9df2f80289d5892'
@@ -41,6 +46,7 @@ sha512sums=(
   'fa091666d493f302b507a8c8ccaf1992ee64214ec0f45b92198f724fce2b1cee718204afeba4de5ab6d2849a1e9a1933b623054fc459227a15529146d9937d7e'
   '841265559a7551d87750dffb4e224da4fdfd0657627ea8c7e61a996c2c854ee5773525b66cb1d750a5193e65f7e5f13cc5729f95d1d3d86b01d7a1a8be97226c'
   '5eacc305934bfb294f830f2ca8ed3cf4b51baef7b5ff98fd282e6f3636aadd34805fe7ce1574bb6d8b6c0dcb5309f6e1128acd226622c5a4c6da0d6fa474a077'
+  '9a0aa447019a4fd11255bc1d7c9056934aaf3238e2e6b93c3fff8143ec5d06ed7721a712eb09895ed7daf23781d30bfa3a938352bdc404ac32b17eb5007c669e'
 )
 
 prepare() {
@@ -56,37 +62,103 @@ prepare() {
   printf "Apply patch to set FHS compliant GUI paths\n"
   patch -Np1 -i "../$pkgname-$pkgver-gui_paths.patch"
 
+  printf "Apply patch to devendor qscintilla\n"
+  patch -Np1 -i "../$pkgname-$pkgver-devendor_qscintilla_qt6.patch"
+
   printf "Apply patch to devendor boost\n"
   patch -Np1 -i "../$pkgname-$pkgver-devendor_boost.patch"
 
   printf "Apply patch to remove reference to deprecated boost system lib\n"
   patch -Np1 -i "../$pkgname-$pkgver-boost_deprecated_lib.patch"
 
-#   # TODO: devendor ast-2.0.0
-#   # TODO: devendor atomic (bin)
-#   # TODO: devendor benchmark-ips-2.3.0
-#   # TODO: devendor blankslate
-#   # TODO: devendor interception (bin)
-#   # TODO: devendor memoist-0.16.2
-#   # TODO: devendor metaclass-0.0.4
-#   # TODO: devendor rubame
-#   # TODO: devendor ruby-beautify
-#   # TODO: devendor ruby-prof-0.15.8
-#   # TODO: devendor thread_safe
-#   # TODO: devendor tomlrb-2.0.0
-#   # TODO: devendor wavefile-0.8.1
-#   # TODO: devendor websocket-ruby-1.2.8
+  printf "Removing vendored test packages\n"
+  sed -i '/add_subdirectory(api-tests)/d' app/CMakeLists.txt
 
-# Commented out all this devendoring stuff for now, will address later
-#   # devendor gems requiring compilation:
-#   # ffi, ruby-prof, rugged
-#   sed -e '/rugged/d' \
-#       -e '/ffi/d' \
-#       -e '/ruby-prof/d' \
-#       -i app/server/ruby/bin/compile-extensions.rb
-#   # remove unrequired gems, so we don't create any doc for them
-#   rm -rvf app/server/ruby/vendor/{activesupport,ffi,gettext,i18n,kramdown,locale,minitest,mocha,multi_json,polyglot,rouge,rugged,sys-proctable,text,treetop}*
-#   rm -rvf app/server/ruby/vendor/{narray,ruby-coreaudio,ruby-prof,rake-compiler}*
+  printf "Removing vendored rugged gem\n"
+  rm -rf app/server/ruby/vendor/rugged-*
+
+  # Remove rugged from compile-extensions.rb since we're using system version
+  sed -i '/rugged/d' app/server/ruby/bin/compile-extensions.rb
+
+  # Devendor kramdown - use system ruby-kramdown package
+  printf "Removing vendored kramdown gem\n"
+  rm -rf app/server/ruby/vendor/kramdown-*
+
+  # Devendor i18n - use system ruby-i18n package
+  printf "Removing vendored i18n gem\n"
+  rm -rf app/server/ruby/vendor/i18n-*
+
+  # Remove concurrent-ruby (will be pulled in automatically by ruby-i18n)
+  rm -rf app/server/ruby/vendor/concurrent-ruby-*
+
+  # Devendor multi_json - use system ruby-multi_json package
+  printf "Removing vendored multi_json gem\n"
+  rm -rf app/server/ruby/vendor/multi_json
+
+  # Devendor memoist - use system ruby-memoist package
+  printf "Removing vendored memoist gem\n"
+  rm -rf app/server/ruby/vendor/memoist-*
+
+  # Devendor tomlrb - use system ruby-tomlrb package
+  printf "Removing vendored tomlrb gem\n"
+  rm -rf app/server/ruby/vendor/tomlrb-*
+
+  # Devendor gettext - use system ruby-gettext package (build-time only)
+  printf "Removing vendored gettext gem\n"
+  rm -rf app/server/ruby/vendor/gettext-*
+
+  # Remove locale (will be pulled in automatically by ruby-gettext)
+  rm -rf app/server/ruby/vendor/locale-*
+
+  # Remove test-only and unused gems
+  printf "Removing vendored minitest gem\n"
+  rm -rf app/server/ruby/vendor/minitest-*
+  printf "Removing vendored mocha gem\n"
+  rm -rf app/server/ruby/vendor/mocha-*
+  printf "Removing vendored metaclass gem\n"
+  rm -rf app/server/ruby/vendor/metaclass-*
+  printf "Removing vendored blankslate gem\n"
+  rm -rf app/server/ruby/vendor/blankslate
+  printf "Removing vendored text gem\n"
+  rm -rf app/server/ruby/vendor/text-*
+  printf "Removing vendored rouge gem\n"
+  rm -rf app/server/ruby/vendor/rouge
+
+  # Could not devendor:
+  #     'ruby-wavefile>=0.8.1' - too old
+  #     'ruby-titleize>=1.4.1' - not on Arch/AUR?
+  #     'ruby-ruby-beautify2-git>=0.92.2' is an AUR package >_<, security?
+
+  # Devendor wavefile - use system ruby-wavefile package
+  # printf "Removing vendored wavefile gem\n"
+  # rm -rf app/server/ruby/vendor/wavefile-*
+
+  # Devendor titleize - use system ruby-titleize package
+  # printf "Removing vendored titleize gem\n"
+  # rm -rf app/server/ruby/vendor/titleize-*
+
+  # printf "Removing vendored ruby-beautify gem\n"
+  # rm -rf app/server/ruby/vendor/ruby-beautify
+
+  # printf "Removing all contents of vendor except .keep\n"
+  # find app/server/ruby/vendor -mindepth 1 ! -name .keep -exec rm -rf {} +
+  # touch app/server/ruby/vendor/.keep
+
+  # TODO: devendor ast-2.0.0
+  # TODO: devendor atomic (bin)
+  # TODO: devendor benchmark-ips-2.3.0
+  # TODO: devendor interception (bin)
+  # TODO: devendor rubame
+  # TODO: devendor ruby-beautify
+  # TODO: devendor ruby-prof-0.15.8
+  # TODO: devendor thread_safe
+  # TODO: devendor wavefile-0.8.1
+  # TODO: devendor websocket-ruby-1.2.8
+
+  # devendor gems requiring compilation:
+  sed -i '/native_ext_dirs/,$c\return' app/server/ruby/bin/compile-extensions.rb  # remove unrequired gems, so we don't create any doc for them
+  rm -rvf app/server/ruby/vendor/{activesupport,ffi,gettext,i18n,kramdown,locale,minitest,mocha,multi_json,polyglot,rouge,rugged,sys-proctable,text,treetop}*
+  rm -rvf app/server/ruby/vendor/{narray,ruby-coreaudio,ruby-prof,rake-compiler}*
 }
 
 build() {
