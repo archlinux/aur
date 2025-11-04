@@ -149,11 +149,8 @@ prepare() {
     ln -s ../linux "$srcdir/linux"
   fi
 
-  cd "$srcdir/linux"
-
-  _upstream_last_commit_date=$(git log --format='%cd' -n1 --date=iso-strict)
-
   # Apply patches
+  cd "$srcdir/linux"
   git am --empty=keep --whitespace=fix "$srcdir"/0*.patch
 }
 
@@ -162,10 +159,11 @@ pkgver() {
 
   # Version format: YYYY.MM.DD.r<commitcount>.<commitsha>
   # with date from _upstream_last_commit_date
-  local commit_count commit_sha
+  local commit_count commit_sha head_date
   commit_count=$(git rev-list --count FETCH_HEAD..HEAD)
   commit_sha=$(git rev-parse --short HEAD)
-  date +'%Y.%m.%d.r'"${commit_count}"'.'"${commit_sha}" -d "${_upstream_last_commit_date}"
+  head_date=$(git show -s --format='%cI' FETCH_HEAD)
+  date +'%Y.%m.%d.r'"${commit_count}"'.'"${commit_sha}" -d "${head_date}"
 }
 
 build() {
