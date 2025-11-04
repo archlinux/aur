@@ -6,13 +6,13 @@ pkgdesc='Highly accurate C64/Amiga emulator'
 url='https://sourceforge.net/projects/deniseemu/'
 license=('GPL-3.0-or-later')
 pkgver=2.7
-pkgrel=2
+pkgrel=3
 
-_commit="500936ad0f81"
+_commit="ed2b7c5b4411"
 _srcdir="piciji-$pkgname-$_commit"
 
 source=("$pkgname-$pkgver.tar.gz::https://bitbucket.org/piciji/denise/get/v$pkgver.tar.gz")
-sha256sums=('4488cb7548ff407a6c08978049a5278d17f423bcd184fb3aebd1ab701f7d5cf3')
+sha256sums=('b8fb5dae55e87bd429faa48c31fe6fc2d02cbf217cd635f38b0c362df606c783')
 depends=('gtk3' 'openal' 'libpulse')
 makedepends=('cmake')
 arch=('x86_64')
