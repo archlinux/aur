@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=interactiveDisplayBase
-_pkgver=1.46.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.46.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Base package for enabling powerful shiny web displays of Bioconductor objects'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   r-rstudioapi
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('081bcefc7d892a1dc5c617ef8570584f35e6751ba6b1bfe06b88b96b15a6d4f6')
+sha256sums=('4dc139bd2d0c61dbfee181742704dc07c2189565a0a9900d09c0ead4d859956a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
