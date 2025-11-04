@@ -7,12 +7,12 @@ pkgver=1.18.0
 # upstream version
 _pkgver=1.18.0
 _release_tag=nym-vpn-core-v1.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='NymVPN daemon as a systemd service'
 arch=('x86_64')
 url='https://github.com/nymtech/nym-vpn-client'
 license=('GPL-3.0-only')
-depends=('glibc' 'gcc-libs' 'dbus')
+depends=('glibc' 'gcc-libs' 'dbus' 'libmnl' 'libnftnl')
 makedepends=('rust' 'cargo' 'go' 'protobuf')
 provides=('nym-vpnd')
 conflicts=('nym-vpnd')
