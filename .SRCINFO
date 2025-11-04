@@ -1,6 +1,6 @@
 pkgbase = swift-bin
 	pkgdesc = Binary builds of the Swift programming language
-	pkgver = 6.2
+	pkgver = 6.2.1
 	pkgrel = 1
 	url = https://www.swift.org/
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = swift-bin
 	provides = swift-language
 	replaces = swift-language-bin
 	options = !strip
-	source_x86_64 = https://download.swift.org/swift-6.2-release/ubi9/swift-6.2-RELEASE/swift-6.2-RELEASE-ubi9.tar.gz
-	sha256sums_x86_64 = bf53193d00715ce258a9b53c740e5e9350e7f59709dddbc47e0d864911611356
-	source_aarch64 = https://download.swift.org/swift-6.2-release/ubi9-aarch64/swift-6.2-RELEASE/swift-6.2-RELEASE-ubi9-aarch64.tar.gz
-	sha256sums_aarch64 = 39fc108ae05026944e10af69053567da6c2df7cd114101abd92ed2d81c4cd9a1
+	source_x86_64 = https://download.swift.org/swift-6.2.1-release/ubi9/swift-6.2.1-RELEASE/swift-6.2.1-RELEASE-ubi9.tar.gz
+	sha256sums_x86_64 = 9a082c3efdeda2e65cbc7038d0c295b75fa48f360369b2538449fc665192da3e
+	source_aarch64 = https://download.swift.org/swift-6.2.1-release/ubi9-aarch64/swift-6.2.1-RELEASE/swift-6.2.1-RELEASE-ubi9-aarch64.tar.gz
+	sha256sums_aarch64 = 47f109f1f63fa24df3659676bb1afac2fdd05c0954d4f00977da6a868dd31e66
 
 pkgname = swift-bin
