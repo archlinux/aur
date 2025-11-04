@@ -1,20 +1,16 @@
 pkgbase = xpad-dkms-git
 	pkgdesc = Driver for the Xbox/ Xbox 360/ Xbox 360 Wireless/ Xbox One Controllers
-	pkgver = 0.4.93.3a21582
+	pkgver = r127.9caad15
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/paroj/xpad
-	install = xpad-dkms-git.install
-	arch = i686
-	arch = x86_64
-	license = GPL2
+	arch = any
+	license = GPL-2.0-or-later
 	makedepends = git
 	depends = dkms
+	provides = xpad-dkms
 	conflicts = xpad-dkms
 	source = xpad-dkms-git::git+https://github.com/paroj/xpad.git
-	source = xpad.conf
-	source = xpad-dkms-git.install
-	md5sums = SKIP
-	md5sums = 4218c9543d551377825392295544c3c2
-	md5sums = 75cad51dc48d8fa879f926432beabf66
+	sha256sums = SKIP
 
 pkgname = xpad-dkms-git
