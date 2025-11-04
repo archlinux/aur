@@ -1,0 +1,20 @@
+--- a/jq.c	2025-11-04 12:43:05.245707657 +0200
++++ b/jq.c	2025-11-04 12:44:17.509566446 +0200
+@@ -100,7 +100,7 @@
+ /*
+  * JVM destroy function
+  */
+-static void jdbc_destroy_jvm();
++static void jdbc_destroy_jvm(int code, Datum arg);
+ 
+ /*
+  * JVM attach function
+@@ -265,7 +265,7 @@
+  * jdbc_destroy_jvm Shuts down the JVM.
+  */
+ static void
+-jdbc_destroy_jvm()
++jdbc_destroy_jvm(int code, Datum arg)
+ {
+ 	jint res;
+ 

@@ -1,24 +1,30 @@
 # Maintainer: Deon Spengler <deon@spengler.co.za>
 
 pkgname=jdbc_fdw
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="PostgreSQL Foreign Data Wrapper (FDW) for remote databases using JDBC"
-arch=('x86_64')
+arch=(x86_64)
 url="https://github.com/pgspider/jdbc_fdw"
 license=('PostgreSQL')
-depends=('postgresql' 'jre8-openjdk')
-makedepends=('jdk8-openjdk')
-install=jdbc_fdw.install
+depends=('postgresql<18' 'jre21-openjdk')
+makedepends=('jdk21-openjdk')
+install=jdbc-fdw.install
 source=("https://github.com/pgspider/jdbc_fdw/archive/refs/tags/v${pkgver}.tar.gz"
-        "openjdk8.patch")
-sha256sums=('552fc5cb2f27ae48182bf7fe24a2c993c4a6dacd91d86cfaeb501c45586d2e27'
-            '3737594028b022e459e2cc912afeea00584540c41bb6e635a73681549c6e5cd1')
+        "callback.patch")
+sha256sums=('28c665d047ab81468839f628300ca5ca3980ebe9a8a30e4ff197ffe6fbeced20'
+            'e74b77b735d07b05555a0ee0a6a663e46be467779497ec55b9e8fb19314d03d1')
 
 prepare(){
   cd jdbc_fdw-${pkgver}
 
-  patch -p1 -i ../openjdk8.patch
+  patch -p1 -i ../callback.patch
+}
+
+build() {
+  cd jdbc_fdw-${pkgver}
+
+  make USE_PGXS=1 LIBDIR=/usr/lib/ LDFLAGS="-L/usr/lib/jvm/java-21-openjdk/lib/server"
 }
 
 package() {
