@@ -1,14 +1,14 @@
-# Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
+# Contributor: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=duplicity-git
-pkgver=0.8.21.dev6
+pkgver=3.0.7.dev0
 pkgrel=1
 pkgdesc='A utility for encrypted, bandwidth-efficient backups using the rsync algorithm.'
 arch=('x86_64')
 url='https://www.nongnu.org/duplicity/'
 license=('GPL')
-depends=('gnupg' 'librsync' 'python-paramiko' 'python-fasteners' 'python-future')
-makedepends=('git' 'python-setuptools' 'python-setuptools-scm')
+depends=('gnupg' 'librsync' 'python-paramiko' 'python-fasteners')
+makedepends=('git' 'python-setuptools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 optdepends=('lftp: backend for ftp, ftps, fish'
