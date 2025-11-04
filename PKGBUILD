@@ -2,38 +2,68 @@
 
 _pkgbase=dogecoin
 pkgname=('dogecoin-daemon' 'dogecoin-cli' 'dogecoin-tx')
-pkgver=1.14.6
-pkgrel=3
+pkgver=1.14.9
+pkgrel=1
 arch=('x86_64')
 url='https://dogecoin.com/'
-makedepends=('boost' 'libevent' 'zeromq')
+makedepends=(
+  boost
+  boost-libs
+  db
+  libevent
+  libsqlite3.so
+  libzmq.so
+)
 license=('MIT')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/$_pkgbase/$_pkgbase/archive/v$pkgver.tar.gz"
-        'dogecoin.sysusers'
-        'dogecoin.tmpfiles'
-        'service.patch')
-sha256sums=('341088d4d59c5086a430ec64ce81c92a9629146ef50d6c4a4d868b31ce2cef79'
+source=("$_pkgbase-$pkgver.tar.gz::https://github.com/dogecoin/dogecoin/releases/download/v$pkgver/$_pkgbase-$pkgver.tar.gz"
+        "$_pkgbase-$pkgver.SHA256SUMS::https://github.com/dogecoin/dogecoin/releases/download/v$pkgver/SHA256SUMS.asc"
+        "$_pkgbase.sysusers"
+        "$_pkgbase.tmpfiles"
+        "https://github.com/dogecoin/dogecoin/pull/3928.patch")
+sha256sums=('d763b16c810d673b1fe84c2df0bd8f36feedfa0a5b31bb8a2dc5fdc8bb6dcb85'
+            '070673a1c9fdf271829fefb4a794c6b040e3275a319d2ae4ed2959298406020f'
             '9946c415ffb7d7189c81a349bd92020aeb658706adb74215630339daf00a6c96'
             '0fc1bf30a981dca11f7fa7cb81c87bbc5342c3dbcd63b9ef6e0bff766c78eb31'
-            'a6dc48bd9ccebeb79f00de8d1bb9bbade031a2f186ea65e43669a62842a15c18')
-validpgpkeys=('1DDC450B45DB5ADCCF5DDA7F8E4217C6D47D946D')
+            '1988c97baf15bc7118f6e818fdda5243c9428f1223fb15415cb725491e1bd45e')
+b2sums=('a6cc319c8a4c0a3335f721b8d9ec63a07680a8661115895c2db94ad297bc9d02503f50ab1c7052426e839b2badda4bd6d5b978f289ef275c311a5eaae78776b5'
+        '9a9e40e10d3099e907957a2d7f2b658f3fa8a806e2a0697408bb8dcb66ec7d71079986c8ec2401746760f0ed1d6bf11d30cfa94ae7eadb50419900b82d188db7'
+        '83580709bab7080658e29c50d1d463d028bd36f46ed14f5209a4b52b8e7a3603737c2322b130a399710fa443f009ab66ab23ebea28e3c2a2e4449819c7d98037'
+        'b7ff737de45edfca7e5ec05076f3df4106da42790ba7f6210be6622ba005ef6f5bf4e2e55919ec2ac25e1612b0a8964bf022b68591a1b38c9a0c1dc4337fd054'
+        '5e79efeadf3416cef50b7171e9a5b9949e5bfbf852e7aa47a855d232a41e864186ea47362e7ac44ba525e07c4a733aab4a30fa98fc68142a90f03f3c0c8f3e06')
+validpgpkeys=(DC6EF4A8BF9F1B1E4DE1EE522D3A345B98D0DC1F)
+#options=(!lto)
 
 prepare() {
+  gpg --verify "$_pkgbase-$pkgver.SHA256SUMS"
+  grep -F "$_pkgbase-$pkgver.tar.gz" "$_pkgbase-$pkgver.SHA256SUMS" | sha256sum -c
   cd "$_pkgbase-$pkgver"
-  autoreconf -fi
+  patch -p1 -i "../3928.patch"
+  #autoreconf -fi
 }
 
 build() {
-  patch "$srcdir/$_pkgbase-$pkgver/contrib/init/dogecoind.service" "service.patch"
   cd $_pkgbase-$pkgver
-  ./configure --prefix=/usr --with-gui=no --with-incompatible-bdb --without-miniupnpc
+  CXXFLAGS=${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}
+  LDFLAGS=${LDFLAGS/-static/}
+  ./autogen.sh
+  ./configure --prefix=/usr --enable-c++17 \
+    --sbindir=/usr/bin --sysconfdir=/etc --libexecdir=/usr/lib \
+    --with-incompatible-bdb \
+    --with-gui=no \
+    --without-miniupnpc
   make
 }
 
 package_dogecoin-daemon() {
   pkgdesc="Dogecoin is a peer-to-peer network based digital currency - daemon"
-  depends=(boost-libs libevent zeromq)
-  conflicts=(dogecoin-qt)
+  depends=(
+    db
+    gcc-libs
+    glibc
+    libevent
+    libsqlite3.so
+    libzmq.so
+  )
 
   cd $_pkgbase-$pkgver
   install -Dm755 src/dogecoind "$pkgdir"/usr/bin/dogecoind
@@ -53,7 +83,14 @@ package_dogecoin-daemon() {
 
 package_dogecoin-cli() {
   pkgdesc="Dogecoin is a peer-to-peer network based digital currency - RPC client"
-  depends=(boost-libs libevent)
+  depends=(
+    db
+    gcc-libs
+    glibc
+    libevent
+    libsqlite3.so
+    libzmq.so
+  )
 
   cd $_pkgbase-$pkgver
   install -Dm755 src/dogecoin-cli "$pkgdir"/usr/bin/dogecoin-cli
@@ -67,7 +104,12 @@ package_dogecoin-cli() {
 
 package_dogecoin-tx() {
   pkgdesc="Dogecoin is a peer-to-peer network based digital currency - Transaction tool"
-  depends=(boost-libs openssl)
+  depends=(
+    db
+    gcc-libs
+    glibc
+    libsqlite3.so
+  )
 
   cd $_pkgbase-$pkgver
   install -Dm755 src/dogecoin-tx "$pkgdir"/usr/bin/dogecoin-tx
