@@ -1,6 +1,6 @@
 pkg/
 src/
-qtbase/
+kde-qtbase/
 *.tar.xz
 *.pkg.tar*
 *.log
