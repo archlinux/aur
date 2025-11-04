@@ -1,0 +1,12 @@
+pkgbase = hunspell-is
+	pkgdesc = Icelandic hunspell dictionary
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://codeberg.org/bjarki781/hunspell-is
+	arch = any
+	license = public
+	optdepends = hunspell: the spell checking libraries and apps
+	source = https://codeberg.org/bjarki781/hunspell-is/archive/70f26144fae8fe547710a55de265e3e38903cf38.tar.gz
+	sha256sums = 5aae7ee6da13f14152fddcf3aaaa93336299b1da0524549b27263e50d368b01c
+
+pkgname = hunspell-is
