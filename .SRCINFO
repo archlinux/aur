@@ -1,6 +1,6 @@
 pkgbase = eden-beta
 	pkgdesc = Nintendo Switch emulator forked from yuzu - beta and test releases
-	pkgver = 0.0.4.rc1
+	pkgver = 0.0.4.rc2
 	pkgrel = 1
 	url = https://eden-emulator.github.io/
 	arch = x86_64
@@ -49,7 +49,7 @@ pkgbase = eden-beta
 	conflicts = eden-preview-bin
 	options = !lto
 	options = !debug
-	source = git+https://git.eden-emu.dev/eden-emu/eden.git#tag=v0.0.4-rc1
-	sha256sums = 7182a8b7e0f2ef40395fd6a1caa0b58252bd1f55a81b3b452461d3af9267e314
+	source = git+https://git.eden-emu.dev/eden-emu/eden.git#tag=v0.0.4-rc2.test
+	sha256sums = 6e2a89604530056eab0de4d0354b609520d5f50bb80ee4120c1f228cf7e33bc2
 
 pkgname = eden-beta
