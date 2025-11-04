@@ -1,6 +1,6 @@
 pkgbase = autotools-language-server
 	pkgdesc = autotools language server
-	pkgver = 0.0.22
+	pkgver = 0.0.23
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/autotools-language-server
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = autotools-language-server
 	depends = python-lsp-tree-sitter
 	optdepends = autoconf
 	optdepends = automake
-	source = https://files.pythonhosted.org/packages/py3/a/autotools_language_server/autotools_language_server-0.0.22-py3-none-any.whl
-	sha256sums = 8066e340ec13ee11c4e69f358d1c5e66fe3b2ffe6d5074d7a150701baf2d32db
+	source = https://files.pythonhosted.org/packages/py3/a/autotools_language_server/autotools_language_server-0.0.23-py3-none-any.whl
+	sha256sums = a097a066abf3dc634838819e098928d57aa2aa0d9c3b8ed3762b2a5593e2a58e
 
 pkgname = autotools-language-server
