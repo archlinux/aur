@@ -1,6 +1,6 @@
 pkgbase = r-exploremodelmatrix
 	pkgdesc = Graphical Exploration of Design Matrices
-	pkgver = 1.20.1
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ExploreModelMatrix
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-exploremodelmatrix
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ExploreModelMatrix_1.20.1.tar.gz
-	sha256sums = 7684eeffc3db24c383b1bf80a85afac5819bb6345903019181a077bd4db5a062
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ExploreModelMatrix_1.22.0.tar.gz
+	sha256sums = 7480fa9c432425a0dec510c5e8d944c0c664d45c04c3727e4b9f973507d66f55
 
 pkgname = r-exploremodelmatrix
