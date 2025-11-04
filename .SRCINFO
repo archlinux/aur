@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-passwordfile
 	pkgdesc = C++ library to read/write passwords from/to encrypted files using AES-256-CBC via OpenSSL (mingw-w64)
-	pkgver = 5.0.12
-	pkgrel = 2
+	pkgver = 5.0.13
+	pkgrel = 1
 	url = https://github.com/Martchus/passwordfile
 	arch = any
 	license = GPL-2.0-or-later
@@ -18,7 +18,7 @@ pkgbase = mingw-w64-passwordfile
 	options = staticlibs
 	options = !strip
 	options = !emptydirs
-	source = passwordfile-5.0.12.tar.gz::https://github.com/Martchus/passwordfile/archive/v5.0.12.tar.gz
-	sha256sums = d9c86ed110b66f4ca04769751004aab2ece367fee043feed8fad255a57bf06be
+	source = passwordfile-5.0.13.tar.gz::https://github.com/Martchus/passwordfile/archive/v5.0.13.tar.gz
+	sha256sums = 0838f6e0009085f9f873e8859d4cd573c2545a8ff13473514333cada7d795d6c
 
 pkgname = mingw-w64-passwordfile
