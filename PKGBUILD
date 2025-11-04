@@ -31,23 +31,20 @@ b2sums=('a6cc319c8a4c0a3335f721b8d9ec63a07680a8661115895c2db94ad297bc9d02503f50a
         'b7ff737de45edfca7e5ec05076f3df4106da42790ba7f6210be6622ba005ef6f5bf4e2e55919ec2ac25e1612b0a8964bf022b68591a1b38c9a0c1dc4337fd054'
         '5e79efeadf3416cef50b7171e9a5b9949e5bfbf852e7aa47a855d232a41e864186ea47362e7ac44ba525e07c4a733aab4a30fa98fc68142a90f03f3c0c8f3e06')
 validpgpkeys=(DC6EF4A8BF9F1B1E4DE1EE522D3A345B98D0DC1F)
-#options=(!lto)
 
 prepare() {
   gpg --verify "$_pkgbase-$pkgver.SHA256SUMS"
   grep -F "$_pkgbase-$pkgver.tar.gz" "$_pkgbase-$pkgver.SHA256SUMS" | sha256sum -c
   cd "$_pkgbase-$pkgver"
   patch -p1 -i "../3928.patch"
-  #autoreconf -fi
 }
 
 build() {
   cd $_pkgbase-$pkgver
+  # remove already defined _FORTIFY_SOURCE from CXXFLAGS
   CXXFLAGS=${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}
-  LDFLAGS=${LDFLAGS/-static/}
   ./autogen.sh
   ./configure --prefix=/usr --enable-c++17 \
-    --sbindir=/usr/bin --sysconfdir=/etc --libexecdir=/usr/lib \
     --with-incompatible-bdb \
     --with-gui=no \
     --without-miniupnpc
@@ -61,7 +58,6 @@ package_dogecoin-daemon() {
     gcc-libs
     glibc
     libevent
-    libsqlite3.so
     libzmq.so
   )
 
@@ -88,8 +84,6 @@ package_dogecoin-cli() {
     gcc-libs
     glibc
     libevent
-    libsqlite3.so
-    libzmq.so
   )
 
   cd $_pkgbase-$pkgver
@@ -108,7 +102,6 @@ package_dogecoin-tx() {
     db
     gcc-libs
     glibc
-    libsqlite3.so
   )
 
   cd $_pkgbase-$pkgver
