@@ -1,0 +1,17 @@
+pkgbase = python-bip_utils
+	pkgdesc = Generation of mnemonics, seeds, private/public keys and addresses for different types of cryptocurrencies
+	pkgver = 2.10.0
+	pkgrel = 1
+	url = https://github.com/ebellocchia/bip_utils
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools>=77
+	makedepends = python-setuptools-scm>=6.2
+	makedepends = python-wheel
+	depends = python>=3.7
+	source = https://github.com/ebellocchia/bip_utils/archive/refs/tags/v2.10.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-bip_utils
