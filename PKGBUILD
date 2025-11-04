@@ -14,7 +14,7 @@ _debug=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=10.14.w268.s317665e
+pkgver=10.18.w53.s2d58cc0
 pkgrel=1
 eval pkgrel=1
 
@@ -33,12 +33,12 @@ _enabled_staging=()
 
 ## if all staging patches are to be applied, what (array of) patches to omit?
 ## e.g. "Compiler_Warnings user32-. . ."
-_disabled_staging=(oleaut32_VarAdd winedevice-Default_Drivers dsound-EAX ntdll-Junction_Points mountmgr-DosDevices ntdll-NtDevicePath ws2_32-af_unix) #  eventfd_synchronization
-                   # esync added manually from proton, the rest are known to cause performance issues with path/directory traversal
+_disabled_staging=(ntdll-Serial_Port_Detection oleaut32_VarAdd winedevice-Default_Drivers dsound-EAX ntdll-Junction_Points mountmgr-DosDevices ntdll-NtDevicePath ws2_32-af_unix)
+                   # some patches are known to cause performance issues with path/directory traversal
                    # dsound-EAX causes crashing in osu! with compat. mode enabled
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="09-12-2025-e3c9d3ac-317665ee"
+_patchbase_tag="11-04-2025-82275b13-2d58cc0e"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -49,8 +49,8 @@ _custompatches=false
 ## (custompatches=true) uses wine/staging master if empty, uses given commit or tag if set
 ##                     (if you want to update them to current master, just set them empty)
 ## (custompatches=false) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=e3c9d3ac76b223073253667e2447e1cbc407ac97
-_desired_staging_commit=317665ee20ac811ae6f48a7c16d86502db764869
+_desired_wine_commit=82275b13a24613947d1da00cd85209dbfaf5465f
+_desired_staging_commit=2d58cc0eb9975536f8adf291facf327ebd5c919a
 
 ## (custompatches=true) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -158,7 +158,7 @@ if [ "${_use_mingw}" = "nomingw" ]; then
 elif [ "${_use_lto}" = "true" ]; then
   ## don't needlessly add the lto fixup if we don't want lto
   source+=("lto-fixup.patch")
-  sha512sums+=('7d02ef59e9223e1d64e0f27532d2df947b6a9029a0859be9b02fca0daa543cce400af827cd0272f3fac3a3c9bc606c34f0521cd21bd45c1d523b8d9747709df7')
+  sha512sums+=('a1b58de5b0ca60a2f5e3dd856eaf82adb68a83270dcdc8c0b058859f7f247d0d8753c0af1ad6ae884741a77ccd0b38d11f0a7fcb4ca5f51d07e614d89e33af9a')
 fi
 
 ## don't needlessly add the wine-osu-patches repo if we explicitly specify custom ones
@@ -384,6 +384,7 @@ _set_vars() {
     CPPFLAGS="-D_GNU_SOURCE -D_TIME_BITS=64 -D_FILE_OFFSET_BITS=64 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
     _common_cflags="${_cpu_target} ${_extra_common_flags:-} -pipe -O3 -mfpmath=sse -fno-strict-aliasing -fwrapv -fno-semantic-interposition \
                     -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -w"
+    [ "${_debug}" = "true" ] && _common_cflags="${_common_cflags} -g"
 
     _GCC_FLAGS="${_common_cflags:-} ${_lto_flags:-} ${_extra_native_flags:-} ${CPPFLAGS:-} -ffunction-sections -fdata-sections" # only for the non-mingw side
     _CROSS_FLAGS="${_common_cflags:-} ${_extra_cross_flags:-} ${CPPFLAGS:-}" # only for the mingw side
@@ -592,7 +593,10 @@ prepare() { _set_vars;
 
   printf "\nApplying other patches\n\n" >> "${_where}"/patchlog.txt
 
-  patchlist=("${srcdir}"/makedep-fix.patch)
+  patchlist=()
+  if ! { git merge-base --is-ancestor db2e157c68d5b1ced965e2ac90ecb9f3767e60fd HEAD &> /dev/null; }; then
+    patchlist+=("${srcdir}"/makedep-fix.patch)
+  fi
   if [ "${_use_lto}" = "true" ] && ! { find "${_patchdir}"/ -name "*LTO-fixup.patch" -print0 -quit | grep . >/dev/null ; }; then patchlist+=("${srcdir}"/lto-fixup.patch); fi
 
   pattern=("(" "(" "-regex" ".*\.patch")
@@ -624,12 +628,6 @@ prepare() { _set_vars;
   done
 
   sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i "${srcdir}/wine"/configure* || true
-
-  if [ "${_strip_package}" = "true" ]; then
-    awk -i inplace '/STRIPPROG=/ { sub(/ %s/, " %s -s") }1' "${srcdir}/wine/tools/makedep.c"
-    # shellcheck disable=SC2016
-    sed -i 's|stripcmd=$stripprog|stripcmd="$stripprog -s"|g' "${srcdir}/wine/tools/install-sh"
-  fi
 
   ## clean up .orig files if patches succeeded
   find "${srcdir}"/wine/ -iregex ".*orig" -execdir rm '{''}' '+' || true
@@ -729,7 +727,7 @@ build() { _set_vars;
 
     # configure cache
     _confcachedir="${_where}"/.confcaches
-    _compilerwithflagshash="$(sha512sum - < <(printf '%s' "${CFLAGS}${LDFLAGS}${CROSSCFLAGS}${CROSSLDFLAGS}${_compilerhash}") | cut -d ' ' -f 1)"
+    _compilerwithflagshash="$(sha512sum - < <(printf '%s' "${CPPFLAGS}${CFLAGS}${LDFLAGS}${CROSSCFLAGS}${CROSSLDFLAGS}${_compilerhash}") | cut -d ' ' -f 1)"
     _confcacheprefix="${_confcachedir}"/"${pkgver%.w*}-${pkgrel}-${_compilerwithflagshash}${_wowname}"
 
     if [ ! -d "${_confcachedir}" ]; then

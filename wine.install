@@ -8,11 +8,7 @@ post_upgrade() {
 }
 
 inform_patches() {
-  echo "For optimal performance, please make sure your system has the ntsync module properly set up and loaded."
-  echo "'wine: using fast synchronization.' will be printed when starting wine if it is working correctly."
-  echo "You can still use Esync or Fsync instead if you export WINE_DISABLE_FAST_SYNC=1."
-  echo ""
-  echo "For other interesting environment variables, see https://github.com/whrvt/wine-osu-patches"
+  echo "For interesting environment variables, see https://github.com/whrvt/wine-osu-patches"
   echo ""
   echo "A minimal wine launcher is now installed to use directly as 'wine-osu', no need to specify a path"
   echo "It will automatically set a realtime priority of 25 for wineserver, set STAGING_RT_PRIORITY_SERVER=# to customize, or 0 to disable"
