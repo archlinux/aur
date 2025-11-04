@@ -6,7 +6,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=folly
-pkgver=2025.10.27.00
+pkgver=2025.11.03.00
 pkgrel=1
 pkgdesc="An open-source C++ library developed and used at Facebook"
 arch=(x86_64)
@@ -58,7 +58,7 @@ source=(
   "fix-setup-py-for-python-extensions.patch"
   "fix-cmake-for-setup-py-extensions.patch"
   "fix-gcc-traits.patch")
-sha256sums=('0cd0251e3a2a35a140508515ee8a45fb7c6c55147ccf11cda38d30d863131aab'
+sha256sums=('2eff7a79648848ca44a27be51f7fba298f6df2dbc2492093ffaa2caaa232d750'
             'a6e57c9ec968ed6de454803d141035585ee9ab1355beba64b2b176ab8c793d2c'
             'a4701d37451bec6063ce5b5efc29f67ac6cc030fda699dac56d81e6064c0d7b5'
             '78f6127afef08193923b955aae79171a8218a74c6e0e9765bf3b49dee7a1d062'
