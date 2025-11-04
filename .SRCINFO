@@ -1,0 +1,18 @@
+pkgbase = python-qt-themes
+	pkgdesc = This is a collection of themes for Qt in Python.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/beatreichenbach/qt-themes
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-flit-core
+	depends = python
+	depends = pyside6
+	source = python-qt-themes-0.3.0.tar.gz::https://github.com/beatreichenbach/qt-themes/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-qt-themes
