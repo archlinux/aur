@@ -6,9 +6,9 @@ pkgname=("$pkgbase" "ntfsplus-udev")
 pkgver=2025.10.20.r34.496db7027
 pkgrel=1
 # epoch=1
-pkgdesc="A new NTFS driver for Linux promised to be better than NTFS3. These patches are directly taken from the maintainer's mailing list posts. Backported to 6.17."
+pkgdesc="A new NTFS driver for Linux promised to be better than NTFS3. These patches are directly taken from the maintainer's mailing list posts. Backported to 6.12."
 arch=('any')
-url="https://lore.kernel.org/all/20251020021227.5965-6-linkinjeon@kernel.org"
+url="https://github.com/shadichy/ntfsplus-dkms"
 license=('GPL-2.0-only')
 makedepends=('git')
 optdepends=(
@@ -60,8 +60,10 @@ export DLAGENTS="shallowclone::$(realpath "./DLAGENTS") %u %o"
 
 source=(
   'linux::shallowclone+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
-  'ntfsplus-00-05.mbox.gz::https://lore.kernel.org/all/20251020020749.5522-1-linkinjeon@kernel.org/t.mbox.gz'
-  'ntfsplus-06-11.mbox.gz::https://lore.kernel.org/all/20251020021227.5965-6-linkinjeon@kernel.org/t.mbox.gz'
+  # 'ntfsplus-00-05.mbox.gz::https://lore.kernel.org/all/20251020020749.5522-1-linkinjeon@kernel.org/t.mbox.gz'
+  # 'ntfsplus-06-11.mbox.gz::https://lore.kernel.org/all/20251020021227.5965-6-linkinjeon@kernel.org/t.mbox.gz'
+  'ntfsplus-00-05.mbox.gz::https://raw.githubusercontent.com/shadichy/ntfsplus-dkms/refs/heads/dev/ntfsplus-00-05.mbox.gz'
+  'ntfsplus-06-11.mbox.gz::https://raw.githubusercontent.com/shadichy/ntfsplus-dkms/refs/heads/dev/ntfsplus-06-11.mbox.gz'
   '0001-fs-ntfsplus-inode.c-Resolve-import-for-inode_generic.patch'
   '0002-ntfsplus-Resolve-iomap_-arguments-temporarily-for-ke.patch'
   '0003-ntfsplus-Backport-ntfs_iomap.c-functions-to-kernels-.patch'
