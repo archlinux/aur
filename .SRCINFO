@@ -1,6 +1,6 @@
 pkgbase = wljs-notebook-bin
 	pkgdesc = WLJS Notebook – interactive notebook for Wolfram Language / Wolfram Engine
-	pkgver = 2.8.7
+	pkgver = 2.8.8
 	pkgrel = 1
 	url = https://wljs.io
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = wljs-notebook-bin
 	depends = wolframengine
 	provides = wljs-notebook
 	noextract = *.deb
-	source = https://github.com/JerryI/wolfram-js-frontend/releases/download/v2.8.7/wljs-notebook-2.8.7-amd64-gnulinux.deb
-	sha256sums = f8fcf0c4a3efcb44e803bad9044f67988456a67d2151cc1de4f30728907ced22
+	source = https://github.com/JerryI/wolfram-js-frontend/releases/download/v2.8.8/wljs-notebook-2.8.8-amd64-gnulinux.deb
+	sha256sums = defd6cbf39a8a74c02cd4a0c61dbefea5fe77597938114a5ddcb9facd2a56cdc
 
 pkgname = wljs-notebook-bin
