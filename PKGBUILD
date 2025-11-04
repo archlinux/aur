@@ -1,13 +1,13 @@
 # Maintainer: Scott Lawrence <bytbox@gmail.com>
 pkgname=netcat-sec-git
 pkgver=20231031
-pkgrel=1
+pkgrel=2
 pkgdesc="A netcat clone with TLS support"
 arch=('i686' 'x86_64')
 url="https://github.com/bytbox/netcat-sec"
 license=('MIT')
 depends=('go')
-makedepends=()
+makedepends=('git')
 provides=()
 conflicts=()
 replaces=()

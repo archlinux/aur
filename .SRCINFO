@@ -1,7 +1,7 @@
 pkgbase = netcat-sec-git
 	pkgdesc = A netcat clone with TLS support
 	pkgver = 20231031
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bytbox/netcat-sec
 	arch = i686
 	arch = x86_64
