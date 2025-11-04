@@ -1,7 +1,7 @@
 # Maintainer: Joerg Weislogel <mutoroglin [at] posteo [dot] de>
 
 pkgname=thunderbird-extension-localfolders
-pkgver=4.2.2
+pkgver=4.2.3
 pkgrel=1
 pkgdesc='Thunderbird extension that adds as many local folders as you want to, even on mapped or network locations'
 arch=('any')
@@ -11,9 +11,9 @@ depends=('thunderbird')
 groups=('thunderbird-addons')
 makedepends=('unzip' 'jq')
 source=("license_MPL-2.0.html::http://www.mozilla.org/MPL/2.0/"
-        "${pkgname}_${pkgver}-${pkgrel}.xpi::https://addons.thunderbird.net/thunderbird/downloads/file/1041261/localfolders-4.2.1-tb.xpi")
+        "${pkgname}_${pkgver}-${pkgrel}.xpi::https://addons.thunderbird.net/thunderbird/downloads/file/1042413/localfolders-4.2.3-tb.xpi")
 sha256sums=(SKIP
-            '71d499b55b360769447e9f08536ee557b0419e84d5914e79c18558d86a21fbd9')
+            '141eeda923b81338d8eb9ec144df70f77d1d835e89bf844bc5a66c43b186be70')
 package() {
   depends=('thunderbird>=140')
 
