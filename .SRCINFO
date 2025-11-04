@@ -1,6 +1,6 @@
 pkgbase = dpt-rp1-py
 	pkgdesc = Python package to manage a Sony DPT-RP1
-	pkgver = 0.1.11
+	pkgver = 0.1.18
 	pkgrel = 1
 	url = https://github.com/janten/dpt-rp1-py
 	arch = any
@@ -14,8 +14,7 @@ pkgbase = dpt-rp1-py
 	depends = python-anytree
 	depends = python-fusepy
 	depends = python-zeroconf
-	source = dpt-rp1-py-0.1.11.tar.gz::https://github.com/janten/dpt-rp1-py/archive/v0.1.11.tar.gz
-	md5sums = 48df7c427e6a0cef14d0322f73b09416
+	source = dpt-rp1-py-0.1.18.tar.gz::https://github.com/janten/dpt-rp1-py/archive/v0.1.18.tar.gz
+	md5sums = 46f95c1fa69fb20de4585f81fb41e38e
 
 pkgname = dpt-rp1-py
-
