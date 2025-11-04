@@ -1,7 +1,7 @@
 pkgbase = dpt-rp1-py
 	pkgdesc = Python package to manage a Sony DPT-RP1
 	pkgver = 0.1.18
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/janten/dpt-rp1-py
 	arch = any
 	license = MIT
@@ -16,7 +16,6 @@ pkgbase = dpt-rp1-py
 	depends = python-zeroconf
 	depends = python-pycryptodome
 	depends = python-tqdm
-	depends = python-yaml
 	source = dpt-rp1-py-0.1.18.tar.gz::https://github.com/janten/dpt-rp1-py/archive/v0.1.18.tar.gz
 	md5sums = 46f95c1fa69fb20de4585f81fb41e38e
 
