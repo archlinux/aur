@@ -1,7 +1,7 @@
 # Maintainer: Keiran <keiran0@proton.me>
 # Made possible by: Gurov <https://github.com/Gur0v>
 pkgname=archium
-pkgver=1.9.3
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Fast & Easy Package Management for Arch Linux"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('git' 'readline')
 makedepends=('gcc' 'make')
 source=("git+https://github.com/keircn/archium.git#tag=v${pkgver}")
-sha256sums=('8e746bbd300481947f2936523249269bad996c88d04f89be7c903cfb82a7162b')
+sha256sums=('d71c05b76b5edca13b59096243fd01b16b03dd117b3cc646ac6621e0ab1a9300')
 
 build() {
   cd "${srcdir}/${pkgname}"
