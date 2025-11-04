@@ -3,7 +3,7 @@
 _pkgbase=dogecoin
 pkgname=('dogecoin-daemon' 'dogecoin-cli' 'dogecoin-tx')
 pkgver=1.14.9
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://dogecoin.com/'
 makedepends=(
@@ -11,7 +11,6 @@ makedepends=(
   boost-libs
   db
   libevent
-  libsqlite3.so
   libzmq.so
 )
 license=('MIT')
@@ -33,16 +32,17 @@ b2sums=('a6cc319c8a4c0a3335f721b8d9ec63a07680a8661115895c2db94ad297bc9d02503f50a
 validpgpkeys=(DC6EF4A8BF9F1B1E4DE1EE522D3A345B98D0DC1F)
 
 prepare() {
-  gpg --verify "$_pkgbase-$pkgver.SHA256SUMS"
-  grep -F "$_pkgbase-$pkgver.tar.gz" "$_pkgbase-$pkgver.SHA256SUMS" | sha256sum -c
+  gpg --decrypt "$_pkgbase-$pkgver.SHA256SUMS" | sha256sum -c --ignore-missing
   cd "$_pkgbase-$pkgver"
   patch -p1 -i "../3928.patch"
 }
 
 build() {
   cd $_pkgbase-$pkgver
+
   # remove already defined _FORTIFY_SOURCE from CXXFLAGS
   CXXFLAGS=${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=?/}
+
   ./autogen.sh
   ./configure --prefix=/usr --enable-c++17 \
     --with-incompatible-bdb \

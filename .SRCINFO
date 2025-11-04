@@ -8,7 +8,6 @@ pkgbase = dogecoin-daemon
 	makedepends = boost-libs
 	makedepends = db
 	makedepends = libevent
-	makedepends = libsqlite3.so
 	makedepends = libzmq.so
 	source = dogecoin-1.14.9.tar.gz::https://github.com/dogecoin/dogecoin/releases/download/v1.14.9/dogecoin-1.14.9.tar.gz
 	source = dogecoin-1.14.9.SHA256SUMS::https://github.com/dogecoin/dogecoin/releases/download/v1.14.9/SHA256SUMS.asc
