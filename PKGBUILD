@@ -2,7 +2,7 @@
 pkgbase=libastal-git
 pkgname=("libastal-git")
 _pkgname=libastal
-pkgver=r849.189bf73
+pkgver=r851.6976fab
 pkgrel=2
 pkgdesc="Building blocks for building desktop shells."
 arch=("x86_64")
@@ -12,7 +12,7 @@ makedepends=(
   "git"
   "wayland" "wayland-protocols"
   "gobject-introspection" "meson" "vala")
-depends=("glib2" "glibc" "gtk3" "gtk-layer-shell" "gdk-pixbuf2" "wayland")
+depends=("glib2" "glibc" "gtk3" "gtk-layer-shell" "gdk-pixbuf2" "wayland" "libastal-io")
 provides=(libastal libastal.so=3-64)
 groups=("libastal")
 source=("git+${url}.git")
