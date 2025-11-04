@@ -2,7 +2,7 @@
 # Contributor: Filipe Bertelli <filipebertelli@tutanota.com>
 pkgname=electron-fiddle-bin
 _pkgname="Electron Fiddle"
-pkgver=0.37.2
+pkgver=0.37.3
 _electronversion=36
 pkgrel=1
 pkgdesc=":electron: 🚀 The easiest way to get started with Electron.(Prebuilt version.Use system-wide electron)"
@@ -24,9 +24,9 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.armv7hl.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.x86_64.rpm")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('dae97b9a4e534df10725d3f4886ce257b927c5d18dd34c2652cc17e875152096')
-sha256sums_armv7h=('9bdc8333ca56a5353bd30b66a62a3f6312eedc91c4de6a3b538bd8e3e4e7d394')
-sha256sums_x86_64=('b704b8699fb62fb8c90e3e027e70406014a1afde9552c42cb7634d62e19fc12d')
+sha256sums_aarch64=('3ae3a7fdc694ddc3eadf8975c5b0ef2c627276dcf8423fe71c737fdb861ac81e')
+sha256sums_armv7h=('2923c26cabddf668c5ec8db5f68b7cdbdcdde7723622633d90b57a11c04dec21')
+sha256sums_x86_64=('2221f7092612d74d1fd57ccf90209feeb6fa9fcc877276c2a793846201e21865')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"

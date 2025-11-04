@@ -1,6 +1,6 @@
 pkgbase = electron-fiddle-bin
 	pkgdesc = :electron: 🚀 The easiest way to get started with Electron.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.37.2
+	pkgver = 0.37.3
 	pkgrel = 1
 	url = https://electronjs.org/fiddle
 	arch = aarch64
@@ -8,15 +8,15 @@ pkgbase = electron-fiddle-bin
 	arch = x86_64
 	license = MIT
 	depends = electron36
-	provides = electron-fiddle=0.37.2
+	provides = electron-fiddle=0.37.3
 	conflicts = electron-fiddle
 	source = electron-fiddle.sh
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = electron-fiddle-0.37.2-aarch64.rpm::https://github.com/electron/fiddle//releases/download/v0.37.2/electron-fiddle-0.37.2-1.arm64.rpm
-	sha256sums_aarch64 = dae97b9a4e534df10725d3f4886ce257b927c5d18dd34c2652cc17e875152096
-	source_armv7h = electron-fiddle-0.37.2-armv7h.rpm::https://github.com/electron/fiddle//releases/download/v0.37.2/electron-fiddle-0.37.2-1.armv7hl.rpm
-	sha256sums_armv7h = 9bdc8333ca56a5353bd30b66a62a3f6312eedc91c4de6a3b538bd8e3e4e7d394
-	source_x86_64 = electron-fiddle-0.37.2-x86_64.rpm::https://github.com/electron/fiddle//releases/download/v0.37.2/electron-fiddle-0.37.2-1.x86_64.rpm
-	sha256sums_x86_64 = b704b8699fb62fb8c90e3e027e70406014a1afde9552c42cb7634d62e19fc12d
+	source_aarch64 = electron-fiddle-0.37.3-aarch64.rpm::https://github.com/electron/fiddle//releases/download/v0.37.3/electron-fiddle-0.37.3-1.arm64.rpm
+	sha256sums_aarch64 = 3ae3a7fdc694ddc3eadf8975c5b0ef2c627276dcf8423fe71c737fdb861ac81e
+	source_armv7h = electron-fiddle-0.37.3-armv7h.rpm::https://github.com/electron/fiddle//releases/download/v0.37.3/electron-fiddle-0.37.3-1.armv7hl.rpm
+	sha256sums_armv7h = 2923c26cabddf668c5ec8db5f68b7cdbdcdde7723622633d90b57a11c04dec21
+	source_x86_64 = electron-fiddle-0.37.3-x86_64.rpm::https://github.com/electron/fiddle//releases/download/v0.37.3/electron-fiddle-0.37.3-1.x86_64.rpm
+	sha256sums_x86_64 = 2221f7092612d74d1fd57ccf90209feeb6fa9fcc877276c2a793846201e21865
 
 pkgname = electron-fiddle-bin
