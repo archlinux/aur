@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=BiocFHIR
-_pkgver=1.10.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,8 +30,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a89ac7690e2b3f8780c301be2da6a880')
-b2sums=('bc8a8698c861083f2468bb44319a75bd855baaf19ebfb3aff8b6b6069a1f9444765d5368b9a4d53098a9e03496f739a83e54fb4a25bfdd8f554de647c10c1aa2')
+md5sums=('c638db36762057076b2bd5802933edbf')
+b2sums=('a6db967c48b9d1f6b0a2cc8a6029d85f12c6b75892105787be1e01b64847eccc4e3ae374be1d99f55433d0230bbe8c886cb1ab1c67b2db5ebf6d9203307daf2e')
 
 build() {
   mkdir build
