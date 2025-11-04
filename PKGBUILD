@@ -1,4 +1,4 @@
-# Maintainer :  Kr1ss  $(tr +- .@ <<<'<kr1ss+x-yandex+com>')
+# Contributor :  Kr1ss  $(tr +- .@ <<<'<kr1ss+x-yandex+com>')
 # Contributor : Olivier Le Moal <mail at olivierlemoal dot fr>
 # Contributor : Dawid Wrobel <cromo@klej.net>
 # Contributor : Sébastien Duquette <ekse.0x@gmail.com>
@@ -10,7 +10,7 @@ _name="${pkgname%-git}"
 
 pkgver() { git -C "$_name" describe --long --tags | sed 's/v[^0-9]*//;s/-/.r/;s/-g/./'; }
 pkgver=3.1.0.r2.1b695ee
-pkgrel=3
+pkgrel=4
 
 pkgdesc='Web application fuzzer - python3 build of the dev branch'
 url="https://github.com/xmendez/$_name"
@@ -18,15 +18,18 @@ license=('GPL')
 arch=('any')
 
 makedepends=('python-mock' 'python-netaddr' 'python-sphinx' 'texinfo' 'git')
-depends=('python' 'python-pycurl' 'python-attrs' 'python-iniconfig' 'python-future' 'python-chardet'
-         'python-more-itertools' 'python-pluggy' 'python-py' 'python-toml')
+depends=('python' 'python-pycurl' 'python-chardet' 'python-setuptools' 'python-pyparsing'
+         'python-six' 'python-zombie-imp' 'python-cgi')
 
 provides=("$_name")
 conflicts=("$_name")
 
 source=("git+$url.git")
 sha256sums=('SKIP')
-
+prepare() {
+  cd "$_name"
+  git cherry-pick -n ba6fee7943fcca42e0ea971272170b2f78a4963c
+}
 
 build() {
   cd "$_name"
