@@ -1,7 +1,7 @@
 pkgbase = typstwriter
 	pkgdesc = Typstwriter: GUI frontend/writer using Typst + Qt
 	pkgver = 0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Bzero/typstwriter
 	arch = any
 	license = MIT
@@ -16,6 +16,7 @@ pkgbase = typstwriter
 	depends = pyside6
 	depends = python-pygments
 	depends = qt6-webengine
+	conflicts = typstwriter-git
 	source = typstwriter-0.3.tar.gz::https://github.com/Bzero/typstwriter/archive/refs/tags/V0.3.tar.gz
 	sha256sums = SKIP
 

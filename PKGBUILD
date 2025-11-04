@@ -1,7 +1,7 @@
 # Maintainer: gladon4 <mcgoldhand at gmail dot com>
 pkgname=typstwriter
 pkgver=0.3   
-pkgrel=2
+pkgrel=3
 pkgdesc="Typstwriter: GUI frontend/writer using Typst + Qt"
 arch=('any')
 url="https://github.com/Bzero/typstwriter"
@@ -20,6 +20,10 @@ makedepends=(
   'python-wheel'
   'python-installer'
   'python-flit-core'
+)
+conflicts=(
+  # Because both 'just' install the typstwriter pip package and use the same command
+  'typstwriter-git'
 )
 source=(
   "typstwriter-${pkgver}.tar.gz::https://github.com/Bzero/typstwriter/archive/refs/tags/V${pkgver}.tar.gz"
