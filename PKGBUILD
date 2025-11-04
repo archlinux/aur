@@ -2,7 +2,7 @@
 _base=handcalcs
 pkgname=python-${_base}
 pkgdesc="Python library for converting Python calculations into rendered latex"
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 arch=(any)
 url="https://github.com/connorferster/${_base}"
@@ -12,7 +12,7 @@ makedepends=(python-build python-flit-core python-installer)
 checkdepends=(python-pytest python-forallpeople python-pint python-sympy ipython)
 optdepends=('python-nb-hideinputs: exporter support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('cdbae17eb63366ab6704dc0a266757cd526ca50c218fbd51ffdb1caf182879169c78aa97302274e4c82bde1ec9bf0ade33dea8dc5983ddc312633b1b55d7c69f')
+sha512sums=('9f95b7bf53f479846f05d4d72b4aee12bd7fc8ef77aa919e4b34bc9d45c80e8fcf1ecdf015feb56300273daf02c036e911e687c40637ae15fbd3dc94b1719227')
 
 build() {
   cd ${_base}-${pkgver}

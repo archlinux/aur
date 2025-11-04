@@ -1,5 +1,5 @@
 [python-handcalcs]
 source = "github"
 github = "connorferster/handcalcs"
-use_latest_release = "true"
+use_max_tag = "true"
 prefix = "v."
