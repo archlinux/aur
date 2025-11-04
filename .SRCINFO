@@ -1,6 +1,6 @@
 pkgbase = python-kinet2pcb
 	pkgdesc = Convert KiCad netlist into a PCBNEW .kicad_pcb file.
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://pypi.org/project/kinet2pcb
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-kinet2pcb
 	conflicts = kinet2pcb
 	options = !emptydirs
 	options = !strip
-	source = kinet2pcb-1.1.3.tar.gz::https://files.pythonhosted.org/packages/source/k/kinet2pcb/kinet2pcb-1.1.3.tar.gz
-	sha256sums = 6fc01dbe1c07dbb03729ce60036ce9e40e7819a197c9e158882cecd93c527dd6
+	source = kinet2pcb-1.1.4.tar.gz::https://files.pythonhosted.org/packages/source/k/kinet2pcb/kinet2pcb-1.1.4.tar.gz
+	sha256sums = 9374a09ba58f64895b5e47c972b20315d624e06eec48925df26a308e2746f661
 
 pkgname = python-kinet2pcb
