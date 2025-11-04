@@ -8,14 +8,13 @@ _electronversion=30
 pkgrel=1
 pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others. Premium edition (proprietary). (Uses system-wide Electron)"
 arch=('x86_64')
-url="https://dbgate.org/"
-_ghurl="https://github.com/dbgate/dbgate"
+url="https://github.com/dbgate/dbgate"
 license=('MIT')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 depends=("electron${_electronversion}")
 source=(
-  "${_pkgname}.AppImage::${_ghurl}/releases/download/v${pkgver}/dbgate-premium-latest.AppImage"
+  "${_pkgname}.AppImage::${url}/releases/download/v${pkgver}/dbgate-premium-latest.AppImage"
   "LICENSE-${pkgver}::https://raw.githubusercontent.com/dbgate/dbgate/v${pkgver}/LICENSE"
   "${_pkgname}.sh"
 )
