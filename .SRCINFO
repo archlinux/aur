@@ -1,23 +1,23 @@
 pkgbase = meru-bin
 	pkgdesc = 📮 Nifty Gmail desktop app.(previously Gmail Desktop).(Prebuilt version.Use system-wide electron)
-	pkgver = 3.14.0
+	pkgver = 3.14.2
 	pkgrel = 1
 	url = https://github.com/zoidsh/meru
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	depends = electron38
-	provides = meru=3.14.0
+	depends = electron39
+	provides = meru=3.14.2
 	conflicts = meru
 	options = !emptydirs
 	options = !strip
-	source = LICENSE-3.14.0::https://raw.githubusercontent.com/timche/meru/v3.14.0/LICENSE
+	source = LICENSE-3.14.2::https://raw.githubusercontent.com/timche/meru/v3.14.2/LICENSE
 	source = meru.sh
 	sha256sums = 96c1d04d710fd54233ab3a7a799ebb23926c683300f1e0cee2a54ff9a18ed791
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = meru-3.14.0-aarch64.deb::https://github.com/zoidsh/meru/releases/download/v3.14.0/meru_3.14.0_arm64.deb
-	sha256sums_aarch64 = 524f4b6d896d565349af9c403996549552efe89edfe07c10622d05945017fd9c
-	source_x86_64 = meru-3.14.0-x86_64.deb::https://github.com/zoidsh/meru/releases/download/v3.14.0/meru_3.14.0_amd64.deb
-	sha256sums_x86_64 = 59bce24dd5b9c3670f686e646ec400654a6018322d7fbd50f5014b597d2c459b
+	source_aarch64 = meru-3.14.2-aarch64.deb::https://github.com/zoidsh/meru/releases/download/v3.14.2/meru_3.14.2_arm64.deb
+	sha256sums_aarch64 = 3927648ea68895979dca2872594c0c4f340574ccaad8e73e1e470e0b1534e95e
+	source_x86_64 = meru-3.14.2-x86_64.deb::https://github.com/zoidsh/meru/releases/download/v3.14.2/meru_3.14.2_amd64.deb
+	sha256sums_x86_64 = ddfa7427b30b1da9919c3d76d0b26b3e0f31c8228c720b21f1b2b3888e06eac8
 
 pkgname = meru-bin
