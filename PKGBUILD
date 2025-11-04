@@ -4,14 +4,14 @@ pkgname="gbtolib"
 _name="GBTOLib"
 _cmakeMinPolicy="3.10"
 pkgver=3.0.3
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="A high-performance library for evaluation of molecular integrals"
 arch=('any')
 url='https://zenodo.org/records/5798035'
 license=('GPL3')
 groups=()
-depends=('lapack' 'blas')
+depends=('lapack64' 'blas64-openblas' 'mpich-fint64')
 makedepends=('cmake' 'gcc' 'gcc-fortran' 'cmake' 'doxygen' 'mpich-fint64')
 checkdepends=()
 optdepends=()
@@ -28,12 +28,21 @@ sha256sums=('5110ddf6f3c9993c56ecca99df1fbb071e6402a31e0f599f2db8ad73a72de0b1')
 
 build() {
 
+  export BLAS_LIBRARIES="$(pkg-config --libs blas64)"
+  export LAPACK_LIBRARIES="$(pkg-config --libs lapack64)"
+  export BLAS_CFLAGS="$(pkg-config --cflags blas64)"
+  export LAPACK_CFLAGS="$(pkg-config --cflags lapack64)"
+
   local _cmakeOptions=(
     -D CMAKE_POLICY_VERSION_MINIMUM="$_cmakeMinPolicy"
     -D CMAKE_C_COMPILER=/opt/mpich-fint64/bin/mpicc
     -D CMAKE_CXX_COMPILER=/opt/mpich-fint64/bin/mpicc
     -D CMAKE_Fortran_COMPILER=/opt/mpich-fint64/bin/mpifort
     -D MPIEXEC_EXECUTABLE=/opt/mpich-fint64/bin/mpiexec
+    -D BLA_VENDOR=OpenBLAS
+    -D BLA_SIZE_OF_INTEGER=8
+    -D BLAS_LIBRARIES="${BLAS_LIBRARIES}"
+    -D LAPACK_LIBRARIES="${LAPACK_LIBRARIES}"
     -D CMAKE_Fortran_FLAGS='-fdefault-integer-8'
     -D WITH_MPI='ON'
   )
