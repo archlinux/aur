@@ -1,20 +1,37 @@
 # Maintainer: k4ditano <k4ditano@h2r.es>
 pkgname=notnative-app
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
-pkgdesc="Blazingly fast native note-taking app with vim-like keybindings, built for Omarchy OS"
+pkgdesc="Note-taking application with Vim-like keybindings"
 arch=('x86_64')
 url="https://github.com/k4ditano/notnative-app"
 license=('MIT')
-depends=('gtk4' 'webkitgtk-6.0' 'libadwaita' 'gtksourceview5' 'libpulse' 'sqlite')
+depends=('gtk4' 'webkitgtk-6.0' 'libadwaita' 'gtksourceview5' 'libpulse' 'sqlite' 'mpv' 'mujs')
 makedepends=('cargo' 'rust' 'git' 'pkgconf')
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+    "mujs-linking.patch"
 )
-sha256sums=('c5483995631ee79889b12dfa6e4434ea0a333f4dde8e4a164f14adb1514ea8fc')
+sha256sums=('SKIP'
+            'SKIP')
+
+prepare() {
+    local srcdir_real="$srcdir/$pkgname-$pkgver"
+    if [[ ! -d $srcdir_real ]]; then
+        srcdir_real="$srcdir/notnative-omarchy-$pkgver"
+    fi
+
+    cd "$srcdir_real"
+    patch -Np1 -i "$srcdir/mujs-linking.patch"
+}
 
 build() {
-    cd "$pkgname-$pkgver"
+    local srcdir_real="$srcdir/$pkgname-$pkgver"
+    if [[ ! -d $srcdir_real ]]; then
+        srcdir_real="$srcdir/notnative-omarchy-$pkgver"
+    fi
+
+    cd "$srcdir_real"
     export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
     export LIBSQLITE3_SYS_BUNDLED=0
     export RUSQLITE_SYS_BUNDLED=0
@@ -23,7 +40,12 @@ build() {
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    local srcdir_real="$srcdir/$pkgname-$pkgver"
+    if [[ ! -d $srcdir_real ]]; then
+        srcdir_real="$srcdir/notnative-omarchy-$pkgver"
+    fi
+
+    cd "$srcdir_real"
     export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
     export LIBSQLITE3_SYS_BUNDLED=0
     export RUSQLITE_SYS_BUNDLED=0
@@ -31,7 +53,12 @@ check() {
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    local srcdir_real="$srcdir/$pkgname-$pkgver"
+    if [[ ! -d $srcdir_real ]]; then
+        srcdir_real="$srcdir/notnative-omarchy-$pkgver"
+    fi
+
+    cd "$srcdir_real"
 
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 "notnative.desktop" "$pkgdir/usr/share/applications/notnative.desktop"

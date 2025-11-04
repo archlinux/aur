@@ -1,0 +1,55 @@
+diff --git a/Cargo.lock b/Cargo.lock
+index b351f29..441dfa0 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -2014,6 +2014,7 @@ dependencies = [
+  "libmpv2",
+  "notify",
+  "open",
++ "pkg-config",
+  "pulldown-cmark",
+  "regex",
+  "relm4",
+diff --git a/Cargo.toml b/Cargo.toml
+index fe7d762..827f1e3 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -32,3 +32,6 @@ libc = "0.2"
+ default = ["sqlite-bundled"]
+ sqlite-bundled = ["rusqlite/bundled"]
+ sqlite-system = []
++
++[build-dependencies]
++pkg-config = "0.3"
+diff --git a/build.rs b/build.rs
+new file mode 100644
+index 0000000..ec4e505
+--- /dev/null
++++ b/build.rs
+@@ -0,0 +1,26 @@
++fn main() {
++    // Ensure libmujs is linked when present so libmpv symbols resolve correctly.
++    if std::env::var("CARGO_CFG_TARGET_OS").as_deref() != Ok("linux") {
++        return;
++    }
++
++    // Prevent the linker from dropping libmujs before libmpv references it.
++    println!("cargo:rustc-link-arg=-Wl,--push-state,--no-as-needed");
++
++    match pkg_config::Config::new().probe("mujs") {
++        Ok(lib) => {
++            for path in lib.link_paths {
++                println!("cargo:rustc-link-search={}", path.display());
++            }
++            for name in lib.libs {
++                println!("cargo:rustc-link-arg=-l{name}");
++            }
++        }
++        Err(err) => {
++            println!("cargo:warning=Failed to find mujs via pkg-config: {err}");
++            println!("cargo:rustc-link-arg=-lmujs");
++        }
++    }
++
++    println!("cargo:rustc-link-arg=-Wl,--pop-state");
++}
