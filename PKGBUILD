@@ -4,7 +4,7 @@
 # Contributor: Mikkel Kroman <mk at maero dot dk>
 
 pkgname=ricochet-refresh
-pkgver=3.0.37
+pkgver=3.0.38
 pkgrel=1
 pkgdesc="Anonymous metadata-resistant instant messaging with Tor Onion Services v3 support."
 arch=('i686' 'x86_64')
