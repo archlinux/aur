@@ -1,20 +1,17 @@
 pkgbase = jelly
 	pkgdesc = 🪼 Explore & Stream Jellyfin via CLI
-	pkgver = 3.4.1
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://github.com/AzureHound/jelly
 	arch = any
 	license = 0BSD
-	depends = awk
-	depends = bash
 	depends = chafa
 	depends = curl
 	depends = fzf
-	depends = grep
 	depends = jq
 	depends = mpv
 	depends = socat
-	source = jelly-3.4.1.tar.gz::https://github.com/AzureHound/jelly/archive/refs/tags/v3.4.1.tar.gz
-	sha256sums = 447d080b08f51ac9738d59715489172c5338f77a1b0d5ecc043fb0c575aaaaa9
+	source = jelly-3.5.0.tar.gz::https://github.com/AzureHound/jelly/archive/refs/tags/v3.5.0.tar.gz
+	sha256sums = 91fa2003313497f4cbadf8f47893f20f8a5518036a0ce756309b444923ec1432
 
 pkgname = jelly
