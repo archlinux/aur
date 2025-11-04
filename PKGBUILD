@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rcellminer
-_pkgver=2.30.1
+_pkgver=2.32.0
 pkgname=r-${_pkgname,,}
-pkgver=2.30.1
+pkgver=2.32.0
 pkgrel=1
 pkgdesc='rcellminer: Molecular Profiles, Drug Response, and Chemical Structures for the NCI-60 Cell Lines'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ddb92b11d7820720db3e5f70ce0072c9459d955a26c2d767dba99b33d24cfe18')
+sha256sums=('78e5d17d09ec8a0703a09c603a662e0cec4dfe28983e41ae989596df3319aa9a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
