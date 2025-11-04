@@ -3,7 +3,7 @@
 
 pkgbase=ntfsplus-dkms-git
 pkgname=("$pkgbase" "ntfsplus-udev")
-pkgver=2025.10.20.r34.496db7027
+pkgver=2025.10.24.r8.cdb5126be
 pkgrel=1
 # epoch=1
 pkgdesc="A new NTFS driver for Linux promised to be better than NTFS3. These patches are directly taken from the maintainer's mailing list posts. Backported to 6.12."
@@ -20,38 +20,96 @@ options=('!strip' '!emptydirs')
 cat <<'EOF' >DLAGENTS
 #!/bin/sh
 
+PWD=$(pwd)
+
 ORIGIN=${1#shallowclone+}
+ORG_URL=${ORIGIN%%'?'*}
+ORG_ARGS=${ORIGIN#*'?'}
+
 DEST=${2}
 REAL_DEST=${DEST%.part}
 
-# Verify if destination already exists and is a valid git repository with the correct remote URL
+### Parse url parameters
+
+arg_parser() {
+  local args=$1
+  shift
+
+  IFS='&'
+  set -- ${args}
+  unset IFS
+
+  BRANCH=
+  COMMIT=
+  TAG=
+  RECURSE_SUBMODULES=
+  DEPTH=1
+
+  while [ $# -gt 0 ]; do
+    case $1 in
+      branch=*) BRANCH=${1#branch=} ;;
+      commit=*) COMMIT=${1#commit=} ;;
+      tag=*) TAG=${1#tag=} ;;
+      recurse=true) RECURSE_SUBMODULES=1 ;;
+      depth=*) DEPTH=${1#depth=} ;;
+      *) : ;;
+    esac
+    shift
+  done
+
+  export BRANCH COMMIT TAG RECURSE_SUBMODULES DEPTH
+}
+
+arg_parser "${ORG_ARGS}"
+
+update_src() {
+  git fetch \
+    --depth 1 \
+    ${TAG:-'--no-tags'} \
+    ${RECURSE_SUBMODULES:+'--recurse-submodules'} \
+    origin "${COMMIT:-${BRANCH:-${TAG}}}"
+}
+
+### Verify if destination already exists and is a valid git repository with the correct remote URL
 
 verify_dest() {
   local dest=$1 current_url
-  if [ -d "${dest}/.git" ]; then
-    cd "${dest}"
-    current_url=$(git config --get remote.origin.url)
-    if [ "${current_url}" = "${ORIGIN}" ]; then
+  [ -d "${dest}/.git" ] || return
+  echo "Source dest exists, updating..."
 
-      # # Abort any in-progress tasks
-      git am --abort || true
-      git merge --abort || true
-      git rebase --abort || true
+  cd "${dest}"
+  git remote set-url origin "${ORG_URL}"
+  
+  # Abort any in-progress tasks
+  git am --abort ||
+    git apply --abort ||
+    git merge --abort ||
+    git rebase --abort ||
+    git cherrypick --abort || :
 
-      # Update the existing shallow clone
-      git fetch --depth 1
-      git reset --hard FETCH_HEAD
-      exit 0
-    fi
-  fi
+  # Update the existing shallow clone
+  update_src
+  git reset --hard FETCH_HEAD
+  cd "${PWD}"
+  exit 0
 }
 
 verify_dest "${DEST}"
 verify_dest "${REAL_DEST}"
 
-# If not, perform a fresh shallow clone
+### If not, perform a fresh shallow clone
+
 rm -rf "${DEST}"
-git clone --depth 1 --branch master --single-branch --no-tags "${ORIGIN}" "${DEST}"
+mkdir -p "${DEST}"
+
+cd "${DEST}"
+git init --quiet
+git remote add origin "${ORG_URL}"
+
+update_src
+git reset --hard FETCH_HEAD
+
+cd "${PWD}"
 
 echo ${REAL_DEST}
 EOF
@@ -59,11 +117,7 @@ chmod +x DLAGENTS
 export DLAGENTS="shallowclone::$(realpath "./DLAGENTS") %u %o"
 
 source=(
-  'linux::shallowclone+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'
-  # 'ntfsplus-00-05.mbox.gz::https://lore.kernel.org/all/20251020020749.5522-1-linkinjeon@kernel.org/t.mbox.gz'
-  # 'ntfsplus-06-11.mbox.gz::https://lore.kernel.org/all/20251020021227.5965-6-linkinjeon@kernel.org/t.mbox.gz'
-  'ntfsplus-00-05.mbox.gz::https://raw.githubusercontent.com/shadichy/ntfsplus-dkms/refs/heads/dev/ntfsplus-00-05.mbox.gz'
-  'ntfsplus-06-11.mbox.gz::https://raw.githubusercontent.com/shadichy/ntfsplus-dkms/refs/heads/dev/ntfsplus-06-11.mbox.gz'
+  'linux::shallowclone+https://git.kernel.org/pub/scm/linux/kernel/git/linkinjeon/ntfs.git?branch=ntfs-next'
   '0001-fs-ntfsplus-inode.c-Resolve-import-for-inode_generic.patch'
   '0002-ntfsplus-Resolve-iomap_-arguments-temporarily-for-ke.patch'
   '0003-ntfsplus-Backport-ntfs_iomap.c-functions-to-kernels-.patch'
@@ -77,8 +131,6 @@ source=(
 )
 sha256sums=(
   SKIP
-  03b57c05e6f9fbf5b5bf34507aa212f6491967f21c53a73352e7f78ebfaf66a8
-  bede30ed663dada47c946f74a314b8e25817c4cd8b6c39e0cd5810bbd1cddca2
   0eb24ef10bcfe46dbb56a8e8fe111b30e0969c0ff19b64b802939929773e616f
   7a9305d0b4c874878d527ec7b8ed4dd61c8f973d3064eee80b6cc54375ef7515
   105a4a70c4aae4cfa65a677139a5b737b902d5be27ea246fdc04149198360f18
@@ -91,7 +143,7 @@ sha256sums=(
   e3866cac3d71da15740159c89b233d4d1f61981dbf737d4e3bc9a4c56bfa24be
 )
 
-_mailbox_last_date=
+_upstream_last_commit_date=
 
 prepare() {
   if [ ! -e "$srcdir/linux" ]; then
@@ -100,9 +152,7 @@ prepare() {
 
   cd "$srcdir/linux"
 
-  # Get the experimental ntfsplus driver from the mailing lists
-  git am --empty=keep "$srcdir/ntfsplus-00-05.mbox" "$srcdir/ntfsplus-06-11.mbox"
-  _mailbox_last_date=$(git log -1 --format='%ad' --date=iso-strict)
+  _upstream_last_commit_date=$(git log --format='%cd' -n1 --date=iso-strict)
 
   # Apply patches
   git am --empty=keep --whitespace=fix "$srcdir"/0*.patch
@@ -112,11 +162,11 @@ pkgver() {
   cd "$srcdir/linux"
 
   # Version format: YYYY.MM.DD.r<commitcount>.<commitsha>
-  # with date from _mailbox_last_date
+  # with date from _upstream_last_commit_date
   local commit_count commit_sha
-  commit_count=$(git rev-list --count origin/master..HEAD)
+  commit_count=$(git rev-list --count FETCH_HEAD..HEAD)
   commit_sha=$(git rev-parse --short HEAD)
-  date +'%Y.%m.%d.r'"${commit_count}"'.'"${commit_sha}" -d "$_mailbox_last_date"
+  date +'%Y.%m.%d.r'"${commit_count}"'.'"${commit_sha}" -d "${_upstream_last_commit_date}"
 }
 
 build() {

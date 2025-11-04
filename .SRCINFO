@@ -1,6 +1,6 @@
 pkgbase = ntfsplus-dkms-git
 	pkgdesc = A new NTFS driver for Linux promised to be better than NTFS3. These patches are directly taken from the maintainer's mailing list posts. Backported to 6.12.
-	pkgver = 2025.10.20.r34.496db7027
+	pkgver = 2025.10.24.r8.cdb5126be
 	pkgrel = 1
 	url = https://github.com/shadichy/ntfsplus-dkms
 	arch = any
@@ -9,9 +9,7 @@ pkgbase = ntfsplus-dkms-git
 	optdepends = ntfsprogs-plus: Recommended NTFS utilities
 	options = !strip
 	options = !emptydirs
-	source = linux::shallowclone+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
-	source = ntfsplus-00-05.mbox.gz::https://raw.githubusercontent.com/shadichy/ntfsplus-dkms/refs/heads/dev/ntfsplus-00-05.mbox.gz
-	source = ntfsplus-06-11.mbox.gz::https://raw.githubusercontent.com/shadichy/ntfsplus-dkms/refs/heads/dev/ntfsplus-06-11.mbox.gz
+	source = linux::shallowclone+https://git.kernel.org/pub/scm/linux/kernel/git/linkinjeon/ntfs.git?branch=ntfs-next
 	source = 0001-fs-ntfsplus-inode.c-Resolve-import-for-inode_generic.patch
 	source = 0002-ntfsplus-Resolve-iomap_-arguments-temporarily-for-ke.patch
 	source = 0003-ntfsplus-Backport-ntfs_iomap.c-functions-to-kernels-.patch
@@ -23,8 +21,6 @@ pkgbase = ntfsplus-dkms-git
 	source = dkms.conf
 	source = 90-udev-prefer-ntfsplus.rules
 	sha256sums = SKIP
-	sha256sums = 03b57c05e6f9fbf5b5bf34507aa212f6491967f21c53a73352e7f78ebfaf66a8
-	sha256sums = bede30ed663dada47c946f74a314b8e25817c4cd8b6c39e0cd5810bbd1cddca2
 	sha256sums = 0eb24ef10bcfe46dbb56a8e8fe111b30e0969c0ff19b64b802939929773e616f
 	sha256sums = 7a9305d0b4c874878d527ec7b8ed4dd61c8f973d3064eee80b6cc54375ef7515
 	sha256sums = 105a4a70c4aae4cfa65a677139a5b737b902d5be27ea246fdc04149198360f18
