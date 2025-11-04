@@ -1,0 +1,15 @@
+pkgbase = githubfetch
+	pkgdesc = Fetch GitHub profile info by username
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/desyatkoff/githubfetch
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	source = https://github.com/desyatkoff/githubfetch/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 72f659a79f023214fe1e9405ca35aea40fa8dee019a4790126caf3f2fe30244d
+
+pkgname = githubfetch
