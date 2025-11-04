@@ -3,7 +3,7 @@
 
 pkgname=mate-menu
 pkgver=22.04.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Advanced menu for MATE Panel, a fork of MintMenu"
 arch=('any')
 url="https://github.com/ubuntu-mate/mate-menu"

@@ -1,8 +1,9 @@
 pkgbase = mate-menu
 	pkgdesc = Advanced menu for MATE Panel, a fork of MintMenu
 	pkgver = 22.04.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ubuntu-mate/mate-menu
+	install = mate-menu.install
 	arch = any
 	license = GPL
 	makedepends = python-distutils-extra
@@ -17,7 +18,6 @@ pkgbase = mate-menu
 	depends = python-setproctitle
 	depends = mate-menus
 	depends = python-cairo
-	install = mate-menu.install
 	source = mate-menu-22.04.2.tar.gz::https://github.com/ubuntu-mate/mate-menu/archive/22.04.2.tar.gz
 	sha256sums = 36aa865b72664b8cc90d9c1c429fd3c44e2c198369aae4eaaa87228a5add075c
 

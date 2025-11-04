@@ -4,15 +4,12 @@ schemas() {
 
 post_install() {
   schemas
-  which curl >/dev/null && curl -s https://counter1.optistats.ovh/private/freecounterstat.php?c=x64437g8jmz1f6xadjq992bds9lfnct3 2>&1 >/dev/null
 }
 
 post_upgrade() {
   schemas
-  which curl >/dev/null && curl -s https://counter1.optistats.ovh/private/freecounterstat.php?c=x64437g8jmz1f6xadjq992bds9lfnct2 2>&1 >/dev/null
 }
 
 post_remove() {
   schemas
-  which curl >/dev/null && curl -s https://counter1.optistats.ovh/private/freecounterstat.php?c=x64437g8jmz1f6xadjq992bds9lfnct1 2>&1 >/dev/null
 }
