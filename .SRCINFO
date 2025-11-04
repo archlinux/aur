@@ -1,6 +1,6 @@
 pkgbase = godot3-mono-bin
 	pkgdesc = Advanced cross-platform 2D and 3D game engine (3.X Branch Mono)
-	pkgver = 3.6.1
+	pkgver = 3.6.2
 	pkgrel = 1
 	url = https://godotengine.org
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = godot3-mono-bin
 	depends = mono-msbuild
 	optdepends = pipewire-alsa
 	optdepends = pulse-native-provider
-	source = https://github.com/godotengine/godot/releases/download/3.6.1-stable/Godot_v3.6.1-stable_mono_x11_64.zip
-	source = https://github.com/godotengine/godot/archive/refs/tags/3.6.1-stable.tar.gz
-	sha256sums = e981d70fed7643723469fab1cadd18970093b201bbf377f3a8a0c1df8c3bd9b2
-	sha256sums = cfed6125b59bfdf66e2abcd6d53a4ea79440f972bb6c32b2a12112f66af4d7e1
+	source = https://github.com/godotengine/godot/releases/download/3.6.2-stable/Godot_v3.6.2-stable_mono_x11_64.zip
+	source = https://github.com/godotengine/godot/archive/refs/tags/3.6.2-stable.tar.gz
+	sha256sums = d55975269237275f30ecbb0489b9362df6a4ee8553cd4b875547c1b817f7fd3f
+	sha256sums = 389ca3291f6836b6bfc4563740d8cf56625e80665049a69dbc2899bad3a4a607
 
 pkgname = godot3-mono-bin
