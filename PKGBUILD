@@ -2,7 +2,7 @@
 # Contributor: Mysti
 
 pkgname=proton-pass-bin
-pkgver=1.32.10
+pkgver=1.32.11
 pkgrel=1
 pkgdesc="Open-source password manager for effortless protection. Securely store, share and auto-login your accounts with Proton Pass, using end-to-end encryption trusted by millions."
 arch=("x86_64")
@@ -16,7 +16,7 @@ depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-libs' 'gdk-pixbuf
 provides=('proton-pass' 'protonpass')
 conflicts=('proton-pass' 'protonpass')
 source=("https://proton.me/download/PassDesktop/linux/x64/proton-pass_${pkgver}_amd64.deb")
-sha256sums=('15e53bb9b8d3d56aadbe208f03bf125bccd98b587a8278fb7ab15e6e0da6820e')
+sha256sums=('3aec0bb8bbcfc7c4d4437b07e007341746cf6dedb27993f2e4aab5e33a13aa71')
 
 package() {
 	tar -xvf data.tar.xz -C "$pkgdir/"
