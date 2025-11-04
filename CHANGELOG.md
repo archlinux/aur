@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix Flatpak save file in home directory (make a warning)
 - Save unit file in run 
 
+
+## [2.6.3] - 2025-11-4
+
+### Fixed
+- System unit takes precedence on User Session units
+
 ## [2.6.2] - 2025-11-4
 
 ### Fixed
