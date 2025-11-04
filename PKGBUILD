@@ -20,9 +20,17 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   
-  # Install runtime dependencies via pip first
+  # Determine Python version and site-packages directory
+  _python_version=$(python -c "import sys; print('{}.{}'.format(sys.version_info.major, sys.version_info.minor))")
+  _site_packages="$pkgdir/usr/lib/python${_python_version}/site-packages"
+  
+  # Create site-packages directory if it doesn't exist
+  install -d "$_site_packages"
+  
+  # Install runtime dependencies via pip
   # These packages are not available in official Arch repos
-  pip install --root="$pkgdir" --no-warn-script-location \
+  # Use --target to install directly to the site-packages directory
+  pip install --target="$_site_packages" --no-warn-script-location \
     cloudscraper>=1.2.71 \
     beautifulsoup4>=4.12.0 \
     argcomplete>=3.0.0
@@ -35,7 +43,6 @@ package() {
     "$pkgdir/usr/share/fish/vendor_completions.d/eksisozluk-scraper.fish"
   
   # Generate bash completion using argcomplete
-  # The executable is installed to $pkgdir/usr/bin, add it to PATH
   install -d "$pkgdir/usr/share/bash-completion/completions"
   PATH="$pkgdir/usr/bin:$PATH" \
     python -m argcomplete.register-python-argcomplete eksisozluk-scraper \
