@@ -5,7 +5,7 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=shed
-pkgver=1.16
+pkgver=1.17
 pkgrel=1
 pkgdesc="A simple hex editor with an ncurses, pico-style interface"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="https://shed.sourceforge.net/"
 license=('GPL-2.0-only')
 depends=('ncurses')
 source=(https://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('39fdf7d1bed6527d801f71b84e505d02e7a931799250f16d36db291e54635883')
+sha256sums=('3bccbb9986ce12bd3950338f7fd724e388b17511847bd48eef576a69cbd8a8dd')
 
 build()
 {
