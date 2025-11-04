@@ -1,16 +1,21 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=mpd-notification-git
-pkgver=0.8.6.r2.ga4d100c
+pkgver=0.9.2.r0.gad47aa7
 pkgrel=1
 pkgdesc='Notify about tracks played by mpd - git checkout'
 arch=('i686' 'x86_64')
 url='https://github.com/eworm-de/mpd-notification'
-depends=('libsystemd' 'ffmpeg' 'file' 'iniparser' 'libnotify' 'libmpdclient')
+depends=('libsystemd' 'libsystemd.so'
+         'ffmpeg' 'libavformat.so' 'libavutil.so'
+         'file' 'libmagic.so'
+         'iniparser' 'libiniparser.so'
+         'libnotify' 'libnotify.so'
+         'libmpdclient' 'libmpdclient.so')
 makedepends=('git' 'systemd' 'discount')
 conflicts=('mpd-notification')
 provides=('mpd-notification')
-license=('GPL')
+license=('GPL-3.0-or-later')
 source=('git+https://github.com/eworm-de/mpd-notification.git')
 sha256sums=('SKIP')
 
