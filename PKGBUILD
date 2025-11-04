@@ -1,7 +1,7 @@
 # Maintainer: SummerBreeze630 <xzwf2003 AT 163 DOT com>
 
 pkgname=wizstr
-pkgver=2025.8.2
+pkgver=2025.10.1
 pkgrel=1
 pkgdesc="C++ string processing library"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cmake')
 conflicts=("libstr-git")
 _srcdir="${pkgname}-${pkgver}"
 source=("${_srcdir}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('400901c80a2803d934e524b2d9896732956a79e6cbda7f208eded4b90d372cd3')
+sha256sums=('6ed6504d211670b5638a598298b825f6537ae40969b5fcb887b0e6e575bbe1ad')
 options=('staticlibs')
 
 build() {
