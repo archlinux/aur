@@ -2,7 +2,7 @@ diff --git a/google/genai/types.py b/google/genai/types.py
 index 041f238..0d10a32 100644
 --- a/google/genai/types.py
 +++ b/google/genai/types.py
-@@ -9560,8 +9560,7 @@ class Metric(_common.BaseModel):
+@@ -9950,8 +9950,7 @@ class Metric(_common.BaseModel):
    """An optional string indicating the version of the metric."""
  
    @model_validator(mode='after')  # type: ignore[arg-type]
