@@ -1,7 +1,7 @@
 pkgbase = qt5-location
 	pkgdesc = Provides access to position, satellite and area monitoring classes
 	pkgver = 5.15.18+kde+r7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io
 	arch = x86_64
 	groups = qt5
