@@ -1,57 +1,39 @@
-# Maintainer: Zine Yu <zine.xlws@gmail.com>
+# Maintainer: Zine Yu zine.xlws@gmail.com
 
 pkgname=buck2-bin
-pkgver=2025.10.15
+pkgver=2025.11.01
 pkgrel=1
-pkgdesc="Build system, successor to Buck"
+pkgdesc="A large-scale build system from Meta, developed in Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/facebook/buck2"
 license=('Apache' 'MIT')
-depends=('dotslash')
-makedepends=('curl' 'jq')
-source=('buck2-launcher.sh')
-sha256sums=('153e6ebb32d8e014ce7e0b625663f3f5f36dc29e16fc7d6b253190ae739b9ce1')
+depends=('zstd')
+options=('!strip')
 
-pkgver() {
-	_version=$(curl -sSL https://api.github.com/repos/facebook/buck2/releases | jq -r '.[1].tag_name')
-	echo "${_version//-/.}"
+_formatted_date() {
+	echo "$pkgver" | sed 's/\./-/g'
 }
 
-prepare() {
-	_version=$(curl -sSL https://api.github.com/repos/facebook/buck2/releases | jq -r '.[1].tag_name')
-	_json_url="https://github.com/facebook/buck2/releases/download/${_version}/buck2"
+case "$CARCH" in
+x86_64)
+	_platform="x86_64-unknown-linux-gnu"
+	sha256sums=('af89fc5360cba386c61a43aba32bd3aef353c8df803a195724f42866650a5f83')
+	;;
+aarch64)
+	_platform="aarch64-unknown-linux-gnu"
+	sha256sums=('4fc8cf5d9cf150e739893321c37a394d16684200b1fb7f3b3cebbdd0116dc9f5')
+	;;
+esac
 
-	echo "Downloading dotslash configuration for version ${_version}..."
-	curl -fL -o "buck2-${_version}.dotslash.json" "$_json_url"
-}
+source=("https://github.com/facebook/buck2/releases/download/$(_formatted_date)/buck2-${_platform}.zst")
 
 package() {
 	cd "$srcdir"
 
-	_version=$(curl -sSL https://api.github.com/repos/facebook/buck2/releases | jq -r '.[1].tag_name')
-	_dotslash_file="buck2-${_version}.dotslash.json"
+	zstd -d -f "buck2-${_platform}.zst" -c >buck2
+	install -Dm755 buck2 "$pkgdir/usr/bin/buck2"
+}
 
-	if [[ ! -f "$_dotslash_file" ]]; then
-		echo "Dotslash configuration file not found: $_dotslash_file"
-		exit 1
-	fi
-
-	install -dm755 "$pkgdir/usr/lib/$pkgname"
-
-	install -Dm644 "$_dotslash_file" \
-		"$pkgdir/usr/lib/$pkgname/buck2.dotslash.json"
-
-	install -Dm755 "buck2-launcher.sh" "$pkgdir/usr/bin/buck2"
-
-	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	curl -fL -o "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE" \
-		"https://raw.githubusercontent.com/facebook/buck2/main/LICENSE-APACHE" || {
-		echo "Warning: Failed to download Apache license"
-	}
-	curl -fL -o "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT" \
-		"https://raw.githubusercontent.com/facebook/buck2/main/LICENSE-MIT" || {
-		echo "Warning: Failed to download MIT license"
-	}
-
-	install -dm755 "$pkgdir/var/cache/$pkgname"
+post_install() {
+	echo "buck2 has been installed to /usr/bin/buck2"
 }
