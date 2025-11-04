@@ -14,16 +14,16 @@ depends=(curl ffmpeg libgl qt6-base qt6-multimedia qt6-tools qt6-wayland ttf-lib
 makedepends=(autoconf-archive automake cmake git nasm ninja tar unzip zip)
 options=('!lto' '!debug' '!buildflags' '!staticlibs' '!emptydirs')
 source=(
-  "git+$url#commit=c79063a77d6cce2d841e134c4e4b8993da0bad7d" # 2025-09-30
-  "git+https://github.com/microsoft/vcpkg.git#commit=b0b3de1b1a0aa4b8f2822460aa7f42f991629b3f" # 2025-09-26 (vcpkg.json:builtin-baseline)
+  "git+$url#commit=74940726d0b517a2ceb8ea23d47fa1705d6ec090" # 2025-11-04
+  "git+https://github.com/microsoft/vcpkg.git#commit=b0b3de1b1a0aa4b8f2822460aa7f42f991629b3f" # 2025-10-07 (vcpkg.json:builtin-baseline)
   "hb-fc-whole-archive.patch"
   "new-tab.patch"
 )
 sha256sums=(
   'SKIP'
   'SKIP'
-  'cf2cf709c6be6e39ac04ea5bf69f30ccc3d16bad87dbf95c6aad04b47e37cfe8'
-  '7f50eb833838df5fcd1fc0aa0eea986ed93cd670c283dad4ac5276e7c9e3ffbe'
+  'e78b3260cfd12e937edb38fb7c3bfb3c7dfd0d02c079b6144595f3e9a030b28c'
+  'c4cb53eb7ab7c9c9646ebbdfd8b6a7d8bc8ed0b4730a88503149057fdc263749'
 )
 
 prepare() {

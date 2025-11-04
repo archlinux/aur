@@ -1,85 +1,84 @@
 diff --git a/Base/res/ladybird/about-pages/newtab.html b/Base/res/ladybird/about-pages/newtab.html
-index 0471ae776c5..38168e9bfa9 100644
+index 07e0dc7f6d0..56550cfdd13 100644
 --- a/Base/res/ladybird/about-pages/newtab.html
 +++ b/Base/res/ladybird/about-pages/newtab.html
-@@ -3,10 +3,78 @@
- <head>
-     <meta charset="UTF-8">
-     <title>New Tab</title>
-+    <link rel="stylesheet" type="text/css" href="resource://ladybird/ladybird.css" />
-     <style>
--        html {
--            color-scheme: light dark;
-+        @media (prefers-color-scheme: light) {
-+            :root {
-+                --card-background-color: #f9f9f9;
-+                --card-header-background-color: #f0f2f5;
-+                --text-color: #222;
-+                --border-color: #dcdde1;
+@@ -3,10 +3,77 @@
+     <head>
+         <meta charset="UTF-8" />
+         <title>New Tab</title>
++        <link rel="stylesheet" type="text/css" href="resource://ladybird/ladybird.css" />
+         <style>
+-            html {
+-                color-scheme: light dark;
++            @media (prefers-color-scheme: light) {
++                :root {
++                    --card-background-color: #f9f9f9;
++                    --card-header-background-color: #f0f2f5;
++                    --text-color: #222;
++                    --border-color: #dcdde1;
++                }
 +            }
-+        }
 +
-+        @media (prefers-color-scheme: dark) {
-+            :root {
-+                --card-background-color: #2c2c2c;
-+                --card-header-background-color: #252525;
-+                --text-color: #eee;
-+                --border-color: #3d3d3d;
++            @media (prefers-color-scheme: dark) {
++                :root {
++                    --card-background-color: #2c2c2c;
++                    --card-header-background-color: #252525;
++                    --text-color: #eee;
++                    --border-color: #3d3d3d;
++                }
 +            }
-+        }
 +
-+        body {
-+            background-color: var(--card-background-color);
-+            color: var(--text-color);
-+            font-family: sans-serif;
-+            margin: 0;
-+            padding: 40px 20px;
-+            display: flex;
-+            justify-content: center;
-+            align-items: center;
-+            min-height: 100vh;
-+        }
++            body {
++                background-color: var(--card-background-color);
++                color: var(--text-color);
++                font-family: sans-serif;
++                margin: 0;
++                padding: 40px 20px;
++                display: flex;
++                justify-content: center;
++                align-items: center;
++                min-height: 100vh;
++            }
 +
-+        .card {
-+            background-color: var(--card-background-color);
-+            border: 1px solid var(--border-color);
-+            border-radius: 8px;
-+            max-width: 600px;
-+            width: 100%;
-+            padding: 24px;
-+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-+        }
++            .card {
++                background-color: var(--card-background-color);
++                border: 1px solid var(--border-color);
++                border-radius: 8px;
++                max-width: 600px;
++                width: 100%;
++                padding: 24px;
++                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
++            }
 +
-+        .card h1 {
-+            font-size: 20px;
-+            margin-bottom: 12px;
-+        }
++            .card h1 {
++                font-size: 20px;
++                margin-bottom: 12px;
++            }
 +
-+        .card p {
-+            font-size: 14px;
-+            line-height: 1.6;
-+            opacity: 0.8;
-+        }
++            .card p {
++                font-size: 14px;
++                line-height: 1.6;
++                opacity: 0.8;
++            }
 +
-+        code {
-+            font-family: monospace;
-+            background-color: var(--card-header-background-color);
-+            padding: 2px 4px;
-+            border-radius: 4px;
-         }
-     </style>
- </head>
-+<body>
-+    <div class="card">
-+        <p>
-+            This build of Ladybird was built from pinned commit <code>COMMIT_HASH</code>
-+            on <code>COMMIT_DATE</code>, and is likely out of date.
-+        </p>
-+        <p>
-+            For the most recent version, it is recommended to build from the latest commit
-+            using the <code>ladybird-git</code> AUR package instead.
-+        </p>
-+    </div>
-+</body>
++            code {
++                font-family: monospace;
++                background-color: var(--card-header-background-color);
++                padding: 2px 4px;
++                border-radius: 4px;
+             }
+         </style>
+     </head>
++    <body>
++        <div class="card">
++            <p>
++                This build of Ladybird was built from pinned commit <code>COMMIT_HASH</code>
++                on <code>COMMIT_DATE</code>, and is likely out of date.
++            </p>
++            <p>
++                For the most recent version, it is recommended to build from the latest commit
++                using the <code>ladybird-git</code> AUR package instead.
++            </p>
++        </div>
++    </body>
  </html>
-+

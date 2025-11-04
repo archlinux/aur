@@ -27,13 +27,13 @@ pkgbase = ladybird
 	options = !buildflags
 	options = !staticlibs
 	options = !emptydirs
-	source = git+https://github.com/LadybirdBrowser/ladybird#commit=c79063a77d6cce2d841e134c4e4b8993da0bad7d
+	source = git+https://github.com/LadybirdBrowser/ladybird#commit=74940726d0b517a2ceb8ea23d47fa1705d6ec090
 	source = git+https://github.com/microsoft/vcpkg.git#commit=b0b3de1b1a0aa4b8f2822460aa7f42f991629b3f
 	source = hb-fc-whole-archive.patch
 	source = new-tab.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = cf2cf709c6be6e39ac04ea5bf69f30ccc3d16bad87dbf95c6aad04b47e37cfe8
-	sha256sums = 7f50eb833838df5fcd1fc0aa0eea986ed93cd670c283dad4ac5276e7c9e3ffbe
+	sha256sums = e78b3260cfd12e937edb38fb7c3bfb3c7dfd0d02c079b6144595f3e9a030b28c
+	sha256sums = c4cb53eb7ab7c9c9646ebbdfd8b6a7d8bc8ed0b4730a88503149057fdc263749
 
 pkgname = ladybird
