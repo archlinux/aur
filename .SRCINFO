@@ -1,0 +1,24 @@
+pkgbase = typstwriter-git
+	pkgdesc = Typstwriter: GUI frontend/writer using Typst + Qt. This is the more up to date version based on the main branch instead of the releases.
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/Bzero/typstwriter
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-flit-core
+	depends = python
+	depends = python-qtpy
+	depends = python-pyqt6
+	depends = pyside6
+	depends = python-pygments
+	depends = qt6-webengine
+	depends = python-qt-themes
+	conflicts = typstwriter
+	source = typstwriter-0.3.zip::https://github.com/Bzero/typstwriter/archive/refs/heads/master.zip
+	sha256sums = SKIP
+
+pkgname = typstwriter-git
