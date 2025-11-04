@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=idevice_pair
+GenericName=iOS Device Pairing Manager
+Comment=Manage iOS device pairing and wireless debugging
+Exec=idevice_pair %u
+Icon=idevice-pair
+Categories=Utility;System;
+Terminal=false
