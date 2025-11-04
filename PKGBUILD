@@ -3,7 +3,7 @@
 _name=google-genai
 pkgname=python-$_name
 pkgver=1.48.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GenAI Python SDK."
 arch=('any')
 url='https://github.com/googleapis/python-genai'
@@ -31,6 +31,8 @@ build() {
 check() {
   local pytest_options=(
     -vv
+    -n auto
+    --dist=loadscope
     # Need Gemini developer API or Vertex AI API
     --ignore google/genai/tests/batches/test_cancel.py
     --ignore google/genai/tests/batches/test_create.py
@@ -120,9 +122,6 @@ check() {
     --deselect google/genai/tests/afc/test_generate_content_stream_afc_thoughts.py
     --deselect google/genai/tests/batches/test_embedding.py
     --deselect google/genai/tests/operations/test_get.py
-    # Failed
-    --deselect google/genai/tests/live/test_live.py
-    --deselect google/genai/tests/live/test_live_music.py::test_vertex_from_env
   )
   cd "$srcdir"/${pkgname//google-/}-$pkgver
   PYTHONPATH=$PWD pytest "${pytest_options[@]}" ${_name//-//}/tests
