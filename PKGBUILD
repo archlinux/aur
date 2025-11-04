@@ -3,7 +3,7 @@
 pkgbase=nautilus-scripts
 pkgname=('nautilus-scripts' 'nautilus-scripts-dolphin')
 pkgver=26.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A set of actions for extending the functionality of the GNOME Files (Nautilus), Dolphin, Caja, Nemo, PCManFM-Qt and Thunar file managers.'
 url=https://github.com/cfgnunes/nautilus-scripts
 arch=('x86_64')
@@ -20,16 +20,10 @@ package_nautilus-scripts() {
   install="${pkgname}.install"
   optdepends=('nautilus-scripts-dolphin: dolphin servicemenus')
 
-  script_dir=${pkgdir}/opt/${pkgname}
-
   install -d ${pkgdir}/opt/
-  cp -r nautilus-scripts-${pkgver} ${script_dir}
+  cp -r nautilus-scripts-${pkgver} ${pkgdir}/opt/${pkgname}
 
-  # disable accessed scripts
-  sed -i '/^_recent_scripts_add$/d' ${script_dir}/.common-functions.sh
-  sed -i '/^_recent_scripts_organize$/d' ${script_dir}/.common-functions.sh
-
-  rm ${script_dir}/install.sh
+  rm ${pkgdir}/opt/${pkgname}/install.sh
 }
 
 package_nautilus-scripts-dolphin() {
