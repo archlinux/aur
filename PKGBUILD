@@ -4,7 +4,7 @@
 
 pkgname=mpich-fint64
 _name=mpich
-pkgver=4.3.0
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="An improved implementation of the Message Passing Interface, built with 64-bit default Fortran integers."
 url="https://mpich.org"
@@ -17,7 +17,7 @@ optdepends=(perl python)
 install="${_name}.install"
 source=("https://www.mpich.org/static/downloads/${pkgver}/${_name}-${pkgver}.tar.gz"
 	      "mpich.profile")
-sha256sums=('5e04132984ad83cab9cc53f76072d2b5ef5a6d24b0a9ff9047a8ff96121bcc63'
+sha256sums=('47d774587a7156a53752218c811c852e70ac44db9c502dc3f399b4cb817e3818'
             '30a08e3282031f03959d824b5db650548eda7e70d6893cc8ab4a4fc76e3e9dd0')
 
 options=('!libtool')
