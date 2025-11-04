@@ -1,6 +1,6 @@
 # Maintainer: k4ditano <k4ditano@h2r.es>
 pkgname=notnative-app
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Note-taking application with Vim-like keybindings"
 arch=('x86_64')
@@ -8,22 +8,8 @@ url="https://github.com/k4ditano/notnative-app"
 license=('MIT')
 depends=('gtk4' 'webkitgtk-6.0' 'libadwaita' 'gtksourceview5' 'libpulse' 'sqlite' 'mpv' 'mujs')
 makedepends=('cargo' 'rust' 'git' 'pkgconf')
-source=(
-    "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-    "mujs-linking.patch"
-)
-sha256sums=('a03849f532f461be9e842d6d045691d1014f747ef5bf4aaf6186ac1f3c0c49ca'
-            'SKIP')
-
-prepare() {
-    local srcdir_real="$srcdir/$pkgname-$pkgver"
-    if [[ ! -d $srcdir_real ]]; then
-        srcdir_real="$srcdir/notnative-omarchy-$pkgver"
-    fi
-
-    cd "$srcdir_real"
-    patch -Np1 -i "$srcdir/mujs-linking.patch"
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
 
 build() {
     local srcdir_real="$srcdir/$pkgname-$pkgver"
