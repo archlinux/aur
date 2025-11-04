@@ -1,0 +1,39 @@
+--- a/module/Makefile.am
++++ b/module/Makefile.am
+@@ -20,10 +20,10 @@ ASMLIB += x86/libxorgxrdp-asm.la
+ endif
+
+ if WITH_GLAMOR
+-EXTRA_FLAGS += $(LIBDRM_CFLAGS) -DXORGXRDP_GLAMOR -DGLAMOR_FOR_XORG
++EXTRA_FLAGS += $(LIBDRM_CFLAGS) $(EPOXY_CFLAGS) -DXORGXRDP_GLAMOR -DGLAMOR_FOR_XORG
+ EXTRA_SOURCES += rdpEgl.c
+ EXTRA_HEADERS += rdpEgl.h
+-EGLLIB += -L$(XORG_SERVER_MODULES) -lglamoregl -lepoxy
++EGLLIB += -L$(XORG_SERVER_MODULES) -lglamoregl
+ LIB_SEARCH_PATH += -R$(XORG_SERVER_MODULES)
+ endif
+
+@@ -93,6 +93,9 @@ noinst_HEADERS = \
+ libxorgxrdp_la_LTLIBRARIES = libxorgxrdp.la
+
+ libxorgxrdp_la_LDFLAGS = -module -avoid-version $(LIB_SEARCH_PATH)
++if WITH_GLAMOR
++libxorgxrdp_la_LDFLAGS += $(EPOXY_LDFLAGS) -L$(XORG_SERVER_MODULES) -lglamoregl -Wl, -rpath,$(XORG_SERVER_MODULES)
++endif
+
+ libxorgxrdp_ladir = $(moduledir)
+
+
+
+--- a/xrdpkeyb/Makefile.am
++++ b/xrdpkeyb/Makefile.am
+@@ -11,6 +11,9 @@ AM_CFLAGS = \
+ xrdpkeyb_drv_la_LTLIBRARIES = xrdpkeyb_drv.la
+
+ xrdpkeyb_drv_la_LDFLAGS = -module -avoid-version
++if WITH_GLAMOR
++xrdpkeyb_drv_la_LDFLAGS += -L$(XORG_SERVER_MODULES) -lglamoregl -Wl,-rpath,$(XORG_SERVER_MODULES)
++endif
+
+ xrdpkeyb_drv_ladir = $(moduledir)/input
+
