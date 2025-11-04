@@ -3,7 +3,7 @@
 pkgbase=rime-wanxiang-dict-nightly
 _pkgbase=${pkgbase%-dict-nightly}
 pkgname=(rime-wanxiang-dict-nightly rime-wanxiang-pro-dict-nightly)
-pkgver=13.3.0+r20251103.101711
+pkgver=13.3.2+r20251103.230645
 _schema_version=${pkgver%%+*}
 pkgrel=1
 pkgdesc="万象词库——每日构建版"
@@ -13,8 +13,9 @@ license=('CC-BY-4.0')
 url="https://github.com/amzxyz/rime_wanxiang"
 source=("${url}/archive/refs/tags/v${_schema_version}.tar.gz"
         build.sh)
-b2sums=('6eebb66fdeb8a21b2c97b5502ed27ac249c7622f97b602e28dd8a6d1b03c2776bff1a0497472b220b3a6f22b742a25f174f662a26d1bcba4748033c6c3a4f81d'
+b2sums=('0d615e0386b0e2305b86b80e66a8d36bbe49dea238dab514ffbcb57fa3e451f4aabf628718551bf6aebaf2d14583974e7710041984d9a2d925d57c8d898c760b'
         'e1c0a4adf4a6175ac1343c9d94d5deb6d3e134b5258111849cc714893bb1fb70d308ffb900969e510087c59489318678a3e4ad88c8a134f03d90722a1202a672'
+        'f68e223ab2aac69edf4d97a0a534bbd3e7686c411663b77db2f5619692fe3594fa8700a9deaa73d475fd795bc576cbe9b59c22b13003e1eb31db679aa5be6f70'
         '65f0b02eec8f5ac590bf1be4087eb0cf32da8035a49325038bebc3c1135ffbd79d5fafea930fec11db5f3f2c400d2c300ff5629bb2e54c2b939b5b932388f349'
         '0b795e749c04d61a40763b1b06177aa2d66b6056a2ebed97a0286e70ed9a04caaa04d7a02d65de7d4aa308c775130c6dec31a8e2738734f1823c20e114faecde'
         '5b5c7b7c715c7ec1d4b7c17b720a6e8017b7016afdde37ffd70c9605da8dda5a1e0ff42f2bf07309f7c0fb01db5f24186af42b400b9c6576ff038605a12d7298'
@@ -33,6 +34,7 @@ declare -A _dict_filenames=(
   [tiger]="pro-tiger-fuzhu-dicts.zip"
   [wubi]="pro-wubi-fuzhu-dicts.zip"
   [zrm]="pro-zrm-fuzhu-dicts.zip"
+  [shouyou]="pro-shouyou-fuzhu-dicts.zip"
 )
 
 for _dict in "${!_dict_filenames[@]}"; do
@@ -67,6 +69,7 @@ declare -A _fuzhus=(
   [hanxin]="汉心"
   [wubi]="五笔前2"
   [tiger]="虎码首末"
+  [shouyou]="首右"
 )
 
 build() {
@@ -126,14 +129,14 @@ package_rime-wanxiang-pro-dict-nightly() {
 # - ${_pkgbase}-data
 # - ${_pkgbase}-dict-<schema>
 #   - ${_pkgbase}-dict
-# 
+#
 # ${_pkgbase}-pro-<schema>
 # - ${_pkgbase}-pro-data
 # - [${_pkgbase}-pro-data-fuzhu]
 #   - ${_pkgbase}-pro-data-<fuzhu>-fuzhu
 #     - ${_pkgbase}-pro-dict-<fuzhu>-fuzhu
 #       - ${_pkgbase}-pro-dict
-# 
+#
 for _schema in "${!_schemas[@]}"; do
     _schema_name=${_schemas[$_schema]}
 
