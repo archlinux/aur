@@ -13,23 +13,25 @@ depends=(
     'dart-sass'
     'wl-clipboard'
     'upower'
-    'cliphist'
-    'brightnessctl'
-    'tuned-ppd'
-    'bluez'
-    'geoclue'
     'libadwaita'
     # aur:
     'aylurs-gtk-shell-git'
     'libastal-meta'
     'libastal-niri-git'
-    'gpu-screen-recorder'
 )
 makedepends=(
     'meson'
     'unzip'
     'git'
     'npm'
+)
+optdepends=(
+    'cliphist: for clipboard history'
+    'gpu-screen-recorder: for recording screen'
+    'geoclue: for autoload the location for weather'
+    'brightnessctl: for control brightness of monitors'
+    'power-profiles-daemon: switch power profiles'
+    'bluez: for connect to bluetooth devices'
 )
 source=("git+${url}.git")
 sha256sums=('SKIP')
