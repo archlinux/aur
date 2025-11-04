@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=input-remapper-bin
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 _pythonver=3.13
 pkgdesc="A tool to change and program the mapping of your input device buttons.(Prebuilt version)"
 arch=('x86_64')
@@ -42,6 +42,12 @@ prepare() {
     rm -rf "${srcdir}/usr/lib/python3"
 }
 package() {
+    # Delete old files
+    if [ -d "${pkgdir}/usr/lib/python3/dist-packages/inputremapper" -a -d "${pkgdir}/usr/lib/python3/dist-packages/input_remapper-2.2.0.egg-info" ]; then
+        rm -rf \
+            "${pkgdir}/usr/lib/python3/dist-packages/inputremapper" \
+            "${pkgdir}/usr/lib/python3/dist-packages/input_remapper-${pkgver}.egg-info"
+    fi
 	cp -Pr --no-preserve=ownership "${srcdir}/"{etc,usr} "${pkgdir}"
     install -Dm644 "${srcdir}/usr/share/${pkgname%-bin}/${pkgname%-bin}.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
 }
