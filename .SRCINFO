@@ -1,7 +1,7 @@
 pkgbase = gst-video-thumbnailer
 	pkgdesc = A simple gstreamer thumbnailer written in Rust
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.gnome.org/sophie-h/gst-video-thumbnailer
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -12,7 +12,7 @@ pkgbase = gst-video-thumbnailer
 	depends = gstreamer
 	conflicts = gstreamer-thumbnailer
 	replaces = gstreamer-thumbnailer
-	source = git+https://gitlab.gnome.org/sophie-h/gst-video-thumbnailer.git
-	sha256sums = SKIP
+	source = git+https://gitlab.gnome.org/sophie-h/gst-video-thumbnailer.git#commit=3894a2ff
+	sha256sums = a899f3fe32e3dd85ce1aef5a33adc7cac6f0e2e63864827dbdc684c121dd66f4
 
 pkgname = gst-video-thumbnailer
