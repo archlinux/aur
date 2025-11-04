@@ -1,0 +1,17 @@
+pkgbase = git-contrib-tree
+	pkgdesc = Analyze git repository contributions and display a tree of files with top contributors for each.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://gitlab.com/wykwit/git-contrib-tree
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = git
+	depends = python3
+	source = git-contrib-tree-0.1.1.tar.gz::https://gitlab.com/wykwit/git-contrib-tree/-/archive/v0.1.1/git-contrib-tree-v0.1.1.tar.gz
+	sha256sums = e4e6e4b4ea274ed6c9aee1ef80399c4ab07bf955d115b5770a79a85cd1c4bdb6
+
+pkgname = git-contrib-tree
