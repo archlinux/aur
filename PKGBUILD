@@ -1,44 +1,30 @@
-# Maintainer: Charles Bos <charlesbos1 AT gmail>
-# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
-# Contributor: Evangelos Foutras <foutrelis@gmail.com>
-# Contributor: Hugo Doria <hugodoria@gmail.com>
-
+# Maintainer: Guillermo Quinteros <gu.quinteros@gmail.com>
 pkgname=listen
-pkgver=0.6.5
-pkgrel=17
-pkgdesc="Music player and management for GNOME"
-arch=('i686' 'x86_64')
-url="https://launchpad.net/listen"
-license=('GPL2')
-depends=('mutagen' 'desktop-file-utils' 'gstreamer0.10-python' 'python2-xdg' 'pywebkitgtk' 'python2-pyinotify' 'gstreamer0.10-good-plugins' 'gstreamer0.10-bad-plugins' 'python2-dbus')
-makedepends=('intltool' 'docbook2x' 'docbook-xml')
-optdepends=('python2-musicbrainz2: MusicBrainz & CD support'
-            'libgpod: iPod support')
-source=("https://launchpad.net/listen/0.6/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('23a4d33ef3251c529ac9a78d992557a2498fa05b825e76c9ab4bad431ed6c61a')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  chmod +x mmkeys/setup.py
-
-  # Fix command name
-  sed -i 's/docbook2x-man/docbook2man/' Makefile
-
-  # Point Python scripts to the python2 binary
-  sed -i -e 's/python -/python2 -/' \
-         -e 's/PYTHON  = python$/\02/' \
-    Makefile
-  sed -i 's/env python$/env python2/' mmkeys/setup.py
-  sed -i 's|/usr/bin/python|/usr/bin/python2|' src/listen
-}
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Minimal audio transcription tool - 100% on-premise"
+arch=('any')
+url="https://github.com/gmoqa/listen"
+license=('MIT')
+depends=('python' 'python-numpy' 'python-sounddevice' 'portaudio' 'ffmpeg')
+makedepends=('python-pip')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/gmoqa/listen/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make CHECK_DEPENDS=0 PREFIX=/usr
+  cd "$pkgname-$pkgver"
+  pip install --target="$srcdir/python-deps" --no-deps openai-whisper
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" PREFIX=/usr install
+  cd "$pkgname-$pkgver"
+
+  install -Dm755 listen.py "$pkgdir/usr/bin/listen"
+
+  python_version=$(python -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
+  install -dm755 "$pkgdir/usr/lib/python$python_version/site-packages"
+  cp -r "$srcdir/python-deps/"* "$pkgdir/usr/lib/python$python_version/site-packages/"
+
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
