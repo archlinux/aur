@@ -1,19 +1,18 @@
-pkgbase = pkgbase
-	pkgdesc = Open-source YANG API in C and CLI (yangcli) and server (netconfd)
-	pkgver = latest
+pkgbase = steamvr-lighthouse-manager-git
+	pkgdesc = App for managing SteamVR Base Stations 2.0.
+	pkgver = 1.1.main.r5.g1033955
 	pkgrel = 1
-	url = https://github.com/vlvassilev/yuma123
+	url = https://github.com/DHCPCD9/go-steamvr-lighthouse-manager
 	arch = x86_64
-	license = BSD
+	license = GPLv3
+	depends = go>=1.25.3
 	depends = git
-	depends = autoconf
-	depends = automake
-	depends = libtool
-	depends = make
+	depends = npm
+	depends = yarn
+	depends = gtk3>=2.50.1-1
+	depends = webkit2gtk
 	depends = gcc
-	provides = yuma123
-	conflicts = yuma123
-	source = git+https://github.com/vlvassilev/yuma123
+	source = steamvr-lighthouse-manager-git::git+https://github.com/DHCPCD9/go-steamvr-lighthouse-manager.git
 	sha256sums = SKIP
 
-pkgname = yuma123-git
+pkgname = steamvr-lighthouse-manager-git
