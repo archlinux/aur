@@ -1,0 +1,17 @@
+pkgbase = rong
+	pkgdesc = A Material You and Base16 color generator
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/Nadim147c/rong
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = go
+	makedepends = ffmpeg
+	depends = glibc
+	provides = rong
+	conflicts = rong-git
+	conflicts = rong-bin
+	source = https://github.com/Nadim147c/rong/archive/refs/tags/v2.1.0.tar.gz
+	sha256sums = 49ee876626e7d7b105a1ae001d0762e245d60543f831ce4205ab14bd4afadb61
+
+pkgname = rong
