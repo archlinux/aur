@@ -2,7 +2,7 @@
 
 pkgname="wofi-pubs"
 _pkgname="wofi_pubs"
-pkgver=0.10.1
+pkgver=0.10.3
 pkgrel=1
 pkgdesc='A wofi interface for the reference manager pubs'
 url='https://github.com/cristobaltapia/wofi-pubs'
@@ -12,7 +12,7 @@ depends=('python' 'python-setuptools' 'python-wofi'
          'dpt-rp1-py' 'pygobject-devel')
 makedepends=('uv' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cristobaltapia/wofi-pubs/archive/v${pkgver}.tar.gz")
-sha256sums=('c0ebbd7ddc6e3c19213ba41477c0110db6b0b576c150c6b2114b78b3c88cf114')
+sha256sums=('23a126081ceb2240217e603917f603cdd393e25bd11ae3c2e48270f0f5520ff0')
 
 prepare() {
     echo ${pkgname}-${pkgver}
