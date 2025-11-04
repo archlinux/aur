@@ -15,5 +15,4 @@ build() {
 
 package() {
     install -Dm755 "$srcdir/quill" "$pkgdir/usr/bin/quill"
-    install -D LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
