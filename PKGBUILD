@@ -16,7 +16,7 @@
 pkgname=loot
 # https://github.com/loot/loot/releases
 pkgver=0.28.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A load order optimisation tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games"
 arch=('x86_64')
 url="https://loot.github.io"
@@ -29,6 +29,7 @@ depends=(
 	'onetbb'
 	'qt6-base'
 	'libloot'
+	'spdlog'
 	'tomlplusplus'
 	'zlib-ng')
 makedepends=(
@@ -62,7 +63,17 @@ build() {
 	tar -zcf "libloot.tar.gz" ./pkg/
 
 	# https://github.com/loot/loot?tab=readme-ov-file#cmake-variables
+	# TODO(Martim): Fix minizip, minizip-ng is not checked for
+	#               and minizip does not have cmake files as they were added in 2025-02 for which there is no release
+	# REQUIRE_FIND_PACKAGE definitions are there to prevent dependencies being gotten off network instead of system
 	cmake -B build \
+		-DCMAKE_REQUIRE_FIND_PACKAGE_libloot=ON \
+		-DCMAKE_REQUIRE_FIND_PACKAGE_ZLIB=ON \
+		-DCMAKE_REQUIRE_FIND_PACKAGE_MINIZIP=OFF \
+		-DCMAKE_REQUIRE_FIND_PACKAGE_tomlplusplus=ON \
+		-DCMAKE_REQUIRE_FIND_PACKAGE_fmt=ON \
+		-DCMAKE_REQUIRE_FIND_PACKAGE_spdlog=ON \
+		-DCMAKE_REQUIRE_FIND_PACKAGE_OGDF=ON \
 		-DCMAKE_BUILD_WITH_INSTALL_RPATH=TRUE \
 		-DCMAKE_INSTALL_RPATH="/opt/${pkgname}"
 		#-DLIBLOOT_URL="${srcdir}/${pkgname}-${pkgver}/libloot.tar.gz" \
