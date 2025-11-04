@@ -1,0 +1,23 @@
+pkgbase = python-ragger
+	pkgdesc = Small wrapper around Speculos, LedgerWallet & LedgerComm to ease instrumentation
+	pkgver = 1.40.2
+	pkgrel = 1
+	url = https://github.com/LedgerHQ/ragger
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools>=75
+	makedepends = python-setuptools-scm>=6.2
+	makedepends = python-wheel
+	depends = python>=3.9
+	depends = python-bip_utils
+	depends = python-ledgered
+	depends = python-py-sr25519-bindings
+	depends = python-toml
+	depends = qemu-user-static
+	optdepends = python-graphviz: Generate dependency diagrams from documentation
+	source = https://github.com/LedgerHQ/ragger/releases/download/v1.40.2/ragger-1.40.2.tar.gz
+	sha256sums = bea60f4534ff40fa64ec07120e743dc2141be6eaa33db4826a75ec245e7fc24e
+
+pkgname = python-ragger
