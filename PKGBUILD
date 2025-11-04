@@ -1,7 +1,7 @@
 # Maintainer: aliu <aaronliu 0 1 3 0  gmail com>
 # Contributor: pikl <me@pikl.uk>
 pkgname=immich-machine-learning
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Machine learning server for the Immich photo management system"
 arch=(any)
@@ -11,7 +11,7 @@ arch=(any)
 #   so depend on python312. Cannot use python=3.12 since the AUR
 #   package does not contain a provides=.
 depends=('python312')
-makedepends=('uv')
+makedepends=('uv>=0.8.15')
 optdepends=(
     'libva-mesa-driver: GPU acceleration'
     'mesa-utils: GPU acceleration'
@@ -22,7 +22,7 @@ optdepends=(
 )
 source=("immich-${pkgver}.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v${pkgver}.tar.gz"
 	"immich-machine-learning.service")
-sha256sums=('ebc2ee856385513e2fc0b3e69989c635cd85e8a1146e5ce465952188ad1c52c1'
+sha256sums=('f8ef9fa384075dbd4921e869d7fee4db4d23117fb2e010e2ab4b56679db4a9e9'
             'ce6fae49e23d705b8d08205d981bb217eaf55347a499a8d0492b7ed95b520cff')
 
 _installdir=/usr/lib/immich/immich-machine-learning
