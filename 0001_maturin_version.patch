@@ -1,0 +1,7 @@
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["maturin>=1.7.0,<1.8.0"]
++requires = ["maturin>=1.7.0"]
+ build-backend = "maturin"
