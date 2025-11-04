@@ -1,8 +1,9 @@
 # arg 1:  the new package version
 post_install() {
-  echo " *** Documentation installed at /opt/mpich/share/doc/mpich/install.pdf"
-  echo " *** /opt/mpich/bin is appended to PATH, see /etc/profile.d/mpich.sh"
-  echo " *** Some binary names match those of OpenMPI located in /usr (if installed)"
+  echo " *** Documentation installed at /opt/mpich-fint64/share/doc/mpich/install.pdf"
+  echo " *** /opt/mpich-fint64/bin is appended to PATH, see /etc/profile.d/mpich-fint64.sh"
+  echo " *** Some binary names match those of OpenMPI located in /usr (if installed)
+     and those of the MPICH version with ilp-32 (default) located in /usr/mpich"
   /bin/true
 }
 
