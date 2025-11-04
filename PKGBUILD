@@ -4,7 +4,7 @@ pkgname="gbtolib"
 _name="GBTOLib"
 _cmakeMinPolicy="3.10"
 pkgver=3.0.3
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="A high-performance library for evaluation of molecular integrals"
 arch=('any')
@@ -12,7 +12,7 @@ url='https://zenodo.org/records/5798035'
 license=('GPL3')
 groups=()
 depends=('lapack' 'blas')
-makedepends=('cmake' 'gcc' 'gcc-fortran' 'cmake' 'doxygen' 'openmpi')
+makedepends=('cmake' 'gcc' 'gcc-fortran' 'cmake' 'doxygen' 'mpich-fint64')
 checkdepends=()
 optdepends=()
 provides=('gbtolib')
@@ -30,9 +30,10 @@ build() {
 
   local _cmakeOptions=(
     -D CMAKE_POLICY_VERSION_MINIMUM="$_cmakeMinPolicy"
-    -D CMAKE_C_COMPILER="$(command -v gcc)"
-    -D CMAKE_CXX_COMPILER="$(command -v gcc)"
-    -D CMAKE_Fortran_COMPILER="$(command -v mpifort)"
+    -D CMAKE_C_COMPILER=/opt/mpich-fint64/bin/mpicc
+    -D CMAKE_CXX_COMPILER=/opt/mpich-fint64/bin/mpicc
+    -D CMAKE_Fortran_COMPILER=/opt/mpich-fint64/bin/mpifort
+    -D MPIEXEC_EXECUTABLE=/opt/mpich-fint64/bin/mpiexec
     -D CMAKE_Fortran_FLAGS='-fdefault-integer-8'
     -D WITH_MPI='ON'
   )
