@@ -7,7 +7,7 @@ pkgdesc="A cross-platform GUI application for managing iOS device pairing and wi
 arch=('x86_64' 'aarch64')
 url="https://github.com/jkcoxson/idevice_pair"
 license=('MIT')
-depends=('usbmuxd' 'gtk3' 'fuse2')
+depends=('usbmuxd')
 source_x86_64=("$pkgname-$pkgver-x86_64.AppImage::https://github.com/jkcoxson/idevice_pair/releases/download/v$pkgver/idevice_pair--linux-x86_64.AppImage"
                "idevice-pair.desktop")
 
