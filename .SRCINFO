@@ -1,0 +1,15 @@
+pkgbase = eksisozluk-scraper
+	pkgdesc = Terminal tabanlı Ekşi Sözlük scraper'ı. Çıktısı AI-friendly formatlarda: JSON (varsayılan), CSV ve Markdown.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/erenseymen/eksisozluk-scraper
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-setuptools
+	makedepends = python-pip
+	optdepends = bash-completion: bash completion support
+	source = eksisozluk-scraper-1.1.0.tar.gz::https://github.com/erenseymen/eksisozluk-scraper/archive/v1.1.0.tar.gz
+	sha256sums = 47a6bf12e6553ef9adbd3ced7207f199acaf715a978a527bb268b798a37814b0
+
+pkgname = eksisozluk-scraper
