@@ -1,7 +1,7 @@
 _pkgname=texlab
 pkgname=${_pkgname}-bin
-pkgver=5.23.1
-pkgrel=2
+pkgver=5.24.0
+pkgrel=1
 arch=('aarch64' 'armv7h' 'x86_64')
 pkgdesc='A cross-platform implementation of the Language Server Protocol for LaTeX'
 provides=('texlab')
@@ -14,9 +14,9 @@ source_aarch64=("https://github.com/latex-lsp/texlab/releases/download/v${pkgver
 source_armv7h=("${source_aarch64[@]}")
 source_x86_64=("${source_aarch64[@]}")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_aarch64=('7d881f5af7295c8c23eac8c7c7fc8708df38802d9fef582131ccbcd7d2244c69')
-sha256sums_armv7h=('99d5181e32d94b4b8941b45cc6916d96dfed13a2778371da51f2ad8712d2ed9a')
-sha256sums_x86_64=('73655db906ec9885a550950b092801d3e8ab56f5f057f95698370295665db331')
+sha256sums_aarch64=('3756a02aedf5ad4636091b3608059ff732a20b34d73696f0ef03323ce08e9746')
+sha256sums_armv7h=('3756a02aedf5ad4636091b3608059ff732a20b34d73696f0ef03323ce08e9746')
+sha256sums_x86_64=('3756a02aedf5ad4636091b3608059ff732a20b34d73696f0ef03323ce08e9746')
 
 package() {
   install -Dm 755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
