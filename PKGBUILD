@@ -19,7 +19,7 @@ source=("https://bitcoincashcode.org/Flowee/thehub/archive/$pkgver.tar.gz"
     "flowee.logrotate"
     "flowee.conf")
 
-sha256sums=("8190acda64ffeba3f06b8ceb64ea391a3abe2c4b54a1edcbc86c42342362e55f"
+sha256sums=("68b5bbde3a1cae5360e3bd90310b972b5268df54ddb6bf309ddaa069a6729ccf"
     "0438e1a44523aeb3bbecd60fd920ca7b2aacd267b5cf988ab77a44eb7c03929e"
     "59c1928ddb33fed1d4bf35df8fecd1dbdda0b308eac943503a2e3afb8c64bc89")
 
