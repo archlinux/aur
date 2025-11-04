@@ -18,7 +18,7 @@
 
 _appname='tor-browser'
 pkgname="${_appname}-bin"
-pkgver='14.5.8'
+pkgver='15.0'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor'
 url='https://www.torproject.org/projects/torbrowser.html'
