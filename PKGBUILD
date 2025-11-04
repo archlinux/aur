@@ -6,7 +6,7 @@ pkgname=(
   espanso-x11
   espanso-wayland
 )
-pkgver=2.2.7
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
@@ -33,7 +33,7 @@ options=(!lto)
 source=(
   "$url/archive/v$pkgver/$pkgbase-$pkgver.tar.gz"
 )
-sha256sums=('52063431c9d9f8a4fb6b2cc5d4771f8fb13704cd414a9a600b83c87a8f1e7271')
+sha256sums=('32b315a813114b28ef3ee74c5d2ce0bfc2f75a0bd9a4141c7465cd0b00fdf34c')
 
 prepare() {
   cd $pkgbase-$pkgver
@@ -44,11 +44,11 @@ prepare() {
   # Don't change the original service file, as it will be embedded in the
   # binary
   sed 's|{{{espanso_path}}}|/usr/bin/espanso|g' espanso/src/res/linux/systemd.service \
-    > espanso.service
+    >espanso.service
 
   # Icon name
   sed 's/Icon=icon/Icon=espanso/g' espanso/src/res/linux/espanso.desktop \
-    > espanso.desktop
+    >espanso.desktop
 }
 
 build() {
