@@ -1,7 +1,7 @@
 # Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 
 pkgname=singularity-ce
-pkgver=4.3.2
+pkgver=4.3.4
 pkgrel=1
 pkgdesc='An open source container platform designed to be simple, fast, and secure.'
 arch=(x86_64)
@@ -23,14 +23,14 @@ backup=(
     'etc/singularity/network/40_fakeroot.conflist'
     'etc/singularity/seccomp-profiles/default.json'
 )
-depends=('cryptsetup' 'go>=1.21' 'libseccomp' 'squashfs-tools>=4.3')
+depends=('cryptsetup' 'go>=1.24' 'libseccomp' 'squashfs-tools>=4.3')
 makedepends=('fuse3' 'git')
 optdepends=('libnvidia-container-tools: use nvidia-container-cli for GPU setup (experimental)')
 provides=('singularity-container')
 conflicts=('singularity-container')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
         'tmpfiles.conf')
-b2sums=('c8b1dd87e888b6c694987c10498fb28922b6d7c4a42086ac0e28f2aa2133eda057a0a81b26df4560ccdb8b5745b54dc44e8a4028dc53202fab6388c43f09f184'
+b2sums=('a4c6435455872827c0f3feae52a9099989c4ba4b29044d21f12cb3d985e9e42645506c8275339a296637c80554d15e40779390f08bd873d2db2d38f6c0b2a5fc'
         '97226e92c3ae887c4e33561fddf60887c395b02a8aee11be78c28fc909df597ed806dd11cdbde00b22452ddeeff04f1ed94d45bb5330b1b38449f6f829f42385')
 
 build() {
