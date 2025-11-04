@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=meru-git
 _pkgname=meru
-pkgver=3.10.1.r0.g8842f1d
-_electronversion=38
+pkgver=3.14.2.r0.g3ccda7d
+_electronversion=39
 _nodeversion=22
 pkgrel=1
 pkgdesc="📮 Nifty Gmail desktop app for macOS, Linux & Windows (previously Gmail Desktop).(Use system-wide electron)"
