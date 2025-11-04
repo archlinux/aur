@@ -1,13 +1,13 @@
 pkgbase = doltgres-bin
 	pkgdesc = Doltgres is Dolt for Postgres | Version Controlled PostgreSQL
-	pkgver = 0.52.3
+	pkgver = 0.52.4
 	pkgrel = 1
 	url = https://doltgres.com
 	arch = x86_64
 	license = Apache-2.0
 	provides = doltgres
 	conflicts = doltgres
-	source = doltgresql-0.52.3-x86_64.tgz::https://github.com/dolthub/doltgresql/releases/download/v0.52.3/doltgresql-linux-amd64.tar.gz
-	sha256sums = b4f1fc51bf279d327b3c17438ebcb0ba0033606633f7597aa9521a3809540b1a
+	source = doltgresql-0.52.4-x86_64.tgz::https://github.com/dolthub/doltgresql/releases/download/v0.52.4/doltgresql-linux-amd64.tar.gz
+	sha256sums = 2e224d42614fa842ad445f96d89f95b6534865c23f76146c1e46b4107d9502cb
 
 pkgname = doltgres-bin
