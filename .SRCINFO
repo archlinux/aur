@@ -1,6 +1,6 @@
 pkgbase = osmo-bsc
 	pkgdesc = Osmocom's Base Station Controller for 2G circuit-switched mobile networks
-	pkgver = 1.13.2
+	pkgver = 1.13.3
 	pkgrel = 1
 	url = https://osmocom.org/projects/osmobsc
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = osmo-bsc
 	depends = talloc
 	conflicts = osmo-bsc-git
 	backup = etc/osmocom/osmo-bsc.cfg
-	source = https://downloads.osmocom.org/releases/osmo-bsc/osmo-bsc-1.13.2.tar.bz2
-	sha256sums = c49cb37f4203cb523a74111e73bd40c5a2510b2feaf7a863091b8cbfdd97dc34
+	source = https://downloads.osmocom.org/releases/osmo-bsc/osmo-bsc-1.13.3.tar.bz2
+	sha256sums = 6d5864438de2388fe0b5bb1f78dd0b92fdd9c7f60cf58414f93c0c07efb5da1c
 
 pkgname = osmo-bsc
