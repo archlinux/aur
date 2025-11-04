@@ -2,7 +2,7 @@
 
 pkgname=python-pyvhdlmodel
 pkgdesc='An abstract VHDL language model'
-pkgver=0.31.3
+pkgver=0.32.0
 pkgrel=1
 arch=('any')
 url='https://github.com/VHDL/pyVHDLModel'
@@ -27,7 +27,7 @@ source=(
   "$_pyname-$pkgver.tar.gz::https://github.com/VHDL/pyVHDLModel/archive/refs/tags/v$pkgver.tar.gz"
 )
 sha256sums=(
-  '7603c9693602582dde6cd82a782bfc54878cde3c31aee5a53321bfdd6792546a'
+  'cfe49d648ea7d94229fece8d332fd55fc155965bb357eb20a13bf40685fad610'
 )
 
 prepare() {
