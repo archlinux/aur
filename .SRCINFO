@@ -1,14 +1,12 @@
 pkgbase = helloworld
-	pkgdesc = A program prints 'Hello world'
-	pkgver = 0.1
+	pkgdesc = Colorful Tux penguin with configurable colors
+	pkgver = 1.0
 	pkgrel = 1
-	arch = any
-	license = unknown
-	checkdepends = glibc
-	makedepends = git
-	depends = glibc
-	source = git://github.com/LuckyBC/helloworld.git
-	sha256sums = SKIP
+	url = https://github.com/Nick-cpp/helloworld
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	source = helloworld.cpp
+	md5sums = SKIP
 
 pkgname = helloworld
-

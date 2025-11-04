@@ -1,35 +1,18 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Your Name <youremail@domain.com>
 pkgname=helloworld
-pkgver=0.1
+pkgver=1.0
 pkgrel=1
-pkgdesc="A program prints 'Hello world'"
-arch=(any)
-license=('unknown')
-depends=('glibc')
-makedepends=('git')
-checkdepends=('glibc')
-source=("git://github.com/LuckyBC/helloworld.git")
-noextract=()
-sha256sums=(SKIP)
-_gitname="helloworld"
+pkgdesc="Colorful Tux penguin with configurable colors"
+arch=('x86_64')
+url="https://github.com/Nick-cpp/helloworld"
+license=('GPL')
+depends=('gcc-libs')
+source=("helloworld.cpp")
+md5sums=('SKIP')
 
 build() {
-	cd "$_gitname"
-	./configure --prefix=/usr
-	make
-}
-
-check() {
-	cd "$_gitname"
-	make -k check
+    g++ -std=c++17 "$srcdir/helloworld.cpp" -o helloworld
 }
 
 package() {
-	cd "$_gitname"
-	make DESTDIR="$pkgdir/" install
+    install -Dm755 helloworld "$pkgdir/usr/bin/helloworld"
 }
