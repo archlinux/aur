@@ -1,13 +1,15 @@
 # plasma6-wallpapers-komplex
-## [1.0.6] - 2025-09-21
+## [1.0.7] - 2025-11-04
 ### Added
-- QML Scene support
-- GeometryProvider for 3D Model importing (obj/stl)
-- Pexels Image importing for channels
-- Pexels Video importing for channels
-- ShaderToy importer
+- Komplex Packs: Rhodium Liquid Carbon, Root Sanctum, Warp Tunnel, The Universe Within, Sailing Beyond, Mist Part 2, Shimmy, The Grid, Neonwave Sunset
+- Manipulative Shaders: ASCII, Aberrating Aberrations, Brannan Filter, Chroma Blur, Circular Pixels, Color Invert, Color Reduction, Desaturate, EGA, Fake Thermal, Gameboy, Gaussian Blur, Heartfelt, Italic, Median (Fast), Melting Snow, Mirrors (Top, Right, Bottom & Left), Nearest Neighbor, Night Vision, Oil Panting, Old Memory, Perlin Noise, Pixelation, Posterize, Quadtree, Radial Blur, Rain Drops, Rainbow, Randomized Transitions, Ripple Distortion,
+Scatter Blur, Sepia, Soft Blur, Solarize, Stone Man, Video Artifacts, Video Bubble, Video Glitch 2, Video Wall, Water Ripples
+
 ### Changed
+- Launched stop-gap replacement for ShaderToy API that will act as a holdover until the official API is back online
+- Default location for simple shader selector. Will now sort manipulative shaders instead
+
 ### Fixed
-- Bug introduced by frame limiting attempt that broke video playback
-### Removed
-- Backend support for frame limiting (temporary)
+- Framerate limiting bug introduced in 1.0.5. Video playback now functions with frame rate limiting.
+- Bug related to channel blending mode
+- Reduced channel samples

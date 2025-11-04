@@ -1,7 +1,7 @@
 # Maintainer: Digital Artifex <7929434+DigitalArtifex@users.noreply.github.com>
 
 pkgname="plasma6-wallpapers-komplex-bin"
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Complex shader arrangements as a desktop background"
 arch=('x86_64')
@@ -14,15 +14,15 @@ makedepends=('git' 'cmake' 'extra-cmake-modules' 'fftw' 'libpipewire')
 backup=('etc/profile')
 install='komplex.install'
 changelog='changelog'
-source=('https://github.com/DigitalArtifex/kde-komplex-wallpaper-engine/releases/download/1.0.6/plasma6-wallpapers-komplex_1-0-6_linux_x86.tar.gz')
+source=('https://github.com/DigitalArtifex/kde-komplex-wallpaper-engine/releases/download/1.0.7/plasma6-wallpapers-komplex_1-0-7_linux_x86_64.tar.gz')
 sha256sums=('SKIP')
 
 # build() {
 # }
 
 package() {
-	tar -xvzf plasma6-wallpapers-komplex_1-0-6_linux_x86.tar.gz
-	cd plasma6-wallpapers-komplex_1-0-6_linux_x86
+	tar -xvzf plasma6-wallpapers-komplex_1-0-7_linux_x86_64.tar.gz
+	cd plasma6-wallpapers-komplex_1-0-7_linux_x86_64
 	install -d "$pkgdir/usr/share/komplex/"
 	cp -r data/* "$pkgdir/usr/share/komplex/"
 	chmod -R 755 "$pkgdir/usr/share/komplex/"
