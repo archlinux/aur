@@ -2,7 +2,7 @@ pkgbase = cosmic-ext-applet-logomenu-git
 pkgdesc = Logo Menu applet for the COSMIC™ desktop
 pkgver = 0.6.7
 pkgrel = 3
-url = https://github.com/cappsyco/cosmic-ext-applet-logomenu-git
+url = https://github.com/cappsyco/cosmic-ext-applet-logomenu
 arch = x86_64
 license = GPL-3.0-or-later
 makedepends = cargo
@@ -11,7 +11,7 @@ makedepends = just
 depends = cosmic-applets
 provides = cosmic-ext-applet-logomenu
 conflicts = cosmic-ext-applet-logomenu
-source = git+https://github.com/cappsyco/cosmic-ext-applet-logomenu-git.git
+source = git+https://github.com/cappsyco/cosmic-ext-applet-logomenu.git
 sha256sums = SKIP
 
 pkgname = cosmic-ext-applet-logomenu-git
