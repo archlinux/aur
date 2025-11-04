@@ -4,20 +4,19 @@ pkgbase=python-stsci.imagestats
 _pname=${pkgbase#python-}
 _pyname=${_pname//./_}
 pkgname=("python-${_pname}")
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="STScI clipped image statistics with core functionality of IRAF's imstatistics"
 arch=('i686' 'x86_64')
 url="https://stsciimagestats.readthedocs.io"
 license=('BSD-3-Clause')
 makedepends=('python-setuptools-scm'
-             'python-wheel'
              'python-build'
              'python-installer'
-             'python-numpy')
+             'python-numpy>=2.0.0')  # wheel required by new setuptools
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('99902ea061b72afe45f80b1eb9ead0fe')
+md5sums=('4c5cf2a13925e1a05ee1ebf5ff1ac5ff')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -32,7 +31,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
+    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
 }
 
 package_python-stsci.imagestats() {
