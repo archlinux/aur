@@ -1,6 +1,6 @@
 pkgbase = r-gsca
 	pkgdesc = GSCA: Gene Set Context Analysis
-	pkgver = 2.38.0
+	pkgver = 2.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GSCA
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-gsca
 	optdepends = r-affyhgu133aexpr
 	optdepends = r-affyhgu133plus2expr
 	optdepends = r-affymoe4302expr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GSCA_2.38.0.tar.gz
-	sha256sums = 4dd4f6095db76e74b4edd937a0eb891949b27398aafa1e1f3072b2c0af95bcf9
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GSCA_2.40.0.tar.gz
+	sha256sums = 526650a5a04e0dbce91aee7a2091ba0fb676366ed001eb09924582983b4dccb4
 
 pkgname = r-gsca
