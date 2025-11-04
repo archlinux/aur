@@ -1,0 +1,37 @@
+pkgbase = zl-splitter
+	pkgdesc = Sidechain and oversample capable splitter plugin by ZL Audio
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://zl-audio.github.io/plugins/zlsplitter/
+	arch = x86_64
+	groups = zl-audio
+	groups = pro-audio
+	license = AGPL-3.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = clang
+	depends = alsa-lib
+	depends = libx11
+	depends = libxinerama
+	depends = libxext
+	depends = freetype2
+	depends = fontconfig
+	depends = webkit2gtk
+	depends = glu
+	depends = libc++
+	source = git+https://github.com/ZL-Audio/ZLSplitter#tag=0.2.0
+	source = git+https://github.com/ZL-Audio/kfr#tag=9a35250
+	source = git+https://github.com/ZL-Audio/JUCE#tag=b251f82
+	sha256sums = f9e36d9b4e248087bc24c3fdde7da64aad502f6300f79e1c13ae70339daa4560
+	sha256sums = 7aaa927395bce6845b844e775786859e79b2e41dd857a0adee923b93dd183213
+	sha256sums = 01016c0970367a0da9f4bf3b9191334dbdbf8902e2acb6f47be0ede2acf598d7
+
+pkgname = zl-splitter-vst
+	groups = zl-audio
+	groups = pro-audio
+	groups = vst-plugins
+
+pkgname = zl-splitter-lv2
+	groups = zl-audio
+	groups = pro-audio
+	groups = lv2-plugins
