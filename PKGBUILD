@@ -1,6 +1,6 @@
 # Maintainer: r3dg0d <r3dg0d@users.noreply.github.com>
 pkgname=arch-rich-presence
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Discord Rich Presence for Arch Linux with Hyprland window tracking"
 arch=('any')
@@ -40,16 +40,18 @@ package() {
 SCRIPT_DIR="/usr/lib/arch-rich-presence"
 CONFIG_FILE="$HOME/.config/arch-rich-presence/config.json"
 
-# Create config from example if it doesn't exist
+# Create config from example if it doesn't exist (config path is now auto-detected)
 if [ ! -f "$CONFIG_FILE" ]; then
     mkdir -p "$(dirname "$CONFIG_FILE")"
-    cp /usr/share/arch-rich-presence/config.example.json "$CONFIG_FILE"
-    echo "Created config file at $CONFIG_FILE"
-    echo "Please edit it and set your Discord Application ID"
+    if [ -f "/usr/share/arch-rich-presence/config.example.json" ]; then
+        cp /usr/share/arch-rich-presence/config.example.json "$CONFIG_FILE"
+        echo "Created config file at $CONFIG_FILE"
+        echo "Please edit it and set your Discord Application ID"
+    fi
 fi
 
-# Run with node
-exec /usr/bin/node "$SCRIPT_DIR/src/index.js" "$CONFIG_FILE" "$@"
+# Run with node (config path is now auto-detected via XDG Base Directory)
+exec /usr/bin/node "$SCRIPT_DIR/src/index.js" "$@"
 EOF
     chmod 755 "$pkgdir/usr/bin/arch-rich-presence"
     
