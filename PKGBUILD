@@ -2,7 +2,7 @@
 # Contributor: huyz
 
 pkgname=gemini-cli
-pkgver=0.11.3
+pkgver=0.12.0
 pkgrel=1
 epoch=1
 pkgdesc="Open-source AI agent that brings the power of Gemini directly into your terminal"
@@ -17,7 +17,7 @@ depends=(
 makedepends=(npm)
 source=("https://registry.npmjs.org/@google/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha512sums=('86c444333fc09359547aa629904b7b464f0eef7b7dfa0fc8ec670adb3bd4315393c7a980475da8b278c16602cee48f3d91a67e97a41dddd68f7ac975a82f845a')
+sha512sums=('35f676000d5ac37a6a571261aa101565ec2e5447eed4079287423e24ab4a74fb6e582c9c3f81b2fc6e0885d29a2eecf2420dd4508c260a8f352b532c72d00475')
 
 package() {
   npm install --global --omit=dev \
@@ -27,7 +27,6 @@ package() {
 
   # Remove unnecessary files causing namcap warnings
   rm -r "$pkgdir/usr/lib/node_modules/@google/gemini-cli/node_modules/marked/man"
-  rm -r "$pkgdir/usr/lib/node_modules/@google/gemini-cli/node_modules/@modelcontextprotocol/sdk/node_modules/ajv/scripts"
   rm "$pkgdir/usr/lib/node_modules/@google/gemini-cli/node_modules/shell-quote/print.py"
   rm "$pkgdir/usr/lib/node_modules/@google/gemini-cli/node_modules/open/xdg-open"
 }
