@@ -25,7 +25,6 @@ depends=(
 optdepends=(
   'ffmpeg: For support of transcoding (converting media).'
   'python-rich: For colorful output formatting in the terminal.'
-  'python-pyapplemusicapi: For integration with the Apple Music API.'
 )
 provides=("mediaharbor=${pkgver}")
 conflicts=('mediaharbor')

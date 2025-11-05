@@ -19,7 +19,6 @@ pkgbase = mediaharbor-bin
 	depends = yt-dlp
 	optdepends = ffmpeg: For support of transcoding (converting media).
 	optdepends = python-rich: For colorful output formatting in the terminal.
-	optdepends = python-pyapplemusicapi: For integration with the Apple Music API.
 	provides = mediaharbor=1.1.0
 	conflicts = mediaharbor
 	source = MediaHarbor-1.1.0.deb::https://github.com/MediaHarbor/mediaharbor/releases/download/v1.1.0/MediaHarbor-1.1.0.deb
