@@ -1,8 +1,8 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=moonbit
 pkgver=1.2.0
-pkgrel=1
-pkgdesc="Cross-distro system cleaner TUI for Linux with automated scheduling"
+pkgrel=2
+pkgdesc="A modern system cleaner built in Go with a TUI and CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nomadcxx/moonbit"
 license=('MIT')
