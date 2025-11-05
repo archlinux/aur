@@ -1,8 +1,8 @@
 pkgbase = hostman-git
 	pkgdesc = A simple file host manager for various image hosting services (latest commit)
-	pkgver = 1.1.4
-	pkgrel = 1
-	url = https://github.com/q4ow/hostman
+	pkgver = 1.1.5
+	pkgrel = 2
+	url = https://github.com/keircn/hostman
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
@@ -13,7 +13,7 @@ pkgbase = hostman-git
 	depends = cjson
 	provides = hostman
 	conflicts = hostman
-	source = git+https://github.com/q4ow/hostman.git
+	source = git+https://github.com/keircn/hostman.git
 	sha256sums = SKIP
 
 pkgname = hostman-git
