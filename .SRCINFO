@@ -11,8 +11,14 @@ pkgbase = archium-bin
 	conflicts = archium
 	source = LICENSE-1.10.0::https://raw.githubusercontent.com/keircn/archium/v1.10.0/LICENSE
 	source = README-1.10.0::https://raw.githubusercontent.com/keircn/archium/v1.10.0/README.md
+	source = COMPLETIONS-1.10.0.bash::https://raw.githubusercontent.com/keircn/archium/v1.10.0/completions/archium.bash
+	source = COMPLETIONS-1.10.0.zsh::https://raw.githubusercontent.com/keircn/archium/v1.10.0/completions/archium.zsh
+	source = COMPLETIONS-1.10.0.fish::https://raw.githubusercontent.com/keircn/archium/v1.10.0/completions/archium.fish
 	sha256sums = 66a37b615c2d3d566fb792cf78eed43cbc6806a5a7241e7d4b43e475b610443e
 	sha256sums = eb8b14dffaa8d20b14937dcf3ada5a63fe3b6602fa2bf53c5961f92f5490bf44
+	sha256sums = 21edff2be0071525382ffccd5eed157c1455fb07e68072d2e2613c29970bb799
+	sha256sums = 5913a44fa56edca7c78929e771cc044867b04f313f377b3ad0de8a58192a4163
+	sha256sums = d870f066805d2740aa8053908d405774e9fb55e85be433d2219e9c68f87050b8
 	source_x86_64 = https://github.com/keircn/archium/releases/download/v1.10.0/archium-1.10.0.tar.gz
 	sha256sums_x86_64 = 2a52552e508704633ce9d60da4981e8e4668b021a7077c7758a5949157647c4b
 
