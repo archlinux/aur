@@ -1,0 +1,18 @@
+pkgbase = vlsm-interfacing-bin
+	pkgdesc = Viral Load Sample Management - Machine Interfacing.(Prebuilt version.Use system-wide electron)
+	pkgver = 3.1.8
+	pkgrel = 1
+	url = https://github.com/deforay/vlsm-interfacing
+	arch = x86_64
+	license = MIT
+	depends = electron29
+	provides = vlsm-interfacing=3.1.8
+	conflicts = vlsm-interfacing
+	source = vlsm-interfacing-3.1.8.deb::https://github.com/deforay/vlsm-interfacing/releases/download/v3.1.8/vlsm-interfacing-3.1.8-linux-amd64.deb
+	source = LICENSE-3.1.8.md::https://raw.githubusercontent.com/deforay/vlsm-interfacing/v3.1.8/LICENSE.md
+	source = vlsm-interfacing.sh
+	sha256sums = ce2a4b6369b4b08c061b8f10ebaa14bef1e53e097b605a5cab63013cf4e0873e
+	sha256sums = 00df8834a94ab4d44c7c7d6557cce6af143ed0019a80c682b5a03d0cea8187b4
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+
+pkgname = vlsm-interfacing-bin
