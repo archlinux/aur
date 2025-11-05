@@ -9,7 +9,7 @@ pkgbase = libbassmidi
 	makedepends = unzip
 	depends = libbass
 	source = libbassmidi-2.4.15.zip::https://www.un4seen.com/files/bassmidi24-linux.zip
-	source = LICENSE
+	source = LICENSE.bass
 	sha512sums = fc9fb0b950ac7c8fdc4ef729b221bcfa670d7e3238872f2cfe0592bfbbe39735fa91b52d3c37291ed91ef0912453762d00d489fb50083668c1f94b26bddc9ed9
 	sha512sums = 0010ec376b29b12c15ea182675dcec6fad3219abc605e8f7b14b5e05957e68ef6a87ab13b70ea5ba80b72f030185fdd426a6ffd90d0c1c6ab716a2f12c4056a9
 
