@@ -2,12 +2,12 @@
 
 pkgname=overseerr
 pkgver=1.34.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Request management and media discovery tool for the Plex ecosystem'
 arch=('x86_64')
 url='https://github.com/sct/overseerr'
 license=('MIT')
-depends=('nodejs-lts-krypton')
+depends=('nodejs')
 makedepends=('yarn')
 options=('!strip')
 backup=('etc/conf.d/overseerr')
@@ -22,6 +22,21 @@ sha256sums=('c5af2fcd1e7da842b8f0d97f7dbfc2d9461c86bf6bfaac879c8842af359f6102'
             'd0e530142edc5bd48474b38072f206a25af23803028fe264324ec2c4b3d7f19a'
             'f9e1500b89df94b11a4b4576501fe6f19e7cb15afd90d6e670f4b9cf40e3c00b')
 
+prepare()
+{
+    mkdir -p node25-workaround
+
+    cd node25-workaround
+    yarn add jsonwebtoken@8.5.1 # install the same version as next.js 12.3.4 uses
+    yarn add jws@4.0.0          # jws version that works with node 25
+    yarn add jwa@2.0.1          # same with jwa
+    yarn add @vercel/ncc
+    ./node_modules/.bin/ncc build node_modules/jsonwebtoken/index.js -m -o dist
+    cd ..
+
+    sed -i '/"resolutions":/a "jwa": "2.0.1",' "${srcdir}/${pkgname}-${pkgver}/package.json"
+}
+
 build()
 {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -34,8 +49,10 @@ build()
     ln -s "${srcdir}/.overseer_cache" .next/cache
 
     HUSKY=0 yarn --frozen-lockfile
+    cp ../node25-workaround/dist/index.js node_modules/next/dist/compiled/jsonwebtoken/
     yarn build
     yarn install --production --ignore-scripts --prefer-offline
+    cp ../node25-workaround/dist/index.js node_modules/next/dist/compiled/jsonwebtoken/
     yarn cache clean
 }
 
