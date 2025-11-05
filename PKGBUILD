@@ -2,7 +2,7 @@
 
 pkgname=python-pymobiledevice3
 _pkgname=pymobiledevice3
-pkgver=4.26.5
+pkgver=5.1.0
 pkgrel=1
 pkgdesc='Pure python3 implementation for working with iDevices'
 arch=('any')
@@ -14,15 +14,15 @@ depends=(
   'python-hexdump' 'python-daemonize' 'python-gpxpy' 'python-pykdebugparser' 'python-pyusb'
   'python-tqdm' 'python-requests' 'xonsh' 'python-parameter-decorators' 'python-packaging'
   'python-pygnuutils' 'python-cryptography' 'python-pycrashreport' 'python-fastapi' 'uvicorn'
-  'python-nest-asyncio' 'python-pillow' 'python-inquirer3' 'python-ipsw_parser' 'python-zeroconf'
+  'python-nest-asyncio' 'python-pillow' 'python-inquirer3' 'python-ipsw_parser'
   'python-ifaddr' 'python-hyperframe' 'python-srptools' 'python-qh3' 'python-developer_disk_image'
-  'python-opack2' 'python-psutil' 'python-pytun-pmd3' 'python-aiofiles' 'python-prompt_toolkit'
+  'python-opack2' 'python-psutil' 'python-pytun-pmd3' 'python-prompt_toolkit'
   'python-sslpsk-pmd3' 'python-python-pcapng' 'python-plumbum'
 )
 makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools' 'python-setuptools-scm')
 checkdepends=('python-pytest' 'python-pytest-asyncio')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7d7405955d10bbcb5bc65e12b0f2d7b76b2798a3a722a31f7634f776f5830842')
+sha256sums=('5b7ba0c4283aca597ffce155e8b1449b90b72e36df3b4461ef49b14eaa9378b4')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
