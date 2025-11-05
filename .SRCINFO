@@ -1,0 +1,18 @@
+pkgbase = innoextract-boost1.89.0-fix-git
+	pkgdesc = A tool to extract installers created by Inno Setup (with fix for Boost 1.89.0)
+	pkgver = r923.882796e
+	pkgrel = 1
+	url = https://constexpr.org/innoextract/
+	arch = x86_64
+	license = ZLIB
+	makedepends = boost
+	makedepends = cmake
+	makedepends = git
+	depends = boost-libs
+	depends = xz
+	provides = innoextract
+	conflicts = innoextract
+	source = innoextract-boost1.89.0-fix-git::git+https://github.com/cho-m/innoextract.git#branch=boost-1.89.0
+	sha256sums = SKIP
+
+pkgname = innoextract-boost1.89.0-fix-git
