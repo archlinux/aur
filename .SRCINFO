@@ -1,0 +1,18 @@
+pkgbase = scrcpy-bin
+	pkgdesc = Display and control your Android device
+	pkgver = 3.3.3
+	pkgrel = 1
+	url = https://github.com/Genymobile/scrcpy
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libcap
+	depends = systemd-libs
+	depends = android-tools
+	optdepends = libusb: USB connection support
+	provides = scrcpy
+	conflicts = scrcpy
+	source = https://github.com/Genymobile/scrcpy/releases/download/v3.3.3/scrcpy-linux-x86_64-v3.3.3.tar.gz
+	sha256sums = 9b30e813e8191329ba8025dc80cb0f198fb0a318960a3b5c15395cf675c9c638
+
+pkgname = scrcpy-bin
