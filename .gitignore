@@ -1,4 +1,5 @@
 /*
+!/.gitignore
 !/.SRCINFO
 !/PKGBUILD
 !/0001-Revert-compositor-send-WL_SURFACE_ERROR_INVALID_SIZE.patch
