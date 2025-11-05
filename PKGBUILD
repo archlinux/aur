@@ -2,7 +2,7 @@
 # Maintainer: Jérôme Poulin <jeromepoulin@gmail.com>
 pkgname=claude-code
 pkgver=2.0.33
-pkgrel=1
+pkgrel=2
 pkgdesc="An agentic coding tool that lives in your terminal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/anthropics/claude-code"
@@ -22,7 +22,7 @@ source=("LICENSE::https://raw.githubusercontent.com/anthropics/claude-code/refs/
 source_x86_64=("claude-${pkgver}-x86_64::${_gcs_bucket}/${pkgver}/linux-x64/claude")
 source_aarch64=("claude-${pkgver}-aarch64::${_gcs_bucket}/${pkgver}/linux-arm64/claude")
 
-sha256sums=('8b601297f77814bdd043daedb9a5ab89effad513a2ce5513c90cd12abac418a5')
+sha256sums=('728158fd1037143fad6907e8fa34804177e598b7326519503fe83cafdef849e6')
 sha256sums_x86_64=('9eec064ef3f92dbac5736d4f52386186b25f4dc34aefa0ccf3cd77d82023b03a')
 sha256sums_aarch64=('27e275233c83b537e5cb2f653072fadc70124efe9a345f9b6437ef31966c61bb')
 
