@@ -1,6 +1,6 @@
 pkgbase = r-gdrtestdata
 	pkgdesc = R data package with testing dose response data
-	pkgver = 1.7.3
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/gDRtestData
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = r-gdrtestdata
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat
 	optdepends = r-yaml
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/gDRtestData_1.7.3.tar.gz
-	md5sums = d8f4a67e3a45833a4ed102ff3570b19e
-	b2sums = 8ec89a8e6491c1329cb6335bf845e6597d090957b4862ef49c3a39d67efbc0d2aa0f54609648db3081245b5e4d8f09ba903f106ca21f830d16c392d01ac03274
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/gDRtestData_1.8.0.tar.gz
+	md5sums = 39e2b20012a76dda879594d7c7bc8782
+	b2sums = 37fbb6da91cd6633fc49e0a03a9eb16d93162d8567f372dc60844f18af8e7dcb1cfe5a8c63d8d31bd2bf97a66c607e7560585ba58be3ebba1065e054ace6c16e
 
 pkgname = r-gdrtestdata
