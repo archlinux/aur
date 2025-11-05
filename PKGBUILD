@@ -3,8 +3,8 @@
 # Contributor: Paulo Matias <matias@ufscar.br>
 
 pkgname=bluespec-release
-pkgver=2025.01.1
-pkgrel=3
+pkgver=2025.07
+pkgrel=1
 pkgdesc='Bluespec Compiler (BSC), stable release'
 arch=('x86_64')
 url='https://github.com/B-Lang-org/bsc'
@@ -13,16 +13,15 @@ depends=('haskell-old-time' 'haskell-syb' 'haskell-regex-compat' 'haskell-split'
 makedepends=('git' 'gperf' 'ghc' 'tcl' 'texlive-latexextra' 'texlive-fontsextra')
 optdepends=('tcl: bluesim and bluetcl')
 source=("https://github.com/B-Lang-org/bsc/archive/refs/tags/$pkgver.tar.gz"
-		"https://github.com/B-Lang-org/bsc/releases/download/2025.01.1/yices-src-for-bsc-$pkgver.tar.gz"
+		"https://github.com/B-Lang-org/bsc/releases/download/$pkgver/yices-src-for-bsc-$pkgver.tar.gz"
 		"fool-git-detection.patch"
 		"fix-ldflags.patch"
-		"fix-stp-v2025.01.1.patch")
+)
 noextract=("yices-src-for-bsc-$pkgver.tar.gz")
-sha256sums=('e82e1e9ff2f045dd29e304866f116d4680704b751e33efb4b81558f867bec01a'
+sha256sums=('5019721717ac27bf80a549ccdd0fadf57ac7fe08cfbd75b0de98569fa36780f7'
             'a7211d089be68303983cc644b70edaae8efab529ff63fd8670a4f20119888781'
             '03b6c8b7fa05f37d0e9211c36764be88d624de63439b99b938eebd08be84cacd'
-            '8f551d0a67c1d3b092b1681a341c3d3a580f18a22af57421b487332450ca7d40'
-            '6e7afd258754600356e5cff21396c173dc977700f0947f60aca8b844623fce3d')
+            '8f551d0a67c1d3b092b1681a341c3d3a580f18a22af57421b487332450ca7d40')
 conflict=('bluespec-git' 'bluespec-release-git' 'bsc')		
 provides=('bluespec-git' 'bsc')		
 _prefix="/opt/bluespec"
@@ -34,9 +33,6 @@ prepare() {
   tar -xvf "$srcdir/yices-src-for-bsc-$pkgver.tar.gz"
   patch -p1 < "$srcdir/fool-git-detection.patch"
   patch -p1 < "$srcdir/fix-ldflags.patch"
-
-  # Fix bug in STP, see "https://github.com/b-lang-org/bsc/pull/787.diff"
-  patch -p1 < "$srcdir/fix-stp-v2025.01.1.patch"
 }
 
 build(){
