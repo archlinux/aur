@@ -21,6 +21,6 @@ package() {
   # 🧩 Utworzenie grubx64.efi z pełnym zestawem modułów
   grub-mkimage -O x86_64-efi \
     -o "${pkgdir}/usr/lib/efi/grub/${pkgver}-${pkgrel}/EFI/${_vendor}/grubx64.efi" \
-    -p /grub \
+    -p /boot/grub \
     $grub_modules
 }
