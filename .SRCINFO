@@ -1,0 +1,16 @@
+pkgbase = lazynmap
+	pkgdesc = Build complex nmap commands with an intuitive TUI
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/ruiiiijiiiiang/lazynmap
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	depends = glibc
+	provides = lazynmap
+	conflicts = lazynmap
+	source = lazynmap-0.1.1.tar.gz::https://github.com/ruiiiijiiiiang/lazynmap/archive/v0.1.1.tar.gz
+	sha256sums = 78638f6e876f461082d5735f4b4ef2cfbac0cf4649aa37270ef2e1abd81d4cbd
+
+pkgname = lazynmap
