@@ -2,7 +2,7 @@
 
 _pipname=pysilfont
 pkgname=python-$_pipname-git
-pkgver=1.5.0.r94.g0b48597
+pkgver=1.8.0.r169.gf4400b2
 pkgrel=1
 pkgdesc='Python-based font utilities collection and framework'
 arch=(any)
@@ -15,7 +15,6 @@ _py_deps=(booleanoperations
           fontmath
           fontparts
           fonttools
-          future
           glyphslib
           lz4
           mutatormath
@@ -26,11 +25,12 @@ _py_deps=(booleanoperations
 depends=('python'
          "${_py_deps[@]/#/python-}")
 makedepends=(git
+             python-{build,installer,wheel}
              python-setuptools)
 optdepends=(fontbakery
             python-glyphconstruction
             python-palaso)
-provides=("${pkgname%-git}")
+provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
@@ -43,10 +43,10 @@ pkgver() {
 
 build() {
 	cd "$pkgname"
-	python setup.py build
+	python -m build -wn
 }
 
 package() {
 	cd "$pkgname"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 }
