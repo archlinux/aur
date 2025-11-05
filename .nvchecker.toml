@@ -1,0 +1,5 @@
+[tageditor-bin]
+source = "github"
+github = "Martchus/tageditor"
+use_latest_release = true
+prefix = "v"
