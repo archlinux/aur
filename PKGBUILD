@@ -32,7 +32,6 @@ optdepends=('festival: text-to-speech support'
         'gpsd: log coordinates of detected networks'
         'hackrf: use with HackRF compatible software defined radio (SDR)'
         'sox: provide the default kismet sound playback binary'
-        'wireshark-cli: provide OUI files used to determine device manufacturer'
         'wireshark-cli: mergecap, to merge multiple capture files',
         'libbtbb: bluetooth baseband decoding library')
 backup=(etc/kismet/kismet.conf
