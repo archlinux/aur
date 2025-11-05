@@ -1,0 +1,5 @@
+[hostman-bin]
+source = "github"
+github = "keircn/hostman"
+use_latest_release = true
+prefix = "v"
