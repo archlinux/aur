@@ -1,0 +1,12 @@
+pkgbase = chroma-ls
+	pkgdesc = LSP server for highlighting colors in source files
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/skewb1k/chroma-ls
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = git+https://github.com/skewb1k/chroma-ls
+	sha256sums = SKIP
+
+pkgname = chroma-ls
