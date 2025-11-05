@@ -1,7 +1,8 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer: Arjix <me@arjix.dev>
 # Contributor: huyz
 
-pkgname=gemini-cli
+pkgname=gemini-cli-latest
 pkgver=0.12.0
 pkgrel=1
 epoch=1
@@ -14,10 +15,20 @@ depends=(
   glibc
   nodejs
 )
-makedepends=(npm)
-source=("https://registry.npmjs.org/@google/$pkgname/-/$pkgname-$pkgver.tgz")
-noextract=("$pkgname-$pkgver.tgz")
-sha512sums=('35f676000d5ac37a6a571261aa101565ec2e5447eed4079287423e24ab4a74fb6e582c9c3f81b2fc6e0885d29a2eecf2420dd4508c260a8f352b532c72d00475')
+makedepends=(curl jq npm)
+provides=("${pkgname%-latest}")
+conflicts=("${pkgname%-latest}")
+
+pkgver() {
+    curl -s \
+        -H "Accept: application/vnd.npm.install-v1+json" \
+        https://registry.npmjs.org/@google/gemini-cli | jq -r '."dist-tags".latest'
+}
+
+prepare() {
+    curl -L -o "${pkgname%-latest}-$pkgver.tgz" \
+        "https://registry.npmjs.org/@google/${pkgname%-latest}/-/${pkgname%-latest}-$pkgver.tgz"
+}
 
 package() {
   npm install --global --omit=dev \
