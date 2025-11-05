@@ -2,13 +2,13 @@
 # Contributor: Mr.Smith1974
 
 _pkgname=flightgear
-_pkgver=2024.1.2
+_pkgver=2024.1.3
 _appimage="FlightGear-${_pkgver}-x86_64.AppImage"
 _desktopfile="org.flightgear.FlightGear.desktop"
 
 pkgname=flightgear-appimage
 pkgver="${_pkgver}"
-pkgrel=2
+pkgrel=1
 pkgdesc="An open-source, multi-platform flight simulator. AppImage release."
 arch=(x86_64)
 license=('GPL')
@@ -18,8 +18,8 @@ optdepends=('qt5-base: fgfs --launcher'
             'qt5-declarative: fgfs --launcher'
             'flightgear-data: game data files')
 options=(!strip)
-source=("${_appimage}::https://gitlab.com/flightgear/fgmeta/-/package_files/229913488/download")
-sha256sums=('4c782779eeedd2d55f0fe79f9071d21dc3eb2705aaac9fd27365c65422973631')
+source=("${_appimage}::https://gitlab.com/flightgear/fgmeta/-/releases/${_pkgver}/downloads/flightgear-${_pkgver}-linux-amd64.AppImage")
+sha256sums=('6248aa9e5c1f25ba949bde1c6bf0cffb6454b1744e2e44fa297396dc554ff9bf')
 
 
 prepare() {
