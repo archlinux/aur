@@ -13,6 +13,7 @@ pkgbase = github-desktop-plus-git
 	makedepends = xorg-server-xvfb
 	makedepends = yarn
 	depends = curl
+	depends = libcurl-gnutls
 	depends = git
 	depends = gtk3
 	depends = libsecret
