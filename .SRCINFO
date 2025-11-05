@@ -11,6 +11,7 @@ pkgbase = fuss
 	makedepends = make
 	depends = glibc
 	depends = git
+	depends = fzf
 	source = https://github.com/FortranGoingOnForty/fuss/archive/refs/tags/v1.2.6.tar.gz
 	sha256sums = 8f94eb93c93f8aa4a9d57a94d7cfd431df564f86fd37f04384462c4a9ce873e6
 
