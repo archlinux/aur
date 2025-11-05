@@ -1,7 +1,7 @@
 # Maintainer: Christopher Snowhill <kode54@gmail.com>
 pkgname=fooyin-kode54-plugins-git
 _pkgname=${pkgname%-git}
-pkgver=r20.576e594
+pkgver=r30.bfada2f
 pkgrel=1
 pkgdesc="A set of plugins for Fooyin (Git version)"
 url="https://github.com/kode54/fooyin-kode54-plugins"

@@ -1,13 +1,10 @@
 pkgbase = fooyin-kode54-plugins-git
 	pkgdesc = A set of plugins for Fooyin (Git version)
-	pkgver = r20.576e594
+	pkgver = r30.bfada2f
 	pkgrel = 1
 	url = https://github.com/kode54/fooyin-kode54-plugins
 	arch = x86_64
-	license = GPL3
-	license = LGPL2.1
-	license = ZLIB
-	license = proprietary
+	license = GPL-3.0-only
 	makedepends = cmake
 	makedepends = git
 	depends = fooyin
