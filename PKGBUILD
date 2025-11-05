@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.zip::http://www.un4seen.com/files/z/2/bass_mpc24-linux
 sha256sums=('e29b46aefed9bc519610dfa3e4c860c0abbab95c06a613f726121cff7445470f')
 
 prepare() {
-  grep Dis "$srcdir/readme.txt" -A13 > LICENSE
+  grep Dis "$srcdir/readme.txt" -A13 > LICENSE.bass
 }
 
 package() {
@@ -31,7 +31,7 @@ package() {
   esac
 
   install -D -m644 c/bass_mpc.h "$pkgdir/usr/include/bass_mpc.h"
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m644 LICENSE.bass "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # getver: -u=2 un4seen.com/bass.html
