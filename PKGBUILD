@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.zip::http://www.un4seen.com/files/bassopus24-linux.zip
 sha256sums=('6040edfde70c8c10bfa99e4f109510d9fc2fb578c5149a1390d6f7da2eea50c0')
 
 prepare() {
-  grep Lic "$srcdir/bassopus.txt" -A14 > LICENSE
+  grep Lic "$srcdir/bassopus.txt" -A14 > LICENSE.bass
 }
 
 package() {
@@ -32,7 +32,7 @@ package() {
 
   install -D -m644 bassopus.h "$pkgdir/usr/include/bassopus.h"
   install -D -m644 bassopus.chm "$pkgdir/usr/share/doc/libbassopus/bassopus.chm"
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m644 LICENSE.bass "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # getver: -u=2 un4seen.com/bass.html
