@@ -6,7 +6,7 @@
 # Contributor: Jiawen Geng
 
 pkgname=github-desktop-plus
-pkgver=3.5.3.10
+pkgver=3.5.4
 pkgrel=1
 pkgdesc="Fork of GitHub Desktop with extra features and improvements."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -15,6 +15,7 @@ license=('MIT')
 provides=($pkgname)
 conflicts=($pkgname)
 depends=(curl
+         libcurl-gnutls
          git
          gtk3
          libsecret
