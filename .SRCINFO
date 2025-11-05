@@ -1,14 +1,15 @@
 pkgbase = python-jumpcutter
 	pkgdesc = Automatically jump-cut silent parts of your videos using Python
 	pkgver = 0.1.6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/emkademy/jumpcutter
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
 	makedepends = python-poetry-core
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-moviepy
 	depends = python-numpy
 	depends = python-tqdm

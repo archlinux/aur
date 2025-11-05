@@ -6,7 +6,7 @@ pkgname="python-${_pkgname}"
 pkgdesc="Automatically jump-cut silent parts of your videos using Python"
 
 pkgver=0.1.6
-pkgrel=4
+pkgrel=5
 
 arch=(any)
 
@@ -14,7 +14,7 @@ url="https://github.com/emkademy/${_pkgname}"
 license=(MIT)
 
 depends=(python-moviepy python-numpy python-tqdm)
-makedepends=(python-build python-installer python-wheel python-poetry-core)
+makedepends=(python-build python-installer python-poetry-core python-setuptools python-wheel)
 
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz" 
 		0001-add-type-annotations.patch
