@@ -67,11 +67,29 @@ package() {
   install -Dm644 completions/eksisozluk-scraper.fish \
     "$pkgdir/usr/share/fish/vendor_completions.d/eksisozluk-scraper.fish"
   
-  # Generate bash completion using argcomplete
+  # Install bash completion (use the pre-written file as fallback)
   install -d "$pkgdir/usr/share/bash-completion/completions"
-  PATH="$pkgdir/usr/bin:$PATH" \
-    python -m argcomplete.register-python-argcomplete eksisozluk-scraper \
-    > "$pkgdir/usr/share/bash-completion/completions/eksisozluk-scraper" 2>/dev/null || true
+  install -m644 debian/eksisozluk-scraper.bash-completion \
+    "$pkgdir/usr/share/bash-completion/completions/eksisozluk-scraper" 2>/dev/null || true
+  
+  # Generate bash completion using argcomplete (overwrites the file if successful)
+  # This requires the script to be installed first, so we do it after package installation
+  # Use system argcomplete, not the one in pkgdir
+  if [ -f "$pkgdir/usr/bin/eksisozluk-scraper" ]; then
+    PYTHONPATH="$pkgdir/usr/lib/python${_python_version}/site-packages" \
+    PATH="$pkgdir/usr/bin:$PATH" \
+      python -m argcomplete.register-python-argcomplete eksisozluk-scraper \
+      > "$pkgdir/usr/share/bash-completion/completions/eksisozluk-scraper" 2>/dev/null || true
+  fi
+  
+  # Generate zsh completion using argcomplete
+  install -d "$pkgdir/usr/share/zsh/site-functions"
+  if [ -f "$pkgdir/usr/bin/eksisozluk-scraper" ]; then
+    PYTHONPATH="$pkgdir/usr/lib/python${_python_version}/site-packages" \
+    PATH="$pkgdir/usr/bin:$PATH" \
+      python -m argcomplete.register-python-argcomplete --shell=zsh eksisozluk-scraper \
+      > "$pkgdir/usr/share/zsh/site-functions/_eksisozluk-scraper" 2>/dev/null || true
+  fi
 }
 
 # vim:set ts=2 sw=2 et:
