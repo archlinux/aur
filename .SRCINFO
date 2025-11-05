@@ -1,6 +1,6 @@
 pkgbase = pacsea-git
 	pkgdesc = Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (git version)
-	pkgver = 0.4.5.r0.g0b1e2ede
+	pkgver = 0.4.5.r2.gdcfff78
 	pkgrel = 1
 	url = https://github.com/Firstp1ck/Pacsea
 	arch = x86_64
@@ -40,7 +40,5 @@ pkgbase = pacsea-git
 	provides = pacsea
 	conflicts = pacsea
 	conflicts = pacsea-bin
-	source = git+https://github.com/Firstp1ck/Pacsea.git
-	sha256sums = SKIP
 
 pkgname = pacsea-git

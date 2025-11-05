@@ -1,6 +1,6 @@
 # Maintainer: Firstpick firstpick1992@proton.me
 pkgname=pacsea-git
-pkgver=0.4.5.r0.g0b1e2ede
+pkgver=0.4.5.r2.gdcfff78
 pkgrel=1
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (git version)"
 arch=('x86_64')
@@ -38,11 +38,42 @@ optdepends=(
 makedepends=('cargo' 'git')
 conflicts=('pacsea' 'pacsea-bin')
 provides=('pacsea')
-source=("git+https://github.com/Firstp1ck/Pacsea.git")
-sha256sums=('SKIP')
+# Empty source array - using custom source() function for sparse checkout
+source=()
+sha256sums=()
+
+# Custom source function to clone with sparse checkout, excluding Images/ and Documents/
+# This significantly reduces download size by not fetching unnecessary documentation and images
+source() {
+  : "${srcdir:?srcdir is not set}"
+  local repo_url="https://github.com/Firstp1ck/Pacsea.git"
+  local repo_name="Pacsea"
+  
+  # Clone with sparse checkout enabled, using partial clone to reduce download size
+  # Note: Using --filter=blob:none reduces download size by not fetching file contents until needed
+  if ! git clone --filter=blob:none --sparse "$repo_url" "$srcdir/$repo_name"; then
+    error "Failed to clone repository"
+    exit 1
+  fi
+  
+  cd "$srcdir/$repo_name" || exit 1
+  
+  # Configure sparse checkout to exclude Images/ and Documents/ directories
+  git sparse-checkout init --no-cone
+  git sparse-checkout set '/*' '!/Images' '!/Documents'
+  
+  # git sparse-checkout set automatically checks out files in newer Git versions
+  # For older versions or to ensure files are checked out, run checkout
+  git checkout 2>/dev/null || true
+}
 
 pkgver() {
   : "${srcdir:?srcdir is not set}"
+  # If source directory doesn't exist, call source() to download it
+  if [ ! -d "$srcdir/Pacsea" ]; then
+    msg "Source directory not found, downloading sources..."
+    source
+  fi
   cd "$srcdir/Pacsea" || exit 1
   git describe --tags --long --always \
     | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -50,7 +81,13 @@ pkgver() {
 
 prepare() {
   : "${srcdir:?srcdir is not set}"
+  # If source directory doesn't exist, call source() to download it
+  if [ ! -d "$srcdir/Pacsea" ]; then
+    msg "Source directory not found, downloading sources..."
+    source
+  fi
   cd "$srcdir/Pacsea" || exit 1
+  
   # Fetch dependencies according to Cargo.lock to ensure reproducible builds
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
@@ -58,6 +95,10 @@ prepare() {
 
 build() {
   : "${srcdir:?srcdir is not set}"
+  if [ ! -d "$srcdir/Pacsea" ]; then
+    error "Source directory $srcdir/Pacsea does not exist. Run makepkg to download sources first."
+    exit 1
+  fi
   cd "$srcdir/Pacsea" || exit 1
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
@@ -66,6 +107,10 @@ build() {
 
 check() {
   : "${srcdir:?srcdir is not set}"
+  if [ ! -d "$srcdir/Pacsea" ]; then
+    error "Source directory $srcdir/Pacsea does not exist. Run makepkg to download sources first."
+    exit 1
+  fi
   cd "$srcdir/Pacsea" || exit 1
   export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --release --all-features -- --test-threads=1
@@ -74,6 +119,10 @@ check() {
 package() {
   : "${pkgdir:?pkgdir is not set}"
   : "${srcdir:?srcdir is not set}"
+  if [ ! -d "$srcdir/Pacsea" ]; then
+    error "Source directory $srcdir/Pacsea does not exist. Run makepkg to download sources first."
+    exit 1
+  fi
   cd "$srcdir/Pacsea" || exit 1
   # The crate builds a binary named 'pacsea'; install it as 'pacsea'
   install -Dm755 "target/release/pacsea" "$pkgdir/usr/bin/pacsea"
