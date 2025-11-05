@@ -12,6 +12,7 @@ depends=(
 	'python>=3.9'
 	'python-bip_utils'
 	'python-ledgered'
+	'python-mnemonic'
 	'python-py-sr25519-bindings'
 	'python-toml'
 	'qemu-user-static'

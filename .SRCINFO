@@ -13,6 +13,7 @@ pkgbase = python-ragger
 	depends = python>=3.9
 	depends = python-bip_utils
 	depends = python-ledgered
+	depends = python-mnemonic
 	depends = python-py-sr25519-bindings
 	depends = python-toml
 	depends = qemu-user-static
