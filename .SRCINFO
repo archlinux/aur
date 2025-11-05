@@ -1,0 +1,21 @@
+pkgbase = mbtiles
+	pkgdesc = Examine, copy, validate vector tile sets
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://maplibre.org/martin/mbtiles.html
+	arch = x86_64
+	arch = i686
+	license = Apache-2.0 OR MIT
+	makedepends = cargo
+	makedepends = npm
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = martin-0.20.0.tar.gz::https://github.com/maplibre/martin/archive/refs/tags/martin-v0.20.0.tar.gz
+	source = martin-0.20.0-LICENSE-APACHE::https://github.com/maplibre/martin/raw/refs/tags/martin-v0.20.0/LICENSE-APACHE
+	source = martin-0.20.0-LICENSE-MIT::https://github.com/maplibre/martin/raw/refs/tags/martin-v0.20.0/LICENSE-MIT
+	b2sums = a7a295123a9430ce1c07e2182c2ac282d506bb32471e5d901eb443da71d9853379a97963aa2e79eb5fdbfb688904a2238733ca07db26ceca5d1e3cb90ba9ed5a
+	b2sums = cb5ba44d3653218aa76bc8b1d7c1d26b3a72dd35da7490d430a5dda727e9750015c28206d8d7e7c29701dd0c3d24198ff159f2566aff72f9f6edb1f493c0a968
+	b2sums = fc19c34e958648930a8d8cc56542ffd8eabdea36954d61e9e2f8c6b7f48bef66a61233c5097a5b4f40b79321bfb16b8ef445de0460af115413f7fd3dea825bc9
+
+pkgname = mbtiles
