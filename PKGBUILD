@@ -3,7 +3,7 @@
 
 _appname=files_automatedtagging
 pkgname=nextcloud-app-files_automatedtagging
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Nextcloud app that assigns tags to newly uploaded files based on some conditions"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/nextcloud/files_automatedtagging"
 license=('AGPL3')
 makedepends=('npm' 'yq' 'rsync')
 source=("${_appname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('7a65d96029ef677afbdd076fae66364c6ed8d2c7a1eb39b2f77acbfb07cfa978046e7e703e7691e51d8b82b9a5f88a0fa9bf568c4c6fe65981ff09fff9df4652')
+sha512sums=('e59af8c365be71270d76dfccb9278a3f44df997d278678f1946883a5b4c8a2f9589cb35017a1f2fd6c2f3c830f6ddab0ab2a69cf2782b0fc32d16f359bc83f50')
 
 # BEGIN Boilerplate nextcloud version calculation adopted from other packages
 _get_nextcloud_versions() {
