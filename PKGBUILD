@@ -6,7 +6,7 @@ _pkgname=elephant
 _pkgproviders=(websearch unicode todo symbols runner providerlist menus files desktopapplications clipboard calc archlinuxpkgs bluetooth windows snippets nirisessions bookmarks)
 
 pkgbase=${_pkgname}-${_pkgsuffix}
-pkgname=(${_pkgname}-${_pkgsuffix} $(for provider in ${_pkgproviders[@]}; do echo ${_pkgname}-${provider}-${_pkgsuffix} ; done))
+pkgname=(${_pkgname}-all-${_pkgsuffix} ${_pkgname}-${_pkgsuffix} $(for provider in ${_pkgproviders[@]}; do echo ${_pkgname}-${provider}-${_pkgsuffix} ; done))
 
 _packages=(${pkgname[@]})
 
@@ -59,6 +59,14 @@ case $CARCH in
         ;;
 esac
 
+
+package_elephant-all-bin() {
+    pkgdesc="elephant + all official elephant providers"
+
+    conflicts=("${pkgname%%-${_pkgsuffix}}")
+    provides=("${pkgname%%-${_pkgsuffix}}")
+    depends=("${_packages[@]:1}")
+}
 
 package_elephant-bin() {
     provides=("${_pkgname}")
