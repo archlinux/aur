@@ -6,5 +6,6 @@
 !0002-Fix-configure_notify-event.patch
 !0003-Fix-size-hints-under-Xwayland-scaling.patch
 !LICENSE
+!LICENSE.patches
 !/LICENSES/
 !REUSE.toml
