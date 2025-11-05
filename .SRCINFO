@@ -1,6 +1,6 @@
 pkgbase = pdfmerger
-	pkgdesc = A simple Qt frontend for poppler's pdfunite
-	pkgver = 1.1.1
+	pkgdesc = A simple Qt frontend for pdfunite
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://gitlab.com/gBischof/pdfmerger/releases
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = pdfmerger
 	md5sums = SKIP
 
 pkgname = pdfmerger
-

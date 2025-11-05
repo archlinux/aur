@@ -1,9 +1,9 @@
 # Maintainer: Gerald Bischof gBischof at gebix dot com
 pkgname=pdfmerger
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 epoch=
-pkgdesc="A simple Qt frontend for poppler's pdfunite"
+pkgdesc="A simple Qt frontend for pdfunite"
 arch=(x86_64)
 url="https://gitlab.com/gBischof/pdfmerger/releases"
 license=('GPL3')
@@ -31,9 +31,9 @@ prepare() {
 
 build() {
 	cd "$pkgname"
-	qmake
+	qmake6
 	make
-	qmake
+	qmake6
 }
 
 check() {
