@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=simpIntLists
-_pkgver=1.45.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('aa65ec77606c419b4d739c5a45876853')
-b2sums=('a7cb4a309121a667a52f93c08c3292ff99a8a70edcf41a4a831eafd1e640d6c0cb06c8ae93a135c67bc5c3d47eb9b133c107281cfa4891bd63e503977555c026')
+md5sums=('5208739e1a07da9cbcf627d0999cb989')
+b2sums=('22df76bab01751dfe23d85977311e5ab6dd70bc29d05c0258f4a61491bf5778d3d640d63cef028df3b7b31f4d821c86b48c28999cb4b4e0eb4150445990da0b2')
 
 build() {
   mkdir build
