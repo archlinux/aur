@@ -5,10 +5,12 @@ pkgbase = smriti-bin
 	url = https://github.com/aspasht/smriti
 	arch = x86_64
 	license = MIT
+	depends = gcc-libs
+	depends = glibc
 	depends = sqlite
 	provides = smriti
 	conflicts = smriti
-	source = smriti-1.0.0.tar.xz::https://github.com/aspasht/smriti/releases/download/v1.0.0/cli-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums = SKIP
+	source_x86_64 = smriti-x86_64-1.0.0.txz::https://github.com/aspasht/smriti/releases/download/v1.0.0/cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = e30924be0aa84d884abf7afd4c453f59349c4a6b5f04f8ac7556fe950c48a639
 
 pkgname = smriti-bin

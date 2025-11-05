@@ -1,0 +1,5 @@
+[smriti-bin]
+source = "github"
+github = "aspasht/smriti"
+use_latest_release = true
+prefix = "v"
