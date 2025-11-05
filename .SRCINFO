@@ -1,7 +1,7 @@
 pkgbase = dsearch-bin
 	pkgdesc = Fast filesystem search service
 	pkgver = 0.0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AvengeMedia/danksearch
 	arch = x86_64
 	arch = aarch64
