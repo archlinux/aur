@@ -20,4 +20,6 @@ package() {
 
 	install -dm755 "${pkgdir}/usr/lib/systemd/system"
 	sed 's_^ExecStart.*_ExecStart=/usr/lib\/systemd-netconsole/systemd-netconsole_' 'usr/lib/systemd/system/netconsole.service' > "${pkgdir}/usr/lib/systemd/system/netconsole.service"
+
+	install -Dm644 "${srcdir}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
