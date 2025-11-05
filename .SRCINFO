@@ -1,0 +1,26 @@
+pkgbase = python-speculos
+	pkgdesc = Ledger hardware wallet emulator
+	pkgver = 0.25.8
+	pkgrel = 1
+	url = https://github.com/LedgerHQ/speculos
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = python-installer
+	depends = python>=3.9
+	depends = python-construct
+	depends = python-flask
+	depends = python-flask-cors
+	depends = python-flask-restful
+	depends = python-jsonschema
+	depends = python-ledgered
+	depends = python-mnemonic
+	depends = python-pillow
+	depends = python-pyelftools
+	depends = python-pygame
+	depends = python-pyqt6
+	depends = python-requests
+	depends = qemu-user-static
+	source = https://github.com/LedgerHQ/speculos/releases/download/v0.25.8/speculos-0.25.8-py3-none-any.whl
+	sha256sums = bdbb69158f6f81db8fe3ef8379de46bced96867ce8728ae9dd0a34a5d7648cd3
+
+pkgname = python-speculos
