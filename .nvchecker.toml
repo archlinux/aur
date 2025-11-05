@@ -1,0 +1,4 @@
+[noutube-bin]
+source = "git"
+git = "https://github.com/nonbili/NouTube-Desktop.git"
+prefix = "v"
