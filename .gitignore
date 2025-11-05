@@ -1,5 +1,10 @@
-/src/
-/pkg/
-/*.log
-/wlroots0.19-hidpi-xprop/
-/*.pkg.tar*
+/*
+!.SRCINFO
+!PKGBUILD
+!0001-Revert-compositor-send-WL_SURFACE_ERROR_INVALID_SIZE.patch
+!0001-xwayland-support-HiDPI-scale.patch
+!0002-Fix-configure_notify-event.patch
+!0003-Fix-size-hints-under-Xwayland-scaling.patch
+!LICENSE
+!/LICENSES/
+!REUSE.toml
