@@ -12,6 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Save unit file in run 
 
 
+## [2.6.4] - 2025-11-5
+
+### Fixed
+- Unit journal events displayed twice. Issue https://github.com/plrigaux/sysd-manager/issues/26 
+
 ## [2.6.3] - 2025-11-4
 
 ### Fixed
