@@ -73,7 +73,6 @@ pkgname = elephant-all-bin
 
 pkgname = elephant-bin
 	depends = glibc
-	optdepends = elephant-bin
 	optdepends = elephant-websearch-bin
 	optdepends = elephant-unicode-bin
 	optdepends = elephant-todo-bin

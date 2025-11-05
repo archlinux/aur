@@ -72,7 +72,7 @@ package_elephant-bin() {
     provides=("${_pkgname}")
     conflicts=("${_pkgname}")
     depends+=()
-    optdepends+=("${_packages[@]:1}")
+    optdepends+=("${_packages[@]:2}")
 
     cd "${srcdir}/" || exit
 
