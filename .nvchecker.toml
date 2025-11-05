@@ -1,3 +1,3 @@
 [lmstudio]
 source = "cmd"
-cmd = "curl -s https://lmstudio.ai | grep -oP 'https://installers\\.lmstudio\\.ai/linux/x64/\\K[0-9.-]+(?=/LM-Studio-[0-9.-]+-x64\\.AppImage)' | tr - . | sort -u"
+cmd = "curl -sIL -o /dev/null -w '%{url_effective}\\n' https://lmstudio.ai/download/latest/linux/x64 | sed -E 's|.*x64/([0-9]+\\.[0-9]+\\.[0-9]+)-([0-9]+).*|\\1.\\2|'"
