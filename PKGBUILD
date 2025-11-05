@@ -1,6 +1,6 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-cityhash'
-pkgver='0.4.7'
+pkgver='0.4.9'
 pkgrel=1
 pkgdesc="Python bindings for CityHash"
 url="https://github.com/escherba/python-cityhash"
@@ -10,7 +10,7 @@ checkdepends=(python-pytest)
 license=('MIT')
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/escherba/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('d556cb78dc436e9ef5b5999f645b0dd67315002cd7b812b438507f6f83b972fa')
+sha256sums=('42b6af053272af0fe0b67279adaf721f123a260d13f7dfe016bf2c2b90a3202f')
 
 build() {
     cd "${pkgname}-${pkgver}"
