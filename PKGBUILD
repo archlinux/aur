@@ -7,8 +7,8 @@
 
 
 pkgname=kdenlive-git
-pkgver=25.11.70.r22821
-pkgrel=2
+pkgver=25.11.70.r22889
+pkgrel=1
 pkgdesc="A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (Latest Applications GIT Version)"
 arch=('i686' 'x86_64')
 url="http://www.kdenlive.org/"
@@ -16,7 +16,7 @@ license=('GPL-2.0-or-later')
 depends=( 'kfilemetadata' 'knewstuff' 'knotifyconfig' 'doxygen' 'ktextwidgets' 'qt6-multimedia'
 	  'mlt' 'hicolor-icon-theme' 'purpose' 'qt6-networkauth' 'python' 'imath' 'opentimelineio'
 	  'kddockwidgets-qt6' 'python-requests' 'python-pillow' 'python-omegaconf' 
-	  'python-sam2-git' 'python-hydra-core' 'python-numpy' 'ffmpeg'
+	  'python-hydra-core' 'python-numpy' 'ffmpeg'
 	)
 makedepends=('extra-cmake-modules' 'kdoctools5' 'git' 'v4l-utils' 'qt6-tools')
 optdepends=(
