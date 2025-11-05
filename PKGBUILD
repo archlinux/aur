@@ -1,8 +1,9 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: Hildigerr Vergaray <Maintainer at YmirSystems dot com>
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: prettyvanilla, Christoph Zeiler, Marcin Skory, Mitchel Humpherys
 
 pkgname=alephone-marathon
-pkgver=20240822
+pkgver=20250829
 pkgrel=1
 pkgdesc="Marathon 1 scenario data files for Aleph One"
 arch=('any')
@@ -13,7 +14,7 @@ source=("https://github.com/Aleph-One-Marathon/alephone/releases/download/releas
         "$pkgname.sh"
         "LICENSE" # TODO: clarify where this file comes from
         "$pkgname.desktop")
-sha256sums=('ddae3368279ed74a9f5a6a6fa40fc8f016dcdec81cc46c763bdd090431865fba'
+sha256sums=('644fa202a8df19fd5c36b8c4bc3777c33afd291e2874669defc1819d8e132620'
             'b26bd186919c8e3ee3950e29054b3b932e8881e7a443a3854e97d692a72bb022'
             '0dde70e490e4cb3e262ed7cc4f7ef6bdc49db557a14fc8674de38b2a9a426504'
             '65c3e36b3fa89a39e76861dc36f61786c924723e6c53fd0ec486b8b4bd21e5df')
