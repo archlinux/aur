@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-datasketch
 _pkgname=datasketch
-pkgver=1.6.5
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Probabilistic data structures for processing and searching very large datasets"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=(
   python-setuptools
   python-poetry)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ekzhu/datasketch/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0ffdc2dcb7db51891d09be141e8233398b17c64d456ebf375f36d64548611653')
+sha256sums=('706363d1954c9e8576db1b2de423d30df22c46ec8fb2f9ac2d4760397ac65fb0')
 
 build() {
   cd $_pkgname-$pkgver

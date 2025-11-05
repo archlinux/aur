@@ -1,6 +1,6 @@
 pkgbase = python-datasketch
 	pkgdesc = Probabilistic data structures for processing and searching very large datasets
-	pkgver = 1.6.5
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://ekzhu.com/datasketch/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-datasketch
 	depends = python
 	depends = python-numpy
 	depends = python-scipy
-	source = python-datasketch-1.6.5.tar.gz::https://github.com/ekzhu/datasketch/archive/refs/tags/v1.6.5.tar.gz
-	sha256sums = 0ffdc2dcb7db51891d09be141e8233398b17c64d456ebf375f36d64548611653
+	source = python-datasketch-1.7.0.tar.gz::https://github.com/ekzhu/datasketch/archive/refs/tags/v1.7.0.tar.gz
+	sha256sums = 706363d1954c9e8576db1b2de423d30df22c46ec8fb2f9ac2d4760397ac65fb0
 
 pkgname = python-datasketch
