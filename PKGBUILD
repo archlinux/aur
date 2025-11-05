@@ -1,7 +1,7 @@
 # Maintainer: Firstpick firstpick1992@proton.me
 pkgname=pacsea-git
 pkgver=0.4.5.r6.ga1e1982
-pkgrel=3
+pkgrel=4
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (git version)"
 arch=('x86_64')
 url="https://github.com/Firstp1ck/Pacsea"
@@ -43,64 +43,19 @@ source=()
 sha256sums=()
 
 # Custom source function to clone with sparse checkout, excluding Images/ and Documents/
-# This significantly reduces download size by not fetching unnecessary documentation and images
 source() {
-  : "${srcdir:?srcdir is not set}"
-  local repo_url="https://github.com/Firstp1ck/Pacsea.git"
-  local repo_name="Pacsea"
-  local repo_path="$srcdir/$repo_name"
-  
-  # Ensure srcdir exists
-  mkdir -p "$srcdir"
-  
-  # If repository already exists and is valid, skip cloning
-  if [ -d "$repo_path/.git" ]; then
-    msg "Repository already exists, skipping clone..."
-    cd "$repo_path" || exit 1
-    return 0
-  fi
-  
-  # Change to srcdir to avoid being in the directory we're about to remove
   cd "$srcdir" || exit 1
-  
-  # Remove existing directory/repository if it exists but is invalid
-  # This handles cases where previous clones failed or were interrupted
-  if [ -e "$repo_path" ]; then
-    msg "Clearing existing invalid repository directory..."
-    rm -rf "$repo_path"
+  if [ ! -d Pacsea ]; then
+    git clone --filter=blob:none --sparse https://github.com/Firstp1ck/Pacsea.git Pacsea
   fi
-  
-  # Ensure the directory is completely removed before cloning
-  if [ -e "$repo_path" ]; then
-    error "Failed to remove existing directory: $repo_path"
-    exit 1
-  fi
-  
-  # Clone with sparse checkout enabled, using partial clone to reduce download size
-  # Note: Using --filter=blob:none reduces download size by not fetching file contents until needed
-  if ! git clone --filter=blob:none --sparse "$repo_url" "$repo_path"; then
-    error "Failed to clone repository"
-    exit 1
-  fi
-  
-  cd "$repo_path" || exit 1
-  
-  # Configure sparse checkout to exclude Images/ and Documents/ directories
+  cd Pacsea || exit 1
   git sparse-checkout init --no-cone
   git sparse-checkout set '/*' '!/Images' '!/Documents'
-  
-  # git sparse-checkout set automatically checks out files in newer Git versions
-  # For older versions or to ensure files are checked out, run checkout
   git checkout 2>/dev/null || true
 }
 
 pkgver() {
-  : "${srcdir:?srcdir is not set}"
-  # If source directory doesn't exist or is invalid, call source() to download it
-  # But if it already exists (e.g., from prepare()), just use it
-  # Note: pkgver() must only output the version to stdout, no other messages
-  if [ ! -d "$srcdir/Pacsea/.git" ]; then
-    # Suppress all output from source() when called from pkgver()
+  if [ ! -d "$srcdir/Pacsea" ]; then
     source >/dev/null 2>&1
   fi
   cd "$srcdir/Pacsea" || exit 1
@@ -109,25 +64,15 @@ pkgver() {
 }
 
 prepare() {
-  : "${srcdir:?srcdir is not set}"
-  # If source directory doesn't exist or is invalid, call source() to download it
-  if [ ! -d "$srcdir/Pacsea/.git" ]; then
-    msg "Source directory not found or invalid, downloading sources..."
+  if [ ! -d "$srcdir/Pacsea" ]; then
     source
   fi
   cd "$srcdir/Pacsea" || exit 1
-  
-  # Fetch dependencies according to Cargo.lock to ensure reproducible builds
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  : "${srcdir:?srcdir is not set}"
-  if [ ! -d "$srcdir/Pacsea" ]; then
-    error "Source directory $srcdir/Pacsea does not exist. Run makepkg to download sources first."
-    exit 1
-  fi
   cd "$srcdir/Pacsea" || exit 1
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
@@ -135,30 +80,14 @@ build() {
 }
 
 check() {
-  : "${srcdir:?srcdir is not set}"
-  if [ ! -d "$srcdir/Pacsea" ]; then
-    error "Source directory $srcdir/Pacsea does not exist. Run makepkg to download sources first."
-    exit 1
-  fi
   cd "$srcdir/Pacsea" || exit 1
   export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --release --all-features -- --test-threads=1
 }
 
 package() {
-  : "${pkgdir:?pkgdir is not set}"
-  : "${srcdir:?srcdir is not set}"
-  if [ ! -d "$srcdir/Pacsea" ]; then
-    error "Source directory $srcdir/Pacsea does not exist. Run makepkg to download sources first."
-    exit 1
-  fi
   cd "$srcdir/Pacsea" || exit 1
-  # The crate builds a binary named 'pacsea'; install it as 'pacsea'
   install -Dm755 "target/release/pacsea" "$pkgdir/usr/bin/pacsea"
-
-  # Install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  # Install documentation
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
