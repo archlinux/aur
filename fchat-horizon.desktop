@@ -2,7 +2,7 @@
 Type=Application
 Name=Horizon
 StartupWMClass=horizon-electron
-Comment=A continuation of the heavily modified F-Chat Rising client.
+Comment=Horizon is a modern, community-driven fork of the F-Chat 3.0 client with expanded customization.
 Exec=fchat-horizon %U
 Icon=fchat-horizon
 Categories=Internet;Network;InstantMessaging;
