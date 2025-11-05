@@ -6,8 +6,18 @@ pkgdesc="Terminal tabanlı Ekşi Sözlük scraper'ı. Çıktısı AI-friendly fo
 arch=('any')
 url="https://github.com/erenseymen/eksisozluk-scraper"
 license=('GPL3')
-depends=('python' 'python-setuptools')
-makedepends=('python-pip')
+depends=(
+  'python'
+  'python-beautifulsoup4'
+  'python-argcomplete'
+  'python-requests'
+  'python-urllib3'
+  'python-charset-normalizer'
+  'python-idna'
+  'python-typing_extensions'
+  'python-soupsieve'
+)
+makedepends=('python-setuptools' 'python-pip')
 optdepends=('bash-completion: bash completion support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/erenseymen/eksisozluk-scraper/archive/v${pkgver}.tar.gz")
 sha256sums=('47a6bf12e6553ef9adbd3ced7207f199acaf715a978a527bb268b798a37814b0')
@@ -20,23 +30,22 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   
-  # Determine Python version and site-packages directory
-  _python_version=$(python -c "import sys; print('{}.{}'.format(sys.version_info.major, sys.version_info.minor))")
-  _site_packages="$pkgdir/usr/lib/python${_python_version}/site-packages"
+  # Install cloudscraper via pip (not available in official Arch repos)
+  # Use --root to install to package directory, --no-deps to avoid conflicts
+  # with system packages. System packages will be used at runtime.
+  pip install --root="$pkgdir" \
+    --no-warn-script-location \
+    --no-deps \
+    --ignore-installed \
+    cloudscraper>=1.2.71
   
-  # Create site-packages directory if it doesn't exist
-  install -d "$_site_packages"
-  
-  # Install runtime dependencies via pip
-  # These packages are not available in official Arch repos
-  # Use --target to install directly to the site-packages directory
-  pip install --target="$_site_packages" --no-warn-script-location \
-    cloudscraper>=1.2.71 \
-    beautifulsoup4>=4.12.0 \
-    argcomplete>=3.0.0
-  
-  # Install the package itself
+  # Install the package itself using setup.py (without installing dependencies)
+  # setuptools will handle the entry point correctly
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  
+  # Remove egg-info requires.txt to prevent automatic dependency detection
+  _python_version=$(python -c "import sys; print('{}.{}'.format(sys.version_info.major, sys.version_info.minor))")
+  rm -f "$pkgdir/usr/lib/python${_python_version}/site-packages/eksisozluk_scraper"*.egg-info/requires.txt 2>/dev/null || true
   
   # Install fish completion
   install -Dm644 completions/eksisozluk-scraper.fish \
