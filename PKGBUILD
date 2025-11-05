@@ -15,6 +15,8 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=('cjson' 'sqlite' 'openssl' 'curl' 'glibc')
 
+changelog="changelog.md"
+
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${arch[0]}.tar.gz")
 sha256sums_x86_64=('564a0860272bd43b5c962ab5f9604f80267b3b687e861d13f849a3e085d38945')
 
@@ -24,8 +26,7 @@ package() {
 
 	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
-
 	install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-	install -Dm644 "CHANGELOG.md" "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
