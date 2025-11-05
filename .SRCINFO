@@ -1,6 +1,6 @@
 pkgbase = shai-bin
 	pkgdesc = Terminal coding agent and pair-programming buddy
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/ovh/shai
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = shai-bin
 	makedepends = help2man
 	provides = shai
 	conflicts = shai
-	source = LICENSE-0.1.8::https://raw.githubusercontent.com/ovh/shai/v0.1.8/LICENSE
-	source = README-0.1.8.md::https://raw.githubusercontent.com/ovh/shai/v0.1.8/README.md
+	source = LICENSE-0.1.9::https://raw.githubusercontent.com/ovh/shai/v0.1.9/LICENSE
+	source = README-0.1.9.md::https://raw.githubusercontent.com/ovh/shai/v0.1.9/README.md
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
-	sha256sums = 122ff191b438eda67c30ce17e55996fccdf91085e41fb482fea0ce670a4ebf22
-	source_x86_64 = shai-x86_64-0.1.8::https://github.com/ovh/shai/releases/download/v0.1.8/shai-linux-x86_64
-	sha256sums_x86_64 = 037153ee8a9f5c08b50f2b8bd950071159b6b32a19fa7b565f5cd408df6c7f68
+	sha256sums = 4c06b699df3c9023061d5ad00734873e588feea0ad32d9184944d29f2c7d25bd
+	source_x86_64 = shai-x86_64-0.1.9::https://github.com/ovh/shai/releases/download/v0.1.9/shai-linux-x86_64
+	sha256sums_x86_64 = d09de18102c9ab902cad96598a7195c7eb344165c1d92c18d601676a023650dc
 
 pkgname = shai-bin
