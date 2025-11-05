@@ -10,15 +10,23 @@ license=('GPL3')
 
 depends=(
   'gtk3'
+  'libnotify'
   'nss'
+  'libxss'
   'alsa-lib'
   'libxtst'
-  'libnotify'
-  'libxss'
+  'xdg-utils'
+  'at-spi2-core'
   'libsecret'
   'python-isodate'
+  'python-ytmusicapi'
+  'yt-dlp'
 )
-optdepends=('ffmpeg')
+optdepends=(
+  'ffmpeg: For support of transcoding (converting media).'
+  'python-rich: For colorful output formatting in the terminal.'
+  'python-pyapplemusicapi: For integration with the Apple Music API.'
+)
 provides=("mediaharbor=${pkgver}")
 conflicts=('mediaharbor')
 
@@ -31,4 +39,13 @@ package() {
   cd "$srcdir"
   ar x "${_pkgname}-${pkgver}.deb"
   bsdtar -xf data.tar.* -C "$pkgdir"
+
+  local _sandbox="$pkgdir/opt/MediaHarbor/chrome-sandbox"
+  if [[ -f "$_sandbox" ]]; then
+    echo "Setting permissions for chrome-sandbox..."
+    chown root:root "$_sandbox"
+    chmod 4755 "$_sandbox"
+  else
+    echo "$_sandbox not found, please ensure MediaHarbor is correctly installed."
+  fi
 }
