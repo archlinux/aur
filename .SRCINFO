@@ -1,7 +1,7 @@
 pkgbase = svxlink-git
 	pkgdesc = Advanced repeater controller and EchoLink software for Linux
 	pkgver = 25.05.1.69.g44f1dfce
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sm0svx/svxlink
 	install = svxlink.install
 	arch = x86_64

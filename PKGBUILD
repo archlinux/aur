@@ -3,7 +3,7 @@
 pkgname=('svxlink-git')
 _pkgname=('svxlink')
 pkgver=25.05.1.69.g44f1dfce
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/sm0svx/svxlink"
 license=('GPL-2.0-only' 'LGPL-2.1-only')
@@ -42,6 +42,7 @@ build(){
   mkdir -p build 
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_SBINDIR=bin \
         -DSYSCONF_INSTALL_DIR=/etc \
         -DLOCAL_STATE_DIR=/var \
         -DUSE_QT=NO ..
