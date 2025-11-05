@@ -1,7 +1,7 @@
 # Maintainer: Edoardo Morassutto <edoardo.morassutto@gmail.com>
 
 pkgname=task-maker-rust-git
-pkgver=r698.e162f1be
+pkgver=r1130.52939a7
 pkgrel=1
 pkgdesc="Tool for building tasks for informatics competitions, with support for cache, distributed computations and more"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -9,7 +9,14 @@ url="https://github.com/olimpiadi-informatica/task-maker-rust"
 license=('MPL2')
 depends=()
 makedepends=('cargo')
-optdepends=('texlive-core: booklet compilations')
+optdepends=('texlive-core: for compiling tex statements'
+            'gcc: for running C/C++ solutions'
+            'mono: for running C# solutions'
+            'nodejs: for running JavaScript solutions'
+            'fpc: for running Pascal solutions'
+            'python: for running Python solutions'
+            'cargo: for running Rust solutions'
+            'bash: for running Bash solutions')
 options=()
 provides=('task-maker-rust')
 conflicts=('task-maker-rust')
@@ -46,3 +53,4 @@ package() {
     install -Dm644 "tools/vim/ftdetect/cases_gen.vim" "$pkgdir/usr/share/vim/vimfiles/ftdetect/cases_gen.vim"
     install -Dm644 "tools/vim/syntax/cases_gen.vim" "$pkgdir/usr/share/vim/vimfiles/syntax/cases_gen.vim"
 }
+
