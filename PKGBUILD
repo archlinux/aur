@@ -1,12 +1,12 @@
 # Maintainer: Kaleb <vitor.guttler@edu.pucrs.br>
 pkgname=terraform-local
 pkgver=0.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Thin wrapper script to run Terraform against LocalStack"
 arch=('any')
 url="https://github.com/localstack/terraform-local"
 license=('Apache-2.0')
-depends=('python')
+depends=('python' 'python-localstack-client' 'python-hcl2' 'python-packaging')
 optdepends=('terraform: to run terraform commands')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/06/8a/61237cd8b95d41f2e997fee78f1a05fd3f5e65845cfe7aae9362a9d28022/terraform_local-$pkgver.tar.gz")
