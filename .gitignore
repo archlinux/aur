@@ -1,0 +1,8 @@
+# Generated packages / local archives
+*.pkg.tar.*
+*.tar.gz
+*.zst
+# build dirs
+pkg/
+src/
+node_modules/
