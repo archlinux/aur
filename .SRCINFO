@@ -1,6 +1,6 @@
 pkgbase = sonarr-bin
 	pkgdesc = Smart PVR for newsgroup and torrent users
-	pkgver = 4.0.15.2941
+	pkgver = 4.0.16.2944
 	pkgrel = 1
 	url = https://sonarr.tv
 	install = sonarr.install
@@ -42,11 +42,11 @@ pkgbase = sonarr-bin
 	sha256sums = 00141d4cbf34daa6d91b26179d4847ec970e2767382e18fdf9af2ec84a0ff43e
 	sha256sums = d6b18a83dd9c213470d984f71ddcefcd64d12bb87f68225cc4ebf5fa4a831703
 	sha256sums = 3d912d367eeb89ead06dc9dc45de093f48ddc601188731d54775c33e04e369aa
-	source_x86_64 = Sonarr.main.4.0.15.2941.linux-x64.tar.gz::https://services.sonarr.tv/v1/update/main/download?version=4.0.15.2941&os=linux&runtime=netcore&arch=x64
-	sha256sums_x86_64 = 80d693b013dbec8cebc19c936bc1fcdcf876e3aa62f02757216fdf86e0c9fa91
-	source_aarch64 = Sonarr.main.4.0.15.2941.linux-arm64.tar.gz::https://services.sonarr.tv/v1/update/main/download?version=4.0.15.2941&os=linux&runtime=netcore&arch=arm64
-	sha256sums_aarch64 = 2faba42d369791736126e511f394fa129cf14424b978cc9809bca0456309090f
-	source_armv7h = Sonarr.main.4.0.15.2941.linux-arm.tar.gz::https://services.sonarr.tv/v1/update/main/download?version=4.0.15.2941&os=linux&runtime=netcore&arch=arm
-	sha256sums_armv7h = 042dee1584a8fb8e51499913288abc71529cb89202afcb540ac06543c99e5678
+	source_x86_64 = Sonarr.main.4.0.16.2944.linux-x64.tar.gz::https://services.sonarr.tv/v1/update/main/download?version=4.0.16.2944&os=linux&runtime=netcore&arch=x64
+	sha256sums_x86_64 = 1d4a74c763c5a236c0e6eb577534c5b1e53585e5d2ce189a3e901efb5b2adfcc
+	source_aarch64 = Sonarr.main.4.0.16.2944.linux-arm64.tar.gz::https://services.sonarr.tv/v1/update/main/download?version=4.0.16.2944&os=linux&runtime=netcore&arch=arm64
+	sha256sums_aarch64 = 044c2c5aac7feadee16970639079f091079b57a7816657498b4d589a32d1a536
+	source_armv7h = Sonarr.main.4.0.16.2944.linux-arm.tar.gz::https://services.sonarr.tv/v1/update/main/download?version=4.0.16.2944&os=linux&runtime=netcore&arch=arm
+	sha256sums_armv7h = b0000eb337b36d492a3a277dbfeb4d6ff7862add6982d82540f3a5c3e0ea2241
 
 pkgname = sonarr-bin
