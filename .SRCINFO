@@ -1,0 +1,24 @@
+pkgbase = python-coincurve-git
+	pkgdesc = Safest and fastest Python library for secp256k1 elliptic curve operations
+	pkgver = v16.0.0.r125.7829b29
+	pkgrel = 1
+	url = https://github.com/ofek/coincurve
+	arch = x86_64
+	license = Apache-2.0
+	license = OR
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-cffi
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-scikit-build-core
+	makedepends = python-wheel
+	depends = libsecp256k1
+	depends = python
+	provides = coincurve=v16.0.0.r125.7829b29
+	conflicts = coincurve
+	source = coincurve::git+https://github.com/ofek/coincurve
+	sha512sums = SKIP
+
+pkgname = python-coincurve-git
