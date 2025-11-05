@@ -1,4 +1,7 @@
-*
-!PKGBUILD
-!.SRCINFO
-!.gitignore
+/*
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/LICENSE
+!/LICENSES/
+!/REUSE.toml
