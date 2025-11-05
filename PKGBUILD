@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=compress-o-bin
 _pkgname=CompressO
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A free and open-sourced cross-platform video compression app powered by FFmpeg.(Prebuilt version)"
 arch=('x86_64')
@@ -15,8 +15,8 @@ depends=(
     'webkit2gtk-4.1'
     'ffmpeg'
 )
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('b4ac23998a9acd97a25387610dfb8fd166883d6b4c2b3c31c638d66c1abb5dc4')
+source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
+sha256sums=('3e018034d4dd7ef737a1e746f69b2707c5b1cad4d81b551ab3b3725010ef5492')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -e "
