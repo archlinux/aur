@@ -1,6 +1,6 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python-galpy-doc
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="Documentation for galpy"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=("python-galpy=${pkgver}"
 #            'ttf-roboto'
 source=("https://github.com/jobovy/galpy/archive/v${pkgver}.tar.gz"
         'fix-underline-length.patch')
-md5sums=('f97ecbc31e2de9cabbb3cecc4528da6f'
+md5sums=('f8ea3d67391d2a367fb4080a4a083f07'
          '6eed08a4280a7d2ec91a04b479414c65')
 
 prepare() {

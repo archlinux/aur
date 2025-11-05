@@ -1,17 +1,17 @@
 pkgbase = python-galpy-doc
 	pkgdesc = Documentation for galpy
-	pkgver = 1.11.0
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = https://www.galpy.org
 	arch = any
 	license = BSD-3-Clause
-	makedepends = python-galpy=1.11.0
+	makedepends = python-galpy=1.11.1
 	makedepends = python-sphinxext-opengraph
 	makedepends = python-sphinx_design
 	makedepends = gsl
-	source = https://github.com/jobovy/galpy/archive/v1.11.0.tar.gz
+	source = https://github.com/jobovy/galpy/archive/v1.11.1.tar.gz
 	source = fix-underline-length.patch
-	md5sums = f97ecbc31e2de9cabbb3cecc4528da6f
+	md5sums = f8ea3d67391d2a367fb4080a4a083f07
 	md5sums = 6eed08a4280a7d2ec91a04b479414c65
 
 pkgname = python-galpy-doc
