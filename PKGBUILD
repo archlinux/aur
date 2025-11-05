@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=fuss
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
 pkgdesc='A tree utility for dirty git files, written in modern Fortran'
 arch=('x86_64' 'i686' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc' 'git')
 makedepends=('gcc-fortran' 'make')
 source=("https://github.com/FortranGoingOnForty/fuss/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e8cd0cf0c4826eb47c52e89955ed576b524be56fe35cbc5df7d9a252b22fa477')
+sha256sums=('8f94eb93c93f8aa4a9d57a94d7cfd431df564f86fd37f04384462c4a9ce873e6')
 
 build() {
     cd "$pkgname-$pkgver"
