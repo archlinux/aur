@@ -1,7 +1,7 @@
 pkgbase = unknown-horizons-git
 	pkgdesc = Open source real-time strategy game with the comfy Anno1602 feeling.
 	pkgver = r201.300b9c3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://unknown-horizons.org/
 	arch = x86_64
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = unknown-horizons-git
 	makedepends = git
 	makedepends = godot
 	makedepends = libfontconfig.so=1
-	makedepends = godot-export-templates-git
+	makedepends = godot-export-templates-linux
 	provides = unknown-horizons
 	conflicts = unknown-horizons
 	source = unknown-horizons-git::git+https://github.com/unknown-horizons/godot-port.git

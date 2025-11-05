@@ -8,12 +8,12 @@
 pkgname=unknown-horizons-git
 _pkgname=${pkgname%-git}
 pkgver=r201.300b9c3
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source real-time strategy game with the comfy Anno1602 feeling."
 arch=('x86_64')
 url="https://unknown-horizons.org/"
 license=('GPL' 'CCPL')
-makedepends=(git godot libfontconfig.so=1 godot-export-templates-git)
+makedepends=(git godot libfontconfig.so=1 godot-export-templates-linux)
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 source=("$pkgname::git+https://github.com/$_pkgname/godot-port.git"
@@ -32,7 +32,10 @@ pkgver() {
 }
 
 prepare() {
-    sed --in-place --expression 's@custom_template/release=""@custom_template/release="/usr/share/godot/templates/godot.linuxbsd.template_release.x86_64"@g' "$pkgname/export_presets.cfg"
+    # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=godot-export-templates-linux
+    _godot_version=$(LC_ALL=C pacman -Si extra/godot | grep -Pom1 '^Version\s+:\s+\K\S+(?=-[0-9])').stable
+
+    sed --in-place --expression "s@custom_template/release=\"\"@custom_template/release=\"/usr/share/godot/export_templates/${_godot_version}/linux_release.x86_64\"@g" "$pkgname/export_presets.cfg"
 }
 
 build() {
