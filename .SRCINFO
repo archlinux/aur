@@ -19,7 +19,7 @@ pkgname = navicat-premium-lite-en
 	pkgdesc = Navicat Premium Lite is a compact version of Navicat
 	provides = navicat-premium-lite
 
-pkgname = navicat-premium-lite-zh-hans
+pkgname = navicat-premium-lite-zh-cn
 	pkgdesc = Navicat Premium Lite 是 Navicat 的精简版
 	provides = navicat-premium-lite
 	provides = navicat-premium-lite-cs

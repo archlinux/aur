@@ -1,5 +1,5 @@
 pkgbase=navicat-premium-lite
-pkgname=("${pkgbase}-en" "${pkgbase}-zh-hans")
+pkgname=("${pkgbase}-en" "${pkgbase}-zh-cn")
 pkgver=17.3.3
 pkgrel=2
 pkgdesc="Navicat Premium Lite"
@@ -36,7 +36,7 @@ package_navicat-premium-lite-en() {
 	install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256/apps/navicat-icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/navicat-icon.png"
 	install -dm755 "${pkgdir}/usr/bin" && ln -s "/${_pkgroot}/AppRun" "${pkgdir}/usr/bin/navicat"
 }
-package_navicat-premium-lite-zh-hans() {
+package_navicat-premium-lite-zh-cn() {
 	pkgdesc="Navicat Premium Lite 是 Navicat 的精简版"
 	provides=("${pkgbase}" "${pkgbase}-cs")
 
