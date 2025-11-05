@@ -1,6 +1,6 @@
 pkgbase = fvm-sourcebuild
 	pkgdesc = Flutter Version Management: A simple CLI to manage Flutter SDK versions. (Build engine from sources)
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://fvm.app
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = fvm-sourcebuild
 	provides = fvm
 	conflicts = fvm
 	options = !strip
-	source = fvm-4.0.0.tar.gz::https://github.com/leoafarias/fvm/archive/refs/tags/4.0.0.tar.gz
+	source = fvm-4.0.1.tar.gz::https://github.com/leoafarias/fvm/archive/refs/tags/v4.0.1.tar.gz
 	source = fvm-sourcebuild-wrapper
-	sha256sums = 18cf7634d36031e44bc46f482c8d5514c3341d1412ed82dc61ff97dbf829d1ab
+	sha256sums = f8935ecd1cdaf17f116eb7fe359d3a925fed355d26a77a2b5af0e4ba701ea24b
 	sha256sums = 0fc63820607260487b854bfe3cd76d7164fa22ccbf64eea3bd4470200bff3db1
 
 pkgname = fvm-sourcebuild

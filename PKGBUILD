@@ -3,7 +3,7 @@
 
 _pkgname=fvm
 pkgname=${_pkgname}-sourcebuild
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 provides=(${_pkgname})
 conflicts=(${_pkgname})
@@ -15,9 +15,9 @@ depends=()
 makedepends=('dart')
 options=('!strip')
 source=(
-	"$_pkgname-$pkgver.tar.gz::https://github.com/leoafarias/fvm/archive/refs/tags/$pkgver.tar.gz"
+	"$_pkgname-$pkgver.tar.gz::https://github.com/leoafarias/fvm/archive/refs/tags/v$pkgver.tar.gz"
 	"${pkgname}-wrapper")
-sha256sums=('18cf7634d36031e44bc46f482c8d5514c3341d1412ed82dc61ff97dbf829d1ab'
+sha256sums=('f8935ecd1cdaf17f116eb7fe359d3a925fed355d26a77a2b5af0e4ba701ea24b'
             '0fc63820607260487b854bfe3cd76d7164fa22ccbf64eea3bd4470200bff3db1')
 
 prepare() {
