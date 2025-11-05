@@ -1,7 +1,7 @@
 pkgbase = ringracers
 	pkgdesc = Kart racing video game originally based on the 3D Sonic the Hedgehog fangame Sonic Robo Blast 2
 	pkgver = 2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kartkrew.org
 	arch = x86_64
 	arch = aarch64
@@ -17,9 +17,9 @@ pkgbase = ringracers
 	depends = libyuv
 	depends = sdl2
 	depends = opus
-	source = ringracers-2.4.tar.gz::https://github.com/KartKrewDev/RingRacers/archive/refs/tags/v2.4.tar.gz
+	source = ringracers-2.4.tar.gz::https://github.com/KartKrewDev/RingRacers/archive/e3daa1bbef09497fbd62668315d2eff4c20384c1.tar.gz
 	source = org.kartkrew.RingRacers.desktop
-	sha256sums = f9f3970b9398783c3ba07bcd10ddb0256086896ce81cdfbe0457593ed04e9fcb
+	sha256sums = 6b25ab52cd449f0b295b9742d64a8a9c1cd3d1707c1b37fbef8c0dd092d3e004
 	sha256sums = 812a12ad6a7e5ef7bea3ef3b24bc4e686e9b8df16221c478f202c96ee6ce413d
 
 pkgname = ringracers
