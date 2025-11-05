@@ -43,11 +43,15 @@ package() {
   
   # Remove packages that are provided by system packages to avoid conflicts
   # These will be available at runtime from system packages
-  rm -rf "$_site_packages/requests"* "$_site_packages/urllib3"* \
-         "$_site_packages/idna"* "$_site_packages/charset_normalizer"* \
-         "$_site_packages/typing_extensions"* "$_site_packages/soupsieve"* \
-         "$_site_packages/beautifulsoup4"* "$_site_packages/bs4"* \
-         "$_site_packages/argcomplete"* 2>/dev/null || true
+  # Note: Keep requests_toolbelt, pyparsing, and certifi as they're not system packages
+  rm -rf "$_site_packages/requests" "$_site_packages/requests-"*.dist-info \
+         "$_site_packages/urllib3" "$_site_packages/urllib3-"*.dist-info \
+         "$_site_packages/idna" "$_site_packages/idna-"*.dist-info \
+         "$_site_packages/charset_normalizer" "$_site_packages/charset_normalizer-"*.dist-info \
+         "$_site_packages/typing_extensions" "$_site_packages/typing_extensions-"*.dist-info \
+         "$_site_packages/soupsieve" "$_site_packages/soupsieve-"*.dist-info \
+         "$_site_packages/beautifulsoup4" "$_site_packages/beautifulsoup4-"*.dist-info \
+         "$_site_packages/bs4" "$_site_packages/argcomplete" "$_site_packages/argcomplete-"*.dist-info 2>/dev/null || true
   
   # Remove conflicting binaries
   rm -f "$pkgdir/usr/bin/normalizer" 2>/dev/null || true
