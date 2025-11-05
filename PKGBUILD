@@ -6,10 +6,7 @@ pkgrel=1
 pkgdesc="A set of plugins for Fooyin (Git version)"
 url="https://github.com/kode54/fooyin-kode54-plugins"
 arch=('x86_64')
-license=('GPL3'
-         'LGPL2.1'
-         'ZLIB'
-         'proprietary')
+license=('GPL-3.0-only')
 makedepends=('cmake' 'git')
 depends=('fooyin' 'libbass' 'libbassmidi' 'libbass_mpc' 'libbassflac' 'libbassopus'
          'libbasswv' 'libmgba' 'vgmstream')
