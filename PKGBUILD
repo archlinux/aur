@@ -1,5 +1,5 @@
 # Maintainer: insmtr <insmtr@insmtr.cn>
-pkgname=px4-autopilot-deps
+pkgname=px4-autopilot-deps-1.13
 pkgver=1.13
 pkgrel=1
 pkgdesc="PX4-Autopilot dependencies"

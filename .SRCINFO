@@ -1,4 +1,4 @@
-pkgbase = px4-autopilot-deps
+pkgbase = px4-autopilot-deps-1.13
 	pkgdesc = PX4-Autopilot dependencies
 	pkgver = 1.13
 	pkgrel = 1
@@ -31,4 +31,4 @@ pkgbase = px4-autopilot-deps
 	depends = python-future
 	depends = python-ros-genmsg
 
-pkgname = px4-autopilot-deps
+pkgname = px4-autopilot-deps-1.13
