@@ -1,6 +1,6 @@
 pkgbase = winbox
 	pkgdesc = Mikrotik RouterOS GUI Configurator
-	pkgver = 4.0beta35
+	pkgver = 4.0beta39
 	pkgrel = 1
 	url = https://mikrotik.com/download
 	install = winbox.install
@@ -18,9 +18,9 @@ pkgbase = winbox
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
 	depends = zlib
-	source = WinBox-4.0beta35.zip::https://download.mikrotik.com/routeros/winbox/4.0beta35/WinBox_Linux.zip
+	source = WinBox-4.0beta39.zip::https://download.mikrotik.com/routeros/winbox/4.0beta39/WinBox_Linux.zip
 	source = winbox.desktop
-	sha256sums = 826140c5af68805c1b499f72382903cc70e8470737151c7f1d2f7fcaa754a597
+	sha256sums = e696addd3f37638b5077769febe3f01f7f3b8c3ea8b663fee6225795ea2e9f00
 	sha256sums = 2880ba075a3a5d75113707bbf642bd6018f0eb40a2d725d6adfe8d5d2ee14425
 
 pkgname = winbox
