@@ -1,7 +1,7 @@
-# Maintainer: DanLin <daniill02604@gmail.com>
+# Maintainer: DanLin (DanLinX2004X on GitHub)
 # Github repo: https://github.com/DanLinX2004X/system-monitor 
 pkgname=system-monitor
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A powerful Bash script for real-time system monitoring (CPU, memory, disk, network, processes)"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('bash' 'coreutils' 'procps-ng' 'util-linux' 'grep' 'gawk')
 optdepends=('bc: for precise calculations')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DanLinX2004X/system-monitor/archive/v$pkgver.tar.gz")
-sha256sums=('7eb18b7a4ee21e71ccc180011f50ba77e1442011e8ac0a72a94c7e0105e6653f')
+sha256sums=('9587d15a6f0e6fc75f888f8fc91c54e823415fbb10de863f77174423cf220d46')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = system-monitor
 	pkgdesc = A powerful Bash script for real-time system monitoring (CPU, memory, disk, network, processes)
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/DanLinX2004X/system-monitor
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = system-monitor
 	depends = grep
 	depends = gawk
 	optdepends = bc: for precise calculations
-	source = system-monitor-1.0.0.tar.gz::https://github.com/DanLinX2004X/system-monitor/archive/v1.0.0.tar.gz
-	sha256sums = 7eb18b7a4ee21e71ccc180011f50ba77e1442011e8ac0a72a94c7e0105e6653f
+	source = system-monitor-1.1.0.tar.gz::https://github.com/DanLinX2004X/system-monitor/archive/v1.1.0.tar.gz
+	sha256sums = 9587d15a6f0e6fc75f888f8fc91c54e823415fbb10de863f77174423cf220d46
 
 pkgname = system-monitor
