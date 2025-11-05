@@ -1,8 +1,8 @@
-# Maintainer: Tag Howard <tag [at] jthoward [dot] dev>
+# Maintainer: Ross <git [at] ross [dot] ch>
 
 pkgname=nexusmods-app-git
 _pkgname=nexusmods-app
-pkgver=r4877.ffb71ee
+pkgver=r8711.e6b99cf
 pkgrel=1
 _fullver=${pkgver}-${pkgrel}
 pkgdesc="A mod installer, creator and manager for all your popular games."
@@ -16,6 +16,16 @@ makedepends=(
   'git'
   'git-lfs'
 )
+optdepends=('xdg-desktop-portal-dde: Deepin'
+  'xdg-desktop-portal-gnome: GNOME'
+  'xdg-desktop-portal-gtk: Generic Desktop'
+  'xdg-desktop-portal-kde: KDE Plasma'
+  'xdg-desktop-portal-liri-git: Liri'
+  'xdg-desktop-portal-td: theDesk'
+  'xdg-desktop-portal-cosmic: Cosmic'
+  'xdg-desktop-portal-hyprland: Hyprland'
+  'xdg-desktop-portal-lxqt: LXQT'
+  'xdg-desktop-portal-wlr: WLRoots')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip')
