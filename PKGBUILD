@@ -3,18 +3,18 @@
 
 _pkgname=Eden
 pkgname="eden-preview-bin"
-pkgver=0.0.3_release
-_upstreamver=v0.0.3 # private var used for download URL since "-" isn't valid in pkgver
-pkgrel=2
-pkgdesc="The Eden Nintendo Switch emulator AppImage for preview builds such as release candiates."
+pkgver=0.0.4_rc
+_upstreamver=v0.0.4-rc1 # private var used for download URL since "-" isn't valid in pkgver
+pkgrel=1
+pkgdesc="The Eden Nintendo Switch emulator AppImage for preview builds such as release candiates using the amd64-gcc-standard version."
 arch=('x86_64')
 url="https://git.eden-emu.dev/eden-emu/eden"
 license=('GPL3')
 depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
 _appimage="${_pkgname}-Linux-${pkgver}-amd64.AppImage"
-source_x86_64=("${_appimage}::https://github.com/eden-emulator/Releases/releases/download/${_upstreamver}/${_pkgname}-Linux-${_upstreamver}-amd64.AppImage")
-sha256sums_x86_64=("3f6432d55752bca5ef3cd24acf32332f132e992e4143bf5b382d054e0147322c")
+source_x86_64=("${_appimage}::https://github.com/eden-emulator/Releases/releases/download/${_upstreamver}/${_pkgname}-Linux-${_upstreamver}-amd64-gcc-standard.AppImage")
+sha256sums_x86_64=("2b43a46b94f7caa360c23345c81a529931738bf09618f13785ffe08420853acb")
 
 prepare() {
     chmod +x "${_appimage}"
