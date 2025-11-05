@@ -1,8 +1,8 @@
 pkgbase = musicfree-desktop
 	pkgdesc = Plug-in, customized, ad-free music player.Prebuilt version.Use system-wide electron.插件化、定制化、无广告的免费音乐播放器
 	pkgver = 0.0.8
-	pkgrel = 1
-	url = http://musicfree.upup.fun/
+	pkgrel = 2
+	url = https://musicfree.catcat.work/
 	arch = any
 	license = GPL-3.0-only
 	makedepends = gendesk
