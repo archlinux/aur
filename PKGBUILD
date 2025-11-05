@@ -1,6 +1,6 @@
 # Maintainer: Subhamoy Biswas <hey@neosubhamoy.com>
 pkgname=neodlp
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Cross-platform Video/Audio Downloader Desktop App with Modern UI and Browser Integration"
 arch=('x86_64' 'aarch64')
