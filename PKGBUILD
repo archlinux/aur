@@ -11,14 +11,11 @@ depends=(
   'python-beautifulsoup4'
   'python-argcomplete'
   'python-requests'
-  'python-requests-toolbelt'
   'python-urllib3'
   'python-charset-normalizer'
   'python-idna'
   'python-typing_extensions'
   'python-soupsieve'
-  'python-pyparsing'
-  'python-certifi'
 )
 makedepends=('python-setuptools' 'python-pip')
 optdepends=('bash-completion: bash completion support')
@@ -33,20 +30,33 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   
-  # Install cloudscraper via pip (not available in official Arch repos)
-  # Use --no-deps since all dependencies are system packages
+  # Install cloudscraper and its dependencies that aren't in official Arch repos
+  # Install with dependencies, then remove files that conflict with system packages
+  _python_version=$(python -c "import sys; print('{}.{}'.format(sys.version_info.major, sys.version_info.minor))")
+  _site_packages="$pkgdir/usr/lib/python${_python_version}/site-packages"
+  
+  # Install cloudscraper with dependencies
   pip install --root="$pkgdir" \
     --no-warn-script-location \
-    --no-deps \
     --ignore-installed \
     cloudscraper>=1.2.71
+  
+  # Remove packages that are provided by system packages to avoid conflicts
+  # These will be available at runtime from system packages
+  rm -rf "$_site_packages/requests"* "$_site_packages/urllib3"* \
+         "$_site_packages/idna"* "$_site_packages/charset_normalizer"* \
+         "$_site_packages/typing_extensions"* "$_site_packages/soupsieve"* \
+         "$_site_packages/beautifulsoup4"* "$_site_packages/bs4"* \
+         "$_site_packages/argcomplete"* 2>/dev/null || true
+  
+  # Remove conflicting binaries
+  rm -f "$pkgdir/usr/bin/normalizer" 2>/dev/null || true
   
   # Install the package itself using setup.py (without installing dependencies)
   # setuptools will handle the entry point correctly
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
   
   # Remove egg-info requires.txt to prevent automatic dependency detection
-  _python_version=$(python -c "import sys; print('{}.{}'.format(sys.version_info.major, sys.version_info.minor))")
   rm -f "$pkgdir/usr/lib/python${_python_version}/site-packages/eksisozluk_scraper"*.egg-info/requires.txt 2>/dev/null || true
   
   # Install fish completion
