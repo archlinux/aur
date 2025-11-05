@@ -5,7 +5,7 @@ _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
 _torus_commit="b7bf7965db8c3b2034d6a92f5a1c1fefe13e0e5d"
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="Galactic Dynamics in python"
 arch=('i686' 'x86_64')
@@ -16,6 +16,7 @@ makedepends=('python-setuptools' 'gsl'
              'python-installer')  # wheel required by new setuptools
 #            'gcc14'
 #checkdepends=('python-pytest-xdist'
+#              'python-pytest-timeout'
 #              'python-astroquery'
 #              'python-numexpr'
 #              'python-scipy'
@@ -27,7 +28,7 @@ source=("https://github.com/jobovy/galpy/archive/refs/tags/v${pkgver}.tar.gz"
         "torus-200307.tar.gz::https://github.com/jobovy/Torus/archive/${_torus_commit}.tar.gz"
 #       "${pkgver}-conftest.py::https://github.com/jobovy/galpy/raw/refs/tags/v${pkgver}/tests/conftest.py"
         'fix-gcc15.patch')
-md5sums=('f97ecbc31e2de9cabbb3cecc4528da6f'
+md5sums=('f8ea3d67391d2a367fb4080a4a083f07'
          'f84f68196975d1efbac800b1a5703c45'
          'fbccd08422b23ca669452dd64fae9306')
 
@@ -62,7 +63,7 @@ build() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
 #
 #    # No module named 'amuse' 'pynbody' 'jax'
-#    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver):${PYTHONPATH}" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 \
+#    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver):${PYTHONPATH}" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 --timeout 300 \
 #        --ignore=tests/test_amuse.py \
 #        --ignore=tests/test_snapshotpotential.py \
 #        --ignore=tests/test_sphericaldf.py \
@@ -89,6 +90,8 @@ build() {
 #        --deselect=tests/test_interp_potential.py::test_interpolation_potential_force_c \
 #        --deselect=tests/test_orbit.py::test_liouville_planar \
 #        --deselect=tests/test_orbit.py::test_analytic_ecc_rperi_rap \
+#        --deselect=tests/test_orbit.py::test_energy_jacobi_conservation[DoubleExponentialDiskPotential--6.0--6.0-False] \
+#        --deselect=tests/test_orbit.py::test_energy_jacobi_conservation[mockFlatSolidBodyRotationSpiralArmsPotential--10.0--10.0-False] \
 #        --deselect=tests/test_potential.py::test_poisson_surfdens_potential \
 #        --deselect=tests/test_potential.py::test_McMillan17 \
 #        --deselect=tests/test_potential.py::test_Cautun20 \
@@ -109,7 +112,8 @@ build() {
 #        --deselect=tests/test_streamgapdf.py::test_sample_offset \
 #        --deselect=tests/test_streamgapdf.py::test_sample_offset_leading \
 #        --deselect=tests/test_streamgapdf_impulse.py::test_impulse_deltav_general_fullintegration_zeroforce \
-#        --deselect=tests/test_streamspraydf.py::test_center #|| warning "Tests failed"
+#        --deselect=tests/test_streamspraydf.py::test_center \
+#        --deselect=tests/test_FDMdynamfric.py::test_FDMDynamicalFrictionForce_central_limit #|| warning "Tests failed"
 #
 ##   nosetests
 #}
