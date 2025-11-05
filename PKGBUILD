@@ -1,13 +1,13 @@
 # Maintainer: Jake <aur@ja-ke.tech.de>
 
 pkgname=hyperion.ng-git
-pkgver=2.0.15.r154.bc1bfbc8
+pkgver=nightly.r0.44cec2e2
 pkgrel=1
 pkgdesc="The reworked version (next generation) of Hyperion, ambient light software"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/hyperion-project/hyperion.ng"
 license=('MIT')
-depends=('libusb' 'libcec' 'protobuf' 'python' 'qt6-base' 'qt6-serialport' 'libxkbcommon' 'avahi' 'mbedtls' 'flatbuffers' 'libftdi' 'libjpeg-turbo')
+depends=('libusb' 'libcec' 'protobuf' 'python' 'qt6-base' 'qt6-serialport' 'qt6-websockets' 'libxkbcommon' 'avahi' 'mbedtls' 'flatbuffers' 'libftdi' 'libjpeg-turbo' 'grpc')
 optdepends=('xorg-server: X11 grabbing')
 makedepends=('cmake')
 provides=('hyperion' 'hyperion.ng')
@@ -28,7 +28,7 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${pkgname%-git}"
   sed 's#../../Mbed-TLS/mbedtls.git#https://github.com/Mbed-TLS/mbedtls.git#g' -i .gitmodules
-  sed 's#set(CMAKE_CXX_STANDARD 14)#set(CMAKE_CXX_STANDARD 17)#' -i CMakeLists.txt
+  #sed 's#set(CMAKE_CXX_STANDARD 14)#set(CMAKE_CXX_STANDARD 17)#' -i CMakeLists.txt
   git submodule update --init --recursive
 }
 
@@ -40,6 +40,7 @@ build() {
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DPROTOBUF_PROTOC_EXECUTABLE=/usr/bin/protoc \
         -DUSE_SYSTEM_PROTO_LIBS=OFF \
+        -DENABLE_PROTOBUF_SERVER=OFF \
         -DUSE_SYSTEM_MBEDTLS_LIBS=ON \
         -DUSE_SYSTEM_FLATBUFFERS_LIBS=ON \
         -DENABLE_MDNS= \
