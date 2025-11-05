@@ -3,7 +3,7 @@
 pkgname=('svxlink-git')
 _pkgname=('svxlink')
 pkgver=25.05.1.69.g44f1dfce
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/sm0svx/svxlink"
 license=('GPL-2.0-only' 'LGPL-2.1-only')

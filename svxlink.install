@@ -1,41 +1,31 @@
-post_install(){
-/usr/bin/egrep -i "^svxlink" /etc/group >> /dev/zero
-if [ ! $? -eq 0 ]
-then
-	groupadd svxlink
-fi
+post_install() {
+    if ! grep -qi "^svxlink:" /etc/group; then
+        groupadd svxlink
+    fi
 
-/usr/bin/egrep -i "^svxlink" /etc/passwd >> /dev/zero
-if [ ! $? -eq 0 ]
-then
-	useradd svxlink -m -d /var/spool/svxlink -g svxlink -G uucp,tty,audio
-	
-fi
-chown -R svxlink:svxlink ${pkgdir}/var/spool/svxlink
+    if ! grep -qi "^svxlink:" /etc/passwd; then
+        useradd -m -d /var/spool/svxlink -g svxlink -G uucp,tty,audio svxlink
+    fi
+
+    chown -R svxlink:svxlink /var/spool/svxlink
 }
 
-
-pre_remove(){
-systemctl stop svxlink.service
+pre_remove() {
+    systemctl stop svxlink.service 2>/dev/null || true
 }
 
-
-post_remove(){
-/usr/bin/egrep -i "^svxlink" /etc/passwd >> /dev/zero
-if [ $? -eq 0 ]
-then
+post_remove() {
+    if grep -qi "^svxlink:" /etc/passwd; then
         userdel svxlink
-fi
+    fi
 
-/usr/bin/egrep -i "^svxlink" /etc/group >> /dev/zero
-if [ $? -eq 0 ]
-then
+    if grep -qi "^svxlink:" /etc/group; then
         groupdel svxlink
-fi
+    fi
 }
 
-post_upgrade(){
-gpasswd -a svxlink uucp
-gpasswd -a svxlink tty
-gpasswd -a svxlink audio
+post_upgrade() {
+    gpasswd -a svxlink uucp
+    gpasswd -a svxlink tty
+    gpasswd -a svxlink audio
 }
