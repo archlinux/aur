@@ -1,5 +1,7 @@
-/pkg/
-/src/
-/*.log
-/*.tar.gz
-/*.pkg.tar*
+/*
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/LICENSE
+!/LICENSES/
+!/REUSE.toml
