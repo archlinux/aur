@@ -1,7 +1,7 @@
 # Maintainer: Alessandro Maestri <umpire274@gmail.com>
 
 pkgname=rfortune
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="A Rust-based clone of the classic 'fortune' command"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=()
 provides=('rfortune')
 conflicts=('rfortune')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/rfortune-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('1b852b876dacea822a86c1b15c82448923c6bb00a3fb9d02ce5dddeb689a1447')
+sha256sums=('9d50f9bf24b836cb9799a2792e108f2d685e9288ef2749bf6fe86010f951670d')
 
 # Keywords: fortune
 
