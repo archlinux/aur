@@ -11,11 +11,14 @@ depends=(
   'python-beautifulsoup4'
   'python-argcomplete'
   'python-requests'
+  'python-requests-toolbelt'
   'python-urllib3'
   'python-charset-normalizer'
   'python-idna'
   'python-typing_extensions'
   'python-soupsieve'
+  'python-pyparsing'
+  'python-certifi'
 )
 makedepends=('python-setuptools' 'python-pip')
 optdepends=('bash-completion: bash completion support')
@@ -31,11 +34,10 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   
   # Install cloudscraper via pip (not available in official Arch repos)
-  # Use --root to install to package directory
-  # --ignore-installed prevents conflicts with system packages
-  # Python will use system packages first due to sys.path ordering
+  # Use --no-deps since all dependencies are system packages
   pip install --root="$pkgdir" \
     --no-warn-script-location \
+    --no-deps \
     --ignore-installed \
     cloudscraper>=1.2.71
   
