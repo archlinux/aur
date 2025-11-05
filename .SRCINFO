@@ -1,0 +1,14 @@
+pkgbase = python-wofi
+	pkgdesc = A Python module to make simple GUIs with Wofi
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/cristobaltapia/python-wofi
+	arch = any
+	license = MIT
+	makedepends = uv
+	depends = python
+	depends = python-setuptools
+	source = python-wofi-0.3.1.tar.gz::https://github.com/cristobaltapia/python-wofi/archive/v0.3.1.tar.gz
+	sha256sums = 3c7e780fa5a2e837e34582fba0d7947ddc49809879ad4afd075ad118dd723968
+
+pkgname = python-wofi
