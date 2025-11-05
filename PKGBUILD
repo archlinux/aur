@@ -1,28 +1,20 @@
 #Maintainer: Okabe Zero-Link (okbzl). Email: okabezerolink@gmail.com
 
 pkgname=system3-sdl2
-pkgver=1.6.1
-pkgrel=2
+pkgver=1.6.2
+pkgrel=1
 pkgdesc="SDL2 port of AliceSoft's System3 game engine."
 arch=(x86_64)
 url="https://github.com/kichikuou/system3-sdl2"
 license=('GPL-2.0-only')
-depends=(sdl2 sdl2_ttf sdl2_mixer rtmidi nlohmann-json)
-makedepends=(cmake)
+depends=(sdl2 sdl2_ttf sdl2_mixer rtmidi)
+makedepends=(cmake nlohmann-json)
 provides=("system3=${pkgver}")
-source=("${pkgname}::git+https://github.com/kichikuou/system3-sdl2.git#tag=v${pkgver}"
-	"${pkgname}-1.6.1-1-pkgconfig.patch::https://github.com/kichikuou/system3-sdl2/commit/8a88a5c06e5683e54591a03b08bdbe04a3a57cc2.patch"
-	"${pkgname}-1.6.1-2-pkgconfig.patch::https://github.com/kichikuou/system3-sdl2/commit/aef2822bc476470629147716d04c64bb1ef3868b.patch")
-sha256sums=('SKIP'
-	    '28955be430a4ae1a7b86b9ceeee9e6fd43a2d9498632290d203b6ff29d0272b7'
-	    'e199b63b8e6174824db82b0bdb8a5ac78cd076a095de663832b3c5543fd2a283')
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 prepare () {
 	cd "$srcdir/${pkgname}"
 	git submodule update --init
-	
-	# patch
-	patch -Np1 -i ../"${pkgname}-1.6.1-1-pkgconfig.patch"
-	patch -Np1 -i ../"${pkgname}-1.6.1-2-pkgconfig.patch"
 }
 
 build() {
