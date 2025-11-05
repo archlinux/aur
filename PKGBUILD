@@ -2,7 +2,7 @@
 # Contributor: Liviu Cristian Mirea-Ghiban <liviu dot mirea at wecodepixels dot com>
 pkgname=heidisql
 pkgver=12.13.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases."
 arch=(any)
 url="http://www.heidisql.com/"
@@ -11,7 +11,7 @@ depends=(gtk2 mariadb-libs postgresql-libs libperconaserverclient sqlite)
 # using the deb because it already conveniently includes related files like icons and a desktop entry (not included in the .tar.xz)
 source=("https://github.com/HeidiSQL/HeidiSQL/releases/download/v${pkgver}/heidisql_${pkgver}_amd64.deb")
 install="$pkgname.install"
-sha256sums=('ff6381d9ec4e66c7c02a59bda9f24b35817bd31129152ed7f861414b4514f2c5')
+sha256sums=('e871bb5cf92476d026bd8c5887cb2a83e6f13877adb077ef5fbdd2edf2936122')
 
 package() {
   cd "${pkgdir}"
