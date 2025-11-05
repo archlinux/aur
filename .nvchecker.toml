@@ -1,0 +1,5 @@
+[codesnap-bin]
+source = "github"
+github = "codesnap-rs/codesnap"
+use_latest_release = true
+prefix = "v"
