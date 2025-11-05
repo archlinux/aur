@@ -2,11 +2,15 @@
 
 _pkgauthor=abenz1267
 _pkgname=elephant
+_pkgproviders=(websearch unicode todo symbols runner providerlist menus files desktopapplications clipboard calc archlinuxpkgs bluetooth windows snippets nirisessions bookmarks)
+
 pkgbase=${_pkgname}-bin
-pkgname=(${_pkgname}-bin ${_pkgname}-websearch-bin ${_pkgname}-unicode-bin ${_pkgname}-todo-bin ${_pkgname}-symbols-bin ${_pkgname}-runner-bin ${_pkgname}-providerlist-bin ${_pkgname}-menus-bin ${_pkgname}-files-bin ${_pkgname}-desktopapplications-bin ${_pkgname}-clipboard-bin ${_pkgname}-calc-bin ${_pkgname}-archlinuxpkgs-bin ${_pkgname}-bluetooth-bin ${_pkgname}-windows-bin ${_pkgname}-snippets-bin ${_pkgname}-nirisessions-bin ${_pkgname}-bookmarks-bin)
+pkgname=(${_pkgname}-bin $(for p in ${_pkgproviders[@]}; do echo ${_pkgname}-${p}-bin ; done))
+
 pkgver=2.14.1
 pkgrel=1
 _pkgvername=v${pkgver}
+
 pkgdesc="general purpose datasource and executor"
 
 arch=('x86_64')
@@ -17,26 +21,7 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 
 license=('GPL-3.0')
 
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
 depends=("glibc")
-optdepends=("${_pkgname}-providerlist: providerlist provider"
-            "${_pkgname}-desktopapplications: desktopapplications provider"
-            "${_pkgname}-archlinuxpkgs: archlinuxpkgs provider"
-            "${_pkgname}-calc: calc provider"
-            "${_pkgname}-clipboard: clipboard provider"
-            "${_pkgname}-files: files provider"
-            "${_pkgname}-menus: menus provider"
-            "${_pkgname}-runner: runner provider"
-            "${_pkgname}-symbols: symbols provider"
-            "${_pkgname}-todo: todo provider"
-            "${_pkgname}-unicode: unicode provider"
-            "${_pkgname}-websearch: websearch provider"
-            "${_pkgname}-bluetooth: bluetooth provider"
-            "${_pkgname}-windows: windows provider"
-            "${_pkgname}-snippets: snippets provider"
-            "${_pkgname}-nirisessions: nirisessions provider"
-            "${_pkgname}-bookmarks: bookmarks provider")
 
 options=(!strip)
 
@@ -88,6 +73,26 @@ case $CARCH in
 esac
 
 package_elephant-bin() {
+    provides=("${_pkgname}")
+    conflicts=("${_pkgname}")
+    optdepends=("${_pkgname}-providerlist: providerlist provider"
+                "${_pkgname}-desktopapplications: desktopapplications provider"
+                "${_pkgname}-archlinuxpkgs: archlinuxpkgs provider"
+                "${_pkgname}-calc: calc provider"
+                "${_pkgname}-clipboard: clipboard provider"
+                "${_pkgname}-files: files provider"
+                "${_pkgname}-menus: menus provider"
+                "${_pkgname}-runner: runner provider"
+                "${_pkgname}-symbols: symbols provider"
+                "${_pkgname}-todo: todo provider"
+                "${_pkgname}-unicode: unicode provider"
+                "${_pkgname}-websearch: websearch provider"
+                "${_pkgname}-bluetooth: bluetooth provider"
+                "${_pkgname}-windows: windows provider"
+                "${_pkgname}-snippets: snippets provider"
+                "${_pkgname}-nirisessions: nirisessions provider"
+                "${_pkgname}-bookmarks: bookmarks provider")
+
     cd "${srcdir}/" || exit
 
     install -Dm755 "${_pkgname}-linux-${_CARCH}" "${pkgdir}/usr/bin/${_pkgname}"
@@ -100,8 +105,8 @@ package_elephant-bin() {
 package_elephant-websearch-bin() {
     pkgdesc="websearch provider for ${_pkgname}"
 
-    conflicts=("${_pkgname}-websearch")
-    provides=("${_pkgname}-websearch")
+    conflicts=("${pkgname%%-bin}")
+    provides=("${pkgname%%-bin}")
     depends+=("${_pkgname}")
 
     cd "${srcdir}/" || exit
@@ -114,8 +119,8 @@ package_elephant-websearch-bin() {
 package_elephant-unicode-bin() {
     pkgdesc="unicode provider for ${_pkgname}"
 
-    conflicts=("${_pkgname}-unicode")
-    provides=("${_pkgname}-unicode")
+    conflicts=("${pkgname%%-bin}")
+    provides=("${pkgname%%-bin}")
     depends+=("${_pkgname}")
 
     cd "${srcdir}/" || exit
@@ -128,8 +133,8 @@ package_elephant-unicode-bin() {
 package_elephant-todo-bin() {
     pkgdesc="todo provider for ${_pkgname}"
 
-    conflicts=("${_pkgname}-todo")
-    provides=("${_pkgname}-todo")
+    conflicts=("${pkgname%%-bin}")
+    provides=("${pkgname%%-bin}")
     depends+=("${_pkgname}")
 
     cd "${srcdir}/" || exit
@@ -142,8 +147,8 @@ package_elephant-todo-bin() {
 package_elephant-symbols-bin() {
     pkgdesc="symbols provider for ${_pkgname}"
 
-    conflicts=("${_pkgname}-symbols")
-    provides=("${_pkgname}-symbols")
+    conflicts=("${pkgname%%-bin}")
+    provides=("${pkgname%%-bin}")
     depends+=("${_pkgname}")
 
     cd "${srcdir}/" || exit
@@ -156,8 +161,8 @@ package_elephant-symbols-bin() {
 package_elephant-runner-bin() {
     pkgdesc="runner provider for ${_pkgname}"
 
-    conflicts=("${_pkgname}-runner")
-    provides=("${_pkgname}-runner")
+    conflicts=("${pkgname%%-bin}")
+    provides=("${pkgname%%-bin}")
     depends+=("${_pkgname}")
 
     cd "${srcdir}/" || exit
@@ -170,8 +175,8 @@ package_elephant-runner-bin() {
 package_elephant-providerlist-bin() {
     pkgdesc="providerlist provider for ${_pkgname}"
 
-    conflicts=("${_pkgname}-providerlist")
-    provides=("${_pkgname}-providerlist")
+    conflicts=("${pkgname%%-bin}")
+    provides=("${pkgname%%-bin}")
     depends+=("${_pkgname}")
 
     cd "${srcdir}/" || exit
@@ -184,8 +189,8 @@ package_elephant-providerlist-bin() {
 package_elephant-menus-bin() {
     pkgdesc="menus provider for ${_pkgname}"
 
-    conflicts=("${_pkgname}-menus")
-    provides=("${_pkgname}-menus")
+    conflicts=("${pkgname%%-bin}")
+    provides=("${pkgname%%-bin}")
     depends+=("${_pkgname}")
 
     cd "${srcdir}/" || exit
@@ -198,8 +203,8 @@ package_elephant-menus-bin() {
 package_elephant-files-bin() {
     pkgdesc="files provider for ${_pkgname}"
 
-    conflicts=("${_pkgname}-files")
-    provides=("${_pkgname}-files")
+    conflicts=("${pkgname%%-bin}")
+    provides=("${pkgname%%-bin}")
     depends+=("${_pkgname}" "fd")
 
     cd "${srcdir}/" || exit
@@ -212,8 +217,8 @@ package_elephant-files-bin() {
 package_elephant-desktopapplications-bin() {
     pkgdesc="desktopapplications provider for ${_pkgname}"
 
-    conflicts=("${_pkgname}-desktopapplications")
-    provides=("${_pkgname}-desktopapplications")
+    conflicts=("${pkgname%%-bin}")
+    provides=("${pkgname%%-bin}")
     depends+=("${_pkgname}")
 
     cd "${srcdir}/" || exit
@@ -226,8 +231,8 @@ package_elephant-desktopapplications-bin() {
 package_elephant-clipboard-bin() {
     pkgdesc="clipboard provider for ${_pkgname}"
 
-    conflicts=("${_pkgname}-clipboard")
-    provides=("${_pkgname}-clipboard")
+    conflicts=("${pkgname%%-bin}")
+    provides=("${pkgname%%-bin}")
     depends+=("${_pkgname}" "wl-clipboard")
 
     cd "${srcdir}/" || exit
@@ -240,8 +245,8 @@ package_elephant-clipboard-bin() {
 package_elephant-calc-bin() {
     pkgdesc="calc provider for ${_pkgname}"
 
-    conflicts=("${_pkgname}-calc")
-    provides=("${_pkgname}-calc")
+    conflicts=("${pkgname%%-bin}")
+    provides=("${pkgname%%-bin}")
     depends+=("${_pkgname}" "libqalculate")
 
     cd "${srcdir}/" || exit
@@ -254,8 +259,8 @@ package_elephant-calc-bin() {
 package_elephant-archlinuxpkgs-bin() {
     pkgdesc="archlinuxpkgs provider for ${_pkgname}"
 
-    conflicts=("${_pkgname}-archlinuxpkgs")
-    provides=("${_pkgname}-archlinuxpkgs")
+    conflicts=("${pkgname%%-bin}")
+    provides=("${pkgname%%-bin}")
     depends+=("${_pkgname}")
 
     cd "${srcdir}/" || exit
@@ -268,8 +273,8 @@ package_elephant-archlinuxpkgs-bin() {
 package_elephant-bluetooth-bin() {
     pkgdesc="bluetooth provider for ${_pkgname}"
 
-    conflicts=("${_pkgname}-bluetooth")
-    provides=("${_pkgname}-bluetooth")
+    conflicts=("${pkgname%%-bin}")
+    provides=("${pkgname%%-bin}")
     depends+=("${_pkgname}")
 
     cd "${srcdir}/" || exit
@@ -282,8 +287,8 @@ package_elephant-bluetooth-bin() {
 package_elephant-windows-bin() {
     pkgdesc="windows provider for ${_pkgname}"
 
-    conflicts=("${_pkgname}-windows")
-    provides=("${_pkgname}-windows")
+    conflicts=("${pkgname%%-bin}")
+    provides=("${pkgname%%-bin}")
     depends+=("${_pkgname}")
 
     cd "${srcdir}/" || exit
@@ -296,8 +301,8 @@ package_elephant-windows-bin() {
 package_elephant-snippets-bin() {
     pkgdesc="snippets provider for ${_pkgname}"
 
-    conflicts=("${_pkgname}-snippets")
-    provides=("${_pkgname}-snippets")
+    conflicts=("${pkgname%%-bin}")
+    provides=("${pkgname%%-bin}")
     depends+=("${_pkgname}")
 
     cd "${srcdir}/" || exit
@@ -310,8 +315,8 @@ package_elephant-snippets-bin() {
 package_elephant-nirisessions-bin() {
     pkgdesc="nirisessions provider for ${_pkgname}"
 
-    conflicts=("${_pkgname}-nirisessions")
-    provides=("${_pkgname}-nirisessions")
+    conflicts=("${pkgname%%-bin}")
+    provides=("${pkgname%%-bin}")
     depends+=("${_pkgname}")
 
     cd "${srcdir}/" || exit
@@ -324,8 +329,8 @@ package_elephant-nirisessions-bin() {
 package_elephant-bookmarks-bin() {
     pkgdesc="bookmarks provider for ${_pkgname}"
 
-    conflicts=("${_pkgname}-bookmarks")
-    provides=("${_pkgname}-bookmarks")
+    conflicts=("${pkgname%%-bin}")
+    provides=("${pkgname%%-bin}")
     depends+=("${_pkgname}" "jq" "sqlite")
 
     cd "${srcdir}/" || exit
