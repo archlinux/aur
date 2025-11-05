@@ -1,6 +1,6 @@
 pkgbase = riffdiff-bin
 	pkgdesc = A diff filter highlighting which line parts have changed
-	pkgver = 3.5.1
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://github.com/walles/riff
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = riffdiff-bin
 	conflicts = riff-bin
 	conflicts = riffdiff
 	replaces = riff-bin
-	source = LICENSE-3.5.1::https://raw.githubusercontent.com/walles/riff/3.5.1/LICENSE
-	source = README-3.5.1::https://raw.githubusercontent.com/walles/riff/3.5.1/README.md
+	source = LICENSE-3.6.0::https://raw.githubusercontent.com/walles/riff/3.6.0/LICENSE
+	source = README-3.6.0::https://raw.githubusercontent.com/walles/riff/3.6.0/README.md
 	sha256sums = 8fe11bd57802035aa8be7cb7382edd1e5f7e53cc6d2ca078271b59b1f94bde26
 	sha256sums = eb90777c642c349cb22ad78cffd57a13da2de7eea2bccdfe635084d497de7a48
-	source_x86_64 = riff-x86_64-3.5.1::https://github.com/walles/riff/releases/download/3.5.1/riff-3.5.1-x86_64-linux
-	sha256sums_x86_64 = a06451f7860ee44f863cbba4b74ab5d0fdbfe22d8408a0c58e93fd1a650c4c60
-	source_aarch64 = riff-aarch64-3.5.1::https://github.com/walles/riff/releases/download/3.5.1/riff-3.5.1-aarch64-linux
-	sha256sums_aarch64 = b28a2d6a2d3cc43b817313f69442c9af341a5c11ee133bbb928d87e785738e5c
+	source_x86_64 = riff-x86_64-3.6.0::https://github.com/walles/riff/releases/download/3.6.0/riff-3.6.0-x86_64-linux
+	sha256sums_x86_64 = a40a0e45bd317e049c51d8dca34fc93513b582e3bd18c41aaffe47f5d96b4823
+	source_aarch64 = riff-aarch64-3.6.0::https://github.com/walles/riff/releases/download/3.6.0/riff-3.6.0-aarch64-linux
+	sha256sums_aarch64 = ea2b6a0a83bea032b7dc68b9dbcbeac8decb6e8d4a54354b3cfa909e6cf785bd
 
 pkgname = riffdiff-bin
