@@ -1,0 +1,20 @@
+pkgbase = power-profiles-hooks-fixed
+	pkgdesc = Daemon to launch commands on power-profiles-daemon profile change
+	pkgver = r11.d93639e
+	pkgrel = 1
+	url = https://github.com/eliteSchwein/power-profiles-hooks
+	arch = x86_64
+	license = CC0-1.0
+	makedepends = git
+	makedepends = make
+	makedepends = gettext
+	depends = power-profiles-daemon
+	depends = python
+	depends = dbus-python
+	depends = python-gobject
+	provides = power-profiles-hooks-git
+	conflicts = power-profiles-hooks-git
+	source = git+https://github.com/eliteSchwein/power-profiles-hooks.git
+	sha256sums = SKIP
+
+pkgname = power-profiles-hooks-fixed
