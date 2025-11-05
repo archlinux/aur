@@ -1,5 +1,5 @@
 pkgbase = proton-vpn-cli
-	pkgdesc = Proton VPN Command Line Interface (currently needs extra-testing enabled)
+	pkgdesc = ProtonVPN CLI (currently needs extra-testing enabled)
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://protonvpn.com

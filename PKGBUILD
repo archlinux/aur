@@ -3,7 +3,7 @@
 pkgname=proton-vpn-cli
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Proton VPN Command Line Interface (currently needs extra-testing enabled)"
+pkgdesc="ProtonVPN CLI (currently needs extra-testing enabled)"
 arch=('any')
 license=('GPL3')
 url="https://protonvpn.com"
