@@ -4,7 +4,7 @@
 
 pkgname=gemini-cli-latest
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Open-source AI agent that brings the power of Gemini directly into your terminal"
 arch=(x86_64)
@@ -34,7 +34,7 @@ package() {
   npm install --global --omit=dev \
     --cache "$srcdir/npm-cache" \
     --prefix "$pkgdir/usr" \
-    $pkgname-$pkgver.tgz
+    ${pkgname%-latest}-$pkgver.tgz
 
   # Remove unnecessary files causing namcap warnings
   rm -r "$pkgdir/usr/lib/node_modules/@google/gemini-cli/node_modules/marked/man"
