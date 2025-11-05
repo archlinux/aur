@@ -18,8 +18,6 @@ Also, you must set it (fetchmail) up first for it to work
 
 ## Setting up fetchmail:
 
-*   Enable Gmail IMAP
-    *   In Gmail settings → "Forwarding and POP/IMAP" → Enable IMAP.
 *   Create an app password (you need to have 2-Factor Authentication)
     *   Go to: [https://myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords)
     *   Type Gmail-Tray > Create

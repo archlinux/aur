@@ -1,11 +1,11 @@
-# Maintainer: Maykon Marcos Junior <maykonmjunior@gmail.com>
+# Maintainer: Maykon Marcos Junior <maykon.marcos.junior.dev@gmail.com>
 pkgname=gmail-tray
-pkgver=2.0 # the software’s upstream version (e.g. 1.0, 1.1)
+pkgver=2.1 # the software’s upstream version (e.g. 1.0, 1.1)
 pkgrel=2   # the package release number, change the packaging but not the upstream version
 pkgdesc="Minimal Gmail tray notifier with unread counter"
 # noarch because it is a Python script and desktop files are architecture independent
 arch=('any')
-url="https://github.com/maykonmjunior/gmail-tray"
+url="https://github.com/maykonmarcosjuniordev-star/gmail-tray"
 license=('MIT')
 depends=('dunst' 'fetchmail' 'gtk3' 'libappindicator-gtk3' 'libnotify' 'python' 'python-gobject' 'json-glib')
 source=('gmail-tray.py' 'gmail-tray.desktop' 'gmail-tray.service' 'gmail.png' gmail-tray-configs.json)

@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-from calendar import c
-import re
 import gi
 import subprocess
 import signal
@@ -15,7 +13,7 @@ from gi.repository import Gtk, AppIndicator3, GLib # type: ignore
 
 LOCK_FILE = "/tmp/gmail-tray.lock"
 
-def already_running():
+def already_running() -> bool:
     global lock_fp
     try:
         lock_fp = open(LOCK_FILE, 'w')
@@ -24,7 +22,7 @@ def already_running():
     except OSError:
         return True
 
-def verify_configs():
+def verify_configs() -> str:
     config_path = os.path.expanduser("~/.config/gmail-tray")
     config_file = os.path.join(config_path, "gmail-tray-configs.json")
     if not os.path.exists(config_file):
@@ -45,20 +43,29 @@ def verify_configs():
         print("Configuration file found.")
         return config_file
 
+def get_configs(config_file):
+    with open(config_file, "r") as f:
+        configs = json.load(f)
+        return configs
+
+def open_browser(browser, flags, url) -> None:
+    print("Opening browser")
+    print(f"Browser: {browser}, Flags: {flags}, URL: {url}")
+    subprocess.Popen([browser, *flags, url]).wait()
+    print("Browser opened.")
 
 class GenericTrayApp:
-    def __init__(self, config_file):
+    def __init__(self, config_file) -> None:
         self.prev_unread = 0
         # get the variables from the gmail-tray-configs.json file
         try:
-            with open(config_file, "r") as f:
-                configs = json.load(f)
-                self.url = configs["url"]
-                self.icon = configs["icon"]
-                self.title = configs["title"]
-                self.interval = configs["interval"]
-                self.browser = configs["browser"]
-                self.flags = configs["flags"]
+            configs = get_configs(config_file)
+            self.url = configs["url"]
+            self.icon = configs["icon"]
+            self.title = configs["title"]
+            self.interval = configs["interval"]
+            self.browser = configs["browser"]
+            self.flags = configs["flags"]
         except Exception as e:
             print("Error reading configuration file:", e)
             return None
@@ -86,7 +93,7 @@ class GenericTrayApp:
         menu.show_all()
         return menu
 
-    def get_unread_count(self):
+    def get_unread_count(self) -> int:
         try:
             output = subprocess.run(["fetchmail", "-c"], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL).stdout
             output = output.decode().strip().splitlines()
@@ -95,6 +102,9 @@ class GenericTrayApp:
             for line in output:
                 line = line.strip().split()
                 kw = "message" if "message" in line else "messages"
+                if kw not in line:
+                    print("No message count found in fetchmail output.")
+                    continue
                 idx = line.index(kw) - 1
                 msg = int(line[idx])
                 print("Message count:", msg)
@@ -119,7 +129,7 @@ class GenericTrayApp:
             print("Erro em get_unread_count", e)
             return 0
     
-    def update_label(self):
+    def update_label(self) -> bool:
         print("Updating label...")
         print("previous unread count:", self.prev_unread)
         try:
@@ -135,9 +145,10 @@ class GenericTrayApp:
         except Exception as e:
             print("Erro em update_label-->", e)
             self.indicator.set_label("?", self.title)
+            return False
     
 
-    def notify_new_mail(self, count):
+    def notify_new_mail(self, count) -> None:
         print(f"New mail notification: {count} new email(s)")
         try:
             print("Using dunstify for notification...")
@@ -153,9 +164,9 @@ class GenericTrayApp:
         except Exception as e:
             print("Erro em notify_new_mail", e)
 
-    def launch_app(self, _):
+    def launch_app(self, _) -> None:
         print("Launching app...")
-        subprocess.Popen([self.browser, *self.flags, self.url]).wait()
+        open_browser(self.browser, self.flags, self.url)
         print("App launched.")
         # Update the unread count after launching the app
         self.update_label()
@@ -165,7 +176,7 @@ class GenericTrayApp:
         Gtk.main_quit()
 
 
-def main(config_file):
+def main(config_file) -> None:
     signal.signal(signal.SIGINT, signal.SIG_DFL)
     _ = GenericTrayApp(config_file)
     Gtk.main()
@@ -174,5 +185,7 @@ if __name__ == "__main__":
     config_file = verify_configs()
     if already_running():
         print("Gmail Tray is already running.")
+        configs = get_configs(config_file)
+        open_browser(configs["browser"], configs["flags"], configs["url"])
     else:
         main(config_file)
