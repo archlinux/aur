@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till at gmail dot com>
 # Contributor: Maciej Dems <macdems@gmail.com>
 pkgname=unmined-gui
-pkgver=0.19.51
+pkgver=0.19.52
 pkgrel=1
 pkgdesc="An easy to use and fast Minecraft world viewer and mapper tool"
 arch=('x86_64')
