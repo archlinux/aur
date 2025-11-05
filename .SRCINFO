@@ -1,6 +1,6 @@
 pkgbase = fortsh
-	pkgdesc = Fortran unix shell balancing friendliness and parity
-	pkgver = 6.0.6
+	pkgdesc = Fortran Shell - A modern shell implementation with AST-based parsing
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/FortranGoingOnForty/fortsh
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = fortsh
 	makedepends = gcc-fortran
 	makedepends = make
 	depends = glibc
-	source = git+https://github.com/FortranGoingOnForty/fortsh.git#tag=v6.0.6
+	source = git+https://github.com/FortranGoingOnForty/fortsh.git#tag=v0.8.0
 	sha256sums = SKIP
 
 pkgname = fortsh

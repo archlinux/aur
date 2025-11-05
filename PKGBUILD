@@ -1,9 +1,9 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=fortsh
-pkgver=6.0.6
+pkgver=0.8.0
 pkgrel=1
-pkgdesc='Fortran unix shell balancing friendliness and parity'
+pkgdesc='Fortran Shell - A modern shell implementation with AST-based parsing'
 arch=('x86_64')
 url='https://github.com/FortranGoingOnForty/fortsh'
 license=('MIT')
