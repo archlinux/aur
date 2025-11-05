@@ -11,7 +11,7 @@ pkgbase = fuss
 	makedepends = make
 	depends = glibc
 	depends = git
-	source = git+https://github.com/FortranGoingOnForty/fuss.git#tag=v1.0.0
-	sha256sums = SKIP
+	source = https://github.com/FortranGoingOnForty/fuss/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = f8f617673b5b662a86f70fe21e8585a867f6f0db1d1db8ea037e545f9f4877cc
 
 pkgname = fuss

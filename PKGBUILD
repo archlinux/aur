@@ -9,16 +9,16 @@ url='https://github.com/FortranGoingOnForty/fuss'
 license=('MIT')
 depends=('glibc' 'git')
 makedepends=('gcc-fortran' 'make')
-source=("git+https://github.com/FortranGoingOnForty/fuss.git#tag=v$pkgver")
-sha256sums=('SKIP')
+source=("https://github.com/FortranGoingOnForty/fuss/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('f8f617673b5b662a86f70fe21e8585a867f6f0db1d1db8ea037e545f9f4877cc')
 
 build() {
-    cd fuss
+    cd "$pkgname-$pkgver"
     make
 }
 
 package() {
-    cd fuss
+    cd "$pkgname-$pkgver"
 
     # Install main binary
     install -Dm755 fuss "$pkgdir/usr/bin/fuss"
