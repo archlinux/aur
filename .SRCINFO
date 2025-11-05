@@ -1,6 +1,6 @@
 pkgbase = n8n
 	pkgdesc = Free and source-available fair-code licensed workflow automation tool. Easily automate tasks across different services.
-	pkgver = 1.117.3
+	pkgver = 1.118.2
 	pkgrel = 1
 	url = https://n8n.io
 	arch = i686
