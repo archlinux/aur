@@ -88,7 +88,7 @@ package_elephant-websearch-bin() {
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}")
+    depends+=("${_pkgname}-${_pkgsuffix}")
 
     cd "${srcdir}/" || exit
 
@@ -102,7 +102,7 @@ package_elephant-unicode-bin() {
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}")
+    depends+=("${_pkgname}-${_pkgsuffix}")
 
     cd "${srcdir}/" || exit
 
@@ -116,7 +116,7 @@ package_elephant-todo-bin() {
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}")
+    depends+=("${_pkgname}-${_pkgsuffix}")
 
     cd "${srcdir}/" || exit
 
@@ -130,7 +130,7 @@ package_elephant-symbols-bin() {
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}")
+    depends+=("${_pkgname}-${_pkgsuffix}")
 
     cd "${srcdir}/" || exit
 
@@ -144,7 +144,7 @@ package_elephant-runner-bin() {
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}")
+    depends+=("${_pkgname}-${_pkgsuffix}")
 
     cd "${srcdir}/" || exit
 
@@ -158,7 +158,7 @@ package_elephant-providerlist-bin() {
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}")
+    depends+=("${_pkgname}-${_pkgsuffix}")
 
     cd "${srcdir}/" || exit
 
@@ -172,7 +172,7 @@ package_elephant-menus-bin() {
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}")
+    depends+=("${_pkgname}-${_pkgsuffix}")
 
     cd "${srcdir}/" || exit
 
@@ -186,7 +186,7 @@ package_elephant-files-bin() {
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}" "fd")
+    depends+=("${_pkgname}-${_pkgsuffix}" "fd")
 
     cd "${srcdir}/" || exit
 
@@ -200,7 +200,7 @@ package_elephant-desktopapplications-bin() {
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}")
+    depends+=("${_pkgname}-${_pkgsuffix}")
 
     cd "${srcdir}/" || exit
 
@@ -214,7 +214,7 @@ package_elephant-clipboard-bin() {
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}" "wl-clipboard" "imagemagick")
+    depends+=("${_pkgname}-${_pkgsuffix}" "wl-clipboard" "imagemagick")
 
     cd "${srcdir}/" || exit
 
@@ -228,7 +228,7 @@ package_elephant-calc-bin() {
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}" "libqalculate")
+    depends+=("${_pkgname}-${_pkgsuffix}" "libqalculate")
 
     cd "${srcdir}/" || exit
 
@@ -242,7 +242,7 @@ package_elephant-archlinuxpkgs-bin() {
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}")
+    depends+=("${_pkgname}-${_pkgsuffix}")
 
     cd "${srcdir}/" || exit
 
@@ -256,7 +256,7 @@ package_elephant-bluetooth-bin() {
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}")
+    depends+=("${_pkgname}-${_pkgsuffix}")
 
     cd "${srcdir}/" || exit
 
@@ -270,7 +270,7 @@ package_elephant-windows-bin() {
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}" "fd")
+    depends+=("${_pkgname}-${_pkgsuffix}" "fd")
 
     cd "${srcdir}/" || exit
 
@@ -284,7 +284,7 @@ package_elephant-snippets-bin() {
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}" "wtype")
+    depends+=("${_pkgname}-${_pkgsuffix}" "wtype")
 
     cd "${srcdir}/" || exit
 
@@ -298,7 +298,7 @@ package_elephant-nirisessions-bin() {
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}" "niri")
+    depends+=("${_pkgname}-${_pkgsuffix}" "niri")
 
     cd "${srcdir}/" || exit
 
@@ -312,7 +312,7 @@ package_elephant-bookmarks-bin() {
 
     conflicts=("${pkgname%%-${_pkgsuffix}}")
     provides=("${pkgname%%-${_pkgsuffix}}")
-    depends+=("${_pkgname}" "jq" "sqlite")
+    depends+=("${_pkgname}-${_pkgsuffix}" "jq" "sqlite")
 
     cd "${srcdir}/" || exit
 
