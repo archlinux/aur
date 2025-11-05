@@ -5,12 +5,15 @@ pkgbase = hasciicam
 	url = http://ascii.dyne.org/
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	depends = aalib
 	depends = libv4l
-	source = https://files.dyne.org/hasciicam/hasciicam_1.3.tar.gz
+	source = https://files.dyne.org/hasciicam?file=/hasciicam/hasciicam_1.3.tar.gz
+	source = https://files.dyne.org/hasciicam?file=/hasciicam/hasciicam_1.3.tar.gz.asc
 	source = const_fix.patch
+	validpgpkeys = 6113D89CA825C5CEDD02C87273B35DA54ACB7D10
 	md5sums = 4d77c6a4cf6e2b1474d5fec0ff450b80
+	md5sums = SKIP
 	md5sums = ae7feb261aa02ec0c1a38423559cba04
 
 pkgname = hasciicam
