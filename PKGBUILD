@@ -1,7 +1,7 @@
 # Maintainer: Firstpick firstpick1992@proton.me
 pkgname=pacsea-git
-pkgver=0.4.4.r27.g02b6a762
-pkgrel=2
+pkgver=0.4.5.r0.g0b1e2ede
+pkgrel=1
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (git version)"
 arch=('x86_64')
 url="https://github.com/Firstp1ck/Pacsea"
@@ -16,6 +16,7 @@ optdepends=(
     'pacman-mirrors: Manjaro mirrorlist'
     'alacritty: run external commands in a terminal'
     'kitty: run external commands in a terminal'
+    'ghostty: run external commands in a terminal'
     'xterm: run external commands in a terminal'
     'gnome-terminal: run external commands in a terminal'
     'konsole: run external commands in a terminal'
