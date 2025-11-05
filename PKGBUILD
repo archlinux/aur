@@ -1,7 +1,7 @@
 # Maintainer: Firstpick firstpick1992@proton.me
 pkgname=pacsea-git
-pkgver=0.4.5.r2.gdcfff78
-pkgrel=2
+pkgver=0.4.5.r6.ga1e1982
+pkgrel=3
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (git version)"
 arch=('x86_64')
 url="https://github.com/Firstp1ck/Pacsea"
@@ -49,14 +49,25 @@ source() {
   local repo_url="https://github.com/Firstp1ck/Pacsea.git"
   local repo_name="Pacsea"
   
+  # Ensure srcdir exists
+  mkdir -p "$srcdir"
+  
+  # Change to srcdir to avoid being in the directory we're about to remove
+  cd "$srcdir" || exit 1
+  
+  # Remove existing directory if it exists to avoid clone conflicts
+  if [ -d "$repo_name" ]; then
+    rm -rf "$repo_name"
+  fi
+  
   # Clone with sparse checkout enabled, using partial clone to reduce download size
   # Note: Using --filter=blob:none reduces download size by not fetching file contents until needed
-  if ! git clone --filter=blob:none --sparse "$repo_url" "$srcdir/$repo_name"; then
+  if ! git clone --filter=blob:none --sparse "$repo_url" "$repo_name"; then
     error "Failed to clone repository"
     exit 1
   fi
   
-  cd "$srcdir/$repo_name" || exit 1
+  cd "$repo_name" || exit 1
   
   # Configure sparse checkout to exclude Images/ and Documents/ directories
   git sparse-checkout init --no-cone
