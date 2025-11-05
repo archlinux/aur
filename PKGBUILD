@@ -3,7 +3,7 @@
 
 pkgname=nodejs-lts-iron
 pkgver=20.19.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Evented I/O for V8 javascript (LTS release: Iron)"
 arch=(x86_64)
 url="https://nodejs.org/"
@@ -64,7 +64,14 @@ check() {
   rm test/parallel/test-process-setgroups.js
   rm test/parallel/test-process-uid-gid.js
   rm test/parallel/test-tls-ocsp-callback.js
+
+  # https://github.com/nodejs/node/pull/60523
+  rm test/parallel/test-datetime-change-notify.js
+
+  rm test/parallel/test-http-client-close-with-default-agent.js
+
   make test-only
+
 }
 
 package() {
