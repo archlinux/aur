@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=todoist-wrapper-bin
 _pkgname=Todoist
-pkgver=4.20251104015432
+pkgver=4.20251105015550
 _electronversion=37
 pkgrel=1
 pkgdesc="Electron Wrapper for Todoist on Linux.(Prebuilt version.Use system-wide electron)"
@@ -25,7 +25,7 @@ source=(
     "${pkgname%-bin}-logo.zip::https://doist.com/brand-assets/todoist-logo.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8a72464c2b5f55e4c06e459a02a7e8f465889435c1e5a20d7c01e6e8f44dcca5'
+sha256sums=('1f33b39ca6bb3141ae901b90815f01367e3e3663a9eb3033aa21af2eb6f261f1'
             'b0ac98d0108e481f0717413ec594ea09f654eede762d4b0425d0974d0b2bec6a'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
