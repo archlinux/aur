@@ -1,7 +1,7 @@
 pkgbase = sideband
 	pkgdesc = Communicate with people or LXMF-compatible systems over Reticulum networks
-	pkgver = 1.7.0
-	pkgrel = 2
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://unsigned.io/software/Sideband.html
 	arch = any
 	license = CC-BY-NC-SA-4.0
@@ -17,18 +17,18 @@ pkgbase = sideband
 	depends = python-dnspython
 	depends = python-ffpyplayer
 	depends = python-kivy>=2.3.0
-	depends = python-lxmf>=0.8.0
+	depends = python-lxmf>=0.9.1
 	depends = python-lxst>=0.3.0
 	depends = python-materialyoucolor>=2.0.7
 	depends = python-mistune>=3.0.2
-	depends = python-numpy
+	depends = python-numpy>=2.0.0
 	depends = python-pillow>=10.2.0
 	depends = python-prompt_toolkit
 	depends = python-pyaudio
-	depends = python-pycodec2
+	depends = python-pycodec2>=4.1.0
 	depends = python-qrcode
 	depends = python-requests
-	depends = python-rns>=1.0.0
+	depends = python-rns>=1.0.1
 	depends = python-sh
 	depends = python-typing_extensions
 	depends = xclip
@@ -39,7 +39,7 @@ pkgbase = sideband
 	optdepends = python-firebase: FireBase data collection
 	provides = python-sbapp
 	conflicts = python-sbapp
-	source = Sideband-1.7.0.tar.gz::https://github.com/markqvist/Sideband/archive/refs/tags/1.7.0.tar.gz
-	sha256sums = 0374f957b3276f1b3dc97ba33706490c4e158968f47f61c8949abb2281abaa30
+	source = Sideband-1.8.0.tar.gz::https://github.com/markqvist/Sideband/archive/refs/tags/1.8.0.tar.gz
+	sha256sums = 4f1eeeaa8e39303b458035a7b2df9caa4657223f8c77e6ec0954538c9e9c3c3e
 
 pkgname = sideband

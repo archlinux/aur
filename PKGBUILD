@@ -2,8 +2,8 @@
 
 _Name="Sideband"
 pkgname="${_Name,,}"
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc="Communicate with people or LXMF-compatible systems over Reticulum networks"
 arch=('any')
 url="https://unsigned.io/software/Sideband.html"
@@ -19,18 +19,18 @@ depends=(
   'python-dnspython'
   'python-ffpyplayer'
   'python-kivy>=2.3.0'
-  'python-lxmf>=0.8.0'
+  'python-lxmf>=0.9.1'
   'python-lxst>=0.3.0'
   'python-materialyoucolor>=2.0.7'
   'python-mistune>=3.0.2'
-  'python-numpy' # <=1.26.4
+  'python-numpy>=2.0.0'
   'python-pillow>=10.2.0'
   'python-prompt_toolkit'
   'python-pyaudio'
-  'python-pycodec2'
+  'python-pycodec2>=4.1.0'
   'python-qrcode'
   'python-requests'
-  'python-rns>=1.0.0'
+  'python-rns>=1.0.1'
   'python-sh'
   'python-typing_extensions'
   'xclip'
@@ -51,7 +51,7 @@ provides=('python-sbapp')
 conflicts=('python-sbapp')
 _pkgsrc="${_url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('0374f957b3276f1b3dc97ba33706490c4e158968f47f61c8949abb2281abaa30')
+sha256sums=('4f1eeeaa8e39303b458035a7b2df9caa4657223f8c77e6ec0954538c9e9c3c3e')
 
 build () {
   cd "${srcdir}/${_pkgsrc}"
