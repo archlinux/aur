@@ -3,7 +3,7 @@
 _pkgauthor=ralsina
 _pkgname=tocry
 pkgname=${_pkgname}-bin
-pkgver=0.25.0
+pkgver=0.26.1
 pkgrel=1
 pkgdesc="A TODO app "
 arch=('x86_64' 'aarch64')
@@ -26,9 +26,9 @@ source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-static-linux-${
 sha256sums=('518dc937443f7b87751b691d7ba2760632a3e8c70c894970db0c7bb091838c06'
             '5e12cdb77daa2372d7232dc9ceeec7084f14afee0cf2db28e5ed2df9bb0e1cbf'
             '322fc6700985541c381870eba5eb6bfb7a1ac86cab6c5ca21647d37a7fa17746'
-            '2274a9c71895d60d9454e9259a491c28760dc02cac25899105a5d2b980fa5a92')
-sha256sums_x86_64=('824b5167c113231ee73766728cca0305aba47311065beca97b05fefbe1cd8d67')
-sha256sums_aarch64=('6934ff39a5da4afc148bb4fe8b3477f587bbda94ec60cb9f7a00f2b662e9d027')
+            '74b8a99a73e942c04591603b47cdccdf5b5c16a8ae028f7b2f30bb59d498cae5')
+sha256sums_x86_64=('f3c10ee87c63e63e1e94688c35212ab550706d7aeed85e01009b645efbe4dfa1')
+sha256sums_aarch64=('2331e7f7955c9a4302b30ff825af2c0262d83897aaa67b456f4d9ebacbd102e1')
 
 
 package() {
