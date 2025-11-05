@@ -31,11 +31,11 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   
   # Install cloudscraper via pip (not available in official Arch repos)
-  # Use --root to install to package directory, --no-deps to avoid conflicts
-  # with system packages. System packages will be used at runtime.
+  # Use --root to install to package directory
+  # --ignore-installed prevents conflicts with system packages
+  # Python will use system packages first due to sys.path ordering
   pip install --root="$pkgdir" \
     --no-warn-script-location \
-    --no-deps \
     --ignore-installed \
     cloudscraper>=1.2.71
   
