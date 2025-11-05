@@ -1,6 +1,6 @@
 pkgbase = python-pipenv-git
 	pkgdesc = Python Development Workflow for Humans.
-	pkgver = 2025.0.3.r0.g218f1a897
+	pkgver = 2025.0.4.r2.gebfefd94e
 	pkgrel = 1
 	url = https://pipenv.pypa.io
 	arch = any

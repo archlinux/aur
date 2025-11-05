@@ -8,7 +8,7 @@
 _enable_checks=false
 
 pkgname=python-pipenv-git
-pkgver=2025.0.3.r0.g218f1a897
+pkgver=2025.0.4.r2.gebfefd94e
 pkgrel=1
 pkgdesc="Python Development Workflow for Humans."
 url="https://pipenv.pypa.io"
@@ -90,12 +90,15 @@ with socket.socket() as s:
   s.bind(('', 0))
   print(s.getsockname()[1])")
     pypi-server run --host=0.0.0.0 --port="${PYPI_SERVER_PORT}" --hash-algo=sha256 --disable-fallback tests/pypi tests/fixtures --welcome /dev/null &
+    # shellcheck disable=SC2064
     trap "kill $!" INT TERM EXIT
 
     TMP_DIR=$(mktemp -d)
-    trap "rm -r ${TMP_DIR}" INT TERM EXIT
+    # shellcheck disable=SC2064
+    trap "rm -rf ${TMP_DIR}" INT TERM EXIT
 
     python -m venv --system-site-packages "${TMP_DIR}/test-env"
+    # shellcheck source=/dev/null
     source "${TMP_DIR}/test-env/bin/activate"
 
     python -m installer dist/*.whl
@@ -117,11 +120,22 @@ fi
 package() {
   cd "$srcdir/$pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  site_packages="$pkgdir$(python -c "import site; print(site.getsitepackages()[0])")"
+
+  # Remove any directory in site-packages that is not pipenv*. This prevents installing "docs/" and "benchmarks/"".
+  find "$site_packages" -mindepth 1 -maxdepth 1 -type d ! -name 'pipenv*' -exec rm -rv {} \;
 
   _PIPENV_COMPLETE=bash_source python -m pipenv | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/pipenv"
   _PIPENV_COMPLETE=zsh_source python -m pipenv  | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_pipenv"
   /usr/bin/env _PIPENV_COMPLETE=fish_source python -m pipenv | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/pipenv.fish"
 
-  find pipenv -name '*LICENSE*' -type f -exec install -Dm 644 {} "${pkgdir}/usr/share/licenses/${pkgname}" \;
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  pushd pipenv
+  find . -name '*LICENSE*' -type f -exec install -Dm 644 {} "${pkgdir}/usr/share/licenses/${pkgname}/{}" \;
+  popd
+
+  # Remove vendored cacert.pem
+  # Taken from python-certifi
+  ln -sf /etc/ssl/certs/ca-certificates.crt "$site_packages/pipenv/patched/pip/_vendor/certifi/cacert.pem"
 }
