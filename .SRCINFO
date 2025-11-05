@@ -1,7 +1,7 @@
 pkgbase = mediaharbor-bin
 	pkgdesc = MediaHarbor is your all-in-one media downloader.
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MediaHarbor/mediaharbor
 	arch = x86_64
 	license = GPL3
