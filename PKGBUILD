@@ -23,23 +23,7 @@ license=('GPL-3.0')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=('glibc' 'gcc-libs' 'glib2' 'gtk4' 'gtk4-layer-shell' 'poppler-glib' 'cairo' 'elephant')
-optdepends=('elephant-providerlist: providerlist provider'
-            'elephant-desktopapplications: desktopapplications provider'
-            'elephant-archlinuxpkgs: archlinuxpkgs provider'
-            'elephant-calc: calc provider'
-            'elephant-clipboard: clipboard provider'
-            'elephant-files: files provider'
-            'elephant-menus: menus provider'
-            'elephant-runner: runner provider'
-            'elephant-symbols: symbols provider'
-            'elephant-todo: todo provider'
-            'elephant-unicode: unicode provider'
-            'elephant-websearch: websearch provider'
-            'elephant-bluetooth: bluetooth provider'
-            'elephant-windows: windows provider'
-            'elephant-snippets: snippets provider'
-            'elephant-nirisessions: nirisessions provider'
-            'elephant-bookmarks: bookmarks provider')
+optdepends=('elephant-all: elephant + all official elephant providers')
 
 backup=("etc/xdg/${_pkgname}/config.toml")
 
