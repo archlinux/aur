@@ -1,23 +1,23 @@
 pkgbase = remarkable-remember-bin
 	pkgdesc = A cross-platform management application for your reMarkable tablet.(Prebuilt version)
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/ds160/remarkable-remember
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = fontconfig
-	provides = remarkable-remember=1.8.1
+	provides = remarkable-remember=1.8.2
 	conflicts = remarkable-remember
 	options = !strip
 	options = staticlibs
-	source = LICENSE-1.8.1::https://raw.githubusercontent.com/ds160/remarkable-remember/1.8.1/LICENSE
+	source = LICENSE-1.8.2::https://raw.githubusercontent.com/ds160/remarkable-remember/1.8.2/LICENSE
 	source = remarkable-remember.sh
 	sha256sums = ce46b168873c89cd7f1cedacb8791829c17cfd7fcf9ea837d4cacb08ad96ea73
 	sha256sums = 9887c2b5cc4171f8768feae7da23aa6765eaa859434757d416fb8988a36936c8
-	source_aarch64 = remarkable-remember-1.8.1-aarch64.deb::https://github.com/ds160/remarkable-remember/releases/download/1.8.1/reMarkableRemember-linux-arm64.deb
-	sha256sums_aarch64 = 2dcb3bd3c294b0b6020e35c974d460cf5681002c139f254066a02867bce777bc
-	source_x86_64 = remarkable-remember-1.8.1-x86_64.deb::https://github.com/ds160/remarkable-remember/releases/download/1.8.1/reMarkableRemember-linux-x64.deb
-	sha256sums_x86_64 = e027fa2cc73537d23d63c8999e42bea1beb94b2005038984ba65d88c3b8e6896
+	source_aarch64 = remarkable-remember-1.8.2-aarch64.deb::https://github.com/ds160/remarkable-remember/releases/download/1.8.2/reMarkableRemember-linux-arm64.deb
+	sha256sums_aarch64 = 256e4402a3ab24ab5588c3e58154613f6a989d890f3ecdf316f9062811f2260e
+	source_x86_64 = remarkable-remember-1.8.2-x86_64.deb::https://github.com/ds160/remarkable-remember/releases/download/1.8.2/reMarkableRemember-linux-x64.deb
+	sha256sums_x86_64 = f6721cff51a3f521f8af6331d78aef7bbe3a106dfdecd70b75e381279095a037
 
 pkgname = remarkable-remember-bin
