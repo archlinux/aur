@@ -1,0 +1,33 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "README.md",
+    "keys/**",
+    ".SRCINFO",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*.tmpfiles",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+    ".gitignore",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "0001-Revert-compositor-send-WL_SURFACE_ERROR_INVALID_SIZE.patch",
+    "0001-xwayland-support-HiDPI-scale.patch",
+    "0002-Fix-configure_notify-event.patch",
+    "0003-Fix-size-hints-under-Xwayland-scaling.patch",
+]
+SPDX-FileCopyrightText = "wlroots contributors"
+SPDX-License-Identifier = "MIT"
