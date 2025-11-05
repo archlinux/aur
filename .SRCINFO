@@ -9,6 +9,7 @@ pkgbase = dedupe-dir
 	depends = coreutils
 	depends = grep
 	depends = sh
+	depends = sed
 	conflicts = dedupe
 	source = dedupe.timer
 	source = dedupe.service
