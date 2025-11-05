@@ -2,7 +2,7 @@
 # Maintainer: julezdev <julez-dev@pm.me>
 
 pkgname='chatuino-bin'
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A client for twitch's IRC service."
 url='https://github.com/julez-dev/chatuino'
@@ -12,11 +12,11 @@ provides=('chatuino-bin')
 conflicts=('chatuino-bin')
 backup=('~/.config/chatuino/keymap.yaml' '~/.config/chatuino/settings.yaml' '~/.config/chatuino/theme.yaml' '~/.config/chatuino/state.json' '~/.local/share/chatuino/chatuino.db' '~/.local/share/chatuino/emote')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/julez-dev/chatuino/releases/download/v0.6.0/chatuino_Linux_arm64.tar.gz")
-sha256sums_aarch64=('b43337c10ff465c3dcb9b3c492d3807b35fff0f635d236f199cf5210fa08c013')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/julez-dev/chatuino/releases/download/v0.6.1/chatuino_Linux_arm64.tar.gz")
+sha256sums_aarch64=('c2eb50d703695f3d1963580a60656724f729bd57cba7db13955ff1a1f77cb39d')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/julez-dev/chatuino/releases/download/v0.6.0/chatuino_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('446589b9ee51acd972fcb6c0324bff1dd95c75af1a74f7f2e7f638f08190c4e4')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/julez-dev/chatuino/releases/download/v0.6.1/chatuino_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('0f6deff53d877c4ba8f051513fe0ffd78be0f34960c49ac32f2a4aa4d33629f3')
 
 package() {
   install -Dm755 "./chatuino" "${pkgdir}/usr/bin/chatuino"
