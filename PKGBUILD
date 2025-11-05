@@ -6,14 +6,14 @@
 
 pkgname=chatterino2
 pkgver=2.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Second installment of the Twitch chat client series "Chatterino"'
 arch=('x86_64')
 url=https://chatterino.com
 license=('MIT')
 depends=('gdk-pixbuf2' 'glib2' 'hicolor-icon-theme' 'libnotify' 'openssl' 'qt6-5compat'
          'qt6-base' 'qt6-imageformats' 'qt6-svg' 'qtkeychain-qt6')
-makedepends=('boost' 'cmake' 'git' 'python3' 'qt6-tools' 'rapidjson' 'websocketpp')
+makedepends=('boost' 'cmake' 'git' 'python3' 'qt6-tools' 'rapidjson')
 optdepends=('streamlink: For piping streams to video players'
             'pulseaudio: For audio output')
 checkdepends=('httpbin' 'pifpaf')
@@ -23,8 +23,9 @@ install="${pkgname}.install"
 source=("git+https://github.com/Chatterino/${pkgname}.git#tag=v${pkgver}"
         "git+https://github.com/Chatterino/certify.git#commit=a448a3915ddac716ce76e4b8cbf0e7f4153ed1e2" # Has no tags
         "git+https://github.com/Chatterino/libcommuni.git#commit=2979eb96262756047a8dca47f2e509168138c0d0" # Current chatterino-cmake commit
+        "git+https://github.com/Chatterino/websocketpp.git#commit=f1736a8e72b910810ff6869fe20f647a62f3bc35" # Current chatterino commit
         "git+https://github.com/pajlada/settings.git#commit=967e86ee79a94ee1f23796046a8eb41e90e54cf2" # Has no relevant tags
-        "git+https://github.com/pajlada/signals.git#commit=a87534e3c54f005ae4c4335e043a90f9af583e1e" # Has no relevant tags
+        "git+https://github.com/pajlada/signals.git#commit=a7611f4aa4a37c6c84aabc616657369b0dfd2826" # Has no relevant tags
         "git+https://github.com/pajlada/serialize.git#commit=chatterino/2.5.3"
         "git+https://github.com/Neargye/magic_enum.git#tag=v0.9.7"
         "git+https://github.com/mackron/miniaudio.git#tag=0.11.23"
@@ -38,8 +39,9 @@ source=("git+https://github.com/Chatterino/${pkgname}.git#tag=v${pkgver}"
 sha256sums=('1f71fac4eac80106cacd9ce0bd63a566c25bc9c8f707b3c15c3f0ce879589a17'
             'b859e9727d4ecd9a2c9723c09f6b098dad7e6c8b76964ac3375d74a09aaa3004'
             'd9c6ad75a70f1d8463e8992fbc5ef0d45c78d33c37ede4d572499a607424e764'
+            'd50966ad9cccfba81208ed08c2633054050e64ba3f90c8c0c88b5bd07f8d8f0f'
             'd1583a2b9c708c205952c72dc9514a70ad379548e80b2ea76eaa3280b2999e30'
-            '2645ca9883970c80ed5a2be917a5eed82034dcc812c9cd2f3ed5e8a9412d0bea'
+            'a75414180aa5377158b5d73e08a4b2a878f616d228fc891a8967093afb20602f'
             '2720af5b86830c88c3c18f4760ec13fd3135cb57c4052075644d2423ef9a2076'
             '35e3ccee2fe02c2a666680aa00982e1d6593de440b8be04a04d399dd97c3e78c'
             '4492cd40ccd70eb4b5ef93ca276a09c9a8755d7e04c6184e408a68dd527ad22c'
@@ -51,15 +53,11 @@ sha256sums=('1f71fac4eac80106cacd9ce0bd63a566c25bc9c8f707b3c15c3f0ce879589a17'
             '0677c2cac20ae98936b87a7bcedf9970459c88f57196b71b7b6758361b145ce7'
             'd486317c93a07987182704245621302c1a72fc7925d069c070539b7d72b4afec')
 
-# websocketpp hack for dirty build
-if [ -f src/chatterino2/lib/websocketpp/websocketpp/version.hpp ]; then
-    rm src/chatterino2/lib/websocketpp/websocketpp/version.hpp
-fi
-
 prepare() {
     declare -A _submodules=(
         [certify]=""
         [libcommuni]=""
+        [websocketpp]=""
         [settings]=""
         [signals]=""
         [serialize]=""
@@ -86,7 +84,6 @@ prepare() {
         -c submodule.lib/WinToast.update=none \
         -c submodule.lib/rapidjson.update=none \
         -c submodule.lib/qtkeychain.update=none \
-        -c submodule.lib/websocketpp.update=none \
         -c submodule.tools/crash-handler.update=none \
         submodule update
 
