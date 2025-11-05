@@ -2,7 +2,7 @@ post_install() {
   echo -e "\n  Read the .service file if you encounter any edge cases"
   echo -e "\n  1. This package now comes with a shared group 'media'"
   echo -e "     Override if necessary."
-  echo -e "\n  Overriding is done with \`systemctl edit jellyseerr\`\n"
+  echo -e "\n  Overriding is done with \`systemctl edit seerr\`\n"
 }
 
 post_upgrade() {
@@ -10,13 +10,13 @@ post_upgrade() {
 }
 
 pre_install() {
-  if [[ -L var/lib/jellyseerr ]]; then
-    rm var/lib/jellyseerr
-    mv -r usr/lib/jellyseerr/config/ var/lib/jellyseerr
+  if [[ -L var/lib/seerr ]]; then
+    rm var/lib/seerr
+    mv -r usr/lib/seerr/config/ var/lib/seerr
   fi
 
-  if [[ -L var/log/jellyseerr ]]; then
-    rm var/log/jellyseerr
+  if [[ -L var/log/seerr ]]; then
+    rm var/log/seerr
   fi
 }
 

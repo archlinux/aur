@@ -1,5 +1,5 @@
-[jellyseerr]
+[seerr]
 source = "git"
-git = "https://github.com/Fallenbagel/jellyseerr.git"
+git = "https://github.com/seerr-team/seerr.git"
 prefix = "v"
 include_regex = "v(\\d+\\.\\d+\\.\\d+)"

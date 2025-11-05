@@ -1,12 +1,12 @@
 # Override this file with a modified version in /etc/tmpfiles.d/
-d /var/lib/jellyseerr                             755 jellyseerr media
-d /var/lib/jellyseerr/logs                        755 jellyseerr media
-d /var/lib/jellyseerr/cache                       755 jellyseerr media
-Z /var/lib/jellyseerr                             -   jellyseerr media
-Z /var/cache/jellyseerr                           -   jellyseerr media
-Z /var/log/jellyseerr                             -   jellyseerr media
-Z /usr/lib/jellyseerr                             -   jellyseerr media
-L+ /var/cache/jellyseerr                          - - - - /var/lib/jellyseerr/cache
-# L+ /var/cache/jellyseerr/.next/cache              - - - - /usr/lib/jellyseerr/.next/cache
-L+ /var/log/jellyseerr                            - - - - /var/lib/jellyseerr/logs
-L+ /etc/jellyseerr/settings.json                  - - - - /var/lib/jellyseerr/settings.json
+d /var/lib/seerr                             755 seerr media
+d /var/lib/seerr/logs                        755 seerr media
+d /var/lib/seerr/cache                       755 seerr media
+Z /var/lib/seerr                             -   seerr media
+Z /var/cache/seerr                           -   seerr media
+Z /var/log/seerr                             -   seerr media
+Z /usr/lib/seerr                             -   seerr media
+L+ /var/cache/seerr                          - - - - /var/lib/seerr/cache
+# L+ /var/cache/seerr/.next/cache              - - - - /usr/lib/seerr/.next/cache
+L+ /var/log/seerr                            - - - - /var/lib/seerr/logs
+L+ /etc/seerr/settings.json                  - - - - /var/lib/seerr/settings.json

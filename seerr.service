@@ -1,34 +1,34 @@
-# Be sure to use `systemctl edit jellyseerr` to modify this service with an
+# Be sure to use `systemctl edit seerr` to modify this service with an
 # override.conf because direct changes will be overwritten by package updates.
 #
-# When running jellyseerr in LXC:
+# When running seerr in LXC:
 # [Service]
 # PrivateUsers=false
 
 [Unit]
-Description=Jellyseerr Service
+Description=Seerr Service
 Wants=network-online.target
 After=network-online.target
 
 [Service]
 Type=exec
-User=jellyseerr
+User=seerr
 Group=media
 UMask=002
-EnvironmentFile=/etc/conf.d/jellyseerr
+EnvironmentFile=/etc/conf.d/seerr
 Environment=NODE_ENV=production
-Environment=CONFIG_DIRECTORY=/var/lib/jellyseerr
+Environment=CONFIG_DIRECTORY=/var/lib/seerr
 ExecStart=/usr/bin/node dist/index.js
 Restart=on-failure
 RestartSec=5
 TimeoutStopSec=20
-SyslogIdentifier=jellyseerr
-StateDirectory=jellyseerr
-ConfigurationDirectory=jellyseerr
-# LogsDirectory=jellyseerr
-# CacheDirectory=jellyseerr
-RuntimeDirectory=jellyseerr
-WorkingDirectory=/usr/lib/jellyseerr
+SyslogIdentifier=seerr
+StateDirectory=seerr
+ConfigurationDirectory=seerr
+# LogsDirectory=seerr
+# CacheDirectory=seerr
+RuntimeDirectory=seerr
+WorkingDirectory=/usr/lib/seerr
 
 # Hardening
 CapabilityBoundingSet=CAP_CHOWN CAP_FSETID CAP_SETGID

@@ -1,7 +1,7 @@
 pkgbase = seerr
 	pkgdesc = Request management and media discovery tool for the Plex ecosystem
 	pkgver = 2.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/seerr-team/seerr
 	install = seerr.install
 	arch = x86_64
@@ -29,9 +29,9 @@ pkgbase = seerr
 	source = seerr.conf.d
 	sha256sums = d0444cecd385452e452954b13b8a0e2b9b299fbef0cecc70c44ad089d8d84b78
 	sha256sums = 8d4024798d173dd9e90e07edd5c0f3a0f556e14c5958bf72c1bc8fbd93f46bab
-	sha256sums = 092221b83ded237f57003587533f623d9bc70455493dae9508bb0edac226f9cd
-	sha256sums = 202d6e4c1d4ee555c33fe7e8473c74aef795e145f3bbc885333c003a75e17f14
-	sha256sums = ee4a4ed8b2ff41fe00582e11283526a08a2ed1154e8e278d898d98c8184c65eb
-	sha256sums = 5a446cc8fa0a47a49dbbd6920d49eb4569f988e808cbb0bdbb609ab179a94426
+	sha256sums = 1a4a8daf655c530ebf24d89d036458aa75d7ae2de21a99a2b10eb02c2df1ac81
+	sha256sums = 8e137d571603af4ad83dd55a79d743bf1360de84af2db05dfb9289ccf649973d
+	sha256sums = 34f139015c3537ced763080832f691f3fca012ee4c126c7c66d8e120085d5290
+	sha256sums = 517a51fac3bbbd0149434f06f3be272c922299b1414396d4e3d66fe6b1082277
 
 pkgname = seerr
