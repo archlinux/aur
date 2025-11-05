@@ -3,7 +3,7 @@ _base=basix
 pkgname=python-fenics-${_base}
 pkgdesc="Basix Python interface"
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/FEniCS/${_base}"
 license=(MIT)
@@ -24,7 +24,7 @@ check() {
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer python/dist/*.whl
   test-env/bin/python -m pytest test \
-    -k 'not permute_subentity_closure'
+    --ignore test/test_dof_ordering.py
   test-env/bin/python demo/python/demo_*.py
 }
 

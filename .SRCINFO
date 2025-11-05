@@ -1,7 +1,7 @@
 pkgbase = python-fenics-basix
 	pkgdesc = Basix Python interface
 	pkgver = 0.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FEniCS/basix
 	arch = x86_64
 	license = MIT
