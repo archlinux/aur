@@ -1,0 +1,5 @@
+[labwc-theme-adwaita]
+source = 'github'
+github = 'davidphilipbarr/labwc-adwaita'
+use_max_tag = true
+prefix = 'v'
