@@ -48,7 +48,7 @@ package() {
   cd "${srcdir}"
   install -vDm755 "${_basename}" "${pkgdir}/usr/bin/${_pkgname}"
 
-  cd "${_Name}-${pkgver}"
+  cd "${_pkgsrc}"
   install -vDm644 "CHANGES.txt"  "${pkgdir}/usr/share/doc/${_pkgname}/CHANGES.txt"
   install -vDm644 "README.txt"   "${pkgdir}/usr/share/doc/${_pkgname}/README.txt"
   install -vDm644 "LICENSE.txt"  "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE.txt"
