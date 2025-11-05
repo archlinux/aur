@@ -4,7 +4,7 @@
 
 pkgname=rdrop-bin
 pkgver=0.1.2
-pkgrel=1
+pkgrel=3
 pkgdesc="Terminal dropdown utils for Hyprland (based on hyprctl)"
 url="https://github.com/lucafulgenzi/rdrop"
 license=("GPL-3.0")
@@ -13,7 +13,7 @@ arch=("x86_64")
 provides=("rdrop")
 conflicts=("rdrop")
 source=("https://github.com/lucafulgenzi/rdrop/releases/download/${pkgver}/rdrop-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('871a7046cdf7c530204b2e59ecfb65f3c95f213f90f1cca6fcc3b5e31370afb4')
+sha256sums=('30c099a2788d14ceac27f74f8531e6c7baed4a62e893ded667af478900399290')
 
 package() {
 
