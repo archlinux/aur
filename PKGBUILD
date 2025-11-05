@@ -3,7 +3,7 @@
 pkgbase=python-jwst
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.20.1
+pkgver=1.20.2
 pkgrel=1
 pkgdesc="Library for calibration of science observations from the James Webb Space Telescope"
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ makedepends=('python-setuptools-scm>=3.4'
 # inputs_root: ci_watson
 #checkdepends=('python-pytest'
 #              'python-pytest-doctestplus'
-##              'python-pytest-xdist'
+#              'python-pytest-xdist'
 #              'python-pytest-timeout'
 #              'python-ci_watson'
 #              'python-pysiaf'
@@ -43,7 +43,7 @@ makedepends=('python-setuptools-scm>=3.4'
 #              'rsync'
 #              ) # stpipe, gwcs <- tweakwcs <- stcal, jsonschema, stdatamodel, photutils, synphot, wiimatch, bayesicfitting already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('fa9023c1601e92ccce253315474589cc')
+md5sums=('cfefc543446d65a9d44f4c2c75567e3c')
 
 get_pyinfo() {
     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
@@ -73,7 +73,7 @@ build() {
 #        cp -v {build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/,}$sos
 #    done
 #    CRDS_PATH=".crds" CRDS_SERVER_URL=https://jwst-crds.stsci.edu CRDS_CONTEXT=jwst_1281.pmap PATH="${PWD}/tmp_install/usr/bin:${PATH}" \
-#        PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyinfo)" pytest -vv -l -ra --color=yes -o console_output_style=count --timeout 300 \
+#        PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyinfo)" pytest -vv -l -ra --color=yes -o console_output_style=count --timeout 300 -p xdist -n 4 \
 #        --ignore=jwst/refpix/tests/test_refpix.py \
 #        --ignore=jwst/resample/tests/test_resample_step.py \
 #        --ignore=jwst/assign_wcs/tests/test_miri.py \
@@ -263,6 +263,8 @@ build() {
 #        --deselect=jwst/extract_1d/soss_extract/tests/test_pastasoss.py::test_get_soss_traces_public[None-1-245.54999999999998] \
 #        --deselect=jwst/extract_1d/soss_extract/tests/test_pastasoss.py::test_get_soss_traces_public[None-1-245.79] \
 #        --deselect=jwst/extract_1d/tests/test_extract_1d_step.py::test_extract_nirspec_mos_multi_slit \
+#        --deselect=jwst/extract_1d/tests/test_extract_1d_step.py::test_extract_nirspec_fs_slit[None] \
+#        --deselect=jwst/extract_2d/tests/test_extract_2d_step.py::test_skip_nrs_mirror \
 #        --deselect=jwst/flatfield/tests/test_flatfield.py::test_nirspec_ifu_flat \
 #        --deselect=jwst/msaflagopen/tests/test_msa_open.py::test_custom_ref_file \
 #        --deselect=jwst/outlier_detection/tests/test_ifu.py::test_ifu_with_outliers[nirspec_ifu_rate-23] \
@@ -292,6 +294,7 @@ build() {
 #        --deselect=jwst/extract_1d/soss_extract/tests/test_pastasoss.py::test_get_soss_traces_public[SUBSTRIP96-1-245.79] \
 #        --deselect=jwst/extract_1d/soss_extract/tests/test_pastasoss.py::test_get_soss_traces_public[SUBSTRIP96-1-246.03] \
 #        --deselect=jwst/extract_1d/soss_extract/tests/test_pastasoss.py::test_get_soss_traces_public[SUBSTRIP96-2-245.54999999999998] \
+#        --deselect=jwst/extract_1d/soss_extract/tests/test_pastasoss.py::test_get_soss_traces_public[SUBSTRIP96-2-245.79] \
 #        --deselect=jwst/outlier_detection/tests/test_spec.py::test_outlier_step_spec[True-True] \
 #        --deselect=jwst/outlier_detection/tests/test_spec.py::test_outlier_step_spec[True-False] \
 #        --deselect=jwst/pathloss/tests/test_pathloss_step.py::test_pathloss_step_mos_uniform \

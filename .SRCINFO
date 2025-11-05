@@ -1,6 +1,6 @@
 pkgbase = python-jwst
 	pkgdesc = Library for calibration of science observations from the James Webb Space Telescope
-	pkgver = 1.20.1
+	pkgver = 1.20.2
 	pkgrel = 1
 	url = https://jwst-pipeline.readthedocs.io
 	arch = i686
@@ -23,8 +23,8 @@ pkgbase = python-jwst
 	makedepends = python-stpipe
 	makedepends = python-synphot
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/j/jwst/jwst-1.20.1.tar.gz
-	md5sums = fa9023c1601e92ccce253315474589cc
+	source = https://files.pythonhosted.org/packages/source/j/jwst/jwst-1.20.2.tar.gz
+	md5sums = cfefc543446d65a9d44f4c2c75567e3c
 
 pkgname = python-jwst
 	depends = python-asdf>=4.2
