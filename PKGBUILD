@@ -1,6 +1,6 @@
 # Maintainer: Arnab Bose <hirak99+arch@gmail.com>
 pkgname=yabsnap-git
-pkgver=r208.ab8fbd0
+pkgver=r299.32d3b3b
 pkgrel=1
 pkgdesc="Btrfs automated snapshot manager."
 arch=('any')
@@ -45,6 +45,8 @@ package() {
   cd artifacts
   install -Dm 644 services/"$pkgname_main".{service,timer}      -t "$pkgdir"/usr/lib/systemd/system/
   install -Dm 664 pacman/*.hook     -t "$pkgdir"/usr/share/libalpm/hooks/
+  install -Dm 644 completions/"$pkgname_main" "$pkgdir"/usr/share/bash-completion/completions/"$pkgname_main"
+  install -Dm 644 completions/_"$pkgname_main" "$pkgdir"/usr/share/zsh/site-functions/_"$pkgname_main"
   install -Dm 644 "$pkgname_main".1.gz                          -t "$pkgdir"/usr/share/man/man1/
   cd ../src
   install -Dm 755 "$pkgname_main".sh -t "$DEST"/
