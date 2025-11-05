@@ -1,6 +1,6 @@
 pkgbase = famistudio
 	pkgdesc = A very simple music editor for the Nintendo Entertainment System or Famicom
-	pkgver = 4.4.2
+	pkgver = 4.4.3
 	pkgrel = 1
 	url = https://famistudio.org/
 	arch = x86_64
@@ -15,13 +15,13 @@ pkgbase = famistudio
 	depends = ffmpeg
 	depends = glfw
 	conflicts = famistudio-bin
-	source = https://github.com/BleuBleu/FamiStudio/archive/refs/tags/4.4.2.tar.gz
+	source = https://github.com/BleuBleu/FamiStudio/archive/refs/tags/4.4.3.tar.gz
 	source = famistudio.desktop
 	source = FamiStudio.svg
-	md5sums = f8dad2bb4b4df241148cc65a50754725
+	md5sums = c8906b704e0ae27149decf722efc7d83
 	md5sums = 7cecbef97612ec8cf56a84e966382c87
 	md5sums = a1156aa440fcc359acc3d43dbfd2d6f9
-	sha256sums = a8eb50debf7a0da7451ed060dfed5158ae4e4563a7514819cbfe59ff771ca54a
+	sha256sums = 19955dfc6c4057869387e188a627dea1ac6987576c137379206b0f9dcb98ac4b
 	sha256sums = 2c25b53b8a287ef5c29a1f32c32ad8cc56f093cb08f02cf0d09550a1bcd19537
 	sha256sums = f8c86d1a851dd1321d3bf3ac3f704abc398d5297b620ef444d2eea0de5e58bf8
 
