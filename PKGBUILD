@@ -1,6 +1,6 @@
 # Maintainer: khvalera <khvalera@ukr.net>
 pkgname=gsender
-pkgver=1.4.11
+pkgver=1.5.6
 pkgrel=1
 pkgdesc="Connect to and control Grbl-based CNCs"
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm' 'yarn' 'libxcrypt-compat' 'debugedit' 'node-gyp')
 source=("https://github.com/Sienci-Labs/${pkgname}/archive/v$pkgver.tar.gz")
-sha512sums=('c6216fb068b1ebd344688718cae228ffb6eb9e62d319ece464e0850d3877e0b6a696a82bb84be06428d0889ad1249f462e66904d55d93c07b1b638ca32f05065')
+sha512sums=('820e429877c91ee8a013278997d962ee7d838509649e667ee9ec9fe79bf8037df31167af8d35bc25e4a45c2d0ebc21dc9ceecb7a38693c3ed5db6d5b9245accf')
 
 build() {
     cd "$pkgname-$pkgver"
