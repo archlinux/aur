@@ -1,5 +1,7 @@
-/hasciicam_*.tar.gz
-/src/
-/pkg/
-/*.pkg.tar*
-/*.log
+/*
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/LICENSE
+!/LICENSES/
+!/REUSE.toml
