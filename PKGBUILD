@@ -10,7 +10,7 @@ license=('MIT')
 backup=('etc/geysermc/config.yml')
 depends=('java-runtime')
 source=("Geyser-Standalone.jar::https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/standalone"
-        'https://github.com/GeyserMC/Geyser/raw/refs/heads/master/LICENSE' 'geysermc.service')
+        'LICENSE.geysermc::https://github.com/GeyserMC/Geyser/raw/refs/heads/master/LICENSE' 'geysermc.service')
 md5sums=('SKIP'
          'd87a7cfc78cfb45f6f4827b263e3e0a0'
          '7043a1445d39f7ee753c9c1513472890')
@@ -27,6 +27,6 @@ package () {
   install -Dm644 "${srcdir}/Geyser-Standalone.jar" "${pkgdir}/usr/share/geysermc/Geyser.jar"
   install -Dm644 "${srcdir}/config.yml" "${pkgdir}/etc/geysermc/config.yml"
   install -Dm644 "${srcdir}/geysermc.service" "${pkgdir}/usr/lib/systemd/system/geysermc.service"
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/LICENSE.geysermc" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   ln -s "/etc/geysermc/config.yml" "${pkgdir}/usr/share/geysermc/config.yml"
 }
