@@ -22,7 +22,7 @@ makedepends=(
 	'rustup'
 )
 source=(
-	"${url}/archive/refs/tags/v${pkgver}.tar.gz"
+	"${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"0001_maturin_version.patch"
 )
 sha256sums=(

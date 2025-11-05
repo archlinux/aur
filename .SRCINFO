@@ -12,7 +12,7 @@ pkgbase = python-py-sr25519-bindings
 	makedepends = python-wheel
 	makedepends = rustup
 	depends = python>=3.7
-	source = https://github.com/JAMdotTech/py-sr25519/archive/refs/tags/v0.2.2.tar.gz
+	source = py-sr25519-bindings-0.2.2.tar.gz::https://github.com/JAMdotTech/py-sr25519/archive/refs/tags/v0.2.2.tar.gz
 	source = 0001_maturin_version.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
