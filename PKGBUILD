@@ -1,4 +1,5 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: Hildigerr Vergaray <Maintainer at YmirSystems dot com>
+# Contributor: <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributors: prettyvanilla, rabyte, Marcin Skory
 
 pkgname=alephone-infinity
