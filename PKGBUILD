@@ -2,7 +2,7 @@
 
 pkgname=walker
 pkgver=2.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc='wayland application runner'
 url='https://github.com/abenz1267/walker'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('gtk4-layer-shell' 'poppler-glib' 'cairo')
 conflicts=('walker')
 provides=('walker')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("d05fc2f86e7a31d7b24f546fedfdb9f3a1587295e6bbba4f54f14c7e251bfafb")
+sha256sums=("d714fc32928772065c522114b5c88b8ef9324c6005ecc3d57b1d3f382577c3c9")
 
 build() {
     cd ${pkgname}-${pkgver}
