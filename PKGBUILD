@@ -1,5 +1,4 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
-# Contributor: klpod221 <klpod221@gmail.com>
+# Maintainer: klpod221 <klpod221@gmail.com>
 
 _pkgauthor=klpod221
 _pkgname=kerminal
