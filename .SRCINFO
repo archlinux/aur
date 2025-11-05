@@ -1,0 +1,14 @@
+pkgbase = cs2-chat-translator
+	pkgdesc = CS2 console.log chat translator (tm_/_tl/code_ + auto translate).
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/MeckeDev/cs2-chat-translator
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = xdotool
+	source = cs2-chat-translator-1.0.0.tar.gz::https://github.com/MeckeDev/cs2-chat-translator/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = d728b8e0b7cbdf19bf001a313d26590e931671a2b85f92cb611739caeab72125
+
+pkgname = cs2-chat-translator
