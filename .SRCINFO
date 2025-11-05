@@ -1,7 +1,7 @@
 pkgbase = cloudhub-bin
 	pkgdesc = The desktop client of CloudHub.(Prebuilt version.Use system-wide electron)云之家桌面端
 	pkgver = 5.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.yunzhijia.com
 	arch = aarch64
 	arch = x86_64

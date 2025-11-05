@@ -4,7 +4,7 @@ _pkgname=CloudHub
 _zhsname='云之家'
 pkgver=5.0.2
 _electronversion=12
-pkgrel=1
+pkgrel=2
 pkgdesc="The desktop client of CloudHub.(Prebuilt version.Use system-wide electron)云之家桌面端"
 arch=(
     'aarch64'
@@ -62,6 +62,7 @@ prepare() {
             s/= process.resourcesPath/= \"\/usr\/lib\/${pkgname%-bin}\"/g
             s/process.env.resourcesPath/\"\/usr\/lib\/${pkgname%-bin}\"/g
         " {} +
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png" "${srcdir}/app.asar.unpacked/resource/linux/256x256-redot.png"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
 }
 package() {
@@ -69,9 +70,9 @@ package() {
     install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/opt/${_zhsname}/resources/"{app.asar.unpacked,logo.png} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    _icon_sizes=(16x16 24x24 128x128 256x256 1024x1024 2048x2048)
+    _icon_sizes=(16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024 2048x2048)
     for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
+        install -Dm644 "${srcdir}/app.asar.unpacked/resource/linux/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
     install -Dm644 "${srcdir}/LICENSE-${pkgver}.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
