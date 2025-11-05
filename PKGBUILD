@@ -1,7 +1,7 @@
 # Maintainer: furudbat <hircreacc@gmail.com>
 pkgname=wpets
-pkgver=3.2.1
-pkgrel=2
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="A Wayland overlay that displays an animated virtual pet reacting to keyboard input"
 arch=('x86_64' 'aarch64')
 url="https://github.com/furudbat/wayland-vpets"
@@ -10,7 +10,7 @@ depends=('wayland' 'glibc' 'systemd-libs')
 makedepends=('gcc' 'cmake' 'make' 'wayland-protocols' 'pandoc-cli' 'systemd')
 keywords=('wayland' 'virtual-pet' 'overlay' 'bongo-cat' 'cat' 'wpets' 'desktop-toy' 'bongo' 'bongocat-keyboard' 'cat' 'vpet' 'screenmate')
 source=("wayland-vpets-$pkgver.tar.gz::https://github.com/furudbat/wayland-vpets/archive/v$pkgver.tar.gz")
-sha256sums=('ded601d5d293528fe207ca3d313a0ac098110d04879e322e6be83b0d7b8717c2')
+sha256sums=('1fcd54920c33e4f8954e8055f2ba08f2d5bad8d25629fe55b1719cb9d4a19e20')
 
 build() {
     cd "$srcdir/wayland-vpets-$pkgver"
@@ -40,6 +40,7 @@ package() {
     install -Dm644 examples/pokemon.bongocat.conf "$pkgdir/usr/share/${pkgname}/pokemon.bongocat.conf.example"
     install -Dm644 examples/cpu-digimon.bongocat.conf "$pkgdir/usr/share/${pkgname}/cpu-digimon.bongocat.conf.example"
     install -Dm644 examples/moving-digimon.bongocat.conf "$pkgdir/usr/share/${pkgname}/moving-digimon.bongocat.conf.example"
+    install -Dm644 examples/neko.bongocat.conf "$pkgdir/usr/share/${pkgname}/neko.bongocat.conf.example"
 
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
