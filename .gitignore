@@ -1,5 +1,6 @@
-src
-pkg
-*.pkg.tar.*
-*.zip
-*.log
+/*
+!PKGBUILD
+!.SRCINFO
+!LICENSE
+!/LICENSES/
+!REUSE.toml
