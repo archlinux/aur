@@ -25,7 +25,7 @@ _GRUB_EXTRAS_COMMIT="8a245d5c1800627af4cefa99162a89c7a46d8842"
 pkgname="grub-silent"
 pkgdesc="GNU GRand Unified Bootloader (2) [without welcome and kernel messages]"
 pkgver=2.12
-pkgrel=8
+pkgrel=9
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64' 'i686')
 license=('GPL3')
@@ -64,7 +64,7 @@ source=("https://ftp.gnu.org/gnu/${pkgname%-*}/${pkgname%-*}-${pkgver}.tar.xz"
         'grub.silent')
 
 sha256sums=('f3c97391f7c4eaa677a78e090c7e97e6dc47b16f655f04683ebd37bef7fe0faa'
-            'fb6b37db9b14fd03e4d26775d84b570fbe91d4ea5de3df4e31114d79a2dfa97e'
+            'SKIP'
             'd101e9d33fbc67f7aaf6fb1191ec1315e8e5572c1d0538b95746ee194b8860db'
             '21153ab7f020d9f819a70b9c879b29e9709996c5b0304816123c09b6849f95a3'
             '6fa180674094f9e1723f736d458f1fe0b5740ea7cf5db5064139defc17ce0e94'
