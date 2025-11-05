@@ -1,4 +1,7 @@
-deadbeef_plugins
-pkg
-src
-*.pkg.tar*
+/*
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/LICENSE
+!/LICENSES/
+!/REUSE.toml
