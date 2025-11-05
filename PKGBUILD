@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=fuss
-pkgver=0.9.9
+pkgver=0.9.92
 pkgrel=1
 pkgdesc='A tree utility for dirty git files, written in modern Fortran'
 arch=('x86_64' 'i686' 'aarch64')
