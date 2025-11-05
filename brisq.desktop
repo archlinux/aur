@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Brisq
+Comment=A Focus App to Help You Stay on Track
+Exec=brisq
+Terminal=false
+Type=Application
+Icon=brisq
+Categories=Productivity;
