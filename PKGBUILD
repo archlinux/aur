@@ -53,18 +53,24 @@ source() {
   # Ensure srcdir exists
   mkdir -p "$srcdir"
   
+  # If repository already exists and is valid, skip cloning
+  if [ -d "$repo_path/.git" ]; then
+    msg "Repository already exists, skipping clone..."
+    cd "$repo_path" || exit 1
+    return 0
+  fi
+  
   # Change to srcdir to avoid being in the directory we're about to remove
   cd "$srcdir" || exit 1
   
-  # Always remove existing directory/repository to ensure clean state
+  # Remove existing directory/repository if it exists but is invalid
   # This handles cases where previous clones failed or were interrupted
   if [ -e "$repo_path" ]; then
-    msg "Clearing existing repository directory..."
+    msg "Clearing existing invalid repository directory..."
     rm -rf "$repo_path"
   fi
   
   # Ensure the directory is completely removed before cloning
-  # Wait a moment if needed for filesystem to sync
   if [ -e "$repo_path" ]; then
     error "Failed to remove existing directory: $repo_path"
     exit 1
@@ -90,11 +96,12 @@ source() {
 
 pkgver() {
   : "${srcdir:?srcdir is not set}"
-  # Always ensure we have a fresh clone for version detection
   # If source directory doesn't exist or is invalid, call source() to download it
+  # But if it already exists (e.g., from prepare()), just use it
+  # Note: pkgver() must only output the version to stdout, no other messages
   if [ ! -d "$srcdir/Pacsea/.git" ]; then
-    msg "Source directory not found or invalid, downloading sources..."
-    source
+    # Suppress all output from source() when called from pkgver()
+    source >/dev/null 2>&1
   fi
   cd "$srcdir/Pacsea" || exit 1
   git describe --tags --long --always \
