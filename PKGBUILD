@@ -1,6 +1,6 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=moonbit
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Cross-distro system cleaner TUI for Linux with automated scheduling"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ optdepends=(
 )
 makedepends=('go>=1.21')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nomadcxx/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('b19ecc71c58332772335b5d8b56a6b560b302bf49ebcd5c8e3cbda426a54e917')
+sha256sums=('95e902454ec21c0fe5eb36b9cc948e08c82c1d43275aa06196ba828724e992e7')
 install=${pkgname}.install
 
 build() {

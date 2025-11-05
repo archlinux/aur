@@ -1,6 +1,6 @@
 pkgbase = moonbit
 	pkgdesc = Cross-distro system cleaner TUI for Linux with automated scheduling
-	pkgver = 1.0.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Nomadcxx/moonbit
 	install = moonbit.install
@@ -10,7 +10,7 @@ pkgbase = moonbit
 	makedepends = go>=1.21
 	depends = systemd
 	optdepends = docker: Docker cleanup support
-	source = moonbit-1.0.0.tar.gz::https://github.com/Nomadcxx/moonbit/archive/v1.0.0.tar.gz
-	sha256sums = b19ecc71c58332772335b5d8b56a6b560b302bf49ebcd5c8e3cbda426a54e917
+	source = moonbit-1.2.0.tar.gz::https://github.com/Nomadcxx/moonbit/archive/v1.2.0.tar.gz
+	sha256sums = 95e902454ec21c0fe5eb36b9cc948e08c82c1d43275aa06196ba828724e992e7
 
 pkgname = moonbit
