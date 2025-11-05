@@ -1,4 +1,58 @@
 
+# v0.17.0-rc.1
+
+Please report all bugs and technical issues in our [Discord server](https://slimevr.dev/discord) in the `#support-forum` or `#technical-support` channels. Bugs may also be reported in our [GitHub Issues](https://github.com/SlimeVR/SlimeVR-Server/issues).
+
+## Use the installer to install or update!
+Use the installer to install or update SlimeVR if you're on Windows. You can find it here:
+* Windows web installer: https://github.com/SlimeVR/SlimeVR-Installer/releases/latest/download/slimevr_web_installer.exe
+* To run SlimeVR, use the shortcut from the start menu or desktop, or open the installation folder and launch slimevr.exe.
+
+### Flatpak distribution for Linux
+Now you can install [SlimeVR from Flathub](https://flathub.org/apps/details/dev.slimevr.SlimeVR) and update it through there. You can install it by running: `flatpak install flathub dev.slimevr.SlimeVR`
+
+## What's Changed
+* Add pausing to the serial console by @gorbit99 in https://github.com/SlimeVR/SlimeVR-Server/pull/1569
+* Don't allow the same value for port in and port out by @gorbit99 in https://github.com/SlimeVR/SlimeVR-Server/pull/1563
+* Remove the GET INFO button by @gorbit99 in https://github.com/SlimeVR/SlimeVR-Server/pull/1587
+* Fix network adapter status vars by @Erimelowo in https://github.com/SlimeVR/SlimeVR-Server/pull/1589
+* Bump gradle/actions from 4 to 5 by @dependabot[bot] in https://github.com/SlimeVR/SlimeVR-Server/pull/1582
+* Fix PFR extension being used for PFS file by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/1593
+* Bump actions/upload-artifact from 4 to 5 by @dependabot[bot] in https://github.com/SlimeVR/SlimeVR-Server/pull/1598
+* Bump actions/download-artifact from 5 to 6 by @dependabot[bot] in https://github.com/SlimeVR/SlimeVR-Server/pull/1599
+* Bump awalsh128/cache-apt-pkgs-action from 1.5.3 to 1.6.0 by @dependabot[bot] in https://github.com/SlimeVR/SlimeVR-Server/pull/1592
+* Bump actions/setup-node from 5 to 6 by @dependabot[bot] in https://github.com/SlimeVR/SlimeVR-Server/pull/1591
+* add safe mode .desktop file by @kruemmelbande in https://github.com/SlimeVR/SlimeVR-Server/pull/1600
+* Delete target web-gui before copying by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/1573
+* Add Positional UDP packet by @SummerSigh in https://github.com/SlimeVR/SlimeVR-Server/pull/1546
+* Show startup error when tracker server port is in use by @ImSapphire in https://github.com/SlimeVR/SlimeVR-Server/pull/1596
+* BVH rewrite by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/1542
+* ManualProportions do not wrap height text by @sctanf in https://github.com/SlimeVR/SlimeVR-Server/pull/1529
+* Smaller paddings in alerts by @Polymoria in https://github.com/SlimeVR/SlimeVR-Server/pull/1450
+* Migrate to tauri logger by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/1537
+* Fix tracker drift logging by @ButterscotchV in https://github.com/SlimeVR/SlimeVR-Server/pull/1588
+* Positional tracker support by @Stermere in https://github.com/SlimeVR/SlimeVR-Server/pull/920
+* Firmware tool V2 by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/1585
+* Update eslint and add stylistic/jsx-self-closing-comp by @gorbit99 in https://github.com/SlimeVR/SlimeVR-Server/pull/1607
+* Calibration tutorial fix settling by @sctanf in https://github.com/SlimeVR/SlimeVR-Server/pull/1521
+* Update jSerialComm to 2.11.3 by @unlogisch04 in https://github.com/SlimeVR/SlimeVR-Server/pull/1608
+* Rework Dropdown component by @gorbit99 in https://github.com/SlimeVR/SlimeVR-Server/pull/1606
+* Enable text input on the serial console page by @gorbit99 in https://github.com/SlimeVR/SlimeVR-Server/pull/1562
+* Make socket recover if slimevr crashed by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/1604
+* Update spotless and ktlint by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/1528
+* Fix lint by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/1610
+* Fix linux ci by @loucass003 in https://github.com/SlimeVR/SlimeVR-Server/pull/1611
+
+## New Contributors
+* @gorbit99 made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/1569
+* @kruemmelbande made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/1600
+* @SummerSigh made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/1546
+* @ImSapphire made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/1596
+
+**Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.16.3...v0.17.0-rc.1
+
+__________
+
 # v0.16.3
 
 Please report all bugs and technical issues in our [Discord server](https://slimevr.dev/discord) in the `#support-forum` or `#technical-support` channels. Bugs may also be reported in our [GitHub Issues](https://github.com/SlimeVR/SlimeVR-Server/issues).
@@ -1239,33 +1293,5 @@ Please report all bugs in our [Discord server](https://slimevr.dev/discord), in 
 * @gale-username made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/1121
 
 **Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.12.1...v0.13.0-rc.1
-
-__________
-
-# v0.12.1 — The haunted mice update
-
-Please report all bugs in our [Discord server](https://slimevr.dev/discord) for now in the appropriate development channels (`#server`, `#gui`, `#autobone`, etc.). If you need tech support or are not sure if you did find a bug, please use the `#support-forum`.
-
-## Use the installer to install or update!
-Use the installer to install or update SlimeVR if you're on Windows. You can find it here:
-* Windows web installer: https://github.com/SlimeVR/SlimeVR-Installer/releases/latest/download/slimevr_web_installer.exe
-* To run SlimeVR, use the shortcut from the start menu or desktop, or open the installation folder and launch slimevr.exe.
-
-### Flatpak distribution for Linux
-Now you can install [SlimeVR from Flathub](https://flathub.org/apps/details/dev.slimevr.SlimeVR) and update it through there. You can install it by running: ``flatpak install flathub dev.slimevr.SlimeVR``
-
-## What's Changed
-* UDPPacket23RotationAndAcceleration: Switch x and y around to adjust for different axes by @9il in https://github.com/SlimeVR/SlimeVR-Server/pull/1007
-* Add more compact bundle protocol by @9il in https://github.com/SlimeVR/SlimeVR-Server/pull/999
-* Change usb enumeration to only specific Vid/Pid by @sctanf in https://github.com/SlimeVR/SlimeVR-Server/pull/1012
-* Fix the HID decoding, replace Q14 with Q15, optimize by @9il in https://github.com/SlimeVR/SlimeVR-Server/pull/1000
-* don't toggle trackers if tracking is paused by @Louka3000 in https://github.com/SlimeVR/SlimeVR-Server/pull/1013
-* GUI - Fix condition for promise detection in a11y by @ZycaR in https://github.com/SlimeVR/SlimeVR-Server/pull/1016
-* fix macOS bundling action by @ImUrX in https://github.com/SlimeVR/SlimeVR-Server/pull/1015
-
-## New Contributors
-* @ZycaR made their first contribution in https://github.com/SlimeVR/SlimeVR-Server/pull/1016
-
-**Full Changelog**: https://github.com/SlimeVR/SlimeVR-Server/compare/v0.12.0...v0.12.1
 
 __________

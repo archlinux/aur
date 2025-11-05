@@ -12,7 +12,7 @@ CURRENT_VERSION=${CURRENT_VERSION#*=}
 echo "VERSION: ${VERSION}"
 echo "CURRENT_VERSION: ${CURRENT_VERSION}"
 
-if [ "${CURRENT_VERSION}" == "${VERSION}a" ] ; then
+if [ "${CURRENT_VERSION}" == "${VERSION}" ] ; then
     echo -e "\nno update needed\nexit\n"
     exit 0
 fi
