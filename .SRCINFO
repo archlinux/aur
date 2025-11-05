@@ -1,7 +1,7 @@
 pkgbase = iso2dsd
 	pkgdesc = GUI to convert SACD ISO to DSD using iso2dsd, sacd_extract and 2064-byte.c patch for non compliant ISOS
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dsd.sonore.us/iso2dsd
 	arch = x86_64
 	license = GPL2
