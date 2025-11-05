@@ -48,6 +48,7 @@ source() {
   : "${srcdir:?srcdir is not set}"
   local repo_url="https://github.com/Firstp1ck/Pacsea.git"
   local repo_name="Pacsea"
+  local repo_path="$srcdir/$repo_name"
   
   # Ensure srcdir exists
   mkdir -p "$srcdir"
@@ -55,19 +56,28 @@ source() {
   # Change to srcdir to avoid being in the directory we're about to remove
   cd "$srcdir" || exit 1
   
-  # Remove existing directory if it exists to avoid clone conflicts
-  if [ -d "$repo_name" ]; then
-    rm -rf "$repo_name"
+  # Always remove existing directory/repository to ensure clean state
+  # This handles cases where previous clones failed or were interrupted
+  if [ -e "$repo_path" ]; then
+    msg "Clearing existing repository directory..."
+    rm -rf "$repo_path"
+  fi
+  
+  # Ensure the directory is completely removed before cloning
+  # Wait a moment if needed for filesystem to sync
+  if [ -e "$repo_path" ]; then
+    error "Failed to remove existing directory: $repo_path"
+    exit 1
   fi
   
   # Clone with sparse checkout enabled, using partial clone to reduce download size
   # Note: Using --filter=blob:none reduces download size by not fetching file contents until needed
-  if ! git clone --filter=blob:none --sparse "$repo_url" "$repo_name"; then
+  if ! git clone --filter=blob:none --sparse "$repo_url" "$repo_path"; then
     error "Failed to clone repository"
     exit 1
   fi
   
-  cd "$repo_name" || exit 1
+  cd "$repo_path" || exit 1
   
   # Configure sparse checkout to exclude Images/ and Documents/ directories
   git sparse-checkout init --no-cone
@@ -80,9 +90,10 @@ source() {
 
 pkgver() {
   : "${srcdir:?srcdir is not set}"
-  # If source directory doesn't exist, call source() to download it
-  if [ ! -d "$srcdir/Pacsea" ]; then
-    msg "Source directory not found, downloading sources..."
+  # Always ensure we have a fresh clone for version detection
+  # If source directory doesn't exist or is invalid, call source() to download it
+  if [ ! -d "$srcdir/Pacsea/.git" ]; then
+    msg "Source directory not found or invalid, downloading sources..."
     source
   fi
   cd "$srcdir/Pacsea" || exit 1
@@ -92,9 +103,9 @@ pkgver() {
 
 prepare() {
   : "${srcdir:?srcdir is not set}"
-  # If source directory doesn't exist, call source() to download it
-  if [ ! -d "$srcdir/Pacsea" ]; then
-    msg "Source directory not found, downloading sources..."
+  # If source directory doesn't exist or is invalid, call source() to download it
+  if [ ! -d "$srcdir/Pacsea/.git" ]; then
+    msg "Source directory not found or invalid, downloading sources..."
     source
   fi
   cd "$srcdir/Pacsea" || exit 1
