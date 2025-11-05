@@ -16,8 +16,8 @@ pkgbase = python-coincurve-git
 	makedepends = python-wheel
 	depends = libsecp256k1
 	depends = python
-	provides = coincurve=v16.0.0.r125.7829b29
-	conflicts = coincurve
+	provides = python-coincurve=v16.0.0.r125.7829b29
+	conflicts = python-coincurve
 	source = coincurve::git+https://github.com/ofek/coincurve
 	sha512sums = SKIP
 

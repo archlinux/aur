@@ -3,8 +3,10 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: redfish <redfish@galactica.pw>
 
-_name='coincurve'
-pkgname="python-${_name}-git"
+
+pkgname='python-coincurve-git'
+_pkgname=${pkgname%-git}
+_name=${_pkgname#python-}
 pkgver=v16.0.0.r125.7829b29
 pkgrel=1
 pkgdesc='Safest and fastest Python library for secp256k1 elliptic curve operations'
@@ -22,8 +24,8 @@ makedepends=(
 	python-wheel
 )
 checkdepends=(python-pytest)
-provides=(${_name}=${pkgver})
-conflicts=(${_name})
+provides=(${_pkgname}=${pkgver})
+conflicts=(${_pkgname})
 
 source=(
 	${_name}::git+${url}
