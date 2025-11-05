@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=NetActivityData
-_pkgver=1.11.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('211ccb4da4d293bed19434a69d0f7e97')
-b2sums=('9a13f743332ad9e3cdf7b44236f46da6f80167b7ec65f524254e4539401f15feb185930bfab3a3df384398ab4da5d2cad2a65908577e539452981ef97dfdf847')
+md5sums=('619492746ac0a1a116acff346b024f7c')
+b2sums=('df065df71fbe79f3985b44c4e96c87484b7ba4ee18d827f2ddb306a8a74b02b2ad07a2b74d5e1de804ec25c22a6b6be1e9416ded899cba092fffce82bacf3f08')
 
 build() {
   mkdir build
