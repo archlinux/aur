@@ -1,13 +1,13 @@
 pkgbase = cs_translate
 	pkgdesc = CS2 console.log auto translator for chat messages (console-only, Linux + Windows).
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/MeckeDev/cs_translate
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	source = cs_translate-1.0.0.tar.gz::https://github.com/MeckeDev/cs_translate/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = a698931a396f37b5a6a5e2c6ccd9b719d1d83f09ac32bfe681ef09605285908e
+	source = cs_translate-1.0.1.tar.gz::https://github.com/MeckeDev/cs_translate/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = b003d4169b03f2b6745a0fbf9b8df4075232b4a29ea1ac6c1e18e881873b20c4
 
 pkgname = cs_translate

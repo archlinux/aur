@@ -1,5 +1,5 @@
 pkgname=cs_translate
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="CS2 console.log auto translator for chat messages (console-only, Linux + Windows)."
 arch=('any')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a698931a396f37b5a6a5e2c6ccd9b719d1d83f09ac32bfe681ef09605285908e')
+sha256sums=('b003d4169b03f2b6745a0fbf9b8df4075232b4a29ea1ac6c1e18e881873b20c4')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -26,7 +26,7 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
   cat > "$pkgdir/usr/bin/cs_translate" << 'EOF'
 #!/bin/sh
-exec node /usr/lib/cs_translate/bin/cs.translate.js "$@"
+exec node /usr/lib/cs_translate/bin/cs_translate.js "$@"
 EOF
   chmod 755 "$pkgdir/usr/bin/cs_translate"
 }
