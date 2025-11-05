@@ -2,7 +2,7 @@
 
 pkgname=('svxlink-git')
 _pkgname=('svxlink')
-pkgver=25.05.1.69.g44f1dfce
+pkgver=25.05.1.r69.g44f1dfc
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/sm0svx/svxlink"
@@ -29,8 +29,12 @@ backup=('etc/svxlink/svxlink.conf'
 install=svxlink.install
 
 pkgver() {
-  cd "$_pkgname"
-  git describe --always | sed -e 's|-|.|g'
+  cd "${srcdir}/${_pkgname}"
+  (
+    set -o pipefail
+    git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 build(){
