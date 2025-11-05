@@ -5,7 +5,7 @@ _binname=dsearch
 
 pkgname=${_binname}-bin
 pkgver=0.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast filesystem search service"
 arch=('x86_64' 'aarch64')
 _barch=('amd64' 'arm64')
