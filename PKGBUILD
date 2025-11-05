@@ -1,8 +1,7 @@
 pkgbase=navicat-premium-lite
-pkgname=("${pkgbase}-en" "${pkgbase}-cs")
-provides=("${pkgbase}")
+pkgname=("${pkgbase}-en" "${pkgbase}-zh-hans")
 pkgver=17.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Navicat Premium Lite"
 arch=('x86_64' 'aarch64')
 url="https://www.navicat.com/products/navicat-premium-lite"
@@ -22,6 +21,7 @@ sha256sums_aarch64=('6a5f755b0c2661f1c51fed57115c6fe04b90a2335ae5e759eb3d8321431
 
 package_navicat-premium-lite-en() {
 	pkgdesc='Navicat Premium Lite is a compact version of Navicat'
+	provides=("${pkgbase}")
 
 	_lang=en
 	_app="${pkgbase}-${_lang}-${CARCH}-${pkgver}.AppImage"
@@ -36,8 +36,9 @@ package_navicat-premium-lite-en() {
 	install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256/apps/navicat-icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/navicat-icon.png"
 	install -dm755 "${pkgdir}/usr/bin" && ln -s "/${_pkgroot}/AppRun" "${pkgdir}/usr/bin/navicat"
 }
-package_navicat-premium-lite-cs() {
+package_navicat-premium-lite-zh-hans() {
 	pkgdesc="Navicat Premium Lite 是 Navicat 的精简版"
+	provides=("${pkgbase}" "${pkgbase}-cs")
 
 	_lang=cs
 	_app="${pkgbase}-${_lang}-${CARCH}-${pkgver}.AppImage"
