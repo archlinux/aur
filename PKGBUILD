@@ -6,7 +6,7 @@ _repo_name=waydroid_script
 _script=main.py
 pkgname=waydroid-script-git
 _pkgname=waydroid-script
-pkgver=r177.1a2d3ad
+pkgver=r186.fcb1562
 pkgrel=2
 epoch=1
 pkgdesc="Python Script to add OpenGapps, Magisk, libhoudini translation library and libndk translation library to waydroid"
@@ -14,12 +14,12 @@ arch=('any')
 url="https://github.com/casualsnek/$_repo_name"
 license=(GPL-3.0-only)
 makedepends=(git)
-depends=(python-requests python-tqdm python-inquirerpy dbus-python lzip sqlite waydroid)
+depends=(python-requests python-tqdm python-inquirerpy dbus-python lzip sqlite waydroid python)
 optdepends=()
 provides=(waydroid-script)
 conflicts=(waydroid-script)
 source=("git+${url}.git")
-sha256sums=(SKIP)
+sha256sums=('SKIP')
 
 pkgver() {
     cd ${srcdir}/$_repo_name
@@ -33,6 +33,7 @@ package() {
     chmod +x ${pkgdir}/opt/${_pkgname}/main.py
     install -d ${pkgdir}/usr/bin
     ln -s /opt/${_pkgname}/main.py ${pkgdir}/usr/bin/waydroid-extras
+    python -m compileall -o 0 -o 1 -p / -s "${pkgdir}" "${pkgdir}/opt/${_pkgname}"
     install -Dm755 ${pkgdir}/opt/${_pkgname}/README.md ${pkgdir}/usr/share/doc/$pkgname/README.md
     rm -rf ${pkgdir}/opt/${_pkgname}/{LICENSE,README.md,requirements.txt,assets}
 }
