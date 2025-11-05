@@ -1,0 +1,17 @@
+pkgbase = capacities-bin
+	pkgdesc = A note-taking app for organizing your knowledge
+	pkgver = 1.54.17
+	pkgrel = 1
+	url = https://capacities.io
+	arch = x86_64
+	license = custom
+	depends = fuse2
+	depends = zlib
+	depends = hicolor-icon-theme
+	provides = capacities
+	conflicts = capacities
+	options = !strip
+	source = capacities-bin-1.54.17.AppImage::https://capacities-desktop-app.fra1.cdn.digitaloceanspaces.com/Capacities-1.54.17.AppImage
+	sha256sums = e40f8bad35f5a4c4b12575ff23b8101b266f6617f841be4cd2c66711cb8fd844
+
+pkgname = capacities-bin
