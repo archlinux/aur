@@ -3,10 +3,13 @@
 
 _pkgauthor=abenz1267
 _pkgname=walker
+
 pkgname=${_pkgname}-bin
+
 pkgver=2.9.1
 pkgrel=1
 _pkgvername=v${pkgver}
+
 pkgdesc='wayland application runner'
 
 arch=('x86_64')
