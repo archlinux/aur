@@ -1,15 +1,25 @@
-pkgbase = sbom-tool-bin
-	pkgdesc = A highly scalable and enterprise ready tool to create SPDX 2.2 compatible SBOMs
-	pkgver = 4.1.2
-	pkgrel = 2
-	url = https://github.com/microsoft/sbom-tool
-	arch = x86_64
-	license = MIT
-	provides = sbom-tool
-	conflicts = sbom-tool
-	conflicts = sbom-tool-git
-	options = !strip
-	source = sbom-tool-4.1.2::https://github.com/microsoft/sbom-tool/releases/download/v4.1.2/sbom-tool-linux-x64
-	sha256sums = ccf050db0f76f3a73f28918c65eb700c9629387420cd781f21ed4b1e449afd06
-
-pkgname = sbom-tool-bin
+[1m[32m==>[m[1m Making package: sbom-tool-bin 4.1.3-1 (Wed 05 Nov 2025 07:30:58 PM CET)[m
+[1m[32m==>[m[1m Checking runtime dependencies...[m
+[1m[32m==>[m[1m Checking buildtime dependencies...[m
+[1m[32m==>[m[1m Retrieving sources...[m
+[1m[34m  ->[m[1m Found sbom-tool-4.1.3[m
+[1m[32m==>[m[1m Validating source files with sha256sums...[m
+[1m[32m==>[m[1m Removing existing $srcdir/ directory...[m
+[1m[32m==>[m[1m Extracting sources...[m
+[1m[32m==>[m[1m Entering fakeroot environment...[m
+[1m[32m==>[m[1m Starting package()...[m
+[1m[32m==>[m[1m Tidying install...[m
+[1m[34m  ->[m[1m Removing libtool files...[m
+[1m[34m  ->[m[1m Purging unwanted files...[m
+[1m[34m  ->[m[1m Compressing man and info pages...[m
+[1m[32m==>[m[1m Checking for packaging issues...[m
+[1m[32m==>[m[1m Creating package "sbom-tool-bin"...[m
+[1m[34m  ->[m[1m Generating .PKGINFO file...[m
+[1m[34m  ->[m[1m Generating .BUILDINFO file...[m
+[1m[34m  ->[m[1m Generating .MTREE file...[m
+[1m[34m  ->[m[1m Compressing package...[m
+[1m[32m==>[m[1m Leaving fakeroot environment.[m
+[1m[32m==>[m[1m Signing package(s)...[m
+[1m[34m  ->[m[1m Created signature file sbom-tool-bin-4.1.3-1-x86_64.pkg.tar.zst.sig.[m
+[1m[32m==>[m[1m Finished making: sbom-tool-bin 4.1.3-1 (Wed 05 Nov 2025 07:31:00 PM CET)[m
+[1m[32m==>[m[1m Cleaning up...[m
