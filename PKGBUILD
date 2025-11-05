@@ -7,12 +7,8 @@ pkgrel=1
 arch=('x86_64')
 url="https://github.com/sm0svx/svxlink"
 license=('GPL-2.0-only' 'LGPL-2.1-only')
-source=("${_pkgname}::git+https://github.com/sm0svx/svxlink.git"
-        "svxlink.service"
-        "remotetrx.service")
-sha256sums=('SKIP'
-            'adc29c81df1794b62bd47202af388397c886cc86a95fa05b3446b3a93a1b3a7c'
-            '41adf7f9863f1ea3013b079e628455a22c29d1b369d174bd19905334c9c31543')
+source=("${_pkgname}::git+https://github.com/sm0svx/svxlink.git")
+sha256sums=('SKIP')
 depends=('gsm' 'alsa-lib' 'openssl' 'speex' 'opus' 'python' 'popt' 'libgpiod'
          'libsigc++' 'gcc-libs' 'curl' 'libgcrypt' 'rtl-sdr' 'bash' 'python-yaml'
          'python-requests' 'tcl' 'libogg' 'jsoncpp' 'python-cryptography')
@@ -42,19 +38,17 @@ build(){
   mkdir -p build 
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+        -DSYSTEMD_CONFIGURATIONS_FILES_DIR=/usr/lib/systemd/system \
         -DCMAKE_INSTALL_SBINDIR=bin \
         -DSYSCONF_INSTALL_DIR=/etc \
         -DLOCAL_STATE_DIR=/var \
-        -DUSE_QT=NO ..
+        -DWITH_SYSTEMD=ON \
+        -DUSE_QT=OFF ..
   make
   make doc
 }
 
 package(){
   make -C ${srcdir}/${_pkgname}/src/build DESTDIR="${pkgdir}" install
-  mkdir -p "${pkgdir}/usr/lib/systemd/system"
-  mkdir -p "${pkgdir}/var/spool/svxlink"
-  # svxlink systemd service file
-  cp ${srcdir}/svxlink.service ${pkgdir}/usr/lib/systemd/system
-  cp ${srcdir}/remotetrx.service ${pkgdir}/usr/lib/systemd/system
 }

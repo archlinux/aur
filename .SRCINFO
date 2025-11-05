@@ -43,10 +43,6 @@ pkgbase = svxlink-git
 	backup = etc/svxlink/svxlink.d/ModuleSelCallEnc.conf
 	backup = etc/svxlink/svxlink.d/ModuleTclVoiceMail.conf
 	source = svxlink::git+https://github.com/sm0svx/svxlink.git
-	source = svxlink.service
-	source = remotetrx.service
 	sha256sums = SKIP
-	sha256sums = adc29c81df1794b62bd47202af388397c886cc86a95fa05b3446b3a93a1b3a7c
-	sha256sums = 41adf7f9863f1ea3013b079e628455a22c29d1b369d174bd19905334c9c31543
 
 pkgname = svxlink-git
