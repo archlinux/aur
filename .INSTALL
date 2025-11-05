@@ -1,0 +1,54 @@
+cfg='/etc/indielinks.toml'
+group='indielinks'
+local_state='/var/run/indielinks'
+log='/var/log/indielinks'
+user='indielinks'
+
+post_install() {
+    local _pkgver="$1"
+
+    if ! getent group "$group" >/dev/null; then
+        groupadd --system "$group"
+    fi
+
+    if ! getent passwd "$user" >/dev/null; then
+        useradd --system \
+                -g "$group" \
+                -M \
+                -d /nonexistent \
+                -s /usr/bin/nologin \
+                "$user"
+    fi
+
+    if [ ! -d "$local_state" ]; then
+        mkdir -p "$local_state"
+        chown -R "$user:$group" "$local_state"
+        chmod 0755 "$local_state"
+    fi
+
+    if [ ! -d "$log" ]; then
+        mkdir -p "$log"
+        chown -R "$user:$group" "$log"
+        chmod 0755 "$log"
+    fi
+
+    if [ -f "$cfg" ]; then
+        setfacl -m u:indielinks:r "$cfg"
+    fi
+}
+
+pre_remove() {
+    local _pkgver="$1"
+    indielinks-ctl stop
+}
+
+post_remove() {
+    local _pkgver="$1"
+    rm -rf "$local_state"
+    if getent passwd "$user" >/dev/null; then
+        userdel "$user"
+    fi
+    if getent group "$group" >/dev/null; then
+        groupdel "$group"
+    fi
+}

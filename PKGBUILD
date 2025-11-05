@@ -2,7 +2,7 @@
 
 pkgname=indielinks-git
 _pkgname=${pkgname%-git}
-pkgver=r110.fb1a20e
+pkgver=r120.6251e7e
 pkgrel=1
 pkgdesc="del.icio.us in the Fediverse (git version)"
 arch=('x86_64')
@@ -10,16 +10,16 @@ url=https://github.com/sp1ff/indielinks
 license=('GPL-3.0-or-later')
 # https://gitlab.archlinux.org/archlinux/packaging/packages/pacman/-/issues/20#note_172172
 options=(!lto)
-depends=('openssl' 'glibc' 'gcc-libs' 'scylla-bin' 'bash')
+depends=('openssl' 'glibc' 'gcc-libs' 'scylla-bin' 'bash' 'acl')
 # `cargo` (and the Rust toolchain generally) is required, but I don't want to require
 # the package, since it may have been installed in another way
 makedepends=('git' 'protobuf')
-provides=('indielinks')
 conflicts=('indielinks')
+install='.INSTALL'
 source=("${_pkgname}::git+https://github.com/sp1ff/indielinks.git"
         'indielinks.toml')
 sha256sums=('SKIP'
-            'fe997211c5c3b5aaed864228bb6c6b0344de0296e73e912db742ddcb6e255d12')
+            '532152abc869542c942c35ea49164c22c2d4da20e3fc0d699f9c2338e0716895')
 _nproc=$(($(nproc)/4))
 if [ $_nproc -eq 0 ]; then
     _nproc=1
@@ -47,6 +47,7 @@ package() {
     install -Dm755 target/release/indic              "$pkgdir/usr/bin/indic"
     install -Dm755 target/release/indielinks-schemas "$pkgdir/usr/bin/indielinks-schemas"
     install -Dm755 scripts/indielinks-post-install   "$pkgdir/usr/bin/indielinks-post-install"
+    install -Dm755 scripts/indielinks-ctl            "$pkgdir/usr/bin/indielinks-ctl"
     
     cd indielinks-fe/dist
     wasm=$(ls -1 indielinks-fe*.wasm)

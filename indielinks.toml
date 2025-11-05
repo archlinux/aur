@@ -1,6 +1,6 @@
 # indielinks configuration file for my prototype local installation
 version = "1"
-log-file = "/var/log/indielinks.log"
+log-file = "/var/log/indielinks/indielinks.log"
 public-address = "0.0.0.0:20676"
 private-address = "127.0.0.1:20677"
 raft-grpc-address = "127.0.0.1:20678"

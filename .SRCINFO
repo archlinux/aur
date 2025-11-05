@@ -1,8 +1,9 @@
 pkgbase = indielinks-git
 	pkgdesc = del.icio.us in the Fediverse (git version)
-	pkgver = r110.fb1a20e
+	pkgver = r120.6251e7e
 	pkgrel = 1
 	url = https://github.com/sp1ff/indielinks
+	install = .INSTALL
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
@@ -12,12 +13,12 @@ pkgbase = indielinks-git
 	depends = gcc-libs
 	depends = scylla-bin
 	depends = bash
-	provides = indielinks
+	depends = acl
 	conflicts = indielinks
 	options = !lto
 	source = indielinks::git+https://github.com/sp1ff/indielinks.git
 	source = indielinks.toml
 	sha256sums = SKIP
-	sha256sums = fe997211c5c3b5aaed864228bb6c6b0344de0296e73e912db742ddcb6e255d12
+	sha256sums = 532152abc869542c942c35ea49164c22c2d4da20e3fc0d699f9c2338e0716895
 
 pkgname = indielinks-git
