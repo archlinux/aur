@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.zip::http://www.un4seen.com/files/bass24-linux.zip")
 sha256sums=('d15ce4b0bc98a9e1c9e5a108607ae891287b5951327fb0b55692f2ea40d3772a')
 
 prepare() {
-  grep Lic "$srcdir/bass.txt" -A62 > LICENSE.custom
+  grep Lic "$srcdir/bass.txt" -A62 > LICENSE.bass
 }
 
 package() {
@@ -32,7 +32,7 @@ package() {
 
   install -D -m644 c/bass.h "$pkgdir/usr/include/bass.h"
   install -D -m644 bass.chm "$pkgdir/usr/share/doc/libbass/bass.chm"
-  install -D -m644 LICENSE.custom "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m644 LICENSE.bass "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # getver: -u=2 un4seen.com/bass.html
