@@ -4,13 +4,13 @@
 _name=RaySession
 pkgname=${_name,,}
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Session manager for audio programs using the Non Session Manager (NSM) API"
 arch=(any)
 url='https://github.com/Houston4444/RaySession'
 license=(GPL-2.0-only)
 depends=(hicolor-icon-theme dbus-python python-jack-client python-pyalsa python-pyqt6 python-pyliblo
-  python-pyxdg qt6-svg)
+  python-pyxdg python-qtpy qt6-svg)
 makedepends=(qt6-tools)
 optdepends=(
   'python-gobject: additional JACK helper scripts'
@@ -20,11 +20,16 @@ groups=(pro-audio)
 source=("https://github.com/Houston4444/RaySession/releases/download/v$pkgver/$_name-$pkgver-source.tar.gz"
         'raysession-makefile-destdir.patch')
 sha256sums=('e879ecae851d13bdc656282645f610ebe6d7d3b0e221f1f9e47b11ac902cac28'
-            '943c821d4d5cae581004ca54030b720ac835a03cd7691492bcbcb6e146bb078a')
+            'd551c1660bff9cbd1a45e6bdbfc5b81894cd118b78534340e5ec0bb274e527fa')
+
+prepare() {
+  cd $_name-$pkgver
+  patch -p1 -N -r - -i "$srcdir"/raysession-makefile-destdir.patch
+}
 
 build() {
   cd $_name-$pkgver
-  make LRELEASE=/usr/lib/qt6/bin/lrelease RCC=/usr/lib/qt6/rcc
+  make -j 1 LRELEASE=/usr/lib/qt6/bin/lrelease RCC=/usr/lib/qt6/rcc
 }
 
 package() {

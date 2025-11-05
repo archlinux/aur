@@ -1,110 +1,28 @@
-diff -uNbr RaySession-0.14.0.orig/Makefile RaySession-0.14.0/Makefile
---- RaySession-0.14.0.orig/Makefile	2023-09-18 12:11:11.000000000 +0200
-+++ RaySession-0.14.0/Makefile	2023-09-18 15:06:36.153033711 +0200
-@@ -5,7 +5,7 @@
+diff -uNr RaySession-0.17.0.orig/Makefile RaySession-0.17.0/Makefile
+--- RaySession-0.17.0.orig/Makefile	2025-11-03 11:45:36.000000000 +0100
++++ RaySession-0.17.0/Makefile	2025-11-05 08:52:49.147204038 +0100
+@@ -5,7 +5,8 @@
  #
  PREFIX ?= /usr/local
  DESTDIR =
 -DEST_RAY := $(DESTDIR)$(PREFIX)/share/raysession
-+DEST_RAY := $(PREFIX)/share/raysession
++RAYSESSION_DIR ?= $(PREFIX)/share/raysession
++DEST_RAY := $(DESTDIR)$(RAYSESSION_DIR)
  
  LINK = ln -s -f
- PYUIC := pyuic5
-@@ -152,7 +152,7 @@
- 	rm -f $(DESTDIR)$(PREFIX)/share/icons/hicolor/scalable/apps/raysession.svg
- 	rm -rf $(DESTDIR)/etc/xdg/raysession/client_templates/40_ray_nsm
- 	rm -rf $(DESTDIR)/etc/xdg/raysession/client_templates/60_ray_lash
--	rm -rf $(DEST_RAY)
-+	rm -rf $(DESTDIR)$(DEST_RAY)
- 
- pure_install:
- 	# Create directories
-@@ -167,10 +167,10 @@
- 	install -d $(DESTDIR)$(PREFIX)/share/icons/hicolor/128x128/apps/
- 	install -d $(DESTDIR)$(PREFIX)/share/icons/hicolor/256x256/apps/
- 	install -d $(DESTDIR)$(PREFIX)/share/icons/hicolor/scalable/apps/
--	install -d $(DEST_RAY)/
--	install -d $(DEST_RAY)/locale/
--	install -d $(DEST_RAY)/$(PATCHBAY_DIR)/
--	install -d $(DEST_RAY)/$(PATCHBAY_DIR)/locale/
-+	install -d $(DESTDIR)$(DEST_RAY)/
-+	install -d $(DESTDIR)$(DEST_RAY)/locale/
-+	install -d $(DESTDIR)$(DEST_RAY)/$(PATCHBAY_DIR)/
-+	install -d $(DESTDIR)$(DEST_RAY)/$(PATCHBAY_DIR)/locale/
- 	install -d $(DESTDIR)/etc/xdg/
- 	install -d $(DESTDIR)/etc/xdg/raysession/
- 	install -d $(DESTDIR)/etc/xdg/raysession/client_templates/
-@@ -178,14 +178,14 @@
- 	# Copy Templates Factory
- 	cp -r client_templates/40_ray_nsm  $(DESTDIR)/etc/xdg/raysession/client_templates/
- 	cp -r client_templates/60_ray_lash $(DESTDIR)/etc/xdg/raysession/client_templates/
--	cp -r client_templates  $(DEST_RAY)/
--	cp -r session_templates $(DEST_RAY)/
--	cp -r session_scripts   $(DEST_RAY)/
--	cp -r data              $(DEST_RAY)/
-+	cp -r client_templates  $(DESTDIR)$(DEST_RAY)/
-+	cp -r session_templates $(DESTDIR)$(DEST_RAY)/
-+	cp -r session_scripts   $(DESTDIR)$(DEST_RAY)/
-+	cp -r data              $(DESTDIR)$(DEST_RAY)/
- 
- 	# Copy patchbay themes
--	cp -r HoustonPatchbay/themes $(DEST_RAY)/$(PATCHBAY_DIR)/
--	cp -r HoustonPatchbay/manual $(DEST_RAY)/$(PATCHBAY_DIR)/
-+	cp -r HoustonPatchbay/themes $(DESTDIR)$(DEST_RAY)/$(PATCHBAY_DIR)/
-+	cp -r HoustonPatchbay/manual $(DESTDIR)$(DEST_RAY)/$(PATCHBAY_DIR)/
- 
- 	# Copy Desktop Files
- 	install -m 644 data/share/applications/*.desktop \
-@@ -214,27 +214,27 @@
- 		$(DESTDIR)$(PREFIX)/share/icons/hicolor/scalable/apps/
- 
+ LRELEASE ?= lrelease
+@@ -188,10 +189,10 @@
  	# Install main code
--	cp -r src $(DEST_RAY)/
--	rm $(DEST_RAY)/src/gui/patchbay
--	cp -r $(PATCHBAY_DIR)/patchbay $(DEST_RAY)/src/gui/
--	rm $(DEST_RAY)/src/clients/jackpatch/jacklib
--	cp -r pyjacklib/jacklib $(DEST_RAY)/src/clients/jackpatch/
--	rm $(DEST_RAY)/src/jack_patchbay_to_osc/jacklib
--	cp -r pyjacklib/jacklib $(DEST_RAY)/src/jack_patchbay_to_osc/
--	
+ 	cp -r src $(DEST_RAY)/
+ 
 -	$(LINK) $(DEST_RAY)/src/bin/ray-jack_checker_daemon $(DESTDIR)$(PREFIX)/bin/
 -	$(LINK) $(DEST_RAY)/src/bin/ray-jack_config_script  $(DESTDIR)$(PREFIX)/bin/
 -	$(LINK) $(DEST_RAY)/src/bin/ray-pulse2jack          $(DESTDIR)$(PREFIX)/bin/
 -	$(LINK) $(DEST_RAY)/src/bin/ray_git                 $(DESTDIR)$(PREFIX)/bin/
-+	cp -r src $(DESTDIR)$(DEST_RAY)/
-+	rm $(DESTDIR)$(DEST_RAY)/src/gui/patchbay
-+	cp -r $(PATCHBAY_DIR)/patchbay $(DESTDIR)$(DEST_RAY)/src/gui/
-+	rm $(DESTDIR)$(DEST_RAY)/src/clients/jackpatch/jacklib
-+	cp -r pyjacklib/jacklib $(DESTDIR)$(DEST_RAY)/src/clients/jackpatch/
-+	rm $(DESTDIR)$(DEST_RAY)/src/jack_patchbay_to_osc/jacklib
-+	cp -r pyjacklib/jacklib $(DESTDIR)$(DEST_RAY)/src/jack_patchbay_to_osc/
-+
-+	$(LINK) ../share/raysession/src/bin/ray-jack_checker_daemon $(DESTDIR)$(PREFIX)/bin/
-+	$(LINK) ../share/raysession/src/bin/ray-jack_config_script  $(DESTDIR)$(PREFIX)/bin/
-+	$(LINK) ../share/raysession/src/bin/ray-pulse2jack          $(DESTDIR)$(PREFIX)/bin/
-+	$(LINK) ../share/raysession/src/bin/ray_git                 $(DESTDIR)$(PREFIX)/bin/
++	$(LINK) $(RAYSESSION_DIR)/src/bin/ray-jack_checker_daemon $(DESTDIR)$(PREFIX)/bin/
++	$(LINK) $(RAYSESSION_DIR)/src/bin/ray-jack_config_script  $(DESTDIR)$(PREFIX)/bin/
++	$(LINK) $(RAYSESSION_DIR)/src/bin/ray-pulse2jack          $(DESTDIR)$(PREFIX)/bin/
++	$(LINK) $(RAYSESSION_DIR)/src/bin/ray_git                 $(DESTDIR)$(PREFIX)/bin/
  	
  	# compile python files
--	$(PYTHON) -m compileall $(DEST_RAY)/src/
-+	$(PYTHON) -m compileall -s $(DESTDIR) $(DESTDIR)$(DEST_RAY)/src/
- 	
- 	# install local manual
--	cp -r manual $(DEST_RAY)/
-+	cp -r manual $(DESTDIR)$(DEST_RAY)/
- 	
- 	# install utility-scripts
--	cp -r utility-scripts $(DEST_RAY)/
-+	cp -r utility-scripts $(DESTDIR)$(DEST_RAY)/
- 	
- 	# install main bash scripts to bin
- 	install -m 755 data/raysession  $(DESTDIR)$(PREFIX)/bin/
-@@ -250,7 +250,7 @@
- 		$(DESTDIR)$(PREFIX)/bin/ray-proxy
- 	
- 	# Install Translations
--	install -m 644 locale/*.qm $(DEST_RAY)/locale/
--	install -m 644 $(PATCHBAY_DIR)/locale/*.qm $(DEST_RAY)/$(PATCHBAY_DIR)/locale
-+	install -m 644 locale/*.qm $(DESTDIR)$(DEST_RAY)/locale/
-+	install -m 644 $(PATCHBAY_DIR)/locale/*.qm $(DESTDIR)$(DEST_RAY)/$(PATCHBAY_DIR)/locale
- 
- 
+ 	$(PYTHON) -m compileall $(DEST_RAY)/HoustonPatchbay/source/
