@@ -1,6 +1,6 @@
 pkgbase = dream-prompter
 	pkgdesc = AI-powered GIMP plugin for image generation and editing using multiple Replicate models
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/zquestz/dream-prompter
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = dream-prompter
 	depends = python-replicate-git
 	provides = dream-prompter
 	conflicts = dream-prompter
-	source = dream-prompter-1.1.4.tar.gz::https://github.com/zquestz/dream-prompter/archive/refs/tags/1.1.4.tar.gz
-	sha256sums = 2bce3953f667ad4148377779a6c5c2d06c20893f7ca1eef21b976a688846bafb
+	source = dream-prompter-1.1.5.tar.gz::https://github.com/zquestz/dream-prompter/archive/refs/tags/1.1.5.tar.gz
+	sha256sums = f5dbcf58ea34700ba341909774d96bb16b2aa62cf8a0a909182e518e5059074e
 
 pkgname = dream-prompter
