@@ -13,7 +13,7 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_ver="1.21.10_1.1.0_0.17.3-1"
+_ver="1.21.10_1.1.0_0.17.3-2"
 _minecraft_ver_latest="1.21.10"
 
 IFS="-" read -ra _ver_temp <<<"$_ver"
@@ -42,10 +42,10 @@ fi
 
 pkgver=${_ver_temp[0]}
 pkgrel=${_ver_temp[1]}
-pkgdesc="Minecraft Fabricma server unit files, script and jar"
+pkgdesc="A Fabric (a modular, lightweight mod loader) enabled Minecraft server"
 arch=("any")
 url="https://fabricmc.net"
-license=("Apache")
+license=("Apache-2.0")
 depends=("java-runtime-headless>=21" "tmux" "sudo" "bash" "awk" "sed")
 optdepends=("tar: required in order to create world backups"
 	"netcat: required in order to suspend an idle server")
@@ -63,27 +63,21 @@ sha512sums=(
 	'7e593bf7b2786851aed680186e50dbbf8af7e7e592bc69c28c199d739307ea4b80b3575954a817ed97171d1516ea8afdd6ede4767d51ec414dbd3a1032111516'
 )
 
+_game="fabric"
+_server_root="/srv/${_fabric_name}"
+
 prepare() {
 	java -Duser.home="${srcdir}" -jar "fabric-installer-${_fabric_ver}.jar" server -mcversion "${_minecraft_ver}" -downloadMinecraft -loader "${_fabric_loader_ver}"
 }
 
-_game="fabric"
-_server_root="${pkgdir}/srv/${_fabric_name}"
 build() {
+	make -C "${srcdir}/minecraft-server-${_mng_ver}" clean
+
 	make -C "${srcdir}/minecraft-server-${_mng_ver}" \
 		GAME=${_game} \
 		INAME=${_game}d \
 		SERVER_ROOT="${_server_root}" \
-		BACKUP_PATHS="world world_nether world_the_end" \
-		GAME_USER=${_game} \
-		MAIN_EXECUTABLE=fabric-server-launch.jar \
-		SERVER_START_CMD="java -Dlog4j2.formatMsgNoLookups=true -Xms512M -Xmx1024M -jar './\$\${MAIN_EXECUTABLE}' nogui" \
-		clean
-	make -C "${srcdir}/minecraft-server-${_mng_ver}" \
-		GAME=${_game} \
-		INAME=${_game}d \
-		SERVER_ROOT="${_server_root}" \
-		BACKUP_PATHS="world world_nether world_the_end" \
+		BACKUP_PATHS="world banned-ips.json banned-players.json config ops.json server.properties usercache.json user_jvm_args.txt whitelist.json" \
 		GAME_USER=${_game} \
 		MAIN_EXECUTABLE=fabric-server-launch.jar \
 		SERVER_START_CMD="java -Dlog4j2.formatMsgNoLookups=true -Xms512M -Xmx1024M -jar './\$\${MAIN_EXECUTABLE}' nogui" \
@@ -91,33 +85,27 @@ build() {
 }
 
 package() {
-	_server_root="${pkgdir}/srv/${_fabric_name}"
-
 	make -C "${srcdir}/minecraft-server-${_mng_ver}" \
 		DESTDIR="${pkgdir}" \
 		GAME=${_game} \
 		INAME=${_game}d \
 		install
 
-	# Install Fabric
-	install -Dm644 "fabric-server-launch.jar" "${_server_root}/fabric-server-launch.jar"
+	# Install Fabric & Minecraft server jars
+	install -Dm644 "fabric-server-launch.jar" "${pkgdir}${_server_root}/fabric-server-launch.jar"
+	install -Dm644 "server.jar" "${pkgdir}${_server_root}/server.jar"
 
-	# Install Minecraft Server
-	install -Dm644 "server.jar" "${_server_root}/server.jar"
-
-	# install the libraries subfolder
-    # 1 create the emptyfolder structure
-    install -dm755 "libraries" "${_server_root}/libraries"
-    find "libraries" -type d -exec install -d --mode 755 {} "${_server_root}/{}" \;
-
-    # 2 install all files
-    find "libraries" -type f -exec install -D --mode 755 {} "${_server_root}/{}" \;
+	# Install libraries
+  install -dm755 "libraries" "${pkgdir}${_server_root}/libraries"
+	cp -r libraries/* "${pkgdir}${_server_root}/libraries/"
+  find "${pkgdir}${_server_root}/libraries" -type d -exec chmod 755 {} +
+  find "${pkgdir}${_server_root}/libraries" -type f -exec chmod 644 {} +
 
 	# Link log files
-	mkdir -p "${pkgdir}/var/log/"
-	install -dm2755 "${_server_root}/logs"
-	ln -s "/srv/${_fabric_name}/logs" "${pkgdir}/var/log/${_fabric_name}"
+	install -dm755 "${pkgdir}/var/log"
+  install -dm2755 "${pkgdir}${_server_root}/logs"
+  ln -s "/srv/${_fabric_name}/logs" "${pkgdir}/var/log/${_fabric_name}"
 
 	# Give the group write permissions and set user or group ID on execution
-	chmod g+ws "${_server_root}"
+	chmod g+ws "${pkgdir}${_server_root}"
 }

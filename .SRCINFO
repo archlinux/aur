@@ -1,11 +1,11 @@
 pkgbase = fabric-server
-	pkgdesc = Minecraft Fabricma server unit files, script and jar
+	pkgdesc = A Fabric (a modular, lightweight mod loader) enabled Minecraft server
 	pkgver = 1.21.10_1.1.0_0.17.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fabricmc.net
 	install = fabric-server.install
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	depends = java-runtime-headless>=21
 	depends = tmux
 	depends = sudo
