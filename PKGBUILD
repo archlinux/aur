@@ -3,8 +3,8 @@
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 
 pkgname=gvm-tools
-pkgver=25.4.1
-pkgrel=2
+pkgver=25.4.2
+pkgrel=1
 pkgdesc='greenbone-vulnerability-manager tools'
 arch=('any')
 url="https://github.com/greenbone/gvm-tools"
@@ -14,7 +14,7 @@ makedepends=(python-build python-installer python-wheel python-poetry-core)
 groups=('greenbone-vulnerability-manager')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/greenbone/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
         "https://github.com/greenbone/gvm-tools/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha512sums=('da7ae706926a61ba3ba1be54c10614124ba7a5625bc57a05872e368a8d4521928c8e22e106852f173f0008c0cc859f2aa6c7357cec7cad353df3f0af2a8bfe3e'
+sha512sums=('eca175611c485bd052478737bd875a7a5bf96a0fc3778bac524040dcb9a1f752696050d6455e27dacb279ae255acc649669eefdde3ea61ad02eeee5b64212075'
             'SKIP')
 validpgpkeys=('8AE4BE429B60A59B311C2E739823FAA60ED1E580') # Greenbone Community Feed integrity key
 
