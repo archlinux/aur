@@ -1,0 +1,4 @@
+[etesync-dav]
+source = "github"
+github = "etesync/etesync-dav"
+use_latest_release = true
