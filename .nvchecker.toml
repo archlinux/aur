@@ -1,0 +1,4 @@
+[musoq]
+source = "github"
+github = "Puchaczov/Musoq.CLI"
+use_latest_release = true
