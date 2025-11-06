@@ -1,84 +1,96 @@
 -------------------------------------------------------
  Changelog    : ssl-mgr
- Tags         : 5.7.1 ➙ HEAD
-              : 2025-03-11 ➙ 2025-09-08
+ Tags         : 6.0.0 ➙ 6.4.0
+              : 2025-07-08 ➙ 2025-11-06
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2025-09-08   : HEAD
-                It is possible that production certs can occasionally get out of sync.
+ 2025-11-06   : 6.4.0
+              - Bug fix whereby state machine can lose track of changes
+ 2025-09-08   ⋯
+              - update Docs/Changelog.rst Docs/ssl-mgr.pdf
+              - It is possible that production certs can occasionally get out of sync.
                 Not sure how this can happen under normal circumstances. One possible
                 scenario is server reboot while production certs are being updated.
+            
                 When sslm-mgr starts, it checks for production certs being
                 out of sync and issues a warning if they are.
+            
                 In previous version, it logged recommended commands to remediate.
                 This change automates that and removes the need for manual
                 intervention.
+            
                 In current version, if production certs are out of sync, this is logged
                 and then they are automatically synced and servers restarted.
 
- 2025-07-10   : 6.3.0, origin/master
-                update Docs/Changelog.rst Docs/ssl-mgr.pdf
+ 2025-07-10   : 6.3.0
+              - update Docs/Changelog.rst Docs/ssl-mgr.pdf
 
  2025-07-10   : 6.2.0
-                Make sure all changes to certs/ are properly marked so that production is
-                updated for any change.
+              - Make sure all changes to certs/ are properly marked so that production is updated for any change.
                 Fix buglet with min_roll_mins option.
-                Update readme
-                Update to README
-                update Docs/Changelog.rst Docs/ssl-mgr.pdf
+              - Update readme
+              - Update to README
+              - update Docs/Changelog.rst Docs/ssl-mgr.pdf
 
  2025-07-10   : 6.1.0
-                *Version 6.1 :*
+              - *Version 6.1 :*
+            
                 * New integrity check.
-                  On each run *sslm-mgr* validates that the production directory is up to
-                  date
-                  and consistent with the current suite of certificates, keys and TLSA
-                  files.
-                  If not, it explains what the problem is and suggests possible ways to
-                  proceed.
+            
+                  On each run *sslm-mgr* validates that the production directory is up to date
+                  and consistent with the current suite of certificates, keys and TLSA files.
+            
+                  If not, it explains what the problem is and suggests possible ways to proceed.
+            
                   Note that the first run after updating to *6.1* it will
                   automatically re-sync production directory if necessary. No action is
                   required by you.
+            
                 * Keep certs and production certs fully synced.
+            
                   Includes removing *next* directory from production after the *roll*
-                  has happened and *next* is no longer needed. This change allows us to
-                  check
+                  has happened and *next* is no longer needed. This change allows us to check
                   that production is correctly synchronized. Earlier versions did not
                   remove any files from production, needed or not.
+            
                 * New dev option *--force-server-restarts*.
+            
                 * Add ability to specif the top level directory (where configs and outputs
                   are read from / saved to) via environment variable *SSL_MGR_TOPDIR*.
+            
                 * External programs are run using a local copy of *run_prog()* from
                   the *pyconcurrent* module.
                 You can also install *pyconcurrent* which will ensure the latest
                   version is always used.
- 2025-07-08     update Docs/Changelog.rst Docs/ssl-mgr.pdf
+ 2025-07-08   ⋯
+              - update Docs/Changelog.rst Docs/ssl-mgr.pdf
 
  2025-07-08   : 6.0.0
-                New **major version 6.0* released. Includes:
+              - New **major version 6.0* released. Includes:
+            
                     * PEP-8, PEP-257 and PEP-484 style and type annotations.
                     * Major re-write and tidy ups.
                     * Split up various modules (e.g. certs -> 5 separate crypto modules.)
                     * Ensure config and command line options are 100% backward compatible.
                     * Improve 2 config values:
-                      Background: Local CAs have self-signed a root CA certificate which is
-                      then used
-                      to sign an intermediate CA cert.  The intermediate CA is in turn used
-                      to sign
+            
+                      Background: Local CAs have self-signed a root CA certificate which is then used
+                      to sign an intermediate CA cert.  The intermediate CA is in turn used to sign
                       application certificates.
+            
                       * ca-info.conf: Intermediate local CA entries.
+            
                         * ca_type = "local" is preferred to "self" (NB both work).
                           "self" should still be used for self-signed root CAs where it
                           makes more sense.
+            
                       * CA service config file for self-signed root certificate:
-                        *  "signing_ca" = "self" is now preferred to an empty string (NB
-                        Both work).
-                      * These 2 changes are optional but preferred. No other config file
-                      changes.
+            
+                        *  "signing_ca" = "self" is now preferred to an empty string (NB Both work).
+            
+                      * These 2 changes are optional but preferred. No other config file changes.
+            
                     * Simplify logging code.
- 2025-03-11     update Docs/Changelog.rst Docs/ssl-mgr.pdf
-
- 2025-03-11   : 5.7.1
-                After latex update we needed to fix building latex pdf to avoid error
- 2025-02-28     update Docs/Changelog.rst Docs/ssl-mgr.pdf
+ 2025-03-11   ⋯
+              - update Docs/Changelog.rst Docs/ssl-mgr.pdf

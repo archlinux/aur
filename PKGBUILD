@@ -12,7 +12,7 @@ pkgname='ssl-mgr'
 pkgdesc='Manage (re)new certificates and handle DANE TLSA key rollover'
 _gitname='ssl-mgr'
 
-pkgver=6.3.0
+pkgver=6.4.0
 pkgrel=1
 url="https://github.com/gene-git/ssl-mgr"
 
