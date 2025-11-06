@@ -1,0 +1,14 @@
+pkgbase = cyan-skillfish-governor-tt
+	pkgdesc = GPU governor for the AMD Cyan Skillfish APU
+	pkgver = 0.1.4.thermal_throttling
+	pkgrel = 1
+	url = https://github.com/filippor/cyan-skillfish-governor-tt
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = libdrm
+	backup = etc/cyan-skillfish-governor-tt/config.toml
+	source = https://github.com/filippor/cyan-skillfish-governor/archive/refs/tags/v0.1.4.thermal_throttling.tar.gz
+	b2sums = da1a4b7898830cf419fcc5e394599f8f13b4331b57813b06b670463846e6ec21e6de62bfded5ec0a6ec0b464662ee7bbf0bd46dc91c4cb15d27abb3207fd2d85
+
+pkgname = cyan-skillfish-governor-tt
