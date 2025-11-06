@@ -1,14 +1,14 @@
 # Maintainer: Daniël Nazarkin <aur.danicatgames@pm.me>
 
 pkgname=darklua-git
-pkgver=v0.17.2
+pkgver=v0.17.2.r0.g3f121eb
 pkgrel=1
 pkgdesc='Transform Lua 5.1 and Roblox Luau code using configurable rules.'
 arch=('x86_64')
 url='https://github.com/seaofvoices/darklua'
 license=('MIT')
 depends=('gcc-libs' 'glibc')
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git")
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "darklua"
-	git describe --tags | sed 's/-/./g'
+	git describe --long --abbrev=7 --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
