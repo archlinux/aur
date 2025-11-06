@@ -1,25 +1,16 @@
 pkgbase = go-bin
-	pkgdesc = Compiler and tools for the Go programming language from Google
-	pkgver = 1.11
-	pkgrel = 3
-	url = http://golang.org/
+	pkgdesc = Go programming language (binary release)
+	pkgver = 1.25.4
+	pkgrel = 1
+	url = https://go.dev/
 	arch = x86_64
-	arch = i686
-	license = custom
-	depends = bash
-	depends = perl
-	optdepends = java-environment: for running testsuite
+	arch = aarch64
+	arch = armv7h
+	license = BSD
+	makedepends = curl
+	depends = glibc
 	provides = go
+	conflicts = go
 	options = !strip
-	options = staticlibs
-	source_x86_64 = https://storage.googleapis.com/golang/go1.11.linux-amd64.tar.gz
-	source_x86_64 = etcgobin
-	sha256sums_x86_64 = b3fcf280ff86558e0559e185b601c9eade0fd24c900b4c63cd14d1d38613e499
-	sha256sums_x86_64 = 4eaad54a24d35bf72234011eb141e6a0b712b9703587747792f9aeed1c1faf2b
-	source_i686 = https://storage.googleapis.com/golang/go1.11.linux-386.tar.gz
-	source_i686 = etcgobin
-	sha256sums_i686 = 1a91932b65b4af2f84ef2dce10d790e6a0d3d22c9ea1bdf3d8c4d9279dfa680e
-	sha256sums_i686 = 4eaad54a24d35bf72234011eb141e6a0b712b9703587747792f9aeed1c1faf2b
 
 pkgname = go-bin
-

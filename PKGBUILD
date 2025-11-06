@@ -1,24 +1,65 @@
+# Maintainer: Kevin Diu <kevindiujp@gmail.com>
 pkgname=go-bin
-pkgver=1.11
-pkgrel=3
+pkgver=1.25.4
+pkgrel=1
+pkgdesc='Go programming language (binary release)'
+arch=('x86_64' 'aarch64' 'armv7h')
+url='https://go.dev/'
+license=('BSD')
+depends=('glibc')
+makedepends=('curl')
 provides=('go')
-pkgdesc='Compiler and tools for the Go programming language from Google'
-arch=('x86_64' 'i686')
-url='http://golang.org/'
-license=('custom')
-depends=('bash' 'perl')
-optdepends=('java-environment: for running testsuite')
-options=('!strip' 'staticlibs')
-sha256sums_x86_64=('b3fcf280ff86558e0559e185b601c9eade0fd24c900b4c63cd14d1d38613e499'
-                 '4eaad54a24d35bf72234011eb141e6a0b712b9703587747792f9aeed1c1faf2b')
-source_x86_64=("https://storage.googleapis.com/golang/go${pkgver}.linux-amd64.tar.gz" etcgobin)
-sha256sums_i686=('1a91932b65b4af2f84ef2dce10d790e6a0d3d22c9ea1bdf3d8c4d9279dfa680e'
-               '4eaad54a24d35bf72234011eb141e6a0b712b9703587747792f9aeed1c1faf2b')
-source_i686=("https://storage.googleapis.com/golang/go${pkgver}.linux-386.tar.gz" etcgobin)
+conflicts=('go')
+options=('!strip')
+source=()
+sha256sums=()
+
+pkgver() {
+  local version
+  version="$(curl -fsSL 'https://go.dev/VERSION?m=text' | head -n1 | tr -d '\r\n')"
+  if [[ -z ${version} ]]; then
+    printf 'Failed to detect Go version from go.dev\n' >&2
+    return 1
+  fi
+  printf '%s\n' "${version#go}"
+}
+
+build() {
+  cd "${srcdir}"
+
+  local goos='linux'
+  local goarch
+  case "${CARCH}" in
+    x86_64) goarch='amd64' ;;
+    aarch64) goarch='arm64' ;;
+    armv7h) goarch='armv6l' ;; # upstream distributes ARMv6 binary compatible with ARMv7
+    *) printf 'Unsupported architecture: %s\n' "${CARCH}" >&2; return 1 ;;
+  esac
+
+  local version="go${pkgver}"
+  local archive="${version}.${goos}-${goarch}.tar.gz"
+  local url="https://go.dev/dl/${archive}"
+
+  if [[ ! -f ${archive} ]]; then
+    curl -fsSL "${url}" -o "${archive}.part"
+    mv "${archive}.part" "${archive}"
+  fi
+
+  rm -rf go
+  tar -xf "${archive}"
+}
 
 package() {
-  install -d "$pkgdir"/opt
-  tar -C "$pkgdir"/opt -xzf go${pkgver}.linux-*.tar.gz
-  install -Dm755 "$srcdir"/etcgobin "$pkgdir"/etc/profile.d/go-bin.sh
-  install -Dm644 "$srcdir"/go/LICENSE "$pkgdir"/usr/share/licenses/go-bin/LICENSE
+  cd "${srcdir}"
+
+  install -dm755 "${pkgdir}/usr/lib"
+  cp -a go "${pkgdir}/usr/lib/go"
+
+  install -dm755 "${pkgdir}/usr/bin"
+  for tool in go gofmt; do
+    ln -s "../lib/go/bin/${tool}" "${pkgdir}/usr/bin/${tool}"
+  done
+
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 go/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
