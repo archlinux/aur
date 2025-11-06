@@ -1,7 +1,7 @@
 # Maintainer: dmitrysvd
 
 pkgname=yandex-music
-pkgver=5.74.1
+pkgver=5.75.2
 pkgrel=1
 pkgdesc="Official Yandex Music App for Linux"
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
 )
 options=('!strip')
 source=("https://music-desktop-application.s3.yandex.net/stable/Yandex_Music_amd64_${pkgver}.deb")
-sha256sums=('1017158e62abfa5a78ba60d7ae4ebb14eb9e03831709a196a43cc055a90dfb32')
+sha256sums=('c3b1e57d17c62d4d054b78263ee2bce634ac3ee989eb819362e216fc768b0658')
 
 package() {
     tar -xf data.tar.xz --directory "${pkgdir}"
