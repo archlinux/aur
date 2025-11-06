@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -e
+
+if command -v podman &>/dev/null; then
+  CONTAINER_CMD="podman"
+elif command -v docker &>/dev/null; then
+  CONTAINER_CMD="docker"
+else
+  echo "Error: neither podman nor docker found." >&2
+  exit 1
+fi
+
+IMAGE="ghcr.io/0xdials/snmpmini:latest"
+PORT_MAP="-p 161:161/udp"
+
+# Build args array
+args=(run --rm $PORT_MAP "$IMAGE")
+
+# If arguments provided, append them safely
+if [ $# -gt 0 ]; then
+  args+=("$@")
+fi
+
+# Execute docker/podman with all args
+exec "$CONTAINER_CMD" "${args[@]}"

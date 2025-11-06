@@ -1,0 +1,14 @@
+pkgbase = snmpmini
+	pkgdesc = Minimal containerized SNMP simulator using snmpsim and pysnmp
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/0xdials/snmpmini
+	arch = x86_64
+	license = MIT
+	makedepends = docker
+	depends = docker
+	depends = bash
+	source = https://github.com/0xdials/snmpmini/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = snmpmini

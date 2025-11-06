@@ -1,0 +1,16 @@
+# /usr/lib/systemd/system/snmpmini.service
+# Systemd unit to run snmpmini container as a background service
+
+[Unit]
+Description=snmpmini SNMP Simulator Container
+After=network.target docker.service
+Requires=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/snmpmini
+RestartSec=5s
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target

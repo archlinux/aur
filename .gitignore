@@ -1,0 +1,11 @@
+# Ignore build artifacts and packages
+pkg/
+*.pkg.tar.zst
+*.tar.gz
+*.tar.xz
+
+# Ignore editor backups and temporary files
+*~
+*.swp
+.DS_Store
+
