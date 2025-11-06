@@ -1,6 +1,6 @@
 pkgbase = mkdocstrings-crystal
 	pkgdesc = Crystal language doc generator for mkdocstrings
-	pkgver = 0.3.7
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://mkdocstrings.github.io/crystal
 	arch = any
@@ -11,13 +11,13 @@ pkgbase = mkdocstrings-crystal
 	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/m/mkdocstrings_crystal/mkdocstrings_crystal-0.3.7.tar.gz
-	md5sums = 9af0b7588f05e220f82b0b37ff1942ad
+	source = https://files.pythonhosted.org/packages/source/m/mkdocstrings_crystal/mkdocstrings_crystal-0.3.8.tar.gz
+	md5sums = 5757e27474f863ef6a9cf69bb7d06e67
 
 pkgname = mkdocstrings-crystal
-	depends = python>=3.8
+	depends = python>=3.9
 	depends = python-jinja>=2.11.2
 	depends = python-markdown-callouts>=0.1.0
 	depends = python-markupsafe>=1.1.1
 	depends = mkdocs-autorefs>=0.3.1
-	depends = mkdocstrings>=0.19.0
+	depends = mkdocstrings>=0.30.0
