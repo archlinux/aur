@@ -1,7 +1,7 @@
 # Maintainer: Tim Kicker <tim@kicker.dev>
 pkgname=podliner-bin
-pkgver=1.0.22
-pkgrel=11
+pkgver=1.0.23
+pkgrel=1
 pkgdesc="Podliner: TUI podcast player (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/timkicker/podliner"
