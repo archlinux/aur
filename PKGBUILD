@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qtscrcpy-bin
 _pkgname=QtScrcpy
-pkgver=3.3.1
+pkgver=3.3.3
 pkgrel=1
 pkgdesc="Android real-time display control software.(Prebuilt version)"
 arch=('x86_64')
@@ -15,36 +15,46 @@ options=(
     'staticlibs'
 )
 depends=(
-    'qt5-multimedia'
-    'qt5-x11extras'
-)
-makedepends=(
-    'gendesk'
+    'libxcomposite'
+    'qt5-wayland'
+    'scrcpy'
+    'android-sdk-platform-tools'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-ubuntu-22.04-gcc_64.zip"
-    "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/barry-ran/QtScrcpy/v${pkgver}/backup/logo.png"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-ubuntu-20.04-gcc_64.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('db59a57b862aec035eb6cd6d6e587fe81f7f16b4600f4df48ff8a34566701ba8'
-            'a96a81cee07375eaed07d927e67dbeb1f2d3c9e0c3791d5d14156bd03bf73371'
-            'db1db4c15024a45337e7e7190046e6414184603321be058797422a54ed5fc85d')
+sha256sums=('67e5d1ed99abef8595ceba83608cc551834e6914a1f187ad15a0e09d13bea611'
+            'b3e9c2ea2115387e381b4f66d286e59c0ad4a16b94eed5313b03ce05fadc8863')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    gendesk -q -f -n \
-        --pkgname="${pkgname%-bin}" \
-        --pkgdesc="${pkgdesc}" \
-        --categories="Utility" \
-        --name="${_pkgname}" \
-        --exec="${pkgname%-bin}"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
+    if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
+    fi
+    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    sed -i -e "
+        s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
+        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+    " "${srcdir}/squashfs-root/usr/share/applications/${_pkgname}.desktop"
+    ln -sf "/opt/android-sdk/platform-tools/adb" "${srcdir}/squashfs-root/usr/bin/adb"
+    ln -sf "/opt/android-sdk/platform-tools/adb" "${srcdir}/squashfs-root/usr/lib/${pkgname%-bin}/adb"
+    ln -sf "/usr/share/scrcpy/scrcpy-server" "${srcdir}/squashfs-root/usr/lib/${pkgname%-bin}/scrcpy-server"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 "${srcdir}/output/x64/Release/"{adb,"${_pkgname}",scrcpy-server,sndcpy.sh} -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/output/x64/Release/sndcpy.apk" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
+    done
+    rm -rf "${srcdir}/squashfs-root/usr/share/"{applications,icons,pixmaps}
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/usr/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
 }
