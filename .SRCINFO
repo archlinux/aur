@@ -1,7 +1,7 @@
 pkgbase = rsp_tcp-git
 	pkgdesc = a rtl_tcp compatible IQ server for the RSP range of SDRPlay SDR
 	pkgver = v0.1.beta.r16.g61b8c91
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SDRplay/RSPTCPServer
 	arch = i686
 	arch = x86_64
