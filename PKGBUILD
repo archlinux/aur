@@ -1,7 +1,8 @@
-# Maintainer: Craig Jackson <tapocol@protonmail.com>
+# Maintainer: dplusplus <echo YXZiZy9hdC91bmZhaXJ0b2lsZXQoZG90XXh5ego= | base64 -d>
+# Contributor: Craig Jackson <tapocol@protonmail.com>
 
 pkgname=innoextract-git
-pkgver=r703.c9dcf5f
+pkgver=r922.6e9e34e
 pkgrel=1
 pkgdesc="A tool to extract installers created by Inno Setup"
 url='https://constexpr.org/innoextract/'
@@ -11,13 +12,24 @@ depends=('boost-libs' 'xz')
 makedepends=('boost' 'cmake' 'git')
 provides=('innoextract')
 conflicts=('innoextract')
-source=("$pkgname::git+https://github.com/dscharrer/innoextract.git")
-sha256sums=('SKIP')
+source=(
+    "$pkgname::git+https://github.com/dscharrer/innoextract.git"
+    "boost1.89.0.patch"
+)
+sha256sums=(
+    'SKIP'
+    'SKIP'
+)
 
 
 pkgver() {
   cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    # Fix bulid failure due to Boost 1.89.0
+    patch --strip=1 --directory "${pkgname}" < boost1.89.0.patch
 }
 
 build() {

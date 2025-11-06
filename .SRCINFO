@@ -1,6 +1,6 @@
 pkgbase = innoextract-git
 	pkgdesc = A tool to extract installers created by Inno Setup
-	pkgver = r703.c9dcf5f
+	pkgver = r922.6e9e34e
 	pkgrel = 1
 	url = https://constexpr.org/innoextract/
 	arch = x86_64
@@ -13,7 +13,8 @@ pkgbase = innoextract-git
 	provides = innoextract
 	conflicts = innoextract
 	source = innoextract-git::git+https://github.com/dscharrer/innoextract.git
+	source = boost1.89.0.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = innoextract-git
-

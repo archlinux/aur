@@ -1,0 +1,11 @@
+diff -u a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -177,7 +177,6 @@ find_package(Boost REQUIRED COMPONENTS
+ 	iostreams
+ 	filesystem
+ 	date_time
+-	system
+ 	program_options
+ )
+ list(APPEND LIBRARIES ${Boost_LIBRARIES})
