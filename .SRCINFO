@@ -10,6 +10,7 @@ pkgbase = dolphin-compress-media
 	depends = kdialog
 	depends = ffmpeg
 	depends = imagemagick
+	provides = kf6-servicemenus-compress-media
 	source = git+https://github.com/Damglador/dolphin-compress-media.git#tag=1.0.0
 	sha256sums = c8c46ca8ae9aa9b87a362f271a4745256fe58cf6fac8cb437fa86a41616e33fe
 
