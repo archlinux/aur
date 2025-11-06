@@ -1,7 +1,7 @@
 pkgbase = qmicroz
 	pkgdesc = C++/Qt wrapper over miniz. Zip/Unzip with Qt.
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/artemvlas/qmicroz
 	arch = x86_64
 	license = MIT

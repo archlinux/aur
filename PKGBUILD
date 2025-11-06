@@ -1,7 +1,7 @@
 # Maintainer: Artem Vlasenko <artemvlas at proton dot me>
 pkgname=qmicroz
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="C++/Qt wrapper over miniz. Zip/Unzip with Qt."
 arch=('x86_64')
 url="https://github.com/artemvlas/qmicroz"
@@ -23,6 +23,7 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 src/qmicroz.h "${pkgdir}/usr/include/qmicroz.h"
 	cd build
 	make install DESTDIR="${pkgdir}"
 }
