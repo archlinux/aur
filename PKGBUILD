@@ -16,7 +16,7 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  CC=/usr/bin/gcc-14 CXX=/usr/bin/g++-14 cmake -DHMAT_GIT_VERSION=OFF -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_UNITY_BUILD=ON .
+  CC=/usr/bin/gcc-14 CXX=/usr/bin/g++-14 cmake -DHMAT_GIT_VERSION=OFF -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_UNITY_BUILD=ON -DBLA_VENDOR=Generic .
   make
 }
 
