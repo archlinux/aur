@@ -18,13 +18,13 @@ depends=(
   'python-proton-vpn-network-manager'
   'python-proton-vpn-local-agent'
 )
-source=("https://repo.protonvpn.com/fedora-42-unstable/proton-vpn-cli/${pkgname}-${pkgver}-1.fc42.noarch.rpm")
+source=("https://repo.protonvpn.com/fedora-42-unstable/proton-vpn-cli/proton-vpn-cli-${pkgver}-1.fc42.noarch.rpm")
 sha256sums=('3bcaa8f55a577e204643c6ffa9566fcb08fd79cb37325d406ea234fd5a96ac9d')
 
 prepare() {
   mkdir -p "$srcdir/extracted-files"
   echo "Extracting ProtonVPN CLI..."
-  bsdtar -xf "$srcdir/${pkgname}-${pkgver}-1.fc42.noarch.rpm" -C "$srcdir/extracted-files"
+  bsdtar -xf "$srcdir/proton-vpn-cli-${pkgver}-1.fc42.noarch.rpm" -C "$srcdir/extracted-files"
 }
 
 package() {
