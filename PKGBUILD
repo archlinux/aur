@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libwebp2-git
-pkgver=r494.g33b0f21
+pkgver=r500.g2ab2340
 pkgrel=1
 pkgdesc="Successor of the WebP image format"
 arch=('i686' 'x86_64')
 url="https://chromium.googlesource.com/codecs/libwebp2/"
 license=('Apache-2.0')
-depends=('gcc-libs')
+depends=('gcc-libs' 'glibc' 'libbacktrace')
 makedepends=('git' 'cmake')
 provides=("libwebp2=$pkgver" 'libwebp2.so')
 conflicts=('libwebp2')

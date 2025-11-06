@@ -1,6 +1,6 @@
 pkgbase = libwebp2-git
 	pkgdesc = Successor of the WebP image format
-	pkgver = r494.g33b0f21
+	pkgver = r500.g2ab2340
 	pkgrel = 1
 	url = https://chromium.googlesource.com/codecs/libwebp2/
 	arch = i686
@@ -9,7 +9,9 @@ pkgbase = libwebp2-git
 	makedepends = git
 	makedepends = cmake
 	depends = gcc-libs
-	provides = libwebp2=r494.g33b0f21
+	depends = glibc
+	depends = libbacktrace
+	provides = libwebp2=r500.g2ab2340
 	provides = libwebp2.so
 	conflicts = libwebp2
 	source = git+https://chromium.googlesource.com/codecs/libwebp2
