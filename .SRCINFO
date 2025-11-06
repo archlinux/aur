@@ -1,6 +1,6 @@
 pkgbase = goweb
 	pkgdesc = Multi domain/host web server written in Golang
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://github.com/elgs/goweb
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = goweb
 	license = MIT
 	makedepends = go
 	makedepends = git
-	source = goweb-0.0.7.tar.gz::https://github.com/elgs/goweb/archive/refs/tags/v0.0.7.tar.gz
+	source = goweb-0.0.8.tar.gz::https://github.com/elgs/goweb/archive/refs/tags/v0.0.8.tar.gz
 	sha256sums = SKIP
 
 pkgname = goweb
