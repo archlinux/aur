@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-edf">
+    <comment>European Data Format</comment>
+    <glob pattern="*.edf"/>
+  </mime-type>
+  <mime-type type="application/x-bdf">
+    <comment>BioSemi Data Format</comment>
+    <glob pattern="*.bdf"/>
+  </mime-type>
+  <mime-type type="application/x-gdf">
+    <comment>General Data Format</comment>
+    <glob pattern="*.gdf"/>
+  </mime-type>
+  <mime-type type="application/x-fif">
+    <comment>Functional Image File Format</comment>
+    <glob pattern="*.fif"/>
+    <glob pattern="*.fif.gz"/>
+  </mime-type>
+  <mime-type type="application/x-mat">
+    <comment>MATLAB File</comment>
+    <glob pattern="*.mat"/>
+  </mime-type>
+  <mime-type type="application/x-set">
+    <comment>EEGLAB Dataset</comment>
+    <glob pattern="*.set"/>
+  </mime-type>
+  <mime-type type="application/x-xdf">
+    <comment>Extensible Data Format</comment>
+    <glob pattern="*.xdf"/>
+    <glob pattern="*.xdf.gz"/>
+    <glob pattern="*.xdfz"/>
+  </mime-type>
+</mime-info>
