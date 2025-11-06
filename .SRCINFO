@@ -1,6 +1,6 @@
 pkgbase = monocle
 	pkgdesc = See through all BGP data with a monocle
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/bgpkit/monocle
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = monocle
 	depends = openssl
 	options = !debug
 	options = !lto
-	source = git+https://github.com/bgpkit/monocle#tag=v0.9.0
-	sha512sums = 341d1741613a5286b26016a78ee840d4010583cd252dc4f2a6ff0e865ee7da904579b6406265ec5c893acf5fbc78cd7df44b7951ff26c20c46e0265458a78893
+	source = git+https://github.com/bgpkit/monocle#tag=v0.9.1
+	sha512sums = 0606bcba9a29b30ae0f17dfcfa62391ccfbf12745fbb26dc47c89344c3fa0f9f9dbaa600348a719354bd984f6f1feb870edee9f3c05c7a87d73aab17c9d4aadd
 
 pkgname = monocle
