@@ -22,5 +22,5 @@ package() {
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p "$_npmdir"
   cd "$_npmdir"
-  npm install --user root -g --prefix "$pkgdir/usr" $_npmname@$pkgver
+  npm install -g --prefix "$pkgdir/usr" $_npmname@$pkgver
 }
