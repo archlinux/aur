@@ -2,7 +2,7 @@
 # Contributor: K4YT3X <aur@k4yt3x.com>
 pkgname=etesync-dav-bin
 pkgver=0.31.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A CalDAV and CardDAV adapter for EteSync'
 arch=('x86_64')
 url='https://github.com/etesync/etesync-dav'
