@@ -14,8 +14,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/jiji-wp/daph/archive/
 sha256sums=('SKIP')  # Will be updated automatically by the workflow
 
 package() {
-    cd "$srcdir"
-    
-    # Install the binary
-    install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+    cd "$srcdir/$pkgname"
+    cargo build --release
+    install -Dm755 target/release/daph "$pkgdir/usr/bin/$pkgname"
 }
