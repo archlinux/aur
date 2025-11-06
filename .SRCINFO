@@ -1,6 +1,6 @@
 pkgbase = python-regions
 	pkgdesc = Astropy affilated package for region handling
-	pkgver = 0.10
+	pkgver = 0.11
 	pkgrel = 1
 	url = http://astropy-regions.readthedocs.io
 	arch = i686
@@ -9,26 +9,25 @@ pkgbase = python-regions
 	checkdepends = python-pytest-astropy-header
 	checkdepends = python-pytest-doctestplus
 	checkdepends = python-pytest-remotedata
-	makedepends = python-setuptools-scm>=6.2
-	makedepends = cython
-	makedepends = python-wheel
+	makedepends = python-setuptools-scm>=8.0
+	makedepends = cython>=3.1.2
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-numpy
+	makedepends = python-numpy>=2.0.0
 	makedepends = python-extension-helpers
 	makedepends = python-sphinx-astropy
 	makedepends = python-matplotlib
 	makedepends = python-astropy
 	makedepends = python-shapely
-	source = https://files.pythonhosted.org/packages/source/r/regions/regions-0.10.tar.gz
-	md5sums = caf3a530e451836bffa0cb61c6a6b1c3
+	source = https://files.pythonhosted.org/packages/source/r/regions/regions-0.11.tar.gz
+	md5sums = 5102525559a622a030ab88118d38a11b
 
 pkgname = python-regions
-	depends = python>=3.10
-	depends = python-numpy>=1.23
-	depends = python-astropy>=5.1
-	optdepends = python-matplotlib>=3.5: Plotting support
-	optdepends = python-shapely: Managing geometric objects
+	depends = python>=3.11
+	depends = python-numpy>=1.25
+	depends = python-astropy>=6.0
+	optdepends = python-matplotlib>=3.8: Plotting support
+	optdepends = python-shapely>=2.0.0: Managing geometric objects
 	optdepends = python-regions-doc: Documentation for AstroPy Regions
 
 pkgname = python-regions-doc
