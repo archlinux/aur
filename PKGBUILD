@@ -1,7 +1,7 @@
 # Maintainer: Kemel Zaidan <kemelzaidan at gmail dot com>
 pkgname=tatuin
 pkgver=0.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Task Aggregator TUI for Obsidian, Todoist, Gitlab TODO and Github Issues"
 arch=("i686" "x86_64" "aarch64")
 license=("MIT")
@@ -21,7 +21,6 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
 
-  # Corrige caminho do OpenSSL para crates que não detectam via pkg-config
   export OPENSSL_NO_VENDOR=1
   export OPENSSL_DIR="/usr"
   export OPENSSL_LIB_DIR="/usr/lib"
@@ -30,7 +29,6 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib/pkgconfig"
   export LIBRARY_PATH="/usr/lib"
 
-  # Força o link explícito das libs (workaround para ld não encontrar)
   export RUSTFLAGS="-C link-args=-lssl -C link-args=-lcrypto"
 
   cd "${pkgname}-${pkgver}"
