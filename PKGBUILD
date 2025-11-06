@@ -24,7 +24,7 @@ package() {
   fi
   mkdir -p "${srcdir}/podliner-build"
   tar -xzf "$tarball" -C "${srcdir}/podliner-build"
-  install -m755 "${srcdir}/podliner-build/podliner" "${pkgdir}/usr/bin/podliner"
+  install -m755 "${srcdir}/podliner-build/podliner/podliner" "${pkgdir}/usr/bin/podliner"
 }
 
 
