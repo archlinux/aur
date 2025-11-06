@@ -6,8 +6,6 @@ pkgbase = clusterctl-1.10
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = go
-	provides = clusterctl
-	conflicts = clusterctl
 	source = cluster-api-1.10.4.tar.gz::https://github.com/kubernetes-sigs/cluster-api/archive/refs/tags/v1.10.4.tar.gz
 	sha256sums = b50e70b68ed5685661296cb877feb9978bb377d3ca1dce4e72541f57a9567aaa
 

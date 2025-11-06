@@ -10,8 +10,6 @@ arch=('x86_64')
 url="https://cluster-api.sigs.k8s.io/"
 license=('Apache-2.0')
 makedepends=('go')
-provides=('clusterctl')
-conflicts=('clusterctl')
 source=("${_pkgbase}-${pkgver}.tar.gz::https://github.com/kubernetes-sigs/${_pkgbase}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('b50e70b68ed5685661296cb877feb9978bb377d3ca1dce4e72541f57a9567aaa')
 
@@ -48,17 +46,23 @@ build() {
 
 package() {
   cd "$_pkgbase-$pkgver"
-  install -Dm755 "build/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm755 "build/$_pkgname" "$pkgdir/usr/bin/$pkgname"
 
  # bash completion
  install -dm 755 "$pkgdir/usr/share/bash-completion/completions"
- "build/$_pkgname" completion bash > "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+ "build/$_pkgname" completion bash | sed "s/$_pkgname/$pkgname/g" > "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+
+  local comp_pkgname=${pkgname//[.-]/_}
 
   # fish completion
   install -dm 755 "$pkgdir/usr/share/fish/completions"
-  "build/$_pkgname" completion fish > "$pkgdir/usr/share/fish/completions/$_pkgname.fish"
+  "build/$_pkgname" completion fish \
+    | sed "s/$_pkgname/$pkgname/g" \
+    | sed "s/__${pkgname}_comp_results/__${comp_pkgname}_comp_results/g" \
+    | sed "s/__${pkgname}_perform_completion_once_result/__${comp_pkgname}_perform_completion_once_result/g" \
+    > "$pkgdir/usr/share/fish/completions/$pkgname.fish"
 
   # zsh completion
   install -dm 755 "$pkgdir/usr/share/zsh/site-functions"
-  "build/$_pkgname" completion zsh > "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
+  "build/$_pkgname" completion zsh | sed "s/$_pkgname/$pkgname/g" > "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
