@@ -3,7 +3,7 @@
 pkgname=proton-vpn-cli
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="ProtonVPN CLI (currently needs extra-testing enabled)"
+pkgdesc="ProtonVPN CLI"
 arch=('any')
 license=('GPL3')
 url="https://protonvpn.com"
@@ -12,10 +12,10 @@ depends=(
   'python-click'
   'python-dbus-fast'
   'python-packaging'
-  'python-proton-keyring-linux>=0.1.0'
-  'python-proton-vpn-api-core>=4.12.1'
-  'python-proton-core>=0.7.0'
-  'python-proton-vpn-network-manager>=0.9.0'
+  'python-proton-keyring-linux'
+  'python-proton-vpn-api-core'
+  'python-proton-core'
+  'python-proton-vpn-network-manager'
   'python-proton-vpn-local-agent'
 )
 source=("https://repo.protonvpn.com/fedora-42-unstable/proton-vpn-cli/${pkgname}-${pkgver}-1.fc42.noarch.rpm")
