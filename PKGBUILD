@@ -10,7 +10,7 @@
 
 _pkgname="yosys"
 pkgname="$_pkgname-git"
-pkgver=0.58.r75.g272aa9c
+pkgver=0.58.r155.g691d6b8
 pkgrel=1
 pkgdesc="A framework for RTL synthesis"
 url="https://github.com/YosysHQ/yosys"
@@ -112,7 +112,10 @@ _make() {
     local python_version_combined=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
     export BOOST_PYTHON_LIB="-lpython${python_version} -lboost_python${python_version_combined}"
 
-    _make_config+=(ENABLE_PYOSYS=1)
+    _make_config+=(
+      ENABLE_PYOSYS=1
+      PYOSYS_USE_UV=0
+    )
   else
     _make_config+=(ENABLE_PYOSYS=0)
   fi

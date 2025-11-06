@@ -1,6 +1,6 @@
 pkgbase = yosys-git
 	pkgdesc = A framework for RTL synthesis
-	pkgver = 0.58.r75.g272aa9c
+	pkgver = 0.58.r155.g691d6b8
 	pkgrel = 1
 	url = https://github.com/YosysHQ/yosys
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = yosys-git
 	depends = python-click
 	optdepends = graphviz: Schematics display support
 	optdepends = xdot: Design netlist display support
-	provides = yosys=0.58.r75
+	provides = yosys=0.58.r155
 	conflicts = yosys
 	options = !lto
 	source = yosys::git+https://github.com/YosysHQ/yosys.git
