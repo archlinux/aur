@@ -1,6 +1,6 @@
 pkgbase = qvtfpp-bin
 	pkgdesc = A Qt6 QImageIO plugin to load VTF textures.
-	pkgver = 0.1.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/craftablescience/qvtfpp
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = qvtfpp-bin
 	provides = qvtf
 	conflicts = qvtfpp
 	conflicts = qvtf
-	source = https://github.com/craftablescience/qvtfpp/releases/download/v0.1.0/qvtf++-0.1.0-Linux.rpm
-	sha256sums = 3c258f2001529f98a1d493e2caf807bcf762e48f2c9d9441305ca31001c9a254
+	source = https://github.com/craftablescience/qvtfpp/releases/download/v1.0.0/qvtf++-1.0.0-Linux.rpm
+	sha256sums = 34a6ed7fa58046f7d320d0685f42ce9f3f479f84c08d49b4e1265d981a277416
 
 pkgname = qvtfpp-bin

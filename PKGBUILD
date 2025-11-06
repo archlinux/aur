@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=qvtfpp-bin
-pkgver=0.1.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A Qt6 QImageIO plugin to load VTF textures."
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=("${pkgname::-4}" "${pkgname::-6}")
 conflicts=("${pkgname::-4}" "${pkgname::-6}")
 source=("$url/releases/download/v${pkgver}/qvtf++-${pkgver}-Linux.rpm")
 noextract=()
-sha256sums=('3c258f2001529f98a1d493e2caf807bcf762e48f2c9d9441305ca31001c9a254')
+sha256sums=('34a6ed7fa58046f7d320d0685f42ce9f3f479f84c08d49b4e1265d981a277416')
 validpgpkeys=()
 
 package() {
