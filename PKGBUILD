@@ -1,12 +1,12 @@
 # Maintainer: Mikołaj Ziółkowski <mikolajziolkowski504@gmail.com>
 pkgname=pacman-ostree
-pkgver=r51
+pkgver=r52
 pkgrel=1
 pkgdesc="OSTree integration for Arch Linux (like rpm-ostree)"
 arch=('x86_64')
 url="https://github.com/ImmutableArch/pacman-ostree"
 license=('GPL')
-depends=('pacman' 'ostree' 'rust' 'git' 'arch-install-scripts' )
+depends=('pacman' 'ostree' 'rust' 'git' 'arch-install-scripts' 'bootc-git' )
 makedepends=('git' 'base-devel')
 source=("git+https://github.com/ImmutableArch/pacman-ostree.git")
 sha256sums=('SKIP')

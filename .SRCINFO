@@ -1,6 +1,6 @@
 pkgbase = pacman-ostree
 	pkgdesc = OSTree integration for Arch Linux (like rpm-ostree)
-	pkgver = r51
+	pkgver = r52
 	pkgrel = 1
 	url = https://github.com/ImmutableArch/pacman-ostree
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = pacman-ostree
 	depends = rust
 	depends = git
 	depends = arch-install-scripts
+	depends = bootc-git
 	source = git+https://github.com/ImmutableArch/pacman-ostree.git
 	sha256sums = SKIP
 
