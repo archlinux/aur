@@ -4,7 +4,7 @@
 _pkgauthor=gabrie30
 _pkgname=ghorg
 pkgname=${_pkgname}-bin
-pkgver=1.11.5
+pkgver=1.11.6
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Quickly clone or backup an entire org/users repositories into one directory"
@@ -20,9 +20,9 @@ conflicts=("${_pkgname}")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_Linux_${_barch[0]}.tar.gz")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_Linux_${_barch[1]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_Linux_${_barch[2]}.tar.gz")
-sha256sums_x86_64=('12c8334b4422c828db1585ec7e22a51f560020cae96e6982400ca26224029a78')
-sha256sums_i686=('ab8e5ff45b137ec5520797292d45191846985fccce690e78f30c63c817cf773a')
-sha256sums_aarch64=('e4087cd9ecd3cc50d22ae5f906cdbb05530ea39480c99d39cfaaae8f368109b3')
+sha256sums_x86_64=('400b78570b2fe660fdee1f0ed1321caa215ec2758c0078621f44330508529f4d')
+sha256sums_i686=('e79d993da546d540eaabd380d940667c5398f6b106fe8cc6fc8619b49eb20b32')
+sha256sums_aarch64=('7ff0224c9cd52d18050e8d171193177a68f4da93e71c365ae81b6c6a2730b3cc')
 
 
 package() {
