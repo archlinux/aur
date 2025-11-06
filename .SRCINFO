@@ -1,6 +1,6 @@
 pkgbase = python-gvm
 	pkgdesc = greenbone-vulnerability-manager tools
-	pkgver = 26.7.0
+	pkgver = 26.7.1
 	pkgrel = 2
 	url = https://github.com/greenbone/python-gvm
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = python-gvm
 	depends = python-paramiko
 	depends = python-lxml
 	depends = python-httpx
-	source = python-gvm-26.7.0.tar.gz::https://github.com/greenbone/python-gvm/archive/refs/tags/v26.7.0.tar.gz
-	source = https://github.com/greenbone/python-gvm/releases/download/v26.7.0/python-gvm-26.7.0.tar.gz.asc
+	source = python-gvm-26.7.1.tar.gz::https://github.com/greenbone/python-gvm/archive/refs/tags/v26.7.1.tar.gz
+	source = https://github.com/greenbone/python-gvm/releases/download/v26.7.1/python-gvm-26.7.1.tar.gz.asc
 	validpgpkeys = 8AE4BE429B60A59B311C2E739823FAA60ED1E580
-	sha512sums = 335bc3f2036083b36edfe7f98b1d23f6d377629d4586dc41129c003a626d326017ea54fb69d69b4481c443e40542f5190d3641939237b99831fa91617c2ea663
+	sha512sums = 8b61275c02d212cc239c099950d6b919822a351b198db9a1c55440785fb986ffa49d94a7ad5ff50e180abf559d286b4d3a3dc81e03b86e7bf5f1ca320fc62147
 	sha512sums = SKIP
 
 pkgname = python-gvm
