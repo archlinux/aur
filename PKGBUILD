@@ -3,17 +3,17 @@
 
 pkgname=python-cucumber-tag-expressions
 _name=tag-expressions
-pkgver=6.2.0
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="Provides a tag-expression parser and evaluation logic for cucumber/behave"
 url="https://github.com/cucumber/tag-expressions"
 license=('MIT')
 arch=('any')
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-wheel')
+makedepends=('python-uv-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-wheel')
 # checkdepends=('python-pytest')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('146c2ef1252c160fe77a13b71f374e102d7af674f3f8f63edc71a36cc7ffbc4ba703a2d4c3265e50f158cd66ed9785274d7b4ee60b593bf83145b13732eaf362')
+sha512sums=('519fb8685f7c2d3ee3f973ea7042fa622f4e8260881d91786cf5d3103a88efa8a58ca0f882ad4f82d3cb947b3c913be21d7126677ce0f4ebaac039fe9c04dd15')
 
 build() {
     cd "${_name}-${pkgver}/python"
