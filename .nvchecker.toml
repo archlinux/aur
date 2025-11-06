@@ -1,0 +1,5 @@
+[smoothcsv-bin]
+source = "github"
+github = "kohii/smoothcsv3"
+prefix = "v"
+use_latest_release = true
