@@ -1,10 +1,11 @@
-# Maintainer: OSAMC <https://github.com/osam-cologne/archlinux-proaudio>
+# Maintainer: Frederick Price <fprice@pricemail.ca>
+# Contributor: OSAMC <https://github.com/osam-cologne/archlinux-proaudio>
 # Contributor: LekKit <github.com/LekKit>
 # Contributor: Christopher Arndt <aur -at -chrisarndt -dot- de>
 
 pkgname=neural-amp-modeler-bypass-lv2
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Neural Amp Modeler (NAM) LV2 plugin with bypass functionality'
 arch=(x86_64)
 url='https://github.com/rickprice/neural-amp-modeler-bypass-lv2'
