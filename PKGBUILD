@@ -1,7 +1,7 @@
 
 # Maintainer: Avenge Media LLC <avengemediallc at gmail dot com>
 pkgname=dms-shell-bin
-pkgver=0.3.4
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=('x86_64' 'aarch64')
@@ -34,14 +34,18 @@ _get_arch() {
 }
 
 source_x86_64=(
+    dms.service
     "dms-full-amd64-${pkgver}.tar.gz::$url/releases/download/v$pkgver/dms-full-amd64.tar.gz"
 )
 source_aarch64=(
+    dms.service
     "dms-full-arm64-${pkgver}.tar.gz::$url/releases/download/v$pkgver/dms-full-arm64.tar.gz"
 )
 
-sha256sums_x86_64=('bdf4caeab76e5932630e5f77bb050cba8cf0513438f2fa23a7e108a4d09020cf')
-sha256sums_aarch64=('57abd2192066783caefba1ebdfcfbeb6604b2b7e0266d07bfe72c6ab2f2e9449')
+sha256sums_x86_64=('df3ffefe689e6dc542ea1ab94547d9ceb525674d7fd3d0dd1fa7f68feb64d043'
+                   '96d920f2552d26ad230bd43e75e33a216977530fc017c57b41248b5f70392b22')
+sha256sums_aarch64=('df3ffefe689e6dc542ea1ab94547d9ceb525674d7fd3d0dd1fa7f68feb64d043'
+                    '2b06ffe908a77e99570c67dd3290ed791b7dc1bcf2957b41f59f8fbaf8ead880')
 
 package() {
     install -Dm755 "${srcdir}/bin/dms-distropkg" "$pkgdir/usr/bin/dms"
@@ -60,4 +64,5 @@ package() {
     if [ -f "${srcdir}/dms/PLUGINS/README.md" ]; then
         install -Dm644 "${srcdir}/dms/PLUGINS/README.md" "$pkgdir/usr/share/doc/dms/plugins.md"
     fi
+    install -Dm0644 "dms.service" "$pkgdir/usr/lib/systemd/user/dms.service"
 }

@@ -1,0 +1,17 @@
+[Unit]
+Description=Dank Material Shell (DMS)
+PartOf=graphical-session.target
+After=graphical-session-pre.target
+Wants=graphical-session-pre.target
+Requisite=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/dms run --session
+ExecReload=/usr/bin/pkill -HUP -x dms
+Restart=always
+RestartSec=2
+TimeoutStopSec=10
+
+[Install]
+WantedBy=graphical-session.target
