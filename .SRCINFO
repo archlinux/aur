@@ -1,0 +1,12 @@
+pkgbase = farvahar
+	pkgdesc = FNET - Farvahar Network AppImage
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://farvahar.club/
+	arch = x86_64
+	license = GPL
+	depends = fuse2
+	source = FNET-1.0.1.AppImage::https://farvahar.club/download/Farvahar-Network-1.0.1.AppImage
+	md5sums = SKIP
+
+pkgname = farvahar
