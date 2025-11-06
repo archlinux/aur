@@ -1,29 +1,24 @@
-# Maintainer: Cipher.J <116757358+psi4j@users.noreply.github.com>
+# Maintainer: psi4j <116757358+psi4j@users.noreply.github.com>
 
 pkgname=sunsetr-bin
 _realname=sunsetr
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Automatic blue light filter for Hyprland, Niri, and everything Wayland (pre-compiled binary)"
 arch=('x86_64')
 url="https://github.com/psi4j/sunsetr"
 license=('MIT')
-# Dependencies are optional now
-# depends=('hyprland>=0.49.0' 'hyprsunset>=0.2.0')
+depends=('wayland')
 
-# Name of the asset on GitHub
 _github_asset_filename="${_realname}-v${pkgver}-x86_64-linux.tar.gz"
-# Name of the directory extracted from the asset tarball (this is based on the tarball's internal structure)
 _extracted_dir_name="${_realname}-v${pkgver}"
 
-# How we name the downloaded file locally (can be same as GitHub's or slightly different for consistency)
 _local_tarball_name="${_realname}-${pkgver}-x86_64-linux.tar.gz"
 
 source=("${_local_tarball_name}::${url}/releases/download/v${pkgver}/${_github_asset_filename}")
-sha256sums=('9de8cc5482b45fc7e40090d0a814a3681e77efcdcfb89c247c1a885db8e849aa')
+sha256sums=('9b4a61f758960eec616cef31e7258b89a8de05a79ad652197f5c1f64e50251f5')
 
 package() {
-    # The files are inside: ${srcdir}/${_extracted_dir_name}/
 
     # Install the binary
     install -Dm755 "${srcdir}/${_extracted_dir_name}/${_realname}" \
