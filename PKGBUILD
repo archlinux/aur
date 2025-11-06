@@ -1,8 +1,8 @@
 # Maintainer: kinker31 <www.kinker31.com>
-# A lot of this code was copied from Maddie (over at the uzdoom-git package)
+# A lot of this code was copied from Maddie's GZDoom-git package
 
 pkgname=uzdoom-git
-pkgver=4.15pre+487+gf30fc8d
+pkgver=4.15pre+765+g4be5c66
 pkgrel=1
 pkgdesc='A fork of GZDoom, a feature-centric fork of ZDoom'
 arch=('x86_64')
@@ -35,24 +35,12 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
 optdepends_x86_64=('vulkan-driver: Vulkan renderer'
                    'vulkan-icd-loader: Vulkan renderer')
 options=(!lto)
-source=('uzdoom::git+https://github.com/UZDoom/UZDoom.git'
-        '0001-Enforce-file-paths.patch')
-sha256sums=('SKIP'
-            'f9b5de60b4636b7de6a4c5434e4a320e145de9fb18e4d5d41334d575cf375811')
+source=('uzdoom::git+https://github.com/UZDoom/UZDoom.git')
+sha256sums=('SKIP')
 
 pkgver() {
     cd uzdoom
     git describe --tags --abbrev=7 --match '[Gg]*' | sed -r 's/^[Gg]//;s/-/+/g'
-}
-
-## the "upstream broke again section" quick fix area!
-## Force format-security errors to be bypassed.
-# CFLAGS+=" -Wno-error=format-security"
-# CXXFLAGS+=" -Wno-error=format-security"
-
-prepare() {
-    cd uzdoom
-    patch -i "$srcdir"/0001-Enforce-file-paths.patch -p 1
 }
 
 build() {
