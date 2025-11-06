@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=AudioVideo;Audio;Player;GTK;
+Comment=Internet Radio Player for Linux
+Exec=/usr/bin/radiotray-py
+Icon=audio-radio
+Name=Radiotray-PY
+StartupNotify=false
+Terminal=false
+Type=Application

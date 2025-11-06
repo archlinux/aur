@@ -1,0 +1,25 @@
+pkgbase = radiotray-py-git
+	pkgdesc = An Internet radio player written in Python using mpv player
+	pkgver = r37.92fa93d
+	pkgrel = 1
+	url = https://github.com/CHJ85/Radiotray-py.git
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	depends = mpv
+	depends = python-pillow
+	depends = python-pyqt5
+	depends = python-requests
+	provides = radiotray-py=r37.92fa93d
+	conflicts = radiotray-py
+	conflicts = radiotray-py-bin
+	source = radiotray-py::git+https://github.com/CHJ85/Radiotray-py.git
+	source = radiotray-py.desktop
+	sha256sums = SKIP
+	sha256sums = aeaf951cf4e3fd16db5ac5df30ee201846183e48e70be1c0537d80dd9f3fd3eb
+
+pkgname = radiotray-py-git
