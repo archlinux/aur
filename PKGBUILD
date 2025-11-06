@@ -1,6 +1,6 @@
 # Maintainer: kazu0617 <archlinux at kazu0617 dot net>
 pkgname=xyvr
-pkgver=0.0.1_alpha.14
+pkgver=0.0.1_alpha.15
 pkgrel=1
 pkgdesc="It is an address book application that lets you search through your VRChat, Resonite, and ChilloutVR contacts."
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/hai-vr/XYVR/archive/refs/tags/${_tag}.tar.gz"
     "xyvr.desktop"
 )
-sha256sums=('32886f6dfe68a43178ba458d1b23c6b0c2be7f0fa81bea23a6b2ad5503c96e45'
+sha256sums=('85067a02ab25d27e4b9843f929925430909dd12c3bd85f68f1cbe3b4226cda8d'
             '5322356af793f1671f0f49347ae6f9dd31aeb9492e65055c01bb69534180c623')
 
 
@@ -25,7 +25,7 @@ prepare() {
 
 build() {
     cd "$srcdir/${_srcdir}/ui-frontend/src"
-    npm ci
+    npm ci --no-audit --no-fund
     #npm install
     npm run build-and-copy
 
