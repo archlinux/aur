@@ -5,8 +5,8 @@
 _pkgname=casual-pre-loader
 
 pkgname="${_pkgname}-git"
-pkgver=1.7.0
-pkgrel=3
+pkgver=1.7.0.12.g6d7ef6d
+pkgrel=1
 
 pkgdesc='TF2 particle modifications via some wizardry.'
 arch=('x86_64')
@@ -18,13 +18,21 @@ makedepends=('git' 'gendesk' 'sed')
 
 install="${_pkgname}.install"
 
-source=("git+${url}")
-sha256sums=('SKIP')
+source=("git+${url}" 'git+https://github.com/cueki/studiomdl')
+sha256sums=('SKIP' 'SKIP')
 
 prepare() {
 	gendesk -n -f --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" --exec "${_pkgname}" --icon "${_pkgname}" --categories 'Utility' # generate desktop entry file
 
-	printf '%s\n' 'portable = False' >"${_pkgname}/core/are_we_portable.py" # notify the application that it cannot write to its own installation directory
+	cd "${_pkgname}"
+
+	printf '%s\n' 'portable = False' >'core/are_we_portable.py' # notify the application that it cannot write to its own installation directory
+
+	git submodule init
+	git config submodule.studiomdl.url "${srcdir}/studiomdl"
+	git -c protocol.file.allow=always submodule update
+
+	git submodule update --init --recursive
 }
 
 pkgver() {
@@ -41,16 +49,10 @@ package() {
 	# all other files and directories needed to run
 	cp -a \
 		main.py \
-		mods.zip \
-		mod_urls.json \
-		particle_system_map.json \
 		backup/ \
 		core/ \
+		data/ \
 		gui/ \
-		operations/ \
-		quickprecache/ \
-		vtfedit/ \
-		useful_scripts/ \
 		"${pkgdir}/usr/lib/${_pkgname}/"
 
 	ln -sr "${pkgdir}/usr/lib/${_pkgname}/main.py" "${pkgdir}/usr/bin/${_pkgname}"                                # symlink the main.py file into the PATH as "${_pkgname}"
