@@ -1,6 +1,6 @@
 pkgbase = scooter
 	pkgdesc = An interactive find and replace in the terminal
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/thomasschafer/scooter
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = scooter
 	depends = gcc-libs
 	depends = glibc
 	depends = oniguruma
-	source = scooter-0.8.2.tar.gz::https://github.com/thomasschafer/scooter/archive/v0.8.2.tar.gz
-	sha256sums = 4c70e0cf3a450b509c773b113bf21bc62ed228873bd45030b3359d391e3b188a
+	source = scooter-0.8.3.tar.gz::https://github.com/thomasschafer/scooter/archive/v0.8.3.tar.gz
+	sha256sums = ed5b120ad4bcaa67ba9d236229f1bd3ebafad92fb53e7bf259d22d5a11a4a46d
 
 pkgname = scooter
