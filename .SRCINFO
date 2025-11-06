@@ -13,8 +13,8 @@ pkgbase = dgop-bin
 	sha256sums = 4cee96286c5b7da9763a4694868bb1853b33bb1558821e0c609ad2eabd426bfa
 	sha256sums = 742f6527a0dab4a540385ab77ad413d1e014d4f44b9e31f8df7d22d6d6dd5b86
 	source_x86_64 = dgop-x86_64-0.1.11.gz::https://github.com/AvengeMedia/dgop/releases/download/v0.1.11/dgop-linux-amd64.gz
-	sha256sums_x86_64 = dbf27a5e740241c0cdae8cab66b44dd55313e37f931d63ff36bc3a577e371609
+	sha256sums_x86_64 = 193964c732708150d612fbc7df4779dfdb970c22a7205b934f4aff0279399f90
 	source_aarch64 = dgop-aarch64-0.1.11.gz::https://github.com/AvengeMedia/dgop/releases/download/v0.1.11/dgop-linux-arm64.gz
-	sha256sums_aarch64 = 8b5a1600089c62dec98ede6fdafcca19ced22e7a6c232efb10774d37a1679989
+	sha256sums_aarch64 = ad886bdbce859c242a5286c2a9a78c99d34721c16ec60297213c78925945dcec
 
 pkgname = dgop-bin
