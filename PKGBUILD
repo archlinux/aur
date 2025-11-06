@@ -9,7 +9,8 @@ url="https://codeberg.org/jiji-wp/daph"
 license=('Apache-2.0')
 depends=()
 makedepends=()
-source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/jiji-wp/daph/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/jiji-wp/daph/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+
 sha256sums=('SKIP')  # Will be updated automatically by the workflow
 
 package() {
