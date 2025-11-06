@@ -1,13 +1,14 @@
-pkgbase = kuzu-bin
+pkgbase = ladybug-bin
 	pkgdesc = In-process property graph database management system (GDBMS) built for query speed and scalability
-	pkgver = 0.11.3
+	pkgver = 0.12.0
 	pkgrel = 1
-	url = https://kuzudb.com
+	url = https://ladybugdb.com
 	arch = x86_64
 	license = MIT
-	source = kuzu-bin-v0.11.3.tar.gz::https://github.com/kuzudb/kuzu/releases/download/v0.11.3/kuzu_cli-linux-x86_64.tar.gz
-	source = libkuzu-bin-v0.11.3.tar.gz::https://github.com/kuzudb/kuzu/releases/download/v0.11.3/libkuzu-linux-x86_64.tar.gz
-	sha256sums = 5b6c589b34f1b661b1d58fd35003cb2212cdfd53b8dd660e343adb25754c5003
-	sha256sums = e99f9671ebfacf4d6208aa4b94490016e4ac9be242deed1fea78afb31c058ebd
+	replaces = kuzu-bin
+	source = ladybug-bin-v0.12.0.tar.gz::https://github.com/ladybugdb/ladybug/releases/download/v0.12.0/lbug_cli-linux-x86_64.tar.gz
+	source = libladybug-bin-v0.12.0.tar.gz::https://github.com/ladybugdb/ladybug/releases/download/v0.12.0/liblbug-linux-x86_64.tar.gz
+	sha256sums = 4a38cf3db922abfafaa91b1f18fa298fbe25cb5fce540d08cf42a5d9bd8ff388
+	sha256sums = c013d5705bb6d7059b85d232413cec673799f39223092e6ac8e066ebb6012977
 
-pkgname = kuzu-bin
+pkgname = ladybug-bin
