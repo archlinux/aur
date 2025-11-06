@@ -2,7 +2,7 @@
 
 pkgname=libbacktrace-git
 pkgver=r123.g2f67a3a
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to produce symbolic backtraces"
 arch=('i686' 'x86_64')
 url="https://github.com/ianlancetaylor/libbacktrace"
@@ -15,7 +15,7 @@ options=('staticlibs')
 source=("git+https://github.com/ianlancetaylor/libbacktrace.git"
         "add_pkg-config_file.patch::https://patch-diff.githubusercontent.com/raw/ianlancetaylor/libbacktrace/pull/92.patch")
 sha256sums=('SKIP'
-            'SKIP')
+            '680dbbf1db9953d4aeef2205274d2c3672d150a106f782c368d628623173dd1f')
 
 
 prepare() {

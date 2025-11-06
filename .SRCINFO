@@ -1,7 +1,7 @@
 pkgbase = libbacktrace-git
 	pkgdesc = Library to produce symbolic backtraces
 	pkgver = r123.g2f67a3a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ianlancetaylor/libbacktrace
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,6 @@ pkgbase = libbacktrace-git
 	source = git+https://github.com/ianlancetaylor/libbacktrace.git
 	source = add_pkg-config_file.patch::https://patch-diff.githubusercontent.com/raw/ianlancetaylor/libbacktrace/pull/92.patch
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 680dbbf1db9953d4aeef2205274d2c3672d150a106f782c368d628623173dd1f
 
 pkgname = libbacktrace-git
