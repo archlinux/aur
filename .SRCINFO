@@ -1,7 +1,7 @@
 pkgbase = qvtfpp
 	pkgdesc = A Qt6 QImageIO plugin to load VTF textures.
-	pkgver = 0.1.0
-	pkgrel = 3
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/craftablescience/qvtfpp
 	arch = x86_64
 	license = LGPL-2.1-only
@@ -15,24 +15,10 @@ pkgbase = qvtfpp
 	depends = gcc-libs
 	provides = qvtf
 	conflicts = qvtf
-	source = git+https://github.com/craftablescience/qvtfpp.git#tag=v0.1.0
+	source = git+https://github.com/craftablescience/qvtfpp.git#tag=v1.0.0
 	source = git+https://github.com/craftablescience/sourcepp.git
 	source = git+https://github.com/craftablescience/cmake-helpers.git
-	source = git+https://github.com/craftablescience/bufferstream.git
-	source = cryptopp::git+https://github.com/abdes/cryptopp-cmake.git
-	source = git+https://github.com/Tessil/hat-trie.git
-	source = git+https://github.com/webmproject/libwebp.git
-	source = git+https://github.com/richgel999/miniz.git
-	source = git+https://github.com/craftablescience/minizip-ng.git
-	source = git+https://github.com/phoboslab/qoi.git
-	sha256sums = 4963d8317e7f28d9c09b7604c4554b5c9977223f065362c688576cfac7603894
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 42f430abf17c07ec76ef77dff5ee44da694afb54b9c48408a9b0c30f582916b4
 	sha256sums = SKIP
 	sha256sums = SKIP
 
