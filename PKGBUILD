@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=qvtfpp-git
-pkgver=0.1.0.r1.gfe835eb
-pkgrel=2
+pkgver=1.0.0.r0.g008c84b
+pkgrel=1
 pkgdesc="A Qt6 QImageIO plugin to load VTF textures."
 arch=('x86_64')
 url="https://github.com/craftablescience/qvtfpp"
@@ -12,23 +12,8 @@ provides=("${pkgname::-4}" "${pkgname::-6}")
 conflicts=("${pkgname::-4}" "${pkgname::-6}")
 source=("git+$url.git"
 	"git+${url::-6}sourcepp.git"
-	"git+${url::-6}cmake-helpers.git"
-	#sourcepp modules
-	"git+${url::-6}bufferstream.git"
-	"cryptopp::git+https://github.com/abdes/cryptopp-cmake.git"
-	"git+https://github.com/Tessil/hat-trie.git"
-	"git+https://github.com/webmproject/libwebp.git"
-	"git+https://github.com/richgel999/miniz.git"
-	"git+${url::-6}minizip-ng.git"
-	"git+https://github.com/phoboslab/qoi.git")
+	"git+${url::-6}cmake-helpers.git")
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
             'SKIP'
             'SKIP')
 
@@ -43,20 +28,14 @@ prepare() {
 	git config submodule.ext/sourcepp.url "$srcdir/sourcepp"
 	git config submodule.cmake/helpers.url "$srcdir/cmake-helpers"
 	git -c protocol.file.allow=always submodule update
-
-	cd "$srcdir/${pkgname::-4}/ext/sourcepp"
-	git submodule init
-	for submodule in {bufferstream,cryptopp,hat-trie,libwebp,miniz,minizip-ng,qoi};
-	do
-		git config submodule.ext/${submodule}.url "$srcdir/${submodule}"
-	done
-	git -c protocol.file.allow=always submodule update
 }
 
 build() {
 	cd "$srcdir"
 	cmake -B build -S ${pkgname::-4} \
 	-DCMAKE_BUILD_TYPE=None \
+	-DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
+	-DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG" \
 	-DCPACK_GENERATOR=RPM \
 	-GNinja
 
