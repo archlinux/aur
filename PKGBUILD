@@ -5,8 +5,8 @@
 
 _pkgname="giada"
 pkgname="$_pkgname-git"
-pkgver=1.3.0.r1.g6175788
-pkgrel=2
+pkgver=1.3.1.r104.g03a63cd
+pkgrel=1
 pkgdesc="A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians"
 url="https://github.com/monocasual/giada"
 license=('GPL-3.0-or-later')
@@ -26,7 +26,7 @@ depends=(
   'rtmidi'
 )
 makedepends=(
-  'catch2-v2'
+  'catch2'
   'cmake'
   'git'
   'imagemagick'

@@ -1,11 +1,11 @@
 pkgbase = giada-git
 	pkgdesc = A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians
-	pkgver = 1.3.0.r1.g6175788
-	pkgrel = 2
+	pkgver = 1.3.1.r104.g03a63cd
+	pkgrel = 1
 	url = https://github.com/monocasual/giada
 	arch = x86_64
 	license = GPL-3.0-or-later
-	makedepends = catch2-v2
+	makedepends = catch2
 	makedepends = cmake
 	makedepends = git
 	makedepends = imagemagick
