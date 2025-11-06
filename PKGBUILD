@@ -3,7 +3,7 @@
 # This file is copied from the 'cinny-desktop' package (https://aur.archlinux.org/packages/cinny-desktop) and modified to include the system tray patches.
 pkgname='cinny-desktop-system-tray'
 pkgver='4.10.1'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Yet another matrix client - with support for system tray minimization'
 arch=('x86_64')
 url='https://cinny.in/'
@@ -37,5 +37,5 @@ package() {
     ar x "cinny-desktop/src-tauri/target/release/bundle/deb/cinny_${pkgver}_amd64.deb" 'data.tar.gz'
     tar xzf 'data.tar.gz' -C "${pkgdir}"
     # while we're at it, fix some wayland related issues (https://github.com/cinnyapp/cinny-desktop/issues/458)
-    sed -i 's/Exec=cinny/Exec=WEBKIT_DISABLE_DMABUF_RENDERER=1 cinny/' "${pkgdir}/usr/share/applications/cinny.desktop"
+    sed -i 's/Exec=cinny/Exec=env WEBKIT_DISABLE_DMABUF_RENDERER=1 cinny/' "${pkgdir}/usr/share/applications/cinny.desktop"
 }
