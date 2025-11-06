@@ -1,7 +1,7 @@
-# Maintainer: Fptn Team <fptnvpn at gmail dot com>
+# Maintainer: FPTN Project <fptnvpn at gmail dot com>
 pkgname=fptn-server-bin
 pkgver=0.3.23
-pkgrel=1
+pkgrel=2
 pkgdesc='Non-commercial VPN, a volunteer project for bypassing censorship (server)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/batchar2/fptn'
@@ -14,4 +14,12 @@ sha256sums_aarch64=('4ff1e97a7c92d59fc100f45175b1a52c1685f159ae45880555f4bcc85d9
 package() {
     cd "${srcdir}"
     bsdtar -xf data.tar.zst -C "${pkgdir}"
+    # move /bin and /lib into /usr/bin and /usr/lib
+    cd ${pkgdir}
+    mkdir -p usr
+    for dir in bin lib; do
+      if [ -d ${dir} ]; then
+        mv -f ${dir} usr
+      fi
+    done
 }
