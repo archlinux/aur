@@ -1,7 +1,7 @@
 # Maintainer: Tim Kicker <tim@kicker.dev>
 pkgname=podliner-bin
 pkgver=1.0.18
-pkgrel=6
+pkgrel=7
 pkgdesc="Podliner: TUI podcast player (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/timkicker/podliner"
@@ -10,25 +10,13 @@ options=(!strip)
 provides=('podliner')
 conflicts=('podliner')
 depends=()
+
 source_x86_64=("podliner-${pkgver}-linux-x64.tar.gz::https://github.com/timkicker/podliner/releases/download/v${pkgver}/podliner-linux-x64.tar.gz")
 source_aarch64=("podliner-${pkgver}-linux-arm64.tar.gz::https://github.com/timkicker/podliner/releases/download/v${pkgver}/podliner-linux-arm64.tar.gz")
-sha256sums_x86_64=('c6d9ccb55054164d4e012ba54857bb0242f0809102133c0294dea34d6e865050')
-sha256sums_aarch64=('0cfa128fdd7512be9d9fbb1b3fb0ab4e5b360264a70e5450530e76437836972b')
 
-package() {
-  install -d "${pkgdir}/usr/bin"
-  local tarball
-  if [[ "$CARCH" == "x86_64" ]]; then
-    tarball="${srcdir}/podliner-${pkgver}-linux-x64.tar.gz"
-  else
-    tarball="${srcdir}/podliner-${pkgver}-linux-arm64.tar.gz"
-  fi
-  mkdir -p "${srcdir}/podliner-build"
-  tar -xzf "$tarball" -C "${srcdir}/podliner-build"
-  install -m755 "${srcdir}/podliner-build/podliner/podliner" "${pkgdir}/usr/bin/podliner"
-}
-
-
+# Checksums v1.0.18
+sha256sums_x86_64=('2db573104a3490ed9f134d73275ae96be3c6592983b3e68bea395d4c31f651cb')
+sha256sums_aarch64=('7ba35cbe729f9bee844ade6407f83b3f14f840bebf8e35b99e5370f2bdcbbf2d')
 
 package() {
   install -d "${pkgdir}/usr/bin"
@@ -41,13 +29,8 @@ package() {
     tarball="${srcdir}/podliner-${pkgver}-linux-arm64.tar.gz"
   fi
 
-  # entpacken (idempotent ok)
   bsdtar -xf "$tarball" -C "${srcdir}/podliner-build"
 
-  # mögliche Layouts:
-  # 1) ${srcdir}/podliner-build/podliner          (Datei)
-  # 2) ${srcdir}/podliner-build/podliner/podliner (Ordner + Datei)
-  # 3) sonst suche bis Tiefe 3
   local binpath=""
   if [[ -f "${srcdir}/podliner-build/podliner" ]]; then
     binpath="${srcdir}/podliner-build/podliner"
@@ -66,3 +49,4 @@ package() {
 
   install -m755 "$binpath" "${pkgdir}/usr/bin/podliner"
 }
+
