@@ -31,7 +31,7 @@ def get_system_info():
     }
 
 def get_artwork(art_name):
-    url = f'http://p.senyaaa.ru/anyfetch/artworks/{art_name}.txt'
+    url = f'http://senyaaa.ru/anyfetch/artworks/{art_name}.txt'
     try:
         response = requests.get(url)
         response.raise_for_status()

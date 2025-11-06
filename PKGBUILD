@@ -1,7 +1,7 @@
 # Maintainer: Arseniy senyaaa@tuta.io
 
 pkgname=anyfetch
-pkgver=1.0.1
+pkgver=1.1
 pkgrel=1
 pkgdesc="A fetch utility that allows uploading ASCII art via a web interface"
 arch=('any')
