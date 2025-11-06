@@ -1,0 +1,21 @@
+pkgbase = pibootcheck
+	pkgdesc = Read-only Raspberry Pi boot-chain verification toolkit
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/0xdials/pibootcheck
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = git
+	makedepends = binwalk
+	depends = python
+	depends = python-click
+	depends = python-rich
+	depends = python-jinja
+	depends = python-pandas
+	depends = python-dateutil
+	source = pibootcheck-0.9.0.tar.gz::https://github.com/0xdials/pibootcheck/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = pibootcheck
