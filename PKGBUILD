@@ -1,6 +1,6 @@
 # Maintainer: Patrick Hechler <patrjprof.aur@ph.anderemails.de>
 pkgname=patrjprof
-pkgver=1.6.0r299
+pkgver=1.7.0r401
 _pkgver="$(echo "${pkgver}" | sed -E 's/r[0-9]+$//')"
 pkgrel=1
 pkgdesc="A Free Java profiler written in Java"
@@ -12,7 +12,7 @@ depends=('java-runtime-headless>=8')
 makedepends=()
 optdepends=('java-runtime>=8: graphical user interface'
             'java-runtime-headless>=16: support for socket files for server/client communication'
-            'java-runtime-headless>=23: profile constructors with the new class-file API'
+            'java-runtime-headless>=24: profile constructors with the new class-file API'
            )
 provides=()
 conflicts=()
@@ -31,11 +31,11 @@ source=("patr-java-profiler-start-${_pkgver}.sh::https://nexuspat.hechler.de/rep
         )
 noextract=("${source[@]%%::*}")
 sha512sums=('cdef6de2254f01d4398b2fcd8f9c43ca5aa1cac5d44d66595f0c0d7cdcab5082dea7fd323548df46dde468b5f307cc44a267927ed103324b2e0f41df99ab0bc4'
-            'c700f43f25ae1eb3a7613c776b2696cc3201e345c91a649a1206d9cf56839b19ed8f21a61774370539003ff5bc119380b9af250cf4acc2e62d2300c6972967f3'
-            'e0c14ca932ea19dc27ac9ff7c83e5b9fa78b284085fe36f891990ebb7a8c7d7d4a4d174fcf9ff887a504b6d70a83fa59faf40d36c0bb315b3970b67a72fc02d6'
-            '9116b3eec111a05cc701264fff4fd85050f78a7af71113f1d5e2227c2515ef21983559114d7b5d30998f13dfb636bcf9bf2ea3b1a062403b1ba59516b00c422a'
-            'e0e903dba389a80ebaa9aa73977020b10845ac7f0da24202a48b285405712b5093eba6012cf6b74500c5b0dd7a589c21b823ca10962f0477dc1c289e355aaaf0'
-            '2c6ab852b95ca0903514c187d696814c16a9b589347f051745cd80bd3335621a24eae6a32796811404ce7406e8d83b3aa09b14e60b2eca544b528ca237febf94'
+            '48761577f594ddbcc90837db49f591ad6b5251523277bc95c7f55b3fc9d6e67691167cad5416b886dcd5450148097b835cd659a01e5cb15d56dd8bdc3a2ca513'
+            '2b5287be0e28cb91d1b9f1d106cab636e4894f4a3a3f97497a67a4ee62086821f6a6a53a5b34c393c9cd8010e8bd9c4f8cf07d50b8a910b29bafe2d36a33b00e'
+            '33cfb8498b7df289d24b3fb9279241cffe4502a519c13f555c7c172702eff812002449287796ec42f98ce45339aff4930d587e5bf9e48e6a8b1208175dc6f7c0'
+            'cd7e73896aa586f32e01f49a9f9e68e5dc6607c8746dc8f3887e30ebad193029caf43ad5ca83a84365788a0ecd35174945a7ede3c686b4c69ed0ae7c20f68dc0'
+            '6c3aa47c765848bdc2dc2c02733287727707990e20e33ffe87f2e3ce5d608812e681f29cb914838d9d22745fb7dbcbc816dbcf123b15186706c181ba4ea171e6'
             )
 
 build() {
@@ -69,16 +69,21 @@ package() {
   mkdir -p "$pkgdir"/usr/share/java/patrjprof
 
   cp -T "patr-java-profiler-agent-${_pkgver}.jar" \
-    "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-agent.jar
+    "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-agent-${_pkgver}.jar
 
   cp -T "patr-java-profiler-bootstrap-${_pkgver}.jar" \
-    "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-bootstrap.jar
+    "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-bootstrap-${_pkgver}.jar
 
   cp -T "patr-java-profiler-server-${_pkgver}.jar" \
-    "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-server.jar
+    "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-server-${_pkgver}.jar
 
   cp -T "patr-java-profiler-client-${_pkgver}.jar" \
-    "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-client.jar
+    "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-client-${_pkgver}.jar
+
+  ln -sT patr-java-profiler-agent-${_pkgver}.jar "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-agent.jar
+  ln -sT patr-java-profiler-bootstrap-${_pkgver}.jar "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-bootstrap.jar
+  ln -sT patr-java-profiler-server-${_pkgver}.jar "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-server.jar
+  ln -sT patr-java-profiler-client-${_pkgver}.jar "$pkgdir"/usr/share/java/patrjprof/patr-java-profiler-client.jar
 
   # create script which starts the profiler
   mkdir -p "$pkgdir"/usr/bin
@@ -87,10 +92,10 @@ package() {
   head -1 "patr-java-profiler-start-${_pkgver}.sh" >> "$pkgdir"/usr/bin/patrjprof
   echo -n "
 # set the values needed for the script
-AGENT_JAR=/usr/share/java/patrjprof/patr-java-profiler-agent.jar
-BOOTSTRAP_JAR=/usr/share/java/patrjprof/patr-java-profiler-bootstrap.jar
-SERVER_JAR=/usr/share/java/patrjprof/patr-java-profiler-server.jar
-CLIENT_JAR=/usr/share/java/patrjprof/patr-java-profiler-client.jar
+AGENT_JAR=/usr/share/java/patrjprof/patr-java-profiler-agent-${_pkgver}.jar
+BOOTSTRAP_JAR=/usr/share/java/patrjprof/patr-java-profiler-bootstrap-${_pkgver}.jar
+SERVER_JAR=/usr/share/java/patrjprof/patr-java-profiler-server-${_pkgver}.jar
+CLIENT_JAR=/usr/share/java/patrjprof/patr-java-profiler-client-${_pkgver}.jar
 
 # helper script from git
 " >> "$pkgdir"/usr/bin/patrjprof
