@@ -1,0 +1,17 @@
+# Paquetes compilados
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+
+# Tarballs de releases
+*.tar.gz
+*.tar.xz
+*.tar.zst
+
+# Directorios de construcción
+src/
+pkg/
+pkg-files/
+
+# Archivos temporales
+*.log
