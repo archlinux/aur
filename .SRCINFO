@@ -1,14 +1,14 @@
 pkgbase = gspot-git
 	pkgdesc = Spotify TUI And CLI written in Go
-	pkgver = 0.0.20.r0.gdc2c74d
+	pkgver = 0.0.34.r0.gcc8d1a4
 	pkgrel = 1
-	url = https://git.asdf.cafe/abs3nt/gspot
+	url = https://github.com/abs3ntdev/gspot
 	arch = x86_64
 	license = GPL
 	makedepends = go
 	provides = gspot
 	conflicts = gspot
-	source = git+https://git.asdf.cafe/abs3nt/gspot.git
+	source = git+https://github.com/abs3ntdev/gspot.git
 	sha256sums = SKIP
 
 pkgname = gspot-git

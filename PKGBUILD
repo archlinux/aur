@@ -1,10 +1,10 @@
 pkgname=gspot-git
 _pkgname=gspot
-pkgver=0.0.20.r0.gdc2c74d
+pkgver=0.0.34.r0.gcc8d1a4
 pkgrel=1
 pkgdesc='Spotify TUI And CLI written in Go'
 arch=('x86_64')
-url="https://git.asdf.cafe/abs3nt/${_pkgname}"
+url="https://github.com/abs3ntdev/${_pkgname}"
 license=('GPL')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
@@ -23,12 +23,13 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  go build -buildmode=pie -trimpath -ldflags="-linkmode=external -s -w -X 'git.asdf.cafe/abs3nt/${_pkgname}/src/components/cli.Version=v${pkgver}'" -mod=readonly -modcacherw .
+  go build -o dist/ -buildmode=pie -trimpath -ldflags="-linkmode=external -s -w -X 'github.com/abs3ntdev/${_pkgname}/src/components/cli.Version=v${pkgver}'" -mod=readonly -modcacherw ./cmd/...
 }
 
 package() {
   cd "${_pkgname}"
-  install -Dm755 ${_pkgname} "$pkgdir"/usr/bin/${_pkgname}
+  install -Dm755 dist/${_pkgname} "$pkgdir"/usr/bin/${_pkgname}
+  install -Dm755 dist/${_pkgname}-daemon "$pkgdir"/usr/bin/${_pkgname}-daemon
   install -Dm644 completions/_${_pkgname} "$pkgdir"/usr/share/zsh/site-functions/_${_pkgname}
   install -Dm644 completions/${_pkgname} "$pkgdir"/usr/share/bash-completion/completions/${_pkgname}
 }
