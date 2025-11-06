@@ -2,9 +2,9 @@
 
 pkgname=xorgxrdp
 pkgver=0.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Xorg drivers for xrdp"
-arch=('aarch64' 'i686' 'x86_64')
+arch=('aarch64' 'i686' 'riscv64' 'x86_64')
 url="https://github.com/neutrinolabs/xorgxrdp"
 license=('X11')
 depends=('glibc' 'xorg-server')
