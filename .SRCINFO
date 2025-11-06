@@ -1,0 +1,24 @@
+pkgbase = awww-git
+	pkgdesc = Efficient animated wallpaper daemon for Wayland, controlled at runtime
+	pkgver = 0.11.2.r82.gcb3be36
+	pkgrel = 1
+	url = https://codeberg.org/LGFae/awww
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = dav1d
+	makedepends = git
+	makedepends = scdoc
+	makedepends = wayland
+	makedepends = wayland-protocols
+	depends = libxkbcommon
+	depends = lz4
+	provides = awww
+	conflicts = awww
+	replaces = swww
+	options = !lto
+	source = awww-git::git+https://codeberg.org/LGFae/awww.git
+	sha256sums = SKIP
+
+pkgname = awww-git
