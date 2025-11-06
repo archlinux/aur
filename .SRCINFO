@@ -1,0 +1,12 @@
+pkgbase = qoder
+	pkgdesc = qoder beta
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://qoder.com/download
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+    source = https://download.qoder.com/release/latest/qoder_x86_64.rpm
+
+pkgname = qoder
