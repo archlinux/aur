@@ -1,12 +1,12 @@
 pkgbase = clice-bin
 	pkgdesc = A next-generation C++ language server for modern C++, focused on high performance and deep code intelligence.
-	pkgver = 0.1.0.alpha.1
+	pkgver = 0.1.0.alpha.2
 	pkgrel = 1
 	url = https://github.com/clice-io/clice
 	arch = x86_64
 	license = MIT
 	depends = clang
-	source_x86_64 = https://github.com/clice-io/clice/releases/download/v0.1.0-alpha.1/clice-x86_64-linux-gnu.tar.xz
-	sha256sums_x86_64 = 65b51f54aa66940e5f1c895336b38637f6d3c6f06196fad348e07634b2a6e49b
+	source_x86_64 = https://github.com/clice-io/clice/releases/download/v0.1.0-alpha.2/clice-x86_64-linux-gnu.tar.xz
+	sha256sums_x86_64 = ba5934282aacd26ae0063b75d1265b87dec7bdbb29b775ecfe80b26a675adc94
 
 pkgname = clice-bin
