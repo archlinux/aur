@@ -1,6 +1,6 @@
 pkgbase = martin
 	pkgdesc = A tile server able to generate and serve vector tiles on the fly
-	pkgver = 0.20.0
+	pkgver = 0.20.1
 	pkgrel = 1
 	url = https://maplibre.org/martin/
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = martin
 	depends = glibc
 	options = !lto
 	backup = etc/martin/config.yaml
-	source = martin-0.20.0.tar.gz::https://github.com/maplibre/martin/archive/refs/tags/martin-v0.20.0.tar.gz
-	source = martin-0.20.0-LICENSE-APACHE::https://github.com/maplibre/martin/raw/refs/tags/martin-v0.20.0/LICENSE-APACHE
-	source = martin-0.20.0-LICENSE-MIT::https://github.com/maplibre/martin/raw/refs/tags/martin-v0.20.0/LICENSE-MIT
+	source = martin-0.20.1.tar.gz::https://github.com/maplibre/martin/archive/refs/tags/martin-v0.20.1.tar.gz
+	source = martin-0.20.1-LICENSE-APACHE::https://github.com/maplibre/martin/raw/refs/tags/martin-v0.20.1/LICENSE-APACHE
+	source = martin-0.20.1-LICENSE-MIT::https://github.com/maplibre/martin/raw/refs/tags/martin-v0.20.1/LICENSE-MIT
 	source = martin.service
 	source = martin.sysusers.d
 	source = martin-config.yaml
-	b2sums = a7a295123a9430ce1c07e2182c2ac282d506bb32471e5d901eb443da71d9853379a97963aa2e79eb5fdbfb688904a2238733ca07db26ceca5d1e3cb90ba9ed5a
+	b2sums = 9c62f67412b35dfdbe21d0e5f0ec77dd542e65f92edb5ecb82fc4212b7ddde35c278c889cd4cc39edc15044cd23eca89a97ef4304476108e0b8e3ed7eacefb6f
 	b2sums = cb5ba44d3653218aa76bc8b1d7c1d26b3a72dd35da7490d430a5dda727e9750015c28206d8d7e7c29701dd0c3d24198ff159f2566aff72f9f6edb1f493c0a968
 	b2sums = fc19c34e958648930a8d8cc56542ffd8eabdea36954d61e9e2f8c6b7f48bef66a61233c5097a5b4f40b79321bfb16b8ef445de0460af115413f7fd3dea825bc9
 	b2sums = c3b79402f4ae27fd46915e5aab9efb7722ccc2c1d37155119c32e59fce695b784b98bf83aa46e80f6a83756850b8794ee0752eaebd9a9001d48b0f4d5ae791ca
@@ -26,3 +26,7 @@ pkgbase = martin
 	b2sums = e13928d24f652f27b97590512051bf19937f2964c5d92d43c9f3b77b89bb846725c2172e15c532d422a27aa52c7f02d70549f5a524f5ea7b46b4824a16b07d12
 
 pkgname = martin
+
+pkgname = martin-cp
+	pkgdesc = Generate vector map tiles in bulk
+	url = https://maplibre.org/martin/martin-cp.html
