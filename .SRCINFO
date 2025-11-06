@@ -1,0 +1,29 @@
+pkgbase = sololinux-gui
+	pkgdesc = GUI configuration files for SoloLinux (Arch-based distribution)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Solomon-DbW/SoloLinux_GUI
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = hyprland
+	depends = waybar
+	depends = rofi
+	depends = kitty
+	depends = starship
+	depends = ttf-jetbrains-mono-nerd
+	depends = neovim
+	depends = emacs
+	optdepends = ly: Display manager
+	optdepends = zathura: PDF viewer
+	optdepends = fastfetch: System information tool
+	optdepends = hyprpaper: Wallpaper utility
+	optdepends = hyprlock: Screen locker
+	optdepends = wlogout: Logout menu
+	optdepends = swaync: Notification center
+	provides = sololinux-gui
+	conflicts = sololinux-gui-git
+	source = sololinux-gui-1.0.0::git+https://github.com/Solomon-DbW/SoloLinux_GUI.git#branch=main
+	sha256sums = SKIP
+
+pkgname = sololinux-gui

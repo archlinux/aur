@@ -1,0 +1,10 @@
+# Build artifacts
+*.pkg.tar.zst
+*.pkg.tar.xz
+pkg/
+src/
+sololinux-gui-*/
+
+# Temporary files
+*.log
+*~
