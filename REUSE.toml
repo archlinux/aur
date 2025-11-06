@@ -26,4 +26,4 @@ path = [
     "icu-76.patch",
 ]
 SPDX-FileCopyrightText = "cutefish-settings contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
+SPDX-License-Identifier = "GPL-3.0-or-later"

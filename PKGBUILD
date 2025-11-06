@@ -2,11 +2,11 @@
 
 pkgname=cutefish-settings
 pkgver=0.8
-pkgrel=9
+pkgrel=10
 pkgdesc="System Settings application for Cutefish Desktop"
 arch=('x86_64')
 url="https://github.com/cutefishos/settings"
-license=('GPL')
+license=('GPL-3.0-or-later')
 groups=('cutefish')
 depends=('fishui' 'fontconfig' 'freetype2' 'icu' 'libxcursor'
          # qml:
