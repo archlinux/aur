@@ -1,7 +1,7 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=chwall-git
 _gitname=chwall
-pkgver=v0.7.1.dev.46b81a4
+pkgver=v0.7.3.dev.6625d26
 pkgrel=1
 pkgdesc="A tiny wallpaper changer, written in python"
 arch=("any")
@@ -11,11 +11,11 @@ depends=("gdk-pixbuf2" "gobject-introspection-runtime" "gtk3"
          "hicolor-icon-theme" "procps-ng" "python" "python-cssselect"
          "python-gobject" "python-importlib-metadata" "python-lxml"
          "python-pillow" "python-pyxdg" "python-requests" "python-yaml")
-makedepends=("git" "imagemagick" "python-build" "python-installer"
+makedepends=("git" "graphicsmagick" "python-build" "python-installer"
              "python-setuptools" "python-wheel")
 optdepends=("feh: to apply wallpaper on independant desktop manager"
-            "imagemagick: to extract wallpaper size when using feh"
-            "libappindicator-gtk3: to display a tray icon"
+            "graphicsmagick: to extract wallpaper size when using feh"
+            "libappindicator: to display a tray icon"
             "libnotify: to send notification when wallpaper change"
             "xorg-xrandr: to extract screen config when using feh")
 conflicts=("chwall")
