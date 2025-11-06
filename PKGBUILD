@@ -1,7 +1,7 @@
 # Maintainer:  Rubin Simons <me@rubin55.org>
 
 pkgname=rusty-psn-bin
-pkgver=0.5.9
+pkgver=0.5.10
 pkgrel=1
 pkgdesc="A GUI/CLI tool for downloading PS3 and PS4 game updates"
 provides=("rustypsn")
@@ -16,8 +16,8 @@ source=(
     "playstation-store.svg"
 )
 
-sha256sums=('6ea7c4bdb094cac5cec30369091a9e2d97e9d16736f88b6068e247acb4f12cbb'
-            'a82ef9758733a969fe16f0d9363635f34448cc3c39b6d1498f04bd92c8bcd8c1'
+sha256sums=('07015310e38adc7a8b0d1e13c4eb5eab2d6bf212d97d4110ec5e22d52da93f42'
+            '46c66e53d3f8ffc8939cf05ed908109ce38d8212d5f7b8bb7692fbb4d446e7a7'
             '2cb6715bb0cf3646091369385e285c92a2573f1602580f60a51d5c0ea8e638a5'
             '4c6f59e5d15a93b76fc1a90ca4f8283193a870627a958eff62cda952474d089b')
 
