@@ -5,7 +5,7 @@ SHELOPTS=-euo pipefail
 
 .buildenvid: build-dev.Dockerfile
 	docker build \
-	  --net=host \
+	  --network=host \
 	  -f build-dev.Dockerfile \
 	  -t archlinux-build-dev \
 	  --build-arg USERID=$$(id -u) \
@@ -38,9 +38,9 @@ update-checksums: PKGBUILD .buildenvid
 build: PKGBUILD .buildenvid
 	$(BUILDENV) <<EOF
 	namcap PKGBUILD
-	makepkg --noconfirm -s
+	makepkg --noconfirm -C -s -f
 	makepkg --noconfirm -i
-	namcap $$(makepkg --packagelist)
+	makepkg --packagelist | xargs namcap
 	EOF
 
 test:
