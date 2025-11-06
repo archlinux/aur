@@ -1,5 +1,4 @@
 import requests
-from bs4 import BeautifulSoup
 import sys
 import getpass
 import progressbar
@@ -41,35 +40,41 @@ if "www.bricsys.com" in file_url:
     _password = getpass.getpass()
 
     s = requests.session()
-    r = s.get("https://boa.bricsys.com/protected/download.do")
-    soup = BeautifulSoup(r.text, 'html.parser')
-    _url = soup.find_all("form", attrs={"id":"kc-form-login"})[0]["action"]
+    
+    # Keycloak login
+    url = 'https://auth.bricsys.com/auth/realms/bricsys-account/protocol/openid-connect/token'
 
-    headers = {'User-Agent': 'Mozilla/5.0'}
-    payload = {'username':_username, 'password':_password}
-    r = s.post(_url, headers=headers, data=payload)
-    soup = BeautifulSoup(r.text, 'html.parser')
+    payload = {
+    'client_id': 'bricsys-website',
+    'username': _username,
+    'password': _password,
+    'grant_type': 'password'
+    }
+
+    response = s.post(url, data=payload)
+    
     try:
-        _csrf = soup.find_all("token")[0]["data-token"]
+        access_token = response.json()['access_token']
     except IndexError:
         if 'fr' in locale.getlocale()[0]:
             print("Mauvais identifiants Bricsys !")
         else:
             print("Wrong Bricsys credentials !")
         exit(1)
+    
+    # Get signed url
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'User-Agent': 'Mozilla/5.0'
+    }
 
-    r = s.get(f"https://boa.bricsys.com/common/GetDownloadInstallsetData.json?i={version_number}&os={os_number}")
+    r = s.get(f"https://api.bricsys.com/installset/file/{version_number}&os={os_number}", headers = headers)
     rj = r.json()
-    _du = rj['downloadURL']
-    _i = rj['installsets'][0]['id']
-    _if = rj['installsets'][0]['files'][0]['id']
     _su = rj['installsets'][0]['files'][0]['signedUrl']
 
-    headers = {'User-Agent': 'Mozilla/5.0', 'Referer': 'https://www.bricsys.com/protected/download.do'}
-    payload = {'_csrf':_csrf, 'i':_i, 'if':_if, 'accept': 'true', 'signedUrl': _su}
-
+    # Download file
     with open(target_file, "wb") as f:
-        r = s.post("https://boa.bricsys.com/protected/download.do", headers=headers, data=payload, stream=True)
+        r = s.get(_su, headers = {'User-Agent': 'Mozilla/5.0', 'Referer': 'https://www.bricsys.com'}, stream = True)
         total_length = r.headers.get('content-length')
 
         if total_length is None: # no content length header

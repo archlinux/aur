@@ -1,16 +1,16 @@
 pkgname=bricscad-fr_fr
-pkgver=25.2.05
+pkgver=26.1.05
 pkgrel=1
 pkgdesc="Logiciel de CAO DWG"
 arch=("x86_64")
 url="https://www.bricsys.com"
 license=('Custom:bricscad')
-depends=(glibc cairo fontconfig libcups freetype2 gtk3)
+depends=(glibc cairo fontconfig libcups freetype2 gtk3 libxml2)
 makedepends=(python-requests python-beautifulsoup4 python-progressbar python-typing_extensions)
 provides=('bricscad')
 _lang=fr_FR
 _os=2
-_version=9327
+_version=9667
 
 ### Check rpm dependencies
 #sudo pacman -S rpm-tools
@@ -31,6 +31,8 @@ package() {
     cp -dr --no-preserve=ownership ./var "${pkgdir}"/
     # Allow creation of licence file for anyone
     chmod -R 757 "${pkgdir}"/var/bricsys
+    # libxml2 symlink
+    ln -s /usr/lib/libxml2.so "${pkgdir}"/opt/bricsys/bricscad/v26/libxml2.so.2
 }
 
 post_install() {
@@ -63,5 +65,5 @@ post_remove() {
 
     if [ -x "`which gtk-update-icon-cache 2>/dev/null`" ] && [ -x /usr/share/icons/gnome/index.theme ]; then gtk-update-icon-cache --force /usr/share/icons/gnome ; fi
 }
-md5sums=('1ed88931cf84e97516a2b1166cc52651'
-         '5a3d9db674bc7f44f5d2ed018c84c900')
+md5sums=('aa876a280efbdb2f6fadd95452cf593f'
+         'd65e26cae6f83699951dcd33746efea5')
