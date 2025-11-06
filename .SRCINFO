@@ -1,6 +1,6 @@
 pkgbase = python-mocpy
 	pkgdesc = MOC parsing and manipulation in Python
-	pkgver = 0.18.0
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://cds-astro.github.io/mocpy
 	arch = i686
@@ -20,15 +20,17 @@ pkgbase = python-mocpy
 	makedepends = python-astropy-healpix
 	makedepends = python-cdshealpix
 	makedepends = python-networkx
+	makedepends = python-toml
 	makedepends = pandoc
-	source = https://github.com/cds-astro/mocpy/archive/refs/tags/v0.18.0.tar.gz
-	md5sums = ddb9439c4d2f9f5f7ec912078158aaea
+	source = https://github.com/cds-astro/mocpy/archive/refs/tags/v0.19.0.tar.gz
+	md5sums = aa459277f409b59dfb0c5fcc8699922c
 
 pkgname = python-mocpy
-	depends = python>=3.8
-	depends = python-cdshealpix>=0.6.4
-	depends = python-matplotlib
-	depends = python-networkx>=2.5
+	depends = python>=3.9
+	depends = python-astropy
+	optdepends = python-cdshealpix>=0.6.4: plots, used in fill and border
+	optdepends = python-matplotlib: plots, used in fill and border
+	optdepends = python-networkx>=2.5: plots, used in get_boundaries
 	optdepends = python-mocpy-doc: Documentation for MOCPy
 
 pkgname = python-mocpy-doc
