@@ -1,7 +1,7 @@
 pkgbase = fakechroot-git
 	pkgdesc = Gives a fake chroot environment
 	pkgver = 2.20.1.r7.gb42d1fb
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dex4er/fakechroot
 	arch = i686
 	arch = x86_64
@@ -14,10 +14,12 @@ pkgbase = fakechroot-git
 	conflicts = fakechroot
 	options = staticlibs
 	source = git+https://github.com/dex4er/fakechroot.git
-	source = fix_glibc_2.33_compatibility.patch::https://github.com/lipnitsk/fakechroot/commit/693a3597ea7fccfb62f357503ff177bd3e3d5a89.patch
-	source = remove_ver_from_lstat.patch::https://github.com/lipnitsk/fakechroot/commit/75d7e6fa191c11a791faff06a0de86eaa7801d05.patch
+	source = fix_glibc_2.33_compatibility.patch::https://patch-diff.githubusercontent.com/raw/dex4er/fakechroot/pull/85.patch
+	source = fix_AC_PATH_PROG_typo.patch::https://patch-diff.githubusercontent.com/raw/dex4er/fakechroot/pull/80.patch
+	source = call_getcwd_real_for_relative_paths.patch::https://patch-diff.githubusercontent.com/raw/dex4er/fakechroot/pull/100.patch
 	sha256sums = SKIP
-	sha256sums = 4038238c9a3ec67b6a749a55eb206f92fcc75a8e762d27b1cca236bd49fdcd40
-	sha256sums = 2ca655d046390b2822c0e8fc65c32a3c8851542896452e940b8e16d57f0dd0e5
+	sha256sums = 2b2dc512e059df80c37341c4c35d591279a16e7bae23670646c211492fdc9de1
+	sha256sums = e52bd008b80d91c420a39bdf9512311aed957ed0694dcf0e91a9dfb45dc9ad3a
+	sha256sums = 1df4ac7967fcaeacf0e5036d4c04272ca8a291e998fa1ee6953b250e072ffc3e
 
 pkgname = fakechroot-git
