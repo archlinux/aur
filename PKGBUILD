@@ -3,8 +3,8 @@ pkgbase=seanime-git
 pkgname=('seanime-server-git' 'seanime-denshi-git')
 _pkgname=seanime
 _electronver=36
-pkgver=v3.0.0.r0.g7930aa8
-pkgrel=3
+pkgver=v3.0.1.r0.g0d59b28
+pkgrel=1
 pkgdesc="Open-source media server with a web interface and desktop app for anime and manga."
 arch=('x86_64' 'aarch64')
 url="https://github.com/5rahim/seanime"
@@ -59,7 +59,7 @@ build() {
     # Prepare for server
     mkdir -p binaries
 
-    # Server: Can be build for both try to comform with upstream
+    # Server: Can be build for both (x64/arm64) try to conform with upstream
 
     if [ "$CARCH" = aarch64 ]; then
     export GOARCH=arm64
@@ -129,7 +129,7 @@ package_seanime-denshi-git() {
     cd "${_pkgname}/seanime-denshi"
 
     install -Dm644 "dist/linux-unpacked/resources/app.asar" -t "${pkgdir}/usr/lib/${_pkgname}-denshi"
-    install -Dm755 "dist/linux-unpacked/resources/binaries/seanime-server-linux-${GOARCH}" -t "${pkgdir}/usr/lib/electron36/resources/binaries"
+    install -Dm755 "dist/linux-unpacked/resources/binaries/seanime-server-linux-${GOARCH}" -t "${pkgdir}/usr/lib/electron$_electronver/resources/binaries"
     for icon in $(find assets -regex '.*/[0-9]+x[0-9]+\.png' | sort -n); do
     size=$(basename -s .png "$icon")
     install -Dm644 "assets/$size.png" "${pkgdir}/usr/share/icons/hicolor/${size}/apps/${_pkgname}-denshi.png"
