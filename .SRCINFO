@@ -1,6 +1,6 @@
 pkgbase = cutecosmic-git
 	pkgdesc = Qt platform theme for the COSMIC™ Desktop environment
-	pkgver = r7.14e2288
+	pkgver = 0.1.r0.g896d445
 	pkgrel = 1
 	url = https://github.com/IgKh/cutecosmic
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = cutecosmic-git
 	makedepends = git
 	makedepends = vulkan-headers
 	depends = qt6-base
+	depends = qt6-declarative
 	provides = cutecosmic
 	conflicts = cutecosmic
 	source = git+https://github.com/IgKh/cutecosmic.git

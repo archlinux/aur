@@ -1,12 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cutecosmic-git
-pkgver=r7.14e2288
+pkgver=0.1.r0.g896d445
 pkgrel=1
 pkgdesc="Qt platform theme for the COSMIC™ Desktop environment"
 arch=('x86_64')
 url="https://github.com/IgKh/cutecosmic"
 license=('GPL-3.0-or-later')
-depends=('qt6-base')
+depends=(
+  'qt6-base'
+  'qt6-declarative'
+)
 makedepends=(
   'cargo'
   'cmake'
@@ -20,7 +23,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
