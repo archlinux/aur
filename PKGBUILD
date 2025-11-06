@@ -11,7 +11,7 @@ depends=('java-runtime-headless>=8')
 makedepends=('git' 'java-environment>=8' 'make')
 optdepends=('java-runtime>=8: graphical user interface'
             'java-runtime-headless>=16: support for socket files for server/client communication'
-            'java-runtime-headless>=23: profile constructors with the new class-file API'
+            'java-runtime-headless>=24: profile constructors with the new class-file API'
            )
 provides=("patrjprof=${pkgver}")
 conflicts=('patrjprof')
