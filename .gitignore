@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.nvchecker.toml
+!PKGBUILD
+!.SRCINFO
+!bash_completion
+!*.patch

@@ -1,22 +1,22 @@
-# Maintainer: Christian Hesse <mail@eworm.de>
+# Maintainer: Edmund Lodewijks <edmund@proteamail.com>
+# Contributor: Christian Hesse <mail@eworm.de>
 
 pkgname=claws-mail-git
-pkgver=4.1.1.r1.g1e3b95e1d
+pkgver=4.3.1.r173.g85f0e2c65
 pkgrel=1
 pkgdesc='A GTK+ based e-mail client - git checkout'
 arch=('i686' 'x86_64')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 url='https://www.claws-mail.org/'
 depends=('gtk3' 'gnutls' 'startup-notification' 'enchant' 'gpgme'
-         'libetpan' 'compface' 'libsm' 'dbus-glib')
-makedepends=('git' 'spamassassin' 'bogofilter' 'networkmanager' 'valgrind'
+         'libetpan' 'compface' 'libsm' 'dbus-glib' 'webkit2gtk' 'perl')
+makedepends=('git' 'glib2-devel' 'spamassassin' 'bogofilter' 'networkmanager'
              # dependencies for plugins
              'libgdata' 'libnotify' 'libcanberra' 'poppler-glib' 'libytnef' 'libical'
-             'dillo' 'python' 'gumbo-parser'
+             'python' 'gumbo-parser'
              # deps to build the docs
              'docbook-utils' 'texlive-formatsextra' 'lynx')
 optdepends=('python:           needed for some tools'
-            'perl:              needed for some tools and perl plugin'
             'spamassassin:      adds support for spamfiltering'
             'bogofilter:        adds support for spamfiltering'
             'libnotify:         for notification plugin'
@@ -31,14 +31,15 @@ optdepends=('python:           needed for some tools'
             'ghostscript:       for pdf viewer plugin'
             'libical:           for vcalendar plugin'
             'dillo:             for dillo html viewer plugin'
-            'webkit2gtk:        for fancy webkit html viewer plugin'
             'gumbo-parser:      for litehtml plugin')
 conflicts=('claws-mail')
 provides=('claws' 'claws-mail')
-source=('claws-mail::git://git.claws-mail.org/claws.git'
-        'bash_completion')
-sha256sums=('SKIP'
-            '3f6c248b8658cd7a62186bff572cce2525712a498f363cbbda1ed459021c28cb')
+source=(
+    'claws-mail::git://git.claws-mail.org/claws.git'
+    'bash_completion'
+)
+b2sums=('SKIP'
+        '20de724d8c10e4c5e9bf22abbd71a71a4da68e0cf1009fb1b9858ea5e55e74aaffadad6689f4f6669532e492c6ee08100800474a90af6b8dcb8b590358858a2b')
 
 pkgver() {
 	cd claws-mail/
@@ -56,24 +57,42 @@ pkgver() {
 }
 
 prepare() {
-  cd claws-mail/
-
-  # run autogen without options
-  NOCONFIGURE=1 ./autogen.sh
+    cd claws-mail/
+    autopoint -f
+    autoreconf -fvi
 }
 
 build() {
   cd claws-mail/
 
-  ./configure --prefix=/usr --disable-static \
+  ./configure \
+    --prefix=/usr \
+    --disable-static \
+    --disable-dependency-tracking \
+    --disable-rpath \
+    --enable-acpi_notifier-plugin \
+    --enable-address-keeper-plugin \
+    --enable-archive-plugin \
+    --enable-att_remover-plugin \
+    --enable-attachwarner-plugin \
+    --enable-bogofilter-plugin \
     --enable-enchant \
+    --enable-fancy-plugin \
     --enable-gnutls \
     --enable-ldap \
-    --enable-crash-dialog \
+    --enable-libetpan \
+    --enable-litehtml_viewer-plugin \
+    --enable-plugins-fetchinfo \
+    --enable-plugins-libravatar \
+    --enable-plugins-managesieve \
+    --enable-plugins-newmail \
+    --enable-plugins-notification \
+    --enable-plugins-pdf-viewer \
+    --enable-plugins-spam-report \
+    --enable-plugins-vcalendar \
     --enable-pgpmime-plugin \
+    --enable-smime-plugin \
     --enable-spamassassin-plugin \
-    --enable-bogofilter-plugin \
-    --enable-fancy-plugin \
     --enable-manual
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
