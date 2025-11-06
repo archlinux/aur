@@ -4,20 +4,17 @@
 # 
 
 pkgname=idris2
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="Functional Programming Language with Dependent Types"
 url="https://idris-lang.github.io/"
 license=('BSD-3-Clause')
 arch=('x86_64')
-depends=('chez-scheme')
+depends=('chez-scheme' 'gmp')
 optdepends=('nodejs: for the node backend'
             'racket: for the racket backend')
-# TODO: Revert to this? Depends on https://github.com/idris-lang/Idris2/issues/3173
-#       which is likely to be open for a while (again, no full-time devs).
-# source=("https://www.idris-lang.org/idris2-src/idris2-${pkgver}.tgz")
-source=("https://github.com/idris-lang/Idris2/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7a8612a1cd9f1f737893247260c6942bf93f193375d4b3df0148f7abf74d6e14')
+source=("https://www.idris-lang.org/releases/idris2-${pkgver}.tgz")
+sha256sums=('940a283cb66b0097cab0d24fe10341274fab75cb3af58dc715944d6ca7230665')
 
 _srcname="Idris2-$pkgver"
 
