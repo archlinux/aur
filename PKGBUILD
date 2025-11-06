@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034
 
 pkgname=vinegar
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Fast and robust bootstrapper for Roblox that has many ease-of-use features."
 arch=("x86_64")
@@ -14,9 +14,10 @@ makedepends=("git" "go" "vulkan-headers" "wayland-protocols")
 optdepends=("gamemode: Gamemode integration"
             "vulkan-driver: Vulkan support in GUI"
             "wine: A required dependency (made optional for flexbility)")
-conflicts=("vinegar-git")
+conflicts=("vinegar-git" "vinegar-git-debug")
 source=("https://github.com/vinegarhq/vinegar/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("57cc1124c90a33c436a9f5c3985b16a644f4fba805a24ccd9d5b131532aea572")
+sha256sums=("2c146918abfa71085b14c2d020fa6c2d026152a4d5182e9afe7f1c8a886dd6e5")
+options=(!debug)
 
 prepare() {
   # Extract the tarball
