@@ -1,6 +1,6 @@
 pkgbase = sunsetr-git
 	pkgdesc = Automatic blue light filter for Hyprland, Niri, and everything Wayland (git version)
-	pkgver = r338.a6ccbc6
+	pkgver = r344.59d2dfe
 	pkgrel = 1
 	url = https://github.com/psi4j/sunsetr
 	arch = x86_64
