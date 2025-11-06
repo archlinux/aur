@@ -1,0 +1,113 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# --- Config -------------------------------------------------------------
+PREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/plutonium-wine"
+PLUTODIR="${XDG_DATA_HOME:-$HOME/.local/share}/plutonium"
+EXE="/opt/plutonium/plutonium.exe"
+STAMP="$PREFIX/.plutonium-setup.done"
+
+# Prefer 64-bit prefix
+export WINEARCH=win64
+export WINEPREFIX="$PREFIX"
+
+# Optional performance toggles (safe to leave on)
+: "${WINEESYNC:=1}"
+: "${WINEFSYNC:=1}"
+export WINEESYNC WINEFSYNC
+
+mkdir -p "$PREFIX" "$PLUTODIR"
+
+# --- Helpers ------------------------------------------------------------
+have() { command -v "$1" >/dev/null 2>&1; }
+log()  { printf '%s\n' "$*" >&2; }
+
+zenity_progress_start() {
+  if have zenity && [ -t 0 ] && [ -t 1 ]; then
+    # If launched from a desktop, stdin/stdout might not be a TTY; still try zenity.
+    :
+  fi
+  if have zenity; then
+    # Start a background zenity progress and write to its stdin via FD 3
+    exec 3> >(
+      zenity --progress \
+        --title="Plutonium: First-time setup" \
+        --text="Preparing..." \
+        --percentage=0 --auto-close --no-cancel \
+        2>/dev/null
+    )
+    ZENITY_ON=1
+  else
+    ZENITY_ON=0
+  fi
+}
+
+zenity_progress_step() {
+  # $1 = percent int, $2 = message
+  if [ "${ZENITY_ON:-0}" -eq 1 ]; then
+    echo "$1" >&3
+    echo "# $2" >&3
+  else
+    log "[setup] $2 ($1%)"
+  fi
+}
+
+zenity_progress_end() {
+  if [ "${ZENITY_ON:-0}" -eq 1 ]; then
+    # Close the fifo
+    exec 3>&-
+  fi
+}
+
+run_dxvk_install() {
+  if have setup_dxvk.sh; then
+    WINEPREFIX="$WINEPREFIX" setup_dxvk.sh install >/dev/null 2>&1 || true
+  else
+    winetricks -q dxvk || true
+  fi
+}
+
+first_time_setup() {
+  zenity_progress_start
+  zenity_progress_step 5  "Creating Wine prefix"
+  wineboot -u >/dev/null 2>&1 || true
+
+  zenity_progress_step 20 "Installing .NET 4.8 (this may take a while)"
+  # dotnet48 can be slow; allow failure message for user guidance
+  if ! winetricks -q --force dotnet48; then
+    zenity_progress_end
+    log "dotnet48 installation failed. Try: WINEPREFIX=\"$WINEPREFIX\" winetricks dotnet48"
+    exit 1
+  fi
+
+  zenity_progress_step 40 "Installing Visual C++ runtime"
+  # Try 2019 first, fall back to 2022; both are fine
+  winetricks -q vcrun2019 || winetricks -q vcrun2022 || true
+
+  zenity_progress_step 55 "Installing audio and fonts"
+  winetricks -q xact xact_x64 || true
+  winetricks -q d3dcompiler_47 corefonts || true
+
+  zenity_progress_step 70 "Enabling DXVK"
+  run_dxvk_install
+
+  zenity_progress_step 85 "Applying Windows 10 compatibility"
+  winetricks -q win10 || true
+
+  zenity_progress_step 95 "Finalizing"
+  touch "$STAMP"
+  zenity_progress_end
+}
+
+# --- Main ---------------------------------------------------------------
+# Only do heavy setup once per prefix
+if [ ! -f "$STAMP" ]; then
+  log "[plutonium] First-time setup in: $WINEPREFIX"
+  first_time_setup
+else
+  # Lightweight prefix sanity each run
+  wineboot -u >/dev/null 2>&1 || true
+fi
+
+log "[plutonium] Launching Plutonium..."
+exec wine "$EXE" "$@"

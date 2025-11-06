@@ -1,0 +1,21 @@
+post_install() {
+  cat <<'EOF'
+[plutonium-launcher-bin]
+On first run, this will create a per-user Wine prefix at:
+  ~/.local/share/plutonium-wine
+and install required Winetricks components (dotnet48, vcrun, xact, dxvk).
+
+If you ever want to reset it, delete that folder and run:
+  plutonium-launcher
+
+User data (prefix) is not managed by pacman and won't be removed on uninstall.
+EOF
+}
+
+post_remove() {
+  cat <<'EOF'
+[plutonium-launcher-bin] removed.
+Per-user Wine prefixes (e.g., ~/.local/share/plutonium-wine) remain.
+Delete them manually if you want a clean slate.
+EOF
+}

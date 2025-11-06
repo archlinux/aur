@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Plutonium
+Comment=Plutonium Launcher (BO2/BO1/MW3/WaW) via Wine
+Exec=plutonium-launcher
+Terminal=false
+Type=Application
+Categories=Game;
+StartupNotify=true
+Icon=plutonium
