@@ -2,8 +2,8 @@
 # Contributor: Ted To <wintrymix@theo.to>
 
 pkgname="brlaser"
-pkgver=6.2.7
-pkgrel=2
+pkgver=6.2.8
+pkgrel=1
 pkgdesc="Brother laser printer driver"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/Owl-Maintain/brlaser"
@@ -11,7 +11,7 @@ license=('GPL-2.0-or-later')
 depends=('cups' 'ghostscript')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('f82364376df149710cf63eb49a13fa900c6bdd39543eed156c6b396fd4156e612b2de36a8c9e71e691c4c22de3cc83c0ac818477514be5a48edfaf9d5beee57c')
+sha512sums=('6cbfb2376dbbc06f55a605a160b946ca810191d9a88c1380adb5fcbac10e37c36ec77604ab0ee0fb2595d86306f87d322b0cea314166a8a2d3999bd43b9365ce')
 
 build() {
 	local cmake_options=(
