@@ -1,0 +1,13 @@
+pkgbase = eyefuck_language
+	pkgdesc = Compiler of eyefuck Programming Language
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/CaSilicate-dev/eyefuck_language
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc
+	source = https://github.com/CaSilicate-dev/eyefuck_language/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = 4d7ecfced49a71d5a823ec3aa9f92f5d1874a409db405f8a6b2a899d6f69fc78
+
+pkgname = eyefuck_language
