@@ -1,14 +1,14 @@
 # Maintainer: Lukas Grossar <lukas.grossar@gmail.com>
 
 pkgname=polaris-bin
-pkgver=10.1.1
+pkgver=10.1.2
 pkgrel=1
 pkgdesc="Validation of best practices in Kubernetes"
 arch=('x86_64')
 url="https://github.com/FairwindsOps/polaris"
 license=('Apache-2.0')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/FairwindsOps/polaris/releases/download/${pkgver}/polaris_linux_amd64.tar.gz")
-sha256sums=('b82a3b59f3c1e6eea0d0d59000313542448fc4f7c82c7f9ae3dbf8fcf5426f83')
+sha256sums=('8c7bb7ecfd1dbe1cc7c532814267f771f25c34d1a2e42a53fff503d28ebe2108')
 
 package() {
 	install -Dm 755 "$srcdir/polaris" -t "$pkgdir/usr/bin"
