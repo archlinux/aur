@@ -1,14 +1,14 @@
 pkgbase = ossfs2-bin
 	pkgdesc = High-performance FUSE client to mount Alibaba Cloud OSS buckets
-	pkgver = 2.0.3
-	pkgrel = 2
+	pkgver = 2.0.4
+	pkgrel = 1
 	url = https://www.alibabacloud.com/help/en/oss/developer-reference/ossfs-2-0/
 	arch = x86_64
 	license = unknown
 	makedepends = patchelf
 	depends = fuse3
 	provides = ossfs2
-	source = ossfs2_2.0.3_linux_x86_64.rpm::https://gosspublic.alicdn.com/ossfs/ossfs2_2.0.3_linux_x86_64.rpm
-	sha256sums = 75d21162db5fca746db09d45ac6e47504dd2e1e8ebb2a6ccedf8cdee6aca56c1
+	source = ossfs2_2.0.4_linux_x86_64.rpm::https://gosspublic.alicdn.com/ossfs/ossfs2_2.0.4_linux_x86_64.rpm
+	sha256sums = 54a263024ce1e0e743bd0d2baf9b7b305b646fc1c6430ebccebfbda2689933bd
 
 pkgname = ossfs2-bin
