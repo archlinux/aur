@@ -2,7 +2,7 @@
 
 pkgname=cannonball
 pkgver=0.34
-pkgrel=1
+pkgrel=2
 pkgdesc='CannonBall: The Enhanced OutRun Engine'
 arch=('i686' 'x86_64')
 url="https://reassembler.blogspot.com"
@@ -28,7 +28,9 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver/build
-  cmake ../cmake -DTARGET=linux.cmake -DOpenGL_GL_PREFERENCE=GLVND -B .
+  cmake ../cmake \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -DTARGET=linux.cmake -DOpenGL_GL_PREFERENCE=GLVND -B .
   make
 }
 

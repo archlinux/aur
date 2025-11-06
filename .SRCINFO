@@ -1,7 +1,7 @@
 pkgbase = cannonball
 	pkgdesc = CannonBall: The Enhanced OutRun Engine
 	pkgver = 0.34
-	pkgrel = 1
+	pkgrel = 2
 	url = https://reassembler.blogspot.com
 	install = cannonball.install
 	arch = i686
