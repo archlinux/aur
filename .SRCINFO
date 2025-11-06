@@ -1,0 +1,17 @@
+pkgbase = elephant-bookmarks
+	pkgdesc = bookmarks provider for elephant
+	pkgver = 2.14.3
+	pkgrel = 1
+	url = https://github.com/abenz1267/elephant
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = go
+	depends = sqlite3
+	depends = jq
+	provides = elephant-bookmarks
+	conflicts = elephant-bookmarks
+	source = https://github.com/abenz1267/elephant/archive/refs/tags/v2.14.3.tar.gz
+	sha256sums = 9201a52063f45d918a6362b08730f439d0e922445b86fb5dc9cc742e9a50046d
+
+pkgname = elephant-bookmarks
