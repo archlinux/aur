@@ -1,4 +1,4 @@
-From 0182fed91bf397fed59bacc49664e64a98404280 Mon Sep 17 00:00:00 2001
+From 3489d369a8199cad73aa251c325fadf2c6f40b30 Mon Sep 17 00:00:00 2001
 From: shadichy <shadichy@blisslabs.org>
 Date: Sun, 2 Nov 2025 04:20:28 +0700
 Subject: [PATCH 4/7] ntfsplus: file.c: Using `mmap` instead of `mmap_prepare`
@@ -9,10 +9,10 @@ Subject: [PATCH 4/7] ntfsplus: file.c: Using `mmap` instead of `mmap_prepare`
  1 file changed, 39 insertions(+)
 
 diff --git a/fs/ntfsplus/file.c b/fs/ntfsplus/file.c
-index 27c9e47d8..ea32d8091 100644
+index e2e506a62..ac42e1129 100644
 --- a/fs/ntfsplus/file.c
 +++ b/fs/ntfsplus/file.c
-@@ -706,6 +706,7 @@ static const struct vm_operations_struct ntfs_file_vm_ops = {
+@@ -694,6 +694,7 @@ static const struct vm_operations_struct ntfs_file_vm_ops = {
  	.page_mkwrite	= ntfs_filemap_page_mkwrite,
  };
  
@@ -20,7 +20,7 @@ index 27c9e47d8..ea32d8091 100644
  static int ntfs_file_mmap_prepare(struct vm_area_desc *desc)
  {
  	struct file *file = desc->file;
-@@ -739,6 +740,40 @@ static int ntfs_file_mmap_prepare(struct vm_area_desc *desc)
+@@ -727,6 +728,40 @@ static int ntfs_file_mmap_prepare(struct vm_area_desc *desc)
  	return 0;
  }
  
@@ -61,7 +61,7 @@ index 27c9e47d8..ea32d8091 100644
  static int ntfs_fiemap(struct inode *inode, struct fiemap_extent_info *fieinfo,
  		u64 start, u64 len)
  {
-@@ -1037,7 +1072,11 @@ const struct file_operations ntfs_file_ops = {
+@@ -1016,7 +1051,11 @@ const struct file_operations ntfs_file_ops = {
  	.read_iter	= ntfs_file_read_iter,
  	.write_iter	= ntfs_file_write_iter,
  	.fsync		= ntfs_file_fsync,

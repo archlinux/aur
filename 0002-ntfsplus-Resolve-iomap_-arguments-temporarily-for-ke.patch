@@ -1,14 +1,15 @@
-From 5ef66cd78fe6dda6bdcaa5c954f16b3b15a28bd1 Mon Sep 17 00:00:00 2001
+From b1383d4ca6c8a5c6ab82e577911c82463aaef61e Mon Sep 17 00:00:00 2001
 From: shadichy <shadichy@blisslabs.org>
-Date: Fri, 24 Oct 2025 01:48:52 +0700
+Date: Thu, 6 Nov 2025 16:39:19 +0700
 Subject: [PATCH 2/7] ntfsplus: Resolve iomap_* arguments (temporarily) for
  kernel older than 6.17
 
 ---
  fs/ntfsplus/aops.c  |  9 +++++++++
- fs/ntfsplus/file.c  | 35 ++++++++++++++++++++++++++++-------
- fs/ntfsplus/inode.c |  5 ++++-
- 3 files changed, 41 insertions(+), 8 deletions(-)
+ fs/ntfsplus/file.c  | 14 +++++++-------
+ fs/ntfsplus/inode.c |  2 +-
+ fs/ntfsplus/inode.h | 13 +++++++++++++
+ 4 files changed, 30 insertions(+), 8 deletions(-)
 
 diff --git a/fs/ntfsplus/aops.c b/fs/ntfsplus/aops.c
 index 50c804be3..b90b40aa8 100644
@@ -42,109 +43,107 @@ index 50c804be3..b90b40aa8 100644
  
  static int ntfs_swap_activate(struct swap_info_struct *sis,
 diff --git a/fs/ntfsplus/file.c b/fs/ntfsplus/file.c
-index b4114017b..27c9e47d8 100644
+index b4114017b..e2e506a62 100644
 --- a/fs/ntfsplus/file.c
 +++ b/fs/ntfsplus/file.c
-@@ -293,7 +293,10 @@ int ntfs_setattr(struct mnt_idmap *idmap, struct dentry *dentry,
+@@ -291,7 +291,7 @@ int ntfs_setattr(struct mnt_idmap *idmap, struct dentry *dentry,
+ 			/* Serialize against page faults */
+ 			if (NInoNonResident(NTFS_I(vi)) &&
  			    attr->ia_size < old_size) {
- 				err = iomap_truncate_page(vi, attr->ia_size, NULL,
+-				err = iomap_truncate_page(vi, attr->ia_size, NULL,
++				err = __iomap_truncate_page(vi, attr->ia_size, NULL,
  							  &ntfs_read_iomap_ops,
--							  &ntfs_iomap_folio_ops, NULL);
-+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0))
-+							  &ntfs_iomap_folio_ops,
-+#endif
-+								NULL);
+ 							  &ntfs_iomap_folio_ops, NULL);
  				if (err)
- 					goto out;
- 			}
-@@ -312,7 +315,10 @@ int ntfs_setattr(struct mnt_idmap *idmap, struct dentry *dentry,
+@@ -310,7 +310,7 @@ int ntfs_setattr(struct mnt_idmap *idmap, struct dentry *dentry,
+ 				loff_t len = min_t(loff_t,
+ 							round_up(old_size, PAGE_SIZE) - old_size,
  							attr->ia_size - old_size);
- 				err = iomap_zero_range(vi, old_size, len,
+-				err = iomap_zero_range(vi, old_size, len,
++				err = __iomap_zero_range(vi, old_size, len,
  						       NULL, &ntfs_read_iomap_ops,
--						       &ntfs_iomap_folio_ops, NULL);
-+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0))
-+						 &ntfs_iomap_folio_ops,
-+#endif
-+						 NULL);
+ 						       &ntfs_iomap_folio_ops, NULL);
  			}
- 		}
- 		if (ia_valid == ATTR_SIZE)
-@@ -630,7 +636,10 @@ static ssize_t ntfs_file_write_iter(struct kiocb *iocb, struct iov_iter *from)
+@@ -629,7 +629,7 @@ static ssize_t ntfs_file_write_iter(struct kiocb *iocb, struct iov_iter *from)
+ 
  			offset = iocb->ki_pos;
  			iocb->ki_flags &= ~IOCB_DIRECT;
- 			written = iomap_file_buffered_write(iocb, from,
--					&ntfs_write_iomap_ops, &ntfs_iomap_folio_ops,
-+					&ntfs_write_iomap_ops,
-+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0))
-+					&ntfs_iomap_folio_ops,
-+#endif
+-			written = iomap_file_buffered_write(iocb, from,
++			written = __iomap_file_buffered_write(iocb, from,
+ 					&ntfs_write_iomap_ops, &ntfs_iomap_folio_ops,
  					NULL);
  			if (written < 0) {
- 				err = written;
-@@ -650,7 +659,10 @@ static ssize_t ntfs_file_write_iter(struct kiocb *iocb, struct iov_iter *from)
+@@ -649,7 +649,7 @@ static ssize_t ntfs_file_write_iter(struct kiocb *iocb, struct iov_iter *from)
+ 							 end >> PAGE_SHIFT);
  		}
  	} else {
- 		ret = iomap_file_buffered_write(iocb, from, &ntfs_write_iomap_ops,
--				&ntfs_iomap_folio_ops, NULL);
-+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0))
-+				&ntfs_iomap_folio_ops,
-+#endif
-+				NULL);
+-		ret = iomap_file_buffered_write(iocb, from, &ntfs_write_iomap_ops,
++		ret = __iomap_file_buffered_write(iocb, from, &ntfs_write_iomap_ops,
+ 				&ntfs_iomap_folio_ops, NULL);
  	}
  out:
- 	if (ret < 0 && ret != -EIOCBQUEUED) {
-@@ -937,7 +949,10 @@ static long ntfs_fallocate(struct file *file, int mode, loff_t offset, loff_t le
+@@ -935,7 +935,7 @@ static long ntfs_fallocate(struct file *file, int mode, loff_t offset, loff_t le
+ 
+ 			to = min_t(loff_t, (start_vcn + 1) << vol->cluster_size_bits,
  				   end_offset);
- 			err = iomap_zero_range(vi, offset, to - offset, NULL,
+-			err = iomap_zero_range(vi, offset, to - offset, NULL,
++			err = __iomap_zero_range(vi, offset, to - offset, NULL,
  					       &ntfs_read_iomap_ops,
--					       &ntfs_iomap_folio_ops, NULL);
-+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0))
-+					       &ntfs_iomap_folio_ops,
-+#endif
-+					       NULL);
+ 					       &ntfs_iomap_folio_ops, NULL);
  			if (err < 0 || (end_vcn - start_vcn) == 1)
- 				goto out;
- 			start_vcn++;
-@@ -948,7 +963,10 @@ static long ntfs_fallocate(struct file *file, int mode, loff_t offset, loff_t le
+@@ -946,7 +946,7 @@ static long ntfs_fallocate(struct file *file, int mode, loff_t offset, loff_t le
+ 			loff_t from;
+ 
  			from = (end_vcn - 1) << vol->cluster_size_bits;
- 			err = iomap_zero_range(vi, from, end_offset - from, NULL,
+-			err = iomap_zero_range(vi, from, end_offset - from, NULL,
++			err = __iomap_zero_range(vi, from, end_offset - from, NULL,
  					       &ntfs_read_iomap_ops,
--					       &ntfs_iomap_folio_ops, NULL);
-+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0))
-+					       &ntfs_iomap_folio_ops,
-+#endif
-+					       NULL);
+ 					       &ntfs_iomap_folio_ops, NULL);
  			if (err < 0 || (end_vcn - start_vcn) == 1)
- 				goto out;
- 			end_vcn--;
-@@ -1000,7 +1018,10 @@ static long ntfs_fallocate(struct file *file, int mode, loff_t offset, loff_t le
+@@ -998,7 +998,7 @@ static long ntfs_fallocate(struct file *file, int mode, loff_t offset, loff_t le
+ 			loff_t len = min_t(loff_t,
+ 					   round_up(old_size, PAGE_SIZE) - old_size,
  					   offset - old_size);
- 			err = iomap_zero_range(vi, old_size, len, NULL,
+-			err = iomap_zero_range(vi, old_size, len, NULL,
++			err = __iomap_zero_range(vi, old_size, len, NULL,
  					       &ntfs_read_iomap_ops,
--					       &ntfs_iomap_folio_ops, NULL);
-+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0))
-+					       &ntfs_iomap_folio_ops,
-+#endif
-+					       NULL);
+ 					       &ntfs_iomap_folio_ops, NULL);
  		}
- 		NInoSetFileNameDirty(ni);
- 		inode_set_mtime_to_ts(vi, inode_set_ctime_current(vi));
 diff --git a/fs/ntfsplus/inode.c b/fs/ntfsplus/inode.c
-index 28925d204..dd0ee4f86 100644
+index 28925d204..9bb036293 100644
 --- a/fs/ntfsplus/inode.c
 +++ b/fs/ntfsplus/inode.c
-@@ -2419,7 +2419,10 @@ int ntfs_extend_initialized_size(struct inode *vi, const loff_t offset,
- 		err = iomap_zero_range(vi, old_init_size,
+@@ -2416,7 +2416,7 @@ int ntfs_extend_initialized_size(struct inode *vi, const loff_t offset,
+ 		return err;
+ 
+ 	if (!NInoCompressed(ni) && old_init_size < offset) {
+-		err = iomap_zero_range(vi, old_init_size,
++		err = __iomap_zero_range(vi, old_init_size,
  				       offset - old_init_size,
  				       NULL, &ntfs_read_iomap_ops,
--				       &ntfs_iomap_folio_ops, NULL);
-+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0))
-+					     &ntfs_iomap_folio_ops,
+ 				       &ntfs_iomap_folio_ops, NULL);
+diff --git a/fs/ntfsplus/inode.h b/fs/ntfsplus/inode.h
+index 0966f5916..4641ca066 100644
+--- a/fs/ntfsplus/inode.h
++++ b/fs/ntfsplus/inode.h
+@@ -351,4 +351,17 @@ int ntfs_extend_initialized_size(struct inode *vi, const loff_t offset,
+ 		const loff_t new_size);
+ void ntfs_set_vfs_operations(struct inode *inode, mode_t mode, dev_t dev);
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0)
++#define __iomap_file_buffered_write iomap_file_buffered_write
++#define __iomap_truncate_page iomap_truncate_page
++#define __iomap_zero_range iomap_zero_range
++#else
++#define __iomap_file_buffered_write(iocb, from, ops, __write_ops, private) \
++	iomap_file_buffered_write(iocb, from, ops, private)
++#define __iomap_truncate_page(inode, pos, did_zero, ops, __write_ops, private) \
++	iomap_truncate_page(inode, pos, did_zero, ops, private)
++#define __iomap_zero_range(inode, pos, len, did_zero, ops, __write_ops, private) \
++	iomap_zero_range(inode, pos, len, did_zero, ops, private)
 +#endif
-+					     NULL);
- 		if (err)
- 			return err;
- 	}
++
+ #endif /* _LINUX_NTFS_INODE_H */
 -- 
 2.51.2
 

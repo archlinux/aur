@@ -1,4 +1,4 @@
-From e36a3db1808d1bc3fb5f0a6eba25c3483fc116c2 Mon Sep 17 00:00:00 2001
+From 3865635d63b5369380eaf823d8bf96adbc7ba1d8 Mon Sep 17 00:00:00 2001
 From: shadichy <shadichy@blisslabs.org>
 Date: Mon, 3 Nov 2025 17:49:51 +0700
 Subject: [PATCH 3/7] ntfsplus: Backport ntfs_iomap.c functions to kernels
@@ -52,7 +52,7 @@ index a6d2c9e01..5381ad904 100644
 +#endif
 \ No newline at end of file
 diff --git a/fs/ntfsplus/ntfs_iomap.h b/fs/ntfsplus/ntfs_iomap.h
-index b1a5d55fa..a7df6a42b 100644
+index b1a5d55fa..eac0c9c60 100644
 --- a/fs/ntfsplus/ntfs_iomap.h
 +++ b/fs/ntfsplus/ntfs_iomap.h
 @@ -12,6 +12,10 @@
