@@ -17,4 +17,5 @@ package() {
     cd "$srcdir/$pkgname"
     cargo build --release
     install -Dm755 target/release/daph "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
