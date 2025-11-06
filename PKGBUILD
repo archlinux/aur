@@ -1,7 +1,7 @@
 # Maintainer: Emiliopg91 <ojosdeserbio@gmail.com>
 pkgname=rog-perf-tuner
 pkgver=4.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An utility to manage Asus Rog laptop performance and RGB lighting"
 arch=(
   'x86_64'
@@ -24,9 +24,11 @@ options=(
 depends=(
   'asusctl'
   'coreutils'
+  'cpp-httplib-compiled'
   'hicolor-icon-theme'
   'hidapi'
   'libusb'
+  'nlohmann-json'
   'power-profiles-daemon'
   'python'
   'python-pip'
