@@ -1,0 +1,15 @@
+pkgbase = m2-planet
+	pkgdesc = The PLAtform NEutral Transpiler
+	pkgver = 1.13.1
+	pkgrel = 1
+	url = https://github.com/oriansj/M2-Planet
+	arch = x86_64
+	license = GPL-3.0-or-later
+	checkdepends = mescc-tools
+	makedepends = git
+	depends = glibc
+	source = git+https://github.com/oriansj/M2-Planet.git#commit=bd2fe4b0659fd0ad3f476a5ad0ef801bd134665d
+	validpgpkeys = CA1132DD2BA1E81AC10C95D35410E91C14959E87
+	sha256sums = SKIP
+
+pkgname = m2-planet
