@@ -2,7 +2,7 @@
 # Contributor: leuko <aur202307_et_aydos_de>
 
 pkgname="xpra-html5"
-pkgver=18
+pkgver=18.1
 pkgrel=1
 pkgdesc="HTML5 client for Xpra"
 url="https://github.com/Xpra-org/xpra-html5"
@@ -19,16 +19,11 @@ makedepends=(
   'uglify-js' # for compressing Javascript
 )
 
-source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "fix_396.patch")
+source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('16cef9dfefea574ee46bebedbb4f4c33dbe797c23099355646f51221905062d8'
-            'b06934dfe110bc262eaed0eb3e1f5c0125ad32a6a7de7b022ed5a7a289341f68')
+sha256sums=('42daf8d8abbd67f4d15af5d264b416448ddba3ce316fc73efab98b788adfe161')
 
 package() {
-  # fixes https://github.com/Xpra-org/xpra-html5/issues/396
-  patch -p0 < fix_396.patch
-
   cd "${pkgname}-${pkgver}"
 
   # custom script, *not* based on python-setuptools

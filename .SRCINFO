@@ -1,6 +1,6 @@
 pkgbase = xpra-html5
 	pkgdesc = HTML5 client for Xpra
-	pkgver = 18
+	pkgver = 18.1
 	pkgrel = 1
 	url = https://github.com/Xpra-org/xpra-html5
 	arch = x86_64
@@ -11,9 +11,7 @@ pkgbase = xpra-html5
 	makedepends = gzip
 	makedepends = uglify-js
 	conflicts = xpra-html5-git
-	source = xpra-html5-18.tar.gz::https://github.com/Xpra-org/xpra-html5/archive/refs/tags/v18.tar.gz
-	source = fix_396.patch
-	sha256sums = 16cef9dfefea574ee46bebedbb4f4c33dbe797c23099355646f51221905062d8
-	sha256sums = b06934dfe110bc262eaed0eb3e1f5c0125ad32a6a7de7b022ed5a7a289341f68
+	source = xpra-html5-18.1.tar.gz::https://github.com/Xpra-org/xpra-html5/archive/refs/tags/v18.1.tar.gz
+	sha256sums = 42daf8d8abbd67f4d15af5d264b416448ddba3ce316fc73efab98b788adfe161
 
 pkgname = xpra-html5
