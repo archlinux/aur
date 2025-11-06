@@ -44,7 +44,7 @@ build(){
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=/usr/lib \
         -DSYSTEMD_CONFIGURATIONS_FILES_DIR=/usr/lib/systemd/system \
-        -DCMAKE_INSTALL_SBINDIR=bin \
+        -DCMAKE_INSTALL_SBINDIR=/usr/bin \
         -DSYSCONF_INSTALL_DIR=/etc \
         -DLOCAL_STATE_DIR=/var \
         -DWITH_SYSTEMD=ON \
