@@ -2,7 +2,7 @@
 
 pkgbase=ollama-bin
 pkgname=(ollama-bin ollama-cuda12-bin ollama-cuda13-bin)
-pkgver=0.12.8
+pkgver=0.12.10
 pkgrel=1
 pkgdesc="Create, run and share large language models (LLMs)"
 arch=('x86_64')
@@ -26,8 +26,8 @@ source_x86_64=("ollama-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkg
                "sysusers.conf"
                "tmpfiles.d")
 sha256sums=('5934ed2ce0d15154bcdb9c85203210abac0da4314af34081e36df4599f90b226'
-            '3f8facc5738f11b11d7c2901651d9fe95e89bd9081168e9d9501dcdea784c30c')
-sha256sums_x86_64=('1834dd42f1a92a7ed4a76fb62efdcecd8ec3cf6037ce3710323b68bc481102c7'
+            'b2e4561b83730ea40fea2d91cc7003c2cbd1e715d4ef19b6fa22240f7ab88d1e')
+sha256sums_x86_64=('8f4bf70a9856a34ba71355745c2189a472e2691a020ebd2e242a58e4d2094722'
                    '2503546a6d26559bce06ba6c61100026d85864b4c49bd6e4c80c596c5d22e197'
                    '24871ffd940212e04e9bd3c334cfd4e3c4e845b374c5d0ed369fd32496b05fdb'
                    '14e2e267be85b6943f66dfe60e73f5e0a611eaf40ee69a4cc0d497d071392cf4'
