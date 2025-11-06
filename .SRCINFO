@@ -1,7 +1,7 @@
 pkgbase = chordpro-gui
 	pkgdesc = A lyrics and chords formatting program (CLI and GUI)
 	pkgver = 6.090.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://chordpro.org/
 	install = chordpro.install
 	arch = x86_64
@@ -30,11 +30,13 @@ pkgbase = chordpro-gui
 	provides = chordpro
 	conflicts = chordpro
 	source = https://github.com/ChordPro/chordpro/releases/download/R6.090.0/App-Music-ChordPro-6.090.0.tar.gz
-	source = https://github.com/ChordPro/chordpro/releases/download/R6.070/Wx-3.005.tar.gz
+	source = https://github.com/sciurius/perl-Alien-wxWidgets/releases/download/R0.71/Alien-wxWidgets-0.72.tar.gz
+	source = https://github.com/sciurius/wxPerl/releases/download/R3.009/Wx-3.009.tar.gz
 	source = chordpro.install
 	source = chordpro.sh
 	sha256sums = 57c5e656f523bbb8250faedf3e5a138f2c5ada9daffa518e0bf05587c592140f
-	sha256sums = 3f0d7cdfc4997d485ab941b133c849f5dab17a62fb242bee133ce040fead3898
+	sha256sums = bafd4528d4b36251e64dea072ebd5d7ffa31b94ed68d3df37b7d3c4baee2ba1e
+	sha256sums = 18035c52c8bb69f773ec19f2de3d2fa78dac1c8cd5ce114958da8e081fcee19a
 	sha256sums = b7e60a00ea16e5f49702591c9e2f4146763ade0d312cd2ab6422219700fab311
 	sha256sums = 259db24404125459b563f049f746c6844cf8eab46728d0c9935cc36765cb722d
 

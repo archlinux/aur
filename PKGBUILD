@@ -3,10 +3,11 @@
 _pkgbase=chordpro
 pkgname=${_pkgbase}-gui
 pkgver=6.090.0
-pkgrel=1
+pkgrel=2
 _pkgdownload=App-Music-ChordPro-${pkgver}
-_wxlastpkgver=6.070
-_wxver=3.005
+_alienwxrel=0.71
+_alienwxver=0.72
+_wxver=3.009
 pkgdesc="A lyrics and chords formatting program (CLI and GUI)"
 arch=('x86_64')
 url="https://chordpro.org/"
@@ -45,12 +46,14 @@ conflicts=(chordpro)
 install=chordpro.install
 source=(
     "${_ghurl}/releases/download/R${pkgver}/${_pkgdownload}.tar.gz"
-    "${_ghurl}/releases/download/R${_wxlastpkgver}/Wx-${_wxver}.tar.gz"
+    "https://github.com/sciurius/perl-Alien-wxWidgets/releases/download/R${_alienwxrel}/Alien-wxWidgets-${_alienwxver}.tar.gz"
+    "https://github.com/sciurius/wxPerl/releases/download/R${_wxver}/Wx-${_wxver}.tar.gz"
     "chordpro.install"
     "chordpro.sh"
 )
 sha256sums=('57c5e656f523bbb8250faedf3e5a138f2c5ada9daffa518e0bf05587c592140f'
-            '3f0d7cdfc4997d485ab941b133c849f5dab17a62fb242bee133ce040fead3898'
+            'bafd4528d4b36251e64dea072ebd5d7ffa31b94ed68d3df37b7d3c4baee2ba1e'
+            '18035c52c8bb69f773ec19f2de3d2fa78dac1c8cd5ce114958da8e081fcee19a'
             'b7e60a00ea16e5f49702591c9e2f4146763ade0d312cd2ab6422219700fab311'
             '259db24404125459b563f049f746c6844cf8eab46728d0c9935cc36765cb722d')
 
@@ -61,8 +64,13 @@ build() {
     export PERL_LOCAL_LIB_ROOT="${srcdir}"
     export PERL_MB_OPT="--install_base ${srcdir}"
     export PERL_MM_OPT="INSTALL_BASE=${srcdir}"
-    cpanm --notest --skip-satisfied --local-lib="${srcdir}" --verbose --installdeps .
+
+    # use Alien-wxWidgets and wxPerl from source
+    cpanm --notest --local-lib="${srcdir}" --verbose "${srcdir}/Alien-wxWidgets-0.72.tar.gz"
     cpanm --notest --local-lib="${srcdir}" --verbose "${srcdir}/Wx-${_wxver}.tar.gz"
+
+    # build ChordPro
+    cpanm --notest --skip-satisfied --local-lib="${srcdir}" --verbose --installdeps .
     perl Makefile.PL INSTALL_BASE="${srcdir}"
     make install
 }

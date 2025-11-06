@@ -2,3 +2,13 @@
 source = 'github'
 github = 'ChordPro/chordpro'
 use_latest_release = 'true'
+
+[perl-Alien-wxWidgets]
+source = 'github'
+github = 'sciurius/perl-Alien-wxWidgets'
+use_latest_release = 'true'
+
+[wxPerl]
+source = 'github'
+github = 'sciurius/wxPerl'
+use_latest_release = 'true'
