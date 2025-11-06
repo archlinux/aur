@@ -1,6 +1,6 @@
 pkgbase = casual-pre-loader-git
 	pkgdesc = TF2 particle modifications via some wizardry.
-	pkgver = 1.6.2.20.gbed025c
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/cueki/casual-pre-loader
 	install = casual-pre-loader.install
