@@ -35,7 +35,7 @@ After installing, the `marcwel` command will be available globally.
 If you prefer to manually install the tool, you can clone this repository and run it locally.
 
 ```bash
-git clone https://github.com/your-repo/marcwel-archive.git
+git clone https://github.com/ShortWare/marcwel-archive.git
 cd marcwel-archive
 ```
 

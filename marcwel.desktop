@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Marcwel Archive
+Comment=Custom Marcwel archive format
+Exec=marcwel unpack %f ./
+Icon=application-x-marcwel
+MimeType=application/x-marcwel;
+Type=Application
+NoDisplay=true
+Terminal=true
