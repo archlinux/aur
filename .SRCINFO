@@ -1,7 +1,7 @@
 pkgbase = addwater
 	pkgdesc = Installer for the Firefox GNOME theme
 	pkgver = 1.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/largestgithubuseronearth/addwater
 	arch = any
 	license = GPL-3.0-or-later
@@ -13,6 +13,6 @@ pkgbase = addwater
 	depends = python-packaging
 	depends = python-requests
 	source = addwater-1.2.7.tar.gz::https://github.com/largestgithubuseronearth/addwater/archive/refs/tags/v1.2.7.tar.gz
-	sha256sums = af09df0f31d89a2ff54c69ad9179994e0c1739dcb4e6bd3c3f9ffaa54354229e
+	sha256sums = 81a7457c85035a8d68324a78be57bc76971902215f0fda689e594b4cfda098f3
 
 pkgname = addwater
