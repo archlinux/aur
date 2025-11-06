@@ -1,4 +1,4 @@
-From b1383d4ca6c8a5c6ab82e577911c82463aaef61e Mon Sep 17 00:00:00 2001
+From c32db40ab35bcaf91462bbd072a8d0d18f191c44 Mon Sep 17 00:00:00 2001
 From: shadichy <shadichy@blisslabs.org>
 Date: Thu, 6 Nov 2025 16:39:19 +0700
 Subject: [PATCH 2/7] ntfsplus: Resolve iomap_* arguments (temporarily) for
@@ -123,7 +123,7 @@ index 28925d204..9bb036293 100644
  				       NULL, &ntfs_read_iomap_ops,
  				       &ntfs_iomap_folio_ops, NULL);
 diff --git a/fs/ntfsplus/inode.h b/fs/ntfsplus/inode.h
-index 0966f5916..4641ca066 100644
+index 0966f5916..88f524a50 100644
 --- a/fs/ntfsplus/inode.h
 +++ b/fs/ntfsplus/inode.h
 @@ -351,4 +351,17 @@ int ntfs_extend_initialized_size(struct inode *vi, const loff_t offset,
