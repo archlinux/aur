@@ -1,0 +1,5 @@
+[rsyncy-bin]
+source = "github"
+github = "laktak/rsyncy"
+use_latest_release = true
+prefix = "v"
