@@ -1,0 +1,4 @@
+[roblox-blink]
+source = "git"
+git = "https://github.com/1Axen/blink.git"
+prefix = "v"
