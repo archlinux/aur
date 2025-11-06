@@ -10,7 +10,7 @@ license=('custom')
 arch=('x86_64')
 depends=('wlroots0.15' 'cairo' 'pango' 'xorg-xwayland' 'libucl')
 makedepends=('bmake' 'wayland-protocols')
-source=("https://hikari.acmelabs.space/releases/hikari-${pkgver//_/-}.tar.gz"
+source=("http://hikari.acmelabs.space/releases/hikari-${pkgver//_/-}.tar.gz"
         "0001_xwayland.patch"
         "0002_gtk4.patch")
 sha256sums=('40736ff326e11a51128c1739051a692ad2c79173fc4b695c8be5ec7a614b4de2'
