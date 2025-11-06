@@ -1,0 +1,20 @@
+pkgbase = etr-bin
+	pkgdesc = ETR - ECMP Traceroute
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/tkjaer/etr
+	install = etr.install
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = patchelf
+	depends = libpcap
+	provides = etr
+	conflicts = etr
+	options = !debug
+	source_aarch64 = etr::https://github.com/tkjaer/etr/releases/download/v0.0.2/etr-linux-arm64
+	sha256sums_aarch64 = f0ce6fd093f43c94639b98fa9ffb4b966ac56c9dfb523198ffc86a6908acb15a
+	source_x86_64 = etr::https://github.com/tkjaer/etr/releases/download/v0.0.2/etr-linux-amd64
+	sha256sums_x86_64 = fa12acceb77165cf8e9edafbc6419ae8fa7e7cb34c5a37c5601650df0b32310b
+
+pkgname = etr-bin
