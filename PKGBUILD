@@ -3,8 +3,8 @@
 
 _npmname=cross-env
 pkgname=nodejs-$_npmname
-pkgver=7.0.3
-pkgrel=2
+pkgver=10.1.0
+pkgrel=1
 pkgdesc="Node cross platform setting of environment scripts"
 url="https://github.com/kentcdodds/cross-env"
 license=('MIT')
@@ -15,7 +15,7 @@ makedepends=('npm')
 
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('d44ad3b6925ff024f64fc4eec88a7da8b8291dd66de858c34866be611ad3c5de')
+sha512sums=('1ac628b209c00994c00dc984c8972d909228a808478edb70ed1b05ad5a093576ec596a9aaba626fbb9198eaea64b8e4ed238a3eafb6245ea6929012da96cba0f')
 
 package() {
   cd "$srcdir"
