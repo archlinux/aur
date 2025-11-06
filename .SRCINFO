@@ -1,7 +1,7 @@
 pkgbase = baballonia
 	pkgdesc = A cross-platform, hardware-agnostic VR eye and face tracking application.
 	pkgver = v1.1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Project-Babble/Baballonia
 	arch = x86_64
 	license = LicenseRef-Babble Software Distribution License 1.0

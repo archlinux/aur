@@ -2,7 +2,7 @@
 
 pkgname=baballonia
 pkgver=v1.1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform, hardware-agnostic VR eye and face tracking application."
 arch=('x86_64')
 url="https://github.com/Project-Babble/Baballonia"
@@ -22,7 +22,7 @@ depends=(
 )
 # unsure since copy included in build already
 #optdepends=(
-#    'onnxruntime: accelerated image decoding'
+#    'onnxruntime: gaze overlay and calibration'
 #)
 
 source=(
@@ -54,6 +54,7 @@ package() {
 
     install -d "${pkgdir}/opt/${pkgname}"
     cp -a "$_publishdir/"* "${pkgdir}/opt/${pkgname}/"
+    chmod 755 "${pkgdir}/opt/${pkgname}/Calibration/Linux/"*
 
     install -Dm644 "${_publishdir}/Assets/Icon_512x512.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/baballonia.png"
     install -Dm644 "${_publishdir}/Assets/Icon_32x32.ico" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/baballonia.ico"
