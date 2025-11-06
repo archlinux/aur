@@ -1,7 +1,7 @@
 pkgbase = fptn-client-cli-bin
 	pkgdesc = Non-commercial VPN, a volunteer project for bypassing censorship (CLI client)
 	pkgver = 0.3.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/batchar2/fptn
 	arch = x86_64
 	arch = aarch64
