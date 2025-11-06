@@ -1,10 +1,10 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=xorgxrdp-devel-git
-pkgver=0.10.0.r14.gaf43a8b
+pkgver=0.10.4.r98.g8ed4c45
 pkgrel=1
 pkgdesc="Xorg drivers for xrdp"
-arch=('aarch64' 'i686' 'x86_64')
+arch=('aarch64' 'i686' 'riscv64' 'x86_64')
 url="https://github.com/neutrinolabs/xorgxrdp"
 license=('X11')
 depends=('glibc' 'xorg-server')
