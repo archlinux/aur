@@ -1,11 +1,11 @@
 pkgname=hashclash-cuda-git
-pkgver=r104.2969e0c
-pkgrel=2
+pkgver=r181.892f02e
+pkgrel=1
 pkgdesc="Project HashClash - MD5 & SHA-1 cryptanalysis with CUDA support"
 arch=(x86_64)
 url="https://github.com/cr-marcstevens/hashclash"
 license=('MIT')
-depends=(boost-libs cuda)
+depends=(boost-libs cuda nvidia-utils)
 makedepends=('git' 'boost')
 provides=(hashclash)
 conflicts=(hashclash)
@@ -21,11 +21,28 @@ pkgver() {
 
 build() {
 	# the default env variables were causing problems, let configure detect them
-	unset CXXFLAGS CFLAGS
+    unset CFLAGS CXXFLAGS LDFLAGS
 	cd "$srcdir/${pkgname%-cuda-git}"
-	autoreconf --install
+
+    # Fix outdated CUDA test code (type mismatch for CUDA)
+    sed -i 's/unsigned pitch/size_t pitch/g' m4/ax_cuda.m4
+    # Fix m4 macro parameter expansion - provide default value when $1 is empty
+    sed -i 's/int op = \$1, eax, edx;/int op = m4_ifval([\$1],[\$1],[0]), eax, edx;/g' m4/ax_gcc_x86_avx_xgetbv.m4
+    sed -i 's/int op = \$1, level = \$2,/int op = m4_ifval([\$1],[\$1],[0]), level = m4_ifval([\$2],[\$2],[0]),/g' m4/ax_gcc_x86_cpuid.m4
+
+    # Auto-detect GPU compute capability and set CUDA_SMS
+    if command -v nvidia-smi &> /dev/null; then
+        GPU_CC=$(nvidia-smi --query-gpu=compute_cap --format=csv,noheader | head -n1 | tr -d '.')
+        sed -i "s/^CUDA_SMS=.*/CUDA_SMS=${GPU_CC}/" Makefile.am
+    fi
+
+    # fix cuda remove some informational member
+    sed -i 's/deviceProp\.clockRate \* 1e-6f/0.0f/g' src/md5birthdaysearch/cuda_md5.cu
+    sed -i 's/deviceProp\.deviceOverlap/0/g' src/md5birthdaysearch/cuda_md5.cu
+
+    autoreconf --install
 	./configure --prefix=/usr --with-cuda=/opt/cuda
-	make -j4
+	make -j
 }
 
 package() {
