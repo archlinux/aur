@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=mpd-notification-git
-pkgver=0.9.2.r0.gad47aa7
+pkgver=0.9.3.r0.gb79f512
 pkgrel=1
 pkgdesc='Notify about tracks played by mpd - git checkout'
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ pkgver() {
 build() {
 	cd mpd-notification/
 
-	make
+	make VERSION="${pkgver}-${pkgrel}"
 }
 
 package() {

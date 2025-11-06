@@ -1,6 +1,6 @@
 pkgbase = mpd-notification-git
 	pkgdesc = Notify about tracks played by mpd - git checkout
-	pkgver = 0.9.2.r0.gad47aa7
+	pkgver = 0.9.3.r0.gb79f512
 	pkgrel = 1
 	url = https://github.com/eworm-de/mpd-notification
 	arch = i686
