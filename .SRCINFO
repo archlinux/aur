@@ -1,0 +1,17 @@
+pkgbase = plocate-gui-git
+	pkgdesc = Simple and fast GUI for the plocate file search utility (Git version)
+	pkgver = r25.a2e4097
+	pkgrel = 1
+	url = https://github.com/dmnmsc/plocate-gui
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-pyqt6
+	depends = plocate
+	provides = plocate-gui
+	conflicts = plocate-gui
+	source = plocate-gui-git::git+https://github.com/dmnmsc/plocate-gui.git
+	md5sums = SKIP
+
+pkgname = plocate-gui-git
