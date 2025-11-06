@@ -1,15 +1,15 @@
 # Maintainer: omarplayz <omarplayzsounds@gmail.com>
 pkgname=deta-surf
-pkgver=1.1.0_beta.1.x86
+pkgver=1.3.0_beta.0.x86
 pkgdesc="Deta Surf, an AI notebook that brings all your files and the web directly into your stream of thought."
-pkgrel=5
+pkgrel=1
 arch=('x86_64')
 url="https://deta.surf"
 license=('Apache-2.0')
 depends=(glibc)
-source=('deta-surf-1.1.0_beta.1.x86.AppImage::https://assets.deta.surf/releases/256375311/linux-x64/download'
+source=('deta-surf-1.3.0_beta.0.x86.AppImage::https://assets.deta.surf/releases/259957125/linux-x64/download'
         'deta-surf.desktop')
-sha256sums=('c7ae8f53f916bf00a52fbff159f2b7b74d77172a7457455060e69e4d44b9f8d5'
+sha256sums=('0afac1174c7ac11dc2939688dbed71379c38b3aa9f4f7a1fdc6ce1344ad53c83'
             'SKIP')
 
 package() {
