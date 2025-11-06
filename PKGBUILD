@@ -2,7 +2,7 @@
 # Maintainer: Gaurav Gosain <itsgauravgosain@gmail.com>
 
 pkgname='tuios-bin'
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='Terminal UI Operating System - A terminal-based window manager with tmux-style keybindings'
 url='https://github.com/Gaurav-Gosain/tuios'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('tuios')
 conflicts=('tuios')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v0.3.2/tuios_0.3.2_Linux_arm64.tar.gz")
-sha256sums_aarch64=('85b8356ffa35af8e96aed7a3938cdfbb9bfe7ba44f41bc47094035e6f11f474a')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v0.3.3/tuios_0.3.3_Linux_arm64.tar.gz")
+sha256sums_aarch64=('1190e96f470770b0b9a2c0f45fb5dfe67d0bfdb6524ebea293fda8f05f67cbef')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v0.3.2/tuios_0.3.2_Linux_armv7.tar.gz")
-sha256sums_armv7h=('b0f3c9e44caf5a23b0c88168bd7c7ac2c5817be3e5377e12ebb33c8c7589c8c0')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v0.3.3/tuios_0.3.3_Linux_armv7.tar.gz")
+sha256sums_armv7h=('15229d710c1736739f77c406d1d81f6930abae376582e0810f2095020ac46549')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v0.3.2/tuios_0.3.2_Linux_i386.tar.gz")
-sha256sums_i686=('61a45d3752d73e4c8f2d3d2ae98fd58cddaf4fa90bc5075b465403c8e896d007')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v0.3.3/tuios_0.3.3_Linux_i386.tar.gz")
+sha256sums_i686=('b8b0e11fd7cbc0bcb97e624cf3f4b3051b9f0c2ea94e559ebdc462c95b36636f')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v0.3.2/tuios_0.3.2_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('13efc10e044c4bc99dbbe2748eb6acd0036d7cb85ff7314958ff6c2a553cf2e7')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Gaurav-Gosain/tuios/releases/download/v0.3.3/tuios_0.3.3_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('d14af145d8a88cebe799895d0c652a087d20c3e7e6294e953ebacd06763bd9f8')
 
 package() {
   # bin
