@@ -1,0 +1,18 @@
+pkgbase = ossfs-bin
+	pkgdesc = FUSE-based file system backed by Alibaba Cloud OSS
+	pkgver = 1.91.8
+	pkgrel = 1
+	url = https://github.com/aliyun/ossfs
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = fuse2
+	depends = curl
+	depends = libxml2-legacy
+	depends = openssl
+	provides = ossfs
+	conflicts = ossfs
+	conflicts = ossfs-git
+	source = ossfs_1.91.8_rockylinux9_x86_64.rpm::https://gosspublic.alicdn.com/ossfs/ossfs_1.91.8_rockylinux9_x86_64.rpm
+	sha256sums = 55a52852bc33026bab3a713fa6e227e489fb647fa1316a41373a08751d05b1e7
+
+pkgname = ossfs-bin
