@@ -1,6 +1,6 @@
 pkgbase = electric
 	pkgdesc = a sophisticated electrical CAD system for the design of integrated circuits
-	pkgver = 9.08e
+	pkgver = 9.08.1
 	pkgrel = 1
 	url = https://www.gnu.org/software/electric/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = electric
 	makedepends = svn
 	makedepends = java-environment-openjdk<=8
 	makedepends = apache-ant
-	depends = java-environment<=8
+	depends = java-environment
 	depends = bash
 	provides = gnu-electric
 	source = svn://svn.savannah.gnu.org/electric

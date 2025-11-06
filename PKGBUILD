@@ -1,13 +1,14 @@
 # Maintainer: Daniel Plank <tyrolyean@gmx.at>
 pkgname=electric
-pkgver=9.08e
+_pkgver_out=9.08
+pkgver="${_pkgver_out}.1"
 pkgrel=1
 pkgdesc="a sophisticated electrical CAD system for the design of \
         integrated circuits"
 arch=(any)
 url="https://www.gnu.org/software/electric/"
 license=('GPL')
-depends=('java-environment<=8' 'bash')
+depends=('java-environment' 'bash')
 makedepends=('svn' 'java-environment-openjdk<=8' 'apache-ant')
 provides=(gnu-electric)
 source=("svn://svn.savannah.gnu.org/electric"
@@ -20,19 +21,15 @@ sha512sums=('SKIP'
             '9fc25916ffa6536710016a313dfeab4a05de3d1a0818edb46a2e9c3c1eb850f82884383652e9ca1860c50ba6d4bab9cd818477606afffe522644f475ef22ba4b')
 
 build() {
-        echo "Please make sure you are building this package with jdk <= 8 set"
         cd "$pkgname/trunk/$pkgname/packaging/"
-
         ant
 }
 
 package() {
-        
 
+        mkdir -p "$pkgdir/usr/bin/" "$pkgdir/usr/share/icons" "$pkgdir/usr/share/java/$pkgname"
 
-        mkdir -p "$pkgdir/usr/bin/" "$pkgdir/usr/share/icons" "$pkgdir/usr/share/java/$pkgname" 
-
-        mv "$pkgname/trunk/$pkgname/packaging/${pkgname}Public-$pkgver.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
+        mv "$pkgname/trunk/$pkgname/packaging/${pkgname}Binary-$_pkgver_out.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
 
         cp "$pkgname.jpg" "$pkgdir/usr/share/icons/$pkgname.jpg"
 
