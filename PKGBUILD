@@ -3,8 +3,8 @@
 
 pkgname=scx-tools-git
 _gitname=scx-loader
-pkgver=20251030.r361.gc922e29
-pkgrel=2
+pkgver=20251106.r376.g474e3b7
+pkgrel=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
 arch=('x86_64')
@@ -68,7 +68,15 @@ build() {
   cd $_gitname
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --release --frozen --all-features
+  cargo build \
+     --release \
+     --frozen \
+     --all-features \
+     --workspace \
+     --exclude xtask
+
+  # build xtask script
+  cargo build --release --frozen --package xtask --bin xtask
 }
 
 check() {
@@ -82,22 +90,10 @@ package() {
 
   # Install all built executables (skip .so and .d files)
   find target/release \
-    -maxdepth 1 -type f -executable ! -name '*.so' \
+    -maxdepth 1 -type f -executable ! -name '*.so' ! -name '*.d' ! -name 'xtask' \
     -exec install -Dm755 -t "$pkgdir/usr/bin/" {} +
 
-  # systemd service
-  install -Dm644 services/scx_loader.service \
-    -t "$pkgdir/usr/lib/systemd/system/"
-
-  # D-Bus service
-  install -Dm644 services/org.scx.Loader.service \
-    -t "$pkgdir/usr/share/dbus-1/system-services/"
-
-  # D-Bus configuration
-  install -Dm644 configs/org.scx.Loader.conf \
-    -t "$pkgdir/usr/share/dbus-1/system.d/"
-
-  # scx_loader sample configuration (template)
-  install -Dm644 configs/scx_loader.toml \
-    "$pkgdir/usr/share/scx_loader/config.toml"
+  # Install runtime assets via xtask
+  # (systemd units, D-Bus services, configs, sample files)
+  cargo run --release --package xtask --bin xtask -- install --destdir "$pkgdir"
 }
