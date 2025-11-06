@@ -82,7 +82,7 @@ build() {
 check() {
   cd $_gitname
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
+  cargo test --frozen --all-features --workspace
 }
 
 package() {
@@ -90,7 +90,7 @@ package() {
 
   # Install all built executables (skip .so and .d files)
   find target/release \
-    -maxdepth 1 -type f -executable ! -name '*.so' ! -name '*.d' ! -name 'xtask' \
+    -maxdepth 1 -type f -executable ! -name '*.so' ! -name 'xtask' \
     -exec install -Dm755 -t "$pkgdir/usr/bin/" {} +
 
   # Install runtime assets via xtask
