@@ -1,7 +1,7 @@
 # Maintainer : Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=python-jetpytools-git
-pkgver=1.2.3.1.g58e6bfe
+pkgver=2.1.1.10.g901931d
 pkgrel=1
 pkgdesc="Collection of stuff that's useful in general python programming. (GIT version)"
 url="https://github.com/Jaded-Encoding-Thaumaturgy/jetpytools"
@@ -13,7 +13,7 @@ makedepends=(
   'python-build'
   'python-wheel'
   'python-installer'
-  'python-setuptools'
+  'python-hatchling'
 )
 provides=('python-jetpytools' 'python-stgpytools' 'python-stgpytools-git')
 conflicts=('python-jetpytools' 'python-stgpytools' 'python-stgpytools-git')

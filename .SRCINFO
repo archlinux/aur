@@ -1,6 +1,6 @@
 pkgbase = python-jetpytools-git
 	pkgdesc = Collection of stuff that's useful in general python programming. (GIT version)
-	pkgver = 1.2.3.1.g58e6bfe
+	pkgver = 2.1.1.10.g901931d
 	pkgrel = 1
 	url = https://github.com/Jaded-Encoding-Thaumaturgy/jetpytools
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-jetpytools-git
 	makedepends = python-build
 	makedepends = python-wheel
 	makedepends = python-installer
-	makedepends = python-setuptools
+	makedepends = python-hatchling
 	depends = python
 	provides = python-jetpytools
 	provides = python-stgpytools
