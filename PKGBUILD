@@ -1,4 +1,4 @@
-# Maintainer: Your Name <you@example.com>
+# Maintainer: MightyElemental <https://github.com/mightyelemental>
 pkgname=plutonium-launcher-bin
 pkgver=1
 pkgrel=1
