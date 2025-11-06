@@ -21,7 +21,7 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-source=("$_name-$pkgver.tar.gz::https://github.com/argosopentech/argos-translate/archive/refs/tags/v1.10.0.tar.gz")
+source=("$_name-$pkgver.tar.gz::https://github.com/argosopentech/argos-translate/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('237f0bdaef5a45aade034ac712c1d0c18fd42887fc08141808dcadde7bfd1f67')
 
 build() {
