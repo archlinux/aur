@@ -1,7 +1,7 @@
 pkgbase = ubuntu-themes
 	pkgdesc = Ubuntu monochrome icon theme, Ambiance and Radiance themes, and Ubuntu artwork
-	pkgver = 20.10
-	pkgrel = 2
+	pkgver = 24.04
+	pkgrel = 1
 	url = https://launchpad.net/ubuntu-themes
 	arch = any
 	groups = unity-extra
@@ -17,8 +17,8 @@ pkgbase = ubuntu-themes
 	provides = ubuntu-mono
 	conflicts = light-themes
 	conflicts = ubuntu-mono
-	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/ubuntu-themes/20.10-0ubuntu1/ubuntu-themes_20.10.orig.tar.gz
-	sha512sums = 0118f7c2404856216ff2df0246ea2fa98d0d5b25973abc3df13a998f7a41f2eeb32ca08281ba41399a91fa16ab046e3b3292f504503958983a6488c1e3001ac4
+	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/ubuntu-themes/24.04-0ubuntu1/ubuntu-themes_24.04.orig.tar.gz
+	sha512sums = f213105c0821bd2bf95c0be6501c2f0dbc03a32e29d0649748bcf3a10d0a5594e2a1e6fc33efc023c847993edf3ff25448e0abf1c5c062c97e9654009f33cfc7
 
 pkgname = ubuntu-themes
 

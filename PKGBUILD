@@ -5,8 +5,8 @@
 
 pkgname=ubuntu-themes
 _ubuntu_rel=0ubuntu1
-pkgver=20.10
-pkgrel=2
+pkgver=24.04
+pkgrel=1
 pkgdesc="Ubuntu monochrome icon theme, Ambiance and Radiance themes, and Ubuntu artwork"
 arch=(any)
 url="https://launchpad.net/ubuntu-themes"
@@ -19,7 +19,7 @@ provides=(light-themes ubuntu-mono)
 conflicts=(light-themes ubuntu-mono)
 source=("https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/ubuntu-themes/""$pkgver-""$_ubuntu_rel/""${pkgname}_""$pkgver.orig.tar.gz")
 
-sha512sums=('0118f7c2404856216ff2df0246ea2fa98d0d5b25973abc3df13a998f7a41f2eeb32ca08281ba41399a91fa16ab046e3b3292f504503958983a6488c1e3001ac4')
+sha512sums=('f213105c0821bd2bf95c0be6501c2f0dbc03a32e29d0649748bcf3a10d0a5594e2a1e6fc33efc023c847993edf3ff25448e0abf1c5c062c97e9654009f33cfc7')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -38,10 +38,7 @@ package() {
   cp -av ubuntu-mono-dark/  "$pkgdir/usr/share/icons/"
   cp -av ubuntu-mono-light/ "$pkgdir/usr/share/icons/"
   cp -av LoginIcons/        "$pkgdir/usr/share/icons/"
-  cp -av suru-icons/        "$pkgdir/usr/share/icons/"
   cp -av ubuntu-mobile/     "$pkgdir/usr/share/icons/"
-
-  mv "$pkgdir"/usr/share/icons/{suru-icons,suru}/
 
   install -Dm644 distributor-logo.png \
     "$pkgdir/usr/share/icons/hicolor/48x48/apps/distributor-logo.png"
