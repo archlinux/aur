@@ -1,7 +1,7 @@
 # Maintainer: Damglador <damglador@gmail.com>
 
 pkgname=dolphin-compress-media
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Compress media to target size from context menu or cli"
 arch=("any")
@@ -11,7 +11,7 @@ depends=("dolphin" "kdialog" "ffmpeg" "imagemagick")
 provides=("kf6-servicemenus-compress-media")
 makedepends=("git")
 source=("git+$url.git#tag=${pkgver}")
-sha256sums=('c8c46ca8ae9aa9b87a362f271a4745256fe58cf6fac8cb437fa86a41616e33fe')
+sha256sums=('7bc91e33215da32a7b42b3d08a5574522371e2c97e430941710d0747a0654e2f')
 
 package() {
     cd "dolphin-compress-media"
