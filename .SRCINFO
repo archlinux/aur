@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-hip
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)
-	pkgver = b6949
+	pkgver = b6962
 	pkgrel = 1
 	url = https://github.com/ggml-org/llama.cpp
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = llama.cpp-hip
 	conflicts = stable-diffusion.cpp
 	options = lto
 	options = !debug
-	source = llama.cpp-hip-b6949.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b6949.tar.gz
-	sha256sums = 1e48578842fb5c31ab79effa73b9649fa0b242fcfc1760b55b0c511150500a58
+	source = llama.cpp-hip-b6962.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b6962.tar.gz
+	sha256sums = 82ea9eca2a53599e91d09e5c88671cd18dce0d7ed10775165746915fe9e32a61
 
 pkgname = llama.cpp-hip
