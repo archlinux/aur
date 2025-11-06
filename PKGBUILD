@@ -2,7 +2,7 @@
 # Contributor: lpt <aur AT lucapetrucci DOT net>
 pkgname="qdiskinfo-git"
 _pkgname="qdiskinfo"
-pkgver=0.3.r110.g3416cc7
+pkgver=0.4.r8.gdb93fb1
 pkgrel=1
 pkgdesc="CrystalDiskInfo alternative for Linux"
 url="https://github.com/edisionnano/QDiskInfo"
@@ -16,6 +16,7 @@ sha256sums=(
 arch=("x86_64")
 depends=(
 	"qt6-base"
+	"qt6-declarative"
 	"qt6-svg"
 	"smartmontools"
 	"polkit"
@@ -23,6 +24,8 @@ depends=(
 )
 makedepends=(
 	"cmake"
+	"git"
+	"qt6-tools"
 )
 
 conflicts=("$_pkgname")
