@@ -27,8 +27,16 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/neowall"
-    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || \
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    # Try to get version from git tags
+    if git describe --long --tags 2>/dev/null | grep -q "^v"; then
+        git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    else
+        # Fallback: use Makefile version + commit count + short hash
+        local makefile_ver=$(grep "^VERSION = " Makefile 2>/dev/null | cut -d' ' -f3)
+        local commit_count=$(git rev-list --count HEAD)
+        local short_hash=$(git rev-parse --short HEAD)
+        printf "%s.r%s.g%s" "${makefile_ver:-0.3.0}" "$commit_count" "$short_hash"
+    fi
 }
 
 build() {
