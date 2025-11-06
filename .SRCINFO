@@ -1,6 +1,6 @@
 pkgbase = lilypond-devel
 	pkgdesc = Lilypond music engraving program (development release)
-	pkgver = 2.25.29
+	pkgver = 2.25.30
 	pkgrel = 1
 	url = https://lilypond.org
 	arch = x86_64
@@ -35,9 +35,9 @@ pkgbase = lilypond-devel
 	optdepends = ttf-dejavu: for extra fonts
 	provides = lilypond=${pkgver}
 	conflicts = lilypond
-	source = https://lilypond.org/downloads/sources/v2.25/lilypond-2.25.29.tar.gz
-	sha512sums = 5c0affc8ab2a8c030cf33251ba4a881642fe60216009e3b278db8f89e522487bf4c6cca2fa3abd8a996ec10447e8aae39dcd03de0df900ee5e66c619f8a9012a
-	b2sums = 29c3ab7d0fa3734285e13bad0b7ec4ff52b95ff06014efa8c940b030a71da4bff29938a93d0e75738f557d3128f362b5c7d399a522b598f1b1ad468da0046c06
+	source = https://lilypond.org/downloads/sources/v2.25/lilypond-2.25.30.tar.gz
+	sha512sums = e48ea896ba6e092d84e28f75ee28983e51e17f417c60d638c7671cb3f16c6b0d71d3242029a5d0b3a113caeb2d84d55ba24325ba13891e1af1127397a8b988f8
+	b2sums = 273a9cfa8d7b50a8cf8928bde69dfcc2f4c4bc8ac17cfb0693d291b995a444634c15e714c2d711d63729faa421bffcbba6e8047b4386229a1471af7d308f5812
 
 pkgname = lilypond-devel
 	depends = gcc-libs
