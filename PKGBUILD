@@ -2,7 +2,7 @@
 # Implementation to AUR from aaddrick/claude-desktop-debian github repository
 
 pkgname=claude-desktop-appimage
-pkgver=1.1.6+claude0.14.7
+pkgver=1.1.7+claude0.14.10
 pkgrel=1
 pkgdesc="Claude Desktop for Linux - AppImage version from aaddrick/claude-desktop-debian"
 arch=('x86_64')
@@ -14,13 +14,13 @@ provides=('claude-desktop')
 conflicts=('claude-desktop')
 
 # AppImage source
-_appimage_name="claude-desktop-0.14.7-amd64.AppImage"
+_appimage_name="claude-desktop-0.14.10-amd64.AppImage"
 source=("${_appimage_name}::https://github.com/aaddrick/claude-desktop-debian/releases/download/v${pkgver}/${_appimage_name}"
         "claude-desktop.desktop")
 noextract=("${_appimage_name}")
 
 # File checksums
-sha256sums=('025421d0f83c8cdc58cf9b679fb6263248fa66e7020bf39b70a3759749a2981d'
+sha256sums=('448717a61089b4d1aa04dc00dc81d55611cf291159ac823b259431aa924dcbf3'
             'ab0469e2e127050193ca556f87af8914d93bbde8f31d673a2f279aedbc944f3d')
 
 prepare() {
@@ -55,6 +55,8 @@ package() {
             # Install with original name too
             install -Dm644 "${srcdir}/squashfs-root/io.github.aaddrick.claude-desktop-debian.png" \
                 "${pkgdir}/usr/share/pixmaps/io.github.aaddrick.claude-desktop-debian"
+            install -Dm644 "${srcdir}/squashfs-root/io.github.aaddrick.claude-desktop-debian.png" \
+                "${pkgdir}/usr/share/pixmaps/io.github.aaddrick.claude-desktop-debian.png"
         fi
     fi
 }
