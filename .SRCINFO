@@ -1,7 +1,7 @@
 pkgbase = nyacc
 	pkgdesc = Not Yet Another Compiler Compiler
-	pkgver = 2.02.4
-	pkgrel = 2
+	pkgver = 2.02.5
+	pkgrel = 1
 	url = http://www.nongnu.org/nyacc
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = nyacc
 	makedepends = guile
 	depends = guile
 	depends = guile-bytestructures
-	source = http://download-mirror.savannah.gnu.org/releases/nyacc/nyacc-2.02.4.tar.gz
-	sha256sums = 1e1e73f80ba1155547f9e48de0fb06e8ceccd87b8af45a415a89b40639458356
+	source = http://download-mirror.savannah.gnu.org/releases/nyacc/nyacc-2.02.5.tar.gz
+	sha256sums = f9f062734ad5a33e91df02a5b697be031440fe75527f1ec9b81ec8c474c2d973
 
 pkgname = nyacc
