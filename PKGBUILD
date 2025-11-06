@@ -2,7 +2,7 @@
 
 pkgbase=minify-html
 pkgname=(minify-html python-minify-html)
-pkgver=0.16.4
+pkgver=0.18.1
 pkgrel=1
 pkgdesc="Extremely fast and smart HTML + JS + CSS minifier"
 arch=(x86_64)
@@ -18,8 +18,8 @@ source=(
   Cargo.lock
   python-module-name.patch
 )
-b2sums=('7706d048ef9f79dc67c8dd3095f2f1d0f4f5a12351af4a53f375b72dff6e978cbfe904f017e6ef05834fda4df65c99dae36d40c62eb557d5d58dc546d212ca15'
-        'a70a3f1526ca44b37dced089a02e378aaf2344e98cfe3cfdf1656c15f3f79a1f45b68817803782d1d94e5bf33fd5a0edce935c1c7d451a81e0bc67a86f6917e6'
+b2sums=('af4e2513b392757dd458dff7f67e2c1fefbe08ccf68566d8d8a58e6949d8040bde4c0207a4f85ddf7953dd18d2879eeb6692368e8b4319331ad481706fe7a2cb'
+        '55ef3fd07c75c25f22da5ae43746da0d0762156f80d8ec9e115c70afba1f8b23b1e697a9e055ccdb51721716b40f6168da3f6de616729cbefd0760844e6ec0ec'
         'd42ea6b62bf5a933443bc9d984d4e17fdacb1dc1dc0cc11704b48a4aa54cdc25457ef4ff35c1997dff24ae7a9c8d4b6f7a7100148561dd80395b454577f3b43a')
 
 prepare() {
