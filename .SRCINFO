@@ -1,7 +1,7 @@
 pkgbase = tango-starter
 	pkgdesc = This device server is able to control Tango device servers.
 	pkgver = 8.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/tango-controls/starter
 	arch = x86_64
 	arch = armv7h
