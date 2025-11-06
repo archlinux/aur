@@ -12,11 +12,11 @@ makedepends=(
 	"wayland-protocols"
 )
 depends=(
+	"scenefx-git"
 	"cairo"
 	"gdk-pixbuf2"
 	"libevdev.so"
 	"libinput"
-	"libscenefx-0.4.so"
 	"libjson-c.so"
 	"libpixman-1.so"
 	"libudev.so"
