@@ -1,0 +1,16 @@
+pkgbase = dolphin-compress-media
+	pkgdesc = Compress media to target size from context menu or cli
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Damglador/dolphin-compress-media
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	depends = dolphin
+	depends = kdialog
+	depends = ffmpeg
+	depends = imagemagick
+	source = git+https://github.com/Damglador/dolphin-compress-media.git#tag=1.0.0
+	sha256sums = c8c46ca8ae9aa9b87a362f271a4745256fe58cf6fac8cb437fa86a41616e33fe
+
+pkgname = dolphin-compress-media
