@@ -3,7 +3,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=seamonkey
-pkgver=2.53.21
+pkgver=2.53.22
 pkgrel=1
 pkgdesc="Web-browser, advanced e-mail, newsgroup and feed client, IRC chat, and HTML editing made simple"
 arch=(x86_64)
@@ -72,7 +72,7 @@ source=(
 )
 validpgpkeys=('A035C8C19219BA821ECEA86B64E628F8D684696D')  # Pablo Galindo Salgado <pablogsal@gmail.com>
 sha256sums=(
-  '74534349ebe7e4e094c3443c342e08538ba1932102afbd9f4251618588bfe59c'
+  '9919ed7e018f2162f90227ba6bb6cba116e90b0b2db015596283d4291d69db1a'
   '2858ea3b53a79d5f7c18d301932ac2cd709b86255312fcdfe6c4935ca33f5823'
   '07a4356e912900e61a15cb0949a06c4a05012e213ecd6b4e84d0f67aabbee372'
   'SKIP'
