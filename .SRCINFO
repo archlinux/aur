@@ -1,5 +1,5 @@
 pkgbase = daph
-	pkgdesc = A music player in the terminal.
+	pkgdesc = A music player in the terminal. Written in Rust.
 	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://codeberg.org/jiji-wp/daph

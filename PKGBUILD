@@ -3,7 +3,7 @@
 pkgname=daph
 pkgver=0.0.1
 pkgrel=1
-pkgdesc="A music player in the terminal."
+pkgdesc="A music player in the terminal. Written in Rust."
 arch=('x86_64')
 url="https://codeberg.org/jiji-wp/daph"
 license=('Apache-2.0')
