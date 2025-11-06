@@ -2,18 +2,18 @@
 
 pkgname=flow-control
 _pkgname=flow
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="a programmer's text editor"
 arch=('x86_64')
 url="https://github.com/neurocyte/$_pkgname"
 license=('MIT')
 optdepends=('ripgrep: project-wide search')
-makedepends=('zig>=0.14.0' 'zig<0.15.0')
+makedepends=('zig>=0.15.0' 'zig<0.16.0')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("https://github.com/neurocyte/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("1c69b69df208c92327641dd7b11fe293aa8d72cfc27f6b43d975114b60b52166")
+sha256sums=("cdfb954092e41b3676a3ee3e2d10406b2cd1590304e1492f560c0bab66ef99e3")
 
 build() {
     cd "$_pkgname-$pkgver"
