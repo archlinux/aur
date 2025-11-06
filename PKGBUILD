@@ -1,12 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=goverlay-git
-pkgver=1.5.2.r29.g698dd9e
+pkgver=1.5.2.r56.g2a30e1b
 pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
 url="https://github.com/benjamimgois/goverlay"
 license=('GPL-3.0-or-later')
 depends=(
+  '7zip'
   'coreutils'
   'glu'
   'libnotify'
@@ -14,6 +15,7 @@ depends=(
   'pciutils'
   'polkit'
   'qt6pas'
+  'wget'
 )
 makedepends=(
   'git'
