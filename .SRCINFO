@@ -1,24 +1,16 @@
 pkgbase = iacs
-	pkgdesc = IBM i Access Client Solutions provides a Java based, platform-independent interface for IBM iAccess/iSeries (formerly known as AS400).
-	pkgver = 1.1.8.2.9170
+	pkgdesc = Access Client Solutions is a Java based, platform-independent interface for IBM i systems.
+	pkgver = 1.1.9.9
 	pkgrel = 1
-	url = http://www.ibm.com/systems/power/software/i/access/solutions.html
-	arch = any
-	license = custom
-	depends = java-runtime
-	depends = gtk-update-icon-cache
-	source = https://url.muflone.com/iacs-1.1.8.2.9170.zip
-	source = https://url.muflone.com/iacs_readme-1.1.8.2.9170.txt
-	source = https://url.muflone.com/iacs_getting_started-1.1.8.2.9170.html
-	source = https://url.muflone.com/iacs_quickstart_guide-1.1.8.2.9170.html
-	source = iacs.sh
-	source = iacs.desktop
-	sha256sums = 2cb94eccc55835bd10ba51e64288fcfa8c8c83c947a56b40b5d5e8b6fef8bcf1
-	sha256sums = ee1809764aae73617aa3357c97ba3e0a138071c8de0ed2a108232225c30dc948
-	sha256sums = 07be73f767196ef306636384306d9ba0044630ade6a8e5c60ce6eb68be620b0b
-	sha256sums = e9268ffbefc7bcf019c108a9902fa3b9a2006e11481f4327e7ddf7f376f23b31
-	sha256sums = ab45ad56ae32d11ad8372c5313db3cfe810551fe84cfa093a677ca423ad51ab2
-	sha256sums = 282ac5df2bd9db62e7684ea05ab249379b3cdc8776983d71a55956de85e79128
+	url = https://www.ibm.com/support/pages/ibm-i-access-client-solutions
+	arch = x86_64
+	license = LicenseRef-IBM-IPLA
+	depends = glibc
+	depends = gcc-libs
+	depends = java-runtime>=8
+	options = !debug
+	backup = opt/ibm/iAccessClientSolutions/AcsConfig.properties
+	source = file://IBMiAccess_v1r1.zip
+	sha256sums = 7527cbcbea0735e9867f80b8804f4b20c5fdd65ebf3d6ff37f7e0d29f0e9b5b7
 
 pkgname = iacs
-
