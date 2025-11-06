@@ -1,6 +1,6 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=deck
-pkgver=1.53.0
+pkgver=1.53.1
 pkgrel=1
 pkgdesc='decK: Configuration management and drift detection for Kong and Kong Enterprise'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/Kong/$pkgname"
 license=('Apache')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Kong/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('c629f8c569214025c344ef8b5071605f748dd0f22241b43a4f5a131d7e0625db')
+sha256sums=('7152bf1dc1cce6ccdf72ba5a89c02777515aebee6eb11adbc19a70151b423bb9')
 install=install.sh
 
 prepare(){
