@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://github.com/DeepanshuMishraa/brisk"
 license=('MIT')
 depends=('webkit2gtk' 'gtk3' 'librsvg')
-makedepends=('rust' 'cargo' 'nodejs' 'pnpm')
+makedepends=('rust' 'cargo' 'nodejs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 

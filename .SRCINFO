@@ -8,7 +8,6 @@ pkgbase = brisq
 	makedepends = rust
 	makedepends = cargo
 	makedepends = nodejs
-	makedepends = pnpm
 	depends = webkit2gtk
 	depends = gtk3
 	depends = librsvg
