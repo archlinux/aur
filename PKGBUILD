@@ -1,5 +1,4 @@
 # Maintainer: Avenge Media <avengemediallc at gmail dot com>
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgbase=dms-shell-git
 _pkgbase=${pkgbase%-git}
@@ -28,9 +27,11 @@ provides=("$_pkgbase=$pkgver")
 conflicts=("dms-shell")
 source=(
         "git+$url.git"
-        "git+${url/$_pkg1/$_pkg2}.git")
+        "git+${url/$_pkg1/$_pkg2}.git"
+        "dms.service")
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            'df3ffefe689e6dc542ea1ab94547d9ceb525674d7fd3d0dd1fa7f68feb64d043')
 
 pkgver() {
     cd "$_pkg2"
@@ -74,6 +75,7 @@ package_dms-shell-git() {
 	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" "$_pkg1/README.md"
 	cp -r "$_pkg1/docs/"* "$pkgdir/usr/share/doc/$pkgname/"
 	rm -rf "$pkgdir/usr/share/quickshell/dms/.git"*
+	install -Dm0644 "dms.service" "$pkgdir/usr/lib/systemd/user/dms.service"
 }
 
 package_dms-shell-hyprland-git() {
