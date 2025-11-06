@@ -6,17 +6,19 @@
 # Contributor: arriagga <ramon.arriaga at gmail dot com>
 # Contributor: dieghen89 <dieghen89 at gmail dot com>
 
-pkgname=musique
-pkgver=1.12
-pkgrel=2
+pkgname=musique111-qt5
+_pkgname=musique
+pkgver=1.11
+pkgrel=1
 pkgdesc='A finely crafted music player'
 arch=('x86_64')
 url='https://flavio.tordini.org/musique'
 _giturl='https://github.com/flaviotordini'
 license=('GPL3')
-depends=('qt6-declarative' 'taglib' 'mpv')
-makedepends=('git' 'qt6-tools')
+depends=('qt5-declarative' 'taglib' 'mpv')
+makedepends=('git' 'qt5-tools')
 optdepends=('finetune')
+conflicts=('musique')
 source=("git+${_giturl}/musique.git#tag=${pkgver}"
         "git+${_giturl}/http.git"
         "git+${_giturl}/idle.git"
@@ -25,17 +27,17 @@ source=("git+${_giturl}/musique.git#tag=${pkgver}"
         "git+${_giturl}/js.git"
         "git+${_giturl}/sharedcache.git"
         "taglib.patch")
-sha256sums=('SKIP'
+sha256sums=('d75973694829a2ebce39c1669f60ed8f03c9565304f2619fe9159348b11d05b7'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'b130aa1adfe5973ca5ba9943b5fa30302d9db762c711ab86cd5e146a8db090fe')
 
 prepare() {
-  cd $pkgname
+  cd $_pkgname
   git submodule init
   git config submodule.lib/http.url "$srcdir/http"
   git config submodule.lib/idle.url "$srcdir/idle"
@@ -45,12 +47,12 @@ prepare() {
   git config submodule.lib/sharedcache.url "$srcdir/sharedcache"
   git -c protocol.file.allow=always submodule update
 
-  patch -p2 <$srcdir/taglib.patch
+  patch -Np1 <$srcdir/taglib.patch
 }
 
 build() {
-  PATH="$PATH:/usr/lib/qt6/bin"
-  qmake6 $pkgname PREFIX=/usr
+  PATH="$PATH:/usr/lib/qt5/bin"
+  qmake $_pkgname PREFIX=/usr
   make
 }
 

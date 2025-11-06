@@ -1,7 +1,7 @@
-diff -rupw A/musique/src/coverutils.cpp B/musique/src/coverutils.cpp
---- A/musique/src/coverutils.cpp	2024-04-02 22:43:34.330011875 +0200
-+++ B/musique/src/coverutils.cpp	2024-04-02 23:56:42.855952202 +0200
-@@ -158,8 +158,8 @@ bool CoverUtils::coverFromMP4(const QStr
+diff -rauN a/src/coverutils.cpp b/src/coverutils.cpp
+--- a/src/coverutils.cpp	2025-11-06 09:31:53.311926704 +0100
++++ b/src/coverutils.cpp	2025-11-06 10:20:20.942691253 +0100
+@@ -159,8 +159,9 @@
      TagLib::MP4::Tag *tag = static_cast<TagLib::MP4::Tag *>(f.tag());
      if (!tag) return false;
  
@@ -9,23 +9,25 @@ diff -rupw A/musique/src/coverutils.cpp B/musique/src/coverutils.cpp
 -    TagLib::MP4::Item coverItem = itemsListMap["covr"];
 +    TagLib::MP4::ItemMap itemsMap = tag->itemMap();
 +    TagLib::MP4::Item coverItem = itemsMap["covr"];
++
      TagLib::MP4::CoverArtList coverArtList = coverItem.toCoverArtList();
      TagLib::MP4::CoverArt coverArt = coverArtList.front();
  
-diff -rupw A/musique/src/mainwindow.cpp B/musique/src/mainwindow.cpp
---- A/musique/src/mainwindow.cpp	2024-04-02 22:43:34.333345149 +0200
-+++ B/musique/src/mainwindow.cpp	2024-04-02 23:48:04.371738064 +0200
-@@ -90,6 +90,7 @@ $END_LICENSE */
- #include "updater.h"
- #endif
+diff -rauN a/src/mainwindow.cpp b/src/mainwindow.cpp
+--- a/src/mainwindow.cpp	2025-11-06 09:31:53.312926704 +0100
++++ b/src/mainwindow.cpp	2025-11-06 10:20:58.511690092 +0100
+@@ -90,6 +90,8 @@
+ 
+ #include "js.h"
  
 +#include <iostream>
- 
++
  namespace {
  MainWindow *singleton = nullptr;
-diff -rupw A/musique/src/tags/mp4utils.h B/musique/src/tags/mp4utils.h
---- A/musique/src/tags/mp4utils.h	2024-04-02 22:43:34.333345149 +0200
-+++ B/musique/src/tags/mp4utils.h	2024-04-02 23:51:39.551287361 +0200
+ }
+diff -rauN a/src/tags/mp4utils.h b/src/tags/mp4utils.h
+--- a/src/tags/mp4utils.h	2025-11-06 09:31:53.313926704 +0100
++++ b/src/tags/mp4utils.h	2025-11-06 10:22:11.598687759 +0100
 @@ -9,7 +9,7 @@
  namespace Mp4Utils {
  
@@ -35,7 +37,7 @@ diff -rupw A/musique/src/tags/mp4utils.h B/musique/src/tags/mp4utils.h
  
      if (map.contains("trkn")) {
          TagLib::MP4::Item::IntPair intPair = map["trkn"].toIntPair();
-@@ -31,7 +31,7 @@ void load(TagLib::MP4::Tag *tag, Tags *t
+@@ -31,7 +31,7 @@
          tags->setComposerSort(v);
      }
  

@@ -1,17 +1,18 @@
-pkgbase = musique
+pkgbase = musique111-qt5
 	pkgdesc = A finely crafted music player
-	pkgver = 1.12
-	pkgrel = 2
+	pkgver = 1.11
+	pkgrel = 1
 	url = https://flavio.tordini.org/musique
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = qt6-tools
-	depends = qt6-declarative
+	makedepends = qt5-tools
+	depends = qt5-declarative
 	depends = taglib
 	depends = mpv
 	optdepends = finetune
-	source = git+https://github.com/flaviotordini/musique.git#tag=1.12
+	conflicts = musique
+	source = git+https://github.com/flaviotordini/musique.git#tag=1.11
 	source = git+https://github.com/flaviotordini/http.git
 	source = git+https://github.com/flaviotordini/idle.git
 	source = git+https://github.com/flaviotordini/media.git
@@ -19,13 +20,13 @@ pkgbase = musique
 	source = git+https://github.com/flaviotordini/js.git
 	source = git+https://github.com/flaviotordini/sharedcache.git
 	source = taglib.patch
+	sha256sums = d75973694829a2ebce39c1669f60ed8f03c9565304f2619fe9159348b11d05b7
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = b130aa1adfe5973ca5ba9943b5fa30302d9db762c711ab86cd5e146a8db090fe
 
-pkgname = musique
+pkgname = musique111-qt5
