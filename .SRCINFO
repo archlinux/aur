@@ -1,0 +1,19 @@
+pkgbase = vapoursynth-plugin-dvdsrc2-git
+	pkgdesc = Plugin for Vapoursynth: dvdsrc2 (GIT version)
+	pkgver = beta1.11.g84f4cfc
+	pkgrel = 1
+	url = https://github.com/jsaowji/dvdsrc2.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = vapoursynth
+	depends = a52dec
+	depends = libmpeg2
+	depends = libdvdread
+	provides = vapoursynth-plugin-dvdsrc2
+	conflicts = vapoursynth-plugin-dvdsrc2
+	source = dvdsrc2::git+https://github.com/jsaowji/dvdsrc2.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-dvdsrc2-git
