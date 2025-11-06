@@ -1,26 +1,33 @@
-# Maintainer: BingBong
-# Maintainer: Proton Technologies AG <opensource at proton dot me>
-# Maintainer: Alexandru Cheltutior <acrandom at pm dot me>
+# Maintainer: Shahzeb Khattak <shahzebkhattak@proton.me>
 
 pkgname=protonvpn-cli
-_gitpkgname=linux-cli
-pkgver=3.13.0
-pkgrel=3
-pkgdesc="Official Legacy ProtonVPN Command Line Interface, used to be maintained by the ProtonVPN team."
-arch=("any")
-url="https://github.com/ProtonVPN"
-license=("GPL3")
-depends=("python-protonvpn-nm-lib>=3.10.0" "python-pythondialog" "network-manager-applet")
-makedepends=("python-setuptools")
-source=("https://github.com/ProtonVPN/linux-cli/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('d295d6c899638a88d615e2cacb078ecf2aee8c771ebb087c9edb43aea25aacd9')
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="ProtonVPN CLI"
+arch=('any')
+license=('GPL-3.0-or-later')
+url="https://protonvpn.com"
+depends=(
+  'python>=3.13'
+  'python-click'
+  'python-dbus-fast'
+  'python-packaging'
+  'python-proton-keyring-linux'
+  'python-proton-vpn-api-core'
+  'python-proton-core'
+  'python-proton-vpn-network-manager'
+  'python-proton-vpn-local-agent'
+)
+source=("https://repo.protonvpn.com/fedora-42-unstable/proton-vpn-cli/${pkgname}-${pkgver}-1.fc42.noarch.rpm")
+sha256sums=('3bcaa8f55a577e204643c6ffa9566fcb08fd79cb37325d406ea234fd5a96ac9d')
 
-build() {
-        cd "$_gitpkgname-$pkgver"
-        python setup.py build
+prepare() {
+  mkdir -p "$srcdir/extracted-files"
+  echo "Extracting ProtonVPN CLI..."
+  bsdtar -xf "$srcdir/${pkgname}-${pkgver}-1.fc42.noarch.rpm" -C "$srcdir/extracted-files"
 }
 
 package() {
-        cd "$_gitpkgname-$pkgver"
-        python setup.py install --root="$pkgdir" --optimize=1
+  echo "Copying ProtonVPN CLI files..."
+  cp -r "$srcdir/extracted-files/usr" "$pkgdir/"
 }
