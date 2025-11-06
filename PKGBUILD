@@ -7,7 +7,7 @@
 pkgname=postgis-old-upgrade
 _pkgname="${pkgname%-old-upgrade}"
 pkgver=3.6.0
-pkgrel=2
+pkgrel=3
 _pg_majorver=17
 pkgdesc='PostGIS build against postgresql-old-upgrade package for pg_upgrade'
 arch=('x86_64')
@@ -21,8 +21,9 @@ depends=(
   'protobuf-c'
   'pcre'
   'libxml2'
+  'libc++'
 )
-makedepends=('clang' 'llvm' 'libc++')
+makedepends=('clang' 'llvm')
 optdepends=('perl: for scripts in contrib folder')
 options=('!makeflags')
 source=("https://download.osgeo.org/postgis/source/$_pkgname-$pkgver.tar.gz")
