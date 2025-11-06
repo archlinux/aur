@@ -1,7 +1,7 @@
 pkgbase = ukrmol-in
-	pkgdesc = Inner region programs for UKRmol+, compiled with mpich
+	pkgdesc = Inner region programs for UKRmol+
 	pkgver = 3.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://zenodo.org/records/5799110
 	arch = any
 	license = GPL3
@@ -12,7 +12,6 @@ pkgbase = ukrmol-in
 	makedepends = doxygen
 	depends = lapack64
 	depends = blas64-openblas
-	depends = gbtolib
 	depends = mpich-fint64
 	source = https://zenodo.org/record/5799110/files/ukrmol-in-3.2.tar.gz?download=1
 	sha256sums = b93017d8d82a359a72f0f2326cef67c5499f3f97b518ec2a9befbfb214b5ecb4

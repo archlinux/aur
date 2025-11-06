@@ -2,14 +2,14 @@
 
 pkgname="ukrmol-in"
 pkgver=3.2
-pkgrel=3
+pkgrel=4
 _minCmake="3.10"
 pkgdesc="Inner region programs for UKRmol+"
 arch=('any')
 url='https://zenodo.org/records/5799110'
 license=('GPL3')
 groups=()
-depends=('lapack64' 'blas64-openblas' 'gbtolib' 'mpich-fint64')
+depends=('lapack64' 'blas64-openblas' 'mpich-fint64')
 makedepends=('cmake' 'gcc' 'gcc-fortran' 'cmake' 'doxygen')
 checkdepends=()
 optdepends=()
