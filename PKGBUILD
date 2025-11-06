@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Cody Wyatt Neiman (xangelix) <neiman@cody.to>
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 
 _npmname=cross-env
