@@ -8,8 +8,8 @@ pkgdesc="a rtl_tcp compatible IQ server for the RSP range of SDRPlay SDR"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/SDRplay/RSPTCPServer"
 license=('GPL3')
-depends=('libusb>=1.0' 'libsdrplay')
-makedepends=('git' 'cmake')
+depends=('libusb>=1.0' 'libsdrplay>=3.7')
+makedepends=('git' 'cmake' 'libsdrplay>=3.7')
 provides=('rsp_tcp')
 source=('git+https://github.com/SDRplay/RSPTCPServer')
 md5sums=('SKIP')

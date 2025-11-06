@@ -9,8 +9,9 @@ pkgbase = rsp_tcp-git
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
+	makedepends = libsdrplay>=3.7
 	depends = libusb>=1.0
-	depends = libsdrplay
+	depends = libsdrplay>=3.7
 	provides = rsp_tcp
 	source = git+https://github.com/SDRplay/RSPTCPServer
 	md5sums = SKIP
