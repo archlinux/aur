@@ -1,0 +1,5 @@
+[roxide-bin]
+source = "github"
+github = "fioncat/roxide"
+use_latest_release = true
+prefix = "v"
