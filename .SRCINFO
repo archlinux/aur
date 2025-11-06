@@ -1,0 +1,20 @@
+pkgbase = ffxiv-ensemble-wine
+	pkgdesc = FFXIV 世界终末乐团（FFDash）——免费但非开源的 Windows 游戏（Wine 封装版）
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://ffdash.rika.link/
+	arch = x86_64
+	license = custom:Unfree
+	depends = wine
+	depends = cabextract
+	depends = unzip
+	depends = curl
+	source = https://ffdash.rika.link/release/windows
+	source = ffxiv-ensemble-wine.sh
+	source = ffxiv-ensemble-wine.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ffxiv-ensemble-wine
+

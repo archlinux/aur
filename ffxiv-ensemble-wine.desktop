@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=FFXIV 世界终末乐团
+Comment=运行 FFXIV 世界终末乐团（FFDash）via Wine
+Exec=ffxiv-ensemble-wine
+Icon=wine
+Terminal=false
+Type=Application
+Categories=Game;
+
