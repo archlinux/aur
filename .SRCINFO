@@ -1,6 +1,6 @@
 pkgbase = concord-git
-	pkgdesc = A Discord API wrapper library made in C
-	pkgver = v2.2.0.r1.g38dc9b2e
+	pkgdesc = A Discord API wrapper library made in C (dev branch)
+	pkgver = v3.0.0.r30.g2498dd2e
 	pkgrel = 1
 	url = https://github.com/Cogmasters/concord
 	arch = any
