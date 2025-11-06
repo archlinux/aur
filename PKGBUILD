@@ -8,6 +8,7 @@ url='https://github.com/seaofvoices/darklua'
 license=('MIT')
 depends=('glibc' 'gcc-libs')
 arch=('x86_64' 'aarch64')
+provides=("${pkgname%-bin}")
 source_x86_64=("$url/releases/download/v$pkgver/darklua-linux-x86_64.zip")
 source_aarch64=("$url/releases/download/v$pkgver/darklua-linux-aarch64.zip")
 sha256sums_x86_64=('a62f99863049ab9ec8b90ac710965a7bed5f2419b61bfc42a4afa49cfa90372e')

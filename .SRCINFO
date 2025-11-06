@@ -8,6 +8,7 @@ pkgbase = darklua-bin
 	license = MIT
 	depends = glibc
 	depends = gcc-libs
+	provides = darklua
 	source_x86_64 = https://github.com/seaofvoices/darklua/releases/download/v0.17.2/darklua-linux-x86_64.zip
 	sha256sums_x86_64 = a62f99863049ab9ec8b90ac710965a7bed5f2419b61bfc42a4afa49cfa90372e
 	source_aarch64 = https://github.com/seaofvoices/darklua/releases/download/v0.17.2/darklua-linux-aarch64.zip
