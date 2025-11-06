@@ -12,13 +12,16 @@ makedepends=('cmake' 'boost')
 install=$pkgname.install
 source=($pkgname-$pkgver.tar.gz::"https://github.com/djyt/cannonball/archive/v$pkgver.tar.gz"
        "$pkgname.desktop"
-       "$pkgname.sh")
+       "$pkgname.sh"
+	   fix-std-int16t.patch)
 sha256sums=('e2cf8e21619b183a9fd835ae34ce65fb3d014c2fea37723fc8ba05681ed317ce'
             '04d0c0e9252bccfef97bb59c9e89376461f9b52845570b2ebc14610ce74cf1ff'
-	    '81f2a1a4e473c87272ce9321dfc616614760dc4c7a0d367d167413e3a71ec8b9')
+            '81f2a1a4e473c87272ce9321dfc616614760dc4c7a0d367d167413e3a71ec8b9'
+            'ae08b3d3ed733e7d3e78ab5ae51d51e2cae3e7e88dd57c36737d6b5b48c04288')
 
 prepare() {
   cd $pkgname-$pkgver
+  patch -p1 -i "$srcdir/fix-std-int16t.patch"
   rm -rf build
   mkdir build
 }

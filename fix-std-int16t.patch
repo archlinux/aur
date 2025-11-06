@@ -1,0 +1,11 @@
+--- a/src/main/frontend/menu.hpp	2025-11-06 22:52:56.416091122 +0200
++++ b/src/main/frontend/menu.hpp	2025-11-06 22:52:04.512317980 +0200
+@@ -60,7 +60,7 @@
+ 
+     // Cursor
+     int16_t cursor;
+-    std::vector<std::int16_t> cursor_stack;
++    std::vector<int16_t> cursor_stack;
+ 
+     // Stores whether this is a textual menu (i.e. no options that can be chosen)
+     bool is_text_menu;
