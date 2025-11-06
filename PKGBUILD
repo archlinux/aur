@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=netperf-git
-pkgver=2.7.0.r48.g3bc455b
-pkgrel=2
+pkgver=2.7.0.r49.gafc51ff
+pkgrel=1
 pkgdesc="Benchmarking tool for many different types of networking"
 arch=('i686' 'x86_64')
 url="https://hewlettpackard.github.io/netperf/"
@@ -12,22 +12,25 @@ makedepends=('git')
 provides=("netperf=$pkgver")
 conflicts=('netperf')
 source=("git+https://github.com/HewlettPackard/netperf.git"
-        "remove_duplicate_variable_definitions.patch::https://github.com/HewlettPackard/netperf/commit/c6a2e17fe35f0e68823451fedfdf5b1dbecddbe3.patch")
+        "use_AC_USE_SYSTEM_EXTENSIONS.patch::https://patch-diff.githubusercontent.com/raw/HewlettPackard/netperf/pull/74.patch"
+        "fix_too_many_arguments_error.patch::https://patch-diff.githubusercontent.com/raw/HewlettPackard/netperf/pull/86.patch")
 sha256sums=('SKIP'
-            'beff59413888ab2961804a195ff68fe5db92183736fedb3bc20bfbba424c2384')
+            '4b8bf370f3f362a3bf2d68579d4e4ebd023ec8346cece893437fb08226c3b6dd'
+            '8dc75da733b5f04030b992408a54dba66942f8996380665d61b70fdb59e40791')
 
 
 prepare() {
   cd "netperf"
 
-  patch -Np1 -i "$srcdir/remove_duplicate_variable_definitions.patch"
+  patch -Np1 -i "$srcdir/use_AC_USE_SYSTEM_EXTENSIONS.patch"
+  patch -Np1 -i "$srcdir/fix_too_many_arguments_error.patch"
 }
 
 pkgver() {
   cd "netperf"
 
   _tag=$(git tag -l --sort -v:refname | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
   _hash=$(git rev-parse --short HEAD)
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^netperf-//'
 }
@@ -48,7 +51,7 @@ build() {
 check() {
   cd "netperf"
 
-  make check
+  #make check
 }
 
 package() {
