@@ -1,0 +1,19 @@
+pkgbase = wirecontrol-git
+	pkgdesc = An audio control center for pipewire
+	pkgver = r13.b9262ae
+	pkgrel = 1
+	url = https://github.com/kotontrion/wirecontrol
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = gtk4
+	depends = libadwaita
+	depends = libastal-wireplumber
+	provides = wirecontrol
+	source = git+https://github.com/kotontrion/wirecontrol.git
+	sha256sums = SKIP
+
+pkgname = wirecontrol-git
