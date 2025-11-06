@@ -1,19 +1,17 @@
 pkgbase = cyber-dkms
 	pkgdesc = CYBER for your system (DKMS)
-	pkgver = 42.1729.1939
+	pkgver = 42.1815
 	pkgrel = 1
 	url = https://github.com/fmorgner/dev-cyber
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = dkms
-	source = https://github.com/fmorgner/dev-cyber/archive/v42.1729.1939.tar.gz
+	source = https://github.com/fmorgner/dev-cyber/archive/v42.1815.tar.gz
 	source = dkms.conf
-	source = uaccess.patch
 	source = 10-cyber.conf
-	sha256sums = 5557597bc6c60335388e31ec50282725b25e7d13ce39b35ad9520db34e4a54a3
-	sha256sums = d976032e9f79a5cc679872b48e1c38124411891b6ce01527bfe24ff8f3df3a16
-	sha256sums = 365d11440e7dfaf281ad6d844a0f93a2f7eaca68880bfa89da5c58aaba0164e5
+	sha256sums = bbdcda5d30d972300b0bf6f4856e6e25120dce3b71642de8bd7b38a7c05ab18d
+	sha256sums = 44a852c8ce455d9345f927e4daa194b41de2e67c4cdaf6f2fe870c92a1739541
 	sha256sums = 99100ac04db2147ef246377b1ea4fc0c17106d37286e5d61cc02201301a85bbb
 
 pkgname = cyber-dkms

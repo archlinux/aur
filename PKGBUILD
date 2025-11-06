@@ -2,7 +2,7 @@
 
 _pkgname=cyber
 pkgname=${_pkgname}-dkms
-pkgver=42.1729.1939
+pkgver=42.1815
 pkgrel=1
 pkgdesc="CYBER for your system (DKMS)"
 arch=('i686' 'x86_64')
@@ -11,17 +11,13 @@ license=('GPL2')
 depends=('dkms')
 source=("https://github.com/fmorgner/dev-cyber/archive/v${pkgver}.tar.gz"
         "dkms.conf"
-        "uaccess.patch"
         "10-cyber.conf")
-sha256sums=('5557597bc6c60335388e31ec50282725b25e7d13ce39b35ad9520db34e4a54a3'
-            'd976032e9f79a5cc679872b48e1c38124411891b6ce01527bfe24ff8f3df3a16'
-            '365d11440e7dfaf281ad6d844a0f93a2f7eaca68880bfa89da5c58aaba0164e5'
+sha256sums=('bbdcda5d30d972300b0bf6f4856e6e25120dce3b71642de8bd7b38a7c05ab18d'
+            '44a852c8ce455d9345f927e4daa194b41de2e67c4cdaf6f2fe870c92a1739541'
             '99100ac04db2147ef246377b1ea4fc0c17106d37286e5d61cc02201301a85bbb')
 
 package() {
   cd "${srcdir}"
-
-  (cd "${srcdir}/dev-${_pkgname}-${pkgver}" && patch -p1 -i "${srcdir}/uaccess.patch")
 
   local install_dir="${pkgdir}/usr/src/${_pkgname}-${pkgver}"
 
@@ -35,11 +31,11 @@ package() {
 
   cd "dev-${_pkgname}-${pkgver}"
 
-  for d in $(find . -type d); do
+  for d in $(find . -type d -and -not -name '.vscode' ); do
     install -dm755 "${install_dir}/$d"
   done
 
-  for f in $(find . -type f); do
+  for f in $(find . -path './.vscode' -prune -prune -or \( -type f -and -not -name '.gitignore' -and -print \)); do
     install -m644 "$f" "${install_dir}/$f"
   done
 }
