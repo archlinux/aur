@@ -1,7 +1,7 @@
 pkgbase = dms-shell-git
 	pkgdesc = Desktop shell for wayland compositors built with Quickshell & GO
-	pkgver = 0.4.0.r16.g118ab4e.b9f0c27
-	pkgrel = 1
+	pkgver = 0.4.0.r27.gbb0c672.1d3e59b
+	pkgrel = 2
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = x86_64
 	arch = aarch64
@@ -18,12 +18,14 @@ pkgbase = dms-shell-git
 	optdepends = power-profiles-daemon: Set power profile
 	optdepends = qt6ct: Qt6 application theming
 	optdepends = wl-clipboard: Copy functionality for PIDs and other elements
-	provides = dms-shell=0.3.2.r16.g118ab4e.b9f0c27
+	provides = dms-shell=0.4.0.r27.gbb0c672.1d3e59b
 	conflicts = dms-shell
 	source = git+https://github.com/AvengeMedia/DankMaterialShell.git
 	source = git+https://github.com/AvengeMedia/danklinux.git
+	source = dms.service
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = df3ffefe689e6dc542ea1ab94547d9ceb525674d7fd3d0dd1fa7f68feb64d043
 
 pkgname = dms-shell-git
 	install = dms-shell-git.install
