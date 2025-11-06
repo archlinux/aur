@@ -2,7 +2,7 @@
 
 _pkgname="monocle"
 pkgname="${_pkgname}-bin"
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="See through all BGP data with a monocle"
 arch=('aarch64' 'x86_64')
@@ -16,10 +16,10 @@ source=("${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
         "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE")
 source_aarch64=("${_pkgsrc}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-aarch64-unknown-linux-gnu.tar.gz")
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('a06afe60a7335190486d4ba605223c7265c775f61b12336453652a730049312f'
+sha256sums=('dbb03ac49ad23c340031ce8a8410c9323cf5d174b53e1f9bd9ece8eb9c945b1b'
             '2f7fe2af03db380114c5894a77181791be23b2cb12035669dfb38c09c47e104c')
-sha256sums_aarch64=('e58bbb65a85975ef8f497f90d4bf6034d121b6ac748a3046301bb574fd9ad320')
-sha256sums_x86_64=('1e65d0b5ee76c73aef69cdb7fe8847c60b940d717c9820f41db7d55aaeb2d7de')
+sha256sums_aarch64=('7777945da25d648eb7000167fdd9b1968df6d539cc35b9afb4c4f484f930a6a8')
+sha256sums_x86_64=('a6dab4afa1eda07581f235dc1b6ff2a55670e6dc845d638cbb781730e303e172')
 
 package() {
   cd "${srcdir}"
