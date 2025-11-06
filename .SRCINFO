@@ -1,5 +1,5 @@
 pkgbase = parrot-cli
-	pkgdesc = Intelligent CLI command failure assistant with AI-powered responses
+	pkgdesc = Intelligent roasts of failed commands
 	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/tenseleyFlow/parrot

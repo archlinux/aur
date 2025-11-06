@@ -3,7 +3,7 @@
 pkgname=parrot-cli
 pkgver=1.4.0
 pkgrel=1
-pkgdesc='Intelligent CLI command failure assistant with AI-powered responses'
+pkgdesc='Intelligent roasts of failed commands'
 arch=('x86_64')
 url='https://github.com/tenseleyFlow/parrot'
 license=('MIT')
