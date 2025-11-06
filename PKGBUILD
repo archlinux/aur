@@ -1,6 +1,6 @@
 # Maintainer: enos muthiani @lyznne <emuthiani26@gmail.com>
 pkgname=peek-cli
-pkgver=0.1.0
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="A simple file viewer that opens files in the default web browser."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT' 'Apache-2.0')
 depends=('gcc-libs')
 makedepends=('cargo' 'rust' )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lyznne/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('8752b54a0679a9768ce41dd2fd05bf061a1c6064550cedbed96f9191259b168b')
 
 pkgver() {
     cd "$srcdir/$pkgname-$pkgver" || return
