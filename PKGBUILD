@@ -1,8 +1,8 @@
 # Maintainer: r3dg0d <r3dg0d@users.noreply.github.com>
 pkgname=arch-rich-presence
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="Discord Rich Presence for Arch Linux with Hyprland window tracking"
+pkgdesc="Discord Rich Presence for Arch Linux with Hyprland window tracking and custom status support"
 arch=('any')
 url="https://github.com/r3dg0d/arch-rich-presence"
 license=('MIT')
@@ -59,6 +59,7 @@ EOF
     install -m755 "$srcdir/$pkgname/toggle.sh" "$pkgdir/usr/bin/arch-rich-presence-toggle"
     install -m755 "$srcdir/$pkgname/waybar-status.sh" "$pkgdir/usr/bin/arch-rich-presence-waybar"
     install -m755 "$srcdir/$pkgname/setup-shell-hook.sh" "$pkgdir/usr/bin/arch-rich-presence-setup-hook"
+    install -m755 "$srcdir/$pkgname/set-status.sh" "$pkgdir/usr/bin/arch-rich-presence-set-status"
     
     # Install config example
     install -d "$pkgdir/usr/share/$pkgname"
