@@ -1,0 +1,116 @@
+pkgbase = geany-plugins-split-git
+	pkgdesc = Plugins for Geany (split)
+	pkgver = 2.1.0.r29.g0cfd614
+	pkgrel = 1
+	url = https://github.com/geany/geany-plugins
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = intltool
+	makedepends = python-docutils
+	makedepends = vte3
+	makedepends = lua
+	makedepends = libgit2
+	makedepends = enchant
+	makedepends = webkit2gtk
+	makedepends = glib2-devel
+	depends = geany
+	source = geany-plugins::git+https://github.com/geany/geany-plugins.git
+	source = 0001-GeanyLua-PR1238-Multiple-Lua.patch
+	source = 0002-Project-Organizer-Find-in-Project-Files-fallback.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = geany-plugin-utilslib-git
+	pkgdesc = Plugin for Geany - Utils Library
+	optdepends = vte3
+	provides = geany-plugin-conflict
+	provides = geany-plugin-utilslib
+	conflicts = geany-plugin-conflict
+	conflicts = geany-plugin-utilslib
+	conflicts = geany-plugins
+
+pkgname = geany-plugin-addons-git
+	pkgdesc = Plugin for Geany - addons
+	depends = geany
+	depends = geany-plugin-conflict
+	provides = geany-plugin-addons
+	conflicts = geany-plugin-addons
+
+pkgname = geany-plugin-autoclose-git
+	pkgdesc = Plugin for Geany - autoclose
+	depends = geany
+	depends = geany-plugin-conflict
+	provides = geany-plugin-autoclose
+	conflicts = geany-plugin-autoclose
+
+pkgname = geany-plugin-automark-git
+	pkgdesc = Plugin for Geany - automark
+	depends = geany
+	depends = geany-plugin-conflict
+	provides = geany-plugin-automark
+	conflicts = geany-plugin-automark
+
+pkgname = geany-plugin-geanylua-git
+	pkgdesc = Plugin for Geany - geanylua (lua54)
+	depends = geany
+	depends = lua
+	depends = geany-plugin-conflict
+	provides = geany-plugin-geanylua
+	conflicts = geany-plugin-geanylua
+
+pkgname = geany-plugin-git-changebar-git
+	pkgdesc = Plugin for Geany - git-changebar
+	depends = geany
+	depends = libgit2
+	depends = geany-plugin-conflict
+	provides = geany-plugin-git-changebar
+	conflicts = geany-plugin-git-changebar
+
+pkgname = geany-plugin-lsp-git
+	pkgdesc = Plugin for Geany - lsp
+	depends = geany
+	depends = geany-plugin-conflict
+	provides = geany-plugin-lsp
+	conflicts = geany-plugin-lsp
+
+pkgname = geany-plugin-overview-git
+	pkgdesc = Plugin for Geany - overview
+	depends = geany
+	depends = geany-plugin-conflict
+	provides = geany-plugin-overview
+	conflicts = geany-plugin-overview
+
+pkgname = geany-plugin-projectorganizer-git
+	pkgdesc = Plugin for Geany - projectorganizer
+	depends = geany
+	depends = geany-plugin-conflict
+	provides = geany-plugin-projectorganizer
+	conflicts = geany-plugin-projectorganizer
+
+pkgname = geany-plugin-spellcheck-git
+	pkgdesc = Plugin for Geany - spellcheck
+	depends = geany
+	depends = enchant
+	depends = geany-plugin-conflict
+	optdepends = hunspell-dictionary
+	provides = geany-plugin-spellcheck
+	conflicts = geany-plugin-spellcheck
+
+pkgname = geany-plugin-treebrowser-git
+	pkgdesc = Plugin for Geany - treebrowser
+	depends = geany
+	depends = geany-plugin-utilslib
+	depends = vte3
+	depends = geany-plugin-conflict
+	provides = geany-plugin-treebrowser
+	conflicts = geany-plugin-treebrowser
+
+pkgname = geany-plugin-webhelper-git
+	pkgdesc = Plugin for Geany - webhelper
+	depends = geany
+	depends = webkit2gtk
+	depends = geany-plugin-conflict
+	provides = geany-plugin-webhelper
+	conflicts = geany-plugin-webhelper

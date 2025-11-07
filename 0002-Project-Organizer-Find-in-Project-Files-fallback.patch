@@ -1,0 +1,23 @@
+diff --git a/projectorganizer/src/prjorg-menu.c b/projectorganizer/src/prjorg-menu.c
+index 1ca28770..1c9ba08b 100644
+--- a/projectorganizer/src/prjorg-menu.c
++++ b/projectorganizer/src/prjorg-menu.c
+@@ -70,6 +70,10 @@ static void on_find_in_project(G_GNUC_UNUSED GtkMenuItem * menuitem, G_GNUC_UNUS
+ 		search_show_find_in_files_dialog(utf8_base_path);
+ 		g_free(utf8_base_path);
+ 	}
++	else
++	{
++		search_show_find_in_files_dialog(NULL);
++	}
+ }
+ 
+ 
+@@ -309,7 +313,6 @@ void prjorg_menu_activate_menu_items(gboolean activate)
+ 	gtk_widget_set_sensitive(s_context_osf_item, activate);
+ 	gtk_widget_set_sensitive(s_ff_item, activate);
+ 	gtk_widget_set_sensitive(s_ft_item, activate);
+-	gtk_widget_set_sensitive(s_fif_item, activate);
+ }
+ 
+ 
