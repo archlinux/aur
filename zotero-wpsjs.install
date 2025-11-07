@@ -6,3 +6,7 @@ post_remove() {
   echo "Run 'systemctl --user disable zotero-wpsjs.service' to remove dead symlink."
   echo "Run 'systemctl --user stop zotero-wpsjs.service' to stop removed service."
 }
+
+post_upgrade() {
+  echo "Run 'systemctl --user restart zotero-wpsjs.service' to apply update."
+}
