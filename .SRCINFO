@@ -1,13 +1,13 @@
 pkgbase = libspinnaker
-    pkgdesc = FLIR GenTL producer interface that enables the user to enumerate, communicate and stream from FLIR GigE Vision and USB3 Vision devices in a generic way independent from the underlying transport technology. This package contains shared libraries.
-    pkgver = 3.1.0.79
-    pkgrel = 1
-    arch = x86_64
-    license = custom:FLIR EULA
-    url = https://www.flir.com/
-    depends = libgentl
-    depends = libusb
-    source = libspinnaker-3.1.0.79.tar.gz::https://github.com/daizhirui/spinnaker-sdk-arch/raw/main/libspinnaker-3.1.0.79.tar.gz
-    sha256sums = 19bf58a34960877146e49b1981782893336c4cdc24fb7eba5880b757402d1120
+	pkgdesc = FLIR GenTL producer interface that enables the user to enumerate, communicate and stream from FLIR GigE Vision and USB3 Vision devices in a generic way independent from the underlying transport technology. This package contains shared libraries.
+	pkgver = 4.2.0.88
+	pkgrel = 1
+	url = https://www.flir.com/
+	arch = x86_64
+	license = custom:FLIR EULA
+	depends = libgentl
+	depends = libusb
+	source = libspinnaker-4.2.0.88.deb::https://github.com/daizhirui/spinnaker-sdk-arch/raw/main/spinnaker-4.2.0.88-amd64/libspinnaker_4.2.0.88_amd64.deb
+	sha256sums = eb9e832b4645c66a8a56743d0c9479f843073e9e9ad0dd3f12d13c66e597113c
 
 pkgname = libspinnaker

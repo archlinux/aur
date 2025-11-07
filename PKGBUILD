@@ -2,7 +2,7 @@ pkgdesc="FLIR GenTL producer interface that enables the user to enumerate, commu
 url='https://www.flir.com/'
 
 pkgname='libspinnaker'
-pkgver='3.1.0.79'
+pkgver='4.2.0.88'
 arch=('x86_64')
 pkgrel=1
 license=("custom:FLIR EULA")
@@ -12,10 +12,11 @@ depends=(
     libusb
 )
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/daizhirui/spinnaker-sdk-arch/raw/main/libspinnaker-3.1.0.79.tar.gz")
-sha256sums=('19bf58a34960877146e49b1981782893336c4cdc24fb7eba5880b757402d1120')
+source=("${pkgname}-${pkgver}.deb::https://github.com/daizhirui/spinnaker-sdk-arch/raw/main/spinnaker-${pkgver}-amd64/libspinnaker_${pkgver}_amd64.deb")
+sha256sums=('eb9e832b4645c66a8a56743d0c9479f843073e9e9ad0dd3f12d13c66e597113c')
 
 package() {
     # Extract data
-    tar -xzf ${pkgname}-${pkgver}.tar.gz -C ${pkgdir}/
+    bsdtar -xf data.tar.zst -C "$pkgdir/"
+    rm -rf "$pkgdir/usr/share/doc"
 }
