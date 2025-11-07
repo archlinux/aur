@@ -2,7 +2,7 @@
 # Contributor: Alexander Paetzelt <techge+arch [ät] posteo [do] net>
 
 pkgname=kismet-git
-pkgver=r11957.bca676c0b
+pkgver=r12218.4c6bed551
 pkgrel=1
 pkgdesc="a sniffer, WIDS, and wardriving tool for Wi-Fi, Bluetooth, Zigbee, RF"
 url="https://www.kismetwireless.net/"
@@ -80,6 +80,8 @@ package() {
     chmod u+w "${pkgdir}"/usr/bin/kismet*
     chmod o-x "${pkgdir}"/usr/bin/kismet_cap*
     chown 0:315 "${pkgdir}"/usr/bin/kismet_cap*
+
+    install -vDm 644 -t "${pkgdir}/usr/share/doc/kismet"  README.md README.SSL
 
     # create group kismet via sysusers
     cd "$srcdir"
