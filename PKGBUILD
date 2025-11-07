@@ -3,15 +3,21 @@
 
 pkgname=backward-cpp
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful stack trace pretty printer for C++."
 url="https://github.com/bombela/backward-cpp"
 arch=('i686' 'x86_64' 'pentium4' 'i486')
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cmake' 'binutils' 'libelf' 'libdwarf' 'libunwind')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/bombela/backward-cpp/archive/v${pkgver}.tar.gz")
-sha256sums=('c654d0923d43f1cea23d086729673498e4741fb2457e806cfaeaea7b20c97c10')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/bombela/backward-cpp/archive/v${pkgver}.tar.gz"
+        "01-cmake-minimum-version.patch")
+sha256sums=('c654d0923d43f1cea23d086729673498e4741fb2457e806cfaeaea7b20c97c10'
+            'e8910651366c991ad4ba8d4cae82384ac248a218f9620651d46d1cea2ad81f54')
+
+prepare() {
+    patch -d "$pkgname-$pkgver" -Np1 -i ../01-cmake-minimum-version.patch
+}
 
 build() {
   cd "${srcdir}/backward-cpp-${pkgver}"

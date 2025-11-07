@@ -1,7 +1,7 @@
 pkgbase = backward-cpp
 	pkgdesc = A beautiful stack trace pretty printer for C++.
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bombela/backward-cpp
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = backward-cpp
 	makedepends = libunwind
 	depends = gcc-libs
 	source = backward-cpp-1.6.tar.gz::https://github.com/bombela/backward-cpp/archive/v1.6.tar.gz
+	source = 01-cmake-minimum-version.patch
 	sha256sums = c654d0923d43f1cea23d086729673498e4741fb2457e806cfaeaea7b20c97c10
+	sha256sums = e8910651366c991ad4ba8d4cae82384ac248a218f9620651d46d1cea2ad81f54
 
 pkgname = backward-cpp
