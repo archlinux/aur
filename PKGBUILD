@@ -2,8 +2,8 @@
 
 _name=mcp
 pkgname=python-$_name
-pkgver=1.20.0
-pkgrel=2
+pkgver=1.21.0
+pkgrel=1
 pkgdesc='Model Context Protocol SDK.'
 arch=('any')
 url='https://github.com/modelcontextprotocol/python-sdk'
@@ -14,7 +14,7 @@ checkdepends=('python-pytest' 'python-trio' 'python-pytest-xdist' 'python-pytest
 optdepends=('python-rich: rich' 'python-typer: cli' 'python-dotenv: cli' 'python-websockets: ws')
 source=("$_name::git+$url.git#tag=v$pkgver"
         "fix-pydantic-2.12.x.patch")
-sha256sums=('fd98c19073debacade9dd842b88c850edbf11cd0c37c9ce217ff8863b78d484b'
+sha256sums=('eaf78cdec38a602f9505f0748115fdd3f9e98b4de7212a5c050cf6be6fcf2562'
             '30f3aa2c6c50f6c3b5ac19ea43af30e0f037d6b88f91c2d9b658329ea1ef23b8')
 
 prepare(){
@@ -36,7 +36,7 @@ check() {
   cd "$srcdir"/$_name
   python -m venv --system-site-packages test-env
   ln -s /usr/bin/ruff test-env/bin/ruff
-  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -P -m installer dist/*.whl
   UV_PYTHON_PREFERENCE=only-system test-env/bin/python -m pytest "${pytest_options[@]}" tests
 }
 
