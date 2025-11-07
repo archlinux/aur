@@ -18,7 +18,7 @@ pkgbase = notnative-app-bin
 	optdepends = waybar: For system tray integration
 	provides = notnative-app
 	conflicts = notnative-app
-	source = notnative-app-bin-0.1.5_preview.tar.gz::https://github.com/k4ditano/notnative-omarchy/releases/download/v0.1.5_preview/notnative-app-bin-0.1.5_preview-x86_64.tar.gz
+	source = notnative-app-bin-0.1.5_preview.tar.gz::https://github.com/k4ditano/notnative-omarchy/releases/download/v0.1.5-preview/notnative-app-bin-0.1.5_preview-x86_64.tar.gz
 	sha256sums = 392fb555ae38999e02e76e2782b46efe03c77c7cbb1486b8b99128713139da57
 
 pkgname = notnative-app-bin

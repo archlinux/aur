@@ -13,7 +13,7 @@ optdepends=(
 )
 provides=('notnative-app')
 conflicts=('notnative-app')
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/notnative-app-bin-$pkgver-x86_64.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v0.1.5-preview/notnative-app-bin-$pkgver-x86_64.tar.gz")
 sha256sums=('392fb555ae38999e02e76e2782b46efe03c77c7cbb1486b8b99128713139da57')
 
 package() {
