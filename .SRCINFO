@@ -1,7 +1,7 @@
 pkgbase = codex-acp
 	pkgdesc = ACP–compatible agent that bridges the OpenAI Codex runtime with ACP clients.
-	pkgver = v0.2.2
-	pkgrel = 1
+	pkgver = 0.2.2
+	pkgrel = 2
 	url = https://github.com/cola-io/codex-acp
 	arch = x86_64
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = codex-acp
 	provides = codex-acp
 	conflicts = codex-acp
 	options = !lto
-	source = git+https://github.com/cola-io/codex-acp.git
+	source = codex-acp::git+https://github.com/cola-io/codex-acp.git#tag=v0.2.2
 	b2sums = SKIP
 
 pkgname = codex-acp

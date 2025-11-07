@@ -1,7 +1,7 @@
 # Maintainer: Denys Sedchenko <aur@x1unix.dev>
 pkgname=codex-acp
-pkgver='v0.2.2'
-pkgrel=1
+pkgver='0.2.2'
+pkgrel=2
 pkgdesc="ACP–compatible agent that bridges the OpenAI Codex runtime with ACP clients."
 arch=('x86_64' 'aarch64')
 url="https://github.com/cola-io/codex-acp"
@@ -16,7 +16,7 @@ makedepends=(
 )
 optdepends=()
 options=('!lto')
-source=("git+${url}.git")
+source=("$pkgname::git+${url}.git#tag=v${pkgver}")
 b2sums=('SKIP')
 
 pkgver() {
