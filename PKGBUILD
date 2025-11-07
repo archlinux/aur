@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=frappe-books-bin
 _pkgname='Frappe Books'
-pkgver=0.35.0
+pkgver=0.36.0
 _electronversion=22
 pkgrel=1
 pkgdesc="Modern desktop accounting for freelancers and small-businesses.(Prebuilt version.Use system-wide electron)"
@@ -30,8 +30,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-v${pkgver}-linux-aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-v${pkgver}-linux-x86_64.rpm")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('c5e42370d27a7edaebcc7e77de79fd466adc9b599fbc3ebeecbbedbf87d175af')
-sha256sums_x86_64=('ce726b905d6cb8647bcc532ab34b7eb8d49ed1135eee80aabb5006f64a08bb21')
+sha256sums_aarch64=('ba51c74c472df9163c0e746ec7f620cb638898c5dfd6c253af555cf6f6cc6491')
+sha256sums_x86_64=('6b67f7d97bb92b781b65e844f5e02448a331ce2aa7f87219644a5feaed922aca')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
