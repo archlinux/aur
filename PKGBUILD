@@ -3,7 +3,7 @@
 _pkgname="epson-pc-fax"
 pkgname="${_pkgname}-bin"
 pkgver=1.1.2_1
-pkgrel=1
+pkgrel=2
 pkgdesc="Epson PC-FAX driver used with CUPS"
 arch=(
   'x86_64'
@@ -17,12 +17,14 @@ license=(
 depends=(
   'cups'
   'gcc-libs'
+  'ghostscript'
   'glibc'
   'libcups'
 )
-# makedepends=(
-#   'curl'
-# )
+makedepends=(
+  # 'curl'
+  'gzip'
+)
 provides=(
   "${_pkgname}"
 )
