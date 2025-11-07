@@ -1,0 +1,24 @@
+pkgbase = python-endstone-git
+	pkgdesc = High-level Plugin API for Bedrock Dedicated Servers (BDS), in both Python and C++
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://github.com/EndstoneMC/endstone
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = clang
+	makedepends = conan
+	makedepends = make
+	makedepends = m4
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = git
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	conflicts = python-endstone
+	source = python-endstone-git::git+https://github.com/EndstoneMC/endstone.git#tag=v0.10.11
+	sha256sums = SKIP
+
+pkgname = python-endstone-git
