@@ -3,6 +3,7 @@ pkgbase = parrot-cli
 	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/tenseleyFlow/parrot
+	install = parrot-cli.install
 	arch = x86_64
 	license = MIT
 	makedepends = go>=1.21
