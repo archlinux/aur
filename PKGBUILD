@@ -1,6 +1,6 @@
 # Maintainer: Arnab Bose <hirak99+arch@gmail.com>
 pkgname=yabsnap-git
-pkgver=r300.95f8727
+pkgver=r313.0d242f0
 pkgrel=1
 pkgdesc="Btrfs automated snapshot manager."
 arch=('any')
@@ -50,6 +50,10 @@ package() {
   install -Dm 644 "$pkgname_main".1.gz                          -t "$pkgdir"/usr/share/man/man1/
   cd ../src
   install -Dm 755 "$pkgname_main".sh -t "$DEST"/
+  # Note: The -O compiles to .opt-1.pyc. Starting with v2.2.10, we use -O, and
+  # we own the files.
+  # See point 2 in https://aur.archlinux.org/packages/yabsnap#comment-1034857
+  python -O -m compileall -d /usr/share/"$pkgname_main" "$DEST"
   install -d "$pkgdir"/usr/bin
   ln -s /usr/share/"$pkgname_main"/"$pkgname_main".sh "$pkgdir"/usr/bin/"$pkgname_main"
 }
