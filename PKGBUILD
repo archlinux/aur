@@ -8,17 +8,11 @@ url="https://codeberg.org/J_S_Barkely-Griggs/Wayvy"
 license=('MPL-2.0')
 groups=()
 depends=('mpvpaper')
-makedepends=('rust' 'cargo' 'make')
-checkdepends=()
+makedepends=('rust' 'cargo' 'make' 'git')
 optdepends=('pywall: re-theming support'
             'walrs-extended: re-theming support with remote files'
             'walrs: re-theming support')
-provides=()
-conflicts=()
-replaces=()
-options=()
-changelog=
-source=("git+$url.git")
+source=("wayvy::git+$url.git")
 sha256sums=('SKIP')
 
 build() {
