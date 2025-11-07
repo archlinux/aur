@@ -1,6 +1,6 @@
 pkgbase = plasma6-applets-resources-monitor
 	pkgdesc = Plasmoid for monitoring CPU, memory, network traffic, GPUs and disks IO
-	pkgver = 3.1.1
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/orblazer/plasma-applet-resources-monitor
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = plasma6-applets-resources-monitor
 	conflicts = plasma5-applets-resources-monitor
 	conflicts = plasma5-applets-resources-monitor-git
 	conflicts = plasma6-applets-resources-monitor-git
-	source = plasma6-applets-resources-monitor-3.1.1.tar.gz::https://github.com/orblazer/plasma-applet-resources-monitor/archive/refs/tags/v3.1.1.tar.gz
-	b2sums = 7e59f0178ea57987a6b9d749ca5d2a020e89afa67a60f8fbcba51cd32001637ba5efe5518043408c1a142a26e1abf3a6fafacca81c3aaa9b557735875b810a4f
+	source = plasma6-applets-resources-monitor-3.2.0.tar.gz::https://github.com/orblazer/plasma-applet-resources-monitor/archive/refs/tags/v3.2.0.tar.gz
+	b2sums = b7d5c67f1a3fb54ac823bea0fe9f6a4f81466c52b454651eba509470f175ccfa866f524e5ac46ffd148a34b407558b6a73d426d5dd273ee33931e41c8f6d95d1
 
 pkgname = plasma6-applets-resources-monitor
