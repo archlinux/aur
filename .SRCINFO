@@ -1,22 +1,26 @@
 pkgbase = geany-plugin-preview
-	pkgdesc = Geany plugin to preview lightweight markup languages
-	pkgver = 0.1.2
+	pkgdesc = Plugin for Geany to preview markdown and other markup languages
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/xiota/geany-preview
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = meson
+	makedepends = tomlplusplus
 	depends = cmark-gfm
 	depends = geany
 	depends = libpodofo.so
 	depends = webkit2gtk-4.1
-	optdepends = asciidoc: Preview AsciiDoc
-	optdepends = asciidoctor: Preview AsciiDoc
-	optdepends = pandoc: Preview many other file formats
-	optdepends = ttf-courier-prime: Export Fountain screenplays to PDF
+	optdepends = asciidoctor: For AsciiDoc
+	optdepends = pandoc: For many other file formats
+	optdepends = ttf-courier-prime: To export Fountain to PDF
+	options = !debug
 	options = !lto
-	source = geany-preview::git+https://github.com/xiota/geany-preview.git#tag=v0.1.2
+	options = !strip
+	source = geany-preview::git+https://github.com/xiota/geany-preview.git#tag=v0.2.1
+	source = git+https://github.com/xiota/ftn2xml.git
+	sha256sums = 6d4416af323b4d92b9b4419ad5e69b5b84e1a5d7e9572271fa8546df9180a0f1
 	sha256sums = SKIP
 
 pkgname = geany-plugin-preview

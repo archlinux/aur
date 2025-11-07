@@ -2,9 +2,9 @@
 
 _pkgname='geany-plugin-preview'
 pkgname="$_pkgname"
-pkgdesc="Geany plugin to preview lightweight markup languages"
+pkgdesc="Plugin for Geany to preview markdown and other markup languages"
 url="https://github.com/xiota/geany-preview"
-pkgver=0.1.2
+pkgver=0.2.1
 pkgrel=1
 license=('GPL-3.0-or-later')
 arch=('x86_64')
@@ -18,37 +18,33 @@ depends=(
 makedepends=(
   'git'
   'meson'
+  'tomlplusplus'
 )
 optdepends=(
-  'asciidoc: Preview AsciiDoc'
-  'asciidoctor: Preview AsciiDoc'
-  'pandoc: Preview many other file formats'
-
-  # AUR
-  'ttf-courier-prime: Export Fountain screenplays to PDF'
+  'asciidoctor: For AsciiDoc'
+  'pandoc: For many other file formats'
+  'ttf-courier-prime: To export Fountain to PDF' # AUR
 )
 
-_pkgsrc="geany-preview"
-source=("$_pkgsrc"::"git+$url.git#tag=v$pkgver")
-sha256sums=('SKIP')
+options=('!debug' '!lto' '!strip')
 
-options=(!lto)
+_pkgsrc="geany-preview"
+source=(
+  "$_pkgsrc"::"git+$url.git#tag=v$pkgver"
+  'git+https://github.com/xiota/ftn2xml.git'
+)
+sha256sums=(
+  '6d4416af323b4d92b9b4419ad5e69b5b84e1a5d7e9572271fa8546df9180a0f1'
+  'SKIP'
+)
+
+prepare() {
+  ln -sf "$srcdir/ftn2xml" "$_pkgsrc/subprojects/ftn2xml"
+}
 
 build() {
-  cd "$_pkgsrc"
-  meson rewrite kwargs set project / version "$pkgver"
-
-  local _meson_args=(
-    --buildtype=plain
-    --prefix=/usr
-    --libexecdir=lib
-    --sbindir=bin
-    --auto-features=enabled
-    -Db_pie=true
-    -Db_lto=false
-  )
-  meson setup "${_meson_args}" ../build
-  meson compile -C ../build
+  arch-meson build "$_pkgsrc"
+  meson compile -C build
 }
 
 package() {
