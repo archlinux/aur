@@ -1,6 +1,6 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=clk-qt
-pkgver=2025_10_03.2
+pkgver=2025_11_05
 pkgrel=1
 epoch=
 pkgdesc="a latency hating emulator for 8 and 16 bit platforms(qt version)"
@@ -13,7 +13,7 @@ conflicts=('clk-sdl' 'clk-qt-git' 'clk-sdl-git')
 source=("https://github.com/TomHarte/CLK/archive/refs/tags/${pkgver//_/-}.tar.gz")
 noextract=()
 install="clk.install"
-sha256sums=('bf7ece09fa2350fcde5d537f81b1584b990dc67cd1c092bf0dd23cc10c91e50b')
+sha256sums=('cf6637ba5974d43f455165ba19715769d7b1d3cb2262ad71fb2051bad5917b69')
 
 build() {
 	cd "CLK-${pkgver//_/-}/OSBindings/Qt/"
