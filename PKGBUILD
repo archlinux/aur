@@ -3,7 +3,7 @@
 # Contributor: aulonsal <seraur at aulonsal dot com>
 pkgname=dbgate-premium-bin
 _pkgname=dbgate-premium
-pkgver=6.6.9
+pkgver=6.6.10
 _electronversion=30
 pkgrel=1
 pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others. Premium edition (proprietary). (Uses system-wide Electron)"
@@ -19,7 +19,7 @@ source=(
   "${_pkgname}.sh"
 )
 
-sha256sums=('c8af2193828bb0d46a832b4c9d11fcfbcd2c99511809c3f4b8def522c1efc02a'
+sha256sums=('99d19cb0edd8e3fc61868cbd7f8d9491b4ed492d96a94e91fe50f3a1f527ce17'
             'SKIP'
             '36371074ced6b14e43ddd16af03587faee65654dfe394621be99cf98d14f529c')
 
