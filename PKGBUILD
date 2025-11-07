@@ -1,12 +1,12 @@
 #Maintainer: Saffron <just.saffron@protonmail.com>
 pkgname=m2m
-pkgver=2.3.3
-pkgrel=2
+pkgver=2.3.4
+pkgrel=1
 pkgdesc="A is a minimal command line based youtube to audio/any-media-type converter"
 arch=(any)
 url="https://github.com/Saffron-sh/m2m"
 license=("MIT")
-depends=('yt-dlp' 'ffmpeg')
+depends=('yt-dlp' 'ffmpeg' 'jq')
 source=("https://raw.githubusercontent.com/Saffron-sh/m2m/main/m2m.sh"
 	"https://raw.githubusercontent.com/saffron-sh/m2m/main/m2m.1.gz")
 md5sums=("SKIP" "SKIP")
