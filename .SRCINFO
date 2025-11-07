@@ -1,7 +1,7 @@
 pkgbase = python-endstone_bstats
 	pkgdesc = bStats Metrics for Endstone Plugins
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/EndstoneMC/bstats
 	arch = any
 	license = MIT
