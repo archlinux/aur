@@ -4,8 +4,8 @@
 
 pkgname=loudgain-ffmpeg7
 _pkgname=loudgain
-pkgver=v0.7.0
-_pkgver=0.7.0
+pkgver=v0.7.1
+_pkgver=0.7.1
 pkgrel=1
 pkgdesc="A loudness normalizer that scans music files and calculates loudness-normalized gain and loudness peak values according to the EBU R128 standard, and can optionally write ReplayGain-compatible metadata. Includes pull requests to work with ffmpeg 7.0"
 url="https://github.com/kyndair/loudgain"
@@ -16,7 +16,7 @@ conflicts=('taglib<2' 'loudgain')
 makedepends=('cmake')
 provides=('loudgain' 'rgbpm')
 source=("${_pkgname}-${_pkgver}.tar.gz::https://github.com/kyndair/loudgain/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b04d7819711beb7d458097abd269bd2512ae86d38418a7d38832917f540c22cb')
+sha256sums=('03ed070609f963984479f556f93c7497058fbc9e5011676e054a2a5869a6227e')
 
 build() {
   export PKG_CONFIG_PATH=/usr/lib/taglib1/pkgconfig
