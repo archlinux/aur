@@ -16,5 +16,13 @@ pkgbase = calf-git
 	source = calf::git+https://github.com/calf-studio-gear/calf
 	md5sums = SKIP
 
+<<<<<<< HEAD
 pkgname = calf-git
 
+=======
+<<<<<<< HEAD
+pkgname = calf-nogui-git
+=======
+pkgname = calf-git
+>>>>>>> c3909e7 (switch from autotools to cmake, thank you binarynoise for the patch)
+>>>>>>> daddf36 (switch from autotools to cmake, thank you binarynoise for the patch)
