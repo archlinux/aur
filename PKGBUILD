@@ -12,9 +12,8 @@ sha256sums=('9b55a129c37c7c375204d9e851cedfe977319bdf3e9cc971c0f67219b9721ae2')
 
 build() {
   cd "$srcdir/aGrUM-$pkgver"
-  mkdir -p build && pushd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_PYTHON=ON -DCMAKE_UNITY_BUILD=ON -DAGRUM_PYTHON_SABI=OFF ..
-  make
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_PYTHON=ON -DCMAKE_UNITY_BUILD=ON -DAGRUM_PYTHON_SABI=OFF -B build .
+  make -C build
 }
 
 package() {
