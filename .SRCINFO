@@ -1,9 +1,8 @@
 pkgbase = parrot-cli
 	pkgdesc = Intelligent roasts of failed commands
-	pkgver = 1.6.1
-	pkgrel = 3
+	pkgver = 1.7.1
+	pkgrel = 1
 	url = https://github.com/tenseleyFlow/parrot
-	install = parrot-cli.install
 	arch = x86_64
 	license = MIT
 	makedepends = go>=1.21
@@ -13,7 +12,8 @@ pkgbase = parrot-cli
 	optdepends = curl: for API backend requests
 	provides = parrot
 	conflicts = parrot-cli-git
-	source = git+https://github.com/tenseleyFlow/parrot.git#tag=v1.6.1
+	install = parrot-cli.install
+	source = git+https://github.com/tenseleyFlow/parrot.git#tag=v1.7.1
 	sha256sums = SKIP
 
 pkgname = parrot-cli

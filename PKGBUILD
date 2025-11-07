@@ -1,8 +1,8 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=parrot-cli
-pkgver=1.6.1
-pkgrel=3
+pkgver=1.7.1
+pkgrel=1
 pkgdesc='Intelligent roasts of failed commands'
 arch=('x86_64')
 url='https://github.com/tenseleyFlow/parrot'
