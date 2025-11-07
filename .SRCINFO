@@ -1,6 +1,6 @@
 pkgbase = agentapi-bin
 	pkgdesc = HTTP API for Claude Code, Goose, Aider, Gemini, Amp, and Codex
-	pkgver = 0.10.2
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/coder/agentapi
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = agentapi-bin
 	license = MIT
 	provides = agentapi
 	conflicts = agentapi
-	source = LICENSE-0.10.2::https://raw.githubusercontent.com/coder/agentapi/v0.10.2/LICENSE
-	source = README-0.10.2.md::https://raw.githubusercontent.com/coder/agentapi/v0.10.2/README.md
+	source = LICENSE-0.11.0::https://raw.githubusercontent.com/coder/agentapi/v0.11.0/LICENSE
+	source = README-0.11.0.md::https://raw.githubusercontent.com/coder/agentapi/v0.11.0/README.md
 	sha256sums = 6a11e5fb1fdbffeb88c33f160214a034a7198fed8aedc28ba709a299413d64bf
 	sha256sums = 98602aa7082b1effa07382832fa6a86be759e9b1cd85c5f058996718185acc93
-	source_x86_64 = agentapi-x86_64-0.10.2::https://github.com/coder/agentapi/releases/download/v0.10.2/agentapi-linux-amd64
-	sha256sums_x86_64 = 9ab0d734cb5439cb689c538e93a0b8f5f7d5bb0c2bb3486734a09c41dbe095d1
-	source_aarch64 = agentapi-aarch64-0.10.2::https://github.com/coder/agentapi/releases/download/v0.10.2/agentapi-linux-arm64
-	sha256sums_aarch64 = 27bceb32676aecb54190d04956265a389319cde77cbf1f9f4b58b5b4a27cfb09
+	source_x86_64 = agentapi-x86_64-0.11.0::https://github.com/coder/agentapi/releases/download/v0.11.0/agentapi-linux-amd64
+	sha256sums_x86_64 = c6371bc57c535c8edcff9a1c63604d28bb9cf1e147cd2f7673f4f1563246c87b
+	source_aarch64 = agentapi-aarch64-0.11.0::https://github.com/coder/agentapi/releases/download/v0.11.0/agentapi-linux-arm64
+	sha256sums_aarch64 = 5db15b941563388fdb0f74ef7f72e407e62e01a5a34ccfcfa1952172a1d66dcc
 
 pkgname = agentapi-bin
