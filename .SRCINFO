@@ -1,6 +1,6 @@
 pkgbase = marcwel-archive
 	pkgdesc = The revolutionary archiving software that boldly asks, “What if… bigger is better?”
-	pkgver = 2.69.420
+	pkgver = 3.69.420
 	pkgrel = 1
 	url = https://github.com/ShortWare/marcwel-archive
 	arch = x86_64
