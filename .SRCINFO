@@ -1,0 +1,15 @@
+pkgbase = legionaura
+	pkgdesc = RGB keyboard lighting controller for Lenovo LOQ, Legion and IdeaPad Gaming laptops (C++17/libusb)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nivedck/LegionAura
+	install = .LegionAura.install
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	depends = libusb
+	source = legionaura-1.0.0.tar.gz::https://github.com/nivedck/LegionAura/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = legionaura
