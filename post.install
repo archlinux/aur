@@ -1,0 +1,15 @@
+post_install() {
+    echo ""
+    echo "  For a smooth first interaction, run the init flow:"
+    echo "   $ qq --init"
+    echo ""
+    echo "  It will create the configuration file at: ~/.qq/config.json."
+    echo ""
+    echo "  You can otherwise create/edit this file yourself. An example"
+    echo "  configuration file can be found under: /usr/share/qq/config-example.json"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}

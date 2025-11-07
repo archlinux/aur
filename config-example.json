@@ -1,0 +1,53 @@
+{
+  "default_profile": "ollama",
+  "model_providers": {
+    "groq": {
+      "name": "Groq",
+      "base_url": "https://api.groq.com/openai/v1",
+      "env_key": "GROQ_API_KEY",
+      "api_key": null,
+      "local": false
+    },
+    "anthropic": {
+      "name": "Anthropic",
+      "base_url": "https://api.anthropic.com/v1",
+      "env_key": "ANTHROPIC_API_KEY",
+      "api_key": null,
+      "local": false
+    },
+    "ollama": {
+      "name": "Ollama",
+      "base_url": "http://127.0.0.1:11434/v1",
+      "env_key": "OLLAMA_API_KEY",
+      "api_key": null,
+      "local": true
+    },
+    "openai": {
+      "name": "OpenAI",
+      "base_url": "https://api.openai.com/v1",
+      "env_key": "OPENAI_API_KEY",
+      "api_key": null,
+      "local": false
+    }
+  },
+  "profiles": {
+    "openai": {
+      "model_provider": "openai",
+      "model": "gpt-5-mini"
+    },
+    "ollama": {
+      "model_provider": "ollama",
+      "model": "llama3.1"
+    },
+    "anthropic": {
+      "model_provider": "anthropic",
+      "model": "claude-3-5-sonnet-20241022"
+    },
+    "groq": {
+      "model_provider": "groq",
+      "model": "openai/gpt-oss-20b"
+    }
+  },
+  "include_history": false,
+  "no_emoji": true
+}
