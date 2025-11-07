@@ -1,7 +1,7 @@
 # Maintainer: k1f0 <generic at k1f0.mozmail.com>
 
 pkgname=goup-rs
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 _patch=""
 pkgdesc='an elegant Go version manager write in rust'
@@ -9,9 +9,9 @@ arch=('x86_64' 'aarch64')
 url='https://github.com/thinkgos/goup-rs'
 license=('Apache-2.0')
 makedepends=('cargo' 'git')
-provides=("${pkgname%-rs}")
+provides=('go' "${pkgname%-rs}")
 source=("${pkgname}-${pkgver}${_patch}::${url}/archive/refs/tags/v${pkgver}${_patch}.tar.gz")
-b2sums=('9875a7849ceb7e02459cf5552fafc628b39a61c8447121e3fdd1d1661b48afd23aa41d8d2ead304ce280dbf340cac017b1ab8b6439950476e240993b85463989')
+b2sums=('cf003f85ac92a5c9eb3f0c4212759a8278e6cc88e3d4cf8b9d4354ca4144fe14ee092fa057bf9fed8396877dbad6fcff1f904fbcac5085cb326f0423fe2bd47a')
 options=(!debug !lto)
 
 prepare() {
@@ -23,7 +23,7 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}${_patch}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release
+  cargo build --features no-self-update --frozen --release
 }
 
 package() {
