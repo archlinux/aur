@@ -1,6 +1,6 @@
 # Maintainer: Sohrab Behdani <behdanisohrab@riseup.net>
 pkgname=proxycloud-gui-bin
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="ProxyCloud GUI is a free, fast, and user-friendly desktop application for managing proxy connections across multiple platforms."
 arch=('x86_64')
