@@ -1,0 +1,21 @@
+pkgbase = neoarch-git
+	pkgdesc = NeoArch Package Manager for Arch Linux
+	pkgver = 1.0.beta.1.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/Sanjaya-Danushka/Aurora
+	arch = any
+	license = custom
+	makedepends = git
+	depends = python-pyqt6
+	depends = python-requests
+	depends = qt6-svg
+	depends = git
+	depends = flatpak
+	depends = nodejs
+	depends = npm
+	provides = neoarch
+	conflicts = neoarch
+	source = git+https://github.com/Sanjaya-Danushka/Aurora.git
+	md5sums = SKIP
+
+pkgname = neoarch-git
