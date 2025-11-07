@@ -18,9 +18,7 @@ sha256sums=('8781ba581d7baa17fbeef2fb602e86fd0801e9f8846e20d27bd78a3067932bc6')
 
 prepare() {
     cd "$srcdir"
-    # Extract the deb file
     ar x "${_debname}_${_debver}_amd64.deb"
-    # Extract data archive
     tar -xf data.tar.*
 }
 
