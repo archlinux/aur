@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Game Chronicle
+Comment=A desktop application for logging your gaming sessions
+Exec=game-chronicle
+Icon=game-chronicle
+Terminal=false
+Categories=Game;Utility;
