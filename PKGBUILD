@@ -25,7 +25,7 @@ package() {
     install -Dm755 scrap-game "$pkgdir/usr/bin/scrap-game"
 
     # Install the LICENSE file
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    #install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 
     # Optional: copy source files to /usr/share/scrap-game for reference
