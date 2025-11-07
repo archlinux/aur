@@ -1,7 +1,7 @@
 pkgbase = gleam-observer
 	pkgdesc = Universal Hardware Monitor - Daemon with System Tray Integration
 	pkgver = 1.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ind4skylivey/Gleam-Observer
 	install = gleam-observer.install
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = gleam-observer
 	depends = libnotify
 	depends = systemd
 	depends = libappindicator-gtk3
+	depends = snixembed
 	optdepends = nvidia-utils: NVIDIA GPU monitoring support
 	optdepends = mesa-utils: AMD GPU monitoring support
 	optdepends = dunst: Desktop notifications daemon
