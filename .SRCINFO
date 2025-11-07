@@ -1,0 +1,14 @@
+pkgbase = walrs-extended
+	pkgdesc = Generate colorscheme from image
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Jsbarkleygriggs/walrs-extended
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = gcc-libs
+	conflicts = walrs
+	source = git+https://github.com/Jsbarkleygriggs/walrs-extended.git
+	sha256sums = SKIP
+
+pkgname = walrs-extended
