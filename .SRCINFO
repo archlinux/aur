@@ -1,14 +1,14 @@
 pkgbase = pg_uuidv7-old-upgrade
 	pkgdesc = Version of pg_uuidv7 extension compiled for use with postgresql-old-upgrade
-	pkgver = 1.6.0
-	pkgrel = 3
+	pkgver = 1.7.0
+	pkgrel = 1
 	url = https://github.com/fboulnois/pg_uuidv7
 	arch = x86_64
 	arch = aarch64
 	license = MPL2
 	makedepends = clang
 	depends = postgresql-old-upgrade
-	source = https://github.com/fboulnois/pg_uuidv7/archive/refs/tags/v1.6.0.tar.gz
-	sha256sums = 0fa6c710929d003f6ce276a7de7a864e9d1667b2d78be3dc2c07f2409eb55867
+	source = https://github.com/fboulnois/pg_uuidv7/archive/refs/tags/v1.7.0.tar.gz
+	sha256sums = ef1b332980ff1dfcf1962bf9b9e688254abf72f909de03cabed00a385c75148d
 
 pkgname = pg_uuidv7-old-upgrade

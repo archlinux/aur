@@ -1,5 +1,9 @@
-pkg/
-src/
-*.log
-*.pkg.tar.zst
-*.tar.gz
+# Blacklist everything by default
+*
+
+# Whitelist directories so file patterns may subsequently be whitelisted
+!*/
+
+# Whitelist specific file patterns
+!/.gitignore
+!/PKGBUILD
