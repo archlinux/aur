@@ -2,7 +2,7 @@
 
 _name=spitch
 pkgname=python-$_name
-pkgver=1.40.1
+pkgver=1.41.0
 pkgrel=1
 pkgdesc='The official Python library for the spitch API.'
 arch=('any')
@@ -11,8 +11,8 @@ license=('Apache-2.0')
 depends=('python' 'python-httpx' 'python-pydantic' 'python-typing_extensions' 'python-anyio' 'python-distro' 'python-sniffio')
 makedepends=('python-hatchling' 'python-hatch-fancy-pypi-readme' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-respx' 'python-pytest' 'python-pytest-asyncio' 'python-time-machine' 'python-dirty-equals' 'python-rich' 'python-pytest-xdist' 'npm' 'nodejs')
-source=("${url}/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8bb761308beffc40ce6517c1ca1ebde4a8e5c49a7bbbdc1950d1888e7c83871b')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('cb1cb365721bf643a418289518d6b9755dc88ebc03986be56372331b288d9965')
 
 prepare(){
   cd "$srcdir"/$_name-python-$pkgver
