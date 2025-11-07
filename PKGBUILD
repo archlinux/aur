@@ -12,8 +12,8 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=142.0.7444.59
-pkgrel=2
+pkgver=142.0.7444.134
+pkgrel=1
 _launcher_ver=8
 _manual_clone=0
 _system_clang=1
@@ -42,7 +42,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         increase-fortify-level.patch
         use-oauth2-client-switches-as-default.patch
         chromium-141-cssstylesheet-iwyu.patch)
-sha256sums=('d8b193b8e0b75921defdf80ed80607eac386e00bc5fc5c36d5ea8a132924f080'
+sha256sums=('bf37200fa07e554ff6f554a70cd5e3c0ae62ee1317f6d3032f2040a2a7a521cc'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '5abc8611463b3097fc5ce58017ef918af8b70d616ad093b8b486d017d021bbdf'
@@ -67,14 +67,14 @@ fi
 provides=("chromium=${pkgver}" "chromedriver=${pkgver}")
 conflicts=('chromium' 'chromedriver')
 _uc_usr=ungoogled-software
-_uc_rel=2
+_uc_rel=1
 _uc_ver="$pkgver-$_uc_rel"
 optdepends=("${optdepends[@]}"
             'chromium-extension-web-store: Web Store Functionality')
 source=(${source[@]}
         ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/refs/tags/$_uc_ver.tar.gz)
 sha256sums=(${sha256sums[@]}
-            '45892f816ab6c53e4e7f2f9d0afcb1e1c9ff4c324653d05a8d388fb83fc71458')
+            'a6bfe52fbf69c75db594d0b9483f6d27d2283706322fd5c3e6f149f5258c2449')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
