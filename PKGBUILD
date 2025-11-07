@@ -14,10 +14,12 @@ makedepends=('qt5-tools' 'python' 'pciutils' 'libxtst' 'libxcursor' 'libxrandr' 
              'gperf' 'nss' 'clang' 'nodejs' 'ninja')
 groups=('qt5')
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/single/$_pkgfqn.tar.xz"
-         no-qmake.patch)
-sha256sums=('b366ea5316d1beb051c9e4850286e07ebe98ca4823d352b62a6fae3092b26524'
-            'db90fa31381fa0814c9c8c803c9e2f9b36bdd6f52da753399e500c0692352498')
+source=("https://download.qt.io/archive/qt/${pkgver%.*}/${pkgver}/single/$_pkgfqn.tar.xz"
+         no-qmake.patch
+         qt-everywhere-src-5.15.17-assimp.patch)
+sha256sums=('85eb566333d6ba59be3a97c9445a6e52f2af1b52fc3c54b8a2e7f9ea040a7de4'
+            'db90fa31381fa0814c9c8c803c9e2f9b36bdd6f52da753399e500c0692352498'
+            '9d54e70051adfeed818db437f266e3bba5ccd2f5f9e056515281ee2f7ff71bac')
 
 prepare() {
   cd ${_pkgfqn/opensource-/}
@@ -28,6 +30,9 @@ prepare() {
   patch -d qtbase -p1 < "$srcdir"/no-qmake.patch # Use system qmake
 # Fix build with python 3.13
   sed -e '/import pipes/d' -i qtwebengine/src/3rdparty/chromium/build/android/gyp/util/build_utils.py
+
+  # build issues arroung assimp
+  patch -p1 < "$srcdir"/qt-everywhere-src-5.15.17-assimp.patch
 }
 
 build() {
