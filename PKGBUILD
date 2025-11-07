@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Simple tool to pack and unpack .fds files"
 arch=(x86_64)
 url="https://github.com/ClusterM/fdspacker"
-license=(GPL-3.0-or-later)
+license=(GPL-3.0-only)
 _dotnet_version=6.0
 depends=(
   "dotnet-runtime-$_dotnet_version"
