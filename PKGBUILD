@@ -4,7 +4,7 @@ pkgbase='zl-equalizer'
 pkgname=('zl-equalizer-vst' 'zl-equalizer-lv2')
 groups=('zl-audio' 'pro-audio')
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 options=()
 pkgdesc="Parametric, dynamic equalizer plugin by ZL Audio"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('git' 'cmake' 'kfr')
 
 source=("git+https://github.com/ZL-Audio/ZLEqualizer#tag=${pkgver}"
 		"git+https://github.com/ZL-Audio/JUCE#tag=b251f82")
-sha256sums=('921797264eba7f8ac5ce12675e7d870ae192f4afc310ed20ada464f36f19731c'
+sha256sums=('0517b50d402ced1977ae2c9731dceec9b25a6e46952054ff6e02dabb7e4f6c64'
             '01016c0970367a0da9f4bf3b9191334dbdbf8902e2acb6f47be0ede2acf598d7')
 
 prepare() {
@@ -40,14 +40,14 @@ build() {
 
 package_zl-equalizer-vst() {
 	groups+=('vst-plugins')
-	mkdir -p ${pkgdir}/usr/lib/vst3/ZL\ Equalizer.vst3
+	mkdir -p ${pkgdir}/usr/lib/vst3/
 	cp -r ${srcdir}/ZLEqualizer/Builds/ZLEqualizer_artefacts/VST3/* ${pkgdir}/usr/lib/vst3/
 	install -Dm755 ${srcdir}/ZLEqualizer/LICENSE.md ${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.md"
 }
 
 package_zl-equalizer-lv2() {
 	groups+=('lv2-plugins')
-	mkdir -p ${pkgdir}/usr/lib/lv2/ZL\ Equalizer.lv2
+	mkdir -p ${pkgdir}/usr/lib/lv2/
 	cp -r ${srcdir}/ZLEqualizer/Builds/ZLEqualizer_artefacts/LV2/* ${pkgdir}/usr/lib/lv2/
 	install -Dm755 ${srcdir}/ZLEqualizer/LICENSE.md ${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.md"
 }
