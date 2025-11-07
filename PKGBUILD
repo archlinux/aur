@@ -1,8 +1,8 @@
 # Maintainer: Emiliano Bovetti <emiliano.bovetti at gmail dot com>
 
 pkgname=nanomq-bin
-pkgver=0.24.4
-pkgrel=2
+pkgver=0.24.5
+pkgrel=1
 pkgdesc='An ultra-lightweight and blazing-fast Messaging broker/bus for IoT edge & SDV'
 url='https://nanomq.io'
 arch=(x86_64 aarch64 armel armv7h)
@@ -20,10 +20,10 @@ source_aarch64=("${pkgver}-aarch64.rpm::https://github.com/nanomq/nanomq/release
 source_armel=("${pkgver}-armel.rpm::https://github.com/nanomq/nanomq/releases/download/${pkgver}/nanomq-${pkgver}-linux-armel.rpm")
 source_armv7h=("${pkgver}-armv7h.rpm::https://github.com/nanomq/nanomq/releases/download/${pkgver}/nanomq-${pkgver}-linux-armhf.rpm")
 sha512sums=('7b86f32e35697f0f955f3d562637c5e067ac9b6691c7b6957d9106836445ffb75690530d72c5a0613519daaff7459ffbc776b2b3210d2a727053b097c8d950ee')
-sha512sums_x86_64=('00d50e1b5f5631b5f0082b1d009a3658a66d410824c7e85919da0682a671059f6457c6a4ff5e70f05fb276249d3ea8574942e42b023379fd31ef0c2dfc7041fb')
-sha512sums_aarch64=('3569804bdff3832d2dbebcc7fa90eb1e4fb6ca2bbc5c0b7f6519176ffe849134004cbd8d9e38aacc8e99e4d4b4abc0e94fe1c2568292aa2217506cf07d410b13')
-sha512sums_armel=('0599c053b2364183377f5ff92e3714969e8d24cf21a60e4e8aa8fb2a4dcbed23a31998c225a27d4555dceca3b2eaf36261d3e24f3890f582e72824c9ebba88c1')
-sha512sums_armv7h=('3b33e9a018cb83190a7c9b99c83812ea6155a5a21f8cfd72300ef9b12a2281bd55156e1e369e0435ae7dc3fe9bdb33648adb6be009a4d8a79d2c89a5282aed40')
+sha512sums_x86_64=('dc6d8811a0bfc57ddfa0cffe9b41ae8397d0b3f30457a98aa4f0768ac7765fcdd58b0696c4c7996018934fde9840ee20de0b43d072f3e3f995fad32d4dd2c5e5')
+sha512sums_aarch64=('0ba46f63bdc0b84a48749825b5744bf9512594c12f9279982f170c7b8e9fdad8cc0b02b9b23c5b0dbce386e89bf1082d6d1abfa179e346d59a697aa1c03fd913')
+sha512sums_armel=('25670d7ba46b9e940358e9b574780ed532f05e0636d127caa8ba5a5595153cec737ee00f59161d1528ee324018a786da460fde654467fa4b7946a90d6d86683d')
+sha512sums_armv7h=('50729a48e9bffcdbf85c2843396eac9989ea8aaf540cf321e8e4ad2a49899f6850649e4e9842f6cccc3a4a11c9f121176140d25ac48cc41c7c2b77729c1d38f5')
 
 prepare() {
   rm -rf "${srcdir}/root"
