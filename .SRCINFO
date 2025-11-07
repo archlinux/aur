@@ -1,6 +1,6 @@
 pkgbase = codex-acp
 	pkgdesc = ACP–compatible agent that bridges the OpenAI Codex runtime with ACP clients.
-	pkgver = r117
+	pkgver = v0.2.2
 	pkgrel = 1
 	url = https://github.com/cola-io/codex-acp
 	arch = x86_64
