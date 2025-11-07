@@ -1,0 +1,3 @@
+[git-igitt]
+source = "git"
+git = "https://github.com/mlange-42/git-igitt.git"
