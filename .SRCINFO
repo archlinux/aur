@@ -1,6 +1,6 @@
 pkgbase = chwall-git
 	pkgdesc = A tiny wallpaper changer, written in python
-	pkgver = v0.7.3.dev.6625d26
+	pkgver = v0.7.3.dev.c52626b
 	pkgrel = 1
 	url = https://git.umaneti.net/chwall/about/
 	arch = any

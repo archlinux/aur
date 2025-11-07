@@ -1,7 +1,7 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 pkgname=chwall-git
 _gitname=chwall
-pkgver=v0.7.3.dev.6625d26
+pkgver=v0.7.3.dev.c52626b
 pkgrel=1
 pkgdesc="A tiny wallpaper changer, written in python"
 arch=("any")
@@ -44,9 +44,14 @@ check() {
     make test
 }
 
+build() {
+    cd "${_gitname}"
+    make build DESTDIR="$pkgdir" CHWALL_NATIVE_PATH=yes
+}
+
 package() {
     cd "${_gitname}"
-    make package DESTDIR="$pkgdir" CHWALL_NATIVE_PATH=yes
+    make package DESTDIR="$pkgdir"
 
     cd "$pkgdir/usr/share/licenses"
     mv chwall chwall-git
