@@ -1,6 +1,6 @@
 pkgbase = transformerlab-bin
 	pkgdesc = Open Source Application for Advanced LLM Engineering: interact, train, fine-tune, and evaluate large language models on your own computer.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.24.1
+	pkgver = 0.24.2
 	pkgrel = 1
 	url = https://transformerlab.ai/
 	arch = aarch64
@@ -9,15 +9,15 @@ pkgbase = transformerlab-bin
 	makedepends = asar
 	depends = electron26
 	optdepends = ollama: server GGUF models instead of llama.cpp
-	provides = transformerlab=0.24.1
+	provides = transformerlab=0.24.2
 	conflicts = transformerlab
-	source = LICENSE-0.24.1::https://raw.githubusercontent.com/transformerlab/transformerlab-app/v0.24.1/LICENSE
+	source = LICENSE-0.24.2::https://raw.githubusercontent.com/transformerlab/transformerlab-app/v0.24.2/LICENSE
 	source = transformerlab.sh
 	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = transformerlab-0.24.1-aarch64.AppImage::https://github.com/transformerlab/transformerlab-app/releases/download/v0.24.1/Transformer-Lab-0.24.1-arm64.AppImage
-	sha256sums_aarch64 = b668c0f1eff4d65c6b48c5b3ac7d56222aac96271318cb0d6cb7729b2c247c0e
-	source_x86_64 = transformerlab-0.24.1-x86_64.AppImage::https://github.com/transformerlab/transformerlab-app/releases/download/v0.24.1/Transformer-Lab-0.24.1.AppImage
-	sha256sums_x86_64 = aa5ddeb6fbaa6155667fcf8071051677d22ac478cd590d96b295e59fa5e8d446
+	source_aarch64 = transformerlab-0.24.2-aarch64.AppImage::https://github.com/transformerlab/transformerlab-app/releases/download/v0.24.2/Transformer-Lab-0.24.2-arm64.AppImage
+	sha256sums_aarch64 = 1dad1c895ef920b99c562e010dfac9c942b264e738cf248fc869ca9589574811
+	source_x86_64 = transformerlab-0.24.2-x86_64.AppImage::https://github.com/transformerlab/transformerlab-app/releases/download/v0.24.2/Transformer-Lab-0.24.2.AppImage
+	sha256sums_x86_64 = 1b5b0caf713f5166c086674c4c600773741634534487ae132271b4e608a84d9c
 
 pkgname = transformerlab-bin
