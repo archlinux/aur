@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-edgemasks-git
+	pkgdesc = Plugin for Vapoursynth: edgemasks (GIT version)
+	pkgver = 3.1.0.gd0a1fcd
+	pkgrel = 1
+	url = https://github.com/HolyWu/VapourSynth-EdgeMasks
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	depends = vapoursynth
+	provides = vapoursynth-plugin-edgemasks
+	conflicts = vapoursynth-plugin-edgemasks
+	options = debug
+	source = edgemasks::git+https://github.com/HolyWu/VapourSynth-EdgeMasks.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-edgemasks-git
