@@ -11,8 +11,8 @@ source=("$_pkgname-$pkgver.tar.gz::https://github.com/Morganamilo/paru/archive/v
         git+https://aur.archlinux.org/pacman-static.git)
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 license=('GPL-3.0-or-later')
-makedepends=('rustup' 'musl' 'meson' 'kernel-headers-musl' 'lld' 'binutils')
-depends=('git' 'pacman')
+makedepends=('rustup' 'musl' 'meson' 'kernel-headers-musl' 'lld' 'binutils' 'git')
+depends=()
 #conflicts=('paru')
 #replaces=('paru')
 optdepends=('bat: colored pkgbuild printing' 'devtools: build in chroot and downloading pkgbuilds')
@@ -23,7 +23,17 @@ sha256sums=('eea4dbb524db765d5316f540f9ee670c0bf81aae4827b5417eebb4c9b5651727'
 # In clang-16, there seems to be no problem without this option specified.
 # (The -ffat-lto-objects option is planned to be supported from clang-17.)
 : "${CC:=$(command -v gcc || command -v clang)}"
-[[ $CC =~ gcc ]] && export LTOFLAGS+=" -ffat-lto-objects"
+case "$CC" in
+    *gcc*)
+        if [ -n "$LTOFLAGS" ]; then
+            LTOFLAGS="$LTOFLAGS -ffat-lto-objects"
+        else
+            LTOFLAGS="-ffat-lto-objects"
+        fi
+        export LTOFLAGS
+        ;;
+esac
+
 unset LD
 # musl build for openssl-sys
 export PKG_CONFIG_ALLOW_CROSS=1
