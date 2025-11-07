@@ -1,6 +1,6 @@
 pkgbase = python-openai-agents
 	pkgdesc = OpenAI Agents SDK.
-	pkgver = 0.4.2
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/openai/openai-agents-python
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = python-openai-agents
 	checkdepends = python-fastapi
 	checkdepends = python-aiosqlite
 	checkdepends = python-cryptography
+	checkdepends = python-fakeredis
 	checkdepends = litellm
 	makedepends = python-hatchling
 	makedepends = python-build
@@ -36,7 +37,9 @@ pkgbase = python-openai-agents
 	optdepends = python-asyncpg: sqlalchemy
 	optdepends = python-cryptography: encrypt
 	optdepends = python-redis: redis
-	source = https://files.pythonhosted.org/packages/source/o/openai-agents/openai_agents-0.4.2.tar.gz
-	sha256sums = 281caff839b3ab2cf3bc52110abe93caca004985c41bf07de8e60d03c4a7528e
+	optdepends = python-dapr: dapr
+	optdepends = python-grpcio: dapr
+	source = https://files.pythonhosted.org/packages/source/o/openai-agents/openai_agents-0.5.0.tar.gz
+	sha256sums = 776dde4025442164e3e860ff5b239b5c0ebc30f9445b0d75295c385a8ca1f696
 
 pkgname = python-openai-agents
