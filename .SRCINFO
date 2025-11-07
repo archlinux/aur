@@ -1,7 +1,7 @@
 pkgbase = amd-debug-tools-git
 	pkgdesc = Debug tools for AMD zen systems.
 	pkgver = 0.2.9+2.r555.20251101.ad6e2fc
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://git.kernel.org/pub/scm/linux/kernel/git/superm1/amd-debug-tools
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = amd-debug-tools-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools>=59.8.0
+	makedepends = python-setuptools-scm>=8
 	makedepends = python-setuptools-git-versioning>=2.0
 	makedepends = python-setuptools-git-versioning<3
 	makedepends = python-wheel

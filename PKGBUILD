@@ -7,7 +7,7 @@ _pkgname="${_pkgbase}"
 pkgname="${pkgbase}"
 epoch=0
 pkgver=0.2.9+2.r555.20251101.ad6e2fc
-pkgrel=1
+pkgrel=2
 pkgdesc="Debug tools for AMD zen systems."
 arch=(
   'any'
@@ -42,6 +42,7 @@ makedepends=(
   'python-build'
   'python-installer'
   'python-setuptools>=59.8.0'
+  'python-setuptools-scm>=8'
   'python-setuptools-git-versioning>=2.0'
   'python-setuptools-git-versioning<3'
   'python-wheel'
