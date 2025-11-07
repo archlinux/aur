@@ -1,0 +1,5 @@
+[chatgpt-bin]
+source = "github"
+github = "j178/chatgpt"
+use_latest_release = true
+prefix = "v"
