@@ -33,3 +33,9 @@ package() {
   # Install icon
   install -Dm644 "$pkgdir/opt/neoarch/Aurora/assets/icons/discover/logo1.png" "$pkgdir/usr/share/pixmaps/neoarch.png"
 }
+
+post_install() {
+  if command -v flatpak >/dev/null 2>&1; then
+    flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo || true
+  fi
+}
