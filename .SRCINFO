@@ -1,15 +1,15 @@
 pkgbase = gardenctl-bin
 	pkgdesc = gardenctl is a command-line client for the Gardener (version 2).
-	pkgver = 2.11.0
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://github.com/gardener/gardenctl-v2
 	arch = x86_64
 	license = Apache-2.0
 	provides = gardenctl
 	conflicts = gardenctl
-	source = gardenctl::https://github.com/gardener/gardenctl-v2/releases/download/v2.11.0/gardenctl_v2_linux_amd64
+	source = gardenctl::https://github.com/gardener/gardenctl-v2/releases/download/v2.12.0/gardenctl_v2_linux_amd64
 	source = gardenctl-profile.sh
-	sha256sums = 4f07bf8f9d5618bfff5e3d2ad9d30aadb78e8192f3b4f283c89d4ab7f281d3e4
+	sha256sums = 8552532041d44080534c5f421ad111bef9aa45b2da3c4db51857c1b852f2aef9
 	sha256sums = 1001ebb1a3066132794d914e18a17938c3d06a86e043d1c62bfc62efa5ee4893
 
 pkgname = gardenctl-bin
