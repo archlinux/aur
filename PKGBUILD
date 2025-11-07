@@ -2,7 +2,7 @@
 
 pkgname=aegnux
 pkgver=0.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A convenient way to install Adobe After Effects on Linux using Wine."
 arch=('x86_64')
 url="https://github.com/relativemodder/aegnux"
@@ -26,7 +26,6 @@ build() {
     cp /usr/bin/cabextract "$rootdir/bin/"
     cp /usr/bin/winetricks "$rootdir/bin/"
 
-    rm -rf $rootdir/assets/wine/lib/wine/i386*
     rm -rf "$rootdir/assets/wine/include"
 
     sed -i "s|\['./bin/kitty/bin/kitty', 'bash'\]|['kitty']|g" $rootdir/src/mainwindow.py
