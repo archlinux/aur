@@ -1,7 +1,7 @@
 pkgbase = benben
 	pkgdesc = Multi-format, fast and efficient command line audio player and audio converter
-	pkgver = 0.7.0
-	pkgrel = 2
+	pkgver = 0.7.1
+	pkgrel = 1
 	url = https://chiselapp.com/user/MistressRemilia/repository/benben
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -24,14 +24,14 @@ pkgbase = benben
 	depends = wavpack
 	depends = zstd
 	options = !strip
-	source = fossil+https://chiselapp.com/user/MistressRemilia/repository/benben#tag=v0.7.0
-	source = fossil+https://chiselapp.com/user/MistressRemilia/repository/cl-remi-slang/#tag=v0.2.1
-	source = fossil+https://chiselapp.com/user/MistressRemilia/repository/cl-remiaudio/#tag=v0.1.2
-	source = fossil+https://chiselapp.com/user/MistressRemilia/repository/cl-remimarshal/#tag=v0.4.2
-	source = fossil+https://chiselapp.com/user/MistressRemilia/repository/cl-sdm/#tag=v0.99.37
-	source = fossil+https://nanako.mooo.com/fossil/cl-remichips/#tag=v0.1.3
+	source = fossil+https://chiselapp.com/user/MistressRemilia/repository/benben#tag=v0.7.1
+	source = fossil+https://chiselapp.com/user/MistressRemilia/repository/cl-sdm/#tag=v0.99.38
+	source = fossil+https://chiselapp.com/user/MistressRemilia/repository/cl-remimarshal/#tag=v0.4.3
 	source = fossil+https://nanako.mooo.com/fossil/cl-remiyaml/#tag=v0.2.1
-	source = fossil+https://nanako.mooo.com/fossil/satousynth/#tag=v0.1.3
+	source = fossil+https://chiselapp.com/user/MistressRemilia/repository/cl-remiaudio/#tag=v0.1.3
+	source = fossil+https://nanako.mooo.com/fossil/cl-remichips/#tag=v0.1.3
+	source = fossil+https://chiselapp.com/user/MistressRemilia/repository/cl-remi-slang/#tag=v0.2.1
+	source = fossil+https://nanako.mooo.com/fossil/satousynth/#tag=v0.1.4
 	source = fossil+https://nanako.mooo.com/fossil/libremicsid/#commit=f52087551c9a39bdfa879ab49d2ff73ade3aa5ec884c7e4f7ee9875d595e5f7c
 	source = git+https://gitlab.common-lisp.net/alexandria/alexandria.git#commit=8514d8e68ed0c733abf7f96f9e91b24912686dc4
 	source = git+https://github.com/cl-babel/babel.git#commit=23c14409dc89538b8a0bb2667a9784a5a72b795f
@@ -45,6 +45,7 @@ pkgbase = benben
 	source = git+https://github.com/glv2/cl-zstd#commit=2f0c95e7451def47df5919227f299b64d4a0464e
 	source = git+https://github.com/fukamachi/quri.git#commit=45e0ff7f15a96ae9aef02b977375c6984d57a608
 	source = git+https://github.com/ruricolist/FXML.git#commit=a0e73bb48ef03adea94a55986cc27f522074c8e1
+	source = git+https://github.com/sharplispers/chipz.git#commit=6f803684415704114f213c64e13b231627e7777f
 	source = git+https://github.com/trivial-features/trivial-features.git#commit=d249a62aaf022902398a7141ae17217251fc61db
 	source = git+https://github.com/trivial-gray-streams/trivial-gray-streams.git#commit=a7ead683666849762ea657dac9137d693c5a4929
 	source = git+https://github.com/sharplispers/parse-number.git#commit=cb9e48758a51ddf3296b56c41ce0006617b00916
@@ -90,7 +91,6 @@ pkgbase = benben
 	source = git+https://github.com/darabi/cl-base64.git#commit=80496b74293e956364b2d3dbdfc87d74bfeeeda4
 	source = git+https://github.com/usocket/usocket.git#commit=6456a3f7ece05c8b8f077dd079daffb8de122ead
 	source = git+https://github.com/cl-plus-ssl/cl-plus-ssl.git#commit=e6963f24a2ad2a8c3fc113697bae54e0f15c05b0
-	source = git+https://github.com/sharplispers/chipz.git#commit=6f803684415704114f213c64e13b231627e7777f
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP

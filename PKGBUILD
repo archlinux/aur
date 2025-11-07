@@ -1,8 +1,8 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=benben
 pkgdesc='Multi-format, fast and efficient command line audio player and audio converter'
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 arch=(x86_64)
 license=(AGPL-3.0-or-later)
 depends=(
@@ -66,6 +66,7 @@ _git_source "3474f6414b73d4e3aa2d5c53080f4247a34f6380" "https://github.com/trivi
 _git_source "2f0c95e7451def47df5919227f299b64d4a0464e" "https://github.com/glv2/cl-zstd"
 _git_source "45e0ff7f15a96ae9aef02b977375c6984d57a608" "https://github.com/fukamachi/quri.git"
 _git_source "a0e73bb48ef03adea94a55986cc27f522074c8e1" "https://github.com/ruricolist/FXML.git"
+_git_source "6f803684415704114f213c64e13b231627e7777f" "https://github.com/sharplispers/chipz.git"
 _git_source "d249a62aaf022902398a7141ae17217251fc61db" "https://github.com/trivial-features/trivial-features.git"
 _git_source "a7ead683666849762ea657dac9137d693c5a4929" "https://github.com/trivial-gray-streams/trivial-gray-streams.git"
 _git_source "cb9e48758a51ddf3296b56c41ce0006617b00916" "https://github.com/sharplispers/parse-number.git" ## v1.8
@@ -111,17 +112,16 @@ _git_source "6bcb74ac6fb331f9677cdc98c5b0b9f92246d6a7" "https://github.com/fukam
 _git_source "80496b74293e956364b2d3dbdfc87d74bfeeeda4" "https://github.com/darabi/cl-base64.git"
 _git_source "6456a3f7ece05c8b8f077dd079daffb8de122ead" "https://github.com/usocket/usocket.git"
 _git_source "e6963f24a2ad2a8c3fc113697bae54e0f15c05b0" "https://github.com/cl-plus-ssl/cl-plus-ssl.git"
-_git_source "6f803684415704114f213c64e13b231627e7777f" "https://github.com/sharplispers/chipz.git"
 
 source=(
     "fossil+$url#tag=v$pkgver"
-    'fossil+https://chiselapp.com/user/MistressRemilia/repository/cl-remi-slang/#tag=v0.2.1'
-    'fossil+https://chiselapp.com/user/MistressRemilia/repository/cl-remiaudio/#tag=v0.1.2'
-    'fossil+https://chiselapp.com/user/MistressRemilia/repository/cl-remimarshal/#tag=v0.4.2'
-    'fossil+https://chiselapp.com/user/MistressRemilia/repository/cl-sdm/#tag=v0.99.37'
-    'fossil+https://nanako.mooo.com/fossil/cl-remichips/#tag=v0.1.3'
+    'fossil+https://chiselapp.com/user/MistressRemilia/repository/cl-sdm/#tag=v0.99.38'
+    'fossil+https://chiselapp.com/user/MistressRemilia/repository/cl-remimarshal/#tag=v0.4.3'
     'fossil+https://nanako.mooo.com/fossil/cl-remiyaml/#tag=v0.2.1'
-    'fossil+https://nanako.mooo.com/fossil/satousynth/#tag=v0.1.3'
+    'fossil+https://chiselapp.com/user/MistressRemilia/repository/cl-remiaudio/#tag=v0.1.3'
+    'fossil+https://nanako.mooo.com/fossil/cl-remichips/#tag=v0.1.3'
+    'fossil+https://chiselapp.com/user/MistressRemilia/repository/cl-remi-slang/#tag=v0.2.1'
+    'fossil+https://nanako.mooo.com/fossil/satousynth/#tag=v0.1.4'
 	'fossil+https://nanako.mooo.com/fossil/libremicsid/#commit=f52087551c9a39bdfa879ab49d2ff73ade3aa5ec884c7e4f7ee9875d595e5f7c'
 )
 b2sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
@@ -160,6 +160,7 @@ build () {
 			LD_LIBRARY_PATH="$(pwd)/../_libremicsid_build" \
 			REMOTE_BENBEN_COMPRESS=1 \
 			BENBEN_COMPRESS=1 \
+			BENBEN_NO_SIMD=1 \
 			BENBEN_OPT_MODE=release \
 				sbcl \
 				--dynamic-space-size 8192 \
