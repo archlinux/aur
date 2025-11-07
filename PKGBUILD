@@ -1,7 +1,7 @@
 # Maintainer: Erica Marigold <hi@devcomp.xyz>
 
 pkgname=rojo-git
-pkgver=7.6.0.r1.gcd78f5c0
+pkgver=7.6.1.r0.g825726c8
 pkgrel=1
 pkgdesc="[Latest Git Commit] Rojo enables Roblox developers to use professional-grade software engineering tools"
 arch=(x86_64 aarch64)
