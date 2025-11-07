@@ -3,7 +3,7 @@
 
 pkgname=bolt-launcher-bin
 _pkgname=bolt-launcher
-pkgver=0.20.0
+pkgver=0.20.4
 pkgrel=1
 pkgdesc="Free open-source third-party implementation of the Jagex Launcher"
 arch=('x86_64')
@@ -23,8 +23,8 @@ source=(
     "bolt-launcher.sh"
     "bolt-launcher.desktop"
 )
-sha256sums=('dffe02218667be7399e516d058130e7b6d96e4a08e6df350773fbe99375d648c'
-            '0f56702807cc67a74a7ba966e20288645c92057f698c79c65acb4c83134c4988'
+sha256sums=('0dc06306b21327605286fa64236e0c2c328ad5e6a83e15575750f5a3badd4d1b'
+            '73c3cd6ab6fd99a89d27997b0280f9db6ac4dbcbea8e3a237bb3eb5ea6d37329'
             'bfa5b995dbde008139b470f6a242f14df0ad0bdece794df2af2a8f4fd74377f3'
             '6c56b53dd02cdbea3fc59ffdca60c1268b882b9b9ab84a66e540c171483fc079')
 
