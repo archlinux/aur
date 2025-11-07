@@ -22,7 +22,7 @@ package() {
   cd "$srcdir/Aurora"
   # Install to /opt/neoarch
   install -d "$pkgdir/opt/neoarch"
-  cp -r . "$pkgdir/opt/neoarch"
+  cp -r . "$pkgdir/opt/neoarch/"
   # Make scripts executable
   chmod +x "$pkgdir/opt/neoarch/install_arch_deps.sh"
   chmod +x "$pkgdir/opt/neoarch/bin/neoarch.sh"
@@ -32,7 +32,4 @@ package() {
   sed -i 's|/home/test/New Folder/Aurora|/opt/neoarch|g' "$pkgdir/usr/share/applications/neoarch.desktop"
   # Install icon
   install -Dm644 assets/icons/discover/logo1.png "$pkgdir/usr/share/pixmaps/neoarch.png"
-  # Run install script in package() to set up launcher
-  cd "$pkgdir/opt/neoarch"
-  ./install_desktop_entry.sh >/dev/null 2>&1 || true
 }
