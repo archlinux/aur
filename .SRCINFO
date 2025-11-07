@@ -1,11 +1,11 @@
 pkgbase = python-mnelab
 	pkgdesc = Graphical user interface (GUI) for MNE, a Python package for EEG/MEG analysis
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cbrnr/mnelab
 	arch = any
 	license = BSD
-	makedepends = python-build
+	makedepends = python-uv-build
 	makedepends = python-installer
 	depends = python
 	depends = pyside6
