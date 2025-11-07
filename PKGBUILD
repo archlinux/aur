@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='Omron LUNA-I/LUNA-88K, Sharp X68030, and NEWS NWS-1750 emulator'
 pkgname=nono
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 url=http://www.pastel-flower.jp/~isaki/nono
 license=(custom)
@@ -9,7 +9,7 @@ arch=(x86_64)
 depends=(alsa-lib libbsd libkqueue libslirp termcap wxwidgets-gtk3)
 makedepends=(bmake freebsd-mk gettext)
 source=("${url}/archive/${pkgname}-${pkgver}.tar.gz")
-b2sums=('f31d4b1d3ccfaaa5dcf8546e99ce71d6999ffac4aeeff96b91e9b73c8fe9964a455edc5e1ac102142ae462898494176654a616b48091bde8831b72897dcf8c8d')
+b2sums=('2b0f2ef57b9bb6ad2c2beac78cfeb48c0cea84059d599ea7ac1630089826f2b11db89158dd38620b72c7815d04d75bddf92f1db4ca4b17b5e623f60a27ac10f4')
 
 prepare ()
 {
