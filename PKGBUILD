@@ -17,6 +17,7 @@ optdepends=('xclip: clipboard support on X11'
             'mpv: youtube in native player')
 source=("git+$url.git")
 sha256sums=('SKIP')
+options=(!strip)
 
 pkgver() {
   cd "endcord"
@@ -35,9 +36,9 @@ build() {
 
 package() {
 	cd "endcord"
-	install -Dm755 ./dist/$pkgname "$pkgdir/usr/bin/$pkgname"
-	install -Dm644 ./README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-	install -Dm644 ./commands.md "$pkgdir/usr/share/doc/$pkgname/commands.md"
-	install -Dm644 ./configuration.md "$pkgdir/usr/share/doc/$pkgname/configuration.md"
-	install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm755 ./dist/endcord-lite "$pkgdir/usr/bin/endcord-lite"
+	install -Dm644 ./README.md "$pkgdir/usr/share/doc/endcord-lite/README.md"
+	install -Dm644 ./commands.md "$pkgdir/usr/share/doc/endcord-lite/commands.md"
+	install -Dm644 ./configuration.md "$pkgdir/usr/share/doc/endcord-lite/configuration.md"
+	install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/endcord-lite/LICENSE"
 }

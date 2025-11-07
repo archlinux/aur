@@ -17,6 +17,7 @@ pkgbase = endcord-lite-git
 	optdepends = mpv: youtube in native player
 	provides = endcord-lite
 	conflicts = endcord-lite
+	options = !strip
 	source = git+https://github.com/mzivic7/endcord.git
 	sha256sums = SKIP
 
