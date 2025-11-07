@@ -1,6 +1,6 @@
 pkgbase = scrap-game
 	pkgdesc = Small CLI game where you collect scrap and buy stars
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/Preclik02/scrap_game
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = scrap-game
 	depends = bash
 	depends = gcc
 	depends = curl
-	source = https://github.com/Preclik02/scrap_game/archive/refs/tags/v1.0.tar.gz
+	source = https://github.com/Preclik02/scrap_game/archive/refs/tags/v1.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = scrap-game
