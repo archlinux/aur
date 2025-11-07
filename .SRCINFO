@@ -1,6 +1,6 @@
 pkgbase = hula-bin
 	pkgdesc = 🍀A desktop instant messaging app built on Tauri+Vue3 (not just instant messaging)(Prebuilt version)一个基于 Tauri、Vite 5、Vue 3 和 TypeScript 构建的即时通讯系统
-	pkgver = 3.0.2
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = https://hulaspark.com/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = hula-bin
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
 	depends = alsa-lib
-	provides = hula=3.0.2
+	provides = hula=3.0.3
 	conflicts = hula
-	source = hula-3.0.2.rpm::https://github.com/HuLaSpark/HuLa/releases/download/v3.0.2/HuLa-3.0.2-1.x86_64.rpm
-	sha256sums = 1f0aef597382883014b65c9b7b875f67f81f38408f45900aedfe8cbb6270458a
+	source = hula-3.0.3.rpm::https://github.com/HuLaSpark/HuLa/releases/download/v3.0.3/HuLa-3.0.3-1.x86_64_linux.rpm
+	sha256sums = 567a00028fbc81f77c2b4c94100be87abae828d748cddc9601a8372afd88fabb
 
 pkgname = hula-bin
