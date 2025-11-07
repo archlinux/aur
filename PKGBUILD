@@ -4,9 +4,9 @@
 
 pkgbase=qt5-doc
 pkgname=(qt5-doc qt5-examples)
-_basever=5.15.17
+_basever=5.15.18
 pkgver=$_basever
-pkgrel=2
+pkgrel=1
 arch=('any')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -17,7 +17,7 @@ _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
 source=("https://download.qt.io/archive/qt/${pkgver%.*}/${pkgver}/single/$_pkgfqn.tar.xz"
          no-qmake.patch
          qt-everywhere-src-5.15.17-assimp.patch)
-sha256sums=('85eb566333d6ba59be3a97c9445a6e52f2af1b52fc3c54b8a2e7f9ea040a7de4'
+sha256sums=('cea1fbabf02455f3f0e8eaa839f5d6f45cdb56b62c8a83af5c1d00ac05f912ea'
             'db90fa31381fa0814c9c8c803c9e2f9b36bdd6f52da753399e500c0692352498'
             '9d54e70051adfeed818db437f266e3bba5ccd2f5f9e056515281ee2f7ff71bac')
 
