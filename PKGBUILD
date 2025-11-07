@@ -1,6 +1,6 @@
 # Maintainer: Victor Mingueza <victormingueza at gmail.com>
 pkgname=journal-viewer-bin
-pkgver=0.7.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A modern linux desktop application to visualize systemd logs."
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/mingue/journal-viewer"
 license=('GPL3')
 depends=(
   'systemd'
-  'webkit2gtk'
+  'webkit2gtk-4.1'
 )
 optdepends=(
 )
@@ -20,8 +20,8 @@ source_x86_64=(
   "${pkgname/-bin/}.desktop"
 )
 sha256sums_x86_64=(
-  'dde3203f181c07e537e81d0e0ce81b881624e038ed2ac29d9f6a1ffed9962dd6'
-  '475b19c2d1b971e91a624bb2fb4477e76e39834e70ce64035426b678b9376f0c'
+  '98588d706362f2dc9fcd25f6858309306d5419fbeaedeb929a6be31d8f633db2'
+  'a0417c9219f5990ad9d6b6602aecd12ffab366cb79ff273d43e683c9a85e59f1'
 )
 
 package() {
