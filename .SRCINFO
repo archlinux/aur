@@ -1,6 +1,6 @@
 pkgbase = m2m
 	pkgdesc = A is a minimal command line based youtube to audio/any-media-type converter
-	pkgver = 2.3.2
+	pkgver = 2.3.3
 	pkgrel = 2
 	url = https://github.com/Saffron-sh/m2m
 	arch = any
