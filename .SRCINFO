@@ -1,11 +1,11 @@
 pkgbase = libgentl
-    pkgdesc = FLIR GenTL producer interface that enables the user to enumerate, communicate and stream from FLIR GigE Vision and USB3 Vision devices in a generic way independent from the underlying transport technology. This package contains shared libraries.
-    pkgver = 3.1.0.79
-    pkgrel = 1
-    arch = x86_64
-    license = custom:FLIR EULA
-    url = https://www.flir.com/
-    source = libgentl-3.1.0.79.tar.gz::https://github.com/daizhirui/spinnaker-sdk-arch/raw/main/libgentl-3.1.0.79.tar.gz
-    sha256sums = 2037c88c92d64d1070ea12e77700f0af767bce9895b9305d514d58958758043d
+	pkgdesc = FLIR GenTL producer interface that enables the user to enumerate, communicate and stream from FLIR GigE Vision and USB3 Vision devices in a generic way independent from the underlying transport technology. This package contains shared libraries.
+	pkgver = 4.2.0.88
+	pkgrel = 1
+	url = https://www.flir.com/
+	arch = x86_64
+	license = custom:FLIR EULA
+	source = libgentl-4.2.0.88.deb::https://github.com/daizhirui/spinnaker-sdk-arch/raw/main/spinnaker-4.2.0.88-amd64/libgentl_4.2.0.88_amd64.deb
+	sha256sums = a3d654fa861359b5e1d01ee3f13d06fcc87138b7b0b9b04d314352a6cceab1ee
 
 pkgname = libgentl
