@@ -5,15 +5,15 @@ pkgname=(
 #  'ctranslate2-docs'
 )
 pkgbase=ctranslate2
-pkgver=4.6.0
-pkgrel=3
+pkgver=4.6.1
+pkgrel=1
 pkgdesc="A C++ and Python library for efficient inference with Transformer models."
 arch=('x86_64')
 url="https://opennmt.net/CTranslate2"
 license=('MIT')
 makedepends=(
   'cmake'
-  'cuda'
+#  'cuda'
 #  'cudnn'
   'gcc14'
   'git'
@@ -46,7 +46,7 @@ source=("git+https://github.com/OpenNMT/CTranslate2.git#tag=v$pkgver"
         'git+https://github.com/google/ruy.git'
         'git+https://github.com/pytorch/cpuinfo.git'
         'git+https://github.com/NVIDIA/cub.git')
-sha256sums=('78111a078f17b809274c3adf00ffa33c35c729f82bde17c64e091ebc5bd1b400'
+sha256sums=('a757df346fd124f5eabec228f22b42a7131209fb662ba131713682319f09651f'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -76,9 +76,17 @@ prepare() {
   git config submodule.dependencies/cub.url "$srcdir/cub"
   git -c protocol.file.allow=always submodule update
   popd
+
+  # Relax pybind11 version
+  sed -i 's/pybind11==2.11.1/pybind11/g' python/pyproject.toml
 }
 
 build() {
+
+  ## -DWITH_CUDA='ON'
+  ##  -DCUDA_DYNAMIC_LOADING='ON'
+  ##  -DCUDA_ARCH_LIST='Common'
+  # Only supports up to CUDA 12.4
 
   ## WITH_CUDNN='ON'
   # hard dependency if enabled, however convolution layers will not be supported on
@@ -95,9 +103,6 @@ build() {
     -DWITH_OPENBLAS='ON' \
     -DOPENBLAS_INCLUDE_DIR='/usr/include/openblas' \
     -DWITH_RUY='ON' \
-    -DWITH_CUDA='ON' \
-    -DCUDA_DYNAMIC_LOADING='ON' \
-    -DCUDA_ARCH_LIST='Common' \
     -DCMAKE_POLICY_VERSION_MINIMUM='3.5' \
     -DENABLE_CPU_DISPATCH='OFF' \
     -Wno-dev
@@ -132,7 +137,7 @@ package_ctranslate2() {
     'onednn'
     'openblas'
   )
-  optdepends=('cuda')
+#  optdepends=('cuda')
   provides=('libctranslate2.so=4')
 
   DESTDIR="$pkgdir" cmake --install build
@@ -152,7 +157,7 @@ package_python-ctranslate2() {
     'python-setuptools'
     'python-yaml'
   )
-  optdepends=('python-pytorch-cuda')
+#  optdepends=('python-pytorch-cuda')
 
   cd CTranslate2/python
   python -m installer --destdir="$pkgdir" dist/*.whl
