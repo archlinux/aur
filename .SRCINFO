@@ -1,15 +1,15 @@
-# This file was generated manually to match PKGBUILD
 pkgbase = scrap-game
+	pkgdesc = Small CLI game where you collect scrap and buy stars
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Preclik02/scrap_game
+	arch = x86_64
+	license = 0BSD
+	makedepends = git
+	depends = bash
+	depends = gcc
+	depends = curl
+	source = https://github.com/Preclik02/scrap_game/archive/refs/tags/v1.0.tar.gz
+	sha256sums = SKIP
+
 pkgname = scrap-game
-pkgver = 1.0
-pkgrel = 1
-pkgdesc = Small CLI game where you collect scrap and buy stars
-arch = x86_64
-url = https://github.com/Preclik02/scrap_game
-license = GPL
-depends = bash
-depends = gcc
-depends = curl
-makedepends = git
-source = https://github.com/Preclik02/scrap_game/archive/refs/tags/v1.0.tar.gz
-sha256sums = SKIP
