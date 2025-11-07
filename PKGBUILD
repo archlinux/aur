@@ -19,17 +19,17 @@ pkgver() {
 }
 
 package() {
-  cd "$srcdir/Aurora"
+  cd "$srcdir"
   # Install to /opt/neoarch
   install -d "$pkgdir/opt/neoarch"
-  cp -r . "$pkgdir/opt/neoarch/"
+  cp -r Aurora "$pkgdir/opt/neoarch/"
   # Make scripts executable
-  chmod +x "$pkgdir/opt/neoarch/install_arch_deps.sh"
-  chmod +x "$pkgdir/opt/neoarch/bin/neoarch.sh"
-  chmod +x "$pkgdir/opt/neoarch/install_desktop_entry.sh"
+  chmod +x "$pkgdir/opt/neoarch/Aurora/install_arch_deps.sh"
+  chmod +x "$pkgdir/opt/neoarch/Aurora/bin/neoarch.sh"
+  chmod +x "$pkgdir/opt/neoarch/Aurora/install_desktop_entry.sh"
   # Install desktop file
-  install -Dm644 aurora.desktop "$pkgdir/usr/share/applications/neoarch.desktop"
-  sed -i 's|/home/test/New Folder/Aurora|/opt/neoarch|g' "$pkgdir/usr/share/applications/neoarch.desktop"
+  install -Dm644 "$pkgdir/opt/neoarch/Aurora/aurora.desktop" "$pkgdir/usr/share/applications/neoarch.desktop"
+  sed -i 's|/home/test/New Folder/Aurora|/opt/neoarch/Aurora|g' "$pkgdir/usr/share/applications/neoarch.desktop"
   # Install icon
-  install -Dm644 assets/icons/discover/logo1.png "$pkgdir/usr/share/pixmaps/neoarch.png"
+  install -Dm644 "$pkgdir/opt/neoarch/Aurora/assets/icons/discover/logo1.png" "$pkgdir/usr/share/pixmaps/neoarch.png"
 }
