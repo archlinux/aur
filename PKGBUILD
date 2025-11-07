@@ -2,7 +2,7 @@
 
 pkgname="epson-pc-fax"
 pkgver=1.1.2_1
-pkgrel=2
+pkgrel=3
 pkgdesc="Epson PC-FAX driver used with CUPS"
 arch=(
   # 'i686'
@@ -17,6 +17,7 @@ license=(
 depends=(
   'cups'
   'gcc-libs'
+  'ghostscript'
   'glibc'
   # 'icu55'
   'libcups'
