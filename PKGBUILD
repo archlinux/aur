@@ -1,18 +1,16 @@
 # Maintainer: il1v3y <ind4skylivey@proton.me>
 pkgname=gleam-observer
 pkgver=1.5.2
-pkgrel=3
-pkgdesc="Universal Hardware Monitor - Daemon with System Tray Integration"
+pkgrel=4
+pkgdesc="Universal Hardware Monitor - TUI with Cyberpunk Aesthetics"
 arch=('x86_64')
 url="https://github.com/ind4skylivey/Gleam-Observer"
 license=('MIT' 'Apache')
-depends=('gcc-libs' 'libnotify' 'systemd' 'libappindicator-gtk3')
+depends=('gcc-libs')
 makedepends=('rust' 'cargo' 'git')
 optdepends=(
-    'snixembed: Required for system tray on DWM/i3/Awesome (StatusNotifierItem bridge)'
     'nvidia-utils: NVIDIA GPU monitoring support'
     'mesa-utils: AMD GPU monitoring support'
-    'dunst: Desktop notifications daemon'
 )
 install=gleam-observer.install
 source=("git+$url.git#tag=v$pkgver"
@@ -26,33 +24,26 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     
-    cargo build --release --features nvidia,amd,intel,systray
+    # Build TUI only (no systray - experimental for GNOME/KDE only)
+    cargo build --release --features nvidia,amd,intel
 }
 
 check() {
     cd "$srcdir/Gleam-Observer"
     
-    cargo test --release --features nvidia,amd,intel,systray
+    cargo test --release --features nvidia,amd,intel
 }
 
 package() {
     cd "$srcdir/Gleam-Observer"
     
-    # Binaries
+    # Binary (TUI only)
     install -Dm755 "target/release/gleam" "$pkgdir/usr/bin/gleam"
-    install -Dm755 "target/release/gleam-tray" "$pkgdir/usr/bin/gleam-tray"
     
     # Icon
     install -Dm644 "assets/gleamobserver.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/gleamobserver.png"
     
-    # Systemd user services
-    install -Dm644 "packaging/systemd/gleam-observer.service" "$pkgdir/usr/lib/systemd/user/gleam-observer.service"
-    install -Dm644 "packaging/systemd/snixembed.service" "$pkgdir/usr/lib/systemd/user/snixembed.service"
-    
-    # Desktop autostart entry (daemon)
-    install -Dm644 "packaging/desktop/gleam-observer.desktop" "$pkgdir/etc/xdg/autostart/gleam-observer.desktop"
-    
-    # Desktop application entry (TUI launcher)
+    # Desktop application entry (TUI launcher for rofi/dmenu)
     install -Dm644 "packaging/desktop/gleam-observer-tui.desktop" "$pkgdir/usr/share/applications/gleam-observer.desktop"
     
     # Config example

@@ -2,21 +2,22 @@ post_install() {
     echo ""
     echo "==> GleamObserver v1.5.2 installed successfully!"
     echo ""
-    echo "==> For DWM/i3/Awesome system tray support, install snixembed:"
-    echo "    sudo pacman -S snixembed"
-    echo "    systemctl --user enable --now snixembed gleam-observer"
-    echo ""
-    echo "==> For other DEs (XFCE/MATE/KDE/GNOME):"
-    echo "    systemctl --user enable --now gleam-observer"
-    echo ""
-    echo "==> Desktop launcher installed - search 'GleamObserver' in rofi/dmenu"
-    echo ""
-    echo "==> Or run TUI manually:"
+    echo "==> TUI Monitor (Primary Method):"
     echo "    gleam"
+    echo ""
+    echo "==> Desktop launcher: Search 'GleamObserver' in rofi/dmenu"
+    echo ""
+    echo "==> Add keybinding to your WM (recommended):"
+    echo "    DWM:     { MODKEY, XK_g, spawn, SHCMD(\"alacritty -e gleam\") }"
+    echo "    i3:      bindsym \$mod+g exec alacritty -e gleam"
+    echo "    Awesome: awful.key({ modkey }, \"g\", function() awful.spawn(\"alacritty -e gleam\") end)"
     echo ""
     echo "==> Config file:"
     echo "    ~/.config/gleam_observer/config.toml"
     echo "    (example: /usr/share/doc/gleam-observer/config-example.toml)"
+    echo ""
+    echo "==> Note: System tray daemon is experimental (GNOME/KDE only)"
+    echo "    Build with --features systray if needed"
     echo ""
 }
 
@@ -24,25 +25,9 @@ post_upgrade() {
     post_install
 }
 
-pre_remove() {
-    if systemctl --user is-active gleam-observer &>/dev/null; then
-        echo "==> Stopping gleam-observer service..."
-        systemctl --user stop gleam-observer
-    fi
-    if systemctl --user is-enabled gleam-observer &>/dev/null; then
-        echo "==> Disabling gleam-observer service..."
-        systemctl --user disable gleam-observer
-    fi
-    if systemctl --user is-active snixembed &>/dev/null; then
-        echo "==> Stopping snixembed service..."
-        systemctl --user stop snixembed
-    fi
-    if systemctl --user is-enabled snixembed &>/dev/null; then
-        echo "==> Disabling snixembed service..."
-        systemctl --user disable snixembed
-    fi
-}
-
 post_remove() {
-    echo "==> GleamObserver removed. Config files in ~/.config/gleam_observer/ were kept."
+    echo ""
+    echo "==> GleamObserver removed."
+    echo "==> Config files in ~/.config/gleam_observer/ were kept."
+    echo ""
 }
