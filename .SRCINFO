@@ -1,0 +1,12 @@
+pkgbase = loveshaderconverter
+	pkgdesc = Converts the GLSL used in the Shader Toy to a version of GLSL that can be used by LÖVE, with custom calls for lua
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/tsteinholz/LoveShaderConverter
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	source = https://github.com/tsteinholz/LoveShaderConverter/archive/refs/tags/0.1.tar.gz
+	sha256sums = 36b9930869654fd7883bd22067a00697424342b092f74deb920043fb5d1caf9f
+
+pkgname = loveshaderconverter
