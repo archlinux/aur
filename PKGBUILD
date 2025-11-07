@@ -2,7 +2,7 @@
 
 _pkgname=wasted
 pkgname=${_pkgname}-git
-pkgver=r717.8ae0070
+pkgver=r754.6df601c
 pkgrel=1
 pkgdesc='Wasted is a derby-destruction video game with playful visuals'
 arch=('x86_64')
