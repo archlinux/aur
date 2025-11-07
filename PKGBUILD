@@ -2,7 +2,7 @@
 
 pkgname=parrot-cli
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Intelligent roasts of failed commands'
 arch=('x86_64')
 url='https://github.com/tenseleyFlow/parrot'

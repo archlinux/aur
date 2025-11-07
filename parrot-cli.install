@@ -4,22 +4,35 @@ post_install() {
 
     # Check if Ollama is available for automatic setup
     if command -v ollama >/dev/null 2>&1; then
-        echo "🤖 Ollama detected - setting up local AI backend..."
+        echo "🤖 Ollama detected - checking server status..."
 
-        # Pull the model in background if not already present
-        if ! ollama list | grep -q "llama3.2:3b"; then
-            echo "📥 Downloading AI model (this may take a few minutes)..."
-            echo "   You can continue using your terminal - parrot will work when ready"
-            (ollama pull llama3.2:3b >/dev/null 2>&1 && echo "✅ AI model ready!" || echo "❌ Model download failed") &
+        # Check if ollama server is running
+        if ! ollama list >/dev/null 2>&1; then
+            echo ""
+            echo "⚠️  Ollama server is not running. To start it:"
+            echo "    sudo systemctl enable --now ollama"
+            echo ""
+            echo "   After starting, you can pull the AI model with:"
+            echo "    ollama pull llama3.2:3b"
+            echo ""
         else
-            echo "✅ AI model already available"
+            # Pull the model in background if not already present
+            if ! ollama list 2>/dev/null | grep -q "llama3.2:3b"; then
+                echo "📥 Downloading AI model (this may take a few minutes)..."
+                echo "   You can continue using your terminal - parrot will work when ready"
+                (ollama pull llama3.2:3b >/dev/null 2>&1 && echo "✅ AI model ready!" || echo "⚠️  Model download failed - run 'ollama pull llama3.2:3b' manually") &
+            else
+                echo "✅ AI model already available"
+            fi
+            echo ""
         fi
-        echo ""
     else
         echo "🔄 Using built-in responses (no setup required)"
         echo ""
-        echo "For AI-powered responses, install Ollama:"
-        echo "  https://ollama.com/download"
+        echo "💡 For AI-powered responses, install Ollama:"
+        echo "   yay -S ollama"
+        echo "   sudo systemctl enable --now ollama"
+        echo "   ollama pull llama3.2:3b"
         echo ""
     fi
 
