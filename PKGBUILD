@@ -1,6 +1,6 @@
 # Maintainer: r3dg0d
 pkgname=vidocq-bin
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Advanced OSINT tool for username searching across 450+ platforms"
 arch=('x86_64')
