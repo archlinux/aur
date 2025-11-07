@@ -41,7 +41,9 @@ backup=(etc/kismet/kismet.conf
         etc/kismet/kismet_httpd.conf
         etc/kismet/kismet_logging.conf
         etc/kismet/kismet_memory.conf
-        etc/kismet/kismet_uav.conf)
+        etc/kismet/kismet_uav.conf
+        etc/kismet/kismet_wardrive.conf)
+provides=('kismet')
 conflicts=('kismet')
 install="${pkgname}.install"
 source=("git+https://github.com/kismetwireless/kismet"
