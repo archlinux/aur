@@ -5,7 +5,7 @@
 # Contributor: Simonas Racinas <racinas at icloud.com>
 # Contributor: Rein Fernhout <me@levitati.ng>
 pkgname=visual-paradigm-community
-pkgver=17.3.20251102
+pkgver=17.3.20251121
 pkgverminor=`echo $pkgver| sed 's/\(\.[^.]*\)\..*/\1/'`
 pkgrel=1
 pkgdesc="UML design application"
@@ -26,7 +26,7 @@ source=("https://www.visual-paradigm.com/downloads/${_server}/vpce/Visual_Paradi
   'LICENSE.txt'
   'x-visual-paradigm.xml')
 
-sha256sums=('89a28af4cafc9e3700719747dbdc34bc2cef5f7f966a5bc67d0c93e0ca4ca442'
+sha256sums=('b26d2a067e3cf21a765cd4e7d2d714638a52c3f57f4247c4120afac801c5ede5'
             '52d244345f2ce8080d2b20c8c75b3ef833dfe9c5d605cac7129013b087bf2806'
             '5cdc0f50573d805938172c1f35664aa264fc5964fd92daed09b467565a6347b1'
             '41517b5c2326c0ba2fe3b6647f9594f094ccf03185cf73cb87d6cf19b355ff15'
