@@ -1,7 +1,7 @@
 pkgbase = apollo
 	pkgdesc = A self-hosted game stream server
-	pkgver = 0.4.6
-	pkgrel = 3
+	pkgver = 0.4.8
+	pkgrel = 1
 	url = https://github.com/ClassicOldSong/Apollo
 	install = apollo.install
 	arch = x86_64
@@ -28,8 +28,8 @@ pkgbase = apollo
 	depends = wayland
 	optdepends = intel-media-driver: Intel GPU encoding support
 	optdepends = libva-mesa-driver: AMD GPU encoding support
-	source = apollo::git+https://github.com/ClassicOldSong/Apollo.git#tag=v0.4.6
-	sha256sums = c5f52391cfff5f76dadfcf692406120c2ea098d3835b99652fe478d79ccbe722
+	source = apollo::git+https://github.com/ClassicOldSong/Apollo.git#tag=v0.4.8
+	sha256sums = f20e3c3df32efd8bcbf31e74fc822cedf923abb5ac6b3aeace9594432959aa9f
 
 pkgname = apollo
 	depends = gtk3

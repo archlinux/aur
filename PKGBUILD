@@ -8,8 +8,8 @@
 
 _pkgname="apollo"
 pkgname="$_pkgname"
-pkgver=0.4.6
-pkgrel=3
+pkgver=0.4.8
+pkgrel=1
 pkgdesc="A self-hosted game stream server"
 url="https://github.com/ClassicOldSong/Apollo"
 license=('GPL-3.0-only')
@@ -61,7 +61,7 @@ install="$_pkgname.install"
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git#tag=v$pkgver")
-sha256sums=('c5f52391cfff5f76dadfcf692406120c2ea098d3835b99652fe478d79ccbe722')
+sha256sums=('f20e3c3df32efd8bcbf31e74fc822cedf923abb5ac6b3aeace9594432959aa9f')
 
 prepare() {
   cd "$_pkgsrc"
