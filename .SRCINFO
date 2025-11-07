@@ -1,0 +1,20 @@
+pkgbase = mpvpaper-stop-git
+	pkgdesc = Pauses mpvpaper when windows are visible and resumes when workspace is empty on Hyprland
+	pkgver = r20.fce30be
+	pkgrel = 1
+	url = https://github.com/pvtoari/mpvpaper-stop
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = mpvpaper
+	depends = hyprland
+	depends = cjson
+	optdepends = python-pywal: set your colour scheme to the paused frame's one
+	provides = mpvpaper-stop
+	conflicts = mpvpaper-stop
+	source = git+https://github.com/pvtoari/mpvpaper-stop.git
+	sha256sums = SKIP
+
+pkgname = mpvpaper-stop-git
