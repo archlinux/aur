@@ -1,0 +1,18 @@
+pkgbase = fdspacker
+	pkgdesc = Simple tool to pack and unpack .fds files
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ClusterM/fdspacker
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = dotnet-sdk-6.0
+	makedepends = git
+	depends = dotnet-runtime-6.0
+	depends = gcc-libs
+	depends = glibc
+	options = !debug
+	options = !strip
+	source = git+https://github.com/ClusterM/fdspacker.git#commit=3cb4b791246cf4772bf644f622486adbfe48f51a
+	sha256sums = SKIP
+
+pkgname = fdspacker
