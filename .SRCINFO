@@ -1,0 +1,18 @@
+pkgbase = calf-nogui-git
+	pkgdesc = LV2/JACK audio plug-ins for musicians (git version) - GUI disabled
+	pkgver = 0.90.8.r1.gd4fb554
+	pkgrel = 1
+	url = http://calf-studio-gear.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = git
+	depends = fluidsynth
+	depends = lv2
+	provides = calf
+	conflicts = calf
+	source = calf::git+https://github.com/calf-studio-gear/calf
+	md5sums = SKIP
+
+pkgname = calf-nogui-git
