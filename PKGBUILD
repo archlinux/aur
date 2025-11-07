@@ -1,4 +1,4 @@
-pkgname=adhan-xreminder
+pkgname=adhan-live
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A simple Adhan reminder script"

@@ -1,4 +1,4 @@
-pkgbase = adhan-xreminder
+pkgbase = adhan-live
 	pkgdesc = A simple Adhan reminder script
 	pkgver = 1.0.0
 	pkgrel = 1
