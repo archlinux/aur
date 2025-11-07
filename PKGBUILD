@@ -1,12 +1,12 @@
 # Maintainer: il1v3y <ind4skylivey@proton.me>
 pkgname=gleam-observer
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Universal Hardware Monitor - Daemon with System Tray Integration"
 arch=('x86_64')
 url="https://github.com/ind4skylivey/Gleam-Observer"
 license=('MIT' 'Apache')
-depends=('gcc-libs' 'libnotify' 'systemd')
+depends=('gcc-libs' 'libnotify' 'systemd' 'libappindicator-gtk3')
 makedepends=('rust' 'cargo' 'git')
 optdepends=(
     'nvidia-utils: NVIDIA GPU monitoring support'
@@ -47,8 +47,11 @@ package() {
     # Systemd user service
     install -Dm644 "packaging/systemd/gleam-observer.service" "$pkgdir/usr/lib/systemd/user/gleam-observer.service"
     
-    # Desktop autostart entry
+    # Desktop autostart entry (daemon)
     install -Dm644 "packaging/desktop/gleam-observer.desktop" "$pkgdir/etc/xdg/autostart/gleam-observer.desktop"
+    
+    # Desktop application entry (TUI launcher)
+    install -Dm644 "packaging/desktop/gleam-observer-tui.desktop" "$pkgdir/usr/share/applications/gleam-observer.desktop"
     
     # Config example
     install -Dm644 "config/default.toml" "$pkgdir/usr/share/doc/$pkgname/config-example.toml"
