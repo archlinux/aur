@@ -2,7 +2,7 @@
 # Python package author: Vincent Wu <magicdroidx@gmail.com>
 pkgname=python-endstone_bstats
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="bStats Metrics for Endstone Plugins"
 arch=(any)
 url="https://github.com/EndstoneMC/bstats"
@@ -13,6 +13,6 @@ build() {
 }
 package() {
     sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
-    mkdir -p ${pkgdir}/${sitepackages}
-    cp -r ${srcdir}/endstone_bstats/* ${pkgdir}/${sitepackages}
+    mkdir -p "$pkgdir/$sitepackages"
+    cp -r "$srcdir/endstone_bstats/*" "$pkgdir/$sitepackages"
 }
