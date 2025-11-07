@@ -1,7 +1,7 @@
 pkgbase = opencflite
 	pkgdesc = Cross platform port of the macOS CoreFoundation
 	pkgver = 635.21.8+r6+gbf3aee7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gerickson/opencflite
 	arch = x86_64
 	license = APSL-2.0

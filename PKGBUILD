@@ -4,25 +4,52 @@ pkgname="opencflite"
 _commit_rel="e68f449d45c87fa086c412d05f9660f8a7979cf7" # 635.21.8
 _commit="bf3aee706345f82fc17ff1e980415c6e70fbb474" # r6
 pkgver="635.21.8+r6+g${_commit::7}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross platform port of the macOS CoreFoundation"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://github.com/gerickson/${pkgname}"
-license=('APSL-2.0')
-depends=('glibc' 'icu' 'libkqueue' 'util-linux-libs')
-makedepends=('autoconf-archive')
-provides=('libCoreFoundation'{,'_debug','_profile'}'.so')
+license=(
+  'APSL-2.0'
+)
+depends=(
+  'glibc'
+  'icu'
+  'libkqueue'
+  'util-linux-libs'
+)
+makedepends=(
+  'autoconf-archive'
+)
+provides=(
+  'libCoreFoundation.so'
+  'libCoreFoundation_debug.so'
+  'libCoreFoundation_profile.so'
+)
 _pkgsrc="${pkgname}-${_commit}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/${_commit}.tar.gz")
+source=(
+  "${_pkgsrc}.tar.gz::${url}/archive/${_commit}.tar.gz"
+)
 sha256sums=('9e53620c584efdef32e2fcb5f7324403650f54d0f88f8e0e2cc80e5759cf5df6')
 
+prepare() {
+  cd "${srcdir}/${_pkgsrc}"
+  # https://github.com/gerickson/opencflite/issues/123
+  find . -type f -name '*.c' -exec \
+    sed -i 's|/usr/local/share/CFLite|/usr/share/CoreServices|g' "{}" +
+}
+
 build() {
+  local configure_options=(
+    --prefix='/usr'
+    --with-tz-includes='include'
+  )
+
   cd "${srcdir}/${_pkgsrc}"
   libtoolize
   autoreconf -vfi
-  ./configure \
-    --prefix='/usr' \
-    --with-tz-includes='include'
+  ./configure "${configure_options[@]}"
   make
 }
 
