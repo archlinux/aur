@@ -1,0 +1,21 @@
+pkgbase = ddv
+	pkgdesc = terminal user interface DynamoDB Viewer
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/lusingander/ddv
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = clang
+	makedepends = lld
+	makedepends = llvm
+	makedepends = pkgconf
+	depends = glibc
+	depends = gcc-libs
+	source = https://github.com/lusingander/ddv/archive/refs/tags/v0.2.0/ddv-0.2.0.tar.gz
+	sha256sums = 912b1dee96cc91ad3322740927428640692d6657c95adf81d8556f11e17f6aac
+
+pkgname = ddv

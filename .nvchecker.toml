@@ -1,0 +1,5 @@
+
+[ddv]
+source = "git"
+git = "https://github.com/lusingander/ddv.git"
+prefix = "v"
