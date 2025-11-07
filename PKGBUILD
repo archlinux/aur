@@ -2,7 +2,7 @@
 
 pkgname=parrot-cli
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Intelligent roasts of failed commands'
 arch=('x86_64')
 url='https://github.com/tenseleyFlow/parrot'
@@ -33,9 +33,9 @@ package() {
     install -Dm755 parrot "$pkgdir/usr/bin/parrot"
     
     # Install shell integration hooks
-    install -Dm644 parrot-hook.sh "$pkgdir/usr/share/$pkgname/parrot-hook.sh"
-    install -Dm644 parrot-hook.fish "$pkgdir/usr/share/$pkgname/parrot-hook.fish"
-    
+    install -Dm644 parrot-hook.sh "$pkgdir/usr/share/parrot/parrot-hook.sh"
+    install -Dm644 parrot-hook.fish "$pkgdir/usr/share/parrot/parrot-hook.fish"
+
     # Install configuration templates
     install -Dm644 config/parrot.toml.example "$pkgdir/etc/$pkgname/parrot.toml.example"
     

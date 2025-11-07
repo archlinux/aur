@@ -1,7 +1,7 @@
 pkgbase = parrot-cli
 	pkgdesc = Intelligent roasts of failed commands
 	pkgver = 1.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tenseleyFlow/parrot
 	install = parrot-cli.install
 	arch = x86_64
