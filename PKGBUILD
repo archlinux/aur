@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dopamine-git
 _pkgname=Dopamine
-pkgver=3.0.0.preiew.40.r7.g3bd2c66
+pkgver=3.0.0.r0.gb1e70b5
 _electronversion=26
 _nodeversion=20
 pkgrel=1
