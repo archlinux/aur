@@ -19,10 +19,10 @@ pkgname=(
   java-openjfx-doc
   java-openjfx-src
 )
-_java_ver=24
+_java_ver=25
 _tag='26+15'
 pkgver=${_tag//+/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
 arch=(x86_64 x86_64_v3)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
@@ -56,7 +56,7 @@ makedepends=(
   #ruby-fileutils
 )
 if (( !_use_gradle_wrapper )); then
-  makedepends+=(gradle8)
+  makedepends+=(gradle)
 fi
 options=(!lto)
 source=(
@@ -77,7 +77,7 @@ _jfxdir="jfx-${_tag//+/-}"
 if (( _use_gradle_wrapper )); then
   _gradle=(sh ./gradlew)
 else
-  _gradle=(gradle8)
+  _gradle=(gradle)
 fi
 
 prepare() {
