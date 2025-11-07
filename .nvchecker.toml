@@ -1,3 +1,4 @@
 [argos-translate]
-source = "pypi"
-pypi = "argostranslate"
+source = "git"
+git = "https://github.com/argosopentech/argos-translate.git"
+prefix = "v"
