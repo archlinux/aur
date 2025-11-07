@@ -1,14 +1,10 @@
 # Maintainer: xiota / aur.chaotic.cx
 
-## options
-: ${_branch:=main}
-
-## basic info
 _pkgname='geany-plugin-preview'
 pkgname="$_pkgname-git"
-pkgdesc="Geany plugin to preview lightweight markup languages"
+pkgdesc="Plugin for Geany to preview markdown and other markup languages"
 url="https://github.com/xiota/geany-preview"
-pkgver=0.1.2.r0.gfffc62a
+pkgver=0.2.1.r0.g8753a09
 pkgrel=1
 license=('GPL-3.0-or-later')
 arch=('x86_64')
@@ -22,53 +18,42 @@ depends=(
 makedepends=(
   'git'
   'meson'
+  'tomlplusplus'
 )
 optdepends=(
-  'asciidoc: Preview AsciiDoc'
-  'asciidoctor: Preview AsciiDoc'
-  'pandoc: Preview many other file formats'
-
-  # AUR
-  'ttf-courier-prime: Export Fountain screenplays to PDF'
+  'asciidoctor: For AsciiDoc'
+  'pandoc: For many other file formats'
+  'ttf-courier-prime: To export Fountain to PDF' # AUR
 )
 
-provides+=("$_pkgname")
-conflicts+=("$_pkgname")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
-options=(!lto)
+options=('!debug' '!lto' '!strip')
 
 _pkgsrc="geany-preview"
-source=("$_pkgsrc"::"git+$url.git#branch=$_branch")
-sha256sums=('SKIP')
+source=(
+  "$_pkgsrc"::"git+$url.git"
+  'git+https://github.com/xiota/ftn2xml.git'
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
+
+prepare() {
+  ln -sf "$srcdir/ftn2xml" "$_pkgsrc/subprojects/ftn2xml"
+}
 
 pkgver() {
   cd "$_pkgsrc"
-
-  local _pkgver=$(
-    git describe --long --tags --abbrev=7 \
-      | sed 's/^[^0-9]*//;s/\([^-]*-g\)/r\1/;s/-/./g'
-  )
-
-  [[ "$_branch" != "main" ]] && _pkgver+=".$_branch"
-
-  echo "$_pkgver"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$_pkgsrc"
-  meson rewrite kwargs set project / version "$pkgver"
-
-  local _meson_args=(
-    --buildtype=plain
-    --prefix=/usr
-    --libexecdir=lib
-    --sbindir=bin
-    --auto-features=enabled
-    -Db_pie=true
-    -Db_lto=false
-  )
-  meson setup "${_meson_args}" ../build
-  meson compile -C ../build
+  arch-meson build "$_pkgsrc"
+  meson compile -C build
 }
 
 package() {
