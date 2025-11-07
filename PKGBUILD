@@ -50,6 +50,7 @@ checkdepends=(
 conflicts=(
   xdg-desktop-portal
 )
+provides=(xdg-desktop-portal)
 optdepends=(
   'geoclue: Geolocation portal'
   'xdg-desktop-portal-impl: Portal backends'
