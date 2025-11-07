@@ -1,6 +1,6 @@
 # Maintainer: Monirzadeh aur.phantom634 at passinbox dot com
 pkgname=chapar-bin
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1  # Set the initial package release number
 pkgdesc="Chapar is a simple and easy to use api testing tools aims to help developers to test their api endpoints. it support http and grpc protocols."
 arch=('x86_64')
