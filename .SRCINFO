@@ -1,12 +1,7 @@
 pkgbase = calf-git
 	pkgdesc = LV2/JACK audio plug-ins for musicians (git version)
-<<<<<<< HEAD
-	pkgver = 0.90.0.r2499.bc104350
-	pkgrel = 2
-=======
 	pkgver = 0.90.8.r1.gd4fb554
 	pkgrel = 1
->>>>>>> 12fa9a8 (switch from autotools to cmake, thank you binarynoise for the patch)
 	url = http://calf-studio-gear.org/
 	arch = i686
 	arch = x86_64
@@ -21,17 +16,4 @@ pkgbase = calf-git
 	source = calf::git+https://github.com/calf-studio-gear/calf
 	md5sums = SKIP
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 pkgname = calf-git
-
-=======
-<<<<<<< HEAD
-pkgname = calf-nogui-git
-=======
-pkgname = calf-git
->>>>>>> c3909e7 (switch from autotools to cmake, thank you binarynoise for the patch)
->>>>>>> daddf36 (switch from autotools to cmake, thank you binarynoise for the patch)
-=======
-pkgname = calf-git
->>>>>>> 12fa9a8 (switch from autotools to cmake, thank you binarynoise for the patch)
