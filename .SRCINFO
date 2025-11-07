@@ -8,6 +8,7 @@ pkgbase = calf-git
 	license = GPL
 	license = LGPL
 	makedepends = git
+	makedepends = cmake
 	depends = fluidsynth
 	depends = gtk2
 	depends = lv2
