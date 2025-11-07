@@ -1,12 +1,12 @@
 
 # Maintainer: acidburnmonkey
 pkgname=agemo
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.2.1
+pkgrel=3
 pkgdesc="Agemo is a GUI for Hyprpaper, written in Python + Qt6"
 arch=('any')
 url="https://github.com/acidburnmonkey/agemo"
-license=('GLP3')
+license=('GPL3')
 depends=('uv' 'hyprpaper' 'hyprland')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/acidburnmonkey/agemo/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('SKIP')
@@ -38,7 +38,7 @@ if [ ! -d "$DEST" ]; then
   cat > "$DESKTOP" <<EOF_EOF
 [Desktop Entry]
 Type=Application
-Version=2.2.0
+Version=2.2.1
 Name=Agemo
 Comment=Wallpaper GUI
 Path=$DEST
