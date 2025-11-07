@@ -11,8 +11,8 @@ pkgdesc="GitHub Copilot CLI brings the power of Copilot coding agent directly to
 url="https://github.com/github/copilot-cli"
 _urlraw="https://raw.githubusercontent.com/github/copilot-cli/v${pkgver}"
 
-depends=("glibc" "gcc-libs" "glib2" "libsecret" "lib32-glibc" "lib32-gcc-libs" "lib32-glib2")
 conflicts=("${pkgname%%-cli}" "${pkgname}-legacy")
+depends=("glibc" "gcc-libs" "glib2" "libsecret")
 replaces=("${pkgname%%-cli}")
 makedepends=("npm" "jq")
 provides=("${_pkgexec}")
