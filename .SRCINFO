@@ -1,7 +1,7 @@
 pkgbase = chezetc
 	pkgdesc = Extending chezmoi to manage files under /etc and other root-owned directories
 	pkgver = 202510.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://silverrainz.me/chezetc
 	arch = any
 	license = MIT
