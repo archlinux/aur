@@ -1,7 +1,7 @@
 pkgbase = epson-pc-fax
 	pkgdesc = Epson PC-FAX driver used with CUPS
 	pkgver = 1.1.2_1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://download.ebz.epson.net/man/linux/pc-fax_e.html
 	arch = x86_64
 	license = LGPL-2.1-or-later

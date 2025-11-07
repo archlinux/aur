@@ -2,7 +2,7 @@
 
 pkgname="epson-pc-fax"
 pkgver=1.1.2_1
-pkgrel=1
+pkgrel=2
 pkgdesc="Epson PC-FAX driver used with CUPS"
 arch=(
   # 'i686'
@@ -47,6 +47,9 @@ prepare() {
   # https://www.cups.org/doc/api-ppd.html
   patch -Np1 -i "${srcdir}/${pkgname}_cups_deprecated_ppd_api.patch"
   patch -Np1 -i "${srcdir}/${pkgname}_system_shared_libraries.patch"
+
+  find "ppd" -type f -name '*.ppd' -exec \
+    sed -i "s|/opt/${pkgname}/cups/lib/filter/pcfax_filter|pcfax_filter|g" "{}" +
 }
 
 build() {
@@ -79,7 +82,6 @@ package() {
   install -vDm644 "COPYING.LIB"   "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.LIB"
 
   find "ppd" -type f -name '*.ppd' \
-    -exec sed -i "s|/opt/${pkgname}/cups/lib/filter/pcfax_filter|pcfax_filter|g" "{}" + \
     -execdir install -vDm644 "{}" "${pkgdir}/usr/share/cups/model/${pkgname}/{}" \;
 
   cd "${pkgdir}/usr/lib"
