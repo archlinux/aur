@@ -3,7 +3,7 @@
 pkgbase=python-mocpy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="MOC parsing and manipulation in Python"
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ source=("https://github.com/cds-astro/mocpy/archive/refs/tags/v${pkgver}.tar.gz"
 #       "cutout-CDS_P_2MASS_K.fits::http://alasky.u-strasbg.fr/hips-image-services/hips2fits?hips=CDS%2FP%2F2MASS%2FK&width=1200&height=700&fov=30&projection=TAN&coordsys=galactic&rotation_angle=0.0&object=gal%20center&format=fits"
 #       "http://skies.esac.esa.int/Spitzer/IRAC1_bright_ISM/Moc.fits"
 #       'doc-use-local-fits.patch')
-md5sums=('aa459277f409b59dfb0c5fcc8699922c')
+md5sums=('eb59113127f8756e08b89d970311b787')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -44,7 +44,7 @@ prepare() {
     sed -i "s:parent$:parent.parent:" python/mocpy/tests/test_sfmoc.py
 #   cp ${srcdir}/*.fits docs/examples
 #   patch -Np1 -i "${srcdir}/doc-use-local-fits.patch"
-    install -Dm644 notebooks/* -t docs/_collections/notebooks
+#   install -Dm644 notebooks/* -t docs/_collections/notebooks
 }
 
 build() {
