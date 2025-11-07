@@ -3,7 +3,7 @@
 
 _framework='gnunet'
 pkgname='messenger-gtk'
-pkgver='0.10.2'
+pkgver='0.11.0'
 pkgrel=1
 pkgdesc='A graphical user interface for GNUnet Messenger'
 arch=('i686' 'x86_64' 'aarch64')
@@ -18,7 +18,7 @@ depends=('gnunet' 'libgnunetchat' 'gtk3' 'libhandy' 'libnotify' 'qrencode'
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 source=("https://ftp.gnu.org/gnu/${_framework}/${pkgname}-${pkgver}.tar.gz"{,.sig})
 validpgpkeys=('3D11063C10F98D14BD24D1470B0998EF86F59B6A')
-sha256sums=('a5620eca75ab0bd702a5faaf8260faad1eb016fa28d86bbde1e12711e767fcff'
+sha256sums=('7d5c6b046165c2d0785722ad72293dc9683a4abb8d3c9af085aa147b2acb5ea5'
             'SKIP')
 
 prepare() {
