@@ -2,14 +2,14 @@
 pkgname=python-mnelab
 _pkgname=mnelab
 pkgver=1.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphical user interface (GUI) for MNE, a Python package for EEG/MEG analysis"
 arch=('any')
 url="https://github.com/cbrnr/mnelab"
 license=('BSD')
 depends=('python' 'pyside6' 'qt6-svg' 'python-numpy' 'python-scipy' 'python-matplotlib' 'python-mne' 'python-pyxdf' 'python-edfio' 'python-pybv')
 optdepends=('python-scikit-learn' 'python-picard')
-makedepends=('python-uv-build' 'python-installer')
+makedepends=('python-build' 'python-uv-build' 'python-installer')
 source=("https://files.pythonhosted.org/packages/source/m/mnelab/mnelab-$pkgver.tar.gz"
         "mnelab.desktop"
         "mnelab-mimetypes.xml")
