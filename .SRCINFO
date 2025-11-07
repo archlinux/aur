@@ -1,7 +1,7 @@
 pkgbase = python-pylatinize
-	pkgdesc = a library to handle path in okeanos system
+	pkgdesc = Lightweight Python Unicode Transliteration Library
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/playfulsparkle/pylatinize
 	arch = any
 	license = BSD3

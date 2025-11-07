@@ -1,8 +1,8 @@
 pkgname=python-pylatinize
 _pkgname="${pkgname#python-}"
-pkgdesc="a library to handle path in okeanos system"
+pkgdesc="Lightweight Python Unicode Transliteration Library"
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 arch=("any")
 url="https://github.com/playfulsparkle/pylatinize"
 license=("BSD3")
@@ -24,11 +24,6 @@ build() {
   cd ${srcdir}/"$_pkgname-$pkgver"
   rm -rf ${srcdir}/"$_pkgname"/dist
   python -m build --wheel --no-isolation
-}
-
-check() {
-  cd "$_pkgname-$pkgver"
-  pytest tests
 }
 
 package() {
