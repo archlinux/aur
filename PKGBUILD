@@ -4,7 +4,7 @@ pkgname="opencflite"
 _commit_rel="e68f449d45c87fa086c412d05f9660f8a7979cf7" # 635.21.8
 _commit="bf3aee706345f82fc17ff1e980415c6e70fbb474" # r6
 pkgver="635.21.8+r6+g${_commit::7}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross platform port of the macOS CoreFoundation"
 arch=(
   'x86_64'
@@ -24,8 +24,8 @@ makedepends=(
 )
 provides=(
   'libCoreFoundation.so'
-  'libCoreFoundation_debug.so'
-  'libCoreFoundation_profile.so'
+  # 'libCoreFoundation_debug.so'
+  # 'libCoreFoundation_profile.so'
 )
 _pkgsrc="${pkgname}-${_commit}"
 source=(
@@ -44,6 +44,9 @@ build() {
   local configure_options=(
     --prefix='/usr'
     --with-tz-includes='include'
+    --disable-debug
+    --disable-profile
+    --disable-tests # TODO
   )
 
   cd "${srcdir}/${_pkgsrc}"
