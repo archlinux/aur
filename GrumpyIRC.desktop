@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=GrumpyIRC
+GenericName=IRC Client
+Comment=Chat with other people online
+Keywords=Network;
+Exec=grumpy
+Icon=<Choose an icon you like>
+Terminal=false
+Type=Application
+Categories=Network;IRCClient;
+StartupNotify=true
+StartupWMClass=GrumpyIRC
+MimeType=x-scheme-handler/irc;x-scheme-handler/ircs;
