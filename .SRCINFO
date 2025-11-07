@@ -1,17 +1,16 @@
 pkgbase = pidgin-quote-text
 	pkgdesc = Quote selected message into the entry area
-	pkgver = 0.9.3
-	pkgrel = 3
-	url = https://launchpad.net/quote/
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://github.com/pomozoff/quotetext
 	arch = any
 	license = GPL2
-	makedepends = git
 	depends = pidgin
-	source = git+https://github.com/pomozoff/quotetext.git
+	source = https://github.com/pomozoff/quotetext/archive/refs/tags/0.9.4.tar.gz
 	source = replace_internal_h.patch
 	source = Makefile
-	md5sums = SKIP
-	md5sums = 876d904e0dd3a65acda07a0de0218267
-	md5sums = ea42e6a112fc97896f5b09fe12e27fd6
+	sha256sums = 4272349c0e7dff360c3c7fd8f38b74bb115b9f6b79ef4914a56d6dd044f6ae8b
+	sha256sums = 75bc5ebd98779d9c5e0035f73802399900d98654cc9242832ba0aaaf8bfb22a2
+	sha256sums = 85b8c4218da7867a2c4fe656d1f334483f3c09ac890c43e1d398b38240160f9b
 
 pkgname = pidgin-quote-text
