@@ -1,4 +1,4 @@
-# Maintainer: Shahzeb Khattak <shahzebkhattak@proton.me>
+# Maintainer: Shahzeb Khattak <shahzebkhattak at proton dot me>
 
 pkgname=protonvpn-cli
 pkgver=0.1.0
