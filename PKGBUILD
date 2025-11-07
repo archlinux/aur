@@ -1,8 +1,8 @@
 
 # Maintainer: acidburnmonkey
 pkgname=agemo
-pkgver=2.1.0
-pkgrel=1
+pkgver=2.2.0
+pkgrel=2
 pkgdesc="Agemo is a GUI for Hyprpaper, written in Python + Qt6"
 arch=('any')
 url="https://github.com/acidburnmonkey/agemo"
@@ -38,7 +38,7 @@ if [ ! -d "$DEST" ]; then
   cat > "$DESKTOP" <<EOF_EOF
 [Desktop Entry]
 Type=Application
-Version=2.1.0
+Version=2.2.0
 Name=Agemo
 Comment=Wallpaper GUI
 Path=$DEST
