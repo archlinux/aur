@@ -2,14 +2,14 @@ pkgbase = zsh-transient-prompt-git
 	pkgdesc = Transient prompt for Zsh
 	pkgver = r3.86a4147
 	pkgrel = 1
-	url = https://github.com/olets/zsh-transient-prompt/
+	url = https://github.com/olets/zsh-transient-prompt
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = zsh
 	provides = zsh-transient-prompt
 	conflicts = zsh-transient-prompt
-	source = git+https://github.com/olets/zsh-transient-prompt/.git
+	source = git+https://github.com/olets/zsh-transient-prompt.git
 	sha512sums = SKIP
 
 pkgname = zsh-transient-prompt-git
