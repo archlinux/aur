@@ -2,20 +2,29 @@
 =======
 # Maintainer: ilovemikael <itsmeguys2247 at gmail dot com>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 # PKGBUILD forked from calf-git [https://aur.archlinux.org/packages/calf-git] by
 >>>>>>> daddf36 (switch from autotools to cmake, thank you binarynoise for the patch)
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 =======
+=======
+>>>>>>> 12fa9a8 (switch from autotools to cmake, thank you binarynoise for the patch)
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
->>>>>>> c3909e7 (switch from autotools to cmake, thank you binarynoise for the patch)
 # Contributor: speps <speps at aur dot archlinux dot org>
 # Contributor: Philipp Überbacher <murks at lavabit dot com>
+<<<<<<< HEAD
 
 _pkgname=calf
 pkgname="${_pkgname}-git"
 pkgver=0.90.0.r2499.bc104350
 pkgrel=2
+=======
+_pkgname=calf
+pkgname="${_pkgname}-git"
+pkgver=0.90.8.r1.gd4fb554
+pkgrel=1
+>>>>>>> 12fa9a8 (switch from autotools to cmake, thank you binarynoise for the patch)
 pkgdesc="LV2/JACK audio plug-ins for musicians (git version)"
 arch=('i686' 'x86_64')
 url="http://calf-studio-gear.org/"
@@ -52,10 +61,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr
     -DWANT_EXPERIMENTAL=ON
     -DWANT_SSE=ON
-<<<<<<< HEAD
-    -DWANT_GUI=OFF
-=======
->>>>>>> c3909e7 (switch from autotools to cmake, thank you binarynoise for the patch)
     -DWANT_LASH=OFF
     -S "$_pkgname"
     -W no-dev
