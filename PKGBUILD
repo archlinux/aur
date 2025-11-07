@@ -13,7 +13,7 @@ conflicts=("${pkgname%-bin}" "${pkgname%-bin}-git")
 
 source=("${pkgname%-bin}-${pkgver}-amd64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64.deb")
 
-sha256sums=('50ca1b5748a0853e07e43f5f2389076aefa18828b5f2e7392f979feeb688819a')
+sha256sums=('4494998f4bdebe1ffb007410d3bce00fd2d7775a591ee8cb9827cff531389dd4')
 
 options=(!debug !strip)
 

@@ -22,6 +22,6 @@ pkgbase = proxycloud-gui-bin
 	options = !debug
 	options = !strip
 	source = proxycloud-gui-1.7.0-amd64.deb::https://github.com/code3-dev/ProxyCloud-GUI/releases/download/v1.7.0/proxycloud-gui-linux-amd64.deb
-	sha256sums = 50ca1b5748a0853e07e43f5f2389076aefa18828b5f2e7392f979feeb688819a
+	sha256sums = 4494998f4bdebe1ffb007410d3bce00fd2d7775a591ee8cb9827cff531389dd4
 
 pkgname = proxycloud-gui-bin
