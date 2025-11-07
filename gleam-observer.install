@@ -2,8 +2,12 @@ post_install() {
     echo ""
     echo "==> GleamObserver v1.5.2 installed successfully!"
     echo ""
-    echo "==> System tray daemon (requires snixembed bridge for DWM/i3/Awesome):"
+    echo "==> For DWM/i3/Awesome system tray support, install snixembed:"
+    echo "    sudo pacman -S snixembed"
     echo "    systemctl --user enable --now snixembed gleam-observer"
+    echo ""
+    echo "==> For other DEs (XFCE/MATE/KDE/GNOME):"
+    echo "    systemctl --user enable --now gleam-observer"
     echo ""
     echo "==> Desktop launcher installed - search 'GleamObserver' in rofi/dmenu"
     echo ""
@@ -13,8 +17,6 @@ post_install() {
     echo "==> Config file:"
     echo "    ~/.config/gleam_observer/config.toml"
     echo "    (example: /usr/share/doc/gleam-observer/config-example.toml)"
-    echo ""
-    echo "==> Note: snixembed bridges StatusNotifierItem to XEmbed for DWM systray"
     echo ""
 }
 

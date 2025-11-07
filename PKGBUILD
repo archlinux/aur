@@ -6,9 +6,10 @@ pkgdesc="Universal Hardware Monitor - Daemon with System Tray Integration"
 arch=('x86_64')
 url="https://github.com/ind4skylivey/Gleam-Observer"
 license=('MIT' 'Apache')
-depends=('gcc-libs' 'libnotify' 'systemd' 'libappindicator-gtk3' 'snixembed')
+depends=('gcc-libs' 'libnotify' 'systemd' 'libappindicator-gtk3')
 makedepends=('rust' 'cargo' 'git')
 optdepends=(
+    'snixembed: Required for system tray on DWM/i3/Awesome (StatusNotifierItem bridge)'
     'nvidia-utils: NVIDIA GPU monitoring support'
     'mesa-utils: AMD GPU monitoring support'
     'dunst: Desktop notifications daemon'
