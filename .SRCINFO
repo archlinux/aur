@@ -1,6 +1,6 @@
 pkgbase = wonderlab-appimage-feature
 	pkgdesc = The next generation cross-platform Minecraft launcher. (dev branch)
-	pkgver = 2.0.0.0822
+	pkgver = 2.0.0.0825
 	pkgrel = 1
 	url = https://github.com/Lunova-Studio/WonderLab.Override
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = wonderlab-appimage-feature
 	conflicts = wonderlab-git
 	conflicts = wonderlab-appimage
 	options = !strip
-	source_x86_64 = wonderlab-x86_64.AppImage::https://github.com/Lunova-Studio/WonderLab.Override/releases/download/v2.0.0.0822/WonderLab.linux.x64.AppImage
-	sha256sums_x86_64 = d86f2fa9afc50baa80cd5785e3d02278c55e97f680f7f7fa92a77bf6a4ca0501
-	source_aarch64 = wonderlab-x86_64.AppImage::https://github.com/Lunova-Studio/WonderLab.Override/releases/download/v2.0.0.0822/WonderLab.linux.arm64.AppImage
-	sha256sums_aarch64 = 1e7d4e49838554790b8c2e7c965728d9a6752c3d86f0daa4119271036f6407fb
+	source_x86_64 = wonderlab-x86_64.AppImage::https://github.com/Lunova-Studio/WonderLab.Override/releases/download/v2.0.0.0825/WonderLab.linux.x64.AppImage
+	sha256sums_x86_64 = 4f87b2ccc0a1493f20f8dcc1c6cd4e321d912af2488e6ae470b3e595ef3a6cb5
+	source_aarch64 = wonderlab-x86_64.AppImage::https://github.com/Lunova-Studio/WonderLab.Override/releases/download/v2.0.0.0825/WonderLab.linux.arm64.AppImage
+	sha256sums_aarch64 = 697f3a457bac48c9998619576b1634d4cdd2dc8f513c7d88497a0392bfe25ab6
 
 pkgname = wonderlab-appimage-feature
