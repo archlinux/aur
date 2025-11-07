@@ -1,17 +1,17 @@
 pkgbase = codex-acp
-	pkgdesc = ACP–compatible agent that bridges the OpenAI Codex runtime with ACP clients.
-	pkgver = 0.2.2
-	pkgrel = 2
-	url = https://github.com/cola-io/codex-acp
+	pkgdesc = ACP adapter for OpenAI Codex
+	pkgver = 0.3.14
+	pkgrel = 1
+	url = https://github.com/zed-industries/codex-acp
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
-	makedepends = cargo
 	depends = openai-codex
 	provides = codex-acp
 	conflicts = codex-acp
-	options = !lto
-	source = codex-acp::git+https://github.com/cola-io/codex-acp.git#tag=v0.2.2
-	b2sums = SKIP
+	source_x86_64 = codex-acp-0.3.14-x86_64-unknown-linux-gnu.tar.gz::https://github.com/zed-industries/codex-acp/releases/download/v0.3.14/codex-acp-0.3.14-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 61b31b7125c1a469064e07a35ced5ce26b500cb789f93adc98503bfc5b53e54a
+	source_aarch64 = codex-acp-0.3.14-aarch64-unknown-linux-gnu.tar.gz::https://github.com/zed-industries/codex-acp/releases/download/v0.3.14/codex-acp-0.3.14-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 0e4043c9c04f3bd1afa88c4c0685ed7004215974a631b21481faa582a7e79a94
 
 pkgname = codex-acp
