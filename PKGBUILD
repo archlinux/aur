@@ -6,7 +6,7 @@ pkgver=r11957.bca676c0b
 pkgrel=1
 pkgdesc="a sniffer, WIDS, and wardriving tool for Wi-Fi, Bluetooth, Zigbee, RF"
 url="https://www.kismetwireless.net/"
-arch=('x86_64' 'armv7h' 'aarch64')
+arch=('x86_64' 'armv7h' 'aarch64' 'i686')
 license=('GPL-2.0-or-later')
 depends=('bluez-libs'
         'gcc-libs'
