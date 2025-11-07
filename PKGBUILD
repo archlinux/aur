@@ -1,6 +1,6 @@
 # Maintainer: Denys Sedchenko <aur@x1unix.dev>
 pkgname=codex-acp
-pkgver=r117
+pkgver='v0.2.2'
 pkgrel=1
 pkgdesc="ACP–compatible agent that bridges the OpenAI Codex runtime with ACP clients."
 arch=('x86_64' 'aarch64')
