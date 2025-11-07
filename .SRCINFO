@@ -1,0 +1,20 @@
+pkgbase = leaf-bin
+	pkgdesc = A versatile and efficient proxy framework with nice features suitable for various use cases
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/eycorsican/leaf
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = leaf
+	conflicts = leaf
+	source = LICENSE-0.12.0::https://raw.githubusercontent.com/eycorsican/leaf/v0.12.0/LICENSE
+	source = README-0.12.0.md::https://raw.githubusercontent.com/eycorsican/leaf/v0.12.0/README.md
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	sha256sums = bd13c9c0d3fa1278c4638ae50858a8fe8820db2515924e1c73bf361abac6af92
+	source_x86_64 = leaf-x86_64-0.12.0.gz::https://github.com/eycorsican/leaf/releases/download/v0.12.0/leaf-x86_64-unknown-linux-musl.gz
+	sha256sums_x86_64 = 9dad521bd3af199349920c7c95a8e68ae9d519a0652a85b4a345dcbf271ac13e
+	source_aarch64 = leaf-aarch64-0.12.0.gz::https://github.com/eycorsican/leaf/releases/download/v0.12.0/leaf-aarch64-unknown-linux-musl.gz
+	sha256sums_aarch64 = beaa4aacd2417b2fd8daadb15dedbeb07476b72c4f30f9db8bf52f3e04ef172a
+
+pkgname = leaf-bin

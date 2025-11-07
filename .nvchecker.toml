@@ -1,0 +1,5 @@
+[leaf-bin]
+source = "github"
+github = "eycorsican/leaf"
+use_latest_release = true
+prefix = "v"
