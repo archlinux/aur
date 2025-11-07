@@ -6,8 +6,8 @@
 
 _pkgname="qtscrcpy"
 pkgname="$_pkgname"
-pkgver=3.3.1
-pkgrel=2
+pkgver=3.3.3
+pkgrel=1
 pkgdesc="Android real-time screencast control tool"
 url="https://github.com/barry-ran/QtScrcpy"
 license=('Apache-2.0')
@@ -31,12 +31,10 @@ _pkgsrc_core="qtscrcpycore"
 source=(
   "$_pkgname"::"git+$url.git#tag=v$pkgver"
   "$_pkgsrc_core"::"git+https://github.com/barry-ran/QtScrcpyCore.git"
-  "0001-fix-paths.patch"
 )
 sha256sums=(
+  'c453e712d1ddd252e859306f62646e7f2b9b0fb78907b41eb886b82a647f16c5'
   'SKIP'
-  'SKIP'
-  '16c9470136d4ab84af22b9689e5767b38e7be4eaa41b069546480a44a2776c36'
 )
 
 prepare() {
@@ -45,10 +43,15 @@ prepare() {
   git config submodule.QtScrcpy/QtScrcpyCore.url "$srcdir/qtscrcpycore"
   git -c protocol.file.allow=always submodule update
 
-  patch -Np1 -F100 -i "../0001-fix-paths.patch"
-
   # fix for Qt 6.10
   sed -E -e 's&(COMPONENTS)&\1 GuiPrivate&' -i QtScrcpy/CMakeLists.txt
+
+  # fix paths
+  sed -E -e '/qputenv\("QTSCRCPY_ADB_PATH"/c qputenv("QTSCRCPY_ADB_PATH", "/usr/bin/adb");' \
+    -e '/qputenv\("QTSCRCPY_SERVER_PATH"/c qputenv("QTSCRCPY_SERVER_PATH", "/opt/qtscrcpy/scrcpy-server");' \
+    -e '/qputenv\("QTSCRCPY_KEYMAP_PATH"/c qputenv("QTSCRCPY_KEYMAP_PATH", "/opt/qtscrcpy/keymap");' \
+    -e '/qputenv\("QTSCRCPY_CONFIG_PATH"/c qputenv("QTSCRCPY_CONFIG_PATH", "/etc/qtscrcpy");' \
+    -i QtScrcpy/main.cpp
 }
 
 build() {
