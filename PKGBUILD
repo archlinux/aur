@@ -2,7 +2,7 @@
 # Huge thanks to github.com/nebulosa2007 for this version of the PKGBUILD.
 
 pkgname=yabsnap
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="Btrfs automated snapshot manager."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('bash' 'btrfs-progs' 'python')
 optdepends=('rsync: rsync based snapshot support')
 makedepends=('tar')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('7642d930d5ce621a94c1afc663878bfd')
+md5sums=('bb6284d40bf0882d709a2dd7b0b8d14a')
 install="$pkgname".install
 
 build() {
@@ -39,6 +39,8 @@ package() {
   cd artifacts
   install -Dm 644 services/"$pkgname".{service,timer}      -t "$pkgdir"/usr/lib/systemd/system/
   install -Dm 664 pacman/*.hook     -t "$pkgdir"/usr/share/libalpm/hooks/
+  install -Dm 644 completions/bash_"$pkgname" "$pkgdir"/usr/share/bash-completion/completions/"$pkgname"
+  install -Dm 644 completions/zsh_"$pkgname" "$pkgdir"/usr/share/zsh/site-functions/_"$pkgname"
   install -Dm 644 "$pkgname".1.gz                          -t "$pkgdir"/usr/share/man/man1/
   cd ../src
   install -Dm 755 "$pkgname".sh -t "$DEST"/
