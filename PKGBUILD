@@ -2,10 +2,10 @@
 
 _name0=livekit-agents
 _name1=livekit-plugins
-_plugins=(anam anthropic assemblyai aws azure baseten bey bithuman cartesia clova deepgram elevenlabs fal fireworksai gladia google groq hedra hume inworld langchain lmnt minimal minimax mistralai neuphonic nltk openai resemble rime rtzr sarvam silero simli smallestai soniox speechify speechmatics spitch tavus turn-detector ultravox upliftai)
+_plugins=(anam anthropic assemblyai aws azure baseten bey bithuman cartesia clova deepgram elevenlabs fal fireworksai fishaudio gladia google groq hedra hume inworld langchain lmnt minimal minimax mistralai neuphonic nltk nvidia openai resemble rime rtzr sarvam silero simli smallestai soniox speechify speechmatics spitch tavus turn-detector ultravox upliftai)
 pkgbase=python-$_name0
 pkgname=(python-$_name0 ${_plugins[@]/#/python-$_name1-})
-pkgver=1.2.17
+pkgver=1.2.18
 pkgrel=1
 _plugins_pkgdesc=('Agent Framework plugin for anam.'
                   'Agent Framework plugin for services from Anthropic.'
@@ -21,6 +21,7 @@ _plugins_pkgdesc=('Agent Framework plugin for anam.'
                   "Agent Framework plugin for voice synthesis with ElevenLabs' API."
                   'fal plugin template for LiveKit Agents.'
                   'LiveKit Agents Plugin for Fireworks AI.'
+                  "Agent Framework plugin for voice synthesis with Fish Audio's API."
                   "Agent Framework plugin for services using Gladia's API."
                   'Agent Framework plugin for services from Google Cloud.'
                   'Groq inference plugin for LiveKit Agents.'
@@ -34,6 +35,7 @@ _plugins_pkgdesc=('Agent Framework plugin for anam.'
                   'LiveKit Agents Plugin for services from AWS.'
                   'Neuphonic inference plugin for LiveKit Agents.'
                   'Agent Framework plugin for NLTK-based text processing.'
+                  'LiveKit Agents Plugin for services from nvidia.'
                   'Agent Framework plugin for services from OpenAI.'
                   'LiveKit Agents Plugin for Resemble AI.'
                   'LiveKit Agents Plugin for Rime.'
@@ -64,6 +66,7 @@ _plugins_depends=("'python-livekit-agents'"
                   "'python-livekit-agents' 'python-av' 'python-numpy'"
                   "'python-livekit-agents' 'python-fal-client'"
                   "'python-livekit-agents'"
+                  "'python-livekit-agents' 'python-av' 'python-numpy' 'python-fish-audio-sdk'"
                   "'python-livekit-agents' 'python-av' 'python-numpy' 'python-aiohttp'"
                   "'python-google-auth' 'python-google-cloud-speech' 'python-google-cloud-texttospeech' 'python-google-genai' 'python-livekit-agents'"
                   "'python-livekit-agents' 'python-av' 'python-numpy' 'python-livekit-plugins-openai' 'python-aiohttp' 'python-livekit'"
@@ -77,6 +80,7 @@ _plugins_depends=("'python-livekit-agents'"
                   "'python-livekit-agents' 'python-livekit-plugins-openai' 'python-mistralai'"
                   "'python-livekit-agents'"
                   "'python-livekit-agents' 'python-nltk'"
+                  "'python-livekit-agents' 'python-nvidia-riva-client'"
                   "'python-livekit-agents' 'python-av' 'python-numpy' 'python-pillow' 'python-openai'"
                   "'python-livekit-agents'"
                   "'python-livekit-agents' 'python-av' 'python-numpy'"
@@ -97,6 +101,8 @@ _plugins__optdepends=(""
                       ""
                       ""
                       "'python-aws-sdk-bedrock-runtime: realtime' 'python-aws-sdk-signers: realtime' 'python-boto3: realtime'"
+                      ""
+                      ""
                       ""
                       ""
                       ""
@@ -143,7 +149,7 @@ makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel'
 checkdepends=('python-dotenv' 'python-pytest' 'python-pytest-asyncio' 'python-jiwer' 'python-scipy' 'python-tiktoken' 'python-nltk' 'nltk-data' 'python-docstring-parser' 'python-speechmatics-rt')
 source=("$_repo/archive/refs/tags/$_name0@$pkgver.tar.gz"
         "$_repo/raw/refs/tags/$_name0@$pkgver/$_name1/$_name1-silero/${_name1//-//}/silero/resources/silero_vad.onnx")
-sha256sums=('b5ee0d3938ebdfe35c5f15f053739983337a45f4a391a1336d14684da1d0b9b0'
+sha256sums=('a860fe7ef127a4515400b785aa97c283200aab5ac4c1704baaaaf7dad5486417'
             '597d30b3ec076608d059477bb14cfeffdf951bf5cae370d38f65d33bbfe82004')
 
 prepare(){
@@ -215,6 +221,7 @@ package_python-livekit-agents() {
               'python-livekit-plugins-deepgram: deepgram'
               'python-livekit-plugins-elevenlabs: elevenlabs'
               'python-livekit-plugins-fal: fal'
+              'python-livekit-plugins-fishaudio: fishaudio'
               'python-livekit-plugins-fireworksai: fireworksai'
               'python-livekit-plugins-gladia: gladia'
               'python-livekit-plugins-google: google'

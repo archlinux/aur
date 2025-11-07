@@ -1,5 +1,5 @@
 pkgbase = python-livekit-agents
-	pkgver = 1.2.17
+	pkgver = 1.2.18
 	pkgrel = 1
 	arch = x86_64
 	arch = aarch64
@@ -19,9 +19,9 @@ pkgbase = python-livekit-agents
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://github.com/livekit/agents/archive/refs/tags/livekit-agents@1.2.17.tar.gz
-	source = https://github.com/livekit/agents/raw/refs/tags/livekit-agents@1.2.17/livekit-plugins/livekit-plugins-silero/livekit/plugins/silero/resources/silero_vad.onnx
-	sha256sums = b5ee0d3938ebdfe35c5f15f053739983337a45f4a391a1336d14684da1d0b9b0
+	source = https://github.com/livekit/agents/archive/refs/tags/livekit-agents@1.2.18.tar.gz
+	source = https://github.com/livekit/agents/raw/refs/tags/livekit-agents@1.2.18/livekit-plugins/livekit-plugins-silero/livekit/plugins/silero/resources/silero_vad.onnx
+	sha256sums = a860fe7ef127a4515400b785aa97c283200aab5ac4c1704baaaaf7dad5486417
 	sha256sums = 597d30b3ec076608d059477bb14cfeffdf951bf5cae370d38f65d33bbfe82004
 
 pkgname = python-livekit-agents
@@ -69,6 +69,7 @@ pkgname = python-livekit-agents
 	optdepends = python-livekit-plugins-deepgram: deepgram
 	optdepends = python-livekit-plugins-elevenlabs: elevenlabs
 	optdepends = python-livekit-plugins-fal: fal
+	optdepends = python-livekit-plugins-fishaudio: fishaudio
 	optdepends = python-livekit-plugins-fireworksai: fireworksai
 	optdepends = python-livekit-plugins-gladia: gladia
 	optdepends = python-livekit-plugins-google: google
@@ -198,6 +199,15 @@ pkgname = python-livekit-plugins-fireworksai
 	depends = python-livekit-agents
 	optdepends = 
 
+pkgname = python-livekit-plugins-fishaudio
+	pkgdesc = Agent Framework plugin for voice synthesis with Fish Audio's API.
+	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-fishaudio
+	depends = python-livekit-agents
+	depends = python-av
+	depends = python-numpy
+	depends = python-fish-audio-sdk
+	optdepends = 
+
 pkgname = python-livekit-plugins-gladia
 	pkgdesc = Agent Framework plugin for services using Gladia's API.
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-gladia
@@ -294,6 +304,13 @@ pkgname = python-livekit-plugins-nltk
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-nltk
 	depends = python-livekit-agents
 	depends = python-nltk
+	optdepends = 
+
+pkgname = python-livekit-plugins-nvidia
+	pkgdesc = LiveKit Agents Plugin for services from nvidia.
+	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-nvidia
+	depends = python-livekit-agents
+	depends = python-nvidia-riva-client
 	optdepends = 
 
 pkgname = python-livekit-plugins-openai
