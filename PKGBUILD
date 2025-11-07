@@ -2,7 +2,7 @@
 pkgbase=openvpn-manager-git
 _pkgname='openvpn-manager'
 pkgname="$_pkgname-git"
-pkgver=24.728527a
+pkgver=30.f875392
 pkgrel=1
 pkgdesc="Command-line tool to manage OpenVPN 2.x and OpenVPN 3.x (start/stop VPN and more commands)."
 arch=('x86_64')
