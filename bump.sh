@@ -6,8 +6,8 @@
 # version. Very mutch a work in progress, DO NOT TRUST.
 #
 
-validated_for="6.17.6.arch1-1"
-forceupd="n"
+validated_for="6.17.7.arch1-1"
+forceupd="y"
 
 # Getting current versions
   curl -s -o .bump-pn https://gitlab.archlinux.org/api/v4/projects/42594/repository/files/PKGBUILD/raw/\?ref\=main
