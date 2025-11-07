@@ -15,8 +15,23 @@ pkgbase = openexr2
 	depends = zlib
 	optdepends = boost-libs: python support
 	optdepends = python: python support
-	conflicts = openexr
 	source = openexr2-2.5.5.tar.gz::https://github.com/openexr/openexr/archive/v2.5.5.tar.gz
 	sha256sums = 59e98361cb31456a9634378d0f653a2b9554b8900f233450f2396ff495ea76b3
 
 pkgname = openexr2
+	depends = zlib
+	depends = openexr2-libs=2.5.5-1
+	provides = openexr=2.5.5
+	conflicts = openexr
+
+pkgname = openexr2-libs
+	pkgdesc = An high dynamic-range image file format library (runtime libraries)
+	provides = libHalf-2_5.so
+	provides = libIex-2_5.so
+	provides = libIexMath-2_5.so
+	provides = libIlmImf-2_5.so
+	provides = libIlmImfUtil-2_5.so
+	provides = libIlmThread-2_5.so
+	provides = libImath-2_5.so
+	provides = libPyIex_Python3_10-2_5.so
+	provides = libPyImath_Python3_10-2_5.so
