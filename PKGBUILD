@@ -2,7 +2,7 @@ pkgdesc="This package contains an image capture application used to communicate 
 url='https://www.flir.com/'
 
 pkgname='spinview-qt'
-pkgver='3.1.0.79'
+pkgver='4.2.0.88'
 arch=('x86_64')
 pkgrel=1
 license=("custom:FLIR EULA")
@@ -18,10 +18,11 @@ depends=(
     ffmpeg
 )
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/daizhirui/spinnaker-sdk-arch/raw/main/spinview-qt-3.1.0.79.tar.gz")
-sha256sums=('82ef2cb68928475f0f6b051a1efda5699975e1a3c617e71ef05fe62a15c3476f')
+source=("${pkgname}-${pkgver}.deb::https://github.com/daizhirui/spinnaker-sdk-arch/raw/main/spinnaker-${pkgver}-amd64/spinnaker_${pkgver}_amd64.deb")
+sha256sums=('282959ec837744de8fccd08332fa7a29dc54a9d8783dbd180a4ccf9c2dc83e0f')
 
 package() {
     # Extract data
-    tar -xzf ${pkgname}-${pkgver}.tar.gz -C ${pkgdir}/
+    bsdtar -xf data.tar.zst -C "$pkgdir/"
+    rm -rf "$pkgdir/usr/share/doc"
 }
