@@ -4,8 +4,8 @@
 # NOTE: can currently not be built using devtools:
 # https://github.com/monocasual/giada/issues/553
 pkgname=giada
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians"
 arch=(x86_64)
 url="https://www.giadamusic.com/"
@@ -15,7 +15,7 @@ depends=(gcc-libs glibc hicolor-icon-theme libx11 libxcursor libxft libxinerama 
 options=(!buildflags !makeflags)
 # upstream vendors a hacked rtaudio :(
 makedepends=(alsa-lib cmake imagemagick jack libpulse libsamplerate libsndfile nlohmann-json rtmidi git)
-checkdepends=(catch2)
+checkdepends=(catch2-v2)
 provides=(vst3-host giada)
 source=(
 "git+https://github.com/monocasual/giada/#tag=$pkgver"
@@ -39,8 +39,8 @@ sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 b2sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
-  git -C rtaudio remote add network-origin https://github.com/monocasual/rtaudio.git
-  git -C rtaudio fetch network-origin 8a362b1082ce17d3be1f47bd116839e40f189cf1
+#   git -C rtaudio remote add network-origin https://github.com/monocasual/rtaudio.git
+#   git -C rtaudio fetch network-origin 8a362b1082ce17d3be1f47bd116839e40f189cf1
   cd "$pkgname"
   git submodule init
   git config submodule.src/deps/juce.url "$srcdir/JUCE"
