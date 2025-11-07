@@ -1,25 +1,15 @@
 pkgbase = shadps4-bin
 	pkgdesc = Sony PlayStation 4 emulator.(Prebuilt version)
-	pkgver = 0.12.0
+	pkgver = 0.12.5
 	pkgrel = 1
 	url = https://shadps4.net/
 	arch = x86_64
 	license = GPL-2.0-only
-	depends = libice
-	depends = gmp
-	depends = libgpg-error
-	depends = mesa
-	depends = harfbuzz
-	depends = libsm
-	depends = libglvnd
-	depends = fribidi
-	depends = libdrm
-	depends = fontconfig
-	provides = shadps4=0.12.0
+	provides = shadps4=0.12.5
 	conflicts = shadps4
-	source = shadps4-0.12.0.zip::https://github.com/shadps4-emu/shadPS4/releases/download/v.0.12.0/shadps4-linux-qt-0.12.0.zip
+	source = shadps4-0.12.5.zip::https://github.com/shadps4-emu/shadPS4/releases/download/v.0.12.5/shadps4-linux-sdl-0.12.5.zip
 	source = shadps4.sh
-	sha256sums = de587852c1dd601e9e63d512fc1885fa678474e2692d9ce39d30d43166b6c6a2
-	sha256sums = bf28379cb0ba33a297560e1e50c2ae13504487be2e8ebb39b899f48b442886f0
+	sha256sums = f7d7de431d50ad5cace6ac3e248f730f90e381597a9e198bda669cd2ce829f69
+	sha256sums = c2668b966dc1f5fef271c64e1749cf136e26b42dd9f993f063c69900a191e323
 
 pkgname = shadps4-bin
