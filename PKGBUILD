@@ -1,5 +1,4 @@
-# Maintainer: enzowashere <tryhard14090@gmail.com>
-pkgname=adhan-live
+pkgname=adhan-xreminder
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A simple Adhan reminder script"
