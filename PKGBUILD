@@ -2,7 +2,7 @@ pkgdesc="A library used to communicate with FLIR digital cameras. This package c
 url='https://www.flir.com/'
 
 pkgname='libspinvideo'
-pkgver='3.1.0.79'
+pkgver='4.2.0.88'
 arch=('x86_64')
 pkgrel=1
 license=("custom:FLIR EULA")
@@ -11,10 +11,11 @@ depends=(
     libspinnaker
 )
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/daizhirui/spinnaker-sdk-arch/raw/main/libspinvideo-3.1.0.79.tar.gz")
-sha256sums=('859af06db15ed6f9e0c4a7528cf49043d117593e3a3e362162e7d60cc866a9b3')
+source=("${pkgname}-${pkgver}.deb::https://github.com/daizhirui/spinnaker-sdk-arch/raw/main/spinnaker-${pkgver}-amd64/libspinvideo_${pkgver}_amd64.deb")
+sha256sums=('7ed5c95099e309c01742dc6027fcdd8e1123db933ddad67029f9933cd4048c68')
 
 package() {
     # Extract data
-    tar -xzf ${pkgname}-${pkgver}.tar.gz -C ${pkgdir}/
+    bsdtar -xf data.tar.zst -C "$pkgdir/"
+    rm -rf "$pkgdir/usr/share/doc"
 }
