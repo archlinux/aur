@@ -1,0 +1,4 @@
+[mdns-scanner]
+source = "git"
+git = "https://github.com/CramBL/mdns-scanner.git"
+prefix = "v"
