@@ -1,7 +1,7 @@
 pkgbase = sololinux-gui
 	pkgdesc = GUI configuration files for SoloLinux (Arch-based distribution)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Solomon-DbW/SoloLinux_GUI
 	arch = any
 	license = MIT

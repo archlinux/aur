@@ -1,7 +1,7 @@
 # Maintainer: Solomon_DbW <s2huncho@gmail.com>
 pkgname=sololinux-gui
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI configuration files for SoloLinux (Arch-based distribution)"
 arch=('any')
 url="https://github.com/Solomon-DbW/SoloLinux_GUI"
