@@ -1,7 +1,7 @@
 # Maintainer: Erica Marigold <hi@devcomp.xyz>
 
 pkgname=rojo
-pkgver=7.6.0
+pkgver=7.6.1
 pkgrel=1
 pkgdesc="[Latest Stable Source] Rojo enables Roblox developers to use professional-grade software engineering tools"
 arch=(x86_64 aarch64)
@@ -12,7 +12,7 @@ depends=(gcc-libs glibc)
 makedepends=(cargo)
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rojo-rbx/rojo/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c4026939c8ece1f4aa035d7adf539ca30c78bd2ae93c26382b8e0e627dcf8a51')
+sha256sums=('e4850203885561aaefd2996766b720a4df19313bad5457b178587e8913bbe2c1')
 
 prepare() {
   cd "rojo-${pkgver}"
