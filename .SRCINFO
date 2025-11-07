@@ -1,7 +1,7 @@
 pkgbase = xpipe-ptb
 	pkgdesc = XPipe (Public Test Build) releases
 	pkgver = 19.0
-	pkgrel = 13
+	pkgrel = 14
 	epoch = 1
 	url = https://github.com/xpipe-io/xpipe-ptb
 	changelog = xpipe-ptb.changelog
@@ -29,10 +29,10 @@ pkgbase = xpipe-ptb
 	source = xpipe-ptb.desktop
 	sha256sums = 3DBAE16D777F7AD7761252B1F429278333A1117A70632F4025DE713E5B0A86C8
 	sha256sums = BCD42E2497807AE0069A4CCCAFEDC5B993EB24EB844C9BF0AE26ABABCEEAE348
-	sha256sums = 0D2B6270ADF42DB0DE37FDE1FCF69E77596A057E6CE7CAC005FEAF7461FAAC5A
-	source_x86_64 = xpipe-ptb-19.0-13-x86_64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/19.0-13/xpipe-portable-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 3dc7eb42fe43032862d2c53c95a3ae67640e20d0d1b8921e3942f9d08f19713b
-	source_aarch64 = xpipe-ptb-19.0-13-arm64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/19.0-13/xpipe-portable-linux-arm64.tar.gz
-	sha256sums_aarch64 = 3dc7eb42fe43032862d2c53c95a3ae67640e20d0d1b8921e3942f9d08f19713b
+	sha256sums = 42DB40155DDCC4BA77A4EB79E4FF89617983DB7C91DBC05EACFF77679588013B
+	source_x86_64 = xpipe-ptb-19.0-14-x86_64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/19.0-14/xpipe-portable-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 3d9e5058b80e59ce44eff8bf5abb517fe15e19a67b0c305ce26db4f5dffca28c
+	source_aarch64 = xpipe-ptb-19.0-14-arm64.tar.gz::https://github.com/xpipe-io/xpipe-ptb/releases/download/19.0-14/xpipe-portable-linux-arm64.tar.gz
+	sha256sums_aarch64 = 3d9e5058b80e59ce44eff8bf5abb517fe15e19a67b0c305ce26db4f5dffca28c
 
 pkgname = xpipe-ptb
