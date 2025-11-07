@@ -1,7 +1,7 @@
 pkgbase = argos-translate
 	pkgdesc = Open-source offline translation library written in Python
 	pkgver = 1.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.argosopentech.com
 	arch = any
 	license = MIT
@@ -16,6 +16,6 @@ pkgbase = argos-translate
 	depends = python-spacy
 	depends = python-stanza
 	source = argostranslate-1.10.0.tar.gz::https://github.com/argosopentech/argos-translate/archive/refs/tags/v1.10.0.tar.gz
-	sha256sums = 237f0bdaef5a45aade034ac712c1d0c18fd42887fc08141808dcadde7bfd1f67
+	sha256sums = abfadb7d77cde7ec4202e54235f748ccab2db3e239a5ef34472f766ef417fece
 
 pkgname = argos-translate

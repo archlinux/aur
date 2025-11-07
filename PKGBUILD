@@ -2,7 +2,7 @@
 pkgname=argos-translate
 _name=argostranslate
 pkgver=1.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source offline translation library written in Python"
 arch=('any')
 url="https://www.argosopentech.com"
@@ -22,7 +22,7 @@ makedepends=(
   'python-wheel'
 )
 source=("$_name-$pkgver.tar.gz::https://github.com/argosopentech/argos-translate/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('237f0bdaef5a45aade034ac712c1d0c18fd42887fc08141808dcadde7bfd1f67')
+sha256sums=('abfadb7d77cde7ec4202e54235f748ccab2db3e239a5ef34472f766ef417fece')
 
 build() {
   cd "$_name-$pkgver"
