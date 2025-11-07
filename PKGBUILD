@@ -34,6 +34,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX=/usr
     -DWANT_EXPERIMENTAL=ON
+    -DWANT_SSE=ON
     -DWANT_GUI=OFF
     -DWANT_LASH=OFF
     -S "$_pkgname"
