@@ -8,12 +8,12 @@
 # Contributor: wxt1221 <3264117476@qq.com>
 # 感谢 Peternal 对 SVG图标 的授权
 pkgname=bilibili-bin
-_pkgver=1.17.2
+_pkgver=1.17.3
 _subver=1
 pkgver="${_pkgver}_${_subver}"
 _electronversion=28
 epoch=5
-pkgrel=2
+pkgrel=1
 pkgdesc="Bilibili official desktop client.(Prebuilt version.Use system-wide electron)哔哩哔哩官方客户端linux移植版。"
 arch=(
     'aarch64'
@@ -37,8 +37,8 @@ source=(
 )
 sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('42d186e03151d8a4453d5e36d0cec72f9b59f9fe264a05523a67a92506e18ab7')
-sha256sums_x86_64=('0a4c6497b8199d176b6c8b9c5ea320288e22a9acb16297e4eb6a02d5757ca896')
+sha256sums_aarch64=('cd5afc52e789fa740b8b1b9bd55ca4db54f6ab47d400c609dad72a0316a683bf')
+sha256sums_x86_64=('e857560ee27eee0b1076bcdae9d2af7e69b38ede8abb5a9e37dfafbabd5e8d52')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
