@@ -1,0 +1,36 @@
+post_install() {
+    echo ""
+    echo "==> GleamObserver v1.5.0 installed successfully!"
+    echo ""
+    echo "==> To enable the system tray daemon:"
+    echo "    systemctl --user enable --now gleam-observer"
+    echo ""
+    echo "==> The daemon will auto-start on next login (via /etc/xdg/autostart/)"
+    echo ""
+    echo "==> To run the TUI manually:"
+    echo "    gleam"
+    echo ""
+    echo "==> Config file location:"
+    echo "    ~/.config/gleam_observer/config.toml"
+    echo "    (copy from /usr/share/doc/gleam-observer/config-example.toml)"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    if systemctl --user is-active gleam-observer &>/dev/null; then
+        echo "==> Stopping gleam-observer service..."
+        systemctl --user stop gleam-observer
+    fi
+    if systemctl --user is-enabled gleam-observer &>/dev/null; then
+        echo "==> Disabling gleam-observer service..."
+        systemctl --user disable gleam-observer
+    fi
+}
+
+post_remove() {
+    echo "==> GleamObserver removed. Config files in ~/.config/gleam_observer/ were kept."
+}
