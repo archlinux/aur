@@ -20,7 +20,7 @@ prepare () {
 build() {
   cd aGrUM-$pkgver
   for _arch in ${_architectures}; do
-    ${_arch}-cmake -DCMAKE_UNITY_BUILD=ON -B build-${_arch} .
+    ${_arch}-cmake -DCMAKE_UNITY_BUILD=ON -DAGRUM_PYTHON_SABI=OFF -B build-${_arch} .
     make -C build-${_arch}
   done
 }
