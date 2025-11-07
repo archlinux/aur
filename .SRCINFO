@@ -1,6 +1,6 @@
 pkgbase = python-amulet-io
 	pkgdesc = A tiny C++ header-only binary reader and writer library
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/Amulet-Team/Amulet-IO
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-amulet-io
 	depends = python
 	depends = python-black
 	depends = pybind11
-	source = git+https://github.com/Amulet-Team/Amulet-IO.git#tag=1.0.0
-	md5sums = b41b1ac68d1bdd131c43bee5620ede12
+	source = git+https://github.com/Amulet-Team/Amulet-IO.git#tag=1.0.1
+	md5sums = 7dfb92c9943b34c8a1c0b684ea11b38a
 
 pkgname = python-amulet-io
