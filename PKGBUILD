@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dopamine-bin
 _pkgname=Dopamine
-pkgver=3.0.0_preview.40
+pkgver=3.0.0
 _electronversion=26
 pkgrel=1
 pkgdesc="The audio player that keeps it simple.(Prebuilt version.Use system-wide electron)"
@@ -15,10 +15,10 @@ depends=(
     'python'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver//_/-}/${_pkgname}-${pkgver//_/-}.pacman"
+    "${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.pacman"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5d45fb5d08b46f522aee99e6bc18b06e9cf06ca20a3210950be5b04a815603b8'
+sha256sums=('5ede855cf10f86dc063b4d124d45f1535225149ecee4702df19eb6f5bcf6564d'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
