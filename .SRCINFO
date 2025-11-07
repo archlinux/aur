@@ -1,7 +1,7 @@
 pkgbase = torchvision
 	pkgdesc = Datasets, transforms, and models specific to computer vision
 	pkgver = 0.23.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/pytorch/vision
 	arch = x86_64
 	license = BSD-3-Clause
