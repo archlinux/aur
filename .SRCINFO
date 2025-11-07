@@ -1,6 +1,6 @@
 pkgbase = qt5-doc
 	pkgver = 5.15.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io
 	arch = any
 	groups = qt5
@@ -24,8 +24,10 @@ pkgbase = qt5-doc
 	makedepends = ninja
 	source = https://download.qt.io/archive/qt/5.15/5.15.17/single/qt-everywhere-opensource-src-5.15.17.tar.xz
 	source = no-qmake.patch
+	source = qt-everywhere-src-5.15.17-assimp.patch
 	sha256sums = 85eb566333d6ba59be3a97c9445a6e52f2af1b52fc3c54b8a2e7f9ea040a7de4
 	sha256sums = db90fa31381fa0814c9c8c803c9e2f9b36bdd6f52da753399e500c0692352498
+	sha256sums = 9d54e70051adfeed818db437f266e3bba5ccd2f5f9e056515281ee2f7ff71bac
 
 pkgname = qt5-doc
 	pkgdesc = A cross-platform application and UI framework (Documentation)
