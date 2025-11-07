@@ -4,7 +4,7 @@
 # Contributor: Gordin <9ordin @t gmail>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 pkgname='flow'
-pkgver='0.289.0'
+pkgver='0.290.0'
 pkgrel='1'
 pkgdesc='A static type checker for JavaScript'
 # If you're running on aarch64, you have to add it to the arch array of some AUR ocaml dependencies
@@ -18,7 +18,7 @@ source=(
 	'gcc15-compat.diff'
 	'ppxlib-compat.diff'
 )
-b2sums=('4f25b5ec86d4cb2824ac3348a2acf967a71805668a47aecc236bee311ccf90ddb5223b0716d047c92f2eeff4152a9070dd886b12102309914495f7f112f211c9'
+b2sums=('5a4a7169c1798beb4b0409ecbcf1831534259909b9040b4ce6fa94ab273698a12bc5f57b9463c5b6971f69ce38085bc19cfafb8781d5c12ad37d7b98c4552c84'
         'e2eebfbb0dc12a7b234379a8fa5e92476551c949c83b30b1c303884a083b14b5fc10b64ca131794f77194d2db0318df21176e2788cf437e27ca5ea3a853fba7f'
         'd62be95aa1d9693afe7d08ae77a34a566c7201872d6b4003aab9e0d0610df685fa39c463aaabc9658d9ad283b9e000e649b8f3e251f6e586d750c103cab1d671')
 
