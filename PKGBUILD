@@ -3,15 +3,15 @@
 
 pkgname=netease-musicbox-git
 _gitname=musicbox
-pkgver=0.3.1.r3.ga0a6969
-pkgrel=3
+pkgver=0.3.1.r5.g592e13d
+pkgrel=1
 pkgdesc="A sexy command line interface musicbox for NetEase based on Python"
 arch=(any)
 url="https://github.com/darknessomi/musicbox"
-depends=('mpg123' 'python-pycryptodomex' 'python-requests' 'python-future'
-         'python-fuzzywuzzy' 'python-requests-cache' 'python-importlib-metadata'
-         'python-url-normalize' 'python-cattrs' 'python-levenshtein')
-makedepends=('python-setuptools' 'python-poetry' 'git')
+depends=('mpg123' 'python-pycryptodomex' 'python-requests'
+         'python-requests-cache' 'python-importlib-metadata'
+         'python-thefuzz')
+makedepends=('git' 'python-build' 'python-installer' 'python-poetry-core')
 optdepends=('aria2: music caching'
             'libnotify: notifications'
             'qt5-base: lyrics support'
@@ -36,15 +36,13 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_gitname}"
-  poetry build -f sdist
-  export mainver=$(echo "${pkgver}" | cut -d "." -f1-3)
-  tar xvf "./dist/NetEase-MusicBox-${mainver}.tar.gz"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   
-  cd "${srcdir}/${_gitname}/NetEase-MusicBox-${mainver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  cd "${srcdir}/${_gitname}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 # vim:set ts=2 sw=2 et:
