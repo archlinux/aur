@@ -1,0 +1,5 @@
+[prek-bin]
+source = "github"
+github = "j178/prek"
+use_latest_release = true
+prefix = "v"
