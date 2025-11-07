@@ -1,7 +1,7 @@
 # Maintainer: Foxma <foxma at fermentedfox dot co dot uk>
 
 pkgname=mixing-station
-pkgver=2.5.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='Mixer remote control for multiple mixers'
 arch=('any')
