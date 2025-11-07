@@ -1,6 +1,6 @@
 pkgbase = python-ormsgpack
 	pkgdesc = Fast, correct Python msgpack library supporting dataclasses, datetimes, and numpy.
-	pkgver = 1.11.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://github.com/aviramha/ormsgpack
 	arch = any
@@ -10,7 +10,6 @@ pkgbase = python-ormsgpack
 	checkdepends = python-pendulum
 	checkdepends = python-pydantic
 	checkdepends = python-pytest
-	checkdepends = python-pytest-benchmark
 	checkdepends = python-dateutil
 	checkdepends = python-pytz
 	checkdepends = python-tzdata
@@ -21,8 +20,7 @@ pkgbase = python-ormsgpack
 	depends = python
 	depends = glibc
 	depends = gcc-libs
-	optdepends = python-aiohttp: aiohttp
-	source = https://github.com/aviramha/ormsgpack/archive/refs/tags/1.11.0.tar.gz
-	sha256sums = d1c1503124e32c864a16083f7819e2b24a84375f08ecc094478052ea75b69d67
+	source = https://github.com/aviramha/ormsgpack/archive/refs/tags/1.12.0.tar.gz
+	sha256sums = eafeffec299a776a621cce0ef3e58aeeb62ccae555084f8678a71a1cbfcd8585
 
 pkgname = python-ormsgpack
