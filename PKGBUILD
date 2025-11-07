@@ -1,7 +1,7 @@
 # Maintainer: il1v3y <ind4skylivey@proton.me>
 pkgname=gleam-observer
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal Hardware Monitor - Daemon with System Tray Integration"
 arch=('x86_64')
 url="https://github.com/ind4skylivey/Gleam-Observer"
