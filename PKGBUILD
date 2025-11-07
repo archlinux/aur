@@ -1,5 +1,5 @@
 pkgname=marcwel-archive
-pkgver=2.69.420
+pkgver=3.69.420
 pkgrel=1
 pkgdesc="The revolutionary archiving software that boldly asks, “What if… bigger is better?”"
 arch=('x86_64')
