@@ -1,6 +1,6 @@
 pkgbase = nunchuk-desktop-appimage
 	pkgdesc = Desktop bitcoin wallet with multisig, hardware, nfc and air-gapped key support
-	pkgver = 1.9.54
+	pkgver = 1.9.55
 	pkgrel = 1
 	url = https://nunchuk.io/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = nunchuk-desktop-appimage
 	optdepends = trezor-udev: Udev rules for Trezor hardware wallet support
 	provides = nunchuk-qt
 	options = !strip
-	source = https://github.com/nunchuk-io/nunchuk-desktop/releases/download/1.9.54/nunchuk-linux-v1.9.54.zip
-	sha256sums = d7d68901fe398e6548033b9ca7b3d8b868d803b013a0b75cc342b1326b276d67
+	source = https://github.com/nunchuk-io/nunchuk-desktop/releases/download/1.9.55/nunchuk-linux-v1.9.55.zip
+	sha256sums = e905205bec1dda192d0a914b1b5c68ce10a8829f08c94b06cc7109ce3ed23290
 
 pkgname = nunchuk-desktop-appimage

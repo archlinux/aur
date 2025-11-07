@@ -4,7 +4,7 @@ pkgname='nunchuk-desktop-appimage'
 _pkgname='nunchuk-desktop'
 __pkgname='nunchuk-linux'
 ___pkgname='nunchuk'
-pkgver=1.9.54
+pkgver=1.9.55
 pkgrel=1
 pkgdesc="Desktop bitcoin wallet with multisig, hardware, nfc and air-gapped key support"
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=('bitbox-udev: Udev rules for Bitbox hardware wallet support'
 provides=('nunchuk-qt')
 options=('!strip')
 source=("https://github.com/nunchuk-io/$_pkgname/releases/download/$pkgver/$__pkgname-v$pkgver.zip")
-sha256sums=('d7d68901fe398e6548033b9ca7b3d8b868d803b013a0b75cc342b1326b276d67')
+sha256sums=('e905205bec1dda192d0a914b1b5c68ce10a8829f08c94b06cc7109ce3ed23290')
 
 #validpgpkeys=('8C8ECD3F660CA53CD878792A6E38A462ED2EF525') # Ta Tat Tai (Nunchuk binary release signing key) <tatattai@gmail.com>
 
