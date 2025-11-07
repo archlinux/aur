@@ -8,11 +8,12 @@ pkgbase = wayvy
 	makedepends = rust
 	makedepends = cargo
 	makedepends = make
+	makedepends = git
 	depends = mpvpaper
 	optdepends = pywall: re-theming support
 	optdepends = walrs-extended: re-theming support with remote files
 	optdepends = walrs: re-theming support
-	source = git+https://codeberg.org/J_S_Barkely-Griggs/Wayvy.git
+	source = wayvy::git+https://codeberg.org/J_S_Barkely-Griggs/Wayvy.git
 	sha256sums = SKIP
 
 pkgname = wayvy
