@@ -1,0 +1,14 @@
+pkgbase = fit
+	pkgdesc = Terminal-based merge conflict resolver with three-pane TUI interface
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/FortranGoingOnForty/fit
+	arch = x86_64
+	license = MIT
+	makedepends = gcc-fortran
+	makedepends = make
+	depends = glibc
+	source = git+https://github.com/FortranGoingOnForty/fit.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = fit
