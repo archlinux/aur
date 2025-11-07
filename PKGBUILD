@@ -2,7 +2,7 @@
 # Contributor: Gerardo Marset <gammer1994@gmail.com>
 
 pkgname=grrlib
-pkgver=4.6.0
+pkgver=4.6.1
 pkgrel=1
 pkgdesc="A helper library for Nintendo Gamecube/Wii homebrew developers"
 arch=('any')
@@ -12,7 +12,7 @@ depends=("libfat-ogc" "ppc-freetype" "ppc-libjpeg-turbo" "ppc-libpng")
 makedepends=("devkitPPC" "catnip")
 source=("https://github.com/GRRLIB/GRRLIB/archive/v$pkgver.tar.gz"
         "https://github.com/GRRLIB/GRRLIB/releases/download/v$pkgver/PDF-documentation.pdf")
-sha256sums=('a01b3580a725de261cde62c050f353c5aaf2e2b15dd0b8163f12633c3674bd04'
+sha256sums=('bdd03c0027aed595e864c095c181b00d67bef6547e9caf30b414b76abf935a57'
             '4957d1ebedfaf49a461f6b2311cfb93b1d9b0bba8af08946c4359485822391c5')
 options=(!strip libtool staticlibs)
 
