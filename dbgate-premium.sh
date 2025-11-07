@@ -27,9 +27,11 @@ for arg in "$@"; do
         break
     fi
 done
+
 if [[ "${_WAYLAND_OPTION}" == true ]]; then
     flags+=("--enable-features=UseOzonePlatform,WaylandWindowDecorations,VaapiVideoDecodeLinuxGL" "--ozone-platform=wayland")
 fi
+
 cd "${_APPDIR}"
 if [[ "${EUID}" -ne 0 ]] || [[ "${ELECTRON_RUN_AS_NODE}" ]]; then
     exec electron@electronversion@ "${_RUNNAME}" "${_OPTIONS}" "${flags[@]}" "$@" || exit $?

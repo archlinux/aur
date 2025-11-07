@@ -4,7 +4,7 @@
 pkgname=dbgate-premium-bin
 _pkgname=dbgate-premium
 pkgver=6.6.10
-_electronversion=30
+_electron_version=30
 pkgrel=1
 pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others. Premium edition (proprietary). (Uses system-wide Electron)"
 arch=('x86_64')
@@ -12,29 +12,30 @@ url="https://github.com/dbgate/dbgate"
 license=('MIT')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-depends=("electron${_electronversion}")
+depends=("electron${_electron_version}")
+_appimage_file_name="${_pkgname}-${pkgver}.AppImage"
 source=(
-  "${_pkgname}.AppImage::${url}/releases/download/v${pkgver}/dbgate-premium-latest.AppImage"
+  "${_appimage_file_name}::${url}/releases/download/v${pkgver}/dbgate-premium-latest.AppImage"
   "LICENSE-${pkgver}::https://raw.githubusercontent.com/dbgate/dbgate/v${pkgver}/LICENSE"
   "${_pkgname}.sh"
 )
 
 sha256sums=('99d19cb0edd8e3fc61868cbd7f8d9491b4ed492d96a94e91fe50f3a1f527ce17'
             'SKIP'
-            '36371074ced6b14e43ddd16af03587faee65654dfe394621be99cf98d14f529c')
+            '5a5efc7622eff23064bb00809b9549df58e48ba9dec6c56ca6a735ea57bb18d7')
 
 prepare() {
   # Prepare launcher script for system Electron
   sed -i -e "
-    s/@electronversion@/${_electronversion}/g
+    s/@electronversion@/${_electron_version}/g
     s/@appname@/${_pkgname}/g
     s/@runname@/app.asar/g
     s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
   " "${srcdir}/${_pkgname}.sh"
 
   # Extract AppImage contents
-  chmod +x "${srcdir}/${_pkgname}.AppImage"
-  "${srcdir}/${_pkgname}.AppImage" --appimage-extract
+  chmod +x "${srcdir}/${_appimage_file_name}"
+  "${srcdir}/${_appimage_file_name}" --appimage-extract
 
   # Find asar payload
   _asar="$(find "${srcdir}/squashfs-root" -type f -name 'app.asar' | head -n1)"
