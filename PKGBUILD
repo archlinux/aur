@@ -1,32 +1,25 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer:  Gilwiljam <gillbilljam@gmail.com>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=retroforth
-pkgver=2023.3
+pkgver=2025.8
 pkgrel=1
 pkgdesc='A modern, pragmatic Forth'
 arch=('x86_64')
 url='https://retroforth.org/'
 license=('ISC')
 depends=('glibc' 'bash')
-makedepends=('git')
-_commit='2818f20a5a7cf291b9ef4f8b1f9688c4e4c16fb0'
-source=("$pkgname::git+https://git.sr.ht/~crc_/retroforth#commit=$_commit")
-b2sums=('SKIP')
-
-pkgver() {
-  cd "$pkgname"
-
-  git describe --tags | sed 's/^v//'
-}
+source=("$pkgname-$pkgver::https://retroforth.org/r/RETRO12-2025.8.tar.gz")
+b2sums=('45e06c8dfdb5394bb63914faf57bb1273426cd772e036a88d05938856f96a64b803c92fab56db7d9ef84659b00716741ca6b3e8f0026868741af3184ef09d885')
 
 build() {
-  cd "$pkgname"
+  cd $srcdir/RETRO12*
 
   make
 }
 
 package() {
-  cd "$pkgname"
+  cd $srcdir/RETRO12*
 
   PREFIX=/usr DESTDIR="$pkgdir" make install
 
