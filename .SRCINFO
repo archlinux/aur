@@ -1,0 +1,17 @@
+pkgbase = fractioncalc-bin
+	pkgdesc = A simple calculator for fractions.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/Ashyraffa32/FractionCalc
+	arch = x86_64
+	license = GPL
+	provides = fractioncalc
+	conflicts = fractioncalc
+	source_x86_64 = fractioncalc-bin-1.5.0.AppImage::https://github.com/Ashyraffa32/FractionCalc/releases/download/v1.5.0/FractionCalc-1.5.0.AppImage
+	source_x86_64 = fractioncalc.desktop
+	source_x86_64 = fractioncalc.png
+	sha256sums_x86_64 = 8c8ed586df3ddb896035d9078fbc77b33809370f1574fd5d582062bfe395b123
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+
+pkgname = fractioncalc-bin

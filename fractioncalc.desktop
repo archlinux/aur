@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=FractionCalc
+Comment=A simple calculator for fractions
+Exec=/usr/bin/fractioncalc
+Icon=fractioncalc
+Terminal=false
+Type=Application
+Categories=Utility;Education;
