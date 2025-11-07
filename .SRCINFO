@@ -32,7 +32,7 @@ pkgbase = openscad-git
 	depends = lib3mf
 	provides = openscad
 	conflicts = openscad
-	source = openscad::git+https://github.com/openscad/openscad
+	source = openscad::git+https://github.com/openscad/openscad.git
 	sha256sums = SKIP
 
 pkgname = openscad-git

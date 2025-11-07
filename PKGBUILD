@@ -35,7 +35,7 @@ depends=(
     'lib3mf'
 )
 makedepends=('git' 'boost' 'cmake' 'eigen' 'imagemagick' 'python' 'ninja')
-source=("$_pkg::git+$url")
+source=("$_pkg::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
