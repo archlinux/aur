@@ -1,0 +1,12 @@
+pkgbase = python-sanjuuni
+	pkgdesc = Converts images and videos into a format suitable for ComputerCraft, based on sanjuuni.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://pypi.org/project/sanjuuni/
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = python
+	makedepends = python-pip
+	makedepends = python-setuptools
+
+pkgname = python-sanjuuni
