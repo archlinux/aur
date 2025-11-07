@@ -1,6 +1,6 @@
 pkgbase = asset-ripper
 	pkgdesc = Tool for extracting assets from Unity serialized files and asset bundles.
-	pkgver = 1.3.5
+	pkgver = 1.3.6
 	pkgrel = 1
 	url = https://assetripper.github.io/AssetRipper/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = asset-ripper
 	optdepends = firefox
 	optdepends = chromium
 	options = !strip
-	source = asset-ripper-1.3.5.tar.gz::https://github.com/AssetRipper/AssetRipper/archive/refs/tags/1.3.5.tar.gz
-	sha256sums = cc4d6f091321fd72fa3b62bc29fef9e4ee4562e35e654d1b4f7c80e75c17e0f4
+	source = asset-ripper-1.3.6.tar.gz::https://github.com/AssetRipper/AssetRipper/archive/refs/tags/1.3.6.tar.gz
+	sha256sums = ee6eceb648cc22d14a7e3ee86901c85e3c880f6b2574ec332e0023e9e341cf47
 
 pkgname = asset-ripper
