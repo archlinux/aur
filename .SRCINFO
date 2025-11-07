@@ -1,6 +1,6 @@
 pkgbase = lunatask
 	pkgdesc = all-in-one encrypted productivity app (unofficial, not supported by upstream)
-	pkgver = 2.1.13
+	pkgver = 2.1.15
 	pkgrel = 1
 	url = https://lunatask.app
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = lunatask
 	depends = libxtst
 	options = !strip
 	options = !strip
-	source = https://github.com/lunatask/lunatask/releases/download/v2.1.13/Lunatask-2.1.13.AppImage
-	sha512sums = bee2947097379f7a980681fad4652625636fe0190373047377f8152073570bc9b44851d04aeb4517e8ff19aec8ecde76037c53197c9afa61dbe2e68086a2662d
+	source = https://github.com/lunatask/lunatask/releases/download/v2.1.15/Lunatask-2.1.15.AppImage
+	sha512sums = 57af50fa8b54593b5e59b9120b0afb5e0c471871fc2c3cff1e1c37a7081d1e88f4e54bc3d0298d0c38710c0d51181afebd695988a6eceb66126078b2c598a365
 
 pkgname = lunatask
