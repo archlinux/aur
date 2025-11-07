@@ -1,8 +1,8 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=tarantool
-pkgver=2.11.1
-pkgrel=4
+pkgver=2.11.8
+pkgrel=1
 pkgdesc='Lua application server integrated with a database management system'
 arch=(x86_64)
 url='https://www.tarantool.org'
@@ -10,7 +10,6 @@ license=(BSD)
 depends=(readline ncurses zlib libyaml openssl libunwind icu)
 makedepends=(git cmake systemd)
 checkdepends=(python-gevent python-tarantool python-yaml)
-
 #
 # FIXME: building using the official Arch remote build server fails:
 # ==> ERROR: /var/lib/archbuilddest/srcdest/zstd is not a clone of https://github.com/tarantool/zstd.git
