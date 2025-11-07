@@ -1,7 +1,7 @@
 pkgbase = scope-tui
 	pkgdesc = A simple oscilloscope/vectorscope/spectroscope for your terminal
-	pkgver = 0.3.3
-	pkgrel = 2
+	pkgver = 0.3.4
+	pkgrel = 1
 	url = https://github.com/alemidev/scope-tui
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = scope-tui
 	depends = gcc-libs
 	depends = libpulse
 	depends = alsa-lib
-	source = scope-tui-0.3.3.tar.gz::https://github.com/alemidev/scope-tui/archive/v0.3.3.tar.gz
-	sha512sums = 562af85158b465191e6b455bcca301ff3da7c29a811a1e3ed40c1afa520d694578e1715de9e1d546f8da6f82912eb0d0c74520c72d8de3453f6cc3b59f5b1c3d
+	source = scope-tui-0.3.4.tar.gz::https://github.com/alemidev/scope-tui/archive/v0.3.4.tar.gz
+	sha512sums = d1e069521081c021f15a6ee1a4e285b4c61cd37213a92f2a772243e223dd7303b8ff2f5207d56a4a9d4d29185cf268fd1cdd7a6ec3a98bd66404d83400fadb2c
 
 pkgname = scope-tui
