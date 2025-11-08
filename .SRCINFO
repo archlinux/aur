@@ -1,8 +1,8 @@
 pkgbase = atari-combat
 	pkgdesc = The original Combat game for the old Atari 2600 game console
 	pkgver = 1.0
-	pkgrel = 2
-	url = http://www.atariage.com/software_page.html?SoftwareLabelID=96
+	pkgrel = 3
+	url = http://www.atariage.com/software_page.php?SoftwareLabelID=96
 	arch = any
 	license = unknown
 	depends = stella
@@ -10,4 +10,3 @@ pkgbase = atari-combat
 	md5sums = 16f792a416cf2903f925a639561271ed
 
 pkgname = atari-combat
-

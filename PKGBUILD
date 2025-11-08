@@ -3,10 +3,10 @@
 # Contributor: David Rosenstrauch <darose@darose.net>
 pkgname=atari-combat
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The original Combat game for the old Atari 2600 game console"
 arch=('any')
-url="http://www.atariage.com/software_page.html?SoftwareLabelID=96"
+url="http://www.atariage.com/software_page.php?SoftwareLabelID=96"
 license=('unknown')
 depends=(stella)
 source=('http://www.atariage.com/2600/roms/Combat.zip')
