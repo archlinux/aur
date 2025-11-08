@@ -1,0 +1,15 @@
+pkgbase = hyperledger-fabric-bin
+	pkgdesc = Hyperledger Fabric precompiled binaries (configtxgen, configtxlator, cryptogen, discover, ledgerutil, orderer, osnadmin, peer)
+	pkgver = 3.1.3
+	pkgrel = 1
+	url = https://www.hyperledger.org/use/fabric
+	arch = x86_64
+	license = Apache
+	depends = glibc
+	provides = hyperledger-fabric
+	conflicts = hyperledger-fabric
+	options = !strip
+	source = https://github.com/hyperledger/fabric/releases/download/v3.1.3/hyperledger-fabric-linux-amd64-3.1.3.tar.gz
+	sha256sums = b823d48017fece94d1de5fa1d886041a629684fe86a7fa19525c56ef3002ab03
+
+pkgname = hyperledger-fabric-bin
