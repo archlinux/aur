@@ -1,0 +1,5 @@
+[otf-myna]
+source = "github"
+github = "sayyadirfanali/Myna"
+use_latest_release = true
+prefix = "v"
