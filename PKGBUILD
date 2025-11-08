@@ -1,6 +1,6 @@
 # Maintainer: VintageTechie <https://vintagetechie.com>
 pkgname=cosmic-updates-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Universal package update checker applet for COSMIC Desktop (binary)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
 provides=('cosmic-updates')
 conflicts=('cosmic-updates' 'cosmic-updates-git')
 source=("https://codeberg.org/VintageTechie/cosmic-updates/releases/download/v${pkgver}/cosmic-updates-${pkgver}-x86_64.tar.gz")
-sha256sums=('d794b30212aeff91df262045973fa0d3b05a9b634b5ace49c4592b7eea9a78bc')
+sha256sums=('1e99c75c057f6337c8af60bb66925bea43932c41826ac13454e007b240f43dbf')
 
 package() {
     cd "$srcdir"
