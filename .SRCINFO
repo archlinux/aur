@@ -24,6 +24,7 @@ pkgbase = mangowc-git
 	provides = mangowc
 	provides = wayland-compositor
 	conflicts = mangowc
+	conflicts = mangowc-wlonly-git
 	options = !strip
 	options = !lto
 	source = mangowc-git::git+https://github.com/DreamMaoMao/mangowc.git
