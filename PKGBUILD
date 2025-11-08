@@ -3,9 +3,9 @@
 pkgbase=lua-periphery
 pkgname=(lua-periphery lua51-periphery lua52-periphery lua53-periphery)
 
-pkgver=2.4.2
+pkgver=2.5.0
 pkgrel=1
-_commit=f2d98044b93fce643553d545827d739d5fe85c2a
+_commit=e91d515ebbf04bd4cfc10a3f4c7e1f12736350af
 pkgdesc='A Lua library for peripheral I/O (GPIO, LED, PWM, SPI, I2C, MMIO, Serial) in Linux.'
 arch=('x86_64')
 url='https://github.com/vsergeev/lua-periphery'
