@@ -2,7 +2,7 @@
 
 _name=legacy-api-wrap
 pkgname=python-$_name
-pkgver=1.4.1
+pkgver=1.5
 pkgrel=1
 pkgdesc='Legacy API wrapper.'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python)
 makedepends=(python-hatch-vcs python-hatch-docstring-description python-build python-installer python-wheel)
 optdepends=('pytest: testing.legacy_api_wrap.pytest package')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('9c40d67aa8312fec8763e87cbf28fea4b67710c79ca7a18137b573d150f3b2b4')
+sha256sums=('b41ba6532f3ebfe3a897a35a7f97dec3be04b92a450f6c2bcf89f1b91c9cadf2')
 
 build() {
 	cd "${_name//-/_}-$pkgver"
