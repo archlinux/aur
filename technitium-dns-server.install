@@ -2,15 +2,18 @@
 #pre_install() {
     case `ps --no-headers -o comm 1` in
         dinit)
-            echo "::: Detected `dinit`; stopping dinit service"
+            echo "::: Detected [dinit]"
+            echo " :: Stopping [dinit] service technitium-dns-server"
             dinitctl stop technitium-dns-server
             # dinitctl unload technitium-dns-server
         ;;
         init)
-            echo "::: Detected `init`; stopping systemd service files"
+            echo "::: Detected [init]"
         ;;
         systemd)
-            echo "::: Detected `systemd`; stopping systemd service files"
+            echo "::: Detected [systemd]"
+            echo " :: Stopping [systemd] service technitium-dns-server"
+            systemctl stop technitium-dns-server
         ;;
         *)
             echo "::: Unknown init system"
@@ -22,24 +25,26 @@
 post_install() {
     case `ps --no-headers -o comm 1` in
         dinit)
-            echo "::: Detected `dinit` Installing dinit service file"
-            echo "::: Installing dinit service description file"
-            ln -s /opt/technitium-dns-server/service/technitium-dns-server.dinit /etc/dinit.d/technitium-dns-server
-            echo "::: Reloading dinit service description file"
+            echo "::: Detected [dinit]"
+            echo " :: Installing [dinit] service description file"
+            ln -sf /opt/technitium-dns-server/service/technitium-dns-server.dinit /etc/dinit.d/technitium-dns-server
+            echo " :: Reloading [dinit] service technitium-dns-server"
             dinitctl reload technitium-dns-server
-            echo "::: Starting dinit service description file"
+            echo " :: Starting [dinit] service technitium-dns-server"
             dinitctl start technitium-dns-server
         ;;
         init)
-            echo "::: Detected `init` Installing systemd service files"
+            echo "::: Detected [init]"
         ;;
         systemd)
-            echo "::: Detected `systemd`"
-            echo " :: Installing systemd service files"
-            ln -s /opt/technitium-dns-server/service/technitium-dns-server.service /usr/lib/systemd/system/technitium-dns-server.service
-            ln -s /opt/technitium-dns-server/service/technitium-dns-server.sysuser /usr/lib/sysusers.d/technitium-dns-server.conf
+            echo "::: Detected [systemd]"
+            echo " :: Installing [systemd] service files"
+            ln -sf /opt/technitium-dns-server/service/technitium-dns-server.service /usr/lib/systemd/system/technitium-dns-server.service
+            ln -sf /opt/technitium-dns-server/service/technitium-dns-server.sysuser /usr/lib/sysusers.d/technitium-dns-server.conf
             echo " :: Creating user and group"
             systemd-sysusers
+            echo " :: Starting [systemd] service technitium-dns-server"
+            systemctl start technitium-dns-server
         ;;
         *)
             echo "::: Unknown init system"
@@ -50,15 +55,16 @@ post_install() {
 #pre_upgrade() {
     case `ps --no-headers -o comm 1` in
         dinit)
-            echo "::: Detected `dinit`; stopping dinit service"
+            echo "::: Detected [dinit]; stopping [dinit] service"
             dinitctl stop technitium-dns-server
             # dinitctl unload technitium-dns-server
         ;;
         init)
-            echo "::: Detected `init`; stopping systemd service files"
+            echo "::: Detected [init]"
         ;;
         systemd)
-            echo "::: Detected `systemd`; stopping systemd service files"
+            echo "::: Detected [systemd]; stopping [systemd] service files"
+            systemctl stop technitium-dns-server
         ;;
         *)
             echo "::: Unknown init system"
@@ -69,21 +75,26 @@ post_install() {
 post_upgrade() {
     case `ps --no-headers -o comm 1` in
         dinit)
-            echo "::: Detected `dinit` Installing dinit service file"
-            echo "::: Installing dinit service description file"
-            ln -s /opt/technitium-dns-server/service/technitium-dns-server.dinit /etc/dinit.d/technitium-dns-server
-            echo "::: Reloading dinit service description file"
+            echo "::: Detected [dinit]"
+            echo " :: Installing [dinit] service description file"
+            ln -sf /opt/technitium-dns-server/service/technitium-dns-server.dinit /etc/dinit.d/technitium-dns-server
+            echo " :: Reloading [dinit] service description file"
             dinitctl reload technitium-dns-server
-            echo "::: Starting dinit service description file"
+            echo " :: Starting [dinit] service description file"
             dinitctl start technitium-dns-server
         ;;
         init)
-            echo "::: Detected `init` Installing systemd service files"
+            echo "::: Detected [init]"
         ;;
         systemd)
-            echo "::: Detected `systemd` Installing systemd service files"
-            ln -s /opt/technitium-dns-server/service/technitium-dns-server.service /usr/lib/systemd/system/technitium-dns-server.service
-            ln -s /opt/technitium-dns-server/service/technitium-dns-server.sysuser /usr/lib/sysusers.d/technitium-dns-server.conf
+            echo "::: Detected [systemd]"
+            echo " :: Installing [systemd] service files"
+            ln -sf /opt/technitium-dns-server/service/technitium-dns-server.service /usr/lib/systemd/system/technitium-dns-server.service
+            ln -sf /opt/technitium-dns-server/service/technitium-dns-server.sysuser /usr/lib/sysusers.d/technitium-dns-server.conf
+            echo " :: Creating user and group"
+            systemd-sysusers
+            echo " :: Starting [systemd] service technitium-dns-server"
+            systemctl stop technitium-dns-server
         ;;
         *)
             echo "::: Unknown init system"
