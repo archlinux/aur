@@ -10,7 +10,7 @@ pkgname=(${_pkgname}-all-${_pkgsuffix} ${_pkgname}-${_pkgsuffix} $(for provider 
 
 _packages=(${pkgname[@]})
 
-pkgver=2.14.3
+pkgver=2.14.4
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -34,24 +34,24 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v
                $(for provider in ${_pkgproviders[@]}; do echo "${provider}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${provider}-linux-${_barch[0]}.tar.gz" ; done))
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             'b7588cd186b1e534a5fafe14578f88685daae66abae7be582beead897df5d077')
-sha256sums_x86_64=('66158d86472d258e6bfa7de267bc4ca670fc2c805f42b7968bff9c258b415c11'
-                   'a563ac37c9a4d67394583be5f5e01c850ed57abf97fe41efa2097cd12b5738bc'
-                   '70d4e21efc2c5fe3ca3ee34222a65043f3372c7e8ec68ce82a0238c454652d1f'
-                   '636edf184b374c30c756ee11b507e29a9b26005238035de9578d5341072c18ac'
-                   '5ae702c4771ad7575cc6fac2b235b352596b74e08b87dccb66445778a7c2fd2a'
-                   '361820f885da3df682d09698dd13da02251847c2e6cb31aaed30b4680e9bf03f'
-                   '06a9ad2280a142f22d30e28170876ed8c838a0da9d6aa2edb56773ccde4d7c91'
-                   'efbcf13c0d40fcfd9abf536e802ad4abeb45169062b5178d9380069cdaa0f75d'
-                   '7372e86df08c0f371cdf1124264b5832041896886baf8d1b096d658cdf51a295'
-                   '17b0325cfbe402ada28cbee0adb6b6755ca4156477bf69a600ff4c09bbd7b936'
-                   '0ec59217fc94400a39fe8853debc6ab91bc83a6619686a753d503d5fb5b9c2c4'
-                   '55547402310afdc0305fec12feab5b602e0913090471eaf754c0a62925101a1f'
-                   'b0122bf8a07c7a84476330b88e13869a29c41adbc5a722cfdfa9d4fed0fdc393'
-                   '714302c0fa053a8427225381f5ca174fb40cc451d6d5afe8ac33281c593d3030'
-                   '5205ba4603b850be50cf1c825e666947650c45ce1471c0f3dd25becb2aba4b62'
-                   'f924086d8e8de1b456d496a1b4281e6ab3f7943a5181279d32394df0a43d1cfe'
-                   'b8cb205ad958de32dc92e579cb9f5bdc59a8f15b79a4328f595267d99126c10a'
-                   '4f17cf479c9406861ee773c1e02c56b7370e50e93c3367407728471db7e8e509')
+sha256sums_x86_64=('f6dab45891efa5619fc8d4b399016168d2135f1e11cd14c16ec4f3c8a4b8b838'
+                   '68e411e6a7feb74ee23520061a19c8e4c76374496a3e4bafebf56d708f382e5c'
+                   '2c22e95a6e8ec0181daa7524af774ce4a8b8ef7c70a2a4f42fe24c64a347cccf'
+                   '7e5ee68954a551208186dab2eb3570ec741b4fdf20115c0e31de39cf5586db16'
+                   'b32feda9b7acdb123cdcc32e15747e38356df5011b8e8586d09831f4e5a7f876'
+                   '51544c6e60d7fac3ab9607659534f406dab1f3a5565c0b4251debff38561a87a'
+                   'e92723b7eb93a695681592f46f4492c97f1fc487358b42706fb344ca60353dfd'
+                   '9ac05cd9433dd6f0c0a93378b485233eae822e9e3a3d2e86a3236d6cda8ff988'
+                   '8cbe0db433b148018dc52361fc4094de3564966fdf026065195fe35da4ccf097'
+                   'd3d5be793f12236cc5a7a3ff6ef565a48a36a1ab07284c7e9ee8415744a5ab81'
+                   'cb36b3dd655e960e549d197467212e993dad73dd0a0fa3b22dbc98b770cdfca4'
+                   'fa42148740bec7d91e677a4fe4a2cf2071c704891883e99acfcdd92d676db256'
+                   '1da19c77cdc94c0317a5220d964c44fc4872aec06535aa3778cd6ca63c7c567d'
+                   '2d9a552db2f76ed6636bb44dff6b63c0764239aed7dec6054bf0ecbcf9fd1677'
+                   'f309e455b60f76566d56a94ead819322b90261bb98b4982b214a621bac785904'
+                   '432a14c89850ccd7c7b849a5c04cafd1a9717e02c891fae67479cadbbfd079f2'
+                   '81b527955bb6ac898fba6ef914966818a68ee59fdb4d8a5335db4453477d0b9a'
+                   '0b900a07c64acd18b919d14732be702c23b19c0692dd3a6c31b5d2948c0fe3a2')
 
 case $CARCH in
     ${arch[0]})
