@@ -5,11 +5,12 @@ pkgrel=1
 pkgdesc="NeoArch Package Manager for Arch Linux"
 arch=('any')
 url="https://github.com/Sanjaya-Danushka/Aurora"
-license=('custom')
+license=('MIT')
 depends=('python-pyqt6' 'python-requests' 'qt6-svg' 'git' 'flatpak' 'nodejs' 'npm')
 makedepends=('git')
 provides=('neoarch')
 conflicts=('neoarch')
+install=('neoarch-git.install')
 source=('git+https://github.com/Sanjaya-Danushka/Aurora.git')
 md5sums=('SKIP')
 
@@ -32,10 +33,6 @@ package() {
   sed -i 's|/home/test/New Folder/Aurora|/opt/neoarch/Aurora|g' "$pkgdir/usr/share/applications/neoarch.desktop"
   # Install icon
   install -Dm644 "$pkgdir/opt/neoarch/Aurora/assets/icons/discover/logo1.png" "$pkgdir/usr/share/pixmaps/neoarch.png"
-}
-
-post_install() {
-  if command -v flatpak >/dev/null 2>&1; then
-    flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo || true
-  fi
+  # Install license
+  install -Dm644 "$pkgdir/opt/neoarch/Aurora/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
