@@ -1,6 +1,6 @@
 pkgbase = tensamin-git
 	pkgdesc = True E2EE, decentralized messages. Open source and privacy first.
-	pkgver = r442.290f5cb
+	pkgver = r446.4819e9d
 	pkgrel = 1
 	url = https://github.com/Tensamin/Frontend
 	arch = x86_64
