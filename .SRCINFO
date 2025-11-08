@@ -1,6 +1,6 @@
 pkgbase = nchat
 	pkgdesc = console-based chat client with support for Telegram
-	pkgver = 5.10.15
+	pkgver = 5.11.32
 	pkgrel = 1
 	url = https://github.com/d99kris/nchat
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = nchat
 	depends = openssl
 	depends = sqlite
 	depends = zlib
-	source = nchat-5.10.15.tar.gz::https://github.com/d99kris/nchat/archive/refs/tags/v5.10.15.tar.gz
-	sha256sums = 62ac4c75750f4f8fbbac8691dbc5114efba548a586dbe5d85d13182c9732b465
+	source = nchat-5.11.32.tar.gz::https://github.com/d99kris/nchat/archive/refs/tags/v5.11.32.tar.gz
+	sha256sums = 8f93593c691fd468e61fd2828f2950287187829bf4c3b63c6ecbd52da6373146
 
 pkgname = nchat
