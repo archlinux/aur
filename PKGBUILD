@@ -8,8 +8,8 @@ pkgdesc='A cross platform App for streaming Music'
 arch=('x86_64')
 url='https://github.com/anandnet/Harmony-Music'
 license=('GPL-3.0-or-later')
-depends=('mpv')
-makedepends=('rsync' 'xdg-user-dirs')
+depends=('mpv' 'xdg-user-dirs')
+makedepends=('rsync')
 conflicts=('harmony-music-git')
 options=(!strip !debug)
 
