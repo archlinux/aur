@@ -2,7 +2,7 @@
 
 _name=yt_dlp_ejs
 pkgname=yt-dlp-ejs
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='External JavaScript for yt-dlp supporting many runtimes'
 arch=(any)
@@ -14,7 +14,7 @@ optdepends=(
 	'yt-dlp: Main package'
 )
 source=("$_name-$pkgver.tar.gz::$url/releases/download/$pkgver/$_name-$pkgver.tar.gz")
-sha256sums=('9551abd8e3d7611c148b9dcf4a0a4fb55fcd19daca86d3801b18df10acb4bebd')
+sha256sums=('7f2119eb02864800f651fa33825ddfe13d152a1f730fa103d9864f091df24227')
 
 prepare() {
 	cd $_name-$pkgver
@@ -23,7 +23,6 @@ prepare() {
 
 check() {
 	cd $_name-$pkgver
-	mkdir src/yt/solver/test/players # Missing from release 0.3.0 tarball
 
 	deno run --allow-read --allow-write --allow-net src/yt/solver/test/download.ts
 	deno test --allow-read
