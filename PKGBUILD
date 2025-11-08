@@ -1,6 +1,6 @@
 pkgname='fs'
-pkgver=0.9.9.1
-pkgrel=0
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="a Simple CLI tool to show file and directory sizes"
 arch=('any')
 url="https://github.com/Wael0dfg/fs"
