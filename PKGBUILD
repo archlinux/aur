@@ -1,7 +1,7 @@
 # Maintainer: Tyler Thompson <dhopcs@proton.me>
 
 pkgname=hexhog
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="hex viewer/editor"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=()
 makedepends=('rust' 'cargo')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DVDTSB/hexhog/archive/v$pkgver.tar.gz")
-sha256sums=('9c417bd665c613760c875caecf32ccf37543af7c165c2dc055bf73c6fa8bf6f0')
+sha256sums=('5858dcb32b3f12647784c9a6ba2e107e157b9a82884bcfed3e994a70c7584b29')
 
 build() {
     cd "$pkgname-$pkgver"

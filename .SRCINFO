@@ -1,6 +1,6 @@
 pkgbase = hexhog
 	pkgdesc = hex viewer/editor
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/DVDTSB/hexhog
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = hexhog
 	makedepends = rust
 	makedepends = cargo
 	options = !debug
-	source = hexhog-0.1.2.tar.gz::https://github.com/DVDTSB/hexhog/archive/v0.1.2.tar.gz
-	sha256sums = SKIP
+	source = hexhog-0.1.3.tar.gz::https://github.com/DVDTSB/hexhog/archive/v0.1.3.tar.gz
+	sha256sums = 5858dcb32b3f12647784c9a6ba2e107e157b9a82884bcfed3e994a70c7584b29
 
 pkgname = hexhog
