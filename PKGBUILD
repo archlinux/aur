@@ -2,8 +2,8 @@
 
 pkgname=technitium-dns-server-git
 _pkgname=technitium-dns-server
-pkgver=r3436.g767f764f
-pkgrel=4
+pkgver=r3615.g4c3eb66d
+pkgrel=1
 pkgdesc="Open source authoritative and recursive DNS server focused on privacy and security"
 arch=('x86_64')
 url="https://technitium.com/dns/"
@@ -47,6 +47,7 @@ build() {
     
     # dotnet dev-certs https --trust
     
+    dotnet build TechnitiumLibrary.Security.OTP/TechnitiumLibrary.Security.OTP.csproj -c Release
     dotnet build TechnitiumLibrary.ByteTree/TechnitiumLibrary.ByteTree.csproj -c Release
     dotnet build TechnitiumLibrary.Net/TechnitiumLibrary.Net.csproj -c Release
     
