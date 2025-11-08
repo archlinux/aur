@@ -6,7 +6,7 @@ pkgbase = fs
 	arch = any
 	license = custom
 	depends = python
-	source = https://raw.githubusercontent.com/Wael0dfg/fs/main/fs.py
+	source = fs::git+https://github.com/Wael0dfg/fs.git
 	sha256sums = SKIP
 
 pkgname = fs
