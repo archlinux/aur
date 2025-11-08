@@ -3,10 +3,10 @@
 # Contributor: David Rosenstrauch <darose@darose.net>
 pkgname=atari-adventure
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The original Adventure game for the old Atari 2600 game console"
 arch=('any')
-url="http://www.atariage.com/software_page.html?SoftwareID=802"
+url="https://www.atariage.com/software_page.php?SoftwareLabelID=964"
 license=('unknown')
 depends=(stella)
 source=('http://www.atariage.com/2600/roms/Adventure.zip' 'http://www.warrenrobinett.com/adventure/adv-map1.gif')

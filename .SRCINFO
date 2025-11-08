@@ -1,8 +1,8 @@
 pkgbase = atari-adventure
 	pkgdesc = The original Adventure game for the old Atari 2600 game console
 	pkgver = 1.0
-	pkgrel = 3
-	url = http://www.atariage.com/software_page.html?SoftwareID=802
+	pkgrel = 4
+	url = https://www.atariage.com/software_page.php?SoftwareLabelID=964
 	arch = any
 	license = unknown
 	depends = stella
@@ -12,4 +12,3 @@ pkgbase = atari-adventure
 	md5sums = 824dc77ccf37b3ff62c72bfa41a55a9a
 
 pkgname = atari-adventure
-
