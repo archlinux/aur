@@ -1,0 +1,3 @@
+[python-emport]
+source = "pypi"
+pypi = "emport"
