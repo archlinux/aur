@@ -1,0 +1,4 @@
+[termframe]
+source = "git"
+git = "https://github.com/pamburus/termframe.git"
+prefix = "v"
