@@ -3,9 +3,9 @@
 pkgname=directxmath
 pkgdesc="All inline SIMD C++ linear algebra library for use in games and graphics apps"
 # Version from CMakeLists.txt.
-pkgver=3.1.8
-_tag=dec2023
-pkgrel=2
+pkgver=3.20
+_tag=apr2025
+pkgrel=1
 arch=('x86_64')
 depends=('sal')
 makedepends=('cmake')
@@ -13,7 +13,7 @@ url="https://go.microsoft.com/fwlink/?LinkID=615560"
 license=('MIT')
 options=('staticlibs' '!strip')
 source=(directxmath-${_tag}.tar.gz::https://github.com/microsoft/DirectXMath/archive/refs/tags/${_tag}.tar.gz)
-sha256sums=('cdc09f55a9999497d8c350d1c8c0e3f0fe92055cbf5490a2c319f9625080dc13')
+sha256sums=('8ac7f060d7fcc971d77c5a9f3ff98548ecf119c144a7c2dd9d21f4b66ba94cd4')
 
 build() {
   cmake -S DirectXMath-$_tag -B build \
