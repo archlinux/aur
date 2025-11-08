@@ -2,7 +2,7 @@
 
 pkgname=bootc
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Boot and upgrade via container images'
 url='https://github.com/bootc-dev/bootc'
 license=('Apache-2.0 OR MIT')
@@ -33,12 +33,6 @@ check() {
 }
 
 package() {
-    pwd
-    ls -alR $pkgname-$pkgver/target/release
-    #install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-    # for custom license, e.g. MIT
-    # install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
     install -o root -g root -m 755 -d $pkgdir/usr/bin
     install -o root -g root -m 755 -t $pkgdir/usr/bin $pkgname-$pkgver/target/release/bootc
     install -o root -g root -m 755 -t $pkgdir/usr/bin $pkgname-$pkgver/target/release/bootc-initramfs-setup
