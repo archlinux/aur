@@ -1,0 +1,15 @@
+# Build artifacts
+*.tar.gz
+*.tar.xz
+pkg/
+src/
+
+# makepkg generated files
+*.pkg.tar.*
+*.log
+
+# Downloaded sources
+plezy-linux.tar.gz
+data/
+lib/
+plezy
