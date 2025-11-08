@@ -1,0 +1,9 @@
+src
+pkg
+*.pkg.tar.*
+xapp-symbolic-icons/
+xapp-symbolic-icons-git/
+
+!PKGBUILD
+!.SRCINFO
+!*.install
