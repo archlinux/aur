@@ -13,7 +13,7 @@ sha256sums=('3ff8e8f56c33c5635ec3876e8fa3543b7e3779833b341f947160339b64b0540e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  go build -o rapid
+  go build -ldflags="-s -w" -o rapid
 }
 
 package() {
