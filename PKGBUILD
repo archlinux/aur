@@ -1,7 +1,7 @@
-pkgver=1.7.2
-pkgrel=172
+pkgver=1.8.2
+pkgrel=1
 sha256sums=(
-	b7abe6111a96dc2b69d0fb8b050eef17ed4ae64297431ca67d26f39081364e99
+	b9ac4c30b48b1c82af8c4ef76166aa7e9befc0cde53f0c2f03209ec7b82cbcb7
     c621dce4fd45c2e911848fb03f7e4da7d0e31e03a08d7186b54e58e2a92593be
 )
 _pkgname=pixiv-multiplatform
@@ -11,7 +11,7 @@ url="https://pmf.kagg886.top"
 license=(GPL3)
 arch=(x86_64)
 source=(
-    "https://github.com/kagg886/Pixiv-MultiPlatform/releases/download/v$pkgver/linux.tar.gz"
+    "https://github.com/magic-cucumber/Pixiv-MultiPlatform/releases/download/v$pkgver/linux.tar.gz"
     Pixiv-MultiPlatform.desktop
 )
 
