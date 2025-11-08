@@ -1,7 +1,7 @@
 pkgbase = zl-equalizer-bin
 	pkgdesc = Advanced parametric equalizer audio plugin by ZL-Audio, including dynamic EQ
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ZL-Audio/ZLEqualizer
 	arch = x86_64
 	arch = aarch64
@@ -14,8 +14,8 @@ pkgbase = zl-equalizer-bin
 	source = license-0.6.2.md::https://raw.githubusercontent.com/ZL-Audio/ZLEqualizer/refs/tags/0.6.2/LICENSE.md
 	sha256sums = a96fd9920a72e79720d41bcf32ccd58634194aa01ee82f246a72392015d626e9
 	source_x86_64 = ZLEqualizer-0.6.2-Linux.zip::https://github.com/ZL-Audio/ZLEqualizer/releases/download/0.6.2/ZL.Equalizer-0.6.2-Linux-x86.zip
-	sha256sums_x86_64 = 44f25785766141ecedf35f4771c76569a24dfedf347821113d2ba868deb1a9fe
+	sha256sums_x86_64 = 54cdc2408ffa020d0b56f12a3ab3d8658c848617b4a60901131499557977b4e6
 	source_aarch64 = ZLEqualizer-0.6.2-Linux-ARM64.zip::https://github.com/ZL-Audio/ZLEqualizer/releases/download/0.6.2/ZL.Equalizer-0.6.2-Linux-arm.zip
-	sha256sums_aarch64 = c7119954de424d26a8acb6a4dd902d6cffa4bd12a0d62492bfc62e3b643124c6
+	sha256sums_aarch64 = feef10f79ffb36c3037d45e76126be49b196c020936d347955979e3373829776
 
 pkgname = zl-equalizer-bin
