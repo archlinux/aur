@@ -1,14 +1,15 @@
 pkgbase = popt-git
 	pkgdesc = C library for parsing command line parameters
-	pkgver = 1.19.r16.g61d84fd
+	pkgver = 1.19.r34.g63f0967
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/popt
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = cmake
 	depends = glibc
-	provides = popt=1.19.r16.g61d84fd
+	provides = popt=1.19.r34.g63f0967
 	conflicts = popt
 	options = staticlibs
 	source = git+https://github.com/rpm-software-management/popt.git
