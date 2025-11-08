@@ -1,5 +1,5 @@
 pkgname='fs'
-pkgver=0.9.2
+pkgver=0.9.5
 pkgrel=0
 pkgdesc="a Simple CLI tool to show file and directory sizes"
 arch=('any')
@@ -13,6 +13,6 @@ sha256sums=('SKIP')
 source=("$pkgname::git+https://github.com/Wael0dfg/fs.git")
 
 package() {
-	cd "~/.cache/yay/$pkgname"
+	cd "~/.cache/yay/$pkgname/src/$pkgname"
 	install -Dm755 ./fs.py "$pkgdir/usr/bin/fs"
 }
