@@ -9,7 +9,7 @@ pkgname=(
 pkgbase=vencord-bin
 _dirname=builds
 pkgver=1.13.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The cutest Discord client mod"
 arch=(any)
 url=https://vencord.dev
@@ -32,6 +32,7 @@ package_vencord-bin() {
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/vencord/LICENSE
     install -d "$pkgdir"/usr/lib/vencord
     cp -r -- vencord* preload* patcher* renderer* "$pkgdir"/usr/lib/vencord
+    echo '{}' >>"$pkgdir"/usr/lib/$pkgbase/package.json
 }
 
 package_chromium-vencord-bin() {
