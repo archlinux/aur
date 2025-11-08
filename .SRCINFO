@@ -1,0 +1,22 @@
+pkgbase = express
+	pkgdesc = Official Express App for Linux
+	pkgver = 3.51.18
+	pkgrel = 1
+	url = https://express.ms/download/deb
+	arch = x86_64
+	license = unknown
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	optdepends = libappindicator-gtk3
+	options = !strip
+	source = https://updates.express.ms/desktop/eXpress_3.51.18_amd64.deb
+	sha256sums = 731e37a0ebe9c4171b7d65ddd9ac7327092106743107fee172050195692253c3
+
+pkgname = express
