@@ -5,7 +5,7 @@
 _bootloadersver=25.9.8
 
 pkgname=penguins-eggs
-pkgver=25.11.7
+pkgver=25.11.8
 pkgrel=1
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
@@ -126,5 +126,5 @@ package() {
 }
 
 # updpkgsums
-sha256sums=('d1fa7941ffaaccb7cdf68df7dfe181282bb30beb82bd85ebbcc436fd5154c0cb'
+sha256sums=('0dd6fc9e18e99f924dc03f2f0386596648b29e7915eb153e1528263e02999ac1'
             'c5dcfd82a8e65160af5c93365f07776a00d44e8b531d6641f4cadbbe7b4b5baf')
