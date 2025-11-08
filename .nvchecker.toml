@@ -1,0 +1,5 @@
+[heapusage]
+source = "github"
+github = "d99kris/heapusage"
+use_latest_release = true
+prefix = "v"
