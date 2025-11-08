@@ -1,10 +1,10 @@
 pkgbase = miasm-git
 	pkgdesc = Machine code manipulation library
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://miasm.re/
 	arch = any
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = python-setuptools
 	source = git+https://github.com/cea-sec/miasm.git
