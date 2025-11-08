@@ -1,0 +1,3 @@
+[python-checkpy]
+source = "pypi"
+pypi = "checkpy"
