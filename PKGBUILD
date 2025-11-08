@@ -1,12 +1,13 @@
 # Maintainer: Marco Julian Solanki <aur@solanki.mozmail.com>
 
 pkgname='adaptivecpp'
-pkgver=25.02.0
-pkgrel=4
+pkgver=25.10.0
+pkgrel=1
 pkgdesc='A modern, community-driven platform for C++-based heterogeneous programming models targeting CPUs and GPUs from all major vendors.'
 arch=('x86_64')
 url='https://github.com/AdaptiveCpp/AdaptiveCpp'
 license=('BSD-2-Clause')
+provides=('opencl-headers')
 conflicts=('adaptivecpp-git')
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 sha512sums=('SKIP')
@@ -31,6 +32,7 @@ makedepends=(
     'doxygen'
     'git'
     'level-zero-headers'
+    "lld${_llvm_version_major}"
     "llvm${_llvm_version_major}"
     'openmp'
     'rocm-llvm'
@@ -47,6 +49,7 @@ build() {
         -DLLVM_ROOT="/usr/lib/llvm${_llvm_version_major}" \
         -DCUDAToolkit_ROOT=/opt/cuda \
         -DROCM_PATH=/opt/rocm \
+        -DACPP_LLD_PATH="/usr/lib/llvm${_llvm_version_major}/bin/lld" \
         -DACPP_COMPILER_FEATURE_PROFILE=full \
         -DWITH_CUDA_BACKEND=ON \
         -DWITH_ROCM_BACKEND=ON \
