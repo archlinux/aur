@@ -2,7 +2,7 @@
 # Maintainer: Avenge Media LLC <avengemediallc at gmail dot com>
 pkgname=dms-shell-bin
 pkgver=0.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=('x86_64' 'aarch64')
 url='https://github.com/AvengeMedia/DankMaterialShell'
@@ -15,6 +15,7 @@ depends=(
 optdepends=(
     'matugen-bin: Dynamic wallpaper-based theming'
     'dsearch-bin: Filesystem search'
+    'i2c-tools: External monitor brightness control'
     'wl-clipboard: Copy functionality for PIDs and other elements'
     'cliphist: Clipboard history functionality'
     'cava: Audio visualizer'
