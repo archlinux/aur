@@ -1,8 +1,8 @@
 pkgbase = atari-space-invaders
 	pkgdesc = The original Space Invaders game for the old Atari 2600 game console
 	pkgver = 1.0
-	pkgrel = 2
-	url = http://www.atariage.com/software_page.html?SoftwareLabelID=459
+	pkgrel = 3
+	url = http://www.atariage.com/software_page.php?SoftwareLabelID=459
 	arch = any
 	license = unknown
 	depends = stella
@@ -10,4 +10,3 @@ pkgbase = atari-space-invaders
 	md5sums = 05200719312f1d2eee36a33e9d5cbe97
 
 pkgname = atari-space-invaders
-
