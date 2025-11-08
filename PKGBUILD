@@ -5,7 +5,7 @@
 pkgname=dnote-cli-bin
 _pkgname="${pkgname%-bin}"
 _shortname="${_pkgname%-cli}"
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="A simple command line notebook for programmers"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ conflicts=("${_pkgname}")
 depends=('glibc')
 source_x86_64=("https://github.com/${_shortname}/${_shortname}/releases/download/cli-v${pkgver}/${_shortname}_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/${_shortname}/${_shortname}/releases/download/cli-v${pkgver}/${_shortname}_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('a81ce7c5d8aface2272ceded700ba8524bc5c2e7457d751b5aa5a831611075d6')
-sha256sums_aarch64=('8f56d2a9c93e9dcd2f4b9f8a3f747f9689983abb4ba7ba331d364f8fca1d6680')
+sha256sums_x86_64=('e128cda61b966524607aca27b72696c7c4bbac45ecb54a309bea098fff7a9bda')
+sha256sums_aarch64=('4ae7b46de86a17c8b5611b2062004e34b6b6cfde7aa0779858b852c60a7d71bd')
 
 package() {
 	install -Dm 755 "${_shortname}" "${pkgdir}/usr/bin/${_shortname}"
