@@ -20,6 +20,6 @@ pkgbase = millennium
 	options = !debug
 	source = git+https://github.com/SteamClientHomebrew/Millennium.git#commit=0cf351871e1c4715e6b4ded3d5df614455fe4af7
 	sha256sums = SKIP
-	depends_x86_64 = python-i686-bin
+	depends_x86_64 = lib32-python311-bin
 
 pkgname = millennium
