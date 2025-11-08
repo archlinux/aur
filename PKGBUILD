@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="tree-sitter-matlab"
-pkgver=1.2.5
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="MATLAB tree-sitter parser"
 arch=(
@@ -20,7 +20,7 @@ provides=(
 )
 _pkgsrc="${url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('7b7f82f7d4bd00ffa780c4ed99ebe954dd861ddcf3d9ff7241a2dd46f431254b92d4153d71eeaa4dee371fabf88c120549ec24ce4a6807b209c746ad09a9d113')
+b2sums=('f30abee4cf79034e3b9beab8b1e142ad386f23c84d8404769aabb7117cd449b0787d7560e05708488a15b156e972997c1a0a10c0146913395f8bdc5559c5723e')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
