@@ -9,7 +9,7 @@ pkgname=(
 pkgbase=vencord
 _pkgname=Vencord
 pkgver=1.13.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The cutest Discord client mod"
 arch=(any)
 url=https://vencord.dev
@@ -47,6 +47,7 @@ package_vencord() {
     cd dist/
     install -d "$pkgdir"/usr/lib/$pkgbase
     cp -r -- vencord* preload* patcher* renderer* "$pkgdir"/usr/lib/$pkgbase
+    echo '{}' >>"$pkgdir"/usr/lib/$pkgbase/package.json
 }
 
 package_chromium-vencord() {
