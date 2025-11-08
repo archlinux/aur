@@ -13,7 +13,7 @@ source=("https://github.com/JoeBlakeB/ttf-twemoji-aur/releases/download/${pkgver
         "75-twemoji.conf"
         "https://raw.githubusercontent.com/jdecked/twemoji/v${pkgver}/LICENSE-GRAPHICS"
         "LICENSE-BUILD::https://github.com/JoeBlakeB/ttf-twemoji-aur/blob/${pkgver}/LICENSE")
-sha256sums=('26f86e9ef5a37f6a115063f923a56071d7f0af16f193dfb13316f0b68f2b0493'
+sha256sums=('795b1c0fb2b89e9341826aa36fdee6510edcdee2ad6226e0d386130ab0ea2910'
             'a77a7775557efc1c17781c0fc35a0f7ec5ccd58f233573f8875032fb8575680e'
             'SKIP'
             'SKIP')
