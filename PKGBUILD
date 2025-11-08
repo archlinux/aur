@@ -1,7 +1,7 @@
 # Maintainer: Joe Baker < Joe at JoeBlakeB dot com >
 
 pkgname=ttf-twemoji
-pkgver=16.0.1
+pkgver=17.0.2
 pkgrel=1
 pkgdesc="Truetype builds of Twemoji; Twitter Color Emoji for everyone."
 url="https://github.com/jdecked/twemoji"
