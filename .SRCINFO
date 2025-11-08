@@ -1,0 +1,12 @@
+pkgbase = arch-quiz
+	pkgdesc = Arch Linux trivia quiz game
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dexield/arch-quiz
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source = arch-quiz-0.1.0-x86_64.tar.gz::http://dexieldvpn.ddns.net/arch-quiz-0.1.0-x86_64.tar.gz
+	sha256sums = da155cb2246b74bf36058de51a0938a584571368d990005256b0040b38688d51
+
+pkgname = arch-quiz
