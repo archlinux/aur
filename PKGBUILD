@@ -1,7 +1,7 @@
-# Maintainer: notscripter <grx8x0mfy@mozmail.com>
+# Maintainer: Mrinmoy <grx8x0mfy@mozmail.com>
 pkgname=spotube-nightly-bin
-pkgver=5.0.0
-pkgrel=4
+pkgver=5.0.0+42
+pkgrel=1
 epoch=
 pkgdesc="🎧 Open source music client! Available for both desktop & mobile!"
 arch=(x86_64 aarch64)
@@ -19,11 +19,11 @@ backup=()
 options=(!debug)
 install=
 changelog=
-source_x86_64=(spotube-linux-nightly-$pkgver-$pkgrel.tar.xz::https://github.com/KRTirtho/spotube/releases/download/nightly/spotube-linux-nightly-x86_64.tar.xz)
-source_aarch64=(spotube-linux-nightly-$pkgver-$pkgrel.tar.xz::https://github.com/KRTirtho/spotube/releases/download/nightly/spotube-linux-nightly-aarch64.tar.xz)
+source_x86_64=($pkgname-$pkgver-$pkgrel.tar.xz::https://github.com/KRTirtho/spotube/releases/download/nightly/spotube-linux-nightly-x86_64.tar.xz)
+source_aarch64=($pkgname-$pkgver-$pkgrel.tar.xz::https://github.com/KRTirtho/spotube/releases/download/nightly/spotube-linux-nightly-aarch64.tar.xz)
 noextract=()
-sha256sums_x86_64=(4c2e5c8f4b7a697f91d96635a2ed1a2217a38db08dfbae4689a4da501c28d746)
-sha256sums_aarch64=(1c8cc238ffcded54c38b3c1a07554e3988e0fff17ce3384a11f39b0a5facad2d)
+sha256sums_x86_64=(7ab2f68841058c45b33f82834ddf767f7ec1c4c3bf16363c56baf9acba2a37ec)
+sha256sums_aarch64=(0f915d97c039bc38c9bd04a4015cc6d6bf3dcdf5778798356c3490900ed0b3b4)
 validpgpkeys=()
 
 package() {
@@ -35,8 +35,7 @@ package() {
 
     mv ./spotube.desktop "${pkgdir}/usr/share/applications"
     mv ./spotube-logo.png "${pkgdir}/usr/share/icons/spotube/"
-    mv ./com.github.KRTirtho.Spotube.appdata.xml "${pkgdir}/usr/share/appdata/spotube.appdata.xml"
     cp -ra ./data ./lib ./spotube "${pkgdir}/usr/share/${pkgname}"
-    sed -i 's|com.github.KRTirtho.Spotube|spotube|' "${pkgdir}/usr/share/appdata/spotube.appdata.xml"
+     
     ln -s "/usr/share/${pkgname}/spotube" "${pkgdir}/usr/bin/spotube"
 }
