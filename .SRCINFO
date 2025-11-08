@@ -1,0 +1,12 @@
+pkgbase = grub-theme-lain
+	pkgdesc = Lain Grub Theme
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/uiriansan/LainGrubTheme
+	arch = any
+	license = GPL-3.0
+	depends = grub-common
+	source = LainGrubTheme-1.0.1.tar.gz::https://github.com/uiriansan/LainGrubTheme/archive/refs/tags/1.0.1.tar.gz
+	sha256sums = fac303b92cb3b3342ccafd3df72aaa91944819858fd3ac3455f10efdfceab241
+
+pkgname = grub-theme-lain
