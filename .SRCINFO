@@ -1,8 +1,8 @@
 pkgbase = atari-breakout
 	pkgdesc = The original Breakout game for the old Atari 2600 game console
 	pkgver = 1.0
-	pkgrel = 2
-	url = http://www.atariage.com/software_page.html?SoftwareLabelID=52
+	pkgrel = 3
+	url = http://www.atariage.com/software_page.php?SoftwareLabelID=52
 	arch = any
 	license = unknown
 	depends = stella
@@ -10,4 +10,3 @@ pkgbase = atari-breakout
 	md5sums = 9c90533b643db8b62aebba7958a25944
 
 pkgname = atari-breakout
-
