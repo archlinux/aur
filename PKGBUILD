@@ -1,16 +1,16 @@
 # Maintainer: Christian R. <chris-r@cronodevelopment.com>
 pkgname=quill-editor
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A simple CLI Text Editor"
 arch=('x86_64')
 license=('MIT')
 depends=('gcc-libs')
-source=('editor.cpp')
+source=('editor.c')
 sha256sums=('SKIP')
 
 build() {
-    g++ "$srcdir/editor.cpp" -o "$srcdir/quill" -lncurses
+    gcc -o "$srcdir/quill" "$srcdir/config.c" "$srcdir/editor.c" -lncurses
 }
 
 package() {
