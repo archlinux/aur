@@ -1,6 +1,6 @@
 pkgbase = raspotify-bin
 	pkgdesc = A Spotify Connect client that mostly Just Works (librespot)
-	pkgver = 0.47.0
+	pkgver = 0.47.1
 	pkgrel = 1
 	url = https://dtcooper.github.io/raspotify
 	arch = x86_64
@@ -16,11 +16,11 @@ pkgbase = raspotify-bin
 	provides = raspotify
 	conflicts = raspotify
 	backup = etc/raspotify/conf
-	source_x86_64 = https://github.com/dtcooper/raspotify/releases/download/0.47.0/raspotify_0.47.0.librespot.v0.7.1-987dfa5_amd64.deb
-	sha256sums_x86_64 = 6a7039761646dbce3db65c9c443fce2023cef6fde700a2173595da3ef644df2d
-	source_aarch64 = https://github.com/dtcooper/raspotify/releases/download/0.47.0/raspotify_0.47.0.librespot.v0.7.1-987dfa5_arm64.deb
-	sha256sums_aarch64 = a816deee47d856124015ab394d5e228af21c7eec8fd137d99b3f73dc843ab7c4
-	source_armv7h = https://github.com/dtcooper/raspotify/releases/download/0.47.0/raspotify_0.47.0.librespot.v0.7.1-987dfa5_armhf.deb
-	sha256sums_armv7h = b6afeb536f1b8894a417a49ebafe13a3f3d8241d5a2ad7ebf2c6563469165de1
+	source_x86_64 = https://github.com/dtcooper/raspotify/releases/download/0.47.1/raspotify_0.47.1.librespot.v0.7.1-7b3cd63_amd64.deb
+	sha256sums_x86_64 = 9700b13a6939be4b04f1043a6db62c2965a3b1f984cea68189480bc97918289c
+	source_aarch64 = https://github.com/dtcooper/raspotify/releases/download/0.47.1/raspotify_0.47.1.librespot.v0.7.1-7b3cd63_arm64.deb
+	sha256sums_aarch64 = 378e4fe12bb2187e0ea857989b7e6aa7b0a6bffad1a6b2230bd886dbdf690500
+	source_armv7h = https://github.com/dtcooper/raspotify/releases/download/0.47.1/raspotify_0.47.1.librespot.v0.7.1-7b3cd63_armhf.deb
+	sha256sums_armv7h = b429c2fa44452d1aa7674034beaa6a7807264bae780a6b4114b31555e00f6e85
 
 pkgname = raspotify-bin
