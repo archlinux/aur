@@ -1,10 +1,10 @@
 pkgbase = fire-vst3-bin
 	pkgdesc = Fire is a multiband distortion / downsampler plugin developed by Wings
-	pkgver = 0.9.9
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/jerryuhoo/Fire
 	arch = x86_64
-	license = AGPL
+	license = AGPL3
 	depends = brotli
 	depends = bzip2
 	depends = freetype2
@@ -16,7 +16,7 @@ pkgbase = fire-vst3-bin
 	depends = libpng
 	depends = pcre
 	depends = zlib
-	source = fire-vst3-bin-0.9.9.zip::https://github.com/jerryuhoo/Fire/releases/download//v0.9.9/Fire-Linux.zip
-	sha256sums = 3247a7d15a370d7f2b3c13cfb4e9a26573ae075f60f6ccf024f24f604c9fa16b
+	source = fire-vst3-bin-1.5.0.zip::https://github.com/jerryuhoo/Fire/releases/download//v1.5.0/Fire-1.5.0-Linux.zip
+	sha256sums = 774b75bc213ebb1728aebee2f51d7ee371f3cfd0eb103b4fc7faff8efc43ab8a
 
 pkgname = fire-vst3-bin
