@@ -13,5 +13,6 @@ sha256sums=('SKIP')
 source=("$pkgname::git+https://github.com/Wael0dfg/fs.git")
 
 package() {
-	install -Dm755 "$srcdir/fs.py" "$pkgdir/usr/bin/fs"
+	cd "$srcdir/$pkgname"
+	install -Dm755 ./fs.py "$pkgdir/usr/bin/fs"
 }
