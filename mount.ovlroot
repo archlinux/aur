@@ -1,0 +1,158 @@
+#!/bin/sh
+
+# Copyright 2025 Tim Hildering
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+trap rollback EXIT INT TERM
+
+shell_quote() {
+	arg="$1"
+
+	printf "%s" "'$(printf "%s" "$arg" | sed "s/'/'\"'\"'/g")'"
+}
+
+push_undo_cmd() {
+	cmd="$1"; shift
+
+	line="$cmd"
+	for arg in "$@"; do
+		quoted=$(shell_quote "$arg")
+		line="$line $quoted"
+	done
+
+	if [ "x$journal" = "x" ]; then
+		journal="$line
+"
+	else
+		journal="$line
+$journal"
+	fi
+
+	return 0
+}
+
+rollback() {
+	rc=$?
+
+	trap '' EXIT INT TERM
+
+	if [ "x$journal" != "x"  ]; then
+		while IFS= read -r cmdline; do
+			if ! sh -c "$cmdline" && [ "x$OVLROOT_ABORT_RO_ON_ERROR" = "xy" ]; then
+				exit "$rc"
+			fi
+		done <<EOD
+$journal
+EOD
+	fi
+
+	[ -n "$OVLROOT_NEW_FSTAB" ] && [ -f "$OVLROOT_NEW_FSTAB" ] && \
+	rm -f "$OVLROOT_NEW_FSTAB"
+
+	exit "$rc"
+}
+
+OVLROOT_CFGDIR="/etc/ovlroot.d"
+OVLROOT_BASE_DIR="/.ovlroot"
+OVLROOT_LOWER_DIR="lowerdir"
+OVLROOT_UPPER_DIR="upperdir"
+OVLROOT_WORK_DIR="workdir"
+OVLROOT_ABORT_RO_ON_ERROR="n"
+OVLROOT_OVL_OPTS_OTHER=""
+
+journal=""
+mnt_dev="$1"
+mnt_dir="$2"
+shift 2
+
+while getopts "svnfN:o:t:" opt; do
+	case "$opt" in
+		s | v | n | f) 
+			if [ "x$cmd_opts" != "x" ]; then
+				cmd_opts="$cmd_opts -$opt"
+			else
+				cmd_opts="-$opt"
+			fi
+			;;
+		N)
+			if [ "x$cmd_opts" != "x" ]; then 
+				cmd_opts="$cmd_opts -N $OPTARG"
+			else
+				cmd_opts="-N $OPTARG"
+			fi
+			;;
+		o) cmd_mntopts="$OPTARG" ;;
+		t) : ;;
+	esac
+done
+
+for cmd in $(cat "/proc/cmdline"); do
+	case "$cmd" in
+		ovlroot=*)
+			conf="${cmd#"ovlroot="}" ;;
+	esac
+done
+
+if [ "x$conf" != "x" ] && [ "$conf" != "y" ] && \
+   [ -s "$OVLROOT_CFGDIR/${conf}.conf" ]; then
+	. "$OVLROOT_CFGDIR/${conf}.conf"
+fi
+
+oldIFS="$IFS"
+IFS=","
+
+for opt in $cmd_mntopts; do
+	case "$opt" in
+		ovlroot_realfs=*)
+			mnt_type="${opt#"ovlroot_realfs="}" ;;
+		*)
+			if [ "x$mnt_opts" != x ]; then
+				mnt_opts="$mnt_opts,$opt"
+			else
+				mnt_opts="$opt"
+			fi
+			;;
+	esac
+done
+
+IFS="$oldIFS"
+unset oldIFS
+
+if [ "x$OVLROOT_OVL_OPTS_OTHER" != "x" ]; then
+	ovlopts="$OVLROOT_OVL_OPTS_OTHER,"
+fi
+
+ovl_lower_dir="$OVLROOT_BASE_DIR/$OVLROOT_LOWER_DIR"
+ovl_upper_dir="$OVLROOT_BASE_DIR/$OVLROOT_UPPER_DIR"
+ovl_work_dir="$OVLROOT_BASE_DIR/$OVLROOT_WORK_DIR"
+
+mkdir -p "$ovl_upper_dir/$mnt_dir"
+push_undo_cmd "cd $(shell_quote "$ovl_upper_dir"); rmdir -p $(shell_quote "$mnt_dir")" 
+
+mkdir -p "$ovl_work_dir/$mnt_dir"
+push_undo_cmd "cd $(shell_quote "$ovl_work_dir"); rmdir -p $(shell_quote "$mnt_dir")" 
+
+mount $cmd_opts -t "$mnt_type" -o "$mnt_opts" \
+"$mnt_dev" "$ovl_lower_dir/$mnt_dir"
+push_undo_cmd umount "$ovlroot_lower_dir/$mnt_dir"
+
+mount $cmd_opts -t "overlay" -o "${ovlopts}lowerdir=$ovl_lower_dir,\
+upperdir=$ovl_upper_dir/$mnt_dir,workdir=$ovl_work_dir/$mnt_dir" \
+"ovlroot" "$mnt_dir"
+push_undo_cmd umount "$mnt_dir"
+
+trap - EXIT INT TERM
+
+exit 0
