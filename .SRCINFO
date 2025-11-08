@@ -1,19 +1,19 @@
 pkgbase = eclipse-rcptt-bin
 	pkgdesc = Eclipse RCP Testing Tool IDE
-	pkgver = 2.6.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	epoch = 1
 	url = https://eclipse.org/rcptt
 	arch = x86_64
 	license = EPL
 	depends = java-environment>=21
-	provides = eclipse-rcptt=2.6.0-1
+	provides = eclipse-rcptt=2.7.1-1
 	conflicts = eclipse-rcptt
 	options = !strip
-	source = rcptt.ide-2.6.0-linux.gtk.x86_64.zip::https://www.eclipse.org/downloads/download.php?file=/rcptt/release/2.6.0/ide/rcptt.ide-2.6.0-linux.gtk.x86_64.zip&r=1
-	source = eclipse-rcptt.png
-	source = eclipse-rcptt.desktop
-	sha512sums = b9bbaeb595553a70eff3ba231292cb55d78a1371fbba35da84f78fa18624d7b7a1266cd618c971f84f1742224380b22d0c776c7365676b624fe57ab557df6a9e
+	source = rcptt.ide-2.7.1-linux.gtk.x86_64.zip::https://cdimage.debian.org/mirror/eclipse.org/rcptt/release/2.7.1/ide/rcptt.ide-2.7.1-linux.gtk.x86_64.zip
+	source = eclipse-rcptt.png::https://raw.githubusercontent.com/eclipse-linuxtools/org.eclipse.linuxtools.eclipse-build/refs/heads/master/desktopintegration/eclipse-rcptt.png
+	source = eclipse-rcptt.desktop::https://raw.githubusercontent.com/eclipse-linuxtools/org.eclipse.linuxtools.eclipse-build/refs/heads/master/desktopintegration/eclipse-rcptt.desktop
+	sha512sums = 20793d80207062c71ebdb55e09dabcbc81ed41e4f34a117d3985e36d973a26565e2e3eba9a3572914907d5bd2f63912f5dedd62960b352f8b8ce68a9cbab3e43
 	sha512sums = df5b0fb3b465c19033bf73a9b3ca67ed0f107b1ebdedee0240952c8913a8225134717e59d74d5445b24f7fab08d20f97f7e11628d384fc4968e4869059501f74
 	sha512sums = 002a074ce1a41bc84bf688c21e3e8e94ba4662b167f459e5cc46397434565fab30520cc78e062407ac7eaba73d84604ff2d16aa27c3aa2d39cc9aea27d969d8c
 
