@@ -7,10 +7,10 @@ pkgdesc="A set of symbolic icons for GTK applications and projects, replacing th
 arch=('any')
 url="https://github.com/xapp-project/xapp-symbolic-icons"
 license=('LGPL-3.0-only' 'GPL-3.0-only')
-depends=('hicolor-icon-theme')
+depends=('hicolor-icon-theme' 'python')
 provides=('xapp-symbolic-icons')
 conflicts=('xapp-symbolic-icons-git')
-makedepends=('git' 'meson' 'ninja' 'gtk-update-icon-cache' 'python')
+makedepends=('git' 'meson' 'ninja' 'gtk-update-icon-cache')
 source=("git+https://github.com/xapp-project/xapp-symbolic-icons.git#commit=ab8fefc49ee34b5de583ae615bafa48670f0d231")
 sha256sums=('SKIP')
 
