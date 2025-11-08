@@ -1,7 +1,7 @@
 # Maintainer: yobson <contact@yobson.xyz>
 pkgname=deadlock-modmanager
 pkgdesc='A mod manager for the Valve game Deadlock'
-_pkgver=0.9.1
+_pkgver=0.10.0
 pkgver=${_pkgver//-/_}
 pkgrel=1
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('webkit2gtk-4.1' 'cairo' 'desktop-file-utils' 'xdg-utils' 'gdk-pixbuf2'
 source=("$pkgname::git+$url.git#tag=v$_pkgver"
 	'deadlock-modmanager.desktop'
 	'nvidia-webkit-wrapper.sh')
-sha256sums=('81b51c8d86133b4e0f098d610a971caeaf7a8fa7769c12f3965297c8d888fb97'
+sha256sums=('25a7f169d6779142c462db5b0238b39128ef4bac15fa2b100fc959f22d2bb237'
             '2fdd1840a620ea0a22fec3c3dab5acea4e64f03a3518fe48e96b122dac5d6e01'
             'db8eb404d073aca83fb6a587989c67e062f3c29d03e966fbdc567fdc133440e9')
 provides=("$pkgname")
