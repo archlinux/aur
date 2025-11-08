@@ -1,6 +1,6 @@
 # Maintainer: LSM <sagargaud88@gmail.com>
 pkgname=stacher7
-pkgver=7.1.3
+pkgver=7.1.4
 pkgrel=1
 pkgdesc="Stacher - modern video downloader (proprietary Electron app)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('stacher7')
 options=('!strip')
 # Using the working URL you found - note: query parameter might change over time
 source=("stacher7_${pkgver}_amd64.deb::https://s7-releases.stacher-cloud.com/s7-releases/stacher7_${pkgver}_amd64.deb")
-sha256sums=('d13fe8ccff47d8478f93b9a0535dd6d7486be4147b0cc68280ae4dc53a4f3fa3')
+sha256sums=('59a6ee4a59936262784062c741d8ba2c85dc983b667fdff6bd061b1b9a94ee8e')
 
 package() {
     # Extract the .deb
