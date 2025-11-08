@@ -5,10 +5,10 @@
 
 pkgname=python-bidi
 pkgver=0.6.7
-pkgrel=2
+pkgrel=3
 pkgdesc="BIDI algorithm related functions"
 url="https://github.com/MeirKriheli/python-bidi"
-license=(LGPL-3.0-only)
+license=(LGPL-3.0-or-later)
 arch=(any)
 depends=(python)
 makedepends=(python-build python-installer python-maturin)
