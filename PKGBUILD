@@ -1,7 +1,7 @@
 # Maintainer: Totchi Lagawi <chatnoir420 at gmx dot com>
 # Previous maintainer: xYc4t <xYc4t at proton dot me>
 
-pkgname=harmony-music-bin
+pkgname=harmonymusic
 pkgver=1.12.1
 pkgrel=1
 pkgdesc='A cross platform App for streaming Music'
@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://github.com/anandnet/Harmony-Music'
 license=('GPL-3.0-or-later')
 depends=('mpv')
-makedepends=('rsync')
+makedepends=('rsync' 'xdg-user-dirs')
 conflicts=('harmony-music-git')
 options=(!strip !debug)
 
