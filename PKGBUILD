@@ -2,7 +2,7 @@
 
 _name=tiledb
 pkgname=python-$_name
-pkgver=0.34.2
+pkgver=0.35.2
 pkgrel=1
 pkgdesc='Pythonic interface to the TileDB array storage manager'
 arch=(x86_64)
@@ -11,9 +11,9 @@ license=(MIT)
 _pyminor=10
 # TODO: make it use system libmagic (file) and capnproto
 depends=(capnproto aws-sdk-cpp spdlog python-numpy python-packaging)
-makedepends=(cython 'pybind11<3' python-scikit-build-core python-setuptools-scm python-build python-installer python-wheel)
+makedepends=(cython pybind11 python-scikit-build-core python-setuptools-scm python-build python-installer python-wheel)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('8ff3452091dadda9e00a5fe99216b986e10116969961de4d97faa0847998af51')
+sha256sums=('13a7d35dd6270272dc309d88fa392377e0212785f1e9d0a5c0794d2782cd6abc')
 
 build() {
 	cd "$_name-$pkgver"
