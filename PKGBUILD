@@ -3,7 +3,7 @@
 pkgname=eastl
 _pkgname=EASTL
 pkgver=3.27.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Electronic Arts Standard Template Library. It is an extensive and robust implementation that has an emphasis on high performance."
 arch=('x86_64' 'riscv64')
 url="https://github.com/electronicarts/EASTL"
@@ -27,6 +27,7 @@ build() {
   unset CFLAGS CXXFLAGS LDFLAGS LTOFLAGS
 
   cmake -B build -S $srcdir/$_pkgname-$pkgver \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_SHARED_LIBS=ON \
         -DEASTL_BUILD_TESTS=ON \

@@ -1,7 +1,7 @@
 pkgbase = eastl
 	pkgdesc = Electronic Arts Standard Template Library. It is an extensive and robust implementation that has an emphasis on high performance.
 	pkgver = 3.27.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/electronicarts/EASTL
 	arch = x86_64
 	arch = riscv64
