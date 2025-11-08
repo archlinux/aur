@@ -1,0 +1,25 @@
+pkgbase = nview
+	pkgdesc = Minimalistic image viewer
+	pkgver = 0.30
+	pkgrel = 1
+	url = https://github.com/d99kris/nview
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = qt6-base
+	makedepends = qt6-tools
+	makedepends = qtutilities-qt6
+	makedepends = qt6-multimedia
+	makedepends = qt6-multimedia-ffmpeg
+	makedepends = qt6-imageformats
+	makedepends = help2man
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	depends = libglvnd
+	depends = imagemagick
+	provides = nview
+	conflicts = nview
+	source = https://github.com/d99kris/nview/archive/refs/tags/v0.30.tar.gz
+	sha256sums = 05fefaa13f8a7c12408a4f38ab869e7b80ab351214b7c615d02e66c80c0ed66a
+
+pkgname = nview

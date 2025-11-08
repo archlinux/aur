@@ -1,0 +1,5 @@
+[nview]
+source = "github"
+github = "d99kris/nview"
+use_latest_release = true
+prefix = "v"
