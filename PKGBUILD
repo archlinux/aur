@@ -4,8 +4,8 @@
 # Contributor: Christopher Arndt <aur -at -chrisarndt -dot- de>
 
 pkgname=neural-amp-modeler-bypass-lv2
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.3
+pkgrel=1
 pkgdesc='Neural Amp Modeler (NAM) LV2 plugin with bypass functionality'
 arch=(x86_64)
 url='https://github.com/rickprice/neural-amp-modeler-bypass-lv2'
@@ -33,7 +33,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/rickprice/$pkgname/archive/
         "math_approx-${_modules[math_approx]}.tar.gz::https://github.com/Chowdhury-DSP/math_approx/archive/${_modules[math_approx]}.tar.gz"
         "xsimd-${_modules[xsimd]}.tar.gz::https://github.com/xtensor-stack/xsimd/archive/${_modules[xsimd]}.tar.gz"
 )
-sha256sums=('ba07103b6dbfe7633067d350b57b5bdad7667fab0461ca18c92903677f945665'
+sha256sums=('15493638dac46dffacf2cde6ec1c07c41909b282761256679c9604580e26e0ff'
             'b1fcaf3ada0e90b9ba6eb633e8564413c11882d685d1e33128166946bdbdf937'
             'e732c6e204597d4059aa01f5f416034383dac13d26859b97ef4b97ba0cb3ab39'
             '76f7f6160e681acbb4dd1fff4cfc23a3b61f51f0df2f8b3b5449c010628e4013'
