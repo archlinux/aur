@@ -1,7 +1,7 @@
 pkgbase = quickbib
-	pkgdesc = QuickBib — DOI/arXiv → BibTeX desktop utility
+	pkgdesc = QuickBib: DOI/arXiv → BibTeX desktop utility
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/archisman-panigrahi/quickbib
 	arch = any
 	license = GPL3
