@@ -4,7 +4,7 @@
 
 _pkgname=langsmith
 pkgname="python-${_pkgname}"
-pkgver=0.4.40
+pkgver=0.4.41
 pkgrel=1
 pkgdesc="Client library to connect to the LangSmith LLM Tracing and Evaluation Platform."
 arch=('any')
@@ -14,7 +14,7 @@ depends=(python-httpx python-orjson python-packaging python-pydantic python-requ
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel' 'python-hatchling')
 optdepends=(python-langsmith-pyo3 python-openai-agents python-opentelemetry-api python-opentelemetry-exporter-otlp-proto-http python-opentelemetry-sdk python-pytest python-rich python-vcrpy)
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('60d9b9ce9d7e41716a2e341f160eb4f3464f7fc81f70bcdc91e12f392135b386bfa011d7b7f888f70ef304ba067c223b1dae0e95825193549e50af726828f8ce')
+b2sums=('ceffdb5179c86cbed0f1308a2095c57b81e8544080a575442606bc253f2ea9a28dc15c38c19c7d3a6453f6d8c84ecec994e2185d8a496cdfdd212630ea92f63c')
 
 build() {
     cd "${_pkgname}-${pkgver}"
