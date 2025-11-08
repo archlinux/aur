@@ -1,8 +1,9 @@
 pkgbase = tkginstaller-git
 	pkgdesc = TKG packages builder (Linux, Wine, Proton, Nvidia and Mesa) from Frogging-Family repositories
-	pkgver = 0.25.0
+	pkgver = 0.25.1
 	pkgrel = 1
 	url = https://github.com/damachine/tkginstaller
+	install = tkginstaller.install
 	arch = x86_64
 	license = MIT
 	depends = git
@@ -16,7 +17,7 @@ pkgbase = tkginstaller-git
 	provides = tkginstaller
 	conflicts = tkginstaller
 	replaces = tkginstaller
-	source = tkginstaller.sh::https://raw.githubusercontent.com/damachine/tkginstaller/refs/heads/master/tkginstaller.sh
-	sha256sums = 8113fb5c5856a1abe346550dc9f682dde4c0061d5860a7ba3b65076e26fc1a9a
+	source = tkginstaller::https://raw.githubusercontent.com/damachine/tkginstaller/refs/heads/master/tkginstaller
+	sha256sums = c248d897dfc89dcc1e349841d5dd06ec7dae4b6267fea6286269f51083f80f43
 
 pkgname = tkginstaller-git

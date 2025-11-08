@@ -1,0 +1,12 @@
+post_upgrade() {
+    # Remove old .sh extension file if it exists
+    if [[ -f "/usr/bin/tkginstaller.sh" ]]; then
+        echo "==> Removing deprecated file: /usr/bin/tkginstaller.sh"
+        rm -f "/usr/bin/tkginstaller.sh"
+    fi
+}
+
+post_install() {
+    # Also check on fresh installs (in case of manual leftovers)
+    post_upgrade
+}
