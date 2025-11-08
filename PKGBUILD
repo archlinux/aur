@@ -1,7 +1,7 @@
 # Maintainer: Antony Kellermann <antony@aokellermann.dev>
 
 pkgname=yaycache
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Flexible yay cache cleaning'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=(pacman-contrib)
 makedepends=('asciidoc' 'git')
 optdepends=('sudo: privilege elevation')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('89bdc77af253af90fd015560e9dca438b26da7f9d7a55b36ced164a2643dc4bef1f27c9eb7bcf005427cc72f8819a51a1ab66e6ec3376c44fa8769faaef94432')
+b2sums=('f0f0ef0a0f65daa1c49b3f28121e863496eceefc53844a5d6cb9a8a59da5b79756987d482332b53880dbe761135d687a3726e2305dce361f65b0bd272344b8bf')
 
 prepare() {
   cd $pkgname-$pkgver
