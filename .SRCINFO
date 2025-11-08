@@ -1,10 +1,10 @@
 pkgbase = python-korean_lunar_calendar
 	pkgdesc = Library to convert Korean lunar-calendar to Gregorian calendar
 	pkgver = 0.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/usingsky/korean_lunar_calendar_py
 	arch = any
-	license = GPL3
+	license = MIT
 	makedepends = python-setuptools
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/k/korean_lunar_calendar/korean_lunar_calendar-0.3.1.tar.gz
