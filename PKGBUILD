@@ -3,15 +3,16 @@
 pkgbase=tensorrt
 pkgname=(
     'tensorrt'
+    'tensorrt-cross-builder-libs'
     'python-tensorrt')
-pkgver=10.13.3.9
+pkgver=10.14.1.48
 _cudaver=13.0
 _protobuf_ver=3.20.1
 _pybind11_ver=2.9.2
-_onnx_graphsurgeon_ver=0.5.8
-_polygraphy_ver=0.49.24
+_onnx_graphsurgeon_ver=0.5.9
+_polygraphy_ver=0.49.27
 _tensorflow_quantization_ver=0.2.0
-pkgrel=3
+pkgrel=1
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
 arch=('x86_64')
 url='https://developer.nvidia.com/tensorrt/'
@@ -21,14 +22,17 @@ makedepends=(
     'cuda'
     'cudnn'
     'git'
+    'nvidia-utils' # for satisfying pkgcheck
     'python'
     'python-build'
     'python-installer'
-    #'python-onnx'
+    'python-ml-dtypes'
+    'python-onnx'
     'python-setuptools'
+    'python-typing_extensions'
     'python-wheel')
 source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/${pkgver%.*}/tars/TensorRT-${pkgver}.Linux.${CARCH}-gnu.cuda-${_cudaver}.tar.gz"
-        "git+https://github.com/NVIDIA/TensorRT.git#tag=v${pkgver%.*}"
+        "git+https://github.com/NVIDIA/TensorRT.git#tag=v$(grep -oE '[0-9]+\.[0-9]+' <<< "$pkgver" | head -n1)"
         'git+https://github.com/protocolbuffers/protobuf.git'
         'cub-nvlabs'::'git+https://github.com/NVlabs/cub.git'
         'git+https://github.com/onnx/onnx-tensorrt.git'
@@ -40,8 +44,8 @@ source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorr
         '020-tensorrt-fix-python.patch'
         'TensorRT-LICENSE-AGREEMENT.txt')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('897261be948962c9eb5d3595625f91d85a9aa8b57601aed6efac3fd6d9ff6f53'
-            '1e4212f419a02957ef67f7abf24b4b7fb7c10bd10a48d7a2f8e4ae9b6fae3972'
+sha256sums=('c74af67db57f1a0d7e66bb01ab93f1ecda5facac491ca76e680d832f1e035ce6'
+            '0c976d276abfde1b5de2b341907b696bc670c6235a2f04ed478e8a508f2b2fe9'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -50,7 +54,7 @@ sha256sums=('897261be948962c9eb5d3595625f91d85a9aa8b57601aed6efac3fd6d9ff6f53'
             'SKIP'
             'dddd73664306d7d895a95e1cf18925b31b52785e468727e4635b45edae5166f9'
             'ba94c0685216fe9566f7989df98b372e72a8da04b66d64380024107f2f7f4a8f'
-            '42d46139486825242aa6db63b476f96ce52988978ff9dae67718f6be2d62efec'
+            '9b05d15245603531eee55162cefd43fb9b686d049bb65f97b1dafd948db3e654'
             '64907f271b91655a28f3c9f3555a3c645b23d878f41063192a9d2a67f752205a')
 
 prepare() {
@@ -120,10 +124,8 @@ build() {
     ./build.sh
     
     # python tools
-    # python-onnx (for onnx-graphsurgeon) currently gives an undefined symbol error with the following import used by the build system:
-    # >>> from onnx.onnx_cpp2py_export import ONNX_ML
     local _dir
-    for _dir in Polygraphy tensorflow-quantization #onnx-graphsurgeon
+    for _dir in Polygraphy tensorflow-quantization onnx-graphsurgeon
     do
         cd "${srcdir}/TensorRT/tools/${_dir}"
         python -m build --wheel --no-isolation
@@ -141,16 +143,44 @@ package_tensorrt() {
         'cuda'
         'cudnn'
         'gcc-libs'
-        'glibc')
+        'glibc'
+        'nvidia-utils')
+    optdepends=(
+        'tensorrt-cross-builder-libs: for cross building engine files')
     
     DESTDIR="$pkgdir" cmake --install build
     install -D -m755 "TensorRT-${pkgver}/bin"/* -t "${pkgdir}/usr/bin"
     install -D -m644 build/libnvinfer_plugin_static.a -t "${pkgdir}/usr/lib"
-    install -D -m644 "TensorRT-${pkgver}/lib"/libnvinfer_{builder_resource.so."${pkgver%.*}",vc_plugin_static.a} -t "${pkgdir}/usr/lib"
+    install -D -m644 "TensorRT-${pkgver}/lib/libnvinfer_vc_plugin_static.a" -t "${pkgdir}/usr/lib"
     cp -dr --no-preserve='ownership' "TensorRT-${pkgver}/include" "${pkgdir}/usr"
     cp -dr --no-preserve='ownership' "TensorRT-${pkgver}/lib"/libnvinfer{,_dispatch,_lean}{.so*,_static.a} "${pkgdir}/usr/lib"
-    ln -s "libnvinfer_builder_resource.so.${pkgver%.*}" "${pkgdir}/usr/lib/libnvinfer_builder_resource.so.${pkgver%%.*}"
-    ln -s "libnvinfer_builder_resource.so.${pkgver%%.*}" "${pkgdir}/usr/lib/libnvinfer_builder_resource.so"
+    
+    local _arch
+    for _arch in ptx sm{75,80,86,89,90,100,120}
+    do
+        install -D -m644 "TensorRT-${pkgver}/lib/libnvinfer_builder_resource_${_arch}.so.${pkgver%.*}" -t "${pkgdir}/usr/lib"
+        ln -s "libnvinfer_builder_resource_${_arch}.so.${pkgver%.*}" "${pkgdir}/usr/lib/libnvinfer_builder_resource_${_arch}.so.${pkgver%%.*}"
+        ln -s "libnvinfer_builder_resource_${_arch}.so.${pkgver%%.*}" "${pkgdir}/usr/lib/libnvinfer_builder_resource_${_arch}.so"
+    done
+    
+    _package_license "$pkgdir" "$pkgname"
+}
+
+package_tensorrt-cross-builder-libs() {
+    pkgdesc='Additional TensorRT libraries for cross building engine files'
+    license=('LicenseRef-TensorRT-LICENSE-AGREEMENT')
+    depends=(
+        'gcc-libs'
+        'glibc')
+    options=('!strip')
+    
+    local _arch
+    for _arch in ptx sm{75,80,86,89,90,120}
+    do
+        install -D -m644 "TensorRT-${pkgver}/lib/libnvinfer_builder_resource_win_${_arch}.so.${pkgver%.*}" -t "${pkgdir}/usr/lib"
+        ln -s "libnvinfer_builder_resource_win_${_arch}.so.${pkgver%.*}" "${pkgdir}/usr/lib/libnvinfer_builder_resource_win_${_arch}.so.${pkgver%%.*}"
+        ln -s "libnvinfer_builder_resource_win_${_arch}.so.${pkgver%%.*}" "${pkgdir}/usr/lib/libnvinfer_builder_resource_win_${_arch}.so"
+    done
     
     _package_license "$pkgdir" "$pkgname"
 }
@@ -167,20 +197,20 @@ package_python-tensorrt() {
     optdepends=(
         'python-colored: for onnx_graphsurgeon and polygraphy python modules'
         'python-ml-dtypes: for onnx_graphsurgeon python module'
-        #'python-onnx: for onnx_graphsurgeon python module'
+        'python-onnx: for onnx_graphsurgeon python module'
         'python-onnxruntime: for onnx_graphsurgeon python module'
         'python-protobuf: for polygraphy python modules'
         'python-tensorflow-cuda: for polygraphy and tensorflow-quantization python modules'
         'python-tf2onnx: for tensorflow-quantization python module')
     provides=(
-        #"python-onnx-graphsurgeon=${_onnx_graphsurgeon_ver}"
+        "python-onnx-graphsurgeon=${_onnx_graphsurgeon_ver}"
         "python-polygraphy=${_polygraphy_ver}"
         "python-tensorflow-quantization=${_tensorflow_quantization_ver}")
     
     python -m installer --destdir="$pkgdir" TensorRT/python/build/bindings_wheel/dist/*.whl
     
     local _dir
-    for _dir in Polygraphy tensorflow-quantization #onnx-graphsurgeon
+    for _dir in Polygraphy tensorflow-quantization onnx-graphsurgeon
     do
         python -m installer --destdir="$pkgdir" "TensorRT/tools/${_dir}/dist"/*.whl
     done
