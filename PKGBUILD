@@ -1,6 +1,6 @@
 # Maintainer: Archisman Panigrahi <apandada1ATgmail.com>
 pkgname=doi2bib3
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Fetch BibTeX for DOIs or resolve arXiv ids to DOIs and fetch BibTeX"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('python' 'python-requests' 'python-bibtexparser')
 makedepends=('python-pip' 'python-packaging' 'python-build' 'git')
 source=("https://github.com/archisman-panigrahi/doi2bib3/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0b7dfe0e2a3ebed9a26e29ed4b8e90de2b0b8f8595e00c4e01206b0f7465a3c0')
+sha256sums=('89e73e67c68ea8a5a3d6da795bc6a37c845fcb401db433a80737fd2c207a384c')
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
