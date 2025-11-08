@@ -3,7 +3,7 @@
 pkgname=technitium-dns-server-git
 _pkgname=technitium-dns-server
 pkgver=r3615.g4c3eb66d
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source authoritative and recursive DNS server focused on privacy and security"
 arch=('x86_64')
 url="https://technitium.com/dns/"
@@ -73,8 +73,14 @@ package() {
     install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/DnsServerApp.runtimeconfig.json" "${pkgdir}/opt/${_pkgname}/DnsServerApp.runtimeconfig.json"
     install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/DnsServerCore.ApplicationCommon.dll" "${pkgdir}/opt/${_pkgname}/DnsServerCore.ApplicationCommon.dll"
     install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/DnsServerCore.ApplicationCommon.pdb" "${pkgdir}/opt/${_pkgname}/DnsServerCore.ApplicationCommon.pdb"
+    install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/DnsServerCore.HttpApi.dll" "${pkgdir}/opt/${_pkgname}/DnsServerCore.HttpApi.dll"
+    install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/DnsServerCore.HttpApi.pdb" "${pkgdir}/opt/${_pkgname}/DnsServerCore.HttpApi.pdb"
     install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/DnsServerCore.dll" "${pkgdir}/opt/${_pkgname}/DnsServerCore.dll"
     install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/DnsServerCore.pdb" "${pkgdir}/opt/${_pkgname}/DnsServerCore.pdb"
+    install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/BouncyCastle.Cryptography.dll" "${pkgdir}/opt/${_pkgname}/BouncyCastle.Cryptography.dll"
+    install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/Microsoft.Win32.SystemEvents.dll" "${pkgdir}/opt/${_pkgname}/Microsoft.Win32.SystemEvents.dll"
+    install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/QRCoder.dll" "${pkgdir}/opt/${_pkgname}/QRCoder.dll"
+    install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/System.Drawing.Common.dll" "${pkgdir}/opt/${_pkgname}/System.Drawing.Common.dll"
     install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/named.root" "${pkgdir}/opt/${_pkgname}/named.root"
     install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/root-anchors.xml" "${pkgdir}/opt/${_pkgname}/root-anchors.xml"
     install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/TechnitiumLibrary.ByteTree.dll" "${pkgdir}/opt/${_pkgname}/TechnitiumLibrary.ByteTree.dll"
@@ -82,6 +88,8 @@ package() {
     install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/TechnitiumLibrary.dll" "${pkgdir}/opt/${_pkgname}/TechnitiumLibrary.dll"
     install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/TechnitiumLibrary.IO.dll" "${pkgdir}/opt/${_pkgname}/TechnitiumLibrary.IO.dll"
     install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/TechnitiumLibrary.IO.pdb" "${pkgdir}/opt/${_pkgname}/TechnitiumLibrary.IO.pdb"
+    install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/TechnitiumLibrary.Security.OTP.dll" "${pkgdir}/opt/${_pkgname}/TechnitiumLibrary.Security.OTP.dll"
+    install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/TechnitiumLibrary.Security.OTP.pdb" "${pkgdir}/opt/${_pkgname}/TechnitiumLibrary.Security.OTP.pdb"
     install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/TechnitiumLibrary.Net.dll" "${pkgdir}/opt/${_pkgname}/TechnitiumLibrary.Net.dll"
     install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/TechnitiumLibrary.Net.pdb" "${pkgdir}/opt/${_pkgname}/TechnitiumLibrary.Net.pdb"
     install -Dm644 "DnsServer/DnsServerApp/bin/Release/publish/TechnitiumLibrary.pdb" "${pkgdir}/opt/${_pkgname}/TechnitiumLibrary.pdb"
