@@ -1,6 +1,6 @@
 pkgbase = clonedash-git
 	pkgdesc = An open-source, from scratch clone of Muse Dash (a parkour rhythm game).
-	pkgver = r1611.g133ed67
+	pkgver = r1781.g743c2a5
 	pkgrel = 1
 	url = https://github.com/marchc1/CloneDash
 	install = clonedash.install

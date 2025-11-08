@@ -2,7 +2,7 @@ _dotnet_version=8.0
 _system_libs=true
 
 pkgname=clonedash-git
-pkgver=r1611.g133ed67
+pkgver=r1781.g743c2a5
 pkgrel=1
 pkgdesc="An open-source, from scratch clone of Muse Dash (a parkour rhythm game)."
 arch=("x86_64")
@@ -58,7 +58,10 @@ pkgver() {
 
 build() {
     cd "$srcdir/CloneDash"
-    dotnet publish -c Release --output publish --framework "net$_dotnet_version" --runtime "$_rid" -p:NoWarn=NU1605
+    dotnet build "CloneDash/Clone Dash.csproj" \
+        -c Release --framework "net$_dotnet_version" --runtime "$_rid" -p:NoWarn=NU1605
+    dotnet build "Nucleus.ModelEditor/Nucleus.ModelEditor.csproj" \
+        -c Release --framework "net$_dotnet_version" --runtime "$_rid" -p:NoWarn=NU1605
 }
 
 package() {
@@ -68,7 +71,7 @@ package() {
         "CloneDash/bin/Release/net$_dotnet_version/$_rid/." \
         "Nucleus.ModelEditor/bin/Release/net$_dotnet_version/$_rid/."
     ln -srfv "$pkgdir/usr/lib/clonedash/Clone Dash" "$pkgdir/usr/bin/CloneDash"
-    find "$pkgdir/usr/lib/clonedash/runtimes" -maxdepth 1 -mindepth 1 -type d ! -name "$_rid" -exec rm -rf {} \;
+    #find "$pkgdir/usr/lib/clonedash/runtimes" -maxdepth 1 -mindepth 1 -type d ! -name "$_rid" -exec rm -rf {} \;
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "$srcdir/com.github.marchc1.CloneDash.desktop" \
         "$pkgdir/usr/share/applications/com.github.marchc1.CloneDash.desktop"
