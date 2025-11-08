@@ -3,7 +3,7 @@
 
 pkgname=yabsnap
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Btrfs automated snapshot manager."
 arch=('any')
 url="https://github.com/hirak99/$pkgname"
