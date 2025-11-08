@@ -1,7 +1,7 @@
 # Maintainer: clove3am (aka: Caltlgin) <clove.dev.mailbox.org>
 
 pkgname='gopher2600'
-pkgver=0.50.1
+pkgver=0.51.0
 pkgrel=1
 pkgdesc='Emulator for the Atari 2600 games console'
 arch=('x86_64')
@@ -19,11 +19,9 @@ source=(
   'gopher2600.desktop'
   'icon256.png'
 )
-sha256sums=(
-  '99e1a689f13bf820eb10a57d846c0ae86f3c332aa21da8ade8ab6fd4e0fcd909'
-  '5a7e3c60624007a1eb9d126097590ff869fdf66512348c5938cb53a1cccd353d'
-  'a5aa462653391b3861d1c50181526830903e5c32414b62aa33ddc5675a7d713c'
-)
+sha256sums=('da3cc0d91addf698f81f3054adf59f17c1706f9717e510ad2e7d034666234328'
+            '5a7e3c60624007a1eb9d126097590ff869fdf66512348c5938cb53a1cccd353d'
+            'a5aa462653391b3861d1c50181526830903e5c32414b62aa33ddc5675a7d713c')
 
 build() {
   cd "${pkgname^}-${pkgver}"

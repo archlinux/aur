@@ -1,6 +1,6 @@
 pkgbase = gopher2600
 	pkgdesc = Emulator for the Atari 2600 games console
-	pkgver = 0.50.1
+	pkgver = 0.51.0
 	pkgrel = 1
 	url = https://github.com/JetSetIlly/Gopher2600
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = gopher2600
 	depends = glibc
 	depends = libgl
 	depends = sdl2
-	source = gopher2600-0.50.1.tar.gz::https://github.com/JetSetIlly/Gopher2600/archive/v0.50.1.tar.gz
+	source = gopher2600-0.51.0.tar.gz::https://github.com/JetSetIlly/Gopher2600/archive/v0.51.0.tar.gz
 	source = gopher2600.desktop
 	source = icon256.png
-	sha256sums = 99e1a689f13bf820eb10a57d846c0ae86f3c332aa21da8ade8ab6fd4e0fcd909
+	sha256sums = da3cc0d91addf698f81f3054adf59f17c1706f9717e510ad2e7d034666234328
 	sha256sums = 5a7e3c60624007a1eb9d126097590ff869fdf66512348c5938cb53a1cccd353d
 	sha256sums = a5aa462653391b3861d1c50181526830903e5c32414b62aa33ddc5675a7d713c
 
