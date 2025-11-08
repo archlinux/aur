@@ -1,12 +1,13 @@
 pkgbase = quill-editor
 	pkgdesc = A simple CLI Text Editor
-	pkgver = 0.1.4.1
+	pkgver = 0.1.4.2
 	pkgrel = 1
 	arch = x86_64
 	license = MIT
 	depends = gcc-libs
 	source = editor.c
 	source = config.c
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = quill-editor
