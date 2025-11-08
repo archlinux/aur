@@ -15,7 +15,7 @@ depends=(
   pixman
   libxkbcommon
   pcre2
-  'libwlroots-0.19.so'
+  'libwlroots-0.20.so'
 )
 
 makedepends=(
