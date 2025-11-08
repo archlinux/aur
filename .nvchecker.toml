@@ -1,0 +1,5 @@
+[namp]
+source = "github"
+github = "d99kris/namp"
+use_latest_release = true
+prefix = "v"
