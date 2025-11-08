@@ -1,15 +1,16 @@
 pkgbase = mingw-w64-directxmath
 	pkgdesc = All inline SIMD C++ linear algebra library for use in games and graphics apps (mingw-w64)
-	pkgver = 3.1.9
+	pkgver = 3.20
 	pkgrel = 1
 	url = https://go.microsoft.com/fwlink/?LinkID=615560
 	arch = any
 	license = MIT
 	makedepends = mingw-w64-cmake
+	options = !debug
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = directxmath-feb2024b.tar.gz::https://github.com/microsoft/DirectXMath/archive/refs/tags/feb2024b.tar.gz
-	sha256sums = 01b700121697a923eaa8f7549c50625a10975b199a7ddb5decd6f59b4330fead
+	source = directxmath-apr2025.tar.gz::https://github.com/microsoft/DirectXMath/archive/refs/tags/apr2025.tar.gz
+	sha256sums = 8ac7f060d7fcc971d77c5a9f3ff98548ecf119c144a7c2dd9d21f4b66ba94cd4
 
 pkgname = mingw-w64-directxmath
