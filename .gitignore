@@ -1,5 +1,4 @@
-*.pkg.tar*
-*.src.tar*
-/woof/
-src
-pkg
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
