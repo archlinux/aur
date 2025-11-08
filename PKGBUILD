@@ -5,14 +5,13 @@
 pkgname=python-conda
 _name=${pkgname#python-}
 pkgver=25.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OS-agnostic, system-level binary package manager and ecosystem https://conda.io"
 arch=('any')
 url="https://github.com/conda/conda"
 license=('BSD-3-Clause')
 depends=(
-  'micromamba'
-  'python>=3.7'
+  'python'
   'python-archspec'
   'python-boltons'
   'python-boto3'
