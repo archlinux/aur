@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <gpe@grahamedgecombe.com>
 pkgname=customasm
-pkgver=0.13.11
+pkgver=0.13.12
 pkgrel=1
 pkgdesc='An assembler for custom, user-defined instruction sets'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=(gcc-libs glibc)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('3d112ec840b9bd4136e4096f215989d50bab15c50afc90ede50960a4be0d62e1')
+sha256sums=('969ea0c34e6149fb9156c1766d8cfd9cda43746c149a6a213dc79f3839f6f738')
 
 prepare() {
     cd "$pkgname-$pkgver"
