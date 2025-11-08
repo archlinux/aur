@@ -1,4 +1,4 @@
-# Maintainer: dexield dexield.community@gmail.com
+# Maintainer: dexield
 pkgname=fractal-forest
 pkgver=0.1.0
 pkgrel=1
