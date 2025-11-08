@@ -3,9 +3,9 @@
 
 pkgname=ffmpeg-full
 pkgver=8.0
-pkgrel=2
+pkgrel=3
 _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
-_obs_studio_ver='32.0.1'
+_obs_studio_ver='32.0.2'
 _whispercpp_ver='1.8.2'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
@@ -41,7 +41,6 @@ depends=(
     'lame'
     'lcevcdec'
     'lcms2'
-    'lensfun-git'
     'libaribcaption'
     'libass'
     'libavc1394'
@@ -160,6 +159,7 @@ provides=(
     'libswresample.so')
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
+        'git+https://github.com/lensfun/lensfun.git'
         "https://github.com/obsproject/obs-studio/archive/${_obs_studio_ver}/obs-studio-${_obs_studio_ver}.tar.gz"
         "https://github.com/ggml-org/whisper.cpp/archive/v${_whispercpp_ver}/whisper.cpp-${_whispercpp_ver}.tar.gz"
         '010-ffmpeg-add-svt-hevc.patch'
@@ -174,7 +174,8 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         'LICENSE')
 sha256sums=('b2751fccb6cc4c77708113cd78b561059b6fa904b24162fa0be2d60273d27b8e'
             'SKIP'
-            '906278ccedb5ed919e586697467eb7fa4205fceeda127386ce5b74026113ba96'
+            'SKIP'
+            '39e99b9fbdc77e7e87cfd9c7e8709d1d427627bad5b21b791019c887c8598d13'
             'bcee25589bb8052d9e155369f6759a05729a2022d2a8085c1aa4345108523077'
             '4b1053cc01244c79e3b23dc696eaff1aeb0627a2098e1a720a025d4ad75b5c16'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
@@ -202,16 +203,37 @@ prepare() {
 }
 
 build() {
+    local _stagingdir="${srcdir}/staging"
+    local _pkgconfigdir="${_stagingdir}/lib/pkgconfig"
+    export PKG_CONFIG_PATH="${_pkgconfigdir}${PKG_CONFIG_PATH:+":${PKG_CONFIG_PATH}"}"
+    
+    local -a _cmake_opts=(
+        '-GUnix Makefiles'
+        '-DBUILD_SHARED_LIBS:BOOL=OFF'
+        '-DCMAKE_BUILD_TYPE:STRING=None'
+        "-DCMAKE_INSTALL_PREFIX:PATH=${_stagingdir}"
+        '-Wno-dev')
+    
+    # ffmpeg requires lensfun git master, but lensfun-git package wrongly installs its files to non-standard locations:
+    # https://aur.archlinux.org/cgit/aur.git/commit/?h=lensfun-git&id=7b7a2d4890df59cde62c7dbfde3cefd7868a2707
+    # building it locally as a static library for the time being - this also have the benefit of avoid rebuilding packages
+    # requiring lensfun, like gegl (required for gimp, a commonly used package), as lensfun git master have a soname bump
+    cmake -B build/lensfun -S lensfun \
+        "${_cmake_opts[@]}" \
+        -DBUILD_STATIC:BOOL='ON' \
+        -DINSTALL_PYTHON_MODULE:BOOL='OFF' \
+        -DINSTALL_HELPER_SCRIPTS:BOOL='OFF'
+    cmake --build build/lensfun --target install
+    sed -i \
+        -e 's/\(-llensfun\)/\1 -lglib-2.0 -lstdc++/' \
+        -e '/Cflags: /s/$/ -DCONF_LENSFUN_STATIC/' "${_pkgconfigdir}/lensfun.pc"
+    
     # whisper.cpp AUR package conflicts with imagemagick at the time of writing
     # building it locally as a static library for the time being, as imagemagick is a commonly used package (high usage in pkgstats)
     cmake -B build/whisper.cpp -S "whisper.cpp-${_whispercpp_ver}" \
-        -G 'Unix Makefiles' \
-        -DBUILD_SHARED_LIBS:BOOL='OFF' \
-        -DCMAKE_BUILD_TYPE:STRING='None' \
-        -DCMAKE_INSTALL_PREFIX:PATH="${srcdir}/staging" \
+        "${_cmake_opts[@]}" \
         -DWHISPER_BUILD_EXAMPLES:BOOL='OFF' \
-        -DWHISPER_BUILD_TESTS:BOOL='OFF' \
-        -Wno-dev
+        -DWHISPER_BUILD_TESTS:BOOL='OFF'
     cmake --build build/whisper.cpp --target install
     
     cd "ffmpeg-${pkgver}"
@@ -220,7 +242,6 @@ build() {
     export CFLAGS+=' -isystem/opt/cuda/include'
     export CFLAGS+=" -isystem${srcdir}/obs-studio-${_obs_studio_ver}/plugins/decklink/linux/decklink-sdk"
     export LDFLAGS+=' -L/opt/cuda/lib64'
-    export PKG_CONFIG_PATH="${srcdir}/staging/lib/pkgconfig${PKG_CONFIG_PATH:+":${PKG_CONFIG_PATH}"}"
     
     # fix build of libavfilter/asrc_flite.c with gcc 14
     export CFLAGS+=' -Wno-error=incompatible-pointer-types'
