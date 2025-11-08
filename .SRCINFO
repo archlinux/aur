@@ -1,16 +1,16 @@
 pkgbase = dockerydo-bin
 	pkgdesc = a lightweight docker gui for terminal for quick access to docker commands (inspired by lazygit)
-	pkgver = 0.0.5
+	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/artyultra/dockerydo
 	license = MIT
 	conflicts = dockerydo
 	provides = dockerydo
 	arch = aarch64
-	source_aarch64 = https://github.com/artyultra/dockerydo/releases/download/v0.0.5/dockerydo_0.0.5_linux_arm64.tar.gz
-	sha256sums_aarch64 = 28af4f07ad021a06de056144cd3d86f05f18a05b663e006c83ee66fa3bc01aa3
+	source_aarch64 = https://github.com/artyultra/dockerydo/releases/download/v0.0.1/dockerydo_0.0.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0cdacde39a092d008461293e94f2c0a53c0c32f4a95f4d800357a3068690a82a
 	arch = x86_64
-	source_x86_64 = https://github.com/artyultra/dockerydo/releases/download/v0.0.5/dockerydo_0.0.5_linux_amd64.tar.gz
-	sha256sums_x86_64 = 4e1ca4c3b2a584a15d8a9ed32eb16366dc3dac09ecdcb5c166edded10f326a18
+	source_x86_64 = https://github.com/artyultra/dockerydo/releases/download/v0.0.1/dockerydo_0.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8504a31057f482a889827d868832689d9df3a1527b27cfe0a25af25cb826fd7a
 	
 pkgname = dockerydo-bin
