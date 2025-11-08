@@ -1,6 +1,6 @@
 pkgbase = xapp-symbolic-icons
 	pkgdesc = A set of symbolic icons for GTK applications and projects, replacing the GNOME-specific Adwaita set now removed by upstream
-	pkgver = 0.r7.357d6f4
+	pkgver = 0.r8.ab8fefc
 	pkgrel = 1
 	url = https://github.com/xapp-project/xapp-symbolic-icons
 	arch = any
@@ -11,7 +11,9 @@ pkgbase = xapp-symbolic-icons
 	makedepends = ninja
 	makedepends = gtk-update-icon-cache
 	depends = hicolor-icon-theme
-	source = git+https://github.com/xapp-project/xapp-symbolic-icons.git
+	provides = xapp-symbolic-icons
+	conflicts = xapp-symbolic-icons-git
+	source = git+https://github.com/xapp-project/xapp-symbolic-icons.git#commit=ab8fefc49ee34b5de583ae615bafa48670f0d231
 	sha256sums = SKIP
 
 pkgname = xapp-symbolic-icons
