@@ -9,22 +9,3 @@ pre_upgrade() {
     fi
   fi
 }
-
-post_install() {
-  cat <<- EOF
-
-upstream is deprecating support for this particular installation method
- with release 2025.12, meaning that this will no longer be supported.
-
-~1 month prior to this date, this package will be dropped to the AUR.
-
-upstream news post:
-
-https://www.home-assistant.io/blog/2025/05/22/deprecating-core-and-supervised-installation-methods-and-32-bit-systems
-
-EOF
-}
-
-post_upgrade() {
-  post_install
-}
