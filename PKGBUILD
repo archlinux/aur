@@ -1,4 +1,5 @@
-# Maintainer: xYc4t <xYc4t at proton dot me>
+# Maintainer: Totchi Lagawi <chatnoir420 at gmx dot com>
+# Previous maintainer: xYc4t <xYc4t at proton dot me>
 
 pkgname=harmony-music-bin
 pkgver=1.12.1
