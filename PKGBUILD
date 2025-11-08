@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Meunier <guillaume.meunier@centraliens.net>
 pkgname=wivrn-server
 pkgver=25.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A wireless Monado-based OpenXR runtime for standalone headsets."
 arch=(x86_64)
 url="https://github.com/WiVRn/WiVRn"
@@ -15,17 +15,18 @@ depends=(
 	"glibc"
 	"libarchive"
 	"libbsd"
+	"libdrm"
 	"libgl"
 	"libnotify"
 	"libpipewire"
 	"libpng"
-	"libpulse"
 	"librsvg"
 	"libx11"
 	"libxcb"
 	"openssl"
 	"systemd-libs"
 	"vulkan-icd-loader"
+	"wayland"
 	"x264"
 )
 
@@ -40,7 +41,6 @@ makedepends=(
 	"libxrandr"
 	"nlohmann-json"
 	"vulkan-headers"
-	"wayland"
 )
 
 optdepends=(
