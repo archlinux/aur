@@ -6,7 +6,7 @@ pkgbase = fractal-forest
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	source = fractal-forest-0.1.0-x86_64.tar.gz::http://dexieldvpn.ddns.net/fractal-forest-0.1.0-x86_64.tar.gz
+	source = fractal-forest-bin-0.1.0-x86_64.tar.gz::http://dexieldvpn.ddns.net/fractal-forest-bin-0.1.0-x86_64.tar.gz
 	sha256sums = a6ab2bb166b1da40d3e44457635dfb44e9fb392b92c8535e1d5a2415815cb46b
 
 pkgname = fractal-forest
