@@ -1,7 +1,7 @@
 # Maintainer: Bazyli Cyran <bazyli@cyran.dev>
 
 pkgname=philipstv
-pkgver=2.1.1
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='CLI for controlling Philips Android-powered TVs'
 url='https://github.com/bcyran/philipstv'
@@ -11,7 +11,7 @@ checkdepends=('python-pytest' 'python-requests-mock')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('976dac368c3d357d9b1b4bb27b6ab1756328d28a8a3a484ffab65bcc4d6d917e')
+sha256sums=('ddf79483daccbb8486bee4bde911c36a79eea68cb09d887867a6a1163da36769')
 
 build() {
     cd "${pkgname}-${pkgver}"
