@@ -3,7 +3,7 @@
 # Contributor: 37h4n (aarch64 support added by Ethan Reece <aur at ethanreece dot com>)
 # Contributor: sh!zeeg (shizeeque@gmail.com) support for non-avx2 CPUs, shell completions.
 pkgname=bun-bin
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="All-in-one JavaScript runtime built for speed, with bundler, transpiler, test runner, and package manager. Includes bunx, shell completions and support for baseline CPUs"
 arch=('x86_64' 'aarch64')
@@ -11,14 +11,14 @@ url="https://github.com/oven-sh/bun"
 license=('MIT')
 provides=('bun')
 conflicts=('bun')
-sha256sums_x86_64=('400824c82bfcc0854365bcada11cf53d7384ecb1e2c3da0e2c0a2c6a527d5629'
+sha256sums_x86_64=('0cb56a4484bd7764a3eef9b9e67ab457840981287b46794974d1e6612cbf6709'
 	'9b296bcc20090b5ea079dc1bca15913a32246121169bcf54cbdb7384d6f5b32b'
 )
-sha256sums_aarch64=('65666a18439e891e5751b666103fe591a8519f11b66ec4bd8654c5515d4fff8a'
+sha256sums_aarch64=('fe38c13b6b6b450af4e4f0fb8e04b22eca53f9cd71068d1d1eebf4f4a44f02fb'
 	'9b296bcc20090b5ea079dc1bca15913a32246121169bcf54cbdb7384d6f5b32b'
 )
 _baseline=''
-_baseline_sha256sums='a0f95a79274c06c252cdaabf1d0e878e15d0d30679bf6752e0326ec141302323'
+_baseline_sha256sums='7ff09a4a519e8206d60d7b763072cbf3642f8370690165586d303faf21692172'
 if [[ $CARCH == 'x86_64' && $(cat /proc/cpuinfo | grep avx2) = '' ]]; then
 	_baseline='-baseline'
 	sha256sums_x86_64=${_baseline_sha256sums}
