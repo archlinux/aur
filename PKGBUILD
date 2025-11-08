@@ -3,8 +3,8 @@
 
 pkgname=python-kornia-rs
 _pkgname=kornia-rs
-pkgver=0.1.9
-pkgrel=5
+pkgver=0.1.10
+pkgrel=1
 pkgdesc="A low level computer vision library in Rust"
 arch=("x86_64")
 url="https://github.com/kornia/kornia-rs"
@@ -13,7 +13,7 @@ options=(!lto)
 depends=(python cargo gstreamer gst-plugins-base-libs python-pytorch)
 makedepends=(git rust cmake python-installer python-build python-wheel python-maturin python-packaging python-setuptools nasm)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/kornia/kornia-rs/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a9b8a6afa00d80c9b1b1e3e5ff650762dac9605829a4f768ff5aedf47649efc2')
+sha256sums=('b6f5dd6e1e25e2163648953476a5dada2f6a9e5d8e524f78d1680977152bb179')
 
 build() {
   cd "$_pkgname-$pkgver/kornia-py"
