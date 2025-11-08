@@ -1,7 +1,7 @@
 pkgbase = jellyshot-git
 	pkgdesc = A simple screenshot and uploading tool
-	pkgver = r13.ead8aca
-	pkgrel = 2
+	pkgver = r37.feb3ecc
+	pkgrel = 1
 	url = https://github.com/jelly/jellyshot
 	arch = any
 	license = MIT
@@ -9,8 +9,7 @@ pkgbase = jellyshot-git
 	depends = imagemagick
 	depends = openssh
 	optdepends = optipng: compress png for upload
-	source = jellyshot-git::git://github.com/jelly/jellyshot.git
+	source = jellyshot-git::git+https://github.com/jelly/jellyshot.git
 	md5sums = SKIP
 
 pkgname = jellyshot-git
-
