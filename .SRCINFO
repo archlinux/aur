@@ -1,7 +1,7 @@
 pkgbase = normcap
 	pkgdesc = OCR powered screen-capture tool to capture information instead of images
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dynobo.github.io/normcap
 	arch = any
 	license = AGPL-3.0-or-later AND MIT
@@ -22,7 +22,6 @@ pkgbase = normcap
 	depends = python-zxing-cpp
 	depends = shiboken6
 	optdepends = gnome-shell-extension-window-calls: Window positioning handler for GNOME
-	optdepends = qt6-wayland: Required in Wayland sessions
 	optdepends = wl-clipboard: clipboard access for Wayland
 	optdepends = xclip: clipboard access for Xorg
 	optdepends = xsel: alternative Xorg clipboard handler

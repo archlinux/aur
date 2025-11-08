@@ -2,7 +2,7 @@
 pkgname=normcap
 _app_id="com.github.dynobo.$pkgname"
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="OCR powered screen-capture tool to capture information instead of images"
 arch=('any')
 url="https://dynobo.github.io/normcap"
@@ -31,7 +31,6 @@ checkdepends=(
 )
 optdepends=(
   'gnome-shell-extension-window-calls: Window positioning handler for GNOME'
-  'qt6-wayland: Required in Wayland sessions'
   'wl-clipboard: clipboard access for Wayland'
   'xclip: clipboard access for Xorg'
   'xsel: alternative Xorg clipboard handler'
