@@ -9,7 +9,7 @@ license=('MIT' 'Apache')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo' 'git' 'clang')  # Added clang
 source=("$pkgname-$pkgver.tar.gz::https://github.com/noctalia-dev/noctalia-cli/archive/v$pkgver.tar.gz")
-sha256sums=('7aa15d7c76d47f0bb67e9842de33c7d568d59b85f3dcb45da71bc828592fd4eb')
+sha256sums=('33d1aef758b1c14f05802c75be1873244b891c7977ef8f99d21823124af06a91')
 
 prepare() {
   cd "$srcdir/noctalia-cli-$pkgver"

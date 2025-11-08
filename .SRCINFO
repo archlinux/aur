@@ -12,6 +12,6 @@ pkgbase = noctalia
 	makedepends = cargo
 	makedepends = git
 	source = noctalia-0.1.0.tar.gz::https://github.com/noctalia-dev/noctalia-cli/archive/v0.1.0.tar.gz
-	sha256sums = 7aa15d7c76d47f0bb67e9842de33c7d568d59b85f3dcb45da71bc828592fd4eb
+	sha256sums = 33d1aef758b1c14f05802c75be1873244b891c7977ef8f99d21823124af06a91
 
 pkgname = noctalia
