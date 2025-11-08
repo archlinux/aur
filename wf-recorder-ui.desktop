@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=wf-recorder UI
+Comment=Wayland screen recorder UI for wf-recorder
+Exec=wf-recorder-ui
+Icon=wf-recorder-ui
+Terminal=false
+Categories=AudioVideo;Video;
+Keywords=screen;record;wayland;wf-recorder;
+StartupNotify=false
