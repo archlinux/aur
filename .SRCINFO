@@ -1,6 +1,6 @@
 pkgbase = fs
 	pkgdesc = a Simple CLI tool to show file and directory sizes
-	pkgver = 0.9.8
+	pkgver = 0.9.9
 	pkgrel = 0
 	url = https://github.com/Wael0dfg/fs
 	arch = any
