@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://eclipse.org/rcptt"
 license=('EPL')
 depends=('java-environment>=21')
-source=("rcptt.ide-$pkgver-linux.gtk.x86_64.zip::https://www.eclipse.org/downloads/download.php?file=/rcptt/release/$pkgver/ide/rcptt.ide-$pkgver-linux.gtk.x86_64.zip&r=1"
+source=("rcptt.ide-$pkgver-linux.gtk.x86_64.zip::https://cdimage.debian.org/mirror/eclipse.org/rcptt/release/$pkgver/ide/rcptt.ide-$pkgver-linux.gtk.x86_64.zip"
         "eclipse-rcptt.png"
         "eclipse-rcptt.desktop")
 sha512sums=('b9bbaeb595553a70eff3ba231292cb55d78a1371fbba35da84f78fa18624d7b7a1266cd618c971f84f1742224380b22d0c776c7365676b624fe57ab557df6a9e'
