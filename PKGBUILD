@@ -1,8 +1,8 @@
 # Maintainer: Hans Binderup <hbinderup94@gmail.com>
 
 pkgname=aliasx
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc='Alias extended - task, alias and build handles'
 url='https://github.com/hansbinderup/aliasx'
 license=('Apache-2.0')
