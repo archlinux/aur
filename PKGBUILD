@@ -1,5 +1,5 @@
 pkgname=brisq
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A Focus App to Help You Stay on Track"
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = brisq
 	pkgdesc = A Focus App to Help You Stay on Track
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/DeepanshuMishraa/brisk
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = brisq
 	depends = webkit2gtk
 	depends = gtk3
 	depends = librsvg
-	source = brisq-0.1.1.tar.gz::https://github.com/DeepanshuMishraa/brisk/archive/refs/tags/v0.1.1.tar.gz
+	source = brisq-0.1.2.tar.gz::https://github.com/DeepanshuMishraa/brisk/archive/refs/tags/v0.1.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = brisq
