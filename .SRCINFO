@@ -1,0 +1,25 @@
+pkgbase = tabular
+	pkgdesc = SQL and NoSQL database client
+	pkgver = 0.5.14
+	pkgrel = 1
+	url = https://github.com/tabular-id/tabular
+	arch = x86_64
+	arch = aarch64
+	license = AGPL3
+	license = custom:Tabular-EULA
+	makedepends = cargo
+	makedepends = clang
+	makedepends = pkgconf
+	depends = gtk3
+	depends = glib2
+	depends = openssl
+	depends = libxcb
+	depends = libxkbcommon
+	depends = systemd-libs
+	depends = pango
+	depends = atk
+	depends = hicolor-icon-theme
+	source = tabular-0.5.14.tar.gz::https://github.com/tabular-id/tabular/archive/refs/tags/v0.5.14.tar.gz
+	sha256sums = SKIP
+
+pkgname = tabular
