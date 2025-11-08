@@ -20,7 +20,7 @@ _fragment="#${FRAGMENT:-branch=main}"
 
 _name="meshlab"
 pkgname="$_name-git"
-pkgver=2025.07.r7.g18ee8e55d
+pkgver=2025.07.r9.gc3a1f8050
 pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
@@ -29,10 +29,10 @@ conflicts=('meshlab')
 provides=('meshlab')
 license=('GPL2')
 depends=(
-    'bzip2' 'cgal' 'glew' 'glu' 'openssl' 'qt5-base' 'qt5-declarative' 'qt5-script' 'qt5-xmlpatterns' 'xerces-c'
+    'bzip2' 'cgal' 'embree' 'glew' 'glu' 'openssl' 'qt5-base' 'qt5-declarative' 'qt5-script' 'qt5-xmlpatterns' 'xerces-c'
     'gmp' 'mpfr' 'mesa' 'qhull'
 )
-makedepends=('boost' 'cmake' 'eigen' 'ninja' 'git' 'muparser' 'lib3ds' 'openctm-tools' 'gcc14')
+makedepends=('boost' 'cmake' 'eigen' 'ninja' 'git' 'muparser' 'lib3ds' 'openctm-tools' 'gcc14' 'gtk2-compat')
 optdepends=('lib3ds: for Autodesk`s 3D-Studio r3 and r4 .3DS file support'
             'muparser: for filer_func plugins'
             'openctm-tools: for compressed triangle mesh file format')
