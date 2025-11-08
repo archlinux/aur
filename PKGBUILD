@@ -3,7 +3,7 @@
 pkgname=technitium-dns-server-git
 _pkgname=technitium-dns-server
 pkgver=r3615.g4c3eb66d
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source authoritative and recursive DNS server focused on privacy and security"
 arch=('x86_64')
 url="https://technitium.com/dns/"
@@ -36,11 +36,11 @@ pkgver() {
 
 build() {
     cd "TechnitiumLibrary"
-    echo "::: Setting target .NET version to 9.0"
-    for pp in $(grep -Rl "<TargetFramework>net8.0</TargetFramework>")
-    do
-        sed -i 's/<TargetFramework>net8.0<\/TargetFramework>/<TargetFramework>net9.0<\/TargetFramework>/g' "${pp}"
-    done
+    # echo "::: Setting target .NET version to 9.0"
+    # for pp in $(grep -Rl "<TargetFramework>net8.0</TargetFramework>")
+    # do
+    #     sed -i 's/<TargetFramework>net8.0<\/TargetFramework>/<TargetFramework>net9.0<\/TargetFramework>/g' "${pp}"
+    # done
     
     echo "::: Building TechnitiumLibrary binaries"
     LDFLAGS+=' -Wl,-z,cet-report=error'
