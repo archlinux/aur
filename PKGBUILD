@@ -8,7 +8,7 @@ url="https://github.com/dexield/fractal-forest"
 license=('MIT')
 depends=('glibc')
 source=("fractal-forest-$pkgver-x86_64.tar.gz::http://dexieldvpn.ddns.net/fractal-forest-$pkgver-x86_64.tar.gz")
-sha256sums=('5f48a6340f9c0a2c5eaa2b7962e71064d6ea93d1f1b2f46b400bc472737f86f3')
+sha256sums=('a6ab2bb166b1da40d3e44457635dfb44e9fb392b92c8535e1d5a2415815cb46b')
 
 package() {
   cd "$srcdir"
