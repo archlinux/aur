@@ -3,10 +3,10 @@
 # Contributor: David Rosenstrauch <darose@darose.net>
 pkgname=atari-bowling
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The original Bowling game for the old Atari 2600 game console"
 arch=('any')
-url="http://www.atariage.com/software_page.html?SoftwareLabelID=42"
+url="http://www.atariage.com/software_page.php?SoftwareLabelID=42"
 license=('unknown')
 depends=(stella)
 source=('http://www.atariage.com/2600/roms/Bowling.zip')
