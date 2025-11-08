@@ -1,0 +1,13 @@
+pkgbase = grub-theme-lobo-git
+	pkgdesc = Lobo Grub Theme
+	pkgver = r18.4c5b99e
+	pkgrel = 1
+	url = https://github.com/rats-scamper/LoboGrubTheme
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	depends = grub-common
+	source = git+https://github.com/rats-scamper/LoboGrubTheme.git
+	sha256sums = SKIP
+
+pkgname = grub-theme-lobo-git
