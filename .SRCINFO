@@ -1,6 +1,6 @@
 pkgbase = cardo
 	pkgdesc = Cardo podcast client
-	pkgver = 1.11.1
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://github.com/cardo-podcast/cardo/
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = cardo
 	depends = webkit2gtk
 	depends = sqlite
 	options = !lto
-	source = https://github.com/cardo-podcast/cardo/archive/refs/tags/1.11.1.tar.gz
+	source = https://github.com/cardo-podcast/cardo/archive/refs/tags/1.12.0.tar.gz
 	source = cardo.desktop
-	sha256sums = e5567aba46db09ca6d8c30b571f8d23d7b130824529c98b6b3388eaa950a6356
+	sha256sums = 3062591d2ac6db79222eeff07663901e1a66456458d8ed829e8296b599fb8cfd
 	sha256sums = 9d9b2d1bb6643f5940085e9df3f7853203f4b70a3ac1a94972284f565849f62b
 
 pkgname = cardo
