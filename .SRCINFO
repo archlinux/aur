@@ -1,6 +1,6 @@
 pkgbase = deadlock-modmanager-git
 	pkgdesc = A mod manager for the Valve game Deadlock (latest git build)
-	pkgver = 0.10.0.r1.gc27f79a
+	pkgver = 0.10.0.r2.g48a5740
 	pkgrel = 1
 	url = https://github.com/deadlock-mod-manager/deadlock-mod-manager
 	arch = x86_64
