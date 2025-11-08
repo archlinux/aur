@@ -6,7 +6,7 @@
 
 _pkgname="floorp"
 pkgname="$_pkgname-bin"
-pkgver=12.4.0
+pkgver=12.5.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -41,8 +41,8 @@ sha256sums=(
   '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
   '71f1bee3ae03473884d7c202b4dfb260f8d68470d6c79695d1208fb944b6f5c8'
 )
-sha256sums_x86_64=('454098dbda9a4b22dd77f189f6b6f7833bdc6247363a8b487e5f0f3c9741dbc0')
-sha256sums_aarch64=('a9ac6e381a828715f9595430c1eaab40d1e6b73c11a6ab2f3a6e75829e2ac7c6')
+sha256sums_x86_64=('975d93ac90abd41bcc5e4993efb0f62d1ddeed0082a3a232bedcd70ed8115681')
+sha256sums_aarch64=('8e9c4a307adec8978c91396c0f83a18a9ac17a7dcbcb2517cddd2c56d42fbfb0')
 
 package() {
   depends=(
@@ -71,8 +71,7 @@ package() {
   done
 
   # launcher
-  local _desktop=$(< "$_pkgname.desktop")
-  _desktop=${_desktop//@WMCLASS@/$_wmclass}
+  local _desktop=$(sed -e "s/@WMCLASS@/$_wmclass/" "$srcdir/$_pkgname.desktop")
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" <<< "$_desktop"
 
   # script
