@@ -5,7 +5,7 @@
 
 pkgname=hyprswitch
 # x-release-please-start-version
-pkgver=3.3.2
+pkgver=4.0.1
 # x-release-please-end
 pkgrel=1
 pkgdesc="A CLI/GUI that allows switching between windows in Hyprland"
@@ -15,7 +15,7 @@ license=("MIT")
 makedepends=('cargo')
 depends=('hyprland' 'gtk4-layer-shell' 'gtk4')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/egnrse/hyprswitch/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4007e7dbc8d47b1a2a0afd17ceb0323ea1ae63d07cf0f9e85d6e4c99bc052e10')
+sha256sums=('8038059fa9951db5fe30d7acf1ea575cd7db472d806d3fdb7e1cd26d22ad8e35')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
