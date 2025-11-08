@@ -2,7 +2,7 @@
 # Contributor: Kyle Laker <kyle@laker.email>
 pkgname=warpinator-git
 _desktop_id=org.x.Warpinator
-pkgver=1.8.8.r0.g88864014
+pkgver=1.8.10.r4.g78fe18d2
 pkgrel=1
 pkgdesc="Share files across the LAN"
 arch=('any')
@@ -25,7 +25,8 @@ depends=(
   'python-setuptools'
   'python-zeroconf'
   'python-xapp'
-  'xapps'
+  'xapp'
+  'xapp-symbolic-icons'
 )
 makedepends=(
   'git'

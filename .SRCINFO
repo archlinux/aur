@@ -1,6 +1,6 @@
 pkgbase = warpinator-git
 	pkgdesc = Share files across the LAN
-	pkgver = 1.8.8.r0.g88864014
+	pkgver = 1.8.10.r4.g78fe18d2
 	pkgrel = 1
 	url = https://github.com/linuxmint/warpinator
 	arch = any
@@ -25,7 +25,8 @@ pkgbase = warpinator-git
 	depends = python-setuptools
 	depends = python-zeroconf
 	depends = python-xapp
-	depends = xapps
+	depends = xapp
+	depends = xapp-symbolic-icons
 	optdepends = ufw: Configure firewall rules
 	provides = warpinator
 	conflicts = warpinator
