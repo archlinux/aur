@@ -1,6 +1,6 @@
 # Maintainer: Vadim Storozhilov <vadim@storozhiloff.ru>
 pkgname=yamusic-tui-enhanced
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Unofficial Yandex Music terminal client with UI toggles and enhanced features. Fork of dece2183/yamusic-tui"
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ makedepends=('go')
 conflicts=('yamusic-tui' 'yamusic-tui-nomedia' 'yamusic-tui-enhanced-nomedia')
 provides=('yamusic-tui-enhanced' 'yamusic-tui')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bircoder432/yamusic-tui-enhanced/archive/v$pkgver.tar.gz")
-sha256sums=('83b3c9aa474684a05ab4c8a3396cd8205c5c44f51a79cc9da3987abf1cb600d2')
+sha256sums=('6e5f65edec1f49a0280134549f4a7a9acefd54d31e37c6d1d5c3646ea3ead4bb')
 
 build() {
   cd "yamusic-tui-enhanced-$pkgver"
