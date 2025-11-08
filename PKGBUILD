@@ -2,7 +2,7 @@
 # Maintainer: Jai Brown (JaINTP) <jaintp.dev@gmail.com>
 
 _pkgname=capacities
-_version=1.55.6
+_version=1.55.7
 _image_url_x86_64="https://capacities-desktop-app.fra1.cdn.digitaloceanspaces.com/Capacities-${_version}.AppImage"
 _image_url_aarch64="https://capacities-desktop-app.fra1.cdn.digitaloceanspaces.com/Capacities-${_version}-arm64.AppImage"
 
@@ -19,8 +19,8 @@ provides=('capacities')
 
 source_x86_64=("${_pkgname}-x86_64.AppImage::${_image_url_x86_64}")
 source_aarch64=("${_pkgname}-aarch64.AppImage::${_image_url_aarch64}")
-sha256sums_x86_64=('2644179c62f058bd8e2a52d26bf775d54ff8efd809c70b6d8a306c9d726da595')
-sha256sums_aarch64=('f7246f2776b64118601973205ff0040157cbc7844af7417c2073c45a6a5b70b7')
+sha256sums_x86_64=('3abff244b9677cb202ac2cf4a2704ec8598f5255bbdedbd34a447261dbfee11b')
+sha256sums_aarch64=('b3c804fee206d110793d634166a315949d3c584ec945fd16b3074208e2033f57')
 
 _appimage="${_pkgname}-${CARCH}.AppImage"
 noextract=(
