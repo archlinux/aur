@@ -2,7 +2,7 @@
 
 pkgname=xapp-symbolic-icons
 pkgver=0.r8.ab8fefc
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of symbolic icons for GTK applications and projects, replacing the GNOME-specific Adwaita set now removed by upstream"
 arch=('any')
 url="https://github.com/xapp-project/xapp-symbolic-icons"
@@ -10,7 +10,7 @@ license=('LGPL-3.0-only' 'GPL-3.0-only')
 depends=('hicolor-icon-theme')
 provides=('xapp-symbolic-icons')
 conflicts=('xapp-symbolic-icons-git')
-makedepends=('git' 'meson' 'ninja' 'gtk-update-icon-cache')
+makedepends=('git' 'meson' 'ninja' 'gtk-update-icon-cache' 'python')
 source=("git+https://github.com/xapp-project/xapp-symbolic-icons.git#commit=ab8fefc49ee34b5de583ae615bafa48670f0d231")
 sha256sums=('SKIP')
 
@@ -55,9 +55,9 @@ package() {
   # Install using DESTDIR
   DESTDIR="${pkgdir}" meson install -C build
 
-  # Install licences
-  install -Dm644 COPYING        -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-  install -Dm644 COPYING.LESSER -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  # Install licences (in case they change)
+  #install -Dm644 COPYING        -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  #install -Dm644 COPYING.LESSER -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
   # Install README and AUTHORS
   install -Dm644 README.md      -t "${pkgdir}/usr/share/doc/${pkgname}/"
