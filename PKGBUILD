@@ -4,7 +4,7 @@
 pkgname=bolt-launcher-bin
 _pkgname=bolt-launcher
 pkgver=0.20.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Free open-source third-party implementation of the Jagex Launcher"
 arch=('x86_64')
 url="https://bolt.adamcake.com/"
@@ -18,7 +18,7 @@ depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-libs' 'gdk-pixbuf
          'nspr' 'nss' 'pango')
 optdepends=('jre17-openjdk: runelite/hdos' 'gtk2: rs3' 'openssl-1.1: rs3' 'umu-launcher: osrs official client')
 source=(
-    "Bolt-Linux.zip::https://github.com/Adamcake/Bolt/releases/download/${pkgver}/Bolt-Linux.zip"
+    "Bolt-Linux-${pkgver}.zip::https://github.com/Adamcake/Bolt/releases/download/${pkgver}/Bolt-Linux.zip"
     "Bolt-src-${pkgver}.tar.gz::https://github.com/Adamcake/Bolt/archive/refs/tags/${pkgver}.tar.gz"
     "bolt-launcher.sh"
     "bolt-launcher.desktop"
@@ -30,7 +30,7 @@ sha256sums=('0dc06306b21327605286fa64236e0c2c328ad5e6a83e15575750f5a3badd4d1b'
 
 package() {
     install -d "${pkgdir}/opt/${_pkgname}"
-    bsdtar -x --no-same-owner -f "${srcdir}/Bolt-Linux.zip" -C "${pkgdir}/opt/${_pkgname}" --strip-components=1
+    bsdtar -x --no-same-owner -f "${srcdir}/Bolt-Linux-${pkgver}.zip" -C "${pkgdir}/opt/${_pkgname}" --strip-components=1
     chmod +x "${pkgdir}/opt/${_pkgname}/bolt"
 
     bsdtar -x -f "${srcdir}/Bolt-src-${pkgver}.tar.gz" -C "${srcdir}"
