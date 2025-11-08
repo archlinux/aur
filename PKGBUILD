@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=webapp-manager-git
-pkgver=1.4.0.r2.g4c29d55
+pkgver=1.4.3.r2.g95c7b34
 pkgrel=1
 pkgdesc="Run websites as if they were apps."
 arch=('any')
@@ -8,6 +8,7 @@ url="https://github.com/linuxmint/webapp-manager"
 license=('GPL-3.0-or-later')
 depends=(
   'dconf'
+  'gtk3'
   'python-beautifulsoup4'
   'python-configobj'
   'python-gobject'
@@ -15,6 +16,7 @@ depends=(
   'python-setproctitle'
   'python-tldextract'
   'xapp'
+  'xapp-symbolic-icons'
 )
 makedepends=('git')
 provides=("${pkgname%-git}")
