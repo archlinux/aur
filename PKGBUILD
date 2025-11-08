@@ -2,7 +2,7 @@
 
 pkgname=calibre-bin
 pkgver=8.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Official binary version Calibre"
 arch=(x86_64)
 url="https://download.calibre-ebook.com"
@@ -44,6 +44,9 @@ package() {
 	# Package calibre
 	cp -af "$srcdir/"* "$pkgdir/opt/calibre"
 	mv -f "$pkgdir/opt/calibre/share" "$pkgdir/usr"
+	# espeak-ng-data used by calibre
+	install -dm755 "$pkgdir/opt/calibre/share"
+	mv -f "$pkgdir/usr/share/espeak-ng-data" "$pkgdir/opt/calibre/share"
 
 	# Create symlinks in /usr/bin
 	for f in `find "$pkgdir/opt/calibre" -maxdepth 1 -type f -printf "%f\n"`; do
