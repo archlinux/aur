@@ -7,17 +7,12 @@ else
 fi
 
 VERSION=$(echo "$RELEASE_DATA" | jq '.name' | sed 's/\"//g')
-DOWNLOAD_URL=$(echo "$RELEASE_DATA" | jq '.assets.[].browser_download_url' | grep -h '.deb' | sed 's/\"//g')
+DOWNLOAD_URL=$(echo "$RELEASE_DATA" | jq -r '.assets[] | select(.browser_download_url | endswith("amd64_linux.deb")) | .browser_download_url')
+CHECKSUM=$(echo "$RELEASE_DATA" | jq -r '.assets[] | select(.browser_download_url | endswith("amd64_linux.deb")) | .digest | sub("^sha256:"; "")')
 
 wget "$DOWNLOAD_URL"
 
-if [ -f "gale_${VERSION}_amd64.deb" ]; then
-    DEB_FILE="gale_${VERSION}_amd64.deb"
-elif [ -f "Gale_${VERSION}_amd64.deb" ]; then
-    DEB_FILE="Gale_${VERSION}_amd64.deb"
-fi
-
-CHECKSUM=$(sha256sum "$DEB_FILE" | sed "s/$DEB_FILE//g" | sed 's/^ *//g' | sed 's/ *$//g')
+DEB_FILE="Gale_${VERSION}_amd64_linux.deb"
 
 sed -ri "s/pkgver=[0-9.]+/pkgver=$VERSION/" PKGBUILD
 sed -ri "s/(sha256sums_x86_64=\(\s*?)'[0-9A-Za-z]+'/\1'$CHECKSUM'/g" PKGBUILD
