@@ -3,7 +3,7 @@
 pkgname=ktea
 pkgver=0.6.1
 pkgrel=1
-pkgdesc="Keep local Maildir directories synchronised with an IMAP server"
+pkgdesc="Kafka TUI client "
 arch=('x86_64')
 url="https://github.com/jonas-grgt/ktea"
 license=('Apache-2.0')
