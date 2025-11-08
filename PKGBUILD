@@ -1,7 +1,7 @@
 # Maintainer: mrbooo895 | kwkkna3@gmail.com
 
 pkgname=python-pyinit
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="A powerful CLI tool for creating and managing the entire lifecycle of Python projects."
 arch=('any')
