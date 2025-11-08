@@ -1,6 +1,6 @@
 pkgbase = python-session-info2
 	pkgdesc = Display information about the current Python session.
-	pkgver = 0.2.1
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/scverse/session-info2
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-session-info2
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/s/session_info2/session_info2-0.2.1.tar.gz
-	sha256sums = f2aa4ae95db7f40239608217d7c077b6a51bc3d897792010ea3794ea799bd69c
+	source = https://files.pythonhosted.org/packages/source/s/session_info2/session_info2-0.2.3.tar.gz
+	sha256sums = 6d16e3c6bb72ea52e589da4d722d24798aa3511c34ab8446a131d655cba2e2c9
 
 pkgname = python-session-info2
