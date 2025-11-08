@@ -1,6 +1,6 @@
 pkgbase = python-numcodecs
 	pkgdesc = A Python package providing buffer compression and transformation codecs for use in data storage and communication applications
-	pkgver = 0.16.2
+	pkgver = 0.16.3
 	pkgrel = 1
 	url = https://github.com/zarr-developers/numcodecs
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = python-numcodecs
 	optdepends = python-zfpy
 	optdepends = python-pcodec
 	optdepends = python-crc32c
-	source = https://files.pythonhosted.org/packages/source/n/numcodecs/numcodecs-0.16.2.tar.gz
-	sha256sums = 9922dae0c3b01b5bed3b4bae239f4787e891daa3262c27971298669d029d10e9
+	source = https://files.pythonhosted.org/packages/source/n/numcodecs/numcodecs-0.16.3.tar.gz
+	sha256sums = 53d705865faaf0a7927c973af3777532001c8fbb653de119c1e844608614d799
 
 pkgname = python-numcodecs
