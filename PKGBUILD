@@ -1,5 +1,5 @@
 pkgname='fs'
-pkgver=0.5
+pkgver=0.8
 pkgrel=0
 pkgdesc="a Simple CLI tool to show file and directory sizes (Python script)"
 arch=('any')
