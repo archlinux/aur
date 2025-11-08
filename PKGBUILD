@@ -11,23 +11,27 @@ arch=('any')
 url="https://github.com/conda/conda"
 license=('BSD-3-Clause')
 depends=(
+  'micromamba'
   'python>=3.7'
   'python-archspec'
   'python-boltons'
   'python-boto3'
   'python-botocore'
   'python-conda-package-handling'
-  'python-conda-libmamba-solver'
+  'python-conda-libmamba-solver'  # this is actually required, do not remove.
+  'python-frozendict'
+  'python-packaging'
   'python-platformdirs'
   'python-pluggy>=1.0.0'
   'python-pycosat>=0.6.3'
   'python-requests>=2.20.1'
   'python-ruamel-yaml>=0.11.14'
+  'python-setuptools-scm'
   'python-tqdm'
 )
-checkdepends=(
-  'python-pytest'
-  'python-pytest-mock'
+optdepends=(
+  'python-pytest: for running conda tests'
+  'python-pytest-mock: for running conda tests'
 )
 makedepends=(
   'python-build'
@@ -36,7 +40,12 @@ makedepends=(
   'python-hatch-vcs'
   'python-wheel'
 )
-provides=('python-conda' 'python-conda-env')
+provides=(
+  'python-conda-env'
+)
+conflicts=(
+  'python-conda-git'
+)
 options=(!emptydirs)
 backup=(etc/conda/condarc)
 source=("$url/releases/download/$pkgver/$_name-$pkgver.tar.gz"
@@ -45,9 +54,7 @@ sha256sums=('afb3cc2393a6a05afbc37420bebdd8d23198da35f079c234aa05fedf042745dd'
             'dcd0edb6cc59c67629ddfa6e9fb38f53eff293df92d8a0222ede051c8e66b149')
 
 prepare() {
-  # cd "$srcdir"
-  # tar xvf "$_name-$pkgver.tar.gz"
-  cd "$srcdir/$_name-$pkgver"
+  cd "$srcdir/$_name-$pkgver" || exit
 
   patch -p 1 -i "$srcdir/py-3.13-logging.patch"
   sed -i '3s/^/set _CONDA_EXE=\/usr\/bin\/conda\n/' conda/shell/etc/profile.d/conda.csh
@@ -57,13 +64,13 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$_name-$pkgver"
+  cd "$srcdir/$_name-$pkgver" || exit
 
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$_name-$pkgver"
+  cd "$srcdir/$_name-$pkgver" || exit
 
   # install package contents
   python -m installer --destdir "$pkgdir" "$srcdir/$_name-$pkgver/dist/$_name-$pkgver-"*.whl

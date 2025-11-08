@@ -5,13 +5,12 @@ pkgbase = python-conda
 	url = https://github.com/conda/conda
 	arch = any
 	license = BSD-3-Clause
-	checkdepends = python-pytest
-	checkdepends = python-pytest-mock
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-hatchling
 	makedepends = python-hatch-vcs
 	makedepends = python-wheel
+	depends = micromamba
 	depends = python>=3.7
 	depends = python-archspec
 	depends = python-boltons
@@ -19,14 +18,19 @@ pkgbase = python-conda
 	depends = python-botocore
 	depends = python-conda-package-handling
 	depends = python-conda-libmamba-solver
+	depends = python-frozendict
+	depends = python-packaging
 	depends = python-platformdirs
 	depends = python-pluggy>=1.0.0
 	depends = python-pycosat>=0.6.3
 	depends = python-requests>=2.20.1
 	depends = python-ruamel-yaml>=0.11.14
+	depends = python-setuptools-scm
 	depends = python-tqdm
-	provides = python-conda
+	optdepends = python-pytest: for running conda tests
+	optdepends = python-pytest-mock: for running conda tests
 	provides = python-conda-env
+	conflicts = python-conda-git
 	options = !emptydirs
 	backup = etc/conda/condarc
 	source = https://github.com/conda/conda/releases/download/25.9.1/conda-25.9.1.tar.gz

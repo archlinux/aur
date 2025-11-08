@@ -1,5 +1,4 @@
 /src/
 /pkg/
-/conda-*.tar.gz
-/*.patch
-/*.pkg.tar.*
+*.tar.gz
+*.pkg.tar.*
