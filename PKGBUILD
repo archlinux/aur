@@ -7,7 +7,7 @@ _Pkgname=Actual
 
 pkgname=${_pkgname}-appimage
 pkgver=v25.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Actual Budget is a local-first personal finance tool. It is 100% free and open-source, written in NodeJS, it has a synchronization element so that all your changes can move between devices without any heavy lifting."
 arch=('x86_64')
 url="https://actualbudget.org/"
@@ -27,7 +27,7 @@ prepare() {
 build() {
     # Adjust .desktop so it will work outside of AppImage container
     sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|"\
-        "squashfs-root/desktop-electron.desktop"
+        "squashfs-root/actual.desktop"
     # Fix permissions; .AppImage permissions are 700 for all directories
     chmod -R a-x+rX squashfs-root/usr
 }
@@ -37,7 +37,7 @@ package() {
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${_pkgname}/${_Pkgname}.AppImage"
 
     # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/desktop-electron.desktop"\
+    install -Dm644 "${srcdir}/squashfs-root/actual.desktop"\
             "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
     # Icon images
