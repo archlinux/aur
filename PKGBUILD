@@ -1,8 +1,8 @@
 # Maintainer: Andrew Relative <kezin636 at gmail dot com>
 
 pkgname=aegnux
-pkgver=0.2.6
-pkgrel=3
+pkgver=0.2.7
+pkgrel=1
 pkgdesc="A convenient way to install Adobe After Effects on Linux using Wine."
 arch=('x86_64')
 url="https://github.com/relativemodder/aegnux"
@@ -44,4 +44,5 @@ package() {
     install -Dm644 "$rootdir/icons/aegnux.png" "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.relative.Aegnux.png"
     cd ../..
     install -Dm644 com.relative.Aegnux.desktop "$pkgdir/usr/share/applications/com.relative.Aegnux.desktop"
+    install -Dm644 application-vnd.adobe.aftereffects.project.xml "$pkgdir/usr/share/mime/packages/application-vnd.adobe.aftereffects.project.xml"
 }

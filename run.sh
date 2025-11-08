@@ -1,4 +1,4 @@
 #!/bin/sh
 
 cd /opt/aegnux
-python main.py
+python main.py "$@"
