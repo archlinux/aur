@@ -1,0 +1,5 @@
+[stackusage]
+source = "github"
+github = "d99kris/stackusage"
+use_latest_release = true
+prefix = "v"

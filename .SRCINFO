@@ -1,0 +1,19 @@
+pkgbase = stackusage
+	pkgdesc = Measure stack usage in Linux applications
+	pkgver = 1.20
+	pkgrel = 1
+	url = https://github.com/d99kris/stackusage
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = binutils
+	depends = gcc-libs
+	depends = glibc
+	depends = bash
+	depends = libelf
+	provides = stackusage
+	conflicts = stackusage
+	source = https://github.com/d99kris/stackusage/archive/refs/tags/v1.20.tar.gz
+	sha256sums = 9db4c1e32b3deaee3670f2962d398c5f19745f760afc25887cd950e01823c63f
+
+pkgname = stackusage
