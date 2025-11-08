@@ -1,6 +1,6 @@
 pkgbase = fs
-	pkgdesc = a Simple CLI tool to show file and directory sizes (Python script)
-	pkgver = 0.8
+	pkgdesc = a Simple CLI tool to show file and directory sizes
+	pkgver = 0.9.2
 	pkgrel = 0
 	url = https://github.com/Wael0dfg/fs
 	arch = any
