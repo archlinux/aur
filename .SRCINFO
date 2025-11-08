@@ -1,6 +1,6 @@
 pkgbase = systemd-netns-git
 	pkgdesc = Configure private netns with systemd services.
-	pkgver = r75.61ef953
+	pkgver = r82.e5bb0d7
 	pkgrel = 1
 	url = https://github.com/CarloWood/systemd-netns.git
 	install = systemd-netns-git.install
@@ -9,7 +9,7 @@ pkgbase = systemd-netns-git
 	depends = systemd
 	depends = iproute2
 	depends = nftables
-	provides = systemd-netns=r75.61ef953
+	provides = systemd-netns=r82.e5bb0d7
 	conflicts = systemd-named-netns
 	conflicts = systemd-netns
 	options = !debug
