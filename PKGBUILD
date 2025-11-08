@@ -4,7 +4,7 @@
 # Contributor: itsme <mymail@ishere.ru>
 
 pkgname=debops
-pkgver=3.2.4
+pkgver=3.2.5
 pkgrel=2
 pkgdesc="Your Debian-based data center in a box"
 arch=('any')
@@ -33,7 +33,7 @@ makedepends=('python-setuptools')
 conflicts=('debops-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz"
         "https://github.com/$pkgname/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc")
-sha512sums=('9bc1c2144b9f2eaf10946e366433f980a4f257ed109df1b8be51f3be74535d5a01118be0720b60cf598c1ce55b9c4309a609e9dfaed315a457b6635b00008efa'
+sha512sums=('7a584129870f941fb7184fa4fd4c4522ba7227bb5b9c44fbfe3c4cde7a770ee01b6f81eb1c87e1182908f04658d5308eb43f68732d835c57560fead375a652db'
             'SKIP')
 
 # gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 27067A91D620EE91D50309D92DCCF53E9BC74BEC
