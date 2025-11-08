@@ -1,0 +1,18 @@
+pkgbase = lv2bm
+	pkgdesc = Benchmark tool for LV2 plugins
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/mod-audio/lv2bm
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = GPL3
+	makedepends = make
+	depends = glib2
+	depends = lilv
+	depends = libsndfile
+	source = lv2bm-1.1.tar.gz::https://github.com/mod-audio/lv2bm/archive/v1.1.tar.gz
+	sha256sums = eec990fcd228d5bab43e2ed2b0133a8e4da9994354a6f607baf213d58db5effe
+
+pkgname = lv2bm
