@@ -94,6 +94,10 @@ prepare() {
       patch -d "$_pkgsrc" -Np1 -F100 -i "${srcdir:?}/$src"
     fi
   done
+
+  # fix type mismatch
+  sed -E -e 's&(\?) (_openedFolder)$&\1 static_cast<bool>(\2)&' \
+    -i "$_pkgsrc"/Telegram/SourceFiles/dialogs/dialogs_widget.cpp
 }
 
 build() {
