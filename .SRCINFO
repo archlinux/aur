@@ -5,7 +5,8 @@ pkgbase = quill-editor
 	arch = x86_64
 	license = MIT
 	depends = gcc-libs
-	source = editor.c
+	source = editor.c,
+	source = config.c
 	sha256sums = SKIP
 
 pkgname = quill-editor

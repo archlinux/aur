@@ -6,7 +6,7 @@ pkgdesc="A simple CLI Text Editor"
 arch=('x86_64')
 license=('MIT')
 depends=('gcc-libs')
-source=('editor.c')
+source=('editor.c', 'config.c')
 sha256sums=('SKIP')
 
 build() {
