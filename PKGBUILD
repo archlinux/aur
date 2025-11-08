@@ -1,5 +1,5 @@
 pkgname=('flang')
-pkgver=21.1.4
+pkgver=21.1.5
 pkgrel=1
 pkgdesc="ground-up implementation of a Fortran front end written in modern C++"
 arch=('x86_64')
@@ -13,13 +13,13 @@ source=($_source_base/flang-$pkgver.src.tar.xz{,.sig}
         $_source_base/cmake-$pkgver.src.tar.xz{,.sig}
         $_source_base/clang-$pkgver.src.tar.xz{,.sig}
         $_source_base/llvm-project-$pkgver.src.tar.xz{,.sig})
-sha256sums=('19c7b13239c548640ff09d4ccf86ed2696ffe82eed4999a1de1a5c3332ebe3a9'
+sha256sums=('e60f5c440966364f763c5162c2c33a28cd5e0872d08ee1ef638ec19295ab1ce0'
             'SKIP'
-            'f4316d84a862ba3023ca1d26bd9c6a995516b4fa028b6fb329d22e24cc6d235e'
+            '48013d5714a96419bf993a2e5e4c5827377e8cf9c565070731fb2305d50d9511'
             'SKIP'
-            '3e8e25a7478bfb0ef510fff35d1a43bdfb62c7727bf98bb43ad33deef2f9f1a2'
+            'eee4de3b3f01ea6dd6b0936ac8be319eef0a65d0022def258c70110e3743807c'
             'SKIP'
-            'a01ad7e5167780c945871d75c0413081d12067607a6de5cf71dc3e8d1a82112c'
+            '1794be4bf974e99a3fe1da4b2b9b1456c02ae9479c942f365441d8d207bd650c'
             'SKIP')
 validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstellar@redhat.com>
               'D574BD5D1D0E98895E3BF90044F2485E45D59042'  # Tobias Hieta <tobias@hieta.se>
