@@ -8,7 +8,6 @@ Module: urllib.parse
     open_webui/retrieval/utils.py
     open_webui/retrieval/vector/dbs/qdrant.py
     open_webui/retrieval/vector/dbs/qdrant_multitenancy.py
-    open_webui/retrieval/web/firecrawl.py
     open_webui/retrieval/web/main.py
     open_webui/retrieval/web/searchapi.py
     open_webui/retrieval/web/serpapi.py
@@ -19,6 +18,7 @@ Module: urllib.parse
     open_webui/routers/images.py
     open_webui/routers/ollama.py
     open_webui/routers/openai.py
+    open_webui/utils/headers.py
     open_webui/utils/images/comfyui.py
     open_webui/utils/redis.py
 Module: pydantic
@@ -144,6 +144,7 @@ Module: aiohttp
     open_webui/routers/pipelines.py
     open_webui/routers/tools.py
     open_webui/utils/code_interpreter.py
+    open_webui/utils/images/comfyui.py
     open_webui/utils/oauth.py
     open_webui/utils/telemetry/instrumentors.py
     open_webui/utils/tools.py
@@ -169,7 +170,6 @@ Module: requests
     open_webui/retrieval/web/brave.py
     open_webui/retrieval/web/exa.py
     open_webui/retrieval/web/external.py
-    open_webui/retrieval/web/firecrawl.py
     open_webui/retrieval/web/google_pse.py
     open_webui/retrieval/web/jina_search.py
     open_webui/retrieval/web/kagi.py
@@ -191,6 +191,7 @@ Module: requests
     open_webui/routers/openai.py
     open_webui/routers/pipelines.py
     open_webui/utils/auth.py
+    open_webui/utils/images/comfyui.py
     open_webui/utils/telemetry/instrumentors.py
 Module: redis
   Imported in:
@@ -261,6 +262,7 @@ Module: fastapi.responses
     open_webui/routers/auths.py
     open_webui/routers/files.py
     open_webui/routers/folders.py
+    open_webui/routers/images.py
     open_webui/routers/models.py
     open_webui/routers/ollama.py
     open_webui/routers/openai.py
@@ -471,6 +473,7 @@ Module: open_webui.config
     open_webui/routers/tasks.py
     open_webui/routers/tools.py
     open_webui/routers/utils.py
+    open_webui/socket/main.py
     open_webui/storage/provider.py
     open_webui/test/util/abstract_integration_test.py
     open_webui/utils/access_control.py
@@ -865,6 +868,7 @@ Module: open_webui.models.auths
 Module: open_webui.models.oauth_sessions
   Imported in:
     open_webui/routers/auths.py
+    open_webui/routers/configs.py
     open_webui/routers/tools.py
     open_webui/routers/users.py
     open_webui/utils/middleware.py
@@ -895,6 +899,9 @@ Module: mcp.shared.auth
   Imported in:
     open_webui/routers/configs.py
     open_webui/utils/mcp/client.py
+    open_webui/utils/oauth.py
+Module: authlib.oauth2.rfc6749.errors
+  Imported in:
     open_webui/utils/oauth.py
 Module: open_webui.routers.images
   Imported in:
@@ -1121,6 +1128,9 @@ Module: open_webui.utils.telemetry.instrumentors
 Module: open_webui.utils.telemetry.metrics
   Imported in:
     open_webui/utils/telemetry/setup.py
+Module: anyio
+  Imported in:
+    open_webui/utils/mcp/client.py
 Module: mcp
   Imported in:
     open_webui/utils/mcp/client.py
@@ -1344,6 +1354,10 @@ Module: open_webui.models.tags
 Module: sqlalchemy.sql.expression
   Imported in:
     open_webui/models/chats.py
+Module: open_webui.utils.headers
+  Imported in:
+    open_webui/retrieval/loaders/external_document.py
+    open_webui/routers/images.py
 Module: open_webui.utils.images.comfyui
   Imported in:
     open_webui/routers/images.py
@@ -1399,6 +1413,7 @@ Module: open_webui.utils.channels
     open_webui/routers/channels.py
 Module: fastapi.concurrency
   Imported in:
+    open_webui/retrieval/web/utils.py
     open_webui/routers/retrieval.py
 Module: tiktoken
   Imported in:
@@ -1704,6 +1719,9 @@ Module: xml.etree.ElementTree
 Module: youtube_transcript_api
   Imported in:
     open_webui/retrieval/loaders/youtube.py
+Module: youtube_transcript_api.proxies
+  Imported in:
+    open_webui/retrieval/loaders/youtube.py
 Module: ftfy
   Imported in:
     open_webui/retrieval/loaders/main.py
@@ -1748,9 +1766,6 @@ Module: validators
 Module: certifi
   Imported in:
     open_webui/retrieval/web/utils.py
-Module: langchain_community.document_loaders.firecrawl
-  Imported in:
-    open_webui/retrieval/web/utils.py
 Module: langchain_community.document_loaders.base
   Imported in:
     open_webui/retrieval/web/utils.py
@@ -1765,6 +1780,10 @@ Module: playwright.sync_api
     open_webui/retrieval/web/utils.py
 Module: playwright.async_api
   Imported in:
+    open_webui/retrieval/web/utils.py
+Module: firecrawl
+  Imported in:
+    open_webui/retrieval/web/firecrawl.py
     open_webui/retrieval/web/utils.py
 Module: ddgs
   Imported in:
