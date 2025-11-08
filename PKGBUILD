@@ -1,7 +1,7 @@
 # Maintainer: xYc4t <xYc4t at proton dot me>
 
-pkgname=harmonymusic
-pkgver=1.12.0
+pkgname=harmony-music-bin
+pkgver=1.12.1
 pkgrel=1
 pkgdesc='A cross platform App for streaming Music'
 arch=('x86_64')
@@ -12,10 +12,10 @@ makedepends=('rsync')
 conflicts=('harmony-music-git')
 options=(!strip !debug)
 
-_appimage_suffix='+25'
+_appimage_suffix='+26'
 
 source=("harmonymusic-$pkgver$_appimage_suffix-linux.AppImage::$url/releases/download/v$pkgver/harmonymusic-$pkgver$_appimage_suffix-linux.AppImage")
-sha256sums=('56a990b0da07a70b12d6bc9c84a0438c99a7adf3ecfa168766e132b8adba4ac1')
+sha256sums=('e54391e4bbc52c178628fbbdb9df5b66e6f97332f8c2e0e66f11bfdb97b726a9')
 
 prepare() {
   chmod +x "harmonymusic-$pkgver$_appimage_suffix-linux.AppImage"
