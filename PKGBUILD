@@ -5,8 +5,8 @@ _pkgbase=${pkgbase%-git}
 _pkg1=DankMaterialShell
 _pkg2=danklinux
 pkgname=($_pkgbase-git $_pkgbase-hyprland-git $_pkgbase-niri-git)
-pkgver=0.4.0.r27.gbb0c672.1d3e59b
-pkgrel=2
+pkgver=0.4.2.r3.g27da96b.3963c98
+pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
 url="https://github.com/AvengeMedia/$_pkg1"
@@ -16,6 +16,7 @@ depends=(dgop
          accountsservice)
 optdepends=('cava: Audio visualizer'
             'cliphist: Clipboard history functionality'
+            'i2c-tools: External monitor brightness control'
             'matugen: Dynamic wallpaper-based theming'
             'qt6-multimedia: Sound effect support'
             'power-profiles-daemon: Set power profile'
