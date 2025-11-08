@@ -1,7 +1,7 @@
 # Maintainer: Carlo Wood <carlo@alinoe.com>
 
 pkgname=systemd-netns-git
-pkgver=r75.61ef953
+pkgver=r82.e5bb0d7
 pkgrel=1
 pkgdesc="Configure private netns with systemd services."
 arch=('any')
