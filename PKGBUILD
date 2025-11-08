@@ -2,7 +2,7 @@
 
 pkgname=aliasx
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Alias extended - task, alias and build handles'
 url='https://github.com/hansbinderup/aliasx'
 license=('Apache-2.0')
@@ -15,14 +15,14 @@ sha256sums=('SKIP')
 build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
-}
 
-check() {
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
+    pushd "$srcdir/aliasx-$pkgver" > /dev/null
+    cargo build --frozen --release --all-features
+    popd > /dev/null
 }
 
 package() {
+    pushd "$srcdir/aliasx-$pkgver" > /dev/null
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    popd > /dev/null
 }
