@@ -1,6 +1,6 @@
 pkgbase = octarine-bin
 	pkgdesc = Octarine is an opinionated tool for taking notes, tasks and organising your thoughts.
-	pkgver = 0.29.8
+	pkgver = 0.29.9
 	pkgrel = 1
 	url = https://octarine.app
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = octarine-bin
 	depends = webkit2gtk-4.1
 	depends = xdotool
 	options = !debug
-	source = https://pub-3d35bc018fc54f11bde129e3e73e8002.r2.dev/0.29.8/linux/Octarine-bin-0.29.8-1-x86_64.pkg.tar.zst
+	source = https://pub-3d35bc018fc54f11bde129e3e73e8002.r2.dev/0.29.9/linux/Octarine-bin-0.29.9-1-x86_64.pkg.tar.zst
 	md5sums = SKIP
 
 pkgname = octarine-bin
