@@ -10,11 +10,11 @@ _yellow="${_bold}$(tput setaf 3)"
 
 post_upgrade() {
     # Now let us reload Clash Verge service automatically.
-    if systemctl is-active --quiet clash-verge-service.service; then
-        systemctl restart clash-verge-service.service
-    fi
+    #if systemctl is-active --quiet clash-verge-service.service; then
+    #    systemctl restart clash-verge-service.service
+    #fi
 
-    note 'After upgrading Clash Verge Rev, it is recommended to restart Clash Verge Rev.'
+    note 'After upgrading Clash Verge Rev, it is recommended to restart Clash Verge Rev, and run systemctl restart clash-verge-service.'
 }
 
 pre_remove() {
