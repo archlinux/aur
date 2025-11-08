@@ -1,7 +1,7 @@
 # Maintainer: Lina Roether <lina.roether@proton.me>
 
 pkgname=niji-git
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=4
 pkgdesc="A customizable tool for theming linux systems"
 url="https://github.com/lina-roether/niji"
@@ -17,7 +17,7 @@ md5sums=("SKIP" "SKIP")
 
 pkgver() {
 	cd niji
-	cargo read-manifest --manifest-path=crates/main/Cargo.toml | jq -r .version
+	cargo read-manifest --manifest-path=crates/niji/Cargo.toml | jq -r .version
 }
 
 prepare() {
@@ -40,6 +40,14 @@ package() {
 
 	# Install binary
 	install -Dm755 target/release/niji -t "$pkgdir/usr/bin"
+
+	# Install license
+	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/$pkgname/"
+
+	# Install shell completions
+	install -Dm644 target/release/completions/_niji "${pkgdir}/usr/share/zsh/site-functions/_niji"
+	install -Dm644 target/release/completions/niji.bash "${pkgdir}/usr/share/bash-completion/completions/niji"
+	install -Dm644 target/release/completions/niji.fish "${pkgdir}/usr/share/fish/vendor_completions.d/niji.fish"
 
 	# Install modules and themes
 	mkdir -p "$pkgdir/usr/share/niji"

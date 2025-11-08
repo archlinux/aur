@@ -1,6 +1,6 @@
 pkgbase = niji-git
 	pkgdesc = A customizable tool for theming linux systems
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 4
 	url = https://github.com/lina-roether/niji
 	arch = x86_64
