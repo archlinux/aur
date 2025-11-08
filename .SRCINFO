@@ -1,12 +1,12 @@
 pkgbase = anytype-electron-bin
 	pkgdesc = Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users.
 	pkgver = 0.48.7
-	pkgrel = 4
+	pkgrel = 5
 	url = https://anytype.io/
 	arch = x86_64
 	license = custom
 	makedepends = asar
-	depends = electron36
+	depends = electron38
 	depends = bash
 	depends = libsecret
 	depends = hicolor-icon-theme
