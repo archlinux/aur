@@ -3,7 +3,7 @@
 pkgname=cardo
 pkgver=1.12.0
 pkgrel=1
-pkgdesc="A podcast client for desktops"
+pkgdesc="A graphical podcast client"
 arch=('x86_64')
 url="https://github.com/cardo-podcast/cardo/"
 license=('GPL-3.0-or-later')
