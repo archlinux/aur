@@ -1,6 +1,6 @@
 # Maintainer: nabbisen <nabbisen@scqr.net>
 pkgname=forskscope
-pkgver=0.22.10
+pkgver=0.22.11
 pkgrel=1
 pkgdesc="Diff and merge GUI tool with cross-platform support build with Tauri: Rust and Svelte (Pre-built binary)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
   ".desktop"
   "logo.svg"
 )
-sha256sums=('0dbc7238a0ed29884941d0dd7fbc6e961b5f45b6d0424fdc50e63fd82a92cf39' '60b0d223dc7a717ed4f498349da07854fa1c406acf1959468bd5c0b03bb74491' 'd50b81f03aeaf03bdcf503d2e973d013ea70e199fe8c28c50795b1e3daa65819')
+sha256sums=('b91c25452a7e7701b3292fdb9d5061080f5d65d9e19db259b3edf504c064a3fb' '1db02aa56452951d27d5d19b7e2f15564b092ed48bb5cc8d1d4f429f1d1390d0' 'd50b81f03aeaf03bdcf503d2e973d013ea70e199fe8c28c50795b1e3daa65819')
 
 package() {
   # app
