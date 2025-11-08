@@ -1,15 +1,16 @@
 pkgbase = cargo-leptos
 	pkgdesc = Build tool for the Rust framework Leptos.
-	pkgver = 0.2.44
+	pkgver = 0.2.47
 	pkgrel = 1
 	url = https://github.com/leptos-rs/cargo-leptos
 	arch = x86_64
 	license = MIT
+	makedepends = libgit2
 	depends = cargo
 	depends = cargo-generate
 	depends = binaryen
 	optdepends = dart-sass: sass support
-	source = cargo-leptos-0.2.44.tar.gz::https://github.com/leptos-rs/cargo-leptos/archive/v0.2.44.tar.gz
-	sha256sums = 3c68c56ca57e1e4ef5a04956ea300f7730a38950e632c3c29c2429a152cc271a
+	source = cargo-leptos-0.2.47.tar.gz::https://github.com/leptos-rs/cargo-leptos/archive/v0.2.47.tar.gz
+	sha256sums = ada691f4c0ae5a37994c8b2815791807287f36ff010d20889029b517c734431e
 
 pkgname = cargo-leptos

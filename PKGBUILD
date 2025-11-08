@@ -2,17 +2,18 @@
 #Contributor: Grafcube <grafcube at disroot dot org>
 
 pkgname=cargo-leptos
-pkgver=0.2.44
+pkgver=0.2.47
 pkgrel=1
 pkgdesc="Build tool for the Rust framework Leptos."
 url='https://github.com/leptos-rs/cargo-leptos'
 arch=('x86_64')
 license=('MIT')
 depends=('cargo' 'cargo-generate' 'binaryen')
-makedepends=('libgit2')
+makedepends=('libgit2' 'pkgconf')
 optdepends=('dart-sass: sass support')
+options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3c68c56ca57e1e4ef5a04956ea300f7730a38950e632c3c29c2429a152cc271a')
+sha256sums=('ada691f4c0ae5a37994c8b2815791807287f36ff010d20889029b517c734431e')
 
 prepare() {
 	cd "$pkgname-$pkgver"
