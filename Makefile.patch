@@ -1,49 +1,61 @@
---- kraken2-2.1.6/src/Makefile	2025-07-08 20:33:01.000000000 +0530
-+++ kraken2-2.1.6.new/src/Makefile	2025-11-04 23:07:17.629870378 +0530
-@@ -1,6 +1,6 @@
+--- kraken2-2.17/src/Makefile	2025-11-05 08:23:38.000000000 +0530
++++ kraken2-2.17.new/src/Makefile	2025-11-08 12:59:43.798491289 +0530
+@@ -1,17 +1,18 @@
  CXX ?= g++
  KRAKEN2_SKIP_FOPENMP ?= -fopenmp
--CXXFLAGS = $(KRAKEN2_SKIP_FOPENMP) -Wall -std=c++11 -O3
-+CXXFLAGS += $(KRAKEN2_SKIP_FOPENMP) -Wall -std=c++11 -O2
+-CXXFLAGS = $(KRAKEN2_SKIP_FOPENMP) -Wall -std=c++11 -O3 -fPIC
++CXXFLAGS += $(KRAKEN2_SKIP_FOPENMP) -Wall -std=c++11 -O2 -fPIC
  CXXFLAGS += -DLINEAR_PROBING
- CFLAGS = -Wall -std=c99 -O2 -g3
+ CFLAGS = -Wall -std=c99 -O0 -g3
  
-@@ -11,7 +11,7 @@
+ .PHONY: all clean install
+ 
+-PROGS = estimate_capacity build_db classify dump_table lookup_accession_numbers k2mask blast_to_fasta libtax
++PROGS = estimate_capacity build_db classify dump_table lookup_accession_numbers k2mask blast_to_fasta libtax.so
+ 
  all: $(PROGS)
  
  install: $(PROGS)
 -	cp $(PROGS) "$(KRAKEN2_DIR)/"
-+	cp $(PROGS) $(DESTDIR)"$(KRAKEN2_DIR)/"
++	@mkdir -p "$(DESTDIR)$(KRAKEN2_DIR)"
++	cp $(PROGS) "$(DESTDIR)$(KRAKEN2_DIR)/"
  
  clean:
  	rm -f *.o $(PROGS)
-@@ -39,22 +39,22 @@
+@@ -39,27 +40,27 @@
  blast_utils.o: blast_utils.c
  
  build_db: build_db.o mmap_file.o compact_hash.o taxonomy.o seqreader.o mmscanner.o omp_hack.o utilities.o
 -	$(CXX) $(CXXFLAGS) -o $@ build_db.o mmap_file.o compact_hash.o taxonomy.o seqreader.o mmscanner.o omp_hack.o utilities.o
-+	$(CXX) $(CXXFLAGS) -o $@ $(LDFLAGS) build_db.o mmap_file.o compact_hash.o taxonomy.o seqreader.o mmscanner.o omp_hack.o utilities.o
++	$(CXX) $(CXXFLAGS) -o $@ build_db.o mmap_file.o compact_hash.o taxonomy.o seqreader.o mmscanner.o omp_hack.o utilities.o $(LDFLAGS)
  
  classify: classify.o reports.o hyperloglogplus.o mmap_file.o compact_hash.o taxonomy.o seqreader.o mmscanner.o omp_hack.o aa_translate.o utilities.o
 -	$(CXX) $(CXXFLAGS) -o $@ classify.o reports.o hyperloglogplus.o mmap_file.o compact_hash.o taxonomy.o seqreader.o mmscanner.o omp_hack.o aa_translate.o utilities.o
-+	$(CXX) $(CXXFLAGS) -o $@ $(LDFLAGS) classify.o reports.o hyperloglogplus.o mmap_file.o compact_hash.o taxonomy.o seqreader.o mmscanner.o omp_hack.o aa_translate.o utilities.o
++	$(CXX) $(CXXFLAGS) -o $@ classify.o reports.o hyperloglogplus.o mmap_file.o compact_hash.o taxonomy.o seqreader.o mmscanner.o omp_hack.o aa_translate.o utilities.o $(LDFLAGS)
  
  estimate_capacity: estimate_capacity.o seqreader.o mmscanner.o omp_hack.o utilities.o
 -	$(CXX) $(CXXFLAGS) -o $@ estimate_capacity.o seqreader.o mmscanner.o omp_hack.o utilities.o
-+	$(CXX) $(CXXFLAGS) -o $@ $(LDFLAGS) estimate_capacity.o seqreader.o mmscanner.o omp_hack.o utilities.o
++	$(CXX) $(CXXFLAGS) -o $@ estimate_capacity.o seqreader.o mmscanner.o omp_hack.o utilities.o $(LDFLAGS)
  
  dump_table: dump_table.o mmap_file.o compact_hash.o omp_hack.o taxonomy.o reports.o hyperloglogplus.o
 -	$(CXX) $(CXXFLAGS) -o $@ dump_table.o mmap_file.o compact_hash.o omp_hack.o taxonomy.o reports.o hyperloglogplus.o
-+	$(CXX) $(CXXFLAGS) -o $@ $(LDFLAGS) dump_table.o mmap_file.o compact_hash.o omp_hack.o taxonomy.o reports.o hyperloglogplus.o
++	$(CXX) $(CXXFLAGS) -o $@ dump_table.o mmap_file.o compact_hash.o omp_hack.o taxonomy.o reports.o hyperloglogplus.o $(LDFLAGS)
  
  lookup_accession_numbers: lookup_accession_numbers.o mmap_file.o omp_hack.o utilities.o
 -	$(CXX) $(CXXFLAGS) -o $@ lookup_accession_numbers.o mmap_file.o omp_hack.o utilities.o
-+	$(CXX) $(CXXFLAGS) -o $@ $(LDFLAGS) lookup_accession_numbers.o mmap_file.o omp_hack.o utilities.o
++	$(CXX) $(CXXFLAGS) -o $@ lookup_accession_numbers.o mmap_file.o omp_hack.o utilities.o $(LDFLAGS)
  
  k2mask: k2mask.o seqreader.o
--	$(CXX) $(CXXFLAGS) -o $@ k2mask.o seqreader.o -lz -pthread
-+	$(CXX) $(CXXFLAGS) -o $@ $(LDFLAGS) k2mask.o seqreader.o -lz -pthread
+-	$(CXX) $(CXXFLAGS) -o $@ k2mask.o seqreader.o -lz -pthread -L/usr/local/lib -lprofiler
++	$(CXX) $(CXXFLAGS) -o $@ k2mask.o seqreader.o $(LDFLAGS) -lz -pthread
  
  blast_to_fasta: blast_to_fasta.o blast_defline.o blast_utils.o
--	$(CC) $(CFLAGS) -o $@  blast_to_fasta.o blast_utils.o blast_defline.o -lm -lc #-fsanitize=address,undefined
-+	$(CC) $(CFLAGS) -o $@ $(LDFLAGS)  blast_to_fasta.o blast_utils.o blast_defline.o -lm -lc #-fsanitize=address,undefined
+-	$(CC) $(CFLAGS) -o  $@  blast_to_fasta.o blast_utils.o blast_defline.o -lm -lc
++	$(CC) $(CFLAGS) -o  $@  blast_to_fasta.o blast_utils.o blast_defline.o $(LDFLAGS) -lm -lc
+ 
+ libtax.o: libtax.cc
+ 
+-libtax: taxonomy.o mmap_file.o libtax.o
+-	$(CXX) $(CXXFLAGS) -shared -o libtax.so taxonomy.o mmap_file.o libtax.o
++libtax.so: taxonomy.o mmap_file.o libtax.o
++	$(CXX) $(CXXFLAGS) -shared -o libtax.so taxonomy.o mmap_file.o libtax.o $(LDFLAGS)

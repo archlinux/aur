@@ -1,5 +1,5 @@
 pkgname=kraken2
-pkgver=2.1.6
+pkgver=2.17
 # _pkgver=$(echo "$pkgver" | sed 's/\.//2')
 pkgrel=1
 pkgdesc="Improved vesion of kraken ultrafast metagenomic sequence classification tool. https://doi.org/10.1186/s13059-019-1891-0"
@@ -10,8 +10,8 @@ depends=('glibc' 'gcc-libs' 'blast+' 'perl' 'bash' 'python' 'zlib')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/DerrickWood/kraken2/archive/refs/tags/v${pkgver}.tar.gz"
         'Makefile.patch'
         )
-sha256sums=('5bbd79392ff7c530124986dfdfe126bf638477db94fb7a901ec2daf9261707f3'
-            'a67dd3b50c599b8b08d1cd1e2796f7b937d17543400ba53766a53263a734c7c1')
+sha256sums=('69380e7c22e314245cbe61b2a69d6719c95edadd80ad171577c1e681927c7b88'
+            '61ca474b78d8594c9e61e4541d854f8d797aa18bd5fa5e605cf7710d85fdafc7')
 
 prepare() {
     cd ${pkgname}-${pkgver}
@@ -50,4 +50,5 @@ package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     cp -r data/ ${pkgdir}/usr/share/${pkgname}/
 
-}            
+}
+
