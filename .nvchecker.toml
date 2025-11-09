@@ -1,0 +1,5 @@
+[qvtfpp]
+source = "github"
+github = "craftablescience/qvtfpp"
+use_max_tag = true
+prefix = "v"
