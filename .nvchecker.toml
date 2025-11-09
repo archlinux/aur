@@ -1,0 +1,5 @@
+[duckstation-qt-bin]
+source = "github"
+github = "stenzek/duckstation"
+use_max_tag = true
+prefix = "v"
