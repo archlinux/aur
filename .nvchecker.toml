@@ -1,0 +1,5 @@
+[treefetch]
+source = "github"
+github = "angelofallars/treefetch"
+use_max_tag = true
+prefix = "v"
