@@ -1,0 +1,5 @@
+[cfspeedtest]
+source = "github"
+github = "code-inflation/cfspeedtest"
+use_max_tag = true
+prefix = "v"
