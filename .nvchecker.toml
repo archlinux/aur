@@ -1,4 +1,4 @@
-[miro-pdf]
+[miro-pdf-bin]
 source = "github"
 github = "vincent-uden/miro"
 use_max_tag = true
