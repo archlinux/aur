@@ -1,7 +1,7 @@
 pkgbase = python-langchain-community
 	pkgdesc = Community contributed LangChain integrations.
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/langchain-ai/langchain/blob/master/libs/community
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = python-langchain-community
 	makedepends = python-installer
 	makedepends = python-pdm-backend
 	makedepends = python-wheel
+	makedepends = python-hatchling
 	depends = python-aiohttp
 	depends = python-dataclasses-json
 	depends = python-httpx-sse
