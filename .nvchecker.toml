@@ -1,0 +1,5 @@
+[cpufreqctl]
+source = "github"
+github = "martin31821/cpupower"
+use_max_tag = true
+prefix = "v"
