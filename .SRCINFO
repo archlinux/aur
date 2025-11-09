@@ -1,7 +1,7 @@
 pkgbase = vencord-git
 	pkgdesc = The cutest Discord client mod
 	pkgver = 1.13.5.r0.gc9ebece
-	pkgrel = 2
+	pkgrel = 3
 	url = https://vencord.dev
 	arch = any
 	license = GPL3
