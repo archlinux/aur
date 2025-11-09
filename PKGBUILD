@@ -1,80 +1,68 @@
-# Maintainer: DeltaCopy <7x0bb03yq@mozmail.com>
-# Description: Builds Vinyl theme from https://github.com/ekaaty/vinyl-theme
-# PKGBUILD issues: https://github.com/DeltaCopy/vinyl-git-aur
+# Maintainer:
+# Contributor: DeltaCopy <7x0bb03yq@mozmail.com>
 
-# basic info
-pkgname="vinyl-git"
 _pkgname="vinyl"
-pkgver=r159.ed4afaa
+pkgname="$_pkgname-git"
+pkgver=6.5.2.r4.ge3b59e0
 pkgrel=1
 pkgdesc="Vinyl Theme for KDE Plasma 6"
 url="https://github.com/ekaaty/vinyl-theme"
-arch=('x86_64' 'aarch64')
 license=("GPL-2.0-or-later")
-pkgdir="$srcdir/fakeinstall_kf6"
-build_dir="build_kf6"
-
-makedepends=(
-  'cmake'
-  'extra-cmake-modules>=6.13.0'
-  'git'
-)
-
-options=(!emptydirs !debug)
-
-source=(
-    "${_pkgname}.git::git+${url}.git"
-)
-
-sha256sums=('SKIP')
+arch=('x86_64' 'aarch64')
 
 depends=(
-  'kdecoration'
-  'qt6-declarative'
-  'kcoreaddons'
+  'frameworkintegration'
   'kcmutils'
   'kcolorscheme'
   'kconfig'
+  'kcoreaddons'
+  'kdecoration'
+  'kdoctools'
   'kguiaddons'
   'kiconthemes'
+  'kirigami'
   'kwindowsystem'
-  'kdoctools'
-  'kpackage'
-  'frameworkintegration'
+  'libplasma'
+  'qt6-declarative'
+)
+makedepends=(
+  'cmake'
+  'extra-cmake-modules'
+  'git'
+  'python'
   'python-cairosvg'
   'python-lxml'
   'xorg-xcursorgen'
-  'libplasma>=6.3.0'
 )
 
-depends=("${depends[@]}")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
-provides=("vinyl-git")
+options=('!strip' '!debug')
+
+_pkgsrc="$_pkgname"
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname.git"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/$_pkgname.git"
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() (
-  local cmake_options=(
-    -B $build_dir
-    -S "$_pkgname.git"
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
     -DBUILD_TESTING=OFF
     -Wno-dev
   )
 
-  cmake "${cmake_options[@]}"
-
-  cmake --build $build_dir
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 )
 
 package() (
-  install -dm755 "$pkgdir.git"
-  DESTDIR="$pkgdir" cmake --install $build_dir --prefix /usr
+  DESTDIR="$pkgdir" cmake --install build --prefix /usr
   rm -rf "$pkgdir/usr/lib/cmake"
 )
