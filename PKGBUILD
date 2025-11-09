@@ -23,7 +23,7 @@ makedepends=(
 
 source=("https://github.com/ezratweaver/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 
-b2sums=('695de112d302455deb0112019358f395c20be862f7ca3c4c0a98d76cce3a3af90553053a843c31930b116cd48b1e277e0eeb2ab6a7381b512f25dae7aa91d336')
+b2sums=('86a737fd22e4fabca435f2419e5d729dbf8c953099e1907941aafa3b74e3df07d97ca67639fc06193d846f163fb0309a2f67ad94763a7c4e66b87ba63c917827')
 
 build() {
   cd "${pkgname}-${pkgver}"
