@@ -8,4 +8,4 @@ if [[ -f $XDG_CONFIG_HOME/tosu-flags.conf ]]; then
 fi
 
 # Launch
-exec /opt/tosu/tosu "$@" $TOSU_USER_FLAGS
+exec /opt/tosu/tosu --update=false "$@" $TOSU_USER_FLAGS
