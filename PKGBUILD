@@ -1,13 +1,13 @@
 # Maintainer: Nanaka Hiira <hiira plus archlinux at hiira dot dev>
 pkgname=hazkey-zenzai-vulkan
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Zenzai neural conversion module for Hazkey"
 arch=('x86_64' 'aarch64')
 url="https://github.com/7ka-Hiira/fcitx5-hazkey"
 license=('MIT')
 depends=('hazkey-server' 'vulkan-icd-loader')
-makedepends=('cmake')
+makedepends=('cmake' 'vulkan-headers')
 provides=('hazkey-zenzai')
 _llamacppversion=20251109.0
 source=("https://github.com/7ka-Hiira/llama.cpp/archive/refs/tags/v$_llamacppversion.tar.gz"
