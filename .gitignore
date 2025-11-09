@@ -1,0 +1,8 @@
+*
+!.gitignore
+!.nvchecker.toml
+!.SRCINFO
+!LICENSE
+!PKGBUILD
+!log-orphans.hook
+!log-orphans.sh
