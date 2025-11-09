@@ -1,0 +1,108 @@
+{
+  "name": "gemini-desk",
+  "version": "7.0.0",
+  "description": "Gemini Desktop Wrapper",
+  "author": {
+    "name": "Hillel BH",
+    "email": "hillelben14@gmail.com"
+  },
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^39.1.1",
+    "electron-builder": "^26.0.12"
+  },
+  "dependencies": {
+    "pdfkit": "^0.17.2",
+    "archiver": "^7.0.1",
+    "auto-launch": "^5.0.6",
+    "electron-store": "^11.0.2",
+    "electron-updater": "^6.6.2",
+    "jsdom": "^27.1.0",
+    "marked": "^17.0.0",
+    "node-fetch": "^3.3.2"
+  },
+  "build": {
+    "appId": "com.hillel.geminiapp",
+    "productName": "GeminiDesk",
+    "files": [
+      "**/*",
+      "!release{,/**}",
+      "!dist{,/**}",
+      "!out{,/**}",
+      "!coverage{,/**}",
+      "!**/{test,tests,__tests__}{,/**}",
+      "!**/{example,examples,sample,samples,demo}{,/**}",
+      "!**/*.{map,md,markdown}",
+      "!**/.git{,/**}",
+      "!**/.github{,/**}",
+      "!**/.vscode{,/**}",
+      "!node_modules/electron{,/**}"
+    ],
+    "asar": true,
+    "compression": "maximum",
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "hillelkingqt",
+        "repo": "GeminiDesk"
+      }
+    ],
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "dmg": {
+      "background": null,
+      "format": "UDZO",
+      "title": "${productName}-${version}-${arch}",
+      "window": {
+        "width": 600,
+        "height": 400
+      },
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "artifactName": "${productName}-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "runAfterFinish": true,
+      "include": "installer.nsh",
+      "license": "build/EULA.txt"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Utility",
+      "icon": "icon1.png"
+    },
+    "icon": "icon1.png"
+  },
+  "homepage": "https://github.com/hillelkingqt/GeminiDesk"
+}
