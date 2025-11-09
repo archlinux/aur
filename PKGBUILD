@@ -1,7 +1,7 @@
 # Maintainer: Cogumelo cogumelo@tutamail.com
 pkgname=imageviewer
 pkgver=1.8.2
-pkgrel=2
+pkgrel=3
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 pkgdesc="Simple, cross-platform image viewer"
@@ -11,44 +11,20 @@ makedepends=('git' 'gcc' 'make' 'qt6-tools')
 optdepends=('kimageformats' 'qt6-imageformats' 'resvg')
 provides=("$pkgname=$pkgver")
 conflicts=("$pkgname")
-source=(ImageViewer-"$pkgver".tar.gz::https://github.com/AlienCowEatCake/ImageViewer/releases/download/v"$pkgver"/ImageViewer-"$pkgver".tar.xz)
-sha256sums=('69dc4f00858e38bdaeff79991bc53e862fd378a2b9bd1326d864a43526843eab')
+source=(
+ImageViewer-"$pkgver".tar.gz::https://github.com/AlienCowEatCake/ImageViewer/releases/download/v"$pkgver"/ImageViewer-"$pkgver".tar.xz
+com.github.aliencoweatcake.imageviewer.desktop
+com.github.aliencoweatcake.imageviewer.xml
+)
+sha256sums=(
+'69dc4f00858e38bdaeff79991bc53e862fd378a2b9bd1326d864a43526843eab'
+'af2f078d330f6dcebbddca55fae4bf5e472d101f14fecf05226a804db5e159ea'
+'720b1e3cd4d072bad93f1308edf73ebe87269d3c04407f18d403f56b18834110'
+)
 
 prepare() {
   cp ImageViewer-"$pkgver"/src/ImageViewer/resources/icon/drawing.svg ImageViewer.svg
   rm -r ImageViewer-"$pkgver"/src/ImageViewer/resources/icon
-  echo '[Desktop Entry]
-Name=ImageViewer
-Categories=Qt;Graphics
-Comment=Simple, cross-platform image viewer
-Exec=ImageViewer %U
-Icon=ImageViewer
-Terminal=false
-MimeType=image/avif;image/svg+xml;image/svg+xml-compressed;image/vnd.microsoft.icon;image/bmp;image/gif;image/heic;image/heif;image/jpeg;image/jxl;image/png;image/tiff;image/webp;image/x-eps;image/x-ico;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-xbitmap;image/x-xpixmap;
-Type=Application' > com.github.aliencoweatcake.imageviewer.desktop
-
-echo '<?xml version="1.0" encoding="UTF-8"?>
-<component type="desktop">
-    <id>com.github.aliencoweatcake.imageviewer.desktop</id>
-    <name>Image Viewer</name>
-    <summary>Simple, cross-platform image viewer</summary>
-    <description>
-        <p>Image Viewer is a open-source and cross-platform image viewer inspired by GPicView.</p>
-    </description>
-    <metadata_license>CC0-1.0</metadata_license>
-    <project_license>GPL-3.0-or-later</project_license>
-    <developer_name>AlienCowEatCake</developer_name>
-    <launchable type="desktop-id">com.github.aliencoweatcake.imageviewer.desktop</launchable>
-    <content_rating type="oars-1.1" />
-    <screenshots>
-        <screenshot type="default">
-            <image>https://github.com/AlienCowEatCake/ImageViewer/raw/master/img/Ubuntu.png</image>
-            <caption>Main window</caption>
-        </screenshot>
-    </screenshots>
-    <url type="homepage">https://github.com/AlienCowEatCake/ImageViewer</url>
-    <url type="bugtracker">https://github.https://github.com/AlienCowEatCake/ImageViewer/issues</url>
-</component>' > com.github.aliencoweatcake.imageviewer.xml
 }
 
 build() {
