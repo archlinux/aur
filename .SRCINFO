@@ -1,6 +1,6 @@
 pkgbase = wordlists
 	pkgdesc = Download a great set of wordlists. In /usr/share/wordlists
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	arch = any
 	license = MIT

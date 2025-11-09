@@ -2,7 +2,7 @@
 # Contributor 5amu <v.casalino at protonmail.com>
 
 pkgname=wordlists
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="Download a great set of wordlists. In /usr/share/wordlists"
 license=('MIT' 'GPLv2')
@@ -36,7 +36,7 @@ package() {
     cp -r $srcdir/wfuzz-3.1.0/wordlist/* $pkgdir/usr/share/wordlists/wfuzz
     install -Dm644 $srcdir/wfuzz-3.1.0/LICENSE $pkgdir/usr/share/licenses/wordlists/wfuzz/LICENSE
     mkdir -p $pkgdir/usr/share/wordlists/seclists
-    cp -r $( find $srcdir/SecLists-2024.1/* -maxdepth 0 -type d) $pkgdir/usr/share/wordlists/seclists
-    install -Dm644 $srcdir/SecLists-2024.1/LICENSE $pkgdir/usr/share/licenses/wordlists/seclists/LICENSE
+    cp -r $( find $srcdir/SecLists-2025.3/* -maxdepth 0 -type d) $pkgdir/usr/share/wordlists/seclists
+    install -Dm644 $srcdir/SecLists-2025.3/LICENSE $pkgdir/usr/share/licenses/wordlists/seclists/LICENSE
     find $pkgdir/usr/share/wordlists -type f -exec chmod 644 \{\} \;
 }
