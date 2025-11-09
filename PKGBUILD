@@ -2,7 +2,7 @@
 
 pkgname=librespot-git
 _pkgname=librespot
-pkgver=2124.51a752f4
+pkgver=2138.84a33021
 pkgrel=1
 epoch=1
 pkgdesc="Open Source Spotify client library"
@@ -81,7 +81,7 @@ build() {
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --features "$_features" --workspace
+  cargo build --frozen --release --features "${_features[*]}" --workspace
 }
 
 check() {
@@ -89,7 +89,7 @@ check() {
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo test --frozen --release --features "$_features" --workspace
+  cargo test --frozen --release --features "${_features[*]}" --workspace
 }
 
 package() {
@@ -99,7 +99,7 @@ package() {
   cargo install \
       --no-track \
       --locked \
-      --features "$_features" \
+      --features "${_features[*]}" \
       --root "$pkgdir/usr" \
       --path .
 

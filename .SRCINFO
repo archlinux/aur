@@ -1,6 +1,6 @@
 pkgbase = librespot-git
 	pkgdesc = Open source client library for Spotify
-	pkgver = 2124.51a752f4
+	pkgver = 2138.84a33021
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/librespot-org/librespot
