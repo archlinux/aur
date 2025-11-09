@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Aegnux Mister Horse Handler
+Comment=Aegnux Handler for misterhorsepm://
+Exec=/opt/aegnux/run.sh %U
+MimeType=x-scheme-handler/misterhorsepm
+Terminal=false
+NoDisplay=true

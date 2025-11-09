@@ -1,3 +1,4 @@
 aegnux-*
 pkg
 src
+!aegnux-misterhorse-handler.desktop

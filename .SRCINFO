@@ -1,7 +1,7 @@
 pkgbase = aegnux
 	pkgdesc = A convenient way to install Adobe After Effects on Linux using Wine.
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/relativemodder/aegnux
 	arch = x86_64
 	license = GPL-3.0-only
