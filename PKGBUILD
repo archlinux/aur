@@ -7,9 +7,10 @@ pkgname=(
     librewolf-vencord-bin
 )
 pkgbase=vencord-bin
-_dirname=builds
+_zipdirname=builds
+_dirname=vencord
 pkgver=1.13.5
-pkgrel=3
+pkgrel=4
 pkgdesc="The cutest Discord client mod"
 arch=(any)
 url=https://vencord.dev
@@ -29,11 +30,11 @@ package_vencord-bin() {
     conflicts=(vencord)
     install=vencord.install
 
-    cd "$srcdir"/${_dirname}-${_commit_sha}
-    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/vencord/LICENSE
-    install -d "$pkgdir"/usr/lib/vencord
-    cp -r -- vencord* preload* patcher* renderer* "$pkgdir"/usr/lib/vencord
-    echo '{}' >>"$pkgdir"/usr/lib/$pkgbase/package.json
+    cd "$srcdir"/${_zipdirname}-${_commit_sha}
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$_dirname/LICENSE
+    install -d "$pkgdir"/usr/lib/$_dirname
+    cp -r -- vencord* preload* patcher* renderer* "$pkgdir"/usr/lib/$_dirname
+    echo '{}' >>"$pkgdir"/usr/lib/$_dirname/package.json
 }
 
 package_chromium-vencord-bin() {
@@ -43,10 +44,10 @@ package_chromium-vencord-bin() {
     conflicts=(chromium-vencord)
     install=vencord.install
 
-    cd "$srcdir"/${_dirname}-${_commit_sha}
+    cd "$srcdir"/${_zipdirname}-${_commit_sha}
     unzip extension-chrome.zip -d extension-chrome
-    install -dm755 "$pkgdir"/usr/lib/vencord-chromium
-    cp -r -- extension-chrome/* "$pkgdir"/usr/lib/vencord-chromium
+    install -dm755 "$pkgdir"/usr/lib/"$_dirname"-chromium
+    cp -r -- extension-chrome/* "$pkgdir"/usr/lib/"$_dirname"-chromium
 }
 
 package_firefox-vencord-bin() {
@@ -55,7 +56,7 @@ package_firefox-vencord-bin() {
     conflicts=(firefox-vencord)
     install=vencord.install
 
-    cd "$srcdir"/${_dirname}-${_commit_sha}
+    cd "$srcdir"/${_zipdirname}-${_commit_sha}
     install -Dm644 extension-firefox.zip "$pkgdir"/usr/lib/firefox/browser/extensions/vencord-firefox@vendicated.dev.xpi
 }
 
@@ -65,7 +66,7 @@ package_firefox-developer-edition-vencord-bin() {
     conflicts=(firefox-developer-edition-vencord)
     install=vencord.install
 
-    cd "$srcdir"/${_dirname}-${_commit_sha}
+    cd "$srcdir"/${_zipdirname}-${_commit_sha}
     install -Dm644 extension-firefox.zip "$pkgdir"/usr/lib/firefox-developer-edition/browser/extensions/vencord-firefox@vendicated.dev.xpi
 }
 
@@ -75,6 +76,6 @@ package_librewolf-vencord-bin() {
     conflicts=(librewolf-vencord)
     install=vencord.install
 
-    cd "$srcdir"/${_dirname}-${_commit_sha}
+    cd "$srcdir"/${_zipdirname}-${_commit_sha}
     install -Dm644 extension-firefox.zip "$pkgdir"/usr/lib/librewolf/browser/extensions/vencord-firefox@vendicated.dev.xpi
 }
