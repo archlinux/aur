@@ -1,0 +1,12 @@
+--- a/NeuralAudio/CMakeLists.txt
++++ b/NeuralAudio/CMakeLists.txt
+@@ -71,6 +71,9 @@
+ target_include_directories(NeuralAudio PUBLIC ../deps/RTNeural/modules/json)
+ 
+ set_property(TARGET NeuralAudio PROPERTY POSITION_INDEPENDENT_CODE ON)
++set_property(TARGET NeuralAudio PROPERTY CXX_VISIBILITY_PRESET hidden)
++set_property(TARGET NeuralAudio PROPERTY C_VISIBILITY_PRESET hidden)
++set_property(TARGET NeuralAudio PROPERTY VISIBILITY_INLINES_HIDDEN ON)
+ 
+ add_subdirectory(../deps/RTNeural RTNeural)
+ add_subdirectory(../deps/math_approx math_approx)

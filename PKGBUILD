@@ -5,7 +5,7 @@
 
 pkgname=neural-amp-modeler-bypass-lv2
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Neural Amp Modeler (NAM) LV2 plugin with bypass functionality'
 arch=(x86_64)
 url='https://github.com/rickprice/neural-amp-modeler-bypass-lv2'
@@ -32,17 +32,41 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/rickprice/$pkgname/archive/
         "RTNeural-${_modules[RTNeural]}.tar.gz::https://github.com/mikeoliphant/RTNeural/archive/${_modules[RTNeural]}.tar.gz"
         "math_approx-${_modules[math_approx]}.tar.gz::https://github.com/Chowdhury-DSP/math_approx/archive/${_modules[math_approx]}.tar.gz"
         "xsimd-${_modules[xsimd]}.tar.gz::https://github.com/xtensor-stack/xsimd/archive/${_modules[xsimd]}.tar.gz"
+        "lv2_symbol_export.version"
+        "fix-src-symbol-visibility.patch"
+        "fix-neural-audio.patch"
+        "add-maintainer-email.patch"
 )
 sha256sums=('15493638dac46dffacf2cde6ec1c07c41909b282761256679c9604580e26e0ff'
             'b1fcaf3ada0e90b9ba6eb633e8564413c11882d685d1e33128166946bdbdf937'
             'e732c6e204597d4059aa01f5f416034383dac13d26859b97ef4b97ba0cb3ab39'
             '76f7f6160e681acbb4dd1fff4cfc23a3b61f51f0df2f8b3b5449c010628e4013'
             '3c638ff556d7874c01ccc327a84b9b09ed2334846341195e3f0d26803418a432'
-            'f1c485107ae0b29069a88bf9619d2d93eaed8321ae03a83d7fc437da85d5b9fd')
+            'f1c485107ae0b29069a88bf9619d2d93eaed8321ae03a83d7fc437da85d5b9fd'
+            'f919b59759107299bbba2a8f1acd01561e7e36d8de469529ae13c5ee59805686'
+            '735104f72ed34573072a7237c5f74ebd2dbeb92c180d52a5de6ad42866d905d3'
+            '903e20a2d8159dda33d78cfc044ca024e76da5693d12b37b6377fd3d21030a55'
+            '1293353482572530049c92ac86b00cf514dce4e47a927371279a7902b2a5000c')
 
 prepare() {
   local mod
-  cd $pkgname-$pkgver/deps
+
+  # Patch NeuralAudio before symlinking
+  cd "$srcdir"/NeuralAudio-${_modules[NeuralAudio]}
+  patch -Np1 -i "$srcdir"/fix-neural-audio.patch
+
+  # Setup main source
+  cd "$srcdir"/$pkgname-$pkgver
+
+  # Apply main patches
+  patch -Np1 -i "$srcdir"/fix-src-symbol-visibility.patch
+  patch -Np1 -i "$srcdir"/add-maintainer-email.patch
+
+  # Copy version script
+  cp "$srcdir"/lv2_symbol_export.version .
+
+  # Setup dependencies
+  cd deps
   test -d NeuralAudio && rmdir NeuralAudio
   test -f NeuralAudio || ln -s "$srcdir"/NeuralAudio-${_modules[NeuralAudio]} NeuralAudio
   cd NeuralAudio/deps
