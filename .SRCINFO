@@ -1,0 +1,23 @@
+pkgbase = sledge
+	pkgdesc = A pixel-based drawing tool.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/sledge-pdm/sledge
+	install = sledge.install
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/sledge-pdm/sledge/releases/download/v0.1.1/sledge_0.1.1_amd64_linux.deb
+	sha256sums_x86_64 = c009ea2d044017a87752fc8479f8ab03b8de867fe9761d3b371300b6ebc9a9ff
+
+pkgname = sledge
