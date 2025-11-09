@@ -1,18 +1,3 @@
-Conversation opened. 1 unread message.
-
-Skip to content
-Using Gmail with screen readers
-1 of 1
-(no subject)
-Inbox
-
-Niel Nielsen <nieldk@gmail.com>
-Attachments
-3:00 PM (0 minutes ago)
-to me
-
- One attachment
-  •  Scanned by Gmail
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
