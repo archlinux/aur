@@ -1,7 +1,7 @@
 pkgbase = python-langchain
 	pkgdesc = Building applications with LLMs through composability
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/langchain-ai/langchain/tree/master/libs/langchain
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = python-langchain
 	makedepends = python-installer
 	makedepends = python-pdm-backend
 	makedepends = python-wheel
+	makedepends = python-hatchling
 	depends = python-langchain-core
 	depends = python-langchain-text-splitters
 	depends = python-langsmith
