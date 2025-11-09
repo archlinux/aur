@@ -1,8 +1,8 @@
 # Maintainer: k4ditano <k4ditano@h2r.es>
 pkgname=notnative-app-bin
-pkgver=0.1.5_release
+pkgver=0.1.6
 pkgrel=1
-pkgdesc="Note-taking application with Vim-like keybindings, MCP server, AI chat, and music player (binary package)"
+pkgdesc="Note-taking application with Vim-like keybindings, MCP server (40+ tools), AI chat, and smart tags (binary package)"
 arch=('x86_64')
 url="https://github.com/k4ditano/notnative-omarchy"
 license=('MIT')
@@ -13,8 +13,8 @@ optdepends=(
 )
 provides=('notnative-app')
 conflicts=('notnative-app')
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v0.1.5-release/notnative-app-bin-$pkgver-x86_64.tar.gz")
-sha256sums=('335e6f4e41ba6ab6d9cf10cd88de03c69cc7b34ee60de40cea44b27a4e6c30b1')
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/notnative-app-bin-$pkgver-x86_64.tar.gz")
+sha256sums=('62b2b825733f4de20a64dc3eadd37ce4fee410255c0b59beca4c19e0045774d8')
 
 package() {
     cd "$srcdir"
