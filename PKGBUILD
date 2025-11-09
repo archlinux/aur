@@ -1,18 +1,22 @@
+# Maintainer: SJMC <launcher@sjmc.club>
 # Maintainer: xpe-online <xpecnh2n@gmail.com>
 # Maintainer: raindropqwq <raindropqwq@outlook.com>
 
 pkgname=sjmcl-bin
-pkgver=0.5.1
+pkgdesc='🌟 A Minecraft launcher from @SJMC-Dev'
+pkgver=0.6.0
 pkgrel=1
-pkgdesc="An open source Minecraft launcher designed by SJTU Minecraft Club"
-arch=('x86_64')
-url="https://github.com/UNIkeEN/SJMCL"
-license=('GPL-3.0, custom:LICENSE.EXTRA')
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
+arch=(x86_64)
+license=(GPL-3.0,custom:LICENSE.EXTRA)
+url='https://github.com/UNIkeEN/SJMCL'
 source=("https://github.com/UNIkeEN/SJMCL/releases/download/v${pkgver}/SJMCL_${pkgver}_linux_x86_64.deb"
-  "https://raw.githubusercontent.com/UNIkeEN/SJMCL/v${pkgver}/LICENSE.EXTRA")
-sha256sums=('f90ab1ce3d885f226c3b0543f9fe61f14eafe5de32dc48ed22ea7193a040fdbb'
-  'eb66a5cf3243a98ddd8f6cc76fb8835e651df7b8c0d48e59d9dda7ea4ed2386a')
+        'LICENSE.EXTRA')
+sha512sums=('096905a18ba471a8ca71e9f7ee9190fa006adcec35c42bfd59b273ca5b85aebc96b081976d7d830bfe79d7cb6e6b02b90f486d9f79fee0258f5bdb89ad27db21'
+            '5556b520002a8ed21b890e19364b3f9a640eca5e9170a90b70ad7ab519d505fd12d1b2306643b5cf73d56cb0d7530de1a4aa81c6ef165146c6460661bd5114ba')
+depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
+options=('!strip' '!emptydirs')
+provides=('sjmcl')
+conflicts=('sjmcl')
 
 package() {
   bsdtar -xf data.tar.gz -C "${pkgdir}"
