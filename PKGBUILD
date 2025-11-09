@@ -20,6 +20,7 @@ depends=(
     'glibc'
     'gtk3'
     'libcups'
+    'libnotify'
     'libx11'
     'libxcb'
     'libxcomposite'
@@ -28,11 +29,13 @@ depends=(
     'libxfixes'
     'libxkbcommon'
     'libxrandr'
+    'libxtst'
     'mesa'
     'nspr'
     'nss'
     'pango'
     'systemd-libs'
+    'xdg-utils'
 )
 makedepends=('libarchive')
 optdepends=(
