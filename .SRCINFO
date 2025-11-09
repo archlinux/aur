@@ -1,14 +1,14 @@
 pkgbase = nodejs-appium-uiautomator2-driver
 	pkgdesc = UiAutomator2 integration for Appium
-	pkgver = 6.1.0
+	pkgver = 6.1.1
 	pkgrel = 1
 	url = https://www.npmjs.com/package/appium-uiautomator2-driver
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = npm
 	depends = nodejs
-	noextract = nodejs-appium-uiautomator2-driver-6.1.0.tgz
-	source = nodejs-appium-uiautomator2-driver-6.1.0.tgz::https://registry.npmjs.org/appium-uiautomator2-driver/-/appium-uiautomator2-driver-6.1.0.tgz
-	sha256sums = c4495f1ef960ea5d8e784e8a8f9a3a86f3b9b574daa57bce49edd16d0e23f3dc
+	noextract = nodejs-appium-uiautomator2-driver-6.1.1.tgz
+	source = nodejs-appium-uiautomator2-driver-6.1.1.tgz::https://registry.npmjs.org/appium-uiautomator2-driver/-/appium-uiautomator2-driver-6.1.1.tgz
+	sha256sums = f92b0afde74477c6fbd241df8ce0c1c8e8fb18c78f3c7cac74c4bdd72bf68897
 
 pkgname = nodejs-appium-uiautomator2-driver
