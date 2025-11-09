@@ -1,5 +1,5 @@
 pkgbase = figma-agent-linux
-	pkgdesc = Figma Agent for Linux (a.k.a. Font Helper)
+	pkgdesc = This service allows you to use your locally installed fonts on figma.com.
 	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/neetly/figma-agent-linux
