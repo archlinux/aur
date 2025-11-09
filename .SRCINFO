@@ -1,6 +1,6 @@
 pkgbase = trilium-next
 	pkgdesc = A hierarchical note taking application
-	pkgver = 0.99.3
+	pkgver = 0.99.4
 	pkgrel = 1
 	url = https://github.com/TriliumNext/Trilium
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = trilium-next
 	depends = electron
 	provides = trilium
 	conflicts = trilium
-	source = trilium-0.99.3.tar.gz::https://github.com/TriliumNext/Trilium/archive/refs/tags/v0.99.3.tar.gz
-	sha256sums = c826ac3fe34178927d49fe7abf8bf2a3280dd483b024a0b5fefedddc3528fb9e
+	source = trilium-0.99.4.tar.gz::https://github.com/TriliumNext/Trilium/archive/refs/tags/v0.99.4.tar.gz
+	sha256sums = 35406d76e7b80e211a67aa2c06cf5bfe12f30702e7f5dc876b1662c2a560278c
 
 pkgname = trilium-next
 	depends = electron
