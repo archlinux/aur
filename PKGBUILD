@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-rich' 'python-tomli' 'python-tomli-w' 'python-importlib-resources' 'git')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-packaging')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('fb50e09558dc73f64241c2b9e9790b0703a17a7e9766c8bcde6fa7ef029204cf')
+sha256sums=('48d8f439fdaad63a46952e6dbc1a69195543d6b32ed193b7e527e07aba64999c')
 build() {
     cd "pyinit-$pkgver"
     python -m build --wheel --sdist --no-isolation
