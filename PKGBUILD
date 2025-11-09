@@ -36,6 +36,7 @@ check() {
 }
 
 package() {
+  install -Dm644 "../shitterate.xml" "$pkgdir/usr/share/mime/packages/shitterate.xml"
   cd shitterate
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/shitterate"
 }

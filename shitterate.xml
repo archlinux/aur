@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="text/shit">
+    <sub-class-of type="text/markdown"/>
+    <comment>SHIT file</comment>
+    <comment xml:lang="en">SHIT file</comment>
+    <glob-deleteall/>
+    <glob pattern="*.shit"/>
+  </mime-type>
+</mime-info>
