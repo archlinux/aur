@@ -1,0 +1,7 @@
+[lib32-libevdev]
+source = "gitlab"
+host = "gitlab.freedesktop.org"
+gitlab = "libevdev/libevdev"
+use_max_tag = true
+from_pattern = "libevdev-"
+to_pattern = ""
