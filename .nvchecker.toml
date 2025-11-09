@@ -1,0 +1,5 @@
+[openrdap-client]
+source = "github"
+github = "openrdap/rdap"
+use_max_tag = true
+prefix = "v"
