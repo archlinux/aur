@@ -1,5 +1,5 @@
 post_install() {
-  echo "Please run this command manually to enable the socket:"
+  echo "Please run this command to start the service:"
   echo "$ systemctl --user enable --now figma-agent.socket"
 }
 
