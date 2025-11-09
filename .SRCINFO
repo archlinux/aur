@@ -1,6 +1,6 @@
 pkgbase = surfer-waveform
 	pkgdesc = A waveform viewer with a focus on a snappy usable interface, and extensibility.
-	pkgver = 0.4.0.r1005.72d3e240
+	pkgver = 0.5.0.r1070.9198cc49
 	pkgrel = 1
 	url = https://gitlab.com/surfer-project/surfer
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = surfer-waveform
 	depends = openssl
 	optdepends = zenity
 	provides = surfer-waveform
-	source = surfer-waveform-git-bin-0.4.0.r1005.72d3e240.zip::https://gitlab.com/api/v4/projects/42073614/jobs/artifacts/main/raw/surfer_linux.zip?job=linux_build
+	source = surfer-waveform-git-bin-0.5.0.r1070.9198cc49.zip::https://gitlab.com/api/v4/projects/42073614/jobs/artifacts/main/raw/surfer_linux.zip?job=linux_build
 	sha256sums = SKIP
 
 pkgname = surfer-waveform-git-bin
