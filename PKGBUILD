@@ -1,16 +1,16 @@
-# Maintainer: <mumei AT airmail DOT cc>
+# Contributor: <mumei AT airmail DOT cc>
 pkgname=projectcenter
 _pkgname=ProjectCenter
-pkgrel=1
+pkgrel=2
 pkgver=0.7.0
 pkgdesc="GNUstep's integrated development environment (IDE)."
 arch=('i686' 'x86_64')
 url="https://github.com/gnustep/apps-projectcenter"
 license=('GPL')
 install=$pkgname.install
-#depends=('gnustep-base'
-#         'gnustep-gui'
-#         'gnustep-back')
+depends=('gnustep-back'
+         'gnustep-base'
+         'gnustep-gui')
 makedepends=('gcc-objc'
              'gnustep-make')
 source=(https://github.com/gnustep/apps-projectcenter/releases/download/projectcenter-${pkgver//./_}/$_pkgname-$pkgver.tar.gz)
