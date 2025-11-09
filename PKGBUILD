@@ -1,6 +1,6 @@
 pkgname=sparkle-electron-git
 _pkgname=${pkgname%-electron-git}
-pkgver=1.6.5.r1
+pkgver=1.6.14.r1
 pkgrel=1
 pkgdesc="Another Mihomo GUI."
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL3')
 conflicts=("$_pkgname" "$_pkgname-git" "$_pkgname-bin" "$_pkgname-electron" "$_pkgname-electron-bin")
 depends=('electron' 'gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
 optdepends=('libappindicator-gtk3: Allow sparkle to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).')
-makedepends=('nodejs' 'pnpm' 'libxcrypt-compat' 'asar')
+makedepends=('git' 'nodejs' 'pnpm' 'libxcrypt-compat' 'asar')
 install=$_pkgname.install
 source=(
     "${_pkgname}.desktop"
@@ -46,7 +46,7 @@ package() {
     asar extract $srcdir/${_pkgname}/dist/linux-unpacked/resources/app.asar ${pkgdir}/opt/sparkle
     cp -r $srcdir/${_pkgname}/extra/sidecar ${pkgdir}/opt/sparkle/resources/
     cp -r $srcdir/${_pkgname}/extra/files ${pkgdir}/opt/sparkle/resources/
-    chmod +x ${pkgdir}/opt/sparkle/resources/files/sysproxy
+    chmod +x ${pkgdir}/opt/sparkle/resources/files/sparkle-service
     chmod +sx ${pkgdir}/opt/sparkle/resources/sidecar/mihomo
     chmod +sx ${pkgdir}/opt/sparkle/resources/sidecar/mihomo-alpha
     install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
