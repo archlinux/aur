@@ -1,36 +1,39 @@
 # Maintainer: Nanaka Hiira <hiira plus archlinux at hiira dot dev>
 pkgname=fcitx5-hazkey
-pkgver=0.0.8
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Japanese input method for fcitx5, powered by azooKey engine"
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 url="https://github.com/7ka-Hiira/fcitx5-hazkey"
 license=('MIT')
-depends=('fcitx5>=5.0.4')
-optdepends=('vulkan-driver: Zenzai neural conversion support')
-makedepends=('cmake' 'swift-language' 'vulkan-headers')
-source=("https://github.com/7ka-Hiira/fcitx5-hazkey/archive/refs/tags/0.0.8.tar.gz"
-        "https://codeload.github.com/ensan-hcl/azooKey_dictionary_storage/zip/b05798b43679c385ce2179fb746512d7643dfe12")
-sha256sums=('d42e99d578ae9b2b67a3d72048192b9ecabcc1b24c420f99c4b2c795c706c983'
-            '94153f10f87f2fd754d32f3892d7dacc0f2c6fbb309630ab83d22377a3fffed8')
+depends=('fcitx5>=5.0.4' 'qt6-base')
+optdepends=('hazkey-zenzai: Zenzai neural conversion support')
+makedepends=('cmake' 'ninja' 'swift-language')
+provides=('hazkey-server')
+_dictionaryversion=3.0.1
+_emojidictionaaryversion=08f82252fb90ef8f0949a7e3c554e9e1787ce121
+source=("https://github.com/7ka-Hiira/fcitx5-hazkey/archive/refs/tags/0.2.0.tar.gz"
+        "azooKey_dictionary_storage-v$_dictionaryversion.tar.gz::https://codeload.github.com/azooKey/azooKey_dictionary_storage/zip/refs/tags/v$_dictionaryversion"
+        "azooKey_emoji_dictionary_storage-$_emojidictionaaryversion::https://codeload.github.com/azooKey/azooKey_emoji_dictionary_storage/zip/$_emojidictionaaryversion")
+sha256sums=('56efd8c417cf4356fa582c9840e8ec3fa072e3684caf10eb063afc0cbcf866cf'
+            '9b941ef555ec95d6a6ff914e330e7598eb2fbf9a4f83e9acc58b422f8a35bfc1'
+            '266620b56f8a0ebe674e41475c9cfd0a02da9f75bda942f3041da128dde8e97d')
 
 build() {
 	cd "$pkgname-$pkgver"
 
-	cp -r ../azooKey_dictionary_storage-b05798b43679c385ce2179fb746512d7643dfe12/Dictionary azooKey_dictionary_storage/
+	cp -r ../azooKey_dictionary_storage-$_dictionaryversion/Dictionary ./hazkey-server/azooKey_dictionary_storage/
+	cp -r ../azooKey_emoji_dictionary_storage-$_emojidictionaaryversion/EmojiDictionary ./hazkey-server/azooKey_emoji_dictionary_storage/
 
-	mkdir -p build
-	cd build
+	mkdir -p build && cd build
 
-	# First run fails for unknown reason, so run it twice
-	cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr || true
-	cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-	make
+	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -G Ninja ..
+	ninja
 }
 
 package() {
 	cd "$pkgname-$pkgver/build"
-	make DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" ninja install
 
 	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

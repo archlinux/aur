@@ -1,19 +1,22 @@
 pkgbase = fcitx5-hazkey
 	pkgdesc = Japanese input method for fcitx5, powered by azooKey engine
-	pkgver = 0.0.8
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/7ka-Hiira/fcitx5-hazkey
 	arch = x86_64
-	arch = aarch64
 	license = MIT
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = swift-language
-	makedepends = vulkan-headers
 	depends = fcitx5>=5.0.4
-	optdepends = vulkan-driver: Zenzai neural conversion support
-	source = https://github.com/7ka-Hiira/fcitx5-hazkey/archive/refs/tags/0.0.8.tar.gz
-	source = https://codeload.github.com/ensan-hcl/azooKey_dictionary_storage/zip/b05798b43679c385ce2179fb746512d7643dfe12
-	sha256sums = d42e99d578ae9b2b67a3d72048192b9ecabcc1b24c420f99c4b2c795c706c983
-	sha256sums = 94153f10f87f2fd754d32f3892d7dacc0f2c6fbb309630ab83d22377a3fffed8
+	depends = qt6-base
+	optdepends = hazkey-zenzai: Zenzai neural conversion support
+	provides = hazkey-server
+	source = https://github.com/7ka-Hiira/fcitx5-hazkey/archive/refs/tags/0.2.0.tar.gz
+	source = azooKey_dictionary_storage-v3.0.1.tar.gz::https://codeload.github.com/azooKey/azooKey_dictionary_storage/zip/refs/tags/v3.0.1
+	source = azooKey_emoji_dictionary_storage-08f82252fb90ef8f0949a7e3c554e9e1787ce121::https://codeload.github.com/azooKey/azooKey_emoji_dictionary_storage/zip/08f82252fb90ef8f0949a7e3c554e9e1787ce121
+	sha256sums = 56efd8c417cf4356fa582c9840e8ec3fa072e3684caf10eb063afc0cbcf866cf
+	sha256sums = 9b941ef555ec95d6a6ff914e330e7598eb2fbf9a4f83e9acc58b422f8a35bfc1
+	sha256sums = 266620b56f8a0ebe674e41475c9cfd0a02da9f75bda942f3041da128dde8e97d
 
 pkgname = fcitx5-hazkey
