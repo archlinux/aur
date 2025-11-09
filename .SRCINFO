@@ -1,0 +1,18 @@
+pkgbase = hazkey-zenzai-vulkan
+	pkgdesc = Zenzai neural conversion module for Hazkey
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/7ka-Hiira/fcitx5-hazkey
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	depends = hazkey-server
+	depends = vulkan-icd-loader
+	provides = hazkey-zenzai
+	source = https://github.com/7ka-Hiira/llama.cpp/archive/refs/tags/v20251109.0.tar.gz
+	source = https://huggingface.co/Miwa-Keita/zenz-v3.1-small-gguf/resolve/main/ggml-model-Q5_K_M.gguf
+	sha256sums = a1ec9a605879fc2b7b0bf54669af98cd14b3913e528e69bf564478c92dc7632f
+	sha256sums = 4de930c06bef8c263aa1aa40684af206db4ce1b96375b3b8ed0ea508e0b14f6c
+
+pkgname = hazkey-zenzai-vulkan
