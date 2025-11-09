@@ -1,7 +1,7 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
 pkgname=libuhd-umtrx
-pkgver=1.0.19.r12.gdeb29d7
+pkgver=1.0.19.r13.gfbc40e0
 pkgrel=1
 pkgdesc="Fairwaves UmTRX module for libuhd"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('libuhd' 'boost-libs')
 makedepends=('git' 'cmake' 'boost')
 _gitname=UHD-Fairwaves
-_gitcommit=deb29d74b0d134db67785c8c04f36a78412c7c7e
+_gitcommit=fbc40e06d6ec120524150ae33c6598b0c122651f
 source=("git+https://github.com/fixeria/${_gitname}#commit=${_gitcommit}")
 sha1sums=('SKIP')
 

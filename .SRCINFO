@@ -1,6 +1,6 @@
 pkgbase = libuhd-umtrx
 	pkgdesc = Fairwaves UmTRX module for libuhd
-	pkgver = 1.0.19.r12.gdeb29d7
+	pkgver = 1.0.19.r13.gfbc40e0
 	pkgrel = 1
 	url = https://github.com/fairwaves/UHD-Fairwaves
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = libuhd-umtrx
 	makedepends = boost
 	depends = libuhd
 	depends = boost-libs
-	source = git+https://github.com/fixeria/UHD-Fairwaves#commit=deb29d74b0d134db67785c8c04f36a78412c7c7e
+	source = git+https://github.com/fixeria/UHD-Fairwaves#commit=fbc40e06d6ec120524150ae33c6598b0c122651f
 	sha1sums = SKIP
 
 pkgname = libuhd-umtrx
