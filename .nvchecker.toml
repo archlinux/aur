@@ -1,0 +1,4 @@
+[sourec2viewer]
+source = "github"
+github = "ValveResourceFormat/ValveResourceFormat"
+use_max_tag = true
