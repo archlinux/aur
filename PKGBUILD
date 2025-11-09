@@ -2,7 +2,7 @@
 # Maintainer: Carlos Alexandro Becker <carlos@becker.software>
 
 pkgname='goreleaser-mcp-bin'
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='GoReleaser MCP server'
 url='https://goreleaser.com/mcp'
@@ -12,13 +12,13 @@ provides=('goreleaser-mcp')
 conflicts=('goreleaser-mcp')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/goreleaser/mcp/releases/download/v${pkgver}/goreleaser-mcp_Linux_arm64.tar.gz")
-sha256sums_aarch64=('412a60fcb48a2fe46d263ec3316fa72b578b020e6d9d4df8b6de0ab1c17c04f5')
+sha256sums_aarch64=('a40ed1fbce5e209c8f91412cb821fa552673f79b21448eabf754af0c73d18227')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/goreleaser/mcp/releases/download/v${pkgver}/goreleaser-mcp_Linux_i386.tar.gz")
-sha256sums_i686=('fe222a97285f6e3f48b05e7a2faabec27c8e743114fd6e4a2abf02c1e87c807e')
+sha256sums_i686=('c37c29cddfd1407132da6dbd9bafe43d22301780c1ba4ccd5c55f183229acb4b')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/goreleaser/mcp/releases/download/v${pkgver}/goreleaser-mcp_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('4587d5625077dc3a658be081aa353b2fcf5eb9b054e21ec4a9711f9e89cb201c')
+sha256sums_x86_64=('16c8734eba4729fa31e2e4e097cb56d8b0afb33752aae4deb481ebcfe95a62b5')
 
 package() {
   # bin
