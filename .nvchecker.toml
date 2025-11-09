@@ -1,0 +1,5 @@
+[icann-rdap]
+source = "github"
+github = "icann/icann-rdap"
+use_max_tag = true
+prefix = "v"
