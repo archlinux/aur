@@ -9,7 +9,8 @@ depends=('libusb' 'qt6-base' )
 makedepends=('cmake' 'gcc')
 source=("https://github.com/nivedck/LegionAura/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
-
+provides=('legion' 'legion-rgb' 'lenovo-legion' 'Lenovo' 'loq' 'lenovo-loq')
+conflicts=('legion' 'legion-rgb')
 build() {
   cd "LegionAura-$pkgver"
   mkdir -p build

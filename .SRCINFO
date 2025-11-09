@@ -9,6 +9,14 @@ pkgbase = legionaura
 	makedepends = gcc
 	depends = libusb
 	depends = qt6-base
+	provides = legion
+	provides = legion-rgb
+	provides = lenovo-legion
+	provides = Lenovo
+	provides = loq
+	provides = lenovo-loq
+	conflicts = legion
+	conflicts = legion-rgb
 	source = https://github.com/nivedck/LegionAura/archive/refs/tags/v1.1.0.tar.gz
 	sha256sums = SKIP
 
