@@ -2,7 +2,7 @@
 # Maintainer: Fuad Daoud <aur@fuad-daoud.com>
 
 pkgname='pkgmate-bin'
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc='TUI application to manage your dependencies'
 url='https://github.com/fuad-daoud/pkgmate'
@@ -11,8 +11,8 @@ license=('MIT')
 provides=('pkgmate')
 conflicts=('pkgmate')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fuad-daoud/pkgmate/releases/download/v0.8.3/pkgmate-arch-linux-amd64.tar.gz")
-sha256sums_x86_64=('70bc8b4049fcef786a38da6afbbe18975788aacbcdf3177393ecd03b8b8ce8d1')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fuad-daoud/pkgmate/releases/download/v0.8.4/pkgmate-arch-linux-amd64.tar.gz")
+sha256sums_x86_64=('c9a5c16582742284bd74dbdaa6d6ee2eb76e3d90cb727bc1d4c7e273ef38cfe1')
 
 package() {
   install -Dm755 "./pkgmate" "${pkgdir}/usr/bin/pkgmate"
