@@ -1,26 +1,26 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 4d0cc48..01f0dab 100644
+index 605ce7c..106e511 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -331,7 +331,7 @@ endif()
+@@ -457,7 +457,7 @@ endif()
  
  # This line needs to be updated manually with any new/deleted object files; cmake discourages GLOBbing source files
- add_executable(bolt
+ add_executable("${BOLT_EXE_NAME}"
 -    modules/fmt/src/format.cc src/main.cxx src/browser.cxx src/browser/app.cxx src/browser/client.cxx
 +    src/main.cxx src/browser.cxx src/browser/app.cxx src/browser/client.cxx
      src/browser/client_posix.cxx src/browser/resource_handler.cxx src/browser/window_launcher.cxx
      ${WINDOW_LAUNCHER_OS_SPECIFIC} src/mime.cxx src/file_manager/directory.cxx client_cmake_gen.cxx
      "${LIBRARY_IPC_OS_SPECIFIC}" ${BOLT_FILE_MANAGER_LAUNCHER_GEN} ${BOLT_STUB_INJECT_CXX}
-@@ -353,7 +353,7 @@ if(NOT BOLT_LIBCEF_DIRECTORY)
+@@ -479,7 +479,7 @@ if(NOT BOLT_LIBCEF_DIRECTORY)
      set(BOLT_DO_INSTALL_LIBCEF 1)
      set(BOLT_LIBCEF_DIRECTORY "${CEF_ROOT}/${CMAKE_BUILD_TYPE}")
  endif()
--target_include_directories(bolt PUBLIC ${BOLT_CEF_INCLUDEPATH} modules/fmt/include)
-+target_include_directories(bolt PUBLIC ${BOLT_CEF_INCLUDEPATH})
- set_target_properties(bolt PROPERTIES CXX_STANDARD 20 CXX_EXTENSIONS OFF)
+-target_include_directories("${BOLT_EXE_NAME}" PUBLIC ${BOLT_CEF_INCLUDEPATH} modules/fmt/include)
++target_include_directories("${BOLT_EXE_NAME}" PUBLIC ${BOLT_CEF_INCLUDEPATH})
+ set_target_properties("${BOLT_EXE_NAME}" PROPERTIES CXX_STANDARD 20 CXX_EXTENSIONS OFF)
  if(BOLT_CEF_DLLWRAPPER)
-     target_link_libraries(bolt PUBLIC "${BOLT_CEF_DLLWRAPPER}")
-@@ -396,6 +396,9 @@ elseif(APPLE)
+     target_link_libraries("${BOLT_EXE_NAME}" PUBLIC "${BOLT_CEF_DLLWRAPPER}")
+@@ -536,6 +536,9 @@ elseif(APPLE)
      # TODO: mac support
  endif()
  
@@ -29,4 +29,4 @@ index 4d0cc48..01f0dab 100644
 +
  # compilation setting for enabling chromium dev tools
  if(BOLT_DEV_SHOW_DEVTOOLS)
-     target_compile_definitions(bolt PUBLIC BOLT_DEV_SHOW_DEVTOOLS)
+     target_compile_definitions("${BOLT_EXE_NAME}" PUBLIC BOLT_DEV_SHOW_DEVTOOLS)

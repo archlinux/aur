@@ -1,7 +1,7 @@
 ## Maintainer: Adam <classygopher@gmail.com>
 pkgname=bolt-launcher
-pkgver=0.20.0
-pkgrel=2
+pkgver=0.20.4
+pkgrel=1
 pkgdesc="Free open-source third-party implementation of the Jagex Launcher"
 license=('AGPL3')
 url="https://bolt.adamcake.com/"
@@ -13,26 +13,25 @@ depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'fmt' 'gcc-libs' 'gdk-
 makedepends=('cmake' 'git')
 optdepends=('jre17-openjdk: runelite/hdos' 'gtk2: rs3' 'openssl-1.1: rs3' 'umu-launcher: osrs official client')
 source=("git+https://github.com/Adamcake/Bolt.git#tag=${pkgver}"
-        "https://adamcake.com/cef/cef-126.0.6478.183-linux-x86_64-minimal-ungoogled.tar.gz"
+        "https://adamcake.com/cef/cef-139.0.7258.139-linux-x86_64-minimal-ungoogled.tar.gz"
         "fmt.patch"
         "cef-no-fortify.patch")
 sha256sums=('SKIP'
-            '88a6f34c85a1f8c936563510973e7867d0acc5999dd704bb26bd33bacc8d4be1'
-            '8415144d8aa83cc5f7fbb1b50ccd8b06549cc99dac845346fa9cf1d228c2ad86'
+            '369a24421267857a9f2abc95ae56c56915d1a920bea7bc5aacdfb534e191dbf9'
+            '90bc35d3226b9f71daf4149304ff7559f0c8734df2660f16d99da07f20d006f8'
             '20b60ea029fe7fc95d5b8e3d4dcf035a418267d0b3c445bd821205784b037258')
 
 prepare() {
   git -C "$srcdir/Bolt" submodule update --init --recursive
   git -C "$srcdir/Bolt" apply "$srcdir/fmt.patch"
-  patch -p1 -d "$srcdir/cef_binary_126.2.19+ga5d51ba+chromium-126.0.6478.183_linux64_minimal" < "$srcdir/cef-no-fortify.patch"
+  patch -p1 -d "$srcdir/dist" < "$srcdir/cef-no-fortify.patch"
 }
 
 build() {
-  cmake -S Bolt -B build -G "Unix Makefiles" -D CMAKE_BUILD_TYPE=Release -D CEF_ROOT="$srcdir"/cef_binary_126.2.19+ga5d51ba+chromium-126.0.6478.183_linux64_minimal -D CMAKE_INSTALL_PREFIX="$pkgdir" -D BOLT_BINDIR=usr/bin -D BOLT_LIBDIR=usr/lib -D BOLT_SHAREDIR=usr/share -D BOLT_META_NAME="$pkgname"
+  cmake -S Bolt -B build -G "Unix Makefiles" -D CMAKE_BUILD_TYPE=Release -D CEF_ROOT="$srcdir"/dist -D CMAKE_INSTALL_PREFIX="$pkgdir" -D BOLT_BINDIR=usr/bin -D BOLT_LIBDIR=usr/lib -D BOLT_SHAREDIR=usr/share -D BOLT_META_NAME="$pkgname"
   cmake --build build
 }
 
 package() {
   cmake --install build
 }
-
