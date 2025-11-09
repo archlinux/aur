@@ -2,7 +2,7 @@
 
 pkgname=gz-gui9
 pkgver=9.0.2
-pkgrel=1
+pkgrel=2
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Graphical interfaces for robotics applications"
@@ -34,14 +34,11 @@ makedepends=(
   'vulkan-headers'
   )
 provides=("${_pkgbase}=${_pkgmaj}")
-source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz"
-        "https://github.com/gazebosim/${_pkgbase}/pull/677.patch")
-sha256sums=('8241c31c7ef3668b286426de4103b83ef4c29509c02910b02af9bb6f9e93cec7'
-            '11c497a3cd89b888489f5f8d66b3b052feea86525d8874d8950cdc1c41b0ab0f')
+source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
+sha256sums=('8241c31c7ef3668b286426de4103b83ef4c29509c02910b02af9bb6f9e93cec7')
 
 prepare() {
   cd "${_pkgbase}-${pkgname}_${pkgver}"
-  patch -p1 < ${srcdir}/677.patch
 }
 
 build() {
