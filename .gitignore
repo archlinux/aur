@@ -1,0 +1,4 @@
+/pkg/
+/rogauracore/
+/src/
+*.pkg.tar.zst

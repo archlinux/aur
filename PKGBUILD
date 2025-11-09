@@ -1,15 +1,15 @@
-# Maintainer: Static_Rocket
+# Maintainer: brenno <dev@brenno.codes>
 
 pkgname=rogauracore-git
-pkgver=1.4.r0.g9f4c0aa
+pkgver=1.6.2.r0.g5f68958
 pkgrel=1
 pkgdesc="RGB keyboard control for Asus ROG laptops"
 arch=('x86_64')
-url="https://github.com/wroberts/rogauracore"
+url="https://github.com/Syndelis/rogauracore"
 license=('MIT')
 depends=('glibc' 'libusb' 'udev')
 makedepends=('git')
-source=('git+https://github.com/wroberts/rogauracore.git')
+source=('git+https://github.com/Syndelis/rogauracore.git')
 md5sums=('SKIP')
 _gitdir=${pkgname%"-git"}
 
