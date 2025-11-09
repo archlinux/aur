@@ -1,7 +1,7 @@
 pkgbase = goldendict-ng
 	pkgdesc = The Next Generation GoldenDict (supports Qt WebEngine & Qt6)
 	pkgver = 25.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xiaoyifang/goldendict-ng
 	arch = i686
 	arch = x86_64
