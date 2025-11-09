@@ -1,0 +1,9 @@
+.vscode/
+.idea/
+*.iml
+out
+gen
+
+pkg/
+src/
+*.tar.*

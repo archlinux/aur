@@ -1,0 +1,9 @@
+pkgbase = gigabyte-gaming-gimate-archlinux-configs
+	pkgdesc = Configs for Gigabyte Gaming GiMATE-enabled laptops
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/oldzoomer-ru/gigabyte-gaming-gimate-archlinux-configs
+	arch = any
+	license = 0BSD
+
+pkgname = gigabyte-gaming-gimate-archlinux-configs
