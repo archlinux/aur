@@ -1,0 +1,4 @@
+[vkquake]
+source = "github"
+github = "Novum/vkquake"
+use_max_tag = true
