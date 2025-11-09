@@ -1,7 +1,7 @@
 pkgname=devilutionx-bin
 _pkgname=DevilutionX-bin
 pkgver=1.5.5
-pkgrel=1
+pkgrel=2
 _pkgrel_x86_64=1
 _pkgrel_i386=1
 _pkgrel_pentium4=1
@@ -33,7 +33,7 @@ package() {
    destdir="$pkgdir/usr/share/diasurgical/devilutionx"
    find $srcdir -type f \( -name "*.so" -o -name "*.sh" \) -exec cp {} $destdir \;
    find $srcdir -type f -name "*.so" -exec cp {} $pkgdir/usr/lib \;
-   ln -s /usr/lib/libsodium.so "$pkgdir/usr/lib/libsodium.so.26"
+   [ -f /usr/lib/libsodium.so.26 ] || ln -s /usr/lib/libsodium.so "$pkgdir/usr/lib/libsodium.so.26"
    cd $srcdir
    cp -r $srcdir/devilutionx $destdir
    cp -r $srcdir/devilutionx.mpq $destdir
