@@ -20,7 +20,7 @@ source=(
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans-condensed@${pkgver}/ibm-plex-sans-condensed.zip"
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans-devanagari@${pkgver}/ibm-plex-sans-devanagari.zip"
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans-hebrew@${pkgver}/ibm-plex-sans-hebrew.zip"
-	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans-jp@2.0.0/ibm-plex-sans-jp.zip"
+	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans-jp@3.0.0/ibm-plex-sans-jp.zip"
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans-kr@${pkgver}/ibm-plex-sans-kr.zip"
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans-tc@1.1.1/ibm-plex-sans-tc.zip"
 	"https://github.com/IBM/plex/releases/download/@ibm/plex-sans-sc@${pkgver}/ibm-plex-sans-sc.zip"
@@ -36,7 +36,7 @@ sha256sums=(
 'c172bedb417831bc6ba35ccb727f33959b7f2f8382902386947660bcd66a8077'
 'effc4a35b2908c80806c97a4d5033e63f437611d17a3e09b237edd5c33d8ac94'
 'd7d490b8a767b972a7f361055fdcf60ad7cb7c270b38ff1bf859562a021369fd'
-'ce6af1c716bfe24d2f8129129e4fea8cd4b573869d8417ec4f22eab1e07da510'
+'4c14c41552934b0bc92fc216a76b36bdc78f745dfbeed1115f9b8bc405ee314f'
 '9837800c8e5aedf4123775e1d767afa482c983321bd2fc606c985f405d24562e'
 'b79600d3c9155fa05c9024eb81cfe2fbdd8cd068503dfafd79405ea577aa9fec'
 '0aabd737c8ef0206892b912c759101c10b86c6244be99f2e6b57c6905c716837'
