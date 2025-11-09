@@ -9,6 +9,7 @@ pkgbase = chimeraos-device-quirks-sk
 	depends = acpica
 	depends = cpio
 	depends = systemd
+	depends = alsa-tools
 	depends = swh-plugins
 	provides = chimeraos-device-quirks-git
 	conflicts = chimeraos-device-quirks-git

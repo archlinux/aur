@@ -11,6 +11,7 @@ license=('MIT')
 depends=('acpica'
          'cpio'
          'systemd'
+		 'alsa-tools'
          'swh-plugins')
 makedepends=('git')
 source=("${_pkgbase}::git+https://github.com/honjow/device-quirks.git#tag=${_srctag}")
