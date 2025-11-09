@@ -1,7 +1,7 @@
 # Maintainer: Masato TOYOSHIMA <phoepsilonix@phoepsilonix.love>
 
 pkgname=libaegis
-pkgver=0.4.2
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="Portable C implementations of the AEGIS family of high-performance authenticated encryption algorithms. "
 arch=('i686' 'x86_64' 'aarch64')
@@ -18,10 +18,10 @@ sha256sums=('ce87169b044ea88cd1f0080ac85463e8510cc012d10c893bc28ed8ca71ff6a45')
 provides=('libaegis')
 conflicts=('libaegis')
 
-#pkgver() {
-#    cd "$srcdir/$pkgname"
-#    git describe --tags | sed -e 's/^v//g' -e 's/-g.*$//g' -e 's/-.*//g'
-#}
+pkgver() {
+    cd "$srcdir/$pkgname"
+    git describe --tags | sed -e 's/^v//g' -e 's/-g.*$//g' -e 's/-.*//g'
+}
 
 build() {
     cd "$srcdir/$pkgname"
