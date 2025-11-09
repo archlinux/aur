@@ -1,0 +1,4 @@
+[lib32-check]
+source = "github"
+github = "libcheck/check"
+use_max_tag = true
