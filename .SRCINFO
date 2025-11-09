@@ -1,0 +1,16 @@
+pkgbase = puro-bin
+	pkgdesc = A powerful tool for installing and upgrading Flutter versions.
+	pkgver = 1.4.11
+	pkgrel = 1
+	url = https://github.com/pingbird/puro
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = git
+	provides = puro
+	conflicts = puro
+	options = !strip
+	options = !debug
+	source = puro-bin-1.4.11::https://puro.dev/builds/1.4.11/linux-x64/puro
+	sha256sums = be0e79875f30e2c9f48db20adb5443e02ec78068885c30f1a698513205b2668a
+
+pkgname = puro-bin
