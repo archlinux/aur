@@ -1,0 +1,4 @@
+[python-paginate]
+source = "github"
+github = "Pylons/paginate"
+use_max_tag = true
