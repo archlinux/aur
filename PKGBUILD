@@ -1,7 +1,7 @@
 # Maintainer: envolution
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=clang17-bin
-pkgver=17.0.6.22+b3
+pkgver=17.0.6.23
 pkgrel=1
 pkgdesc="C, C++ and Objective-C compiler - sourced from Debian sid"
 arch=(x86_64)
@@ -29,12 +29,12 @@ for _package in "${_packages[@]}"; do
   noextract+=("${_package}-${_debver}.deb")
 done
 
-sha256sums=('2d83d40b1141fbe8738f962c6f74158b28868cd35a077aa073250b4e5172475f'
-            '902ea98fbb91725991fc3b9f41cc67f2f7a00d7662f576b12bd8e166eaa7f4b7'
-            '4ad716142ba591b1fd6cb6ccdcdcd303137a47950ca22aa925fb61d2cffd386b'
-            '83e0e79680b07d7d5bdfd9171e5c81cbdf4063934dc1dba956f77e6c97a7d175'
-            'fa0cb276585a7b93abc8cda5c0efce19c44f1041f0801c69ba30f49028d34fc1'
-            '652b88d722c613f6c200350105d98414e6c621de2d45e1dd257a07ba4186b8af')
+sha256sums=('8511141c0f09be1a7fb96b45a4bb7089763f43018ac7a34866df5fb7c86d39c3'
+            '5340599c3de77126be50b36ae897321290ab5bc414a74bcdefe708318edebeed'
+            'd314c7f8fc68c8e5a197e49e69b474c82c580f8fa2e4f076d9e538849185b95c'
+            '212f42e4147b8b5b7c95baf85a8788b1fde729bf8da5ff14c47f8c6ab51d9539'
+            '898062bbbaa3a6220c02e04cc758a800a7a7c44c8fb04f15c3321be94878824a'
+            '1cd1fc8836cc94db5e63a84c4162b910d7e3584099d0e27cedded23ed206489c')
 
 prepare() {
   rm -rf _pkg && mkdir -p _pkg
