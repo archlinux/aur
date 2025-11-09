@@ -1,6 +1,6 @@
 pkgbase = seamonkey-bin
 	pkgdesc = SeaMonkey internet suite (binary version)
-	pkgver = 2.53.21
+	pkgver = 2.53.22
 	pkgrel = 1
 	url = http://www.seamonkey-project.org/
 	arch = x86_64
@@ -44,7 +44,7 @@ pkgbase = seamonkey-bin
 	optdepends = ffmpeg: H.264 video support
 	provides = seamonkey
 	conflicts = seamonkey
-	source = https://archive.seamonkey-project.org/releases/2.53.21/linux-x86_64/en-US/seamonkey-2.53.21.en-US.linux-x86_64.tar.bz2
-	sha256sums = 19e819428dbec28e63ca197444d80e8456f106a462254521009f7ae85dae5c16
+	source = https://archive.seamonkey-project.org/releases/2.53.22/linux-x86_64/en-US/seamonkey-2.53.22.en-US.linux-x86_64.tar.bz2
+	sha256sums = 56607cdb040aee55caef740441dd06a4d2a385c4c279a29d5aa95757aacfb7e0
 
 pkgname = seamonkey-bin
