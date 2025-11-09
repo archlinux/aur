@@ -1,18 +1,25 @@
+# Maintainer: a821 at (nospam) mail de
 # Contributor: Bruno Pagani <archange@archlinux.org>
 # Contributor: Darren Ng <$(base64 --decode <<<VW4xR2ZuQGdtYWlsLmNvbQo=)>
 # Contributor : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
 # Contributor: Brandon Invergo <brandon@invergo.net>
 
 pkgname=img2pdf-git
-pkgver=0.5.1.r0.g819b366
+pkgver=0.6.3.r1.g8036638
 pkgrel=1
 epoch=1
 pkgdesc='Losslessly convert raster images to PDF'
 arch=(any)
 url="https://gitlab.mister-muffin.de/josch/img2pdf"
 license=('LGPL-3.0-or-later')
-depends=(python-pillow python-pikepdf)
-makedepends=(git python-setuptools python-build python-installer python-wheel)
+depends=(
+    python
+    python-dateutil
+    python-packaging
+    python-pillow
+    python-pikepdf
+)
+makedepends=(git python-build python-flit-core python-installer python-wheel)
 checkdepends=(python-pytest python-numpy python-scipy python-lxml
               colord ghostscript imagemagick mupdf-tools openjpeg2 poppler perl-image-exiftool netpbm)
 provides=('img2pdf')
@@ -33,13 +40,9 @@ build() {
 check() {
     cd ${pkgname%-git}
     # Different output on Arch?
-    sed -e 's|Joint Photographic Experts Group JFIF format|JPEG|g' \
-        -e 's|JPEG-2000 File Format Syntax|JP2|g' \
-        -e 's|Portable Network Graphics|PNG|g' \
-        -e 's|Tagged Image File Format|TIFF|g' \
-        -e 's|CompuServe graphics interchange format|GIF|g' \
+    sed -e 's|JPEG-2000 File Format Syntax|JP2|g' \
         -i src/img2pdf_test.py
-    sed 's|usr/share/color/icc/sRGB.icc|usr/share/color/icc/colord/sRGB.icc|g' -i src/img2pdf_test.py
+
     # Failures with depth
     pytest -vv --color=yes || echo "Tests failed"
 }
