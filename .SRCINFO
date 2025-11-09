@@ -1,0 +1,14 @@
+pkgbase = sololinux-fastfetch
+	pkgdesc = SoloLinux Fastfetch configuration (ascii.txt + config.jsonc)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/yourusername/fastfetch-config-solomon
+	arch = any
+	license = MIT
+	depends = fastfetch
+	source = ascii.txt
+	source = config.jsonc
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = sololinux-fastfetch
