@@ -1,4 +1,4 @@
-[qvtfpp]
+[qvtfpp-bin]
 source = "github"
 github = "craftablescience/qvtfpp"
 use_max_tag = true
