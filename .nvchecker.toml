@@ -1,0 +1,5 @@
+[noisetorch]
+source = "github"
+github = "noisetorch/NoiseTorch"
+use_max_tag = true
+prefix = "v"
