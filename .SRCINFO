@@ -1,6 +1,6 @@
 pkgbase = afflib
 	pkgdesc = An extensible open format for the storage of disk images and related forensic information
-	pkgver = 3.7.20
+	pkgver = 3.7.22
 	pkgrel = 1
 	url = https://github.com/sshock/AFFLIBv3/
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = afflib
 	depends = libmd
 	depends = expat
 	depends = curl
-	source = https://github.com/sshock/AFFLIBv3/archive/v3.7.20.tar.gz
-	sha256sums = 7264d705ff53185f0847c69abdfce072779c0b907257e087a6372c7608108f65
+	source = https://github.com/sshock/AFFLIBv3/archive/v3.7.22.tar.gz
+	sha256sums = 67481fc520ff927bf61aea0bf2d660feb73e24cc329335bebb064f8f12115dcb
 
 pkgname = afflib
