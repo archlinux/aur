@@ -1,0 +1,4 @@
+[an-anime-game-launcher]
+source = "github"
+github = "an-anime-team/an-anime-game-launcher"
+use_max_tag = true
