@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgbase=linux-flowx13
-pkgver=6.17.5.arch1
+pkgver=6.17.7.arch1
 pkgrel=1
 pkgdesc='Linux (with patches for the Asus Flow X13)'
 url='https://github.com/archlinux/linux'
@@ -46,17 +46,17 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('c05faf36e9c2164be723cf6ada8533788804d48f9dd2fe1be2ccee3616a92bce'
+sha256sums=('ddf2ea0d4439e1d57136be3623102af9458f601f5b1cb77e83246e88aea09d0e'
             'SKIP'
-            '4d32082c82c9bfd85ff2840ad59a7c073450577be272a3235e1523c45f9d6548'
+            '8bb8d08a419971c0cf96346de3de69c980e0c9a384f46cca49ca9c74eb60343a'
             'SKIP'
-            'fd1d644c16339867cf1fd6d7cd4b1f47f440fef574bca18bcaf29cb822b17750'
+            '4e6c3f6a35fed3e2bee7309d430ddf87b435ffb6e697c5d53a6c2eb73c42079a'
             '5d1e64b4c8b3158169d6f19f9f2c2d0cb36c2108560e3c4d3a0b194e1ea80fdd')
-b2sums=('972f684c9b03535affc20e9c082b1ef7ebd1590f42024e524d60080e8badcc68bce73c56b3ed03df2bb016145708abc080943e1f51c7b9bce3ed9650cc4d9f06'
+b2sums=('7338c33e209a87d2acdc80cb30066b719a1924ac38db0ac4087c4cb2ae6d510d75fbc97eeadac9bbc070afe09f29e65fd7ab18383fe677adcf993c17d4407535'
         'SKIP'
-        '50548dc2a9cb3386f2fc0c7b4a3933e2f59fc59fc67bdb85eefe489dc46ea073b91e2eb605d4bd55cdc6aae5be2e58188f4d47ade2f8d79724a83970b3c4060a'
+        '446bbb888e4588285d9629b6142420a308919105612d81cc9add844857c6930caf8fa8477e3120f51a596609f4aba6f166447902fc6936ba8c60870976690db2'
         'SKIP'
-        '676b20253183330383a9bb3a86952a5d6b0931c0ce0b025c303e824972aeed7689357c7c8e0ebf4d8f02bf56d5e9309cccfcd423127f95f642982ad15f06fb99'
+        '7d8b33b9ef36bbd599ad283210d19c8f6a481ac3e540be0ac519c4942865bf8a25f01bfcfba4ff4c6fc237a5d7586eb6bb0fbf3eb657d5df6856bd4395475f78'
         '3709434e8acee63b62448c5901ce6fb90f985cbbd53dcb04451f8a194c5cf6f616c127d22417c825108fd00f47bd0acc8ee0df5f8609005e1c7dab27cd4b2277')
 
 
