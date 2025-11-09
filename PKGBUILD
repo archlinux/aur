@@ -2,8 +2,8 @@
 # shellcheck disable=SC2034,SC2164
 
 pkgname=intermodal
-pkgver=0.1.14
-pkgrel=2
+pkgver=0.1.15
+pkgrel=1
 pkgdesc="User-friendly and featureful CLI BitTorrent metainfo utility, written in Rust"
 arch=('x86_64')
 url="https://github.com/casey/intermodal"
@@ -12,7 +12,7 @@ makedepends=(cargo help2man libgit2 libssh2)
 conflicts=(intermodal-bin)
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4b42fc39246a637e8011a520639019d33beffb337ed4e45110260eb67ecec9cb')
+sha256sums=('a01fde996f2e506c7e90a6015a6e130cb4757d21e98063c38672bdccf2e99d9c')
 
 prepare() {
   cd "$pkgname-$pkgver"
