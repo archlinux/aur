@@ -1,0 +1,5 @@
+[wiiudownloader]
+source = "github"
+github = "Xpl0itU/WiiUDownloader"
+use_max_tag = true
+prefix = "v"
