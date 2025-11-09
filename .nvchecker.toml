@@ -1,4 +1,4 @@
-[libreoffice-extension-writingtool]
+[libreoffice-extension-writingtool-bin]
 source = "github"
 github = "writingtool-org/writingtool"
 use_max_tag = true
