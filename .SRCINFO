@@ -1,6 +1,6 @@
 pkgbase = gnss-sdr-git
 	pkgdesc = GNSS (Global Navigation Satellite System) software receiver
-	pkgver = 0.0.20+318.r10173.20251106.4797cbb71
+	pkgver = 0.0.20+330.r10185.20251108.a13bc129b
 	pkgrel = 1
 	url = http://gnss-sdr.org
 	arch = i686
@@ -62,7 +62,7 @@ pkgbase = gnss-sdr-git
 	depends = opencl-icd-loader
 	depends = protobuf
 	depends = pugixml
-	provides = gnss-sdr=0.0.20+318.r10173.20251106.4797cbb71
+	provides = gnss-sdr=0.0.20+330.r10185.20251108.a13bc129b
 	conflicts = gnss-sdr
 	source = gnss-sdr::git+https://github.com/gnss-sdr/gnss-sdr.git#branch=next
 	sha256sums = SKIP
