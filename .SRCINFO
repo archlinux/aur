@@ -1,7 +1,7 @@
 pkgbase = onlinefix-linux-launcher-bin
 	pkgdesc = OnlineFix Linux Launcher - play games with community multiplayer fixes on Linux!
 	pkgver = 2.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ZzEdovec/onlinefix-linux
 	arch = x86_64
 	license = AGPL3

@@ -1,7 +1,7 @@
 # Maintainer: queinu (ZzEdovec) <zzedovec@yahoo.com>
 pkgname=onlinefix-linux-launcher-bin
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OnlineFix Linux Launcher - play games with community multiplayer fixes on Linux!"
 arch=('x86_64')
 url="https://github.com/ZzEdovec/onlinefix-linux"
