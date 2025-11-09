@@ -1,0 +1,20 @@
+pkgbase = clash-party-bin
+	pkgdesc = A Clash client with party features
+	pkgver = 1.8.8
+	pkgrel = 5
+	url = https://github.com/mihomo-party-org/clash-party
+	arch = x86_64
+	license = GPL
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = libappindicator-gtk3
+	depends = libnotify
+	depends = libcups
+	depends = libsecret
+	depends = libxtst
+	depends = alsa-lib
+	source = clash-party-bin-1.8.8.deb::https://github.com/mihomo-party-org/clash-party/releases/download/v1.8.8/clash-party-linux-1.8.8-amd64.deb
+	sha256sums = SKIP
+
+pkgname = clash-party-bin
