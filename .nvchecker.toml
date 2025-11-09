@@ -1,0 +1,5 @@
+[udp-over-tcp]
+source = "github"
+github = "mullvad/udp-over-tcp"
+use_max_tag = true
+prefix = "v"
