@@ -1,0 +1,5 @@
+[zsh-antidote]
+source = "github"
+github = "mattmc3/antidote"
+use_max_tag = true
+prefix = "v"
