@@ -4,7 +4,7 @@
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=easyeffects-git
-pkgver=7.1.7.r1478.g0c61490fe
+pkgver=8.0.0.r0.g2a3986ca4
 pkgrel=1
 pkgdesc='Audio Effects for PipeWire applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -28,6 +28,7 @@ depends=(
   'qqc2-desktop-style'
   'qt6-base'
   'qt6-graphs'
+  'qt6-webengine'
   'rnnoise'
   'soundtouch'
   'speexdsp'
