@@ -1,0 +1,5 @@
+[ce-toolchain]
+source = "github"
+github = "CE-Programming/toolchain"
+use_max_tag = true
+prefix = "v"
