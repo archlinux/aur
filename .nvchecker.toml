@@ -1,0 +1,5 @@
+[sleepy-launcher]
+source = "github"
+github = "an-anime-team/sleepy-launcher"
+use_max_tag = true
+prefix = "v"
