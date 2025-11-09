@@ -1,0 +1,17 @@
+pkgbase = rogauracore-bin
+	pkgdesc = RGB keyboard control for Asus ROG laptops
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://github.com/Syndelis/rogauracore
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libusb
+	depends = udev
+	provides = rogauracore
+	conflicts = rogauracore
+	options = !debug
+	source_x86_64 = rogauracore-bin-1.6.2.tar.gz::https://github.com/Syndelis/rogauracore/releases/download/1.6.2/rogauracore_amd64.tar.gz
+	sha256sums_x86_64 = e8ebd6b5d5009a492e83d34d27cc9ad1130448a306ff048a96297878f4e28393
+
+pkgname = rogauracore-bin
