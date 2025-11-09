@@ -53,7 +53,7 @@ optdepends=('kamera: import pictures from gphoto2 cameras'
 conflicts=('gwenview')
 replaces=('gwenview')
 makedepends=(extra-cmake-modules
-             kdoctools5
+             kdoctools
              wayland-protocols)
 source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz{,.sig})
 sha256sums=('2000c42d40ee3e92ce355f82d2fddd07d27f613f71cf2e65699cfe794a76eca1'
