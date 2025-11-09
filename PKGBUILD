@@ -2,7 +2,7 @@
 # Maintainer: Fuad Daoud <aur@fuad-daoud.com>
 
 pkgname='pkgmate-bin'
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='TUI application to manage your dependencies'
 url='https://github.com/fuad-daoud/pkgmate'
@@ -11,20 +11,20 @@ license=('MIT')
 provides=('pkgmate')
 conflicts=('pkgmate')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fuad-daoud/pkgmate/releases/download/v0.8.0/pkgmate-debian-linux-arm64.tar.gz")
-sha256sums_aarch64=('1f12c8ce516dc668c482175474c23579350765bc0330563469272cc100941de4')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fuad-daoud/pkgmate/releases/download/v0.8.1/pkgmate-debian-linux-arm64.tar.gz")
+sha256sums_aarch64=('5020c78529f548553c4226b4283fcfe7c7c3e80cbbaa7892b55af59b6c4ca877')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fuad-daoud/pkgmate/releases/download/v0.8.0/pkgmate-brew-linux-arm64.tar.gz")
-sha256sums_aarch64=('528447940d3351cfe9c1b4ea78196216c8aed18fe9d82e320c368f55f907ff85')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fuad-daoud/pkgmate/releases/download/v0.8.1/pkgmate-brew-linux-arm64.tar.gz")
+sha256sums_aarch64=('d103137e9e0df82eae10b84fb192b6c5f9496351f2a8a29c3ce2e63c69503ff6')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fuad-daoud/pkgmate/releases/download/v0.8.0/pkgmate-debian-linux-amd64.tar.gz")
-sha256sums_x86_64=('0ec114556453ff0e33cd6ea3bacd66a8a0193327847a9e8d207d4b10317066e0')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fuad-daoud/pkgmate/releases/download/v0.8.1/pkgmate-debian-linux-amd64.tar.gz")
+sha256sums_x86_64=('173ca780390f61ee2c6894c4f363bddac920cc24286d7559721bed0f77706ec9')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fuad-daoud/pkgmate/releases/download/v0.8.0/pkgmate-arch-linux-amd64.tar.gz")
-sha256sums_x86_64=('58af370a768655b1907fda1586e3e5c3ccf410b5d2d65b1a6c29983003cfef91')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fuad-daoud/pkgmate/releases/download/v0.8.1/pkgmate-arch-linux-amd64.tar.gz")
+sha256sums_x86_64=('14158eafd8a653f7adf91dc6a2f5c6438be407b60bf772f8b05c7f918ef7728c')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fuad-daoud/pkgmate/releases/download/v0.8.0/pkgmate-brew-linux-amd64.tar.gz")
-sha256sums_x86_64=('e6e6943a63980bf954f5295b295810d9a24798521eeb1e5daf57cb7ee7fcc8ae')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fuad-daoud/pkgmate/releases/download/v0.8.1/pkgmate-brew-linux-amd64.tar.gz")
+sha256sums_x86_64=('e98f2f79074cb56f441f89bd0e125fea2a3ba5b9f900ef10a6d5d2c4077e54ae')
 
 package() {
   install -Dm755 "./pkgmate" "${pkgdir}/usr/bin/pkgmate"
