@@ -1,0 +1,7 @@
+[blender-benchmark-cli]
+source = "htmlparser"
+url = "https://download.blender.org/release/BlenderBenchmark2.0/launcher/"
+xpath = "//a[contains(text(), 'benchmark-launcher-') and contains(text(), 'linux.tar.gz')]/text()"
+prefix = "benchmark-launcher-"
+from_pattern = "-linux.tar.gz"
+to_pattern = ""
