@@ -1,0 +1,6 @@
+[steamdepotdownloader]
+source = "github"
+github = "SteamRE/DepotDownloader"
+use_max_tag = true
+from_pattern = "DepotDownloader_"
+to_pattern = ""
