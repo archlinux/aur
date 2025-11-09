@@ -1,7 +1,7 @@
 pkgbase = gz-sim8
 	pkgdesc = Open source robotics simulator
-	pkgver = 8.9.0
-	pkgrel = 3
+	pkgver = 8.10.0
+	pkgrel = 1
 	url = https://github.com/gazebosim/gz-sim
 	arch = any
 	license = Apache-2.0
@@ -28,9 +28,9 @@ pkgbase = gz-sim8
 	depends = sdformat=14
 	depends = tinyxml2
 	provides = gz-sim=8
-	source = https://github.com/gazebosim/gz-sim/archive/gz-sim8_8.9.0.tar.gz
+	source = https://github.com/gazebosim/gz-sim/archive/gz-sim8_8.10.0.tar.gz
 	source = https://github.com/gazebosim/gz-sim/pull/2869.patch
-	sha256sums = 2737f4eb4a58c3c48cc32893109d2702ec5b2dd5313472f45f55923789bdaf50
+	sha256sums = 54e2f285df84c63f11fcb9875d8b570c621237242c5a17aa116b131d0b2262f8
 	sha256sums = e836f1adabe8f44a4e6a238b06364afe06e1a5c28c9cb137c1c88538f65ede85
 
 pkgname = gz-sim8
