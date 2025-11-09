@@ -1,4 +1,4 @@
-[godot3]
+[godot3-mono]
 source = "github"
 github = "godotengine/godot"
 use_max_tag = true
