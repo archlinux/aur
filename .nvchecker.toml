@@ -1,0 +1,4 @@
+[scotty]
+source = "git"
+git = "https://git.sr.ht/~phw/scotty"
+prefix = "v"
