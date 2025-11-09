@@ -1,12 +1,12 @@
 # Maintainer: İsmail Yılmaz <iylmz.iylmz@gmail.com>
 pkgname=bobcat-terminal-headless-git
 pkgver=r348.9544257
-pkgrel=1
+pkgrel=2
 upprel=2025.1.1
 uppver=17810
-pkgdesc="A powerful yet user-friendy cross-platform terminal emulator"
+pkgdesc="A powerful yet user-friendy cross-platform terminal emulator (headless version)"
 arch=('x86_64')
-conflicts=('bobcat-terminal-git' 'bobcat-terminal')
+conflicts=('bobcat-terminal-git' 'bobcat-terminal' 'bobcat-terminal-headless' 'bobcat-terminal-headless-git')
 url="https://github.com/ismail-yilmaz/Bobcat"
 license=('GPL3')
 depends=(
