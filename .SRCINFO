@@ -1,6 +1,6 @@
 pkgbase = flix-cli
 	pkgdesc = Watch movies and series from your commandline
-	pkgver = 1.7.11.6
+	pkgver = 1.7.11.7
 	pkgrel = 1
 	url = https://github.com/demonkingswarn/flix-cli
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = flix-cli
 	depends = python-regex
 	depends = python-beautifulsoup4
 	depends = python-krfzf
-	noextract = flix_cli-1.7.11.6-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/81/fb/7ef1c7167b1b4d63ebcad1ef98017f38a008674f03f00f482cbef32ea89d/flix_cli-1.7.11.6-py3-none-any.whl
-	sha256sums = 0543f971b57d8d724e1c5d084acfe1a2f1b9905210fcbfe15e1165f54fbfe754
+	noextract = flix_cli-1.7.11.7-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/7c/a2/172c49ae269fb94862814a50dd8f2aacbbd74b6f5e316bf29b596073515b/flix_cli-1.7.11.7-py3-none-any.whl
+	sha256sums = b86f95c9b747b657f4c1894af5536c7ebbf902246bd6f66fbeae05e58c5bab4b
 
 pkgname = flix-cli
