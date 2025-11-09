@@ -1,7 +1,7 @@
 pkgbase = gz-fuel-tools10
 	pkgdesc = A client library and command line tools for interacting with Gazebo Fuel servers.
 	pkgver = 10.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gazebosim/gz-fuel-tools
 	arch = any
 	license = Apache-2.0
