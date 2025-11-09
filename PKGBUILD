@@ -6,9 +6,9 @@ url="https://github.com/Amulet-Team/Amulet-IO"
 license=("LicenseRef-Amulet-Team-License")
 arch=(any)
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 makedepends=(python-setuptools git python-wheel cmake python-versioneer)
-depends=(python python-black pybind11)
+depends=(python pybind11)
 source=(
 	"git+https://github.com/Amulet-Team/Amulet-IO.git#tag=${pkgver}"
 )
