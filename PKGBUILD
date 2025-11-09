@@ -1,7 +1,7 @@
 # Maintainer:  NourEddine Yassine <NourEddineX at protonmail dot com>
 # Contributor: Albert Latham <me@albertlatham.com>
-pkgname=deepagent-bin
-pkgver=1.101.23900
+pkgname=abacusai-bin
+pkgver=1.104.34413
 pkgrel=1
 pkgdesc="A powerful desktop AI assistant with agentic browsing, listening, coding CLI and editor"
 arch=('x86_64' 'aarch64')
@@ -12,68 +12,68 @@ options=(!debug)
 optdepends=('libgnome-keyring: for keyring support'
            'bash-completion: for bash completions'
            'zsh-completions: for zsh completions')
-provides=('deepagent-bin')
-conflicts=('deepagent' 'codellm' 'codellm-bin')
+provides=('abacusai-bin')
+conflicts=('deepagent-bn' 'deepagent' 'codellm' 'codellm-bin')
 
-source_x86_64=("https://github.com/abacusai/deepagent-releases/releases/download/${pkgver}/DeepAgent-linux-x64-${pkgver}.tar.gz")
-source_aarch64=("https://github.com/abacusai/deepagent-releases/releases/download/${pkgver}/DeepAgent-linux-arm64-${pkgver}.tar.gz")
+source_x86_64=("https://github.com/abacusai/deepagent-releases/releases/download/${pkgver}/AbacusAI-linux-x64-${pkgver}.tar.gz")
+source_aarch64=("https://github.com/abacusai/deepagent-releases/releases/download/${pkgver}/AbacusAI-linux-arm64-${pkgver}.tar.gz")
 
-sha256sums_x86_64=('ef837182063ccf565b774169788b1b4721b5a54f1d4e3ca315278fc397510678')
-sha256sums_aarch64=('2ff21b1aa1d037fc7e05a0fb9da6480a9bb761fec9d7845e668202a94ac835ad')
+sha256sums_x86_64=('afcca4ea89794d13cb6ce599adf26935b195d2a1ab2bb8fac563d0949ba984c4')
+sha256sums_aarch64=('d765693c0e7f64b02406d0876c6f605eff1e73f90d301930ecfae5a9425bf468')
 
 package() {
     cd "$srcdir"
 
     # Create installation directory
-    install -dm755 "$pkgdir/opt/deepagent"
+    install -dm755 "$pkgdir/opt/abacusai"
     install -dm755 "$pkgdir/usr/bin"
     install -dm755 "$pkgdir/usr/share/applications"
     install -dm755 "$pkgdir/usr/share/pixmaps"
 
     # Copy application files
-    cp -r ./* "$pkgdir/opt/deepagent/"
+    cp -r ./* "$pkgdir/opt/abacusai/"
 
     # Make the main executable... executable
-    chmod +x "$pkgdir/opt/deepagent/deepagent-app"
+    chmod +x "$pkgdir/opt/abacusai/abacusai-app"
 
     # Create symlink in /usr/bin
-    ln -s "/opt/deepagent/deepagent-app" "$pkgdir/usr/bin/deepagent-app"
+    ln -s "/opt/abacusai/abacusai-app" "$pkgdir/usr/bin/abacusai-app"
 
     # Create desktop entry
-    cat > "$pkgdir/usr/share/applications/deepagent.desktop" << EOF
+    cat > "$pkgdir/usr/share/applications/abacusai.desktop" << EOF
 [Desktop Entry]
-Name=DeepAgent
+Name=AbacusAI
 Comment=AI code editor that enhances developer productivity
-Exec=/opt/deepagent/deepagent-app %U
+Exec=/opt/abacusai/abacusai-app %U
 Terminal=false
 Type=Application
-Icon=deepagent
-StartupWMClass=DeepAgent
+Icon=abacusai
+StartupWMClass=AbacusAI
 Categories=Development;IDE;
 MimeType=text/plain;inode/directory;
 EOF
 
     # Install icon (assuming there's an icon in the package)
-    if [ -f "$pkgdir/opt/deepagent/resources/app/resources/linux/code.png" ]; then
-        install -Dm644 "$pkgdir/opt/deepagent/resources/app/resources/linux/code.png" "$pkgdir/usr/share/pixmaps/deepagent.png"
+    if [ -f "$pkgdir/opt/abacusai/resources/app/resources/linux/code.png" ]; then
+        install -Dm644 "$pkgdir/opt/abacusai/resources/app/resources/linux/code.png" "$pkgdir/usr/share/pixmaps/abacusai.png"
     fi
 
     # Install bash completions
-    if [ -f "$pkgdir/opt/deepagent/resources/completions/bash/deepagent-app" ]; then
+    if [ -f "$pkgdir/opt/abacusai/resources/completions/bash/abacusai-app" ]; then
         install -dm755 "$pkgdir/usr/share/bash-completion/completions"
-        install -Dm644 "$pkgdir/opt/deepagent/resources/completions/bash/deepagent-app" \
-                       "$pkgdir/usr/share/bash-completion/completions/deepagent"
+        install -Dm644 "$pkgdir/opt/abacusai/resources/completions/bash/abacusai-app" \
+                       "$pkgdir/usr/share/bash-completion/completions/abacusai"
     fi
 
     # Install zsh completions
-    if [ -f "$pkgdir/opt/deepagent/resources/completions/zsh/_deepagent-app" ]; then
+    if [ -f "$pkgdir/opt/abacusai/resources/completions/zsh/_abacusai-app" ]; then
         install -dm755 "$pkgdir/usr/share/zsh/site-functions"
-        install -Dm644 "$pkgdir/opt/deepagent/resources/completions/zsh/_deepagent-app" \
-                       "$pkgdir/usr/share/zsh/site-functions/_deepagent-app"
-    elif [ -f "$pkgdir/opt/deepagent/resources/completions/zsh/deepagent-app" ]; then
-        # Alternative: if the zsh completion file is named 'deepagent' instead of '_deepagent'
+        install -Dm644 "$pkgdir/opt/abacusai/resources/completions/zsh/_abacusai-app" \
+                       "$pkgdir/usr/share/zsh/site-functions/_abacusai-app"
+    elif [ -f "$pkgdir/opt/abacusai/resources/completions/zsh/abacusai-app" ]; then
+        # Alternative: if the zsh completion file is named 'abacusai' instead of '_abacusai'
         install -dm755 "$pkgdir/usr/share/zsh/site-functions"
-        install -Dm644 "$pkgdir/opt/deepagent/resources/completions/zsh/deepagent-app" \
-                       "$pkgdir/usr/share/zsh/site-functions/_deepagent-app"
+        install -Dm644 "$pkgdir/opt/abacusai/resources/completions/zsh/abacusai-app" \
+                       "$pkgdir/usr/share/zsh/site-functions/_abacusai-app"
     fi
 }
