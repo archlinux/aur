@@ -1,0 +1,5 @@
+[miro-pdf]
+source = "github"
+github = "vincent-uden/miro"
+use_max_tag = true
+prefix = "v"
