@@ -14,6 +14,7 @@ pkgbase = python-pyinit
 	depends = python-tomli
 	depends = python-tomli-w
 	depends = python-importlib-resources
+	depends = git
 	source = https://github.com/mrbooo895/pyinit/archive/refs/tags/1.0.13.tar.gz
 	sha256sums = fb50e09558dc73f64241c2b9e9790b0703a17a7e9766c8bcde6fa7ef029204cf
 
