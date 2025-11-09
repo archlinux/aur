@@ -7,10 +7,12 @@ arch=('any')
 url="https://github.com/abdurehman4/nautilus-konsole"
 license=('GPL')
 provides=('nautilus-konsole')
+depends=('nautilus-python')
 source=(git+"https://github.com/abdurehman4/nautilus-konsole.git")
 md5sums=('SKIP')
 
 package() {
-    mkdir -p "$pkgdir/usr/share/nautilus-python/extensions/"
-	install -D "$pkgname/nautilus-konsole.py" "$pkgdir/usr/share/nautilus-python/extensions/"
+  mkdir -p "$pkgdir/usr/share/nautilus-python/extensions/"
+  install -D "$pkgname/nautilus-konsole.py" "$pkgdir/usr/share/nautilus-python/extensions/"
 }
+
