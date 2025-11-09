@@ -1,0 +1,10 @@
+pkgbase = phantomcollect
+	pkgdesc = Lightweight stealth web data collection framework for ethical security testing
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/xsser01/phantomcollect
+	arch = any
+	license = MIT
+	depends = python
+
+pkgname = phantomcollect
