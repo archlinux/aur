@@ -1,0 +1,5 @@
+[mingw-w64-zstd]
+source = "github"
+github = "facebook/zstd"
+use_max_tag = true
+prefix = "v"
