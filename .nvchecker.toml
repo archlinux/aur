@@ -1,4 +1,4 @@
-[steamdepotdownloader]
+[steamdepotdownloader-bin]
 source = "github"
 github = "SteamRE/DepotDownloader"
 use_max_tag = true
