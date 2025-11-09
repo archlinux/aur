@@ -1,0 +1,5 @@
+[panda3ds]
+source = "github"
+github = "wheremyfoodat/Panda3DS"
+use_max_tag = true
+prefix = "v"
