@@ -1,12 +1,13 @@
 pkgbase = sparkle-git
 	pkgdesc = Another Mihomo GUI.
-	pkgver = 1.6.5.r1
+	pkgver = 1.6.14.r1
 	pkgrel = 1
 	url = https://github.com/xishang0128/sparkle
 	install = sparkle.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
+	makedepends = git
 	makedepends = nodejs
 	makedepends = pnpm
 	makedepends = jq
