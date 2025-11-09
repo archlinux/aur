@@ -1,6 +1,6 @@
 pkgbase = rash-sh
 	pkgdesc = rash, the rat ass shell, is a rudimentary shell written in C
-	pkgver = 0.5.6
+	pkgver = 0.5.7
 	pkgrel = 1
 	url = https://git.myriation.xyz/parker_macdonald/rash
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = rash-sh
   arch = armv7h
   arch = aarch64
 	license = MIT
-	source = rash-sh-0.5.6.tar.gz::https://git.myriation.xyz/parker_macdonald/rash/archive/0.5.6.tar.gz
-	sha256sums = 2da125802a258727846587a90ab76d25334ef951376646a25e60cbae89566f7d
+	source = rash-sh-0.5.7.tar.gz::https://git.myriation.xyz/parker_macdonald/rash/archive/0.5.7.tar.gz
+	sha256sums = 509dc7df803408857945387c8c5433b0b996e3c41c751b7cb5fb01b523f66b00
 
 pkgname = rash-sh
