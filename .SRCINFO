@@ -1,0 +1,13 @@
+pkgbase = runme
+	pkgdesc = DevOps Notebooks Built with Markdown
+	pkgver = 3.15.4
+	pkgrel = 1
+	url = https://github.com/runmedev/runme
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	source = runme-3.15.4.tar.gz::https://github.com/runmedev/runme/archive/v3.15.4.tar.gz
+	sha512sums = b10217526ea47b6c9e015e323f3e64b846dcca3ffc2cf14a9d44b4c0c4d8f3745f58bdda705c1684d9ca44aa240ecc9e005880ccf71804a35ad5ba66d964fe75
+
+pkgname = runme
