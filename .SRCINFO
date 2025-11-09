@@ -1,0 +1,16 @@
+pkgbase = byebyemenu
+	pkgdesc = A minimal, customizable power menu for Wayland compositors. Written in Rust with GTK4.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/t4k1t/byebyemenu
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = gtk4
+	options = !lto
+	source = byebyemenu-0.4.0.tar.gz::https://github.com/t4k1t/byebyemenu/archive/refs/tags/v0.4.0.tar.gz
+	b2sums = 1d9a1fe0ea55fb957f0983192f5932c2774196ad09daeed2077140c886e2b8fe0cff76f7ddd7033dc41ec7bba0a3d37b8ed78761277366284ab5c4c685742311
+
+pkgname = byebyemenu
