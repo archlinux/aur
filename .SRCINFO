@@ -1,0 +1,15 @@
+pkgbase = python-zftools
+	pkgdesc = Sagemath package to calculate zero forcing number of graphs
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/alexhutman/zftools
+	arch = x86_64
+	license = GPL-3.0-only
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = sagemath
+	source = python-zftools-1.0.tar.gz::https://github.com/alexhutman/zftools/archive/1.0.tar.gz
+	sha256sums = 696ff51cd2200e415d64f4b2348e1bd94094efe1c125626d0fef0d141bc421ed
+
+pkgname = python-zftools
