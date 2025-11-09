@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=karakeep
-pkgver=0.27.1
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
 arch=("x86_64" "aarch64")
@@ -22,7 +22,7 @@ source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}-browser.service"
         "${pkgname}-web.service"
         "${pkgname}-workers.service")
-sha256sums=('b8236f283390314ad698091cd88e4248db95824a0faf9221ec8aca523af588f5'
+sha256sums=('566cec7138ce866821defab08f0ff2ce7defd8493f691e3bffb49b4a4a6b4c4a'
             'ce0ce4b582f5f8904b875475262ad47edb5f398517add9e6901bb5f065742d7d'
             '0b5193cdca50bf430f3387cd998f8848e1579ecafc8798400595581d961cc399'
             '9c7f0c9bd7864a95269e49d5f27eaecb1714637b5771d748c3437aa5c297d21e'
@@ -44,7 +44,6 @@ build() {
 
     # Build
     cd "${pkgname}"
-    corepack use $(jq -r '.packageManager' package.json)
     pnpm install
 
     # Build the db migration script
