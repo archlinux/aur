@@ -5,8 +5,9 @@
 
 pkgname=librespot-avahi
 _pkgname=librespot
-pkgver=0.6.0
-pkgrel=2
+_commit=84a3302
+pkgver=0.7.1.g${_commit}
+pkgrel=1
 pkgdesc='Open source client library for Spotify'
 arch=('x86_64')
 url='https://github.com/librespot-org/librespot'
@@ -28,12 +29,12 @@ optdepends=(
     'sdl2: Audio playback using SDL2'
     'avahi: Use system mDNS daemon for discovery'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9ec881edb11e37d31a2b41dd30d56a3413445eedb720e1b0d278567dccfca8fc')
+source=("git+${url}#commit=${_commit}")
+sha256sums=('05d2363bbd15bc7f23f06c2ae706d5dd1430ed7d95aa31a283cefde63cd306dc')
 
 _env() {
     export RUSTUP_TOOLCHAIN=stable
-    export PKG_FEATURES=alsa-backend,with-libmdns
+    export PKG_FEATURES=alsa-backend,with-libmdns,native-tls
     declare -A PKG_FEATURE_MAP=(
         [jack2]='jackaudio-backend'
         [gst-plugins-good]='gstreamer-backend'
@@ -54,14 +55,14 @@ _env() {
 }
 
 prepare() {
-    cd "$_pkgname-$pkgver"
+    cd "$_pkgname"
     _env
     echo >&2 "Preparing $pkgname-$pkgver with the following features: $PKG_FEATURES"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "$_pkgname-$pkgver"
+    cd "$_pkgname"
     _env
     echo >&2 "Building $pkgname-$pkgver with the following features: $PKG_FEATURES"
     cargo build --release --frozen --no-default-features --features "$PKG_FEATURES"
@@ -74,7 +75,7 @@ build() {
 # }
 
 package() {
-    cd "$_pkgname-$pkgver"
+    cd "$_pkgname"
     install -Dvm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
     install -Dvm644 "contrib/$_pkgname.service" -t "$pkgdir/usr/lib/systemd/system/"
     install -Dvm644 "contrib/$_pkgname.user.service" "$pkgdir/usr/lib/systemd/user/$_pkgname.service"

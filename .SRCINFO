@@ -1,7 +1,7 @@
 pkgbase = librespot-avahi
 	pkgdesc = Open source client library for Spotify
-	pkgver = 0.6.0
-	pkgrel = 2
+	pkgver = 0.7.1.g84a3302
+	pkgrel = 1
 	url = https://github.com/librespot-org/librespot
 	arch = x86_64
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = librespot-avahi
 	optdepends = avahi: Use system mDNS daemon for discovery
 	provides = librespot
 	conflicts = librespot
-	source = librespot-avahi-0.6.0.tar.gz::https://github.com/librespot-org/librespot/archive/v0.6.0.tar.gz
-	sha256sums = 9ec881edb11e37d31a2b41dd30d56a3413445eedb720e1b0d278567dccfca8fc
+	source = git+https://github.com/librespot-org/librespot#commit=84a3302
+	sha256sums = 05d2363bbd15bc7f23f06c2ae706d5dd1430ed7d95aa31a283cefde63cd306dc
 
 pkgname = librespot-avahi
