@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-gui9
-pkgver=9.0.1
-pkgrel=3
+pkgver=9.0.2
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Graphical interfaces for robotics applications"
@@ -36,7 +36,7 @@ makedepends=(
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz"
         "https://github.com/gazebosim/${_pkgbase}/pull/677.patch")
-sha256sums=('5ed385dba7f7258b7032f188601dea80fa5bc74de460d7a78122f3cf6e0339b1'
+sha256sums=('8241c31c7ef3668b286426de4103b83ef4c29509c02910b02af9bb6f9e93cec7'
             '11c497a3cd89b888489f5f8d66b3b052feea86525d8874d8950cdc1c41b0ab0f')
 
 prepare() {
