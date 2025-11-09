@@ -1,39 +1,27 @@
 # 
 pkgname=sdn
-pkgver=r72.296c0cc
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A simple directory navigator"
 arch=('x86_64')
 url="https://git.janouch.name/p/sdn/"
 license=('custom:0BSD')
 depends=('ncurses' 'acl')
-makedepends=('git')
-source=("git+https://git.janouch.name/p/sdn.git")
-sha1sums=("SKIP")
-
-pkgver() {
-    cd "$pkgname"
-    # git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-    ( set -o pipefail
-      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
-
-}
+makedepends=('cmake' 'pkg-config' 'git')
+source=("$pkgname-$pkgver.tar.gz::https://git.janouch.name/p/sdn/archive/v1.0.0.tar.gz")
+sha256sums=('f1121627a865b20cb4bf944e3f112f9c0412374829fed634ca4b677b5c0979f7')
 
 build() {
+    rm -rf "$pkgname"/build
     mkdir "$pkgname"/build
     cd "$pkgname"/build
-    # cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug
-    cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=None
     make
 }
 
 package() {
     cd "$pkgname"/build
-    # make DESTDIR="$pkgdir" install
-    install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
+    make DESTDIR="$pkgdir" install
     install -Dm644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-    install -Dm644 ../README.adoc "$pkgdir"/usr/share/doc/$pkgname/README.adoc
 }
 
