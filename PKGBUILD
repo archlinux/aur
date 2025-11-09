@@ -7,7 +7,7 @@
 
 _pkgname=libtrash
 pkgname="${_pkgname}-git"
-pkgver=3.9+7.r31.20240325.5c0725e
+pkgver=3.9+8.r32.20251108.800ad01
 pkgrel=1
 pkgdesc="A shared, preloaded library that implements a trash can under Linux"
 arch=('i686' 'x86_64')
