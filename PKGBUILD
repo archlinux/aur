@@ -1,7 +1,7 @@
 # Maintainer: Jérôme Deuchnord <jerome@deuchnord.fr>
 
 pkgname=python-kosmorrolib
-pkgver=1.0.12
+pkgver=1.0.13
 pkgrel=1
 pkgdesc='A library to compute the ephemerides'
 
@@ -24,7 +24,7 @@ url='https://kosmorro.space/lib'
 license=('AGPL')
 
 source=("${pkgname}-v${pkgver}.tar.gz::https://codeload.github.com/Kosmorro/lib/tar.gz/refs/tags/v${pkgver}")
-sha256sums=("59e81d7c1c24ce7e39ae1d60b826b60d61884b87e8726d436e50a881be514478")
+sha256sums=("d63e0cf8f58844efc73ea6b138be717b7cda57aeb6e6ce1a3e2a1a635513e06f")
 
 build() {
 	cd "${srcdir}/lib-${pkgver}"
