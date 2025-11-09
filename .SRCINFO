@@ -2,7 +2,7 @@ pkgbase = libreoffice-extension-cleandoc
 	pkgdesc = remove hidden information from the document - macros, dialogs, form elements, user fields, etc.
 	pkgver = 0.6.7
 	pkgrel = 4
-	url = http://extensions.services.openoffice.org/project/cleandoc
+	url = https://extensions.openoffice.org/en/project/cleandoc.html
 	arch = any
 	groups = libreoffice-extensions
 	license = LGPL
@@ -13,4 +13,3 @@ pkgbase = libreoffice-extension-cleandoc
 	md5sums = 27ac9e762f88b0d217662a90fe74a622
 
 pkgname = libreoffice-extension-cleandoc
-
