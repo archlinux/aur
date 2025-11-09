@@ -1,37 +1,20 @@
-# Maintainer: metaanon [at] mailbox dotorg
-# Maintainer: strahe
-# Maintainer: tyjak
-
+# Maintainer: Rafa <rafael at chavantes dot com>
+# Contributor: metaanon
+# Contributor: strahe
+# Contributor: tyjak
 pkgname=binance
-pkgver=1.54.19
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="The Binance desktop application"
 arch=('x86_64')
 url="https://www.binance.com/en/download"
 license=('unknown')
-checkdepends=('curl' 'coreutils')
-source=('https://ftp.binance.com/electron-desktop/linux/production/binance-amd64-linux.deb')
-source=("${pkgname}-${pkgver}.deb::https://ftp.binance.com/electron-desktop/linux/production/binance-amd64-linux.deb")
-sha256sums=('2939c5245277dde18ef654217626ac4bb5edd8bc0bc786fe4090b96d9747cc07')
-
-check() {
-    cd "$srcdir"
-    binancechecksums=$(curl https://ftp.binance.com/electron-desktop/linux/production/binance-amd64-linux-deb-sha256.txt)
-    echo "Checksum verification..."
-    echo "1 Binance :" $binancechecksums
-    echo "2 PKGBUILD:" $sha256sums
-    echo "3 Deb File:" $(sha256sum ${pkgname}-${pkgver}.deb)
-    echo "4 Compare :" $(sha256sum ${pkgname}-${pkgver}.deb | awk '{print $1}') $binancechecksums 
-    [ "$sha256sums" == "$binancechecksums" ] \
-        && echo -e "binance checksum file and PKGBUILD declared checksum: \e[1;32m\033[1mOK\033[0m\e[0m" \
-        || (echo -e "binance checksum file and PKGBUILD declared checksum: \e[1;31m\033[1mKO\033[0m" && exit 1)
-    [ "$(sha256sum ${pkgname}-${pkgver}.deb | awk '{print $1}')" == "$binancechecksums" ] \
-        && echo -e "deb checksum and binance file checksum: \e[1;32m\033[1mOK\033[0m\e[0m" \
-        || (echo -e "deb checksum and binance file checksum: \e[1;31m\033[1mKO\033[0m\e[0m" && exit 1)
-}
+depends=('gtk3' 'nss' 'libxss' 'libxtst' 'xdg-utils')
+source=("${pkgname}-${pkgver}.deb::https://github.com/binance/desktop/releases/download/v${pkgver}/binance-${pkgver}-amd64-linux.deb")
+sha256sums=('6d384945c4090a99c418d2953b9741594aa3b077df0e03ac1b68e7a4c2188f36')
 
 package() {
     bsdtar -xv -C "${pkgdir}" -f "${srcdir}/data.tar.xz"
-    mkdir "${pkgdir}/usr/bin"
+    mkdir -p "${pkgdir}/usr/bin"
     ln -s /opt/Binance/binance "${pkgdir}/usr/bin/binance"
 }
