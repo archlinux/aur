@@ -1,0 +1,5 @@
+[citron]
+source = "gitea"
+host = "git.citron-emu.org"
+gitea = "citron/emulator"
+use_max_tag = true
