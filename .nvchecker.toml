@@ -1,0 +1,5 @@
+[libreoffice-extension-writingtool]
+source = "github"
+github = "writingtool-org/writingtool"
+use_max_tag = true
+prefix = "v"
