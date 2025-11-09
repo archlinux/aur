@@ -2,14 +2,14 @@
 
 pkgname=heroic-games-launcher-electron-git
 _pkgname=HeroicGamesLauncher
-pkgver=2.18.1.r14.g471de4fed
+pkgver=2.18.1.r20.g581386ca
 pkgrel=1
-_electron=electron37
+_electron=electron36
 pkgdesc="Native GOG, Epic Games and Amazon games launcher for Linux, with the system electron (unsupported)."
 arch=(x86_64)
 url="https://heroicgameslauncher.com/"
 license=(GPL-3.0-only)
-depends=(electron)
+depends=(electron36)
 makedepends=(git pnpm npm)
 provides=(heroic-games-launcher)
 conflicts=(heroic-games-launcher)
