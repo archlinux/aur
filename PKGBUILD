@@ -9,6 +9,7 @@ pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar
 arch=('x86_64')
 url='https://proton.me/mail'
 license=('GPL-3.0-or-later')
+options=('!strip')
 depends=(
     'alsa-lib'
     'at-spi2-core'
