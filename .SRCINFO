@@ -1,0 +1,17 @@
+pkgbase = gmi2html-bin
+	pkgdesc = Translate text/gemini into HTML
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/shtanton/gmi2html
+	arch = x86_64
+	license = MIT
+	provides = gmi2html
+	conflicts = gmi2html
+	source = gmi2html-0.6.0-README.md::https://github.com/shtanton/gmi2html/raw/refs/tags/v0.6.0/README.md
+	source = gmi2html-0.6.0-LICENSE::https://github.com/shtanton/gmi2html/raw/refs/tags/v0.6.0/LICENSE
+	sha256sums = 2f7fa4aa6eb95c9b1195409ac96a8f01fbb7ea5430b001f84cf98d845871516c
+	sha256sums = 45651d6af45c674b39de8fb59513cf032c85ed1512ee57f523cc5b950f805066
+	source_x86_64 = gmi2html-0.6.0-x86_64::https://github.com/shtanton/gmi2html/releases/download/v0.6.0/gmi2html-x86_64-linux
+	sha256sums_x86_64 = 0249a39f4fe22a01f0106d5d978a1352f0f475e00aafe69ca3087110cadc4576
+
+pkgname = gmi2html-bin

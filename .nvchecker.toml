@@ -1,0 +1,6 @@
+[gmi2html-bin]
+source = "github"
+github = "shtanton/gmi2html"
+use_latest_release = true
+include_prereleases = true
+prefix = "v"
