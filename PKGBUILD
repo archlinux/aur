@@ -6,7 +6,7 @@
 pkgname=otf-ibm-plex
 epoch=1
 pkgver=1.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="IBM Plex typefaces in otf format"
 url="https://github.com/IBM/plex"
 arch=("any")
