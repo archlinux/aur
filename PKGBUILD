@@ -1,7 +1,7 @@
 # Maintainer: mrbooo895 | kwkkna3@gmail.com
 
 pkgname=python-pyinit
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="A powerful CLI tool for creating and managing the entire lifecycle of Python projects."
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-rich' 'python-tomli' 'python-tomli-w' 'python-importlib-resources')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-packaging')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('f5273019d88c78f2c5f593d6d5c7a375d9d19db00eaec2557c486054e0022a3b')
+sha256sums=('8363c5ca59087f51ce08a6e9074cc6a34bc0e2d0c26b002423cda335a3663785')
 build() {
     cd "pyinit-$pkgver"
     python -m build --wheel --sdist --no-isolation
