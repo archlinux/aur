@@ -1,0 +1,5 @@
+[libuev]
+source = "github"
+github = "troglobit/libuev"
+use_max_tag = true
+prefix = "v"
