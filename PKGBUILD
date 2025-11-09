@@ -1,15 +1,15 @@
 # Maintainer: su226 <thesu226 at dot outlook.com>
 
 pkgname=ftb-app
-pkgver=1.28.2
-pkgrel=2
+pkgver=1.29.0
+pkgrel=1
 epoch=
 pkgdesc="A new Modpack launcher for FTB and Curse modpacks."
 arch=(any)
 url="https://feed-the-beast.com/ftb-app"
 license=("LGPL-2.1-only")
 groups=()
-_electron=electron33
+_electron=electron37
 depends=("$_electron")
 makedepends=(git pnpm "java-environment>=11")
 checkdepends=()
@@ -27,7 +27,7 @@ source=("git+https://github.com/FTBTeam/FTB-App.git#tag=v$pkgver"
         "ftb-app.sh"
         "ftb-app.desktop")
 noextract=()
-sha256sums=('ea9ea1921d319456b6eb23eb1ad2988cad9709f610c03bfe1886366e1b0080bf'
+sha256sums=('5fb5d1b59ce44f35998604aab8f143f325d206d8463400b60e25da695f6aa1b2'
             'dca73a9ed949a5623de73ac80450ae8a532cd50195fde7c849852837541c0e8e'
             '26bcc8821bf053371e4da468ebd8d0a3d6ef1126baf8f17f0d894d77d0b8959f')
 validpgpkeys=()
@@ -43,6 +43,8 @@ prepare() {
 	local _electronVersion="$(<$_electronDist/version)"
 	sed -e "/- tar\.gz/d;/- appimage/d;/- deb/d;/- rpm/d" -e "1ielectronDist: \"$_electronDist\"\nelectronVersion: \"$_electronVersion\"" -i electron-builder.yml
 	pnpm install
+	# src/components/ui/select/UiSelect.vue:9:38 - error TS2307: Cannot find module '@floating-ui/utils' or its corresponding type declarations.
+	pnpm add @floating-ui/utils
 }
 
 build() {
