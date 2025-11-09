@@ -2,7 +2,7 @@
 # Contributor: <deleted-account>
 
 pkgname=wayclip
-pkgver=0.4.2
+pkgver=0.5
 pkgrel=1
 pkgdesc="Wayland clipboard utility"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://git.sr.ht/~noocsharp/wayclip"
 license=('ISC')
 depends=('wayland')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~noocsharp/wayclip/archive/$pkgver.tar.gz")
-b2sums=('6db6a32511a0fdfa175e98f48ba79471bf50548fa681a7df0f4b5f434fc39457cf1c02f2fd3bbdf96022e511857077dcd363bc87b1f0ba74bbd43613b4940b6c')
+b2sums=('a6cf31c3aaf8e7055088fef771d94248d54549ddfafe60a4dfefb5d88879a61c1571ef448719359b35b77b49e583db98545baf407b94cf1fb8b02229fd2b7366')
 
 build() {
 	cd $pkgname-$pkgver
