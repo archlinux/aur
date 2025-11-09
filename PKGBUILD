@@ -1,7 +1,7 @@
 # Maintainer: Nanaka Hiira <hiira plus archlinux at hiira dot dev>
 pkgname=fcitx5-hazkey-bin
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Japanese input method for fcitx5, powered by azooKey engine"
 arch=('x86_64')
 url="https://github.com/7ka-Hiira/fcitx5-hazkey"
@@ -22,6 +22,8 @@ package() {
 	# Move files to adapt to Arch Linux environment
 	cp -a ${pkgdir}/usr/lib/x86_64-linux-gnu/* ${pkgdir}/usr/lib/
 	rm -r ${pkgdir}/usr/lib/x86_64-linux-gnu/
+
+	sed -i 's/x86_64-linux-gnu\///g' ${pkgdir}/usr/bin/hazkey-server
 
 	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
