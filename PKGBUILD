@@ -2,9 +2,9 @@
 
 pkgbase=zen-browser
 pkgname=("$pkgbase")
-pkgver=1.17.5b
+pkgver=1.17.6b
 _zen_version=${pkgver//_/-}
-_firefox_version=143.0.1
+_firefox_version=144.0.2
 pkgrel=1
 pkgdesc='Experience tranquillity while browsing the web without people tracking you'
 url='https://zen-browser.app/'
