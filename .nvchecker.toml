@@ -1,0 +1,5 @@
+[libdxvk]
+source = "github"
+github = "doitsujin/dxvk"
+use_max_tag = true
+prefix = "v"
