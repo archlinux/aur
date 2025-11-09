@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-rendering9
-pkgver=9.3.0
+pkgver=9.4.0
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -30,7 +30,7 @@ optdepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('95a7f2316f7a273a347eb2e75e883bad878a50071cb67ca53a3d21bfa9cb36bd')
+sha256sums=('7d705a5735e8cacba2b02a7ddf5343f89673bf4c86714872163ee10f1def3b0b')
 
 _build_dir="${_pkgbase}-${pkgname}_${pkgver}/build"
 
