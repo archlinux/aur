@@ -1,20 +1,20 @@
 pkgbase = voicevox
 	pkgdesc = A text-to-speech software
-	pkgver = 0.24.2
-	pkgrel = 3
+	pkgver = 0.25.0
+	pkgrel = 1
 	url = https://github.com/VOICEVOX/voicevox
 	arch = any
 	license = LGPL-3.0-only
 	makedepends = npm
 	makedepends = pnpm
-	makedepends = nodejs-lts-jod
 	makedepends = git
+	makedepends = nodejs-lts-jod
 	depends = 7zip
 	depends = bash
 	optdepends = voicevox-engine
-	source = https://github.com/VOICEVOX/voicevox/archive/refs/tags/0.24.2.tar.gz
+	source = https://github.com/VOICEVOX/voicevox/archive/refs/tags/0.25.0.tar.gz
 	source = voicevox.desktop
-	sha256sums = b10fd4c55d706fdd3df1e849924e415261f702dbe1a25af73016d10ebbc6bb27
+	sha256sums = 373a2613c508b6744c8ace4dcaa23664ff0f543a38082a3f7d7cdda800dc2e98
 	sha256sums = 90694d6010e4ab7ea7813958653b511801242ccd1248da10bc6f277266cc58c8
 
 pkgname = voicevox
