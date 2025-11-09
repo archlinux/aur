@@ -1,7 +1,7 @@
 # Maintainer: Ed Neville <ed-archlinux@s5h.net>
 pkgname=pwtool
 _binary=pwtool
-pkgver=0.9.3
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="pwtool, default generated password set is copy/paste friendly without extended characters that would break the default copy selection you get when double-clicking a word"
 url="https://gitlab.com/edneville/pwtool"
@@ -10,7 +10,7 @@ license=(GPL3)
 depends=(gcc-libs)
 makedepends=(cargo git)
 source=("https://gitlab.com/edneville/${_binary}/-/archive/v${pkgver}/${_binary}-v${pkgver}.tar.gz")
-sha512sums=('1af3e0af2f50ff94973d95d3d8b8b959783639cf8a0ed220ffd1a8c6cc28baec3e09182762bed8eb38cdd3a8c883fdfb4ae2b6680d565279d901781e24723b61')
+sha512sums=('54ea9b1d464632e52a24ce4ec769bc90f63d624aa0c92eea2ab5c0a611cdbf67fcc8764e5b7803706043756705681e988bc1332ef9f7de17356db241d82feb6e')
 
 prepare() {
   cd ${_binary}-v${pkgver}
