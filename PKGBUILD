@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=jxl-oxide
-pkgver=0.12.4
+pkgver=0.12.5
 pkgrel=1
 pkgdesc="Pure Rust implementation of JPEG XL decoder"
 arch=('x86_64')

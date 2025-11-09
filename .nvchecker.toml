@@ -1,0 +1,4 @@
+[jxl-oxide]
+source = "github"
+github = "tirr-c/jxl-oxide"
+use_max_tag = true
