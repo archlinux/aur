@@ -1,0 +1,4 @@
+[rivercarro]
+source = "git"
+git = "https://git.sr.ht/~novakane/rivercarro"
+prefix = "v"
