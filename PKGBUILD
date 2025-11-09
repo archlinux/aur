@@ -3,7 +3,7 @@
 #       I'm not the dev so this is just FYI.
 pkgname=lazy-cli
 pkgver=0.1.0.beta.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Learning at ZJU Yes CLI"
 arch=('x86_64')
 url="https://github.com/YangShu233-Snow/Learning_at_ZJU_third_client"
