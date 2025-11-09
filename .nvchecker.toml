@@ -1,0 +1,4 @@
+[honkers-launcher]
+source = "github"
+github = "an-anime-team/honkers-launcher"
+use_max_tag = true
