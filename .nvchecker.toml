@@ -1,0 +1,5 @@
+[borked3ds]
+source = "github"
+github = "Borked3DS/Borked3DS"
+use_max_tag = true
+prefix = "v"
