@@ -8,9 +8,9 @@
 pkgname=transmission-cli-beta
 _pkgname=transmission
 pkgdesc='Fast, easy, and free BitTorrent client (BETA CLI tools)'
-pkgver=4.1.0beta.2
+pkgver=4.1.0beta.3
 _pkgver=${pkgver//beta/-beta}
-_hash=rac5c9e082d
+_hash=rf20fd5e373
 pkgrel=1
 arch=(x86_64)
 url="http://www.transmissionbt.com/"
@@ -41,7 +41,7 @@ _archive="$_pkgname-$_pkgver+$_hash"
 source=("https://github.com/transmission/transmission/releases/download/$_pkgver/$_archive.tar.xz"
         transmission-cli.sysusers
         transmission-cli.tmpfiles)
-sha256sums=('8a339d55c9a4d12eda78eb06416d6e2ad840878524f8f187fe69059aaf24060f'
+sha256sums=('f89c5470dbe80d1fbe7fa4ef7b3ed637bc6eac950c0246a6840958ea0525cfa3'
             '641310fb0590d40e00bea1b5b9c843953ab78edf019109f276be9c6a7bdaf5b2'
             '1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451')
 
@@ -72,6 +72,7 @@ build() {
 		-D USE_SYSTEM_PSL=ON \
 		-D USE_SYSTEM_UTP=OFF \
 		-D WITH_CRYPTO=openssl \
+		-D WITH_SYSTEMD=ON \
 		-S . \
 		-B build
 	cmake --build build --config Release
@@ -95,7 +96,7 @@ package() {
 	done
 	install -d "$pkgdir"/usr/share/transmission
 	cp -a build/web/public_html/ "$pkgdir"/usr/share/transmission
-	install -Dm644 daemon/transmission-daemon.service \
+	mv "$pkgdir/usr/lib/systemd/system/transmission-daemon.service" \
 		"$pkgdir/usr/lib/systemd/system/transmission.service"
 	install -Dm644 COPYING "$pkgdir/usr/share/licenses/transmission-cli/COPYING"
 	install -Dm644 "$srcdir/${_pkgname}-cli.sysusers" \
