@@ -1,7 +1,7 @@
 pkgbase = neoarch-git
 	pkgdesc = NeoArch Package Manager for Arch Linux
 	pkgver = 1.0.beta.1.r0.g0000000
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Sanjaya-Danushka/Aurora
 	install = neoarch-git.install
 	arch = any

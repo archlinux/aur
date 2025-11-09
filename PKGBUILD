@@ -1,7 +1,7 @@
 # Maintainer: Sanjaya Danushka <dsanjaya712@gmail.com>
 pkgname=neoarch-git
 pkgver=1.0.beta.1.r0.g0000000
-pkgrel=3
+pkgrel=4
 pkgdesc="NeoArch Package Manager for Arch Linux"
 arch=('any')
 url="https://github.com/Sanjaya-Danushka/Aurora"
