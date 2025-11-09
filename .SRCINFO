@@ -12,7 +12,7 @@ pkgbase = pacman-ostree
 	depends = rust
 	depends = git
 	depends = arch-install-scripts
-	depends = bootc-git
+	depends = bootc
 	source = git+https://github.com/ImmutableArch/pacman-ostree.git
 	sha256sums = SKIP
 
