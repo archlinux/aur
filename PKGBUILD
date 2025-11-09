@@ -3,7 +3,7 @@
 # Contributor: Mikhail Babynichev <i@kotrik.ru>
 
 pkgname=tosu-git
-pkgver=r1390.9bfee4f
+pkgver=r1405.089f883
 pkgrel=1
 pkgdesc="Memory reader and PP counters provider for osu! and osu! Lazer"
 arch=('x86_64')
@@ -22,8 +22,8 @@ source=("git+https://github.com/tosuapp/tosu.git"
         "tosu-bin.sh::https://aur.archlinux.org/cgit/aur.git/plain/tosu-bin.sh?h=tosu"
         "notice.install")
 sha256sums=('SKIP'
-            '16e77f6a192094be77ce1ecc9322e7296b57532851672d15f07bc82132cdfc21'
-            'SKIP')
+            'ada3abbdb7bd09dea02e8149a63dc3a730bd300186ac3a136d624acaaa9d225f'
+            '7168b6ffb949481da782e59f0962549264fe581a8b0197e22e79d3dd8f51eb5b')
 validpgpkeys=()
 
 pkgver() {
