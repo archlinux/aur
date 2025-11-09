@@ -1,9 +1,8 @@
 pkgbase = cctag
 	pkgdesc = Detection of CCTag markers made up of concentric circles.
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alicevision/CCTag
-	arch = i686
 	arch = x86_64
 	license = MPL2
 	makedepends = boost
@@ -11,8 +10,10 @@ pkgbase = cctag
 	makedepends = eigen
 	makedepends = ninja
 	makedepends = opencv
+	makedepends = cuda
 	depends = boost-libs
 	depends = tbb
+	optdepends = cuda: for cuda detector
 	source = cctag-1.0.4.tar.gz::https://github.com/alicevision/CCTag/archive/refs/tags/v1.0.4.tar.gz
 	sha256sums = f4ced6138419f4ad09d62d4373738c172586c91068faff8bf08c2caa5e76d516
 

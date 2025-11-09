@@ -1,5 +1,6 @@
 #!/hint/bash
-# Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# Maintainer : SFN
+# Contributor : bartus <arch-user-repoᘓbartus.33mail.com>
 
 #Configuration:
 #Use: makepkg VAR1=0 VAR2=1 to enable(1) disable(0) a feature
@@ -31,9 +32,9 @@ _fragment="${FRAGMENT:-#branch=master}"
 pkgname=cctag
 pkgver=1.0.4
 _src_dir="CCTag-${pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Detection of CCTag markers made up of concentric circles."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/alicevision/CCTag"
 license=('MPL2')
 depends=(boost-libs tbb)
@@ -45,12 +46,28 @@ makedepends=(boost cmake eigen ninja opencv)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('f4ced6138419f4ad09d62d4373738c172586c91068faff8bf08c2caa5e76d516')
 
+prepare () {
+    cd "${srcdir}/${_src_dir}"
+    # Don't try to compile for unsupported CUDA arch's
+    sed -e 's|set(CUDA_MIN_CC 50|set(CUDA_MIN_CC 75|g' -i cmake/ChooseCudaCC.cmake
+    # Update CXX standard to use newer CUDA libs
+    sed -e 's|CMAKE_CXX_STANDARD 14|CMAKE_CXX_STANDARD 17|g' \
+        -e 's|CCTAG_CXX_STANDARD 14|CCTAG_CXX_STANDARD 17|g' \
+        -i CMakeLists.txt
+    # Disable lto for Cuda objects as it's broken
+    sed -e 's|\(CUDA_NVCC_FLAGS}\)|\1;-Xcompiler=-fno-lto|g' -i src/CMakeLists.txt
+    # eigen 5.x compat
+    sed -i "s|\${CCTAG_EIGEN_REQUIRED_VERSION}||g" CMakeLists.txt
+    sed -i "s|@CCTAG_EIGEN_REQUIRED_VERSION@||g" cmake/Config.cmake.in
+    # Boost 1.89+ compat
+    sed -i "s|;system;|;|g" CMakeLists.txt
+    sed -i "s| Boost::system||g" src/CMakeLists.txt
+}
 
 build() {
 	cmake -S "${srcdir}/${_src_dir}" -B build -G Ninja \
-		-DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc \
+		-DCUDA_HOST_COMPILER=${NVCC_CCBIN} \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=Release \
 		-DBUILD_SHARED_LIBS=ON \
 		-DCCTAG_WITH_CUDA="$_with_cuda" \
 		-DCCTAG_BUILD_APPS="$_build_apps" \
