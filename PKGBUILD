@@ -13,7 +13,7 @@ source=(
   "onlinefix-linux-launcher"
   "onlinefix-linux-launcher.png"
   "onlinefix-linux-launcher.desktop"
-  "OFMELauncher.jar::https://github.com/ZzEdovec/onlinefix-linux/releases/download/v2.5.1/OFMELauncher.jar"
+  "OFMELauncher-${pkgver}.jar::https://github.com/ZzEdovec/onlinefix-linux/releases/download/v2.5.1/OFMELauncher.jar"
 )
 sha256sums=(
   'bae845134d033ae38b16374efce8a21e65e8e4e07fedf3ff0090570872b89e28'
@@ -26,6 +26,6 @@ package() {
   install -Dm755 "$srcdir/onlinefix-linux-launcher" "$pkgdir/usr/bin/onlinefix-linux-launcher"
   install -Dm644 "$srcdir/onlinefix-linux-launcher.png" "$pkgdir/usr/share/pixmaps/onlinefix-linux-launcher.png"
   install -Dm644 "$srcdir/onlinefix-linux-launcher.desktop" "$pkgdir/usr/share/applications/onlinefix-linux-launcher.desktop"
-  install -Dm644 "$srcdir/OFMELauncher.jar" "$pkgdir/usr/share/java/OFMELauncher.jar"
+  install -Dm644 "$srcdir/OFMELauncher-${pkgver}.jar" "$pkgdir/usr/share/java/OFMELauncher.jar"
 }
 
