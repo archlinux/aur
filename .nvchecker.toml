@@ -1,0 +1,5 @@
+[mcpelauncher-linux]
+source = "github"
+github = "minecraft-linux/mcpelauncher-ui-manifest"
+use_max_tag = true
+prefix = "v"
