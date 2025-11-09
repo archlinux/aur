@@ -29,9 +29,9 @@ package() {
     install -Dm644 "com.vintagetechie.CosmicUpdates.desktop" \
         "$pkgdir/usr/share/applications/com.vintagetechie.CosmicUpdates.desktop"
     
-    # Install icons
-    install -Dm644 "tux-normal.svg" \
+    # Install icons (they're in subdirectories in the tarball)
+    install -Dm644 "icons/hicolor/scalable/apps/tux-normal.svg" \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/tux-normal.svg"
-    install -Dm644 "tux-alert.svg" \
+    install -Dm644 "icons/hicolor/scalable/apps/tux-alert.svg" \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/tux-alert.svg"
 }
