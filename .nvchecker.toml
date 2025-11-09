@@ -1,0 +1,5 @@
+[imgbrd-grabber]
+source = "github"
+github = "Bionus/imgbrd-grabber"
+use_max_tag = true
+prefix = "v"
