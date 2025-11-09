@@ -6,7 +6,7 @@ _pkgname=casual-pre-loader
 
 pkgname="${_pkgname}-git"
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='TF2 particle modifications via some wizardry.'
 arch=('x86_64')
@@ -53,8 +53,8 @@ package() {
 		useful_scripts/ \
 		"${pkgdir}/usr/lib/${_pkgname}/"
 
-	ln -sr "${pkgdir}/usr/lib/${_pkgname}/main.py" "${pkgdir}/usr/bin/${_pkgname}"                          # symlink the main.py file into the PATH as "${_pkgname}"
-	ln -sr "${pkgdir}/usr/lib/${_pkgname}/gui/cueki_icon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png" # symlink the icon file into the correct location
+	ln -sr "${pkgdir}/usr/lib/${_pkgname}/main.py" "${pkgdir}/usr/bin/${_pkgname}"                                # symlink the main.py file into the PATH as "${_pkgname}"
+	ln -sr "${pkgdir}/usr/lib/${_pkgname}/gui/icons/cueki_icon.svg" "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg" # symlink the icon file into the correct location
 
 	install -Dm644 LICENSE   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE" # license
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"    # docs
