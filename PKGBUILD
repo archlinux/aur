@@ -3,7 +3,7 @@
 
 _pkgname=xacro
 pkgname=ros2-humble-xacro
-pkgver=2.0.11
+pkgver=2.1.1
 pkgrel=2
 pkgdesc="A tool to construct shorter and more readable XML files by using macros that expand to larger XML expressions"
 url="https://index.ros.org/p/xacro/"
@@ -15,7 +15,7 @@ depends=(
     'python-yaml'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ros/xacro/archive/${pkgver}.tar.gz")
-sha256sums=('0c9b1619f1cdcf863e5a29fe8c034ae5c310e39722ff089d5d1e440c4e41967f')
+sha256sums=('f9d94956574015427e59011d4ee113b206e9c10a27a0c01d4b08ee4268d76741')
 
 build() {
   source /opt/ros/humble/setup.bash
