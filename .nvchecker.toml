@@ -1,0 +1,5 @@
+[pinesam-bin]
+source = "github"
+github = "builder555/PineSAM"
+use_max_tag = true
+prefix = "v"
