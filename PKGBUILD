@@ -1,7 +1,7 @@
 # Maintainer: Ben Copeland <ben at copeland $dot$ me uk>
 # Based on original by Thor K. H. and others
 pkgname=whatpulse-appimage
-pkgver=5.10.3
+pkgver=5.11
 pkgrel=1
 pkgdesc="Measures your keyboard, mouse and application usage, network traffic and uptime."
 arch=('x86_64')
