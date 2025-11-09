@@ -1,7 +1,7 @@
 pkgbase = sdformat15
 	pkgdesc = Simulation Description Format (SDFormat) parser and description files.
 	pkgver = 15.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gazebosim/sdformat
 	arch = any
 	license = Apache-2.0
