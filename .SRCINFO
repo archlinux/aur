@@ -1,7 +1,7 @@
 pkgbase = uzdoom-bin
 	pkgdesc = A fork of GZDoom, a feature-centric fork of ZDoom
-	pkgver = 4.15pre
-	pkgrel = 2
+	pkgver = 4.14.3rc1
+	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/gzdoom
 	arch = x86_64
 	arch = aarch64
@@ -20,9 +20,9 @@ pkgbase = uzdoom-bin
 	depends = zmusic-bin
 	depends = libvpx
 	conflicts = uzdoom-git
-	source_x86_64 = uzdoom-4.15pre-x64.tar.xz::https://gitlab.com/linuxbombay/uzdoom/binaries/4.15pre/-/raw/main/uzdoom-x64.tar.xz
-	sha256sums_x86_64 = 9a5896392a4334387e5a07905e496cce80dd5cc008067e4b1873d5db0bee0b4c
-	source_aarch64 = uzdoom-4.15pre-arm64.tar.xz::https://gitlab.com/linuxbombay/uzdoom/binaries/4.15pre/-/raw/main/uzdoom-arm64.tar.xz
-	sha256sums_aarch64 = a243e8be9eee8c17433f484e2d0fcb2425f85a4291ee1a1b9d9d091b7794b664
+	source_x86_64 = uzdoom-4.14.3rc1-x64.tar.xz::https://gitlab.com/linuxbombay/uzdoom/binaries/4.14.3rc1/-/raw/main/uzdoom-x64.tar.xz
+	sha256sums_x86_64 = 42acb10743bc565b7410977a60d516ce90f2f163fb22849d4b94f5f45c590311
+	source_aarch64 = uzdoom-4.14.3rc1-arm64.tar.xz::https://gitlab.com/linuxbombay/uzdoom/binaries/4.14.3rc1/-/raw/main/uzdoom-arm64.tar.xz
+	sha256sums_aarch64 = eac5bc137a59fbd67b57a10c8fb04c69028f5ed18f11e717af631329ab5c797a
 
 pkgname = uzdoom-bin
