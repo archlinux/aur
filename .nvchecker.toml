@@ -1,0 +1,5 @@
+[blender-bin]
+source = "github"
+github = "blender/blender"
+use_max_tag = true
+prefix = "v"
