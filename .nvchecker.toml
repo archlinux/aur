@@ -3,3 +3,5 @@ source = "github"
 github = "stenzek/duckstation"
 use_max_tag = true
 prefix = "v"
+from_pattern="-"
+to_pattern=".r"
