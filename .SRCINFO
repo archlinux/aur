@@ -1,6 +1,6 @@
 pkgbase = pwsp
 	pkgdesc = Lets you play audio files through your microphone
-	pkgver = 1.0.3
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/arabianq/pipewire-soundpad
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = pwsp
 	makedepends = cargo
 	makedepends = pipewire
 	makedepends = alsa-lib
-	source = https://github.com/arabianq/pipewire-soundpad/archive/refs/tags/v1.0.3.tar.gz
+	source = https://github.com/arabianq/pipewire-soundpad/archive/refs/tags/v1.1.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = pwsp
