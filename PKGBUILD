@@ -3,7 +3,7 @@
 _pkgauthor=ismail-yilmaz
 _pkgname=Bobcat
 pkgname=${_pkgname,,}-terminal
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 uppname=upp-posix
 upprel=2025.1.1
@@ -25,7 +25,7 @@ depends=(
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgauthor}/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz"
         "${uppname}-${uppver}.tar.xz::https://github.com/ultimatepp/ultimatepp/releases/download/v$upprel/${uppname}-${uppver}.tar.xz")
-sha256sums=('2a9fd0c935a821678f2ebdf7ce84ae527520e0ff7ad79fa4378eb176630efaf8'
+sha256sums=('74cfd3461c21d29a870097eda13eb180789c2e4efce25f6116ecd89fa89e5ca5'
             '3c7415f2ba4398b371be063ba9071b1983d961a465d4d665a8367e62909d661e')
 
 prepare() {
