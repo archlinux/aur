@@ -1,0 +1,22 @@
+pkgbase = lazy-cli
+	pkgdesc = Learning at ZJU Yes CLI
+	pkgver = 0.1.0.beta.6
+	pkgrel = 1
+	url = https://github.com/YangShu233-Snow/Learning_at_ZJU_third_client
+	arch = x86_64
+	license = LGPL-3.0-only
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	depends = xz
+	depends = bzip2
+	depends = readline
+	depends = openssl
+	depends = libffi
+	depends = util-linux-libs
+	provides = lazy-cli
+	conflicts = lazy-cli-git
+	source = https://github.com/YangShu233-Snow/Learning_at_ZJU_third_client/releases/download/v0.1.0-beta.6/lazy-cli-linux.tar.gz
+	sha256sums = 3b1a78ecaa76e1d788d227eeb32e315cb14feb4a1e5394baa45d68c1a565e2df
+
+pkgname = lazy-cli
