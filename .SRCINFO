@@ -1,7 +1,7 @@
 pkgbase = dracula-gtk-theme-full
 	pkgdesc = Dark theme for GTK
-	pkgver = 4.0.0.r104.gf77cf5c
-	pkgrel = 2
+	pkgver = 4.0.0.r134.g79095df
+	pkgrel = 1
 	url = https://github.com/dracula/gtk
 	arch = any
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = dracula-gtk-theme-full
 	optdepends = cantarell-fonts: tertiary font face defined
 	provides = dracula-gtk-theme
 	conflicts = dracula-gtk-theme
-	source = dracula-gtk-theme::git+https://github.com/dracula/gtk.git#commit=f77cf5c
+	source = dracula-gtk-theme::git+https://github.com/dracula/gtk.git#commit=79095df
 	sha256sums = SKIP
 
 pkgname = dracula-gtk-theme-full

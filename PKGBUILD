@@ -2,9 +2,9 @@
 
 pkgname=dracula-gtk-theme-full
 _pkgname=${pkgname%-full}
-pkgver=4.0.0.r104.gf77cf5c
-_commit=f77cf5c
-pkgrel=2
+pkgver=4.0.0.r134.g79095df
+_commit=79095df
+pkgrel=1
 pkgdesc="Dark theme for GTK"
 arch=("any")
 url="https://github.com/dracula/gtk"
