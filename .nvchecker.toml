@@ -1,0 +1,4 @@
+[zls-bin]
+source = "jq"
+url = "https://builds.zigtools.org/index.json"
+filter = 'keys[]'
