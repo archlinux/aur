@@ -1,7 +1,7 @@
 # Maintainer: Sanjaya Danushka <dsanjaya712@gmail.com>
 pkgname=neoarch-git
 pkgver=1.0.beta.1.r0.g0000000
-pkgrel=1
+pkgrel=2
 pkgdesc="NeoArch Package Manager for Arch Linux"
 arch=('any')
 url="https://github.com/Sanjaya-Danushka/Aurora"
@@ -10,7 +10,7 @@ depends=('python-pyqt6' 'python-requests' 'qt6-svg' 'git' 'flatpak' 'nodejs' 'np
 makedepends=('git')
 provides=('neoarch')
 conflicts=('neoarch')
-install=('neoarch-git.install')
+install=neoarch-git.install
 source=('git+https://github.com/Sanjaya-Danushka/Aurora.git')
 md5sums=('SKIP')
 
@@ -36,3 +36,4 @@ package() {
   # Install license
   install -Dm644 "$pkgdir/opt/neoarch/Aurora/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
