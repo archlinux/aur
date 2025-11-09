@@ -1,0 +1,5 @@
+[joshuto]
+source = "github"
+github = "kamiyaa/joshuto"
+use_max_tag = true
+prefix = "v"
