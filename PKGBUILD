@@ -1,6 +1,6 @@
 # Maintainer: ._______166 <retromac9x2@gmail.com>
 pkgname=grapheneos-devel
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="metapackage of all the dependencies for building GrapheneOS"
 arch=('x86_64')
