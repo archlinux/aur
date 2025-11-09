@@ -1,6 +1,6 @@
 # Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=plasma-dialer
-pkgver=24.08.0
+pkgver=6.5.2
 pkgrel=1
 pkgdesc="Dialer for Plasma Mobile"
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)

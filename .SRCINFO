@@ -1,6 +1,6 @@
 pkgbase = plasma-dialer
 	pkgdesc = Dialer for Plasma Mobile
-	pkgver = 24.08.0
+	pkgver = 6.5.2
 	pkgrel = 1
 	url = https://invent.kde.org/plasma-mobile/plasma-dialer
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = plasma-dialer
 	depends = modemmanager-qt
 	depends = libphonenumber
 	depends = callaudiod
-	source = https://download.kde.org/stable/plasma-dialer/plasma-dialer-24.08.0.tar.xz
+	source = https://download.kde.org/stable/plasma-dialer/plasma-dialer-6.5.2.tar.xz
 	sha256sums = a79cec66a0ea585b401fc8f926a5f80a4a2e9eed225c25403560a3d1e02d59c4
 
 pkgname = plasma-dialer
