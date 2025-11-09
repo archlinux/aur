@@ -1,6 +1,6 @@
 pkgbase = vtm
 	pkgdesc = Terminal multiplexer with window manager and session sharing
-	pkgver = 2025.10.31
+	pkgver = 2025.11.07
 	pkgrel = 1
 	url = https://github.com/directvt/vtm
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = vtm
 	depends = gcc-libs
 	depends = glibc
 	depends = lua
-	source = vtm-2025.10.31.tar.gz::https://github.com/directvt/vtm/archive/refs/tags/v2025.10.31.tar.gz
-	b2sums = 0420347762819e81084fb6729761e3362fcc1d3f67803ffdd880deb4689730572e43b3003c4dc3de80d26b775264c3cbe8c38c3b81cb9094dc04bb18358819df
+	source = vtm-2025.11.07.tar.gz::https://github.com/directvt/vtm/archive/refs/tags/v2025.11.07.tar.gz
+	b2sums = 949d51f334170623f1ee48b0632aaaa975bb7b7ddbfcfe50d7041ef21c9aa380580d6ab842e41b042255dfacebdda90f278ec66eed33d34d3decf5f9448506bf
 
 pkgname = vtm
