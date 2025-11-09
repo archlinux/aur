@@ -1,3 +1,4 @@
+# Maintainer: Imperator Storm <ImperatorStorm11@protonmail.com>
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=dh-autoreconf
 pkgver=21
