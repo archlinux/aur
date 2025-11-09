@@ -1,6 +1,6 @@
 pkgbase = sagemath-doc-git
 	pkgdesc = HTML documentation for SageMath
-	pkgver = 10.8.beta5.r0.gf4adc250dcc
+	pkgver = 10.8.beta7.r0.g9f905404644
 	pkgrel = 1
 	url = http://www.sagemath.org
 	arch = any
@@ -25,11 +25,9 @@ pkgbase = sagemath-doc-git
 	options = !strip
 	source = git+https://github.com/sagemath/sage
 	source = warnings.patch
-	source = fix-meson-deps.patch
 	source = maxima-5.48.patch
 	sha256sums = SKIP
 	sha256sums = 06ce501d3be154f854bdbabd57f79287aec6b7d1b0ddf3abb904c68f79d51464
-	sha256sums = 8d9d3f597aaac4bddce5665a777924f41fd8f55fb1cbbeeb39277e549b924390
-	sha256sums = 89d91fe14c980e0f6dd484fb90bc5a284449eb45faa8e14b23e6009e2630674e
+	sha256sums = b7114f2828d7e6eaaa0b7221f87cdd8c956f7710bf598b33b6225544faff5d9a
 
 pkgname = sagemath-doc-git

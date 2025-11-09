@@ -180,7 +180,7 @@ index 592f096341f..c4d66efccb4 100644
  这里是一个更复杂的示例。左侧连接到墙上的耦合弹簧的平衡位移
  
 diff --git a/src/sage/calculus/calculus.py b/src/sage/calculus/calculus.py
-index d41bf946a09..ac194f63b3e 100644
+index 425b820a069..48a55a160e1 100644
 --- a/src/sage/calculus/calculus.py
 +++ b/src/sage/calculus/calculus.py
 @@ -133,8 +133,8 @@ including exponentiation::
@@ -194,7 +194,7 @@ index d41bf946a09..ac194f63b3e 100644
  
  Complex exponentiation works, but may require a patched version of
  maxima (:issue:`32898`) for now::
-@@ -1243,7 +1243,7 @@ def limit(ex, *args, dir=None, taylor=False, algorithm='maxima', **kwargs):
+@@ -1246,7 +1246,7 @@ def limit(ex, *args, dir=None, taylor=False, algorithm='maxima', **kwargs):
  
          sage: limit(sin(x)/x, x, 0, algorithm='sympy')
          1
@@ -203,7 +203,7 @@ index d41bf946a09..ac194f63b3e 100644
          1
          sage: limit(x^x, x, 0, dir='+', algorithm='fricas') # optional - fricas
          1
-@@ -1816,7 +1816,7 @@ def laplace(ex, t, s, algorithm='maxima'):
+@@ -1823,7 +1823,7 @@ def laplace(ex, t, s, algorithm='maxima'):
          sage: f = exp (2*t + a) * sin(t) * t; f
          t*e^(a + 2*t)*sin(t)
          sage: L = laplace(f, t, s); L
@@ -239,10 +239,10 @@ index 2879dda115d..abdbbad932e 100644
      sage: integrate((1-x^2)^n,x)  # long time
      x*hypergeometric((1/2, -n), (3/2,), x^2*exp_polar(2*I*pi))
 diff --git a/src/sage/functions/bessel.py b/src/sage/functions/bessel.py
-index 1cd132b3a45..4ead3c47c45 100644
+index db32eebe381..94e0b20870f 100644
 --- a/src/sage/functions/bessel.py
 +++ b/src/sage/functions/bessel.py
-@@ -1867,7 +1867,7 @@ class SphericalHankel1(BuiltinFunction):
+@@ -1864,7 +1864,7 @@ class SphericalHankel1(BuiltinFunction):
          sage: spherical_hankel1(3 + 0.2 * I, 3)
          0.201654587512037 - 0.531281544239273*I
          sage: spherical_hankel1(1, x).simplify()
@@ -251,7 +251,7 @@ index 1cd132b3a45..4ead3c47c45 100644
          sage: spherical_hankel1(3 + 2 * I, 5 - 0.2 * I)
          1.25375216869913 - 0.518011435921789*I
          sage: integrate(spherical_hankel1(3, x), x)
-@@ -1965,11 +1965,11 @@ class SphericalHankel2(BuiltinFunction):
+@@ -1962,11 +1962,11 @@ class SphericalHankel2(BuiltinFunction):
          sage: spherical_hankel2(3 + 0.2 * I, 3)
          0.0998874108557565 + 0.479149050937147*I
          sage: spherical_hankel2(1, x).simplify()
@@ -266,10 +266,10 @@ index 1cd132b3a45..4ead3c47c45 100644
          0.0217627632692163 + 0.0224001906110906*I
          sage: integrate(spherical_hankel2(3, x), x)
 diff --git a/src/sage/interfaces/maxima.py b/src/sage/interfaces/maxima.py
-index ebe00cd51e7..a916796341b 100644
+index 154a2cc34e0..1eebc46e03a 100644
 --- a/src/sage/interfaces/maxima.py
 +++ b/src/sage/interfaces/maxima.py
-@@ -180,7 +180,7 @@ Here is an example of solving an algebraic equation::
+@@ -194,7 +194,7 @@ Here is an example of solving an algebraic equation::
  You can even nicely typeset the solution in latex::
  
      sage: latex(s)
@@ -278,7 +278,7 @@ index ebe00cd51e7..a916796341b 100644
  
  To have the above appear onscreen via ``xdvi``, type
  ``view(s)``. (TODO: For OS X should create pdf output
-@@ -202,11 +202,11 @@ and use preview instead?)
+@@ -216,11 +216,11 @@ and use preview instead?)
  ::
  
      sage: f = maxima('x^3 * %e^(k*x) * sin(w*x)'); f
@@ -293,7 +293,7 @@ index ebe00cd51e7..a916796341b 100644
  
  ::
  
-@@ -277,13 +277,14 @@ We illustrate Laplace transforms::
+@@ -291,13 +291,14 @@ We illustrate Laplace transforms::
  
      sage: _ = maxima.eval("f(t) := t^5*exp(t)*sin(t)")
      sage: maxima("laplace(f(t),t,s)")
@@ -314,7 +314,7 @@ index ebe00cd51e7..a916796341b 100644
  
  ::
  
-@@ -349,11 +350,11 @@ command)::
+@@ -363,11 +364,11 @@ command)::
  
      sage: S = maxima('nusum(exp(1+2*i/n),i,1,n)')
      sage: print(S)
@@ -331,8 +331,8 @@ index ebe00cd51e7..a916796341b 100644
  
  We formally compute the limit as `n\to\infty` of
  `2S/n` as follows::
-@@ -402,7 +403,7 @@ Here's another example::
- 
+@@ -418,7 +419,7 @@ Here's another example::
+     sage: from sage.interfaces.maxima import maxima
      sage: g = maxima('exp(3*%i*x)/(6*%i) + exp(%i*x)/(2*%i) + c')
      sage: latex(g)
 -    -...{{i\,e^{3\,i\,x}}\over{6}}...-{{i\,e^{i\,x}}\over{2}}+c
@@ -341,10 +341,10 @@ index ebe00cd51e7..a916796341b 100644
  Long Input
  ----------
 diff --git a/src/sage/interfaces/maxima_abstract.py b/src/sage/interfaces/maxima_abstract.py
-index dab8e641e3a..98ac5f3f3d3 100644
+index 5866b955bb0..e7c1da2a277 100644
 --- a/src/sage/interfaces/maxima_abstract.py
 +++ b/src/sage/interfaces/maxima_abstract.py
-@@ -827,11 +827,11 @@ class MaximaAbstract(ExtraTabCompletion, Interface):
+@@ -866,11 +866,11 @@ class MaximaAbstract(ExtraTabCompletion, Interface):
              sage: maxima.de_solve('diff(y,x,2) + 3*x = y', ['x','y'], [1,1,1])
              y = 3*x-2*%e^(x-1)
              sage: maxima.de_solve('diff(y,x,2) + 3*x = y', ['x','y'])
@@ -359,8 +359,8 @@ index dab8e641e3a..98ac5f3f3d3 100644
          """
          if not isinstance(vars, str):
              str_vars = '%s, %s' % (vars[1], vars[0])
-@@ -870,20 +870,20 @@ class MaximaAbstract(ExtraTabCompletion, Interface):
- 
+@@ -910,20 +910,20 @@ class MaximaAbstract(ExtraTabCompletion, Interface):
+             sage: from sage.interfaces.maxima_lib import maxima
              sage: maxima.clear('x'); maxima.clear('f')
              sage: maxima.de_solve_laplace("diff(f(x),x,2) = 2*diff(f(x),x)-f(x)", ["x","f"], [0,1,2])
 -            f(x) = x*%e^x+%e^x
@@ -387,7 +387,7 @@ index dab8e641e3a..98ac5f3f3d3 100644
  
          .. NOTE::
  
-@@ -1094,10 +1094,10 @@ class MaximaAbstractElement(ExtraTabCompletion, InterfaceElement):
+@@ -1136,10 +1136,10 @@ class MaximaAbstractElement(ExtraTabCompletion, InterfaceElement):
              sage: f = maxima('1/(x-1)^3'); f
              1/(x-1)^3
              sage: print(f)
@@ -402,7 +402,7 @@ index dab8e641e3a..98ac5f3f3d3 100644
          """
          return self.display2d(onscreen=False)
  
-@@ -1713,9 +1713,9 @@ class MaximaAbstractElement(ExtraTabCompletion, InterfaceElement):
+@@ -1798,9 +1798,9 @@ class MaximaAbstractElement(ExtraTabCompletion, InterfaceElement):
              sage: y,d = var('y,d')
              sage: f = function('f')
              sage: latex(maxima(derivative(f(x*y), x)))
@@ -414,7 +414,7 @@ index dab8e641e3a..98ac5f3f3d3 100644
              sage: latex(maxima(d/(d-2)))
              {{{\it d}}\over{{\it d}-2}}
          """
-@@ -1826,9 +1826,9 @@ class MaximaAbstractElement(ExtraTabCompletion, InterfaceElement):
+@@ -1929,9 +1929,9 @@ class MaximaAbstractElement(ExtraTabCompletion, InterfaceElement):
              sage: f.partial_fraction_decomposition('x')
              1/(2*(x-1))-1/(2*(x+1))
              sage: print(f.partial_fraction_decomposition('x'))
@@ -428,19 +428,19 @@ index dab8e641e3a..98ac5f3f3d3 100644
          return self.partfrac(var)
  
 diff --git a/src/sage/interfaces/maxima_lib.py b/src/sage/interfaces/maxima_lib.py
-index 0a6ae7d0dae..339be7c951e 100644
+index 169b964b72f..92611205d9b 100644
 --- a/src/sage/interfaces/maxima_lib.py
 +++ b/src/sage/interfaces/maxima_lib.py
-@@ -164,7 +164,7 @@ except RuntimeError:
- ecl_eval("(initialize-runtime-globals)")
+@@ -164,7 +164,7 @@ ecl_eval("(initialize-runtime-globals)")
  ecl_eval("(setq $nolabels t))")
  ecl_eval("(defun add-lineinfo (x) x)")
+ ecl_eval(r"(defun tex-derivative (x l r) (tex (if $derivabbrev (tex-dabbrev x) (tex-d x '\\partial)) l r lop rop ))")
 -ecl_eval('(defun principal nil (cond ($noprincipal (diverg)) ((not pcprntd) (merror "Divergent Integral"))))')
 +ecl_eval('(defun principal nil (cond ($noprincipal (diverg)) ((not *pcprntd*) (merror "Divergent Integral"))))')
  ecl_eval("(remprop 'mfactorial 'grind)")  # don't use ! for factorials (#11539)
  ecl_eval("(setf $errormsg nil)")
  
-@@ -1243,6 +1243,8 @@ sage_op_dict = {
+@@ -1224,6 +1224,8 @@ sage_op_dict = {
      sage.functions.error.erf: "%ERF",
      sage.functions.gamma.gamma_inc: "%GAMMA_INCOMPLETE",
      sage.functions.other.conjugate: "$CONJUGATE",
@@ -450,10 +450,10 @@ index 0a6ae7d0dae..339be7c951e 100644
  # we compile the dictionary
  sage_op_dict = {k: EclObject(sage_op_dict[k]) for k in sage_op_dict}
 diff --git a/src/sage/manifolds/chart.py b/src/sage/manifolds/chart.py
-index c9bc4c802f1..eeed8d5da00 100644
+index 7232f0c4ddb..cb5fd119bff 100644
 --- a/src/sage/manifolds/chart.py
 +++ b/src/sage/manifolds/chart.py
-@@ -3807,7 +3807,7 @@ class CoordChange(SageObject):
+@@ -3798,7 +3798,7 @@ class CoordChange(SageObject):
  
              sage: spher_to_cart.set_inverse(sqrt(x^3+y^2), atan2(y,x))
              Check of the inverse coordinate transformation:
@@ -549,10 +549,10 @@ index b1eed3b8b2e..57b35bef6cc 100644
      ::
  
 diff --git a/src/sage/matrix/matrix2.pyx b/src/sage/matrix/matrix2.pyx
-index e5f2ebb453f..1b65c8d9967 100644
+index 63102fb380b..e922b2d57f3 100644
 --- a/src/sage/matrix/matrix2.pyx
 +++ b/src/sage/matrix/matrix2.pyx
-@@ -16692,8 +16692,8 @@ cdef class Matrix(Matrix1):
+@@ -16669,8 +16669,8 @@ cdef class Matrix(Matrix1):
              sage: # needs sage.symbolic
              sage: a = matrix([[1,2], [3,4]])
              sage: a.exp()
@@ -588,10 +588,10 @@ index 07170cde870..9ac3a8b6658 100644
          sage: U.<x,y,z> = PolynomialRing(ZZ, 3); U
          Multivariate Polynomial Ring in x, y, z over Integer Ring
 diff --git a/src/sage/symbolic/expression.pyx b/src/sage/symbolic/expression.pyx
-index 8aa50291e02..3cbb8d0cab7 100644
+index 072533b413c..57a3c8c1c0c 100644
 --- a/src/sage/symbolic/expression.pyx
 +++ b/src/sage/symbolic/expression.pyx
-@@ -13086,21 +13086,21 @@ cdef class Expression(Expression_abc):
+@@ -13016,21 +13016,21 @@ cdef class Expression(Expression_abc):
          Check that the sum in :issue:`10682` is done right::
  
              sage: sum(binomial(n,k)*k^2, k, 2, n)
@@ -616,7 +616,7 @@ index 8aa50291e02..3cbb8d0cab7 100644
              sage: forget()
              sage: assume(j==-1)
              sage: sum(binomial(n,k)*binomial(k-1,j)*(-1)**(k-1-j),k,j+1,n)
-@@ -13108,7 +13108,7 @@ cdef class Expression(Expression_abc):
+@@ -13038,7 +13038,7 @@ cdef class Expression(Expression_abc):
              sage: forget()
              sage: assume(j<-1)
              sage: sum(binomial(n,k)*binomial(k-1,j)*(-1)**(k-1-j),k,j+1,n)
@@ -644,7 +644,7 @@ index 1390c524300..4d52d4ab963 100644
      from sage.calculus.calculus import maxima
      if not isinstance(expression, Expression):
 diff --git a/src/sage/symbolic/integration/integral.py b/src/sage/symbolic/integration/integral.py
-index 4a70d373516..096ca779a71 100644
+index b3d1dd1c2bf..1f822b4d5a6 100644
 --- a/src/sage/symbolic/integration/integral.py
 +++ b/src/sage/symbolic/integration/integral.py
 @@ -614,10 +614,7 @@ def integrate(expression, v=None, a=None, b=None, algorithm=None, hold=False):
@@ -659,7 +659,7 @@ index 4a70d373516..096ca779a71 100644
  
      Alternatively, just use algorithm='mathematica_free' to integrate via Mathematica
      over the internet (does NOT require a Mathematica license!)::
-@@ -1076,7 +1073,7 @@ def integrate(expression, v=None, a=None, b=None, algorithm=None, hold=False):
+@@ -1036,7 +1033,7 @@ def integrate(expression, v=None, a=None, b=None, algorithm=None, hold=False):
          sage: assume(a > 0)
          sage: assume(a < 1)
          sage: integrate(x*log(1/(a*x+(1-x)^2)), x, 0, 1, algorithm='maxima')
