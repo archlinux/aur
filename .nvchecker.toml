@@ -1,0 +1,5 @@
+[vpkedit]
+source = "github"
+github = "craftablescience/VPKEdit"
+use_max_tag = true
+prefix = "v"
