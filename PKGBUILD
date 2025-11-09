@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=jxl-oxide
 pkgver=0.12.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Pure Rust implementation of JPEG XL decoder"
 arch=('x86_64')
 url="https://github.com/tirr-c/jxl-oxide"
@@ -10,7 +10,7 @@ depends=('glibc' 'gcc-libs' 'lcms2' 'ffmpeg')
 makedepends=('cargo')
 provides=()
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('535d0b8ef739c4d76a0630ef708d4151c3fb36e73b329f61a81088d22493e7a4')
+sha256sums=('ae4936ca71543da3a8880bd7edad9200dc99374560cce222d5c9a491c13dd119')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver/crates/${pkgname}-cli"
