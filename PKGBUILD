@@ -1,7 +1,7 @@
 # Maintainer: Luis Bocanegra <luisbocanegra17b at gmail dot com>
 _gitname=kurve
 pkgname=plasma6-applets-kurve
-pkgver=2.2.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Audio visualizer widget powered by CAVA for the KDE Plasma Desktop"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('libplasma' 'cava' 'python' 'python-websockets' 'qt6-websockets')
 makedepends=('gcc' 'extra-cmake-modules' 'gettext')
 source=("${_gitname}-${pkgver}.tar.gz::$url/archive/v${pkgver}/${_gitname}-${pkgver}.tar.gz")
-sha256sums=('11c7e2aa29526ba73104268d507e8989d0c34389564f21e6bebcc9f8d67a8e00')
+sha256sums=('07388910a306546712e6775eb248765e77f3c84f3436c1585d7dc596f3d6a274')
 
 build() {
   cd "${srcdir}/${_gitname}-$pkgver"
