@@ -1,8 +1,8 @@
 # Maintainer: Nissar Chababy <funilrys at outlook dot com>
 # Ex-Maintainer: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup2-server
-pkgver=2.5.33
-pkgrel=2
+pkgver=2.5.34
+pkgrel=1
 pkgdesc="Client Server backup system"
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
 url="http://www.urbackup.org/"
@@ -16,7 +16,7 @@ source=(
     "md5-bytes.patch"
 )
 install='urbackup.install'
-sha512sums=('a716f91089c0e00d6f2be68f035833519136180c60901c23770af47d62fa9a0982fd83c6aaff645d1e77640b024b95a7a22a9bc6ea47b3c86f946755e91b7cd8'
+sha512sums=('0e7c87a2b08aef77513b776751203c6e2dcdc2ae2976fa0e84ec462e5c64d68fb931d81728887048860280bfe594d20b2be3969a831b7872b0ab4d054b7aec0e'
             '34e25c868cf4572414fbc6c693877127152f9a97edf8865b4263a55cf16f71a5045ba96b1a9af8244ed49c35cab56e3fdb44348d191e9f85e2efb66392907132')
 
 CFLAGS="-march=native -O2 -pipe -fstack-protector-strong"
