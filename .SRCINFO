@@ -5,6 +5,7 @@ pkgbase = rpcs3-bin
 	url = https://github.com/RPCS3/rpcs3-binaries-linux
 	arch = x86_64
 	license = GPL-2.0-only
+	makedepends = jq
 	depends = alsa-lib
 	depends = curl
 	depends = gcc-libs
@@ -27,6 +28,6 @@ pkgbase = rpcs3-bin
 	provides = rpcs3
 	conflicts = rpcs3
 	source = https://github.com/RPCS3/rpcs3-binaries-linux/releases/download/build-8126a199f529e2bcd0025815fb9cffd0fa9fb700/rpcs3-v0.0.38-18315-8126a199_linux64.AppImage
-	sha256sums = e4381175e5f2b63006d7c11fccb0b50b687fb3702cf7a8e3888a752b85e1fca0
+	sha256sums = SKIP
 
 pkgname = rpcs3-bin

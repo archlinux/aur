@@ -1,13 +1,16 @@
 # Contributor: Sanpi <sanpi+aur@homecomputing.fr>
 
 pkgname=rpcs3-bin
-_commit=8126a199f529e2bcd0025815fb9cffd0fa9fb700
-pkgver=0.0.38_18315
+_api=https://api.github.com/repos/RPCS3/rpcs3-binaries-linux/releases/latest
+_commit=$(curl -s $_api | jq .tag_name | sed -e "s/\"//g" -e "s/build-//")
+_pkgver=$(curl -s $_api | jq .name | sed "s/\"//g")
+pkgver=${_pkgver/-/_}
 pkgrel=1
 pkgdesc='PlayStation 3 Emulator'
 arch=('x86_64')
 url=https://github.com/RPCS3/rpcs3-binaries-linux
 license=('GPL-2.0-only')
+makedepends=(jq)
 depends=( alsa-lib curl gcc-libs glibc libxkbcommon libx11 sdl3 systemd-libs libevdev libglvnd vulkan-icd-loader zlib
   glu
   glew
@@ -20,12 +23,13 @@ depends=( alsa-lib curl gcc-libs glibc libxkbcommon libx11 sdl3 systemd-libs lib
 provides=(rpcs3)
 conflicts=(rpcs3)
 
-source=("${url}/releases/download/build-${_commit}/rpcs3-v${pkgver/_/-}-${_commit::8}_linux64.AppImage")
-sha256sums=('e4381175e5f2b63006d7c11fccb0b50b687fb3702cf7a8e3888a752b85e1fca0')
+source=("${url}/releases/download/build-${_commit}/rpcs3-v${_pkgver}-${_commit::8}_linux64.AppImage")
+sha256sums=('SKIP')
 
 package() {
-  chmod +x rpcs3-v${pkgver/_/-}-${_commit::8}_linux64.AppImage
-  ./rpcs3-v${pkgver/_/-}-${_commit::8}_linux64.AppImage --appimage-extract 2> /dev/null
+  # save disk space
+  chmod +x rpcs3-v${_pkgver}-${_commit::8}_linux64.AppImage
+  ./rpcs3-v${_pkgver}-${_commit::8}_linux64.AppImage --appimage-extract 2> /dev/null
 
   cd AppDir
   install -d "$pkgdir"/usr/{bin,share/{applications,metainfo,pixmaps}}
