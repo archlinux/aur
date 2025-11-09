@@ -1,6 +1,6 @@
 pkgbase = python-pyinit
 	pkgdesc = A powerful CLI tool for creating and managing the entire lifecycle of Python projects.
-	pkgver = 1.0.13
+	pkgver = 1.0.14
 	pkgrel = 1
 	url = https://github.com/mrbooo895/pyinit
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-pyinit
 	depends = python-tomli-w
 	depends = python-importlib-resources
 	depends = git
-	source = https://github.com/mrbooo895/pyinit/archive/refs/tags/1.0.13.tar.gz
-	sha256sums = 48d8f439fdaad63a46952e6dbc1a69195543d6b32ed193b7e527e07aba64999c
+	source = https://github.com/mrbooo895/pyinit/archive/refs/tags/1.0.14.tar.gz
+	sha256sums = 5cfc253f31a4c4d6dd7a5244c48c38c334f5a642bb0872be87b4df51b3decf61
 
 pkgname = python-pyinit
