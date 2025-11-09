@@ -39,7 +39,7 @@ build() {
   cmake --build build
 }
 
-package(){
-  cd "${srcdir}/${_pkgname}"
-  make DESTDIR="$pkgdir/" install
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 $_pkgname/{AUTHORS,ChangeLog,README.md} -t "$pkgdir/usr/share/doc/$_pkgname"
 }
