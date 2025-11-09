@@ -69,7 +69,7 @@ package_snes9x-git() {
 
     cd "${_pkgbase}"
     install -D -m755 unix/snes9x -t "${pkgdir}"/usr/bin/
-    install -d "${pkgdir}/usr/share/${_pkgbase}" "${pkgdir}/usr/share/${_pkgbase}"
+    install -d "${pkgdir}/usr/share/${_pkgbase}" "${pkgdir}/usr/share/doc/${_pkgbase}"
     install -D -m644 {unix/snes9x.conf.default,docs/{control-inputs,controls,snapshots}.txt} \
         "${pkgdir}/usr/share/doc/${_pkgbase}/"
     install -vDm644 LICENSE -t \
@@ -112,8 +112,9 @@ package_snes9x-qt-git() {
     DESTDIR="${pkgdir}" cmake --install . --prefix=/usr
 
     cd "${srcdir}/${_pkgbase}"
-    install -d "${pkgdir}/usr/share/doc/${pkgname}"
-    install -Dm644 {unix/snes9x.conf.default,docs/{control-inputs,controls,snapshots}.txt} \ "${pkgdir}/usr/share/doc/${pkgname}"
+    install -d "${pkgdir}/usr/share/${pkgname}" "${pkgdir}/usr/share/doc/${pkgname}"
+    install -Dm644 {unix/snes9x.conf.default,docs/{control-inputs,controls,snapshots}.txt} \
+	    "${pkgdir}/usr/share/doc/${pkgname}"
     install -vDm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     rm "${pkgdir}/usr/share/snes9x/cheats.bml"
 
