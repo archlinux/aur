@@ -51,4 +51,4 @@ package() {
     install -o root -g root -m 644 -t $pkgdir/usr/share/licenses/redumper $pkgname-b$pkgver/LICENSE
 }
 
-sha256sums=('7e1560786b3d7b73e9f5166b1712556660f0ee4dc27fd983238688baaf9ece75')
+sha256sums=('b0cee5c228d68fbe09d6de836b203a9ea6dda26ab77101763e0c3281e2ebf4b0')
