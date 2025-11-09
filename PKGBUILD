@@ -1,10 +1,10 @@
 # Maintainer: schnur[at]i2pmail.org
 
 pkgname=nrc
-_pkgver=0.6.12
+_pkgver=0.6.13
 _channel=beta
-_rel=
-_is_beta=false
+_rel=7
+_is_beta=true
 if [ "${_is_beta}" = "false" ]; then
     pkgver=${_pkgver}
 else
@@ -24,7 +24,7 @@ if [ "${_is_beta}" = "false" ]; then
 else
     source=("https://github.com/NoRiskClient/noriskclient-launcher/releases/download/v${_pkgver}-${_channel}.${_rel}/NoRiskClient-Linux.deb")
 fi
-sha256sums=('SKIP')
+sha256sums=('4c7be446c2e4d59a077f583730a28b664405f74d464076d2dc2b5c0bdcecfbc5')
 
 prepare() {
   dpkg-deb -x "$srcdir/NoRiskClient-Linux.deb" "$srcdir/pkg"
