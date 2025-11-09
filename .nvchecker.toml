@@ -1,0 +1,5 @@
+[steamdepotdownloadergui]
+source = "github"
+github = "mmvanheusden/SteamDepotDownloaderGUI"
+use_max_tag = true
+prefix = "v"
