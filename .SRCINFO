@@ -1,7 +1,7 @@
 pkgbase = onscripter-en-galladite27
 	pkgdesc = modern fork of onscripter-en, an opensource nscript interpreter
 	pkgver = 2025_06_08
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Galladite27/ONScripter-EN
 	install = onscripter-en.install
 	arch = x86_64

@@ -2,7 +2,7 @@
 pkgname=onscripter-en-galladite27
 _pkgname=ONScripter-EN
 pkgver=2025_06_08
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="modern fork of onscripter-en, an opensource nscript interpreter"
 arch=('x86_64')
@@ -38,8 +38,8 @@ package() {
 	install -Dm755 "onscripter-en-play" "${pkgdir}/usr/bin/"
 
 	#manpages
-	install -d "$pkgdir/usr/share/man/"
-	 cp -r ./tools/man/* "$pkgdir/usr/share/man/"
+	install -d "$pkgdir/usr/share/man/man1/"
+	 cp -r ./tools/man/* "$pkgdir/usr/share/man/man1/"
 
 	# Fonts
 	cd ".."
