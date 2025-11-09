@@ -1,0 +1,5 @@
+[anime-games-launcher]
+source = "github"
+github = "an-anime-team/anime-games-launcher"
+use_max_tag = true
+prefix = "v"
