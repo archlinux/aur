@@ -1,6 +1,6 @@
 pkgbase = kamailio
 	pkgdesc = SIP Server for large VoIP and real-time communication platforms
-	pkgver = 6.0.3
+	pkgver = 6.0.4
 	pkgrel = 1
 	url = https://www.kamailio.org
 	arch = x86_64
@@ -33,9 +33,9 @@ pkgbase = kamailio
 	optdepends = libxmlrpc: for XML-RPC protocol support
 	backup = etc/kamailio/kamailio.cfg
 	backup = etc/kamailio/kamctlrc
-	source = https://www.kamailio.org/pub/kamailio/latest/src/kamailio-6.0.3_src.tar.gz
+	source = https://www.kamailio.org/pub/kamailio/latest/src/kamailio-6.0.4_src.tar.gz
 	source = kamailio.sysusers
-	sha256sums = 963c70b2ca64f0801c8549cc51b4e2f1b7f4e73ae9d4a70145c5c4d5b4da1184
+	sha256sums = df83ecde2d6d9d255cfc92c18d2457198f19452997846a8dcb7bfe7376aeb6e6
 	sha256sums = e2ad5c2f3213f2ce7de9524da378d062525ce99e2b401590ec0394c521a3d0c8
 
 pkgname = kamailio
