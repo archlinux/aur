@@ -10,7 +10,7 @@ url="https://github.com/YangShu233-Snow/Learning_at_ZJU_third_client"
 license=('LGPL-3.0-only')
 provides=('lazy-cli')
 conflicts=('lazy-cli-git')
-source=("https://github.com/YangShu233-Snow/Learning_at_ZJU_third_client/releases/download/v0.1.0-beta.7/lazy-linux.tar.gz")
+source=("https://github.com/YangShu233-Snow/Learning_at_ZJU_third_client/releases/download/v0.1.0-beta.7/lazy-cli-linux.tar.gz")
 sha256sums=('bf1d0ac275116bb998f703d09281097c48dbd103cdce6ae8e938e2e33edc3687')
 depends=('glibc' 'gcc-libs' 'zlib' 'xz' 'bzip2' 'readline' 'openssl' 'libffi' 'util-linux-libs')
 
