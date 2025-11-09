@@ -5,3 +5,4 @@ Exec=/usr/bin/onlinefix-linux-launcher
 Icon=onlinefix-linux-launcher
 Type=Application
 StartupWMClass=org.develnext.jphp.ext.javafx.classes.UXApplication$CustomApplication
+Categories=Game;Network;

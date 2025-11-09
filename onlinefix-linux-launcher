@@ -1,4 +1,10 @@
 #!/bin/sh
 
 export GDK_BACKEND=x11
-exec /lib/jvm/java-8-jre/jre/bin/java -Dprism.forceGPU=true -jar '/usr/share/java/OFMELauncher.jar' "$@"
+
+if echo $LANG | grep -q "tr_TR"; then
+    export LANG="en_US.UTF-8"
+    echo "A Turkish language variable was found, it was changed to English to circumvent the problems"
+fi
+
+exec /lib/jvm/java-8-jre/jre/bin/java -Dprism.forceGPU=true -jar /usr/share/java/OFMELauncher.jar "$@"
