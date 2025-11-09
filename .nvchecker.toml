@@ -1,4 +1,4 @@
-[flatpost]
+[flatpost-bin]
 source = "github"
 github = "GloriousEggroll/flatpost"
 use_max_tag = true
