@@ -1,0 +1,5 @@
+[epic-asset-manager]
+source = "github"
+github = "AchetaGames/Epic-Asset-Manager"
+use_max_tag = true
+prefix = "v"
