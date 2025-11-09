@@ -1,6 +1,6 @@
 pkgbase = project-graph-bin
 	pkgdesc = A simple tool to create topology diagrams.
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/LiRenTech/project-graph
 	install = project-graph-bin.install
@@ -20,7 +20,7 @@ pkgbase = project-graph-bin
 	conflicts = project-graph-git
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/LiRenTech/project-graph/releases/download/v2.4.0/Project.Graph_2.4.0_amd64.deb
-	sha256sums_x86_64 = 6cf6c6081129bf7d6eb4dc3f3eec088db47017b4a94d135e685bbf7afcb9d3d8
+	source_x86_64 = https://github.com/LiRenTech/project-graph/releases/download/v2.4.1/Project.Graph_2.4.1_amd64.deb
+	sha256sums_x86_64 = 16dd8507be6a3183f3ffec01ad1bb2c044457614d022ffb76b4a8beb8fce3766
 
 pkgname = project-graph-bin
