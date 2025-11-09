@@ -1,0 +1,21 @@
+pkgbase = hyprsettings-git
+	pkgdesc = Configurator for Hyprland (alpha, development version, git snapshot)
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/acropolis914/hyprsettings
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = python-pywebview
+	depends = python-tomlkit
+	depends = python-rich
+	depends = webkit2gtk
+	provides = hyprsettings
+	conflicts = hyprsettings
+	source = hyprsettings-git::git+https://github.com/acropolis914/hyprsettings.git
+	md5sums = SKIP
+
+pkgname = hyprsettings-git
