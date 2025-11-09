@@ -29,4 +29,4 @@ def get_sequence_number(sha):
 last_sequence_number = get_sequence_number(latest_sha)
 
 
-print("0.4.0.r{}.{}".format(last_sequence_number, latest_sha))
+print("0.5.0.r{}.{}".format(last_sequence_number, latest_sha))

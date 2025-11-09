@@ -2,7 +2,7 @@
 
 pkgbase=surfer-waveform
 pkgname=surfer-waveform-git-bin
-pkgver=0.4.0.r1018.1d83e7c2
+pkgver=0.5.0.r1070.9198cc49
 pkgrel=1
 provides=('surfer-waveform')
 pkgdesc='A waveform viewer with a focus on a snappy usable interface, and extensibility.'
