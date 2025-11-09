@@ -9,7 +9,7 @@ pkgname=(
 pkgbase=vencord
 _pkgname=Vencord
 pkgver=1.13.5
-pkgrel=2
+pkgrel=3
 pkgdesc="The cutest Discord client mod"
 arch=(any)
 url=https://vencord.dev
@@ -38,6 +38,7 @@ check() {
 }
 
 package_vencord() {
+    pkgdesc+=" (replaces Vesktop's built-in Vencord)"
     depends=(vesktop)
     install=vencord.install
 
