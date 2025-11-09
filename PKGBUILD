@@ -9,7 +9,7 @@ pkgname=(
 pkgbase=vencord-git
 _pkgname=Vencord
 pkgver=1.13.5.r0.gc9ebece
-pkgrel=1
+pkgrel=2
 pkgdesc="The cutest Discord client mod"
 arch=(any)
 url=https://vencord.dev
@@ -43,6 +43,7 @@ check() {
 }
 
 package_vencord-git() {
+    pkgdesc+=" (replaces Vesktop's built-in Vencord)"
     depends=(vesktop)
     provides=(vencord)
     conflicts=(vencord)
