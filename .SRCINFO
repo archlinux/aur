@@ -5,7 +5,7 @@ pkgbase = hsh
 	url = https://github.com/GrayHatter/hsh
 	arch = x86_64
 	license = BSD-2-Clause
-	makedepends = zig
+	makedepends = zig0.14
 	makedepends = git
 	source = hsh::git+https://github.com/GrayHatter/hsh#commit=3fe7054e28d634ef853bfe7a0c1f42785e46db46
 	sha256sums = 9294bcef69eba48fcabe21a89eafbefba80f1d259268678922c4efd98b7e772b

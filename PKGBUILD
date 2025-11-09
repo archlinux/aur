@@ -8,7 +8,8 @@ pkgdesc="better shell"
 arch=('x86_64')
 url="https://github.com/GrayHatter/hsh"
 license=('BSD-2-Clause')
-makedepends=('zig' 'git')
+# https://github.com/GrayHatter/hsh/issues/8
+makedepends=('zig0.14' 'git')
 source=(
   "${pkgname}::git+$url#commit=$_gitcommit"
 )
