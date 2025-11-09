@@ -1,6 +1,6 @@
 pkgbase = shitterate-git
 	pkgdesc = a shitty implementation of literate programming
-	pkgver = r2.96269ec
+	pkgver = r3.ccfa807
 	pkgrel = 1
 	url = https://git.gay/tauon/shitterate.git
 	arch = i686

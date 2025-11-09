@@ -1,7 +1,7 @@
 # Maintainer: Melody Kittycat <catgirl@softmodd.ing>
 
 pkgname=shitterate-git
-pkgver=r2.96269ec
+pkgver=r3.ccfa807
 pkgrel=1
 depends=('glibc' 'gcc-libs')
 makedepends=('rust' 'cargo' 'git')
