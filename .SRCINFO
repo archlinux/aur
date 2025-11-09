@@ -8,7 +8,6 @@ pkgbase = cosmic-updates-git
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
-	makedepends = just
 	depends = cosmic-panel
 	optdepends = pacman: For Arch-based package management
 	optdepends = checkupdates: For checking Pacman updates

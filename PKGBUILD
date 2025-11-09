@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://codeberg.org/VintageTechie/cosmic-updates"
 license=('MIT')
 depends=('cosmic-panel')
-makedepends=('git' 'rust' 'cargo' 'just')
+makedepends=('git' 'rust' 'cargo')
 optdepends=(
     'pacman: For Arch-based package management'
     'checkupdates: For checking Pacman updates'
@@ -31,5 +31,18 @@ build() {
 
 package() {
     cd "$srcdir/cosmic-updates"
-    just DESTDIR="$pkgdir" install
+    
+    # Install binary
+    install -Dm755 "target/release/cosmic-updates" \
+        "$pkgdir/usr/bin/cosmic-updates"
+    
+    # Install desktop file
+    install -Dm644 "com.vintagetechie.CosmicUpdates.desktop" \
+        "$pkgdir/usr/share/applications/com.vintagetechie.CosmicUpdates.desktop"
+    
+    # Install icons
+    install -Dm644 "icons/hicolor/scalable/apps/tux-normal.svg" \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/tux-normal.svg"
+    install -Dm644 "icons/hicolor/scalable/apps/tux-alert.svg" \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/tux-alert.svg"
 }
