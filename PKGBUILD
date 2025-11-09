@@ -2,7 +2,7 @@
 
 pkgname=nanocoder
 pkgauthor=Mote-Software
-pkgver=1.16.0
+pkgver=1.15.1
 pkgrel=1
 
 _npmname=nanocoder
@@ -24,23 +24,23 @@ source=("https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${pkgname}-${pkg
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE.md")
 noextract=("${pkgname}-${pkgver}.tgz")
 
-b2sums=('68e4076bc419fac72be93e5a3a9fc7a16490c2aa62f93c75c04decb6cf15b79b5af222b55ea2b7e8d652b746e35d8aaa6cb8b68aaf7a7e36fedb12677f00799b'
-        'cace6455ff528d8030a16912b51d1287731c892e0eb7f1731abd17c62f9afaa637a870ef2db4c74d56ff8ba1557deb90152455fa7f6fd14cce158de48f8b8bb1'
+b2sums=('aa6152d0beca7e3f51a1be9af9ca782a9209f32705adaaeac1b971dd3b0801dce01f7e34460bb020fc6ecc3854a35a0158d63f7f9368b5986d888d02d4539fb2'
+        '639c39a6e5acd01079e60b092dcf556a3af4125b9ed357be68db569efc58988c172f4292739bf94f178ae813196c8ab7f442efa5191b719c71b1b34c4e34199e'
         'bfbf59c36e5927ef63ec74b97f815e2730acb4072807f043c78fab72dba54d1a7a9dc05e42132ced5544016d765ea0f8fd12d33f038ffe3b8d037f0d4c85df90')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
-	# Install using Using npm
+	msg2 "Install using NPM"
 	npm install -s -g \
 		--cache "${srcdir}/npm-cache" \
 		--prefix "${pkgdir}/usr" \
 		"${srcdir}/${pkgname}-${pkgver}.tgz"
 
-	# Fix ownership of ALL FILES
+	msg2 "Fix ownership of ALL FILES"
 	find "${pkgdir}/usr" -type d -exec chmod 755 {} +
 	chown -R root:root "${pkgdir}"
 
-	# Remove references to $pkgdir
+	msg2 "Remove references to ${pkgdir}"
 	find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 
 	local tmppackage="$(mktemp)"
@@ -56,9 +56,9 @@ package() {
 		chmod 644 "${pkgjson}"
 	done
 
-	# Install README file
+	msg2 "Install README file"
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	# Install LICENSE file
+	msg2 "Install LICENSE file"
 	install -Dm 644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
