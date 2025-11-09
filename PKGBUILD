@@ -11,13 +11,13 @@ source=(
     "https://gitlab.com/kalilinux/packages/dirbuster/-/archive/kali/1.0-1kali6/dirbuster-kali-1.0-1kali6.tar.gz"
     "https://gitlab.com/kalilinux/packages/dirb/-/archive/debian/2.22-0kali3/dirb-debian-2.22-0kali3.tar.gz"
     "https://github.com/xmendez/wfuzz/archive/refs/tags/v3.1.0.tar.gz"
-    "https://github.com/danielmiessler/SecLists/archive/refs/tags/2024.1.tar.gz"
+    "https://github.com/danielmiessler/SecLists/archive/refs/tags/2025.3.tar.gz"
 )
 sha256sums=(
     "b397fe95327efcbc66946a159f98a1c78c4a4c688ce747cd3545d2f8796cbf2d"
     "5c52611cf3b58b6e5855e7f3a6cf28da324ccf820d89920b89488d9b5bc1cba1"
     "60798e56274a377f8770d162935a040d4d6e27919bfbb46cf13a7a0a34896be9"
-    "bc804ddebd1e8ccc6fde885406e2614c9c1ebe052052ae79bcd9f62f96ddad9f"
+    "8fa88740c36777012f637ebb844de43d1020fb4273e080019d5f0c80360f433f"
 )
 
 prepare() {
