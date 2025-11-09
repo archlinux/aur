@@ -1,0 +1,4 @@
+[pineflash]
+source = "github"
+github = "Spagett1/PineFlash"
+use_max_tag = true
