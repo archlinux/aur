@@ -1,0 +1,5 @@
+[vencord-installer]
+source = "github"
+github = "Vencord/Installer"
+use_max_tag = true
+prefix = "v"
