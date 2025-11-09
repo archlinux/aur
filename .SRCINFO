@@ -1,0 +1,23 @@
+pkgbase = libdlo
+	pkgdesc = User space library that supports DL1xx DisplayLink devices. Can be used to drive those displays directly.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://libdlo.freedesktop.org/wiki/
+	arch = aarch64
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv5h
+	arch = armv6h
+	arch = armv7h
+	license = GPL-2.0-only
+	makedepends = libusb-compat
+	depends = glibc
+	depends = libusb-compat
+	provides = libdlo.so
+	conflicts = libdlo.so
+	options = staticlibs
+	source = libdlo-0.1.2.tar.gz::http://people.freedesktop.org/~berniet/libdlo-0.1.2.tar.gz
+	sha256sums = c5f75baf4424348580ca988e17bb752f68c29978cfbb01bae543d2dc9bb193fd
+
+pkgname = libdlo
