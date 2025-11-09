@@ -1,0 +1,26 @@
+pkgbase = kwin-zones
+	pkgdesc = Wayland ext-zones for KWin
+	pkgver = 1.0.11
+	pkgrel = 1
+	url = https://invent.kde.org/automotive/kwin-zones
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = extra-cmake-modules
+	makedepends = vulkan-headers
+	makedepends = vulkan-icd-loader
+	makedepends = wayland-protocols
+	depends = gcc-libs
+	depends = glibc
+	depends = kconfig
+	depends = kwin
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = wayland
+	source = https://invent.kde.org/automotive/kwin-zones/-/archive/1.0.11/kwin-zones-1.0.11.tar.gz
+	source = https://invent.kde.org/automotive/kwin-zones/-/merge_requests/5.patch
+	source = https://invent.kde.org/automotive/kwin-zones/-/commit/33767fb5.patch
+	sha256sums = 25a66c7dad0dd0936b51d5aeff358d7664f549e264c2b7cd37c17cb26e8636a0
+	sha256sums = 9be799cc492b0d75046321fdd740c2b8edb99e2f141dd578598934c0406a1360
+	sha256sums = 4c30da970eb0635bbd93b14813163e2010153c9a059ad5d540c04f76ad1009ea
+
+pkgname = kwin-zones
