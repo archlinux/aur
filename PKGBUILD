@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 pkgname=pigar
-pkgver=2.1.7
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="A tool to generate requirements.txt for Python projects."
 arch=('any')
 url="https://github.com/Damnever/pigar"
@@ -12,6 +12,10 @@ depends=(
   'python-aiohttp'
   'python-click'
   'python-colorama'
+  'python-cryptography'
+  'python-docutils'
+  'python-filelock'
+  'python-keyring'
 )
 makedepends=(
   'python-build'
@@ -20,14 +24,7 @@ makedepends=(
   'python-wheel'
 )
 source=("https://github.com/Damnever/pigar/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('8973a89b45e505f07d036633882fb23077f458db73b9751cf85c9663a2697877')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-
-  # Python 3.13
-  cp -f requirements/py3.12.txt requirements/py3.13.txt 
-}
+sha256sums=('ef1822417f473e8d74562dbe04d953415fc403920a65dfc782249c7d6a782415')
 
 build() {
   cd "$pkgname-$pkgver"
