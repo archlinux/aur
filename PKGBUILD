@@ -6,8 +6,8 @@ pkgbase="${_pkgbase}${_vcssuffix}"
 _pkgname="${_pkgbase}"
 pkgname="${pkgbase}"
 epoch=0
-pkgver=0.2.9+2.r555.20251101.ad6e2fc
-pkgrel=2
+pkgver=0.2.9+3.r556.20251108.4dfec56
+pkgrel=1
 pkgdesc="Debug tools for AMD zen systems."
 arch=(
   'any'
