@@ -1,7 +1,7 @@
 # Maintainer: Ábel Futó <lebaotuf+arch at gmail dot com>
 # Contributor: John Schug <xtr.xtrnet@gmail.com>
 pkgname=z88dk
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc="Developement kit for Z80 computers"
 arch=('i686' 'x86_64')
@@ -14,17 +14,19 @@ makedepends=('perl' 'perl-modern-perl' 'perl-yaml-tiny' 'perl-cpu-z80-assembler'
 backup=(etc/profile.d/z88dk.sh)
 source=(https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-src-${pkgver}.tgz
         z88dk.sh)
-sha256sums=('e08887ef9344f8dbd9d669bb904e17c35290a316bb1fe8b02c1a45b0d291292f'
+sha256sums=('96a57a01d44ff1d65d84e38b04aebb0a4e10eccb4845cb71f5a26f10abe7c5ac'
             '4eef7c67e5b142db3006a4076876cdae9f386a7b94a66841a5a8fac869bea156')
 
 build() {
   cd "${srcdir}/${pkgname}"
 
+  _MAKEFLAGS="${MAKEFLAGS}"
   export PATH="${srcdir}/${pkgname}"/bin:$PATH
   export ZCCCFG="${srcdir}/${pkgname}"/lib/config
   export Z80_OZFILES="${srcdir}/${pkgname}"/lib/
   export MAKEFLAGS="-j1"
   make
+  export MAKEFLAGS="${_MAKEFLAGS}"
   make -C libsrc clean
   make -C libsrc
 }
