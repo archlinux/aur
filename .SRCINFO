@@ -1,7 +1,7 @@
 pkgbase = gz-msgs11
 	pkgdesc = Messages for Gazebo robot simulation.
 	pkgver = 11.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gazebosim/gz-msgs
 	arch = any
 	license = Apache-2.0
