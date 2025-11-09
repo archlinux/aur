@@ -7,7 +7,7 @@ pkgver=1.9.1
 pkgrel=2
 pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
 arch=('x86_64')
-url='https://proton.me'
+url='https://proton.me/mail'
 license=('GPL-3.0-or-later')
 depends=(
     'alsa-lib'
@@ -43,7 +43,7 @@ optdepends=(
 )
 provides=("$_name")
 conflicts=("$_name")
-source=("ProtonMail-desktop-beta-$pkgver.deb::$url/download/mail/linux/$pkgver/ProtonMail-desktop-beta.deb")
+source=("ProtonMail-$pkgver.deb::https://proton.me/download/mail/linux/$pkgver/ProtonMail-desktop-beta.deb")
 sha512sums=('8f78db0707e3f1f0cd8ad259891840f88027c56b347c7526e8283576a997cef543c8014569aaf774f444e0d714bcd6e54a5c48171553384368c38cec4cf94e5b')
 b2sums=('988589cc10a8130e1d80e5888557791cbaa9e881b4f21979fec5d472b3f9770b03065416f962e68ade25263246b498b8d4822e8751eca90ac5a512b94e736bf9')
 
