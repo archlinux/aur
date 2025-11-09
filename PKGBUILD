@@ -21,7 +21,7 @@ depends=(
 )
 makedepends=(cmake extra-cmake-modules)
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('a79cec66a0ea585b401fc8f926a5f80a4a2e9eed225c25403560a3d1e02d59c4')
+sha256sums=('4abfcbc57bad048e6902feacdae0ed0869cb06be9f9204d0f3d32ae13ad67878')
 
 prepare() {
   mkdir -p build
