@@ -1,0 +1,5 @@
+[termframe-bin]
+source = "github"
+github = "pamburus/termframe"
+use_latest_release = true
+prefix = "v"
