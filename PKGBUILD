@@ -2,7 +2,7 @@
 
 pkgname=redumper
 epoch=
-pkgver=659
+pkgver=660
 pkgrel=1
 pkgdesc='Low level CD dumper utility'
 arch=(x86_64)
