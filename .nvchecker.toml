@@ -1,0 +1,5 @@
+[mkdocs-glightbox]
+source = "github"
+github = "Blueswen/mkdocs-glightbox"
+use_max_tag = true
+prefix = "v"
