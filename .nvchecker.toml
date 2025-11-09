@@ -1,0 +1,4 @@
+[mesen]
+source = "github"
+github = "SourMesen/Mesen2"
+use_max_tag = true
