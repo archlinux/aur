@@ -1,0 +1,5 @@
+[protonmail-bridge]
+source = "github"
+github = "protonmail/proton-bridge"
+use_max_tag = true
+prefix = "v"
