@@ -1,7 +1,9 @@
+# Maintainer: White Owl <thetruewhiteowl@proton.me>
+# Contributor: Pieter Joost van de Sande <pj@born2code.net>
 pkgname=openpomodoro
 provides=("pomodoro")
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line Pomodoro tracker which uses the Open Pomodoro Format'
 arch=('x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/open-pomodoro/openpomodoro-cli"
@@ -17,7 +19,7 @@ build() {
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
 		go get ./...
-    go build -o pomodoro -ldflags "-extldflags ${LDFLAGS} -s -w -X main.version=${pkgver}" main.go
+    go build -o pomodoro -ldflags "-extldflags \"${LDFLAGS}\" -s -w -X main.version=${pkgver}" main.go
 }
 
 package() {
