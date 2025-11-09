@@ -1,4 +1,4 @@
-[millisecond]
+[millisecond-bin]
 source = "github"
 github = "gaheldev/Millisecond"
 use_max_tag = true
