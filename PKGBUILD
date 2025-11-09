@@ -1,7 +1,7 @@
 # Maintainer: Masato TOYOSHIMA <phoepsilonix@phoepsilonix.love>
 
 pkgname=libaegis
-pkgver=0.4.0
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Portable C implementations of the AEGIS family of high-performance authenticated encryption algorithms. "
 arch=('i686' 'x86_64' 'aarch64')
@@ -10,18 +10,18 @@ url="https://github.com/aegis-aead/libaegis.git"
 license=('MIT')
 options=('!lto')
 
-_commit=f43b52fb4fc6ea6b38de7f364ec219d1f7f2f901
+_commit=4a234009c94454fe818ed1b19091c0c41a1c63d7
 source=("git+https://github.com/aegis-aead/libaegis.git#commit=${_commit}?signed/")
 # mruby-Rakefile.patch
 # h2o-libressl-3.6.2.patch
-sha256sums=('53443d7c0ca7964a2da6d67e97d51ddafe58e213e54c7a0c7fd739a8bb28cb7d')
+sha256sums=('ce87169b044ea88cd1f0080ac85463e8510cc012d10c893bc28ed8ca71ff6a45')
 provides=('libaegis')
 conflicts=('libaegis')
 
-pkgver() {
-    cd "$srcdir/$pkgname"
-        git describe --tags | sed -e 's/^v//g' -e 's/-g.*$//g' -e 's/-.*//g'
-}
+#pkgver() {
+#    cd "$srcdir/$pkgname"
+#    git describe --tags | sed -e 's/^v//g' -e 's/-g.*$//g' -e 's/-.*//g'
+#}
 
 build() {
     cd "$srcdir/$pkgname"
