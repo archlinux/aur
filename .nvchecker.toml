@@ -1,0 +1,5 @@
+[maretf]
+source = "github"
+github = "craftablescience/maretf"
+use_max_tag = true
+prefix = "v"
