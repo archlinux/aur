@@ -2,14 +2,17 @@
 
 pkgname=rogauracore-git
 pkgver=1.6.2.r0.g5f68958
-pkgrel=1
+pkgrel=2
 pkgdesc="RGB keyboard control for Asus ROG laptops"
 arch=('x86_64')
 url="https://github.com/Syndelis/rogauracore"
 license=('MIT')
 depends=('glibc' 'libusb' 'udev')
 makedepends=('git')
+options=('!debug')
 source=('git+https://github.com/Syndelis/rogauracore.git')
+conflicts=('rogauracore')
+provides=('rogauracore')
 md5sums=('SKIP')
 _gitdir=${pkgname%"-git"}
 
