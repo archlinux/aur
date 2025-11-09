@@ -1,0 +1,5 @@
+[pyobd]
+source = "github"
+github = "barracuda-fsh/pyobd"
+use_max_tag = true
+prefix = "v"
