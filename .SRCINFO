@@ -1,0 +1,15 @@
+pkgbase = zesh
+	pkgdesc = Zellij session manager with zoxide integration
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/roberte777/zesh
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = zellij
+	depends = zoxide
+	optdepends = git: enable zesh clone command
+	source = zesh-0.3.0.tar.gz::https://github.com/roberte777/zesh/archive/refs/tags/zesh-v0.3.0.tar.gz
+	sha256sums = 07e4df09acd3ddbafb033c9060348028a1dbc54c66d8a1a19f14c42e7ec38f5b
+
+pkgname = zesh
