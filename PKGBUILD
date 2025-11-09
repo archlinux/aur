@@ -8,19 +8,15 @@ pkgdesc='PlayStation 3 Emulator'
 arch=('x86_64')
 url=https://github.com/RPCS3/rpcs3-binaries-linux
 license=('GPL-2.0-only')
-depends=(
-  'glew'
-  'jack'
-  'openal'
-  'opencv'
-  'qt6-base'
-  'qt6-multimedia'
-  'qt6-svg'
-  'sdl3'
-  'sndio'
+depends=( alsa-lib curl gcc-libs glibc libxkbcommon libx11 sdl3 systemd-libs libevdev libglvnd vulkan-icd-loader zlib
+  glu
+  glew
+  openal
+  opencv
+  qt6-base
+  qt6-multimedia
+  qt6-svg
 )
-
-optdepends=('libglvnd')
 provides=(rpcs3)
 conflicts=(rpcs3)
 
