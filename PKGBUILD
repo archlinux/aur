@@ -61,16 +61,6 @@ sha256sums_riscv64=('4c3331846935ce442c51131e9e4a56bba1a4d28e149da211870b15a4b34
 sha256sums_x86_64=('508bfe3fd637d2a02f07f3fc7da8900351f407116b03685c5dae26b4f01a30de'
                    'SKIP')
 
-if   [ "${CARCH}" = 'aarch64'     ]; then _arch=aarch64;
-elif [ "${CARCH}" = 'armv7h'      ]; then _arch=arm;
-elif [ "${CARCH}" = 'i686'        ]; then _arch=x86;
-elif [ "${CARCH}" = 'loong64'     ]; then _arch=loongarch64;
-elif [ "${CARCH}" = 'powerpc64le' ]; then _arch=powerpc64le;
-elif [ "${CARCH}" = 'riscv64'     ]; then _arch=riscv64;
-elif [ "${CARCH}" = 'x86_64'      ]; then _arch=x86_64;
-else _arch=DUMMY;
-fi
-
 verify() {
   # https://github.com/zigtools/zls/releases/latest
   local zls_minisign="RWR+9B91GBZ0zOjh6Lr17+zKf5BoSuFvrx2xSeDE57uIYvnKBGmMjOex"
