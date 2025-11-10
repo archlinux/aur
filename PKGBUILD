@@ -3,12 +3,12 @@
 pkgname=plasma6-themes-fluent-git
 _themeName=Fluent
 _gitname="$_themeName-kde"
-pkgver=r103.9d6b7d4
+pkgver=r105.44794f2
 pkgrel=1
 pkgdesc="Fluent design theme for kde plasma"
 arch=('any')
 url="https://github.com/vinceliuice/${_gitname}"
-license=('GPL3')
+license=('GPL-3.0-only')
 optdepends=('plasma-desktop: for included plasma theme' 'kvantum: for included kvantum theme' 'sddm: for included sddm theme' 'fluent-icon-theme-git: matching icon theme' 'fluent-cursor-theme-git: matching cursor theme' 'fluent-gtk-theme-git: matching gtk theme')
 makedepends=('git')
 source=("git+${url}.git")
@@ -50,5 +50,5 @@ package() {
    # wallpaper
    cp -r "${srcdir}/${_gitname}/wallpaper"/* "${pkgdir}/usr/share/wallpapers/"
    # sddm
-   cp -r "${srcdir}/${_gitname}/sddm/${_themeName}" "${pkgdir}/usr/share/sddm/themes"
+   cp -r "${srcdir}/${_gitname}/sddm"/${_themeName}-* "${pkgdir}/usr/share/sddm/themes"
 } 
