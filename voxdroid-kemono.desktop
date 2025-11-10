@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Voxdroid Kemono Downloader
+Comment=Used for sus stuff
+Exec=/usr/bin/kemono
+Type=Application
+Terminal=false

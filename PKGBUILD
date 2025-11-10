@@ -1,7 +1,7 @@
 # Maintainer: bill88t <bill88t@feline.gr>
 
 pkgname=voxdroid-kemono
-pkgver=5.4.0.r7.gc97e6fb
+pkgver=5.5.1.r0.gab80b2a
 pkgrel=1
 pkgdesc="VoxDroid's Kemono Downloader - A cross-platform Python app built with PyQt6 to download posts and creator content from Kemono.su"
 arch=('any')
@@ -20,9 +20,11 @@ depends=(
 
 makedepends=('git')
 source=("git+https://github.com/VoxDroid/KemonoDownloader.git"
-        "launcher.sh")
+        "launcher.sh"
+        "voxdroid-kemono.desktop")
 sha256sums=('SKIP'
-            '3f008b0e8e3f0049c1595f12bff5db07fc845eb2da8eadf4e34521ac4c187488')
+            '3f008b0e8e3f0049c1595f12bff5db07fc845eb2da8eadf4e34521ac4c187488'
+            '1d5876bbe4b46d708d5c7c289d8d367cd518c60edf2ac839cbfa3440965f9b7f')
 
 pkgver() {
     cd "KemonoDownloader"
@@ -37,6 +39,10 @@ build() {
 package() {
     cd "KemonoDownloader"
 
-    python -m pip install --isolated --root="$pkgdir" --ignore-installed --no-deps .
+    python -m pip install --isolated --root-user-action ignore --root="$pkgdir" --ignore-installed --no-deps .
     install -Dm755 "$srcdir/launcher.sh" "$pkgdir/usr/bin/kemono"
+
+    install -Dm644 "$srcdir/voxdroid-kemono.desktop" "$pkgdir/usr/share/applications/voxdroid-kemono.desktop"
+
+    rm -r "$pkgdir/usr/lib/python3.13/site-packages/kemonodownloader/__pycache__"
 }
