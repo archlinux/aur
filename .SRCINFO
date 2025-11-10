@@ -1,4 +1,4 @@
-pkgbase = yad
+pkgbase = yad-light
 	pkgdesc = A fork of zenity - display graphical dialogs from shell scripts or command line w\o html, spell, sourceview
 	pkgver = 14.1
 	pkgrel = 3

@@ -1,7 +1,7 @@
 # Maintainer: sfs sfslinux@gmail.com
 
 pkgname=yad-light
-pkgbase=yad
+_pkgname=yad
 pkgver=14.1
 pkgrel=3
 pkgdesc='A fork of zenity - display graphical dialogs from shell scripts or command line w\o html, spell, sourceview'
@@ -18,7 +18,7 @@ conflicts=('yad' 'yad-git' 'yad-gtk2')
 
 prepare() {
   tar -xf v14.1.tar.gz
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   cp ../ru.po po && echo ru >> po/LINGUAS
 #  patch -Np0 -i ../fix-missing-buttons.patch 
   patch -Np1 -i ../show-cursor-initially.patch 
@@ -30,7 +30,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
   ./configure \
     --prefix=/usr \
@@ -43,7 +43,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgbase}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
 }
