@@ -1,7 +1,7 @@
 # Maintainer: Joseph Carta <cartakid@gmail.com>
 # Contributor: Carlos Henrique Merces Moreira "chmercesmoreira" <ch.mercesmoreira@gmail.com>
 pkgname=photofilmstrip
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Create video clips from photos"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('gst-plugins-bad: additional rendering formats'
 	    'gst-libav: additional rendering formats'
 		'python-cairo: slideshow preview')
 source=("https://github.com/PhotoFilmStrip/PFS/archive/v$pkgver.tar.gz")
-md5sums=('9803b42d343a7f478a297c4880d53567')
+md5sums=('401c6e0056638534fea62ee90acec5d5')
 
 build() {
 	cd "$srcdir/PFS-$pkgver"
