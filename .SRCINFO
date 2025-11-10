@@ -1,6 +1,6 @@
 pkgbase = scopebuddy-git
 	pkgdesc = gamescope helper script
-	pkgver = 1.2.3.r0.g5a04aca
+	pkgver = 1.2.5.r0.g1c32fae
 	pkgrel = 1
 	url = https://github.com/HikariKnight/ScopeBuddy
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = scopebuddy-git
 	depends = procps-ng
 	depends = perl
 	depends = coreutils
+	depends = sed
 	optdepends = jq: Automatic display detection
 	optdepends = libkscreen: Automatic display detection (Plasma)
 	optdepends = mutter: Automatic display detection (GNOME)

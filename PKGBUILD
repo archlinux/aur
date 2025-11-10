@@ -2,7 +2,7 @@
 
 _pkgname=scopebuddy
 pkgname=$_pkgname-git
-pkgver=1.2.3.r0.g5a04aca
+pkgver=1.2.5.r0.g1c32fae
 pkgrel=1
 pkgdesc="gamescope helper script"
 arch=(any)
@@ -14,6 +14,7 @@ depends=(
     'procps-ng'
     'perl'
     'coreutils'
+    'sed'
 )
 makedepends=('git')
 optdepends=(
