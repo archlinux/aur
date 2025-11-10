@@ -18,7 +18,7 @@ _appimage=$pkgname-$pkgver.AppImage
 _baseurl=https://github.com/janhq/jan/releases/download/v$pkgver
 source=("$_appimage::$_baseurl/Jan_${pkgver}_amd64.AppImage"
         "$pkgname-$pkgver-latest.json::$_baseurl/latest.json"
-        "$pkgname-$pkgver-tauri.conf.json::https://raw.githubusercontent.com/menloresearch/jan/refs/tags/v$pkgver/src-tauri/tauri.conf.json")
+        "$pkgname-$pkgver-tauri.conf.json::https://raw.githubusercontent.com/janhq/jan/refs/tags/v$pkgver/src-tauri/tauri.conf.json")
 sha256sums=('b73d22b7d3584fe1ce8c9d31c6cc5f4e1d15c34a7e31fa754996d3e4ce4333ed'
             '04acb3f5e827268540bf8dad7a519ac979d5e33aeb15f07dee25507c7cc9f557'
             '394084759ccc705ae65dbc6acdd6e7465828cb863dcec48aecc069cb6904fbb2')
