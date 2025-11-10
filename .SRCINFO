@@ -1,0 +1,15 @@
+pkgbase = python-transkribus_metagrapho_api
+	pkgdesc = Python bindings for the Transkribus Metagrapho/Processing API.
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/jnphilipp/transkribus_metagrapho_api
+	arch = any
+	license = GPL3+
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-pillow
+	depends = python-requests
+	source = git+https://github.com/jnphilipp/transkribus_metagrapho_api
+	sha256sums = SKIP
+
+pkgname = python-transkribus_metagrapho_api
