@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Game
+Comment=noriskclient launcher written in tauri (react + rust) 
+Exec=/usr/bin/norisk-client
+Icon=noriskclient-launcher-v3
+Name=NoRisk Launcher
+Terminal=false
+Type=Application
