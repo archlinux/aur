@@ -1,0 +1,11 @@
+post_install() {
+  echo
+  echo -e "\033[1;33m==> wdisplays-persistent installation notes:\033[0m"
+  echo "    To enable automatic display configuration, add kanshi to your"
+  echo "    compositor's autostart configuration:"
+  echo
+  echo "    For Sway: Add 'exec kanshi' to ~/.config/sway/config"
+  echo "    For Wayfire: Add 'outputs = kanshi' to ~/.config/wayfire.ini [autostart] section"
+  echo "    For other wlroots compositors: Consult your compositor's documentation"
+  echo
+}

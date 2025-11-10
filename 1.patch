@@ -1,0 +1,640 @@
+From b9f480153ffd23be12147388f4086b3718a3292f Mon Sep 17 00:00:00 2001
+From: sfs-pra <sfslinux@gmail.com>
+Date: Tue, 8 Jul 2025 12:24:02 +0300
+Subject: [PATCH 1/7] Add files via upload
+
+---
+ meson.build | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/meson.build b/meson.build
+index 08acaee..5d4c9c1 100644
+--- a/meson.build
++++ b/meson.build
+@@ -6,12 +6,17 @@ project('network.cycles.wdisplays', 'c',
+   version: '1.1.1'
+ )
+ 
++i18n = import('i18n')
++add_project_arguments('-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()), language: 'c')
++
+ conf = configuration_data({
+   'app_id': meson.project_name(),
+   'version': meson.project_version(),
+   'resource_prefix': '/' / '/'.join(meson.project_name().split('.')),
++  'localedir': get_option('prefix') / get_option('localedir'),
+ })
+ 
+ subdir('protocol')
+ subdir('resources')
+ subdir('src')
++subdir('po')
+
+From b9f7b25e9833e79d2463ef0139685d83111767ed Mon Sep 17 00:00:00 2001
+From: sfs-pra <sfslinux@gmail.com>
+Date: Tue, 8 Jul 2025 12:25:44 +0300
+Subject: [PATCH 2/7] Create LINGUAS
+
+---
+ po/LINGUAS | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 po/LINGUAS
+
+diff --git a/po/LINGUAS b/po/LINGUAS
+new file mode 100644
+index 0000000..562ba4c
+--- /dev/null
++++ b/po/LINGUAS
+@@ -0,0 +1 @@
++ru
+
+From 77496b5af2a271dfcb2443d189fff941776bf00f Mon Sep 17 00:00:00 2001
+From: sfs-pra <sfslinux@gmail.com>
+Date: Tue, 8 Jul 2025 12:26:42 +0300
+Subject: [PATCH 3/7] Add files via upload
+
+---
+ po/POTFILES.in                  |   5 ++
+ po/meson.build                  |   7 ++
+ po/network.cycles.wdisplays.pot | 127 ++++++++++++++++++++++++++++++++
+ po/ru.po                        | 123 +++++++++++++++++++++++++++++++
+ 4 files changed, 262 insertions(+)
+ create mode 100644 po/POTFILES.in
+ create mode 100644 po/meson.build
+ create mode 100644 po/network.cycles.wdisplays.pot
+ create mode 100644 po/ru.po
+
+diff --git a/po/POTFILES.in b/po/POTFILES.in
+new file mode 100644
+index 0000000..67d13ed
+--- /dev/null
++++ b/po/POTFILES.in
+@@ -0,0 +1,5 @@
++src/main.c
++src/headform.c
++src/output.c
++resources/head.ui
++resources/wdisplays.ui
+diff --git a/po/meson.build b/po/meson.build
+new file mode 100644
+index 0000000..aa853cd
+--- /dev/null
++++ b/po/meson.build
+@@ -0,0 +1,7 @@
++i18n.gettext('wdisplays',
++    args: [
++        '--directory=' + meson.project_source_root(),
++        '--from-code=UTF-8',
++    ],
++    preset: 'glib'
++)
+diff --git a/po/network.cycles.wdisplays.pot b/po/network.cycles.wdisplays.pot
+new file mode 100644
+index 0000000..16c905a
+--- /dev/null
++++ b/po/network.cycles.wdisplays.pot
+@@ -0,0 +1,127 @@
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the network.cycles.wdisplays package.
++# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
++#
++#, fuzzy
++msgid ""
++msgstr ""
++"Project-Id-Version: network.cycles.wdisplays\n"
++"Report-Msgid-Bugs-To: \n"
++"POT-Creation-Date: 2025-07-02 16:03+0300\n"
++"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
++"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
++"Language-Team: LANGUAGE <LL@li.org>\n"
++"Language: \n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++
++#: src/headform.c:193
++msgid "Don't Rotate"
++msgstr ""
++
++#: src/headform.c:194
++msgid "Rotate 90°"
++msgstr ""
++
++#: src/headform.c:195
++msgid "Rotate 180°"
++msgstr ""
++
++#: src/headform.c:196
++msgid "Rotate 270°"
++msgstr ""
++
++#: resources/head.ui:48
++msgid "_Enabled"
++msgstr ""
++
++#: resources/head.ui:96
++msgid "DPI _Scale"
++msgstr ""
++
++#: resources/head.ui:110
++msgid "_Position"
++msgstr ""
++
++#: resources/head.ui:124
++msgid "Description"
++msgstr ""
++
++#: resources/head.ui:150
++msgid "Physical Size"
++msgstr ""
++
++#: resources/head.ui:162
++msgid "Si_ze"
++msgstr ""
++
++#: resources/head.ui:201
++msgid "Hz"
++msgstr ""
++
++#: resources/head.ui:219
++msgid "_Refresh Rate"
++msgstr ""
++
++#: resources/head.ui:246
++msgid "_Transform"
++msgstr ""
++
++#: resources/head.ui:257
++msgid "_Flipped"
++msgstr ""
++
++#: resources/head.ui:281 resources/head.ui:298 resources/head.ui:316
++#: resources/head.ui:346
++msgid "0"
++msgstr ""
++
++#: resources/head.ui:333
++msgid "×"
++msgstr ""
++
++#: resources/head.ui:363
++msgid "Select Mode Preset"
++msgstr ""
++
++#: resources/wdisplays.ui:16 resources/wdisplays.ui:186
++msgid "wdisplays"
++msgstr ""
++
++#: resources/wdisplays.ui:198
++msgid "Zoom Out"
++msgstr ""
++
++#: resources/wdisplays.ui:221
++msgid "Zoom Reset"
++msgstr ""
++
++#: resources/wdisplays.ui:237
++msgid "Zoom In"
++msgstr ""
++
++#: resources/wdisplays.ui:291
++msgid "Apply Changes?"
++msgstr ""
++
++#: resources/wdisplays.ui:296
++msgid "_Apply"
++msgstr ""
++
++#: resources/wdisplays.ui:312
++msgid "_Cancel"
++msgstr ""
++
++msgid "_Automatically Apply Changes"
++msgstr ""
++
++msgid "_Show Screen Contents"
++msgstr ""
++
++msgid "_Overlay Screen Names"
++msgstr ""
++
++msgid "Change was applied successfully and config was saved."
++msgstr ""
+diff --git a/po/ru.po b/po/ru.po
+new file mode 100644
+index 0000000..09f6f2b
+--- /dev/null
++++ b/po/ru.po
+@@ -0,0 +1,123 @@
++# Russian translations for wdisplays package.
++# Copyright (C) 2022 wdisplays authors.
++# This file is distributed under the same license as the wdisplays package.
++# Automatically generated, 2022.
++#
++msgid ""
++msgstr ""
++"Project-Id-Version: wdisplays\n"
++"Report-Msgid-Bugs-To: \n"
++"POT-Creation-Date: 2022-11-15 12:45+0300\n"
++"PO-Revision-Date: 2022-11-15 12:47+0300\n"
++"Last-Translator: sfs <sfslinux@gmail.com>\n"
++"Language-Team: none\n"
++"Language: ru\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
++"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
++
++#: wdisplays.ui:6
++msgid "wdisplays"
++msgstr "Настройки дисплеев"
++
++#: wdisplays.ui:157
++msgid "Zoom Out"
++msgstr "Уменьшить"
++
++#: wdisplays.ui:170
++msgid "Zoom Reset"
++msgstr "Сбросить масштаб"
++
++#: wdisplays.ui:183
++msgid "Zoom In"
++msgstr "Увеличить"
++
++#: wdisplays.ui:233
++msgid "Apply Changes?"
++msgstr "Применить изменения?"
++
++#: wdisplays.ui:244
++msgid "_Apply"
++msgstr "_Применить"
++
++#: wdisplays.ui:258
++msgid "_Cancel"
++msgstr "_Отмена"
++
++
++
++
++
++#: head.ui:48
++msgid "_Enabled"
++msgstr "_Включено"
++
++#: head.ui:96
++msgid "DPI _Scale"
++msgstr "Масштаб _DPI"
++
++#: head.ui:110
++msgid "_Position"
++msgstr "_Позиция"
++
++#: head.ui:124
++msgid "Description"
++msgstr "Описание"
++
++#: head.ui:150
++msgid "Physical Size"
++msgstr "Физический размер"
++
++#: head.ui:162
++msgid "Si_ze"
++msgstr "Ра_змер"
++
++#: head.ui:201
++msgid "Hz"
++msgstr "Гц"
++
++#: head.ui:219
++msgid "_Refresh Rate"
++msgstr "Частота обно_вления"
++
++#: head.ui:246
++msgid "_Transform"
++msgstr "_Трансформация"
++
++#: head.ui:257
++msgid "_Flipped"
++msgstr "_Отразить"
++
++#: head.ui:281 head.ui:298 head.ui:316 head.ui:346
++msgid "0"
++msgstr "0"
++
++#: head.ui:363
++msgid "Select Mode Preset"
++msgstr "Выбор предустановки режима"
++
++msgid "Don't Rotate"
++msgstr "Не вращать"
++
++msgid "Rotate 90°"
++msgstr "Повернуть на 90°"
++
++msgid "Rotate 180°"
++msgstr "Повернуть на 180°"
++
++msgid "Rotate 270°"
++msgstr "Повернуть на 270°"
++
++msgid "_Automatically Apply Changes"
++msgstr "_Автоматически применять изменения"
++
++msgid "_Show Screen Contents"
++msgstr "_Показывать содержимое экранов"
++
++msgid "_Overlay Screen Names"
++msgstr "_Показывать названия экранов"
++
++msgid "Change was applied successfully and config was saved."
++msgstr "Изменения успешно применены и конфигурация сохранена."
+
+From a09e8169046be6cdc2e3dee0bb5db8ec8d897167 Mon Sep 17 00:00:00 2001
+From: sfs-pra <sfslinux@gmail.com>
+Date: Tue, 8 Jul 2025 12:27:33 +0300
+Subject: [PATCH 4/7] Add files via upload
+
+---
+ resources/wdisplays.desktop.in | 147 +++++++++++++++++++++++++++++++--
+ 1 file changed, 138 insertions(+), 9 deletions(-)
+
+diff --git a/resources/wdisplays.desktop.in b/resources/wdisplays.desktop.in
+index 356bca0..6a99f2e 100644
+--- a/resources/wdisplays.desktop.in
++++ b/resources/wdisplays.desktop.in
+@@ -1,12 +1,141 @@
+ [Desktop Entry]
+-Type=Application
+-Categories=GTK;Settings;DesktopSettings;
++Name=Monitor Settings
++Name[af]=Monitorinstellings
++Name[ar]=إعدادات المرقاب
++Name[ast]=Axustes del monitor
++Name[be]=Настаўленні манітора
++Name[bg]=Екранни настройки
++Name[bn]=পর্দার সেটিং
++Name[ca]=Configuració del monitor
++Name[cs]=Nastavení monitoru
++Name[da]=Skærmopsætning
++Name[de]=Bildschirmeinstellungen
++Name[el]=Ρυθμίσεις οθόνης
++Name[en_GB]=Monitor Settings
++Name[es]=Ajustes del monitor
++Name[et]=Monitori sätted
++Name[eu]=Monitoreen ezarpenak
++Name[fa]=تنظیمات نمایشگر
++Name[fi]=Näytön asetukset
++Name[fo]=Skíggjasetingar
++Name[fr]=Paramètres de l'écran
++Name[gl]=Axustes de pantalla
++Name[he]=הגדרות הצג
++Name[hr]=Postavke monitora
++Name[hu]=Monitor beállításai
++Name[id]=Pengaturan Monitor
++Name[is]=Skjástillingar
++Name[it]=Impostazioni del monitor
++Name[ja]=モニタの設定
++Name[kk]=Монитор баптаулары
++Name[ko]=모니터 설정
++Name[lg]=Ntegeka z'olutimbe
++Name[lt]=Monitoriaus nustatymai
++Name[nb]=Skjerminnstillinger
++Name[nl]=Beeldscherminstellingen
++Name[nn]=Skjermoppsett
++Name[pl]=Ustawienia wyświetlania
++Name[pt]=Definições do monitor
++Name[pt_BR]=Configurações do monitor
++Name[ro]=Opțiuni pentru monitoare
++Name[ru]=Настройки дисплея
++Name[sk]=Nastavenia monitora
++Name[sl]=Nastavitve zaslonov
++Name[sr]=Подешавања монитора
++Name[sr@latin]=Podešavanja monitora
++Name[sv]=Visningsinställningar
++Name[te]=మానిటర్ అమరికలు
++Name[tr]=Görüntü Birimi Ayarları
++Name[tt_RU]=Экран көйләүләре
++Name[ug]=ئېكران تەڭشىكى
++Name[uk]=Установки монітора
++Name[vi]=Thiết lập Màn hình
++Name[zh_CN]=显示器设置
++Name[zh_TW]=螢幕設定
++Comment=Change screen resolution and configure external monitors
++Comment[af]=Verander skermresolusie en stel eksterne monitors op
++Comment[ar]=غيّر دقّة الشاشة واضبط المراقيب الخارجية
++Comment[ast]=Camudar la resolución de la pantalla y configurar monitores esternos
++Comment[be]=Змяніць разрозненне экрана і канфігураваць вонкавыя маніторы
++Comment[bg]=Промени резолюцията и конфигирурирай външните монитори
++Comment[bn]=পর্দার রেজল্যুশন পরিবর্তন করা হবে এবং বাহ্যিক মনিটর কনফিগার করা হবে
++Comment[ca]=Canvieu la resolució i configureu els monitors externs
++Comment[cs]=Změnit rozlišení obrazovky a nastavit externí monitory
++Comment[da]=Skift skærmopløsning og konfigurer eksterne skærme
++Comment[de]=Die Bildschirmauflösung und externe Monitore konfigurieren
++Comment[el]=Αλλαγή της ανάλυσης και προσαρμογή στις εξωτερικές οθόνες
++Comment[en_GB]=Change screen resolution and configure external monitors
++Comment[es]=Cambiar la resolución de la pantalla y configurar monitores externos
++Comment[et]=Ekraani eraldusvõime muutmine ja väliste monitoride seadistamine
++Comment[eu]=Aldatu pantailaren bereizmena eta konfiguratu kanpoko monitoreak
++Comment[fa]=تغییر وضوح صفحه و پیکربندی نمایشگرهای جانبی
++Comment[fi]=Muuta näytön tarkkuutta ja aseta ulkoiset näytöt
++Comment[fo]=Broyt skíggjaloysni, og samanset ytru skíggjar
++Comment[fr]=Modifier la résolution d'écran et paramétrer les écrans externes
++Comment[gl]=Cambiar a resolución da pantalla e configurar os monitores externos
++Comment[he]=שינוי רזולוציית הצג והגדרת צגים חיצוניים
++Comment[hr]=Promijeni rezoluciju zaslona i konfiguriraj vanjske monitore
++Comment[hu]=Képernyőfelbontás megváltoztatása és külső monitorok beállítása
++Comment[id]=Ubah resolusi layar dan tata monitor eksternal
++Comment[is]=Breyta skjáupplausn og skilgreina utanáliggjandi skjái
++Comment[it]=Cambia la risoluzione dello schermo e configura i monitor esterni
++Comment[ja]=解像度の変更と外部モニタの設定を行います
++Comment[kk]=Экран өлшемдерін мен сыртқы мониторларды баптау
++Comment[ko]=화면 해상도를 바꾸고 외부 모니터를 설정합니다
++Comment[lg]=Tegeka ntimbe ez'etongodde n'ebipimo bya kifaananyi mu pikiseli
++Comment[lt]=Keisti ekrano raišką ir konfigūruoti išorinius ekranus
++Comment[nb]=Bytt skjermoppløsning og sett opp eksterne skjermer
++Comment[nl]=Schermresolutie veranderen en externe beeldschermen instellen
++Comment[nn]=Byt skjermoppløysing og set opp eksterne skjermar
++Comment[pl]=Konfiguruje rozdzielczość i inne preferencje ekranów komputera
++Comment[pt]=Alterar a resolução do ecrã e configurar monitores externos
++Comment[pt_BR]=Modifique a resolução da tela e configure monitores externos
++Comment[ro]=Schimbați rezoluția ecranului și configurați monitoare externe
++Comment[ru]=Смена разрешения экрана и настройка внешних дисплеев
++Comment[sk]=Zmeniť rozlíšenie obrazovky a nastaviť externé monitory
++Comment[sl]=Nastavite ločljivost in zunanje zaslone
++Comment[sr]=Промени величину екрана и подеси приказ на спољњем монитору
++Comment[sr@latin]=Promeni veličinu ekrana i podesi prikaz na spoljnjem monitoru
++Comment[sv]=Ändra skärmupplösning och gör inställningar för externa skärmar
++Comment[te]=తెర విభాజకతను మార్చు మరియు బాహ్య మానిటర్లను స్వరూపించు
++Comment[tr]=Ekran çözünürlüğünü değiştir ve harici görüntü birimlerini yapılandır
++Comment[tt_RU]=Экран мөмкинлеген үзгәртү һәм тышкы экраннарны көйләү
++Comment[ug]=ئېكران ئېنىقلىقىنى ئۆزگەرتىش ۋە سىرتقى كۆرسەتكۈچلەرنى سەپلەش
++Comment[uk]=Змінити роздільну здатність і сконфігурувати зовнішні монітори
++Comment[vi]=Thay đổi độ phân giải màn hình và cấu hình màn hình rời
++Comment[zh_CN]=更改屏幕分辨率和配置外部显示器
++Comment[zh_TW]=變更螢幕解析度以及設定外接顯示器
+ Exec=wdisplays
+ Icon=@app_id@
+-
+-Name=Displays
+-GenericName=Displays configuration
+-Comment=wlroots displays configuration
+-Name[it]=Schermi
+-GenericName[it]=Impostazioni degli schermi
+-Comment[it]=Impostazioni degli schermi per wlroots
++Categories=GTK;Settings;HardwareSettings;
++#NotShowIn=GNOME;KDE;XFCE;MATE;
++Keywords=screen;display;tv;extend;projector;xrandr;refresh rate;position;enable;disable;
++Keywords[ca]=pantalla;visualització;tv;extensió;projector;xrandr;ràtio de refresc;posició;habilita;inhabilita;
++Keywords[cs]=obrazovka;zobrazení;televize;promítač;xrandr;obnovovací frekvence obrazu; poloha;povolit;zakázat;
++Keywords[da]=screen;display;tv;extend;projector;xrandr;refresh rate;position;enable;disable;skærm;udvid;projektor;opdatingshastighed;placering;aktiver;deaktiver;
++Keywords[de]=Bildschirm;Anzeige;TV;erweitern;Projektor;xrandr;Bildwiederholrate;Position;einschalten;ausschalten;
++Keywords[es]=pantalla;monitor;tv;extender;proyector;xrandr;tasa de actualización;posición;activar;desactivar;
++Keywords[et]=ekraan;kuvar;teler;laiendatud;projektor;xrandr;värskendussagedus;positsioon;luba;keela;
++Keywords[eu]=pantaila;bistaratzea;tb;hedatu;proiektagailua;freskatze-maiztasuna;gaitu;desgaitu;
++Keywords[fi]=näyttö;näytön;monitori;tv;projektori;virkistystaajuus;hz;sijainti;screen;display;tv;extend;projector;xrandr;refresh rate;position;enable;disable;
++Keywords[fr]=screen;display;tv;extend;projector;xrandr;refresh rate;position;enable;disable;
++Keywords[gl]=pantalla;monitor;tv;estendido;proxector;xrandr;taxa de actualización;posición;activar;desactivar;
++Keywords[he]=מסך;תצוגה;טלוויזיה;הרחבה;מקרן;קצב רענון;מיקום;הפעלה;נטרול;צג;מוניטור;
++Keywords[hu]=kijelző;megjelenítő;tv;kiterjesztés;projektor;xrandr;frissítési arány;pozíció;engedélyezés;tiltás;
++Keywords[id]=layar;tampilan;tv;proyektor;xrandr;laju penyegaran;posisi;fungsikan;aktifkan;matikan;nonaktifkan;
++Keywords[is]=skjár;birting;sjónvarp;varpa;myndvarpi;xrandr;uppfærslutíðni:;position;virkja;óvirkt;
++Keywords[ja]=スクリーン;ディスプレイ;TV;拡張;プロジェクター;xrandr;更新速度;位置;可能;不可;
++Keywords[kk]=screen;display;tv;extend;projector;xrandr;refresh rate;position;enable;disable;экран;дисплей;ТВ;ТД;кеңейту;проектор;жаңарту жиілігі;орны;іске қосу;сөндіру;
++Keywords[ko]=screen;화면;display;디스플레이;tv;TV;extent;확장;projector;프로젝터;xrandr;refresh rate;화면 주사율;position;위치;enable;활성;disable;비활성;
++Keywords[lg]=lutimbe;ogw'okwolesa;naanula;pulojekita;xrandr;bwangu bwa kulaga kifaananyi;tandika;siba;
++Keywords[lt]=ekranas;televizorius;išplėsti;projektorius;xrandr;atnaujinimo dažnis;pozicija;monitorius;įjungti;išjungti;
++Keywords[nl]=scherm;beeldscherm;tv;uitrekken;projector;xrandr;verversingssnelheid;positie;inschakelen;uitschakelen;
++Keywords[pl]=ekran;wyświetl;tv;rozszerz;projektor;xrandr;odświeżanie;położenie;włącz;wyłącz;
++Keywords[pt]=ecrã;exibição;tv;expandir;projetor;xrandr;taxa;posição;ativar;desativar;
++Keywords[pt_BR]=tela;monitor;tv;projetor;xrandr;taxa de atualização;posição;ativar;desativar;
++Keywords[ru]=экран;отображение;ТВ;расширить;проектор;xrandr;частота обновления;положение;включить;отключить;
++Keywords[sr]=screen;display;tv;extend;projector;xrandr;refresh rate;position;enable;disable;
++Keywords[sv]=screen;display;tv;extend;projector;xrandr;refresh rate;position;enable;disable;
++Keywords[te]=తెర;డిస్‌ప్లే;టీవీ;ఎక్స్టెండ్;ప్రొజెక్టర్;xrandr;తాజారేటు;స్థానం;చేతనించు;అచేతనించు;
++Keywords[tr]=ekran;görüntü;tv;uzatma;projektör;xrandr;yenileme hızı;konum;etkinleştir;devre dışı bırak;
++Keywords[uk]=екран;відображення;зображення;тв;проектор;xrandr;частота оновлення;розміщення;підключення;ввімкнути;вимкнути;
+
+From 40419ef3019c8685214b1c9a1ad15551b442ca64 Mon Sep 17 00:00:00 2001
+From: sfs-pra <sfslinux@gmail.com>
+Date: Tue, 8 Jul 2025 12:33:47 +0300
+Subject: [PATCH 5/7] Update CHANGELOG.md
+
+---
+ CHANGELOG.md | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 3803a77..f856d19 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -6,6 +6,19 @@ This project tries to adhere to [Semantic Versioning][2].
+ 
+ ## [Unreleased]
+ 
++## [1.1.2] - 2025-07-08
++
++### Added
++
++Gettext internationalization 
++ru.po
++Internationalization in network.cycles.wdisplays.desktop
++https://aur.archlinux.org/cgit/aur.git/tree/outputs_noop.patch?h=wdisplays-persistent
++
++### Fixed
++
++setlocale(LC_NUMERIC, "C") in src/store.c
++
+ ## [1.1.1] - 2023-07-01
+ 
+ ### Added
+
+From 6dcad7b16979710f249ca9063e5e4176665882e6 Mon Sep 17 00:00:00 2001
+From: sfs-pra <sfslinux@gmail.com>
+Date: Tue, 8 Jul 2025 13:10:59 +0300
+Subject: [PATCH 6/7] Create PKGBUILD
+
+---
+ PKGBUILD/PKGBUILD | 44 ++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 44 insertions(+)
+ create mode 100644 PKGBUILD/PKGBUILD
+
+diff --git a/PKGBUILD/PKGBUILD b/PKGBUILD/PKGBUILD
+new file mode 100644
+index 0000000..ee65d6d
+--- /dev/null
++++ b/PKGBUILD/PKGBUILD
+@@ -0,0 +1,44 @@
++# Maintainer: sfs <sfslinux@gmail.com>
++
++pkgname=wdisplays-persistent
++pkgver=1.1.2
++pkgrel=1
++pkgdesc="GUI display configurator for wlroots compositors (with kanshi config saving)"
++url="https://github.com/zipproth/wdisplays"
++license=(GPL3)
++arch=(x86_64)
++install=wdisplays-persistent.install
++depends=(
++  gtk3
++  libepoxy
++  wayland
++  wayland-protocols
++  kanshi
++)
++provides=('wdisplays')
++conflicts=('wdisplays')
++replaces=('wdisplays')
++makedepends=(
++  meson
++)
++source=('git+https://github.com/sfs-pra/wdisplays.git#branch=fix-kanshi-output-names')
++sha512sums=('SKIP')
++
++build() {
++  cd "wdisplays"
++  arch-meson "$srcdir/build"
++  ninja -C "$srcdir/build"
++}
++
++package() {
++  cd "wdisplays"
++  DESTDIR="$pkgdir" ninja -C "$srcdir/build" install
++
++  # Create empty kanshi config file for new users
++  # For this package, the config file is typically exclusively updated by wdisplays,
++  # unlike the usual kanshi workflow where users manually write the config.
++  # wdisplays will not create/write to the config if the file doesn't exist initially,
++  # and kanshi fails to start without an existing config file. Users still need to add
++  # kanshi to their compositor's autostart configuration.
++  install -Dm644 /dev/null "$pkgdir/etc/skel/.config/kanshi/config"
++}
+
+From 3805647b3d4990a5cea978fbe066698a69227b9f Mon Sep 17 00:00:00 2001
+From: sfs-pra <sfslinux@gmail.com>
+Date: Tue, 8 Jul 2025 13:11:47 +0300
+Subject: [PATCH 7/7] Create wdisplays-persistent.install
+
+---
+ PKGBUILD/wdisplays-persistent.install | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+ create mode 100644 PKGBUILD/wdisplays-persistent.install
+
+diff --git a/PKGBUILD/wdisplays-persistent.install b/PKGBUILD/wdisplays-persistent.install
+new file mode 100644
+index 0000000..8cac1f7
+--- /dev/null
++++ b/PKGBUILD/wdisplays-persistent.install
+@@ -0,0 +1,11 @@
++post_install() {
++  echo
++  echo -e "\033[1;33m==> wdisplays-persistent installation notes:\033[0m"
++  echo "    To enable automatic display configuration, add kanshi to your"
++  echo "    compositor's autostart configuration:"
++  echo
++  echo "    For Sway: Add 'exec kanshi' to ~/.config/sway/config"
++  echo "    For Wayfire: Add 'outputs = kanshi' to ~/.config/wayfire.ini [autostart] section"
++  echo "    For other wlroots compositors: Consult your compositor's documentation"
++  echo
++}
