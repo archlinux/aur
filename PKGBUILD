@@ -4,7 +4,7 @@
 pkgname=flclashx-bin
 _pkgname=FlClashX
 pkgver=0.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Fork of FlClash | A multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free."
 arch=(
     'aarch64'
@@ -12,7 +12,7 @@ arch=(
 )
 url="https://github.com/pluralplay/FlClashX"
 license=('GPL-3.0')
-conflicts=("${pkgname%-bin}" "flclash-bin" "flclash" "flclashx" "flclashx-git")
+conflicts=("${pkgname%-bin}" "flclash-bin" "flclash" "flclashx" "flclashx-git" "flclashx-git-debug")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     'libayatana-appindicator'
