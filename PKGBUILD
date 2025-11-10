@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=wrswoR
-_pkgver=1.1.1
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Weighted Random Sampling without Replacement'
 arch=('x86_64')
@@ -34,7 +34,7 @@ optdepends=(
   r-tikzdevice
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('11045a62feef679bbcb02a0ede8a2c5985393df57f47b67da2733884116016e0')
+sha256sums=('611a8112dd013c908bec828a478e7b38b017b18ffbdd46dba11bcc78fd5d1439')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
