@@ -2,7 +2,7 @@
 
 pkgname=specfitter-git
 _pkgname=SpecFitter
-pkgver=r272.114dab2
+pkgver=r312.b7f5efe
 pkgrel=1
 arch=('any')
 pkgdesc='A program for gamma-ray spectroscopy or similar data analysis'
@@ -28,11 +28,12 @@ build() {
   cd "${srcdir}/${_pkgname}"
   make
 }
+
 package() {
   cd "${srcdir}/${_pkgname}"
 
   install -D -m755 specfitter ${pkgdir}/usr/bin/specfitter
-  install -D -m644 data/specfitter-application-icon.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/specfitter-application-icon.svg
-  install -D -m755 data/specfitter.desktop ${pkgdir}/usr/share/applications/specfitter.desktop
-  install -D -m644 data/specfitter-mime.xml ${pkgdir}/usr/share/mime/packages/specfitter-mime.xml
+  install -D -m644 data/io.github.e_j_w.SpecFitter.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/specfitter-application-icon.svg
+  install -D -m755 data/io.github.e_j_w.SpecFitter.desktop ${pkgdir}/usr/share/applications/specfitter.desktop
+  install -D -m644 data/io.github.e_j_w.SpecFitter-mime.xml ${pkgdir}/usr/share/mime/packages/specfitter-mime.xml
 }

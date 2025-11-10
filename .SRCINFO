@@ -1,6 +1,6 @@
 pkgbase = specfitter-git
 	pkgdesc = A program for gamma-ray spectroscopy or similar data analysis
-	pkgver = r272.114dab2
+	pkgver = r312.b7f5efe
 	pkgrel = 1
 	url = https://e-j-w.github.io/specfitter.html
 	install = specFitter.install
