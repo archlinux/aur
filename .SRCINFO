@@ -1,0 +1,12 @@
+pkgbase = fixname
+	pkgdesc = Small utility to rename files by truncating everything after '?'
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/augustus-7613/fixname
+	arch = x86_64
+	license = GPL3
+	options = !debug
+	source = https://github.com/augustus-7613/fixname/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = 15bce1a2c792b9cc064d1c35a883632d34b609fd14c2686ebd7b341379efb071
+
+pkgname = fixname
