@@ -1,0 +1,23 @@
+pkgbase = ariane-git
+	pkgdesc = Fast initramfs/UKI generator with encryption and secure boot support
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/cpernot/ariane
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkg-config
+	makedepends = clang
+	depends = kmod
+	depends = util-linux-libs
+	depends = zstd
+	depends = libarchive
+	optdepends = sbctl: Secure Boot signing support
+	provides = initramfs
+	conflicts = ariane
+	source = ariane::git+https://gitlab.com/cpernot/ariane
+	sha256sums = SKIP
+
+pkgname = ariane-git
