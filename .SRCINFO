@@ -14,6 +14,7 @@ pkgbase = flclashx-git
 	conflicts = flclash
 	conflicts = flclashx
 	conflicts = flclashx-bin
+	conflicts = flclashx-bin-debug
 	source = flclashx.sh
 	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
 	source_aarch64 = flclashx-0.3.0-aarch64.deb::https://github.com/pluralplay/FlClashX/releases/download/v0.3.0-pre.5/FlClashX-linux-arm64.deb
