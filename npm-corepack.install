@@ -1,0 +1,10 @@
+#!/bin/bash
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+
+post_install() {
+    echo "  ${blue}-> NOTE: ${all_off}"
+    echo "      Run \`${bold}corepack install -g npm@<NPM_VERSION>${all_off}\` to install the actual npm binary."
+    echo "      For example: \`${bold}corepack install -g npm@latest${all_off}\`."
+}

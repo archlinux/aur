@@ -1,0 +1,23 @@
+pkgbase = npm-yarn-pnpm-corepack
+	pkgdesc = Using corepack shim to provide npm, yarn and/or pnpm.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/nodejs/corepack/
+	arch = any
+	license = MIT
+	depends = corepack
+
+pkgname = npm-corepack
+	install = npm-corepack.install
+	provides = npm
+	conflicts = npm
+
+pkgname = yarn-corepack
+	install = yarn-corepack.install
+	provides = yarn
+	conflicts = yarn
+
+pkgname = pnpm-corepack
+	install = pnpm-corepack.install
+	provides = pnpm
+	conflicts = pnpm
