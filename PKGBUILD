@@ -15,7 +15,7 @@ provides=('jan')
 conflicts=('jan')
 options=(!strip)
 _appimage=$pkgname-$pkgver.AppImage
-_baseurl=https://github.com/menloresearch/jan/releases/download/v$pkgver
+_baseurl=https://github.com/janhq/jan/releases/download/v$pkgver
 source=("$_appimage::$_baseurl/Jan_${pkgver}_amd64.AppImage"
         "$pkgname-$pkgver-latest.json::$_baseurl/latest.json"
         "$pkgname-$pkgver-tauri.conf.json::https://raw.githubusercontent.com/menloresearch/jan/refs/tags/v$pkgver/src-tauri/tauri.conf.json")
