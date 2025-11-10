@@ -1,14 +1,13 @@
 pkgbase = proton-authenticator
 	pkgdesc = 2FA app from Proton to securely sync and backup 2FA codes
 	pkgver = 1.1.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://proton.me/authenticator
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = git
-	makedepends = mold
-	makedepends = nodejs-lts
+	makedepends = nodejs-lts-jod
 	makedepends = yarn
 	depends = cairo
 	depends = dbus
@@ -21,7 +20,7 @@ pkgbase = proton-authenticator
 	depends = libsoup3
 	depends = pango
 	depends = webkit2gtk-4.1
-	source = ProtonWebClients-04205ef31c8edb37cfc700d0cf7f5647f83374be::git+https://github.com/ProtonMail/WebClients.git#commit=04205ef31c8edb37cfc700d0cf7f5647f83374be
+	source = ProtonWebClients::git+https://github.com/ProtonMail/WebClients.git#commit=04205ef31c8edb37cfc700d0cf7f5647f83374be
 	source = Proton Authenticator.desktop
 	source = add-missing-dnd-kit-sortable.patch
 	b2sums = 173e01278d9e217d2c36c01135b556b74d6423557b7721be85cf07c2017ac32f84d9de3d45e27df91d19ac389e5d4d311d44c6fe47512415c3eaab519ffee7f1

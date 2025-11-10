@@ -3,7 +3,7 @@
 pkgname=proton-authenticator
 pkgver=1.1.4
 _commit=04205ef31c8edb37cfc700d0cf7f5647f83374be
-pkgrel=3
+pkgrel=4
 pkgdesc='2FA app from Proton to securely sync and backup 2FA codes'
 arch=('x86_64')
 url='https://proton.me/authenticator'
@@ -21,8 +21,8 @@ depends=(
     'pango'
     'webkit2gtk-4.1'
 )
-makedepends=('cargo' 'git' 'mold' 'nodejs-lts' 'yarn')
-source=("ProtonWebClients-$_commit::git+https://github.com/ProtonMail/WebClients.git#commit=$_commit"
+makedepends=('cargo' 'git' 'nodejs-lts-jod' 'yarn')
+source=("ProtonWebClients::git+https://github.com/ProtonMail/WebClients.git#commit=$_commit"
         'Proton Authenticator.desktop'
         'add-missing-dnd-kit-sortable.patch')
 b2sums=('173e01278d9e217d2c36c01135b556b74d6423557b7721be85cf07c2017ac32f84d9de3d45e27df91d19ac389e5d4d311d44c6fe47512415c3eaab519ffee7f1'
@@ -30,30 +30,29 @@ b2sums=('173e01278d9e217d2c36c01135b556b74d6423557b7721be85cf07c2017ac32f84d9de3
         'a4671d5b0b6a52b2e03986465ac396de600d71cc3d613a425d41f528950dcfb6a825ea6bfa27d0289b38a1ad426a8ff156ed58071f77492a68b1ca58848d7195')
 
 prepare() {
-    cd ProtonWebClients-$_commit
+    cd ProtonWebClients
     patch -p1 -i "$srcdir/add-missing-dnd-kit-sortable.patch"
     sed -i 's/"applications\/\*",/"applications\/authenticator",/' package.json
 }
 
 build() {
-    cd ProtonWebClients-$_commit
+    cd ProtonWebClients
 
-    export LDFLAGS="${LDFLAGS} -fuse-ld=mold"
-    export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=mold"
-    export YARN_CACHE_FOLDER="$srcdir/.yarn-cache"
+    # Fix ring crate LTO incompatibility with fat LTO objects
+    export CFLAGS="${CFLAGS} -ffat-lto-objects"
+    export CXXFLAGS="${CXXFLAGS} -ffat-lto-objects"
 
     yarn install
     yarn workspace proton-authenticator build:desktop
 }
 
 check() {
-    cd ProtonWebClients-$_commit
-    export YARN_CACHE_FOLDER="$srcdir/.yarn-cache"
+    cd ProtonWebClients
     yarn workspace proton-authenticator test:ci
 }
 
 package() {
-    cd ProtonWebClients-$_commit/applications/authenticator
+    cd ProtonWebClients/applications/authenticator
 
     install -Dm755 src-tauri/target/release/$pkgname "$pkgdir/usr/bin/$pkgname"
     install -Dm644 "$srcdir/Proton Authenticator.desktop" \
