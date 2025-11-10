@@ -1,0 +1,4 @@
+[zigdown]
+source = "git"
+git = "https://github.com/JacobCrabill/zigdown.git"
+prefix = "v"
