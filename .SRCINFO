@@ -1,0 +1,19 @@
+pkgbase = terramind
+	pkgdesc = The AI coding agent built for the terminal.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/terramind-com/terramind-cli
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	depends = fzf
+	depends = ripgrep
+	provides = terramind
+	options = !debug
+	options = !strip
+	source_aarch64 = terramind_0.0.2_aarch64.zip::https://github.com/terramind-com/terramind-cli/releases/download/v0.0.2/terramind-linux-arm64.zip
+	sha256sums_aarch64 = 21f31380a0dacfa52f26d87c8eb8cf6b238ce27e7c125ae0800e87b3ca37c5b4
+	source_x86_64 = terramind_0.0.2_x86_64.zip::https://github.com/terramind-com/terramind-cli/releases/download/v0.0.2/terramind-linux-x64.zip
+	sha256sums_x86_64 = 862be6fd0999616e833a7594c8a68800220b0df9fb950793279bb81c5457a34b
+
+pkgname = terramind
