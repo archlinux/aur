@@ -1,13 +1,13 @@
 pkgbase = shiroha-cli
-	pkgdesc = A powerful CLI tool for bootstrapping and managing Gin-based web APIs.基于gin的goWeb脚手架
-	pkgver = 1.3.1
-	pkgrel = 2
+	pkgdesc = A powerful CLI tool for bootstrapping and managing Gin-based web APIs.
+	pkgver = 2.0.0
+	pkgrel = 4
 	url = https://github.com/NexusXian/shiroha
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = go
-	source = shiroha-cli-1.3.1.tar.gz::https://github.com/NexusXian/shiroha/archive/refs/tags/v1.3.1.tar.gz
-	sha256sums = 72a900e037342f5e12f14541786d0893af9d22440a4ceb367ac52f1222416697
+	source = shiroha-cli-2.0.0.tar.gz::https://github.com/NexusXian/shiroha/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = a109a4e7845ded22b386b4fac4e874563c8ae2011b1883c6fd1068ac4f384acc
 
 pkgname = shiroha-cli
