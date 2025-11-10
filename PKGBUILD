@@ -1,20 +1,42 @@
 # Maintainer: Keiran <keircn@proton.me>
 pkgname=seanime
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hosted server that seamlessly integrates with your local anime collection with anilist integration."
 arch=(x86_64)
 url="https://github.com/5rahim/seanime"
 license=('MIT')
-conflicts=()
+conflicts=(seanime-bin)
 depends=('systemd')
-source=("https://github.com/5rahim/seanime/releases/download/v${pkgver}/seanime-${pkgver}_Linux_x86_64.tar.gz")
-sha256sums=('ab09c1117e7a29ac16457292c89fc6c4d1e2a6bcf35d3d9bf1ea2b65d25ca940')
+makedepends=('go' 'npm' 'nodejs')
+source=("https://github.com/5rahim/seanime/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('6d7c6fa066ea034f4f6f7c71a5190047b7ec32254ff96b93d9a2e13caf535e05')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  cd seanime-web
+  npm install
+  npm run build
+
+  mkdir -p ../web
+  cp -r out/* ../web/
+  cd ..
+}
+
+build() {
+  cd "${pkgname}-${pkgver}"
+
+  export CGO_ENABLED=1
+  go build -o seanime -trimpath -ldflags="-s -w"
+}
 
 package() {
+  cd "${pkgname}-${pkgver}"
+
   install -d "${pkgdir}/usr/bin/"
   install -dm755 "${pkgdir}/opt/${pkgname}"
-  install -m 755 "${srcdir}/seanime" -t "${pkgdir}/opt/${pkgname}/"
+  install -m 755 seanime -t "${pkgdir}/opt/${pkgname}/"
+  cp -r web "${pkgdir}/opt/${pkgname}/"
   ln -s "/opt/${pkgname}/seanime" "${pkgdir}/usr/bin/"
 
   local user=${USER:-root}
