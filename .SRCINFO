@@ -1,16 +1,16 @@
 pkgbase = mangabox-bin
 	pkgdesc = An Electron client for Komga.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.2.9
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/zpaolo11x/mangabox
 	arch = x86_64
 	license = LicenseRef-unknown
 	depends = electron38
-	provides = mangabox=0.2.9
+	provides = mangabox=0.3.0
 	conflicts = mangabox
-	source = mangabox-0.2.9-x86_64.AppImage::https://github.com/zpaolo11x/mangabox/releases/download/v0.2.9/MangaBox-0.2.9-Linux-x86_64.AppImage
+	source = mangabox-0.3.0-x86_64.AppImage::https://github.com/zpaolo11x/mangabox/releases/download/v0.3.0/MangaBox-0.3.0-Linux-x86_64.AppImage
 	source = mangabox.sh
-	sha256sums = 34373a18e09889f6842b657e9301254bab1c052dfab615d34535015a6a0d9b2a
+	sha256sums = d81e51c12944c339579195c81636b7c36b2fd7726c306b495f01c9779ab5f56c
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = mangabox-bin
