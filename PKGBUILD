@@ -26,7 +26,6 @@
 ## update
 _icver="140.4.0"
 _commit="579bc2897077119e38a7e1493bca6ec97a06a36a" # 140.4.0.r2
-_icsum="66f1b6a5962756d01a412fa3f19641ab7b4915bb9f6075e41c1b4fddcb3a6d0f"
 _ffsum="49f20673171046bc7b64f4caa340c46e1e105b9107f0ef68b7a94f379bcea4f7"
 
 ## package
@@ -130,7 +129,7 @@ _source_icecat() {
     "https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz"
   )
   sha256sums=(
-    "$_icsum"
+    'SKIP'
     "$_ffsum"
   )
 }
@@ -333,7 +332,7 @@ END
 )
 
 build() (
-  _run_if_exists _prepare_icecat
+  _prepare_icecat
 
   cd "$_pkgsrc"
 
@@ -569,10 +568,4 @@ END
     install -Dm644 browser/branding/$theme/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
-}
-
-_run_if_exists() {
-  if declare -F "$1" > /dev/null; then
-    eval "$1"
-  fi
 }
