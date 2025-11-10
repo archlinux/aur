@@ -6,6 +6,7 @@ with_debug = 'no'
 with_debug_symbols = 'yes'
 with_verbose = 'no'
 with_engine_module_checks = 'no'
+distro_maintained_info_url = 'https://dragondreams.ch/index.php/dragengine-distro-maintained-update-info#archlinux'
 
 # external library configuration
 ##################################
