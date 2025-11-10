@@ -5,7 +5,7 @@ _pkgbase=${pkgbase%-git}
 _pkg1=DankMaterialShell
 _pkg2=danklinux
 pkgname=($_pkgbase-git $_pkgbase-hyprland-git $_pkgbase-niri-git)
-pkgver=0.4.2.r3.g27da96b.3963c98
+pkgver=0.4.3.r1.g12ce9fd.af95631
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
@@ -32,7 +32,7 @@ source=(
         "dms.service")
 sha256sums=('SKIP'
             'SKIP'
-            '3641600632e6db51481ec2f6de5bc2fafd6e97f3792dc25acfc7d3703ceca4ff')
+            '513be09c9a4f56fe1274b6bc823d2eafaa3f3da9892bd668767844b83c94011a')
 pkgver() {
     cd "$_pkg2"
     local VERSION1
