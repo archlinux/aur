@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-click' 'python-rich' 'python-jinja' 'python-pandas' 'python-dateutil')
 makedepends=('python-setuptools' 'python-wheel' 'git' 'binwalk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/0xdials/pibootcheck/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ee55ff6e709dcc92c22267c51e88ce138adf7c8881498076751b43690a2d418')  # Replace SKIP with the real checksum before publishing
+sha256sums=('fee55ff6e709dcc92c22267c51e88ce138adf7c8881498076751b43690a2d418')  # Replace SKIP with the real checksum before publishing
 
 python_version=3.10
 
