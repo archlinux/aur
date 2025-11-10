@@ -3,13 +3,13 @@ pkgver=2.0.4
 pkgrel=1
 pkgdesc="Neofetch with LGBTQ+ pride flags"
 arch=('x86_64' 'aarch64')
-url="https://git.pawlickers.org/nataliewolf/pawfetch"
+url="https://git.pawlickers.org/nataliawolf/pawfetch"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
 provides=('pawfetch')
 conflicts=('pawfetch')
-source=("git+https://git.pawlickers.org/nataliewolf/pawfetch.git")
+source=("git+https://git.pawlickers.org/nataliawolf/pawfetch.git")
 sha256sums=('SKIP')
 
 pkgver() {
