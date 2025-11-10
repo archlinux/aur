@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=iron
 pkgname="srware-${_pkgname}-bin"
-pkgver=141.7150.0
+pkgver=141.0.7150.0
 pkgrel=1
 pkgdesc="SRWare Iron Browser is a light-weight browser,based on Chromium.(Prebuilt version)"
 arch=(
