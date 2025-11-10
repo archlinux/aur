@@ -1,19 +1,19 @@
 pkgbase = glyph
 	pkgdesc = Convert images/video to ASCII art (formerly asciigen)
 	pkgver = 1.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/seatedro/glyph
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	makedepends = zig>=0.14
+	makedepends = zig0.14-bin
 	depends = ffmpeg
 	depends = glibc
-	replaces = asciigen
+	replaces = asciigen<=1.0.6-12
 	noextract = zig-clap-0.10.0.tar.gz
 	noextract = stb-f75e8d1cad7d90d72ef7a4661f1b994ef78b4e31.tar.gz
 	source = glyph-1.0.11.tar.gz::https://github.com/seatedro/glyph/archive/refs/tags/v1.0.11.tar.gz
-	source = glyph_zig014_zon.patch
+	source = glyph_zig0.14_zig_zon_hash.patch
 	source = zig-clap-0.10.0.tar.gz::https://github.com/Hejsil/zig-clap/archive/refs/tags/0.10.0.tar.gz
 	source = stb-f75e8d1cad7d90d72ef7a4661f1b994ef78b4e31.tar.gz::https://github.com/nothings/stb/archive/f75e8d1cad7d90d72ef7a4661f1b994ef78b4e31.tar.gz
 	b2sums = c63d063081f8d1d82b53093774dd16a71ecdb07865b3577f52ebd83f9ee7f3719dc980158e372a92262537755a45bfa3fad7d6462e7e96f8ca5a0729b93c2d36

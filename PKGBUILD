@@ -1,22 +1,44 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Harry McKenzie <harry@copy.rest>
 
+_zig=0.14
 pkgname="glyph"
 pkgver=1.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert images/video to ASCII art (formerly asciigen)"
-arch=('aarch64' 'x86_64')
+arch=(
+  'aarch64'
+  'x86_64'
+)
 url="https://github.com/seatedro/${pkgname}"
-license=('MIT')
-depends=('ffmpeg' 'glibc') # 'ffmpeg6.1'
-makedepends=('zig>=0.14')
-replaces=('asciigen')
-_zig_deps=("zig-clap-0.10.0.tar.gz::https://github.com/Hejsil/zig-clap/archive/refs/tags/0.10.0.tar.gz"
-           "stb-f75e8d1cad7d90d72ef7a4661f1b994ef78b4e31.tar.gz::https://github.com/nothings/stb/archive/f75e8d1cad7d90d72ef7a4661f1b994ef78b4e31.tar.gz")
-_pkgsrc="${pkgname}-${pkgver}"
-noextract=("${_zig_deps[@]%%::*}")
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "${pkgname}_zig014_zon.patch"
-        "${_zig_deps[@]}")
+license=(
+  'MIT'
+)
+depends=(
+  'ffmpeg'
+  # 'ffmpeg6.1'
+  'glibc'
+)
+makedepends=(
+  # "zig${_zig}"
+  "zig${_zig}-bin"
+)
+replaces=(
+  'asciigen<=1.0.6-12'
+)
+_zigdepends=(
+  "zig-clap-0.10.0.tar.gz::https://github.com/Hejsil/zig-clap/archive/refs/tags/0.10.0.tar.gz"
+  "stb-f75e8d1cad7d90d72ef7a4661f1b994ef78b4e31.tar.gz::https://github.com/nothings/stb/archive/f75e8d1cad7d90d72ef7a4661f1b994ef78b4e31.tar.gz"
+)
+_pkgsrc="${url##*/}-${pkgver}"
+source=(
+  "${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+  "${pkgname}_zig0.14_zig_zon_hash.patch"
+  "${_zigdepends[@]}"
+)
+noextract=(
+  "${_zigdepends[@]%%::*}"
+)
 b2sums=('c63d063081f8d1d82b53093774dd16a71ecdb07865b3577f52ebd83f9ee7f3719dc980158e372a92262537755a45bfa3fad7d6462e7e96f8ca5a0729b93c2d36'
         'c091e11a6b4714e60d44a0a98e335d667ec854a868d753e1737b380224f2ae479176d545adada99f024f9afa34c8d2450b6e800785afcd52b509947afc100af0'
         'dbf4152f07b8097dd5288db4431ab65b64ffc66a3e1622fd3274fdea591238beddb077e973ffd70fce8f584980b7f0a5264fa8ea642a9b4f05010ff1e2f8aa03'
@@ -24,10 +46,10 @@ b2sums=('c63d063081f8d1d82b53093774dd16a71ecdb07865b3577f52ebd83f9ee7f3719dc9801
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  patch -Np1 -i "${srcdir}/${pkgname}_zig014_zon.patch"
+  patch -Np1 -i "${srcdir}/${pkgname}_zig0.14_zig_zon_hash.patch"
 
   cd "${srcdir}"
-  for dep in "${_zig_deps[@]}"; do
+  for dep in "${_zigdepends[@]}"; do
     zig fetch --global-cache-dir ./zig-global-cache "${dep%%::*}"
   done
 }
@@ -48,14 +70,15 @@ build() {
     --global-cache-dir "${srcdir}/zig-global-cache"
     --system "${srcdir}/zig-global-cache/p"
     --verbose
-    -Dtarget=native-linux.6.1-gnu.2.41
+    -Dtarget=native-linux.6.15-gnu.2.42
     -Dcpu=baseline
+    # -Doptimize=ReleaseSafe
     -Doptimize=ReleaseFast
     -Dstrip=false
   )
 
   cd "${srcdir}/${_pkgsrc}"
-  DESTDIR="build" zig build "${zig_options[@]}"
+  DESTDIR="build" "zig${_zig}" build "${zig_options[@]}"
 }
 
 check() {
@@ -66,19 +89,20 @@ check() {
     --global-cache-dir "${srcdir}/zig-global-cache"
     --system "${srcdir}/zig-global-cache/p"
     --verbose
-    -Dtarget=native-linux.6.1-gnu.2.41
+    -Dtarget=native-linux.6.15-gnu.2.42
     -Dcpu=baseline
+    # -Doptimize=ReleaseSafe
     -Doptimize=ReleaseFast
     -Dstrip=false
   )
 
   cd "${srcdir}/${_pkgsrc}"
-  DESTDIR="build" zig build test "${zig_options[@]}"
+  DESTDIR="check" "zig${_zig}" build test "${zig_options[@]}"
 }
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  cp -va build/* "${pkgdir}"
+  cp -vaT --no-preserve=ownership "build" "${pkgdir}"
 
   install -vDm644 "readme.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
