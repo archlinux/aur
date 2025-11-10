@@ -7,12 +7,22 @@ arch=('x86_64')
 url="https://github.com/Zigazou/dietpdf-haskell"
 license=('BSD-3-Clause')
 depends=('libjpeg-turbo' 'imagemagick')
+makedepends=('git' 'ghc' 'cabal-install' 'llvm15')
 optdepends=('ghostscript' 'grok-jpeg2000' 'ttfautohint')
-_debname="${pkgname}_${pkgver}_amd64.deb"
-source=("$url/releases/download/v$pkgver/$_debname")
-sha256sums=('c5c766ef0d12f37d982f31766b947652429814ab4d38f5dd2f1e31e70aa367eb')
+conflicts=('dietpdf-bin')
+source=("git+$url.git#tag=v$pkgver")
+sha256sums=('SKIP')
+
+build() {
+  export HOME="$srcdir"
+  cd "$srcdir/dietpdf-haskell"
+  cabal update
+  cabal build --ghc-options="-pgmlo /usr/bin/opt-15 -pgmlc /usr/bin/llc-15" exe:dietpdf
+}
 
 package() {
-  ar x "$srcdir/$_debname"
-  tar -xf "$srcdir/data.tar.gz" -C "$pkgdir/" --no-same-owner
+  export HOME="$srcdir"
+  cd "$srcdir/dietpdf-haskell"
+  cabal install --installdir="$pkgdir/usr/bin" --install-method=copy --overwrite-policy=always --ghc-options="-pgmlo /usr/bin/opt-15 -pgmlc /usr/bin/llc-15" exe:dietpdf
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

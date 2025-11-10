@@ -5,12 +5,17 @@ pkgbase = dietpdf
 	url = https://github.com/Zigazou/dietpdf-haskell
 	arch = x86_64
 	license = BSD-3-Clause
+	makedepends = git
+	makedepends = ghc
+	makedepends = cabal-install
+	makedepends = llvm15
 	depends = libjpeg-turbo
 	depends = imagemagick
 	optdepends = ghostscript
 	optdepends = grok-jpeg2000
 	optdepends = ttfautohint
-	source = https://github.com/Zigazou/dietpdf-haskell/releases/download/v1.0.0/dietpdf_1.0.0_amd64.deb
-	sha256sums = c5c766ef0d12f37d982f31766b947652429814ab4d38f5dd2f1e31e70aa367eb
+	conflicts = dietpdf-bin
+	source = git+https://github.com/Zigazou/dietpdf-haskell.git#tag=v1.0.0
+	sha256sums = SKIP
 
 pkgname = dietpdf
