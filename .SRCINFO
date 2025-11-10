@@ -30,6 +30,6 @@ pkgbase = neural-amp-modeler-bypass-lv2
 	sha256sums = 76f7f6160e681acbb4dd1fff4cfc23a3b61f51f0df2f8b3b5449c010628e4013
 	sha256sums = 3c638ff556d7874c01ccc327a84b9b09ed2334846341195e3f0d26803418a432
 	sha256sums = f1c485107ae0b29069a88bf9619d2d93eaed8321ae03a83d7fc437da85d5b9fd
-	sha256sums = SKIP
+	sha256sums = 903e20a2d8159dda33d78cfc044ca024e76da5693d12b37b6377fd3d21030a55
 
 pkgname = neural-amp-modeler-bypass-lv2
