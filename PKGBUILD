@@ -1,6 +1,6 @@
 # Maintainer: Lluciocc <llucio.cc00@example.com>
 pkgname=connex
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Modern Wi-Fi Manager for Hyprland/ArchLinux with GTK3 interface"
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
 )
 makedepends=('git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('33a34a207b1227cab6cc5be5260317d50a73dea4106ef09e5308fea0063e2d32')
+sha256sums=('a5d6e485979b60aba91ee9a578a89fdb8756928d9795093ab57e850c0fb96cca')
 
 # For local development, use:
 # source=("connex.py")
@@ -28,25 +28,28 @@ sha256sums=('33a34a207b1227cab6cc5be5260317d50a73dea4106ef09e5308fea0063e2d32')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    
+
     # Install main script
     install -Dm755 connex.py "${pkgdir}/usr/bin/connex"
 
-    # Install Additional script
-    install -Dm644 speedtest.py "${pkgdir}/usr/lib/connex/speedtest.py"
+    # Install assets
+    install -Dm644 assets/core/speedtest.py "${pkgdir}/usr/lib/connex/assets/core/speedtest.py"
+    install -Dm644 assets/tray/system_tray.py "${pkgdir}/usr/lib/connex/assets/tray/system_tray.py"
+    install -Dm644 assets/utils/debug.py "${pkgdir}/usr/lib/connex/assets/utils/debug.py"
+    install -Dm644 assets/ui/dialogs.py "${pkgdir}/usr/lib/connex/assets/ui/dialogs.py"
+    install -Dm644 assets/ui/main_window.py "${pkgdir}/usr/lib/connex/assets/ui/main_window.py"
+    install -Dm644 assets/core/proxies.py "${pkgdir}/usr/lib/connex/assets/core/proxies.py"
     
-    # Install desktop file
+    # Desktop file
     install -Dm644 connex.desktop "${pkgdir}/usr/share/applications/connex.desktop"
-    
-    # Install icon
+
+    # Icon
     install -Dm644 connex.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/connex.svg"
-    
-    # Install autostart file for tray
+
+    # Autostart
     install -Dm644 connex-tray.desktop "${pkgdir}/etc/xdg/autostart/connex-tray.desktop"
-    
-    # Install license
+
+    # License & docs
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    
-    # Install documentation
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
