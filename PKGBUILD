@@ -11,7 +11,7 @@ arch=(
 )
 url="https://github.com/pluralplay/FlClashX"
 license=('GPL-3.0')
-conflicts=("${pkgname%-git}" "flclash-bin" "flclash" "flclashx" "flclashx-bin")
+conflicts=("${pkgname%-git}" "flclash-bin" "flclash" "flclashx" "flclashx-bin" "flclashx-bin-debug")
 provides=("${pkgname%-git}=${pkgver}")
 depends=(
     'libayatana-appindicator'
