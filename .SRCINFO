@@ -1,0 +1,18 @@
+pkgbase = qadwaitadecorations-colorful-qt6-git
+	pkgdesc = Qt decoration plugin implementing Adwaita-like client-side decorations with config support
+	pkgver = v0.0.1.r2.g7ba31cf
+	pkgrel = 1
+	url = https://github.com/acd407/QAdwaitaColorfulDecorations
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-wayland
+	depends = qt6-svg
+	provides = qadwaitadecorations-qt6
+	conflicts = qadwaitadecorations-qt6
+	conflicts = qgnomeplatform-qt6
+	source = git+https://github.com/acd407/QAdwaitaColorfulDecorations.git
+	sha256sums = SKIP
+
+pkgname = qadwaitadecorations-colorful-qt6-git
