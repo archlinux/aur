@@ -2,9 +2,9 @@
 _appname=aesir
 pkgname="${_appname}-wallet-bin"
 _pkgname=Aesir
-pkgver=1.0.5
+pkgver=1.0.6
 _electronversion=30
-pkgrel=2
+pkgrel=1
 pkgdesc="The most current Kryptokrona GUI Wallet built with Svelte and Electron.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://kryptokrona.org/"
@@ -23,9 +23,13 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/kryptokrona/aesir-wallet/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c6aeb3974ef57b09e936b02d75088f73d56bbde1bb0442d17f143ea49710c620'
+sha256sums=('ba2b2eae943f787d771223c29ecb13dbd1d5a493923f8ed87e645c15be9450f8'
             '6533f6c810ff2e8e6ca1c96333b082d2f4e755f4ee586d2ef320c34782503950'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -e "
         s/@electronversion@/${_electronversion}/g
@@ -35,6 +39,7 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " -i "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -e "
         s/\/opt\/${_pkgname}\/${_appname}/${pkgname%-bin}/g
         s/Icon=${_appname}/Icon=${pkgname%-bin}/g
