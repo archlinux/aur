@@ -1,6 +1,6 @@
 pkgbase = zano-appimage
 	pkgdesc = Zano desktop wallet
-	pkgver = 2.1.9.431
+	pkgver = 2.1.10.433
 	pkgrel = 1
 	url = https://zano.org/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = zano-appimage
 	provides = zano
 	conflicts = zano
 	options = !strip
-	source = https://build.zano.org/builds/zano-linux-x64-release-v2.1.9.431[03ce1e6].AppImage
-	sha256sums = 59775a75dddbafb4b95758507b68d0c73117a59fd459ff87bfc21914d4651e40
+	source = https://build.zano.org/builds/zano-linux-x64-release-v2.1.10.433[653f8b5].AppImage
+	sha256sums = 632a61c98e214454b4faae340de43d954fe221ca177c4c84212d34ade58dfc10
 
 pkgname = zano-appimage
