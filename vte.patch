@@ -1,0 +1,10 @@
+diff --git a/subprojects/vte.wrap b/subprojects/vte.wrap
+index c49a73d..13d0451 100644
+--- a/subprojects/vte.wrap
++++ b/subprojects/vte.wrap
+@@ -1,3 +1,3 @@
+ [wrap-git]
+-url = https://github.com/aperezdc/vte
+-revision = fba792ae293fca42b22292658d96df0ecb36d7b4
++url = https://github.com/barbuk/vte
++revision = 79f8f61c23580f39db9a023777523e361b59ae87
