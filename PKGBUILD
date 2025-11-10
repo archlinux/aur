@@ -2,7 +2,7 @@
 
 pkgname=mangowc-git
 pkgver=r761.3346c8a
-pkgrel=1.4
+pkgrel=1.5
 pkgdesc="A Wayland compositor with smooth animation"
 url="https://github.com/DreamMaoMao/mangowc"
 arch=("x86_64")
