@@ -17,6 +17,8 @@ optdepends=(
 	'ripgrep: enhanced file search'
 )
 
+# This bucket is used in the official install script at https://claude.ai/install.sh
+# curl -fsSL https://claude.ai/install.sh | grep GCS_BUCKET
 _gcs_bucket="https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases"
 source=("LICENSE::https://raw.githubusercontent.com/anthropics/claude-code/refs/heads/main/LICENSE.md")
 source_x86_64=("claude-${pkgver}-x86_64::${_gcs_bucket}/${pkgver}/linux-x64/claude")
