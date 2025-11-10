@@ -1,7 +1,7 @@
 # Maintainer: fuero <fuerob@gmail.com>
 pkgname=kubectl-explore
 # renovate: datasource=github-releases depName=keisku/kubectl-explore
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=2
 pkgdesc='plugin for kubectl that gives you a UNIX find-like experience'
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ depends=('kubectl' 'glibc' 'bash')
 makedepends=('go')
 groups=('kubectl-plugins')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('a34080f4d0d7c462eddfad1da8dd364455a460937c86f49f1448e3a277d2cfabf3bced009e0eb08abd38cb1d4cce9d7bfa15966ae587367b36150ec4a21990a2')
-b2sums=('d99d11fe3feb8a9d1c9ef26a7ca31fd90feb63388097e2df19c6de43802ee4c4faff0a32a46cf182b91538bd0122addc9b88893e61bd31e2a4bf26ee969df3cb')
+sha512sums=('6a46c3d0effe7d6641acbb088faf1fc7f91581359ad48ce01c0348656233e67c9895d921602ae07079ce7ac5ff94d1ef677423c8e1812f31e8efc5bb9836387d')
+b2sums=('81f584a3df9ef52ff552ae05c7e95b9c80b1b3bfdeaae6904d321656a5becce32f3dde556c548daf58c9f427b6960e98ee669996f113d8d50d7fb6f38283b604')
 
 build() {
   local _x _commit
