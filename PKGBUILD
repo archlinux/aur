@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=cc-switch-bin
-pkgver=3.5.1
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Claude Code & Codex 供应商配置管理工具"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/farion1231/cc-switch"
 license=('mit')
 depends=('libayatana-appindicator' 'webkit2gtk-4.1' 'gtk3')
 source=("CC-Switch-v${pkgver}-Linux.deb::https://github.com/farion1231/cc-switch/releases/download/v${pkgver}/CC-Switch-v${pkgver}-Linux.deb")
-md5sums=('e9312fbad8d075b6c957a7ba1ca7c61e')
+md5sums=('a70a713cd3a26105fdc21c8713553693')
 
 package() {
     # Extract the deb package
