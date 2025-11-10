@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="blend2d"
-pkgver=0.21.0
+pkgver=0.21.2
 pkgrel=1
 pkgdesc="A high-performance 2D vector graphics engine written in C++"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -19,8 +19,8 @@ provides=(
 )
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/download/${_pkgsrc}.tar.gz")
-sha256sums=('f360394e223f12053aac7f70b2c63df3c85de57cdf85efe4cc8cc8c446744cf9')
-b2sums=('d0d1384b9d6ba1d5c1e665971c3c8103832715b46c8d1d3026e2433d373688f5e61974a9ad470ac0342651325839a7675cc0099ab35afff5d8cd4a63bcb0034d')
+sha256sums=('234ba57a64153c96885a6271f15fdcf6c594ac8cb03adaad19abb8d3b2b533fa')
+b2sums=('284c819c87abcba340d2ff9b3f9ca3103270ccddeeb081b18f1381d33d7ae114d43cecd1f4b8fc99ffae9750b973b6d4b45f9be344122218fb6f5e093b1ebf32')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
