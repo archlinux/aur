@@ -1,0 +1,22 @@
+pkgbase = imsprog-git
+	pkgdesc = MSProg - software for CH341A-based programmers to work with I2C, SPI and MicroWire EEPROM/Flash chips
+	pkgver = 1.7.1.r0.gc027ef9
+	pkgrel = 1
+	url = https://github.com/bigbigmdm/IMSProg
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = qt5-tools
+	depends = gcc-libs
+	depends = glibc
+	depends = libusb
+	depends = qt5-base
+	optdepends = sfp-master: SFP-module programmer for CH341a devices
+	provides = imsprog
+	conflicts = imsprog
+	source = imsprog-git::git+https://github.com/bigbigmdm/IMSProg.git
+	sha256sums = SKIP
+
+pkgname = imsprog-git
