@@ -1,4 +1,4 @@
-[darklua]
+[darklua-bin]
 source = "git"
 git = "https://github.com/seaofvoices/darklua.git"
 prefix = "v"
