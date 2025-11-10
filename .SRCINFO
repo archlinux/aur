@@ -1,6 +1,6 @@
 pkgbase = r-sf
 	pkgdesc = Simple Features for R
-	pkgver = 1.0.21
+	pkgver = 1.0.22
 	pkgrel = 1
 	url = https://cran.r-project.org/package=sf
 	arch = x86_64
@@ -58,11 +58,11 @@ pkgbase = r-sf
 	optdepends = r-tmap
 	optdepends = r-vctrs
 	optdepends = r-wk
-	source = https://cran.r-project.org/src/contrib/sf_1.0-21.tar.gz
+	source = https://cran.r-project.org/src/contrib/sf_1.0-22.tar.gz
 	source = fix-tests.patch
-	md5sums = c59ee67484070c71683b86bf04ed3947
+	md5sums = d3b0fd9b6f514fce6e8ccc0976f28822
 	md5sums = 1f0ac4a99a8706821bc498b734be839f
-	b2sums = cc3dcb8f97a3f3e0861846faeca86b31fe3b4918ee48df87fb01b96717e9f8fe91eeab8677289c8795ea6d244ae0b94ae4d9ee860124231049fe47f9e00c901e
+	b2sums = bc9a3d7ae476bb88586657571457f764fe95cf85ee649d4d4836ae2f087637757545afe921fa33eaf1af72e3f6ceec558a6667b9f25092865e0de2fefb9fcfaf
 	b2sums = 988ca59b2da630b1c730865f95f4b2c1ce3a88ed67ce49823914ce50f3fe6972ae44a5cb28037cd043e753ec062ab9ec19a4f7f70c05042e010005afec20cb11
 
 pkgname = r-sf
