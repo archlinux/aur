@@ -1,0 +1,4 @@
+[mepo]
+source = "git"
+git = "https://git.sr.ht/~mil/mepo"
+prefix = "v"

@@ -1,45 +1,92 @@
-# Maintainer: Robert Hamblin <hamblingreen@hotmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Robert Hamblin <hamblingreen@hotmail.com>
 # Contributor: Rene Hickersberger <r@renehsz.com>
 # Contributor: Dimitri Kaparis <dimitri@kaparis.name>
-pkgname=mepo
-pkgver=1.3.3
+
+_zig=0.14
+pkgname="mepo"
+pkgver=1.3.4
 pkgrel=1
-pkgdesc="Fast, simple, and hackable OSM map viewer for Linux"
-arch=('i686' 'x86_64' 'arm' 'aarch64')
-url="https://git.sr.ht/~mil/mepo"
-license=('GPL3')
-depends=('jq' 'curl' 'zenity' 'xorg-xwininfo' 'geoclue' 'ncurses' 'findutils' 'sdl2_gfx' 'sdl2_image' 'sdl2_ttf')
-makedepends=('zig>=0.13.0' 'sdl2')
-checkdepends=('zig>=0.13.0')
-changelog=
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('9d5b1c7dc411c9d5258753d3c43b4ba55d6b460044fbd3a8872f4532f5b3472123b43368910a46724bcce238d19e66dfd552810a96cb16bf84f67f04b1f6b2e4')
+pkgdesc="Fast, simple, and hackable OSM map viewer. Works both offline and online."
+arch=(
+  'aarch64'
+  'armv7h'
+  'i686'
+  'x86_64'
+)
+url="https://git.sr.ht/~mil/${pkgname}"
+license=(
+  'GPL-3.0-or-later'
+)
+depends=(
+  'curl'
+  'findutils'
+  'geoclue'
+  'glibc'
+  'hicolor-icon-theme'
+  'jq'
+  'ncurses'
+  'sdl2'
+  'sdl2_gfx'
+  'sdl2_image'
+  'sdl2_ttf'
+  'sh'
+  'xorg-xwininfo'
+  'zenity'
+)
+makedepends=(
+  # "zig${_zig}"
+  "zig${_zig}-bin"
+)
+_pkgsrc="${pkgname}-${pkgver}"
+source=(
+  "${_pkgsrc}.tar.gz::${url}/archive/${pkgver}.tar.gz"
+)
+sha512sums=('ef45de275e46c25ba4aedf6a27298c6b0ce5c751bd0680d37dca81baf86f059be05574d0655013ba405d45d958b1fef3d795050efa2db4fad6ca7f47aa577cb7')
 
 build() {
-  cd "$pkgname-$pkgver"
+  local zig_options=(
+    --summary all
+    --prefix /usr
+    --search-prefix /usr
+    --global-cache-dir "${srcdir}/zig-global-cache"
+    # --system "${srcdir}/zig-global-cache/p"
+    --verbose
+    -Dtarget=native-linux.6.15-gnu.2.42
+    -Dcpu=baseline
+    -Doptimize=ReleaseSafe
+  )
 
-  zig build -Doptimize=ReleaseSafe
-  zig-out/bin/mepo -docmd > doc.md
+  cd "${srcdir}/${_pkgsrc}"
+  DESTDIR="build" "zig${_zig}" build "${zig_options[@]}"
+  find "build" -type f -name '*.sh' -exec \
+    sed -i 's|libexec|lib|g' "{}" +
+
+  ./"build/usr/bin/${pkgname}" -docmd > "MANUAL.md"
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  local zig_options=(
+    --summary all
+    --prefix /usr
+    --search-prefix /usr
+    --global-cache-dir "${srcdir}/zig-global-cache"
+    # --system "${srcdir}/zig-global-cache/p"
+    --verbose
+    -Dtarget=native-linux.6.15-gnu.2.42
+    -Dcpu=baseline
+    -Doptimize=ReleaseSafe
+  )
 
-  zig build test
+  cd "${srcdir}/${_pkgsrc}"
+  DESTDIR="check" "zig${_zig}" build test "${zig_options[@]}"
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "${srcdir}/${_pkgsrc}"
+  cp -vaT --no-preserve=ownership "build" "${pkgdir}"
 
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/applications"
-  mkdir -p "$pkgdir/usr/share/pixmaps"
-  mkdir -p "$pkgdir/usr/share/doc/$pkgname"
-  install scripts/mepo_* "$pkgdir/usr/bin/"
-  install "zig-out/bin/mepo" "$pkgdir/usr/bin/"
-  sed -i 's:/usr/libexec:/usr/lib:g' $pkgdir/usr/bin/mepo_ui_menu_user_pin_updater.sh
-  install "zig-out/share/applications/mepo.desktop" "$pkgdir/usr/share/applications"
-  install "zig-out/share/pixmaps/mepo.png" "$pkgdir/usr/share/pixmaps"
-  install "mepo.md" -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -vDm644 "MANUAL.md" "${pkgdir}/usr/share/doc/${pkgname}/MANUAL.md"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
