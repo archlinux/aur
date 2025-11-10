@@ -1,0 +1,1 @@
+d /var/lib/proxysql 0770 proxysql proxysql -

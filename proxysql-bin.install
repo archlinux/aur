@@ -1,16 +1,9 @@
 post_install() {
-  # Create /var/lib/proxysql directory
-  if [ ! -d /var/lib/proxysql ]; then
-    mkdir /var/lib/proxysql
-  fi
+  # systemd-sysusers and systemd-tmpfiles automatically handle:
+  # - Creating the proxysql system user
+  # - Creating /var/lib/proxysql directory with correct permissions
 
-  # Create proxysql system user if it doesn't exist
-  if ! id -u proxysql > /dev/null 2>&1; then
-    useradd -r -U -s /bin/false -d /var/lib/proxysql -c "ProxySQL Server" proxysql
-  fi
-
-  # Set ownership
-  chown -R proxysql: /var/lib/proxysql
+  # Set ownership on configuration file
   chown root:proxysql /etc/proxysql.cnf
   chmod 640 /etc/proxysql.cnf
 
@@ -21,7 +14,6 @@ post_install() {
 
 post_upgrade() {
   # Set ownership on upgrade
-  chown -R proxysql: /var/lib/proxysql
   chown root:proxysql /etc/proxysql.cnf
   chmod 640 /etc/proxysql.cnf
 }
