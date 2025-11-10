@@ -1,0 +1,20 @@
+pkgbase = yad
+	pkgdesc = A fork of zenity - display graphical dialogs from shell scripts or command line w\o html, spell, sourceview
+	pkgver = 14.1
+	pkgrel = 3
+	url = https://github.com/v1cont/yad
+	arch = x86_64
+	license = GPL3
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = intltool
+	depends = gtk3
+	provides = yad
+	conflicts = yad
+	conflicts = yad-git
+	conflicts = yad-gtk2
+	replaces = yad
+	source = https://git.altlinux.org/tasks/398769/build/100/x86_64/srpm/yad-14.1-alt1.src.rpm
+	sha256sums = 520dc26b56c2da198798d65a34f19f409c2d4ff8721f1ad12c2a0be460935594
+
+pkgname = yad-light
