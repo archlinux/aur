@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 
-_upstreamver='1.0'
+_upstreamver='1.1'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='xnum'
@@ -18,7 +18,7 @@ depends=('python')
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('a64395a4efd6be84ae8898b316379bc440350a10981abc8b13a40a01be7ca71e')
+sha256sums=('0f346957977af834de29e7a1bd08887a50691ffbbea7207e305f6c58a269ea8b')
 
 
 build() {
