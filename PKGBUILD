@@ -11,6 +11,6 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Phluxjr23/confy/archive
 sha256sums=('aba14b260d0f454c8c05c38e0740c85f4abafb3d73b7caa7f504a3de02164fbb')
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/confy-$pkgver"
     install -Dm755 main.py "$pkgdir/usr/bin/confy"
 }
