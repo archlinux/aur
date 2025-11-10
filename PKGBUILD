@@ -3,8 +3,8 @@
 # Maintainer: curlywei dewei0724@gmail.com
 
 pkgname=alien_package_converter
-pkgver=8.95
-pkgrel=9
+pkgver=8.95.9
+pkgrel=2
 pkgdesc="Alien is a program that converts between the rpm, dpkg, stampede slp, and slackware tgz file formats"
 arch=('any')
 url="http://joeyh.name/code/alien/"
@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('perl' 'debhelper' 'cpio' 'rpm-org' 'bzip2')
 makedepends=('perl' 'git')
 options=('!emptydirs')
-source=("git+https://github.com/Project-OSS-Revival/alien.git#tag=${pkgver}.${pkgrel}")
+source=("git+https://github.com/Project-OSS-Revival/alien.git#tag=${pkgver}")
 #sha256sums=('586A649BC9366ACC15047D4C9F34E253208907142E12174EAFB4F3704FEA47A5')
 sha256sums=('SKIP')
 
@@ -21,13 +21,12 @@ prepare() {
 
   # Replace the changelog version line with an environment-based one
   sed -i 's|^VER=.*changelog).*|VER?=$(ALIEN_VER_TAG)|' Makefile.PL
-
 }
 
 build() {
 cd "${srcdir}/alien"
   # Setting these env variables overwrites any command-line-options we don't want...
-export ALIEN_VER_TAG="${pkgver}.${pkgrel}"
+export ALIEN_VER_TAG="${pkgver}"
 export PERL_MM_USE_DEFAULT=1 \
 PERL5LIB="" \
 PERL_AUTOINSTALL=--skipdeps \
