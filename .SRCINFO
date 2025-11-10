@@ -1,7 +1,7 @@
-pkgbase = icu74
-	pkgdesc = International Components for Unicode library (legacy version 74).
-	pkgver = 74.2
-	pkgrel = 10
+pkgbase = icu76
+	pkgdesc = International Components for Unicode library (legacy version 76).
+	pkgver = 76.1
+	pkgrel = 1
 	url = http://www.icu-project.org/
 	arch = i486
 	arch = i686
@@ -17,40 +17,40 @@ pkgbase = icu74
 	makedepends = python
 	depends = gcc-libs
 	depends = glibc
-	provides = libicudata.so=74
-	provides = libicui18n.so=74
-	provides = libicuio.so=74
-	provides = libicutest.so=74
-	provides = libicutu.so=74
-	provides = libicuuc.so=74
-	conflicts = icu=74
-	conflicts = icu=74.0
-	conflicts = icu=74.1
-	conflicts = icu=74.2
-	conflicts = icu=74.3
-	conflicts = icu=74.4
-	conflicts = icu=74.5
-	conflicts = icu=74.6
-	conflicts = icu=74.7
-	conflicts = icu=74.8
-	conflicts = icu=74.9
-	conflicts = libicudata.so=74
-	conflicts = libicui18n.so=74
-	conflicts = libicuio.so=74
-	conflicts = libicutest.so=74
-	conflicts = libicutu.so=74
-	conflicts = libicuuc.so=74
-	source = https://github.com/unicode-org/icu/releases/download/release-74-2/icu4c-74_2-src.tgz
+	provides = libicudata.so=76
+	provides = libicui18n.so=76
+	provides = libicuio.so=76
+	provides = libicutest.so=76
+	provides = libicutu.so=76
+	provides = libicuuc.so=76
+	conflicts = icu=76
+	conflicts = icu=76.0
+	conflicts = icu=76.1
+	conflicts = icu=76.2
+	conflicts = icu=76.3
+	conflicts = icu=76.4
+	conflicts = icu=76.5
+	conflicts = icu=76.6
+	conflicts = icu=76.7
+	conflicts = icu=76.8
+	conflicts = icu=76.9
+	conflicts = libicudata.so=76
+	conflicts = libicui18n.so=76
+	conflicts = libicuio.so=76
+	conflicts = libicutest.so=76
+	conflicts = libicutu.so=76
+	conflicts = libicuuc.so=76
+	source = https://github.com/unicode-org/icu/releases/download/release-76-1/icu4c-76_1-src.tgz
 	source = ICU-22132.patch
 	source = icudata-stdlibs.patch
-	source = icu74-LICENSE::https://github.com/unicode-org/icu/raw/main/LICENSE
-	md5sums = 94c0b370f43123ea92b146ebea9c709d
+	source = icu76-LICENSE::https://github.com/unicode-org/icu/raw/main/LICENSE
+	md5sums = 857fdafff8127139cc175a3ec9b43bd6
 	md5sums = 7e501a2e7d14ce94b843e6853d96e4c2
 	md5sums = 4e5202245fce364490334bd66b5edabc
 	md5sums = e531a388be7c1df9a0fb7b4010c9c1d7
-	sha256sums = 68db082212a96d6f53e35d60f47d38b962e9f9d207a74cfac78029ae8ff5e08c
+	sha256sums = dfacb46bfe4747410472ce3e1144bf28a102feeaa4e3875bac9b4c6cf30f4f3e
 	sha256sums = f534b472dd7a6961591466eef542e2c3ad698d3008c9b6af813c66cbc0b4dd8e
 	sha256sums = 13444e40ec8da75a3c4140448b25bdf51887a2691c9afdb0c63134ddd33d915b
 	sha256sums = e55522d81edc687a341a4411e0776e54ca654e90147f354a90458aaced4116af
 
-pkgname = icu74
+pkgname = icu76
