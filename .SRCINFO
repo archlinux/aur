@@ -1,6 +1,6 @@
 pkgbase = supercell-wx-appimage
 	pkgdesc = A NEXRAD Level 2 and Level 3 radar viewing application
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://supercellwx.net/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = supercell-wx-appimage
 	provides = supercell-wx
 	conflicts = supercell-wx
 	options = !strip
-	source = https://github.com/dpaulat/supercell-wx/releases/download/v0.5.2-release/supercell-wx-v0.5.2-x86_64.AppImage
-	sha256sums = f80daad79c88500bc3d6381dd7ba2e8236f241423ccdc2cf4a7733690deebf7f
+	source = https://github.com/dpaulat/supercell-wx/releases/download/v0.5.3-release/supercell-wx-v0.5.3-x86_64.AppImage
+	sha256sums = 5bb1b0db8ac10e3020fa934e812d5ec632df44ee1216baf90a20c394ef0e177d
 
 pkgname = supercell-wx-appimage
