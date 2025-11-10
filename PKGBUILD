@@ -1,5 +1,5 @@
 pkgname=pawfetch-git
-pkgver=2.0.4
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="Neofetch with LGBTQ+ pride flags"
 arch=('x86_64' 'aarch64')
