@@ -1,0 +1,18 @@
+pkgbase = sysctl-logger-git
+	pkgdesc = sysctl monitoring with BPF
+	pkgver = r56.700f749
+	pkgrel = 1
+	url = https://github.com/shunghsiyu/sysctl-logger
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = clang
+	makedepends = bpf
+	depends = libbpf
+	provides = sysctl-logger
+	conflicts = sysctl-logger
+	source = sysctl-logger::git+https://github.com/shunghsiyu/sysctl-logger.git
+	sha256sums = SKIP
+
+pkgname = sysctl-logger-git
