@@ -6,13 +6,13 @@ maintainer="Nexus Xian <xyhctatrl@gamil.com>"
 pkgname=shiroha-cli
 
 # 软件包版本。必须与您的 Git Tag 保持一致，但通常省略前缀 'v'。
-pkgver=1.3.1
+pkgver=2.0.0
 
 # 包发布版本。从 1 开始，每次 PKGBUILD 更新时递增。
-pkgrel=2
+pkgrel=4
 
 # 软件包描述。
-pkgdesc="A powerful CLI tool for bootstrapping and managing Gin-based web APIs.基于gin的goWeb脚手架"
+pkgdesc="A powerful CLI tool for bootstrapping and managing Gin-based web APIs."
 
 # 您的项目 URL。
 url="https://github.com/NexusXian/shiroha"
@@ -34,11 +34,10 @@ source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz")
 
 # 校验码列表。必须与下载的 tar.gz 文件匹配。
 # 初始为空，稍后使用 makepkg -g 生成。
-sha256sums=('72a900e037342f5e12f14541786d0893af9d22440a4ceb367ac52f1222416697')
+sha256sums=('a109a4e7845ded22b386b4fac4e874563c8ae2011b1883c6fd1068ac4f384acc')
 
 # ======================== 构建函数 ========================
 build() {
-    # 进入源码目录。GitHub 解压后的目录名是 'shiroha-0.1.0' (即 <repo>-<tag>)。
     cd "$srcdir/shiroha-$pkgver"
 
     # 使用 go build 编译。
