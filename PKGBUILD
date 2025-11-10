@@ -9,7 +9,7 @@
 # Pull requests are welcome here: https://github.com/yurikoles-aur/osc
 
 pkgname=osc
-pkgver=1.21.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Command line client for the openSUSE Build Service'
 arch=(any)
@@ -45,7 +45,7 @@ replaces=(
 source=(
 	"${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
 )
-sha256sums=('6579381095a8a6675a6ffca4c894a2e5706fe19c45f2e9a18631d75e00bed051')
+sha256sums=('5ffcda4aef9d27bfaccbbbb196ed32d1cb1c7870b940b04dfc8f0fdbd4dde479')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
