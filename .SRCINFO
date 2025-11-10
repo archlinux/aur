@@ -1,6 +1,6 @@
 pkgbase = r-elliptic
 	pkgdesc = Weierstrass and Jacobi Elliptic Functions
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=elliptic
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = r-elliptic
 	optdepends = r-emulator
 	optdepends = r-testthat
 	optdepends = r-hypergeo
-	source = https://cran.r-project.org/src/contrib/elliptic_1.5-0.tar.gz
-	md5sums = e8c90b9a661aa7f39a7d81a779286db7
-	b2sums = 7634eca3d64e165850bbd1488b9ea4d498d43aa59cabf3d4c233f3a2aa138fb0df99f5aab8e7f1e051d9cee4466f39ee751342367faa1cd8aa96cbf01fb933ec
+	source = https://cran.r-project.org/src/contrib/elliptic_1.5-1.tar.gz
+	md5sums = d1b1380dc824401ef4daf83b413d9773
+	b2sums = 12e6bd9ad6bbfd6a318eb213ee4e243d17fb4a4b08f1903c8b10a98f927b3fe85490e45e7b037c642501793a1daee396626e608e64ddccfa5c9a4af8cf1a725e
 
 pkgname = r-elliptic
