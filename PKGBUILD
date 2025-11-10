@@ -1,3 +1,4 @@
+# Maintainer: prettyleaf
 # Maintainer: pluralplay
 
 pkgname=flclashx-bin
