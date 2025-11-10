@@ -1,0 +1,21 @@
+pkgbase = hyprshell-slim
+	pkgdesc = A modern GTK4-based window switcher and application launcher for Hyprland (lightweight version)
+	pkgver = 4.8.0
+	pkgrel = 1
+	url = https://github.com/h3rmt/hyprshell/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = hyprland
+	depends = gtk4-layer-shell
+	depends = gtk4
+	depends = gcc
+	depends = pixman
+	depends = libadwaita
+	provides = hyprshell
+	conflicts = hyprshell
+	source = hyprshell-4.8.0.tar.gz::https://static.crates.io/crates/hyprshell/hyprshell-4.8.0.crate
+	sha256sums = 5d6ccaa010d969899c37062f7c188261c800774e60c5148f92c4c4da7753bf8a
+
+pkgname = hyprshell-slim
