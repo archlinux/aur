@@ -1,6 +1,6 @@
 pkgbase = snort-nfqueue
 	pkgdesc = A lightweight network IDS / IPS with NFQUEUE and OpenAppID support.
-	pkgver = 3.9.3.0
+	pkgver = 3.9.7.0
 	pkgrel = 1
 	url = https://www.snort.org
 	install = snort.install
@@ -12,7 +12,7 @@ pkgbase = snort-nfqueue
 	depends = gperftools
 	depends = hwloc
 	depends = hyperscan
-	depends = libdaq>=3.0.21
+	depends = libdaq>=3.0.22
 	depends = libdnet
 	depends = libmnl
 	depends = libnetfilter_queue
@@ -36,7 +36,7 @@ pkgbase = snort-nfqueue
 	backup = etc/snort/lists/default.blocklist
 	backup = etc/snort/lists/default.allowlist
 	backup = etc/logrotate.d/snort
-	source = snort3-3.9.3.0.tar.gz::https://github.com/snort3/snort3/archive/refs/tags/3.9.3.0.tar.gz
+	source = snort3-3.9.7.0.tar.gz::https://github.com/snort3/snort3/archive/refs/tags/3.9.7.0.tar.gz
 	source = snort-openappid-33380.tar.gz::https://snort.org/downloads/openappid/33380
 	source = tcmjem.patch
 	source = local.lua
@@ -44,7 +44,7 @@ pkgbase = snort-nfqueue
 	source = snort.sysusers
 	source = snort.tmpfiles
 	source = snort.service
-	sha256sums = c7c2f7488b1a9ec5b60b9706fc3f2f3f9c0e1eb57f384e077676c452570468cf
+	sha256sums = 83a611ef3e60ef3f97de08537f7070c50f6acb52eaff9db48f3a464b573ab22d
 	sha256sums = 3046c5af1dd81a104f13d8e895226ef64bca7fa358238fb5f29c659081eaee2a
 	sha256sums = b7797a2479798c7c055173bb606fb537fb53f5c867f967d47477211193ffe86d
 	sha256sums = 55ae10b6d24abadb03dd4f010fdf71e077370227db6835e48881836a8ea082a8
