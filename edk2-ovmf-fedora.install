@@ -19,13 +19,15 @@ post_install() {
 
     # Latest news regarding this package
     echo
-    echo "What's new on the edk2-ovmf-fedora package?"
-    echo "- Upgraded to the latest version from Fedora 43"
-    echo "  (latest Fedora OS release on Oct. 28, 2025)"
+    echo "What's new on the \"edk2-ovmf-fedora\" package?"
+    echo "- Upgraded to the latest packaged version of Nov. 8, 2025"
+    #echo "  (latest Fedora OS release on Oct. 28, 2025)"
+    echo
+    echo "- Removed \"Conflicts with 'edk2-ovmf-fedora-bin' package\" from this AUR package"
+    echo "  - That conflicting package doesn't exist (and it no longer does)"
     echo
     echo "You can read more here:"
-    echo "- https://fedoramagazine.org/announcing-fedora-linux-43/"
-    echo "- https://packages.fedoraproject.org/pkgs/edk2/edk2-ovmf/fedora-43-updates.html"
+    echo "- \"Recent Activity\" section -> https://packages.fedoraproject.org/pkgs/edk2/edk2-ovmf/"
     echo
     echo "Keep securing your systems! (Even virtual ones.)"    
     echo
@@ -63,13 +65,15 @@ post_upgrade() {
 
     # Latest news regarding this package
     echo
-    echo "What's new on the edk2-ovmf-fedora package?"
-    echo "- Upgraded to the latest version from Fedora 43"
-    echo "  (latest Fedora OS release on Oct. 28, 2025)"
+    echo "What's new on the \"edk2-ovmf-fedora\" package?"
+    echo "- Upgraded to the latest packaged version of Nov. 8, 2025"
+    #echo "  (latest Fedora OS release on Oct. 28, 2025)"
+    echo
+    echo "- Removed \"Conflicts with 'edk2-ovmf-fedora-bin' package\" from this AUR package"
+    echo "  - That conflicting package doesn't exist (and it no longer does)"
     echo
     echo "You can read more here:"
-    echo "- https://fedoramagazine.org/announcing-fedora-linux-43/"
-    echo "- https://packages.fedoraproject.org/pkgs/edk2/edk2-ovmf/fedora-43-updates.html"
+    echo "- \"Recent Activity\" section -> https://packages.fedoraproject.org/pkgs/edk2/edk2-ovmf/"
     echo
     echo "Keep securing your systems! (Even virtual ones.)"    
     echo
