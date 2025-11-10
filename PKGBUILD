@@ -4,7 +4,7 @@
 pkgname=flclashx-bin
 _pkgname=FlClashX
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Fork of FlClash | A multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free."
 arch=(
     'aarch64'

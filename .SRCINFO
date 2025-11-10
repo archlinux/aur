@@ -1,7 +1,7 @@
 pkgbase = flclashx-bin
 	pkgdesc = Fork of FlClash | A multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free.
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/pluralplay/FlClashX
 	arch = aarch64
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = flclashx-bin
 	conflicts = flclashx
 	conflicts = flclash-bin
 	conflicts = flclash
+	conflicts = flclashx
+	conflicts = flclashx-git
 	source = flclashx.sh
 	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
 	source_aarch64 = flclashx-0.2.1-aarch64.deb::https://github.com/pluralplay/FlClashX/releases/download/v0.2.1/FlClashX-0.2.1-linux-arm64.deb
