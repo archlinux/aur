@@ -2,7 +2,7 @@
 
 _pkgname=jupytext
 pkgname=python-$_pkgname
-pkgver=1.17.2
+pkgver=1.18.1
 pkgrel=1
 pkgdesc="Jupyter notebooks as Markdown documents, Julia, Python or R scripts"
 url="https://github.com/mwouts/jupytext"
@@ -33,7 +33,7 @@ optdepends=(
 license=('MIT')
 arch=('any')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3d97e65cf80a68c1b042c440efb8d48b1c36ae029311e751b59df79a1a893d07')
+sha256sums=('334cf77fe951c7dc3cc270b369975ee397e422b4853e2e7585cece89ae777c3d')
 
 build() {
     cd $_pkgname-$pkgver

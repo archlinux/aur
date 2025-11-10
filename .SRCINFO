@@ -1,6 +1,6 @@
 pkgbase = python-jupytext
 	pkgdesc = Jupyter notebooks as Markdown documents, Julia, Python or R scripts
-	pkgver = 1.17.2
+	pkgver = 1.18.1
 	pkgrel = 1
 	url = https://github.com/mwouts/jupytext
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = python-jupytext
 	optdepends = jupyter-nbconvert
 	optdepends = jupyterlab
 	optdepends = python-sphinx-gallery
-	source = jupytext-1.17.2.tar.gz::https://github.com/mwouts/jupytext/archive/v1.17.2.tar.gz
-	sha256sums = 3d97e65cf80a68c1b042c440efb8d48b1c36ae029311e751b59df79a1a893d07
+	source = jupytext-1.18.1.tar.gz::https://github.com/mwouts/jupytext/archive/v1.18.1.tar.gz
+	sha256sums = 334cf77fe951c7dc3cc270b369975ee397e422b4853e2e7585cece89ae777c3d
 
 pkgname = python-jupytext
