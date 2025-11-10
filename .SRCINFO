@@ -1,0 +1,16 @@
+pkgbase = libbsc
+	pkgdesc = High-performance block-sorting data compressor
+	pkgver = 3.3.12
+	pkgrel = 1
+	url = https://github.com/IlyaGrebnov/libbsc
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	optdepends = openmp
+	optdepends = cuda
+	source = git+https://github.com/IlyaGrebnov/libbsc.git#tag=v3.3.12
+	sha256sums = SKIP
+
+pkgname = libbsc
