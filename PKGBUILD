@@ -4,8 +4,8 @@
 
 _name="mpm"
 pkgname="matlab-${_name}"
-_commit="df30d7e712e37c2fa54638ff81870e705946ee66" # 2025.2
-pkgver=2025.2+r123.gdf30d7e
+_commit="741261e76ff40685cd9498892c86af39ad5adecb" # 2025.2.1
+pkgver=2025.2.1+r124.g741261e
 _pkgver="${pkgver%+*}"
 pkgrel=1
 epoch=1
@@ -28,8 +28,8 @@ optdepends=(
 _pkgsrc="${_url##*/}"
 source=("${_pkgsrc}::git+${_url}.git#commit=${_commit}")
 source_x86_64=("${pkgname}-${_pkgver}-x86_64::https://ssd.mathworks.com/supportfiles/downloads/${_name}/${_pkgver}/glnxa64/${_name}")
-sha256sums=('507c72e4f665d0ad2d9970ed68b94aa6ed7909b112fdd7aa13ff251ee8cec135')
-sha256sums_x86_64=('b7286fa4d433a40a1575c9d09d842a2a2f0271a3aa2693e6ebddb44056011732')
+sha256sums=('0a380b5fc330b28f29b2413eeba41e1f72791dac1f349ade254246f42b77454f')
+sha256sums_x86_64=('6049afb56971811f252f2a96f5e014a1204f625be0bd01e3217b1bf085b1df75')
 
 pkgver() {
   cd "${srcdir}/${_pkgsrc}"
