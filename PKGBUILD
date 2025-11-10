@@ -5,7 +5,7 @@
 _pkgname=losslesscut
 pkgname=losslesscut-bin
 pkgver=3.67.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Crossplatform GUI tool for lossless trimming/cutting of video/audio files"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mifi/lossless-cut"
@@ -15,11 +15,11 @@ provides=("${_pkgname}")
 depends=('nss' 'ffmpeg' 'gtk3' 'libxss')
 # 0ac7bd2115eae92ff47a62b0af4075054d463ff0c30654897e0d9f02f35113e5
 # 6e14f887657ff23521cf413685ad4ac528656d8d3227c0380f5c71c30ed6ed64
-source_x86_64=("https://github.com/mifi/lossless-cut/releases/download/v$pkgver/LosslessCut-linux-x64.tar.bz2"
+source_x86_64=("LosslessCut-$pkgver-linux-x64.tar.bz2::https://github.com/mifi/lossless-cut/releases/download/v$pkgver/LosslessCut-linux-x64.tar.bz2"
                "losslesscut.desktop"
                "LICENSE"
                "https://raw.githubusercontent.com/mifi/lossless-cut/refs/heads/master/src/renderer/src/icon.svg")
-source_aarch64=("https://github.com/mifi/lossless-cut/releases/download/v$pkgver/LosslessCut-linux-arm64.tar.bz2"
+source_aarch64=("LosslessCut-$pkgver-linux-arm64.tar.bz2::https://github.com/mifi/lossless-cut/releases/download/v$pkgver/LosslessCut-linux-arm64.tar.bz2"
                "losslesscut.desktop"
                "LICENSE"
                "https://raw.githubusercontent.com/mifi/lossless-cut/refs/heads/master/src/renderer/src/icon.svg")
