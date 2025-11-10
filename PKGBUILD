@@ -3,7 +3,7 @@
 pkgbase=buffybox
 pkgname=(buffyboard unl0kr)
 pkgver=3.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A suite of graphical applications for the terminal"
 url="https://gitlab.postmarketos.org/postmarketOS/buffybox/"
 arch=('x86_64' 'aarch64')
@@ -32,6 +32,8 @@ build() {
 }
 
 package_buffyboard() {
+    depends=(libinih libinput systemd-libs)
+
     meson install -C build --tags=buffyboard --destdir "$pkgdir"
 }
 

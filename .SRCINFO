@@ -1,7 +1,7 @@
 pkgbase = buffybox
 	pkgdesc = A suite of graphical applications for the terminal
 	pkgver = 3.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.postmarketos.org/postmarketOS/buffybox/
 	arch = x86_64
 	arch = aarch64
@@ -21,5 +21,8 @@ pkgbase = buffybox
 	b2sums = SKIP
 
 pkgname = buffyboard
+	depends = libinih
+	depends = libinput
+	depends = systemd-libs
 
 pkgname = unl0kr
