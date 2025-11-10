@@ -9,6 +9,7 @@ url="https://github.com/has207/xenia-edge/"
 license=('BSD-3-Clause')
 depends=('zlib')
 options=(!strip)
+provides=('xenia-edge')
 source=("https://github.com/has207/xenia-edge/releases/download/${pkgver}/xenia_edge_linux.AppImage"
         "https://raw.githubusercontent.com/has207/xenia-edge/${pkgver}/LICENSE")
 sha256sums=('SKIP'
