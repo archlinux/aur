@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Sergey A. <murlakatamenka@disroot.org>
 pkgname=tuxclocker
 pkgver=1.5.1
