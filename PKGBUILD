@@ -3,11 +3,9 @@
 ## options
 : ${_build_python:=true}
 
-_pkgtype="-git"
-
 _pkgname="csxcad"
-pkgbase="$_pkgname${_pkgtype:-}"
-pkgver=0.6.3.r37.g3314deb
+pkgbase="$_pkgname-git"
+pkgver=0.6.3.r77.g9851c44
 pkgrel=1
 pkgdesc="A C++ library to describe geometrical objects and their properties"
 url="https://github.com/thliebig/CSXCAD"
@@ -88,6 +86,8 @@ _build_python-csxcad() (
   CXXFLAGS+=" -I${srcdir@Q}/deps/usr/include"
   LDFLAGS+=" -L${srcdir@Q}/deps/usr/lib"
 
+  export CSXCAD_INSTALL_PATH_IGNORE=1
+
   cd "$_pkgsrc/python"
   python -m build --no-isolation --wheel --skip-dependency-check
 )
@@ -98,12 +98,12 @@ build() {
 }
 
 _package_csxcad() {
-  provides=('csxcad')
-  conflicts=('csxcad')
-
   depends=(
     ${_depends_csxcad[@]}
   )
+
+  provides=('csxcad')
+  conflicts=('csxcad')
 
   DESTDIR="$pkgdir" cmake --install build
 }
@@ -122,6 +122,8 @@ _package_python-csxcad() {
   cd "$_pkgsrc/python"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
+
+_pkgtype="${pkgbase#$_pkgname}"
 
 pkgname=("$_pkgname${_pkgtype:-}")
 [[ "${_build_python::1}" == "t" ]] && pkgname+=("python-$_pkgname${_pkgtype:-}")

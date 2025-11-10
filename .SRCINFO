@@ -1,6 +1,6 @@
 pkgbase = csxcad-git
 	pkgdesc = A C++ library to describe geometrical objects and their properties
-	pkgver = 0.6.3.r37.g3314deb
+	pkgver = 0.6.3.r77.g9851c44
 	pkgrel = 1
 	url = https://github.com/thliebig/CSXCAD
 	arch = i686
