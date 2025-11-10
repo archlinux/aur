@@ -1,4 +1,4 @@
-*.tar*
-*.log
 pkg/
 src/
+wslu/
+wslu-*.tar.zst
