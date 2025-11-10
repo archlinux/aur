@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=stack-wallet-appimage
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Stack Wallet is a fully open source cryptocurrency wallet."
 provides=('stack-wallet')
@@ -12,11 +12,11 @@ url="https://stackwallet.com/"
 options=(!strip)
 _desktop_name=stackwallet.desktop
 _filename=sw-v${pkgver}-linux.AppImage
-_build=290
+_build=292
 source=(
   https://github.com/cypherstack/stack_wallet/releases/download/build_${_build}/${_filename}
 )
-sha512sums=('db122e1edb89ce7472d7d79ffe04d77c7a0d205fedaae94a43f11077a13d08c8f8d6a6693f8d0fa770b2c7e3be3f3a260a0e3187e41a79656df638da985fc6c0')
+sha512sums=('7f3fb11a624ba28f0c436db83158b69aceb9f5e9d17041f2cf997f79d24daca0430b8dc0aace32156597cf48ebf3fdf7a1ecca7e6e53672902ab0bce38c51a0c')
 
 prepare() {
   cd "${srcdir}"
