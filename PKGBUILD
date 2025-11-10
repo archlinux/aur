@@ -1,26 +1,40 @@
-# Maintainer: Tomislav Ivek <tomislav dot ivek at gmail dot com>
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Contributor: Tomislav Ivek <tomislav dot ivek at gmail dot com>
 
 pkgname=python-patch-ng
 pkgver=1.18.0
-pkgrel=2
-pkgdesc='Library to parse and apply unified diffs forked from python-patch.'
+pkgrel=3
+pkgdesc='Python library to parse and apply unified diffs (new generation)'
 arch=('any')
-url="https://github.com/conan-io/python-patch/"
+url='https://github.com/conan-io/python-patch-ng/'
 license=('MIT')
-depends=('python')
-makedepends=('python-setuptools')
-_name=${pkgname#python-}
-source=($pkgname-$pkgver.tar.gz::"https://pypi.io/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-#        "https://raw.githubusercontent.com/conan-io/python-patch-ng/${pkgver}/LICENSE")
-md5sums=('5df1f6f28b8fcf09bc4dfd182caa12d8')
+depends=(
+    'python')
+makedepends=(
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+    'python-wheel')
+source=("https://github.com/conan-io/python-patch-ng/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('600f9c68c4900feeab535712a6a5126835fb6839fa2715e34c1af728ce0ecae5')
 
 build() {
-  cd "$srcdir/$_name-$pkgver"
-  python setup.py build
+    cd "${pkgname}-${pkgver}"
+    python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "${pkgname}-${pkgver}/tests"
+    ./run_tests.py
 }
 
 package() {
-  cd "$srcdir/$_name-$pkgver"
-  python setup.py install --optimize=1 --root "$pkgdir"
-  # install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    python -m installer --destdir="$pkgdir" "${pkgname}-${pkgver}/dist"/*.whl
+    
+    local _sitepkgs
+    _sitepkgs="$(python -c 'import site; print(site.getsitepackages()[0])')"
+    
+    install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
+    ln -sr "${pkgdir}${_sitepkgs}/patch_ng-${pkgver}.dist-info/licenses/LICENSE" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
