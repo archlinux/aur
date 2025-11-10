@@ -353,7 +353,7 @@ build () {
         -D platforms=x11,wayland
         -D valgrind=disabled
         -D video-codecs=all
-        -D vulkan-drivers=swrast,virtio,panfrost
+        -D vulkan-drivers=swrast,virtio,panfrost,gfxstream
         -D vulkan-layers=device-select,overlay
         -D tools=[]
         -D zstd=enabled
