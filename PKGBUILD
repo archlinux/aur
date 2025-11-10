@@ -3,11 +3,25 @@
 pkgname=lcd4linux-git
 _pkgname=lcd4linux
 pkgver=r1167.cb69a93
-pkgrel=4
+pkgrel=5
 pkgdesc="Grabs information from the kernel and other systems and displays it on an LCD"
 arch=('i686' 'x86_64')
 url="https://wiki.lcd4linux.tk/doku.php"
 license=('GPL-2.0-only')
+depends=(
+		'ncurses' #libncursesw.so
+		'glibc' #libm.so
+		'dbus' #libdbus-1.so
+		'libftdi-compat' #libftdi.so
+		'libjpeg-turbo' #libjpeg.so
+		'libusb' #libusb-1.0.so
+		'libusb-compat' #libusb-0.1.so
+		'libvncserver' #libvncserver.so
+		'libx11' #libX11.so
+		'mariadb-libs' #libmariadb.so
+		'sqlite' #libsqlite3.so
+		'gd' #libgd.so
+)
 makedepends=('git' 'pkg-config' 'automake' 'autoconf')
 provides=('lcd4linux')
 conflicts=('lcd4linux-svn')
