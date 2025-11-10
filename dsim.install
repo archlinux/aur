@@ -1,0 +1,11 @@
+post_install() {
+	echo "	Login to Altair One and get your license at:"
+	echo "	https://app.metricsvcloud.com/security/licenses"
+	echo "	The default place for DSIM_LICENSE is in"
+	echo "	\$HOME/.local/share/dsim/dsim-license.json,"
+	echo "	but you can change it in /etc/profile.d/dsim.sh"
+	echo "	Also, if you plan to use UVM, use options -uvm default"
+	echo "	to make dsim look for UVM in \$UVM_HOME"
+	echo "	Warning: Using libuvm_dpi.so from dsim in uvm folder"
+	echo "	this can be troublesome if you use multiple simulators"
+}
