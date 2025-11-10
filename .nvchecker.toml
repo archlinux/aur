@@ -1,0 +1,5 @@
+[python-landlab]
+source = "github"
+github = "landlab/landlab"
+use_max_tag = "true"
+prefix = "v"
