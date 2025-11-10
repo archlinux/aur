@@ -43,7 +43,7 @@
 #       run: tkginstaller help
 # -----------------------------------------------------------------------------
 pkgname=tkginstaller-git
-pkgver=0.25.6
+pkgver=0.25.7
 pkgrel=1
 provides=('tkginstaller')
 replaces=('tkginstaller')
@@ -61,7 +61,7 @@ optdepends=('bat: for syntax highlighting'
             'wdiff: for comparing config files')
 install=tkginstaller.install
 source=("tkginstaller::https://raw.githubusercontent.com/damachine/tkginstaller/refs/heads/master/tkginstaller")
-sha256sums=('e33edba0104d54191bc0238ff8068085a435a5564e2b1cba41e1829b0b40bbd3')
+sha256sums=('44ee12e1f4597ffc1a51695eae55fde9952309553b325efb3ea574e55165daf5')
 
 package() {
     install -Dm755 "$srcdir/tkginstaller" "$pkgdir/usr/bin/tkginstaller"
