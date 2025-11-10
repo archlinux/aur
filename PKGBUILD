@@ -1,6 +1,6 @@
 # Maintainer: huochenghai <huochenghai@gmail.com>
 pkgname="sparkle-bin"
-pkgver="1.6.13"
+pkgver="1.6.14"
 pkgrel=1
 pkgdesc="Another Mihomo GUI"
 arch=("x86_64" "aarch64")
@@ -14,9 +14,9 @@ provides=("sparkle=${pkgver}")
 conflicts=('sparkle' 'sparkle-git' 'sparkle-electron-git')
 license=("GPL-3.0-only")
 source=("https://github.com/xishang0128/sparkle/releases/download/${pkgver}/sparkle-linux-${pkgver}-amd64.deb")
-sha256sums=('bbfe52988e751b6e42321f74252dccf8c52d8b2db7b0d2c1eb09547994fc3cae')
+sha256sums=('17dbe4fcdd8f82389c9fc8690a183b358fc2ae5c626b3f5cdc62ae4499ea13c6')
 source_aarch64=("https://github.com/xishang0128/sparkle/releases/download/${pkgver}/sparkle-linux-${pkgver}-arm64.deb")
-sha256sums_aarch64=('042b437c339db586639a3f2e90bcbb3c3dcd4eba44877907cb141a7283942c0e')
+sha256sums_aarch64=('6e27c804bf3ddd87adc987802825a21c73f4982a4cf973b1ad7ad3754bc8d5c5')
 
 prepare() {
         if [ "$CARCH" = "aarch64" ]; then
