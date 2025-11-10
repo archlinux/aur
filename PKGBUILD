@@ -3,14 +3,14 @@
 _pkgsuffix=bin
 _pkgauthor=abenz1267
 _pkgname=elephant
-_pkgproviders=(websearch unicode todo symbols runner providerlist menus files desktopapplications clipboard calc archlinuxpkgs bluetooth windows snippets nirisessions bookmarks)
+_pkgproviders=(websearch unicode todo symbols runner providerlist menus files desktopapplications clipboard calc archlinuxpkgs bluetooth windows snippets nirisessions bookmarks 1password)
 
 pkgbase=${_pkgname}-${_pkgsuffix}
 pkgname=(${_pkgname}-all-${_pkgsuffix} ${_pkgname}-${_pkgsuffix} $(for provider in ${_pkgproviders[@]}; do echo ${_pkgname}-${provider}-${_pkgsuffix} ; done))
 
 _packages=(${pkgname[@]})
 
-pkgver=2.14.4
+pkgver=2.15.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -33,25 +33,26 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_pkgname}-linux-${_barch[0]}.tar.gz"
                $(for provider in ${_pkgproviders[@]}; do echo "${provider}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${provider}-linux-${_barch[0]}.tar.gz" ; done))
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'b7588cd186b1e534a5fafe14578f88685daae66abae7be582beead897df5d077')
-sha256sums_x86_64=('f6dab45891efa5619fc8d4b399016168d2135f1e11cd14c16ec4f3c8a4b8b838'
-                   '68e411e6a7feb74ee23520061a19c8e4c76374496a3e4bafebf56d708f382e5c'
-                   '2c22e95a6e8ec0181daa7524af774ce4a8b8ef7c70a2a4f42fe24c64a347cccf'
-                   '7e5ee68954a551208186dab2eb3570ec741b4fdf20115c0e31de39cf5586db16'
-                   'b32feda9b7acdb123cdcc32e15747e38356df5011b8e8586d09831f4e5a7f876'
-                   '51544c6e60d7fac3ab9607659534f406dab1f3a5565c0b4251debff38561a87a'
-                   'e92723b7eb93a695681592f46f4492c97f1fc487358b42706fb344ca60353dfd'
-                   '9ac05cd9433dd6f0c0a93378b485233eae822e9e3a3d2e86a3236d6cda8ff988'
-                   '8cbe0db433b148018dc52361fc4094de3564966fdf026065195fe35da4ccf097'
-                   'd3d5be793f12236cc5a7a3ff6ef565a48a36a1ab07284c7e9ee8415744a5ab81'
-                   'cb36b3dd655e960e549d197467212e993dad73dd0a0fa3b22dbc98b770cdfca4'
-                   'fa42148740bec7d91e677a4fe4a2cf2071c704891883e99acfcdd92d676db256'
-                   '1da19c77cdc94c0317a5220d964c44fc4872aec06535aa3778cd6ca63c7c567d'
-                   '2d9a552db2f76ed6636bb44dff6b63c0764239aed7dec6054bf0ecbcf9fd1677'
-                   'f309e455b60f76566d56a94ead819322b90261bb98b4982b214a621bac785904'
-                   '432a14c89850ccd7c7b849a5c04cafd1a9717e02c891fae67479cadbbfd079f2'
-                   '81b527955bb6ac898fba6ef914966818a68ee59fdb4d8a5335db4453477d0b9a'
-                   '0b900a07c64acd18b919d14732be702c23b19c0692dd3a6c31b5d2948c0fe3a2')
+            'bc2b328fef6fe61672368395d9e45c68803e0bef6bc59599ec86911b2308f7c5')
+sha256sums_x86_64=('086495c65778eef662c9a3e688aff836971d961fe49cd79780f253ea2702302e'
+                   '6af8a2bc42fb7767f936e467e9c4bb55bb1707276116d4f0b389f10b47b85424'
+                   '1f450e0e8baad264ec7ff3ee9aa7f0e10cafd98cc3272ff76d31619fd412e077'
+                   'cd3c12fef050819ae9b741bea0b12ce3e6f33673a65f58c479248311157de84f'
+                   'e75db465f67c78be56347b7c2101b7cdc1a632ce76615a972831520fcb7223d7'
+                   '22c52b3955bc86484cf98e3b4908a0e02ea9acc28a13d912559cfd2c3b9f8182'
+                   'a5915f747c16f93c29ab2889ff1cfb411e85eed002ae3938af804a7990b0a0e3'
+                   'ebded70fb1df2ca64922fc04798df5dc2aa17e22696b85d9c407a5072fe3f53d'
+                   '191c77a97106758477e8616a3a360ab512daa752697fc59c29755f53d022428c'
+                   'bbe9009c7d266af2204938d6f4d48801185cfff4639d4af9dd7a5af067de5388'
+                   'ce381fe01dc93fc9d15e058d12133c6f96def7c18c87647574a4aca751faf162'
+                   '040c7ecc65cb3220c47558666acd6bccd776d101629ba9d6ca9d9969264bf910'
+                   '426218561c4a05b25bb1e79aaa801902efad4d61503271d992d8a0727c14d79c'
+                   'a6b6194467989565c7996a3fc965b79e958774b37fd4fe2feb721fc0f8033252'
+                   '44c2dc88ed10db38bd6ec64032bbfd85d5a34d491a7ac06fc2b5a755a076e8fe'
+                   '5425eed943a8fb9773200a758e6a81afe15d7d19f740421c7f200c9763787fe9'
+                   'db4da6010de9ee8f9576ba66dca44afd68c07d33d9ff6ad17bddfbb9ab06599b'
+                   'f6df560ecfeecfe39e937cd791fd80264453d7e316c696eae86eda741083b1b0'
+                   '7582f49741695b5dec79d27938f29d042d9d4f8befaf1510d37b0d1e8fa37914')
 
 case $CARCH in
     ${arch[0]})
@@ -320,3 +321,18 @@ package_elephant-bookmarks-bin() {
 
     install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
+package_elephant-1password-bin() {
+    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
+
+    conflicts=("${pkgname%%-${_pkgsuffix}}")
+    provides=("${pkgname%%-${_pkgsuffix}}")
+    depends+=("${_pkgname}-${_pkgsuffix}" "jq" "sqlite")
+
+    cd "${srcdir}/" || exit
+
+    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
+
+    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
