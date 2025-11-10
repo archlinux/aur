@@ -1,8 +1,9 @@
 # Maintainer: graysky <therealgraysky AT protonmail DOT com>
 
 pkgname=flac2all
-_commit=2a7f2a6e8aa78a990f59fd8d9fb1594861c42baa
-pkgver=5.7
+_commit=3749424f527137f9b69e1dc70d35e1d1199e6109
+pkgver=5.4
+epoch=1
 pkgrel=1
 pkgdesc="Multi-threaded audio converter of FLAC to either Ogg Vorbis or MP3 retaining all tags and metadata."
 arch=('any')
@@ -21,7 +22,7 @@ optdepends=(
 )
 source=("https://github.com/ZivaVatra/$pkgname/archive/$_commit.tar.gz"
 )
-sha256sums=('15f7e1ae56edfeb2ac13557849a2280424d54ba0125236ec40f55da4dd59ae7f')
+sha256sums=('f593708926aa74e4b1b2873728cd37a01c34c3f5e5df751233e22802119a43d9')
 
 prepare() {
   cd "$pkgname-$_commit"
