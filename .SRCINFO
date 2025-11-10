@@ -1,13 +1,14 @@
 pkgbase = python-spython
 	pkgdesc = streamlined singularity python client (spython) for singularity
 	pkgver = 0.3.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/singularityhub/singularity-cli
 	arch = any
 	license = MPL2
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-pytest-runner
+	depends = python
 	optdepends = singularity-container
 	optdepends = apptainer
 	source = https://files.pythonhosted.org/packages/source/s/spython/spython-0.3.14.tar.gz

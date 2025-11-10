@@ -4,11 +4,12 @@
 pkgname=python-spython
 _module='spython'
 pkgver=0.3.14
-pkgrel=1
+pkgrel=2
 pkgdesc="streamlined singularity python client (spython) for singularity"
 arch=('any')
 url='https://github.com/singularityhub/singularity-cli'
 license=('MPL2')
+depends=('python')
 optdepends=(
 	'singularity-container'
         'apptainer'
