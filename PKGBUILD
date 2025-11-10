@@ -5,7 +5,7 @@
 # Original maintainer: Marcin
 
 pkgname=spring-tools-for-eclipse
-pkgver=4.32.1
+pkgver=4.32.2
 _pkgver_release=$pkgver.RELEASE
 _eclipse_pkgver=e4.37.0
 _eclipse_pkgver_short=e4.37
@@ -23,7 +23,7 @@ source=(
     "https://cdn.spring.io/spring-tools/release/STS4/${_pkgver_release}/dist/${_eclipse_pkgver_short}/${pkgname}-${_pkgver_release}-${_eclipse_pkgver}-linux.gtk.${arch}.tar.gz"
     "${pkgname}.desktop"
 )
-sha256sums=('6b7267439519d415bd969ccadf36c9f42a3c616e1e0ae4458ab944f7f8111c96'
+sha256sums=('c686b77656cc4c31df84b4a9573e18a37ffd7f1ef69ed625085441918720623a'
             'b7f7c92446da5d82a1a1982d8d1af3b98c2b29854579f4b04247001080e162f0')
 
 package() {
