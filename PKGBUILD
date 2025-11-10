@@ -3,7 +3,7 @@
 
 pkgbase=efibooteditor
 pkgname=(efibooteditor efibooteditor-qt5)
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=0
 pkgdesc="Boot Editor for (U)EFI based systems."
 arch=(x86_64 aarch64 armv7h)
@@ -12,7 +12,7 @@ license=(LGPL3)
 depends=(efivar zlib qt6-base qt5-base)
 makedepends=(cmake git qt6-tools qt5-tools)
 source=("${pkgbase}::git+${url}.git?signed#tag=v${pkgver}")
-b2sums=("b68535dee9ce3d1eaed039b759cf5b20e0a4609844880da25837d23309c9a788a60636b66564945abd727b90f8fc35b85c9c82052cc52022ca15c569118ea936")
+b2sums=('0f15e58ef07ef3c23ee2c11edb8b8147bceb2a10c0d9521cc5dc1ec84ca8c72e3571cb65f553a856ea35d0081a06a7219b41fdd6f9445ab1574c3deefc1ef003')
 validpgpkeys=(
     "9E76A390AAF9772C8448DCCEE4F948F71FEE7375" # Maciej Szeptuch <neverous at neverous dot info>
 )
