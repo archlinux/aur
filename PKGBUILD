@@ -30,11 +30,9 @@ sha256sums=('fd6c7bbb96b5d127facfd8b6c7897f8bdb052d5d87851ff3cfa0eb8e108b3f12')
 package() {
   cd "$srcdir/$pkgname"
   
-  # Install shell files to quickshell system config directory
   install -dm755 "$pkgdir/etc/xdg/quickshell/noctalia-shell"
   cp -r ./* "$pkgdir/etc/xdg/quickshell/noctalia-shell/"
   
-  # Install systemd user service
   install -Dm644 "Assets/Services/systemd/noctalia.service" \
     "$pkgdir/usr/lib/systemd/user/noctalia.service"
 }
