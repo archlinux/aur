@@ -1,7 +1,7 @@
 # Maintainer: stabldev <thestabldev@gmail.com>
 
 pkgname=torrra-bin
-pkgver=1.2.8
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A Python tool that lets you find and download torrents without leaving your CLI."
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("MIT")
 provides=("torrra")
 conflicts=("torrra")
 source=("torrra-${pkgver}::$url/releases/download/v$pkgver/torrra_v${pkgver}_linux_x86_64")
-sha256sums=('dd04faebf11ab7cda89ac34ed74545a0983ea661e3f87dbf2d192027f71cbfce')
+sha256sums=('a1bb0fbefeb70a3c85d5987baafc4b390debe5506d444fc514e222f20d94aa00')
 
 package() {
     install -Dm755 "torrra-$pkgver" "$pkgdir/usr/bin/torrra"
