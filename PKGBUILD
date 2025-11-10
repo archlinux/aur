@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=godot-launcher-bin
 _pkgname='Godot Launcher'
-pkgver=1.6.0
+pkgver=1.7.0
 _electronversion=38
 pkgrel=1
 pkgdesc="A companion app for Godot Engine development that lets you quickly manage and launch projects while maintaining per-project editor settings.(Prebuilt version.Use system-wide electron)"
@@ -28,8 +28,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /_}-${pkgver}-linux.x86_64.AppImage")
 sha256sums=('982e513d86e81b53d35a4c757a54ce36c7b77752feeaac2dfaab3ddd0c86d7b1'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('705d05a6650d22f3c3b0d7c5bfcafb1474b7c35f3dca412dcc151d5b50d3894a')
-sha256sums_x86_64=('f46b6a71ff00ba00b0133fc933323c335b548b5805a5155c112fb53d49fcbc1c')
+sha256sums_aarch64=('3946283593e6b8b12cca16f49b198b430371667ffd83c9ec09bc1c341b68c7c6')
+sha256sums_x86_64=('e0f599d383463ce752c2ebeeb08a39d82d9d2ff41f16fa2d5c94721152c15c00')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
