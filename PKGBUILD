@@ -1,29 +1,83 @@
 
-# Maintainer: Andrea Feletto <andrea@andreafeletto.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Andrea Feletto <andrea@andreafeletto.com>
 
-pkgname=river-levee
-_pkgname=levee
-pkgver=0.1.3
+_zig=0.13
+_basename="levee"
+pkgname="river-${_basename}"
+pkgver=0.1.4
 pkgrel=1
-pkgdesc='Statusbar for the river wayland compositor.'
-arch=('x86_64')
-url='https://sr.ht/~andreafeletto/levee'
-license=('MIT')
-depends=('wayland' 'fcft' 'pixman' 'libpulse')
-makedepends=('zig' 'git' 'wayland-protocols')
-provides=('levee')
-conflicts=('river-levee-git')
-source=("https://git.sr.ht/~andreafeletto/$_pkgname/refs/download/v$pkgver/$_pkgname-$pkgver.tar.gz")
-sha256sums=('09a89f85beb4766f49186ef017c5757a7d2264858565f1b96b80d9eda3ba2a45')
+pkgdesc="Statusbar for the river wayland compositor"
+arch=(
+  'x86_64'
+)
+url="https://git.sr.ht/~andreafeletto/${_basename}"
+license=(
+  'MIT'
+)
+depends=(
+  'fcft'
+  'glibc'
+  'libpulse'
+  'pixman'
+  'systemd-libs'
+  'wayland'
+)
+makedepends=(
+  'wayland-protocols'
+  "zig${_zig}"
+)
+_zigdepends=(
+  "zig-wayland-0.2.0.tar.gz::https://codeberg.org/ifreund/zig-wayland/archive/v0.2.0.tar.gz"
+  "zig-pixman-0.2.0.tar.gz::https://codeberg.org/ifreund/zig-pixman/archive/v0.2.0.tar.gz"
+  "zig-fcft-40691ff2df73ff09724d19791c8da8f966a95c6a.tar.gz::https://git.sr.ht/~novakane/zig-fcft/archive/40691ff2df73ff09724d19791c8da8f966a95c6a.tar.gz"
+  "zig-udev-442a1c2b6c9f1f672c234b9ee977e4d3c2408f9a.tar.gz::https://git.sr.ht/~andreafeletto/zig-udev/archive/442a1c2b6c9f1f672c234b9ee977e4d3c2408f9a.tar.gz"
+)
+_pkgsrc="${url##*/}-v${pkgver}"
+source=(
+  "${_pkgsrc}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+  "${_zigdepends[@]}"
+)
+noextract=(
+  "${_zigdepends[@]%%::*}"
+)
+b2sums=('f484d1614b8bcd7d858384426080ad26df5eeddedd962acdd9fb78d1c5eb3a8529fa78a66c3c66b572535752df62337b8b5a215c82f41592ee40d36378c2234b'
+        'aaf82efe78d25c59a87de050147857fcf9a19764141cb40d92b0dd48b96ea0ec52d00a1ab0df1afe4c45cda6d64dda97f296f0aa29d8b9ea3da49e1d5cd69e50'
+        '25e0e0a65ab45c08e13ed48393e0d009a63e0ec4c2d8452f08ec4b013f9b696adb1d7356a49b1c3b25710982fb34629002df8d433382d433fcdefd1de5fd4358'
+        '1e0479cb3e2de5904ca02a98cdf8f6b23e353c07bd38be3399505e4460aeb6e139e5fd2959ce1887163d35f00d1a31ad705b90875f2600a04dd0ff4fcbeb439f'
+        '96ce7c477fc52c7e5151dda7c19f65c52d6bc0d7450d8c75dcb224f702a0d28d9fe07152eb55ab70128a53af018a305f7842f43e92a8d6a7cdc2e1f20d3dc9a0')
+
+prepare() {
+  cd "${srcdir}"
+  for dep in "${_zigdepends[@]}"; do
+    "zig${_zig}" fetch --global-cache-dir "zig-global-cache" "${dep%%::*}"
+  done
+}
 
 build() {
-	cd "$srcdir/$_pkgname-$pkgver"
-	zig build -Drelease-safe
+  local zig_options=(
+    --summary all
+    --prefix /usr
+    --search-prefix /usr
+    --global-cache-dir "${srcdir}/zig-global-cache"
+    --system "${srcdir}/zig-global-cache/p"
+    --verbose
+    -Dtarget=native-linux.6.15-gnu.2.42
+    -Dcpu=baseline
+    -Doptimize=ReleaseSafe
+  )
+
+  cd "${srcdir}/${_pkgsrc}"
+  DESTDIR="build" "zig${_zig}" build "${zig_options[@]}"
 }
 
 package() {
-	cd "$srcdir/$_pkgname-$pkgver"
-	DESTDIR="$pkgdir" zig build -Drelease-safe --prefix '/usr'
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  cd "${srcdir}/${_pkgsrc}"
+  # cp -vaT --no-preserve=ownership "build" "${pkgdir}"
+
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  cd "build/usr/bin"
+  install -vDm755 "${_basename}" "${pkgdir}/usr/bin/${pkgname}"
 }

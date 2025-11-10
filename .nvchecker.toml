@@ -1,0 +1,4 @@
+[river-levee]
+source = "git"
+git = "https://git.sr.ht/~andreafeletto/levee"
+prefix = "v"
