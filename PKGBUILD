@@ -14,7 +14,7 @@
 pkgname=mesa-rk35xx-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=25.3.0_devel.213318.ca493b5c453.d41d8cd
-pkgrel=2
+pkgrel=3
 arch=($CARCH)
 makedepends=(
     'git'
