@@ -2,7 +2,7 @@
 
 pkgname=proton-authenticator-git
 _name=${pkgname%-git}
-pkgver=r49800.69d7bdb
+pkgver=r51129.97d19cf
 pkgrel=1
 pkgdesc='2FA app from Proton to securely sync and backup 2FA codes'
 arch=('x86_64')
@@ -21,7 +21,7 @@ depends=(
     'pango'
     'webkit2gtk-4.1'
 )
-makedepends=('cargo' 'git' 'mold' 'nodejs-lts' 'yarn')
+makedepends=('cargo' 'git' 'nodejs-lts-jod' 'yarn')
 provides=("$_name")
 conflicts=("$_name")
 source=("ProtonWebClients::git+https://github.com/ProtonMail/WebClients.git"
@@ -45,17 +45,17 @@ prepare() {
 build() {
     cd ProtonWebClients
 
-    export LDFLAGS="${LDFLAGS} -fuse-ld=mold"
-    export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=mold"
-    export YARN_CACHE_FOLDER="$srcdir/.yarn-cache"
+    # Fix ring crate LTO incompatibility with fat LTO objects
+    export CFLAGS="${CFLAGS} -ffat-lto-objects"
+    export CXXFLAGS="${CXXFLAGS} -ffat-lto-objects"
 
+    export YARN_CACHE_FOLDER="$srcdir/.yarn-cache"
     yarn install
     yarn workspace proton-authenticator build:desktop
 }
 
 check() {
     cd ProtonWebClients
-    export YARN_CACHE_FOLDER="$srcdir/.yarn-cache"
     yarn workspace proton-authenticator test:ci
 }
 
