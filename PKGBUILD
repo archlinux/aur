@@ -1,6 +1,6 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=gnome-shell-extension-soft-brightness-git
-pkgver=41.r3.g1b3264f
+pkgver=43.r5.gdba4979
 pkgrel=1
 epoch=1
 pkgdesc='Manage your display brightness via an alpha overlay (instead of the backlight).'
