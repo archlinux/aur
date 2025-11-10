@@ -1,0 +1,17 @@
+pkgbase = axenc-git
+	pkgdesc = Axen language compiler (git development branch)
+	pkgver = 0.1.0.r2.g7f4db1b
+	pkgrel = 1
+	url = https://github.com/arsoniv/axenc
+	arch = x86_64
+	license = GPL3
+	makedepends = base-devel
+	makedepends = cmake
+	makedepends = git
+	depends = llvm
+	provides = axenc
+	conflicts = axenc
+	source = git+https://github.com/arsoniv/axenc.git
+	sha256sums = SKIP
+
+pkgname = axenc-git
