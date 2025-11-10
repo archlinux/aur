@@ -1,7 +1,7 @@
 pkgbase = ttf-twemoji
 	pkgdesc = Truetype builds of Twemoji; Twitter Color Emoji for everyone.
 	pkgver = 17.0.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/jdecked/twemoji
 	install = ttf-twemoji.install
 	arch = any

@@ -2,7 +2,7 @@
 
 pkgname=ttf-twemoji
 pkgver=17.0.2
-pkgrel=1
+pkgrel=3
 pkgdesc="Truetype builds of Twemoji; Twitter Color Emoji for everyone."
 url="https://github.com/jdecked/twemoji"
 arch=(any)
