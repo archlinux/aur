@@ -2,19 +2,19 @@
 
 pkgname=technitium-dns-server-bin
 _pkgname=technitium-dns-server
-pkgver=13.6.0
+pkgver=14.0.1
 pkgrel=2
 pkgdesc="Open source authoritative and recursive DNS server focused on privacy and security"
 arch=('any')
 url="https://technitium.com/dns/"
 license=('GPL3')
-depends=('aspnet-runtime-8.0')
+depends=('aspnet-runtime-9.0')
 conflicts=('technitium-dns-server')
 provides=('technitium-dns-server')
 source=("$_pkgname-$pkgver.tar.gz::https://download.technitium.com/dns/archive/$pkgver/DnsServerPortable.tar.gz"
         "$_pkgname.service"
         "$_pkgname.sysuser")
-sha256sums=("89614c20fb282050f701bc785681aaf1d45a5208cf313759a093df95606014b7"
+sha256sums=("dcfdb50e98f2da0f5319e6de64c5ad894af4253271e78f7a8744698846e21cee"
             "464dbfe1038e4737ca83c60617a5a4e334cdd948fe41315a3a36913011680952"
             "d349d144faf8932c56a054b22721420f1eb68adf7bc226f174654b33510f75e4")
 
@@ -32,6 +32,8 @@ package() {
     install -Dm 0644 DnsServerCore.ApplicationCommon.pdb "$pkgdir/opt/$_pkgname/DnsServerCore.ApplicationCommon.pdb"
     install -Dm 0644 DnsServerCore.dll "$pkgdir/opt/$_pkgname/DnsServerCore.dll"
     install -Dm 0644 DnsServerCore.pdb "$pkgdir/opt/$_pkgname/DnsServerCore.pdb"
+    install -Dm 0644 DnsServerCore.HttpApi.dll "$pkgdir/opt/$_pkgname/DnsServerCore.HttpApi.dll"
+    install -Dm 0644 DnsServerCore.HttpApi.pdb "$pkgdir/opt/$_pkgname/DnsServerCore.HttpApi.pdb"
     install -Dm 0644 named.root "$pkgdir/opt/$_pkgname/named.root"
     install -Dm 0644 root-anchors.xml "$pkgdir/opt/$_pkgname/root-anchors.xml"
     install -Dm 0644 TechnitiumLibrary.ByteTree.dll "$pkgdir/opt/$_pkgname/TechnitiumLibrary.ByteTree.dll"
@@ -42,9 +44,14 @@ package() {
     install -Dm 0644 TechnitiumLibrary.Net.dll "$pkgdir/opt/$_pkgname/TechnitiumLibrary.Net.dll"
     install -Dm 0644 TechnitiumLibrary.Net.pdb "$pkgdir/opt/$_pkgname/TechnitiumLibrary.Net.pdb"
     install -Dm 0644 TechnitiumLibrary.pdb "$pkgdir/opt/$_pkgname/TechnitiumLibrary.pdb"
+    install -Dm 0644 TechnitiumLibrary.Security.OTP.dll "$pkgdir/opt/$_pkgname/TechnitiumLibrary.Security.OTP.dll"
+    install -Dm 0644 TechnitiumLibrary.Security.OTP.pdb "$pkgdir/opt/$_pkgname/TechnitiumLibrary.Security.OTP.pdb"
     install -Dm 0644 BouncyCastle.Cryptography.dll "$pkgdir/opt/$_pkgname/BouncyCastle.Cryptography.dll"
+    install -Dm 0644 QRCoder.dll "$pkgdir/opt/$_pkgname/QRCoder.dll"
+    install -Dm 0644 System.Drawing.Common.dll "$pkgdir/opt/$_pkgname/System.Drawing.Common.dll"
 
     cp -r www "$pkgdir/opt/$_pkgname/www"
+    cp -r dohwww "$pkgdir/opt/$_pkgname/dohwww"
 
     install -dm755 "$pkgdir/opt/$_pkgname/config"
 
