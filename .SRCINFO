@@ -1,6 +1,6 @@
 pkgbase = hyprland-nox
 	pkgdesc = An independent, highly customizable, dynamic tiling Wayland compositor that doesn't sacrifice on its looks. (w/o XWayland support)
-	pkgver = 0.51.1
+	pkgver = 0.52.1
 	pkgrel = 1
 	url = https://github.com/hyprwm/Hyprland
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = hyprland-nox
 	makedepends = cmake
 	makedepends = git
 	makedepends = glaze
+	makedepends = hyprland-protocols
 	makedepends = hyprwayland-scanner
 	makedepends = ninja
 	makedepends = python
@@ -36,16 +37,15 @@ pkgbase = hyprland-nox
 	optdepends = cmake: to build and install plugins using hyprpm
 	optdepends = cpio: to build and install plugins using hyprpm
 	optdepends = glaze: to build and install plugins using hyprpm
+	optdepends = hyprland-protocols: to build and install plugins using hyprpm
 	optdepends = meson: to build and install plugins using hyprpm
 	optdepends = uwsm: to launch a systemd based session via hyprland-uwsm.desktop
-	optdepends = hyprland-qtutils: Hyprland might invoke this to show some dialogs and popups if available
+	optdepends = hyprland-guiutils: Hyprland might invoke this to show some dialogs and popups if available
 	provides = hyprland
 	conflicts = hyprland
-	source = hyprland-nox::git+https://github.com/hyprwm/Hyprland#tag=v0.51.1
-	source = hyprland-nox_hyprland-protocols::git+https://github.com/hyprwm/hyprland-protocols.git
+	source = hyprland-nox::git+https://github.com/hyprwm/Hyprland#tag=v0.52.1
 	source = hyprland-nox_udis86::git+https://github.com/canihavesomecoffee/udis86.git
-	sha256sums = f83e71bdcf1fa94c7289782aaeb248b4f2ba73524fe6d358c811e5216d4a9b78
-	sha256sums = SKIP
+	sha256sums = 1b192a63fac88d713110d6f3226a01746224a9750e091c86de2bfc4e8188455d
 	sha256sums = SKIP
 
 pkgname = hyprland-nox
