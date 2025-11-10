@@ -10,7 +10,7 @@ pkgname=(
   "${pkgbase}-docs"
 )
 pkgver=3.7.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A terrain rendering toolkit for OpenSceneGraph"
 arch=(
   'aarch64'
@@ -43,23 +43,28 @@ makedepends=(
   'sqlite'
 )
 _pkgsrc="${pkgbase}-${pkgbase}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgbase}-${pkgver}.tar.gz"
-        "${pkgbase}_optional_fastdxt.patch"
-        "${pkgbase}_unbundle.patch"
-        "${pkgbase}_link_lerc.patch"
-        "${pkgbase}_blend2d0.20.patch::${_url}/pull/2856.patch?full_index=1")
+source=(
+  "${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/${pkgbase}-${pkgver}.tar.gz"
+  "${pkgbase}_optional_fastdxt.patch"
+  "${pkgbase}_unbundle.patch"
+  "${pkgbase}_link_lerc.patch"
+  "${pkgbase}_blend2d-0.20.0.patch::${_url}/pull/2856.patch?full_index=1"
+  "${pkgbase}_blend2d-0.21.2.patch::${_url}/pull/2859.patch?full_index=1"
+)
 b2sums=('c794995bbe221d8f719a46d4a0c456184975feb6359a37d8bb23ed6d5abd038611df89239e57e57fdfd2a5fd1943515639ec72916d9ff05d1a5eebaab1167a4c'
         'e57fd25c5cf3eeecd6830cacddfabe690c5f0c50d5191588210519aa4ba8d7f6c0dc317c8b32629f235a6f0cba9c21d79449b41c4613bf28bf5627d962917add'
         'e493e05367befdc963a3561bfd04f5b25fc04c02fa3aeb7a7bcecc48945369c22ff91f2b049e36209b95c7f10a06ab68d1607ce23e23a1475eb37b0193ee33e8'
         'c1f8f84d6e9477a26489e55a743cb727fbe327c5d472d35a7b58292db6d2312002a277b3c4ed8986f5b89106a544f8e203da25f682678c2b22a3c7eb9be9b0dd'
-        '97eb8529a7b895d0059a505acd66964c540e641f75c8809cc52479592df3412f59c27daafe705fa63c55409bd0b5c35185634a6674bd8ed61f359f3bdd9c1ebc')
+        '97eb8529a7b895d0059a505acd66964c540e641f75c8809cc52479592df3412f59c27daafe705fa63c55409bd0b5c35185634a6674bd8ed61f359f3bdd9c1ebc'
+        'e28ecb0d9a64c67652d021ff1d909fc42f693b3fea43710388a03feb785bd87eadd0c521bd763128a5761b39813780db318767d20188fcc2f8e9db1f69e75aac')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
   patch -Np1 -i "${srcdir}/${pkgbase}_optional_fastdxt.patch"
   patch -Np1 -i "${srcdir}/${pkgbase}_unbundle.patch"
   patch -Np1 -i "${srcdir}/${pkgbase}_link_lerc.patch"
-  patch -Np1 -i "${srcdir}/${pkgbase}_blend2d0.20.patch"
+  patch -Np1 -i "${srcdir}/${pkgbase}_blend2d-0.20.0.patch"
+  patch -Np1 -i "${srcdir}/${pkgbase}_blend2d-0.21.2.patch"
 
   sed -i 's/set(CMAKE_CXX_STANDARD 14)/set(CMAKE_CXX_STANDARD 17)/' 'CMakeLists.txt'
 }
@@ -84,6 +89,8 @@ build() {
   fi
 
   cd "${srcdir}"
+  sed -i 's|blend2d\.h|blend2d/blend2d\.h|g' "${_pkgsrc}/src/osgEarth/FeatureRasterizer.cpp"
+
   cmake "${cmake_options[@]}"
   cmake --build "${_pkgsrc}/build"
 
