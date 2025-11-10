@@ -16,9 +16,18 @@ source=("git+https://github.com/Project-OSS-Revival/alien.git#tag=${pkgver}.${pk
 #sha256sums=('586A649BC9366ACC15047D4C9F34E253208907142E12174EAFB4F3704FEA47A5')
 sha256sums=('SKIP')
 
+prepare() {
+  cd "${srcdir}/alien"
+
+  # Replace the changelog version line with an environment-based one
+  sed -i 's|^VER=.*changelog).*|VER?=$(ALIEN_VER_TAG)|' Makefile.PL
+
+}
+
 build() {
 cd "${srcdir}/alien"
   # Setting these env variables overwrites any command-line-options we don't want...
+export ALIEN_VER_TAG="${pkgver}.${pkgrel}"
 export PERL_MM_USE_DEFAULT=1 \
 PERL5LIB="" \
 PERL_AUTOINSTALL=--skipdeps \
