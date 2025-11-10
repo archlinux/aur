@@ -1,0 +1,22 @@
+pkgbase = wayland-screenshot-yad
+	pkgdesc = A tool to take screenshots on Wayland (yad)
+	pkgver = 2025.11
+	pkgrel = 10
+	url = https://github.com/sfs-pra/wayland-screenshot
+	install = wayland-screenshot-yad.install
+	arch = any
+	license = GPL3
+	depends = yad
+	depends = grim
+	depends = wl-clipboard
+	depends = slurp
+	optdepends = sway
+	optdepends = jq
+	optdepends = labwc
+	optdepends = swappy
+	optdepends = image-gtk
+	conflicts = wayland-screenshot-git
+	source = git+https://github.com/sfs-pra/wayland-screenshot.git
+	sha256sums = SKIP
+
+pkgname = wayland-screenshot-yad
