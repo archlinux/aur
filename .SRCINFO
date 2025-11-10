@@ -1,6 +1,6 @@
 pkgbase = python-adafruit-circuitpython-register
 	pkgdesc = Library providing a variety of data descriptor class for Adafruit CircuitPython that makes it really simple to write device drivers for I2C and SPI register based devices.
-	pkgver = 1.10.2
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = https://github.com/adafruit/Adafruit_CircuitPython_Register
 	arch = any
@@ -8,8 +8,9 @@ pkgbase = python-adafruit-circuitpython-register
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools-scm
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/a/adafruit_circuitpython_register/adafruit_circuitpython_register-1.10.2.tar.gz
-	sha256sums = 68e1899351b186f007b26326d01e4c5ed68187b50c059e1e414b53248f80053d
+	source = https://files.pythonhosted.org/packages/source/a/adafruit_circuitpython_register/adafruit_circuitpython_register-1.11.1.tar.gz
+	sha256sums = 45c6b6de5e65efe584375ea1bd6964866dab0d5e5b52ede49e906abd28876989
 
 pkgname = python-adafruit-circuitpython-register
