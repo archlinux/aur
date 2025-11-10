@@ -2,8 +2,8 @@
 # Contributor: PolpOnline <aur at t0mmy dot anonaddy dot com>
 pkgname=gitify
 _pkgname=Gitify
-pkgver=6.10.0
-_electronversion=38
+pkgver=6.11.1
+_electronversion=39
 _nodeversion=22
 pkgrel=1
 pkgdesc="GitHub notifications on your menu bar.(Use system-wide electron)"
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('2afaa6c79c697a62c83968d389021f29dcf0f153fe25cf27acff79f4d1cf1cde'
+sha256sums=('995f43ce424e42b04c877eccad7524d285140c4623f6bb79d61c94001e2f3df8'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
