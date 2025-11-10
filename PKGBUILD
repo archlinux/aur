@@ -2,7 +2,7 @@
 
 pkgname=xenia-edge-bin
 pkgver=$(curl -s "https://api.github.com/repos/has207/xenia-edge/releases/latest" | jq -r .tag_name)
-pkgrel=3
+pkgrel=4
 pkgdesc="Fork of the Xenia emulattor based on Xenia Canary, with aims for quicker iterations and improvements on Vulkan and Linux support."
 arch=('x86_64')
 url="https://github.com/has207/xenia-edge/"
@@ -43,7 +43,7 @@ package() {
     # Install AppImage
     install -Dm755 "${srcdir}/xenia_edge_linux.AppImage" "${pkgdir}/opt/xenia-edge/xenia_edge_linux.AppImage"
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "${pkgdir}/opt/xenia-edge/xenia_edge_linux.AppImage" "${pkgdir}/usr/bin/xenia_edge"
+    ln -s "/opt/xenia-edge/xenia_edge_linux.AppImage" "${pkgdir}/usr/bin/xenia_edge"
 
     # Create desktop entry and install icons
     install -Dm644 "${srcdir}/xenia_edge.desktop" "${pkgdir}/usr/share/applications/xenia_edge.desktop"
