@@ -1,7 +1,7 @@
 pkgbase = uni2ascii-git
 	pkgdesc = Provides conversion in both directions between UTF-8 and many 7-bit ASCII equivalents
 	pkgver = 4.20.r0.gfaa5651
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alcubierre-drive/uni2ascii
 	arch = any
 	license = GPL3

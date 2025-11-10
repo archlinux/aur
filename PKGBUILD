@@ -2,7 +2,7 @@
 
 pkgname=uni2ascii-git
 pkgver=4.20.r0.gfaa5651
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides conversion in both directions between UTF-8 and many 7-bit ASCII equivalents"
 license=('GPL3')
 depends=('gcc')
@@ -13,29 +13,13 @@ source=("$pkgname::git+$url")
 sha256sums=( 'SKIP' )
 backup=()
 
-pkgver() {
-    cd "$pkgname"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    : Nothing
-}
-
 build() {
     cd "${srcdir}/${pkgname}"
-    ./configure
+    ./configure --prefix=/usr --mandir=/usr/share/man
     make
 }
 
-check() {
-    : Nothing
-}
-
 package() {
-    make install
-}
-
-package() {
-    : Nothing
+    cd "${srcdir}/${pkgname}"
+    make DESTDIR="$pkgdir" install
 }
