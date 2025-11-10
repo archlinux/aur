@@ -21,6 +21,7 @@ prepare() {
     # These are dmg images, xar and cpio archives.  Just use 7z.
     7z x -y 'SF-Mono.dmg'
     7z x -y 'SFMonoFonts/SF Mono Fonts.pkg'
+    7z x -y 'SFMonoFonts.pkg/Payload'
     7z x -y 'Payload~'
 
     otfinfo -i Library/Fonts/SF-Mono-BoldItalic.otf | \
