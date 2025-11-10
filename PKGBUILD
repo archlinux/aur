@@ -1,12 +1,12 @@
 # Maintainer: develOseven <devel.oseven@gmail.com>
 pkgname=avoc
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 epoch=
 _python_version=3.12.3
 _pkghashes="
-	--hash=sha256:b8708478df07929fdfce37ea525812febd47c1562450ab1eb1db20c1e704b208
-	--hash=sha256:43fe7c63e5d1b91034ff290e476409efcb2adaa42a3e01a99e92948c11814f5c
+	--hash=sha256:0c93222fa46b8e210dcc735e758d397b1b4328f960541574591f948c8d76bc63
+	--hash=sha256:e7b57b1e7bd807fbb0f21c33a06210e9c946bfaae82e2446b76f91715a508020
 "
 pkgdesc="Local Realtime Voice Changer for Desktop"
 arch=('x86_64')
@@ -125,4 +125,4 @@ package() {
 		"$pkgdir/usr/share/applications/AVoc.desktop"
 	echo "Path=/opt/$pkgname" >> "$pkgdir/usr/share/applications/AVoc.desktop"
 }
-sha256sums=('f229e83f0b23064e348fcd50489001578983027656cdda3fb7e58e26d16da4ff')
+sha256sums=('6694b80c9cf6a053201dad611ea387107a1f9f2a6111597423d471aa0e328615')
