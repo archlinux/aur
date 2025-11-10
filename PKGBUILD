@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pritunl-client-bin
-pkgver=1.3.4438.95
+pkgver=1.3.4439.70
 pkgrel=1
 pkgdesc="Pritunl OpenVPN client.Written in GO.(Prebuilt version)"
 arch=('x86_64')
@@ -19,8 +19,8 @@ source=(
     "${pkgname%-bin}-${pkgver}.pkg.tar.zst::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-1-${CARCH}.pkg.tar.zst"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/pritunl/pritunl-client-electron/${pkgver}/LICENSE"
 )
-sha256sums=('b8455cc1a49a70c043dc4816515bd3c79dd0538a0a3f8028ecebd95c9bee633d'
-            '6b09590452456242b5970ac0c3bc9a5a9db1792ce4465d5e8cea1d7ba4080cda')
+sha256sums=('f79de487ace4a74f15162137be6016bf289e9c9652cec1c10ff50a0eff4eb45b'
+            '761b7df4f789c4d98572a97c09c02918fd648066ff8c2c46c26713e349cd53ea')
 package() {
     install -Dm755 "${srcdir}/usr/bin/"* -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/var/log/"* -t "${pkgdir}/var/log"
