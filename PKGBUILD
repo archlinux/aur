@@ -1,7 +1,7 @@
 # Maintainer: Fox Wilson <fwilson at lessbroken.org>
 
 pkgname=virtualsmartcard
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
 pkgdesc="Virtual Smart Card emulates a smart card and makes it accessible through PC/SC"
 url="https://github.com/frankmorgner/vsmartcard"
@@ -10,7 +10,7 @@ license=( "GPLv3" )
 depends=( "pcsclite" "python3" )
 makedepends=( "help2man" )
 source=( "https://github.com/frankmorgner/vsmartcard/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz" )
-sha1sums=('9ce6117f307e28696699f87672681454ee001bf0')
+sha1sums=('15580290740beb8d57fb12563b38e86e1f3d2490')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
