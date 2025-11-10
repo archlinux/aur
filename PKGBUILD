@@ -1,6 +1,5 @@
 # Maintainer: Kevin <github@kev314.dev>
 # Co-Maintainer: Lysec <itslysec@gmail.com>
-
 pkgname=noctalia-shell
 pkgver=3.0.6
 pkgrel=1
@@ -8,7 +7,6 @@ pkgdesc="A sleek and minimal desktop shell thoughtfully crafted for Wayland, bui
 arch=('any')
 url="https://github.com/noctalia-dev/noctalia-shell"
 license=('MIT')
-
 depends=(
   'quickshell'
   'ttf-roboto'
@@ -16,7 +14,6 @@ depends=(
   'gpu-screen-recorder'
   'brightnessctl'
 )
-
 optdepends=(
   'cliphist: For clipboard history support'
   'matugen-bin: Material You color scheme generation'
@@ -25,16 +22,19 @@ optdepends=(
   'power-profiles-daemon: For power profile management'
   'ddcutil: For external display brightness control'
 )
-
 conflicts=('noctalia-shell-git')
-
+install="${pkgname}.install"
 source=("git+$url.git#tag=v$pkgver")
 sha256sums=('fd6c7bbb96b5d127facfd8b6c7897f8bdb052d5d87851ff3cfa0eb8e108b3f12')
 
 package() {
   cd "$srcdir/$pkgname"
-
+  
   # Install shell files to quickshell system config directory
   install -dm755 "$pkgdir/etc/xdg/quickshell/noctalia-shell"
   cp -r ./* "$pkgdir/etc/xdg/quickshell/noctalia-shell/"
+  
+  # Install systemd user service
+  install -Dm644 "Assets/Services/systemd/noctalia.service" \
+    "$pkgdir/usr/lib/systemd/user/noctalia.service"
 }

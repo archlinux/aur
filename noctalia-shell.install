@@ -1,0 +1,20 @@
+post_install() {
+  echo ""
+  echo "==> To start noctalia-shell, you have two options:"
+  echo "    1. Run directly: qs -c noctalia-shell"
+  echo "    2. Use systemd service: systemctl --user enable --now noctalia.service"
+  echo ""
+}
+
+post_upgrade() {
+  echo ""
+  echo "==> noctalia-shell has been updated"
+  echo "==> If using the systemd service, restart with:"
+  echo "    systemctl --user restart noctalia.service"
+  echo ""
+}
+
+pre_remove() {
+  systemctl --user stop noctalia.service 2>/dev/null || true
+  systemctl --user disable noctalia.service 2>/dev/null || true
+}
