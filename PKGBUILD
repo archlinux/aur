@@ -2,7 +2,7 @@
 
 pkgname=tensamin-git
 _pkgname=tensamin
-pkgver=r465.fbba601
+pkgver=r466.d289a9a
 _pkgver=0.1.3
 pkgrel=1
 pkgdesc="True E2EE, decentralized messages. Open source and privacy first."
