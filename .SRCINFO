@@ -1,0 +1,23 @@
+pkgbase = sfp-master
+	pkgdesc = SFP-module programmer for CH341a devices
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/bigbigmdm/SFP-Master
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = gcc-libs
+	depends = glibc
+	depends = libusb
+	depends = qt6-base
+	optdepends = ezp-chip-data-editor: QT based editor chip database for EZP2019, EZP2019+, EZP2020, EZP2023, EZP2025, MinPro programmer devices
+	optdepends = imsprog: MSProg - software for CH341A-based programmers to work with I2C, SPI and MicroWire EEPROM/Flash chips
+	provides = sfp-master
+	conflicts = sfp-master
+	source = sfp-master::git+https://github.com/bigbigmdm/SFP-Master.git#tag=v1.0.7
+	sha256sums = b2b0ab872c531c71b24f750ba799819b08ec72358fe1c7c13cccd4dc21669b50
+
+pkgname = sfp-master
