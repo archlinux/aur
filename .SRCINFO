@@ -1,0 +1,14 @@
+pkgbase = bsc-m03
+	pkgdesc = High-performance block-sorting data compressor
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = https://github.com/IlyaGrebnov/bsc-m03
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	source = git+https://github.com/IlyaGrebnov/bsc-m03.git#tag=v0.5.5
+	sha256sums = SKIP
+
+pkgname = bsc-m03
