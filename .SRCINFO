@@ -1,0 +1,17 @@
+pkgbase = python-patch-ng-git
+	pkgdesc = Python library to parse and apply unified diffs (new generation; git version)
+	pkgver = 1.19.0.r2.g1931f8c
+	pkgrel = 1
+	url = https://github.com/conan-io/python-patch-ng/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = git+https://github.com/conan-io/python-patch-ng.git
+	sha256sums = SKIP
+
+pkgname = python-patch-ng-git
