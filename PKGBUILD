@@ -2,7 +2,7 @@
 
 pkgname=xenia-edge-bin
 pkgver=$(curl -s "https://api.github.com/repos/has207/xenia-edge/releases/latest" | jq -r .tag_name)
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of the Xenia emulattor based on Xenia Canary, with aims for quicker iterations and improvements on Vulkan and Linux support."
 arch=('x86_64')
 url="https://github.com/has207/xenia-edge/"
