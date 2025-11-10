@@ -1,0 +1,15 @@
+pkgbase = elephant-1password
+	pkgdesc = 1Password provider for elephant
+	pkgver = 2.15.0
+	pkgrel = 1
+	url = https://github.com/abenz1267/elephant
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = go
+	provides = elephant-1password
+	conflicts = elephant-1password
+	source = https://github.com/abenz1267/elephant/archive/refs/tags/v2.15.0.tar.gz
+	sha256sums = e1a7cd44ed943475129dcd21160056d1fd4dc33dd968e6ff462cc88fa424d2bd
+
+pkgname = elephant-1password
