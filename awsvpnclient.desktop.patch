@@ -1,13 +1,13 @@
 Fix the Exec line in the awsvpnclient.desktop file to use the correct path and escape spaces
---- awsvpnclient.desktop	2024-12-13 18:14:19.456730536 +0100
-+++ "awsvpnclient.desktop"	2025-21-05 12:30:0.140056958 +0100
-@@ -3,7 +3,8 @@
+--- awsvpnclient.desktop.orig	2025-11-10 09:52:45.000000000 +0100
++++ awsvpnclient.desktop	2025-11-10 09:52:45.000000000 +0100
+@@ -3,9 +3,9 @@
  Encoding=UTF-8
  Name=AWS VPN Client
  Comment=AWS VPN Client
 -Exec="/opt/awsvpnclient/AWS\sVPN\sClient" %u
-+StartupWMClass=AWS VPN Client
 +Exec="/opt/awsvpnclient/AWS VPN Client" %u
  Path=/opt/awsvpnclient
- Icon=acvc-64.png
+-Icon=acvc-64.png
++Icon=acvc-64
  Terminal=false

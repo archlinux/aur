@@ -1,7 +1,7 @@
 # Maintainer: Richard Hillmann <richie at project0 dot de>
 pkgname=awsvpnclient
 pkgver=5.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="AWS VPN Client"
 arch=('x86_64')
 license=('custom')
@@ -11,7 +11,7 @@ source=(
   'awsvpnclient.desktop.patch'
 )
 sha512sums=('dcb662f360c8475d5aad07983467a8be0617a19180d97229f7b2f49b66ec478cb40146aa66aa138229c77cd0d5ae1d7490612b51ce6b4d52d5922e206e746669'
-            'a9c46dbaf6588f0de9f3687e07bb30f6a0671c43673c86123e43192e7fc2279ca53c61e473ca22014a712980b9110d1ba19bf2d7ded8b20d74bdd5d70f118434')
+            '78021ec181929a58aab0c0dd191c54fbc57cc8d2137983f322fe84a878bb1a3040caffde5f45879b311612bc4f125f44b0fad702754bc274b6b86c2ef9654c10')
 depends=('xdg-utils' 'lsof')
 makedepends=('zstd')
 options=('!strip' 'staticlibs')
@@ -26,7 +26,7 @@ package(){
   # Workaround for missing compatibility of the SQL library with arch linux:
   # Intentionally break the metrics agent,
   # it will be unable to laod the dynamic lib and wont start but continue with error message
-  chmod 000 "${pkgdir}/opt/awsvpnclient/SQLite.Interop.dll"
+  chmod 000 "${pkgdir}/opt/awsvpnclient/libe_sqlite3.so"
 
   # Permission fix
   find "${pkgdir}" -type d -exec chmod 755 {} +
