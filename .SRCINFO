@@ -7,7 +7,6 @@ pkgbase = waller
 	license = MIT
 	depends = swww
 	depends = imagemagick
-	source = waller-1.0.0.tar.gz
-	source = waller-1.0.0.patch
+	source = https://raw.githubusercontent.com/lare354/waller/refs/heads/main/install.sh
 
 pkgname = waller

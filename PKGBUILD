@@ -24,8 +24,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver.tar.gz"
-        "$pkgname-$pkgver.patch")
+source=("https://raw.githubusercontent.com/lare354/waller/refs/heads/main/install.sh")
 noextract=()
 sha256sums=()
 validpgpkeys=()
