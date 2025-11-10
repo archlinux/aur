@@ -1,6 +1,6 @@
 pkgbase = python-optuna-integration
 	pkgdesc = Optuna integration modules with third-party libraries.
-	pkgver = 4.5.0
+	pkgver = 4.6.0
 	pkgrel = 1
 	url = https://optuna-integration.readthedocs.io/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-optuna-integration
 	makedepends = python-wheel
 	depends = python
 	depends = python-optuna
-	source = https://github.com/optuna/optuna-integration/archive/refs/tags/v4.5.0.tar.gz
-	sha256sums = d4e230cb9c46aee1f44726826d2756bd54f9e568ff154f7deac677b2fdd463cf
+	source = https://github.com/optuna/optuna-integration/archive/refs/tags/v4.6.0.tar.gz
+	sha256sums = 36305e6765831596e30254362518c77a6a0b7b37ae4c55cca31e499210d4d02a
 
 pkgname = python-optuna-integration
