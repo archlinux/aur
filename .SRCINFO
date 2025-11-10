@@ -1,0 +1,43 @@
+pkgbase = idescriptor-git
+	pkgdesc = A free and open-source iDevice management tool.
+	pkgver = r260.7b99a26
+	pkgrel = 1
+	url = https://github.com/uncor3/iDescriptor
+	arch = x86_64
+	license = AGPL3-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = go
+	depends = libimobiledevice>=1.4.0
+	depends = libtatsu>=1.0.5
+	depends = libimobiledevice-glue
+	depends = libplist
+	depends = usbmuxd
+	depends = openssl
+	depends = libssh
+	depends = libusb
+	depends = pugixml
+	depends = qrencode
+	depends = libheif
+	depends = libzip
+	depends = qt6-base
+	depends = qt6-multimedia
+	depends = qt6-declarative
+	depends = qt6-serialport
+	depends = qt6-positioning
+	depends = qtermwidget
+	depends = avahi
+	depends = libsecret
+	depends = gnome-keyring
+	depends = ffmpeg
+	depends = gstreamer
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	optdepends = gst-plugins-ugly: for extra codecs
+	optdepends = gst-libav: for FFmpeg-based codecs
+	options = !debug
+	source = git+https://github.com/uncor3/iDescriptor.git
+	sha256sums = SKIP
+
+pkgname = idescriptor-git
