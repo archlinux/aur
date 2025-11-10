@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='frr'
-pkgver='10.4.1'
+pkgver='10.5.0'
 pkgrel='1'
 pkgdesc='FRRouting (quagga fork) supports BGP, OSPF, ISIS, RIP, PIM, LDP, BFD, VRRP, NHRP and EIGRP'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -22,7 +22,7 @@ backup=("etc/${pkgname}/${pkgname}.conf"
 source=("https://github.com/FRRouting/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz"
         "https://gitlab.com/redhat/centos-stream/rpms/${pkgname}/-/raw/c10s/${pkgname}-tmpfiles.conf"
         "https://gitlab.com/redhat/centos-stream/rpms/${pkgname}/-/raw/c10s/${pkgname}-sysusers.conf")
-sha256sums=('8e4003eaba168626c5ea7a6735f2c85c87b04214e6f8c8f2715b21f8ae40970b'
+sha256sums=('a84b973e713349dca09e2009f33dc499564f2e9faba01c0d3cba9204802b0cd5'
             'edd7b01b11f2be66bb6b4531496d1eaf6536add9f4b549c659b27f5a32cdc512'
             'c6f5a54402aa5f11e21dac3bd0e6cdeadfbf7937e9b34775b5fd368a9ca96fa4')
 

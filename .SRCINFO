@@ -1,6 +1,6 @@
 pkgbase = frr
 	pkgdesc = FRRouting (quagga fork) supports BGP, OSPF, ISIS, RIP, PIM, LDP, BFD, VRRP, NHRP and EIGRP
-	pkgver = 10.4.1
+	pkgver = 10.5.0
 	pkgrel = 1
 	url = https://frrouting.org
 	arch = x86_64
@@ -37,10 +37,10 @@ pkgbase = frr
 	backup = etc/frr/frr.conf
 	backup = etc/frr/daemons
 	backup = etc/frr/vtysh.conf
-	source = https://github.com/FRRouting/frr/archive/frr-10.4.1.tar.gz
+	source = https://github.com/FRRouting/frr/archive/frr-10.5.0.tar.gz
 	source = https://gitlab.com/redhat/centos-stream/rpms/frr/-/raw/c10s/frr-tmpfiles.conf
 	source = https://gitlab.com/redhat/centos-stream/rpms/frr/-/raw/c10s/frr-sysusers.conf
-	sha256sums = 8e4003eaba168626c5ea7a6735f2c85c87b04214e6f8c8f2715b21f8ae40970b
+	sha256sums = a84b973e713349dca09e2009f33dc499564f2e9faba01c0d3cba9204802b0cd5
 	sha256sums = edd7b01b11f2be66bb6b4531496d1eaf6536add9f4b549c659b27f5a32cdc512
 	sha256sums = c6f5a54402aa5f11e21dac3bd0e6cdeadfbf7937e9b34775b5fd368a9ca96fa4
 
