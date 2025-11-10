@@ -1,0 +1,14 @@
+pkgbase = image-gtk
+	pkgdesc = A simple, fast and elegant image viewer program
+	pkgver = 23.5
+	pkgrel = 1
+	url = https://github.com/vl-nix/image-gtk
+	install = image-gtk.install
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	depends = gtk3
+	source = https://github.com/vl-nix/image-gtk/archive/refs/tags/23.5.tar.gz
+	sha256sums = a23005d4f7998922a63e395b901aff4c249bf905742806c5703366388d3a8fda
+
+pkgname = image-gtk
