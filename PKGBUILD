@@ -3,7 +3,7 @@
 # Contributor: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=flyway
-pkgver=11.3.4
+pkgver=11.8.2
 pkgrel=1
 pkgdesc="Database migration utility written Java, supporting a wide range of databases"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://flywaydb.org/"
 license=('Apache-2.0')
 depends=('java-environment>=17')
 source=(https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/$pkgver/flyway-commandline-$pkgver.tar.gz)
-sha512sums=('b5aeb2a39d9ad957c86647779e038f7fe9ca96db1ee4c36cce3a0387bef789abe2e0dcdb8afa53cb611ecedb47d52574fb3e0868731bee04af342e93a722e166')
+sha512sums=('826efab7fa6854fe3abdfd08fb7e755ff335a93fa2243d1df5e95236d9c35e9a8697d71089e0e57daebc0b8f3fa379e7b3ea6fc25cddf7c49d4e1c669a0ab9c3')
 
 package() {
   cd $srcdir
