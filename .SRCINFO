@@ -1,7 +1,7 @@
 pkgbase = soundux
 	pkgdesc = A cross-platform soundboard - stable version
 	pkgver = 0.2.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://soundux.rocks
 	arch = any
 	license = GPL3
