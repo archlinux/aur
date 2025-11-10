@@ -1,0 +1,15 @@
+pkgbase = shoopdaloop-appimage
+	pkgdesc = Live looping application with DAW elements
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/SanderVocke/shoopdaloop/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	noextract = shoopdaloop-appimage-0.2.0.AppImage
+	options = !strip
+	source_x86_64 = shoopdaloop-appimage-0.2.0.AppImage::https://github.com/SanderVocke/shoopdaloop/releases/download/v0.2.0/shoopdaloop-0.2.0.release-linux-x64.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/SanderVocke/shoopdaloop/master/LICENSE
+	sha256sums_x86_64 = a909e850523bcaf4ee329d31fdd22f4ad073ce0a4116996d868a06baea75e4b6
+	sha256sums_x86_64 = SKIP
+
+pkgname = shoopdaloop-appimage
