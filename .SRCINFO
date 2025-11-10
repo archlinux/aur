@@ -1,7 +1,7 @@
 pkgbase = soundux-git
 	pkgdesc = A cross-platform soundboard - unstable development version
 	pkgver = r1432.fca05c9
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://soundux.rocks
 	install = soundux.install

@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=soundux-git
 pkgver=r1432.fca05c9
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="A cross-platform soundboard - unstable development version"
 arch=('any')
@@ -32,7 +32,7 @@ build() {
   cd "${srcdir}/Soundux"
   mkdir -p build
   cd build
-  cmake -GNinja -DCMAKE_BUILD_TYPE=Release ..
+  cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
   ninja
 }
 
