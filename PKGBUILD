@@ -4,7 +4,7 @@
 # Contributor: David Birks <david at tellus dot space>
 # Contributor: Jeff Henson <jeff at henson dot io>
 pkgname=mullvad-vpn
-pkgver=2025.10
+pkgver=2025.13
 pkgrel=1
 _nodeversion=22
 pkgdesc="The Mullvad VPN client app for desktop"
@@ -36,7 +36,7 @@ source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver?signed"
         'no-rpm.diff'
         'no-publish.diff'
         "$pkgname.sh")
-sha256sums=('0547240027f8b53b0c63739b5356691e412140681df4bee578cbe7377e138995'
+sha256sums=('1a45d94a040f07206075691f69d4783be5e18f096abef2b244f81b2bc7ccd7c9'
             'SKIP'
             'SKIP'
             '5773f4ea5b7e0db8340e0614d1b027237cb827a5db135ee633d491c271a7e499'
