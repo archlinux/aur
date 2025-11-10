@@ -4,7 +4,7 @@
 
 pkgname=slade
 pkgver=3.2.8
-pkgrel=2
+pkgrel=3
 pkgdesc='SLADE3 Doom editor'
 arch=('i686' 'x86_64')
 url='http://slade.mancubus.net/'
@@ -42,9 +42,8 @@ sha256sums=('07a8ba0f0416960975727561599746af915c02fcb3cd61f9b4efa575938b70a2')
 build() {
   cd SLADE
   cmake -B build -S . \
-    -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_RPATH="/opt/sfml2/lib"
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build
 }
 

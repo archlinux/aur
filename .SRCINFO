@@ -1,7 +1,7 @@
 pkgbase = slade
 	pkgdesc = SLADE3 Doom editor
 	pkgver = 3.2.8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://slade.mancubus.net/
 	arch = i686
 	arch = x86_64
