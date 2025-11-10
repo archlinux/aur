@@ -2,14 +2,15 @@
 # Contributor: edub4rt <edub4rt@gmail.com>
 # Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Daurnimator <daurnimator@archlinux.org>
-pkgname=mingw-w64-luajit
+
 # LuaJIT has a "rolling release" where you should follow git HEAD; retrieve latest via:
 #   $ curl -s https://api.github.com/repos/LuaJIT/LuaJIT/commits/v2.1 | jq -r .sha
-_commit=8518c0b40b1734901de888a0a363450c0709d3f8
 # The patch version is the timestamp of the above git commit; obtain via:
 #   $ curl -s https://api.github.com/repos/LuaJIT/LuaJIT/commits/v2.1 | jq -r '.commit.committer.date | fromdate'
-_ct=1761727121
-pkgver="2.1.${_ct}"
+_commit=eba91fceb67a0a0163a9222869bf254c988c48c4
+
+pkgname=mingw-w64-luajit
+pkgver=2.1.1762795099
 pkgrel=1
 pkgdesc='Just-in-time compiler and drop-in replacement for Lua 5.1'
 arch=('any')
@@ -18,7 +19,7 @@ license=('MIT')
 depends=('mingw-w64-crt')
 makedepends=('gcc-libs' 'lib32-gcc-libs' 'mingw-w64-gcc')
 source=("LuaJIT-${_commit}.tar.gz::https://github.com/LuaJIT/LuaJIT/archive/${_commit}.tar.gz")
-sha256sums=('2dd2e805aa6172e9470e0739f88bc844933331e9be65eb7b1e52d5548fc41425')
+sha256sums=('979a7692c173bea8c29b71b69b87e47acf9c892a077c93294364e570e12c6023')
 options=('!strip' '!buildflags' staticlibs)
 
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -52,7 +53,8 @@ check() {
   for _target in ${_targets}; do
     cd ${srcdir}/LuaJIT-build-${_target}
 
-    # Make sure that _ct was updated
+    # Make sure that pkgver matches packaged commit
+    local _ct=${pkgver##*.}
     test "${_ct}" == "$(cat .relver)"
   done
 }
