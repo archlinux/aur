@@ -1,0 +1,17 @@
+pkgbase = pawfetch-git
+	pkgdesc = Neofetch with LGBTQ+ pride flags
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://git.pawlickers.org/nataliewolf/pawfetch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = pawfetch
+	conflicts = pawfetch
+	source = git+https://git.pawlickers.org/nataliewolf/pawfetch.git
+	sha256sums = SKIP
+
+pkgname = pawfetch-git
