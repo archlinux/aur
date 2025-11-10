@@ -1,6 +1,6 @@
 # Maintainer: Gurov
 pkgname=zeptofetch-bin
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc="Blazingly fast, ultra-minimal system information tool for Linux (prebuilt binary)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glibc')
 provides=('zeptofetch')
 conflicts=('zeptofetch' 'zeptofetch-git')
 source=("$pkgname-$pkgver.tar.zst::https://github.com/Gur0v/zeptofetch/releases/download/v$pkgver/zeptofetch.tar.zst")
-sha256sums=('a52dae831674ca3f15e8b2a7ce719d29585015607dd6639a79fae01024876d58')
+sha256sums=('7917e91bee070a3fc66d57cd66e8477005cce29956e430f76c7c9394e9e8b963')
 
 package() {
   install -Dm755 zeptofetch "$pkgdir/usr/bin/zeptofetch"
