@@ -1,7 +1,7 @@
 pkgbase = aliasx
 	pkgdesc = Alias extended - task, alias and build handles
 	pkgver = 0.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hansbinderup/aliasx
 	arch = i686
 	arch = x86_64

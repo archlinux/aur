@@ -2,7 +2,7 @@
 
 pkgname=aliasx
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Alias extended - task, alias and build handles'
 url='https://github.com/hansbinderup/aliasx'
 license=('Apache-2.0')
@@ -17,7 +17,7 @@ build() {
     export CARGO_TARGET_DIR=target
 
     pushd "$srcdir/aliasx-$pkgver" > /dev/null
-    cargo build --frozen --release --all-features
+    cargo build --locked --release
     popd > /dev/null
 }
 
