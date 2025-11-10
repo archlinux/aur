@@ -2,8 +2,8 @@
 # Contributor: Tomislav Ivek <tomislav dot ivek at gmail dot com>
 
 pkgname=python-patch-ng
-pkgver=1.18.0
-pkgrel=3
+pkgver=1.19.0
+pkgrel=1
 pkgdesc='Python library to parse and apply unified diffs (new generation)'
 arch=('any')
 url='https://github.com/conan-io/python-patch-ng/'
@@ -16,7 +16,7 @@ makedepends=(
     'python-setuptools'
     'python-wheel')
 source=("https://github.com/conan-io/python-patch-ng/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('600f9c68c4900feeab535712a6a5126835fb6839fa2715e34c1af728ce0ecae5')
+sha256sums=('19be239070b96224ff5d95de5be3c010610361cdc92af8634588f8c98686ef08')
 
 build() {
     cd "${pkgname}-${pkgver}"
