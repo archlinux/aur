@@ -13,6 +13,7 @@ makedepends=(
   'qt5-base'
   'qwt'
   'git'
+  'cmake'
 )
 source=(
 # "Azure2::git+https://github.com/rdeboer1/AZURE2#branch=qwt6"

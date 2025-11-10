@@ -8,6 +8,7 @@ pkgbase = azure2
 	makedepends = qt5-base
 	makedepends = qwt
 	makedepends = git
+	makedepends = cmake
 	provides = azure2
 	source = Azure2::git+https://github.com/rdeboer1/AZURE2#branch=api
 	sha256sums = SKIP
