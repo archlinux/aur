@@ -1,6 +1,6 @@
 pkgname=hath-rust
 pkgdesc="Hentai@Home but rusty"
-pkgver=1.14.0
+pkgver=1.14.1
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/james58899/hath-rust"
@@ -10,7 +10,7 @@ depends=("gcc-libs" "glibc")
 makedepends=("cargo" "git")
 source=("git+$url.git#tag=v$pkgver"
         "hath-rust.service")
-sha256sums=('630a81c0b5a0f956db17d8966bf7506889723bcb00a6127f351f1c666cecf09d'
+sha256sums=('4a7e1243d69e6a7c8a64cb376db86b8e1358217e2cb9db1bffbdb3a65e154f77'
             '20a8a8f2d6f9895fb983125e58ad17a9e6509a1e616b58cabab7efbfde4a356c')
 
 prepare() {
