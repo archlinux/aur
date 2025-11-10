@@ -6,7 +6,7 @@ _Name="FerretDB"
 _pkgname="${_Name,,}"
 
 pkgname="${_pkgname}-bin"
-pkgver=2.5.0 # datasource=github-releases depName=FerretDB/FerretDB
+pkgver=2.7.0 # datasource=github-releases depName=FerretDB/FerretDB
 pkgrel=1
 pkgdesc='A proxy that converts MongoDB queries to SQL and uses PostgreSQL as the database engine'
 arch=('aarch64' 'x86_64')
@@ -34,8 +34,8 @@ sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4'
             '69123ae494b201311bf053e109fad0a539549937aab1ec3777a557762cbbabeb'
             'c832b3591708948a205d5625900b84f359a01213edc2f44e8c725997c52d995d'
             'e4e1239ca097f1e45c453a847c6f3ba4a0f5830ab031c3e085261326e45bccb1')
-sha256sums_aarch64=('c1f5ad6bd774b0c8149cec3c6a5768721391ef2e50828b92918b123174690a8f')
-sha256sums_x86_64=('539e24fba6e07c2d399b0ef111e82d1121d2f96b333dfa11abf06dade877551d')
+sha256sums_aarch64=('74abfea8c6647929e8dab8f59f5438cb29948bc5e477626b771721ef1c07576b')
+sha256sums_x86_64=('f81ecae6adf33e0c5e949acf85f94a40b0790c07b8f87d480b91518225da26b4')
 
 
 
