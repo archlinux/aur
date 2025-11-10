@@ -2,7 +2,7 @@
 
 pkgname=imapgoose
 _pkgname=ImapGoose
-pkgver=0.2.4
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Keep local Maildir directories synchronised with an IMAP server"
 arch=('x86_64')
@@ -12,20 +12,18 @@ makedepends=(
   'go'
   'golangci-lint'
 )
+checkdepends=(
+  'dovecot'
+)
 source=(
-	"https://git.sr.ht/~whynothugo/ImapGoose/archive/v$pkgver.tar.gz"
+  "https://git.sr.ht/~whynothugo/ImapGoose/archive/v$pkgver.tar.gz"
 )
 sha256sums=(
-  '7e93ae30a1c4d30fd84c18687b384e8491c5714dcd7defe45db3e0493d0f83bf'
+  'd4af405504a5aa95fb1dd86bc2013a15d210f0b6aef4621fed1108517a6866c1'
 )
 
 prepare() {
   cd "${_pkgname}-v${pkgver}"
-
-  sed -i /imapgoose.openrc/d Makefile
-
-  # can't easily install mandoc because it conflicts with the omnipresent man-db
-  sed -i /mandoc/d Makefile
 
   export GOPATH="${srcdir}"
   go mod download -modcacherw
@@ -45,7 +43,8 @@ build() {
 
 check() {
   cd "${_pkgname}-v${pkgver}"
-  make check
+  # make check runs developer checks. just runs tests instead.
+  go test ./...
 }
 
 package() {
