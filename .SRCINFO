@@ -1,0 +1,15 @@
+pkgbase = uvm
+	pkgdesc = Accellera Universal Verification Methodology
+	pkgver = 3.1
+	pkgrel = 1
+	url = https://www.accellera.org/downloads/standards/uvm
+	arch = any
+	license = Apache-2.0
+	source = https://github.com/accellera-official/uvm-core/archive/refs/tags/2020.3.1.tar.gz
+	source = uvm.sh
+	source = uvm_reg_model.svh.patch
+	sha256sums = f55bdbc02cc500d4a2f41b31bad127653289eb2073f806ce156fb82662b362b8
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = uvm

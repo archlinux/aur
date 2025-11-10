@@ -1,0 +1,11 @@
+--- src/uvm-core-2020.3.1/src/reg/uvm_reg_model.svh	2025-11-03 23:58:21.348769484 -0300
++++ src/uvm-core-2020.3.1/src/reg/uvm_reg_model.svh.modif	2025-11-04 00:03:09.940805538 -0300
+@@ -297,7 +297,7 @@
+       UVM_CVR_REG_BITS     = 'h0001,
+       UVM_CVR_ADDR_MAP     = 'h0002,
+       UVM_CVR_FIELD_VALS   = 'h0004,
+-      UVM_CVR_ALL          = -1
++      UVM_CVR_ALL          = 'hffff
+    } uvm_coverage_model_e;
+ 
+ 
