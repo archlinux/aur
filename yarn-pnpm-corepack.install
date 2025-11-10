@@ -6,7 +6,7 @@ blue="${bold}$(tput setaf 4)"
 
 post_install() {
     echo "  ${blue}-> NOTE: ${all_off}"
-    echo "      Run \`${bold}corepack install -g yarn@<YARN_VERSION> pnpm@<PNPM_VERSION>${all_off}\` to install the actual package managers."
-    echo "      For example: \`${bold}corepack install -g yarn@1 pnpm@latest${all_off}\`."
-    # echo "    ${blue} END NOTE${all_off}"
+    echo "      This package (yarn-pnpm-corepack) is replaced by 'npm-yarn-pnpm-corepack' which provides the same functionality,"
+    echo "      but split into individual packages. This package is now a virtual package with no content."
+    echo "      You can safely remove this package after installing 'yarn-corepack' and 'pnpm-corepack'."
 }

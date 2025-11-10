@@ -1,15 +1,12 @@
 pkgbase = yarn-pnpm-corepack
-	pkgdesc = Using corepack shim to provide yarn and pnpm, while preserving npm.
-	pkgver = 0.3.0
+	pkgdesc = Using corepack shim to provide yarn and pnpm, while preserving npm. (Transitional package for npm-yarn-pnpm-corepack)
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/nodejs/corepack/
 	install = yarn-pnpm-corepack.install
 	arch = any
 	license = MIT
-	depends = corepack
-	provides = yarn
-	provides = pnpm
-	conflicts = yarn
-	conflicts = pnpm
+	depends = yarn-corepack
+	depends = pnpm-corepack
 
 pkgname = yarn-pnpm-corepack
