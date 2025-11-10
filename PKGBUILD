@@ -9,7 +9,8 @@ license=('GPL')
 url='https://github.com/jellyfin/jellyfin-media-player'
 provides=('jellyfin-media-player')
 conflicts=('jellyfin-media-player')
-depends=('mpv' 'libcec' 'sdl2' 'p8-platform' 'protobuf' 'qt5-webengine' 'qt5-x11extras' 'qt5-quickcontrols')
+# icu76 should be added as a dept to qt5-webengine instead. adding here as a dirty workaround
+depends=('mpv' 'libcec' 'sdl2' 'p8-platform' 'protobuf' 'icu76' 'qt5-webengine' 'qt5-x11extras' 'qt5-quickcontrols')
 makedepends=('cmake' 'git' 'python')
 source=('git+https://github.com/jellyfin/jellyfin-media-player.git')
 sha256sums=('SKIP')
