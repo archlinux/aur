@@ -1,0 +1,5 @@
+[python-bmipy]
+source = "github"
+github = "csdms/bmi-python"
+use_max_tag = "true"
+prefix = "v"
