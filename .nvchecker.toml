@@ -1,0 +1,5 @@
+[efibooteditor-bin]
+source = "github"
+github = "Neverous/efibooteditor"
+use_latest_release = true
+prefix = "v"
