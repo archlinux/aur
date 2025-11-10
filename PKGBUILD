@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=mytonwallet-appimage
-pkgver=4.2.8
+pkgver=4.3.3
 pkgrel=1
 pkgdesc="Feature rich TON wallet"
 provides=('mytonwallet')
