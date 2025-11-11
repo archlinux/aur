@@ -1,10 +1,10 @@
 pkgbase = finduncommonshares-git
 	pkgdesc = Python script allowing to quickly find uncommon shares in vast Windows Domains...
-	pkgver = 3.2.r4.g16864c1
+	pkgver = 3.2.r10.g665eb4c
 	pkgrel = 1
-	url = https://github.com/p0dalirius/finduncommonshares
+	url = https://github.com/p0dalirius/pyfinduncommonshares
 	arch = any
-	license = custom
+	license = GPL-2.0-only
 	makedepends = git
 	depends = python
 	depends = impacket
@@ -14,7 +14,7 @@ pkgbase = finduncommonshares-git
 	provides = finduncommonshares
 	conflicts = finduncommonshares
 	conflicts = finduncommonshares-bin
-	source = git+https://github.com/p0dalirius/finduncommonshares
+	source = git+https://github.com/p0dalirius/pyfinduncommonshares
 	sha512sums = SKIP
 
 pkgname = finduncommonshares-git
