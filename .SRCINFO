@@ -1,0 +1,15 @@
+pkgbase = mailweb
+	pkgdesc = Exports HTML emails to folders together with their embedded content.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://codeberg.org/jarkko/mailweb
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	source = mailweb.tar.gz::https://codeberg.org/jarkko/mailweb/archive/0.2.1.tar.gz
+	sha256sums = 38f944fee85148ce45572de79d0b04b45ba802d93f2fecc5c1626c34cb5d5cb0
+
+pkgname = mailweb
