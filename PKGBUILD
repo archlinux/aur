@@ -1,7 +1,7 @@
 # Maintainer: stsg
 
 pkgname=express
-pkgver=3.51.18
+pkgver=3.52.21
 pkgrel=1
 pkgdesc="Official Express App for Linux"
 arch=('x86_64')
