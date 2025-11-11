@@ -1,8 +1,8 @@
 pkgbase = neoarch-git
 	pkgdesc = NeoArch Package Manager for Arch Linux
-	pkgver = 1.0.beta.1.r0.g0000000
-	pkgrel = 10
-	url = https://github.com/Sanjaya-Danushka/Aurora
+	pkgver = v1.0.beta.r59.gcd72b9f
+	pkgrel = 1
+	url = https://github.com/Sanjaya-Danushka/Neoarch
 	install = neoarch-git.install
 	arch = any
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = neoarch-git
 	depends = npm
 	provides = neoarch
 	conflicts = neoarch
-	source = git+https://github.com/Sanjaya-Danushka/Aurora.git
+	source = git+https://github.com/Sanjaya-Danushka/Neoarch.git
 	md5sums = SKIP
 
 pkgname = neoarch-git
