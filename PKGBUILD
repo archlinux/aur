@@ -3,7 +3,7 @@
 # Maintainer:  max.bra <max dot bra at alice dot it>
 
 pkgname=ipscan
-pkgver=3.9.2
+pkgver=3.9.3
 pkgrel=1
 pkgdesc='Angry IP Scanner (or simply ipscan) is an open-source and cross-platform network scanner designed to be fast and simple to use. It scans IP addresses and ports as well as has many other features.'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(ipscan ipscan.desktop build.gradle.patch \
 sha512sums=('e2caf62412c35a7a29128d0ae176aca1e4a45cf81e44b76e4bb23ad1c0633fa8833d674d7d514942a170ab54223b6c4a93ab458f2736107e7bbe9a5e806a7c5e'
             'c17db5e4ac90af8675e9ac2a8e77f1322beb8bacb578a288bcfbf8da67270004ec40314b2793ea8ed8eeeeb64f9c03b3f80694e38c55be9d213486b825689a0f'
             '8ec4aae1b2226af984e58acd20ddc7d78268ab53a1f39cb6c85143741638727cf94794597bb9755483968c5f93e37cc96c33c61527529c074782f9447914399a'
-            '65df0b6265793baec0e839ed62fac9f6e90cff56e081bd7db5b1edd356c4e27063e549a67de1e53bcc0d45c0de7fd36dc62d5983ffd40f1951fa412be5989f6a')
+            'ae4fc4e8f6985cfc0e4c032e6347445917767797745d2e958c069d46bce23ef066a4fee4cd410d9a501802224d0b6dcbf325cc0537bad17bf78a45004e49d272')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
