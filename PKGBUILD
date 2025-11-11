@@ -2,7 +2,7 @@
 
 pkgname=xenia-edge-bin
 pkgver=$(curl -s "https://api.github.com/repos/has207/xenia-edge/releases/latest" | jq -r .tag_name)
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of the Xenia emulattor based on Xenia Canary, with aims for quicker iterations and improvements on Vulkan and Linux support."
 arch=('x86_64')
 url="https://github.com/has207/xenia-edge/"
@@ -12,7 +12,7 @@ options=(!strip)
 provides=('xenia')
 source=("https://github.com/has207/xenia-edge/releases/download/${pkgver}/xenia_edge_linux.AppImage"
         "https://raw.githubusercontent.com/has207/xenia-edge/${pkgver}/LICENSE")
-sha256sums=('SKIP'
+sha256sums=('f14f07c6c51e44805637131797e4703ec93739aeb685c8d423cf4f44ae46204e'
             'SKIP')
 
 prepare() {
