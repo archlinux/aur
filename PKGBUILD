@@ -3,7 +3,7 @@
 pkgname=lcd4linux-git
 _pkgname=lcd4linux
 pkgver=r1167.cb69a93
-pkgrel=5
+pkgrel=6
 pkgdesc="Grabs information from the kernel and other systems and displays it on an LCD"
 arch=('i686' 'x86_64')
 url="https://wiki.lcd4linux.tk/doku.php"
@@ -24,7 +24,7 @@ depends=(
 )
 makedepends=('git' 'pkg-config' 'automake' 'autoconf')
 provides=('lcd4linux')
-conflicts=('lcd4linux-svn')
+conflicts=('lcd4linux-svn' 'lcd4linux')
 backup=('etc/lcd4linux.conf')
 source=('lcd4linux::git+https://github.com/jmccrohan/lcd4linux'
 		'lcd4linux.service')
@@ -34,6 +34,12 @@ md5sums=('SKIP'
 pkgver() {
   cd "${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "${_pkgname}"
+	export ACLOCAL_PATH="/usr/share/aclocal:/usr/share/gettext/m4${ACLOCAL_PATH:+:}$ACLOCAL_PATH"
+	export CFLAGS="-std=gnu90"
 }
 
 build() {
