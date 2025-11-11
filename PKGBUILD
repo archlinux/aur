@@ -3,14 +3,16 @@
 
 pkgname=scx-tools-git
 _gitname=scx-loader
-pkgver=20251106.r376.g474e3b7
-pkgrel=3
+pkgver=1.0.18.r0.g40a3634
+pkgrel=2
+epoch=1
 pkgdesc='scx_loader: A DBUS Interface for Managing sched_ext Schedulers'
 url='https://github.com/sched-ext/scx-loader'
 arch=('x86_64')
 license=('GPL-2.0-only')
 depends=(
-  scx-scheds-git
+  polkit
+  scx-scheds
 )
 makedepends=(
   cargo
@@ -31,9 +33,10 @@ _backports=(
 _reverts=(
 )
 
+
 pkgver() {
   cd $_gitname
-  echo "$(git show --format='%cI' -q main | sed 's/T.*//g;s/-//g').r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
