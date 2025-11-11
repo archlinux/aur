@@ -1,0 +1,17 @@
+post_install() {
+    # okay I've capitulated on this. Since arch packages are always installed from the command line (for now, review this a few years after the steam frame releases), it's no bother to make the user do this instead of doing it ourselves
+    echo "ACTION REQUIRED: To complete the installation, run: systemctl enable --now defter-scrolling"
+}
+
+post_upgrade() {
+    # Restart if already running to use the new version
+    if systemctl is-active --quiet defter-scrolling.service; then
+        systemctl restart defter-scrolling.service
+    else
+        echo "WARNING: defter-scrolling is not running, run: systemctl enable --now defter-scrolling"
+    fi
+}
+
+pre_remove() {
+    systemctl disable --now defter-scrolling.service 2>/dev/null || true
+}
