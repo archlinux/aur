@@ -1,0 +1,18 @@
+pkgbase = python-cachier
+	pkgdesc = Persistent, stale-free, local and cross-machine caching for Python functions.
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/python-cachier/cachier
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-portalocker
+	depends = python-watchdog
+	depends = python-click
+	source = https://files.pythonhosted.org/packages/source/c/cachier/cachier-4.1.0.tar.gz
+	sha256sums = 83fbc941829f66068d83ba1ecd0d5406a65bd67bb623a0c2a0cf926dc36508b4
+
+pkgname = python-cachier
