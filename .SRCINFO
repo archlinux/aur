@@ -1,5 +1,6 @@
 pkgbase = illogical-updots
-	pkgver = 1.0.6
+	pkgdesc = GTK based updater for end4 dotfiles
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/FoxyIsCoding/illogical-updots
 	arch = any
@@ -10,5 +11,7 @@ pkgbase = illogical-updots
 	depends = gdk-pixbuf2
 	depends = librsvg
 	optdepends = papirus-icon-theme: optional icon theme
+	source = git+https://github.com/FoxyIsCoding/illogical-updots.git
+	sha256sums = SKIP
 
 pkgname = illogical-updots
