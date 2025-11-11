@@ -1,6 +1,6 @@
 pkgbase = firefox-bin
 	pkgdesc = Standalone web browser from mozilla.org - Static binaries from upstream
-	pkgver = 144.0
+	pkgver = 145.0
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/new/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = firefox-bin
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = firefox=144.0
+	provides = firefox=145.0
 	conflicts = firefox
 	options = !strip
 	source = firefox.sh
@@ -30,13 +30,9 @@ pkgbase = firefox-bin
 	sha256sums = 9491f195066aa56f4f0bbc83e5f0581a460f4c34ee455ba24db312b540322703
 	sha256sums = c64008cbf01956ce3dba693230670de58fa9487ad19f4ba76614af13beb1b8ef
 	sha256sums = 1c432537a46ffe64b3069bc2c2e7e069797223607b181e77492e74b38e90c730
-	source_x86_64 = firefox-144.0-x86_64.tar.xz::https://archive.mozilla.org/pub/firefox/releases/144.0/linux-x86_64/en-US/firefox-144.0.tar.xz
-	source_x86_64 = firefox-144.0-x86_64.tar.xz.asc::https://archive.mozilla.org/pub/firefox/releases/144.0/linux-x86_64/en-US/firefox-144.0.tar.xz.asc
-	sha256sums_x86_64 = c66a48222ff67d51560240d321895c6926c9b3af345cbf688ced8517781d88d1
+	source_x86_64 = firefox-145.0-x86_64.tar.xz::https://archive.mozilla.org/pub/firefox/releases/145.0/linux-x86_64/en-US/firefox-145.0.tar.xz
+	source_x86_64 = firefox-145.0-x86_64.tar.xz.asc::https://archive.mozilla.org/pub/firefox/releases/145.0/linux-x86_64/en-US/firefox-145.0.tar.xz.asc
+	sha256sums_x86_64 = 00fb922cda6bab971e02bcbfb77923b0a234388ed7d77c23506ca0a1a61d4a86
 	sha256sums_x86_64 = SKIP
-	source_i686 = firefox-144.0-i686.tar.xz::https://archive.mozilla.org/pub/firefox/releases/144.0/linux-i686/en-US/firefox-144.0.tar.xz
-	source_i686 = firefox-144.0-i686.tar.xz.asc::https://archive.mozilla.org/pub/firefox/releases/144.0/linux-i686/en-US/firefox-144.0.tar.xz.asc
-	sha256sums_i686 = 46ffbaf8ab3b68ae7ef3feaffe2339782ecbbd521d08adce61e712cf63589563
-	sha256sums_i686 = SKIP
 
 pkgname = firefox-bin
