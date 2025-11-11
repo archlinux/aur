@@ -1,0 +1,20 @@
+pkgbase = zrc
+	pkgdesc = A custom shell inspired by Tcl
+	pkgver = 2.5hh.r4.gea23328
+	pkgrel = 1
+	url = https://github.com/Edd12321/zrc
+	install = zrc.install
+	arch = any
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = bison
+	makedepends = flex
+	makedepends = make
+	makedepends = gcc
+	makedepends = clang
+	makedepends = grep
+	options = !debug
+	source = git+https://github.com/Edd12321/zrc.git
+	sha256sums = SKIP
+
+pkgname = zrc

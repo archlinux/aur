@@ -1,0 +1,14 @@
+post_install() {
+	if ! grep -xqF "/usr/bin/zrc" >> /etc/shells; then
+		echo "Copying zrc to /etc/shells..."
+		echo "/usr/bin/zrc" >> /etc/shells
+	fi
+}
+
+post_upgrade() {
+	post_install $1
+}
+
+pre_remove() {
+	sed -i '\#/usr/bin/zrc#d' /etc/shells
+}
