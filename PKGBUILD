@@ -1,5 +1,5 @@
 pkgname=factory-cli-bin
-pkgver=1.0.1
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="Factory CLI (prebuilt binary - installs 'droid')"
 arch=('x86_64' 'aarch64')
