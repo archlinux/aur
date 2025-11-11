@@ -1,0 +1,27 @@
+pkgbase = lxpanel-gtk2
+	pkgdesc = Lightweight X11 desktop panel for LXDE
+	pkgver = 0.11.1
+	pkgrel = 2
+	url = https://lxde.org/
+	arch = x86_64
+	groups = lxde
+	license = GPL2
+	makedepends = git
+	makedepends = intltool
+	makedepends = docbook-xml
+	makedepends = docbook-xsl
+	makedepends = wireless_tools
+	depends = alsa-lib
+	depends = curl
+	depends = menu-cache
+	depends = lxmenu-data
+	depends = libwnck
+	depends = libfm-gtk2
+	depends = libkeybinder2
+	optdepends = wireless_tools: netstat plugin
+	provides = lxpanel
+	conflicts = lxpanel
+	source = git+https://github.com/lxde/lxpanel.git#tag=0.11.1
+	sha256sums = 262d261e14a13e6df1bb1a0406afee1e69f6da0891269a3e0a865507d04d5a95
+
+pkgname = lxpanel-gtk2
