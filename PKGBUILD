@@ -1,7 +1,7 @@
 # Maintainer: Inc44
 pkgname=libbsc
 pkgver=3.3.12
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance block-sorting data compressor"
 arch=('x86_64')
 url="https://github.com/IlyaGrebnov/libbsc"

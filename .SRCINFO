@@ -1,7 +1,7 @@
 pkgbase = libbsc
 	pkgdesc = High-performance block-sorting data compressor
 	pkgver = 3.3.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IlyaGrebnov/libbsc
 	arch = x86_64
 	license = Apache-2.0
