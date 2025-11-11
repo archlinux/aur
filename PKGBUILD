@@ -22,14 +22,30 @@ package() {
   install -d "$pkgdir"/usr
   cp -rf "$srcdir"/$pkgname-$_commit/usr "$pkgdir"
 
-  depends=('beautyline'
-    #'sddm-theme-sweet-git'
-    'waybar'
+  depends=(
+    'beautyline'
+    'foot'
     'hyprland'
-    'kvantum-qt5'
     'kvantum'
-    'ttf-fira-code'
-    'ttf-firacode-nerd'
+    'kvantum-qt5'
+    'nwg-drawer'
+    'nwg-launchers'
+    'nwg-look'
+    'plasma5-themes-sweet-full-git'
     'qt5ct'
-    'plasma5-themes-sweet-full-git')
+    'sddm-theme-sweet-git'
+    'ttf-fantasque-sans-mono'
+    'ttf-fira-code'
+    'ttf-fira-code'
+    'ttf-fira-sans'
+    'ttf-firacode-nerd'
+    'ttf-firacode-nerd'
+    'ttf-jetbrains-mono'
+    'ttf-nerd-fonts-symbols-common'
+    'ttf-nerd-fonts-symbols-mono'
+    'ttf-opensans'
+    'waybar'
+    'waybar-module-pacman-updates-git'
+    'wofi'
+  )
 }
