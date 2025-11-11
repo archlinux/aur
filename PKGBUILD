@@ -1,6 +1,6 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: alex5402 <alexbhaiya@duck.com>
 pkgname=factory-cli-bin
-pkgver=0.23.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Factory CLI - AI-powered terminal assistant"
 arch=('x86_64' 'aarch64')
