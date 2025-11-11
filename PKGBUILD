@@ -1,10 +1,12 @@
 # Maintainer: xiota / aur.chaotic.cx
 
+: ${_ftn2xml_ver:=0.2.0}
+
 _pkgname='geany-plugin-preview'
 pkgname="$_pkgname"
 pkgdesc="Plugin for Geany to preview markdown and other markup languages"
 url="https://github.com/xiota/geany-preview"
-pkgver=0.2.1
+pkgver=0.2.3
 pkgrel=1
 license=('GPL-3.0-or-later')
 arch=('x86_64')
@@ -31,11 +33,11 @@ options=('!debug' '!lto' '!strip')
 _pkgsrc="geany-preview"
 source=(
   "$_pkgsrc"::"git+$url.git#tag=v$pkgver"
-  'git+https://github.com/xiota/ftn2xml.git'
+  "ftn2xml"::"git+https://github.com/xiota/ftn2xml.git#tag=v$_ftn2xml_ver"
 )
 sha256sums=(
-  '6d4416af323b4d92b9b4419ad5e69b5b84e1a5d7e9572271fa8546df9180a0f1'
-  'SKIP'
+  'faa3436ad4ebfc1b21a412c58cf9571987714f50dc016597f5e33b74d5927cb1'
+  'f54063c940cb52a35eba78c5bf5fcc44c6963e78135936227e647d22e490c338'
 )
 
 prepare() {
