@@ -2,11 +2,11 @@
 # Maintainer: David Rosenstrauch <darose@darose.net>
 
 pkgname=lastpass
-pkgver=4.137.2
+pkgver=4.147.2
 pkgrel=1
 _universalver=4.49.0-1
 #_chromever=4.89.0
-_amo_file=4401343
+_amo_file=4602959
 _crx_id=hdokiejnpimakedhajhdlcegeplioahd
 pkgdesc="The Universal LastPass installer for Firefox, Chrome, and Opera"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ source=("${pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/
 #noextract=("${pkgname}-${pkgver}.xpi"
 #           "lpchrome-${_chromever}.crx")
 noextract=("${pkgname}-${pkgver}.xpi")
-sha256sums=('9dd1aec88569fa16cbe2725159894bd114132be6a36cf3f68b26d9e1a27db61c'
+sha256sums=('bb779789289e7fc39f1590d933bc6b1ac59e096ae537a55bb1ae4947f196cea0'
             '826e383a6bad905d942e22b14aee67dbc39e8f7a5243d706af787c8fcec6f158'
             'e8eb3b585809d6644807727c5bd0a74ead96dd2c5a7e6d2ce29e0b6ea28b9e59'
             '82af9e9296f92e92ca325449e0c2b2deb3c21f65afea45aeb823090cb32aad76'
