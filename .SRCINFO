@@ -1,0 +1,20 @@
+pkgbase = ori
+	pkgdesc = OpenRouter Interactive Terminal AI Assistant
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://gitlab.archlinux.org/piratheon/ori
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = make
+	makedepends = pkg-config
+	depends = curl
+	depends = jsoncpp
+	depends = bash
+	depends = gcc-libs
+	depends = glibc
+	source = ori-v0.5.tar.gz::https://github.com/piratheon/ori/archive/refs/tags/v0.5.tar.gz
+	sha256sums = 0cbf11de9e488491429e36252615b41e8843c38b6c904d085c4dc8534c976373
+
+pkgname = ori
