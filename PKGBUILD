@@ -2,7 +2,7 @@
 
 pkgname=git-hash-select
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A hash selector utility for bash with optional shell bindings"
 arch=(any)
@@ -10,7 +10,7 @@ url="https://github.com/roddyrap/git-hash-select"
 license=('MIT')
 
 depends=('git' 'fzf' 'util-linux')
-optdepends=('xclip: X11 copy to clipboard support')
+optdepends=('xclip: X11 copy to clipboard support' 'wl-clipboard: Wayland copy to clipboard support')
 
 source=("git-hash-select::git+https://github.com/roddyrap/git-hash-select.git#tag=v${pkgver}")
 sha256sums=('SKIP')
