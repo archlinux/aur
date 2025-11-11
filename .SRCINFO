@@ -1,7 +1,7 @@
 pkgbase = manjaro-hyprland-settings
 	pkgdesc = Manjaro Linux Hyprland settings
 	pkgver = 20251111
-	pkgrel = 5
+	pkgrel = 6
 	url = https://gitlab.com/garuda-linux/themes-and-settings/settings/manjaro-hyprland-settings
 	install = manjaro-hyprland-settings.install
 	arch = any
@@ -21,6 +21,7 @@ pkgname = manjaro-hyprland-settings
 	depends = nwg-drawer
 	depends = nwg-launchers
 	depends = nwg-look
+	depends = pamixer
 	depends = plasma5-themes-sweet-full-git
 	depends = qt5ct
 	depends = ttf-fantasque-sans-mono

@@ -3,7 +3,7 @@
 pkgname=manjaro-hyprland-settings
 pkgver="20251111"
 _commit='4e9ea3ed9183c9d4744aaa3141ba6a066b405e35'
-pkgrel=5
+pkgrel=6
 arch=('any')
 url="https://gitlab.com/garuda-linux/themes-and-settings/settings/${pkgname}"
 license=('GPL')
@@ -31,9 +31,9 @@ package() {
     'nwg-drawer'
     'nwg-launchers'
     'nwg-look'
+    'pamixer'
     'plasma5-themes-sweet-full-git'
     'qt5ct'
-    #'sddm-theme-sweet-git'
     'ttf-fantasque-sans-mono'
     'ttf-fira-code'
     'ttf-fira-sans'
