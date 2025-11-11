@@ -1,0 +1,5 @@
+[aionui-bin]
+source = "github"
+github = "iOfficeAI/AionUi"
+use_latest_release = true
+prefix = "v"
