@@ -1,0 +1,13 @@
+pkgbase = ruby-http-2
+	pkgdesc = Pure-Ruby HTTP 2.0 protocol implementation
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://rubygems.org/gems/http-2
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = http-2-1.1.1.gem
+	source = https://rubygems.org/downloads/http-2-1.1.1.gem
+	sha256sums = 1141a5a03c2f4e6b8d2fa62394de581e1ff6387711cd7ed577212e9d95562bba
+
+pkgname = ruby-http-2
