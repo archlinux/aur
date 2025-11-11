@@ -1,7 +1,7 @@
 # Maintainer: Inc44
 pkgname=libbsc
 pkgver=3.3.12
-pkgrel=2
+pkgrel=3
 pkgdesc="High-performance block-sorting data compressor"
 arch=('x86_64')
 url="https://github.com/IlyaGrebnov/libbsc"
@@ -20,5 +20,6 @@ build() {
 package() {
   cd "$srcdir/libbsc"
   install -Dm755 "build/bsc" "$pkgdir/usr/bin/bsc"
+  install -Dm644 "build/libbsc.a" "$pkgdir/usr/lib/libbsc.a"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
