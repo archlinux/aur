@@ -1,0 +1,21 @@
+pkgbase = qt5gtk2-git
+	pkgdesc = GTK+2.0 integration plugins for Qt5
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/chooisfox/qt5gtk2.git
+	arch = x86_32
+	arch = x86_64
+	arch = aarmv7
+	arch = mips
+	arch = mips64
+	license = GPL
+	depends = qt5-base
+	depends = cmake
+	depends = make
+	depends = gtk2
+	depends = git
+	conflicts = qt5gtk2
+	source = qt5gtk2-git::git+https://github.com/chooisfox/qt5gtk2.git#branch=master
+	sha256sums = SKIP
+
+pkgname = qt5gtk2-git
