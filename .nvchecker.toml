@@ -2,3 +2,4 @@
 source = "git"
 git = "https://github.com/GiorgosXou/TUIFIManager.git"
 prefix = "v."
+exclude_regex = ".*4.0.*"
