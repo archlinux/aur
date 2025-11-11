@@ -5,7 +5,7 @@
 _pkgname=libcanberra
 pkgname=libcanberra-gtk2
 pkgver=0.30+r2+gc0620e4
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="A small and lightweight implementation of the XDG Sound Theme Specification"
 url="https://0pointer.net/lennart/projects/libcanberra/"
@@ -14,7 +14,7 @@ license=(LGPL)
 depends=(libvorbis libltdl alsa-lib libpulse tdb sound-theme-freedesktop)
 makedepends=(gtk-doc gtk2 gtk3 git)
 optdepends=('gtk3: canberra-gtk-play')
-provides=(libcanberra-pulse libcanberra{,-gtk,-gtk3}.so)
+provides=(libcanberra-pulse libcanberra{,-gtk,-gtk3}.so "$_pkgname")
 conflicts=("$_pkgname")
 replaces=("libcanberra-pulse<0.30+2+gc0620e4-4")
 options=(libtool)
