@@ -2,7 +2,7 @@
 
 pkgname=python-texttools
 _name=${pkgname//-/_}
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 epoch=
 pkgdesc="Python texttools."
@@ -25,7 +25,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('aab593d558f0f8fb9f90f11f7cc97e4688bb01c46db81b9fb07a23b619420dba')
+sha256sums=('971e56e41f496030dabb556c624f4538daf4739912ee3f1ba7478437a54e7e15')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
