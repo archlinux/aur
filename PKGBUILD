@@ -1,4 +1,5 @@
-#Maintainer: Eliot Whalan <ewhal at pantsu dot cat>
+#Maintainer vuillaume <vuillaume12 at yahoo dot com>
+#Contributor: Eliot Whalan <ewhal at pantsu dot cat>
 #Contributor: Ng Oon-Ee <ngoonee.talk@gmail.com>
 pkgname=ladspa-bs2b
 pkgver=0.9.1
@@ -22,4 +23,3 @@ package() {
   cd ${srcdir}/$pkgname-${pkgver}
   make DESTDIR=${pkgdir} install
 }
-
