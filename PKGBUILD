@@ -2,7 +2,7 @@
 
 pkgname=atuin-desktop-bin
 pkgver=0.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Atuin Desktop: Runbooks that Run. A local-first, executable runbook editor for real terminal workflows"
 arch=('x86_64')
 url="https://github.com/atuinsh/desktop"
@@ -27,7 +27,7 @@ options=("!debug")
 
 provides=("${pkgname%-bin}")
 
-source_x86_64=("${pkgname}-x86_64::${url}/releases/download/v${pkgver}/Atuin_Desktop-${pkgver}-1.x86_64.rpm")
+source_x86_64=("${pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/Atuin_Desktop-${pkgver}-1.x86_64.rpm")
 
 package() {
     cp -ar "${srcdir}/usr/" "${pkgdir}/usr/"
