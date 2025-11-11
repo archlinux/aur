@@ -6,7 +6,6 @@ pkgbase = cherry-studio-bin
 	arch = x86_64
 	license = AGPL-3.0
 	depends = fuse2
-	conflicts = cherry-studio
 	noextract = cherry-studio-1.6.7.AppImage
 	options = !strip
 	options = !debug
