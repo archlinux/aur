@@ -8,7 +8,10 @@ pkgbase = vinyl
 	license = GPL-2.0-or-later
 	makedepends = cmake
 	makedepends = extra-cmake-modules>=6.13.0
-	makedepends = git
+	makedepends = python
+	makedepends = python-cairosvg
+	makedepends = python-lxml
+	makedepends = xorg-xcursorgen
 	depends = kdecoration
 	depends = qt6-declarative
 	depends = kcoreaddons
@@ -21,9 +24,6 @@ pkgbase = vinyl
 	depends = kdoctools
 	depends = kpackage
 	depends = frameworkintegration
-	depends = python-cairosvg
-	depends = python-lxml
-	depends = xorg-xcursorgen
 	depends = libplasma>=6.3.0
 	conflicts = vinyl-git
 	options = !emptydirs

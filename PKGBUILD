@@ -10,13 +10,15 @@ pkgdesc="Vinyl Theme for KDE Plasma 6"
 url="https://github.com/ekaaty/vinyl-theme"
 arch=('x86_64' 'aarch64')
 license=("GPL-2.0-or-later")
-pkgdir="$srcdir/fakeinstall_kf6"
 build_dir="build_kf6"
 
 makedepends=(
   'cmake'
   'extra-cmake-modules>=6.13.0'
-  'git'
+  'python'
+  'python-cairosvg'
+  'python-lxml'
+  'xorg-xcursorgen'
 )
 
 options=(!emptydirs !debug)
@@ -40,9 +42,6 @@ depends=(
   'kdoctools'
   'kpackage'
   'frameworkintegration'
-  'python-cairosvg'
-  'python-lxml'
-  'xorg-xcursorgen'
   'libplasma>=6.3.0'
 )
 
@@ -64,7 +63,6 @@ build() (
 )
 
 package() (
-  install -dm755 "$pkgdir.git"
   DESTDIR="$pkgdir" cmake --install $build_dir --prefix /usr
   rm -rf "$pkgdir/usr/lib/cmake"
 )
