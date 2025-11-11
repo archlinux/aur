@@ -8,7 +8,7 @@ _itkver=5.4.0
 _vtkver=9.3.1
 pkgname=itk-snap
 pkgver=4.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A software application used to segment structures in 3D medical images"
 arch=('x86_64')
 url="https://www.itksnap.org"
@@ -16,7 +16,7 @@ license=('GPL-3.0-or-later')
 depends=(
   curl
   expat
-  gcc13-libs
+  gcc14-libs
   glibc
   hdf5
   libglvnd
@@ -35,7 +35,7 @@ makedepends=(
   cmake
   eigen
   fftw
-  gcc13
+  gcc14
   gendesk
   git
 )
@@ -68,8 +68,8 @@ build() {
   # build itk
   # building with system googletest is not working
   echo "building itk..."
-  CC=gcc-13 \
-  CXX=g++-13 \
+  CC=gcc-14 \
+  CXX=g++-14 \
   cmake \
     -B ${srcdir}/build-itk \
     -DBUILD_EXAMPLES=OFF \
@@ -84,8 +84,8 @@ build() {
 
   # build vtk with qt6
   echo "building vtk..."
-  CC=gcc-13 \
-  CXX=g++-13 \
+  CC=gcc-14 \
+  CXX=g++-14 \
   cmake \
     -B ${srcdir}/build-vtk \
     -DBUILD_SHARED_LIBS=OFF \
@@ -102,8 +102,8 @@ build() {
 
   # build itk-snap
   echo "building itk-snap..."
-  CC=gcc-13 \
-  CXX=g++-13 \
+  CC=gcc-14 \
+  CXX=g++-14 \
   cmake \
     -B ${srcdir}/build \
     -DBUILD_TESTING=OFF \
