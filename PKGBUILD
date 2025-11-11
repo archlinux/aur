@@ -2,7 +2,7 @@
 
 _pkgname="aaaaxy"
 pkgname="${_pkgname}-bin"
-pkgver=1.6.301
+pkgver=1.6.314
 pkgrel=1
 pkgdesc="A nonlinear puzzle platformer taking place in impossible spaces"
 arch=('x86_64')
@@ -20,8 +20,8 @@ source_x86_64=("${_pkgsrc}-x86_64.zip::${url}/releases/download/v${pkgver}/${_pk
 sha256sums=('98775b1b9cb0ff5bd34ea320e9010e6a5d460e47eb7fae5d7a3fec5a5d9a9365'
             'd2a371c16ac7ac38030d0aa5bddaad1e2365ab56950c32c88e6915c44114fe4b'
             'dc0e53a341b9d5656f0f0e0ce69d9f99dc5f2c74fe51eb79d5348a41d26b1028'
-            '5290ffc70cf4c157e2acce5752bb40863de5c9c3537c149dd70e1aa5605fca84')
-sha256sums_x86_64=('cca5bd8710937078e8d6d7282b334f54430b7ef360e5f999bbd108e2c1ea486a')
+            '568aa2cf53a75eea3761ec206d0399d5a157155bc091a58100b6967172758e6e')
+sha256sums_x86_64=('d2c4be8ea9e1d96d06328e45c67c2026524deb19e609127b1a324e3cd80760e2')
 
 package() {
   cd "${srcdir}"
