@@ -3,7 +3,7 @@
 
 pkgname=claws-mail-gtk2
 _pkgname=claws-mail
-pkgver=3.20.0
+pkgver=3.21.0
 pkgrel=1
 pkgdesc="A GTK+ based e-mail client."
 arch=('x86_64' 'i686')
@@ -39,7 +39,7 @@ conflicts=("$_pkgname")
 source=(https://www.claws-mail.org/download.php?file=releases/claws-mail-$pkgver.tar.xz{,.asc}
 	uintptr_t.patch
         bash_completion)
-sha256sums=('1f2f3d2b2ca39c0c860c7afc5490c790936afbb50cf31debdb2beda728c8d6e5'
+sha256sums=('333f3ac1b6c98542098678d8606583da4adfc7439eb4e81043f7675b45e91a96'
             'SKIP'
             '9f61f2b779c1cc14f1f4f21720b2c5a036d22c880a38edd74208c5945a94cef2'
             '3f6c248b8658cd7a62186bff572cce2525712a498f363cbbda1ed459021c28cb')
@@ -47,7 +47,7 @@ validpgpkeys=('8B3B297A03468356692F8D592CD716D654D6BBD4') # Paul <paul@claws-mai
 
 prepare() {
   cd "${_pkgname}"-${pkgver}
-  patch -Np0 <../uintptr_t.patch
+#  patch -Np0 <../uintptr_t.patch
 }
 
 build() {
