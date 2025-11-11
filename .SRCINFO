@@ -1,7 +1,7 @@
 pkgbase = manjaro-hyprland-settings
 	pkgdesc = Manjaro Linux Hyprland settings
 	pkgver = 20251111
-	pkgrel = 8
+	pkgrel = 9
 	url = https://gitlab.com/garuda-linux/themes-and-settings/settings/manjaro-hyprland-settings
 	install = manjaro-hyprland-settings.install
 	arch = any
@@ -33,6 +33,7 @@ pkgname = manjaro-hyprland-settings
 	depends = ttf-nerd-fonts-symbols-common
 	depends = ttf-nerd-fonts-symbols-mono
 	depends = ttf-opensans
+	depends = uwsm
 	depends = waybar
 	depends = waybar-module-pacman-updates-git
 	depends = wofi
