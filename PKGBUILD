@@ -7,7 +7,7 @@
 
 pkgname=luau-static
 pkgver=0.699
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Static development libraries for the fast, small, safe, gradually typed embeddable scripting language derived from Lua'
 arch=(x86_64)
@@ -82,7 +82,7 @@ package() {
 
 	for component in "${component_headers[@]}"; do
 		find "$component/include/" -name "*.h" -exec \
-			install -vDm0644 -t "$pkgdir/usr/include/luau/" {} +
+			install -vDm0644 -t "$pkgdir/usr/include/Luau/" {} +
 	done
 
 	install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt

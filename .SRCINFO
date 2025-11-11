@@ -1,7 +1,7 @@
 pkgbase = luau-static
 	pkgdesc = Static development libraries for the fast, small, safe, gradually typed embeddable scripting language derived from Lua
 	pkgver = 0.699
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/luau-lang/luau
 	arch = x86_64
