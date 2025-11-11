@@ -1,35 +1,42 @@
 # Maintainer: gcb <1705-gcb@users.noreply.gitlab.archlinux.org>
 pkgname=dtui
 pkgdesc='Small TUI for introspecting the state of the system/session dbus'
-pkgver=2.0.0
+pkgver=3.0.1
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Troels51/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 #source=("${pkgname}-${pkgver}.tar.gz::git+https://github.com/Troels51/${pkgname}.git#tag=v${pkgver}")
-sha256sums=('6467ec552ea6a468841c9186599fe757f9e66380f45244cce37103cc3ed45a29')
+sha256sums=('611e27a18750630025e29bcf5736d4b8ac57e8bba527c734b05623aecab99ed3')
 pkgrel=1
 arch=('x86_64')
 url=https://github.com/Troels51/dtui
 license=('MIT')
 depends=() # dbus: application still only handle local bus...
-makedepends=(rust)
+makedepends=(cargo-audit) # NOTE: remember to `namcap PKGBUILD` and to build with `extra-x86_64-build -c -r /mnt/chroots/arch` in a clean chroot
 optdepends=()
 
-#prepare() {
-#	cd "$pkgname-$pkgver"
-#	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-#}
+prepare() {
+	export RUSTUP_TOOLCHAIN=stable
+	cd "$srcdir/$pkgname-$pkgver"
+	#patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
-	cd "$pkgname-$pkgver"
-	cargo build --verbose
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cd "$srcdir/$pkgname-$pkgver"
+	cargo audit
+	cargo build --frozen --release --all-features
 }
 
 check() {
-	cd "$pkgname-$pkgver"
-	cargo test --verbose
+	export RUSTUP_TOOLCHAIN=stable
+	cd "$srcdir/$pkgname-$pkgver"
+	cargo test --frozen --verbose --all-features
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -o root -g root -m 0755 --preserve-timestamps target/debug/dtui /usr/bin/${pkgname}
+	install -D -m 0755 target/release/dtui "${pkgdir}/usr/bin/${pkgname}"
+	install -D -t "${pkgdir}/usr/share/licenses/${pkgname}/" -m 0644 "$srcdir/$pkgname-$pkgver/LICENSE"
 }
 
