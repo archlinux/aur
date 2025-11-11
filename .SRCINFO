@@ -34,6 +34,6 @@ pkgbase = norisk-client-launcher
 	source = nrclauncher::git+https://github.com/NoRiskClient/noriskclient-launcher.git
 	source = norisk-launcher.desktop
 	sha256sums = SKIP
-	sha256sums = f5ebc0c4a17d112138f20cc137f2e674a4702ccf68d633f72b8819de88644529
+	sha256sums = 49b552bb46e08ae2d9d70ff4ea459bdeba28e4d97883126f89b6039e991c5e6e
 
 pkgname = norisk-client-launcher
