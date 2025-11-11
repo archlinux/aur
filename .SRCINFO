@@ -1,14 +1,13 @@
 pkgbase = gromit-mpx
 	pkgdesc = On-screen annotation tool
-	pkgver = 1.7.0
-	pkgrel = 4
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://github.com/bk138/gromit-mpx/
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = cmake
 	makedepends = git
 	depends = cairo
-	depends = gdk-pixbuf2
 	depends = glib2
 	depends = glibc
 	depends = gtk3
@@ -18,7 +17,7 @@ pkgbase = gromit-mpx
 	depends = libxi
 	depends = lz4
 	backup = etc/gromit-mpx/gromit-mpx.cfg
-	source = git+https://github.com/bk138/gromit-mpx.git#tag=1.7.0
-	sha256sums = 4059ffd9e8cc55f65240522fb8aeac743b31b6e47448030e84e02ccc5a4b4d21
+	source = git+https://github.com/bk138/gromit-mpx.git#tag=1.8.0
+	sha256sums = c4c6110f45568c7be455a6e6abd84813ef59f6acd04e722d5def415672dbbf59
 
 pkgname = gromit-mpx
