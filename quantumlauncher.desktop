@@ -1,0 +1,10 @@
+[Desktop Entry]
+
+Type=Application
+Version=0.4.2
+Name=Quantum Launcher
+Comment=A simple, fast and powerful Minecraft launcher.
+Exec=/usr/bin/quantumlauncher
+Icon=quantumlauncher.png
+Terminal=false
+Categories=Game;Application;
