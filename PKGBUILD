@@ -2,13 +2,13 @@
 
 pkgname=xdg-ninja-git
 _pkgname=xdg-ninja
-pkgver=r324.619f172
-pkgrel=2
+pkgver=r560.cb09ebd
+pkgrel=1
 pkgdesc='A shell script which checks your $HOME for unwanted files and directories.'
 arch=('any')
 url="https://github.com/b3nj5m1n/${_pkgname}"
 license=('MIT')
-depends=('jq' 'bc')
+depends=('jq')
 makedepends=('git')
 optdepends=(
   'glow: rendering markdown in the terminal'
