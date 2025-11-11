@@ -1,4 +1,5 @@
 pkgver=1.0.3
+pkgname='illogical-updots'
 pkgrel=1
 arch=('any')
 url="https://github.com/FoxyIsCoding/illogical-updots"
