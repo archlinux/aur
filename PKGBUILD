@@ -1,7 +1,7 @@
 # Maintainer: killab33z <killab33z @ protonmail-dot-com>
 pkgname=python-alive-progress
 _pkgname=alive-progress
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='A new kind of Progress Bar, with real-time throughput, ETA, and very cool animations.'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-about-time' 'python-grapheme')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('b7b3840e4e282bb95f85cf054abc0eff49364872ea9655585941b5e69e555ea516b39fbbe737c66ba65246ef5f1e3cfb1da3191500cb22540ccd66af67fb0e8f')
+sha512sums=('d957e334fa44e2ea1703311c82e6479c7a8d0de657106d29322d9eb33f4990b8095b2896b41d10f0c759b9dd61abed9c274249cc959d48890fe22afc0e976c3c')
 
 # https://wiki.archlinux.org/title/Python_package_guidelines#Standards_based_(PEP_517)
 build() {
