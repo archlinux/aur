@@ -4,7 +4,7 @@ pkgname=itk-snap-bin
 _pkgname=itk-snap
 _date=20250909
 pkgver=4.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A software application used to segment structures in 3D medical images"
 arch=('x86_64')
 url="https://www.itksnap.org"
@@ -43,5 +43,7 @@ package() {
   cp -a "${srcdir}/${_pkgname}" "${pkgdir}/usr"
   install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -Dm644 "${srcdir}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  # move qt translations to the right place
+  mv -v "${pkgdir}/usr/translations" "${pkgdir}/usr/lib/snap-${pkgver}"
 }
 # vim:set ts=2 sw=2 et:
