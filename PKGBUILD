@@ -1,12 +1,12 @@
 # Maintainer: Nanaka Hiira <hiira plus archlinux at hiira dot dev>
 pkgname=fcitx5-hazkey
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Japanese input method for fcitx5, powered by azooKey engine"
 arch=('x86_64')
 url="https://github.com/7ka-Hiira/fcitx5-hazkey"
 license=('MIT')
-depends=('fcitx5>=5.0.4' 'qt6-base')
+depends=('fcitx5>=5.0.4' 'qt6-base' 'libprotobuf-lite.so=33.0.0-64')
 optdepends=('hazkey-zenzai: Zenzai neural conversion support')
 makedepends=('cmake' 'ninja' 'swift-language')
 provides=('hazkey-server')
