@@ -9,9 +9,9 @@ arch=(any)
 license=('Apache-2.0 AND CC-BY-4.0')
 dependencies=('firefox')
 provides=('emoji-font' 'twemoji-color-font')
-source=("75-twemoji-mozilla.conf" "$url/blob/v0.7.0/LICENSE.md")
+source=("75-twemoji-mozilla.conf" "https://raw.githubusercontent.com/mozilla/twemoji-colr/refs/tags/v0.7.0/LICENSE.md")
 sha256sums=('eaf4913c63acf186cb787023ce91a27508801fdac9d296ba83621d09686fd5fd'
-            '09f626863b5c5d16b1e41f749fbd90ddcb77e61ed239646e32e7d33c3307152e')
+            '64419edc28e9163204c3be73f835a8dfc34cd6c9b8f7d067bb685f119f839a99')
 
 package() {
   install -dm755 "$pkgdir/usr/share/fonts/twemoji-mozilla"
