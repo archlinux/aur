@@ -1,6 +1,6 @@
 pkgbase = mev-boost-bin
 	pkgdesc = MEV-Boost allows Ethereum validators to source high-MEV blocks from a competitive builder marketplace. Binary distribution.
-	pkgver = 1.9
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://vega.xyz
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = mev-boost-bin
 	license = MIT
 	provides = mev-boost
 	conflicts = mev-boost
-	source_x86_64 = https://github.com/flashbots/mev-boost/releases/download/v1.9/mev-boost_1.9_linux_amd64.tar.gz
-	sha256sums_x86_64 = 2056f87e1b0f100c8d6ef9c85abe0e2d5dfb520cb1819237861b0cfa4394736f
-	b2sums_x86_64 = e5ea40ece369b7a138fcc7e6929b65ed235a2e251d3fa1bf83ea66b0d09576f60881553c7e19fd003bd602662a408869cd7af49c8781ae43c9e4f2c3c2ee8f27
-	source_aarch64 = https://github.com/flashbots/mev-boost/releases/download/v1.9/mev-boost_1.9_linux_arm64.tar.gz
-	sha256sums_aarch64 = 384acb7c84770f05d6dd93ba69c8fa7c8e054f1360f09a35195f7e1871adec29
-	b2sums_aarch64 = 2f067df549ea6ba215a6bf2ab7cc7017b85d03f297f402e311a07e8b2255191bf34a49497cb2e876dc1f6f8e4002f5e01b573016997c8eac2e78b48bf811254d
+	source_x86_64 = https://github.com/flashbots/mev-boost/releases/download/v1.10.0/mev-boost_1.10.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 63ada9b5f41cad01973c6e2a732d6e3a3fe1bffa0d3d61b173a1f46ca9567976
+	b2sums_x86_64 = 775e42615b533e2f6f2f2cd4aaa728119b2950d02c9ad0660d16c19c29ed75b551af832d3f29a416c2968cd6690d62303f7af5c2c9f8834e6db0832662028162
+	source_aarch64 = https://github.com/flashbots/mev-boost/releases/download/v1.10.0/mev-boost_1.10.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 619c32f28a4e065e5a0dcb1001e8891a38eeed52a34931fca7fcf825d78efdbf
+	b2sums_aarch64 = 1b2775a6e3b964f0ec6ca4ce52f676190898c73655413b088c4e50cc24bcf5169356ff8cbe8283987b40ce05c70c54a528a4e0f98217cbff333bce0642d83df0
 
 pkgname = mev-boost-bin
