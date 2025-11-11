@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Handle unset value as NULL
 - Show interface on properties list
 
+## [2.7.2] - 2025-11-11
+### Fixed
+  - Column title that removed continuously first letter each time, it stop the issue but don't recover the damage. To fix, manually edit the title Ctrl+R in the Property Selector or wipe out the config file (~/.config/sysd-manager/unit_columns.toml).
+
 ## [2.7.1] - 2025-11-10
 
 ### Added
