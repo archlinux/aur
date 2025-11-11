@@ -1,6 +1,6 @@
 pkgbase = seekr
 	pkgdesc = System search util for linux
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/luxluth/seekr
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = seekr
 	makedepends = git
 	makedepends = gendesk
 	depends = gtk4
-	source = seekr-0.1.2::git+https://github.com/luxluth/seekr#tag=v0.1.2
-	sha256sums = 044df00b2204ad3b40f0a59a7de0f7c091136fe69f37517d9ce2677df064cd39
+	source = seekr-0.1.3::git+https://github.com/luxluth/seekr#tag=v0.1.3
+	sha256sums = 1e720d3416efdfdda4ba9468b3a0f46453cbf24ec86c616ae4df9e3832a0f7a4
 
 pkgname = seekr
