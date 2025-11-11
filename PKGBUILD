@@ -2,7 +2,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=gromit-mpx-git
-pkgver=1.7.0.r7.ga982685
+pkgver=1.8.0.r0.g2ebc0cb
 pkgrel=1
 pkgdesc='On-screen annotation tool (git version)'
 arch=('x86_64')
@@ -10,7 +10,6 @@ url='https://github.com/bk138/gromit-mpx/'
 license=('GPL-2.0-or-later')
 depends=(
     'cairo'
-    'gdk-pixbuf2'
     'glib2'
     'glibc'
     'gtk3'
@@ -44,7 +43,6 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_INSTALL_SYSCONFDIR:PATH='/etc' \
-        -DCMAKE_POLICY_VERSION_MINIMUM:STRING="3.5.0" \
         -Wno-dev
     cmake --build build
 }
