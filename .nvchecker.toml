@@ -1,0 +1,4 @@
+[libkqueue]
+source = "git"
+git = "https://github.com/mheily/libkqueue.git"
+prefix = "v"
