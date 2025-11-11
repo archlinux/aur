@@ -1,7 +1,7 @@
 pkgbase = python-pyvoro-mmalahe
 	pkgdesc = 2D and 3D Voronoi tessellations: a python entry point for the voro++ library
 	pkgver = 1.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mmalahe/pyvoro
 	arch = x86_64
 	license = custom
