@@ -1,16 +1,24 @@
 # Maintainer: killab33z <killab33z @ protonmail-dot-ch>
 pkgname=python-about-time
 _pkgname=about-time
-pkgver=4.2.1
-pkgrel=4
+pkgver=4.2.2
+pkgrel=1
 pkgdesc='Easily measure timing and throughput of code blocks, with beautiful human friendly representations.'
 arch=('any')
 url='https://github.com/rsalmei/about-time'
 license=('MIT')
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('9fe0b488e9a2f6cfa2e20c80e4ba580651e396733ce60a8b51a8b782111ae314768d21a9f539b078781f669a408897b209de9da20e8f9fc70cce23326b589d73')
+#makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz"
+        "pyproject.patch")
+sha512sums=('beb8e0c123d3b63515cb91fc0a4081b8fb1bbcc391d7d24b0a2eddbb45712050da0a02d3d07b1158a8f454b677ac7f2fd5f1db3f60f6529662baca1223edd42b'
+            'cf5ac507ffcd5d8a01d6b6f3ef26eb08bd82c26a71f6cb50ae369545a7bf2e27cb1cefa7531ca81816bcf81ecc935f0f1d43135bfc849fbe73fb060da8d72bcd')
+
+# https://wiki.archlinux.org/title/Patching_packages
+prepare() {
+    patch -d $_pkgname-$pkgver -Np1 -i ../pyproject.patch
+}
 
 # https://wiki.archlinux.org/title/Python_package_guidelines#Standards_based_(PEP_517)
 build() {
