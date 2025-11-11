@@ -1,15 +1,15 @@
 pkgbase = maya-lookdevx
 	pkgdesc = Artist-friendly look-development system with graph shading objects and USD materials
-	pkgver = 1.7.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://help.autodesk.com/view/MAYAUL/2026/ENU/?guid=LookdevX_LookdevX_for_Maya_html
 	arch = x86_64
 	license = custom
-	depends = maya>=2026
+	depends = maya>=2026.2
 	depends = maya<2027
 	depends = maya-usd
 	options = !strip
-	source = manual://LookdevX-1.7.0-2026.el8.x86_64.rpm
-	b2sums = 36e29338256bbe9c91471218e0130d058dc518dff7371657269951f776d8056facbee4c1a710e92cece4a39266c8647141175247810ca283db790f701d99b0a6
+	source = manual://LookdevX-1.9.0-2026.el8.x86_64.rpm
+	b2sums = ff15dbc89fb79c8959db7b920e24e096bcdc0d91c208fa8d4a520bf03faea09566dd4e13abbcaa3a4f752f8e343c9d728f15cb0972f8d3ec1acb9013fb477246
 
 pkgname = maya-lookdevx
