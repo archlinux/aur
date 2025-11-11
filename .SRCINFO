@@ -1,0 +1,23 @@
+pkgbase = tms-controller
+	pkgdesc = TMS Controller is a professional liquid cooling unit communication control software that supports serial port communication with various liquid cooling devices.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://gitee.com/zynwh/tms-controller
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-pyserial
+	makedepends = nuitka
+	makedepends = tk
+	makedepends = tcl
+	depends = glibc
+	depends = hicolor-icon-theme
+	provides = tms-controller
+	conflicts = tms-controller
+	options = !strip
+	options = !debug
+	options = !lto
+	source = tms-controller::git+https://gitee.com/zynwh/tms-controller.git#tag=v1.4.0
+	sha256sums = cf72a6ac1171a57ad556b83ce3f0c028c380c33e66e8e4858977734294817385
+
+pkgname = tms-controller
