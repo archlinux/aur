@@ -7,10 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Expand browser filter to other unit properties
 - Fix Flatpak save file in home directory (make a warning)
 - Save unit file in run 
+- Search (simple) the logs
+- Search dependencies
+- Options on description menu
+- Handle unset value as NULL
+- Show interface on properties list
 
+## [2.7.1] - 2025-11-10
+
+### Added
+ - Allow filtering on all other unit properties
+ - Add a filter marker on browser column
+ - Allow string filter to filter on start, end or middle 
+### Fixed
+  - Missing Icon in "More..." Button Issue https://github.com/plrigaux/sysd-manager/issues/27 
 
 ## [2.6.4] - 2025-11-5
 
@@ -20,7 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.6.3] - 2025-11-4
 
 ### Fixed
-- System unit takes precedence on User Session units
+- System unit takes precedence on User Session units. Issue https://github.com/plrigaux/sysd-manager/issues/25 
 
 ## [2.6.2] - 2025-11-4
 

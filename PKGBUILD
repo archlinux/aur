@@ -1,16 +1,16 @@
 
 # Maintainer: Pierre-Luc Rigaux 
+# Contributor: Pierre-Luc Rigaux 
 pkgname=sysd-manager
-pkgver=2.6.4
+pkgver=2.7.1
 pkgrel=1
-epoch=
-pkgdesc="A systemd GUI to manage your Services, Timers, Sockets and other units. You can enable, disable, stop and start them. Also, you can view their config file and peak at their journal logs."
-arch=('x86_64' 'aarch64')
+pkgdesc="A systemd GUI to manage service, timer, socket and other units."
+arch=("x86_64" "aarch64")
 url="https://github.com/plrigaux/sysd-manager"
-license=('GPLv3+')
+license=("GPL-3.0-or-later")
 groups=()
 depends=("gtk4" "libadwaita" "systemd-libs" "gtksourceview5" "gettext")
-makedepends=(rust cargo git)
+makedepends=("rust" "cargo" "git")
 checkdepends=()
 optdepends=()
 provides=()
@@ -20,17 +20,17 @@ backup=()
 options=()
 install=$pkgname.install
 changelog=CHANGELOG.md
-_commit=25123c32301c05650d34e932e136b8173a39a819
-source=("https://github.com/plrigaux/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+_commit=d6b20422df38b6fc9981dcee211049761bc78fdf
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plrigaux/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('fba2e42f401e9255cbba27493bc620e52d668b4da333d514bc951bb9276b9d59')
+sha256sums=('1aa1ccd9b684019d38d8c9698eb7f7cfcd78a365186c0cc626dc1042412c3af2')
 validpgpkeys=()
 _pkgsrcdir=$pkgname-$pkgver
 
 prepare() {
 	cd $_pkgsrcdir
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
