@@ -8,7 +8,7 @@ pkgdesc="ODBC is an open specification for providing application developers with
 arch=('x86_64')
 license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
 url="http://www.unixodbc.org/"
-depends=('readline' 'libltdl' 'glibc')
+depends=('lib32-readline' 'lib32-libltdl' 'lib32-glibc')
 provides=('libodbc.so' 'libodbccr.so' 'libodbcinst.so')
 source=(#ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-$pkgver.tar.gz
         https://github.com/lurcher/unixODBC/releases/download/v${pkgver}/unixODBC-${pkgver}.tar.gz)
