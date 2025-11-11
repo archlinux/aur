@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034,SC2164,SC2154
 
 pkgname=ts_query_ls-bin
-pkgver=3.11.1
+pkgver=3.12.0
 pkgrel=1
 pkgdesc="LSP implementation for Tree-sitter's query files"
 url='https://github.com/ribru17/ts_query_ls'
@@ -14,8 +14,8 @@ depends=('gcc-libs' 'glibc')
 arch=('x86_64' 'aarch64')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::https://github.com/ribru17/ts_query_ls/releases/download/v$pkgver/ts_query_ls-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::https://github.com/ribru17/ts_query_ls/releases/download/v$pkgver/ts_query_ls-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('770cbf0c69b4e8a6c6dad1ad9cc1607b82be523e0996efd3a5771524c783d857')
-sha256sums_aarch64=('7ac341daea157ec09ffe6b60eca570cdcd37e91c9445cc4559235a2c378f850f')
+sha256sums_x86_64=('7c1fa97462dec829006fbb58a7917ee7dbefc46869e2620a01d301dba16e1e90')
+sha256sums_aarch64=('9031f73fdc656dac684707df51b1560107bd7b2da14ac68e7c14166a656a71c6')
 
 package() {
     cd "$srcdir"
