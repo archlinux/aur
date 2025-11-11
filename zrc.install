@@ -1,5 +1,5 @@
 post_install() {
-	if ! grep -xqF "/usr/bin/zrc" >> /etc/shells; then
+	if ! grep -xqF "/usr/bin/zrc" /etc/shells; then
 		echo "Copying zrc to /etc/shells..."
 		echo "/usr/bin/zrc" >> /etc/shells
 	fi
