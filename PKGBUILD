@@ -1,7 +1,7 @@
 # Maintainer: killab33z <killab33z @ protonmail-dot-ch>
 pkgname=python-sectools
 _pkgname=${pkgname#python-}
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='Offensive security python toolbox.'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-ldap3')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('b7cfafa1ab42fa23180454ac61c5e5e328036024ebaf01c1c3674ed243e0a862b576be2d0de045f5f46dc17fa087d733ec1c04f9d0e20ac0d508208adc27567f')
+sha512sums=('50407b2e09303327eb9b1da8296f5fff560f3825eeaca19c6464092672903005ca46abc8704ace03e2a10f41f6d31e7e97fd4d346a7f0d3eca1afe24cf20eebf')
 
 # https://wiki.archlinux.org/title/Python_package_guidelines#Standards_based_(PEP_517)
 build() {
