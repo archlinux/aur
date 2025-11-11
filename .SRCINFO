@@ -1,10 +1,10 @@
 pkgbase = tremc-git
-	pkgdesc = Curses interface for Transmission. Python 3 fork of transmission-remote-cli
-	pkgver = 0.9.3.r63.gd8deaa5
+	pkgdesc = Curses interface client for Transmission
+	pkgver = 0.9.5.r0.g19592ce
 	pkgrel = 1
 	url = https://github.com/tremc/tremc
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = python
 	optdepends = python-geoip: guess which country peers come from

@@ -2,17 +2,18 @@
 # Contributor: sparse
 
 pkgname=tremc-git
-pkgver=0.9.3.r63.gd8deaa5
+pkgver=0.9.5.r0.g19592ce
 pkgrel=1
-pkgdesc='Curses interface for Transmission. Python 3 fork of transmission-remote-cli'
+pkgdesc='Curses interface client for Transmission'
 arch=(any)
 url=https://github.com/tremc/tremc
-license=(GPL3)
+license=(GPL-3.0-or-later)
 depends=(python)
 makedepends=(git)
-optdepends=('python-geoip: guess which country peers come from'
-            'python-geoip2: guess which country peers come from'
-            'python-pyperclip: copy magnet links to the system clipboard')
+optdepends=(
+  'python-geoip: guess which country peers come from'
+  'python-geoip2: guess which country peers come from'
+  'python-pyperclip: copy magnet links to the system clipboard')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
