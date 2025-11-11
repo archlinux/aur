@@ -1,0 +1,25 @@
+From 575a33cadc2991eb936400dd6a1368dacf0ad615 Mon Sep 17 00:00:00 2001
+From: Vadim Yanitskiy <fixeria@osmocom.org>
+Date: Wed, 12 Nov 2025 01:03:39 +0700
+Subject: [PATCH] CMakeLists.txt: fix building with new boost
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f2ebef3..370b40c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -91,7 +91,7 @@ set(GR_PKG_LIBEXEC_DIR  ${GR_LIBEXEC_DIR}/${CMAKE_PROJECT_NAME})
+ ########################################################################
+ # Find boost
+ ########################################################################
+-find_package(Boost "1.65" COMPONENTS system chrono thread)
++find_package(Boost "1.65" COMPONENTS chrono thread)
+ 
+ if(NOT Boost_FOUND)
+     message(FATAL_ERROR "Boost required to compile gr-fosphor")
+-- 
+2.51.2
+
