@@ -1,7 +1,7 @@
 # Maintainer: Roddy Rappaport <roddy.rappaport@gmail.com>
 
 pkgname=git-hash-select
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 
 pkgdesc="A hash selector utility for bash with optional shell bindings"
