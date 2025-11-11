@@ -15,6 +15,7 @@
 #define CYAN "\033[36m"
 #define RED "\033[31m"
 #define YELLOW "\033[33m"
+#define WHITE "\033[37m"
 #define RESET "\033[0m"
 
 struct MemoryStruct {
@@ -100,7 +101,7 @@ void fetch_ip_ranges(const char *asn, FILE *output) {
     curl_easy_setopt(curl, CURLOPT_USERAGENT, "asnlookup-c-client/1.0");
     CURLcode res = curl_easy_perform(curl);
     if (res == CURLE_OK) {
-        fprintf(output, "\nIP Ranges:\n%s\n", chunk.memory);
+        fprintf(output, CYAN "\nIP Ranges:\n" WHITE "%s\n" RESET, chunk.memory);
     } else {
         fprintf(stderr, RED "Error fetching IP ranges: %s\n" RESET, curl_easy_strerror(res));
     }
@@ -140,49 +141,47 @@ void fetch_bgpview_info(const char *asn, FILE *output) {
         free(chunk.memory);
         return;
     }
-    fprintf(output, "\nASN Number: %d\n", cJSON_GetObjectItem(data, "asn")->valueint);
-    fprintf(output, "Name: %s\n", cJSON_GetObjectItem(data, "name")->valuestring);
-    fprintf(output, "Description: %s\n", cJSON_GetObjectItem(data, "description_short")->valuestring);
-    fprintf(output, "Country: %s\n", cJSON_GetObjectItem(data, "country_code")->valuestring);
-    fprintf(output, "Website: %s\n", cJSON_GetObjectItem(data, "website")->valuestring);
+    fprintf(output, GREEN "\nASN Number: %d\n", cJSON_GetObjectItem(data, "asn")->valueint);
+    fprintf(output, GREEN "Name: %s\n", cJSON_GetObjectItem(data, "name")->valuestring);
+    fprintf(output, GREEN "Description: %s\n", cJSON_GetObjectItem(data, "description_short")->valuestring);
+    fprintf(output, GREEN "Country: %s\n", cJSON_GetObjectItem(data, "country_code")->valuestring);
+    fprintf(output, GREEN "Website: %s\n", cJSON_GetObjectItem(data, "website")->valuestring);
     cJSON *emails = cJSON_GetObjectItem(data, "email_contacts");
     if (emails) {
-        fprintf(output, "\nEmail Contacts:\n");
+        fprintf(output, CYAN "\nEmail Contacts:\n");
         for (int i = 0; i < cJSON_GetArraySize(emails); i++) {
-            fprintf(output, " - %s\n", cJSON_GetArrayItem(emails, i)->valuestring);
+            fprintf(output, WHITE " - %s\n", cJSON_GetArrayItem(emails, i)->valuestring);
         }
     }
     cJSON *abuse = cJSON_GetObjectItem(data, "abuse_contacts");
     if (abuse) {
-        fprintf(output, "\nAbuse Contacts:\n");
+        fprintf(output, RED "\nAbuse Contacts:\n");
         for (int i = 0; i < cJSON_GetArraySize(abuse); i++) {
-            fprintf(output, " - %s\n", cJSON_GetArrayItem(abuse, i)->valuestring);
+            fprintf(output, WHITE " - %s\n", cJSON_GetArrayItem(abuse, i)->valuestring);
         }
     }
     cJSON *address = cJSON_GetObjectItem(data, "owner_address");
     if (address) {
-        fprintf(output, "\nOwner Address:\n");
+        fprintf(output, YELLOW "\nOwner Address:\n");
         for (int i = 0; i < cJSON_GetArraySize(address); i++) {
-            fprintf(output, " %s\n", cJSON_GetArrayItem(address, i)->valuestring);
+            fprintf(output, WHITE " %s\n", cJSON_GetArrayItem(address, i)->valuestring);
         }
     }
-    fprintf(output, "Traffic Ratio: %s\n", cJSON_GetObjectItem(data, "traffic_ratio")->valuestring);
-    fprintf(output, "Updated: %s\n", cJSON_GetObjectItem(data, "date_updated")->valuestring);
+    fprintf(output, GREEN "Traffic Ratio: %s\n", cJSON_GetObjectItem(data, "traffic_ratio")->valuestring);
+    fprintf(output, GREEN "Updated: %s\n", cJSON_GetObjectItem(data, "date_updated")->valuestring);
     cJSON_Delete(root);
     curl_easy_cleanup(curl);
     free(chunk.memory);
 }
 
 void print_help(const char *progname, FILE *output) {
-    fprintf(output, "Usage: %s -i <IP address>\n"
-                    " -d <domain name>\n"
-                    " -f <filename>\n", progname);
-    fprintf(output, "Options:\n");
-    fprintf(output, " -i <IP[,IP,...]> Specify one or more IP addresses (comma-separated)\n");
-    fprintf(output, " -d <domain[,domain,...]> Specify one or more domain names (comma-separated)\n");
-    fprintf(output, " -f <file> Save output to a formatted text file\n");
-    fprintf(output, " --help Show this help message\n");
-    fprintf(output, " --version Show latest GitHub release version\n");
+    fprintf(output, CYAN "Usage: %s -i <options>\n", progname);
+    fprintf(output, CYAN "Options:\n");
+    fprintf(output, WHITE " -i <IP[,IP,...]> Specify one or more IP addresses (comma-separated)\n");
+    fprintf(output, WHITE " -d <domain[,domain,...]> Specify one or more domain names (comma-separated)\n");
+    fprintf(output, WHITE " -f <file> Save output to a formatted text file\n");
+    fprintf(output, WHITE " --help Show this help message\n");
+    fprintf(output, WHITE " --version Show latest GitHub release version\n");
 }
 
 char *resolve_domain_to_ip(const char *domain) {
@@ -238,7 +237,7 @@ int main(int argc, char *argv[]) {
     if (strlen(filename) > 0) {
         output = fopen(filename, "w");
         if (!output) {
-            fprintf(stderr, "Failed to open file for writing.\n");
+            fprintf(stderr, RED "Failed to open file for writing.\n");
             return 1;
         }
     }
@@ -257,7 +256,7 @@ int main(int argc, char *argv[]) {
             if (!asn) {
                 fprintf(stderr, RED "Failed to resolve ASN from IP: %s\n" RESET, token);
             } else {
-                fprintf(output, "Resolved ASN for IP %s: %s\n", token, asn);
+                fprintf(output, GREEN "Resolved ASN for IP %s: %s\n", token, asn);
                 fetch_ip_ranges(asn, output);
                 fetch_bgpview_info(asn, output);
             }
@@ -276,7 +275,7 @@ int main(int argc, char *argv[]) {
                 if (!asn) {
                     fprintf(stderr, RED "Failed to resolve ASN from domain %s (IP %s)\n" RESET, token, resolved_ip);
                 } else {
-                    fprintf(output, "Resolved ASN for domain %s (IP %s): %s\n", token, resolved_ip, asn);
+                    fprintf(output, GREEN "Resolved ASN for domain %s (IP %s): %s\n", token, resolved_ip, asn);
                     fetch_ip_ranges(asn, output);
                     fetch_bgpview_info(asn, output);
                 }
