@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=cloudflare-warp-nox-bin
-pkgver=2025.8.779
+pkgver=2025.9.558
 pkgrel=1
 pkgdesc="Cloudflare Warp Client (for servers without graphical environment)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('cloudflare-warp' 'cloudflare-warp-bin')
 options=('!debug' '!strip' '!emptydirs')
 source=("${pkgname}-${pkgver}.deb::https://pkg.cloudflareclient.com/pool/noble/main/c/cloudflare-warp/cloudflare-warp_${pkgver}.0_amd64.deb")
 noextract=("${pkgname}-${pkgver}.deb")
-b2sums=('7b2ff41d0fb47eb726538b5aa80a44d7b3fac2627364a8b7da7479d63065d00ca36f64d1394ba38ee54d2820475fa9381ad42a063b2a867816e3b924eaaf5b1f')
+b2sums=('5c5192f43826c3dde9c79da978a030efad023de31f7b1c20d9703847a13a0da551c5cdd3122ed3756da9fc1df46b35d266f62594ab246b7da11a021e691de46e')
 
 prepare() {
   mkdir -p "${srcdir}/extract"
