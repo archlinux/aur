@@ -1,0 +1,26 @@
+pkgbase = xermius-bin
+	pkgdesc = Xermius - Easy SSH Client
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://xermius.com
+	arch = x86_64
+	license = unknown
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	optdepends = libappindicator-gtk3: for system tray icon support
+	provides = xermius
+	conflicts = xermius
+	options = !strip
+	source_x86_64 = xermius-1.0.3.deb::https://support.xermius.com/downloads/xermius_1.0.3_amd64.deb
+	sha512sums_x86_64 = 30e5dce413fd3c86ede1b845db9e94e21e4cb7e74113bf05a3cadcb61164160c8b45f678dfe64920ababfebd710cc13350c808f46698b5ac9df33d67fb452528
+
+pkgname = xermius-bin
