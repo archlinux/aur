@@ -2,7 +2,7 @@
 _appname=xiao-hong-shu
 pkgname="${_appname//-/}-pake"
 _pkgname=XiaoHongShu
-pkgver=3.4.2
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Use Pake to package XiaoHongShu.小红书 App,是年轻人的生活方式社区,每月有超过2亿人在这里分享生活经验,发现真实、美好、多元的世界,找到想要的生活 。"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "${pkgname}-${pkgver}.deb::${_ghurl}/releases/download/V${pkgver}/${_pkgname}_${CARCH}.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tw93/Pake/V${pkgver}/LICENSE"
 )
-sha256sums=('17e2fb9bcb6f64652aaefba3a23378911a44026263625e2289310ab9e85442c5'
+sha256sums=('44da02c8c109fe6aed26f2cbd75221390a5af210deca2fea71f6b228c6f0ff95'
             '462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
