@@ -1,5 +1,6 @@
 /*.pkg.tar.zst
 /grav-*.zip
+/grav
 /pkg
 /src
 /TODO
