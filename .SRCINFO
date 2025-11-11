@@ -36,6 +36,6 @@ pkgbase = norisk-client-launcher-nvidia
 	source = wrapper.sh
 	sha256sums = SKIP
 	sha256sums = 97317766cacfab18b7ee0b485bc8ed0193c37060ef0e925b96e486461c151082
-	sha256sums = 775c4ca7711b054491eedd264ffdbdb5a6e8df0d23a1623d450e26be36b36b0c
+	sha256sums = c04ef79b98d257a3eb008aa97ec399b910fec9842621374ed489956a76aaa534
 
 pkgname = norisk-client-launcher-nvidia

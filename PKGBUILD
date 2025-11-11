@@ -8,10 +8,10 @@ arch=("x86_64")
 url="https://norisk.gg/"
 license=('GPL-3.0-only')
 depends=('cairo' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup3' 'glibc' 'bzip2' 'gcc-libs' 'openssl' 'xz')
-makedepends=('git' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'rust' 'nodejs' 'clang' 'lld' 'webkit2gtk-4.1' 'yarn' )
+makedepends=('git' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'rust' 'nodejs' 'clang' 'lld' 'webkit2gtk-4.1' 'yarn')
 conflicts=("noriskclient-launcher" 'no-risk-client-bin' 'no-risk-client' 'noriskclient-launcher-git' 'norisk-client-launcher')
 source=('nrclauncher::git+https://github.com/NoRiskClient/noriskclient-launcher.git' 'norisk-launcher.desktop' 'wrapper.sh')
-sha256sums=('SKIP' '97317766cacfab18b7ee0b485bc8ed0193c37060ef0e925b96e486461c151082' '775c4ca7711b054491eedd264ffdbdb5a6e8df0d23a1623d450e26be36b36b0c')
+sha256sums=('SKIP' '97317766cacfab18b7ee0b485bc8ed0193c37060ef0e925b96e486461c151082' 'c04ef79b98d257a3eb008aa97ec399b910fec9842621374ed489956a76aaa534')
 
 pkgver() {
 	cd "$srcdir/nrclauncher"
@@ -27,7 +27,7 @@ build() {
 package() {
 	cd "$srcdir/nrclauncher/src-tauri/target/release"
 	# Binary
-	install -Dm755 noriskclient-launcher-v3 "$pkgdir"/usr/bin/noriskclient-launcher-v3.bin
+	install -Dm755 noriskclient-launcher-v3 "$pkgdir"/usr/bin/noriskclient-launcher-v3
 	# Wrapper
 	install -Dm755 "$srcdir/wrapper.sh" "$pkgdir/usr/bin/norisk-client"
 	# Desktop
