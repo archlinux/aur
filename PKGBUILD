@@ -1,4 +1,3 @@
-pkgname=illogical-updots
 pkgver=1.0.3
 pkgrel=1
 arch=('any')
@@ -6,18 +5,18 @@ url="https://github.com/FoxyIsCoding/illogical-updots"
 license=('custom')
 depends=('python' 'git' 'adwaita-icon-theme' 'gdk-pixbuf2' 'librsvg')
 optdepends=('papirus-icon-theme: optional icon theme')
-source=("https://github.com/FoxyIsCoding/illogical-updots/archive/refs/heads/main.tar.gz")
-sha256sums=('SKIP')
+source=()
+sha256sums=()
 
-build() {
-  # Nothing to build; this is a script and resource package
-  return 0
+prepare() {
+  # Clone the main branch of the repo into the srcdir
+  git clone --depth 1 https://github.com/FoxyIsCoding/illogical-updots.git "$srcdir/illogical-updots"
 }
 
 package() {
-  # Extract everything to $pkgdir/usr/share/illogical-updots
+  # Extract all files from the cloned repo to the package folder
   mkdir -p "$pkgdir/usr/share/illogical-updots"
-  bsdtar -xf "$srcdir/main.tar.gz" -C "$pkgdir/usr/share/illogical-updots" --strip-components=1
+  cp -r "$srcdir/illogical-updots/"* "$pkgdir/usr/share/illogical-updots/"
 
   # Install python executable script
   install -Dm755 "$pkgdir/usr/share/illogical-updots/app.py" "$pkgdir/usr/bin/illogical-updots"
@@ -41,5 +40,3 @@ StartupWMClass=illogical-updots
 X-GNOME-UsesNotifications=true
 EOF
 }
-
-
