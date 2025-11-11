@@ -1,6 +1,6 @@
 pkgbase = python-scmrepo
 	pkgdesc = SCM wrapper and fsspec filesystem for Git for use in DVC
-	pkgver = 3.5.2
+	pkgver = 3.5.3
 	pkgrel = 1
 	url = https://github.com/iterative/scmrepo
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-scmrepo
 	depends = python-pathspec
 	depends = python-pygit2
 	depends = python-pygtrie
-	source = https://files.pythonhosted.org/packages/source/s/scmrepo/scmrepo-3.5.2.tar.gz
-	sha256sums = c951d98cd36aead02a69a75926455a163d435c6f996c76b92be5f0c717551f28
+	source = https://files.pythonhosted.org/packages/source/s/scmrepo/scmrepo-3.5.3.tar.gz
+	sha256sums = 0683a30826533e773ddbc7bfe4e540aa46f53ba09631d8683fa7a1cdc3d4242c
 
 pkgname = python-scmrepo
