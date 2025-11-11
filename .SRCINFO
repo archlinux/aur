@@ -1,0 +1,14 @@
+pkgbase = illogical-updots
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/FoxyIsCoding/illogical-updots
+	arch = any
+	license = custom
+	depends = python
+	depends = git
+	depends = adwaita-icon-theme
+	depends = gdk-pixbuf2
+	depends = librsvg
+	optdepends = papirus-icon-theme: optional icon theme
+
+pkgname = illogical-updots
