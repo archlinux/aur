@@ -3,7 +3,7 @@
 pkgname=manjaro-hyprland-settings
 pkgver="20251111"
 _commit='3c8c9a31e10ab0a6acaa87f50783ec193eac97f8'
-pkgrel=10
+pkgrel=11
 arch=('any')
 url="https://gitlab.com/garuda-linux/themes-and-settings/settings/${pkgname}"
 license=('GPL')
@@ -25,6 +25,7 @@ package() {
   depends=(
     'beautyline'
     'foot'
+    'grim'
     'hyprland'
     'kvantum'
     'kvantum-qt5'
@@ -35,6 +36,8 @@ package() {
     'pamixer'
     'plasma5-themes-sweet-full-git'
     'qt5ct'
+    'slurp'
+    'swappy'
     'ttf-fantasque-sans-mono'
     'ttf-fira-code'
     'ttf-fira-sans'
