@@ -1,0 +1,15 @@
+pkgbase = drtl
+	pkgdesc = Yet another tldr client written in Zig
+	pkgver = 1.0.0+r1+gf93ac5e
+	pkgrel = 1
+	url = https://github.com/jiripospisil/drtl
+	arch = aarch64
+	arch = i686
+	arch = riscv64
+	arch = x86_64
+	license = MIT
+	makedepends = zig0.13
+	source = drtl-f93ac5e59cfdfa25385da754fa8c5b107ef6fab7.tar.gz::https://github.com/jiripospisil/drtl/archive/f93ac5e59cfdfa25385da754fa8c5b107ef6fab7.tar.gz
+	b2sums = 60d4b95b017527284357c9abfed1c46b07ef42e2be0695b3655dbef6d9d72732b3b67855a8a06aba28b4e4c5da643fa028895e4a5b166c14fdb8b005ea439dd5
+
+pkgname = drtl

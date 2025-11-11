@@ -1,0 +1,4 @@
+[drtl]
+source = "git"
+git = "https://github.com/jiripospisil/drtl.git"
+prefix = "v"
