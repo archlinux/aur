@@ -19,8 +19,11 @@ package() {
   mkdir -p "$pkgdir/usr/share/illogical-updots"
   cp -r "$srcdir/illogical-updots/"* "$pkgdir/usr/share/illogical-updots/"
 
-  # Install python executable script
-  install -Dm755 "$pkgdir/usr/share/illogical-updots/app.py" "$pkgdir/usr/bin/illogical-updots"
+  # Install launcher script that runs the app from /usr/share
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/illogical-updots" <<'EOF'
+#!/usr/bin/env sh
+exec python /usr/share/illogical-updots/app.py "$@"
+EOF
 
   # Install icon
   install -Dm644 "$pkgdir/usr/share/illogical-updots/.github/assets/logo.png" \
