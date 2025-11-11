@@ -1,17 +1,17 @@
 pkgbase = mustang-bin
 	pkgdesc = New full-featured desktop email, chat and video conference client.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.9.6
+	pkgver = 0.9.7
 	pkgrel = 1
 	url = https://mustang.im/
 	arch = x86_64
 	license = LicenseRef-EUPL-1.2
 	depends = electron32
-	provides = mustang=0.9.6
+	provides = mustang=0.9.7
 	conflicts = mustang
-	source = mustang-0.9.6.rpm::https://github.com/mustang-im/mustang/releases/download/v0.9.6/mustang-0.9.6.x86_64.rpm
-	source = LICENSE-0.9.6::https://raw.githubusercontent.com/mustang-im/mustang/v0.9.6/LICENSE
+	source = mustang-0.9.7.rpm::https://github.com/mustang-im/mustang/releases/download/v0.9.7/mustang-0.9.7.x86_64.rpm
+	source = LICENSE-0.9.7::https://raw.githubusercontent.com/mustang-im/mustang/v0.9.7/LICENSE
 	source = mustang.sh
-	sha256sums = e99d4cc62a6745c6ca794fd2c08538942d1672777144e953324f111217802dc8
+	sha256sums = b438db81c07a0e5a603952e1088300cd9bd2e18bdb9d23963fb2f1d59a869a6d
 	sha256sums = 2e6d2b89f80f36b75fd7281362f54dc2db32d94a0ed002146b4d3936254d5d18
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
