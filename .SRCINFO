@@ -1,6 +1,6 @@
 pkgbase = tremc
-	pkgdesc = Curses interface for Transmission. Python 3 fork of transmission-remote-cli
-	pkgver = 0.9.4
+	pkgdesc = Curses interface client for Transmission
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://github.com/tremc/tremc
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = tremc
 	optdepends = python-geoip: guess which country peers come from
 	optdepends = python-geoip2: guess which country peers come from
 	optdepends = python-pyperclip: copy magnet links to the system clipboard
-	source = tremc-0.9.4.tar.gz::https://github.com/tremc/tremc/archive/0.9.4.tar.gz
-	sha256sums = f8cd45f2bfc1fa67dc8816659d81beacb9fd7b7a4a4b8402604a71c29836bd6f
+	source = tremc-0.9.5.tar.gz::https://github.com/tremc/tremc/archive/0.9.5.tar.gz
+	sha256sums = 7fe1a873465c3bbcc9c96c2447bcad56915249cc07b9ee232182d8975b4dfadd
 
 pkgname = tremc
