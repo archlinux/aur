@@ -1,0 +1,13 @@
+pkgbase = inkscape-appimage
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://inkscape.org/
+	arch = x86_64
+	license = GPL
+	provides = inkscape
+	noextract = inkscape.appimage
+	options = !strip
+	source = inkscape.appimage::https://inkscape.org/gallery/item/56343/Inkscape-ebf0e94-x86_64.AppImage
+	sha256sums = 99c333c03ce77e207942ddcd5c8a5b77cde89959a23651bc7872ae880cf4ba6b
+
+pkgname = inkscape-appimage
