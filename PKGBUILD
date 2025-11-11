@@ -2,13 +2,13 @@
 
 pkgname=xde-applets
 pkgver=0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="X Desktop Environment System Tray Icons and Dock Apps"
 groups=('xde')
 arch=('i686' 'x86_64')
 url="https://github.com/bbidulock/$pkgname"
 license=('GPL')
-depends=('libwnck+-git' 'libcanberra' 'libnotify' 'lm_sensors')
+depends=('libwnck+-git' 'libcanberra-gtk2' 'libnotify' 'lm_sensors' 'libice' 'libsm')
 makedepends=('dbus-glib' 'libunique' 'xorgproto' 'libpackagekit-glib' 'cpupower' 'upower' 'gdk-pixbuf-xlib')
 optdepends=('xdg-launch-git: launch with recent update and launch notification')
 source=("https://github.com/bbidulock/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.lz")
