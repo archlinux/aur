@@ -2,8 +2,8 @@
 
 pkgname=manjaro-hyprland-settings
 pkgver="20251111"
-_commit='6e3c786ce776932d9032cb4442db6a4edf9fbe4d'
-pkgrel=3
+_commit='4e9ea3ed9183c9d4744aaa3141ba6a066b405e35'
+pkgrel=4
 arch=('any')
 url="https://gitlab.com/garuda-linux/themes-and-settings/settings/${pkgname}"
 license=('GPL')
