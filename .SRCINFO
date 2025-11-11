@@ -1,6 +1,6 @@
 pkgbase = diamond
 	pkgdesc = High performance sequence aligner for protein and translated DNA searches with big sequence data. https://doi.org/10.1038/s41592-021-01101-x
-	pkgver = 2.1.15
+	pkgver = 2.1.16
 	pkgrel = 1
 	url = https://github.com/bbuchfink/diamond
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = diamond
 	depends = glibc
 	depends = blast+
 	depends = lmdb
-	source = diamond-2.1.15.tar.gz::https://github.com/bbuchfink/diamond/archive/v2.1.15.tar.gz
-	sha256sums = 8159e400bc2eea504199f0dae8ba82a6402546d4d2cd941012cdc13c7e651c66
+	source = diamond-2.1.16.tar.gz::https://github.com/bbuchfink/diamond/archive/v2.1.16.tar.gz
+	sha256sums = bdbe7264ea64c29745af83a011345f6fa4b9a5c98e89fbaaba3f04e088f821a8
 
 pkgname = diamond
