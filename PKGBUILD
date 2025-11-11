@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Hibiki <JeremyJiang430@outlook.com>
 
 pkgname=cursor-beta-bin
-pkgver=2.0.69
+pkgver=2.0.73
 pkgrel=1
 pkgdesc='AI-first coding environment'
 arch=('x86_64')
@@ -13,10 +13,10 @@ depends=('ripgrep' 'xdg-utils'
   'gcc-libs' 'hicolor-icon-theme' 'libxkbfile')
 options=(!strip) # Don't break ext of VSCode
 _appimage="${pkgname}-${pkgver}.AppImage"
-_commit=63fcac100bd5d5749f2a98aa47d65f6eca61db39
-source=("${_appimage}::https://downloads.cursor.com/production/63fcac100bd5d5749f2a98aa47d65f6eca61db39/linux/x64/Cursor-2.0.69-x86_64.AppImage"
+_commit=55b873ebecb5923d3b947d7e67e841d3ac781886
+source=("${_appimage}::https://downloads.cursor.com/production/55b873ebecb5923d3b947d7e67e841d3ac781886/linux/x64/Cursor-2.0.73-x86_64.AppImage"
 https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh)
-sha512sums=('63f292723d57f665f1980752c5a6ae6ee66db4e18c599a24a6cf8a9367c9c8a9839914903b12ede65fde95a45d5bc6207307223ce4ee2ec19956b62329592bca'
+sha512sums=('3d4291a371e76ad723af0ce1716661435a3c8f4a34a32357f4d5f6f1fec972c1ef23b854601fe70e62f423539541b58c054e5239f13434330f72dc726df8ce29'
             '937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37')
 
 _app=usr/share/cursor/resources/app
