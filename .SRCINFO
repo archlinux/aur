@@ -1,7 +1,7 @@
 pkgbase = xde-applets-git
 	pkgdesc = X Desktop Environment System Tray Icons and Dock Apps
 	pkgver = 0.12.r1.g04da217
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bbidulock/xde-applets
 	arch = i686
 	arch = x86_64
@@ -16,11 +16,13 @@ pkgbase = xde-applets-git
 	makedepends = upower
 	makedepends = gdk-pixbuf-xlib
 	depends = libwnck+-git
-	depends = libcanberra
+	depends = libcanberra-gtk2
 	depends = libnotify
 	depends = lm_sensors
+	depends = libice
+	depends = libsm
 	optdepends = xdg-launch-git: launch with recent update and launch notification
-	provides = xde-applets=0.12-1
+	provides = xde-applets=0.12-2
 	conflicts = xde-applets
 	source = xde-applets-git::git+https://github.com/bbidulock/xde-applets.git
 	md5sums = SKIP
