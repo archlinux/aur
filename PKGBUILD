@@ -45,7 +45,6 @@ build() {
     popd
 }
 
-
 package_nekobox-core() {
     depends=('gcc-libs' 'glibc')
     install -Dm755 "$DEST"/nekobox_core -t "${pkgdir}/usr/lib/NekoBox"
@@ -54,7 +53,6 @@ package_nekobox-core() {
 
 package_nekobox() {
     depends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'nekobox-core')
-
     install -Dm755 "$DEST"/nekobox -t "${pkgdir}/usr/lib/NekoBox"
     upx "${pkgdir}/usr/lib/NekoBox/nekobox"
 
@@ -69,4 +67,6 @@ package_nekobox() {
     cp -RfvT "res/public" "${pkgdir}/usr/lib/NekoBox/public"
     echo "${pkgver}" > "${pkgdir}/usr/lib/NekoBox/version.txt"
     install -Dm644 res/public/On.png "${pkgdir}/usr/share/pixmaps/nekobox.png"
+
+    echo "${pkgver}"
 }
