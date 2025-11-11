@@ -1,20 +1,24 @@
-diff '--color=auto' -u -r -N deadbeef-lyricbar/Makefile deadbeef-lyricbar-makefile/Makefile
---- deadbeef-lyricbar/Makefile	2025-05-11 18:59:00.274772615 +0200
-+++ deadbeef-lyricbar-makefile/Makefile	2025-05-11 19:00:18.954719973 +0200
+Common subdirectories: deadbeef-lyricbar/gettext and deadbeef-lyricbar-makefile/gettext
+Common subdirectories: deadbeef-lyricbar/.git and deadbeef-lyricbar-makefile/.git
+diff '--color=auto' -u deadbeef-lyricbar/Makefile deadbeef-lyricbar-makefile/Makefile
+--- deadbeef-lyricbar/Makefile	2025-11-11 13:58:25.739932642 +0000
++++ deadbeef-lyricbar-makefile/Makefile	2025-11-11 14:01:50.996557239 +0000
 @@ -1,5 +1,5 @@
--CFLAGS+=-std=c99 -Wall -O2 -D_GNU_SOURCE -fPIC -fvisibility=hidden -flto=auto
+ CFLAGS+=-std=c99 -Wall $(COPTS) -D_GNU_SOURCE -fPIC -fvisibility=hidden -flto=auto
 -CXXFLAGS+=-std=c++14 -Wall -O2 -fPIC -fvisibility=hidden -flto=auto
-+CFLAGS+=-std=c99 -Wall $(COPTS) -D_GNU_SOURCE -fPIC -fvisibility=hidden -flto=auto
-+CXXFLAGS+=-std=c++14 -Wall $(CXXOPTS) -fPIC -fvisibility=hidden -flto=auto
++CXXFLAGS+=-std=c++14 -Wall $(CXXOPTS) -O2 -fPIC -fvisibility=hidden -flto=auto
  LIBFLAGS=`pkg-config --cflags $(GTKMM) $(GTK)`
  LIBS=`pkg-config --libs $(GTKMM) $(GTK)`
  LCURL=-lcurl
-@@ -57,7 +57,7 @@
- install:
- 	install -d $(prefix)/lib/deadbeef
- 	install -d $(prefix)/share/locale/ru/LC_MESSAGES
--	install -m 666 -D *.so $(prefix)/lib/deadbeef
-+	install -m 0755 -D *.so $(prefix)/lib/deadbeef
- 	msgfmt gettext/ru/deadbeef-lyricbar.po -o $(prefix)/share/locale/ru/LC_MESSAGES/deadbeef-lyricbar.mo
+@@ -78,8 +78,8 @@
+ 	$(GLIBC) --generate-header src/resources.xml
  
- clean:
+ install:
+-	install -d $(prefix)/lib/x86_64-linux-gnu/deadbeef
+-	install -m 0755 -D *.so $(prefix)/lib/x86_64-linux-gnu/deadbeef
++	install -d $(prefix)/lib/deadbeef
++	install -m 0755 -D *.so $(prefix)/lib/deadbeef
+ 	$(foreach loc, $(LOCALES), install -d $(prefix)/share/locale/$(loc)/LC_MESSAGES;)
+ 	$(foreach loc, $(LOCALES), msgfmt gettext/$(loc)/deadbeef-lyricbar.po -o $(prefix)/share/locale/$(loc)/LC_MESSAGES/deadbeef-lyricbar.mo;)
+ 
+Common subdirectories: deadbeef-lyricbar/src and deadbeef-lyricbar-makefile/src

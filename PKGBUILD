@@ -4,7 +4,7 @@
 
 _pkgname=deadbeef-lyricbar
 pkgname=deadbeef-plugin-lyricbar-git
-pkgver=r175.g5aaef21
+pkgver=r195.gf6b939b
 pkgrel=1
 pkgdesc="DeaDBeeF lyric bar plugin"
 arch=('i686' 'x86_64')
@@ -15,11 +15,9 @@ conflicts=('deadbeef-plugin-lyricbar')
 depends=('deadbeef' 'gtkmm3' 'curl')
 makedepends=('git' 'pkgconf' 'taglib')
 source=("${_pkgname}::git+${url}"
-        "${_pkgname}-makefile.patch"
-        "${_pkgname}-formatsecurity.patch")
+        "${_pkgname}-makefile.patch")
 sha256sums=('SKIP'
-            '67e2d837a79db509644f8cecaf8c425864a23d4170ba89ce7361fa172e5ffa72'
-            '07ff228cde1c82272222542178f7404c475ca55d2953ccab7fbe08c319c011f1')
+            'c78f6e9e84c4ea09f0e31609e434928ac16a6b7a01cec22ac8b86905743bd3f0')
 
 pkgver() {
   cd "${_pkgname}"
@@ -33,9 +31,6 @@ prepare() {
 
   # Arch compile FLAGS
   patch -p1 -i ../${_pkgname}-makefile.patch
-
-  # -Werror=format-security
-  patch -p1 -i ../${_pkgname}-formatsecurity.patch
 
   # Fucked up Makefile
   glib-compile-resources --generate-source src/resources.xml
