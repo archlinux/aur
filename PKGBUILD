@@ -1,23 +1,23 @@
+pkgname=illogical-updots
 pkgver=1.0.3
-pkgname='illogical-updots'
 pkgrel=1
 arch=('any')
 url="https://github.com/FoxyIsCoding/illogical-updots"
 license=('custom')
 depends=('python' 'git' 'adwaita-icon-theme' 'gdk-pixbuf2' 'librsvg')
 optdepends=('papirus-icon-theme: optional icon theme')
-source=()
-sha256sums=()
+source=("https://github.com/FoxyIsCoding/illogical-updots/archive/refs/heads/main.tar.gz")
+sha256sums=('SKIP')
 
-prepare() {
-  # Clone the main branch of the repo into the srcdir
-  git clone --depth 1 https://github.com/FoxyIsCoding/illogical-updots.git "$srcdir/illogical-updots"
+build() {
+  # Nothing to build; this is a script and resource package
+  return 0
 }
 
 package() {
-  # Extract all files from the cloned repo to the package folder
+  # Extract everything to $pkgdir/usr/share/illogical-updots
   mkdir -p "$pkgdir/usr/share/illogical-updots"
-  cp -r "$srcdir/illogical-updots/"* "$pkgdir/usr/share/illogical-updots/"
+  bsdtar -xf "$srcdir/main.tar.gz" -C "$pkgdir/usr/share/illogical-updots" --strip-components=1
 
   # Install launcher script that runs the app from /usr/share
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/illogical-updots" <<'EOF'
