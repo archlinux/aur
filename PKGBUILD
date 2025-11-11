@@ -3,7 +3,7 @@
 
 pkgname=python-click-extra
 _name=${pkgname#python-}
-pkgver=6.0.3
+pkgver=6.2.0
 pkgrel=1
 pkgdesc='Drop-in replacement for Click to make user-friendly and colorful CLI.'
 url='https://github.com/kdeldycke/click-extra'
@@ -13,7 +13,7 @@ depends=(python python-boltons python-click 'python-cloup>=3.0.5' python-extra-p
 license=('GPL2')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kdeldycke/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('3ca0d21b2ce8cd99cbbdb25b0c356275557ab3ee5b468c2cc7e82af6252dc9265cd2a105eac096aabfae569f21eb0c4d096ea8a9fa95432420ffc3f1e4d4c05a')
+sha512sums=('a11855786dbe8269a059c85df1a46078be32812b000e5ce751ce8be59ce11512d61cdaf27db6e82eb1d4527931ee8afa397d97cb6b4b7e71c154bae026f248f8')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
