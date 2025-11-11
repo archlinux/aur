@@ -1,6 +1,6 @@
 pkgbase = chainner-bin
 	pkgdesc = Node-based image processing and AI upscaling GUI
-	pkgver = 0.24.1
+	pkgver = 0.25.1
 	pkgrel = 1
 	url = https://github.com/chaiNNer-org/chaiNNer/
 	install = chainner.install
@@ -18,9 +18,7 @@ pkgbase = chainner-bin
 	optdepends = python-protobuf
 	optdepends = python-numba: ONNX support
 	provides = chainner
-	options = !emptydirs
-	options = !strip
-	source = https://github.com/chainner-org/chainner/releases/download/v0.24.1/chainner-0.24.1-x64-linux-redhat.rpm
-	sha256sums = aecc29adaa90861381b167e30b6483a4d55a92d696c21a55728a6b43cabbfb9c
+	source = https://github.com/chainner-org/chainner/releases/download/v0.25.1/chainner-0.25.1-x64-linux-redhat.rpm
+	sha256sums = 9072b27af4f20f753f72a533116f3a3f37717b3142900eb72a616e0608801cad
 
 pkgname = chainner-bin

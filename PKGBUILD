@@ -4,7 +4,7 @@
 _pkgauthor="chainner-org"
 _pkgname="chainner"
 pkgname="${_pkgname}-bin"
-pkgver=0.24.1
+pkgver=0.25.1
 pkgrel=1
 pkgdesc='Node-based image processing and AI upscaling GUI'
 arch=('x86_64')
@@ -19,12 +19,11 @@ optdepends=('python-pytorch' 'python-torchvision' 'python-facexlib' 'python-eino
 provides=("${_pkgname}")
 conflicts=()
 backup=()
-options=('!emptydirs' '!strip')
 install=chainner.install
 changelog=
 source=("https://github.com/${_pkgauthor}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x64-linux-redhat.rpm")
 noextract=()
-sha256sums=('aecc29adaa90861381b167e30b6483a4d55a92d696c21a55728a6b43cabbfb9c')
+sha256sums=('9072b27af4f20f753f72a533116f3a3f37717b3142900eb72a616e0608801cad')
 
 # TODO: Convert to native electron
 
