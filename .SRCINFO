@@ -1,6 +1,6 @@
 pkgbase = efibooteditor-bin
 	pkgdesc = Boot Editor for (U)EFI based systems.
-	pkgver = 1.5.3
+	pkgver = 1.5.4
 	pkgrel = 1
 	url = https://github.com/Neverous/efibooteditor
 	arch = x86_64
@@ -16,11 +16,11 @@ pkgbase = efibooteditor-bin
 	provides = efibooteditor
 	conflicts = efibooteditor
 	conflicts = efibooteditor-qt5
-	source = LICENSE-1.5.3::https://raw.githubusercontent.com/Neverous/efibooteditor/v1.5.3/LICENSE.txt
-	source = README-1.5.3.md::https://raw.githubusercontent.com/Neverous/efibooteditor/v1.5.3/README.md
+	source = LICENSE-1.5.4::https://raw.githubusercontent.com/Neverous/efibooteditor/v1.5.4/LICENSE.txt
+	source = README-1.5.4.md::https://raw.githubusercontent.com/Neverous/efibooteditor/v1.5.4/README.md
 	sha256sums = e3a994d82e644b03a792a930f574002658412f62407f5fee083f2555c5f23118
 	sha256sums = e46766a93708412ae6f11c6f2775c33c75dc8264b8c4815bb3c424560de3dba2
-	source_x86_64 = https://github.com/Neverous/efibooteditor/releases/download/v1.5.3/EFIBootEditor-v1.5.3-ubuntu-24.04-qt-6.8.3-CLang.deb
-	sha256sums_x86_64 = ebba18313748cce5299bd9df10e648cee6a6b466305f799052b9aa7ef2ddd7f6
+	source_x86_64 = https://github.com/Neverous/efibooteditor/releases/download/v1.5.4/EFIBootEditor-v1.5.4-ubuntu-24.04-qt-6.8.3-CLang.deb
+	sha256sums_x86_64 = d00550fd8e0e744ebcaee1c3b7f58b5fe96d3463723f5aa50fffb8ad95110ab9
 
 pkgname = efibooteditor-bin
