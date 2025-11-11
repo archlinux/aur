@@ -7,7 +7,7 @@ pkgdesc="Tool for request keys and certificates of FNMT"
 arch=('any')
 url="https://www.sede.fnmt.gob.es/descargas/descarga-software/instalacion-software-generacion-de-claves"
 license=('LicenseRef-FNMT')
-depends=('java-runtime>=17')
+depends=('java-runtime>=22')
 optdepends=('icedtea-web: If the certificate renewal does not work, install this')
 options=('!debug' '!emptydirs')
 source=("${pkgname}-${pkgver}-amd64.deb::https://descargas.cert.fnmt.es/Linux/configuradorfnmt_${pkgver}.amd64.deb"
