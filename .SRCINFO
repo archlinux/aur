@@ -1,0 +1,23 @@
+pkgbase = lib32-unixodbc-full
+	pkgdesc = ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources
+	pkgver = 2.3.14
+	pkgrel = 1
+	url = http://www.unixodbc.org/
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-or-later
+	depends = lib32-readline
+	depends = lib32-libltdl
+	depends = lib32-glibc
+	provides = lib32-unixodbc
+	source = https://github.com/lurcher/unixODBC/releases/download/v2.3.14/unixODBC-2.3.14.tar.gz
+	sha256sums = 4e2814de3e01fc30b0b9f75e83bb5aba91ab0384ee951286504bb70205524771
+
+pkgname = lib32-unixodbc-full
+	conflicts = unixodbc
+	conflicts = lib32-unixodbc-sidebyside64
+	backup = etc/odbc.ini
+	backup = etc/odbcinst.ini
+
+pkgname = lib32-unixodbc-sidebyside64
+	conflicts = lib32-unixodbc-full
