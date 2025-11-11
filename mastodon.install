@@ -32,32 +32,26 @@ post_upgrade() {
 	echo "### No matter which version you're coming from, First go into the mastodon directory and set the ownership (all commands as root)###"
 	echo "cd /var/lib/mastodon; find -path ./public/system -prune -o -exec chown -h mastodon:mastodon {} +"
 	echo
-	echo "#########################################"
-	echo "### For people who are already at 4.4 ###"
-	echo "#########################################"
+#	echo "#########################################"
+#	echo "### For people who are already at 4.5 ###"
+#	echo "#########################################"
+#	echo
+#	echo "### Precompile the assets ###"
+#	echo "sudo -u mastodon RAILS_ENV=production bundle exec rails assets:precompile"
+#	echo
+#	echo "### And restart all services ###"
+#	echo "systemctl daemon-reload; systemctl restart mastodon-web mastodon-sidekiq mastodon-streaming"
+#	echo
+	echo "#####################################"
+	echo "### For people upgrading from 4.4 ###"
+	echo "#####################################"
 	echo
 	echo "### Precompile the assets ###"
 	echo "sudo -u mastodon RAILS_ENV=production bundle exec rails assets:precompile"
 	echo
-	echo "### And restart all services ###"
-	echo "systemctl daemon-reload; systemctl restart mastodon-web mastodon-sidekiq mastodon-streaming"
-	echo
-	echo "#####################################"
-	echo "### For people upgrading from 4.3 ###"
-	echo "#####################################"
-	echo
-	echo "### Precompile the assets ###"
-	echo "sudo -u mastodon RAILS_ENV=production bundle exec rails assets:precompile"
-	echo
-	echo "### Migrate the Database (Step 1) ###"
-	echo "sudo -u mastodon SKIP_POST_DEPLOYMENT_MIGRATIONS=true RAILS_ENV=production bundle exec rails db:migrate"
+	echo "### Migrate the Database ###"
+	echo "sudo -u mastodon RAILS_ENV=production bundle exec rails db:migrate"
 	echo
 	echo "### Now restart the mastodon services ###"
 	echo "systemctl daemon-reload; systemctl restart mastodon-web mastodon-sidekiq mastodon-streaming"
-	echo
-	echo "### Migrate the Database (Step 2) ###"
-	echo "sudo -u mastodon RAILS_ENV=production bundle exec rails db:migrate"
-	echo
-	echo "### If you use OpenSearch, you also have to do this ###"
-	echo "sudo -u mastodon RAILS_ENV=production bin/tootctl search deploy --only-mapping --only=accounts"
 }

@@ -7,13 +7,14 @@
 # Contributor: Fredrick Brennan <copypaste@kittens.ph>
 
 pkgname=mastodon
-pkgver=4.4.8
+pkgver=4.5.0
 pkgrel=1
 pkgdesc='Your self-hosted, globally interconnected microblogging community'
 arch=(any)
 url=https://github.com/mastodon/mastodon
 license=(AGPL3)
-depends=(ffmpeg
+depends=(corepack
+	 ffmpeg
          git
          libidn
          libpqxx
@@ -37,7 +38,7 @@ source=(https://github.com/mastodon/mastodon/archive/v$pkgver.tar.gz
         mastodon.sysusers.d
         mastodon.tmpfiles.d
         devise_pam.patch)
-sha256sums=('1ceb553bc8d75fcac16124610574b6535002ae41d7bb387355d9739d502cc594'
+sha256sums=('86d3daa5e402d0cbc702cfda4d1c9e5043f8d7df2ade1be11b1e8054c6f36340'
             'e9928ced31f6490476100f02f2e158e41a076988dd7f3dff8f21d245bc2bb0ff'
             '1b67693f7de5802a34985b9ac969497fc6e6042dcae0b8abf6595b9fe15ee80e'
             '3fdd54dd1f374b7206c8beaebafdf890e74d30385f0c93f9cd99e1e4be92f8fa'
@@ -58,9 +59,9 @@ build() {
 	bundle config --local build.google-protobuf "-- --with-cflags='$(ruby -r rbconfig -e 'print RbConfig::CONFIG["CFLAGS"]' | sed -e 's/-Werror=format-security//' -e 's/-flto=auto/-fno-lto/')' --with-ldflags='$(ruby -r rbconfig -e 'print RbConfig::CONFIG["LDFLAGS"]' | sed -e 's/-flto=auto/-fno-lto/')'"
 	bundle config set frozen false
 	bundle add erb
-	bundle install -j$(getconf _NPROCESSORS_ONLN)
+	BUNDLE_BUILD__CHARLOCK_HOLMES="--with-cxxflags=-std=c++17" bundle install -j$(getconf _NPROCESSORS_ONLN)
 	corepack enable --install-directory . yarn
-	./yarn install
+	./yarn install --immutable
 	# https://aur.archlinux.org/packages/mastodon?O=0#comment-986425
 	cd vendor/bundle/ruby/*/gems/ox-*/ext/ox
 	make
