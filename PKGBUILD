@@ -1,43 +1,54 @@
-# Maintainer: Deposite Pirate <dpirate at metalpunks dot info>
-#
-# Upstream: https://git.metalpunks.info/arch-ports
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Deposite Pirate <dpirate at metalpunks dot info>
 
-_pkgname=castor
 pkgname=castor-git
-pkgver=0.8.15.r16.g9db62db
+pkgver=0.9.0.r0.gec77c75
 pkgrel=1
-pkgdesc="A gemini, gopher and finger graphical client"
+pkgdesc="A Gemini, Gopher and Finger protocol client"
 arch=('i686' 'x86_64')
 url="https://git.sr.ht/~julienxx/castor"
-license=('unknown')
-depends=('gtk3' 'gdk-pixbuf2' 'pango' 'atk' 'cairo' 'openssl')
-makedepends=('git' 'rust' 'cargo' 'patch')
-source=("${_pkgname}::git+${url}"
-        castor-0.7.0-makefile.patch)
-sha256sums=('SKIP'
-            '5ac7e5460d00176db71ec0d7972af1adee58c57dd9d7dff29ddecbadb07f4ee9')
+license=('MIT')
+depends=('gcc-libs' 'glibc' 'atk' 'cairo' 'gdk-pixbuf2' 'gtk3' 'openssl' 'pango')
+makedepends=('git' 'cargo')
+provides=("castor=$pkgver")
+conflicts=('castor')
+source=("git+https://git.sr.ht/~julienxx/castor")
+sha256sums=('SKIP')
 
-pkgver() {
-  cd "${_pkgname}"
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
 
 prepare() {
-  cd "${_pkgname}"
+  cd "castor"
 
-  # Fix installing to pkgdir
-  patch -p1 -i ../castor-0.7.0-makefile.patch
+  if [ ! -f "Cargo.lock" ]; then
+    cargo update
+  fi
+  cargo fetch
 }
 
-build() {
-  cd "${_pkgname}"
-  cargo build --release
+pkgver() {
+  cd "castor"
+
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
+}
+
+check() {
+  cd "castor"
+
+  #cargo test \
+  #  --frozen
 }
 
 package() {
-  cd "${_pkgname}"
-  make DESTDIR="${pkgdir}" install
+  cd "castor"
+
+  cargo install \
+    --no-track \
+    --locked \
+    --root "$pkgdir/usr" \
+    --path .
+  make DESTDIR="$pkgdir" copy-data
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/castor"
 }
