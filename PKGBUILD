@@ -17,7 +17,7 @@ build() {
 package() {
   # Extract everything to $pkgdir/usr/share/illogical-updots
   mkdir -p "$pkgdir/usr/share/illogical-updots"
-  bsdtar -xf "$srcdir/main.tar.gz" -C "$pkgdir/usr/share/illogical-updots" --strip-components=1
+  cp -a "$srcdir/illogical-updots-main"/. "$pkgdir/usr/share/illogical-updots/"
 
   # Install launcher script that runs the app from /usr/share
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/illogical-updots" <<'EOF'
@@ -26,7 +26,7 @@ exec python /usr/share/illogical-updots/app.py "$@"
 EOF
 
   # Install icon
-  install -Dm644 "$pkgdir/usr/share/illogical-updots/.github/assets/logo.png" \
+  install -Dm644 "$srcdir/illogical-updots-main/.github/assets/logo.png" \
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/illogical-updots.png"
 
   # Install desktop entry
