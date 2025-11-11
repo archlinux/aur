@@ -1,7 +1,7 @@
 pkgbase = manjaro-hyprland-settings
 	pkgdesc = Manjaro Linux Hyprland settings
 	pkgver = 20251111
-	pkgrel = 12
+	pkgrel = 13
 	url = https://gitlab.com/garuda-linux/themes-and-settings/settings/manjaro-hyprland-settings
 	install = manjaro-hyprland-settings.install
 	arch = any
@@ -16,6 +16,7 @@ pkgname = manjaro-hyprland-settings
 	depends = beautyline
 	depends = foot
 	depends = grim
+	depends = hypridle
 	depends = hyprland
 	depends = hyprlock
 	depends = kvantum

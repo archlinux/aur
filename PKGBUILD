@@ -3,7 +3,7 @@
 pkgname=manjaro-hyprland-settings
 pkgver="20251111"
 _commit='3c8c9a31e10ab0a6acaa87f50783ec193eac97f8'
-pkgrel=12
+pkgrel=13
 arch=('any')
 url="https://gitlab.com/garuda-linux/themes-and-settings/settings/${pkgname}"
 license=('GPL')
@@ -26,6 +26,7 @@ package() {
     'beautyline'
     'foot'
     'grim'
+    'hypridle'
     'hyprland'
     'hyprlock'
     'kvantum'
