@@ -5,8 +5,8 @@
 # Contributor: VuDu <vudu.curse@gmail.com>
 
 pkgname=opencryptoki
-pkgver=3.25.0
-pkgrel=2
+pkgver=3.26.0
+pkgrel=1
 pkgdesc="PKCS11 implementation for Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/opencryptoki/opencryptoki"
@@ -16,7 +16,7 @@ makedepends=('expect' 'jq')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/opencryptoki/opencryptoki/archive/v${pkgver}.tar.gz"
         opencryptoki.sysusers.conf
         opencryptoki.tmpfiles.conf)
-sha256sums=('be10aaa83a7bc6c638a26d00ca6ce61a88522f43c833ceb3c660f2bce63d004e'
+sha256sums=('b84707edf20c3c0641661ca87f4a606cebb623ce5f2d70581142c9a6d2467c2c'
             '6c96a96f7df9279fa62c6aab4231116fd0db0fbe0a88b661b5d1a7451b0e9a39'
             'e315fc996a1f416efd34f6f3e3149378118cded0da9f8a919e9501ea8db90fac')
 
