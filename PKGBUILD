@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.17.r226.ge5b2e480
+pkgver=1.0.18.r1.g6ddcb07b
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -19,6 +19,7 @@ depends=(
   libbpf
   libelf
   protobuf
+  scx-tools
   zlib
 )
 makedepends=(
@@ -29,9 +30,6 @@ makedepends=(
   meson
   python
   rust
-)
-optdepends=(
-'scx-tools-git: scx_loader and scxtl - A DBUS Interface for Managing sched_ext Schedulers '
 )
 source=("git+https://github.com/sched-ext/scx")
 sha256sums=('SKIP')
