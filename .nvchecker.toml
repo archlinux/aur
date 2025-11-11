@@ -1,0 +1,5 @@
+[zen-desktop-bin]
+source = "github"
+github = "ZenPrivacy/zen-desktop"
+use_latest_release = true
+prefix = "v"
