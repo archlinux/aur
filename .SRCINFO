@@ -8,6 +8,7 @@ pkgbase = perl-io-async
 	license = GPL
 	checkdepends = perl-test-future-io-impl>=0
 	checkdepends = perl-test-metrics-any>=0
+	makedepends = perl-module-build>=0.4004
 	depends = perl-future>=0.44
 	depends = perl-struct-dumb>=0
 	depends = perl>=5.014

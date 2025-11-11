@@ -9,7 +9,7 @@ arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-future>=0.44' 'perl-struct-dumb>=0' 'perl>=5.014')
-makedepends=()
+makedepends=('perl-module-build>=0.4004')
 checkdepends=('perl-test-future-io-impl>=0' 'perl-test-metrics-any>=0')
 url='https://metacpan.org/release/IO-Async'
 source=('http://search.cpan.org/CPAN/authors/id/P/PE/PEVANS/IO-Async-0.804.tar.gz')
