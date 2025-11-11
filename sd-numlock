@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+build() {
+	add_systemd_unit initrd-numlock.service
+}
