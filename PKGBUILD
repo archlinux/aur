@@ -1,6 +1,6 @@
 # Maintainer: pierspad <pierpaolospadafora@proton.me>
 pkgname=textmerger
-pkgver=1.0.8
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A Python GUI application for merging text files"
 arch=('any')
@@ -10,25 +10,25 @@ depends=('python' 'python-pyqt5' 'python-flask' 'python-werkzeug')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 optdepends=('python-pip: for installing optional dependencies like nbformat for Jupyter notebook support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pierspad/TextMerger/archive/v$pkgver.tar.gz")
-sha256sums=('3f31ddc42bfa007f7fee05681dcf62705f9f5865557d3e2797dadb9097e67a68')
+sha256sums=('12856a9f9351109ee84928c39f394b5bc975b02e631ccdd0e0e3b5f1f3c05dbc')
 
 prepare() {
-  cd "$srcdir/textmerger-$pkgver"
+  cd "$srcdir/TextMerger-$pkgver"
 }
 
 build() {
-  cd "$srcdir/textmerger-$pkgver"
+  cd "$srcdir/TextMerger-$pkgver"
   unset VIRTUAL_ENV
   export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
   /usr/bin/python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$srcdir/textmerger-$pkgver"
+  cd "$srcdir/TextMerger-$pkgver"
 }
 
 package() {
-  cd "$srcdir/textmerger-$pkgver"
+  cd "$srcdir/TextMerger-$pkgver"
   /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 docs/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
