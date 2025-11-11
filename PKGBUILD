@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=python-snakemake-interface-report-plugins
 _name=${pkgname#python-}
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="The interface for Snakemake report plugins"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=(python-snakemake-interface-common)
 makedepends=(python-build python-installer python-wheel python-poetry-core)
 source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('0f2468674453841fdbde43880aa546b565994e597060d7902a3a47d9925c256e')
+sha256sums=('a926dee1be31a20050272c64c03656975e7c3bc1a46885807c927d523ebf0b9c')
 
 build() {
     cd "$_name-$pkgver"
