@@ -1,7 +1,7 @@
 pkgbase = python-owega
 	pkgdesc = TUI / CLI interface for conversing with GPT models (from OpenAI and +)
-	pkgver = 5.24.5
-	pkgrel = 2
+	pkgver = 5.25.0
+	pkgrel = 1
 	url = https://pypi.org/project/owega/
 	arch = any
 	license = custom:DGPL-1.0
@@ -20,7 +20,7 @@ pkgbase = python-owega
 	optdepends = python-sounddevice: for TTS audio output
 	optdepends = python-markdownify: for better webpage handling (get_page function)
 	optdepends = python-tiktoken: better token estimation
-	source = https://files.pythonhosted.org/packages/source/o/owega/owega-5.24.5.tar.gz
-	b2sums = 2f6a9fad544cc661906326c629b335d0fcee32eb781aef50fb8c69979d69c2bbbd2529d877f3d424100db5274b5a52f9f591454ed65b9ba865b793b76d38e276
+	source = https://files.pythonhosted.org/packages/source/o/owega/owega-5.25.0.tar.gz
+	b2sums = 2357a80e2a28cd614738eeed269ed1520675048b98375c7a424038b40e9be069c3873ad916f1be4a56e1e0565397e2f77ad980a2d755b946146e6088b0930fc3
 
 pkgname = python-owega
