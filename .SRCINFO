@@ -1,13 +1,16 @@
 pkgbase = factory-cli-bin
-	pkgdesc = Factory CLI (prebuilt binary - installs 'droid')
+	pkgdesc = Factory CLI - AI-powered terminal assistant
 	pkgver = 0.23.0
 	pkgrel = 1
 	url = https://factory.ai
+	install = factory-cli-bin.install
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	depends = curl
-	optdepends = ripgrep: Use system ripgrep instead of the bundled one
+	optdepends = ripgrep: Use system ripgrep instead of bundled version
+	provides = droid
 	conflicts = droid
+	options = !strip
 
 pkgname = factory-cli-bin

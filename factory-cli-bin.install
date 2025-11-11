@@ -1,0 +1,27 @@
+post_install() {
+  echo ""
+  echo "==> Factory CLI has been installed successfully!"
+  echo "==> Run 'droid' to get started"
+  echo ""
+  echo "    The 'droid' command is now available in your PATH."
+  echo "    Bundled ripgrep is automatically used when needed."
+  echo ""
+  echo "==> For more information, visit: https://factory.ai"
+  echo ""
+}
+
+post_upgrade() {
+  echo ""
+  echo "==> Factory CLI has been upgraded to version $2"
+  echo "==> Run 'droid' to continue using Factory CLI"
+  echo ""
+}
+
+post_remove() {
+  echo ""
+  echo "==> Factory CLI has been removed"
+  echo ""
+  echo "    Note: User configuration in ~/.factory (if any) has been preserved."
+  echo "    You can manually remove it with: rm -rf ~/.factory"
+  echo ""
+}
