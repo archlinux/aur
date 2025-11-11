@@ -11,7 +11,7 @@ makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative')
 makedepends+=('cmake' 'gendesk' 'go' 'protobuf' 'qt6-tools' 'vulkan-headers') 
 makedepends+=('cpio' 'upx')
 source=("https://github.com/qr243vbi/nekobox/releases/download/${pkgver}/nekobox-unified-source-${pkgver}.tar.xz")
-sha256sums=("df4145ad062c2ca80c218222333fd667c18f7e8849638485b7b7d2dcda9b146b")
+sha256sums=("75f8e488749b05aebca57790124adeaef6a2d0586236ed31a7a40ef334739f50")
 
 prepare() {
     gendesk -f -n \

@@ -20,7 +20,7 @@ pkgbase = nekobox
 	makedepends = cpio
 	makedepends = upx
 	source = https://github.com/qr243vbi/nekobox/releases/download/5.6.16/nekobox-unified-source-5.6.16.tar.xz
-	sha256sums = df4145ad062c2ca80c218222333fd667c18f7e8849638485b7b7d2dcda9b146b
+	sha256sums = 75f8e488749b05aebca57790124adeaef6a2d0586236ed31a7a40ef334739f50
 
 pkgname = nekobox
 	depends = bash
