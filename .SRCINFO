@@ -26,7 +26,6 @@ pkgname = manjaro-hyprland-settings
 	depends = sddm-theme-sweet-git
 	depends = ttf-fantasque-sans-mono
 	depends = ttf-fira-code
-	depends = ttf-fira-code
 	depends = ttf-fira-sans
 	depends = ttf-firacode-nerd
 	depends = ttf-firacode-nerd
