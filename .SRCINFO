@@ -1,7 +1,7 @@
 pkgbase = libjwt
 	pkgdesc = JWT C Library
 	pkgver = 3.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/benmcollins/libjwt
 	arch = i686
 	arch = x86_64

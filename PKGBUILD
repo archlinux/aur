@@ -5,7 +5,7 @@
 
 pkgname=libjwt
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="JWT C Library"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/benmcollins/libjwt"
@@ -30,6 +30,7 @@ build() {
     -DBUILD_SHARED_LIBS=ON \
     -DWITH_PKGCONFIG=ON \
     -DBUILD_SHARED_LIBS=ON \
+    -DCMAKE_C_FLAGS="${CFLAGS} -Wno-error" \
     -Wno-dev
   cmake --build build
 }
