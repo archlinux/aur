@@ -1,12 +1,12 @@
 pkgbase = factory-cli-bin
 	pkgdesc = Factory CLI - AI-powered terminal assistant
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://factory.ai
 	install = factory-cli-bin.install
 	arch = x86_64
 	arch = aarch64
-	license = custom
+	license = factory.ai
 	depends = curl
 	optdepends = ripgrep: Use system ripgrep instead of bundled version
 	provides = droid
