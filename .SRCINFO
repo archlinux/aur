@@ -1,14 +1,14 @@
 pkgbase = mingw-w64-ceres-solver
 	pkgdesc = Solver for nonlinear least squares problems (mingw-w64)
 	pkgver = 2.2.0
-	pkgrel = 6
+	pkgrel = 7
 	url = http://ceres-solver.org/
 	arch = any
 	license = LGPL
 	makedepends = mingw-w64-cmake
 	depends = mingw-w64-lapack
 	depends = mingw-w64-google-glog
-	depends = mingw-w64-suitesparse
+	depends = mingw-w64-metis
 	depends = mingw-w64-eigen
 	options = !buildflags
 	options = staticlibs
