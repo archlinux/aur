@@ -1,6 +1,6 @@
 # Maintainer: Alastair Ozmond <alastair.ozmond@gmail.com>
 pkgname=usb-tree-app-bin
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="USB device tree viewer with detailed information and monitor (binary release)"
 arch=('x86_64')
@@ -9,8 +9,8 @@ license=('GPL-2.0-or-later')
 depends=('gtk3' 'webkit2gtk-4.1' 'libusb')
 provides=('usb-tree')
 conflicts=('usb-tree' 'usb-tree-app')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/0.0.2/usb-tree-linux-amd64.tar.gz")
-sha256sums=('d9be87e8138b884b3d299089f14dbf4a2f3d494bbfff4a43d5a61b985abbe1e9')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/0.0.3/usb-tree-linux-amd64.tar.gz")
+sha256sums=('acf123206df0a26a6df7b8fec80a5320d0f4d17b72b5fec725960f554d8c8c17')
 
 package() {
     # Install binary
