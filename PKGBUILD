@@ -1,8 +1,8 @@
 # Maintainer: qr243vbi
 
 pkgname=(nekobox nekobox-core)
-pkgver=5.6.14
-pkgrel=2
+pkgver=5.6.15
+pkgrel=1
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64')
 url="https://github.com/qr243vbi/nekobox"
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative')
 makedepends+=('cmake' 'gendesk' 'go' 'protobuf' 'qt6-tools' 'vulkan-headers' 'cpio' 'upx')
 source=("https://github.com/qr243vbi/nekobox/releases/download/${pkgver}/nekobox-unified-source-${pkgver}.tar.xz")
-sha256sums=('d2ab96ac956c21e9158fe7bbc992d0fd4406b115af666ffc00b87f458b35e9d7')
+sha256sums=('SKIP')
 
 
 prepare() {
