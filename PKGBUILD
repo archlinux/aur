@@ -23,7 +23,7 @@ optdepends=(
 )
 options=('!strip')
 source=("https://updates.express.ms/desktop/eXpress_${pkgver}_amd64.deb")
-sha256sums=('731e37a0ebe9c4171b7d65ddd9ac7327092106743107fee172050195692253c3')
+sha256sums=('d4315e41b1da168a1f8c1bdd50622aab4fa871a9070b3d0c227100c75d809694')
 
 package() {
   tar -xf data.tar.xz --directory "${pkgdir}"
