@@ -1,0 +1,24 @@
+pkgbase = manjaro-hyprland-settings
+	pkgdesc = Manjaro Linux Hyprland settings
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/garuda-linux/themes-and-settings/settings/manjaro-hyprland-settings
+	install = manjaro-hyprland-settings.install
+	arch = any
+	license = GPL
+	makedepends = coreutils
+	provides = manjaro-desktop-settings
+	conflicts = manjaro-desktop-settings
+	source = https://github.com/lisuml/manjaro-hyprland-settings/archive/6e3c786ce776932d9032cb4442db6a4edf9fbe4d.zip
+	sha256sums = SKIP
+
+pkgname = manjaro-hyprland-settings
+	depends = beautyline
+	depends = waybar
+	depends = hyprland
+	depends = kvantum-qt5
+	depends = kvantum
+	depends = ttf-fira-code
+	depends = ttf-firacode-nerd
+	depends = qt5ct
+	depends = plasma5-themes-sweet-full-git

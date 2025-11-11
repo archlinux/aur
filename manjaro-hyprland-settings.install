@@ -1,0 +1,29 @@
+# Font-icon directories
+FONT_DIRS="/usr/share/fonts/TTF /usr/share/fonts/OTF /usr/share/fonts/misc"
+ICON_DIR="/usr/share/icons/hicolor"
+GLIB_SCHEMA_DIR="usr/share/glib-2.0/schemas"
+
+# Font-related commands
+update_fonts() {
+	mkfontscale "$FONT_DIRS" >/dev/null 2>&1
+	mkfontdir "$FONT_DIRS" >/dev/null 2>&1
+	fc-cache -s >/dev/null
+}
+
+# GTK related commands
+update_gtk() {
+	glib-compile-schemas $GLIB_SCHEMA_DIR
+	gtk-update-icon-cache -ftq $ICON_DIR
+	/bin/sh -c 'dconf update'
+}
+
+# Post installation
+post_install() {
+	post_upgrade
+}
+
+# Post upgrade
+post_upgrade() {
+	update_fonts
+	update_gtk
+}
