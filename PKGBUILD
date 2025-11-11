@@ -9,7 +9,7 @@ pkgname=(qt6-base-scrollfix
          qt6-xcb-private-headers-scrollfix)
 _pkgver=6.10.0
 pkgver=${_pkgver/-/}
-pkgrel=2.1
+pkgrel=3.1
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL-3.0-only
