@@ -2,24 +2,50 @@
 
 _pkgname="epson-inkjet-printer-escpr2"
 pkgname="${_pkgname}-bin"
-pkgver=1.2.35
+pkgver=1.2.36
 pkgrel=1
 pkgdesc="Epson inkjet printer driver 2 (ESC/P-R) used with CUPS"
-arch=('armv7h' 'x86_64')
+arch=(
+  'armv7h'
+  'x86_64'
+)
 url="https://download.ebz.epson.net/man/linux/escpr2.html"
-license=('LGPL-2.1-or-later' 'custom:Epson End User Software License Agreement')
-depends=('cups' 'glibc' 'libcups')
-provides=("${_pkgname}" 'libescpr2.so')
-conflicts=("${_pkgname}")
-# makedepends=('patchelf')
+license=(
+  'LGPL-2.1-or-later'
+  'custom:Epson End User Software License Agreement'
+)
+depends=(
+  'cups'
+  'glibc'
+  'libcups'
+)
+provides=(
+  "${_pkgname}"
+  'libescpr2.so'
+)
+conflicts=(
+  "${_pkgname}"
+)
+makedepends=(
+  'gzip'
+  # 'patchelf'
+)
 _pkgsrc="${_pkgname}-${pkgver}"
-# DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
-source_armv7h=("${_pkgsrc}-armv7h.deb::https://download3.ebz.epson.net/dsc/f/03/00/17/28/08/f9dfea2e12190e491f1d39919823e81a717c456f/${_pkgname}_${pkgver}_armhf.deb")
-source_x86_64=("${_pkgsrc}-x86_64.deb::https://download3.ebz.epson.net/dsc/f/03/00/17/28/05/bf8a6f2e6fc386a4ed44d40c9747fb56d510f581/${_pkgname}_${pkgver}-1_amd64.deb")
-noextract=("${source_armv7h[@]%%::*}"
-           "${source_x86_64[@]%%::*}")
-sha256sums_armv7h=('149b55ae9a9459298e4bb756c9de48fd4e33190b6e63f65f6b1702e5c1d4141e')
-sha256sums_x86_64=('ed3623a3e9876ac673210d7820662de7178318a81c40271832ee1c0d81d3835b')
+source_armv7h=(
+  "${_pkgsrc}-armv7h.deb::https://download-center.epson.com/f/module/6539c0c0-4ae5-4821-8dc5-57410cb5fa07/${_pkgname}_${pkgver}_armhf.deb"
+)
+source_x86_64=(
+  "${_pkgsrc}-x86_64.deb::https://download-center.epson.com/f/module/b23b67b1-fd68-428b-a0b1-0b8dd37cece1/${_pkgname}_${pkgver}-1_amd64.deb"
+)
+noextract=(
+  "${source_armv7h[@]%%::*}"
+  "${source_x86_64[@]%%::*}"
+)
+sha256sums_armv7h=('f767be76d6901522ebff58bab024fc82cb3593878fdc8eb3aaa409956ba7773d')
+sha256sums_x86_64=('9276048d8911fb264fa5f9bfda7458572e6dee300de6ff05c246cfc20b6e6780')
+# DLAGENTS+=(
+#   'https::/usr/bin/curl -A "Mozilla" -qgb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'
+# )
 
 prepare() {
   cd "${srcdir}"
