@@ -11,6 +11,7 @@ url="http://www.unixodbc.org/"
 depends=('lib32-readline' 'lib32-libltdl' 'lib32-glibc')
 # Remove `provides`, not sure how it works for 32-bit libs
 # provides=('libodbc.so' 'libodbccr.so' 'libodbcinst.so')
+provides=($_pkgname32) #both metapackages provide the "base"
 source=(#ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-$pkgver.tar.gz
         https://github.com/lurcher/unixODBC/releases/download/v${pkgver}/unixODBC-${pkgver}.tar.gz)
 sha256sums=('4e2814de3e01fc30b0b9f75e83bb5aba91ab0384ee951286504bb70205524771')
