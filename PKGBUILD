@@ -27,3 +27,5 @@ package() {
   ./tdns completion fish 2> /dev/null > tdns.fish
   install -Dm 644 tdns.fish -t "${pkgdir}/usr/share/fish/vendor_completions.d/"
 }
+
+# vim:set ts=2 sw=2 et
