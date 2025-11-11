@@ -3,7 +3,7 @@
 _pkgauthor=panter-dsd
 _pkgname=tatuin
 pkgname=${_pkgname}-bin
-pkgver=0.25.0
+pkgver=0.25.1
 pkgrel=1
 pkgdesc="Task Aggregator TUI for Obsidian, Todoist, Gitlab TODO and Github Issues"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.txt"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-Linux-${_stdlib}-${arch[0]}.tar.gz")
 sha256sums=('3f9e3e9a1af1c709e4191560ca9b3cb381f0b4c2da2646d5d00f599080682d28'
             '62c14d9e958517393c65f37f78ca5b8f891bb2d9c41784b22364af48deba1c2b')
-sha256sums_x86_64=('60f402099b1961910764fb4ef281368522264c4efcde6d2518eeabe7dfcd36c1')
+sha256sums_x86_64=('3546088b5510da26439b77ef0c25db30a4a4657ae27fa59f3252007ab3cea113')
 
 
 package() {
