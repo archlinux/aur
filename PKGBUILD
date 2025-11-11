@@ -3,7 +3,7 @@
 
 pkgname=ipscan-bin
 _pkgintname=ipscan
-pkgver=3.9.2
+pkgver=3.9.3
 _pkgintver=3.9.2
 pkgrel=1
 pkgdesc='Angry IP Scanner (or simply ipscan) is an open-source and cross-platform network scanner designed to be fast and simple to use. It scans IP addresses and ports as well as has many other features.'
