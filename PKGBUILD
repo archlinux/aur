@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elecap-bin
 _pkgname=VDON.Electron.Capture.App
-pkgver=2.21.0
+pkgver=2.21.5
 _electronversion=36
 pkgrel=1
 pkgdesc="Playback video in a frameless electron app for screen-sharing and window capture.(Prebuilt version.Use system-wide electron)"
@@ -26,7 +26,7 @@ source=("${pkgname%-bin}.sh")
 #source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-armv7l.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-x86_64.AppImage")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_x86_64=('7a427651559b841e7749f4eaca36f4b8fa6f3f6bfd9dd8dcd327af440d9f1654')
+sha256sums_x86_64=('0789d78b0a7ca4bc3c055a6ced6a1cf5288f759a896c0371136f2d6c4150262d')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
