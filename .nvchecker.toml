@@ -1,0 +1,5 @@
+[tabby-bin]
+source = "github"
+github = "Eugeny/tabby"
+use_latest_release = true
+prefix = "v"
