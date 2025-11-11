@@ -1,0 +1,14 @@
+pkgbase = quantumlauncher-bin
+	pkgdesc = A simple, powerful Minecraft launcher
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/Mrmayman/quantumlauncher
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = gcc-libs
+	provides = quantumlauncher
+	source = quantumlauncher-bin-0.4.2.zip::https://github.com/Mrmayman/quantumlauncher/releases/download/v0.4.2/quantum_launcher_linux_x86_64.zip
+	sha256sums = 7ca878491e120b711e27d783110684ebdb4656ebb383b5d8c7520ae339110e42
+
+pkgname = quantumlauncher-bin
