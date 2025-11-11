@@ -1,15 +1,13 @@
 _lib32=lib32-
 _pkgname=unixodbc
 _pkgname32=$_lib32$_pkgname
-# pkgname=($_pkgname32-full $_pkgname32-sidebyside64)
-pkgname=$_pkgname32
+pkgname=($_pkgname32-full $_pkgname32-sidebyside64)
 pkgver=2.3.14
 pkgrel=1
 pkgdesc="ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources"
 arch=('x86_64')
 license=('GPL-2.0-or-later' 'LGPL-2.1-or-later')
 url="http://www.unixodbc.org/"
-backup=('etc/odbc.ini' 'etc/odbcinst.ini')
 depends=('readline' 'libltdl' 'glibc')
 provides=('libodbc.so' 'libodbccr.so' 'libodbcinst.so')
 source=(#ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-$pkgver.tar.gz
@@ -40,8 +38,30 @@ check() {
     make -k check
 }
 
-package() {
+package_base() {
     cd unixODBC-${pkgver}
     make DESTDIR="${pkgdir}" install
     touch "$pkgdir"/etc/{odbc,odbcinst}.ini
+}
+
+package_lib32-unixodbc-sidebyside64() {
+  conflicts+=(lib32-unixodbc-full)
+
+  package_base
+
+  #generate a minimal install with no etc, docs or man, so that it can live alongside main `unixodbc` package
+  rm -rf $pkgdir/etc/
+  rm -rf $pkgdir/usr/share
+  rm -rf $pkgdir/usr/include
+  for f in $pkgdir/usr/bin/*; do
+    mv -v $f ${f}32
+  done
+}
+
+package_lib32-unixodbc-full() {
+  conflicts+=(unixodbc
+              lib32-unixodbc-sidebyside64)
+  backup+=('etc/odbc.ini' 'etc/odbcinst.ini')
+
+  package_base
 }
