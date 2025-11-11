@@ -1,0 +1,17 @@
+pkgbase = brother-mfc-t980dw
+	pkgdesc = Caution, read PKGBUILD. Brother MFC-T980DW CUPS driver
+	pkgver = 3.6.1
+	pkgrel = 1
+	url = http://www.brother.com
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = custom
+	depends = cups
+	depends = ghostscript
+	source = https://download.brother.com/welcome/dlf107058/mfct980dwpdrv-3.6.1-1.x86_64.rpm
+	sha512sums = e7fc4dc0ad12988da84960f3b70f9cc3c09af32515fee9d6b497cdcdd23c2f2963ed8547a6ffc44abcfeda72b9c224cd19e800f109337c81afc3d287c100d233
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-t980dw
