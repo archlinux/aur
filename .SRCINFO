@@ -1,6 +1,6 @@
 pkgbase = lvce-bin
 	pkgdesc = VS Code inspired text editor that mostly runs in a webworker.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.66.2
+	pkgver = 0.66.4
 	pkgrel = 1
 	url = https://lvce-editor.github.io/lvce-editor
 	arch = aarch64
@@ -8,7 +8,7 @@ pkgbase = lvce-bin
 	arch = x86_64
 	license = MIT
 	depends = electron39
-	provides = lvce=0.66.2
+	provides = lvce=0.66.4
 	conflicts = lvce
 	options = !strip
 	options = !emptydirs
@@ -16,11 +16,11 @@ pkgbase = lvce-bin
 	source = lvce.sh
 	sha256sums = ada1a0303abece27be80372538645da5c5b4e9d60fcacc87b97da1c26b8931bc
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = lvce-0.66.2-aarch64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.66.2/lvce-v0.66.2_arm64.deb
-	sha256sums_aarch64 = b1f00e72b78935befdf96782c59c64327a5c072db3a220f99810386e2bfe96bb
-	source_armv7h = lvce-0.66.2-armv7h.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.66.2/lvce-v0.66.2_armhf.deb
-	sha256sums_armv7h = 90bd859e36b533bc520c8e3b26a5dda711b77a68ad69889fcd10f60eef2f204e
-	source_x86_64 = lvce-0.66.2-x86_64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.66.2/lvce-v0.66.2_amd64.deb
-	sha256sums_x86_64 = 6d30269fc9333c2678d1ddb4436f84bf3b801450ca3708d5888f36b2214719f4
+	source_aarch64 = lvce-0.66.4-aarch64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.66.4/lvce-v0.66.4_arm64.deb
+	sha256sums_aarch64 = fb7109f41ab92a37b944fb96daf8a0f167ee1e02cf5ab35e1d1ffdd338e603b6
+	source_armv7h = lvce-0.66.4-armv7h.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.66.4/lvce-v0.66.4_armhf.deb
+	sha256sums_armv7h = 10a2640802d9b281f2984826fa7df632f63f6ae17f8e20bb920ada408c3f3733
+	source_x86_64 = lvce-0.66.4-x86_64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.66.4/lvce-v0.66.4_amd64.deb
+	sha256sums_x86_64 = 4d42ca2d695b3b6e72986c056a4744f4beb9cfdb90b5d6a84cf9915f3d8f0bff
 
 pkgname = lvce-bin
