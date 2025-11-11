@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: misaka10987 <misaka10987@outlook.com>
-pkgname=inkscape-appimage
+pkgname=inkscape-appimg
 pkgver=1.4.2
 pkgrel=1
 epoch=
