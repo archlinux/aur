@@ -65,7 +65,7 @@ _pkgcommon() {
   cd build/
   install -Dm755 "$_pkg" -t   "$pkgdir/usr/bin"
   install -Dm644 "$_pkg.bash" "$pkgdir/usr/share/bash-completion/completions/$_pkg"
-  install -Dm644 "$_pkg.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$_pkg"
+  install -Dm644 "$_pkg.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$_pkg.fish"
   install -Dm644 "$_pkg.zsh"  "$pkgdir/usr/share/zsh/site-functions/_$_pkg"
   install -Dm644 "../$pkgbase-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgbase-$_pkg/LICENSE"
 }
