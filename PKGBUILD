@@ -38,7 +38,6 @@ package() {
     'ttf-fira-code'
     'ttf-fira-sans'
     'ttf-firacode-nerd'
-    'ttf-firacode-nerd'
     'ttf-jetbrains-mono'
     'ttf-nerd-fonts-symbols-common'
     'ttf-nerd-fonts-symbols-mono'
