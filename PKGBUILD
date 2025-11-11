@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=wardrobe
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Desktop customization utility"
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
 )
 makedepends=('meson')
 source=("Wardrobe-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('51a34c01d7e9bbad7360b8979abe5486eb1fb2907df31cabb93ee2c28f1b0a8c')
+sha256sums=('5573ff87f124cc1aa7343a9f8fd22afb5bc2cf0ff5ab46a7525b982831d98560')
 
 build() {
   arch-meson "Wardrobe-$pkgver" build
