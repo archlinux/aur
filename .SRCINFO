@@ -1,7 +1,7 @@
 pkgbase = python-archspec
 	pkgdesc = A library for detecting, labeling, and reasoning about microarchitectures
 	pkgver = 0.2.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/archspec/archspec
 	arch = any
 	license = MIT
