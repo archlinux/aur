@@ -3,7 +3,7 @@
 
 pkgname=docker-credential-secretservice-bin
 pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Store docker credentials using the D-Bus Secret Service"
 arch=('x86_64' 'aarch64')
 url="https://github.com/docker/docker-credential-helpers"
@@ -15,12 +15,12 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 
 source_x86_64=(
-    "${pkgname}-x86_64::${url}/releases/download/v${pkgver}/docker-credential-secretservice-v${pkgver}.linux-amd64"
+    "${pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/docker-credential-secretservice-v${pkgver}.linux-amd64"
     "LICENSE::https://raw.githubusercontent.com/docker/docker-credential-helpers/v${pkgver}/LICENSE"
 )
 
 source_aarch64=(
-    "${pkgname}-aarch64::${url}/releases/download/v${pkgver}/docker-credential-secretservice-v${pkgver}.linux-arm64"
+    "${pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/docker-credential-secretservice-v${pkgver}.linux-arm64"
     "LICENSE::https://raw.githubusercontent.com/docker/docker-credential-helpers/v${pkgver}/LICENSE"
 )
 
