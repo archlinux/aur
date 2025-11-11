@@ -1,0 +1,22 @@
+pkgbase = vkpost
+	pkgdesc = A Vulkan Post Processing Layer For Linux. A maintained fork of vkBasalt.
+	pkgver = 0.4.6
+	pkgrel = 2
+	url = https://github.com/KowabungaOfficial/vkPost
+	arch = x86_64
+	license = Zlib
+	makedepends = glslang
+	makedepends = meson
+	makedepends = ninja
+	makedepends = spirv-headers
+	makedepends = vulkan-headers
+	depends = glibc
+	depends = gcc-libs
+	depends = libx11
+	depends = wayland
+	depends = libxkbcommon
+	optdepends = reshade-shaders-git: collection of shaders to use with vkPost
+	source = https://github.com/KowabungaOfficial/vkPost/releases/download/v0.4.6/vkPost-0.4.6.tar.gz
+	sha256sums = 827964fa67bcad0973f5245f1e2453aea0cbb104608e1fabbbb3b1cd55fffd14
+
+pkgname = vkpost
