@@ -3,12 +3,12 @@
 
 pkgname=tail-tray
 pkgver=0.2.27
-pkgrel=1
+pkgrel=2
 pkgdesc='Tailscale tray menu and UI for the KDE Plasma Desktop'
 arch=('x86_64' 'aarch64')
 url='https://github.com/SneWs/tail-tray'
 license=('GPL-3.0-or-later')
-depends=('tailscale' 'qt6-base' 'hicolor-icon-theme')
+depends=('tailscale' 'qt6-base' 'hicolor-icon-theme' 'knotifications')
 optdepends=('davfs2')
 makedepends=('cmake' 'extra-cmake-modules' 'qt6-tools' 'git')
 source=("git+https://github.com/SneWs/tail-tray#tag=v$pkgver")
@@ -20,9 +20,10 @@ build() {
 		-B build
 		-S $pkgname
 		-W no-dev
-		-D CMAKE_BUILD_TYPE=None
+		-D CMAKE_BUILD_TYPE=Release
 		-D CMAKE_INSTALL_PREFIX=/usr
 		-D CMAKE_INSTALL_LIBDIR=/lib
+		-D KNOTIFICATIONS_ENABLED=ON
 	)
 	cmake "${cmake_options[@]}"
 	cmake --build build
