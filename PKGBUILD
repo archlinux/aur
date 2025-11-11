@@ -2,7 +2,7 @@
 
 pkgname=pistol-bin
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='General purpose file previewer'
 arch=('x86_64' 'aarch64' 'armv7l')
 url='https://github.com/doronbehar/pistol'
@@ -11,8 +11,8 @@ optdepends=('ranger: file browser to preview files in' 'lf: file browser to prev
 conflicts=('pistol' 'pistol-git')
 provides=('pistol')
 source=(
-    LICENSE::https://raw.githubusercontent.com/doronbehar/pistol/master/LICENSE
-    README.adoc::https://raw.githubusercontent.com/doronbehar/pistol/master/README.adoc
+    "$url/raw/refs/tags/v$pkgver/LICENSE"
+    "$url/raw/refs/tags/v$pkgver/README.adoc"
     "$url/releases/download/v$pkgver/pistol.1"
 )
 source_x86_64=("$url/releases/download/v$pkgver/pistol-static-linux-x86_64")
@@ -26,8 +26,8 @@ sha256sums_aarch64=('f35bf9980c831576aa812369ab1184aa2f76d85c80c8a9af70ac11c3697
 sha256sums_armv7l=('562675cfa63cd0a3327aa4e43ca6721e5e267986687fe40a41442dda35230478')
 
 package() {
-  install -Dm755 "pistol-static-linux-$CARCH" "$pkgdir/usr/bin/pistol"
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.adoc
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
-  install -Dm644 -t "$pkgdir/usr/share/man/man1" pistol.1
+    install -Dm755 "pistol-static-linux-$CARCH" "$pkgdir/usr/bin/pistol"
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.adoc
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+    install -Dm644 -t "$pkgdir/usr/share/man/man1" pistol.1
 }
