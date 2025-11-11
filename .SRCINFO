@@ -1,0 +1,15 @@
+pkgbase = git-hash-select
+	pkgdesc = A hash selector utility for bash with optional shell bindings
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/roddyrap/git-hash-select
+	arch = any
+	license = MIT
+	depends = git
+	depends = fzf
+	depends = util-linux
+	optdepends = xclip: X11 copy to clipboard support
+	source = git-hash-select::git+https://github.com/roddyrap/git-hash-select.git#tag=v0.1.2
+	sha256sums = SKIP
+
+pkgname = git-hash-select
