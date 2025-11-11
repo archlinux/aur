@@ -5,7 +5,7 @@
 
 pkgname=qmc2
 pkgver=0.243
-pkgrel=8
+pkgrel=9
 pkgdesc='Qt based UNIX MAME frontend supporting SDLMAME'
 url='https://github.com/qmc2/qmc2-mame-fe'
 license=(GPL-2.0-only)
@@ -20,7 +20,8 @@ depends=(gcc-libs
          sdl2
          zlib)
 makedepends=(git
-             rsync)
+             rsync
+             qt5-tools)
 source=(git+https://github.com/qmc2/qmc2-mame-fe#tag=v$pkgver
         webengine.patch)
 sha256sums=('359d4e4d224b760c2fcaa3d9719c6c4d7da86e34dd3a99b5b6d5f104164dac2e'
