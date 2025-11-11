@@ -36,7 +36,6 @@ package() {
     'sddm-theme-sweet-git'
     'ttf-fantasque-sans-mono'
     'ttf-fira-code'
-    'ttf-fira-code'
     'ttf-fira-sans'
     'ttf-firacode-nerd'
     'ttf-firacode-nerd'
