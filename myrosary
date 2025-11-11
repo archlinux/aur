@@ -1,0 +1,286 @@
+#!/usr/bin/env python3
+import datetime
+import argparse
+import textwrap
+import shutil
+import sys
+
+indentation_string="    "
+
+#print(textwrap.indent(textwrap.fill("".strip(),80),indentation_string))
+
+custom_message = """
+    Welcome to My Rosary!
+    
+    Usage:
+        myrosary <command> Example: myrosary luminous | myrosary guide
+    
+    Commands:
+        today                                    - Displays today's mystery.
+        joyful, sorrowful, glorious, luminous    - Prints out the mystery selected.
+        guide                                    - Displays a guide on how to pray the rosary.
+        help or blank                            - Displays this help message.
+    
+    For more information, please ask the developer.
+
+    ~Pax Christi Omnibus~
+    """
+def print_numbered_text(number: int,
+                        text: str,
+                        width: int = 80,
+                        leading_space: bool = True,
+                        trim_subsequent: bool = False) -> None:
+    """
+    Print a numbered paragraph with wrapped lines that align under the first
+    character after the number.
+
+    Params:
+      number: the list number (1, 2, 7, ...)
+      text: the paragraph text (no leading number)
+      width: max column width for wrapping
+      leading_space: if True the line will start with a leading space: " 7. ..."
+      trim_subsequent: if True subtract one space from the subsequent indent
+                       (useful if you feel there's one extra space)
+
+    Example:
+      print_numbered_text(7, "Long text ...", width=70, leading_space=True, trim_subsequent=True)
+    """
+    # Build the visible prefix that appears on the first line.
+    prefix = ( " " if leading_space else "" ) + f"{number}. "
+    # Default subsequent indent matches the visible prefix length
+    subsequent_len = len(prefix)
+    # Optionally trim one from the subsequent indent if user prefers it
+    if trim_subsequent and subsequent_len > 0:
+        subsequent_len -= 1
+
+    wrapper = textwrap.TextWrapper(
+        width=width,
+        initial_indent=prefix,
+        subsequent_indent=' ' * subsequent_len
+    )
+    print(wrapper.fill(text))
+    wrapper= textwrap.TextWrapper()
+
+def print_centered(text):
+    columns = shutil.get_terminal_size().columns
+    print(text.center(10000))
+
+def print_joyful_mysteries():
+    print("\n✿ The Joyful Mysteries ✿\n")
+    print(textwrap.fill("The Five Joyful Mysteries are traditionally prayed on Mondays, Saturdays, and, during the season of Advent, on Sundays.",80))
+    print("\n─────────────────────────── ⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆ ───────────────────────────")
+    
+    print("\n1. The Annunciation")
+    print("\n𐫱 Fruit of the mystery: Humility 𐫱\n")
+    
+    print(textwrap.fill("“In the sixth month, the angel Gabriel was sent from God to a town of Galilee called Nazareth, to a virgin betrothed to a man named Joseph, of the house of David, and the virgin’s name was Mary.” - Luke 1:26-27".strip(),80))
+    print("\n─────────────────────────── ⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆ ────────────────────────────")
+    
+    print("\n2. The Visitation")
+    print("\n𐫱 Fruit of the mystery: Love of your Neighbor 𐫱\n")
+    print(textwrap.fill("“During those days Mary set out and traveled to the hill country in haste to a town of Judah, where she entered the house of Zechariah and greeted Elizabeth. When Elizabeth heard Mary’s greeting, the infant leaped in her womb, and Elizabeth, filled with the holy Spirit, cried out in a loud voice and said, 'Most blessed are you among women, and blessed is the fruit of your womb.'” - Luke 1:39-42".strip(),80))
+    
+    print("\n─────────────────────────── ⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆ ───────────────────────────")
+    
+    print("\n3. The Nativity")
+    print("\n𐫱 Fruit of the mystery: Poverty of spirit and detachment from worldly things 𐫱\n")
+    print(textwrap.fill("“In those days a decree went out from Caesar Augustus that the whole world should be enrolled. This was the first enrollment, when Quirinius was governor of Syria. So all went to be enrolled, each to his own town. And Joseph too went up from Galilee from the town of Nazareth to Judea, to the city of David that is called Bethlehem, because he was of the house and family of David, to be enrolled with Mary, his betrothed, who was with child. While they were there, the time came for her to have her child, and she gave birth to her firstborn son. She wrapped him in swaddling clothes and laid him in a manger, because there was no room for them in the inn.” - Luke 2:1-7".strip(),80))
+    
+    print("\n─────────────────────────── ⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆ ───────────────────────────")
+
+    print("\n4. The Presentation in the Temple")
+    print("\n𐫱 Fruit of the mystery: Purity of Heart and Body 𐫱\n")
+    print(textwrap.fill("“When eight days were completed for his circumcision, he was named Jesus, the name given him by the angel before he was conceived in the womb. When the days were completed for their purification according to the law of Moses, they took him up to Jerusalem to present him to the Lord, just as it is written in the law of the Lord, 'Every male that opens the womb shall be consecrated to the Lord,' and to offer the sacrifice of 'a pair of turtledoves or two young pigeons,' in accordance with the dictate in the law of the Lord.” - Luke 2:21-24".strip(),80))
+    
+    print("\n─────────────────────────── ⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆ ───────────────────────────")
+
+    print("\n5. The Finding in the Temple")
+    print("\n𐫱 Fruit of the mystery: The Joy in Finding Jesus in your Life 𐫱\n")
+    print(textwrap.fill("“Each year his parents went to Jerusalem for the feast of Passover,  and when he was twelve years old, they went up according to festival custom. After they had completed its days, as they were returning, the boy Jesus remained behind in Jerusalem, but his parents did not know it. Thinking that he was in the caravan, they journeyed for a day and looked for him among their relatives and acquaintances, but not finding him, they returned to Jerusalem to look for him. After three days they found him in the temple, sitting in the midst of the teachers, listening to them and asking them questions, and all who heard him were astounded at his understanding and his answers.” - Luke 2:41-47  ".strip(),80))
+    
+def print_sorrowful_mysteries():
+    print("\n✿ The Sorrowful Mysteries ✿\n")
+    print(textwrap.fill("The Five Sorrowful Mysteries are traditionally prayed on Tuesdays, Fridays, and, during the season of Lent, on Sundays.",80))
+    print("\n─────────────────────────── ⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆ ───────────────────────────")
+    
+    print("\n1. The Agony in the Garden")
+    print("\n𐫱 Fruit of the mystery: Obedience to God’s Will 𐫱\n")
+    
+    print(textwrap.fill("“Then Jesus came with them to a place called Gethsemane, and he said to his disciples, 'Sit here while I go over there and pray.' He took along Peter and the two sons of Zebedee, and began to feel sorrow and distress. Then he said to them, 'My soul is sorrowful even to death. Remain here and keep watch with me.' He advanced a little and fell prostrate in prayer, saying, 'My Father, if it is possible, let this cup pass from me; yet, not as I will, but as you will.'” - Matthew 26:36-39".strip(),80))
+    print("\n─────────────────────────── ⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆ ────────────────────────────")
+    
+    print("\n2. The Scourging at the Pillar")
+    print("\n𐫱 Fruit of the mystery: Mortification, Purity 𐫱\n")
+    print(textwrap.fill("“Then he released Barabbas to them, but after he had Jesus scourged, he handed him over to be crucified.” - Matthew 27:26".strip(),80))
+    
+    print("\n─────────────────────────── ⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆ ───────────────────────────")
+    
+    print("\n3. The Crowning with Thorns")
+    print("\n𐫱 Fruit of the mystery: Courage 𐫱\n")
+    print(textwrap.fill("“Then the soldiers of the governor took Jesus inside the praetorium and gathered the whole cohort around him. They stripped off his clothes and threw a scarlet military cloak about him. Weaving a crown out of thorns, they placed it on his head, and a reed in his right hand. And kneeling before him, they mocked him, saying, 'Hail, King of the Jews!'” - Matthew 27:27-29".strip(),80))
+    
+    print("\n─────────────────────────── ⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆ ───────────────────────────")
+
+    print("\n4. The Carrying of the Cross")
+    print("\n𐫱 Fruit of the mystery: Patience 𐫱\n")
+    print(textwrap.fill("“They pressed into service a passer-by, Simon, a Cyrenian, who was coming in from the country, the father of Alexander and Rufus, to carry his cross. They brought him to the place of Golgotha (which is translated Place of the Skull).” - Mark 15:21-22".strip(),80))
+    
+    print("\n─────────────────────────── ⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆ ───────────────────────────")
+
+    print("\n5. The Crucifixion and Death")
+    print("\n𐫱 Fruit of the mystery: Sorrow for our Sins, Forgiveness 𐫱\n")
+    print(textwrap.fill('“When they came to the place called the Skull, they crucified him and the criminals there, one on his right, the other on his left. [Then Jesus said, \'Father, forgive them, they know not what they do.\'] They divided his garments by casting lots. The people stood by and watched; the rulers, meanwhile, sneered at him and said, \'He saved others, let him save himself if he is the chosen one, the Messiah of God.\' Even the soldiers jeered at him. As they approached to offer him wine they called out, \'If you are King of the Jews, save yourself.\' Above him there was an inscription that read, \'This is the King of the Jews.\' Now one of the criminals hanging there reviled Jesus, saying, \'Are you not the Messiah? Save yourself and us.\' The other, however, rebuking him, said in reply, \'Have you no fear of God, for you are subject to the same condemnation? And indeed, we have been condemned justly, for the sentence we received corresponds to our crimes, but this man has done nothing criminal.\' Then he said, \'Jesus, remember me when you come into your kingdom.\' He replied to him, \'Amen, I say to you, today you will be with me in Paradise.\'"It was now about noon and darkness came over the whole land until three in the afternoon because of an eclipse of the sun. Then the veil of the temple was torn down the middle. Jesus cried out in a loud voice, \'Father, into your hands I commend my spirit\'; and when he had said this he breathed his last.” - Luke 23:33-46'.strip(),80))
+
+def print_glorious_mysteries():
+    print("\n✿ The Glorious Mysteries ✿\n")
+    print(textwrap.fill("The Five Glorious Mysteries are traditionally prayed on Wednesdays and, outside the seasons of Advent and Lent, on Sundays.",80))
+    print("\n─────────────────────────── ⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆ ───────────────────────────")
+    
+    print("\n1. The Resurrection")
+    print("\n𐫱 Fruit of the mystery: Faith 𐫱\n")
+    
+    print(textwrap.fill("“But at daybreak on the first day of the week they took the spices they had prepared and went to the tomb.They found the stone rolled away from the tomb; but when they entered, they did not find the body of the Lord Jesus. While they were puzzling over this, behold, two men in dazzling garments appeared to them. They were terrified and bowed their faces to the ground. They said to them, 'Why do you seek the living one among the dead? He is not here, but he has been raised.'” - Luke 24:1-5".strip(),80))
+    print("\n─────────────────────────── ⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆ ────────────────────────────")
+    
+    print("\n2. The Ascension")
+    print("\n𐫱 Fruit of the mystery: Hope 𐫱\n")
+    print(textwrap.fill("“So then the Lord Jesus, after he spoke to them, was taken up into heaven and took his seat at the right hand of God.” - Mark 16:19".strip(),80))
+    
+    print("\n─────────────────────────── ⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆ ───────────────────────────")
+    
+    print("\n3. The Descent of the Holy Spirit")
+    print("\n𐫱 Fruit of the mystery: Wisdom 𐫱\n")
+    print(textwrap.fill("“When the time for Pentecost was fulfilled, they were all in one place together. And suddenly there came from the sky a noise like a strong driving wind, and it filled the entire house in which they were. Then there appeared to them tongues as of fire, which parted and came to rest on each one of them. And they were all filled with the holy Spirit and began to speak in different tongues, as the Spirit enabled them to proclaim.” - Acts 2:1-4".strip(),80))
+    
+    print("\n─────────────────────────── ⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆ ───────────────────────────")
+
+    print("\n4. The Assumption")
+    print("\n𐫱 Fruit of the mystery: Grace of a happy death 𐫱\n")
+    print(textwrap.fill("“Behold, from now on will all ages call me blessed. The Mighty One has done great things for me, and holy is his name.” - Luke 1:48-49".strip(),80))
+    
+    print("\n─────────────────────────── ⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆ ───────────────────────────")
+
+    print("\n5. The Coronation of Mary")
+    print("\n𐫱 Fruit of the mystery: Trust in Mary's Intercession 𐫱\n")
+    print(textwrap.fill('“A great sign appeared in the sky, a woman clothed with the sun, with the moon under her feet, and on her head a crown of twelve stars.” - Revelation 12:1'.strip(),80))
+
+def print_luminous_mysteries():
+    print("\n✿ The Glorious Mysteries ✿\n")
+    print(textwrap.fill("The Five Luminous Mysteries are traditionally prayed on Thursdays",80))
+    print("\n─────────────────────────── ⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆ ───────────────────────────")
+    
+    print("\n1. The Baptism of Christ in the Jordan")
+    print("\n𐫱 Fruit of the mystery: Openness to the Holy Spirit 𐫱\n")
+    
+    print(textwrap.fill("“After Jesus was baptized, he came up from the water and behold, the heavens were opened [for him], and he saw the Spirit of God descending like a dove [and] coming upon him. And a voice came from the heavens, saying, 'This is my beloved Son, with whom I am well pleased.'” - Matthew 3:16-17".strip(),80))
+    print("\n─────────────────────────── ⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆ ────────────────────────────")
+    
+    print("\n2. The Wedding Feast at Cana")
+    print("\n𐫱 Fruit of the mystery: To Jesus through Mary 𐫱\n")
+    print(textwrap.fill("“On the third day there was a wedding in Cana in Galilee, and the mother of Jesus was there. Jesus and his disciples were also invited to the wedding. When the wine ran short, the mother of Jesus said to him, 'They have no wine.' [And] Jesus said to her, 'Woman, how does your concern affect me? My hour has not yet come.' His mother said to the servers, 'Do whatever he tells you.'” - John 2:1-5".strip(),80))
+    
+    print("\n─────────────────────────── ⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆ ───────────────────────────")
+    
+    print("\n3. Jesus' Proclamation of the Coming of the Kingdom of God")
+    print("\n𐫱 Fruit of the mystery: Conversion, Trust in God 𐫱\n")
+    print(textwrap.fill("“'This is the time of fulfillment. The kingdom of God is at hand. Repent, and believe in the gospel.'” - Mark 1:15".strip(),80))
+    
+    print("\n─────────────────────────── ⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆ ───────────────────────────")
+
+    print("\n4. The Transfiguration")
+    print("\n𐫱 Fruit of the mystery: Desire for holiness 𐫱\n")
+    print(textwrap.fill("“After six days Jesus took Peter, James, and John his brother, and led them up a high mountain by themselves. And he was transfigured before them; his face shone like the sun and his clothes became white as light.” - Matthew 17:1-2".strip(),80))
+    
+    print("\n─────────────────────────── ⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆⋅☆⋅⋆ ───────────────────────────")
+
+    print("\n5. The Institution of the Eucharist")
+    print("\n𐫱 Fruit of the mystery: Adoration 𐫱\n")
+    print(textwrap.fill('“While they were eating, Jesus took bread, said the blessing, broke it, and giving it to his disciples said, \'Take and eat; this is my body.\'” - Matthew 26:26'.strip(),80))
+
+def print_todays_mystery():
+    # Get the current date and time
+    current_datetime = datetime.datetime.now()
+
+    # Format the date to get the full weekday name
+    day_name = current_datetime.strftime("%A").lower()
+
+    if(day_name=="monday" or day_name=="saturday"):
+        print_joyful_mysteries()
+    elif(day_name=="tuesday" or day_name=="friday"):
+        print_sorrowful_mysteries()
+    elif(day_name=="wednesday" or day_name=="sunday"):
+        print(print_glorious_mysteries)
+    elif(day_name=="thursday"):
+        print_luminous_mysteries()
+    
+    sys.exit(1)
+
+def print_guide():
+    print("\n`~*─────────*~ How to Pray the Rosary ~*─────────*~`\n")
+    print("1. Make the Sign of the Cross †:\n")
+    print(textwrap.indent(textwrap.fill("\"In the name of the Father and of the Son and of the Holy Spirit. Amen.\"".strip(),80),indentation_string))
+    print("\n\n2. Holding the Crucifix, say the Apostles' Creed:\n")
+    print(textwrap.indent(textwrap.fill("I believe in God, the Father Almighty, Creator of heaven and earth; and in Jesus Christ his only Son, Our Lord; Who was conceived by the Holy Spirit, born of the Virgin Mary, suffered under Pontius Pilate, was crucified, died, and was buried. He descended into hell; the third day He arose again from the dead; He ascended into heaven, sits at the right hand of God the Father Almighty; from thence He shall come to judge the living and the dead.\nI believe in the Holy Spirit, the holy Catholic Church, the communion of saints, the forgiveness of sins, the resurrection of the body, and life everlasting. Amen.".strip(),80),indentation_string))
+    print("\n\n3. On the first bead, say an Our Father:\n")
+    print(textwrap.indent(textwrap.fill("Our Father, Who art in heaven, hallowed be thy name. Thy kingdom come; thy will be done on earth, as it is in heaven. Give us this day our daily bread; and forgive us our trespasses, as we forgive those who trespass against us. And lead us not into temptation, but deliver us from evil. Amen.".strip(),80),indentation_string))
+    print("\n\n4. Say one Hail Mary on each of the next three beads for an increase of faith, hope and charity:\n")
+    print(textwrap.indent(textwrap.fill("Hail Mary, full of grace; the Lord is with thee; blessed art thou among women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen.".strip(),80),indentation_string))
+    print("\n\n5. Say the Glory Be:\n")
+    print(textwrap.indent(textwrap.fill("Glory be to the Father, and to the Son, and to the Holy Spirit. As it was in the beginning, is now, and ever shall be, world without end. Amen.".strip(),80),indentation_string))
+    print("\n\n6. For each of the five decades, announce the Mystery (perhaps followed by a brief reading from Scripture) then say the Our Father.\n\n")
+    print_numbered_text(7,"While fingering each of the ten beads of the decade, next say ten Hail Marys while meditating on the Mystery. Then say a Glory Be. (You can also pray the Fatima Decade Prayer after the Glory Be, but its optional):",80,leading_space=False, trim_subsequent=False)
+    print("")
+    print(textwrap.indent(textwrap.fill("O my Jesus, forgive us our sins, save us from the fires of hell; and lead all souls to heaven, especially those in most need of Thy mercy. Amen.",80),indentation_string))
+    print("\n\n8. After saying the five decades, say the Hail, Holy Queen prayer, followed by the Let Us Pray:\n")
+    print(textwrap.indent(textwrap.fill("Hail, Holy Queen, mother of mercy, our life, our sweetness and our hope. To thee do we cry, poor banished children of Eve. To thee do we send up our sighs, mourning and weeping in this valley of tears. Turn then, most gracious advocate, thine eyes of mercy toward us, and after this our exile show unto us the blessed fruit of thy womb, Jesus. O clement, O loving, O sweet Virgin Mary. Pray for us, O holy Mother of God. That we may be made worthy of the promises of Christ.".strip(),80),indentation_string))
+    print("")
+    print(textwrap.indent(textwrap.fill("Let us pray: O God, whose Only Begotten Son, by his life, Death, and Resurrection, has purchased for us the rewards of eternal life, grant, we beseech thee, that while meditating on these mysteries of the most holy Rosary of the Blessed Virgin Mary, we may imitate what they contain and obtain what they promise, through the same Christ our Lord. Amen.".strip(),80),indentation_string))
+    print("\n\n10. End with the Sign of the Cross †:\n")
+    print(textwrap.indent(textwrap.fill("In the name of the Father, and of the Son, and of the Holy Spirit. Amen.".strip(),80),indentation_string))
+
+parser = argparse.ArgumentParser(description="Use this if you want to pray the rosary!")
+
+group = parser.add_mutually_exclusive_group()
+
+# Positional argument
+#parser.add_argument("--mysteries", "--mystery", "-m", help="What type of rosary did you want to pray? Joyful, Sorowful, Glorious, Luminous?")
+#parser.add_argument("--guide", "-g", nargs='?', default="null", help="Want a complete guide on how to pray the rosary? This will print out a detailed guide on how to pray the rosary.")
+#parser.add_argument("guide", nargs='?', default="null" ,help="Want a complete guide on how to pray the rosary? This will print out a detailed guide on how to pray the rosary.")
+
+parser.add_argument('pos', nargs='?', choices=['guide', 'joyful', 'sorrowful', 'luminous', 'glorious', "today", "help"], default=None,
+                        help='Chose any command, glorious, luminous, etc.')
+try:
+    args, unknown = parser.parse_known_args()
+except Exception as e:
+    print(custom_message)
+    sys.exit(1)
+
+cmd = args.pos
+
+if(cmd is None):
+    print(custom_message)
+    sys.exit(1)
+
+if unknown:
+    print(custom_message)
+    sys.exit(1)
+
+if unknown or cmd.lower() not in ('guide', 'joyful', 'sorrowful', 'luminous', 'glorious', "today", "help"):
+    print(custom_message)
+    sys.exit(1)
+
+if(cmd.lower()=="joyful"):
+    print_joyful_mysteries()
+elif(cmd.lower()=="sorrowful"):
+    print_sorrowful_mysteries()
+elif(cmd.lower()=="glorious"):
+    print_glorious_mysteries()
+elif(cmd.lower()=="luminous"):
+    print_luminous_mysteries()
+elif(cmd.lower()=="today"):
+    print_todays_mystery()
+elif(cmd.lower()=="guide"):
+    print_guide()
+elif(cmd.lower()=="help"):
+    print(custom_message)
+    sys.exit(1)

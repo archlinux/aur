@@ -1,0 +1,12 @@
+pkgbase = myrosary
+	pkgdesc = A command-line Rosary prayer assistant written in Python.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/miapata/myrosary
+	arch = any
+	license = MIT
+	depends = python
+	source = myrosary
+	sha256sums = SKIP
+
+pkgname = myrosary
