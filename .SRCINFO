@@ -6,6 +6,7 @@ pkgbase = adguardhome-bin
 	arch = armv7h
 	arch = aarch64
 	arch = i686
+	arch = riscv64
 	arch = x86_64
 	license = GPL-3.0-only
 	provides = adguardhome
@@ -19,6 +20,8 @@ pkgbase = adguardhome-bin
 	sha256sums_aarch64 = 34298af99fda196ddbc617da01bc9d8b5ca3fc7636717d786c5a96f6b4dfa0ae
 	source_i686 = https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.107.69/AdGuardHome_linux_386.tar.gz
 	sha256sums_i686 = 9846d676fe8af9a75293f72710f4d825e7847162dc44e617e1ef3b4b5f6a8f0e
+	source_riscv64 = https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.107.69/AdGuardHome_linux_riscv64.tar.gz
+	sha256sums_riscv64 = daf432f3468a0382c86c1291a83c8138c52dcf7002a8238442843ba4ec88d36e
 	source_x86_64 = https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.107.69/AdGuardHome_linux_amd64.tar.gz
 	sha256sums_x86_64 = 36d82638a30d436d18db3e6f8aaeabe8d5f684e0d451127b8d18d5553a3e5325
 
