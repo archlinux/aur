@@ -12,6 +12,8 @@ pkgbase = tdns-git
 	provides = tdns
 	conflicts = tdns
 	source = git+https://github.com/mbevc1/tdns
+	source = tdns-LICENSE::https://raw.githubusercontent.com/mbevc1/tdns/refs/heads/main/LICENSE
 	sha256sums = SKIP
+	sha256sums = 1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5
 
 pkgname = tdns-git
