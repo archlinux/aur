@@ -3,7 +3,7 @@
 pkgname=waraddonclient
 _pkgname=WARAddonClient
 pkgver=1.14.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Warhammer Return of Reckoning Addon Client"
 arch=('x86_64')
 url="https://github.com/Idrinth/WARAddonClient"
@@ -22,7 +22,7 @@ sha256sums=('aaa0c0c09de9d6c3106d50743b09328970a37165fd216a6ddc565059d984b3b4'
 install=permissions.install
 
 package() {
-	cd "$src"
+	cd "$srcdir"
 	install -Dm644 $_pkgname.jar "$pkgdir/opt/$_pkgname/$_pkgname.jar"
 	install -Dm644 logo.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
 	install -Dm755 waraddonclient "$pkgdir/usr/bin/waraddonclient"

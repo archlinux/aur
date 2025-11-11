@@ -1,7 +1,7 @@
 pkgbase = waraddonclient
 	pkgdesc = Warhammer Return of Reckoning Addon Client
 	pkgver = 1.14.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Idrinth/WARAddonClient
 	install = permissions.install
 	arch = x86_64
