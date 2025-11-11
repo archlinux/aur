@@ -1,17 +1,17 @@
 # Maintainer: qr243vbi
 
 pkgname=(nekobox nekobox-core)
-pkgver=5.6.15
+pkgver=5.6.14
 pkgrel=1
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64')
 url="https://github.com/qr243vbi/nekobox"
 license=('GPL-3.0-or-later')
 makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative')
-makedepends+=('cmake' 'gendesk' 'go' 'protobuf' 'qt6-tools' 'vulkan-headers' 'cpio' 'upx')
+makedepends+=('cmake' 'gendesk' 'go' 'protobuf' 'qt6-tools' 'vulkan-headers') 
+makedepends+=('cpio' 'upx')
 source=("https://github.com/qr243vbi/nekobox/releases/download/${pkgver}/nekobox-unified-source-${pkgver}.tar.xz")
-sha256sums=('SKIP')
-
+sha256sums=("66bb5275be517919ccdc3ac7a00c3d9d171b28fed96c0c5c5c9a1a5014c3c8fb")
 
 prepare() {
     gendesk -f -n \
@@ -20,7 +20,6 @@ prepare() {
         --name "${pkgname^}" \
         --categories 'Network'
 }
-
 
 build() {
     export DEST=$PWD/build
@@ -53,6 +52,7 @@ package_nekobox-core() {
 
 package_nekobox() {
     depends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'nekobox-core')
+
     install -Dm755 "$DEST"/nekobox -t "${pkgdir}/usr/lib/NekoBox"
     upx "${pkgdir}/usr/lib/NekoBox/nekobox"
 
@@ -67,6 +67,4 @@ package_nekobox() {
     cp -RfvT "res/public" "${pkgdir}/usr/lib/NekoBox/public"
     echo "${pkgver}" > "${pkgdir}/usr/lib/NekoBox/version.txt"
     install -Dm644 res/public/On.png "${pkgdir}/usr/share/pixmaps/nekobox.png"
-
-    echo "${pkgver}"
 }
