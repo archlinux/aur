@@ -8,7 +8,7 @@ _name0=pydantic-ai
 _name00=clai
 pkgbase=python-$_name0
 pkgname=(python-${_name0//-ai/}-$_name4 python-$_name0-$_name3 python-${_name0//-ai/}-$_name2 python-$_name0-$_name1 python-$_name0 python-$_name00)
-pkgver=1.9.1
+pkgver=1.14.0
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/pydantic-ai'
@@ -19,7 +19,7 @@ checkdepends=('python-anyio' 'python-asgi-lifespan' 'python-devtools' 'python-di
 source=("$_name0-$pkgver::git+$url.git#tag=v$pkgver"
         "git+https://github.com/pydantic/mcp-run-python.git"
         "fix-tests.patch")
-sha256sums=('5faca813d0b33ea9d47e20c670926a4b2d874e93bacf3ff28922998f86d1194f'
+sha256sums=('c72a612a49d0e41cc9ffcbfc53c0fe995e3939f45152bd4265fce901c050003d'
             'SKIP'
             'eb2ddf309b138563e2f9864434500a701c80204783e8eeaf29d63f914b5920c1')
 
@@ -95,11 +95,11 @@ package_python-pydantic-ai-slim() {
               'python-mistralai: mistral'
               'python-boto3: bedrock'
               'python-huggingface-hub: huggingface' 'python-aiohttp: huggingface'
-              'python-outlines: outlines-transformers' 'python-accelerate: outlines-transformers' 'python-datasets: outlines-transformers' 'python-transformers: outlines-transformers' 'python-setuptools: outlines-transformers' 'python-pillow: outlines-transformers'
+              'python-outlines: outlines-transformers' 'python-accelerate: outlines-transformers' 'python-datasets: outlines-transformers' 'python-transformers: outlines-transformers' 'python-setuptools: outlines-transformers' 'python-pillow: outlines-transformers' 'python-pytorch: outlines-transformers'
               'python-outlines: outlines-llamacpp' 'python-huggingface-hub: outlines-llamacpp' 'python-llama-cpp: outlines-llamacpp' 'python-numba: outlines-llamacpp'
               'python-outlines: outlines-mlxlm' 'python-datasets: outlines-mlxlm' 'python-mlx: outlines-mlxlm' 'python-mlx-lm: outlines-mlxlm'
               'python-outlines: outlines-sglang' 'python-openai: outlines-sglang'
-              'python-vllm: outlines-vllm-offline' 'python-outlines: outlines-vllm-offline'
+              'python-vllm: outlines-vllm-offline' 'python-pytorch: outlines-vllm-offline' 'python-outlines: outlines-vllm-offline'
               'python-ddgs: duckduckgo'
               'python-tavily: tavily'
               'python-rich: cli' 'python-prompt_toolkit: cli' 'python-argcomplete: cli' 'python-pyperclip: cli'

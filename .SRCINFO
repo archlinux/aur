@@ -1,5 +1,5 @@
 pkgbase = python-pydantic-ai
-	pkgver = 1.9.1
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://github.com/pydantic/pydantic-ai
 	arch = any
@@ -25,10 +25,10 @@ pkgbase = python-pydantic-ai
 	makedepends = python-wheel
 	makedepends = git
 	depends = python
-	source = pydantic-ai-1.9.1::git+https://github.com/pydantic/pydantic-ai.git#tag=v1.9.1
+	source = pydantic-ai-1.14.0::git+https://github.com/pydantic/pydantic-ai.git#tag=v1.14.0
 	source = git+https://github.com/pydantic/mcp-run-python.git
 	source = fix-tests.patch
-	sha256sums = 5faca813d0b33ea9d47e20c670926a4b2d874e93bacf3ff28922998f86d1194f
+	sha256sums = c72a612a49d0e41cc9ffcbfc53c0fe995e3939f45152bd4265fce901c050003d
 	sha256sums = SKIP
 	sha256sums = eb2ddf309b138563e2f9864434500a701c80204783e8eeaf29d63f914b5920c1
 
@@ -71,6 +71,7 @@ pkgname = python-pydantic-ai-slim
 	optdepends = python-transformers: outlines-transformers
 	optdepends = python-setuptools: outlines-transformers
 	optdepends = python-pillow: outlines-transformers
+	optdepends = python-pytorch: outlines-transformers
 	optdepends = python-outlines: outlines-llamacpp
 	optdepends = python-huggingface-hub: outlines-llamacpp
 	optdepends = python-llama-cpp: outlines-llamacpp
@@ -82,6 +83,7 @@ pkgname = python-pydantic-ai-slim
 	optdepends = python-outlines: outlines-sglang
 	optdepends = python-openai: outlines-sglang
 	optdepends = python-vllm: outlines-vllm-offline
+	optdepends = python-pytorch: outlines-vllm-offline
 	optdepends = python-outlines: outlines-vllm-offline
 	optdepends = python-ddgs: duckduckgo
 	optdepends = python-tavily: tavily
