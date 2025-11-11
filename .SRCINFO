@@ -1,0 +1,15 @@
+pkgbase = ruby-httpx
+	pkgdesc = A client library for making HTTP requests from Ruby.
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://rubygems.org/gems/httpx
+	arch = any
+	license = Apache 2.0
+	depends = ruby
+	depends = ruby-http-2
+	noextract = httpx-1.6.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/httpx-1.6.2.gem
+	sha256sums = 464ee0228e96ad1ee0affe7fd86cc87078e99a6d37c9d6884e29e87195b911d9
+
+pkgname = ruby-httpx
