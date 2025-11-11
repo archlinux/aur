@@ -18,9 +18,9 @@ pkgbase = soredowe-bin
 	options = !strip
 	source = icon.svg::https://raw.githubusercontent.com/mlm-games/soredowe/refs/heads/main/packaging/icons/hicolor/scalable/apps/soredowe.svg
 	sha256sums = SKIP
-	source_x86_64 = soredowe-v0.1.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/soredowe/releases/download/vv0.1.1/soredowe-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = soredowe-v0.1.1-x86_64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/soredowe/releases/download/vv0.1.1/soredowe-vv0.1.1-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums_x86_64 = 4e7860bff70f4c9da80aa951179cbf75adf30003fba15b18b11cfc52072d4b9a
-	source_aarch64 = soredowe-v0.1.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/soredowe/releases/download/vv0.1.1/soredowe-v0.1.1-aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = soredowe-v0.1.1-aarch64-unknown-linux-gnu.tar.gz::https://github.com/mlm-games/soredowe/releases/download/vv0.1.1/soredowe-vv0.1.1-aarch64-unknown-linux-gnu.tar.gz
 	sha256sums_aarch64 = c2ff8feb601a9e6f1bedfc9e14afdfcadfd14e4279b679043009087ffea6e3e7
 
 pkgname = soredowe-bin
