@@ -1,0 +1,23 @@
+pkgbase = lib32-vkpost
+	pkgdesc = A Vulkan Post Processing Layer For Linux (32-bit). Next Gen vkBasalt.
+	pkgver = 0.4.6
+	pkgrel = 2
+	url = https://github.com/KowabungaOfficial/vkPost
+	arch = x86_64
+	license = Zlib
+	makedepends = glslang
+	makedepends = meson
+	makedepends = ninja
+	makedepends = spirv-headers
+	makedepends = vulkan-headers
+	depends = lib32-glibc
+	depends = lib32-gcc-libs
+	depends = lib32-libx11
+	depends = lib32-wayland
+	depends = lib32-libxkbcommon
+	optdepends = reshade-shaders-git: collection of shaders to use with vkPost
+	optdepends = vkpost: sample config at /usr/share/vkPost/vkPost.conf.example
+	source = https://github.com/KowabungaOfficial/vkPost/releases/download/v0.4.6/vkPost-0.4.6.tar.gz
+	sha256sums = 827964fa67bcad0973f5245f1e2453aea0cbb104608e1fabbbb3b1cd55fffd14
+
+pkgname = lib32-vkpost
