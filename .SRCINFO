@@ -1,6 +1,6 @@
 pkgbase = typstyle-git
 	pkgdesc = Beautiful and reliable typst code formatter
-	pkgver = 0.13.14.r3.5223f9e
+	pkgver = 0.14.0.r0.48d4010
 	pkgrel = 1
 	url = https://github.com/typstyle-rs/typstyle
 	arch = aarch64
