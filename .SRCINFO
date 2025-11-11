@@ -1,7 +1,7 @@
 pkgbase = scx-tools-git
 	pkgdesc = scx_loader: A DBUS Interface for Managing sched_ext Schedulers
 	pkgver = 1.0.18.r0.g40a3634
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/sched-ext/scx-loader
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = scx-tools-git
 	makedepends = llvm-libs
 	depends = polkit
 	depends = scx-scheds
-	provides = scxctl
-	conflicts = scxctl
+	provides = scx-tools=1.0.18.r0.g40a3634
+	conflicts = scx-tools
 	options = !lto
 	source = git+https://github.com/sched-ext/scx-loader
 	sha256sums = SKIP
