@@ -3,17 +3,17 @@
 
 pkgname=arcanefortune-bin
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A game of empire building, diplomacy, conquest, construction, and deconstruction"
 arch=('x86_64')
-url="https://arcanefortune.com"
-license=('AGPL3' 'CC BY-SA 4.0')
+url="https://github.com/cody2007/arcane_fortune"
+license=('AGPL-3.0-or-later' 'CC-BY-SA-4.0')
 options=(!strip !emptydirs)
 depends=('sh' 'sdl2' 'sdl2_image' 'sdl2_ttf' 'ncurses' 'freetype2' 'gcc-libs' 'libjpeg6-turbo' 'libtiff' 'zlib')
 provides=("${pkgname/-bin}")
 conflicts=("${pkgname/-bin}")
 install=arcanefortune.install
-source=("${url}/releases/arcane_fortune_v${pkgver//./_}_linux.zip"
+source=("${url}/releases/download/v${pkgver}/arcane_fortune_v${pkgver//./_}.zip"
         arcane_fortune)
 
 sha512sums=('018ca80ae7c4fb1638fc838695843596b03d1871c8a6d25d68dd723f2eabc346b65ce798ca101ee47ff312a5c8920c8e62991cf24ac5d5b1956afbf8deb294a8'
