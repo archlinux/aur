@@ -2,13 +2,13 @@
 # Contributor: Legacy Installer <contact dot legacyinstaller at gmail dot com>
 # Contributor: oscareczek <oscareczek at gmail dot com>
 pkgname=pcbox-git
-pkgver=r14275.86b6d80
+pkgver=5.2
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones (Built with qt6)'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://pcbox-emu.xyz/'
 license=('GPL2')
-depends=('fluidsynth' 'hicolor-icon-theme' 'libslirp' 'openal' 'qt6-base' 'rtmidi' 'sdl2' # explicit
+depends=('fluidsynth' 'hicolor-icon-theme' 'libslirp' 'openal' 'qt6-base' 'rtmidi' 'sdl2' 'libserialport' # explicit
 'freetype2' 'gcc-libs' 'glib2' 'glibc' 'libevdev' 'libglvnd' 'libpng' 'libx11' 'libxcb' 'libxext' 'libxi' 'libxkbcommon-x11' 'libxkbcommon' 'wayland' 'zlib') # implicit
 makedepends=('git' 'cmake>=3.21' 'extra-cmake-modules' 'ninja' 'qt6-tools' 'vde2' 'vulkan-headers')
 optdepends=(

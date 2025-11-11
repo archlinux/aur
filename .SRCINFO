@@ -1,6 +1,6 @@
 pkgbase = pcbox-git
 	pkgdesc = An emulator for classic IBM PC clones (Built with qt6)
-	pkgver = r14275.86b6d80
+	pkgver = 5.2
 	pkgrel = 1
 	url = https://pcbox-emu.xyz/
 	arch = pentium4
@@ -22,6 +22,7 @@ pkgbase = pcbox-git
 	depends = qt6-base
 	depends = rtmidi
 	depends = sdl2
+	depends = libserialport
 	depends = freetype2
 	depends = gcc-libs
 	depends = glib2
