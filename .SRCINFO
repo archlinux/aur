@@ -23,7 +23,6 @@ pkgname = manjaro-hyprland-settings
 	depends = nwg-look
 	depends = plasma5-themes-sweet-full-git
 	depends = qt5ct
-	depends = sddm-theme-sweet-git
 	depends = ttf-fantasque-sans-mono
 	depends = ttf-fira-code
 	depends = ttf-fira-sans

@@ -33,7 +33,7 @@ package() {
     'nwg-look'
     'plasma5-themes-sweet-full-git'
     'qt5ct'
-    'sddm-theme-sweet-git'
+    #'sddm-theme-sweet-git'
     'ttf-fantasque-sans-mono'
     'ttf-fira-code'
     'ttf-fira-sans'
