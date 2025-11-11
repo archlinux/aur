@@ -1,7 +1,7 @@
 # Maintainer: killab33z <killab33z @ protonmail-dot-ch>
 pkgname=python-comtypes
 _pkgname=comtypes
-pkgver=1.4.8
+pkgver=1.4.13
 pkgrel=1
 pkgdesc='Lightweight pure Python COM package based on the ctypes foreign function interface library; allows you to define, call, and implement custom and dispatch-based COM interfaces.'
 arch=('any')
@@ -10,7 +10,7 @@ license=('any-OSI')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('b0d79b7f0eefce953db978325b507328d16c2666c46a8e3b0c58a522408f8c40c7f7583c66ac64a56cf0a0ede5fdb515e9b5b7cb72ae42cd2bc2c6ac7799b848')
+sha512sums=('1305dd3b5208e7f1db70446545d2a1c097ea485df548ff7e499dd3995ae127cba33ca354c68fc1bbecf424ed4925847f32a8e3e6902eb0e1db0efaf38271fa16')
 
 # https://wiki.archlinux.org/title/Python_package_guidelines#Standards_based_(PEP_517)
 build() {
