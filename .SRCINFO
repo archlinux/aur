@@ -1,6 +1,6 @@
 pkgbase = slimevr-bin
 	pkgdesc = VR Full Body Tracking System
-	pkgver = 0.17.0.rc.1
+	pkgver = 0.17.0.rc.2
 	pkgrel = 6
 	url = https://github.com/SlimeVR/SlimeVR-Server
 	changelog = CHANGELOG
@@ -10,10 +10,10 @@ pkgbase = slimevr-bin
 	provides = slimevr-server
 	conflicts = slimevr-server
 	options = !strip
-	source = https://github.com/SlimeVR/SlimeVR-Server/releases/download/v0.17.0-rc.1/SlimeVR-amd64.appimage
-	source = https://github.com/SlimeVR/SlimeVR-Server/raw/v0.17.0-rc.1/LICENSE-MIT
-	source = https://github.com/SlimeVR/SlimeVR-Server/raw/v0.17.0-rc.1/LICENSE-APACHE
-	sha512sums = a0cc7cc94f95fb90fd66017afa66edcc69716eddbb07cafd0f984369417dc9f96f5b36af7005873d26a8a1bdc4a13d5827db52f9c66ab4cb08a76f53ba64ab4d
+	source = https://github.com/SlimeVR/SlimeVR-Server/releases/download/v0.17.0-rc.2/SlimeVR-amd64.appimage
+	source = https://github.com/SlimeVR/SlimeVR-Server/raw/v0.17.0-rc.2/LICENSE-MIT
+	source = https://github.com/SlimeVR/SlimeVR-Server/raw/v0.17.0-rc.2/LICENSE-APACHE
+	sha512sums = abd4ba00c1e7932ce6535f07e706949460e3c51bfac0778aa83ae3b43e9e1e17c302fd09a9116fd01ad85d1e9e526b40cdc176f5904cd0a4f7dffa136d0afdbe
 	sha512sums = 3b6306600ce9420d982a589293281db31c3c013bc9e0a829ae85e924f1318fa420bad7c73d0b1924ffdc74a92d44793de749daccd383ddcdc4c82169bf1d7e9d
 	sha512sums = 530b18b93fcec33499964bcbc019398194035247efdf6c1a8bf78fb56c7e1e0e401b02287b5201423b2bcfb4f8c7fddbf0aba161e3909ac25078b426459558ae
 
