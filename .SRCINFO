@@ -1,0 +1,27 @@
+pkgbase = wayvid
+	pkgdesc = Dynamic video wallpaper engine for Wayland with Steam Workshop and Niri support
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/YangYuS8/wayvid
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	depends = wayland
+	depends = libmpv
+	depends = gcc-libs
+	depends = glibc
+	optdepends = mesa: Hardware video decoding with VA-API
+	optdepends = libva-intel-driver: Intel GPU hardware acceleration
+	optdepends = libva-mesa-driver: AMD GPU hardware acceleration
+	optdepends = nvidia-utils: NVIDIA GPU hardware acceleration
+	optdepends = steam: Steam Workshop integration for Wallpaper Engine imports
+	optdepends = niri: Workspace-aware performance optimizations
+	provides = wayvid
+	conflicts = wayvid-git
+	source = wayvid-0.4.0.tar.gz::https://github.com/YangYuS8/wayvid/archive/v0.4.0.tar.gz
+	sha256sums = c7e26ab1aab8ac6838538bf0c187dcccf809f9d18b8befed907a1cccd41af793
+
+pkgname = wayvid
