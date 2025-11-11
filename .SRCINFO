@@ -1,0 +1,17 @@
+pkgbase = eprosima-fast-dds-python
+	pkgdesc = Python binding for the eProsima Fast DDS C++ library
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/eProsima/Fast-DDS-python
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = swig
+	makedepends = python-setuptools
+	depends = eprosima-fast-dds
+	depends = python
+	conflicts = python-fastdds
+	source = https://github.com/eProsima/Fast-DDS-python/archive/v2.4.0.tar.gz
+	sha256sums = 636581bddf3e915a3799e068c4575d5a43f44dca76189e1b8375fd7b4abd366c
+
+pkgname = eprosima-fast-dds-python
