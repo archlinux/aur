@@ -1,7 +1,7 @@
 pkgbase = manjaro-hyprland-settings
 	pkgdesc = Manjaro Linux Hyprland settings
 	pkgver = 20251111
-	pkgrel = 7
+	pkgrel = 8
 	url = https://gitlab.com/garuda-linux/themes-and-settings/settings/manjaro-hyprland-settings
 	install = manjaro-hyprland-settings.install
 	arch = any
@@ -37,3 +37,4 @@ pkgname = manjaro-hyprland-settings
 	depends = waybar-module-pacman-updates-git
 	depends = wofi
 	depends = wpaperd
+	depends = xdg-desktop-portal-hyprland
