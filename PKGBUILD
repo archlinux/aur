@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=stockholm-trekkers-playlist-maker-bin
 _pkgname='Stockholm Trekkers Playlist Maker'
-pkgver=3.0.8
+pkgver=3.0.9
 _electronversion=37
 pkgrel=1
 pkgdesc="An Electron app for making video playlists.(Prebuilt version.Use system-wide electron)"
@@ -17,10 +17,10 @@ options=(
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-installer-${pkgver}.deb.zip"
+    "${pkgname%-bin}-${pkgver}.deb.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e6ef680d13444b60a88bc00a58f68e9c26a8dd0669248c30691ccf72187c6999'
+sha256sums=('a1f99f1cf256476f368bf9de97072f72716c472742a86bb671747351f498a325'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
@@ -34,7 +34,6 @@ prepare() {
         s/@cfgdirname@/${pkgname%-bin}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/"*.deb
     bsdtar -xf "${srcdir}/data."*
     _get_electron_version
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
