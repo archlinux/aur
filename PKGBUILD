@@ -2,7 +2,7 @@
 
 pkgname=python-ensure
 _name=${pkgname//-/_}
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 epoch=
 pkgdesc="Python functions used to ensure something."
@@ -27,7 +27,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('dcb206dd12ed90184adf62e5c2898e1bc128912a684e96cdf6414bff9e4efc69')
+sha256sums=('d16b7246745635a0703d488078deee2701b5b5623d45e47cb67051f965e31fde')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
