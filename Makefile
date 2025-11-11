@@ -32,5 +32,6 @@ lint: PKGBUILD
 .PHONY: build
 build: info lint
 	extra-x86_64-build -r $(CHROOTPATH)
+	makepkg --printsrcinfo > .SRCINFO
 
 

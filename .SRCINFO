@@ -1,12 +1,12 @@
 pkgbase = dtui
 	pkgdesc = Small TUI for introspecting the state of the system/session dbus
-	pkgver = 2.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/Troels51/dtui
 	arch = x86_64
 	license = MIT
-	makedepends = rust
-	source = dtui-2.0.0.tar.gz::https://github.com/Troels51/dtui/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = 6467ec552ea6a468841c9186599fe757f9e66380f45244cce37103cc3ed45a29
+	makedepends = cargo-audit
+	source = dtui-3.0.1.tar.gz::https://github.com/Troels51/dtui/archive/refs/tags/v3.0.1.tar.gz
+	sha256sums = 611e27a18750630025e29bcf5736d4b8ac57e8bba527c734b05623aecab99ed3
 
 pkgname = dtui
