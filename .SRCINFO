@@ -1,6 +1,6 @@
 pkgbase = gvisor-git
 	pkgdesc = OCI container sandbox runtime focused on security, efficiency, and ease of use
-	pkgver = 20251013.0
+	pkgver = 20251103.0
 	pkgrel = 1
 	url = https://gvisor.dev
 	arch = x86_64
