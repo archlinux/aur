@@ -1,7 +1,7 @@
 # Maintainer: mako yass <m.arcus.yass@gmail.com>
 pkgname=defter-scrolling
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A better way of scrolling, for mice"
 arch=('any')
 url="https://github.com/makoConstruct/middle-good-scrolling"

@@ -1,7 +1,7 @@
 pkgbase = defter-scrolling
 	pkgdesc = A better way of scrolling, for mice
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/makoConstruct/middle-good-scrolling
 	install = defter-scrolling.install
 	arch = any
