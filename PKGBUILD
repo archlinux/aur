@@ -2,7 +2,7 @@
 
 pkgname=(nekobox nekobox-core)
 pkgver=5.6.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64')
 url="https://github.com/qr243vbi/nekobox"
