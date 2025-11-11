@@ -1,7 +1,7 @@
 pkgbase = canta-theme-git
 	pkgdesc = Flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell
 	pkgver = 2021.09.08.r6.332fdec
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinceliuice/Canta-theme
 	arch = any
 	license = GPL2
@@ -10,7 +10,7 @@ pkgbase = canta-theme-git
 	depends = numix-circle-icon-theme-git
 	depends = gtk-engine-murrine
 	depends = gtk-engines
-	depends = gnome-themes-standard
+	depends = gnome-themes-extra
 	depends = sassc
 	options = !strip
 	source = canta-theme::git+https://github.com/vinceliuice/Canta-theme.git

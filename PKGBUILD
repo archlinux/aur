@@ -6,14 +6,14 @@ _pkgname=canta-theme
 pkgname=('canta-gtk-theme-git' 'canta-icon-theme-git')
 pkgdesc="Flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell"
 pkgver=2021.09.08.r6.332fdec
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/vinceliuice/Canta-theme"
 license=('GPL2')
 depends=('numix-circle-icon-theme-git'
             'gtk-engine-murrine'
             'gtk-engines'
-            'gnome-themes-standard'
+            'gnome-themes-extra'
             'sassc')
 makedepends=('gtk3' 'git')
 options=(!strip)
