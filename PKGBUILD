@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=libjwt
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="JWT C Library"
 arch=('i686' 'x86_64' 'aarch64')
@@ -15,7 +15,7 @@ checkdepends=('check')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/benmcollins/libjwt/archive/v${pkgver}.tar.gz"
   init-jwk_set.patch)
-sha256sums=('f9541643407b212550de1ecd9a8b85dc121dd75e9c8ebbe33e39af299fe48ea5'
+sha256sums=('12978f7ac2945c5a95a2732fde9800a5910fa056e64dc9ff733d4046078d2d79'
             '141a0176faa957f26a24d46b9a56bc152ab030873fc6c34012b8cd9bfad21d32')
 
 prepare() {
