@@ -1,6 +1,6 @@
 # Maintainer: Larry Oates <leafman12345@gmail.com>
 pkgname=doomfire-wallpaper
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=5
 pkgdesc="DOOM-style animated fire wallpaper for Hyprland using hyprwinwrap"
 arch=('x86_64')
