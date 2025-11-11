@@ -1,13 +1,14 @@
 pkgbase = python-about-time
 	pkgdesc = Easily measure timing and throughput of code blocks, with beautiful human friendly representations.
 	pkgver = 4.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rsalmei/about-time
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	source = https://github.com/rsalmei/about-time/archive/refs/tags/v4.2.2.tar.gz
 	source = pyproject.patch
