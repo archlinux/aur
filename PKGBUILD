@@ -1,7 +1,7 @@
 # Maintainer: Michał Lisowski <lisu at riseup dot net>
 
 pkgname=manjaro-hyprland-settings
-pkgver="0.1.0"
+pkgver="20251111"
 _commit='6e3c786ce776932d9032cb4442db6a4edf9fbe4d'
 pkgrel=1
 arch=('any')
