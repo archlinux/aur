@@ -11,8 +11,8 @@ license=('MIT')
 provides=('pkgmate')
 conflicts=('pkgmate')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fuad-daoud/pkgmate/releases/download/v0.11.0-test/pkgmate-arch-linux-amd64.tar.gz")
-sha256sums_x86_64=('1142818ebe4fd5bff28c74601b45d895426eaceb3b329ade51c10999bac860c0')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fuad-daoud/pkgmate/releases/download/v0.11.0/pkgmate-arch-linux-amd64.tar.gz")
+sha256sums_x86_64=('bc74b19b98860cf3f4db211cac894d6531076d75290f5680263b4efb489cc057')
 
 package() {
   install -Dm755 "./pkgmate" "${pkgdir}/usr/bin/pkgmate"
