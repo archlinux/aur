@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=fox flux DELUXE (demo)
+Comment=Puzzle-platformer about a cartoon fox who turns into things rather easily
+Exec=/usr/bin/fox-flux-deluxe
+Icon=fox-flux-deluxe
+Terminal=false
+Categories=Game
+Keywords=Platformer;Puzzle;Furry
