@@ -1,7 +1,7 @@
 # Maintainer: Kemel Zaidan <kemelzaidan at gmail dot com>
 pkgname=tatuin
-pkgver=0.25.0
-pkgrel=2
+pkgver=0.25.1
+pkgrel=1
 pkgdesc="Task Aggregator TUI for Obsidian, Todoist, Gitlab TODO and Github Issues"
 arch=("i686" "x86_64" "aarch64")
 license=("MIT")
@@ -9,7 +9,7 @@ url="https://github.com/panter-dsd/tatuin"
 makedepends=('rust' 'cargo' 'openssl' 'pkgconf')
 depends=('glibc' 'gcc-libs' 'openssl')
 source=("${url}/archive/refs/tags/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('245da2d1ec6aae88229596d8ed48a20857c1d2813731e68dd2755669cb892213')
+sha256sums=('4295f7bea79e646a0b156f0d3ff071be4ab5071bf5b9f73b26d135aa070c1b49')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
