@@ -5,11 +5,10 @@
 # and https://github.com/pyushkevich/itksnap/blob/master/Utilities/Docker/itksnap/Dockerfile
 #
 _itkver=5.4.0
-# vtk from community repo is build with qt5, here we need to build it with qt6
 _vtkver=9.3.1
 pkgname=itk-snap
-pkgver=4.2.2
-pkgrel=2
+pkgver=4.4.0
+pkgrel=1
 pkgdesc="A software application used to segment structures in 3D medical images"
 arch=('x86_64')
 url="https://www.itksnap.org"
@@ -23,13 +22,16 @@ depends=(
   libglvnd
   libjpeg-turbo
   libpng
+  libssh
   libtiff
   libx11
   qt6-base
   qt6-declarative
+  qt6-tools
   zlib
 )
 makedepends=(
+  vulkan-headers
   cmake
   eigen
   fftw
@@ -38,16 +40,15 @@ makedepends=(
   git
 )
 options=(!emptydirs)
-# this commit is not v4.2.2 but with latest bug fix
 source=(
   "vtk-${_vtkver}.tar.gz::https://github.com/Kitware/VTK/archive/refs/tags/v${_vtkver}.tar.gz"
   "itk-${_itkver}.tar.gz::https://github.com/InsightSoftwareConsortium/ITK/archive/refs/tags/v${_itkver}.tar.gz"
-  "${pkgname}-${pkgver}::git+https://github.com/pyushkevich/itksnap.git#commit=87db0444a1bb470e0bcbda6959bceb1d7d896061"
+  "${pkgname}-${pkgver}::git+https://github.com/pyushkevich/itksnap.git#tag=v${pkgver}-beta2"
   "0001.fix-building-with-eigen.patch::https://github.com/InsightSoftwareConsortium/ITK/commit/ada8399edb0259ba9272c957ab4033978bdfdded.patch"
 )
 sha512sums=('484db4fbc82f5484d38bbd425d64756911236284cf9d77a904ce133f4cc6909ee303ca7ca22407a648becea03a10ec2d5692e6357c1d6cd4053c9c9104b5bd8c'
             '3a98ececf258aac545f094dd3e97918c93cc82bc623ddf793c4bf0162ab06c83fbfd4d08130bdec6e617bda85dd17225488bc1394bc91b17f1232126a5d990db'
-            '474fa0d670ff19c1114edb4339578f9ade85045d2b50835faa964bf08cd0ad9167e228bdbaad7809dda6ade45284cb0a35c449628e69092cbfbb35699f709811'
+            '43da43b43c901906a33806a0c5499c3d3e3dc7a3912a76d3443db7650e70b92196c8f7405ab7f36970d2cba670084c8fefc58d2a4d69e9e3e604cb2af5d44362'
             '61b059db3d883226f56912bcd1349f9c13e1b24e2f417df4f171a05fb7de6eae5582cd0a97e5e450ae2d2dd0964f8b3b52d15b7f38da52280ede9852d2c7c008')
 
 prepare() {
@@ -94,6 +95,7 @@ build() {
     -DVTK_GROUP_ENABLE_Qt=YES \
     -DVTK_MODULE_ENABLE_VTK_GUISupportQtQuick=NO \
     -DVTK_MODULE_ENABLE_VTK_GUISupportQtSQL=NO \
+    -DVTK_MODULE_ENABLE_VTK_RenderingExternal=YES \
     -DVTK_QT_VERSION=6 \
     -S ${srcdir}/VTK-${_vtkver}
   make -C ${srcdir}/build-vtk
@@ -126,5 +128,8 @@ package() {
 
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/GUI/Qt/Resources/logo_square.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  # fix translations files
+  mv -v "${pkgdir}/usr/share/qt6/translations" "${pkgdir}/usr/lib/snap-${pkgver}-beta2"
+#  rm -rfv "${pkgdir}/usr/share/qt6"
 }
 # vim:set ts=2 sw=2 et:
