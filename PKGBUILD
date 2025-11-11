@@ -2,18 +2,18 @@
 
 pkgbase=libjxl-git
 pkgname=('libjxl-git' 'libjxl-doc-git')
-pkgver=0.11.1.r321.g3d0a160d
+pkgver=0.11.1.r456.g3d095d9b
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
 license=('BSD-3-Clause')
 makedepends=(
+    'add-determinism'
     'asciidoc'
     'brotli'
     'cmake'
     'doxygen'
-    'gdk-pixbuf2'
     'giflib'
     'git'
     'gperftools'
@@ -28,7 +28,7 @@ makedepends=(
 source=('git+https://github.com/libjxl/libjxl.git'
         'git+https://github.com/mm2/Little-CMS.git'
         'git+https://github.com/webmproject/sjpeg.git'
-        'git+https://skia.googlesource.com/skcms.git'
+        'git+https://github.com/google/skcms.git'
         'libjxl-testdata'::'git+https://github.com/libjxl/testdata.git'
         'git+https://github.com/libjpeg-turbo/libjpeg-turbo.git')
 sha256sums=('SKIP'
@@ -78,8 +78,7 @@ build() {
         -DJPEGXL_ENABLE_EXAMPLES:BOOL='false' \
         -DJPEGXL_ENABLE_FUZZERS:BOOL='false' \
         -DJPEGXL_ENABLE_OPENEXR:BOOL='false' \
-        -DJPEGXL_ENABLE_PLUGIN_GIMP210:BOOL='false' \
-        -DJPEGXL_ENABLE_PLUGINS:BOOL='true' \
+        -DJPEGXL_ENABLE_PLUGINS:BOOL='false' \
         -DJPEGXL_ENABLE_VIEWERS:BOOL='false' \
         -DJPEGXL_FORCE_SYSTEM_BROTLI:BOOL='true' \
         -DJPEGXL_FORCE_SYSTEM_GTEST:BOOL='true' \
@@ -105,7 +104,6 @@ package_libjxl-git() {
         'libjpeg-turbo'
         'libpng')
     optdepends=(
-        'gdk-pixbuf2: for gdk-pixbuf loader'
         'java-runtime: for JNI bindings')
     provides=('libjxl' 'libjpeg-xl-git'
         'libjxl.so'
@@ -117,6 +115,10 @@ package_libjxl-git() {
     DESTDIR="$pkgdir" cmake --install build
     install -D -m644 libjxl/{LICENSE,PATENTS} -t "${pkgdir}/usr/share/licenses/${pkgname}"
     mv "${pkgdir}/usr/share/java"/{org.jpeg.jpegxl,jpegxl}.jar
+    
+    # Clamp timestamps to SOURCE_DATE_EPOCH and strip other metadata, to make
+    # the package reproducible.
+    add-det "${pkgdir}/usr/share/java"/jpegxl.jar
 }
 
 package_libjxl-doc-git() {
