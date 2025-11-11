@@ -3,7 +3,7 @@
 
 pkgname=docker-credential-secretservice-bin
 pkgver=0.9.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Store docker credentials using the D-Bus Secret Service"
 arch=('x86_64' 'aarch64')
 url="https://github.com/docker/docker-credential-helpers"
@@ -30,7 +30,7 @@ b2sums_aarch64=('48e3061ade3cb8bc4afb9fd94c839b3fa4aca9b5fb70fb17bad6d1786cf3389
                 '7e5e1fc19b9fd4204acb61ea546d7ff33b1b7d913a27680a4a032365312e4a488ff4b3ac498d8c80c8ce374d7700085ed71b46f75438cd9d6bbee653be209806')
 
 package() {
-    install -D -m 0755 "${srcdir}/${pkgname}-${arch}" "${pkgdir}/usr/bin/docker-credential-secretservice"
+    install -D -m 0755 "${srcdir}/${pkgname}-${pkgver}-${arch}" "${pkgdir}/usr/bin/docker-credential-secretservice"
     install -D -m 0644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
