@@ -1,5 +1,5 @@
 pkgbase = illogical-updots
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/FoxyIsCoding/illogical-updots
 	arch = any
