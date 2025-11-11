@@ -1,0 +1,20 @@
+pkgbase = noxboot
+	pkgdesc = Smart Startup Manager CLI for Linux — manage autostart apps easily
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/pvk-96/noxboot
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-typer
+	depends = python-rich
+	depends = python-psutil
+	depends = python-yaml
+	source = noxboot-0.1.0.tar.gz::https://github.com/pvk-96/noxboot/archive/refs/tags/v0.1.0.tar.gz
+	md5sums = SKIP
+
+pkgname = noxboot
