@@ -3,16 +3,18 @@
 pkgbase=heidisql
 pkgname=(heidisql heidisql-qt6 heidisql-gtk2)
 pkgver=12.13.1.1
-pkgrel=7
+pkgrel=8
 pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases."
 arch=(x86_64)
 url="http://www.heidisql.com/"
 license=('GPL-2.0')
 makedepends=(lazarus qt6pas make fpc gettext gtk2 binutils)
+_deb_filename="heidisql_${pkgver}_amd64.deb"
 source=(
   "https://github.com/HeidiSQL/HeidiSQL/archive/v${pkgver}.tar.gz"
-  "https://github.com/HeidiSQL/HeidiSQL/releases/download/v${pkgver}/heidisql_${pkgver}_amd64.deb"
+  "${_deb_filename}::https://github.com/HeidiSQL/HeidiSQL/releases/download/v${pkgver}/${_deb_filename}"
 )
+noextract=("${_deb_filename}")
 install="heidisql.install"
 sha256sums=('e9db116b0f3d8aa2300fde3266056452425304791393d84786ac9c0350ddc2b5'
             'e871bb5cf92476d026bd8c5887cb2a83e6f13877adb077ef5fbdd2edf2936122')
@@ -32,16 +34,16 @@ prepare() {
   # Extract translation files from official .deb package
   # The .deb contains pre-built .mo files (36 languages) that are built from Transifex
   # This is the only way to get all translations without Transifex access
-  if [ -f "${srcdir}/heidisql_${pkgver}_amd64.deb" ]; then
+  if [ -f "${srcdir}/${_deb_filename}" ]; then
     echo "Extracting translation files from official .deb package"
     (
       mkdir -p "${srcdir}/deb-extract"
       cd "${srcdir}/deb-extract"
-      ar -x "${srcdir}/heidisql_${pkgver}_amd64.deb"
-      bsdtar -xf data.tar.gz usr/share/heidisql/locale/ 2>/dev/null || true
+      ar -x "${srcdir}/${_deb_filename}"
+      bsdtar -xf data.tar.gz usr/share/heidisql/locale/
       if [ -d "usr/share/heidisql/locale" ] && [ -n "$(find usr/share/heidisql/locale -name '*.mo' 2>/dev/null)" ]; then
         mkdir -p "${srcdir}/HeidiSQL-${pkgver}/extra/locale"
-        cp -v usr/share/heidisql/locale/*.mo "${srcdir}/HeidiSQL-${pkgver}/extra/locale/" 2>/dev/null || true
+        cp -v usr/share/heidisql/locale/*.mo "${srcdir}/HeidiSQL-${pkgver}/extra/locale/"
         count=$(find "${srcdir}/HeidiSQL-${pkgver}/extra/locale" -name '*.mo' 2>/dev/null | wc -l)
         echo "Extracted $count translation files"
       fi
