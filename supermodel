@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+config_dir=".config/supermodel"
+data_dir=".local/share/supermodel"
+
+if [[ ! -f "$HOME/$config_dir/Config/Games.xml" ]]; then
+    install -Dm644 /usr/share/doc/supermodel/config/Games.xml "$HOME/$config_dir/Config/Games.xml"
+fi
+
+if [[ ! -d "$HOME/$data_dir/roms" ]]; then
+    zenity --error --text="ROM directory missing:\n~/$data_dir/roms"
+    exit 1
+fi
+
+cd "$HOME/$data_dir" || exit
+/usr/bin/supermodel-binary
