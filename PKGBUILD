@@ -21,6 +21,7 @@ build() {
     cd "$srcdir/$pkgname-$pkgver"
     export CARGO_HOME="$srcdir/cargo"
     export CARGO_TARGET_DIR="$srcdir/target"
+    export LIBSQLITE3_SYS_STATIC=1
     cargo build --release --frozen
 }
 
