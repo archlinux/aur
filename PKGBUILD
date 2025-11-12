@@ -5,7 +5,7 @@
 
 pkgname='neovim-telescope'
 _projname='telescope.nvim'
-pkgver='0.1.8'
+pkgver='0.1.9'
 pkgrel=1
 pkgdesc='Extendable fuzzy search for Neovim'
 arch=('any')
@@ -24,8 +24,8 @@ checkdepends=(
   'ripgrep'
 )
 conflicts=("${pkgname}-git")
-source=("${_projname}-${pkgver}.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('2480c5675def3368fcc5a6c890ab44f02d95a389743f309ca958f244381065dd')
+source=("${_projname}-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('2ce3915c7087474852c68c1f57bd6d743e772843cf4adadaba9ccea1baa80e81')
 
 package() {
   pkgdir=${pkgdir:?}
