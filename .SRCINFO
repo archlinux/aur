@@ -1,5 +1,5 @@
 pkgbase = python-pyrgg
-	pkgdesc = 🔧 Python Random Graph Generator
+	pkgdesc = A Random Graph Generator
 	pkgver = 1.9
 	pkgrel = 1
 	url = https://github.com/sepandhaghighi/pyrgg
