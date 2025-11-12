@@ -4,7 +4,11 @@ config_dir=".config/supermodel"
 data_dir=".local/share/supermodel"
 
 if [[ ! -f "$HOME/$config_dir/Config/Games.xml" ]]; then
-    install -Dm644 /usr/share/doc/supermodel/config/Games.xml "$HOME/$config_dir/Config/Games.xml"
+    install -Dm644 /usr/share/supermodel/Config/Games.xml "$HOME/$config_dir/Config/Games.xml"
+fi
+
+if [[ ! -d "$HOME/$data_dir/Assets" ]]; then
+    cp -r /usr/share/supermodel/Assets "$HOME/$data_dir/"
 fi
 
 if [[ ! -d "$HOME/$data_dir/roms" ]]; then
@@ -13,4 +17,4 @@ if [[ ! -d "$HOME/$data_dir/roms" ]]; then
 fi
 
 cd "$HOME/$data_dir" || exit
-/usr/bin/supermodel-binary
+WAYLAND_DISPLAY='' /usr/bin/supermodel-binary
