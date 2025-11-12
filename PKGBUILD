@@ -5,7 +5,7 @@
 
 pkgname=gtk3-patched-filechooser-icon-view
 pkgver=3.24.51
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
 arch=(x86_64)
@@ -17,12 +17,13 @@ depends=(
   cairo
   dconf
   desktop-file-utils
+  fontconfig
   fribidi
   gdk-pixbuf2
   glib2
   glibc
-  harfbuzz
   gtk-update-icon-cache
+  harfbuzz
   iso-codes
   libcloudproviders
   libcolord
@@ -51,6 +52,7 @@ makedepends=(
   git
   glib2-devel
   gobject-introspection
+  gtk-doc
   hicolor-icon-theme
   meson
   sassc
