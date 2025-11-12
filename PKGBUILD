@@ -4,9 +4,9 @@ pkgname=heidisql
 pkgver=12.13.1.1
 pkgrel=2
 pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases."
-arch=(any)
+arch=(x86_64)
 url="http://www.heidisql.com/"
-license=('GPL')
+license=('GPL-2.0')
 depends=(gtk2 mariadb-libs postgresql-libs libperconaserverclient sqlite)
 # using the deb because it already conveniently includes related files like icons and a desktop entry (not included in the .tar.xz)
 source=("https://github.com/HeidiSQL/HeidiSQL/releases/download/v${pkgver}/heidisql_${pkgver}_amd64.deb")
