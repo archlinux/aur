@@ -2,27 +2,36 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=dns-lexicon
-pkgver=3.21.1
+pkgver=3.22.0
 pkgrel=1
 pkgdesc="Manipulate DNS records on various DNS providers in a standardized/agnostic way"
-arch=('any')
+arch=(any)
 url="https://github.com/dns-lexicon/dns-lexicon"
-license=('MIT')
+license=(MIT)
 depends=(
-  'python-beautifulsoup4'
-  'python-cryptography'
-  'python-yaml'
-  'python-requests'
-  'python-tldextract'
-  'python-importlib-metadata'
-  'python-pyotp'
-  'python-dnspython'
+  python-beautifulsoup4
+  python-cryptography
+  python-yaml
+  python-requests
+  python-tldextract
+  python-importlib-metadata
+  python-pyotp
+  python-dnspython
 )
 makedepends=(
-  'git'
-  'python-build'
-  'python-installer'
-  'python-hatchling'
+  git
+  python-build
+  python-installer
+  python-hatchling
+)
+checkdepends=(
+  python-pytest
+  python-vcrpy
+  python-boto3
+  python-localzone
+  python-softlayer
+  python-zeep
+  bind
 )
 optdepends=(
   'python-boto3: for Route53 support'
@@ -31,18 +40,9 @@ optdepends=(
   'python-zeep: for Gransy support')
   # 'python-oci: for Oracle Cloud Infrastructure (OCI) support'
   # 'python-tencentcloud-sdk-python: for QCloud support'
-checkdepends=(
-  'python-pytest'
-  'python-vcrpy'
-  'python-boto3'
-  'python-localzone'
-  'python-softlayer'
-  'python-zeep'
-  'bind'
-)
 source=("$pkgname::git+$url#tag=v$pkgver")
-sha512sums=('562b6749d657b8fe0d89f88b06e0c9c1b30462c9818a89cea33cdc72ada72779e47418ae2228835e1e00b0155314808f46d94686d60b50be30107b1b1c595317')
-b2sums=('078c73ef67ef17b8e12b399e4519db858ca0e8bc86a130b65cfc4363671024983ae03bb0989418c913558386da3495ce7063912793ed9cf9e8ee077757e45d49')
+sha512sums=('6ec6624128e8371f353ee0c23b17ef8550452b3f4108ad675fb0babbb22d33a87591f0b5fbd59da7ddb0e765676539d17a7fc369e6357eff7d70578976550805')
+b2sums=('cddd10aac9b45eead2a85f2e0960aa019d3357f85182a48d06bf3ca04bb0cde822de91b2928bb86dbc6039587e342b6ea658eb745af3b3fe8b53ce8ff876300c')
 
 build() {
   cd "$pkgname"
