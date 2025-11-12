@@ -1,9 +1,9 @@
-# Maintainer Ashes <asalawless5c@gmail.com>
+# Maintainer Ashes Lawless <asalawless5c@gmail.com>
 # Previous Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@proton.me>
 _pkgname=cpptools-debug
 pkgname="${_pkgname}-bin"
 pkgver=1.29.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Debug adapter extraced from vscode-cpptools'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://github.com/Microsoft/vscode-cpptools'
