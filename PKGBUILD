@@ -5,7 +5,7 @@ _pname=${pkgbase#python-}
 _pyname=${_pname/-/_}
 pkgname=("python-${_pname}")
 #"python-${_pname}-doc")
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="Utilities to execute code blocks in Markdown files"
 arch=('any')
@@ -40,7 +40,7 @@ checkdepends=('python-pytest'
               'python-griffe'
               'mkdocstrings')  # markupsafe <- mkdocstrings
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('31b185d139b75ec973a9b72ff96eda7d')
+md5sums=('7937943421cad50c85faeb36581c6288')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
