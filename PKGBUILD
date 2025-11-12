@@ -16,9 +16,8 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}"/spectra-$pkgver
-    mkdir build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake ..
-    make install DESTDIR="$pkgdir"
+    ${_arch}-cmake -B build-${_arch} .
+    make install DESTDIR="$pkgdir" -C build-${_arch}
   done
 }
 
