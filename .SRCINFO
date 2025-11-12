@@ -1,7 +1,7 @@
 pkgbase = heidisql
 	pkgdesc = A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases.
 	pkgver = 12.13.1.1
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.heidisql.com/
 	install = heidisql.install
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = heidisql
 pkgname = heidisql
 	pkgdesc = Metapackage for HeidiSQL - wrapper script and shared files (install heidisql-qt6 or heidisql-gtk2)
 	arch = any
+	depends = heidisql-client
 	depends = mariadb-libs
 	depends = postgresql-libs
 	depends = libperconaserverclient
