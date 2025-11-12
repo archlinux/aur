@@ -99,17 +99,6 @@ pkgver() {
   printf "%s.r%s" "$DRACUT_VERSION" "$(git rev-list --count HEAD)"
 }
 
-prepare() {
-  cd "${pkgname%-git}"
-
-  # remove dracut modules not meant for arch x86_64
-  for f in cms cio_ignore ppcmac zipl \
-    dasd dasd_mod dasd_rules dcssblk fcoe* \
-    qeth_rules zfcp zfcp_rules znet; do
-    rm -rf "modules.d/[0-9][0-9]$f"
-  done
-}
-
 build() {
   cd "${pkgname%-git}"
 
