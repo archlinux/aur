@@ -1,6 +1,6 @@
 # Maintainer: Martino Pilia <martino.pilia@gmail.com>
 pkgname=starpls
-pkgver=0.1.21
+pkgver=0.1.22
 pkgrel=1
 pkgdesc="An LSP implementation for Starlark"
 arch=('x86_64')
