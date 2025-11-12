@@ -1,0 +1,11 @@
+pkgname=cinnamon-mint
+pkgver=1.0
+pkgrel=1
+pkgdesc="Linux Mint version of cinnamon for Arch Linux"
+arch=('any')
+url="https://archlinux.org"
+license=('GPL2')
+depends=('cinnamon' 'mint-themes' 'mint-y-icons' 'mint-backgrounds' 'noto-fonts')
+provides=('cinnamon-mint')
+source=()
+sha256sums=()

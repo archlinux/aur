@@ -1,0 +1,15 @@
+pkgbase = cinnamon-mint
+	pkgdesc = Linux Mint version of cinnamon for Arch Linux
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://archlinux.org
+	arch = any
+	license = GPL2
+	depends = cinnamon
+	depends = mint-themes
+	depends = mint-y-icons
+	depends = mint-backgrounds
+	depends = noto-fonts
+	provides = cinnamon-mint
+
+pkgname = cinnamon-mint
