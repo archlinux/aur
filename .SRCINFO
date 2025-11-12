@@ -1,6 +1,6 @@
 pkgbase = term39-bin
 	pkgdesc = A modern, retro-styled terminal multiplexer inspired by Norton Disk Doctor (MS-DOS) (binary release)
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/alejandroqh/term39
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = term39-bin
 	license = MIT
 	provides = term39
 	conflicts = term39
-	source_x86_64 = term39-bin-0.5.1-x86_64.tar.gz::https://github.com/alejandroqh/term39/releases/download/v0.5.1/term39-v0.5.1-linux-x86_64.tar.gz
-	sha256sums_x86_64 = f8a3e84a6b11366eda42c0f48222d805c32ea13358d27fbeafe186a805fe1aa6
-	source_aarch64 = term39-bin-0.5.1-aarch64.tar.gz::https://github.com/alejandroqh/term39/releases/download/v0.5.1/term39-v0.5.1-linux-arm64.tar.gz
-	sha256sums_aarch64 = eb62e29f2710b336d994efb240a1ef15af31a74672d2e84d52382f6f5b75dd5e
+	source_x86_64 = term39-bin-0.6.0-x86_64.tar.gz::https://github.com/alejandroqh/term39/releases/download/v0.6.0/term39-v0.6.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 7831c9959072b3e40e8eb05f1fa8062afaf79152e109bc56621d3b8230906245
+	source_aarch64 = term39-bin-0.6.0-aarch64.tar.gz::https://github.com/alejandroqh/term39/releases/download/v0.6.0/term39-v0.6.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = cfeae3c856eaf0a3a350881d3ebce3f765032a7696cc41c77df605d972e5b340
 
 pkgname = term39-bin
