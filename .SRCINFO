@@ -1,17 +1,17 @@
 pkgbase = alice-ai-app-bin
 	pkgdesc = A smart desktop AI assistant application built with Vue.js, Vite, and Electron. Advanced memory system, function calling, MCP support and more.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.1.10
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/pmbstyle/Alice
 	arch = x86_64
 	license = MIT
 	depends = electron28
-	provides = alice-ai-app=1.1.10
+	provides = alice-ai-app=1.2.0
 	conflicts = alice-ai-app
-	source = alice-ai-app-1.1.10-x86_64.AppImage::https://github.com/pmbstyle/Alice/releases/download/v1.1.10/Alice-AI-App-Linux-1.1.10.AppImage
-	source = LICENSE-1.1.10::https://raw.githubusercontent.com/pmbstyle/Alice/v1.1.10/LICENSE
+	source = alice-ai-app-1.2.0-x86_64.AppImage::https://github.com/pmbstyle/Alice/releases/download/v1.2.0/Alice-AI-App-Linux-1.2.0.AppImage
+	source = LICENSE-1.2.0::https://raw.githubusercontent.com/pmbstyle/Alice/v1.2.0/LICENSE
 	source = alice-ai-app.sh
-	sha256sums = 3fb670664517c0e37e3e9247753d2b2769ea9c752f95de811b8c8362b8c9349f
+	sha256sums = 4aebe9371b91e5bf2e692380b9ce5626a19da84289fdab8df038b90d361095cf
 	sha256sums = 3e9927b4fcbf5507656ca5b5f90f71efb32fb5033321c0f6b9eeb69d50f4001a
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
