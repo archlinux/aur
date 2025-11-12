@@ -2,8 +2,8 @@
 
 pkgname='netease-cloud-music-wine'
 pkgver=3.1.22.204707
-pkgrel=1
-pkgdesc="NetEase Cloud Music Player"
+pkgrel=2
+pkgdesc="NetEase Cloud Music Player. 使用wine运行网易云音乐windows官方包。"
 arch=('x86_64')
 license=('custom')
 url="https://music.163.com/#/download"
@@ -11,6 +11,7 @@ depends=('wine' 'noto-fonts-cjk')
 makedepends=('7zip')
 #optdepends=('')
 #conflicts=('')
+install=.install
 DLAGENTS=(
     'https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -A "Mozilla/5.0" -o %o %u'
 )
@@ -27,6 +28,15 @@ prepare() {
     cd "${srcdir}"
     cat > install.sh << 'EOF'
 #!/bin/bash
+
+# prevent running by root/sudo
+# refer Wine official FAQ, do not run wine with sudo or root permission.
+if [[ $(id -u) -eq 0 ]];
+then
+    echo "ERROR: you should not use root/sudo to run this application."
+    echo "ERROR: prevent running by root/sudo"
+    exit 1
+fi
 
 if [[ -z "${WINEPREFIX}" ]];
 then
@@ -53,6 +63,15 @@ EOF
 
     cat > run.sh << 'EOF'
 #!/bin/bash
+
+# prevent running by root/sudo
+# refer Wine official FAQ, do not run wine with sudo or root permission.
+if [[ $(id -u) -eq 0 ]];
+then
+    echo "ERROR: you should not use root/sudo to run this application."
+    echo "ERROR: prevent running by root/sudo"
+    exit 1
+fi
 
 if [[ -n "${XDG_CACHE_HOME}" ]];
 then

@@ -1,0 +1,33 @@
+post_install(){
+    cat << 'EOF'
+################################
+netease-cloud-music-wine:
+
+To run this application via commandline,
+you can run command:
+
+    netease-cloud-music-wine
+
+or:
+
+    cloudmusic
+
+################################
+EOF
+}
+
+post_remove(){
+    cat << 'EOF'
+################################
+netease-cloud-music-wine:
+
+After uninstalled this application,
+if necessary,
+please remove below cache directory manually:
+
+    $HOME/.cache/netease-cloud-music-wine
+
+
+################################
+EOF
+}

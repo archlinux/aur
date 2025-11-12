@@ -1,8 +1,9 @@
 pkgbase = netease-cloud-music-wine
-	pkgdesc = NetEase Cloud Music Player
+	pkgdesc = NetEase Cloud Music Player. 使用wine运行网易云音乐windows官方包。
 	pkgver = 3.1.22.204707
-	pkgrel = 1
+	pkgrel = 2
 	url = https://music.163.com/#/download
+	install = .install
 	arch = x86_64
 	license = custom
 	makedepends = 7zip
