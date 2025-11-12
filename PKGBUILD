@@ -1,29 +1,30 @@
-# Maintainer: Margret Riegert <margret at eowyn net>
+# Contributor: Margret Riegert <margret at eowyn net>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: tee < teeaur at duck dot com >
 
 pkgname=panwriter
-pkgver=0.8.6
+pkgver=0.8.9
 pkgrel=1
-pkgdesc="Markdown editor with pandoc integration and paginated preview"
+pkgdesc='Markdown editor with pandoc integration and paginated preview'
 arch=('x86_64')
 url='https://panwriter.com'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
     'gtk3'
     'dbus-glib'
-    'libindicator-gtk2'
-    'libdbusmenu-gtk2'
+    'libindicator'
+    'libdbusmenu-gtk3'
     'nss'
 )
 makedepends=('gendesk')
-noextract=("${pkgname}-${pkgver}.AppImage")
+#noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/mb21/panwriter/releases/download/v${pkgver}/PanWriter-${pkgver}.AppImage")
-sha256sums=('263027d6093ffb9bbac7ca707790b191c1057d35377a448c991735fe48dbc39a')
+sha256sums=('a2b4257c00ba75d139adf5152c712a15e3e88120d2a559330447c9aed0e6ce4c')
 
 package() {
   chmod 755 ./${pkgname}-${pkgver}.AppImage
   ./${pkgname}-${pkgver}.AppImage --appimage-extract
-  install -Dm644 squashfs-root/usr/share/icons/hicolor/0x0/apps/panwriter.png "${pkgdir}/usr/share/pixmaps/panwriter.png"
+  install -Dm644 squashfs-root/usr/share/icons/hicolor/512x512/apps/panwriter.png "${pkgdir}/usr/share/pixmaps/panwriter.png"
   gendesk -f -n --pkgname "${pkgname}" \
           --pkgdesc "$pkgdesc" \
           --name "PanWriter" \

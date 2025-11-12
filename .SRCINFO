@@ -1,18 +1,17 @@
 pkgbase = panwriter
 	pkgdesc = Markdown editor with pandoc integration and paginated preview
-	pkgver = 0.8.6
+	pkgver = 0.8.9
 	pkgrel = 1
 	url = https://panwriter.com
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = gendesk
 	depends = gtk3
 	depends = dbus-glib
-	depends = libindicator-gtk2
-	depends = libdbusmenu-gtk2
+	depends = libindicator
+	depends = libdbusmenu-gtk3
 	depends = nss
-	noextract = panwriter-0.8.6.AppImage
-	source = panwriter-0.8.6.AppImage::https://github.com/mb21/panwriter/releases/download/v0.8.6/PanWriter-0.8.6.AppImage
-	sha256sums = 263027d6093ffb9bbac7ca707790b191c1057d35377a448c991735fe48dbc39a
+	source = panwriter-0.8.9.AppImage::https://github.com/mb21/panwriter/releases/download/v0.8.9/PanWriter-0.8.9.AppImage
+	sha256sums = a2b4257c00ba75d139adf5152c712a15e3e88120d2a559330447c9aed0e6ce4c
 
 pkgname = panwriter
