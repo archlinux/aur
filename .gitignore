@@ -3,8 +3,6 @@ bin/
 build/
 .cache/
 .makepkg/
-*/src/
-src/*
 */pkg/
 pkg/*
 *.tgz
@@ -36,6 +34,7 @@ gnupg/
 *.tmp
 *.log
 *.bak
+*.env
 
 # Editor files
 *.code-workspace
@@ -45,14 +44,16 @@ gnupg/
 .vscode/
 .idea/
 .qodo/
+.zencoder/
 .codacy/
 .codacy.*
 
 ############################
 
 # Internal files
-tkginstaller/
+tkginstaller-bin/
 
 # GitHub files
 .github/
 .gitlab/
+
