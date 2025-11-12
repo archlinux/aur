@@ -5,10 +5,10 @@
 
 pkgname=hmcl-java-run
 _pkgname=HMCL
-_ver=3.5
-_build=9
+_ver=3.6
+_build=15
 _pkgver=release-$_ver.$_build
-_java_version=17
+_java_version=24
 _jar_path="/usr/share/java/$pkgname.jar"
 pkgver=$_ver.$_build
 pkgrel=1
@@ -22,11 +22,11 @@ optdepends=("java-openjfx>=$_java_version: Require a Java version that support o
 provides=('hmcl')
 conflicts=('hmcl')
 source=("${_pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz"
-		"0001-Target-Java-17.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-Target-Java-17.patch?h=hmcl-new&id=2985a23c21591fba55119a03efc9bc8899472190"
-		"0002-Cleanup.patch::https://aur.archlinux.org/cgit/aur.git/plain/0002-Cleanup.patch?h=hmcl-new&id=2985a23c21591fba55119a03efc9bc8899472190")
-sha256sums=('7db1eb0af29bc978c145b8786a50bf47ef18218fff0985fd594e399b04a21682'
-            'ff7e7aa8d3fb8bcd74051d09b97a62ae71c06f7a006b63e5b3bacf044679c786'
-            '28748583aad6b0eb6254fc0474d1f18a8680d4c6d787f13ce41bd5b0f7621cef')
+		"0001-Target-Java-21.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-Target-Java-21.patch?h=hmcl-new&id=d75da1ecb661b16c21f18ff6128d557ad9ce5540"
+		"0002-Cleanup.patch::https://aur.archlinux.org/cgit/aur.git/plain/0002-Cleanup.patch?h=hmcl-new&id=d75da1ecb661b16c21f18ff6128d557ad9ce5540")
+sha256sums=('4aa6bf3f5a2cb603810882a6843e7d587e823f18deebc9bfba2298cdf0042ae9'
+            'bad02394ebd620634ef276729f68a5607eab00f82d4f5c91fe5c3b8abdb62c70'
+            '1980f55d51f09e17e3b9c15ae82d5fb39ca47224629b247b70f231b7496671bb')
 
 prepare() {
 	for patch in "${source[@]%%::*}"; do
