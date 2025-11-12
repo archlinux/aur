@@ -1,0 +1,17 @@
+_notice() {
+  echo -e "\e[1;33m$1\e[0m"
+}
+
+post_install() {
+  _notice 'Example configuration to add this to your waybar:'
+  _notice ''
+  _notice '['
+  _notice '  {'
+  _notice '      "layer": "top",'
+  _notice '      "modules-left": ["cffi/niri-workspaces-enhanced"],'
+  _notice '      "cffi/niri-workspaces-enhanced": {'
+  _notice '          "module_path": "/usr/lib/waybar/libwaybar_niri_workspaces_enhanced.so"'
+  _notice '      }'
+  _notice '    }'
+  _notice ']'
+}

@@ -1,0 +1,25 @@
+pkgbase = waybar-niri-workspaces-enhanced-git
+	pkgdesc = Enhanced niri workspaces module for waybar with window icons.
+	pkgver = r9.2f4cd8f
+	pkgrel = 1
+	url = https://github.com/justbuchanan/waybar-niri-workspaces-enhanced
+	install = waybar-niri-workspaces-enhanced-git.install
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = niri
+	depends = ttf-font-nerd
+	depends = glibc
+	depends = gcc-libs
+	depends = glib2
+	depends = pango
+	depends = gtk3
+	depends = cairo
+	depends = gdk-pixbuf2
+	optdepends = zenity: for workspace rename script
+	provides = waybar-niri-workspaces-enhanced
+	source = waybar-niri-workspaces-enhanced::git+https://github.com/justbuchanan/waybar-niri-workspaces-enhanced.git
+	sha256sums = SKIP
+
+pkgname = waybar-niri-workspaces-enhanced-git
