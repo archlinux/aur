@@ -2,32 +2,41 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='tinct-bin'
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
-pkgdesc='Wob (Wayland Overlay Bar) output plugin for Tinct'
+pkgdesc='Generate colour palettes from images and apply system-wide theming'
 url='https://github.com/jmylchreest/tinct'
 arch=('aarch64' 'armv7h' 'x86_64')
 license=('MIT')
 provides=('tinct')
 conflicts=('tinct')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.2/tinct-plugin-wob_0.0.2_Linux_arm64.tar.gz")
-sha256sums_aarch64=('4673b8c2b9ab70513794a8ce98ae87ba71857dea88c8d79f355490990aaa0685')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.3/tinct_0.0.3_Linux_arm64.tar.gz")
+sha256sums_aarch64=('b730e1b694e6d33d55c7d95efca4ca20d8ab0bd1b4aee6217f6b774f4c5749cd')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.2/tinct-plugin-wob_0.0.2_Linux_armv7.tar.gz")
-sha256sums_armv7h=('5eb987c07a88c4e5533e5bfa6d3668ddebb87d933f5916a83efa4c7d54ddfa9f')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.3/tinct_0.0.3_Linux_armv7.tar.gz")
+sha256sums_armv7h=('c811e3e34917488dd61cff8af85a55fc43b8579bd624b0fb1da8aea967973315')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.2/tinct-plugin-wob_0.0.2_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('38cd76e051ed70ef3fb15312c8edef94e385da9c367664ca3b296edfa98014e3')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.3/tinct_0.0.3_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('ebfb04e7caf5c4d8790cefd5ae85e181fb84999c9872121d37ae8808b601404b')
 
 package() {
   # bin
-  install -Dm755 "./wob-tinct" "${pkgdir}/usr/bin/tinct-plugin-wob"
+  install -Dm755 "./tinct" "${pkgdir}/usr/bin/tinct"
 
   # license
-  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/tinct-plugin-wob/LICENSE"
+  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/tinct/LICENSE"
+
+  # completions
+  mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
+  mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
+  mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
+  install -Dm644 "./completions/tinct.bash" "${pkgdir}/usr/share/bash-completion/completions/tinct"
+  install -Dm644 "./completions/_tinct" "${pkgdir}/usr/share/zsh/site-functions/_tinct"
+  install -Dm644 "./completions/tinct.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/tinct.fish"
 
   # sbom
-  if [ -f *.sbom.json ]; then
-  install -Dm644 *.sbom.json "${pkgdir}/usr/share/doc/tinct-plugin-wob/sbom.json"
+  if [ -f "*.sbom.json" ]; then
+  install -Dm644 *.sbom.json "${pkgdir}/usr/share/doc/tinct/sbom.json"
+  fi
 }
