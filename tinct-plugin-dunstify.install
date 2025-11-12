@@ -1,0 +1,8 @@
+post_install() {
+  echo "==> To register the plugin with tinct, run:"
+  echo "    tinct plugins add /usr/bin/tinct-plugin-dunstify --no-copy"
+}
+
+post_upgrade() {
+  post_install
+}
