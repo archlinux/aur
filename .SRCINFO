@@ -1,0 +1,15 @@
+pkgbase = ddhx-bin
+	pkgdesc = Console hexadecimal file viewer
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/dd86k/ddhx
+	arch = x86_64
+	license = MIT
+	source = LICENSE-0.7.2::https://raw.githubusercontent.com/dd86k/ddhx/v0.7.2/LICENSE
+	source = README-0.7.2.md::https://raw.githubusercontent.com/dd86k/ddhx/v0.7.2/README
+	sha256sums = 38368893e6b716941036d2175add984a5501dd183ba9f26aaa5cc86e2bdddf73
+	sha256sums = e30195f635887c1cb600c00fa6ffb29804d2664c6d4d955c4a2d34ff0354d3d4
+	source_x86_64 = ddhx-x86_64-0.7.2.tgz::https://github.com/dd86k/ddhx/releases/download/v0.7.2/ddhx-0.7.2-x86_64-linux-musl-static.tar.gz
+	sha256sums_x86_64 = a5f8c1c99b65d0a39a1f23087e7de6ed9ef4944e18abf19ee8ee37421c886e3a
+
+pkgname = ddhx-bin

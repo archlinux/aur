@@ -1,0 +1,5 @@
+[ddhx-bin]
+source = "github"
+github = "dd86k/ddhx"
+use_latest_release = true
+prefix = "v"
