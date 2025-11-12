@@ -1,7 +1,7 @@
 # Maintainer: Winni Neessen <wn@neessen.dev>
 
 pkgname=waybar-weather
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='A weather module for waybar with automatic geolocation'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ url='https://github.com/wneessen/waybar-weather'
 license=('MIT')
 makedepends=('go')
 source=("https://github.com/wneessen/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('98a47f6f7099024e36af638b67df6ebd12be16559e4b23ab233437a313ac072f')
+sha256sums=('670b26706a9f2e210a70d053c305e8157b2b29bb02263fe5a20a7f0750defcb5')
 options=('!debug')
 
 prepare() {
