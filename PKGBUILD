@@ -3,7 +3,7 @@
 _name=yt_dlp_ejs
 pkgname=yt-dlp-ejs
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='External JavaScript for yt-dlp supporting many runtimes'
 arch=(any)
 url=https://github.com/yt-dlp/ejs
@@ -12,6 +12,7 @@ depends=('python>=3.10')
 makedepends=(deno python-build python-installer python-hatchling python-hatch-vcs)
 source=("$_name-$pkgver.tar.gz::$url/releases/download/$pkgver/$_name-$pkgver.tar.gz")
 sha256sums=('7f2119eb02864800f651fa33825ddfe13d152a1f730fa103d9864f091df24227')
+install="$pkgname.install"
 
 prepare() {
 	cd $_name-$pkgver
@@ -21,6 +22,7 @@ prepare() {
 
 check() {
 	cd $_name-$pkgver
+	export DENO_EMIT_CACHE_MODE="disable"
 
 	deno run --allow-read="$srcdir" --allow-write="$srcdir" --allow-net="youtube.com,www.youtube.com" src/yt/solver/test/download.ts
 	deno test --allow-read="$srcdir"
@@ -28,6 +30,7 @@ check() {
 
 build() {
 	cd $_name-$pkgver
+	export DENO_EMIT_CACHE_MODE="disable"
 
 	python -m build --wheel --no-isolation
 }
@@ -37,3 +40,4 @@ package() {
 
 	python -m installer --destdir="$pkgdir" dist/*.whl
 }
+

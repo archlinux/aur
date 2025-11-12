@@ -1,0 +1,17 @@
+cache_message() {
+cat << EOF
+  WARNING: yt-dlp-ejs versions prior to 0.3.1-3 left build artifacts in \$HOME/.cache/deno/gen
+  To remove them, either:
+    - delete the whole deno cache directory using: deno clean
+    - delete the directory where AUR packages are built from \$HOME/.cache/deno/gen
+      Example:
+	- yay AUR helper: \$HOME/.cache/deno/gen/file/\$HOME/.cache/yay/yt-dlp-ejs
+	- makepkg: \$HOME/.cache/deno/gen/file/<location from where this PKGBUILD is built>
+EOF
+}
+
+post_upgrade() {
+	if (($(vercmp $2 0.3.1-3) < 0)); then
+		cache_message
+	fi
+}
