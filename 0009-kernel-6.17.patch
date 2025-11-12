@@ -1,0 +1,93 @@
+Based on https://gist.github.com/fl4tisjustice/71657695a48739779a055c5aa00b37f3
+with minor changes for 525.147.05
+
+diff --git a/nvidia-drm/nvidia-drm-drv.c b/nvidia-drm/nvidia-drm-drv.c
+index da2b701..e7d880f 100644
+--- a/nvidia-drm/nvidia-drm-drv.c
++++ b/nvidia-drm/nvidia-drm-drv.c
+@@ -20,6 +20,7 @@
+  * DEALINGS IN THE SOFTWARE.
+  */
+ 
++#include <linux/version.h>
+ #include "nvidia-drm-conftest.h" /* NV_DRM_AVAILABLE and NV_DRM_DRM_GEM_H_PRESENT */
+ 
+ #include "nvidia-drm-priv.h"
+@@ -158,6 +159,9 @@ static void nv_drm_output_poll_changed(struct drm_device *dev)
+ static struct drm_framebuffer *nv_drm_framebuffer_create(
+     struct drm_device *dev,
+     struct drm_file *file,
++    #if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0)
++    const struct drm_format_info *info,
++    #endif
+     #if defined(NV_DRM_HELPER_MODE_FILL_FB_STRUCT_HAS_CONST_MODE_CMD_ARG)
+     const struct drm_mode_fb_cmd2 *cmd
+     #else
+@@ -173,6 +177,9 @@ static struct drm_framebuffer *nv_drm_framebuffer_create(
+     fb = nv_drm_internal_framebuffer_create(
+             dev,
+             file,
++            #if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0)
++            info,
++            #endif
+             &local_cmd);
+ 
+     #if !defined(NV_DRM_HELPER_MODE_FILL_FB_STRUCT_HAS_CONST_MODE_CMD_ARG)
+diff --git a/nvidia-drm/nvidia-drm-fb.c b/nvidia-drm/nvidia-drm-fb.c
+index 1c84201..f1f3bff 100644
+--- a/nvidia-drm/nvidia-drm-fb.c
++++ b/nvidia-drm/nvidia-drm-fb.c
+@@ -20,6 +20,7 @@
+  * DEALINGS IN THE SOFTWARE.
+  */
+ 
++#include <linux/version.h>
+ #include "nvidia-drm-conftest.h" /* NV_DRM_ATOMIC_MODESET_AVAILABLE */
+ 
+ #if defined(NV_DRM_ATOMIC_MODESET_AVAILABLE)
+@@ -184,6 +185,9 @@ static int nv_drm_framebuffer_init(struct drm_device *dev,
+ struct drm_framebuffer *nv_drm_internal_framebuffer_create(
+     struct drm_device *dev,
+     struct drm_file *file,
++    #if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0)
++    const struct drm_format_info *info,
++    #endif
+     struct drm_mode_fb_cmd2 *cmd)
+ {
+     struct nv_drm_device *nv_dev = to_nv_device(dev);
+@@ -237,6 +241,13 @@ struct drm_framebuffer *nv_drm_internal_framebuffer_create(
+         dev,
+         #endif
+         &nv_fb->base,
++        #if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0)
++        /*
++         * NV_DRM_FORMAT_MODIFIERS_PRESENT will be defined in this version,
++         * so we can pass cmd->modifier[0] directly
++         */
++        info == NULL ? drm_get_format_info(dev, cmd->pixel_format, cmd->modifier[0]) : info,
++        #endif
+         cmd);
+ 
+     /*
+diff --git a/nvidia-drm/nvidia-drm-fb.h b/nvidia-drm/nvidia-drm-fb.h
+index cf477cc..a481921 100644
+--- a/nvidia-drm/nvidia-drm-fb.h
++++ b/nvidia-drm/nvidia-drm-fb.h
+@@ -23,6 +23,7 @@
+ #ifndef __NVIDIA_DRM_FB_H__
+ #define __NVIDIA_DRM_FB_H__
+ 
++#include <linux/version.h>
+ #include "nvidia-drm-conftest.h"
+ 
+ #if defined(NV_DRM_ATOMIC_MODESET_AVAILABLE)
+@@ -59,6 +60,9 @@ static inline struct nv_drm_framebuffer *to_nv_framebuffer(
+ struct drm_framebuffer *nv_drm_internal_framebuffer_create(
+     struct drm_device *dev,
+     struct drm_file *file,
++    #if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 17, 0)
++    const struct drm_format_info *info,
++    #endif
+     struct drm_mode_fb_cmd2 *cmd);
+ 
+ #endif /* NV_DRM_ATOMIC_MODESET_AVAILABLE */

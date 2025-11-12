@@ -8,7 +8,7 @@ _pkgmainbranch=nvidia-utils
 pkgbase=nvidia-525xx-utils
 pkgname=('nvidia-525xx-utils' 'opencl-nvidia-525xx' 'nvidia-525xx-dkms')
 pkgver=525.147.05
-pkgrel=8
+pkgrel=9
 pkgdesc="NVIDIA drivers for Linux, 525 branch, dkms"
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -27,7 +27,8 @@ source=('nvidia-drm-outputclass.conf'
         '0005-kernel-6.13.patch'
         '0006-kernel-6.14.patch'
         '0007-gcc-15.patch'
-        '0008-kernel-6.15.patch')
+        '0008-kernel-6.15.patch'
+        '0009-kernel-6.17.patch')
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
             'a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989'
@@ -39,7 +40,8 @@ sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc50677
             '68a63db7e1b2c17d1a23e9a44d3a2e0114560f89a158f7eb4c585f6c6416c844f9cf82fcc58141134e730fae7e36995e31de5d2565371ee4cc53e41c41185418'
             'ed872d796290cc53b5a99fcf23ade3b2e58a5820ac178e4af605ac0110f101827f29629cc8e60f15e4f583c58a5063592c207edf42d1d7ba2dd27f78787f5c3a'
             'fd4da6ae7afaa192ce60d157479f3195e78a76fb011f1e51012b925343acf07540857aa419c3c7d9e5af934eb9e431c16cfcbb3148b7319bc07adbf5303abf3e'
-            '5404a5cd8a004ad1337eed8a5944f305b3ef78f36975e76345a43c34895200134fff3ac769aa2958ea6b49baff86f7cf4b78dc47f2f295176b5a90e9b8c54e39')
+            '5404a5cd8a004ad1337eed8a5944f305b3ef78f36975e76345a43c34895200134fff3ac769aa2958ea6b49baff86f7cf4b78dc47f2f295176b5a90e9b8c54e39'
+            '91bf2d1551d9a160dad635ae8e989c3dd484b458be590126b83848bed2679f6e13bc441cddda35c779041c3f501aa9dff63eaa9f5cdd562c4b4ddc4af17ad87b')
 
 
 create_links() {
@@ -67,6 +69,7 @@ prepare() {
     patch -p1 -i "$srcdir/0006-kernel-6.14.patch"
     patch -p1 -i "$srcdir/0007-gcc-15.patch"
     patch -p1 -i "$srcdir/0008-kernel-6.15.patch"
+    patch -p1 -i "$srcdir/0009-kernel-6.17.patch"
 
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
     sed -i 's/__JOBS/`nproc`/' dkms.conf
