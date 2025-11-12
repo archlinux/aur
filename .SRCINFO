@@ -1,22 +1,12 @@
 pkgbase = cosmic-updates-git
-	pkgdesc = Universal package update checker applet for COSMIC Desktop with AUR support (git)
-	pkgver = 1.0.0
+	pkgdesc = DEPRECATED: Renamed to cosmic-ext-applet-updates-git
+	pkgver = 1.1.0
 	pkgrel = 1
-	url = https://github.com/VintageTechie/cosmic-updates
+	url = https://github.com/VintageTechie/cosmic-ext-applet-updates
 	arch = x86_64
 	license = MIT
-	makedepends = git
-	makedepends = rust
-	makedepends = cargo
-	depends = cosmic-panel
-	optdepends = pacman: For Arch-based package management
-	optdepends = checkupdates: For checking Pacman updates
-	optdepends = paru: For AUR package support (preferred)
-	optdepends = yay: For AUR package support
+	depends = cosmic-ext-applet-updates-git
 	provides = cosmic-updates
 	conflicts = cosmic-updates
-	conflicts = cosmic-updates-bin
-	source = git+https://github.com/VintageTechie/cosmic-updates.git
-	sha256sums = SKIP
 
 pkgname = cosmic-updates-git
