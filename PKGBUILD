@@ -27,11 +27,15 @@ provides=(
 conflicts=(
   "${_pkgname}"
 )
-source=("${_basename}-install-prefix.sh"
-        "${_basename}-${pkgver}-README.md::${_url}/raw/refs/tags/${pkgver}/README.md"
-        "${_basename}-${pkgver}-LICENSE::${_url}/raw/refs/tags/${pkgver}/LICENSE")
-source_x86_64=("${url}/download/${pkgver}/${_basename}-linux-x86_64-${pkgver}.tar.xz"
-               "${url}/download/${pkgver}/${_basename}-linux-x86_64-${pkgver}.tar.xz.minisig")
+source=(
+  "${_basename}-install-prefix.sh"
+  "${_basename}-${pkgver}-README.md::${_url}/raw/refs/tags/${pkgver}/README.md"
+  "${_basename}-${pkgver}-LICENSE::${_url}/raw/refs/tags/${pkgver}/LICENSE"
+)
+source_x86_64=(
+  "${url}/download/${pkgver}/${_basename}-linux-x86_64-${pkgver}.tar.xz"
+  "${url}/download/${pkgver}/${_basename}-linux-x86_64-${pkgver}.tar.xz.minisig"
+)
 sha256sums=('f8d36c8e623f8dc341cb9d40823805c584f1699f98e5502c386608ac06b65f9e'
             'a0ac3410325a38cd99ab640385748ae9a5dfea0c3cf621445d5819bc0639080d'
             '12043f8e6dfb42e979158fbecbbeeb0cf70d2721ea2864f627379331b95c58e6')
