@@ -2,7 +2,7 @@
 
 pkgname=cypherock-cysync-appimage
 _basename=cypherock-cysync
-pkgver=2.3.0
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="The all-in-one-app to manage your Crypto assets with the Cypherock X1."
 arch=('x86_64')
@@ -13,7 +13,7 @@ install="${_basename}.install"
 
 source=("${_basename}-${pkgver}.AppImage::https://cypherock-updater-v2.s3-accelerate.amazonaws.com/cysync-desktop/${_basename}-${pkgver}-linux-x86_64.AppImage"
         21-cypherock.rules)
-sha512sums=('146fe4e9cb4a14826f317492472fe146141637947175c96a9707b549792a5b1c690966b21bdb7affa4af4d2004b9ff7bc1c5d337cdc6f3d7b38d937bc69053a2'
+sha512sums=('f1babb0abb98f1df1c09712f81b30cba7d0b863313e68fd96d24b4215fbc91cac2566857fca962972855fc28f17a3ad456f337263bc14c8bd2863d11638a1edf'
             '222ade4a13aca17237ef320a8bf97ab80f427642b1fd3cad4a77925696425c7054982677907eb05f4420d02750b0d38fb208328afcfa628a62edf6ba685f7ee6')
 
 prepare() {
