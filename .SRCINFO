@@ -1,0 +1,11 @@
+pkgbase = confluent-cli
+	pkgdesc = Command Line Interface for Confluent Platform (Kafka ecosystem tools)
+	pkgver = 4.43.0
+	pkgrel = 1
+	url = https://docs.confluent.io/confluent-cli/current/install.html
+	arch = x86_64
+	license = Apache
+	source = https://packages.confluent.io/confluent-cli/archives/4.43.0/confluent_linux_amd64.tar.gz
+	sha256sums = 81951028df9de12701edb30d31b7d40c64617d2113c018744c2ab0ef000cec51
+
+pkgname = confluent-cli
