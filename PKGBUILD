@@ -1,7 +1,7 @@
 # Maintainer: Kino <cybao292261 at 163 dot com>
 
 pkgname=osqp-eigen
-pkgver=0.10.3
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Simple Eigen-C++ wrapper for OSQP library"
 arch=('x86_64')
@@ -11,8 +11,8 @@ makedepends=('cmake')
 depends=('eigen' 'osqp')
 checkdepends=('catch2')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/robotology/osqp-eigen/archive/v$pkgver.tar.gz")
-sha512sums=('bd60e2a980529361ac9cf240ce5b0bb529bd973b9e4ef85642ed7ed842a58ec9c947a75f1d6dc43df8dd9814f885940cf0b30f1dfb77170e2055539032cf47b3')
-b2sums=('28f8af785767c5b40624b8951e7b3fb9ef001925aac73b46161be581e371d02a86927033b954055dde2be3cc86e87c458fbf4b765c8ed4d91906c15cf79a97df')
+sha512sums=('89f3e83dbaf925f7690c11a553c402c3cadda2d33c3f94f25096b11708f9f8753a3f4ef64d632c553399e95467e887fc37972be94fcad74c63de989ad3a1dde4')
+b2sums=('9d6c3481f8f403bbd0b991cef6cf7fd82dd4ee830086edee3be44393560a051ca8f8ffbd1d22e3d50098b8c396015bfead9f38001a6c77e6423e40772b091fd6')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
