@@ -2,7 +2,7 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=pod2man
-pkgver=5.40.2
+pkgver=5.42.0
 pkgrel=1
 pkgdesc='Make pod2man easily accessible'
 arch=(any)

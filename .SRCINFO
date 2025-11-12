@@ -1,6 +1,6 @@
 pkgbase = pod2man
 	pkgdesc = Make pod2man easily accessible
-	pkgver = 5.40.2
+	pkgver = 5.42.0
 	pkgrel = 1
 	url = https://perl.org/
 	arch = any
