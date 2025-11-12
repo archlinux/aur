@@ -1,0 +1,4 @@
+[cpptools-debug-bin]
+source = "git"
+git = "https://github.com/Microsoft/vscode-cpptools.git"
+prefix = "v"
