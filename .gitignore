@@ -1,9 +1,3 @@
-/*
-!/*.desktop
-!/*.install
-!/*.sh
-!/*.sysusers
-!/*.tmpfiles
-!/.gitignore
-!/.SRCINFO
-!/PKGBUILD
+*.zst
+pkg
+src
