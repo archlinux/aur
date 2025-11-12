@@ -2,7 +2,7 @@
 
 pkgbase=linux-flowx13
 pkgver=6.17.7.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux (with patches for the Asus Flow X13)'
 url='https://github.com/archlinux/linux'
 arch=(x86_64)
