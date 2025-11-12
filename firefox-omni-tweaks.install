@@ -1,0 +1,8 @@
+post_install() {
+    echo ""
+    echo "-------------------------------------------"
+    echo "Installed command 'fixfx'"
+    echo "Run 'fixfx --help' for information on usage"
+    echo "-------------------------------------------"
+    echo ""
+}

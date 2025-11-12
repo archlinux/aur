@@ -1,0 +1,16 @@
+pkgbase = firefox-omni-tweaks-git
+	pkgdesc = A script that disables the clickSelectsAll behavior of Firefox, and more.
+	pkgver = r77.c6637e3
+	pkgrel = 1
+	url = https://github.com/SebastianSimon/firefox-omni-tweaks
+	install = firefox-omni-tweaks.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	provides = firefox-omni-tweaks
+	conflicts = firefox-omni-tweaks
+	source = firefox-omni-tweaks-git::git+https://github.com/SebastianSimon/firefox-omni-tweaks.git
+	sha256sums = SKIP
+
+pkgname = firefox-omni-tweaks-git
