@@ -1,0 +1,16 @@
+pkgbase = arocc-git
+	pkgdesc = A modern fully featured C compiler
+	pkgver = r1908.g3fb778c
+	pkgrel = 1
+	url = https://github.com/Vexu/arocc
+	arch = x86_64
+	license = MIT
+	makedepends = anyzig
+	makedepends = git
+	depends = glibc
+	provides = arocc=r1908.g3fb778c
+	conflicts = arocc
+	source = arocc::git+https://github.com/Vexu/arocc.git
+	sha256sums = SKIP
+
+pkgname = arocc-git
