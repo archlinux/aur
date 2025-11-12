@@ -12,7 +12,7 @@ _pkgtype="-arch1t3cht"
 _pkgname="aegisub"
 pkgname="$_pkgname${_pkgtype:-}"
 pkgver=12
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 url="https://github.com/arch1t3cht/Aegisub"
 license=('BSD-3-Clause')
@@ -66,20 +66,20 @@ options=('!lto')
 _pkgsrc="arch1t3cht.aegisub"
 source=(
   "$_pkgsrc"::"git+https://github.com/arch1t3cht/Aegisub.git#commit=${_commit:?}"
-  "vapoursynth.bestsource"::"git+https://github.com/vapoursynth/bestsource.git#tag=R8"
+  "vapoursynth.bestsource"::"git+https://github.com/vapoursynth/bestsource.git#tag=R14"
   "the-sekrit-twc.libp2p"::"git+https://bitbucket.org/the-sekrit-twc/libp2p.git#commit=1e3818bd7277165819f659d410873fe5dab37af6"
-  "avisynth"::"git+https://github.com/AviSynth/AviSynthPlus.git#tag=v3.7.2"
-  "vapoursynth"::"git+https://github.com/vapoursynth/vapoursynth.git#tag=R59"
+  "avisynth"::"git+https://github.com/AviSynth/AviSynthPlus.git#tag=v3.7.5"
+  "vapoursynth"::"git+https://github.com/vapoursynth/vapoursynth.git#tag=R72"
   "luajit"::"git+https://github.com/LuaJIT/LuaJIT.git#branch=v2.1"
   "gtest-1.8.1.zip"::"https://github.com/google/googletest/archive/release-1.8.1.zip"
   "gtest-1.8.1-1-wrap.zip"::"https://wrapdb.mesonbuild.com/v1/projects/gtest/1.8.1/1/get_zip"
 )
 sha256sums=(
-  'SKIP'
-  '2d09633a025b6b792b453d1394753b4d63b842bdd3d444fa8fffd3414e19faf1'
+  '2883aad621360727ea93e433f8918e9322aea267dce6734e4f6c41e2a57bb222'
+  '96d6c9fc58922ed26d1e0e5374b10d5820cc3a44663e5afd929200a17b186ee8'
   'e7a3c026a9021dc3cb33fa949d8c2aa90c256a36d3a198abed3e11ade87de1d5'
-  '5e3a79b7269b04f199b1e84fa87042d426391f11b4721d4d1e2d6256234c5507'
-  '08803fc79758494671af1029e9178c73e717393a745075a45337d56dfa1aad6c'
+  'd84be209f08a5a967a92ce396a93ce73c109536e3617c4eb909de0287b465397'
+  'abc97f386da37d93a9a7e3f44e86f18784115118189ff56ebc743faf848f9275'
   'SKIP'
   '927827c183d01734cc5cfef85e0ff3f5a92ffe6188e0d18e909c5efebf28a0c7'
   'f79f5fd46e09507b3f2e09a51ea6eb20020effe543335f5aee59f30cc8d15805'
@@ -104,6 +104,9 @@ prepare() {
   meson subprojects packagefiles --apply avisynth
   meson subprojects packagefiles --apply vapoursynth
   meson subprojects packagefiles --apply luajit
+
+  # fix for BestAudioSource > R8
+  sed -E -e '/make_unique<BestAudioSource>/s&, -1, false, 0, 1,&, -1, 1, 0,&' -i src/audio_provider_bestsource.cpp
 }
 
 pkgver() {
