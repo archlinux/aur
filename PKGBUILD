@@ -37,6 +37,7 @@ sha256sums=(
 validpgpkeys=()
 
 prepare() {
+    chmod +x ./inkscape.appimage
     echo 'Extracting AppImage'
     ./inkscape.appimage --appimage-extract > /dev/null
 }
