@@ -1,15 +1,15 @@
 pkgname=mingw-w64-cgal
-pkgver=5.6
+pkgver=6.1
 pkgrel=1
 arch=('any')
 pkgdesc="Computational Geometry Algorithms Library (mingw-w64)"
-depends=('mingw-w64-crt' 'mingw-w64-mpfr' 'mingw-w64-boost' 'mingw-w64-zlib')
-makedepends=('mingw-w64-cmake' 'mingw-w64-eigen')
+depends=('mingw-w64-crt' 'mingw-w64-mpfr' 'mingw-w64-gmp' 'mingw-w64-boost' 'mingw-w64-zlib' 'mingw-w64-eigen')
+makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
-license=('GPL', 'LGPL')
-url="http://www.cgal.org"
+license=(GPL-3.0-or-later LGPL-3.0-or-later)
+url="https://www.cgal.org"
 source=(https://github.com/CGAL/cgal/releases/download/v${pkgver}/CGAL-${pkgver}.tar.xz)
-sha256sums=('dcab9b08a50a06a7cc2cc69a8a12200f8d8f391b9b8013ae476965c10b45161f')
+sha256sums=('618da8a8b3f5be46b4f0a47a1efb3c9e6c03d6aab0f5531d56d355d32701d79f')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -17,11 +17,8 @@ build()
 {
   cd "$srcdir/CGAL-${pkgver}"
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake \
-      ..
-    make
-    popd
+    ${_arch}-cmake -B build-${_arch} .
+    make -C build-${_arch}
   done
 }
 
