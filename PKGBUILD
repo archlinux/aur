@@ -7,7 +7,7 @@
 
 pkgbase=pyglet
 pkgname=('python-pyglet')
-pkgver=2.1.5
+pkgver=2.1.9
 pkgrel=1
 pkgdesc="A cross-platform windowing and multimedia library for Python"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=('python-build' 'python-flit-core' 'python-installer' 'python-gobjec
 optdepends=('ffmpeg: provides audio&video support'
     'openal: live audio')
 source=("$pkgbase-$pkgver.zip::https://github.com/pyglet/pyglet/archive/refs/tags/v$pkgver.zip")
-sha256sums=('98d1414ff1604d0cc833ed93c06af87d57e4c5c6562eba1c0fb63f740a7ea0c0')
+sha256sums=('b8aa1c845b05becbe608deea8d609cfe8a74785d0c1f2ad5a4112c28d9fd901f')
 
 prepare() {
     cd "$srcdir/$pkgbase-$pkgver"
