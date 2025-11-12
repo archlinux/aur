@@ -22,7 +22,7 @@ prepare() {
 check() {
 	cd $_name-$pkgver
 
-	deno run --allow-read="$srcdir" --allow-write="$srcdir" --allow-net=youtube.com,www.youtube.com src/yt/solver/test/download.ts
+	deno run --allow-read="$srcdir" --allow-write="$srcdir" --allow-net="youtube.com,www.youtube.com" src/yt/solver/test/download.ts
 	deno test --allow-read="$srcdir"
 }
 
