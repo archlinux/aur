@@ -1,15 +1,15 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=mergerfs-git
-pkgver=2.40.2.r0.g42d0b57
+pkgver=2.41.0.r1.gb6e1a08
 pkgrel=1
-pkgdesc='Featureful union filesystem'
+pkgdesc='Featureful union filesystem. Combines directories from various filesystems into a storage pool'
 arch=(x86_64)
 url=https://github.com/trapexit/mergerfs
-license=('custom:ISC')
+license=(ISC)
 makedepends=(git)
-#optdepends=('fuse2: mount via fstab' 'mergerfs-tools: manage data in a pool')
-optdepends=('fuse2: mount via fstab' 'mergerfs-tools-git: manage data in a pool')
+#optdepends=('mergerfs-tools: manage data in a pool')
+optdepends=('mergerfs-tools-git: manage data in a pool')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 prepare() {
-  sed -i 's|^\(VERSION=\).*|\1"'$pkgver'"|' $pkgname/buildtools/update-version
+  echo -n "$pkgver" >$pkgname/VERSION
 }
 
 build() {
