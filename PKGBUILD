@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=fan-control
 _app_id="io.github.wiiznokes.$pkgname"
-pkgver=2025.3.0
+pkgver=25.11.0
 pkgrel=1
 pkgdesc="Control your fans with different behaviors"
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(
 checkdepends=('appstream')
 source=("git+https://github.com/wiiznokes/fan-control.git#tag=$pkgver"
         'git+https://github.com/wiiznokes/libsensors.git')
-sha256sums=('57078da81af43b7b1456e9cceac750f82cd9a98c705cd1bbaa1aead3a7b07750'
+sha256sums=('9dbfae792e3e19cd94cbed28dc1ab24fe1f78d3519cc53a9a3959b136cc6c66d'
             'SKIP')
 
 prepare() {
@@ -32,7 +32,7 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
   # Don't run `git submodule update`
   sed -i '/submodule/d' justfile
