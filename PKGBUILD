@@ -3,7 +3,7 @@
 
 _name=aiomax
 pkgname=python-$_name
-pkgver=2.12.2
+pkgver=2.12.3
 pkgrel=1
 pkgdesc="Asynchronous framework for Max Bot API"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=(python3 python-aiohttp)
 makedepends=(python-build python-installer python-wheel python-setuptools python-setuptools-git-versioning)
 source=("https://codeload.github.com/dpnspn/aiomax/tar.gz/refs/tags/$pkgver")
-sha256sums=('ad04d3826c5740b981ff5d491c7f8458757f84632c93cf540df0e3681ffa9948')
+sha256sums=('852561fbbff1fb88b34ea55d4bdbd243dedca1c57c786bfa9831261c9cf7c6f4')
 conflicts=(python-aiomax-git)
 
 build() {
