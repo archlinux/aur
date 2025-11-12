@@ -2,7 +2,7 @@
 
 pkgname=calligraphy
 _pkgname=Calligraphy
-pkgver=1.0.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Turn text into ASCII banners'
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gtk4' 'libadwaita' 'python-pyfiglet')
 makedepends=('appstream-glib' 'meson' 'git')
 source=("$url/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz")
-sha256sums=('f7e8ea02dd82dae827f60f821f3e56cbbcff6a2c3402bea648049286ecf3b9e1')
+sha256sums=('9cf40500bb5ccee09f8321de3f31f1117c32313b98368fca7be60791b44c6983')
 
 build() {
   arch-meson $_pkgname-v$pkgver build
