@@ -12,7 +12,7 @@ fi
 ## basic info
 _pkgname="ryujinx-git"
 pkgname="$_pkgname"
-pkgver=r4453.51bcb9e12
+pkgver=r4625.1baaa1c36
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://ryujinx.app"
@@ -47,6 +47,7 @@ pkgver() {
 build() (
   export HOME="$SRCDEST/nuget-home"
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
+  export DOTNET_CLI_HOME=${HOME}
   _pkgver=$(cut -c2-5 <<< $pkgver)
 
   local _args=(
