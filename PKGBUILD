@@ -1,6 +1,6 @@
 # Maintainer: Alejandro Quintanar
 pkgname=term39
-pkgver=0.6.5
+pkgver=0.6.6
 pkgrel=1
 pkgdesc="A modern, retro-styled terminal multiplexer inspired by Norton Disk Doctor (MS-DOS)"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alejandroqh/term39/archive/v$pkgver.tar.gz")
-sha256sums=('a39a75e143e3ce11086648ad53873c33aec0101429edd179652de2625f43918d')
+sha256sums=('4e652803b4d754ed8ccd80b651272a1964f0401a7a7ef62a10a0c83c1cd57354')
 
 build() {
     cd "$pkgname-$pkgver"
