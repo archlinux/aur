@@ -2,7 +2,7 @@
 
 pkgname=python-ahrs
 _pkgname=ahrs
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Attitude and Heading Reference Systems in Python'
 arch=('any')
@@ -12,6 +12,8 @@ makedepends=(
   'python-wheel'
   'python-build'
   'python-installer'
+  'python-setuptools'
+  'python-hatchling'
 )
 depends=(
   'python-numpy'
@@ -20,12 +22,8 @@ depends=(
 )
 checkdepends=('python-pytest')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Mayitzin/ahrs/archive/v${pkgver}.tar.gz")
-sha256sums=('205c5751f8db7621a11dbdc451b5ff51ec53a9b065e59153b64cf5704da3a175')
-
-prepare() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  rm tests/test_new.py
-}
+sha256sums=('080e62c6cad232d2da343d219df728c5ca14f22dae9f53b5a7898fedbf32ee64')
+b2sums=('88325af877c1df12dfebacb0715ca14a38107ac0f73e9b6f745e58f038e32f21457cb50e15cf1ec3441cc2291173239bd745f25d5eaed33f53b713cac8d9297d')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
@@ -38,7 +36,7 @@ check() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver" || exit
+  cd "$srcdir/$_pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/python-$_pkgname/LICENSE"
 }
