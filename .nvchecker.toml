@@ -1,0 +1,5 @@
+[yolk-bin]
+source = "github"
+github = "elkowar/yolk"
+use_latest_release = true
+prefix = "v"

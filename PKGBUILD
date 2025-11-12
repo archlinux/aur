@@ -1,19 +1,34 @@
-# Maintainer: Charlotte Meyer <me@buffets.email>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Charlotte Meyer <me@buffets.email>
 
-pkgname="yolk-bin"
-pkgver=0.3.2
+_pkgauthor=elkowar
+_pkgname=yolk
+_appname=${_pkgname}_dots
+pkgname=${_pkgname}-bin
+pkgver=0.3.6
 pkgrel=1
+_pkgvername=v${pkgver}
 pkgdesc="Templated dotfile management that won't get in your way"
-arch=("x86_64")
-url="https://elkowar.github.io/yolk/"
-license=("MIT")
-depends=("gcc-libs" "git" "glibc")
-provides=('yolk')
-conflicts=('yolk')
-source=("https://github.com/elkowar/yolk/releases/download/v${pkgver}/yolk_dots-${CARCH}-unknown-linux-gnu.tar.xz")
-b2sums=('1af775f84440585cb074ef3ea268f33041a1457e8c0517fd393a9e139aeac8745d1f1f8f4affb9e259e502bced998b0d6b4c7fcf88eef8ce1a5de4e1f0c8a5c7')
+arch=('x86_64')
+url="https://github.com/${_pkgauthor}/${_pkgname}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
+license=('MIT')
+
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+depends=("gcc-libs" "glibc")
+
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${arch[0]}-unknown-linux-gnu.tar.xz")
+sha256sums_x86_64=('5ecab13d20f2e16a03fcf31e94048b4826e69bdad7ce75d2d338d8063ffda457')
+
 
 package() {
-  cd "${srcdir}"
-  install -Dm755 "yolk_dots-${CARCH}-unknown-linux-gnu/yolk" -t "${pkgdir}/usr/bin/"
+	cd "${srcdir}/${_appname}-${CARCH}-unknown-linux-gnu/" || exit
+
+	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
+
+	install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
