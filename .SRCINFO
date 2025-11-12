@@ -1,17 +1,42 @@
 pkgbase = heidisql
 	pkgdesc = A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases.
 	pkgver = 12.13.1.1
-	pkgrel = 2
+	pkgrel = 4
 	url = http://www.heidisql.com/
 	install = heidisql.install
 	arch = x86_64
 	license = GPL-2.0
+	makedepends = lazarus
+	makedepends = qt6pas
+	makedepends = make
+	makedepends = fpc
+	makedepends = gettext
+	makedepends = gtk2
+	makedepends = binutils
+	source = https://github.com/HeidiSQL/HeidiSQL/archive/v12.13.1.1.tar.gz
+	source = https://github.com/HeidiSQL/HeidiSQL/releases/download/v12.13.1.1/heidisql_12.13.1.1_amd64.deb
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = heidisql
+	pkgdesc = Metapackage for HeidiSQL - installs GTK2 variant by default (Qt6 available)
+	arch = any
+	depends = heidisql-qt6
+	depends = heidisql-gtk2
+	provides = heidisql
+
+pkgname = heidisql-qt6
+	pkgdesc = HeidiSQL Qt6 variant - A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases (Qt6)
+	depends = qt6pas
+	depends = mariadb-libs
+	depends = postgresql-libs
+	depends = libperconaserverclient
+	depends = sqlite
+
+pkgname = heidisql-gtk2
+	pkgdesc = HeidiSQL GTK2 variant - A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases (GTK2)
 	depends = gtk2
 	depends = mariadb-libs
 	depends = postgresql-libs
 	depends = libperconaserverclient
 	depends = sqlite
-	source = https://github.com/HeidiSQL/HeidiSQL/releases/download/v12.13.1.1/heidisql_12.13.1.1_amd64.deb
-	sha256sums = e871bb5cf92476d026bd8c5887cb2a83e6f13877adb077ef5fbdd2edf2936122
-
-pkgname = heidisql
