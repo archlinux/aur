@@ -1,11 +1,10 @@
 pkgbase = arch-os-manager
 	pkgdesc = Arch OS System Manager
 	pkgver = 1.8.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/murkl/arch-os-manager
 	arch = any
-	license = GPL2
-	makedepends = git
+	license = Apache-2.0
 	depends = base-devel
 	depends = pacman-contrib
 	optdepends = ttf-firacode-nerd: Install and set font icons that are used to display information
@@ -16,9 +15,9 @@ pkgbase = arch-os-manager
 	optdepends = reflector: Add support for refresh mirrorlist
 	optdepends = meld: Add support for merge pacdiff configurations
 	optdepends = downgrade: Add support for donwgrade system packages
+	source = https://github.com/murkl/arch-os-manager/releases/download/1.8.9/arch-os
 	source = arch-os.desktop
-	source = arch-os-manager::git+https://github.com/murkl/arch-os-manager.git#tag=1.8.9
-	sha256sums = SKIP
+	sha256sums = ab97c205f862a980c795367990458af35cd83573abf74e9d747752e92f998a0e
 	sha256sums = SKIP
 
 pkgname = arch-os-manager

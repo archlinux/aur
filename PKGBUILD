@@ -1,10 +1,10 @@
 pkgname=arch-os-manager
 pkgver=1.8.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Arch OS System Manager"
 arch=('any')
 url="https://github.com/murkl/arch-os-manager"
-license=('GPL2')
+license=('Apache-2.0')
 depends=('base-devel' 'pacman-contrib')
 optdepends=(
 	'ttf-firacode-nerd: Install and set font icons that are used to display information'
@@ -16,16 +16,10 @@ optdepends=(
 	'meld: Add support for merge pacdiff configurations'
 	'downgrade: Add support for donwgrade system packages'
 )
-makedepends=('git')
-source=(arch-os.desktop "$pkgname::git+$url.git#tag=${pkgver}")
-sha256sums=('SKIP' 'SKIP')
+source=("https://github.com/murkl/arch-os-manager/releases/download/$pkgver/arch-os" "arch-os.desktop")
+sha256sums=('ab97c205f862a980c795367990458af35cd83573abf74e9d747752e92f998a0e' 'SKIP')
 
 package() {
-	mkdir -p "${pkgdir}/opt/${pkgname}"
-	mkdir -p "${pkgdir}/usr/bin"
-	mkdir -p "${pkgdir}/usr/share/applications"
-	cp -rf "${srcdir}/${pkgname}/"* "$pkgdir/opt/${pkgname}/"
-	cp -f arch-os.desktop "${pkgdir}/usr/share/applications/"
-	chmod +x "${pkgdir}/opt/${pkgname}/arch-os"
-	ln -s /opt/${pkgname}/arch-os "${pkgdir}/usr/bin/"
+	install -Dm755 "$srcdir/arch-os" "$pkgdir/usr/bin/arch-os"
+	install -Dm644 "$srcdir/arch-os.desktop" "$pkgdir/usr/share/applications/arch-os.desktop"
 }
