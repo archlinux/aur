@@ -5,7 +5,7 @@
 
 pkgbase=linux-hardened
 pkgver=6.16.12.hardened1
-pkgrel=1
+pkgrel=2
 pkgdesc='Security-Hardened Linux'
 url='https://github.com/anthraxx/linux-hardened'
 arch=(x86_64)
@@ -41,6 +41,7 @@ source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   ${url}/releases/download/${_srctag}/${pkgbase}-${_srctag}.patch{,.sig}
   config  # the main kernel config file
+  fix-sphinx-error.patch::https://github.com/archlinux/linux/commit/c7dd449e808fbd0a2a070bde516450f92a0790fe.patch # Sphinx error
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
@@ -52,12 +53,14 @@ sha256sums=('7ca4debc5ca912ebb8a76944a5c118afd5d09e31ef43c494adb14273da29a26e'
             'SKIP'
             '547063b6148d59e8463f7069e8304a1ddebf58a3ad49f460303cdbd502fcc8a6'
             'SKIP'
-            'ecdc5fe7156828623b60c9a7bf201e647db49486e21b35e0f9469efd61be612e')
+            'ecdc5fe7156828623b60c9a7bf201e647db49486e21b35e0f9469efd61be612e'
+            '65c714437facf2001a980a1c2749ba2b516698a1ab0a9abde4f2f318f5884947')
 b2sums=('86d30cc03b13e13291c4f5e2da1087c5e6e4ef75513b26f89a1e2a4ed63c4d25fdb406b887ba1222a446f62b16fe2cccf7f4fa98778d5741e069b03a0d88d1fd'
         'SKIP'
         'edb03015ed0dc2928b089ea1c45d9fe56a6b36c51fea442822a7342a8c3243c289961db03b0dbc98fc08cfc4c7bc4b25bbb10496aec3e5973f9dfaa04fef59b9'
         'SKIP'
-        '90e7ee527fc934fc8e1fc063e56530b7e272f09dce4cacab82f449f79e7522309c9f66d0053bfbfc902abb693f65f8f7cbb939ae941899989e8ac4bddbf0887c')
+        '90e7ee527fc934fc8e1fc063e56530b7e272f09dce4cacab82f449f79e7522309c9f66d0053bfbfc902abb693f65f8f7cbb939ae941899989e8ac4bddbf0887c'
+        'b3539217b05686fd7062cbde174593b9b14a640594590ecbdaea37f59a85aeccd2d6d0f3ac37f25a3ed3a87e9f36bf70f1becea28781f1b445c6d79fb7c64698')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
