@@ -1,6 +1,6 @@
 pkgbase = linux-amd-drm-fixes
 	pkgdesc = Linux kernel fixes with bleeding edge AMD DRM drivers
-	pkgver = 6.18.2025.11.06
+	pkgver = 6.18.2025.11.12
 	pkgrel = 1
 	url = https://kernel.org/
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = linux-amd-drm-fixes
 	makedepends = xz
 	options = !strip
 	options = !debug
-	source = linux-amd-drm-fixes::git+https://gitlab.freedesktop.org/agd5f/linux#tag=amd-drm-fixes-6.18-2025-11-06
+	source = linux-amd-drm-fixes::git+https://gitlab.freedesktop.org/agd5f/linux#tag=amd-drm-fixes-6.18-2025-11-12
 	source = config::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/main/config
-	sha256sums = 5bac5907dd235b3413f44c4dd797ee365da7ea843181558a96cd22834d333d21
+	sha256sums = 77f2fe16ccc938130eca8fef4e6b8b2e65160127e6614d3ec222c2e3b4b9f580
 	sha256sums = 4e6c3f6a35fed3e2bee7309d430ddf87b435ffb6e697c5d53a6c2eb73c42079a
 
 pkgname = linux-amd-drm-fixes
