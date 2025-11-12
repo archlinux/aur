@@ -1,11 +1,11 @@
 pkgbase = egctl-bin
 	pkgdesc = CLI tool for Envoy Gateway
-	pkgver = 1.1.2
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/envoyproxy/gateway
 	arch = x86_64
 	license = Apache-2.0
-	source = https://github.com/envoyproxy/gateway/releases/download/v1.1.2/egctl_v1.1.2_linux_amd64.tar.gz
-	sha256sums = 3ce349553686bf54a60f1f5bb30f5670474678b67f94c2e4fde8f0d048d0d197
+	source = https://github.com/envoyproxy/gateway/releases/download/v1.6.0/egctl_v1.6.0_linux_amd64.tar.gz
+	sha256sums = 9ba27d33c520841871fe28f98b288c513b9555efff4c66fe25c45899e915d8b1
 
 pkgname = egctl-bin
