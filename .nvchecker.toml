@@ -1,0 +1,5 @@
+[pipr-bin]
+source = "github"
+github = "elkowar/pipr"
+use_latest_release = true
+prefix = "v"
