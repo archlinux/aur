@@ -1,6 +1,6 @@
 pkgbase = honkers-launcher
 	pkgdesc = Honkers launcher for Linux with automatic patching and telemetry disabling
-	pkgver = 1.12.0
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://github.com/an-anime-team/honkers-launcher
 	arch = x86_64
@@ -18,10 +18,12 @@ pkgbase = honkers-launcher
 	depends = cairo
 	depends = p7zip
 	depends = wayland
+	depends = libwebp-utils
+	depends = git
 	optdepends = mangohud: FPS Overlay
 	optdepends = gamescope: Micro-Compositor
 	optdepends = gamemode: CPU Scaling Control
-	source = https://github.com/an-anime-team/honkers-launcher/archive/refs/tags/1.12.0.tar.gz
-	sha256sums = 3a00500d4a006626185ab183108f720cd4a5fa23ae5698abf784546a65b696dd
+	source = https://github.com/an-anime-team/honkers-launcher/archive/refs/tags/1.13.0.tar.gz
+	sha256sums = ad09a7404976ecf925aa19fc29073fe1959aa77cbb659cb8dceb47879acf1bd1
 
 pkgname = honkers-launcher

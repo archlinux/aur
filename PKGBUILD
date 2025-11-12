@@ -1,20 +1,20 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=honkers-launcher
-pkgver=1.12.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Honkers launcher for Linux with automatic patching and telemetry disabling"
 arch=('x86_64')
 url="https://github.com/an-anime-team/honkers-launcher"
 license=('GPL-3.0-only')
 depends=('gtk4' 'libadwaita' 'glibc' 'hicolor-icon-theme' 'gcc-libs' 'glib2'
-	 'pango' 'xz' 'bzip2' 'cairo' 'p7zip' 'wayland')
+	 'pango' 'xz' 'bzip2' 'cairo' 'p7zip' 'wayland' 'libwebp-utils' 'git')
 makedepends=('cargo')
 optdepends=(
 	 'mangohud: FPS Overlay'
 	 'gamescope: Micro-Compositor'
 	 'gamemode: CPU Scaling Control')
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('3a00500d4a006626185ab183108f720cd4a5fa23ae5698abf784546a65b696dd')
+sha256sums=('ad09a7404976ecf925aa19fc29073fe1959aa77cbb659cb8dceb47879acf1bd1')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
