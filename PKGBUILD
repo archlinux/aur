@@ -1,10 +1,14 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="fga"
-pkgver=0.7.5
+pkgver=0.7.8
 pkgrel=1
 pkgdesc="Cross-platform CLI to interact with an OpenFGA server"
-arch=('aarch64' 'i686' 'x86_64')
+arch=(
+  'aarch64'
+  'i686'
+  'x86_64'
+ )
 url="https://openfga.dev"
 _url="https://github.com/openfga/cli"
 license=('Apache-2.0')
@@ -16,16 +20,19 @@ makedepends=(
   'go'
 )
 _pkgsrc="${pkgname}"
-source=("${_pkgsrc}::git+${_url}.git#tag=v${pkgver}?signed")
-b2sums=('48e3498872c067c8a2bf4632e1453c0d73ba25151c25d29576f44a72cf7d7e2efe58e60a435069d0ddd2938b0d880c83de259494374d552dd3feada1e1ca7749')
-validpgpkeys=('510C64A6CDC3F0965291ED872E31AD2F054526F0') # Raghd Hamzeh <raghd.hamzeh@openfga.dev> (https://github.com/rhamzeh.gpg)
+source=(
+  "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}?signed"
+)
+b2sums=('ed58df93748607036ff99df4e5693109758dd6b8c2c62d0ddb1ac1ab47885767e97f5c01bbd75d657c7d23d6ef30c05bc0b377c21b4b2c8dc79b2d743e8b411e')
+validpgpkeys=(
+  '510C64A6CDC3F0965291ED872E31AD2F054526F0' # Raghd Hamzeh <raghd.hamzeh@openfga.dev> (https://github.com/rhamzeh.gpg)
+)
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
-  go mod download -x
-  chmod -R ug+Xwr "${GOMODCACHE}"
+  go mod download -modcacherw -x
 
   mkdir -p "build" "completions" "manpages"
 }
