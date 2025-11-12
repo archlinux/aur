@@ -26,8 +26,9 @@ source=("https://windsurf-stable.codeiumdata.com/wVxQEIWkwPUEAGf3/apt/pool/main/
 		"https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh")
 sha256sums=('4dce3a672bab1551eb4868ce210dbba31bfcc87d91ad261d894c95fe646b1145'
             '5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1')
+noextract=(Windsurf-linux-x64-${pkgver}.deb) # avoid double tarball
 build() {
-	tar -xf "data.tar.xz" --exclude 'usr/share/windsurf/[^r]*' --exclude 'usr/share/windsurf/*.pak'
+	bsdtar -xOf ${noextract[0]} data.tar.xz | tar -xJf - --exclude 'usr/share/windsurf/[^r]*' --exclude 'usr/share/windsurf/*.pak'
 	# Fix path
 	mv usr/share/{appdata,metainfo}
 	mv usr/share/zsh/{vendor-completions,site-functions}
