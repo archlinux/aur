@@ -1,14 +1,14 @@
 pkgbase = pvetui-git
 	pkgdesc = A terminal user interface (TUI) for Proxmox VE
-	pkgver = v1.0.7.r21.g5ec2f74
-	pkgrel = 1
+	pkgver = v1.0.9.r1.g12f0839
+	pkgrel = 2
 	url = https://github.com/devnullvoid/pvetui
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	makedepends = make
+	makedepends = git
 	depends = go
-	depends = git
 	optdepends = kitty: Better terminal support
 	optdepends = alacritty: Better terminal support
 	provides = pvetui

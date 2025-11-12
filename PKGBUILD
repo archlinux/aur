@@ -2,16 +2,16 @@
 
 pkgname='pvetui-git'
 _pkgname=pvetui
-pkgver=v1.0.7.r21.g5ec2f74
-pkgrel=1
+pkgver=v1.0.9.r1.g12f0839
+pkgrel=2
 pkgdesc='A terminal user interface (TUI) for Proxmox VE'
 url='https://github.com/devnullvoid/pvetui'
 arch=('aarch64' 'x86_64')
 license=('MIT')
 provides=('pvetui')
 conflicts=('pvetui-bin' 'pvetui')
-depends=('go' 'git')
-makedepends=('make')
+depends=('go')
+makedepends=('make' 'git')
 optdepends=('kitty: Better terminal support' 'alacritty: Better terminal support')
 source=("git+https://github.com/devnullvoid/${_pkgname}.git")
 sha256sums=('SKIP')
