@@ -2,6 +2,7 @@
 pkgname=gog-unreal-tournament-goty
 pkgver=469e
 pkgrel=1
+epoch=1
 pkgdesc="Unreal Tournament (99): Game of the Year Edition. GOG Version."
 arch=('x86_64')
 url="https://www.gog.com/forum/general/delisting_unreal_games_unreal_tournament_2004_ut_goty_unreal_2_the_awakening_special_edition/post1"
