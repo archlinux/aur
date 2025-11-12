@@ -22,6 +22,6 @@ pkgbase = heidisql-bin
 	provides = heidisql
 	conflicts = heidisql
 	source_x86_64 = heidisql_12.13.1.1_x86_64.deb::https://github.com/HeidiSQL/HeidiSQL/releases/download/v12.13.1.1/heidisql_12.13.1.1_amd64.deb
-	sha256sums_x86_64 = ff6381d9ec4e66c7c02a59bda9f24b35817bd31129152ed7f861414b4514f2c5
+	sha256sums_x86_64 = e871bb5cf92476d026bd8c5887cb2a83e6f13877adb077ef5fbdd2edf2936122
 
 pkgname = heidisql-bin
