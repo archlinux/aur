@@ -1,6 +1,6 @@
 pkgbase = ssprea-nvidia-control
 	pkgdesc = GUI NVidia GPU overclock, power limit and fan manager
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/ssprea/ssprea-nvidia-control
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ssprea-nvidia-control
 	makedepends = git
 	depends = dotnet-sdk-9.0
 	options = !strip
-	source = ssprea-nvidia-control-1.1.7::git+https://github.com/ssprea/ssprea-nvidia-control.git#tag=1.1.7
+	source = ssprea-nvidia-control-1.1.8::git+https://github.com/ssprea/ssprea-nvidia-control.git#tag=1.1.8
 	sha256sums = SKIP
 
 pkgname = ssprea-nvidia-control
