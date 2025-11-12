@@ -1,0 +1,5 @@
+[ddgst-bin]
+source = "github"
+github = "dd86k/ddgst"
+use_latest_release = true
+prefix = "v"

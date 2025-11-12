@@ -1,0 +1,15 @@
+pkgbase = ddgst-bin
+	pkgdesc = Console hashing utility with a twist
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/dd86k/ddgst
+	arch = x86_64
+	license = MIT
+	source = LICENSE-3.0.1::https://raw.githubusercontent.com/dd86k/ddgst/v3.0.1/LICENSE
+	source = README-3.0.1.md::https://raw.githubusercontent.com/dd86k/ddgst/v3.0.1/README.md
+	sha256sums = 6d489af6292662d9e36d34ce49423784984a5f6e41d7b58f49b01264df59fa03
+	sha256sums = 40812fa1b361a114b74d00f27918a81e74c93c8cd03df1e8808e83e1632108fb
+	source_x86_64 = ddgst-x86_64-3.0.1.tgz::https://github.com/dd86k/ddgst/releases/download/v3.0.1/ddgst-3.0.1-x86_64-linux-musl-static.tar.gz
+	sha256sums_x86_64 = bc6dcaab4d679393493901b286cac05a21c998c487e13531a1e1e4a3eb8c7f9c
+
+pkgname = ddgst-bin
