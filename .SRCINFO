@@ -1,15 +1,15 @@
 pkgbase = quint
 	pkgdesc = An executable specification language with design and tooling focused on usability. It is based on the Temporal Logic of Actions
-	pkgver = 0.29.0
+	pkgver = 0.29.1
 	pkgrel = 1
 	url = https://github.com/informalsystems/quint
 	arch = any
 	license = Apache
 	makedepends = npm
 	depends = nodejs
-	source = https://registry.npmjs.org/@informalsystems/quint/-/quint-0.29.0.tgz
-	source = https://github.com/informalsystems/quint/raw/v0.29.0/LICENSE
-	sha256sums = 80eb1993ecb28271cfda7313304a22f866c84274082dffeec52b806cb1a6623a
+	source = https://registry.npmjs.org/@informalsystems/quint/-/quint-0.29.1.tgz
+	source = https://github.com/informalsystems/quint/raw/v0.29.1/LICENSE
+	sha256sums = 4f136b1b666e1c4c9a142dfdfa7376ffc71728e74b39b1974adf7586d55625f1
 	sha256sums = 0f8c4f9a99d4861ee62ade9a9526d09570844bdeab3e6bca500383d5ae7d9495
 
 pkgname = quint
