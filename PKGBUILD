@@ -1,20 +1,20 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=the-honkers-railway-launcher
-pkgver=1.12.1
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="The Honkers Railway launcher for Linux with automatic patching and telemetry disabling"
 arch=('x86_64')
 url="https://github.com/an-anime-team/the-honkers-railway-launcher"
 license=('GPL-3.0-only')
 depends=('gtk4' 'libadwaita' 'glibc' 'hicolor-icon-theme' 'gcc-libs' 'glib2'
-	 'pango' 'xz' 'bzip2' 'cairo' 'p7zip' 'wayland')
+	 'pango' 'xz' 'bzip2' 'cairo' 'p7zip' 'wayland' 'git' 'libwebp-utils')
 makedepends=('cargo')
 optdepends=(
 	 'mangohud: FPS Overlay'
 	 'gamescope: Micro-Compositor'
 	 'gamemode: CPU Scaling Control')
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('2dbee70da0d69df6d09b5ae4b405eb75604965308715cf715e2aa752255e7788')
+sha256sums=('c223db3f7e8f01d936adb13c68f6eef734100ad42cc31adb367ec6b9171d4edf')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
