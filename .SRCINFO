@@ -1,13 +1,13 @@
 pkgbase = nautilus-scripts
 	pkgdesc = A set of actions for extending the functionality of the GNOME Files (Nautilus), Dolphin, Caja, Nemo, PCManFM-Qt and Thunar file managers.
-	pkgver = 27.1.2
+	pkgver = 27.2
 	pkgrel = 1
 	url = https://github.com/cfgnunes/nautilus-scripts
 	arch = x86_64
 	license = MIT
 	depends = bash
-	source = https://github.com/cfgnunes/nautilus-scripts/archive/refs/tags/27.1.2.tar.gz
-	md5sums = aa8c46c300ae66eb84f3b24bbb766315
+	source = https://github.com/cfgnunes/nautilus-scripts/archive/refs/tags/27.2.tar.gz
+	md5sums = b6b106fded0537e1f1c40842b6f3fe04
 
 pkgname = nautilus-scripts
 	install = nautilus-scripts.install
