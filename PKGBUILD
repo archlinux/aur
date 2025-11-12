@@ -1,14 +1,20 @@
+# Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: sunflsk (https://aur.archlinux.org/account/sunflsks)
+
 pkgname=kernel-chktaint
-pkgver=5.8.9
+_version=6
+pkgver="${_version}.17.7"
 pkgrel=1
+url="http://kernel.org/"
 pkgdesc="Check kernel for tainted modules"
 arch=("any")
-license=('GPL')
-_version=5
+license=('GPL-2.0-only')
+depends=(
+  "sh"
+)
 source=("https://cdn.kernel.org/pub/linux/kernel/v$_version.x/linux-"$pkgver".tar.xz")
-sha256sums=("99d8bc1b82f17d7d79f9af4a94af4c0e3772159e9e6e278761bde8569f93e15f")
+sha256sums=("ddf2ea0d4439e1d57136be3623102af9458f601f5b1cb77e83246e88aea09d0e")
 
 package() {
-	mkdir -p "$pkgdir"/usr/bin
-	cp linux-"$pkgver"/tools/debugging/kernel-chktaint "$pkgdir"/usr/bin
+  install -Dvm755 -t "${pkgdir}/usr/bin"  "${srcdir}/linux-${pkgver}/tools/debugging/kernel-chktaint"
 }
