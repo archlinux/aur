@@ -1,7 +1,7 @@
 # Maintainer: Thore Bödecker <foxxx0@archlinux.org>
 
 pkgname=babeltrace2
-pkgver=2.1.0
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Trace manipulation toolkit"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT' 'GPL2' 'LGPL2.1' 'BSD2')
 depends=('glibc' 'glib2' 'libelf' 'python')
 makedepends=('asciidoc' 'xmlto' 'swig' 'python-distutils-extra')
 source=("${pkgname}-${pkgver}.tar.gz::https://www.efficios.com/files/babeltrace/babeltrace2-${pkgver}.tar.bz2")
-sha512sums=('807154d5ea4d987cca0c4ec01bf3566e255e30114da9a968952fd8c9ea04a50fc66228838a1ea7aed9f0ee0d8b6c3ca216104f39dbc92b5c69162118b8b2addf')
+sha512sums=('5e6b1c5c91478f5323007a6e61dff88c53062f89e58c069803ccd12ed19bb2372d6d869ee3cf51d6138b9edcebff7c09e6898c0079867aa6372a49723fa6fbbb')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
