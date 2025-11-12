@@ -1,0 +1,26 @@
+pkgbase = xtxf
+	pkgdesc = The Matrix screensaver in Zig
+	pkgver = 0.11.5
+	pkgrel = 1
+	url = https://github.com/charlesrocket/xtxf
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = zig>=0.15
+	depends = glibc
+	noextract = termbox2-9c9281a9a4c971a2be57f8645e828ec99fd555e8.tar.gz
+	noextract = cova-3fa729ccf582a4c818402019a579f1c5caf90fd3.tar.gz
+	noextract = ghext-0.7.4.tar.gz
+	source = xtxf::git+https://github.com/charlesrocket/xtxf.git#tag=0.11.5?signed
+	source = termbox2-9c9281a9a4c971a2be57f8645e828ec99fd555e8.tar.gz::https://github.com/termbox/termbox2/archive/9c9281a9a4c971a2be57f8645e828ec99fd555e8.tar.gz
+	source = cova-3fa729ccf582a4c818402019a579f1c5caf90fd3.tar.gz::https://github.com/00JCIV00/cova/archive/3fa729ccf582a4c818402019a579f1c5caf90fd3.tar.gz
+	source = ghext-0.7.4.tar.gz::https://github.com/charlesrocket/ghext/archive/refs/tags/0.7.4.tar.gz
+	validpgpkeys = 477763C3A2B941842775C21B9B495FD8CFBF4A1B
+	b2sums = d5cdf440d1ee51080fc2663867efe810645d4f6e8a352a15c79c99bde3bfe373923a8ba5ebd3a1d474f10b6468834e30e3b85dc34d03a27087ad6fc921fc3860
+	b2sums = e30beb7b62377e1c483004aef13a34e3aa387aa6f1c823ea1c81e4a43c4ba63392f44ef4a51055ad589f523ef2c3064bc186c6c61cd4764f7f0419c20b76d8ce
+	b2sums = 3670b27a8033a4778001ae8a41f068c6e1d3a49916abe4b27ea132c44b451e66f9f8acda62c923078dc47102f3bf15c04afff77d9f9bf52448a92bfcacb705b8
+	b2sums = bb9daa4466f3bb987516da40fd66d8501aee124bf5b38b43ebaf56467227b4188fcdc1f2bc59d097bbbcbc13c4454c0593e3f317aca5c383aad310cd3397e625
+
+pkgname = xtxf
