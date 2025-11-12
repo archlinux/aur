@@ -1,9 +1,9 @@
 # Maintainer: Lukas Pöschl <lukas@smart-ies.de>
 
-_google_version=release-R100-14526.B-main
+_google_version=release-R107-15117.B-main
 pkgbase=chromium-ectool
 pkgname=chromium-ectool
-pkgver=R100
+pkgver=R107
 pkgrel=1
 pkgdesc="Query and send commands to ChromiumOS EC from userspace."
 arch=('x86_64')
@@ -29,4 +29,5 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
     install -Dm755 build/host/util/ectool $pkgdir/usr/bin/ectool
+    install -Dm755 build/host/util/{lbplay,stm32mon,ec_sb_firmware_update,lbcc,ec_parse_panicinfo,cbi-util,iteflash} $pkgdir/usr/bin/
 }
