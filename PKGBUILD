@@ -2,7 +2,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='tinct-plugin-random-bin'
-pkgver=0.0.3
+pkgver=0.0.6
 pkgrel=1
 pkgdesc='Random color palette generator plugin for Tinct'
 url='https://github.com/jmylchreest/tinct'
@@ -10,19 +10,21 @@ arch=('aarch64' 'armv7h' 'x86_64')
 license=('MIT')
 provides=('tinct')
 conflicts=('tinct')
+depends=('tinct-bin')
+install=tinct-plugin-random.install
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.3/tinct-plugin-random_0.0.3_Linux_arm64.tar.gz")
-sha256sums_aarch64=('f2d9f1c7f3715e2d7deb5dbd277846b8616b707037d0e4e3bd39567b5f1162a3')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.6/tinct-plugin-random_0.0.6_Linux_arm64.tar.gz")
+sha256sums_aarch64=('e1933b1808d11c0578dd7dcf85f845c8d2df1b398fea693d5d2b543179b60db3')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.3/tinct-plugin-random_0.0.3_Linux_armv7.tar.gz")
-sha256sums_armv7h=('1a7148f364bba1a45ebc89f95040cb948a6668a3cba96349a668ab375d797097')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.6/tinct-plugin-random_0.0.6_Linux_armv7.tar.gz")
+sha256sums_armv7h=('4ac35fbd1b5e44ebdcd7c7f9ac81bed115afca3a2dba181eff8ac4f3ede24d34')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.3/tinct-plugin-random_0.0.3_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('601740e109bad25dfd410cadfec361a2526c7101bc3b5e26f1c49659442c4284')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.6/tinct-plugin-random_0.0.6_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('12885d4f56220b281ade473b3baf1f7a51e2347a0f6de71ccf6f577c07e8f844')
 
 package() {
   # bin
-  install -Dm755 "./random" "${pkgdir}/usr/bin/tinct-plugin-random"
+  install -Dm755 "./tinct-plugin-random" "${pkgdir}/usr/bin/tinct-plugin-random"
 
   # license
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/tinct-plugin-random/LICENSE"
