@@ -24,11 +24,18 @@ source=("https://github.com/OpenPHDGuiding/phd2/archive/v${pkgver}.zip")
 sha256sums=('7228cf5a39d369c58c5cb7a60033bbe4e5aead3fb52b048e860fd82d01e0e038')
 
 prepare() {
+	if [ -d build ]; then
+		rm -rf build
+	fi
 	mkdir build
 	cd build
 
 	cmake \
 		-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+		-DUSE_SYSTEM_LIBINDI=ON \
+		-DUSE_SYSTEM_LIBUSB=ON \
+		-DUSE_SYSTEM_GTEST=ON \
+		-DEIGEN_SRC=/usr/include/eigen3 \
 		../phd2-$pkgver
 }
 
