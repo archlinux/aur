@@ -3,7 +3,7 @@
 pkgbase=heidisql
 pkgname=(heidisql heidisql-qt6 heidisql-gtk2)
 pkgver=12.13.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases."
 arch=(x86_64)
 url="http://www.heidisql.com/"
@@ -66,8 +66,9 @@ build() {
 }
 
 package_heidisql() {
-  pkgdesc="Metapackage for HeidiSQL - installs GTK2 variant by default (Qt6 available)"
-  depends=(heidisql-qt6 heidisql-gtk2)
+  pkgdesc="Metapackage for HeidiSQL - wrapper script and shared files (install heidisql-qt6 or heidisql-gtk2)"
+  depends=(heidisql-client)
+  optdepends=('heidisql-qt6: Qt6 variant' 'heidisql-gtk2: GTK2 variant')
   provides=(heidisql)
   arch=(any)
   
@@ -110,6 +111,7 @@ EOF
 package_heidisql-qt6() {
   pkgdesc="HeidiSQL Qt6 variant - A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases (Qt6)"
   depends=(qt6pas mariadb-libs postgresql-libs libperconaserverclient sqlite)
+  provides=(heidisql-client)
   
   cd "${srcdir}/HeidiSQL-${pkgver}"
   
@@ -127,6 +129,7 @@ package_heidisql-qt6() {
 package_heidisql-gtk2() {
   pkgdesc="HeidiSQL GTK2 variant - A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases (GTK2)"
   depends=(gtk2 mariadb-libs postgresql-libs libperconaserverclient sqlite)
+  provides=(heidisql-client)
   
   cd "${srcdir}/HeidiSQL-${pkgver}"
   
