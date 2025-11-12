@@ -1,0 +1,15 @@
+pkgbase = supermodel
+	pkgdesc = A Sega Model 3 Arcade Emulator
+	pkgver = 0.3a_git_b6716e1
+	pkgrel = 1
+	url = https://github.com/trzy/Supermodel
+	arch = x86_64
+	license = GPL3
+	depends = sdl2_net
+	depends = glu
+	source = https://github.com/trzy/Supermodel/archive/refs/tags/v0.3a-git-b6716e1.tar.gz
+	source = supermodel.desktop
+	sha512sums = 456c214bf97e8f40f3fc339537ad1dfcc91d460902db55a81cc712ae18b450c06239e5644f67be99cf6e4117ac694580722eeac79cdf64c90e390def16d6bd3f
+	sha512sums = 13266c13ecbaccc2a156c41d2d42a271d9bc4bffcfe794a875a10128e97981558302ee9f7b5b8dd8c87ef8b00c5b5216843a9576917f9dd37a13a0455a1bba69
+
+pkgname = supermodel

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Supermodel
+GenericName=Emulator
+Comment=A Sega Model 3 Arcade Emulator
+Exec=/usr/bin/supermodel
+Type=Application
+Terminal=true
+Icon=supermodel
+Categories=Game;ArcadeGame;Emulator
