@@ -68,7 +68,7 @@ build() {
 
 package_heidisql() {
   pkgdesc="Metapackage for HeidiSQL - wrapper script and shared files (install heidisql-qt6 or heidisql-gtk2)"
-  depends=(heidisql-client)
+  depends=(mariadb-libs postgresql-libs libperconaserverclient sqlite)
   optdepends=('heidisql-qt6: Qt6 variant' 'heidisql-gtk2: GTK2 variant')
   provides=(heidisql)
   arch=(any)
@@ -121,7 +121,7 @@ EOF
 
 package_heidisql-qt6() {
   pkgdesc="HeidiSQL Qt6 variant - A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases (Qt6)"
-  depends=(qt6pas mariadb-libs postgresql-libs libperconaserverclient sqlite)
+  depends=(qt6pas heidisql)
   provides=(heidisql-client)
   
   cd "${srcdir}/HeidiSQL-${pkgver}"
@@ -149,15 +149,10 @@ EOF
 
 package_heidisql-gtk2() {
   pkgdesc="HeidiSQL GTK2 variant - A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases (GTK2)"
-  depends=(gtk2 mariadb-libs postgresql-libs libperconaserverclient sqlite)
+  depends=(gtk2 heidisql)
   provides=(heidisql-client)
   
   cd "${srcdir}/HeidiSQL-${pkgver}"
-  
-  if [ ! -f "out/gtk2/heidisql" ]; then
-    echo "Warning: GTK2 binary not found, creating empty package"
-    return 0
-  fi
   
   # Install the actual binary to /usr/share/heidisql/ (where locale files are located)
   mkdir -p "${pkgdir}/usr/share/heidisql"
