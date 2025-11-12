@@ -1,6 +1,6 @@
 # Maintainer: Zenn <mine.minefis@gmail.com>
 pkgname=wl_shimeji-git
-pkgver=0.0.2.r90.g9ad350f
+pkgver=0.0.2.r93.gbf0150a
 pkgrel=1
 pkgdesc="Shimeji reimplementation for Wayland in C"
 arch=('x86_64')
