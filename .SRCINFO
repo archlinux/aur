@@ -1,6 +1,6 @@
 pkgbase = folo-appimage
 	pkgdesc = 🧡 Folo is the AI Reader
-	pkgver = 1.1.1
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/RSSNext/Folo
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = folo-appimage
 	provides = follow
 	conflicts = follow-appimage
 	replaces = follow-appimage
-	noextract = Folo-1.1.1-linux-amd64.AppImage
+	noextract = Folo-1.1.4-linux-amd64.AppImage
 	options = !strip
 	options = !debug
-	source_x86_64 = Folo-1.1.1-linux-amd64.AppImage::https://github.com/RSSNext/Folo/releases/download/desktop%2Fv1.1.1/Folo-1.1.1-linux-x64.AppImage
-	sha256sums_x86_64 = 570263ef377453dcc034c6999e7d8c71e27ad249e7a042b2beb0e9c7606dfa4c
+	source_x86_64 = Folo-1.1.4-linux-amd64.AppImage::https://github.com/RSSNext/Folo/releases/download/desktop%2Fv1.1.4/Folo-1.1.4-linux-x64.AppImage
+	sha256sums_x86_64 = 19d05bab31ffb6ec08e0aefa1ca0076839cebc9da3ac81defc5918dbf4d4e315
 
 pkgname = folo-appimage
