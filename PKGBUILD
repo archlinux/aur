@@ -5,7 +5,7 @@ pkgver=0.3.1
 pkgrel=1
 pkgdesc='External JavaScript for yt-dlp supporting many runtimes'
 arch=(any)
-url='https://github.com/yt-dlp/yt-ejs'
+url='https://github.com/yt-dlp/ejs'
 license=(Unlicense)
 depends=(deno
          python)
