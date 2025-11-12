@@ -4,39 +4,80 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo at gmail dot com>
 
 pkgname=geary-git
-pkgver=46.0.r3.g8d111ef65
+pkgver=46.0.r61.g746efdc41
 pkgrel=1
-pkgdesc="An email application built around conversations, for the GNOME 3 desktop."
 arch=(i686 x86_64)
+pkgdesc="An email application built around conversations, for the GNOME 3 desktop."
 url="https://gitlab.gnome.org/GNOME/geary"
-license=('GPL3')
-depends=(folks pango gdk-pixbuf2 libhandy icu dconf libsecret webkit2gtk-4.1
-         libgoa gsound hicolor-icon-theme libstemmer at-spi2-core libsoup3 gtk3
-         json-glib libgee libxml2 cairo enchant gcr gspell glibc libunwind
-         glib2 libpeas libytnef gmime3 sqlite appstream-glib)
-makedepends=(git gobject-introspection itstool meson vala)
+license=(GPL-3.0-or-later)
+depends=(
+    at-spi2-core
+    cairo
+    dconf
+    enchant
+    folks
+    gcr
+    gdk-pixbuf2
+    glib2
+    glibc
+    gmime3
+    #gnome-online-accounts # namcap: maybe not needed
+    gsound
+    gspell
+    gtk3
+    hicolor-icon-theme
+    icu
+    #iso-codes # namcap: maybe not needed
+    json-glib
+    libgee
+    libgoa
+    libhandy
+    libpeas
+    libsecret
+    libsoup3
+    libstemmer
+    libunwind
+    libxml2
+    libytnef
+    #org.freedesktop.secrets # namcap: maybe not needed
+    pango
+    sqlite
+    webkit2gtk-4.1
+)
+makedepends=(
+    appstream-glib
+    #cmake # not required anymore
+    git
+    gobject-introspection
+    itstool
+    meson
+    vala
+    #yelp-tools # not required anymore
+)
 conflicts=(geary)
 source=('git+https://gitlab.gnome.org/GNOME/geary.git')
 sha256sums=('SKIP')
 
-pkgver() {
-    cd "$srcdir/geary"
-    git describe --long | sed 's/^gnome-//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare() {
-    cd "$srcdir/geary"
-    rm -rf build
+    ln -s "$srcdir/geary" "$srcdir/$pkgname"
+    #cd "$pkgname"
     #patch -Np1 -i ../../libsoup2.patch
 }
 
+pkgver() {
+    cd "$pkgname"
+    git describe --long | sed 's/^gnome-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
-    cd "$srcdir/geary"
-    meson --prefix=/usr --buildtype=release -Dprofile=release build
-    ninja -v -C build
+    local meson_options=(
+      -D profile=release
+    )
+
+    arch-meson geary build "${meson_options[@]}"
+    meson compile -C build
 }
 
 package() {
-    cd "$srcdir/geary"
-    DESTDIR="$pkgdir" ninja -v -C build install
+    meson install -C build --destdir "${pkgdir}"
 }
