@@ -1,7 +1,8 @@
 # Original Author: Yamakaky <yamakaky@yamaworld_fr>
 # Edited by: Thomas <tpxp@live.fr> for the git version
+# Edited by: Archisman Panigrahi <apandada1ATgmail.com>
 pkgname=safeeyes-git
-pkgver=3.0.0b3.r15.gde504da
+pkgver=3.2.0b3.r15.gde504da
 pkgrel=2
 pkgdesc="A Free and Open Source tool for Linux users to reduce and prevent repetitive strain injury (RSI). Latest version from the git repository"
 arch=("any")
