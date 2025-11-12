@@ -1,6 +1,6 @@
 pkgbase = endcord-lite
 	pkgdesc = Feature rich Discord TUI client. Lite version without ASCII media support.
-	pkgver = 1.0.0.alpha.20
+	pkgver = 1.0.0.alpha.21
 	pkgrel = 1
 	url = https://github.com/mzivic7/endcord
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = endcord-lite
 	provides = endcord-lite
 	conflicts = endcord-lite
 	options = !strip
-	source = endcord-lite.tar.gz::https://github.com/mzivic7/endcord/releases/download/1.0.0.alpha.20/endcord-lite-1.0.0.alpha.20-linux.tar.gz
+	source = endcord-lite.tar.gz::https://github.com/mzivic7/endcord/releases/download/1.0.0.alpha.21/endcord-lite-1.0.0.alpha.21-linux.tar.gz
 	sha256sums = SKIP
 
 pkgname = endcord-lite
