@@ -1,16 +1,14 @@
-# Maintainer: VintageTechie <https://vintagetechie.com>
+# Maintainer: VintageTechie <https://vintagetechie.com\>
 pkgname=cosmic-ext-applet-updates-git
-pkgver=1.1.0.r1.gf9c538b
-pkgrel=1
+pkgver=1.1.0
+pkgrel=2
 pkgdesc="Updates Applet for COSMIC Desktop (community extension)"
 arch=('x86_64')
 url="https://github.com/VintageTechie/cosmic-ext-applet-updates"
 license=('MIT')
-depends=('cosmic-panel')
+depends=('cosmic-panel' 'pacman-contrib')
 makedepends=('rust' 'cargo' 'git')
 optdepends=(
-    'pacman: For Arch-based package management'
-    'checkupdates: For checking Pacman updates'
     'paru: For AUR support (preferred)'
     'yay: For AUR support (alternative)'
 )
