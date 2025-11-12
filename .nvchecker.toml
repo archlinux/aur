@@ -1,0 +1,4 @@
+[wifitui]
+source = "git"
+git = "https://github.com/shazow/wifitui.git"
+prefix = "v"
