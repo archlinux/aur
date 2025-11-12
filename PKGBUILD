@@ -12,16 +12,16 @@ source=("git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
-  cd "$srcdir/${pkgname}-${pkgver}"
+  cd "$srcdir/${pkgname}"
 }
 
 build() {
-  cd "$srcdir/${pkgname}-${pkgver}"
+  cd "$srcdir/${pkgname}"
   python -m build --wheel
 }
 
 package() {
-  cd "$srcdir/${pkgname}-${pkgver}"
+  cd "$srcdir/${pkgname}"
   python -m pip install --root="$pkgdir" --prefix=/usr --no-deps dist/*.whl
 
   # install README under the real package name
