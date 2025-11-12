@@ -1,11 +1,11 @@
 pkgname=ceres-solver
 pkgver=2.2.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Solver for nonlinear least squares problems"
 arch=('x86_64')
 url="http://ceres-solver.org/"
 license=('Apache-2.0')
-depends=('google-glog' 'suitesparse')
+depends=('google-glog' 'metis')
 makedepends=('cmake' 'ninja' 'eigen')
 optdepends=('openmp')
 source=("http://ceres-solver.org/ceres-solver-${pkgver}.tar.gz")
@@ -28,6 +28,7 @@ build() {
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DBLA_VENDOR=Generic \
       -DEIGENSPARSE=ON \
+      -DSUITESPARSE=OFF \
       -DGFLAGS=OFF \
       -DUSE_CUDA=OFF \
       -DBUILD_SHARED_LIBS=ON \
