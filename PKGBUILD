@@ -1,15 +1,16 @@
-# Maintainer: fk29g <fk29g.uphill912@slmails.com>
+# Maintainer: nicknb <nicknb at posteo dot com>
 pkgname=fuzpad
-pkgver=2.04.02
+pkgver=2.05.00
 pkgrel=1
 pkgdesc="A minimalistic note management solution. Powered by fzf"
 arch=("x86_64")
 url="https://github.com/JianZcar/FuzPad"
 license=("GPL-3.0-only")
 provides=("$pkgname")
+depends=("fzf")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('773316cb29e595a5b7962248151206b2422ed6f763953bf94881b551f4e666ef')
+sha256sums=('0fd052ac62c6e7ebb712aa3a8b64d6ece99837680358463b968204b2f358d867')
 
 package() {
     cd "FuzPad-$pkgver"

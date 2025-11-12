@@ -1,13 +1,14 @@
 pkgbase = fuzpad
 	pkgdesc = A minimalistic note management solution. Powered by fzf
-	pkgver = 2.04.02
+	pkgver = 2.05.00
 	pkgrel = 1
 	url = https://github.com/JianZcar/FuzPad
 	arch = x86_64
 	license = GPL-3.0-only
+	depends = fzf
 	provides = fuzpad
 	conflicts = fuzpad
-	source = fuzpad-2.04.02.tar.gz::https://github.com/JianZcar/FuzPad/archive/refs/tags/2.04.02.tar.gz
-	sha256sums = 773316cb29e595a5b7962248151206b2422ed6f763953bf94881b551f4e666ef
+	source = fuzpad-2.05.00.tar.gz::https://github.com/JianZcar/FuzPad/archive/refs/tags/2.05.00.tar.gz
+	sha256sums = 0fd052ac62c6e7ebb712aa3a8b64d6ece99837680358463b968204b2f358d867
 
 pkgname = fuzpad
