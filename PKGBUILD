@@ -14,13 +14,13 @@ depends=('glibc')
 optdepends=('kitty: Better terminal support' 'alacritty: Better terminal support')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/devnullvoid/pvetui/releases/download/v1.0.9/pvetui_1.0.9_linux_arm64.tar.gz")
-sha256sums_aarch64=('bd58d28fb890242c9af8e5e1bbb002c26b197a53f66f9f1b879e64bc10e9d74a')
+sha256sums_aarch64=('fdfe1e20629ea9e1d01c604910bc238f431b11fe69bdf273525898f7709f4cd3')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/devnullvoid/pvetui/releases/download/v1.0.9/pvetui_1.0.9_linux_386.tar.gz")
-sha256sums_i686=('ddc0cc9693038ea2dd0d90b0da3127cd4146eeaad0aa22d99a2f03a18424685f')
+sha256sums_i686=('34ecc6dfc9069848d127aa14e704dea01583d7af3e222ff03c5f11d3d5f411e7')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/devnullvoid/pvetui/releases/download/v1.0.9/pvetui_1.0.9_linux_amd64.tar.gz")
-sha256sums_x86_64=('629a64aee4e7fd0d5e64447b19a35bf74108e1fee5c02a38a3d2edbe4b56b20e')
+sha256sums_x86_64=('b0c6e58d388e983ad7bd16b6ff51a2d8e24897a6201d0e1cdb3cbf36ba96180d')
 
 package() {
   # Install binary
