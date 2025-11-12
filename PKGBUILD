@@ -2,7 +2,7 @@
 # Contributer: dax <dev@dax.moe>
 pkgname=ddhx-git
 _pkgname=ddhx
-pkgver=r404.c9e60b7
+pkgver=v0.7.2.r2.g1aa0572
 pkgrel=1
 pkgdesc="Console hexadecimal file viewer"
 arch=('x86_64')
@@ -18,7 +18,8 @@ md5sums=('SKIP')
 pkgver() {
   #cd "${srcdir}/${_pkgname}-${_pkgver}"
   cd "${srcdir}/${_pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
