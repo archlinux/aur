@@ -2,7 +2,7 @@
 
 _pkgname="openfga"
 pkgname="${_pkgname}-bin"
-pkgver=1.10.3
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="High performance and flexible authorization/permission engine built for developers and inspired by Google Zanzibar"
 arch=('aarch64' 'i686' 'x86_64')
@@ -39,15 +39,15 @@ sha256sums=('6f5b8d7257f4158b3800346d9fa0679e1041c92987b0303f04439a54e3488580'
             'ac8e4f66ab7fd0540f58d3de61940f0dea1494fa05b4b984796c1db41a053ea1'
             '1929be63a6466a045939235754e2d2cfd4ca430c304698a6089614c6b8eec6d1'
             'd805fc7020dce2918bcb4b084a680c46c068fb3f42877f624b3d9e98c2f6af24'
-            '82171459865962d59a9ed356e5d84da1daafe57d08bfd53a5303d81e346c99fb'
+            'd88a93a36f4b5fedc007d260917758cf0bad580a941ca7b98d9c483fea4ccdfc'
             '1c46d7b2bed94d457d745f28cabeb31f8d6c81dd9035bc5d24039989ee1e1bff'
-            'ad7cfd848c489dd8edfea27f8857ed7b6057fc1f4b32c1defbebae2ce2336b59'
-            'c9b3a99291d57e6423361bae96a630ffd30e82fbced02974b70b157c9ed8a25d'
-            '74e0991a20821b77ef4813de1fb92372d9fede9e19985e9553f6cfe84f3dcd3f'
-            'c1757f4397d7814a6e501c28c669f24ccd1a60008836f59efb5c09a6741530b3')
-sha256sums_aarch64=('303313f3cb3b3b8a1b3ce1950beb67dd287a043724a6b771d5d1ddb314b0d4c8')
-sha256sums_i686=('189f0be9505eebb261d96b039e77f332471d7217c5882dc20c1bf315c4191cba')
-sha256sums_x86_64=('cbf0ddaddd9580dc0b9d6af70265853c53b4847ff1ac91a9fd06b97ed6f97efb')
+            '3425051e54071eff4a910b6d0f964bfe6f72c2c5b8aacaaa53c72689e8de2241'
+            '62e0a3d27e403048df319e52a5e774d20abc8bf36b14347489a7e1d31d0d2558'
+            'b4f597c5fe3538994dc9245470ecec6a6cf8cbe4c195c9d45a3ad787edcb84c3'
+            '96eab19a1ef35cc66cc18895f1f36d325478629439e791d40b16b6a887efac75')
+sha256sums_aarch64=('f878bde55f0d30bbeef3f17055a1723085ebf1b0102e81b6325606cb6ebdbaa0')
+sha256sums_i686=('7483ce63f29b561cb8ff150f0ca48cac596e0a8e9f4a538b14c096ca3d88e86b')
+sha256sums_x86_64=('63c21486495db14b7f1749ee1954e1052df1e0bcecb9def82fcebb1e8cb41b61')
 
 verify() {
   local source_carch="source_${CARCH}[0]"
