@@ -1,7 +1,7 @@
 # Maintainer: gfdsa <aur@gfdsa.org>
 pkgname=confluent-cli
 pkgver=4.43.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command Line Interface for Confluent Platform (Kafka ecosystem tools)"
 arch=('x86_64')
 url="https://docs.confluent.io/confluent-cli/current/install.html"
