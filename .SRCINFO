@@ -1,7 +1,7 @@
 pkgbase = listen
 	pkgdesc = Minimal audio transcription tool - 100% on-premise
 	pkgver = 2.1.0
-	pkgrel = 5
+	pkgrel = 1
 	url = https://github.com/gmoqa/listen
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,6 @@ pkgbase = listen
 	depends = gcc-libs
 	depends = glibc
 	source = listen-2.1.0.tar.gz::https://github.com/gmoqa/listen/archive/refs/tags/v2.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 6ad2e157e09be3b9cac4beffe120bcea12beb71b326d44384c4d07a4c5cfbff9
 
 pkgname = listen
