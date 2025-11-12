@@ -3,7 +3,7 @@
 
 pkgname='pvetui-bin'
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal user interface (TUI) for Proxmox VE'
 url='https://github.com/devnullvoid/pvetui'
 arch=('aarch64' 'i686' 'x86_64')
