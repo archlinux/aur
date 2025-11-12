@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=an-anime-game-launcher
-pkgver=3.17.0
-pkgrel=2
+pkgver=3.18.0
+pkgrel=1
 pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 arch=('x86_64')
 url="https://github.com/an-anime-team/an-anime-game-launcher"
@@ -13,14 +13,11 @@ optdepends=(
 	 'mangohud: FPS Overlay'
 	 'gamescope: Micro-Compositor'
 	 'gamemode: CPU Scaling Control')
-source=("$url/archive/refs/tags/${pkgver}.tar.gz"
-	"libwebp.patch::$url/commit/36278d74e3e21db6a9aecaac5b09cb5afe38026c.diff")
-sha256sums=('ca9fe42a53dc754fac07e58cc833dfd62a41bee5d76db2e12fb7442dc09a1dd5'
-            '2a5f976ac0fb0513c03d7af1ddce8fdd40bc0456e1ffee7b6574d5303205cc9e')
+source=("$url/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('3ca92a679a5f22c268b24f261b7d1f8d7814ccde09bc4d80884ea611c0f71fc5')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
-	patch -Np1 < "$srcdir/libwebp.patch"
 	export RUSTUP_TOOLCHAIN=stable
     	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
