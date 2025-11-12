@@ -1,11 +1,12 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=qt5-lottie
-_basever=5.15.16
-pkgver=5.15.16
+_basever=5.15.18
+pkgver=5.15.18
 pkgrel=1
-_commit=f5984b138b8d1da6940d48fc1fe0e4cac068ff1c
+_commit=27ed5a3c95a0810a96fac2a8661ea94d8ea3c44e
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -16,7 +17,7 @@ optdepends=('qt5-declarative: QML bindings')
 groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('711de53a319f856df7a6eec7d2710d3dd804040211361ea5fd391376061c6d44')
+sha256sums=('07c4a441e03e87b6b268e3b907cdfa6bda111cc9583f9c8be7b00515085cf62f')
 
 pkgver() {
   cd kde-$_pkgfqn
