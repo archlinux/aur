@@ -1,5 +1,5 @@
 pkgname=mingw-w64-vtk-git
-pkgver=r94074.ea8be1be94f
+pkgver=r96208.f1e5c2bb797
 pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
@@ -27,7 +27,6 @@ prepare() {
 build() {
   cd "${srcdir}/vtk"
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
       -DCMAKE_BUILD_TYPE=Release \
       -DVTK_USE_EXTERNAL=ON \
@@ -41,16 +40,15 @@ build() {
       -DVTK_MODULE_USE_EXTERNAL_VTK_token=OFF \
       -DVTK_MODULE_USE_EXTERNAL_VTK_utf8=OFF \
       -DVTK_BUILD_TESTING=OFF \
-      ..
-    WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make
-    popd
+      -B build-${_arch} .
+    WINEPATH="/usr/${_arch}/bin;${PWD}/bin" make -C build-${_arch}
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
     cd "$srcdir/vtk/build-${_arch}"
-    LD_PRELOAD="" make install DESTDIR="$pkgdir"
+    make install/fast DESTDIR="$pkgdir"
     rm -r "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
