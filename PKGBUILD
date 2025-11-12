@@ -6,8 +6,8 @@ pkgdesc="Fast featureful friendly wifi terminal UI"
 arch=("aarch64" "x86_64")
 url="https://github.com/shazow/wifitui"
 license=("MIT")
-depends=()
-makedepends=()
+depends=("glibc")
+makedepends=("go")
 source=("$pkgname-$pkgver::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('ba9dcf1dffc76c573f2f9c5dc0965e3b29c2723fb9fc5e54c27592fd6b15eadb')
 
@@ -24,4 +24,5 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
