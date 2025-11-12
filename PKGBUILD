@@ -1,6 +1,6 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 pkgname=mdns-browser
-pkgver=0.25.3
+pkgver=0.25.8
 pkgrel=1
 pkgdesc="A cross platform mDNS-Browser app written in Rust using tauri and leptos"
 arch=('x86_64')
@@ -11,11 +11,11 @@ conflicts=('mdns-browser-bin')
 makedepends=('cargo' 'cargo-auditable' 'git' 'file' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rust' 'rust-wasm' 'trunk' 'webkit2gtk-4.1')
 options=('!strip' '!emptydirs')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
-sha256sums=('b1b2faf00d6e9bcd3f10b3ab82ce4ababcb07d4f6b47d0fa688efb24cad0cb70')
+sha256sums=('c01f197e1de7b23edeae146cab075b3be7e05323c5dd70eb0f573422f3a5e53c')
 _builddir="$pkgname-$pkgname-v$pkgver"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
-    cargo --locked install tauri-cli@2.9.3
+    cargo --locked install tauri-cli@2.9.4
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
     cargo fetch --locked --target wasm32-unknown-unknown
 }
