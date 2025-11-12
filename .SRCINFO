@@ -1,0 +1,20 @@
+pkgbase = tang-dynasty-bin
+	pkgdesc = Tang Dynasty FPGA/EDA toolchain
+	pkgver = 6.2.1_SP1
+	pkgrel = 1
+	url = https://www.anlogic.com/
+	arch = x86_64
+	license = custom
+	depends = udev
+	conflicts = tang-dynasty
+	options = !strip
+	source = TD_6.2.1_SP1_178840_NL.zip::https://anlogic.oss-cn-shanghai.aliyuncs.com/web_doc/%E5%B7%A5%E5%85%B7%E4%B8%8E%E8%B5%84%E6%96%99%E4%B8%8B%E8%BD%BD/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/TD_Linux/TD_6.2/ggshdjsgkdjh/TD_6.2.1_SP1_178840_NL.zip
+	source = tang-dynasty.desktop
+	source = tang-dynasty.png
+	source = 99-anlogic-jtag.rules
+	sha256sums = c5917d6ae54e118e0b607063e4612d5ae21ab8bfb5b4a4988b28f67160b86839
+	sha256sums = 40c810053bf8044eb20238ace006ff973622e6793e4ec339fdc571ae1399c203
+	sha256sums = c7518eb2fe0ebafbeadba36a80616892403e89338eb8392aedaeb24ecfbb6040
+	sha256sums = a4fe58538e15635dc3ed8688d312c006ba959b2d456c57fd0e445975632ef7e0
+
+pkgname = tang-dynasty-bin
