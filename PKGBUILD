@@ -10,7 +10,7 @@
 
 pkgver=38.6.0
 _gcc_patches=140
-pkgrel=1
+pkgrel=2
 _major_ver=${pkgver%%.*}
 pkgname="electron${_major_ver}"
 pkgdesc='Build cross platform desktop apps with web technologies'
@@ -69,7 +69,6 @@ source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         chromium-140.0.7339.41-rust.patch
         # Electron
         electron-launcher.sh
-        electron.desktop
         jinja-python-3.10.patch
         use-system-libraries-in-node.patch
         makepkg-source-roller.py
@@ -235,7 +234,6 @@ sha256sums=('b4998be6084d96483c9d20e38476c948ec68a960f32f050ba7a1fa8e117e19bd'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             '0eb47afd031188cf5a3f0502f3025a73a1799dfa52dff9906db5a3c2af24e2eb'
             '13fcf26193f4417fd5dfbc82a3f24e5c7a1cce82f729f6a73f1b1d3a7b580b34'
-            '4484200d90b76830b69eea3a471c103999a3ce86bb2c29e6c14c945bf4102bae'
             '55dbe71dbc1f3ab60bf1fa79f7aea7ef1fe76436b1d7df48728a1f8227d2134e'
             '991e54f4490cdbb5e52c9a4a4f6e0e32f2fc95979f18a4736016d065da229c2e'
             '7135a7cd88d24febf39f1551a85358f6c7e46a7e15f63aed873ce0f52d3c2313'
@@ -434,8 +432,6 @@ prepare() {
   rustup toolchain install 1.89.0
 
   sed -i "s|@ELECTRON@|${pkgname}|" electron-launcher.sh
-  sed -i "s|@ELECTRON@|${pkgname}|" electron.desktop
-  sed -i "s|@ELECTRON_NAME@|Electron ${_major_ver}|" electron.desktop
 
   cp -r chromium-mirror_third_party_depot_tools depot_tools
   export PATH+=":$PWD/depot_tools" DEPOT_TOOLS_UPDATE=0
@@ -633,9 +629,7 @@ package() {
   install -Dm755 "${srcdir}/electron-launcher.sh" \
     "${pkgdir}/usr/bin/${pkgname}"
 
-  # Install .desktop and icon file
-  install -Dm644 electron.desktop \
-    "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  # Install icon file
   install -Dm644 src/electron/default_app/icon.png \
           "${pkgdir}/usr/share/pixmaps/${pkgname}.png"  # hicolor has no 1024x1024
 }
