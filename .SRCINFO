@@ -1,7 +1,7 @@
 pkgbase = hotspot
 	pkgdesc = The Linux perf GUI for performance analysis
 	pkgver = 1.5.1
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = https://github.com/KDAB/hotspot
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = hotspot
 	depends = kconfig
 	depends = kconfigwidgets
 	depends = kcoreaddons
-	depends = kddockwidgets-qt6
+	depends = kddockwidgets
 	depends = kgraphviewer
 	depends = ki18n
 	depends = kio

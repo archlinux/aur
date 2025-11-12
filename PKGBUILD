@@ -3,7 +3,7 @@
 
 pkgname=hotspot
 pkgver=1.5.1
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="The Linux perf GUI for performance analysis"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
     'kconfig'
     'kconfigwidgets'
     'kcoreaddons'
-    'kddockwidgets-qt6'
+    'kddockwidgets'
     'kgraphviewer'
     'ki18n'
     'kio'
@@ -44,7 +44,7 @@ b2sums=('1751e115213af409210d7fd35a4113d1d528a9bb04be12fa7b05ce56523c447e7c12b21
 prepare() {
     mv perfparser/*       $pkgname/3rdparty/perfparser
     mv PrefixTickLabels/* $pkgname/3rdparty/PrefixTickLabels
-    
+
     cd $pkgname
     # fix build with Qt 6.9 https://github.com/KDAB/hotspot/commit/ec54b1efe74ca4b6cc1e432046de6269029c02ed
     sed -i 's/painter->setBrush({});/painter->setBrush(QBrush());/g' src/models/timelinedelegate.cpp
