@@ -1,0 +1,18 @@
+pkgbase = python-pyrgg
+	pkgdesc = 🔧 Python Random Graph Generator
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://github.com/sepandhaghighi/pyrgg
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-art
+	depends = python-yaml
+	source = https://github.com/sepandhaghighi/pyrgg/archive/v1.9.tar.gz
+	sha256sums = 4affac54d96b67a02669f54ed5d7286ab0f2204d2f350ccde7b8d2a0dc80f3fc
+
+pkgname = python-pyrgg
