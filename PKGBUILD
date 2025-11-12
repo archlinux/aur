@@ -2,8 +2,8 @@
 # Contributor: TZ86
 
 pkgname=vivaldi-snapshot
-_rpmversion=7.7.3851.40-1
-pkgver=7.7.3851.40
+_rpmversion=7.7.3851.44-1
+pkgver=7.7.3851.44
 pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind. Snapshot'
 url="https://vivaldi.com"
@@ -37,7 +37,7 @@ optdepends=(
 )
 source=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${_rpmversion}.x86_64.rpm"
         '0001-add-support-for-user-flags.patch')
-sha512sums=('72fbfb2c672c208173b873db5453e37cdf4f5a21769f9ffdf3a74f0f15fe7cc74fbb22882121c342de30ee918e8a8a861ac7929012a06c0eaf63d7df450a8c26'
+sha512sums=('6344ab1c948f282bbba9cf97161b6db3a328189f35146b153dc6711090a2f2867ae60b68ecc7b7fcb218f42a74aa33ee292895da68566f390e2fae44fe32edaf'
             'a9bdab0fb0f394af17d1b126bae2d0cdc55e63eaa6eaf36eb994735047d3d7bc5000d75ab930f74b76b283c5addefbd4e4e63c5e4f2908bd53c270e73641c19d')
 
 package() {
