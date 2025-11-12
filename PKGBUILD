@@ -4,7 +4,7 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20250924.a46e923af
+pkgver=20251111.31a3f7ae5
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=(x86_64 armv7h aarch64)
@@ -17,7 +17,7 @@ source=(git+https://github.com/ArtifexSoftware/mupdf.git
         git+https://github.com/ArtifexSoftware/extract.git
         git+https://github.com/ArtifexSoftware/thirdparty-freeglut.git
         git+https://github.com/ArtifexSoftware/thirdparty-lcms2.git#branch=lcms2mt
-	https://cgit.ghostscript.com/cgi-bin/cgit.cgi/mujs.git/plain/regexp.h
+	https://raw.githubusercontent.com/ArtifexSoftware/mujs/refs/heads/master/regexp.h
         desktop)
 sha256sums=(SKIP
             SKIP
