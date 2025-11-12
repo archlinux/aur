@@ -1,0 +1,21 @@
+pkgbase = python-minotaur-git
+	pkgdesc = A pythonic, asynchronous inotify interface (development version)
+	pkgver = 0.3.0.r0.g84628aa
+	pkgrel = 1
+	url = https://github.com/giannitedesco/minotaur
+	arch = aarch64
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = glibc
+	depends = python
+	provides = python-minotaur
+	conflicts = python-minotaur
+	source = minotaur::git+https://github.com/giannitedesco/minotaur.git
+	sha256sums = SKIP
+
+pkgname = python-minotaur-git
