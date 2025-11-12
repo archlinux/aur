@@ -1,0 +1,26 @@
+pkgbase = python-bflb-flash-command-uart
+	pkgdesc = BOUFFALOLAB IOT TOOL
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/bflb-flash-command-uart
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-toml
+	depends = python-configobj
+	depends = python-cryptography
+	depends = python-pylink-square
+	depends = python-pyserial
+	depends = python-pycklink
+	depends = python-telnetlib-313-and-up
+	optdepends = python-bflb-mcu-tool: BOUFFALOLAB MCU TOOL
+	optdepends = python-bflb-iot-tool: BOUFFALOLAB IOT TOOL
+	options = !strip
+	source = bflb-flash-command-uart-1.0.0.tar.gz::https://files.pythonhosted.org/packages/source/b/bflb-flash-command-uart/bflb-flash-command-uart-1.0.0.tar.gz
+	sha256sums = ec49f0894a81b024917f038a395220824abc8c22120b5c49f0fbc2d7ea2eacf8
+
+pkgname = python-bflb-flash-command-uart
