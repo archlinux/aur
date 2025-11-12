@@ -5,7 +5,7 @@ _pkgbase=${pkgbase%-git}
 _pkg1=DankMaterialShell
 _pkg2=danklinux
 pkgname=($_pkgbase-git $_pkgbase-hyprland-git $_pkgbase-niri-git)
-pkgver=0.4.3.r1.g12ce9fd.af95631
+pkgver=0.4.3.r9.g26849e1.0126ade
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
@@ -29,10 +29,16 @@ conflicts=("dms-shell")
 source=(
         "git+$url.git"
         "git+${url/$_pkg1/$_pkg2}.git"
-        "dms.service")
+        "dms.service"
+        "completions.bash"
+        "completions.fish"
+        "completions.zsh")
 sha256sums=('SKIP'
             'SKIP'
-            '513be09c9a4f56fe1274b6bc823d2eafaa3f3da9892bd668767844b83c94011a')
+            '513be09c9a4f56fe1274b6bc823d2eafaa3f3da9892bd668767844b83c94011a'
+            '61e116dd2fe4cd87ab203f6a3d193404dd5f3c0c0f6dc262439a64411bcb30c4'
+            '8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667'
+            '41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d')
 pkgver() {
     cd "$_pkg2"
     local VERSION1
@@ -76,6 +82,9 @@ package_dms-shell-git() {
 	cp -r "$_pkg1/docs/"* "$pkgdir/usr/share/doc/$pkgname/"
 	rm -rf "$pkgdir/usr/share/quickshell/dms/.git"*
 	install -Dm0644 "dms.service" "$pkgdir/usr/lib/systemd/user/dms.service"
+	install -Dm0644 "completions.bash" "$pkgdir/usr/share/bash-completion/completions/dms"
+	install -Dm0644 "completions.zsh" "$pkgdir/usr/share/zsh/site-functions/_dms"
+	install -Dm0644 "completions.fish" "$pkgdir/usr/share/fish/vendor_completions.d/dms.fish"
 }
 
 package_dms-shell-hyprland-git() {
