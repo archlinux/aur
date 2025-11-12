@@ -1,7 +1,7 @@
 pkgbase = compassonpremise
 	pkgdesc = A messaging app. A messenger for working with and managing teams
 	pkgver = 6.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getcompass.com
 	install = compassonpremise.install
 	arch = x86_64

@@ -3,7 +3,7 @@
 
 pkgname=compassonpremise
 pkgver=6.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A messaging app. A messenger for working with and managing teams"
 arch=('x86_64')
 url="https://getcompass.com"

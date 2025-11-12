@@ -36,6 +36,13 @@ post_upgrade() {
 }
 
 post_remove() {
+	APPARMOR_PROFILE_DEST='/etc/apparmor.d/compassonpremise'
+
+	# Remove apparmor profile.
+	if [ -f "$APPARMOR_PROFILE_DEST" ]; then
+	    rm -f "$APPARMOR_PROFILE_DEST"
+	fi 
+
 	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 
 	update-desktop-database -q
