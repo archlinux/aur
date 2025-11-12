@@ -21,7 +21,7 @@ pkgbase=java21-jetbrains-git
 _pkgbase=java21-jetbrains
 pkgname=('jre21-jetbrains-git' 'jdk21-jetbrains-git')
 pkgrel=1
-pkgver=jb21.0.3.b478.r1.gd05e162
+pkgver=jb21.0.9.b1217.r1.g9482bde
 _majorver=21
 arch=('x86_64')
 url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
@@ -33,13 +33,14 @@ makedepends=('java-environment=21' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx
 source=(git+https://github.com/JetBrains/JetBrainsRuntime.git#branch=jbr21
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
-        freedesktop-jshell.desktop
-        ssd.patch::https://github.com/openjdk/wakefield/pull/7.patch)
+        freedesktop-jshell.desktop)
 sha256sums=('SKIP'
             'b1007ce4c8cbe6b1cc3e6ce78b3c7bc1a26d76145c7c759baf7a04d8bc1bbfe3'
             '113abd0cbb73a34cc7268a97056453f3394632d5fe05d9d1e9f1d8895f8d279d'
-            '51dbaaa20b382c5220d560f4068896ba4a5643d3b7ce63c72cb42ba142689475'
-            'd6b5d37169294023a65a786585e32e558fa6b09c6c4fb32b7584114e57ef7759')
+            '51dbaaa20b382c5220d560f4068896ba4a5643d3b7ce63c72cb42ba142689475')
+options=(
+  !lto
+)
 
 case "${CARCH}" in
   x86_64) _JARCH='x86_64';;
@@ -63,7 +64,6 @@ build() {
 
   # build jbr
   cd $srcdir/${_jdkdir}
-  patch -Np1 -p1 -i ${srcdir}/ssd.patch
 
   NUM_PROC_OPT=''
   MAKEFLAG_J=$(echo ${MAKEFLAGS} | sed -En 's/.*-j([0-9]+).*/\1/p')

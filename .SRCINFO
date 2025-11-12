@@ -1,5 +1,5 @@
 pkgbase = java21-jetbrains-git
-	pkgver = jb21.0.3.b478.r1.gd05e162
+	pkgver = jb21.0.9.b1217.r1.g9482bde
 	pkgrel = 1
 	url = https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime
 	arch = x86_64
@@ -31,16 +31,15 @@ pkgbase = java21-jetbrains-git
 	makedepends = glibc
 	makedepends = jcef-jetbrains
 	makedepends = git
+	options = !lto
 	source = git+https://github.com/JetBrains/JetBrainsRuntime.git#branch=jbr21
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	source = ssd.patch::https://github.com/openjdk/wakefield/pull/7.patch
 	sha256sums = SKIP
 	sha256sums = b1007ce4c8cbe6b1cc3e6ce78b3c7bc1a26d76145c7c759baf7a04d8bc1bbfe3
 	sha256sums = 113abd0cbb73a34cc7268a97056453f3394632d5fe05d9d1e9f1d8895f8d279d
 	sha256sums = 51dbaaa20b382c5220d560f4068896ba4a5643d3b7ce63c72cb42ba142689475
-	sha256sums = d6b5d37169294023a65a786585e32e558fa6b09c6c4fb32b7584114e57ef7759
 
 pkgname = jre21-jetbrains-git
 	pkgdesc = JetBrains Java 21 full runtime environment
@@ -68,7 +67,7 @@ pkgname = jre21-jetbrains-git
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=21
 	provides = java-runtime-jetbrains=21
-	provides = jre21-jetbrains=jb21.0.3.b478.r1.gd05e162-1
+	provides = jre21-jetbrains=jb21.0.9.b1217.r1.g9482bde-1
 	conflicts = jre21-jetbrains
 	conflicts = jdk21-jetbrains
 	backup = etc/java21-jetbrains/logging.properties
@@ -125,9 +124,9 @@ pkgname = jdk21-jetbrains-git
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-environment=21
 	provides = java-environment-jetbrains=21
-	provides = jdk21-jetbrains=jb21.0.3.b478.r1.gd05e162-1
+	provides = jdk21-jetbrains=jb21.0.9.b1217.r1.g9482bde-1
 	provides = java-runtime=21
 	provides = java-runtime-jetbrains=21
-	provides = jre21-jetbrains=jb21.0.3.b478.r1.gd05e162-1
+	provides = jre21-jetbrains=jb21.0.9.b1217.r1.g9482bde-1
 	conflicts = jre21-jetbrains
 	conflicts = jdk21-jetbrains
