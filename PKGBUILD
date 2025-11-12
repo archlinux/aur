@@ -8,8 +8,8 @@ pkgbase=glib2-patched-thumbnailer
 pkgname=(
   glib2-patched-thumbnailer
 )
-pkgver=2.86.0
-pkgrel=2
+pkgver=2.86.1
+pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
 license=(LGPL-2.1-or-later)
@@ -49,16 +49,16 @@ source=(
   "git+https://gitlab.gnome.org/GNOME/gvdb.git"
   0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch
   0002-gdesktopappinfo-Add-more-known-terminals.patch
-  0003-meson.build-Avoid-linking-with-libatomic-when-unneed.patch
+  0003-meson.build-Avoid-linking-with-libatomic.patch
   0004-glocalfileinfo-add-dbus-thumbnail-generation-request.patch
   gio-querymodules.hook
   glib-compile-schemas.hook
 )
-b2sums=('afe82f85c6b93273917ef4b7127dfb58c5e0f1e1946226abb7e0b80abd1ab6f0d8a98b030b0dffac79e48b2f9c9540879044b8a486d8996e59c5210dcd333d0c'
+b2sums=('1cb6a8fc5e1fddd6e1a340c1a2462bedc963ac3b25980877f16f672b68f0259f58dc15a0d8d617aad93c78d229d8cef492de35747347977915732ee10f95f25f'
         'SKIP'
         '47cd08ba7e4b3ca0cd19f6dc20e4d73e30cf90f2b78c3d620ee0c7a4d8a4b325a5e88ec2dcc3a63402c16cc1ce8061130afc313e3cbfcd220dff3e642b113a69'
         'cc39621757253c9f9e11da4ae40dc16d24f2898a7ee34fbfe5b7709c4f0139c04fab6c1138402c16859b2421c45d55bdde522aa1a1b2c6c3544d87b7c2d10dff'
-        '76033114a10d3df461981502eb386d0d6e645eaf27885f5e6dc75bc8495d770e0e75338f7191ae534825b30b75a84e2e9889f33fcdbd109ae10a85c2d34b1e28'
+        '1213701c3058300eb12db0b07010936c10d975825a6e5ebffc20aef809005973f7f1c0b108dea18a65cb6819eed9dcefdb6da6357aef75a778dbd11e14f31be1'
         '84be383030a30f3c681e3b444e7475b7ea7653bf873f3548a77cb00860fc4e1e4731e83be888068dbb36f8ba63d5322449f9d11dbe619de8bea8f9c96e46d2f0'
         '14c9211c0557f6d8d9a914f1b18b7e0e23f79f4abde117cb03ab119b95bf9fa9d7a712aa0a29beb266468aeb352caa3a9e4540503cfc9fe0bbaf764371832a96'
         'd30d349b4cb4407839d9074ce08f5259b8a5f3ca46769aabc621f17d15effdb89c4bf19bd23603f6df3d59f8d1adaded0f4bacd0333afcab782f2d048c882858')
@@ -80,7 +80,9 @@ prepare() {
 
   # Drop dep on libatomic
   # https://gitlab.archlinux.org/archlinux/packaging/packages/qemu/-/issues/6
-  git apply -3 ../0003-meson.build-Avoid-linking-with-libatomic-when-unneed.patch
+  # https://gitlab.gnome.org/GNOME/glib/-/issues/3407
+  # https://gitlab.gnome.org/GNOME/glib/-/merge_requests/4774
+  git apply -3 ../0003-meson.build-Avoid-linking-with-libatomic.patch
 
   # Apply patch to generate thumbnails
   git apply -3 ../0004-glocalfileinfo-add-dbus-thumbnail-generation-request.patch

@@ -1,0 +1,27 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Tue, 21 Oct 2025 17:54:24 +0200
+Subject: [PATCH] meson.build: Avoid linking with libatomic
+
+Arch Linux doesn't need it and the lack of a static libatomic is causing
+trouble for downstream builds using a static GLib.
+
+See: https://gitlab.archlinux.org/archlinux/packaging/packages/qemu/-/issues/6
+See: https://gitlab.gnome.org/GNOME/glib/-/issues/3407
+See: https://gitlab.gnome.org/GNOME/glib/-/merge_requests/4774
+---
+ meson.build | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 29b9ccb4999d..46db2accaf63 100644
+--- a/meson.build
++++ b/meson.build
+@@ -2296,7 +2296,6 @@ libatomic_test_code = '''
+   }'''
+ atomic_dep = []
+ if cc.links(libatomic_test_code, args : '-latomic', name : 'check for -latomic')
+-  atomic_dep = cc.find_library('atomic')
+ endif
+ 
+ # First check in libc, fallback to libintl, and as last chance build
