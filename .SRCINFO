@@ -1,14 +1,14 @@
 pkgbase = pypy-cython
 	pkgdesc = C-Extensions for PyPy
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://cython.org
 	arch = i686
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = pypy3-setuptools
-	source = https://pypi.org/packages/source/c/cython/cython-3.2.0.tar.gz
-	sha512sums = 902f8389792bfa7937f5e1c024a537561e7e0367d1e6e6eefa84ebc25e961968e95bda5095b1cf2b26e994b4b14c0a039b97df80066620c166368a3f0ebd7f4b
+	source = https://pypi.org/packages/source/c/cython/cython-3.2.1.tar.gz
+	sha512sums = b6f64b2c32c355a9c5a3586fdea768ad1924cb4b421d4395d443dadc1cf06e2fe4f3f85d237789eb0a68c9857750cbefefb022475ed7f3d8787551bea3d2fb7d
 
 pkgname = pypy3-cython
 	depends = pypy3
