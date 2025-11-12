@@ -14,7 +14,7 @@ depends=('go' 'git')
 makedepends=('make')
 optdepends=('kitty: Better terminal support' 'alacritty: Better terminal support')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/devnullvoid/pvetui/archive/v1.0.9.tar.gz")
-sha256sums=('a8d862179ae7a82e9d89e6986ce6e53b0e8101af1f6a0eb31c83dc364650c24e')
+sha256sums=('873ff58a64aeb5213eabe14063e593c9c1dfb05b948057ea1bb74abf872995fe')
 prepare() {
   cd "${pkgname}-${pkgver}"
   go mod download
