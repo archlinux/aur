@@ -4,9 +4,9 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=142.0.7444.134
+pkgver=142.0.7444.162
 pkgrel=1
-_manual_clone=1
+_manual_clone=0
 # The following error occures on Abseil 20250512.0:
 # Protoc has returned non-zero status: -4
 _system_abseil=0
@@ -32,7 +32,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-undeclared-isnan.patch
         remove-unused-icu-targets.patch
 )
-sha256sums=('40f03aa6c76d2afbc957cca1da41734d6cbf6b8164dd43f626964be4fca37b0e'
+sha256sums=('f9a082252754c38550b4b9b9b3daab4a3479ba1855e2fac5a4f2189fae89bc3e'
             '5abc8611463b3097fc5ce58017ef918af8b70d616ad093b8b486d017d021bbdf'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
@@ -362,6 +362,15 @@ build() {
 
   # https://crbug.com/957519#c122
   CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
+
+  if [[ $CARCH == aarch64 ]]; then
+    # On aarch64, certain files (e.g. in libvpx and libyuv) needs to be compiled
+    # with additional arch features (e.g. dotprod, sve, sme)
+    # Having an arch setting in the C(XX)FLAGS overrides those
+    # and causes compilation failure
+    CFLAGS="${CFLAGS/-march=*([^ ]) }"
+    CXXFLAGS="${CXXFLAGS/-march=*([^ ]) }"
+  fi
 
   gn gen out/Release --args="${_flags[*]}"
   ninja -C out/Release cronet_package

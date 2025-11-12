@@ -33,5 +33,6 @@ src/build/util/lastchange.py -o src/build/util/LASTCHANGE
 src/tools/update_pgo_profiles.py --target=linux update \
   --gs-url-base=chromium-optimization-profiles/pgo_profiles
 
+rm -rf src/third_party/node/linux/node-linux-x64/bin/
 find src/third_party/jdk/current -type f -delete
 mv src ../chromium-$VERSION
