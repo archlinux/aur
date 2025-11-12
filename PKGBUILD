@@ -14,7 +14,8 @@ source=(
   "https://github.com/HeidiSQL/HeidiSQL/releases/download/v${pkgver}/heidisql_${pkgver}_amd64.deb"
 )
 install="heidisql.install"
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('e9db116b0f3d8aa2300fde3266056452425304791393d84786ac9c0350ddc2b5'
+            'e871bb5cf92476d026bd8c5887cb2a83e6f13877adb077ef5fbdd2edf2936122')
 
 prepare() {
   cd "${srcdir}/HeidiSQL-${pkgver}"
