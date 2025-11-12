@@ -1,10 +1,11 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-quicktimeline
-_basever=5.15.15
-pkgver=5.15.15
-pkgrel=2
-_commit=a0a95b50f2477823f9400b07e76e516555f16dc0
+_basever=5.15.18
+pkgver=5.15.18
+pkgrel=1
+_commit=43130f2681b76a8d743a04704465b716b6b2faee
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -14,7 +15,7 @@ makedepends=('git')
 groups=('qt5')
 _pkgfqn=${pkgname/5-/}
 source=(kde-$_pkgfqn::git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('0e4a7437efdcbab98eea128ccdd52e6c4d9eec1463b82d576c586a3c439b7ddb')
+sha256sums=('0a389aa0f78ef542f65036291aa6b9649db49d86b593047e924014e6837cfe9f')
 
 pkgver() {
   cd kde-$_pkgfqn
