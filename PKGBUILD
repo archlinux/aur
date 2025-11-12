@@ -32,30 +32,27 @@ prepare() {
       FDirnameUserAppData := GetEnvironmentVariable('"'"'XDG_CONFIG_HOME'"'"') + '"'"'/heidisql'"'"';|' source/apphelpers.pas
   
   # Extract translation files from official .deb package
-  # The .deb contains pre-built .mo files (36 languages) that are built from Transifex
+  # It contains pre-built .mo files that are built from Transifex
   # This is the only way to get all translations without Transifex access
-  if [ -f "${srcdir}/${_deb_filename}" ]; then
-    echo "Extracting translation files from official .deb package"
-    (
-      mkdir -p "${srcdir}/deb-extract"
-      cd "${srcdir}/deb-extract"
-      ar -x "${srcdir}/${_deb_filename}"
-      bsdtar -xf data.tar.gz usr/share/heidisql/locale/
-      if [ -d "usr/share/heidisql/locale" ] && [ -n "$(find usr/share/heidisql/locale -name '*.mo' 2>/dev/null)" ]; then
-        mkdir -p "${srcdir}/HeidiSQL-${pkgver}/extra/locale"
-        cp -v usr/share/heidisql/locale/*.mo "${srcdir}/HeidiSQL-${pkgver}/extra/locale/"
-        count=$(find "${srcdir}/HeidiSQL-${pkgver}/extra/locale" -name '*.mo' 2>/dev/null | wc -l)
-        echo "Extracted $count translation files"
-      fi
-      cd "${srcdir}"
-      rm -rf deb-extract
-    )
-  fi
+  echo "Extracting translation files from official .deb package"
+  (
+    mkdir -p "${srcdir}/deb-extract"
+    cd "${srcdir}/deb-extract"
+    ar -x "${srcdir}/${_deb_filename}"
+    bsdtar -xf data.tar.gz usr/share/heidisql/locale/
+    if [ -d "usr/share/heidisql/locale" ] && [ -n "$(find usr/share/heidisql/locale -name '*.mo' 2>/dev/null)" ]; then
+      mkdir -p "${srcdir}/HeidiSQL-${pkgver}/extra/locale"
+      cp -v usr/share/heidisql/locale/*.mo "${srcdir}/HeidiSQL-${pkgver}/extra/locale/"
+      count=$(find "${srcdir}/HeidiSQL-${pkgver}/extra/locale" -name '*.mo' 2>/dev/null | wc -l)
+      echo "Extracted $count translation files"
+    fi
+    cd "${srcdir}"
+    rm -rf deb-extract
+  )
 }
 
 build() {
   cd "${srcdir}/HeidiSQL-${pkgver}"
-  export GITHUB=1
   
   # Build GTK2 version
   mkdir -p ./out/gtk2
@@ -111,14 +108,12 @@ EOF
     done
   fi
   
-  if [ -d "extra/ini" ]; then
-    mkdir -p "${pkgdir}/usr/share/heidisql"
-    install -Dm644 extra/ini/*.ini "${pkgdir}/usr/share/heidisql/"
-  fi
+  mkdir -p "${pkgdir}/usr/share/heidisql"
+  install -Dm644 extra/ini/*.ini "${pkgdir}/usr/share/heidisql/"
   
   mkdir -p "${pkgdir}/usr/share/doc/heidisql"
-  [ -f "README.md" ] && install -Dm644 README.md "${pkgdir}/usr/share/doc/heidisql/"
-  [ -f "LICENSE" ] && install -Dm644 LICENSE "${pkgdir}/usr/share/doc/heidisql/"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/heidisql/"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/doc/heidisql/"
 }
 
 package_heidisql-qt6() {
