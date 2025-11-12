@@ -3,7 +3,7 @@
 pkgbase=heidisql
 pkgname=(heidisql heidisql-qt6 heidisql-gtk2)
 pkgver=12.13.1.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases."
 arch=(x86_64)
 url="http://www.heidisql.com/"
@@ -96,6 +96,16 @@ EOF
     for mo_file in extra/locale/*.mo; do
       [ -f "$mo_file" ] && install -Dm644 "$mo_file" "${pkgdir}/usr/share/heidisql/locale/$(basename "$mo_file")"
     done
+    
+    # Create symlinks for both qt6 and gtk2 variants
+    # The app looks for .mo files matching the executable basename
+    for mo_file in extra/locale/heidisql.*.mo; do
+      if [ -f "$mo_file" ]; then
+        lang_code=$(basename "$mo_file" | sed 's/^heidisql\.//' | sed 's/\.mo$//')
+        ln -sf "heidisql.${lang_code}.mo" "${pkgdir}/usr/share/heidisql/locale/heidisql-qt6.${lang_code}.mo"
+        ln -sf "heidisql.${lang_code}.mo" "${pkgdir}/usr/share/heidisql/locale/heidisql-gtk2.${lang_code}.mo"
+      fi
+    done
   fi
   
   if [ -d "extra/ini" ]; then
@@ -115,7 +125,17 @@ package_heidisql-qt6() {
   
   cd "${srcdir}/HeidiSQL-${pkgver}"
   
-  install -Dm755 "out/qt6/heidisql" "${pkgdir}/usr/bin/heidisql-qt6"
+  # Install the actual binary to /usr/share/heidisql/ (where locale files are located)
+  mkdir -p "${pkgdir}/usr/share/heidisql"
+  install -Dm755 "out/qt6/heidisql" "${pkgdir}/usr/share/heidisql/heidisql-qt6"
+  
+  # Create a wrapper script in /usr/bin that calls the actual binary
+  mkdir -p "${pkgdir}/usr/bin"
+  cat > "${pkgdir}/usr/bin/heidisql-qt6" << 'EOF'
+#!/bin/bash
+exec /usr/share/heidisql/heidisql-qt6 "$@"
+EOF
+  chmod +x "${pkgdir}/usr/bin/heidisql-qt6"
   
   install -Dm644 "package-skeleton/usr/share/applications/heidisql.desktop" \
     "${pkgdir}/usr/share/applications/heidisql-qt6.desktop"
@@ -138,7 +158,17 @@ package_heidisql-gtk2() {
     return 0
   fi
   
-  install -Dm755 "out/gtk2/heidisql" "${pkgdir}/usr/bin/heidisql-gtk2"
+  # Install the actual binary to /usr/share/heidisql/ (where locale files are located)
+  mkdir -p "${pkgdir}/usr/share/heidisql"
+  install -Dm755 "out/gtk2/heidisql" "${pkgdir}/usr/share/heidisql/heidisql-gtk2"
+  
+  # Create a wrapper script in /usr/bin that calls the actual binary
+  mkdir -p "${pkgdir}/usr/bin"
+  cat > "${pkgdir}/usr/bin/heidisql-gtk2" << 'EOF'
+#!/bin/bash
+exec /usr/share/heidisql/heidisql-gtk2 "$@"
+EOF
+  chmod +x "${pkgdir}/usr/bin/heidisql-gtk2"
   
   install -Dm644 "package-skeleton/usr/share/applications/heidisql.desktop" \
     "${pkgdir}/usr/share/applications/heidisql-gtk2.desktop"
