@@ -47,6 +47,7 @@ pkgname = nvidia-525xx-utils
 	provides = nvidia-libgl
 	conflicts = nvidia-utils
 	conflicts = nvidia-libgl
+	conflicts = egl-gbm
 
 pkgname = opencl-nvidia-525xx
 	pkgdesc = OpenCL implemention for NVIDIA, 525 branch

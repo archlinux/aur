@@ -127,7 +127,7 @@ package_nvidia-525xx-utils() {
     optdepends=('nvidia-settings: configuration tool'
                 'xorg-server-devel: nvidia-xconfig'
                 'opencl-nvidia: OpenCL support')
-    conflicts=('nvidia-utils' 'nvidia-libgl')
+    conflicts=('nvidia-utils' 'nvidia-libgl' 'egl-gbm')
     provides=("nvidia-utils=${pkgver}" 'vulkan-driver' 'opengl-driver' 'nvidia-libgl')
     install="${pkgname}.install"
 
