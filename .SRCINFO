@@ -1,6 +1,6 @@
 pkgbase = linux-tachyon
 	pkgdesc = Linux kernel with patches from Linux Tachyon (formerly Linux Clear) which allow for higher performance.
-	pkgver = 6.17.6
+	pkgver = 6.17.7
 	pkgrel = 1
 	url = https://git.staropensource.de/StarOpenSource/Linux-Tachyon
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = linux-tachyon
 	options = !debug
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.17.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.17.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.17.6.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.17.7.xz
 	source = tachyon::git+https://git.staropensource.de/StarOpenSource/Linux-Tachyon.git
 	source = more-uarches-20250818.2.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20250818.2.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
@@ -29,7 +29,7 @@ pkgbase = linux-tachyon
 	validpgpkeys = AC2B29BD34A6AFDDB3F68F35E7BFC8EC95861109
 	sha256sums = 9b607166a1c999d8326098121222feb080a20a3253975fcdfa2de96ba7f757a7
 	sha256sums = SKIP
-	sha256sums = 54427fe08bcd055c963c579fa61ed23f7be7c1c4e73e85fd53774c72d356d994
+	sha256sums = a017a72f03a01504f9ba9d9d0882699b451256bf8d4798d8b899fac959e5ff5c
 	sha256sums = SKIP
 	sha256sums = 326701c512295d50b7ee5b281287959b0e318bba8fed7abe746099e5b658849a
 
