@@ -1,7 +1,7 @@
 # Maintainer: Egor Vorontsov <sdoregor@sdore.me>
 
 pkgname=(spacetimedb{,-cli}-bin)
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="A relational database and a server combined into one (bin version)"
 arch=('x86_64' 'aarch64')
@@ -13,11 +13,11 @@ source=("spacetime-BSL-${pkgver}.txt::${url}/raw/refs/tags/v${pkgver}/LICENSE.tx
 _source=("spacetime-${CARCH}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/spacetime-${CARCH}-unknown-linux-gnu.tar.gz")
 source_x86_64=("${_source[@]}")
 source_aarch64=("${_source[@]}")
-sha256sums=('1e2f3bd3dda5cad4ec7dea2c873e6cfb9fdbbb0db2c2b2aadc3180f00fab839a'
+sha256sums=('6a10d0151db1650e699ab8770874d30ebf1f0ec921d468c63a440a09aaf47455'
             'eaea8602c1b2808683100112f58fa5261ba01cb621aed236bab31537560a3529'
             '2a31e8040c5177900122e8aeacb333742676b5e8f05046b53dc1f8f7ff62de60')
-sha256sums_x86_64=('d22d13bbc0712dd8bc66b57f18afaf38d241b56154dabe314bb988a42710b357')
-sha256sums_aarch64=('6f96f1f4467da159009e9a51d04499e5493d227d2c81ab7a153cd11e739fb848')
+sha256sums_x86_64=('eaa166d2eb513514df97d8254a1ead86f4fa118fd12a855ed6c9123d13a8ccd8')
+sha256sums_aarch64=('79f7164018ae61ec0be0c6f2797b1e8307329cba1ddf15db1724c7ac3264ee28')
 
 _package() {
 	install -Dm644 "spacetime-BSL-${pkgver}.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
