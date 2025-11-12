@@ -14,7 +14,7 @@ license=("Apache-2.0")
 url="https://organicmaps.app"
 _source_url="https://github.com/organicmaps/organicmaps.git"
 source=(organicmaps.desktop)
-sha256sums=('8205a6abb2c053380940d5c2e83cf10b5b889544e2d36c1c777778bf35772729')
+sha256sums=('e8aa7262cace4ee4da387bbad4fddff4c5c989a31324c9248b52157ad43769ab')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 prepare() {
   avail=$(df -P -B 1048576 $srcdir|awk 'NR>1 {print $4}')
