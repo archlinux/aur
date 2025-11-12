@@ -1,6 +1,6 @@
 pkgbase = freecad-weekly-appimage
 	pkgdesc = A general purpose 3D CAD modeler
-	pkgver = 1.1.0_2025.11.05
+	pkgver = 1.1.0_2025.11.12
 	pkgrel = 1
 	url = https://www.freecad.org/
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = freecad-weekly-appimage
 	depends = fuse2
 	provides = freecad
 	conflicts = freecad
-	noextract = freecad-1.1.0_2025.11.05.AppImage
+	noextract = freecad-1.1.0_2025.11.12.AppImage
 	options = !strip
 	options = !debug
-	source = freecad-1.1.0_2025.11.05.AppImage::https://github.com/FreeCAD/FreeCAD/releases/download/weekly-2025.11.05/FreeCAD_weekly-2025.11.05-Linux-x86_64-py311.AppImage
+	source = freecad-1.1.0_2025.11.12.AppImage::https://github.com/FreeCAD/FreeCAD/releases/download/weekly-2025.11.12/FreeCAD_weekly-2025.11.12-Linux-x86_64-py311.AppImage
 	source = freecad.sh
 	source = org.freecad.FreeCAD.desktop.patch
-	sha256sums = 6982f83d52aa9251ae9ffe77b81a19fedc5c8382aa0874c210577469547abc01
+	sha256sums = e147d7c03fc0c2e6875dcd522b9e592f00039aca13e82966b58cd79c18056e52
 	sha256sums = 0c5e634ad825f6eba37151fd1a12e496772874caad587fb009aa391984b87674
 	sha256sums = 52085d2850053db11009365ebdc164e7764f52c3b0d00add4a3d8d8c82860174
 
