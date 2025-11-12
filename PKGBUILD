@@ -1,7 +1,7 @@
 # Maintainer: Aleksej Kovura <aur-b1a3 at mekboy dot ru>
 
 pkgname=organicmaps
-pkgver=2025.10.07_1
+pkgver=2025.11.11_5
 _tag="${pkgver%%_*}-${pkgver##*_}-android"
 pkgrel=3
 pkgdesc="Organic Maps: Offline Hike, Bike, Trails and Navigation"
