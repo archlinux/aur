@@ -1,4 +1,4 @@
-# Maintainer: VintageTechie <https://vintagetechie.com\>
+# Maintainer: VintageTechie <https://vintagetechie.com>
 pkgname=cosmic-ext-applet-updates-git
 pkgver=1.1.0
 pkgrel=2
@@ -30,21 +30,17 @@ build() {
 package() {
     cd "$srcdir/cosmic-ext-applet-updates"
     
-    # Install binary
     install -Dm755 "target/release/cosmic-ext-applet-updates" \
         "$pkgdir/usr/bin/cosmic-ext-applet-updates"
     
-    # Install desktop file
     install -Dm644 "com.vintagetechie.CosmicExtAppletUpdates.desktop" \
         "$pkgdir/usr/share/applications/com.vintagetechie.CosmicExtAppletUpdates.desktop"
     
-    # Install icons
     install -Dm644 "icons/hicolor/scalable/apps/tux-normal.svg" \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/tux-normal.svg"
     install -Dm644 "icons/hicolor/scalable/apps/tux-alert.svg" \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/tux-alert.svg"
     
-    # Install license
     install -Dm644 "LICENSE" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
