@@ -1,6 +1,6 @@
 pkgbase = python-errno2
 	pkgdesc = Python another errno.
-	pkgver = 0.0.3
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://pypi.org/project/errno2
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-errno2
 	conflicts = python-errno2
 	options = !strip
 	options = !debug
-	source = errno2-0.0.3.tar.gz::https://files.pythonhosted.org/packages/source/e/errno2/errno2-0.0.3.tar.gz
-	sha256sums = 8d8939e81cf1899856de2ad0591ea7a6b35f37c0960f1ec790ee5690da9022f4
+	source = errno2-0.0.5.tar.gz::https://files.pythonhosted.org/packages/source/e/errno2/errno2-0.0.5.tar.gz
+	sha256sums = 7efa974eaa690dbbf010979844fa56a2004dcb468dd69079adb8fb8b14f0ef23
 
 pkgname = python-errno2
