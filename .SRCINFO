@@ -1,6 +1,6 @@
 pkgbase = jdk11-temurin
 	pkgdesc = Temurin 11 (OpenJDK 11 Java binaries by Adoptium, formerly AdoptOpenJDK)
-	pkgver = 11.0.28.u6
+	pkgver = 11.0.29.u7
 	pkgrel = 1
 	url = https://adoptium.net/
 	install = install_jdk11-temurin.sh
@@ -21,10 +21,10 @@ pkgbase = jdk11-temurin
 	provides = java-runtime-openjdk=11
 	provides = java-environment=11
 	provides = java-environment-openjdk=11
-	provides = jdk11-openjdk=11.0.28.u6
-	provides = jdk-openjdk=11.0.28.u6
-	provides = openjdk11-src=11.0.28.u6
-	provides = openjdk-src=11.0.28.u6
+	provides = jdk11-openjdk=11.0.29.u7
+	provides = jdk-openjdk=11.0.29.u7
+	provides = openjdk11-src=11.0.29.u7
+	provides = openjdk-src=11.0.29.u7
 	options = !strip
 	backup = etc/java-11-temurin/net.properties
 	backup = etc/java-11-temurin/logging.properties
@@ -46,7 +46,7 @@ pkgbase = jdk11-temurin
 	sha256sums = 502d5dbdde0e4ef009af0f088e8431e0c1721ba2967951e690bf86d184493f75
 	sha256sums = 464c9a7518831eef7cf952a7bd51a1f0d80c19910d21dc1fce693fa6c2ea65df
 	sha256sums = 0f53d0b34412d1a2f30c33bcd68a8f682f1fc86fc76bf290bbb91cb5c1ad28ed
-	source_x86_64 = https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.28%2B6/OpenJDK11U-jdk_x64_linux_hotspot_11.0.28_6.tar.gz
-	sha256sums_x86_64 = 7dfd551795a8884b26cbb02e0301da95db40160bb194f48271dc2ef9367f50c2
+	source_x86_64 = https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.29%2B7/OpenJDK11U-jdk_x64_linux_hotspot_11.0.29_7.tar.gz
+	sha256sums_x86_64 = 3c8f2b53dd137cd86e54f40df96fd0fc56df72c749c06469e7eab216503bc7cf
 
 pkgname = jdk11-temurin

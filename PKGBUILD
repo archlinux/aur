@@ -9,8 +9,8 @@
 
 _majorver=11
 _minorver=0
-_securityver=28
-_updatever=6
+_securityver=29
+_updatever=7
 pkgrel=1
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 _tag_ver=${_majorver}.${_minorver}.${_securityver}+${_updatever}
@@ -59,7 +59,7 @@ source_armv7h=(https://github.com/adoptium/temurin${_majorver}-binaries/releases
 sha256sums=('502d5dbdde0e4ef009af0f088e8431e0c1721ba2967951e690bf86d184493f75'
             '464c9a7518831eef7cf952a7bd51a1f0d80c19910d21dc1fce693fa6c2ea65df'
             '0f53d0b34412d1a2f30c33bcd68a8f682f1fc86fc76bf290bbb91cb5c1ad28ed')
-sha256sums_x86_64=('7dfd551795a8884b26cbb02e0301da95db40160bb194f48271dc2ef9367f50c2')
+sha256sums_x86_64=('3c8f2b53dd137cd86e54f40df96fd0fc56df72c749c06469e7eab216503bc7cf')
 source=(freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
