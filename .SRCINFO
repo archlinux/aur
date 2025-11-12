@@ -1,0 +1,15 @@
+pkgbase = nassemble
+	pkgdesc = A simple tool to aggregate code and documentation into a single text file.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/nassemble/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	source = nassemble-1.0.0.tar.gz::https://pypi.io/packages/source/n/nassemble/nassemble-1.0.0.tar.gz
+	sha256sums = cd725a7b9868b48392f1e6a3c1b7f5214f6d2c0343fa152c8eb37c45009a5216
+
+pkgname = nassemble
