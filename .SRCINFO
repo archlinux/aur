@@ -1,6 +1,6 @@
 pkgbase = maps
 	pkgdesc = Sandboxing tool for Mathematical Research Software
-	pkgver = 0.6
+	pkgver = 0.7
 	pkgrel = 1
 	url = https://github.com/MaRDI4NFDI/maps
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = maps
 	depends = xdg-utils
 	provides = maps
 	conflicts = maps
-	source = maps-0.6.tar.gz::https://github.com/MaRDI4NFDI/maps/archive/refs/tags/v0.6.tar.gz
-	sha256sums = 07e90c2ca8a647b5af9fdfcc3d43666b890f742f266ea59473c11bac133d83fb
+	source = maps-0.7.tar.gz::https://github.com/MaRDI4NFDI/maps/archive/refs/tags/v0.7.tar.gz
+	sha256sums = 147e262a7390af89358cfd61f78ee987fa4d7134f6735d0a3dbb6c20055f28e0
 
 pkgname = maps
