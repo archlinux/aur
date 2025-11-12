@@ -1,4 +1,4 @@
-# Maintainer: Stefan Fürst <stefan20fuerst12@gmail.com>
+# Maintainer: Veya Fürst <stefan20fuerst12@gmail.com>
 pkgname=gns3util
 pkgver=1.2.7
 pkgrel=1
