@@ -120,7 +120,7 @@ EOF
 }
 
 package_heidisql-qt6() {
-  pkgdesc="HeidiSQL Qt6 variant - A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases (Qt6)"
+  pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases (Qt6)"
   depends=(qt6pas heidisql)
   provides=(heidisql-client)
   
@@ -148,7 +148,7 @@ EOF
 }
 
 package_heidisql-gtk2() {
-  pkgdesc="HeidiSQL GTK2 variant - A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases (GTK2)"
+  pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases (GTK2)"
   depends=(gtk2 heidisql)
   provides=(heidisql-client)
   
