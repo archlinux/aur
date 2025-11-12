@@ -1,7 +1,7 @@
 # Maintainer: Rolv Apneseth <rolv.apneseth@gmail.com>
 
 pkgname=omaro
-pkgver=0.1.4
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="TUI for lobste.rs. Browse posts and comments from the comfort of your terminal"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('AGPL3')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('44304f7287812c8fa344ae7d0d7673d2000cf3374733c35b1d6f8d0f2dea54c98ba0917031607c2ccd49bd5047a90e8db348aad9807528ac966f48e60653e282')
+sha512sums=('d40c1de40e3d95f5951131f58054c670d0232e0631be264de1b631b674c937950ca609d6d910bddd3667a9af26894535f57893cb3aedc39be904e56ce70f3bc4')
 options=(!debug !lto)
 
 prepare()
