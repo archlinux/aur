@@ -1,6 +1,6 @@
 pkgbase = sundials-seq
 	pkgdesc = Suite of nonlinear differential/algebraic equation solvers (sequential version)
-	pkgver = 7.4.0
+	pkgver = 7.5.0
 	pkgrel = 1
 	url = https://computing.llnl.gov/projects/sundials
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = sundials-seq
 	depends = suitesparse
 	provides = sundials
 	conflicts = sundials
-	source = https://github.com/LLNL/sundials/archive/v7.4.0/sundials-7.4.0.tar.gz
-	sha256sums = 3f84277b73922507beae83439b6a234d855fd53ba1f61728111968dea5fac29b
+	source = https://github.com/LLNL/sundials/archive/v7.5.0/sundials-7.5.0.tar.gz
+	sha256sums = 8b5fe715009cd0f1a0ff244729c2570e3e631d3bf357495e7813b5063d4d0cf3
 
 pkgname = sundials-seq
