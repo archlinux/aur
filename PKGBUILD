@@ -1,7 +1,7 @@
 #Maintainer: Archisman Panigrahi <apandada1ATgmail.com>
 pkgname=quickbib
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="QuickBib: DOI/arXiv → BibTeX desktop utility"
 url="https://github.com/archisman-panigrahi/quickbib"
 license=('GPL3')
@@ -12,18 +12,18 @@ source=("git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
-  cd "$srcdir/QuickBib-$pkgver" || return 1
+  cd "$srcdir/$pkgname" || return 1
 }
 
 build() {
   # run from the source dir so meson can find meson.build
-  cd "$srcdir/QuickBib-$pkgver" || return 1
+  cd "$srcdir/$pkgname" || return 1
   # configure with system prefix (/usr) — meson will stage install into destdir
   meson setup builddir --prefix=/usr
   meson compile -C builddir
 }
 
 package() {
-  cd "$srcdir/QuickBib-$pkgver" || return 1
+  cd "$srcdir/$pkgname" || return 1
   meson install -C builddir --destdir="$pkgdir"
 }
