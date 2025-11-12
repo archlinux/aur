@@ -3,14 +3,14 @@
 pkgname=pfufs
 pkgver=2.8.1
 pkgvernodots=${pkgver//./}
-pkgrel=2
+pkgrel=3
 pkgdesc='Fujitsu fi series Image Scanner Driver for SANE'
 url='https://www.pfu.ricoh.com/global/scanners/fi/dl/ubuntu-fi-7x60.html'
 arch=('x86_64')
 license=('LicenseRef-ImageScannerDriverEULA')
 depends=('sane' 'libxml2-legacy')
 source=("https://origin.pfultd.com/downloads/IMAGE/fi/ubuntu/${pkgvernodots}/pfufs-ubuntu_${pkgver}_amd64.deb"
-        pfufs.pdf::"https://origin.pfultd.com/downloads/IMAGE/fi/ubuntu/${pkgvernodots}/P2U3-0200-08ENZ0.pdf"
+        "https://origin.pfultd.com/downloads/IMAGE/fi/ubuntu/${pkgvernodots}/P2U3-0200-08ENZ0.pdf"
         60-pfufs.rules
 	consumablesettings.xml
         pfufs
@@ -47,7 +47,8 @@ package () {
   cp -pR usr/ "$pkgdir/"
   cp -pR opt/pfufs/*/ "$pkgdir/opt/pfufs/"
 
-  install -vDm 444 -t "$pkgdir/usr/share/doc/$pkgname" pfufs.pdf opt/pfufs/readme*.txt
+  install -vDm 444 -t "$pkgdir/usr/share/doc/$pkgname" opt/pfufs/readme*.txt
+  install -vDm 444 P2U3-0200-08ENZ0.pdf "$pkgdir/usr/share/doc/$pkgname/pfufs.pdf"
   install -vDm 444 -t "$pkgdir/usr/share/licenses/$pkgname" opt/pfufs/License*.txt
 
   # from the deb's preinst

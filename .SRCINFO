@@ -1,14 +1,14 @@
 pkgbase = pfufs
 	pkgdesc = Fujitsu fi series Image Scanner Driver for SANE
 	pkgver = 2.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.pfu.ricoh.com/global/scanners/fi/dl/ubuntu-fi-7x60.html
 	arch = x86_64
 	license = LicenseRef-ImageScannerDriverEULA
 	depends = sane
 	depends = libxml2-legacy
 	source = https://origin.pfultd.com/downloads/IMAGE/fi/ubuntu/281/pfufs-ubuntu_2.8.1_amd64.deb
-	source = pfufs.pdf::https://origin.pfultd.com/downloads/IMAGE/fi/ubuntu/281/P2U3-0200-08ENZ0.pdf
+	source = https://origin.pfultd.com/downloads/IMAGE/fi/ubuntu/281/P2U3-0200-08ENZ0.pdf
 	source = 60-pfufs.rules
 	source = consumablesettings.xml
 	source = pfufs
