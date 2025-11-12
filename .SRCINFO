@@ -1,0 +1,23 @@
+pkgbase = hpm-isp
+	pkgdesc = An ISP (In-system programming) tool for HPMicro MCUs
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/tfx2001/hpm_isp
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cmake
+	makedepends = openssl
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = glibc
+	depends = systemd-libs
+	provides = hpm-isp
+	conflicts = hpm-isp
+	options = !lto
+	options = !debug
+	source = hpm-isp::git+https://github.com/tfx2001/hpm_isp.git#tag=0.4.0
+	sha256sums = 9338ce2d8077763a4670d128f06c917e43aa83ec2ef735deba0036d30bc3d181
+
+pkgname = hpm-isp
