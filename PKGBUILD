@@ -3,15 +3,14 @@
 pkgbase=rpcs3-bin
 pkgname=(rpcs3-{bin,appimage})
 _api=https://api.github.com/repos/RPCS3/rpcs3-binaries-linux/releases/latest
-_commit=$(curl -s $_api | jq .tag_name | sed -e "s/\"//g" -e "s/build-//")
-_pkgver=$(curl -s $_api | jq .name | sed "s/\"//g")
+_commit=$(curl -s $_api | grep -oP 'tag_name": "build-\K\w{40}')
+_pkgver=$(curl -s $_api | grep -oP '"name": "\K0[^"]+')
 pkgver=${_pkgver/-/_}
 pkgrel=1
 pkgdesc='PlayStation 3 Emulator'
 arch=('x86_64')
 url=https://github.com/RPCS3/rpcs3-binaries-linux
 license=('GPL-2.0-only')
-makedepends=(jq)
 provides=(rpcs3)
 conflicts=(rpcs3)
 
