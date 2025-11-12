@@ -1,6 +1,6 @@
 # Maintainer: kneesdev <kneesdev@naver.com>
 pkgname=duelsplus-bin
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Lightweight, custom Minecraft Proxy designed to enhance your experience on Hypixel Duels."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
   "duelsplus.desktop"
   "duelsplus.png"
 )
-sha256sums=('9615fdb4cd08f93087bad44ba9759a0f8d0abff243c10cd76915ca5038666c40'
+sha256sums=('1b32e500e19285e58948f768f5a32a21e88db2bd57a57d987b6e7173a147b5fc'
             'd8faeec892e05d62e57de71e9ac92ca7d247a6c7be8d57c2d71908ca118441c0'
             '1da7bc1fa20f6811e584b50c84dbb8a8d1d1a2a482df6e367052d8a3fff43b53')
 
