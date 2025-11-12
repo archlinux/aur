@@ -2,7 +2,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='tinct-plugin-wob-bin'
-pkgver=0.0.3
+pkgver=0.0.6
 pkgrel=1
 pkgdesc='Wob (Wayland Overlay Bar) output plugin for Tinct'
 url='https://github.com/jmylchreest/tinct'
@@ -10,19 +10,21 @@ arch=('aarch64' 'armv7h' 'x86_64')
 license=('MIT')
 provides=('tinct')
 conflicts=('tinct')
+depends=('tinct-bin')
+install=tinct-plugin-wob.install
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.3/tinct-plugin-wob_0.0.3_Linux_arm64.tar.gz")
-sha256sums_aarch64=('93609ef3de3ee3564cfb55a1f7cbd7ae42e1dab65d061b6de90f5883957a038b')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.6/tinct-plugin-wob_0.0.6_Linux_arm64.tar.gz")
+sha256sums_aarch64=('925a022177d33eb8f758ab71d8c5dd489040e199ca13f88a744d5fd194ae81e3')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.3/tinct-plugin-wob_0.0.3_Linux_armv7.tar.gz")
-sha256sums_armv7h=('d812ad479cc9eebcddb2118ec567867ac5e0037bab1089b2f0af1b3aedae22cf')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.6/tinct-plugin-wob_0.0.6_Linux_armv7.tar.gz")
+sha256sums_armv7h=('6299e4cd899f8f9b89237850b92b1028459f43434f694ae7cf1008e5f4d09af5')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.3/tinct-plugin-wob_0.0.3_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('ee642b3587a6b6a6de8b6d2532b43c69d989394bb5a60b09a9b9cee8dce2ac6d')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.6/tinct-plugin-wob_0.0.6_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('1f02a085dd52b429ea9f0d932998dc3b55bb975fff343b51d4d61a4ac26e6073')
 
 package() {
   # bin
-  install -Dm755 "./wob-tinct" "${pkgdir}/usr/bin/tinct-plugin-wob"
+  install -Dm755 "./tinct-plugin-wob" "${pkgdir}/usr/bin/tinct-plugin-wob"
 
   # license
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/tinct-plugin-wob/LICENSE"
@@ -30,4 +32,5 @@ package() {
   # sbom
   if [ -f *.sbom.json ]; then
   install -Dm644 *.sbom.json "${pkgdir}/usr/share/doc/tinct-plugin-wob/sbom.json"
+  fi
 }
