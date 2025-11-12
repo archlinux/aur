@@ -1,0 +1,16 @@
+pkgbase = ithil-bin
+	pkgdesc = A Terminal User Interface (TUI) Telegram client built with Go and Bubbletea (binary release)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/lvcasx1/ithil
+	license = MIT
+	conflicts = ithil
+	provides = ithil
+	arch = aarch64
+	source_aarch64 = https://github.com/lvcasx1/ithil/releases/download/v0.1.1/ithil_0.1.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = f72078c03b9b0f7ca95c48bca299290e2f7f79e9d041d2de23da29fa9f075187
+	arch = x86_64
+	source_x86_64 = https://github.com/lvcasx1/ithil/releases/download/v0.1.1/ithil_0.1.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 8d3a2f28ec0ee5a59acf0f36ffd6bbd55d496682176fed385efca7f5657cce9e
+	
+pkgname = ithil-bin
