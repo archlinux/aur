@@ -1,0 +1,43 @@
+From 60229dc40dd0e59354292e2a23213d9eba36042a Mon Sep 17 00:00:00 2001
+From: Philippe Schenker <dev@pschenker.ch>
+Date: Tue, 7 Oct 2025 12:10:09 +0200
+Subject: [PATCH] ixxat_usb: Fix for new can_priv naming
+
+Since kernel 6.17 the naming changed slightly. Adjust for this new
+kernel 6.17
+
+Signed-off-by: Philippe Schenker <dev@pschenker.ch>
+---
+ kernel/drivers/net/can/usb/ixxat_usb/ixxat_usb_cl2.c  | 2 +-
+ kernel/drivers/net/can/usb/ixxat_usb/ixxat_usb_core.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/kernel/drivers/net/can/usb/ixxat_usb/ixxat_usb_cl2.c b/kernel/drivers/net/can/usb/ixxat_usb/ixxat_usb_cl2.c
+index f6fb22435630..2962a0a4e659 100644
+--- a/kernel/drivers/net/can/usb/ixxat_usb/ixxat_usb_cl2.c
++++ b/kernel/drivers/net/can/usb/ixxat_usb/ixxat_usb_cl2.c
+@@ -200,7 +200,7 @@ static int ixxat_usb_init_ctrl(struct ixxat_usb_device *dev)
+ 	//#define CAN_CTRLMODE_CC_LEN8_DLC	0x100	// Classic CAN DLC option
+ 
+ 	const struct can_bittiming *bt = &dev->can.bittiming;
+-	const struct can_bittiming *btd = &dev->can.data_bittiming;
++	const struct can_bittiming *btd = &dev->can.fd.data_bittiming;
+ 	const u16 port = dev->ctrl_index;
+ 	int err;
+ 	struct ixxat_usb_init_cl2_cmd *cmd;
+diff --git a/kernel/drivers/net/can/usb/ixxat_usb/ixxat_usb_core.c b/kernel/drivers/net/can/usb/ixxat_usb/ixxat_usb_core.c
+index bb970d612ba9..810d93d9021e 100644
+--- a/kernel/drivers/net/can/usb/ixxat_usb/ixxat_usb_core.c
++++ b/kernel/drivers/net/can/usb/ixxat_usb/ixxat_usb_core.c
+@@ -1809,7 +1809,7 @@ static int ixxat_usb_create_ctrl(struct usb_interface *intf,
+ 
+ 		dev->can.clock.freq = adapter->clock;
+ 		dev->can.bittiming_const = adapter->bt;
+-		dev->can.data_bittiming_const = adapter->btd;
++		dev->can.fd.data_bittiming_const = adapter->btd;
+ 
+ 		dev->can.restart_ms = IXXAT_USB_DEFAULT_RESTART_MS;
+ 		dev->can.ctrlmode_supported = adapter->modes;
+-- 
+2.51.0
+
