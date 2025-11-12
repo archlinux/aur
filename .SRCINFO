@@ -5,8 +5,12 @@ pkgbase = mpremote
 	url = https://docs.micropython.org/en/latest/reference/mpremote.html
 	arch = any
 	license = MIT
-	makedepends = python-pip
+	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	makedepends = python-hatch-requirements-txt
 	depends = python-pyserial
 
 pkgname = mpremote

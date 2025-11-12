@@ -11,17 +11,20 @@ depends=(
 	'python-pyserial'
 )
 makedepends=(
-	'python-pip'
+	'python-build'
 	'python-installer'
+	'python-wheel'
+	'python-hatchling'
+	'python-hatch-vcs'
+	'python-hatch-requirements-txt'
 )
 
 build() {
-	cd "${srcdir}"
-	# Clean up old builds (if any)
-	rm -f *.whl
-	/usr/bin/pip3 download --no-deps $pkgname==$pkgver
+	cd $pkgname-$pkgver
+	python -m build --wheel --no-isolation
 }
 
 package() {
-	/usr/bin/python3 -m installer --destdir="$pkgdir" ${srcdir}/*.whl
+	cd $pkgname-$pkgver
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
