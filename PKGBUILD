@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-bin
-pkgver=314.251030.0
-pkgrel=2
+pkgver=314.251111.0
+pkgrel=1
 pkgdesc="The desktop client for Tutanota, the secure e-mail service."
 arch=('x86_64')
 url="https://tuta.com/secure-email"
@@ -19,8 +19,8 @@ source=("${pkgname%-bin}-$pkgver.AppImage::https://app.tuta.com/desktop/${pkgnam
         "tutao-pub-$pkgver.pem::https://github.com/tutao/tutanota/raw/${pkgname%-bin}-release-$pkgver/tutao-pub.pem")
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-linux")
-sha512sums=('7a3ecf630c96a56a0acb4f5de09e591064a39252a34331895f3738fd5d050fdc4edead79a8682b9a53f3cd763b604b3abf3b967988b6879dbf3412a802a124ca'
-            '16347c349948e00453d8b9e39ee34adfa7fca5df1619589958de10f55804ed3c109a402389b2aaf23e71923f12e1bb3a4ecb5dbc3930e7296aeb44acf9aac9e9'
+sha512sums=('251cb7e526a9478c59d77fba8183c3447b5952a3c88e34e9d7027f977bc95d3229ac81a60ff72c616467fe56b533943a60b91e478dabc42806855ed27e0af0d6'
+            '8ea0f8ff19bdd6974197e0c61f1880259584e29e06f95acd1138f6edaf2a7a7c0cd419f77fcde02afa0ba3770a445a1e5eebe3ebe090014e965fe8cb4af27780'
             '7c6cf9f1074c08b4d38567ced95159c0809af025efe01b0163d9bb5107daabfa873064255186c071a7dc3a9177ccd0c1b2fcc8b085bdbff234965a6710b3ae45')
 
 prepare() {
