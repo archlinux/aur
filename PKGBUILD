@@ -5,12 +5,12 @@ _pkgbase=${pkgbase%-git}
 _pkg1=DankMaterialShell
 _pkg2=danklinux
 pkgname=($_pkgbase-git $_pkgbase-hyprland-git $_pkgbase-niri-git)
-pkgver=0.4.3.r9.g26849e1.0126ade
+pkgver=0.4.3.r15.ge275016.d2d2dac
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
 url="https://github.com/AvengeMedia/$_pkg1"
-license=(GPL-3.0-only)
+license=(MIT)
 depends=(dgop
          quickshell
          accountsservice)
