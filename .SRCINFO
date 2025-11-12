@@ -1,0 +1,18 @@
+pkgbase = lspx-git
+	pkgdesc = A language server multiplexer, supervisor, and interactive shell
+	pkgver = r41.1b9649f
+	pkgrel = 1
+	url = https://github.com/thefrontside/lspx
+	arch = x86_64
+	license = MIT
+	makedepends = deno
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = lspx
+	conflicts = lspx
+	options = !strip
+	source = lspx::git+https://github.com/thefrontside/lspx
+	sha256sums = SKIP
+
+pkgname = lspx-git
