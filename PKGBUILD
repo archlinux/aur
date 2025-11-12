@@ -8,7 +8,6 @@ url="https://github.com/athasdev/athas"
 license=('AGPL3')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'hicolor-icon-theme')
 makedepends=('bun-bin' 'cmake' 'rustup')
-conflicts=('athas-bin')
 _source_name=athas
 source=("${_source_name}-${pkgver}.tar.gz::https://github.com/athasdev/athas/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('db1b842d2bccf4913858033da86cf5671a3affd2ee343438b56d4ddfaf96f95a')

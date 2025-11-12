@@ -13,7 +13,6 @@ pkgbase = athas
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = hicolor-icon-theme
-	conflicts = athas-bin
 	source = athas-0.2.4.tar.gz::https://github.com/athasdev/athas/archive/refs/tags/v0.2.4.tar.gz
 	sha256sums = db1b842d2bccf4913858033da86cf5671a3affd2ee343438b56d4ddfaf96f95a
 
