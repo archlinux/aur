@@ -1,13 +1,12 @@
 pkgbase = cosmic-ext-applet-updates-bin
 	pkgdesc = Updates Applet for COSMIC Desktop (community extension) - precompiled binary
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VintageTechie/cosmic-ext-applet-updates
 	arch = x86_64
 	license = MIT
 	depends = cosmic-panel
-	optdepends = pacman: For Arch-based package management
-	optdepends = checkupdates: For checking Pacman updates
+	depends = pacman-contrib
 	optdepends = paru: For AUR support (preferred)
 	optdepends = yay: For AUR support (alternative)
 	provides = cosmic-ext-applet-updates
