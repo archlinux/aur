@@ -29,6 +29,14 @@ post_install() {
         echo "    -> Created config at $HYPREMOJI_CONF"
     fi
 
+    if [[ ! -f "$PASTE_CONFIG" ]]; then
+        cp /usr/share/hypremoji/paste_config.json "$PASTE_CONFIG"
+        if [[ -n "$SUDO_USER" ]]; then
+            chown "$SUDO_USER:$SUDO_USER" "$PASTE_CONFIG"
+        fi
+        echo "    -> Created paste config at $PASTE_CONFIG"
+    fi
+
     if [[ ! -f "$HYPRLAND_CONF" ]]; then
         echo "    -> Hyprland config not found"
         echo "    -> Configure manually when you set up Hyprland"
@@ -126,15 +134,24 @@ post_upgrade() {
 
     USER_HOME=$(get_user_home)
     HYPRLAND_CONF="$USER_HOME/.config/hypr/hyprland.conf"
-    HYPREMOJI_CONF="$USER_HOME/.config/hypremoji/hypremoji.conf"
     HYPREMOJI_DIR="$USER_HOME/.config/hypremoji"
+    HYPREMOJI_CONF="$HYPREMOJI_DIR/hypremoji.conf"
+    PASTE_CONFIG="$HYPREMOJI_DIR/paste_config.json"
     BACKUP_FILE="${USER_HOME}/.config/hypr/hyprland-backup-$(date +%Y%m%d-%H%M%S).conf"
 
-    # ✅ VALIDACIÓN CLAVE: Si hypremoji.conf existe, ya está en la nueva estructura
+    if [[ ! -f "$PASTE_CONFIG" ]]; then
+        if [[ -f /usr/share/hypremoji/paste_config.json ]]; then
+            cp /usr/share/hypremoji/paste_config.json "$PASTE_CONFIG"
+            if [[ -n "$SUDO_USER" ]]; then
+                chown "$SUDO_USER:$SUDO_USER" "$PASTE_CONFIG"
+            fi
+            echo "    -> Created paste config at $PASTE_CONFIG"
+        fi
+    fi
+
     if [[ -f "$HYPREMOJI_CONF" ]]; then
         echo "    -> Already using new configuration structure (v1.0.3 or later)"
         
-        # Solo verificar que el source esté en hyprland.conf
         if [[ -f "$HYPRLAND_CONF" ]] && ! grep -q "source.*hypremoji/hypremoji.conf" "$HYPRLAND_CONF"; then
             echo "    -> Warning: hypremoji.conf exists but not sourced in hyprland.conf"
             echo ""
@@ -164,7 +181,6 @@ post_upgrade() {
         return 0
     fi
 
-    # Si llegamos aquí, está en versión <= 1.0.2 y necesita migración
     echo "    -> Detected old configuration structure (v1.0.2 or earlier)"
 
     if [[ ! -f "$HYPRLAND_CONF" ]]; then
@@ -185,7 +201,6 @@ post_upgrade() {
         return 0
     fi
 
-    # Buscar configuración antigua en hyprland.conf
     if ! grep -q "# WindowRules for HyprEmojis\|# SUPER + PERIOD to open Hypremoji\|windowrulev2.*HyprEmoji\|bind.*hypremoji" "$HYPRLAND_CONF"; then
         echo "    -> No old configuration found in hyprland.conf"
         echo "    -> Creating fresh configuration"
@@ -233,7 +248,6 @@ post_upgrade() {
         return 0
     fi
     
-    # Si llegamos aquí, hay configuración antigua que migrar
     echo ""
     echo "==> Old hypremoji configuration detected in hyprland.conf"
     echo "    hypremoji now uses a separate config file: ~/.config/hypremoji/hypremoji.conf"
