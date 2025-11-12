@@ -1,14 +1,14 @@
 # Maintainer: Sébastien TERRIER <ouinouin at ouinouin dot eu>
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=citron
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://citron-emu.org
 license=(GPL-2.0-or-later)
 depends=('qt6-base' 'qt6-webengine' 'fmt' 'boost-libs' 'ffmpeg' 'sdl2' 'hicolor-icon-theme' 'brotli' 'libusb' 'enet' 'opus' 'zydis' 'lz4' 'zlib' 'glibc' 'libva' 'zstd' 'gcc-libs' 'openssl' 'openal'
-	 'speexdsp')
+	 'speexdsp' 'bash')
 makedepends=('git' 'cmake' 'boost' 'glslang' 'ninja' 'nlohmann-json' 'rapidjson' 'qt6-multimedia' 'qt6-tools' 'gamemode' 'doxygen' 'vulkan-headers' 'vulkan-utility-libraries')
 optdepends=('gamemode: Gamemoded support')
 options=(!debug)
@@ -36,7 +36,7 @@ source=(${pkgname}::git+https://git.citron-emu.org/citron/emulator.git#tag=${pkg
         tz::git+https://github.com/eggert/tz.git
 	SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
 )
-b2sums=('7996fb34ac2403fde74f4691d4fdefa288f275d5cfbbdb1322a37d58da516b7b484ec945781101067f5f4a9e669ef7ee616345a74b255797d0947825880f7544'
+b2sums=('13b8b07fd79db3727afb5a86a67f0acd4a6b142fdf8f4220ad556c9eee6967646b992f74cf3cb70e3365e856a1fa9e2fa43971eff9c93e386e10f1dbe91103e6'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -108,10 +108,10 @@ prepare() {
   find . -type f \( -name '*.cpp' -o -name '*.h' \) | xargs sed -i 's/\bboost::process::async_pipe\b/boost::process::v1::async_pipe/g'
 
   # Ensure cubeb is used from externals
-  sed -i '377d;378d;379d' CMakeLists.txt
+  sed -i '386d;387d;388d' CMakeLists.txt
 
   # Fix QT for 6.10.0
-  sed -i 's/find_package(Qt6 REQUIRED COMPONENTS Widgets/find_package(Qt6 REQUIRED COMPONENTS Widgets GuiPrivate/g;s/set(CITRON_QT_COMPONENTS2 Core/set(CITRON_QT_COMPONENENTS2 Core GuiPrivate/g' CMakeLists.txt
+  sed -i 's/find_package(Qt6 REQUIRED COMPONENTS Widgets/find_package(Qt6 REQUIRED COMPONENTS Widgets GuiPrivate/g;s/set(CITRON_QT_COMPONENTS2 Core/set(CITRON_QT_COMPONENTS2 Core GuiPrivate/g' CMakeLists.txt
   sed -i 's/target_link_libraries(citron PRIVATE Boost\:\:headers/target_link_libraries(citron PRIVATE Boost\:\:headers Qt6\:\:GuiPrivate/g' src/citron/CMakeLists.txt
 }
 
@@ -148,6 +148,7 @@ build() {
     -DCITRON_ENABLE_LTO=ON \
     -DCITRON_USE_QT_MULTIMEDIA=ON \
     -DCITRON_USE_QT_WEB_ENGINE=ON \
+    -DCITRON_DOWNLOAD_TIME_ZONE_DATA=ON \
     -DENABLE_QT_TRANSLATION=ON \
     -DUSE_DISCORD_PRESENCE=ON \
     -DCITRON_USE_FASTER_LD=OFF \
@@ -156,6 +157,7 @@ build() {
     -DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
     -DTITLE_BAR_FORMAT_RUNNING="citron | ${pkgver} {}" \
     -DTITLE_BAR_FORMAT_IDLE="citron | ${pkgver} {}" \
+    -DBUILD_ID="archlinux.org" \
     -DCMAKE_SYSTEM_PROCESSOR=$CARCH \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
@@ -172,6 +174,24 @@ build() {
 package() {
   cd "$srcdir"
   DESTDIR="$pkgdir/" cmake --install build
+  install -dm755 "$pkgdir/usr/lib/$pkgname"
+  mv "$pkgdir/usr/bin/$pkgname" "$pkgdir/usr/lib/$pkgname/$pkgname"
+  cat >> "$pkgdir/usr/bin/$pkgname" <<-EOF
+#!/usr/bin/env sh
+# Ensure the qt-config.ini is fixed
+_fix_theme(){
+	sed -i 's/theme=colorful/theme=default/g' "\$HOME/.config/citron/qt-config.ini"
+}
+if [[ -f "\$HOME/.config/citron/qt-config.ini" ]]
+then
+	_fix_theme
+else
+	/usr/lib/$pkgname/$pkgname
+	_fix_theme
+fi
+/usr/lib/$pkgname/$pkgname "\$@"
+EOF
+  chmod 755 "$pkgdir/usr/bin/$pkgname"
   cd "$srcdir/$pkgname/LICENSES"
   for file in *.txt;
   do

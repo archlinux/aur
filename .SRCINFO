@@ -1,6 +1,6 @@
 pkgbase = citron
 	pkgdesc = Nintendo Switch emulator forked from yuzu.
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://citron-emu.org
 	arch = x86_64
@@ -39,9 +39,10 @@ pkgbase = citron
 	depends = openssl
 	depends = openal
 	depends = speexdsp
+	depends = bash
 	optdepends = gamemode: Gamemoded support
 	options = !debug
-	source = citron::git+https://git.citron-emu.org/citron/emulator.git#tag=0.10.0
+	source = citron::git+https://git.citron-emu.org/citron/emulator.git#tag=0.11.0
 	source = cubeb::git+https://github.com/mozilla/cubeb.git
 	source = discord-rpc::git+https://github.com/yuzu-mirror/discord-rpc.git
 	source = dynarmic::git+https://github.com/yuzu-mirror/dynarmic.git
@@ -64,7 +65,7 @@ pkgbase = citron
 	source = linkernsbypass::git+https://github.com/bylaws/liblinkernsbypass.git
 	source = tz::git+https://github.com/eggert/tz.git
 	source = SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
-	b2sums = 7996fb34ac2403fde74f4691d4fdefa288f275d5cfbbdb1322a37d58da516b7b484ec945781101067f5f4a9e669ef7ee616345a74b255797d0947825880f7544
+	b2sums = 13b8b07fd79db3727afb5a86a67f0acd4a6b142fdf8f4220ad556c9eee6967646b992f74cf3cb70e3365e856a1fa9e2fa43971eff9c93e386e10f1dbe91103e6
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
