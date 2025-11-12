@@ -1,7 +1,7 @@
 pkgbase = doi2bib3
 	pkgdesc = Fetch BibTeX for DOIs or resolve arXiv ids to DOIs and fetch BibTeX
 	pkgver = 0.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/archisman-panigrahi/doi2bib3
 	arch = any
 	license = GPL
