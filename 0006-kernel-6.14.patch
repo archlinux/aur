@@ -15,7 +15,7 @@ index 4280d1e..256fa11 100644
  
  /*
   * Commit fcd70cd36b9b ("drm: Split out drm_probe_helper.h")
-@@ -908,7 +909,10 @@ static struct drm_driver nv_drm_driver = {
+@@ -918,7 +919,10 @@ static struct drm_driver nv_drm_driver = {
      .name                   = "nvidia-drm",
  
      .desc                   = "NVIDIA DRM driver",
