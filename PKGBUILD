@@ -3,7 +3,8 @@
 pkgname=v2rayn
 _pkgname=v2rayN
 pkgver=7.15.7
-pkgrel=1
+_bin_commit=e70d0e0efd70f5a47498d167a3f0065a54c85e70
+pkgrel=2
 pkgdesc="A GUI client supporting Xray core, sing-box core and other cores"
 arch=('x86_64' 'aarch64')
 url="https://github.com/2dust/v2rayN"
@@ -20,13 +21,13 @@ makedepends=(
 )
 source=(
     "git+${url}#tag=${pkgver}"
-    "extra-source-${pkgver}.zip::${url}-core-bin/raw/refs/heads/master/v2rayN-linux-64.zip"
+    "extra-source-${pkgver}.zip::https://raw.githubusercontent.com/2dust/v2rayN-core-bin/${_bin_commit}/v2rayN-linux-64.zip"
     "${pkgname}.install"
     "${_pkgname}.sh"
     "${_pkgname}.desktop"
 )
 sha256sums=('e1f78498cde8a2bd12e58d51e5bf3097abc1fbed832f75fdf9434685a6b5a046'
-            'c0392f346ec6a6f640f41330d49aa459adacbb1bd3257f2b806f4765d3f41ecb'
+            'dd1f95a271a03bddcb53191e59aaf3b53df2991153e7a357b703299d809f6b9f'
             'a99db9b70fe1f3def2d876ffb8f2ee6848ed99e912c5f3a5db40c95c49ce2790'
             '99348ffdebf72cc76c16c95fc158c21df4788cbc85fe2bee3c08f11f6eff2d97'
             'f68ccb83fb112e3e745efbbd9dbcfe50c4611c9cdb470854934a33ec2cd561f2')
