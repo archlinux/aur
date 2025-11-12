@@ -1,7 +1,7 @@
 pkgbase = openafs-modules-dkms
 	pkgdesc = Kernel module for OpenAFS (dkms)
-	pkgver = 1.8.14pre1
-	pkgrel = 2
+	pkgver = 1.8.14
+	pkgrel = 1
 	url = http://www.openafs.org
 	arch = i686
 	arch = x86_64
@@ -10,15 +10,15 @@ pkgbase = openafs-modules-dkms
 	depends = dkms
 	depends = libelf
 	depends = openafs>=1.8.12.1-2
-	provides = openafs-modules=1.8.14pre1
+	provides = openafs-modules=1.8.14
 	conflicts = openafs-features-libafs
 	conflicts = openafs-modules
 	conflicts = openafs<1.6.6-2
 	options = !emptydirs
-	source = http://openafs.org/dl/openafs/candidate/1.8.14pre1/openafs-1.8.14pre1-src.tar.bz2
+	source = http://openafs.org/dl/openafs/1.8.14/openafs-1.8.14-src.tar.bz2
 	source = 0001-Linux-Use-struct-kiocb-for-aops-write_begin-end.patch
 	source = dkms.conf
-	sha256sums = 9e9e59ad4e94c8aba8e51522db75ff792803ad297afda32a3a7c526dac3d0b8d
+	sha256sums = ab53692b975edd8eeda880b4bc3bc00cddd34fd0f315a9b463f6797d20c63456
 	sha256sums = 1c0e21470d7c6287aec9c45c9dcca6c01f3b660531bbcac753621cb12088ced1
 	sha256sums = 306408d644e8781f13e09021449cb1ccbba60f69d1d24eca5f8138e9b3e47d8e
 
