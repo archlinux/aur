@@ -1,6 +1,6 @@
 # Maintainer: VintageTechie <https://vintagetechie.com>
 pkgname=cosmic-updates-bin
-pkgver=0.4.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Universal package update checker applet for COSMIC Desktop with AUR support (binary)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
 provides=('cosmic-updates')
 conflicts=('cosmic-updates' 'cosmic-updates-git')
 source=("https://codeberg.org/VintageTechie/cosmic-updates/releases/download/v${pkgver}/cosmic-updates-${pkgver}-x86_64.tar.gz")
-sha256sums=('535229a5e503830701d5675a6ea317b1acb4affaa55c06144a7fdfe03cf99888')
+sha256sums=('8ec64193f96a7eefec8d3ecd1fd328ebde8ec2454d59b24c089ddcb2f8fa7f57')
 
 package() {
     cd "$srcdir"
