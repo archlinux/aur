@@ -1,6 +1,6 @@
 # Maintainer: VintageTechie <https://vintagetechie.com>
 pkgname=cosmic-updates-git
-pkgver=0.4.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Universal package update checker applet for COSMIC Desktop with AUR support (git)"
 arch=('x86_64')
