@@ -1,20 +1,17 @@
 pkgbase = lazarus-git
 	pkgdesc = Delphi-like IDE for FreePascal
-	pkgver = 4.0.r1302.g787dc4d
+	pkgver = 4.4.r2158.g80cd7ab
 	pkgrel = 1
 	url = https://gitlab.com/freepascal.org/lazarus/lazarus
 	arch = x86_64
 	license = GPL-2.0-only
-	license = MPL-1.1
 	license = LGPL-2.0-only
 	license = LicenseRef-LGPL-exception
 	license = CC-BY-SA-4.0
-	makedepends = git
 	makedepends = fpc
 	makedepends = fpc-src
-	makedepends = gtk2
+	makedepends = git
 	makedepends = gtk3
-	makedepends = qt5pas
 	makedepends = qt6pas
 	makedepends = rsync
 	options = !makeflags
@@ -34,7 +31,7 @@ pkgname = lazarus-git
 	optdepends = gtk3: to compile GTK3 apps
 	optdepends = qt5pas: to compile Qt5 apps
 	optdepends = qt6pas: to compile Qt6 apps
-	provides = lazarus=4.0
+	provides = lazarus=4.4.r2158
 	conflicts = lazarus
 
 pkgname = lazarus-gtk3-git
@@ -42,7 +39,7 @@ pkgname = lazarus-gtk3-git
 	depends = lazarus-git
 	depends = desktop-file-utils
 	depends = gtk3
-	provides = lazarus-gtk3=4.0
+	provides = lazarus-gtk3=4.4.r2158
 	conflicts = lazarus-gtk2
 	conflicts = lazarus-gtk3
 	conflicts = lazarus-qt5
@@ -52,7 +49,7 @@ pkgname = lazarus-qt6-git
 	pkgdesc = Delphi-like IDE for FreePascal - qt6 version
 	depends = lazarus-git
 	depends = qt6pas
-	provides = lazarus-qt6=4.0
+	provides = lazarus-qt6=4.4.r2158
 	conflicts = lazarus-gtk2
 	conflicts = lazarus-gtk3
 	conflicts = lazarus-qt5

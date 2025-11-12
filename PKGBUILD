@@ -14,21 +14,17 @@
 : ${_build_qt5:=false}
 : ${_build_qt6:=true}
 
-: ${_pkgtype=-git}
-
 _pkgbase="lazarus"
-pkgbase="$_pkgbase${_pkgtype:-}"
-pkgver=4.0.r1302.g787dc4d
+pkgbase="$_pkgbase-git"
+pkgver=4.4.r2158.g80cd7ab
 pkgrel=1
 pkgdesc='Delphi-like IDE for FreePascal'
 url="https://gitlab.com/freepascal.org/lazarus/lazarus"
 arch=('x86_64')
 license=(
   # ide, designer, codetools, etc
+  # synedit (or MPL-1.1)
   'GPL-2.0-only'
-
-  # synedit
-  'MPL-1.1' # or GPL-2.0-only
 
   # component library
   'LGPL-2.0-only'
@@ -38,19 +34,11 @@ license=(
   'CC-BY-SA-4.0'
 )
 
-pkgname=("$pkgbase")
-[[ "${_build_gtk2::1}" == "t" ]] && pkgname+=("$_pkgbase-gtk2${_pkgtype:-}")
-[[ "${_build_gtk3::1}" == "t" ]] && pkgname+=("$_pkgbase-gtk3${_pkgtype:-}")
-[[ "${_build_qt5::1}" == "t" ]] && pkgname+=("$_pkgbase-qt5${_pkgtype:-}")
-[[ "${_build_qt6::1}" == "t" ]] && pkgname+=("$_pkgbase-qt6${_pkgtype:-}")
-
 makedepends=(
-  'git'
   'fpc'
   'fpc-src'
-  'gtk2'
+  'git'
   'gtk3'
-  'qt5pas'
   'qt6pas'
   'rsync'
 )
@@ -63,11 +51,11 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
-
-  local _tag=$(git tag | grep '^lazarus' | grep -Ev '[A-Z]{2}' | sort -rV | head -1)
-  local _pkgver=$(echo "${_tag:?}" | sed -E 's&^[^0-9]+&&; s&_&.&g')
-  local _revision=$(git rev-list --count --cherry-pick "$_tag"...HEAD)
-  local _hash=$(git rev-parse --short=7 HEAD)
+  local _tag _pkgver _revision _hash
+  _tag=$(git tag | grep '^lazarus' | grep -Ev '[A-Z]{2}' | sort -rV | head -1)
+  _pkgver=$(echo "${_tag:?}" | sed -E 's&^[^0-9]+&&; s&_&.&g')
+  _revision=$(git rev-list --count --cherry-pick "$_tag"...HEAD)
+  _hash=$(git rev-parse --short=7 HEAD)
   printf '%s.r%s.g%s' "${_pkgver:?}" "${_revision:?}" "${_hash:?}"
 }
 
@@ -152,31 +140,33 @@ build() {
     _fpc_options+=(-Crtoi)
   fi
 
-  for _q in gtk2 gtk3 qt5 qt6; do
-    if [ "$_q" != 'git' ]; then
-      local _platform="${_q}"
+  for _platform in gtk3 qt6; do
+    # build ide
+    echo "Building for platform: ${_q}"
+    make FPC=/usr/bin/fpc OPT="${_fpc_options[*]}" LCL_PLATFORM="$_platform" bigide
 
-      # build ide
-      echo "Building for platform: ${_q}"
-      make FPC=/usr/bin/fpc OPT="${_fpc_options[*]}" LCL_PLATFORM="$_platform" bigide
-
-      # move binaries
-      mv lazarus lazarus-$_platform
-      mv startlazarus startlazarus-$_platform
-    fi
+    # move binaries
+    mv lazarus lazarus-$_platform
+    mv startlazarus startlazarus-$_platform
   done
 }
 
-# package
+pkgname=(
+  "$pkgbase"
+  "$_pkgbase-gtk3-git"
+  "$_pkgbase-qt6-git"
+)
+
+_pkgtype="${pkgbase#$_pkgbase}"
 for _p in "${pkgname[@]}"; do
-  local _q=$(cut -d'-' -f2 <<< "$_p")
+  _q=$(cut -d'-' -f2 <<< "$_p")
 
   case "${_q::2}" in
     gt)
       eval "package_$_p() {
         pkgdesc+=' - ${_q:?} version'
         depends=('lazarus${_pkgtype:-}' 'desktop-file-utils' '${_q:?}')
-        provides=(lazarus-${_q:?}=${pkgver%%.r*})
+        provides=(lazarus-${_q:?}=${pkgver%%.g*})
         conflicts=('lazarus-gtk2' 'lazarus-gtk3' 'lazarus-qt5' 'lazarus-qt6')
 
         _package_platform ${_q:?}
@@ -186,7 +176,7 @@ for _p in "${pkgname[@]}"; do
       eval "package_$_p() {
         pkgdesc+=' - ${_q:?} version'
         depends=('lazarus${_pkgtype:-}' '${_q:?}pas')
-        provides=(lazarus-${_q:?}=${pkgver%%.r*})
+        provides=(lazarus-${_q:?}=${pkgver%%.g*})
         conflicts=('lazarus-gtk2' 'lazarus-gtk3' 'lazarus-qt5' 'lazarus-qt6')
 
         _package_platform ${_q:?}
@@ -204,7 +194,7 @@ for _p in "${pkgname[@]}"; do
           'qt6pas: to compile Qt6 apps'
         )
 
-        provides=(lazarus=${pkgver%%.r*})
+        provides=(lazarus=${pkgver%%.g*})
         conflicts=(lazarus)
 
         $(declare -f "_package_lazarus")
