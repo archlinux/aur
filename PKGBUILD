@@ -18,10 +18,11 @@ sha256sums=('e871bb5cf92476d026bd8c5887cb2a83e6f13877adb077ef5fbdd2edf2936122')
 
 package() {
   cd "${pkgdir}"
+
   # this extracts all into the pkgdir
   tar xf "${srcdir}/data.tar.gz"
+
   # fix directory permissions
   find . -type d -exec chmod 755 {} +
   chmod 775 usr/share/doc/heidisql usr/share/heidisql/locale
-  # this extracts all into the pkgdir
 } 
