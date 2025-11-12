@@ -12,13 +12,13 @@ provides=('tinct')
 conflicts=('tinct')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.1/tinct-plugin-wob_0.0.1_Linux_arm64.tar.gz")
-sha256sums_aarch64=('fb2028375c8fac4deb461fbff3d973ea117ccd27f696b90a4a9d91048879359a')
+sha256sums_aarch64=('954409eeab93efbddcf1cbc9294ddf5857dbb67400e33b6f3f55bdb40217dd53')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.1/tinct-plugin-wob_0.0.1_Linux_armv7.tar.gz")
-sha256sums_armv7h=('8872f43b4cfecc162fb1ef7cc531bc1f92b62e5a5c4feb6198cd6740fe91922b')
+sha256sums_armv7h=('dd43a8be87c26d8fc0c383f618c2a243086a7ca1231f77f59d8044705f4ecb2a')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.1/tinct-plugin-wob_0.0.1_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('83a6cbc1677c77cd3328863626fc6e4508aacdd5033787a96084c68df4d4fada')
+sha256sums_x86_64=('95bcca5ad92596ab50c10f91736be422670fa6a315c90d2fe19748b27c74fa69')
 
 package() {
   # bin
@@ -26,4 +26,8 @@ package() {
 
   # license
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/tinct-plugin-wob/LICENSE"
+
+  # sbom
+  if [ -f *.sbom.json ]; then
+  install -Dm644 *.sbom.json "${pkgdir}/usr/share/doc/tinct-plugin-wob/sbom.json"
 }
