@@ -4,7 +4,7 @@
 # Maintainer: Thomas E. Hansen <thomas-e-hansen@teh6.eu>
 
 pkgname=chez-scheme
-pkgver=10.2.0
+pkgver=10.3.0
 pkgrel=1
 pkgdesc="Compiler and run-time system for the language of the Revised^6 Report on Scheme (R6RS), with numerous extensions."
 arch=(i686 x86_64 aarch64)
@@ -14,7 +14,7 @@ license=('Apache-2.0')
 depends=('ncurses' 'libx11' 'libutil-linux')
 conflicts=('petite-chez-scheme' 'chez-scheme-git')
 source=("https://github.com/cisco/ChezScheme/releases/download/v$pkgver/csv$pkgver.tar.gz")
-sha256sums=('b795916d4cfed59240c5f44b1b507a8657efd28e62e72e134d03486e9f3e374a')
+sha256sums=('d237d9874c6e8b0ccf7758daa8286a6e825528b13ce3b2bca56eb1f73cddbc2c')
 _archivename=csv$pkgver
 
 build() {

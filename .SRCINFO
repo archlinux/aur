@@ -1,6 +1,6 @@
 pkgbase = chez-scheme
 	pkgdesc = Compiler and run-time system for the language of the Revised^6 Report on Scheme (R6RS), with numerous extensions.
-	pkgver = 10.2.0
+	pkgver = 10.3.0
 	pkgrel = 1
 	url = https://github.com/cisco/ChezScheme
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = chez-scheme
 	depends = libutil-linux
 	conflicts = petite-chez-scheme
 	conflicts = chez-scheme-git
-	source = https://github.com/cisco/ChezScheme/releases/download/v10.2.0/csv10.2.0.tar.gz
-	sha256sums = b795916d4cfed59240c5f44b1b507a8657efd28e62e72e134d03486e9f3e374a
+	source = https://github.com/cisco/ChezScheme/releases/download/v10.3.0/csv10.3.0.tar.gz
+	sha256sums = d237d9874c6e8b0ccf7758daa8286a6e825528b13ce3b2bca56eb1f73cddbc2c
 
 pkgname = chez-scheme
