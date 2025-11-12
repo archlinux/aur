@@ -1,6 +1,6 @@
 # Maintainer: Tom McKeesick <tmck01@gmail.com>
 pkgname=pokesay-bin
-pkgver=0.18.2
+pkgver=0.18.3
 pkgrel=1
 pkgdesc="Print pokemon in the CLI! An adaptation of the classic 'cowsay'"
 url="https://github.com/tmck-code/pokesay"
@@ -9,7 +9,7 @@ arch=("x86_64")
 provides=("pokesay")
 conflicts=("pokesay")
 source=("https://github.com/tmck-code/pokesay/releases/download/v$pkgver/pokesay-$pkgver-linux-amd64.tar.gz")
-sha256sums=("726bfa7e6f8b105f96992cbc4026252a1bab92a95466de5e764c5a2afb5473a1")
+sha256sums=("2b1dd858ddef81c57c6cb8c4d552147fae276f0ca6efce609fbf6a15ee320119")
 
 package() {
     install -Dm755 "pokesay-$pkgver-linux-amd64" "$pkgdir/usr/bin/pokesay"

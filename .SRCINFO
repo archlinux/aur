@@ -1,13 +1,13 @@
 pkgbase = pokesay-bin
 	pkgdesc = Print pokemon in the CLI! An adaptation of the classic 'cowsay'
-	pkgver = 0.18.2
+	pkgver = 0.18.3
 	pkgrel = 1
 	url = https://github.com/tmck-code/pokesay
 	arch = x86_64
 	license = BSD-3-Clause
 	provides = pokesay
 	conflicts = pokesay
-	source = https://github.com/tmck-code/pokesay/releases/download/v0.18.2/pokesay-0.18.2-linux-amd64.tar.gz
-	sha256sums = 726bfa7e6f8b105f96992cbc4026252a1bab92a95466de5e764c5a2afb5473a1
+	source = https://github.com/tmck-code/pokesay/releases/download/v0.18.3/pokesay-0.18.3-linux-amd64.tar.gz
+	sha256sums = 2b1dd858ddef81c57c6cb8c4d552147fae276f0ca6efce609fbf6a15ee320119
 
 pkgname = pokesay-bin
