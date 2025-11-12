@@ -2,7 +2,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='tinct-plugin-templater-bin'
-pkgver=0.0.3
+pkgver=0.0.6
 pkgrel=1
 pkgdesc='Template-based output plugin for Tinct'
 url='https://github.com/jmylchreest/tinct'
@@ -10,19 +10,21 @@ arch=('aarch64' 'armv7h' 'x86_64')
 license=('MIT')
 provides=('tinct')
 conflicts=('tinct')
+depends=('tinct-bin')
+install=tinct-plugin-templater.install
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.3/tinct-plugin-templater_0.0.3_Linux_arm64.tar.gz")
-sha256sums_aarch64=('0e7e67d129e7adeef4c60666c9180475b91a246c601f49ac2baa66cdb4cb8936')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.6/tinct-plugin-templater_0.0.6_Linux_arm64.tar.gz")
+sha256sums_aarch64=('a8cf1ab883290543484bde622be2783a0391109f26e3f258eed0aa1f78fa674a')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.3/tinct-plugin-templater_0.0.3_Linux_armv7.tar.gz")
-sha256sums_armv7h=('69810494aa56045a286216a3081765d2160a6fe3df9caafea43a79310ad23f6d')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.6/tinct-plugin-templater_0.0.6_Linux_armv7.tar.gz")
+sha256sums_armv7h=('86f418e13902a6b9769033028c36286d26d24c77172708062f2304e1a0f4bdaa')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.3/tinct-plugin-templater_0.0.3_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('82f37ecf8ac557b35ff3798aa6d55c3753bed0de99ba8c22a8d589859743ccda')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.6/tinct-plugin-templater_0.0.6_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('c2d43d46d541e3b8cc8153a73788de00fa75b9624e45e5e593b0d07bbf09b322')
 
 package() {
   # bin
-  install -Dm755 "./templater" "${pkgdir}/usr/bin/tinct-plugin-templater"
+  install -Dm755 "./tinct-plugin-templater" "${pkgdir}/usr/bin/tinct-plugin-templater"
 
   # license
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/tinct-plugin-templater/LICENSE"
