@@ -8,7 +8,7 @@ _itkver=5.4.0
 _vtkver=9.3.1
 pkgname=itk-snap
 pkgver=4.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A software application used to segment structures in 3D medical images"
 arch=('x86_64')
 url="https://www.itksnap.org"
@@ -31,13 +31,14 @@ depends=(
   zlib
 )
 makedepends=(
-  vulkan-headers
   cmake
   eigen
   fftw
   gcc14
   gendesk
   git
+  ninja
+  vulkan-headers
 )
 options=(!emptydirs)
 source=(
@@ -65,11 +66,12 @@ prepare() {
 }
 
 build() {
+  # build with gcc14
+  export CC=gcc-14
+  export CXX=g++-14
   # build itk
   # building with system googletest is not working
   echo "building itk..."
-  CC=gcc-14 \
-  CXX=g++-14 \
   cmake \
     -B ${srcdir}/build-itk \
     -DBUILD_EXAMPLES=OFF \
@@ -79,13 +81,12 @@ build() {
     -DITK_USE_SYSTEM_LIBRARIES=OFF \
     -DITK_USE_SYSTEM_GOOGLETEST=OFF \
     -DModule_MorphologicalContourInterpolation=ON \
+    -GNinja \
     -S ${srcdir}/ITK-${_itkver}
-  make -C ${srcdir}/build-itk
+  cmake --build ${srcdir}/build-itk
 
   # build vtk with qt6
   echo "building vtk..."
-  CC=gcc-14 \
-  CXX=g++-14 \
   cmake \
     -B ${srcdir}/build-vtk \
     -DBUILD_SHARED_LIBS=OFF \
@@ -97,13 +98,12 @@ build() {
     -DVTK_MODULE_ENABLE_VTK_GUISupportQtSQL=NO \
     -DVTK_MODULE_ENABLE_VTK_RenderingExternal=YES \
     -DVTK_QT_VERSION=6 \
+    -GNinja \
     -S ${srcdir}/VTK-${_vtkver}
-  make -C ${srcdir}/build-vtk
+  cmake --build ${srcdir}/build-vtk
 
   # build itk-snap
   echo "building itk-snap..."
-  CC=gcc-14 \
-  CXX=g++-14 \
   cmake \
     -B ${srcdir}/build \
     -DBUILD_TESTING=OFF \
@@ -113,23 +113,14 @@ build() {
     -DITK_DIR=${srcdir}/build-itk \
     -DVTK_DIR=${srcdir}/build-vtk \
     -S ${pkgname}-${pkgver}
-  make -C ${srcdir}/build
-  make -C ${srcdir}/build package
+  cmake --build ${srcdir}/build
 }
 
 package() {
-  # make install is not working in a clean chroot
-  # make DESTDIR=${pkgdir} -C ${srcdir}/build install
-
-  # we install all the files manaully by extracting the tarball to destdir
-  mkdir -p ${srcdir}/destdir
-  tar xfv ${srcdir}/build/*.tar.gz -C ${srcdir}/destdir --strip-components 1
-  cp -r ${srcdir}/destdir ${pkgdir}/usr
-
+  DESTDIR=${pkgdir} cmake --install ${srcdir}/build
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/GUI/Qt/Resources/logo_square.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   # fix translations files
   mv -v "${pkgdir}/usr/share/qt6/translations" "${pkgdir}/usr/lib/snap-${pkgver}-beta2"
-#  rm -rfv "${pkgdir}/usr/share/qt6"
 }
 # vim:set ts=2 sw=2 et:
