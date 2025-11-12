@@ -13,6 +13,7 @@ post_install() {
     chown -R rundeck:rundeck /var/lib/rundeck
     chown -R rundeck:rundeck /var/log/rundeck
     chown -R rundeck:rundeck /etc/rundeck
+    ln -s /usr/share/java/postgresql-jdbc/postgresql-jdbc.jar /var/lib/rundeck/libext/postgresql-jdbc.jar
 }
 
 post_upgrade() {

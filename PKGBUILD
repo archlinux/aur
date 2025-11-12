@@ -1,12 +1,12 @@
 # Maintainer: Automne von Einzbern <archlinux@automne.me>
 pkgname=rundeck-community
-pkgver=5.13.0.20250625
+pkgver=5.17.0.20251103
 pkgrel=1
 pkgdesc="Rundeck is an open source automation service with a web console, command line tools and a WebAPI"
 arch=('any')
 url="https://www.rundeck.com/open-source"
 license=('Apache')
-depends=('java-runtime>=11')
+depends=('java-runtime>=11' 'postgresql-jdbc')
 makedepends=()
 backup=(
     'etc/rundeck/admin.aclpolicy'
@@ -22,11 +22,11 @@ backup=(
 options=('!strip')
 install=rundeck.install
 source=(
-        "rundeck-community-${pkgver}-${pkgrel}.noarch.rpm::https://packagecloud.io/pagerduty/rundeck/packages/rpm_any/rpm_any/rundeck-5.13.0.20250625-1.noarch.rpm/download.rpm?distro_version_id=227"
+        "rundeck-community-${pkgver}-${pkgrel}.noarch.rpm::https://packagecloud.io/pagerduty/rundeck/packages/rpm_any/rpm_any/rundeck-${pkgver}-1.noarch.rpm/download.rpm?distro_version_id=227"
         "rundeckd.service"
 )
 sha256sums=(
-        'b84658a5114475838f14d15a0b5ad46e188c7752c9c0b3ca02fa5ec8683eb463'
+        'c7852805c7e95cf2cc33f2e4a43da8ea9a2d0bd9d0f811973d71ce70b5114409'
         'd0fd0c817aa86e1fe43c1d1a5a71465624916ca54fb7405cb09e6b01ac31cca1'
 )
 
