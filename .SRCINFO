@@ -1,13 +1,13 @@
 pkgbase = cljfmt-bin
 	pkgdesc = A formatter for Clojure code
-	pkgver = 0.15.3
+	pkgver = 0.15.4
 	pkgrel = 1
 	url = https://github.com/weavejester/cljfmt
 	arch = x86_64
 	license = EPL-1.0
 	provides = cljfmt
 	conflicts = cljfmt
-	source = https://github.com/weavejester/cljfmt/releases/download/0.15.3/cljfmt-0.15.3-linux-amd64-static.tar.gz
-	sha256sums = 56476473d183c7a37a662cc3aeb204ce08d648d2e8f3669bbc9960665bc076fe
+	source = https://github.com/weavejester/cljfmt/releases/download/0.15.4/cljfmt-0.15.4-linux-amd64-static.tar.gz
+	sha256sums = d1b47d79012d8389a8bcb2ba14e570331e6cae6a9b7bc1c093ead3a2e423bedd
 
 pkgname = cljfmt-bin
