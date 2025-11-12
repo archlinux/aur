@@ -6,7 +6,7 @@
 # Maintainer: misaka10987 <misaka10987@outlook.com>
 pkgname=inkscape-appimg
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc=""
 arch=('x86_64')
