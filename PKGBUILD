@@ -19,7 +19,7 @@ source=("https://codeberg.org/VintageTechie/cosmic-updates/releases/download/v${
 sha256sums=('8ec64193f96a7eefec8d3ecd1fd328ebde8ec2454d59b24c089ddcb2f8fa7f57')
 
 package() {
-    cd "$srcdir"
+    cd "$srcdir/cosmic-updates"
     
     # Install binary
     install -Dm755 "cosmic-updates" \
