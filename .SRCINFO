@@ -1,11 +1,25 @@
 pkgbase = splayer
 	pkgdesc = Splayer | A minimalist music player
 	pkgver = 3.0.0_beta.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/imsyy/SPlayer
 	arch = x86_64
 	arch = aarch64
 	license = AGPL-3.0-only
+	depends = c-ares
+	depends = ffmpeg
+	depends = gtk3
+	depends = libevent
+	depends = libvpx
+	depends = libxslt
+	depends = libxss
+	depends = minizip
+	depends = nss
+	depends = re2
+	depends = snappy
+	depends = libnotify
+	optdepends = http-parser: required by some Electron builds
+	optdepends = libappindicator: for system tray icon support
 	provides = splayer=3.0.0_beta.4
 	conflicts = splayer
 	noextract = splayer-3.0.0-beta.4-x64.pacman

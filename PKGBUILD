@@ -4,14 +4,31 @@
 _pkgname=splayer
 pkgname=splayer
 pkgver=3.0.0_beta.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Splayer | A minimalist music player"
 arch=('x86_64' 'aarch64')
 url="https://github.com/imsyy/SPlayer"
 license=("AGPL-3.0-only")
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-depends=()
+depends=(
+  'c-ares'
+  'ffmpeg'
+  'gtk3'
+  'libevent'
+  'libvpx'
+  'libxslt'
+  'libxss'
+  'minizip'
+  'nss'
+  're2'
+  'snappy'
+  'libnotify'
+)
+optdepends=(
+  'http-parser: required by some Electron builds'
+  'libappindicator: for system tray icon support'
+)
 options=(!strip !debug)
 
 if [ "$CARCH" = "x86_64" ]; then
