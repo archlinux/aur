@@ -4,7 +4,7 @@
 pkgname=python-flake8-quotes
 _pkgname=flake8-quotes
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Flake8 lint for quotes"
 arch=('any')
 url="https://github.com/zheller/${_pkgname}"
@@ -22,7 +22,7 @@ build() {
 
 check() {
     cd "${_pkgname}-${pkgver}"
-    python -m pytest -k 'not test_stdin'
+    PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest -k 'not test_stdin'
 }
 
 package() {
