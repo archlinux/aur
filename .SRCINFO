@@ -1,6 +1,6 @@
 pkgbase = librius
 	pkgdesc = A fast, minimalist CLI to manage your personal book collection — built in Rust.
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/umpire274/librius
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = librius
 	makedepends = rust
 	makedepends = cargo
 	depends = sqlite
-	source = librius-0.5.0.tar.gz::https://github.com/umpire274/librius/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = f3403111a75eb88ebf8540086779f3db4bc4c549b4dcd71e984be7bf045c41c9
+	source = librius-0.5.1.tar.gz::https://github.com/umpire274/librius/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = 6bb8014ee7fcb36431f12a54e8880995fc9394901b234d0ca2e64df347a88a7c
 
 pkgname = librius
