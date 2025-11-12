@@ -1,0 +1,19 @@
+pkgbase = tinct-plugin-wob-bin
+	pkgdesc = Wob (Wayland Overlay Bar) output plugin for Tinct
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/jmylchreest/tinct
+	license = MIT
+	conflicts = tinct
+	provides = tinct
+	arch = aarch64
+	source_aarch64 = https://github.com/jmylchreest/tinct/releases/download/v0.0.3/tinct-plugin-wob_0.0.3_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 93609ef3de3ee3564cfb55a1f7cbd7ae42e1dab65d061b6de90f5883957a038b
+	arch = armv7h
+	source_armv7h = https://github.com/jmylchreest/tinct/releases/download/v0.0.3/tinct-plugin-wob_0.0.3_Linux_armv7.tar.gz
+	sha256sums_armv7h = d812ad479cc9eebcddb2118ec567867ac5e0037bab1089b2f0af1b3aedae22cf
+	arch = x86_64
+	source_x86_64 = https://github.com/jmylchreest/tinct/releases/download/v0.0.3/tinct-plugin-wob_0.0.3_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = ee642b3587a6b6a6de8b6d2532b43c69d989394bb5a60b09a9b9cee8dce2ac6d
+	
+pkgname = tinct-plugin-wob-bin
