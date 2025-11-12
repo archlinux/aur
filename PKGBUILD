@@ -11,7 +11,7 @@ license=("MIT")
 depends=('python')
 makedepends=('cython' 'python-build' 'python-installer' 'cmake' 'ninja' 'python-scikit-build-core')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=()
+sha256sums=(29bc178e6df55b8fa5807676f4497a1be3c4e18379654978b132b19ffbcc3e3c)
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
