@@ -5,8 +5,8 @@
 
 pkgname=openafs-modules
 _srcname=openafs
-pkgver=1.8.14pre1
-pkgrel=2
+pkgver=1.8.14
+pkgrel=1
 pkgdesc="Kernel module for OpenAFS"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -16,9 +16,9 @@ makedepends=('libelf' 'linux-headers' 'openafs>=1.8.12.1-2')
 conflicts=('openafs-features-libafs' 'openafs<1.6.6-2')
 options=(!emptydirs)
 install=openafs-modules.install
-source=(http://openafs.org/dl/openafs/candidate/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
+source=(http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
         0001-Linux-Use-struct-kiocb-for-aops-write_begin-end.patch)
-sha256sums=('9e9e59ad4e94c8aba8e51522db75ff792803ad297afda32a3a7c526dac3d0b8d'
+sha256sums=('ab53692b975edd8eeda880b4bc3bc00cddd34fd0f315a9b463f6797d20c63456'
             '1c0e21470d7c6287aec9c45c9dcca6c01f3b660531bbcac753621cb12088ced1')
 
 # Heuristic to determine version of installed kernel
