@@ -2,7 +2,7 @@ pkgbase = cosmic-updates-git
 	pkgdesc = Universal package update checker applet for COSMIC Desktop with AUR support (git)
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://codeberg.org/VintageTechie/cosmic-updates
+	url = https://github.com/VintageTechie/cosmic-updates
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -16,7 +16,7 @@ pkgbase = cosmic-updates-git
 	provides = cosmic-updates
 	conflicts = cosmic-updates
 	conflicts = cosmic-updates-bin
-	source = git+https://codeberg.org/VintageTechie/cosmic-updates.git
+	source = git+https://github.com/VintageTechie/cosmic-updates.git
 	sha256sums = SKIP
 
 pkgname = cosmic-updates-git

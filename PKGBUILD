@@ -4,7 +4,7 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="Universal package update checker applet for COSMIC Desktop with AUR support (git)"
 arch=('x86_64')
-url="https://codeberg.org/VintageTechie/cosmic-updates"
+url="https://github.com/VintageTechie/cosmic-updates"
 license=('MIT')
 depends=('cosmic-panel')
 makedepends=('git' 'rust' 'cargo')
@@ -16,7 +16,7 @@ optdepends=(
 )
 provides=('cosmic-updates')
 conflicts=('cosmic-updates' 'cosmic-updates-bin')
-source=("git+https://codeberg.org/VintageTechie/cosmic-updates.git")
+source=("git+https://github.com/VintageTechie/cosmic-updates.git")
 sha256sums=('SKIP')
 
 pkgver() {
