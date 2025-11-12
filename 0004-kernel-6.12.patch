@@ -1,81 +1,101 @@
-drm: Remove struct drm_mode_config_funcs.output_poll_changed
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=446d0f4849b101bfc35c0d00835c3e3a4804616d
+Based on https://gist.github.com/joanbm/a6d3f7f873a60dec0aa4a734c0f1d64e
+with minor changes for 525.147.05
 
-Patch found here:
-https://github.com/NVIDIA/open-gpu-kernel-modules/issues/708#issuecomment-2377038258
+Note that the fix requires enabling DRM kernel mode setting
+(add the `nvidia-drm.modeset=1` parameter to the kernel command line).
 
-Altered somewhat to work with 525.147.05
-
-diff --git a/conftest.sh b/conftest.sh
-index d24d308..d1a51b0 100755
---- a/conftest.sh
-+++ b/conftest.sh
-@@ -5759,6 +5759,29 @@ compile_test() {
-             compile_check_conftest "$CODE" "NV_DRM_DRIVER_HAS_DUMB_DESTROY" "" "types"
-         ;;
- 
-+        drm_output_poll_changed)
-+            #
-+            # Determine whether drm_mode_config_funcs.output_poll_changed
-+            # callback is present
-+            #
-+            # Removed by commit 446d0f4849b1 ("drm: Remove struct
-+            # drm_mode_config_funcs.output_poll_changed") in v6.12. Hotplug
-+            # event support is handled through the fbdev emulation interface
-+            # going forward.
-+            #
-+            CODE="
-+            #if defined(NV_DRM_DRM_MODE_CONFIG_H_PRESENT)
-+            #include <drm/drm_mode_config.h>
-+            #else
-+            #include <drm/drm_crtc.h>
-+            #endif
-+            int conftest_drm_output_poll_changed_available(void) {
-+                return offsetof(struct drm_mode_config_funcs, output_poll_changed);
-+            }"
-+
-+            compile_check_conftest "$CODE" "NV_DRM_OUTPUT_POLL_CHANGED_PRESENT" "" "types"
-+         ;;
-+
-         # When adding a new conftest entry, please use the correct format for
-         # specifying the relevant upstream Linux kernel commit.
-         #
 diff --git a/nvidia-drm/nvidia-drm-drv.c b/nvidia-drm/nvidia-drm-drv.c
-index 6563e9f..4280d1e 100644
+index 6563e9f..f64465c 100644
 --- a/nvidia-drm/nvidia-drm-drv.c
 +++ b/nvidia-drm/nvidia-drm-drv.c
-@@ -105,6 +105,7 @@ static const char* nv_get_input_colorspace_name(
- 
- #if defined(NV_DRM_ATOMIC_MODESET_AVAILABLE)
- 
-+#if defined(NV_DRM_OUTPUT_POLL_CHANGED_PRESENT)
- static void nv_drm_output_poll_changed(struct drm_device *dev)
- {
-     struct drm_connector *connector = NULL;
-@@ -148,6 +149,7 @@ static void nv_drm_output_poll_changed(struct drm_device *dev)
-     nv_drm_connector_list_iter_end(&conn_iter);
+@@ -84,6 +84,11 @@
+ #include <drm/drm_atomic_helper.h>
  #endif
- }
-+#endif /* NV_DRM_OUTPUT_POLL_CHANGED_PRESENT */
  
- static struct drm_framebuffer *nv_drm_framebuffer_create(
-     struct drm_device *dev,
-@@ -185,7 +187,9 @@ static const struct drm_mode_config_funcs nv_mode_config_funcs = {
++#include <linux/version.h>
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 12, 0)
++#include <drm/drm_client.h>
++#endif
++
+ static struct nv_drm_device *dev_list = NULL;
+ 
+ static const char* nv_get_input_colorspace_name(
+@@ -185,7 +190,12 @@ static const struct drm_mode_config_funcs nv_mode_config_funcs = {
      .atomic_check  = nv_drm_atomic_check,
      .atomic_commit = nv_drm_atomic_commit,
  
-+    #if defined(NV_DRM_OUTPUT_POLL_CHANGED_PRESENT)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 12, 0)
++    // Rel. commit. "drm: Remove struct drm_mode_config_funcs.output_poll_changed" (Thomas Zimmermann, 12 Aug 2024)
++    // Replace this callback with a DRM client's hotplug callback.
++    // This is required for e.g. /sys/class/drm/card*/modes to work.
      .output_poll_changed = nv_drm_output_poll_changed,
-+    #endif
++#endif
  };
  
  static void nv_drm_event_callback(const struct NvKmsKapiEvent *event)
-diff --git a/nvidia-drm/nvidia-drm.Kbuild b/nvidia-drm/nvidia-drm.Kbuild
-index 879c03f..73f21b7 100644
---- a/nvidia-drm/nvidia-drm.Kbuild
-+++ b/nvidia-drm/nvidia-drm.Kbuild
-@@ -128,3 +128,4 @@ NV_CONFTEST_TYPE_COMPILE_TESTS += reservation_object_reserve_shared_has_num_fenc
- NV_CONFTEST_TYPE_COMPILE_TESTS += drm_connector_has_override_edid
- NV_CONFTEST_TYPE_COMPILE_TESTS += vm_area_struct_has_const_vm_flags
- NV_CONFTEST_TYPE_COMPILE_TESTS += drm_driver_has_dumb_destroy
-+NV_CONFTEST_TYPE_COMPILE_TESTS += drm_output_poll_changed
+@@ -784,6 +794,10 @@ static const struct file_operations nv_drm_fops = {
+     .read           = drm_read,
+ 
+     .llseek         = noop_llseek,
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 12, 0)
++    // Rel. commit. "fs: move FMODE_UNSIGNED_OFFSET to fop_flags" (Christian Brauner, 9 Aug 2024)
++    .fop_flags      = FOP_UNSIGNED_OFFSET,
++#endif
+ };
+ 
+ static const struct drm_ioctl_desc nv_drm_ioctls[] = {
+@@ -942,7 +956,18 @@ static void nv_drm_update_drm_driver_features(void)
+ #endif /* NV_DRM_ATOMIC_MODESET_AVAILABLE */
+ }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 12, 0)
++static int hotplug_helper_client_hotplug(struct drm_client_dev *client)
++{
++    nv_drm_output_poll_changed(client->dev);
++    return 0;
++}
+ 
++static const struct drm_client_funcs nv_hotplug_helper_client_funcs = {
++    .owner      = THIS_MODULE,
++    .hotplug    = hotplug_helper_client_hotplug,
++};
++#endif
+ 
+ /*
+  * Helper function for allocate/register DRM device for given NVIDIA GPU ID.
+@@ -998,6 +1023,20 @@ static void nv_drm_register_drm_device(const nv_gpu_info_t *gpu_info)
+         goto failed_drm_register;
+     }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 12, 0)
++    /* Register a DRM client for receiving hotplug events */
++    struct drm_client_dev *client = kzalloc(sizeof(*client), GFP_KERNEL);
++    if (client == NULL || drm_client_init(dev, client,
++        "nv-hotplug-helper", &nv_hotplug_helper_client_funcs)) {
++        printk(KERN_WARNING "Failed to initialize the nv-hotplug-helper DRM client"
++            " (ensure DRM kernel mode setting is enabled via nvidia-drm.modeset=1).\n");
++        goto failed_drm_client_init;
++    }
++
++    drm_client_register(client);
++    pr_info("Registered the nv-hotplug-helper DRM client.\n");
++#endif
++
+     /* Add NVIDIA-DRM device into list */
+ 
+     nv_dev->next = dev_list;
+@@ -1005,6 +1044,14 @@ static void nv_drm_register_drm_device(const nv_gpu_info_t *gpu_info)
+ 
+     return; /* Success */
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 12, 0)
++failed_drm_client_init:
++
++    kfree(client);
++    drm_dev_unregister(dev);
++
++#endif
++
+ failed_drm_register:
+ 
+     nv_drm_dev_free(dev);
