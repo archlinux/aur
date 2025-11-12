@@ -1,0 +1,5 @@
+[xtxf-bin]
+source = "github"
+github = "charlesrocket/xtxf"
+use_latest_release = true
+prefix = "v"
