@@ -2,8 +2,8 @@
 
 pkgname=python-vpython
 _name=${pkgname#python-}
-pkgver=7.6.4
-pkgrel=2
+pkgver=7.6.5
+pkgrel=1
 pkgdesc='VPython for Jupyter Notebook'
 arch=('any')
 url='https://pypi.org/project/vpython'
@@ -12,7 +12,7 @@ depends=('python')
 optdepends=()
 makedepends=('python-build' 'python-pdm' 'cython' 'python-setuptools-scm')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('162ed54db313e5f87f9704b13942d3a0c7ad2da88b287d3baeb46e0eba7ffccc')
+sha256sums=('26d0fe4c4f253c36a570ade3924cee2423b2feb5e6082ff5d5f2eac093e746df')
 
 
 build() {

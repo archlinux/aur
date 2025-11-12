@@ -1,6 +1,6 @@
 pkgbase = python-vpython
 	pkgdesc = VPython for Jupyter Notebook
-	pkgver = 7.6.4
+	pkgver = 7.6.5
 	pkgrel = 1
 	url = https://pypi.org/project/vpython
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-vpython
 	makedepends = cython
 	makedepends = python-setuptools-scm
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/v/vpython/vpython-7.6.4.tar.gz
-	sha256sums = 162ed54db313e5f87f9704b13942d3a0c7ad2da88b287d3baeb46e0eba7ffccc
+	source = https://files.pythonhosted.org/packages/source/v/vpython/vpython-7.6.5.tar.gz
+	sha256sums = 26d0fe4c4f253c36a570ade3924cee2423b2feb5e6082ff5d5f2eac093e746df
 
 pkgname = python-vpython
