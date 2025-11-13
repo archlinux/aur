@@ -27,7 +27,6 @@ build() {
 
 package() {
   cd "$srcdir/m8mouse"
-  DESTDIR="$pkgdir"
-  cmake --install build
+  DESTDIR="$pkgdir" cmake --install build
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
