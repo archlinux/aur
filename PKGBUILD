@@ -1,11 +1,12 @@
-# Maintainer: Gennadiy Mykhailiuta <gmykhailiuta@gmail.com>
-# Maintainer: Luna Jernberg <droidbittin@gmail.com>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Gennadiy Mykhailiuta <gmykhailiuta@gmail.com>
+# Contributor: Luna Jernberg <droidbittin@gmail.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Andreas Baumann <mail@andreasbaumann.cc>
  
 pkgname=thunderbird-esr-bin
 _pkgname=thunderbird
-pkgver=140.4.0
+pkgver=140.5.0
 pkgrel=1
 pkgdesc="Standalone Mail/News reader - binary version"
 arch=('x86_64' 'pentium4' 'i686')
@@ -39,11 +40,11 @@ source_i686=(
 
 sha512sums=('6813e1dfd43c67ad7517714988ac27e7fdfe4857c8e6612c165a8aa89fa013c5ab4f270c13945010422d3bda82a7b7cd5496eaa5cb5524f6b2fa1732e59fd737'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_x86_64=('d1d172a75045fad7477d147f74ffd702418fc3adde29301b63e93aeb7bd97628c191ffeabc186528f88270df3e8674e30a838e498bbccb5066ed282706d11242'
+sha512sums_x86_64=('caadb6279220e2b32bfc6d2146cfe80246535b672d14c99d09e3f1cf73e82178df67ca157a959a0be31d08bd34a9b6ee961d3c4db68dddf48cf12b0f315f202b'
                    'SKIP')
-sha512sums_pentium4=('aab4a13889ce4b9216134582061be371a7d019439e5c4a95cbe4340bb65d5acb9780905d76ba580a00e1f772c90a8409c0b4dd0f862879660585607139382dd7'
+sha512sums_pentium4=('7b17b947a08243d07e76dfe9d154ea24b5586b5d7b56a21b165ff63782a237b091512bc2ad39ab69ca9af7526493155d4e7e1dd1be6660a3a8c048a83a746762'
                      'SKIP')
-sha512sums_i686=('aab4a13889ce4b9216134582061be371a7d019439e5c4a95cbe4340bb65d5acb9780905d76ba580a00e1f772c90a8409c0b4dd0f862879660585607139382dd7'
+sha512sums_i686=('7b17b947a08243d07e76dfe9d154ea24b5586b5d7b56a21b165ff63782a237b091512bc2ad39ab69ca9af7526493155d4e7e1dd1be6660a3a8c048a83a746762'
                  'SKIP')
 
 validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>
