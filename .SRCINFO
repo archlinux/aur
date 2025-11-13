@@ -12,6 +12,6 @@ pkgbase = ddhx-git
 	provides = ddhx
 	conflicts = ddhx
 	source = git+https://github.com/dd86k/ddhx
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = ddhx-git

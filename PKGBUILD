@@ -1,8 +1,13 @@
+#
+# PKGBUILD for ddhx-git
+#
 # Maintainer: Uffe Jakobsen: uffe _.at._ uffe _.dot._ org
 # Contributer: dax <dev@dax.moe>
+#
+
 pkgname=ddhx-git
 _pkgname=ddhx
-pkgver=v0.7.2.r2.g1aa0572
+pkgver=v0.7.2.r4.g7e60ce5
 pkgrel=1
 pkgdesc="Console hexadecimal file viewer"
 arch=('x86_64')
@@ -13,7 +18,7 @@ makedepends=('git' 'dub' 'dmd')
 provides=("ddhx")
 conflicts=("ddhx")
 source=('git+https://github.com/dd86k/ddhx')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   #cd "${srcdir}/${_pkgname}-${_pkgver}"
@@ -35,3 +40,7 @@ package() {
 	#install -D -m 0644 docs/ddhx.1 "${pkgdir}/usr/share/man/man1/ddhx.1"
 	#install -D -m 0644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 }
+
+#
+# EOF
+#
