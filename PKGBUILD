@@ -2,28 +2,44 @@
 # Contributor: matthias.lisin
 
 pkgname="mockery"
-pkgver=3.5.5
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="A mock code autogenerator for Go"
-arch=('aarch64' 'x86_64')
+arch=(
+  'aarch64'
+  'x86_64'
+ )
 url="https://vektra.github.io/mockery"
 _url="https://github.com/vektra/${pkgname}"
-license=('BSD-3-Clause')
-depends=('glibc')
-makedepends=('go')
-provides=('golang-mockery')
-conflicts=('golang-mockery')
-replaces=('golang-mockery')
+license=(
+  'BSD-3-Clause'
+)
+depends=(
+  'glibc'
+)
+makedepends=(
+  'go'
+)
+provides=(
+  'golang-mockery'
+)
+conflicts=(
+  'golang-mockery'
+)
+replaces=(
+  'golang-mockery'
+)
 _pkgsrc="${_url##*/}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ece14262f8aa0a7075c9c03034002026d815beeb0b62235c5ae9375e3bb47e60')
+source=(
+  "${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
+)
+sha256sums=('4587d74a8dcba1fa36b504b0ac4449126e1478c4bed080e308e1e674f3540e46')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
-  go get -v ./...
-  chmod -R ug+Xwr "${GOMODCACHE}"
+  go get -modcacherw -v ./...
 
   mkdir -p "build" "completions"
 }
