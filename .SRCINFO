@@ -1,7 +1,7 @@
 pkgbase = ezchlog-git
 	pkgdesc = Easy git branch friendly changelogs
-	pkgver = v1.0.2.r0.22d2311
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://gitlab.com/jrdasm/ezchlog
 	arch = x86_64
 	arch = armv7h
