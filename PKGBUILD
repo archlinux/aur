@@ -8,7 +8,7 @@ _itkver=5.4.0
 _vtkver=9.3.1
 pkgname=itk-snap
 pkgver=4.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A software application used to segment structures in 3D medical images"
 arch=('x86_64')
 url="https://www.itksnap.org"
@@ -112,6 +112,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DITK_DIR=${srcdir}/build-itk \
     -DVTK_DIR=${srcdir}/build-vtk \
+    -GNinja \
     -S ${pkgname}-${pkgver}
   cmake --build ${srcdir}/build
 }
