@@ -4,7 +4,7 @@
 _mayaver=2026
 
 pkgname=maya-arnold
-pkgver=5.5.4.2
+pkgver=5.5.5
 pkgrel=1
 pkgdesc='Autodesk Maya Arnold Renderer Plugin'
 arch=('x86_64')
@@ -15,19 +15,25 @@ optdepends=('maya-usd: Universal scene description support'
             'maya-bifrost: Bifrost effects support')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from Autodesk.com')
-source=("manual://package.zip")
-b2sums=('09db5122d27464534e53baebcbcbb7e29f85046421c6038d11bec7eb2ac00ab13267e737aff46f389ecd6fd2f4b5efbe8b4dcfd492adf82d504e780d9c3a0d12')
+source=("manual://MtoA-${pkgver}-linux-${_mayaver}.run")
+b2sums=('2c8237f47e28e134261a2b59f1116530dab3c18bb97d40c59b3a1faacdb34bd9dcd2f8085ede51b934c6d729f92e8982a8a3258b15a152df7055e1aa4fecb7bd')
 
 options=(!strip)
 
 prepare() {
-    sed -i "s|any .|any /usr/autodesk/maya${_mayaver}/plug-ins/arnold|g" mtoa.mod
+    rm -Rf extracted
+    chmod +x ./MtoA-${pkgver}-linux-${_mayaver}.run
+    ./MtoA-${pkgver}-linux-${_mayaver}.run --tar xvf
+    mkdir extracted
+    echo 'Extracting zip...'
+    bsdtar -xf *.zip --directory extracted
+    sed -i "s|any .|any /usr/autodesk/maya${_mayaver}/plug-ins/arnold|g" extracted/mtoa.mod
+
 }
 
 package() {
-    unlink package.zip
     mkdir -p "$pkgdir/usr/autodesk/maya${_mayaver}/"{modules,plug-ins/arnold}
 
-    mv mtoa.mod "$pkgdir/usr/autodesk/maya${_mayaver}/modules/"
-    mv * "$pkgdir/usr/autodesk/maya${_mayaver}/plug-ins/arnold/"
+    mv extracted/mtoa.mod "$pkgdir/usr/autodesk/maya${_mayaver}/modules/"
+    mv extracted/* "$pkgdir/usr/autodesk/maya${_mayaver}/plug-ins/arnold/"
 }
