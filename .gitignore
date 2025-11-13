@@ -1,4 +1,4 @@
-gst-video-thumbnailer/
+gst-thumbnailers/
 pkg/
 src/
 *.tar.zst
