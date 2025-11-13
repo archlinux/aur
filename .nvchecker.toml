@@ -1,0 +1,5 @@
+[zlint-bin]
+source = "github"
+github = "DonIsaac/zlint"
+use_latest_release = true
+prefix = "v"
