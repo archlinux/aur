@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/RAprogramm/logi-mx"
 license=('MIT')
 depends=('hidapi' 'systemd' 'gtk4' 'libadwaita' 'dbus')
-makedepends=('cargo' 'rust>=1.91')
+makedepends=('rustup')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RAprogramm/logi-mx/archive/v$pkgver.tar.gz")
 sha256sums=('9fcab19c8fc070ea53e174cf44b21989f3a0b4a7397cd323ef9e7523a15fc2b5')
 

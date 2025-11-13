@@ -5,8 +5,7 @@ pkgbase = logi-mx
 	url = https://github.com/RAprogramm/logi-mx
 	arch = x86_64
 	license = MIT
-	makedepends = cargo
-	makedepends = rust>=1.91
+	makedepends = rustup
 	depends = hidapi
 	depends = systemd
 	depends = gtk4
