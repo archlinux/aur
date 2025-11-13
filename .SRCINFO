@@ -1,5 +1,5 @@
 pkgbase = gst-video-thumbnailer
-	pkgdesc = A simple gstreamer thumbnailer written in Rust
+	pkgdesc = A simple gstreamer thumbnailer written in Rust (deprecated, use gst-thumbnailers instead)
 	pkgver = 0.1
 	pkgrel = 3
 	url = https://gitlab.gnome.org/sophie-h/gst-video-thumbnailer
