@@ -2,7 +2,7 @@
 
 pkgname=pragtical-git
 _pkgname=pragtical
-pkgver=3.7.0.1755059435
+pkgver=3.7.1.1762916552
 pkgrel=1
 pkgdesc='The practical and pragmatic code editor.'
 arch=('x86_64')
