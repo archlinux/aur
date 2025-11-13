@@ -1,13 +1,13 @@
 pkgbase = jmeter-plugins-manager
 	pkgdesc = Custom Plugins for Apache JMeter™
-	pkgver = 1.10
+	pkgver = 1.11
 	pkgrel = 1
 	url = http://jmeter-plugins.org/
 	arch = any
 	license = Apache
 	depends = jmeter>=3.0
 	options = !strip
-	source = jmeter-plugins-manager-1.10.jar::https://jmeter-plugins.org/get/
-	md5sums = a161fe2e5e6c0cad9f6f0f53135879f2
+	source = jmeter-plugins-manager-1.11.jar::https://jmeter-plugins.org/get/
+	md5sums = 6b9aa7744c17d1e35e87aaeb3d73821e
 
 pkgname = jmeter-plugins-manager

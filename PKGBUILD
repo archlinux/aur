@@ -2,7 +2,7 @@
 # Contributor: Nicolas Quiénot <niQo @ aur>
 
 pkgname=jmeter-plugins-manager
-pkgver=1.10
+pkgver=1.11
 pkgrel=1
 pkgdesc="Custom Plugins for Apache JMeter™"
 arch=(any)
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('jmeter>=3.0')
 options=(!strip)
 source=(${pkgname}-${pkgver}.jar::https://jmeter-plugins.org/get/)
-md5sums=('a161fe2e5e6c0cad9f6f0f53135879f2')
+md5sums=('6b9aa7744c17d1e35e87aaeb3d73821e')
 
 package() {
   install -Dm644 "${pkgname}-${pkgver}.jar" "${pkgdir}/opt/jmeter/lib/ext/${pkgname}-${pkgver}.jar"
