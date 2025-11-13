@@ -1,6 +1,6 @@
 # Maintainer: Thomas Ludwig <business at tludwig dot dev>
 
-pkgname=streamrip
+pkgname=streamrip-git
 pkgver=2.1.0
 pkgrel=1
 pkgdesc='A scriptable stream downloader for Qobuz, Tidal, Deezer and SoundCloud.'
