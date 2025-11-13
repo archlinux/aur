@@ -1,20 +1,23 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=invgamma
-_pkgver=1.1
+_pkgver=1.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=10
+pkgrel=1
 pkgdesc="The Inverse Gamma Distribution"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=('GPL-2.0-only')
+license=('MIT')
 depends=(
   r
 )
+optdepends=(
+  r-testthat
+)
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d47d0e0a48879a43e135e8e98f10ecee')
-b2sums=('0c20e9976c5d7aad339d6fd8162345e4f598421e6d991f728f80eedbcd1fc43d4a985d52e4a89ac6391694418959eeff9f16154b47ec1267ecbf7ebd139ff469')
+md5sums=('7edef60c90d4bbd2786b7c59f394f573')
+b2sums=('b4075f332e998357c70586e0117121d4d6a53e78908cf1c271359225b5ed1351685158ab590d6beb01a19cde9c26cb1681fff1d07bc399e2e40a66cce83e8e4b')
 
 build() {
   mkdir build
