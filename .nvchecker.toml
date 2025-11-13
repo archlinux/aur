@@ -1,0 +1,5 @@
+[workspace-bin]
+source = "github"
+github = "gaskam/workspace"
+use_latest_release = true
+prefix = "v"
