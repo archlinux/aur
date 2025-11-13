@@ -3,8 +3,8 @@
 _basename="zls"
 _pkgname="${_basename}-master"
 pkgname="${_pkgname}-bin"
-pkgver=0.16.0dev.3+1840a4b8
-pkgrel=2
+pkgver=0.16.0dev.26+8b2754ad
+pkgrel=1
 pkgdesc="A language server for Zig"
 arch=(
   'aarch64'
@@ -25,6 +25,14 @@ makedepends=(
   'jq'
   'minisign'
 )
+provides=(
+  "${_basename}=${pkgver}"
+  "${_pkgname}=${pkgver}"
+)
+conflicts=(
+  "${_basename}"
+  "${_pkgname}"
+)
 
 if   [ "${CARCH}" = 'aarch64'     ]; then _arch=aarch64;
 elif [ "${CARCH}" = 'armv7h'      ]; then _arch=arm;
@@ -36,36 +44,35 @@ elif [ "${CARCH}" = 'x86_64'      ]; then _arch=x86_64;
 else _arch=DUMMY;
 fi
 
-_zig_version="$(zig version | tr -d '\n' | jq -sRr @uri)"
-_json_index="$(curl -s "https://releases.zigtools.org/v1/zls/select-version?zig_version=${_zig_version}&compatibility=only-runtime")"
-_artifact_tarball="$(jq -r ".\"${_arch}-linux\".\"tarball\"" <<< "${_json_index}")"
-_artifact_shasum="$(jq -r ".\"${_arch}-linux\".\"shasum\"" <<< "${_json_index}")"
-_artifact_name="$(basename "${_artifact_tarball}")"
+prepare() {
+  local zig_version index_json artifact_tarball artifact_shasum artifact_filename
+  zig_version="$(zig version | tr -d '\n' | jq -sRr @uri)"
+  index_json="$(curl -s "https://releases.zigtools.org/v1/zls/select-version?zig_version=${zig_version}&compatibility=only-runtime")"
+  artifact_tarball="$(jq -r ".\"${_arch}-linux\".\"tarball\"" <<< "${index_json}")"
+  artifact_shasum="$(jq -r ".\"${_arch}-linux\".\"shasum\"" <<< "${index_json}")"
+  artifact_filename="$(basename "${artifact_tarball}")"
+  
+  cd "${srcdir}"
+  echo "  ==> Retrieving sources..."
+  echo "   -> Downloading ${artifact_filename}..."
+  curl -qgb "" -fLC - --retry 3 --retry-delay 3 -o "${artifact_filename}" "${artifact_tarball}"
+  echo "   -> Downloading ${artifact_filename}.minisig..."
+  curl -qgb "" -fLC - --retry 3 --retry-delay 3 -o "${artifact_filename}.minisig" "${artifact_tarball}.minisig"
 
-provides=(
-  "${_basename}=${pkgver}"
-  "${_pkgname}=${pkgver}"
-)
-conflicts=(
-  "${_basename}"
-  "${_pkgname}"
-)
-source=("${_artifact_tarball}"
-        "${_artifact_tarball}.minisig")
-sha256sums=("${_artifact_shasum}"
-            'SKIP')
+  echo "  ==> Validating source files with sha256sums..."
+  echo "${artifact_shasum}  ${artifact_filename}" | sha256sum -c -
 
-verify() {
+  echo "  ==> Validating source files with minisig..."
   # https://github.com/zigtools/release-worker?tab=readme-ov-file#build-artifacts
   local zls_minisign="RWR+9B91GBZ0zOjh6Lr17+zKf5BoSuFvrx2xSeDE57uIYvnKBGmMjOex"
-
   minisign -V \
     -P "${zls_minisign}" \
-    -m "${_artifact_name}"
-}
+    -m "${artifact_filename}"
 
-prepare() {
-  cd "${srcdir}"
+  echo "  ==> Extracting sources..."
+  echo "   -> Extracting ${artifact_filename} with bsdtar"
+  bsdtar -xf "${artifact_filename}"
+
   chmod +x ./"${_basename}"
 }
 

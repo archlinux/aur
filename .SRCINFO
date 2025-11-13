@@ -1,7 +1,7 @@
 pkgbase = zls-master-bin
 	pkgdesc = A language server for Zig
-	pkgver = 0.16.0dev.3+1840a4b8
-	pkgrel = 2
+	pkgver = 0.16.0dev.26+8b2754ad
+	pkgrel = 1
 	url = https://zigtools.org/zls
 	arch = aarch64
 	arch = armv7h
@@ -14,13 +14,9 @@ pkgbase = zls-master-bin
 	makedepends = jq
 	makedepends = minisign
 	depends = zig-master
-	provides = zls=0.16.0dev.3+1840a4b8
-	provides = zls-master=0.16.0dev.3+1840a4b8
+	provides = zls=0.16.0dev.26+8b2754ad
+	provides = zls-master=0.16.0dev.26+8b2754ad
 	conflicts = zls
 	conflicts = zls-master
-	source = https://builds.zigtools.org/zls-x86_64-linux-0.16.0-dev.3+1840a4b8.tar.xz
-	source = https://builds.zigtools.org/zls-x86_64-linux-0.16.0-dev.3+1840a4b8.tar.xz.minisig
-	sha256sums = 66ef83c2e2f82ef71c110492e65da271133bd56bb7c9c177901869df4ba4eb7d
-	sha256sums = SKIP
 
 pkgname = zls-master-bin
