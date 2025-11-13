@@ -1,7 +1,7 @@
 #!/bin/bash
-# Maintainer: jstmax! / ceez2exzt -> maxwasmailed@proton.me
+# Maintainer: jstmax! <jstmaxlol@disroot.org> & <maxwasmailed@proton.me>
 pkgname=pacdo
-pkgver=2025.09.2904
+pkgver=2025.11.1305
 pkgrel=0
 pkgdesc="a simple cli utility to shorten pacman syntax."
 arch=('any')
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 build() {
 	cd "$srcdir/pacdo"
-	g++ -o pacdo pacdo.cpp
+	g++ -o pacdo pacdo.cpp -w -std=c++23 -O2
 }
 
 package() {
