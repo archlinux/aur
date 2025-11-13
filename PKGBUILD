@@ -2,7 +2,7 @@
 
 pkgname='netease-cloud-music-wine'
 pkgver=3.1.22.204707
-pkgrel=2
+pkgrel=3
 pkgdesc="NetEase Cloud Music Player. 使用wine运行网易云音乐windows官方包。"
 arch=('x86_64')
 license=('custom')
@@ -21,7 +21,7 @@ source=(
 )
 sha256sums=(
     "279c0379261456dcd1abe28616a00eea9685be06c539afe4e891ccaa0c19141b"
-    "490faa3c44b74ffeb7f67b0d85fd8139a15a86c54b7029eb35d11151ff1cbd44"
+    "e6fa7eb9853b955c49cba5f5fbd83bf8039235d5c0d3eeaac81c2e99b0b7ff81"
 )
 
 prepare() {
@@ -126,7 +126,7 @@ Comment=NetEase Cloud Music
 Comment[zh_CN]=网易云音乐
 Comment[zh_TW]=網易雲音樂
 Icon=netease-cloud-music
-Exec=/opt/netease-cloud-music-wine/run.sh %U
+Exec=/usr/bin/cloudmusic %U
 Categories=AudioVideo;Player;
 Terminal=false
 StartupNotify=true
