@@ -10,6 +10,8 @@ license=('BSD-3-Clause')
 depends=("glibc" "ndctl" "python" "sh")
 makedepends=("chrpath" "git" "pandoc-cli")
 checkdepends=("bc" "gdb" "man-db" "strace")
+provides=("pmdk")
+conflicts=("pmdk")
 source=("git+https://github.com/daos-stack/pmdk.git")
 sha256sums=('SKIP')
 

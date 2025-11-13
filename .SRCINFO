@@ -16,6 +16,8 @@ pkgbase = pmdk-git
 	depends = ndctl
 	depends = python
 	depends = sh
+	provides = pmdk
+	conflicts = pmdk
 	source = git+https://github.com/daos-stack/pmdk.git
 	sha256sums = SKIP
 
