@@ -1,8 +1,8 @@
 # Maintainer: François-Xavier Payet <fx@payet.io>
 
 pkgname=nonraid-git
-pkgver=nonraid.tools.1.20.0.6.g2566177
-pkgrel=1
+pkgver=1.20.0
+pkgrel=2
 pkgdesc="nonraid kernel module via DKMS + management tool, systemd units, default config, and udev rule"
 arch=('x86_64')
 url='https://github.com/qvr/nonraid'
@@ -16,13 +16,10 @@ backup=('etc/default/nonraid')
 source=('git+https://github.com/qvr/nonraid.git')
 b2sums=('SKIP')
 # Derive a reproducible pkgver from git describe or commit count
+
 pkgver() {
-  cd "$srcdir/nonraid"
-  if git describe --tags --long >/dev/null 2>&1; then
-    git describe --tags --long | sed 's/^v//; s/-/./g'
-  else
-    printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  fi
+	cd "$srcdir/${pkgname%-git}"
+	printf "%s" "$(git describe --tags | cut -c 2- | cut -d - -f 1)"
 }
 
 build() {
