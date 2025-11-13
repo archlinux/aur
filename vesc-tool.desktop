@@ -2,7 +2,7 @@
 [Desktop Entry]
 Name=VESC Tool
 Comment=VESC ESC configuration tool
-Exec=/usr/bin/vesc_tool
+Exec=/usr/bin/vesc_tool_6.06
 Terminal=false
 Type=Application
 Icon=vesc-tool
