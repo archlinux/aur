@@ -1,13 +1,13 @@
 pkgbase = aget
 	pkgdesc = Minimalistic AUR helper
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/xyproto/aget
 	arch = x86_64
 	license = BSD
 	makedepends = go
 	depends = git
-	source = git+https://github.com/xyproto/aget#tag=v1.4.2
-	b2sums = b3220cbb5bac42bcfa7615463539707177623815fcbccd9311be999e8e65f404196f5a97a1a1dbca0c3610d4c0eee6415397a27aa4a1990fc84570fb3da6a601
+	source = git+https://github.com/xyproto/aget#tag=v1.4.3
+	b2sums = e0249b2b2abda5ba3b35a83c5cc745a2d0a497f461d2bbceb06271b32995645a5526c128f6a1d3ed0694013f40f84de4ce10666fe08561979dfb7140de33f623
 
 pkgname = aget
