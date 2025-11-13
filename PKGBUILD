@@ -2,7 +2,7 @@
 
 pkgname=nonraid-git
 pkgver=1.20.0
-pkgrel=2
+pkgrel=3
 pkgdesc="nonraid kernel module via DKMS + management tool, systemd units, default config, and udev rule"
 arch=('x86_64')
 url='https://github.com/qvr/nonraid'
