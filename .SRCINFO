@@ -1,13 +1,13 @@
 pkgbase = php-codesniffer-phpcsextra
 	pkgdesc = A collection of sniffs and standards for use with PHP_CodeSniffer.
-	pkgver = 1.4.2
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/PHPCSStandards/PHPCSExtra
 	arch = any
 	license = LGPL
 	depends = php-codesniffer
 	depends = php-codesniffer-phpcsutils
-	source = php-codesniffer-phpcsextra-1.4.2.tar.gz::https://github.com/PHPCSStandards/PHPCSExtra/archive/refs/tags/1.4.2.tar.gz
-	b2sums = 2fdfb914062be9ef03367cba97758dd948900589e6000a2c6002a2ba782e778221a8662085c02c8535b0f8f9ae095e0521f8d8f2a5331fc1b832a3d64b386dcb
+	source = php-codesniffer-phpcsextra-1.5.0.tar.gz::https://github.com/PHPCSStandards/PHPCSExtra/archive/refs/tags/1.5.0.tar.gz
+	b2sums = 78b455d17b6d556e71155b8e0d4f17536395e7fd92aeba12358b788ef4cd1557b8cb37b04cf9709a0c01c285fb3c3600415be2244b6e2b837525ba5f5324dac2
 
 pkgname = php-codesniffer-phpcsextra

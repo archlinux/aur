@@ -3,7 +3,7 @@
 
 pkgname=php-codesniffer-phpcsextra
 _pkgname=PHPCSExtra
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A collection of sniffs and standards for use with PHP_CodeSniffer."
 arch=('any')
@@ -12,7 +12,7 @@ license=('LGPL')
 depends=('php-codesniffer' 'php-codesniffer-phpcsutils')
 makedepends=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('2fdfb914062be9ef03367cba97758dd948900589e6000a2c6002a2ba782e778221a8662085c02c8535b0f8f9ae095e0521f8d8f2a5331fc1b832a3d64b386dcb')
+b2sums=('78b455d17b6d556e71155b8e0d4f17536395e7fd92aeba12358b788ef4cd1557b8cb37b04cf9709a0c01c285fb3c3600415be2244b6e2b837525ba5f5324dac2')
 
 package() {
   install -d "${pkgdir}/usr/share/pear/PHP/CodeSniffer/Standards"
