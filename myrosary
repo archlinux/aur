@@ -209,7 +209,7 @@ def print_todays_mystery():
     elif(day_name=="tuesday" or day_name=="friday"):
         print_sorrowful_mysteries()
     elif(day_name=="wednesday" or day_name=="sunday"):
-        print(print_glorious_mysteries)
+        print_glorious_mysteries()
     elif(day_name=="thursday"):
         print_luminous_mysteries()
     
