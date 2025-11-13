@@ -2,7 +2,7 @@
 pkgname=fan-control
 _app_id="io.github.wiiznokes.$pkgname"
 pkgver=25.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Control your fans with different behaviors"
 arch=('x86_64')
 url="https://github.com/wiiznokes/fan-control"
@@ -22,7 +22,7 @@ makedepends=(
 checkdepends=('appstream')
 source=("git+https://github.com/wiiznokes/fan-control.git#tag=$pkgver"
         'git+https://github.com/wiiznokes/libsensors.git')
-sha256sums=('9dbfae792e3e19cd94cbed28dc1ab24fe1f78d3519cc53a9a3959b136cc6c66d'
+sha256sums=('5617fa836bb0799931f55af910dcd487bf41dde76aa2cee5eb2993383e0a777c'
             'SKIP')
 
 prepare() {
