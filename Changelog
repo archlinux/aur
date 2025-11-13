@@ -1,9 +1,16 @@
 -------------------------------------------------------
  Changelog    : Arch-mkpkg
- Tags         : 7.4.0 ➙ 7.7.2
-              : 2025-06-19 ➙ 2025-10-14
+ Tags         : 7.5.0 ➙ 7.8.0
+              : 2025-06-22 ➙ 2025-11-13
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-11-13   : 7.8.0
+              - Release 7.8.0
+                New feature: Support for uninstalled package dependency getting version from program.
+                  See new PKGBUILD variable, _dep_vers_prog, in docs
+ 2025-10-14   ⋯
+              - update Docs/Changelogs Docs/mkpkg.pdf for 7.7.2
 
  2025-10-14   : 7.7.2
               - Switch doc build to xelatex which handles unicode characters
@@ -26,9 +33,3 @@
               - Sync local copy of run_prog with latest from pyconcurrent
  2025-06-19   ⋯
               - update Docs/Changelogs Docs/mkpkg.pdf for 7.4.0
-
- 2025-06-19   : 7.4.0
-              - Keep internal copy of run_prog in sync with pyconcurrent
-                   For subprocess stdin add .flush() on the file object before closing
- 2025-06-16   ⋯
-              - update Docs/Changelogs Docs/mkpkg.pdf for 7.2.0

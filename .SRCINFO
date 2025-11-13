@@ -1,6 +1,6 @@
 pkgbase = mkpkg
 	pkgdesc = Tool to rebuild packages based on dependency triggers
-	pkgver = 7.7.2
+	pkgver = 7.8.0
 	pkgrel = 1
 	url = https://github.com/gene-git/Arch-mkpkg
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = mkpkg
 	depends = python-tomli-w
 	depends = python-pyelftools
 	optdepends = pyconcurrent
-	source = git+https://github.com/gene-git/Arch-mkpkg#tag=7.7.2
+	source = git+https://github.com/gene-git/Arch-mkpkg#tag=7.8.0
 	validpgpkeys = 7CCA1BA66669F3273DB52678E5B81343AB9809E1
 	sha512sums = SKIP
 
