@@ -1,7 +1,7 @@
 pkgbase = serdisplib-svn
 	pkgdesc = Library to drive displays with built-in controllers.
 	pkgver = 2.02.r383.d20191027
-	pkgrel = 1
+	pkgrel = 2
 	url = https://serdisplib.sourceforge.net/
 	arch = aarch64
 	arch = arm
@@ -11,7 +11,7 @@ pkgbase = serdisplib-svn
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = subversion
-	makedepends = libdlo
+	makedepends = libdlo.a
 	makedepends = libusb-compat
 	makedepends = sdl
 	depends = gd
