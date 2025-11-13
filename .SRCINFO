@@ -1,6 +1,6 @@
 pkgbase = electron-nightly-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt nightly binary
-	pkgver = 40.0.0nightly.20251028
+	pkgver = 41.0.0nightly.20251106
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = aarch64
@@ -17,13 +17,13 @@ pkgbase = electron-nightly-bin
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
 	provides = electron
-	provides = electron=40.0.0nightly.20251028
+	provides = electron=41.0.0nightly.20251106
 	conflicts = electron
 	conflicts = electron40
-	noextract = electron-40.0.0-nightly.20251028-x86_64.zip
-	source_x86_64 = electron-40.0.0-nightly.20251028-x86_64.zip::https://github.com/electron/nightlies/releases/download/v40.0.0-nightly.20251028/electron-v40.0.0-nightly.20251028-linux-x64.zip
+	noextract = electron-41.0.0-nightly.20251106-x86_64.zip
+	source_x86_64 = electron-41.0.0-nightly.20251106-x86_64.zip::https://github.com/electron/nightlies/releases/download/v41.0.0-nightly.20251106/electron-v41.0.0-nightly.20251106-linux-x64.zip
 	source_x86_64 = electron
-	sha256sums_x86_64 = 623deff22aa200afd066f581e28e77750aba72960754abd429ce09a61762f4a6
+	sha256sums_x86_64 = 1e58e9702892f87b61d5f568464fb7cef59137155055ae87ead21b48834a2480
 	sha256sums_x86_64 = 34113e95910409a0c0763dc1b856eb7660a863ea0295f59b6007684bc030a93a
 
 pkgname = electron-nightly-bin
