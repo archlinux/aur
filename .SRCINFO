@@ -1,0 +1,20 @@
+pkgbase = trufos-bin
+	pkgdesc = A modern, open source REST client app.(Prebuilt version.Use system-wide electron)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://exxeta.github.io/trufos/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = gendesk
+	depends = electron39
+	provides = trufos=0.3.0
+	conflicts = trufos
+	options = !emptydirs
+	source = trufos-0.3.0.zip::https://github.com/EXXETA/trufos/releases/download/v0.3.0/Trufos-linux-x64-0.3.0.zip
+	source = trufos-0.3.0.png::https://raw.githubusercontent.com/EXXETA/trufos/v0.3.0/images/logo-512.png
+	source = trufos.sh
+	sha256sums = b831a632d053a95bc8ea4ef1c8b83c47080210f7f7728a1dc8bd01b0ad5c3b99
+	sha256sums = df7d9be0dcc412122eecd47fbc0e083a45dfda3953c97c5b22fe7a737258cc70
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+
+pkgname = trufos-bin
