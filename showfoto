@@ -1,2 +1,3 @@
 #!/bin/sh
+[[ "$XMODIFIERS" == "@im=fcitx" ]] && export QT_IM_MODULE=fcitx
 exec /opt/appimages/digiKam.appimage showfoto "$@"

@@ -2,7 +2,7 @@
 
 pkgname=digikam-appimage
 pkgver=8.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The latest stable AppImage of digiKam - an advanced open-source digital photo management application that runs on Linux, Windows, and MacOS."
 arch=('x86_64')
 license=('GPL-2.0-or-later')
