@@ -1,6 +1,6 @@
 pkgbase = dumphfdl
 	pkgdesc = Multichannel HFDL decoder
-	pkgver = 1.6.1
+	pkgver = 1.7.0
 	pkgrel = 2
 	url = https://github.com/szpajder/dumphfdl
 	arch = x86_64
@@ -19,9 +19,7 @@ pkgbase = dumphfdl
 	depends = zeromq
 	optdepends = libsdrplay: Proprietary API service for SDRplay devices.
 	optdepends = gperftools: for profiling
-	source = dumphfdl::git+https://github.com/szpajder/dumphfdl#tag=v1.6.1
-	source = detect_liquid_dsp_version.patch
+	source = dumphfdl::git+https://github.com/szpajder/dumphfdl#tag=v1.7.0
 	sha256sums = SKIP
-	sha256sums = d1c9922e68b08b922865a1cab03b81d0fcadb310f7b664618645f58c0368b93a
 
 pkgname = dumphfdl
