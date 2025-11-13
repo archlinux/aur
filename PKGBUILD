@@ -2,7 +2,7 @@
 
 pkgname=zrok-bin
 pkgver=1.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source sharing solution built on OpenZiti'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/openziti/zrok'
