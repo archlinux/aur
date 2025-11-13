@@ -1,7 +1,7 @@
 pkgbase = open-android-backup
 	pkgdesc = A complete, easy to use script that lets you locally backup and restore your Android device.
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mrrfv.github.io/open-android-backup/
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = open-android-backup
 	depends = p7zip
 	depends = pv
 	depends = zenity
-	optdepends = secure-delete: securely delete data in the temporary folder
+	optdepends = srm: securely delete data in the temporary folder
 	source = open-android-backup-1.2.0.zip::https://github.com/mrrfv/open-android-backup/releases/download/v1.2.0/Open_Android_Backup_v1.2.0_Bundle.zip
 	sha512sums = ab600d585a67292449df1e23e187430b94f9d202507f936690172d4927493e45b38f048fece7b1ffd8c64dd6678e6ff05374b0811e703bf5ac8397d1bbbae1a2
 
