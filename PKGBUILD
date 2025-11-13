@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=HDF5Array
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -41,8 +41,8 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2cd2344bb6c4db92c317b9af5dad2c98')
-b2sums=('dc92517692dcebe01521dfe3313e7ad392e1eef4d8efd31d037b341fca9e3e3401f82657cb45306f2cf47d242f4b16ab2e2fdef11c9a81b2eeddd248497a4474')
+md5sums=('c712de799df6ff39106a33db555e41fd')
+b2sums=('4acf121907dedbc49c7cd7fbb96ec30b8f61e0edcf8d662c618aa4beb882389e1cb77a287936f61543f22962baa36cb46d40a5192d13735bd2a8bdf03862b11c')
 
 build() {
   mkdir build
