@@ -1,7 +1,7 @@
 pkgbase = mcp-gearbox-bin
 	pkgdesc = Modern MCP server manager for multiple AI agents (binary release)
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rohitsoni007/mcp-gearbox
 	arch = x86_64
 	license = MIT

@@ -2,7 +2,7 @@ pkgname=mcp-gearbox-bin
 _pkgname=mcp-gearbox
 pkgver=0.0.2
 _tag=v0.0.2-20251112-095801
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern MCP server manager for multiple AI agents (binary release)"
 arch=('x86_64')
 url="https://github.com/rohitsoni007/${_pkgname}"
@@ -38,7 +38,7 @@ package() {
 
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_pkgname}" <<'WRAPPER'
 #!/bin/sh
-exec /opt/mcp-gearbox/mcp-gearbox "$@"
+exec /usr/lib/mcp-gearbox/mcp-gearbox "$@"
 WRAPPER
 
   install -Dm644 "${srcdir}/mcp-gearbox.desktop" "${pkgdir}/usr/share/applications/mcp-gearbox.desktop"
