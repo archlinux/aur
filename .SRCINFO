@@ -1,6 +1,6 @@
 pkgbase = apidog-bin
 	pkgdesc = Design. Debug. Test. Document. Mock.Build APIs Faster & Together.
-	pkgver = 2.6.7
+	pkgver = 2.7.48
 	pkgrel = 1
 	url = https://apidog.com
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = apidog-bin
 	depends = libdbusmenu-glib
 	provides = apidog
 	options = !strip
-	source_x86_64 = Apidog-2.6.7.AppImage::https://file-assets.apidog.com/download/2.6.7/Apidog-2.6.7.AppImage
+	source_x86_64 = Apidog-2.7.48.AppImage::https://file-assets.apidog.com/download/2.7.48/Apidog-2.7.48.AppImage
 	source_x86_64 = apidog.desktop
 	sha256sums_x86_64 = e856926d0ae1aeea0e32a3fabc768afa35a64318e9d7cf859ac882b38fb8b948
 	sha256sums_x86_64 = df7ead28acf1b9ed171b08c4db34efbe0d1689bce594ccc68408e75af9cb8bc5

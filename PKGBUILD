@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Andrade <alex.d.a_14@outlook.pt>
 pkgname=apidog-bin
-pkgver=2.6.7
+pkgver=2.7.48
 pkgrel=1
 pkgdesc="Design. Debug. Test. Document. Mock.Build APIs Faster & Together."
 provides=('apidog')
