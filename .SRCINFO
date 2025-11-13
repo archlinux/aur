@@ -1,0 +1,13 @@
+pkgbase = quick-mouse
+	pkgdesc = Wireless mouse using smartphone sensors
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/DerekCorniello/quick-mouse
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = npm
+	source = git+https://github.com/DerekCorniello/quick-mouse.git
+	sha256sums = SKIP
+
+pkgname = quick-mouse
