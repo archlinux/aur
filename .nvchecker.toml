@@ -1,0 +1,4 @@
+[workspace]
+source = "git"
+git = "https://github.com/gaskam/workspace.git"
+prefix = "v"

@@ -1,0 +1,13 @@
+pkgbase = workspace
+	pkgdesc = Install and manage all your repositories in your chosen destination
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = https://github.com/gaskam/workspace
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = zig0.13
+	source = workspace-1.3.3.tar.gz::https://github.com/gaskam/workspace/archive/refs/tags/1.3.3.tar.gz
+	b2sums = a74bd399bc7dfc63c3b3fdc805d42dfdf8f15554ce7cdf3772480bcffd63bf91b91842c171c4cdd95eed349292d086f98b3ac48e9da78b643c35678cc354ab58
+
+pkgname = workspace
