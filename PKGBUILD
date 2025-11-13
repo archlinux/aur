@@ -3,7 +3,7 @@
 # Contributor: Your Name <abrahammurciano at gmail dot com>
 _base=agena
 pkgname=${_base}-bin
-pkgver=6.1.5
+pkgver=6.4.1
 pkgrel=1
 pkgdesc="An Algol-inspired procedural programming language designed for science, scripting, and other applications"
 arch=(x86_64)
@@ -12,7 +12,7 @@ license=(GPL-2.0-or-later)
 depends=(libxext ncurses readline)
 source=(${pkgname}-${pkgver}.deb::https://master.dl.sourceforge.net/project/${_base}/Binaries/Agena%20${pkgver}/${_base}-${pkgver}-linux.amd64.deb
   ${_base}.desktop)
-sha512sums=('d59c9902c68e160da49c2dc2ec63b734a459600a58aaf8ec661bcdf493aff13d12edccff7e15ae74292d78c07f8ad5b8c9762662959d1178de8fd406754100df'
+sha512sums=('6e040cd05941fbf74addbc6b7eecc10a80741462aba22177180a5234958c914fab39971c76391468dd44b406ee5f27eca155df2586fa7b108455b8214b3c5576'
             'fb8c658430b1eac995bcf8a91273170986740b66eb4988f945fb2d0969b64b47cec2cc1dfdd3d71863afcd9d8efaebde04a5ffd78589544068a930c6bcd923a4')
 
 prepare() {
