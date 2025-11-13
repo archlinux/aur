@@ -1,17 +1,16 @@
 pkgbase = python-ezchlog
 	pkgdesc = Easy git branch friendly changelogs
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://gitlab.com/jrdasm/ezchlog
 	arch = any
 	license = MIT
-	makedepends = python-build
+	makedepends = uv
 	makedepends = python-installer
-	makedepends = python-wheel
 	depends = python>=3.11
 	provides = ezchlog
 	conflicts = ezchlog
-	source = https://gitlab.com/jrdasm/ezchlog/-/archive/v1.1.0/ezchlog-v1.1.0.tar.gz
-	sha256sums = 400c8047d6c6ffd83934c3815dfd44a5a49e2d00d9ac049af8b0a89b29f8fbcc
+	source = https://gitlab.com/jrdasm/ezchlog/-/archive/v1.2.0/ezchlog-v1.2.0.tar.gz
+	sha256sums = dcc7b791740444fd282b8cc098ac0a7120702ba5eeb1fb4c9b08be2aeef38746
 
 pkgname = python-ezchlog
