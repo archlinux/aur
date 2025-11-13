@@ -1,0 +1,15 @@
+pkgbase = nuked-sc55-jcmoyer-git
+	pkgdesc = Roland SC-55 series emulator
+	pkgver = r465.6291463
+	pkgrel = 1
+	url = https://github.com/jcmoyer/Nuked-SC55
+	arch = i686
+	arch = x86_64
+	license = MAME
+	makedepends = cmake
+	depends = rtmidi
+	depends = sdl2
+	source = git+https://github.com/jcmoyer/Nuked-SC55.git
+	sha256sums = SKIP
+
+pkgname = nuked-sc55-jcmoyer-git
