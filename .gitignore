@@ -1,0 +1,7 @@
+pkg/
+src/
+*.pkg.tar.*
+*.tar.gz
+*.tar.zst
+npm-cache/
+node_modules/
