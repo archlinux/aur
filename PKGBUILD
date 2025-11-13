@@ -1,7 +1,7 @@
 # Maintainer: roazanas <me@rznz.ru>
 
 pkgname=e2ecp
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="End-to-end encrypted file transfer tool"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=()
 makedepends=('go' 'npm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d5ceb2fe72a7d3d377dcabd6f51852545314a273c192545813671abd77cb77aa')
+sha256sums=('7a35e20b2f37be38eeac510408a773409bfed4669300b7730a55035e16d51afb')
 
 build() {
   cd "$pkgname-$pkgver"
