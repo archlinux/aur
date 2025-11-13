@@ -8,10 +8,7 @@ pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL dat
 arch=(x86_64)
 url="http://www.heidisql.com/"
 license=('GPL-2.0')
-makedepends=(lazarus make fpc gettext binutils)
-# Add conditional makedepends
-[[ " ${pkgname[*]} " =~ " heidisql-gtk2 " ]] && makedepends+=(gtk2)
-[[ " ${pkgname[*]} " =~ " heidisql-qt6 " ]] && makedepends+=(qt6pas)
+makedepends=(lazarus make fpc gettext binutils gtk2 qt6pas)
 
 _deb_filename="heidisql_${pkgver}_amd64.deb"
 source=(
