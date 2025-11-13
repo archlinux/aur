@@ -1,16 +1,16 @@
 # Maintainer: alex5402 <alexbhaiya@duck.com>
 pkgname=factory-cli-bin
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Factory CLI - AI-powered terminal assistant"
 arch=('x86_64' 'aarch64')
-url="https://factory.ai"
+url="https://app.factory.ai"
 license=('factory.ai')
 depends=('curl')
 optdepends=('ripgrep: Use system ripgrep instead of bundled version')
 provides=('droid')
 conflicts=('droid')
-options=('!strip') # Don't strip the binary as it may break Bun executables
+options=('!strip')
 install="${pkgname}.install"
 
 # Sources will be downloaded dynamically in package() function
