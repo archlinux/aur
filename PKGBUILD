@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=issie-bin
-pkgver=5.11.0
+pkgver=5.12.0
 _electronversion=35
 pkgrel=1
 pkgdesc="An intuitive cross-platform hardware design application."
@@ -24,8 +24,8 @@ makedepends=(
 noextract=("${pkgname%-bin}-${pkgver}-${CARCH}.zip")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-5.10.3-linux-arm64.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-5.10.3-linux-x64.zip")
-sha256sums_aarch64=('1c43b20b877db740ed0bc5515d6364da09921e5fd1265cf4f73202f7ea4a78d9')
-sha256sums_x86_64=('ff94105afdda391b3a6aca9814dab26bed9509bc6dc9e6f011f125c74fa51145')
+sha256sums_aarch64=('f967ebf17d7aa54427f4e5843a1e0a808b322b7ca94f8b78c475ddacaa7d1f7a')
+sha256sums_x86_64=('10e502ced805c1f014234b5526595bc1889c71adb6b3c0a9af2edb1721992265')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
