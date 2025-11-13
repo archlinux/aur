@@ -1,4 +1,9 @@
-/*.pkg.tar.xz
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
+/*.log
+/*.pkg.tar.zst
+/.vscode
 /aqbanking/
-/pkg/
-/src/
+/pkg
+/src
