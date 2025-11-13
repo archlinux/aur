@@ -1,0 +1,15 @@
+pkgbase = zsh-command-not-found-git
+	pkgdesc = ZSH command-not-found plugin
+	pkgver = r7635.dca16e8
+	pkgrel = 1
+	url = https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/command-not-found
+	install = INSTALL.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = pkgfile
+	optdepends = zsh
+	source = zsh-command-not-found-git::git+https://github.com/ohmyzsh/ohmyzsh.git#branch=master
+	sha256sums = SKIP
+
+pkgname = zsh-command-not-found-git
