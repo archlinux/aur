@@ -1,6 +1,6 @@
 pkgbase = amneziavpn-bin
 	pkgdesc = Amnezia VPN Client
-	pkgver = 4.8.11.1
+	pkgver = 4.8.11.2
 	pkgrel = 1
 	url = https://github.com/amnezia-vpn/amnezia-client
 	install = amneziavpn.install
@@ -9,7 +9,7 @@ pkgbase = amneziavpn-bin
 	conflicts = amneziavpn
 	conflicts = amneziavpn-git
 	options = !debug
-	source = amneziavpn-4.8.11.1.tar.zip::https://github.com/amnezia-vpn/amnezia-client/releases/download/4.8.11.1/AmneziaVPN_4.8.11.1_linux_x64.tar.zip
-	sha256sums = 14530cd81b2b1234940b1e9169c0c7b84c27442bc63db9a0b3d9a3ae5b488c4f
+	source = amneziavpn-4.8.11.2.tar.zip::https://github.com/amnezia-vpn/amnezia-client/releases/download/4.8.11.2/AmneziaVPN_4.8.11.2_linux_x64.tar.zip
+	sha256sums = bf54c1c25d9b756435a0f2151d68d2555357ff5ce610bb10bccf8ae3f6858b6b
 
 pkgname = amneziavpn-bin
