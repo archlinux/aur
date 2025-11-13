@@ -8,7 +8,7 @@ _itkver=5.4.0
 _vtkver=9.3.1
 pkgname=itk-snap
 pkgver=4.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A software application used to segment structures in 3D medical images"
 arch=('x86_64')
 url="https://www.itksnap.org"
@@ -27,7 +27,6 @@ depends=(
   libx11
   qt6-base
   qt6-declarative
-  qt6-tools
   zlib
 )
 makedepends=(
@@ -38,6 +37,7 @@ makedepends=(
   gendesk
   git
   ninja
+  qt6-tools
   vulkan-headers
 )
 options=(!emptydirs)
