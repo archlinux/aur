@@ -16,9 +16,7 @@ source_aarch64=("Root-aarch64.AppImage::https://installer.rootapp.com/installer/
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
 
-validpgpkeys = (
-	172B42B0ABB988FA22047C50B7165C356A3983D9
-)
+validpgpkeys = ('172B42B0ABB988FA22047C50B7165C356A3983D9')
 
 prepare() {
     chmod +x "$srcdir/"*.AppImage
