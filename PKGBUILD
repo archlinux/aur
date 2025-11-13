@@ -2,7 +2,7 @@
 
 _pkgname=lxqt-panel-profiles
 pkgname=$_pkgname
-pkgver=e7d656b
+pkgver=a70f347
 pkgrel=1
 pkgdesc="Backup, restore and switch configurations of lxqt-panel"
 arch=('any')
@@ -23,6 +23,8 @@ package() {
   cd ${srcdir}/${_pkgname}
   install -dm 755 "${pkgdir}"/usr/share/${_pkgname}
   install -dm 755 "${pkgdir}"/usr/bin
+  install -dm 755 "${pkgdir}"/usr/lib/lxqt-panel-profiles
   cp -a  usr/share/ "${pkgdir}"/usr/
   cp usr/bin/"${_pkgname}" "${pkgdir}"/usr/bin/
+  cp -a usr/lib/"${_pkgname}"/lxqt-panel-profiles.py "${pkgdir}"/usr/lib/"${_pkgname}"/
   }
