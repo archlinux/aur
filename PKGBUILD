@@ -2,7 +2,7 @@
 
 _pkgname=xermius
 pkgname=${_pkgname}-bin
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Xermius - Easy SSH Client"
 arch=('x86_64')
@@ -32,7 +32,7 @@ conflicts=("${_pkgname}")
 options=('!strip')
 
 source_x86_64=("${_pkgname}-${pkgver}.deb::https://support.xermius.com/downloads/xermius_${pkgver}_amd64.deb")
-sha512sums_x86_64=('23acb938fe8d39db511ae49291a51458df26f861da6bb5a285c4097bcdbe898e543063f07ff037d435f44abac5b93f828e22446b2f302db3b169a21bf810e751')
+sha512sums_x86_64=('a1f66409ece7b6420de3b4067b8ba25701d85ee0c14589758fb5762295eba87915583ed39c127438c92e38196b95ca33100a06a377e584e2425ccf142f6377c6')
 
 package() {
     cd "${pkgdir}"
