@@ -1,6 +1,6 @@
 # Maintainer: Matthew Bielik (matej.bielik@proton.me)
 pkgname=illogical-updots
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="GTK based updater for end4 dotfiles"
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   'librsvg'
 )
 optdepends=(
-  'papirus-icon-theme: optional icon theme'
+  'fish: required to run installer scripts (uses fish shell)'
 )
 # If you have a tag v1.0.6 use #tag=, otherwise pin a commit with #commit=
 source=(
