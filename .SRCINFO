@@ -1,6 +1,6 @@
 pkgbase = fxload
 	pkgdesc = fxload firmware loader. Used with udev or devfs/hotplug.
-	pkgver = 1.0.28
+	pkgver = 1.0.29
 	pkgrel = 1
 	url = http://libusb.info/
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = fxload
 	makedepends = automake
 	makedepends = pkgconf
 	depends = libusb
-	source = https://github.com/libusb/libusb/archive/refs/tags/v1.0.28.tar.gz
-	sha256sums = 378b3709a405065f8f9fb9f35e82d666defde4d342c2a1b181a9ac134d23c6fe
+	source = https://github.com/libusb/libusb/archive/refs/tags/v1.0.29.tar.gz
+	sha256sums = 7c2dd39c0b2589236e48c93247c986ae272e27570942b4163cb00a060fcf1b74
 
 pkgname = fxload
