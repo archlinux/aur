@@ -1,0 +1,1703 @@
+From mboxrd@z Thu Jan  1 00:00:00 1970
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 04DB82BD580;
+	Mon, 11 Aug 2025 19:41:08 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1754941269; cv=none; b=rHmyBL3N69M4Y1BWGTD+TqAWpbzZE8DyQ9PSJd5Fw/OI6Djk8d05YzK0r4AdlcZpeuKJioxdVUEYN/OUDDyZkWDP+XatFLmvPZNJxAZdLiyRKDeHNncuXFmqvMnr3QFpe5qfxm+wAX6dX1zTMCKBQJpJPmOXP+xLbgH/MDqpHCs=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1754941269; c=relaxed/simple;
+	bh=viw9iEJbruaVRxAarn3h2rKViXu80X2SSEHAI5fBb3I=;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:Content-Type; b=MzU8ePl3/zvlQQZi7f9liaoljEzKaRYcnaT7OTNV0oBOmEkqNFovZDudLnz+7Wpf+ksyj+Op4hbkPVdGVmgjEwkCMmfkVXlbcI1CfB8faW6/s9mrJbI75/JJawHYnms4AtbRsstCRBFfsOhax3r7P2Ff3ZzIJymJOx319Atoe2s=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=ZAB9MgbQ; arc=none smtp.client-ip=10.30.226.201
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="ZAB9MgbQ"
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8AE53C4CEF8;
+	Mon, 11 Aug 2025 19:41:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1754941268;
+	bh=viw9iEJbruaVRxAarn3h2rKViXu80X2SSEHAI5fBb3I=;
+	h=From:To:Cc:Subject:Date:From;
+	b=ZAB9MgbQl5azLDLqPZGXaRHb5QIXky3OWVFKLqnaVaBcyHH02XATaTwWiD/JRiFPv
+	 HY/TDgVR3pOlZG+NWoZsd9BAlmMtwWANONIoQLLi8jcP9gb0KKHdD1i6IMDX+VeTZg
+	 cNpD8z/MYYjqYKQwrTrtInt0pZMdBCBgb07zU2vreyJlu0DvWLU86lvkqEtdTfgqO+
+	 0BfyhNCyRKAqkfo7poiCwzBrid9WtVZ35SDsRs6CYfl7dA0ThWL//YagUm8vJHz9sN
+	 vTa5xbUL2TZYQb12/nmtH2MI7hONMU0KyMWwvEtfOxQQ4m5Txl1cpC+wIZKz+Wew/9
+	 w5T9jk8b8LUNw==
+From: "Mario Limonciello (AMD)" <superm1@kernel.org>
+To: "Rafael J . Wysocki" <rafael@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>
+Cc: Pavel Machek <pavel@kernel.org>,
+	Len Brown <lenb@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Danilo Krummrich <dakr@kernel.org>,
+	=?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
+	"James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+	"Martin K . Petersen" <martin.petersen@oracle.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	linux-pm@vger.kernel.org (open list:HIBERNATION (aka Software Suspend, aka swsusp)),
+	amd-gfx@lists.freedesktop.org (open list:RADEON and AMDGPU DRM DRIVERS),
+	dri-devel@lists.freedesktop.org (open list:DRM DRIVERS),
+	linux-pci@vger.kernel.org (open list:PCI SUBSYSTEM),
+	linux-scsi@vger.kernel.org (open list:SCSI SUBSYSTEM),
+	linux-usb@vger.kernel.org (open list:USB SUBSYSTEM),
+	linux-trace-kernel@vger.kernel.org (open list:TRACING),
+	AceLan Kao <acelan.kao@canonical.com>,
+	Kai-Heng Feng <kaihengf@nvidia.com>,
+	Mark Pearson <mpearson-lenovo@squebb.ca>,
+	=?UTF-8?q?Merthan=20Karaka=C5=9F?= <m3rthn.k@gmail.com>,
+	Eric Naim <dnaim@cachyos.org>,
+	"Mario Limonciello (AMD)" <superm1@kernel.org>
+Subject: [PATCH v5 00/11] Improvements to S5 power consumption
+Date: Mon, 11 Aug 2025 14:40:51 -0500
+Message-ID: <20250811194102.864225-1-superm1@kernel.org>
+X-Mailer: git-send-email 2.43.0
+Precedence: bulk
+X-Mailing-List: linux-usb@vger.kernel.org
+List-Id: <linux-usb.vger.kernel.org>
+List-Subscribe: <mailto:linux-usb+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-usb+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+A variety of issues both in function and in power consumption have been
+raised as a result of devices not being put into a low power state when
+the system is powered off.
+
+There have been some localized changes[1] to PCI core to help these issues,
+but they have had various downsides.
+
+This series instead tries to use the S4 flow when the system is being
+powered off.  This lines up the behavior with what other operating systems
+do as well.  If for some reason that fails or is not supported, run their
+shutdown() callbacks.
+
+Cc: AceLan Kao <acelan.kao@canonical.com>
+Cc: Kai-Heng Feng <kaihengf@nvidia.com>
+Cc: Mark Pearson <mpearson-lenovo@squebb.ca>
+Cc: Merthan Karakaş <m3rthn.k@gmail.com>
+Cc: Eric Naim <dnaim@cachyos.org>
+---
+v4->v5:
+ * Rebase on v6.17-rc1
+ * Re-order series to be more bisectable for issues
+ * Add tags where relevant
+ * Split up PCI patches into more easily reviewable "chunks".
+
+Mario Limonciello (AMD) (11):
+  PM: Introduce new PMSG_POWEROFF event
+  scsi: Add PM_EVENT_POWEROFF into suspend callbacks
+  usb: sl811-hcd: Add PM_EVENT_POWEROFF into suspend callbacks
+  USB: Pass PMSG_POWEROFF event to suspend_common() for poweroff with S4
+    flow
+  PCI: PM: Disable device wakeups when halting system through S4 flow
+  PCI: PM: Split out code from pci_pm_suspend_noirq() into helper
+  PCI: PM: Run bridge power up actions as part of restore phase
+  PCI: PM: Use pci_power_manageable() in pci_pm_poweroff_noirq()
+  PCI: Put PCIe ports with downstream devices into D3 at hibernate
+  drm/amd: Avoid evicting resources at S5
+  PM: Use hibernate flows for system power off
+
+ drivers/base/power/main.c                  |  7 ++
+ drivers/gpu/drm/amd/amdgpu/amdgpu_device.c |  4 +
+ drivers/pci/pci-driver.c                   | 99 +++++++++++++++-------
+ drivers/scsi/mesh.c                        |  1 +
+ drivers/scsi/stex.c                        |  1 +
+ drivers/usb/core/hcd-pci.c                 | 10 ++-
+ drivers/usb/host/sl811-hcd.c               |  1 +
+ include/linux/pm.h                         |  5 +-
+ include/trace/events/power.h               |  3 +-
+ kernel/reboot.c                            |  6 ++
+ 10 files changed, 102 insertions(+), 35 deletions(-)
+
+
+base-commit: 8f5ae30d69d7543eee0d70083daf4de8fe15d585
+-- 
+2.43.0
+
+
+From mboxrd@z Thu Jan  1 00:00:00 1970
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C89BF2D8DDC;
+	Mon, 11 Aug 2025 19:41:10 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1754941270; cv=none; b=j7+AD8FmdPwQ7hctB8w6KI53I3wL6STIL/2ZFuEzvIBuz6/g15FHTLlDFL7SwB6gURVa84q1EKh4p+2kaFmDMNCoCSqWSV/3CGt5v+kLN6QhiuzuAwYRoONvm/yy50p35qbMoUsWguivkYSeCmEiWHNU22Xa2zWaZtP5LksGW5I=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1754941270; c=relaxed/simple;
+	bh=Kf4914LQNukSJINzCYRK5E52XgshaqkTzyZnxPJaf+Q=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version; b=i6sluH1MrGPHkkD2DqIk07FkTWxFe7ZJsAWsYxQGVOmNB3j+hwLXlrHeaBjR7QExllo7/ASvSfLFy4YmbsayCzIIMiZvnEaAKdDhbIBaZ3QNc5TlgBp2hN1cmWkqVGKLwoZHhIlZmLzjNPB1Xkf7ldwDagJ7i7jDi10A6EqjajU=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=ouMEjsSS; arc=none smtp.client-ip=10.30.226.201
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="ouMEjsSS"
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BBFFCC4CEF1;
+	Mon, 11 Aug 2025 19:41:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1754941270;
+	bh=Kf4914LQNukSJINzCYRK5E52XgshaqkTzyZnxPJaf+Q=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=ouMEjsSS0VDtSfEEFfLTZ7/hrZmfoztvz5eAGgLyL7QNv4F/XGAyBWyXHtsb7AVMT
+	 aNwukz4Uko8jQJAK6gF3CGtUk7egkDZtZerMe2YNwti7SEzc/b65gv837CH7urewxZ
+	 v/ciRZTtZA7KKairgKiR77Ex5jNd1hC8oRAMNbHmmDRkQ1fS6KYA+7pfPbmLYgddjj
+	 h7M2PaSwuiElvFRby27BlwJIgzmYgflF8yD0Izxi5FkmVFHPN1QAquwxKAHwqO518L
+	 TMGnQovmxEohx//6alF9VtleFU/6vH8Gmm/RO+VQnVLbEJ+PevT5lHsvZ1wHzfLfBy
+	 1e42j1oVpYonA==
+From: "Mario Limonciello (AMD)" <superm1@kernel.org>
+To: "Rafael J . Wysocki" <rafael@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>
+Cc: Pavel Machek <pavel@kernel.org>,
+	Len Brown <lenb@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Danilo Krummrich <dakr@kernel.org>,
+	=?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
+	"James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+	"Martin K . Petersen" <martin.petersen@oracle.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	linux-pm@vger.kernel.org (open list:HIBERNATION (aka Software Suspend, aka swsusp)),
+	amd-gfx@lists.freedesktop.org (open list:RADEON and AMDGPU DRM DRIVERS),
+	dri-devel@lists.freedesktop.org (open list:DRM DRIVERS),
+	linux-pci@vger.kernel.org (open list:PCI SUBSYSTEM),
+	linux-scsi@vger.kernel.org (open list:SCSI SUBSYSTEM),
+	linux-usb@vger.kernel.org (open list:USB SUBSYSTEM),
+	linux-trace-kernel@vger.kernel.org (open list:TRACING),
+	AceLan Kao <acelan.kao@canonical.com>,
+	Kai-Heng Feng <kaihengf@nvidia.com>,
+	Mark Pearson <mpearson-lenovo@squebb.ca>,
+	=?UTF-8?q?Merthan=20Karaka=C5=9F?= <m3rthn.k@gmail.com>,
+	Eric Naim <dnaim@cachyos.org>,
+	"Mario Limonciello (AMD)" <superm1@kernel.org>
+Subject: [PATCH v5 01/11] PM: Introduce new PMSG_POWEROFF event
+Date: Mon, 11 Aug 2025 14:40:52 -0500
+Message-ID: <20250811194102.864225-2-superm1@kernel.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250811194102.864225-1-superm1@kernel.org>
+References: <20250811194102.864225-1-superm1@kernel.org>
+Precedence: bulk
+X-Mailing-List: linux-usb@vger.kernel.org
+List-Id: <linux-usb.vger.kernel.org>
+List-Subscribe: <mailto:linux-usb+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-usb+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+
+PMSG_POWEROFF will be used for the PM core to allow differentiating between
+an S4 or S5 shutdown sequence when re-using callbacks.
+
+This event should not have wakeups enabled so update PMSG_NO_WAKEUP() to
+match it as well.
+
+Tested-by: Eric Naim <dnaim@cachyos.org>
+Signed-off-by: Mario Limonciello (AMD) <superm1@kernel.org>
+---
+v5:
+ * Re-order and split
+ * Add tags
+v4:
+ * https://lore.kernel.org/linux-pci/20250616175019.3471583-1-superm1@kernel.org/
+---
+ drivers/base/power/main.c    | 7 +++++++
+ include/linux/pm.h           | 5 ++++-
+ include/trace/events/power.h | 3 ++-
+ 3 files changed, 13 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/base/power/main.c b/drivers/base/power/main.c
+index dbf5456cd891b..c59ab5286d9a5 100644
+--- a/drivers/base/power/main.c
++++ b/drivers/base/power/main.c
+@@ -99,6 +99,8 @@ static const char *pm_verb(int event)
+ 		return "restore";
+ 	case PM_EVENT_RECOVER:
+ 		return "recover";
++	case PM_EVENT_POWEROFF:
++		return "poweroff";
+ 	default:
+ 		return "(unknown PM event)";
+ 	}
+@@ -369,6 +371,7 @@ static pm_callback_t pm_op(const struct dev_pm_ops *ops, pm_message_t state)
+ 	case PM_EVENT_FREEZE:
+ 	case PM_EVENT_QUIESCE:
+ 		return ops->freeze;
++	case PM_EVENT_POWEROFF:
+ 	case PM_EVENT_HIBERNATE:
+ 		return ops->poweroff;
+ 	case PM_EVENT_THAW:
+@@ -403,6 +406,7 @@ static pm_callback_t pm_late_early_op(const struct dev_pm_ops *ops,
+ 	case PM_EVENT_FREEZE:
+ 	case PM_EVENT_QUIESCE:
+ 		return ops->freeze_late;
++	case PM_EVENT_POWEROFF:
+ 	case PM_EVENT_HIBERNATE:
+ 		return ops->poweroff_late;
+ 	case PM_EVENT_THAW:
+@@ -437,6 +441,7 @@ static pm_callback_t pm_noirq_op(const struct dev_pm_ops *ops, pm_message_t stat
+ 	case PM_EVENT_FREEZE:
+ 	case PM_EVENT_QUIESCE:
+ 		return ops->freeze_noirq;
++	case PM_EVENT_POWEROFF:
+ 	case PM_EVENT_HIBERNATE:
+ 		return ops->poweroff_noirq;
+ 	case PM_EVENT_THAW:
+@@ -1370,6 +1375,8 @@ static pm_message_t resume_event(pm_message_t sleep_state)
+ 		return PMSG_RECOVER;
+ 	case PM_EVENT_HIBERNATE:
+ 		return PMSG_RESTORE;
++	case PM_EVENT_POWEROFF:
++		return PMSG_ON;
+ 	}
+ 	return PMSG_ON;
+ }
+diff --git a/include/linux/pm.h b/include/linux/pm.h
+index cc7b2dc28574c..892bd93f13dad 100644
+--- a/include/linux/pm.h
++++ b/include/linux/pm.h
+@@ -507,6 +507,7 @@ const struct dev_pm_ops name = { \
+  * RECOVER	Creation of a hibernation image or restoration of the main
+  *		memory contents from a hibernation image has failed, call
+  *		->thaw() and ->complete() for all devices.
++ * POWEROFF	System will poweroff, call ->poweroff() for all devices.
+  *
+  * The following PM_EVENT_ messages are defined for internal use by
+  * kernel subsystems.  They are never issued by the PM core.
+@@ -537,6 +538,7 @@ const struct dev_pm_ops name = { \
+ #define PM_EVENT_USER		0x0100
+ #define PM_EVENT_REMOTE		0x0200
+ #define PM_EVENT_AUTO		0x0400
++#define PM_EVENT_POWEROFF	0x0800
+ 
+ #define PM_EVENT_SLEEP		(PM_EVENT_SUSPEND | PM_EVENT_HIBERNATE)
+ #define PM_EVENT_USER_SUSPEND	(PM_EVENT_USER | PM_EVENT_SUSPEND)
+@@ -551,6 +553,7 @@ const struct dev_pm_ops name = { \
+ #define PMSG_QUIESCE	((struct pm_message){ .event = PM_EVENT_QUIESCE, })
+ #define PMSG_SUSPEND	((struct pm_message){ .event = PM_EVENT_SUSPEND, })
+ #define PMSG_HIBERNATE	((struct pm_message){ .event = PM_EVENT_HIBERNATE, })
++#define PMSG_POWEROFF	((struct pm_message){ .event = PM_EVENT_POWEROFF, })
+ #define PMSG_RESUME	((struct pm_message){ .event = PM_EVENT_RESUME, })
+ #define PMSG_THAW	((struct pm_message){ .event = PM_EVENT_THAW, })
+ #define PMSG_RESTORE	((struct pm_message){ .event = PM_EVENT_RESTORE, })
+@@ -568,7 +571,7 @@ const struct dev_pm_ops name = { \
+ 
+ #define PMSG_IS_AUTO(msg)	(((msg).event & PM_EVENT_AUTO) != 0)
+ #define PMSG_NO_WAKEUP(msg)	(((msg).event & \
+-				(PM_EVENT_FREEZE | PM_EVENT_QUIESCE)) != 0)
++				(PM_EVENT_FREEZE | PM_EVENT_QUIESCE | PM_EVENT_POWEROFF)) != 0)
+ /*
+  * Device run-time power management status.
+  *
+diff --git a/include/trace/events/power.h b/include/trace/events/power.h
+index 82904291c2b81..370f8df2fdb4b 100644
+--- a/include/trace/events/power.h
++++ b/include/trace/events/power.h
+@@ -179,7 +179,8 @@ TRACE_EVENT(pstate_sample,
+ 		{ PM_EVENT_HIBERNATE, "hibernate" }, \
+ 		{ PM_EVENT_THAW, "thaw" }, \
+ 		{ PM_EVENT_RESTORE, "restore" }, \
+-		{ PM_EVENT_RECOVER, "recover" })
++		{ PM_EVENT_RECOVER, "recover" }, \
++		{ PM_EVENT_POWEROFF, "poweroff" })
+ 
+ DEFINE_EVENT(cpu, cpu_frequency,
+ 
+-- 
+2.43.0
+
+
+From mboxrd@z Thu Jan  1 00:00:00 1970
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4191F2BD580;
+	Mon, 11 Aug 2025 19:41:12 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1754941273; cv=none; b=IOO8c6smXm1v0VhiOxuxL+3+7+LkzuDGvvTu3XLDGI9fyDmeXYNiPHVWslAStMvOd+0BHkx5oEoDrOvRnVAuBoDDtsVp+wMUEbPu/30x0git+DVD5YeC+bcbJnygYjgRkJfbMzXylwsSjOOW8Ku99CuhwHE9FpvSfFn6VHtackc=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1754941273; c=relaxed/simple;
+	bh=nP9n5VGF2FskJeZ1oNEb2BbawXh/NPFp8tsiOD47chk=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version; b=Dm/e66T+ecqafainBjQMVS4h6aNUuZzeTF7v6dSA7toXq4FI1ab3izLep7Bco0GIH1lRndgZpt7P62FS4LYh3NVB6hcASPxZz7Yuney8WNhVI5CM6HCDiJtwGfG9mtkbRlUEypw3eEsrXNkMX1RVOu5gaxHIx4xhYYpt/uEMEJI=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=MhQyYrQi; arc=none smtp.client-ip=10.30.226.201
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="MhQyYrQi"
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E7352C4CEF7;
+	Mon, 11 Aug 2025 19:41:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1754941272;
+	bh=nP9n5VGF2FskJeZ1oNEb2BbawXh/NPFp8tsiOD47chk=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=MhQyYrQigt3OL6Zz1HRengUExhq4vCXulgBVfZ/yv+evmV/L9bbmFhvXsDhwdq3cO
+	 Fguj6CyvunoXuvDmg6/dbWNW0G+trkddAm2Q1YvGSKJ3ML76l2DNQAr4WL1WCF1mdL
+	 EmlXLV0NKPuMYvmco8glPTcEZshIJ/sJLZIKRqlquy+vrfUpoIv9+bShxrDYridzlQ
+	 5pHfEbQDE2/b8gSXv8Bdf9C/hmOv3xPdye+8V9Xl5QeCko+B9s7v/7VrNv2Ce6WmfI
+	 XP0sUf8Jv6HHEO+zIw6rlbkbqPzCzf1FN5cY3DCBSiLtVrgh+CV4gxZTuL5pbP90Ng
+	 Mr0dI33vIggXg==
+From: "Mario Limonciello (AMD)" <superm1@kernel.org>
+To: "Rafael J . Wysocki" <rafael@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>
+Cc: Pavel Machek <pavel@kernel.org>,
+	Len Brown <lenb@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Danilo Krummrich <dakr@kernel.org>,
+	=?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
+	"James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+	"Martin K . Petersen" <martin.petersen@oracle.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	linux-pm@vger.kernel.org (open list:HIBERNATION (aka Software Suspend, aka swsusp)),
+	amd-gfx@lists.freedesktop.org (open list:RADEON and AMDGPU DRM DRIVERS),
+	dri-devel@lists.freedesktop.org (open list:DRM DRIVERS),
+	linux-pci@vger.kernel.org (open list:PCI SUBSYSTEM),
+	linux-scsi@vger.kernel.org (open list:SCSI SUBSYSTEM),
+	linux-usb@vger.kernel.org (open list:USB SUBSYSTEM),
+	linux-trace-kernel@vger.kernel.org (open list:TRACING),
+	AceLan Kao <acelan.kao@canonical.com>,
+	Kai-Heng Feng <kaihengf@nvidia.com>,
+	Mark Pearson <mpearson-lenovo@squebb.ca>,
+	=?UTF-8?q?Merthan=20Karaka=C5=9F?= <m3rthn.k@gmail.com>,
+	Eric Naim <dnaim@cachyos.org>,
+	"Mario Limonciello (AMD)" <superm1@kernel.org>
+Subject: [PATCH v5 02/11] scsi: Add PM_EVENT_POWEROFF into suspend callbacks
+Date: Mon, 11 Aug 2025 14:40:53 -0500
+Message-ID: <20250811194102.864225-3-superm1@kernel.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250811194102.864225-1-superm1@kernel.org>
+References: <20250811194102.864225-1-superm1@kernel.org>
+Precedence: bulk
+X-Mailing-List: linux-usb@vger.kernel.org
+List-Id: <linux-usb.vger.kernel.org>
+List-Subscribe: <mailto:linux-usb+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-usb+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+
+When the ACPI core uses hibernation callbacks for shutdown drivers
+will receive PM_EVENT_POWEROFF and should handle it the same as
+PM_EVENT_HIBERNATE would have been used.
+
+Tested-by: Eric Naim <dnaim@cachyos.org>
+Signed-off-by: Mario Limonciello (AMD) <superm1@kernel.org>
+---
+v5:
+ * Re-order
+v4:
+ * https://lore.kernel.org/linux-pci/20250616175019.3471583-1-superm1@kernel.org/
+---
+ drivers/scsi/mesh.c | 1 +
+ drivers/scsi/stex.c | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/drivers/scsi/mesh.c b/drivers/scsi/mesh.c
+index 1c15cac41d805..768b85eecc8fd 100644
+--- a/drivers/scsi/mesh.c
++++ b/drivers/scsi/mesh.c
+@@ -1762,6 +1762,7 @@ static int mesh_suspend(struct macio_dev *mdev, pm_message_t mesg)
+ 	case PM_EVENT_SUSPEND:
+ 	case PM_EVENT_HIBERNATE:
+ 	case PM_EVENT_FREEZE:
++	case PM_EVENT_POWEROFF:
+ 		break;
+ 	default:
+ 		return 0;
+diff --git a/drivers/scsi/stex.c b/drivers/scsi/stex.c
+index 63ed7f9aaa937..ee9372e1f7f07 100644
+--- a/drivers/scsi/stex.c
++++ b/drivers/scsi/stex.c
+@@ -1965,6 +1965,7 @@ static int stex_choice_sleep_mic(struct st_hba *hba, pm_message_t state)
+ 	case PM_EVENT_SUSPEND:
+ 		return ST_S3;
+ 	case PM_EVENT_HIBERNATE:
++	case PM_EVENT_POWEROFF:
+ 		hba->msi_lock = 0;
+ 		return ST_S4;
+ 	default:
+-- 
+2.43.0
+
+
+From mboxrd@z Thu Jan  1 00:00:00 1970
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 87D062BD580;
+	Mon, 11 Aug 2025 19:41:15 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1754941275; cv=none; b=F4QvwNacocvyrZ0iSRkByEcdXKPKXgAXv5JayCOUsIgyFq90IUr6nksW9Z40/P4BvfxAefpnRQnLi3+uxDjzC8EXSOYnTdxLkfZ1j100z9Tm96KBEVLxDNqOuwb89YzHopKPuKi52L0tr8/p0BeZv95Gv3LHOIN5se3BQB9b6WM=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1754941275; c=relaxed/simple;
+	bh=0L8ILI5VlxDH9DgDwEiUXlzII6qULtClGxRZoPNq2oQ=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version; b=kjCVq7rei007HvsSVKxwsbgSWoM2OtDPkzKX1n9vZ0JcAwfCtVh2Mf6hwu+ooeJqeBajz7f115SIR92yd8Cfd34ZTNrtd4fKjN3+1ZmcV+yLwj6Kl+nGZ0lJAnp4o7t3qmi3Azn5yb4pjYz0PdyHpywHyYx+d2GD7Kjvu9X577M=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=ab0NlJoX; arc=none smtp.client-ip=10.30.226.201
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="ab0NlJoX"
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1E69CC4CEF6;
+	Mon, 11 Aug 2025 19:41:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1754941275;
+	bh=0L8ILI5VlxDH9DgDwEiUXlzII6qULtClGxRZoPNq2oQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=ab0NlJoXBfYciB8ekCwVl3p63Ad0qow/dGnB7GivnFrgy+sbD0jVVYZvnTJAKnOb9
+	 Vhp6kiL7Q6lwIbrMvNykUjlSnChXsgCKmYZm/QRE+4cf+Yg2mVRQeVaAWhB05swYrZ
+	 fSNtjdwC7OT2uMDasW/qIWnHwWBtLCzhtrlNygaNPA99ABwxKnoCLWNmHBqdxCnBlt
+	 r42rFWzr98AARfMnLoYu/BfKHiUV6+3RZ3BLkhmaHkgJ/0u75HMgFe06Ra3V96Pjc8
+	 CG13OaxAmDvv0znxJekABY6xdn3JZujuxTeplRkbQfMyfQDLuHG/cwSYC7qNyM1GCm
+	 MKmNaHReBkfBQ==
+From: "Mario Limonciello (AMD)" <superm1@kernel.org>
+To: "Rafael J . Wysocki" <rafael@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>
+Cc: Pavel Machek <pavel@kernel.org>,
+	Len Brown <lenb@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Danilo Krummrich <dakr@kernel.org>,
+	=?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
+	"James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+	"Martin K . Petersen" <martin.petersen@oracle.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	linux-pm@vger.kernel.org (open list:HIBERNATION (aka Software Suspend, aka swsusp)),
+	amd-gfx@lists.freedesktop.org (open list:RADEON and AMDGPU DRM DRIVERS),
+	dri-devel@lists.freedesktop.org (open list:DRM DRIVERS),
+	linux-pci@vger.kernel.org (open list:PCI SUBSYSTEM),
+	linux-scsi@vger.kernel.org (open list:SCSI SUBSYSTEM),
+	linux-usb@vger.kernel.org (open list:USB SUBSYSTEM),
+	linux-trace-kernel@vger.kernel.org (open list:TRACING),
+	AceLan Kao <acelan.kao@canonical.com>,
+	Kai-Heng Feng <kaihengf@nvidia.com>,
+	Mark Pearson <mpearson-lenovo@squebb.ca>,
+	=?UTF-8?q?Merthan=20Karaka=C5=9F?= <m3rthn.k@gmail.com>,
+	Eric Naim <dnaim@cachyos.org>,
+	"Mario Limonciello (AMD)" <superm1@kernel.org>
+Subject: [PATCH v5 03/11] usb: sl811-hcd: Add PM_EVENT_POWEROFF into suspend callbacks
+Date: Mon, 11 Aug 2025 14:40:54 -0500
+Message-ID: <20250811194102.864225-4-superm1@kernel.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250811194102.864225-1-superm1@kernel.org>
+References: <20250811194102.864225-1-superm1@kernel.org>
+Precedence: bulk
+X-Mailing-List: linux-usb@vger.kernel.org
+List-Id: <linux-usb.vger.kernel.org>
+List-Subscribe: <mailto:linux-usb+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-usb+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+
+When the ACPI core uses hibernation callbacks for shutdown drivers
+will receive PM_EVENT_POWEROFF and should handle it the same as
+PM_EVENT_HIBERNATE would have been used.
+
+Tested-by: Eric Naim <dnaim@cachyos.org>
+Signed-off-by: Mario Limonciello (AMD) <superm1@kernel.org>
+---
+v5:
+ * Re-order
+ * Add tags
+v4:
+ * https://lore.kernel.org/linux-pci/20250616175019.3471583-1-superm1@kernel.org/
+---
+ drivers/usb/host/sl811-hcd.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/usb/host/sl811-hcd.c b/drivers/usb/host/sl811-hcd.c
+index ea3cab99c5d40..5d6dba681e503 100644
+--- a/drivers/usb/host/sl811-hcd.c
++++ b/drivers/usb/host/sl811-hcd.c
+@@ -1748,6 +1748,7 @@ sl811h_suspend(struct platform_device *dev, pm_message_t state)
+ 		break;
+ 	case PM_EVENT_SUSPEND:
+ 	case PM_EVENT_HIBERNATE:
++	case PM_EVENT_POWEROFF:
+ 	case PM_EVENT_PRETHAW:		/* explicitly discard hw state */
+ 		port_power(sl811, 0);
+ 		break;
+-- 
+2.43.0
+
+
+From mboxrd@z Thu Jan  1 00:00:00 1970
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A2C402BD580;
+	Mon, 11 Aug 2025 19:41:17 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1754941277; cv=none; b=KcKXXs1u9Ek8L1HRh1eyrzks+QNmNsFyXMD2TfK5/EpgK+1I3pRLr+0LsBSVADXBQl0Ke6hhDLlPM8lIMff0X8rle2YiQznV6YCXSquL1gcC+4HIgkYeFw0SVJb4uX+qM3de+CefDbtYgGoT2KE9VMbkzU9SAUvhj/gBwgFya0s=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1754941277; c=relaxed/simple;
+	bh=HTV3snpdmcP6Mud0jkIwCjWzdQa1pqtX9rikadZrNdo=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version; b=SK0n3Y094+StkfeSSulpQzpe/n0D8WoFt8bjTnQvPSSeWMuXu4kC2ja6Iy4sMWbM7hScMhPW6DWTyH1dHhUjEdgdVDDOcDhg3Vz4ZWZziKxfEiJ0+oCMYZ+bZJarM+rPs6+CNTe+vqd1J4cs8vE8RfU8+DKzmxeS8NRcuieVIPk=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=nLkNcNgk; arc=none smtp.client-ip=10.30.226.201
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="nLkNcNgk"
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 48ADCC4CEF7;
+	Mon, 11 Aug 2025 19:41:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1754941277;
+	bh=HTV3snpdmcP6Mud0jkIwCjWzdQa1pqtX9rikadZrNdo=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=nLkNcNgkJPyU2mnxfvpnzYnVLF3QgMcHszeZVZS2aL1hFgcIY0OKFB1pXfH3WrVYt
+	 rcu4kzCAZoo34VWJHrZOnPU8/GjkkJChoRa4su9CbHHL8/35WziZ175dDmlEuuRvEu
+	 INrxme+W9fc7t1/Gya3W4MRFBK4xaE9hZ/b09YetAi5J4pclMK36Zw2fp/VxV/R/PF
+	 InEa+RPjXOwmQrNNWLEY0st2Us/jy1O0EPjxCXYGcyPRzDH2YeFtueJ3CM6V6PBvIz
+	 OWxsvupmqwa6+PVvHv63YL5nQbjSU6NyORz48IBlC4P16vUzbOVFrag8/+jJksUBgN
+	 7fqExoKlCPqlw==
+From: "Mario Limonciello (AMD)" <superm1@kernel.org>
+To: "Rafael J . Wysocki" <rafael@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>
+Cc: Pavel Machek <pavel@kernel.org>,
+	Len Brown <lenb@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Danilo Krummrich <dakr@kernel.org>,
+	=?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
+	"James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+	"Martin K . Petersen" <martin.petersen@oracle.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	linux-pm@vger.kernel.org (open list:HIBERNATION (aka Software Suspend, aka swsusp)),
+	amd-gfx@lists.freedesktop.org (open list:RADEON and AMDGPU DRM DRIVERS),
+	dri-devel@lists.freedesktop.org (open list:DRM DRIVERS),
+	linux-pci@vger.kernel.org (open list:PCI SUBSYSTEM),
+	linux-scsi@vger.kernel.org (open list:SCSI SUBSYSTEM),
+	linux-usb@vger.kernel.org (open list:USB SUBSYSTEM),
+	linux-trace-kernel@vger.kernel.org (open list:TRACING),
+	AceLan Kao <acelan.kao@canonical.com>,
+	Kai-Heng Feng <kaihengf@nvidia.com>,
+	Mark Pearson <mpearson-lenovo@squebb.ca>,
+	=?UTF-8?q?Merthan=20Karaka=C5=9F?= <m3rthn.k@gmail.com>,
+	Eric Naim <dnaim@cachyos.org>,
+	"Mario Limonciello (AMD)" <superm1@kernel.org>
+Subject: [PATCH v5 04/11] USB: Pass PMSG_POWEROFF event to suspend_common() for poweroff with S4 flow
+Date: Mon, 11 Aug 2025 14:40:55 -0500
+Message-ID: <20250811194102.864225-5-superm1@kernel.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250811194102.864225-1-superm1@kernel.org>
+References: <20250811194102.864225-1-superm1@kernel.org>
+Precedence: bulk
+X-Mailing-List: linux-usb@vger.kernel.org
+List-Id: <linux-usb.vger.kernel.org>
+List-Subscribe: <mailto:linux-usb+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-usb+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+
+If powering off the system with the S4 flow USB wakeup sources should
+be ignored. Add a new callback hcd_pci_poweroff() which will differentiate
+whether target state is S5 and pass PMSG_POWEROFF as the message so that
+suspend_common() will avoid doing wakeups.
+
+Signed-off-by: Mario Limonciello (AMD) <superm1@kernel.org>
+---
+v5:
+ * New patch
+v4:
+ * https://lore.kernel.org/linux-pci/20250616175019.3471583-1-superm1@kernel.org/
+---
+ drivers/usb/core/hcd-pci.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/usb/core/hcd-pci.c b/drivers/usb/core/hcd-pci.c
+index cd223475917ef..bfbd715c8cae9 100644
+--- a/drivers/usb/core/hcd-pci.c
++++ b/drivers/usb/core/hcd-pci.c
+@@ -6,6 +6,7 @@
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+ #include <linux/pci.h>
++#include <linux/pm.h>
+ #include <linux/usb.h>
+ #include <linux/usb/hcd.h>
+ 
+@@ -531,6 +532,13 @@ static int hcd_pci_freeze(struct device *dev)
+ 	return suspend_common(dev, PMSG_FREEZE);
+ }
+ 
++static int hcd_pci_poweroff(struct device *dev)
++{
++	if (system_state == SYSTEM_HALT || system_state == SYSTEM_POWER_OFF)
++		return suspend_common(dev, PMSG_POWEROFF);
++	return suspend_common(dev, PMSG_SUSPEND);
++}
++
+ static int hcd_pci_suspend_noirq(struct device *dev)
+ {
+ 	struct pci_dev		*pci_dev = to_pci_dev(dev);
+@@ -639,7 +647,7 @@ const struct dev_pm_ops usb_hcd_pci_pm_ops = {
+ 	.freeze_noirq	= check_root_hub_suspended,
+ 	.thaw_noirq	= NULL,
+ 	.thaw		= hcd_pci_resume,
+-	.poweroff	= hcd_pci_suspend,
++	.poweroff	= hcd_pci_poweroff,
+ 	.poweroff_late	= hcd_pci_poweroff_late,
+ 	.poweroff_noirq	= hcd_pci_suspend_noirq,
+ 	.restore_noirq	= hcd_pci_resume_noirq,
+-- 
+2.43.0
+
+
+From mboxrd@z Thu Jan  1 00:00:00 1970
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C127E2D8791;
+	Mon, 11 Aug 2025 19:41:19 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1754941279; cv=none; b=bbOySXfBgavb8F9P/6QTos1w+MqPv/li+Bl6IpCUVgcVSEHtvQMnuVvbvFzCqlPCV9KBmLgFZqbT646ubS1f10RS/LdswMKAjf2cf1BezHeFMb854pNLJnPQPyrnCJRz76EbnQBr+T3lIA/DppKJzOYW5nkUS8SSqxv7cXxzp/I=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1754941279; c=relaxed/simple;
+	bh=gmu/PdQ4UxFejc1aL5S++SztnEvLGmrvTcqy4XQi3rg=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version; b=m5Yij7PbhVwwmGwdBEnrHvTgvxhPT2YF8EZr2F+vl3L2rKPKKkAb44MZo0zkoCTRFcLYq7GnALU2cnX1cj7yJe0RttgTmVVJlVhynAEqSvjykk5Ecc63cu+yZuGJ7gNJxI6CgI+J0s4ciDgsRdowoBijsDbR6JcDeW5+3awkLPo=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=qjsg3j/0; arc=none smtp.client-ip=10.30.226.201
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="qjsg3j/0"
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 78D7FC4CEED;
+	Mon, 11 Aug 2025 19:41:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1754941279;
+	bh=gmu/PdQ4UxFejc1aL5S++SztnEvLGmrvTcqy4XQi3rg=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=qjsg3j/07ZReEOnxg6m/AmjVhXPo6OPYT8eJ9QF9hsuFhxg4hCafJXhdyfQfFzqrm
+	 u2hje27TlIVizJvWIkEuqss8W6eGIluGlI5Nz9en43rtkoG372j6JDIiE8TvOP0nKk
+	 G165hW4lDJKyJWkVTaGI6Na0BvoMF+6bS849VmX6Kj0a7QraGvEZik5KHVE1JSYh6R
+	 QnraQQlbZCyeqiqDSRL44ayQBBfEeP0hNhfNYOFjW9VOSFJ87zzFOF8CVY2xMDaqiv
+	 LOiYx3H9RH98fs0mB0Aw1bedXeMFgPiz0NlBheiBY+empw4VbYP9/EKNZez9iApLtE
+	 wiWUfrWNARN8Q==
+From: "Mario Limonciello (AMD)" <superm1@kernel.org>
+To: "Rafael J . Wysocki" <rafael@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>
+Cc: Pavel Machek <pavel@kernel.org>,
+	Len Brown <lenb@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Danilo Krummrich <dakr@kernel.org>,
+	=?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
+	"James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+	"Martin K . Petersen" <martin.petersen@oracle.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	linux-pm@vger.kernel.org (open list:HIBERNATION (aka Software Suspend, aka swsusp)),
+	amd-gfx@lists.freedesktop.org (open list:RADEON and AMDGPU DRM DRIVERS),
+	dri-devel@lists.freedesktop.org (open list:DRM DRIVERS),
+	linux-pci@vger.kernel.org (open list:PCI SUBSYSTEM),
+	linux-scsi@vger.kernel.org (open list:SCSI SUBSYSTEM),
+	linux-usb@vger.kernel.org (open list:USB SUBSYSTEM),
+	linux-trace-kernel@vger.kernel.org (open list:TRACING),
+	AceLan Kao <acelan.kao@canonical.com>,
+	Kai-Heng Feng <kaihengf@nvidia.com>,
+	Mark Pearson <mpearson-lenovo@squebb.ca>,
+	=?UTF-8?q?Merthan=20Karaka=C5=9F?= <m3rthn.k@gmail.com>,
+	Eric Naim <dnaim@cachyos.org>,
+	"Mario Limonciello (AMD)" <superm1@kernel.org>
+Subject: [PATCH v5 05/11] PCI: PM: Disable device wakeups when halting system through S4 flow
+Date: Mon, 11 Aug 2025 14:40:56 -0500
+Message-ID: <20250811194102.864225-6-superm1@kernel.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250811194102.864225-1-superm1@kernel.org>
+References: <20250811194102.864225-1-superm1@kernel.org>
+Precedence: bulk
+X-Mailing-List: linux-usb@vger.kernel.org
+List-Id: <linux-usb.vger.kernel.org>
+List-Subscribe: <mailto:linux-usb+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-usb+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+
+PCI devices can be programmed as a wakeup source from low power states
+by sysfs.  However when using the S4 flow to go into S5 these wakeup
+sources should be disabled to avoid what users would perceive as
+spurious wakeup events.
+
+Tested-by: Eric Naim <dnaim@cachyos.org>
+Signed-off-by: Mario Limonciello (AMD) <superm1@kernel.org>
+---
+v5:
+ * Re-order
+ * Add tags
+v4:
+ * https://lore.kernel.org/linux-pci/20250616175019.3471583-1-superm1@kernel.org/
+---
+ drivers/pci/pci-driver.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/drivers/pci/pci-driver.c b/drivers/pci/pci-driver.c
+index 63665240ae87f..f201d298d7173 100644
+--- a/drivers/pci/pci-driver.c
++++ b/drivers/pci/pci-driver.c
+@@ -1139,6 +1139,10 @@ static int pci_pm_poweroff(struct device *dev)
+ 	struct pci_dev *pci_dev = to_pci_dev(dev);
+ 	const struct dev_pm_ops *pm = dev->driver ? dev->driver->pm : NULL;
+ 
++	if (device_may_wakeup(dev) &&
++	    (system_state == SYSTEM_HALT || system_state == SYSTEM_POWER_OFF))
++		device_set_wakeup_enable(dev, false);
++
+ 	if (pci_has_legacy_pm_support(pci_dev))
+ 		return pci_legacy_suspend(dev, PMSG_HIBERNATE);
+ 
+-- 
+2.43.0
+
+
+From mboxrd@z Thu Jan  1 00:00:00 1970
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 099542D8791;
+	Mon, 11 Aug 2025 19:41:21 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1754941282; cv=none; b=Kp5gR+m6SNJU5suaJTgbXtpQsCaQFE5tEDTb8hshUgleCSNuC2MHIO0q87tIDGpTb84xFEYxTtCrfKiwaru/HCZ/YpLKtekXaFaf5Ztrt0et4FsYJWeOK8M/afHuGZNkKX4lBr5r+by2MroM+XaG0WaKmTsJAA8s2VfRihNUMYg=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1754941282; c=relaxed/simple;
+	bh=XxmDbp+Gl7Em9FTRsxGLU8Z8numECcu57RGTZraG8Xk=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version; b=Z5DXtIFHEQ4rc2QPyImOLjuVtTXpJj8GTu29sy1qKMQuTtn0pp3HJKFMG7/vLrgVci0Xaabz/Cdg6Yxu5WaLOFvKhHuMosl/2PazEKdFuLwXTEjNJIE9n9FM+n2jIgTgHNhP6N5l+2b9qI2fcbi6a7e5D6G7ISgoKXabHhaJ8oc=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=UzMb0Na0; arc=none smtp.client-ip=10.30.226.201
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="UzMb0Na0"
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A29E9C4CEF9;
+	Mon, 11 Aug 2025 19:41:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1754941281;
+	bh=XxmDbp+Gl7Em9FTRsxGLU8Z8numECcu57RGTZraG8Xk=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=UzMb0Na0SsFD576K4zqhC3+ReAkolBpA81QsOQfMjWAgQw2rLTBQU7lsWfVUmZfpA
+	 VM+3XvSpHJO/+VmonrVwvn3T4DD7TCgSv5DdDQ6eqXAxZnjyG76LHLQ27ZD0V2KOKq
+	 euxuf1ON1Wc6qj04pYHOBxApfk0j2rSL6DAQGZKtqM6X9E6odhIn+MExjHgT1izjjI
+	 V3SR30XrG8MJ2UVG7JoKwTGQxP/8OSgZ/fVfpu9xmojesz4aPB6y8QqsRrpZe1vGFy
+	 d23i+jxTsxORLqXprtmDMLXKqmtorkiWSOxm553pzF0OEMoxqwRb/SPXeDSmazUsd+
+	 TXtmcW/BiW+7g==
+From: "Mario Limonciello (AMD)" <superm1@kernel.org>
+To: "Rafael J . Wysocki" <rafael@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>
+Cc: Pavel Machek <pavel@kernel.org>,
+	Len Brown <lenb@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Danilo Krummrich <dakr@kernel.org>,
+	=?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
+	"James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+	"Martin K . Petersen" <martin.petersen@oracle.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	linux-pm@vger.kernel.org (open list:HIBERNATION (aka Software Suspend, aka swsusp)),
+	amd-gfx@lists.freedesktop.org (open list:RADEON and AMDGPU DRM DRIVERS),
+	dri-devel@lists.freedesktop.org (open list:DRM DRIVERS),
+	linux-pci@vger.kernel.org (open list:PCI SUBSYSTEM),
+	linux-scsi@vger.kernel.org (open list:SCSI SUBSYSTEM),
+	linux-usb@vger.kernel.org (open list:USB SUBSYSTEM),
+	linux-trace-kernel@vger.kernel.org (open list:TRACING),
+	AceLan Kao <acelan.kao@canonical.com>,
+	Kai-Heng Feng <kaihengf@nvidia.com>,
+	Mark Pearson <mpearson-lenovo@squebb.ca>,
+	=?UTF-8?q?Merthan=20Karaka=C5=9F?= <m3rthn.k@gmail.com>,
+	Eric Naim <dnaim@cachyos.org>,
+	"Mario Limonciello (AMD)" <superm1@kernel.org>
+Subject: [PATCH v5 06/11] PCI: PM: Split out code from pci_pm_suspend_noirq() into helper
+Date: Mon, 11 Aug 2025 14:40:57 -0500
+Message-ID: <20250811194102.864225-7-superm1@kernel.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250811194102.864225-1-superm1@kernel.org>
+References: <20250811194102.864225-1-superm1@kernel.org>
+Precedence: bulk
+X-Mailing-List: linux-usb@vger.kernel.org
+List-Id: <linux-usb.vger.kernel.org>
+List-Subscribe: <mailto:linux-usb+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-usb+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+
+In order to unify suspend and hibernate codepaths without code duplication
+the common code should be in common helpers.  Move it from
+pci_pm_suspend_noirq() into a helper.  No intended functional changes.
+
+Tested-by: Eric Naim <dnaim@cachyos.org>
+Signed-off-by: Mario Limonciello (AMD) <superm1@kernel.org>
+---
+v5:
+ * Split from earlier patches
+ * Add tags
+v4:
+ * https://lore.kernel.org/linux-pci/20250616175019.3471583-1-superm1@kernel.org/
+---
+ drivers/pci/pci-driver.c | 81 +++++++++++++++++++++++++---------------
+ 1 file changed, 51 insertions(+), 30 deletions(-)
+
+diff --git a/drivers/pci/pci-driver.c b/drivers/pci/pci-driver.c
+index f201d298d7173..571a3809f163a 100644
+--- a/drivers/pci/pci-driver.c
++++ b/drivers/pci/pci-driver.c
+@@ -762,6 +762,54 @@ static void pci_pm_complete(struct device *dev)
+ 
+ #endif /* !CONFIG_PM_SLEEP */
+ 
++#if defined(CONFIG_SUSPEND)
++/**
++ * pci_pm_suspend_noirq_common
++ * @pci_dev: pci device
++ * @skip_bus_pm: pointer to a boolean indicating whether to skip bus PM
++ *
++ * Prepare the device to go into a low power state by saving state and
++ * deciding whether to skip bus PM.
++ *
++ */
++static void pci_pm_suspend_noirq_common(struct pci_dev *pci_dev, bool *skip_bus_pm)
++{
++	if (!pci_dev->state_saved) {
++		pci_save_state(pci_dev);
++
++		/*
++		 * If the device is a bridge with a child in D0 below it,
++		 * it needs to stay in D0, so check skip_bus_pm to avoid
++		 * putting it into a low-power state in that case.
++		 */
++		if (!pci_dev->skip_bus_pm && pci_power_manageable(pci_dev))
++			pci_prepare_to_sleep(pci_dev);
++	}
++
++	pci_dbg(pci_dev, "PCI PM: Sleep power state: %s\n",
++		pci_power_name(pci_dev->current_state));
++
++	if (pci_dev->current_state == PCI_D0) {
++		pci_dev->skip_bus_pm = true;
++		/*
++		 * Per PCI PM r1.2, table 6-1, a bridge must be in D0 if any
++		 * downstream device is in D0, so avoid changing the power state
++		 * of the parent bridge by setting the skip_bus_pm flag for it.
++		 */
++		if (pci_dev->bus->self)
++			pci_dev->bus->self->skip_bus_pm = true;
++	}
++
++	if (pci_dev->skip_bus_pm && pm_suspend_no_platform()) {
++		pci_dbg(pci_dev, "PCI PM: Skipped\n");
++		*skip_bus_pm = true;
++		return;
++	}
++
++	pci_pm_set_unknown_state(pci_dev);
++}
++#endif /* CONFIG_SUSPEND */
++
+ #ifdef CONFIG_SUSPEND
+ static void pcie_pme_root_status_cleanup(struct pci_dev *pci_dev)
+ {
+@@ -851,6 +899,7 @@ static int pci_pm_suspend_noirq(struct device *dev)
+ {
+ 	struct pci_dev *pci_dev = to_pci_dev(dev);
+ 	const struct dev_pm_ops *pm = dev->driver ? dev->driver->pm : NULL;
++	bool skip_bus_pm = false;
+ 
+ 	if (dev_pm_skip_suspend(dev))
+ 		return 0;
+@@ -881,38 +930,10 @@ static int pci_pm_suspend_noirq(struct device *dev)
+ 		}
+ 	}
+ 
+-	if (!pci_dev->state_saved) {
+-		pci_save_state(pci_dev);
+-
+-		/*
+-		 * If the device is a bridge with a child in D0 below it,
+-		 * it needs to stay in D0, so check skip_bus_pm to avoid
+-		 * putting it into a low-power state in that case.
+-		 */
+-		if (!pci_dev->skip_bus_pm && pci_power_manageable(pci_dev))
+-			pci_prepare_to_sleep(pci_dev);
+-	}
+-
+-	pci_dbg(pci_dev, "PCI PM: Suspend power state: %s\n",
+-		pci_power_name(pci_dev->current_state));
++	pci_pm_suspend_noirq_common(pci_dev, &skip_bus_pm);
+ 
+-	if (pci_dev->current_state == PCI_D0) {
+-		pci_dev->skip_bus_pm = true;
+-		/*
+-		 * Per PCI PM r1.2, table 6-1, a bridge must be in D0 if any
+-		 * downstream device is in D0, so avoid changing the power state
+-		 * of the parent bridge by setting the skip_bus_pm flag for it.
+-		 */
+-		if (pci_dev->bus->self)
+-			pci_dev->bus->self->skip_bus_pm = true;
+-	}
+-
+-	if (pci_dev->skip_bus_pm && pm_suspend_no_platform()) {
+-		pci_dbg(pci_dev, "PCI PM: Skipped\n");
++	if (skip_bus_pm)
+ 		goto Fixup;
+-	}
+-
+-	pci_pm_set_unknown_state(pci_dev);
+ 
+ 	/*
+ 	 * Some BIOSes from ASUS have a bug: If a USB EHCI host controller's
+-- 
+2.43.0
+
+
+From mboxrd@z Thu Jan  1 00:00:00 1970
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C9F382D8791;
+	Mon, 11 Aug 2025 19:41:23 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1754941283; cv=none; b=tTNBVOFxtjv5vc/Jg7+ST+rH7XIxCvEKbL3hKUmATrK96SQVQ8HlI+fLoor1UpuCf5/LTpBjcNsSjro4Oq5EXflUxWnGb7usYMUdNHVSl4U1lteAmZZzb2FFz3sox9S9ysdcBNrg6iifRC+BF9mF9lWXn9vDaZECjoJotjWLeh4=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1754941283; c=relaxed/simple;
+	bh=UGv8yMZlE7pfJwSGLN7xjf9pNffnerK8ACuf3st8kZM=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version; b=PeyHAHmbkvsDFYHYpTrfx1cWVH1oJEmGM7I/gdcIzBcdCx9rrk+kR4u8reptHWdJ0fjiC4gDwOymbvN+Uz/fvuf0daCOOG3pxTno+snpqpTOs+bpqRT7JDq/AX/MUyFQ0fthrVmBldOXPRFmlDf69s7ycOWxr0BOoMHXFZA+v8M=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=PXZvNHha; arc=none smtp.client-ip=10.30.226.201
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="PXZvNHha"
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C5403C4CEF8;
+	Mon, 11 Aug 2025 19:41:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1754941283;
+	bh=UGv8yMZlE7pfJwSGLN7xjf9pNffnerK8ACuf3st8kZM=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=PXZvNHhalPpwKgkEGAM7UhVylOee8KOqIAP+0IQo71O0HM36Nck8sWeezIOPniQD8
+	 64NyAv7NMRYsD+NqlI+3NyKHGsF8iK901LIqHdZy9tyFSMmDjgKw6aRcndT2VAGIYW
+	 bwVxZftEW/QnfUkAws9pu+sZ4tybuFZmGqplQ36Fgk7mC+SfMjNlGdZXHWmsOrZG/e
+	 IGE//aw8yVq5182TM3+yHEnFDbNeNbIC9Z/IWRFb6NOMBMRTyJwfBtQLTROCZL8Uw5
+	 IwD0MyD2ZYg/SW9GboQ1+LyEHSlYhd8bGSSLadxAL1BHzsX5d1UN7yuVmEE9yWCD9u
+	 knqe3D47KLvCQ==
+From: "Mario Limonciello (AMD)" <superm1@kernel.org>
+To: "Rafael J . Wysocki" <rafael@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>
+Cc: Pavel Machek <pavel@kernel.org>,
+	Len Brown <lenb@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Danilo Krummrich <dakr@kernel.org>,
+	=?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
+	"James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+	"Martin K . Petersen" <martin.petersen@oracle.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	linux-pm@vger.kernel.org (open list:HIBERNATION (aka Software Suspend, aka swsusp)),
+	amd-gfx@lists.freedesktop.org (open list:RADEON and AMDGPU DRM DRIVERS),
+	dri-devel@lists.freedesktop.org (open list:DRM DRIVERS),
+	linux-pci@vger.kernel.org (open list:PCI SUBSYSTEM),
+	linux-scsi@vger.kernel.org (open list:SCSI SUBSYSTEM),
+	linux-usb@vger.kernel.org (open list:USB SUBSYSTEM),
+	linux-trace-kernel@vger.kernel.org (open list:TRACING),
+	AceLan Kao <acelan.kao@canonical.com>,
+	Kai-Heng Feng <kaihengf@nvidia.com>,
+	Mark Pearson <mpearson-lenovo@squebb.ca>,
+	=?UTF-8?q?Merthan=20Karaka=C5=9F?= <m3rthn.k@gmail.com>,
+	Eric Naim <dnaim@cachyos.org>,
+	"Mario Limonciello (AMD)" <superm1@kernel.org>
+Subject: [PATCH v5 07/11] PCI: PM: Run bridge power up actions as part of restore phase
+Date: Mon, 11 Aug 2025 14:40:58 -0500
+Message-ID: <20250811194102.864225-8-superm1@kernel.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250811194102.864225-1-superm1@kernel.org>
+References: <20250811194102.864225-1-superm1@kernel.org>
+Precedence: bulk
+X-Mailing-List: linux-usb@vger.kernel.org
+List-Id: <linux-usb.vger.kernel.org>
+List-Subscribe: <mailto:linux-usb+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-usb+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+
+Suspend resume actions will check the state of the device and whether
+bus PM should be skipped.  These same actions make sense during hibernation
+image restore.  Apply them there as well.
+
+Tested-by: Eric Naim <dnaim@cachyos.org>
+Signed-off-by: Mario Limonciello (AMD) <superm1@kernel.org>
+---
+v5:
+ * Split out patch
+---
+ drivers/pci/pci-driver.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/drivers/pci/pci-driver.c b/drivers/pci/pci-driver.c
+index 571a3809f163a..fb6f1f60b2f1f 100644
+--- a/drivers/pci/pci-driver.c
++++ b/drivers/pci/pci-driver.c
+@@ -1246,10 +1246,15 @@ static int pci_pm_restore_noirq(struct device *dev)
+ {
+ 	struct pci_dev *pci_dev = to_pci_dev(dev);
+ 	const struct dev_pm_ops *pm = dev->driver ? dev->driver->pm : NULL;
++	pci_power_t prev_state = pci_dev->current_state;
++	bool skip_bus_pm = pci_dev->skip_bus_pm;
+ 
+ 	pci_pm_default_resume_early(pci_dev);
+ 	pci_fixup_device(pci_fixup_resume_early, pci_dev);
+ 
++	if (!skip_bus_pm && prev_state == PCI_D3cold)
++		pci_pm_bridge_power_up_actions(pci_dev);
++
+ 	if (pci_has_legacy_pm_support(pci_dev))
+ 		return 0;
+ 
+-- 
+2.43.0
+
+
+From mboxrd@z Thu Jan  1 00:00:00 1970
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4DD522D94A0;
+	Mon, 11 Aug 2025 19:41:26 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1754941286; cv=none; b=Fp2fZTIYXcsOavXPDuIa1fyvtetFNXxOrJZ5L6emjmyeMqvfwuKWJvbLlITgjpZ4gTKJhjeMHOEVrp+xq7CKHrwWtvc9awyRhOB6Wn5txgBzq3guyWXz971MZbTbQuYoTr9/XWJWwTHbnNUbQcqp4g+PJfJ36RANszOqfRiyytM=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1754941286; c=relaxed/simple;
+	bh=et7bJe3p9Q1yVCIYr8gWEO9Yxv/JOZsp+bMu8xhiGjw=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version; b=OgFm9UsMWQ+r4X4z293AT/xS6Sb3+vMU6ELmoWvMwxoEOelIVT2aWzCDO5egBEaF8ubc35UIEkhrFh7sYfNS3LnqMEW/LlQz7LBa/ljVdDp5zjhhQtGc4B9XaSoAPYg3ExBjUZhgLtj/Eg4QX8TrnlqqZFbBDleyST6OPdwrbbg=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=haaXI8ry; arc=none smtp.client-ip=10.30.226.201
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="haaXI8ry"
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EA63CC4CEF1;
+	Mon, 11 Aug 2025 19:41:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1754941285;
+	bh=et7bJe3p9Q1yVCIYr8gWEO9Yxv/JOZsp+bMu8xhiGjw=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=haaXI8ry279qEit/tJgKYky7JRJ3ljqlonppbG1KJKJ5i5hermaNh8vS4JdQfqWjh
+	 +edmheve6lNyRioFSKxfX+mNwEcNVJrEEX5ip4kwAgEk0qYQIFJI5Hzjtqmqcnn8h2
+	 yT1Frav/Gim++o4EgDjZdNlGJTrp255SrEE74Fs7b4SqoxOfL0wSltpE4ioZe9TJuW
+	 w6CYHOQ3H7yWhViIABLX9ihNe3A4aKhanjm3GQekB7CkkcoZGXjPksEyicgEWb+7OQ
+	 fN/7Hb/Xu4d/z/C+OmdQdMdmyLS6II8V8Z1opOdGbmkFfDTOsdu3Bz+mB+A/onbouR
+	 k7q8L+bFS6TmA==
+From: "Mario Limonciello (AMD)" <superm1@kernel.org>
+To: "Rafael J . Wysocki" <rafael@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>
+Cc: Pavel Machek <pavel@kernel.org>,
+	Len Brown <lenb@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Danilo Krummrich <dakr@kernel.org>,
+	=?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
+	"James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+	"Martin K . Petersen" <martin.petersen@oracle.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	linux-pm@vger.kernel.org (open list:HIBERNATION (aka Software Suspend, aka swsusp)),
+	amd-gfx@lists.freedesktop.org (open list:RADEON and AMDGPU DRM DRIVERS),
+	dri-devel@lists.freedesktop.org (open list:DRM DRIVERS),
+	linux-pci@vger.kernel.org (open list:PCI SUBSYSTEM),
+	linux-scsi@vger.kernel.org (open list:SCSI SUBSYSTEM),
+	linux-usb@vger.kernel.org (open list:USB SUBSYSTEM),
+	linux-trace-kernel@vger.kernel.org (open list:TRACING),
+	AceLan Kao <acelan.kao@canonical.com>,
+	Kai-Heng Feng <kaihengf@nvidia.com>,
+	Mark Pearson <mpearson-lenovo@squebb.ca>,
+	=?UTF-8?q?Merthan=20Karaka=C5=9F?= <m3rthn.k@gmail.com>,
+	Eric Naim <dnaim@cachyos.org>,
+	"Mario Limonciello (AMD)" <superm1@kernel.org>
+Subject: [PATCH v5 08/11] PCI: PM: Use pci_power_manageable() in pci_pm_poweroff_noirq()
+Date: Mon, 11 Aug 2025 14:40:59 -0500
+Message-ID: <20250811194102.864225-9-superm1@kernel.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250811194102.864225-1-superm1@kernel.org>
+References: <20250811194102.864225-1-superm1@kernel.org>
+Precedence: bulk
+X-Mailing-List: linux-usb@vger.kernel.org
+List-Id: <linux-usb.vger.kernel.org>
+List-Subscribe: <mailto:linux-usb+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-usb+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+
+Devices with no subordinate should be put into D3 during hibernate, but
+devices that have bridge_d3 set should also be put to sleep during
+hibernate. Adjust the check in pci_pm_poweroff_noirq() to use
+pci_power_manageable() to cover those as well.
+
+Tested-by: Eric Naim <dnaim@cachyos.org>
+Signed-off-by: Mario Limonciello (AMD) <superm1@kernel.org>
+---
+v5:
+ * Split out patch
+---
+ drivers/pci/pci-driver.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/pci/pci-driver.c b/drivers/pci/pci-driver.c
+index fb6f1f60b2f1f..c563fd6af979d 100644
+--- a/drivers/pci/pci-driver.c
++++ b/drivers/pci/pci-driver.c
+@@ -1227,7 +1227,7 @@ static int pci_pm_poweroff_noirq(struct device *dev)
+ 			return error;
+ 	}
+ 
+-	if (!pci_dev->state_saved && !pci_has_subordinate(pci_dev))
++	if (!pci_dev->state_saved && pci_power_manageable(pci_dev))
+ 		pci_prepare_to_sleep(pci_dev);
+ 
+ 	/*
+-- 
+2.43.0
+
+
+From mboxrd@z Thu Jan  1 00:00:00 1970
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 90DFD311C2A;
+	Mon, 11 Aug 2025 19:41:28 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1754941288; cv=none; b=g6OPA8sDAeHXyp2YT3RdBciLxYDOG3+SaEHtH9fJ3WivscT3GdpYM4mImqtz0ilt+olYPY/2NvaCHNe9LDQ2PrA/yP4KbxYmQGIIIC/ZtM3myI/9g6Y+CvsVKidEkiXF7RlVnbp8bPYMHySASpugLvXccynJf5IM/c2foELsoOs=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1754941288; c=relaxed/simple;
+	bh=YDE4eTsEYBDGi7Jax+QXA0nV9r/Fnc4UpODdIMh+DDM=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=AGnK4CxKzL5ZXJROQknyGmcNfeiqZ0CQphb7l/9vgAUhZR7s0RDWKK7NXahka0zplaTqaf0U8SsXO1G3AlnjzHdNGC26/33dOhm90T5od6TaFgEugFaFN8bAvCfA8IVX/gV21YdNrIgQ+ri0DfFlAss0dqhvglG+eThGRU8HzDE=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=MLdRsvkH; arc=none smtp.client-ip=10.30.226.201
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="MLdRsvkH"
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 24213C4CEED;
+	Mon, 11 Aug 2025 19:41:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1754941288;
+	bh=YDE4eTsEYBDGi7Jax+QXA0nV9r/Fnc4UpODdIMh+DDM=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=MLdRsvkH7kU84hLhbYKJrKTmQu4FNqFOqyZDMoRzKTWmoBP8e+mwiPY3B8Tey7k4n
+	 5/tV+pPKX7IirZgm6vyrsKsfUNdwsimf2hUNNAucDPsJDsvnYhoM4Yu+CGBIdWf54S
+	 evNeQV1X2Qi18TDQlBYTwHq3gfu6S3JsGsvbTGEe0k3XN9CaRV9+sJaeTLk+KIYbgI
+	 tzfjtmAvvLb+F9IStlD5SM9/9BAnxbp9Lj76dKfKyJ5Gb1ROlHpI3A6/dtfSxLhgEo
+	 RbSEatZsqK6HH8sktcaiOlk6TsX/HdF7UfJ3lTMJ2ovMLvo+s8sGfEn/U0blRGKNpz
+	 Sd5Zwv/OB27uw==
+From: "Mario Limonciello (AMD)" <superm1@kernel.org>
+To: "Rafael J . Wysocki" <rafael@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>
+Cc: Pavel Machek <pavel@kernel.org>,
+	Len Brown <lenb@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Danilo Krummrich <dakr@kernel.org>,
+	=?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
+	"James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+	"Martin K . Petersen" <martin.petersen@oracle.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	linux-pm@vger.kernel.org (open list:HIBERNATION (aka Software Suspend, aka swsusp)),
+	amd-gfx@lists.freedesktop.org (open list:RADEON and AMDGPU DRM DRIVERS),
+	dri-devel@lists.freedesktop.org (open list:DRM DRIVERS),
+	linux-pci@vger.kernel.org (open list:PCI SUBSYSTEM),
+	linux-scsi@vger.kernel.org (open list:SCSI SUBSYSTEM),
+	linux-usb@vger.kernel.org (open list:USB SUBSYSTEM),
+	linux-trace-kernel@vger.kernel.org (open list:TRACING),
+	AceLan Kao <acelan.kao@canonical.com>,
+	Kai-Heng Feng <kaihengf@nvidia.com>,
+	Mark Pearson <mpearson-lenovo@squebb.ca>,
+	=?UTF-8?q?Merthan=20Karaka=C5=9F?= <m3rthn.k@gmail.com>,
+	Eric Naim <dnaim@cachyos.org>,
+	"Mario Limonciello (AMD)" <superm1@kernel.org>,
+	Denis Benato <benato.denis96@gmail.com>
+Subject: [PATCH v5 09/11] PCI: Put PCIe ports with downstream devices into D3 at hibernate
+Date: Mon, 11 Aug 2025 14:41:00 -0500
+Message-ID: <20250811194102.864225-10-superm1@kernel.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250811194102.864225-1-superm1@kernel.org>
+References: <20250811194102.864225-1-superm1@kernel.org>
+Precedence: bulk
+X-Mailing-List: linux-usb@vger.kernel.org
+List-Id: <linux-usb.vger.kernel.org>
+List-Subscribe: <mailto:linux-usb+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-usb+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+For the suspend flow PCIe ports that have downstream devices are put into
+the appropriate D3 state when children are not in D0. For the hibernate
+flow, PCIe ports with downstream devices stay in D0 however. This can
+lead to PCIe ports that are remained powered on needlessly during
+hibernate.
+
+Adjust the pci_pm_poweroff_noirq() to follow the same flow as
+pci_pm_suspend_noirq() by using pci_pm_suspend_noirq_common().
+
+This introduces a functional change that the hibernate flow will now
+call pci_save_state() and unless bus PM is skipped will also set
+the PCIe device into an unknown state.
+
+Cc: AceLan Kao <acelan.kao@canonical.com>
+Cc: Kai-Heng Feng <kaihengf@nvidia.com>
+Cc: Mark Pearson <mpearson-lenovo@squebb.ca>
+Cc: Denis Benato <benato.denis96@gmail.com>
+Cc: Merthan Karakaş <m3rthn.k@gmail.com>
+Tested-by: Eric Naim <dnaim@cachyos.org>
+Signed-off-by: Mario Limonciello (AMD) <superm1@kernel.org>
+---
+v5:
+ * Split out into more patches
+ * Rewrite commit
+ * Add tag
+v4:
+ * Use helper even when CONFIG_SUSPEND not set (LKP robot)
+ * https://lore.kernel.org/linux-pci/20250616175019.3471583-1-superm1@kernel.org/
+v3:
+ * Split out common code between suspend_noirq() and poweroff_noirq()
+   to a helper function
+ * https://lore.kernel.org/linux-pm/20250609024619.407257-1-superm1@kernel.org/T/#me6db0fb946e3d604a8f3d455128844ed802c82bb
+---
+ drivers/pci/pci-driver.c | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/pci/pci-driver.c b/drivers/pci/pci-driver.c
+index c563fd6af979d..5eedfbb0be8a4 100644
+--- a/drivers/pci/pci-driver.c
++++ b/drivers/pci/pci-driver.c
+@@ -762,7 +762,7 @@ static void pci_pm_complete(struct device *dev)
+ 
+ #endif /* !CONFIG_PM_SLEEP */
+ 
+-#if defined(CONFIG_SUSPEND)
++#if defined(CONFIG_SUSPEND) || defined(CONFIG_HIBERNATE_CALLBACKS)
+ /**
+  * pci_pm_suspend_noirq_common
+  * @pci_dev: pci device
+@@ -808,7 +808,7 @@ static void pci_pm_suspend_noirq_common(struct pci_dev *pci_dev, bool *skip_bus_
+ 
+ 	pci_pm_set_unknown_state(pci_dev);
+ }
+-#endif /* CONFIG_SUSPEND */
++#endif /* CONFIG_SUSPEND || CONFIG_HIBERNATE_CALLBACKS */
+ 
+ #ifdef CONFIG_SUSPEND
+ static void pcie_pme_root_status_cleanup(struct pci_dev *pci_dev)
+@@ -1164,6 +1164,8 @@ static int pci_pm_poweroff(struct device *dev)
+ 	    (system_state == SYSTEM_HALT || system_state == SYSTEM_POWER_OFF))
+ 		device_set_wakeup_enable(dev, false);
+ 
++	pci_dev->skip_bus_pm = false;
++
+ 	if (pci_has_legacy_pm_support(pci_dev))
+ 		return pci_legacy_suspend(dev, PMSG_HIBERNATE);
+ 
+@@ -1206,6 +1208,7 @@ static int pci_pm_poweroff_noirq(struct device *dev)
+ {
+ 	struct pci_dev *pci_dev = to_pci_dev(dev);
+ 	const struct dev_pm_ops *pm = dev->driver ? dev->driver->pm : NULL;
++	bool skip_bus_pm = false;
+ 
+ 	if (dev_pm_skip_suspend(dev))
+ 		return 0;
+@@ -1227,8 +1230,9 @@ static int pci_pm_poweroff_noirq(struct device *dev)
+ 			return error;
+ 	}
+ 
+-	if (!pci_dev->state_saved && pci_power_manageable(pci_dev))
+-		pci_prepare_to_sleep(pci_dev);
++	pci_pm_suspend_noirq_common(pci_dev, &skip_bus_pm);
++	if (skip_bus_pm)
++		goto Fixup;
+ 
+ 	/*
+ 	 * The reason for doing this here is the same as for the analogous code
+@@ -1237,6 +1241,7 @@ static int pci_pm_poweroff_noirq(struct device *dev)
+ 	if (pci_dev->class == PCI_CLASS_SERIAL_USB_EHCI)
+ 		pci_write_config_word(pci_dev, PCI_COMMAND, 0);
+ 
++Fixup:
+ 	pci_fixup_device(pci_fixup_suspend_late, pci_dev);
+ 
+ 	return 0;
+-- 
+2.43.0
+
+
+From mboxrd@z Thu Jan  1 00:00:00 1970
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 97723149C51;
+	Mon, 11 Aug 2025 19:41:30 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1754941290; cv=none; b=Bgun0OxWJlR8kAcWCL72J5OuwHRQ63yVfgYaZOGVYAQLuaTpvG8M2CgRT/DbYl73zPGyo5cQPo502qSnmCfk4WkfktS/dEyJkWB8dwKH/omIFVMniRvA1xFpZxPRwz/HVp0iMn/IVXoWhWu1WChSu/DQYrvG3bjHygDEdMhrYqA=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1754941290; c=relaxed/simple;
+	bh=lZO49mOiU9nMXanXitdCGns/iICvFzwUE7jh8Qy4c6w=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=PN7HTXd+NnDs1B2kUVodfh2fUz+rLZoHm55Lpw/zr5vxSIXuD0nwCqXvGFj1YMbjaPBCtgTDzv5STxyGOxQd6aNyXt0nl+qu2gMbhMyhzIcN6Cro8JpfOH4tFoVVATl1dsrqexceu3wAaVQOrsAoxGbIoiXCIzcJhPoFQNOYhTc=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=fAWIKtzN; arc=none smtp.client-ip=10.30.226.201
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="fAWIKtzN"
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5F48EC4CEF9;
+	Mon, 11 Aug 2025 19:41:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1754941290;
+	bh=lZO49mOiU9nMXanXitdCGns/iICvFzwUE7jh8Qy4c6w=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=fAWIKtzNkrh0kLfrkCGTl51/AdF8Ya5bJaeHLKLfGx6fWe+PvAsKcPid4a7zu6dji
+	 IetyN14kw0YP0TCp2Tzdbn+B7lnNGBhIG71WlWURJot/Oe6PXhZ2RYPLbk8aqvF1Om
+	 45EyzwvyAUhj/l04uE+uPrvxPonEiMGUpYOr6Cd5P3NNc0mdh1Sh+fhdBZn3ETOc8p
+	 LB7RMg4GT9u9mVWJ8izsXR/X0erfn2IVvwqg38ZDIpBE62OSPfd/Hh8r+mq8YAEa7a
+	 szE9xQlKkf3mEFOiXKvJ7bUUdj2r8+6UzFs9Ot+fEXjbxXdJ8/buTj4ScFLZpCsbwX
+	 f2ikkfov2aPhQ==
+From: "Mario Limonciello (AMD)" <superm1@kernel.org>
+To: "Rafael J . Wysocki" <rafael@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>
+Cc: Pavel Machek <pavel@kernel.org>,
+	Len Brown <lenb@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Danilo Krummrich <dakr@kernel.org>,
+	=?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
+	"James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+	"Martin K . Petersen" <martin.petersen@oracle.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	linux-pm@vger.kernel.org (open list:HIBERNATION (aka Software Suspend, aka swsusp)),
+	amd-gfx@lists.freedesktop.org (open list:RADEON and AMDGPU DRM DRIVERS),
+	dri-devel@lists.freedesktop.org (open list:DRM DRIVERS),
+	linux-pci@vger.kernel.org (open list:PCI SUBSYSTEM),
+	linux-scsi@vger.kernel.org (open list:SCSI SUBSYSTEM),
+	linux-usb@vger.kernel.org (open list:USB SUBSYSTEM),
+	linux-trace-kernel@vger.kernel.org (open list:TRACING),
+	AceLan Kao <acelan.kao@canonical.com>,
+	Kai-Heng Feng <kaihengf@nvidia.com>,
+	Mark Pearson <mpearson-lenovo@squebb.ca>,
+	=?UTF-8?q?Merthan=20Karaka=C5=9F?= <m3rthn.k@gmail.com>,
+	Eric Naim <dnaim@cachyos.org>,
+	"Mario Limonciello (AMD)" <superm1@kernel.org>,
+	Denis Benato <benato.denis96@gmail.com>,
+	Alex Deucher <alexander.deucher@amd.com>
+Subject: [PATCH v5 10/11] drm/amd: Avoid evicting resources at S5
+Date: Mon, 11 Aug 2025 14:41:01 -0500
+Message-ID: <20250811194102.864225-11-superm1@kernel.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250811194102.864225-1-superm1@kernel.org>
+References: <20250811194102.864225-1-superm1@kernel.org>
+Precedence: bulk
+X-Mailing-List: linux-usb@vger.kernel.org
+List-Id: <linux-usb.vger.kernel.org>
+List-Subscribe: <mailto:linux-usb+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-usb+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Normally resources are evicted on dGPUs at suspend or hibernate and
+on APUs at hibernate.  These steps are unnecessary when using the S4
+callbacks to put the system into S5.
+
+Cc: AceLan Kao <acelan.kao@canonical.com>
+Cc: Kai-Heng Feng <kaihengf@nvidia.com>
+Cc: Mark Pearson <mpearson-lenovo@squebb.ca>
+Cc: Denis Benato <benato.denis96@gmail.com>
+Cc: Merthan Karakaş <m3rthn.k@gmail.com>
+Tested-by: Eric Naim <dnaim@cachyos.org>
+Acked-by: Alex Deucher <alexander.deucher@amd.com>
+Signed-off-by: Mario Limonciello (AMD) <superm1@kernel.org>
+---
+v5:
+ * No changes
+v4:
+ * Add A-b tag for Alex
+ * https://lore.kernel.org/linux-pci/20250616175019.3471583-1-superm1@kernel.org/
+---
+ drivers/gpu/drm/amd/amdgpu/amdgpu_device.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
+index f9b4c4321f67c..4e4b7a63cc61e 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
+@@ -5017,6 +5017,10 @@ static int amdgpu_device_evict_resources(struct amdgpu_device *adev)
+ 	if (!adev->in_s4 && (adev->flags & AMD_IS_APU))
+ 		return 0;
+ 
++	/* No need to evict when going to S5 through S4 callbacks */
++	if (system_state == SYSTEM_HALT || system_state == SYSTEM_POWER_OFF)
++		return 0;
++
+ 	ret = amdgpu_ttm_evict_resources(adev, TTM_PL_VRAM);
+ 	if (ret) {
+ 		dev_warn(adev->dev, "evicting device resources failed\n");
+-- 
+2.43.0
+
+
+From mboxrd@z Thu Jan  1 00:00:00 1970
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3085B2D9ECA;
+	Mon, 11 Aug 2025 19:41:32 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1754941293; cv=none; b=lfnkLX0jHci8PpGiwz9zedmfjmoPIp4glbVY1SCNz4UGYnGifnJUu2pTTS6ms9MYxOX2/SgwS3Q6ScUL/GozhG3ELpcwoHxX6686RIPTYPrlvzCdZxnCRAyppxAYCJipL4XuAmgLHjq6D0bNrnj4cIkfH/gymN5RX55Q6WTxZIM=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1754941293; c=relaxed/simple;
+	bh=3S7JR1J0KLdyO8pzE3T0jrrcCJZbmsNBb/5yq5sNZ4o=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=eu98+OPiWdabN2V1jPPPOb95r/OfZRVPPB2umadkXV6CYKeDswgzf/LAGfkNWoOYzcgNrzjHgOu/HIphQ7x7f1HUQSqKjWnRTkkPmlgJysiq3nKK1K51uXJaHUdMur82gnHZvPzOVGyED2Ef9BPB9MJS9te4T0VMxBQPzHtAR8g=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=GMSXi/mf; arc=none smtp.client-ip=10.30.226.201
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="GMSXi/mf"
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B49EAC4CEF1;
+	Mon, 11 Aug 2025 19:41:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1754941292;
+	bh=3S7JR1J0KLdyO8pzE3T0jrrcCJZbmsNBb/5yq5sNZ4o=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=GMSXi/mfXO9CULm95AGcxq1StyiIAEhXKxWqrjQpgVDdbBMjE7DIHk6hXNu1KG0UG
+	 AIBF8QgPqxTpfO4qMGtfD3I8/HLw+/N1zJD35KCfg8lg1AuL4sKQjtFzYHCPPiC4D3
+	 UMeLVNBgvlNksicJH9YKA0je3B9gZLcD0IvtOxOa+3tJF4Q1kG1SIJ8HcXjG2UHgPA
+	 zWqlLr8Q6kCpAOHRG5TgV+IiRFaA6AqyFQ282E1puyJGL/5V/od9WVffWXLKGAN1De
+	 jfC4YnZQhGNe8rOSvJemtW1qfKm8zoUwO2wVEvJQhDdbQ+vGGZ4jMUSRXGEI9MIdgq
+	 sgC0tFy9K3d/w==
+From: "Mario Limonciello (AMD)" <superm1@kernel.org>
+To: "Rafael J . Wysocki" <rafael@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>
+Cc: Pavel Machek <pavel@kernel.org>,
+	Len Brown <lenb@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Danilo Krummrich <dakr@kernel.org>,
+	=?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
+	"James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+	"Martin K . Petersen" <martin.petersen@oracle.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	linux-pm@vger.kernel.org (open list:HIBERNATION (aka Software Suspend, aka swsusp)),
+	amd-gfx@lists.freedesktop.org (open list:RADEON and AMDGPU DRM DRIVERS),
+	dri-devel@lists.freedesktop.org (open list:DRM DRIVERS),
+	linux-pci@vger.kernel.org (open list:PCI SUBSYSTEM),
+	linux-scsi@vger.kernel.org (open list:SCSI SUBSYSTEM),
+	linux-usb@vger.kernel.org (open list:USB SUBSYSTEM),
+	linux-trace-kernel@vger.kernel.org (open list:TRACING),
+	AceLan Kao <acelan.kao@canonical.com>,
+	Kai-Heng Feng <kaihengf@nvidia.com>,
+	Mark Pearson <mpearson-lenovo@squebb.ca>,
+	=?UTF-8?q?Merthan=20Karaka=C5=9F?= <m3rthn.k@gmail.com>,
+	Eric Naim <dnaim@cachyos.org>,
+	"Mario Limonciello (AMD)" <superm1@kernel.org>,
+	Denis Benato <benato.denis96@gmail.com>
+Subject: [PATCH v5 11/11] PM: Use hibernate flows for system power off
+Date: Mon, 11 Aug 2025 14:41:02 -0500
+Message-ID: <20250811194102.864225-12-superm1@kernel.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20250811194102.864225-1-superm1@kernel.org>
+References: <20250811194102.864225-1-superm1@kernel.org>
+Precedence: bulk
+X-Mailing-List: linux-usb@vger.kernel.org
+List-Id: <linux-usb.vger.kernel.org>
+List-Subscribe: <mailto:linux-usb+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-usb+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+When the system is powered off the kernel will call device_shutdown()
+which will issue callbacks into PCI core to wake up a device and call
+it's shutdown() callback.  This will leave devices in ACPI D0 which can
+cause some devices to misbehave with spurious wakeups and also leave some
+devices on which will consume power needlessly.
+
+The issue won't happen if the device is in D3 before system shutdown, so
+putting device to low power state before shutdown solves the issue.
+
+ACPI Spec 6.5, "7.4.2.5 System \_S4 State" says "Devices states are
+compatible with the current Power Resource states. In other words, all
+devices are in the D3 state when the system state is S4."
+
+The following "7.4.2.6 System \_S5 State (Soft Off)" states "The S5
+state is similar to the S4 state except that OSPM does not save any
+context." so it's safe to assume devices should be at D3 for S5.
+
+To accomplish this, use the PMSG_POWEROFF event to call all the device
+hibernate callbacks when the kernel is compiled with hibernate support.
+If compiled without hibernate support or hibernate fails fall back into
+the previous shutdown flow.
+
+Cc: AceLan Kao <acelan.kao@canonical.com>
+Cc: Kai-Heng Feng <kaihengf@nvidia.com>
+Cc: Mark Pearson <mpearson-lenovo@squebb.ca>
+Cc: Merthan Karakaş <m3rthn.k@gmail.com>
+Tested-by: Eric Naim <dnaim@cachyos.org>
+Tested-by: Denis Benato <benato.denis96@gmail.com>
+Link: https://lore.kernel.org/linux-pci/20231213182656.6165-1-mario.limonciello@amd.com/
+Link: https://lore.kernel.org/linux-pci/20250506041934.1409302-1-superm1@kernel.org/
+Signed-off-by: Mario Limonciello (AMD) <superm1@kernel.org>
+---
+v5:
+ * split to multiple commits, re-order
+v4:
+ * https://lore.kernel.org/linux-pci/20250616175019.3471583-1-superm1@kernel.org/
+v3:
+ * Add new PMSG_POWEROFF and PM_EVENT_POWEROFF which alias to poweroff
+   callbacks
+ * Don't try to cleanup on dpm_suspend_start() or dpm_suspend_end() failures
+   Jump right into normal shutdown flow instead.
+ * https://lore.kernel.org/linux-pm/20250609024619.407257-1-superm1@kernel.org/T/#me6db0fb946e3d604a8f3d455128844ed802c82bb
+---
+ kernel/reboot.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/kernel/reboot.c b/kernel/reboot.c
+index ec087827c85cd..c8835f8e5f271 100644
+--- a/kernel/reboot.c
++++ b/kernel/reboot.c
+@@ -13,6 +13,7 @@
+ #include <linux/kexec.h>
+ #include <linux/kmod.h>
+ #include <linux/kmsg_dump.h>
++#include <linux/pm.h>
+ #include <linux/reboot.h>
+ #include <linux/suspend.h>
+ #include <linux/syscalls.h>
+@@ -305,6 +306,11 @@ static void kernel_shutdown_prepare(enum system_states state)
+ 		(state == SYSTEM_HALT) ? SYS_HALT : SYS_POWER_OFF, NULL);
+ 	system_state = state;
+ 	usermodehelper_disable();
++#ifdef CONFIG_HIBERNATE_CALLBACKS
++	if (!dpm_suspend_start(PMSG_POWEROFF) && !dpm_suspend_end(PMSG_POWEROFF))
++		return;
++	pr_emerg("Failed to power off devices, using shutdown instead.\n");
++#endif
+ 	device_shutdown();
+ }
+ /**
+-- 
+2.43.0
+
+
+From mboxrd@z Thu Jan  1 00:00:00 1970
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AD0EF2F8BE2
+	for <oe-kbuild-all@lists.linux.dev>; Tue, 12 Aug 2025 16:24:25 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.18
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1755015867; cv=none; b=kUhu/voN3F3+hDEc2Z542qoipYJeQ5RKARUNDx3r+XikfwTQZtfIZQhagz75LbE2/gWCkgyKJHsCST/rIi1TrqRrSnWVXsSFcYdQbHculPymyP8CzfAw1jK1HKm2cJO73CQYZI8gQqmEmZ/4IM/9XlCZ2NR7CrCiOKeGAnZB42A=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1755015867; c=relaxed/simple;
+	bh=q3ATWwbJnmhEV0tER11ue3lL09n8bcsLC90p1qBToR0=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=PKm94dsritkodVsglInj+fFxXgGvW2ppUKtQYAgwT+H+6v3rkiQVD4zMKDBGvKKgehhwX7QQWv7jMi2fdt50aN5HoIreY7jaK25sP00SRGG5HCVEvnyZMLtSCG0cwivsOEB3bNdq8FXKebUorSjoQYbZnQ9lsX1Y3wW7KvsenS0=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=BD1X9zBY; arc=none smtp.client-ip=198.175.65.18
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="BD1X9zBY"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1755015866; x=1786551866;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=q3ATWwbJnmhEV0tER11ue3lL09n8bcsLC90p1qBToR0=;
+  b=BD1X9zBY/U8VTu6XBGOF+2j5ZS+oYGAFfCZ2DRzPcFrXtKpD5jJ8tjr8
+   io2l5JKHeNrE74PDPjEK+GAnQRnFwlkjknkFwBCNLki11WJIDxKdqmGdF
+   fyhrUtR9lRKxCw1wu7wnjeQ65Rpce8rs+AyFqSVtSblhu/XDoqJ382iz8
+   UD/kEVeVc7zbZdk1Bb6pdhCgMnxE+1Fs6JBbmvZVG5sv7jfgmpLt/GGpp
+   Yu3VZF3Y9Xs2bES32TiIAbzgIbt98L7rFPcRQ4jYq/mSE0EYgaR2YFh/F
+   wsqTZH5nZPBjkX50VecjG20kO75pue5U077Qk/obrQCxu4Xxpx5Ay7G7M
+   Q==;
+X-CSE-ConnectionGUID: mz03SrQ4R7ulOnyRFGSudw==
+X-CSE-MsgGUID: XdjJiH+6RtqWj7NHFWrW2w==
+X-IronPort-AV: E=McAfee;i="6800,10657,11520"; a="57378398"
+X-IronPort-AV: E=Sophos;i="6.17,284,1747724400"; 
+   d="scan'208";a="57378398"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Aug 2025 09:24:25 -0700
+X-CSE-ConnectionGUID: yC4pQlA5TSWMd4+9pje4Aw==
+X-CSE-MsgGUID: aWFQrDsnQvqkjbg6wiAiLg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.17,284,1747724400"; 
+   d="scan'208";a="170457391"
+Received: from lkp-server02.sh.intel.com (HELO 4ea60e6ab079) ([10.239.97.151])
+  by fmviesa005.fm.intel.com with ESMTP; 12 Aug 2025 09:24:20 -0700
+Received: from kbuild by 4ea60e6ab079 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1ulrnN-0006zD-1K;
+	Tue, 12 Aug 2025 16:24:17 +0000
+Date: Wed, 13 Aug 2025 00:23:28 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Mario Limonciello (AMD)" <superm1@kernel.org>,
+	"Rafael J . Wysocki" <rafael@kernel.org>,
+	Bjorn Helgaas <helgaas@kernel.org>
+Cc: oe-kbuild-all@lists.linux.dev, Pavel Machek <pavel@kernel.org>,
+	Len Brown <lenb@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Danilo Krummrich <dakr@kernel.org>,
+	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
+	"James E . J . Bottomley" <James.Bottomley@hansenpartnership.com>,
+	"Martin K . Petersen" <martin.petersen@oracle.com>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	"(open list:HIBERNATION (aka Software Suspend, aka swsusp))" <linux-pm@vger.kernel.org>,
+	amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+	linux-pci@vger.kernel.org, linux-scsi@vger.kernel.org,
+	linux-usb@vger.kernel.org, linux-trace-kernel@vger.kernel.org,
+	AceLan Kao <acelan.kao@canonical.com>,
+	Kai-Heng Feng <kaihengf@nvidia.com>,
+	Mark Pearson <mpearson-lenovo@squebb.ca>,
+	Merthan =?utf-8?Q?Karaka=C5=9F?= <m3rthn.k@gmail.com>,
+	Eric Naim <dnaim@cachyos.org>,
+	"Mario Limonciello (AMD)" <superm1@kernel.org>
+Subject: Re: [PATCH v5 04/11] USB: Pass PMSG_POWEROFF event to
+ suspend_common() for poweroff with S4 flow
+Message-ID: <202508130049.aA2DXgHW-lkp@intel.com>
+References: <20250811194102.864225-5-superm1@kernel.org>
+Precedence: bulk
+X-Mailing-List: oe-kbuild-all@lists.linux.dev
+List-Id: <oe-kbuild-all.lists.linux.dev>
+List-Subscribe: <mailto:oe-kbuild-all+subscribe@lists.linux.dev>
+List-Unsubscribe: <mailto:oe-kbuild-all+unsubscribe@lists.linux.dev>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250811194102.864225-5-superm1@kernel.org>
+
+Hi Mario,
+
+kernel test robot noticed the following build errors:
+
+[auto build test ERROR on 8f5ae30d69d7543eee0d70083daf4de8fe15d585]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Mario-Limonciello-AMD/PM-Introduce-new-PMSG_POWEROFF-event/20250812-034228
+base:   8f5ae30d69d7543eee0d70083daf4de8fe15d585
+patch link:    https://lore.kernel.org/r/20250811194102.864225-5-superm1%40kernel.org
+patch subject: [PATCH v5 04/11] USB: Pass PMSG_POWEROFF event to suspend_common() for poweroff with S4 flow
+config: i386-randconfig-013-20250812 (https://download.01.org/0day-ci/archive/20250813/202508130049.aA2DXgHW-lkp@intel.com/config)
+compiler: gcc-12 (Debian 12.2.0-14+deb12u1) 12.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250813/202508130049.aA2DXgHW-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202508130049.aA2DXgHW-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+>> drivers/usb/core/hcd-pci.c:650:27: error: 'hcd_pci_poweroff' undeclared here (not in a function); did you mean 'hcd_pci_poweroff_late'?
+     650 |         .poweroff       = hcd_pci_poweroff,
+         |                           ^~~~~~~~~~~~~~~~
+         |                           hcd_pci_poweroff_late
+
+
+vim +650 drivers/usb/core/hcd-pci.c
+
+   640	
+   641	const struct dev_pm_ops usb_hcd_pci_pm_ops = {
+   642		.suspend	= hcd_pci_suspend,
+   643		.suspend_noirq	= hcd_pci_suspend_noirq,
+   644		.resume_noirq	= hcd_pci_resume_noirq,
+   645		.resume		= hcd_pci_resume,
+   646		.freeze		= hcd_pci_freeze,
+   647		.freeze_noirq	= check_root_hub_suspended,
+   648		.thaw_noirq	= NULL,
+   649		.thaw		= hcd_pci_resume,
+ > 650		.poweroff	= hcd_pci_poweroff,
+   651		.poweroff_late	= hcd_pci_poweroff_late,
+   652		.poweroff_noirq	= hcd_pci_suspend_noirq,
+   653		.restore_noirq	= hcd_pci_resume_noirq,
+   654		.restore	= hcd_pci_restore,
+   655		.runtime_suspend = hcd_pci_runtime_suspend,
+   656		.runtime_resume	= hcd_pci_runtime_resume,
+   657	};
+   658	EXPORT_SYMBOL_GPL(usb_hcd_pci_pm_ops);
+   659	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
+

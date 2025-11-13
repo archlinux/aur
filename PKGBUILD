@@ -4,7 +4,7 @@
 
 pkgbase=linux-g14
 pkgver=6.17.7.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
 _url='https://github.com/archlinux/linux'
@@ -51,18 +51,23 @@ source=(
   0009-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch
   0010-asus-nb-wmi-fix-tablet_mode_sw_int.patch
   0011-amdgpu-adjust_plane_init_off_by_one.patch
+  0070-acpi-x86-s2idle-Add-ability-to-configure-wakeup-by-A.patch
+  PATCH-asus-wmi-fixup-screenpad-brightness.patch
+  PATCH-v5-00-11-Improvements-to-S5-power-consumption.patch
+  v2-0002-hid-asus-change-the-report_id-used-for-HID-LED-co.patch
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
+  C7E7849466FE2358343588377258734B41C31549  # David Runge
 )
 
 sha256sums=('ddf2ea0d4439e1d57136be3623102af9458f601f5b1cb77e83246e88aea09d0e'
             'SKIP'
             '8bb8d08a419971c0cf96346de3de69c980e0c9a384f46cca49ca9c74eb60343a'
             'SKIP'
-            'e8ca1849fc8c1ebea39d81b4307455c0eb4585aaed606da0c87c023f9807ff6e'
+            '4e6c3f6a35fed3e2bee7309d430ddf87b435ffb6e697c5d53a6c2eb73c42079a'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             '11e570d8a355c2c6ccd413b7ecea9ae1f9b9801eb9a16249f8c4c5e6c80a1ead'
             '01759c4cb098295a9896fe799f07b8747e99deebd3b629f0cf87ef9e89ab58ac'
@@ -73,7 +78,12 @@ sha256sums=('ddf2ea0d4439e1d57136be3623102af9458f601f5b1cb77e83246e88aea09d0e'
             'd89bedd7ef4d7bfe5c5d8b1f3c2e12cbb293ce7e11647700cc077e772d5f7fe8'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
             '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85'
-            'e90bb17f74c5b232001de5558ff96e09612f35a8552e1fa506c8a3451b0516b7')
+            'e90bb17f74c5b232001de5558ff96e09612f35a8552e1fa506c8a3451b0516b7'
+            '7830a8efc59e0bb411c98cf1acc4e3b541dd0a5366773690700502cc570db62f'
+            '590752012b37a21c92b59ab98189f56f405a4722572dd87b39c925bb89bb17c4'
+            '83d40f889a96c492e15fcaf16914c864e8d0ac7fb85148690badef61e89d7afa'
+            '227d2d4ecd710a13deeab3a4e488b4d1c52d06231ab190b939316cc3c1eb2899'
+            )
 
 # notable microarch levels:
 #
@@ -216,8 +226,19 @@ prepare() {
   scripts/config  --enable CONFIG_EFI_HANDOVER_PROTOCOL \
                   --enable CONFIG_EFI_STUB
 
+  # enable SCHED_CLASS_EXT
+  scripts/config --enable CONFIG_SCHED_CLASS_EXT
+
   # try to fix stuttering on some ROG laptops
   scripts/config --disable CONFIG_HW_RANDOM_TPM
+
+  # HACK: forcibly fixup CONFIG_CMDLINE here as using scripts/config mangles escaped quotes
+  sed -i 's#makepkgplaceholderyolo#ibt=off pm_debug_messages amd_pmc.dyndbg=\\"+p\\" acpi.dyndbg=\\"file drivers/acpi/x86/s2idle.c +p\\"#' .config
+
+  # Note the double escaped quotes above, sed strips one; the final result in .config needs to contain single slash
+  # escaped quotes (eg: `CONFIG_CMDLINE="foo.dyndbg=\"+p\""`) to avoid dyndbg parse errors at boot. This is impossible
+  # with the current kernel config script.
+
 }
 
 build() {
