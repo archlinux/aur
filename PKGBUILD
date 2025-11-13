@@ -2,33 +2,34 @@
 pkgname=python-ezchlog-git
 _pkgname=${pkgname#python-}
 _pkgname=${_pkgname%-git}
-pkgver=v1.0.2.r0.22d2311
+pkgver=1.2.0.r1.2a5185d
 pkgrel=1
 pkgdesc="Easy git branch friendly changelogs"
 arch=('any')
 url="https://gitlab.com/jrdasm/ezchlog"
 license=('MIT')
 depends=('python>=3.11')
-# depends=('python>=3.9' 'python-tomli')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
+# depends=('python>=3.10' 'python-tomli')
+makedepends=('git' 'uv' 'python-installer')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  cd "$_pkgname"
+  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//;')"
 }
 
 build() {
-	cd "$srcdir/$_pkgname"
+  cd "$_pkgname"
+  # strip installation info in README
   sed -i '/^Python version$/,/^Add a changelog$/{/^Add a changelog$/!d}' README.md
-  python -m build --wheel --no-isolation
+  uv build --wheel
 }
 
 package() {
-	cd "$srcdir/$_pkgname"
+  cd "$_pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -D -t "$pkgdir/usr/share/doc/$pkgname" README.md
 }
