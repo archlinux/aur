@@ -1,17 +1,17 @@
 # Maintainer: Antheas Kapenekakis <aur at antheas dot dev>
 pkgname=hhd
-pkgver=4.0.1
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='Handheld Daemon. A tool for managing the quirks of handheld devices.'
 arch=('x86_64')
 url='https://github.com/hhd-dev/hhd'
 license=('LGPL-2.1-or-later')
-depends=('python' 'python-setuptools' 'python-evdev' 'python-rich' 'python-yaml' 'python-xlib' 'libusb' 'python-pyserial' 'lsof'  'python-pyroute2' 'python-fuse' 'python-gobject')
+depends=('python' 'python-setuptools' 'python-evdev' 'python-rich' 'python-yaml' 'python-xlib' 'libusb' 'python-pyserial' 'lsof'  'python-pyroute2' 'python-gobject')
 optdepends=('hhd-user: allows running hhd as a user service.')
 makedepends=('python-'{'build','installer','setuptools','wheel','babel'})
 replaces=('adjustor')
 source=("https://github.com/hhd-dev/hhd/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('82dadc2190392653f55bc243f3e799296a4b53ad1007acce525be856997af40365111d35052696ec66fd273f7ffc59f4405b456bc243d4b852f45cca2ba14fcc')
+sha512sums=('0d47875185048403437d0f338cfa220449be2a99837bc39a391035d61a195b5da5e39bd9ffcc278da45a64a2fc88dc2dec53eb51b78faed67ecf6865f4483c65')
 
 build() {
   cd "hhd-$pkgver"
