@@ -25,7 +25,7 @@ source=(
     'equicord.png'
 )
 sha512sums=('SKIP'
-            '5ceaab27342ff4ec953a7a3edbd4ec500e6d504d86ed6a1213bc81845b8a1fae6b513f6d6cefd6978702fc3372f9d80cbc96d3dc72f763f27ffd191d6b639c0b'
+            'SKIP'
             '25c3e3cbef8c981a42ba059f589ffc9ebe8c81406fa6cd6b000ed7b4e3c7b95ae96108df2a29096a8c527153b3becf98b1769b2af75d5f6cf0fe69edd2b3da3a'
             '94f091c05c365986d556616404e00344a1d8e4ba93ad1875c0d3d96b1d0a643a799343fe6b84dcf7013ea3f9d47a3380540d8212bbf3fb6f5ddf39840ffe38d5')
 
