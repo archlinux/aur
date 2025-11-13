@@ -2,10 +2,10 @@
 
 pkgname=nip4
 pkgver=9.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="image processing spreadsheet"
 arch=('x86_64')
-url="https://github.com/jcupitt/nip4"
+url="https://github.com/libvips/nip4"
 license=('MIT')
 depends=(
   'cairo'
