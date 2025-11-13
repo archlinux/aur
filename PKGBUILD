@@ -13,7 +13,7 @@ source_x86_64=(
 	"Apidog-${pkgver}.AppImage::https://file-assets.apidog.com/download/${pkgver}/Apidog-${pkgver}.AppImage"
 	"apidog.desktop"
 )
-sha256sums_x86_64=('e856926d0ae1aeea0e32a3fabc768afa35a64318e9d7cf859ac882b38fb8b948'
+sha256sums_x86_64=('cc72da9fc2bd2d6408a6336c8142c85f541c689fc2093717a1781c2dc9de4104'
                    'df7ead28acf1b9ed171b08c4db34efbe0d1689bce594ccc68408e75af9cb8bc5')
 
 package() {
