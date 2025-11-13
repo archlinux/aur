@@ -1,6 +1,6 @@
 pkgbase = chocolate-quake
 	pkgdesc = Conservative source port of Quake I
-	pkgver = 1.3.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/Henrique194/chocolate-quake
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = chocolate-quake
 	makedepends = git
 	depends = sdl2
 	conflicts = chocolate-quake-git
-	source = chocolate-quake-1.3.0.tar.gz::https://github.com/Henrique194/chocolate-quake/archive/refs/tags/chocolate-quake-1.3.0.tar.gz
-	sha256sums = bad9adffccb71addd821a3c82242ad29d4be38a530fd1f798e63ada5716b666c
+	source = chocolate-quake-2.0.0.tar.gz::https://github.com/Henrique194/chocolate-quake/archive/refs/tags/chocolate-quake-2.0.0.tar.gz
+	sha256sums = f617e37bc2e8c0a9e83bf1191216091be7b2040e5e763de26a0cc661dd82d73f
 
 pkgname = chocolate-quake
