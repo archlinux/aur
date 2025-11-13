@@ -1,7 +1,7 @@
 pkgbase = gazelle-tui
-	pkgdesc = Minimal NetworkManager TUI with complete 802.1X enterprise WiFi support
-	pkgver = 1.7.2
-	pkgrel = 2
+	pkgdesc = Minimal NetworkManager TUI with complete 802.1X enterprise WiFi and WWAN support
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://github.com/Zeus-Deus/gazelle-tui
 	arch = any
 	license = MIT
@@ -11,7 +11,8 @@ pkgbase = gazelle-tui
 	depends = networkmanager-openvpn
 	depends = wireguard-tools
 	optdepends = python-tomli: Omarchy theme detection for Python < 3.11
-	source = gazelle-tui-1.7.2.tar.gz::https://github.com/Zeus-Deus/gazelle-tui/archive/v1.7.2.tar.gz
-	sha256sums = dde76d06ebe30afb11b7f1013279f86533667d119859eee28323d12acf3ffe00
+	optdepends = modemmanager: WWAN/cellular modem support
+	source = gazelle-tui-1.8.0.tar.gz::https://github.com/Zeus-Deus/gazelle-tui/archive/v1.8.0.tar.gz
+	sha256sums = 89ee2f37d89e711dc65726056e7c8f6ffccec555c46bdd78374fb3d14ee61600
 
 pkgname = gazelle-tui
