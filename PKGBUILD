@@ -6,7 +6,7 @@ pkgname=(
   "${_pkgbase}"
 )
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="User space library that supports DL1xx DisplayLink devices. Can be used to drive those displays directly."
 url="https://libdlo.freedesktop.org/wiki/"
 arch=(
@@ -29,9 +29,11 @@ makedepends=(
 optdepends=()
 provides=(
   "${_pkgbase}.so"
+  "${_pkgbase}.a"
 )
 conflicts=(
   "${_pkgbase}.so"
+  "${_pkgbase}.a"
 )
 options+=('staticlibs')
 source=(
