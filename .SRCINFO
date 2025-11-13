@@ -1,6 +1,6 @@
 pkgbase = netbeans-bin
 	pkgdesc = IDE for Java, HTML5, PHP, Groovy, C and C++
-	pkgver = 27
+	pkgver = 28
 	pkgrel = 1
 	url = https://netbeans.apache.org/
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = netbeans-bin
 	depends = java-environment>=17
 	optdepends = php: for developing programs in php
 	optdepends = groovy: for developing programs in groovy
-	source = https://www.apache.org/dyn/closer.lua/netbeans/netbeans/27/netbeans-27-bin.zip?action=download
+	source = https://www.apache.org/dyn/closer.lua/netbeans/netbeans/28/netbeans-28-bin.zip?action=download
 	source = netbeans-logo.svg
-	sha512sums = ef3fde1aa22db457759daa3ab99856eeefe0bb28687589ee93a33a6777133cdb6201d8cc662d6f4f6119ceb21ee8b68c039fc9a0330cb5bf8accb7b873ae0362
+	sha512sums = d0dd5c6f2dc795b9b4b5f469cde87b9665054369dcdf2fcc687cedfb358386de744fdae207404b2565ffb2136077ca2a988a1b52f69738a7d3b28400a8f4a3b0
 	sha512sums = e963494757f34512523bababdf72e7b7eb32d5f1034d5c1589d7a3aedb707de96a6e2e38dadd05c002cac76860957df1a98d3bda80913eaf26bb52502a0e5e13
 
 pkgname = netbeans-bin
