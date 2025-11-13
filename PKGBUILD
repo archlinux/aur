@@ -2,7 +2,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='tinct-plugin-dunstify-bin'
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc='Desktop notification plugin for Tinct'
 url='https://github.com/jmylchreest/tinct'
@@ -13,14 +13,14 @@ conflicts=('tinct')
 depends=('tinct-bin')
 install=tinct-plugin-dunstify.install
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.6/tinct-plugin-dunstify_0.0.6_Linux_arm64.tar.gz")
-sha256sums_aarch64=('b935010100dd468f8f25a708e7cf9b75f7319a18b2871a56062ab19970824284')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.7/tinct-plugin-dunstify_0.0.7_Linux_arm64.tar.gz")
+sha256sums_aarch64=('ac462816c33f3668dbc7099aadf984246f619297dabf0d8903937d32e3bb4ed1')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.6/tinct-plugin-dunstify_0.0.6_Linux_armv7.tar.gz")
-sha256sums_armv7h=('217bd60d29e628e35319faddcab802c7e1b23a49c5564b6237581b89ac906d9d')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.7/tinct-plugin-dunstify_0.0.7_Linux_armv7.tar.gz")
+sha256sums_armv7h=('7e5a2ccabe29de707cf9033db8723ff35347ca92ba95887a77a08ba532bb7f14')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.6/tinct-plugin-dunstify_0.0.6_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('cb1c140de79f1921131aebd14943e6f2006457a93acd6ed2c9b42e87af85c1c5')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.7/tinct-plugin-dunstify_0.0.7_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('4fab5ce0c3c7c2695f763ac4319a2d3a053e3ca95455ae0f7b930a7f85cf5c52')
 
 package() {
   # bin
@@ -30,7 +30,10 @@ package() {
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/tinct-plugin-dunstify/LICENSE"
 
   # sbom
-  if [ -f *.sbom.json ]; then
-  install -Dm644 *.sbom.json "${pkgdir}/usr/share/doc/tinct-plugin-dunstify/sbom.json"
+  for sbom in *.sbom.json; do
+  if [ -f "$sbom" ]; then
+  install -Dm644 "$sbom" "${pkgdir}/usr/share/doc/tinct-plugin-dunstify/sbom.json"
+  break
   fi
+  done
 }
