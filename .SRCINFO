@@ -1,6 +1,6 @@
 pkgbase = comrak
 	pkgdesc = CommonMark + GFM compatible Markdown parser and renderer
-	pkgver = 0.47.0
+	pkgver = 0.48.0
 	pkgrel = 1
 	url = https://github.com/kivikakk/comrak
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = comrak
 	depends = gcc-libs
 	depends = glibc
 	depends = oniguruma
-	source = https://github.com/kivikakk/comrak/archive/v0.47.0/comrak-0.47.0.tar.gz
-	sha256sums = 607e322d13cce89da43ea923dfa48c1a5fb10649a0de0300a366292a931211db
+	source = https://github.com/kivikakk/comrak/archive/v0.48.0/comrak-0.48.0.tar.gz
+	sha256sums = 91d136008082a5019df88255bef198e21f177cf7234895be4957ffeb92bd886e
 
 pkgname = comrak
