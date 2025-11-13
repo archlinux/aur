@@ -1,12 +1,12 @@
 # Maintainer: Jaume Delclòs <jaume@delclos.com>
 pkgname=blue-spider-git
-pkgver=r170.d6f4581
+pkgver=r171.62ce79a
 pkgrel=1
 pkgdesc="A map editor for Pokémon GBA ROMs"
 arch=(any)
 url="https://github.com/cosarara97/blue-spider"
 license=('GPL-3.0-or-later')
-depends=('python' 'python-pillow' 'python-pyqt5')
+depends=('python' 'python-pillow' 'python-pyqt5' 'python-appdirs')
 makedepends=(
   git
   python-build
