@@ -1,0 +1,5 @@
+[dt-bin]
+source = "github"
+github = "so-dang-cool/dt"
+use_latest_release = true
+prefix = "v"
