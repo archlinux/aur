@@ -1,7 +1,7 @@
 # Maintainer: Kevin <github@kev314.dev>
 # Co-Maintainer: Lysec <itslysec@gmail.com>
 pkgname=noctalia-shell
-pkgver=3.0.10
+pkgver=3.0.11
 pkgrel=1
 pkgdesc="A sleek and minimal desktop shell thoughtfully crafted for Wayland, built with Quickshell."
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
 conflicts=('noctalia-shell-git')
 install="${pkgname}.install"
 source=("git+$url.git#tag=v$pkgver")
-sha256sums=('3a3bfc1d0b0f6a6959cd895c84831443175b086ed90b997d8985dd9009bdc68b')
+sha256sums=('bce42855942cfc2e007b7f81968e5de44410c71c097f65b35147ea13221737e1')
 
 package() {
   cd "$srcdir/$pkgname"
