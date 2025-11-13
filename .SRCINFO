@@ -13,6 +13,5 @@ pkgbase = nonraid-git
 	provides = nmdctl
 	source = git+https://github.com/qvr/nonraid.git#tag=nonraid-dkms-1.3.2
 	sha256sums = SKIP
-	install = nonraid-dkms.install
 
 pkgname = nonraid-git
