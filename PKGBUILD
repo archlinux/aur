@@ -3,7 +3,7 @@
 pkgname=supermodel
 pkgver=0.3a_git_b6716e1
 _pkgver=${pkgver//_/-}
-pkgrel=3
+pkgrel=4
 pkgdesc='A Sega Model 3 Arcade Emulator'
 url='https://github.com/trzy/Supermodel'
 license=('GPL3')
@@ -14,13 +14,20 @@ source=(
   "https://github.com/trzy/Supermodel/archive/refs/tags/v${_pkgver}.tar.gz"
   "$pkgname"
   "${pkgname}.desktop"
+  '258.diff'
 )
 
 sha512sums=(
   '456c214bf97e8f40f3fc339537ad1dfcc91d460902db55a81cc712ae18b450c06239e5644f67be99cf6e4117ac694580722eeac79cdf64c90e390def16d6bd3f'
   'cc328bbd65142af9ea61dda371b89cf76007213e697b320b615a64c0f5df9d6ac0c59ccfdd313b85acf7aa3989790f93bca97dda9d327765fd659afc8bd4f1e3'
   '13266c13ecbaccc2a156c41d2d42a271d9bc4bffcfe794a875a10128e97981558302ee9f7b5b8dd8c87ef8b00c5b5216843a9576917f9dd37a13a0455a1bba69'
+  '894296aa2c691a23e52e0e6d45070bc86b662b7faefd57e790b2bbabe8e706fabaccba8029dc3cadd10939773e5c761575b7d9b5933a7d547e5e2a25e9111064'
 )
+
+prepare() {
+  cd Supermodel-${_pkgver}
+  patch -p1 < ../258.diff
+}
 
 build() {
   cd Supermodel-${_pkgver}

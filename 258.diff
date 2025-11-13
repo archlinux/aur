@@ -1,0 +1,13 @@
+diff --git a/Src/Inputs/InputSystem.cpp b/Src/Inputs/InputSystem.cpp
+index af8a9ca..8d9ad29 100644
+--- a/Src/Inputs/InputSystem.cpp
++++ b/Src/Inputs/InputSystem.cpp
+@@ -1799,7 +1799,7 @@ bool CInputSystem::ReadMapping(char* buffer, unsigned bufSize, bool fullAxisOnly
+     if (!Poll())
+         goto Cancelled;
+ 
+-    CheckAllSources(readFlags, fullAxisOnly, mseCentered, sources, badMapping, badSources);
++    CheckAllSources(readFlags, fullAxisOnly, mseCentered, badSources, badMapping, sources); // parameters must be passed in this order
+ 
+     // Loop until have received meaningful inputs
+     for (;;)
