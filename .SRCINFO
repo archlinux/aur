@@ -1,0 +1,16 @@
+pkgbase = rootapp
+	pkgdesc = Experimental build of Root app via AppImage
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.rootapp.com
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = fuse
+	options = !strip
+	source_x86_64 = Root-x86_64.AppImage::https://installer.rootapp.com/installer/Linux/X64/Root.AppImage
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = Root-aarch64.AppImage::https://installer.rootapp.com/installer/Linux/Arm64/Root.AppImage
+	sha256sums_aarch64 = SKIP
+
+pkgname = rootapp
