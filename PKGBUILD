@@ -5,7 +5,7 @@
 
 pkgname=python-spacy
 _pkg="${pkgname#python-}"
-pkgver=3.8.8
+pkgver=3.8.9
 pkgrel=1
 pkgdesc='Free open-source library for Natural Language Processing in Python'
 arch=('x86_64' 'aarch64')
@@ -35,7 +35,7 @@ makedepends=(
 	'python-setuptools'
 	'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/s/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('08b933bd1f0f47f59321fe730a06c645120084719e718960a2e596a3728aea84')
+sha256sums=('0800eb7e05cfc3ca5fbb4ed8b67ec630bad14084f7bd8e6fc0eaebd279d4284f')
 
 prepare() {
     cd "$_pkg-$pkgver"
