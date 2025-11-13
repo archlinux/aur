@@ -1,17 +1,17 @@
 pkgbase = wnr-bin
 	pkgdesc = Work/Rest Timer. Stricter. Prettier. More features.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.31.0
+	pkgver = 1.31.1
 	pkgrel = 1
 	url = https://getwnr.com/
 	arch = x86_64
 	license = MPL-2.0
 	depends = electron37
-	provides = wnr-1.31.0
+	provides = wnr-1.31.1
 	conflicts = wnr
-	source = wnr-1.31.0-x86_64.AppImage::https://github.com/RoderickQiu/wnr/releases/download/v1.31.0/wnr-1.31.0-Linux.AppImage
-	source = LICENSE-1.31.0::https://raw.githubusercontent.com/RoderickQiu/wnr/v1.31.0/LICENSE
+	source = wnr-1.31.1-x86_64.AppImage::https://github.com/RoderickQiu/wnr/releases/download/v1.31.1/wnr-1.31.1-Linux.AppImage
+	source = LICENSE-1.31.1::https://raw.githubusercontent.com/RoderickQiu/wnr/v1.31.1/LICENSE
 	source = wnr.sh
-	sha256sums = 78955bc51fa7bad4ba94db6ab409d964f84c57d264c1873aa03a9512963f7f73
+	sha256sums = bbacfceae420931e02e140c564548b110148aaa3f5a29fb1f573c4154e3d1764
 	sha256sums = 1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
