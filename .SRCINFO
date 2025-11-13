@@ -1,7 +1,7 @@
 pkgbase = cmdcreate
 	pkgdesc = Allows you to create custom commands for your custom scripts
 	pkgver = 0.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Meme-Supplier/cmdcreate
 	arch = x86_64
 	license = MIT
