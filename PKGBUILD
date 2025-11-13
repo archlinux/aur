@@ -2,7 +2,7 @@
 # Maintainer: Derek Corniello corniedj@mail.uc.edu
 
 pkgname=quick-mouse
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Wireless mouse using smartphone sensors'
 arch=('x86_64')
