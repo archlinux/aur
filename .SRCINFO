@@ -1,6 +1,6 @@
 pkgbase = oh-my-git-git
 	pkgdesc = An interactive Git learning game!
-	pkgver = 0.6.4.r24.gfbe95c3
+	pkgver = 0.6.5.r23.gc64e8f2
 	pkgrel = 1
 	url = https://ohmygit.org/
 	arch = x86_64

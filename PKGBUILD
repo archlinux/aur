@@ -1,7 +1,7 @@
 # Maintainer: Anthony Wang <ta180m@pm.me>
 # Maintainer: Mikhail f. Shiryaev <mr dot felixoid at gmail dot com>
 pkgname=oh-my-git-git
-pkgver=0.6.4.r24.gfbe95c3
+pkgver=0.6.5.r23.gc64e8f2
 pkgrel=1
 pkgdesc='An interactive Git learning game!'
 arch=(x86_64)
@@ -39,12 +39,12 @@ build() {
   godot_version=${godot_version/.stable*/.stable}
   godot_minor=${godot_version%.*.*}
   for bin in godot godot3; do
-    templates_dir="${srcdir}/.local/share/$bin/templates"
+    templates_dir="${srcdir}/templates/$bin/templates"
     mkdir -p "$templates_dir"
     ln -sf --no-dereference /usr/share/godot/templates/"$godot_minor"* "$templates_dir/$godot_version"
   done
   # build game
-  HOME="${srcdir}" xvfb-run make linux
+  XDG_DATA_HOME="${srcdir}/templates" xvfb-run make linux
 }
 
 package() {
