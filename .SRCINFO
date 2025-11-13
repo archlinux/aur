@@ -21,6 +21,7 @@ pkgbase = wxwidgets-gtk
 	depends = pcre2
 	depends = libsm
 	depends = gstreamer
+	depends = gst-plugins-base-libs
 	depends = gst-plugins-bad-libs
 	depends = webkit2gtk-4.1
 	depends = glibc
