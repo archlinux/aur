@@ -1,7 +1,7 @@
 # Maintainer: Yorick Peterse <aur AT yorickpeterse DOT com>
 
 pkgname=inko-git
-pkgver=0.18.1.r73.gf0fa8604
+pkgver=0.19.0.r1.gfb8dc20d
 pkgrel=1
 pkgdesc="A language for building concurrent software with confidence"
 url="https://inko-lang.org"
