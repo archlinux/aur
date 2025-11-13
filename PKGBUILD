@@ -2,14 +2,14 @@
 
 pkgname=xcursor-haiku
 pkgdesc='Haiku cursors as a xcursor theme, using the haiku-icons repository'
-pkgver=3
+pkgver=4
 pkgrel=1
 url=https://codeberg.org/aperezdc/xcursor-haiku
 arch=(any)
 makedepends=(librsvg xorg-xcursorgen python)
 license=(MIT)
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.lz")
-b2sums=('478c92b041a392f7ef8aaaee0d4e7ff3a41f47ca0e7672fa3b161adf4fa8fdcab48f5b1376af89d13afb2601e5461857b504596bd90626b1b119858d73e4707d')
+b2sums=('edf5608ec6caa39dd2de540daf512d9ac0254e20e5ca16225b5e45d33648a5b81502f610f4264a229f83a4b3a1a9e5c704c3eac2adc478076447c44af59aa4fd')
 
 build () {
 	cd "$pkgname-$pkgver"
