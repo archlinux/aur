@@ -1,6 +1,6 @@
 pkgbase = quick-mouse
 	pkgdesc = Wireless mouse using smartphone sensors
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/DerekCorniello/quick-mouse
 	arch = x86_64
