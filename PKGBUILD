@@ -3,7 +3,7 @@
 _pkgname=nmeap
 pkgname="${_pkgname}-git"
 pkgver=0.3.r5.20090814.890153d
-pkgrel=1
+pkgrel=2
 pkgdesc="Extensible NMEA-0183 parser written in standard C"
 arch=(
   'i686'
@@ -31,17 +31,13 @@ conflicts=(
 options+=('staticlibs')
 replaces=()
 backup=()
-options=()
-install=
-changelog=
 source=(
   "${_pkgname}::git+git://git.code.sf.net/p/nmeap/code"
   "buildfiles.2025.patch"
 )
-noextract=()
 sha256sums=(
   'SKIP'
-  '2f531286c4e228b76ad03deca6e1be90bff937773561ef9c4a218f5eee9e06d2' # '8a9c00b575838d254b1d43bac1ae592f153128727b222fe499ebf5e0bb091a32'
+  '2f531286c4e228b76ad03deca6e1be90bff937773561ef9c4a218f5eee9e06d2'
 )
 
 prepare() {
