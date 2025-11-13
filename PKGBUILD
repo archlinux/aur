@@ -1,6 +1,6 @@
 _dotnet_version=9.0
 pkgname="csharp-ls"
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="Roslyn-based LSP language server for C#"
 arch=("x86_64")
@@ -8,7 +8,7 @@ url="https://github.com/razzmatazz/csharp-language-server"
 license=("MIT")
 depends=("dotnet-sdk-$_dotnet_version")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('79faf13284e4496212eb5a32e18c9fae3c93f2b10c3f6f0769028f4f80705558')
+sha256sums=('173e6702f429750728b9943105c5542a64e525784b2318d26bc597fa849d749f')
 options=("staticlibs")
 
 prepare() {
