@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Experimental build of Root app via AppImage"
 arch=('x86_64' 'aarch64')
 url="https://www.rootapp.com"
-license=('custom')
+license=('Proprietary')
 depends=('fuse')
 options=(!strip)
 
