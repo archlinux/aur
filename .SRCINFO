@@ -1,6 +1,6 @@
 pkgbase = postgresql16
 	pkgdesc = Sophisticated object-relational DBMS
-	pkgver = 16.10
+	pkgver = 16.11
 	pkgrel = 1
 	url = https://www.postgresql.org/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = postgresql16
 	makedepends = clang
 	makedepends = libxslt
 	provides = postgresql
-	source = https://ftp.postgresql.org/pub/source/v16.10/postgresql-16.10.tar.bz2
+	source = https://ftp.postgresql.org/pub/source/v16.11/postgresql-16.11.tar.bz2
 	source = postgresql.service
 	source = postgresql-check-db-dir
 	source = postgresql.sysusers
@@ -28,14 +28,14 @@ pkgbase = postgresql16
 	source = pgenv.sh
 	source = postgresql-run-socket.patch
 	source = postgresql-perl-rpath.patch
-	sha256sums = de8485f4ce9c32e3ddfeef0b7c261eed1cecb54c9bcd170e437ff454cb292b42
+	sha256sums = 6deb08c23d03d77d8f8bd1c14049eeef64aef8968fd8891df2dfc0b42f178eac
 	sha256sums = 1b10acff7b5f80ea39c6c122569cd461a12cf90114b777ad46d438447c5c5774
 	sha256sums = 7d2e8243a2c024a57489276bbf8945eb8a1b8762448732d432c56911577f8756
 	sha256sums = 7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12
 	sha256sums = fddc68565151077b4f514345087c38ca069d049b8a17dbf7eef2826f49ccbc7b
 	sha256sums = c98c512eec350d8b87495e2f3ec024304655842f75f004c115ae049825adbaa7
 	sha256sums = 02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a
-	sha256sums = d3a01f030dd479d419addc2f2081f8f3017fd63ca6319acea9a3d13f37cde728
+	sha256sums = f579fe03f93418855f597e8f437fda7e3520e08296709c6c8d7102ab90f8451f
 
 pkgname = postgresql16-libs
 	pkgdesc = Libraries for use with PostgreSQL
@@ -58,7 +58,7 @@ pkgname = postgresql16-docs
 pkgname = postgresql16
 	pkgdesc = Sophisticated object-relational DBMS
 	install = postgresql.install
-	depends = postgresql16-libs>=16.10
+	depends = postgresql16-libs>=16.11
 	depends = krb5
 	depends = libxml2
 	depends = readline>=6.0

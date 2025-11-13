@@ -1,7 +1,7 @@
 # Maintainer: Marc Rechté <marc4@rechte.fr>
 
 pkgbase=postgresql16
-pkgver=16.10
+pkgver=16.11
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
 pkgrel=1
@@ -20,14 +20,14 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         pgenv.sh
         postgresql-run-socket.patch
         postgresql-perl-rpath.patch)
-sha256sums=('de8485f4ce9c32e3ddfeef0b7c261eed1cecb54c9bcd170e437ff454cb292b42'
+sha256sums=('6deb08c23d03d77d8f8bd1c14049eeef64aef8968fd8891df2dfc0b42f178eac'
             '1b10acff7b5f80ea39c6c122569cd461a12cf90114b777ad46d438447c5c5774'
             '7d2e8243a2c024a57489276bbf8945eb8a1b8762448732d432c56911577f8756'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
             'fddc68565151077b4f514345087c38ca069d049b8a17dbf7eef2826f49ccbc7b'
             'c98c512eec350d8b87495e2f3ec024304655842f75f004c115ae049825adbaa7'
             '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
-            'd3a01f030dd479d419addc2f2081f8f3017fd63ca6319acea9a3d13f37cde728')
+            'f579fe03f93418855f597e8f437fda7e3520e08296709c6c8d7102ab90f8451f')
 
 prepare() {
   cd postgresql-${pkgver}
