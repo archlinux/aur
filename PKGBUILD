@@ -3,12 +3,16 @@
 pkgbase=heidisql
 pkgname=(heidisql heidisql-qt6 heidisql-gtk2)
 pkgver=12.13.1.1
-pkgrel=9
+pkgrel=10
 pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases."
 arch=(x86_64)
 url="http://www.heidisql.com/"
 license=('GPL-2.0')
 makedepends=(lazarus make fpc gettext binutils)
+# Add conditional makedepends
+[[ " ${pkgname[*]} " =~ " heidisql-gtk2 " ]] && makedepends+=(gtk2)
+[[ " ${pkgname[*]} " =~ " heidisql-qt6 " ]] && makedepends+=(qt6pas)
+
 _deb_filename="heidisql_${pkgver}_amd64.deb"
 source=(
   "https://github.com/HeidiSQL/HeidiSQL/archive/v${pkgver}.tar.gz"
@@ -51,32 +55,20 @@ prepare() {
   )
 }
 
-build() {
+build_heidisql_gtk2() {
   cd "${srcdir}/HeidiSQL-${pkgver}"
   
-  # Build GTK2 version
-  if [[ " ${pkgname[*]} " =~ " heidisql-gtk2 " ]]; then
-    if ! pacman -Q gtk2 &>/dev/null; then
-      echo "ERROR: gtk2 is required to build heidisql-gtk2. Please install it first:" >&2
-      echo "  (paru||yay) -S gtk2 --asdeps" >&2
-      exit 1
-    fi
-    mkdir -p ./out/gtk2
-    lazbuild --lazarusdir=/usr/lib/lazarus -B --bm=Release --ws=gtk2 heidisql.lpi
-    mv -v ./out/heidisql ./out/gtk2/heidisql
-  fi
+  mkdir -p ./out/gtk2
+  lazbuild --lazarusdir=/usr/lib/lazarus -B --bm=Release --ws=gtk2 heidisql.lpi
+  mv -v ./out/heidisql ./out/gtk2/heidisql
+}
+
+build_heidisql_qt6() {
+  cd "${srcdir}/HeidiSQL-${pkgver}"
   
-  # Build Qt6 version
-  if [[ " ${pkgname[*]} " =~ " heidisql-qt6 " ]]; then
-    if ! pacman -Q qt6pas &>/dev/null; then
-      echo "ERROR: qt6pas is required to build heidisql-qt6. Please install it first:" >&2
-      echo "  (paru||yay) -S qt6pas --asdeps" >&2
-      exit 1
-    fi
-    lazbuild --lazarusdir=/usr/lib/lazarus -B --bm=Release --ws=qt6 heidisql.lpi
-    mkdir -p ./out/qt6
-    mv -v ./out/heidisql ./out/qt6/heidisql
-  fi
+  mkdir -p ./out/qt6
+  lazbuild --lazarusdir=/usr/lib/lazarus -B --bm=Release --ws=qt6 heidisql.lpi
+  mv -v ./out/heidisql ./out/qt6/heidisql
 }
 
 package_heidisql() {
