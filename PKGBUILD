@@ -2,8 +2,8 @@
 pkgname=podman-desktop-git
 _pkgname="Podman Desktop"
 _flatpakname="io.podman_desktop.${_pkgname// /}"
-pkgver=r8385.73232b7
-_electronversion=38
+pkgver=r8836.7663169
+_electronversion=39
 _nodeversion=22
 pkgrel=1
 pkgdesc="A graphical tool for developing on containers and Kubernetes.(Use system-wide electron)"
