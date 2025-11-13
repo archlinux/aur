@@ -1,16 +1,16 @@
 pkgname=amphi-notes
-pkgver=1.1.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Cross-platform note-taking app that enables users to sync their data with a self-hosted server'
 url=https://amphi.site
 arch=('x86_64' 'aarch64')
-license=(APACHE)
+license=('GPL-3.0-or-later')
 depends=(fuse2 mpv mimalloc)
 options=(!debug)
-source_x86_64=("${url}/releases/notes/notes-linux-x64-${pkgver}.deb")
-source_aarch64=("${url}/releases/notes/notes-linux-arm64-${pkgver}.deb")
-sha256sums_x86_64=("7e2cc3796875464ab20dc3ec494e280192871808c3830911db96f038056cb4a6")
-sha256sums_aarch64=("435d6bb354ff806299ed5f2e0134dfb2bfc2619772951e378b04cf2764d60326")
+source_x86_64=("https://github.com/amphi2024/notes/releases/download/v${pkgver}/Notes-${pkgver}-Linux-x86_64.deb")
+source_aarch64=("https://github.com/amphi2024/notes/releases/download/v${pkgver}/Notes-${pkgver}-Linux-arm64.deb")
+sha256sums_x86_64=("a67e0ec62158ff6ada5aab408ee1b0f87ace55f4fa33ea5713d5b33e7ad35bb7")
+sha256sums_aarch64=("bfc308986512c90327020891a5384ecdb215124be06f755a2e275f41a85be2af")
 _pkgdesktop="amphi-notes.desktop"
 
 
