@@ -3,7 +3,7 @@
 _pkgname=3dslicer
 pkgname=3dslicer
 pkgver=5.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A free, open source and multi-platform software package widely used for medical, biomedical, and related imaging research'
 arch=('x86_64')
 url='https://www.slicer.org'
@@ -11,7 +11,7 @@ license=('BSD-3-Clause')
 depends=(
   bzip2
   curl
-  # dcmtk
+  dcmtk
   fftw
   glibc
   hwloc
@@ -87,7 +87,8 @@ build() {
   export CXX=g++-14
   # build with cmake 3.31.6, not working with cmake 4.0.0 yet
   export PATH=${srcdir}/cmake-3.31.6-linux-x86_64/bin:${PATH}
-  cmake -B build \
+  cmake \
+    -B build \
     -DBUILD_TESTING=OFF \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -99,7 +100,7 @@ build() {
     -DSlicer_USE_SYSTEM_CTK=OFF \
     -DSlicer_USE_SYSTEM_CTKAPPLAUNCHER=OFF \
     -DSlicer_USE_SYSTEM_CTKAppLauncherLib=OFF \
-    -DSlicer_USE_SYSTEM_DCMTK=OFF \
+    -DSlicer_USE_SYSTEM_DCMTK=ON \
     -DSlicer_USE_SYSTEM_ITK=OFF \
     -DSlicer_USE_SYSTEM_JsonCpp=OFF \
     -DSlicer_USE_SYSTEM_LZMA=ON \
