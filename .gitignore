@@ -1,0 +1,9 @@
+pkg/
+src/
+*.pkg.tar.*
+*.tar.gz
+*.tar.zst
+*.tar.xz
+*.deb
+*.rpm
+npm-cache/

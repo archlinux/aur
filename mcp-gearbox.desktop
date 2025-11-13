@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=MCP Gearbox
+Comment=Manage Model Context Protocol servers for multiple AI agents
+Exec=mcp-gearbox %U
+Icon=mcp-gearbox
+Terminal=false
+Categories=Utility;Development;
