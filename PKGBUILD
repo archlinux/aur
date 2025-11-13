@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bigD
-_pkgver=0.3.0
+_pkgver=0.3.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,13 +13,12 @@ depends=(
   r
 )
 optdepends=(
-  r-covr
   r-testthat
-  r-tibble
+  r-vctrs
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f293b1d3701b1db0650355ed9bea2e0c')
-b2sums=('6460d0705f802445ecebb5d329d5ef84833ba2c349dd9540bc4c583062c0d55ed2a78cabaad691ce0c6b7e7f76ab604d6e5690497b42111e13a274021067c851')
+md5sums=('6c26ee252cb28371682705cb237a4066')
+b2sums=('2be33c919fac210a8c93c678a133e53aff44b28a5714eb583f75df0a7b87de104e5324ac6cb318f38ed446e403cd7ce5a261cbad9559c0d9ee669eb824998baa')
 
 build() {
   mkdir build
