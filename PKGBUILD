@@ -3,7 +3,7 @@
 pkgbase=nautilus-scripts
 pkgname=('nautilus-scripts' 'nautilus-scripts-dolphin')
 pkgver=27.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A set of actions for extending the functionality of the GNOME Files (Nautilus), Dolphin, Caja, Nemo, PCManFM-Qt and Thunar file managers.'
 url=https://github.com/cfgnunes/nautilus-scripts
 arch=('x86_64')
@@ -27,7 +27,9 @@ package_nautilus-scripts() {
 }
 
 package_nautilus-scripts-dolphin() {
-  cd nautilus-scripts-${pkgver}
+  rm -rf nautilus-scripts
+  mv nautilus-scripts-${pkgver} nautilus-scripts
+  cd nautilus-scripts
 
   sed -i "s|\$INSTALL_HOME/.local/share/kio/servicemenus|${pkgdir}/usr/share/kio/servicemenus|g" install.sh
   sed -i "\$cINSTALL_DIR=${srcdir}/nautilus-scripts/\n_install_actions_dolphin" install.sh
