@@ -1,0 +1,17 @@
+pkgbase = be-vietnam-pro
+	pkgdesc = Open source Vietnamese sans-serif font family for universal professional design
+	pkgver = 1.002
+	pkgrel = 1
+	url = https://github.com/bettergui/BeVietnamPro
+	arch = any
+	license = OFL-1.1-no-RFN
+	makedepends = git
+	provides = be-vietnam-pro
+	source = bettergui/BeVietnamPro::git+https://github.com/bettergui/BeVietnamPro.git#commit=804e62d81abbbcdcce5686069c69b41b8c245192
+	sha256sums = d8566a8e2ada0baed0d0db45e15d983a1cdd225405d5ced1d0bfaf196e02c78d
+
+pkgname = otf-be-vietnam-pro
+
+pkgname = ttf-be-vietnam-pro
+
+pkgname = ttf-be-vietnam-pro-variable
