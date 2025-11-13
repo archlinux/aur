@@ -9,14 +9,19 @@ arch=('x86_64')
 url='https://github.com/DerekCorniello/quick-mouse'
 license=('MIT')
 depends=()
-makedepends=('go' 'npm')
+makedepends=('go' 'npm' 'openssl')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
 build() {
   cd "$pkgname"
-  chmod +x setup.sh
-  ./setup.sh
+  cd client && npm install && npm run build
+  cd .. && go build -o quick-mouse .
+  mkdir -p certs
+  openssl req -x509 -newkey rsa:4096 \
+    -keyout certs/localhost-key.pem \
+    -out certs/localhost.pem \
+    -days 365 -nodes -subj "/CN=localhost"
 }
 
 package() {
