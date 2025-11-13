@@ -3,14 +3,14 @@
 _pkgname=openzl
 pkgname="$_pkgname"
 pkgver=0.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A novel data compression framework'
 url='https://github.com/facebook/openzl'
 arch=('aarch64' 'x86_64')
 license=('BSD')
 depends=('glibc')
 makedepends=('clang' 'cmake')
-provides=("libopenzl.so")
+provides=("libopenzl.so=0.1.0")
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('3278546dcdbae3aef3887f07b435ebe0aa9f6943a5ac74cf9b7baeefe6526c2e')
 
