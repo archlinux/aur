@@ -10,7 +10,7 @@ pkgbase = kodo-browser
 	source = kodo-browser.sh
 	source = kodo-browser.desktop
 	sha256sums = c0efcb569e2c49c12db16bef1327dddca69dd552d84425955419a775ff8cec7c
-	sha256sums = 2296cc564d5869a7cfe07f751e8dd79dfe723c02940ccac74deb31faa7a046c2
-	sha256sums = f7700dd42f34c1d66250871b60914b3de425d4255460ad2bfd8d126790e2ccc5
+	sha256sums = 4e20f4b0f23b3c9d0344752c985ea472353810a6717feab47e4d13bf15c8b2e9
+	sha256sums = 6ff070aaaba30cfbc5aa4033187d26081db918513c33830b9928482f762d8a41
 
 pkgname = kodo-browser-bin

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Categories=Utility;
 Comment=Kodo Browser
-Exec=kodo-browser %u
+Exec=kodo-browser
 Icon=kodo-browser
 Keywords=kodo;
 Name=Kodo
