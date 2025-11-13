@@ -1,12 +1,10 @@
 pkgbase = heidisql
 	pkgdesc = Metapackage for HeidiSQL - wrapper script (install heidisql-qt6 or heidisql-gtk2)
 	pkgver = 12.13.1.1
-	pkgrel = 12
+	pkgrel = 13
 	url = http://www.heidisql.com/
 	arch = x86_64
 	license = GPL-2.0
 	depends = heidisql-client
-	provides = heidisql
-	conflicts = heidisql-bin
 
 pkgname = heidisql

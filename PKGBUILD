@@ -2,15 +2,12 @@
 # Contributor: Liviu Cristian Mirea-Ghiban <liviu dot mirea at wecodepixels dot com>
 pkgname=heidisql
 pkgver=12.13.1.1
-pkgrel=12
+pkgrel=13
 pkgdesc="Metapackage for HeidiSQL - wrapper script (install heidisql-qt6 or heidisql-gtk2)"
 arch=(x86_64)
 url="http://www.heidisql.com/"
 license=('GPL-2.0')
 depends=(heidisql-client)
-
-provides=(heidisql)
-conflicts=(heidisql-bin)
 
 package() {
   # Create wrapper script that prefers GTK2, falls back to Qt6
