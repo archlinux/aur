@@ -1,70 +1,79 @@
-diff -rU1 nmeap.orig/Doxyfile nmeap.makefix/Doxyfile
---- nmeap.orig/Doxyfile	2025-11-12 22:49:43.836433424 +0100
-+++ nmeap.makefix/Doxyfile	2025-11-12 23:20:36.765247961 +0100
+diff -rU1 nmeap.orig/Doxyfile nmeap.buildfilefix/Doxyfile
+--- nmeap.orig/Doxyfile	2025-11-13 21:18:22.590492683 +0100
++++ nmeap.buildfilefix/Doxyfile	2025-11-13 21:19:07.877458204 +0100
 @@ -376,3 +376,3 @@
  
 -QUIET                  = NO
 +QUIET                  = YES
  
-diff -rU1 nmeap.orig/Makefile nmeap.makefix/Makefile
---- nmeap.orig/Makefile	2025-11-12 22:49:43.836433424 +0100
-+++ nmeap.makefix/Makefile	2025-11-13 20:32:07.301758407 +0100
-@@ -1,4 +1,4 @@
+Binary files nmeap.orig/.git/index and nmeap.buildfilefix/.git/index differ
+Only in nmeap.buildfilefix/: lib
+diff -rU1 nmeap.orig/Makefile nmeap.buildfilefix/Makefile
+--- nmeap.orig/Makefile	2025-11-13 21:18:22.590492683 +0100
++++ nmeap.buildfilefix/Makefile	2025-11-13 21:21:55.351846077 +0100
+@@ -1,4 +1,7 @@
 -# rules
 -export CC=gcc
 -export CDEFS = -DNDEBUG
 +# Set default compiler and compiler options if not already specified by environment
 +export CC ?= gcc
 +export CFLAGS ?= -DNDEBUG -g -O0 -Werror -Wall
++
++# Version. Use the digits of the source file name.
++export LIBVER = 01
  
-@@ -11,3 +11,3 @@
+@@ -11,3 +14,3 @@
  
 -all :
 +all : $(LIB)
  	cd $(SRC) && $(MAKE) all
-@@ -16,2 +16,5 @@
+@@ -16,2 +19,5 @@
  
 +$(LIB) :
 +	mkdir -p $(LIB)
 +
  clean :
-@@ -19,2 +22,3 @@
+@@ -19,2 +25,3 @@
  	cd $(TST) && $(MAKE) clean
 +	rm -f $(LIB)/*
  	
-diff -rU1 nmeap.orig/src/Makefile nmeap.makefix/src/Makefile
---- nmeap.orig/src/Makefile	2025-11-12 22:49:43.836997347 +0100
-+++ nmeap.makefix/src/Makefile	2025-11-13 20:32:21.862719750 +0100
-@@ -1,6 +1,4 @@
+diff -rU1 nmeap.orig/src/Makefile nmeap.buildfilefix/src/Makefile
+--- nmeap.orig/src/Makefile	2025-11-13 21:18:22.591098044 +0100
++++ nmeap.buildfilefix/src/Makefile	2025-11-13 21:25:00.604712182 +0100
+@@ -1,8 +1,7 @@
 -# specify compiler flags
 -CFLAGS = -I $(INC) $(CDEFS) -g -O0 -Werror -Wall
 -
  # set library name
  LIBNAME  = libnmeap.a
 +SHAREDLIBNAME  = libnmeap.so
++SHAREDSONAME   = $(SHAREDLIBNAME).$(LIBVER)
  
-@@ -11,3 +9,3 @@
+-COBJ     = nmeap01.o
++COBJ     = nmeap$(LIBVER).o
+ 
+@@ -11,3 +10,3 @@
  # build everything
 -all : $(LIB)/$(LIBNAME)
 +all : $(LIB)/$(LIBNAME) $(LIB)/$(SHAREDLIBNAME)
  
-@@ -16,3 +14,7 @@
+@@ -16,3 +15,7 @@
  	-$(RM) $(LIB)/$(LIBNAME)
 -	$(AR)  -q $(LIB)/$(LIBNAME) $(COBJ)
 +	$(AR)  rcs $(LIB)/$(LIBNAME) $(COBJ)
 +
 +$(LIB)/$(SHAREDLIBNAME) : $(COBJ)
 +	-$(RM) $(LIB)/$(SHAREDLIBNAME)
-+	$(CC) -shared $(LDFLAGS) -o $(LIB)/$(SHAREDLIBNAME)  $(COBJ)
++	$(CC) -shared $(LDFLAGS) -Wl,-soname=$(SHAREDSONAME) -o $(LIB)/$(SHAREDLIBNAME)  $(COBJ)
  
-@@ -20,3 +22,3 @@
+@@ -20,3 +23,3 @@
  $(COBJ): %.o: %.c
 -	$(CC) -c $(CFLAGS) $(SRC)/$< -o $@	
 +	$(CC) -c $(CFLAGS) -I $(INC) $(SRC)/$< -o $@	
  
-diff -rU1 nmeap.orig/tst/Makefile nmeap.makefix/tst/Makefile
---- nmeap.orig/tst/Makefile	2025-11-12 22:49:43.837040388 +0100
-+++ nmeap.makefix/tst/Makefile	2025-11-12 22:56:15.496126343 +0100
+diff -rU1 nmeap.orig/tst/Makefile nmeap.buildfilefix/tst/Makefile
+--- nmeap.orig/tst/Makefile	2025-11-13 21:18:22.591144021 +0100
++++ nmeap.buildfilefix/tst/Makefile	2025-11-13 21:22:00.540665161 +0100
 @@ -3,9 +3,9 @@
  test1 : $(LIB)/libnmeap.a $(TST)/test1.c 
 -	gcc -g -O0 -I $(INC) $(CDEFS) -Wall -Werror -o test1 $(TST)/test1.c $(LIB)/libnmeap.a

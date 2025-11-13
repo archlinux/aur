@@ -2,8 +2,10 @@
 
 _pkgname=nmeap
 pkgname="${_pkgname}-git"
+# _sonamever=01
+_pkgmainver=0.3
 pkgver=0.3.r5.20090814.890153d
-pkgrel=2
+pkgrel=3
 pkgdesc="Extensible NMEA-0183 parser written in standard C"
 arch=(
   'i686'
@@ -24,9 +26,15 @@ makedepends=(
 optdepends=()
 provides=(
   "${_pkgname}=${pkgver}"
+  "lib${_pkgname}=${pkgver}"
+  "lib${_pkgname}.so"
+  "lib${_pkgname}.a"
 )
 conflicts=(
   "${_pkgname}"
+  "lib${_pkgname}"
+  "lib${_pkgname}.so"
+  "lib${_pkgname}.a"
 )
 options+=('staticlibs')
 replaces=()
@@ -37,12 +45,11 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '2f531286c4e228b76ad03deca6e1be90bff937773561ef9c4a218f5eee9e06d2'
+  '3ca34f79ededb5d2216e062b1cfdb656c75f56b76082e563deafb50532b5d4c1'
 )
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-
   local _patch
   for _patch in "${srcdir}"/buildfiles.2025.patch; do
     printf '%s\n' "  > Applying patch '$(basename "${_patch}")' ..."
@@ -55,7 +62,7 @@ prepare() {
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  _ver="0.3"
+  _ver="${_pkgmainver}"
   _rev="$(git rev-list --count HEAD)"
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
   _hash="$(git rev-parse --short HEAD)"
@@ -91,6 +98,8 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   install -Dvm755 -t "${pkgdir}/usr/lib"      lib/*.so
+  #install -Dvm755 lib/libnmeap.so  "${pkgdir}/usr/lib/libnmeap.so.3"
+  #ln -svr "${pkgdir}/usr/lib/libnmeap.so.3" "${pkgdir}/usr/lib/libnmeap.so"
   install -Dvm644 -t "${pkgdir}/usr/lib"      lib/*.a
   install -Dvm644 -t "${pkgdir}/usr/include"  inc/*.h
 
