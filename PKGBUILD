@@ -4,8 +4,8 @@ pkgbase=dms-shell-git
 _pkgbase=${pkgbase%-git}
 _pkgname=DankMaterialShell
 pkgname=($_pkgbase-git $_pkgbase-hyprland-git $_pkgbase-niri-git)
-pkgver=0.5.0.r4.g68f6f87
-pkgrel=1
+pkgver=0.5.0.r10.gdb584b7
+pkgrel=2
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
 url="https://github.com/AvengeMedia/$_pkgname"
@@ -42,7 +42,7 @@ pkgver() {
 }
 
 build() {
-	cd "$_pkgname/backend"
+	cd "$_pkgname/core"
 
 	local VERSION BUILD_TIME COMMIT LDFLAGS_GO
 	VERSION="$(git describe --tags --always 2>/dev/null || echo dev)"
@@ -65,7 +65,7 @@ package_dms-shell-git() {
 	optdepends+=('dms-shell-niri: Niri specific dependencies')
         optdepends+=('greetd-dms-greeter: DMS Greeter')
 	install="$pkgname.install"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "$_pkgname/backend/dms"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "$_pkgname/core/dms"
 	install -dm0755 "$pkgdir/usr/share/quickshell/dms"
 	cp -r "$_pkgname/quickshell"/* "$pkgdir/usr/share/quickshell/dms/"
 	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" "$_pkgname/README.md"
