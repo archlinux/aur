@@ -2,8 +2,8 @@
 pkgname=kubectl-explore
 # renovate: datasource=github-releases depName=keisku/kubectl-explore
 pkgver=0.14.1
-pkgrel=2
-pkgdesc='plugin for kubectl that gives you a UNIX find-like experience'
+pkgrel=3
+pkgdesc='kubectl plugin expanding explain functionality with fuzzy search'
 arch=('x86_64' 'aarch64')
 url='https://github.com/keisku/kubectl-explore'
 license=('Apache-2.0')

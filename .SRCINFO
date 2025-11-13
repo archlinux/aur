@@ -1,7 +1,7 @@
 pkgbase = kubectl-explore
-	pkgdesc = plugin for kubectl that gives you a UNIX find-like experience
+	pkgdesc = kubectl plugin expanding explain functionality with fuzzy search
 	pkgver = 0.14.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/keisku/kubectl-explore
 	arch = x86_64
 	arch = aarch64
