@@ -1,6 +1,6 @@
 pkgbase = alliedvision-vimba-x
 	pkgdesc = Allied Vision Vimba X SDK
-	pkgver = 2025.1.0
+	pkgver = 2025.3.0
 	pkgrel = 1
 	url = https://www.alliedvision.com/en/products/software/vimba-x-sdk
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = alliedvision-vimba-x
 	makedepends = gcc
 	depends = glibc
 	depends = gcc-libs
-	source_x86_64 = https://downloads.alliedvision.com/VimbaX/VimbaX_Setup-2025-1-Linux64.tar.gz
-	sha256sums_x86_64 = 632482112f4a297ac58b8a048fbb11a336ecbef2ba251ef171c2fefa543e2154
-	source_aarch64 = https://downloads.alliedvision.com/VimbaX/VimbaX_Setup-2025-1-Linux_ARM64.tar.gz
-	sha256sums_aarch64 = aad2a34016d2279f907e58d5467990b8db55a9918116b70ba9468dd22d374b47
+	source_x86_64 = https://downloads.alliedvision.com/VimbaX/VimbaX_Setup-2025-3-Linux64.tar.gz
+	sha256sums_x86_64 = a372bc5c4859dca0a2595ddc1331966d3265ffc0cbd86a19851b34f92ff6e922
+	source_aarch64 = https://downloads.alliedvision.com/VimbaX/VimbaX_Setup-2025-3-Linux_ARM64.tar.gz
+	sha256sums_aarch64 = bea9e47833e3bc9ca81dd1921070c98161e8df90d3a3ae0def486df1ea9377ec
 
 pkgname = alliedvision-vimba-x
