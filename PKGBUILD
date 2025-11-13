@@ -2,14 +2,13 @@
 
 pkgbase=dms-shell-git
 _pkgbase=${pkgbase%-git}
-_pkg1=DankMaterialShell
-_pkg2=danklinux
+_pkgname=DankMaterialShell
 pkgname=($_pkgbase-git $_pkgbase-hyprland-git $_pkgbase-niri-git)
-pkgver=0.4.3.r15.ge275016.d2d2dac
+pkgver=0.5.0.r4.g68f6f87
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
-url="https://github.com/AvengeMedia/$_pkg1"
+url="https://github.com/AvengeMedia/$_pkgname"
 license=(MIT)
 depends=(dgop
          quickshell
@@ -28,31 +27,22 @@ provides=("$_pkgbase=$pkgver")
 conflicts=("dms-shell")
 source=(
         "git+$url.git"
-        "git+${url/$_pkg1/$_pkg2}.git"
         "dms.service"
         "completions.bash"
         "completions.fish"
         "completions.zsh")
 sha256sums=('SKIP'
-            'SKIP'
             '513be09c9a4f56fe1274b6bc823d2eafaa3f3da9892bd668767844b83c94011a'
             '61e116dd2fe4cd87ab203f6a3d193404dd5f3c0c0f6dc262439a64411bcb30c4'
             '8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667'
             '41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d')
 pkgver() {
-    cd "$_pkg2"
-    local VERSION1
-    VERSION1=$(git describe --long --tags --abbrev=7 --match="v*" HEAD 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || echo "0.0.0.r0.$(git rev-parse --short=7 HEAD)")
-    
-    cd "$srcdir/$_pkg1"
-    local VERSION2
-    VERSION2=$(git rev-parse --short=7 HEAD)
-    
-    echo "${VERSION1}.${VERSION2}"
+    cd "$_pkgname"
+    git describe --long --tags --abbrev=7 --match="v*" HEAD 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || echo "0.0.0.r0.$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-	cd "$_pkg2"
+	cd "$_pkgname/backend"
 
 	local VERSION BUILD_TIME COMMIT LDFLAGS_GO
 	VERSION="$(git describe --tags --always 2>/dev/null || echo dev)"
@@ -75,11 +65,11 @@ package_dms-shell-git() {
 	optdepends+=('dms-shell-niri: Niri specific dependencies')
         optdepends+=('greetd-dms-greeter: DMS Greeter')
 	install="$pkgname.install"
-	install -Dm0755 -t "$pkgdir/usr/bin/" "$_pkg2/dms"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "$_pkgname/backend/dms"
 	install -dm0755 "$pkgdir/usr/share/quickshell/dms"
-	cp -r "$_pkg1"/* "$pkgdir/usr/share/quickshell/dms/"
-	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" "$_pkg1/README.md"
-	cp -r "$_pkg1/docs/"* "$pkgdir/usr/share/doc/$pkgname/"
+	cp -r "$_pkgname/quickshell"/* "$pkgdir/usr/share/quickshell/dms/"
+	install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" "$_pkgname/README.md"
+	cp -r "$_pkgname/docs/"* "$pkgdir/usr/share/doc/$pkgname/"
 	rm -rf "$pkgdir/usr/share/quickshell/dms/.git"*
 	install -Dm0644 "dms.service" "$pkgdir/usr/lib/systemd/user/dms.service"
 	install -Dm0644 "completions.bash" "$pkgdir/usr/share/bash-completion/completions/dms"
