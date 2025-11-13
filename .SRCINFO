@@ -1,4 +1,4 @@
-pkgbase = bananas
+pkgbase = bananas-bin
 	pkgdesc = Simple peer-to-peer screen sharing tool without account or server requirements.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.0.22
 	pkgrel = 2
@@ -16,4 +16,4 @@ pkgbase = bananas
 	source_x86_64 = bananas-0.0.22-x86_64.deb::https://github.com/mistweaverco/bananas/releases/download/v0.0.22/bananas_amd64.deb
 	sha256sums_x86_64 = 5deccf01a60d4c7e684a914690cf9b22c6e82ed32ede6415083ea2937aac5915
 
-pkgname = bananas
+pkgname = bananas-bin

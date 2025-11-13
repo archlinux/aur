@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
-pkgname=bananas
+pkgname=bananas-bin
 _pkgname=Bananas
 pkgver=0.0.22
 _electronversion=31
