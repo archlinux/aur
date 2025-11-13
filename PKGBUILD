@@ -1,15 +1,32 @@
 # Maintainer: Mattia Procopio (astro.matto) <matto.astro at gmail dot com>
 pkgname=indi-3rdparty-drivers
-pkgver=2.1.4
+pkgver=2.1.6.2
 pkgrel=1
 pkgdesc="Indi 3rd party drivers"
 arch=(x86_64 aarch64)
 url="https://indilib.org"
-license=('LGPLv2')
-depends=('gpsd' 'indi-3rdparty-libs' 'limesuite' 'libdc1394' 'fxload' 'zeromq' 'urjtag' 'dfu-util')
+license=(LGPLv2)
+depends=(dfu-util
+         fxload
+         gpsd
+         indi-3rdparty-libs
+         libdc1394
+         limesuite
+         urjtag
+         zeromq)
+depends_aarch64=(dfu-util
+                 fxload
+                 gpsd
+                 indi-3rdparty-libs
+                 libdc1394
+                 limesuite
+                 pigpio
+                 urjtag
+                 zeromq)
 makedepends=(cmake)
-source=("https://github.com/indilib/indi-3rdparty/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e9ab43d08d09555d2c9d3c658d1bcc3130c3465a3afe2300995fba0d6e737080')
+makedepends_aarch64=(cmake libgpiod)
+source=(https://github.com/indilib/indi-3rdparty/archive/refs/tags/v$pkgver.tar.gz)
+sha256sums=(49af8285d996305ee649160473ce3b132144c3a4018b4e01288c32494091f2bd)
 options=(!lto)
 install=drivers.install
 
