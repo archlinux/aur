@@ -3,7 +3,7 @@
 pkgname=heidisql-qt6
 pkgver=12.13.1.1
 pkgrel=1
-pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases (Qt6)"
+pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, and SQLite databases (Qt6)"
 arch=(x86_64)
 url="http://www.heidisql.com/"
 license=('GPL-2.0')
