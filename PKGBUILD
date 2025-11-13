@@ -1,7 +1,7 @@
 pkgname=kodo-browser-bin
 _pkgname=kodo-browser
 pkgver=2.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Kodo Browser 为七牛对象存储（Kodo）提供类似 Windows 资源管理器的功能。用户可以很方便的浏览文件，上传下载文件，支持断点续传等。 "
 arch=('x86_64')
 url="https://github.com/qiniu/kodo-browser"
