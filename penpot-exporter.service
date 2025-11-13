@@ -8,7 +8,7 @@ Type=exec
 User=penpot
 WorkingDirectory=/var/lib/penpot
 EnvironmentFile=-/etc/conf.d/penpot-exporter
-ExecStart=/usr/bin/penpot-exporter
+ExecStart=/usr/bin/node /usr/bin/penpot-exporter
 Restart=on-failure
 RestartSec=30s
 
