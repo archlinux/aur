@@ -1,0 +1,18 @@
+pkgbase = heidisql-gtk2-bin
+	pkgdesc = A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases. (GTK2)
+	pkgver = 12.13.1.1
+	pkgrel = 2
+	url = https://github.com/HeidiSQL/HeidiSQL
+	arch = x86_64
+	license = GPL-2.0
+	depends = gtk2
+	depends = libperconaserverclient
+	depends = mariadb-libs
+	depends = postgresql-libs
+	depends = sqlite
+	provides = heidisql
+	conflicts = heidisql
+	source = heidisql_12.13.1.1_x86_64.deb::https://github.com/HeidiSQL/HeidiSQL/releases/download/v12.13.1.1/heidisql_12.13.1.1_amd64.deb
+	sha256sums = e871bb5cf92476d026bd8c5887cb2a83e6f13877adb077ef5fbdd2edf2936122
+
+pkgname = heidisql-gtk2-bin
