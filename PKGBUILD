@@ -1,7 +1,7 @@
 pkgname=greetd-dms-greeter-git
-pkgver=0.2.2.13.g1abd3ef
+pkgver=0.5.0.13.g12365edc
 #pkgver=r960.7516d44
-pkgrel=2
+pkgrel=1
 pkgdesc='DankMaterialShell greeter for greetd'
 arch=('x86_64' 'aarch64')
 url='https://github.com/AvengeMedia/DankMaterialShell'
@@ -36,11 +36,11 @@ package() {
     cd "${srcdir}/${pkgname}"
 
     install -dm755 "$pkgdir/usr/share/quickshell/dms-greeter"
-    cp -r ./* "$pkgdir/usr/share/quickshell/dms-greeter/"
+    cp -r ./quickshell/* "$pkgdir/usr/share/quickshell/dms-greeter/"
 
-    install -Dm755 "Modules/Greetd/assets/dms-greeter" "$pkgdir/usr/bin/dms-greeter"
+    install -Dm755 "quickshell/Modules/Greetd/assets/dms-greeter" "$pkgdir/usr/bin/dms-greeter"
 
-    install -Dm644 "Modules/Greetd/README.md" "$pkgdir/usr/share/doc/dms-greeter/README.md"
+    install -Dm644 "quickshell/Modules/Greetd/README.md" "$pkgdir/usr/share/doc/dms-greeter/README.md"
 
     rm -rf "$pkgdir/usr/share/quickshell/dms-greeter/.git"*
 
