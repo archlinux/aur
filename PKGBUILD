@@ -1,58 +1,57 @@
-# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
-
-_pkgname="bananas"
-pkgname="${_pkgname}-bin"
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+pkgname=bananas
+_pkgname=Bananas
 pkgver=0.0.22
-pkgrel=1
-pkgdesc="Simple peer-to-peer screen sharing tool without account or server requirements"
-arch=('aarch64' 'x86_64')
-url="https://getbananas.net"
-_url="https://github.com/mistweaverco/${_pkgname}"
+_electronversion=31
+pkgrel=2
+pkgdesc="Simple peer-to-peer screen sharing tool without account or server requirements.(Prebuilt version.Use system-wide electron)"
+arch=(
+    'aarch64'
+    'x86_64'
+)
+url="https://getbananas.net/"
+_ghurl="https://github.com/mistweaverco/bananas"
 license=('MIT')
-depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-libs'
-         'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libcups'
-         'libdrm' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext'
-         'libxfixes' 'libxkbcommon' 'libxrandr' 'mesa' 'nspr' 'nss' 'pango')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-_pkgsrc="${_pkgname}-${pkgver}"
-noextract=("${_pkgsrc}-"{aarch64,x86_64}".deb")
-source=("PRIVACY-${pkgver}.md::${_url}/raw/refs/tags/v${pkgver}/PRIVACY.md"
-        "README-${pkgver}.md::${_url}/raw/refs/tags/v${pkgver}/README.md"
-        "TOS-${pkgver}.md::${_url}/raw/refs/tags/v${pkgver}/TOS.md"
-        "LICENSE-${pkgver}::${_url}/raw/refs/tags/v${pkgver}/LICENSE")
-source_aarch64=("${_pkgsrc}-aarch64.deb::${_url}/releases/download/v${pkgver}/${_pkgname}_arm64.deb")
-source_x86_64=("${_pkgsrc}-x86_64.deb::${_url}/releases/download/v${pkgver}/${_pkgname}_amd64.deb")
-sha256sums=('1bcc3ce508ea630cdcc5af73391e808cd01dd41c7103a4472432353516cfca35'
-            '8021f9b84c9e165d85e14a72a3d1e61fb7957652a6a462e9ea88b8030b5d32c4'
-            '9d7bf83149732ec4d2fdaaadf95fc09846109e1ccc1c62fc27a409caa924714c'
-            '5ba8d10757c4ce9b880422e3746897d89b27647febd1f70ab5021f9ac10ade95')
+depends=(
+    "electron${_electronversion}"
+)
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_amd64.deb")
+source=(
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/mistweaverco/bananas/v${pkgver}/LICENSE"
+    "${pkgname%-bin}.sh"
+)
+sha256sums=('5ba8d10757c4ce9b880422e3746897d89b27647febd1f70ab5021f9ac10ade95'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 sha256sums_aarch64=('6bb740cdc0f44002dde14df6c9748f5ff3372ff85a2441eeed26948b99073631')
 sha256sums_x86_64=('5deccf01a60d4c7e684a914690cf9b22c6e82ed32ede6415083ea2937aac5915')
-
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
-  cd "${srcdir}"
-  mkdir -p "${_pkgsrc}-${CARCH}"
-  bsdtar -xf "${_pkgsrc}-${CARCH}.deb" data.tar.*
-  bsdtar -xzf data.tar.* --strip-components 1 -C "${srcdir}/${_pkgsrc}-${CARCH}"
-  rm -f data.tar.*
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${pkgname%-bin}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
+    sed -i "s/\/opt\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
-
-build() {
-  cd "${srcdir}/${_pkgsrc}-${CARCH}"
-  rm -rf "usr/share/doc"
-}
-
 package() {
-  cd "${srcdir}/${_pkgsrc}-${CARCH}"
-  cp -vr --no-preserve=ownership * "${pkgdir}"
-
-  cd "${srcdir}"
-  install -vDm644 "PRIVACY-${pkgver}.md" "${pkgdir}/usr/share/doc/${_pkgname}/PRIVACY.md"
-  install -vDm644 "README-${pkgver}.md"  "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -vDm644 "TOS-${pkgver}.md"     "${pkgdir}/usr/share/doc/${_pkgname}/TOS.md"
-  install -vDm644 "LICENSE-${pkgver}"    "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-
-  install -vdm755 "${pkgdir}/usr/bin"
-  ln -vsf "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${pkgname%-bin}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked/resources/icon.png" -t \
+        "${pkgdir}/usr/lib/${pkgname%-bin}/app.asar.unpacked/resources"
+    _icon_sizes=(32x32 64x64 128x128 256x256 512x512)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    done
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
