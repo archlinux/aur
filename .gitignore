@@ -1,0 +1,17 @@
+# Linux
+*~
+*.swp
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Mac OS X
+.DS_Store
+._*
+
+# AUR package
+/src
+/statecraft-*.tar.gz
+/pkg
+/statecraft-*.pkg.tar.zst
