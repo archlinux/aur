@@ -1,7 +1,7 @@
 pkgbase = vesc-tool
 	pkgdesc = VESC ESC graphical configuration tool
 	pkgver = 6.06
-	pkgrel = 2
+	pkgrel = 4
 	url = https://vesc-project.com/vesc_tool
 	arch = i686
 	arch = x86_64
