@@ -1,7 +1,7 @@
 # Maintainer: Nocifer <apmichalopoulos at gmail dot com>
 # Contributor: Pantelis Panayiotou <p.panayiotou@gmail.com>
 
-pkgname='libreoffice-extension-orthos-greek-english-dictionary'
+pkgname='libreoffice-extension-orthos-greek-cypriot-dictionary'
 pkgver=0.5.0
 pkgrel=8
 pkgdesc='Greek/Cypriot dictionary for Libreoffice by the Orthos project'

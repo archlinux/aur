@@ -1,4 +1,4 @@
-pkgbase = libreoffice-extension-orthos-greek-english-dictionary
+pkgbase = libreoffice-extension-orthos-greek-cypriot-dictionary
 	pkgdesc = Greek/Cypriot dictionary for Libreoffice by the Orthos project
 	pkgver = 0.5.0
 	pkgrel = 8
@@ -10,4 +10,4 @@ pkgbase = libreoffice-extension-orthos-greek-english-dictionary
 	source = https://sourceforge.net/projects/orthos-spell/files/v.0.5.0/orthos-el_GR-el_CY-0.5.0-8.oxt
 	b2sums = 68d54bd594eef9d4e5adde63fc9c0111e20a9d95280b6450f042125861cd5493bb7fe246ed3772dfea53945114562b2e47ca989098e201a94f51cd5ee16588fb
 
-pkgname = libreoffice-extension-orthos-greek-english-dictionary
+pkgname = libreoffice-extension-orthos-greek-cypriot-dictionary
