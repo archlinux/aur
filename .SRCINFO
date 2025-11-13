@@ -1,6 +1,6 @@
 pkgbase = maya
 	pkgdesc = Autodesk Maya 3D Animation, Modelling, Simulation and Rendering Software
-	pkgver = 2026.2
+	pkgver = 2026.3
 	pkgrel = 1
 	url = http://www.autodesk.com/products/maya/overview
 	install = maya.install
@@ -76,9 +76,9 @@ pkgbase = maya
 	depends = zstd
 	optdepends = opencl-driver: OpenCL support
 	options = !strip
-	source = manual://Maya2026_64-2026.2-2565.x86_64.rpm
+	source = manual://Maya2026_64-2026.3-3308.x86_64.rpm
 	source = application-home-workaround.patch
-	b2sums = 7ea12d7cc1a7332505211c87bbee9ae386f7a02cc17e6d8235d797ae710741854e2a2b317e27e31fc67c65dcf7c802d657456936a2e3e4f88fd6e19e7d58632a
+	b2sums = 6341c5226ab1f2227d47a038d691d39ae5af825b0f9eef8554707c6b980cb732e540eed72129f331af76a844483767ed99fe9098e6e4fb3eedeb622f00884299
 	b2sums = b4f09a64402e54e0067ca381efbc921a7f3cd595aef10135d423fc4a405b105b7cbd4d6907851cf9563cf02be3ec514d48d0a555a976f5daa7d4a66edee594ee
 
 pkgname = maya
