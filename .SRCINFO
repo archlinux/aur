@@ -13,6 +13,6 @@ pkgbase = logi-mx-bin
 	provides = logi-mx
 	conflicts = logi-mx
 	source = logi-mx-bin-0.2.0.tar.gz::https://github.com/RAprogramm/logi-mx/releases/download/v0.2.0/logi-mx-0.2.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = c0c6a1182f650179e45a2996c0021f650481021e7a3d96860b9c918e605e2562
+	sha256sums = 9949557549049f6f929be38b5c12976d6e58437bd9cef054128afa524d63e197
 
 pkgname = logi-mx-bin
