@@ -1,6 +1,6 @@
 pkgbase = koala-clash-bin
 	pkgdesc = Fork of Clash Verge Rev | A Clash Meta GUI based on Tauri
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/coolcoala/clash-verge-rev-lite
 	install = koala-clash-bin.install
@@ -22,11 +22,11 @@ pkgbase = koala-clash-bin
 	conflicts = clash-verge-rev-autobuild
 	conflicts = clash-verge-rev-autobuild-bin
 	options = !strip
-	source_x86_64 = Koala.Clash_amd64.deb::https://github.com/coolcoala/clash-verge-rev-lite/releases/download/v0.2.7/Koala.Clash_amd64.deb
-	sha256sums_x86_64 = 8f40ddf89de2caec3e76ab93595fde865d1ae1826884fda68c5ea414e34dfbc3
-	source_aarch64 = Koala.Clash_arm64.deb::https://github.com/coolcoala/clash-verge-rev-lite/releases/download/v0.2.7/Koala.Clash_arm64.deb
-	sha256sums_aarch64 = 640ca1656e0b784ed0275ec6ed830f0d0f6eb5d3485f7a9877e55b04175dba25
-	source_armv7h = Koala.Clash_armvhf.deb::https://github.com/coolcoala/clash-verge-rev-lite/releases/download/v0.2.7/Koala.Clash_armhf.deb
-	sha256sums_armv7h = d847d9619931694798028776d734aec97e7c82696e807b8289b55c959e02d957
+	source_x86_64 = Koala.Clash_amd64.deb::https://github.com/coolcoala/clash-verge-rev-lite/releases/download/v0.2.8/Koala.Clash_amd64.deb
+	sha256sums_x86_64 = f0781f1c39adac238b20bb8c1d07e4f587c14bcc1ddb881b36c9f49545dab8b7
+	source_aarch64 = Koala.Clash_arm64.deb::https://github.com/coolcoala/clash-verge-rev-lite/releases/download/v0.2.8/Koala.Clash_arm64.deb
+	sha256sums_aarch64 = 0638b35e80e887db195064b5752ba78d1e4712fee25ca5bb1d1e78bcf3627049
+	source_armv7h = Koala.Clash_armvhf.deb::https://github.com/coolcoala/clash-verge-rev-lite/releases/download/v0.2.8/Koala.Clash_armhf.deb
+	sha256sums_armv7h = b48437ced51f30ac84ed0d7069d52f433eb0c1e37458cc45897ef532e3983b4b
 
 pkgname = koala-clash-bin
