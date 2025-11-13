@@ -1,0 +1,18 @@
+pkgbase = vecpaper-git
+	pkgdesc = Lightweight, high-performance live shader wallpaper renderer for Wayland
+	pkgver = 0.0.r9560ad4
+	pkgrel = 1
+	url = https://github.com/aasb13/vecpaper
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	depends = libjpeg-turbo
+	depends = mesa
+	depends = wayland
+	depends = hyprland
+	source = git+https://github.com/aasb13/vecpaper.git
+	sha256sums = SKIP
+
+pkgname = vecpaper-git
