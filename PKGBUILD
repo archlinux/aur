@@ -3,7 +3,7 @@
 # Contributor: d6k283tix <d6k283tix@mozmail.com>
 
 pkgname=bitcomet
-pkgver=2.18.0
+pkgver=2.18.1
 pkgrel=1
 pkgdesc="A BitTorrent/HTTP/FTP download client"
 arch=(x86_64)
@@ -22,7 +22,7 @@ depends=('cairo'
          'webkit2gtk')
 source=("${pkgname}-${pkgver}.deb::https://download.bitcomet.com/linux/x86_64/BitComet-${pkgver}-x86_64.deb"
         "LICENSE.html::https://www.bitcomet.com/en/license")
-sha256sums=('46bfaa7deb26d3f22a020b85bdb41ed358eed800f978f8f5f1d25922504ecfe4'
+sha256sums=('7ace6245288c3fccf2b46ff5b7b16841e144c890276f4bc823df48c2145b2839'
             'a5ceafe53c05956057d4abb7f29992cd61789c71d223ea9389569df1651b2289')
 
 package() {

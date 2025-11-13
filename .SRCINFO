@@ -1,6 +1,6 @@
 pkgbase = bitcomet
 	pkgdesc = A BitTorrent/HTTP/FTP download client
-	pkgver = 2.18.0
+	pkgver = 2.18.1
 	pkgrel = 1
 	url = https://www.bitcomet.com
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = bitcomet
 	depends = libxkbcommon
 	depends = pango
 	depends = webkit2gtk
-	source = bitcomet-2.18.0.deb::https://download.bitcomet.com/linux/x86_64/BitComet-2.18.0-x86_64.deb
+	source = bitcomet-2.18.1.deb::https://download.bitcomet.com/linux/x86_64/BitComet-2.18.1-x86_64.deb
 	source = LICENSE.html::https://www.bitcomet.com/en/license
-	sha256sums = 46bfaa7deb26d3f22a020b85bdb41ed358eed800f978f8f5f1d25922504ecfe4
+	sha256sums = 7ace6245288c3fccf2b46ff5b7b16841e144c890276f4bc823df48c2145b2839
 	sha256sums = a5ceafe53c05956057d4abb7f29992cd61789c71d223ea9389569df1651b2289
 
 pkgname = bitcomet
