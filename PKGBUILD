@@ -14,19 +14,18 @@ depends=(
 makedepends=(
   rust
   cargo
-  git
 )
 install="$pkgname.install"
-source=("git+https://github.com/Ly-sec/swiftfetch.git#tag=v${pkgver}")
+source=("https://github.com/Ly-sec/swiftfetch/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('47988a9dfbc41ffd7d86532e9ae0eecb7112793859ec5a9582add1e52d7a745d')
 
 build() {
-  cd "$pkgname"
+  cd "${pkgname}-${pkgver}"
   cargo build --release
 }
 
 package() {
-  cd "$pkgname"
+  cd "${pkgname}-${pkgver}"
   rm -f flake.nix flake.lock 2>/dev/null || true
   install -Dm755 target/release/swiftfetch "$pkgdir/usr/bin/swiftfetch"
 
