@@ -21,7 +21,8 @@ build() {
     cd "$srcdir/$pkgname-$pkgver"
     export CARGO_HOME="$srcdir/cargo"
     export CARGO_TARGET_DIR="$srcdir/target"
-    export LIBSQLITE3_SYS_STATIC=1
+    # Using bundled SQLite via explicit libsqlite3-sys dependency (Cargo.toml)
+    # to prevent undefined symbol errors from system SQLite variations.
     cargo build --release --frozen
 }
 
