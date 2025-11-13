@@ -15,8 +15,8 @@ sha256sums=('SKIP')
 
 build() {
   cd "$pkgname"
-  cd client && npm install && npm run build
-  cd .. && go build -o quick-mouse .
+  chmod +x setup.sh
+  ./setup.sh
 }
 
 package() {
