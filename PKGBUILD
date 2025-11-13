@@ -1,38 +1,24 @@
-
 # Maintainer: Avenge Media LLC <avengemediallc at gmail dot com>
 pkgname=dms-shell-bin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
-arch=('x86_64' 'aarch64')
+arch=(x86_64 aarch64)
 url='https://github.com/AvengeMedia/DankMaterialShell'
-license=('MIT')
-depends=(
-    'quickshell'
-    'dgop'
-    'accountsservice'
-)
-optdepends=(
-    'matugen-bin: Dynamic wallpaper-based theming'
-    'dsearch-bin: Filesystem search'
-    'i2c-tools: External monitor brightness control'
-    'wl-clipboard: Copy functionality for PIDs and other elements'
-    'cliphist: Clipboard history functionality'
-    'cava: Audio visualizer'
-    'qt6-multimedia: Sound effect support'
-    'power-profiles-daemon: Set power profile'
-    'qt6ct: Qt6 application theming'
-)
-provides=('dms')
-conflicts=('dms-shell-git' 'dms-shell' 'dms-git')
-
-_get_arch() {
-    case "$1" in
-        x86_64) echo "amd64" ;;
-        aarch64) echo "arm64" ;;
-        *) echo "unsupported" ;;
-    esac
-}
+license=(MIT)
+depends=(dgop
+         quickshell
+         accountsservice)
+optdepends=('cava: Audio visualizer'
+            'cliphist: Clipboard history functionality'
+            'i2c-tools: External monitor brightness control'
+            'matugen: Dynamic wallpaper-based theming'
+            'qt6-multimedia: Sound effect support'
+            'power-profiles-daemon: Set power profile'
+            'qt6ct: Qt6 application theming'
+            'wl-clipboard: Copy functionality for PIDs and other elements')
+provides=(dms-shell)
+conflicts=(dms-shell-git dms-shell)
 
 source_x86_64=(
     dms.service
@@ -53,34 +39,21 @@ sha256sums_x86_64=('513be09c9a4f56fe1274b6bc823d2eafaa3f3da9892bd668767844b83c94
                    '61e116dd2fe4cd87ab203f6a3d193404dd5f3c0c0f6dc262439a64411bcb30c4'
                    '8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667'
                    '41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d'
-                   '6f754c84c1ade2397823f126e0984b7b111a93d7dd8f48ed317f27620fe85c12')
+                   '7b3328491664bfc2d3deb69ea7bfe54febb790eb9ba20401274c7ba65bc2d73a')
 sha256sums_aarch64=('513be09c9a4f56fe1274b6bc823d2eafaa3f3da9892bd668767844b83c94011a'
                     '61e116dd2fe4cd87ab203f6a3d193404dd5f3c0c0f6dc262439a64411bcb30c4'
                     '8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667'
                     '41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d'
-                    'e727b34d5890eede8a48e9bc319e71bae552ec2ce6ed85614102d4956f114e94')
+                    '961d0feded76c709316614b05b5753cb28b2a66882845ac355d91cc2179f5a9f')
 
 package() {
-    install -Dm755 "${srcdir}/bin/dms-distropkg" "$pkgdir/usr/bin/dms"
-
-    install -dm755 "$pkgdir/usr/share/quickshell"
-    cp -r "${srcdir}/dms" "$pkgdir/usr/share/quickshell/"
-
-    # Install documentation from dms folders
-    if [ -f "${srcdir}/dms/README.md" ]; then
-        install -Dm644 "${srcdir}/dms/README.md" "$pkgdir/usr/share/doc/dms/README.md"
-    fi
-    if [ -d "${srcdir}/dms/docs" ]; then
-        install -dm755 "$pkgdir/usr/share/doc/dms/"
-        cp -r "${srcdir}/dms/docs"/* "$pkgdir/usr/share/doc/dms/"
-    fi
-    if [ -f "${srcdir}/dms/PLUGINS/README.md" ]; then
-        install -Dm644 "${srcdir}/dms/PLUGINS/README.md" "$pkgdir/usr/share/doc/dms/plugins.md"
-    fi
+    install -Dm0755 "$srcdir/bin/dms-distropkg" "$pkgdir/usr/bin/dms"
+    install -dm0755 "$pkgdir/usr/share/quickshell"
+    cp -r "$srcdir/dms" "$pkgdir/usr/share/quickshell/"
+    install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" "$srcdir/dms/README.md"
+    cp -r "$srcdir/dms/docs/"* "$pkgdir/usr/share/doc/$pkgname/"
     install -Dm0644 "dms.service" "$pkgdir/usr/lib/systemd/user/dms.service"
-
-    # Install shell completions
-    install -Dm644 "completions.bash" "$pkgdir/usr/share/bash-completion/completions/dms"
-    install -Dm644 "completions.fish" "$pkgdir/usr/share/fish/vendor_completions.d/dms.fish"
-    install -Dm644 "completions.zsh" "$pkgdir/usr/share/zsh/site-functions/_dms"
+    install -Dm0644 "completions.bash" "$pkgdir/usr/share/bash-completion/completions/dms"
+    install -Dm0644 "completions.zsh" "$pkgdir/usr/share/zsh/site-functions/_dms"
+    install -Dm0644 "completions.fish" "$pkgdir/usr/share/fish/vendor_completions.d/dms.fish"
 }
