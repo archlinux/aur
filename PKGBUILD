@@ -19,7 +19,6 @@ pkgver() {
 build() {
   cd "$srcdir/chameleos"
 
-  # Compilar TODO el workspace (chameleos + chamel)
   cargo build --release --locked --workspace
 }
 
