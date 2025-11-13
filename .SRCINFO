@@ -1,0 +1,34 @@
+pkgbase = serdisplib-svn
+	pkgdesc = Library to drive displays with built-in controllers.
+	pkgver = 2.02.r383.d20191027
+	pkgrel = 1
+	url = https://serdisplib.sourceforge.net/
+	arch = aarch64
+	arch = arm
+	arch = arm64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = subversion
+	makedepends = libdlo
+	makedepends = libusb-compat
+	makedepends = sdl
+	depends = gd
+	depends = glibc
+	provides = serdisplib=2.02.r383.d20191027
+	provides = serdisplib-tools=2.02.r383.d20191027
+	provides = libserdisp.so
+	provides = libserdisp.a
+	conflicts = serdisplib
+	conflicts = serdisplib-tools
+	conflicts = libserdisp.so
+	conflicts = libserdisp.a
+	options = staticlibs
+	backup = etc/serdispd.cfg
+	source = serdisplib::svn+svn://svn.code.sf.net/p/serdisplib/code/serdisplib/trunk
+	source = serdisplib-2.01-add-destdir-support.patch
+	sha256sums = SKIP
+	sha256sums = f00cb2183d6dc447d0bbcc2e501732bfab7b61c3059c25dbbebe4a88012003e3
+
+pkgname = serdisplib-svn

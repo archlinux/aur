@@ -1,0 +1,7 @@
+#
+# all displays / modules supported by graphlcd-base
+#
+# SDC Megtron
+ATTRS{idVendor}=="152a", ATTRS{idProduct}=="8380", GROUP="uucp", MODE="0660"
+# Alphacool USB LCD
+ATTRS{idVendor}=="060c", ATTRS{idProduct}=="04eb", GROUP="uucp", MODE="0660"
