@@ -2,7 +2,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='tinct-plugin-templater-bin'
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc='Template-based output plugin for Tinct'
 url='https://github.com/jmylchreest/tinct'
@@ -13,14 +13,14 @@ conflicts=('tinct')
 depends=('tinct-bin')
 install=tinct-plugin-templater.install
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.6/tinct-plugin-templater_0.0.6_Linux_arm64.tar.gz")
-sha256sums_aarch64=('a8cf1ab883290543484bde622be2783a0391109f26e3f258eed0aa1f78fa674a')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.7/tinct-plugin-templater_0.0.7_Linux_arm64.tar.gz")
+sha256sums_aarch64=('a8516b9bcb7e5ed68ca53d4a6e53b4d668cb146b3ec5dd011f265d9999d2a7e6')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.6/tinct-plugin-templater_0.0.6_Linux_armv7.tar.gz")
-sha256sums_armv7h=('86f418e13902a6b9769033028c36286d26d24c77172708062f2304e1a0f4bdaa')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.7/tinct-plugin-templater_0.0.7_Linux_armv7.tar.gz")
+sha256sums_armv7h=('6564a83f0572b102efbe8a921725ba099bad6ea9a62812c4255ea7f858c331c1')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.6/tinct-plugin-templater_0.0.6_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('c2d43d46d541e3b8cc8153a73788de00fa75b9624e45e5e593b0d07bbf09b322')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.7/tinct-plugin-templater_0.0.7_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('eec90b67a58e12752ba05ebdc7df4ee4bd9ed68159c715ee64071f3fd5227387')
 
 package() {
   # bin
@@ -30,7 +30,10 @@ package() {
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/tinct-plugin-templater/LICENSE"
 
   # sbom
-  if [ -f *.sbom.json ]; then
-  install -Dm644 *.sbom.json "${pkgdir}/usr/share/doc/tinct-plugin-templater/sbom.json"
+  for sbom in *.sbom.json; do
+  if [ -f "$sbom" ]; then
+  install -Dm644 "$sbom" "${pkgdir}/usr/share/doc/tinct-plugin-templater/sbom.json"
+  break
   fi
+  done
 }
