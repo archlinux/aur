@@ -1,4 +1,4 @@
-pkgname=kodo-browser-bin
+pkgname=kodo-browser
 _pkgname=kodo-browser
 pkgver=2.3.2
 pkgrel=3
