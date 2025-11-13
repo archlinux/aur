@@ -19,28 +19,28 @@ pkgbase = tarantool
 	depends = libunwind
 	depends = icu
 	source = git+https://github.com/tarantool/tarantool.git#tag=2.11.8
-	source = git+https://github.com/tarantool/luajit.git#branch=tarantool/archive/1.7
-	source = git+https://github.com/tarantool/libyaml.git
-	source = git+https://github.com/tarantool/msgpuck.git
+	source = tarantool-luajit::git+https://github.com/tarantool/luajit.git#branch=tarantool/archive/1.7
+	source = tarantool-libyaml::git+https://github.com/tarantool/libyaml.git
+	source = tarantool-msgpuck::git+https://github.com/tarantool/msgpuck.git
 	source = git+https://github.com/luafun/luafun.git
-	source = git+https://github.com/tarantool/test-run.git
-	source = git+https://github.com/tarantool/small.git
-	source = git+https://github.com/tarantool/zstd.git
-	source = git+https://github.com/tarantool/luarocks.git#branch=luarocks-3.1.3-tarantool
-	source = git+https://github.com/tarantool/decNumber.git
-	source = git+https://github.com/tarantool/curl.git
-	source = git+https://github.com/tarantool/c-ares.git
-	source = git+https://github.com/tarantool/xxHash
-	source = git+https://github.com/tarantool/c-dt.git
-	source = git+https://github.com/tarantool/lua-zlib.git
-	source = git+https://github.com/tarantool/luazip.git
-	source = git+https://github.com/tarantool/nghttp2.git
-	source = git+https://github.com/tarantool/libunwind.git#branch=libunwind-1.6.2-tarantool
-	source = git+https://github.com/tarantool/tz.git
-	source = git+https://github.com/tarantool/checks.git
+	source = tarantool-test-run::git+https://github.com/tarantool/test-run.git
+	source = tarantool-small::git+https://github.com/tarantool/small.git
+	source = tarantool-zstd::git+https://github.com/tarantool/zstd.git
+	source = tarantool-luarocks::git+https://github.com/tarantool/luarocks.git#branch=luarocks-3.1.3-tarantool
+	source = tarantool-decNumber::git+https://github.com/tarantool/decNumber.git
+	source = tarantool-curl::git+https://github.com/tarantool/curl.git
+	source = tarantool-c-ares::git+https://github.com/tarantool/c-ares.git
+	source = tarantool-xxHash::git+https://github.com/tarantool/xxHash.git
+	source = tarantool-c-dt::git+https://github.com/tarantool/c-dt.git
+	source = tarantool-lua-zlib::git+https://github.com/tarantool/lua-zlib.git
+	source = tarantool-luazip::git+https://github.com/tarantool/luazip.git
+	source = tarantool-nghttp2::git+https://github.com/tarantool/nghttp2.git
+	source = tarantool-libunwind::git+https://github.com/tarantool/libunwind.git#branch=libunwind-1.6.2-tarantool
+	source = tarantool-tz::git+https://github.com/tarantool/tz.git
+	source = tarantool-checks::git+https://github.com/tarantool/checks.git
 	source = tarantool.sysusers
 	source = tarantool.service.override
-	sha256sums = SKIP
+	sha256sums = f495425729ac5e5648454f4c8c74475905f6d48be4db2267536c865e652edd93
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
