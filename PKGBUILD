@@ -1,6 +1,6 @@
 # Maintainer: RAprogramm <andrey.rozanov.vl@gmail.com>
 pkgname=logi-mx-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Logitech MX Master 3S configuration tool and daemon with system tray (binary package)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('hidapi' 'systemd' 'gtk4' 'libadwaita' 'dbus')
 provides=('logi-mx')
 conflicts=('logi-mx')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RAprogramm/logi-mx/releases/download/v${pkgver}/logi-mx-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('f56bd0f9b0ab900e4357e022581cef940e848d44c1b0eb98817c317fd953a8d2')
+sha256sums=('b42fad2d778e94b960bda51583348163eac61090e4da51473d94f3d146d0894b')
 
 package() {
     # Install binaries
