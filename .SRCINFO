@@ -1,7 +1,7 @@
 pkgbase = nonraid-git
 	pkgdesc = NonRAID - unRAID-like storage array driver (DKMS) with tools, systemd units and udev rule
-	pkgver = 1.20.0
-	pkgrel = 3
+	pkgver = 1.20.0-6
+	pkgrel = 4
 	url = https://github.com/qvr/nonraid
 	arch = any
 	license = GPL2

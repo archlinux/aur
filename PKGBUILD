@@ -1,8 +1,8 @@
 # Maintainer: François-Xavier Payet <fx@payet.io>
 
 pkgname=nonraid-git
-pkgver=1.20.0
-pkgrel=3
+pkgver=1.20.0-6
+pkgrel=4
 pkgdesc="nonraid kernel module via DKMS + management tool, systemd units, default config, and udev rule"
 arch=('x86_64')
 url='https://github.com/qvr/nonraid'
@@ -19,7 +19,7 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --tags | cut -c 2- | cut -d - -f 1)"
+	printf "%s" "$(git describe --tags --match 'nonraid-tools-[0-9]*' --abbrev=0 | sed 's/^nonraid-tools-//')"
 }
 
 build() {
