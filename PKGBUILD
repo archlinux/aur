@@ -30,8 +30,9 @@ package() {
     ${srcdir}/${_appimage_name} --appimage-extract "usr/share/icons/hicolor" >/dev/null 2>&1
     ${srcdir}/${_appimage_name} --appimage-extract "usr/share/applications" >/dev/null 2>&1
 
+    install -dm755 "${pkgdir}/usr/share"
+
     # install icons
-    install -dm755 "${pkgdir}/usr/share/icons"
     cp -dpr --no-preserve=ownership "squashfs-root/usr/share/icons" "${pkgdir}/usr/share"
 
     # install .desktop file and executable file
