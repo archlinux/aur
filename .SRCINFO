@@ -1,0 +1,16 @@
+pkgbase = waycentral-git
+	pkgdesc = Centalized Program for Waybar Custom Modules
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/TheElevatedOne/waycentral
+	arch = any
+	license = GPL3
+	depends = make
+	depends = gcc
+	depends = glibc
+	provides = waycentral-git
+	conflicts = waycentral-bin
+	source = git+https://github.com/TheElevatedOne/waycentral#branch=main
+	sha256sums = SKIP
+
+pkgname = waycentral-git
