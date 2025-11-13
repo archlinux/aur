@@ -1,7 +1,7 @@
 pkgbase = postgresql18
 	pkgdesc = Sophisticated object-relational DBMS
-	pkgver = 18.0
-	pkgrel = 2
+	pkgver = 18.1
+	pkgrel = 1
 	url = https://www.postgresql.org/
 	arch = x86_64
 	license = custom:PostgreSQL
@@ -32,7 +32,7 @@ pkgbase = postgresql18
 	depends = zlib
 	depends = zstd
 	provides = postgresql
-	source = https://ftp.postgresql.org/pub/source/v18.0/postgresql-18.0.tar.bz2
+	source = https://ftp.postgresql.org/pub/source/v18.1/postgresql-18.1.tar.bz2
 	source = postgresql.service
 	source = postgresql-check-db-dir
 	source = postgresql.sysusers
@@ -41,7 +41,7 @@ pkgbase = postgresql18
 	source = postgresql-run-socket.patch
 	source = postgresql-perl-rpath.patch
 	source = postgresql-doc.patch
-	sha256sums = 0d5b903b1e5fe361bca7aa9507519933773eb34266b1357c4e7780fdee6d6078
+	sha256sums = ff86675c336c46e98ac991ebb306d1b67621ece1d06787beaade312c2c915d54
 	sha256sums = 1b10acff7b5f80ea39c6c122569cd461a12cf90114b777ad46d438447c5c5774
 	sha256sums = 3835a4a66a565d767868aef853aa56e13ba0367a42d82d96e4673f5ffe3eacc7
 	sha256sums = 7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12
@@ -72,7 +72,7 @@ pkgname = postgresql18-docs
 pkgname = postgresql18
 	pkgdesc = Sophisticated object-relational DBMS
 	install = postgresql.install
-	depends = postgresql18-libs>=18.0
+	depends = postgresql18-libs>=18.1
 	depends = krb5
 	depends = libxml2
 	depends = readline>=6.0
