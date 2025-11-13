@@ -12,8 +12,14 @@ pkgbase = heidisql-qt6
 	makedepends = binutils
 	makedepends = qt6pas
 	depends = qt6pas
-	depends = heidisql
+	depends = heidisql-common
+	depends = mariadb-libs
+	depends = postgresql-libs
+	depends = libperconaserverclient
+	depends = sqlite
 	provides = heidisql-client
+	provides = heidisql
+	conflicts = heidisql-gtk2
 	source = https://github.com/HeidiSQL/HeidiSQL/archive/v12.13.1.1.tar.gz
 	sha256sums = e9db116b0f3d8aa2300fde3266056452425304791393d84786ac9c0350ddc2b5
 

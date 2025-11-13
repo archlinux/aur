@@ -8,8 +8,9 @@ arch=(x86_64)
 url="http://www.heidisql.com/"
 license=('GPL-2.0')
 makedepends=(lazarus make fpc gettext binutils qt6pas)
-depends=(qt6pas heidisql)
-provides=(heidisql-client)
+depends=(qt6pas heidisql-common mariadb-libs postgresql-libs libperconaserverclient sqlite)
+provides=(heidisql-client heidisql)
+conflicts=(heidisql-gtk2)
 
 source=("https://github.com/HeidiSQL/HeidiSQL/archive/v${pkgver}.tar.gz")
 sha256sums=('e9db116b0f3d8aa2300fde3266056452425304791393d84786ac9c0350ddc2b5')
