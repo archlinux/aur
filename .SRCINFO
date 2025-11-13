@@ -1,7 +1,7 @@
 pkgbase = vesc-tool
 	pkgdesc = VESC ESC graphical configuration tool
 	pkgver = 6.06
-	pkgrel = 5
+	pkgrel = 6
 	url = https://vesc-project.com/vesc_tool
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,8 @@ pkgbase = vesc-tool
 	depends = qt5-base
 	depends = qt5-connectivity
 	depends = qt5-quickcontrols2
+	depends = qt5-quickcontrols
+	depends = qt5-graphicaleffects
 	depends = qt5-serialport
 	depends = qt5-location
 	depends = qt5-gamepad

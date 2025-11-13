@@ -1,12 +1,12 @@
 pkgname=vesc-tool
 pkgver=6.06
 _pkgver=6_06
-pkgrel=5
+pkgrel=6
 pkgdesc="VESC ESC graphical configuration tool"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="https://vesc-project.com/vesc_tool"
 license=('GPL3')
-depends=('qt5-base' 'qt5-connectivity' 'qt5-quickcontrols2' 'qt5-serialport' 'qt5-location' 'qt5-gamepad' 'qt5-serialbus' 'qt5-svg')
+depends=('qt5-base' 'qt5-connectivity' 'qt5-quickcontrols2' 'qt5-quickcontrols' 'qt5-graphicaleffects' 'qt5-serialport' 'qt5-location' 'qt5-gamepad' 'qt5-serialbus' 'qt5-svg')
 makedepends=('git' 'mold')
 conflicts=('vesc_tool-git')
 source=("$pkgname"::"git+https://github.com/vedderb/vesc_tool.git#branch=release_$_pkgver"
