@@ -1,0 +1,3 @@
+[pmdk-git]
+source = "github"
+github = "daos-stack/pmdk"

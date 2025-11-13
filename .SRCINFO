@@ -1,6 +1,6 @@
 pkgbase = pmdk-git
 	pkgdesc = Persistent Memory Development Kit.
-	pkgver = 2.1.1.r13.gd4da1b173
+	pkgver = 2.1.1.r29.g467fcef0e
 	pkgrel = 1
 	url = https://pmem.io
 	arch = x86_64
@@ -8,12 +8,15 @@ pkgbase = pmdk-git
 	checkdepends = bc
 	checkdepends = gdb
 	checkdepends = man-db
-	checkdepends = python
 	checkdepends = strace
+	makedepends = chrpath
 	makedepends = git
 	makedepends = pandoc-cli
+	depends = glibc
 	depends = ndctl
-	source = git+https://github.com/pmem/pmdk.git
-	md5sums = SKIP
+	depends = python
+	depends = sh
+	source = git+https://github.com/daos-stack/pmdk.git
+	sha256sums = SKIP
 
 pkgname = pmdk-git
