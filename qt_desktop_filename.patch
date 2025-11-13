@@ -1,0 +1,11 @@
+--- ./src/main.orig.cpp	2025-04-05 22:09:38.593284666 +0200
++++ ./src/main.cpp	2025-04-05 22:09:55.250925700 +0200
+@@ -53,7 +53,7 @@
+   QApplication::setOrganizationDomain("solarus-games.org");
+   // Set desktop filename so that the QtWayland backend will report the correct AppID
+   // based on this and make the launcher icon and startup notification work.
+-  QGuiApplication::setDesktopFileName(SOLARUSEDITOR_APP_ID ".desktop");
++  QGuiApplication::setDesktopFileName(SOLARUSEDITOR_APP_ID);
+ }
+ 
+ 

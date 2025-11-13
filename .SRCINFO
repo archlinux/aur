@@ -1,12 +1,21 @@
 pkgbase = solarus
-	pkgdesc = A lightweight, free and open-source game engine for Action-RPGs
-	pkgver = 1.6.5
-	pkgrel = 1
-	url = http://www.solarus-games.org/
+	pkgdesc = A lightweight, free and open-source 2D game engine for Action-RPGs
+	pkgver = 2.0
+	pkgrel = 2
+	url = https://www.solarus-games.org/
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only AND CC-BY-SA-3.0 AND CC-BY-SA-4.0
 	makedepends = cmake
+	makedepends = zip
+	source = https://gitlab.com/solarus-games/solarus/-/archive/434dc1cfcac0e89d0ec46dc34c19e25f2dcc9482/solarus-434dc1cfcac0e89d0ec46dc34c19e25f2dcc9482.tar.gz
+	source = custom_editor.patch
+	source = qt_desktop_filename.patch
+	sha256sums = SKIP
+	sha256sums = a0f7fb7eb4d181fa794de762c532dca248151dc9363745803caee6e7d48f3ba0
+	sha256sums = 8732c20ef6b59e4e7860884e2a8414aa648f0dc82535bd1b2575e15fab6d558e
+
+pkgname = solarus
 	depends = glm
 	depends = hicolor-icon-theme
 	depends = libmodplug>=0.8.8.4
@@ -14,15 +23,24 @@ pkgbase = solarus
 	depends = luajit>=2.0
 	depends = openal
 	depends = physfs
-	depends = qt5-base
-	depends = qt5-tools
-	depends = sdl2>=2.0.6
+	depends = sdl2>=2.0.18
 	depends = sdl2_image
 	depends = sdl2_ttf
+	optdepends = solarus-launcher: GUI to play Solarus games
+	optdepends = solarus-editor: GUI to create Solarus games
+	provides = solarus
 	conflicts = solarus-git
 	conflicts = solarus-run
-	source = https://gitlab.com/solarus-games/solarus/-/archive/v1.6.5/solarus-v1.6.5.tar.gz
-	b2sums = 96a67c7210c70d23d3fa08e24ee2c4cfbeb6e95dce7236ab860695bf4fc57aaa5d54b02e25ad2f10dfc498cc836bf83753d99cbeca1ff7bf496f7d589accbbf5
 
-pkgname = solarus
+pkgname = solarus-launcher
+	depends = solarus
+	depends = qt6-base>6.7
+	depends = qt6-svg
+	depends = qt6-tools
 
+pkgname = solarus-editor
+	depends = solarus
+	depends = qt6-base>6.7
+	depends = qt6-svg
+	depends = qt6-tools
+	conflicts = solarus-quest-editor
