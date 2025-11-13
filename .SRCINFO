@@ -1,7 +1,7 @@
 pkgbase = tidal-dl-ng
 	pkgdesc = A tool for downloading music and albums from TIDAL
 	pkgver = 0.31.4
-	pkgrel = 2
+	pkgrel = 1
 	url = https://pypi.org/project/tidal-dl-ng/
 	arch = any
 	license = AGPL-3.0-only
