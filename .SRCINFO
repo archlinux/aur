@@ -1,6 +1,6 @@
 pkgbase = imewlconverter
 	pkgdesc = 一款开源免费的输入法词库转换程序
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/studyzy/imewlconverter
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = imewlconverter
 	conflicts = imewlconverter
 	replaces = imewlconverter-bin
 	replaces = imewlconverter-cli
-	source = imewlconverter-3.2.0.tar.gz::https://github.com/studyzy/imewlconverter/archive/refs/tags/v3.2.0.tar.gz
-	sha256sums = 690a151f6666855208c64199f7430a39e62e0eadffe36680992b98877940ffc3
+	source = imewlconverter-3.3.0.tar.gz::https://github.com/studyzy/imewlconverter/archive/refs/tags/v3.3.0.tar.gz
+	sha256sums = 03b14e3af1180c57f215f835b9101bcdb0a01cd0e2241b68c77dced1bd45597b
 
 pkgname = imewlconverter
