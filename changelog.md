@@ -1,3 +1,69 @@
+## 0.0.354 - 2025-11-03
+
+- Exit with nonzero code when `-p` mode fails due to LLM backend errors (auth failures, quota exhaustion, network issues)
+- Support for MCP server tool notifications
+- Support for `COPILOT_GITHUB_TOKEN` environment variable for authentication (takes precedence over `GH_TOKEN`)
+- Improved shell command safety with better heredoc handling outside of commands
+- Diff hunk lines now properly fill the width of the diff box
+- MCP servers in GitHub Actions environments automatically use `GITHUB_WORKSPACE` as working directory
+- `/delegate` command now works correctly when no local changes exist
+- Custom agents with special characters in filenames no longer fail
+- Better error messages when using unsupported models with `/model` command
+- Alternative model providers now work correctly when using different OpenAI base URLs
+
+## 0.0.353 - 2025-10-28
+
+- Added support for custom agents. Custom agent definitions are pulled from `~/.copilot/agents`, `.github/agents` in your repository, or your organization's `.github` repository. You can explicitly invoke an agent with the `/agent` slash command interactively or `--agent <agent>` noninteractively. Agents are also provided as tools that the model can call during completion of a task
+- Added a `/delegate` command to delegate a task asynchronously to Copilot coding agent. Any unstaged changes will be committed to a new branch, a PR will be opened in your GitHub repository, and Copilot will complete work in the background.
+
+## 0.0.352 - 2025-10-27
+
+- Improve handling of MCP tools containing slashes
+- Improve error message from `/model <model>` command when using an unsupported model
+
+## 0.0.351 - 2025-10-24
+
+- Improved our path detection heuristic to avoid various annoying, unnecessary permissions requests:
+	- Running many standard bash/PowerShell commands that are known to be readonly (Fixes part of https://github.com/github/sweagentd/issues/7372)
+	- Commands like `npm test -- --something` in PowerShell
+	- Shell redirections like `> some_file.txt` in paths you've already granted write permissions, `> /dev/null`, and `2>&1` (Fixes https://github.com/github/copilot-cli/issues/211)
+	- Arguments to `gh api` like `gh api /repos/user/repo/ec` (Fixes https://github.com/github/copilot-cli/issues/216)
+- Improved prompting for Sonnet 4.5 to reduce the number of intermediate markdown files left in the workspace
+- 👀 ...see you at [GitHub Universe](https://githubuniverse.com/)!
+
+## 0.0.350 - 2025-10-23
+
+- To conserve context window space, we've limited the list of tools available to the default GitHub MCP server. In our tests, the model will use the [GitHub CLI, `gh`](https://github.com/cli/cli) (if installed) in lieu of missing MCP tools. We added an `--enable-all-github-mcp-tools` if you wish to turn on all available tools. 
+Default available tools are:
+	- Code & Repo navigation
+		- get_file_contents
+		- search_code
+		- search_repositories
+		- list_branches
+		- list_commits
+		- get_commit
+	- Issue Management
+		- get_issue
+		- list_issues
+		- get_issue_comments
+		- search_issues
+	- PR Management
+		- pull_request_read
+		- list_pull_requests
+		- search_pull_requests
+	- Workflow Info
+		- list_workflows
+		- list_workflow_runs
+		- get_workflow_run
+		- get_job_logs
+		- get_workflow_run_logs
+	- Misc search
+		- user_search
+- Bundled `sharp` dependency into the CLI package -- we're one step closer to implementing https://github.com/github/copilot-cli/issues/16, and this fixes some startup blockers on Windows (fixes https://github.com/github/copilot-cli/issues/309 & https://github.com/github/copilot-cli/issues/287)
+- Fixed a bug where input tokens were not tracked properly (Fixes https://github.com/github/copilot-cli/issues/337)
+- Fixed a bug where MCP tools with arguments would fail with streaming enabled
+- Added additional debug logging that will help us investigate https://github.com/github/copilot-cli/issues/346
+
 ## 0.0.349 - 2025-10-22
 
 - The model can now call multiple tools in parallel. Each tool must be confirmed in advance. This behavior can be disabled with the `--disable-parallel-tools-execution` flag
