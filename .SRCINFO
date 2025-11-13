@@ -1,7 +1,7 @@
 pkgbase = serdisplib-svn
-	pkgdesc = Library to drive displays with built-in controllers.
+	pkgdesc = Library to drive displays with built-in controllers. Built with all available features.
 	pkgver = 2.02.r383.d20191027
-	pkgrel = 2
+	pkgrel = 3
 	url = https://serdisplib.sourceforge.net/
 	arch = aarch64
 	arch = arm
@@ -17,6 +17,7 @@ pkgbase = serdisplib-svn
 	depends = gd
 	depends = glibc
 	provides = serdisplib=2.02.r383.d20191027
+	provides = serdisplib-full=2.02.r383.d20191027
 	provides = serdisplib-tools=2.02.r383.d20191027
 	provides = libserdisp.so
 	provides = libserdisp.a

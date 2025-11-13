@@ -6,8 +6,8 @@ _pkgname=serdisplib
 pkgname="${_pkgname}-svn"
 #epoch=0
 pkgver=2.02.r383.d20191027
-pkgrel=2
-pkgdesc="Library to drive displays with built-in controllers."
+pkgrel=3
+pkgdesc="Library to drive displays with built-in controllers. Built with all available features."
 arch=(
   'aarch64'
   'arm'
@@ -34,6 +34,7 @@ makedepends=(
 )
 provides=(
   "${_pkgname}=${pkgver}"
+  "${_pkgname}-full=${pkgver}"
   "${_pkgname}-tools=${pkgver}"
   "libserdisp.so"
   "libserdisp.a"
