@@ -2,7 +2,7 @@
 # Maintainer: higorslva <higor.slva at outlook dot com>
 
 pkgname=pgadmin4-server-bin
-pkgver=9.9
+pkgver=9.10
 pkgrel=1
 pkgdesc='The core server package for pgAdmin. pgAdmin is the most popular and feature rich Open Source administration and development platform for PostgreSQL, the most advanced Open Source database in the world.'
 arch=('x86_64')
@@ -11,8 +11,9 @@ url='https://www.pgadmin.org/'
 depends=('postgresql-libs' 'krb5' 'python-dbus')
 provides=('pgadmin4-server')
 conflicts=('pgadmin4-server')
-source=("pgadmin4-server-${pkgver}-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/plucky/dists/pgadmin4/main/binary-amd64/pgadmin4-server_${pkgver}_amd64.deb")
-sha256sums=('90e6919fcae6e8c9c577c1883699426b874d1c2683a1224cb5d1b263b4b8465c')
+source=("pgadmin4-server-${pkgver}-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/plucky/dists/pgadmin4/main/binary-amd64/pgadmin4-server_${pkgver}-1.plucky_amd64.deb")
+#source=("pgadmin4-server-${pkgver}-x86_64.deb::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/plucky/dists/pgadmin4/main/binary-amd64/pgadmin4-server_${pkgver}_amd64.deb")
+sha256sums=('8668a977ea91be92b1f48bf09b7af38e54f206868e31e3b96b52ffe46828bde1')
 
 package() {
   # Extract package data
