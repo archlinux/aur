@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc='A complete, easy to use script that lets you locally backup and restore your Android device.'
 arch=(i686 x86_64)
 license=(GPL-3.0-only)
-url='https://www.openandroidbackup.me'
+url='https://mrrfv.github.io/open-android-backup/'
 depends=(
   android-tools
   bc
