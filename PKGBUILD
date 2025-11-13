@@ -8,6 +8,7 @@ url="https://github.com/RAprogramm/logi-mx"
 license=('MIT')
 depends=('hidapi' 'systemd' 'gtk4' 'libadwaita' 'dbus')
 makedepends=('rustup')
+install=logi-mx.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RAprogramm/logi-mx/archive/v$pkgver.tar.gz")
 sha256sums=('a2a1e5bbf7a6e9329d16c6a1ff31c28c95f5464499bc5053b3ac53e271f92834')
 

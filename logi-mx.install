@@ -1,0 +1,37 @@
+post_install() {
+    # Try to enable the service for the user running the AUR helper
+    if [ -n "$SUDO_USER" ] && [ "$SUDO_USER" != "root" ]; then
+        echo "==> Enabling logi-mx daemon for user $SUDO_USER..."
+        sudo -u "$SUDO_USER" systemctl --user enable logi-mx-daemon.service 2>/dev/null || true
+        echo "==> Starting logi-mx daemon..."
+        sudo -u "$SUDO_USER" systemctl --user start logi-mx-daemon.service 2>/dev/null || true
+    else
+        echo ""
+        echo "==> To enable logi-mx daemon on login, run:"
+        echo "    systemctl --user enable --now logi-mx-daemon.service"
+        echo ""
+    fi
+
+    echo ""
+    echo "==> Make sure you are in the 'input' group to access the device:"
+    echo "    sudo usermod -aG input \$USER"
+    echo "    Then log out and log back in for the group change to take effect."
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    if [ -n "$SUDO_USER" ] && [ "$SUDO_USER" != "root" ]; then
+        echo "==> Stopping and disabling logi-mx daemon for user $SUDO_USER..."
+        sudo -u "$SUDO_USER" systemctl --user stop logi-mx-daemon.service 2>/dev/null || true
+        sudo -u "$SUDO_USER" systemctl --user disable logi-mx-daemon.service 2>/dev/null || true
+    else
+        echo ""
+        echo "==> To stop and disable the daemon, run:"
+        echo "    systemctl --user disable --now logi-mx-daemon.service"
+        echo ""
+    fi
+}
