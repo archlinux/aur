@@ -1,11 +1,16 @@
 pkgbase = tigerbeetle
-	pkgdesc = A distributed financial accounting database designed for safety and performance
-	pkgver = 0.16.11
+	pkgdesc = The financial transactions database designed for mission critical safety and performance
+	pkgver = 0.16.64
 	pkgrel = 1
-	epoch = 0
 	url = https://tigerbeetle.com
-	arch = any
-	source = tigerbeetle-0.16.11.zip::https://linux.tigerbeetle.com
-	sha256sums = 892172989a9d04eb1b85e283353de43d0a030604acf8ae1d8dc04736be4416da
+	arch = aarch64
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = jq
+	makedepends = zig0.14-bin
+	source = tigerbeetle-0.16.64.tar.gz::https://github.com/tigerbeetle/tigerbeetle/archive/refs/tags/0.16.64.tar.gz
+	source = tigerbeetle-0.16.64.github.yaml::https://api.github.com/repos/tigerbeetle/tigerbeetle/git/ref/tags/0.16.64
+	b2sums = 79b71887181fc1ec8e25c512c80c64bb7d4caf27d608c2e90b544a0204054709678d1403272911187f7e01b4c25e48ece376f730b2784fac0dc63ffcdb3095e7
+	b2sums = d04d58707a4956daaffe50947a461e4d5b325cc33fcc508dde56174aef2991cb097c0f4db6058b1744b191f68f8ab37ef6b3c3bb0ed323442b252b7f6c155508
 
 pkgname = tigerbeetle

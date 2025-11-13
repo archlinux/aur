@@ -1,0 +1,4 @@
+[tigerbeetle]
+source = "git"
+git = "https://github.com/tigerbeetle/tigerbeetle.git"
+prefix = "v"
