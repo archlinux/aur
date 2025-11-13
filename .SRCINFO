@@ -1,0 +1,14 @@
+pkgbase = zon2nix
+	pkgdesc = Convert the dependencies in build.zig.zon to a Nix expression
+	pkgver = 0.1.2+r62+g2360e35
+	pkgrel = 1
+	url = https://github.com/nix-community/zon2nix
+	arch = aarch64
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = zig0.14-bin
+	depends = nix
+	source = zon2nix-2360e358c2107860dadd340f88b25d260b538188.tar.gz::https://github.com/nix-community/zon2nix/archive/2360e358c2107860dadd340f88b25d260b538188.tar.gz
+	b2sums = 2842a9b079b3d0a1e3252dd4429ab64a7b21c89a897e89c82526c8831de8ea1a605d04066da0611d33c9980ac323740d056c33a7028bb4878a30c31e5c07fac6
+
+pkgname = zon2nix

@@ -1,0 +1,4 @@
+[zon2nix]
+source = "git"
+git = "https://github.com/nix-community/zon2nix.git"
+prefix = "v"
