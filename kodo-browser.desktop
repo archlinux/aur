@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Utility;
+Comment=Kodo Browser
+Exec=kodo-browser %u
+Icon=kodo-browser
+Keywords=kodo;
+Name=Kodo
+Name=DingTalk
+Name[zh_CN]=Kodo浏览器
+Type=Application
