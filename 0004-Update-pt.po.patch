@@ -1,0 +1,258 @@
+From 0a6e6f30b0586f955a9932e9b086be6a9d3e9389 Mon Sep 17 00:00:00 2001
+From: Hugo Carvalho <hugokarvalho@hotmail.com>
+Date: Thu, 6 Mar 2025 15:57:15 +0000
+Subject: [PATCH 4/5] Update pt.po
+
+Improvements
+---
+ po/pt.po | 80 ++++++++++++++++++++++++++------------------------------
+ 1 file changed, 37 insertions(+), 43 deletions(-)
+
+diff --git a/po/pt.po b/po/pt.po
+index 6a600f5..d139192 100644
+--- a/po/pt.po
++++ b/po/pt.po
+@@ -1,23 +1,23 @@
+ # Leafpad Portuguese (Portugal) translation.
+-# Copyright (C) 2018 Free Software Foundation, Inc.
++# Copyright (C) 2025 Free Software Foundation, Inc.
+ # This file is distributed under the same license as the leafpad package.
+ # Pedro Albuquerque <palbuquerque73@gmail.com>, 2018.
++# Hugo Carvalho <hugokarvalho@hotmail.com>, 2025.
+ #
+ msgid ""
+ msgstr ""
+-"Project-Id-Version: leafpad 0.8.16\n"
++"Project-Id-Version: leafpad 0.8.18.1\n"
+ "Report-Msgid-Bugs-To: \n"
+ "POT-Creation-Date: 2008-09-03 21:17+0900\n"
+-"PO-Revision-Date: 2018-10-04 10:14+0100\n"
+-"Last-Translator: Pedro Albuquerque <palbuquerque73@gmail.com>\n"
+-"Language-Team: Portuguese <translation-team-pt@lists.sourceforge.net>\n"
++"PO-Revision-Date: 2025-03-06 15:56+0000\n"
++"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
++"Language-Team: Portuguese <hugokarvalho@hotmail.com>\n"
+ "Language: pt\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
+-"X-Bugs: Report translation errors to the Language-Team address.\n"
+-"Plural-Forms: nplurals=2; plural=n != 1;\\n\n"
+-"X-Generator: Gtranslator 2.91.7\n"
++"Plural-Forms: nplurals=2; plural=n != 1;\\n;\n"
++"X-Generator: Poedit 3.0.1\n"
+ 
+ #: ../src/menu.c:31
+ msgid "/_File"
+@@ -41,7 +41,7 @@ msgstr "/Ficheiro/Gravar _como..."
+ 
+ #: ../src/menu.c:45
+ msgid "/File/Print Pre_view"
+-msgstr "/Ficheiro/Ante_ver impressão"
++msgstr "/Ficheiro/Pré-_visualizar impressão"
+ 
+ #: ../src/menu.c:48
+ msgid "/File/_Print..."
+@@ -81,7 +81,7 @@ msgstr "/Editar/_Eliminar"
+ 
+ #: ../src/menu.c:75
+ msgid "/Edit/Select _All"
+-msgstr "/Editar/Seleccion_ar tudo"
++msgstr "/Editar/Selecion_ar tudo"
+ 
+ #: ../src/menu.c:77
+ msgid "/_Search"
+@@ -97,7 +97,7 @@ msgstr "/Procurar/Localizar segui_nte"
+ 
+ #: ../src/menu.c:83
+ msgid "/Search/Find _Previous"
+-msgstr "/Procurar/Localizar _Anterior"
++msgstr "/Procurar/Localizar _anterior"
+ 
+ #: ../src/menu.c:85
+ msgid "/Search/_Replace..."
+@@ -113,7 +113,7 @@ msgstr "/_Opções"
+ 
+ #: ../src/menu.c:93
+ msgid "/Options/_Font..."
+-msgstr "/Opções/_Letra..."
++msgstr "/Opções/_Tipo de letra..."
+ 
+ #: ../src/menu.c:95
+ msgid "/Options/_Word Wrap"
+@@ -121,11 +121,11 @@ msgstr "/Opções/_Quebra de linha"
+ 
+ #: ../src/menu.c:97
+ msgid "/Options/_Line Numbers"
+-msgstr "/Opções/Números de _linha"
++msgstr "/Opções/Numeração de _linhas"
+ 
+ #: ../src/menu.c:101
+ msgid "/Options/_Auto Indent"
+-msgstr "/Opções/_Auto-indentar"
++msgstr "/Opções/_Indentação automática"
+ 
+ #: ../src/menu.c:103
+ msgid "/_Help"
+@@ -141,21 +141,23 @@ msgstr "Editor de texto simples em GTK+"
+ 
+ #: ../src/callback.c:321
+ msgid "translator-credits"
+-msgstr "Pedro Albuquerque <palbuquerque73@gmail.com>"
++msgstr ""
++"Pedro Albuquerque <palbuquerque73@gmail.com>\n"
++"Hugo Carvalho <hugokarvalho@hotmail.com>"
+ 
+ #: ../src/view.c:62
+ #, c-format
+ msgid "Save changes to '%s'?"
+-msgstr "Gravar alterações em \"%s\"?"
++msgstr "Gravar alterações em '%s'?"
+ 
+ #: ../src/font.c:44
+ msgid "Font"
+-msgstr "Letra"
++msgstr "Tipo de letra"
+ 
+ #: ../src/selector.c:99
+ #, c-format
+ msgid "Current Locale (%s)"
+-msgstr "Idioma actual (%s)"
++msgstr "Idioma atual (%s)"
+ 
+ #: ../src/selector.c:130
+ msgid "Other Codeset"
+@@ -168,11 +170,11 @@ msgstr "Conjunto de caractere_s:"
+ #: ../src/selector.c:192
+ #, c-format
+ msgid "'%s' is not supported"
+-msgstr "\"%s\" não é suportado"
++msgstr "'%s' não é suportado"
+ 
+ #: ../src/selector.c:253
+ msgid "Auto-Detect"
+-msgstr "Auto-detectar"
++msgstr "Indentação automática"
+ 
+ #: ../src/selector.c:305
+ msgid "Open"
+@@ -184,12 +186,12 @@ msgstr "Gravar como"
+ 
+ #: ../src/selector.c:329
+ msgid "C_haracter Coding:"
+-msgstr "Codi_ficação de caracteres: "
++msgstr "Codi_ficação de caracteres:"
+ 
+ #: ../src/selector.c:400
+ #, c-format
+ msgid "'%s' already exists. Overwrite?"
+-msgstr "\"%s\" já existe. Sobrescrever?"
++msgstr "'%s' já existe. Substituir?"
+ 
+ #: ../src/file.c:55
+ msgid "Untitled"
+@@ -198,19 +200,19 @@ msgstr "Sem título"
+ #: ../src/file.c:212
+ #, c-format
+ msgid "Can't convert codeset to '%s'"
+-msgstr "Impossível converter para \"%s\""
++msgstr "Não é possível converter para '%s'"
+ 
+ #: ../src/file.c:225
+ msgid "Can't open file to write"
+-msgstr "Impossível abrir o ficheiro para escrita"
++msgstr "Não é possível abrir o ficheiro para gravar"
+ 
+ #: ../src/file.c:230
+ msgid "Can't write file"
+-msgstr "Impossível escrever o ficheiro"
++msgstr "Não é possível gravar no ficheiro"
+ 
+ #: ../src/search.c:140
+ msgid "Search string not found"
+-msgstr "Cadeia não encontrada"
++msgstr "Cadeia de caracteres não encontrada"
+ 
+ #: ../src/search.c:193
+ msgid "Replace?"
+@@ -219,7 +221,7 @@ msgstr "Substituir?"
+ #: ../src/search.c:260
+ #, c-format
+ msgid "%d strings replaced"
+-msgstr "%d cadeias substituídas"
++msgstr "%d cadeias de caracteres substituídas"
+ 
+ #: ../src/search.c:306
+ msgid "Replace"
+@@ -231,19 +233,19 @@ msgstr "Localizar"
+ 
+ #: ../src/search.c:326
+ msgid "Fi_nd what:"
+-msgstr "Procurar o _quê:"
++msgstr "Localizar:"
+ 
+ #: ../src/search.c:342
+ msgid "Re_place with:"
+-msgstr "Substituir _por: "
++msgstr "Substituir _por:"
+ 
+ #: ../src/search.c:356
+ msgid "_Match case"
+-msgstr "Co_mparar maiúsculas"
++msgstr "_Diferenciar maiúsculas e minúsculas"
+ 
+ #: ../src/search.c:361
+ msgid "Replace _all at once"
+-msgstr "Substituir tod_as"
++msgstr "Substituir tudo de uma vez"
+ 
+ #: ../src/search.c:412
+ msgid "Jump To"
+@@ -255,7 +257,7 @@ msgstr "_Ir"
+ 
+ #: ../src/search.c:425
+ msgid "_Line number:"
+-msgstr "Nº da _linha: "
++msgstr "Número da linha:"
+ 
+ #: ../src/about.c:102
+ msgid "Credits"
+@@ -263,7 +265,7 @@ msgstr "Créditos"
+ 
+ #: ../src/about.c:137
+ msgid "Written by"
+-msgstr "Escrito por"
++msgstr "Programado por"
+ 
+ #: ../src/about.c:140
+ msgid "Documented by"
+@@ -284,7 +286,7 @@ msgstr "_Créditos"
+ #: ../src/about.c:209
+ #, c-format
+ msgid "About %s"
+-msgstr "Acerca de %s"
++msgstr "Acerca do %s"
+ 
+ #: ../src/gnomeprint.c:261
+ msgid "Print"
+@@ -292,16 +294,8 @@ msgstr "Imprimir"
+ 
+ #: ../src/gnomeprint.c:291
+ msgid "Print Preview"
+-msgstr "Antever impressão"
++msgstr "Pré-visualizar impressão"
+ 
+ #: ../data/leafpad.desktop.in.h:1
+ msgid "Simple text editor"
+ msgstr "Editor de texto simples"
+-
+-#, fuzzy
+-#~ msgid "Can't convert codeset to current locale"
+-#~ msgstr "Não foi possível converter o conjuntos de caracteres para '%s'"
+-
+-#, fuzzy
+-#~ msgid "Can't write temporary file"
+-#~ msgstr "Não foi possível escrever o arquivo"
+-- 
+2.51.2
+

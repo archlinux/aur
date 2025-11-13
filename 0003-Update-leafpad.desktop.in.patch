@@ -1,0 +1,21 @@
+From 3e46c6cb81326fc1133b6e0a69e94b8abf1bced6 Mon Sep 17 00:00:00 2001
+From: Tarot Osuji <tarot@sdf.org>
+Date: Wed, 6 Nov 2024 05:56:43 +0900
+Subject: [PATCH 3/5] Update leafpad.desktop.in
+
+---
+ data/leafpad.desktop.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/data/leafpad.desktop.in b/data/leafpad.desktop.in
+index e1ae640..f22cd35 100644
+--- a/data/leafpad.desktop.in
++++ b/data/leafpad.desktop.in
+@@ -8,3 +8,4 @@ Terminal=false
+ Type=Application
+ MimeType=text/plain
+ Categories=GTK;Utility;TextEditor;
++StartupNotify=true
+-- 
+2.51.2
+

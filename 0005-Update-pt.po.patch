@@ -1,0 +1,35 @@
+From eed712f1a7bbda94148f67f4ea00760d95cae626 Mon Sep 17 00:00:00 2001
+From: Hugo Carvalho <hugokarvalho@hotmail.com>
+Date: Wed, 12 Mar 2025 22:43:39 +0000
+Subject: [PATCH 5/5] Update pt.po
+
+String correction
+---
+ po/pt.po | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/po/pt.po b/po/pt.po
+index d139192..e2423be 100644
+--- a/po/pt.po
++++ b/po/pt.po
+@@ -9,7 +9,7 @@ msgstr ""
+ "Project-Id-Version: leafpad 0.8.18.1\n"
+ "Report-Msgid-Bugs-To: \n"
+ "POT-Creation-Date: 2008-09-03 21:17+0900\n"
+-"PO-Revision-Date: 2025-03-06 15:56+0000\n"
++"PO-Revision-Date: 2025-03-12 22:41+0000\n"
+ "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
+ "Language-Team: Portuguese <hugokarvalho@hotmail.com>\n"
+ "Language: pt\n"
+@@ -174,7 +174,7 @@ msgstr "'%s' não é suportado"
+ 
+ #: ../src/selector.c:253
+ msgid "Auto-Detect"
+-msgstr "Indentação automática"
++msgstr "Deteção automática"
+ 
+ #: ../src/selector.c:305
+ msgid "Open"
+-- 
+2.51.2
+

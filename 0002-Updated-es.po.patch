@@ -1,0 +1,122 @@
+From cda7599c0704c90e105d08bbb4f60b09df81510f Mon Sep 17 00:00:00 2001
+From: Lucas Vieites <lucas@codexion.com>
+Date: Wed, 14 Dec 2022 11:53:55 +0100
+Subject: [PATCH 2/5] Updated es.po
+
+Updated Spanish translation with new strings and also corrected some strings for consistency
+---
+ po/es.po | 34 ++++++++++++++++++++--------------
+ 1 file changed, 20 insertions(+), 14 deletions(-)
+
+diff --git a/po/es.po b/po/es.po
+index 896433a..7292235 100644
+--- a/po/es.po
++++ b/po/es.po
+@@ -1,20 +1,22 @@
+ # Spanish/Spain translation of Leafpad
+ # Copyright (C) 2004 Free Software Foundation, Inc.
+ # This file is distributed under the same license as the leafpad package.
+-# Lucas Vieites <lucas@codexion.com>,2004-2009.
++# Lucas Vieites <lucas.vieites@gmail.com>,2004-2022.
+ #
+ #
+ msgid ""
+ msgstr ""
+-"Project-Id-Version: leafpad-0.8.16\n"
++"Project-Id-Version: leafpad-0.8.19\n"
+ "Report-Msgid-Bugs-To: \n"
+-"POT-Creation-Date: 2009-10-28 02:41+0900\n"
+-"PO-Revision-Date: 2009-06-24 21:49+0200\n"
+-"Last-Translator: Lucas Vieites <lucas@codexion.com>\n"
++"POT-Creation-Date: 2022-12-14 11:28+0100\n"
++"PO-Revision-Date: 2022-12-14 11:33+0100\n"
++"Last-Translator: Lucas Vieites <lucas.vieites@gmail.com>\n"
+ "Language-Team: Spanish <es@li.org>\n"
++"Language: es\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
++"X-Generator: Poedit 3.2\n"
+ 
+ #: ../src/menu.c:31
+ msgid "/_File"
+@@ -90,11 +92,11 @@ msgstr "/Buscar/_Buscar"
+ 
+ #: ../src/menu.c:81
+ msgid "/Search/Find _Next"
+-msgstr "/Buscar/Buscar el _siguiente"
++msgstr "/Buscar/Buscar _siguiente"
+ 
+ #: ../src/menu.c:83
+ msgid "/Search/Find _Previous"
+-msgstr "/Buscar/Buscar el an_terior"
++msgstr "/Buscar/Buscar an_terior"
+ 
+ #: ../src/menu.c:85
+ msgid "/Search/_Replace..."
+@@ -102,7 +104,7 @@ msgstr "/Buscar/_Reemplazar"
+ 
+ #: ../src/menu.c:89
+ msgid "/Search/_Jump To..."
+-msgstr "/Buscar/Ira a la _línea"
++msgstr "/Buscar/Ir a _línea"
+ 
+ #: ../src/menu.c:91
+ msgid "/_Options"
+@@ -134,11 +136,11 @@ msgstr "/Ayuda/_Acerca de"
+ 
+ #: ../src/callback.c:316
+ msgid "GTK+ based simple text editor"
+-msgstr "Editor de texto simple"
++msgstr "Editor de texto simple, basado en GTK+"
+ 
+ #: ../src/callback.c:321
+ msgid "translator-credits"
+-msgstr "Lucas Vieites <lucas@asixinformatica.com>"
++msgstr "Lucas Vieites <lucas.vieites@gmail.com>"
+ 
+ #: ../src/view.c:62
+ #, c-format
+@@ -192,16 +194,16 @@ msgstr "«%s» ya existe. ¿Desea sobrescribirlo?"
+ msgid "Untitled"
+ msgstr "Sin nombre"
+ 
+-#: ../src/file.c:212
++#: ../src/file.c:210
+ #, c-format
+ msgid "Can't convert codeset to '%s'"
+ msgstr "No se puede convertir el conjunto de códigos a «%s»"
+ 
+-#: ../src/file.c:225
++#: ../src/file.c:223
+ msgid "Can't open file to write"
+ msgstr "No se puede abrir el archivo para escritura"
+ 
+-#: ../src/file.c:230
++#: ../src/file.c:228
+ msgid "Can't write file"
+ msgstr "No se puede escribir en el archivo"
+ 
+@@ -244,7 +246,7 @@ msgstr "Reemplaz_ar todos"
+ 
+ #: ../src/search.c:415
+ msgid "Jump To"
+-msgstr "Ir a"
++msgstr "Saltar a"
+ 
+ #: ../src/search.c:421
+ msgid "_Jump"
+@@ -292,6 +294,10 @@ msgid "Print Preview"
+ msgstr "Vista previa"
+ 
+ #: ../data/leafpad.desktop.in.h:1
++msgid "Leafpad"
++msgstr "Leafpad"
++
++#: ../data/leafpad.desktop.in.h:2
+ msgid "Simple text editor"
+ msgstr "Editor de texto simple"
+ 
+-- 
+2.51.2
+
