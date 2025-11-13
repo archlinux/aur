@@ -2,7 +2,7 @@
 # Maintainer: Pierre-Luc Rigaux 
 # Contributor: Pierre-Luc Rigaux 
 pkgname=sysd-manager
-pkgver=2.7.2
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="A systemd GUI to manage service, timer, socket and other units."
 arch=("x86_64" "aarch64")
@@ -20,10 +20,10 @@ backup=()
 options=()
 install=$pkgname.install
 changelog=CHANGELOG.md
-_commit=5642759718e04cf9a8306294aaf71abf1f44740c
+_commit=fe40eab76ed8285235b7c3300797da365a25ef87
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plrigaux/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('7b12e751c209efc9c751e4ffb80c08df13ec731f79c22c98d3b586670e24479a')
+sha256sums=('4f8807d555278937076a7dfaa4182c6200e01f5812d55c8c2ed7d0bd56ebbc53')
 validpgpkeys=()
 _pkgsrcdir=$pkgname-$pkgver
 

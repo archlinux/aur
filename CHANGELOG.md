@@ -12,8 +12,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Search (simple) the logs
 - Search dependencies
 - Options on description menu
-- Handle unset value as NULL
 - Show interface on properties list
+- Can create and edit DropIns
+
+## [2.8.0] - 2025-11-13
+### Added
+  - Can filter on unset values
+
+### Fixed
+  - Column button in the preferences panel
 
 ## [2.7.2] - 2025-11-11
 ### Fixed
