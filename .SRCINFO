@@ -1,6 +1,6 @@
 pkgbase = lxqt-panel-profiles
 	pkgdesc = Backup, restore and switch configurations of lxqt-panel
-	pkgver = e7d656b
+	pkgver = a70f347
 	pkgrel = 1
 	url = https://codeberg.org/MrReplikant/lxqt-panel-profiles.git
 	arch = any
