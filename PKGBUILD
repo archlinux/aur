@@ -1,7 +1,7 @@
 # Maintainer: Marc Rechté <marc4@rechte.fr>
 
 pkgbase=postgresql17
-pkgver=17.2
+pkgver=17.7
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
 pkgrel=1
@@ -20,7 +20,8 @@ source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.ta
         pgenv.sh
         postgresql-run-socket.patch
         postgresql-perl-rpath.patch)
-sha256sums=('82ef27c0af3751695d7f64e2d963583005fbb6a0c3df63d0e4b42211d7021164'
+#        0001-WIP-track-wal-segments.patch)
+sha256sums=('ef9e343302eccd33112f1b2f0247be493cb5768313adeb558b02de8797a2e9b5'
             '1b10acff7b5f80ea39c6c122569cd461a12cf90114b777ad46d438447c5c5774'
             '55c7282fdb116741a5de1c572a1b727b6c53a38b8c13d7c4b5d7a62e654084b2'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
@@ -28,11 +29,13 @@ sha256sums=('82ef27c0af3751695d7f64e2d963583005fbb6a0c3df63d0e4b42211d7021164'
             'fbe59d8e34d67a56a911fcefd15f4103a0fba4b4ed496531a2618008b741f160'
             '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
             'f579fe03f93418855f597e8f437fda7e3520e08296709c6c8d7102ab90f8451f')
+#            'SKIP')
 
 prepare() {
   cd postgresql-${pkgver}
   patch -p1 < ../postgresql-run-socket.patch
   patch -p1 < ../postgresql-perl-rpath.patch
+#  patch -p1 < ../0001-WIP-track-wal-segments.patch
 }
 
 build() {

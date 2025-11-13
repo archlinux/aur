@@ -1,6 +1,6 @@
 pkgbase = postgresql17
 	pkgdesc = Sophisticated object-relational DBMS
-	pkgver = 17.2
+	pkgver = 17.7
 	pkgrel = 1
 	url = https://www.postgresql.org/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = postgresql17
 	makedepends = clang
 	makedepends = libxslt
 	provides = postgresql
-	source = https://ftp.postgresql.org/pub/source/v17.2/postgresql-17.2.tar.bz2
+	source = https://ftp.postgresql.org/pub/source/v17.7/postgresql-17.7.tar.bz2
 	source = postgresql.service
 	source = postgresql-check-db-dir
 	source = postgresql.sysusers
@@ -28,7 +28,7 @@ pkgbase = postgresql17
 	source = pgenv.sh
 	source = postgresql-run-socket.patch
 	source = postgresql-perl-rpath.patch
-	sha256sums = 82ef27c0af3751695d7f64e2d963583005fbb6a0c3df63d0e4b42211d7021164
+	sha256sums = ef9e343302eccd33112f1b2f0247be493cb5768313adeb558b02de8797a2e9b5
 	sha256sums = 1b10acff7b5f80ea39c6c122569cd461a12cf90114b777ad46d438447c5c5774
 	sha256sums = 55c7282fdb116741a5de1c572a1b727b6c53a38b8c13d7c4b5d7a62e654084b2
 	sha256sums = 7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12
@@ -58,7 +58,7 @@ pkgname = postgresql17-docs
 pkgname = postgresql17
 	pkgdesc = Sophisticated object-relational DBMS
 	install = postgresql.install
-	depends = postgresql17-libs>=17.2
+	depends = postgresql17-libs>=17.7
 	depends = krb5
 	depends = libxml2
 	depends = readline>=6.0
