@@ -1,0 +1,14 @@
+pkgbase = voltix
+	pkgdesc = 🔋 Display battery info as an ASCII battery in terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Lunethra/voltix
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-typer
+	depends = python-rich
+	source = main.py
+	sha256sums = SKIP
+
+pkgname = voltix
