@@ -6,7 +6,7 @@
 
 pkgname=birdtray
 pkgver=1.11.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Run Thunderbird with a system tray icon."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/gyunaev/birdtray"
@@ -25,6 +25,7 @@ prepare() {
 build() {
   mkdir -p build && cd build
   cmake ../$pkgname-$pkgver \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
   make
