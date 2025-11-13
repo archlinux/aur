@@ -1,0 +1,18 @@
+pkgbase = digikam-appimage
+	pkgdesc = The latest stable AppImage of digiKam - an advanced open-source digital photo management application that runs on Linux, Windows, and MacOS.
+	pkgver = 8.8.0
+	pkgrel = 1
+	url = https://www.digikam.org/
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = fuse2
+	conflicts = digikam
+	options = !strip
+	source = https://download.kde.org/stable/digikam/8.8.0/digiKam-8.8.0-Qt6-x86-64.appimage
+	source = digikam
+	source = showfoto
+	sha256sums = 8c306ebbadd457f2e0e84474bc3831c80c6c40a9ad9709710f546027efa35a59
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = digikam-appimage

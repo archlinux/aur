@@ -1,0 +1,5 @@
+pkg
+src
+*.appimage
+*.pkg.tar.zst
+*.log
