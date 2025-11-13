@@ -10,7 +10,7 @@ depends=('hidapi' 'systemd' 'gtk4' 'libadwaita' 'dbus')
 provides=('logi-mx')
 conflicts=('logi-mx')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RAprogramm/logi-mx/releases/download/v${pkgver}/logi-mx-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('0ca7780f35de247f491dae6840cd959223fa9d7b9f90fbf3bc36a89c748294f2')
+sha256sums=('2d5a64ec8717041f0ad45a91ab89d3d0afd84d53f92ce66d7f4a726577a84255')
 
 package() {
     # Install binaries
