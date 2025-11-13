@@ -1,6 +1,6 @@
 pkgbase = masterpdfeditor-qt_include
 	pkgdesc = A complete solution for viewing, creating and editing PDF files
-	pkgver = 5.9.90
+	pkgver = 5.9.94
 	pkgrel = 1
 	url = https://code-industry.net/free-pdf-editor/
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = masterpdfeditor-qt_include
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
 	depends = glibc>=2.28
-	provides = masterpdfeditor=5.9.90
+	provides = masterpdfeditor=5.9.94
 	conflicts = masterpdfeditor
-	source_x86_64 = https://code-industry.net/public/master-pdf-editor-5.9.90-qt5.x86_64-qt_include.tar.gz
-	sha1sums_x86_64 = 748f5b9bec9eac81796c2b110ed95882dbaf59d4
+	source_x86_64 = https://code-industry.net/public/master-pdf-editor-5.9.94-qt5.x86_64-qt_include.tar.gz
+	sha1sums_x86_64 = d54e4ecc01652bbf127a448ff96c575ad1a48bb0
 
 pkgname = masterpdfeditor-qt_include

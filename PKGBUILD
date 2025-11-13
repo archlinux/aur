@@ -2,8 +2,8 @@
 
 pkgname=masterpdfeditor-qt_include
 _pkgname=${pkgname%-qt_include}
-pkgver=5.9.90
-_pkgver=5.9.90
+pkgver=5.9.94
+_pkgver=5.9.94
 pkgrel=1
 pkgdesc='A complete solution for viewing, creating and editing PDF files'
 url='https://code-industry.net/free-pdf-editor/'
