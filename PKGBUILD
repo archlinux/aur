@@ -2,7 +2,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='tinct-plugin-random-bin'
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc='Random color palette generator plugin for Tinct'
 url='https://github.com/jmylchreest/tinct'
@@ -13,14 +13,14 @@ conflicts=('tinct')
 depends=('tinct-bin')
 install=tinct-plugin-random.install
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.6/tinct-plugin-random_0.0.6_Linux_arm64.tar.gz")
-sha256sums_aarch64=('e1933b1808d11c0578dd7dcf85f845c8d2df1b398fea693d5d2b543179b60db3')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.7/tinct-plugin-random_0.0.7_Linux_arm64.tar.gz")
+sha256sums_aarch64=('b65615dfb1db52f16b6c21681c66b5d1e6d4c7ccc5ba4a24fca5037f794cc637')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.6/tinct-plugin-random_0.0.6_Linux_armv7.tar.gz")
-sha256sums_armv7h=('4ac35fbd1b5e44ebdcd7c7f9ac81bed115afca3a2dba181eff8ac4f3ede24d34')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.7/tinct-plugin-random_0.0.7_Linux_armv7.tar.gz")
+sha256sums_armv7h=('2057dd1ada5ec6ca407e101bafc8cf60ac8a43fe2133f5878c9930c7dc128516')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.6/tinct-plugin-random_0.0.6_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('12885d4f56220b281ade473b3baf1f7a51e2347a0f6de71ccf6f577c07e8f844')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.7/tinct-plugin-random_0.0.7_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('965ab253a191b0df0f2934a48d7594767957defc86014e3839cd1acc4694842d')
 
 package() {
   # bin
@@ -30,7 +30,10 @@ package() {
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/tinct-plugin-random/LICENSE"
 
   # sbom
-  if [ -f *.sbom.json ]; then
-  install -Dm644 *.sbom.json "${pkgdir}/usr/share/doc/tinct-plugin-random/sbom.json"
+  for sbom in *.sbom.json; do
+  if [ -f "$sbom" ]; then
+  install -Dm644 "$sbom" "${pkgdir}/usr/share/doc/tinct-plugin-random/sbom.json"
+  break
   fi
+  done
 }
