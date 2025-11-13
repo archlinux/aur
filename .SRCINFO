@@ -1,5 +1,5 @@
 pkgbase = heidisql-gtk2-bin
-	pkgdesc = A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases. (GTK2)
+	pkgdesc = A lightweight GUI for managing MySQL, PostgreSQL, and SQLite databases. (GTK2)
 	pkgver = 12.13.1.1
 	pkgrel = 2
 	url = https://github.com/HeidiSQL/HeidiSQL
