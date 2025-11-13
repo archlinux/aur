@@ -1,0 +1,18 @@
+pkgbase = nonraid-git
+	pkgdesc = NonRAID - unRAID-like storage array driver (DKMS) with tools, systemd units and udev rule
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/qvr/nonraid
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	depends = systemd
+	depends = util-linux
+	optdepends = linux-headers: build the kernel module for the running kernel
+	provides = nmdctl
+	source = git+https://github.com/qvr/nonraid.git#tag=nonraid-dkms-1.3.2
+	sha256sums = SKIP
+	install = nonraid-dkms.install
+
+pkgname = nonraid-git
