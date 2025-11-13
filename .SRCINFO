@@ -1,19 +1,19 @@
 pkgbase = tinct-bin
 	pkgdesc = Generate colour palettes from images and apply system-wide theming
-	pkgver = 0.0.6
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://github.com/jmylchreest/tinct
 	license = MIT
 	conflicts = tinct
 	provides = tinct
 	arch = aarch64
-	source_aarch64 = https://github.com/jmylchreest/tinct/releases/download/v0.0.6/tinct_0.0.6_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 03aee5d5faa5df8b4361556ca340157a7481fabff5ff0ee8d944a4db3cc0c6c0
+	source_aarch64 = https://github.com/jmylchreest/tinct/releases/download/v0.0.7/tinct_0.0.7_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 0aa017d4b758eceefd37ba091c4a8a686a738b3890698dd1d525c898288fd928
 	arch = armv7h
-	source_armv7h = https://github.com/jmylchreest/tinct/releases/download/v0.0.6/tinct_0.0.6_Linux_armv7.tar.gz
-	sha256sums_armv7h = afe35da5a0f9105e478e7edeb0c7190b3b68c655e0939ebbc277502fdeca13da
+	source_armv7h = https://github.com/jmylchreest/tinct/releases/download/v0.0.7/tinct_0.0.7_Linux_armv7.tar.gz
+	sha256sums_armv7h = 799b1d2f1deee272bbe3d4feb5e0960c788b3af43ff4b8ce49a2ce8b0d6bfd95
 	arch = x86_64
-	source_x86_64 = https://github.com/jmylchreest/tinct/releases/download/v0.0.6/tinct_0.0.6_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 3d7393d5f9b0b4ca9f925ec12937b4dd3aeca2788d5062d7191d869e2978ca80
+	source_x86_64 = https://github.com/jmylchreest/tinct/releases/download/v0.0.7/tinct_0.0.7_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = df0107af80061bfeaf90e32f3706a4c0f541ec25a0fe80703b7b7d7213ff0afe
 	
 pkgname = tinct-bin

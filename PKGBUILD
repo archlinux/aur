@@ -2,7 +2,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='tinct-bin'
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc='Generate colour palettes from images and apply system-wide theming'
 url='https://github.com/jmylchreest/tinct'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('tinct')
 conflicts=('tinct')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.6/tinct_0.0.6_Linux_arm64.tar.gz")
-sha256sums_aarch64=('03aee5d5faa5df8b4361556ca340157a7481fabff5ff0ee8d944a4db3cc0c6c0')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.7/tinct_0.0.7_Linux_arm64.tar.gz")
+sha256sums_aarch64=('0aa017d4b758eceefd37ba091c4a8a686a738b3890698dd1d525c898288fd928')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.6/tinct_0.0.6_Linux_armv7.tar.gz")
-sha256sums_armv7h=('afe35da5a0f9105e478e7edeb0c7190b3b68c655e0939ebbc277502fdeca13da')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.7/tinct_0.0.7_Linux_armv7.tar.gz")
+sha256sums_armv7h=('799b1d2f1deee272bbe3d4feb5e0960c788b3af43ff4b8ce49a2ce8b0d6bfd95')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.6/tinct_0.0.6_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('3d7393d5f9b0b4ca9f925ec12937b4dd3aeca2788d5062d7191d869e2978ca80')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.7/tinct_0.0.7_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('df0107af80061bfeaf90e32f3706a4c0f541ec25a0fe80703b7b7d7213ff0afe')
 
 package() {
   # bin
@@ -36,7 +36,10 @@ package() {
   install -Dm644 "./completions/tinct.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/tinct.fish"
 
   # sbom
-  if [ -f "*.sbom.json" ]; then
-  install -Dm644 *.sbom.json "${pkgdir}/usr/share/doc/tinct/sbom.json"
+  for sbom in *.sbom.json; do
+  if [ -f "$sbom" ]; then
+  install -Dm644 "$sbom" "${pkgdir}/usr/share/doc/tinct/sbom.json"
+  break
   fi
+  done
 }
