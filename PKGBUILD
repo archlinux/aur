@@ -3,7 +3,7 @@
 _pkgauthor=walles
 _pkgname=moor
 pkgname=${_pkgname}-bin
-pkgver=2.8.2
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="A pager designed to just do the right thing without any configuration."
 arch=('x86_64' 'i686' 'aarch64')
@@ -23,13 +23,13 @@ source=("${_pkgname}-${pkgver}.1::${_urlraw}/${_pkgname}.1"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${_barch[0]}")
 source_i686=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${_barch[1]}")
 source_aarch64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${_barch[2]}")
-sha256sums=('dbfdce1144c99d999c5c5818fbd6cc83bf0792ce11d3dbab271ca8a4c38528a1'
+sha256sums=('3d062219dd4da5f89f32611672123433aed6be36e0d8e76a3034f72603f55854'
             'f5f073e5c2be82c3e2cb7e0b67a5a72c7f563f08bf7e45da3ed05b8c1358d45c'
-            '7f4ec95e6d9bb7bbab0c1eaf230e2de41fede80b9f9205f3aedd22443ce4f2db'
+            '413ed05afeae998deefc44972ede53c25f3d1b1fbd81667a716f7d307b3578ee'
             '663fec717c38f524c8e5c707ea17bd5d6ac92433f1487ade5f0e6fdebfee1358')
-sha256sums_x86_64=('383442c458eb7e093147892cb65b35a9a2ed040c9d9aaeed275a3e21325ac37b')
-sha256sums_i686=('383442c458eb7e093147892cb65b35a9a2ed040c9d9aaeed275a3e21325ac37b')
-sha256sums_aarch64=('383442c458eb7e093147892cb65b35a9a2ed040c9d9aaeed275a3e21325ac37b')
+sha256sums_x86_64=('7f7b812507c4c1e4bee6344433bb2c8f0625b32488d939407031ac024678882c')
+sha256sums_i686=('7f7b812507c4c1e4bee6344433bb2c8f0625b32488d939407031ac024678882c')
+sha256sums_aarch64=('7f7b812507c4c1e4bee6344433bb2c8f0625b32488d939407031ac024678882c')
 
 
 package() {
