@@ -1,12 +1,13 @@
 pkgname=tabular
-pkgver=0.5.22
+pkgver=0.5.23
 pkgrel=1
 pkgdesc="SQL and NoSQL database client"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tabular-id/tabular"
 license=('AGPL3' 'custom:Tabular-EULA')
-depends=(gtk3 glib2 openssl libxcb libxkbcommon systemd-libs pango atk hicolor-icon-theme)
-makedepends=(cargo clang pkgconf)
+# Add sqlite to depends/makedepends to ensure system lib present for dynamic tools even if bundled static is used.
+depends=(gtk3 glib2 openssl libxcb libxkbcommon systemd-libs pango atk hicolor-icon-theme sqlite)
+makedepends=(cargo clang pkgconf sqlite)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tabular-id/tabular/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
@@ -21,8 +22,11 @@ build() {
     cd "$srcdir/$pkgname-$pkgver"
     export CARGO_HOME="$srcdir/cargo"
     export CARGO_TARGET_DIR="$srcdir/target"
-    # Using bundled SQLite via explicit libsqlite3-sys dependency (Cargo.toml)
-    # to prevent undefined symbol errors from system SQLite variations.
+    # Force sqlx/libsqlite3-sys to prefer bundled static sqlite and avoid relying on possibly stripped system lib in macro loading.
+    export LIBSQLITE3_SYS_BUNDLED=1
+    # Ensure static link of bundled (alternative to old LIBSQLITE3_SYS_STATIC) for consistency.
+    export LIBSQLITE3_SYS_STATIC=1
+    # Optional: reduce risk of dynamic lookup by disabling dlopen (not provided by libsqlite3-sys, but keep flags minimal)
     cargo build --release --frozen
 }
 
