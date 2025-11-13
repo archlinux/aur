@@ -19,9 +19,11 @@ optdepends=(
 # If you have a tag v1.0.6 use #tag=, otherwise pin a commit with #commit=
 source=(
   "git+https://github.com/FoxyIsCoding/illogical-updots.git"
+  "illogical-updots.png::https://github.com/FoxyIsCoding/illogical-updots/blob/main/.github/assets/logo.png?raw=true"
 )
-# Git sources use SKIP
-sha256sums=('SKIP')
+# Git sources and remote icon use SKIP
+sha256sums=('SKIP'
+            'f7b466432d66170f48c4c1715741b3abd424888ccd72e0ce2c9fb20c75c47854')
 
 # If you later add extra source files (like a desktop template kept outside repo),
 # append them to source=() and add corresponding checksums.
@@ -91,14 +93,12 @@ Categories=Utility;
 StartupNotify=false
 EOF
 
-  # 4. Install icon
-  # Replace the icon path & size with what you actually have (svg preferred).
-  # Examples of common locations in a repo: assets/icon.svg, resources/icon.png
-  # TODO: set ICON_SOURCE to the real file
-  ICON_SOURCE=".github/assets/logo.png"
+
+  # Icon downloaded as illogical-updots.png from source array
+  ICON_SOURCE="${srcdir}/illogical-updots.png"
   if [[ -f "${ICON_SOURCE}" ]]; then
-    install -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-    install -m644 "${ICON_SOURCE}" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.png"
+    install -d "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+    install -m644 "${ICON_SOURCE}" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
   else
     printf 'WARNING: Icon file %s not found; adjust ICON_SOURCE in PKGBUILD.\n' "${ICON_SOURCE}"
   fi

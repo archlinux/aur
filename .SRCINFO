@@ -12,6 +12,8 @@ pkgbase = illogical-updots
 	depends = librsvg
 	optdepends = papirus-icon-theme: optional icon theme
 	source = git+https://github.com/FoxyIsCoding/illogical-updots.git
+	source = illogical-updots.png::https://github.com/FoxyIsCoding/illogical-updots/blob/main/.github/assets/logo.png?raw=true
 	sha256sums = SKIP
+	sha256sums = f7b466432d66170f48c4c1715741b3abd424888ccd72e0ce2c9fb20c75c47854
 
 pkgname = illogical-updots
