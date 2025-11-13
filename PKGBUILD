@@ -2,17 +2,17 @@
 # Maintainer: Rafael Silva (perigoso) <perigoso at riseup.net>
 
 pkgname='firefox-extension-plasma-integration-bin'
-pkgver=1.9.1
+pkgver=2.1
 pkgrel=2
 pkgdesc='Multitask efficiently by controlling browser functions from the Plasma desktop.'
 arch=('any')
 url='http://kde.org'
 license=('GPL-3.0-only')
 depends=('firefox')
-_source_file_id=4298512
+_source_file_id=4614817
 source=('plasma-integration.xpi'::"https://addons.mozilla.org/firefox/downloads/file/${_source_file_id}/plasma_integration-${pkgver}.xpi")
 noextract=('plasma-integration.xpi')
-sha256sums=('394a3525185679dd5430d05f980ab6be19d96557560fe86208c21a8807669b33')
+sha256sums=('35bfa3766e097160e74f525bde54d97bbba90d725daa425b9de6fef6ec5e9d44')
 
 package() {
   install -Dm644 'plasma-integration.xpi' "${pkgdir}/usr/lib/firefox/browser/extensions/plasma-browser-integration@kde.org.xpi"
