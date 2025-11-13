@@ -41,7 +41,7 @@ package() {
   sudo mkdir -p "$DKMS_SRC_DIR"
   sudo cp -r md_nonraid/ raid6/ dkms.conf Makefile "$DKMS_SRC_DIR/"
   KVERSION=$(uname -r)
-  sudo dkms install nonraid-dkms/$DKMS_VERSION -k "$KVERSION"
+  sudo dkms install nonraid-dkms/$DKMS_VERSION -k "$KVERSION" --force
 
   # 2) Userspace management tool
   if [[ -f "tools/nmdctl" ]]; then
