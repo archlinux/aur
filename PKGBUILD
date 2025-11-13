@@ -2,7 +2,7 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=S4Arrays
-_pkgver=1.8.1
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,7 +13,6 @@ license=('Artistic-2.0')
 depends=(
   r-abind
   r-biocgenerics
-  r-crayon
   r-iranges
   r-s4vectors
 )
@@ -28,8 +27,8 @@ optdepends=(
   r-hdf5array
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f8044ce103449bbd67d1764d3e8d17ad')
-b2sums=('6903f0664ad654328658c3dd81a057686d5f9da07a56490f2d73f1d010f51169b55126517cfd1d332ed2e18e2ee9050cc55de8f26d59a3a92a2c24109e980d75')
+md5sums=('9587279662313a6d0b695a69c6992ffa')
+b2sums=('27b0dd172d87566e1b678b4c8cecd8bf768074dd195042486b74d0727c4743491d2e5c0bfa4770e50f687acef86ce3560d65763d6d873ffb58d6c8ae6ac0fce0')
 
 build() {
   mkdir build
