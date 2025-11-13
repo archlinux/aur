@@ -1,6 +1,6 @@
 pkgbase = kubetail-cli
 	pkgdesc = Real-time logging dashboard for Kubernetes
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/kubetail-org/kubetail
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = kubetail-cli
 	license = apache
 	provides = kubetail
 	conflicts = kubetail
-	source = https://github.com/kubetail-org/kubetail/releases/download/cli%2Fv0.10.0/kubetail-cli.orig.tar.xz
-	sha256sums = 2295159a9197eeb9b91a46739644d848b72b10f070f71f6a8629a196af213cb8
+	source = https://github.com/kubetail-org/kubetail/releases/download/cli%2Fv0.10.1/kubetail-0.10.1-vendored.tar.gz
+	sha256sums = e6ea584bdd1fa20f35059bf97ffce8c42998e70d905b5660991090c2a52e9b8f
 
 pkgname = kubetail-cli
