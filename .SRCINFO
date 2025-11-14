@@ -1,6 +1,6 @@
 pkgbase = cursor-beta-bin
 	pkgdesc = AI-first coding environment
-	pkgver = 2.0.75
+	pkgver = 2.0.77
 	pkgrel = 1
 	url = https://www.cursor.com
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = cursor-beta-bin
 	depends = libxkbfile
 	conflicts = cursor-bin
 	options = !strip
-	source = cursor-beta-bin-2.0.75.AppImage::https://downloads.cursor.com/production/9e7a27b76730ca7fe4aecaeafc58bac1e2c82121/linux/x64/Cursor-2.0.75-x86_64.AppImage
+	source = cursor-beta-bin-2.0.77.AppImage::https://downloads.cursor.com/production/ba90f2f88e4911312761abab9492c42442117cfe/linux/x64/Cursor-2.0.77-x86_64.AppImage
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh
-	sha512sums = 4cd38e30023cdb633ece84a0cd298acf2859146454bc42403a41a65d5cf571899f149334376eadf0b6aa49cae135f4db2a506501f4ab60f54c63f2fc51099dfe
+	sha512sums = 4b12579a8642d2b1d6f6e15a16a423b6042a4a35d18fe37f5e2951ca6dddafbecb6c61eea5107ac68e982b64a3f20fc698f8f4b2ad2744eb361bfe53c3e9defd
 	sha512sums = 937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37
 
 pkgname = cursor-beta-bin
