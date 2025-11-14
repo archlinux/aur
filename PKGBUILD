@@ -8,7 +8,7 @@ pkgdesc='A cross-platform UI framework that delivers native performance without 
 url='https://github.com/Snapchat/Valdi'
 arch=('aarch64' 'x86_64')
 license=('MIT')
-depends=('glibc' 'zlib' 'libxml2' 'npm' 'watchman' 'bazelisk' 'fontconfig' 'java-environment=17')
+depends=('glibc' 'zlib' 'libxml2-legacy' 'npm' 'watchman' 'bazelisk' 'fontconfig' 'java-environment=17')
 makedepends=('git-lfs')
 provides=("valdi=1.0.1")
 source=("${pkgname%-git}::git-lfs+$url.git" "no-hard-apt.patch")
@@ -44,9 +44,6 @@ package() {
 
   cd ../../
   find "$pkgdir/usr" -type d -name .cache -exec rm -rf {} +
-
-  # Symlink libxml2.so to libxml2.so.2
-  ln -s /usr/lib/libxml2.so "$pkgdir/usr/lib/libxml2.so.2"
 
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
