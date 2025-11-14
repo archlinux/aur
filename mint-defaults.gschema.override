@@ -1,0 +1,20 @@
+[org.cinnamon.desktop.interface]
+gtk-theme='Mint-Y-Dark'
+icon-theme='Mint-Y'
+cursor-theme='DMZ-White'
+font-name='Noto Sans 10'
+
+[org.cinnamon.theme]
+name='Mint-Y-Dark'
+
+[org.cinnamon.desktop.background]
+# You might need to adjust this path depending on mint-backgrounds packaging
+picture-uri='file:///usr/share/backgrounds/linuxmint/default_background.jpg'
+picture-options='zoom'
+
+[org.cinnamon]
+enable-vfade=true
+panel-zone-icon-size='small'
+
+[org.nemo.desktop]
+show-desktop-icons=true

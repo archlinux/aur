@@ -1,0 +1,17 @@
+post_install() {
+  echo ">> Compiling GSettings schemas for Mint Cinnamon defaults..."
+  glib-compile-schemas /usr/share/glib-2.0/schemas
+
+  echo ">> Updating system-wide dconf database for Mint terminal profile..."
+  if command -v dconf >/dev/null 2>&1; then
+    dconf update || true
+  fi
+
+  echo ">> Mint-Y-Dark has been set as the system-wide Cinnamon default."
+  echo ">> Official Mint wallpaper and Mint terminal theme are now defaults."
+  echo ">> Users can still override themes and colors from Cinnamon and GNOME Terminal settings."
+}
+
+post_upgrade() {
+  post_install
+}
