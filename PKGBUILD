@@ -1,12 +1,12 @@
 # Maintainer: Firstpick firstpick1992@proton.me
 pkgname=pacsea-git
-pkgver=0.4.5.r6.ga1e1982
-pkgrel=4
+pkgver=0.4.5.r70.gc0dd2c0
+pkgrel=1
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (git version)"
 arch=('x86_64')
 url="https://github.com/Firstp1ck/Pacsea"
 license=('MIT')
-depends=('pacman' 'curl' 'bash' 'sudo')
+depends=('pacman' 'curl' 'bash' 'sudo' 'coreutils' 'grep' 'xdg-utils')
 optdepends=(
     'paru: AUR package installation'
     'yay: alternative AUR helper'
@@ -90,4 +90,11 @@ package() {
   install -Dm755 "target/release/pacsea" "$pkgdir/usr/bin/pacsea"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  
+  # Install i18n configuration
+  install -Dm644 "config/i18n.yml" "$pkgdir/usr/share/pacsea/config/i18n.yml"
+  
+  # Install locale files
+  install -d "$pkgdir/usr/share/pacsea/locales"
+  install -m644 config/locales/*.yml "$pkgdir/usr/share/pacsea/locales/"
 }
