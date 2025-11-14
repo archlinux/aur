@@ -1,7 +1,7 @@
 pkgbase = python-xskillscore
 	pkgdesc = metrics for verifying forecasts
-	pkgver = 0.0.26
-	pkgrel = 2
+	pkgver = 0.0.27
+	pkgrel = 1
 	url = https://github.com/xarray-contrib/xskillscore
 	arch = any
 	license = Apache-2.0
@@ -27,10 +27,10 @@ pkgbase = python-xskillscore
 	depends = python-xarray>=0.16.1
 	depends = python-xhistogram>=0.3.0
 	optdepends = python-bottleneck: acceleration some numpy functions by rewritten them in C
-	source = python-xskillscore-0.0.26.tar.gz::https://github.com/xarray-contrib/xskillscore/archive/refs/tags/v0.0.26.tar.gz
+	source = python-xskillscore-0.0.27.tar.gz::https://github.com/xarray-contrib/xskillscore/archive/refs/tags/v0.0.27.tar.gz
 	source = change_tests_to_testing.patch
 	source = fix_pyproject.patch
-	sha256sums = 879646d69eb15ec37e15cbd20b28b11a078bfa4abfac4f281fccfbecb0cb4510
+	sha256sums = d71fea9d3091ec90611ce4c5c7ff5e58fddbe96a67d51e3aaceccc1afdda013f
 	sha256sums = 2c740be0e33c1732cca631fdfcf6c6c4d959c7fb58a5ab90544fd998d411653c
 	sha256sums = ea539251d43b8788f28e8a675d09ca215537d13c9d44cc0fb82f0103b86ce323
 

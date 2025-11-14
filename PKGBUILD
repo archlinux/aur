@@ -6,8 +6,8 @@
 # Maintainer: Your Name <youremail@domain.com>
 _name=xskillscore
 pkgname=python-${_name}
-pkgver=0.0.26
-pkgrel=2
+pkgver=0.0.27
+pkgrel=1
 epoch=
 pkgdesc="metrics for verifying forecasts"
 arch=("any")
@@ -55,7 +55,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-    '879646d69eb15ec37e15cbd20b28b11a078bfa4abfac4f281fccfbecb0cb4510'
+    'd71fea9d3091ec90611ce4c5c7ff5e58fddbe96a67d51e3aaceccc1afdda013f'
     '2c740be0e33c1732cca631fdfcf6c6c4d959c7fb58a5ab90544fd998d411653c'
     'ea539251d43b8788f28e8a675d09ca215537d13c9d44cc0fb82f0103b86ce323'
 )
@@ -63,8 +63,8 @@ validpgpkeys=()
 
 prepare() {
 	cd "${srcdir}/${_name}-${pkgver}"
-    patch -Np1 -i ../change_tests_to_testing.patch
-    patch -Np1 -i ../fix_pyproject.patch
+    # patch -Np1 -i ../change_tests_to_testing.patch
+    # patch -Np1 -i ../fix_pyproject.patch
 }
 
 build() {
