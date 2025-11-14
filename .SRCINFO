@@ -7,7 +7,6 @@ pkgbase = dry-git
 	license = MIT
 	makedepends = git
 	makedepends = cmake3
-	makedepends = bash
 	depends = xorg-server
 	provides = dry
 	conflicts = dry
