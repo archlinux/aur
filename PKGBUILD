@@ -2,7 +2,7 @@
 
 _pkgname="gtk-nocsd"
 pkgname="${_pkgname}-git"
-pkgver=r39.f0ca034
+pkgver=r45.d1ccaa8
 pkgrel=1
 pkgdesc="A small LD_PRELOAD library to disable CSD in GTK3, GTK4 and LibAdwaita apps"
 arch=("x86_64")
@@ -11,7 +11,7 @@ license=("GPL-3.0-or-later")
 provides=("${_pkgname}" "gtk3-nocsd" "gtk3-nocsd-git" "gtk4-nocsd" "gtk4-nocsd-git")
 conflicts=("${_pkgname}" "gtk3-nocsd" "gtk3-nocsd-git" "gtk4-nocsd" "gtk4-nocsd-git")
 replaces=("gtk3-nocsd" "gtk3-nocsd-git" "gtk4-nocsd" "gtk4-nocsd-git")
-makedepends=("git" "libadwaita" "gtk3" "wayland" "wayland-protocols" "bash" "river")
+makedepends=("git" "libadwaita" "gtk3" "wayland" "wayland-protocols" "river")
 sha512sums=('SKIP')
 source=("${pkgname}::git+${url}.git")
 
