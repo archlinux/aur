@@ -1,7 +1,7 @@
 pkgbase = lcd4linux-full-git
 	pkgdesc = Grabs information from the kernel and other systems and displays it on an LCD. Compiled with all possible drivers, also obscure ones.
-	pkgver = 0.11.0_SVN.r1167.20170527.cb69a93
-	pkgrel = 2
+	pkgver = 0.11.0.r1245.20250802.63fffaf
+	pkgrel = 1
 	url = https://wiki.lcd4linux.tk/doku.php
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = lcd4linux-full-git
 	makedepends = automake
 	makedepends = autoconf
 	makedepends = pkg-config
-	makedepends = dbus
+	makedepends = dbus>=1.0.0
 	makedepends = libluise
 	makedepends = libjpeg
 	makedepends = libmpdclient
@@ -38,15 +38,20 @@ pkgbase = lcd4linux-full-git
 	depends = libmariadb.so
 	depends = libncursesw.so
 	depends = libsqlite3.so
-	provides = lcd4linux=0.11.0_SVN.r1167.20170527.cb69a93
-	provides = lcd4linux-full=0.11.0_SVN.r1167.20170527.cb69a93
-	provides = lcd4linux-git=0.11.0_SVN.r1167.20170527.cb69a93
+	depends = python>=3
+	provides = lcd4linux=0.11.0.r1245.20250802.63fffaf
+	provides = lcd4linux-full=0.11.0.r1245.20250802.63fffaf
+	provides = lcd4linux-git=0.11.0.r1245.20250802.63fffaf
 	conflicts = lcd4linux
 	options = staticlibs
 	backup = etc/lcd4linux.conf
-	source = lcd4linux::git+https://github.com/jmccrohan/lcd4linux
+	source = lcd4linux::git+https://github.com/TangoCash/lcd4linux.git
+	source = plugin_python3.c_fix.patch::https://github.com/Hierosoft/lcd4linux/commit/8e94752fdcf7e34aa5f310007b06dbae010c4b09.patch
 	source = lcd4linux.service
+	source = wiki.url
 	sha256sums = SKIP
+	sha256sums = fa8785a8e785a316ab82e6a7ef55708c8ffcd68cd0fc582febbf6561d5cc2439
 	sha256sums = 4db8fcd0f63669cac8eb9acbc250d5e9604644a97edb35a8819778e2ade97b78
+	sha256sums = 52bf0933e8a3a00dcb0f39384196b25c9ed7ff4443c191ef3ccac2bc57cbc655
 
 pkgname = lcd4linux-full-git

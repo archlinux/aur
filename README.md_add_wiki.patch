@@ -1,0 +1,8 @@
+diff -rU1 lcd4linux/README.md lcd4linux.readmepatched/README.md
+--- lcd4linux/README.md	2025-11-14 11:30:49.776018173 +0100
++++ lcd4linux.readmepatched/README.md	2025-11-14 11:36:31.177831106 +0100
+@@ -2,2 +2,4 @@
+ 
++New Wiki: [LCD4Linux Wiki](https://wiki.lcd4linux.tk/doku.php)
++
+ ## Introduction
