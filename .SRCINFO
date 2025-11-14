@@ -1,17 +1,17 @@
 pkgbase = eagle-animation-bin
 	pkgdesc = An awesome, free and open-source animation software.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.12.2
+	pkgver = 2.12.3
 	pkgrel = 1
 	url = https://brickfilms.com/
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = electron39
 	depends = ffmpeg
-	provides = eagle-animation=2.12.2
+	provides = eagle-animation=2.12.3
 	conflicts = eagle-animation
-	source = eagle-animation-2.12.2.rpm::https://github.com/brick-a-brack/eagle-animation/releases/download/v2.12.2/eagle-animation-2.12.2-linux.rpm
+	source = eagle-animation-2.12.3.rpm::https://github.com/brick-a-brack/eagle-animation/releases/download/v2.12.3/eagle-animation-2.12.3-linux.rpm
 	source = eagle-animation.sh
-	sha256sums = ceeb808eee79098c45e46fdcb9dfe9b310e1765a9d5136922b0de8db4f76c836
+	sha256sums = aa2628ce670e4af6cdac6ecf0104f4f3ae0d75b232f75ea8b40fb22b9c6f1095
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = eagle-animation-bin
