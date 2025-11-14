@@ -4,7 +4,7 @@
 
 pkgname='openscad-nopscadlib-git'
 _gitname='NopSCADlib'
-pkgver=v21.38.0.r2.g99ff256
+pkgver=21.41.1.r3.gc9baa0e
 pkgrel=1
 pkgdesc='Library of parts modelled in OpenSCAD and a framework for making projects.'
 url='https://github.com/nophead/NopSCADlib'
@@ -19,7 +19,7 @@ sha256sums=('SKIP'
 
 pkgver(){
   cd "$_gitname"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
