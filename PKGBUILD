@@ -1,27 +1,42 @@
-# Contributor: Nguyễn Quang Minh <minhnbnt at gmail dot com>
+# Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=gemini-cli-bin
-pkgver=0.10.0 # datasource=github-releases depName=google-gemini/gemini-cli
+pkgver=0.15.0
 pkgrel=1
-pkgdesc='An open-source AI agent that brings the power of Gemini directly into your terminal.'
+pkgdesc="Google Gemini CLI stable channel (prebuilt single-file release)"
 arch=('any')
 url='https://github.com/google-gemini/gemini-cli'
 license=('Apache-2.0')
-depends=('nodejs')
+depends=('nodejs>=20')
+makedepends=('curl' 'jq')
 provides=('gemini-cli')
-conflicts=('gemini-cli' 'gemini-cli-git')
-
-source=("gemini-${pkgver}.js::${url}/releases/download/v${pkgver}/gemini.js"
-        "LICENSE-${pkgver}::${url}/raw/refs/tags/v${pkgver}/LICENSE")
-
-sha256sums=('8f0cb1e475a33e2d92e46405c55f957aec2b9a398b8be1759f3c3860c7cd4a20'
+conflicts=('gemini-cli')
+source=(
+    "gemini.js::https://github.com/google-gemini/gemini-cli/releases/download/v${pkgver}/gemini.js"
+    "LICENSE::https://raw.githubusercontent.com/google-gemini/gemini-cli/v${pkgver}/LICENSE"
+)
+sha256sums=('82d6c6f8ab952a24b01cf3f831ca5edae2b5b70246b32233a5daa888988f5737'
             '58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd')
 
+pkgver() {
+    local tag
+    tag=$(curl -s 'https://api.github.com/repos/google-gemini/gemini-cli/releases?per_page=20' |
+        jq -r '[.[] | select((.draft|not) and (.prerelease|not) and (.tag_name | test("^v[0-9]+\\.[0-9]+\\.[0-9]+$"))) | .tag_name][0]') || return 1
+
+    if [[ -z "$tag" || "$tag" == "null" ]]; then
+        echo "Failed to determine stable tag" >&2
+        return 1
+    fi
+
+    printf '%s\n' "${tag#v}"
+}
+
 package() {
+    install -Dm644 "${srcdir}/gemini.js" "${pkgdir}/usr/lib/gemini-cli/gemini.js"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-	install -Dm755 "gemini-${pkgver}.js" "${pkgdir}/usr/lib/${pkgname}/gemini.mjs"
-	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-	mkdir -p "${pkgdir}/usr/bin"
-	ln -sr "${pkgdir}/usr/lib/${pkgname}/gemini.mjs" "${pkgdir}/usr/bin/gemini"
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/gemini" <<'WRAPPER'
+#!/usr/bin/env bash
+exec node /usr/lib/gemini-cli/gemini.js "$@"
+WRAPPER
 }
