@@ -1,6 +1,6 @@
 pkgbase = python-aiplatform
 	pkgdesc = Gemini API and Generative AI on Vertex AI
-	pkgver = 1.126.1
+	pkgver = 1.127.0
 	pkgrel = 1
 	url = https://github.com/googleapis/python-aiplatform
 	arch = any
@@ -48,7 +48,7 @@ pkgbase = python-aiplatform
 	depends = python-absl
 	depends = python-google-api-core
 	provides = python-vertexai
-	source = python-aiplatform-1.126.1.tar.gz::https://github.com/googleapis/python-aiplatform/archive/v1.126.1.tar.gz
-	sha256sums = a9be90f241f3636a28db73382c72f6de500a58b6e81e9afcda47250e95939271
+	source = python-aiplatform-1.127.0.tar.gz::https://github.com/googleapis/python-aiplatform/archive/v1.127.0.tar.gz
+	sha256sums = 6aca5c30966a59dbf2e8774c87b34a0d6b4d75d805562cf5c6b785115a81af6a
 
 pkgname = python-aiplatform
