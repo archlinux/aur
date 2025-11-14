@@ -2,7 +2,7 @@
 
 pkgname=python-universal_pathlib
 _pkgname=${pkgname#python-}
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc='pathlib api extended to use fsspec backends'
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(python-{build,installer,wheel}
              python-setuptools-scm)
 _archive=("$_pkgname-$pkgver")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_archive.tar.gz")
-sha256sums=('e3a9bf8a4e73e25c95c86af5028345013701355e8d573e68dd1ffeeb18fa71b7')
+sha256sums=('d8640454ff08305fc639f7980e8bad4a7d38e82f6389ff993fb0e7b2a4969de9')
 
 build() {
 	cd "$_archive"
