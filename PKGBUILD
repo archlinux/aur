@@ -2,7 +2,7 @@
 # Maintainer: duffydack <duffydack73 at gmail dot com>
 
 pkgname="mkdocs-rss-plugin"
-pkgver=1.17.6
+pkgver=1.17.7
 pkgrel=1
 pkgdesc="MkDocs plugin to generate a RSS feeds for created and updated pages, using git log"
 url="https://guts.github.io/mkdocs-rss-plugin/"
@@ -13,7 +13,7 @@ replaces=("python-mkdocs-rss-plugin-git")
 depends=("mkdocs" "python-jinja" "python-gitpython" "python-cachecontrol")
 makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools" "python-setuptools-scm")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Guts/mkdocs-rss-plugin/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('8218c5dae492d64bd66dbcf23c3b4292a20a1d16834b06ce5ea81c0c06cdb0f4fbc4d65571ed71151cf5c224d9560f1785983d8e90a1567673112336abbc7389')
+b2sums=('c99c2df3bd29ac17d7bc5c46d49772b5f87733858d66039520fb111367754ce89e0b1cb7738e66e0ca7bb332ce4f99b1f7a681e4c1807b8b71a21be50bdfb7cb')
 
 build(){
  cd "$pkgname-$pkgver"
