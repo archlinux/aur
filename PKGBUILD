@@ -12,6 +12,7 @@ url="https://github.com/HeidiSQL/HeidiSQL"
 license=('GPL-2.0')
 conflicts=("${_basename}")
 provides=("${_basename}")
+replaces=("heidisql-bin")
 depends=('gtk2' 'libperconaserverclient' 'mariadb-libs' 'postgresql-libs' 'sqlite')
 source=("${_basename}_${pkgver}_${arch[0]}.deb::${url}/releases/download/v${pkgver}/${_basename}_${pkgver}_${_barch[0]}.deb")
 sha256sums=('e871bb5cf92476d026bd8c5887cb2a83e6f13877adb077ef5fbdd2edf2936122')
