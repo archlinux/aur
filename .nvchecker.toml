@@ -1,0 +1,5 @@
+[nexus-cli]
+source = "github"
+github = "Talus-Network/nexus-sdk"
+prefix = "v"
+use_max_release = true
