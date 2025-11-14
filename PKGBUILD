@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: Daniel Chesters <archlinux@coin-coin.xyz>
 
-_upstreamver='0.6.0'
+_upstreamver='0.6.1'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='ollama'
@@ -18,7 +18,7 @@ depends=('ollama' 'python' 'python-httpx' 'python-typing_extensions' 'python-pyd
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-hatch-vcs')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('da2b2d846b5944cfbcee1ca1e6ee0585f6c9d45a2fe9467cbcd096a37383da2f')
+sha256sums=('478c67546836430034b415ed64fa890fd3d1ff91781a9d548b3325274e69d7c6')
 
 build() {
     cd "${srcdir}/${_pypi_package//-/_}-${pkgver}/"
