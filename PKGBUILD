@@ -9,7 +9,7 @@ pkgname=signal-desktop-beta
 _pkgname=Signal-Desktop
 _sticker_creator="sticker-creator"
 _desktop_file='signal beta.desktop'
-pkgver=7.78.0beta1
+pkgver=7.80.0beta1
 pkgrel=1
 pkgdesc='Signal Private Messenger for Linux - Beta version.'
 license=('GPL3')
@@ -58,7 +58,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/v${pkgver//beta*}-beta.${pkgver##*beta}.tar.gz"
   "${_desktop_file}"
   )
-sha512sums=('70820d414452e369de5c6a67ec0ef51a3333bc0e1978e14c47a1a6eda24252cd3aad7840742a03ff4ff63cd44e5ba5c15d2180dddd8aa08d43e52d039c791531'
+sha512sums=('de7faefb923374cf7c8abb0e7b02f0d4f9a970bd7e0da8d0719d379fb358688b0be5be07d4b8eaea1266986dfbd30aba2ef50531a0209ab7992aedf05d3c0a04'
             '5032201efb1089e2e8f78cf5cc06d458f2b068900a4de74b7c2ef87a0a0e7779cc681df7b95ce2d9af131ef9ea148f3621ee1fa2a9812982cdecc7aba9eeb87c')
 
 prepare() {
@@ -71,7 +71,7 @@ prepare() {
   sed 's#"node": "#&>=#' -i package.json
 
   # Install dependencies for sticker-creator
-  pnpm --prefix ./sticker-creator/ install
+  pnpm install -C ./sticker-creator/
 
   # Install dependencies for signal-desktop
   pnpm install
