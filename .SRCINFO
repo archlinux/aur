@@ -1,6 +1,6 @@
 pkgbase = moonbit
 	pkgdesc = A modern system cleaner built in Go with a TUI and CLI
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/Nomadcxx/moonbit
 	install = moonbit.install
@@ -10,7 +10,7 @@ pkgbase = moonbit
 	makedepends = go>=1.21
 	depends = systemd
 	optdepends = docker: Docker cleanup support
-	source = moonbit-1.2.1.tar.gz::https://github.com/Nomadcxx/moonbit/archive/v1.2.1.tar.gz
-	sha256sums = 40f41afbe36a671d34173804bc4bbae94890ff0a1fb003adab9dff9d98cf63a2
+	source = moonbit-1.2.2.tar.gz::https://github.com/Nomadcxx/moonbit/archive/v1.2.2.tar.gz
+	sha256sums = c44993fee09f2ab6319a27673034ba8f1b9ad98076d67b9d70d4d2e0fab33751
 
 pkgname = moonbit
