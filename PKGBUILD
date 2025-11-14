@@ -1,15 +1,15 @@
 # Maintainer: Ly-sec <itslysec@gmail.com>
 pkgname=noctalia
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A simple CLI for installing and updating noctalia-shell"
 arch=('x86_64' 'aarch64')
 url="https://github.com/noctalia-dev/noctalia-cli"
 license=('MIT' 'Apache')
-depends=('glibc' 'gcc-libs')
-makedepends=('cargo' 'git' 'clang')  # Added clang
+depends=('glibc' 'gcc-libs' 'openssl')
+makedepends=('cargo' 'git' 'clang')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/noctalia-dev/noctalia-cli/archive/v$pkgver.tar.gz")
-sha256sums=('b18a66907fe80ce5939f79ccb0b381c80663ee7aad6e5324578948fb2b91aef9')
+sha256sums=('6a712afa45851fbde51d1ea462b7f7e3d014c93b57dcd81428f4372159936038')
 
 prepare() {
   cd "$srcdir/noctalia-cli-$pkgver"
@@ -20,7 +20,7 @@ build() {
   cd "$srcdir/noctalia-cli-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  # Ensure ring can find the C compiler
+  # Ensure openssl-sys can find the C compiler
   export CC=clang
   export CXX=clang++
   cargo build --frozen --release
@@ -35,7 +35,7 @@ check() {
 package() {
   cd "$srcdir/noctalia-cli-$pkgver"
   install -Dm755 "target/release/noctalia" "$pkgdir/usr/bin/noctalia"
-  
+
   # Install license if it exists
   if [ -f LICENSE ]; then
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
