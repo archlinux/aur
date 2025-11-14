@@ -4,7 +4,7 @@
 
 pkgname=kismet-full-git
 pkgver=2025_11_R0.r12232.20251107.97d2dd89c
-pkgrel=1
+pkgrel=2
 pkgdesc="A sniffer, WIDS, and wardriving tool for Wi-Fi, Bluetooth, Zigbee, RF. Latest git checkout, built with as many features as possible."
 url="https://www.kismetwireless.net/"
 arch=(
@@ -15,6 +15,7 @@ arch=(
 )
 license=('GPL-2.0-or-later')
 depends=(
+  'abseil-cpp'
   'bladerf'
   'bluez-libs'
   'gcc-libs'
@@ -27,7 +28,7 @@ depends=(
   'libcrypto.so'
   'libgobject-2.0.so'
   'libpcap'
-  #'libprotobuf.so'
+  'libprotobuf.so'
   'libusb'
   'libwebsockets'
   'lm_sensors'
@@ -42,10 +43,9 @@ depends=(
 makedepends=(
   'git'
 
-  'abseil-cpp'
   'glib2'
   'openssl'
-  #'protobuf'
+  'protobuf'
 )
 optdepends=(
   'festival: text-to-speech support'
@@ -130,12 +130,12 @@ build() {
   export CXXFLAGS
 
   # * python- modules are deprecated and not used anymore. '--enable-python-tools' is needed to build `btgeier`.
-  # * protobuf is deprecated.
+  # * protobuf is deprecated. Enable the functionality (compatibility with old sources) anyway, since we explicitly build all possible features in this package.
   ./configure --prefix=/usr \
     --localstatedir=/var \
     --sysconfdir=/etc/kismet \
     --with-suidgroup=315 \
-    --disable-protobuf \
+    --enable-protobuf \
     --disable-protobuflite \
     --enable-python-tools \
     --disable-debuglibs \
