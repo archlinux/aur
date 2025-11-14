@@ -1,7 +1,7 @@
 pkgname=image-analyze
 pkgver=1.1.1
 pkgrel=1
-pkgdesc="Lightweight image viewer that supports measuring distance in pixels"
+pkgdesc="Lightweight image viewer for wayland"
 arch=('x86_64')
 url="https://github.com/ArthurGuihaire/image-analyze"
 sha256sums=('ace1966c5cf0aca8899fd814ea105c1c1770463278d5f71122c4401a60d33f41')
