@@ -1,10 +1,11 @@
+# Maintainer: Dvd-Znf <email@dvdznf.xyz>
 # Maintainer: Ondrej Kucera <ondrej.kucera@centrum.cz>
 
 pkgname=ttf-hellvetica
 pkgver=20191029
 pkgrel=2
 pkgdesc='Like Helvetica, but with like, much shittier kerning for Halloween'
-url='https://hellveticafont.com/'
+url='https://web.archive.org/web/20191031045611/https://hellveticafont.com/'
 arch=('any')
 license=('custom')
 source=("https://web.archive.org/web/20201216151907if_/https://static1.squarespace.com/static/5db49311dbfd8f0b33a8555d/t/5db6237ad615063f70a3623e/1572217722968/Hellvetica.ttf")
