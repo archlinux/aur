@@ -8,8 +8,8 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
-pkgver=2.9.0
-pkgrel=5
+pkgver=2.9.1
+pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -119,7 +119,7 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         aotriton_disable_install.patch
         pyproject.patch
         )
-b2sums=('b744fa2e28a641c6ae76e87cf32d511f68d4a8ed2a0d4c8d3cee8652fe7d2467d21925d59b303f4183040949c3ffbb685f83d3d52acc7f54df91d3a245b393e0'
+b2sums=('b11ed3fe133f4d75de45b26db565a431236c73005e68d8ba47a48b6657553df88d0a97686c4c24a6b810a9b2d4ce1aad9105cd4dce18a484b9d41150df00de3e'
         'SKIP'
         'SKIP'
         'SKIP'
