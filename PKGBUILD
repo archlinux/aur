@@ -3,34 +3,22 @@
 
 _pkgname="calamares"
 pkgname="$_pkgname-git"
-pkgver=3.3.13.r1.gbabaddf
+pkgver=3.4.0.r20.gc5c9b79
 pkgrel=1
 pkgdesc="Distribution-independent installer framework"
-url="https://github.com/calamares/calamares"
+url="https://codeberg.org/Calamares/calamares"
 license=("GPL-3.0-or-later")
 arch=('i686' 'x86_64')
 
 depends=(
-  'boost-libs'
-  'ckbcomp' # AUR
-  'hwinfo'
-  'kconfig'
   'kcoreaddons'
-  'ki18n'
-  'kiconthemes'
   'kpmcore'
   'libpwquality'
-  'polkit-qt6'
-  'python'
-  'python-jsonschema'
-  'python-yaml'
+  'qt6-declarative'
   'qt6-svg'
-  'solid'
-  'squashfs-tools'
   'yaml-cpp'
 )
 makedepends=(
-  'boost'
   'extra-cmake-modules'
   'git'
   'ninja'
@@ -38,35 +26,17 @@ makedepends=(
   'qt6-translations'
 )
 
-provides=("$_pkgname=${pkgver%%.r*}")
+provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-backup=(
-  #'usr/share/calamares/modules/bootloader.conf'
-  #'usr/share/calamares/modules/displaymanager.conf'
-  #'usr/share/calamares/modules/initcpio.conf'
-  #'usr/share/calamares/modules/unpackfs.conf'
-)
-
 _pkgsrc="$_pkgname"
-source=(
-  "$_pkgsrc"::"git+$url.git"
-  "yay-support.patch"
-)
-sha256sums=(
-  'SKIP'
-  'SKIP'
-)
+source=("$_pkgsrc"::"git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
   git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$_pkgsrc"
-  git apply ../yay-support.patch
 }
 
 build() {

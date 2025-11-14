@@ -1,4 +1,0 @@
-[calamares-git]
-source = "git"
-git = "https://github.com/calamares/calamares.git"
-prefix = "v"

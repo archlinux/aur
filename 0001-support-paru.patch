@@ -1,0 +1,165 @@
+From e348a5424317b62dfa95bd88c85cb2da0f95571c Mon Sep 17 00:00:00 2001
+From: Kenny Strawn <Kenny.Strawn@gmail.com>
+Date: Fri, 25 Mar 2022 16:14:13 -0700
+Subject: [PATCH] Patch calamares instead of forking
+
+---
+ src/modules/packages/main.py       | 129 +++++++++++++++++++++++++++++
+ src/modules/packages/packages.conf |   1 +
+ 2 files changed, 130 insertions(+)
+
+diff --git a/src/modules/packages/main.py b/src/modules/packages/main.py
+index e373a3443..05c8d22d3 100644
+--- a/src/modules/packages/main.py
++++ b/src/modules/packages/main.py
+@@ -475,6 +475,135 @@ class PMPacman(PackageManager):
+ 
+         self.run_pacman(command)
+ 
++class PMParu(PackageManager):
++    backend = "paru"
++
++    def __init__(self):
++        import re
++        import shutil
++
++        progress_match = re.compile("^\\((\\d+)/(\\d+)\\)")
++
++        # Note that this writes to /etc/sudoers.d, NOT /etc/sudoers!
++        sudoers_entry = open("/etc/sudoers.d/autoupdate", "w")
++        sudoers_entry.write("nobody ALL = NOPASSWD: " + shutil.which("pacman"))
++        sudoers_entry.close()
++
++        def line_cb(line):
++            if line.startswith(":: "):
++                self.in_package_changes = "package" in line or "hooks" in line
++            else:
++                if self.in_package_changes and line.endswith("...\n"):
++                    # Update the message, untranslated; do not change the
++                    # progress percentage, since there may be more "installing..."
++                    # lines in the output for the group, than packages listed
++                    # explicitly. We don't know how to calculate proper progress.
++                    global custom_status_message
++                    custom_status_message = "paru: " + line.strip()
++                    libcalamares.job.setprogress(self.progress_fraction)
++            libcalamares.utils.debug(line)
++
++        self.in_package_changes = False
++        self.line_cb = line_cb
++
++        paru = libcalamares.job.configuration.get("paru", None)
++        if paru is None:
++            paru = dict()
++        if type(paru) is not dict:
++            libcalamares.utils.warning("Job configuration *paru* will be ignored.")
++            paru = dict()
++        self.paru_num_retries = paru.get("num_retries", 0)
++        self.paru_disable_timeout = paru.get("disable_download_timeout", False)
++        self.paru_needed_only = paru.get("needed_only", False)
++
++    def reset_progress(self):
++        self.in_package_changes = False
++        # These are globals
++        self.progress_fraction = (completed_packages * 1.0 / total_packages)
++
++    def run_paru(self, command, callback=False):
++        """
++        Call paru in a loop until it is successful or the number of retries is exceeded
++        :param command: The paru command to run
++        :param callback: An optional boolean that indicates if this paru run should use the callback
++        :return:
++        """
++
++        paru_count = 0
++        while paru_count <= self.paru_num_retries:
++            paru_count += 1
++            try:
++                if False: # callback:
++                    libcalamares.utils.target_env_process_output(command, self.line_cb)
++                else:
++                    libcalamares.utils.target_env_process_output(command)
++
++                return
++            except subprocess.CalledProcessError:
++                if paru_count <= self.paru_num_retries:
++                    pass
++                else:
++                    raise
++
++    def install(self, pkgs, from_local=False):
++        import os
++
++        os.environ["PWD"] = "/var/cache"
++        os.environ["XDG_CACHE_HOME"] = "/var/cache"
++
++        command = ["sudo", "-E", "-u", "nobody", "paru"]
++
++        if from_local:
++            command.append("-U")
++        else:
++            command.append("-S")
++
++        # Don't ask for user intervention, take the default action
++        command.append("--noconfirm")
++
++        # Don't report download progress for each file
++        command.append("--noprogressbar")
++
++        if self.paru_needed_only is True:
++            command.append("--needed")
++
++        if self.paru_disable_timeout is True:
++            command.append("--disable-download-timeout")
++
++        command += pkgs
++
++        self.reset_progress()
++        self.run_paru(command, True)
++
++    def remove(self, pkgs):
++        import os
++
++        os.environ["PWD"] = "/var/cache"
++        os.environ["XDG_CACHE_HOME"] = "/var/cache"
++
++        self.reset_progress()
++        self.run_paru(["sudo", "-E", "-u", "nobody", "paru", "-Rs", "--noconfirm"] + pkgs, True)
++
++    def update_db(self):
++        import os
++
++        os.environ["PWD"] = "/var/cache"
++        os.environ["XDG_CACHE_HOME"] = "/var/cache"
++
++        self.run_paru(["sudo", "-E", "-u", "nobody", "paru", "-Sy"])
++
++    def update_system(self):
++        import os
++
++        os.environ["PWD"] = "/var/cache"
++        os.environ["XDG_CACHE_HOME"] = "/var/cache"
++
++        command = ["sudo", "-E", "-u", "nobody", "paru", "-Su", "--noconfirm"]
++        if self.paru_disable_timeout is True:
++            command.append("--disable-download-timeout")
++
++        self.run_paru(command)
++
+ 
+ class PMPamac(PackageManager):
+     backend = "pamac"
+diff --git a/src/modules/packages/packages.conf b/src/modules/packages/packages.conf
+index 6e62f4b5f..74ab8d3cb 100644
+--- a/src/modules/packages/packages.conf
++++ b/src/modules/packages/packages.conf
+@@ -29,6 +29,7 @@
+ #  - pacman      - Pacman
+ #  - pamac       - Manjaro package manager
+ #  - portage     - Gentoo package manager
++#  - paru         - AUR package manager
+ #  - yum         - Yum RPM frontend
+ #  - zypp        - Zypp RPM frontend
+ #
+-- 
+2.35.1
+
