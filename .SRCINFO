@@ -1,6 +1,6 @@
 pkgbase = term39
 	pkgdesc = A modern, retro-styled terminal multiplexer inspired by Norton Disk Doctor (MS-DOS)
-	pkgver = 0.6.6
+	pkgver = 0.7.5
 	pkgrel = 1
 	url = https://github.com/alejandroqh/term39
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = term39
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = term39-0.6.6.tar.gz::https://github.com/alejandroqh/term39/archive/v0.6.6.tar.gz
-	sha256sums = 4e652803b4d754ed8ccd80b651272a1964f0401a7a7ef62a10a0c83c1cd57354
+	source = term39-0.7.5.tar.gz::https://github.com/alejandroqh/term39/archive/v0.7.5.tar.gz
+	sha256sums = 4f104f2485e495d282a88e2e77c679619d18b3116598491f268eb1e8757fba6b
 
 pkgname = term39
