@@ -1,6 +1,6 @@
 pkgbase = schedctl
 	pkgdesc = eBPF sched_ext plug and play schedulers for fun and profit
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/schedkit/schedctl
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = schedctl
 	makedepends = gpgme
 	optdepends = podman: podman container runtime
 	optdepends = containerd: containerd container runtime
-	source = schedctl-1.0.1.tar.gz::https://github.com/schedkit/schedctl/archive/v1.0.1.tar.gz
-	sha256sums = fce43a8a7ab0baac3a87372987608abdfda3ac40ca86f9ad3c283d0dd4170b54
+	source = schedctl-1.0.2.tar.gz::https://github.com/schedkit/schedctl/archive/v1.0.2.tar.gz
+	sha256sums = 4370500384120ad270ba99da5fa29a47954b83832a27476e9124b9757465a70a
 
 pkgname = schedctl

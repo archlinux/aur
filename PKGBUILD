@@ -1,7 +1,7 @@
 # Maintainer: Alessio Biancalana <alessio@dottorblaster.it>
 
 pkgname=schedctl
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='eBPF sched_ext plug and play schedulers for fun and profit'
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ optdepends=(
   'containerd: containerd container runtime'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/schedkit/schedctl/archive/v${pkgver}.tar.gz")
-sha256sums=('fce43a8a7ab0baac3a87372987608abdfda3ac40ca86f9ad3c283d0dd4170b54')
+sha256sums=('4370500384120ad270ba99da5fa29a47954b83832a27476e9124b9757465a70a')
 
 build() {
   cd "${pkgname}-${pkgver}"
