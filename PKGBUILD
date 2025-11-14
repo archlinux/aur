@@ -13,7 +13,7 @@ pkgdesc="GTK+3 implementation of wxWidgets API for GUI"
 arch=('x86_64')
 url="https://github.com/wxWidgets/wxWidgets"
 license=("LicenseRef-custom:wxWindows")
-depends=(gtk3 cairo pango fontconfig expat wayland zlib libwebp libnotify libjpeg-turbo libtiff libpng gspell pcre2 libsm gstreamer gst-plugins-base-libs gst-plugins-bad-libs webkit2gtk-4.1 glibc glib2 gcc-libs libglvnd gdk-pixbuf2 libxtst libx11 libxkbcommon libxxf86vm curl bash)
+depends=(gtk3 cairo pango expat wayland zlib libwebp libnotify libjpeg-turbo libtiff libpng gspell pcre2 libmspack gstreamer  gst-plugins-bad-libs webkit2gtk-4.1 glibc glib2 gcc-libs libglvnd gdk-pixbuf2 libxtst libx11 libxkbcommon sdl2-compat curl bash)
 makedepends=()
 provides=()
 conflicts=()
@@ -28,20 +28,18 @@ sha256sums=('f936c8d694f9c49a367a376f99c751467150a4ed7cbf8f4723ef19b2d2d9998d')
 prepare()
 {
   cd "${srcdir}/${pkg_name_ver}"
+
+  cp -v "${startdir}/build_cmake_install.cmake.new" "${srcdir}/${pkg_name_ver}/build/cmake/install.cmake"
+  cp -v "${startdir}/build_cmake_utils_CMakeLists.txt.new" "${srcdir}/${pkg_name_ver}/build/cmake/utils/CMakeLists.txt"
+
 }
 
 build()
 {
   cd "${srcdir}/${pkg_name_ver}"
 
-  #cd _build.out
-  #../configure --with-gtk --prefix=/usr
-  #make -s
-
-  mkdir -p _build.out
   cmake -S . -B _build.out \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
     -DwxBUILD_TOOLKIT=gtk3
 
   cmake --build _build.out
@@ -49,24 +47,23 @@ build()
 
 package()
 {
+
   cd "${srcdir}/${pkg_name_ver}"
 
-  #cd _build.out
-  #make -s install DESTDIR="${pkgdir}"
-  #cd "${srcdir}/${pkg_name_ver}"
-
-  cmake --install _build.out
-
-  mv "${pkgdir}/usr/bin/wx-config" "${pkgdir}/usr/bin/wx-config-${pkgver}"
-  mv "${pkgdir}/usr/bin/wxrc" "${pkgdir}/usr/bin/wxrc-${pkgver}"
-  mv "${pkgdir}/usr/share/aclocal/wxwin.m4" "${pkgdir}/usr/share/aclocal/wxwin-${pkgver}.m4"
+  DESTDIR="${pkgdir}" cmake --install _build.out --prefix=/usr
 
   install -D -m 0644 docs/licence.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  chrpath -d "${pkgdir}"/usr/bin/wxrc-*
-  chrpath -d "${pkgdir}/usr/lib/"*.so
+  mv "${pkgdir}/usr/bin/wx-config" "${pkgdir}/usr/bin/wx-config-${pkgver}"
+  mv "${pkgdir}/usr/bin/wxrc" "${pkgdir}/usr/bin/wxrc-${pkgver}"
 
-  #install -D -m 0644 README "${pkgdir}/usr/share/doc/${_pkgname}/README"
+  mv "${pkgdir}/usr/lib/cmake/wxWidgets/wxWidgetsConfig.cmake" "${pkgdir}/usr/lib/cmake/wxWidgets/wxWidgetsConfig-${pkgver}.cmake"
+  mv "${pkgdir}/usr/lib/cmake/wxWidgets/wxWidgetsConfigVersion.cmake" "${pkgdir}/usr/lib/cmake/wxWidgets/wxWidgetsConfigVersion-${pkgver}.cmake"
+  mv "${pkgdir}/usr/lib/cmake/wxWidgets/wxWidgetsTargets.cmake" "${pkgdir}/usr/lib/cmake/wxWidgets/wxWidgetsTargets-${pkgver}.cmake"
+
+  #chrpath -d "${pkgdir}"/usr/bin/wxrc-*
+  #chrpath -d "${pkgdir}/usr/lib/"*.so
+
 }
 
 #
