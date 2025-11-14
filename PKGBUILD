@@ -10,7 +10,7 @@ _pkgname=Signal-Desktop
 _sticker_creator="sticker-creator"
 _desktop_file='signal beta.desktop'
 pkgver=7.80.0beta2
-pkgrel=1
+pkgrel=2
 pkgdesc='Signal Private Messenger for Linux - Beta version.'
 license=('GPL3')
 conflicts=('signal-desktop-beta-bin')
@@ -57,12 +57,17 @@ makedepends_aarch64=('fpm')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/v${pkgver//beta*}-beta.${pkgver##*beta}.tar.gz"
   "${_desktop_file}"
+  '7e9df4a602632a1acca31bcc6cfa797777710e6f.patch'
   )
 sha512sums=('3505cd4b53adfbf0ce233759c05c8a9c0710c263d825c6a9bc807fd2b88928dabc8a4b9d5240834690ff4d6f4c14d01501238dc1bda833c4fe438749ef18ab2a'
-            '5032201efb1089e2e8f78cf5cc06d458f2b068900a4de74b7c2ef87a0a0e7779cc681df7b95ce2d9af131ef9ea148f3621ee1fa2a9812982cdecc7aba9eeb87c')
+            '5032201efb1089e2e8f78cf5cc06d458f2b068900a4de74b7c2ef87a0a0e7779cc681df7b95ce2d9af131ef9ea148f3621ee1fa2a9812982cdecc7aba9eeb87c'
+            'ac524880436878641d48177152b534f83ec8c05bfbdac07465c6ee2f5a5fa1c18eba9a43027ef2f284d4c5a6bc46f17a64a34ed8abe070cdc64eddc57db2cc5e')
 
 prepare() {
   cd "${_pkgname}-${pkgver//beta*}-beta.${pkgver##*beta}"
+
+  # Revert commit who introduced https://github.com/signalapp/Signal-Desktop/issues/7599
+  patch -Rp1 < "$srcdir/7e9df4a602632a1acca31bcc6cfa797777710e6f.patch"
 
   # git-lfs hook needs to be installed for one of the dependencies
   git lfs install
