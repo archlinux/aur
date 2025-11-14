@@ -2,5 +2,3 @@
 source = "jq"
 url = "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json"
 filter = '.["releases-index"][] | select(.["channel-version"] == "9.0") | "\(.["latest-runtime"]).sdk\(.["latest-sdk"] | split(".")[2])"'
-from_pattern = '^([0-9]+\.[0-9]+\.[0-9]+)\.sdk([0-9]+)$'
-to_pattern = '\1.sdk\2'
