@@ -14,7 +14,7 @@ conflicts=('puzzle-moppet-bin')
 source=(${pkgname}::git+https://github.com/karjonas/Puzzle-Moppet.git)
 md5sums=('SKIP')
 _name='Puzzle Moppet'
-_categories='Game;PuzzleGame'
+_categories='Game;LogicGame'
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
