@@ -1,0 +1,15 @@
+--- a/Makefile	2023-05-25 14:31:49.191000000 +0200
++++ b/Makefile	2023-05-25 14:31:55.413000000 +0200
+@@ -342,10 +342,10 @@
+ 
+ $(bindir)/%: %
+ 	@echo "  INSTALL $@"
+-	$(Q)install -D        $< $@ || exit 1;
++	$(Q)install -D -p       $< $@ || exit 1;
+ $(man1dir)/% $(smatch_datadir)/%: %
+ 	@echo "  INSTALL $@"
+-	$(Q)install -D -m 644 $< $@ || exit 1;
++	$(Q)install -D -p -m 644 $< $@ || exit 1;
+ 
+ .PHONY: FORCE
+ 
