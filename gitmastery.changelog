@@ -148,3 +148,6 @@ Support exercise utils configuration
 Add check for delete_repo scope when requiring Github
 
 
+Add github_cli to loaded utility functions
+
+
