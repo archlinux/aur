@@ -15,6 +15,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Show interface on properties list
 - Can create and edit DropIns
 
+## [2.8.1] - 2025-11-13
+### Added
+  - Unit description wrap text preference option
+
+### Fixed
+  - Version description
+
 ## [2.8.0] - 2025-11-13
 ### Added
   - Can filter on unset values
