@@ -145,3 +145,6 @@ Set encoding for all commands to UTF-8
 Support exercise utils configuration
 
 
+Add check for delete_repo scope when requiring Github
+
+
