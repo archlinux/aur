@@ -5,8 +5,9 @@ pkgname=(
   solarus-launcher
   solarus-editor
 )
-pkgver=2.0
+pkgver=2.0.r20251111.434dc1c
 # branch v2.0
+_date=20251111
 _commit=434dc1cfcac0e89d0ec46dc34c19e25f2dcc9482
 pkgrel=2
 pkgdesc="A lightweight, free and open-source 2D game engine for Action-RPGs"
@@ -33,10 +34,11 @@ sha256sums=(
 
 pkgver() {
   cd "$_rootdir"
-  printf "%s" "$(git describe --all --long | sed 's|^heads/v||;s/\([^-]*-\)g/r\1/;s/-/./g;')"
+  printf "2.0.r%s.%s" "${_date}" "${_commit::7}"
 }
 
 prepare() {
+  set -x
   cd "$_rootdir"
   cmake \
     -Wno-dev \
@@ -44,20 +46,26 @@ prepare() {
     -DCMAKE_BUILD_TYPE=Release \
     -DSOLARUS_TESTS=OFF \
     -B build
+  cp build/include/solarus/core/config.h include/solarus/core/
+  (cd include && ln -sf ../third_party/glad/include/* ./)
   cd launcher
   cmake \
     -Wno-dev \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_BUILD_TYPE=Release \
+    -DSOLARUS_DIR=.. \
+    -DSOLARUS_LIBRARY=../build/libsolarus.so \
     -B build
   cd ../editor
-    patch -p1 -i "$srcdir"/custom_editor.patch
-    patch -p1 -i "$srcdir"/qt_desktop_filename.patch
   cmake \
     -Wno-dev \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_BUILD_TYPE=Release \
+    -DSOLARUS_DIR=.. \
+    -DSOLARUS_LIBRARY=../build/libsolarus.so \
     -B build
+  patch -p1 -i "$srcdir"/custom_editor.patch
+  patch -p1 -i "$srcdir"/qt_desktop_filename.patch
 }
 
 build() {
