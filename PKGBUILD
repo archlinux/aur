@@ -1,11 +1,11 @@
 #Maintainer: Noble Eugene <nobleeugene2005@gmail.com>
 pkgname="yin-git"
-pkgver="0.13"
+pkgver="0.14"
 pkgrel=1
 pkgdesc="Efficient wayland wallpaper daemon for images, gifs and videos"
 arch=("x86_64")
 depends=("ffmpeg"  "wayland" "stb")
-makedepends=("zig0.14-bin")
+makedepends=("zig0.14")
 source=("git+https://www.github.com/eugenenoble2005/yin.git")
 sha256sums=("SKIP")
 

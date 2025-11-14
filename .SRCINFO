@@ -1,9 +1,9 @@
 pkgbase = yin-git
 	pkgdesc = Efficient wayland wallpaper daemon for images, gifs and videos
-	pkgver = 0.13
+	pkgver = 0.14
 	pkgrel = 1
 	arch = x86_64
-	makedepends = zig0.14-bin
+	makedepends = zig0.14
 	depends = ffmpeg
 	depends = wayland
 	depends = stb
