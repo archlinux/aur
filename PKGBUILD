@@ -6,7 +6,7 @@ pkgname=(
   "${_pkgbase}-bin"
 )
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Programming interface for the Wallbraun LCD-USB-Interface."
 # url="https://packages.gentoo.org/packages/dev-libs/luise"
 url="https://web.archive.org/web/20140102061822/http://wallbraun-electronics.de/"
@@ -22,10 +22,12 @@ depends=(
 makedepends=()
 optdepends=()
 provides=(
+  "${_pkgbase}=${pkgver}"
   "${_pkgbase}.so"
   "luise=${pkgver}"  # That's actually the name of this used in gentoo. The official name seems to be 'LUIse'.
 )
 conflicts=(
+  "${_pkgbase}"
   "${_pkgbase}.so"
   "luise"
 )
