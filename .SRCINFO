@@ -1,7 +1,7 @@
 pkgbase = freedv-gui
 	pkgdesc = Digital Voice for Radio Amateurs
 	pkgver = 2.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://freedv.org/
 	arch = x86_64
 	arch = aarch64
@@ -20,6 +20,7 @@ pkgbase = freedv-gui
 	depends = python-pytorch
 	depends = python-torchaudio
 	depends = python-matplotlib
+	depends = python-tqdm
 	source = codec2_gp_interleaver.h.patch
 	source = disable_mimalloc.patch
 	source = freedv.sh

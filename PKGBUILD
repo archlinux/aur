@@ -2,12 +2,12 @@
 
 pkgname=freedv-gui
 pkgver=2.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Digital Voice for Radio Amateurs"
 arch=('x86_64' 'aarch64')
 license=('LGPL-2.1-or-later')
 url="https://freedv.org/"
-depends=('libpulse' 'hamlib' 'sox' 'wxwidgets-gtk3' 'codec2' 'speex' 'libao' 'libsamplerate' 'gsm' 'libsndfile' 'python-pytorch' 'python-torchaudio' 'python-matplotlib')
+depends=('libpulse' 'hamlib' 'sox' 'wxwidgets-gtk3' 'codec2' 'speex' 'libao' 'libsamplerate' 'gsm' 'libsndfile' 'python-pytorch' 'python-torchaudio' 'python-matplotlib' 'python-tqdm')
 makedepends=('cmake')
 source=(
   "codec2_gp_interleaver.h.patch"
