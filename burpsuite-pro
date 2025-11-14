@@ -1,3 +1,124 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-exec "$JAVA_HOME/bin/java" -jar /usr/share/burpsuite-pro/burpsuite-pro.jar "$@"
+set -euo pipefail
+
+pkg_share="/usr/share/burpsuite-pro"
+pkg_cn_share="${pkg_share}/cn"
+pkg_agent="${pkg_share}/burpsuite-pro-cn-loader.jar"
+
+data_home="${XDG_DATA_HOME:-${HOME}/.local/share}"
+workdir="${data_home}/burpsuite-pro-cn"
+config_home="${XDG_CONFIG_HOME:-${HOME}/.config}"
+configdir="${config_home}/burpsuite-pro-cn"
+
+mkdir -p "${workdir}" "${configdir}"
+
+sync_resource() {
+  local src=$1 dest=$2
+  if [[ -f "${src}" ]]; then
+    if [[ ! -f "${dest}" ]] || [[ "${src}" -nt "${dest}" ]]; then
+      install -Dm644 "${src}" "${dest}"
+    fi
+  fi
+}
+
+# copy bundled localization assets so that the user-writable workdir has them
+sync_resource "${pkg_agent}" "${workdir}/burpsuite-pro-cn-loader.jar"
+if [[ -d "${pkg_cn_share}" ]]; then
+  while IFS= read -r -d '' file; do
+    base=$(basename "${file}")
+    sync_resource "${file}" "${workdir}/${base}"
+  done < <(find "${pkg_cn_share}" -maxdepth 1 -type f -name 'cn*.txt' -print0)
+fi
+
+java_bin=""
+if [[ -n "${BURP_PRO_JAVA_BIN:-}" ]]; then
+  java_bin="${BURP_PRO_JAVA_BIN}"
+elif [[ -n "${BURP_PRO_JAVA_HOME:-}" ]]; then
+  java_bin="${BURP_PRO_JAVA_HOME%/}/bin/java"
+elif [[ -f "${configdir}/bp.java" ]]; then
+  read -r custom_java_home < "${configdir}/bp.java" || true
+  if [[ -n "${custom_java_home:-}" ]]; then
+    java_bin="${custom_java_home%/}/bin/java"
+  fi
+elif [[ -n "${JAVA_HOME:-}" ]]; then
+  java_bin="${JAVA_HOME%/}/bin/java"
+else
+  java_bin="$(command -v java)"
+fi
+
+if [[ ! -x "${java_bin}" ]]; then
+  echo "burpsuite-pro: unable to find a runnable java binary" >&2
+  exit 1
+fi
+
+java_opts=()
+if [[ -f "${configdir}/bp.java.options" ]]; then
+  while IFS= read -r line; do
+    [[ -z "${line}" ]] && continue
+    java_opts+=("${line}")
+  done < "${configdir}/bp.java.options"
+fi
+if [[ -n "${BURP_PRO_JAVA_OPTS:-}" ]]; then
+  # shellcheck disable=SC2206
+  java_opts+=(${BURP_PRO_JAVA_OPTS})
+fi
+
+enable_cn="${BURP_CN_ENABLE:-1}"
+cn_agent_flags="${BURP_CN_AGENT_FLAGS:-loader,han}"
+
+pass_args=()
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --english|--no-cn)
+      enable_cn=0
+      shift
+      ;;
+    --cn)
+      enable_cn=1
+      shift
+      ;;
+    --cn-mode=*)
+      enable_cn=1
+      cn_agent_flags="${1#*=}"
+      shift
+      ;;
+    --cn-mode)
+      enable_cn=1
+      if [[ $# -lt 2 ]]; then
+        echo "--cn-mode expects an argument" >&2
+        exit 2
+      fi
+      cn_agent_flags="$2"
+      shift 2
+      ;;
+    --)
+      shift
+      break
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
+
+pass_args+=("$@")
+
+cmd=("${java_bin}")
+if [[ ${#java_opts[@]} -gt 0 ]]; then
+  cmd+=("${java_opts[@]}")
+fi
+
+if [[ "${enable_cn}" != "0" ]]; then
+  agent_path="${workdir}/burpsuite-pro-cn-loader.jar"
+  if [[ ! -f "${agent_path}" ]]; then
+    echo "burpsuite-pro: missing localization agent at ${agent_path}" >&2
+    exit 1
+  fi
+  cmd+=(-javaagent:"${agent_path}"="${cn_agent_flags}")
+fi
+
+cmd+=(-jar "${pkg_share}/burpsuite-pro.jar")
+
+cd "${workdir}"
+exec "${cmd[@]}" "${pass_args[@]}"
