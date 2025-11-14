@@ -1,7 +1,7 @@
 pkgbase = mudita-center-appimage
 	pkgdesc = Mudita Center Electron App. Expand and update the features of Mudita Pure, while using your computer.
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mudita.com/products/software-apps/mudita-center/
 	arch = x86_64
 	license = GPL-3.0-or-later
