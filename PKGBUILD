@@ -8,7 +8,7 @@ pkgdesc="A software package for nano-scale material simulations."
 arch=(x86_64)
 url=https://www.openmx-square.org/
 license=('GPL-3.0-only')
-depends=(openblas fftw-openmpi scalapack)
+depends=(blas-openblas fftw-openmpi scalapack)
 makedepends=(gcc gcc-fortran)
 provides=('openmx')
 source=("https://www.openmx-square.org/openmx${pkgver%.*}.tar.gz"
@@ -45,13 +45,13 @@ build() {
 
 check() {
     cd "$pkgname-$pkgver"/work
-    mpirun -np 6 ./openmx -runtest -nt 1 >../log
+    mpirun -np 6 ./openmx -runtest -nt 1
 }
 
 package() {
-    install -dm644 $pkgdir/usr/share/$_pkgname
-    install -Dm755 $srcdir/$pkgname-$pkgver/work/$_pkgname $pkgdir/usr/bin/openmx
-    rm $srcdir/$pkgname-$pkgver/work/openmx
+    install -dm755 $pkgdir/usr/bin
+    install -dm755 $pkgdir/usr/share/$_pkgname
+    ln -s /usr/share/$_pkgname/work/openmx $pkgdir/usr/bin/openmx
     cp -r $srcdir/$pkgname-$pkgver/work $pkgdir/usr/share/$_pkgname/
     cp -r $srcdir/$pkgname-$pkgver/DFT_DATA19 $pkgdir/usr/share/$_pkgname/
 }
