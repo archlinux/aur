@@ -1,6 +1,6 @@
 pkgbase = python-spiceypy
 	pkgdesc = A Python wrapper for the NAIF C SPICE Toolkit (N67) written using ctypes.
-	pkgver = 7.0.0
+	pkgver = 8.0.0
 	pkgrel = 1
 	url = https://github.com/AndrewAnnex/SpiceyPy/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-spiceypy
 	makedepends = python-wheel
 	makedepends = python-installer
 	depends = python-numpy
-	source = python-spiceypy-7.0.0.tar.gz::https://github.com/andrewannex/spiceypy/archive/refs/tags/v7.0.0.tar.gz
-	sha512sums = 4be66573204ffadf4635db72d80085b0a5f6eedc01ce0eb7e98cb287329fe8ae749462810f288c245ba75c40e123fd5209fdf67021e00ae4181f007fd6573493
+	source = python-spiceypy-8.0.0.tar.gz::https://github.com/andrewannex/spiceypy/archive/refs/tags/v8.0.0.tar.gz
+	sha512sums = 2801208c2b978bca818cd023f6e61d0e740a1fedc22d27e31803aa3eeed51f6f45522cfc02a471ea6d9888217e1c4466807e088ec5911b987a1719c4327bee22
 
 pkgname = python-spiceypy
