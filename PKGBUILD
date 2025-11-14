@@ -4,7 +4,7 @@
 
 pkgname='zfsbackrest-bin'
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='ZFS Backup and Restore Tool'
 url='https://github.com/gargakshit/zfsbackrest'
 arch=('aarch64' 'x86_64')
