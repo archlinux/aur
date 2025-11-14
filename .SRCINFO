@@ -1,6 +1,6 @@
 pkgbase = buchable-bin
 	pkgdesc = The unofficial cross-platform app for Audiobookshelf
-	pkgver = 1.8.2
+	pkgver = 1.8.4
 	pkgrel = 1
 	url = https://github.com/Vito0912/abs_flutter
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = buchable-bin
 	depends = xdg-user-dirs
 	provides = buchable
 	conflicts = buchable
-	source = buchable-bin-1.8.2.zip::https://github.com/Vito0912/abs_flutter/releases/download/v1.8.2/linux-release-1.8.2.zip
+	source = buchable-bin-1.8.4.zip::https://github.com/Vito0912/abs_flutter/releases/download/v1.8.4/linux-release-1.8.4.zip
 	sha256sums = SKIP
 
 pkgname = buchable-bin
