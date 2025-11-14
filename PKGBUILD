@@ -23,8 +23,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer python/dist/*.whl
-  test-env/bin/python -m pytest test \
-    --ignore test/test_dof_ordering.py
+  test-env/bin/python -m pytest test 
   test-env/bin/python demo/python/demo_*.py
 }
 
