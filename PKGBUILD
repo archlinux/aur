@@ -4,7 +4,7 @@
 
 pkgname='zfsbackrest-bin'
 pkgver=0.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc='ZFS Backup and Restore Tool'
 url='https://github.com/gargakshit/zfsbackrest'
 arch=('aarch64' 'x86_64')
@@ -17,10 +17,10 @@ backup=('etc/zfsbackrest.toml')
 install=zfsbackrest.install
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gargakshit/zfsbackrest/releases/download/v0.2.0/zfsbackrest_Linux_arm64.tar.gz")
-sha256sums_aarch64=('de7891f7129ef5a3b7f037309f4c4e22f796811ae8317d57bad8d4c749bad2c7')
+sha256sums_aarch64=('850ec657cc05d9d7852ac590dfc2279547975d11f96ef2c0ec2673c53f61b290')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gargakshit/zfsbackrest/releases/download/v0.2.0/zfsbackrest_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('f9cec005cd4a3d6d5da500bba2b4edafd66eaedd4ee748c789ba9f5c89eaa888')
+sha256sums_x86_64=('2d052e36491a973fc6bb5371b021fe7413c01dcc126fe5999c7313fa5d4d2d33')
 
 package() {
   # bin
