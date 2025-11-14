@@ -125,7 +125,6 @@ prepare() {
   rm -rf app/server/ruby/vendor/rouge
 
   # Could not devendor:
-  #     'ruby-wavefile>=0.8.1' - too old
   #     'ruby-titleize>=1.4.1' - not on Arch/AUR?
   #     'ruby-ruby-beautify2-git>=0.92.2' is an AUR package >_<, security?
 
