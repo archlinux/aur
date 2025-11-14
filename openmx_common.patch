@@ -1,0 +1,4 @@
+2995c2995
+< void Generate_Wannier();
+---
+> void Generate_Wannier(char *inputfile);

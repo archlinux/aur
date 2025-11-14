@@ -1,0 +1,5 @@
+140c140
+< void Calc_OLP_exp();
+---
+> void Calc_OLP_exp(int tot_bvector, double **bvector);
+
