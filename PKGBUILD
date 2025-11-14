@@ -1,4 +1,5 @@
 # Maintainer: solsTiCe d'Hiver <solstice.dhiver@gmail.com>
+# Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
 # Contributor: Alexander Paetzelt <techge+arch [ät] posteo [do] net>
 
 pkgname=kismet-git
