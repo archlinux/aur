@@ -4,14 +4,14 @@
 
 pkgname='zfsbackrest-bin'
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='ZFS Backup and Restore Tool'
 url='https://github.com/gargakshit/zfsbackrest'
 arch=('aarch64' 'x86_64')
 license=('MIT')
 provides=('zfsbackrest')
 conflicts=('zfsbackrest')
-depends=('zfs-utils')
+depends=('zfs-utils' 'libunwind')
 optdepends=('age: for generating encryption keys')
 backup=('etc/zfsbackrest.toml')
 install=zfsbackrest.install
