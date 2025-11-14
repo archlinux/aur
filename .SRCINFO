@@ -1,0 +1,14 @@
+pkgbase = brother-mfc-j4550dw
+	pkgdesc = LPR and CUPS driver for Brother MFC-J4550DW
+	pkgver = 3.6.1
+	pkgrel = 1
+	url = https://www.brother.de/support/mfcj4550dw/downloads
+	arch = x86_64
+	license = EULA
+	depends = cups
+	depends = perl
+	optdepends = brscan5: scanner support
+	source = https://download.brother.com/welcome/dlf107055/mfcj4550dwpdrv-3.6.1-1.x86_64.rpm
+	sha256sums = db833b716238a217c585005f0cff7032db115149c41ce5989f3f34f5cfad139f
+
+pkgname = brother-mfc-j4550dw
