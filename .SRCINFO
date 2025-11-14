@@ -1,6 +1,6 @@
 pkgbase = solarus
 	pkgdesc = A lightweight, free and open-source 2D game engine for Action-RPGs
-	pkgver = 2.0
+	pkgver = 2.0.r20251111.434dc1c
 	pkgrel = 2
 	url = https://www.solarus-games.org/
 	arch = i686
