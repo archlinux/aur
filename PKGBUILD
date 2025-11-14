@@ -5,7 +5,7 @@
 
 _extname=swoole
 pkgname=php-$_extname
-pkgver=6.0.2
+pkgver=6.1.2
 pkgrel=1
 pkgdesc='Coroutine-based concurrency library for PHP'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('php-pgsql')
 makedepends=('autoconf' 'gcc' 'make')
 
 source=("https://github.com/swoole/swoole-src/archive/refs/tags/v$pkgver.tar.gz" "$_extname.ini")
-sha256sums=('b0bd47292add791b3bcebf347cd593c98a71c098dfeb96d125193bc95e95ed2f'
+sha256sums=('240d9ab8afbd18fc50f7f5f3b98127a9620f80179998e9337423e554e4d59a65'
             '970534465ebbbf9be58ec8dba5399f7b9473c432cb5b42098125b4bcf1fdef85')
 
 build() {
