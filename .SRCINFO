@@ -13,7 +13,7 @@ pkgbase = intel-sgx-sdk-bin
 	depends = openssl
 	optdepends = intel-sgx-psw: for hardware support
 	optdepends = gdb: GDB plugin for SGX binaries
-	provides = intel-sgx-sdk
+	provides = intel-sgx-sdk=2.26
 	conflicts = intel-sgx-sdk
 	source = https://download.01.org/intel-sgx/sgx-linux/2.26/distro/ubuntu24.04-server/sgx_linux_x64_sdk_2.26.100.0.bin
 	b2sums = cf8f255d82c0a2de1b34de5cee28597a5a3bb21011861d9572f178de1cb3ff91f2e6733c8826927555a9b78e46220ab32063178da1659dd6f4d07713c0c188fa
