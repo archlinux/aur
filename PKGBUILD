@@ -1,6 +1,6 @@
 # Maintainer: Firstpick firstpick1992@proton.me
 pkgname=pacsea-bin
-pkgver=0.4.5
+pkgver=0.5.0
 _tag="v$pkgver"
 pkgrel=1
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (binary version)"
@@ -41,8 +41,8 @@ provides=("pacsea=${pkgver}")
 conflicts=('pacsea' 'pacsea-git')
 source=("Pacsea::https://github.com/Firstp1ck/Pacsea/releases/download/${_tag}/Pacsea"
         "Pacsea-${_tag}.tar.gz::https://github.com/Firstp1ck/Pacsea/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('c86ba55b1fd6e8b06ed157efae2fefa5bd137ffe0c65a7408303b8b59ec0ff2f'
-            'f6850f87819be55d3faaa8ff30a4b008a374a1d4e1cdef25782e61b16cadc944')
+sha256sums=('10cbb8f93d404b489ae41ce62a63f5b66e49127f9d14a946829f47f0f75d7e36'
+            '2f37e7ffddabedb8c2510b4cc8a2187612b3ebbc890a9e2047f26f49e80eb055')
 
 package() {
   : "${pkgdir:?pkgdir is not set}"
@@ -54,4 +54,11 @@ package() {
   # Install license and documentation from tagged source tarball
   install -Dm644 "$srcdir"/Pacsea-*/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "$srcdir"/Pacsea-*/README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  
+  # Install i18n configuration
+  install -Dm644 "$srcdir"/Pacsea-*/config/i18n.yml "$pkgdir/usr/share/pacsea/config/i18n.yml"
+  
+  # Install locale files
+  install -d "$pkgdir/usr/share/pacsea/locales"
+  install -m644 "$srcdir"/Pacsea-*/config/locales/*.yml "$pkgdir/usr/share/pacsea/locales/"
 }
