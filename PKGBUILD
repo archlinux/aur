@@ -4,14 +4,6 @@
 # Contributor: Jean Lucas <jean@4ray.co>
 # Based on python-torchvision-git; original contributors:
 # Contributor: Stephen Zhang <zsrkmyn at gmail dot com>
-#
-# NOTE:
-# to build with GPU decoder, we use nvidia-sdk header files from https://github.com/NVIDIA/DALI for convenience
-# you could also use https://aur.archlinux.org/packages/nvidia-sdk
-# just update environment variable `TORCHVISION_INCLUDE` and `TORCHVISION_LIBRARY`
-# see also https://github.com/pytorch/vision/blob/main/torchvision/csrc/io/decoder/gpu/README.rst
-# See this to find the location of nvcuvid.h and cuviddec.h headers in the DALI project:
-# https://github.com/NVIDIA/DALI/blob/4d95a057199a09590490b2d99ae0b9948655e07d/internal_tools/stub_generator/nvcuvid.json#L4-L5
 
 # update when available in pytorch
 _CUDA_ARCH_LIST="7.5;8.0;8.6;8.7;8.9;9.0;10.0;10.3;11.0;12.0;12.1;12.1+PTX"
@@ -19,63 +11,42 @@ _CUDA_ARCH_LIST_CMAKE="75;80;86;87;89;90;100;103;110;120;121;121-virtual"
 _pkgname=vision
 pkgbase='torchvision'
 pkgname=('torchvision' 'torchvision-cuda' 'python-torchvision' 'python-torchvision-cuda')
-pkgver=0.23.0
-pkgrel=7
+pkgver=0.24.1
+pkgrel=1
 pkgdesc='Datasets, transforms, and models specific to computer vision'
 arch=('x86_64')
 url='https://github.com/pytorch/vision'
 license=('BSD-3-Clause')
 depends=(
-  numactl
-  python-numpy
-  python-pillow
-  python-requests
-  python-scipy
-  python-sympy
-)
-optdepends=(
-  'ffmpeg: video reader backend (the recommended one with better performance)'
-  'python-pycocotools: support for MS-COCO dataset'
+  glibc
+  gcc-libs
+  libjpeg-turbo
+  libpng
+  libwebp
 )
 makedepends=(
   cmake
   ninja
   cuda
   cudnn
-  ffmpeg
   python-pytorch-opt-cuda
   python-build
   python-installer
   python-setuptools
   python-wheel
-  qt5-base
   nvidia-utils
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/pytorch/vision/archive/v${pkgver}.tar.gz"
-        "https://github.com/NVIDIA/DALI/raw/main/dali/operators/video/dynlink_nvcuvid/cuviddec.h"
-        "https://github.com/NVIDIA/DALI/raw/main/dali/operators/video/dynlink_nvcuvid/nvcuvid.h"
         "torchvision-0_17_1-fix-build.patch"
-        "nppiNV12ToRGB_709CSC_8u_P2C3R_Ctx.patch"
-        ffmpeg-8.patch
 )
-b2sums=('601c47ff313bbf94fe2d2afd3dba4cbd4167ef6b8a5c53010636bc550fdcd76ae92d0c5a97156bfa039d5a7baad229132f320dc7355a282c073debbb667ea153'
-        '9ccff204a4e1e93340d8b12c2b1d17e01663c12957b4665c0043eccf76d507a7308745a5d9e4d89657840aaf8abf0aa8f51bd79d6e0d5dc57a376d54a754755a'
-        '7db5d621f3099bc5455f1faeb7f4c3575a9cf70153ba56a6efc6d67d0ef2ac5438f6e117e621c5ef35c239eb3bce3fe17ce160e6b7765e8203d67a7299085429'
-        'b2036b9f4102c50cbcf6813e4a5c46d2899c11ab8d20236eadb5ac1f88d927ee0fb809c880ca3ad9194efa8df665a47d05085b5352b804dabe8925836ecfd0f7'
-        '2b79f639b4526f5bd3d0cc5fab0d65ca7284a43a8652c831352bf6574ec8c786245ab76704a5b469bfcee125bc3a7cf0c88771367798a3ef6736d47bdd4d0a83'
-        'a18c5f8a5f271957516db90e5f16b98e22c251e22739c7af6f4cf3d8c50206fe6b678574c785a4de20a5e9c510e7607db02159255cf5cf8016137d2b79016398')
+b2sums=('a9ed0856f3b5b69175191b90904d13b3bca607a27ae9d87675223c34497a2c5dcde3e3a5a03710e2f6d71600d2e7d41d98b6a4455812c677cbee4f169be4623a'
+        'b2036b9f4102c50cbcf6813e4a5c46d2899c11ab8d20236eadb5ac1f88d927ee0fb809c880ca3ad9194efa8df665a47d05085b5352b804dabe8925836ecfd0f7')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
   # https://github.com/pytorch/vision/issues/8307
   patch -N -i "${srcdir}"/torchvision-0_17_1-fix-build.patch
-
-  # Fix build with CUDA 13 https://github.com/pytorch/vision/pull/9224
-  patch -p1 -i "${srcdir}"/nppiNV12ToRGB_709CSC_8u_P2C3R_Ctx.patch
-
-  # Fix build with ffmpeg 8
-  patch -p1 -i "${srcdir}"/ffmpeg-8.patch
 
   cp -a "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/${_pkgname}-cuda-${pkgver}"
   cp -a "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/python-${_pkgname}-${pkgver}"
@@ -99,7 +70,6 @@ build() {
     -DTORCH_CUDA_ARCH_LIST="${_CUDA_ARCH_LIST}"
     -DCUDA_ARCH_LIST="${_CUDA_ARCH_LIST}"
     -DCMAKE_CUDA_ARCHITECTURES="${_CUDA_ARCH_LIST_CMAKE}"
-    -DUSE_SYSTEM_NVTX=ON
   )
 
   echo "Building torchvision (CPU version)"
@@ -132,22 +102,17 @@ build() {
   python setup.py build
 }
 
-# TODO(gromit): re-enable the tests
-# check() {
-#   local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
-#   # check if VideoReader is build
-#   # VideoReader depends on ffmpeg
-#   cd "${srcdir}/python-${_pkgname}-${pkgver}"
-#   PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-cpython-${python_version}" \
-#   python -c "from torchvision.io import VideoReader"
-
-#   cd "${srcdir}/python-${_pkgname}-cuda-${pkgver}"
-#   PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-cpython-${python_version}" \
-#   python -c "from torchvision.io import VideoReader"
-# }
-
 package_python-torchvision() {
-  depends+=('python-pytorch')
+  depends+=(
+    python-numpy
+    python-pillow
+    python-pytorch
+  )
+  optdepends+=(
+    'python-av: for video decoding'
+    'python-pycocotools: support for MS-COCO dataset'
+    'python-scipy: for specific datasets'
+  )
 
   cd "${srcdir}/python-${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
@@ -156,9 +121,18 @@ package_python-torchvision() {
 
 package_python-torchvision-cuda() {
   pkgdesc='Datasets, transforms, and models specific to computer vision (with GPU support)'
-  depends+=('python-pytorch-cuda')
-  provides+=('python-torchvision')
-  conflicts+=('python-torchvision')
+  depends+=(
+    python-numpy
+    python-pillow
+    python-pytorch-cuda
+  )
+  optdepends+=(
+    'python-av: for video decoding'
+    'python-pycocotools: support for MS-COCO dataset'
+    'python-scipy: for specific datasets'
+  )
+  provides+=(python-torchvision)
+  conflicts+=(python-torchvision)
 
   cd "${srcdir}/python-${_pkgname}-cuda-${pkgver}"
   TORCHVISION_INCLUDE="${srcdir}" \
@@ -171,7 +145,7 @@ package_python-torchvision-cuda() {
 
 package_torchvision() {
   pkgdesc='Datasets, transforms, and models specific to computer vision (C++ library only)'
-  depends+=('python-pytorch')
+  depends+=(python-pytorch)
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
   DESTDIR="${pkgdir}" cmake --install build
@@ -179,9 +153,9 @@ package_torchvision() {
 }
 package_torchvision-cuda() {
   pkgdesc='Datasets, transforms, and models specific to computer vision (C++ library only with GPU support)'
-  depends+=('python-pytorch-cuda')
-  provides+=('torchvision')
-  conflicts+=('torchvision')
+  depends+=(python-pytorch-cuda)
+  provides+=(torchvision)
+  conflicts+=(torchvision)
 
   cd "${srcdir}/${_pkgname}-cuda-${pkgver}"
   DESTDIR="${pkgdir}" cmake --install build
