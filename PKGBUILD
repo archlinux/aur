@@ -1,7 +1,7 @@
 # Maintainer: wayvid contributors
 
 pkgname=wayvid
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Dynamic video wallpaper engine for Wayland with Steam Workshop and Niri support"
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,7 @@ optdepends=(
 provides=('wayvid')
 conflicts=('wayvid-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('00f419490654f914d8104d05ef1a066fd9d02e873e7f443d5beb181146b3d656')
+sha256sums=('19205f814970264c92aacd9164f4c6ba805a40c41785ca6077198921a4035dfa')
 
 prepare() {
     cd "$pkgname-$pkgver"
