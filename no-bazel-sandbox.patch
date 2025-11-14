@@ -1,0 +1,64 @@
+From 4ab873220b68454565c259d0d70799c925f9ceb8 Mon Sep 17 00:00:00 2001
+From: Kainoa Kanter <kainoa@t1c.dev>
+Date: Fri, 14 Nov 2025 11:51:13 -0800
+Subject: [PATCH] fix: disable bazel sandboxing for Linux as well as macOS,
+ remove duplicate key
+
+---
+ .bazelrc                                    | 9 ++-------
+ npm_modules/cli/.metadata/.bazelrc.template | 8 ++------
+ 2 files changed, 4 insertions(+), 13 deletions(-)
+
+diff --git a/.bazelrc b/.bazelrc
+index 3d1ff3d0..6bd3ee9f 100644
+--- a/.bazelrc
++++ b/.bazelrc
+@@ -22,9 +22,8 @@ common --define enable_web=true
+ build --tool_java_language_version=11
+ build --java_language_version=11
+ 
+-## Disable sandboxing for macs, both laptops and in CI; the performance hit is much too high.
+-build:macos --spawn_strategy=local
+-build:linux --sandbox_writable_path=/var/tmp
++## Disable sandboxing for both dev machines and in CI; the performance hit is much too high.
++build --spawn_strategy=local
+ 
+ # common cc configuration
+ build --cxxopt=-std=c++20
+@@ -72,10 +71,6 @@ build --per_file_copt=external/com_github_google_flatbuffers/.*\$@-Wno-everythin
+ # Enable persistent worker for Valdi compilation
+ build --strategy=ValdiCompile=worker
+ 
+-## Disable sandboxing for macs, both laptops and in CI; the performance hit is much too high.
+-build:macos --spawn_strategy=local
+-build:linux --sandbox_writable_path=/var/tmp
+-
+ # Disable disk cache to save disk space
+ # https://docs.google.com/document/d/1N8W_M83n9jhMi7pgUhXuEuxypb3dmlHBu_CG_eXipXI/edit?usp=sharing
+ build --disk_cache=""
+diff --git a/npm_modules/cli/.metadata/.bazelrc.template b/npm_modules/cli/.metadata/.bazelrc.template
+index 6a895891..f1592d6f 100644
+--- a/npm_modules/cli/.metadata/.bazelrc.template
++++ b/npm_modules/cli/.metadata/.bazelrc.template
+@@ -19,9 +19,8 @@ common --define enable_web=true
+ build --tool_java_language_version=11
+ build --java_language_version=11
+ 
+-## Disable sandboxing for macs, both laptops and in CI; the performance hit is much too high.
+-build:macos --spawn_strategy=local
+-build:linux --sandbox_writable_path=/var/tmp
++## Disable sandboxing for both dev machines and in CI; the performance hit is much too high.
++build --spawn_strategy=local
+ 
+ # common cc configuration
+ build --cxxopt=-std=c++20
+@@ -69,9 +68,6 @@ build --per_file_copt=external/com_github_google_flatbuffers/.*\$@-Wno-everythin
+ # Enable persistent worker for Valdi compilation
+ build --strategy=ValdiCompile=worker
+ 
+-## Disable sandboxing for macs, both laptops and in CI; the performance hit is much too high.
+-build:macos --spawn_strategy=local
+-build:linux --sandbox_writable_path=/var/tmp
+ 
+ # Disable disk cache to save disk space
+ # https://docs.google.com/document/d/1N8W_M83n9jhMi7pgUhXuEuxypb3dmlHBu_CG_eXipXI/edit?usp=sharing
