@@ -1,0 +1,22 @@
+pkgbase = touchosc-deb
+	pkgdesc = Modular control surface.
+	pkgver = 1.4.6.240
+	pkgrel = 1
+	url = https://hexler.net/touchosc
+	arch = x86_64
+	arch = armv7l
+	arch = aarch64
+	license = custom:TouchOSC
+	depends = alsa-lib
+	depends = avahi
+	depends = zenity
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://hexler.net/pub/touchosc/touchosc-1.4.6.240-linux-x64.deb
+	sha512sums_x86_64 = 371088d3c3699c911a53787fd59a1b12b447ac34f5f47c0dd33eab2895ba1e7123b90749cc7cd1059b736882aec34b49b8ab5570046cdd84c6d897e445bcf1cb
+	source_armv7l = https://hexler.net/pub/touchosc/touchosc-1.4.6.240-linux-armhf.deb
+	sha512sums_armv7l = 4d0cee2b0fac792155162b18b641b3309f57f5128dd35285a2dcddece0e3dad2046f3e4de33fc1ebbe1ad0a22f4ed761af398f481c006ac521d0d3ba7c0a4bdd
+	source_aarch64 = https://hexler.net/pub/touchosc/touchosc-1.4.6.240-linux-arm64.deb
+	sha512sums_aarch64 = 9c8b99a66af839f80225cd11492bc136ed49a2542a1c0059b1b0bd622981e8f4f8b2b46780f27ed17bae9d789dd6649af872898cc8b850516de0cd1a3d61f4ea
+
+pkgname = touchosc-deb
