@@ -1,12 +1,12 @@
 pkgbase = scheme-langserver-bin
 	pkgdesc = A language server for Scheme
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com//ufo5260987423/scheme-langserver
 	arch = x86_64
 	license = MIT
 	provides = scheme-langserver
-	source = https://github.com//ufo5260987423/scheme-langserver/releases/download/2.0.2/scheme-langserver-x86_64-linux-glibc
-	sha256sums = 2657865fb4b914b280e72caddafa7d1a5dade5a07268d7a07b928d0158bcb8b9
+	source = https://github.com//ufo5260987423/scheme-langserver/releases/download/2.0.3/scheme-langserver-x86_64-linux-glibc
+	sha256sums = 8cc5c6c5027dbaa14e51ad7e801e5390bc561c8a04e5653b9d63f35cf6f72c49
 
 pkgname = scheme-langserver-bin
