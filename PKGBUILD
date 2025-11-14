@@ -1,8 +1,8 @@
 # Maintainer: Michał Lisowski <lisu at riseup dot net>
 
 pkgname=manjaro-hyprland-settings
-pkgver="20251114"
-_commit='49d20f1ea5b8df6a8fc76a64bbee188ffcac4272'
+pkgver="20251115"
+_commit='1d4b4b737d7028e7288b875ad34b36d09f38a713'
 pkgrel=1
 arch=('any')
 url="https://github.com/lisuml/${pkgname}"
@@ -23,11 +23,14 @@ package() {
 
   depends=(
     'beautyline'
+    'cliphist'
+    'emote'
     'foot'
     'grim'
     'hypridle'
     'hyprland'
     'hyprlock'
+    'jq'
     'kvantum'
     'kvantum-qt5'
     'mako'
@@ -51,6 +54,7 @@ package() {
     'uwsm'
     'waybar'
     'waybar-module-pacman-updates-git'
+    'wl-clipboard'
     'wofi'
     'wpaperd'
     'xdg-desktop-portal-hyprland'
