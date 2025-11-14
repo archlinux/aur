@@ -1,19 +1,20 @@
 # Maintainer: Rolv Apneseth <rolv.apneseth@gmail.com>
 
 pkgname=rgd
-pkgver=1.1.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Installed game detection utility for Linux"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rolv-apneseth/rgd"
 license=('AGPL3')
 depends=(
-    gcc-libs # libgcc_s.so
-    glibc    # libc.so libm.so
+    gcc-libs # libgcc_s.so.1
+    glibc    # libc.so.6 libm.so.6
+    sqlite   # libsqlite3.so.0
 )
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('66e9e395720451798d7a5a6bb5898118d80b804bf0d842e8e688c22780e55a1645e8e7238f7a76b589ab54d9573f611e84a273e7711f073e6d1b0b71aff4b6d2')
+sha512sums=('a6009d7d949c3b675caa4445e115372c411cdb3a5d9daa8c68f917dff4e844503337e25bdbd0660e68afdbd185b7f6c2a3e21f91ad33e7861f2cacd239760e3b')
 options=(!debug !lto)
 
 prepare()
