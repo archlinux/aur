@@ -2,7 +2,7 @@
 
 pkgname=lean4-bin
 pkgver=4.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An interactive theorem prover"
 arch=('aarch64' 'x86_64')
 url="https://leanprover.github.io/"
@@ -25,7 +25,7 @@ package() {
   fi
 
   install -dm755 "$pkgdir/opt/lean4"
-  mv * "$pkgdir/opt/lean4"
+  mv ./* "$pkgdir/opt/lean4"
 
   install -dm755 "$pkgdir/usr/bin"
   ln -s "/opt/lean4/bin"/{lake,lean,leanc,leanmake} "$pkgdir/usr/bin"
