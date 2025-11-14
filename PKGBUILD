@@ -56,10 +56,7 @@ package()
 
   mv "${pkgdir}/usr/bin/wx-config" "${pkgdir}/usr/bin/wx-config-${pkgver}"
   mv "${pkgdir}/usr/bin/wxrc" "${pkgdir}/usr/bin/wxrc-${pkgver}"
-
-  mv "${pkgdir}/usr/lib/cmake/wxWidgets/wxWidgetsConfig.cmake" "${pkgdir}/usr/lib/cmake/wxWidgets/wxWidgetsConfig-${pkgver}.cmake"
-  mv "${pkgdir}/usr/lib/cmake/wxWidgets/wxWidgetsConfigVersion.cmake" "${pkgdir}/usr/lib/cmake/wxWidgets/wxWidgetsConfigVersion-${pkgver}.cmake"
-  mv "${pkgdir}/usr/lib/cmake/wxWidgets/wxWidgetsTargets.cmake" "${pkgdir}/usr/lib/cmake/wxWidgets/wxWidgetsTargets-${pkgver}.cmake"
+  mv "${pkgdir}/usr/lib/cmake/wxWidgets" "${pkgdir}/usr/lib/cmake/wxWidgets-${pkgver}"
 
   #chrpath -d "${pkgdir}"/usr/bin/wxrc-*
   #chrpath -d "${pkgdir}/usr/lib/"*.so
