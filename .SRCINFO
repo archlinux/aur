@@ -1,19 +1,15 @@
 pkgbase = ruby-flexmock
 	pkgdesc = Flexible mocking for Ruby testing
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/doudou/flexmock
 	arch = any
 	license = MIT
-	checkdepends = ruby-bundler
-	checkdepends = ruby-minitest
-	checkdepends = ruby-rake
-	checkdepends = ruby-simplecov
 	makedepends = git
 	makedepends = rubygems
 	depends = ruby
 	options = !emptydirs
-	source = git+https://github.com/doudou/flexmock.git#tag=v3.0.1
-	sha256sums = eba38fa86a4d5948939922135ee1ebb5788f72ad81066f8a6ec7a3eda47021b0
+	source = git+https://github.com/doudou/flexmock.git#tag=v3.0.2
+	sha256sums = ddaf16acffffa72bc66ae60fb1713cfe906ad1548bc18343f225b5a4cb4aea94
 
 pkgname = ruby-flexmock

@@ -1,8 +1,8 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Contributor: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=ruby-flexmock
 _pkgname=${pkgname#ruby-}
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Flexible mocking for Ruby testing"
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=(
   git
   rubygems
 )
-checkdepends=(
+_checkdepends=(
   ruby-bundler
   ruby-minitest
   ruby-rake
@@ -21,7 +21,7 @@ checkdepends=(
 )
 options=(!emptydirs)
 source=("git+$url.git#tag=v$pkgver")
-sha256sums=('eba38fa86a4d5948939922135ee1ebb5788f72ad81066f8a6ec7a3eda47021b0')
+sha256sums=('ddaf16acffffa72bc66ae60fb1713cfe906ad1548bc18343f225b5a4cb4aea94')
 
 prepare() {
   cd "$_pkgname"
@@ -71,8 +71,8 @@ build() {
     \) \
     -delete
 }
-
-check() {
+# https://github.com/doudou/flexmock/issues/37
+_check() {
   cd "$_pkgname"
   GEM_HOME="tmp_install/$(gem env gemdir)" rake test -v
 }
