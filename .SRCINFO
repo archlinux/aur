@@ -1,6 +1,6 @@
 pkgbase = libretro-gearsystem
 	pkgdesc = Sega Master System/Game Gear/SG-1000 core
-	pkgver = 1226
+	pkgver = 1241
 	pkgrel = 1
 	url = https://github.com/drhelius/Gearsystem
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = libretro-gearsystem
 	license = GPL-3.0-or-later
 	makedepends = git
 	depends = libretro-core-info
-	source = libretro-gearsystem::git+https://github.com/drhelius/Gearsystem.git#commit=8d83e6abf00ee65a1114e18574c1fe2d1027d143
-	sha256sums = 1f1f3014731e7fdb127e3a33ca8061eed8dabdebf7f0f20eb11eaf6e072ec1bb
+	source = libretro-gearsystem::git+https://github.com/drhelius/Gearsystem.git#commit=572693112ca3a59525f4161bc0b25e7f632319ca
+	sha256sums = 451946566bc68484ce0109835ce82ca2eb445ac97b6e0370060e93d63893c419
 
 pkgname = libretro-gearsystem
