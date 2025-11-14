@@ -1,7 +1,7 @@
 pkgbase = dms-shell-bin
 	pkgdesc = Desktop shell for wayland compositors built with Quickshell & GO
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = x86_64
 	arch = aarch64
