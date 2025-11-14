@@ -1,1 +1,5 @@
-/*.tar.*
+pkg/
+src/
+*.pkg.tar.zst
+fish-tide-*.tar.gz
+*.ttf
