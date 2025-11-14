@@ -1,10 +1,4 @@
 *
-!/.SRCINFO
-!/.gitignore
-!/49-nopasswd-calamares.rules
-!/PKGBUILD
-!/README.md
-!/calamares.desktop
-!/calamares_polkit
-!/flag.patch
-!/paru-support.patch
+!PKGBUILD
+!.SRCINFO
+!.gitignore

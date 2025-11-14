@@ -1,65 +1,22 @@
 pkgbase = calamares
 	pkgdesc = Distribution-independent installer framework
-	pkgver = 3.3.8
+	pkgver = 3.4.0
 	pkgrel = 1
-	url = https://github.com/calamares/calamares
+	url = https://codeberg.org/Calamares/calamares
+	arch = i686
 	arch = x86_64
-	license = BSD-2-Clause
-	license = CC-BY-4.0
-	license = CC0-1.0
 	license = GPL-3.0-or-later
-	license = LGPL-2.1-only
-	license = LGPL-3.0-or-later
-	license = MIT
 	makedepends = extra-cmake-modules
-	makedepends = git
-	depends = ckbcomp
-	depends = efibootmgr
-	depends = gtk-update-icon-cache
-	depends = hwinfo
-	depends = icu
-	depends = kpmcore>=24.01.75
+	makedepends = ninja
+	makedepends = qt6-tools
+	makedepends = qt6-translations
+	depends = kcoreaddons
+	depends = kpmcore
 	depends = libpwquality
-	depends = mkinitcpio-openswap
-	depends = squashfs-tools
+	depends = qt6-declarative
+	depends = qt6-svg
 	depends = yaml-cpp
-	backup = usr/share/calamares/modules/bootloader.conf
-	backup = usr/share/calamares/modules/displaymanager.conf
-	backup = usr/share/calamares/modules/initcpio.conf
-	backup = usr/share/calamares/modules/unpackfs.conf
-	source = calamares-3.3.8.tar.gz::https://github.com/calamares/calamares/archive/v3.3.8.tar.gz
-	source = calamares.desktop
-	source = calamares_polkit
-	source = 49-nopasswd-calamares.rules
-	source = paru-support.patch
-	source = flag.patch
-	sha256sums = 523a0e4cfefbe471d9a6a5d874018fe282a4ce3667ff560bd97190339be6b592
-	sha256sums = b9e65ab87f69b2d3f8f8eaea60c78625aef57dd336314ab75389f31a447445be
-	sha256sums = c176b28007bd1c1f23d8dbb2c936fa54d0c01bacfb67290ddad597606c129df3
-	sha256sums = 56d85ff6bf860b9559b8c9f997ad9b1002f3fccc782073760eca505e3bddd176
-	sha256sums = f00c90bd87d6dfd73b3ec53fa9a145ac25234676be41604807f05f05a4bf5bbb
-	sha256sums = 0830c8fe57c94a63ef87b6a025eb729b4f098a9e46e729b63415f4d3a2755762
+	source = calamares-3.4.0.tar.gz::https://codeberg.org/Calamares/calamares/archive/v3.4.0.tar.gz
+	sha256sums = 45de0214f4a16095374e2ed3982032c34f0f2c2104987089152e4b928dd0548f
 
 pkgname = calamares
-	depends = kconfig>=5.246
-	depends = kcoreaddons>=5.246
-	depends = ki18n>=5.246
-	depends = kiconthemes>=5.246
-	depends = kio>=5.246
-	depends = polkit-qt6>=0.175.0
-	depends = qt6-base>=6.6.0
-	depends = qt6-svg>=6.6.0
-	depends = solid>=5.246
-
-pkgname = calamares-qt5
-	depends = kconfig5>=5.113.0
-	depends = kcoreaddons5>=5.113.0
-	depends = kiconthemes5>=5.113.0
-	depends = ki18n5>=5.113.0
-	depends = kio5>=5.113.0
-	depends = solid5>=5.113.0
-	depends = qt5-base>=5.15.11
-	depends = qt5-svg>=5.15.11
-	depends = polkit-qt5>=0.175.0
-	depends = plasma-framework5>=5.58
-	depends = qt5-xmlpatterns>=5.15.11
