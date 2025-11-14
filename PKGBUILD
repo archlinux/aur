@@ -3,7 +3,7 @@
 
 pkgname=sabaki-electron
 _pkgname=sabaki
-pkgver=0.52.2
+pkgver=null
 pkgrel=1
 pkgdesc='An elegant SGF editor for the game of Go'
 arch=('any')
@@ -16,7 +16,7 @@ source=("https://github.com/SabakiHQ/Sabaki/archive/v${pkgver}.tar.gz"
         "${_pkgname}.desktop"
         'sabaki.xml')
 md5sums=('b82401897dff0f182dddbe7e51bc31c8'
-         '7b6a953fe14a27d3e6e96d287db95f34'
+         '1a47cc1314b52357a629d5f571e7c5b2'
          'efbd547e892c7781a5ece702d389dd9e')
 
 build() {
