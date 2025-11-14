@@ -1,0 +1,14 @@
+pkgbase = edid-json-tools-patch_edid
+	pkgdesc = Parsing and converting between EDID binaries and JSON files. Fork with added patch_edid tool.
+	pkgver = r74.5e0ef9d
+	pkgrel = 1
+	url = https://github.com/Joel-Valenciano/edid-json-tools
+	arch = any
+	license = BSL-1.0
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = python
+	source = git+https://github.com/Joel-Valenciano/edid-json-tools.git
+	md5sums = SKIP
+
+pkgname = edid-json-tools-patch_edid
