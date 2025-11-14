@@ -1,5 +1,6 @@
 *
 # dev tools
+!.editorconfig
 !.gitignore
 !.nvchecker.toml
 !.shellcheckrc

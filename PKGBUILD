@@ -48,7 +48,7 @@ checkdepends=(
   'perl-test-simple>=1.302200' # "Test2::V0"
   'perl-test-without-module'
 )
-options=('!emptydirs' 'purge')
+options=(!emptydirs purge)
 source=("https://cpan.metacpan.org/authors/id/J/JO/JONASS/App-Licensecheck-v${pkgver}.tar.gz")
 b2sums=('1d589a4eedc0cc11907cb9c5358ca1703f5f63abfb380a968196c6eca93cd42f3b9c96ccfbfc10d649ae9a1e28240e23f39e344ecb79acb63bc56ef607267119')
 
