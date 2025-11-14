@@ -2,7 +2,7 @@
 # Contributor: Jonas Karlsson
 
 pkgname=puzzlemoppet-git
-pkgver=r124.8ba417c
+pkgver=r144.a8e4505
 pkgrel=1
 pkgdesc="A challenging 3D puzzle game where you must guide the Moppet through the vast and eternal void of space by solving the various and beautiful puzzles thrown at you"
 arch=('i686' 'x86_64')
