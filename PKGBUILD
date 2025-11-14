@@ -50,7 +50,7 @@ check() {
 
 package() {
     install -dm644 $pkgdir/usr/share/$_pkgname
-    install -Dm755 $srcdir/$pkgname-$pkgver/work/$_pkgname $pkgdir/usr/bin/openmp
+    install -Dm755 $srcdir/$pkgname-$pkgver/work/$_pkgname $pkgdir/usr/bin/openmx
     rm $srcdir/$pkgname-$pkgver/work/openmx
     cp -r $srcdir/$pkgname-$pkgver/work $pkgdir/usr/share/$_pkgname/
     cp -r $srcdir/$pkgname-$pkgver/DFT_DATA19 $pkgdir/usr/share/$_pkgname/
