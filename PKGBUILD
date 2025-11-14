@@ -19,7 +19,6 @@ build() {
         -DOPENTURNS_SYSCONFIG_PATH=/etc \
         -DCMAKE_UNITY_BUILD=ON -DCMAKE_UNITY_BUILD_BATCH_SIZE=32 \
         -DSWIG_COMPILE_FLAGS="-O1" \
-        -DUSE_CERES=OFF \
         .
   make
 }
