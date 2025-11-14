@@ -1,0 +1,4 @@
+[rvx-builder]
+source = "git"
+git = "https://github.com/inotia00/rvx-builder.git"
+prefix = "v"
