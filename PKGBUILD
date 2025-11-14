@@ -24,7 +24,7 @@ makedepends=(
   ## configure_requires
   'perl-module-build>=0.4004'
 )
-options=('!emptydirs' 'purge')
+options=(!emptydirs purge)
 source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Feature-Compat-Class-${pkgver}.tar.gz")
 b2sums=('69675b5fb0a4586eb9418fcb07f699801cce18384c674fc2a27d48d49749e5a373d214418b366b16fb8c844e9565409b39b6fd940b578e837346004259af32a5')
 
