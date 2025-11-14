@@ -5,7 +5,11 @@ pkgbase = systemd-manager-tui
 	url = https://github.com/matheus-git/systemd-manager-tui
 	arch = x86_64
 	license = MIT
-	source = https://github.com/matheus-git/systemd-manager-tui/releases/download/v1.1.1/systemd-manager-tui
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	source = git+https://github.com/matheus-git/systemd-manager-tui.git
 	sha256sums = SKIP
 
 pkgname = systemd-manager-tui

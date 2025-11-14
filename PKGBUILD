@@ -1,14 +1,24 @@
-# Mantainer: matheus-git <mathiew0@gmail.com>
+# Maintainer: matheus-git <mathiew0@gmail.com>
 pkgname=systemd-manager-tui
 pkgver=1.1.1
 pkgrel=1
-pkgdesc="systemd manager tui"
+pkgdesc="A TUI for managing systemd services"
 arch=('x86_64')
 url="https://github.com/matheus-git/systemd-manager-tui"
 license=('MIT')
-source=("https://github.com/matheus-git/systemd-manager-tui/releases/download/v1.1.1/systemd-manager-tui")
-sha256sums=('802f2850a5b1ecad50bf29fcecdce3baa6b9ef327c51569c298d6c01f8555a05')
+makedepends=('git' 'rust' 'cargo')
+source=("git+https://github.com/matheus-git/systemd-manager-tui.git")
+sha256sums=('SKIP')
+
+build() {
+  cd "$srcdir/systemd-manager-tui"
+  cargo build --release --locked
+}
 
 package() {
-  install -Dm755 "$srcdir/systemd-manager-tui_1.1.1" "$pkgdir/usr/bin/systemd-manager-tui"
+  cd "$srcdir/systemd-manager-tui"
+  install -Dm755 "target/release/systemd-manager-tui" "$pkgdir/usr/bin/systemd-manager-tui"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
+
