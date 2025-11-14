@@ -15,7 +15,7 @@ pkgbase = intel-sgx-psw-bin
 	optdepends = nodejs: for running the SGX DCAP PCCS Server
 	optdepends = curl: required for SGX Remotte Attestation Service (RA)
 	optdepends = boost183: required by the TDX Quote Generation Service (QGS)
-	provides = intel-sgx-psw
+	provides = intel-sgx-psw=2.26
 	conflicts = intel-sgx-psw
 	backup = etc/aesmd.conf
 	backup = etc/mpa_registration.conf

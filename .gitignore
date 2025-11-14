@@ -3,6 +3,7 @@
 !.gitignore
 !.nvchecker.toml
 !.shellcheckrc
+!.editorconfig
 # actual package
 !PKGBUILD
 !*.patch

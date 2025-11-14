@@ -8,7 +8,7 @@ pkgrel=3
 url='https://github.com/intel/linux-sgx'
 arch=('x86_64')
 license=('BSD-3-Clause AND LicenseRef-IntelSgx-ThirdParty') # https://github.com/intel/linux-sgx?tab=License-1-ov-file
-makedepends=(dpkg findutils patchelf)
+makedepends=('dpkg' 'findutils' 'patchelf')
 depends=('glibc' 'gcc-libs' 'bash')
 optdepends=(
   'protobuf-21: required for the AESM service'
@@ -16,7 +16,7 @@ optdepends=(
   'curl: required for SGX Remotte Attestation Service (RA)'
   'boost183: required by the TDX Quote Generation Service (QGS)'
 )
-provides=('intel-sgx-psw')
+provides=("intel-sgx-psw=${pkgver}")
 conflicts=('intel-sgx-psw')
 backup=('etc/aesmd.conf' 'etc/mpa_registration.conf' 'etc/qgs.conf' 'etc/sgx_default_qcnl.conf')
 source=("sgx_${pkgver}_debian_local_repo.tgz::https://download.01.org/intel-sgx/sgx-linux/${pkgver}/distro/ubuntu24.04-server/sgx_debian_local_repo.tgz")
@@ -39,11 +39,11 @@ _fix_non_standard_paths() {
   mv "${pkgdir}"/etc/udev/rules.d "${pkgdir}"/usr/lib/udev/rules.d
   rmdir "${pkgdir}"/etc/udev
 
-  # Debian uses this weird /usr/lib/$TARGET folder, but not Arch
+  # Debian has this /usr/lib/$TARGET folder, but you won't find them in Arch
   mv "${pkgdir}"/usr/lib/"${CARCH}"-linux-gnu/*.so* "${pkgdir}"/usr/lib/
   rmdir "${pkgdir}"/usr/lib/"${CARCH}"-linux-gnu
 
-  # Debian supports a separate /lib folder, which in Arch is just a symlink to /usr/lib
+  # Debian has an actual /lib folder, which in Arch is just a symlink to /usr/lib
   mv "${pkgdir}"/lib/systemd/system/*.service "${pkgdir}"/usr/lib/systemd/system/
   rmdir "${pkgdir}"/lib/systemd/system "${pkgdir}"/lib/systemd "${pkgdir}"/lib
 
@@ -51,7 +51,7 @@ _fix_non_standard_paths() {
   rmdir "${pkgdir}"/include
 }
 
-# Update symbolic links to non-standard Arch Linux paths
+# Update symbolic links using non-standard Arch Linux paths
 _fix_binary_symlinks() {
   broken_symlinks=(
     "${pkgdir}/opt/intel/sgx-aesm-service/aesm/libsgx_pce.signed.so"
