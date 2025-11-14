@@ -3,7 +3,7 @@ pkgname=magika
 : "${_fragment:=tag=cli/v1.0.1}"
 
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Fast and accurate AI powered file content types detection'
 url="https://github.com/google/$pkgname"
@@ -11,6 +11,7 @@ url="https://github.com/google/$pkgname"
 arch=(x86_64 aarch64)
 license=(Apache-2.0)
 
+depends=(glibc gcc-libs)
 makedepends=(git cargo)
 
 source=("git+$url.git#$_fragment")
