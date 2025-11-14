@@ -5,7 +5,7 @@
 _pkgname=lcd4linux
 pkgname="${_pkgname}-full-git"
 pkgver=0.11.0_SVN.r1167.20170527.cb69a93
-pkgrel=1
+pkgrel=2
 pkgdesc="Grabs information from the kernel and other systems and displays it on an LCD. Compiled with all possible drivers, also obscure ones."
 arch=(
   'i686'
@@ -22,7 +22,7 @@ depends=(
   'libmpdclient.so'
   'libserdisp.so'
   'libst2205.so'
-  'libluise'
+  'libluise.so'
   'libnmeap.so'
   'libusb-1.0.so'   # Provided by 'libusb'
   'libusb-compat'   # libusb-0.1.so
