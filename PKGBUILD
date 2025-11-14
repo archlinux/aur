@@ -4,10 +4,10 @@
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 
 pkgname=ffmpeg-amd-full-git
-pkgver=8.1.r121549.gc7a2b31f84
+pkgver=8.1.r121754.gb478037423
 pkgrel=1
 _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
-_obs_studio_ver='32.0.1'
+_obs_studio_ver='32.0.2'
 _whispercpp_ver='1.8.2'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD, including libfdk-aac; git version)'
 arch=('x86_64')
@@ -43,7 +43,6 @@ depends=(
     'lame'
     'lcevcdec'
     'lcms2'
-    'lensfun-git'
     'libaribcaption'
     'libass'
     'libavc1394'
@@ -91,7 +90,7 @@ depends=(
     'openal'
     'openapv'
     'opencore-amr'
-    'opencv2'
+    'opencv'
     'openh264'
     'openjpeg2'
     'opus'
@@ -157,6 +156,7 @@ provides=(
     'libswresample.so')
 conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
+        'git+https://github.com/lensfun/lensfun.git'
         "https://github.com/obsproject/obs-studio/archive/${_obs_studio_ver}/obs-studio-${_obs_studio_ver}.tar.gz"
         "https://github.com/ggml-org/whisper.cpp/archive/v${_whispercpp_ver}/whisper.cpp-${_whispercpp_ver}.tar.gz"
         '010-ffmpeg-add-svt-hevc.patch'
@@ -166,11 +166,12 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '060-ffmpeg-whisper.cpp-fix-pkgconfig.patch'
         'LICENSE')
 sha256sums=('SKIP'
-            '906278ccedb5ed919e586697467eb7fa4205fceeda127386ce5b74026113ba96'
+            'SKIP'
+            '39e99b9fbdc77e7e87cfd9c7e8709d1d427627bad5b21b791019c887c8598d13'
             'bcee25589bb8052d9e155369f6759a05729a2022d2a8085c1aa4345108523077'
-            '7eb13635e5eec4f14b54780f9baa2086675a41c9ebd0030ab82c1c5813f6f7bd'
+            'c774053b7279fc79966491dac275cded87eff0483feeb42b52e4f727f746a984'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-            'f3780fe85da064c09feb61e77a9c1d872063414c6351a289659e3913c5efef57'
+            '4096e3909c9b0141095e8d578b5ab70e48d854e63190ddf3a58ee45aa1c01ef9'
             '1c4f328bfb0dfedf4478f7b3659bcd08c591823a389b9e9e4eb8c35b0b3e0356'
             '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
@@ -191,16 +192,37 @@ pkgver() {
 }
 
 build() {
+    local _stagingdir="${srcdir}/staging"
+    local _pkgconfigdir="${_stagingdir}/lib/pkgconfig"
+    export PKG_CONFIG_PATH="${_pkgconfigdir}${PKG_CONFIG_PATH:+":${PKG_CONFIG_PATH}"}"
+    
+    local -a _cmake_opts=(
+        '-GUnix Makefiles'
+        '-DBUILD_SHARED_LIBS:BOOL=OFF'
+        '-DCMAKE_BUILD_TYPE:STRING=None'
+        "-DCMAKE_INSTALL_PREFIX:PATH=${_stagingdir}"
+        '-Wno-dev')
+    
+    # ffmpeg requires lensfun git master, but lensfun-git package wrongly installs its files to non-standard locations:
+    # https://aur.archlinux.org/cgit/aur.git/commit/?h=lensfun-git&id=7b7a2d4890df59cde62c7dbfde3cefd7868a2707
+    # building it locally as a static library for the time being - this also have the benefit of avoid rebuilding packages
+    # requiring lensfun, like gegl (required for gimp, a commonly used package), as lensfun git master have a soname bump
+    cmake -B build/lensfun -S lensfun \
+        "${_cmake_opts[@]}" \
+        -DBUILD_STATIC:BOOL='ON' \
+        -DINSTALL_PYTHON_MODULE:BOOL='OFF' \
+        -DINSTALL_HELPER_SCRIPTS:BOOL='OFF'
+    cmake --build build/lensfun --target install
+    sed -i \
+        -e 's/\(-llensfun\)/\1 -lglib-2.0 -lstdc++/' \
+        -e '/Cflags: /s/$/ -DCONF_LENSFUN_STATIC/' "${_pkgconfigdir}/lensfun.pc"
+    
     # whisper.cpp AUR package conflicts with imagemagick at the time of writing
     # building it locally as a static library for the time being, as imagemagick is a commonly used package (high usage in pkgstats)
     cmake -B build/whisper.cpp -S "whisper.cpp-${_whispercpp_ver}" \
-        -G 'Unix Makefiles' \
-        -DBUILD_SHARED_LIBS:BOOL='OFF' \
-        -DCMAKE_BUILD_TYPE:STRING='None' \
-        -DCMAKE_INSTALL_PREFIX:PATH="${srcdir}/staging" \
+        "${_cmake_opts[@]}" \
         -DWHISPER_BUILD_EXAMPLES:BOOL='OFF' \
-        -DWHISPER_BUILD_TESTS:BOOL='OFF' \
-        -Wno-dev
+        -DWHISPER_BUILD_TESTS:BOOL='OFF'
     cmake --build build/whisper.cpp --target install
     
     cd ffmpeg
