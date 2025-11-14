@@ -55,19 +55,14 @@ sha256sums=('SKIP'
 pkgver() {
     cd "$srcdir/kismet"
 
-    _ver_major="$(grep '^const char \*' version.c|grep VERSION_MAJOR|cut -f 2 -d '='|tr -d '\"; ')"
-    _ver_minor="$(grep '^const char \*' version.c|grep VERSION_MINOR|cut -f 2 -d '='|tr -d '\"; ')"
-    _ver_tiny="$(grep '^const char \*' version.c|grep VERSION_TINY|cut -f 2 -d '='|tr -d '\"; ')"
-    _ver="${_ver_major}_${_ver_minor}_R${_ver_tiny}"
+    # instead of running tools/mkversion.sh just use the current month and year
+    _ver="$(date '+%Y')_$(date '+%m')_R0"
     _rev="$(git rev-list --count HEAD)"
 
-    if [ -z "${_ver}" ]; then
-        # falling back to revision and HEAD commit
-        _head="$(git rev-parse --short HEAD)"
-        printf '%s' "r${_rev}.${_head}"
-    else
-        printf '%s' "${_ver}.r${_rev}"
-    fi
+    # falling back to revision and HEAD commit
+    #_head="$(git rev-parse --short HEAD)"
+    #printf '%s' "r${_rev}.${_head}"
+    printf '%s' "${_ver}.r${_rev}"
 }
 
 prepare() {
