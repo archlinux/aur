@@ -1,0 +1,19 @@
+pkgbase = tinte
+	pkgdesc = Wallpaper utility and theme generator for Wayland
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Maciejonos/tinte
+	arch = any
+	license = MIT
+	depends = gjs
+	depends = gtk4
+	depends = libadwaita
+	depends = libsoup3
+	depends = imagemagick
+	depends = matugen
+	provides = tinte
+	conflicts = tinte
+	source = tinte-1.0.0.tar.gz::https://github.com/Maciejonos/tinte/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 8febd525f4d1ab515962fd753f83b870a4098964268ce65bb2ccc6fad1825bce
+
+pkgname = tinte
