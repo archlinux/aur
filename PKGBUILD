@@ -4,7 +4,7 @@ pkgver=9.0.11.sdk307
 _dotnetver="$(cut -d. -f1-2 <<<"${pkgver}")"
 _sdkver="${_dotnetver}.${pkgver##*sdk}"
 _runtimever="${pkgver%.sdk*}"
-pkgrel=1
+pkgrel=2
 
 _pkgbase="dotnet-core-${_dotnetver}"
 _pkgname=(
@@ -74,6 +74,7 @@ package_dotnet-runtime-9.0-bin() {
   )
   provides=(
     "${pkgname%-bin}=${pkgver}"
+    # "${pkgname%"-${_dotnetver}-bin"}=${pkgver}"
   )
   conflicts=(
     "${pkgname%-bin}"
@@ -83,7 +84,7 @@ package_dotnet-runtime-9.0-bin() {
               "${pkgdir}/usr/share/licenses"
 
   cd "${srcdir}/shared"
-  cp -aT --no-preserve=ownership "Microsoft.NETCore.App" "${pkgdir}/usr/share/dotnet/shared"
+  cp -a --no-preserve=ownership "Microsoft.NETCore.App" -t "${pkgdir}/usr/share/dotnet/shared"
 
   ln -vsf "dotnet-host" "${pkgdir}/usr/share/licenses/${pkgname%-bin}"
 }
@@ -95,6 +96,7 @@ package_aspnet-runtime-9.0-bin() {
   )
   provides=(
     "${pkgname%-bin}=${pkgver}"
+    # "${pkgname%"-${_dotnetver}-bin"}=${pkgver}"
   )
   conflicts=(
     "${pkgname%-bin}"
@@ -104,7 +106,7 @@ package_aspnet-runtime-9.0-bin() {
               "${pkgdir}/usr/share/licenses"
 
   cd "${srcdir}/shared"
-  cp -aT --no-preserve=ownership "Microsoft.AspNetCore.App" "${pkgdir}/usr/share/dotnet/shared"
+  cp -a --no-preserve=ownership "Microsoft.AspNetCore.App" -t "${pkgdir}/usr/share/dotnet/shared"
 
   ln -vsf "dotnet-host" "${pkgdir}/usr/share/licenses/${pkgname%-bin}"
 }
@@ -116,6 +118,7 @@ package_dotnet-targeting-pack-9.0-bin() {
   )
   provides=(
     "${pkgname%-bin}=${pkgver}"
+    # "${pkgname%"-${_dotnetver}-bin"}=${pkgver}"
   )
   conflicts=(
     "${pkgname%-bin}"
@@ -125,8 +128,8 @@ package_dotnet-targeting-pack-9.0-bin() {
               "${pkgdir}/usr/share/licenses"
 
   cd "${srcdir}/packs"
-  cp -aT --no-preserve=ownership "Microsoft.NETCore.App.Host.linux-${_arch}" "${pkgdir}/usr/share/dotnet/packs"
-  cp -aT --no-preserve=ownership "Microsoft.NETCore.App.Ref"                 "${pkgdir}/usr/share/dotnet/packs"
+  cp -a --no-preserve=ownership "Microsoft.NETCore.App.Host.linux-${_arch}" -t "${pkgdir}/usr/share/dotnet/packs"
+  cp -a --no-preserve=ownership "Microsoft.NETCore.App.Ref"                 -t "${pkgdir}/usr/share/dotnet/packs"
 
   ln -vsf "dotnet-host" "${pkgdir}/usr/share/licenses/${pkgname%-bin}"
 }
@@ -138,6 +141,7 @@ package_aspnet-targeting-pack-9.0-bin() {
   )
   provides=(
     "${pkgname%-bin}=${pkgver}"
+    # "${pkgname%"-${_dotnetver}-bin"}=${pkgver}"
   )
   conflicts=(
     "${pkgname%-bin}"
@@ -147,7 +151,7 @@ package_aspnet-targeting-pack-9.0-bin() {
               "${pkgdir}/usr/share/licenses"
 
   cd "${srcdir}/packs"
-  cp -aT --no-preserve=ownership "Microsoft.AspNetCore.App.Ref" "${pkgdir}/usr/share/dotnet/packs"
+  cp -a --no-preserve=ownership "Microsoft.AspNetCore.App.Ref" -t "${pkgdir}/usr/share/dotnet/packs"
 
   ln -vsf "dotnet-host" "${pkgdir}/usr/share/licenses/${pkgname%-bin}"
 }
@@ -165,6 +169,7 @@ package_dotnet-sdk-9.0-bin() {
   )
   provides=(
     "${pkgname%-bin}=${pkgver}"
+    # "${pkgname%"-${_dotnetver}-bin"}=${pkgver}"
   )
   conflicts=(
     "${pkgname%-bin}"
@@ -174,7 +179,9 @@ package_dotnet-sdk-9.0-bin() {
               "${pkgdir}/usr/share/licenses"
 
   cd "${srcdir}"
-  cp -a --no-preserve=ownership "sdk" "sdk-manifests" "templates" -t "${pkgdir}/usr/share/dotnet"
+  cp -a --no-preserve=ownership "sdk"           -t "${pkgdir}/usr/share/dotnet"
+  cp -a --no-preserve=ownership "sdk-manifests" -t "${pkgdir}/usr/share/dotnet"
+  cp -a --no-preserve=ownership "templates"     -t "${pkgdir}/usr/share/dotnet"
 
   ln -vsf "dotnet-host" "${pkgdir}/usr/share/licenses/${pkgname%-bin}"
 }
