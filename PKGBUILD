@@ -1,41 +1,78 @@
-# Maintainer: Bao Trinh <qubidt at gmail dot com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Bao Trinh <qubidt at gmail dot com>
 
-pkgname=neonmodem
-pkgver=1.0.5
+pkgname="neonmodem"
+pkgver=1.0.7
 pkgrel=1
-pkgdesc="Neon Modem Overdrive is a BBS-style, multi-backend discussion board TUI"
-arch=('x86_64')
-url="https://github.com/mrusme/neonmodem"
-license=('GPL-3.0-or-later')
-depends=('glibc')
-makedepends=('go')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b0c998e5d3ccaaecdc2c5826a280aecffe5b791bf0535a3377fb133db636d6cf')
+pkgdesc="A BBS-style command line client that supports Discourse, Lemmy, Lobsters and Hacker News as backends"
+arch=(
+  'aarch64'
+  'armv6h'
+  'armv7h'
+  'i686'
+  'x86_64'
+)
+url="https://neonmodem.com"
+_url="https://github.com/mrusme/${pkgname}"
+license=('GPL-3.0-only')
+depends=(
+  'glibc'
+)
+makedepends=(
+  'git'
+  'go'
+)
+_pkgsrc="${_url##*/}"
+source=(
+  "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}?signed"
+)
+sha256sums=('141af1eb2220e1b1a48ce8d4921dd3257f91b2ac7a6134885f37297c548ddc48')
+validpgpkeys=(
+  '4D3899AF73E7F5FE9B39C822272ED814BF63261F' # marius@xn--gckvb8fzb.com <marius@xn--gckvb8fzb.com>
+)
 
 prepare() {
-	cd "${pkgname}-${pkgver}"
-	mkdir -p build
-	go mod download
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+
+  cd "${srcdir}/${_pkgsrc}"
+  go mod download -modcacherw -x
+
+  mkdir -p "build" "completions"
 }
 
 build() {
-	cd "${pkgname}-${pkgver}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-	go build -ldflags "-X github.com/mrusme/neonmodem/config.VERSION=v${pkgver}" -o build/ .
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOCACHE="${srcdir}/go-cache"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  cd "${srcdir}/${_pkgsrc}"
+    go build -v -o "build/${pkgname}" -ldflags "\
+    -X ${_url#https://}/config.VERSION=${pkgver}" \
+    .
+
+  for _sh in bash fish powershell zsh; do
+    ./"build/${pkgname}" completion "${_sh}" > "completions/${pkgname}.${_sh}"
+  done
 }
 
-check() {
-	cd "${pkgname}-${pkgver}"
-	go test ./...
-}
+# check() {
+#   cd "${srcdir}/${_pkgsrc}"
+#   go test ./...
+# }
 
 package() {
-	cd "${pkgname}-${pkgver}"
-	install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-	install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
+  cd "${srcdir}/${_pkgsrc}"
+  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  cd "completions"
+  install -vDm644 "${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -vDm644 "${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -vDm644 "${pkgname}.powershell" "${pkgdir}/usr/share/powershell/Completions/${pkgname}.ps1"
+  install -vDm644 "${pkgname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 }

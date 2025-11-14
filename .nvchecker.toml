@@ -1,0 +1,4 @@
+[neonmodem]
+source = "git"
+git = "https://github.com/mrusme/neonmodem.git"
+prefix = "v"

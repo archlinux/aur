@@ -1,13 +1,19 @@
 pkgbase = neonmodem
-	pkgdesc = Neon Modem Overdrive is a BBS-style, multi-backend discussion board TUI
-	pkgver = 1.0.5
+	pkgdesc = A BBS-style command line client that supports Discourse, Lemmy, Lobsters and Hacker News as backends
+	pkgver = 1.0.7
 	pkgrel = 1
-	url = https://github.com/mrusme/neonmodem
+	url = https://neonmodem.com
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
+	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = neonmodem-1.0.5.tar.gz::https://github.com/mrusme/neonmodem/archive/refs/tags/v1.0.5.tar.gz
-	sha256sums = b0c998e5d3ccaaecdc2c5826a280aecffe5b791bf0535a3377fb133db636d6cf
+	source = neonmodem::git+https://github.com/mrusme/neonmodem.git#tag=v1.0.7?signed
+	validpgpkeys = 4D3899AF73E7F5FE9B39C822272ED814BF63261F
+	sha256sums = 141af1eb2220e1b1a48ce8d4921dd3257f91b2ac7a6134885f37297c548ddc48
 
 pkgname = neonmodem
