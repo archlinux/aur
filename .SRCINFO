@@ -1,4 +1,4 @@
-pkgbase = burpsuite-pro-cn
+pkgbase = burpsuitepro-cn
 	pkgdesc = Burp Suite Professional bundled with BurpSuiteCN loader/translation for a single localized launcher
 	pkgver = 2025.11
 	pkgrel = 1
@@ -46,4 +46,4 @@ pkgbase = burpsuite-pro-cn
 	sha256sums = 650a4e48e2788747c56899b0e6e8e17bc3b75d2ec91f03fd7cc373a489a20b5d
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
 
-pkgname = burpsuite-pro-cn
+pkgname = burpsuitepro-cn

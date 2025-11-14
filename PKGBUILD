@@ -1,4 +1,4 @@
-pkgname=burpsuite-pro-cn
+pkgname=burpsuitepro-cn
 pkgver=2025.11
 pkgrel=1
 pkgdesc='Burp Suite Professional bundled with BurpSuiteCN loader/translation for a single localized launcher'
