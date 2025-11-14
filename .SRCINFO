@@ -1,6 +1,6 @@
 pkgbase = kismet-git
 	pkgdesc = a sniffer, WIDS, and wardriving tool for Wi-Fi, Bluetooth, Zigbee, RF
-	pkgver = r12218.4c6bed551
+	pkgver = 2025_11_R0.r12232
 	pkgrel = 1
 	url = https://www.kismetwireless.net/
 	install = kismet-git.install

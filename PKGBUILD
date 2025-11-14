@@ -2,7 +2,7 @@
 # Contributor: Alexander Paetzelt <techge+arch [ät] posteo [do] net>
 
 pkgname=kismet-git
-pkgver=r12218.4c6bed551
+pkgver=2025_11_R0.r12232
 pkgrel=1
 pkgdesc="a sniffer, WIDS, and wardriving tool for Wi-Fi, Bluetooth, Zigbee, RF"
 url="https://www.kismetwireless.net/"
@@ -53,7 +53,20 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/kismet"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
+    _ver_major="$(grep '^const char \*' version.c|grep VERSION_MAJOR|cut -f 2 -d '='|tr -d '\"; ')"
+    _ver_minor="$(grep '^const char \*' version.c|grep VERSION_MINOR|cut -f 2 -d '='|tr -d '\"; ')"
+    _ver_tiny="$(grep '^const char \*' version.c|grep VERSION_TINY|cut -f 2 -d '='|tr -d '\"; ')"
+    _ver="${_ver_major}_${_ver_minor}_R${_ver_tiny}"
+    _rev="$(git rev-list --count HEAD)"
+
+    if [ -z "${_ver}" ]; then
+        # falling back to revision and HEAD commit
+        _head="$(git rev-parse --short HEAD)"
+        printf '%s' "r${_rev}.${_head}"
+    else
+        printf '%s' "${_ver}.r${_rev}"
+    fi
 }
 
 prepare() {
