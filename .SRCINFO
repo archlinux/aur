@@ -1,7 +1,7 @@
 pkgbase = manjaro-hyprland-settings
 	pkgdesc = Manjaro Linux Hyprland settings
-	pkgver = 20251111
-	pkgrel = 14
+	pkgver = 20251114
+	pkgrel = 1
 	url = https://github.com/lisuml/manjaro-hyprland-settings
 	install = manjaro-hyprland-settings.install
 	arch = any
@@ -38,6 +38,7 @@ pkgname = manjaro-hyprland-settings
 	depends = ttf-nerd-fonts-symbols-common
 	depends = ttf-nerd-fonts-symbols-mono
 	depends = ttf-opensans
+	depends = ttf-ubuntu-font-family
 	depends = uwsm
 	depends = waybar
 	depends = waybar-module-pacman-updates-git

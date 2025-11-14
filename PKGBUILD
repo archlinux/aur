@@ -1,9 +1,9 @@
 # Maintainer: Michał Lisowski <lisu at riseup dot net>
 
 pkgname=manjaro-hyprland-settings
-pkgver="20251111"
+pkgver="20251114"
 _commit='49d20f1ea5b8df6a8fc76a64bbee188ffcac4272'
-pkgrel=14
+pkgrel=1
 arch=('any')
 url="https://github.com/lisuml/${pkgname}"
 license=('GPL')
@@ -47,6 +47,7 @@ package() {
     'ttf-nerd-fonts-symbols-common'
     'ttf-nerd-fonts-symbols-mono'
     'ttf-opensans'
+    'ttf-ubuntu-font-family'
     'uwsm'
     'waybar'
     'waybar-module-pacman-updates-git'
