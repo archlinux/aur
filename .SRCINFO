@@ -1,14 +1,13 @@
 pkgbase = darkly
 	pkgdesc = Fork of Lightly (A modern style for Qt applications)
 	pkgver = 0.5.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Bali10050/darkly
 	arch = x86_64
 	arch = aarch64
 	license = GPL-2.0-or-later
 	makedepends = cmake
 	makedepends = extra-cmake-modules
-	makedepends = git
 	depends = kdecoration
 	depends = qt6-declarative
 	depends = kcoreaddons

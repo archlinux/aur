@@ -6,18 +6,16 @@
 pkgname="darkly"
 _gitname="Darkly"
 pkgver=0.5.25
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of Lightly (A modern style for Qt applications)"
 url="https://github.com/Bali10050/darkly"
 arch=('x86_64' 'aarch64')
 license=("GPL-2.0-or-later")
-pkgdir="$srcdir/fakeinstall_kf6"
 build_dir="build_kf6"
 
 makedepends=(
   'cmake'
   'extra-cmake-modules'
-  'git'
 )
 
 options=(!emptydirs !debug)
@@ -70,7 +68,6 @@ build() (
 )
 
 package() (
-  install -dm755 "$pkgdir.git"
   DESTDIR="$pkgdir" cmake --install $build_dir
   rm -rf "$pkgdir/usr/lib/cmake"
 )
