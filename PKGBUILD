@@ -6,7 +6,7 @@ pkgname=(
   "${_pkgbase}-bin"
 )
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Programming interface for the Wallbraun LCD-USB-Interface."
 # url="https://packages.gentoo.org/packages/dev-libs/luise"
 url="https://web.archive.org/web/20140102061822/http://wallbraun-electronics.de/"
@@ -19,7 +19,9 @@ depends=(
   'glibc'
   'libusb-compat'
 )
-makedepends=()
+makedepends=(
+  'patchelf'
+)
 optdepends=()
 provides=(
   "${_pkgbase}=${pkgver}"
@@ -47,14 +49,12 @@ package() {
 
   case "${CARCH}" in
     'i686')
-      install -Dvm755 "32bit/libluise.so.${pkgver}" "${pkgdir}/usr/lib/libluise_32.so.${pkgver}"
-      ln -svr "${pkgdir}/usr/lib/libluise_32.so.${pkgver}"  "${pkgdir}/usr/lib/libluise.so.${pkgver}"
+      install -Dvm755 "32bit/libluise.so.${pkgver}" "${pkgdir}/usr/lib/libluise.so.${pkgver}"
       ln -svr "${pkgdir}/usr/lib/libluise.so.${pkgver}"  "${pkgdir}/usr/lib/libluise.so"
       install -Dvm644 -t "${pkgdir}/usr/include"  32bit/luise.h
     ;;
     'x86_64')
-      install -Dvm755 "64bit/libluise_64.so.${pkgver}" "${pkgdir}/usr/lib/libluise_64.so.${pkgver}"
-      ln -svr "${pkgdir}/usr/lib/libluise_64.so.${pkgver}"  "${pkgdir}/usr/lib/libluise.so.${pkgver}"
+      install -Dvm755 "64bit/libluise_64.so.${pkgver}" "${pkgdir}/usr/lib/libluise.so.${pkgver}"
       ln -svr "${pkgdir}/usr/lib/libluise.so.${pkgver}"     "${pkgdir}/usr/lib/libluise.so"
       install -Dvm644 -t "${pkgdir}/usr/include"  64bit/luise.h
     ;;
@@ -63,6 +63,8 @@ package() {
       return 11
     ;;
   esac
+
+  patchelf --set-soname "libluise.so.${pkgver}" "${pkgdir}/usr/lib/libluise.so.${pkgver}"
 
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgbase}"                     doc/{docu_luise011_Linux.pdf,readme} "${srcdir}/description.txt"
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgbase}/samples/luise-test"  samples/luise-test/*
