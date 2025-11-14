@@ -1,9 +1,9 @@
 *
 # dev tools
-!.editorconfig
 !.gitignore
 !.nvchecker.toml
 !.shellcheckrc
+!.editorconfig
 # actual package
 !PKGBUILD
 !0001-drop-etc-files.patch
