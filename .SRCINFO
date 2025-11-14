@@ -9,7 +9,6 @@ pkgbase = rauri
 	makedepends = rust
 	depends = pacman
 	depends = git
-	depends = makepkg
 	source = rauri-0.1.0.tar.gz::https://github.com/ognrdrch/rauri/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = d81722483b9182142c98bccee24b57ba839704a8fb15e94e169cd58602f646e9
 
