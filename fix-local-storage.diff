@@ -1,0 +1,41 @@
+diff --git a/packages/compass-components/src/components/guide-cue/guide-cue-storage.ts b/packages/compass-components/src/components/guide-cue/guide-cue-storage.ts
+index 53ec03455..1a786f381 100644
+--- a/packages/compass-components/src/components/guide-cue/guide-cue-storage.ts
++++ b/packages/compass-components/src/components/guide-cue/guide-cue-storage.ts
+@@ -12,11 +12,23 @@ export class CompassGuideCueStorage implements GuideCueStorage {
+     private readonly storage: Pick<
+       Storage,
+       'getItem' | 'setItem'
+-    > = globalThis.localStorage,
++    > | undefined = undefined,
+     private readonly key: string = GUIDE_CUE_KEY
+-  ) {}
++  ) {
++    if (typeof this.storage === 'undefined') {
++      try {
++        this.storage = globalThis.localStorage;
++      } catch (e) {
++        this.storage = undefined;
++      }
++    }
++  }
+ 
+   get data(): GuideCueData {
++    if (typeof this.storage === 'undefined') {
++      return [];
++    }
++
+     try {
+       return JSON.parse(this.storage.getItem(this.key) ?? '[]');
+     } catch {
+@@ -25,7 +37,9 @@ export class CompassGuideCueStorage implements GuideCueStorage {
+   }
+ 
+   set data(newData) {
+-    this.storage.setItem(this.key, JSON.stringify(newData));
++    if (typeof this.storage !== 'undefined') {
++      this.storage.setItem(this.key, JSON.stringify(newData));
++    }
+   }
+ 
+   isCueVisited(cueId: string, groupId?: string) {
