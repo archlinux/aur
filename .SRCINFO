@@ -1,0 +1,19 @@
+pkgbase = mages-bin
+	pkgdesc = Mages desktop (early testing)
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/mlm-games/mages
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	depends = fuse2
+	depends = zlib
+	provides = mages
+	conflicts = mages
+	options = !strip
+	source_x86_64 = mages-0.6.1-x86_64.AppImage::https://github.com/mlm-games/mages/releases/download/0.6.1/mages-0.6.1-x86_64.AppImage
+	sha256sums_x86_64 = 9cb1518d1b04eb8b1bac2f0f637361581a174c5a40c1cbff5df67d19c805357a
+	source_aarch64 = mages-0.6.1-aarch64.AppImage::https://github.com/mlm-games/mages/releases/download/0.6.1/mages-0.6.1-aarch64.AppImage
+	sha256sums_aarch64 = b8585a3410043faa1f36a5ee0977c117f2239cd3e4f8ff6f9f6c541e1233185e
+
+pkgname = mages-bin
