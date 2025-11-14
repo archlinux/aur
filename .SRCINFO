@@ -1,13 +1,13 @@
 pkgbase = syscgo
 	pkgdesc = Terminal animation library and CLI tool for Go
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/Nomadcxx/sysc-Go
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go>=1.21
-	source = syscgo-1.0.1.tar.gz::https://github.com/Nomadcxx/sysc-Go/archive/v1.0.1.tar.gz
-	sha256sums = 58a62ff406a263bddab6abafc90090391b2eb638db60ac4f691307203f883923
+	source = syscgo-1.0.2.tar.gz::https://github.com/Nomadcxx/sysc-Go/archive/v1.0.2.tar.gz
+	sha256sums = 664c308fcc910ab7f573ef577e00f2ebd2cae92ae5da80a33bdd20481d9f2af4
 
 pkgname = syscgo
