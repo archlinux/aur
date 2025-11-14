@@ -2,10 +2,9 @@
 
 _pkgname=nmeap
 pkgname="${_pkgname}-git"
-# _sonamever=01
 _pkgmainver=0.3
 pkgver=0.3.r5.20090814.890153d
-pkgrel=3
+pkgrel=4
 pkgdesc="Extensible NMEA-0183 parser written in standard C"
 arch=(
   'i686'
@@ -21,6 +20,7 @@ depends=(
 )
 makedepends=(
   'git'
+  'binutils'
   'doxygen'
 )
 optdepends=()
@@ -97,10 +97,11 @@ check() {
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  install -Dvm755 -t "${pkgdir}/usr/lib"      lib/*.so
-  #install -Dvm755 lib/libnmeap.so  "${pkgdir}/usr/lib/libnmeap.so.3"
-  #ln -svr "${pkgdir}/usr/lib/libnmeap.so.3" "${pkgdir}/usr/lib/libnmeap.so"
-  install -Dvm644 -t "${pkgdir}/usr/lib"      lib/*.a
+  local _sonamever
+  _sonamever="$(objdump -p lib/libnmeap.so | grep -E '^[[:space:]]*SONAME[[:space:]]+' | awk '{print $2}' | sed 's|^libnmeap\.so\.||')"
+  install -Dvm755 lib/libnmeap.so  "${pkgdir}/usr/lib/libnmeap.so.${_sonamever}"
+  ln -svr "${pkgdir}/usr/lib/libnmeap.so.${_sonamever}" "${pkgdir}/usr/lib/libnmeap.so"
+  install -Dvm644 -t "${pkgdir}/usr/lib"      lib/libnmeap.a
   install -Dvm644 -t "${pkgdir}/usr/include"  inc/*.h
 
   install -D -v -m644 -t "${pkgdir}/usr/share/doc/${_pkgname}"     git.log README

@@ -1,7 +1,7 @@
 pkgbase = nmeap-git
 	pkgdesc = Extensible NMEA-0183 parser written in standard C
 	pkgver = 0.3.r5.20090814.890153d
-	pkgrel = 3
+	pkgrel = 4
 	url = https://nmeap.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = nmeap-git
 	arch = armv7h
 	license = BSD-3-Clause
 	makedepends = git
+	makedepends = binutils
 	makedepends = doxygen
 	depends = glibc
 	provides = nmeap=0.3.r5.20090814.890153d
