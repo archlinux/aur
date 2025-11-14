@@ -1,6 +1,6 @@
 pkgbase = spotube-bin
 	pkgdesc = Open source Music client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!
-	pkgver = 5.0.0
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://spotube.krtirtho.dev
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = spotube-bin
 	depends = xdg-user-dirs
 	depends = webkit2gtk-4.1
 	optdepends = yt-dlp-git
-	source = https://github.com/KRTirtho/spotube/releases/download/v5.0.0/spotube-linux-5.0.0-x86_64.tar.xz
-	md5sums = 328b69ecbe4196db9a5f9bf1da41a50b
+	source = https://github.com/KRTirtho/spotube/releases/download/v5.1.0/spotube-linux-5.1.0-x86_64.tar.xz
+	md5sums = 9659d4b59a3b3920de3fbc6acb572ff8
 
 pkgname = spotube-bin

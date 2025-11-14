@@ -1,6 +1,6 @@
 # Maintainer: Kingkor Roy Tirtho <krtirho@gmail.com>
 pkgname=spotube-bin
-pkgver=5.0.0
+pkgver=5.1.0
 pkgrel=1
 epoch=
 pkgdesc="Open source Music client that doesn't require Premium nor uses Electron! Available for both desktop & mobile!"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/KRTirtho/spotube/releases/download/v${pkgver}/spotube-linux-${pkgver}-x86_64.tar.xz")
 noextract=()
-md5sums=(328b69ecbe4196db9a5f9bf1da41a50b)
+md5sums=(9659d4b59a3b3920de3fbc6acb572ff8)
 validpgpkeys=()
 
 package() {
