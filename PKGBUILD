@@ -2,7 +2,7 @@
 
 pkgbase=laser-magic
 _pkgname=laser_tool
-pkgver=0.1.35
+pkgver=0.1.36
 pkgrel=1
 pkgdesc="A powerful, open-source tool designed for laser cutting and engraving, written in Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://lasermagic.ci-yow.com/"
 license=('GPL3')
 makedepends=('cargo')
 source=("https://gitlab.com/MadSquirrels/lasermagic/${_pkgname}/-/archive/v$pkgver/${_pkgname}-v$pkgver.tar.bz2")
-sha256sums=('6d869a866e883a1505a17c127bdccd40b7b5808739ed651a8929b61eb760b2cb')
+sha256sums=('790a619c3c2b83442c7e25e72878a99e721d0997c1d03d63781b907be0402289')
 
 # Define the packages
 pkgname=("$pkgbase-cli" "inkscape-$pkgbase")
