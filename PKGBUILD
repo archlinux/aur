@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc='Burp Suite Professional bundled with BurpSuiteCN loader/translation for a single localized launcher'
 url='https://portswigger.net/burp/'
 arch=('any')
-depends=('java-runtime>=24.0.2' 'bash' 'hicolor-icon-theme')
+depends=('java-runtime=21' 'bash' 'hicolor-icon-theme')
 makedepends=('zip')
 license=('custom' 'Apache-2.0')
 provides=('burpsuite-pro')
