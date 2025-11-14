@@ -6,5 +6,4 @@
 !.editorconfig
 # actual package
 !PKGBUILD
-!*.patch
 !.SRCINFO
