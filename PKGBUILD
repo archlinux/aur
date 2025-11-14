@@ -1,9 +1,9 @@
-# Contributor: Ordoban (<dirk.langer@vvovgonik.de>)
+# Contributor: Ordoban <dirk.langer@vvovgonik.de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-devel-overloadinfo'
-pkgver='0.007'
-pkgrel='5'
+pkgver='0.008'
+pkgrel='1'
 pkgdesc="introspect overloaded operators"
 arch=('any')
 license=('Artistic-1.0')
@@ -12,9 +12,9 @@ depends=('perl-mro-compat>=0' 'perl-package-stash>=0.14' 'perl>=5.006')
 makedepends=()
 checkdepends=('perl-test-fatal>=0')
 url='https://metacpan.org/release/Devel-OverloadInfo'
-source=("https://cpan.metacpan.org/authors/id/I/IL/ILMARI/Devel-OverloadInfo-$pkgver.tar.gz")
-md5sums=('3dfb74ac00c25bcd8581e402fa414e19')
-sha512sums=('4db830d6f9edb467626213ab4d45b3e4b8fa9b3c38fad1349233f7b420d08be42833e57daa9a8076f4127cafba92f4cfc177ca33bd19cf2a582b644ac1ae7d72')
+source=("http://search.cpan.org/CPAN/authors/id/I/IL/ILMARI/Devel-OverloadInfo-$pkgver.tar.gz")
+md5sums=('3b176b43f7245017615b79c08bb1bf66')
+sha512sums=('1c614e1132c8c763ccac79ea3c80c08636d617af55bdcba4cc52aa06c9cefca07fd4f1921e54f5dc76b140ed8546da917602eab81f59efd6c490f23b8b8abe41')
 _distdir="Devel-OverloadInfo-$pkgver"
 
 build() {
