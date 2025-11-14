@@ -1,6 +1,6 @@
 # Maintainer: tn3w <tn3w@protonmail.com>
 pkgname=plymouth-theme-arch-ascii
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A Plymouth theme featuring a centered rainbow-colored Arch Linux ASCII art logo with password input functionality"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('git')
 provides=('plymouth-theme-arch-ascii')
 conflicts=('plymouth-theme-arch-ascii')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tn3w/plymouth-theme-arch-ascii/archive/v$pkgver.tar.gz")
-sha256sums=('55fc723daa3d1a400ef8fbbd01caff198c6d9e97c33f10d41d67986c2debcf0a')
+sha256sums=('ab45e667874eb7a736933389a410cfbdb62eca75f3a948e95ad460464ccaad35')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
