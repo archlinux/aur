@@ -1,6 +1,6 @@
 pkgbase = xsc
-	pkgdesc = XSC: the easiest way to calculate stuff in the terminal
-	pkgver = 3.4
+	pkgdesc = XSC: the aaaaa-iest way to calculate stuff in the terminal
+	pkgver = 3.5
 	pkgrel = 0
 	url = https://github.com/jstmaxlol/xsc
 	arch = any

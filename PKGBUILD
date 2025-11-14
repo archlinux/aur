@@ -1,9 +1,9 @@
 #!/bin/bash
-# Maintainer: jstmax! / ceez2exzt -> maxwasmailed@proton.me
+# Maintainer: jstmax! <jstmaxlol@disroot.org> & <maxwasmailed@proton.me>
 pkgname=xsc
-pkgver=3.4
+pkgver=3.5
 pkgrel=0
-pkgdesc="XSC: the easiest way to calculate stuff in the terminal"
+pkgdesc="XSC: the aaaaaa-iest way to calculate stuff in the terminal"
 arch=('any')
 url="https://github.com/jstmaxlol/xsc"
 license=('Unlicense')
@@ -14,7 +14,7 @@ md5sums=('SKIP')
 
 build() {
 	cd "$srcdir/xsc"
-	g++ -o xsc xsc.cpp -O2
+	g++ -o xsc xsc.cpp -O2 -std=c++23
 }
 
 package() {
