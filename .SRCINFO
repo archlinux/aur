@@ -1,0 +1,25 @@
+pkgbase = valdi-git
+	pkgdesc = A cross-platform UI framework that delivers native performance without sacrificing developer velocity
+	pkgver = r21.g0155e71
+	pkgrel = 1
+	url = https://github.com/Snapchat/Valdi
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = clang
+	makedepends = cmake
+	makedepends = git-lfs
+	depends = glibc
+	depends = zlib
+	depends = npm
+	depends = watchman
+	depends = bazelisk
+	depends = fontconfig
+	depends = java-environment=17
+	provides = valdi=1.0.1
+	source = valdi::git-lfs+https://github.com/Snapchat/Valdi.git
+	source = no-hard-apt.patch
+	sha256sums = SKIP
+	sha256sums = 79d03b3c203783dd31d5a369dc7be98a2b51708da698cf01b705e6180563435c
+
+pkgname = valdi-git
