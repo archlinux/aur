@@ -1,0 +1,27 @@
+pkgbase = nmp-settings-bin
+	pkgdesc = Settings GUI for linux. Extensible with plugins.
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/nmp-apps/nmp-settings
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = tar
+	depends = gcc-libs
+	depends = glibc
+	depends = glib2
+	depends = gtk3
+	depends = wayland
+	depends = gdk-pixbuf2
+	depends = libsoup3
+	depends = openssl
+	depends = cairo
+	depends = webkit2gtk-4.1
+	depends = xdotool
+	depends = hicolor-icon-theme
+	provides = nmp-settings
+	conflicts = nmp-settings
+	source = https://github.com/nmp-apps/nmp-settings/releases/download/v0.7.0/NmpSettings_0.7.0_amd64.tar.gz
+	sha256sums = 19c2c56fad4ca0163a227615e1469ed0b0817ecf87c126809376d6d44f5b317f
+
+pkgname = nmp-settings-bin
