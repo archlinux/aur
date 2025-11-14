@@ -1,6 +1,7 @@
 *
 # dev tools
 !.gitignore
+!.editorconfig
 !.nvchecker.toml
 !.shellcheckrc
 # actual package
