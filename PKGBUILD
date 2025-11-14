@@ -9,7 +9,7 @@
 
 pkgname=sonic-pi
 pkgver=4.6.0
-pkgrel=4
+pkgrel=5
 pkgdesc="The Live Coding Music Synth for Everyone"
 arch=(x86_64)
 url="https://sonic-pi.net/"
@@ -17,7 +17,7 @@ license=(CC-BY-SA-4.0 LGPL-2.1-only GPL-2.0-only GPL-3.0-only MIT CC0-1.0 BSL-1.
 groups=(pro-audio)
 depends=(
   'ruby-rugged>=1.9.0' 'ruby-i18n>=1.14.7' 'ruby-kramdown>=2.1.0' 'ruby-multi_json>=1.9.2' 'ruby-memoist>=0.16.2'
-  'ruby-tomlrb>=2.0.0' # devendored
+  'ruby-tomlrb>=2.0.0' 'ruby-wavefile>=0.8.1' # devendored
   aubio ruby ruby-racc supercollider
   qscintilla-qt6 qt6-base qt6-svg qt6-wayland which
 )
@@ -130,8 +130,8 @@ prepare() {
   #     'ruby-ruby-beautify2-git>=0.92.2' is an AUR package >_<, security?
 
   # Devendor wavefile - use system ruby-wavefile package
-  # printf "Removing vendored wavefile gem\n"
-  # rm -rf app/server/ruby/vendor/wavefile-*
+  printf "Removing vendored wavefile gem\n"
+  rm -rf app/server/ruby/vendor/wavefile-*
 
   # Devendor titleize - use system ruby-titleize package
   # printf "Removing vendored titleize gem\n"

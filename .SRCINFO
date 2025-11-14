@@ -1,7 +1,7 @@
 pkgbase = sonic-pi
 	pkgdesc = The Live Coding Music Synth for Everyone
 	pkgver = 4.6.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://sonic-pi.net/
 	arch = x86_64
 	groups = pro-audio
@@ -38,6 +38,7 @@ pkgbase = sonic-pi
 	depends = ruby-multi_json>=1.9.2
 	depends = ruby-memoist>=0.16.2
 	depends = ruby-tomlrb>=2.0.0
+	depends = ruby-wavefile>=0.8.1
 	depends = aubio
 	depends = ruby
 	depends = ruby-racc
