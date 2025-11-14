@@ -8,7 +8,7 @@ _image_url_aarch64="https://capacities-desktop-app.fra1.cdn.digitaloceanspaces.c
 
 pkgname="${_pkgname}"-appimage
 pkgver="${_version}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Personal Knowledge Management app - A studio for your mind"
 arch=('x86_64' 'aarch64')
 url="https://capacities.io/"
@@ -17,12 +17,12 @@ options=(!strip !debug)
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 provides=('capacities')
 
-source_x86_64=("${_pkgname}-x86_64.AppImage::${_image_url_x86_64}")
-source_aarch64=("${_pkgname}-aarch64.AppImage::${_image_url_aarch64}")
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.AppImage::${_image_url_x86_64}")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.AppImage::${_image_url_aarch64}")
 sha256sums_x86_64=('1d0b3ebb6a6293f1b8404c93e5a0726427471c5d23a7c2f32c42ec18ca4d2e8b')
 sha256sums_aarch64=('3b6bf082114f332bc3d9ab9302f11d22f32d4e13e30fed0569a17cb66a988152')
 
-_appimage="${_pkgname}-${CARCH}.AppImage"
+_appimage="${_pkgname}-${pkgver}-${CARCH}.AppImage"
 noextract=(
     ${source_x86_64}
     ${source_aarch64}
