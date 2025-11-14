@@ -186,3 +186,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.4.6]: https://github.com/steganogram/stegano-rs/compare/v0.4.5...v0.4.6
 [0.4.5]: https://github.com/steganogram/stegano-rs/compare/v0.4.1...v0.4.5
 [0.4.1]: https://github.com/steganogram/stegano-rs/compare/v0.4.0...v0.4.1
+

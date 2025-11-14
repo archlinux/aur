@@ -1,6 +1,6 @@
 pkgbase = stegano-bin
 	pkgdesc = A CLI tool for steganography. Supports hiding data in PNG and WAV format via LSB Encoding.
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/steganogram/stegano-rs
 	changelog = changelog.md
@@ -10,13 +10,13 @@ pkgbase = stegano-bin
 	makedepends = help2man
 	provides = stegano
 	conflicts = stegano
-	source = LICENSE-0.6.0::https://raw.githubusercontent.com/steganogram/stegano-rs/v0.6.0/LICENSE
-	source = README-0.6.0::https://raw.githubusercontent.com/steganogram/stegano-rs/v0.6.0/README.md
+	source = LICENSE-0.6.1::https://raw.githubusercontent.com/steganogram/stegano-rs/stegano-cli-v0.6.1/LICENSE
+	source = README-0.6.1::https://raw.githubusercontent.com/steganogram/stegano-rs/stegano-cli-v0.6.1/README.md
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 	sha256sums = 5abd67e58915b32aa1f38dbe42b5658a1c1aad76db12b2a163685f80b2a83a37
-	source_x86_64 = https://github.com/steganogram/stegano-rs/releases/download/v0.6.0/stegano-v0.6.0-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = e9993faca49f7987a98c38fc3c29dedd2d95be255d3192d7dab92fddbac6b262
-	source_aarch64 = https://github.com/steganogram/stegano-rs/releases/download/v0.6.0/stegano-v0.6.0-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = d694f754972061d8aef94a4cbe0d3651e4c238662c900acdf391edc7bde7090b
+	source_x86_64 = https://github.com/steganogram/stegano-rs/releases/download/stegano-cli-v0.6.1/stegano-stegano-cli-v0.6.1-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 79310a92d451c3f34bbb436adae20089ef520ecc15373034353dfe03f1c9298f
+	source_aarch64 = https://github.com/steganogram/stegano-rs/releases/download/stegano-cli-v0.6.1/stegano-stegano-cli-v0.6.1-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 9ab9c2ef67a4057769a11ca89eef9dd0549b40d31f386978cb7f15f9d03a81e2
 
 pkgname = stegano-bin
