@@ -1,6 +1,6 @@
 pkgbase = python-abi3audit
 	pkgdesc = Scans Python wheels for abi3 violations and inconsistencies
-	pkgver = 0.0.17
+	pkgver = 0.0.22
 	pkgrel = 1
 	url = https://pypi.org/project/abi3audit/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-abi3audit
 	depends = python-requests
 	depends = python-requests-cache
 	depends = python-rich
-	source = https://github.com/pypa/abi3audit/archive/refs/tags/v0.0.17.tar.gz
-	sha256sums = 25522bea051575d27ae8486284e795c2ddc9c0bedc841e76fd1996f47f7e1499
+	source = https://github.com/pypa/abi3audit/archive/refs/tags/v0.0.22.tar.gz
+	sha256sums = cb5c87ded0cf7f718c5cfe91f39a583c188caf205cbb8ce03bb3f587fc5b51f1
 
 pkgname = python-abi3audit
