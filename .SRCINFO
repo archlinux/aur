@@ -1,0 +1,14 @@
+pkgbase = c2clat-git
+	pkgdesc = A tool to measure CPU core to core latency
+	pkgver = r12.5419682
+	pkgrel = 1
+	url = https://github.com/rigtorp/c2clat
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	optdepends = gnuplot: Draw graphs from output
+	source = git+https://github.com/rigtorp/c2clat
+	sha256sums = SKIP
+
+pkgname = c2clat-git
