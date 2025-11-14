@@ -1,4 +1,4 @@
 [globus-connect-personal]
 source = "regex"
-url = "https://downloads.globus.org/globus-connect-personal/v3/mac/stable/personal-changelog.html"
-regex = "Changelog for v([1-9.]+)"
+url = "https://docs.globus.org/globus-connect-personal/changes/"
+regex = 'v?(\d\.\d\.\d).?\(\w+ \d{1,2}, \d{4}\)'
