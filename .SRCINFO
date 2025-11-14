@@ -1,7 +1,7 @@
 pkgbase = smatch-rpm
-	pkgdesc = Fedora-patched Smatch 1.73 release rebuilt for Arch Linux
+	pkgdesc = Fedora-patched Smatch release rebuilt for Arch Linux
 	pkgver = 1.73
-	pkgrel = 1
+	pkgrel = 2
 	url = https://smatch.sourceforge.net
 	arch = x86_64
 	license = GPL-2.0-or-later

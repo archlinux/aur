@@ -2,8 +2,9 @@
 
 pkgname=smatch-rpm
 pkgver=1.73
-pkgrel=1
-pkgdesc="Fedora-patched Smatch ${pkgver} release rebuilt for Arch Linux"
+_fedora_spec_url="https://src.fedoraproject.org/rpms/smatch/raw/rawhide/f/smatch.spec"
+pkgrel=2
+pkgdesc="Fedora-patched Smatch release rebuilt for Arch Linux"
 arch=('x86_64')
 url="https://smatch.sourceforge.net"
 license=('GPL-2.0-or-later' 'MIT' 'BSD-3-Clause')
@@ -26,9 +27,9 @@ sha256sums=('a11273552c49cea0d87e595015c8643257960f068a0d8be28226b84d99dac10c'
             '199db07678e7b099f3ea5c4eb38d9aac199d7829ed832b042b7f4bcedef44e55'
             'd1131f9ac193bb102250efa79e27855dff713c86bf5d1e78eb6c96dbb69364ec')
 
+# Query Fedora's spec to discover the current packaged version.
 pkgver() {
-    curl -s "https://api.github.com/repos/error27/smatch/tags?per_page=1" |
-        grep -Po '"name":\s*"v?\K[^"]+' | head -n1 | sed 's/^v//'
+    curl -sf "${_fedora_spec_url}" | grep -Po '^Version:\s*\K[0-9]+(\.[0-9]+)*' | head -n1
 }
 
 prepare() {
