@@ -3,7 +3,7 @@
 
 pkgname=autenticacao-gov-pt-bin
 pkgver=3.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) - version with pre compiled binaries by AMA"
 arch=('x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -35,10 +35,10 @@ optdepends=('plugin-autenticacao-gov-pt: Necessário para autenticações online
 conflicts=('cartaodecidadao' 'cartaodecidadao-bin' 'autenticacao-gov-pt')
 replaces=('cartaodecidadao-bin')
 
-source_x86_64=("https://github.com/amagovpt/autenticacao.gov/releases/download/v${pkgver}/pteid-mw-${pkgver}.flatpak"
+source_x86_64=("https://github.com/amagovpt/autenticacao.gov/releases/download/v${pkgver}/pteid-mw-${pkgver}-pcsclite-2.3.flatpak"
  "autenticacao-gov-pt-bin.install")
 
-sha512sums_x86_64=('74e5d297442cf1aba5557984c2dd94274643812c5f91ca15ae5982732c93801696bda872ee37f6da91e9bf43bf36a26b9b7c6e55b1fecb21b6bee17e39e4e9ac'
+sha512sums_x86_64=('d8c0e7756490f9117050c0e39303d3da9adfe7c51953bdf1617520444e6030a53868c61ab2b16cc7da9561194c22284178e9084d7a66b18e80b0d52fb8b398b8'
                    'd38b9748f386fcf64f3f0cb717eccf7936c64f0e7b6370ae3b1b079902015ce56d3057afcf2877ca4eee38776269ac3642701803ba96b24a81cfccc9a4d3245f')
 
 install='autenticacao-gov-pt-bin.install'
@@ -48,7 +48,7 @@ prepare() {
   rm -rf ${srcdir}/pteid_out
   mkdir -p pteid
   ostree init --repo=pteid --mode=bare-user
-  ostree static-delta apply-offline --repo=pteid "pteid-mw-${pkgver}.flatpak"
+  ostree static-delta apply-offline --repo=pteid "pteid-mw-${pkgver}-pcsclite-2.3.flatpak"
   ostree checkout --repo=pteid -U $(basename $(echo pteid/objects/*/*.commit | cut -d/ -f3- --output-delimiter='' | tr -d '\0') .commit) pteid_out
 }
 
