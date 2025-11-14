@@ -1,6 +1,6 @@
 pkgbase = rusty-pipes
-	pkgdesc = A MIDI-controlled virtual pipe organ simulator compatible with GrandOrgue sample sets.
-	pkgver = 0.4.3
+	pkgdesc = A MIDI-controlled virtual pipe organ simulator compatible with GrandOrgue and Hauptwerk sample sets.
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/dividebysandwich/rusty-pipes
 	arch = x86_64
@@ -14,7 +14,12 @@ pkgbase = rusty-pipes
 	depends = libxkbcommon
 	depends = wayland
 	depends = mesa
-	source = rusty-pipes-0.4.3.tar.gz::https://github.com/dividebysandwich/rusty-pipes/archive/refs/tags/v0.4.3.tar.gz
-	sha256sums = 6481aac742a8eabda1bebb77f9dd802d1654a402483240e27bd2f00df5352e5a
+	depends = desktop-file-utils
+	source = rusty-pipes-0.5.0.tar.gz::https://github.com/dividebysandwich/rusty-pipes/archive/refs/tags/v0.5.0.tar.gz
+	source = rusty-pipes.desktop::https://raw.githubusercontent.com/dividebysandwich/rusty-pipes/v0.5.0/assets/rusty-pipes.desktop
+	source = rusty-pipes.png::https://raw.githubusercontent.com/dividebysandwich/rusty-pipes/v0.5.0/assets/rusty-pipes.png
+	sha256sums = 823fb7ee147fe9a4402e282e938b7f89fe743a08f97d96db3d873e280d8e5a6c
+	sha256sums = cd1eafd36d3185bed9dfe4a83f1c9b94575fa56c0ebc3a878fd9b8b6c7820341
+	sha256sums = fa5e75fdb2e8e7ae5251ab5f1f452423edcd7e24cc4881f9ded99b2a87da1e0f
 
 pkgname = rusty-pipes
