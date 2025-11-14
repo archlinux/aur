@@ -1,0 +1,19 @@
+pkgbase = wgpu-native-git
+	pkgdesc = Native WebGPU implementation based on wgpu-core
+	pkgver = v27.0.2.0.r5
+	pkgrel = 1
+	url = https://github.com/gfx-rs/wgpu-native
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT OR Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
+	provides = wgpu-native=v27.0.2.0.r5
+	source = git+https://github.com/gfx-rs/wgpu-native.git
+	sha256sums = SKIP
+
+pkgname = wgpu-native-git
