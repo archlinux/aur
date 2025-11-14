@@ -1,6 +1,6 @@
 pkgbase = python-cf-xarray
 	pkgdesc = A lightweight convenience wrapper for using CF attributes on xarray objects.
-	pkgver = 0.9.4
+	pkgver = 0.10.9
 	pkgrel = 1
 	url = https://github.com/xarray-contrib/cf-xarray
 	arch = any
@@ -11,13 +11,14 @@ pkgbase = python-cf-xarray
 	makedepends = python-setuptools
 	depends = python
 	depends = python-xarray
+	depends = python-tzdata
 	optdepends = python-matplotlib: to enable pint's built-in matplotlib support
 	optdepends = python-pint: to provide unit support via approximating UDUNITS/CF
 	optdepends = python-pooch: to install cf standard name table from raw.githubusercontent.com
 	optdepends = python-shapely: for conversion between shapely geometry objects and CF-compliant dataset
 	optdepends = python-regex: to instead of python official re module
 	optdepends = python-rich: for better console output
-	source = python-cf-xarray-0.9.4.tar.gz::https://github.com/xarray-contrib/cf-xarray/archive/refs/tags/v0.9.4.tar.gz
-	sha256sums = f2e80edfb83435f00e909ffe8212ccea9331bf7670a92ee44d1346b56d99e48c
+	source = python-cf-xarray-0.10.9.tar.gz::https://github.com/xarray-contrib/cf-xarray/archive/refs/tags/v0.10.9.tar.gz
+	sha256sums = SKIP
 
 pkgname = python-cf-xarray

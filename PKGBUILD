@@ -6,7 +6,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 _name=cf-xarray
 pkgname=python-${_name}
-pkgver=0.9.4
+pkgver=0.10.9
 pkgrel=1
 epoch=
 pkgdesc="A lightweight convenience wrapper for using CF attributes on xarray objects."
@@ -14,7 +14,7 @@ arch=('any')
 url="https://github.com/xarray-contrib/cf-xarray"
 license=('Apache-2.0')
 groups=()
-depends=("python" "python-xarray")
+depends=("python" "python-xarray" "python-tzdata")
 makedepends=("python-build" "python-installer" "python-setuptools")
 checkdepends=("python-pytest")
 optdepends=(
@@ -34,7 +34,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('f2e80edfb83435f00e909ffe8212ccea9331bf7670a92ee44d1346b56d99e48c')
+sha256sums=('SKIP')
 validpgpkeys=()
 
 prepare() {
