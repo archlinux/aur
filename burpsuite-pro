@@ -34,9 +34,9 @@ java_major_version() {
   local bin=$1
   local header
   header=$("${bin}" -version 2>&1 | head -n1) || return 1
-  if [[ ${header} =~ "([0-9]+)(\.[0-9]+)? ]]; then
+  if [[ ${header} =~ ([0-9]+)(\.[0-9]+)? ]]; then
     local major=${BASH_REMATCH[1]}
-    if [[ ${major} == "1" && ${header} =~ "1\.([0-9]+)" ]]; then
+    if [[ ${major} == "1" && ${header} =~ 1\.([0-9]+) ]]; then
       major=${BASH_REMATCH[1]}
     fi
     printf '%s\n' "${major}"

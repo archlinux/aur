@@ -1,6 +1,6 @@
 pkgname=burpsuitepro-cn
 pkgver=2025.11
-pkgrel=2
+pkgrel=3
 pkgdesc='Burp Suite Professional bundled with BurpSuiteCN loader/translation for a single localized launcher'
 url='https://portswigger.net/burp/'
 arch=('any')
@@ -29,7 +29,7 @@ source=("${_up_pkg}-${pkgver}-orig.jar::https://portswigger.net/burp/releases/do
         "burpsuitloader-${_cnver}-all.jar::https://github.com/Leon406/BurpSuiteCN-Release/releases/download/v${_cnver}/burpsuitloader-${_cnver}-all.jar"
         'BurpSuiteCN.LICENSE')
 sha256sums=('fcbb9d6181139d44fb627ab0dc73bcdb685d314a33de6ad33da7bb64ef123321'
-            'e0ded184fb45cdcd19e1d497e54bce9f5605bc359d7f48bbc5a79ad517886f25'
+            '18b8179589f4f6af32d7383f0f2f022dac9e74f02dd608597c9ce5d097289b09'
             'f442258c5616969bfaad7c20b2ff99f05696ad04c2e2c3d145a360615650b9ec'
             'ff0b230af06fb76af053090ac021bf45b88341d746e67f6bb9e94ba40957d9d8'
             'a6791fcaee558f6744b4f5a3fc0af2c9ad7ce244033e224c4e4464563ac9b911'
