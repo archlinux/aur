@@ -3,3 +3,5 @@
 !.SRCINFO
 !.gitignore
 !.pre-commit-config.yaml
+!REUSE.toml
+!LICENSE
