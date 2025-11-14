@@ -1,6 +1,6 @@
 pkgbase = rime-wanxiang
 	pkgdesc = 万象拼音：词库基于AI筛选和语料辅助筛选精干高效，配合全新语法模型，输入不再纠结。
-	pkgver = 13.3.12
+	pkgver = 13.3.13
 	pkgrel = 1
 	url = https://github.com/amzxyz/rime_wanxiang
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = rime-wanxiang
 	makedepends = python
 	makedepends = zip
 	makedepends = rsync
-	source = https://github.com/amzxyz/rime_wanxiang/archive/refs/tags/v13.3.12.tar.gz
+	source = https://github.com/amzxyz/rime_wanxiang/archive/refs/tags/v13.3.13.tar.gz
 	source = build.sh
-	b2sums = f99c0eb78fd0a608f6bee6b7e701731b0f3cae9a5e7c16f7e8b4fce09632fe72020004e8d5db0877705ba773da6e3542f823e4a099ce3ee44a3213bbf1775f06
+	b2sums = 489ee4dca63927dd8c2cd8c52e8a766355ccf673abe714c40ede4d0d5eff70a83d555c02e2b9cea5d6ece3333e026a5fc72eba0f037da2605c09032aeeba137d
 	b2sums = e1c0a4adf4a6175ac1343c9d94d5deb6d3e134b5258111849cc714893bb1fb70d308ffb900969e510087c59489318678a3e4ad88c8a134f03d90722a1202a672
 
 pkgname = rime-wanxiang-dict
@@ -43,7 +43,7 @@ pkgname = rime-wanxiang-pro-data
 
 pkgname = rime-wanxiang-dict-zrm
 	pkgdesc = 万象拼音标准版词库（自然码方案）
-	depends = rime-wanxiang-dict=13.3.12
+	depends = rime-wanxiang-dict=13.3.13
 	conflicts = rime-wanxiang-dict-ziguang
 	conflicts = rime-wanxiang-dict-flypy
 	conflicts = rime-wanxiang-dict-mspy
@@ -55,7 +55,7 @@ pkgname = rime-wanxiang-zrm
 	pkgdesc = 万象拼音标准版（自然码方案）
 	install = post.install
 	depends = rime-wanxiang-data
-	depends = rime-wanxiang-dict-zrm=13.3.12
+	depends = rime-wanxiang-dict-zrm=13.3.13
 	conflicts = rime-wanxiang-ziguang
 	conflicts = rime-wanxiang-flypy
 	conflicts = rime-wanxiang-mspy
@@ -67,7 +67,7 @@ pkgname = rime-wanxiang-pro-zrm
 	pkgdesc = 万象拼音双拼辅助码版（自然码方案）
 	install = post.install
 	depends = rime-wanxiang-pro-data
-	depends = rime-wanxiang-pro-data-fuzhu=13.3.12
+	depends = rime-wanxiang-pro-data-fuzhu=13.3.13
 	conflicts = rime-wanxiang-pro-ziguang
 	conflicts = rime-wanxiang-pro-flypy
 	conflicts = rime-wanxiang-pro-mspy
@@ -77,7 +77,7 @@ pkgname = rime-wanxiang-pro-zrm
 
 pkgname = rime-wanxiang-dict-ziguang
 	pkgdesc = 万象拼音标准版词库（紫光双拼方案）
-	depends = rime-wanxiang-dict=13.3.12
+	depends = rime-wanxiang-dict=13.3.13
 	conflicts = rime-wanxiang-dict-zrm
 	conflicts = rime-wanxiang-dict-flypy
 	conflicts = rime-wanxiang-dict-mspy
@@ -89,7 +89,7 @@ pkgname = rime-wanxiang-ziguang
 	pkgdesc = 万象拼音标准版（紫光双拼方案）
 	install = post.install
 	depends = rime-wanxiang-data
-	depends = rime-wanxiang-dict-ziguang=13.3.12
+	depends = rime-wanxiang-dict-ziguang=13.3.13
 	conflicts = rime-wanxiang-zrm
 	conflicts = rime-wanxiang-flypy
 	conflicts = rime-wanxiang-mspy
@@ -101,7 +101,7 @@ pkgname = rime-wanxiang-pro-ziguang
 	pkgdesc = 万象拼音双拼辅助码版（紫光双拼方案）
 	install = post.install
 	depends = rime-wanxiang-pro-data
-	depends = rime-wanxiang-pro-data-fuzhu=13.3.12
+	depends = rime-wanxiang-pro-data-fuzhu=13.3.13
 	conflicts = rime-wanxiang-pro-zrm
 	conflicts = rime-wanxiang-pro-flypy
 	conflicts = rime-wanxiang-pro-mspy
@@ -111,7 +111,7 @@ pkgname = rime-wanxiang-pro-ziguang
 
 pkgname = rime-wanxiang-dict-flypy
 	pkgdesc = 万象拼音标准版词库（小鹤双拼方案）
-	depends = rime-wanxiang-dict=13.3.12
+	depends = rime-wanxiang-dict=13.3.13
 	conflicts = rime-wanxiang-dict-zrm
 	conflicts = rime-wanxiang-dict-ziguang
 	conflicts = rime-wanxiang-dict-mspy
@@ -123,7 +123,7 @@ pkgname = rime-wanxiang-flypy
 	pkgdesc = 万象拼音标准版（小鹤双拼方案）
 	install = post.install
 	depends = rime-wanxiang-data
-	depends = rime-wanxiang-dict-flypy=13.3.12
+	depends = rime-wanxiang-dict-flypy=13.3.13
 	conflicts = rime-wanxiang-zrm
 	conflicts = rime-wanxiang-ziguang
 	conflicts = rime-wanxiang-mspy
@@ -135,7 +135,7 @@ pkgname = rime-wanxiang-pro-flypy
 	pkgdesc = 万象拼音双拼辅助码版（小鹤双拼方案）
 	install = post.install
 	depends = rime-wanxiang-pro-data
-	depends = rime-wanxiang-pro-data-fuzhu=13.3.12
+	depends = rime-wanxiang-pro-data-fuzhu=13.3.13
 	conflicts = rime-wanxiang-pro-zrm
 	conflicts = rime-wanxiang-pro-ziguang
 	conflicts = rime-wanxiang-pro-mspy
@@ -145,7 +145,7 @@ pkgname = rime-wanxiang-pro-flypy
 
 pkgname = rime-wanxiang-dict-mspy
 	pkgdesc = 万象拼音标准版词库（微软双拼方案）
-	depends = rime-wanxiang-dict=13.3.12
+	depends = rime-wanxiang-dict=13.3.13
 	conflicts = rime-wanxiang-dict-zrm
 	conflicts = rime-wanxiang-dict-ziguang
 	conflicts = rime-wanxiang-dict-flypy
@@ -157,7 +157,7 @@ pkgname = rime-wanxiang-mspy
 	pkgdesc = 万象拼音标准版（微软双拼方案）
 	install = post.install
 	depends = rime-wanxiang-data
-	depends = rime-wanxiang-dict-mspy=13.3.12
+	depends = rime-wanxiang-dict-mspy=13.3.13
 	conflicts = rime-wanxiang-zrm
 	conflicts = rime-wanxiang-ziguang
 	conflicts = rime-wanxiang-flypy
@@ -169,7 +169,7 @@ pkgname = rime-wanxiang-pro-mspy
 	pkgdesc = 万象拼音双拼辅助码版（微软双拼方案）
 	install = post.install
 	depends = rime-wanxiang-pro-data
-	depends = rime-wanxiang-pro-data-fuzhu=13.3.12
+	depends = rime-wanxiang-pro-data-fuzhu=13.3.13
 	conflicts = rime-wanxiang-pro-zrm
 	conflicts = rime-wanxiang-pro-ziguang
 	conflicts = rime-wanxiang-pro-flypy
@@ -179,7 +179,7 @@ pkgname = rime-wanxiang-pro-mspy
 
 pkgname = rime-wanxiang-dict-pinyin
 	pkgdesc = 万象拼音标准版词库（全拼方案）
-	depends = rime-wanxiang-dict=13.3.12
+	depends = rime-wanxiang-dict=13.3.13
 	conflicts = rime-wanxiang-dict-zrm
 	conflicts = rime-wanxiang-dict-ziguang
 	conflicts = rime-wanxiang-dict-flypy
@@ -191,7 +191,7 @@ pkgname = rime-wanxiang-pinyin
 	pkgdesc = 万象拼音标准版（全拼方案）
 	install = post.install
 	depends = rime-wanxiang-data
-	depends = rime-wanxiang-dict-pinyin=13.3.12
+	depends = rime-wanxiang-dict-pinyin=13.3.13
 	conflicts = rime-wanxiang-zrm
 	conflicts = rime-wanxiang-ziguang
 	conflicts = rime-wanxiang-flypy
@@ -201,7 +201,7 @@ pkgname = rime-wanxiang-pinyin
 
 pkgname = rime-wanxiang-dict-abc
 	pkgdesc = 万象拼音标准版词库（智能ABC方案）
-	depends = rime-wanxiang-dict=13.3.12
+	depends = rime-wanxiang-dict=13.3.13
 	conflicts = rime-wanxiang-dict-zrm
 	conflicts = rime-wanxiang-dict-ziguang
 	conflicts = rime-wanxiang-dict-flypy
@@ -213,7 +213,7 @@ pkgname = rime-wanxiang-abc
 	pkgdesc = 万象拼音标准版（智能ABC方案）
 	install = post.install
 	depends = rime-wanxiang-data
-	depends = rime-wanxiang-dict-abc=13.3.12
+	depends = rime-wanxiang-dict-abc=13.3.13
 	conflicts = rime-wanxiang-zrm
 	conflicts = rime-wanxiang-ziguang
 	conflicts = rime-wanxiang-flypy
@@ -225,7 +225,7 @@ pkgname = rime-wanxiang-pro-abc
 	pkgdesc = 万象拼音双拼辅助码版（智能ABC方案）
 	install = post.install
 	depends = rime-wanxiang-pro-data
-	depends = rime-wanxiang-pro-data-fuzhu=13.3.12
+	depends = rime-wanxiang-pro-data-fuzhu=13.3.13
 	conflicts = rime-wanxiang-pro-zrm
 	conflicts = rime-wanxiang-pro-ziguang
 	conflicts = rime-wanxiang-pro-flypy
@@ -235,7 +235,7 @@ pkgname = rime-wanxiang-pro-abc
 
 pkgname = rime-wanxiang-dict-sogou
 	pkgdesc = 万象拼音标准版词库（搜狗双拼方案）
-	depends = rime-wanxiang-dict=13.3.12
+	depends = rime-wanxiang-dict=13.3.13
 	conflicts = rime-wanxiang-dict-zrm
 	conflicts = rime-wanxiang-dict-ziguang
 	conflicts = rime-wanxiang-dict-flypy
@@ -247,7 +247,7 @@ pkgname = rime-wanxiang-sogou
 	pkgdesc = 万象拼音标准版（搜狗双拼方案）
 	install = post.install
 	depends = rime-wanxiang-data
-	depends = rime-wanxiang-dict-sogou=13.3.12
+	depends = rime-wanxiang-dict-sogou=13.3.13
 	conflicts = rime-wanxiang-zrm
 	conflicts = rime-wanxiang-ziguang
 	conflicts = rime-wanxiang-flypy
@@ -259,7 +259,7 @@ pkgname = rime-wanxiang-pro-sogou
 	pkgdesc = 万象拼音双拼辅助码版（搜狗双拼方案）
 	install = post.install
 	depends = rime-wanxiang-pro-data
-	depends = rime-wanxiang-pro-data-fuzhu=13.3.12
+	depends = rime-wanxiang-pro-data-fuzhu=13.3.13
 	conflicts = rime-wanxiang-pro-zrm
 	conflicts = rime-wanxiang-pro-ziguang
 	conflicts = rime-wanxiang-pro-flypy
@@ -269,7 +269,7 @@ pkgname = rime-wanxiang-pro-sogou
 
 pkgname = rime-wanxiang-pro-dict-shouyou-fuzhu
 	pkgdesc = 万象拼音双拼辅助码词库（首右辅助）
-	depends = rime-wanxiang-pro-dict=13.3.12
+	depends = rime-wanxiang-pro-dict=13.3.13
 	conflicts = rime-wanxiang-dict-shouyou
 	conflicts = rime-wanxiang-dict-zrm
 	conflicts = rime-wanxiang-dict-tiger
@@ -280,8 +280,8 @@ pkgname = rime-wanxiang-pro-dict-shouyou-fuzhu
 
 pkgname = rime-wanxiang-pro-data-shouyou-fuzhu
 	pkgdesc = 万象拼音双拼辅助码版基础数据（首右辅助）
-	depends = rime-wanxiang-pro-dict-shouyou-fuzhu=13.3.12
-	provides = rime-wanxiang-pro-data-fuzhu=13.3.12
+	depends = rime-wanxiang-pro-dict-shouyou-fuzhu=13.3.13
+	provides = rime-wanxiang-pro-data-fuzhu=13.3.13
 	conflicts = rime-wanxiang-pro-data-shouyou
 	conflicts = rime-wanxiang-pro-data-zrm
 	conflicts = rime-wanxiang-pro-data-tiger
@@ -292,7 +292,7 @@ pkgname = rime-wanxiang-pro-data-shouyou-fuzhu
 
 pkgname = rime-wanxiang-pro-dict-zrm-fuzhu
 	pkgdesc = 万象拼音双拼辅助码词库（自然码辅助）
-	depends = rime-wanxiang-pro-dict=13.3.12
+	depends = rime-wanxiang-pro-dict=13.3.13
 	conflicts = rime-wanxiang-dict-shouyou
 	conflicts = rime-wanxiang-dict-zrm
 	conflicts = rime-wanxiang-dict-tiger
@@ -303,8 +303,8 @@ pkgname = rime-wanxiang-pro-dict-zrm-fuzhu
 
 pkgname = rime-wanxiang-pro-data-zrm-fuzhu
 	pkgdesc = 万象拼音双拼辅助码版基础数据（自然码辅助）
-	depends = rime-wanxiang-pro-dict-zrm-fuzhu=13.3.12
-	provides = rime-wanxiang-pro-data-fuzhu=13.3.12
+	depends = rime-wanxiang-pro-dict-zrm-fuzhu=13.3.13
+	provides = rime-wanxiang-pro-data-fuzhu=13.3.13
 	conflicts = rime-wanxiang-pro-data-shouyou
 	conflicts = rime-wanxiang-pro-data-zrm
 	conflicts = rime-wanxiang-pro-data-tiger
@@ -315,7 +315,7 @@ pkgname = rime-wanxiang-pro-data-zrm-fuzhu
 
 pkgname = rime-wanxiang-pro-dict-tiger-fuzhu
 	pkgdesc = 万象拼音双拼辅助码词库（虎码首末辅助）
-	depends = rime-wanxiang-pro-dict=13.3.12
+	depends = rime-wanxiang-pro-dict=13.3.13
 	conflicts = rime-wanxiang-dict-shouyou
 	conflicts = rime-wanxiang-dict-zrm
 	conflicts = rime-wanxiang-dict-tiger
@@ -326,8 +326,8 @@ pkgname = rime-wanxiang-pro-dict-tiger-fuzhu
 
 pkgname = rime-wanxiang-pro-data-tiger-fuzhu
 	pkgdesc = 万象拼音双拼辅助码版基础数据（虎码首末辅助）
-	depends = rime-wanxiang-pro-dict-tiger-fuzhu=13.3.12
-	provides = rime-wanxiang-pro-data-fuzhu=13.3.12
+	depends = rime-wanxiang-pro-dict-tiger-fuzhu=13.3.13
+	provides = rime-wanxiang-pro-data-fuzhu=13.3.13
 	conflicts = rime-wanxiang-pro-data-shouyou
 	conflicts = rime-wanxiang-pro-data-zrm
 	conflicts = rime-wanxiang-pro-data-tiger
@@ -338,7 +338,7 @@ pkgname = rime-wanxiang-pro-data-tiger-fuzhu
 
 pkgname = rime-wanxiang-pro-dict-moqi-fuzhu
 	pkgdesc = 万象拼音双拼辅助码词库（墨奇辅助）
-	depends = rime-wanxiang-pro-dict=13.3.12
+	depends = rime-wanxiang-pro-dict=13.3.13
 	conflicts = rime-wanxiang-dict-shouyou
 	conflicts = rime-wanxiang-dict-zrm
 	conflicts = rime-wanxiang-dict-tiger
@@ -349,8 +349,8 @@ pkgname = rime-wanxiang-pro-dict-moqi-fuzhu
 
 pkgname = rime-wanxiang-pro-data-moqi-fuzhu
 	pkgdesc = 万象拼音双拼辅助码版基础数据（墨奇辅助）
-	depends = rime-wanxiang-pro-dict-moqi-fuzhu=13.3.12
-	provides = rime-wanxiang-pro-data-fuzhu=13.3.12
+	depends = rime-wanxiang-pro-dict-moqi-fuzhu=13.3.13
+	provides = rime-wanxiang-pro-data-fuzhu=13.3.13
 	conflicts = rime-wanxiang-pro-data-shouyou
 	conflicts = rime-wanxiang-pro-data-zrm
 	conflicts = rime-wanxiang-pro-data-tiger
@@ -361,7 +361,7 @@ pkgname = rime-wanxiang-pro-data-moqi-fuzhu
 
 pkgname = rime-wanxiang-pro-dict-flypy-fuzhu
 	pkgdesc = 万象拼音双拼辅助码词库（小鹤辅助）
-	depends = rime-wanxiang-pro-dict=13.3.12
+	depends = rime-wanxiang-pro-dict=13.3.13
 	conflicts = rime-wanxiang-dict-shouyou
 	conflicts = rime-wanxiang-dict-zrm
 	conflicts = rime-wanxiang-dict-tiger
@@ -372,8 +372,8 @@ pkgname = rime-wanxiang-pro-dict-flypy-fuzhu
 
 pkgname = rime-wanxiang-pro-data-flypy-fuzhu
 	pkgdesc = 万象拼音双拼辅助码版基础数据（小鹤辅助）
-	depends = rime-wanxiang-pro-dict-flypy-fuzhu=13.3.12
-	provides = rime-wanxiang-pro-data-fuzhu=13.3.12
+	depends = rime-wanxiang-pro-dict-flypy-fuzhu=13.3.13
+	provides = rime-wanxiang-pro-data-fuzhu=13.3.13
 	conflicts = rime-wanxiang-pro-data-shouyou
 	conflicts = rime-wanxiang-pro-data-zrm
 	conflicts = rime-wanxiang-pro-data-tiger
@@ -384,7 +384,7 @@ pkgname = rime-wanxiang-pro-data-flypy-fuzhu
 
 pkgname = rime-wanxiang-pro-dict-wubi-fuzhu
 	pkgdesc = 万象拼音双拼辅助码词库（五笔前2辅助）
-	depends = rime-wanxiang-pro-dict=13.3.12
+	depends = rime-wanxiang-pro-dict=13.3.13
 	conflicts = rime-wanxiang-dict-shouyou
 	conflicts = rime-wanxiang-dict-zrm
 	conflicts = rime-wanxiang-dict-tiger
@@ -395,8 +395,8 @@ pkgname = rime-wanxiang-pro-dict-wubi-fuzhu
 
 pkgname = rime-wanxiang-pro-data-wubi-fuzhu
 	pkgdesc = 万象拼音双拼辅助码版基础数据（五笔前2辅助）
-	depends = rime-wanxiang-pro-dict-wubi-fuzhu=13.3.12
-	provides = rime-wanxiang-pro-data-fuzhu=13.3.12
+	depends = rime-wanxiang-pro-dict-wubi-fuzhu=13.3.13
+	provides = rime-wanxiang-pro-data-fuzhu=13.3.13
 	conflicts = rime-wanxiang-pro-data-shouyou
 	conflicts = rime-wanxiang-pro-data-zrm
 	conflicts = rime-wanxiang-pro-data-tiger
@@ -407,7 +407,7 @@ pkgname = rime-wanxiang-pro-data-wubi-fuzhu
 
 pkgname = rime-wanxiang-pro-dict-hanxin-fuzhu
 	pkgdesc = 万象拼音双拼辅助码词库（汉心辅助）
-	depends = rime-wanxiang-pro-dict=13.3.12
+	depends = rime-wanxiang-pro-dict=13.3.13
 	conflicts = rime-wanxiang-dict-shouyou
 	conflicts = rime-wanxiang-dict-zrm
 	conflicts = rime-wanxiang-dict-tiger
@@ -418,8 +418,8 @@ pkgname = rime-wanxiang-pro-dict-hanxin-fuzhu
 
 pkgname = rime-wanxiang-pro-data-hanxin-fuzhu
 	pkgdesc = 万象拼音双拼辅助码版基础数据（汉心辅助）
-	depends = rime-wanxiang-pro-dict-hanxin-fuzhu=13.3.12
-	provides = rime-wanxiang-pro-data-fuzhu=13.3.12
+	depends = rime-wanxiang-pro-dict-hanxin-fuzhu=13.3.13
+	provides = rime-wanxiang-pro-data-fuzhu=13.3.13
 	conflicts = rime-wanxiang-pro-data-shouyou
 	conflicts = rime-wanxiang-pro-data-zrm
 	conflicts = rime-wanxiang-pro-data-tiger
