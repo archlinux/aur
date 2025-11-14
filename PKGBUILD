@@ -3,12 +3,12 @@
 # Contributor: Clansty <i at gao4 dot pw>
 
 pkgname=("icalingua++-git" "icalingua++-electron-git")
-pkgver=2.12.28.r68.gea9f5074
+pkgver=2.12.28.r69.g3f358b9b
 pkgrel=1
 pkgdesc='A Linux client for QQ and more(fork to upgrading)'
 license=('GPL-3.0-only')
 depends=('ffmpeg' 'libappindicator-gtk3' 'libvips')
-makedepends=('git' 'ts-node'  'python-setuptools' 'nodejs' 'node-gyp' 'corepack')
+makedepends=('git' 'ts-node'  'python-setuptools' 'nodejs-lts-jod' 'node-gyp' 'pnpm')
 optdepends=('mongodb: Provides storage'
             'redis: Provides storage')
 arch=('aarch64' 'x86_64' 'i686')
@@ -22,9 +22,8 @@ _electron=electron38
 
 prepare() {
     cd "${srcdir}/Icalingua"
-    corepack use pnpm
-    corepack pnpm install
     sed -i '/externals/a "bindings",' icalingua/.electron-vue/webpack.main.config.ts
+    pnpm install --frozen-lockfile
 }
 pkgver(){
     cd "${srcdir}/Icalingua"
@@ -35,7 +34,7 @@ build(){
     cd "${srcdir}/Icalingua"
     export NODE_OPTIONS=--openssl-legacy-provider
     cd icalingua
-    corepack pnpm run build:dir
+    pnpm run build:dir
 }
 package_icalingua++-git(){
     depends+=(
