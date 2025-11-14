@@ -261,9 +261,9 @@ build() {
   # https://crbug.com/957519#c122
   CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
 
-  if [[ $CARCH == aarch64 ]]; then
-    # On aarch64, certain files (e.g. in libvpx and libyuv) needs to be compiled
-    # with additional arch features (e.g. dotprod, sve, sme)
+  if [[ $CARCH == aarch64 ]] || [[ $CARCH == riscv64 ]]; then
+    # On aarch64 and riscv64, certain files (e.g. in libvpx and libyuv) needs to
+    # be compiled with additional arch features (e.g. dotprod, sve, sme, rvv)
     # Having an arch setting in the C(XX)FLAGS overrides those
     # and causes compilation failure
     CFLAGS="${CFLAGS/-march=*([^ ]) }"
