@@ -1,0 +1,6 @@
+["dotnet-core-9.0-bin"]
+source = "jq"
+url = "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json"
+filter = '.["releases-index"][] | select(.["channel-version"] == "9.0") | .["latest-sdk"]'
+from_pattern = '^([0-9]+\.[0-9]+)\.([0-9]+)$'
+to_pattern = '\1.autoupdated.sdk\2'
