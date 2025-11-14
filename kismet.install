@@ -1,0 +1,21 @@
+post_install() {
+    post_upgrade
+  
+    cat << EOP
+    Kismet has been installed with net_raw,net_admin capabilities capture helper
+    executables for users in the 'kismet' group. This WILL ALLOW USERS IN THIS
+    GROUP TO ALTER YOUR NETWORK INTERFACE STATES, but is more secure than running
+    all of Kismet as root. ONLY users in this group will be able to run Kismet
+    and capture from physical network devices.
+  
+    Use 'sudo usermod -a -G kismet foouser' to add yourself to the kismet
+    group. You will need to log out and back in before your user will have access.
+    Check the output of the 'groups' command to make sure your user has the proper group!
+EOP
+}
+
+post_upgrade() {
+  for cap_bin in /usr/bin/kismet_cap_*; do
+    setcap cap_net_raw,cap_net_admin=eip "${cap_bin}";
+  done
+}
