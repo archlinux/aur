@@ -13,6 +13,82 @@ configdir="${config_home}/burpsuite-pro-cn"
 
 mkdir -p "${workdir}" "${configdir}"
 
+max_supported_java=21
+allow_unsupported_java="${BURP_CN_ALLOW_UNSUPPORTED_JAVA:-0}"
+declare -a java_candidates=()
+selected_java_notice=""
+
+add_java_candidate() {
+  local candidate=$1
+  [[ -n "${candidate}" ]] || return
+  # avoid duplicates to keep messaging predictable
+  for existing in "${java_candidates[@]}"; do
+    if [[ "${existing}" == "${candidate}" ]]; then
+      return
+    fi
+  done
+  java_candidates+=("${candidate}")
+}
+
+java_major_version() {
+  local bin=$1
+  local header
+  header=$("${bin}" -version 2>&1 | head -n1) || return 1
+  if [[ ${header} =~ "([0-9]+)(\.[0-9]+)? ]]; then
+    local major=${BASH_REMATCH[1]}
+    if [[ ${major} == "1" && ${header} =~ "1\.([0-9]+)" ]]; then
+      major=${BASH_REMATCH[1]}
+    fi
+    printf '%s\n' "${major}"
+    return 0
+  fi
+  return 1
+}
+
+select_java_bin() {
+  local require_supported=$1
+  local first_exec=""
+  local skipped_due_to_version=0
+
+  for candidate in "${java_candidates[@]}"; do
+    [[ -x "${candidate}" ]] || continue
+    if [[ -z "${first_exec}" ]]; then
+      first_exec="${candidate}"
+    fi
+
+    if [[ "${require_supported}" == "1" ]]; then
+      local major
+      if ! major=$(java_major_version "${candidate}"); then
+        continue
+      fi
+      if (( major > max_supported_java )); then
+        skipped_due_to_version=1
+        continue
+      fi
+      if (( skipped_due_to_version == 1 )); then
+        selected_java_notice="burpsuite-pro: falling back to Java ${major} at ${candidate} for CN loader compatibility (requires <= ${max_supported_java})."
+      fi
+      printf '%s\n' "${candidate}"
+      return 0
+    else
+      printf '%s\n' "${candidate}"
+      return 0
+    fi
+  done
+
+  if [[ "${require_supported}" == "1" && "${allow_unsupported_java}" == "1" && -n "${first_exec}" ]]; then
+    printf '%s\n' "${first_exec}"
+    return 0
+  fi
+
+  if [[ "${require_supported}" == "1" ]]; then
+    echo "burpsuite-pro: 无法找到兼容的 Java 运行时 (需要 <= ${max_supported_java})。请安装 jdk21-openjdk 或通过 bp.java/BURP_PRO_JAVA_HOME 指定。" >&2
+  else
+    echo "burpsuite-pro: 未找到可执行的 java" >&2
+  fi
+  return 1
+}
+
 sync_resource() {
   local src=$1 dest=$2
   if [[ -f "${src}" ]]; then
@@ -31,26 +107,28 @@ if [[ -d "${pkg_cn_share}" ]]; then
   done < <(find "${pkg_cn_share}" -maxdepth 1 -type f -name 'cn*.txt' -print0)
 fi
 
-java_bin=""
 if [[ -n "${BURP_PRO_JAVA_BIN:-}" ]]; then
-  java_bin="${BURP_PRO_JAVA_BIN}"
-elif [[ -n "${BURP_PRO_JAVA_HOME:-}" ]]; then
-  java_bin="${BURP_PRO_JAVA_HOME%/}/bin/java"
-elif [[ -f "${configdir}/bp.java" ]]; then
+  add_java_candidate "${BURP_PRO_JAVA_BIN}"
+fi
+if [[ -n "${BURP_PRO_JAVA_HOME:-}" ]]; then
+  add_java_candidate "${BURP_PRO_JAVA_HOME%/}/bin/java"
+fi
+custom_java_home=""
+if [[ -f "${configdir}/bp.java" ]]; then
   read -r custom_java_home < "${configdir}/bp.java" || true
   if [[ -n "${custom_java_home:-}" ]]; then
-    java_bin="${custom_java_home%/}/bin/java"
+    add_java_candidate "${custom_java_home%/}/bin/java"
   fi
-elif [[ -n "${JAVA_HOME:-}" ]]; then
-  java_bin="${JAVA_HOME%/}/bin/java"
-else
-  java_bin="$(command -v java)"
 fi
-
-if [[ ! -x "${java_bin}" ]]; then
-  echo "burpsuite-pro: unable to find a runnable java binary" >&2
-  exit 1
+if [[ -n "${JAVA_HOME:-}" ]]; then
+  add_java_candidate "${JAVA_HOME%/}/bin/java"
 fi
+system_java="$(command -v java 2>/dev/null || true)"
+if [[ -n "${system_java}" ]]; then
+  add_java_candidate "${system_java}"
+fi
+add_java_candidate "/usr/lib/jvm/java-21-openjdk/bin/java"
+add_java_candidate "/usr/lib/jvm/java-17-openjdk/bin/java"
 
 java_opts=()
 if [[ -f "${configdir}/bp.java.options" ]]; then
@@ -103,6 +181,20 @@ while [[ $# -gt 0 ]]; do
 done
 
 pass_args+=("$@")
+
+java_bin=""
+if java_bin=$(select_java_bin "${enable_cn}"); then
+  :
+else
+  if [[ "${enable_cn}" != "0" && "${allow_unsupported_java}" == "1" ]]; then
+    echo "burpsuite-pro: 已允许使用不受支持的 Java 版本 (BURP_CN_ALLOW_UNSUPPORTED_JAVA=1)。" >&2
+  fi
+  exit 1
+fi
+
+if [[ -n "${selected_java_notice}" ]]; then
+  echo "${selected_java_notice}" >&2
+fi
 
 cmd=("${java_bin}")
 if [[ ${#java_opts[@]} -gt 0 ]]; then
