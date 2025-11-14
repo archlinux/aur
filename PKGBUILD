@@ -46,6 +46,9 @@ package() {
     --ro-bind /lib64 /lib64 \
     /sgx_linux_x64_sdk.bin --prefix /opt/intel
 
+  # The uninstall script shouldn't be used with this package.
+  rm "${pkgdir}/opt/intel/sgxsdk/uninstall.sh"
+
   # composed license
   install -Dm644 "${pkgdir}"/opt/intel/sgxsdk/licenses/License.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
