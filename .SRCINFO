@@ -1,6 +1,6 @@
 pkgbase = android-ondk-bin
 	pkgdesc = Oxidized NDK - NDK repackaged with Rust toolchain
-	pkgver = r29.2
+	pkgver = r29.3
 	pkgrel = 1
 	url = https://github.com/topjohnwu/ondk
 	arch = x86_64
@@ -15,14 +15,14 @@ pkgbase = android-ondk-bin
 	optdepends = python: various helper scripts
 	optdepends = perl: various helper scripts
 	optdepends = libc++: for some LLVM components
-	provides = android-ondk=r29.2
-	provides = android-ondk-r29.2
+	provides = android-ondk=r29.3
+	provides = android-ondk-r29.3
 	conflicts = android-ondk
-	conflicts = android-ondk-r29.2
+	conflicts = android-ondk-r29.3
 	options = !strip
 	options = !debug
-	source_x86_64 = android-ondk-r29.2-x86_64.tar.xz::https://github.com/topjohnwu/ondk/releases/download/r29.2/ondk-r29.2-linux.tar.xz
-	sha256sums_x86_64 = ad97b965f91ab6ff796bbf43227bf18420a49b87c069d39b61bcdc496ba78494
-	b2sums_x86_64 = 3d619d665c72cc59ca4d68402d6ca00b9e96a12d29d45949245c34d0f389660e18a2827ae66fe045221d7d3a05b0cecb96e86907ee108319719d0449a752ce72
+	source_x86_64 = android-ondk-r29.3-x86_64.tar.xz::https://github.com/topjohnwu/ondk/releases/download/r29.3/ondk-r29.3-linux.tar.xz
+	sha256sums_x86_64 = 8a31e125032e915c64fb764fb62d3086adcdc985570ea1ea91a010711e96f769
+	b2sums_x86_64 = a4e8f35e3c61adc6a7a4604f200631774edbe91c233fb111998aa6c03dba860800d5014e9e127b015277bcecd06660ab00a97b9a7173fcec16e9391a9b186a3d
 
 pkgname = android-ondk-bin

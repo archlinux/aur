@@ -3,7 +3,7 @@
 _name="ondk"
 _pkgname="android-${_name}"
 pkgname="${_pkgname}-bin"
-pkgver=r29.2
+pkgver=r29.3
 pkgrel=1
 pkgdesc="Oxidized NDK - NDK repackaged with Rust toolchain"
 arch=('x86_64')
@@ -36,8 +36,8 @@ options=(
   '!debug'
 )
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.xz::${url}/releases/download/${pkgver}/${_name}-${pkgver}-linux.tar.xz")
-sha256sums_x86_64=('ad97b965f91ab6ff796bbf43227bf18420a49b87c069d39b61bcdc496ba78494')
-b2sums_x86_64=('3d619d665c72cc59ca4d68402d6ca00b9e96a12d29d45949245c34d0f389660e18a2827ae66fe045221d7d3a05b0cecb96e86907ee108319719d0449a752ce72')
+sha256sums_x86_64=('8a31e125032e915c64fb764fb62d3086adcdc985570ea1ea91a010711e96f769')
+b2sums_x86_64=('a4e8f35e3c61adc6a7a4604f200631774edbe91c233fb111998aa6c03dba860800d5014e9e127b015277bcecd06660ab00a97b9a7173fcec16e9391a9b186a3d')
 
 package() {
   cd "${srcdir}"
