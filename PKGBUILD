@@ -1,4 +1,4 @@
-# Maintainer: itsme <mymail@ishere.ru>
+# Maintainer: Sergey Kanafyev <sergeykanafyev@gmail.com>
 
 pkgname=qxkb
 pkgver=0.4.6
