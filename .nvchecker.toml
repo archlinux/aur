@@ -1,4 +1,3 @@
 [cloudcmd]
 source = "npm"
 npm = "cloudcmd"
-prefix = "v"
