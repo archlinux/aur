@@ -1,6 +1,6 @@
 pkgbase = intel-lpmd
 	pkgdesc = Intel Low Power Mode Daemon
-	pkgver = 0.0.9
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/intel/intel-lpmd
 	arch = x86_64
@@ -11,14 +11,12 @@ pkgbase = intel-lpmd
 	makedepends = gtk-doc
 	makedepends = glib2-devel
 	makedepends = systemd
-	depends = libxml2
+	depends = libxml2-legacy
 	depends = libnl
 	depends = systemd-libs
 	depends = polkit
 	depends = upower
-	source = git+https://github.com/intel/intel-lpmd.git#tag=v0.0.9
-	source = 90-intel-lpmd.rules
-	sha256sums = 86a3d3f64fc40b5d56e28a54200da0deec3a6e1dedc16f1c0e515d802fff7b6b
-	sha256sums = f40f544c913ea3441477bb128b5fcd5a70aaa4c62690a2a0fb5b814ffad8d6a9
+	source = git+https://github.com/intel/intel-lpmd.git#tag=v0.1.0
+	sha256sums = 23f4c8588cc057c327c6b031c377b03193d62554f3b5a68284582f4e5a35c462
 
 pkgname = intel-lpmd
