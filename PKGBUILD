@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=ente-auth-bin
 pkgver=4.4.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Ente two-factor authenticator."
 arch=('x86_64')
 url="https://ente.io/auth"
