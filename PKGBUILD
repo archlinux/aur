@@ -2,7 +2,7 @@
 
 _pkgname="libva-intel-driver"
 pkgname="$_pkgname-hybrid"
-pkgver=2.4.4
+pkgver=2.4.5
 pkgrel=1
 pkgdesc='VA-API implementation for Intel G45 and HD Graphics family'
 url="https://github.com/irql-notlessorequal/intel-vaapi-driver"
@@ -27,7 +27,7 @@ conflicts=("$_pkgname")
 
 _pkgsrc="irql-notlessorequal.intel-vaapi-driver"
 source=("$_pkgsrc"::"git+$url.git#tag=$pkgver")
-sha256sums=('55f012a1663cd9faeb202fa14bc162dafef0400e9ff73f4e296f102faef31eec')
+sha256sums=('2e84201bae0ef81d126fd94032b64d4f18ad0080766ce0d38a88495196636050')
 
 pkgver() {
   cd "$_pkgsrc"
