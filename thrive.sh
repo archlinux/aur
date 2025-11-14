@@ -2,5 +2,5 @@
 
 # exec /opt/thrive/Thrive
 
-cd  /opt/thrive
+cd /opt/thrive || exit 1
 ./Thrive
