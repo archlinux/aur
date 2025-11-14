@@ -1,7 +1,7 @@
 pkgbase = zfsbackrest-bin
 	pkgdesc = ZFS Backup and Restore Tool
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/gargakshit/zfsbackrest
 	license = MIT
 	optdepends = age: for generating encryption keys
