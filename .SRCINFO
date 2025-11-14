@@ -1,13 +1,14 @@
 pkgbase = adv
 	pkgdesc = Dispenses programming aphorisms in the style of UNIX fortune
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/griffinevans/adv
-	arch = x86_64
+	arch = any
 	license = Unlicense
+	makedepends = cargo
 	provides = adv
 	conflicts = adv
-	source = https://github.com/griffinevans/adv/releases/download/v1.0.0/adv
-	md5sums = SKIP
+	source = adv-1.1.0.tar.gz::https://github.com/griffinevans/adv/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 8006386147536ca8109e5b3ab2164166326685c29ac8779cec067b2cbed0ef05
 
 pkgname = adv
