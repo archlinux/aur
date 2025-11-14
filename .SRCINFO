@@ -1,6 +1,6 @@
 pkgbase = quickpdfjoin-bin
 	pkgdesc = Quick PDF Join is a cross-platform application that joins multiple PDF files together.(Prebuilt version)
-	pkgver = 1.2025.10.12
+	pkgver = 1.2025.11.14
 	pkgrel = 1
 	url = https://github.com/mihnea-radulescu/quickpdfjoin
 	arch = aarch64
@@ -10,16 +10,16 @@ pkgbase = quickpdfjoin-bin
 	makedepends = gendesk
 	makedepends = icoutils
 	depends = fontconfig
-	depends = dotnet-runtime>=8
-	provides = quickpdfjoin=1.2025.10.12
+	depends = dotnet-runtime>=10
+	provides = quickpdfjoin=1.2025.11.14
 	conflicts = quickpdfjoin
 	options = !strip
 	options = staticlibs
 	source = quickpdfjoin.sh
 	sha256sums = 6aca7dfd3abf71dd91e7b5d6a6d78084c8d52cf5df2564d3889b07e6621940c4
-	source_aarch64 = quickpdfjoin-1.2025.10.12-aarch64.tar.gz::https://github.com/mihnea-radulescu/quickpdfjoin/releases/download/1.2025.10.12/QuickPDFJoin_Linux_arm64.tar.gz
-	sha256sums_aarch64 = e8a8e960360316b45a8ced27098a004f7469d3640dfd0328818143bf9fda55c5
-	source_x86_64 = quickpdfjoin-1.2025.10.12-x86_64.tar.gz::https://github.com/mihnea-radulescu/quickpdfjoin/releases/download/1.2025.10.12/QuickPDFJoin_Linux_x64.tar.gz
-	sha256sums_x86_64 = 8d7304186cdae7661372ad25c50a5d780644a4c5cc539162be7d73e9c1207047
+	source_aarch64 = quickpdfjoin-1.2025.11.14-aarch64.tar.gz::https://github.com/mihnea-radulescu/quickpdfjoin/releases/download/1.2025.11.14/QuickPDFJoin_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 583f17799072ecfe547cbd3b31b25b2eb66a9fde6d88aab2ddb5050bf96ff021
+	source_x86_64 = quickpdfjoin-1.2025.11.14-x86_64.tar.gz::https://github.com/mihnea-radulescu/quickpdfjoin/releases/download/1.2025.11.14/QuickPDFJoin_Linux_x64.tar.gz
+	sha256sums_x86_64 = af50340b2d5fdc99c47de6c6998ea2b4ec05c4062176db4fc3674a9b5a3f9f0d
 
 pkgname = quickpdfjoin-bin
