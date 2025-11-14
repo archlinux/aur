@@ -23,7 +23,7 @@ optdepends=(
   "bash: For some helper scripts in the 'doc/' directory."
 )
 provides=(
-  "${_pkgname}=${pkgver}"
+  "${_pkgname}"
   "libst2205.so"
   "libst2205.a"
 )
