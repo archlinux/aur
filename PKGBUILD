@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _npmname=ollama
-_npmver=0.6.2
+_npmver=0.6.3
 
 pkgname=nodejs-$_npmname
 pkgdesc="Ollama JavaScript library"
@@ -21,8 +21,8 @@ noextract=("${pkgname}-${pkgver}.tgz")
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz"
 		"README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
-b2sums=('d5a059de40f25b72913ae27c6159c16f44277061127cc2bfbdf4d43fc2065684882521987b7e5756b6205b1132066090004ad77b9326c4e48692958faf1c784a'
-        '3c9b3c6102aa374f5eb7ffaddd7cc8bf3883034a944371f5a259d896f3b8bae95a797c515b38169dd57af18ed52055631673d828563c10c539993be37ad96ee2'
+b2sums=('51511ceb9905510a5709a31c9aa03e50da16e1858e7daf4aef7e48203dbb9e9253a7278573753174f710d38ca8a62aa7de0f6bcd43bde8d5202ca6a33369fccc'
+        '20fe58acfcfd1b1092a29f08370b6b33274936ee5db7c7c57075c9480b0344ab9337b92e5a12fcbaf480eb31907951a63f9ee3eb20a7e96245bed7658c1fe221'
         'd60b5c51af9edaf460e87a369bde53d7e4bde120eee26da7c789f7bc25d5c167b1788985309611d58e5fa8d2dbdd85515314e23b77a2f1cbd411d83eecc4d495')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
