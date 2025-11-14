@@ -2,7 +2,8 @@
 #              M0Rf30
 # Mantainer: XenGi
 pkgname=unrealtournament
-pkgver=469e_rc10
+pkgver=469e
+#pkgver=469e_rc10
 pkgrel=1
 pkgdesc="The classic Unreal Tournament from 1999 (GOTY + OldUnreal patches)"
 arch=('i686' 'x86_64' 'aarch64')
@@ -19,12 +20,16 @@ source=("ut.desktop"
         "ut-wrapper.sh"
         "https://archive.org/download/ut-goty/UT_GOTY_CD1.iso"
         "https://archive.org/download/ut-goty/UT_GOTY_CD2.iso")
-source_i686=("OldUnreal-UTPatch-${pkgver//_/-}-Linux-x86.tar.bz2::https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v${pkgver//_/-}/OldUnreal-UTPatch${pkgver%%_*}-Linux-x86.tar.bz2")
-source_x86_64=("OldUnreal-UTPatch-${pkgver//_/-}-Linux-amd64.tar.bz2::https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v${pkgver//_/-}/OldUnreal-UTPatch${pkgver%%_*}-Linux-amd64.tar.bz2")
-source_aarch64=("OldUnreal-UTPatch-${pkgver//_/-}-Linux-arm64.tar.bz2::https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v${pkgver//_/-}/OldUnreal-UTPatch${pkgver%%_*}-Linux-arm64.tar.bz2")
-noextract=("OldUnreal-UTPatch-${pkgver//_/-}-Linux-x86.tar.bz2"
-           "OldUnreal-UTPatch-${pkgver//_/-}-Linux-amd64.tar.bz2"
-           "OldUnreal-UTPatch-${pkgver//_/-}-Linux-arm64.tar.bz2"
+source_i686=("OldUnreal-UTPatch${pkgver}-Linux-x86.tar.bz2::https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v${pkgver}/OldUnreal-UTPatch${pkgver}-Linux-x86.tar.bz2")
+source_x86_64=("OldUnreal-UTPatch${pkgver}-Linux-amd64.tar.bz2::https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v${pkgver}/OldUnreal-UTPatch${pkgver}-Linux-amd64.tar.bz2")
+source_aarch64=("OldUnreal-UTPatch${pkgver}-Linux-arm64.tar.bz2::https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v${pkgver}/OldUnreal-UTPatch${pkgver}-Linux-arm64.tar.bz2")
+#source_i686=("OldUnreal-UTPatch-${pkgver//_/-}-Linux-x86.tar.bz2::https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v${pkgver//_/-}/OldUnreal-UTPatch${pkgver%%_*}-Linux-x86.tar.bz2")
+#source_x86_64=("OldUnreal-UTPatch-${pkgver//_/-}-Linux-amd64.tar.bz2::https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v${pkgver//_/-}/OldUnreal-UTPatch${pkgver%%_*}-Linux-amd64.tar.bz2")
+#source_aarch64=("OldUnreal-UTPatch-${pkgver//_/-}-Linux-arm64.tar.bz2::https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v${pkgver//_/-}/OldUnreal-UTPatch${pkgver%%_*}-Linux-arm64.tar.bz2")
+#noextract=("OldUnreal-UTPatch-${pkgver//_/-}-Linux-x86.tar.bz2"
+noextract=("OldUnreal-UTPatch${pkgver}-Linux-x86.tar.bz2"
+           "OldUnreal-UTPatch${pkgver}-Linux-amd64.tar.bz2"
+           "OldUnreal-UTPatch${pkgver}-Linux-arm64.tar.bz2"
            "UT_GOTY_CD1.iso"
            "UT_GOTY_CD2.iso")
 sha256sums=('fea5efdcac67564f2b5b8ef215115990739243a53a5f86e67f9414081d5b28dc'
@@ -34,9 +39,9 @@ sha256sums=('fea5efdcac67564f2b5b8ef215115990739243a53a5f86e67f9414081d5b28dc'
             'b944b7dec13b3b96230997695c8892ab06b764f004636629b72133d58aa8000f'
             'e184984ca88f001c5ddd52035d76cd64e266e26c74975161b5ed72366c74704f'
             'd95d8ee1cf95562ee023fd54035ec8813d4275f63d1847423220986edc8d00d8')
-sha256sums_i686=('3e76884a58494eb2ebe36a9f1d2df929f48761a8c7196c7c3515021711ad6172')
-sha256sums_x86_64=('c2a99bf45182d19c4b237f054cf26816ed41f72c410ac23a22c200947fee3b8b')
-sha256sums_aarch64=('253b1969a66663231be6ef6570d31c5ae590d4186d4e8e923bc784e69f7e4584')
+sha256sums_i686=('cbd6d8016efb30e3982757a582c688532803721ec1ec738fc28af9b3e15d3c14')
+sha256sums_x86_64=('08c806aa3721b1970045aa158ad90051329d982e8a9a3661153900e9ccbf6b0c')
+sha256sums_aarch64=('4c3978073b12b049c3ffdeb4d275cfc7a2313650f3eb5b94db06fbfee77c3e3b')
 
 prepare() {
     # Extract ISOs manually because makepkg would extract them into the same dir and overwrite the contents
@@ -52,13 +57,13 @@ package() {
     # Set system directory and unpack patch into game directory
     if [ "$CARCH" = "i686" ]; then
         _system_dir=/opt/ut/System
-        tar xaf ${srcdir}/OldUnreal-UTPatch-${pkgver//_/-}-Linux-x86.tar.bz2 -C ${pkgdir}/opt/ut
+        tar xaf ${srcdir}/OldUnreal-UTPatch${pkgver}-Linux-x86.tar.bz2 -C ${pkgdir}/opt/ut
     elif [ "$CARCH" = "x86_64" ]; then
         _system_dir=/opt/ut/System64
-        tar xaf ${srcdir}/OldUnreal-UTPatch-${pkgver//_/-}-Linux-amd64.tar.bz2 -C ${pkgdir}/opt/ut
+        tar xaf ${srcdir}/OldUnreal-UTPatch${pkgver}-Linux-amd64.tar.bz2 -C ${pkgdir}/opt/ut
     elif [ "$CARCH" = "aarch64" ]; then
         _system_dir=/opt/ut/System64
-        tar xaf ${srcdir}/OldUnreal-UTPatch-${pkgver//_/-}-Linux-arm64.tar.bz2 -C ${pkgdir}/opt/ut
+        tar xaf ${srcdir}/OldUnreal-UTPatch${pkgver}-Linux-arm64.tar.bz2 -C ${pkgdir}/opt/ut
     fi
 
     # fix permissions
