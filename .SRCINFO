@@ -6,13 +6,14 @@ pkgbase = zfsbackrest-bin
 	license = MIT
 	optdepends = age: for generating encryption keys
 	depends = zfs-utils
+	depends = libunwind
 	conflicts = zfsbackrest
 	provides = zfsbackrest
 	arch = aarch64
 	source_aarch64 = https://github.com/gargakshit/zfsbackrest/releases/download/v0.2.0/zfsbackrest_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 10b8f023e35951f1d54131d4e2599529a97e999e6c00aea600e5259e611195e8
+	sha256sums_aarch64 = de7891f7129ef5a3b7f037309f4c4e22f796811ae8317d57bad8d4c749bad2c7
 	arch = x86_64
 	source_x86_64 = https://github.com/gargakshit/zfsbackrest/releases/download/v0.2.0/zfsbackrest_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 5a3910dc0bd15a4cb18546243767bd8a9a2c38b833b269b7aa5864482e8150db
+	sha256sums_x86_64 = f9cec005cd4a3d6d5da500bba2b4edafd66eaedd4ee748c789ba9f5c89eaa888
 	
 pkgname = zfsbackrest-bin
