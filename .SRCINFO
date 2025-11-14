@@ -1,7 +1,7 @@
 pkgbase = perl-net-async-websocket
 	pkgdesc = Perl Net::Async::WebSocket CPAN module
 	pkgver = 0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Net-Async-WebSocket
 	arch = any
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = perl-net-async-websocket
 	depends = perl
 	depends = perl-io-async
 	depends = perl-protocol-websocket
-	depends = perl-uri-ws
+	depends = perl-uri
 	depends = perl-meta
 	options = !emptydirs
 	options = purge
