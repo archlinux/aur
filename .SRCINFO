@@ -1,6 +1,6 @@
 pkgbase = spotube
 	pkgdesc = Open source music client! Available for both desktop & mobile!
-	pkgver = 5.0.0
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://spotube.krtirtho.dev/
 	arch = x86_64
@@ -41,9 +41,9 @@ pkgbase = spotube
 	optdepends = mdns-scan: required if using remote controlling
 	optdepends = yt-dlp: Alternative YouTube engine support
 	options = !lto
-	source = spotube-5.0.0.tar.gz::https://github.com/KRTirtho/spotube/archive/refs/tags/v5.0.0.tar.gz
+	source = spotube-5.1.0.tar.gz::https://github.com/KRTirtho/spotube/archive/refs/tags/v5.1.0.tar.gz
 	source = flutter-3.35.2.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.35.2-stable.tar.xz
-	sha256sums = 18680b4103b3b8a33125bf75b214fd61d0d5a25fd98b46f0b8d8ceaa6504841d
+	sha256sums = 23d94fbf89d3483ea483bb199f3204c4cbc0fe0008455f2f195f7f01acd14752
 	sha256sums = f0131080b47bfaa1fcc698e7e8f5814fa741b835eb8b3bbc70fde9a9380828b4
 
 pkgname = spotube
