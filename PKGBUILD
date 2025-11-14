@@ -4,7 +4,7 @@ pkgver=9.0.11.sdk307
 _dotnetver="$(cut -d. -f1-2 <<<"${pkgver}")"
 _sdkver="${_dotnetver}.${pkgver##*sdk}"
 _runtimever="${pkgver%.sdk*}"
-pkgrel=2
+pkgrel=3
 
 _pkgbase="dotnet-core-${_dotnetver}"
 _pkgname=(
@@ -92,7 +92,7 @@ package_dotnet-runtime-9.0-bin() {
 package_aspnet-runtime-9.0-bin() {
   pkgdesc="The ASP.NET Core runtime"
   depends=(
-    "${pkgname//dotnet/aspnet}>=${pkgver}"
+    "${pkgname//aspnet/dotnet}>=${pkgver}"
   )
   provides=(
     "${pkgname%-bin}=${pkgver}"
@@ -137,7 +137,7 @@ package_dotnet-targeting-pack-9.0-bin() {
 package_aspnet-targeting-pack-9.0-bin() {
   pkgdesc="The ASP.NET Core targeting pack"
   depends=(
-    "${pkgname//dotnet/aspnet}>=${pkgver}"
+    "${pkgname//aspnet/dotnet}>=${pkgver}"
   )
   provides=(
     "${pkgname%-bin}=${pkgver}"

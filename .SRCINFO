@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-9.0-bin
 	pkgver = 9.0.11.sdk307
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dotnet.microsoft.com
 	arch = aarch64
 	arch = armv7h
@@ -30,7 +30,7 @@ pkgname = dotnet-runtime-9.0-bin
 
 pkgname = aspnet-runtime-9.0-bin
 	pkgdesc = The ASP.NET Core runtime
-	depends = aspnet-runtime-9.0-bin>=9.0.11.sdk307
+	depends = dotnet-runtime-9.0-bin>=9.0.11.sdk307
 	provides = aspnet-runtime-9.0=9.0.11.sdk307
 	conflicts = aspnet-runtime-9.0
 
@@ -42,7 +42,7 @@ pkgname = dotnet-targeting-pack-9.0-bin
 
 pkgname = aspnet-targeting-pack-9.0-bin
 	pkgdesc = The ASP.NET Core targeting pack
-	depends = aspnet-targeting-pack-9.0-bin>=9.0.11.sdk307
+	depends = dotnet-targeting-pack-9.0-bin>=9.0.11.sdk307
 	provides = aspnet-targeting-pack-9.0=9.0.11.sdk307
 	conflicts = aspnet-targeting-pack-9.0
 
