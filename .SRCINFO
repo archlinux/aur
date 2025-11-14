@@ -1,6 +1,6 @@
 pkgbase = signal-cli
 	pkgdesc = Provides a commandline and dbus interface for secure Signal messaging.
-	pkgver = 0.13.21
+	pkgver = 0.13.22
 	pkgrel = 1
 	url = https://github.com/AsamK/signal-cli
 	arch = any
@@ -12,11 +12,11 @@ pkgbase = signal-cli
 	depends = java-commons-logging
 	depends = sh
 	depends = libsignal-client
-	source = https://github.com/AsamK/signal-cli/archive/v0.13.21.tar.gz
-	source = https://github.com/AsamK/signal-cli/releases/download/v0.13.21/v0.13.21.tar.gz.asc
+	source = https://github.com/AsamK/signal-cli/archive/v0.13.22.tar.gz
+	source = https://github.com/AsamK/signal-cli/releases/download/v0.13.22/v0.13.22.tar.gz.asc
 	source = signal-cli.sh
 	validpgpkeys = FA10826A74907F9EC6BBB7FC2BA2CD21B5B09570
-	sha512sums = 9aa65e27d63060016958356fce8d88b2421c942c80aa50a4e96f7f54ac9f5196f4ca0f768b95839f7835524875b435a84650124a75c99fee45773cf6655f0083
+	sha512sums = d5bcefa6b08b85796fd15441ee29bb5d1913d3dee3c786a4381d5f94a228bfd9c8ca00f4c589ef72eab3e563ec6a1eb854c12826bae881b1c0fce1161bfa04cb
 	sha512sums = SKIP
 	sha512sums = 64f181bd9170af5c462899fba765a92b8225e24c3fd2a25deec31d9879dec76a987de9efa065fc3e60e8f5a787e934e0abbdd43ab94445ad3eecacfe1a9de74d
 
