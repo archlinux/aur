@@ -2,7 +2,7 @@
 
 _pkgname=supermodel
 pkgname=$_pkgname-sinden-git
-pkgver=r140.711ecc6
+pkgver=r157.c440c7e
 pkgrel=1
 pkgdesc='A Sega Model 3 Arcade Emulator, patched for multiple mice support and Sinden borders'
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  make -f 'Makefiles/Makefile.UNIX'
+  make -f 'Makefiles/Makefile.UNIX' NET_BOARD=1
 }
 
 package() {

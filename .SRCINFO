@@ -1,6 +1,6 @@
 pkgbase = supermodel-sinden-git
 	pkgdesc = A Sega Model 3 Arcade Emulator, patched for multiple mice support and Sinden borders
-	pkgver = r140.711ecc6
+	pkgver = r157.c440c7e
 	pkgrel = 1
 	url = http://www.supermodel3.com/
 	install = supermodel-sinden.install
