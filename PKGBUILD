@@ -2,12 +2,12 @@
 # Maintainer: Chinmay Dalal <exu9qiu7p AT relay DOT firefox DOT com>
 pkgname=lsr
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ls but with io_uring"
 arch=('x86_64')
 url="https://tangled.sh/@rockorager.dev/lsr"
 license=('MIT')
-makedepends=('zig>=0.14.0')
+makedepends=('zig0.14')
 source=("$pkgname::git+$url#tag=v${pkgver}")
 md5sums=('06e83941f97dc95bf825dd67fc05948a')
 
