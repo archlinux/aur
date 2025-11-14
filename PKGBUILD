@@ -166,9 +166,8 @@ build() {
   ./app/linux-build-all.sh
 
   # patch app/server/ruby/lib/sonicpi/util.rb to set proper paths to external components
-  # NOTE: this can only be done after running
-  # app/server/ruby/bin/compile-extensions.rb, as ruby-wavefile uses a
-  # hardcoded location of a file (move to prepare() after devendoring more ruby gems)
+  # NOTE: this can only be done after the build system has created the necessary directories and files
+  # app/server/ruby/bin/compile-extensions.rb
   patch -Np1 -i "../$pkgname-$pkgver-ruby_paths.patch"
 }
 
