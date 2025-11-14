@@ -2,7 +2,7 @@
 _pkgname='mongodb-compass-readonly'
 _edition=' Readonly'
 pkgname="$_pkgname-bin"
-_pkgver='1.48.1'
+_pkgver='1.48.2'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - binary version'
@@ -27,7 +27,7 @@ source=(
 	"$pkgname-$pkgver.rpm::https://downloads.mongodb.com/compass/$_betaprefix$_pkgname-$_pkgver.x86_64.rpm"
 	'mongodb-compass.conf'
 )
-b2sums=('21f82b67bc4f7d255910147bf0b217dcdfe1aac17bf2a6fb56394873290c32917354a0d765e8709757778944f4bd44bb76893c302ebdd85e363357b180d4e7ce'
+b2sums=('c1c8b03b1e6fe678e68c974ff393a12c0fefa6ef7c79b8d680d84c02213a6bb8d12a822dba34e5ac546e04cccfe03c642583c83e55f95b0a2c24dba551a6d9ca'
         '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
 
 check() {
