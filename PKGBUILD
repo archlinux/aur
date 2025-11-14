@@ -1,4 +1,4 @@
-# Maintainer: itsme <mymail@ishere.ru>
+# Maintainer: Sergey Kanafyev <sergeykanafyev@gmail.com>
 # Contributor: Christian Wieden <wiedenchr at gmail dot com>
 
 pkgname=hstr
