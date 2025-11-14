@@ -1,0 +1,14 @@
+pkgbase = plasma6-applets-fancytasks
+	pkgdesc = More modern taskbar-style window switcher displaying icons and text, with some improvments and color. Serves as a replacement for the Icon-Only and Task Manager plasmoids KDE ships with.
+	pkgver = 1.1.5.r1105.gac7b879
+	pkgrel = 1
+	url = https://github.com/alexankitty/FancyTasks
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = plasma-workspace
+	provides = fancytasks
+	source = git+https://github.com/leaeasy/FancyTasksPlus.git#branch=feature/enhancements
+	sha512sums = SKIP
+
+pkgname = plasma6-applets-fancytasks
