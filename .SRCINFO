@@ -8,7 +8,6 @@ pkgbase = systemd-manager-tui
 	makedepends = git
 	makedepends = rust
 	makedepends = cargo
-	depends = glibc
 	source = git+https://github.com/matheus-git/systemd-manager-tui.git
 	sha256sums = SKIP
 

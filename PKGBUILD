@@ -5,8 +5,9 @@ pkgrel=1
 pkgdesc="A TUI for managing systemd services"
 arch=('x86_64')
 url="https://github.com/matheus-git/systemd-manager-tui"
+depends=('glibc')
 license=('MIT')
-makedepends=('git' 'rust' 'cargo')
+makedepends=('git' 'cargo')
 source=("git+https://github.com/matheus-git/systemd-manager-tui.git")
 sha256sums=('SKIP')
 
