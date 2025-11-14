@@ -1,7 +1,7 @@
 pkgbase = rusty-pipes
 	pkgdesc = A MIDI-controlled virtual pipe organ simulator compatible with GrandOrgue sample sets.
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dividebysandwich/rusty-pipes
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -9,6 +9,11 @@ pkgbase = rusty-pipes
 	makedepends = cargo
 	depends = alsa-lib
 	depends = gcc-libs
+	depends = jack
+	depends = libx11
+	depends = libxkbcommon
+	depends = wayland
+	depends = mesa
 	source = rusty-pipes-0.4.2.tar.gz::https://github.com/dividebysandwich/rusty-pipes/archive/refs/tags/v0.4.2.tar.gz
 	sha256sums = 55603672f0fd5746a8f28a92a4211008fded9f700560103ae67816d07e5f8b6f
 
