@@ -8,7 +8,7 @@ arch=('any')
 url="https://codeberg.org/MorsMortium/${pkgname}"
 license=('GPL-3.0-or-later')
 conflicts=('0x0uploader')
-depends=('bash' 'curl' 'hicolor-icon-theme')
+depends=('curl' 'hicolor-icon-theme')
 optdepends=('xclip: X clipboard'
     'wl-clipboard: Wayland clipboard'
     'libnotify: Notifications')

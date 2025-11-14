@@ -5,7 +5,6 @@ pkgbase = 0x0uploader
 	url = https://codeberg.org/MorsMortium/0x0uploader
 	arch = any
 	license = GPL-3.0-or-later
-	depends = bash
 	depends = curl
 	depends = hicolor-icon-theme
 	optdepends = xclip: X clipboard
