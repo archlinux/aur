@@ -1,5 +1,5 @@
 pkgbase = image-analyze
-	pkgdesc = Lightweight image viewer that supports measuring distance in pixels
+	pkgdesc = Lightweight image viewer for wayland
 	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/ArthurGuihaire/image-analyze
@@ -8,6 +8,6 @@ pkgbase = image-analyze
 	makedepends = make
 	makedepends = gcc
 	source = https://github.com/ArthurGuihaire/image-analyze/archive/refs/tags/v2.1.0.tar.gz
-	sha256sums = ace1966c5cf0aca8899fd814ea105c1c1770463278d5f71122c4401a60d33f41
+	sha256sums = 6f560a10111ebe7071e437159188d7a69923f2a2a188574e49c0afe64e3e110f
 
 pkgname = image-analyze
