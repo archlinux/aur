@@ -1,7 +1,7 @@
 # Contributor: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 
 pkgname=netbird-ui-bin
-pkgver=0.59.12 # datasource=github-releases depName=netbirdio/netbird
+pkgver=0.59.13 # datasource=github-releases depName=netbirdio/netbird
 pkgrel=1
 pkgdesc='Official GUI for the Netbird client'
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
 	"netbird.png"
 )
 
-sha256sums=('2379897010c07d748a7024d732d492445c0b883470cfd34c1d77a6c64c4e1a89'
+sha256sums=('4cdc1f6153ad3cd995473bdfc91f04e28eb81e0aa6a692591321571c16087f16'
             '2497362332dd3330c835e140549dd670f4097923a7000030dd30a443818055bc'
             '71b133636e91eb67f221f64592f64fa04a3b2337f4d616be36492efae0cff643')
 
