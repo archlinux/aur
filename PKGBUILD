@@ -13,7 +13,7 @@ provides=('zfsbackrest')
 conflicts=('zfsbackrest')
 depends=('zfs-utils')
 optdepends=('age: for generating encryption keys')
-backup=('/etc/zfsbackrest.toml')
+backup=('etc/zfsbackrest.toml')
 install=zfsbackrest.install
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gargakshit/zfsbackrest/releases/download/v0.2.0/zfsbackrest_Linux_arm64.tar.gz")
