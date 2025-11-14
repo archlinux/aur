@@ -1,0 +1,18 @@
+[Desktop Entry]
+Type=Application
+Name=Contrast, brightness and gamma
+Name[ru]=Контрастность, яркость и гамма
+Name[es]=Contraste, brillo y gamma
+Name[fr]=Contraste, luminosité et gamma
+Name[de]=Kontrast, Helligkeit und Gamma
+Name[zh_CN]=对比度、亮度和伽马值
+Comment=Set contrast, brightness and gamma for Wayland compositors
+Comment[ru]=Настройка контрастности, яркости и гаммы для Wayland
+Comment[es]=Ajustar contraste, brillo y gamma para compositores Wayland
+Comment[fr]=Régler le contraste, la luminosité et le gamma pour les compositeurs Wayland
+Comment[de]=Kontrast, Helligkeit und Gamma für Wayland-Compositor einstellen
+Comment[zh_CN]=为Wayland合成器设置对比度、亮度和伽马值
+Icon=display-brightness-symbolic
+Exec=wl-gammactl
+Terminal=false
+Categories=GTK;Settings;HardwareSettings;

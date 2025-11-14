@@ -1,0 +1,18 @@
+--- wl-gammactl/meson.build0	2025-09-29 14:43:03.179321706 +0300
++++ wl-gammactl/meson.build	2025-09-29 14:37:24.972283077 +0300
+@@ -6,7 +6,6 @@
+ 
+ # Define dependecies
+ dep_gtk3 = dependency('gtk+-3.0')
+-dep_wlroots = dependency('wlroots')
+ dep_wayland_client = dependency('wayland-client')
+ 
+ 
+@@ -57,7 +56,6 @@
+ 	'wl-gammactl',
+ 	sources,
+ 	dependencies : [
+-		dep_wlroots,
+ 		dep_wayland_client,
+ 		dep_gtk3
+ 	],
