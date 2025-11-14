@@ -5,7 +5,7 @@
 
 pkgname=plasma6-wallpapers-wallpaper-engine-git
 pkgver=0.5.4.r108.g9e60b36
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple kde wallpaper plugin integrating wallpaper engine"
 arch=('x86_64')
 url="https://github.com/catsout/wallpaper-engine-kde-plugin"
@@ -23,7 +23,8 @@ source=("${pkgname}::git+${url}.git#branch=main"
         "git+https://github.com/KhronosGroup/SPIRV-Reflect.git"
         "Eigen::git+https://gitlab.com/libeigen/eigen.git"
         "git+https://github.com/mackron/miniaudio.git"
-        "git+https://github.com/google/googletest.git")
+        "git+https://github.com/google/googletest.git"
+        "pr-547.diff::https://github.com/catsout/wallpaper-engine-kde-plugin/pull/547.diff")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -31,7 +32,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            'e00b5a7904c83dc7d349d8b082d218c7ab541fdf262ec4c68df3e83bf0d5914e')
 
 prepare(){
     declare -ra modules=("${srcdir}/${pkgname}" "${srcdir}/${pkgname}/src/backend_scene"
@@ -47,6 +49,8 @@ prepare(){
         done
         git -c protocol.file.allow=always submodule update --remote
     done
+    cd "${srcdir}/${pkgname}"
+    git apply "$srcdir/pr-547.diff"
 }
 pkgver(){
     cd "${srcdir}/${pkgname}"
