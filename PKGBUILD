@@ -3,7 +3,7 @@
 
 pkgname=aqbanking-git
 pkgver=6.7.7beta+6+g98ad900a
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for online banking and financial applications"
 arch=('x86_64')
 url='https://www.aquamaniac.de/rdm/projects/aqbanking'
@@ -13,6 +13,7 @@ makedepends=('git')
 provides=("aqbanking=${pkgver%beta+*}")
 conflicts=('aqbanking')
 options=('!makeflags')
+install="${pkgname}.install"
 source=('git+https://git.aquamaniac.de/git/aqbanking')
 sha256sums=('SKIP')
 _sourcedir=aqbanking

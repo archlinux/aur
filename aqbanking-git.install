@@ -1,0 +1,30 @@
+post_install() {
+  cat >&2 << 'EOF'
+
+    ## IMPORTANT! Read this if your SEPA bank transfers are failing.
+    ##
+    ## In October 2025, the European Payments Council finalized
+    ## the Verification of Payee (VoP) scheme. The scheme will be
+    ## mandatory for EU-based banks by July 2027.
+    ##
+    ## As of November 2025, some EU banks have opted into enforcing
+    ## VoP. Aqbanking v6.7.7beta introduced preliminary VoP support;
+    ## however, to get it working, you need to run `getbankinfo`
+    ## once for each affected user ID in your local aqbanking
+    ## configuration:
+
+aqhbci-tool4 getbankinfo -u UNIQUE_USER_ID
+
+    ## For your reference, you can see a list of your unique user
+    ## IDs by running:
+
+aqhbci-tool4 listusers
+
+    ## For more details, see:
+
+> https://www.europeanpaymentscouncil.eu/what-we-do/other-schemes/verification-payee/epc-verification-payee-scheme-and-epc-directory-service
+
+> https://www.aquamaniac.de/rdm/projects/aqbanking/wiki/Vop
+
+EOF
+}
