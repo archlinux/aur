@@ -1,6 +1,6 @@
 pkgbase = happ-desktop-bin
 	pkgdesc = A proxy client for secure and private internet access
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/Happ-proxy/happ-desktop
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = happ-desktop-bin
 	provides = happ-desktop
 	conflicts = happ-desktop
 	options = !strip
-	source = happ-desktop-bin-1.0.1.AppImage::https://github.com/Happ-proxy/happ-desktop/releases/download/1.0.1/Happ.linux.x86.AppImage
-	sha256sums = 17cda3c51ee3a3318d8d6f72f67517f415f8a7ff3073f66cbd6ed78e7b95a256
+	source = happ-desktop-bin-1.0.2.AppImage::https://github.com/Happ-proxy/happ-desktop/releases/download/1.0.2/Happ.linux.x86.AppImage
+	sha256sums = 0b0209d918b69c3c70cb1e62098cba2c409d45a59383510248b348277d6bf440
 
 pkgname = happ-desktop-bin
