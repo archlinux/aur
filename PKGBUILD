@@ -1,6 +1,6 @@
 # Maintainer: Augusto Elesbão <aelesbao@gmail.com>
 pkgname=nexus-cli
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="CLI for building Talus Agents with Nexus, the Agentic Workflow Engine"
 arch=("x86_64")

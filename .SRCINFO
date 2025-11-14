@@ -1,11 +1,11 @@
 pkgbase = nexus-cli
 	pkgdesc = CLI for building Talus Agents with Nexus, the Agentic Workflow Engine
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/talus-network/nexus-sdk
 	arch = x86_64
 	license = Apache-2.0
-	source = https://github.com/talus-network/nexus-sdk/releases/download/v0.2.0/nexus-cli-0.2.0-x86_64-unknown-linux-musl.tar.gz
+	source = https://github.com/talus-network/nexus-sdk/releases/download/v0.3.0/nexus-cli-0.3.0-x86_64-unknown-linux-musl.tar.gz
 	sha256sums = ed199419840f53bfa899372d4ebd98ed2bfad0a866ee3241b50e7d261f0f07b6
 
 pkgname = nexus-cli
