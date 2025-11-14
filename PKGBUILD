@@ -51,7 +51,7 @@ sha512sums=(
 
 prepare() {
   cd $pkgname-$pkgver
-  gendesk -n \
+  gendesk -f -n \
           --pkgname $pkgname \
           --pkgdesc "$pkgdesc" \
           --name "Sonic Pi" \
