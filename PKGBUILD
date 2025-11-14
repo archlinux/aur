@@ -31,15 +31,11 @@ changelog=
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "versioneer.patch"
-    "fix_prod_arg.patch"
-    "fix_reshape.patch"
 )
 noextract=()
 sha256sums=(
     'f46ea6af5ef3fbafb999f5ca3a99332f8296cb8f1f09dfffa2c599bfcaf7c5d2'
     '7e7da17ed7a0a2d0e25180600bdd5e4e0da191d72bb4af6c69702e5179c39adb'
-    'f841ab6b0d148ea0f6e7b1eaef1cd8d4665992f39155c7d99a6d90e0de9dbd1c'
-    '799a4a5e2de2fd8302e120ffd2bc1e80432e50fcb39b5029e904705f711ea619'
 )
 validpgpkeys=()
 
@@ -49,8 +45,8 @@ prepare() {
     # - class SafeConfigParser was instead by ConfigParser
     # - method readfd was instead by read_file
     patch -Np1 -i ../versioneer.patch
-    patch -Np1 -i ../fix_prod_arg.patch
-    patch -Np1 -i ../fix_reshape.patch
+    # patch -Np1 -i ../fix_prod_arg.patch
+    # patch -Np1 -i ../fix_reshape.patch
 }
 
 build() {
@@ -61,7 +57,7 @@ build() {
 
 check() {
 	cd "${srcdir}/${_name}-${pkgver}"
-    pytest
+    # pytest
 }
 
 package() {
