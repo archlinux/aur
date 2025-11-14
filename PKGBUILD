@@ -26,16 +26,16 @@ b2sums=('a44a0c6ad83e388f2dc02f69b1d04e5d5abe9a6a72857c6231f26cd7009fd5e2645647d
         'a6302ae3d0292c9178ea82458ec64baf1b4890404e770a6a0fa0498a0b04c5d6fa0b7a821c20692fed4b3dc4216f74ba4426727e08288935ce9b354719d30467'
         '8fdbf5e43bc9701d0ee1e339683cc17992090dd63ddcb9463e6a9dfec48afd2f7149eac398fb3e436a65342b60b926e0f75c1fba5bae18d00a3421d8c9a0871f')
 
-verify() {
+prepare() {
+    # XXX: move to verify() when devtools supports it
+    # https://gitlab.archlinux.org/archlinux/devtools/-/issues/224
     jq -r '.platforms["linux-x86_64"].signature' $pkgname-$pkgver-latest.json \
         | base64 -d > $_appimage.minisig
 
     jq -r '.plugins.updater.pubkey' $pkgname-$pkgver-tauri.conf.json | base64 -d > Jan.pubkey
 
     minisign -Vm "$_appimage" -p Jan.pubkey
-}
 
-prepare() {
     # Copy AppImage in case $SRCDEST is mounted with noexec
     cp $_appimage $_appimage.copy
     chmod +x $_appimage.copy
