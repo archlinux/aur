@@ -1,7 +1,7 @@
 # Maintainer: Roddy Rappaport <roddy.rappaport@gmail.com>
 
 pkgname=git-hash-select
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 
 pkgdesc="A hash selector utility for bash with optional shell bindings"
@@ -17,5 +17,7 @@ sha256sums=('SKIP')
 
 package() {
 	cd "${srcdir}/git-hash-select/"
-	./install.sh "$pkgdir"
+
+	mkdir "${pkgdir}/usr/"
+	./install.sh "${pkgdir}/usr/"
 }
