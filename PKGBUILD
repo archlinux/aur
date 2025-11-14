@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=bitwarden-bin
 pkgver=2025.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure and free password manager for all of your devices."
 arch=('x86_64')
 url="https://bitwarden.com"
@@ -26,6 +26,11 @@ sha512sums=('7724ccca2d08b9631f212b6cd1989740d85ff82f52ebf745ecb4a9e28fe66f00e36
 
 package() {
 	bsdtar xf data.tar.xz -C "$pkgdir"
+
+  chmod 04755 "$pkgdir/opt/Bitwarden/chrome-sandbox"
+
+  install -d "$pkgdir/etc/apparmor.d"
+  ln -s /opt/Bitwarden/resources/apparmor-profile "$pkgdir/etc/apparmor.d/bitwarden"
 
   desktop-file-edit --set-key=Exec --set-value="${pkgname%-bin} %U" \
     "$pkgdir/usr/share/applications/${pkgname%-bin}.desktop"
