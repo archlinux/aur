@@ -28,3 +28,7 @@ indent_size = 2
 # TODO: keep_padding is deprecated and will be removed in shfmt v4 (https://github.com/mvdan/sh/issues/658),
 # but dropping it now breaks PKGBUILD `updpkgsums` alignment (https://github.com/mvdan/sh/issues/678).
 keep_padding = true
+
+# Patche files need trailing spaces
+[*.{diff,patch}]
+trim_trailing_whitespace = false
