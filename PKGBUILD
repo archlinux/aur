@@ -3,7 +3,7 @@ _target='compass'
 _edition=''
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='r19225.g3ca4bb88a'
+pkgver='r19310.g3f88c82f3'
 pkgrel='1'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - git version'
@@ -19,17 +19,21 @@ conflicts=("$_pkgname")
 backup=('etc/mongodb-compass.conf')
 source=(
 	"$pkgname::git+https://github.com/mongodb-js/compass"
-	'update-dependencies.diff'
+	"$pkgname-$pkgver-html-webpack-plugin.diff::https://github.com/tophf/html-webpack-plugin/commit/592d76997c2144d07a7294f3d2d4065aa38f9286.diff"
+	'ignore-fix-ts-errors.diff'
 	'hadron-build-ffmpeg.diff'
 	'fix-argv.diff'
-	'ignore-fix-ts-errors.diff'
+	'fix-local-storage.diff'
+	'update-dependencies.diff'
 	'mongodb-compass.conf'
 )
 b2sums=('SKIP'
-        '9c3f2d65b097f29acb22c5da565158150bf65abfddc60ea15559df1f73564348fcca86cc8e54093edc94012cfdb2873185348ee2adf75c788e9502c0af26acb4'
+        '4be67fe645ffea7813be2e4a8766c1a224ccba07b028dc710043f143a12c7127e0c18959974cc532907be46f04406969a71968270de1e2a38d3db0e207e76bb3'
+        'd392a97281780657529841933474b370f0ae9df9a063aa95a7c90ae43f82baacbef3840e2a3eabd0848d84dc19665cc6f7ea5a2311f1dc2eda9d03eff9be2eea'
         'c0f139a686be88867b54ee530bd95bf51e71ccf2d07f25a8a70fffdfc7592ff017fd386641170a80596f855b2df39da5dc05fc563c018540fc3bc610e16971e1'
         '925dbea3aa18e5ac3529276f0c5d4c42d7ae5cb81cc9e5df3b411af751b8314e9a20bd0c5c7af144d2cdd11a26634a11aa7c064545d96003566640f5005375df'
-        'd392a97281780657529841933474b370f0ae9df9a063aa95a7c90ae43f82baacbef3840e2a3eabd0848d84dc19665cc6f7ea5a2311f1dc2eda9d03eff9be2eea'
+        '17d17d30bda15430b3a8fe15207ab41dc6820461aad52df07bf7b7a0ecc342c5605bdf57673aab24f8a136560b6cad30b059fadb2f2e271cacda6a2b903daa40'
+        'da79c9f1611cbd560dd86aa52c467bad7b43065e5e3257c393ee4daac2cb2d49787bb9c4e996696ff80d7d48ea2ea32ee21760e5d559b8c00b2e9fb3db62d206'
         '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
 
 _sourcedirectory="$pkgname"
@@ -40,30 +44,38 @@ prepare() {
 	# Ignore/fix IconButton TS errors
 	patch --forward -p1 < "$srcdir/ignore-fix-ts-errors.diff"
 
-	# Set npm overrides for various dependencies
-	patch --forward -p1 < "$srcdir/update-dependencies.diff"
-
-	# Set system Electron version for ABI compatibility
-	sed -i "s|%%ELECTRON_VERSION%%|$(cat "/usr/lib/$_electronpkg/version")|g" 'package.json'
-	npm update electron --package-lock-only
-
-	# Force the newest version of electron-to-chromium to make sure we support the Electron version set above
-	npm update electron-to-chromium --package-lock-only
-
-	# Fix ssh2 and cpu-features build
-	npm update nan ssh2 --package-lock-only
-
-	# Add missing dependencies that don't get installed by default for some reason
-	npm install '@aws-sdk/client-sts@3.713.0' '@aws-sdk/credential-provider-web-identity@3.713.0'
-
 	# Don't use the bundled ffmpeg
 	patch --forward -p1 < "$srcdir/hadron-build-ffmpeg.diff"
 
 	# Apply argv fixes
 	patch --forward -p1 < "$srcdir/fix-argv.diff"
 
+	# Set npm overrides for various dependencies
+	patch --forward -p1 < "$srcdir/update-dependencies.diff"
+
+	# Fix broken build with node=>25.1.0 due to localStorage behavior changes (https://github.com/nodejs/node/pull/60351)
+	patch --forward -p1 < "$srcdir/fix-local-storage.diff"
+
+	# Set system Electron version for ABI compatibility
+	sed -i "s|%%ELECTRON_VERSION%%|$(cat "/usr/lib/$_electronpkg/version")|g" 'package.json'
+
+	# Update overriden packages, see below for reasoning
+	## electron - ABI compatibility with the system Electron version
+	## electron-to-chromium - ensure compatibility with the Electron version set above
+	## nan - fix build with current node/kernel version
+	## ssh2 - fix build with current node/kernel version
+	## html-webpack-plugin - update to version for which a patch to fix build with node>=25.1.0 can be applied
+	npm update electron electron-to-chromium nan ssh2 html-webpack-plugin --package-lock-only
+
+	# Add missing dependencies that don't get installed by default for some reason
+	npm install '@aws-sdk/client-sts@3.713.0' '@aws-sdk/credential-provider-web-identity@3.713.0'
+
 	# Run the bootstrap command
 	HUSKY=0 GYP_DEFINES='libmongocrypt_link_type=dynamic' npm run bootstrap
+
+	# Apply html-webpack-plugin patch to fix build with node=>25.1.0 due to localStorage behavior changes (https://github.com/jantimon/html-webpack-plugin/pull/1880)
+	cd "$srcdir/$_sourcedirectory/node_modules/html-webpack-plugin/"
+	patch --forward -p1 < "$srcdir/$pkgname-$pkgver-html-webpack-plugin.diff"
 }
 
 pkgver() {
