@@ -1,6 +1,6 @@
 pkgbase = simple-music-git
 	pkgdesc = Light music.轻音乐.(Use system-wide electron)
-	pkgver = 0.6.2.r9.gdc36a1b
+	pkgver = 0.6.7.r2.gb0d1a5e
 	pkgrel = 1
 	url = https://simple-music.netlify.app/
 	arch = any
@@ -10,12 +10,12 @@ pkgbase = simple-music-git
 	makedepends = nvm
 	makedepends = curl
 	makedepends = git
-	depends = electron36
-	provides = simple-music=0.6.2
+	depends = electron39
+	provides = simple-music=0.6.7
 	conflicts = simple-music
 	source = simple-music.git::git+https://github.com/joey2217/simple-music.git
 	source = simple-music.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = simple-music-git
