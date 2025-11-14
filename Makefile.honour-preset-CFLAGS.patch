@@ -1,0 +1,69 @@
+Binary files libst2205.orig/.git/index and libst2205.new/.git/index differ
+diff -rU1 libst2205.orig/libst2205/Makefile libst2205.new/libst2205/Makefile
+--- libst2205.orig/libst2205/Makefile	2025-11-13 23:58:09.939165461 +0100
++++ libst2205.new/libst2205/Makefile	2025-11-14 00:06:32.974527937 +0100
+@@ -1 +1,4 @@
++CC	?=	gcc
++AR	?=	ar
++LDCONFIG ?=	ldconfig
+ SRC	=	st2205.c
+@@ -3,3 +6,3 @@
+ HEADERS	=	st2205.h
+-CFLAGS	=	-W -Wall -g -fPIC -O2
++CFLAGS	?=	-W -Wall -g -fPIC -O2
+ LIBS	=	
+@@ -9,4 +12,4 @@
+ libst2205.so:	$(OBJ) $(SRC) $(HEADERS) 
+-	ar -rv libst2205.a $(OBJ) 
+-	gcc -shared -Wl,-soname,libst2205.so.1 -o libst2205.so $(OBJ) $(LIBS)
++	$(AR) -rv libst2205.a $(OBJ) 
++	$(CC) -shared -Wl,-soname,libst2205.so.1 -o libst2205.so $(OBJ) $(LIBS)
+ 
+@@ -20,2 +23,2 @@
+ 	install st2205.h /usr/local/include
+-	ldconfig
++	$(LDCONFIG)
+diff -rU1 libst2205.orig/Makefile libst2205.new/Makefile
+--- libst2205.orig/Makefile	2025-11-13 23:58:09.930447030 +0100
++++ libst2205.new/Makefile	2025-11-14 00:13:39.582224203 +0100
+@@ -1,4 +1,7 @@
++CC	?=	gcc
++AR	?=	ar
++LDCONFIG ?=	ldconfig
+ SRC	=	main.c
+ OBJ	=	main.o
+-FLAGS	=	-g
++CFLAGS	?=	-g
+ LIBS	=	
+@@ -17,9 +20,9 @@
+ phack:	$(OBJ) $(SRC)
+-	gcc -o $(@) $(OBJ) $(LIBS) $(FLAGS)
++	$(CC) -o $(@) $(OBJ) $(LIBS) $(CFLAGS)
+ 
+ splice:	splice.o splice.c
+-	gcc -o splice splice.o
++	$(CC) -o splice splice.o
+ 
+ bgrep:	bgrep.o bgrep.c
+-	gcc -o bgrep bgrep.o
++	$(CC) -o bgrep bgrep.o
+ 
+diff -rU1 libst2205.orig/setpic/Makefile libst2205.new/setpic/Makefile
+--- libst2205.orig/setpic/Makefile	2025-11-13 23:58:09.939983733 +0100
++++ libst2205.new/setpic/Makefile	2025-11-14 00:19:40.602444468 +0100
+@@ -1,4 +1,6 @@
++CC	?=	gcc
+ SRC	=	main.c
+ OBJ	=	main.o
+-CFLAGS	=	-g -Wall -I../libst2205
++CFLAGS	?=	-g -Wall
++INC	=	-I../libst2205
+ LIBS	=	-lgd -L../libst2205 -lst2205 
+@@ -8,3 +10,6 @@
+ setpic:	$(OBJ) $(SRC)
+-	gcc -o $(@) $(OBJ) $(LIBS) $(FLAGS)
++	$(CC) -o $(@) $(OBJ) $(LIBS) $(CFLAGS) $(INC)
++
++$(OBJ):	$(SRC)
++	$(CC) -c $(CFLAGS) $(INC) $(SRC) -o $(OBJ)
+ 
