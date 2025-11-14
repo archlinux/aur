@@ -1,12 +1,12 @@
 pkgbase = pyinfra
 	pkgdesc = Automate infrastructure super fast at massive scale
-	pkgver = 3.5.2
+	pkgver = 3.5.3
 	pkgrel = 1
 	url = https://github.com/pyinfra-dev/pyinfra
 	arch = any
 	license = MIT
 	makedepends = python-build
-	makedepends = python-hatchling
+	makedepends = python-hatch
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
@@ -19,7 +19,7 @@ pkgbase = pyinfra
 	depends = python-paramiko
 	depends = python-typeguard
 	depends = python-typing_extensions
-	source = pyinfra-3.5.2.tar.gz::https://github.com/pyinfra-dev/pyinfra/archive/v3.5.2.tar.gz
-	sha256sums = 9f42097faf26881b97b349497af68431ae263394e6aba8ad5424a785e6d4e0e8
+	source = pyinfra-3.5.3.tar.gz::https://github.com/pyinfra-dev/pyinfra/archive/v3.5.3.tar.gz
+	sha256sums = c5d44c0efaf8e09b987b507aa34859d95a28294a9d2655a5735d13a30529512a
 
 pkgname = pyinfra
