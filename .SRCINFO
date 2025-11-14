@@ -1,0 +1,21 @@
+pkgbase = libluise-bin
+	pkgdesc = Programming interface for the Wallbraun LCD-USB-Interface.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://web.archive.org/web/20140102061822/http://wallbraun-electronics.de/
+	arch = i686
+	arch = x86_64
+	license = LGPL-2.1-only
+	depends = glibc
+	depends = libusb-compat
+	provides = libluise.so
+	provides = luise=0.1.1
+	conflicts = libluise.so
+	conflicts = luise
+	options = staticlibs
+	source = https://dev.gentoo.org/~conikost/files/LUIse_0.1.1.tar.gz
+	source = description.txt
+	sha256sums = c197a82d3b043d40b3d1ebbe2aa5ed7e7b74955bbc1d2316657fd8e27ce16ed0
+	sha256sums = e8c31a6d6ea4125fdeafb8c18d298cd9e7f0438a28d1c3293a890b9a88a4d337
+
+pkgname = libluise-bin
