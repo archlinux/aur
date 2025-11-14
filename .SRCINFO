@@ -1,11 +1,11 @@
 pkgbase = comet-ms-bin
 	pkgdesc = Comet: an open source tandem mass spectrometry (MS/MS) sequence database search tool
-	pkgver = 2025.02.0
-	pkgrel = 3
+	pkgver = 2025.03.0
+	pkgrel = 1
 	url = https://github.com/UWPR/Comet
 	arch = x86_64
 	license = Apache
-	source = comet-2025.02.0.linux.exe::https://github.com/UWPR/Comet/releases/download/v2025.02.0/comet.linux.exe
-	sha256sums = cce702505993a24ccb477e9ca7347e9a7f7046a86caf749e67743cf7e23d1b44
+	source = comet-2025.03.0.linux.exe::https://github.com/UWPR/Comet/releases/download/v2025.03.0/comet.linux.exe
+	sha256sums = a554253d94491c32cb51af668071f32c7e85e7ea55ac9fb824c40ff9a1b8876b
 
 pkgname = comet-ms-bin
