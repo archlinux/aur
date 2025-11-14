@@ -3,7 +3,7 @@
 _pkgname=valdi
 pkgname="$_pkgname-git"
 pkgver=r21.g0155e71
-pkgrel=2
+pkgrel=3
 pkgdesc='A cross-platform UI framework that delivers native performance without sacrificing developer velocity'
 url='https://github.com/Snapchat/Valdi'
 arch=('aarch64' 'x86_64')
