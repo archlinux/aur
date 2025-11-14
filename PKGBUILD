@@ -1,8 +1,8 @@
-_dotnet_version=8.0
+_dotnet_version=10.0
 _system_libs=true
 
 pkgname=clonedash-git
-pkgver=r1781.g743c2a5
+pkgver=r1782.g6ecd0c4
 pkgrel=1
 pkgdesc="An open-source, from scratch clone of Muse Dash (a parkour rhythm game)."
 arch=("x86_64")
