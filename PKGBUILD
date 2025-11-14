@@ -1,7 +1,7 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgbase=web-eid-webextension
 pkgname=("firefox-extension-web-eid" "chromium-extension-web-eid")
-pkgver=2.3.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Web eID browser extension"
 arch=('any')
