@@ -1,6 +1,6 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 pkgname=perl-meta
-pkgver=0.012
+pkgver=0.014
 pkgrel=1
 pkgdesc='perl meta-programming API'
 _dist=meta
@@ -11,7 +11,7 @@ depends=('perl')
 makedepends=('perl-module-build')
 options=('!emptydirs' purge)
 source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/${_dist}-${pkgver}.tar.gz")
-md5sums=('0946e65cca5f929c6210d2ee28b6287c')
+md5sums=('9ca77ff80734e71aa331292e88ee5886')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
