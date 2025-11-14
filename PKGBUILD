@@ -5,9 +5,11 @@ if [ -z "$_srcinfo" ] && [ -z "$_pkgver" ]; then
   : ${_autoupdate:=true}
 fi
 
+: ${_install_path:=opt}
+
 _pkgname="pcsx2"
 pkgname="$_pkgname-latest-bin"
-pkgver=2.5.163
+pkgver=2.5.289
 pkgrel=1
 pkgdesc="PlayStation 2 emulator"
 url="https://github.com/PCSX2/pcsx2"
@@ -43,34 +45,27 @@ build() {
   for i in squashfs-root/*.png; do
     [ -f "$i" ] && install -Dm755 "$i" "$_pkgname.png" && break
   done
-
-  # update script
-  sed -Ei \
-    's@^this_dir=".*\breadlink\b.*\bdirname\b.*"$@this_dir="/opt/'"$_pkgname"'"@' \
-    "squashfs-root/AppRun"
 }
 
 package() {
   local _files=(
-    squashfs-root/AppRun*
-    squashfs-root/apprun-hooks
     squashfs-root/usr/bin
     squashfs-root/usr/lib
     squashfs-root/usr/plugins
   )
 
-  install -dm755 "$pkgdir/opt/$_pkgname/usr"
+  mkdir -pm755 "$pkgdir/$_install_path/$_pkgname/usr"
   for i in ${_files[@]}; do
-    mv "$i" "$pkgdir/opt/$_pkgname/${i#*/}"
+    cp -r "$i" "$pkgdir/$_install_path/$_pkgname/${i#squashfs-root/}"
   done
 
   # rpath
-  patchelf --force-rpath --set-rpath "/opt/$_pkgname/usr/lib" "$pkgdir/opt/$_pkgname/usr/bin/pcsx2-qt"
+  patchelf --force-rpath --set-rpath "/$_install_path/$_pkgname/usr/lib" "$pkgdir/$_install_path/$_pkgname/usr/bin/pcsx2-qt"
 
   # symlinks
-  install -dm755 "$pkgdir/usr/bin"
-  ln -srf "$pkgdir/opt/$_pkgname/usr/bin/pcsx2-qt" "$pkgdir/usr/bin/$_pkgname"
-  ln -srf "$pkgdir/opt/$_pkgname/usr/bin/pcsx2-qt" "$pkgdir/usr/bin/$_pkgname-qt"
+  mkdir -pm755 "$pkgdir/usr/bin"
+  ln -sf "/$_install_path/$_pkgname/usr/bin/pcsx2-qt" "$pkgdir/usr/bin/$_pkgname"
+  ln -sf "/$_install_path/$_pkgname/usr/bin/pcsx2-qt" "$pkgdir/usr/bin/$_pkgname-qt"
 
   # icon
   install -Dm644 "$_pkgname.png" -t "$pkgdir/usr/share/pixmaps/"
@@ -87,7 +82,7 @@ Exec=$_pkgname
 Icon=$_pkgname
 Terminal=false
 StartupNotify=true
-StartupWMClass=$_pkgname
+StartupWMClass=pcsx2-qt
 Categories=Game;Emulator;
 END
 
@@ -109,7 +104,7 @@ _update_version() {
     printf '%s' "$_response" \
       | grep '/releases/tag/' \
       | sed -E 's@^.*/releases/tag/(.*)".*$@\1@; s@^v@@' \
-      | grep -Ev '[a-z]{2}' | sort -V | tail -1
+      | grep -Ev '[a-z]{2}' | sort -rV | head -1
   )
 
   # update _pkgver
