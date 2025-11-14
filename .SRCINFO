@@ -1,0 +1,13 @@
+pkgbase = atyper
+	pkgdesc = Named ASCII art display utility
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Nick-cpp/atyper
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gcc-libs
+	source = atyper.cpp
+	sha256sums = SKIP
+
+pkgname = atyper
