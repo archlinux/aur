@@ -1,5 +1,5 @@
-# Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
-# Maintainer: ultraviolet <ultravioletnanokitty@gmail.com> (https://aur.archlinux.org/account/ultraviolet)
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
+# Contributor: ultraviolet (https://aur.archlinux.org/account/ultraviolet)
 
 _pkgname="libst2205"
 pkgname="${_pkgname}-git"
