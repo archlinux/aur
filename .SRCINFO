@@ -21,6 +21,6 @@ pkgbase = onlinefix-linux-launcher-bin
 	sha256sums = bae845134d033ae38b16374efce8a21e65e8e4e07fedf3ff0090570872b89e28
 	sha256sums = 4262abfe7db3a930b75790772e774b8cdb11e9d224608751f608aed2689c1d40
 	sha256sums = 410c837f645d4a82f9ceabe9eb7b16f6f3c30929bb772c40ddeeaa25011c3b20
-	sha256sums = d6d540d212d2ac4e0991b2f32855197487cc58b5c0bdfd89922a6430121ed706
+	sha256sums = 49c24a96b75e230af871608fff58f970c9cb62cb5a5681adfe4c65589df3f5ef
 
 pkgname = onlinefix-linux-launcher-bin
