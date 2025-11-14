@@ -1,0 +1,13 @@
+pkgbase = chromiumos-snapshot-bin
+	pkgdesc = ChromiumOS compiled for Linux and can run ChromeOS kiosk enterprise apps
+	pkgver = 1
+	pkgrel = 1
+	url = https://download-chromium.appspot.com/
+	arch = x86_64
+	license = BSD
+	makedepends = unzip
+	depends = glibc
+	source = chromiumos.zip::https://download-chromium.appspot.com/dl/Linux_ChromiumOS_Full?type=snapshots
+	sha256sums = SKIP
+
+pkgname = chromiumos-snapshot-bin
