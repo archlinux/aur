@@ -1,14 +1,14 @@
 pkgname=python-tensap
-pkgver=1.4
+pkgver=1.8
 pkgrel=1
 pkgdesc="A Python package for the approximation of functions and tensors"
 url="https://github.com/anthony-nouy/tensap"
 arch=(any)
 license=('LGPL')
 makedepends=('python-setuptools')
-depends=('python-scipy' 'python-tensorflow')
+depends=('python-scipy')
 source=("https://github.com/anthony-nouy/tensap/archive/v${pkgver}.tar.gz")
-sha256sums=('ae1e47455043a8ac771839e333be62228dbfdb00944465ff3675ca2b114fd0fd')
+sha256sums=('96166ff194a739b066eb0c0dc6dd4c7d91ac4b09a0d7c98800ce26d56e6afaec')
 
 prepare() {
   cd "${srcdir}"/tensap-$pkgver
