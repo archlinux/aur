@@ -1,6 +1,6 @@
 pkgbase = xermius-bin
 	pkgdesc = Xermius - Easy SSH Client
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://xermius.com
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = xermius-bin
 	provides = xermius
 	conflicts = xermius
 	options = !strip
-	source_x86_64 = xermius-1.0.5.deb::https://support.xermius.com/downloads/xermius_1.0.5_amd64.deb
-	sha512sums_x86_64 = a1f66409ece7b6420de3b4067b8ba25701d85ee0c14589758fb5762295eba87915583ed39c127438c92e38196b95ca33100a06a377e584e2425ccf142f6377c6
+	source_x86_64 = xermius-1.0.6.deb::https://app.xermius.com/storage/downloads/xermius_1.0.6_amd64.deb
+	sha512sums_x86_64 = 4182c48cb6ea209d3ceb30594e5fe764c1a90dc3f005d25e8818cb5103a5d4c949dea18ad1719b2c7e831a1497dc8f7685322e8a034e2df6c605c0f858b9b872
 
 pkgname = xermius-bin
