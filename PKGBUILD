@@ -9,7 +9,7 @@ arch=("x86_64")
 provides=("stil")
 conflicts=("stil")
 source=("https://github.com/sermuns/stil/releases/download/v$pkgver.tar.gz")
-sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+sha256sums=('128f4f8f280de1624481e91114b0040ee798faba84ce0df2171025deb9ae6e65')
 options=(!debug)
 
 package() {
