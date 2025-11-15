@@ -2,8 +2,8 @@
 # Contributor: eolianoe <eolianoe At GoogleMAIL DoT com>
 # Contributor: kang <kang@insecure.ws>
 
-_name=sphinxcontrib-newsfeed
 pkgname=python-sphinxcontrib-newsfeed
+_name=${pkgname#python-}
 pkgver=0.1.4
 pkgrel=16
 pkgdesc="News Feed extension for Sphinx"
