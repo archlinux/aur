@@ -1,24 +1,24 @@
 # Maintainer: Samuel Åkesson <sermuns@lysator.liu.se>
 pkgname=stil
-pkgver=0.4.3
+pkgver=
 pkgrel=1
 pkgdesc="generate STatic site from Index Listing of directory"
 url="https://github.com/sermuns/stil"
 license=("WTFPL")
 provides=("stil")
 conflicts=("stil")
-source=("https://github.com/sermuns/stil/archive/refs/tags/v$pkgver.tar.gz")
+source=("https://github.com/sermuns/stil/archive/refs/tags/v$pkgver=
 arch=('x86_64')
 makedepends=('cargo')
-sha256sums=('34184ba92d9f5aeeb8a6b8fa52af583038213993df07894d0e92ed329c2c8cca')
+sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
 options=(!debug)
 
 build() {
-  cd "stil-$pkgver"
+  cd "stil-$pkgver=
   cargo build --release
 }
 
 package() {
-  cd "stil-$pkgver"
+  cd "stil-$pkgver=
   install -Dm755 target/release/$pkgname "$pkgdir/usr/bin/$pkgname"
 }

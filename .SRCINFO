@@ -1,6 +1,6 @@
 pkgbase = stil
 	pkgdesc = generate STatic site from Index Listing of directory
-	pkgver = 0.4.3
+	pkgver = 
 	pkgrel = 1
 	url = https://github.com/sermuns/stil
 	arch = x86_64
@@ -10,6 +10,6 @@ pkgbase = stil
 	conflicts = stil
 	options = !debug
 	source = https://github.com/sermuns/stil/archive/refs/tags/v0.4.3.tar.gz
-	sha256sums = 34184ba92d9f5aeeb8a6b8fa52af583038213993df07894d0e92ed329c2c8cca
+	sha256sums = d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
 
 pkgname = stil
