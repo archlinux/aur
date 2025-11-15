@@ -1,0 +1,22 @@
+pkgbase = drawy
+	pkgdesc = an infinite whiteboard tool
+	pkgver = r115.413c4dc
+	pkgrel = 1
+	url = https://github.com/Prayag2/drawy
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt6-tools
+	makedepends = gcc
+	makedepends = vulkan-headers
+	depends = qt6-base>=6.9
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = gcc-libs
+	provides = drawy
+	provides = drawy-debug
+	source = drawy::git+https://github.com/Prayag2/drawy
+	sha256sums = SKIP
+
+pkgname = drawy
