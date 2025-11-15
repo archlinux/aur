@@ -13,7 +13,7 @@ optdepends=(
     'yay: For AUR support (alternative)'
 )
 provides=('cosmic-ext-applet-updates')
-conflicts=('cosmic-ext-applet-updates')
+conflicts=('cosmic-ext-applet-updates' 'cosmic-ext-applet-updates-bin')
 source=("git+https://github.com/VintageTechie/cosmic-ext-applet-updates.git")
 sha256sums=('SKIP')
 
