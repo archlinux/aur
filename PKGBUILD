@@ -1,9 +1,10 @@
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 _pkgname=pythonocc-core
 pkgname=python-${_pkgname#python}
 pkgver=7.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python package for 3D geometry CAD/BIM/CAM'
 arch=('x86_64')
 url='https://github.com/tpaviot/pythonocc-core'
@@ -21,8 +22,10 @@ prepare() {
 
   # Add Swig-4.3.1 support
   git cherry-pick -n ec4904997fc1d218697f3b9650295ab42cf062c9
-  # opencascade 7.9.1
-  sed -i 's/OCCT_VERSION_PATCH 0/OCCT_VERSION_PATCH 1/' CMakeLists.txt
+  # opencascade 7.9.2
+  sed -i 's/OCCT_VERSION_PATCH 0/OCCT_VERSION_PATCH 2/' CMakeLists.txt
+  # swig 4.4.0
+  sed -i 's/4.3.1/4.4.0/' CMakeLists.txt
 }
 
 build() {
