@@ -1,0 +1,16 @@
+pkgbase = r-inflection
+	pkgdesc = Implementation of methods Extremum Surface Estimator (ESE) and Extremum Distance Estimator (EDE) to identify the inflection point of a curve.
+	pkgver = 1.3.7
+	pkgrel = 1
+	url = https://cran.r-project.org/package=inflection
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-parallel
+	depends = r-stats
+	depends = r-graphics
+	depends = r-grdevices
+	source = https://cran.r-project.org/src/contrib/inflection_1.3.7.tar.gz
+	sha256sums = fc32c772069c6ca245728f27cb524aaf57ca812f6197f5bb201009dee2790211
+
+pkgname = r-inflection
