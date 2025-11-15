@@ -4,7 +4,7 @@
 
 pkgbase=uutils-coreutils-git
 pkgname=($pkgbase coreutils-uutils)
-pkgver=0.3.0.r155.g9b9a913
+pkgver=0.4.0.r67.g5202ac1
 pkgrel=1
 pkgdesc="Rust rewrite of coreutils"
 url=https://github.com/uutils/coreutils
@@ -38,8 +38,7 @@ prepare(){
 # Packaging guideline cause double build.
 export RUSTONIG_DYNAMIC_LIBONIG=1
 #export LOCALES=n
-export RUSTFLAGS="-C codegen-units=1 -C panic=abort ${RUSTFLAGS}" # PROFILE=release-fast does not work yet
-test $RUSTC_BOOTSTRAP = 1 && export CARGOFLAGS="-Zbuild-std=std,panic_abort -Zbuild-std-features=panic_immediate_abort"
+[ $RUSTC_BOOTSTRAP = 1 ] && export CARGOFLAGS="-Zbuild-std=std,panic_abort -Zbuild-std-features=panic_immediate_abort"
 package_uutils-coreutils-git(){
   cd ${pkgbase%-git}
   unset optdepends
@@ -60,7 +59,7 @@ package_coreutils-uutils(){
   install -d "$pkgdir"/usr/{bin,share/{licenses/${pkgname},man/man1,zsh/site-functions,fish/vendor_completions.d}}
   cd "$pkgdir"/usr
   ln -sf uu-\[ bin/\[ # zsh completion err
-  for _f in $("$srcdir"/uutils-coreutils/target/release/coreutils --list | grep -v -E '^(kill|more|uptime|hostname|hashsum|\[)$') ; do
+  for _f in $("$srcdir"/uutils-coreutils/target/release-fast/coreutils --list | grep -v -E '^(kill|more|uptime|hostname|hashsum|\[)$') ; do
     ln -sf uu-$_f bin/$_f
     ln -sf uu-${_f}.1.gz share/man/man1/${_f}.1.gz
     # bash completes symlinks
