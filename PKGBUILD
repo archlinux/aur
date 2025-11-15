@@ -4,7 +4,7 @@
 
 pkgname=flirc-bin
 _pkgname=flirc
-_pkgver=3.27.15-1
+_pkgver=3.27.19-1
 _debrel=amd64
 _dirstr=ver_1iqEqV
 pkgver=${_pkgver/-/.}
