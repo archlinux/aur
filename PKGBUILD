@@ -1,11 +1,10 @@
 # Maintainer: Dustin Pilgrim <dustin.pilgrim1997@gmail.com>
 
 pkgname=claw-bin
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Crustacean powered clipboard manager for X11 & Wayland"
 arch=('x86_64')
-conflicts=('claw')
 url="https://github.com/saltnpepper97/claw"
 license=('MIT')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libsoup' 'pango' 'webkit2gtk-4.1')
@@ -16,7 +15,7 @@ optdepends=(
 options=('!strip' '!debug' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("${url}/releases/download/v${pkgver}/claw_${pkgver}_amd64.deb")
-sha256sums_x86_64=('21b1d49ae593d7b765068ec660aea0e0fa0ac0eb406b0f30b454c36c8dc3b698')
+sha256sums_x86_64=('ad8dc353013d584b1ca99df618924b33f82839a1169c40ec58e5e78a12521c65')
 
 package() {
   tar -xf data.tar.gz -C "${pkgdir}"
