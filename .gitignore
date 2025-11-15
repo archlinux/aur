@@ -12,4 +12,8 @@ old-mediatek
 new-mediatek
 *.tar.zst
 *.sig
+*.sign
+*.zst
+*.part
+*.log
 clean-up-patches.sh

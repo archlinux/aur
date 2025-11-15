@@ -4,7 +4,7 @@
 
 pkgbase=linux-g14
 pkgver=6.17.8.arch1
-pkgrel=1
+pkgrel=1.1
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
 _url='https://github.com/archlinux/linux'
@@ -54,7 +54,6 @@ source=(
   0070-acpi-x86-s2idle-Add-ability-to-configure-wakeup-by-A.patch
   PATCH-asus-wmi-fixup-screenpad-brightness.patch
   PATCH-v5-00-11-Improvements-to-S5-power-consumption.patch
-  v2-0002-hid-asus-change-the-report_id-used-for-HID-LED-co.patch
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
@@ -80,9 +79,7 @@ sha256sums=('5a8de64a75fca706c01c6c0a77cf75a74618439db195e25f1f0268af6b2fb1da'
             'e90bb17f74c5b232001de5558ff96e09612f35a8552e1fa506c8a3451b0516b7'
             '7830a8efc59e0bb411c98cf1acc4e3b541dd0a5366773690700502cc570db62f'
             '590752012b37a21c92b59ab98189f56f405a4722572dd87b39c925bb89bb17c4'
-            '83d40f889a96c492e15fcaf16914c864e8d0ac7fb85148690badef61e89d7afa'
-            '227d2d4ecd710a13deeab3a4e488b4d1c52d06231ab190b939316cc3c1eb2899'
-            )
+            '83d40f889a96c492e15fcaf16914c864e8d0ac7fb85148690badef61e89d7afa')
 
 # notable microarch levels:
 #
@@ -135,12 +132,77 @@ prepare() {
 
   ## choose microarchitecture optimization in GCC here
   ## this needs to run *after* `make olddefconfig` so that our newly added configuration macros exist
-  scripts/config  -d CONFIG_GENERIC_CPU \
-                  -d CONFIG_GENERIC_CPU2 \
-                  -e CONFIG_MNATIVE_AMD
+  if grep -q "GenuineIntel" /proc/cpuinfo; then
+    echo "Applying Intel native optimizations..."
+    scripts/config  -d CONFIG_GENERIC_CPU \
+                    -d CONFIG_GENERIC_CPU2 \
+                    -d CONFIG_GENERIC_CPU3 \
+                    -e CONFIG_MNATIVE_INTEL
+  elif grep -q "AuthenticAMD" /proc/cpuinfo; then
+    echo "Applying AMD native optimizations..."
+    scripts/config  -d CONFIG_GENERIC_CPU \
+                    -d CONFIG_GENERIC_CPU2 \
+                    -d CONFIG_GENERIC_CPU3 \
+                    -e CONFIG_MNATIVE_AMD
+  else
+    echo "Using generic x86-64-v3 optimizations..."
+    scripts/config  -d CONFIG_GENERIC_CPU \
+                    -d CONFIG_GENERIC_CPU2 \
+                    -d CONFIG_MNATIVE_INTEL \
+                    -d CONFIG_MNATIVE_AMD \
+                    -e CONFIG_GENERIC_CPU3
+  fi
  
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
+
+   # if you have one of these that device is not a laptop and for sure is not a ROG laptop
+  scripts/config  --disable CONFIG_AGP \
+                  --disable CONFIG_DRM_MGAG200
+  
+  # There is no use for SELinux as it requires a full userspace rebuild,
+  # It's also unused in Arch Linux and to the best of my knowledge in every derived distro
+  # Also who wants to constantly rebuild the whole userspace just to have SElinux should really derive
+  # his kernel from linux-hardened and apply asus patches on top of that.
+  scripts/config  --disable CONFIG_SECURITY_SELINUX
+
+  # disable virtualization drivers: they decrease load time and increase space:
+  # this kernel is not meant to be ran inside a VM
+  scripts/config  --disable CONFIG_VIRT_DRIVERS \
+                  --disable CONFIG_VIRTIO_PCI \
+                  --disable CONFIG_VIRTIO_BALLOON \
+                  --disable CONFIG_VIRTIO_INPUT \
+                  --disable CONFIG_VIRTIO_MMIO \
+                  --disable CONFIG_VIRTIO_MMIO_CMDLINE_DEVICES \
+                  --disable CONFIG_VIRTIO_NET \
+                  --disable CONFIG_VIRTIO_BLK \
+                  --disable CONFIG_VIRTIO_CONSOLE \
+                  --disable CONFIG_VIRTIO_RNG \
+                  --disable CONFIG_VIRTIO_PMEM \
+                  --disable CONFIG_DRM_QXL \
+                  --disable CONFIG_XEN_PCIDEV_BACKEND \
+                  --disable CONFIG_XEN_BALLOON \
+                  --disable CONFIG_XEN_FBDEV_FRONTEND \
+                  --disable CONFIG_XEN_NETDEV_FRONTEND \
+                  --disable CONFIG_XEN_SCRUB_PAGES \
+                  --disable CONFIG_XEN_SYS_HYPERVISOR \
+                  --disable CONFIG_XEN_ACPI_PROCESSOR \
+                  --disable CONFIG_XEN_MCE_LOG \
+                  --disable CONFIG_XEN_PVHVM_GUEST \
+                  --disable CONFIG_XEN_PVHVM_SMP \
+                  --disable CONFIG_XEN_PVHVM \
+                  --disable CONFIG_XEN_PVH \
+                  --disable CONFIG_XEN_PVHVM
+
+  # PARAVIRT options have overhead, even on bare metal boots. They can cause
+  # spinlocks to not be inlined as well. Either way, we don't intend to run this
+  # kernel as a guest, so this also clears out a whole bunch of
+  # virtualization-specific drivers.
+  scripts/config  --disable CONFIG_HYPERVISOR_GUEST
+
+  # Enable NTSync module
+  scripts/config  --enable CONFIG_NTSYNC
+
   
   ## Here comes a section where you can uncomment additional modules that you do not need on your machine
   ## in order to speed up building the kernel

@@ -32,8 +32,11 @@ path = [
     "0009-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch",
     "0010-asus-nb-wmi-fix-tablet_mode_sw_int.patch",
     "0011-amdgpu-adjust_plane_init_off_by_one.patch",
+    "0070-acpi-x86-s2idle-Add-ability-to-configure-wakeup-by-A.patch",
     "0084-enable-steam-deck-hdr.patch",
     "config",
+    "PATCH-asus-wmi-fixup-screenpad-brightness.patch",
+    "PATCH-v5-00-11-Improvements-to-S5-power-consumption.patch",
 ]
 SPDX-FileCopyrightText = "upstream linux kernel contributors"
 SPDX-License-Identifier = "GPL-2.0-only"
