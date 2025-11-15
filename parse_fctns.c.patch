@@ -1,0 +1,11 @@
+--- /obspy/signal/src/evalresp/parse_fctns.c	2025-04-30 15:15:23.000000000 +0300
++++ /obspy/signal/src/evalresp/parse_fctns_fix.c	2025-11-15 15:39:00.882933008 +0300
+@@ -19,7 +19,7 @@
+ #include <stdlib.h>
+ 
+ #include "./evresp.h"
+-double atof();
++//double atof();
+ 
+ /* parse_pref:  used to parse the prefix from a non-comment RESP file line (returns the blockette
+                 number and starting field number for that line as arguments, return values are -1
