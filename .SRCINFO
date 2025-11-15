@@ -1,7 +1,7 @@
 pkgbase = darkly
 	pkgdesc = Fork of Lightly (A modern style for Qt applications)
 	pkgver = 0.5.25
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/Bali10050/darkly
 	arch = x86_64
 	arch = aarch64
