@@ -1,7 +1,7 @@
 pkgbase = fetchfetch
 	pkgdesc = Fetch info about your *fetch tools
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/spenserblack/fetchfetch
 	arch = x86_64
 	license = GPL-3.0-or-later

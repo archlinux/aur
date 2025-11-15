@@ -3,7 +3,7 @@
 
 pkgname=fetchfetch
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Fetch info about your *fetch tools'
 arch=('x86_64')
 url="https://github.com/spenserblack/$pkgname"
@@ -20,7 +20,7 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
+  install -Dm755 "bin/$pkgname" -t "$pkgdir/usr/bin"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
