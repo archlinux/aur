@@ -1,9 +1,10 @@
 pkgbase = gelly
 	pkgdesc = A Jellyfin media server client focused on music.
 	pkgver = 0.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Fingel/gelly
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	depends = gnome-keyring
