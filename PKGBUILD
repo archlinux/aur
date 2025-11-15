@@ -40,6 +40,7 @@ build()
 
   cmake -S . -B _build.out \
     -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
     -DwxBUILD_TOOLKIT=gtk3
 
   cmake --build _build.out
@@ -47,7 +48,6 @@ build()
 
 package()
 {
-
   cd "${srcdir}/${pkg_name_ver}"
 
   DESTDIR="${pkgdir}" cmake --install _build.out --prefix=/usr
