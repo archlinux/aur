@@ -1,0 +1,13 @@
+pkgbase = doom-fire
+	pkgdesc = DOOM's fire algo, in zig, for 256 color terminals w/no dependencies
+	pkgver = 2025.4
+	pkgrel = 1
+	url = https://github.com/const-void/DOOM-fire-zig
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = zig0.14-bin
+	depends = glibc
+	source = DOOM-fire-zig-2025.4.tar.gz::https://github.com/const-void/DOOM-fire-zig/archive/refs/tags/2025.4.tar.gz
+	b2sums = bfe2a9f5eed5902d521e1e4988b12f9db0b9130703a5397f260f3b9322e25d9664d9e288395e73c4eb6450961948019da0cb32d072f7c876f18aa2fc5a528068
+
+pkgname = doom-fire

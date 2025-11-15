@@ -1,0 +1,4 @@
+[doom-fire]
+source = "git"
+git = "https://github.com/const-void/DOOM-fire-zig.git"
+prefix = "v"
