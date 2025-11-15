@@ -19,5 +19,5 @@ build() {
 
 package() {
 	cd "$srcdir/qvickbuild"
-  install -Dm 755 "./bin/quickbuild" "$pkgdir/usr/bin/qvickbuild"
+  install -Dm 755 "./bin/qvickbuild" "$pkgdir/usr/bin/qvickbuild"
 }
