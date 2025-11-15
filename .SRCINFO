@@ -1,0 +1,24 @@
+pkgbase = qusb2snes
+	pkgdesc = A Qt based webserver for usb2snes
+	pkgver = v0.7.35
+	pkgrel = 1
+	url = https://github.com/Skarsnik/QUsb2snes
+	install = .install
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = qt6-base
+	depends = qt6-websockets
+	depends = qt6-serialport
+	provides = QUsb2Snes
+	provides = QFile2Snes
+	source = git+https://github.com/Skarsnik/QUsb2snes
+	source = git+https://github.com/black-sliver/EmuNWAccess-qt
+	source = QUsb2Snes.desktop
+	source = QFile2Snes.desktop
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 06da7b32748cdb5792bf8be2a9a77d42
+	md5sums = 5d87882c2fe47386e2c51b0eee67a24c
+
+pkgname = qusb2snes

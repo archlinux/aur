@@ -1,0 +1,7 @@
+post_install() {
+    echo "To make your sd2snes device work, you will need to set some tty setting"
+    echo 
+    echo "stty -F /dev/ttyACM0 0:0:cbd:0:3:1c:7f:15:4:5:40:0:11:13:1a:0:12:f:17:16:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0"
+    echo
+    echo "Replace /dev/ttyACM0 by the correct device."
+}
