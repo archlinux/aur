@@ -1,6 +1,6 @@
-pkgbase = qusb2snes-git
+pkgbase = qusb2snes
 	pkgdesc = A Qt based webserver for usb2snes
-	pkgver = v0.7.31
+	pkgver = r10.e5cfbe3
 	pkgrel = 1
 	url = https://github.com/Skarsnik/QUsb2snes
 	install = .install
@@ -21,4 +21,4 @@ pkgbase = qusb2snes-git
 	md5sums = 06da7b32748cdb5792bf8be2a9a77d42
 	md5sums = 5d87882c2fe47386e2c51b0eee67a24c
 
-pkgname = qusb2snes-git
+pkgname = qusb2snes
