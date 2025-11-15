@@ -1,6 +1,6 @@
 pkgbase = xlibre-video-vesa-bin
 	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org vesa video driver (binary release)
-	pkgver = 2.6.0.3
+	pkgver = 2.6.0.4
 	pkgrel = 1
 	url = https://github.com/X11Libre
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = xlibre-video-vesa-bin
 	conflicts = xlibre-video-vesa
 	conflicts = X-ABI-VIDEODRV_VERSION<28
 	conflicts = X-ABI-VIDEODRV_VERSION>=29
-	noextract = xlibre-xf86-video-vesa-2.6.0.3-1-x86_64.pkg.tar.zst
+	noextract = xlibre-xf86-video-vesa-2.6.0.4-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/xlibre-xf86-video-vesa-2.6.0.3-1-x86_64.pkg.tar.zst
-	sha256sums = 55097bd824a221ebd819f2a5503945b57e15dc0e8e1e475e042ffa8e6b72b7c5
+	source = https://x11libre.net/repo/arch_based/x86_64/xlibre-xf86-video-vesa-2.6.0.4-1-x86_64.pkg.tar.zst
+	sha256sums = 93e2eca288b9c15de319ffd7e06815e74305aa4fc5c28cb857843f356eb6cfba
 
 pkgname = xlibre-video-vesa-bin
