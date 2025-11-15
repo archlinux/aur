@@ -21,8 +21,9 @@ makedepends=(
   python-setuptools
   python-wheel
 )
-source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
+source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
 sha512sums=('96d9d0c15fca8b62f945bafc8f0eafa62df9c471f7510e2f153e47b66534e5f3041e5c01df772e6c35a9f09baa70064642f7f0fa43ccfd33dd64c2604494f2fc')
+b2sums=('708c7a725ac36f54ea735953ba9d230b05da95147eabc91de9d610d3e02ec7d0d1ab8f5882d4e97327da425fc49e1b1a1753e011445ede859edd4f3cd5fb2a16')
 
 build() {
   cd $_name-$pkgver
