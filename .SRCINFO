@@ -11,7 +11,7 @@ pkgbase = vapoursynth-plugin-sneedif-git
 	provides = vapoursynth-plugin-sneedif
 	conflicts = vapoursynth-plugin-sneedif
 	options = debug
-	source = bm3d::git+https://github.com/Jaded-Encoding-Thaumaturgy/vapoursynth-SNEEDIF.git
+	source = sneedif::git+https://github.com/Jaded-Encoding-Thaumaturgy/vapoursynth-SNEEDIF.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-sneedif-git
