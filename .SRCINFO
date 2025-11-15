@@ -1,6 +1,6 @@
 pkgbase = snippy-snippet
 	pkgdesc = Snippet manager with rofi/wofi and fzf
-	pkgver = 1.0.10
+	pkgver = 1.0.11
 	pkgrel = 1
 	url = https://github.com/barbUk/snippy
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = snippy-snippet
 	optdepends = xclip: X11 support
 	optdepends = xdotool: X11 support
 	conflicts = snippy-snippet-git
-	source = snippy-snippet-1.0.10.tar.gz::https://github.com/barbUk/snippy/archive/refs/tags/v1.0.10.tar.gz
-	sha256sums = 778c69143a5c05892b3a601b9b2e14c84a2f4685df8fec07e12a8d35cf80e84f
+	source = snippy-snippet-1.0.11.tar.gz::https://github.com/barbUk/snippy/archive/refs/tags/v1.0.11.tar.gz
+	sha256sums = b28bae34a46dd453fa7e5479c00d698b141567d785349fa855968559bb3fa0b8
 
 pkgname = snippy-snippet
