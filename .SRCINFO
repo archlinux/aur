@@ -1,33 +1,33 @@
 pkgbase = cangjie-lts-bin
 	pkgdesc = Cangjie(Beta Channel)
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://cangjie-lang.cn/
 	arch = x86_64
 	arch = aarch64
 	groups = cangjie-lts-full
 	license = Apache-2.0
-	source_x86_64 = Cangjie-1.0.3-linux-amd64.tar.gz::https://cangjie-lang.cn/v1/files/auth/downLoad?nsId=142267&fileName=cangjie-sdk-linux-x64-1.0.3.tar.gz&objectKey=68e725c23115f673ef1280fc
-	sha256sums_x86_64 = 0F1312D337083B49E5ECEC2554D35951AF4AAB88C712CE606249CFD79F3C30F6
-	source_aarch64 = Cangjie-1.0.3-linux-aarch64.tar.gz::https://cangjie-lang.cn/v1/files/auth/downLoad?nsId=142267&fileName=cangjie-sdk-linux-aarch64-1.0.3.tar.gz&objectKey=68e7251a3115f673ef1280fb
-	sha256sums_aarch64 = 9686B609ACDFB704012AE4BCAA64398D52930C32688A1CFDED4223E91D670899
+	source_x86_64 = Cangjie-1.0.4-linux-amd64.tar.gz::https://cangjie-lang.cn/v1/files/auth/downLoad?nsId=142267&fileName=cangjie-sdk-linux-x64-1.0.4.tar.gz&objectKey=691154b9a1061e7e7ef142dd
+	sha256sums_x86_64 = 651D94F7BB0BE349C2D3C6F5BE45689187C2703A9BDBA0C8DE117363A1A67D8C
+	source_aarch64 = Cangjie-1.0.4-linux-aarch64.tar.gz::https://cangjie-lang.cn/v1/files/auth/downLoad?nsId=142267&fileName=cangjie-sdk-linux-aarch64-1.0.4.tar.gz&objectKey=691155b0a1061e7e7ef142e0
+	sha256sums_aarch64 = 08FF3207021A127799B2E688DAD30572EC2CACE7F5C72DEBF6F03F172BC0B61F
 
 pkgname = cangjie-lts-bin
 	pkgdesc = Cangjie compiler(LTS Channel)
-	depends = cangjie-lts-runtime-bin=1.0.3
+	depends = cangjie-lts-runtime-bin=1.0.4
 	depends = openssl>=3.0.7
-	provides = cangjie-bin=1.0.3
+	provides = cangjie-bin=1.0.4
 	conflicts = cangjie-bin
 
 pkgname = cangjie-lts-tools-bin
 	pkgdesc = Tools for Cangjie(LTS Channel)
-	depends = cangjie-lts-bin=1.0.3
-	provides = cangjie-tools=1.0.3
+	depends = cangjie-lts-bin=1.0.4
+	provides = cangjie-tools=1.0.4
 	conflicts = cangjie-tools
 	backup = opt/cangjie/tools/config
 
 pkgname = cangjie-lts-runtime-bin
 	pkgdesc = Runtime for Cangjie(LTS Channel)
 	depends = openssl>=3.0.7
-	provides = cangjie-runtime=1.0.3
+	provides = cangjie-runtime=1.0.4
 	conflicts = cangjie-runtime

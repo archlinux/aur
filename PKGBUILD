@@ -1,6 +1,6 @@
 # Maintainer: yms_hi <yms_hi@Outlook.com>
 pkgname=('cangjie-lts-bin' 'cangjie-lts-tools-bin' 'cangjie-lts-runtime-bin')
-pkgver="1.0.3"
+pkgver="1.0.4"
 pkgrel=1
 epoch=
 arch=('x86_64' 'aarch64')
@@ -18,10 +18,10 @@ backup=()
 options=()
 install=
 changelog=
-source_x86_64=("Cangjie-$pkgver-linux-amd64.tar.gz::https://cangjie-lang.cn/v1/files/auth/downLoad?nsId=142267&fileName=cangjie-sdk-linux-x64-1.0.3.tar.gz&objectKey=68e725c23115f673ef1280fc")
-sha256sums_x86_64=('0F1312D337083B49E5ECEC2554D35951AF4AAB88C712CE606249CFD79F3C30F6')
-source_aarch64=("Cangjie-$pkgver-linux-aarch64.tar.gz::https://cangjie-lang.cn/v1/files/auth/downLoad?nsId=142267&fileName=cangjie-sdk-linux-aarch64-1.0.3.tar.gz&objectKey=68e7251a3115f673ef1280fb")
-sha256sums_aarch64=('9686B609ACDFB704012AE4BCAA64398D52930C32688A1CFDED4223E91D670899')
+source_x86_64=("Cangjie-$pkgver-linux-amd64.tar.gz::https://cangjie-lang.cn/v1/files/auth/downLoad?nsId=142267&fileName=cangjie-sdk-linux-x64-1.0.4.tar.gz&objectKey=691154b9a1061e7e7ef142dd")
+sha256sums_x86_64=('651D94F7BB0BE349C2D3C6F5BE45689187C2703A9BDBA0C8DE117363A1A67D8C')
+source_aarch64=("Cangjie-$pkgver-linux-aarch64.tar.gz::https://cangjie-lang.cn/v1/files/auth/downLoad?nsId=142267&fileName=cangjie-sdk-linux-aarch64-1.0.4.tar.gz&objectKey=691155b0a1061e7e7ef142e0")
+sha256sums_aarch64=('08FF3207021A127799B2E688DAD30572EC2CACE7F5C72DEBF6F03F172BC0B61F')
 noextract=()
 validpgpkeys=()
 
@@ -56,6 +56,7 @@ package_cangjie-lts-bin() {
         cp -r './bin/' "$pkgdir/opt/cangjie"
         cp -r './lib/' "$pkgdir/opt/cangjie"
         cp -r './modules' "$pkgdir/opt/cangjie"
+        cp 'envsetup.sh' "$pkgdir/opt/cangjie"
         chmod 755 "$pkgdir/opt/cangjie/" -R
 }
 
