@@ -1,0 +1,25 @@
+# ~/.config/ntfy/client.yml
+
+# You can set a default host if you self-host, otherwise ntfy.sh is the default.
+# default-host: https://ntfy.sh
+
+# Subscriptions to topics and their actions.
+# This is what you'll use to bridge ntfy to notify-send.
+subscribe:
+  - topic: **your_main_alerts**
+    command: 'notify-send "NTFY: $t" "$m"'
+    # Optional: Filter by priority
+    # if:
+    #   priority: high,urgent 
+
+  - topic: **another_script_logs**
+    command: 'notify-send "NTFY Logs ($t)" "$m" --icon=dialog-information'
+    # Optional: Filter by tags
+    # if:
+    #   tags: error
+
+  # You can also use credentials if the topic is protected
+  # - topic: secret_topic
+  #   command: 'notify-send "Secret: $t" "$m"'
+  #   user: your_user
+  #   password: your_password

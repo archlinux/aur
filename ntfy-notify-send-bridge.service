@@ -1,0 +1,16 @@
+# /usr/lib/systemd/user/ntfy-notify-send-bridge.service
+
+[Unit]
+Description=ntfy-notify-send bridge for desktop notifications
+After=network.target
+
+[Service]
+# Execute the Python script
+ExecStart=/usr/bin/env python3 /usr/bin/ntfy-notify-send-bridge.py
+
+# Standard user environment settings
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
