@@ -1,0 +1,18 @@
+pkgbase = porty-bin
+	pkgdesc = A modern, aesthetic interactive port manager for Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/trishan9/porty
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = porty
+	conflicts = porty
+	noextract = porty-linux-amd64
+	noextract = porty-linux-arm64
+	source_x86_64 = https://github.com/trishan9/porty/releases/download/v1.0.0/porty-linux-amd64
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/trishan9/porty/releases/download/v1.0.0/porty-linux-arm64
+	sha256sums_aarch64 = SKIP
+
+pkgname = porty-bin
