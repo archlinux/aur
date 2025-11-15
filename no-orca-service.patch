@@ -1,0 +1,26 @@
+From 33b7e48119ee71ba6eba144173f7a81e00b73342 Mon Sep 17 00:00:00 2001
+From: Eric Naim <dnaim@cachyos.org>
+Date: Fri, 17 Oct 2025 14:33:15 +0800
+Subject: [PATCH] Makefile: Do not install orca.service
+
+orca 49.0+ comes with its own service file and conflicts with the one
+from steamos-manager. To fix the conflict, remove the one from
+steamos-manager and use the service from the orca package.
+
+Signed-off-by: Eric Naim <dnaim@cachyos.org>
+---
+ Makefile | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 0205765b1b31..2bccf9489f03 100644
+--- a/Makefile
++++ b/Makefile
+@@ -39,4 +39,3 @@ install: target/release/steamos-manager target/release/steamosctl
+ 	install -m644 "data/user/com.steampowered.SteamOSManager1.service" "$(DESTDIR)/usr/share/dbus-1/services/"
+ 	install -m644 "data/user/steamos-manager.service" "$(DESTDIR)/usr/lib/systemd/user/"
+ 	install -m644 "data/user/steamos-manager-session-cleanup.service" "$(DESTDIR)/usr/lib/systemd/user/"
+-	install -m644 "data/user/orca.service" "$(DESTDIR)/usr/lib/systemd/user/"
+-- 
+2.51.1.dirty
+
