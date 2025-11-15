@@ -1,7 +1,7 @@
 pkgbase = airvpn-suite-beta-bin
 	pkgdesc = AirVPN client software collection - prebuilt beta
 	pkgver = 2.0.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://airvpn.org/linux/suite
 	install = airvpn-suite-beta-bin.install
 	changelog = Changelog-Suite.txt
@@ -14,7 +14,7 @@ pkgbase = airvpn-suite-beta-bin
 	depends = gcc-libs
 	depends = dbus
 	depends = openssl
-	depends = libxml2
+	depends = libxml2-legacy
 	provides = hummingbird
 	provides = hummingbird-bin
 	provides = airvpn-suite
