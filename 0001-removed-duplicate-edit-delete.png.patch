@@ -1,7 +1,7 @@
-From 337f9dfed9bb7589453d5d3bc5a36cc2869a863b Mon Sep 17 00:00:00 2001
+From c207dc58962f6e78f2af5dd696dd1b2bd5a6ea14 Mon Sep 17 00:00:00 2001
 From: Andreas Baumann <mail@andreasbaumann.cc>
-Date: Fri, 28 Jan 2022 08:27:01 +0100
-Subject: [PATCH 2/2] removed duplicate edit-delete.png
+Date: Sat, 15 Nov 2025 11:54:13 +0100
+Subject: [PATCH 1/2] removed duplicate edit-delete.png
 
 ---
  dbmodel.qrc | 1 -
@@ -20,5 +20,5 @@ index 57f203a..017d78b 100644
  	<file>icons/16x16/item-relationship.png</file>
  	<file>icons/32x32/item-table.png</file>
 -- 
-2.43.0
+2.51.2
 

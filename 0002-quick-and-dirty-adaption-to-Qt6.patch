@@ -1,0 +1,680 @@
+From 44ace6357279029dc862b96b9c8e48d03018e706 Mon Sep 17 00:00:00 2001
+From: Andreas Baumann <mail@andreasbaumann.cc>
+Date: Sat, 15 Nov 2025 15:09:22 +0100
+Subject: [PATCH 2/2] quick and dirty adaption to Qt6
+
+---
+ src/boxsidehub.cpp                            |  2 +-
+ src/diagram/diagram.pri                       |  2 ++
+ src/diagramdocument.cpp                       |  6 ++--
+ src/diagramitem.cpp                           |  4 +--
+ src/diagramitemfactory.h                      |  1 +
+ src/diagramview.cpp                           |  2 +-
+ src/export/export.pri                         |  2 ++
+ src/export/pdfexporter.cpp                    |  2 +-
+ src/export/pngexporter.cpp                    |  2 +-
+ src/export/svgexporter.cpp                    |  2 +-
+ src/items/base/base.pri                       |  2 ++
+ src/items/database/columnlistmodel.cpp        |  3 +-
+ src/items/database/database.pri               |  2 ++
+ src/items/database/databaserelationship.cpp   |  8 ++---
+ src/items/database/databaserelationship.h     |  1 +
+ .../databaserelationshipproperties.cpp        |  5 +--
+ src/items/database/databasetable.cpp          | 12 +++----
+ .../database/databasetableproperties.cpp      |  2 +-
+ src/line.cpp                                  | 20 +++++------
+ src/main.cpp                                  |  1 +
+ src/mainwindow.cpp                            | 20 +++++++----
+ src/src.pri                                   |  2 ++
+ src/src.pro                                   |  2 +-
+ src/utils/colorpicker/colorpicker.pri         |  2 ++
+ src/utils/colorpicker/qtcolorpicker.cpp       | 33 ++++++++++---------
+ src/utils/colorpicker/qtcolorpicker.h         |  8 ++---
+ src/utils/iconloader/iconloader.pri           |  2 ++
+ src/utils/iconloader/qticonloader.cpp         | 12 +++----
+ src/utils/utils.pri                           |  2 ++
+ 29 files changed, 98 insertions(+), 66 deletions(-)
+
+diff --git a/src/boxsidehub.cpp b/src/boxsidehub.cpp
+index 4dfb460..1fafbd7 100644
+--- a/src/boxsidehub.cpp
++++ b/src/boxsidehub.cpp
+@@ -104,7 +104,7 @@ BoxSideHub::update()
+ 	foreach (Side side, sides.keys()) {
+ 		QPointF p, dp;
+ 		QList<ConnectorRealPair> c = sides[side];
+-		qSort(c.begin(), c.end(), itemLessThan);
++		std::sort(c.begin(), c.end(), itemLessThan);
+ 		qreal angle;
+ 		switch (side) {
+ 		case Top:
+diff --git a/src/diagram/diagram.pri b/src/diagram/diagram.pri
+index b98b4dd..8d4fa94 100644
+--- a/src/diagram/diagram.pri
++++ b/src/diagram/diagram.pri
+@@ -1,4 +1,6 @@
+ DEPENDPATH += $$PWD
++VPATH += $$PWD
++INCLUDE += $$PWD
+ 
+ SOURCES += \
+ 	linelayouter.cpp
+diff --git a/src/diagramdocument.cpp b/src/diagramdocument.cpp
+index a1aad5d..57a1327 100644
+--- a/src/diagramdocument.cpp
++++ b/src/diagramdocument.cpp
+@@ -333,8 +333,10 @@ DiagramDocument::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+ {
+ 	if (m_line) {
+ 		removeItem(m_line);
+-		DatabaseTable *source = qgraphicsitem_cast<DatabaseTable *>(itemAt(m_line->line().p1()));
+-		DatabaseTable *target = qgraphicsitem_cast<DatabaseTable *>(itemAt(m_line->line().p2()));
++		QTransform transform;
++		DatabaseTable *source = qgraphicsitem_cast<DatabaseTable *>(itemAt(m_line->line().p1(),transform));
++		DatabaseTable *target = qgraphicsitem_cast<DatabaseTable *>(itemAt(m_line->line().p2(),transform));
++
+ 		if (source && target && source != target) {
+ 			Line *line = new DatabaseRelationship();
+ 			line->createId();
+diff --git a/src/diagramitem.cpp b/src/diagramitem.cpp
+index cd591ec..19acd5f 100644
+--- a/src/diagramitem.cpp
++++ b/src/diagramitem.cpp
+@@ -40,7 +40,7 @@ DiagramItem::document() const
+ void
+ DiagramItem::loadFromXml(QDomElement element, DiagramDocument *)
+ {
+-	setId(element.attribute("id", QUuid()));
++	setId(QUuid(element.attribute("id", QUuid().toString())));
+ 	setPos(readPointElement(element, "position"));
+ }
+ 
+@@ -48,7 +48,7 @@ void
+ DiagramItem::saveToXml(QDomDocument doc, QDomElement element)
+ {
+ 	element.setAttribute("type", typeName());
+-	element.setAttribute("id", id());
++	element.setAttribute("id", id().toString());
+ 	appendPointElement(doc, element, "position", pos());
+ }
+ 
+diff --git a/src/diagramitemfactory.h b/src/diagramitemfactory.h
+index 5874541..dd59557 100644
+--- a/src/diagramitemfactory.h
++++ b/src/diagramitemfactory.h
+@@ -19,6 +19,7 @@
+ 
+ #include <QMap>
+ #include <QStringList>
++#include <QWidget>
+ #include "utils/singelton.h"
+ class DiagramItem;
+ class DiagramItemProperties;
+diff --git a/src/diagramview.cpp b/src/diagramview.cpp
+index cb958e4..5913851 100644
+--- a/src/diagramview.cpp
++++ b/src/diagramview.cpp
+@@ -62,7 +62,7 @@ DiagramView::updateSceneRect2(const QRectF &rect)
+ void
+ DiagramView::mousePressEvent(QMouseEvent *event)
+ {
+-	if (event->button() == Qt::MidButton) {
++	if (event->button() == Qt::MiddleButton) {
+ 		m_handScrolling = true;
+         m_handScrollingOrigin = QPoint(event->pos());
+ 		m_handScrollingValueX = horizontalScrollBar()->value();
+diff --git a/src/export/export.pri b/src/export/export.pri
+index ae7d15f..ea63030 100644
+--- a/src/export/export.pri
++++ b/src/export/export.pri
+@@ -1,4 +1,6 @@
+ DEPENDPATH += $$PWD
++VPATH += $$PWD
++INCLUDE += $$PWD
+ 
+ SOURCES += \
+     exporter.cpp \
+diff --git a/src/export/pdfexporter.cpp b/src/export/pdfexporter.cpp
+index 051dea0..d488246 100644
+--- a/src/export/pdfexporter.cpp
++++ b/src/export/pdfexporter.cpp
+@@ -42,7 +42,7 @@ PdfExporter::exportToFile(const QString &fileName, DiagramDocument *document)
+     printer.setOutputFormat(QPrinter::PdfFormat);
+     printer.setOutputFileName(fileName);
+     QPainter painter(&printer);
+-    painter.setRenderHints(QPainter::HighQualityAntialiasing | QPainter::Antialiasing);
++    painter.setRenderHints(QPainter::Antialiasing);
+ 
+     document->print(&painter, QRectF(), boundingRect);
+ }
+diff --git a/src/export/pngexporter.cpp b/src/export/pngexporter.cpp
+index ffb9c4e..2648468 100644
+--- a/src/export/pngexporter.cpp
++++ b/src/export/pngexporter.cpp
+@@ -40,7 +40,7 @@ PngExporter::exportToFile(const QString &fileName, DiagramDocument *document)
+ 
+     QImage image(size, QImage::Format_RGB32);
+     QPainter painter(&image);
+-    painter.setRenderHints(QPainter::HighQualityAntialiasing | QPainter::Antialiasing);
++    painter.setRenderHints(QPainter::Antialiasing);
+     painter.fillRect(image.rect(), Qt::white);
+ 
+     document->print(&painter, image.rect(), boundingRect);
+diff --git a/src/export/svgexporter.cpp b/src/export/svgexporter.cpp
+index 0fc3ac8..4f76486 100644
+--- a/src/export/svgexporter.cpp
++++ b/src/export/svgexporter.cpp
+@@ -42,7 +42,7 @@ SvgExporter::exportToFile(const QString &fileName, DiagramDocument *document)
+     generator.setSize(size);
+     generator.setFileName(fileName);
+     QPainter painter(&generator);
+-    painter.setRenderHints(QPainter::HighQualityAntialiasing | QPainter::Antialiasing);
++    painter.setRenderHints(QPainter::Antialiasing);
+ 
+     document->print(&painter, QRectF(), boundingRect);
+ }
+diff --git a/src/items/base/base.pri b/src/items/base/base.pri
+index 88086e5..faaf1e8 100644
+--- a/src/items/base/base.pri
++++ b/src/items/base/base.pri
+@@ -1 +1,3 @@
+ DEPENDPATH += $$PWD
++VPATH += $$PWD
++INCLUDE += $$PWD
+diff --git a/src/items/database/columnlistmodel.cpp b/src/items/database/columnlistmodel.cpp
+index 84ba804..8ae00b5 100644
+--- a/src/items/database/columnlistmodel.cpp
++++ b/src/items/database/columnlistmodel.cpp
+@@ -44,7 +44,8 @@ ColumnListModel::setColumnList(ColumnList *columnList)
+ 		connect(m_columnList, SIGNAL(columnRemoved(int)), this, SLOT(_columnRemoved()));
+ 		connect(m_columnList, SIGNAL(columnChanged(int)), this, SLOT(_columnChanged(int)));
+ 	}
+-	reset();
++	beginResetModel();
++	endResetModel();
+ }
+ 
+ int
+diff --git a/src/items/database/database.pri b/src/items/database/database.pri
+index c65f9e9..f3f9813 100644
+--- a/src/items/database/database.pri
++++ b/src/items/database/database.pri
+@@ -1,4 +1,6 @@
+ DEPENDPATH += $$PWD
++VPATH += $$PWD
++INCLUDE += $$PWD
+ 
+ SOURCES += \
+ 	databasecommands.cpp \
+diff --git a/src/items/database/databaserelationship.cpp b/src/items/database/databaserelationship.cpp
+index 751bb90..ae53c1a 100644
+--- a/src/items/database/databaserelationship.cpp
++++ b/src/items/database/databaserelationship.cpp
+@@ -178,7 +178,7 @@ DatabaseRelationship::setChildColumn(Column *column)
+ {
+ 	if (d->childColumn != column) {
+ 		d->childColumn = column;
+-		emit propertyChanged("childColumn", qVariantFromValue<Column*>(column));
++		emit propertyChanged("childColumn", QVariant::fromValue<Column*>(column));
+ 		static_cast<DatabaseTable *>(connector(0)->hub()->owner())->updateLayout();
+ 		updateLayout();
+ 		update();
+@@ -196,7 +196,7 @@ DatabaseRelationship::setParentColumn(Column *column)
+ {
+ 	if (d->parentColumn != column) {
+ 		d->parentColumn = column;
+-		emit propertyChanged("parentColumn", qVariantFromValue<Column*>(column));
++		emit propertyChanged("parentColumn", QVariant::fromValue<Column*>(column));
+ 		updateLayout();
+ 		update();
+ 	}
+@@ -271,12 +271,12 @@ DatabaseRelationship::updateLayout()
+ 		QLineF line2 = QLineF::fromPolar(1, a2).translated(p2);
+ 		QPointF intersection;
+ 		line << p1;
+-		if (line1.intersect(line2, &intersection) != QLineF::NoIntersection) {
++		if (line1.intersects(line2, &intersection) != QLineF::NoIntersection) {
+ 			// 2-segment line
+ 			line << intersection;
+ 		}
+ 		else {
+-			if (line1.intersect(line2.normalVector(), &intersection) != QLineF::NoIntersection) {
++			if (line1.intersects(line2.normalVector(), &intersection) != QLineF::NoIntersection) {
+ 				// 3-segment line
+ 				qreal len = QLineF(p1, intersection).length() * 0.5;
+ 				line << QLineF::fromPolar(len, a1).translated(p1).p2();
+diff --git a/src/items/database/databaserelationship.h b/src/items/database/databaserelationship.h
+index 7fe6f61..65102d3 100644
+--- a/src/items/database/databaserelationship.h
++++ b/src/items/database/databaserelationship.h
+@@ -23,6 +23,7 @@
+ #include "line.h"
+ #include "databasetable.h"
+ #include "connector.h"
++#include "column.h"
+ 
+ class DatabaseRelationship : public Line
+ {
+diff --git a/src/items/database/databaserelationshipproperties.cpp b/src/items/database/databaserelationshipproperties.cpp
+index f34d045..49f42b7 100644
+--- a/src/items/database/databaserelationshipproperties.cpp
++++ b/src/items/database/databaserelationshipproperties.cpp
+@@ -21,6 +21,7 @@
+ #include <QGridLayout>
+ #include <QLabel>
+ #include <QLineEdit>
++#include <QButtonGroup>
+ #include "commands.h"
+ #include "diagramdocument.h"
+ #include "column.h"
+@@ -217,7 +218,7 @@ DatabaseRelationshipProperties::setChildColumn(int index)
+ 	DatabaseRelationship *relationship = currentRelationship();
+ 	Column *column = index > 0 ? relationship->childTable()->columnList()->column(index - 1) : NULL;
+ 	relationship->document()->undoStack()->push(
+-		new SetObjectPropertyCommand(relationship, "childColumn", qVariantFromValue(column)));
++		new SetObjectPropertyCommand(relationship, "childColumn", QVariant::fromValue(column)));
+ }
+ 
+ void
+@@ -228,5 +229,5 @@ DatabaseRelationshipProperties::setParentColumn(int index)
+ 	DatabaseRelationship *relationship = currentRelationship();
+ 	Column *column = index > 0 ? relationship->parentTable()->columnList()->column(index - 1) : NULL;
+ 	relationship->document()->undoStack()->push(
+-		new SetObjectPropertyCommand(relationship, "parentColumn", qVariantFromValue(column)));
++		new SetObjectPropertyCommand(relationship, "parentColumn", QVariant::fromValue(column)));
+ }
+diff --git a/src/items/database/databasetable.cpp b/src/items/database/databasetable.cpp
+index 74b6734..5de4619 100644
+--- a/src/items/database/databasetable.cpp
++++ b/src/items/database/databasetable.cpp
+@@ -176,18 +176,18 @@ DatabaseTable::updateLayout()
+ 	boldFont.setBold(true);
+ 	QFontMetricsF boldFontMetrics(boldFont);
+ 
+-	qreal spaceWidth = fontMetrics.width(' ');
+-	qreal nameWidth = fontMetrics.width(m_name);
++	qreal spaceWidth = fontMetrics.horizontalAdvance(' ');
++	qreal nameWidth = fontMetrics.horizontalAdvance(m_name);
+ 	qreal height = fontMetrics.height();
+ 	
+-	m_leftSideWidth = fontMetrics.width("PK");
++	m_leftSideWidth = fontMetrics.horizontalAdvance("PK");
+ 
+ 	qreal width = nameWidth + spaceWidth * 2;
+ 
+ 	qreal maxColumnWidth = 0;
+ 	m_columnLabels.clear();
+ 	foreach (Column *column, m_columnList->columns()) {
+-		qreal columnWidth = column->isRequired() ? boldFontMetrics.width(column->name()) : fontMetrics.width(column->name());
++		qreal columnWidth = column->isRequired() ? boldFontMetrics.horizontalAdvance(column->name()) : fontMetrics.horizontalAdvance(column->name());
+ 		maxColumnWidth = qMax(maxColumnWidth, columnWidth);
+ 		qreal columnLeftSideWidth = 0;
+ 		QStringList label;
+@@ -200,10 +200,10 @@ DatabaseTable::updateLayout()
+ 		QString labelStr = label.join(",");
+ 		m_columnLabels << labelStr;
+ 		if (column->isRequired()) {
+-			columnLeftSideWidth = boldFontMetrics.width(labelStr);
++			columnLeftSideWidth = boldFontMetrics.horizontalAdvance(labelStr);
+ 		}
+ 		else {
+-			columnLeftSideWidth = fontMetrics.width(labelStr);
++			columnLeftSideWidth = fontMetrics.horizontalAdvance(labelStr);
+ 		}
+ 		m_leftSideWidth = qMax(m_leftSideWidth, columnLeftSideWidth);
+ 	}
+diff --git a/src/items/database/databasetableproperties.cpp b/src/items/database/databasetableproperties.cpp
+index 779b4bc..14c1fe9 100644
+--- a/src/items/database/databasetableproperties.cpp
++++ b/src/items/database/databasetableproperties.cpp
+@@ -151,7 +151,7 @@ DatabaseTableProperties::updateProperty(const QString &name, const QVariant &val
+ 		d->nameEdit->setText(value.toString());
+ 	}
+ 	else if (name == "color") {
+-		d->colorPicker->setCurrentColor(qVariantValue<QColor>(value));
++		d->colorPicker->setCurrentColor(value.value<QColor>());
+ 	}
+ }
+ 
+diff --git a/src/line.cpp b/src/line.cpp
+index 527fab3..8e602ea 100644
+--- a/src/line.cpp
++++ b/src/line.cpp
+@@ -70,7 +70,7 @@ Line::loadFromXml(QDomElement element, DiagramDocument *document)
+ 		QDomElement hubElement = connectorElement.firstChildElement("hub");
+ 		QString ownerId = hubElement.attribute("owner");
+ 		if (document && !ownerId.isEmpty()) {
+-			DiagramObject *owner = qobject_cast<DiagramObject *>(document->itemById(ownerId));
++			DiagramObject *owner = qobject_cast<DiagramObject *>(document->itemById(QUuid::fromString(ownerId)));
+ 			connector->setHub(owner->hub());
+ 		}
+ 		connectorElement = connectorElement.nextSiblingElement("connector");
+@@ -94,7 +94,7 @@ Line::saveToXml(QDomDocument doc, QDomElement element)
+ 		if (connector->hub()) {
+ 			QDomElement hubElement = doc.createElement("hub");
+ 			connectorElement.appendChild(hubElement);
+-			hubElement.setAttribute("owner", connector->hub()->owner()->id());
++			hubElement.setAttribute("owner", connector->hub()->owner()->id().toString());
+ 		}
+ 	}
+ }
+@@ -207,10 +207,10 @@ Line::updateCache()
+ 
+ 	if (!m_startArrow.isEmpty()) {
+ 		QLineF firstSegment(m_linePoints.at(0), m_linePoints.at(1));
+-		QMatrix matrix;
+-		matrix.translate(firstSegment.p1().x(), firstSegment.p1().y());
+-		matrix.rotate(360 - firstSegment.angle() + 90 + 180);
+-		m_transformedStartArrow = matrix.map(m_startArrow);
++		QTransform transform;
++		transform.translate(firstSegment.p1().x(), firstSegment.p1().y());
++		transform.rotate(360 - firstSegment.angle() + 90 + 180);
++		m_transformedStartArrow = transform.map(m_startArrow);
+ 	}
+ 	else {
+ 		m_transformedStartArrow = QPainterPath();
+@@ -219,10 +219,10 @@ Line::updateCache()
+ 	if (!m_endArrow.isEmpty()) {
+ 		int size = m_linePoints.size();
+ 		QLineF lastSegment(m_linePoints.at(size-2), m_linePoints.at(size-1));
+-		QMatrix matrix;
+-		matrix.translate(lastSegment.p2().x(), lastSegment.p2().y());
+-		matrix.rotate(-lastSegment.angle() + 90);
+-		m_transformedEndArrow = matrix.map(m_endArrow);
++		QTransform transform;
++		transform.translate(lastSegment.p2().x(), lastSegment.p2().y());
++		transform.rotate(-lastSegment.angle() + 90);
++		m_transformedEndArrow = transform.map(m_endArrow);
+ 	}
+ 	else {
+ 		m_transformedEndArrow = QPainterPath();
+diff --git a/src/main.cpp b/src/main.cpp
+index a76a90c..3b761eb 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -19,6 +19,7 @@
+ #include <QTranslator>
+ #include <QApplication>
+ #include "mainwindow.h"
++#include "items/database/column.h"
+ 
+ class Column;
+ 
+diff --git a/src/mainwindow.cpp b/src/mainwindow.cpp
+index 0ff84f8..24e6b60 100644
+--- a/src/mainwindow.cpp
++++ b/src/mainwindow.cpp
+@@ -1,4 +1,5 @@
+ // Copyright (C) 2008  Lukas Lalinsky
++// Copyright (C) 2008  Lukas Lalinsky
+ //
+ // This program is free software; you can redistribute it and/or modify
+ // it under the terms of the GNU General Public License as published by
+@@ -34,6 +35,8 @@
+ #include <QDockWidget>
+ #include <QUndoView>
+ #include <QStackedWidget>
++#include <QMimeData>
++#include <QActionGroup>
+ #include "utils/iconloader/qticonloader.h"
+ #include "diagramitem.h"
+ #include "diagramobject.h"
+@@ -166,7 +169,9 @@ MainWindow::setupUi()
+ 	d->itemPropsDock = new QDockWidget(tr("&Properties"), this);
+ 	d->itemPropsDock->setObjectName("itemPropsDock");
+ 	d->itemPropsDock->setFeatures(
+-		QDockWidget::AllDockWidgetFeatures |
++		QDockWidget::DockWidgetClosable |
++		QDockWidget::DockWidgetMovable |
++		QDockWidget::DockWidgetFloatable |
+ 		QDockWidget::DockWidgetVerticalTitleBar);
+ 	addDockWidget(Qt::BottomDockWidgetArea, d->itemPropsDock);
+ 
+@@ -392,10 +397,13 @@ void
+ MainWindow::setViewScale(const QString &scale)
+ {
+ 	double newScale = scale.left(scale.indexOf("%")).toDouble() / 100.0;
+-	QMatrix oldMatrix = m_view->matrix();
+-	m_view->resetMatrix();
+-	m_view->translate(oldMatrix.dx(), oldMatrix.dy());
+-	m_view->scale(newScale, newScale);
++	QTransform oldTransform = m_view->transform();
++	qreal dx = oldTransform.m31();
++	qreal dy = oldTransform.m32();
++	QTransform transform;
++	transform.translate(dx, dy);
++	transform.scale(newScale, newScale);
++	m_view->setTransform(transform);
+ }
+ 
+ void
+@@ -823,7 +831,7 @@ MainWindow::updateClipboard(QClipboard::Mode mode)
+ void
+ MainWindow::about()
+ {
+-	QMessageBox::about(this, tr("About"), trUtf8(
++	QMessageBox::about(this, tr("About"), tr(
+ 		"<p>\n"
+ 		"<b>Database Modeller " VERSION "</b><br />\n"
+ 		"<a href=\"http://oxygene.sk/lukas/dbmodel/\">http://oxygene.sk/lukas/dbmodel/</a><br />\n"
+diff --git a/src/src.pri b/src/src.pri
+index 3bfa7fd..640d47d 100644
+--- a/src/src.pri
++++ b/src/src.pri
+@@ -1,4 +1,6 @@
+ DEPENDPATH += $$PWD
++VPATH += $$PWD
++INCLUDE += $$PWD
+ 
+ RESOURCES = ../dbmodel.qrc
+ 
+diff --git a/src/src.pro b/src/src.pro
+index 7d3f7da..31d1bb1 100644
+--- a/src/src.pro
++++ b/src/src.pro
+@@ -3,7 +3,7 @@ VERSION = 0.3
+ 
+ DESTDIR = ../
+ 
+-QT += xml svg
++QT += xml svg printsupport widgets
+ #CONFIG += debug
+ 
+ DEFINES += VERSION=\\\"$$VERSION\\\"
+diff --git a/src/utils/colorpicker/colorpicker.pri b/src/utils/colorpicker/colorpicker.pri
+index ffed503..83ff8bb 100644
+--- a/src/utils/colorpicker/colorpicker.pri
++++ b/src/utils/colorpicker/colorpicker.pri
+@@ -1,4 +1,6 @@
+ DEPENDPATH += $$PWD
++VPATH += $$PWD
++INCLUDE += $$PWD
+ 
+ SOURCES += \
+ 	qtcolorpicker.cpp
+diff --git a/src/utils/colorpicker/qtcolorpicker.cpp b/src/utils/colorpicker/qtcolorpicker.cpp
+index 2a4fff1..62499e9 100644
+--- a/src/utils/colorpicker/qtcolorpicker.cpp
++++ b/src/utils/colorpicker/qtcolorpicker.cpp
+@@ -44,20 +44,20 @@
+ ** 
+ ****************************************************************************/
+ 
+-#include <QtGui/QApplication>
+-#include <QtGui/QDesktopWidget>
++#include <QtWidgets/QApplication>
++#include <QScreen>
+ #include <QtGui/QPainter>
+-#include <QtGui/QPushButton>
+-#include <QtGui/QColorDialog>
++#include <QtWidgets/QPushButton>
++#include <QtWidgets/QColorDialog>
+ #include <QtCore/QMap>
+-#include <QtGui/QLayout>
+-#include <QtGui/QStyle>
+-#include <QtGui/QLabel>
+-#include <QtGui/QToolTip>
++#include <QtWidgets/QLayout>
++#include <QtWidgets/QStyle>
++#include <QtWidgets/QLabel>
++#include <QtWidgets/QToolTip>
+ #include <QtGui/QPixmap>
+ #include <QtGui/QFocusEvent>
+ #include <QtGui/QPaintEvent>
+-#include <QtGui/QGridLayout>
++#include <QtWidgets/QGridLayout>
+ #include <QtGui/QHideEvent>
+ #include <QtGui/QKeyEvent>
+ #include <QtGui/QShowEvent>
+@@ -168,7 +168,7 @@ class ColorPickerItem : public QFrame
+     Q_OBJECT
+ 
+ public:
+-    ColorPickerItem(const QColor &color = Qt::white, const QString &text = QString::null,
++    ColorPickerItem(const QColor &color = Qt::white, const QString &text = QString(),
+ 		      QWidget *parent = 0);
+     ~ColorPickerItem();
+ 
+@@ -310,7 +310,8 @@ void QtColorPicker::buttonPressed(bool toggled)
+     if (!toggled)
+         return;
+ 
+-    const QRect desktop = QApplication::desktop()->geometry();
++    QScreen *screen = QGuiApplication::primaryScreen();
++    const QRect desktop = screen->geometry();
+     // Make sure the popup is inside the desktop.
+     QPoint pos = mapToGlobal(rect().bottomLeft());
+     if (pos.x() < desktop.left())
+@@ -859,7 +860,7 @@ void ColorPickerPopup::regenerateGrid()
+     // one.
+     if (grid) delete grid;
+     grid = new QGridLayout(this);
+-    grid->setMargin(1);
++    grid->setContentsMargins(1, 1, 1, 1);
+     grid->setSpacing(0);
+ 
+     int ccol = 0, crow = 0;
+@@ -889,11 +890,11 @@ void ColorPickerPopup::regenerateGrid()
+ void ColorPickerPopup::getColorFromDialog()
+ {
+     bool ok;
+-    QRgb rgb = QColorDialog::getRgba(lastSel.rgba(), &ok, parentWidget());
++    QColor col = QColorDialog::getColor(lastSel, parentWidget(), tr("Color:"), QColorDialog::ShowAlphaChannel);
++    ok = col.isValid();
+     if (!ok)
+-	return;
+-
+-    QColor col = QColor::fromRgba(rgb);
++        return;
++    
+     insertColor(col, tr("Custom"), -1);
+     lastSel = col;
+     emit selected(col);
+diff --git a/src/utils/colorpicker/qtcolorpicker.h b/src/utils/colorpicker/qtcolorpicker.h
+index 8fcfadb..6a39c16 100644
+--- a/src/utils/colorpicker/qtcolorpicker.h
++++ b/src/utils/colorpicker/qtcolorpicker.h
+@@ -46,15 +46,15 @@
+ 
+ #ifndef QTCOLORPICKER_H
+ #define QTCOLORPICKER_H
+-#include <QtGui/QPushButton>
++#include <QtWidgets/QPushButton>
+ #include <QtCore/QString>
+ #include <QtGui/QColor>
+ 
+-#include <QtGui/QLabel>
++#include <QtWidgets/QLabel>
+ #include <QtCore/QEvent>
+ #include <QtGui/QFocusEvent>
+ 
+-#if defined(Q_WS_WIN)
++#if defined(Q_OS_WIN)
+ #  if !defined(QT_QTCOLORPICKER_EXPORT) && !defined(QT_QTCOLORPICKER_IMPORT)
+ #    define QT_QTCOLORPICKER_EXPORT
+ #  elif defined(QT_QTCOLORPICKER_IMPORT)
+@@ -84,7 +84,7 @@ public:
+ 
+     ~QtColorPicker();
+ 
+-    void insertColor(const QColor &color, const QString &text = QString::null, int index = -1);
++    void insertColor(const QColor &color, const QString &text = QString(), int index = -1);
+ 
+     QColor currentColor() const;
+ 
+diff --git a/src/utils/iconloader/iconloader.pri b/src/utils/iconloader/iconloader.pri
+index 33093ee..53e0ee5 100644
+--- a/src/utils/iconloader/iconloader.pri
++++ b/src/utils/iconloader/iconloader.pri
+@@ -1,4 +1,6 @@
+ DEPENDPATH += $$PWD
++VPATH += $$PWD
++INCLUDE += $$PWD
+ 
+ SOURCES += \
+ 	qticonloader.cpp
+diff --git a/src/utils/iconloader/qticonloader.cpp b/src/utils/iconloader/qticonloader.cpp
+index 78e62b8..62c80ab 100644
+--- a/src/utils/iconloader/qticonloader.cpp
++++ b/src/utils/iconloader/qticonloader.cpp
+@@ -38,7 +38,7 @@
+ #include <QtCore/QSettings>
+ #include <QtCore/QTextStream>
+ 
+-#ifdef Q_WS_X11
++#ifdef Q_OS_X11
+ 
+ class QIconTheme
+ {
+@@ -91,7 +91,7 @@ Q_GLOBAL_STATIC(QtIconLoaderImplementation, iconLoaderInstance)
+ QIcon QtIconLoader::icon(const QString &name, const QIcon &fallback)
+ {
+     QIcon icon;
+-#ifdef Q_WS_X11
++#ifdef Q_OS_X11
+     QString pngExtension(QLatin1String(".png"));
+     QList<int> iconSizes;
+     iconSizes << 16 << 24 << 32 << 48 << 64;
+@@ -103,11 +103,11 @@ QIcon QtIconLoader::icon(const QString &name, const QIcon &fallback)
+         icon = fallback;
+     Q_UNUSED(name);
+     Q_UNUSED(fallback);
+-#endif // Q_WS_X11
++#endif // Q_OS_X11
+     return icon;
+ }
+ 
+-#ifdef Q_WS_X11
++#ifdef Q_OS_X11
+ 
+ QtIconLoaderImplementation::QtIconLoaderImplementation()
+ {
+@@ -160,7 +160,7 @@ static QString kdeHome()
+ void QtIconLoaderImplementation::lookupIconTheme() const
+ {
+     
+-#ifdef Q_WS_X11
++#ifdef Q_OS_X11
+     QString dataDirs = QLatin1String(getenv("XDG_DATA_DIRS"));
+     if (dataDirs.isEmpty())
+         dataDirs = QLatin1String("/usr/local/share/:/usr/share/");
+@@ -347,4 +347,4 @@ QPixmap QtIconLoaderImplementation::findIcon(int size, const QString &name) cons
+     QPixmapCache::insert(pixmapName, pixmap);
+     return pixmap;
+ }
+-#endif //Q_WS_X11
++#endif //Q_OS_X11
+diff --git a/src/utils/utils.pri b/src/utils/utils.pri
+index aa68f2e..52e0615 100644
+--- a/src/utils/utils.pri
++++ b/src/utils/utils.pri
+@@ -1,4 +1,6 @@
+ DEPENDPATH += $$PWD
++VPATH += $$PWD
++INCLUDE += $$PWD
+ 
+ include(colorpicker/colorpicker.pri)
+ include(iconloader/iconloader.pri)
+-- 
+2.51.2
+
