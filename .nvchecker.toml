@@ -1,0 +1,3 @@
+[cline-cli]
+source = "npm"
+npm = "cline"
