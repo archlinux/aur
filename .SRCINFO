@@ -1,4 +1,4 @@
-pkgbase = Zencore-rs
+pkgbase = zencore-rs
 	pkgdesc = A minimalist backup solution built with Rust.
 	pkgver = 1.3
 	pkgrel = 1
@@ -18,4 +18,4 @@ pkgbase = Zencore-rs
 	source = git+https://github.com/Blues24/Zencore-rs#branch=main
 	sha256sums = SKIP
 
-pkgname = Zencore-rs
+pkgname = zencore-rs
