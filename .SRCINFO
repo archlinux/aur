@@ -1,7 +1,7 @@
 pkgbase = snippy-snippet
 	pkgdesc = Snippet manager with rofi/wofi and fzf
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/barbUk/snippy
 	arch = any
 	license = GPL-3.0-or-later
@@ -10,7 +10,7 @@ pkgbase = snippy-snippet
 	depends = jq
 	optdepends = wtype: Wayland support
 	optdepends = wl-clipboard: Wayland support
-	optdepends = rofi: X11 support
+	optdepends = rofi: X11 support / Wayland support
 	optdepends = xsel: X11 support
 	optdepends = xclip: X11 support
 	optdepends = xdotool: X11 support
