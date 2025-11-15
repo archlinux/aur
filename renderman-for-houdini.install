@@ -1,11 +1,11 @@
 post_install() {
-    printf "$(tput setaf 4)You will also need to set environment variables for Houdini to find RenderMan. For example, for Houdini 20.5.445 default (gcc11.2) version, edit the following file:$(tput sgr0)\n\n"
-    printf "$(tput setaf 2)~/houdini20.5/houdini.env$(tput sgr0)\n\n"
+    printf "$(tput setaf 4)You will also need to set environment variables for Houdini to find RenderMan. For example, for Houdini 21.0.512 default (gcc11.2) version, edit the following file:$(tput sgr0)\n\n"
+    printf "$(tput setaf 2)~/houdini21.0/houdini.env$(tput sgr0)\n\n"
     printf "$(tput setaf 4)And set the environment as follows:$(tput sgr0)\n\n"
-    printf "$(tput setaf 2)RMANTREE=/opt/pixar/RenderManProServer-26.3$(tput sgr0)\n"
-    printf "$(tput setaf 2)RFHTREE=/opt/pixar/RenderManForHoudini-26.3$(tput sgr0)\n"
-    printf "$(tput setaf 2)RMAN_PROCEDURALPATH=\$RFHTREE/3.11/20.5.445/openvdb:&$(tput sgr0)\n"
-    printf "$(tput setaf 2)HOUDINI_PATH=\$RFHTREE/3.11/20.5.445:&$(tput sgr0)\n"
+    printf "$(tput setaf 2)RMANTREE=/opt/pixar/RenderManProServer-27.0$(tput sgr0)\n"
+    printf "$(tput setaf 2)RFHTREE=/opt/pixar/RenderManForHoudini-27.0$(tput sgr0)\n"
+    printf "$(tput setaf 2)RMAN_PROCEDURALPATH=\$RFHTREE/3.11/21.0.512/openvdb:&$(tput sgr0)\n"
+    printf "$(tput setaf 2)HOUDINI_PATH=\$RFHTREE/3.11/21.0.512:&$(tput sgr0)\n"
 }
 
 post_upgrade() {
