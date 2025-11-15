@@ -1,6 +1,6 @@
 # Maintainer: Sanjaya Danushka <dsanjaya712@gmail.com>
 pkgname=neoarch-git
-pkgrel=1
+pkgrel=2
 pkgdesc="NeoArch Package Manager for Arch Linux"
 arch=('any')
 url="https://github.com/Sanjaya-Danushka/Neoarch"
