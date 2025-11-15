@@ -1,0 +1,19 @@
+pkgbase = tinyetl
+	pkgdesc = Fast, zero-config ETL in a single binary
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/alrpal/TinyETL
+	arch = x86_64
+	license = Apache-2.0
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	depends = unixodbc
+	options = !debug
+	source_x86_64 = tinyetl-0.7.0.tar.gz::https://github.com/alrpal/TinyETL/releases/download/v0.7.0/tinyetl-linux-x86_64.tar.gz
+	source_x86_64 = https://raw.githubusercontent.com/alrpal/TinyETL/refs/tags/v0.7.0/LICENSE
+	provides_x86_64 = TinyETL=0.7.0
+	sha256sums_x86_64 = 7000899638d62f992b07e87b41d576d697fd2011f690b77f9efe37263afc7c35
+	sha256sums_x86_64 = 91d18da4d08bc2712c854a5d200b85cd6ee90351d898b221785a820646e02116
+
+pkgname = tinyetl
