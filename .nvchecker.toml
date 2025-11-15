@@ -1,4 +1,4 @@
 ["dotnet-core-9.0-bin"]
 source = "jq"
-url = "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json"
-filter = '.["releases-index"][] | select(.["channel-version"] == "9.0") | "\(.["latest-runtime"]).sdk\(.["latest-sdk"] | split(".")[2])"'
+url = "https://builds.dotnet.microsoft.com/dotnet/release-metadata/9.0/releases.json"
+filter = '(.releases[0].sdk["runtime-version"] + ".sdk" + (.releases[0].sdk["version-display"] | split(".") | .[-1]))'
