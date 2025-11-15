@@ -1,0 +1,20 @@
+pkgbase = term-everything-bin
+	pkgdesc = Run every GUI app in the terminal!
+	pkgver = 0.7.5
+	pkgrel = 1
+	url = https://github.com/mmulet/term.everything
+	arch = x86_64
+	arch = aarch64
+	license = AGPL
+	provides = term-everything
+	conflicts = term-everything
+	source_x86_64 = https://github.com/mmulet/term.everything/releases/download/0.7.5/term.everything.mmulet.com-dont_forget_to_chmod_+x_this_file_x86_64
+	source_x86_64 = https://raw.githubusercontent.com/mmulet/term.everything/refs/tags/0.7.5/LICENSE.txt
+	sha256sums_x86_64 = 4b057cb65dc70ff623bd8b88ca03dcf5710025420871713d0088b68564d40c18
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/mmulet/term.everything/releases/download/0.7.5/ARM_ARM_for_aarch_64_systems_term.everything.mmulet.com-dont_forget_to_chmod_+x_this_file_ARM
+	source_aarch64 = https://raw.githubusercontent.com/mmulet/term.everything/refs/tags/0.7.5/LICENSE.txt
+	sha256sums_aarch64 = ac03b7ff01bb2ffdedbce13a4894b73d126c90923bd1025c0247b7d13f660a59
+	sha256sums_aarch64 = SKIP
+
+pkgname = term-everything-bin
