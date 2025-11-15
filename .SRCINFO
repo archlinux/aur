@@ -1,0 +1,23 @@
+pkgbase = tsenta-desktop-bin
+	pkgdesc = Tsenta - Automated job application assistant
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/tsenta/tsenta-desktop
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = libsecret
+	depends = libappindicator
+	provides = tsenta-desktop
+	conflicts = tsenta-desktop
+	options = !strip
+	source = https://github.com/tsenta/tsenta-desktop-linux/releases/download/v2.1.0/tsenta-desktop_2.1.0_amd64.deb
+	sha256sums = ac7f4328dfcbe75cedc707f6f0d968712dcf4588ab001363fa68e73b724344cf
+
+pkgname = tsenta-desktop-bin
