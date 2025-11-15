@@ -13,11 +13,11 @@ md5sums=(SKIP)
 
 build() {
 	cd "$pkgname"
-	nimble build -d:release --opt:speed -y -o:"$pkgname"
+	nimble build -d:danger --opt:speed -y -o:"$pkgname"
 }
 
 package() {
 	cd "$pkgname"
-	install -Dm755 -t "$pkgdir/usr/bin" "$pkgname"
+	install -Dm755 -s -t "$pkgdir/usr/bin" "$pkgname"
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
