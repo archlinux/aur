@@ -9,14 +9,14 @@
 _CUDA_ARCH_LIST="7.5;8.0;8.6;8.7;8.9;9.0;10.0;10.3;11.0;12.0;12.1;12.1+PTX"
 _CUDA_ARCH_LIST_CMAKE="75;80;86;87;89;90;100;103;110;120;121;121-virtual"
 _pkgname=vision
-pkgbase='torchvision'
-pkgname=('torchvision' 'torchvision-cuda' 'python-torchvision' 'python-torchvision-cuda')
+pkgbase=torchvision
+pkgname=(torchvision torchvision-cuda python-torchvision python-torchvision-cuda)
 pkgver=0.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Datasets, transforms, and models specific to computer vision'
-arch=('x86_64')
+arch=(x86_64)
 url='https://github.com/pytorch/vision'
-license=('BSD-3-Clause')
+license=(BSD-3-Clause)
 depends=(
   glibc
   gcc-libs
@@ -34,7 +34,6 @@ makedepends=(
   python-installer
   python-setuptools
   python-wheel
-  nvidia-utils
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/pytorch/vision/archive/v${pkgver}.tar.gz"
         "torchvision-0_17_1-fix-build.patch"
@@ -90,16 +89,16 @@ build() {
   WITH_CUDA=0 \
   FORCE_CUDA=0 \
   TORCHVISION_USE_NVJPEG=0 \
-  python setup.py build
-
+  python -m build --wheel --no-isolation
 
   # build python-torchvision-cuda
+  echo "Building torchvision python bindings (GPU version with CUDA)"
   cd "${srcdir}/python-${_pkgname}-cuda-${pkgver}"
   TORCHVISION_INCLUDE="${srcdir}" \
   TORCHVISION_LIBRARY=/usr/lib \
   FORCE_CUDA=1 \
   TORCH_CUDA_ARCH_LIST="${_CUDA_ARCH_LIST}" \
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package_python-torchvision() {
@@ -114,9 +113,9 @@ package_python-torchvision() {
     'python-scipy: for specific datasets'
   )
 
-  cd "${srcdir}/python-${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd python-$_pkgname-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
 
 package_python-torchvision-cuda() {
@@ -134,32 +133,29 @@ package_python-torchvision-cuda() {
   provides+=(python-torchvision)
   conflicts+=(python-torchvision)
 
-  cd "${srcdir}/python-${_pkgname}-cuda-${pkgver}"
-  TORCHVISION_INCLUDE="${srcdir}" \
-  TORCHVISION_LIBRARY=/usr/lib \
-  FORCE_CUDA=1 \
-  TORCH_CUDA_ARCH_LIST="${_CUDA_ARCH_LIST}" \
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd python-$_pkgname-cuda-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
 
 package_torchvision() {
   pkgdesc='Datasets, transforms, and models specific to computer vision (C++ library only)'
   depends+=(python-pytorch)
 
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  DESTDIR="${pkgdir}" cmake --install build
-  install -m644 -Dt "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  cd $_pkgname-$pkgver
+  DESTDIR="$pkgdir" cmake --install build
+  install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
+
 package_torchvision-cuda() {
   pkgdesc='Datasets, transforms, and models specific to computer vision (C++ library only with GPU support)'
   depends+=(python-pytorch-cuda)
   provides+=(torchvision)
   conflicts+=(torchvision)
 
-  cd "${srcdir}/${_pkgname}-cuda-${pkgver}"
-  DESTDIR="${pkgdir}" cmake --install build
-  install -m644 -Dt "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  cd $_pkgname-cuda-$pkgver
+  DESTDIR="$pkgdir" cmake --install build
+  install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
 
 # vim:set ts=2 sw=2 et:
