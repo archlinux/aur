@@ -1,6 +1,6 @@
 # Maintainer: Blueze <lukmanaffandi900@gmail.com>
-pkgname=Zencore-rs
-_name=Zencore-rs
+pkgname=zencore-rs
+_name=zencore-rs
 _binname=zencore
 pkgver=1.3
 pkgrel=1
