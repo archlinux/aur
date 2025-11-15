@@ -1,0 +1,32 @@
+post_install() {
+  cat >&2 << 'EOF'
+
+    ##                                                  ##
+    ## Wine will be used to run this Windows app;       ##
+    ## therefore, not everything may work properly.     ##
+    ##                                                  ##
+    ## Please see:                                      ##
+
+> https://appdb.winehq.org/objectManager.php?sClass=version&iId=42919
+
+    ## for details and known limitations.               ##
+    ##                                                  ##
+    ## The app may crash when you try to submit your    ##
+    ## tax declaration.                                 ##
+    ##                                                  ##
+
+EOF
+}
+
+post_remove() {
+  cat >&2 << 'EOF'
+
+    ##                                                  ##
+    ## Before completely removing your user data from   ##
+    ## the ~/.local/share/wiso prefix, make a backup of ##
+    ## that directory hierarchy to preserve your active ##
+    ## licenses.                                        ##
+    ##                                                  ##
+
+EOF
+}
