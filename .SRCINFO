@@ -1,6 +1,6 @@
 pkgbase = xlibre-video-amdgpu-bin
 	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org amdgpu video driver (binary release)
-	pkgver = 23.0.0.5
+	pkgver = 23.0.0.6
 	pkgrel = 1
 	url = https://github.com/X11Libre
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = xlibre-video-amdgpu-bin
 	conflicts = xlibre-video-amdgpu
 	conflicts = X-ABI-VIDEODRV_VERSION<28
 	conflicts = X-ABI-VIDEODRV_VERSION>=29
-	noextract = xlibre-xf86-video-amdgpu-23.0.0.5-1-x86_64.pkg.tar.zst
+	noextract = xlibre-xf86-video-amdgpu-23.0.0.6-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://github.com/X11Libre/binpkg-arch-based/raw/refs/heads/main/xlibre-xf86-video-amdgpu-23.0.0.5-1-x86_64.pkg.tar.zst
-	sha256sums = ee26a05f8a0e4eea1c11d1825c8c7682bff501f2ae65de55094d9135e6b43dd2
+	source = https://x11libre.net/repo/arch_based/x86_64/xlibre-xf86-video-amdgpu-23.0.0.6-1-x86_64.pkg.tar.zst
+	sha256sums = 3d65c83bdc1560b3c790ca5d22635262638e32fff11277787ac2eee2f263c4af
 
 pkgname = xlibre-video-amdgpu-bin
