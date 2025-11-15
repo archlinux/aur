@@ -1,7 +1,7 @@
 pkgbase = sponge-bin
 	pkgdesc = Effortlessly build stable, reliable, and high-performance backend services with a "low-code" approach
-	pkgver = 1.15.3
-	pkgrel = 2
+	pkgver = 1.16.0
+	pkgrel = 1
 	url = https://go-sponge.com
 	arch = x86_64
 	license = MIT
@@ -9,17 +9,17 @@ pkgbase = sponge-bin
 	depends = protobuf
 	depends = protoc-gen-doc
 	depends = protoc-gen-go
-	depends = protoc-gen-go-gin=1.15.3
+	depends = protoc-gen-go-gin=1.16.0
 	depends = protoc-gen-go-grpc
-	depends = protoc-gen-go-rpc-tmpl=1.15.3
+	depends = protoc-gen-go-rpc-tmpl=1.16.0
 	depends = protoc-gen-gotag
-	depends = protoc-gen-json-field=1.15.3
+	depends = protoc-gen-json-field=1.16.0
 	depends = protoc-gen-openapiv2
 	depends = protoc-gen-validate
 	depends = swag
 	provides = sponge
 	conflicts = sponge
-	source_x86_64 = sponge-1.15.3-x86_64.tar.gz::https://github.com/go-dev-frame/sponge/releases/download/v1.15.3/sponge_1.15.3_linux_amd64.zip
-	sha256sums_x86_64 = e14af9813c579e9b84086e0f47e3bb063aded5871e9aeb70c65cb1d0a746a8ff
+	source_x86_64 = sponge-1.16.0-x86_64.tar.gz::https://github.com/go-dev-frame/sponge/releases/download/v1.16.0/sponge_1.16.0_linux_amd64.zip
+	sha256sums_x86_64 = f1b9fd3a82a842fdaacf00b6271f865f51decc0d5bf9e3ffd72e273f62f00560
 
 pkgname = sponge-bin

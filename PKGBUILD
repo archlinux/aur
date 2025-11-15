@@ -2,8 +2,8 @@
 
 _pkgname="sponge"
 pkgname="${_pkgname}-bin"
-pkgver=1.15.3
-pkgrel=2
+pkgver=1.16.0
+pkgrel=1
 pkgdesc="Effortlessly build stable, reliable, and high-performance backend services with a \"low-code\" approach"
 arch=('x86_64')
 url="https://go-sponge.com"
@@ -27,7 +27,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_amd64.zip")
-sha256sums_x86_64=('e14af9813c579e9b84086e0f47e3bb063aded5871e9aeb70c65cb1d0a746a8ff')
+sha256sums_x86_64=('f1b9fd3a82a842fdaacf00b6271f865f51decc0d5bf9e3ffd72e273f62f00560')
 
 package() {
   cd "${srcdir}"
