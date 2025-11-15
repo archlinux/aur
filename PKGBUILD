@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=yosys-nightly
-pkgver=20251114_v0.59.1_39_gb91dbc732
+pkgver=20251115_v0.59.1_49_g84adc82fa
 pkgrel=1
 epoch=1
 pkgdesc="Yosys Open SYnthesis Suite, A framework for RTL synthesis"
@@ -17,7 +17,7 @@ conflicts=("yosys" "yosys-git")
 replaces=("yosys" "yosys-git")
 provides=("yosys=$(cut -d _ -f 3 <<< "${pkgver}")")
 source=(
-	"yosys::git+https://github.com/YosysHQ/yosys.git#commit=b91dbc732"
+	"yosys::git+https://github.com/YosysHQ/yosys.git#commit=84adc82fa"
 	"yosys.conf"
 )
 sha256sums=(
