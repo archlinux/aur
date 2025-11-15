@@ -4,7 +4,7 @@
 _pkgname="pulseaudio-module-xrdp"
 pkgname="$_pkgname-git"
 pkgver=0.8.r2.g2d62018
-pkgrel=1
+pkgrel=2
 pkgdesc="xrdp pulseaudio module"
 url="https://github.com/neutrinolabs/pulseaudio-module-xrdp"
 license=('LGPL-2.1-only')
@@ -57,8 +57,8 @@ _build_pulse() (
   git -c advice.detachedHead=false checkout -f "${_ref:?}"
 
   local _meson_options=(
-    -Ddoxygen=false
-    -Dtests=false
+    -Ddoxygen=disabled
+    -Dtests=disabled
   )
 
   meson build "${_meson_options[@]}"
