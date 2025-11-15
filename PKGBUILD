@@ -2,7 +2,7 @@
 # Contributor: Tobias Brunner <tobias@tobru.ch>
 
 _npmname=cloudron
-_npmver=5.12.0
+_npmver=6.0.0
 pkgname=cloudron-cli
 pkgver=$_npmver
 pkgrel=1
@@ -13,17 +13,16 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm' 'jq')
 optdepends=()
-source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz")
+source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz")
 noextract=("$_npmname-$_npmver.tgz")
-sha256sums=('28ec4b852e56800b412c32c049cd94113bcb8c3f45b44010494bc17f6a42baa8')
+sha256sums=('041356597acd29bdf55301d7c24d86821035d777bed390c936947b341bca860d')
 
 package() {
 	npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
+
+	# Install license
 	local _npmdir="$pkgdir/usr/lib/node_modules/$_npmname"
-	find "$pkgdir/usr" -type d -exec chmod 755 {} +
-	chown -R root:root "$pkgdir"
-	install -Dm644 "$_npmdir/LICENSE" "$pkgdir/usr/share/licenses/$_npmname/LICENSE"
-	rm -rf "$_npmdir/LICENSE"
+	install -Dm644 "$_npmdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 	# Remove references to $pkgdir
 	find "$pkgdir" -type f -name package.json -print0 | xargs -0 sed -i "/_where/d"
