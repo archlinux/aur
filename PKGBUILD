@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-pkgname=carafe-bin
 _pkgname=carafe
+pkgname=${_pkgname}-bin
 pkgver=1.5.1
 pkgrel=1
 pkgdesc="Tiny management tool for wine bottles/carafes"
@@ -9,7 +9,13 @@ arch=('x86_64')
 url="https://github.com/Jelmerro/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/Jelmerro/${_pkgname}/${pkgver}"
 license=('MIT')
+
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 depends=('python' 'wine')
+
+options=(!strip)
+
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.any.pacman")
