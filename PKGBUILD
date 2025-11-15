@@ -1,6 +1,6 @@
 # Maintainer: Samuel Åkesson <sermuns@lysator.liu.se>
 pkgname=stil
-pkgver=0.4.3
+pkgver=
 pkgrel=1
 pkgdesc="generate STatic site from Index Listing of directory"
 url="https://github.com/sermuns/stil"

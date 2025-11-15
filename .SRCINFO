@@ -1,6 +1,6 @@
 pkgbase = stil
 	pkgdesc = generate STatic site from Index Listing of directory
-	pkgver = 0.4.3
+	pkgver = 
 	pkgrel = 1
 	url = https://github.com/sermuns/stil
 	arch = x86_64
