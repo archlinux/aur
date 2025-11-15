@@ -9,10 +9,12 @@ pkgname=(
   "protoc-gen-go-rpc-tmpl"
   "protoc-gen-json-field"
 )
-pkgver=1.15.3
-pkgrel=2
+pkgver=1.16.0
+pkgrel=1
 pkgdesc="Effortlessly build stable, reliable, and high-performance backend services with a \"low-code\" approach"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://go-sponge.com"
 _url="https://github.com/go-dev-frame/${pkgbase}"
 license=('MIT')
@@ -24,15 +26,16 @@ makedepends=(
   'go'
 )
 _pkgsrc="${_url##*/}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0cab423b1ccc993863a387eed2a5f75ef315cab69dba54bc1dcbbcab07094905')
+source=(
+  "${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
+)
+sha256sums=('2af86775b4f33af1f90f2036bb313ae51113c4b62ce840871dff1e201d8c28d8')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
-  go mod download -x
-  chmod -R ug+Xwr "${GOMODCACHE}"
+  go mod download -modcacherw -x
 
   mkdir -p "build"
 }
