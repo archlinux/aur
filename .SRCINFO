@@ -1,0 +1,14 @@
+pkgbase = luajit-glfw
+	pkgdesc = GLFW bindings for LuaJIT
+	pkgver = 3.4.0
+	pkgrel = 1
+	url = https://github.com/Playermet/luajit-glfw
+	arch = any
+	license = custom:ZLIB
+	makedepends = git
+	depends = luajit
+	depends = glfw
+	source = https://github.com/Playermet/luajit-glfw/archive/refs/tags/v3.4.0.tar.gz
+	sha256sums = a7fdff4df32f323299a2ccfd50d52fc14141b5fe7e3febd7d24f5a11d4c2c6ab
+
+pkgname = luajit-glfw
