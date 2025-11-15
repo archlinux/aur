@@ -1,7 +1,7 @@
 # Maintainer: Hagarashi <hagarashi@proton.me>
 pkgname='lrcfetch-bin'
-pkgver='v0.0.0'
-pkgrel=3
+pkgver='v0.0.1'
+pkgrel=1
 pkgdesc='Tool to fetch lyrics from LRCLIB'
 arch=('x86_64')
 url="https://github.com/hagaraShin/lrcfetch-tui"
@@ -11,7 +11,7 @@ provides=('lrcfetch')
 conflicts=('lrcfetch-git')
 source=("https://github.com/hagaraShin/lrcfetch-tui/releases/download/${pkgver}/lrcfetch" 'LICENSE')
 noextract=()
-sha256sums=('cb87c04859e8bea9ec748817eedb0bf2775143cceb71016080ba95e0dfaddc78'
+sha256sums=('3cf06f72717bb6aa51e065c9b72a10e7741bd57410c4f38759658fba0b6d0bb7'
             'f9c17e6e435c14f7a7ebad2ec796bf8cd0ece925ecd65e1b797f3b8ec603e6ce')
 
 package() {

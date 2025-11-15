@@ -1,7 +1,7 @@
 pkgbase = lrcfetch-bin
 	pkgdesc = Tool to fetch lyrics from LRCLIB
-	pkgver = v0.0.0
-	pkgrel = 3
+	pkgver = v0.0.1
+	pkgrel = 1
 	url = https://github.com/hagaraShin/lrcfetch-tui
 	arch = x86_64
 	license = MIT
@@ -10,9 +10,9 @@ pkgbase = lrcfetch-bin
 	depends = openssl
 	provides = lrcfetch
 	conflicts = lrcfetch-git
-	source = https://github.com/hagaraShin/lrcfetch-tui/releases/download/v0.0.0/lrcfetch
+	source = https://github.com/hagaraShin/lrcfetch-tui/releases/download/v0.0.1/lrcfetch
 	source = LICENSE
-	sha256sums = cb87c04859e8bea9ec748817eedb0bf2775143cceb71016080ba95e0dfaddc78
+	sha256sums = 3cf06f72717bb6aa51e065c9b72a10e7741bd57410c4f38759658fba0b6d0bb7
 	sha256sums = f9c17e6e435c14f7a7ebad2ec796bf8cd0ece925ecd65e1b797f3b8ec603e6ce
 
 pkgname = lrcfetch-bin
