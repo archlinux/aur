@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=145.0a1+20251005.1+h9220eca86af4
+pkgver=147.0a1+20251115.1+h26057ca50b94
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (Nightly version)"
 url="https://www.mozilla.org/firefox/channel/desktop/#nightly"
@@ -86,6 +86,7 @@ source=(
   $pkgname.desktop
   org.mozilla.$pkgname.metainfo.xml
   0001-Install-under-remoting-name.patch
+  0002-Bug-1995035-Allow-F_DUPFD_QUERY-in-the-Linux-sandbox.patch
 )
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
@@ -96,12 +97,14 @@ sha256sums=('SKIP'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             '4304902899987928ea51b7020fb1298b01fa77e327ef66ab00b061f767042b9f'
             '9649563e8703b4f4b43469029fe20e3bd0c1209dbaa4c2d664c00e089abd7fa0'
-            'ef63a12975f108f30b00bb3290d9ca76f311d8af9c1d5dfc0d8335ad57e8f77c')
+            'ef63a12975f108f30b00bb3290d9ca76f311d8af9c1d5dfc0d8335ad57e8f77c'
+            '4a88d189602b55e66946b85f7be55703f3707fa17340a6a6c66a1f7b9fabe8e7')
 b2sums=('SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
         '9c748d4c330d37d10862c73b3092c0d4308030fb62ca80da56ba9b3c3350ba4d779570308d1dd8e2c7d873f269654b72030702c5abc772aabfdfe7f39320a8b9'
         '561d6fd3b394eee3242c1db12c0520e865488b3e5c1943a398994857b1fcad520ed4387ea93bc9402356649a0b3db6911bcd3a9f8d388bbe88a58a2efec0aa14'
-        'ff0ba11844e99ab1b1fed91d70c6f45837198ba43e77313c8b9c48a621e40c459953fc35283b6b6eafb5641510a5ce1e18ebda4d7d076f8212810391c0a9234b')
+        'ff0ba11844e99ab1b1fed91d70c6f45837198ba43e77313c8b9c48a621e40c459953fc35283b6b6eafb5641510a5ce1e18ebda4d7d076f8212810391c0a9234b'
+        '9e790ea117daa0cde78ef2e706fda5c5409950e2361297b49108b5a094a54cbe56fdb494306b458d8841dc1adb413b9e94375ee8235e64d981d178a9eb50ff51')
 
 # Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -135,6 +138,9 @@ prepare() {
 
   # Make different channels installable in parallel
   patch -Np1 -i ../0001-Install-under-remoting-name.patch
+
+  # Fix RDD crashes with Mesa 25.3
+  patch -Np1 -i ../0002-Bug-1995035-Allow-F_DUPFD_QUERY-in-the-Linux-sandbox.patch
 
   echo -n "$_google_api_key" >google-api-key
 
