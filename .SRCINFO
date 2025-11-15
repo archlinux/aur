@@ -1,6 +1,6 @@
 pkgbase = svt-av1-hdr-riv19-git
 	pkgdesc = SVT-AV1-HDR is the SVT-AV1 Encoder with perceptual enhancements for SDR and HDR AV1 encoding (riv19 fork)
-	pkgver = 3.1.2.r216.g28963672
+	pkgver = 3.1.2.r0.g5e224b57
 	pkgrel = 1
 	url = https://github.com/riv19/svt-av1-hdr
 	arch = x86_64
@@ -14,6 +14,8 @@ pkgbase = svt-av1-hdr-riv19-git
 	provides = svt-av1-git
 	conflicts = svt-av1
 	conflicts = svt-av1-git
+	conflicts = svt-av1-psy
+	conflicts = svt-av1-psy-git
 	source = git+https://github.com/riv19/svt-av1-hdr
 	sha256sums = SKIP
 

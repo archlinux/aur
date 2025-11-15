@@ -1,7 +1,7 @@
 # Maintainer : Roman Volkov <riv19-dev@pm.me>
 
 pkgname=svt-av1-hdr-riv19-git
-pkgver=3.1.2.r216.g28963672
+pkgver=3.1.2.r0.g5e224b57
 pkgrel=1
 pkgdesc='SVT-AV1-HDR is the SVT-AV1 Encoder with perceptual enhancements for SDR and HDR AV1 encoding (riv19 fork)'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('git' 'cmake' 'yasm')
 provides=('svt-av1' 'svt-av1-git')
 conflicts=('svt-av1' 'svt-av1-git' 'svt-av1-psy' 'svt-av1-psy-git')
-source=('git+https://github.com/riv19/svt-av1-hdr')
+source=('svt-av1-hdr-riv19::git+https://github.com/riv19/svt-av1-hdr')
 sha256sums=('SKIP')
 
 pkgver() {
