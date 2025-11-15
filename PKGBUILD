@@ -1,8 +1,8 @@
 # Maintainer: François-Xavier Payet <fx@payet.io>
 
 pkgname=nonraid-git
-pkgver=1.20.0
-pkgrel=5
+pkgver=1.21.0
+pkgrel=1
 pkgdesc="nonraid kernel module via DKMS + management tool, systemd units, default config, and udev rule"
 arch=('x86_64')
 url='https://github.com/qvr/nonraid'
