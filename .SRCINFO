@@ -6,7 +6,6 @@ pkgbase = kumacub
 	arch = any
 	license = GPL-3.0-only
 	makedepends = python-installer
-	makedepends = uv
 	depends = python
 	depends = python-apscheduler
 	depends = python-httpx

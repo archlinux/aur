@@ -18,7 +18,6 @@ depends=(
 )
 makedepends=(
     'python-installer'
-    'uv'
 )
 source=("https://files.pythonhosted.org/packages/py3/${pkgname::1}/$pkgname/${pkgname//-/_}-$pkgver-py3-none-any.whl")
 sha256sums=('7e24c18bedae24b79918bcf6d9379932933328e6d1f239adb49c0fefa22d725d')
