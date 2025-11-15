@@ -1,13 +1,14 @@
 pkgbase = stil-bin
 	pkgdesc = generate STatic site from Index Listing of directory
-	pkgver = 
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/sermuns/stil
 	arch = x86_64
 	license = WTFPL
 	provides = stil
 	conflicts = stil
-	source = https://github.com/sermuns/stil/releases/download/v0.4.2/stil-0.4.2-x86_64.tar.gz
+	options = !debug
+	source = https://github.com/sermuns/stil/releases/download/v0.4.3.tar.gz
 	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
 
 pkgname = stil-bin
