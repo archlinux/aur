@@ -1,0 +1,18 @@
+pkgbase = faal
+	pkgdesc = Simple application menu because why not
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Polokalap/FAAL
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	depends = cmake
+	depends = gcc
+	depends = glibc
+	options = !debug
+	source = git+https://github.com/Polokalap/FAAL.git
+	sha256sums = SKIP
+
+pkgname = faal
