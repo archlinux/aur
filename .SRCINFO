@@ -1,7 +1,7 @@
 pkgbase = arch-os-manager
 	pkgdesc = Arch OS System Manager
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/murkl/arch-os-manager
 	arch = any
 	license = Apache-2.0
@@ -16,8 +16,10 @@ pkgbase = arch-os-manager
 	optdepends = meld: Add support for merge pacdiff configurations
 	optdepends = downgrade: Add support for donwgrade system packages
 	source = https://github.com/murkl/arch-os-manager/releases/download/1.9.0/arch-os
+	source = https://raw.githubusercontent.com/murkl/arch-os-manager/refs/heads/main/docs/logo.svg
 	source = arch-os.desktop
 	sha256sums = 20b3c07c5053678683ca99b42f927896920a770a836e361506394904cf8af529
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = arch-os-manager

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Arch OS
 Exec=arch-os --kitty
-Icon=/opt/arch-os-manager/docs/logo.svg
+Icon=/opt/arch-os-manager/logo.svg
 Type=Application
 Terminal=false
 StartupWMClass=arch-os
