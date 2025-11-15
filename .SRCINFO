@@ -8,6 +8,7 @@ pkgbase = qvickbuild
 	makedepends = make
 	makedepends = clang
 	makedepends = git
+  makedepends = findutils
 	source = git+https://gitlab.com/nordtektiger/qvickbuild.git#tag=v0.9.0
 	sha256sums = SKIP
 
