@@ -3,7 +3,7 @@
 
 pkgname=claude-desktop-appimage
 pkgver=1.1.10+claude0.14.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Claude Desktop for Linux - AppImage version from aaddrick/claude-desktop-debian"
 arch=('x86_64')
 url="https://github.com/aaddrick/claude-desktop-debian"
@@ -20,7 +20,7 @@ source=("${_appimage_name}::https://github.com/aaddrick/claude-desktop-debian/re
 noextract=("${_appimage_name}")
 
 # File checksums
-sha256sums=('b821ebdbd737bbb132a897ea5ab0f0024fc48fac5cd1eb34dfb32fe07f1d7334'
+sha256sums=('9b8fe17745a55ee08b8b9341ee6b2e1a030950a71d7fa65ef6c7e7e2650405a6'
             'ab0469e2e127050193ca556f87af8914d93bbde8f31d673a2f279aedbc944f3d')
 
 prepare() {
