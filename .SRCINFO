@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-id
 	pkgdesc = Indonesian language pack for Firefox Nightly
-	pkgver = 147.0a1.20251114.094637
+	pkgver = 147.0a1.20251114.214833
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-id
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-id-147.0a1.20251114.094637.xpi
-	source = firefox-nightly-i18n-id-147.0a1.20251114.094637.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-147.0a1.id.langpack.xpi
-	sha256sums = d77eeb9b7895f153da91774554e6fd1927f295d9c068188ee8d4432f2aeb7b82
+	noextract = firefox-nightly-i18n-id-147.0a1.20251114.214833.xpi
+	source = firefox-nightly-i18n-id-147.0a1.20251114.214833.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-147.0a1.id.langpack.xpi
+	sha256sums = 628e5f72a454ab13c4f41e9e7f68773976a192153aa4c17dc84192904c83547c
 
 pkgname = firefox-nightly-i18n-id
