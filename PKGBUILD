@@ -5,7 +5,7 @@
 _archive_extension="tar.gz"
 pkgname=ipfs-desktop-electron
 _pkgname=ipfs-desktop
-pkgver=0.41.1
+pkgver=0.46.2
 pkgrel=1
 pkgdesc="Desktop client for the InterPlanetary File System"
 arch=(x86_64)
@@ -20,7 +20,7 @@ source=(
 	"ipfs-desktop.desktop"
 )
 b2sums=(
-	'1d04d3e381c08ee30181c7557b82cc1b00a13c578fce81683b671e834ea0db9d9084e793049def327ab714cf3ea6eb17cc016a275c8241ff113fb81663da7a96'
+	'90e573ee4f2b34294edd91e49c075d7cb4bdceec5120321a9ba4f066507ac518164ee39ab58e19933b882d1421cfddc0d5c474fa62abcc8f1fea846326770dee'
 	'd2bcf08f57f09298c5105867e5531f648c7f69bb7c081011477be507057d69bff147442029f86f5e6135f8ddca68f5176f792c99af8dace07d3063fcdbd2c0f5'
 	'adf5806b22b9e7667155d67a58ba54d9f141b893013d04aed14a8814a7f7e3393ea836eb0632275dbe3893092c69844da8fdea53ff3b13064ae8c54b3f1cad97'
 )
