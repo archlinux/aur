@@ -1,8 +1,9 @@
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=python-icontract
 _name=${pkgname#python-}
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="Design-by-contract in Python3 with informative violation messages and inheritance"
 arch=(any)
@@ -30,7 +31,7 @@ checkdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6cde2c3aa65e99f4f8ec77df86c3c7f4194a3bc0145bb12a6eb91e999c2fdc23')
+sha256sums=('a8d3424e433d84aea6b615224b4514b4e2451417236f7075ef68925494eac1dc')
 
 _archive="$_name-$pkgver"
 

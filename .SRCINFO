@@ -1,6 +1,6 @@
 pkgbase = python-icontract
 	pkgdesc = Design-by-contract in Python3 with informative violation messages and inheritance
-	pkgver = 2.7.1
+	pkgver = 2.7.2
 	pkgrel = 1
 	url = https://github.com/Parquery/icontract
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-icontract
 	makedepends = python-wheel
 	depends = python
 	depends = python-asttokens
-	source = python-icontract-2.7.1.tar.gz::https://github.com/Parquery/icontract/archive/refs/tags/v2.7.1.tar.gz
-	sha256sums = 6cde2c3aa65e99f4f8ec77df86c3c7f4194a3bc0145bb12a6eb91e999c2fdc23
+	source = python-icontract-2.7.2.tar.gz::https://github.com/Parquery/icontract/archive/refs/tags/v2.7.2.tar.gz
+	sha256sums = a8d3424e433d84aea6b615224b4514b4e2451417236f7075ef68925494eac1dc
 
 pkgname = python-icontract
