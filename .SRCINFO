@@ -1,4 +1,4 @@
-pkgbase = drawy
+pkgbase = drawy-git
 	pkgdesc = an infinite whiteboard tool
 	pkgver = r115.413c4dc
 	pkgrel = 1
@@ -16,7 +16,7 @@ pkgbase = drawy
 	depends = gcc-libs
 	provides = drawy
 	provides = drawy-debug
-	source = drawy::git+https://github.com/Prayag2/drawy
+	source = drawy-git::git+https://github.com/Prayag2/drawy
 	sha256sums = SKIP
 
-pkgname = drawy
+pkgname = drawy-git

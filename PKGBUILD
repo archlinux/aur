@@ -1,5 +1,5 @@
 # Maintainer: nathan marchiori <nathan.marchiori@gmail.com>
-pkgname="drawy"
+pkgname="drawy-git"
 pkgver=r115.413c4dc
 pkgrel=1
 pkgdesc="an infinite whiteboard tool"
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('qt6-base>=6.9' 'glibc' 'hicolor-icon-theme' 'gcc-libs')
 makedepends=('git' 'cmake' 'qt6-tools' 'gcc' 'vulkan-headers')
 provides=('drawy' 'drawy-debug')
-source=('drawy::git+https://github.com/Prayag2/drawy')
+source=('drawy-git::git+https://github.com/Prayag2/drawy')
 sha256sums=("SKIP")
 
 pkgver() {
