@@ -1,0 +1,17 @@
+pkgbase = fmeta
+	pkgdesc = Scan directories and list file metadata in a tabular format.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://pypi.org/project/fmeta/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pandas
+	source = https://files.pythonhosted.org/packages/source/f/fmeta/fmeta-0.1.4.tar.gz
+	sha256sums = SKIP
+
+pkgname = fmeta
