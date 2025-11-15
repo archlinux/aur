@@ -1,0 +1,14 @@
+--- configure.ac.orig	2025-11-12 07:26:55 UTC
++++ configure.ac
+@@ -122,7 +122,10 @@ AC_CHECK_DECL([dixGetDisplayName],
+ AC_CHECK_DECL([dixGetDisplayName],
+     [AC_DEFINE([HAS_DIX_GET_DISPLAY_NAME], [1], [support display getter])],
+     [],
+-    [[#include <dix.h>]])
++    [[
++#include <xorg-server.h>
++#include <dix.h>
++    ]])
+ CFLAGS="$CFLAGS_sav"
+ 
+ 
