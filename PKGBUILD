@@ -1,14 +1,15 @@
+# Maintainer : Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Jochen Keil <jochen.keil@gmail.com>
 
 _name='snapsync'
 pkgname="ruby-snapsync"
 pkgver=0.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc='tool to automate backing up snapper snapshots to other medias'
 arch=('any')
 url="https://github.com/Eximius/${_name}"
 license=('MIT')
-depends=(ruby ruby-logging ruby-concurrent ruby-dbus ruby-thor ruby-uri-ssh_git ruby-net-ssh ruby-net-sftp ruby-rexml ruby-libnotify)
+depends=(btrfs-progs ruby ruby-logging ruby-concurrent ruby-dbus ruby-thor ruby-uri-ssh_git ruby-net-ssh ruby-net-sftp ruby-rexml ruby-libnotify)
 makedepends=('git')
 checkdepends=('ruby-bundler' 'ruby-minitest' 'ruby-rake' 'ruby-flexmock' 'ruby-fakefs' 'ruby-irb')
 options=('!emptydirs')

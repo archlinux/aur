@@ -1,7 +1,7 @@
 pkgbase = ruby-snapsync
 	pkgdesc = tool to automate backing up snapper snapshots to other medias
 	pkgver = 0.5.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Eximius/snapsync
 	arch = any
 	license = MIT
@@ -12,6 +12,7 @@ pkgbase = ruby-snapsync
 	checkdepends = ruby-fakefs
 	checkdepends = ruby-irb
 	makedepends = git
+	depends = btrfs-progs
 	depends = ruby
 	depends = ruby-logging
 	depends = ruby-concurrent
