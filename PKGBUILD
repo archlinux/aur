@@ -29,6 +29,8 @@ package() {
   cp -R "${srcdir}/usr/" "${pkgdir}/usr/"
   cp -R "${srcdir}/opt/" "${pkgdir}/opt/"
 
+  chmod 4755 "${pkgdir}/opt/Vieb/chrome-sandbox"
+
   install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
   install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
