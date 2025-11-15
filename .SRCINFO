@@ -1,0 +1,21 @@
+pkgbase = Zencore-rs
+	pkgdesc = A minimalist backup solution built with Rust.
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/Blues24/Zencore-rs
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = base-devel
+	depends = openssl
+	depends = pkgconf
+	provides = zencore
+	conflicts = zencore
+	options = !emptydirs
+	source = git+https://github.com/Blues24/Zencore-rs#branch=main
+	sha256sums = SKIP
+
+pkgname = Zencore-rs
