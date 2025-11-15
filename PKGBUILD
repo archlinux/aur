@@ -1,7 +1,7 @@
 # Maintainer: VintageTechie <https://vintagetechie.com>
 pkgname=cosmic-ext-applet-updates-bin
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="Updates Applet for COSMIC Desktop (community extension) - precompiled binary"
 arch=('x86_64')
 url="https://github.com/VintageTechie/cosmic-ext-applet-updates"
@@ -14,7 +14,7 @@ optdepends=(
 provides=('cosmic-ext-applet-updates')
 conflicts=('cosmic-ext-applet-updates' 'cosmic-ext-applet-updates-git')
 source=("https://github.com/VintageTechie/cosmic-ext-applet-updates/releases/download/v${pkgver}/cosmic-ext-applet-updates-${pkgver}-x86_64.tar.gz")
-sha256sums=('a681e9368e2c0be503aff6deed96219b4ba42834163724220d89189ec8b6c941')
+sha256sums=('SKIP')
 
 package() {
     cd "$srcdir"

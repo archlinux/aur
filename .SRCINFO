@@ -1,7 +1,7 @@
 pkgbase = cosmic-ext-applet-updates-bin
 	pkgdesc = Updates Applet for COSMIC Desktop (community extension) - precompiled binary
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.1.2
+	pkgrel = 1
 	url = https://github.com/VintageTechie/cosmic-ext-applet-updates
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = cosmic-ext-applet-updates-bin
 	provides = cosmic-ext-applet-updates
 	conflicts = cosmic-ext-applet-updates
 	conflicts = cosmic-ext-applet-updates-git
-	source = https://github.com/VintageTechie/cosmic-ext-applet-updates/releases/download/v1.1.0/cosmic-ext-applet-updates-1.1.0-x86_64.tar.gz
-	sha256sums = a681e9368e2c0be503aff6deed96219b4ba42834163724220d89189ec8b6c941
+	source = https://github.com/VintageTechie/cosmic-ext-applet-updates/releases/download/v1.1.2/cosmic-ext-applet-updates-1.1.2-x86_64.tar.gz
+	sha256sums = SKIP
 
 pkgname = cosmic-ext-applet-updates-bin
