@@ -1,0 +1,4 @@
+[clipgrab]
+source = "regex"
+url = "https://clipgrab.org"
+regex = 'clipgrab-([\d.]+)\.tar\.gz'
