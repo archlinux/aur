@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-types-docutils
 _name=types_docutils
-pkgver=0.22.2.20251006
+pkgver=0.22.3.20251115
 pkgrel=1
 pkgdesc="Typing stubs for docutils"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=(
   'python-wheel'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('c36c0459106eda39e908e9147bcff9dbd88535975cde399433c428a517b9e3b2')
+sha256sums=('0f79ea6a7bd4d12d56c9f824a0090ffae0ea4204203eb0006392906850913e16')
 
 build() {
   cd "$_name-$pkgver"
