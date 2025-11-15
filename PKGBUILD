@@ -1,6 +1,6 @@
 
 pkgname=chromium-ffmpeg-git
-pkgver=8.1.r121159.g0bd5a7d371
+pkgver=8.1.r121759.ge096a592cb
 pkgver(){
   printf '%s.r%s.g%s' $(git -C ffmpeg describe --tags --long | awk -F'-' '{ sub(/^n/, "", $1); print $1 }') \
     $(git -C ffmpeg describe --tags --match 'N' | awk -F'-' '{ print $2 }') $(git -C ffmpeg rev-parse --short HEAD)
@@ -28,7 +28,7 @@ sha256sums=('65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
 #sha256sums[1]=SKIP
 depends=(glibc)
 makedepends=(nasm git
-gcc make patch sed) # base-devel
+gcc make sed) # base-devel
 _so=libffmpeg.so
 conflicts=(${pkgname%-git}
 {nwjs,opera{,-beta,-developer},vivaldi{,-snapshot}}-ffmpeg-codecs)
@@ -43,7 +43,7 @@ prepare() {
   # Use native opus not in kAllowedAudioCodecs
   sed -i.bak "s/^ *\.p\.name *=.*/.p.name=\"libopus\",/" libavcodec/opus/dec.c
   # Chromium patches
-  patch -Np1 -i ../0001-Add-av_stream_get_first_dts-for-Chromium.patch # needed
+  git apply -v -p1 ../0001-Add-av_stream_get_first_dts-for-Chromium.patch # needed
   sed -i.bak '/ff_aom_uninit_film_grain_params/d' libavcodec/h2645_sei.c
   sed -i.bak -E -e "/&ff_dirac_codec,/d" -e "/&ff_speex_codec,/d" \
     -e "/&ff_theora_codec,/d" -e "/&ff_celt_codec,/d" -e "/&ff_old_dirac_codec,/d" libavformat/oggdec.c # buggy or unused
