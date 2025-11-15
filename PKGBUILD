@@ -2,8 +2,8 @@
 
 pkgname=manjaro-hyprland-settings
 pkgver="20251115"
-_commit='1d4b4b737d7028e7288b875ad34b36d09f38a713'
-pkgrel=1
+_commit='1c092766c5d9eea221054e0cf2b1c700aee5d050'
+pkgrel=2
 arch=('any')
 url="https://github.com/lisuml/${pkgname}"
 license=('GPL')
@@ -31,6 +31,7 @@ package() {
     'hyprland'
     'hyprlock'
     'jq'
+    'kanshi'
     'kvantum'
     'kvantum-qt5'
     'mako'
@@ -58,5 +59,6 @@ package() {
     'wofi'
     'wpaperd'
     'xdg-desktop-portal-hyprland'
+    'yad'
   )
 }
