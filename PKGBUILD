@@ -2,17 +2,16 @@
 
 pkgname=snippy-snippet
 pkgver=1.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Snippet manager with rofi/wofi and fzf'
 arch=('any')
 url='https://github.com/barbUk/snippy'
 license=('GPL-3.0-or-later')
 conflicts=("${pkgname}-git")
-depends=(bash fzf jq)
+depends=(bash fzf jq rofi)
 optdepends=(
   'wtype: Wayland support'
   'wl-clipboard: Wayland support'
-  'rofi: X11 support / Wayland support'
   'xsel: X11 support'
   'xclip: X11 support'
   'xdotool: X11 support'
