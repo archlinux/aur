@@ -7,7 +7,7 @@ _pkgver=2.0
 _prstage=RC
 _Prstage=RC
 _prver=2
-pkgrel=6
+pkgrel=7
 pkgdesc="AirVPN client software collection - prebuilt beta"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://airvpn.org/linux/suite"
@@ -15,7 +15,7 @@ _dlurl="https://eddie.website/repository"
 license=('GPL-3.0-only')
 provides=('hummingbird' 'hummingbird-bin' 'airvpn-suite' 'airvpn-suite-bin')
 conflicts=('hummingbird' 'hummingbird-bin' 'airvpn-suite' 'airvpn-suite-bin')
-depends=('glibc' 'gcc-libs' 'dbus' 'openssl' 'libxml2')
+depends=('glibc' 'gcc-libs' 'dbus' 'openssl' 'libxml2-legacy')
 makedepends=('curl')
 source=("$_dlurl/$_pkgname/$pkgver/$_pkgname-$arch-$pkgver.tar.gz"
         "airvpn-suite.sysusers")
