@@ -1,0 +1,12 @@
+pkgbase = ghpkg
+	pkgdesc = An indev package manager, using github repos, to build from source.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/user/ghpkg
+	arch = any
+	license = MIT
+	depends = git
+	source = git+https://github.com/Frothy7650/ghpkg.git
+	sha256sums = SKIP
+
+pkgname = ghpkg
