@@ -1,0 +1,18 @@
+pkgbase = quick-lookup-git
+	pkgdesc = A simple dictionary app made for GNOME.
+	pkgver = r0.c0ffeeb
+	pkgrel = 1
+	url = https://github.com/johnfactotum/quick-lookup
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkg-config
+	depends = gjs
+	depends = gtk4
+	depends = libadwaita
+	source = quick-lookup::git+https://github.com/johnfactotum/quick-lookup.git
+	sha256sums = SKIP
+
+pkgname = quick-lookup-git
