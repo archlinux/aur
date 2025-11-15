@@ -1,6 +1,6 @@
 # Maintainer: Samuel Åkesson <sermuns@lysator.liu.se>
 pkgname=stil-bin
-pkgver=0.4.2
+pkgver=
 pkgrel=1
 pkgdesc="generate STatic site from Index Listing of directory"
 url="https://github.com/sermuns/stil"
@@ -8,8 +8,8 @@ license=("WTFPL")
 arch=("x86_64")
 provides=("stil")
 conflicts=("stil")
-source=("https://github.com/sermuns/stil/releases/download/v$pkgver/stil-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('9fd864c9f54f8abba7932875e52e3a257fbb8ff3149ffa57a9117f89d378bbf9')
+source=("https://github.com/sermuns/stil/releases/download/v$pkgver=
+sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
 options=(!debug)
 
 package() {
