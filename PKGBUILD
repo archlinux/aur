@@ -9,7 +9,7 @@
 
 pkgname=salt
 pkgver=3007.8
-pkgrel=3
+pkgrel=4
 pkgdesc='Portable, distributed, remote execution and configuration management system'
 arch=('any')
 url='https://saltproject.io/'
@@ -77,7 +77,7 @@ sha256sums=('59f2b5a487fd83239e31a78db0082b125083393131dae10d3b90a3b3487699e2'
     '58996c1fcf6ca1b47e8ab7e9d51b79679abbe791ed180eafbad168fd5c5f5236'
     'fd36d9c603e01d60b76b39e5ac6279d6e88ef3291a15afbb80d956bdf483930a'
     'f9ab2f18fbf85c8a0ebba6aa88fe415f993ca377aaa0f3541b32d29f0d690c5a'
-    '900f6f1b83d8b0bf1dd6752c33e5f67f4777c178d271f288b8b77cd27ff36cfd')
+    '632dfb02dde6bbd00bcebd0b444ad2d1236042229ffdee0cad4f02e62fdcb8f8')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -97,7 +97,6 @@ package() {
     python setup.py --salt-pidfile-dir="/run/salt" install --root="$pkgdir" --optimize=1 --skip-build
 
     # workaround KeyError: 'config.option'
-
     for i in salt-api salt-call salt-cloud salt-cp salt-key salt-master salt-minion salt-proxy salt-run salt-ssh salt-syndic; do
         _func=$(echo ${i} | sed 's/-/_/g')
         rm -f ${pkgdir}/usr/bin/${i}

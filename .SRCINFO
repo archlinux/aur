@@ -1,7 +1,7 @@
 pkgbase = salt
 	pkgdesc = Portable, distributed, remote execution and configuration management system
 	pkgver = 3007.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://saltproject.io/
 	install = salt.install
 	arch = any
@@ -55,6 +55,6 @@ pkgbase = salt
 	sha256sums = 58996c1fcf6ca1b47e8ab7e9d51b79679abbe791ed180eafbad168fd5c5f5236
 	sha256sums = fd36d9c603e01d60b76b39e5ac6279d6e88ef3291a15afbb80d956bdf483930a
 	sha256sums = f9ab2f18fbf85c8a0ebba6aa88fe415f993ca377aaa0f3541b32d29f0d690c5a
-	sha256sums = 900f6f1b83d8b0bf1dd6752c33e5f67f4777c178d271f288b8b77cd27ff36cfd
+	sha256sums = 632dfb02dde6bbd00bcebd0b444ad2d1236042229ffdee0cad4f02e62fdcb8f8
 
 pkgname = salt

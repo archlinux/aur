@@ -1,15 +1,23 @@
 --- a/salt/utils/pycrypto.py	2025-09-18 09:00:34.000000000 +0200
-+++ b/salt/utils/pycrypto.py	2025-11-14 23:31:16.676924735 +0100
-@@ -23,12 +23,18 @@
++++ b/salt/utils/pycrypto.py	2025-11-15 01:20:50.826741085 +0100
+@@ -6,6 +6,7 @@
+ import random
+ import re
+ import string
++import types
+ 
+ import salt.utils.platform
+ import salt.utils.stringutils
+@@ -23,12 +24,18 @@
  except ImportError:
      HAS_RANDOM = False
-
+ 
 +HAS_CRYPT = False
 +
  try:
 -    import crypt
 +    import bcrypt
-
+ 
 -    HAS_CRYPT = True
 -except (ImportError, PermissionError):
 -    HAS_CRYPT = False
@@ -20,6 +28,6 @@
 +except ImportError:
 +    # If bcrypt isn't installed, passlib will handle it gracefully. No patch needed
 +    pass
-
+ 
  try:
      import passlib.context
