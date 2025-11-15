@@ -4,7 +4,7 @@
 
 pkgbase=uutils-coreutils-git
 pkgname=($pkgbase coreutils-uutils)
-pkgver=0.4.0.r67.g5202ac1
+pkgver=0.4.0.r86.g7f4d902
 pkgrel=1
 pkgdesc="Rust rewrite of coreutils"
 url=https://github.com/uutils/coreutils
@@ -32,18 +32,17 @@ noextract=(nix-rust0.30.1.tar.gz)
 prepare(){
   cd ${pkgname%-git}
   mkdir -p rust-vendor/nix; bsdtar -xf ../nix-rust0.30.1.tar.gz -C rust-vendor/nix --strip-components=1
-  patch -Np1 -i "${srcdir}/glibc-2.42.patch"
+  git apply -v -p1 "${srcdir}/glibc-2.42.patch"
   echo -e "[patch.crates-io]\nnix = { path = \"rust-vendor/nix\" }" >> Cargo.toml
 }
 # Packaging guideline cause double build.
-export RUSTONIG_DYNAMIC_LIBONIG=1
-#export LOCALES=n
+export RUSTONIG_DYNAMIC_LIBONIG=1 #LOCALES=n SKIP_UTILS="arch kill more uptime hostname"
 [ $RUSTC_BOOTSTRAP = 1 ] && export CARGOFLAGS="-Zbuild-std=std,panic_abort -Zbuild-std-features=panic_immediate_abort"
 package_uutils-coreutils-git(){
   cd ${pkgbase%-git}
   unset optdepends
   make install DESTDIR="$pkgdir" PREFIX=/usr PROFILE=release-fast MULTICALL=y LN="ln -f" \
-    PROG_PREFIX=uu- LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} SKIP_UTILS="runcon chcon" #arch kill more uptime hostname"
+    PROG_PREFIX=uu- LIBSTDBUF_DIR=/usr/lib/${pkgname%-git}
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgbase%-git}
 }
 
