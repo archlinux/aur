@@ -1,0 +1,21 @@
+pkgbase = suil-optgui
+	pkgdesc = A lightweight C library for loading and wrapping LV2 plugin UIs
+	pkgver = 0.10.24
+	pkgrel = 1
+	url = https://gitlab.com/lv2/suil
+	arch = x86_64
+	license = 0BSD
+	license = ISC
+	makedepends = gtk3
+	makedepends = meson
+	makedepends = qt6-base
+	depends = lv2
+	provides = suil
+	conflicts = suil
+	source = suil-0.10.24.tar.gz::https://gitlab.com/lv2/suil/-/archive/v0.10.24/suil-v0.10.24.tar.gz
+	sha256sums = 499be46a717164c140847d5ad0f328d1597e2fe72d9f5e0d051ded33d4ca9d56
+
+pkgname = suil-optgui
+	optdepends = gtk3
+	optdepends = qt6-base
+	provides = libsuil-0.so

@@ -1,0 +1,4 @@
+[suil]
+source = "git"
+git = "https://gitlab.com/lv2/suil.git"
+prefix = "v"
