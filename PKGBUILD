@@ -1,40 +1,65 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Astro Benzene <universebenzene at sina dot com>
+# Contributor: Luis Martinez <luis dot martinez at tuta dot io>
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
 ## GPG key: https://github.com/tacaswell.gpg
 
-pkgname=python-slicerator
+pkgbase=python-slicerator
+_pyname=${pkgbase#python-}
+pkgname=("python-${_pyname}" "python-${_pyname}"-doc)
 pkgver=1.1.0
 pkgrel=1
 pkgdesc="A lazy-loading, fancy-sliceable iterable"
-url="https://github.com/soft-matter/slicerator"
+url="https://slicerator.readthedocs.io/"
 arch=('any')
-license=('BSD')
-depends=('python')
-makedepends=(
-	'git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'python-numpy')
-source=("$pkgname::git+$url#tag=v$pkgver?signed")
-sha256sums=('SKIP')
-validpgpkeys=('96B7334D7610EE3E68AFFE589E027116943D6A8B') ## Thomas A. Caswell
+license=('BSD-3-Clause')
+makedepends=('python-setuptools'
+             'python-build'
+             'python-installer'
+             'python-sphinx_rtd_theme'
+             'python-numpydoc')
+checkdepends=('python-pytest'
+#             'python-pytest-xdist'
+              'python-numpy')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+sha256sums=('44010a7f5cd87680c07213b5cabe81d1fb71252962943e5373ee7d14605d6046')
+#validpgpkeys=('96B7334D7610EE3E68AFFE589E027116943D6A8B') ## Thomas A. Caswell
+
+prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    sed -i "/language\ = /s/None/'en'/" docs/conf.py
+    mkdir -p docs/_static
+}
 
 build() {
-	cd "$pkgname"
-	python -m build --wheel --no-isolation
+    cd ${srcdir}/${_pyname}-${pkgver}
+    python -m build --wheel --no-isolation
+
+    msg "Building Docs"
+    PYTHONPATH="../build/lib" make -C docs html
 }
 
 check() {
-	cd "$pkgname"
-	PYTHONPATH="$PWD" pytest -x --disable-warnings
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    PYTHONPATH="." pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
-package() {
-	cd "$pkgname"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s \
-		"$_site/slicerator-$pkgver.dist-info/LICENSE" \
-		"$pkgdir/usr/share/licenses/$pkgname/"
+package_python-slicerator() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+    depends=('python')
+    #PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+}
+
+package_python-slicerator-doc() {
+    pkgdesc="Documentation for Python Slicerator module"
+    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
+
+    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE
+    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
+    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
 }
