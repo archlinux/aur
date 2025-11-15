@@ -5,7 +5,7 @@
 pkgname="vinyl"
 _gitname="vinyl-theme"
 pkgver=6.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Vinyl Theme for KDE Plasma 6"
 url="https://github.com/ekaaty/vinyl-theme"
 arch=('x86_64' 'aarch64')
@@ -47,7 +47,10 @@ depends=(
 
 depends=("${depends[@]}")
 
-conflicts=("vinyl-git")
+conflicts=(
+  'vinyl-git'
+  'vinyl-theme'
+)
 
 build() (
   local cmake_options=(
