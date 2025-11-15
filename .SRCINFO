@@ -1,0 +1,23 @@
+pkgbase = adbmanager-qt6
+	pkgdesc = ADB manager for Android devices (Qt6)
+	pkgver = 3.9
+	pkgrel = 1
+	url = https://github.com/AKotov-dev/adbmanager
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = lazarus
+	depends = qt6pas
+	provides = adbmanager
+	conflicts = adbmanager
+	source = adbmanager-3.9.tar.gz::https://github.com/AKotov-dev/adbmanager/archive/refs/tags/v3.9.tar.gz
+	sha256sums = a550973cdbd64444b73eef2e3fbe0d6ac74aa34589ecc8f5ee1579e1ed3ac8a9
+
+pkgname = adbmanager-qt6
+	depends = qt6pas
+	depends = 7zip
+	depends = android-tools
+	depends = graphicsmagick
+	depends = iproute2
+	depends = iputils
+	depends = nmap
+	depends = sakura

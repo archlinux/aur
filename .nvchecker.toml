@@ -1,0 +1,4 @@
+[adbmanager-qt6]
+source = "git"
+git = "https://github.com/AKotov-dev/adbmanager.git"
+prefix = "v"
