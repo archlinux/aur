@@ -15,11 +15,7 @@ sha256sums=('0da1349a8434fb735b16c716d013c6ce6aa210bb1aef1f9df9ee853e25dae53c')
 noextract=($_npmname-$pkgver.tgz)
 
 package() {
-  npm install \
-    --user=root --global \
-    --prefix "$pkgdir/usr" \
-    "$srcdir"/$_npmname-$pkgver.tgz
-
-  find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
-  chown -R root:root "$pkgdir"
+  npm install --global \
+    --prefix "${pkgdir}/usr" \
+    "${srcdir}/${_npmname}-${pkgver}.tgz"
 }
