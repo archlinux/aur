@@ -3,7 +3,7 @@
 # https://github.com/ispc/ispc/issues/3545, otherwise, moonray will not work.
 pkgname=openmoonray
 pkgver=2.34.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="DreamWorks Animation's open-source Monte Carlo ray tracer"
 arch=('x86_64')
 url="https://github.com/dreamworksanimation/openmoonray"
@@ -54,6 +54,7 @@ build() {
         -DMOONRAY_USE_OPTIX=NO \
         -DMOONRAY_BUILD_TESTING=OFF \
         -DBUILD_TESTING=OFF \
+        -DCMAKE_BUILD_TYPE=Release \
         -G "Unix Makefiles" \
         ../${pkgname}
 

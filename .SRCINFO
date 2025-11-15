@@ -1,7 +1,7 @@
 pkgbase = openmoonray
 	pkgdesc = DreamWorks Animation's open-source Monte Carlo ray tracer
 	pkgver = 2.34.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dreamworksanimation/openmoonray
 	arch = x86_64
 	license = Apache
