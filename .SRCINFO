@@ -1,6 +1,6 @@
 pkgbase = r-readr
 	pkgdesc = Read Rectangular Text Data
-	pkgver = 2.1.5
+	pkgver = 2.1.6
 	pkgrel = 1
 	url = https://cran.r-project.org/package=readr
 	arch = i686
@@ -29,7 +29,7 @@ pkgbase = r-readr
 	optdepends = r-waldo
 	optdepends = r-withr
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/readr_2.1.5.tar.gz
-	sha256sums = 0fa65a5fe0a46cffe221b7696b52adb82dd4d7a692a895484e438e439594e10a
+	source = https://cran.r-project.org/src/contrib/readr_2.1.6.tar.gz
+	sha256sums = 9d743ba3b0453448ae5dea0582d5d7e5a2ef0489308d04cff7672865540546d9
 
 pkgname = r-readr
