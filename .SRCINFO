@@ -1,6 +1,6 @@
 pkgbase = openocd-esp32
 	pkgdesc = Fork of OpenOCD that has ESP32 support
-	pkgver = v0.12.0_esp32_20230419
+	pkgver = v0.12.0_esp32_20250707
 	pkgrel = 1
 	url = https://github.com/espressif/openocd-esp32
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = openocd-esp32
 	depends = libusb-compat
 	depends = hidapi
 	options = !strip
-	source = openocd-esp32-v0.12.0_esp32_20230419::git+https://github.com/espressif/openocd-esp32.git#tag=v0.12.0-esp32-20230419
+	source = openocd-esp32-v0.12.0_esp32_20250707::git+https://github.com/espressif/openocd-esp32.git#tag=v0.12.0-esp32-20250707
 	sha1sums = SKIP
 
 pkgname = openocd-esp32

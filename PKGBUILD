@@ -1,4 +1,5 @@
 # Maintainer: Kurt McAlpine <kurt at linux dot com>
+# Maintainer: Fermin Olaiz <ferminolaiz@gmail.com>
 # Contributor: Michael Zimmermann <sigmaepsilon92@gmail.com>
 # Contributor: Emil Renner Berthing <aur@esmil.dk>
 # Contributor: yhfudev <yhfudev ta gmail dot com>
@@ -10,7 +11,7 @@
 # Contributor: Samuel Tardieu <sam@rfc1149.net>
 
 pkgname=openocd-esp32
-pkgver=v0.12.0_esp32_20230419
+pkgver=v0.12.0_esp32_20250707
 pkgrel=1
 pkgdesc='Fork of OpenOCD that has ESP32 support'
 arch=('i686' 'x86_64' 'arm')
