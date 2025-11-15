@@ -1,7 +1,7 @@
 # Maintainer: Kendall G. <kgarner at duck dot com>
 
 pkgname=feishin-appimage
-pkgver=0.19.0
+pkgver=0.21.2
 pkgrel=1
 pkgdesc="Sonixd Rewrite"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!strip) # necessary otherwise the AppImage file in the package is trunc
 conflicts=("feishin-bin")
 _filename=Feishin-linux-$CARCH.AppImage
 source=("${url}/releases/download/v${pkgver//_/-}/${_filename}")
-sha256sums=("a133b3cd9c6feb75b5199ca7c2ab108f47dbfed3977db0f828b0afcfd6aad76c")
+sha256sums=("083608f714cfa54f3d4ab5ef3d9ed09b6734a62b96d75aa30205d95b1b6ca526")
 pkgdesc="A modern self-hosted music player."
 INSTALL_PATH="/opt/${pkgname}/${_filename}"
 
