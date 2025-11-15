@@ -16,6 +16,9 @@ depends=(
     'python-pydantic-settings'
     'python-structlog'
 )
+optdepends=(
+    'monitoring-plugins: useful check scripts'
+)
 makedepends=(
     'python-installer'
 )
