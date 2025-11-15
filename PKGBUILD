@@ -1,5 +1,5 @@
-# Maintainer: Adam Perkowski <adas1per@protonmail.com>
-# https://github.com/adamperkowski/PKGBUILDs
+# Maintainer: Dvd-Znf <email@dvdznf.xyz>
+# Contributor: Adam Perkowski <adas1per@protonmail.com>
 
 pkgname=fetchfetch
 pkgver=1.1.1
@@ -24,5 +24,3 @@ package() {
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
-
-# vim: ts=2 sw=2 et:
