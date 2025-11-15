@@ -1,0 +1,15 @@
+pkgbase = reddix-bin
+	pkgdesc = Reddit, refined for the terminal.
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/ck-zhang/reddix
+	arch = x86_64
+	license = MIT License
+	provides = reddix
+	conflicts = reddix
+	replaces = reddix
+	options = !strip
+	source = reddix-bin-0.2.9-x86_64-unknown-linux-gnu.tar.xz::https://github.com/ck-zhang/reddix/releases/download/v0.2.9/reddix-x86_64-unknown-linux-gnu.tar.xz
+	b2sums = 198580cdd3b184c3b1252ac532ebad6fe2e2a206d8a52703df0b01ced1d4c1aebce633393f20ed957757d3e628a3bc2c59d42c7d97bbd6ef516b2cc6b9272177
+
+pkgname = reddix-bin
