@@ -1,12 +1,12 @@
 # Maintainer:  cucullus <cucullus AT mail . ru>
 pkgname=python-obspy
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python framework for processing seismological data'
 arch=(x86_64)
 url="http://obspy.org/"
 license=('LGPL-3.0-only')
-depends=("python-scipy" "python-matplotlib" 'python-lxml' 'python-sqlalchemy')
+depends=("python-scipy" "python-matplotlib" 'python-lxml' 'python-sqlalchemy1.4')
 optdepends=('python-cartopy>=0.20: map plotting')
 makedepends=('python-distribute')
 conflicts=('python-obspy-git')
