@@ -22,7 +22,8 @@ sha256sums=('f936c8d694f9c49a367a376f99c751467150a4ed7cbf8f4723ef19b2d2d9998d')
 
 #pkgver() {
 #  cd "${srcdir}/${pkg_name_ver}"
-#	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+#  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 #}
 
 prepare()
