@@ -2,7 +2,7 @@
 # Maintainer: Guy Boldon <gb@guyboldon.com>
 
 pkgname=coolercontrold
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="A program to monitor and control your cooling devices. This package contains the CoolerControl service daemon."
 arch=('x86_64')
@@ -20,6 +20,7 @@ makedepends=(
 )
 optdepends=(
 	'nvidia-utils: NVIDIA GPU support'
+	'liquidctl: liquidctl driver support'
 )
 provides=(
 	"$pkgname"
@@ -36,7 +37,7 @@ source=(
 	"https://gitlab.com/coolercontrol/coolercontrol/-/archive/$pkgver/${pkgname%d}-$pkgver.tar.gz"
 )
 sha256sums=(
-  '09f6384a22bcc84dda4502d040e1bce51279fe38c911f0006bab253e5ff74d24'
+  'f27354ae0a1e97de81ac574e03df3106d30d55d93393e86ea99abbe3af4c4ab6'
 )
 
 build() {
