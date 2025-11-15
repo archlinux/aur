@@ -1,7 +1,7 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 
 pkgname=crosvm-git
-pkgver=r5881.4a740f380
+pkgver=r10974.88240a4238
 pkgrel=1
 pkgdesc="The Chrome OS Virtual Machine Monitor"
 url="https://chromium.googlesource.com/crosvm/crosvm"
@@ -9,27 +9,22 @@ depends=('gcc-libs' 'libcap' 'dtc')
 makedepends=('rustup' 'rust-bindgen' 'wayland-protocols')
 conflicts=('crosvm')
 provides=('crosvm')
+options=(!lto !debug)
 arch=('x86_64')
 license=('custom:chromiumos')
 source=("git+https://chromium.googlesource.com/crosvm/crosvm"
-        "git+https://chromium.googlesource.com/chromiumos/third_party/tpm2"
-        "git+https://chromium.googlesource.com/chromiumos/platform/minigbm"
-        "git+https://chromium.googlesource.com/chromiumos/third_party/virglrenderer"
         "git+https://chromium.googlesource.com/chromiumos/platform/minijail"
         "git+https://chromium.googlesource.com/chromium/tools/depot_tools"
-        "git+https://chromium.googlesource.com/chromiumos/third_party/rust-vmm/vhost"
+        "git+https://chromium.googlesource.com/crosvm/perfetto"
         )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
   cd crosvm
   git submodule init
-  git config submodule."tpm2-sys/libtpm2".url "$srcdir/tpm2"
-  git config submodule."third_party/minigbm".url "$srcdir/minigbm"
-  git config submodule."third_party/virglrenderer".url "$srcdir/virglrenderer"
   git config submodule."third_party/minijail".url "$srcdir/minijail"
   git config submodule."third_party/depot_tools".url "$srcdir/depot_tools"
-  git config submodule."third_party/vmm_vhost".url "$srcdir/vhost"
+  git config submodule."third_party/perfetto".url "$srcdir/perfetto"
   git -c protocol.file.allow=always submodule update
 }
 
