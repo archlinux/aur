@@ -1,0 +1,22 @@
+post_install() {
+    echo ">>> 'liteloader-qqnt-patcher' was installed."
+    echo ">>> To apply the patch for FIRST TIME, you SHOULD run:"
+    echo ">>>   sudo /opt/LiteLoaderQQNT/patcher/patcher.sh apply"
+    echo ">>>"
+    echo ">>> You SHOULD run this command after every LinuxQQ update (Target file modified):"
+    echo ">>>   sudo /opt/LiteLoaderQQNT/patcher/patcher.sh upgrade"
+    echo ">>> We'll try to notify you but not guranteed."
+    echo ">>>"
+    echo ">>> To REVERT the patch, please run:"
+    echo ">>>   sudo /opt/LiteLoaderQQNT/patcher/patcher.sh restore"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo ">>> 'liteloader-qqnt-patcher' was removed."
+    echo ">>> Check the LinuxQQ with pacman -Qkk and reinstall it if needed."
+    echo ">>> You may delete all the backup files (*.LLQQNT.bak)."
+}
