@@ -1,6 +1,6 @@
 pkgbase = waypipe-git
 	pkgdesc = A proxy for Wayland protocol applications; like ssh -X
-	pkgver = 0.10.3.r0.gcd57cf5
+	pkgver = 0.10.5.r10.ga2d13ec
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/mstoeckl/waypipe
 	arch = i686
@@ -27,6 +27,7 @@ pkgbase = waypipe-git
 	depends = mesa
 	depends = ffmpeg
 	optdepends = openssh: recommended transport
+	optdepends = xwayland-satellite: for remote X11-to-wayland conversion option
 	provides = waypipe
 	conflicts = waypipe
 	options = debug
