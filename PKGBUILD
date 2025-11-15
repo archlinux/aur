@@ -1,4 +1,4 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname=carafe-bin
 _pkgname=carafe
@@ -8,7 +8,7 @@ pkgdesc="Tiny management tool for wine bottles/carafes"
 arch=('x86_64')
 url="https://github.com/Jelmerro/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/Jelmerro/${_pkgname}/${pkgver}"
-license=('GPL3')
+license=('MIT')
 depends=('python' 'wine')
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
@@ -22,7 +22,7 @@ package() {
 
   cp -R "${srcdir}/usr/" "${pkgdir}/usr/"
 
-  install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+  install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-# vim:set ts=2 sw=2 et:
