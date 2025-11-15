@@ -3,8 +3,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 # Co-Maintainer: Simon Krogmann <$(base64 --decode <<<'cy5rcm9nbWFubkB5YWhvby5jb20K')>
 pkgname=pmdk
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.1.2
+pkgrel=1
 pkgdesc="Persistent Memory Development Kit"
 arch=('x86_64')
 url="https://pmem.io/"
@@ -26,8 +26,8 @@ provides=(
   'librpmem'
 )
 makedepends=(pandoc-cli)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/pmem/pmdk/archive/$pkgver.tar.gz")
-sha1sums=('60ca219fff75741bcc66d355c0764ca8692e07d5')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/daos-stack/pmdk/archive/$pkgver.tar.gz")
+sha1sums=('a060893f8a10b9f59b7a93269c988db81bbecd0d')
 
 build() {
   cd "$pkgname-$pkgver" || exit 1
