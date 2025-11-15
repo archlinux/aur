@@ -4,7 +4,7 @@
 
 pkgname=coccigrep
 pkgver=1.21
-pkgrel=1
+pkgrel=2
 pkgdesc='Semantic grep for the C language based on coccinelle'
 arch=('any')
 url='https://home.regit.org/software/coccigrep/'
@@ -27,8 +27,8 @@ package() {
     cd $pkgname-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
 
-    gzip -9 doc/_build/man/coccigrep.1
-    install -Dm644 doc/_build/man/coccigrep.1.gz -t $pkgdir/usr/rhhshare/man/man1/
+    gzip -9 coccigrep.1
+    install -Dm644 coccigrep.1.gz -t $pkgdir/usr/rhhshare/man/man1/
 
     # Emacs modes
     install -Dm644 editors/cocci-grep.el -t $pkgdir/usr/share/emacs/site-lisp/

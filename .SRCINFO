@@ -1,7 +1,7 @@
 pkgbase = coccigrep
 	pkgdesc = Semantic grep for the C language based on coccinelle
 	pkgver = 1.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://home.regit.org/software/coccigrep/
 	arch = any
 	license = GPL-3.0-only
