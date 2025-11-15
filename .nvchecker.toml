@@ -1,0 +1,4 @@
+[crossdirstat-bin]
+source = "github"
+github = "Jelmerro/crossdirstat"
+use_latest_release = true
