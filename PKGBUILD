@@ -12,6 +12,7 @@ url="https://github.com/Cyclododecene/newsfeed"
 license=('BSD')
 depends=('python-sphinx')
 makedepends=('python-setuptools')
+# No upstream tags available for the releases on PyPI: https://github.com/Cyclododecene/newsfeed/issues/13
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha512sums=('96d9d0c15fca8b62f945bafc8f0eafa62df9c471f7510e2f153e47b66534e5f3041e5c01df772e6c35a9f09baa70064642f7f0fa43ccfd33dd64c2604494f2fc')
 
