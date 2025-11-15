@@ -1,5 +1,5 @@
 pkgbase = krunner-yubikey-oath
-	pkgdesc = KDE Plasma 6 KRunner plugin for YubiKey OATH (TOTP/HOTP) integration
+	pkgdesc = KDE Plasma 6 KRunner plugin for YubiKey and Nitrokey OATH (TOTP/HOTP) integration
 	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/jkolo/yubikey-oath-krunner
