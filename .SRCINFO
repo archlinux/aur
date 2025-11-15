@@ -1,6 +1,6 @@
 pkgbase = pacdo
 	pkgdesc = a simple cli utility to shorten pacman syntax.
-	pkgver = 2025.11.1305
+	pkgver = 2025.11.1607
 	pkgrel = 0
 	url = https://github.com/jstmaxlol/pacdo
 	arch = any
