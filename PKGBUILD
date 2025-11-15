@@ -1,58 +1,60 @@
-# Maintainer: artist for XLibre
+# Maintainer: artist for XLibre <artist4xlibre@proton.me>
 
 _pkgname=xorgxrdp
-pkgname=xlibre-xorgxrdp-glamor
+pkgname=xlibre-$_pkgname-glamor
 pkgver=0.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc="XLibre drivers for xrdp, with glamor enabled. Only works on Intel and AMD GPUs."
-arch=('i686' 'x86_64' 'armv6h' 'armv7l' 'aarch64')
+arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/neutrinolabs/xorgxrdp"
 license=('X11')
-provides=("$_pkgname" "$_pkgname-glamor")
-conflicts=("$_pkgname" "$_pkgname-glamor")
-depends=('xlibre-xserver')
-makedepends=('nasm' 'xorg-server-devel' 'xrdp')
+depends=('glibc' 'xlibre-xserver')
+makedepends=('libdrm' 'libxfont2' 'nasm' 'xlibre-xserver-devel' 'xrdp')
 checkdepends=('check' 'xorg-xdpyinfo')
-options=('staticlibs')
-source=(
-  "$url/archive/refs/tags/v$pkgver.tar.gz"
-  'glamor.patch'
-)
-sha256sums=('b4168992159f8f0148d10d7207ff8de51924cc40671cc28942a82e7bf07ef41e'
-            '0aa0b27b66122217bd6ca2466496fe3be8738c4debe247f9af7fdaa08487622e')
+conflicts=($_pkgname)
+provides=($_pkgname)
+options=('staticlibs' '!debug')
+source=("$url/releases/download/v$pkgver/xorgxrdp-$pkgver.tar.gz"{,.asc}
+        configure_ac.patch
+        xrdpkeyb_rdpKeyboard_c.patch
+        glamor.patch)
+sha256sums=('c2585c73916d68123320c3b3d077d3596c50d71466dbd59e780ca247f9124f14'
+            'SKIP'
+            'dead2ecd59e2a58f05c3b5df65cdc97a2423098f55d8df2129be6221c1b0f158'
+            'bcb7a8bfe940eb18d6b12f80eb31406319008df4f3c134dc6c0dbd29c37b0002'
+            'e08bf1fc7e23a70bc89574b14199f70c1c9ceb19055cbb8fb8c9a4a660d8c03f')
+validpgpkeys=('61ECEABBF2BB40E3A35DF30A9F72CDBC01BF10EB')   # Koichiro IWAO <meta@vmeta.jp>
 
 prepare() {
-  cd "$srcdir/$_pkgname-$pkgver"
-
-  # https://github.com/neutrinolabs/xrdp/issues/1029#issuecomment-724105386
-  patch -p1 -i"$srcdir/glamor.patch"
+  cd "$_pkgname-$pkgver"
+  patch -Np0 -i ../configure_ac.patch
+  patch -Np0 -i ../xrdpkeyb_rdpKeyboard_c.patch
+  patch -Np1 -i ../glamor.patch
 }
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   ./bootstrap
 
-  sed -i 's|moduledir=`pkg-config xorg-server --variable=moduledir`|moduledir="/usr/lib/xorg/modules/xlibre-25.0"|' configure
-  LDFLAGS+=" -L/usr/lib/xorg/modules/xlibre-25.0"
   CFLAGS="$CFLAGS -ffat-lto-objects $(pkgconf --cflags-only-I libdrm)"
-  ./configure --prefix=/usr \
+  sed -i 's|moduledir=`pkg-config xorg-server --variable=moduledir`|moduledir="/usr/lib/xorg/modules/xlibre-25.0"|' configure
+  ./configure \
+    --prefix="/usr" \
     --enable-glamor
-
   make
 }
 
 check() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
-  # https://github.com/neutrinolabs/xorgxrdp/pull/308
-  #XORG=/usr/lib/Xorg make check
+  #make check   # Requires X Display
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 'COPYING' -t "$pkgdir/usr/share/licenses/$_pkgname"
+  install -Dm644 "COPYING" -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
 
