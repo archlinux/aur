@@ -36,5 +36,5 @@ package() {
 
   # Create a symlink to the binary in /opt
   install -dm755 "${pkgdir}/usr/bin/"
-  ln -sf /opt/Vieb/vieb "${pkgdir}/usr/bin/${_pkgname}"
+  ln -sf "/opt/Vieb/vieb" "${pkgdir}/usr/bin/${_pkgname}"
 }
