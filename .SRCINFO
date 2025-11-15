@@ -1,6 +1,6 @@
 pkgbase = python-translate-shell
 	pkgdesc = Translate text by google, bing, youdaozhiyun, haici, stardict, etc at same time from CLI, GUI (GNU/Linux, Android, macOS and Windows), REPL, python, shell and vim.
-	pkgver = 0.0.57
+	pkgver = 0.0.58
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/translate-shell
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = python-translate-shell
 	optdepends = stardict-jmdict-ja-en: translate Japanese to English
 	provides = stardict
 	conflicts = translate-shell
-	source = https://files.pythonhosted.org/packages/py3/t/translate-shell/translate_shell-0.0.57-py3-none-any.whl
-	sha256sums = 28a1055a63b832aef869332bc1e4a83b29f442b31e817a5a3e58010db0b017c6
+	source = https://files.pythonhosted.org/packages/py3/t/translate-shell/translate_shell-0.0.58-py3-none-any.whl
+	sha256sums = 13be99d524ec7a0485808a746f1d867dcd312b6556a5f56cccc02f4a624ea110
 
 pkgname = python-translate-shell
