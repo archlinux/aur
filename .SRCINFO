@@ -1,6 +1,6 @@
 pkgbase = snes9x-git
 	pkgdesc = Portable Super Nintendo Entertainment System (TM) emulator - git version
-	pkgver = 1.63.r129.gabfc018c
+	pkgver = 1.63.r134.g83ebd9d9
 	pkgrel = 1
 	url = http://www.snes9x.com/
 	arch = x86_64
@@ -35,6 +35,7 @@ pkgbase = snes9x-git
 
 pkgname = snes9x-git
 	pkgdesc = Portable Emulator for the Super Nintendo Entertainment System - git version
+	depends = alsa-lib
 	depends = libpng
 	depends = libxinerama
 	depends = libxv

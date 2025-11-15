@@ -5,7 +5,7 @@
 pkgbase=snes9x-git
 _pkgbase=snes9x
 pkgname=(snes9x-git snes9x-gtk-git snes9x-qt-git)
-pkgver=1.63.r129.gabfc018c
+pkgver=1.63.r134.g83ebd9d9
 pkgrel=1
 pkgdesc="Portable Super Nintendo Entertainment System (TM) emulator - git version"
 arch=('x86_64')
@@ -62,7 +62,7 @@ build() {
 package_snes9x-git() {
 
     pkgdesc="Portable Emulator for the Super Nintendo Entertainment System - git version"
-    depends=(libpng libxinerama libxv minizip)
+    depends=(alsa-lib libpng libxinerama libxv minizip)
 
     conflicts=('snes9x')
     provides=('snesx')
