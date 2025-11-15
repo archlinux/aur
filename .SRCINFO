@@ -1,7 +1,7 @@
 pkgbase = python-langchain
 	pkgdesc = Building applications with LLMs through composability
-	pkgver = 1.0.5
-	pkgrel = 2
+	pkgver = 1.0.7
+	pkgrel = 1
 	url = https://github.com/langchain-ai/langchain/tree/master/libs/langchain
 	arch = any
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = python-langchain
 	depends = python-pyyaml
 	depends = python-requests
 	depends = python-sqlalchemy
-	source = langchain-1.0.5.tar.gz::https://files.pythonhosted.org/packages/source/l/langchain/langchain-1.0.5.tar.gz
-	b2sums = f677e7cafbb26f3b6b9b00558104f5432c5098983807fb0a9ad82d005338fdcfd8b05736738f789a0bb998673fb6f3659807268a1ec6dd183f84b740011fe7eb
+	source = langchain-1.0.7.tar.gz::https://files.pythonhosted.org/packages/source/l/langchain/langchain-1.0.7.tar.gz
+	b2sums = 4b4af1bf4e78bcb24bf44c83858cf277c92dab11154ff4e9d2ef297c72aa6624aa162ccdb59c27e3a7914a6601e8a1a9ae47eafffa0c2ce07a6a613ef1cf9422
 
 pkgname = python-langchain
