@@ -1,29 +1,39 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_basename=crossdirstat
-pkgname=${_basename}-bin
+_pkgname=crossdirstat
+pkgname=${_pkgname}-bin
 pkgver=2.5.0
 pkgrel=1
 pkgdesc="Free open-source cross-platform file & directory statistics"
-arch=('x86_64' 'aarch64')
-_barch=('amd64' 'arm64')
+arch=('x86_64')
 url="https://github.com/Jelmerro/crossdirstat"
+_urlraw="https://raw.githubusercontent.com/Jelmerro/${_pkgname}/${pkgver}"
 license=('MIT')
-conflicts=("${_basename}")
-provides=("${_basename}")
-makedepends=('tar')
+
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 depends=('glibc' 'gcc-libs' 'glib2' 'systemd-libs' 'dbus' 'gtk3' 'mesa' 'nspr' 'libxkbcommon' 'libxdamage' 'libxfixes' 'libxrandr' 'libxext' 'libxcb' 'expat' 'libx11' 'libxcomposite' 'libcups' 'alsa-lib' 'pango' 'cairo' 'nss' 'at-spi2-core' 'hicolor-icon-theme')
-source_x86_64=("${url}/releases/download/${pkgver}/${_basename}_${pkgver}_${_barch[0]}.deb")
-source_aarch64=("${url}/releases/download/${pkgver}/${_basename}_${pkgver}_${_barch[1]}.deb")
-sha256sums_x86_64=('a398e132527d06fa159b866667e89466ac4a3b393bf285a7884f60f46d69fc05')
-sha256sums_aarch64=('0cfcd9b9ac418cf645e3552f11155ba5eb94e58d8d15ef4cb187b423daa9734e')
+
+options=(!strip)
+
+source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
+        "README-${pkgver}.md::${_urlraw}/README.md")
+source_x86_64=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.pacman")
+sha256sums=('9ffb84335663022d32f9e84c6452994eda4823a502a690f8b0bc360a92a16974'
+            '9fef6ed440edf791a1a0273af702e64805c86d762bec523f33552d6a35e60317')
+sha256sums_x86_64=('24020b81bda4baa0eee5af2b251b3263cbd9ce2a02b961fb2fb8b96818a5b6ad')
 
 package() {
-    cd "${pkgdir}"
+  cd "$srcdir"
 
-    # this extracts all into the pkgdir
-    tar -xf "${srcdir}/data.tar.xz"
+  cp -R "${srcdir}/usr/" "${pkgdir}/usr/"
+  cp -R "${srcdir}/opt/" "${pkgdir}/opt/"
 
-    install -dm755 "${pkgdir}/usr/bin/"
-    ln -sf "/opt/Crossdirstat/crossdirstat" "${pkgdir}/usr/bin/${_basename}"
+  install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+  install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # Create a symlink to the binary in /opt
+  install -dm755 "${pkgdir}/usr/bin/"
+  ln -sf "/opt/Crossdirstat/crossdirstat" "${pkgdir}/usr/bin/${_basename}"
 } 
