@@ -1,13 +1,13 @@
 pkgbase = clean-history-bin
 	pkgdesc = Clean multiline entries from shell history files (binary release)
-	pkgver = 0.1.0
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/GhaziAlibi/clean-history
 	arch = x86_64
 	license = MIT
 	provides = clean-history
 	conflicts = clean-history
-	source = clean-history-bin-0.1.0.tar.gz::https://github.com/GhaziAlibi/clean-history/releases/download/v0.1.0/clean-history-linux-x86_64.tar.gz
-	sha256sums = 47c8cd7a98c843a861548c0befa2c32fb2d3b375bb031336026dc29446c01f6c
+	source = clean-history-bin-0.1.9.tar.gz::https://github.com/GhaziAlibi/clean-history/releases/download/v0.1.9/clean-history-linux-x86_64.tar.gz
+	sha256sums = 7ba4b9d9fa7c3c2ac00d9ce27390cdfe5a4681b279677c75ebb0f6a7dfcf105e
 
 pkgname = clean-history-bin
