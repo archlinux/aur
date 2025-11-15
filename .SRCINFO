@@ -1,0 +1,22 @@
+pkgbase = fnox-bin
+	pkgdesc = Fort Knox for your secrets
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/jdx/fnox
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = fnox
+	conflicts = fnox
+	source = LICENSE-1.3.0::https://raw.githubusercontent.com/jdx/fnox/v1.3.0/LICENSE
+	source = README-1.3.0.md::https://raw.githubusercontent.com/jdx/fnox/v1.3.0/README.md
+	sha256sums = a978dbd843845fb958044bc384c1826bd9cb5e64ea540c392fa410a288de9df4
+	sha256sums = 0d5ef5ff4819a64042a6ac97db0be7d351d8932675c2aa56345b53efaa804565
+	source_x86_64 = fnox-x86_64-1.3.0.tar.gz::https://github.com/jdx/fnox/releases/download/v1.3.0/fnox-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 06edf4a7bdd1a6d7606b68cd761ec4006614b2c3eef4c1fa4d104d52e84cfd78
+	source_aarch64 = fnox-aarch64-1.3.0.tar.gz::https://github.com/jdx/fnox/releases/download/v1.3.0/fnox-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = b5cea1e1618f0e5259a7457e24ab93ad16891f952e5bc4798b3459192c43e01b
+
+pkgname = fnox-bin
