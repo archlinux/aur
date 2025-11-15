@@ -1,27 +1,28 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Maintainer: Rooki <aur at rooki dot xyz>
+# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: Carlo Cabanilla <carlo.cabanilla@gmail.com>
 
 pkgname=cs-script
-pkgver=3.30.5.2
+pkgver=4.12.0.0
 pkgrel=1
 pkgdesc="Run C# sources like scripts"
 arch=('any')
 url="https://github.com/oleg-shilo/cs-script"
 license=('MIT')
-depends=('mono')
-source=("${url}/releases/download/v${pkgver}/${pkgname}.7z")
-sha256sums=('f24c05f57c179c84ff1ea0b8ff0a072503f2ba83d29d66acf383424ef4400a46')
+provides=(cs-script)
+conflicts=(cs-script)
+depends=('dotnet-sdk-10.0-bin')
+source=("${url}/releases/download/v${pkgver}/${pkgname}.linux.v${pkgver}.7z")
+sha256sums=('c040af9256dd28c1cfab5277b486b7323eaf0f1d59ad4213b4699e44a1108880')
 
 package() {
-  local sharedir="$pkgdir/usr/share/"
-  mkdir -p "$sharedir"
-  cp -r "$srcdir/$pkgname" "$sharedir"
-
-  local bindir="$pkgdir/usr/bin"
-  local cscspath="$bindir/cscs"
-  mkdir -p "$bindir"
-  echo '#!/bin/sh
-/usr/bin/mono /usr/share/cs-script/cscs.exe $*
-' > $cscspath
-  chmod +x $cscspath
+  install -dm755 "${pkgdir}/usr/share/cs-scripts"
+  cp -rf cscs.dll cscs.runtimeconfig.json "${pkgdir}/usr/share/cs-scripts"
+  
+  install -Dm755 /dev/stdin "${pkgdir}/usr/local/bin/css" <<EOF
+  #!/bin/bash
+  dotnet /usr/share/cs-scripts/cscs.dll "\$@"
+EOF
+    # Make the wrapper magical and accessible to all
+    chmod +x "${pkgdir}/usr/local/bin/css"
 }
