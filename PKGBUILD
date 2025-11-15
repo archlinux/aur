@@ -2,8 +2,8 @@
 
 pkgname=manjaro-hyprland-settings
 pkgver="20251115"
-_commit='1c092766c5d9eea221054e0cf2b1c700aee5d050'
-pkgrel=2
+_commit='b5a2f5cdf80f48ea12dc5b5ebad40f9535308ab4'
+pkgrel=3
 arch=('any')
 url="https://github.com/lisuml/${pkgname}"
 license=('GPL')
