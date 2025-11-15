@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Proton Pass
+Comment=Proton Pass desktop application
+GenericName=Password Manager
+Exec=proton-pass %U
+Icon=proton-pass
+Type=Application
+StartupNotify=true
+Categories=Utility;
+
