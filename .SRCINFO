@@ -1,7 +1,7 @@
 pkgbase = alt-sendme-bin
 	pkgdesc = Frictionless, real-time file transfer tool
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tonyantony300/alt-sendme
 	arch = x86_64
 	license = AGPL-3.0
@@ -18,7 +18,7 @@ pkgbase = alt-sendme-bin
 	provides = alt-sendme
 	conflicts = alt-sendme
 	options = !strip
-	source_x86_64 = https://github.com/tonyantony300/alt-sendme/releases/download/v0.2.1/AltSendme_0.2.1_amd64_linux.deb
+	source_x86_64 = https://github.com/tonyantony300/alt-sendme/releases/download/v0.2.1/AltSendme_0.2.1_amd64.deb
 	sha256sums_x86_64 = 77aa3a728373ac3dea1f268767437ab66d5db0c3aaafe5727e7a6631c1904f5c
 
 pkgname = alt-sendme-bin
