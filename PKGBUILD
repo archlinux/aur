@@ -1,9 +1,9 @@
-# Maintainer: artist for Xlibre
+# Maintainer: artist for XLibre <artist4xlibre@proton.me>
 
 _pkgname=xlibre-server
 _orgpkgname=xlibre-xserver
 pkgname=$_pkgname-bin
-pkgver=25.0.0.14
+pkgver=25.0.0.15
 pkgrel=1
 pkgdesc="XLibre Official Easy Install Drop in Replacement fork of X.Org X server (binary release)"
 arch=(x86_64)
@@ -28,7 +28,7 @@ options=(!strip)
 source=("$url/repo/arch_based/x86_64/$_orgpkgname-$pkgver-$pkgrel-x86_64.pkg.tar.zst")
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 depends=(xlibre-server-common-bin xlibre-input-libinput-bin libepoxy libxfont2 pixman libunwind
-         dbus libgl nettle libxdmcp sh glibc libxau libtirpc libmd
+         dbus libgl nettle libxdmcp sh glibc libxau libtirpc libmd libbsd
          libpciaccess libdrm libxshmfence libxcvt) # FS#52949
 # see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
 # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel pkg
@@ -37,7 +37,7 @@ conflicts=($_pkgname 'xorg-server' 'xorg-server-common<25.0.0.0' 'nvidia-utils<=
 replaces=('glamor-egl' 'xf86-video-modesetting')
 install=$pkgname.install
 
-sha256sums=('52af189da3e146f060dce4dff2afd7884fd5538042667a9e28518f3da53c562a')
+sha256sums=('2f543305122f7c566378dd5c0b00d90e70439c78c1ff6e1bcdcf6b82cb1b44d8')
 
 package() {
   tar -xf "${_orgpkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}" etc usr
