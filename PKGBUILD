@@ -2,7 +2,7 @@
 
 pkgname=rvx-builder
 pkgver=3.18.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A NodeJS ReVanced Extended Builder"
 arch=("x86_64")
 url="https://github.com/inotia00/rvx-builder"
@@ -19,22 +19,17 @@ source=(
   "rvx-builder.desktop"
   "rvx-builder.png"
 )
+noextract=("${pkgname}-${pkgver}.tar,gz")
 sha256sums=('949b9edd89a0a29a777d9b42ddd15814e17a16a9e3068dfcf09825cb650d1cd2'
-            '3fdb61a644d1b8f9506a932330319b34ed023fe9e3c5712df340cc6ed1e2fc12'
+            '303b1f039d4f384b1f5c7e3fbc831d1321676f79b043f83824e48f166a10235a'
             'ec881952d60744851d5827b1fa28f129db498656cff73357f819e301811861af'
             '2b4943f5ada85a5dfb73d8e28d3d14e0f7f4eaa4f4072feca02e3a9b54500406')
-build() {
-  cd $pkgname-$pkgver
-  npm i
-}
-
 package() {
-  rm -rf "$pkgdir/opt/$pkgname"
-  mkdir -p "$pkgdir/opt"
+  npm install -g --prefix "${pkgdir}/usr" --no-bin-links --cache "${srcdir}/npm-cache" --omit=dev "${srcdir}/${pkgname}-${pkgver}.tar.gz" 
+
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/share/applications"
   mkdir -p "$pkgdir/usr/share/icons/hicolor/192x192/apps"
-  cp -r "$srcdir/$pkgname-$pkgver" "$pkgdir/opt/$pkgname"
   install -Dm755 "$srcdir/rvx-builder.sh" "$pkgdir/usr/bin/rvx-builder"
   install -Dm644 "$srcdir/rvx-builder.desktop" "$pkgdir/usr/share/applications"
   install -Dm644 "$srcdir/rvx-builder.png" "$pkgdir/usr/share/icons/hicolor/192x192/apps"

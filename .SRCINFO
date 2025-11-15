@@ -1,7 +1,7 @@
 pkgbase = rvx-builder
 	pkgdesc = A NodeJS ReVanced Extended Builder
 	pkgver = 3.18.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/inotia00/rvx-builder
 	arch = x86_64
 	license = GPL-3.0-only
@@ -10,12 +10,13 @@ pkgbase = rvx-builder
 	depends = java-environment>=17
 	optdepends = android-tools: required only for rooted phones
 	optdepends = electron: for opening rvx-builder in a seperate window
+	noextract = rvx-builder-3.18.7.tar,gz
 	source = rvx-builder-3.18.7.tar.gz::https://github.com/inotia00/rvx-builder/archive/refs/tags/v3.18.7.tar.gz
 	source = rvx-builder.sh
 	source = rvx-builder.desktop
 	source = rvx-builder.png
 	sha256sums = 949b9edd89a0a29a777d9b42ddd15814e17a16a9e3068dfcf09825cb650d1cd2
-	sha256sums = 3fdb61a644d1b8f9506a932330319b34ed023fe9e3c5712df340cc6ed1e2fc12
+	sha256sums = 303b1f039d4f384b1f5c7e3fbc831d1321676f79b043f83824e48f166a10235a
 	sha256sums = ec881952d60744851d5827b1fa28f129db498656cff73357f819e301811861af
 	sha256sums = 2b4943f5ada85a5dfb73d8e28d3d14e0f7f4eaa4f4072feca02e3a9b54500406
 
