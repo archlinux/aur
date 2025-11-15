@@ -2,7 +2,8 @@
 pkgname="liteloader-qqnt-bin"
 _pkgname="LiteLoaderQQNT"
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
+
 pkgdesc="轻量, 简洁, 开源的 QQNT 插件加载器"
 arch=('any')
 url="https://github.com/LiteLoaderQQNT/LiteLoaderQQNT"
@@ -16,8 +17,9 @@ sha256sums=('00649308217a10bb191207709d7073c0ffaddb8e4e3e56ef4c152adee0f418c2')
 
 package() {
 	# Copy LiteLoaderQQNT files
-	install -dm644 "${pkgdir}/opt/LiteLoaderQQNT/"
+	install -dm755 "${pkgdir}/opt/LiteLoaderQQNT/"
 	cp -r $srcdir/* "${pkgdir}/opt/LiteLoaderQQNT/"
+	chmod -Rf 755 "${pkgdir}/opt/LiteLoaderQQNT/"
 
 	# Clean up in target dir
 	rm -f "${pkgdir}/opt/LiteLoaderQQNT/LiteLoaderQQNT-${pkgver}.zip"
