@@ -1,0 +1,18 @@
+pkgbase = runemaster-git
+	pkgdesc = A character viewer app made for GNOME.
+	pkgver = r18.c94847b
+	pkgrel = 1
+	url = https://github.com/johnfactotum/runemaster
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkg-config
+	depends = gjs
+	depends = gtk4
+	depends = libadwaita
+	source = runemaster::git+https://github.com/johnfactotum/runemaster.git
+	sha256sums = SKIP
+
+pkgname = runemaster-git
