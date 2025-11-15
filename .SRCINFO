@@ -1,0 +1,18 @@
+pkgbase = patcher9x-git
+	pkgdesc = Patch for Windows 9x to fix CPU issues
+	pkgver = v0.9.90.r90.b0cf0e2
+	pkgrel = 1
+	url = https://github.com/JHRobotics/patcher9x
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = fasm
+	provides = patcher9x
+	conflicts = patcher9x
+	source = git+https://github.com/JHRobotics/patcher9x.git
+	sha256sums = SKIP
+
+pkgname = patcher9x-git

@@ -1,0 +1,7 @@
+patcher9x/
+pkg/
+src/
+*.tar.gz
+*.zip
+*.sig
+*.log
