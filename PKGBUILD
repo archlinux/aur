@@ -1,7 +1,7 @@
 # Maintainer: Avenge Media LLC <avengemediallc at gmail dot com>
 pkgname=dms-shell-bin
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
 url='https://github.com/AvengeMedia/DankMaterialShell'
@@ -51,7 +51,7 @@ package() {
     install -dm0755 "$pkgdir/usr/share/quickshell"
     cp -r "$srcdir/dms" "$pkgdir/usr/share/quickshell/"
     install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" "$srcdir/dms/README.md"
-#    cp -r "$srcdir/dms/docs/"* "$pkgdir/usr/share/doc/$pkgname/"
+    cp -r "$srcdir/docs/"* "$pkgdir/usr/share/doc/$pkgname/"
     install -Dm0644 "dms.service" "$pkgdir/usr/lib/systemd/user/dms.service"
     install -Dm0644 "completions.bash" "$pkgdir/usr/share/bash-completion/completions/dms"
     install -Dm0644 "completions.zsh" "$pkgdir/usr/share/zsh/site-functions/_dms"
