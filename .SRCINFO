@@ -1,7 +1,7 @@
 pkgbase = lrcfetch-git
 	pkgdesc = Tool to fetch lyrics from LRCLIB
-	pkgver = v0.0.0
-	pkgrel = 3
+	pkgver = v0.0.1
+	pkgrel = 1
 	url = https://github.com/hagaraShin/lrcfetch-tui
 	arch = x86_64
 	license = MIT
