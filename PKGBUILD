@@ -2,7 +2,7 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdradmin-am
-pkgver=3.6.14
+pkgver=3.6.15
 pkgrel=1
 pkgdesc="Web user interface for VDR"
 url="https://github.com/vdr-projects/vdradmin-am"
@@ -16,7 +16,7 @@ optdepends=('perl-authen-sasl: Required for AutoTimer email notification'
 makedepends=('perl-authen-sasl' 'perl-digest-hmac' 'perl-io-socket-inet6' 'perl-http-daemon-ssl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/vdradmin-am/archive/refs/tags/v$pkgver.tar.gz"
         'vdradmin-am.service')
-sha256sums=('6595e5e35e989ac641e8acf6dd75d5f37476577359f7bdeae1d2caa758347967'
+sha256sums=('777f461f7c1f6baaace0bef6aef8d005959261cf30320ea720a6d64c7bb98e50'
             '2a33bbdac1ba7c80139d17e5d7cca7ccbf2a2945aeaf0777d0dd6fbe594bfe54')
 
 package() {
