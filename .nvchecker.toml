@@ -1,0 +1,4 @@
+[garlmap-bin]
+source = "github"
+github = "Jelmerro/garlmap"
+use_latest_release = true
