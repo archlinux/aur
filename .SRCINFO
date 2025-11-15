@@ -1,0 +1,17 @@
+pkgbase = luajit-gl-git
+	pkgdesc = LuaJIT binding to OpenGL
+	pkgver = r6.d328638
+	pkgrel = 1
+	url = https://github.com/Playermet/luajit-gl
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = luajit
+	depends = mesa
+	depends = luajit-glfw
+	provides = luajit-gl
+	conflicts = luajit-gl
+	source = luajit-gl-git::git+https://github.com/Playermet/luajit-gl.git
+	sha512sums = SKIP
+
+pkgname = luajit-gl-git
