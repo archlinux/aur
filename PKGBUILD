@@ -1,14 +1,14 @@
-# Maintainer: Hrle <5b0bae33-0d7b-4297-b3a5-f6294b4bfd39@anonaddy.me>
+# Maintainer: BlueGone <thomas.placais@protonmail.com>
 pkgname=dotnet-install
 pkgver=v1
-pkgrel=1
+pkgrel=2
 pkgdesc="Script used to install the .NET SDK and the shared runtime"
 arch=('any')
-url="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script"
+url="https://dot.net/${pkgver}/dotnet-install.sh"
 license=('MIT')
 depends=('curl' 'bash')
-source=('dotnet-install')
-md5sums=('5a995842b520f8d35a17ce8c58103c9f')
+source=("dotnet-install::${url}")
+md5sums=('d068b72ce751209caa65c809cdc2906d')
 
 package() {
   install -D -m0755 "$srcdir/dotnet-install" "$pkgdir/usr/bin/dotnet-install"
