@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'python-pandas')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('SKIP')  # you can replace SKIP with real checksum later
+sha256sums=('14bbf1b69d1458d3e750ad8447214e956fd93b82b3a0947bcbee2f389be9d93e')
 
 build() {
     cd "$pkgname-$pkgver"

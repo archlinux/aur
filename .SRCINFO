@@ -12,6 +12,6 @@ pkgbase = fmeta
 	depends = python
 	depends = python-pandas
 	source = https://files.pythonhosted.org/packages/source/f/fmeta/fmeta-0.1.4.tar.gz
-	sha256sums = SKIP
+	sha256sums = 14bbf1b69d1458d3e750ad8447214e956fd93b82b3a0947bcbee2f389be9d93e
 
 pkgname = fmeta
