@@ -1,6 +1,6 @@
 pkgbase = libtsm
 	pkgdesc = Terminal-emulator State Machine
-	pkgver = 4.2.0
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/kmscon/libtsm
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = libtsm
 	makedepends = libxkbcommon
 	depends = glibc
 	options = !libtool
-	source = https://github.com/Aetf/libtsm/archive/v4.2.0/libtsm-4.2.0.tar.gz
-	sha256sums = 1fa400d669a7b31df0e1953a193d648d2da7ebc674e606f10ae36db90c7f5337
+	source = https://github.com/Aetf/libtsm/archive/v4.3.0/libtsm-4.3.0.tar.gz
+	sha256sums = 7e858bece0df5b0cc61fbcc99275f6828bf54007a88fa8459a8447a7ee7e67ad
 
 pkgname = libtsm
