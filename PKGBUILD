@@ -4,7 +4,7 @@
 pkgname=coolercontrol-bin
 _pkgname=${pkgname%-bin}
 _app_id="org.$_pkgname.CoolerControl"
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="A program to monitor and control your cooling devices (binary release)"
 arch=('x86_64')
@@ -15,6 +15,7 @@ depends=(
 	'hicolor-icon-theme'
 	'coolercontrold-bin'
 	'qt6-webengine'
+	'liquidctl'
 )
 checkdepends=(
 	'appstream-glib'
@@ -30,8 +31,8 @@ source=(
 	"https://gitlab.com/coolercontrol/coolercontrol/-/archive/$pkgver/$_pkgname-$pkgver.tar.gz"
 )
 sha256sums=(
-  '2d0bf4418dcc1bc84407e8713ae588312cb1da2c790a49fd53e8ffcef26239e3'
-  '09f6384a22bcc84dda4502d040e1bce51279fe38c911f0006bab253e5ff74d24'
+  'a0e2862e64b268d580356c9b835435f78228d25b06cf5c80b3133c7c9d1a3877'
+  'f27354ae0a1e97de81ac574e03df3106d30d55d93393e86ea99abbe3af4c4ab6'
 )
 
 check() {
