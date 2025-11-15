@@ -1,7 +1,7 @@
-pkgbase = dbmodel
-	pkgdesc = A qt tool for drawing entity-relationship diagrams.
+pkgbase = dbmodel-qt5
+	pkgdesc = A qt tool for drawing entity-relationship diagrams (Qt5 version).
 	pkgver = 0.3
-	pkgrel = 7
+	pkgrel = 8
 	url = http://oxygene.sk/lukas/dbmodel/
 	arch = x86_64
 	arch = pentium4
@@ -10,11 +10,12 @@ pkgbase = dbmodel
 	depends = qt5-base
 	depends = qt5-svg
 	depends = qt5-tools
-	source = http://launchpad.net/dbmodel/trunk/0.3/+download/dbmodel-0.3.tar.gz
+	conflicts = dbmodel
+	source = https://launchpad.net/dbmodel/trunk/0.3/+download/dbmodel-0.3.tar.gz
 	source = 0001-quick-and-dirty-adaption-to-Qt5.patch
 	source = 0002-removed-duplicate-edit-delete.png.patch
 	md5sums = 1b8e34a92d61d3819f4d7850e2bb5311
 	md5sums = 254050ab48b6b751cbfe246ac5bca0df
 	md5sums = e6b32edef244e1366dfaa3c21063947f
 
-pkgname = dbmodel
+pkgname = dbmodel-qt5
