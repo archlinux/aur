@@ -6,7 +6,7 @@ pkgver=2.5.0
 pkgrel=1
 pkgdesc="Free open-source cross-platform file & directory statistics"
 arch=('x86_64')
-url="https://github.com/Jelmerro/crossdirstat"
+url="https://github.com/Jelmerro/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/Jelmerro/${_pkgname}/${pkgver}"
 license=('MIT')
 
