@@ -3,7 +3,7 @@
 _pkgname="suil"
 pkgname="$_pkgname-optgui"
 pkgver=0.10.24
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight C library for loading and wrapping LV2 plugin UIs"
 url="https://gitlab.com/lv2/suil"
 license=(
@@ -19,7 +19,10 @@ makedepends=(
   'qt6-base'
 )
 
-provides=("$_pkgname")
+provides=(
+  "$_pkgname"
+  'libsuil-0.so'
+)
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname-v$pkgver"
@@ -48,8 +51,6 @@ package() {
     'gtk3'
     'qt6-base'
   )
-
-  provides=('libsuil-0.so')
 
   meson install -C build --destdir "$pkgdir"
 
