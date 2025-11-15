@@ -3,7 +3,7 @@
 _npmname=cloudcmd
 _npmver=19.0.13
 
-pkgname=$_npmname
+pkgname=${_npmname}
 pkgdesc="Cloud Commander file manager for the web with console and editor."
 pkgver=$_npmver
 pkgrel=1
@@ -14,7 +14,7 @@ license=("MIT")
 replaces=("nodejs-${_npmname}")
 depends=("glibc" "nodejs" "python")
 makedepends=("npm" "jq")
-provides=("$_npmname")
+provides=("${_npmname}")
 
 options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
