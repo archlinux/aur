@@ -1,8 +1,8 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=snippy-snippet
-pkgver=1.0.6
-pkgrel=3
+pkgver=1.0.9
+pkgrel=1
 pkgdesc='Snippet manager with rofi/wofi and fzf'
 arch=('any')
 url='https://github.com/barbUk/snippy'
@@ -17,7 +17,7 @@ optdepends=(
   'xdotool: X11 support'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4777e613223cbac87b793a13fda46f9f7309a278f13e035ca92a8ee1aafeb2fd')
+sha256sums=('3fe77544c6257334fdba0889d2e6d404cfeccdb1ee7be0879ff01107596cbd5a')
 
 package() {
   cd "snippy-$pkgver"
