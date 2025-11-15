@@ -1,19 +1,19 @@
 pkgbase = unbted-bin
 	pkgdesc = Una's NBT Editor - an advanced interactive command-line NBT editor
-	pkgver = 1.2.1
-	pkgrel = 2
-	url = https://github.com/unascribed/unbted
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://git.sleeping.town/unascribed/unbted
 	arch = any
 	license = GPL-3.0-only
 	license = Apache-2.0
 	license = MIT
-	provides = unbted=1.2.1
+	provides = unbted=1.2.2
 	conflicts = unbted
-	noextract = unbted-1.2.1.jar
-	source = https://github.com/unascribed/unbted/releases/download/v1.2.1/unbted-1.2.1.jar
+	noextract = unbted-1.2.2.jar
+	source = https://git.sleeping.town/unascribed/unbted/releases/download/v1.2.2/unbted-1.2.2.jar
 	source = unbted
 	source = opennbt-LICENSE
-	sha256sums = 762410caa82174abd4ef37ced4877f03bf3bc27742e07c23c1d27137d2484a38
+	sha256sums = 45210e41636a720542bd51d77e1426255688a0b30d2ac65301030db5cf560983
 	sha256sums = f9388b1abf35d4709e135beaa582b095aa9e855b28c8767830917902be5d75ab
 	sha256sums = cb16a84414fc7cccb56fd95cf3215f6c574ce9e921cbb4f270b313e3392e7a0f
 
