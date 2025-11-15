@@ -1,6 +1,6 @@
 pkgbase=qbittorrent-enhanced-ua
 pkgname=(qbittorrent-enhanced-ua qbittorrent-enhanced-ua-nox)
-pkgver=5.1.2.10
+pkgver=5.1.3.10
 pkgrel=1
 pkgdesc='An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar (Enhanced Edition with original user-agent)'
 arch=('x86_64')
@@ -28,7 +28,7 @@ _tag="release-${pkgver}"
 _snapshot="${_repo}-${_tag}"
 
 source=("${url}/archive/${_tag}/${_snapshot}.tar.gz")
-sha256sums=('929f421b8ce1be0bc530868b030252ea6db876b923a93ba1f4a1a86d48efa949')
+sha256sums=('b153428db354775de59b850751ad9d6bafb418dde115b3208b41eab14308f6d1')
 
 prepare() {
     cd "${_snapshot}"
