@@ -2,7 +2,7 @@
 
 pkgname=ik-llama.cpp-vulkan
 _pkgname=ik_llama.cpp
-pkgver=r3983.8a8de91a
+pkgver=r3995.0cb6dcc8
 pkgrel=1
 pkgdesc="llama.cpp fork with additional SOTA quants and improved performance (Vulkan Backend)"
 arch=(x86_64 armv7h aarch64)
