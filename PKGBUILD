@@ -6,9 +6,9 @@
 _name=FreeRDP
 _pkgnbase=freerdp
 pkgname=freerdp-sdl3
-pkgver=3.17.2
+pkgver=3.18.0
 _libver=${pkgver/.*/}
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP) (SDL3 only)"
 arch=(x86_64)
@@ -59,7 +59,7 @@ provides=(
 source=(
   https://github.com/$_pkgnbase/$_pkgnbase/archive/$pkgver/$_pkgnbase-$pkgver.tar.gz
 )
-sha256sums=('04a2e8049602e7aba767880990959facf2ebf7b5fbeeb5120e81838d8c2d2f17')
+sha256sums=('d2ec022566fa523ef33c29db952d428eb0ddc0a7b7f36204499fd06185178e5e')
 
 build() {
   # gcc14 buildfix
