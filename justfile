@@ -22,7 +22,7 @@ update-pkgbuild version:
     #!/usr/bin/env sh
     set -e
     sha=$(curl -sL https://github.com/janet-lang/janet/archive/v{{version}}.tar.gz | sha256sum | cut -d ' ' -f 1)
-    sed -e "s/^pkgver=.*/pkgver={{version}}/" -e "s/^sha256sums=.*/sha256sums=('${sha}'/" PKGBUILD > PKGBUILD.new
+    sed -e "s/^pkgver=.*/pkgver={{version}}/" -e "s/^pkgrel=.*/pkgrel=1/" -e "s/^sha256sums=.*/sha256sums=('${sha}'/" PKGBUILD > PKGBUILD.new
     mv PKGBUILD.new PKGBUILD
 
 # Update .SRCINFO.
