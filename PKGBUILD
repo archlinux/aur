@@ -12,7 +12,7 @@ conflicts=('tsenta-desktop')
 options=('!strip')  # Skip stripping - already packaged binary
 
 source=("https://github.com/tsenta/tsenta-desktop-linux/releases/download/v${pkgver}/tsenta-desktop_${pkgver}_amd64.deb")
-sha256sums=('ac7f4328dfcbe75cedc707f6f0d968712dcf4588ab001363fa68e73b724344cf')
+sha256sums=('a612a3de63c953d5f8b1c169e58962a00a01b2a3084a683df223184c88295f80')
 
 package() {
   cd "${srcdir}"

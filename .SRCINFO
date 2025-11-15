@@ -18,6 +18,6 @@ pkgbase = tsenta-desktop-bin
 	conflicts = tsenta-desktop
 	options = !strip
 	source = https://github.com/tsenta/tsenta-desktop-linux/releases/download/v2.1.0/tsenta-desktop_2.1.0_amd64.deb
-	sha256sums = ac7f4328dfcbe75cedc707f6f0d968712dcf4588ab001363fa68e73b724344cf
+	sha256sums = a612a3de63c953d5f8b1c169e58962a00a01b2a3084a683df223184c88295f80
 
 pkgname = tsenta-desktop-bin
