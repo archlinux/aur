@@ -2,8 +2,8 @@
 
 pkgname=python-undefined
 _name=${pkgname//-/_}
-pkgver=0.0.3
-pkgrel=4
+pkgver=0.0.4
+pkgrel=1
 epoch=
 pkgdesc="Python undefined type."
 arch=('any')
@@ -24,7 +24,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('05a0175a29cee018c97efe28e288cea9ee894bfd6e076f3ca46e988a3d43a524')
+sha256sums=('ed0939e5ee78eb2a498bb0eeb9a9b42fe4239c9eb98af0c42ee6e25b5f55e373')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
