@@ -1,0 +1,20 @@
+pkgbase = garden-bin
+	pkgdesc = An interactive programming language
+	pkgver = 0.21.0
+	pkgrel = 1
+	url = https://github.com/Wilfred/garden
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = garden
+	conflicts = garden
+	conflicts = garden-tools
+	source = LICENSE-0.21.0::https://raw.githubusercontent.com/Wilfred/garden/0.21.0/LICENSE
+	source = README-0.21.0.md::https://raw.githubusercontent.com/Wilfred/garden/0.21.0/README.md
+	sha256sums = 56b326a30d59c674dcebc8ed4e3522972ea9cf9856270447c55e22145d772d9d
+	sha256sums = d572b5bd48c0077a029b94d1c073e948b93599ba40d7df2b883ca4439f70f38b
+	source_x86_64 = garden-x86_64-0.21.0.tgz::https://github.com/Wilfred/garden/releases/download/0.21.0/garden-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 3033791aeb78408c75dfa16478b8cf08e1506d62c83619a60e42a0e3f66caa58
+
+pkgname = garden-bin

@@ -1,0 +1,4 @@
+[garden-bin]
+source = "github"
+github = "Wilfred/garden"
+use_latest_release = true
