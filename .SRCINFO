@@ -1,8 +1,8 @@
 pkgbase = songfetch
 	pkgdesc = A Linux CLI tool that displays current song info (ASCII art requires python-ascii_magic from AUR)
-	pkgver = 1.0.2
-	pkgrel = 2
-	url = https://github.com/fwtwoo/songfetch
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/ekrlstd/songfetch
 	arch = any
 	license = GPL-2.0
 	makedepends = python-build
@@ -17,7 +17,7 @@ pkgbase = songfetch
 	optdepends = cmus: For cmus support
 	optdepends = pipewire: For PipeWire audio backend
 	optdepends = pulseaudio: For PulseAudio backend
-	source = songfetch-1.0.2.tar.gz::https://github.com/fwtwoo/songfetch/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = 1b4c73283d7b5981b314ae3f77b6150947077aa505ab8869bb12bce0df6f7bf4
+	source = songfetch-1.0.3.tar.gz::https://github.com/ekrlstd/songfetch/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 1de83af13b8a16a9281eb5d3952e3d5885e1ac54de49d7801747e8e9cb148828
 
 pkgname = songfetch
