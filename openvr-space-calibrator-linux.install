@@ -1,37 +1,47 @@
 post_install() {
-    echo "========================================="
-    echo "Space Calibrator post-install hook running..."
-    echo "========================================="
+    echo "=========================================" >&2
+    echo "Space Calibrator post-install hook running..." >&2
+    echo "=========================================" >&2
     
     if [ ! -f "/usr/bin/openvr-space-calibrator-install" ]; then
-        echo "ERROR: Install script not found at /usr/bin/openvr-space-calibrator-install"
-        return 1
+        echo "ERROR: Install script not found at /usr/bin/openvr-space-calibrator-install" >&2
+        echo "=========================================" >&2
+        return 0
     fi
     
     FOUND_STEAMVR=0
+    TMPFILE=$(mktemp 2>/dev/null || echo /tmp/passwd.$$)
+    if ! getent passwd > "$TMPFILE" 2>/dev/null; then
+        echo "WARNING: Could not get user list" >&2
+        rm -f "$TMPFILE"
+        return 0
+    fi
+    
     while IFS=: read -r user _ _ _ _ user_home _; do
-        if [ -z "$user" ] || [ "$user" = "root" ] || [ -z "$user_home" ]; then
-            continue
-        fi
+        [ -z "$user" ] && continue
+        [ "$user" = "root" ] && continue
+        [ -z "$user_home" ] && continue
         
         if [ -d "$user_home/.local/share/Steam/steamapps/common/SteamVR" ] || \
            [ -d "$user_home/.steam/steam/steamapps/common/SteamVR" ] || \
            [ -d "$user_home/.steam/root/steamapps/common/SteamVR" ]; then
             FOUND_STEAMVR=1
-            echo "Found SteamVR for user: $user (home: $user_home)"
-            echo "Installing driver..."
+            echo "Found SteamVR for user: $user (home: $user_home)" >&2
+            echo "Installing driver..." >&2
             /usr/bin/openvr-space-calibrator-install "$user_home" 2>&1 || {
-                echo "WARNING: Installation failed for user $user, continuing..."
+                echo "WARNING: Installation failed for user $user, continuing..." >&2
             }
         fi
-    done < <(getent passwd)
+    done < "$TMPFILE"
+    
+    rm -f "$TMPFILE"
     
     if [ "$FOUND_STEAMVR" -eq 0 ]; then
-        echo "No SteamVR installations found. You may need to run 'openvr-space-calibrator-install' manually after starting SteamVR."
+        echo "No SteamVR installations found. You may need to run 'openvr-space-calibrator-install' manually after starting SteamVR." >&2
     else
-        echo "Installation complete!"
+        echo "Installation complete!" >&2
     fi
-    echo "========================================="
+    echo "=========================================" >&2
 }
 
 post_upgrade() {
@@ -73,4 +83,3 @@ post_remove() {
         fi
     done
 }
-
