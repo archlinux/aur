@@ -1,13 +1,13 @@
 pkgbase = yt-feeds
 	pkgdesc = Cross-platform simple, fast, and distraction free CLI application to view YouTube videos from your favorite channels
-	pkgver = 1.0.3
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/nate-craft/yt-feeds
 	arch = x86_64
 	license = MIT
 	depends = mpv
 	depends = yt-dlp
-	source = https://github.com/nate-craft/yt-feeds/releases/download/1.0.3/yt-feeds-1.0.3-x86_64-unknown-linux-gnu
-	sha256sums = ee11f2343fad65e0f46f5f626b880889d9c03bf318842de412bad513036661f2
+	source = https://github.com/nate-craft/yt-feeds/releases/download/1.0.5/yt-feeds-1.0.5-x86_64-unknown-linux-gnu
+	sha256sums = ca84864ce494ddb7ef10adee0c89b135562076ed4ffbf0fdbdb870f5adbfd852
 
 pkgname = yt-feeds
