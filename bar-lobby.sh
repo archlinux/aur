@@ -29,6 +29,7 @@ fi
 if [ ! -d "/usr/share/recoil-engine/" ] || [ -z "$(find /usr/share/recoil-engine/ -mindepth 1 -type d)" ]; then
     echo -e "\e[1;32mINFO:\e[0m \e[1;33mNo local engines found.\e[0m"
 else
+    echo -e "\e[1;32mINFO:\e[0m \e[1;33mSymLinking engin found in \`/usr/share/recoil-engine/*\`.\e[0m"
     for dir in /usr/share/recoil-engine/*; do
 #        echo "=============================== In linking loop =============================="  # For debug only
         if [ -d "$dir" ]; then
