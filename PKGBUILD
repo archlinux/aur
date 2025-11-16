@@ -2,7 +2,7 @@
 
 _appname="harlequin_odbc"
 pkgname="${_appname//_/-}"
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="An ODBC adapter for Harlequin"
 url="https://harlequin.sh/"
@@ -16,7 +16,7 @@ makedepends=("python-build"
              "python-wheel")
 options=("!strip")
 source=("https://files.pythonhosted.org/packages/source/${_appname::1}/${_appname}/${_appname}-${pkgver}.tar.gz")
-b2sums=('a3fb93d2fdf2641e2cd8f6cc4109def249ee196df7bb6f3de9e38e9b52ce22453db263673ac367e1d9cf78563c3ca44c2e6763593f7d44f7d1c042b361c77e7d')
+b2sums=('4f56c09921b09054f64b234fd8806ced767ed2e1fbd7fc1a3257986ecd807af52aebec488da7903d8a7013d1cbf85a0d5f2086303e22b397dc316086f1a49304')
 
 build(){
     cd "${_appname}-${pkgver}"
