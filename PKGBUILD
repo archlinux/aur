@@ -2,7 +2,7 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-oslo-messaging
-pkgver=16.1.0
+pkgver=17.1.0
 pkgrel=1
 pkgdesc="OpenStack library for messaging"
 arch=(any)
@@ -11,7 +11,9 @@ license=(Apache-2.0)
 depends=(
     'python'
     'python-pbr'
+    'python-futurist'
     'python-oslo-config'
+    'python-oslo-context'
     'python-oslo-log'
     'python-oslo-utils'
     'python-oslo-serialization'
@@ -20,6 +22,7 @@ depends=(
     'python-debtcollector'
     'python-cachetools'
     'python-webob'
+    'python-yaml'
     'python-amqp'
     'python-kombu'
     'python-oslo-middleware'
@@ -31,12 +34,9 @@ depends=(
     'python-oslotest'
     'python-pifpaf'
     'python-confluent-kafka'
-#    'python-pyngus'
     'python-eventlet'
-#    'python-qpid-proton'
     'python-oslo-concurrency'
     'python-oslo-context'
-    'python-yaml'
     'python-requests'
 )
 makedepends=(
@@ -45,7 +45,7 @@ makedepends=(
     'python-sphinx'
     'python-setuptools'
     'python-wheel'
-    'tar'
+    'git'
 )
 checkdepends=(
     'python-hacking'
@@ -58,7 +58,6 @@ checkdepends=(
     'python-pifpaf'
     'python-confluent-kafka'
     'python-coverage'
-    'python-pyngus'
     'bandit'
     'python-eventlet'
     'python-greenlet'
@@ -67,23 +66,18 @@ checkdepends=(
     'python-yaml'
     'python-requests'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-noextract=("$pkgname-$pkgver.tar.gz")
-b2sums=('2bc03d5c3bcae49d44db8a5db624d57a142fd1fee8bb9edd003c021e8067a7ae08af166d422a0a0dcfff50a718727c3d8ed7a303b2f8b4d4934873c54e139b39')
-
-prepare() {
-    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
-}
+source=("$pkgname-$pkgver::git+$url.git#tag=$pkgver")
+b2sums=('189ef9bc88c82f6cfbfbfd70fd70f4d6d42dda7bd65725e60ccc377870d98f2822b241e18cf7438b62071df3a30aec1f950f7c1f2a71a457f9e1f3cea4821092')
 
 build(){
     cd "$pkgname-$pkgver" || exit
     PBR_VERSION=$pkgver python -m build --wheel --no-isolation
 }
 
-#check(){
-#    cd "$pkgname-$pkgver" || exit
-#    stestr run
-#}
+check(){
+    cd "$pkgname-$pkgver" || exit
+    stestr run
+}
 
 package(){
     cd "$pkgname-$pkgver" || exit
