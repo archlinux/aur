@@ -1,10 +1,11 @@
 pkgbase = python-cucumber-tag-expressions
 	pkgdesc = Provides a tag-expression parser and evaluation logic for cucumber/behave
 	pkgver = 8.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cucumber/tag-expressions
 	arch = any
 	license = MIT
+	makedepends = python-build
 	makedepends = python-uv-build
 	makedepends = python-installer
 	makedepends = python-setuptools
