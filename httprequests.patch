@@ -1,0 +1,11 @@
+--- a/salt/utils/http.py	2025-11-16 02:07:48.055485546 +0100
++++ b/salt/utils/http.py	2025-11-16 02:08:50.346872290 +0100
+@@ -217,7 +217,7 @@
+             opts = {}
+ 
+     if not backend:
+-        backend = opts.get("backend", "tornado")
++        backend = opts.get("backend", "requests")
+ 
+     proxy_host = opts.get("proxy_host", None)
+     if proxy_host:
