@@ -1,7 +1,7 @@
 # Maintainer: Aira Hinano <hinanoaira at hinasense dot jp>
 # Co-Maintainer: kazu0617 <archlinux at kazu0617 dot net>
 pkgname=vrcx
-pkgver=2025.10.27
+pkgver=2025.11.16
 pkgrel=1
 pkgdesc="Friendship management tool for VRChat (built with Electron)"
 arch=('x86_64')
@@ -17,16 +17,16 @@ source=(
     "build.patch"
 )
 
-sha256sums=('47b9bb103f2a3b83a38eeb347946f62304325957196757764ce846dd48c55f82'
+sha256sums=('1909e366a44bce80d80df00ed22ed38ab58e384aff4ba8083b5afb337a90d417'
             '3e40d0056adfd86848cf0bc594bf399d9fff1f894d470bad90d2b232d17f95c5'
-            '3caf857291f1b109b0c5944bef09ebd84c0dd56b146f347caa3eda94d4a9cd42')
+            '33f3708607cfb2867c804ceb6b083f330dcfacee7f5ccee6efe0bfbc7a056625')
             
 prepare() {
     cd "$srcdir/VRCX-$pkgver"
     patch -p1 < "$srcdir/build.patch"
     echo "$pkgver" > Version
 
-    npm ci
+    npm ci --loglevel=error
 }
 
 build() {
@@ -40,16 +40,21 @@ build() {
         -t:"Restore;Clean;Build" \
         -m -r linux-x64
     
-    npm run prod-linux --no-fund
-    npm run build-electron --no-fund
+    npm run prod-linux --no-fund --loglevel=error
+    npm run build-electron --no-fund --loglevel=error
 }
 
 package() {
     cd "$srcdir/VRCX-$pkgver"
-    
+
     install -dm755 "$pkgdir/opt/vrcx"
     cp -r build/linux-unpacked/* "$pkgdir/opt/vrcx/"
     chmod +x "$pkgdir/opt/vrcx/vrcx"
+
+    # Disable auto-updater
+    # It might not work properly
+    # https://github.com/vrcx-team/VRCX/issues/1490
+    # echo "" > "$pkgdir/opt/vrcx/.no-updater"
     
     install -dm755 "$pkgdir/usr/bin"
     ln -s "/opt/vrcx/vrcx" "$pkgdir/usr/bin/vrcx"

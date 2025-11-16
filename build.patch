@@ -4,71 +4,23 @@
 -    "name": "VRCX",
 +    "name": "vrcx",
 
---- a/src/stores/vrcxUpdater.js
-+++ b/src/stores/vrcxUpdater.js
-@@ -22 +22 @@ export const useVRCXUpdaterStore = defineStore('VRCXUpdater', () => {
--    const autoUpdateVRCX = ref('Auto Download');
-+    const autoUpdateVRCX = ref('Off');
+# .no-updater doesn't work when after building
+# https://github.com/vrcx-team/VRCX/issues/1490
+--- a/src-electron/main.js
++++ b/src-electron/main.js
+@@ -59,3 +59 @@ const startup = args.includes('--startup');
+-const noUpdater =
+-    args.includes('--no-updater') ||
+-    fs.existsSync(path.join(rootDir, '.no-updater'));
++const noUpdater = true;
 
+# Login.vue remains updater when use --no-updater
+# https://github.com/vrcx-team/VRCX/issues/1489
 --- a/src/views/Login/Login.vue
 +++ b/src/views/Login/Login.vue
 @@ -3,3 +2,0 @@
 -        <el-tooltip placement="top" :content="t('view.login.updater')">
 -            <el-button type="default" size="small" :icon="Download" circle @click="showVRCXUpdateDialog"></el-button>
 -        </el-tooltip>
-
---- a/src/components/NavMenu.vue
-+++ b/src/components/NavMenu.vue
-@@ -3,17 +2,0 @@
--        <div v-if="updateInProgress" class="pending-update" @click="showVRCXUpdateDialog">
--            <el-progress
--                type="circle"
--                :width="50"
--                :stroke-width="3"
--                :percentage="updateProgress"
--                :format="updateProgressText"></el-progress>
--        </div>
--        <div v-else-if="pendingVRCXUpdate || pendingVRCXInstall" class="pending-update">
--            <el-button
--                type="default"
--                size="small"
--                :icon="Download"
--                circle
--                style="font-size: 14px; height: 50px; width: 50px"
--                @click="showVRCXUpdateDialog" />
--        </div>
-@@ -36 +18,0 @@
--    import { Download } from '@element-plus/icons-vue';
-@@ -60,3 +41,0 @@
--    const VRCXUpdaterStore = useVRCXUpdaterStore();
--    const { pendingVRCXUpdate, pendingVRCXInstall, updateInProgress, updateProgress } = storeToRefs(VRCXUpdaterStore);
--    const { showVRCXUpdateDialog, updateProgressText } = VRCXUpdaterStore;
-
---- a/src/views/Settings/components/Tabs/GeneralTab.vue
-+++ b/src/views/Settings/components/Tabs/GeneralTab.vue
-@@ -12 +12 @@
--                <div class="x-friend-item" @click="checkForVRCXUpdate">
-+                <div class="x-friend-item" style="cursor: default">
-@@ -41,22 +40,0 @@
--                <el-button size="small" :icon="Upload" @click="showVRCXUpdateDialog()">{{
--                    t('view.settings.general.vrcx_updater.change_build')
--                }}</el-button>
--            </div>
--            <div class="options-container-item">
--                <span class="name">{{ t('view.settings.general.vrcx_updater.update_action') }}</span>
--                <br />
--                <el-radio-group
--                    :model-value="autoUpdateVRCX"
--                    size="small"
--                    style="margin-top: 5px"
--                    @change="setAutoUpdateVRCX">
--                    <el-radio-button label="Off">{{
--                        t('view.settings.general.vrcx_updater.auto_update_off')
--                    }}</el-radio-button>
--                    <el-radio-button label="Notify">{{
--                        t('view.settings.general.vrcx_updater.auto_update_notify')
--                    }}</el-radio-button>
--                    <el-radio-button label="Auto Download">{{
--                        t('view.settings.general.vrcx_updater.auto_update_download')
--                    }}</el-radio-button>
--                </el-radio-group>
+@@ -162 +158,0 @@
+-    const { showVRCXUpdateDialog } = useVRCXUpdaterStore();
