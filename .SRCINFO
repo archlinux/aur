@@ -1,6 +1,6 @@
 pkgbase = twintaillauncher-git
 	pkgdesc = A multi-platform launcher for your anime games
-	pkgver = r524.672de20
+	pkgver = r526.d88bd13
 	pkgrel = 1
 	url = https://github.com/TwintailTeam/TwintailLauncher
 	arch = x86_64
@@ -23,7 +23,6 @@ pkgbase = twintaillauncher-git
 	depends = webkit2gtk-4.1
 	depends = libappindicator-gtk3
 	depends = libayatana-appindicator
-	depends = libvpx
 	provides = twintaillauncher
 	conflicts = twintaillauncher
 	conflicts = twintaillauncher-bin
