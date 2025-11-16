@@ -6,8 +6,8 @@ pkgrel=1
 pkgdesc="A lightweight and simple text editor"
 arch=('any')
 url="https://git.meowcat.site/meowcat/meowcats-text-editor"
-license=('custom')  # because you are using your own license
-depends=('java-runtime')
+license=('custom')
+depends=('java-runtime' 'libxi' 'libxrender' 'libxrandr' 'libxtst' 'libxinerama')
 source=(
     "mct.jar::https://files.meowcat.site/files/code-java/jar-files/mctxt/1.2/mctxt-1.2.jar"
     "mct"  # launcher script
