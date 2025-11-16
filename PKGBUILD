@@ -6,6 +6,7 @@ pkgdesc="Linux port of OpenVR-SpaceCalibrator - synchronize multiple VR playspac
 arch=('x86_64')
 url="https://github.com/xi-ve/openvr-space-calibrator-linux"
 license=('MIT')
+install="${pkgname}.install"
 depends=('glfw-x11' 'mesa' 'libx11' 'libxrandr' 'libxinerama' 'libxcursor' 'libxi')
 makedepends=('cmake' 'base-devel' 'eigen' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xi-ve/openvr-space-calibrator-linux/archive/main.tar.gz"
