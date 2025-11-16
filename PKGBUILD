@@ -3,7 +3,7 @@
 # Contributor: Jérôme de Courval <decje9@gmail.com>
 pkgname=tandoor-recipes
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for managing recipes, planning meals, building shopping lists and much much more."
 arch=('any')
 url="https://github.com/TandoorRecipes/recipes"
@@ -36,6 +36,7 @@ sha512sums=(
 
 
 build() {
+	echo "Yarn build"
 	cd "$srcdir/recipes-$pkgver/vue3"
 	yarn --cache-folder "$srcdir/yarn-cache" --ignore-engines install 
 	yarn --cache-folder "$srcdir/yarn-cache" build
@@ -43,18 +44,22 @@ build() {
 
 
 package() {
-	cd "$srcdir"
 	python -m venv "$pkgdir/usr/share/tandoor/venv"
 	source "$pkgdir/usr/share/tandoor/venv/bin/activate"
 	pip install --isolated --require-virtualenv --cache-dir "$srcdir/pip-cache" --disable-pip-version-check -r "$srcdir/recipes-$pkgver/requirements.txt"
-	find "$pkgdir/usr/share/tandoor/venv" -name __pycache__ -type d -exec rm -rf {} +
-	find "$pkgdir/usr/share/tandoor/venv/bin" -type f -exec sed -i "s|$pkgdir||g" {} \;
 
+	python "$srcdir/recipes-$pkgver/manage.py" collectstatic --noinput --clear
+
+	find "$pkgdir/usr/share/tandoor" -name __pycache__ -type d -exec rm -rf {} +
+	find "$srcdir" -name __pycache__ -type d -exec rm -rf {} +
+	find "$pkgdir/usr/share/tandoor/venv" -type f -exec sed -i "s|$pkgdir||g" {} \;
+
+	cd "$srcdir"
 	install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" tandoor.service tandoor.socket
 	install -Dm644 tandoor-sysuser.conf "$pkgdir/usr/lib/sysusers.d/tandoor.conf"
 	install -Dm644 tandoor-directory.conf "$pkgdir/usr/lib/tmpfiles.d/tandoor.conf"
 
-	cd recipes-$pkgver
+	cd "$srcdir/recipes-$pkgver"
 	install -Dm644 .env.template "$pkgdir/etc/tandoor/tandoor.conf"
 	mkdir -p "$pkgdir/usr/share/tandoor"
 	rm -rf "$srcdir/recipes/vue3/node_modules/.cache"
