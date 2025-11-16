@@ -12,7 +12,7 @@ license=('GPL-3.0-or-later')
 optdepends=('firefox')
 groups=('firefox-addons')
 pkgdesc='Bitwarden browser extension for Firefox'
-makedepends=('nodejs' 'npm' 'unzip' 'zip')
+makedepends=('nodejs-lts-krypton' 'npm' 'unzip' 'zip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitwarden/clients/archive/refs/tags/browser-v${pkgver}.tar.gz")
 b2sums=('8e9236c6b9d14c02444c458269b945669471f32b1221ad940124194bd267635dc4e0b1232214d2c0b10e580ea03eadf3a211163f9e1fb79185d2c9b125785ad8')
 
