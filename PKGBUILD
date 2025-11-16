@@ -49,6 +49,10 @@ build() {
 package() {
   cd $pkgname-$pkgver
 
+
+  mkdir -p distribution/archives/linux-tar/build/install/
+  tar -xf "distribution/archives/linux-tar/build/distributions/${pkgname}-${pkgver}-SNAPSHOT-linux-x86_64.tar.gz" -C "distribution/archives/linux-tar/build/install/"
+
   install -dm755 "$pkgdir"/{usr/share,var/lib,var/log}/elasticsearch
   install -dm755 "$pkgdir"/usr/bin
   
