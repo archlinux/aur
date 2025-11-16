@@ -36,7 +36,6 @@ sha512sums=(
 
 
 build() {
-	echo "Yarn build"
 	cd "$srcdir/recipes-$pkgver/vue3"
 	yarn --cache-folder "$srcdir/yarn-cache" --ignore-engines install 
 	yarn --cache-folder "$srcdir/yarn-cache" build
