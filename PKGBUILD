@@ -2,7 +2,7 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-ovsdbapp
-pkgver=2.11.0
+pkgver=2.13.0
 pkgrel=1
 pkgdesc="OVSDB application library"
 arch=(any)
@@ -25,7 +25,7 @@ makedepends=(
     'python-installer'
     'python-setuptools'
     'python-wheel'
-    'tar'
+    'git'
 )
 checkdepends=(
     'python-coverage'
@@ -33,13 +33,8 @@ checkdepends=(
     'python-subunit'
     'python-stestr'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-noextract=("$pkgname-$pkgver.tar.gz")
-b2sums=('d0c4ee831b11350bc05d1873e87accd252b78b08e19120c0cc6c3f9d897c11740229c23049e276fa2aad18e3a7caa977ae0b73ad39fc6995e22184acd93a3e07')
-
-prepare() {
-    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
-}
+source=("$pkgname-$pkgver::git+$url.git#tag=$pkgver")
+b2sums=('18aa560fcffd7e5bd7f08aff6f181779785ebb72159240936e2d28181feaecdd6f981362d5e2f22cc98081f421975a78ed8960165af8cbefbda144894552c6dc')
 
 build(){
     cd "$pkgname-$pkgver" || exit
