@@ -49,7 +49,13 @@ pkgver() {
 
 _get_electron_version() {
     _electronversion="$(strings "squashfs-root/${pkgname%-git}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "\033[1;32mINFO: \033[1;33mThe electron version is: \033[1;36m${_electronversion}\033[0m"
+    if _electronver != _electronversion
+        echo -e "\033[1;32mWARNING: \033[1;33mThe electron version this PKGBUILD depends on(${_electronver}) does not match the one requiered by ${pkgname}( \033[1;36m${_electronversion}\033[0m)"
+        echo -e "\033[1;32mINFO: Pleace update the PKGBUILD to depend on the correct electron version!\033[0m"
+        echo -e "\033[1;32mINFO: Please set _electronver=\033[1;32m${_electronversion}\033[0m"
+        exit 1
+    else
+        echo -e "\033[1;32mINFO: \033[1;33mThe electron version is: \033[1;36m${_electronversion}\033[0m"
 }
 
 _ensure_local_nvm() {
