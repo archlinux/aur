@@ -1,0 +1,5 @@
+[sqly-bin]
+source = "github"
+github = "nao1215/sqly"
+use_latest_release = true
+prefix = "v"
