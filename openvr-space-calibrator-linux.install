@@ -1,6 +1,28 @@
 post_install() {
     echo "Installing Space Calibrator driver to SteamVR..."
-    /usr/bin/openvr-space-calibrator-install || true
+    
+    FOUND_STEAMVR=0
+    while IFS=: read -r user _ _ _ _ user_home _; do
+        if [ -z "$user" ] || [ "$user" = "root" ] || [ -z "$user_home" ]; then
+            continue
+        fi
+        
+        if [ -d "$user_home/.local/share/Steam/steamapps/common/SteamVR" ] || \
+           [ -d "$user_home/.steam/steam/steamapps/common/SteamVR" ] || \
+           [ -d "$user_home/.steam/root/steamapps/common/SteamVR" ]; then
+            FOUND_STEAMVR=1
+            echo "Installing for user: $user"
+            if command -v runuser >/dev/null 2>&1; then
+                runuser -l "$user" -c "/usr/bin/openvr-space-calibrator-install '$user_home'" || true
+            else
+                su - "$user" -c "/usr/bin/openvr-space-calibrator-install '$user_home'" || true
+            fi
+        fi
+    done < <(getent passwd)
+    
+    if [ "$FOUND_STEAMVR" -eq 0 ]; then
+        echo "No SteamVR installations found. You may need to run 'openvr-space-calibrator-install' manually after starting SteamVR."
+    fi
 }
 
 post_upgrade() {
@@ -10,35 +32,36 @@ post_upgrade() {
 post_remove() {
     echo "Removing Space Calibrator driver from SteamVR..."
     
-    STEAMVR_DRIVERS_DIR="$HOME/.local/share/SteamVR/drivers/01spacecalibrator"
+    for user_home in $(getent passwd | cut -d: -f6); do
+        STEAMVR_DRIVERS_DIR="$user_home/.local/share/SteamVR/drivers/01spacecalibrator"
     
-    if [ -d "$STEAMVR_DRIVERS_DIR" ]; then
-        rm -rf "$STEAMVR_DRIVERS_DIR"
-    fi
-    
-    # Unregister driver
-    VRPATHREG=""
-    for path in \
-        "$HOME/.local/share/Steam/steamapps/common/SteamVR/bin/linux64/vrpathreg" \
-        "$HOME/.steam/steam/steamapps/common/SteamVR/bin/linux64/vrpathreg" \
-        "$HOME/.steam/root/steamapps/common/SteamVR/bin/linux64/vrpathreg"; do
-        if [ -f "$path" ]; then
-            VRPATHREG="$path"
-            break
+        if [ -d "$STEAMVR_DRIVERS_DIR" ]; then
+            rm -rf "$STEAMVR_DRIVERS_DIR"
+        fi
+        
+        VRPATHREG=""
+        for path in \
+            "$user_home/.local/share/Steam/steamapps/common/SteamVR/bin/linux64/vrpathreg" \
+            "$user_home/.steam/steam/steamapps/common/SteamVR/bin/linux64/vrpathreg" \
+            "$user_home/.steam/root/steamapps/common/SteamVR/bin/linux64/vrpathreg"; do
+            if [ -f "$path" ]; then
+                VRPATHREG="$path"
+                break
+            fi
+        done
+        
+        if [ -z "$VRPATHREG" ] && command -v vrpathreg &> /dev/null; then
+            VRPATHREG="vrpathreg"
+        fi
+        
+        if [ -n "$VRPATHREG" ] && [ -d "$STEAMVR_DRIVERS_DIR" ]; then
+            if [ -f "$VRPATHREG" ]; then
+                VRPATHREG_DIR="$(dirname "$VRPATHREG")"
+                LD_LIBRARY_PATH="$VRPATHREG_DIR:$LD_LIBRARY_PATH" "$VRPATHREG" removedriver "$STEAMVR_DRIVERS_DIR" 2>/dev/null || true
+            else
+                "$VRPATHREG" removedriver "$STEAMVR_DRIVERS_DIR" 2>/dev/null || true
+            fi
         fi
     done
-    
-    if [ -z "$VRPATHREG" ] && command -v vrpathreg &> /dev/null; then
-        VRPATHREG="vrpathreg"
-    fi
-    
-    if [ -n "$VRPATHREG" ] && [ -d "$STEAMVR_DRIVERS_DIR" ]; then
-        if [ -f "$VRPATHREG" ]; then
-            VRPATHREG_DIR="$(dirname "$VRPATHREG")"
-            LD_LIBRARY_PATH="$VRPATHREG_DIR:$LD_LIBRARY_PATH" "$VRPATHREG" removedriver "$STEAMVR_DRIVERS_DIR" 2>/dev/null || true
-        else
-            "$VRPATHREG" removedriver "$STEAMVR_DRIVERS_DIR" 2>/dev/null || true
-        fi
-    fi
 }
 
