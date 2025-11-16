@@ -1,0 +1,18 @@
+pkgbase = cargo-visualize-bin
+	pkgdesc = Know your dependencies via interactive cargo dependency graph visualization
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/kxxt/cargo-visualize
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = gcc-libs
+	provides = cargo-visualize
+	conflicts = cargo-visualize
+	source_x86_64 = cargo-visualize-x86_64-2.2.0.txz::https://github.com/kxxt/cargo-visualize/releases/download/v2.2.0/cargo-visualize-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 9562f7ebafb7aa2273a542efd4729779d580ff36d6f6cce9e66877c458ae5859
+	source_aarch64 = cargo-visualize-aarch64-2.2.0.txz::https://github.com/kxxt/cargo-visualize/releases/download/v2.2.0/cargo-visualize-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = bf5789124b141685ada54defa8d70a0f70948a7d9fbd17576332c2bc854a8cb7
+
+pkgname = cargo-visualize-bin

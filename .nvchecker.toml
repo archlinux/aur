@@ -1,0 +1,5 @@
+[cargo-visualize-bin]
+source = "github"
+github = "kxxt/cargo-visualize"
+use_latest_release = true
+prefix = "v"
