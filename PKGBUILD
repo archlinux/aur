@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="metabase-driver-duckdb"
-pkgver=0.4.1.0
+pkgver=0.4.1.1
 pkgrel=1
 pkgdesc="DuckDB driver for Metabase"
 arch=("any")
