@@ -2,7 +2,7 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-oslo-policy
-pkgver=4.5.0
+pkgver=4.7.0
 pkgrel=1
 pkgdesc="Rules engine to enforce access control policy"
 arch=(any)
@@ -28,31 +28,25 @@ makedepends=('python-build'
              'python-installer'
              'python-setuptools'
              'python-wheel'
-             'tar')
+             'git')
 checkdepends=('python-stestr'
               'python-coverage')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('c0759467eb12589b25ed0f67e2232a2765521e746831f3be169a4d20f192d45ffd34d05545d52ae19b13444e804a12d2db1db515a68d20ebd8629e4e2dbb7b7d')
-
-prepare() {
-    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
-}
+source=("$pkgname-$pkgver::git+$url.git#tag=$pkgver")
+b2sums=('4a25550fbaaa3b085e16e16f92d3cf70bff9c3496edc3394de7715c9585a03c1739c68cb29706d9373f7e21089f4b99e59457e7dd062b24027d246c302421110')
 
 build(){
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver" || exit
     PBR_VERSION=$pkgver python -m build --wheel --no-isolation
 }
 
 check(){
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver" || exit
     stestr run
 }
 
 package(){
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver" || exit
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 README.rst -t "$pkgdir/usr/share/$pkgname/"
-    install -Dm644 HACKING.rst -t "$pkgdir/usr/share/$pkgname/"
-    install -Dm644 CONTRIBUTING.rst -t "$pkgdir/usr/share/$pkgname/"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

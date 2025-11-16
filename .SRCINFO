@@ -1,6 +1,6 @@
 pkgbase = python-oslo-policy
 	pkgdesc = Rules engine to enforce access control policy
-	pkgver = 4.5.0
+	pkgver = 4.7.0
 	pkgrel = 1
 	url = https://opendev.org/openstack/oslo.policy
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-oslo-policy
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = tar
+	makedepends = git
 	depends = python
 	depends = python-requests
 	depends = python-oslo-config
@@ -28,7 +28,7 @@ pkgbase = python-oslo-policy
 	depends = python-pbr
 	depends = python-sphinx
 	depends = python-docutils
-	source = python-oslo-policy-4.5.0.tar.gz::https://opendev.org/openstack/oslo.policy/archive/4.5.0.tar.gz
-	b2sums = c0759467eb12589b25ed0f67e2232a2765521e746831f3be169a4d20f192d45ffd34d05545d52ae19b13444e804a12d2db1db515a68d20ebd8629e4e2dbb7b7d
+	source = python-oslo-policy-4.7.0::git+https://opendev.org/openstack/oslo.policy.git#tag=4.7.0
+	b2sums = 4a25550fbaaa3b085e16e16f92d3cf70bff9c3496edc3394de7715c9585a03c1739c68cb29706d9373f7e21089f4b99e59457e7dd062b24027d246c302421110
 
 pkgname = python-oslo-policy
