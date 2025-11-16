@@ -1,5 +1,4 @@
 # Maintainer : nubz4lif <nubz4lif@proton.me>
-# Contributer: Harrison <contact@htv04.com>
 
 pkgname=funkin
 pkgver=0.7.5
