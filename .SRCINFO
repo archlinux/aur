@@ -1,6 +1,6 @@
 pkgbase = python-masakariclient
 	pkgdesc = Python client for Masakari REST API
-	pkgver = 8.6.0
+	pkgver = 8.7.0
 	pkgrel = 1
 	url = https://opendev.org/openstack/python-masakariclient
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-masakariclient
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = tar
+	makedepends = git
 	depends = python
 	depends = python-openstacksdk
 	depends = python-osc-lib
@@ -26,8 +26,7 @@ pkgbase = python-masakariclient
 	depends = python-ddt
 	depends = python-oslotest
 	depends = python-oslo-utils
-	noextract = python-masakariclient-8.6.0.tar.gz
-	source = python-masakariclient-8.6.0.tar.gz::https://opendev.org/openstack/python-masakariclient/archive/8.6.0.tar.gz
-	b2sums = b6e7f37b75eaae9d36db74a8836d22685918f29acb3959f3b73ca324be70059c02fda131e85371313f48fd99490950bececd0c902eea39248b45b76e3ab2b35a
+	source = python-masakariclient-8.7.0::git+https://opendev.org/openstack/python-masakariclient.git#tag=8.7.0
+	b2sums = 084697809f408700820d69f6fb0a9ca8ec1223fce909375a5b30cd94ab433e01f3c41cac19233e474f1ce713b7f0cfce2ab4076b5858eb614c0f1eb71bab86c2
 
 pkgname = python-masakariclient
