@@ -1,0 +1,15 @@
+pkgbase = shelly-shell
+	pkgdesc = QML files for the Shelly desktop environment
+	pkgver = v0.1.0.r0.gf23795f
+	pkgrel = 1
+	url = https://github.com/manpreet113/shelly-shell
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = quickshell
+	provides = shelly-shell
+	conflicts = shelly-shell
+	source = git+https://github.com/manpreet113/shelly-shell.git
+	sha256sums = SKIP
+
+pkgname = shelly-shell
