@@ -2,7 +2,7 @@
 pkgname=pacsea-bin
 pkgver=0.5.0
 _tag="v$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (binary version)"
 arch=('x86_64')
 url="https://github.com/Firstp1ck/Pacsea"
@@ -16,6 +16,7 @@ optdepends=(
     'xclip: clipboard support on X11'
     'reflector: update Arch mirrors'
     'pacman-mirrors: Manjaro mirrorlist'
+    'rate-mirrors: Artix mirror rating'
     'alacritty: run external commands in a terminal'
     'kitty: run external commands in a terminal'
     'ghostty: run external commands in a terminal'
