@@ -13,7 +13,7 @@ depends=(
     'hyprland'
     'slurp'
     'grim'
-    'wl-copy'
+    'wl-clipboard'
     'libnotify' # This is what `notify-rust` uses
 )
 makedepends=('git' 'cargo') # Needed to build
