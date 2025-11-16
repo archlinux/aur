@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Noctune
+Comment=Modern local music player
+Exec=noctune
+Icon=noctune
+Terminal=false
+Type=Application
+Categories=AudioVideo;Player;Music;
