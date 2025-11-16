@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=1.0
+Name=SMAPI
+Type=Application
+Exec=smapi
+Path=/opt/stardew-valley/
+Icon=smapi
+Terminal=false
+StartupNotify=true
+Categories=Game;Simulation;
+Keywords=game;farming;simulation;stardew;smapi;
+Comment=The modding API for Stardew Valley.
+Comment[de_DE]=Die Modding-API für Stardew Valley.
+Comment[pl_PL]=Interfejs API do modowania dla Stardew Valley.
+Comment[ru_RU]=API для загрузки модов в Stardew Valley.

@@ -1,0 +1,10 @@
+# Blacklist:
+*
+
+# Whitelist:
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!smapi.sh
+!smapi.desktop
+!smapi-for-stardew-valley.install

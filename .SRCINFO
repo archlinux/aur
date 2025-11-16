@@ -1,0 +1,21 @@
+pkgbase = smapi-for-stardew-valley
+	pkgdesc = The modding API for Stardew Valley.
+	pkgver = 4.3.2
+	pkgrel = 1
+	url = https://github.com/Pathoschild/SMAPI
+	install = smapi-for-stardew-valley.install
+	arch = x86_64
+	license = LGPL-3.0-only
+	depends = stardew-valley
+	depends = kdialog
+	depends = bash
+	options = strip
+	options = !debug
+	source = https://github.com/Pathoschild/SMAPI/archive/refs/tags/4.3.2.zip
+	source = smapi.desktop
+	source = smapi.sh
+	sha256sums = ed8e9ae12fc83a875f52fbc24eb7623c8981826083edc1b16b240beaabbcee51
+	sha256sums = 7f5e18cf22f8a0785665a2cb50e98a31cb34fc0171164fedc3982e1a2a69935e
+	sha256sums = 6a3472426847e04efb77680ebb427bf4d323cf673445d5cd8bdb2898014c073a
+
+pkgname = smapi-for-stardew-valley
