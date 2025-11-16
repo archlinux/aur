@@ -1,6 +1,6 @@
 pkgbase = python-keystonemiddleware
 	pkgdesc = Middleware for the OpenStack Identity API (Keystone)
-	pkgver = 10.7.1
+	pkgver = 10.12.0
 	pkgrel = 1
 	url = https://opendev.org/openstack/keystonemiddleware
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = python-keystonemiddleware
 	makedepends = python-installer
 	makedepends = python-sphinx
 	makedepends = python-wheel
-	makedepends = tar
+	makedepends = git
 	depends = python
 	depends = python-keystoneauth1
 	depends = python-oslo-cache
@@ -51,8 +51,8 @@ pkgbase = python-keystonemiddleware
 	depends = python-testtools
 	depends = python-fixtures
 	depends = python-oslotest
-	depends = python-setuptools
-	source = python-keystonemiddleware-10.7.1.tar.gz::https://opendev.org/openstack/keystonemiddleware/archive/10.7.1.tar.gz
-	b2sums = 670be2e67b5f850709db1535a323c68ca950beb7bb776cc1977bd9abc0c034b56b4dde864a60e8443244fdc43201b127979d11abdd778c52b05f765d484de2c3
+	depends = python-binary-memcached
+	source = python-keystonemiddleware-10.12.0::git+https://opendev.org/openstack/keystonemiddleware.git#tag=10.12.0
+	b2sums = 4e49179b334bbb372a0877e551c7d15fed7a8748b2b6fc19aeb3fa8baabc40d8afec648529270580496c37242e749e441ac7a48c3efa04f24380297697cb9b4a
 
 pkgname = python-keystonemiddleware
