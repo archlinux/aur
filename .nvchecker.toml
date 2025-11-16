@@ -1,0 +1,5 @@
+[systemd-pilot-bin]
+source = "github"
+github = "mfat/systemd-pilot"
+use_latest_release = true
+prefix = "v"
