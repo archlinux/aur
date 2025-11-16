@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=mattermost-plugin-onlyoffice
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='The app which enables the users to edit office documents from Mattermost using ONLYOFFICE Document Server, allows multiple users to collaborate in real time and to save back those changes to Mattermost'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/ONLYOFFICE/onlyoffice-mattermost"
 license=("Apache")
 makedepends=('nvm' 'go')
 source=("https://github.com/ONLYOFFICE/onlyoffice-mattermost/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('366529aaaec85ca9f0fd5fe47f43681132af635b300a9067600e334b79d4c05c72ef2cb9f497e9ca554760246dd5305329c8b14d4294d84d2519e6caa594ed52')
+sha512sums=('575f29f4531e510d5d10010e95ad184baa00b3423a19b17774249319389c20391bc4b960aed74e361c81dcfaa3d9d04be82540850958e6ee81f75669f15b7954')
 
 build() {
   cd "${srcdir}/onlyoffice-mattermost-${pkgver}/webapp"
