@@ -7,9 +7,10 @@
 # can run `makepkg use_ibm_tss=0` to build against the Intel one.
 : ${use_ibm_tss:=1}
 
-pkgname=openssl-tpm2-engine
+pkgbase=openssl-tpm2-engine
+pkgname=(openssl-tpm2-engine openssl-tpm2-engine-alias)
 pkgver=4.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenSSL engine & provider for TPM-backed keys using IBM's TPM2 software stack"
 arch=(x86_64)
 url="https://git.kernel.org/pub/scm/linux/kernel/git/jejb/openssl_tpm2_engine.git"
@@ -21,7 +22,6 @@ else
 fi
 makedepends=('git' 'help2man')
 checkdepends=('swtpm')
-conflicts=('tpm2-openssl')
 source=("$pkgname::git+https://git.kernel.org/pub/scm/linux/kernel/git/jejb/openssl_tpm2_engine.git#tag=v$pkgver")
 sha256sums=('432678983b8932ede05e1bfebb28d8c759c701c3efc7254d66b4a854df06996e')
 
@@ -46,9 +46,22 @@ build() {
 #  make check
 #}
 
-package() {
+package_openssl-tpm2-engine() {
   cd $pkgname
   make DESTDIR="$pkgdir" install
+  for _dir in "$pkgdir"/usr/lib/{engines-3,ossl-modules}; do
+    test -L "$_dir"/tpm2.so && rm -vf "$_dir"/tpm2.so
+  done
+}
+
+package_openssl-tpm2-engine-alias() {
+  pkgdesc="'tpm2' alias for openssl-tpm2-engine as drop-in replacement for tpm2-openssl"
+  depends=('openssl-tpm2-engine')
+  conflicts=('tpm2-openssl')
+  for _dir in "$pkgdir"/usr/lib/{engines-3,ossl-modules}; do
+    mkdir -p "$_dir"
+    ln -vnsf libtpm2.so "$_dir"/tpm2.so
+  done
 }
 
 # vim: ts=2:sw=2:et
