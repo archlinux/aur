@@ -9,6 +9,7 @@ pkgbase = noctune
 	depends = ffmpeg
 	depends = libvlc
 	depends = vlc
+	options = !strip
 	source = noctune-1.0.0.zip::https://github.com/raula09/NoctuneMusicPlayer/releases/download/v1.0.0/Noctune-linux-x64.zip
 	source = noctune.desktop
 	source = noctune.png

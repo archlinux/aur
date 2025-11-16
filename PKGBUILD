@@ -7,6 +7,8 @@ pkgdesc="A modern local music player with a Spotify-inspired UI. Built with Aval
 arch=('x86_64')
 url="https://github.com/raula09/NoctuneMusicPlayer"
 license=('MIT')
+options=('!strip')
+
 depends=('ffmpeg' 'libvlc' 'vlc')
 makedepends=('unzip')
 source=(
@@ -26,7 +28,8 @@ package() {
 
     cat <<EOF > "$pkgdir/usr/bin/noctune"
 #!/bin/bash
-exec /opt/noctune/NoctuneMusicPlayer
+exec /opt/noctune/MusicPlayerApp "$@"
+
 EOF
     chmod +x "$pkgdir/usr/bin/noctune"
 
