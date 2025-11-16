@@ -31,11 +31,17 @@ prepare() {
     tar -xzf "${srcdir}/openvr-headers.tar.gz" -C ../lib/openvr --strip-components=1 openvr-master/headers 2>/dev/null || true
   fi
   
-  if [ ! -d "../lib/openvr/bin/linux64" ]; then
+  if [ ! -f "../lib/openvr/bin/linux64/libopenvr_api.so" ]; then
     echo "Extracting OpenVR library..."
     mkdir -p ../lib/openvr/bin/linux64
-    tar -xzf "${srcdir}/openvr-headers.tar.gz" -C ../lib/openvr/bin/linux64 --strip-components=1 openvr-master/bin/linux64/libopenvr_api.so 2>/dev/null || \
-    tar -xzf "${srcdir}/openvr-headers.tar.gz" -C ../lib/openvr/bin --strip-components=1 openvr-master/bin/linux64/libopenvr_api.so 2>/dev/null || true
+    if tar -xzf "${srcdir}/openvr-headers.tar.gz" -C ../lib/openvr/bin/linux64 --strip-components=1 openvr-master/bin/linux64/libopenvr_api.so 2>/dev/null; then
+      echo "OpenVR library extracted successfully"
+    elif tar -xzf "${srcdir}/openvr-headers.tar.gz" -C ../lib/openvr/bin --strip-components=1 openvr-master/bin/linux64/libopenvr_api.so 2>/dev/null; then
+      mv ../lib/openvr/bin/libopenvr_api.so ../lib/openvr/bin/linux64/ 2>/dev/null || true
+      echo "OpenVR library extracted successfully (alternative path)"
+    else
+      echo "Note: Could not extract OpenVR library from tarball (register-overlay may not build)"
+    fi
   fi
   
   if [ ! -d "../WindowsEdition/OpenVR-SpaceCalibrator/lib/imgui" ]; then
@@ -117,10 +123,17 @@ build() {
   
   make -j$(nproc) space-calibrator openvr_spacecalibrator_driver
   
-  if make -j$(nproc) register-overlay 2>/dev/null; then
-    echo "register-overlay built successfully"
+  if [ -f "${PROJECT_ROOT}/../lib/openvr/bin/linux64/libopenvr_api.so" ] || \
+     [ -f "${HOME}/.local/share/Steam/steamapps/common/SteamVR/bin/linux64/libopenvr_api.so" ] || \
+     [ -f "${HOME}/.steam/steam/steamapps/common/SteamVR/bin/linux64/libopenvr_api.so" ] || \
+     [ -f "${HOME}/.steam/root/steamapps/common/SteamVR/bin/linux64/libopenvr_api.so" ]; then
+    if make -j$(nproc) register-overlay 2>&1; then
+      echo "register-overlay built successfully"
+    else
+      echo "register-overlay build failed (optional utility, overlay will register itself on first run)"
+    fi
   else
-    echo "register-overlay build skipped (optional utility)"
+    echo "OpenVR library not found - register-overlay will not be built (overlay will register itself on first run)"
   fi
 }
 
