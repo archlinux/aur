@@ -1,12 +1,12 @@
 pkgbase = kdump
 	pkgdesc = Tool to dump info from Kerberos Tickets
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/augustus-7613/kdump
 	arch = x86_64
 	license = GPL3
 	options = !debug
-	source = https://github.com/augustus-7613/kdump/archive/refs/tags/1.4.1.tar.gz
-	sha256sums = 57a33e2b4d5d3730783f3520d4effbcef977caa2ca116af15dfe4d54fc7f5e15
+	source = https://github.com/augustus-7613/kdump/archive/refs/tags/1.4.2.tar.gz
+	sha256sums = 6a6d27699dcc5df7232a190c8cd4cb44b70e83fb12a7924c4980cf0022b06288
 
 pkgname = kdump
