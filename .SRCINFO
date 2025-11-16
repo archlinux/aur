@@ -1,6 +1,6 @@
 pkgbase = tflint-bin
 	pkgdesc = A linter for Terraform code
-	pkgver = 0.59.1
+	pkgver = 0.60.0
 	pkgrel = 1
 	url = https://github.com/terraform-linters/tflint
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = tflint-bin
 	conflicts = tflint
 	source = LICENSE-MPL-2.0
 	source = LICENSE-BUSL-1.1
-	source = tflint_linux_amd64-0.59.1.zip::https://github.com/terraform-linters/tflint/releases/download/v0.59.1/tflint_linux_amd64.zip
+	source = tflint_linux_amd64-0.60.0.zip::https://github.com/terraform-linters/tflint/releases/download/v0.60.0/tflint_linux_amd64.zip
 	sha512sums = c1e3a0c8f5267fb5c0b65733bda037c62d914ed989bee0f510d8196b1029eec00d40f415ce1514a4996d420ba02d856d04db0915b64573ef4a36033cc5efb94e
 	sha512sums = de6495df79045a8e609771286ef2f3d0dd1908e4d8f61de5816b3e490114c76c49f0b5acf653541f283117a396f2d8e0dc5419f09e5d94aeac50c9a6d5f21fa2
-	sha512sums = e901ee1417f8a33a5cc3aac7f0f6c5c95d08ed6079c727aa4e702cc9544629e4db591194253b1744d15d8b974ef0ee0aade7bcb1785e27393921233ba2f3a5d7
+	sha512sums = fbab59dfd46c0b592b9e3a6eb83757bde6a935b0cf7a5bab6aabcc20a1013ee736bf2d13e82fcec6e623cf7f61eba42aae4de015795a826f166d0f4a4f87740d
 
 pkgname = tflint-bin
