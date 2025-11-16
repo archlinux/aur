@@ -1,13 +1,13 @@
 pkgbase = ocm-bin
 	pkgdesc = CLI for the Red Hat OpenShift Cluster Manager
-	pkgver = 1.0.5
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/openshift-online/ocm-cli
-	arch = any
+	arch = x86_64
 	license = Apache-2.0
 	provides = ocm
 	conflicts = ocm
-	source = https://github.com/openshift-online/ocm-cli/releases/download/v1.0.5/ocm-linux-amd64
+	source = https://github.com/openshift-online/ocm-cli/releases/download/v1.0.8/ocm-linux-amd64
 	b2sums = 3a09b33fd495cd7ad81e3b399d5f75864f98c4b0a203ea3ada5c3fc66d94bebe672cc99d3751290dc28729ec6d411bb6044bdd15e523d49b606c02e4fecb1d11
 
 pkgname = ocm-bin

@@ -2,10 +2,10 @@
 # Contributor: jbpratt <jbpratt78 at gmail dot com>
 
 pkgname=ocm-bin
-pkgver=1.0.5
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="CLI for the Red Hat OpenShift Cluster Manager"
-arch=("any")
+arch=("x86_64")
 url="https://github.com/openshift-online/ocm-cli"
 license=("Apache-2.0")
 provides=("ocm")
