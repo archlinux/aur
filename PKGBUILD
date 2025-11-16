@@ -2,7 +2,7 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-oslo-cache
-pkgver=3.9.0
+pkgver=3.12.0
 pkgrel=1
 pkgdesc="An oslo.config enabled dogpile.cache"
 arch=(any)
@@ -31,7 +31,7 @@ makedepends=(
     'python-installer'
     'python-setuptools'
     'python-wheel'
-    'tar'
+    'git'
     'python-sphinxcontrib-apidoc'
 )
 checkdepends=(
@@ -45,13 +45,8 @@ checkdepends=(
     'python-etcd3gw'
     'redis'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-noextract=("$pkgname-$pkgver.tar.gz")
-b2sums=('fbfb4a04e8f110f4c8cc35f40e3adf41de54ddd9c32f2d838ae3268391d59800aa4de94d2b7b9341a56b73ff38f22af009a0eaf6db8e7c5d6d436ca73a97d854')
-
-prepare() {
-    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
-}
+source=("$pkgname-$pkgver::git+$url.git#tag=$pkgver")
+b2sums=('6f5cd4cb3f05774830ae5728675a5131cc0d03f47597d2a9c9625e43fa16a79a14dc4b7335c2a529c75d28127c51e26c488564600e19e81ce416eed51cf7123d')
 
 build(){
     cd "$pkgname-$pkgver" || exit
