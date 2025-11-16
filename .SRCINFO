@@ -1,0 +1,16 @@
+pkgbase = dingusppc-git
+	pkgdesc = An experimental emulator
+	pkgver = r2432.c3448e1
+	pkgrel = 1
+	url = https://github.com/dingusdev/dingusppc
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	depends = sdl2
+	provides = dingusppc
+	conflicts = dingusppc
+	source = dingusppc::git+https://github.com/dingusdev/dingusppc.git
+	sha256sums = SKIP
+
+pkgname = dingusppc-git
