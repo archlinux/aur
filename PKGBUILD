@@ -10,7 +10,7 @@ license=(' GPL-3.0-or-later')
 # Might be a good idea investigating if we can ignore most of the dependencies or not.
 depends=('libsndfile' 'mpg123' 'gcc-libs' 'alsa-lib' 'glibc' 'glib2')
 #dotnet-sdk-10.0-bin is a temporary mesure until Arch updates Dotnet.
-makedepends=('dotnet-sdk-10.0-bin' 'clang')
+makedepends=('dotnet-sdk>=10.0' 'clang')
 source=("https://github.com/Helion-Engine/Helion/archive/refs/tags/${pkgver}.tar.gz" "change-desktop-target.patch")
 sha256sums=('cb893c0e92950919700dd3471ad7420fa44c1bc0a60ecff0f8148b62a796eec7' 'e8c91f9941d7805494edc950aa2375423392c91b9a5abc664a687e7047bce811')
 prepare() {

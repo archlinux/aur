@@ -5,7 +5,7 @@ pkgbase = helion
 	url = https://github.com/Helion-Engine/Helion
 	arch = x86_64
 	license = GPL-3.0-or-later
-	makedepends = dotnet-sdk-10.0-bin
+	makedepends = dotnet-sdk>=10.0
 	makedepends = clang
 	depends = libsndfile
 	depends = mpg123
