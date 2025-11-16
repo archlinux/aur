@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Mozzherin <dmozzherin@gmail.com>
 
 pkgname=muro
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='Wallpaper with blurred or averaged background for any background tool'
 arch=('x86_64' 'aarch')
@@ -16,7 +16,7 @@ depends=(
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://codeberg.org/dimus/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('86fe976077f53b3ee663f8658f0caa2267c8d93ebbca5dfec88c3b5a8f5817b6')
+sha256sums=('43c9008946c7c6f17243a632156a051b8ce9b37980a1388a81d533e38aab1b1c')
 
 prepare() {
 	cd "$pkgname"
