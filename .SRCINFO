@@ -1,7 +1,7 @@
 pkgbase = zeptofetch
 	pkgdesc = Blazingly fast, ultra-minimal system information tool for Linux
 	pkgver = 1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.archlinux.org/gurov/zeptofetch
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -9,6 +9,6 @@ pkgbase = zeptofetch
 	makedepends = make
 	depends = glibc
 	source = zeptofetch-1.11.tar.gz::https://gitlab.archlinux.org/gurov/zeptofetch/-/archive/v1.11/zeptofetch-v1.11.tar.gz
-	sha256sums = 4c9871e1ebc7585ff6d72e8102ec4942dd3aff38353c5bfda62963f26b7156ef
+	sha256sums = 700f6bbdea405a58d8558a9e1eea0c8123d12a0e1ccfc609c0bee6c470b04fc5
 
 pkgname = zeptofetch
