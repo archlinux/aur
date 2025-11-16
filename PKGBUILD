@@ -1,13 +1,13 @@
 # Maintainer: augustus-7613 <augustus7613.mail@pm.me>
 pkgname=kdump
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Tool to dump info from Kerberos Tickets"
 arch=('x86_64')
 url="https://github.com/augustus-7613/kdump"
 license=('GPL3')
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d37c47bf981d73e728432d268a99da95a3bcacab0e7dca05642b58e5fae8d1cd')
+sha256sums=('57a33e2b4d5d3730783f3520d4effbcef977caa2ca116af15dfe4d54fc7f5e15')
 options=('!debug')
 
 build() {
