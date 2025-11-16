@@ -1,8 +1,8 @@
 pkgbase = funkin
 	pkgdesc = A rhythm game made with HaxeFlixel
-	pkgver = 0.6.4
+	pkgver = 0.7.5
 	pkgrel = 1
-	url = https://www.newgrounds.com/portal/view/770371
+	url = https://github.com/FunkinCrew/Funkin
 	arch = x86_64
 	license = Apache
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = funkin
 	depends = vlc
 	depends = fuse3
 	depends = fuse-overlayfs
-	source = git+https://github.com/FunkinCrew/Funkin.git#tag=v0.4.1
+	source = git+https://github.com/FunkinCrew/Funkin.git#tag=v0.7.5
 	source = git+https://github.com/FunkinCrew/funkin.assets
 	source = git+https://github.com/FunkinCrew/funkin.art
 	source = funkin.sh

@@ -1,12 +1,12 @@
-# Maintainer : Syazmi <mrcorpzpro@gmail.com>
+# Maintainer : nubz4lif <nubz4lif@proton.me>
 # Contributer: Harrison <contact@htv04.com>
 
 pkgname=funkin
-pkgver=0.6.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="A rhythm game made with HaxeFlixel"
 arch=(x86_64)
-url="https://www.newgrounds.com/portal/view/770371"
+url="https://github.com/FunkinCrew/Funkin"
 license=(Apache)
 depends=(vlc fuse3 fuse-overlayfs)
 makedepends=(git haxe)
@@ -35,10 +35,11 @@ build() {
   cd "$srcdir/Funkin"
 
   # Create/confirm local repo for Haxe libraries
-  haxelib newrepo
+  haxelib newrepo &&
 
   # Download required Haxe libraries via HMM
   haxelib install hmm
+  echo n | haxelib run hmm install
   echo n | haxelib run hmm reinstall
 
   # Set up Lime
@@ -71,6 +72,6 @@ package() {
   # Install icons
   for size in 16 32 64; do
     mkdir -p "$pkgdir/usr/share/icons/hicolor/${size}x$size/apps"
-    cp "art/icon$size.png" "$pkgdir/usr/share/icons/hicolor/${size}x$size/apps/funkin.png"
+    cp "art/icons/icon$size.png" "$pkgdir/usr/share/icons/hicolor/${size}x$size/apps/funkin.png"
   done
 }
