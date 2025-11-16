@@ -1,6 +1,6 @@
 # Maintainer: Jérôme Poulin <jeromepoulin@gmail.com>
 pkgname=ccusage-statusline-rs
-pkgver=1.3.1
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Ultra-fast Rust statusline for Claude Code with real-time usage tracking, billing blocks, and burn rate monitoring"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 options=('!lto')
 source=("https://github.com/ticpu/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('7b42688218a6a58b44964a3cd18c7b46e53f70cbdda4ae1b84a240899b786f9f')
+sha256sums=('492c82e9a4cd71eed1968e49351dd0a9254bf4f1b0bd4545d686f93acd6ce6bf')
 
 build() {
     cd "$pkgname-$pkgver"
