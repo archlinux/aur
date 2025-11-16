@@ -1,0 +1,6 @@
+pkg/
+src/
+.idea/
+
+kumacub-*.pkg.tar.zst
+kumacub-*.whl
