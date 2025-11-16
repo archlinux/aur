@@ -1,19 +1,28 @@
 pkgbase = python-pims
 	pkgdesc = Python Image Sequence: Load video and sequential images
-	pkgver = 0.6.1
+	pkgver = 0.7
 	pkgrel = 1
-	url = https://github.com/soft-matter/pims
+	url = https://soft-matter.github.io/pims
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
-	depends = python>=3.7
-	depends = python-imageio
-	depends = python-numpy
-	depends = python-slicerator
-	source = python-pims-0.6.1.tar.gz::https://files.pythonhosted.org/packages/source/P/PIMS/PIMS-0.6.1.tar.gz
-	sha256sums = e2b704461d4ea9bce8b6a22ca35836fe67d6d34537736b405341ae5547194f3b
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-numpydoc
+	makedepends = python-imageio
+	makedepends = python-slicerator
+	makedepends = ipython
+	source = https://github.com/soft-matter/pims/archive/refs/tags/v0.7.tar.gz
+	sha256sums = e320fff0bdb3e407413e3096b53d3da1f57fd8b0c2fd26ef8b8027f6aa75e719
 
 pkgname = python-pims
+	depends = python>=3.7
+	depends = python-imageio
+	depends = python-numpy>=1.19
+	depends = python-packaging
+	depends = python-slicerator>=0.9.8
+	optdepends = python-tifffile: alternative TIFF support
+
+pkgname = python-pims-doc
+	pkgdesc = Documentation for Python PIMS module
