@@ -12,4 +12,4 @@
 pkg/
 src/
 
-/scalafmt*.musl
+/scalafmt*.glibc
