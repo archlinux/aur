@@ -1,6 +1,6 @@
 pkgbase = python-oslo-versionedobjects
 	pkgdesc = OpenStack versioned objects library
-	pkgver = 3.4.0
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://opendev.org/openstack/oslo.versionedobjects
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-oslo-versionedobjects
 	makedepends = python-sphinx
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = tar
+	makedepends = git
 	depends = python
 	depends = python-oslo-concurrency
 	depends = python-oslo-config
@@ -24,7 +24,6 @@ pkgbase = python-oslo-versionedobjects
 	depends = python-oslo-messaging
 	depends = python-oslo-serialization
 	depends = python-oslo-utils
-	depends = python-iso8601
 	depends = python-oslo-log
 	depends = python-oslo-i18n
 	depends = python-webob
@@ -33,7 +32,7 @@ pkgbase = python-oslo-versionedobjects
 	depends = python-fixtures
 	depends = python-testtools
 	depends = python-eventlet
-	source = python-oslo-versionedobjects-3.4.0.tar.gz::https://opendev.org/openstack/oslo.versionedobjects/archive/3.4.0.tar.gz
-	b2sums = ea90efeb6fe79b0950abf7da67d275a9f4b72664633c15c51fc6199d7a14cdb0748148f44ebd05191e179a900ecbbf3362dcf8a1d7da945bb4c5fd79d8de33f5
+	source = python-oslo-versionedobjects-3.8.0::git+https://opendev.org/openstack/oslo.versionedobjects.git#tag=3.8.0
+	b2sums = ab78d66ae2fe3adb50b684cc4aa577f7b3484c9f7494f59cdae2d4e976cdc55d3961e6b56dd00a876aa115a6e0c76b6dbf6c4ab9a149f2be39d9720f30cfc582
 
 pkgname = python-oslo-versionedobjects
