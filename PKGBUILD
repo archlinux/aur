@@ -51,24 +51,35 @@ makedepends=(
     vulkan-headers
     wayland-protocols
 )
-source=("git+https://github.com/3003n/gamescope.git#tag=${_tag}"
-    # "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
-    "git+https://github.com/nothings/stb.git"
-    "git+https://github.com/bazzite-org/wlroots.git"
-    "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
-    "git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1"
-    "git+https://github.com/Joshua-Ashton/vkroots.git"
-    "git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git"
-    # "git+https://github.com/ValveSoftware/openvr.git"
-    "git+https://github.com/Joshua-Ashton/reshade.git"
-    "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
+# source=("git+https://github.com/3003n/gamescope.git#tag=${_tag}"
+#     # "git+https://github.com/nothings/stb.git#commit=af1a5bc352164740c1cc1354942b1c6b72eacb8a"
+#     "git+https://github.com/nothings/stb.git"
+#     "git+https://github.com/bazzite-org/wlroots.git"
+#     "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
+#     "git+https://github.com/Joshua-Ashton/GamescopeShaders.git#tag=v0.1"
+#     "git+https://github.com/Joshua-Ashton/vkroots.git"
+#     "git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git"
+#     # "git+https://github.com/ValveSoftware/openvr.git"
+#     "git+https://github.com/Joshua-Ashton/reshade.git"
+#     "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
+# )
+
+source=(
+    git+https://github.com/3003n/gamescope.git#tag=${_tag}
+    git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git
+    git+https://gitlab.freedesktop.org/emersion/libliftoff.git
+    git+https://github.com/ValveSoftware/openvr.git
+    git+https://github.com/Joshua-Ashton/reshade.git
+    git+https://github.com/KhronosGroup/SPIRV-Headers.git
+    git+https://github.com/Joshua-Ashton/vkroots.git
+    git+https://github.com/Joshua-Ashton/wlroots.git
 )
+
 
 b2sums=('33b68d3f2dfd51a73f48eed406e605dee6d707c43eef6fc6443dd70c10a03e9e5140adf2133139fc07cbb7d929d96e5592368c4e83b5e0deb06db6612ef267a6'
         'SKIP'
         'SKIP'
         'SKIP'
-        'ca268553bc3dacb5bd19553702cd454ea78ed97ab39d4397c5abf9a27d32633b63e0f7f7bf567b56066e6ecd979275330e629ba202a6d7721f0cd8166cd110dd'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -89,6 +100,9 @@ prepare() {
 
     git -c protocol.file.allow=always submodule update
 
+    # Fix wlroots dependency override issue
+    sed -i '/meson\.override_dependency(versioned_name, wlroots)/a meson.override_dependency('\''wlroots'\'', wlroots)' subprojects/wlroots/meson.build
+
     # make stb.wrap use our local clone
     # rm -rf subprojects/stb
     # git clone "$srcdir/stb" subprojects/stb
@@ -104,18 +118,20 @@ pkgver() {
 build() {
     export LDFLAGS="$LDFLAGS -lrt"
     arch-meson gamescope build \
-        -Dforce_fallback_for=glm,stb,libliftoff,wlroots,vkroots,libdisplay-info \
-        -Dpipewire=enabled \
-        -Denable_openvr_support=false
-    ninja -C build
+        -Dforce_fallback_for=glm,stb,libdisplay-info,libliftoff,vkroots,wlroots \
+        -Dpipewire=enabled 
+    meson compile -C build
 }
 
 package() {
-    install -d "$pkgdir"/usr/share/gamescope/reshade
-    cp -r "$srcdir"/GamescopeShaders/* "$pkgdir"/usr/share/gamescope/reshade/
+    # install -d "$pkgdir"/usr/share/gamescope/reshade
+    # cp -r "$srcdir"/GamescopeShaders/* "$pkgdir"/usr/share/gamescope/reshade/
 
-    chmod -R 655 "$pkgdir"/usr/share/gamescope
-    meson install -C build --skip-subprojects --destdir="${pkgdir}"
+    # chmod -R 655 "$pkgdir"/usr/share/gamescope
+    # meson install -C build --skip-subprojects --destdir="${pkgdir}"
+
+    DESTDIR="${pkgdir}" meson install -C build \
+    --skip-subprojects
 
     cd "$srcdir/$_pkgname"
     install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/$pkgname/"
