@@ -75,6 +75,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_NATIVE_ARCH=ON \
     -DRTNEURAL_USE_AVX=ON \
+    -DBUILD_NAMCORE=ON \
+    -DBUILD_STATIC_RTNEURAL=ON \
     -B $pkgname-build \
     -S $pkgname
   cmake --build $pkgname-build
