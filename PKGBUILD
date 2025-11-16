@@ -2,7 +2,7 @@
 
 pkgname=angie-mod-modsecurity
 pkgver=1.0.4
-pkgrel=5
+pkgrel=6
 pkgdesc='ModSecurity v3 Nginx Connector (module for angie)'
 arch=('x86_64')
 depends=('angie' 'libmodsecurity')

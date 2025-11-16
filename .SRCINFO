@@ -1,7 +1,7 @@
 pkgbase = angie-mod-modsecurity
 	pkgdesc = ModSecurity v3 Nginx Connector (module for angie)
 	pkgver = 1.0.4
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/SpiderLabs/ModSecurity-nginx
 	install = angie-mod-modsecurity.install
 	arch = x86_64
