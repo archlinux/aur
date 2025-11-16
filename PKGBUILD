@@ -3,7 +3,7 @@
 pkgname=gql-bin
 _pkgname=${pkgname%-bin}
 _pkgbinary=gitql
-pkgver=0.41.0
+pkgver=0.42.0
 pkgrel=1
 pkgdesc="Git Query language (GQL) is an SQL like language to perform queries on .git files"
 url="https://github.com/AmrDeveloper/GQL"
@@ -20,13 +20,13 @@ source=("LICENSE_${pkgver}::$_urlraw/LICENSE"
 source_x86_64=("${_pkgname}_${pkgver}_x86_64.gz::$url/releases/download/${pkgver}/${_pkgname}-${arch[0]}-linux.gz")
 source_aarch64=("${_pkgname}_${pkgver}_aarch64.gz::$url/releases/download/${pkgver}/${_pkgname}-${arch[1]}-linux.gz")
 sha256sums=('538a5a5e065de1fe693ebf72cf3c0c69656d4438663ff4aefbd59a4a63bc683f'
-            '54db543e154bb141ec97966aa8add22a23910af719b3557b8040e8940e94844f'
+            'ff69d123850e37f2673bd4a53655060057880eb26ac79709560c6c6ea92fbd27'
             'ab676df3728c0813f8d7ad2ddcc07fba94ff0970293a7a6f28bcfaa6b0696e95'
             'af4ac8b60c924c903e093e862bfa490127221ba058713ab6163662cde9312632'
-            '661e3da6a27e84ac6c7ce31b8d704acb2d8f9d96c636c6ccdcf8d27aae5fecad'
+            '4252507ab44b016aead881070efe7dd4cb21d3dbdaf041696730cb125db83cd5'
             'c8e12f62115ab9962711b84bc396adbf75dfc3c4c7e309b37fed1742567bcb0d')
-sha256sums_x86_64=('e5ef7f41c84086923244be578a09f49158b926045bfc3e213097c24e8eba286e')
-sha256sums_aarch64=('79026d1b06a8ecbbfddce7447a632a959b482a812385be1a6d4c688cc298078a')
+sha256sums_x86_64=('df1e49e49731f8eb4fdb6cd8f7e143d3a3fb312d1eb7204e0eff21073bb47fce')
+sha256sums_aarch64=('656bc8d72d8d93e3246d38791984c8a4ac94d3de6397895173aa937957de4271')
 
 package() {
   install -vDm755 "$srcdir/${_pkgname}_${pkgver}_${arch}" "$pkgdir/usr/bin/${_pkgbinary}"
