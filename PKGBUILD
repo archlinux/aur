@@ -2,7 +2,7 @@
 
 pkgname=minc-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="MicroShift in Container"
 arch=("x86_64")
 url="https://github.com/minc-org/minc"
@@ -11,7 +11,7 @@ depends=(
     'podman'
 )
 source=("https://github.com/minc-org/minc/releases/download/v$pkgver/minc_linux_amd64")
-b2sums=('a7fb426f594526110d532758f578aeaa4915e57098f9d2d52f89f88d0db36988cf008397922bac00f70bedd6adb29d779ed991a3268e48828e65f75f853f55b8')
+b2sums=('3f5a2e54a05374ac7705ec636b78d0a9150e4415714ef06443653e3e85e28a68fdf5bebc0d1d4c004f4b3924b23b96761a0a674a545feb7013abe9567fbd66f5')
 
 package() {
     install -Dm755 "minc_linux_amd64" "${pkgdir}/usr/bin/minc"
