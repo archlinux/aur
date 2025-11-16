@@ -1,0 +1,3 @@
+[python-cotyledon]
+source = "pypi"
+pypi = "cotyledon"
