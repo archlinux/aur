@@ -1,7 +1,7 @@
 pkgbase = coolercontrol-bin
 	pkgdesc = A program to monitor and control your cooling devices (binary release)
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/coolercontrol/coolercontrol
 	arch = x86_64
 	groups = coolercontrol-bin
@@ -12,7 +12,6 @@ pkgbase = coolercontrol-bin
 	depends = hicolor-icon-theme
 	depends = coolercontrold-bin
 	depends = qt6-webengine
-	depends = liquidctl
 	provides = coolercontrol
 	conflicts = coolercontrol
 	source = https://gitlab.com/coolercontrol/coolercontrol/-/releases/3.0.2/downloads/packages/coolercontrol_3.0.2
