@@ -6,7 +6,7 @@ pkgbase = elasticsearch
 	arch = aarch64
 	arch = x86_64
 	license = custom:Elastic-2.0
-	depends = java-runtime
+	depends = jdk21-openjdk
 	depends = libxml2
 	provides = elasticsearch=9.2.1
 	conflicts = elasticsearch7
