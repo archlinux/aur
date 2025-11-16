@@ -1,4 +1,4 @@
-# Maintainer: Raul raul09alazovi@gmail.com>
+# Maintainer: Raul <raul09alazovi@gmail.com>
 
 pkgname=noctune
 pkgver=1.0.0
@@ -7,10 +7,9 @@ pkgdesc="A modern local music player with a Spotify-inspired UI. Built with Aval
 arch=('x86_64')
 url="https://github.com/raula09/NoctuneMusicPlayer"
 license=('MIT')
-options=('!strip')
-
 depends=('ffmpeg' 'libvlc' 'vlc')
 makedepends=('unzip')
+options=('!strip' '!debug' '!compress')
 source=(
     "$pkgname-$pkgver.zip::https://github.com/raula09/NoctuneMusicPlayer/releases/download/v$pkgver/Noctune-linux-x64.zip"
     "noctune.desktop"
@@ -28,8 +27,7 @@ package() {
 
     cat <<EOF > "$pkgdir/usr/bin/noctune"
 #!/bin/bash
-exec /opt/noctune/MusicPlayerApp "$@"
-
+exec /opt/noctune/MusicPlayerApp "\$@"
 EOF
     chmod +x "$pkgdir/usr/bin/noctune"
 
