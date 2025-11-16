@@ -1,7 +1,7 @@
 # Maintainer: Raul <raul09alazovi@gmail.com>
 
 pkgname=noctune
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A modern local music player with a Spotify-inspired UI. Built with Avalonia and LibVLC."
 arch=('x86_64')
@@ -10,12 +10,12 @@ license=('MIT')
 depends=('ffmpeg' 'libvlc' 'vlc')
 makedepends=('unzip')
 options=('!strip' '!debug')
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 source=(
     "$pkgname-$pkgver.zip::https://github.com/raula09/NoctuneMusicPlayer/releases/download/v$pkgver/Noctune-linux-x64.zip"
     "noctune.desktop"
     "noctune.png"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 package() {
     install -d "$pkgdir/opt/$pkgname"
