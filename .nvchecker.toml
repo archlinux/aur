@@ -1,0 +1,5 @@
+[python-kernex]
+source = "github"
+github = "ASEM000/kernex"
+use_latest_release = "true"
+prefix = "v"

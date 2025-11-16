@@ -2,8 +2,8 @@
 _base=kernex
 pkgname=python-${_base}
 pkgdesc="Stencil computations in JAX"
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 arch=(any)
 url="https://github.com/ASEM000/${_base}"
 license=(MIT)
@@ -11,7 +11,7 @@ depends=(python-jax)
 makedepends=(python-build python-setuptools python-installer python-wheel)
 checkdepends=(python-pytest)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('f59e79d310dfb15f2817a0d9021f02637366a9a1aa09b4aea2d06d327f4c657b8fd7358648272f1945758f9f70b6c25f45b5a5c74aa4ee93185477d7db91f01b')
+sha512sums=('dbe7b7e275e457ee8079d6ccb15791f30c09d73c128987adf8d5a5a384293446e2a080ba10f89e6a0b7674dbe7d27b3690aff546f96caf31b308d08d511800d5')
 
 build() {
   cd ${_base}-${pkgver}
