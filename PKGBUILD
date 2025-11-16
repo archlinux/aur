@@ -2,13 +2,13 @@
 
 pkgname=elasticsearch
 pkgver=9.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and Open, Distributed, RESTful Search Engine"
 arch=('aarch64' 'x86_64')
 url="https://www.elastic.co/elasticsearch/"
 license=('custom:Elastic-2.0')
-depends=('java-runtime' 'libxml2')
-makedepends=('jdk17-openjdk')
+depends=('jdk21-openjdk' 'libxml2')
+makedepends=()
 provides=("elasticsearch=$pkgver")
 conflicts=('elasticsearch7' 'elasticsearch-bin')
 source=(
@@ -39,9 +39,9 @@ backup=('etc/elasticsearch/elasticsearch.yml'
 
 build() {
   cd $pkgname-$pkgver
-  echo "Building using java-17-openjdk..."
+  echo "Building using java-21-openjdk..."
   # For now as jdk-openjdk upgraded to JDK21 experiencing warnings treated as errors.
-  export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+  export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
   ./gradlew --no-daemon :modules:systemd:assemble
   ./gradlew --no-daemon :distribution:archives:linux-tar:assemble
 }
@@ -71,10 +71,12 @@ package() {
   ln -s /etc/elasticsearch "$pkgdir"/usr/share/elasticsearch/config
   ln -s /var/log/elasticsearch "$pkgdir"/usr/share/elasticsearch/logs
 
-  # Dynamically determine what version jdk-openjdk provides and symlink it.
-  jdk_openjdk_version=$(pacman -Ql java-runtime | grep -Pom1 '/usr/lib/jvm/java-[0-9]+-openjdk/')
-  [ -z "${jdk_openjdk_version}" ] && echo "Unable to determine jdk-openjdk version automatically" && exit 1
-  ln -s "${jdk_openjdk_version}" "$pkgdir"/usr/share/elasticsearch/jdk
+  ## Dynamically determine what version jdk-openjdk provides and symlink it.
+  # Good automation attempt but cannot be used. Elasticsearch falls behind java updates too often for a rolling release platform.
+  #jdk_openjdk_version=$(pacman -Ql java-runtime | grep -Pom1 '/usr/lib/jvm/java-[0-9]+-openjdk/')
+  #[ -z "${jdk_openjdk_version}" ] && echo "Unable to determine jdk-openjdk version automatically" && exit 1
+  #ln -s "${jdk_openjdk_version}" "$pkgdir"/usr/share/elasticsearch/jdk
+  ln -s "/usr/lib/jvm/java-21-openjdk" "$pkgdir"/usr/share/elasticsearch/jdk
 
   install -Dm644 "$srcdir"/elasticsearch.service "$pkgdir"/usr/lib/systemd/system/elasticsearch.service
   install -Dm644 "$srcdir"/elasticsearch@.service "$pkgdir"/usr/lib/systemd/system/elasticsearch@.service
