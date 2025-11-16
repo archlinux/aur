@@ -1,6 +1,6 @@
 # Maintainer: Firstpick firstpick1992@proton.me
 pkgname=pacsea-git
-pkgver=0.5.0.r0.gc33fdbf
+pkgver=0.5.0.r72.g3435ad4
 pkgrel=1
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (git version)"
 arch=('x86_64')
@@ -14,6 +14,7 @@ optdepends=(
     'xclip: clipboard support on X11'
     'reflector: update Arch mirrors'
     'pacman-mirrors: Manjaro mirrorlist'
+    'rate-mirrors: Artix mirror rating'
     'alacritty: run external commands in a terminal'
     'kitty: run external commands in a terminal'
     'ghostty: run external commands in a terminal'
