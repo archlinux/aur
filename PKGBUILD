@@ -2,7 +2,7 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-oslo-privsep
-pkgver=3.4.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="OpenStack library for privilege separation"
 arch=(any)
@@ -19,38 +19,33 @@ depends=('python'
          'python-fixtures'
          'python-testtools'
          'python-oslotest'
-         'python-pbr')
+         'python-pbr'
+         'python-debtcollector')
 makedepends=('python-build'
              'python-installer'
              'python-setuptools'
              'python-wheel'
-             'tar')
+             'git')
 checkdepends=('python-hacking'
               'python-stestr'
               'bandit'
               'pre-commit')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('94da5cc6cd868e6b6c0ff7105f7f79abb428e82ef19a9b5662a62bb90d50f228df64c9af7aec6ae102f6d22e7ed2d246a6fefce35c49d31fd20d661f42b58efc')
-
-prepare() {
-    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
-}
+source=("$pkgname-$pkgver::git+$url.git#tag=$pkgver")
+b2sums=('b195921c8d81096d8aaf4032d0f0b9b021f9adde521be4019944308335e8906e054da87b95caf5ad54f1ff4f0359146425d722295ed25622341cf52557b4ba7c')
 
 build(){
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver" || exit
     PBR_VERSION=$pkgver python -m build --wheel --no-isolation
 }
 
 #check(){
-#    cd "$pkgname-$pkgver"
+#    cd "$pkgname-$pkgver" || exit
 #    stestr run
 #}
 
 package(){
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver" || exit
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 README.rst -t "$pkgdir/usr/share/$pkgname/"
-    install -Dm644 HACKING.rst -t "$pkgdir/usr/share/$pkgname/"
-    install -Dm644 CONTRIBUTING.rst -t "$pkgdir/usr/share/$pkgname/"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
