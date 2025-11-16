@@ -1,11 +1,16 @@
 pkgbase = librdkafka-git
 	pkgdesc = The Apache Kafka C/C++ library
-	pkgver = 2.6.0.r3.88604ca
+	pkgver = 2.12.1.r1.616fb6e
 	pkgrel = 1
 	url = https://github.com/confluentinc/librdkafka
 	changelog = CHANGELOG.md
 	arch = x86_64
 	license = BSD-2-Clause
+	license = Apache-2.0
+	license = BSD-2-Clause
+	license = BSD-3-Clause
+	license = MIT
+	license = Zlib
 	makedepends = git
 	makedepends = python
 	makedepends = rapidjson
@@ -17,7 +22,7 @@ pkgbase = librdkafka-git
 	depends = openssl
 	depends = zlib
 	depends = zstd
-	provides = librdkafka=2.6.0.r3.88604ca
+	provides = librdkafka=2.12.1.r1.616fb6e
 	conflicts = librdkafka
 	source = librdkafka::git+https://github.com/confluentinc/librdkafka.git
 	b2sums = SKIP
