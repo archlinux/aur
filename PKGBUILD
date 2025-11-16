@@ -3,8 +3,8 @@
 # Contributor: PumpkinCheshire <me at pumpkincheshire dot com>
 
 pkgname=cockpit-navigator
-pkgver=0.5.12
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc='A Featureful File Browser for Cockpit.'
 url="https://github.com/45Drives/cockpit-navigator"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL-3.0')
 depends=('cockpit' 'python' 'rsync' 'zip')
 source=("cockpit-navigator-${pkgver}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
     
-b2sums=('b1a121410b6f62236c030e5ee90fc627f7f6b3de0b0a3bf7e53b2c7ba91d4e1e261c620944e6ec6dafb129c02903f35a5f297f6774ebc57d25646f9745aa53ee')
+b2sums=('52a0e2e6c0925b831669cc03e0b4e295795afb2ddbe242c6c30223890f2222800793aacec273a93dd526b45a08dec27275f8798554f1c8ef88c99ba2c8b7bf7c')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
