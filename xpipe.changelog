@@ -1,93 +1,102 @@
-XPipe 18 ventures into many new areas. It comes with the first cloud provider integration for Hetzner cloud to kickstart the process of integrating common cloud providers directly into XPipe. Furthermore, it comes with a new MCP server functionality to seamlessly integrate XPipe into your AI agent workflows. On top of everything, there are also many new convenience features like the network scan, multiple hostnames, SSH improvements, many bug fixes, and much more.
+## Netbird support
 
-## MCP server
+You can now connect to devices in your Netbird network via SSH and your locally installed netbird command-line client.
 
-There is now an MCP server available for XPipe which allows you to perform many actions in an agentic workflow via your favourite MCP client, for example Cursor. The MCP server feature is disabled by default has to be enabled in the MCP settings menu.
+![Netbird](https://xpipe.io/assets/images/BlogPage/netbird.png)
 
-[Documentation page](https://docs.xpipe.io/guide/mcp)
+## Legacy system support
 
-Here is how it looks in Cursor:
+Up until now, the testing was done on *relatively* up-to-date machines that were not considered EOL. However, in practice, legacy systems are still used. With XPipe 19, the handling of older Unix-based systems has been greatly improved. As long as you can connect to a system via SSH somehow, it should work now regardless of how old the system is. 
 
-![MCP config](https://xpipe.io/assets/images/BlogPage/cursor-mcp.png)
+The following things have been implemented to improve legacy system support:
+- The unsupported SSH host key / key / MAC dialog will now search for matches that the client supports as well. This is to fix situations in which a server lists crypto algorithms that are so old that a modern SSH clients doesn't even know them anymore
+- Fix file listing not working on older/limited versions of `find`
+- Fix various SSH timeout options being too aggressive for older versions, resulting in connect timeouts
+- Fix tar browser actions not working on older tar versions
+- Fix systems where `set -u` was configured breaking xpipe's shell handling
+- Fix file transfer failing on systems with non-GNU `dd` to work around missing `fullblock` option
+- Fix various commands on systems where `sleep` command did not accept decimals
+- Improve non-Linux Unix-based system name formatting
+- Add full recognition for AIX system versions
 
-Here is how a chat that uses the XPipe MCP server looks like:
+![AIX](https://xpipe.io/assets/images/BlogPage/aix.png)
 
-![MCP screenshot](https://xpipe.io/assets/images/BlogPage/cursor-chat.png)
+![HP-UX](https://xpipe.io/assets/images/BlogPage/hpux.png)
 
-## Hetzner cloud
+You are running old systems? Then feel free to test how XPipe 19 handles for you, and report anything that doesn't work yet.
 
-This release introduces support for Hetzner cloud servers via the hcloud CLI tool. You can list all your service automatically and then access them normally as SSH connections. This is the first of hopefully many integrations for cloud providers and will serve as a good proof of concept. This integration is available in the Professional plan.
+## Abstract hosts and connection organization
 
-![hcloud](https://xpipe.io/assets/images/BlogPage/hcloud.png)
+Up until now, the handling of systems which did not support shell connections has been limited. While you could add a direct VNC / RDP connection entry, the organization wasn't as refined as with shell-based connections. For those hosts, you can now make use of the improved handling that was added for services and VNC/RDP connections.
 
-## Network scan
+Essentially, you can now specify the target address inline or choose an existing host from xpipe. XPipe will then automatically adapt the connection based on what is possible. E.g. if you want to open a web service directly on a device without shell access, e.g. some embedded device, just specify the hostname and optional gateway. You can then open the website in the browser while also having a nice grouping of various connection entries for an abstract host in case you have more connections added for the same host:
 
-There is now the option to automatically search the local network for any listening SSH servers and add them automatically as new connections. This also works for remote systems and their networks.
+![Abstract host config](https://xpipe.io/assets/images/BlogPage/abstract-host-config.png)
 
-You can find the network scan in the newly organized menu at New -> Network scan.
+You can also quickly convert existing connections entries like services and direct RDP/VNC connections to an abstract host entry to allow for better organization.
 
-![scan](https://xpipe.io/assets/images/BlogPage/network-scan.png)
+![Abstract host](https://xpipe.io/assets/images/BlogPage/abstract-host.png)
 
-## Host addresses
+## SFTP support
 
-You can now configure multiple addresses for a host. This allows you to quickly switch between different addresses if needed. 
+There is now support for systems which only support pure SFTP and no SSH shell sessions. These can be opened in the file browser as normal, although with limited functionality as there is no way to execute commands on these systems.
 
-![addresses](https://xpipe.io/assets/images/BlogPage/addresses.png)
-
-## SSH
-
-- Rework SSH timeout options to hopefully better handle unexpected connection disruptions
-- There is now a new settings option and improved handling of SSH MOTDs to control whether they should be shown or not
-- Fix SSH ProxyCommand not being executed for custom connections
-- Fix SSH agent public key setting not working on Linux and macOS due to permissions issue
-- The custom SSH agent setting now works differently. To use the agent socket specified in the settings menu,
-  you will now have to select the custom SSH agent for a connection. The default OpenSSH agent will no longer use this option
-- Fix custom SSH agent socket location setting not applying correctly
-- Fix SSH gateways not working on systems where username contained a dot
-- Fix some terminal connections asking for passwords even if it was entered before if the connection was edited
-- Add support to launch VsCode Insiders and Trae as well in the VsCode SSH launch menu
-
-## File browser
-
-- The initial transfer size calculation for large directories is now dynamically updated and shown
-- Fix script arguments not being passed with file selection
-- Fix file listing not working on Solaris systems
-- Fix refresh of single file selections failing on Windows systems
-- Fix conflict dialog being cut off
-- Fix renames not working in cmd
-- Fix not supporting dollar signs in directory names
-- Files with trailing or leading spaces are now included in the file list
-- Fix execute action on Windows not being limited to certain file types
-- Fix execute action not showing confirmation dialog if enabled
+![SFTP](https://xpipe.io/assets/images/BlogPage/sftp.png)
 
 ## Other
 
-- The fonts on macOS have been updated with the goal of better readability.
-  If you don't like the new font style, you can still select the old one in the appearance settings menu
-- Tailscale connections are now a top-level entry and can be synced via git
-- Add ability to specify gateways for direct RDP and VNC connections
-- Add two new connection colors with cyan and purple
-- Add new option to prefer available monochrome icons instead of colored variants
-- Add vietnamese translations
-- Improve local shell fallback handling and docs
-- Add more documentation links to the settings menu
-- Proxmox entries are now ordered by their vmid
-- Kitty and WezTerm now also support the tabs or windows settings option for terminals
-- Any small changes such as a change in color other connection are now synced instantly
-- XPipe will now clean any temp files more often
+- Add support for flatpak variants of various editors and terminals
+- Add ability to read files via sudo if current user did not have read permission for a file
+- Improve browser drag-and-drop to also work on the navigation bar to move between directories
+- Add ability to move categories to different parents
+- The accent color of your system appearance now applies to all UI elements
+- Make tunnels close instantly even if there was still traffic going through
+- Bump to JDK 25 and JavaFX 25
+- Rework password choice order
+- Add setting for mstsc RDP client to use smart sizing
+- Add traditional chinese translations
+- Add support for Zed editor on Windows
+- Rework gpg git initialization on Windows due to severe gpg agent slowdowns
+- Improve caching of various shell operations for speed improvements
+- The nixpkg package now also supports macOS and has been reworked as a flake. If you use XPipe on Nix, take a look at https://github.com/xpipe-io/nixpkg for the changes
+- Don't accept 7zip drag-and-drop to prevent confusion about non-existent files
+- The custom icon cache now always registers when it is out of date, prompting you to refresh
+- You can now automatically start service tunnels as well when XPipe is launched
+- Add support to automatically add unsupported SSH MAC type
+- Improve default browser detection for URL opens
+- The file browser can now automatically open UNC paths when using cmd by opening a new PowerShell tab
+- Add option to control application behavior on system hibernation
+- Add possible workaround when default beacon HTTP server port was not usable
+- Improve reliability of shell session restarts when a connection was interrupted
+- There is also now a checkout page for chinese users, which supports common chinese payment methods.
 
 ## Fixes
 
-- Fix application freeze when having password manager identities while password manager was not running
-- Fix apt and rpm package manager installs failing due to two download redirects causing a wrong checksum
-- Fix automatic tunnel restart sometimes resulting in an invalid tunnel state
-- Fix BSD and Solaris systems not being recognized correctly
-- Fix performance issue when opening connection chooser dropdown
-- Fix small parts of the UI moving a bit on hover
-- Fix Bitwarden integration in some cases requiring the master password every time
-- Fix restart button not working on Linux
-- Fix license check becoming invalid if xpipe was left running for more than a week
-- Fix git vaultversion conflict not being solved automatically
-- Fix container service entries not showing the port when added initially
-
-There are also many other small changes that are not listed explicitly here.
+- Fix connection entry validity state sometimes not updating immediately when edited
+- Fix SSH connection host key type / kex type override not applying changes instantly
+- Fix misleading error messages when a file transfer was interrupted or permissions were missing
+- Fix Remmina RDP integration not supporting user domain prefix
+- Fix Linux FreeRDP not using FreeRDP v3 by default
+- Fix identities being moved to initial category when being editing
+- Fix system state info for some VMs and containers not showing
+- Fix fish shell v4 with init scripts failing to launch
+- Fix SSH MOTD errors with fish as a login shell
+- Fix vietnamese translations not being listed
+- Fix kitty launch race conditions sometimes breaking socket
+- Fix synced identities not syncing when no other categories were synced
+- Fix bitwarden sync not refreshing xpipe cache for bitwarden passwords
+- Fix sudo auth failing on legacy systems where openssl did not support certain options
+- Fix Remmina integration failing to encrypt passwords with special characters
+- Fix AppImage workspaces and app restart not working
+- Fix native file manager open not properly selecting files
+- Fix connection entries being able to be renamed to a blank string
+- Fix apple container integration freezing when recommended kernel was not installed
+- Fix local KVM integration constantly bringing up polkit auth window
+- Fix super key not being handled in VNC client
+- Fix Proxmox VNC action not setting empty password
+- Fix opened as root browser tab not launching correct shell in terminal for fish
+- Fix VNC scan adding localhost as a connection on macOS
+- Fix file git sync button sometimes being enabled too early
+- Fix errors when configuring an invalid git account password
+- Fix freeze on macOS with 1password agent when starting in background
+- Fix various NullPointers
