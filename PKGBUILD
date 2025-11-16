@@ -3,7 +3,7 @@
 _reposite=codeberg.org
 _repouser=gwh
 _repoproj=x50ng
-_pkgtagname=2.5.0
+_pkgtagname=2.5.1
 _repourl=https://${_reposite}/${_repouser}/${_repoproj}
 _repoarchive=${_pkgtagname}.tar.gz
 _repourlarchive=${_repourl}/archive/${_repoarchive}
@@ -21,7 +21,7 @@ makedepends=('scdoc')
 options=('!lto' '!debug')
 install="${pkgname}.install"
 source=("${_repourlarchive}")
-sha256sums=('8567a8debbd694eeb875cc7a45478ff3788fd6f5b80315587f19ce8f9121673f')
+sha256sums=('51c0dee31d42fbe29e37ca770de294b1abc1e13426e156ab2e5e8deff8d7abe0')
 
 build() {
 	cd "${_repoproj}"
