@@ -30,24 +30,20 @@ prepare() {
   if [ ! -f "../lib/openvr/lib/linux64/libopenvr_api.so" ]; then
     echo "Extracting OpenVR library..."
     mkdir -p ../lib/openvr/lib/linux64
-    if tar -xzf "${srcdir}/openvr-headers.tar.gz" -C ../lib/openvr/lib/linux64 --strip-components=1 openvr-master/lib/linux64/libopenvr_api.so 2>/dev/null; then
+    if tar -xzf "${srcdir}/openvr-headers.tar.gz" -C ../lib/openvr/lib/linux64 --strip-components=3 openvr-master/lib/linux64/libopenvr_api.so 2>/dev/null; then
       echo "OpenVR library extracted successfully (from lib/linux64)"
-    elif tar -xzf "${srcdir}/openvr-headers.tar.gz" -C ../lib/openvr/lib/linux64 --strip-components=1 openvr-master/bin/linux64/libopenvr_api.so 2>/dev/null; then
+    elif tar -xzf "${srcdir}/openvr-headers.tar.gz" -C ../lib/openvr/lib/linux64 --strip-components=3 openvr-master/bin/linux64/libopenvr_api.so 2>/dev/null; then
       echo "OpenVR library extracted successfully (from bin/linux64)"
-    elif tar -xzf "${srcdir}/openvr-headers.tar.gz" -C ../lib/openvr/lib --strip-components=1 openvr-master/lib/linux64/libopenvr_api.so 2>/dev/null; then
-      mv ../lib/openvr/lib/libopenvr_api.so ../lib/openvr/lib/linux64/ 2>/dev/null || true
-      echo "OpenVR library extracted successfully (alternative path)"
+    elif tar -xzf "${srcdir}/openvr-headers.tar.gz" -C ../lib/openvr/lib/linux64 openvr-master/lib/linux64/libopenvr_api.so 2>/dev/null; then
+      mv ../lib/openvr/lib/linux64/openvr-master/lib/linux64/libopenvr_api.so ../lib/openvr/lib/linux64/ 2>/dev/null && \
+      rm -rf ../lib/openvr/lib/linux64/openvr-master 2>/dev/null && \
+      echo "OpenVR library extracted successfully (no strip-components)"
+    elif tar -xzf "${srcdir}/openvr-headers.tar.gz" -C ../lib/openvr/lib/linux64 openvr-master/bin/linux64/libopenvr_api.so 2>/dev/null; then
+      mv ../lib/openvr/lib/linux64/openvr-master/bin/linux64/libopenvr_api.so ../lib/openvr/lib/linux64/ 2>/dev/null && \
+      rm -rf ../lib/openvr/lib/linux64/openvr-master 2>/dev/null && \
+      echo "OpenVR library extracted successfully (no strip-components, bin path)"
     else
-      echo "ERROR: Could not extract OpenVR library from tarball"
-      echo "Attempting alternative extraction method..."
-      mkdir -p ../lib/openvr/lib/linux64
-      if tar -xzf "${srcdir}/openvr-headers.tar.gz" -C ../lib/openvr/lib/linux64 --strip-components=0 openvr-master/lib/linux64/libopenvr_api.so 2>/dev/null; then
-        mv ../lib/openvr/lib/linux64/openvr-master/lib/linux64/libopenvr_api.so ../lib/openvr/lib/linux64/ 2>/dev/null && \
-        rm -rf ../lib/openvr/lib/linux64/openvr-master 2>/dev/null && \
-        echo "OpenVR library extracted successfully (alternative method)"
-      else
-        echo "ERROR: Failed to extract OpenVR library - build will fail"
-      fi
+      echo "ERROR: Failed to extract OpenVR library - build will fail"
     fi
   fi
   
