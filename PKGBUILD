@@ -2,7 +2,7 @@
 
 _name=zensical
 pkgname=${_name}
-pkgver=0.0.6
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="A modern static site generator designed to simplify building and maintaining project documentation"
 url="https://github.com/zensical/zensical"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'maturin' 'python-build' 'python-installer' 'ca
 depends=('python' 'python-deepmerge')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 noextract=()
-sha256sums=(25145034b94fe8fe0bf8f7438572fc300fb83d186acb32074723837e44015731)
+sha256sums=(756e05278834b867c359000b0c7215df8925527a7c050e7362cd77373028a3ef)
 
 prepare() {
     cd "${srcdir}/${_name}-${pkgver}"
