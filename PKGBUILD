@@ -6,7 +6,7 @@
 
 _pkgname="geeqie"
 pkgname="$_pkgname-git"
-pkgver=2.6.1.r225.g5a57bf1
+pkgver=2.6.1.r316.g6d76645
 pkgrel=1
 pkgdesc='Lightweight image viewer'
 url="https://github.com/BestImageViewer/geeqie"
@@ -15,54 +15,36 @@ arch=('x86_64')
 
 depends=(
   cfitsio
-  clutter
-  clutter-gtk
   djvulibre
   exiv2
   ffmpegthumbnailer
   gspell
   gtk3
-  hicolor-icon-theme
   libarchive
   libchamplain
   libheif
-  libjxl.so
   libraw
   lua
   openexr
-  openjpeg2
   poppler-glib
 )
 makedepends=(
-  doxygen
   evince
-  fbida
-  gawk
   git
-  glib2-devel
-  graphviz
-  imagemagick
-  intltool
-  librsvg
-  libwmf
   meson
-  pandoc-cli
-  perl-image-exiftool
-  python
-  vim
-  yelp-tools
 )
 checkdepends=(
+  appstream
+  markdownlint
   shellcheck
   xorg-server-xvfb
 )
 optdepends=(
   'evince: for print preview'
-  'fbida: for jpeg rotation'
+  'fbida: for jpeg rotation' # exiftran
   'gawk: to use the geo-decode function'
   'gphoto2: command-line tools for various (plugin) operations'
   'imagemagick: command-line tools for various (plugin) operations'
-  'librsvg: SVG rendering'
   'perl-image-exiftool: for the jpeg extraction plugin'
 )
 
@@ -70,30 +52,8 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
-source=(
-  "$_pkgname"::"git+$url.git${_commit:+#commit=$_commit}"
-  "0001-PR1928.patch" # https://github.com/BestImageViewer/geeqie/pull/1928
-)
-sha256sums=(
-  'SKIP'
-  'af9ac2fdc476802061527af691ee77d2b56dff7c7b7072868155eff9007a04c5'
-)
-
-prepare() {
-  cd "$_pkgsrc"
-
-  # skip failing tests
-  sed -E -e '/[Aa]ncillary.files/d' \
-    -e '/[Ll]ua.test/d' \
-    -e '/summary/s&^.*lua.*Test.*$&_ = 1 # pass&' \
-    -i meson.build
-
-  # fix translation script
-  sed -E '/full_file_path/s&(\$source_dir)/\$1&\1/$base&' -i scripts/translators.sh
-
-  # fix for gdk-pixbuf2, glycin
-  patch -Np1 -F100 -i ../0001-PR1928.patch
-}
+source=("$_pkgname"::"git+$url.git${_commit:+#commit=$_commit}")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgsrc"
@@ -104,13 +64,21 @@ pkgver() {
   printf '%s.r%s.g%s' "${_version#v}" "${_revision:?}" "${_hash:?}"
 }
 
+prepare() {
+  cd "$_pkgsrc"
+
+  # fix tests
+  sed -E 's&(env -i)&\1 PATH=/usr/bin&' -i scripts/isolate-test.sh
+  echo "WarningsAsErrors: ''" > .clang-tidy
+}
+
 build() {
   arch-meson "$_pkgsrc" build
   meson compile -C build
 }
 
 check() {
-  meson test -C build
+  xvfb-run -a dbus-run-session meson test --print-errorlogs -C build
 }
 
 package() {
