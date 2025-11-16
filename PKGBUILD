@@ -1,7 +1,7 @@
 # Maintainer: xi-ve <zunavs@gmail.com>
 pkgname=openvr-space-calibrator-linux
 pkgver=1.5.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Linux port of OpenVR-SpaceCalibrator - synchronize multiple VR playspaces in SteamVR. Requires SteamVR to be installed (provides OpenVR headers)."
 arch=('x86_64')
 url="https://github.com/xi-ve/openvr-space-calibrator-linux"
@@ -29,6 +29,13 @@ prepare() {
     echo "Extracting OpenVR headers..."
     mkdir -p ../lib/openvr
     tar -xzf "${srcdir}/openvr-headers.tar.gz" -C ../lib/openvr --strip-components=1 openvr-master/headers 2>/dev/null || true
+  fi
+  
+  if [ ! -d "../lib/openvr/bin/linux64" ]; then
+    echo "Extracting OpenVR library..."
+    mkdir -p ../lib/openvr/bin/linux64
+    tar -xzf "${srcdir}/openvr-headers.tar.gz" -C ../lib/openvr/bin/linux64 --strip-components=1 openvr-master/bin/linux64/libopenvr_api.so 2>/dev/null || \
+    tar -xzf "${srcdir}/openvr-headers.tar.gz" -C ../lib/openvr/bin --strip-components=1 openvr-master/bin/linux64/libopenvr_api.so 2>/dev/null || true
   fi
   
   if [ ! -d "../WindowsEdition/OpenVR-SpaceCalibrator/lib/imgui" ]; then
@@ -87,6 +94,20 @@ build() {
   if [ -n "$OPENVR_HEADERS" ]; then
     echo "Using OpenVR headers from: $OPENVR_HEADERS"
     CMAKE_ARGS="-DOPENVR_INCLUDE_DIR=\"$OPENVR_HEADERS\""
+    
+    OPENVR_LIB=""
+    for lib_path in \
+      "${PROJECT_ROOT}/../lib/openvr/bin/linux64/libopenvr_api.so" \
+      "${HOME}/.local/share/Steam/steamapps/common/SteamVR/bin/linux64/libopenvr_api.so" \
+      "${HOME}/.steam/steam/steamapps/common/SteamVR/bin/linux64/libopenvr_api.so" \
+      "${HOME}/.steam/root/steamapps/common/SteamVR/bin/linux64/libopenvr_api.so"; do
+      if [ -f "$lib_path" ] 2>/dev/null; then
+        OPENVR_LIB="$(dirname "$lib_path")"
+        echo "Found OpenVR library at: $OPENVR_LIB"
+        CMAKE_ARGS="$CMAKE_ARGS -DOPENVR_LIB_DIR=\"$OPENVR_LIB\""
+        break
+      fi
+    done
   else
     echo "OpenVR headers not found in standard locations."
     echo "CMake will attempt to find them using its own detection logic."
@@ -103,6 +124,11 @@ package() {
   # Install space-calibrator binary to /usr/bin
   install -Dm755 build/bin/space-calibrator "${pkgdir}/usr/bin/space-calibrator"
   
+  # Install register-overlay utility if built
+  if [ -f build/bin/register-overlay ]; then
+    install -Dm755 build/bin/register-overlay "${pkgdir}/usr/bin/openvr-space-calibrator-register"
+  fi
+  
   # Install driver files to /usr/lib/openvr-space-calibrator-linux (as expected by install script)
   install -Dm755 build/lib/driver_01spacecalibrator.so "${pkgdir}/usr/lib/openvr-space-calibrator-linux/driver_01spacecalibrator.so"
   install -Dm644 build/manifest.vrmanifest "${pkgdir}/usr/lib/openvr-space-calibrator-linux/manifest.vrmanifest"
@@ -118,4 +144,3 @@ package() {
   # Install install script
   install -Dm755 openvr-space-calibrator-install.sh "${pkgdir}/usr/bin/openvr-space-calibrator-install"
 }
-
