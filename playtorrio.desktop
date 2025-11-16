@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=PlayTorrio
+Comment=Stream Movies, TV Shows, Anime, Books, Music & Games
+Exec=playtorrio %U
+Icon=playtorrio
+Terminal=false
+Type=Application
+Categories=AudioVideo;Video;Player;Network;
+MimeType=application/x-bittorrent;x-scheme-handler/magnet;
+StartupWMClass=PlayTorrio
+StartupNotify=true
+
