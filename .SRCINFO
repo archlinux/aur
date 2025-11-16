@@ -1,6 +1,6 @@
 pkgbase = python-petl
 	pkgdesc = Python Extract Transform and Load Tables of Data
-	pkgver = 1.7.15
+	pkgver = 1.7.17
 	pkgrel = 1
 	url = https://pypi.org/pypi/petl
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = python-petl
 	depends = python-lxml
 	depends = python-whoosh
 	options = !strip
-	source = https://pypi.org/packages/source/p/petl/petl-1.7.15.tar.gz
-	b2sums = df716ed1d2048ac66b42ef015149a888218812dd356b17f31e9068519379ad03fb23dd44a79d61e1a7dc962ee969016d963e862123c21e68988302af2f5e83c1
+	source = https://pypi.org/packages/source/p/petl/petl-1.7.17.tar.gz
+	b2sums = 5f474bc365137dc014571db798fb8ea951f0715075e1ca70512f51c6ebecc35ac7f4f59eefaad74f256b1ffafdd405fe21302c85aa42d12bf2438fa52ae99bd1
 
 pkgname = python-petl
