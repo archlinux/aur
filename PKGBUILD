@@ -1,12 +1,12 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=servo
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='Parallel Browser Project: web browser written in Rust'
 arch=(x86_64 i686)
 url=https://github.com/servo/servo
-license=(MPL)
+license=(MPL-2.0)
 depends=(bzip2
          fontconfig
          freetype2
@@ -37,7 +37,7 @@ makedepends=(rustup # doesn't work with system rust
 options=('!lto') # lto breaks linking
 backup=("etc/profile.d/$pkgname".{csh,sh})
 source=("$pkgname::git+$url.git#tag=v$pkgver")
-sha256sums=('SKIP')
+sha256sums=('286fc3555d6bd8e0bc7463f917a0ddd797e0a54a70c72216bc6133c448bf40da')
 
 prepare() {
 	cd "$pkgname"
