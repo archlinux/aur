@@ -3,7 +3,7 @@
 # Contributor: condy <condy0919[at]gmail[dot]com>
 
 pkgname=psysh
-pkgver=0.12.12
+pkgver=0.12.14
 pkgrel=1
 pkgdesc="A REPL for PHP"
 url="https://psysh.org/"
@@ -15,7 +15,7 @@ source=(
 	"https://github.com/bobthecow/psysh/releases/download/v${pkgver}/psysh-v${pkgver}.tar.gz"
 	"LICENSE_v${pkgver}::https://raw.githubusercontent.com/bobthecow/psysh/v${pkgver}/LICENSE"
 )
-sha256sums=('a8342dbf7508eec69b3dca78a8a2703fc22c3818e11581dba177a445d414802e' SKIP)
+sha256sums=('e384531884739d79dec8f1c7efaeff68e2124eee0ffc6547f27e8f049068b56a' SKIP)
 
 package() {
 	cd "${srcdir}"
