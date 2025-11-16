@@ -1,6 +1,6 @@
 pkgbase = pomodorot-bin
 	pkgdesc = A simple pomodoro timer application (binary release)
-	pkgver = 0.13.1
+	pkgver = 0.13.2
 	pkgrel = 1
 	url = https://github.com/mlm-games/pomodorot
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = pomodorot-bin
 	options = !strip
 	source = https://raw.githubusercontent.com/mlm-games/pomodorot/main/icon.png
 	sha256sums = SKIP
-	source_x86_64 = pomodorot-0.13.1-x64::https://github.com/mlm-games/pomodorot/releases/download/0.13.1/pomodorot.x86_64
-	sha256sums_x86_64 = 62e1a73eefa98827e6c278930e1d8b26d74070b4cb26a4adb590b11a8476d18b
-	source_aarch64 = pomodorot-0.13.1-arm64::https://github.com/mlm-games/pomodorot/releases/download/0.13.1/pomodorot.arm64
-	sha256sums_aarch64 = fb4a0bdb0a7a53fd4764afe6a106f2090158a02b3a886bf9eb4435e679eebd8b
+	source_x86_64 = pomodorot-0.13.2-x64::https://github.com/mlm-games/pomodorot/releases/download/0.13.2/pomodorot.x86_64
+	sha256sums_x86_64 = f4904c9a513e438b65bf1bb7aece4c41d12eb3a5137cd2645f9f51ea227aae15
+	source_aarch64 = pomodorot-0.13.2-arm64::https://github.com/mlm-games/pomodorot/releases/download/0.13.2/pomodorot.arm64
+	sha256sums_aarch64 = 9ec4b2a65f14a803f29667c013be91587cdcb33b65435aa1f4b1fbc6f612c4be
 
 pkgname = pomodorot-bin
