@@ -1,0 +1,5 @@
+[python-ncclient]
+source = "git"
+git = "https://github.com/ncclient/ncclient.git"
+use_latest_tag = true
+prefix = "v"
