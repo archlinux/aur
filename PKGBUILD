@@ -30,14 +30,37 @@ prepare() {
   if [ ! -f "../lib/openvr/lib/linux64/libopenvr_api.so" ]; then
     echo "Extracting OpenVR library..."
     mkdir -p ../lib/openvr/lib/linux64
-    if tar -xzf "${srcdir}/openvr-headers.tar.gz" -C ../lib/openvr/lib/linux64 --strip-components=3 openvr-master/bin/linux64/libopenvr_api.so 2>/dev/null; then
-      echo "OpenVR library extracted successfully"
-    elif tar -xzf "${srcdir}/openvr-headers.tar.gz" -C ../lib/openvr/lib --strip-components=2 openvr-master/bin/linux64/libopenvr_api.so 2>/dev/null; then
-      mv ../lib/openvr/lib/libopenvr_api.so ../lib/openvr/lib/linux64/ 2>/dev/null || true
-      echo "OpenVR library extracted successfully (alternative path)"
+    echo "DEBUG: Attempting extraction from bin/linux64 with strip-components=3..."
+    if tar -xzf "${srcdir}/openvr-headers.tar.gz" -C ../lib/openvr/lib/linux64 --strip-components=3 openvr-master/bin/linux64/libopenvr_api.so 2>&1; then
+      if [ -f "../lib/openvr/lib/linux64/libopenvr_api.so" ]; then
+        echo "OpenVR library extracted successfully"
+      else
+        echo "ERROR: Extraction appeared to succeed but file not found!"
+        ls -la ../lib/openvr/lib/linux64/ 2>&1 || echo "Directory does not exist"
+      fi
     else
-      echo "Note: Could not extract OpenVR library from tarball (build may fail)"
+      echo "Method 1 failed, trying alternative..."
+      if tar -xzf "${srcdir}/openvr-headers.tar.gz" -C ../lib/openvr/lib --strip-components=2 openvr-master/bin/linux64/libopenvr_api.so 2>&1; then
+        mv ../lib/openvr/lib/libopenvr_api.so ../lib/openvr/lib/linux64/ 2>/dev/null || true
+        if [ -f "../lib/openvr/lib/linux64/libopenvr_api.so" ]; then
+          echo "OpenVR library extracted successfully (alternative path)"
+        else
+          echo "ERROR: Alternative extraction failed"
+        fi
+      else
+        echo "ERROR: All extraction methods failed!"
+        echo "DEBUG: Listing tarball contents..."
+        tar -tzf "${srcdir}/openvr-headers.tar.gz" | grep "libopenvr_api.so" | head -5
+      fi
     fi
+  else
+    echo "OpenVR library already exists"
+  fi
+  
+  if [ ! -f "../lib/openvr/lib/linux64/libopenvr_api.so" ]; then
+    echo "ERROR: OpenVR library not found at ../lib/openvr/lib/linux64/libopenvr_api.so"
+    echo "Build will fail."
+    exit 1
   fi
   
   # ImGui is committed to the repository, no extraction needed
