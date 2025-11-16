@@ -1,0 +1,20 @@
+pkgbase = shelly-cli
+	pkgdesc = Command line helper for Shelly desktop
+	pkgver = r0.g0000000
+	pkgrel = 1
+	url = https://github.com/manpreet113/shelly-cli
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = shelly-shell
+	depends = quickshell
+	depends = hyprland
+	depends = slurp
+	depends = grim
+	depends = wl-copy
+	depends = libnotify
+	source = git+https://github.com/manpreet113/shelly-cli.git
+	sha256sums = SKIP
+
+pkgname = shelly-cli
