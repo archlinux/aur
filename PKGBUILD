@@ -10,8 +10,8 @@ license=(' GPL-3.0-or-later')
 depends=('libsndfile' 'mpg123' 'gcc-libs' 'alsa-lib' 'glibc' 'glib2')
 provides=('helion')
 conflicts=(helion)
-source=("https://github.com/Helion-Engine/Helion/releases/download/${pkgver}/Helion-${pkgver}-linux-x64_AOT.zip" "helion.desktop" "helion.ico")
-sha256sums=('64b55aa3dd39b16d280d6fccbae70e20ba2747f5791ac958d6b430b79f16eb6d' 'dd02c430e093c2cfcdfaedfc316975af8ac47883676a05c26ac0a22a6f1b9c6b' '9590d5b920d2350a9f4ed8311f3195e619ebb168841e7d783cb652d142182c82')
+source=("https://github.com/Helion-Engine/Helion/releases/download/${pkgver}/Helion-${pkgver}-linux-x64_AOT.zip")
+sha256sums=('64b55aa3dd39b16d280d6fccbae70e20ba2747f5791ac958d6b430b79f16eb6d')
 package() {
 	#There might be a better way of going about this, but right now this works.
 	mkdir -m=755 -p "$pkgdir"/opt/Helion/SoundFonts
