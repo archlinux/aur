@@ -1,0 +1,3 @@
+[python-qpid-proton]
+source = "pypi"
+pypi = "python-qpid-proton"
