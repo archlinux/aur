@@ -1,11 +1,10 @@
 pkgbase = python-ncclient
 	pkgdesc = Python library for NETCONF clients
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ncclient/ncclient
 	arch = any
 	license = Apache-2.0
-	checkdepends = python-pytest-runner
 	checkdepends = python-pytest-cov
 	checkdepends = python-sphinx
 	checkdepends = flake8

@@ -3,7 +3,7 @@
 
 pkgname=python-ncclient
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for NETCONF clients"
 arch=("any")
 url="https://github.com/ncclient/ncclient"
@@ -22,7 +22,6 @@ makedepends=(
     'tar'
 )
 checkdepends=(
-    'python-pytest-runner'
     'python-pytest-cov'
     'python-sphinx'
     'flake8'
