@@ -1,0 +1,4 @@
+[nutty-bin]
+source = "github"
+github = "babluboy/nutty"
+use_latest_release = true
