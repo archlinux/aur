@@ -1,5 +1,5 @@
 pkgbase = pipevcr-bin
-	pkgdesc = Like asciinema but for pipes
+	pkgdesc = Record and play back Linux pipes at different speeds
 	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/laktak/pipevcr

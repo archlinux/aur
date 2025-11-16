@@ -1,11 +1,11 @@
-# Maintainer: Rafael Baboni Dominiquini <rafaeldominiquini@gmail.com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgauthor=laktak
 _pkgname=pipevcr
 pkgname=${_pkgname}-bin
 pkgver=0.1.1
 pkgrel=1
-pkgdesc=" Like asciinema but for pipes"
+pkgdesc="Record and play back Linux pipes at different speeds"
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 arch=('x86_64')
