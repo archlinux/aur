@@ -1,5 +1,12 @@
 post_install() {
-    echo "Installing Space Calibrator driver to SteamVR..."
+    echo "========================================="
+    echo "Space Calibrator post-install hook running..."
+    echo "========================================="
+    
+    if [ ! -f "/usr/bin/openvr-space-calibrator-install" ]; then
+        echo "ERROR: Install script not found at /usr/bin/openvr-space-calibrator-install"
+        return 1
+    fi
     
     FOUND_STEAMVR=0
     while IFS=: read -r user _ _ _ _ user_home _; do
@@ -11,15 +18,20 @@ post_install() {
            [ -d "$user_home/.steam/steam/steamapps/common/SteamVR" ] || \
            [ -d "$user_home/.steam/root/steamapps/common/SteamVR" ]; then
             FOUND_STEAMVR=1
-            echo "Installing for user: $user (home: $user_home)"
-            export USER_HOME="$user_home"
-            /usr/bin/openvr-space-calibrator-install "$user_home" || true
+            echo "Found SteamVR for user: $user (home: $user_home)"
+            echo "Installing driver..."
+            /usr/bin/openvr-space-calibrator-install "$user_home" 2>&1 || {
+                echo "WARNING: Installation failed for user $user, continuing..."
+            }
         fi
     done < <(getent passwd)
     
     if [ "$FOUND_STEAMVR" -eq 0 ]; then
         echo "No SteamVR installations found. You may need to run 'openvr-space-calibrator-install' manually after starting SteamVR."
+    else
+        echo "Installation complete!"
     fi
+    echo "========================================="
 }
 
 post_upgrade() {
