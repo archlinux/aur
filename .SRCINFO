@@ -1,6 +1,6 @@
 pkgbase = qtractor-git
 	pkgdesc = Audio/MIDI multitrack sequencer
-	pkgver = 1.5.8.r15.ga0f20c50
+	pkgver = 1.5.9.r6.g9439dacd
 	pkgrel = 1
 	url = https://qtractor.org/
 	arch = x86_64
