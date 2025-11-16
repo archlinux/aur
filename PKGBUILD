@@ -1,5 +1,5 @@
-# Maintainer: Ayoub Eddaoudi <me@ayoubedd.me>
-# Maintainer: Rafael Baboni Dominiquini <rafaeldominiquini@gmail.com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Ayoub Eddaoudi <me@ayoubedd.me>
 
 _pkgauthor=laktak
 _pkgname=zfind

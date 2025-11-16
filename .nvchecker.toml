@@ -1,0 +1,5 @@
+[zfind-bin]
+source = "github"
+github = "laktak/zfind"
+use_latest_release = true
+prefix = "v"
