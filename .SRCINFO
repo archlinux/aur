@@ -1,6 +1,6 @@
 pkgbase = eric
 	pkgdesc = A full-featured Python and Ruby IDE in PyQt
-	pkgver = 25.10
+	pkgver = 25.11
 	pkgrel = 1
 	url = https://eric-ide.python-projects.org/
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = eric
 	optdepends = python-pyenchant
 	conflicts = eric-common
 	replaces = eric-common
-	source = https://downloads.sourceforge.net/eric-ide/eric7-25.10.tar.gz
-	sha256sums = 6a0943d7b4b5b4d1eaf4522af14b355c341e954946b921b45c0075837cb990da
+	source = https://downloads.sourceforge.net/eric-ide/eric7-25.11.tar.gz
+	sha256sums = 2c805eb5806bde080561d4814a7bafb6850808616c1f3aabf826cfd790567fb4
 
 pkgname = eric
