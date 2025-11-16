@@ -8,8 +8,13 @@ import json
 import os
 
 gi.require_version('Gtk', '3.0')
-gi.require_version('AppIndicator3', '0.1')
-from gi.repository import Gtk, AppIndicator3, GLib # type: ignore
+
+import shutil
+from gi.repository import Gtk, GLib
+
+gi.require_version('AyatanaAppIndicator3', '0.1')
+from gi.repository import AyatanaAppIndicator3 as AppIndicator
+
 
 LOCK_FILE = "/tmp/gmail-tray.lock"
 
@@ -69,18 +74,23 @@ class GenericTrayApp:
         except Exception as e:
             print("Error reading configuration file:", e)
             return None
-        self.indicator = AppIndicator3.Indicator.new(
+        self.indicator = AppIndicator.Indicator.new(
             self.title,
             self.icon,
-            AppIndicator3.IndicatorCategory.APPLICATION_STATUS
+            AppIndicator.IndicatorCategory.APPLICATION_STATUS
         )
-        self.indicator.set_status(AppIndicator3.IndicatorStatus.ACTIVE)
+        self.users = []
+        self.indicator.set_status(AppIndicator.IndicatorStatus.ACTIVE)
         self.indicator.set_menu(self.build_menu())
         self.update_label()
         GLib.timeout_add_seconds(self.interval, self.update_label)
 
     def build_menu(self):
         menu = Gtk.Menu()
+
+        display_item = Gtk.MenuItem(label="Show unread counts per users")
+        display_item.connect("activate", lambda x: self.display_users_unread())
+        menu.append(display_item)
 
         toggle_item = Gtk.MenuItem(label=f"Open {self.title}")
         toggle_item.connect("activate", self.launch_app)
@@ -90,6 +100,11 @@ class GenericTrayApp:
         quit_item.connect("activate", self.quit)
         menu.append(quit_item)
 
+        for (user, unread) in self.users:
+            user_item = Gtk.MenuItem(label=f"{user}: {unread} unread")
+            user_item.set_sensitive(False)
+            menu.append(user_item)
+
         menu.show_all()
         return menu
 
@@ -98,8 +113,12 @@ class GenericTrayApp:
             output = subprocess.run(["fetchmail", "-c"], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL).stdout
             output = output.decode().strip().splitlines()
             print("Output from fetchmail:\n", output)
-            unread = 0
-            for line in output:
+            total_unread = 0
+            for u, line in enumerate(output):
+                user = line.strip().split()[-3]
+                if len(self.users) < len(output):
+                    self.users.append([user, 0])
+                print("Processing user:", user)
                 line = line.strip().split()
                 kw = "message" if "message" in line else "messages"
                 if kw not in line:
@@ -108,6 +127,7 @@ class GenericTrayApp:
                 idx = line.index(kw) - 1
                 msg = int(line[idx])
                 print("Message count:", msg)
+                unread = 0
                 if "seen)" in line:
                     print("Seen count found in fetchmail output.")
                     # remove parenteses
@@ -123,8 +143,11 @@ class GenericTrayApp:
                     print("finding idx for", kw, "in", line)
                     idx_unread = line.index(kw) - 1
                     unread += int(line[idx_unread][1:])
-                print("Unread count:", unread)
-            return unread
+                print("Unread count for user", user, ":", unread)
+                total_unread += unread
+                self.users[u][1] = unread
+            print("Total unread count:", total_unread)
+            return total_unread
         except Exception as e:
             print("Erro em get_unread_count", e)
             return 0
@@ -141,26 +164,35 @@ class GenericTrayApp:
             print("Current unread count:", self.prev_unread)
             label = f"{self.prev_unread}"
             self.indicator.set_label(label, self.title)
+            self.indicator.set_menu(self.build_menu())
+            # changes the icon if there are unread emails
+            if self.prev_unread > 0:
+                self.indicator.set_icon("gmail-tray-unread")
+                self.indicator.set_status(AppIndicator.IndicatorStatus.ATTENTION)
             return True
         except Exception as e:
             print("Erro em update_label-->", e)
             self.indicator.set_label("?", self.title)
             return False
-    
 
-    def notify_new_mail(self, count) -> None:
+    def display_users_unread(self) -> None:
+        print("Displaying users unread counts:")
+        for user, unread in self.users:
+            print(f"User: {user}, Unread: {unread}")
+            self.notify_new_mail(unread, user)
+
+    def notify_new_mail(self, count, user=None) -> None:
         print(f"New mail notification: {count} new email(s)")
         try:
-            print("Using dunstify for notification...")
-            subprocess.run([
-                "dunstify", "-a", "Gmail", "-u", "normal",
-                "-I", self.icon, "-c", "gmail", "-t", "1000", 
-                "-h", "string:x-dunst-stack-tag:gmail",
-                f"{count} new email(s)"
+            subprocess.run(["notify-send",
+                            "-a", "Gmail",
+                            "-u", "normal",
+                            "-t", "2000",
+                            "-i", self.icon,
+                            f"{count} new Gmail message(s)" if user is None else f"{count} new Gmail message(s) for {user}"
             ])
         except FileNotFoundError:
-            print("dunstify not found, using notify-send instead.")
-            subprocess.run(["notify-send", f"> {count} new Gmail message(s)"])
+            print("notify-send not found.")
         except Exception as e:
             print("Erro em notify_new_mail", e)
 

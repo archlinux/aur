@@ -194,3 +194,6 @@ cython_debug/
 .cursorindexingignore
 pkg/
 src/
+*.tar.*.gz
+*.zip
+*.tar.zst

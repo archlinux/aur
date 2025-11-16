@@ -5,6 +5,4 @@ Hidden=false
 Icon=gmail-tray
 Name=Gmail Tray
 NoDisplay=false
-Terminal=false
 Type=Application
-X-GNOME-Autostart-enabled=true
