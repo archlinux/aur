@@ -1,6 +1,6 @@
 pkgbase = qbittorrent-enhanced-appimage
 	pkgdesc = A bittorrent client powered by C++, Qt and the good libtorrent library (Enhanced Edition)
-	pkgver = 5.1.2.10
+	pkgver = 5.1.3.10
 	pkgrel = 1
 	url = https://github.com/c0re100/qBittorrent-Enhanced-Edition
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = qbittorrent-enhanced-appimage
 	conflicts = qbittorrent
 	options = !strip
 	options = !debug
-	source = https://github.com/c0re100/qBittorrent-Enhanced-Edition/raw/refs/heads/v5_0_x/COPYING
+	source = https://github.com/c0re100/qBittorrent-Enhanced-Edition/raw/release-5.1.3.10/COPYING
 	sha256sums = e675cd856f9817474455200ba7e6f5b7cc42d6598a5eecbbbdaa0e6fd304d6b7
-	source_x86_64 = qbittorrent-enhanced-5.1.2.10.AppImage::https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases/download/release-5.1.2.10/qBittorrent-Enhanced-Edition-x86_64.AppImage
-	sha256sums_x86_64 = e9257774385715e14c39e04b977a74fd792716d046a3c0fe1ddc2a9cadfb94e3
+	source_x86_64 = qbittorrent-enhanced-5.1.3.10.AppImage::https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases/download/release-5.1.3.10/qBittorrent-Enhanced-Edition-x86_64.AppImage
+	sha256sums_x86_64 = 29ff41b282ce8c30251bdedd6d4f34ed00e49e349b1a5580ac11c0d5a2b25837
 
 pkgname = qbittorrent-enhanced-appimage

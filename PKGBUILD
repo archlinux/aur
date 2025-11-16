@@ -3,7 +3,7 @@
 
 _pkgname="qbittorrent-enhanced"
 pkgname="${_pkgname}"-appimage
-pkgver=5.1.2.10
+pkgver=5.1.3.10
 pkgrel=1
 pkgdesc="A bittorrent client powered by C++, Qt and the good libtorrent library (Enhanced Edition)"
 arch=('x86_64')
@@ -11,20 +11,19 @@ url="https://github.com/c0re100/qBittorrent-Enhanced-Edition"
 license=('GPL-2.0-or-later AND GPL-3.0-or-later AND custom')
 options=('!strip' '!debug')
 depends=('fuse2' 'hicolor-icon-theme' 'zlib')
-provides=("qbittorrent")
-conflicts=("qbittorrent")
-
-source=("$url/raw/refs/heads/v5_0_x/COPYING")
+provides=('qbittorrent')
+conflicts=('qbittorrent')
+source=("$url/raw/release-$pkgver/COPYING")
 source_x86_64=(
     "${_pkgname}-${pkgver}.AppImage::${url}/releases/download/release-${pkgver}/qBittorrent-Enhanced-Edition-x86_64.AppImage"
 )
 
 sha256sums=('e675cd856f9817474455200ba7e6f5b7cc42d6598a5eecbbbdaa0e6fd304d6b7')
-sha256sums_x86_64=('e9257774385715e14c39e04b977a74fd792716d046a3c0fe1ddc2a9cadfb94e3')
+sha256sums_x86_64=('29ff41b282ce8c30251bdedd6d4f34ed00e49e349b1a5580ac11c0d5a2b25837')
 
 prepare () {
     chmod +x "${_pkgname}-${pkgver}.AppImage"
-    ./${_pkgname}-${pkgver}.AppImage --appimage-extract
+    "./${_pkgname}-${pkgver}.AppImage" --appimage-extract
 }
 
 package() {
