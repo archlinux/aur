@@ -4,7 +4,7 @@
 
 pkgname=python-fastavro
 _name=${pkgname#python-}
-pkgver=1.11.1
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="Fast read/write of AVRO files"
 arch=("any")
@@ -13,7 +13,7 @@ license=("MIT")
 depends=("glibc" "python" "python-cramjam" "python-lz4" "python-snappy" "python-zstandard")
 makedepends=("cython" "python-build" "python-installer" "python-setuptools" "python-wheel")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-b2sums=('42ca8d873ba8dfde82efd681ac3ec124eae8bbe41e574d962885dba4c5641da139375cfb7b6ed3c000d9d3fb91920625315281987f55e2a8d18d772784dc64c1')
+b2sums=('2ebd733e12141b5bcfaf21166a4ce86073084ba52a9430594516b745a25c0719e4bb54705dd904e69fd270cd7737aa03ae7ced1ba9ed72e68f6c8a2f21200070')
 
 build(){
  cd "$_name-$pkgver"
