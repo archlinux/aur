@@ -9,7 +9,7 @@ url="https://github.com/raula09/NoctuneMusicPlayer"
 license=('MIT')
 depends=('ffmpeg' 'libvlc' 'vlc')
 makedepends=('unzip')
-options=('!strip' '!debug' '!compress')
+options=('!strip' '!debug')
 source=(
     "$pkgname-$pkgver.zip::https://github.com/raula09/NoctuneMusicPlayer/releases/download/v$pkgver/Noctune-linux-x64.zip"
     "noctune.desktop"
