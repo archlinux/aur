@@ -1,4 +1,4 @@
-# Maintainer: Rafael Baboni Dominiquini <rafaeldominiquini@gmail.com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgauthor=laktak
 _pkgname=rsyncy
