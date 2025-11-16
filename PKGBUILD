@@ -2,7 +2,7 @@
 
 pkgname=angie-mod-njs
 pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc='nginScript module for angie'
 arch=('x86_64')
 depends=('angie' 'libxslt')
