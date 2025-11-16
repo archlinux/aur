@@ -1,7 +1,7 @@
 pkgname=twintaillauncher-bin
 _pkgname="${pkgname%-bin}"
 pkgver=1.1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform launcher for your anime games"
 arch=('x86_64')
 url="https://github.com/TwintailTeam/TwintailLauncher"
@@ -19,7 +19,6 @@ package() {
   install -Dm755 usr/bin/twintaillauncher -t "$pkgdir/usr/bin"
   install -Dm755 usr/lib/twintaillauncher/resources/mangohud_default.conf -t "$pkgdir/usr/lib/twintaillauncher/resources"
   install -Dm755 usr/lib/twintaillauncher/resources/7zr -t "$pkgdir/usr/lib/twintaillauncher/resources"
-  install -Dm755 usr/lib/twintaillauncher/resources/krpatchz -t "$pkgdir/usr/lib/twintaillauncher/resources"
   install -Dm755 usr/lib/twintaillauncher/resources/hpatchz -t "$pkgdir/usr/lib/twintaillauncher/resources"
   install -Dm755 usr/lib/twintaillauncher/resources/reaper -t "$pkgdir/usr/lib/twintaillauncher/resources"
   install -Dm644 usr/lib/twintaillauncher/resources/hkrpg_patch.dll -t "$pkgdir/usr/lib/twintaillauncher/resources"

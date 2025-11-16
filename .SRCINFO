@@ -1,7 +1,7 @@
 pkgbase = twintaillauncher-bin
 	pkgdesc = A multi-platform launcher for your anime games
 	pkgver = 1.1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TwintailTeam/TwintailLauncher
 	arch = x86_64
 	license = GPL-3.0-only
