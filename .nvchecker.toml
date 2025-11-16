@@ -1,0 +1,5 @@
+[zerus-bin]
+source = "github"
+github = "wcampbell0x2a/zerus"
+use_latest_release = true
+prefix = "v"
