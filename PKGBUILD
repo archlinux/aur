@@ -28,7 +28,7 @@ build() {
         -DCMAKE_C_FLAGS="-include stdint.h" \
         -DCMAKE_CXX_FLAGS="-include stdint.h" \
         ..
-  cmake --build . -- -j"$(nproc)"
+  cmake --build .
 }
 
 package() {
