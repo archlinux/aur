@@ -18,8 +18,8 @@ optdepends=('ffmpeg: H264/AAC/MP3 decoding'
 source_x86_64=("glide.linux-x86_64-${pkgver}.tar.xz::${url}/releases/download/${pkgver}/glide.linux-x86_64.tar.xz")
 source_aarch64=("glide.linux-aarch64-${pkgver}.tar.xz::${url}/releases/download/${pkgver}/glide.linux-aarch64.tar.xz")
 #sha256sums=('62d62511f6fa4d756564e08b91473c523fd7011d') # Replace with actual checksum
-sha256sums_x86_64=('b54fa8e982ad94e5fdac34014bc3893afdcd36593f98cd7891e2070d53cee447')
-sha256sums_aarch64=('17ada684144a94d70d28b1c17cef5c592047d10c6f9c3d6cc449ce1f7a0b2fc1')
+sha256sums_x86_64=('470f396fef5e6a233db335a9619885ec5a8963b3a99623b0b74f7f73c5169469')
+sha256sums_aarch64=('0a879e34238203c981f7b27b191a14bea1832400867d0867767d7aa3de6c3c63')
 
 package() {
 # Create directories
