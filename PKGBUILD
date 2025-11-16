@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Your Name <niumination.github.io>
 pkgname=niu-speedtest
 pkgver=1.0.0
 pkgrel=1
