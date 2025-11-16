@@ -10,7 +10,7 @@ arch=("any")
 provides=("shinobi")
 depends=("ffmpeg" "nodejs")
 makedepends=("npm" "git")
-optdepents=("mariadb: database"
+optdepends=("mariadb: database"
             "postgresql: database"
            )
 source=("git+https://gitlab.com/Shinobi-Systems/Shinobi.git"
