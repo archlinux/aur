@@ -1,6 +1,6 @@
 pkgbase = python-os-ken
 	pkgdesc = A component-based software defined networking framework for OpenStack
-	pkgver = 2.10.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://opendev.org/openstack/os-ken
 	arch = any
@@ -14,9 +14,8 @@ pkgbase = python-os-ken
 	checkdepends = python-pylint
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = tar
+	makedepends = git
 	depends = python
 	depends = python-pbr
 	depends = python-eventlet
@@ -30,11 +29,11 @@ pkgbase = python-os-ken
 	depends = python-lxml
 	depends = python-greenlet
 	depends = python-testscenarios
-	depends = python-setuptools
 	depends = python-testtools
 	depends = python-sqlalchemy1.4
 	depends = mininet
-	source = python-os-ken-2.10.0.tar.gz::https://opendev.org/openstack/os-ken/archive/2.10.0.tar.gz
-	b2sums = e375cae3883dbd08ac3386e413496f6c0f96ed5b4618ac035946b469e80a8ded1590e3b463a820f84705e884db475ade214bb3be83a324ee6f1d1f0586cde32a
+	depends = python-setuptools
+	source = python-os-ken-4.0.0::git+https://opendev.org/openstack/os-ken.git#tag=4.0.0
+	b2sums = efa41b5e5533214c77285c25cce54bc04603308ffcdcb73f806ee8e5a174c04129f66b1dfd5077352ce787cd1f893f973a5abd0096845e8b52b4abf01f35a0f2
 
 pkgname = python-os-ken
