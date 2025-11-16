@@ -1,7 +1,7 @@
 pkgbase = python-confluent-kafka
 	pkgdesc = Confluent's Python client for Apache Kafka
-	pkgver = 2.10.0
-	pkgrel = 2
+	pkgver = 2.12.2
+	pkgrel = 1
 	url = https://github.com/confluentinc/confluent-kafka-python
 	changelog = CHANGELOG.md
 	arch = x86_64
@@ -33,8 +33,14 @@ pkgbase = python-confluent-kafka
 	depends = python-attrs
 	depends = python-cachetools
 	depends = python-httpx
-	noextract = python-confluent-kafka-2.10.0.tar.gz
-	source = python-confluent-kafka-2.10.0.tar.gz::https://api.github.com/repos/confluentinc/confluent-kafka-python/tarball/refs/tags/v2.10.0
-	b2sums = a8ecaacaf6aeca70153fd1f847832c436b7eaecc67bd8075190419d70d5b16bf3999562cddd4df3769ac4c2c82b336b4199fd02164282ce5fe23d3217a7c8e4c
+	depends = python-authlib
+	depends = python-certifi
+	depends = python-googleapis-common-protos
+	depends = python-botocore
+	depends = python-orjson
+	depends = python-referencing
+	noextract = python-confluent-kafka-2.12.2.tar.gz
+	source = python-confluent-kafka-2.12.2.tar.gz::https://api.github.com/repos/confluentinc/confluent-kafka-python/tarball/refs/tags/v2.12.2
+	b2sums = 992fffb41c0cd42ee59f0a0692a8aa9ddc4fa4de9c649bc0834c3bf0f61a1c3be16a46c96ff36d947613b1f3b1037f8ba4be9e5fd08f5f8889e898654ee125c7
 
 pkgname = python-confluent-kafka

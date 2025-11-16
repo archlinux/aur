@@ -2,8 +2,8 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-confluent-kafka
-pkgver=2.10.0
-pkgrel=2
+pkgver=2.12.2
+pkgrel=1
 pkgdesc="Confluent's Python client for Apache Kafka"
 arch=(x86_64)
 url="https://github.com/confluentinc/confluent-kafka-python"
@@ -28,6 +28,12 @@ depends=(
     'python-attrs'
     'python-cachetools'
     'python-httpx'
+    'python-authlib'
+    'python-certifi'
+    'python-googleapis-common-protos'
+    'python-botocore'
+    'python-orjson'
+    'python-referencing'
 )
 makedepends=(
     'python-build'
@@ -42,7 +48,7 @@ makedepends=(
 changelog="CHANGELOG.md"
 source=("$pkgname-$pkgver.tar.gz::https://api.github.com/repos/confluentinc/confluent-kafka-python/tarball/refs/tags/v$pkgver")
 noextract=("$pkgname-$pkgver.tar.gz")
-b2sums=('a8ecaacaf6aeca70153fd1f847832c436b7eaecc67bd8075190419d70d5b16bf3999562cddd4df3769ac4c2c82b336b4199fd02164282ce5fe23d3217a7c8e4c')
+b2sums=('992fffb41c0cd42ee59f0a0692a8aa9ddc4fa4de9c649bc0834c3bf0f61a1c3be16a46c96ff36d947613b1f3b1037f8ba4be9e5fd08f5f8889e898654ee125c7')
 
 prepare() {
     tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
