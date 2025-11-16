@@ -1,15 +1,15 @@
 pkgbase = makeself-git
 	pkgdesc = Utility to create self-extracting packages
-	pkgver = 2.4.2_4_g39da42d
+	pkgver = 2.6.0.r4.ga9d64f3
 	pkgrel = 1
-	url = http://megastep.org/makeself
+	url = https://makeself.io/
 	arch = any
-	license = GPLv2
+	license = GPL-2.0-or-later
 	makedepends = git
 	depends = bash
+	provides = makeself
 	conflicts = makeself
-	source = makeself-git::git://github.com/megastep/makeself.git
+	source = makeself-git::git+https://github.com/megastep/makeself.git
 	sha256sums = SKIP
 
 pkgname = makeself-git
-
