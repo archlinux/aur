@@ -2,27 +2,22 @@
 
 pkgbase=angie
 pkgname=(angie angie-src)
-pkgver=1.10.2
+pkgver=1.10.3
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/webserver-llc/angie"
 license=('BSD')
 makedepends=(pcre2 zlib openssl geoip mailcap libxcrypt)
 #checkdepends=(perl perl-gd perl-io-socket-ssl perl-fcgi perl-cache-memcached memcached ffmpeg)
-source=(https://download.angie.software/files/$pkgbase-$pkgver.tar.gz{,.asc}
+source=(https://download.angie.software/files/$pkgbase-$pkgver.tar.gz
         angie.service
         logrotate
         https://angie.software/keys/angie-signing.gpg)
-validpgpkeys=(
-  'EB8EAF3D4EF1B1ECF34865A2617AB978CB849A76' # Angie (Signing Key) <devops@tech.wbsrv.ru>
-)
-sha512sums=('35fb640384c8710057c004cc1a4b0b4639a7df953e3e9ba0b95d096170a2f131d26d1cb0a70371948169f89d4d7b9448bb4923341d5bc479d819a32984cd1ea0'
-            'SKIP'
+sha512sums=('a47771dfad8ed137830e8e9236ae30b77cff6d0654d444298049e6faffecb3bd33c84b03974afb0858c8698ceeca9a472db2d971453c76b65b4a69057078becb'
             '65e3ba379411c638db6ac506b08efc118c975b00f65ed43c8af9d45d564711d55520bf56524e787df31a9b7dc65af4c7454b3b9baf2f8f013a44d9087be53a51'
             '2f4dfcfa711b8bcbc5918ba635f5e430ef7132e66276261ade62bb1cba016967432c8dce7f84352cb8b07dc7c6b18f09177aa3eb92c8e358b2a106c8ca142fe9'
             'f3e2b68cfae760fd04ad4829834bf562bb65a9204e2c83798550b4e53a12f532c878148b2c675370f9fef069b58b68e5b99b3b6fe6fe4f4e046ad61bab538c74')
-b2sums=('f8483f3f2c80053ae1e710934e396ae7d21193075f6aaef796ed98729e21accc2c97b31489b24c809adbb59419067b1f3f1d51058ee3c86faea10e58667b96c4'
-        'SKIP'
+b2sums=('b43c8ff28f1c376690dbfcb8e5ccae3deb9767a16106160ebb28a31585d343d4ab94acde4b42c3de80315ebce717d3d5bd1fe6e04a718f02c17faf1bee663d05'
         '27619a4a3ca0c1b977c54c8ba99fa19abebef37e8eff7c211567e47a98b80ce038f7ec20b7ec936aa0f8945a16fe064cf1fe58d68db3d493f4f63d057d5bf007'
         'e1755f61b4eaece83c6c22e48f9e5e316851d1dc35f8d770f837c7d3c8bdc894af1b697c25f1788ac50cd597085c22fb9bf8096a55ecf7659d63185f68ba2d8a'
         '7957894d9973ddc8ca44a3ac1844eefbf71f2681ae57d51fcdd0ca570c0cafbb027d05fa2b288d695e7069eb26600d0099cc354fcc4b9061971243b384edd01a')
