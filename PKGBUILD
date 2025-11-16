@@ -3,7 +3,7 @@
 
 pkgname='openwebrx-plus'
 _pkgname='openwebrx'
-pkgver='1.2.97'
+pkgver='1.2.98'
 pkgrel='1'
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
@@ -26,6 +26,7 @@ optdepends=(
     'js8call: decode JS8'
     'dream-nox: decode DRM broadcasts'
     'dump1090: decode Mode-S and ADS-B traffic'
+    'dump978: decoding UAT airplane communications'
     'rtl_433: decode various signals in the ISM bands'
     'dumphfdl: decoding HFDL airplane communications'
     'dumpvdl2-git: decoding VDL Mode 2 airplane communications'
@@ -37,7 +38,7 @@ optdepends=(
     'dablin: decode DAB broadcast signals'
     'satdump: receive weather satellite transmissions'
     'nrsc5: decode HDRadio broadcasts'
-    'csdr-cwskimmer: decode multiple CW signals at once'
+    'csdr-skimmer: decode multiple CW signals at once'
     # tools
     'imagemagick: automatically convert received images to the PNG format'
     'sox: sound processing tools'
@@ -74,7 +75,7 @@ source=(
     'openwebrx-plus.tmpfiles'
 )
 sha256sums=(
-    '78278b59078bb891347da754b59a11c06a214e0ed1cc1b4ab53dfc9cfdc9234e'
+    '1d73f7c6ed0b7391c233742a9dcc4d65a7523d5b10da91b6efcd23b9496657ce'
     '4ec6dec1df40a1f3db62a2add760f97cf870d65a2c1d5b63cd9b22704754f997'
     'eea488bd3f4c76b46bffbf3c88691818f93ad73db98c18659856d1690b0deade'
 )
