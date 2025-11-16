@@ -115,7 +115,13 @@ build() {
   
   eval "cmake .. $CMAKE_ARGS"
   
-  make -j$(nproc)
+  make -j$(nproc) space-calibrator openvr_spacecalibrator_driver
+  
+  if make -j$(nproc) register-overlay 2>/dev/null; then
+    echo "register-overlay built successfully"
+  else
+    echo "register-overlay build skipped (optional utility)"
+  fi
 }
 
 package() {
