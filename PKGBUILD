@@ -21,7 +21,7 @@ options=(!strip)
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
-source_x86_64=("https://github.com/Jelmerro/Vieb/releases/download/${pkgver}/${_pkgname}-${pkgver}.pacman")
+source_x86_64=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.pacman")
 sha512sums=('d361e5e8201481c6346ee6a886592c51265112be550d5224f1a7a6e116255c2f1ab8788df579d9b8372ed7bfd19bac4b6e70e00b472642966ab5b319b99a2686'
             'bd1fa731b5379466b0f5f138f0abb689c5ba259778328d289624ec1d31f190eba28413230d182b001af713afa6e288f304016ec1b3b5a92293f5dea78fc4a0dd')
 sha512sums_x86_64=('480d464a291bda8e311bda6c6abae564a97bfd1044009372b4146060ed0a450f42ea6f9642579c373eac73165a11f3007752746be41a8c943c6a6f7aef166d9b')
