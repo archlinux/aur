@@ -8,11 +8,11 @@ pkgbase = i2p-browser
 	makedepends = unzip
 	depends = glibc
 	depends = bash
-	source = https://download.i2p2.de/i2pbrowser/linux/i2p-browser-linux64-2.5.0.zip
+	source = i2p-browser.tar.xz::https://download.i2p2.de/releases/i2pbrowser/2.5.0/i2p-browser-linux64-2.5.0.tar.xz
+	source = i2p-browser.tar.xz::https://mirror.cyberbits.eu/i2p/releases/i2pbrowser/2.5.0/i2p-browser-linux64-2.5.0.tar.xz
+	source = i2p-browser.tar.xz::https://mirror2.i2p2.no/releases/i2pbrowser/2.5.0/i2p-browser-linux64-2.5.0.tar.xz
 	source = i2p-browser.sh
 	source = i2p-browser.desktop
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = i2p-browser

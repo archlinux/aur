@@ -8,12 +8,12 @@ license=('GPL3')
 depends=('glibc' 'bash')
 makedepends=('unzip')
 install=
-source=("https://download.i2p2.de/i2pbrowser/linux/i2p-browser-linux64-${pkgver}.zip"
+source=("i2p-browser.tar.xz::https://download.i2p2.de/releases/i2pbrowser/${pkgver}/i2p-browser-linux64-${pkgver}.tar.xz"
+        "i2p-browser.tar.xz::https://mirror.cyberbits.eu/i2p/releases/i2pbrowser/${pkgver}/i2p-browser-linux64-${pkgver}.tar.xz"
+        "i2p-browser.tar.xz::https://mirror2.i2p2.no/releases/i2pbrowser/${pkgver}/i2p-browser-linux64-${pkgver}.tar.xz"
         "i2p-browser.sh"
         "i2p-browser.desktop")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=('SKIP')
 
 package() {
     install -d "$pkgdir/opt/i2p-browser"
