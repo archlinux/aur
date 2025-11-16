@@ -1,8 +1,8 @@
 # Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
 
 pkgname=minc-bin
-pkgver=0.0.11
-pkgrel=2
+pkgver=0.1.0
+pkgrel=1
 pkgdesc="MicroShift in Container"
 arch=("x86_64")
 url="https://github.com/minc-org/minc"
