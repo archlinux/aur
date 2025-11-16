@@ -354,7 +354,8 @@
 			"terminalShellEnv"
 		],
 		"ms-python.vscode-python-envs": [
-			"terminalShellEnv"
+			"terminalShellEnv",
+			"terminalDataWriteEvent"
 		],
 		"ms-dotnettools.dotnet-interactive-vscode": [
 			"notebookMessaging"
@@ -462,13 +463,14 @@
 			"contribMultiDiffEditorMenus",
 			"contribShareMenu",
 			"diffCommand",
-			"languageModelDataPart",
 			"languageModelToolResultAudience",
+			"markdownAlertSyntax",
 			"quickDiffProvider",
 			"remoteCodingAgents",
 			"shareProvider",
 			"tabInputTextMerge",
 			"tokenInformation",
+			"treeItemMarkdownLabel",
 			"treeViewMarkdownMessage"
 		],
 		"GitHub.copilot": [
@@ -518,7 +520,6 @@
 			"chatReferenceBinaryData",
 			"languageModelSystem",
 			"languageModelCapabilities",
-			"languageModelDataPart",
 			"languageModelThinkingPart",
 			"chatStatusItem",
 			"taskProblemMatcherStatus",
@@ -632,6 +633,13 @@
 		],
 		"Microsoft.foundry-local-chat": [
 			"chatProvider"
+		],
+		"ms-wmcp.windows-mcp-server-extension": [
+			"mcpToolDefinitions"
+		],
+		"openai.chatgpt": [
+			"languageModelProxy",
+			"chatSessionsProvider"
 		]
 	},
 	"tasConfig": {
