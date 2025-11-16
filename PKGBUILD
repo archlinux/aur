@@ -3,7 +3,7 @@
 pkgname=orchestrator
 pkgver=3.2.6
 _pkgrelease=18
-pkgrel=1
+pkgrel=2
 pkgdesc='MySQL replication topology management and HA'
 arch=(x86_64)
 url='https://github.com/percona/orchestrator'
@@ -39,13 +39,11 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver-$_pkgrelease"
-  install -d "$pkgdir/usr/share/$pkgname"
   install -d "$pkgdir/usr/bin"
   install -Dm755 bin/$pkgname "$pkgdir/usr/share/$pkgname/$pkgname"
   ln -s /usr/share/$pkgname/$pkgname "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  rsync -qa conf/ "$pkgdir/usr/share/$pkgname/"
-  rsync -qa resources "$pkgdir/usr/share/$pkgname/"
-  install -d "$pkgdir/usr/lib/systemd/system"
-  install -Dm644 etc/systemd/orchestrator.service -t "$pkgdir/usr/lib/systemd/system/orchestrator.service"
+  cp -a conf/orchestrator-sample*.json "$pkgdir/usr/share/$pkgname/"
+  cp -a resources "$pkgdir/usr/share/$pkgname/"
+  install -Dm644 etc/systemd/orchestrator.service -t "$pkgdir/usr/lib/systemd/system/"
 }

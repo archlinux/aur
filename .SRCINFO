@@ -1,7 +1,7 @@
 pkgbase = orchestrator
 	pkgdesc = MySQL replication topology management and HA
 	pkgver = 3.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/percona/orchestrator
 	arch = x86_64
 	license = Apache-2.0
