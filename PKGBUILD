@@ -87,7 +87,7 @@ source=(
   0005-source-firefox-language-packs.patch
   )
 sha256sums=('SKIP'
-            '17f1dc1ece789ee81f1a3e9ee9bc7619de3a5481e802d83f2a3160f2f60c3957'
+            'eac4722ed259008d73006c4894c18d2871702c661d14e27505812351df62806b'
             'SKIP'
             '523fba56892357a1b37811021e06d548cb94af58948294a436c566581e7454a9'
             '36bff2af04da55da0cc71f960d921889ccf21c11fcd8343087c144dfcc50f10a'
