@@ -1,7 +1,7 @@
 pkgbase = clara-verse
 	pkgdesc = A privacy-first, All in one AI workspace featuring LLMs, ComfyUI, n8n, and more
-	pkgver = 0.3.1-beta
-	pkgrel = 1
+	pkgver = 0.3.1
+	pkgrel = 2
 	url = https://github.com/claraverse-space/ClaraVerse
 	arch = x86_64
 	license = MIT
