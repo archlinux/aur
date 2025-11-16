@@ -1,0 +1,8 @@
+# Blacklist:
+*
+
+# Whitelist:
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!stardew-valley.desktop
