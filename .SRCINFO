@@ -1,0 +1,18 @@
+pkgbase = sysc-walls
+	pkgdesc = A terminal screensaver, designed in Go and built for Wayland
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Nomadcxx/sysc-walls
+	install = sysc-walls.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.24
+	makedepends = git
+	depends = kitty
+	depends = wayland
+	optdepends = syscgo: Animation library for effects
+	source = sysc-walls-1.0.0.tar.gz::https://github.com/Nomadcxx/sysc-walls/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = sysc-walls

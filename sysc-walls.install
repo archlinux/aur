@@ -1,0 +1,50 @@
+post_install() {
+    cat << 'EOF'
+
+ ▄▄▄▄▄▄▄ ▄▄    ▄▄   ▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄     ▄▄ ▄▄    ▄▄  ▄▄▄▄▄▄  ▄▄        ▄▄
+██▀▀▀▀▀▀ ██▄  ▄██  ██▀▀▀▀▀▀ ██▀▀▀▀▀▀    ▄██ ██    ██ ██▀▀▀▀██ ██        ██
+▀██████▄  ▀████▀   ▀██████▄ ██        ▄██▀  ██▄██▄██ ██▄▄▄▄██ ██        ██
+▄▄▄▄▄▄██    ██     ▄▄▄▄▄▄██ ██▄▄▄▄▄▄ ██▀    ███▀▀███ ██▀▀▀▀██ ██▄▄▄▄▄▄  ██▄▄▄▄▄▄
+▀▀▀▀▀▀▀     ▀▀     ▀▀▀▀▀▀▀   ▀▀▀▀▀▀▀ ▀▀     ▀▀    ▀▀ ▀▀    ▀▀ ▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀
+
+INSTALLATION COMPLETE
+
+To enable the screensaver service:
+    systemctl --user enable sysc-walls.service
+    systemctl --user start sysc-walls.service
+
+To test without enabling:
+    sysc-walls-daemon -test
+
+Configuration file:
+    ~/.config/sysc-walls/daemon.conf
+    (Created on first run)
+
+For custom ASCII art, install sysc-Go:
+    https://github.com/Nomadcxx/sysc-Go
+
+EOF
+}
+
+post_upgrade() {
+    cat << 'EOF'
+
+SYSC-WALLS UPGRADED
+
+Restart the service to apply changes:
+    systemctl --user restart sysc-walls.service
+
+EOF
+}
+
+post_remove() {
+    cat << 'EOF'
+
+SYSC-WALLS REMOVED
+
+To fully clean up:
+    systemctl --user disable sysc-walls.service
+    rm -rf ~/.config/sysc-walls/
+
+EOF
+}
