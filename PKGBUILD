@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=walker-git
-pkgver=r1622.2058de1
+pkgver=r1664.c0d0006
 pkgrel=2
 pkgdesc='wayland application runner (git version)'
 url='https://github.com/abenz1267/walker'
@@ -44,6 +44,7 @@ package() {
     install -Dm 644 item_files.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
     install -Dm 644 item_providerlist.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
     install -Dm 644 item_symbols.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
+    install -Dm 644 item_symbols_grid.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
     install -Dm 644 item_archlinuxpkgs.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
     install -Dm 644 item_todo.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
     install -Dm 644 item_unicode.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
