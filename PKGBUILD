@@ -1,7 +1,7 @@
 # Maintainer: Raul <raul09alazovi@gmail.com>
 
 pkgname=noctune
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A modern local music player with a Spotify-inspired UI. Built with Avalonia and LibVLC."
 arch=('x86_64')
