@@ -2,7 +2,7 @@
 pkgname=collapseloader-bin
 pkgver=0.2.3
 _commit=2813cef
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI utility for launching Minecraft clients (binary)"
 arch=('x86_64')
 url="https://github.com/dest4590/CollapseLoader"
