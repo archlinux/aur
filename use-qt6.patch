@@ -1,0 +1,31 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6df464c..a29e58c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -85,15 +85,14 @@ ENDIF()
+ ###### BEGIN: QT configuration
+ ####################
+ 
+-FIND_PROGRAM(qmake_executable NAMES qmake qmake.exe)
+ EXECUTE_PROCESS(COMMAND
+-    bash -c "${qmake_executable} --version | grep -iE '^using qt version [0-9.]+' | awk '{print $4}'"
++    bash -c "qmake6 --version | grep -iE '^using qt version [0-9.]+' | awk '{print $4}'"
+     OUTPUT_VARIABLE DETECTED_QT_VERSION
+     OUTPUT_STRIP_TRAILING_WHITESPACE)
+ MESSAGE("Qt version: ${DETECTED_QT_VERSION}")
+ 
+ EXECUTE_PROCESS(COMMAND
+-    bash -c "qmake --version|grep -iE '^using qt version [0-9]'|awk '{print $4}'|grep -iE '^[0-9]'|awk -F . '{print $1}'"
++    bash -c "qmake6 --version|grep -iE '^using qt version [0-9]'|awk '{print $4}'|grep -iE '^[0-9]'|awk -F . '{print $1}'"
+     OUTPUT_VARIABLE QT_VERSION_MAJOR
+     OUTPUT_STRIP_TRAILING_WHITESPACE)
+ MESSAGE("QT_VERSION_MAJOR: ${QT_VERSION_MAJOR}")
+@@ -583,7 +582,7 @@ ENDIF()
+ IF (${CMAKE_SYSTEM_NAME} MATCHES "Linux" OR ${CMAKE_SYSTEM_NAME} MATCHES "BSD")
+ IF(QT_VERSION_MAJOR EQUAL 6)
+     FIND_PACKAGE(Qt6 COMPONENTS DBus REQUIRED)
+-    TARGET_LINK_LIBRARIES(seadrive-gui PRIVATE Qt6::DBus)
++    TARGET_LINK_LIBRARIES(seadrive-gui Qt6::DBus)
+ ELSE()
+     TARGET_LINK_LIBRARIES(seadrive-gui ${QT_QTDBUS_LIBRARIES})
+     QT5_USE_MODULES(seadrive-gui ${USE_QT_LIBRARIES})
