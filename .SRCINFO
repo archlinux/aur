@@ -1,6 +1,6 @@
 pkgbase = rcfvt-git
 	pkgdesc = my own crappy terminal emulator
-	pkgver = r52.4ac15e8
+	pkgver = r66.d390d61
 	pkgrel = 1
 	url = https://github.com/r-c-f/rcfvt
 	arch = x86_64
@@ -20,4 +20,3 @@ pkgbase = rcfvt-git
 	md5sums = SKIP
 
 pkgname = rcfvt-git
-

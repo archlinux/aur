@@ -1,7 +1,7 @@
 # Maintainer: Ryan Farley <ryan.farley@gmx.com>
 
 pkgname=rcfvt-git
-pkgver=r52.4ac15e8
+pkgver=r66.d390d61
 pkgrel=1
 pkgdesc="my own crappy terminal emulator"
 arch=(x86_64 armv7h)
