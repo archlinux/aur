@@ -1,20 +1,20 @@
 # Maintainer: Boris Barbulovski <bbarbulovski@gmail.com>
 pkgname='cfrds'
-pkgver='0.9.4'
-pkgrel=2
+pkgver='0.9.5'
+pkgrel=1
 pkgdesc='Client side ColdFusion RDS protocol.'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url='https://github.com/bokic/cfrds'
 license=('MIT')
 makedepends=('cmake' 'ninja' 'gcc' 'pkgconf')
-depends=('glibc')
+depends=('glibc' 'gcc-libs')
 
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/bokic/$pkgname/archive/refs/tags/${pkgver}.tar.gz"
 )
 
 sha512sums=(
-    '8462a9e99798ced613e771d6ea117496ceaf84422b0750ab144dc95dbcb3631b5534e48d9f20dd48099ea4f7f10ad0fb29285b169ef08ab5c403f131492ccb53'
+    '3c891828f27715bafcf2ecc9e487ecc91af8bed35491f4a6a0f366eb41d9fb45f231782228030a1d48f33ed3b564036a9adfb366f03168d16e5b2cfcf11cbc74'
 )
 
 build() {
