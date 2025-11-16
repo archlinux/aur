@@ -2,13 +2,13 @@
 # Contributor: Jonas Karlsson
 
 pkgname=puzzlemoppet-git
-pkgver=r144.a8e4505
+pkgver=r151.209be0b
 pkgrel=1
 pkgdesc="A challenging 3D puzzle game where you must guide the Moppet through the vast and eternal void of space by solving the various and beautiful puzzles thrown at you"
 arch=('i686' 'x86_64')
 url="https://github.com/karjonas/Puzzle-Moppet"
 license=('WTFPL')
-depends=('irrlicht' 'ode' 'openal')
+depends=('irrlicht' 'ode' 'openal' 'freetype2')
 makedepends=('make' 'cmake' 'git' 'gendesk')
 conflicts=('puzzle-moppet-bin')
 source=(${pkgname}::git+https://github.com/karjonas/Puzzle-Moppet.git)
