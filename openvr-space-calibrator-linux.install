@@ -11,12 +11,9 @@ post_install() {
            [ -d "$user_home/.steam/steam/steamapps/common/SteamVR" ] || \
            [ -d "$user_home/.steam/root/steamapps/common/SteamVR" ]; then
             FOUND_STEAMVR=1
-            echo "Installing for user: $user"
-            if command -v runuser >/dev/null 2>&1; then
-                runuser -l "$user" -c "/usr/bin/openvr-space-calibrator-install '$user_home'" || true
-            else
-                su - "$user" -c "/usr/bin/openvr-space-calibrator-install '$user_home'" || true
-            fi
+            echo "Installing for user: $user (home: $user_home)"
+            export USER_HOME="$user_home"
+            /usr/bin/openvr-space-calibrator-install "$user_home" || true
         fi
     done < <(getent passwd)
     
