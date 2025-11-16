@@ -8,6 +8,7 @@ pkgbase = sqly-bin
 	license = Apache-2.0
 	provides = sqly
 	conflicts = sqly
+	options = !strip
 	source_x86_64 = sqly-x86_64-0.14.1.deb::https://github.com/nao1215/sqly/releases/download/v0.14.1/sqly_0.14.1_linux_amd64.deb
 	sha256sums_x86_64 = 16b02e4427b068b4ffff7c09fad9866e88bdc36e73c2246a73ed5a438f9ebd16
 	source_aarch64 = sqly-aarch64-0.14.1.deb::https://github.com/nao1215/sqly/releases/download/v0.14.1/sqly_0.14.1_linux_arm64.deb
