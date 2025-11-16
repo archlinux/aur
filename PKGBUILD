@@ -2,7 +2,7 @@
 
 pkgname=dyna-git
 pkgver=0.1.1.r13.g96545ad
-pkgrel=2
+pkgrel=3
 pkgdesc='Convert a colorscheme from one terminal emulator to another.'
 arch=('x86_64')
 url='https://git.sr.ht/~grtcdr/dyna'
