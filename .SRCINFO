@@ -1,6 +1,6 @@
 pkgbase = python-ironic-lib
 	pkgdesc = A common library to be used exclusively by projects under the Ironic governance.
-	pkgver = 6.2.0
+	pkgver = 7.0.0
 	pkgrel = 1
 	url = https://opendev.org/openstack/ironic-lib
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-ironic-lib
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = tar
+	makedepends = git
 	depends = python
 	depends = python-oslo-concurrency
 	depends = python-oslo-config
@@ -19,7 +19,6 @@ pkgbase = python-ironic-lib
 	depends = python-zeroconf
 	depends = python-bcrypt
 	depends = python-webob
-	depends = python-tenacity
 	depends = python-keystonemiddleware
 	depends = python-oslo-messaging
 	depends = python-keystoneauth1
@@ -28,7 +27,7 @@ pkgbase = python-ironic-lib
 	depends = python-oslotest
 	depends = python-fixtures
 	depends = python-setuptools
-	source = python-ironic-lib-6.2.0.tar.gz::https://opendev.org/openstack/ironic-lib/archive/6.2.0.tar.gz
-	b2sums = 5274dedebedaaf0dc607da3926862b46d5793735f96ecd58c59802d7b4315e43fc10471702e6348dc0655e895bc40cb989e3ba1e2b463043346f9a088cde2bb9
+	source = python-ironic-lib-7.0.0::git+https://opendev.org/openstack/ironic-lib.git#tag=7.0.0
+	b2sums = 14a23aa27631a7110e8bb4ec6c29f4c5c908e495b609e5dcae7e3974784091419a3d9b351dbd1cf3d174e3b92132a9ce9386d77989e419f375a82f566f0c220b
 
 pkgname = python-ironic-lib
