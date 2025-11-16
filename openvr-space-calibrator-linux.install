@@ -49,20 +49,40 @@ post_upgrade() {
 }
 
 post_remove() {
-    echo "Removing Space Calibrator driver from SteamVR..."
+    echo "=========================================" >&2
+    echo "Space Calibrator post-remove hook running..." >&2
+    echo "=========================================" >&2
     
-    for user_home in $(getent passwd | cut -d: -f6); do
+    FOUND_STEAMVR=0
+    TMPFILE=$(mktemp 2>/dev/null || echo /tmp/passwd.$$)
+    if ! getent passwd > "$TMPFILE" 2>/dev/null; then
+        echo "WARNING: Could not get user list" >&2
+        rm -f "$TMPFILE"
+        return 0
+    fi
+    
+    while IFS=: read -r user _ _ _ _ user_home _; do
+        [ -z "$user" ] && continue
+        [ "$user" = "root" ] && continue
+        [ -z "$user_home" ] && continue
+        
         STEAMVR_DRIVERS_DIR="$user_home/.local/share/SteamVR/drivers/01spacecalibrator"
-    
-        if [ -d "$STEAMVR_DRIVERS_DIR" ]; then
-            rm -rf "$STEAMVR_DRIVERS_DIR"
+        
+        if [ ! -d "$STEAMVR_DRIVERS_DIR" ]; then
+            continue
         fi
         
+        FOUND_STEAMVR=1
+        echo "Found Space Calibrator installation for user: $user (home: $user_home)" >&2
+        
+        # Find vrpathreg
         VRPATHREG=""
         for path in \
             "$user_home/.local/share/Steam/steamapps/common/SteamVR/bin/linux64/vrpathreg" \
             "$user_home/.steam/steam/steamapps/common/SteamVR/bin/linux64/vrpathreg" \
-            "$user_home/.steam/root/steamapps/common/SteamVR/bin/linux64/vrpathreg"; do
+            "$user_home/.steam/root/steamapps/common/SteamVR/bin/linux64/vrpathreg" \
+            "/usr/local/bin/vrpathreg" \
+            "/usr/bin/vrpathreg"; do
             if [ -f "$path" ]; then
                 VRPATHREG="$path"
                 break
@@ -73,13 +93,59 @@ post_remove() {
             VRPATHREG="vrpathreg"
         fi
         
-        if [ -n "$VRPATHREG" ] && [ -d "$STEAMVR_DRIVERS_DIR" ]; then
+        # Remove overlay registration
+        OVERLAY_MANIFEST="$STEAMVR_DRIVERS_DIR/bin/linux64/manifest.vrmanifest"
+        if [ -f "$OVERLAY_MANIFEST" ] && [ -n "$VRPATHREG" ]; then
+            echo "Removing overlay registration..." >&2
             if [ -f "$VRPATHREG" ]; then
                 VRPATHREG_DIR="$(dirname "$VRPATHREG")"
-                LD_LIBRARY_PATH="$VRPATHREG_DIR:$LD_LIBRARY_PATH" "$VRPATHREG" removedriver "$STEAMVR_DRIVERS_DIR" 2>/dev/null || true
+                LD_LIBRARY_PATH="$VRPATHREG_DIR:$LD_LIBRARY_PATH" "$VRPATHREG" removeappmanifest "$OVERLAY_MANIFEST" 2>/dev/null || {
+                    echo "Note: Overlay unregistration failed (may not have been registered)" >&2
+                }
             else
-                "$VRPATHREG" removedriver "$STEAMVR_DRIVERS_DIR" 2>/dev/null || true
+                "$VRPATHREG" removeappmanifest "$OVERLAY_MANIFEST" 2>/dev/null || {
+                    echo "Note: Overlay unregistration failed (may not have been registered)" >&2
+                }
             fi
         fi
-    done
+        
+        # Remove driver registration
+        if [ -n "$VRPATHREG" ]; then
+            echo "Removing driver registration..." >&2
+            if [ -f "$VRPATHREG" ]; then
+                VRPATHREG_DIR="$(dirname "$VRPATHREG")"
+                LD_LIBRARY_PATH="$VRPATHREG_DIR:$LD_LIBRARY_PATH" "$VRPATHREG" removedriver "$STEAMVR_DRIVERS_DIR" 2>/dev/null || {
+                    echo "Note: Driver unregistration failed (may not have been registered)" >&2
+                }
+            else
+                "$VRPATHREG" removedriver "$STEAMVR_DRIVERS_DIR" 2>/dev/null || {
+                    echo "Note: Driver unregistration failed (may not have been registered)" >&2
+                }
+            fi
+        fi
+        
+        # Remove files
+        echo "Removing installation files..." >&2
+        rm -rf "$STEAMVR_DRIVERS_DIR" 2>/dev/null || {
+            echo "WARNING: Could not remove all files from $STEAMVR_DRIVERS_DIR" >&2
+        }
+        
+        # Remove overlay config if it exists
+        OVERLAY_CONFIG="$user_home/.local/share/Steam/config/vrappconfig/spacecalibrator.linux.vrappconfig"
+        if [ -f "$OVERLAY_CONFIG" ]; then
+            rm -f "$OVERLAY_CONFIG" 2>/dev/null || true
+        fi
+        
+    done < "$TMPFILE"
+    
+    rm -f "$TMPFILE"
+    
+    if [ "$FOUND_STEAMVR" -eq 0 ]; then
+        echo "No Space Calibrator installations found to remove." >&2
+    else
+        echo "Uninstallation complete!" >&2
+        echo "Restart SteamVR to complete the removal." >&2
+    fi
+    echo "=========================================" >&2
 }
+
