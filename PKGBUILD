@@ -2,7 +2,7 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-avro
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="Avro is a serialization and RPC framework."
 arch=(any)
@@ -16,19 +16,20 @@ makedepends=('python-build'
              'python-setuptools'
              'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/a/${pkgname#python-}/${pkgname#python-}-$pkgver.tar.gz")
-b2sums=('393f918c047bed572bcb1803870a7bafe29d0a14c82d2da082665a4d72bd6277bf0410e4349ca43a320682f4ebd2742b5a3262fe86e5ed861fcf1c0e49a8c778')
+noextract=("$pkgname-$pkgver.tar.gz")
+b2sums=('7dc2be339d3cb10e593f76e08f2b9bed761b133d4f759d58b6703f543996dae5ba80b3bee82e7ac8c4e7a3f7118d746e7ab3e65fb5e7da7d6d42a1ed25848c45')
 
 prepare() {
     tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
 }
 
 build(){
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver" || exit
     python -m build --wheel --no-isolation
 }
 
 package(){
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver" || exit
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 README.md -t "$pkgdir/usr/share/$pkgname/"
     install -Dm644 avro/LICENSE -t "$pkgdir/usr/share/$pkgname/"
