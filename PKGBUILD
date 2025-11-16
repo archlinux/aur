@@ -2,7 +2,7 @@
 
 pkgname="stardew-valley"
 pkgver=1.6.15
-pkgrel=1
+pkgrel=2
 pkgdesc="You’ve inherited your grandfather’s old farm plot in Stardew Valley.
 Armed with hand-me-down tools and a few coins, you set out to begin your new
 life."
@@ -10,7 +10,7 @@ url="https://stardewvalley.net"
 license=("custom")
 arch=('x86_64')
 options=("!strip" "!debug")
-depends=("glibc" "gcc-libs" "openal" "skia-sharp" "sdl2-compat")
+depends=("glibc" "gcc-libs" "openal" "sdl2-compat")
 makedepends=("icoextract" "imagemagick")
 conflicts=("gog-stardew-valley")
 source=(
@@ -27,7 +27,7 @@ prepare() {
     magick "$srcdir/data/noarch/game/Stardew Valley-0.png" -scale 1024x1024 "$srcdir/data/noarch/game/stardew-valley.png"
 
     # Removing built-in librariers that doesn't required
-    for file in "libopenal.so.1" "libopenal.1.dylib" "libSkiaSharp.so" "libSDL2-2.0.so.0" "libSDL2-2.0.0.dylib" "libGalaxy64.so" "libGalaxyCSharpGlue.so" "Galaxy64.dll" "GalaxyCSharpGlue.dll"; do
+    for file in "libopenal.so.1" "libopenal.1.dylib" "libSDL2-2.0.so.0" "libSDL2-2.0.0.dylib" "libGalaxy64.so" "libGalaxyCSharpGlue.so" "Galaxy64.dll" "GalaxyCSharpGlue.dll"; do
         rm "$srcdir/data/noarch/game/$file"
     done
 }

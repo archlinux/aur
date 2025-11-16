@@ -1,7 +1,7 @@
 pkgbase = stardew-valley
 	pkgdesc = You’ve inherited your grandfather’s old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life.
 	pkgver = 1.6.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stardewvalley.net
 	arch = x86_64
 	license = custom
@@ -10,7 +10,6 @@ pkgbase = stardew-valley
 	depends = glibc
 	depends = gcc-libs
 	depends = openal
-	depends = skia-sharp
 	depends = sdl2-compat
 	conflicts = gog-stardew-valley
 	options = !strip
