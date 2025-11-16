@@ -1,6 +1,6 @@
 pkgbase = python-neutron-lib
 	pkgdesc = Neutron shared routines and utilities
-	pkgver = 3.16.0
+	pkgver = 3.22.0
 	pkgrel = 1
 	url = https://opendev.org/openstack/neutron-lib
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-neutron-lib
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = tar
+	makedepends = git
 	depends = python
 	depends = python-pbr
 	depends = python-sqlalchemy1.4
@@ -43,13 +43,13 @@ pkgbase = python-neutron-lib
 	depends = python-setproctitle
 	depends = python-webob
 	depends = python-os-traits
-	depends = python-ddt
 	depends = python-fixtures
 	depends = python-oslotest
 	depends = python-requests
 	depends = python-hacking
 	depends = python-testtools
-	source = python-neutron-lib-3.16.0.tar.gz::https://opendev.org/openstack/neutron-lib/archive/3.16.0.tar.gz
-	b2sums = 38e0542e99df79ce6d38657420c08eb0f7570bfb80a02dbc5aedf15f78a6e8c987b012bc0a11a106075d27261e91cb595eeaee63e57e9eaa4091e2b4af7915a8
+	depends = python-debtcollector
+	source = python-neutron-lib-3.22.0::git+https://opendev.org/openstack/neutron-lib.git#tag=3.22.0
+	b2sums = 0c96f770aa879eba7017279d8dc5e6dde3b515e2d1b2f2afeab62d69cb8d40dd5eb7090a2f5e8382b8813f41d71066b33831f692e6bc44ed939b8199d08be90c
 
 pkgname = python-neutron-lib
