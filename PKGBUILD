@@ -27,9 +27,18 @@ prepare() {
     tar -xzf "${srcdir}/openvr-headers.tar.gz" -C ../lib/openvr --strip-components=1 openvr-master/headers 2>/dev/null || true
   fi
   
-  if [ ! -f "../lib/openvr/lib/linux64/libopenvr_api.so" ]; then
+  LIB_PATH="../lib/openvr/lib/linux64/libopenvr_api.so"
+  echo "DEBUG: Current directory: $(pwd)"
+  echo "DEBUG: Checking for library at: $LIB_PATH"
+  echo "DEBUG: Absolute path: $(cd .. && pwd)/lib/openvr/lib/linux64/libopenvr_api.so"
+  
+  if [ ! -f "$LIB_PATH" ]; then
     echo "Extracting OpenVR library..."
     mkdir -p ../lib/openvr/lib/linux64
+    echo "DEBUG: Created directory: $(cd ../lib/openvr/lib/linux64 && pwd)"
+    echo "DEBUG: Tarball location: ${srcdir}/openvr-headers.tar.gz"
+    echo "DEBUG: Tarball exists: $([ -f "${srcdir}/openvr-headers.tar.gz" ] && echo "YES" || echo "NO")"
+    
     echo "Attempting extraction method 1 (lib/linux64, strip-components=3)..."
     if tar -xzf "${srcdir}/openvr-headers.tar.gz" -C ../lib/openvr/lib/linux64 --strip-components=3 openvr-master/lib/linux64/libopenvr_api.so 2>&1; then
       echo "OpenVR library extracted successfully (from lib/linux64)"
@@ -55,13 +64,29 @@ prepare() {
         fi
       fi
     fi
+    
+    echo "DEBUG: After extraction, checking for library..."
+    echo "DEBUG: Library exists: $([ -f "$LIB_PATH" ] && echo "YES" || echo "NO")"
+    if [ -f "$LIB_PATH" ]; then
+      echo "DEBUG: Library size: $(ls -lh "$LIB_PATH" | awk '{print $5}')"
+    else
+      echo "DEBUG: Listing directory contents:"
+      ls -la ../lib/openvr/lib/linux64/ 2>&1 || echo "Directory does not exist"
+    fi
+  else
+    echo "OpenVR library already exists at $LIB_PATH"
   fi
   
-  if [ ! -f "../lib/openvr/lib/linux64/libopenvr_api.so" ]; then
-    echo "ERROR: OpenVR library not found at ../lib/openvr/lib/linux64/libopenvr_api.so"
+  if [ ! -f "$LIB_PATH" ]; then
+    echo "ERROR: OpenVR library not found at $LIB_PATH"
+    echo "DEBUG: Current directory: $(pwd)"
+    echo "DEBUG: Listing ../lib/openvr structure:"
+    find ../lib/openvr -type f -name "*.so" 2>/dev/null | head -10 || echo "No .so files found"
     echo "Build will fail. Please check the openvr-headers.tar.gz file."
     exit 1
   fi
+  
+  echo "DEBUG: Library verification successful: $LIB_PATH"
   
   # ImGui is committed to the repository, no extraction needed
   if [ ! -d "lib/imgui" ]; then
