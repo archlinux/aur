@@ -1,7 +1,7 @@
 # Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
 
 pkgname=python-sushy
-pkgver=5.5.0
+pkgver=5.8.0
 pkgrel=1
 pkgdesc="Small Python library to communicate with Redfish based systems"
 arch=(any)
@@ -20,19 +20,14 @@ makedepends=(
     'python-build'
     'python-installer'
     'python-wheel'
-    'tar'
+    'git'
 )
 checkdepends=(
     'python-coverage'
     'python-stestr'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-noextract=("$pkgname-$pkgver.tar.gz")
-b2sums=('ce22791e39b9fda849cd7795fd0edb2843aa5cefc8244e67908fbaa18392372c04bf39f784089e695a01e1af9aad26cdcb9116a81565627d2915f439da461361')
-
-prepare() {
-    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
-}
+source=("$pkgname-$pkgver::git+$url.git#tag=$pkgver")
+b2sums=('772c27fe871db8f551b6c0cb274028e9bc289df6a5ec73baec73eca6df4211a4e03a84aa22ce6ce79df0442bec5d914e0178ef4f52a5828a92dd7b5d4214db34')
 
 build(){
     cd "$pkgname-$pkgver" || exit
