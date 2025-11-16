@@ -1,0 +1,5 @@
+[gup-bin]
+source = "github"
+github = "nao1215/gup"
+use_latest_release = true
+prefix = "v"
