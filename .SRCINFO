@@ -1,6 +1,6 @@
 pkgbase = auditorium-minimal
 	pkgdesc = A minimal version of the popular cross-platform, local, simple, fast, and distraction free CLI application to listen to your music library
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/nate-craft/auditorium
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = auditorium-minimal
 	depends = mpv
 	depends = ffmpeg
 	conflicts = auditorium
-	source = https://github.com/nate-craft/auditorium/releases/download/1.2.4/auditorium-minimal-v1.2.4-linux-amd64
-	sha256sums = 83baaf6a8787218a32626c00deff69a2694e0d728cbcfd5e1ab301962f63b7ed
+	source = https://github.com/nate-craft/auditorium/releases/download/1.2.5/auditorium-minimal-1.2.5-x86_64-unknown-linux-gnu
+	sha256sums = 5b0f8fa29fe58868cc98a11288a98c7a8fdb7888f7495b125a294b6acf359e8f
 
 pkgname = auditorium-minimal
