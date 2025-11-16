@@ -9,6 +9,7 @@ pkgbase = gup-bin
 	license = Apache-2.0
 	provides = gup
 	conflicts = gup
+	options = !strip
 	source_x86_64 = gup-x86_64-0.28.1.deb::https://github.com/nao1215/gup/releases/download/v0.28.1/gup_0.28.1_linux_amd64.deb
 	sha256sums_x86_64 = 2557999fb99f741d0d629c7d366be6eb700070897641390d119701d6c5dc7f3f
 	source_i686 = gup-i686-0.28.1.dev::https://github.com/nao1215/gup/releases/download/v0.28.1/gup_0.28.1_linux_386.deb
