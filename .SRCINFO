@@ -1,0 +1,12 @@
+pkgbase = niu-speedtest
+	pkgdesc = A simple CLI speedtest tool for Arch Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/niumination/niu-speedtest
+	arch = any
+	license = MIT
+	depends = python>=3.6
+	source = arch-speedtest-1.0.0.tar.gz::https://github.com/niumination/niu-speedtest/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = niu-speedtest
