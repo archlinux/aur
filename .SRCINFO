@@ -1,6 +1,6 @@
 pkgbase = python-ovs
 	pkgdesc = Open vSwitch library
-	pkgver = 3.5.0
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = https://github.com/openvswitch/ovs
 	arch = any
@@ -11,11 +11,14 @@ pkgbase = python-ovs
 	makedepends = python-wheel
 	depends = python
 	depends = python-sortedcontainers
+	depends = python-rich
+	depends = python-click
+	depends = python-graphviz
 	optdepends = python-netaddr: flow
 	optdepends = python-pyparsing: flow
 	optdepends = unbound: dns
-	noextract = python-ovs-3.5.0.tar.gz
-	source = python-ovs-3.5.0.tar.gz::https://files.pythonhosted.org/packages/source/o/ovs/ovs-3.5.0.tar.gz
-	b2sums = 7229c2ae11e99d60614c2d5b1f18f7c83ff3ecf0c3424e4eb752acf319425e18bd853904d588f43a7c8d01a05cedc65380891006cbd4c653cde6dda1a621fa46
+	noextract = python-ovs-3.6.1.tar.gz
+	source = python-ovs-3.6.1.tar.gz::https://files.pythonhosted.org/packages/source/o/ovs/ovs-3.6.1.tar.gz
+	b2sums = f0ae343333ad6b1f9f396dc0539363966db8619d9646525d9f4628161564801ad35fe4f95ed1d0e9e19a84772e2190441339ecfc4fa07d693dfef4860f95600f
 
 pkgname = python-ovs

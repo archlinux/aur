@@ -3,7 +3,7 @@
 # Contributor: mike2208
 
 pkgname=python-ovs
-pkgver=3.5.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="Open vSwitch library"
 arch=(any)
@@ -12,6 +12,9 @@ license=('Apache-2.0')
 depends=(
     'python'
     'python-sortedcontainers'
+    'python-rich'
+    'python-click'
+    'python-graphviz'
 )
 makedepends=(
     'python-build'
@@ -26,7 +29,7 @@ optdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/o/${pkgname#python-}/${pkgname#python-}-$pkgver.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz")
-b2sums=('7229c2ae11e99d60614c2d5b1f18f7c83ff3ecf0c3424e4eb752acf319425e18bd853904d588f43a7c8d01a05cedc65380891006cbd4c653cde6dda1a621fa46')
+b2sums=('f0ae343333ad6b1f9f396dc0539363966db8619d9646525d9f4628161564801ad35fe4f95ed1d0e9e19a84772e2190441339ecfc4fa07d693dfef4860f95600f')
 
 prepare() {
     tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
