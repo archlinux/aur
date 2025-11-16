@@ -165,14 +165,14 @@ package() {
     mkdir -p "${pkgdir}/usr/share/recoil-engine"
 
     ### Check if if folder already exists and if so delete it — this is needed for dirty rebuilds
-    if [ -d "${srcdir}/sytemwide_managed_by_pkgmngr-${_pkgver}-RC.local" ]; then
-        rm -rd "${srcdir}/sytemwide_managed_by_pkgmngr-${_pkgver}-RC.local"
+    if [ -d "${srcdir}/systemwide_managed_by_pkgmngr-${_pkgver}-RC.local" ]; then
+        rm -rd "${srcdir}/systemwide_managed_by_pkgmngr-${_pkgver}-RC.local"
     fi
     ### rename install folder aka give the engine folder a decent name that will be recognized by bar-lobby
     ### naming the engine folder with .local at the end allows us to name it how ever we want
     ### otherwise bar-lobby will only recognize folders named after the official versioning scheme
-    mv --force ${srcdir}/install "${srcdir}/sytemwide_managed_by_pkgmngr-${_pkgver}-RC.local"
-    cp --reflink=auto --no-preserve=ownership --recursive --no-dereference "${srcdir}/sytemwide_managed_by_pkgmngr-${_pkgver}-RC.local" "${pkgdir}/usr/share/recoil-engine/"
+    mv --force ${srcdir}/install "${srcdir}/systemwide_managed_by_pkgmngr-${_pkgver}-RC.local"
+    cp --reflink=auto --no-preserve=ownership --recursive --no-dereference "${srcdir}/systemwide_managed_by_pkgmngr-${_pkgver}-RC.local" "${pkgdir}/usr/share/recoil-engine/"
 
 }
 
