@@ -9,9 +9,9 @@ pkgname=(
   'dotnet-targeting-pack-8.0-bin'
   'aspnet-targeting-pack-8.0-bin'
  )
-pkgver=8.0.21.sdk415
-_runtimever=8.0.21
-_sdkver=8.0.415
+pkgver=8.0.22.sdk416
+_runtimever=8.0.22
+_sdkver=8.0.416
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
@@ -20,9 +20,9 @@ options=('staticlibs')
 source_armv7h=("https://builds.dotnet.microsoft.com/dotnet/Sdk/${_sdkver}/dotnet-sdk-${_sdkver}-linux-arm.tar.gz")
 source_aarch64=("https://builds.dotnet.microsoft.com/dotnet/Sdk/${_sdkver}/dotnet-sdk-${_sdkver}-linux-arm64.tar.gz")
 source_x86_64=("https://builds.dotnet.microsoft.com/dotnet/Sdk/${_sdkver}/dotnet-sdk-${_sdkver}-linux-x64.tar.gz")
-sha512sums_armv7h=('ce6b415363d279f9a48434352751f402c070816a9c2c1642f449c6b1c7bdebba3b9c85ef4373649eb76df30960fe39405a8e9e12604a0c4357816cfb421518fe')
-sha512sums_aarch64=('c2efcccfd83690482d3314b23a9d9b53d41591795eb50e02857cb495dd1fde132f2c332dc243095463338d2dc6cd362cd7ea7ae3a9ce75b32ab54a517b91def8')
-sha512sums_x86_64=('0fc0499a857f161f7c35775bb3f50ac6f0333f02f5df21d21147d538eb26a9a87282d4ba3707181c46f3c09d22cdc984e77820a5953a773525d6f7b332deb7f2')
+sha512sums_armv7h=('8f17eb98c3220a1bba9f0ad6692010a1b29c980b74d3ff7129376404b10031e277a780ebfd5fab8b01d6f0881c3858e34641e4524615d7b237c187740422cbd9')
+sha512sums_aarch64=('e7b09ee70a627964df00a489b447782bffe9cd3443fb0a8eeae8105fcc0919a68d3c92008f1debe67df5b2ae6690ab8d657c5026bc950b88a253b4290c5f80a7')
+sha512sums_x86_64=('633cb85673e3519c825532f780f6750ff24ed248ef8df68885540e510b559b6adc2c8d940e4c349fc0cf2c9caf184f1efeaccbc5e952d6e435f3da027cae4188')
 
 package_dotnet-runtime-8.0-bin() {
   pkgdesc='The .NET Core runtime (binary)'
