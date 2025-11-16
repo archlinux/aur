@@ -1,8 +1,8 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 pkgname=ifcopenshell
-pkgver=0.8.4_alpha2508261505
+pkgver=0.8.4_alpha2511160110
 _vername=bonsai
-pkgrel=2
+pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
 arch=('x86_64' 'i686')
 url="https://ifcopenshell.org/"
@@ -64,36 +64,44 @@ source=("https://github.com/IfcOpenShell/IfcOpenShell/archive/refs/tags/${_verna
   "git+https://github.com/svgpp/svgpp.git"
   "git+https://github.com/IfcOpenShell/svgfill.git"
   "git+https://github.com/IfcOpenShell/ifc-to-cityjson.git"
-  "bpypolyskel-1.1.2.tar.gz::https://github.com/prochitecture/bpypolyskel/archive/refs/tags/v1.1.2.tar.gz"
+  "bpypolyskel-1.1.3.tar.gz::https://github.com/prochitecture/bpypolyskel/archive/refs/tags/v1.1.3.tar.gz"
 
-  "003-skip-install-python-package-only-install-wrapper.patch::https://github.com/sukanka/IfcOpenShell/commit/e6ceb758.patch"
-  "004-add-shared-libs.patch::https://github.com/sukanka/IfcOpenShell/commit/9ec690d.patch"
-  "005-install-missing-files-skip-redundant-files.patch::https://github.com/sukanka/IfcOpenShell/commit/1349d8e.patch"
-  "006-fix-rpath.patch::https://github.com/sukanka/IfcOpenShell/commit/b0c80ed.patch"
+  "003-skip-install-python-package-only-install-wrapper.patch::https://github.com/sukanka/IfcOpenShell/commit/36af62dc.patch"
+  "004-add-shared-libs.patch::https://github.com/sukanka/IfcOpenShell/commit/f78260b3.patch"
+  "005-install-missing-files-skip-redundant-files.patch::https://github.com/sukanka/IfcOpenShell/commit/e13226c2b.patch"
+  "006-fix-rpath.patch::https://github.com/sukanka/IfcOpenShell/commit/1e4871eed31.patch"
+  "007-fix-boost189.patch::https://github.com/sukanka/IfcOpenShell/commit/9f6a2a48.patch"
 
 )
-sha256sums=('182f6c37c069c875f68b8f628c5433831cc21adcedd086c6d96778df5f58016e'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'f000262395449808c32e10664468ec2acd2a22e04b202037f15e03611506cfc5'
-            '2efdab4233e3d58a0ac03a746b57fcad1017a3db39abed12d4f2ccf33768674b'
-            'e54ff840fef44ae9d746e418d409db31e10e591ef0f9808708f56260adea53da'
-            'd32e61dadac3177b98de40d9587206fe9d03d987ac08323bc67f10512620ef91'
-            '1b4be552fadad11362e09103c6fdf6f9400b969ca6dad9128a0f8dd35ab4026c')
+sha256sums=('38ccbd0d835a68161b27dca91e0ba78026f42efe3d2fdb6910085768171408d3'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'c774454e31757796cf02078cc04d4f27b6180d718e1edab4148340879a6b64c5'
+  'f85659ba598ccacdd187f946b43692e68a65f82bd9d1eded1840223fefc83ab5'
+  'b2760bdae194059ce22fbd0420781383bb3eda2e7bc42a87c8a7bd825a47bf0c'
+  '5dd5ea1464d110752cd0debb70f5913261c9f5046a2eb1084a3eb1af83ffe365'
+  '0d6081e5456108d89585190f2127aa2bda4f679e99618465fb68992846f41d8e'
+  '55281b2dc89609eec88241303c72b0e4eb6a017bcf6adf906a46a575b983ed34')
 
 _iosdir="IfcOpenShell-${_vername}-${pkgver//_/-}"
 
+_apply_patch() {
+  cd "${srcdir}/${_iosdir}"
+  for p in $srcdir/*.patch; do
+    patch -p1 -l <$p
+  done
+
+}
 prepare() {
-  mv bpypolyskel-1.1.2 bpypolyskel
+  mv bpypolyskel-1.1.3 bpypolyskel
   cp -ar svgpp/* svgfill/3rdparty/svgpp
   cp -ar svgfill/* ${_iosdir}/src/svgfill
   cp -ar ifc-to-cityjson/* ${_iosdir}/src/ifcconvert/cityjson
-  cd ${_iosdir}
-  patch --strip=1 --ignore-whitespace <../003-skip-install-python-package-only-install-wrapper.patch
-  patch --strip=1 --ignore-whitespace <../004-add-shared-libs.patch
-  patch --strip=1 --ignore-whitespace <../005-install-missing-files-skip-redundant-files.patch
-  patch --strip=1 --ignore-whitespace <../006-fix-rpath.patch
+  (
+    _apply_patch
+  )
+
 }
 _build_pymodules() {
 
@@ -148,6 +156,7 @@ package() {
   _python_ver=$(python --version | grep -Po 'Python \K[0-9].[0-9]+')
   cd "${srcdir}/build"
   DESTDIR="$pkgdir" ninja install
+  echo "Installed main libs done"
 
   # Install license file
   cd "${srcdir}/${_iosdir}"
@@ -155,7 +164,8 @@ package() {
   install -Dm644 COPYING.LESSER -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
   # Install python modules
-  find src -name '*.whl' -print0 | xargs -0 -I {} python -m installer --destdir="$pkgdir" {}
+  find src/*/dist -name '*.whl' -print0 | xargs -0 -I {} python -m installer --destdir="$pkgdir" {}
+  echo "Installed python modules done"
 
   # extra modules that does not build whl
   cp -rf src/{ifc2ca,ifcsverchok} ${pkgdir}/usr/lib/python${_python_ver}/site-packages
