@@ -12,14 +12,17 @@ provides=('apply'
         'ou-cksum'
         'jot'
         'lam'
-        'lndir'
+        'ou-lndir'
         'md5'
         'rdate'
         'rs'
         'signify'
         'unvis'
         'vis'
-        'what')
+        'what'
+        'sha1'
+        'sha256'
+        'sha512')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/leahneukirchen/outils/archive/refs/tags/v${pkgver}.tar.gz"
         'LICENSE')
@@ -46,6 +49,11 @@ prepare(){
   sed -i 's/cksum/ou-cksum/g' Makefile
   sed -i 's/cksum/ou-cksum/g' src/bin/md5/Makefile
   mv src/bin/md5/cksum.1 src/bin/md5/ou-cksum.1
+  # lndir binary from package is in conflict with 'lndir' provided by 'imake'. Hence the former is renamed to ou-lndir
+  mv src/usr.bin/lndir src/usr.bin/ou-lndir
+  mv src/usr.bin/ou-lndir/lndir.1 src/usr.bin/ou-lndir/ou-lndir.1
+  mv src/usr.bin/ou-lndir/lndir.c src/usr.bin/ou-lndir/ou-lndir.c
+  sed -i 's/lndir/ou-lndir/g' Makefile src/usr.bin/ou-lndir/Makefile
 }
 
 build() {
