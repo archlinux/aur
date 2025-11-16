@@ -1,7 +1,7 @@
 # Maintainer: Ross Ceb aur@roceb.xyz
 pkgname=glide-browser-bin
 _binaryname=glide-bin
-pkgver=0.1.53a
+pkgver=0.1.54a
 pkgrel=1
 pkgdesc="An extensible and keyboard-focused web browser built on Firefox"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ optdepends=('ffmpeg: H264/AAC/MP3 decoding'
             'networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulse-native-provider: Audio support')
-source_x86_64=("glide.linux-x86_64.tar.xz::${url}/releases/download/${pkgver}/glide.linux-x86_64.tar.xz")
-source_aarch64=("glide.linux-aarch64.tar.xz::${url}/releases/download/${pkgver}/glide.linux-aarch64.tar.xz")
+source_x86_64=("glide.linux-x86_64-${pkgver}.tar.xz::${url}/releases/download/${pkgver}/glide.linux-x86_64.tar.xz")
+source_aarch64=("glide.linux-aarch64-${pkgver}.tar.xz::${url}/releases/download/${pkgver}/glide.linux-aarch64.tar.xz")
 #sha256sums=('62d62511f6fa4d756564e08b91473c523fd7011d') # Replace with actual checksum
 sha256sums_x86_64=('b54fa8e982ad94e5fdac34014bc3893afdcd36593f98cd7891e2070d53cee447')
 sha256sums_aarch64=('17ada684144a94d70d28b1c17cef5c592047d10c6f9c3d6cc449ce1f7a0b2fc1')
