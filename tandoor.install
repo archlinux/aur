@@ -7,9 +7,12 @@ post_install() {
 }
 
 post_upgrade() {
+	set -o allexport
+        . /etc/tandoor/tandoor.conf
+	set +o allexport
+
         cd "/usr/share/tandoor"
         source venv/bin/activate
-        export $(cat /etc/tandoor/tandoor.conf |grep "^[^#]" | xargs)
         python manage.py migrate
         python manage.py collectstatic --no-input
         python manage.py collectstatic_js_reverse

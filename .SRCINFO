@@ -1,7 +1,7 @@
 pkgbase = tandoor-recipes
 	pkgdesc = Application for managing recipes, planning meals, building shopping lists and much much more.
 	pkgver = 2.3.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/TandoorRecipes/recipes
 	install = tandoor.install
 	arch = any
