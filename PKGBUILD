@@ -45,7 +45,7 @@ package() {
   /opt/Tabby/tabby
 
   chown root:root /opt/Tabby/chrome-sandbox
-  chmod 4755 /opt/Tabby/chrome-sandox
+  chmod 4755 /opt/Tabby/chrome-sandbox
 
 END
 }
