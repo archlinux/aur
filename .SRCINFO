@@ -1,8 +1,8 @@
 pkgbase = clara-verse
 	pkgdesc = A privacy-first, All in one AI workspace featuring LLMs, ComfyUI, n8n, and more
-	pkgver = 0.2.0
-	pkgrel = 2
-	url = https://github.com/badboysm890/ClaraVerse
+	pkgver = 0.3.1-beta
+	pkgrel = 1
+	url = https://github.com/claraverse-space/ClaraVerse
 	arch = x86_64
 	license = MIT
 	depends = fuse2
@@ -12,9 +12,9 @@ pkgbase = clara-verse
 	provides = clara-verse
 	conflicts = clara-verse
 	options = !strip
-	source = Clara-0.2.0.AppImage::https://github.com/badboysm890/ClaraVerse/releases/download/v0.2.0/Clara-0.2.0.AppImage
+	source = Clara-0.3.1-beta.AppImage::https://github.com/claraverse-space/ClaraVerse/releases/download/v0.3.1-beta/Clara-0.3.1-beta.AppImage
 	source = clara-verse.desktop
-	sha256sums = 08ed409aee5283020fc4b6f28f6a6e7b6b1386ba3539c26808977f0ce79de202
+	sha256sums = e3912a14fd3c9057b5594760df111373ce760d2c0eab5eed67d9d8029d6f0511
 	sha256sums = 61d260b4f6d79bf09311cd026ef4cdcba0c49b3857bc5bbeed30885d00423ad3
 
 pkgname = clara-verse
