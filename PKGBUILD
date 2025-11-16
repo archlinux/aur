@@ -3,8 +3,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=slade
-pkgver=3.2.8
-pkgrel=3
+pkgver=3.2.9
+pkgrel=1
 pkgdesc='SLADE3 Doom editor'
 arch=('i686' 'x86_64')
 url='http://slade.mancubus.net/'
@@ -37,7 +37,7 @@ makedepends=(
   'p7zip')
 
 source=("git+https://github.com/sirjuddington/SLADE.git#tag=${pkgver}")
-sha256sums=('07a8ba0f0416960975727561599746af915c02fcb3cd61f9b4efa575938b70a2')
+sha256sums=('444db5f34a4b7baff93dc3a22a42f734fcf67bc844309ed80d084df9a6d1acb8')
 
 build() {
   cd SLADE

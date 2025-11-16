@@ -1,7 +1,7 @@
 pkgbase = slade
 	pkgdesc = SLADE3 Doom editor
-	pkgver = 3.2.8
-	pkgrel = 3
+	pkgver = 3.2.9
+	pkgrel = 1
 	url = http://slade.mancubus.net/
 	arch = i686
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = slade
 	depends = libsecret
 	depends = gspell
 	depends = xz
-	source = git+https://github.com/sirjuddington/SLADE.git#tag=3.2.8
-	sha256sums = 07a8ba0f0416960975727561599746af915c02fcb3cd61f9b4efa575938b70a2
+	source = git+https://github.com/sirjuddington/SLADE.git#tag=3.2.9
+	sha256sums = 444db5f34a4b7baff93dc3a22a42f734fcf67bc844309ed80d084df9a6d1acb8
 
 pkgname = slade
