@@ -1,4 +1,4 @@
-# tradingview-bin
+# tradingview-bin-latest
 
 This package installs the TradingView Desktop Client for Arch Linux.
 
@@ -7,5 +7,5 @@ This package installs the TradingView Desktop Client for Arch Linux.
 Using an AUR helper:
 
 ```bash
-yay -S tradingview-bin
+yay -S tradingview-bin-latest
 
