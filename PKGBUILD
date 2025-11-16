@@ -1,6 +1,6 @@
 # Maintainer: CoreCat <corecathx@proton.me>
 pkgname=whisker-shell-git
-pkgver=r40.60b0019
+pkgver=r47.7cd15a7
 pkgrel=1
 pkgdesc="Desktop shell built with Quickshell and follows Material 3 Design rules."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=(
     'quickshell' 'brightnessctl' 'bash' 'power-profiles-daemon' 'cava' 'matugen-bin'
     'networkmanager' 'fish' 'ttf-outfit' 'ttf-material-symbols-variable' 'qt6-multimedia-ffmpeg'
-    'qt6ct'
+    'qt6ct' 'mpvpaper'
 )
 makedepends=('git' 'haxe' 'bluez')
 provides=('whisker-shell' 'whisker')
