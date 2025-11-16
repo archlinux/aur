@@ -1,14 +1,14 @@
 pkgbase = nodejs-appium-windows-driver
 	pkgdesc = Appium bridge to WinAppDriver
-	pkgver = 5.0.7
+	pkgver = 5.0.8
 	pkgrel = 1
 	url = https://www.npmjs.com/package/appium-windows-driver
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = npm
 	depends = nodejs
-	noextract = nodejs-appium-windows-driver-5.0.7.tgz
-	source = nodejs-appium-windows-driver-5.0.7.tgz::https://registry.npmjs.org/appium-windows-driver/-/appium-windows-driver-5.0.7.tgz
-	sha256sums = 77f32f7e5b5e43e559328dd96e9520f1712fbce1ad8ade67eb3e93b514366207
+	noextract = nodejs-appium-windows-driver-5.0.8.tgz
+	source = nodejs-appium-windows-driver-5.0.8.tgz::https://registry.npmjs.org/appium-windows-driver/-/appium-windows-driver-5.0.8.tgz
+	sha256sums = 53a2e1d4c234c578018211ff846840937462e521c7f52a8a530eab048985d191
 
 pkgname = nodejs-appium-windows-driver
