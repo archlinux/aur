@@ -1,0 +1,21 @@
+pkgbase = openvr-lighthouse-manager-linux
+	pkgdesc = Linux port of OVR Lighthouse Manager - manage SteamVR base station power via Bluetooth LE. Requires SteamVR to be installed (provides OpenVR headers).
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/xi-ve/openvr-lighthouse-manager-linux
+	install = openvr-lighthouse-manager-linux.install
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = base-devel
+	makedepends = pkgconf
+	depends = bluez-libs
+	depends = dbus
+	depends = glfw-x11
+	depends = libx11
+	source = openvr-lighthouse-manager-linux-1.0.0.tar.gz::https://github.com/xi-ve/openvr-lighthouse-manager-linux/archive/main.tar.gz
+	source = openvr-headers.tar.gz::https://github.com/ValveSoftware/openvr/archive/master.tar.gz
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = openvr-lighthouse-manager-linux
