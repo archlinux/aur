@@ -3,8 +3,10 @@ post_install() {
     echo "Lighthouse Manager post-install hook running..." >&2
     echo "=========================================" >&2
     
-    if [ ! -f "/usr/bin/${pkgname}-install" ]; then
-        echo "ERROR: Install script not found at /usr/bin/${pkgname}-install" >&2
+    INSTALL_SCRIPT="/usr/bin/openvr-lighthouse-manager-linux-install"
+    
+    if [ ! -f "$INSTALL_SCRIPT" ]; then
+        echo "ERROR: Install script not found at $INSTALL_SCRIPT" >&2
         echo "=========================================" >&2
         return 0
     fi
@@ -28,7 +30,7 @@ post_install() {
             FOUND_STEAMVR=1
             echo "Found SteamVR for user: $user (home: $user_home)" >&2
             echo "Installing Lighthouse Manager..." >&2
-            /usr/bin/${pkgname}-install "$user_home" 2>&1 || {
+            "$INSTALL_SCRIPT" "$user_home" 2>&1 || {
                 echo "WARNING: Installation failed for user $user, continuing..." >&2
             }
         fi
@@ -37,7 +39,7 @@ post_install() {
     rm -f "$TMPFILE"
     
     if [ "$FOUND_STEAMVR" -eq 0 ]; then
-        echo "No SteamVR installations found. You may need to run '${pkgname}-install' manually after starting SteamVR." >&2
+        echo "No SteamVR installations found. You may need to run 'openvr-lighthouse-manager-linux-install' manually after starting SteamVR." >&2
     else
         echo "Installation complete!" >&2
     fi
