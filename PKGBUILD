@@ -96,7 +96,7 @@ prepare() {
 
 build() {
   cd "$srcdir/zotero-client"
-  NODE_OPTIONS=--openssl-legacy-provider npm run build
+  NODE_OPTIONS='--openssl-legacy-provider --no-experimental-webstorage' npm run build
   app/scripts/dir_build -q
 }
 
