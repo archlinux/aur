@@ -5,8 +5,8 @@
 
 pkgbase=linux-hardened-git
 _srcname=${pkgbase/-git/}
-_gitbranch=6.16
-pkgver=6.16.r1369505.ga002352ee6cf
+_gitbranch=6.17
+pkgver=6.17.r1383839.g3e8de1f596ab
 pkgrel=1
 pkgdesc='Security-Hardened Linux'
 url='https://github.com/anthraxx/linux-hardened'
