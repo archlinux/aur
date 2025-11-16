@@ -2,83 +2,54 @@
 # Contributor: Nathan Loewen <loewen.nathan@gmail.com>
 # Contributor: Christian Hesse <mail@eworm.de>
 
-## links
-# https://www.freerdp.com/
-# https://github.com/FreeRDP/FreeRDP
-
-## options
-: ${_build_sdl3:=false}
+: ${_use_sodeps:=false}
 
 _pkgname="freerdp"
 pkgname="$_pkgname-git"
-pkgver=3.12.0.r53.g11e980a
-pkgrel=1
+pkgver=3.18.0.r6.g193f76e
+pkgrel=2
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP)"
 url="https://github.com/FreeRDP/FreeRDP"
 license=('Apache-2.0')
 arch=('i686' 'x86_64')
 
 depends=(
-  fuse3
-  uriparser
-  libcups
-  libx11
-  libxcursor
-  libxdamage
-  libxext
-  libxfixes
-  libxi
-  libxinerama
-  libxkbcommon
-  libxkbfile
-  libxrandr
-  libxrender
-  libxtst
-  pcsclite
-  pkcs11-helper
-  sdl2
-  sdl2_ttf
-  wayland
+  'ffmpeg'
+  'fuse3'
+  'icu'
+  'jansson'
+  'libcups'
+  'libxdamage'
+  'libxi'
+  'libxinerama'
+  'libxkbcommon'
+  'libxkbfile'
+  'libxrandr'
+  'libxtst'
+  'openssl'
+  'sdl3'
+  'sdl3_ttf' # AUR
+  'uriparser'
+  'wayland'
 )
 makedepends=(
-  alsa-lib
-  cjson
-  cmake
-  e2fsprogs
-  ffmpeg
-  git
-  icu
-  krb5
-  libjpeg-turbo
-  libp11
-  libpng
-  libpulse
-  libusb
-  libwebp
-  ninja
-  openssl
-  pam
-  zlib
+  'cmake'
+  'git'
+  'ninja'
+  'cjson'
 )
 
-if [[ "${_build_sdl3::1}" == "t" ]]; then
-  depends+=(
-    sdl3
-    sdl3_ttf
-  )
-fi
-
-_libver=${pkgver/.*/}
+_libver=${pkgver%%.*}
 provides=(
   "$_pkgname=2:${pkgver%.r*}"
-  libfreerdp$_libver.so
-  libfreerdp-client$_libver.so
-  libfreerdp-server$_libver
-  libfreerdp-server-proxy$_libver.so
-  libfreerdp-shadow$_libver.so
-  libfreerdp-shadow-subsystem$_libver.so
-  libwinpr$_libver.so
-  libwinpr-tools$_libver.so
+  "libfreerdp$_libver.so"
+  "libfreerdp-client$_libver.so"
+  "libfreerdp-server$_libver.so"
+  "libfreerdp-server-proxy$_libver.so"
+  "libfreerdp-shadow$_libver.so"
+  "libfreerdp-shadow-subsystem$_libver.so"
+  "libwinpr$_libver.so"
+  "libwinpr-tools$_libver.so"
 )
 conflicts=("$_pkgname")
 
@@ -98,10 +69,6 @@ prepare() {
 
   # fix check_ipo_supported
   sed -E -e '/check_ipo_supported/s/\)/ LANGUAGES C)/' -i "$_pkgsrc/cmake/CommonConfigOptions.cmake"
-
-  if [ "${_build_sdl3::1}" != "t" ]; then
-    sed -E -e 's&^.*find_package\(SDL3\).*$&set(SDL3_FOUND OFF)&' -i "$_pkgsrc/client/SDL/CMakeLists.txt"
-  fi
 }
 
 build() {
@@ -125,13 +92,14 @@ build() {
     -DWITH_BINARY_VERSIONING=ON # prevent file conflicts with freerdp2
     -DWITH_CHANNELS=ON
     -DWITH_CLIENT_CHANNELS=ON
+    -DWITH_CLIENT_SDL2=OFF
+    -DWITH_CLIENT_SDL3=ON
     -DWITH_CUPS=ON
     -DWITH_DSP_FFMPEG=ON
     -DWITH_FFMPEG=ON
     -DWITH_FUSE=ON
     -DWITH_ICU=ON
     -DWITH_JPEG=ON
-    -DWITH_PCSC=ON
     -DWITH_PULSE=ON
     -DWITH_SERVER=ON
     -DWITH_SERVER_CHANNELS=ON
@@ -145,10 +113,6 @@ build() {
     -Wno-dev
   )
 
-  if [ "${_build_sdl3::1}" != "t" ]; then
-    _cmake_options+=(-DWITH_CLIENT_SDL3=OFF)
-  fi
-
   cmake "${_cmake_options[@]}"
   cmake --build build
 }
@@ -158,22 +122,17 @@ check() {
 }
 
 package() {
-  depends+=(
-    alsa-lib libasound.so
-    e2fsprogs libcom_err.so
-    ffmpeg libavcodec.so libavutil.so libswresample.so libswscale.so
-    icu libicuuc.so
-    json-c libjson-c.so
-    krb5 libk5crypto.so libkrb5.so
-    libjpeg-turbo libjpeg.so
-    libpng libpng16.so
-    libpulse libpulse.so
-    libusb libusb-1.0.so
-    libwebp libwebp.so
-    openssl libcrypto.so libssl.so
-    pam libpam.so
-    zlib libz.so
-  )
+  if [[ "${_use_sodeps::1}" == "t" ]]; then
+    eval "depends+=(
+      'libavcodec.so' # ffmpeg
+      'libavutil.so' # ffmpeg
+      'libcrypto.so' # openssl
+      'libicuuc.so' # icu
+      'libssl.so' # openssl
+      'libswresample.so' # ffmpeg
+      'libswscale.so' # ffmpeg
+    )"
+  fi
 
   DESTDIR="$pkgdir" cmake --install build
 }

@@ -1,4 +1,0 @@
-[freerdp-git]
-source = "git"
-git = "https://github.com/FreeRDP/FreeRDP.git"
-prefix = "v"
