@@ -2,7 +2,7 @@
 
 _pkgname=fht-compositor
 pkgname="$_pkgname-git"
-pkgver=25.10.1.r702.d783349
+pkgver=25.10.1.r705.e095c4a
 pkgrel=1
 pkgdesc='A dynamic tiling Wayland compositor (git development version)'
 arch=('x86_64')
