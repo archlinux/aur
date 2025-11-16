@@ -1,0 +1,5 @@
+[jottr-bin]
+source = "github"
+github = "mfat/jottr"
+use_latest_release = true
+prefix = "v"

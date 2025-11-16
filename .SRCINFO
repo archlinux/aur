@@ -1,0 +1,22 @@
+pkgbase = jottr-bin
+	pkgdesc = Jottr is a cross-platform plain text editor focused on usability and speed
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://github.com/mfat/jottr
+	arch = x86_64
+	license = GPL-3.0
+	depends = bash
+	depends = hicolor-icon-theme
+	depends = python
+	depends = python-requests
+	depends = python-pyenchant
+	depends = python-feedparser
+	depends = python-pyqt5
+	depends = python-pyqt5-webengine
+	provides = jottr
+	conflicts = jottr
+	options = !strip
+	source_x86_64 = https://github.com/mfat/jottr/releases/download/v1.4.3/jottr_1.4.3-1_all.deb
+	sha512sums_x86_64 = 6fed53f2389f5f013c49c8a98df09f59daecda630bad6466d637bfe1f1eeb4c291ae132279ad7565a959971797a7a3bbc98f677db680403e77e2fdb5a248e958
+
+pkgname = jottr-bin
