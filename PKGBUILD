@@ -1,7 +1,7 @@
 # Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
 
 pkgname=python-sushy-tools
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A set of tools to support the development and test of the Sushy library"
 arch=(any)
@@ -24,20 +24,16 @@ makedepends=(
     'python-build'
     'python-installer'
     'python-wheel'
-    'tar'
+    'git'
 )
 checkdepends=(
     'python-coverage'
     'python-stestr'
     'python-testtools'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver::git+$url.git#tag=$pkgver")
 noextract=("$pkgname-$pkgver.tar.gz")
-b2sums=('f3e4dc6412385b70176f79f24b677f987ed126272a8e91a1778e3069d228785aebd7bbf0074898034262de7fb9e55ce8189c3c2950d2aed798ed6383f027774d')
-
-prepare() {
-    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
-}
+b2sums=('653f6e7ee13b4795282ebfe093fafe7adbf65d6ecad69288be59cae08d5a4ca4f179af0e8ddca73d734941c940b6bd4d9f2038cf34bbe429a60ff1b7479206b5')
 
 build(){
     cd "$pkgname-$pkgver" || exit
