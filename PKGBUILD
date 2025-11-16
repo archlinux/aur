@@ -2,7 +2,7 @@
 # took most of the script from twintaillauncher-git
 
 pkgname=twintaillauncher
-pkgver=1.1.11
+pkgver=1.1.12
 pkgrel=1
 _dirname="TwintailLauncher-ttl-v${pkgver}"
 pkgdesc='A multi-platform launcher for your anime games'
@@ -14,7 +14,7 @@ makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsv
 provides=("${pkgname}")
 conflicts=("${pkgname}" "twintaillauncher-bin")
 source=("${pkgname}.tar.gz::${url}/archive/refs/tags/ttl-v${pkgver}.tar.gz")
-sha256sums=('f334803b6bd30a5229227276ef5e681017ea743499d305c8d73dbbac88135912')
+sha256sums=('b65d91130335790610d04a6efe4ab55cc41649da2d2af4cf7f05357fe0247c09')
 options=('!lto' '!debug')
 
 prepare() {
@@ -30,7 +30,6 @@ build() {
 package(){
 	install -Dm644 $_dirname/LICENSE -t $pkgdir/usr/share/licenses/$pkgname
 	install -Dm755 $_dirname/src-tauri/target/release/resources/mangohud_default.conf -t $pkgdir/usr/lib/twintaillauncher/resources/
-	install -Dm755 $_dirname/src-tauri/target/release/resources/krpatchz -t $pkgdir/usr/lib/twintaillauncher/resources/
 	install -Dm755 $_dirname/src-tauri/target/release/resources/hpatchz -t $pkgdir/usr/lib/twintaillauncher/resources/
 	install -Dm755 $_dirname/src-tauri/target/release/resources/7zr -t $pkgdir/usr/lib/twintaillauncher/resources/
 	install -Dm755 $_dirname/src-tauri/target/release/resources/reaper -t $pkgdir/usr/lib/twintaillauncher/resources/
