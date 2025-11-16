@@ -5,11 +5,12 @@ pkgbase = helion-bin
 	url = https://github.com/Helion-Engine/Helion
 	arch = x86_64
 	license = GPL-3.0-or-later
-	depends = openal
-	depends = fluidsynth
-	depends = sdl2
-	depends = glfw
-	depends = zmusic>=1.1.8
+	depends = libsndfile
+	depends = mpg123
+	depends = gcc-libs
+	depends = alsa-lib
+	depends = glibc
+	depends = glib2
 	provides = helion
 	conflicts = helion
 	source = https://github.com/Helion-Engine/Helion/releases/download/0.9.8.0/Helion-0.9.8.0-linux-x64_AOT.zip
