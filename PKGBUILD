@@ -11,10 +11,8 @@ makedepends=('cmake' 'base-devel' 'eigen' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xi-ve/openvr-space-calibrator-linux/archive/main.tar.gz"
         "openvr-headers.tar.gz::https://github.com/ValveSoftware/openvr/archive/master.tar.gz"
         "imgui.tar.gz::https://github.com/ocornut/imgui/archive/refs/heads/master.tar.gz"
-        "eigen.tar.gz::https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz"
-        "${pkgname}.install")
+        "eigen.tar.gz::https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz")
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
