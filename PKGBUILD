@@ -1,6 +1,6 @@
 # Maintainer: Siavash Askari Nasr <ciavash@protonmail.com>
 pkgname=rakudo-bin
-pkgver=2025.10_01
+pkgver=2025.11_01
 pkgrel=1
 pkgdesc="Raku compiler for MoarVM"
 arch=('x86_64')
@@ -20,7 +20,7 @@ validpgpkeys=(
     # Justin DeVuyst
     '59E634736AFDCF9C6DBAC382602D51EACA887C01'
 )
-sha512sums=('0d1dfac286d6290b49c815210e5c3094d162d8ceccf3d5f7dfbf40e7b1e0600ee022c16b2bddbf0d8253d248de91c23d2935262c3bf08c4ef5bea8f3ae900fd2'
+sha512sums=('87593309123d433de83889eb1ac7de6bad0563c1382af39f8f1346e5efe5e352206a4eda5bbdf7e2cd0ba99014a1591e40fd8382cc2bd8de8fb2bdc86e1339ce'
             'SKIP')
 
 package() {
