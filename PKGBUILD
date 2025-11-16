@@ -3,7 +3,7 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-castellan
-pkgver=5.2.1
+pkgver=5.4.1
 pkgrel=1
 pkgdesc="Generic Key Manager interface for OpenStack"
 arch=(any)
@@ -30,7 +30,7 @@ makedepends=(
     'python-installer'
     'python-setuptools'
     'python-wheel'
-    'tar'
+    'git'
 )
 checkdepends=(
     'python-coverage'
@@ -40,13 +40,8 @@ checkdepends=(
     'python-testscenarios'
     'pifpaf'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-noextract=("$pkgname-$pkgver.tar.gz")
-b2sums=('bd6534cc0ab882fa0321e1a3f2cd8487c6fb1819a4a15d443a72c673eb5fa5da3f8f30c43596d4f0d894bedcf4f16d8fe47f09531a0645e3c5c9315a3f02dc4d')
-
-prepare() {
-    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
-}
+source=("$pkgname-$pkgver::git+$url.git#tag=$pkgver")
+b2sums=('1a551a5b29d74067c9bddb06657c9bf2a08e203fcf42d0b8ae4c35397a663179dae10bf0835c5ad00db257fd4f91a58b9b25cf7991c810f6a3b11677ef408949')
 
 build(){
     cd "$pkgname-$pkgver" || exit

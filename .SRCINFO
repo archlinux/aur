@@ -1,6 +1,6 @@
 pkgbase = python-castellan
 	pkgdesc = Generic Key Manager interface for OpenStack
-	pkgver = 5.2.1
+	pkgver = 5.4.1
 	pkgrel = 1
 	url = https://opendev.org/openstack/castellan
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-castellan
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = tar
+	makedepends = git
 	depends = python
 	depends = python-pbr
 	depends = python-cryptography
@@ -30,8 +30,7 @@ pkgbase = python-castellan
 	depends = python-requests
 	depends = python-requests-mock
 	depends = python-oslotest
-	noextract = python-castellan-5.2.1.tar.gz
-	source = python-castellan-5.2.1.tar.gz::https://opendev.org/openstack/castellan/archive/5.2.1.tar.gz
-	b2sums = bd6534cc0ab882fa0321e1a3f2cd8487c6fb1819a4a15d443a72c673eb5fa5da3f8f30c43596d4f0d894bedcf4f16d8fe47f09531a0645e3c5c9315a3f02dc4d
+	source = python-castellan-5.4.1::git+https://opendev.org/openstack/castellan.git#tag=5.4.1
+	b2sums = 1a551a5b29d74067c9bddb06657c9bf2a08e203fcf42d0b8ae4c35397a663179dae10bf0835c5ad00db257fd4f91a58b9b25cf7991c810f6a3b11677ef408949
 
 pkgname = python-castellan
