@@ -2,7 +2,7 @@
 # Previous Maintainer: Nicolas Goy <me@kuon.ch>
 
 pkgname=openswitcher
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Library implementing the ATEM video switcher protocol and a GTK3.0 application"
 arch=("any")
@@ -11,8 +11,8 @@ license=('GPL3' 'LGPL3')
 groups=()
 depends=('python' 'python-pyusb' 'python-cairo' 'libhandy')
 makedepends=('git' 'meson' 'python-setuptools')
-source=("$pkgname"::"git+${url}#tag=a6e53b80055a23a5c21a3bd505d7acbe7e5b58d0")
-b2sums=('e443eb48d2da5880e88989967987018dee27b4e6187e07d5fd08a96fbd8f6a922593280d3775f3bbfa23a8f21efd81ec3510f1049fe6c89ab47ee6ae9cb9716f')
+source=("$pkgname"::"git+${url}#tag=2ae9fce909736346688cf97facb824b9b91788e0")
+b2sums=('cae17ae627c523bbd68ee83a2bd0396e6570bbf484fc0d91a4fc34d3244b5ad29614a394becb8561199d7ed38fe3edb9f0b49050ec04c8b22ee4b2dec7edfdc8')
 
 build() {
   cd "${srcdir}/${pkgname}"
