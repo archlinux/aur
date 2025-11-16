@@ -1,0 +1,5 @@
+pkg/
+src/
+1.sh
+tclient-ddnet-*.tar.zst
+TClient-*.tar.xz
