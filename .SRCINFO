@@ -1,6 +1,6 @@
 pkgbase = python-oslo-service
 	pkgdesc = Library for running OpenStack services
-	pkgver = 4.1.1
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://opendev.org/openstack/oslo.service
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-oslo-service
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = tar
+	makedepends = git
 	depends = python
 	depends = python-webob
 	depends = python-debtcollector
@@ -39,8 +39,9 @@ pkgbase = python-oslo-service
 	depends = python-requests
 	depends = python-fixtures
 	depends = python-testtools
-	noextract = python-oslo-service-4.1.1.tar.gz
-	source = python-oslo-service-4.1.1.tar.gz::https://opendev.org/openstack/oslo.service/archive/4.1.1.tar.gz
-	b2sums = eb214a8c3da360b6b6f60bfa121e61473e6a4ecb21cc5cea1d3f008530417cc73257ca1bbe207e9060bba5d1f7116cd51acb566efb10afbfb115df9ae532b020
+	depends = python-futurist
+	depends = python-cotyledon
+	source = python-oslo-service-4.4.0::git+https://opendev.org/openstack/oslo.service.git#tag=4.4.0
+	b2sums = 9caa5ad1264364a86098391704e223f61b6e4408da5966c2e313d92656aa19fe880654803f05497678aa0929cca41beaa2dbccb7b52067316b8f352b7382adb6
 
 pkgname = python-oslo-service

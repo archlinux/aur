@@ -2,7 +2,7 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-oslo-service
-pkgver=4.1.1
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Library for running OpenStack services"
 arch=(any)
@@ -28,13 +28,15 @@ depends=(
     'python-requests'
     'python-fixtures'
     'python-testtools'
+    'python-futurist'
+    'python-cotyledon'
 )
 makedepends=(
     'python-build'
     'python-installer'
     'python-setuptools'
     'python-wheel'
-    'tar'
+    'git'
 )
 checkdepends=(
     'python-fixtures'
@@ -48,13 +50,8 @@ checkdepends=(
     'python-testtools'
     'python-paste'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-noextract=("$pkgname-$pkgver.tar.gz")
-b2sums=('eb214a8c3da360b6b6f60bfa121e61473e6a4ecb21cc5cea1d3f008530417cc73257ca1bbe207e9060bba5d1f7116cd51acb566efb10afbfb115df9ae532b020')
-
-prepare() {
-    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
-}
+source=("$pkgname-$pkgver::git+$url.git#tag=$pkgver")
+b2sums=('9caa5ad1264364a86098391704e223f61b6e4408da5966c2e313d92656aa19fe880654803f05497678aa0929cca41beaa2dbccb7b52067316b8f352b7382adb6')
 
 build(){
     cd "$pkgname-$pkgver" || exit
