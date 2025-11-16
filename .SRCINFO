@@ -1,6 +1,6 @@
 pkgbase = mpls-git
 	pkgdesc = A markdown language server with live preview in browser
-	pkgver = v0.16.0.r0.gf0607c3
+	pkgver = v0.16.0.r1.gf7945bb
 	pkgrel = 1
 	url = https://github.com/mhersson/mpls
 	arch = x86_64
