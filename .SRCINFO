@@ -1,14 +1,14 @@
 pkgbase = nodejs-appium-safari-driver
 	pkgdesc = Appium driver for Safari browser
-	pkgver = 4.0.1
+	pkgver = 4.0.2
 	pkgrel = 1
 	url = https://www.npmjs.com/package/appium-safari-driver
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = npm
 	depends = nodejs
-	noextract = nodejs-appium-safari-driver-4.0.1.tgz
-	source = nodejs-appium-safari-driver-4.0.1.tgz::https://registry.npmjs.org/appium-safari-driver/-/appium-safari-driver-4.0.1.tgz
-	sha256sums = 51e3e3723c8da9b09867d4bfd3dd375f8241eab5131a06df9ef9def156a7fab8
+	noextract = nodejs-appium-safari-driver-4.0.2.tgz
+	source = nodejs-appium-safari-driver-4.0.2.tgz::https://registry.npmjs.org/appium-safari-driver/-/appium-safari-driver-4.0.2.tgz
+	sha256sums = ff79eb04b166a6549156ded75f0c54c6cdf3d91d045b8823c7a02a09050ca0fd
 
 pkgname = nodejs-appium-safari-driver
