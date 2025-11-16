@@ -1,0 +1,24 @@
+pkgbase = fbreader-appimage
+	pkgdesc = An ebook reader supporting EPUB, with google drive sync (including last read page)
+	pkgver = 2.1.3
+	pkgrel = 1
+	url = https://fbreader.org/
+	install = fbreader-appimage.install
+	arch = x86_64
+	license = AGPL3
+	makedepends = p7zip
+	depends = zlib
+	depends = libxcb
+	noextract = FBReader_Book_Reader-x86_64-2.1.3.AppImage
+	options = !strip
+	source = https://fbreader.org/static/packages/linux/FBReader_Book_Reader-x86_64-2.1.3.AppImage
+	source = fbreader.desktop
+	source = fbreader.png
+	source = fbreader-appimage.sh
+	sha512sums = cbe928dc3b8cf38920ed59feeaf92e3666abedd35f796e78d6804cf538a5190633c6a5bf62a8657266bbf6ad5c35be0b98d80e865c868f5be7b6e6d8402c98d8
+	sha512sums = a66214ad330f96f7025b9bf75fbf72c152758f919bbbb14479aefa341b9f7c1dbcae2ab3b4a9864935f0c739f3f12ef10e6799be69f9be3435b4db7456fce592
+	sha512sums = 7945eebaa491b5212d6a7dff3e4dcea4ab3299ef8379bdb6d48cfe27a8759fb938799494832fdd552b8eb4865a1ad978833b0aacd1c92ece67c1efcf844a1d5d
+	sha512sums = 926bc93f16521fd49272f87285c63d7f01e2c22c1bf63f5bd1cdf2ad4b71678b6392aadda650f5e70ffbd62256db900e60fca23288411296acb2721aa0e3bdbb
+
+pkgname = fbreader-appimage
+	pkgdesc = FBReader (AppImage packaging)

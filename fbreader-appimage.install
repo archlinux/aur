@@ -1,0 +1,15 @@
+post_install() {
+    # ensure AppImage is executable
+    # (set by package() too, but this ensures permissions for manual installs)
+    chmod 755 /opt/appimages/fbreader.AppImage 2>/dev/null || true
+}
+
+post_upgrade() {
+    # keep permissions after upgrades
+    chmod 755 /opt/appimages/fbreader.AppImage 2>/dev/null || true
+}
+
+post_remove() {
+    # nothing required here; leave file removal to pacman
+    :
+}

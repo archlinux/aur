@@ -1,0 +1,30 @@
+# Pacman package outputs
+*.pkg.tar.*
+*.pkg.tar.zst
+*.src.tar.gz
+
+# makepkg build and installation directories
+pkg/
+src/
+
+# AppImages downloaded or placed locally
+*.AppImage
+*.AppImage.zsync
+
+# Backup files
+*~
+*.bak
+*.swp
+*.swm
+*.swx
+*.swo
+
+# IDE/editor files
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Misc
+.DS_Store

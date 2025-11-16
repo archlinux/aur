@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=FBReader
+GenericName=eBook Reader
+Exec=fbreader-appimage %u
+Type=Application
+Icon=fbreader
+Categories=Viewer;
+MimeType=application/epub+zip;application/epub+zip;application/pdf;
+Terminal=false
+StartupNotify=true
