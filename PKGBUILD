@@ -2,7 +2,7 @@
 
 pkgname="shinobi-git"
 pkgver=r3116.07584db3
-pkgrel=1
+pkgrel=2
 pkgdesc="The Open Source CCTV and NVR Solution"
 url="https://shinobi.video/"
 license=("custom") # not free for commercial use

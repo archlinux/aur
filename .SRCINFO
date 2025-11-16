@@ -1,7 +1,7 @@
 pkgbase = shinobi-git
 	pkgdesc = The Open Source CCTV and NVR Solution
 	pkgver = r3116.07584db3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://shinobi.video/
 	install = shinobi.install
 	arch = any
@@ -10,6 +10,8 @@ pkgbase = shinobi-git
 	makedepends = git
 	depends = ffmpeg
 	depends = nodejs
+	optdepends = mariadb: database
+	optdepends = postgresql: database
 	provides = shinobi
 	options = !strip
 	backup = etc/shinobi/conf.json
