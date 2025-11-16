@@ -3,7 +3,7 @@
 
 pkgname=python-oslo-cache
 pkgver=3.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An oslo.config enabled dogpile.cache"
 arch=(any)
 url="https://opendev.org/openstack/oslo.cache"
@@ -25,6 +25,7 @@ depends=(
     'python-pymemcache'
     'python-binary-memcached'
     'python-etcd3gw'
+    'python-debtcollector'
 )
 makedepends=(
     'python-build'

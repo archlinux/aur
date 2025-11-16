@@ -1,7 +1,7 @@
 pkgbase = python-oslo-cache
 	pkgdesc = An oslo.config enabled dogpile.cache
 	pkgver = 3.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opendev.org/openstack/oslo.cache
 	arch = any
 	license = Apache-2.0
@@ -36,6 +36,7 @@ pkgbase = python-oslo-cache
 	depends = python-pymemcache
 	depends = python-binary-memcached
 	depends = python-etcd3gw
+	depends = python-debtcollector
 	source = python-oslo-cache-3.12.0::git+https://opendev.org/openstack/oslo.cache.git#tag=3.12.0
 	b2sums = 6f5cd4cb3f05774830ae5728675a5131cc0d03f47597d2a9c9625e43fa16a79a14dc4b7335c2a529c75d28127c51e26c488564600e19e81ce416eed51cf7123d
 
