@@ -1,6 +1,6 @@
 pkgbase = python-oslo-middleware
 	pkgdesc = OpenStack middleware library
-	pkgver = 6.3.1
+	pkgver = 6.6.0
 	pkgrel = 1
 	url = https://opendev.org/openstack/oslo.middleware
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-oslo-middleware
 	makedepends = python-sphinx
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = tar
+	makedepends = git
 	depends = python
 	depends = python-pbr
 	depends = python-jinja
@@ -35,8 +35,8 @@ pkgbase = python-oslo-middleware
 	depends = python-fixtures
 	depends = python-oslo-serialization
 	depends = python-requests
-	noextract = python-oslo-middleware-6.3.1.tar.gz
-	source = python-oslo-middleware-6.3.1.tar.gz::https://opendev.org/openstack/oslo.middleware/archive/6.3.1.tar.gz
-	b2sums = fa714d5e98ab341facafb5c3f9866bff8dd6c9aa387b890f991579a8f264daec98e9ecbc6f2913d03ce12d6aa3d4eae4ffe113e4b49cfe5467d0d18118c514b5
+	depends = python-typing_extensions
+	source = python-oslo-middleware-6.6.0::git+https://opendev.org/openstack/oslo.middleware.git#tag=6.6.0
+	b2sums = c71378cb249412c7a7123c23cb36a422ca214827ae2afbc27b0eb00795cbd471c3ee246ef30f1fe7f2730157953c517be6c8884776a9ec79cf3bd7fd641cbf48
 
 pkgname = python-oslo-middleware

@@ -2,7 +2,7 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-oslo-middleware
-pkgver=6.3.1
+pkgver=6.6.0
 pkgrel=1
 pkgdesc="OpenStack middleware library"
 arch=(any)
@@ -27,6 +27,7 @@ depends=(
     'python-fixtures'
     'python-oslo-serialization'
     'python-requests'
+    'python-typing_extensions'
 )
 makedepends=(
     'python-build'
@@ -34,7 +35,7 @@ makedepends=(
     'python-sphinx'
     'python-setuptools'
     'python-wheel'
-    'tar'
+    'git'
 )
 checkdepends=(
     'python-fixtures'
@@ -44,13 +45,8 @@ checkdepends=(
     'python-oslo-serialization'
     'python-stestr'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-noextract=("$pkgname-$pkgver.tar.gz")
-b2sums=('fa714d5e98ab341facafb5c3f9866bff8dd6c9aa387b890f991579a8f264daec98e9ecbc6f2913d03ce12d6aa3d4eae4ffe113e4b49cfe5467d0d18118c514b5')
-
-prepare() {
-    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
-}
+source=("$pkgname-$pkgver::git+$url.git#tag=$pkgver")
+b2sums=('c71378cb249412c7a7123c23cb36a422ca214827ae2afbc27b0eb00795cbd471c3ee246ef30f1fe7f2730157953c517be6c8884776a9ec79cf3bd7fd641cbf48')
 
 build(){
     cd "$pkgname-$pkgver" || exit
