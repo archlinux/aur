@@ -1,5 +1,6 @@
 # Maintainer: Sanjaya Danushka <dsanjaya712@gmail.com>
 pkgname=neoarch-git
+pkgver=1.2.beta
 pkgrel=1
 pkgdesc="NeoArch Package Manager for Arch Linux"
 arch=('any')
@@ -10,7 +11,7 @@ makedepends=('git')
 provides=('neoarch')
 conflicts=('neoarch')
 install=neoarch-git.install
-source=('git+https://github.com/Sanjaya-Danushka/Neoarch.git')
+source=('git+https://github.com/Sanjaya-Danushka/Neoarch.git#tag=v1.2-beta')
 md5sums=('SKIP')
 
 pkgver() {
