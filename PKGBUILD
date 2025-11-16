@@ -2,7 +2,7 @@
 
 pkgname=servo-bin
 _pkgname="${pkgname%-bin}"
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="A prototype web browser engine written in the Rust language"
 arch=('x86_64')
@@ -23,7 +23,7 @@ depends=(
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${CARCH}-linux-gnu.tar.gz")
-sha256sums=('c26e0e00823eda7ef80d7121f9d2f94a4a059b6ded1ded3678e823877c82778d')
+sha256sums=('f10a9c5e71f16511a4722c254aa2c7a5d1b920a4c20583d22a8b68070512e2c0')
 
 prepare() {
 	sed -i '/^Exec=/s|SERVO_SRC_PATH/target/release/||;/TODO:/d' "${_pkgname}/resources/org.servo.Servo.desktop"
