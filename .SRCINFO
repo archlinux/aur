@@ -1,0 +1,18 @@
+pkgbase = csdr-skimmer
+	pkgdesc = CSDR-based CW and RTTY skimmers
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/luarvique/csdr-skimmer
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	depends = fftw
+	depends = csdr
+	conflicts = csdr-cwskimmer
+	replaces = csdr-cwskimmer
+	source = csdr-skimmer::git+https://github.com/luarvique/csdr-cwskimmer.git#tag=1.5
+	md5sums = SKIP
+
+pkgname = csdr-skimmer
