@@ -30,7 +30,7 @@ license=(
 provides=("${pkgname}")
 depends=("electron${_electronver}" 'devil' 'python-py7zr' )
 makedepends=('git' 'npm' 'nvm' 'sed' )
-optdepends=('recoil_engine-rc')
+optdepends=('recoil-engine-rc')
 install="${pkgname%-git}.install"
 source=("${pkgname%-git}::git+${_ghurl}.git${_tag}${_git_commit}"
         "${pkgname%-git}.sh"
