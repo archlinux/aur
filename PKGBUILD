@@ -1,11 +1,11 @@
-# Maintainer: Rafael Baboni Dominiquini <rafaeldominiquini@gmail.com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgauthor=laktak
 _pkgname=chkbit
 pkgname=${_pkgname}-bin
 pkgver=6.5.0
 pkgrel=1
-pkgdesc="Check your files for data corruption "
+pkgdesc="Check your files for data corruption and run quick file deduplication"
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
 arch=('x86_64' 'arm64' 'riscv64')

@@ -1,5 +1,5 @@
 pkgbase = chkbit-bin
-	pkgdesc = Check your files for data corruption
+	pkgdesc = Check your files for data corruption and run quick file deduplication
 	pkgver = 6.5.0
 	pkgrel = 1
 	url = https://github.com/laktak/chkbit
