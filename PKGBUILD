@@ -2,7 +2,7 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-oslo-metrics
-pkgver=0.11.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="OpenStack library for collecting metrics from Oslo libraries"
 arch=(any)
@@ -21,7 +21,7 @@ makedepends=(
     'python-installer'
     'python-setuptools'
     'python-wheel'
-    'tar'
+    'git'
 )
 checkdepends=(
     'python-hacking'
@@ -30,13 +30,8 @@ checkdepends=(
     'python-coverage'
     'python-stestr'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-noextract=("$pkgname-$pkgver.tar.gz")
-b2sums=('d0c0ddd918b7658ec51371fd1f8286ef2e6e547935266ec370aeb95c90a74a844cfb2c5ab40af4490c7c70476854048969a6e240b46b2afa5d3b4cb8f6dc75ea')
-
-prepare() {
-    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
-}
+source=("$pkgname-$pkgver::git+$url.git#tag=$pkgver")
+b2sums=('dd7aa384af35e23a2050756ed8cb627ed940ac92ab6d96ea3852779b97934ebbfa7678ada9c3e8c14ebf86f3d6f71c9e1f8754b52bd15d054e0b36be16e8d52d')
 
 build(){
     cd "$pkgname-$pkgver" || exit

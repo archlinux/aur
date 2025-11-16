@@ -1,6 +1,6 @@
 pkgbase = python-oslo-metrics
 	pkgdesc = OpenStack library for collecting metrics from Oslo libraries
-	pkgver = 0.11.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://opendev.org/openstack/oslo.metrics
 	arch = any
@@ -14,15 +14,14 @@ pkgbase = python-oslo-metrics
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = tar
+	makedepends = git
 	depends = python
 	depends = python-oslo-utils
 	depends = python-oslo-log
 	depends = python-oslo-config
 	depends = python-prometheus_client
 	depends = python-oslotest
-	noextract = python-oslo-metrics-0.11.0.tar.gz
-	source = python-oslo-metrics-0.11.0.tar.gz::https://opendev.org/openstack/oslo.metrics/archive/0.11.0.tar.gz
-	b2sums = d0c0ddd918b7658ec51371fd1f8286ef2e6e547935266ec370aeb95c90a74a844cfb2c5ab40af4490c7c70476854048969a6e240b46b2afa5d3b4cb8f6dc75ea
+	source = python-oslo-metrics-0.13.0::git+https://opendev.org/openstack/oslo.metrics.git#tag=0.13.0
+	b2sums = dd7aa384af35e23a2050756ed8cb627ed940ac92ab6d96ea3852779b97934ebbfa7678ada9c3e8c14ebf86f3d6f71c9e1f8754b52bd15d054e0b36be16e8d52d
 
 pkgname = python-oslo-metrics
