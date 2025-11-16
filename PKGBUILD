@@ -5,7 +5,7 @@
 
 pkgname=leaflet
 pkgver=1.9.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A JavaScript library for mobile-friendly interactive maps.'
 arch=(any)
 url="https://github.com/${pkgname^}/${pkgname^}"
@@ -13,7 +13,9 @@ url="https://github.com/${pkgname^}/${pkgname^}"
 license=('BSD')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-
+makedepends=(
+	'npm'
+)
 source=("${pkgname}-${pkgver}-LICENSE::${url/github/raw.githubusercontent}/refs/tags/v${pkgver}/LICENSE")
 source_x86_64=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
@@ -27,5 +29,7 @@ package() {
 
 	install -d ${pkgdir}/usr/share/javascript/${pkgname}
 	cp -a ${srcdir}/${pkgname^}-${pkgver}/dist/* ${pkgdir}/usr/share/javascript/$pkgname/
+
+	# Install licence file
 	install -Dvm644 -T "${pkgname^}-${pkgver}/LICENSE" ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
