@@ -1,15 +1,15 @@
 pkgbase = phan
 	pkgdesc = Static analyzer for PHP that prefers to minimize false-positives.
-	pkgver = 5.5.1
+	pkgver = 5.5.2
 	pkgrel = 1
 	url = https://github.com/phan/phan/wiki
 	arch = any
 	license = MIT
 	depends = php>=7.2.0
 	depends = php-ast>=1.0.16
-	source = phan-5.5.1.phar::https://github.com/phan/phan/releases/download/5.5.1/phan.phar
-	source = https://raw.githubusercontent.com/phan/phan/5.5.1/LICENSE
-	sha256sums = ef76437e0be14a8705fc59a33a5fd3c3de6db26586e1c364b65b20cfb5c8f7ab
+	source = phan-5.5.2.phar::https://github.com/phan/phan/releases/download/5.5.2/phan.phar
+	source = https://raw.githubusercontent.com/phan/phan/5.5.2/LICENSE
+	sha256sums = a5af648f72aa44159527b9e9651e9ac7c4bb3b028d88cfdf60830b63f3b5bbaf
 	sha256sums = SKIP
 
 pkgname = phan
