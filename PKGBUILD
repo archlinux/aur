@@ -1,10 +1,10 @@
 pkgname=tradingview-bin-latest
 pkgver=2.14.0_1
 pkgrel=1
-pkgdesc="TradingView desktop client (binary .deb repackaged for Arch)"
+pkgdesc="TradingView desktop client (prebuilt .deb, minimal installation, symlinked binary)"
 arch=('x86_64')
 url="https://www.tradingview.com"
-license=('custom')
+license=('LicenseRef-TradingView')
 depends=('gtk3' 'nss')
 source=("https://tvd-packages.tradingview.com/ubuntu/stable/latest/jammy/tradingview_amd64.deb")
 sha256sums=('SKIP')
