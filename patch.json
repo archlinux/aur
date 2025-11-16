@@ -975,6 +975,7 @@
 		"https://portal.azure.com",
 		"https://raw.githubusercontent.com",
 		"https://private-user-images.githubusercontent.com",
-		"https://avatars.githubusercontent.com"
+		"https://avatars.githubusercontent.com",
+		"https://auth.openai.com"
 	]
 }

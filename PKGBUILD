@@ -1,7 +1,7 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=code-marketplace
-pkgver=1.102.1
-pkgrel=2
+pkgver=1.106.0
+pkgrel=1
 pkgdesc='Enable vscode marketplace in Code OSS'
 arch=('any')
 url='https://marketplace.visualstudio.com/vscode'
@@ -14,7 +14,7 @@ source=('code-marketplace.hook'
         'patch.json')
 md5sums=('ce502275aa945985182b51420fc6037c'
          '8ff44c81624f63e20884531715896ef3'
-         '10c1c73ea3977afb9b8954e5e8407d6e')
+         '0b5d20c86e0ae1c1ce2951cfb40d0e77')
 
 package() {
   install -Dm 644 "${srcdir}"/code-marketplace.hook "${pkgdir}"/usr/share/libalpm/hooks/code-marketplace.hook
