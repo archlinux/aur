@@ -1,52 +1,9 @@
---- pom.xml	2025-10-25 18:23:42.000000000 +0100
-+++ pom_patched.xml	2025-10-25 19:33:43.071571272 +0100
-@@ -48,19 +48,6 @@
-         <artifactId>download-maven-plugin</artifactId>
+--- pom.xml	2025-11-16 17:47:22.553309432 +0000
++++ pom-patched.xml	2025-11-16 17:57:35.124495233 +0000
+@@ -85,70 +85,6 @@
+         <artifactId>maven-antrun-plugin</artifactId>
+         <version>3.2.0</version>
          <executions>
-           <execution>
--            <id>download-jre-windows</id>
--            <phase>package</phase>
--            <goals>
--              <goal>wget</goal>
--            </goals>
--            <configuration>
--              <url>https://github.com/nbauma109/jre-builder/releases/download/${jre.builder.version}/jre-${jre.builder.version}-${jre.version}-windows.zip</url>
--              <unpack>true</unpack>
--              <outputDirectory>${project.build.directory}/windows/jre</outputDirectory>
--              <sha512>1df09e495aa76e55928d93f17f6128b0b05d8de817404d71b71ffc3c70f1c7d044a74d38b046bc69e8d71b49fa066336f4f43bbc2d9cbd907e34a881b19e0a05</sha512>
--            </configuration>
--          </execution>
--          <execution>
-             <id>download-jre-linux</id>
-             <phase>package</phase>
-             <goals>
-@@ -73,19 +60,6 @@
-               <sha512>07cf8d488c3ab7febe1f046a745cc6d5ecf62ddbe323ddac533278c2b5bc2abbb9407de330d4fa4380c1cdd0617d02a83b7935fbd19f18e11c8be3f31ac77598</sha512>
-             </configuration>
-           </execution>
--          <execution>
--            <id>download-jre-macos</id>
--            <phase>package</phase>
--            <goals>
--              <goal>wget</goal>
--            </goals>
--            <configuration>
--              <url>https://github.com/nbauma109/jre-builder/releases/download/${jre.builder.version}/jre-${jre.builder.version}-${jre.version}-macos.zip</url>
--              <unpack>true</unpack>
--              <outputDirectory>${project.build.directory}/macos/jre</outputDirectory>
--              <sha512>8100c651e49263f8e4fed00f8823f962dcaadf93840671edec59539ee399526cf5bdc358cc6f34901d5f86d20ce40071d6707ee098a00e350d3ae5c828652bcc</sha512>
--            </configuration>
--          </execution>
-         </executions>
-       </plugin>
- 
-@@ -108,95 +82,9 @@
-       </plugin>
-       <plugin>
-         <groupId>org.apache.maven.plugins</groupId>
--        <artifactId>maven-antrun-plugin</artifactId>
--        <version>3.2.0</version>
--        <executions>
 -          <execution>
 -            <id>build-macos-app-bundle</id>
 -            <phase>package</phase>
@@ -111,10 +68,10 @@
 -              </target>
 -            </configuration>
 -          </execution>
--        </executions>
--      </plugin>
--      <plugin>
--        <groupId>org.apache.maven.plugins</groupId>
+         </executions>
+       </plugin>
+       <plugin>
+@@ -156,21 +92,6 @@
          <artifactId>maven-assembly-plugin</artifactId>
          <executions>
            <execution>
@@ -136,7 +93,7 @@
              <id>assemble-linux</id>
              <phase>package</phase>
              <goals>
-@@ -211,21 +99,6 @@
+@@ -185,21 +106,6 @@
                </descriptors>
              </configuration>
            </execution>
@@ -158,7 +115,7 @@
          </executions>
        </plugin>
        <plugin>
-@@ -269,21 +142,6 @@
+@@ -233,21 +139,6 @@
              <phase>none</phase>
            </execution>
            <execution>
