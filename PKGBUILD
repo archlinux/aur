@@ -3,7 +3,7 @@
 # Contributor: Jérôme de Courval <decje9@gmail.com>
 pkgname=tandoor-recipes
 pkgver=2.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Application for managing recipes, planning meals, building shopping lists and much much more."
 arch=('any')
 url="https://github.com/TandoorRecipes/recipes"
@@ -47,10 +47,7 @@ package() {
 	source "$pkgdir/usr/share/tandoor/venv/bin/activate"
 	pip install --isolated --require-virtualenv --cache-dir "$srcdir/pip-cache" --disable-pip-version-check -r "$srcdir/recipes-$pkgver/requirements.txt"
 
-	python "$srcdir/recipes-$pkgver/manage.py" collectstatic --noinput --clear
-
-	find "$pkgdir/usr/share/tandoor" -name __pycache__ -type d -exec rm -rf {} +
-	find "$srcdir" -name __pycache__ -type d -exec rm -rf {} +
+	find "$pkgdir/usr/share/tandoor/venv" -name __pycache__ -type d -exec rm -rf {} +
 	find "$pkgdir/usr/share/tandoor/venv" -type f -exec sed -i "s|$pkgdir||g" {} \;
 
 	cd "$srcdir"
