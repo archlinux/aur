@@ -1,7 +1,7 @@
 # Maintainer: Alexander Beck <dev@daallexx.eu>
 
 pkgname=etr
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc='ETR - ECMP Traceroute'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('libpcap')
 makedepends=('git' 'go')
 install=etr.install
 source=("git+https://github.com/tkjaer/etr#tag=v${pkgver}")
-sha512sums=('0f3d2d522864e278f116110fe6ea82551800a7bea74fbe026dfc87017fe6122a583428af0e38707e2f37cf42d7b1be9ffd788c87392fb9f45d9dad847dcb22eb')
+sha512sums=('2e199ca97dec3569ca3953c1b306559a13c1e7c019a00a120c1894ebd60e2349ffda59c7171bfe57cc2c7f970c00c47a3ac9baf802c8fff22eb0376e7378af0f')
 
 prepare(){
   cd "$pkgname"
