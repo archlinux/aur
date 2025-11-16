@@ -1,7 +1,7 @@
 # Maintainer: shulhan <ms@kilabit.info>
 
 pkgname=google-cloud-ops-agent-git
-pkgver=2.56.1.r4.g3239f98dc
+pkgver=2.61.0.r9.gccfedc9126
 pkgrel=1
 
 pkgdesc="Ops Agents that are part of the Google Cloud Operations product suite (specifically Cloud Logging and Cloud Monitoring)"
@@ -38,7 +38,6 @@ source=(
 	"opentelemetry-java-contrib::git+https://github.com/open-telemetry/opentelemetry-java-contrib.git"
 	"0001-build-sh.patch"
 	"0002-builds_otel.sh.patch"
-	"0003-fluent-bit.patch"
 )
 sha256sums=(
 	'SKIP'
@@ -47,7 +46,6 @@ sha256sums=(
 	'SKIP'
 	'ba66d01b8058644597d9b406d3b8ce7ed40aed77c7358f2b97ff0e262a4cbb98'
 	'0e663cc6bbfdb5af962001b4645c3c154f715874fb910adfb3b3293564383f14'
-	'c75c0d786009829897cf6ba001d8e223cc5d4923062007fcda2b7c0c1669713a'
 )
 
 pkgver() {
@@ -85,9 +83,6 @@ build() {
 	echo "--- Building fluent_bit ..."
 	echo "--- pkgname=${pkgname}"
 	echo "--- pwd=${PWD}"
-	cd "submodules/fluent-bit"
-	git apply "${srcdir}/0003-fluent-bit.patch"
-	cd "../.."
 	./builds/fluent_bit.sh "$_destdir"
 
 	echo "--- Building systemd ..."
