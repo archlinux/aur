@@ -4,11 +4,11 @@ pkgver=1.11
 pkgrel=1
 pkgdesc="Blazingly fast, ultra-minimal system information tool for Linux"
 arch=('x86_64')
-url="https://github.com/Gur0v/zeptofetch"
+url="https://gitlab.archlinux.org/gurov/zeptofetch"
 license=('GPL-3.0-or-later')
 depends=('glibc')
 makedepends=('gcc' 'make')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Gur0v/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://gitlab.archlinux.org/gurov/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 sha256sums=('4c9871e1ebc7585ff6d72e8102ec4942dd3aff38353c5bfda62963f26b7156ef')
 
 build() {
