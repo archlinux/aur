@@ -1,9 +1,9 @@
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Previous Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 
 pkgname=('llvm16' 'llvm16-libs')
 pkgver=16.0.6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -80,6 +80,11 @@ build() {
     -DLLVM_INSTALL_UTILS=ON
     -DLLVM_LINK_LLVM_DYLIB=ON
     -DLLVM_USE_PERF=ON
+    -DCMAKE_CXX_STANDARD=17
+    -DCMAKE_C_COMPILER=clang 
+    -DCMAKE_CXX_COMPILER=clang++ 
+    -DCMAKE_C_FLAGS="-include stdint.h" 
+    -DCMAKE_CXX_FLAGS="-include stdint.h" 
   )
 
   cmake .. "${cmake_args[@]}"
