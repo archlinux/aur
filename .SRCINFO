@@ -1,6 +1,6 @@
 pkgbase = python-oslo-rootwrap
 	pkgdesc = OpenStack library for rootwrap
-	pkgver = 7.3.0
+	pkgver = 7.8.0
 	pkgrel = 1
 	url = https://opendev.org/openstack/oslo.rootwrap
 	arch = any
@@ -14,13 +14,14 @@ pkgbase = python-oslo-rootwrap
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = tar
+	makedepends = git
 	depends = python
 	depends = python-pbr
 	depends = python-eventlet
 	depends = python-fixtures
 	depends = python-testtools
-	source = python-oslo-rootwrap-7.3.0.tar.gz::https://opendev.org/openstack/oslo.rootwrap/archive/7.3.0.tar.gz
-	b2sums = dda183fd1aa5d4c8b511c792890a5158a7cc6b7578229c6497e7233d82cbdf239760c1de0813775bc4187a417d50dd44c4d572b4c81968433589a94dea2aaec6
+	depends = python-debtcollector
+	source = python-oslo-rootwrap-7.8.0::git+https://opendev.org/openstack/oslo.rootwrap.git#tag=7.8.0
+	b2sums = 63adb2963c75efaf58f503132219671564e250fe1be05b6b13567edd0e0b00f8e38f74869ac5cacbc4e3c34d7abc36179828edd858cc490587b895bf335a92b9
 
 pkgname = python-oslo-rootwrap
