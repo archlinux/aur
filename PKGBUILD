@@ -2,7 +2,7 @@
 # Contributor: BigfootACA <bigfoot@classfun.cn>
 
 pkgname=python-tooz
-pkgver=6.3.0
+pkgver=7.0.0
 pkgrel=1
 pkgdesc="Coordinate distributed systems"
 arch=(any)
@@ -33,23 +33,18 @@ makedepends=('python-build'
              'python-installer'
              'python-wheel'
              'python-setuptools'
-             'tar')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('dc8e235ef59470d114c92e099ef28fc318a85632fe378edc4c1acf9ff3fba2c259acd260c9da89855f2e5596b203034199cbd6c611e8bbe776da9f787e065660')
-
-prepare() {
-    tar zxvf "$pkgname-$pkgver.tar.gz" --strip-components=1 --one-top-level
-}
+             'git')
+source=("$pkgname-$pkgver::git+$url.git#tag=$pkgver")
+b2sums=('bc23620f600bd17859a1f3815414453e909648b30aaec4595cbf3c8cf868551f6a503d8e81d5edbb161fbcbf7c105fbcd03155a7479c26428baf7104372d0386')
 
 build(){
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver" || exit
     PBR_VERSION=$pkgver python -m build --wheel --no-isolation
 }
 
 package(){
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver" || exit
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 README.rst -t "$pkgdir/usr/share/$pkgname/"
-    install -Dm644 CONTRIBUTING.rst -t "$pkgdir/usr/share/$pkgname/"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

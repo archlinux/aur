@@ -1,6 +1,6 @@
 pkgbase = python-tooz
 	pkgdesc = Coordinate distributed systems
-	pkgver = 6.3.0
+	pkgver = 7.0.0
 	pkgrel = 1
 	url = https://opendev.org/openstack/tooz
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-tooz
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
-	makedepends = tar
+	makedepends = git
 	depends = python
 	depends = python-stevedore
 	depends = python-voluptuous
@@ -31,7 +31,7 @@ pkgbase = python-tooz
 	depends = python-requests
 	depends = python-redis
 	depends = python-zake
-	source = python-tooz-6.3.0.tar.gz::https://opendev.org/openstack/tooz/archive/6.3.0.tar.gz
-	b2sums = dc8e235ef59470d114c92e099ef28fc318a85632fe378edc4c1acf9ff3fba2c259acd260c9da89855f2e5596b203034199cbd6c611e8bbe776da9f787e065660
+	source = python-tooz-7.0.0::git+https://opendev.org/openstack/tooz.git#tag=7.0.0
+	b2sums = bc23620f600bd17859a1f3815414453e909648b30aaec4595cbf3c8cf868551f6a503d8e81d5edbb161fbcbf7c105fbcd03155a7479c26428baf7104372d0386
 
 pkgname = python-tooz
