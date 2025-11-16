@@ -3,7 +3,7 @@
 # Contributor: Jérôme de Courval <decje9@gmail.com>
 pkgname=tandoor-recipes
 pkgver=2.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Application for managing recipes, planning meals, building shopping lists and much much more."
 arch=('any')
 url="https://github.com/TandoorRecipes/recipes"
