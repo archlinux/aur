@@ -2,7 +2,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='tinct-plugin-dunstify-bin'
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 pkgdesc='Desktop notification plugin for Tinct'
 url='https://github.com/jmylchreest/tinct'
@@ -13,14 +13,14 @@ conflicts=('tinct')
 depends=('tinct')
 install=tinct-plugin-dunstify.install
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.12/tinct-plugin-dunstify_0.0.12_Linux_arm64.tar.gz")
-sha256sums_aarch64=('e7d33fe4f37362bff262892ae3437c510b6fa867b654e97750ab9c1fbf554d93')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.13/tinct-plugin-dunstify_0.0.13_Linux_arm64.tar.gz")
+sha256sums_aarch64=('3ece3449786985f7f647313ec2985dae34f5d50c597cc80619787f688f430682')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.12/tinct-plugin-dunstify_0.0.12_Linux_armv7.tar.gz")
-sha256sums_armv7h=('2d45cabdb6f884052001c7db8b5fb081466191fe577b4bcb91421fa6c22551d7')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.13/tinct-plugin-dunstify_0.0.13_Linux_armv7.tar.gz")
+sha256sums_armv7h=('48ce40b4723a8e630a22053b1dde6c85e5353a746166a213eef433b03391b45e')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.12/tinct-plugin-dunstify_0.0.12_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('9ba1aebebb41ae07630875419920c2c3108561915a14039bba8db78beac426df')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.0.13/tinct-plugin-dunstify_0.0.13_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('f179ffd3cf893b2b668ca4f7a39a8e7ad89642b7611fb2d280bfeea1e55c2ff4')
 
 package() {
   # bin
