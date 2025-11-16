@@ -1,6 +1,6 @@
 # Maintainer: Your Name <niumination.github.io>
 pkgname=niu-speedtest
-pkgver=1.0.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A simple CLI speedtest tool for Arch Linux"
 arch=('any')
