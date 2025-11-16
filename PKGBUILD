@@ -41,5 +41,4 @@ package(){
 	install -Dm644 $_pkgname/src-tauri/icons/32x32.png $pkgdir/usr/share/icons/hicolor/32x32/apps/$_pkgname.png
 	install -Dm644 $_pkgname/src-tauri/icons/128x128.png $pkgdir/usr/share/icons/hicolor/128x128/apps/$_pkgname.png
 	install -Dm644 $_pkgname/src-tauri/icons/128x128@2x.png $pkgdir/usr/share/icons/hicolor/256x256@2/apps/$_pkgname.png
-	ln -sf /usr/lib/"$(readlink -f /usr/lib/libvpx.so | grep -Eo 'libvpx.so' | head -n1)" /usr/lib/libvpx.so.6
 }
