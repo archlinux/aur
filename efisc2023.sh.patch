@@ -1,0 +1,7 @@
+--- efisc2023.sh.orig	2024-01-25 20:56:20.357845227 +0100
++++ efisc2023.sh	2024-01-25 20:56:23.317895942 +0100
+@@ -1,3 +1,3 @@
+ #!/bin/sh
+-cd /usr/share/efisc2023
++cd /usr/share/java/efisc2023
+ ./jre/bin/java -Xmx800m -Xms800m -Djava.locale.providers=COMPAT,CLDR --add-exports=java.base/sun.net.www.protocol.file=ALL-UNNAMED --add-exports=java.desktop/sun.swing=ALL-UNNAMED --add-exports=java.desktop/com.sun.java.swing.plaf.windows=ALL-UNNAMED --add-exports=java.desktop/sun.awt.shell=ALL-UNNAMED --add-exports=java.xml/com.sun.org.apache.xerces.internal.jaxp.datatype=ALL-UNNAMED  -jar jfw-launcher-7.2.20-obf.jar "$1"
