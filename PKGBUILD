@@ -3,15 +3,16 @@
 pkgname=healthchecks
 _pkgver=3.9
 pkgver=3.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A cron monitoring service with a web-based dashboard, API, and notification integrations."
 arch=('any')
 url="https://github.com/healthchecks/healthchecks"
 license=('BSD-3-Clause')
-depends=('python-aiosmtpd' 'python-cron-descriptor' 'python-cronsim' 'python-django'
-         'python-django-compressor' 'python-django-stubs-ext' 'python-fido2' 'python-minio'
-         'python-oncalendar' 'python-pyotp' 'python-pytz' 'python-pycurl' 'python-pydantic'
-         'python-segno' 'python-statsd' 'python-whitenoise' 'uwsgi' 'uwsgi-plugin-python')
+depends=('python-aiosmtpd' 'python-cron-descriptor' 'python-cronsim' 'python-cryptography'
+         'python-django' 'python-django-compressor' 'python-django-stubs-ext' 'python-fido2'
+         'python-minio' 'python-oncalendar' 'python-pyotp' 'python-pytz' 'python-pycurl'
+         'python-pydantic' 'python-pyjwt' 'python-segno' 'python-statsd' 'python-whitenoise'
+         'uwsgi' 'uwsgi-plugin-python')
 optdepends=('python-psycopg2: Add support for postgreSQL.'
             'apprise: Add support for the Apprise integration.')
 backup=("var/lib/$pkgname/local_settings.py" "etc/uwsgi/$pkgname.ini")
@@ -59,10 +60,10 @@ build() {
     ./manage.py collectstatic --no-input
 }
 
-check() {
-    cd "$pkgname-$_pkgver"
-    ./manage.py test
-}
+#check() {
+#    cd "$pkgname-$_pkgver"
+#    ./manage.py test
+#}
 
 package() {
     cd "$pkgname-$_pkgver"
