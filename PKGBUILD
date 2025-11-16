@@ -5,7 +5,7 @@
 
 pkgname=neural-amp-modeler-bypass-lv2
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Neural Amp Modeler (NAM) LV2 plugin with bypass functionality'
 arch=(x86_64)
 url='https://github.com/rickprice/neural-amp-modeler-bypass-lv2'
