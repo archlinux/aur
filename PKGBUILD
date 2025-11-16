@@ -38,7 +38,7 @@ source=("${pkgname%-git}::git+${_ghurl}.git${_tag}${_git_commit}"
 )
 install="${pkgname%-git}.install"
 sha256sums=('SKIP'
-            '52ed26ba5127dc36ee6fe22cb3719cead11ac3fb55b50ee87163bc0cd2af99b7'
+            'a2fc4b255be99cb528864e8af6351deba9a373a453f7ad453aa2749c2a285e03'
             '12727ff1a9df0deda4637f54b903107f133d76f03dad3e4c61d32369c81df619')
 
 
