@@ -1,4 +1,4 @@
-pkgname=tradingview-bin
+pkgname=tradingview-bin-latest
 pkgver=2.14.0_1
 pkgrel=1
 pkgdesc="TradingView desktop client (binary .deb repackaged for Arch)"
