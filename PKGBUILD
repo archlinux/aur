@@ -1,5 +1,5 @@
 pkgname=legionaura
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="RGB keyboard lighting controller for Lenovo LOQ, Legion, and IdeaPad Gaming laptops (CLI + Qt GUI)"
 arch=('x86_64')
