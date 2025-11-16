@@ -1,7 +1,7 @@
 # Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
 
 pkgname=openshift-install
-pkgver=4.20.0
+pkgver=4.20.1
 pkgrel=1
 pkgdesc="Install an OpenShift 4.x cluster"
 arch=("x86_64")
@@ -11,7 +11,7 @@ depends=(
     'glibc'
 )
 source=("$pkgname-$pkgver.tar.gz::https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-install-linux-$pkgver.tar.gz")
-b2sums=('f3a21f0388cf7ccbac1dc469fe10814d9f8cd302ea82d0cbddc992573664d9abdfaa5e8edbac49bf7c2c9b49ff2de0141169307cd4a4b31d983c3b70d8128178')
+b2sums=('f5e62b6377282950fbfa17b85d627dec7b8c4fcc09147f318446a30f1788163d46b020a696fc9e15d5d3755828597e0ba6d668991f43e2c0d64f0903930e1b4c')
 
 package() {
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
