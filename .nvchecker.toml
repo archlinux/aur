@@ -1,0 +1,5 @@
+[sshpilot-bin]
+source = "github"
+github = "mfat/sshpilot"
+use_latest_release = true
+prefix = "v"
