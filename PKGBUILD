@@ -3,8 +3,8 @@
 
 pkgname=lorax
 _pkgver=43.9-1
-pkgver=43.9.1
-pkgrel=5
+pkgver=44.3.1
+pkgrel=1
 pkgdesc="Tools for creating images, including the Anaconda boot.iso, live disk images, iso's, and filesystem images."
 arch=('any')
 url="https://github.com/weldr/lorax"
