@@ -1,41 +1,39 @@
 # Maintainer: Dmitry Mozzherin <dmozzherin@gmail.com>
 
 pkgname=muro
-pkgver=0.1.2
-pkgrel=2
-pkgdesc='Wallpaper with blurred or averaged background for X11'
-arch=('x86_64')
+pkgver=0.2.3
+pkgrel=1
+pkgdesc='Wallpaper with blurred or averaged background for any background tool'
+arch=('x86_64' 'aarch')
 url="https://codeberg.org/dimus/$pkgname"
 license=('MIT')
 makedepends=(
-  'go'
-  'make'
+	'go'
+	'just'
 )
 depends=(
-  'feh'
-  'xorg-xrandr'
 )
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://codeberg.org/dimus/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('75fad5e4357e8c893060e8f89e5c79aefb4c48b9c8f2efe6a02ec69a831e943e')
+sha256sums=('86fe976077f53b3ee663f8658f0caa2267c8d93ebbca5dfec88c3b5a8f5817b6')
 
 prepare() {
-  cd "$pkgname"
-  mkdir -p build/
+	cd "$pkgname"
+	mkdir -p build/
 }
 
 build() {
-  cd "$pkgname"
-  make build
+	cd "$pkgname"
+	just build
 }
 
 check() {
-  cd "$pkgname"
-  go test ./...
+	cd "$pkgname"
+	just test
 }
 
 package() {
-  install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm755 "$srcdir/$pkgname/out/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm755 "$srcdir/$pkgname/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
