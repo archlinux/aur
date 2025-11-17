@@ -1,0 +1,17 @@
+pkgbase = pomati
+	pkgdesc = Frictionless Pomodoro timer for tiling window managers.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://codeberg.org/dimus/pomati
+	arch = x86_64
+	arch = aarch
+	license = MIT
+	makedepends = go
+	makedepends = just
+	provides = pomati
+	conflicts = pomati
+	options = !debug
+	source = https://codeberg.org/dimus/pomati/archive/v0.3.1.tar.gz
+	sha256sums = 79018f762e8eb93cd371e3a95b48060edd1faa9df3d7cc9e6e1709773e003891
+
+pkgname = pomati
