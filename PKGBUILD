@@ -15,11 +15,9 @@ makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/handlebargh/yatto/releases/download/v0.21.7/yatto-0.21.7.tar.gz")
 sha256sums=('97366b72a2c8413787fdbbb5202846a7ca8362940d2496668ebd17ae3fda66d0')
 prepare() {
-  cd "${pkgname}_${pkgver}"
   go mod download
 }
 build() {
-  cd "${pkgname}_${pkgver}"
   export CGO_ENABLED=0
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
   go build \
@@ -30,7 +28,6 @@ build() {
   done
 }
 package() {
-  cd "${pkgname}_${pkgver}"
   install -Dm755 yatto "${pkgdir}/usr/bin/yatto"
   install -Dm644 bash-completion "${pkgdir}/usr/share/bash-completion/completions/yatto"
   install -Dm644 fish-completion "${pkgdir}/usr/share/fish/vendor_completions.d/yatto.fish"
