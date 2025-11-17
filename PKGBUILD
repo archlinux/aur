@@ -9,8 +9,8 @@ license=('GPL2')
 depends=('mpv' 'webkit2gtk' 'gtk3')
 provides=('better-iptv')
 conflicts=('better-iptv' 'better-iptv-git')
-source=("$pkgname-$pkgver.AppImage::https://github.com/mewset/better-iptv/releases/download/v${pkgver}/better-iptv_${pkgver}_amd64.AppImage")
-sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+source=("$pkgname-$pkgver.AppImage::https://github.com/mewset/better-iptv/releases/download/v${pkgver}/Better.IPTV_${pkgver}_amd64.AppImage")
+sha256sums=('be7becd88392b1340ac0e1a951e3eaa7b2a7a90bdce1fb7bd4c75d8c3cbcb00d')
 options=('!strip')
 
 prepare() {
@@ -20,6 +20,8 @@ prepare() {
 }
 
 package() {
+    cd "$srcdir"
+
     # Install files
     install -dm755 "$pkgdir/opt/$pkgname"
     cp -r squashfs-root/* "$pkgdir/opt/$pkgname/"
@@ -33,11 +35,11 @@ EOF
     chmod +x "$pkgdir/usr/bin/better-iptv"
 
     # Desktop entry
-    install -Dm644 squashfs-root/better-iptv.desktop \
+    install -Dm644 "squashfs-root/Better IPTV.desktop" \
         "$pkgdir/usr/share/applications/better-iptv.desktop"
 
     # Icon
-    install -Dm644 squashfs-root/better-iptv.png \
+    install -Dm644 "squashfs-root/Better IPTV.png" \
         "$pkgdir/usr/share/pixmaps/better-iptv.png"
 
     # Fix desktop entry paths
