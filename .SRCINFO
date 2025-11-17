@@ -1,0 +1,19 @@
+pkgbase = syscall
+	pkgdesc = Sudo-like tool using PAM authentication with system-wide user cache
+	pkgver = 1.2
+	pkgrel = 2
+	url = https://github.com/0xraincandy/syscall
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = gcc
+	depends = python
+	depends = python-pam
+	source = syscall
+	source = syscall-helper.c
+	source = syscall.pam
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = syscall
