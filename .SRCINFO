@@ -1,8 +1,8 @@
 pkgbase = sing-box-extended
-	pkgdesc = The universal proxy platform.
+	pkgdesc = Sing-box with extended features.
 	pkgver = 1.12.12~extended~1.4.2
 	pkgrel = 1
-	url = https://sing-box.sagernet.org/
+	url = https://github.com/shtorm-7/sing-box-extended
 	arch = i686
 	arch = pentium4
 	arch = x86_64

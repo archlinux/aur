@@ -6,9 +6,9 @@ _pkgver="1.12.12-extended-1.4.2"
 pkgver="${_pkgver//-/\~}"
 pkgrel=1
 
-pkgdesc='The universal proxy platform.'
+pkgdesc='Sing-box with extended features.'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
-url='https://sing-box.sagernet.org/'
+url='https://github.com/shtorm-7/sing-box-extended'
 license=("LicenseRef-${pkgname}")
 
 makedepends=('go')
