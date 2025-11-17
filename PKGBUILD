@@ -8,8 +8,8 @@
 
 pkgname=bitwig-studio-beta
 _pkgname=bitwig-studio
-_pkgver=4.4
-pkgver=${_pkgver}.2
+_pkgver=6.0
+pkgver=${_pkgver}.6
 pkgrel=1
 pkgdesc='Digital audio workstation for music production, remixing and live performance'
 arch=('x86_64')
@@ -23,12 +23,12 @@ optdepends=('alsa-lib' 'jack' 'oss' 'ffmpeg: MP3 support')
 provides=('bitwig-studio')
 options=(!strip)
 #source=("$_pkgname-$pkgver.deb::https://downloads.bitwig.com/${_pkgver}%20Beta%20${pkgver#*beta}/bitwig-studio-${pkgver}.deb")
-source=("$_pkgname-$pkgver.deb::https://downloads.bitwig.com/stable/${pkgver}/bitwig-studio-${pkgver}.deb")
-b2sums=('752c661906e4c3af169b8fb32cfef3892e633c270bb7f2d64962810729501b18fdcab34f927c66aab1a7089e1caca19d220284d4a452fd9712eae5f0ec6b7ee4')
+source=("$_pkgname-$pkgver.deb::https://www.bitwig.com/dl/Bitwig%20Studio/6.0%20Beta%206/installer_linux/")
+b2sums=('aff2c63a2e531ed641d18c1c5ff8f78e7b52796da51f9a1d8c92a0c92d57dfefc9749cbf03c7c49dece5265dc3c59b4d0c73ee005d1ab728cd87cc163f70862c')
 
 prepare() {
 	msg2 "Unpacking archive contents..."
-	bsdtar -xf ${srcdir}/data.tar.xz -C ${srcdir}/
+	bsdtar -xf "${srcdir}/data.tar.zst" -C ${srcdir}/
 
 	msg2 "Moving things around so we can install side-by-side with bitwig-studio..."
 	cd ${srcdir}/opt/
@@ -60,7 +60,7 @@ prepare() {
 		mv "$icon" "${icon/Studio/StudioBeta}"
 	done
 	for icon in scalable/mimetypes/*.svg; do
-		mv "$icon" "${icon/Studio.application-bitwig/StudioBeta.application-bitwig-beta}"
+		mv "$icon" "${icon/Studio/StudioBeta}"
 	done
 }
 
