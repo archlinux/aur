@@ -1,8 +1,8 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.12.0.r5.g6c7c5eb
-pkgrel=2
+pkgver=0.12.5.r12.gaa5c045
+pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (CLI)"
 arch=('aarch64' 'x86_64')
 url="https://shadps4.net/"
@@ -14,6 +14,7 @@ depends=(
 	'hicolor-icon-theme'
 	'pugixml>=1.14'
 	'sdl3>=3.1.8'
+	'sdl3_mixer'
 )
 makedepends=(
 	'boost>=1.84'
@@ -92,6 +93,8 @@ prepare() {
 	sed -i '/-march=/d' CMakeLists.txt
 	# use system glslang
 	sed -i '/find_package/s/glslang 15/glslang/' CMakeLists.txt
+	# use system sdl3_mixer
+	sed -i 's/SDL3_Mixer::SDL3_Mixer/SDL3_mixer::SDL3_mixer/' externals/CMakeLists.txt
 }
 
 build() {

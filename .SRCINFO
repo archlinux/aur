@@ -1,7 +1,7 @@
 pkgbase = shadps4-git
 	pkgdesc = Sony PlayStation 4 emulator (CLI)
-	pkgver = 0.12.0.r5.g6c7c5eb
-	pkgrel = 2
+	pkgver = 0.12.5.r12.gaa5c045
+	pkgrel = 1
 	url = https://shadps4.net/
 	arch = aarch64
 	arch = x86_64
@@ -34,10 +34,11 @@ pkgbase = shadps4-git
 	depends = hicolor-icon-theme
 	depends = pugixml>=1.14
 	depends = sdl3>=3.1.8
+	depends = sdl3_mixer
 	optdepends = renderdoc: for graphics debugging
 	optdepends = shadps4-qtlauncher: for official Qt GUI
 	optdepends = vulkan-validation-layers: for vulkan debugging
-	provides = shadps4=0.12.0.r5.g6c7c5eb
+	provides = shadps4=0.12.5.r12.gaa5c045
 	conflicts = shadps4
 	source = shadps4::git+https://github.com/shadps4-emu/shadPS4.git
 	source = shadps4-discord-rpc::git+https://github.com/shadps4-emu/ext-discord-rpc.git
@@ -67,6 +68,7 @@ pkgname = shadps4-git
 	depends = hicolor-icon-theme
 	depends = pugixml>=1.14
 	depends = sdl3>=3.1.8
+	depends = sdl3_mixer
 	depends = libavcodec.so
 	depends = libavformat.so
 	depends = libavutil.so
