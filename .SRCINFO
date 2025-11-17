@@ -1,7 +1,7 @@
 pkgbase = python-download
 	pkgdesc = Python for download.
-	pkgver = 0.0.3.1
-	pkgrel = 2
+	pkgver = 0.0.4
+	pkgrel = 1
 	url = https://pypi.org/project/python-download
 	arch = any
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = python-download
 	conflicts = python-download
 	options = !strip
 	options = !debug
-	source = python_download-0.0.3.1.tar.gz::https://files.pythonhosted.org/packages/source/p/python_download/python_download-0.0.3.1.tar.gz
-	sha256sums = 9f86cced9ac48af00f988e07e4638f78815f3d3b7ff3a646061a53753fb43c85
+	source = python_download-0.0.4.tar.gz::https://files.pythonhosted.org/packages/source/p/python_download/python_download-0.0.4.tar.gz
+	sha256sums = 1da69f5f8e1cef94a55d7f5d3da08c61fcf7c90f701e53424b80530536e2a339
 
 pkgname = python-download
