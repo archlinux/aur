@@ -1,6 +1,6 @@
 # Maintainer: MaxSt
 pkgname=zprint-bin
-pkgver=1.2.9
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Reformat Clojure and Clojurescript source code and s-expressions"
 url="https://github.com/kkinnear/zprint"
@@ -13,7 +13,7 @@ source=(
     "https://raw.githubusercontent.com/kkinnear/zprint/master/LICENSE"
 )
 md5sums=(
-    '2430e4969191a0b0210243f7d532e7b6'
+    'd41d8cd98f00b204e9800998ecf8427e'
     '7199ed1f0ff55f6f8a1d191272e13f71'
 )
 

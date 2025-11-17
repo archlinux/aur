@@ -1,15 +1,15 @@
 pkgbase = zprint-bin
 	pkgdesc = Reformat Clojure and Clojurescript source code and s-expressions
-	pkgver = 1.2.9
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/kkinnear/zprint
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = zlib
-	source = https://github.com/kkinnear/zprint/releases/download/1.2.9/zprintl-1.2.9
+	source = https://github.com/kkinnear/zprint/releases/download/1.3.0/zprintl-1.3.0
 	source = https://raw.githubusercontent.com/kkinnear/zprint/master/LICENSE
-	md5sums = 2430e4969191a0b0210243f7d532e7b6
+	md5sums = d41d8cd98f00b204e9800998ecf8427e
 	md5sums = 7199ed1f0ff55f6f8a1d191272e13f71
 
 pkgname = zprint-bin
