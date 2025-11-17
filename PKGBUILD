@@ -1,30 +1,31 @@
+# Maintainer: Relish0171 <aur.such581@aleeas.com>
+# Contributor: AI5C <ai5c@ai5c.com>
 # Contributor: Swift Geek
-# Maintainer: AI5C <ai5c@ai5c.com>
-
-pkgname=seamly2d
-_pkgname=Seamly2D
-pkgver=2024.10.8.1758
+_basename=Seamly2D
+pkgname=${_basename,,}
+pkgver=2025.11.3.211
 pkgrel=1
-pkgdesc="Open source patternmaking software"
+pkgdesc="Open source patternmaking software to democratize fashion."
 arch=('i686' 'x86_64')
-url="https://seamly.net/"
+url="https://seamly.io/"
 license=('GPL3')
-depends=('qt5-svg' 'qt5-xmlpatterns' 'desktop-file-utils')
-source=("https://github.com/FashionFreedom/Seamly2D/archive/v$pkgver.tar.gz")
-
-sha512sums=('bcdc91c0454a6640f163961103bceb4b0cf0f6de99183b2e623a04223a4a54d501428f04ed37241f2db0a582a461f256943477e745923681bc54e6fa014a5b8c')
+depends=('qt6-base' 'qt6-multimedia' 'qt6-svg' 'qt6-5compat')
+makedepends=('qt6-tools' 'xerces-c')
+source=("https://github.com/FashionFreedom/Seamly2D/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('c1a61fdc1d69221ff2bbf23a57524a3d8962ee882b14d67b46ad7d3010355c22')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  [ ! -e build ] && mkdir build
-  cd build
-  export QT_SELECT=5
-  qmake PREFIX=/usr PREFIX_LIB=/usr/lib ../Seamly2D.pro -r \
-    CONFIG+=noDebugSymbols CONFIG+=no_ccache CONFIG+=noTests CONFIG+=noRunPath
-  make
+    cd "${srcdir}/${_basename}-${pkgver}"
+
+    qmake6 \
+        PREFIX=/usr
+    make
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver/build"
-  INSTALL_ROOT="$pkgdir/" make install
+    cd "${srcdir}/${_basename}-${pkgver}"
+
+    export INSTALL_ROOT="${pkgdir}"
+
+    make install
 }
