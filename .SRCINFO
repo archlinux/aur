@@ -1,6 +1,6 @@
 pkgbase = continuwuity
 	pkgdesc = a very cool, featureful fork of conduit (rust matrix homeserver)
-	pkgver = 0.5.0_rc.7
+	pkgver = 0.5.0_rc.8.1
 	pkgrel = 1
 	url = https://forgejo.ellis.link/continuwuation/continuwuity
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = continuwuity
 	conflicts = continuwuity
 	options = !lto
 	backup = etc/conduwuit/conduwuit.toml
-	source = git+https://forgejo.ellis.link/continuwuation/continuwuity.git#tag=v0.5.0-rc.7
-	sha256sums = 238f64ba9d7c4c077ca50b2b6b871af412b71a302cc171e7bc08b4f59dd65237
+	source = git+https://forgejo.ellis.link/continuwuation/continuwuity.git#tag=v0.5.0-rc.8.1
+	sha256sums = 09eaf69572885003aa72702e8648cd9f6abc415add525625a37c65c5b3accc67
 
 pkgname = continuwuity
