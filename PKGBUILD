@@ -8,7 +8,7 @@ pkgname=(qt6-base-hifps
          qt6-xcb-private-headers-hifps)
 _pkgver=6.10.0
 pkgver=${_pkgver/-/}
-pkgrel=1
+pkgrel=3
 pkgdesc='A cross-platform application and UI framework - patched for high refresh rates for animations'
 arch=(x86_64)
 url='https://www.qt.io'
@@ -95,34 +95,6 @@ source=(git+https://code.qt.io/qt/$_pkgfn.git
 sha256sums=('SKIP'
             '56510cbf9141185f6b2f6e8048c64ab0368e4288884fd538baf388555df29496'
             '9150994a131f17fe930302696c011811aafc0f5e1735355a45270e9550f72b03')
-
-# Dynamically sets pkgver by following the official Arch kwin package.
-# This way, the package automatically tracks upstream versions, allowing
-# us to apply our custom patches without manually updating the PKGBUILD each time.
-
-pkgver() {
-  local tmpdir
-  tmpdir=$(mktemp -d)
-  pushd "$tmpdir" >/dev/null
-
-  # Clone official PKGBUILD repo (last public version)
-  git clone --depth=1 https://gitlab.archlinux.org/archlinux/packaging/packages/qt6-base.git . >/dev/null 2>&1
-
-  # Extract key variables from PKGBUILD
-  local official_brute_pkgver
-  local official_pkgrel
-  official_brute_pkgver=$(grep -E '^_pkgver=' PKGBUILD | cut -d= -f2)
-  official_pkgrel=$(grep -E '^pkgrel=' PKGBUILD | cut -d= -f2)
-
-  popd >/dev/null
-  rm -rf "$tmpdir"
-
-  # Export pkgver for build
-  _pkgver="$official_brute_pkgver"
-  pkgver="${official_brute_pkgver/-/}"
-  pkgrel="$official_pkgrel"
-  echo "$pkgver"
-}
 
 prepare() {
   echo ">>> Syncing official Arch qt6-base repo files..."
