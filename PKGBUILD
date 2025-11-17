@@ -4,7 +4,7 @@ pkgname=itk-snap-bin
 _pkgname=itk-snap
 _date=20250909
 pkgver=4.4.0
-pkgrel=3
+pkgrel=5
 pkgdesc="A software application used to segment structures in 3D medical images"
 arch=('x86_64')
 url="https://www.itksnap.org"
@@ -33,17 +33,15 @@ prepare() {
     --pkgdesc "${pkgdesc}" \
     --categories "Education;Graphics;Science;DataVisualization;MedicalSoftware;Viewer" \
     --icon "${_pkgname}" \
-    --exec "itksnap"
+    --exec "/opt/itk-snap/bin/itksnap"
   # manually extract tarball due to their unpredicted name
   mkdir "${srcdir}/${_pkgname}"
   tar xvf "${srcdir}/${_pkgname}-${pkgver}.tar.gz" -C "${srcdir}/${_pkgname}" --strip-components 1
 }
 package() {
-  # install -d "${pkgdir}/usr"
-  cp -a "${srcdir}/${_pkgname}" "${pkgdir}/usr"
+  mkdir -p "${pkgdir}/opt"
+  cp -a "${srcdir}/${_pkgname}" "${pkgdir}/opt/${_pkgname}"
   install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -Dm644 "${srcdir}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-  # move qt translations to the right place
-  mv -v "${pkgdir}/usr/translations" "${pkgdir}/usr/lib/snap-${pkgver}"
 }
 # vim:set ts=2 sw=2 et:
