@@ -1,7 +1,7 @@
 pkgbase = mpremote
 	pkgdesc = This CLI tool provides an integrated set of utilities to remotely interact with and automate a MicroPython device over a serial connection
 	pkgver = 1.26.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.micropython.org/en/latest/reference/mpremote.html
 	arch = any
 	license = MIT
@@ -12,6 +12,7 @@ pkgbase = mpremote
 	makedepends = python-hatch-vcs
 	makedepends = python-hatch-requirements-txt
 	depends = python-pyserial
+	depends = python-platformdirs
 	source = https://files.pythonhosted.org/packages/source/m/mpremote/mpremote-1.26.1.tar.gz
 	sha256sums = 61a39bf5af502e1ec56d1b28bf067766c3a0daea9d7487934cb472e378a12fe1
 

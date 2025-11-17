@@ -2,13 +2,14 @@
 
 pkgname=mpremote
 pkgver=1.26.1
-pkgrel=1
+pkgrel=2
 pkgdesc="This CLI tool provides an integrated set of utilities to remotely interact with and automate a MicroPython device over a serial connection"
 arch=('any')
 url="https://docs.micropython.org/en/latest/reference/mpremote.html"
 license=('MIT')
 depends=(
 	'python-pyserial'
+	'python-platformdirs'
 )
 makedepends=(
 	'python-build'
