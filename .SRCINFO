@@ -1,19 +1,5 @@
 pkgbase = kim6
 	pkgdesc = Kde Image Menu to compress, resize, convert, rename and much more (for KDE Plasma 6)
-	pkgver = 0.9.11
-	pkgrel = 1
-	url = https://skatox.com/blog/kim-kde-image-manipulator-for-plasma-6/
-	arch = i686
-	arch = x86_64
-	license = GPL
-	makedepends = qt6-base
-	depends = imagemagick
-	source = kim6-0.9.11.tar.gz::https://github.com/Skatox/kim/archive/refs/tags/0.9.11.tar.gz
-	sha512sums = da2d0603450ad2979d720512b9585acc5319ca05eeb0337c78f7091c08baad8a5dbf7f8b5bf9f570a6dc00831490a704e5d8d2159a7698a6a91447f8a6d87de3
-
-pkgname = kim6
-pkgbase = kim6
-	pkgdesc = Kde Image Menu to compress, resize, convert, rename and much more (for KDE Plasma 6)
 	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://skatox.com/blog/kim-kde-image-manipulator-for-plasma-6/
