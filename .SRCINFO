@@ -1,0 +1,18 @@
+pkgbase = noir
+	pkgdesc = Attack surface detector that identifies endpoints by static analysis
+	pkgver = 0.25.1
+	pkgrel = 1
+	url = https://github.com/owasp-noir/noir
+	arch = x86_64
+	license = MIT
+	makedepends = crystal
+	makedepends = shards
+	makedepends = git
+	depends = gc
+	depends = pcre2
+	depends = libevent
+	depends = libxml2
+	source = noir-0.25.1.tar.gz::https://github.com/owasp-noir/noir/archive/v0.25.1.tar.gz
+	sha256sums = 37861d7c498ddced48c4de6c06784f0dd5e9a733a12793064e1f3bcd40d77ca3
+
+pkgname = noir
