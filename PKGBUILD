@@ -11,15 +11,17 @@ source=("https://github.com/raula09/LocalMusicPlayerApp/archive/refs/tags/v${pkg
 sha256sums=('d6e1547f1e70340b842543a4238436b516ccd4d5f9a8e2b6f69b5b2b20d82bd4')
 
 build() {
-  cd "${srcdir}/LocalMusicPlayerApp-${pkgver}"
+  cd "${srcdir}/NoctuneMusicPlayer-${pkgver}"
   dotnet publish -c Release --no-self-contained -o publish
 }
 
-
 package() {
   install -dm755 "${pkgdir}/usr/bin"
-  install -Dm755 "${srcdir}/LocalMusicPlayerApp-${pkgver}/publish/MusicPlayerApp" "${pkgdir}/usr/bin/noctune"
+  install -Dm755 "${srcdir}/NoctuneMusicPlayer-${pkgver}/publish/MusicPlayerApp" "${pkgdir}/usr/bin/noctune"
 
-  install -Dm644 "${srcdir}/LocalMusicPlayerApp-${pkgver}/noctune.desktop" "${pkgdir}/usr/share/applications/noctune.desktop"
-  install -Dm644 "${srcdir}/LocalMusicPlayerApp-${pkgver}/noctune.png" "${pkgdir}/usr/share/pixmaps/noctune.png"
+  install -Dm644 "${srcdir}/NoctuneMusicPlayer-${pkgver}/noctune.desktop" "${pkgdir}/usr/share/applications/noctune.desktop"
+  install -Dm644 "${srcdir}/NoctuneMusicPlayer-${pkgver}/noctune.png" "${pkgdir}/usr/share/pixmaps/noctune.png"
 }
+
+
+
