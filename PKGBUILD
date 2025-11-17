@@ -1,7 +1,7 @@
 # Maintainer: yuna0x0 <yuna@yuna0x0.com>
 pkgname=cirno-catch-frog
 pkgver=1.0.3
-pkgrel=9
+pkgrel=10
 pkgdesc="Touhou fan game made with Godot. Let's help Cirno catch frogs!"
 arch=('x86_64')
 url="https://yuna0x0.itch.io/cirno-catch-frog"
@@ -13,7 +13,7 @@ source=(
 	https://cdn.yuna0x0.com/projects/${pkgname}/releases/v${pkgver}/${pkgname}_icon.png{,.sig}
 )
 validpgpkeys=(
-	'449F38F5CDD85C58FCCB5B196C8EAF0D90FD8E80' # yuna0x0 <yuna@yuna0x0.com>
+	'9EA1CC0896ABCA3D01CB68DFA28E81CED15846E6' # yuna0x0 <yuna@yuna0x0.com>
 )
 sha256sums=('c2c51cd5dcd591a4f5dee6e80e9e480e09a19719a4e8202db79517d2092d4963'
 	'SKIP'

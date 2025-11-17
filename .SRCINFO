@@ -1,7 +1,7 @@
 pkgbase = cirno-catch-frog
 	pkgdesc = Touhou fan game made with Godot. Let's help Cirno catch frogs!
 	pkgver = 1.0.3
-	pkgrel = 9
+	pkgrel = 10
 	url = https://yuna0x0.itch.io/cirno-catch-frog
 	arch = x86_64
 	license = custom
@@ -11,7 +11,7 @@ pkgbase = cirno-catch-frog
 	source = https://cdn.yuna0x0.com/projects/cirno-catch-frog/releases/v1.0.3/CirnoCatchFrog-Linux_x86_64-1.0.3.zip.sig
 	source = https://cdn.yuna0x0.com/projects/cirno-catch-frog/releases/v1.0.3/cirno-catch-frog_icon.png
 	source = https://cdn.yuna0x0.com/projects/cirno-catch-frog/releases/v1.0.3/cirno-catch-frog_icon.png.sig
-	validpgpkeys = 449F38F5CDD85C58FCCB5B196C8EAF0D90FD8E80
+	validpgpkeys = 9EA1CC0896ABCA3D01CB68DFA28E81CED15846E6
 	sha256sums = c2c51cd5dcd591a4f5dee6e80e9e480e09a19719a4e8202db79517d2092d4963
 	sha256sums = SKIP
 	sha256sums = 1f8ffa3dee9b46a9115ae90efd9cc12b5d66ec6bf3049c4e9ff010f1dd711c82
