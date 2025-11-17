@@ -1,3 +1,18 @@
+Mullvad Browser 15.0.1 - November 11 2025
+ * All Platforms
+   * Updated Firefox to 140.5.0esr
+   * Updated NoScript to 13.4
+   * Updated uBlock Origin to 1.67.0
+   * Bug 484: Rebase Mullvad Browser stable onto 140.5.0esr [mullvad-browser]
+   * Bug 487: Search engines are sorted alphabetically rather than the desired order [mullvad-browser]
+   * Bug 44275: Reduce console noise on security level guessing [tor-browser]
+   * Bug 44310: Default zoom always resets to 100% [tor-browser]
+   * Bug 44325: Backport Security Fixes from Firefox 145 [tor-browser]
+   * Bug 44333: Add the "No AI" version of DuckDuckGo to available search engines [tor-browser]
+ * Linux
+   * Bug 44273: Restore Noto CJK as Jigmo has a too low readability [tor-browser]
+   * Bug 44315: Font/text issue with self-upgrade window [tor-browser]
+
 Mullvad Browser 15.0 - October 28 2025
  * All Platforms
    * Updated Firefox to 140.4.0esr
