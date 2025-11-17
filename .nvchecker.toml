@@ -1,4 +1,0 @@
-[dxvk-async-git]
-source = "git"
-git = "https://github.com/doitsujin/dxvk.git"
-prefix = "v"

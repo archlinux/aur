@@ -1,7 +1,7 @@
 pkgbase = dxvk-async-git
 	pkgdesc = A Vulkan-based compatibility layer for Direct3D 9/10/11 - Windows DLL version
-	pkgver = 2.6.r13.g90ee5fe
-	pkgrel = 2
+	pkgver = 2.7.1.r231.g3924944
+	pkgrel = 1
 	url = https://gitlab.com/Ph42oN/dxvk-gplasync/
 	arch = x86_64
 	license = Zlib
@@ -10,25 +10,18 @@ pkgbase = dxvk-async-git
 	makedepends = meson
 	makedepends = mingw-w64-gcc
 	makedepends = wine
+	depends = bash
 	depends = vulkan-icd-loader
 	optdepends = lib32-vulkan-icd-loader: for 32-bit support
-	provides = dxvk=2.6.r13.g90ee5fe
+	provides = dxvk=2.7.1.r231.g3924944
 	conflicts = dxvk
 	options = !strip
 	options = !buildflags
-	options = staticlibs
-	backup = etc/environment.d/dxvk-async-env.conf
 	source = dxvk::git+https://github.com/doitsujin/dxvk.git
-	source = git+https://github.com/Joshua-Ashton/mingw-directx-headers.git
-	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
-	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
-	source = git+https://gitlab.com/Ph42oN/dxvk-gplasync.git
+	source = dxvk-gplasync-master-20251117.17.patch::https://gitlab.com/Ph42oN/dxvk-gplasync/-/raw/main/patches/dxvk-gplasync-master.patch
 	source = setup_dxvk.sh
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = c5ac42de128630e6d8a9e46a7729630edbfb7626eb293ec5c74c8210c932f0e7
+	sha256sums = 1feb5c6cfd0f97402893f4bef3496b07ee76438c3b50a0d4b58aeb5c3c27bc82
 
 pkgname = dxvk-async-git
