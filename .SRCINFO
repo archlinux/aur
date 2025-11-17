@@ -1,0 +1,21 @@
+pkgbase = all
+	pkgdesc = A universal package manager wrapper supporting pacman, yay, apt, dnf, zypper, flatpak, and snap
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/aquacheese/all
+	arch = any
+	license = MIT
+	depends = bash
+	optdepends = pacman: for Arch Linux package management
+	optdepends = yay: for AUR package management
+	optdepends = apt: for Debian/Ubuntu package management
+	optdepends = dnf: for Fedora/RHEL package management
+	optdepends = zypper: for openSUSE package management
+	optdepends = flatpak: for Flatpak package management
+	optdepends = snap: for Snap package management
+	source = all
+	source = LICENSE
+	sha256sums = 3ba87a950b937a84d6e49bf4a5353b134ee2e5be4f885708fdee3417aad3f221
+	sha256sums = 0c53dc1fa7bdfcc12d18477502fa6462f5ac3742a749786ffa7647d48081403a
+
+pkgname = all

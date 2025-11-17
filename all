@@ -1,0 +1,378 @@
+#!/bin/bash
+
+# Universal Package Manager Wrapper
+# Supports: pacman, yay (AUR), apt, dnf, zypper, flatpak, snap
+
+set -e
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+NC='\033[0m' # No Color
+
+# Function to check if a command exists
+command_exists() {
+    command -v "$1" &> /dev/null
+}
+
+# Function to search for package in different managers
+search_package() {
+    local pkg_name="$1"
+    local -a found_in=()
+    
+    echo -e "${CYAN}Searching for '${pkg_name}'...${NC}\n" >&2
+    
+    # Search in pacman (Arch Linux)
+    if command_exists pacman; then
+        echo -e "${BLUE}Searching pacman...${NC}" >&2
+        if pacman -Ss "^${pkg_name}$" &> /dev/null; then
+            found_in+=("pacman")
+        fi
+    fi
+    
+    # Search in AUR via yay (Arch Linux)
+    if command_exists yay; then
+        echo -e "${BLUE}Searching AUR (yay)...${NC}" >&2
+        if yay -Ss "^${pkg_name}$" &> /dev/null; then
+            found_in+=("yay")
+        fi
+    fi
+    
+    # Search in APT (Debian/Ubuntu)
+    if command_exists apt; then
+        echo -e "${BLUE}Searching APT...${NC}" >&2
+        if apt-cache search --names-only "^${pkg_name}$" 2>/dev/null | grep -q "^${pkg_name}"; then
+            found_in+=("apt")
+        fi
+    fi
+    
+    # Search in DNF (Fedora/RHEL)
+    if command_exists dnf; then
+        echo -e "${BLUE}Searching DNF...${NC}" >&2
+        if dnf list --available "${pkg_name}" &> /dev/null; then
+            found_in+=("dnf")
+        fi
+    fi
+    
+    # Search in Zypper (openSUSE)
+    if command_exists zypper; then
+        echo -e "${BLUE}Searching Zypper...${NC}" >&2
+        if zypper search -x "${pkg_name}" &> /dev/null; then
+            found_in+=("zypper")
+        fi
+    fi
+    
+    # Search in Flatpak
+    if command_exists flatpak; then
+        echo -e "${BLUE}Searching Flatpak...${NC}" >&2
+        if flatpak search "${pkg_name}" 2>/dev/null | grep -qi "${pkg_name}"; then
+            found_in+=("flatpak")
+        fi
+    fi
+    
+    # Search in Snap
+    if command_exists snap; then
+        echo -e "${BLUE}Searching Snap...${NC}" >&2
+        if snap find "${pkg_name}" 2>/dev/null | grep -q "^${pkg_name}"; then
+            found_in+=("snap")
+        fi
+    fi
+    
+    echo "${found_in[@]}"
+}
+
+# Function to install package using specified manager
+install_package() {
+    local pkg_name="$1"
+    local manager="$2"
+    
+    echo -e "\n${GREEN}Installing '${pkg_name}' from ${manager}...${NC}\n"
+    
+    case "$manager" in
+        pacman)
+            sudo pacman -S "${pkg_name}"
+            ;;
+        yay)
+            yay -S "${pkg_name}"
+            ;;
+        apt)
+            sudo apt update && sudo apt install "${pkg_name}"
+            ;;
+        dnf)
+            sudo dnf install "${pkg_name}"
+            ;;
+        zypper)
+            sudo zypper install "${pkg_name}"
+            ;;
+        flatpak)
+            flatpak install "${pkg_name}"
+            ;;
+        snap)
+            sudo snap install "${pkg_name}"
+            ;;
+        *)
+            echo -e "${RED}Unknown package manager: ${manager}${NC}"
+            exit 1
+            ;;
+    esac
+}
+
+# Function to remove/uninstall package
+remove_package() {
+    local pkg_name="$1"
+    local manager="$2"
+    
+    echo -e "\n${RED}Removing '${pkg_name}' using ${manager}...${NC}\n"
+    
+    case "$manager" in
+        pacman)
+            sudo pacman -R "${pkg_name}"
+            ;;
+        yay)
+            yay -R "${pkg_name}"
+            ;;
+        apt)
+            sudo apt remove "${pkg_name}"
+            ;;
+        dnf)
+            sudo dnf remove "${pkg_name}"
+            ;;
+        zypper)
+            sudo zypper remove "${pkg_name}"
+            ;;
+        flatpak)
+            flatpak uninstall "${pkg_name}"
+            ;;
+        snap)
+            sudo snap remove "${pkg_name}"
+            ;;
+        *)
+            echo -e "${RED}Unknown package manager: ${manager}${NC}"
+            exit 1
+            ;;
+    esac
+}
+
+# Function to update packages
+update_packages() {
+    echo -e "${CYAN}Updating all package managers...${NC}\n"
+    
+    if command_exists pacman; then
+        echo -e "${BLUE}Updating pacman...${NC}"
+        sudo pacman -Syu
+    fi
+    
+    if command_exists yay; then
+        echo -e "${BLUE}Updating AUR (yay)...${NC}"
+        yay -Syu
+    fi
+    
+    if command_exists apt; then
+        echo -e "${BLUE}Updating APT...${NC}"
+        sudo apt update && sudo apt upgrade
+    fi
+    
+    if command_exists dnf; then
+        echo -e "${BLUE}Updating DNF...${NC}"
+        sudo dnf upgrade
+    fi
+    
+    if command_exists zypper; then
+        echo -e "${BLUE}Updating Zypper...${NC}"
+        sudo zypper update
+    fi
+    
+    if command_exists flatpak; then
+        echo -e "${BLUE}Updating Flatpak...${NC}"
+        flatpak update
+    fi
+    
+    if command_exists snap; then
+        echo -e "${BLUE}Updating Snap...${NC}"
+        sudo snap refresh
+    fi
+}
+
+# Function to show usage
+show_usage() {
+    cat << EOF
+${CYAN}Universal Package Manager Wrapper${NC}
+
+Usage: all [COMMAND] [PACKAGE]
+
+Commands:
+  install, i      Install a package
+  remove, r       Remove a package
+  update, u       Update all packages
+  search, s       Search for a package
+  help, h         Show this help message
+
+Examples:
+  all install firefox
+  all remove vlc
+  all update
+  all search git
+
+Supported package managers:
+  - pacman (Arch Linux)
+  - yay (AUR - Arch User Repository)
+  - apt (Debian/Ubuntu)
+  - dnf (Fedora/RHEL)
+  - zypper (openSUSE)
+  - flatpak
+  - snap
+
+EOF
+}
+
+# Main script logic
+main() {
+    if [ $# -eq 0 ]; then
+        show_usage
+        exit 0
+    fi
+    
+    local command="$1"
+    local pkg_name="$2"
+    
+    case "$command" in
+        install|i)
+            if [ -z "$pkg_name" ]; then
+                echo -e "${RED}Error: Package name required${NC}"
+                echo "Usage: all install [PACKAGE]"
+                exit 1
+            fi
+            
+            # Search for package
+            local found=($(search_package "$pkg_name"))
+            
+            if [ ${#found[@]} -eq 0 ]; then
+                echo -e "\n${RED}Package '${pkg_name}' not found in any package manager${NC}"
+                exit 1
+            elif [ ${#found[@]} -eq 1 ]; then
+                echo -e "\n${GREEN}Package '${pkg_name}' found in: ${found[0]}${NC}"
+                install_package "$pkg_name" "${found[0]}"
+            else
+                echo -e "\n${YELLOW}Package '${pkg_name}' found in multiple locations:${NC}\n"
+                
+                # Display options
+                for i in "${!found[@]}"; do
+                    echo -e "  ${GREEN}$((i+1)))${NC} ${found[$i]}"
+                done
+                
+                # Prompt user for selection
+                echo -e "\n${CYAN}Which location do you want to install '${pkg_name}' from?${NC}"
+                read -p "Enter number (1-${#found[@]}): " choice
+                
+                # Validate input
+                if [[ ! "$choice" =~ ^[0-9]+$ ]] || [ "$choice" -lt 1 ] || [ "$choice" -gt ${#found[@]} ]; then
+                    echo -e "${RED}Invalid choice${NC}"
+                    exit 1
+                fi
+                
+                # Install from selected manager
+                local selected_manager="${found[$((choice-1))]}"
+                install_package "$pkg_name" "$selected_manager"
+            fi
+            ;;
+            
+        remove|r)
+            if [ -z "$pkg_name" ]; then
+                echo -e "${RED}Error: Package name required${NC}"
+                echo "Usage: all remove [PACKAGE]"
+                exit 1
+            fi
+            
+            # For removal, we need to detect which manager has it installed
+            echo -e "${CYAN}Detecting installed package managers for '${pkg_name}'...${NC}\n"
+            
+            local installed_in=()
+            
+            if command_exists pacman && pacman -Q "$pkg_name" &> /dev/null; then
+                installed_in+=("pacman")
+            fi
+            
+            if command_exists apt && dpkg -l "$pkg_name" &> /dev/null; then
+                installed_in+=("apt")
+            fi
+            
+            if command_exists dnf && dnf list installed "$pkg_name" &> /dev/null; then
+                installed_in+=("dnf")
+            fi
+            
+            if command_exists zypper && zypper search -i "$pkg_name" &> /dev/null; then
+                installed_in+=("zypper")
+            fi
+            
+            if command_exists flatpak && flatpak list | grep -q "$pkg_name"; then
+                installed_in+=("flatpak")
+            fi
+            
+            if command_exists snap && snap list "$pkg_name" &> /dev/null; then
+                installed_in+=("snap")
+            fi
+            
+            if [ ${#installed_in[@]} -eq 0 ]; then
+                echo -e "${RED}Package '${pkg_name}' is not installed${NC}"
+                exit 1
+            elif [ ${#installed_in[@]} -eq 1 ]; then
+                remove_package "$pkg_name" "${installed_in[0]}"
+            else
+                echo -e "${YELLOW}Package '${pkg_name}' is installed in multiple locations:${NC}\n"
+                for i in "${!installed_in[@]}"; do
+                    echo -e "  ${GREEN}$((i+1)))${NC} ${installed_in[$i]}"
+                done
+                
+                echo -e "\n${CYAN}Which installation do you want to remove?${NC}"
+                read -p "Enter number (1-${#installed_in[@]}): " choice
+                
+                if [[ ! "$choice" =~ ^[0-9]+$ ]] || [ "$choice" -lt 1 ] || [ "$choice" -gt ${#installed_in[@]} ]; then
+                    echo -e "${RED}Invalid choice${NC}"
+                    exit 1
+                fi
+                
+                local selected_manager="${installed_in[$((choice-1))]}"
+                remove_package "$pkg_name" "$selected_manager"
+            fi
+            ;;
+            
+        update|u)
+            update_packages
+            ;;
+            
+        search|s)
+            if [ -z "$pkg_name" ]; then
+                echo -e "${RED}Error: Package name required${NC}"
+                echo "Usage: all search [PACKAGE]"
+                exit 1
+            fi
+            
+            local found=($(search_package "$pkg_name"))
+            
+            if [ ${#found[@]} -eq 0 ]; then
+                echo -e "\n${RED}Package '${pkg_name}' not found${NC}"
+            else
+                echo -e "\n${GREEN}Package '${pkg_name}' found in:${NC}"
+                for manager in "${found[@]}"; do
+                    echo -e "  - ${manager}"
+                done
+            fi
+            ;;
+            
+        help|h|--help|-h)
+            show_usage
+            ;;
+            
+        *)
+            echo -e "${RED}Unknown command: ${command}${NC}"
+            echo ""
+            show_usage
+            exit 1
+            ;;
+    esac
+}
+
+main "$@"
