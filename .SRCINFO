@@ -1,0 +1,14 @@
+pkgbase = rpmi-git
+	pkgdesc = Simple graphical utility that installs/upgrades/removes .rpm files built with Rust and EGUI.
+	pkgver = 1.0.0.git
+	pkgrel = 1
+	url = https://github.com/arabianq/rpmi
+	arch = any
+	license = MIT
+	makedepends = clang
+	makedepends = rust
+	makedepends = cargo
+	source = https://github.com/arabianq/rpmi/archive/refs/heads/main.tar.gz
+	sha256sums = SKIP
+
+pkgname = rpmi-git
