@@ -1,7 +1,7 @@
-# Maintainer: Raf Gemmail <rafiq+aur@dreamthought.com>
+# Contributor: Raf Gemmail <rafiq+aur@dreamthought.com>
 
 pkgname=matrixbrandy
-pkgver=1.22.13
+pkgver=1.23.6
 pkgrel=1
 pkgdesc='BBC BASIC VI interpreter with optional SDL graphics support.'
 arch=('any')
@@ -9,7 +9,7 @@ url="http://brandy.matrixnetwork.co.uk/"
 license=('GPL2')
 depends=('sdl')
 source=("https://github.com/stardot/MatrixBrandy/archive/refs/tags/V$pkgver.tar.gz")
-sha512sums=('3d6d15ee8a4f4bce4bfdc45d6aaf32ba80a3c0c23ab89c59e811752f5986c1507c32adc68e5980669bf83241c0b77b3c21a1f553f2821fb3b9d7fcdba9363c08')
+sha512sums=('d235383ef15e8aaef9e5839504a0023d94bb5fe4c98aa13a9f9a9c467eb7772d7f5eec26633dcbdb5992ffbd5f38634635bf79d19f73a12e71732316fc6e06ac')
 
 build() {
   cd MatrixBrandy-$pkgver
@@ -21,5 +21,5 @@ package() {
   install -d "${pkgdir}/usr"
   install -d "${pkgdir}/usr/bin"
   install -m555 "${srcdir}/MatrixBrandy-${pkgver}/brandy" "${pkgdir}/usr/bin"
-  install -Dm0644 "${srcdir}/MatrixBrandy-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm0644 "${srcdir}/MatrixBrandy-${pkgver}/docs/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
