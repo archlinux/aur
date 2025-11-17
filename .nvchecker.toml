@@ -1,0 +1,5 @@
+[gitlogue-bin]
+source = "github"
+github = "unhappychoice/gitlogue"
+use_latest_release = true
+prefix = "v"
