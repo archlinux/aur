@@ -1,6 +1,6 @@
 pkgbase = smassh
 	pkgdesc = TUI based typing test application inspired by MonkeyType
-	pkgver = 3.1.7
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://github.com/kraanzu/smassh
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = smassh
 	depends = python-requests>=2.31.0
 	depends = python-platformdirs>=4.3.6
 	depends = python-rich
-	source = smassh-3.1.7.tar.gz::https://github.com/kraanzu/smassh/archive/v3.1.7.tar.gz
-	sha256sums = d4ec9674325212c2cefa33a954c633d16aad02ce2cbac8a25f9eddff52456c65
+	source = smassh-3.2.1.tar.gz::https://github.com/kraanzu/smassh/archive/v3.2.1.tar.gz
+	sha256sums = 29550e1dd204ccf93a9f314bbf7b8977a6a8b1f3fb33a808b43420ca935e8bc4
 
 pkgname = smassh
