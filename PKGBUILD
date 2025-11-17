@@ -1,6 +1,6 @@
 pkgname=mupen64plus-qt
 pkgver=1.17
-pkgrel=1
+pkgrel=2
 pkgdesc="A customizable launcher for Mupen64Plus"
 arch=('i686' 'x86_64')
 url="https://github.com/dh4/mupen64plus-qt"
@@ -13,6 +13,9 @@ sha256sums=('2da57d302265f8c0a2e705660e243c2a827a086cba2a6ed92fccdb1ea333f328')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
+
+    # Fix build with version 1.17/Qt 6.10
+    sed -i s/FILENAME_VARIABLE/OUTPUT_SCRIPT/g CMakeLists.txt
 
     cmake .
     make
