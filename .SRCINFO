@@ -6,6 +6,7 @@ pkgbase = pt-depiler
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = nodejs
 	makedepends = pnpm
 	optdepends = edge-stable
 	optdepends = google-chrome

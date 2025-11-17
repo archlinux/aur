@@ -10,7 +10,7 @@ url="https://github.com/pt-plugins/${_reponame}"
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 license=("MIT")
-makedepends=("git" "pnpm")
+makedepends=("git" "nodejs" "pnpm")
 optdepends=('edge-stable' 'google-chrome')
 source=("${pkgname}::git+${url}.git#tag=${pkgver}")
 sha256sums=('98e85f10379a35c5c19d95751cd188fd6e5889b6ec0f0efbaf98b9592e174783')
