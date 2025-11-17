@@ -18,8 +18,22 @@ executes privileged commands safely.
 - 🔐 **PAM-based password authentication**  
 - 🕒 **System-wide privilege cache** (shared across all terminals)  
 - ⚙️ **Execute commands as root:**  
-  ```bash
-  syscall <command>
+```bash
+syscall <command>
+```
+- ⏱ **Temporary root access** via privilege cache:
+- Enable root access for a limited time:
+```bash
+syscall --enable <minutes>
+```
+- Disable the temporary root access manually:
+```bash
+syscall --disable
+```
+- Check the current status of the root access cache:
+```bash
+syscall --status
+```
 
 ## 🚀 Usage
 
@@ -66,7 +80,7 @@ ame ins syscall
 Clone the repository and build the package manually:
 
 ```bash
-git clone https://github.com/YOURNAME/syscall.git
+git clone https://github.com/0xraincandy/syscall.git
 cd syscall
 makepkg -si
 ```

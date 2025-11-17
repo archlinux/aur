@@ -3,9 +3,38 @@ import argparse
 import os
 import time
 import subprocess
-from getpass import getpass
 from pathlib import Path
 import sys
+import sys
+import termios
+import tty
+
+def masked_input(prompt="Password: "):
+    """Prompt for password, displaying * for each character."""
+    sys.stdout.write(prompt)
+    sys.stdout.flush()
+    password = ""
+    fd = sys.stdin.fileno()
+    old_settings = termios.tcgetattr(fd)
+    try:
+        tty.setraw(fd)
+        while True:
+            ch = sys.stdin.read(1)
+            if ch in ("\n", "\r"):
+                break
+            if ch == "\x7f":  # handle backspace
+                if len(password) > 0:
+                    password = password[:-1]
+                    sys.stdout.write("\b \b")
+                    sys.stdout.flush()
+            else:
+                password += ch
+                sys.stdout.write("*")
+                sys.stdout.flush()
+    finally:
+        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+    print()
+    return password
 
 # System-wide per-user cache directory
 RUNTIME_DIR = Path(os.environ.get("XDG_RUNTIME_DIR", f"/run/user/{os.getuid()}"))
@@ -62,7 +91,7 @@ def pam_authenticate():
     """Authenticate using PAM via python-pam"""
     import pam
     auth = pam.pam()
-    pw = getpass("Password: ")
+    pw = masked_input("Password: ")
     if auth.authenticate(os.getlogin(), pw, service="syscall"):
         save_timestamp()
         return True
