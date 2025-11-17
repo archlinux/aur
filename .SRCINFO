@@ -1,6 +1,6 @@
 pkgbase = bitwig-studio-beta
 	pkgdesc = Digital audio workstation for music production, remixing and live performance
-	pkgver = 4.4.2
+	pkgver = 6.0.6
 	pkgrel = 1
 	url = https://www.bitwig.com/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = bitwig-studio-beta
 	optdepends = ffmpeg: MP3 support
 	provides = bitwig-studio
 	options = !strip
-	source = bitwig-studio-4.4.2.deb::https://downloads.bitwig.com/stable/4.4.2/bitwig-studio-4.4.2.deb
-	b2sums = 752c661906e4c3af169b8fb32cfef3892e633c270bb7f2d64962810729501b18fdcab34f927c66aab1a7089e1caca19d220284d4a452fd9712eae5f0ec6b7ee4
+	source = bitwig-studio-6.0.6.deb::https://www.bitwig.com/dl/Bitwig%20Studio/6.0%20Beta%206/installer_linux/
+	b2sums = aff2c63a2e531ed641d18c1c5ff8f78e7b52796da51f9a1d8c92a0c92d57dfefc9749cbf03c7c49dece5265dc3c59b4d0c73ee005d1ab728cd87cc163f70862c
 
 pkgname = bitwig-studio-beta
