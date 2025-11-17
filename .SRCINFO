@@ -1,5 +1,5 @@
 pkgbase = gittype-bin
-	pkgdesc = A CLI code-typing game that turns your source code into typing challenges
+	pkgdesc = Turn your source code into typing challenges
 	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/unhappychoice/gittype
