@@ -1,15 +1,12 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-walls
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal screensaver, designed in Go and built for Wayland"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nomadcxx/sysc-walls"
 license=('MIT')
 depends=('kitty' 'wayland')
-optdepends=(
-    'syscgo: Animation library for effects'
-)
 makedepends=('go>=1.24' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nomadcxx/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
@@ -18,16 +15,11 @@ install=${pkgname}.install
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    # Clone sysc-Go dependency (required for build)
-    if [ ! -d "sysc-Go" ]; then
-        git clone --depth=1 https://github.com/Nomadcxx/sysc-Go.git
-    fi
-
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
 
     go build -buildvcs=false -o sysc-walls-daemon ./cmd/daemon/
     go build -buildvcs=false -o sysc-walls-display ./cmd/display/
@@ -47,8 +39,10 @@ package() {
     sed 's|/usr/local/bin|/usr/bin|g' systemd/sysc-walls-user.service > "${pkgdir}/usr/lib/systemd/user/sysc-walls.service"
     chmod 644 "${pkgdir}/usr/lib/systemd/user/sysc-walls.service"
 
-    # Install default ASCII art
-    install -Dm644 sysc-Go/assets/SYSC.txt "${pkgdir}/usr/share/sysc-walls/ascii/SYSC.txt"
+    # Install default ASCII art (bundled in repo)
+    install -Dm644 assets/ascii/SYSC.txt "${pkgdir}/usr/share/sysc-walls/ascii/SYSC.txt"
+    install -Dm644 assets/ascii/SYSC2.txt "${pkgdir}/usr/share/sysc-walls/ascii/SYSC2.txt"
+    install -Dm644 assets/ascii/SYSC3.txt "${pkgdir}/usr/share/sysc-walls/ascii/SYSC3.txt"
 
     # Install README
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
