@@ -1,15 +1,15 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Rogof <rogof /at/ gmx /dot/ com>
 
 pkgname=ccl-git
 epoch=2
-pkgver=1.12.1
+pkgver=1.13.21.gda7138ef
 pkgrel=1
 pkgdesc="The Clozure Common Lisp implementation"
 url="http://ccl.clozure.com/"
 license=('APACHE')
 arch=('x86_64')
-depends=('bash')
+depends=('bash' 'glibc')
 optdepends=('java-environment: for using example file jfli.jar')
 makedepends=('git')
 provides=('common-lisp' 'cl-asdf' 'ccl')
