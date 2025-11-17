@@ -13,6 +13,9 @@ pkg/
 *.tar.bz2
 *.tar.xz
 *.zip
+*.pkg.tar.zst
+
+
 
 # Ignore other potential temp files
 *.swp
