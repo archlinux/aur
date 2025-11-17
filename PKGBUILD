@@ -8,13 +8,15 @@ arch=('x86_64')
 license=('Apache')
 url='http://forum.doom9.org/showthread.php?t=167051'
 depends=('qt5-base')
-makedepends=('git'
-             'qt5-tools'
-             )
+makedepends=(
+  'git'
+  'qt5-tools'
+)
 provides=('bdsup2subpp')
 conflicts=('bdsup2subpp')
 source=('bdsup2subpp::git+https://github.com/amichaeltm/BDSup2SubPlusPlus.git')
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd bdsup2subpp

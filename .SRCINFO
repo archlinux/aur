@@ -10,6 +10,7 @@ pkgbase = bdsup2subpp-git
 	depends = qt5-base
 	provides = bdsup2subpp
 	conflicts = bdsup2subpp
+	options = debug
 	source = bdsup2subpp::git+https://github.com/amichaeltm/BDSup2SubPlusPlus.git
 	sha256sums = SKIP
 
