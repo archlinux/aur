@@ -1,6 +1,6 @@
 pkgbase = magelab-bin
 	pkgdesc = Mage Lab is a user-centric AI interface with local reasoning and tools
-	pkgver = 0.7.5
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/majesticio/magelab
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = magelab-bin
 	options = !emptydirs
 	source = LICENSE::https://raw.githubusercontent.com/majesticio/magelab/refs/heads/main/LICENSE
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
-	source_x86_64 = magelab_0.7.5_amd64.deb::https://cdn.crabnebula.app/asset/01K7618MCV5R1H3GEJTRRQ6GWM
-	sha256sums_x86_64 = 276754480a1b103c5f764f05652fda8368ad545348f5ecfa7a8241cee8f7c47e
+	source_x86_64 = magelab_0.8.0_amd64.deb::https://cdn.crabnebula.app/asset/01KA7YQAT9XXAF9JK9FVTWRA1K
+	sha256sums_x86_64 = 7661c535a4850d9945994458b3b9b0881dbd82da7836f270c6bf7669db7be9b7
 
 pkgname = magelab-bin

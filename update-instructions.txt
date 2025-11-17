@@ -3,9 +3,10 @@ rm -rf src pkg
 makepkg -od --skipchecksums
 updpkgsums
 
+# update SRCINFO
+makepkg --printsrcinfo > .SRCINFO
+
 # check install
 makepkg -si
 magelab  # verify it launches
 
-# update SRCINFO
-makepkg --printsrcinfo > .SRCINFO

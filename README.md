@@ -18,6 +18,3 @@ yay -S magelab-bin
 # or
 paru -S magelab-bin
 ```
-
-## known issue
-Some systems mage lab will crash when launching because of WebKitGTK’s DMA-BUF renderer. You can solve this by using `export WEBKIT_DISABLE_DMABUF_RENDERER=1 magelab`
