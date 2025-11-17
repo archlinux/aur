@@ -1,0 +1,21 @@
+pkgbase = chameleos-bin
+	pkgdesc = Screen annotation tool for niri and Hyprland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Treeniks/chameleos
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	depends = wayland
+	provides = chameleos
+	provides = chamel
+	conflicts = chameleos
+	conflicts = chameleos-git
+	options = !debug
+	source_x86_64 = chameleos-bin-0.1.0.tar.gz::https://github.com/Treeniks/chameleos/releases/download/0.1.0/chameleos-0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 190ddb77cabcffb7d9e662df472bacfa44ccd25ff619e7d8ac607ba3391dc988
+	source_aarch64 = chameleos-bin-0.1.0.tar.gz::https://github.com/Treeniks/chameleos/releases/download/0.1.0/chameleos-0.1.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = dcdb6387d59bde098dde32dccb6efb855542ba8fcca44a6c1f29f9cb449020cb
+
+pkgname = chameleos-bin
