@@ -1,7 +1,7 @@
 pkgbase = chameleos-bin
 	pkgdesc = Screen annotation tool for niri and Hyprland
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/Treeniks/chameleos
 	arch = x86_64
 	arch = aarch64
@@ -13,9 +13,9 @@ pkgbase = chameleos-bin
 	conflicts = chameleos
 	conflicts = chameleos-git
 	options = !debug
-	source_x86_64 = chameleos-bin-0.1.0.tar.gz::https://github.com/Treeniks/chameleos/releases/download/v0.1.0/chameleos-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 508599e56c22c30c600ddda19e65c5b809c37f6bfdd4acbd7b3f4a29d594eaee
-	source_aarch64 = chameleos-bin-0.1.0.tar.gz::https://github.com/Treeniks/chameleos/releases/download/v0.1.0/chameleos-v0.1.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 03a24eea3b1ab30e731e5e07a5838fbf84f7a3fbfe4d03c84c2e47152ec5630b
+	source_x86_64 = chameleos-bin-0.1.1.tar.gz::https://github.com/Treeniks/chameleos/releases/download/v0.1.1/chameleos-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 6e83cbf9a4880a954e17174f3bc22ac3623e02bb1b8b173e3a8a4e16d07c1a4d
+	source_aarch64 = chameleos-bin-0.1.1.tar.gz::https://github.com/Treeniks/chameleos/releases/download/v0.1.1/chameleos-v0.1.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 5063ac32fd5dcf1015d9f6b2fe6e2dfa7bb83ccc87800c03a0b76c8e42bd3641
 
 pkgname = chameleos-bin
