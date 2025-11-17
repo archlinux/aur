@@ -3,7 +3,7 @@
 
 pkgname=gtk-sharp-2
 pkgver=2.12.45
-pkgrel=6
+pkgrel=7
 pkgdesc="gtk2 bindings for C#"
 arch=(x86_64)
 license=('LGPL')
@@ -11,6 +11,7 @@ url="https://www.mono-project.com/docs/gui/gtksharp/"
 depends=('mono' 'gtk2')
 makedepends=('monodoc')
 optdepends=('perl: for gapi2xml.pl and gapi_pp.pl')
+conflicts=('glade-sharp')
 options=('!makeflags')
 source=(https://github.com/glektarssza/gtk-sharp-2/raw/refs/heads/main/gtk-sharp-${pkgver}.tar.gz
         gtk-sharp2-2.12.12-gtkrange.patch
