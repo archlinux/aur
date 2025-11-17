@@ -33,7 +33,7 @@ sha256sums=('7660f8563c11291ee742b917bfa0f3459c7e57761a50fca6c10a44376d5a48dd')
 
 _env() {
     export RUSTUP_TOOLCHAIN=stable
-    export PKG_FEATURES=alsa-backend,with-libmdns,native-tls,with-mpris
+    export PKG_FEATURES=alsa-backend,with-libmdns,native-tls
     declare -A PKG_FEATURE_MAP=(
         [jack2]='jackaudio-backend'
         [gst-plugins-good]='gstreamer-backend'
