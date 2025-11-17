@@ -2,8 +2,8 @@
 # Contributor: Roman <roma_aw at icloud dot com>
 
 pkgname=compassonpremise
-pkgver=6.8.4
-pkgrel=2
+pkgver=6.8.6
+pkgrel=1
 pkgdesc="A messaging app. A messenger for working with and managing teams"
 arch=('x86_64')
 url="https://getcompass.com"
@@ -13,7 +13,7 @@ optdepends=('libappindicator-gtk3')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://update.getcompass.ru/electron/onpremise-compass/22/${pkgver}/compass_linux_amd64.deb")
-sha512sums_x86_64=('35f3b5f13d965c9c58a652b6b0c3510031fc58fb96b6f0eb8b829eb8dd0abf27c50ac948ef21f27ac8338d53c5a2ca359219f456b30a8e4a6183f2517a20d633')
+sha512sums_x86_64=('76b9bb3fd27a648cd3e0e66dc0b809c0872a04de2d523917c4456035bef4727505b4617661e9d5c6a60c355a31d68ad325d87498aa32cbbf5c1ef1633af984e8')
 
 package(){
 	# Extract package data
