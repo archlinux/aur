@@ -1,7 +1,7 @@
 pkgbase = yatto
 	pkgdesc =  Interactive VCS-based todo-list for the command-line
 	pkgver = 0.21.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/handlebargh/yatto
 	arch = aarch64
 	arch = x86_64
