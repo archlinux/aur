@@ -21,7 +21,7 @@ sha256sums_armv7h=('27f3cfbc2e987b736d8cffcfd1b1c84e1d03cfaee36b9282b0eb43504e77
 sha256sums_i686=('1f1b49fac6cbf7158a083fc739401b6ba0864e0c4b53a8a262aaebd7dd11f7bc')
 
 package() {
-  install -Dm755 "${srcdir}/ftv" "${pkgdir}/usr/bin/ftv"
+  install -Dm755 "${srcdir}/FastTableViewer" "${pkgdir}/usr/bin/ftv"
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
