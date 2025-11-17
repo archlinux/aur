@@ -1,16 +1,17 @@
 pkgbase = python-oslash
 	pkgdesc = OSlash (Ø) is a library for playing with functional programming in Python 3.8+.
-	pkgver = 0.6.3
+	pkgver = 2.0.0
 	pkgrel = 1
-	url = https://github.com/dbrattli/oslash
+	url = https://github.com/dbrattli/OSlash
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	makedepends = python-nose
-	makedepends = python-pip
-	depends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.12
 	options = !emptydirs
-	source = python-oslash-0.6.3.tar.gz::https://github.com/dbrattli/OSlash/archive/refs/tags/v0.6.3.tar.gz
-	sha256sums = f9ebaa568e0df9bbf935b8f0510b0f04147f8609a7c924de8f0f1d616818f8dd
+	options = !strip
+	source = https://github.com/dbrattli/OSlash/archive/refs/tags/oslash-v2.0.0.tar.gz
+	sha256sums = 8d94b5a75a066e11aea678247acd0e7cd29ff9d478fa2ee83c494ea93b624afc
 
 pkgname = python-oslash
