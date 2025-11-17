@@ -2,11 +2,12 @@
 
 pkgname=open-vm-tools-aarch64
 pkgver=13.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Open VMware Tools for Linux guests (optimized for aarch64/Wayland)"
 arch=('aarch64')
 url="https://github.com/vmware/open-vm-tools"
 license=('GPL-2.0-only' 'LGPL-2.1-only')
+install=open-vm-tools-aarch64.install
 depends=(
     'fuse3'
     'glib2'
