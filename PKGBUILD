@@ -1,7 +1,7 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=sleipnirgroup-sleipnir-git
-pkgver=0.1.0.r120.g1f8f93c
+pkgver=0.3.1.r0.g71a1a45
 pkgrel=1
 pkgdesc="A sparsity and linearity-exploiting interior-point solver, now with readable internals"
 arch=('x86_64')
@@ -42,7 +42,7 @@ check() {
 
   cd "$srcdir"/Sleipnir
   local glibc_version=$(pacman -Q glibc | cut -d ' ' -f 2 | cut -d '+' -f 1 | sed 's/\./_/')
-  cp .py-build-cmake_cache/cp312-abi3-manylinux_${glibc_version}_$CARCH/_jormungandr.abi3.so jormungandr
+  cp .py-build-cmake_cache/cp312-abi3-manylinux_${glibc_version}_$CARCH/_sleipnir.abi3.so python
   PYTHONPATH=. pytest
 }
 

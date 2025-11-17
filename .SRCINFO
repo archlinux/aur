@@ -1,6 +1,6 @@
 pkgbase = sleipnirgroup-sleipnir-git
 	pkgdesc = A sparsity and linearity-exploiting interior-point solver, now with readable internals
-	pkgver = 0.1.0.r120.g1f8f93c
+	pkgver = 0.3.1.r0.g71a1a45
 	pkgrel = 1
 	url = https://github.com/SleipnirGroup/Sleipnir
 	arch = x86_64
