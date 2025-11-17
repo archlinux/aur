@@ -59,7 +59,7 @@ depends=(aurorae
          pipewire-session-manager
          libplasma
          qt6-5compat
-         qt6-base
+         qt6-base-hifps
          qt6-declarative
          qt6-sensors
          qt6-svg
