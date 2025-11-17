@@ -4,7 +4,7 @@
 # Contributor: Whovian9369 <Whovian9369@gmail.com>
 
 pkgname=gitahead-git
-pkgver=2.7.1.r0.gaf959bf
+pkgver=2.7.1.r11.g7e8d2bf
 pkgrel=1
 pkgdesc="Graphical Git client"
 url="https://gitahead.github.io/gitahead.com/"
@@ -22,8 +22,12 @@ source=("git+https://github.com/gitahead/gitahead.git"
         "gitahead-libgit2::git+https://github.com/stinb/libgit2.git"
         "git+https://github.com/git/git.git"
         "git+https://github.com/hunspell/hunspell.git"
+		"gitahead-libssh2::git+https://github.com/stinb/libssh2.git"
+		"git+https://github.com/commonmark/cmark.git"
         'gitahead.desktop')
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -42,8 +46,8 @@ prepare() {
   git config submodule.dep/git/git.url "${srcdir}/git"
   git config submodule.dep/hunspell/hunspell.url "${srcdir}/hunspell"
   git config submodule.dep/openssl/openssl.update none
-  git config submodule.dep/cmark/cmark.update none
-  git config submodule.dep/libssh2/libssh2.update none
+  git config submodule.dep/cmark/cmark.url "${srcdir}/cmark"
+  git config submodule.dep/libssh2/libssh2.url "${srcdir}/gitahead-libssh2"
   git -c protocol.file.allow=always submodule update
 
   install -d build
@@ -55,6 +59,7 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr/lib/gitahead \
     -DCMAKE_INSTALL_MANDIR=/usr/share/man \
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DENABLE_REPRODUCIBLE_BUILDS=ON \
     -DBUILD_SHARED_LIBS=OFF
 
