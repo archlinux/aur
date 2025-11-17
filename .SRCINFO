@@ -1,7 +1,7 @@
 pkgbase = veloren
 	pkgdesc = The last stable release of an open-world, open-source multiplayer voxel RPG.
 	pkgver = 0.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://veloren.net/
 	arch = x86_64
 	arch = i686
@@ -24,6 +24,7 @@ pkgbase = veloren
 	optdepends = pulseaudio-alsa: audio support on pulseaudio
 	optdepends = pipewire-alsa: audio support on pipewire
 	options = !strip
+	options = !lto
 	source = veloren::git+https://gitlab.com/veloren/veloren.git#tag=v0.17.0
 	sha512sums = SKIP
 

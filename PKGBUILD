@@ -4,12 +4,14 @@
 export GIT_LFS_SKIP_SMUDGE=1 # This is to prevent Git LFS errors
 pkgname=veloren
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The last stable release of an open-world, open-source multiplayer voxel RPG.'
 arch=('x86_64' 'i686')
 url='https://veloren.net/'
 license=('GPL3')
-options=('!strip') # This makes debugging issues easier sometimes, comment out if small package size is needed
+# !strip makes debugging issues easier sometimes, comment out if small package size is needed
+# !lto is needed temporarily due to some breaking change in one of the not-pinned complilers IIUC
+options=('!strip' '!lto')
 depends=('alsa-lib' 'glslang' 'libxkbcommon-x11' 'vulkan-icd-loader')
 optdepends=(
     'pulseaudio-alsa: audio support on pulseaudio'
@@ -34,6 +36,9 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname"
+
+    # Necessary for shaderc-sys until the next update
+    export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
     export VELOREN_USERDATA_STRATEGY='system'
     cargo build --release \
