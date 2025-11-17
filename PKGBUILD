@@ -12,7 +12,7 @@ sha256sums=('ea0e159b3dcec9d9a9b40abee29435287c54c859bc02d6cd761079bdd787fd25')
 
 build() {
   cd "$srcdir/waifu-cli-stable"
-  cargo build --release --locked
+  cargo build --release
 }
 
 package() {
