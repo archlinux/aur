@@ -11,6 +11,7 @@ pkgbase = uzdoom-git
 	makedepends = desktop-file-utils
 	makedepends = git
 	makedepends = ninja
+	makedepends = python
 	depends = bzip2
 	depends = gtk3
 	depends = hicolor-icon-theme

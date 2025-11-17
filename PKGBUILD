@@ -15,7 +15,7 @@ depends=('bzip2'
          'libvpx>=1.14'
          'openal'
          'sdl2')
-makedepends=('cmake' 'desktop-file-utils' 'git' 'ninja')
+makedepends=('cmake' 'desktop-file-utils' 'git' 'ninja' 'python')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
             'doom1-wad: Doom shareware game data'
