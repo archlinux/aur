@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Jason Stryker <public at jasonstryker dot com>
 pkgname=protontricks-git
-pkgver=1.13.0.r0.gaa8f1b1
+pkgver=1.13.1.r1.gb72e306
 pkgrel=1
 pkgdesc="A simple wrapper that does winetricks things for Proton enabled games."
 arch=('any')
 url="https://github.com/Matoking/protontricks"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 depends=(
   'python-pillow'
   'python-vdf'
