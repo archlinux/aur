@@ -1,52 +1,48 @@
-# Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
+# Maintainer: Strykar <strykar@hotmail.com>
 
-pkgbase=acarsdec-git
-pkgname=("$pkgbase-airspy" "$pkgbase-rtl-sdr")
-pkgver=3.4.r124.de0c5ae
+_pkgname=acarsdec
+pkgname=acarsdec-git
+pkgdesc="Acarsdec is a multi-channel ACARS decoder with built-in rtl_sdr, soapysdr, airspy and sdrplay device support."
+pkgver=r460.c628a0d
 pkgrel=1
 arch=('x86_64')
-url="https://github.com/TLeconte/acarsdec"
-license=('GPL')
-makedepends=('airspy' 'cmake' 'git' 'libusb' 'rtl-sdr')
-optdepends=('acarsserv: Store messages in sqlite database')
-provides=("${pkgbase%-git}")
-conflicts=("${pkgbase%-git}")
-source=("$pkgbase::git+https://github.com/TLeconte/acarsdec.git")
+url="https://github.com/f00b4r0/acarsdec"
+license=('GPL-2.0')
+makedepends=('cmake' 'git' 'pkgconf' 'gcc')
+depends=('libusb')
+optdepends=(
+  'cjson: JSON output support'
+  'alsa-lib: ALSA input support'
+  'libsndfile: Audio input support'
+  'libacars: ATS application decoding support'
+  'rtl-sdr: RTL-SDR input support'
+  'rtl-sdr-git: RTL-SDR input support (git version)'
+  'soapysdr: SoapySDR input support'
+  'soapysdr-git: SoapySDR input support (git version)'
+  'airspy: Airspy SDR input support'
+  'airspy-git: Airspy SDR input support (git version)'
+  'paho-mqtt-c: Eclipse MQTT output support'
+  'acarsserv-git: Store messages in sqlite database (git version)'
+)
+provides=('acarsdec')
+conflicts=('acarsdec')
+source=("git+https://github.com/f00b4r0/acarsdec.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgbase"
-  git describe --long --tags --match 'acarsdec-*' | sed 's/^acarsdec.//;s/\([^-]*-\)g/r\1/;s/-/./g'
+  cd "${srcdir}/${_pkgname}"
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$pkgbase"
-
-  mkdir -p build-airspy
-  cd build-airspy
-  cmake .. -Dairspy=ON
+  cd "${srcdir}/${_pkgname}"
+  mkdir -p build
+  cd build
+  cmake .. -DCMAKE_C_FLAGS="-march=native"
   make
-  cd ..
-
-  mkdir -p build-rtl
-  cd build-rtl
-  cmake .. -Drtl=ON
-  make
-  cd ..
 }
 
-package_acarsdec-git-airspy() {
-  pkgdesc="Multi-channel ACARS decoder with airspy backend"
-  depends=('airspy' 'libusb')
-
-  cd "$pkgbase"
-  install -Dm755 build-airspy/acarsdec "$pkgdir/usr/bin/acarsdec"
-}
-
-package_acarsdec-git-rtl-sdr() {
-  pkgdesc="Multi-channel ACARS decoder with rtl_sdr backend"
-  depends=('rtl-sdr')
-
-  cd "$pkgbase"
-  install -Dm755 build-rtl/acarsdec "$pkgdir/usr/bin/acarsdec"
+package() {
+  cd "${srcdir}/${_pkgname}/build"
+  install -Dm755 acarsdec "${pkgdir}/usr/bin/acarsdec"
 }
