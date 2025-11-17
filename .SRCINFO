@@ -1,0 +1,15 @@
+pkgbase = lala
+	pkgdesc = A modern, lightweight text editor with GUI and CLI support for Markdown, HTML, Mermaid, and LaTeX
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/clearclown/lala
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	source = lala-0.1.0.tar.gz::https://github.com/clearclown/lala/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 3e0891cce56f4b884b14b1ad2242b3849f256957e0849d94d48de636e567cca0
+
+pkgname = lala
