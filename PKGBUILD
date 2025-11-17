@@ -3,12 +3,12 @@
 
 pkgbase=nudelta
 pkgname=nudelta
-pkgver=0.7.4
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Open source NuPhy Console alternative"
 url='https://github.com/donn/nudelta'
 arch=('x86_64')
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'electron' 'hicolor-icon-theme')
 makedepends=('make' 'cmake' 'yarn' 'nodejs' 'git' 'gendesk')
 source=("git+${url}.git#tag=${pkgver}")
