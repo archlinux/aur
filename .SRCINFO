@@ -5,7 +5,6 @@ pkgbase = license
 	url = https://sr.ht/~zethra/license
 	arch = x86_64
 	arch = i686
-	arch = arm
 	arch = armv7h
 	arch = aarch64
 	license = MPL-2.0
