@@ -1,9 +1,9 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgauthor=VladimirMarkelov
 _pkgname=ttdl
 pkgname=${_pkgname}-bin
-pkgver=4.13.0
+pkgver=4.15.0
 pkgrel=1
 pkgdesc='TTDL - Terminal Todo List Manager. A CLI tool to manage todo lists in todo.txt format.'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -19,8 +19,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux-x64-musl.tar.gz")
 
 sha256sums=('234f3f9b9f2d3d402a89072e424f4d69625d831ce858d7cdd5c4e57169b96211'
-            '524ea4591f41c3dbb76e5675907337852d592838d91db4dc29ebfa71b2cb04d6')
-sha256sums_x86_64=('65d6ed38074f59a5ced9b2f6bad7dd1c25625cd7ee7884c69a7b3db65d2f8607')
+            '7d12bfb8581e4373d986cac7347bd5a21073503138da9431cde4a4d23682ed18')
+sha256sums_x86_64=('fe647f8eea7cbb96f73d9e2306594b852743bf33148c47c4d88ed0a1a8be6932')
 
 build() {
   cd "${srcdir}/" || exit
