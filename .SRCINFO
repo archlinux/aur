@@ -24,6 +24,12 @@ pkgbase = svp-bin
 	conflicts = svp
 	options = !strip
 	source = https://www.svp-team.com/files/svp4-linux.4.7.305-1.tar.bz2
+	source = svp-4.7.305_core.full_libs.7z::http://cdn.svp-team.com/repo/full-lin64/core.full/4.7.0.305-3libs.7z
+	source = svp-4.7.305_core.full_licenses.7z::http://cdn.svp-team.com/repo/full-lin64/core.full/4.7.0.305-3licenses.7z
+	source = svp-4.7.305_core.full_content.7z::http://cdn.svp-team.com/repo/full-lin64/core.full/4.7.0.305-3content.7z
 	sha256sums = 6bd83a03ac43cb1efb0e252d12bc379cb6e8b6037b4b4973017ce977b1b2925e
+	sha256sums = 93a7e51c83e32c3d924e164fa93c6d6a853946b5cd483701f838553ea5c86c93
+	sha256sums = 5de77a2b8a970cd6fa7a7024bf55e9bf082cc234beb16ad87913493c7be047a5
+	sha256sums = 3fb0c65b7c2ae00b9d7d6b1516013f1b989742f406d415498a34f324292f36b8
 
 pkgname = svp-bin
