@@ -1,0 +1,5 @@
+[gittype-bin]
+source = "github"
+github = "unhappychoice/gittype"
+use_latest_release = true
+prefix = "v"

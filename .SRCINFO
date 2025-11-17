@@ -1,0 +1,24 @@
+pkgbase = gittype-bin
+	pkgdesc = A CLI code-typing game that turns your source code into typing challenges
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/unhappychoice/gittype
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = zlib
+	depends = git
+	provides = gittype
+	conflicts = gittype
+	source = README-0.8.0.md::https://raw.githubusercontent.com/unhappychoice/gittype/v0.8.0/README.md
+	source = LICENSE-0.8.0::https://raw.githubusercontent.com/unhappychoice/gittype/v0.8.0/LICENSE
+	sha256sums = 01e0b1fe535f6f0f134aa399416abf879e58eb5dd6e7e5919b663af39d52fe5b
+	sha256sums = 7d3884e3483b0d8d53cd33e291b38317d9e80283030ef17a8ec3396b1d5efca7
+	source_x86_64 = gittype-x86_64-0.8.0.tgz::https://github.com/unhappychoice/gittype/releases/download/v0.8.0/gittype-v0.8.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1ed8cff5a617e90ef3e9e9e5f1b2144af35bd345544ab708dd7802847ca2c61f
+	source_aarch64 = gittype-aarch64-0.8.0.tgz::https://github.com/unhappychoice/gittype/releases/download/v0.8.0/gittype-v0.8.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = df7b79bcb67189d54b356b03faf8814591d066044388f79e8393146ffbebd2c9
+
+pkgname = gittype-bin
