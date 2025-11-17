@@ -16,7 +16,7 @@ pkgbase = neoarch-git
 	depends = npm
 	provides = neoarch
 	conflicts = neoarch
-	source = git+https://github.com/Sanjaya-Danushka/Neoarch.git#tag=v1.2-beta
+	source = git+https://github.com/Sanjaya-Danushka/Neoarch.git
 	md5sums = SKIP
 
 pkgname = neoarch-git

@@ -11,7 +11,7 @@ makedepends=('git')
 provides=('neoarch')
 conflicts=('neoarch')
 install=neoarch-git.install
-source=('git+https://github.com/Sanjaya-Danushka/Neoarch.git#tag=v1.2-beta')
+source=('git+https://github.com/Sanjaya-Danushka/Neoarch.git')
 md5sums=('SKIP')
 
 pkgver() {
