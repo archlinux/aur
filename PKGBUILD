@@ -5,8 +5,7 @@
 
 pkgname=librespot-avahi
 _pkgname=librespot
-_commit=84a3302
-pkgver=0.7.1.g${_commit}
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Open source client library for Spotify'
 arch=('x86_64')
@@ -29,12 +28,12 @@ optdepends=(
     'sdl2: Audio playback using SDL2'
     'avahi: Use system mDNS daemon for discovery'
 )
-source=("git+${url}#commit=${_commit}")
-sha256sums=('05d2363bbd15bc7f23f06c2ae706d5dd1430ed7d95aa31a283cefde63cd306dc')
+source=("git+${url}#tag=v${pkgver}")
+sha256sums=('7660f8563c11291ee742b917bfa0f3459c7e57761a50fca6c10a44376d5a48dd')
 
 _env() {
     export RUSTUP_TOOLCHAIN=stable
-    export PKG_FEATURES=alsa-backend,with-libmdns,native-tls
+    export PKG_FEATURES=alsa-backend,with-libmdns,native-tls,with-mpris
     declare -A PKG_FEATURE_MAP=(
         [jack2]='jackaudio-backend'
         [gst-plugins-good]='gstreamer-backend'
@@ -45,7 +44,7 @@ _env() {
         [avahi]='with-avahi'
     )
     for pkg in "${!PKG_FEATURE_MAP[@]}"; do
-        if [[ -n `pacman -Qsq "$pkg" | sed -E "/^$pkg\$/b; /.+/d"` ]]; then
+        if pacman -Qq "$pkg"; then
             export PKG_FEATURES="$PKG_FEATURES,${PKG_FEATURE_MAP[$pkg]}"
         fi 2>/dev/null >&2
     done
