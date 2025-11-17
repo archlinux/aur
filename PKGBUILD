@@ -1,9 +1,9 @@
 # Maintainer: Justin Dickey <justin.dickey.eg@gmail.com>
 
 pkgname=goplaying-git
-pkgver=r21.7c37bd9
+pkgver=r34.878d680
 pkgrel=1
-pkgdesc="A basic Now Playing TUI written in Go"
+pkgdesc="Now Playing TUI written in Go"
 arch=('x86_64')
 url="https://github.com/justinmdickey/goplaying"
 license=('MIT')
@@ -24,12 +24,8 @@ build() {
   go build -v -o goplaying .
 }
 
-install_license() {
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
 package() {
   cd goplaying
   install -Dm755 goplaying "$pkgdir/usr/bin/goplaying"
-  install_license
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
