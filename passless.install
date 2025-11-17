@@ -1,0 +1,41 @@
+post_install() {
+    echo ""
+    echo "==> Passless has been installed successfully!"
+    echo ""
+    echo "    The 'fido' group has been created. Add your user to it:"
+    echo "      sudo usermod -a -G fido \$USER"
+    echo ""
+    echo "    Load the uhid kernel module:"
+    echo "      sudo modprobe uhid"
+    echo ""
+    echo "    Reload udev rules:"
+    echo "      sudo udevadm control --reload-rules && sudo udevadm trigger"
+    echo ""
+    echo "    Log out and back in for group changes to take effect, then:"
+    echo ""
+    echo "    To run passless as a systemd user service:"
+    echo "      systemctl --user enable passless.service"
+    echo "      systemctl --user start passless.service"
+    echo ""
+    echo "    For more details, see: https://github.com/pando85/passless"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> Passless has been upgraded."
+    echo ""
+    echo "    If running as a systemd service, restart it with:"
+    echo "      systemctl --user restart passless.service"
+    echo ""
+}
+
+post_remove() {
+    echo ""
+    echo "==> Passless has been removed."
+    echo ""
+    echo "    To also disable the systemd service:"
+    echo "      systemctl --user disable passless.service"
+    echo "      systemctl --user daemon-reload"
+    echo ""
+}
