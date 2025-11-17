@@ -1,7 +1,7 @@
 pkgbase = simsimd
 	pkgdesc = Up to 200x faster dot products and similarity metrics.
 	pkgver = 6.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ashvardanian/simsimd
 	arch = x86_64
 	license = Apache-2.0
