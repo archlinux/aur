@@ -2,14 +2,14 @@
 
 pkgname=git-igitt
 pkgver=0.1.19
-pkgrel=1
+pkgrel=2
 pkgdesc='TUI with clear git graphs arranged for your branching model'
 url="https://github.com/mlange-42/$pkgname"
 arch=(x86_64)
 license=(MIT)
 depends=(dbus
-         gcc-libs
-         glibc
+         gcc-libs # libgcc_s.so
+         glibc # libc.so libm.so
          libgit2 libgit2.so
          zlib libz.so)
 makedepends=(cargo
@@ -30,6 +30,7 @@ _srcenv() {
 	export CARGO_TARGET_DIR=target
 	CFLAGS+=' -ffat-lto-objects'
 	export LIBGIT2_NO_VENDOR=1
+	export LIBGIT2_SYS_USE_PKG_CONFIG=1
 }
 
 build() {
