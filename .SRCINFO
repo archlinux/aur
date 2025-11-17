@@ -28,7 +28,7 @@ pkgname = aspnet-runtime-10.0-bin
 	depends = dotnet-runtime-10.0-bin
 	provides = aspnet-runtime=10.0.0
 	provides = aspnet-runtime-10.0
-	conflicts = aspnet-runtime
+	conflicts = aspnet-runtime=10.0.0
 	conflicts = aspnet-runtime-10.0
 
 pkgname = dotnet-runtime-10.0-bin
@@ -43,7 +43,7 @@ pkgname = dotnet-runtime-10.0-bin
 	optdepends = lttng-ust: CoreCLR tracing
 	provides = dotnet-runtime=10.0.0
 	provides = dotnet-runtime-10.0
-	conflicts = dotnet-runtime
+	conflicts = dotnet-runtime=10.0.0
 	conflicts = dotnet-runtime-10.0
 
 pkgname = dotnet-sdk-10.0-bin
@@ -57,7 +57,7 @@ pkgname = dotnet-sdk-10.0-bin
 	depends = aspnet-targeting-pack-10.0-bin
 	provides = dotnet-sdk=10.0.0.sdk100
 	provides = dotnet-sdk-10.0=10.0.0.sdk100
-	conflicts = dotnet-sdk
+	conflicts = dotnet-sdk=10.0.0
 	conflicts = dotnet-sdk-10.0
 
 pkgname = netstandard-targeting-pack-10.0-bin

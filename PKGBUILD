@@ -50,7 +50,7 @@ package_dotnet-host-10.0-bin() {
 package_dotnet-runtime-10.0-bin() {
   pkgdesc='The .NET Core runtime (binary) - .NET 10.0 LTS'
   depends=(
-  	"dotnet-host>=${_runtimever}"
+    "dotnet-host>=${_runtimever}"
     'gcc-libs'
     'glibc'
     'icu'
@@ -60,7 +60,8 @@ package_dotnet-runtime-10.0-bin() {
   )
   optdepends=('lttng-ust: CoreCLR tracing')
   provides=("dotnet-runtime=${_runtimever}" "dotnet-runtime-${_short_ver}")
-  conflicts=("dotnet-runtime" "dotnet-runtime-${_short_ver}")
+
+  conflicts=("dotnet-runtime=${_runtimever}" "dotnet-runtime-${_short_ver}")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.NETCore.App "${pkgdir}"/usr/share/dotnet/shared/
@@ -71,7 +72,7 @@ package_aspnet-runtime-10.0-bin() {
   pkgdesc='The ASP.NET Core runtime (binary) - .NET 10.0 LTS'
   depends=('dotnet-runtime-10.0-bin')
   provides=("aspnet-runtime=${_runtimever}" "aspnet-runtime-${_short_ver}")
-  conflicts=("aspnet-runtime" "aspnet-runtime-${_short_ver}")
+  conflicts=("aspnet-runtime=${_runtimever}" "aspnet-runtime-${_short_ver}")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/usr/share/dotnet/shared/
@@ -90,7 +91,7 @@ package_dotnet-sdk-10.0-bin() {
     'aspnet-targeting-pack-10.0-bin'
   )
   provides=("dotnet-sdk=${pkgver}" "dotnet-sdk-${_short_ver}=${pkgver}")
-  conflicts=("dotnet-sdk" "dotnet-sdk-${_short_ver}")
+  conflicts=("dotnet-sdk=${_runtimever}" "dotnet-sdk-${_short_ver}")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
   cp -dr --no-preserve='ownership' sdk sdk-manifests templates "${pkgdir}"/usr/share/dotnet/
