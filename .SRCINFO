@@ -1,0 +1,18 @@
+pkgbase = kx-aspe-git
+	pkgdesc = Keyoxide profile generator CLI using ASPE
+	pkgver = r24.492df7e
+	pkgrel = 1
+	url = https://codeberg.org/keyoxide/kx-aspe-cli
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	provides = kx-aspe=r24.492df7e-1
+	conflicts = kx-aspe
+	source = git+https://codeberg.org/keyoxide/kx-aspe-cli.git
+	sha256sums = SKIP
+
+pkgname = kx-aspe-git
