@@ -1,6 +1,6 @@
 # Maintainer: Meron Bossin Meronbssn@gmail.com
 pkgname=mcat-bin
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="A powerful extended cat command, to cat all the things you couldn't before"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=('mcat')
 source_x86_64=("https://github.com/Skardyy/mcat/releases/download/v$pkgver/mcat-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("https://github.com/Skardyy/mcat/releases/download/v$pkgver/mcat-aarch64-unknown-linux-gnu.tar.xz")
 
-sha256sums_x86_64=('70ca0166830ae0a41fb08de67e05722e037199cd691f9d3c0fa44f80eb51e088')
-sha256sums_aarch64=('79c09dcd0ad34d48fc36742546d0d3dcb1770c25644268d642f94f9fede588ed')
+sha256sums_x86_64=('a572b5f2d790634840755ed3d876aa71711bb94ee2a268298e09c701495edd14')
+sha256sums_aarch64=('7e0ad88279e7c7baf1ce2997ff270daac25081fdd89e14fb78d0d77f11b56190')
 
 package() {
     install -Dm755 "$srcdir/mcat-$CARCH-unknown-linux-gnu/mcat" "$pkgdir/usr/bin/mcat"
