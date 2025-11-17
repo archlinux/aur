@@ -1,6 +1,6 @@
 pkgbase = nzbhydra2
 	pkgdesc = Search aggregator for newznab and torznab indexers.
-	pkgver = 7.19.2
+	pkgver = 8.0.0
 	pkgrel = 1
 	url = https://github.com/theotherp/nzbhydra2
 	arch = any
@@ -11,14 +11,14 @@ pkgbase = nzbhydra2
 	depends = java-runtime-headless=17
 	optdepends = jackett: torrent indexer proxy
 	options = !debug
-	source = nzbhydra2-7.19.2.tar.gz::https://github.com/theotherp/nzbhydra2/archive/refs/tags/v7.19.2.tar.gz
+	source = nzbhydra2-8.0.0.tar.gz::https://github.com/theotherp/nzbhydra2/archive/refs/tags/v8.0.0.tar.gz
 	source = nzbhydra2.service
 	source = nzbhydra2.tmpfiles
 	source = nzbhydra2.sysusers
 	source = nzbhydra2.sh
 	source = disable-update-checks.patch
 	source = skip-unneeded-builds.patch
-	sha256sums = 8c31869a0364c1be20b7247c5eb4950882a4b4a0d9bfcbcc0fca6a47839f30ba
+	sha256sums = 6435be10731a013f463613ae1a90a94211a05d0891b1d199dad7dafaa88d97e6
 	sha256sums = 86c2f02cb8913c3093b1669247447691329bf5bd88fee1b8f2977cff96775655
 	sha256sums = a9ceeed2b50d55c5e554c0d4c615e855fe4d3889eb118e37908fa04ffb7cb003
 	sha256sums = 8f91eb4f98f7f5c11590b29b1394dfa7ca62ad115feeac4f402c9ac094fb925a
