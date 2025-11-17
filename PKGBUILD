@@ -1,6 +1,6 @@
 #Maintainer: Yury Bobylev <bobilev_yury@mail.ru>
 pkgname="crengine-ng"
-pkgver="0.9.12"
+pkgver="0.9.13"
 pkgrel="1"
 conflicts=('crengine-ng-git')
 pkgdesc="crengine-ng is cross-platform library designed to implement text viewers and e-book readers"
@@ -10,8 +10,8 @@ source=("https://gitlab.com/coolreader-ng/crengine-ng/-/archive/${pkgver}/${pkgn
 url="https://gitlab.com/coolreader-ng/crengine-ng"
 license=('GPL-2.0-or-later')
 makedepends=('cmake' 'gcc' 'pkgconf')
-depends=('freetype2' 'harfbuzz' 'zlib' 'zstd' 'libpng' 'libjpeg-turbo' 'fribidi' 'libunibreak' 'libutf8proc' 'fontconfig')
-sha256sums=('0bb3d95a9ccf792c2060ea20d89d6ffb83bb69a3b0c5038b8d989fd75cc5a241')
+depends=('freetype2' 'harfbuzz' 'zlib' 'zstd' 'libpng' 'libjpeg-turbo' 'fribidi' 'libunibreak' 'libutf8proc' 'fontconfig' 'libwebp')
+sha256sums=('6e358143f67cc198e4926656be93cb45d474855fe707b317af28ef0d8d6e1097')
 options=('staticlibs')
 
 build() {   
