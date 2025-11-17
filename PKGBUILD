@@ -3,8 +3,8 @@
 # for dm Fotóvilág: based on PKGBUILD of https://aur.archlinux.org/packages/dm-fotowelt/
 
 _keyaccount=2376
-_productUrname='CEWE Fotószerkeszto'
-_productRename='CEWE Fotószerkeszto'
+_productUrname='dm Fotóvilág'
+_productRename='dn Fotóvilág'
 
 pkgname=dm-fotovilag
 pkgdesc='an offline client for creating photobooks, greeting cards, posters and more, uploading and ordering them at dm-digifoto.hu'
