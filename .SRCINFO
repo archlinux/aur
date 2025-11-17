@@ -1,7 +1,7 @@
 pkgbase = vuescan-bin
 	pkgdesc = A powerful proprietary scanning tool developed by Hamrick Software
-	pkgver = 9.8.45
-	pkgrel = 2
+	pkgver = 9.8.49
+	pkgrel = 1
 	url = https://www.hamrick.com/
 	arch = i686
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = vuescan-bin
 	options = !strip
 	source = vuescan-LICENSE.txt
 	sha256sums = 6dbe377ee83561ef0b12fec64dadb5c81beb1f9ee274284c09184366bad1a6d6
-	source_i686 = vuescan-x32-2025-04-11-20.rpm::https://www.hamrick.com/files/vuex3298.rpm
+	source_i686 = vuescan-x32-2025-11-18-00.rpm::https://www.hamrick.com/files/vuex3298.rpm
 	sha256sums_i686 = SKIP
-	source_x86_64 = vuescan-x64-2025-04-11-20.rpm::https://www.hamrick.com/files/vuex6498.rpm
+	source_x86_64 = vuescan-x64-2025-11-18-00.rpm::https://www.hamrick.com/files/vuex6498.rpm
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = vuescan-arm64-2025-04-11-20.rpm::https://www.hamrick.com/files/vuea6498.rpm
+	source_aarch64 = vuescan-arm64-2025-11-18-00.rpm::https://www.hamrick.com/files/vuea6498.rpm
 	sha256sums_aarch64 = SKIP
 
 pkgname = vuescan-bin
