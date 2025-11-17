@@ -1,6 +1,6 @@
 # Maintainer: J A <soulhotel@pm.me>
 pkgname=paruse
-pkgver=0.6.7042ec4
+pkgver=0.7.31d7fdb
 pkgrel=1
 pkgdesc="An interactive package manager and browser using paru and fzf"
 arch=('any')
@@ -13,10 +13,9 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    local tag
-    tag=$(git describe --tags --abbrev=0)
-    local commit
-    commit=$(git rev-parse --short HEAD)
+    local tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "0.0")
+    local commit=$(git log -1 --format="%h" -- paruse.sh)
+    [ -z "$commit" ] && commit=$(git rev-parse --short HEAD)
     printf "%s.%s" "$tag" "$commit"
 }
 
