@@ -1,7 +1,7 @@
 pkgbase = openeb3
 	pkgdesc = Open source SDK for event based cameras by Prophesee with support for EVK1
 	pkgver = 3.1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/prophesee-ai/openeb
 	arch = any
 	license = custom
@@ -23,9 +23,11 @@ pkgbase = openeb3
 	source = fix-build.patch
 	source = python-version.patch
 	source = 0001-Fix-build-with-GCC-15.patch
+	source = profiling-remove-boost-system.patch
 	sha256sums = 2f977d673ae345747d04cd224f8263e6b7f1cde58d46aa43a1bf0425fa548ab7
 	sha256sums = c6c341a17aab158179d741720fe7b175a9991514ac5d9030ea4b2f1344de55c4
 	sha256sums = d0bf8a9878c509fe8a0154c2f30db2c6cf99f3b61ed6e8131e03e5ddd697a1a7
 	sha256sums = da2e825583596e81ac9ff29f37f27341c8e1219a0f443ee1c6c725ab0235ac34
+	sha256sums = de761a59ff5211d28af3fcc57c009de7f2cf142fae3f93f130f203157ca46d04
 
 pkgname = openeb3
