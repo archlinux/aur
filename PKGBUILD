@@ -18,15 +18,17 @@ license=('proprietary')
 
 depends=('fuse2' 'hicolor-icon-theme')
 
-# Removed makedepends to revert to the most reliable AppImage extraction method.
-
 options=(!strip !debug)
 
 
 
+# Source is fixed to download the AppImage binary from the verified URL.
+
 source=("RadarOmega-${pkgver}-x86_64.AppImage::https://dl.todesktop.com/200402kk4yak2og/linux/appImage/x64")
 
-sha256sums=('SKIP') 
+# SECURE: Verified SHA256 sum for integrity checking.
+
+sha256sums=('C34E05F4A1B37E631A64F6F79AE0595FA56269E4861D39BA754DBB9BD7A2FC42') 
 
 
 
@@ -38,7 +40,7 @@ package() {
 
     
 
-    # 1. Install AppImage into /opt/pkgname
+    # 1. Install AppImage into /opt/pkgname (standard location for large binaries)
 
     install -d "${app_dir}"
 
@@ -50,11 +52,13 @@ package() {
 
     chmod +x "${srcdir}/${appimage_file}"
 
+    # Using the AppImage's internal extractor with chmod is the most robust fix for this specific file.
+
     "${srcdir}/${appimage_file}" --appimage-extract >/dev/null 2>&1
 
 
 
-    # 3. Install all icons (YOUR ORIGINAL, WORKING LOGIC IS PRESERVED)
+    # 3. Install all icons (PRESERVED: Your original, working logic)
 
     find squashfs-root/usr/share/icons/hicolor -type f \( -name "*.png" -o -name "*.svg" \) | while read -r icon; do
 
@@ -72,7 +76,7 @@ package() {
 
     
 
-    # Fix Exec line to point to the new launcher script
+    # Fix Exec line to point to the launcher script
 
     sed -i "s|^Exec=.*|Exec=${pkgname} %U|" "${pkgdir}/usr/share/applications/radar-omega.desktop"
 
@@ -86,11 +90,13 @@ package() {
 
 
 
-    # 5. Create a launcher script in /usr/bin/
+    # 5. FIXED LAUNCHER SCRIPT: Uses the absolute system path /opt/ to avoid the execution error.
 
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<< "#!/bin/bash
 
-    exec \"${app_dir}/${pkgname}.AppImage\" \"\$@\"
+    # This uses the FINAL system path, /opt/radar-omega/radar-omega.AppImage
+
+    exec /opt/${pkgname}/${pkgname}.AppImage \"\$@\"
 
     "
 

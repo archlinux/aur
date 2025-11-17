@@ -10,6 +10,6 @@ pkgbase = radar-omega
 	options = !strip
 	options = !debug
 	source = RadarOmega-5.5.2-x86_64.AppImage::https://dl.todesktop.com/200402kk4yak2og/linux/appImage/x64
-	sha256sums = SKIP
+	sha256sums = C34E05F4A1B37E631A64F6F79AE0595FA56269E4861D39BA754DBB9BD7A2FC42
 
 pkgname = radar-omega
