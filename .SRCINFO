@@ -1,6 +1,6 @@
 pkgbase = nodejs-jsonschema2md
 	pkgdesc = Convert Complex JSON Schemas into Markdown Documentation
-	pkgver = 8.0.7
+	pkgver = 8.0.8
 	pkgrel = 1
 	url = https://github.com/adobe/jsonschema2md
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = nodejs-jsonschema2md
 	depends = nodejs
 	conflicts = nodejs-jsonschema2md
 	conflicts = nodejs-jsonschema2md-git
-	noextract = v8.0.7.tar.gz
-	source = https://github.com/adobe/jsonschema2md/archive/refs/tags/v8.0.7.tar.gz
-	sha512sums = 9fa4aa41a8d45c07a4419a87859210c7f4d450c0a6575b7d36c1e5ebeb2f6b709b6267948a42bdd50efdc706c53463ef2846598728b3f959c58a00609b64d9bf
+	noextract = v8.0.8.tar.gz
+	source = https://github.com/adobe/jsonschema2md/archive/refs/tags/v8.0.8.tar.gz
+	sha512sums = 55fe8d93c557f0ad51c8e8a18b1a259a7323e773488f9c6200dbc6c22d02bca50df01fd6d47476c6308f7794f9c81f92edefdbf6c166aa680982ea03eece4fd7
 
 pkgname = nodejs-jsonschema2md
