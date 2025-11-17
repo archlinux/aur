@@ -3,7 +3,7 @@
 
 pkgname=scx-scheds-git
 _gitname=scx
-pkgver=1.0.18.r1.g6ddcb07b
+pkgver=1.0.18.r98.ge41f1a31
 pkgrel=1
 pkgdesc='sched_ext schedulers and tools'
 url='https://github.com/sched-ext/scx'
@@ -27,7 +27,6 @@ makedepends=(
   git
   llvm
   llvm-libs
-  meson
   python
   rust
 )
@@ -49,43 +48,72 @@ pkgver() {
 }
 
 prepare() {
- cd $_gitname
+  cd $_gitname
 
- local _c _l
-  for _c in "${_backports[@]}"; do
-    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
-    git log --oneline "${_l}" "${_c}"
-    git cherry-pick --mainline 1 --no-commit "${_c}"
-  done
-  for _c in "${_reverts[@]}"; do
-    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
-    git log --oneline "${_l}" "${_c}"
-    git revert --mainline 1 --no-commit "${_c}"
-  done
+  local _c _l
+   for _c in "${_backports[@]}"; do
+     if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+     git log --oneline "${_l}" "${_c}"
+     git cherry-pick --mainline 1 --no-commit "${_c}"
+   done
+   for _c in "${_reverts[@]}"; do
+     if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+     git log --oneline "${_l}" "${_c}"
+     git revert --mainline 1 --no-commit "${_c}"
+   done
 
   local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    [[ $src = *.patch ]] || continue
-    echo "Applying patch $src..."
-    patch -Np1 < "../$src"
-  done
+   for src in "${source[@]}"; do
+     src="${src%%::*}"
+     src="${src##*/}"
+     [[ $src = *.patch ]] || continue
+     echo "Applying patch $src..."
+     patch -Np1 < "../$src"
+   done
+
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd $_gitname
-  arch-meson . build -D openrc=disabled \
-    -D libbpf_a=disabled \
-    -D bpftool=disabled \
-    -D b_lto=true \
-    -D b_lto_mode=thin \
-    -D force_meson=true \
-    -D cargo_home="$srcdir"/scx
-  meson compile -C build
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build \
+     --release \
+     --frozen \
+     --all-features \
+     --workspace \
+     --exclude scx_rlfifo \
+     --exclude scx_wd40 \
+     --exclude scx_mitosis \
+     --exclude scxcash \
+     --exclude xtask \
+     --exclude vmlinux_docify \
+     --exclude scx_arena_selftests
+}
+
+check() {
+  cd $_gitname
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test \
+     --frozen \
+     --all-features \
+     --workspace \
+     --exclude scx_rlfifo \
+     --exclude scx_wd40 \
+     --exclude scx_mitosis \
+     --exclude scxcash \
+     --exclude xtask \
+     --exclude vmlinux_docify \
+     --exclude scx_arena_selftests
 }
 
 package() {
   cd $_gitname
-  meson install -C build --destdir "${pkgdir}"
+
+  # Install all built executables (skip .so and .d files)
+  find target/release \
+    -maxdepth 1 -type f -executable ! -name '*.so' \
+    -exec install -Dm755 -t "$pkgdir/usr/bin/" {} +
 }
