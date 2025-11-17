@@ -1,0 +1,35 @@
+pkgbase = python-dask-image
+	pkgdesc = Distributed image processing
+	pkgver = 2025.11.0
+	pkgrel = 1
+	url = https://image.dask.org
+	arch = any
+	license = MIT
+	checkdepends = python-pytest-timeout
+	makedepends = python-setuptools-scm>=8
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-sphinx
+	makedepends = python-dask-sphinx-theme
+	makedepends = python-dask
+	makedepends = python-pandas
+	makedepends = python-pims
+	makedepends = python-pyarrow
+	makedepends = python-scipy
+	makedepends = python-tifffile
+	source = https://files.pythonhosted.org/packages/source/d/dask_image/dask_image-2025.11.0.tar.gz
+	md5sums = 2a16822da0884d7956d10760d0b4ae30
+
+pkgname = python-dask-image
+	depends = python>=3.9
+	depends = python-dask>=2024.4.1
+	depends = python-pyarrow
+	depends = python-numpy>=1.18
+	depends = python-scipy>=1.7
+	depends = python-pandas>=2.0.0
+	depends = python-pims>=0.4.1
+	depends = python-tifffile>=2018.10.18
+	optdepends = python-dask-imae-doc: Documentation for dask-image
+
+pkgname = python-dask-image-doc
+	pkgdesc = Documentation for Python dask-image
