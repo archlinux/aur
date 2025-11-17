@@ -1,6 +1,6 @@
 pkgbase = muro
 	pkgdesc = Wallpaper with blurred or averaged background for any background tool
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://codeberg.org/dimus/muro
 	arch = x86_64
@@ -10,7 +10,8 @@ pkgbase = muro
 	makedepends = just
 	provides = muro
 	conflicts = muro
-	source = https://codeberg.org/dimus/muro/archive/v0.2.4.tar.gz
-	sha256sums = 43c9008946c7c6f17243a632156a051b8ce9b37980a1388a81d533e38aab1b1c
+	options = !debug
+	source = https://codeberg.org/dimus/muro/archive/v0.2.5.tar.gz
+	sha256sums = cc751247ff3a415599cbda78c370c618d11f14363d1fe73e083a4816281aa45d
 
 pkgname = muro
