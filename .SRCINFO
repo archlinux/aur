@@ -1,0 +1,24 @@
+pkgbase = gnome-assistant
+	pkgdesc = Advanced voice control for GNOME Shell with whisper.cpp offline speech recognition
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Saim20/gnome-assistant
+	install = gnome-assistant.install
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = gcc
+	depends = gnome-shell>=45
+	depends = sdbus-cpp
+	depends = jsoncpp
+	depends = libpulse
+	depends = ydotool
+	optdepends = cuda: for NVIDIA GPU acceleration
+	optdepends = vulkan-icd-loader: for Vulkan GPU acceleration (AMD/Intel/NVIDIA)
+	optdepends = vulkan-headers: for Vulkan GPU acceleration build support
+	options = !debug
+	source = gnome-assistant::git+https://github.com/Saim20/gnome-assistant.git
+	sha256sums = SKIP
+
+pkgname = gnome-assistant

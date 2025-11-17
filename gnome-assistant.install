@@ -1,0 +1,138 @@
+post_install() {
+    # Color codes
+    local RED='\033[0;31m'
+    local GREEN='\033[0;32m'
+    local YELLOW='\033[1;33m'
+    local BLUE='\033[0;34m'
+    local BOLD='\033[1m'
+    local NC='\033[0m' # No Color
+    
+    echo ""
+    echo -e "${BOLD}===================================================================${NC}"
+    echo -e "${BOLD}GNOME Assistant Installation Complete${NC}"
+    echo -e "${BOLD}===================================================================${NC}"
+    echo ""
+    
+    # Auto-setup configuration
+    if [ ! -f "$HOME/.config/gnome-assistant/config.json" ]; then
+        printf "Setting up configuration...\n"
+        mkdir -p "$HOME/.config/gnome-assistant"
+        cp /usr/share/gnome-assistant/config.json "$HOME/.config/gnome-assistant/"
+        echo -e "${GREEN}✓${NC} Configuration created at ~/.config/gnome-assistant/config.json"
+    fi
+    
+    # Check for whisper model
+    if [ ! -f "$HOME/.local/share/gnome-assistant/models/ggml-tiny.en.bin" ]; then
+        echo ""
+        printf "Whisper model not found. Download now? [Y/n] "
+        read -r response
+        response=${response:-Y}
+        if [[ "$response" =~ ^[Yy]$ ]]; then
+            printf "\nDownloading ggml-tiny.en model (~75MB)...\n"
+            mkdir -p "$HOME/.local/share/gnome-assistant/models"
+            if curl -fL --progress-bar -o "$HOME/.local/share/gnome-assistant/models/ggml-tiny.en.bin" \
+                "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-tiny.en.bin"; then
+                echo -e "${GREEN}✓${NC} Model downloaded successfully"
+            else
+                echo -e "${RED}✗${NC} Download failed. Run later: gnome-assistant-download-model"
+            fi
+        else
+            printf "\nSkipped. Download later with: gnome-assistant-download-model\n"
+        fi
+    else
+        echo -e "${GREEN}✓${NC} Whisper model already installed"
+    fi
+    
+    echo ""
+    echo -e "${BOLD}-------------------------------------------------------------------${NC}"
+    echo -e "${YELLOW}IMPORTANT: Manual Steps Required${NC}"
+    echo -e "${BOLD}-------------------------------------------------------------------${NC}"
+    echo ""
+    echo -e "${BLUE}1. Enable GNOME extension:${NC}"
+    echo "   gnome-extensions enable gnome-assistant@saim"
+    echo ""
+    echo -e "${BLUE}2. Start the service (from a GNOME graphical session):${NC}"
+    echo "   systemctl --user start gnome-assistant.service"
+    echo ""
+    echo -e "${BLUE}3. Enable ydotool for keyboard simulation (Wayland):${NC}"
+    echo "   sudo systemctl enable --now ydotool"
+    echo "   sudo usermod -aG input \$USER"
+    echo "   (Then log out and back in)"
+    echo ""
+    echo -e "${YELLOW}Note:${NC} The service requires a running GNOME session with D-Bus."
+    echo "      If installing via SSH, complete steps 1-2 after logging into GNOME."
+    echo ""
+    echo -e "${BOLD}Configure preferences:${NC}"
+    echo "  gnome-extensions prefs gnome-assistant@saim"
+    echo ""
+    echo "Documentation: /usr/share/doc/gnome-assistant/"
+    echo -e "${BOLD}===================================================================${NC}"
+    echo ""
+}
+
+post_upgrade() {
+    # Color codes
+    local GREEN='\033[0;32m'
+    local YELLOW='\033[1;33m'
+    local BOLD='\033[1m'
+    local NC='\033[0m'
+    
+    echo ""
+    echo -e "${BOLD}===================================================================${NC}"
+    echo -e "${BOLD}GNOME Assistant Upgraded${NC}"
+    echo -e "${BOLD}===================================================================${NC}"
+    echo ""
+    echo -e "${YELLOW}Restart the service to apply changes:${NC}"
+    echo "  systemctl --user restart gnome-assistant.service"
+    echo ""
+    echo -e "${YELLOW}Note:${NC} Run from a GNOME graphical session, not SSH/terminal"
+    echo -e "${BOLD}===================================================================${NC}"
+    echo ""
+}
+
+pre_remove() {
+    if systemctl --user is-active --quiet gnome-assistant.service 2>/dev/null; then
+        printf "Stopping GNOME Assistant service...\n"
+        systemctl --user stop gnome-assistant.service 2>/dev/null || true
+    fi
+    systemctl --user disable gnome-assistant.service 2>/dev/null || true
+}
+
+post_remove() {
+    # Color codes
+    local GREEN='\033[0;32m'
+    local BOLD='\033[1m'
+    local NC='\033[0m'
+    
+    echo ""
+    echo -e "${BOLD}===================================================================${NC}"
+    echo -e "${BOLD}GNOME Assistant Removed${NC}"
+    echo -e "${BOLD}===================================================================${NC}"
+    echo ""
+    
+    # Disable extension if it exists
+    if command -v gnome-extensions &> /dev/null; then
+        gnome-extensions disable gnome-assistant@saim 2>/dev/null || true
+    fi
+    
+    printf "Remove configuration files? [y/N] "
+    read -r response
+    if [[ "$response" =~ ^[Yy]$ ]]; then
+        rm -rf "$HOME/.config/gnome-assistant" 2>/dev/null && echo -e "${GREEN}✓${NC} Configuration removed" || true
+    else
+        echo "Configuration kept at: ~/.config/gnome-assistant"
+    fi
+    
+    printf "Remove whisper models (~75MB)? [y/N] "
+    read -r response
+    if [[ "$response" =~ ^[Yy]$ ]]; then
+        rm -rf "$HOME/.local/share/gnome-assistant" 2>/dev/null && echo -e "${GREEN}✓${NC} Models removed" || true
+    else
+        echo "Models kept at: ~/.local/share/gnome-assistant"
+    fi
+    
+    echo ""
+    echo "GNOME Assistant has been successfully removed."
+    echo -e "${BOLD}===================================================================${NC}"
+    echo ""
+}
