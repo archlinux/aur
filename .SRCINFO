@@ -1,7 +1,7 @@
 pkgbase = rofi-file-selector-git
 	pkgdesc = A set of scripts and python programs to quickly find and open files using rofi
 	pkgver = r37.20240606.24a3022
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/matclab/rofi-file-selector
 	arch = any
 	license = MIT
@@ -17,6 +17,8 @@ pkgbase = rofi-file-selector-git
 	provides = rofi-file-selector
 	conflicts = rofi-file-selector
 	source = git+https://gitlab.com/matclab/rofi-file-selector.git
+	source = clear_fd_cache.sh
 	sha256sums = SKIP
+	sha256sums = 51e4a6a481fcd12d30b51cd4321e781be090fc1aea025f9547aa755edbf0e65b
 
 pkgname = rofi-file-selector-git
