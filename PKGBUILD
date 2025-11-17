@@ -1,4 +1,4 @@
-# Maintainer: Antoni Przybylik <antoni.przybylik@wp.pl>
+# Maintainer: Antoni Michał Przybylik <antoni@taon.io>
 
 pkgname=lutok
 pkgver=0.4
