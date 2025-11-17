@@ -12,8 +12,8 @@
 
 _pkgname=ModusToolbox
 pkgname=modustoolbox
-_pkgver=3.5
-pkgver=${_pkgver}.0.17527
+_pkgver=3.6
+pkgver=${_pkgver}.0.17979
 pkgrel=1
 pkgdesc="A set of multi-platform development tools and a comprehensive suite of GitHub-hosted firmware libraries. \
     Together, they enable an immersive development experience for customers creating converged MCU and Wireless systems."
@@ -28,7 +28,7 @@ provides=("modustoolbox")
 url="https://softwaretools.infineon.com/tools/com.ifx.tb.tool.modustoolbox"
 _source="${pkgname}_${pkgver}_Linux_x64.deb"
 source=("file://${_source}")
-sha256sums=('8d1f66cb644efd7c4989c782d5cd538cb21a7c021b7d8af50749343a3dae1ecf')
+sha256sums=('f4da74d4aef1852f73f84ebd5a0ae8ad9c58c640494a1b4f89dc4d1ff6134fbb')
 options=('!strip')
 install="${pkgname}.install"
 

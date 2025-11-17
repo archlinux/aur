@@ -3,7 +3,7 @@ post_install() {
 
     # Define ModusToolbox location as the parent to resources_x.y.z folder
     PRODUCT_HOME="/opt/ModusToolbox"
-    SHORT_VERSION="3.5"
+    SHORT_VERSION="3.6"
     cd ${PRODUCT_HOME}/resources_${SHORT_VERSION}.0
     # Path to resources_x.y.z folder
     SCRIPTS_DIR="."
