@@ -12,8 +12,13 @@ sha256sums=('d6e1547f1e70340b842543a4238436b516ccd4d5f9a8e2b6f69b5b2b20d82bd4')
 
 build() {
   cd "${srcdir}/NoctuneMusicPlayer-${pkgver}"
-  dotnet publish -c Release --no-self-contained -o publish
+  dotnet publish -c Release \
+    -p:PublishSingleFile=false \
+    -p:SelfContained=false \
+    -p:EnableCompressionInSingleFile=false \
+    -o publish
 }
+
 
 package() {
   install -dm755 "${pkgdir}/usr/bin"
