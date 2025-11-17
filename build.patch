@@ -1,6 +1,6 @@
-diff '--color=auto' --unified --recursive --text vrc-get-gui-v1.1.4/vrc-get-gui/Tauri.toml vrc-get-gui-v1.1.4-patched/vrc-get-gui/Tauri.toml
---- vrc-get-gui-v1.1.4/vrc-get-gui/Tauri.toml	2025-09-02 13:29:13.000000000 +0900
-+++ vrc-get-gui-v1.1.4-patched/vrc-get-gui/Tauri.toml	2025-09-05 15:39:40.973416241 +0900
+diff '--color=auto' --unified --recursive --text --color vrc-get-gui-v1.1.5/vrc-get-gui/Tauri.toml vrc-get-gui-v1.1.5-patched/vrc-get-gui/Tauri.toml
+--- vrc-get-gui-v1.1.5/vrc-get-gui/Tauri.toml	2025-11-17 08:40:22.719408556 +0900
++++ vrc-get-gui-v1.1.5-patched/vrc-get-gui/Tauri.toml	2025-11-17 08:41:10.020246924 +0900
 @@ -34,8 +34,6 @@
  resources = []
  publisher = "anatawa12"
@@ -10,3 +10,18 @@ diff '--color=auto' --unified --recursive --text vrc-get-gui-v1.1.4/vrc-get-gui/
  [[bundle.fileAssociations]]
  # note: for macOS we directory use info.plist for registering file association.
  description = "ALCOM Project Template"
+diff '--color=auto' --unified --recursive --text --color vrc-get-gui-v1.1.5/vrc-get-gui/components/providers.tsx vrc-get-gui-v1.1.5-patched/vrc-get-gui/components/providers.tsx
+--- vrc-get-gui-v1.1.5/vrc-get-gui/components/providers.tsx	2025-11-17 08:40:22.723936366 +0900
++++ vrc-get-gui-v1.1.5-patched/vrc-get-gui/components/providers.tsx	2025-11-17 09:26:33.340099226 +0900
+@@ -82,11 +82,6 @@
+ 				if (import.meta.env.DEV) return;
+ 				const checkVersion = await commands.utilCheckForUpdate();
+ 				if (cancel) return;
+-				if (checkVersion) {
+-					await openSingleDialog(CheckForUpdateMessage, {
+-						response: checkVersion,
+-					});
+-				}
+ 			} catch (e) {
+ 				toastThrownError(e);
+ 				console.error(e);
