@@ -1,0 +1,22 @@
+pkgbase = ftv-bin
+pkgdesc = Fast, feature-rich CSV/TSV/delimited file viewer for the command line
+pkgver = 0.8
+pkgrel = 1
+url = https://github.com/codechenx/FastTableViewer
+arch = x86_64
+arch = aarch64
+arch = armv7h
+arch = i686
+license = MIT
+provides = ftv
+conflicts = ftv
+source_x86_64 = ftv-bin-0.8-x86_64.tar.gz::https://github.com/codechenx/FastTableViewer/releases/download/v0.8/FastTableViewer_0.8_Linux_x86_64.tar.gz
+sha256sums_x86_64 = a1d66ec6f9c9c5971176c6d615ccd820c76a232c4890a8e4c355dbdf44c53e69
+source_aarch64 = ftv-bin-0.8-aarch64.tar.gz::https://github.com/codechenx/FastTableViewer/releases/download/v0.8/FastTableViewer_0.8_Linux_arm64.tar.gz
+sha256sums_aarch64 = c450d471c7d524c9f60de6ef2978e85ccf46a1838e5191bdbd0dda384a1e927d
+source_armv7h = ftv-bin-0.8-armv7h.tar.gz::https://github.com/codechenx/FastTableViewer/releases/download/v0.8/FastTableViewer_0.8_Linux_arm.tar.gz
+sha256sums_armv7h = 27f3cfbc2e987b736d8cffcfd1b1c84e1d03cfaee36b9282b0eb43504e7707db
+source_i686 = ftv-bin-0.8-i686.tar.gz::https://github.com/codechenx/FastTableViewer/releases/download/v0.8/FastTableViewer_0.8_Linux_i386.tar.gz
+sha256sums_i686 = 1f1b49fac6cbf7158a083fc739401b6ba0864e0c4b53a8a262aaebd7dd11f7bc
+
+pkgname = ftv-bin
