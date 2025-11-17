@@ -6,24 +6,22 @@ pkgname=(
   "protoc-gen-go-errors"
   "protoc-gen-go-http"
 )
-pkgver=2.8.4
-pkgrel=2
+pkgver=2.9.1
+pkgrel=1
 pkgdesc="Your ultimate Go microservices framework for the cloud-native era"
 arch=('x86_64')
 url="https://go-kratos.dev"
 _url="https://github.com/go-kratos/${pkgbase}"
 license=('MIT')
-depends=(
-  'glibc'
-  'protobuf'
-  'protoc-gen-go'
-)
 makedepends=(
   'go'
 )
+checkdepends=(
+  'git'
+)
 _pkgsrc="${_url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('18e5204346a742e34c4d9f1f995d30fca7cbde0d8eb466533bd8f18652d6e859')
+sha256sums=('6bd9f0c3cec292143452f02f476314939e2a939b3c8db2a3597a7ef44be272bb')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
@@ -31,10 +29,9 @@ prepare() {
   cd "${srcdir}/${_pkgsrc}"
   for _name in "${pkgname[@]}"; do
     pushd "cmd/${_name}" >/dev/null
-    go mod download -x
+    go mod download -modcacherw -x
     popd >/dev/null
   done
-  chmod -R ug+Xwr "${GOMODCACHE}"
 
   mkdir -p "build" "completions"
 }
@@ -71,10 +68,14 @@ check() {
 
 package_kratos() {
   depends+=(
-   'protoc-gen-go-grpc'
-   "protoc-gen-go-errors=${pkgver}"
-   "protoc-gen-go-http=${pkgver}"
-   "protoc-gen-validate"
+    'glibc'
+    'go'
+    'protobuf'
+    'protoc-gen-go'
+    'protoc-gen-go-grpc'
+    "protoc-gen-go-errors=${pkgver}"
+    "protoc-gen-go-http=${pkgver}"
+    "protoc-gen-validate"
   )
 
   cd "${srcdir}/${_pkgsrc}"
@@ -91,7 +92,12 @@ package_kratos() {
 
 package_protoc-gen-go-errors() {
   pkgdesc="Protobuf plugin that generates error codes and RPC error helpers"
-  url="${_url}/tree/main/cmd/${pkgname}"
+  url+="/tree/main/cmd/${pkgname}"
+  depends=(
+    'glibc'
+    'protobuf'
+    'protoc-gen-go'
+  )
 
   cd "${srcdir}/${_pkgsrc}"
   install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
@@ -100,7 +106,12 @@ package_protoc-gen-go-errors() {
 
 package_protoc-gen-go-http() {
   pkgdesc="Protobuf plugin that generates RPC service templates for HTTP APIs"
-  url="${_url}/tree/main/cmd/${pkgname}"
+  url+="/tree/main/cmd/${pkgname}"
+  depends=(
+    'glibc'
+    'protobuf'
+    'protoc-gen-go'
+  )
 
   cd "${srcdir}/${_pkgsrc}"
   install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"

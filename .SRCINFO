@@ -1,30 +1,35 @@
 pkgbase = kratos
 	pkgdesc = Your ultimate Go microservices framework for the cloud-native era
-	pkgver = 2.8.4
-	pkgrel = 2
+	pkgver = 2.9.1
+	pkgrel = 1
 	url = https://go-kratos.dev
 	arch = x86_64
 	license = MIT
+	checkdepends = git
 	makedepends = go
-	depends = glibc
-	depends = protobuf
-	depends = protoc-gen-go
-	source = kratos-2.8.4.tar.gz::https://github.com/go-kratos/kratos/archive/refs/tags/v2.8.4.tar.gz
-	sha256sums = 18e5204346a742e34c4d9f1f995d30fca7cbde0d8eb466533bd8f18652d6e859
+	source = kratos-2.9.1.tar.gz::https://github.com/go-kratos/kratos/archive/refs/tags/v2.9.1.tar.gz
+	sha256sums = 6bd9f0c3cec292143452f02f476314939e2a939b3c8db2a3597a7ef44be272bb
 
 pkgname = kratos
 	depends = glibc
+	depends = go
 	depends = protobuf
 	depends = protoc-gen-go
 	depends = protoc-gen-go-grpc
-	depends = protoc-gen-go-errors=2.8.4
-	depends = protoc-gen-go-http=2.8.4
+	depends = protoc-gen-go-errors=2.9.1
+	depends = protoc-gen-go-http=2.9.1
 	depends = protoc-gen-validate
 
 pkgname = protoc-gen-go-errors
 	pkgdesc = Protobuf plugin that generates error codes and RPC error helpers
-	url = https://github.com/go-kratos/kratos/tree/main/cmd/protoc-gen-go-errors
+	url = https://go-kratos.dev/tree/main/cmd/protoc-gen-go-errors
+	depends = glibc
+	depends = protobuf
+	depends = protoc-gen-go
 
 pkgname = protoc-gen-go-http
 	pkgdesc = Protobuf plugin that generates RPC service templates for HTTP APIs
-	url = https://github.com/go-kratos/kratos/tree/main/cmd/protoc-gen-go-http
+	url = https://go-kratos.dev/tree/main/cmd/protoc-gen-go-http
+	depends = glibc
+	depends = protobuf
+	depends = protoc-gen-go
