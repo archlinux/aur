@@ -1,0 +1,19 @@
+# Ignore build artifacts
+src/
+pkg/
+*.log
+
+# Ignore python virtual environments and caches
+.venv/
+.pytest_cache/
+.eggs/
+
+# Ignore common archive/tarball files
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.zip
+
+# Ignore other potential temp files
+*.swp
+*~
