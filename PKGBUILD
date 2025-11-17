@@ -119,9 +119,15 @@ prepare() {
     return 1
   fi
 
-  patch -Np1 -i "${srcdir}/qt6-base-cflags.patch" # Use system CFLAGS
-  patch -Np1 < "${srcdir}/qt6-base-nostrip.patch" # Don't strip binaries with qmake
+  echo ">>> Applying default Arch patches..."
+  patch -Np1 -i "${srcdir}/qt6-base-cflags.patch"  # Use system CFLAGS
+  patch -Np1 -i "${srcdir}/qt6-base-nostrip.patch" # Don't strip binaries with qmake
+
+  echo ">>> Reducing Qt animation timer interval down to 1 ms to smooth out animations..."
+  patch -Np1 -i "${srcdir}/0005-low-timer.patch" # apply 1 ms timing patch to make animations smoother
   git cherry-pick -n a374ab6ce9f01f1f559403ec377cde990a689890 # Fix yakuake
+
+  echo ">>> Patches applied"
 
   popd
 }
