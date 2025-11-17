@@ -2,7 +2,7 @@
 
 pkgname=rofi-file-selector-git
 pkgver=r37.20240606.24a3022
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of scripts and python programs to quickly find and open files using rofi"
 arch=('any')
 url="https://gitlab.com/matclab/rofi-file-selector"
@@ -11,8 +11,10 @@ depends=('rofi>=1.6.0' 'bash>=4.3' 'python>=3.7' 'python-gobject' 'python-cairo'
 makedepends=('git')
 provides=('rofi-file-selector')
 conflicts=('rofi-file-selector')
-source=('git+https://gitlab.com/matclab/rofi-file-selector.git')
-sha256sums=('SKIP')
+source=('git+https://gitlab.com/matclab/rofi-file-selector.git'
+        'clear_fd_cache.sh')
+sha256sums=('SKIP'
+            '51e4a6a481fcd12d30b51cd4321e781be090fc1aea025f9547aa755edbf0e65b')
 
 pkgver() {
   cd "$srcdir/rofi-file-selector"
@@ -34,6 +36,9 @@ package() {
   
   # Install config example
   install -Dm644 config.sh.example "$pkgdir/usr/share/rofi-file-selector/"
+
+  # Install cache removal script
+  install -Dm755 "$srcdir/clear_fd_cache.sh" "$pkgdir/usr/share/rofi-file-selector/"
   
   # Create wrapper script in /usr/bin
   install -d "$pkgdir/usr/bin"
