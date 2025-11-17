@@ -1,13 +1,13 @@
 pkgbase = ntvcm
 	pkgdesc = NT Virtual CP/M Machine, emulates CP/M running on an 8080/Z80 processor
-	pkgver = 0.0.20250904
+	pkgver = 0.0.20251117
 	pkgrel = 1
 	url = https://github.com/davidly/ntvcm
 	arch = x86_64
 	license = CC0-1.0
 	makedepends = git
 	depends = glibc
-	source = ntvcm-0.0.20250904::git+https://github.com/davidly/ntvcm#commit=f421ba4035aed6f485be9e5e64666bfd9156afc8
-	b2sums = 894a5513831a2f8f0a44d4b110676d2619fbacd42003a99957ed1d1d3a8822c53ffe6911ce5fe32b46c8ecc7b45d8da04400532c509bc39a1854313b2f8f8e91
+	source = ntvcm-0.0.20251117::git+https://github.com/davidly/ntvcm#commit=4f4a38483ece42a5c3437883bf917c4be536f2ec
+	b2sums = 89433a4adb1257b108ef0cfe4108c3aa57be5c0c5b80bf6ba275c732fc5ce46f086afbb9732af5c3179491a947d750ef5279e6c18ba100e822a56207d8ecd51a
 
 pkgname = ntvcm
