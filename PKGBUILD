@@ -1,5 +1,5 @@
 pkgname=mnemo-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Note-taking app designed to enhance the retention of information."
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('AGPL-3.0')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
 options=('!strip' '!emptydirs')
 source_x86_64=("https://github.com/lemueldls/mnemo/releases/download/mnemo-v$pkgver/Mnemo_${pkgver}_amd64.deb")
-sha256sums_x86_64=('0f1825f1ba7c5fb62bf6bfdf47dd2ae3f67ddc08e21ca8c8c4f5ed80b6bc8ee2')
+sha256sums_x86_64=('c6b529c9bfaf7650738c3815c57ad1e78fe518f5c4089495571a081fd3fb5b77')
 package() {
     tar -xz -f data.tar.gz -C "${pkgdir}"
 }
