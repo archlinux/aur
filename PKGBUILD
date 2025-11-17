@@ -1,4 +1,4 @@
-# Maintainer: Antoni Przybylik <antoni.przybylik@wp.pl>
+# Maintainer: Antoni Michał Przybylik <antoni@taon.io>
 
 pkgname=kyua
 pkgver=0.13
