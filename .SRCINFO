@@ -1,0 +1,15 @@
+pkgbase = csharp-language-server
+	pkgdesc = A wrapper around Roslyn language server which makes compatible with editors other than VSCode
+	pkgver = 5.3.0_2.25557.9
+	pkgrel = 1
+	url = https://github.com/SofusA/csharp-language-server
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = dotnet-runtime
+	source = csharp-language-server-5.3.0_2.25557.9.tar.gz::https://github.com/SofusA/csharp-language-server/archive/refs/tags/5.3.0-2.25557.9.tar.gz
+	sha256sums = 668e7b79cf1a760b3ef2d6e7042435c028787aa0ba5caff09b2241ba2e749f65
+
+pkgname = csharp-language-server
