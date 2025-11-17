@@ -2,23 +2,23 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 
 pkgname='carapace-aws-bin'
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
-pkgdesc='aws completer'
+pkgdesc='An enriched aws completer'
 url='https://github.com/carapace-sh/carapace-aws'
 arch=('aarch64' 'i686' 'x86_64')
 license=('MIT')
 provides=('carapace-aws')
 conflicts=('carapace-aws')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/carapace-sh/carapace-aws/releases/download/v0.0.1/carapace-aws_0.0.1_linux_arm64.tar.gz")
-sha256sums_aarch64=('eb4a450e3ba54f9f95ae7065443efed06a7cf692e8a1ef02707fa18513058d98')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/carapace-sh/carapace-aws/releases/download/v0.0.2/carapace-aws_0.0.2_linux_arm64.tar.gz")
+sha256sums_aarch64=('e0152f4662af965ee7ab6976d12c3d5137ecaccc80b752e6484f47973ef28ab5')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/carapace-sh/carapace-aws/releases/download/v0.0.1/carapace-aws_0.0.1_linux_386.tar.gz")
-sha256sums_i686=('a4ed52f01a7c3e4df804e0c0ae0e9a90a3677cf2c17715160ae196cd1de73a0d')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/carapace-sh/carapace-aws/releases/download/v0.0.2/carapace-aws_0.0.2_linux_386.tar.gz")
+sha256sums_i686=('d21b0e2a8faeea3f9c3f0db5671b68c96ccf5dfe8fc7e58c2a1bdd949e895b17')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/carapace-sh/carapace-aws/releases/download/v0.0.1/carapace-aws_0.0.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('548c30a755b6b91e82c9067f4307ac13cb437a9f5ce7f22b3f38e64bff985280')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/carapace-sh/carapace-aws/releases/download/v0.0.2/carapace-aws_0.0.2_linux_amd64.tar.gz")
+sha256sums_x86_64=('a044ea0b23ec9f8357b86fdd2b093d4098ab8799db83ce473108f7bcd6eff36f')
 
 package() {
   install -Dm755 "./carapace-aws" "${pkgdir}/usr/bin/carapace-aws"
