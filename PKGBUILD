@@ -1,28 +1,29 @@
-# Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
+# Maintainer: Damir Perisa <damir pünktli perisa at gmail com>
+# Contributor: Jefferson Gonzalez <jgmdev@gmail.com>
 # Contributor: foxbunny <bg.branko@gmail.com>
 # Contributor: Vinzenz Vietzke <vinz@vinzv.de>
 
 pkgname="eci-icc"
 pkgver=2020
-pkgrel=1
+pkgrel=2
 pkgdesc="ICC profiles from ECI (European Color Initiative) with documentation"
 arch=('i686' 'x86_64')
 url="http://www.eci.org/"
 license=('Custom')
 makedepends=('unzip')
 source=(
-  "http://www.eci.org/lib/exe/fetch.php?id=en%3Adownloads&cache=cache&media=downloads:icc_profiles_from_eci:pso-coated_v3.zip"
-  "http://www.eci.org/lib/exe/fetch.php?id=en%3Adownloads&cache=cache&media=downloads:icc_profiles_from_eci:pso-uncoated_v3_fogra52.zip"
-  "http://www.eci.org/lib/exe/fetch.php?id=en%3Adownloads&cache=cache&media=downloads:icc_profiles_from_eci:pso_sc-b_paper_v3.zip"
-  "http://www.eci.org/lib/exe/fetch.php?id=en%3Adownloads&cache=cache&media=downloads:icc_profiles_from_eci:eci_gravure_psr_v2_m1_2020.zip"
-  "http://www.eci.org/lib/exe/fetch.php?id=en%3Adownloads&cache=cache&media=downloads:icc_profiles_from_eci:eci_gravure_psr_v2_2009.zip"
-  "http://www.eci.org/lib/exe/fetch.php?id=en%3Adownloads&cache=cache&media=downloads:icc_profiles_from_eci:ecirgbv20.zip"
-  "http://www.eci.org/lib/exe/fetch.php?id=en%3Adownloads&cache=cache&media=downloads:icc_profiles_from_eci:ecirgbv10.zip"
-  "http://www.eci.org/lib/exe/fetch.php?id=en%3Adownloads&cache=cache&media=downloads:icc_profiles_from_eci:eci_cmyk_v2.zip"
-  "http://www.eci.org/lib/exe/fetch.php?id=en%3Adownloads&cache=cache&media=downloads:icc_profiles_from_eci:eci-offset-profiles_supplement2020-surface-finishing_v3b.zip"
-  "http://www.eci.org/lib/exe/fetch.php?id=en%3Adownloads&cache=cache&media=downloads:icc_profiles_from_eci:eci_offset_profiles_metal_printing_mpc1.zip"  
-  "http://www.eci.org/lib/exe/fetch.php?id=en%3Adownloads&cache=cache&media=downloads:icc_profiles_from_eci:eci_offset_2009.zip"
-  "http://www.eci.org/lib/exe/fetch.php?id=en%3Adownloads&cache=cache&media=downloads:icc_profiles_from_eci:eci_offset_cont_2004.zip"
+  "http://www.eci.org/lib/exe/pso-coated_v3.zip"
+  "http://www.eci.org/lib/exe/pso-uncoated_v3_fogra52.zip"
+  "http://www.eci.org/lib/exe/pso_sc-b_paper_v3.zip"
+  "http://www.eci.org/lib/exe/eci_gravure_psr_v2_m1_2020.zip"
+  "http://www.eci.org/lib/exe/eci_gravure_psr_v2_2009.zip"
+  "http://www.eci.org/lib/exe/ecirgbv20.zip"
+  "http://www.eci.org/lib/exe/ecirgbv10.zip"
+  "http://www.eci.org/lib/exe/eci_cmyk_v2.zip"
+  "http://www.eci.org/lib/exe/eci-offset-profiles_supplement2020-surface-finishing_v3b.zip"
+  "http://www.eci.org/lib/exe/eci_offset_profiles_metal_printing_mpc1.zip"  
+  "http://www.eci.org/lib/exe/eci_offset_2009.zip"
+  "http://www.eci.org/lib/exe/eci_offset_cont_2004.zip"
 )
 
 md5sums=('b080cb34d3f058e8203eb914df1350cb'
