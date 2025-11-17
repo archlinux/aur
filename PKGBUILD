@@ -2,9 +2,9 @@
 # Maintainer: Benedikt Zumtobel <benedikt at zumtobel dot dev>
 
 pkgname='yatto'
-pkgver=0.21.6
+pkgver=0.21.7
 pkgrel=1
-pkgdesc=' Interactive VCS-based todo-list for the command-line.'
+pkgdesc=' Interactive VCS-based todo-list for the command-line'
 url='https://github.com/handlebargh/yatto'
 arch=('aarch64' 'x86_64')
 license=('MIT')
@@ -12,8 +12,12 @@ provides=('yatto')
 conflicts=('yatto')
 depends=('git')
 makedepends=('go' 'git')
-source=("${pkgname}_${pkgver}.tar.gz::https://github.com/handlebargh/yatto/releases/download/v0.21.6/yatto-0.21.6-SNAPSHOT-a61d3f1.tar.gz")
-sha256sums=('c6c9df42a905368370ff7acd04d534214d93aaa215406699938595e827f031e2')
+source=("${pkgname}_${pkgver}.tar.gz::https://github.com/handlebargh/yatto/releases/download/v0.21.7/yatto-0.21.7.tar.gz")
+sha256sums=('97366b72a2c8413787fdbbb5202846a7ca8362940d2496668ebd17ae3fda66d0')
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  go mod download
+}
 build() {
   cd "${pkgname}-${pkgver}"
   export CGO_ENABLED=0
@@ -27,12 +31,9 @@ build() {
 }
 package() {
   cd "${pkgname}-${pkgver}"
-  install -vDm755 -t "${pkgdir}/usr/bin/" yatto
-  mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
-  mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
-  mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
-  install -vDm644 bash-completion "$pkgdir/usr/share/bash-completion/completions/yatto"
-  install -vDm644 fish-completion "$pkgdir/usr/share/fish/vendor_completions.d/yatto.fish"
-  install -vDm644 zsh-completion "$pkgdir/usr/share/zsh/site-functions/_yatto"
-  install -vDm644 -t "${pkgdir}/usr/share/licenses/" LICENSE
+  install -Dm755 yatto "${pkgdir}/usr/bin/yatto"
+  install -Dm644 bash-completion "${pkgdir}/usr/share/bash-completion/completions/yatto"
+  install -Dm644 fish-completion "${pkgdir}/usr/share/fish/vendor_completions.d/yatto.fish"
+  install -Dm644 zsh-completion "${pkgdir}/usr/share/zsh/site-functions/_yatto"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

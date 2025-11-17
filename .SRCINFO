@@ -1,6 +1,6 @@
 pkgbase = yatto
-	pkgdesc =  Interactive VCS-based todo-list for the command-line.
-	pkgver = 0.21.6
+	pkgdesc =  Interactive VCS-based todo-list for the command-line
+	pkgver = 0.21.7
 	pkgrel = 1
 	url = https://github.com/handlebargh/yatto
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = yatto
 	conflicts = yatto
 	provides = yatto
 	
-	source = https://github.com/handlebargh/yatto/releases/download/v0.21.6/yatto-0.21.6-SNAPSHOT-a61d3f1.tar.gz
-	sha256sums = c6c9df42a905368370ff7acd04d534214d93aaa215406699938595e827f031e2
+	source = https://github.com/handlebargh/yatto/releases/download/v0.21.7/yatto-0.21.7.tar.gz
+	sha256sums = 97366b72a2c8413787fdbbb5202846a7ca8362940d2496668ebd17ae3fda66d0
 	
 pkgname = yatto
