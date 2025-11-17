@@ -1,7 +1,7 @@
 # Maintainer: mewset>
 pkgname=better-iptv-bin
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern, powerful IPTV player for Linux, Windows, and macOS"
 arch=('x86_64')
 url="https://github.com/mewset/better-iptv"
@@ -25,6 +25,10 @@ package() {
     # Install files
     install -dm755 "$pkgdir/opt/$pkgname"
     cp -r squashfs-root/* "$pkgdir/opt/$pkgname/"
+
+    # Fix executable permissions
+    chmod +x "$pkgdir/opt/$pkgname/AppRun"
+    chmod +x "$pkgdir/opt/$pkgname/AppRun.wrapped"
 
     # Create wrapper script
     install -dm755 "$pkgdir/usr/bin"
