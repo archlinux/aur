@@ -1,0 +1,24 @@
+pkgbase = python-croniter-git
+	pkgdesc = Parses cron schedules to iterate over datetime objects (development version)
+	pkgver = 6.0.0.r83.gb2ab627
+	pkgrel = 1
+	url = https://github.com/pallets-eco/croniter
+	arch = any
+	license = MIT
+	checkdepends = python-pytest-cov
+	checkdepends = python-setuptools
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-flit-core
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-dateutil
+	depends = python-pytz
+	provides = python-croniter
+	conflicts = python-croniter
+	source = git+https://github.com/pallets-eco/croniter.git
+	sha256sums = SKIP
+
+pkgname = python-croniter-git
