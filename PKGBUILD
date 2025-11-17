@@ -4,9 +4,9 @@
 # Patches applied by: Lito Parra <lito.15@proton.me>
 
 pkgname=kwin-hifps
-pkgver=6.4.5
+pkgver=6.5.2
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=4
+pkgrel=1
 pkgdesc='An easy to use, but flexible, Wayland compositor - patched for high refresh rate animation smoothness'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -83,47 +83,18 @@ conflicts=('kwin')
 provides=('kwin')
 groups=(plasma)
 source=(git+https://github.com/KDE/kwin.git
-        0001-retick.patch::https://invent.kde.org/plasma/kwin/-/merge_requests/7980.patch
-        0002_set_interval_1ms.patch
-        sync_official.sh)
+        sync_official.sh
+	8436.patch::https://invent.kde.org/plasma/kwin/-/merge_requests/8436.patch
+)
+# unused: 0001-retick.patch::https://invent.kde.org/plasma/kwin/-/merge_requests/7980.patch
 sha256sums=('SKIP'
-            'SKIP'
-            '50c1f127360a655fa3794218bbd6b1d6fb90c23da2b950355d103b7040a5aee2'
-            '26b1d0926ab098d9da0b60270a368959887a6f2ee90e3f1c2c358e7325e8129c')
+            '26b1d0926ab098d9da0b60270a368959887a6f2ee90e3f1c2c358e7325e8129c'
+            'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
               '90A968ACA84537CC27B99EAF2C8DF587A6D4AAC1'  # Nicolas Fella <nicolas.fella@kde.org>
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
-
-# Dynamically sets pkgver by following the official Arch kwin package.
-# This way, the package automatically tracks upstream versions, allowing
-# us to apply our custom patches without manually updating the PKGBUILD each time.
-
-pkgver() {
-  local tmpdir
-  tmpdir=$(mktemp -d)
-  pushd "$tmpdir" >/dev/null
-
-  # Clone official PKGBUILD repo (last public version)
-  git clone --depth=1 https://gitlab.archlinux.org/archlinux/packaging/packages/kwin.git . >/dev/null 2>&1
-
-  # Extract key variables from PKGBUILD
-  local official_pkgver
-  local official_pkgrel
-  official_pkgver=$(grep -E '^pkgver=' PKGBUILD | cut -d= -f2)
-  official_pkgrel=$(grep -E '^pkgrel=' PKGBUILD | cut -d= -f2)
-  #official_pkgver=6.5.0
-  #official_pkgrel=1
-
-  popd >/dev/null
-  rm -rf "$tmpdir"
-
-  # Export pkgver for build
-  pkgver="$official_pkgver"
-  pkgrel="$official_pkgrel"
-  echo "$pkgver"
-}
 
 prepare() {
   echo ">>> Syncing official Arch kwin repo files..."
@@ -150,15 +121,20 @@ prepare() {
     return 1
   fi
 
-  echo ">>> Applying MR 7980 patch for frame pacing fixes..."
-  patch -Np1 -i "${srcdir}/0001-retick.patch"
+#  echo ">>> Applying MR 7980 patch for frame pacing fixes..."
+#  patch -Np1 -i "${srcdir}/0001-retick.patch"
 
-  echo ">>> Applying additional patches..."
-  patch -Np1 -i "${srcdir}/0002_set_interval_1ms.patch"
+echo ">>> Replacing old animation drivers and Overview implementation with the new one... (MR 8436)"
+  patch -Np1 -i "${srcdir}/8436.patch"
+  
+ # echo ">>> Applying additional patches..."
+ # patch -Np1 -i "${srcdir}/0002_set_interval_1ms.patch"
 
 
   echo ">>> Fixing docbook URLs (if any)..."
   find "$srcdir" -name index.docbook -print0 | xargs -0 sed -i -e 's|url=" http|url="http|g' || true
+
+  echo ">>> Patches applied!" 
 }
 
 build() {
