@@ -4,8 +4,8 @@
 # Contributor: Christopher Arndt <aur -at -chrisarndt -dot- de>
 
 pkgname=neural-amp-modeler-bypass-lv2
-pkgver=0.2.4
-pkgrel=2
+pkgver=0.2.5
+pkgrel=1
 pkgdesc='Neural Amp Modeler (NAM) LV2 plugin with bypass functionality'
 arch=(x86_64)
 url='https://github.com/rickprice/neural-amp-modeler-bypass-lv2'
