@@ -1,7 +1,7 @@
 # Maintainer: aquabeam <laithbahodi@gmail.com>
 
 pkgname=org-rust
-pkgver=0.1.17
+pkgver=0.1.18
 pkgrel=1
 url=https://github.com/hydrobeam/org-rust
 pkgdesc='CLI tool for converting Org-Mode documents to other formats'
