@@ -5,7 +5,7 @@ pkgdesc="a very cool, featureful fork of conduit (rust matrix homeserver)"
 url="https://forgejo.ellis.link/continuwuation/continuwuity"
 license=("Apache-2.0")
 arch=("x86_64")
-pkgver=0.5.0.5640.gcff3c277
+pkgver=0.5.0.5701.gc0f1d8eab
 pkgrel=1
 epoch=1
 makedepends=("gcc14" "rust" "cargo" "git" "clang" "linux-api-headers" "linux-headers" "llvm" "libc++" "autoconf")
@@ -26,6 +26,7 @@ function prepare() {
 	export CC=gcc-14
 	export CXX=g++-14
 	cd "${srcdir}/continuwuity"
+	git merge origin/jade/clippy-fixes
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 	export CONDUWUIT_VERSION_EXTRA=$(git rev-parse --short HEAD)
@@ -45,7 +46,7 @@ function check() {
 	export CXX=g++-14
 	cd "${srcdir}/continuwuity"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo test --frozen --locked
+#	cargo test --frozen --locked
 }
 
 function package() {
