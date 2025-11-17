@@ -1,0 +1,12 @@
+pkgbase = ida-pro-plugin-fakepdb-git
+	pkgdesc = IDA Pro plugin: Tool for PDB generation from IDA Pro database
+	pkgver = 0.2.r72.66996d9
+	pkgrel = 1
+	url = https://github.com/p0358/FakePDB
+	arch = any
+	license = Apache-2.0
+	makedepends = llvm
+	source = ida-pro-plugin-fakepdb-git::git+https://github.com/p0358/FakePDB.git#branch=patch-linux
+	sha256sums = SKIP
+
+pkgname = ida-pro-plugin-fakepdb-git
