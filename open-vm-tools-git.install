@@ -1,0 +1,27 @@
+post_install() {
+    echo "==> Enabling VMware Tools services..."
+    systemctl enable vmtoolsd.service
+    systemctl enable vmware-vmblock-fuse.service
+    
+    echo "==> Starting VMware Tools services..."
+    systemctl start vmtoolsd.service
+    systemctl start vmware-vmblock-fuse.service
+    
+    echo ""
+    echo "VMware Tools services have been enabled and started."
+    echo ""
+}
+
+post_upgrade() {
+    echo "==> Restarting VMware Tools services..."
+    systemctl restart vmtoolsd.service
+    systemctl restart vmware-vmblock-fuse.service
+}
+
+pre_remove() {
+    echo "==> Stopping and disabling VMware Tools services..."
+    systemctl stop vmtoolsd.service
+    systemctl stop vmware-vmblock-fuse.service
+    systemctl disable vmtoolsd.service
+    systemctl disable vmware-vmblock-fuse.service
+}
