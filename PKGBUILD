@@ -2,7 +2,7 @@
 # Contributor: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=parabolic
-pkgver=2025.10.3
+pkgver=2025.11.0
 pkgrel=1
 pkgdesc="Download web video and audio"
 arch=('x86_64')
@@ -29,7 +29,7 @@ provides=('tube-converter')
 conflicts=('tube-converter')
 replaces=('tube-converter')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('48a412064f020340aa06cffc0bbe5222aaf99e3ebc167623e9d0b54062455fc9')
+sha256sums=('e8f4297913904fe4043b787fc89a5f79e91dd2f5f34649cc4825147781f7a318')
 
 build() {
     cmake -B build -S "${pkgname^}-${pkgver}" \
