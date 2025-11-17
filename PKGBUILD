@@ -1,4 +1,5 @@
-# Maintainer: tarball <bootctl@gmail.com>
+# Maintainer: none
+# Contributor: tarball <bootctl@gmail.com>
 
 pkgname=etesync-knotes
 pkgver=1.1
