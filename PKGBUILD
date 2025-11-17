@@ -2,7 +2,7 @@
 
 pkgname=nexusmods-app-bin
 _pkgname=nexusmods-app
-pkgver=0.20.2
+pkgver=0.21.1
 pkgrel=1
 _fullver=${pkgver}-${pkgrel}
 pkgdesc="A mod installer, creator and manager for all your popular games."
@@ -19,7 +19,7 @@ source=("https://github.com/Nexus-Mods/NexusMods.App/releases/download/v${pkgver
 	"${pkgname}-${pkgver}.desktop::https://github.com/Nexus-Mods/NexusMods.App/raw/v${pkgver}/src/NexusMods.App/com.nexusmods.app.desktop"
 	"nexusmods-app-bin.install")
 
-sha256sums=('a784e50ef13ef33e7558d71bebe044d2ecd1a3176bc4130798a22a45062f18e6'
+sha256sums=('0c76c1b2d023177eb6889b9ed8859bf6bacb88f9f8afc554b65528955044e1c7'
             '5a22eccfb001eacbf2756f2e21fa371dbafd9e84b20bb6a484d781bde33089cb'
             '32dbc2977aaba2d5013a2534462da9d4c2534c3d2ef4391505bcd6a287ae8925'
             '4bac4c5db66d92ebb80285ecc2c4ec5fb4d738d68ad5bde10f6058cfbf03a445')
