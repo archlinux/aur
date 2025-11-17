@@ -1,0 +1,13 @@
+post_install() {
+	cat <<-EOF
+	---------------------------------------------------
+	DM Fotowelt ist ein Produkt und Eigentum der
+	dm–drogerie markt GmbH + Co. KG. Die Nutzungsbedingen sind
+	in /usr/share/licenses/dm-fotowelt/EULA.txt.
+	WENN SIE DIESE SOFTWARE INSTALLIEREN, ERKLÄREN SIE
+	SICH MIT DEN BEDINGUNGEN DIESES LIZENZABKOMMENS
+	EINVERSTANDEN
+	---------------------------------------------------
+	EOF
+
+}
