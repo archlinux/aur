@@ -1,6 +1,6 @@
 # Maintainer: Dario Klingenberg <dario.klingenberg at web.de>
 pkgname=weiqihub
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="Nonofficial Client for Various Go Servers and Go Problem Collection (BSD-3 but contains nonfree server protocols)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('BSD-3-Clause')
 depends=(fuse2)
 options=(!strip)
 source_x86_64=("https://github.com/ale64bit/WeiqiHub/releases/download/v$pkgver/WeiqiHub-v$pkgver-$arch.AppImage")
-md5sums_x86_64=('2b32b423d98f6540344c26c89aef1c75')
+md5sums_x86_64=('496a9f66a968621f4bf573b4eae1e225')
 _DEST="/opt/${pkgname}"
 _CLIENT="WeiqiHub-v${pkgver}-${arch}.AppImage"
 _NAME="WeiqiHub"
