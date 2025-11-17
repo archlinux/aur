@@ -1,20 +1,17 @@
-# Maintainer: raincandy
 pkgname=syscall
-pkgver=1.0
-pkgrel=1
-pkgdesc="minimal sudo‑like privilege elevation tool for Linux."
+pkgver=1.1
+pkgrel=2
+pkgdesc="Sudo-like tool using PAM authentication with system-wide user cache"
+arch=('x86_64' 'aarch64')
 url="https://github.com/0xraincandy/syscall"
 license=('GPL')
-arch=('x86_64' 'aarch64')
 depends=('python' 'python-pam')
 makedepends=('gcc')
-provides=('syscall')
-conflicts=()
 source=('syscall' 'syscall-helper.c' 'syscall.pam')
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 build() {
-    gcc "$srcdir/syscall-helper.c" -o "$srcdir/syscall-helper"
+    gcc syscall-helper.c -o syscall-helper
 }
 
 package() {
