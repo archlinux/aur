@@ -1,8 +1,8 @@
-# Maintainer: Jakub 'Eremiell' Marek <eremiell at eremiell dot net>
-# See also https://github.com/eremiell-aur/dpp-git
+# Maintainer: Ender Shiru <endershiru@outlook.com>
+# Contributor: Jakub 'Eremiell' Marek <eremiell at eremiell dot net>
 pkgname=dpp-git
 _pkgname=DPP
-pkgver=10.0.25.r1.bf79d372
+pkgver=10.1.3.r32.7394b841
 pkgrel=1
 pkgdesc="Lightweight and Scalable C++ Discord API Bot Library - git version"
 arch=('x86_64')
