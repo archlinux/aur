@@ -2,17 +2,17 @@
 
 pkgname=bifrost
 pkgauthor=maximhq
-pkgver=1.5.0
+pkgver=1.6.1
 pkgrel=1
 
-_npmname=bifrost
-_npmauthor=@maximhq
-_npmver=1.5.0
+_npmname=${pkgname}
+_npmauthor=@${pkgauthor}
+_npmver=${pkgver}
 
 pkgdesc="The Fastest LLM Gateway with built in OTel observability and MCP gateway"
 arch=("x86_64")
 url="https://github.com/${pkgauthor}/${pkgname}"
-_urlraw="https://raw.githubusercontent.com/${pkgauthor}/${pkgname}/npx/v${pkgver}"
+_urlraw="https://raw.githubusercontent.com/${pkgauthor}/${pkgname}/main"
 license=("Apache-2.0")
 replaces=("nodejs-${pkgname}")
 depends=("bash" "nodejs")
@@ -25,9 +25,9 @@ source=("https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${_npmname}-${_n
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 noextract=("${_npmname}-${_npmver}.tgz")
 
-b2sums=('09e438dbb6018aef232bbb8e634e876eef99e88dee00c9a3c65568af33b7b408aec2365e2e770ecebe36e8e123c7d6d1d763ce5da9e56d34d7d04e0d217ebb98'
-        '1e240b2356ec1c876036e3fcf3bd2fc594683cb30e1ab3495d3623c78d224ac461ac20a45291065f9bc1da78251b244f87f55667425fad0a64ff0f38dbb9f70a'
-        'fa356314d0a2e4fa028b5980c1b64295a17524ee8fea5b8f4dfa40eedeb59637b3ad99d5a647c9d7a8e284ff9344b29a0a45764156381c0b68d9cb9bc6556068')
+b2sums=('be299c7ba42c437426fcf2d656797965f3c2249076c7b7f8c2df78fbd3098d757bbac506d6ff577e580e08278c07613acef210ef743062e7455b31d9ec279d1e'
+        'SKIP'
+        'SKIP')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
