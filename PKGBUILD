@@ -2,7 +2,7 @@
 
 pkgname=freetube-electron-git
 _pkgname=FreeTube
-pkgver=0.23.12.beta.r9332.6628c3e
+pkgver=0.23.12.beta.r9465.cb14c8c
 pkgrel=1
 pkgdesc='A private YouTube client - built from latest git, with the default electron.'
 arch=('x86_64')
@@ -39,7 +39,7 @@ package() {
   cp -R "./$_pkgname/build/linux-unpacked/." "${pkgdir}/usr/lib/freetube/"
 
   # executable
-  ln -s "/usr/lib/freetube/$_pkgname" "${pkgdir}/usr/bin/freetube"
+  ln -s "/usr/lib/freetube/freetube" "${pkgdir}/usr/bin/freetube"
   
   # license
   install -Dm644 "./$_pkgname/LICENSE" "${pkgdir}/usr/share/licenses/freetube/LICENSE"
