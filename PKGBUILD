@@ -1,8 +1,8 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=oqsprovider
 _pkgname=oqs-provider
-pkgver=0.10.0
-_pkgverliboqs=0.14.0
+pkgver=0.11.0_rc1
+_pkgverliboqs=0.15.0
 pkgrel=1
 pkgdesc="OpenSSL 3 provider containing post-quantum algorithms"
 arch=(x86_64)
@@ -14,6 +14,7 @@ depends=(
 )
 makedepends=(
     cmake
+    git
     python
     python-jinja
     python-tabulate
@@ -22,22 +23,22 @@ makedepends=(
 provides=(oqsprovider.so)
 install=$pkgname.install
 source=(
-    $pkgname-$pkgver.tar.gz::https://github.com/open-quantum-safe/$_pkgname/archive/refs/tags/$pkgver.tar.gz
-    liboqs-$_pkgverliboqs.tar.gz::https://github.com/open-quantum-safe/liboqs/archive/refs/tags/$_pkgverliboqs.tar.gz
+    $pkgname::git+https://github.com/open-quantum-safe/$_pkgname.git#tag=${pkgver/_/-}
+    liboqs::git+https://github.com/open-quantum-safe/liboqs.git#tag=$_pkgverliboqs
 )
-b2sums=('d21d19853fadb809ec448e5869bc67ce1b4e2cdb2188551c70f4a31153a337225026b21a4a381c658408788c4d2ac26dc482b7015d882adf76a76e5e8f3d1bfd'
-        'a673a05b922f415b2abb2a6c85a1ecf922bcd7cd016c1b2ba5afdf7c9b6b9149e88cbd4f38c8d4e8c70c836868c1f1da93b44ae835d8a7fcb28cf4d703301efc')
+b2sums=('5d072ade012bbcf1e52fcf229e9df69439eaf44cf16820ae7ec88323e363514c7d687e9d58aad0dc101146926fbb644907ef765c5e26aa454970a0f493d552d6'
+        '919a66cd10b01fb4c87bbd601fa9d128303ebbbc6ca182e7b7e616c317ef2bf23e1a7e4e55282cee325eb5546ec7d76b6c6b4d20afe13e30879f630d849f2dfd')
 
 prepare() {
-    cd $_pkgname-$pkgver
+    cd $pkgname
     # Enable all sig algs
     sed -i -e 's/enable: false/enable: true/g' oqs-template/generate.yml
     # Some files are needed from the liboqs source code or generate.py will fail
-    LIBOQS_SRC_DIR="$srcdir"/liboqs-$_pkgverliboqs python oqs-template/generate.py
+    LIBOQS_SRC_DIR="$srcdir"/liboqs python oqs-template/generate.py
 }
 
 build() {
-    cmake -B build -S $_pkgname-$pkgver \
+    cmake -B build -S $pkgname \
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -Wno-dev
@@ -51,5 +52,5 @@ check() {
 
 package() {
     install -D -m0755 build/lib/oqsprovider.so "$pkgdir"/usr/lib/ossl-modules/oqsprovider.so
-    install -D -m0644 $_pkgname-$pkgver/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    install -D -m0644 $pkgname/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
