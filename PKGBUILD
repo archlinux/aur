@@ -2,7 +2,7 @@
 
 pkgname=chameleos-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Screen annotation tool for niri and Hyprland'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Treeniks/chameleos'
@@ -11,11 +11,11 @@ depends=('wayland')
 makedepends=('git')
 provides=('chameleos' 'chamel')
 conflicts=('chameleos' 'chameleos-git')
-source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/chameleos-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/chameleos-$pkgver-aarch64-unknown-linux-gnu.tar.gz")
+source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/chameleos-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/chameleos-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
 options=(!debug)
-sha256sums_x86_64=('190ddb77cabcffb7d9e662df472bacfa44ccd25ff619e7d8ac607ba3391dc988')
-sha256sums_aarch64=('dcdb6387d59bde098dde32dccb6efb855542ba8fcca44a6c1f29f9cb449020cb')
+sha256sums_x86_64=('508599e56c22c30c600ddda19e65c5b809c37f6bfdd4acbd7b3f4a29d594eaee')
+sha256sums_aarch64=('03a24eea3b1ab30e731e5e07a5838fbf84f7a3fbfe4d03c84c2e47152ec5630b')
 
 package() {
     cd "$srcdir"
