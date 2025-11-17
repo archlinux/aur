@@ -12,3 +12,21 @@ pkgbase = kim6
 	sha512sums = da2d0603450ad2979d720512b9585acc5319ca05eeb0337c78f7091c08baad8a5dbf7f8b5bf9f570a6dc00831490a704e5d8d2159a7698a6a91447f8a6d87de3
 
 pkgname = kim6
+pkgbase = kim6
+	pkgdesc = Kde Image Menu to compress, resize, convert, rename and much more (for KDE Plasma 6)
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://skatox.com/blog/kim-kde-image-manipulator-for-plasma-6/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = imagemagick
+	depends = intltool
+	depends = gettext
+	optdepends = ffmpeg: video resizing/encoding features
+	optdepends = xdg-utils: xdg-email support
+	optdepends = kdialog: shows GUI error dialogs (optional at runtime)
+	source = kim6-2.0.1.tar.gz::https://github.com/KIM-6/kim6/archive/refs/tags/2.0.1.tar.gz
+	sha512sums = d5f279109503723fb740f6a85be53fb405295f6fdefd996d4578848dcd33fc82a4cc9e7f53eadfffe318753afd829c835631e273f15d6a64d31240aea400be10
+
+pkgname = kim6
