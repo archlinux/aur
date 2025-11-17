@@ -3,7 +3,7 @@
 
 pkgname='yatto'
 pkgver=0.21.7
-pkgrel=1
+pkgrel=5
 pkgdesc=' Interactive VCS-based todo-list for the command-line'
 url='https://github.com/handlebargh/yatto'
 arch=('aarch64' 'x86_64')
