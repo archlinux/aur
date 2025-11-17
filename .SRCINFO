@@ -1,12 +1,12 @@
 pkgbase = rapid
 	pkgdesc = Rapid API Dialogue - A REPL for APIs
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/kupych/rapid
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = rapid-0.2.4.tar.gz::https://github.com/kupych/rapid/archive/v0.2.4.tar.gz
-	sha256sums = 1835289995dfbe08c2abba5de2ae3a3f2d7427dfbdf3fc4eb527bfad3e877767
+	source = rapid-0.2.5.tar.gz::https://github.com/kupych/rapid/archive/v0.2.5.tar.gz
+	sha256sums = 9dbf828f7f885ac06e0bca02a82feb26ccc76576ddc43f2cd11e54fbb8d10359
 
 pkgname = rapid
