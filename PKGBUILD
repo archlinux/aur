@@ -23,7 +23,7 @@ prepare() {
     cd "${srcdir}"
     chmod +x "${_appimage}"
     ./"${_appimage}" --appimage-extract
-    sed -i "s|this_dir=\"\$(readlink -f \"\$(dirname \"\$0\")\")\"|this_dir=\"/opt/${_pkgname}\"|" "$srcdir/squashfs-root/AppRun"
+    sed -i "s|appdir=\$(readlink -f \${APPDIR:-\$(dirname \"\$0\")})|appdir=\"/opt/${_pkgname}\"|" "$srcdir/squashfs-root/AppRun"
 }
 
 package() {
