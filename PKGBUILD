@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=imsprog-git
-pkgver=1.7.1.r0.gc027ef9
+pkgver=1.7.1.r1.g75a8809
 pkgrel=1
 pkgdesc="MSProg - software for CH341A-based programmers to work with I2C, SPI and MicroWire EEPROM/Flash chips"
 arch=($CARCH)
@@ -10,16 +10,22 @@ license=('GPL-3.0-only')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 depends=(
+  sh
   gcc-libs
   glibc
   libusb
-  qt5-base)
+  qt5-base
+)
 makedepends=(
   cmake
   git
   ninja
-  qt5-tools)
-optdepends=("sfp-master: SFP-module programmer for CH341a devices")
+  qt5-tools
+)
+optdepends=(
+  "ezp-chip-data-editor: QT based editor chip database for EZP2019, EZP2019+, EZP2020, EZP2023, EZP2025, MinPro programmer devices"
+  "sfp-master: SFP-module programmer for CH341a devices"
+)
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
@@ -52,5 +58,4 @@ build() {
 package() {
   install -Dm0644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   DESTDIR="${pkgdir}" ninja -C "${srcdir}/${pkgname}/build" install
-#  mv "${pkgdir}/usr/bin/YFEL" "${pkgdir}/usr/bin/yfel"
 }
