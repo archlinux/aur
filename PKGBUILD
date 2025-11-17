@@ -6,12 +6,12 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-cachyos
-_srctag=10.0-20251023
+_srctag=10.0-20251107
 pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=10.3.0
 _xaliaver=0.4.6
-pkgrel=2
+pkgrel=1
 epoch=2
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -175,6 +175,7 @@ build() {
     --with-alsa \
     --with-ffmpeg \
     --without-oss \
+    --disable-lsteamclient \
     --disable-tests \
     --enable-win64
 
@@ -197,6 +198,7 @@ build() {
     --with-alsa \
     --without-ffmpeg \
     --without-oss \
+    --disable-lsteamclient \
     --disable-tests \
     --with-wine64="$srcdir/$pkgname-64-build"
 
@@ -223,6 +225,7 @@ package() {
   i686-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib/wine/i386-windows/*.{dll,exe}
   x86_64-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib/wine/x86_64-windows/*.{dll,exe}
 
+
   # Install wine-gecko
   cd "$srcdir"
   install -d -m755 "$pkgdir"/usr/share/wine/gecko/
@@ -240,7 +243,7 @@ package() {
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
-b2sums=('a81c3f45b5a38a3dd3e3ec937f5afc4c1b5bc73fd520ff587e2d125013712c6115cdaf4f689be1246101444e4b67abe9bbcd0d88db9dbc9ae667f6fb3e8a575e'
+b2sums=('8878c195b16131d6d4b15a6e09df8070df3fadaebea979ff0b45e3b9b1b5eb939bb2d18ea5276876b4aefcee5f2b1cf67302e03223d3cc482b7f91bc38a9367e'
         '2a73c12585b502ae11188482cbc9fb1f45f95bfe4383a7615011104b132f4845f9813d01fb40277e1934fab5f1b35ab40b4f4a66a9967463dd1d666a666904e9'
         '62856a88266b4757602c0646e024f832974a93f03b9df253fd4895d4f11a41b435840ad8f7003ec85a0d8087dec15f2e096dbfb4b01ebe4d365521e48fd0c5c0'
         'a3a63b1e8cf072923512923ccd7419fbdb4c9747b0a3c29111d2bda36ab1fd95d0fd4283f74126cfe0c60e639ce3d173d69efdb3d97bf2b39142eb3ed3a27ef7'
