@@ -4,7 +4,7 @@
 
 _keyaccount=2376
 _productUrname='dm Fotóvilág'
-_productRename='dn Fotóvilág'
+_productRename='dm Fotóvilág'
 
 pkgname=dm-fotovilag
 pkgdesc='an offline client for creating photobooks, greeting cards, posters and more, uploading and ordering them at dm-digifoto.hu'
