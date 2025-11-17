@@ -1,9 +1,9 @@
 # Maintainer: Michał Lisowski <lisu at riseup dot net>
 
 pkgname=manjaro-hyprland-settings
-pkgver="20251115"
-_commit='b5a2f5cdf80f48ea12dc5b5ebad40f9535308ab4'
-pkgrel=3
+pkgver="20251117"
+_commit='72f759c824479e2cb9da6c3b56207c250e01b332'
+pkgrel=1
 arch=('any')
 url="https://github.com/lisuml/${pkgname}"
 license=('GPL')
