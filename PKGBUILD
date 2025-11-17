@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="containerlab"
-pkgver=0.71.0
+pkgver=0.71.1
 pkgrel=1
 pkgdesc="Container-based networking labs"
 arch=('aarch64' 'x86_64')
@@ -17,14 +17,13 @@ makedepends=(
 )
 _pkgsrc="${_url##*/}"
 source=("${_pkgsrc}::git+${_url}.git#tag=v${pkgver}")
-b2sums=('6fa34466798750865b9ca1766d8156b788e5c155a1e3b14bda7bd57322634b022f0f3923e803d31476af7126569b396d00dc3f35069fa9d7ef63dc1d6ad9770d')
+b2sums=('907f906cf51eb7b35d10dc69c10614451731311d5d42bd0ba9fb3f8b4994f362aa0d0969aa973a8f3bc150ef1fe1b99da906fdd6bdf10b62aea755c7b5180192')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
-  go get -v ./...
-  chmod -R ug+Xwr "${GOMODCACHE}"
+  go get -modcacherw -v ./...
 
   mkdir -p "build" "completions"
 }
