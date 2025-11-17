@@ -1,0 +1,5 @@
+/pkg/
+/src/
+/zeroform/
+/*.pkg.tar.zst
+/*.tar.gz
