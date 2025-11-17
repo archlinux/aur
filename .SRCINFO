@@ -1,16 +1,21 @@
 pkgbase = chameleos-git
-	pkgdesc = Wayland screen annotation tool for niri and Hyprland (includes chamel helper)
-	pkgver = r59.8026142
+	pkgdesc = Screen annotation tool for niri and Hyprland
+	pkgver = 0.1.0.r0.g9624867
 	pkgrel = 1
 	url = https://github.com/Treeniks/chameleos
 	arch = x86_64
-	license = custom
-	makedepends = git
+	arch = aarch64
+	license = MIT
 	makedepends = cargo
 	makedepends = rust
+	makedepends = git
 	depends = wayland
-	depends = glibc
-	source = git+https://github.com/Treeniks/chameleos.git
+	provides = chameleos
+	provides = chamel
+	conflicts = chameleos
+	conflicts = chameleos-bin
+	options = !debug
+	source = chameleos-git::git+https://github.com/Treeniks/chameleos
 	sha256sums = SKIP
 
 pkgname = chameleos-git
