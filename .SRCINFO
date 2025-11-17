@@ -1,0 +1,27 @@
+pkgbase = sing-box-extended
+	pkgdesc = The universal proxy platform.
+	pkgver = 1.12.12~extended~1.4.2
+	pkgrel = 1
+	url = https://sing-box.sagernet.org/
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = LicenseRef-sing-box-extended
+	makedepends = go
+	depends = glibc
+	optdepends = sing-geosite: sing-geosite database
+	optdepends = sing-geoip: sing-geoip database
+	conflicts = sing-box
+	conflicts = sing-box-git
+	conflicts = sing-box-beta
+	backup = etc/sing-box/config.json
+	source = sing-box-extended-1.12.12-extended-1.4.2.tar.gz::https://github.com/shtorm-7/sing-box-extended/archive/v1.12.12-extended-1.4.2.tar.gz
+	source = sing-box.rules
+	sha256sums = 9c86b5d7b6c739f5ff86f4ab8f7db4818dc883229c3e78e9a9fa71f2f1140cef
+	sha256sums = 1365536e1875043b969e2e18d7313ab7c6f7f9f63387f25506bb04362b44f206
+
+pkgname = sing-box-extended
