@@ -1,0 +1,14 @@
+pkgbase = waifu
+	pkgdesc = Tool to fetch and display images from waifu.pics
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/izeperson/waifu-cli
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = kitty
+	source = waifu-0.1.0.tar.gz::https://github.com/izeperson/waifu-cli/archive/refs/tags/stable.tar.gz
+	sha256sums = ea0e159b3dcec9d9a9b40abee29435287c54c859bc02d6cd761079bdd787fd25
+
+pkgname = waifu
