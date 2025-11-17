@@ -16,7 +16,7 @@ source=("$pkgname-$_pkgver.tar.gz::https://github.com/shtorm-7/sing-box-extended
         "sing-box.rules")
 sha256sums=('9c86b5d7b6c739f5ff86f4ab8f7db4818dc883229c3e78e9a9fa71f2f1140cef'
             '1365536e1875043b969e2e18d7313ab7c6f7f9f63387f25506bb04362b44f206')
-conflicts=($_pkgname "$_pkgname-git" "$_pkgname-beta" )
+conflicts=($_pkgname "$_pkgname-git" "$_pkgname-beta" "$pkgname-bin" )
 depends=("glibc")
 optdepends=('sing-geosite: sing-geosite database'
             'sing-geoip: sing-geoip database')
