@@ -20,14 +20,16 @@ build() {
 }
 
 package() {
+  install -dm755 "${pkgdir}/usr/lib/noctune"
+  cp -r "${srcdir}/NoctuneMusicPlayer-${pkgver}/publish/"* "${pkgdir}/usr/lib/noctune/"
+
   install -dm755 "${pkgdir}/usr/bin"
-  install -Dm755 "${srcdir}/NoctuneMusicPlayer-${pkgver}/publish/MusicPlayerApp" \
-    "${pkgdir}/usr/bin/noctune"
+  cat <<EOF > "${pkgdir}/usr/bin/noctune"
+#!/bin/bash
+exec dotnet /usr/lib/noctune/MusicPlayerApp.dll "\$@"
+EOF
+  chmod +x "${pkgdir}/usr/bin/noctune"
 
-  # Install desktop entry & icon from AUR repo (not inside source tarball)
-  install -Dm644 "${srcdir}/../noctune.desktop" \
-    "${pkgdir}/usr/share/applications/noctune.desktop"
-  install -Dm644 "${srcdir}/../noctune.png" \
-    "${pkgdir}/usr/share/pixmaps/noctune.png"
+  install -Dm644 "${srcdir}/../noctune.desktop" "${pkgdir}/usr/share/applications/noctune.desktop"
+  install -Dm644 "${srcdir}/../noctune.png" "${pkgdir}/usr/share/pixmaps/noctune.png"
 }
-
