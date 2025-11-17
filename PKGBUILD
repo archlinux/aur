@@ -2,7 +2,7 @@
 
 pkgname=open-vm-tools-git
 pkgver=13.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Open VMware Tools for Linux guests (running Wayland only)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/vmware/open-vm-tools"

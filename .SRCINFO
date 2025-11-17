@@ -1,7 +1,7 @@
 pkgbase = open-vm-tools-git
 	pkgdesc = Open VMware Tools for Linux guests (running Wayland only)
 	pkgver = 13.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vmware/open-vm-tools
 	install = open-vm-tools-git.install
 	arch = x86_64
