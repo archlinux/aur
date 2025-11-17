@@ -1,8 +1,8 @@
-# Maintainer: Cezary Drożak <czarek@drozak.net>
+# Maintainer: Miguel Revilla <yo@miguelrevilla.com>
+# Contributor: Cezary Drożak <czarek@drozak.net>
 # Contributor: TDY <tdy@gmx.com>
 # Contributor: Eduard "bekks" Warkentin <eduard.warkentin@gmail.com>
 # Contributor: Luke Shumaker <lukeshu@sbcglobal.net>
-# Contributor: Miguel Revilla <yo@miguelrevilla.com>
 
 _pkgver=1.0.1
 _pkgname=mdbtools
