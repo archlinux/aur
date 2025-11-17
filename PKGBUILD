@@ -1,6 +1,6 @@
 _pkgname=gamescope
 pkgname=${_pkgname}-sk
-_tag=3.16.ba143
+_tag=3.16.ba135
 pkgver="$_tag"
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
@@ -76,7 +76,7 @@ source=(
 )
 
 
-b2sums=('33b68d3f2dfd51a73f48eed406e605dee6d707c43eef6fc6443dd70c10a03e9e5140adf2133139fc07cbb7d929d96e5592368c4e83b5e0deb06db6612ef267a6'
+b2sums=('a1dcedb126d06cdd9a45aea6eefdc43e48d4c699df10dd210458c6483b8d041c4203de7a20a9cad2c66794a83d62587cd22116d6a06dfe17dd0b9f696fe767d2'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -101,7 +101,7 @@ prepare() {
     git -c protocol.file.allow=always submodule update
 
     # Fix wlroots dependency override issue
-    sed -i '/meson\.override_dependency(versioned_name, wlroots)/a meson.override_dependency('\''wlroots'\'', wlroots)' subprojects/wlroots/meson.build
+    # sed -i '/meson\.override_dependency(versioned_name, wlroots)/a meson.override_dependency('\''wlroots'\'', wlroots)' subprojects/wlroots/meson.build
 
     # make stb.wrap use our local clone
     # rm -rf subprojects/stb
