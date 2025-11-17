@@ -25,8 +25,8 @@ build() {
   go build \
   -ldflags "-s -w -extldflags=-zrelro -extldflags=-znow" \
   -o "${pkgname}"
-  for shell in bash fish zsh; do \
-  ./yatto completion "$shell" > "$shell-completion" \
+  for shell in bash fish zsh; do
+  ./yatto completion "$shell" > "$shell-completion"
   done
 }
 package() {
