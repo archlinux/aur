@@ -1,6 +1,4 @@
-*.pkg.tar.zst
-
-/lunarvim-git
-/nvim-treesitter
-/pkg
-/src
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
