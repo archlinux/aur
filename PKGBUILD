@@ -1,7 +1,7 @@
 pkgname=noctune
 pkgver=1.2.0
 pkgrel=1
-pkgdesc="A modern local music player. Built with Avalonia and .Net9."
+pkgdesc="A modern local music player with a Spotify-inspired UI. Built with Avalonia and LibVLC."
 arch=("x86_64")
 url="https://github.com/raula09/LocalMusicPlayerApp"
 license=("MIT")
@@ -19,14 +19,15 @@ build() {
     -o publish
 }
 
-
 package() {
   install -dm755 "${pkgdir}/usr/bin"
-  install -Dm755 "${srcdir}/NoctuneMusicPlayer-${pkgver}/publish/MusicPlayerApp" "${pkgdir}/usr/bin/noctune"
+  install -Dm755 "${srcdir}/NoctuneMusicPlayer-${pkgver}/publish/MusicPlayerApp" \
+    "${pkgdir}/usr/bin/noctune"
 
-  install -Dm644 "${srcdir}/NoctuneMusicPlayer-${pkgver}/noctune.desktop" "${pkgdir}/usr/share/applications/noctune.desktop"
-  install -Dm644 "${srcdir}/NoctuneMusicPlayer-${pkgver}/noctune.png" "${pkgdir}/usr/share/pixmaps/noctune.png"
+  # Install desktop entry & icon from AUR repo (not inside source tarball)
+  install -Dm644 "${srcdir}/../noctune.desktop" \
+    "${pkgdir}/usr/share/applications/noctune.desktop"
+  install -Dm644 "${srcdir}/../noctune.png" \
+    "${pkgdir}/usr/share/pixmaps/noctune.png"
 }
-
-
 
