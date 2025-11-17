@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=vkd3d-proton-mingw-git
-pkgver=2.14.1.r300.g59e50c87
+pkgver=3.0.r0.g6d97b022
 pkgrel=1
 pkgdesc='Fork of VKD3D. Development branches for Protons Direct3D 12 implementation'
 arch=('x86_64')
@@ -43,9 +43,8 @@ prepare() {
     local march="${flags["-march"]:-nocona}"
     local mtune="${flags["-mtune"]:-core-avx2}"
 
-    MORONFLAGS="-mprefer-vector-width=128 -fipa-pta -fvect-cost-model=cheap"
-    CFLAGS="-O3 -march=$march -mtune=$mtune -pipe -mprefer-vector-width=128 $MORONFLAGS"
-    CXXFLAGS="-O3 -march=$march -mtune=$mtune -pipe -mprefer-vector-width=128 $MORONFLAGS"
+    CFLAGS="-O3 -march=$march -mtune=$mtune -pipe"
+    CXXFLAGS="-O3 -march=$march -mtune=$mtune -pipe"
     LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
     # These flags are taken from Proton
@@ -79,6 +78,7 @@ build() {
         --bindir "" --libdir "" \
         --buildtype "plain" \
         -Denable_tests=false \
+        -Denable_extended_emulation=true \
         -Db_ndebug=false \
         --strip
     ninja -C "build/x64" -v
@@ -89,6 +89,7 @@ build() {
         --bindir "" --libdir "" \
         --buildtype "plain" \
         -Denable_tests=false \
+        -Denable_extended_emulation=true \
         -Db_ndebug=false \
         --strip
     ninja -C "build/x86" -v
