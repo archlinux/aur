@@ -36,6 +36,17 @@ source=("https://www.svp-team.com/files/svp4-linux.${_pkgver}.tar.bz2")
 # I'll keep rehosting them for now since i don't trust them to actually keep old versions.
 sha256sums=('1f24435451d59936a7fd28b7423190a42df36b7d306b2d747741e4efda171bdf')
 
+# The installer GUI has an option to install a bunch of packages, which are gotten from here:
+# http://cdn.svp-team.com/repo/full-lin64/Updates.xml   -> https://www.svp-team.com/files/repo/full-lin64/Updates.xml?full=main
+# http://cdn.svp-team.com/repo/common-lin64/Updates.xml -> https://www.svp-team.com/files/repo/common-lin64/Updates.xml?full=main
+
+# The download links then look like this:
+# http://cdn.svp-team.com/repo/full-lin64/core.vlc/1.1.0.300meta.7z
+# http://cdn.svp-team.com/repo/common-lin64/deps.python/3.12.11meta.7z
+
+# Get full component list via `strings svp4-maintenance.dat | grep installer: | sort -u` after running the svp4-maintenance tool
+# This needs you to run the .run file as it generates the svp-maintenance files, I'm not sure how those would be extracted if it's even feasible
+
 prepare() {
 	rm -rf "${srcdir}/installer"
 	mkdir "${srcdir}/installer"
