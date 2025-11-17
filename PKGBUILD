@@ -1,39 +1,24 @@
-# Maintainer: Raul <raul09alazovi@gmail.com>
-
 pkgname=noctune
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="A modern local music player with a Spotify-inspired UI. Built with Avalonia and LibVLC."
-arch=('x86_64')
-url="https://github.com/raula09/NoctuneMusicPlayer"
-license=('MIT')
-depends=('ffmpeg' 'libvlc' 'vlc')
-makedepends=('unzip')
-options=('!strip' '!debug')
-sha256sums=('SKIP' 'SKIP' 'SKIP')
-source=(
-    "$pkgname-$pkgver.zip::https://github.com/raula09/NoctuneMusicPlayer/releases/download/v$pkgver/Noctune-linux-x64.zip"
-    "noctune.desktop"
-    "noctune.png"
-)
+pkgdesc="A modern local music player. Built with Avalonia and .Net9."
+arch=("x86_64")
+url="https://github.com/raula09/LocalMusicPlayerApp"
+license=("MIT")
+depends=("vlc" "ffmpeg" "dotnet-runtime")
+makedepends=("dotnet-sdk")
+source=("https://github.com/raula09/LocalMusicPlayerApp/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+  cd "${srcdir}/LocalMusicPlayerApp-${pkgver}"
+  dotnet publish -c Release -o publish
+}
 
 package() {
-    install -d "$pkgdir/opt/$pkgname"
-    install -d "$pkgdir/usr/bin"
-    install -d "$pkgdir/usr/share/applications"
-    install -d "$pkgdir/usr/share/icons/hicolor/512x512/apps"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -Dm755 "${srcdir}/LocalMusicPlayerApp-${pkgver}/publish/LocalMusicPlayerApp" "${pkgdir}/usr/bin/noctune"
 
-    unzip "$srcdir/$pkgname-$pkgver.zip" -d "$pkgdir/opt/$pkgname"
-
-    cat <<EOF > "$pkgdir/usr/bin/noctune"
-#!/bin/bash
-exec /opt/noctune/MusicPlayerApp "\$@"
-EOF
-    chmod +x "$pkgdir/usr/bin/noctune"
-
-    install -Dm644 "$srcdir/noctune.desktop" \
-        "$pkgdir/usr/share/applications/noctune.desktop"
-
-    install -Dm644 "$srcdir/noctune.png" \
-        "$pkgdir/usr/share/icons/hicolor/512x512/apps/noctune.png"
+  install -Dm644 "${srcdir}/LocalMusicPlayerApp-${pkgver}/noctune.desktop" "${pkgdir}/usr/share/applications/noctune.desktop"
+  install -Dm644 "${srcdir}/LocalMusicPlayerApp-${pkgver}/noctune.png" "${pkgdir}/usr/share/pixmaps/noctune.png"
 }
