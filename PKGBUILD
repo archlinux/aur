@@ -4,7 +4,7 @@
 
 _gemname=asciidoctor-diagram
 pkgname=ruby-$_gemname
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='Asciidoctor diagramming extension'
 arch=(any)
@@ -24,7 +24,7 @@ optdepends=(
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('86d455ec004cccea25cafc1d1a195395c15fcfde')
+sha1sums=('fbfea2ae570184d5c0579d247a16f110d2caf791')
 
 package() {
   local _gemdir="$(ruby -e 'puts Gem.default_dir')"
