@@ -1,0 +1,17 @@
+pkgbase = jumper-git
+	pkgdesc = A blazing fast terminal file manager with vim-like keybindings
+	pkgver = r1.0.0
+	pkgrel = 1
+	url = https://github.com/enheit/jumper
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = jumper
+	conflicts = jumper
+	source = git+https://github.com/enheit/jumper.git
+	sha256sums = SKIP
+
+pkgname = jumper-git
