@@ -9,7 +9,7 @@ _pkgname=mdbtools
 _srcname="${_pkgname}-${_pkgver}"
 pkgname=mdbtools
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities for viewing data and exporting schema from Microsoft Access database files"
 arch=('i686' 'x86_64')
 url="https://github.com/mdbtools/mdbtools"
@@ -22,7 +22,7 @@ md5sums=('f79031dd1a4f434584cb7505847e6b11')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
-  autoreconf -i -f
+  autoreconf -i -f -I /usr/share/gettext/m4
 }
 
 build() {

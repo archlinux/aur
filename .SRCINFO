@@ -1,7 +1,7 @@
 pkgbase = mdbtools
 	pkgdesc = Utilities for viewing data and exporting schema from Microsoft Access database files
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mdbtools/mdbtools
 	arch = i686
 	arch = x86_64
