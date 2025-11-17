@@ -152,7 +152,7 @@ def main():
             return
 
         if not args.cmd:
-            print("Usage: syscall <command>")
+            print("Usage: sycall <command>")
             return
 
         exit(run_command(args.cmd))
