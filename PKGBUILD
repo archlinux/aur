@@ -2,8 +2,8 @@
 # Contributor: Sashanoraa <sasha@noraa.gay>
 
 pkgname=license
-pkgver=3.1.0
-pkgrel=2
+pkgver=3.2.0
+pkgrel=1
 pkgdesc='A tool to easily add a license to your project'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://sr.ht/~zethra/$pkgname"
@@ -16,7 +16,7 @@ optdepends=(
     'xclip: required for interactive scripts: set-license, copy-header'
     'wl-clipboard: required for interactive scripts: set-license, copy-header'
 )
-sha256sums=('67e16dc8f048ea5e92e1f91c4739b9611cec23a80533e9305f1dfcd448c9ed55')
+sha256sums=('a4637ce1b5a3ce58f84fb078f5df6de696028de97bafd956fa28ba91cff75224')
 
 prepare() {
     cd $pkgname-$pkgver
