@@ -1,6 +1,6 @@
 pkgbase = dwex
 	pkgdesc = GUI viewer for DWARF debug information
-	pkgver = 4.55
+	pkgver = 4.56
 	pkgrel = 1
 	url = https://github.com/sevaa/dwex
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = dwex
 	depends = python-pyelftools>=0.32
 	depends = python-pyqt6>=6.9
 	depends = qt6-svg>=6.9
-	source = https://github.com/sevaa/dwex/archive/refs/tags/4.55.tar.gz
+	source = https://github.com/sevaa/dwex/archive/refs/tags/4.56.tar.gz
 	source = dwex.png
 	source = dwex.desktop
-	sha256sums = f18e771537418bb37559161a0f6e1b98f5b40df018a476d84f5a999610fbb4cf
+	sha256sums = 1da59ed96e6e46320a2b8c4c3a305fc1ec498571d7369d728634dd9bec3e6e29
 	sha256sums = d92d16891381310a4b18cc8ae59a1a0ac99a07ca80599a7e3c003970622ba03f
 	sha256sums = 155036828925419fe6ab40d600d5e5ada249e1b47095d17bddf7aa694a0cdb6d
 
