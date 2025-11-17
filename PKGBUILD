@@ -1,34 +1,40 @@
-# Maintainer: teraflops <cprieto.ortiz@gmail.com>
+# Packager: teraflops <cprieto.ortiz@gmail.com>
 pkgname=chameleos-git
-pkgver=r59.8026142
+pkgver=0.1.0.r0.g9624867
 pkgrel=1
-pkgdesc="Wayland screen annotation tool for niri and Hyprland (includes chamel helper)"
-arch=('x86_64')
-url="https://github.com/Treeniks/chameleos"
-license=('custom')
-depends=('wayland' 'glibc')
-makedepends=('git' 'cargo' 'rust')
-source=("git+https://github.com/Treeniks/chameleos.git")
-sha256sums=('SKIP')
+pkgdesc='Screen annotation tool for niri and Hyprland'
+arch=('x86_64' 'aarch64')
+url='https://github.com/Treeniks/chameleos'
+license=('MIT')
+depends=('wayland')
+makedepends=('cargo' 'rust' 'git')
+provides=('chameleos' 'chamel')
+conflicts=('chameleos' 'chameleos-bin')
+source=("$pkgname::git+$url")
+options=(!debug)
+sha256sums=(SKIP)
 
 pkgver() {
-  cd "$srcdir/chameleos"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$pkgname"
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "$pkgname"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "$srcdir/chameleos"
-
-  cargo build --release --locked --workspace
+    cd "$srcdir/$pkgname"
+    cargo build --frozen --release
 }
 
-
 package() {
-  cd "$srcdir/chameleos"
+    cd "$srcdir/$pkgname"
 
-  install -Dm755 "target/release/chameleos" "$pkgdir/usr/bin/chameleos"
-  install -Dm755 "target/release/chamel"     "$pkgdir/usr/bin/chamel"
+    install -Dm755 "target/release/chameleos" "$pkgdir/usr/bin/chameleos"
+    install -Dm755 "target/release/chamel" "$pkgdir/usr/bin/chamel"
 
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
