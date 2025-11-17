@@ -1,14 +1,14 @@
 # Maintainer: dokutan <dokutan at tutanota dot com>
 # Contributor: Esdras Tarsis <esdrastarsis@gmail.com>
 pkgname=mouse_m908
-pkgver=3.4
+pkgver=3.5
 pkgrel=1
 pkgdesc="Control Redragon gaming mice from Linux, BSD and Haiku"
 arch=(x86_64)
 url="https://github.com/dokutan/$pkgname"
 license=('GPL3')
 source=("https://github.com/dokutan/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('34163c9f60897d067fe1943e946224e108d4c2483b5dfb1697072e05f4a72f26')
+sha256sums=('c612c9aaae7fbc39a8ca8435587925297db6251e0d83608544c57eae8cf90a45')
 depends=('libusb' 'gcc-libs')
 makedepends=(make)
 provides=($pkgname)
