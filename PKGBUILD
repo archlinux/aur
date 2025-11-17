@@ -2,7 +2,7 @@
 
 pkgname=go-livepeer-bin
 _pkgname=go-livepeer
-pkgver=0.8.5
+pkgver=0.8.8
 pkgrel=1
 pkgdesc='Official Go binaries of the Livepeer protocol'
 arch=('x86_64')
