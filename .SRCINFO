@@ -16,6 +16,6 @@ pkgbase = pibootcheck
 	depends = python-pandas
 	depends = python-dateutil
 	source = pibootcheck-0.9.0.tar.gz::https://github.com/0xdials/pibootcheck/archive/refs/tags/v0.9.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = fee55ff6e709dcc92c22267c51e88ce138adf7c8881498076751b43690a2d418
 
 pkgname = pibootcheck
