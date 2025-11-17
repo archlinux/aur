@@ -1,6 +1,8 @@
-# Packager: teraflops <cprieto.ortiz@gmail.com>
+# Maintainer: Thomas Lindae <thomas.lindae@in.tum.de>
+# Contributor: teraflops <cprieto.ortiz@gmail.com>
+
 pkgname=chameleos-git
-pkgver=0.1.0.r0.g9624867
+pkgver=0.1.0.r1.g4663dab
 pkgrel=1
 pkgdesc='Screen annotation tool for niri and Hyprland'
 arch=('x86_64' 'aarch64')
@@ -16,7 +18,7 @@ sha256sums=(SKIP)
 
 pkgver() {
     cd "$pkgname"
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -37,4 +39,3 @@ package() {
 
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-

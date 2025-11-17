@@ -1,6 +1,6 @@
 pkgbase = chameleos-git
 	pkgdesc = Screen annotation tool for niri and Hyprland
-	pkgver = 0.1.0.r0.g9624867
+	pkgver = 0.1.0.r1.g4663dab
 	pkgrel = 1
 	url = https://github.com/Treeniks/chameleos
 	arch = x86_64
