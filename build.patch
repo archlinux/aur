@@ -3,16 +3,12 @@
 @@ -2 +2 @@
 -    "name": "VRCX",
 +    "name": "vrcx",
-
 # .no-updater doesn't work when after building
 # https://github.com/vrcx-team/VRCX/issues/1490
---- a/src-electron/main.js
-+++ b/src-electron/main.js
-@@ -59,3 +59 @@ const startup = args.includes('--startup');
--const noUpdater =
--    args.includes('--no-updater') ||
--    fs.existsSync(path.join(rootDir, '.no-updater'));
-+const noUpdater = true;
+@@ -89 +89,2 @@
+-            "src-electron/libs/linux/libopenvr_api.so"
++            "src-electron/libs/linux/libopenvr_api.so",
++            ".no-updater"
 
 # Login.vue remains updater when use --no-updater
 # https://github.com/vrcx-team/VRCX/issues/1489

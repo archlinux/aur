@@ -19,12 +19,13 @@ source=(
 
 sha256sums=('1909e366a44bce80d80df00ed22ed38ab58e384aff4ba8083b5afb337a90d417'
             '3e40d0056adfd86848cf0bc594bf399d9fff1f894d470bad90d2b232d17f95c5'
-            '33f3708607cfb2867c804ceb6b083f330dcfacee7f5ccee6efe0bfbc7a056625')
+            '056bab2e65b87285498052ecdf0a40f06eeff8cb35040d536ca1b25efb9be0c6')
             
 prepare() {
     cd "$srcdir/VRCX-$pkgver"
     patch -p1 < "$srcdir/build.patch"
     echo "$pkgver" > Version
+    echo "" > .no-updater
 
     npm ci --loglevel=error
 }
@@ -50,11 +51,6 @@ package() {
     install -dm755 "$pkgdir/opt/vrcx"
     cp -r build/linux-unpacked/* "$pkgdir/opt/vrcx/"
     chmod +x "$pkgdir/opt/vrcx/vrcx"
-
-    # Disable auto-updater
-    # It might not work properly
-    # https://github.com/vrcx-team/VRCX/issues/1490
-    # echo "" > "$pkgdir/opt/vrcx/.no-updater"
     
     install -dm755 "$pkgdir/usr/bin"
     ln -s "/opt/vrcx/vrcx" "$pkgdir/usr/bin/vrcx"
