@@ -8,26 +8,35 @@
 readonly _pkgname="farmOS"
 
 pkgname="farmos"
-pkgver="3.4.5"
+pkgver="3.4.6"
 pkgrel="1"
 pkgdesc="A web-based farm record keeping application."
 arch=("any")
 url="https://github.com/farmOS/${_pkgname}"
 license=("GPL-2.0-or-later")
-depends=("bash" "perl" "php" "php-fpm" "php-gd" "php-sodium")
+depends=("bash" "perl" "php" "php-gd" "php-sodium")
 makedepends=("composer")
 optdepends=("apache: HTTP server"
     "certbot: Creates SSL certificates."
-    "mariadb: Database"
-    "nginx: HTTP server"
-    "php-geos-git: Geometry"
-    "php-pgsql: Database support for PostgreSQL"
-    "php-sqlite: Database support for SQLite"
-    "postgresql: Database"
-    "sqlite: Database")
+    "mariadb: Database."
+    "mod_fcgid: FastCGI."
+    "nginx: HTTP server."
+    "php-cgi: CGI."
+    "php-fpm: FastCGI."
+    "php-geos-git: Geometry."
+    "php-legacy-cgi: CGI."
+    "php-legacy-fpm: FastCGI."
+    "php-pgsql: Database support for PostgreSQL."
+    "php-sqlite: Database support for SQLite."
+    "postgresql: Database."
+    "spawn-fcgi: FastCGI."
+    "sqlite: Database."
+    "uwsgi-plugin-php: CGI."
+    "uwsgi-plugin-php-legacy: CGI."
+)
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
     "override-${pkgname}.conf")
-sha256sums=("c3d8f3f2c0230fbf115937c9362f41335b74ee6a85637471a5963fb2d13b047b"
+sha256sums=("4d5d562e2a8d4bada4dfbf53a5e4876ae71d9cd990340fa932ba165a86d010ac"
     "d42161c817011222d256232cacecf6b176901d48f8e7db70a10de5e98ea102bd")
 
 build()
