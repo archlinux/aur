@@ -1,6 +1,6 @@
 pkgbase = mediaconch-server
 	pkgdesc = Implementation checker and policy checker for video and audio files (Server)
-	pkgver = 24.06
+	pkgver = 25.04
 	pkgrel = 1
 	url = http://mediaarea.net
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = mediaconch-server
 	depends = libzen>=0.4.35
 	depends = libmediainfo>=0.7.97
 	backup = etc/mediaconch/MediaConch.rc
-	source = https://mediaarea.net/download/binary/mediaconch-server/24.06/MediaConch_Server_24.06_GNU_FromSource.tar.bz2
-	sha256sums = aac1b9e9d5baa11e61d649bcd61cb2552c23ef018bcbe5179bd40a7c50787650
+	source = https://mediaarea.net/download/binary/mediaconch-server/25.04/MediaConch_Server_25.04_GNU_FromSource.tar.bz2
+	sha256sums = 38171ce493f3042a6cde48dd210ecb8799d2f372ccc78204e0f697e486722b0a
 
 pkgname = mediaconch-server
