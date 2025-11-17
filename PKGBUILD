@@ -6,7 +6,7 @@ pkgdesc="Read-only Raspberry Pi boot-chain verification toolkit"
 arch=('any')
 url="https://github.com/0xdials/pibootcheck"
 license=('MIT')
-depends=('python' 'python-click' 'python-rich' 'python-jinja' 'python-pandas' 'python-dateutil')
+depends=('python' 'python-click' 'python-rich' 'python-jinja' 'python-pandas' 'python-dateutil' 'python-tldextract')
 makedepends=('python-setuptools' 'python-wheel' 'git' 'binwalk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/0xdials/pibootcheck/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('fee55ff6e709dcc92c22267c51e88ce138adf7c8881498076751b43690a2d418')
@@ -25,14 +25,8 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    python -m venv "$pkgdir/usr/lib/$pkgname-venv"
-    source "$pkgdir/usr/lib/$pkgname-venv/bin/activate"
-    pip install --no-deps ./
-    deactivate
-
-    # Install the package files
-    mkdir -p "$pkgdir/usr/bin"
-    ln -s "/usr/lib/$pkgname-venv/bin/pibootcheck" "$pkgdir/usr/bin/pibootcheck"
+    # Install the built wheel into package root, no dependencies (system deps managed by depends)
+    pip install --root="$pkgdir" --no-deps ./dist/*.whl
 
     # Install README and LICENSE
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
