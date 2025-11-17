@@ -4,7 +4,7 @@ _pkgname=svp
 pkgname=svp-bin
 pkgver=4.7.305
 _pkgver=${pkgver}-1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="SmoothVideo Project 4 (SVP4)"
 arch=('x86_64')
@@ -38,9 +38,9 @@ install=${pkgname}.install
 #source=("https://gist.githubusercontent.com/phiresky/1e2cbd30bed4e5978771af232d11afd1/raw/svp4-linux.$pkgver.tar.bz2")
 source=(
 	"https://www.svp-team.com/files/svp4-linux.${_pkgver}.tar.bz2"
-	"svp-${pkgver}_core.full_libs.7z::http://cdn.svp-team.com/repo/full-lin64/core.full/4.7.0.305-3libs.7z"
-	"svp-${pkgver}_core.full_licenses.7z::http://cdn.svp-team.com/repo/full-lin64/core.full/4.7.0.305-3licenses.7z"
-	"svp-${pkgver}_core.full_content.7z::http://cdn.svp-team.com/repo/full-lin64/core.full/4.7.0.305-3content.7z"
+	"svp-${pkgver}_core.full_4.7.0.305-4libs.7z::http://cdn.svp-team.com/repo/full-lin64/core.full/4.7.0.305-4libs.7z"
+	"svp-${pkgver}_core.full_4.7.0.305-4licenses.7z::http://cdn.svp-team.com/repo/full-lin64/core.full/4.7.0.305-4licenses.7z"
+	"svp-${pkgver}_core.full_4.7.0.305-4content.7z::http://cdn.svp-team.com/repo/full-lin64/core.full/4.7.0.305-4content.7z"
 )
 # I am rehosting the binaries taken from
 # http://www.svp-team.com/files/svp4-linux-64.tbz2
@@ -49,9 +49,9 @@ source=(
 # update 2019-10-06: svp-team.com now uses versioned file names.
 # I'll keep rehosting them for now since i don't trust them to actually keep old versions.
 sha256sums=('6bd83a03ac43cb1efb0e252d12bc379cb6e8b6037b4b4973017ce977b1b2925e'
-            '93a7e51c83e32c3d924e164fa93c6d6a853946b5cd483701f838553ea5c86c93'
-            '5de77a2b8a970cd6fa7a7024bf55e9bf082cc234beb16ad87913493c7be047a5'
-            '3fb0c65b7c2ae00b9d7d6b1516013f1b989742f406d415498a34f324292f36b8')
+            '0aed687ef7bd42defce26877eeb4cb93832fdb7ca0efb56260bf14c25f0a3bf7'
+            '5dff7f52352a30c2cf4816d156ce802281c0a6e20e1df474bda77942c1202b21'
+            '60af0f39286a9edb37bdaa5ec802e5fd6874060d79ff49880df1c360bf65a401')
 
 # The installer GUI has an option to install a bunch of packages, which are gotten from here:
 # http://cdn.svp-team.com/repo/full-lin64/Updates.xml   -> https://www.svp-team.com/files/repo/full-lin64/Updates.xml?full=main
@@ -68,9 +68,9 @@ prepare() {
 	mkdir -p svp_updates
 
 	# Extract each update archive into a single directory
-	7z x "svp-${pkgver}_core.full_libs.7z"     -osvp_updates
-	7z x "svp-${pkgver}_core.full_licenses.7z" -osvp_updates
-	7z x "svp-${pkgver}_core.full_content.7z"  -osvp_updates
+	7z x "svp-${pkgver}_core.full_4.7.0.305-4libs.7z"     -osvp_updates
+	7z x "svp-${pkgver}_core.full_4.7.0.305-4licenses.7z" -osvp_updates
+	7z x "svp-${pkgver}_core.full_4.7.0.305-4content.7z"  -osvp_updates
 
 	rm -rf "${srcdir}/installer"
 	mkdir "${srcdir}/installer"
