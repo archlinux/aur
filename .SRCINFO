@@ -1,6 +1,6 @@
 pkgbase = python-blacksheep
 	pkgdesc = Fast web framework for Python asyncio
-	pkgver = 2.4.3
+	pkgver = 2.4.5
 	pkgrel = 1
 	url = https://github.com/Neoteroi/BlackSheep
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = python-blacksheep
 	provides = python-blacksheep
 	conflicts = blacksheep
 	conflicts = python-blacksheep
-	source = blacksheep::git+https://github.com/Neoteroi/BlackSheep.git#tag=v2.4.3
-	sha256sums = e1ba5474ab4fd04f64774361551ccfdfada1b88b12cf6bec107ddf5672029dfb
+	source = blacksheep::git+https://github.com/Neoteroi/BlackSheep.git#tag=v2.4.5
+	sha256sums = c250fed4c9908f2447ac03ae7abca223df9e61a80bf9554dcd1daf69af66cfac
 
 pkgname = python-blacksheep
