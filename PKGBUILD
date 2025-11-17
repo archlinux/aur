@@ -1,7 +1,7 @@
 # Maintainer: mewset>
 pkgname=better-iptv-bin
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern, powerful IPTV player for Linux, Windows, and macOS"
 arch=('x86_64')
 url="https://github.com/mewset/better-iptv"
@@ -34,6 +34,8 @@ package() {
     install -dm755 "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/better-iptv" << 'EOF'
 #!/bin/sh
+# Fix EGL display issues on some systems
+export WEBKIT_DISABLE_COMPOSITING_MODE=1
 exec /opt/better-iptv-bin/AppRun "$@"
 EOF
     chmod +x "$pkgdir/usr/bin/better-iptv"
