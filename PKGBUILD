@@ -12,7 +12,7 @@ options=(!strip)
 provides=('xenia' 'xenia-edge')
 source=("xenia-edge-${pkgver}.AppImage::https://github.com/has207/xenia-edge/releases/download/${pkgver}/xenia_edge_linux.AppImage"
         "https://raw.githubusercontent.com/has207/xenia-edge/${pkgver}/LICENSE")
-sha256sums=('a74889e31c3add74847c9cfe30e726c16825539543256a1bbd7373b1b07cd066'
+sha256sums=('1768ff5076cfa7dc5d84f5eb3fef3f8173f87862749bc8eba6891d5a8921a2bd'
             'SKIP')
 
 prepare() {
