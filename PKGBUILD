@@ -2,7 +2,7 @@
 
 pkgname=itk-snap-nightly-bin
 _pkgname=itk-snap
-pkgver=4.4.0.20251111
+pkgver=4.4.0.20251117
 pkgrel=1
 pkgdesc='A software application used to segment structures in 3D medical images (nightly build)'
 arch=('x86_64')
@@ -38,16 +38,15 @@ prepare() {
     --pkgdesc "${pkgdesc}" \
     --categories "Education;Graphics;Science;DataVisualization;MedicalSoftware;Viewer" \
     --icon "${_pkgname}" \
-    --exec "itksnap"
+    --exec "/opt/itk-snap/bin/itksnap"
 }
 
 package() {
-  cp -a "${srcdir}/${_pkgname}" "${pkgdir}/usr"
+  mkdir -p "${pkgdir}/opt"
+  cp -a "${srcdir}/${_pkgname}" "${pkgdir}/opt/${_pkgname}"
   install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -Dm644 "${srcdir}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
-  # move translations files to correct place
-  mv -v "${pkgdir}/usr/translations" "${pkgdir}/usr/lib/snap-4.4.0/translations"
   # remove rpath
-  chrpath --delete "${pkgdir}/usr/lib/snap-4.4.0/ITK-SNAP"
+  chrpath --delete "${pkgdir}/opt/${_pkgname}/lib/snap-4.4.0/ITK-SNAP"
 }
 # vim:set ts=2 sw=2 et:

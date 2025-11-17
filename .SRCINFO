@@ -1,6 +1,6 @@
 pkgbase = itk-snap-nightly-bin
 	pkgdesc = A software application used to segment structures in 3D medical images (nightly build)
-	pkgver = 4.4.0.20251111
+	pkgver = 4.4.0.20251117
 	pkgrel = 1
 	url = https://www.itksnap.org
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = itk-snap-nightly-bin
 	depends = gcc-libs
 	depends = glib2
 	depends = glibc
-	provides = itk-snap=4.4.0.20251111
+	provides = itk-snap=4.4.0.20251117
 	conflicts = itk-snap
 	noextract = itk-snap.tar.gz
 	source = itk-snap.tar.gz::https://sourceforge.net/projects/itk-snap/files/itk-snap/Nightly/itksnap-nightly-master-Linux-gcc64.tar.gz
