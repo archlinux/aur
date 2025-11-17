@@ -1,0 +1,3 @@
+# /etc/pam.d/syscall
+auth     include   system-auth
+account  include   system-auth

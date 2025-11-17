@@ -1,0 +1,129 @@
+#!/usr/bin/env python3
+import argparse
+import os
+import time
+import subprocess
+from getpass import getpass
+from pathlib import Path
+import sys
+
+# System-wide per-user cache directory
+RUNTIME_DIR = Path(os.environ.get("XDG_RUNTIME_DIR", f"/run/user/{os.getuid()}"))
+CACHE_DIR = RUNTIME_DIR / "syscall"
+CACHE_FILE = CACHE_DIR / "timestamp"
+CONFIG_FILE = CACHE_DIR / "config"
+
+HELPER = "/usr/lib/syscall-helper"
+DEFAULT_MINUTES = 3
+
+def load_config():
+    if CONFIG_FILE.exists():
+        try:
+            return int(CONFIG_FILE.read_text().strip())
+        except:
+            pass
+    return DEFAULT_MINUTES
+
+def save_config(minutes):
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    CONFIG_FILE.write_text(str(minutes))
+
+def save_timestamp():
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    CACHE_FILE.write_text(str(time.time()))
+
+def load_timestamp():
+    if CACHE_FILE.exists():
+        try:
+            return float(CACHE_FILE.read_text().strip())
+        except:
+            pass
+    return None
+
+def clear_cache():
+    if CACHE_FILE.exists():
+        CACHE_FILE.unlink()
+
+def cache_valid():
+    ts = load_timestamp()
+    if ts is None:
+        return False
+    lifetime = load_config() * 60
+    return (time.time() - ts) < lifetime
+
+def seconds_left():
+    ts = load_timestamp()
+    if ts is None:
+        return 0
+    lifetime = load_config() * 60
+    return max(0, int(lifetime - (time.time() - ts)))
+
+def pam_authenticate():
+    """Authenticate using PAM via python-pam"""
+    import pam
+    auth = pam.pam()
+    pw = getpass("Password: ")
+    if auth.authenticate(os.getlogin(), pw, service="syscall"):
+        save_timestamp()
+        return True
+    return False
+
+def run_command(cmd):
+    if cache_valid() or pam_authenticate():
+        try:
+            return subprocess.run([HELPER] + cmd).returncode
+        except KeyboardInterrupt:
+            print("\nCommand cancelled.")
+            return 1
+    else:
+        print("Authentication failed.")
+        return 1
+
+def enable_cache(minutes):
+    save_config(minutes)
+    # Prompt password for enabling
+    if pam_authenticate():
+        print(f"Cache enabled for {minutes} minutes.")
+    else:
+        print("Authentication failed. Cache not enabled.")
+
+def main():
+    parser = argparse.ArgumentParser(description="syscall — sudo-like tool with system-wide cache")
+    parser.add_argument("--enable", type=int, help="Enable authentication cache for N minutes")
+    parser.add_argument("--disable", action="store_true", help="Clear authentication cache")
+    parser.add_argument("--status", action="store_true", help="Show cache status")
+    parser.add_argument("cmd", nargs=argparse.REMAINDER, help="Command to run")
+
+    args = parser.parse_args()
+
+    try:
+        if args.enable is not None:
+            enable_cache(args.enable)
+            return
+
+        if args.disable:
+            clear_cache()
+            print("Cache cleared.")
+            return
+
+        if args.status:
+            if cache_valid():
+                left = seconds_left()
+                mins = load_config()
+                print(f"Cache valid for {left} seconds (lifetime: {mins} minutes).")
+            else:
+                print("No valid authentication cached.")
+            return
+
+        if not args.cmd:
+            print("Usage: syscall <command>")
+            return
+
+        exit(run_command(args.cmd))
+
+    except KeyboardInterrupt:
+        print("\nCancelled by user.")
+        exit(1)
+
+if __name__ == "__main__":
+    main()
