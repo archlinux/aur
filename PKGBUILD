@@ -3,16 +3,16 @@
 # Maintainer: Stewart Webb <stew@rtwebb.com>
 
 pkgname=mediaconch-gui
-pkgver=24.06
+pkgver=25.04
 pkgrel=1
 pkgdesc="Implementation checker and policy checker for video and audio files (GUI)"
 arch=('i686' 'x86_64')
 url="http://mediaarea.net"
 license=('GPL')
-depends=('libxml2' 'libxslt' 'sqlite' 'jansson' 'libevent' 'qt5-base' 'libzen>=0.4.35')
-makedepends=('desktop-file-utils' 'libxml2' 'libxslt' 'sqlite' 'qt5-base' 'libzen>=0.4.35' 'libmediainfo>=0.7.97')
+depends=('libxml2' 'libxslt' 'sqlite' 'jansson' 'libevent' 'qt5-base' 'libzen')
+makedepends=('desktop-file-utils' 'libxml2' 'libxslt' 'sqlite' 'qt5-base' 'libzen' 'libmediainfo' 'icu76')
 source=(https://mediaarea.net/download/binary/mediaconch-gui/"$pkgver"/MediaConch_GUI_"$pkgver"_GNU_FromSource.tar.bz2)
-sha256sums=('b284d8bfd52704bdf92fbc1b6f29e3185e25d216bc61dbc9444a60b61b2a4451')
+sha256sums=('e48a2f1a098af5d9e07a34078b566c45f5177cf4e049325810bae9c81f68d496')
 
 prepare() {
   cd "${srcdir}"/MediaConch_GUI_GNU_FromSource/MediaConch/Project/Qt

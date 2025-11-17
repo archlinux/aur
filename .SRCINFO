@@ -1,6 +1,6 @@
 pkgbase = mediaconch-gui
 	pkgdesc = Implementation checker and policy checker for video and audio files (GUI)
-	pkgver = 24.06
+	pkgver = 25.04
 	pkgrel = 1
 	url = http://mediaarea.net
 	arch = i686
@@ -11,16 +11,17 @@ pkgbase = mediaconch-gui
 	makedepends = libxslt
 	makedepends = sqlite
 	makedepends = qt5-base
-	makedepends = libzen>=0.4.35
-	makedepends = libmediainfo>=0.7.97
+	makedepends = libzen
+	makedepends = libmediainfo
+	makedepends = icu76
 	depends = libxml2
 	depends = libxslt
 	depends = sqlite
 	depends = jansson
 	depends = libevent
 	depends = qt5-base
-	depends = libzen>=0.4.35
-	source = https://mediaarea.net/download/binary/mediaconch-gui/24.06/MediaConch_GUI_24.06_GNU_FromSource.tar.bz2
-	sha256sums = b284d8bfd52704bdf92fbc1b6f29e3185e25d216bc61dbc9444a60b61b2a4451
+	depends = libzen
+	source = https://mediaarea.net/download/binary/mediaconch-gui/25.04/MediaConch_GUI_25.04_GNU_FromSource.tar.bz2
+	sha256sums = e48a2f1a098af5d9e07a34078b566c45f5177cf4e049325810bae9c81f68d496
 
 pkgname = mediaconch-gui
