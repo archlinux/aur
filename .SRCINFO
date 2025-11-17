@@ -1,13 +1,13 @@
 pkgbase = nemo-tags
 	pkgdesc = An extension for the Nemo file manager that adds a tagging system
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/meowrch/nemo-tags
 	arch = any
 	license = GPL-3.0
 	depends = python
 	depends = nemo-python
-	source = https://github.com/meowrch/nemo-tags/archive/refs/tags/v1.0.tar.gz
-	sha256sums = b14f02a479effac386d1ea1b4e25b68f1e7e01441c464ad2a1cd1db0b321284e
+	source = https://github.com/meowrch/nemo-tags/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = b40d8215dc72ca3d1b21ba785349cd44647d9813f534e7911fe6558b6cb0a94c
 
 pkgname = nemo-tags
