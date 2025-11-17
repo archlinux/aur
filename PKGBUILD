@@ -8,7 +8,7 @@ license=("MIT")
 depends=("vlc" "ffmpeg" "dotnet-runtime")
 makedepends=("dotnet-sdk")
 source=("https://github.com/raula09/LocalMusicPlayerApp/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('d6e1547f1e70340b842543a4238436b516ccd4d5f9a8e2b6f69b5b2b20d82bd4')
 
 build() {
   cd "${srcdir}/LocalMusicPlayerApp-${pkgver}"
