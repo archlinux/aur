@@ -1,12 +1,11 @@
 pkgbase = dwuck4
 	pkgdesc = Coupled reaction channels calculations
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.oecd-nea.org/tools/abstract/detail/nesc9872
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = gcc5
 	source = git+https://github.com/padsley/DWUCK4.git
 	source = dwuck4
 	sha256sums = SKIP
