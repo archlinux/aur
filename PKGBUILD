@@ -30,6 +30,8 @@ prepare()
 {
   cd "${srcdir}/${pkg_name_ver}"
 
+  # This hack is needed for wx-3.3.1 - as its cmake create_symlink function is broken
+  # Fixed upstream in wx - remove when updating to wx-3.3.2
   cp -v "${startdir}/build_cmake_install.cmake.new" "${srcdir}/${pkg_name_ver}/build/cmake/install.cmake"
   cp -v "${startdir}/build_cmake_utils_CMakeLists.txt.new" "${srcdir}/${pkg_name_ver}/build/cmake/utils/CMakeLists.txt"
 
@@ -43,6 +45,9 @@ build()
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DwxBUILD_TOOLKIT=gtk3
+
+#     -DCMAKE_SKIP_RPATH=yes \
+#     -DCMAKE_SKIP_INSTALL_RPATH=yes \
 
   cmake --build _build.out
 }
