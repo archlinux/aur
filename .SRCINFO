@@ -1,6 +1,6 @@
 pkgbase = python-google-resumable-media
 	pkgdesc = Utilities for Google Media Downloads and Resumable Uploads
-	pkgver = 2.7.2
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/googleapis/google-resumable-media-python
 	changelog = CHANGELOG.md
@@ -14,7 +14,7 @@ pkgbase = python-google-resumable-media
 	optdepends = python-requests: for requests support
 	optdepends = python-aiohttp: for aiohttp support
 	optdepends = python-google-auth: for extra functionality
-	source = python-google-resumable-media-2.7.2.tar.gz::https://files.pythonhosted.org/packages/source/g/google_resumable_media/google_resumable_media-2.7.2.tar.gz
-	sha256sums = 5280aed4629f2b60b847b0d42f9857fd4935c11af266744df33d8074cae92fe0
+	source = python-google-resumable-media-2.8.0.tar.gz::https://files.pythonhosted.org/packages/source/g/google_resumable_media/google_resumable_media-2.8.0.tar.gz
+	sha256sums = f1157ed8b46994d60a1bc432544db62352043113684d4e030ee02e77ebe9a1ae
 
 pkgname = python-google-resumable-media
