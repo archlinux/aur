@@ -1,0 +1,10 @@
+[Unit]
+Description=VMware HGFS Shared Folders Automount
+ConditionVirtualization=vmware
+
+[Automount]
+Where=/mnt/hgfs
+TimeoutIdleSec=300
+
+[Install]
+WantedBy=multi-user.target
