@@ -1,0 +1,3 @@
+[mono-addins]
+source = "git"
+git = "https://github.com/mono/mono-addins.git"
