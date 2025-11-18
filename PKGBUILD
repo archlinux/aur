@@ -1,13 +1,15 @@
-_plug=ffvship-amd
-pkgname=${_plug}-git
+# Maintainer: CreamSodass <greatvaluecreamsoda@gmail.com>
+
+_plug=ffvship
+pkgname=${_plug}-amd-git
 pkgrel=1
 pkgver=3.0.0.13.g1ed2fb3
 pkgdesc="Cli tool for computing the metric difference between two videos (GIT version)"
 arch=('x86_64')
 url='https://github.com/Line-fr/Vship'
 license=('MIT')
-depends=('hip-runtime-amd')
-makedepends=('git' 'make' 'clang')
+depends=('hip-runtime-amd' 'ffms2')
+makedepends=('git' 'make')
 provides=("${_plug}")
 conflicts=("${_plug}")
 source=("${_plug}::git+https://github.com/Line-fr/Vship.git")
@@ -15,7 +17,11 @@ sha256sums=('SKIP')
 
 build() {
   cd "${_plug}"
-  make buildFFVSHIPall
+
+  export PATH="/opt/rocm/bin:/opt/rocm/lib/llvm/bin:${PATH}"
+  export HIP_PATH=/opt/rocm
+
+  make buildFFVSHIP
 }
 
 pkgver() {
