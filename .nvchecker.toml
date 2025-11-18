@@ -1,0 +1,3 @@
+[python-mouseinfo]
+source = "pypi"
+pypi = "MouseInfo"
