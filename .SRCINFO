@@ -1,7 +1,7 @@
 pkgbase = dh-autoreconf
 	pkgdesc = debhelper add-on to call autoreconf and clean up after the build
 	pkgver = 21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://packages.debian.org/sid/dh-autoreconf
 	arch = any
 	license = GPL
