@@ -1,6 +1,6 @@
 # Maintainer: adamanteye <adamanteye@disroot.org>
 pkgname=tunet-bash
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Tsinghua University network authentication utility."
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=(
 )
 makedepends=('scdoc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('a47f6e8f58a5f8ffa8e407c0217197889d5ba36bb8fcd18bb1a256b07968d8c7')
+sha256sums=('b69482e4c2f7fea9f4bfe4a73932c622df388365340db1747581af9f58994a03')
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     make destdir=$pkgdir prefix=/usr init=systemd install >/dev/null 2>&1
