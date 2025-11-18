@@ -1,7 +1,7 @@
 pkgbase = uhk-agent-appimage
 	pkgdesc = The configuration application of the Ultimate Hacking Keyboard.
-	pkgver = 8.0.0
-	pkgrel = 2
+	pkgver = 8.0.1
+	pkgrel = 1
 	url = https://github.com/UltimateHackingKeyboard/agent
 	install = uhk-agent-appimage.install
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = uhk-agent-appimage
 	depends = dbus-glib
 	options = !strip
 	options = !debug
-	source = https://github.com/UltimateHackingKeyboard/agent/releases/download/v8.0.0/UHK.Agent-8.0.0-linux-x86_64.AppImage
+	source = https://github.com/UltimateHackingKeyboard/agent/releases/download/v8.0.1/UHK.Agent-8.0.1-linux-x86_64.AppImage
 	source = uhk-agent.desktop.patch
 	source = uhk-agent.sh
-	sha256sums = d578261808cba3127d67279a0d293c502f5f555c2463cde2f83441448433eff3
+	sha256sums = de8c95cfe0c6df9625530b0c869f344119baec506c2d18f4b505e3647f5ab08f
 	sha256sums = 4c4b3b0a8c6313355c0afdd9a8a9509fd00f6e53ec44d623fd35adce598fd400
 	sha256sums = a82c8fdf2dcdfdd0a7cc92552451007fb6dd2abe8e7720126add3ee0b8156423
 
