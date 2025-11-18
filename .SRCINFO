@@ -1,10 +1,10 @@
 pkgbase = discordo-git
 	pkgdesc = A lightweight and feature-rich terminal-based Discord client
 	pkgver = r119.795d557
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ayntgl/discordo/
 	arch = x86_64
-	license = MIT
+	license = GPL-3.0-or-later
 	makedepends = go
 	makedepends = git
 	optdepends = xclip: clipboard support for X11
