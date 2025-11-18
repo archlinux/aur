@@ -1,6 +1,6 @@
 pkgbase = tmux-language-server
 	pkgdesc = tmux's language server
-	pkgver = 0.0.15
+	pkgver = 0.0.17
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/tmux-language-server
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = tmux-language-server
 	makedepends = python-installer
 	depends = python-lsp-tree-sitter
 	depends = python-tree-sitter-tmux
-	source = https://files.pythonhosted.org/packages/py3/t/tmux_language_server/tmux_language_server-0.0.15-py3-none-any.whl
-	sha256sums = f3a2a7eab064295cf672791409748fccdc8fba96997ac29345b2a4bb49606165
+	source = https://files.pythonhosted.org/packages/py3/t/tmux_language_server/tmux_language_server-0.0.17-py3-none-any.whl
+	sha256sums = 99f9be7cd218617f7f882fe1cf1f5ef52dd4cc0cb1e7d7b8f753ac7363bf95b9
 
 pkgname = tmux-language-server

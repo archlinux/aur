@@ -2,7 +2,7 @@
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
 # Updated by https://github.com/Freed-Wu/tmux-language-server/blob/main/.github/workflows/main.yml
 pkgname=tmux-language-server
-pkgver=0.0.15
+pkgver=0.0.17
 pkgrel=1
 pkgdesc="tmux's language server"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=(python-installer)
 license=(GPL3)
 _py=py3
 source=("https://files.pythonhosted.org/packages/$_py/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('f3a2a7eab064295cf672791409748fccdc8fba96997ac29345b2a4bb49606165')
+sha256sums=('99f9be7cd218617f7f882fe1cf1f5ef52dd4cc0cb1e7d7b8f753ac7363bf95b9')
 
 package() {
 	python -m installer -d "$pkgdir" ./*.whl
