@@ -28,7 +28,7 @@ depends=(
 )
 source=(
 	"${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/${pkgver}-release/${pkgname%-bin}-${pkgver}.AppImage"
-	"LICENSE-${pkgver}::https://raw.githubusercontent.com/commandprompt/pgmanage/${pkgver}/LICENSE"
+	"LICENSE-${pkgver}::https://raw.githubusercontent.com/commandprompt/pgmanage/${pkgver}-release/LICENSE"
 	"${pkgname%-bin}.sh"
 )
 sha256sums=('fffd9215fb7dda18b8234a6e41187a55a61be430b41bfc9f313b7bb98904f9d4'
