@@ -1,0 +1,4 @@
+[waypipe]
+source = "git"
+git = "https://gitlab.freedesktop.org/mstoeckl/waypipe.git"
+prefix = "v"
