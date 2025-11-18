@@ -3,7 +3,7 @@
 
 pkgname=dedupe-dir
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Dedupes directories of your choosing once a week.'
 arch=('any')
 url='https://github.com/theblu3j/dedupe-dir'
