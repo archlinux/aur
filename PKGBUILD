@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pandora-box-git
 _pkgname=Pandora-Box
-pkgver=1.0.17.r0.ga52bc8a
-_electronversion=36
-_nodeversion=24
+pkgver=1.0.19.r0.g6b55dd8
+_electronversion=39
+_nodeversion=22
 pkgrel=1
 pkgdesc="A Simple Mihomo GUI.(Use system-wide electron)"
 arch=(
