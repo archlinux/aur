@@ -1,0 +1,4 @@
+[ukui-notification-daemon]
+source = "git"
+git = "https://github.com/ukui/ukui-notification-daemon.git"
+prefix = "v"
