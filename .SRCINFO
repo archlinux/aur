@@ -1,0 +1,24 @@
+pkgbase = willow
+	pkgdesc = Simple offline configurable voice assistant for gnome
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Saim20/willow
+	install = willow.install
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = gcc
+	depends = gnome-shell>=45
+	depends = sdbus-cpp
+	depends = jsoncpp
+	depends = libpulse
+	depends = ydotool
+	optdepends = cuda: for NVIDIA GPU acceleration
+	optdepends = vulkan-icd-loader: for Vulkan GPU acceleration (AMD/Intel/NVIDIA)
+	optdepends = vulkan-headers: for Vulkan GPU acceleration build support
+	options = !debug
+	source = willow::git+https://github.com/Saim20/willow.git
+	sha256sums = SKIP
+
+pkgname = willow
