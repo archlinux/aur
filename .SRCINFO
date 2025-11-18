@@ -1,0 +1,11 @@
+pkgbase = gwctl-bin
+	pkgdesc = gwctl is a command-line tool for managing and understanding Gateway API resources in your Kubernetes cluster
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kubernetes-sigs/gwctl
+	arch = x86_64
+	license = apache
+	source = gwctl-0.1.0.tar.gz::https://github.com/kubernetes-sigs/gwctl/releases/download/v0.1.0/gwctl_Linux_x86_64.tar.gz
+	sha256sums = 0b6c4314599e29fd16ae41fc9d851a9b1e7b2dcab74b4b8cbd7eb91e72e0118a
+
+pkgname = gwctl-bin
