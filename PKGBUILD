@@ -3,7 +3,7 @@ pkgname=yubico-authenticator
 _app_id=com.yubico.yubioath
 pkgdesc="Yubico Authenticator for Desktop"
 pkgver=7.3.1
-pkgrel=1
+pkgrel=2
 _flutter_ver=3.35.3  ## Check .github/workflows/env for version
 arch=('x86_64' 'aarch64')
 url="https://github.com/Yubico/yubioath-flutter"
@@ -38,6 +38,8 @@ validpgpkeys=('20EE325B86A81BCBD3E56798F04367096FBA95E8')  # Dain Nilsson <dain@
 
 prepare() {
   cd yubioath-flutter
+  git -C helper clean -dfx
+
   export FVM_CACHE_PATH="$srcdir/fvm"
   fvm install "${_flutter_ver}"
   fvm global "${_flutter_ver}"

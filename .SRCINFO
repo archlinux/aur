@@ -1,7 +1,7 @@
 pkgbase = yubico-authenticator
 	pkgdesc = Yubico Authenticator for Desktop
 	pkgver = 7.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Yubico/yubioath-flutter
 	arch = x86_64
 	arch = aarch64
