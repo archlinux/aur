@@ -1,7 +1,7 @@
 pkgbase = roger-router-git
 	pkgdesc = A utility to control and monitor AVM Fritz!Box Routers. E.g. Journal, fax software and call monitor.
-	pkgver = 2.4.90+5.r1430.20250629.8c754a6
-	pkgrel = 2
+	pkgver = 2.4.90+6.r1431.20251115.3ffe13d
+	pkgrel = 1
 	url = https://tabos.org/projects/rogerrouter/
 	install = roger-router.install
 	arch = aarch64
@@ -46,8 +46,8 @@ pkgbase = roger-router-git
 	optdepends = cups: FAX printer
 	optdepends = dconf: for glib schemas
 	optdepends = hicolor-icon-theme: hicolor theme hierarchy
-	provides = rogerrouter=2.4.90+5.r1430.20250629.8c754a6
-	provides = roger-router=2.4.90+5.r1430.20250629.8c754a6
+	provides = rogerrouter=2.4.90+6.r1431.20251115.3ffe13d
+	provides = roger-router=2.4.90+6.r1431.20251115.3ffe13d
 	conflicts = rogerrouter
 	conflicts = roger-router
 	replaces = rogerrouter
