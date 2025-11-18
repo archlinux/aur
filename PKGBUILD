@@ -1,11 +1,11 @@
 # Maintainer: Victor RH <blitzkriegfc@gmail.com>
 pkgname=antigravity-preview
 pkgver=1.11.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Google Antigravity - AI-powered development environment (Preview)"
 arch=('x86_64')
 url="https://antigravity.google"
-license=('MIT')
+license=('custom')
 depends=(
     'gtk3'
     'nss'
