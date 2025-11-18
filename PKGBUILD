@@ -1,6 +1,6 @@
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Swift Geek <swiftgeek ɐt gmail døt com>
-# Maintainer: Sving1024 <piano5432@outlook.com>
+# Maintainer: Sving1024 <sving1024@outlook.com>
 
 pkgbase='firefox-nightly-i18n'
 pkgname='firefox-nightly-i18n-all'
