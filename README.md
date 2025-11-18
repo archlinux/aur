@@ -32,4 +32,6 @@ To publish, update `.SRCINFO`:
 makepkg --printsrcinfo > .SRCINFO
 ```
 
-And then run `./aur-push.sh`.
+And then commit your changes and run `./aur-push.sh`.
+
+If ssh fails due to public key denied run: `ssh aur-sos` and enter the private key password and try again.
