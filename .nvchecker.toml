@@ -1,0 +1,3 @@
+[lib32-sdl2-compat]
+source = "git"
+git = "https://github.com/libsdl-org/sdl2-compat.git"
