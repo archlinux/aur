@@ -9,7 +9,7 @@ url="https://git.meowcat.site/meowcat/meowcats-text-editor"
 license=('custom')
 depends=('java-runtime' 'libxi' 'libxrender' 'libxrandr' 'libxtst' 'libxinerama')
 source=(
-    "mct.jar::https://files.meowcat.site/files/code-java/jar-files/mctxt/1.2/mctxt-1.2.jar"
+    "mct.jar::https://files.meowcat.site/aur-files/mct1.5/mct.jar"
     "mct"  # launcher script
 )
 sha256sums=('SKIP' 'SKIP')
