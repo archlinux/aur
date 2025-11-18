@@ -1,19 +1,18 @@
 pkgbase = sbe-bin
 	pkgdesc = An unofficial Scrapbox desktop app.(Prebuilt version.Use system-wide electron)
-	pkgver = 3.6.0
-	pkgrel = 2
+	pkgver = 3.8.0
+	pkgrel = 1
 	url = https://github.com/kondoumh/sbe
 	arch = x86_64
 	license = MIT
-	makedepends = fuse2
-	depends = electron31
-	provides = sbe=3.6.0
+	depends = electron39
+	provides = sbe=3.8.0
 	conflicts = sbe
-	source = sbe-3.6.0.AppImage::https://github.com/kondoumh/sbe/releases/download/v3.6.0/sbe-3.6.0.AppImage
-	source = LICENSE-3.6.0::https://raw.githubusercontent.com/kondoumh/sbe/v3.6.0/LICENSE
+	source = sbe-3.8.0-x86_64.AppImage::https://github.com/kondoumh/sbe/releases/download/v3.8.0/sbe-3.8.0.AppImage
+	source = LICENSE-3.8.0::https://raw.githubusercontent.com/kondoumh/sbe/v3.8.0/LICENSE
 	source = sbe.sh
-	sha256sums = 16e9e41d37c4c727ae3cddf4a98c9a581189506c70b3c8aadc7e6f7790da2910
+	sha256sums = de1797b12152531df71e78519d660e32e1a79dca203bc3201d85b2facfe4b5a9
 	sha256sums = 0c0557908ff74a92af66c9b4435403c14e230c11e56eace0016fcfb7151187d2
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = sbe-bin
