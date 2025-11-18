@@ -16,7 +16,8 @@ sha256sums=('SKIP')
 pkgver() {
     cd "boto3"
     # Get the latest tag version and combine with revision count and short hash
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    # Use --always to fallback to commit hash if no tags exist
+    git describe --long --tags --always | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
