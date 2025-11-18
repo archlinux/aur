@@ -1,25 +1,25 @@
-_name=sph-web-publish
-pkgname=$_name-git
-pkgver=42
+pkgname=sph-web-publish-git
+_pkgname=sph-web-publish
+pkgver=52
 pkgrel=1
 pkgdesc="static site generator"
 arch=(any)
-license=(gpl3+)
-makedepends=(git)
+url="https://sph.mn/computer/software/sph-web-publish.html"
+license=(GPL3)
 depends=(guile guile-commonmark sph-lib)
 optdepends=(rsync graphicsmagick)
-provides=($_name)
-conflicts=($_name)
-source=("git://git.sph.mn/$_name")
-url="http://sph.mn"
-md5sums=(SKIP)
+makedepends=(git)
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}::git+https://github.com/sph-mn/${_pkgname}.git")
+sha256sums=(SKIP)
 
 pkgver() {
-  cd $_name
+  cd "${srcdir}/${_pkgname}"
   git rev-list --count HEAD
 }
 
 package() {
-  cd $_name
-  ./exe/install "$pkgdir"
+  cd "${srcdir}/${_pkgname}"
+  ./exe/install "${pkgdir}"
 }

@@ -1,10 +1,10 @@
 pkgbase = sph-web-publish-git
 	pkgdesc = static site generator
-	pkgver = 42
+	pkgver = 52
 	pkgrel = 1
-	url = http://sph.mn
+	url = https://sph.mn/computer/software/sph-web-publish.html
 	arch = any
-	license = gpl3+
+	license = GPL3
 	makedepends = git
 	depends = guile
 	depends = guile-commonmark
@@ -13,8 +13,7 @@ pkgbase = sph-web-publish-git
 	optdepends = graphicsmagick
 	provides = sph-web-publish
 	conflicts = sph-web-publish
-	source = git://git.sph.mn/sph-web-publish
-	md5sums = SKIP
+	source = sph-web-publish::git+https://github.com/sph-mn/sph-web-publish.git
+	sha256sums = SKIP
 
 pkgname = sph-web-publish-git
-
