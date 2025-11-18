@@ -3,7 +3,7 @@
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=eclair
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='A Scala implementation of the Lightning Network (GUI)'
 arch=('any')
@@ -12,7 +12,7 @@ license=('Apache')
 depends=('java-environment=21' 'jq')
 makedepends=('maven')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('da0c0e078bebda0497950d0d9c6c55eb4f6e522057b662ddbb9d0f0e7bbcd8ab')
+sha256sums=('e6159320479a13f2105d9ec691aac5f2418bc3bf321b5cf695e2dcde4e049e99')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -21,12 +21,7 @@ build() {
 
 check() {
   cd "${pkgname}-${pkgver}"
-#  mvn verify
-# Will enable when upstream fixes
-#  https://github.com/ACINQ/eclair/issues/2866
-#  *** 1 TEST FAILED ***
-#  OfferPaymentSpec.scala
-
+  mvn verify
 }
 
 package() {
