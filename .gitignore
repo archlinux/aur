@@ -4,3 +4,5 @@
 !.SRCINFO
 !LICENSE
 !PKGBUILD
+!*.install
+!Kiro-LICENSE.txt
