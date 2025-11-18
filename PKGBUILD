@@ -79,10 +79,4 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   DESTDIR="${pkgdir}" cmake --install build
-  
-  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/rhythmgame/LICENSE"
-
-  install -Dm644 staticAssets/RhythmGame.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-
-  install -Dm644 staticAssets/icon.svg "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg"
 }
