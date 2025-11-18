@@ -7,12 +7,13 @@ pkgbase = echomind
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	makedepends = git
 	depends = openssl
 	depends = gcc-libs
 	optdepends = jq: for JSON output formatting
 	provides = echomind
 	conflicts = echomind-git
-	source = https://github.com/thepinak503/echomind/archive/refs/tags/v0.3.2.tar.gz
-	sha256sums = 32aae07a6641066b314f47b143599669b8f4ef23d3c4030d783b06ea29c86839
+	source = git+https://github.com/thepinak503/echomind.git#tag=v0.3.2
+	sha256sums = SKIP
 
 pkgname = echomind
