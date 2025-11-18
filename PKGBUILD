@@ -21,7 +21,7 @@ pkgver() {
 }
 
 build() {
-    arch-meson "${pkgname%-git}" build -Dtests=disabled
+    arch-meson "${pkgname%-git}" build -Dtests=disabled -Dtypelib_installer=false
 
     meson compile -C build
 }
