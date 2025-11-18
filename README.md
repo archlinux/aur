@@ -1,6 +1,6 @@
 # Syscall
 
-[![AUR](https://img.shields.io/aur/version/syscall?logo=arch-linux&label=AUR)](https://aur.archlinux.org/packages/syscall)
+[![AUR](https://img.shields.io/aur/version/syscall?logo=arch-linux&label=AUR&cacheSeconds=5)](https://aur.archlinux.org/packages/syscall)
 [![License](https://img.shields.io/badge/license-GPLv3-brightgreen)]()
 [![Language](https://img.shields.io/badge/language-Python%20%2B%20C-blue)]()
 

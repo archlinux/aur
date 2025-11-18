@@ -1,14 +1,14 @@
 pkgname=syscall
-pkgver=1.2
+pkgver=1.3
 pkgrel=2
-pkgdesc="Sudo-like tool using PAM authentication with system-wide user cache"
+pkgdesc="minimal sudo‑like privilege elevation tool for Linux. "
 arch=('x86_64' 'aarch64')
 url="https://github.com/0xraincandy/syscall"
 license=('GPL')
 depends=('python' 'python-pam')
 makedepends=('gcc')
-source=('syscall' 'syscall-helper.c' 'syscall.pam')
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+source=('syscall' 'syscall-helper.c' 'syscall.pam' 'sycall')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 build() {
     gcc syscall-helper.c -o syscall-helper

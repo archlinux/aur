@@ -9,7 +9,7 @@ import termios
 import tty
 import signal
 
-def masked_input(prompt="Password: "):
+def masked_input(prompt="[syscall] password: "):
     """Prompt for password, displaying * for each character, and allow Ctrl+C."""
     sys.stdout.write(prompt)
     sys.stdout.flush()
@@ -18,7 +18,7 @@ def masked_input(prompt="Password: "):
     old_settings = termios.tcgetattr(fd)
 
     try:
-        # Put terminal in cbreak mode (like raw, but Ctrl+C still works)
+        # Put terminal in cbreak mode
         tty.setcbreak(fd)
 
         while True:
@@ -98,7 +98,7 @@ def pam_authenticate():
     """Authenticate using PAM via python-pam"""
     import pam
     auth = pam.pam()
-    pw = masked_input("Password: ")
+    pw = masked_input("[syscall] password: ")
     if auth.authenticate(os.getlogin(), pw, service="syscall"):
         save_timestamp()
         return True
@@ -124,7 +124,7 @@ def enable_cache(minutes):
         print("Authentication failed. Cache not enabled.")
 
 def main():
-    parser = argparse.ArgumentParser(description="syscall — sudo-like tool with system-wide cache")
+    parser = argparse.ArgumentParser(description="syscall — minimal sudo‑like privilege elevation tool for Linux.")
     parser.add_argument("--enable", type=int, help="Enable authentication cache for N minutes")
     parser.add_argument("--disable", action="store_true", help="Clear authentication cache")
     parser.add_argument("--status", action="store_true", help="Show cache status")

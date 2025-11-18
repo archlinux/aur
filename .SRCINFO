@@ -1,6 +1,6 @@
 pkgbase = syscall
-	pkgdesc = Sudo-like tool using PAM authentication with system-wide user cache
-	pkgver = 1.2
+	pkgdesc = minimal sudo‑like privilege elevation tool for Linux.
+	pkgver = 1.3
 	pkgrel = 2
 	url = https://github.com/0xraincandy/syscall
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = syscall
 	source = syscall
 	source = syscall-helper.c
 	source = syscall.pam
+	source = sycall
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
