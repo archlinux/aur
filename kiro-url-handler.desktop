@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Kiro - URL Handler
+Comment=Agentic AI IDE: Spec-driven development from prototype to production
+GenericName=Kiro
+Exec=/usr/bin/kiro --open-url %U
+Icon=kiro
+Type=Application
+NoDisplay=true
+StartupNotify=true
+Categories=Utility;TextEditor;Development;IDE;
+MimeType=x-scheme-handler/kiro;
+Keywords=kiro;

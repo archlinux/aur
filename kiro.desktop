@@ -1,0 +1,27 @@
+[Desktop Entry]
+Name=Kiro
+Comment=Agentic AI IDE: Spec-driven development from prototype to production
+GenericName=Text Editor
+Exec=/usr/bin/kiro %F
+Icon=kiro
+Type=Application
+StartupNotify=false
+StartupWMClass=Kiro
+Categories=TextEditor;Development;IDE;X-AI;
+MimeType=application/x-kiro-workspace;
+Actions=new-empty-window;
+Keywords=kiro;ai;spec;ears;agentic;
+
+[Desktop Action new-empty-window]
+Name=New Empty Window
+Name[de]=Neues leeres Fenster
+Name[es]=Nueva ventana vacía
+Name[fr]=Nouvelle fenêtre vide
+Name[it]=Nuova finestra vuota
+Name[ja]=新しい空のウィンドウ
+Name[ko]=새 빈 창
+Name[ru]=Новое пустое окно
+Name[zh_CN]=新建空窗口
+Name[zh_TW]=開新空視窗
+Exec=/usr/bin/kiro --new-window %F
+Icon=kiro

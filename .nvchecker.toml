@@ -1,0 +1,4 @@
+[kiro-bin-hardened]
+source = "regex"
+url = "https://prod.download.desktop.kiro.dev/releases/stable/linux-x64/signed/"
+regex = '(\d+\.\d+\.\d+)'
