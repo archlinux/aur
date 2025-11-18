@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Shuyuan Liu <liu_shuyuan at qq dot com>
 pkgname=issie
-pkgver=5.12.0
+pkgver=5.12.1
 _electronversion=35
 _nodeversion=22
 pkgrel=1
@@ -30,7 +30,7 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
 )
-sha256sums=('f705324f6b920f8fdf3b4b0cd431d742ad72b8436998deb9deb1475244911dfe')
+sha256sums=('1cc3e0ba194f7ed9c5dd164985cc1febaf80ef01f1f62e019061bd106a8c0185')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
