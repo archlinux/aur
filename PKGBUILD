@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=porepy
 pkgname=python-${_base,,}
-pkgver=1.11
+pkgver=1.12
 pkgrel=1
 pkgdesc="Simulation tool for fractured and deformable porous media"
 arch=(x86_64)
@@ -12,7 +12,7 @@ python-numba python-scipy python-seaborn python-shapely python-sympy python-typi
 makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest-runner)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('7f2425dfb29fc968f7d8b4aa71a7f62c6d296c999d4eacd6420bed77ee52d9f6281dae0bbb7c0a3c28f744eb40859dc3adbf74f4ec034d3f4a8426b89c0aa420')
+sha512sums=('3f7fb38f659e7bf9f8fafc2fab4ec34b939775f9399cfc35c8c7e4f23fcd3dba6366984fbb6a5537de98c18340081b7433201a275c8724d0de439ce8e09185b8')
 
 build() {
   cd ${_base}-${pkgver}
