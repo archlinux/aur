@@ -1,7 +1,7 @@
 pkgbase = feather-tk
 	pkgdesc = A lightweight toolkit for building cross-platform applications
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/darbyjohnston/feather-tk
 	arch = x86_64
 	license = BSD-3-Clause
@@ -12,10 +12,8 @@ pkgbase = feather-tk
 	depends = libpng
 	depends = freetype2
 	depends = libglvnd
-	depends = glfw
-	source = feather-tk-0.4.0.tar.gz::https://github.com/darbyjohnston/feather-tk/archive/refs/tags/0.4.0.tar.gz
-	source = glad-lib-prefix.patch
-	sha256sums = 4cd8645028deaec03959569db757525b43753eb1bdae4adb71107b58ca4cbb03
-	sha256sums = 557cf3344789c551953005d6d69e81d2682933a517f4797b2c332e0997e7c594
+	depends = sdl2
+	source = feather-tk-0.5.0.tar.gz::https://github.com/darbyjohnston/feather-tk/archive/refs/tags/0.5.0.tar.gz
+	sha256sums = 44f01bf927bcb8e1e5b141a9caa5da6aab87376979a15494479cad93bc3f0d36
 
 pkgname = feather-tk
