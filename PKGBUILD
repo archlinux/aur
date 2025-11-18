@@ -27,6 +27,7 @@ depends=(
     'qt6-declarative'
     'qt6-serialport'
     'qt6-positioning'
+    'qt6-location'
     'qtermwidget'
     'avahi'
     'libsecret'

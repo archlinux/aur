@@ -26,6 +26,7 @@ pkgbase = idescriptor-git
 	depends = qt6-declarative
 	depends = qt6-serialport
 	depends = qt6-positioning
+	depends = qt6-location
 	depends = qtermwidget
 	depends = avahi
 	depends = libsecret
