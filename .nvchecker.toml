@@ -1,0 +1,3 @@
+[clutter]
+source = "git"
+git = "https://gitlab.gnome.org/GNOME/clutter.git"
