@@ -1,6 +1,6 @@
 # Maintainer: Saim <saim20 at github dot com>
 pkgname=willow
-pkgver=2.0.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Simple offline configurable voice assistant for gnome"
 arch=('x86_64')
@@ -188,12 +188,18 @@ package() {
     install -Dm644 config.json \
         "$pkgdir/usr/share/willow/config.json"
     
+    # Install context configuration for smart workflows
+    install -Dm644 context.json \
+        "$pkgdir/usr/share/willow/context.json"
+    
     # Install LICENSE
     install -Dm644 LICENSE \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 SMART_WORKFLOWS.md "$pkgdir/usr/share/doc/$pkgname/SMART_WORKFLOWS.md"
+    install -Dm644 SMART_WORKFLOWS_QUICKSTART.md "$pkgdir/usr/share/doc/$pkgname/SMART_WORKFLOWS_QUICKSTART.md"
     
     # Install download helper script
     install -Dm755 download-model.sh "$pkgdir/usr/bin/willow-download-model"

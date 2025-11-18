@@ -21,6 +21,12 @@ post_install() {
         echo -e "${GREEN}✓${NC} Configuration created at ~/.config/willow/config.json"
     fi
     
+    # Auto-setup context configuration for smart workflows
+    if [ ! -f "$HOME/.config/willow/context.json" ]; then
+        cp /usr/share/willow/context.json "$HOME/.config/willow/"
+        echo -e "${GREEN}✓${NC} Context configuration created at ~/.config/willow/context.json"
+    fi
+    
     # Check for whisper model
     if [ ! -f "$HOME/.local/share/willow/models/ggml-tiny.en.bin" ]; then
         echo ""
@@ -64,6 +70,11 @@ post_install() {
     echo ""
     echo -e "${BOLD}Configure preferences:${NC}"
     echo "  gnome-extensions prefs willow@saim"
+    echo ""
+    echo -e "${BOLD}Smart Workflows Available:${NC}"
+    echo "  • Say 'open [app]' to launch any installed app"
+    echo "  • Say 'search [engine] for [query]' to search the web"
+    echo "  • Customize in ~/.config/willow/context.json"
     echo ""
     echo "Documentation: /usr/share/doc/willow/"
     echo -e "${BOLD}===================================================================${NC}"

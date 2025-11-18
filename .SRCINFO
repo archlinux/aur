@@ -1,6 +1,6 @@
 pkgbase = willow
 	pkgdesc = Simple offline configurable voice assistant for gnome
-	pkgver = 2.0.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/Saim20/willow
 	install = willow.install
