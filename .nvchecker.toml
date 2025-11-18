@@ -1,0 +1,3 @@
+[cogl]
+source = "git"
+git = "https://gitlab.gnome.org/GNOME/cogl.git"
