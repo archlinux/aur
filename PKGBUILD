@@ -15,18 +15,16 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
+  git fetch --tags
   local desc tag ver rev commit
-  if desc=$(git describe --tags --long --abbrev=7 2>/dev/null); then
-    # Example: 0.4.0-ColorsPicker!-3-gabc1234
-    tag=${desc%%-*}                      # 0.4.0
-    rev=${desc#*-}; rev=${rev%%-*}       # 3
-    commit=${desc##*-}; commit=${commit#g}  # abc1234
-    ver=$tag                             # 0.4.0
-    printf "%s.r%s.g%s" "$ver" "$rev" "$commit"
-  else
-    printf "0.0.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  fi
+  desc=$(git describe --tags --long --abbrev=7)
+  tag=${desc%%-*}
+  rev=${desc#*-}; rev=${rev%%-*}
+  commit=${desc##*-}; commit=${commit#g}
+  ver=$tag
+  printf "%s.r%s.g%s" "$ver" "$rev" "$commit"
 }
+
 
 
 
