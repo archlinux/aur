@@ -1,10 +1,10 @@
 pkgbase = revelation
 	pkgdesc = Password manager for the GNOME desktop
-	pkgver = 0.5.5
-	pkgrel = 2
+	pkgver = 0.5.6
+	pkgrel = 1
 	url = https://github.com/mikelolasagasti/revelation
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = gobject-introspection
 	makedepends = meson
 	depends = gtk3
@@ -12,7 +12,7 @@ pkgbase = revelation
 	depends = python-defusedxml
 	depends = python-gobject
 	depends = python-pycryptodomex
-	source = https://github.com/mikelolasagasti/revelation/releases/download/revelation-0.5.5/revelation-0.5.5.tar.xz
-	sha256sums = a20c4191595466dc90b90b0f7c4615a599974327152a4d2af87f506134ddce8f
+	source = https://github.com/mikelolasagasti/revelation/releases/download/revelation-0.5.6/revelation-0.5.6.tar.xz
+	sha256sums = ceffde10f389e4ec6653e895a2a15ff168d97a51299495c9e089af8a3bef7c53
 
 pkgname = revelation
