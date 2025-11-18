@@ -1,6 +1,6 @@
 # Maintainer: ognrdrch <https://github.com/ognrdrch>
 pkgname=rauri
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A minimal AUR helper for written in Rust"
 arch=('x86_64')
@@ -9,11 +9,11 @@ license=('MIT')
 depends=('pacman' 'git')
 makedepends=('cargo' 'rust')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ognrdrch/rauri/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3a9fc89e414f8607cc4627d22af4424e2e331273e912c925768182bf23f672d9')
+sha256sums=('7b4dfe92166cfa5e02d63f2009842ba731163af9173c562de159903d806a162c')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
