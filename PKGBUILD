@@ -1,4 +1,4 @@
-# Maintainer: Musee "lae" Ullah <lae(at)lae(dot)is>
+# Maintainer: lae <lae(at)lae(dot)is>
 
 pkgname=ytarchive-bin
 pkgver=0.5.0.20250106.042545
