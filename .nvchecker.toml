@@ -1,0 +1,3 @@
+[lib32-dconf]
+source = "git"
+git = "https://gitlab.gnome.org/GNOME/dconf.git"
