@@ -1,5 +1,5 @@
 pkgbase = ffvship-amd-git
-	pkgdesc = Cli tool for computing the metric difference between two videos (GIT Version)
+	pkgdesc = Cli tool for computing the metric difference between two videos (GIT version)
 	pkgver = 3.0.0.13.g1ed2fb3
 	pkgrel = 1
 	url = https://github.com/Line-fr/Vship
@@ -7,11 +7,11 @@ pkgbase = ffvship-amd-git
 	license = MIT
 	makedepends = git
 	makedepends = make
-	makedepends = clang
 	depends = hip-runtime-amd
-	provides = ffvship-amd
-	conflicts = ffvship-amd
-	source = ffvship-amd::git+https://github.com/Line-fr/Vship.git
+	depends = ffms2
+	provides = ffvship
+	conflicts = ffvship
+	source = ffvship::git+https://github.com/Line-fr/Vship.git
 	sha256sums = SKIP
 
 pkgname = ffvship-amd-git
