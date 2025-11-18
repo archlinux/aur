@@ -1,0 +1,3 @@
+[gpx-viewer]
+source = "git"
+git = "https://github.com/DaveDavenport/gpx-viewer.git"
