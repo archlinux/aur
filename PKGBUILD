@@ -13,7 +13,7 @@ source=(
     "https://raw.githubusercontent.com/kkinnear/zprint/master/LICENSE"
 )
 md5sums=(
-    'd41d8cd98f00b204e9800998ecf8427e'
+    '8f6d127cb6491b798cbe021800b554a6'
     '7199ed1f0ff55f6f8a1d191272e13f71'
 )
 
