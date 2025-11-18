@@ -2,7 +2,7 @@
 # Contributor: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 pkgname=brightness-controller-git
 pkgver=2.4.r12.gdab46e3
-pkgrel=1
+pkgrel=2
 pkgdesc="Control Brightness of your Primary and Secondary Display in Linux"
 arch=('x86_64')
 url="https://github.com/LordAmit/Brightness"
@@ -39,7 +39,9 @@ pkgver() {
 
 prepare() {
   cd "Brightness/${pkgname%-git}-linux"
-  mv README.md readme.md
+  git clean -dfx
+
+  sed -i 's/readme.md/README.md/g' pyproject.toml
 }
 
 build() {

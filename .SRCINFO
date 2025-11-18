@@ -1,7 +1,7 @@
 pkgbase = brightness-controller-git
 	pkgdesc = Control Brightness of your Primary and Secondary Display in Linux
 	pkgver = 2.4.r12.gdab46e3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LordAmit/Brightness
 	arch = x86_64
 	license = GPL-3.0-or-later
