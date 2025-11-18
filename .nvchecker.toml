@@ -1,0 +1,3 @@
+[mill]
+source = "git"
+git = "https://github.com/lihaoyi/mill.git"
