@@ -9,8 +9,8 @@ pkgname=signal-desktop-beta
 _pkgname=Signal-Desktop
 _sticker_creator="sticker-creator"
 _desktop_file='signal beta.desktop'
-pkgver=7.80.0beta2
-pkgrel=2
+pkgver=7.80.0beta3
+pkgrel=1
 pkgdesc='Signal Private Messenger for Linux - Beta version.'
 license=('GPL3')
 conflicts=('signal-desktop-beta-bin')
@@ -57,17 +57,12 @@ makedepends_aarch64=('fpm')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/v${pkgver//beta*}-beta.${pkgver##*beta}.tar.gz"
   "${_desktop_file}"
-  '7e9df4a602632a1acca31bcc6cfa797777710e6f.patch'
   )
-sha512sums=('3505cd4b53adfbf0ce233759c05c8a9c0710c263d825c6a9bc807fd2b88928dabc8a4b9d5240834690ff4d6f4c14d01501238dc1bda833c4fe438749ef18ab2a'
-            '5032201efb1089e2e8f78cf5cc06d458f2b068900a4de74b7c2ef87a0a0e7779cc681df7b95ce2d9af131ef9ea148f3621ee1fa2a9812982cdecc7aba9eeb87c'
-            'ac524880436878641d48177152b534f83ec8c05bfbdac07465c6ee2f5a5fa1c18eba9a43027ef2f284d4c5a6bc46f17a64a34ed8abe070cdc64eddc57db2cc5e')
+sha512sums=('4967f261bf50b2a2d3ce3541ffaac1625b6a9e6445c26a98505901fe34858d74d2539b9650b51dbef5bae7b1c13deeb3e0afb6a625995a1cf1f9ea6aea9dd16a'
+            '5032201efb1089e2e8f78cf5cc06d458f2b068900a4de74b7c2ef87a0a0e7779cc681df7b95ce2d9af131ef9ea148f3621ee1fa2a9812982cdecc7aba9eeb87c')
 
 prepare() {
   cd "${_pkgname}-${pkgver//beta*}-beta.${pkgver##*beta}"
-
-  # Revert commit who introduced https://github.com/signalapp/Signal-Desktop/issues/7599
-  patch -Rp1 < "$srcdir/7e9df4a602632a1acca31bcc6cfa797777710e6f.patch"
 
   # git-lfs hook needs to be installed for one of the dependencies
   git lfs install
@@ -86,7 +81,7 @@ build() {
   cd "${_pkgname}-${pkgver//beta*}-beta.${pkgver##*beta}"
 
   # Build the sticker creator
-  USE_SYSTEM_FPM=$([ $(uname -m) == "aarch64" ] && echo true || echo false) bash -c 'pnpm --prefix ./sticker-creator/ run build'
+  USE_SYSTEM_FPM=$([ $(uname -m) == "aarch64" ] && echo true || echo false) bash -c 'pnpm -C ./sticker-creator/ run build'
 
   # Build Signal Desktop Beta
   pnpm run generate
