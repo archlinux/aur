@@ -1,0 +1,3 @@
+[clang19]
+source = "git"
+git = "https://github.com/llvm/llvm-project.git"
