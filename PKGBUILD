@@ -1,6 +1,6 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=kokkos
-pkgver=4.7.01
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="C++ performance portability programming ecosystem"
 arch=(x86_64)
@@ -11,7 +11,7 @@ makedepends=(cmake)
 # checkdepends=(gtest)
 conflicts=('trilinos')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha256sums=('cebf6daeb99c95e3d4116ea0d97c94b6a521c0cff1f5e613f127f6beea960ac7')
+sha256sums=('b028b797ba8ef3b439ddccf4aa3d651f2fa225cc2195bf1c1aaf096831b611c7')
 
 build() {
   cmake \
