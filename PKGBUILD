@@ -5,8 +5,8 @@
 
 _pkgname='ov'
 pkgname="${_pkgname}-git"
-pkgver=0.42.1.r0.g63d9143
-pkgrel=2
+pkgver=0.45.1.r21.g33c3a70
+pkgrel=1
 epoch=1
 pkgdesc='Feature-rich terminal-based text pager (development version)'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -14,8 +14,12 @@ url='https://github.com/noborus/ov'
 license=('MIT')  # SPDX-License-Identifier: MIT
 provides=('ov')
 conflicts=("${provides[@]}")
-depends=('glibc')
 makedepends=('git' 'go')
+depends=('glibc')
+optdepends=(
+  'xclip: for clipboard use'
+  'xsel: for clipboard use (alternative)'
+)
 source=("git+$url.git")
 install="$pkgname.install"
 sha256sums=('SKIP')
@@ -58,7 +62,8 @@ build() {
     -buildmode=pie \
     -trimpath \
     -ldflags="-linkmode=external -X main.Version=$_ver -X main.Revision=$_rev" \
-    -mod=readonly -modcacherw \
+    -mod=readonly \
+    -modcacherw \
     -o build .
 
   for _shell in bash fish zsh; do
