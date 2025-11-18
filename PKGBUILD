@@ -3,7 +3,7 @@
 _name=GQL
 _binary=gitql
 pkgname=${_name,,}
-pkgver=0.41.0
+pkgver=0.42.0
 pkgrel=1
 pkgdesc="Git Query language (GQL) is an SQL like language to perform queries on .git files"
 url="https://github.com/AmrDeveloper/GQL"
@@ -15,7 +15,7 @@ conflicts=("${_binary}")
 provides=("${_binary}")
 options=(!lto) # Linking zlib with flake2 fails with LTO enabled
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('395a244a8907f0c657286485b9e7b64b7a0da83c1cce738b6dc25495b2a6fea6c1ee6ee0e15fc43cc720d5020e3042581f610ead561deb10e7628b5462c41f09')
+sha512sums=('ceb11473e875c98711708b3d9cb9466b711b14e87013e6320e5fccc016c30e731557b4249e68370d23ffe229a884ce5e0b0a3374f319398adf890fc150dd5173')
 
 prepare() {
   cd ${_name}-${pkgver}
