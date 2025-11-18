@@ -3,7 +3,6 @@ pkgbase = lux-cli-bin
 	pkgver = 0.20.1
 	pkgrel = 1
 	url = https://lux.lumen-labs.org/
-	repo_url = https://github.com/lumen-oss/lux
 	arch = x86_64
 	license = LGPLv3
 	depends = glibc
