@@ -3,8 +3,8 @@
 
 pkgname='perl-cgi-simple'
 epoch='1'
-pkgver='1.281'
-pkgrel='2'
+pkgver='1.282'
+pkgrel='1'
 pkgdesc="A Simple totally OO CGI interface that is CGI.pm compliant"
 arch=('any')
 license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
@@ -14,7 +14,7 @@ checkdepends=('perl-test-nowarnings' 'perl-test-exception' 'perl-http-message' '
 url='https://metacpan.org/dist/CGI-Simple'
 _distdir="CGI-Simple-$pkgver"
 source=(https://cpan.metacpan.org/authors/id/M/MA/MANWAR/$_distdir.tar.gz)
-sha256sums=('4d58103fdfa5c8e1ed076b15d5cafb7001b2886cb3396f00564a881eb324e5a7')
+sha256sums=('c57f0f3e32cdd80612645155c1b829b4ccbe4ced655de833ab93005989c27f2f')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
