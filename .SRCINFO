@@ -1,7 +1,7 @@
 pkgbase = python-zxing-cpp
 	pkgdesc = Python bindings for zxing-cpp
 	pkgver = 2.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zxing-cpp/zxing-cpp
 	arch = x86_64
 	license = Apache-2.0
@@ -10,6 +10,7 @@ pkgbase = python-zxing-cpp
 	makedepends = pybind11
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python
