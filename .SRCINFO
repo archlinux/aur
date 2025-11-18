@@ -1,0 +1,20 @@
+pkgbase = candle-cnc
+	pkgdesc = GRBL controller application with G-Code visualizer written in Qt
+	pkgver = 10.11.1
+	pkgrel = 1
+	url = https://github.com/Denvi/Candle
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-script
+	depends = qt5-serialport
+	depends = qt5-tools
+	depends = qt5-websockets
+	conflicts = candle-bin
+	conflicts = candle-git
+	source = candle-cnc-10.11.1.tar.gz::https://github.com/Denvi/Candle/archive/refs/tags/v10.11.1.tar.gz
+	sha256sums = f90c6dfe8f57a76ef35468920d4372a5c165b52663591c9c144199662b589d05
+
+pkgname = candle-cnc
