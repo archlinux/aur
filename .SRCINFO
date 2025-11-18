@@ -1,19 +1,17 @@
 pkgbase = xoreos-tools
 	pkgdesc = Tools to help with xoreos development
-	pkgver = 0.0.6.r0.g87946ab
+	pkgver = 0.0.6
 	pkgrel = 1
-	url = https://xoreos.org/
-	arch = i686
+	url = https://github.com/xoreos/xoreos-tools
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
+	makedepends = boost
 	depends = zlib
 	depends = xz
 	depends = libxml2
-	depends = boost
 	depends = boost-libs
-	source = git://github.com/xoreos/xoreos-tools.git#tag=v0.0.6
-	md5sums = SKIP
+	source = git+https://github.com/xoreos/xoreos-tools.git#tag=v0.0.6
+	sha256sums = eacf4678bdf789d91479203f98940be24d6412372456c48b9e33e1827c43128e
 
 pkgname = xoreos-tools
-
