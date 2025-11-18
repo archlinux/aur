@@ -2,7 +2,7 @@
 # Contributor: max.bra <max dot bra dot gtalk at gmail dot com>
 pkgname=arronax
 pkgver=0.8.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Create and modify application, file and URI starters."
 arch=('any')
 license=('GPL-3.0-or-later')
@@ -37,6 +37,7 @@ sha256sums=('03f5252ef7e5e80dee1c467ca5cd9126cb4cef559b10e68aef41fe1c7226958e'
 
 prepare() {
   cd "$pkgname"
+  git clean -dfx
 
   # 'bind_textdomain_codeset' deprecated since Python 3.8 and removed in 3.11
   # https://codeberg.org/diesch/arronax/issues/1

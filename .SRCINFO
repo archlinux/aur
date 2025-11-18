@@ -1,7 +1,7 @@
 pkgbase = arronax
 	pkgdesc = Create and modify application, file and URI starters.
 	pkgver = 0.8.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.florian-diesch.de/software/arronax
 	arch = any
 	license = GPL-3.0-or-later
