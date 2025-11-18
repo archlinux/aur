@@ -2,7 +2,7 @@
 
 pkgname=rkdeveloptool-gui
 pkgver=1.0.0
-pkgrel=4
+pkgrel=6
 pkgdesc="RKDevelopTool GUI is a graphical front-end for Rockchip's official rkdeveloptool"
 arch=($CARCH)
 url="https://github.com/gahingwoo/RKDevelopTool-GUI"
@@ -39,7 +39,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}/"
-
+    git cherry-pick -n 76fd39a206c18888c20774f665e5a8490ea5f771
     python -m nuitka --standalone --onefile --follow-imports \
         --enable-plugin=pyqt6 \
         --include-data-file=./i18n.py=i18n.py \
