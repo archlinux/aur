@@ -3,7 +3,7 @@
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
 pkgver=24.04.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
 url="https://github.com/pop-os/system76-driver"
@@ -60,6 +60,7 @@ sha256sums=('56ae7ae5034a4676fdc6e171518bd6d9508ece4baab0010dc3f6078ee0e4e9e0'
 
 prepare() {
   cd "$pkgname"
+  git clean -dfx
 
   # patch for cli version - enable override vendor/model via /etc/system76-daemon.json
   patch -Np1 --no-backup-if-mismatch -i "$srcdir/cli.patch"
