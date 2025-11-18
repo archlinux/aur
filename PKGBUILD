@@ -1,11 +1,11 @@
 pkgname=btfs-git
-pkgver=v2.24.r3.g3210332
+pkgver=v3.1.r4.g9e18729
 pkgrel=2
 pkgdesc="bittorrent filesystem"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/johang/btfs"
 license=('GPL')
-depends=('fuse' 'libtorrent-rasterbar' 'curl' 'boost')
+depends=('fuse3' 'libtorrent-rasterbar' 'curl' 'boost')
 makedepends=('git')
 conflicts=('btfs')
 provides=('btfs')

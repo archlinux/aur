@@ -1,6 +1,6 @@
 pkgbase = btfs-git
 	pkgdesc = bittorrent filesystem
-	pkgver = v2.24.r3.g3210332
+	pkgver = v3.1.r4.g9e18729
 	pkgrel = 2
 	url = https://github.com/johang/btfs
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = btfs-git
 	arch = armv7h
 	license = GPL
 	makedepends = git
-	depends = fuse
+	depends = fuse3
 	depends = libtorrent-rasterbar
 	depends = curl
 	depends = boost
