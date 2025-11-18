@@ -1,6 +1,6 @@
 # Maintainer: linfeng <2844126834@qq.com>
 pkgname=sticky-rs-bin
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Image sticky note app that enables users to stick pictures to the desktop and have them always visible"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('sticky-rs-git')
 options=('!strip' '!debug')
 install=${pkgname}.install
 source_x86_64=("${url}/releases/download/v${pkgver}/sticky-rs_${pkgver}_amd64.deb")
-sha256sums_x86_64=('150d79b50a6f5555b5744b45b7f3b1c057d1b1517de6e08c5a2012b7fca09070')
+sha256sums_x86_64=('ff77a8666bc30eebcd1200adf13e1e741377ae7788b0e167903a21a48a7d776e')
 package() {
 
   # Extract package data
