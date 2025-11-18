@@ -1,0 +1,4 @@
+["dotnet-core-6.0"]
+source = "git"
+git = "https://github.com/dotnet/installer.git"
+prefix = "v"
