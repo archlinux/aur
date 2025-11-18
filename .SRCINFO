@@ -1,0 +1,18 @@
+pkgbase = kiro-cli-bin
+	pkgdesc = Prompt to code to deployment in your terminal
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://kiro.dev/cli/
+	arch = x86_64
+	license = LicenseRef-AWS-IPL
+	depends = gcc-libs
+	depends = glibc
+	depends = sh
+	depends = xz
+	provides = kiro-cli
+	conflicts = kiro-cli
+	replaces = amazon-q
+	source = kiro-cli-bin-1.20.0::https://desktop-release.q.us-east-1.amazonaws.com/latest/kirocli-x86_64-linux.zip
+	b2sums = 778b1532296eb1965713d17bb6a919d7d7f8ec17a8526b9a037770d1396080471736c3bbf93c77f1c8f8bd43057ee136dc92f43b7df3822394aa69dd44cbe575
+
+pkgname = kiro-cli-bin
