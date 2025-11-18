@@ -2,7 +2,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=plex-remote
 pkgver=1.0.2+5+gc29ef95
-pkgrel=2
+pkgrel=3
 pkgdesc="A library for easy implementing a remote plex client"
 arch=('any')
 url="https://github.com/tijder/plex-remote"
@@ -22,6 +22,10 @@ sha256sums=('3e15b001afe3a09257bb1e46b54cd834aca4def08bd369cc03d9a50b5c9bb6ec')
 pkgver() {
   cd "$pkgname"
   git describe --tags --abbrev=7 | sed 's/^v//;s/-/+/g'
+}
+
+prepare() {
+  git -C "$pkgname" clean -dfx
 }
 
 build() {

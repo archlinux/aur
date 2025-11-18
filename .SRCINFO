@@ -1,7 +1,7 @@
 pkgbase = plex-remote
 	pkgdesc = A library for easy implementing a remote plex client
 	pkgver = 1.0.2+5+gc29ef95
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tijder/plex-remote
 	arch = any
 	license = MIT
