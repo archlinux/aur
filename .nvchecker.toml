@@ -1,0 +1,3 @@
+[davix]
+source = "git"
+git = "https://github.com/cern-fts/davix.git"
