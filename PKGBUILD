@@ -5,13 +5,13 @@
 
 pkgname=ulauncher-git
 pkgver=DEV
-pkgrel=6
+pkgrel=7
 pkgdesc='Application launcher for Linux'
 arch=('any')
 url="http://ulauncher.io"
 license=('GPL3')
-depends=('gtk3' 'webkit2gtk-4.1' 'python>=3.8' 'python-cairo' 'python-gobject')
-makedepends=('git' 'python-setuptools' 'python-pip' 'python-wheel' 'make' 'nodejs' 'yarn')
+depends=('gtk3' 'python>=3.8' 'python-cairo' 'python-gobject')
+makedepends=('git' 'python-setuptools' 'python-pip' 'python-wheel' 'make')
 checkdepends=('desktop-file-utils')
 optdepends=(
   'gtk-layer-shell: wayland layer shell integration'
@@ -37,7 +37,6 @@ build() {
   cd ulauncher || exit
   # override the version to include the git commit ref
   echo "version = '$pkgver'" >> ulauncher/__init__.py
-  make prefs
   env PATH="$(getconf PATH)" python -m pip wheel --no-build-isolation --no-deps .
 }
 

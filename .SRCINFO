@@ -1,7 +1,7 @@
 pkgbase = ulauncher-git
 	pkgdesc = Application launcher for Linux
 	pkgver = DEV
-	pkgrel = 6
+	pkgrel = 7
 	url = http://ulauncher.io
 	install = ulauncher.install
 	arch = any
@@ -12,10 +12,7 @@ pkgbase = ulauncher-git
 	makedepends = python-pip
 	makedepends = python-wheel
 	makedepends = make
-	makedepends = nodejs
-	makedepends = yarn
 	depends = gtk3
-	depends = webkit2gtk-4.1
 	depends = python>=3.8
 	depends = python-cairo
 	depends = python-gobject
