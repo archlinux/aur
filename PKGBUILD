@@ -2,7 +2,7 @@
 
 _pkgname=qtcreator-qodeassist-plugin
 pkgname=${_pkgname}-bin
-pkgver=0.8.2
+pkgver=0.9.0
 _qtcreatorver=18.0.0
 pkgrel=1
 pkgdesc="QodeAssist is an AI-powered coding assistant plugin for Qt Creator v$_qtcreatorver"
@@ -14,7 +14,7 @@ depends=("qtcreator>=${_qtcreatorver}")
 provides=("$_pkgname" 'qodeassist' 'QodeAssist')
 conflicts=("$_pkgname" 'qodeassist' 'QodeAssist')
 source=("${_pkgname}-$pkgver.7z::${url}/releases/download/v${pkgver}/QodeAssist-v${pkgver}-QtC$_qtcreatorver-Linux-x64.7z")
-sha256sums=('f24b26350398ceace016fe75a632fcf6e786d3536426fddd5af6d8eb6b798a96')
+sha256sums=('de0358b213a60e592758ac39d08e78c21bc3694ad4921053a79b10b7d20c4630')
 
 package() {
     install -D "${srcdir}/lib/qtcreator/plugins/libQodeAssist.so" "${pkgdir}/usr/lib/qtcreator/plugins/libQodeAssist.so"
