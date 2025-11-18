@@ -1,13 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=turtle-git
 _app_id="de.philippun1.${pkgname%-git}"
-pkgver=0.12.1.r2.ga6f3eca
+pkgver=0.13.3.r1.gd1e24a3
 pkgrel=1
 pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
 url="https://gitlab.gnome.org/philippun1/turtle"
 license=('GPL-3.0-or-later')
 depends=(
+  'gtk4'
   'libadwaita'
   'meld'
   'openssl'
@@ -45,7 +46,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "${pkgname%-git}"
+  git -C "${pkgname%-git}" clean -dfx
 }
 
 build() {
@@ -55,7 +56,7 @@ build() {
 
 check() {
   cd "${pkgname%-git}"
-  PYTHONPATH=./ dbus-run-session xvfb-run pytest pytest
+  PYTHONPATH=./ dbus-run-session xvfb-run pytest
 
   appstreamcli validate --no-net "data/${_app_id}.metainfo.xml"
   desktop-file-validate "data/${_app_id}.desktop"
