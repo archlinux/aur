@@ -1,12 +1,13 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Robert Falkenberg <robert.falkenberg@srs.io>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Audric Schiltknecht <storm+arch@chemicalstorm.org>
 
 pkgname=rohc
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="RObust Header Compression (ROHC) library"
-arch=('x86_64')
-url='https://github.com/didier-barveux/rohc'
+arch=('x86_64' 'aarch64')
+url='https://rohc-lib.org'
 license=('LGPL2.1')
 depends=('glibc')
 makedepends=('libpcap' 'cmocka')

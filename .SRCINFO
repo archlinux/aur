@@ -1,9 +1,10 @@
 pkgbase = rohc
 	pkgdesc = RObust Header Compression (ROHC) library
 	pkgver = 2.3.1
-	pkgrel = 1
-	url = https://github.com/didier-barveux/rohc
+	pkgrel = 2
+	url = https://rohc-lib.org
 	arch = x86_64
+	arch = aarch64
 	license = LGPL2.1
 	makedepends = libpcap
 	makedepends = cmocka
