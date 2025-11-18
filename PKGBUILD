@@ -2,7 +2,7 @@
 pkgname=python-privy-git
 _name=privy
 pkgver=6.0.0.r67.624bb58
-pkgrel=3
+pkgrel=4
 pkgdesc="An easy, fast lib to correctly password-protect your data"
 arch=('any')
 url="https://github.com/ofek/privy"
@@ -27,6 +27,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_name"
   printf "$(python setup.py --version).r$(git rev-list --count HEAD).$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+  git -C "$_name" clean -dfx
 }
 
 build() {
