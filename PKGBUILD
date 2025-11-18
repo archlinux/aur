@@ -24,6 +24,9 @@ prepare() {
   cd mlir-${pkgver}.src/
   # /usr/bin/ld: cannot find -lLLVMCodeGenTypes: No such file or directory
   sed -i 's|LLVM_LINK_COMPONENTS|IGNORE_THAT|g' tools/mlir-tblgen/CMakeLists.txt
+
+  # https://github.com/llvm/llvm-project/issues/160896
+  sed -i '14iMLIRVectorTransformsIncGen' lib/Dialect/Vector/IR/CMakeLists.txt
 }
 
 build() {
