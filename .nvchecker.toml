@@ -1,0 +1,3 @@
+[libxsd-frontend]
+# version is tied to xsd version
+source = "manual"
