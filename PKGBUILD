@@ -3,7 +3,7 @@
 pkgname=kiro-cli-bin
 _name=${pkgname%-bin}
 pkgver=1.20.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Prompt to code to deployment in your terminal"
 arch=('aarch64' 'x86_64')
 url='https://kiro.dev/cli/'
@@ -18,7 +18,7 @@ optdepends=('bash-completion: bash tab completion support'
             'zsh-completions: zsh tab completion support')
 provides=("$_name")
 conflicts=("$_name" 'amazon-q-bin')
-replaces=('amazon-q')
+replaces=('amazon-q' 'amazon-q-bin')
 install='kiro-cli.install'
 source=('Kiro-LICENSE.txt')
 source_x86_64=("$_name-$pkgver-x86_64.zip::https://desktop-release.q.us-east-1.amazonaws.com/$pkgver/kirocli-x86_64-linux.zip")
