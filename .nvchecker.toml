@@ -1,0 +1,3 @@
+[caribou]
+source = "git"
+git = "https://gitlab.gnome.org/GNOME/caribou.git"
