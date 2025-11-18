@@ -1,0 +1,4 @@
+[gnucobol]
+source = "regex"
+regex = "GnuCOBOL [\\d.]+\\.\\d+"
+url = "https://sourceforge.net/projects/gnucobol/files/"
