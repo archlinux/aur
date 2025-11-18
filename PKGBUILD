@@ -38,6 +38,7 @@ depends=(
 )
 makedepends=('appstream' 'cmake' 'extra-cmake-modules' 'git' 'intltool' 'ladspa' 'ninja')
 optdepends=(
+  'breeze: KDE breeze style'
   'calf: limiter, exciter, bass enhancer and others'
   'lsp-plugins: equalizer, compressor, delay, loudness'
   'zam-plugins: maximizer'

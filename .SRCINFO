@@ -41,6 +41,7 @@ pkgbase = easyeffects-git
 	depends = tbb
 	depends = webrtc-audio-processing
 	depends = zita-convolver
+	optdepends = breeze: KDE breeze style
 	optdepends = calf: limiter, exciter, bass enhancer and others
 	optdepends = lsp-plugins: equalizer, compressor, delay, loudness
 	optdepends = zam-plugins: maximizer
