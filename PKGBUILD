@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=peersky-browser-bin
 _pkgname='Peersky Browser'
-pkgver=1.0.0_beta.12
+pkgver=1.0.0_beta.13
 _electronversion=29
 pkgrel=1
 pkgdesc="A minimal local-first p2p web browser: access, communicate, and publish offline.(Prebuilt version.Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/p2plabsxyz/peersky-browser/v${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('681b90b221b54b4bfa48147c7450d4cabc5caa30b26de659b16dae7c7bad5c6c'
+sha256sums=('bbae279e927035a80a3e167aa34e9f82fc47a3102df45ff33e706c58cdf7e557'
             '4a67a49c9cb2c0a80dcb67bb35bb7c10691b1460200398866df24cd0b8e00cab'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
