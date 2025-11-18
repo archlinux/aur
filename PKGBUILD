@@ -4,9 +4,9 @@
 # Contributor: rcf <ryan.farley@gmx.com>
 _pkgname=eden
 pkgname=$_pkgname-beta
-pkgver=0.0.4.rc2
-_pkgver=v0.0.4-rc2
-pkgrel=4
+pkgver=0.0.4.rc3
+_pkgver=v0.0.4-rc3.test2
+pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu - beta and test releases"
 arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
@@ -18,7 +18,7 @@ makedepends=('git' 'cmake' 'catch2' 'boost' 'cpp-httplib' 'spirv-headers' 'boost
 optdepends=('gamemode: Gamemoded support')
 options=('!lto' '!debug')
 source=("git+https://git.eden-emu.dev/eden-emu/eden.git#tag=${_pkgver}")
-sha256sums=('9dc1cc6901964bc09d6ed8ff6cee57f6d345ef89dcfd1addb3184f1394dba127')
+sha256sums=('f6fda84fb0037ea02746cccd631a1f83d918679b015534eaf15405bca1252acf')
 build() {
 	cd "$srcdir"
 	cmake -B build -S $_pkgname -GNinja \
