@@ -4,7 +4,7 @@
 pkgname=kiro-bin-hardened
 _name="${pkgname%-bin-hardened}"
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Spec-driven AI IDE from prototype to production. Hardened with strict permissions and verified dependencies."
 arch=('x86_64')
@@ -15,6 +15,7 @@ url='https://kiro.dev/'
 #   Service Terms: https://aws.amazon.com/service-terms/
 #   Privacy Notice: https://aws.amazon.com/privacy/
 license=('LicenseRef-AWS-IPL')
+install=$pkgname.install
 makedepends=('openssl')
 depends=(
     'alsa-lib'
@@ -48,6 +49,11 @@ depends=(
     'systemd-libs'
     'xdg-utils'
 )
+optdepends=(
+    'apparmor: Mandatory Access Control (MAC) security framework'
+    'firejail: Application sandboxing for enhanced isolation'
+    'bubblewrap: Lightweight application sandboxing'
+)
 provides=("$_name")
 conflicts=("$_name" "kiro-bin")
 # !strip: Prevent stripping of signed binaries (breaks Electron)
@@ -61,13 +67,15 @@ source=(
     "$_name.desktop"
     "$_name-url-handler.desktop"
     "$_name-workspace.xml"
+    "$_name.apparmor"
 )
 b2sums=('8a9a239518b11067956c4f06e31872aacf14ddb67e45042ba39d94a3e64e6eff14d3704eb75903476cebd0dd04e15a53f0b325c28eea88f13f89f1ea731cfedd'
         '09676f21f9b2821f7fb789fde98f1825f53d1df64ab74932ec2117f6cf06985bc5795ea7a016d90e9318035b2dd7c2f9706dccf44eb4cd092e4268a5f4760a26'
         '71eba0af9577dc2a829830d85c3a51ec2e0860e85d706edd0f5e22586792a282d222623397c7949e3901ce487feeb3b983640cd99419e1b7c688e3e75ed63dbb'
         'b80cc3af371e692fefdbb4b860bd2a2a8d74838597c15cd438be1ff430b625fa91327d599f93819b94ac808df9700b4658c00274aa17623f5e4bec3d6a7131a8'
         '422c58da03ba192980e0f867ad01ff6605e11e109086fec8abe27379ecff03d692f123f2016b2b76aa2d73f4038d44bcb476e6a806bec4c613304b3159a96642'
-        'bf76f34c64e272831da98a3642f827b159582fafb3918db9f7334ed7ed9eace747148d6f0f863d2a5f1e751b7d43f109e35a8ac7ee1985c09d7ea90b73a40455')
+        'bf76f34c64e272831da98a3642f827b159582fafb3918db9f7334ed7ed9eace747148d6f0f863d2a5f1e751b7d43f109e35a8ac7ee1985c09d7ea90b73a40455'
+        'SKIP')
 
 verify() {
     cd "$SRCDEST"
@@ -165,4 +173,7 @@ package() {
     install -Dm644 $_name-url-handler.desktop \
         "$pkgdir/usr/share/applications/$_name-url-handler.desktop"
     install -Dm644 $_name-workspace.xml "$pkgdir/usr/share/mime/packages/$_name-workspace.xml"
+
+    # AppArmor Profile (Optional Security Enhancement)
+    install -Dm644 $_name.apparmor "$pkgdir/usr/share/apparmor/$_name.apparmor"
 }
