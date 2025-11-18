@@ -1,6 +1,6 @@
 pkgbase = beekeeper-studio-bin
 	pkgdesc = Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more
-	pkgver = 5.4.10
+	pkgver = 5.4.11
 	pkgrel = 1
 	url = https://github.com/beekeeper-studio/beekeeper-studio
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = beekeeper-studio-bin
 	depends = nspr
 	depends = nss
 	provides = beekeeper-studio
-	noextract = beekeeper-studio-5.4.10-x86_64.tar.xz
-	noextract = beekeeper-studio-5.4.10-aarch64.tar.xz
+	noextract = beekeeper-studio-5.4.11-x86_64.tar.xz
+	noextract = beekeeper-studio-5.4.11-aarch64.tar.xz
 	source = LICENSE-COMMERCIAL
 	sha256sums = 9e83b98f1773a830db2b30043051d4e179fea73cdb0168feb7b2965ee6075ebf
-	source_x86_64 = beekeeper-studio-5.4.10-x86_64.tar.xz::https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v5.4.10/beekeeper-studio-5.4.10.pacman
-	sha256sums_x86_64 = 846a0fdd076458efcc44b7de4d1bbce29490966026d6df90ae030970ca405900
-	source_aarch64 = beekeeper-studio-5.4.10-aarch64.tar.xz::https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v5.4.10/beekeeper-studio-5.4.10-aarch64.pacman
-	sha256sums_aarch64 = 529ce6edccc3aa851e7d6342603212b82b84fb57c5c20809920aa222d343dce7
+	source_x86_64 = beekeeper-studio-5.4.11-x86_64.tar.xz::https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v5.4.11/beekeeper-studio-5.4.11.pacman
+	sha256sums_x86_64 = 25e72463670de6dffdab9b7cd53b97bf82a9ead6cc601a35d0cc5f837ec6ae9b
+	source_aarch64 = beekeeper-studio-5.4.11-aarch64.tar.xz::https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v5.4.11/beekeeper-studio-5.4.11-aarch64.pacman
+	sha256sums_aarch64 = a45ed02b278b6de1cc38ab7626c130cc8ae9355b8b7b92943d99a27f4ea8b7a1
 
 pkgname = beekeeper-studio-bin
