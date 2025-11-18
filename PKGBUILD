@@ -7,13 +7,14 @@ pkgname=(
 )
 pkgbase=atoms
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Easily manage Linux Chroot(s) and Containers"
 arch=('any')
 url="https://github.com/AtomsDevs/Atoms"
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-only')
 depends=(
   'adobe-source-code-pro-fonts'
+  'gtk4'
   'libadwaita'
   'podman'
   'proot-termux'
@@ -53,6 +54,9 @@ prepare() {
   git config submodule.atoms-core.url "$srcdir/atoms-core"
   git config submodule.servicectl.url "$srcdir/servicectl"
   git -c protocol.file.allow=always submodule update
+
+  git -C "$pkgbase-cli" clean -dfx
+  git -C "$pkgbase-core" clean -dfx
 }
 
 build() {
@@ -69,7 +73,7 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs || :
+  meson test -C build --no-rebuild --print-errorlogs || :
 }
 
 package_atoms() {
@@ -89,7 +93,7 @@ package_atoms() {
   )
   optdepends=('distrobox: List and handle Distrobox containers as atoms')
 
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
 
 package_atoms-cli() {
