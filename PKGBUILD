@@ -2,8 +2,8 @@
 # Contributor: Peter Mattern <pmattern at arcor dot de>
 pkgname='python-pyjwkest'
 _name=${pkgname#python-}
-pkgver=1.4.2
-pkgrel=3
+pkgver=1.4.4
+pkgrel=1
 pkgdesc='Implementation of JWT, JWS, JWE and JWK'
 arch=('any')
 url="https://github.com/rohe/${_name}"
@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('2d2c8bcd77697850e92ae6c61ac6884cc5f6b62f6104d5f98acf3c0c07f8537cad1dcabd6840f36fcacdbabc04e85f069f94e400bc1aecaa6cb7710aeeb4cf13')
+sha512sums=('a0692d934e653b0eb0b9bf17f0f1493c241bbd505ce2b3bb480e97d34564c6c6a089eedaa1b23f7b4df4904d7215e7cc90b385b3233290b4cc1de56c2207b92e')
 
 build() {
   cd ${_name}-${pkgver}
