@@ -2,7 +2,7 @@
 
 pkgname=discord-electron-openasar
 _pkgname=discord
-pkgver=0.0.114+846
+pkgver=0.0.115+846
 _pkgver=${pkgver%%+*}
 pkgrel=1
 _electronver=38
@@ -19,7 +19,6 @@ depends=("${_electronname}" 'libxss' 'unzip')
 makedepends=('git' 'asar' 'nodejs' 'curl')
 optdepends=(
 	'libpulse: Pulseaudio support'
-	'libappindicator-gtk3: Systray indicator support'
 	'xdg-utils: Open files'
 	'python-pyelftools: Required for Krisp patcher'
 	'python-capstone: Required for Krisp patcher'
@@ -28,7 +27,7 @@ source=("https://dl.discordapp.net/apps/linux/${_pkgver}/${_pkgname}-${_pkgver}.
 	'discord-launcher.sh'
 	'krisp-patcher.py' # original: https://github.com/sersorrel/sys/blob/main/hm/discord/krisp-patcher.py
 	"git+https://github.com/goosemod/openasar.git#commit=bf8a71e2fcf1c77761092b7b899839164e3a596c")
-sha512sums=('b7558231612f484747eb2a1bb958d4e43d578759c5020931e16c80be93bfaab1bb82beebb22948a05d1a7dbdb89a7806dd8f5add429eefcadf8112398c9de3b5'
+sha512sums=('92fea8b546027d972901cf7773f0736f61b66b8b0d7f96b0b18f0a65a6299983d29a9b630970f9ce0216b39d6148bed37e67274ae8a4fbdc54937d11b3cf222f'
             '618c89fdd90d6826dd44c3d5973428fb68b1836f1198a356e936da0b78c18b748d522ff7ecee15752d590dcd137ef16c4370ac6325c5b5f0aced4b5cce36b825'
             '42cef68c1f7d574b4fbe859a4dc616e8994c7d16f62bcae3ff1f88e1edc58ac37b39c238d7defa9c97ceda417fcd6224cf0a0fd2608b8d18d0877e3c1befa59c'
             'b25328161b958683c60a33c3295577286057e724449e932eea828169c65b6e1103a2dcfc83deb088119e8b8b49871b7cd355d489c4d713aeac837b91f7a40a1e')
