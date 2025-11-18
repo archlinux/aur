@@ -3,7 +3,7 @@ _appname=wakatime
 pkgname="desktop-${_appname}-bin"
 pkgver=2.1.7
 _electronversion=32
-pkgrel=1
+pkgrel=2
 pkgdesc="A system tray app for automatic time tracking and metrics generated from your Figma, Postman, etc. usage.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -27,9 +27,13 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/wakatime-linux-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/wakatime-linux-x86_64.AppImage")
 sha256sums=('e24e2e299e12cd69f5703c98bc70bde26642b4be896f36bc1e4ca00bb497e399'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 sha256sums_aarch64=('dfb0474ce3bcdfc1261a348991e0758efc2d4ebe75da460e155e8181213e5e32')
 sha256sums_x86_64=('fcf51f32f3e3b41cfd5fbfb9c0176f264dbfa1d5a303965d5eae396eb90d53d5')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -41,7 +45,11 @@ prepare() {
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
+    if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
+    fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    _get_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/node-global-key-listener/bin/MacKeyServer"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
