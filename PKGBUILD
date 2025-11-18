@@ -1,7 +1,7 @@
 # Maintainer: yms_hi <yms_hi@Outlook.com>
 pkgname=('cangjie-lts-bin' 'cangjie-lts-tools-bin' 'cangjie-lts-runtime-bin')
 pkgver="1.0.4"
-pkgrel=1
+pkgrel=2
 epoch=
 arch=('x86_64' 'aarch64')
 pkgdesc='Cangjie(Beta Channel)'
@@ -56,7 +56,6 @@ package_cangjie-lts-bin() {
         cp -r './bin/' "$pkgdir/opt/cangjie"
         cp -r './lib/' "$pkgdir/opt/cangjie"
         cp -r './modules' "$pkgdir/opt/cangjie"
-        cp 'envsetup.sh' "$pkgdir/opt/cangjie"
         chmod 755 "$pkgdir/opt/cangjie/" -R
 }
 
