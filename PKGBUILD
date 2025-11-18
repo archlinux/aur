@@ -51,6 +51,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_Fortran_COMPILER="$srcdir"/flang-$pkgver.src/build/bin/flang \
     -DCMAKE_Fortran_COMPILER_WORKS=yes \
+    -DCMAKE_Fortran_FLAGS="" \
     -DFLANG_RT_INCLUDE_TESTS=OFF \
     -DLLVM_ENABLE_RUNTIMES="flang-rt" \
     -B build -S "$srcdir"/llvm-project-$pkgver.src/runtimes
