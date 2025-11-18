@@ -16,17 +16,19 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname"
   local desc tag ver rev commit
-  if desc=$(git describe --tags --long --match 'v*' --abbrev=7 2>/dev/null); then
-    # Example: v0.1.6alpha-20-ge8ad6b7
-    tag=${desc%%-*}                      # v0.1.6alpha
-    rev=${desc#*-}; rev=${rev%%-*}       # 20
-    commit=${desc##*-}; commit=${commit#g}  # e8ad6b7
-    ver=${tag#v}                         # 0.1.6alpha
+  if desc=$(git describe --tags --long --abbrev=7 2>/dev/null); then
+    # Example: 0.4.0-ColorsPicker!-3-gabc1234
+    tag=${desc%%-*}                      # 0.4.0
+    rev=${desc#*-}; rev=${rev%%-*}       # 3
+    commit=${desc##*-}; commit=${commit#g}  # abc1234
+    ver=$tag                             # 0.4.0
     printf "%s.r%s.g%s" "$ver" "$rev" "$commit"
   else
     printf "0.0.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   fi
 }
+
+
 
 package() {
     # Directories
