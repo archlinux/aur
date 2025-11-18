@@ -1,9 +1,10 @@
 pkgbase = dedupe-dir
 	pkgdesc = Dedupes directories of your choosing once a week.
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/theblu3j/dedupe-dir
 	arch = any
+	license = 0BSD
 	depends = systemd
 	depends = duperemove
 	depends = coreutils
@@ -14,8 +15,10 @@ pkgbase = dedupe-dir
 	source = dedupe.timer
 	source = dedupe.service
 	source = dedupe.sh
+	source = LICENSE
 	sha512sums = 684d92eb405789da7776224cd109e2dd7b739c1c45b37b28900b5326f348cfa3a521f2581a1cca4116341deaf663fb308013fae6d3ff811c9805c20b4ae064f9
 	sha512sums = ab9a0e2be923fbc711addb78ab9bef42e507c76231d2cee7efb852949b77a07f450267ea9c77e38ddb5c20264e920dd2b787e5e52235ef287c84ffba3203cd86
 	sha512sums = 4477e9fd6d92c9dc16c4b3ec382abcf8dd253752fd0d271e4b1d2ed78750551cc740fb6142558a3d83ba939ae71c4ebc4843780f624646e667cf0439d1a09f9c
+	sha512sums = a33658d9271e5c537ccd41bf540b463ad2a5eca4a060c80486ff42a736f0aa042d10436e7177c34d792177cb11285243dee1f31c4df54fb0bfaabbc306406930
 
 pkgname = dedupe-dir
