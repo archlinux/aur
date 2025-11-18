@@ -1,4 +1,4 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _upstreamver='1.34.1'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
