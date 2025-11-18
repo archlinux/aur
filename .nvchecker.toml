@@ -1,0 +1,4 @@
+[qjournalctl]
+source = "git"
+git = "https://github.com/pentix/qjournalctl.git"
+prefix = "v"
