@@ -17,6 +17,9 @@ sha256sums=('SKIP')
 
 build() {
   cd "${_plug}"
+  
+  export PATH="/opt/cuda/bin:$PATH"
+
   make buildcudaall
 }
 
