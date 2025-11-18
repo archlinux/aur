@@ -2,13 +2,13 @@
 
 pkgname=python-esprima
 _pkgname=esprima-python
-pkgrel=2
+pkgrel=3
 pkgver=4.0.1
 pkgdesc="Python port of esprima. ECMAScript parsing infrastructure for multipurpose analysis"
 depends=('python')
 makedepends=('python-setuptools')
 url="https://github.com/Kronuz/esprima-python"
-license=('BSD')
+license=('BSD-2-Clause')
 arch=('any')
 source=("$url/archive/v$pkgver.tar.gz")
 md5sums=('40b066e480bbe52168a441b99814dd23')
