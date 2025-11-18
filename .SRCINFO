@@ -1,0 +1,21 @@
+pkgbase = xoreos-tools-git
+	pkgdesc = Tools to help with xoreos development
+	pkgver = 0.0.6.r143.g9ecd99f
+	pkgrel = 1
+	url = https://github.com/xoreos/xoreos-tools
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = boost
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	depends = xz
+	depends = libxml2
+	depends = boost-libs
+	provides = xoreos-tools
+	conflicts = xoreos-tools
+	source = git+https://github.com/xoreos/xoreos-tools.git
+	sha256sums = SKIP
+
+pkgname = xoreos-tools-git
