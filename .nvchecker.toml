@@ -1,0 +1,3 @@
+[clutter-gtk]
+source = "git"
+git = "https://gitlab.gnome.org/GNOME/clutter-gtk.git"
