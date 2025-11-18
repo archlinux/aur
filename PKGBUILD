@@ -1,6 +1,7 @@
 # Maintainer: William Whittaker <william@mailliw.org>
 
 pkgname=hummingbird-player
+_pkgname=hummingbird
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="Modern music player written in Rust using GPUI with a focus on design and performance"
@@ -30,23 +31,29 @@ makedepends=(cargo
              vulkan-validation-layers
              cargo-cntp-bundle-git)
 options=(!debug)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/hummingbird-player/hummingbird/archive/refs/tags/${pkgver}.tar.gz")
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/hummingbird-player/hummingbird/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=(55c47c1fc1f1cec5eab1c0bb19e7af32722f1981e63730f206384e6e2799634d)
 
 prepare() {
-	cd "$pkgname-$pkgver"
+	cd "$_pkgname-$pkgver"
 	cargo fetch --locked
 }
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$_pkgname-$pkgver"
 	CFLAGS+=' -ffat-lto-objects'
 	CXXFLAGS+=' -ffat-lto-objects'
-    cargo build --release --locked
+	# no real better way to do this without incurring some costs
+	# this isn't as bad as it seems, without the local user's keys these are read-only (and even then all you can do is scrobble)
+	# and the local user's keys are only stored on their computer
+	# still unfortunate, though
+	export LASTFM_API_KEY="7bbd03d0dda426841c6d812f16851d45"
+	export LASTFM_API_SECRET="c9e763ffc75b2920aeebe914dfad449c"
+	cargo build --release --locked
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$_pkgname-$pkgver"
 	cargo cntp-bundle --no-open
 	cp -r target/bundle/$(rustc -vV | grep 'host:' | cut -d' ' -f2)/release/appdir/*/ ${pkgdir}
 }
