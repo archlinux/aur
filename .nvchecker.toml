@@ -1,0 +1,3 @@
+[qt5-feedback]
+source = "git"
+git = "https://github.com/qtproject/qtfeedback.git"
