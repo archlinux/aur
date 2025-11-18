@@ -3,7 +3,7 @@
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
 pkgver=4.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
 url="https://git-cola.github.io"
@@ -45,6 +45,7 @@ validpgpkeys=('FA41BF59C1B48E8C5F3DA61C8CE26BF4A9F606B0') # David Aguilar <davvi
 
 prepare() {
   cd "$pkgname"
+  git clean -dfx
   make clean
 
   # Remove vendorized polib.py
@@ -72,11 +73,12 @@ package() {
   cd "$pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  make prefix=/usr DESTDIR="$pkgdir" install-desktop-files
-  make prefix=/usr DESTDIR="$pkgdir" install-icons
-  make prefix=/usr DESTDIR="$pkgdir" install-htmldocs
-  make prefix=/usr DESTDIR="$pkgdir" install-metainfo
-  make prefix=/usr DESTDIR="$pkgdir" install-man
+  make prefix=/usr DESTDIR="$pkgdir" \
+    install-desktop-files \
+    install-icons \
+    install-htmldocs \
+    install-metainfo \
+    install-man
 
   install -Dm644 "contrib/_${pkgname}" -t "$pkgdir/usr/share/zsh/site-functions/"
   install -Dm644 "contrib/$pkgname-completion.bash" \
