@@ -1,0 +1,28 @@
+pkgbase = grok-jpeg2000-git
+	pkgdesc = A high performance open source JPEG 2000 codec
+	pkgver = 20.0.0.r8.g1032548
+	pkgrel = 1
+	url = https://github.com/GrokImageCompression/grok
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = cli11
+	makedepends = doxygen
+	makedepends = python-sphinx
+	makedepends = patchelf
+	depends = glibc
+	depends = gcc-libs
+	depends = libpng
+	depends = libtiff
+	depends = lcms2
+	depends = libjpeg
+	depends = perl-image-exiftool
+	depends = perl>=5.42
+	depends = perl<5.43
+	provides = grok-jpeg2000
+	conflicts = grok-jpeg2000
+	source = grok-jpeg2000::git+https://github.com/GrokImageCompression/grok.git
+	sha256sums = SKIP
+
+pkgname = grok-jpeg2000-git
