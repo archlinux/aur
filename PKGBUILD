@@ -2,7 +2,7 @@
 # Contributor: Protesilaos Stavrou <info at protesilaos dot com>
 pkgname=tempus-themes-pygments-git
 pkgver=r1.dfe76b6
-pkgrel=1
+pkgrel=2
 pkgdesc="Tempus themes for Pygments"
 arch=('any')
 url="https://protesilaos.com/tempus-themes"
@@ -23,6 +23,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+  git -C "${pkgname%-git}" clean -dfx
 }
 
 build() {

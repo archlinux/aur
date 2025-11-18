@@ -1,7 +1,7 @@
 pkgbase = tempus-themes-pygments-git
 	pkgdesc = Tempus themes for Pygments
 	pkgver = r1.dfe76b6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://protesilaos.com/tempus-themes
 	arch = any
 	license = GPL-3.0-or-later
