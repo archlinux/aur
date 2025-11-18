@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=protonup-git
 pkgver=0.1.5.r4.g4ff9d54
-pkgrel=1
+pkgrel=2
 pkgdesc="Install and Update Proton-GE"
 arch=('any')
 url="https://github.com/AUNaseef/protonup"
@@ -26,6 +26,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${pkgname%-git}"
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  git -C "${pkgname%-git}" clean -dfx
 }
 
 build() {

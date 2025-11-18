@@ -1,7 +1,7 @@
 pkgbase = protonup-git
 	pkgdesc = Install and Update Proton-GE
 	pkgver = 0.1.5.r4.g4ff9d54
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AUNaseef/protonup
 	arch = any
 	license = GPL-3.0-or-later
