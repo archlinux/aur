@@ -3,6 +3,7 @@ Name=FTNN
 Exec=/usr/bin/ftnn %U
 Icon=/opt/FTNN/app.png
 Type=Application
+SingleMainWindow=true
 Categories=Finance;
 X-Flatpak=com.futunn.ftnn-desktop;
 Name[zh]=富途牛牛

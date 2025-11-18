@@ -1,6 +1,6 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=ftnn-desktop-portable
-pkgver=15.38.13708
+pkgver=15.39.13818
 pkgrel=1
 pkgdesc="FTNN Desktop Application (sandboxed with portable)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("https://softwaredownload.futunn.com/FTNN_desktop_${pkgver}_amd64.deb"
         "ftnn.portable.conf"
         "com.futunn.ftnn-desktop.desktop"
         "start.sh")
-sha256sums=('275051e224653d0b6a93b4172084362b07733605af327c057ecac02169aeaafe'
+sha256sums=('d7b82daff66dea1c29ac30beaedcbac2eee76d596a0bb02c104dc389b3f728c2'
             'SKIP'
             'SKIP'
             'SKIP')
