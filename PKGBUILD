@@ -2,9 +2,9 @@
 
 pkgname=open-cobol-esql
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Embedded SQL pre-compiler and run-time library designed for COBOL applications which access an open-source database.'
-arch=('any')
+arch=('x86_64' 'aarch64')
 url='https://github.com/opensourcecobol/Open-COBOL-ESQL'
 license=('GPL-3.0-or-later' 'LGPL-3.0-or-later')
 makedepends=('gcc' 'postgresql-libs' 'autoconf' 'automake')

@@ -1,9 +1,10 @@
 pkgbase = open-cobol-esql
 	pkgdesc = Embedded SQL pre-compiler and run-time library designed for COBOL applications which access an open-source database.
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/opensourcecobol/Open-COBOL-ESQL
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-or-later
 	license = LGPL-3.0-or-later
 	makedepends = gcc
