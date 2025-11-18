@@ -1,15 +1,15 @@
 diff --git a/Makefile b/Makefile
-index 13a9007..82d7a34 100644
+index 4a8b49f..39e8444 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -1,5 +1,5 @@
  # -Wno-unused-parameter is needed for raygui.h
--CFLAGS = -std=c99 -Wall -Wextra -Werror -Wno-unused-parameter
-+CFLAGS = -std=c99 -Wall -Wextra -Wno-unused-parameter -Wno-incompatible-pointer-types
+-CFLAGS = -std=c99 -g -Wall -Wextra -Werror -Wno-unused-parameter
++CFLAGS = -std=c99 -g -Wall -Wextra -Wno-unused-parameter -Wno-incompatible-pointer-types
  CPPFLAGS = -I deps/include
  LDLIBS += -lGL -lm -lpthread -ldl -lrt -lX11
  
-@@ -23,4 +23,4 @@ deps/lib/libraylib.a: deps/raylib.tar.gz
+@@ -27,4 +27,4 @@ deps/lib/libraylib.a: deps/raylib.tar.gz
  
  
  clean:
@@ -17,10 +17,10 @@ index 13a9007..82d7a34 100644
 \ No newline at end of file
 +	rm -rf map deps/include deps/lib deps/raylib
 diff --git a/map.c b/map.c
-index edf846a..2a511b4 100644
+index dfcde2c..48adfe0 100644
 --- a/map.c
 +++ b/map.c
-@@ -123,9 +123,9 @@ int main(int argc, char** argv) {
+@@ -126,9 +126,9 @@ int main(int argc, char** argv) {
  	SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_RESIZABLE);
  	InitWindow(screenWidth, screenHeight, TextFormat("Memory map of process %s: %s", argv[1], cmdLine));
  	
@@ -33,7 +33,7 @@ index edf846a..2a511b4 100644
  	
  	GuiSetFont(uiFont);
  	
-@@ -136,9 +136,9 @@ int main(int argc, char** argv) {
+@@ -139,9 +139,9 @@ int main(int argc, char** argv) {
  	Texture2D mapTexture = PlotAddrRanges(ranges, rangeCount, mapLabelSdfFont, &hilbertCurveOrder);
  	PlotRangeElfSymbols(ranges, rangeCount, hilbertCurveOrder, mapLabelSdfFont);
  	
@@ -45,7 +45,7 @@ index edf846a..2a511b4 100644
  	
  	TaskTraces traces = LoadTaskTraces(argv[1]);
  	
-@@ -188,8 +188,8 @@ int main(int argc, char** argv) {
+@@ -191,8 +191,8 @@ int main(int argc, char** argv) {
  		
  		// Handle keyboard input
  		if (IsKeyPressed(KEY_R)) {
@@ -56,7 +56,7 @@ index edf846a..2a511b4 100644
  		}
  		
  		// Picking
-@@ -793,7 +793,7 @@ TaskTraces LoadTaskTraces(char* pid) {
+@@ -809,7 +809,7 @@ TaskTraces LoadTaskTraces(char* pid) {
  	traces.focusedTaskIndex = -1;
  	
  	glEnable(GL_PROGRAM_POINT_SIZE);
@@ -65,7 +65,7 @@ index edf846a..2a511b4 100644
  	int shaderPosLocation = GetShaderLocationAttrib(traces.particleShader, "pos");
  	int shaderTimeLocation = GetShaderLocationAttrib(traces.particleShader, "time");
  	traces.shaderColorLocation = GetShaderLocation(traces.particleShader, "color");
-@@ -915,4 +915,4 @@ void UnloadTaskTraces(TaskTraces* traces) {
+@@ -931,4 +931,4 @@ void UnloadTaskTraces(TaskTraces* traces) {
  	
  	free(traces->tasks);
  	UnloadShader(traces->particleShader);

@@ -1,6 +1,6 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=process-map-git
-pkgver=r3.6587605
+pkgver=r9.bbe1145
 pkgrel=1
 pkgdesc='Visualize the virtual memory of a process'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=('git+https://github.com/arkanis/process-map.git'
 noextract=('raylib.tar.gz')
 sha256sums=('SKIP'
             '761985876092fa98a99cbf1fef7ca80c3ee0365fb6a107ab901a272178ba69f5'
-            '16d15c1fb03c82a93f5ad803a999395ad7f9e2fded206c96b04f8fa1fe3a83f5')
+            'SKIP')
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
