@@ -1,58 +1,64 @@
-# Maintainer: Vic RH <blitzkriegfc@gmail.com>
+# Maintainer: Victor RH <blitzkriegfc@gmail.com>
 
 pkgname=perimeter81-rpm
-pkgver=10.0.1.885
+pkgver=10.0.3.933
 pkgrel=1
-pkgdesc='Perimeter81 agent application (RPM-based build)'
+pkgdesc='Perimeter81 VPN agent application (RPM-based build)'
 arch=('x86_64')
 url='https://support.perimeter81.com/docs/downloading-the-agent'
 license=('custom:LICENSE')
-depends=('systemd' 'netcat' 'wireguard-tools')
-options=(!strip)
-source=("https://static.perimeter81.com/agents/linux/Perimeter81_${pkgver}.rpm"
-  'perimeter81helper.service'
-  'perimeter81.sysusers'
-  'LICENSE')
-
-sha256sums=('678be65814d8c64370af7c6a78482fd71a863699264ad7a27e487257424ab9ec'
-  '82e29269872aa0d1a7397da0d63f9044bba8129076fbdce28f9302ceb021fb22'
-  '50e7f91b65c2dbb4930129523027605c27824db2c8516c187104654a1e8610e2'
-  'c505b227d3f2222305800c16805f29b8da3bf841bf71df36674a695528bd0731')
-
+depends=('systemd' 'netcat' 'wireguard-tools' 'networkmanager')
+optdepends=('openssl: SSL/TLS support')
 conflicts=('perimeter81')
+install="${pkgname}.install"
+options=(!strip)
+
+source=("https://static.perimeter81.com/agents/linux/Perimeter81_${pkgver}.rpm"
+        'perimeter81helper.service'
+        'perimeter81-sudoers'
+        'perimeter81-sleep'
+        'perimeter81-nm-dispatcher'
+        'LICENSE')
+
+sha256sums=('b92b892a25b07b7ef1f91d4b83546bbeca11863abd1b88b6cf0af179fd7cbb3b'
+            '4c3e3e4a1aad73b42ab809aabb716ac6a425cd0b51357b926a139dcde7264453'
+            '0eacb755870ce09037d2dc2d128398a68fc0e33d70428e0a45b11e3d5679d13e'
+            'bcfd35efaf12d069e4595b28c7c3f8ed72569bfb4edc5b36e014bb2badb3ff41'
+            '78e991bf388f96c29c576df747e9f596e05bcbd6059c1effba99eb9543dfb148'
+            'c505b227d3f2222305800c16805f29b8da3bf841bf71df36674a695528bd0731')
 
 package() {
-  # Extract the .rpm directly
-  bsdtar -x -f "${srcdir}/Perimeter81_${pkgver}.rpm" -C "${pkgdir}"
+    # Extract RPM contents
+    cd "${srcdir}"
+    bsdtar -x -f "Perimeter81_${pkgver}.rpm" -C "${pkgdir}"
 
-  install -Dm644 "${srcdir}/perimeter81helper.service" "${pkgdir}/usr/lib/systemd/system/perimeter81helper.service"
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "${srcdir}/perimeter81.sysusers" "${pkgdir}/usr/lib/sysusers.d/perimeter81.sysusers"
-  # after-install.sh is already in the correct place after patching and extraction
+    # Install systemd service
+    install -Dm644 "${srcdir}/perimeter81helper.service" \
+        "${pkgdir}/usr/lib/systemd/system/perimeter81helper.service"
 
-  # Create the log directory, but do *NOT* set ownership here.
-  install -d -m 0755 "${pkgdir}/var/log/perimeter81"
-}
+    # Install sudoers configuration
+    install -Dm440 "${srcdir}/perimeter81-sudoers" \
+        "${pkgdir}/etc/sudoers.d/perimeter81"
 
-pre_remove() {
-  systemctl disable --now perimeter81helper.service &>/dev/null
-  printf "%s\n" "==> Remember this package conflicts with 'perimeter81' (the DEB-based package)."
-}
+    # Install systemd-sleep hook
+    install -Dm755 "${srcdir}/perimeter81-sleep" \
+        "${pkgdir}/usr/lib/systemd/system-sleep/perimeter81"
 
-post_install() {
-  # Run the after-install script
-  /opt/Perimeter81/after-install.sh
+    # Install NetworkManager dispatcher script
+    install -Dm755 "${srcdir}/perimeter81-nm-dispatcher" \
+        "${pkgdir}/etc/NetworkManager/dispatcher.d/50-perimeter81"
 
-  # Enable and start the service
-  systemctl enable --now perimeter81helper.service &>/dev/null
-  systemctl daemon-reload &>/dev/null
+    # Install license
+    install -Dm644 "${srcdir}/LICENSE" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  # Set permissions on /opt/Perimeter81 *and* /var/log/perimeter81
-  chown -R perimeter81:perimeter81 /opt/Perimeter81
-  find /opt/Perimeter81 -type d -exec chmod 755 {} \;
-  find /opt/Perimeter81 -type f -exec chmod 644 {} \;
-  chown -R perimeter81:perimeter81 /var/log/perimeter81
+    # Create log directory
+    install -d -m 0755 "${pkgdir}/var/log/perimeter81"
 
-  printf "%s\n" "==> This package (perimeter81-rpm) conflicts with 'perimeter81' (the DEB-based package)."
-  printf "%s\n" "==> If you installed 'perimeter81' previously, it has likely been removed."
+    # Create symlinks for daemon binaries in /usr/bin
+    install -d "${pkgdir}/usr/bin"
+    ln -s /opt/Perimeter81/artifacts/daemon \
+        "${pkgdir}/usr/bin/p81-helper-daemon"
+    ln -s /opt/Perimeter81/artifacts/daemon-creator \
+        "${pkgdir}/usr/bin/p81-helper-daemon-creator"
 }

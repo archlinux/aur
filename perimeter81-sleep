@@ -1,0 +1,13 @@
+#!/bin/sh
+# Perimeter81 sleep/resume hook
+
+case "$1/$2" in
+    post/*)
+        # System resumed from sleep
+        /usr/bin/p81-helper-daemon-creator system-resume
+        ;;
+    pre/*)
+        # System going to sleep
+        /usr/bin/p81-helper-daemon-creator system-sleep
+        ;;
+esac

@@ -1,0 +1,82 @@
+post_install() {
+    # Set SUID bit on chrome-sandbox
+    chmod 4755 /opt/Perimeter81/chrome-sandbox 2>/dev/null || true
+
+    # Create log directory with correct permissions
+    mkdir -p /var/log/perimeter81
+    chmod 755 /var/log/perimeter81
+
+    # Install and enable the helper daemon service
+    if [ -x /usr/bin/p81-helper-daemon-creator ]; then
+        /usr/bin/p81-helper-daemon-creator install /usr/bin/p81-helper-daemon 2>/dev/null || true
+    fi
+
+    # Enable and start systemd service
+    systemctl daemon-reload
+    systemctl enable perimeter81helper.service
+
+    cat << EOF
+==> Perimeter81 has been installed.
+==> The perimeter81helper service has been enabled.
+==> Start it with: systemctl start perimeter81helper.service
+==>
+==> Note: This package conflicts with 'perimeter81' (DEB-based).
+==> If you previously had that installed, it has been removed.
+EOF
+}
+
+post_upgrade() {
+    # Stop service before upgrade
+    if systemctl is-active --quiet perimeter81helper.service; then
+        systemctl stop perimeter81helper.service
+    fi
+
+    # Uninstall old daemon
+    if [ -x /usr/bin/p81-helper-daemon-creator ]; then
+        /usr/bin/p81-helper-daemon-creator uninstall /usr/bin/p81-helper-daemon 2>/dev/null || true
+    fi
+
+    # Set SUID bit on chrome-sandbox
+    chmod 4755 /opt/Perimeter81/chrome-sandbox 2>/dev/null || true
+
+    # Reinstall daemon service
+    if [ -x /usr/bin/p81-helper-daemon-creator ]; then
+        /usr/bin/p81-helper-daemon-creator install /usr/bin/p81-helper-daemon 2>/dev/null || true
+    fi
+
+    # Reload and restart
+    systemctl daemon-reload
+    systemctl start perimeter81helper.service
+
+    echo "==> Perimeter81 has been upgraded."
+}
+
+pre_remove() {
+    # Stop and disable service
+    systemctl disable --now perimeter81helper.service 2>/dev/null || true
+
+    # Uninstall daemon service
+    if [ -x /usr/bin/p81-helper-daemon-creator ]; then
+        /usr/bin/p81-helper-daemon-creator pre-uninstall-actions 2>/dev/null || true
+        /usr/bin/p81-helper-daemon-creator stop /usr/bin/p81-helper-daemon 2>/dev/null || true
+        /usr/bin/p81-helper-daemon-creator uninstall /usr/bin/p81-helper-daemon 2>/dev/null || true
+    fi
+
+    # Clean up wireguard interface
+    wg-quick down p81 2>/dev/null || true
+
+    echo "==> Perimeter81 has been removed."
+    echo "==> Log files remain in /var/log/perimeter81"
+    echo "==> Configuration remains in ~/.config/Perimeter81"
+}
+
+post_remove() {
+    # Clean up runtime files
+    rm -rf /run/perimeter81 2>/dev/null || true
+
+    cat << EOF
+==> To completely remove Perimeter81:
+==>   sudo rm -rf /var/log/perimeter81
+==>   rm -rf ~/.config/Perimeter81
+EOF
+}

@@ -1,19 +1,26 @@
 [Unit]
-Description=Perimeter81 helper service
+Description=Perimeter81 Helper Daemon
+Documentation=https://support.perimeter81.com
 After=network-online.target
 Wants=network-online.target
 
 [Service]
 Type=simple
 WorkingDirectory=/opt/Perimeter81
-ExecStart=/opt/Perimeter81/artifacts/daemon -f "artifacts/daemon" -l "/var/log/perimeter81/perimeter81helper.log" -e "/var/log/perimeter81/perimeter81helper-error.log" --env PERIMETER81_SOCKET_DIR="$XDG_RUNTIME_DIR"
+ExecStart=/opt/Perimeter81/artifacts/daemon -f "artifacts/daemon" -l "/var/log/perimeter81/perimeter81helper.log" -e "/var/log/perimeter81/perimeter81helper-error.log"
 Restart=always
 RestartSec=10
-User=perimeter81
-Group=perimeter81
-RuntimeDirectory=perimeter81
 StandardOutput=append:/var/log/perimeter81/perimeter81helper.log
 StandardError=append:/var/log/perimeter81/perimeter81helper-error.log
+
+# Security hardening
+NoNewPrivileges=false
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=no
+ReadWritePaths=/var/log/perimeter81 /etc/perimeter81 /run/perimeter81
+RuntimeDirectory=perimeter81
+LogsDirectory=perimeter81
 
 [Install]
 WantedBy=multi-user.target

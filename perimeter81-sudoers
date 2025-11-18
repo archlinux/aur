@@ -1,0 +1,4 @@
+# Perimeter81 daemon permissions
+# Allow all users to run perimeter81 daemons without password
+ALL ALL=NOPASSWD: /usr/bin/p81-helper-daemon
+ALL ALL=NOPASSWD: /usr/bin/p81-helper-daemon-creator

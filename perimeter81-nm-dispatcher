@@ -1,0 +1,18 @@
+#!/bin/bash
+# Perimeter81 NetworkManager dispatcher script
+
+# Ignore VPN interfaces
+if [[ "$1" == "tun0" ]] || [[ "$1" == "ipsec0" ]] || [[ "$1" == "p81" ]]; then
+    exit 0
+fi
+
+logger -s "Perimeter81: Interface $1 $2"
+
+case "$2" in
+    up)
+        /usr/bin/p81-helper-daemon-creator network-interface-up
+        ;;
+    down)
+        /usr/bin/p81-helper-daemon-creator network-interface-down
+        ;;
+esac
