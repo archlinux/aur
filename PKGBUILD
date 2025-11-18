@@ -3,7 +3,7 @@
 # Contributor: Thomas Quillan <tjquillan@gmail.com>
 
 pkgname=harmonoid-bin
-pkgver=0.3.10
+pkgver=0.3.14
 pkgrel=1
 pkgdesc="Plays & manages your music library. Looks beautiful & juicy. Playlists, visuals, synced lyrics, pitch shift, volume boost & more."
 arch=("x86_64")
@@ -15,10 +15,8 @@ makedepends=('patchelf')
 conflicts=(harmonoid)
 optdepends=('playerctl: mpris support')
 options=(!strip)
-source=("harmonoid-linux-${pkgver//_/-}-x86_64.tar.gz::https://github.com/alexmercerind2/harmonoid-releases/releases/download/v${pkgver//_/-}/harmonoid-linux-x86_64.tar.gz"
-   "$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('19317d2ab713a2509cd70fd64f47e5c25042062b6c9053da26e354771096f60b'
-            'e22655f68899b09ed3b40e5e310e2087864dacd607ce269c2240bc9eba1d980d')
+source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('7f047ce54a09f21b858f549ca94cddf8eb41132fd82a4c69ead90bc54a389a6d')
 
 package() {
    cp -dr "$srcdir"/usr "$pkgdir"/usr
