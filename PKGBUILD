@@ -1,19 +1,19 @@
 # Maintainer: Laurent Carlier <lordheavym@archlinux.org>
 
 pkgname=gambas-git
-pkgver=3.18.0.r536.gfd8781c
+pkgver=3.18.0.r2690.g712d5a3
 pkgrel=1
 pkgdesc="A free development environment based on a Basic interpreter. (git version)"
 arch=('x86_64')
 url="http://gambas.sourceforge.net/"
 license=('GPL2')
 depends=('intltool' 'postgresql' 'libffi' 'bzip2' 'glib2' 'v4l-utils'
-         'zlib' 'mesa' 'glew' 'xdg-utils' 'imlib2' 'gdk-pixbuf2' 'gtk3' 'webkit2gtk'
-         'postgresql-libs' 'mariadb-libs' 'unixodbc' 'sqlite' 'librsvg'
+         'zlib' 'mesa' 'glew' 'xdg-utils' 'imlib2' 'gdk-pixbuf2' 'gtk3' 'webkit2gtk-4.1'
+         'postgresql-libs' 'mariadb-libs' 'unixodbc' 'sqlite' 'mongo-c-driver' 'librsvg'
          'curl' 'poppler-glib' 'sdl_mixer' 'sdl_ttf' 'sdl2' 'sdl2_mixer' 'sdl2_image' 'sdl2_ttf' 'libxtst'
-         'pcre2' 'qt5-webengine' 'qt5-x11extras' 'qt5-svg' 'libxcursor' 'libsm' 'dbus' 'libxml2'
-         'libxslt' 'libgnome-keyring' 'gsl' 'gst-plugins-base-libs' 'alure' 'ncurses'
-         'gmime3' 'libxcrypt')
+         'pcre2' 'qt5-x11extras' 'qt5-svg' 'qt6-webengine' 'qt6-svg' 'qt6-wayland' 'libxcursor'
+         'libsm' 'dbus' 'libxml2' 'libxslt' 'libgnome-keyring' 'gsl' 'gst-plugins-base-libs' 'alure' 'ncurses'
+         'gmime3' 'libxcrypt' 'mongo-c-driver')
 makedepends+=('git')
 options=('!emptydirs' 'libtool')
 source=("gambas-git::git+https://gitlab.com/gambas/gambas.git"
@@ -49,6 +49,7 @@ build() {
     --disable-gtk \
     --disable-pdf \
     --disable-qt5webkit \
+    --disable-qt5webview \
     --enable-debug --enable-optimization=no
 
   make bindir=${pkgdir}/usr/share/gambas-git/bin
