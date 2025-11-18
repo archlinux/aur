@@ -7,12 +7,11 @@ pkgbase = ffvship-cuda-git
 	license = MIT
 	makedepends = git
 	makedepends = make
-	makedepends = clang
 	depends = cuda
 	depends = ffms2
-	provides = ffvship-cuda
-	conflicts = ffvship-cuda
-	source = ffvship-cuda::git+https://github.com/Line-fr/Vship.git
+	provides = ffvship
+	conflicts = ffvship
+	source = ffvship::git+https://github.com/Line-fr/Vship.git
 	sha256sums = SKIP
 
 pkgname = ffvship-cuda-git
