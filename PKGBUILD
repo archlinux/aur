@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=xresconv-gui-bin
-pkgver=2.5.3
-_electronversion=37
+pkgver=2.5.4
+_electronversion=39
 pkgrel=1
 pkgdesc="批量转表工具的GUI版本,依赖electron.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -29,13 +29,13 @@ source=(
 )
 sha256sums=('3383900bc8b96fe4f9fcd7c851f925bc995aa3db9c054e5838c1e2703bf57898'
             'b6176ea061df625018a1f30e63f6e0f3a03c7f6ec23d26e0f6d920a819636729'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
-sha256sums_aarch64=('799dd1d7d34ea0563ae34320912f54622f8757f0fce3a659d649ca308286c0f2')
-sha256sums_armv7h=('fbc9ca09055bacef4848224c115738de3919b26dd1818a9a8805e08dafac62b3')
-sha256sums_x86_64=('023363d5d5b5a7e17027b7c8de69c7d973d697670ac7edb728ec594f9a5b316d')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums_aarch64=('e59a5d4544451567bd086470a137c5751624675488a4311f573798d1fa0ea63a')
+sha256sums_armv7h=('a40a48a8a2ec2d3db67a6b7d7c2eabecf8199f115cfcefbc8a5671578d243231')
+sha256sums_x86_64=('ce821542e9581d79069e3fef58bcc20fac55e7da3edc89dc45efe7971aae840a')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/${pkgname%-bin}-linux-"*/"${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/${pkgname%-bin}-linux-"*/"${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
