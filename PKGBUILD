@@ -2,7 +2,7 @@
 
 _pkgname=pygram11
 pkgname=python-pygram11
-pkgver=0.13.3
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="histogramming in python accelerated with OpenMP"
 arch=("x86_64")
@@ -18,7 +18,7 @@ makedepends=(
     "cmake"
 )
 source=("https://files.pythonhosted.org/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=("09d24ad001e03774f60d0084649a8306b112fb1891cc2d828570fa00777273d8")
+sha256sums=("3d77b6288f0b9672e9de842b1ed68a7aabe0f72ebbbc9977ad1b5dbfb6da3b88")
 
 build() {
   cd "${_pkgname}-${pkgver}"
