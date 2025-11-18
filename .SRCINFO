@@ -1,0 +1,23 @@
+pkgbase = python-pycayennelpp-git
+	pkgdesc = A Cayenne Low Power Payload (CayenneLPP) decoder and encoder written in Python.
+	pkgver = 2.4.0.r156.20211012.28f2ba4
+	pkgrel = 1
+	url = https://github.com/smlng/pycayennelpp
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-runner
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools>=61.0.0
+	makedepends = python-wheel
+	makedepends = python-pytest
+	makedepends = python-pytest-runner
+	depends = python>=3.6
+	provides = python-pycayennelpp=2.4.0.r156.20211012.28f2ba4
+	conflicts = python-pycayennelpp
+	source = python-pycayennelpp::git+https://github.com/smlng/pycayennelpp.git
+	sha256sums = SKIP
+
+pkgname = python-pycayennelpp-git
