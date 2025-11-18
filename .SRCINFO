@@ -1,6 +1,6 @@
 pkgbase = libdxvk-gplasync
 	pkgdesc = Vulkan-based implementation of D3D8, 9, 10 and 11 for Linux, gplasync patch
-	pkgver = 2.7
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://github.com/doitsujin/dxvk
 	arch = x86_64
@@ -22,14 +22,14 @@ pkgbase = libdxvk-gplasync
 	provides = libdxvk_d3d9.so
 	provides = libdxvk_d3d10core.so
 	provides = libdxvk_d3d11.so
-	source = git+https://github.com/doitsujin/dxvk.git#commit=daed0c1ce8d39e6dcc1580b753554deb7fcbd2ae
+	source = git+https://github.com/doitsujin/dxvk.git#tag=v2.7.1
 	source = git+https://github.com/misyltoad/mingw-directx-headers.git
 	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git
 	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git
 	source = git+https://gitlab.freedesktop.org/frog/libdisplay-info.git
-	source = dxvk-gplasync-2.7-1.patch::https://gitlab.com/Ph42oN/dxvk-gplasync/-/raw/main/patches/dxvk-gplasync-2.7-1.patch?ref_type=heads&inline=false
+	source = dxvk-gplasync-2.7.1-1.patch::https://gitlab.com/Ph42oN/dxvk-gplasync/-/raw/main/patches/dxvk-gplasync-2.7.1-1.patch?ref_type=heads&inline=false
 	source = global-dxvk.conf.patch::https://gitlab.com/Ph42oN/dxvk-gplasync/-/raw/main/patches/global-dxvk.conf.patch?ref_type=heads&inline=false
-	sha256sums = SKIP
+	sha256sums = 1a2ec0f93f4ef744b55e3ad084431f3ea6cf44eec9cd6853a4581a1401b41a00
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -48,7 +48,7 @@ pkgname = libdxvk-gplasync
 	provides = libdxvk_d3d9.so
 	provides = libdxvk_d3d10core.so
 	provides = libdxvk_d3d11.so
-	provides = libdxvk=2.7
+	provides = libdxvk=2.7.1
 	conflicts = libdxvk
 
 pkgname = lib32-libdxvk-gplasync
@@ -63,5 +63,5 @@ pkgname = lib32-libdxvk-gplasync
 	provides = libdxvk_d3d9.so
 	provides = libdxvk_d3d10core.so
 	provides = libdxvk_d3d11.so
-	provides = lib32-libdxvk=2.7
+	provides = lib32-libdxvk=2.7.1
 	conflicts = lib32-libdxvk

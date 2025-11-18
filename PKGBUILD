@@ -5,7 +5,7 @@
 
 pkgbase=libdxvk-gplasync
 pkgname=('libdxvk-gplasync' 'lib32-libdxvk-gplasync')
-pkgver=2.7
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="Vulkan-based implementation of D3D8, 9, 10 and 11 for Linux, gplasync patch"
 arch=(x86_64)
@@ -16,14 +16,14 @@ _32depends=(lib32-glibc lib32-sdl2 lib32-sdl3 lib32-vulkan-icd-loader)
 makedepends=(git glslang meson ${_depends[@]} ${_32depends[@]})
 provides=(libdxvk_dxgi.so libdxvk_d3d8.so libdxvk_d3d9.so libdxvk_d3d10core.so
 	  libdxvk_d3d11.so)
-source=("git+$url.git#commit=daed0c1ce8d39e6dcc1580b753554deb7fcbd2ae"
+source=("git+$url.git#tag=v${pkgver}"
 	"git+https://github.com/misyltoad/mingw-directx-headers.git"
 	"git+https://github.com/KhronosGroup/Vulkan-Headers.git"
 	"git+https://github.com/KhronosGroup/SPIRV-Headers.git"
 	"git+https://gitlab.freedesktop.org/frog/libdisplay-info.git"
 	"dxvk-gplasync-${pkgver}-1.patch::https://gitlab.com/Ph42oN/dxvk-gplasync/-/raw/main/patches/dxvk-gplasync-${pkgver}-1.patch?ref_type=heads&inline=false"
 	"global-dxvk.conf.patch::https://gitlab.com/Ph42oN/dxvk-gplasync/-/raw/main/patches/global-dxvk.conf.patch?ref_type=heads&inline=false")
-sha256sums=('SKIP'
+sha256sums=('1a2ec0f93f4ef744b55e3ad084431f3ea6cf44eec9cd6853a4581a1401b41a00'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -54,11 +54,11 @@ build() {
 
 	meson compile -C build
 
-	CC="gcc -m32" CXX="g++ -m32" \
-	LDFLAGS="$LDFLAGS -m32" \
-	arch-meson -Dbuild_id=true \
+	CFLAGS+=" -m32" CXXFLAGS+=" -m32" \
+	LDFLAGS+=" -m32" arch-meson -Dbuild_id=true \
 	--force-fallback-for=libdisplay-info \
-	--pkg-config="/usr/lib32/pkgconfig" \
+	--pkg-config-path='/usr/lib32/pkgconfig' \
+	-Dnative_glfw=disabled \
 	--libdir=lib32 \
 	dxvk build32
 
@@ -67,7 +67,7 @@ build() {
 
 package_libdxvk-gplasync() {
 	depends=(${_depends[@]})
-    conflicts=('libdxvk')
+	conflicts=('libdxvk')
 	provides+=(libdxvk=${pkgver})
 	meson install -C build --destdir "$pkgdir"
 	install -Dm644 dxvk/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
