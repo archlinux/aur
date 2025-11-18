@@ -2,7 +2,7 @@
 
 _pkgname=openmp
 pkgname=mingw-w64-${_pkgname}
-pkgver=21.1.5
+pkgver=21.1.6
 pkgrel=1
 pkgdesc='LLVM OpenMP Runtime Library (mingw-w64)'
 url='https://openmp.llvm.org/'
@@ -17,13 +17,14 @@ source=(
 	"$_source_base/$_pkgname-$pkgver.src.tar.xz"{,.sig}
 	"$_source_base/cmake-$pkgver.src.tar.xz"{,.sig}
 )
-sha256sums=('4bbfe240f23f873fe5fdd4d65e07b6ec0c0a4721cd0d339018b1f520cee48a08'
+sha256sums=('47ce66334725d3919cbdc9a506245ba12c77e1c15d1347c1f7917289624eb7db'
             'SKIP'
-            '48013d5714a96419bf993a2e5e4c5827377e8cf9c565070731fb2305d50d9511'
+            'e364f135fa14c343d70cac96f577f44e8e20bf026682f647f8c3c5687a0bebd1'
             'SKIP')
 validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstellar@redhat.com>
               'D574BD5D1D0E98895E3BF90044F2485E45D59042'  # Tobias Hieta <tobias@hieta.se>
-              '71046D1E9C6656BDD61171873E83BABF4A4F9E85') # Cullen Rhodes <cullen.rhodes@arm.com>
+              '71046D1E9C6656BDD61171873E83BABF4A4F9E85'  # Cullen Rhodes <cullen.rhodes@arm.com>
+              'FFB3368980F3E6BB5737145A316C56D064CACBA5') # Douglas Yung <douglas.yung@sony.com>
 
 _srcdir="${_pkgname}-${pkgver}.src"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
