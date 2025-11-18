@@ -2,13 +2,13 @@
 pkgname=python-ultranest
 _name=${pkgname#python-}
 pkgver=4.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fit and compare complex models reliably and rapidly with advanced sampling techniques."
 arch=(any)
 url="https://github.com/JohannesBuchner/ultranest"
 license=(GPL3)
 groups=()
-depends=(python-numpy python-matplotlib python-corner)
+depends=(python-numpy python-matplotlib python-corner python-pytest cython)
 makedepends=(python-build python-installer)
 provides=(lsbi)
 conflicts=()

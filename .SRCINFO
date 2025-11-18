@@ -1,7 +1,7 @@
 pkgbase = python-ultranest
 	pkgdesc = Fit and compare complex models reliably and rapidly with advanced sampling techniques.
 	pkgver = 4.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JohannesBuchner/ultranest
 	arch = any
 	license = GPL3
@@ -10,6 +10,8 @@ pkgbase = python-ultranest
 	depends = python-numpy
 	depends = python-matplotlib
 	depends = python-corner
+	depends = python-pytest
+	depends = cython
 	provides = lsbi
 	options = !emptydirs
 	source = https://files.pythonhosted.org/packages/source/u/ultranest/ultranest-4.4.0.tar.gz
