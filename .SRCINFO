@@ -1,0 +1,21 @@
+pkgbase = cocode
+	pkgdesc = A powerful command-line tool for analyzing and processing code repositories
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/Pipelex/cocode
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-click
+	makedepends = python-rich
+	makedepends = python-typer
+	makedepends = python-typing_extensions
+	makedepends = python-pygithub
+	makedepends = python-pydantic
+	makedepends = python-pathspec
+	makedepends = pipelex
+	provides = cocode
+	source = cocode-0.6.3.tar.gz::https://github.com/Pipelex/cocode/archive/refs/tags/v0.6.3.tar.gz
+	sha256sums = a783be4e47074cb3549dd5a33a51f84b0bfd04da1e279cbb980eab1c5ab8632b
+
+pkgname = cocode
