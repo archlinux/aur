@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-dgutils-git
 _name=dgutils
-pkgver=r2.dbdb61a
+pkgver=r3.6abcb84
 pkgrel=1
 pkgdesc="GTK apps development easement"
 arch=('any')
@@ -27,6 +27,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$_name"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+  git -C "$_name" clean -dfx
 }
 
 build() {
