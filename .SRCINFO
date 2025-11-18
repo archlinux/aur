@@ -1,6 +1,6 @@
 pkgbase = plasma6-applets-fokus
 	pkgdesc = A simple pomodoro KDE plasmoid
-	pkgver = 1.5.5.r13.g09d8e4b
+	pkgver = 1.5.5.r37.g488cb0f
 	pkgrel = 1
 	url = https://gitlab.com/divinae/focus-plasmoid
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = plasma6-applets-fokus
 	conflicts = kdeplasma-applets-fokus
 	conflicts = plasma5-applets-fokus
 	replaces = kdeplasma-applets-fokus
-	source = focus-plasmoid::git+https://gitlab.com/divinae/focus-plasmoid#commit=09d8e4b73eff15ab42c79149cead255c191c72a5
-	b2sums = a6eb87eeb38a73791d510e07ca00052043782c71e2e19b6f98e179a9993927342ad3e1528a29a9944b60b8c63a07c22cd3b458a539d8cc855d1bdf65d5c16268
+	source = focus-plasmoid::git+https://gitlab.com/divinae/focus-plasmoid#commit=488cb0f024acd1fb592b200c61ffc2c25f888360
+	b2sums = 0c82de3ff9bdcf247d4b97be7231b3f48a042618ef55ee5d3c47aaf1edf0438abeda3a278389a2c4af6eaa48b0cccf34c90888e6a379ce66ed3aa0e40c9eaf5e
 
 pkgname = plasma6-applets-fokus
