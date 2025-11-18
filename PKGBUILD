@@ -3,21 +3,6 @@
 # vim: ts=4:sw=4
 
 
-# Decide for what type of installation to build.
-#
-# If you have a modern (i.e. reflecting the 5.10.0 name change to
-# Luanti) installation using the new name directories, then you need
-# to set `luanti` here.
-#
-# If you use a legacy/old installation use `mintest`.
-#
-# If you use the luanti-modern-common package from the AUR, use `luanti-modern`
-#
-# This defines the dependency package name as well as the target directory
-# for the game files.
-_type='luanti'
-
-
 pkgname=minetest-game-cdb
 pkgver=20251029
 pkgrel=1
@@ -60,7 +45,7 @@ build() {
 
 
 package() {
-    location="usr/share/${_type%-modern}/games"
+    location="usr/share/luanti/games"
     install -d "${pkgdir}/${location}"
     cp -r "${srcdir}/minetest_game" "${pkgdir}/${location}/minetest_game"
 }
