@@ -1,13 +1,14 @@
 # Maintainer: Mufaro <contact@mufaro.dev>
-pkgname=antigravity-bin
+pkgname=antigravity-bin-hardened
 pkgver=1.11.2
 _buildid=6251250307170304
-pkgrel=4
+pkgrel=6
 pkgdesc="Google Antigravity - Agentic Development Platform (Pre-built Binary)"
 arch=('x86_64')
 url="https://antigravity.google/"
 license=('Proprietary')
-depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst' 'xdg-utils' 'glibc' 'nspr' 'at-spi2-core' 'libdrm' 'mesa')
+# New (Superior) Dependency Line:
+depends=('alsa-lib' 'at-spi2-atk' 'atk' 'cairo' 'cups' 'curl' 'dbus' 'expat' 'glib2' 'gtk3' 'nss' 'pango' 'xdg-utils' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'ca-certificates')
 options=('!strip')
 source=("https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/${pkgver}-${_buildid}/linux-x64/Antigravity.tar.gz")
 sha256sums=('d1b1115ae76c275c376ea660e1e4d2dc20eb3e72d6a206b096505b944a5f64b7')
