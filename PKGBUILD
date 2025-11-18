@@ -9,7 +9,7 @@ license=('MIT')
 depends=('pacman' 'git')
 makedepends=('cargo' 'rust')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ognrdrch/rauri/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7b4dfe92166cfa5e02d63f2009842ba731163af9173c562de159903d806a162c')
+sha256sums=('f4bff38e7fb309b2c34b788521c08afe325f84b7e52e457480bd1412084041a2')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
