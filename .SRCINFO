@@ -11,7 +11,7 @@ pkgbase = collapseloader-bin
 	provides = collapseloader
 	conflicts = collapseloader-git
 	noextract = collapseloader-0.2.3.AppImage
-	source = collapseloader-0.2.3.AppImage::https://github.com/dest4590/CollapseLoader/releases/download/prerelease-v0.2.3-2813cef/collapseloader_0.2.3_amd64.AppImage
+	source = collapseloader-0.2.3.AppImage::https://github.com/dest4590/CollapseLoader/releases/download/0.2.3/collapseloader_0.2.3_amd64.AppImage
 	sha256sums = SKIP
 
 pkgname = collapseloader-bin

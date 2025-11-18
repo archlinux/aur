@@ -1,7 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=collapseloader-bin
 pkgver=0.2.3
-_commit=2813cef
 pkgrel=2
 pkgdesc="GUI utility for launching Minecraft clients (binary)"
 arch=('x86_64')
@@ -10,27 +9,19 @@ license=('GPL-3.0')
 depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator')
 provides=('collapseloader')
 conflicts=('collapseloader-git')
-source=("collapseloader-${pkgver}.AppImage::https://github.com/dest4590/CollapseLoader/releases/download/prerelease-v${pkgver}-${_commit}/collapseloader_${pkgver}_amd64.AppImage")
+source=("collapseloader-0.2.3.AppImage::https://github.com/dest4590/CollapseLoader/releases/download/0.2.3/collapseloader_0.2.3_amd64.AppImage")
 sha256sums=('SKIP')
 noextract=("collapseloader-${pkgver}.AppImage")
 
 prepare() {
-  # Make AppImage executable
   chmod +x "${srcdir}/collapseloader-${pkgver}.AppImage"
 
-  # Extract AppImage contents
   cd "${srcdir}"
   "${srcdir}/collapseloader-${pkgver}.AppImage" --appimage-extract
 }
 
 package() {
-  # Install the actual binary from extracted AppImage
   install -Dm755 "${srcdir}/squashfs-root/usr/bin/collapseloader" "${pkgdir}/usr/bin/collapseloader"
-
-  # DO NOT copy system libraries - they already exist in the system
-  # Only copy application-specific resources if needed
-
-  # Install desktop file
   install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/collapseloader.desktop" <<EOF
 [Desktop Entry]
 Version=latest
@@ -44,7 +35,6 @@ Categories=Game;
 Keywords=minecraft;launcher;
 EOF
 
-  # Install icon from extracted AppImage
   if [ -f "${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256/apps/collapseloader.png" ]; then
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256/apps/collapseloader.png" \
       "${pkgdir}/usr/share/pixmaps/collapseloader.png"
