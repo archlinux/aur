@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=ndpi
-pkgver=4.14 # renovate: datasource=github-tags depName=ntop/nDPI
+pkgver=5.0 # renovate: datasource=github-tags depName=ntop/nDPI
 pkgrel=2
 pkgdesc="Open and Extensible GPLv3 Deep Packet Inspection Library"
 arch=('i686' 'x86_64')
@@ -24,8 +24,8 @@ build() {
 package() {
   cd "${srcdir}/nDPI-${pkgver}"
   make DESTDIR="${pkgdir}" install
-#  ln -sf /usr/include/ndpi \
-#    "${pkgdir}/usr/include/libndpi"
+  #  ln -sf /usr/include/ndpi \
+  #    "${pkgdir}/usr/include/libndpi"
 }
 
-sha256sums=('954135ee14ad6bd74a78a10db560b534b8f2083ad0615f5c1a2c376fff0301e0')
+sha256sums=('8b0d3dc0c8a6a68578e09a18c922021ef6458d4aca1c7a20ce04efc267aa9ea5')
