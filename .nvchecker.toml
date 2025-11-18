@@ -1,0 +1,3 @@
+[libgnome-keyring]
+source = "git"
+git = "https://gitlab.gnome.org/Archive/libgnome-keyring.git"
