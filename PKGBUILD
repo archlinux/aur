@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('go' 'git')
 depends=('glibc')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/square/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('4ac183d25d89246519cce0c7d3ed3e3be261ac72f4ed3b15b9e0690c91778ed4')
+b2sums=('34bcf42819ef12f16e257a9fae303ddd7523fa522d22ddf20b81a19898e4d06861c6831c31872ee35685c6ef785883b9686404baf3dedee8382be305d38d9765')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
