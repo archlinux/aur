@@ -1,6 +1,6 @@
 pkgbase = pandora-box
 	pkgdesc = A Simple Mihomo GUI.(Use system-wide electron)
-	pkgver = 1.0.18
+	pkgver = 1.0.19
 	pkgrel = 1
 	url = https://github.com/snakem982/Pandora-Box
 	arch = aarch64
@@ -13,10 +13,10 @@ pkgbase = pandora-box
 	makedepends = git
 	makedepends = wget
 	makedepends = curl
-	depends = electron36
-	source = pandora-box-1.0.18::git+https://github.com/snakem982/Pandora-Box#tag=v1.0.18
+	depends = electron39
+	source = pandora-box-1.0.19::git+https://github.com/snakem982/Pandora-Box#tag=v1.0.19
 	source = pandora-box.sh
-	sha256sums = fc6a0f3d5b97d9881c7ad97f8910753d2d26f9c33eea66882b13ddd7978aa397
+	sha256sums = 8144c175e770014c485a3a197f2ec475012c7c9ac553a3d279fa6bfb583aee24
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = pandora-box
