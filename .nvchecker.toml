@@ -1,0 +1,3 @@
+[qt5-systems]
+source = "git"
+git = "https://github.com/qtproject/qtsystems.git"
