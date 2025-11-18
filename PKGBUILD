@@ -2,7 +2,7 @@
 # Maintainer: adam
 
 pkgname='terramind'
-pkgver=0.0.9
+pkgver=0.0.10
 _subver=
 options=('!debug' '!strip')
 pkgrel=1
@@ -15,10 +15,10 @@ provides=('terramind')
 depends=('fzf' 'ripgrep')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.zip::https://github.com/terramind-com/terramind-cli-releases/releases/download/v${pkgver}${_subver}/terramind-linux-arm64.zip")
-sha256sums_aarch64=('dbcbe258bab569c5b3b7002d9e0cbf21d756b890658eb0b481239c31d0e6d22a')
+sha256sums_aarch64=('2c4db2b98beca54b57dc2661613b5e8e99f7947dde3b55aa952136c7477d49d5')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.zip::https://github.com/terramind-com/terramind-cli-releases/releases/download/v${pkgver}${_subver}/terramind-linux-x64.zip")
-sha256sums_x86_64=('6e7308fc71fbfa12b8c7f1a5a0a8cc09eb52869580ac1560fd946c1295d4739f')
+sha256sums_x86_64=('0d6d472d7b2e11b81d2c7f8f57c3674108cc494be0f45dc185e9b838f1b83fe9')
 
 package() {
   install -Dm755 ./terramind "${pkgdir}/usr/bin/terramind"
