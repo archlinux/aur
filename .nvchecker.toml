@@ -1,0 +1,3 @@
+[coolreader]
+source = "git"
+git = "https://github.com/buggins/coolreader.git"
