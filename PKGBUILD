@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cultivation
 _pkgname=Cultivation
-pkgver=1.7.0
+pkgver=1.7.2
 _nodeversion=20
 pkgrel=1
 pkgdesc="A custom launcher designed to make it as easy as possible to proxy anime game traffic to private servers."
@@ -24,7 +24,7 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}::git+${url}.git#tag=${pkgver}"
 )
-sha256sums=('9289b894094cb199c725c2a16a6afe01c65523cd384a93654bb8f5a8760e5b3a')
+sha256sums=('4f8c468706b8683eeef3265506c211659865a7cea486a6a70b7d6b550c3bb582')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]

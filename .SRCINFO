@@ -1,6 +1,6 @@
 pkgbase = cultivation
 	pkgdesc = A custom launcher designed to make it as easy as possible to proxy anime game traffic to private servers.
-	pkgver = 1.7.0
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/NotThorny/Cultivation
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = cultivation
 	depends = gtk3
 	depends = webkit2gtk
 	depends = grasscutter
-	source = cultivation-1.7.0::git+https://github.com/NotThorny/Cultivation.git#tag=1.7.0
-	sha256sums = 9289b894094cb199c725c2a16a6afe01c65523cd384a93654bb8f5a8760e5b3a
+	source = cultivation-1.7.2::git+https://github.com/NotThorny/Cultivation.git#tag=1.7.2
+	sha256sums = 4f8c468706b8683eeef3265506c211659865a7cea486a6a70b7d6b550c3bb582
 
 pkgname = cultivation
