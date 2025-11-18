@@ -1,0 +1,4 @@
+["ls++"]
+source = "git"
+git = "https://github.com/trapd00r/ls--.git"
+prefix = "v"
