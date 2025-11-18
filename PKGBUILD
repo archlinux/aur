@@ -1,8 +1,10 @@
-_plug=vship-cuda
-pkgname=vapoursynth-plugin-${_plug}-git
+# Maintainer: CreamSodass <greatvaluecreamsoda@gmail.com>
+
+_plug=vship
+pkgname=vapoursynth-plugin-${_plug}-cuda-git
 pkgrel=1
 pkgver=3.0.0.13.g1ed2fb3
-pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
+pkgdesc="Plugin for Vapoursynth: ${_plug} for nvidia gpus (GIT version)"
 arch=('x86_64')
 url='https://github.com/Line-fr/Vship'
 license=('MIT')
