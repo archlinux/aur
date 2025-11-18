@@ -1,23 +1,25 @@
-_name=sph-sc
-pkgname=$_name-git
-pkgver=224
+pkgname=sph-sc-git
+_pkgname=sph-sc
+pkgver=260
 pkgrel=1
 pkgdesc="compiles scheme-like s-expressions to c"
 arch=(any)
-license=(gpl3)
-makedepends=(git)
+url="https://sph.mn/computer/software/sph-sc.html"
+license=(GPL3)
 depends=(guile sph-lib)
-provides=($_name)
-source=("git://sph.mn/$_name")
-url="http://sph.mn"
-md5sums=(SKIP)
+makedepends=(git)
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=("${_pkgname}::git+https://github.com/sph-mn/${_pkgname}.git")
+sha256sums=(SKIP)
 
 pkgver() {
-  cd $_name
+  cd "$srcdir/${_pkgname}"
   git rev-list --count HEAD
 }
 
 package() {
-  cd $_name
-  ./exe/install --target-prefix="${pkgdir}"
+  cd "$srcdir/${_pkgname}"
+  echo "$pkgdir"
+  ./exe/install --target-prefix="$pkgdir"
 }
