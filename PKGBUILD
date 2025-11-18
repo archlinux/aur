@@ -2,7 +2,7 @@
 
 pkgname=kopia-bin
 pkgdesc='A cross-platform backup-tool with encryption, deduplication, compression and cloud support.'
-pkgver=0.21.1
+pkgver=0.22.0
 # Uncomment for releases with hyphens
 # _pkgver=$(echo "$pkgver" | tr '~' -)
 pkgrel=1
@@ -15,9 +15,9 @@ optdepends=('fuse3: Needed to mount Kopia snapshots on local filesystem')
 source_x86_64=("https://github.com/kopia/kopia/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_amd64.deb")
 source_aarch64=("https://github.com/kopia/kopia/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_arm64.deb")
 source_armv7h=("https://github.com/kopia/kopia/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_armhf.deb")
-sha256sums_x86_64=('48a8a8fc0f566071a0b85b19d5db644cd6f47dbbcf876fddb69d702ec5663ddf')
-sha256sums_aarch64=('9ff9c68ae7645f5ceec286d6274b31935b1dbbc3accd6e6740feb88e9980ec8f')
-sha256sums_armv7h=('afb50c61f64f4e0eebb6df1417337b25639a9dcdd87c8c2a8cac8246056e2acc')
+sha256sums_x86_64=('78fafed43213e90cfc3741b746d816cb692b936fe9fe2f08e0b5bd86dc22c4aa')
+sha256sums_aarch64=('60b2817e89e040bf36e14b5a77468ddb498730afaf0db1fc1b2d80d7e3abe91d')
+sha256sums_armv7h=('7622c8d21441a73e0abbed562e4de01463ef773c3daf20a15a2777fa07a853d0')
 
 package() {
     tar -xf data.tar.gz -C "$pkgdir"
