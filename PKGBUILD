@@ -2,7 +2,7 @@
 
 pkgname=wiso-steuer-2026
 pkgver=33.0.2600
-pkgrel=1
+pkgrel=2
 pkgdesc='File your German tax return for the tax year 2025'
 arch=('x86_64')
 url='https://www.buhl.de/produkte/wiso-steuer'
@@ -151,7 +151,7 @@ package() {
   echo >&2 'Packaging app icon'
   mkdir -p "${pkgdir}/usr/share/pixmaps"
   magick 'wisoakt.ico' \
-    -delete 1,2,3,4,5 "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    -delete 1,2,3,4,5,6,7,8 "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
   echo >&2 'Packaging launcher'
   install -D -m 755 -T "../${pkgname}.bash" \

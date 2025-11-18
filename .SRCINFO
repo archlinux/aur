@@ -1,7 +1,7 @@
 pkgbase = wiso-steuer-2026
 	pkgdesc = File your German tax return for the tax year 2025
 	pkgver = 33.0.2600
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.buhl.de/produkte/wiso-steuer
 	install = wiso-steuer-2026.install
 	arch = x86_64
