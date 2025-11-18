@@ -2,7 +2,7 @@
 _basepkgname="chat-gpt-next-web"
 pkgname=${_basepkgname}-bin
 pkgver="2.15.8"
-pkgrel=1
+pkgrel=2
 pkgdesc="✨ Light and Fast AI Assistant. Support: Web | iOS | MacOS | Android | Linux | Windows"
 arch=("x86_64")
 url="https://nextnext.chat/"
@@ -16,7 +16,7 @@ license=("MIT")
 source=("${pkgname}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/next-chat_${pkgver}_amd64.deb"
     'LICENSE::https://raw.githubusercontent.com/ChatGPTNextWeb/NextChat/refs/heads/main/LICENSE')
 sha256sums=('8820d8366f5c7b3d4457c9b2ed9099c4bd72f078e56da1c54489c71568c9e1e8'
-    'edc5ddb0ceb70e4c76021ddb6d17bb8f1bc59b03228bb17a7acfcf8a1b4afd99')
+    'abe83c6910b9437f7342b2184c213678b4adbb191d323e0244336039abbccc01')
 
 prepare() {
     ar p ${pkgname}-${pkgver}.deb data.tar.gz | tar --zstd -x
