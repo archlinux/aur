@@ -162,7 +162,7 @@ def main():
             return
 
         if not args.cmd:
-            print("Usage: sysall <command>")
+            print("Usage: sycall <command>")
             return
 
         exit(run_command(args.cmd))
