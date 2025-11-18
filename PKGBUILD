@@ -77,6 +77,8 @@ prepare() {
   git -c protocol.file.allow=always submodule update
   popd
 
+  git clean python -dfx
+
   # Relax pybind11 version
   sed -i 's/pybind11==2.11.1/pybind11/g' python/pyproject.toml
 }
