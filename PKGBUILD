@@ -56,7 +56,7 @@ package() {
     install -Dm755 target/opt/fht-compositor "$pkgdir/usr/bin/fht-compositor"
     install -Dm644 res/systemd/fht-compositor.service         "$pkgdir/usr/lib/systemd/user/fht-compositor.service"
     install -Dm644 res/systemd/fht-compositor-shutdown.target "$pkgdir/usr/lib/systemd/user/fht-compositor-shutdown.target"
-    install -Dm644 res/systemd/fht-compositor-session "$pkgdir/usr/share/wayland-sessions/fht-compositor-session"
+    install -Dm644 res/systemd/fht-compositor-session "$pkgdir/usr/bin/fht-compositor-session"
     install -Dm644 res/systemd/fht-compositor.desktop "$pkgdir/usr/share/wayland-sessions/fht-compositor.desktop"
     install -Dm644 res/fht-compositor.portal "$pkgdir/usr/share/xdg-desktop-portal/portals/fht-compositor.portal"
     install -Dm644 res/fht-compositor-portals.conf "$pkgdir/usr/share/xdg-desktop-portal/fht-compositor-portals.conf"
