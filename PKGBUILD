@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://www.cursor.com"
 license=('LicenseRef-Cursor_EULA')
 _electron=electron34
-depends=(xdg-utils $_electron nodejs
+depends=(xdg-utils ripgrep $_electron nodejs
   'gcc-libs' 'hicolor-icon-theme' 'libxkbfile')
 options=(!strip) # Don't break ext of VSCode
 _commit=ba90f2f88e4911312761abab9492c42442117cfe # sed'ded at GitHub WF

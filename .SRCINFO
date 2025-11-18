@@ -6,6 +6,7 @@ pkgbase = cursor-bin
 	arch = x86_64
 	license = LicenseRef-Cursor_EULA
 	depends = xdg-utils
+	depends = ripgrep
 	depends = electron34
 	depends = nodejs
 	depends = gcc-libs
