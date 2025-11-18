@@ -3,7 +3,7 @@
 # It changes the upstream to the git repository and uses the qwt dependency that is delivered by the build process of serialplot
 pkgname=serialplot-git
 _pkgname=serialplot
-pkgver=v0.12.0.r24.gd130116
+pkgver=v0.13.0.r4.gdc6efa6
 pkgrel=1
 pkgdesc="Small and simple software for plotting data from serial port in realtime"
 arch=('i686' 'x86_64')
@@ -29,11 +29,19 @@ build() {
   cd "$srcdir/$_pkgname"
   mkdir -p build
   cd build
-  cmake -DCMAKE_CXX_FLAGS=-DUPDATE_TYPE_PKGMAN -DCMAKE_INSTALL_PREFIX=/usr ..
-  make
+  local cmake_options=(
+    -B build
+    -S "${srcdir}/${_pkgname}"
+    -DCMAKE_CXX_FLAGS=-DUPDATE_TYPE_PKGMAN
+    -DCMAKE_INSTALL_PREFIX='/usr'
+    -Wno-dev
+  )
+  cmake "${cmake_options[@]}"
+  cmake --build build
 }
+
 package() {
   cd "$srcdir/$_pkgname"
   cd build
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
