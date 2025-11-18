@@ -11,11 +11,11 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/izeperson/waifu-cli/archive
 sha256sums=('15e14bb8347bd8cd9208e7dd2d1ef6d056848991a91dace0525f3e8c6de2ffba')
 
 build() {
-  cd "$srcdir/waifu-cli-stable"
+  cd "$srcdir/waifu-cli-$pkgver"
   cargo build --release
 }
 
 package() {
-  cd "$srcdir/waifu-cli-stable"
+  cd "$srcdir/waifu-cli-$pkgver"
   install -Dm755 target/release/waifu "$pkgdir/usr/bin/waifu"
 }
