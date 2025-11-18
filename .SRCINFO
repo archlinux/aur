@@ -1,0 +1,21 @@
+pkgbase = obamify-git
+	pkgdesc = revolutionary new technology that turns any image into obama
+	pkgver = 1.3.r12.g764aa3b
+	pkgrel = 1
+	url = https://github.com/Spu7Nix/obamify
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = mesa
+	depends = vulkan-icd-loader
+	depends = xdg-desktop-portal-impl
+	optdepends = vulkan-driver
+	provides = obamify
+	options = !debug
+	source = git+https://github.com/Spu7Nix/obamify.git
+	source = obamify.desktop
+	b2sums = SKIP
+	b2sums = a94d236f938d0b4997d498ef4243833181464f48495358917d6eb24da4fa356d2006576fd5691783fd6f9eca3d2e24fcb7516d3b6d9e37ee1dd0dbdc59e89f2f
+
+pkgname = obamify-git

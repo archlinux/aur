@@ -1,0 +1,7 @@
+[Desktop Entry]
+Icon=obamify
+Name=obamify
+Exec=/usr/bin/obamify
+StartupNotify=false
+Terminal=false
+Type=Application
