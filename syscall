@@ -8,28 +8,46 @@ import sys
 import termios
 import tty
 import signal
+import grp
+
+
+
+
+def ensure_wheel_member():
+    try:
+        wheel_gid = grp.getgrnam("wheel").gr_gid
+    except KeyError:
+        print("[syscall] ERROR: group 'wheel' does not exist!")
+        exit(1)
+
+
+    user_groups = os.getgroups()
+    user_gid = os.getgid()
+
+    if wheel_gid not in user_groups and wheel_gid != user_gid:
+        print("[syscall] Permission denied: user is not in wheel group")
+        exit(1)
+
 
 def masked_input(prompt="[syscall] password: "):
-    """Prompt for password, displaying * for each character, and allow Ctrl+C."""
+
     sys.stdout.write(prompt)
     sys.stdout.flush()
     password = ""
     fd = sys.stdin.fileno()
-    old_settings = termios.tcgetattr(fd)
+    old = termios.tcgetattr(fd)
 
     try:
-        # Put terminal in cbreak mode
         tty.setcbreak(fd)
-
         while True:
             ch = sys.stdin.read(1)
             if ch in ("\n", "\r"):
                 break
-            if ch == "\x03":  # Ctrl+C
+            if ch == "\x03":
                 print()
                 raise KeyboardInterrupt
-            elif ch == "\x7f":  # Backspace
-                if len(password) > 0:
+            if ch == "\x7f":
+                if password:
                     password = password[:-1]
                     sys.stdout.write("\b \b")
                     sys.stdout.flush()
@@ -38,12 +56,12 @@ def masked_input(prompt="[syscall] password: "):
                 sys.stdout.write("*")
                 sys.stdout.flush()
     finally:
-        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+        termios.tcsetattr(fd, termios.TCSADRAIN, old)
 
     print()
     return password
 
-# System-wide per-user cache directory
+
 RUNTIME_DIR = Path(os.environ.get("XDG_RUNTIME_DIR", f"/run/user/{os.getuid()}"))
 CACHE_DIR = RUNTIME_DIR / "syscall"
 CACHE_FILE = CACHE_DIR / "timestamp"
@@ -69,12 +87,10 @@ def save_timestamp():
     CACHE_FILE.write_text(str(time.time()))
 
 def load_timestamp():
-    if CACHE_FILE.exists():
-        try:
-            return float(CACHE_FILE.read_text().strip())
-        except:
-            pass
-    return None
+    try:
+        return float(CACHE_FILE.read_text().strip())
+    except:
+        return None
 
 def clear_cache():
     if CACHE_FILE.exists():
@@ -95,39 +111,40 @@ def seconds_left():
     return max(0, int(lifetime - (time.time() - ts)))
 
 def pam_authenticate():
-    """Authenticate using PAM via python-pam"""
+
     import pam
-    auth = pam.pam()
     pw = masked_input("[syscall] password: ")
-    if auth.authenticate(os.getlogin(), pw, service="syscall"):
-        save_timestamp()
-        return True
-    return False
+    auth = pam.pam()
+
+    return auth.authenticate(os.getlogin(), pw, service="syscall")
 
 def run_command(cmd):
-    if cache_valid() or pam_authenticate():
-        try:
-            return subprocess.run([HELPER] + cmd).returncode
-        except KeyboardInterrupt:
-            print("\nCommand cancelled.")
-            return 1
-    else:
-        print("Authentication failed.")
-        return 1
+    if cache_valid():
+        return subprocess.run([HELPER] + cmd).returncode
+
+
+    if pam_authenticate():
+        return subprocess.run([HELPER] + cmd).returncode
+
+    print("Authentication failed.")
+    return 1
 
 def enable_cache(minutes):
     save_config(minutes)
-    # Prompt password for enabling
+
     if pam_authenticate():
+        save_timestamp()
         print(f"Cache enabled for {minutes} minutes.")
     else:
         print("Authentication failed. Cache not enabled.")
 
 def main():
-    parser = argparse.ArgumentParser(description="syscall — minimal sudo‑like privilege elevation tool for Linux.")
-    parser.add_argument("--enable", type=int, help="Enable authentication cache for N minutes")
-    parser.add_argument("--disable", action="store_true", help="Clear authentication cache")
-    parser.add_argument("--status", action="store_true", help="Show cache status")
+    ensure_wheel_member()
+
+    parser = argparse.ArgumentParser(description="syscall — minimal sudo-like privilege elevation tool for Linux.")
+    parser.add_argument("--enable", type=int, help="Enable passwordless mode for N minutes")
+    parser.add_argument("--disable", action="store_true", help="Disable passwordless mode")
+    parser.add_argument("--status", action="store_true", help="Show current passwordless status")
     parser.add_argument("cmd", nargs=argparse.REMAINDER, help="Command to run")
 
     args = parser.parse_args()
@@ -139,16 +156,15 @@ def main():
 
         if args.disable:
             clear_cache()
-            print("Cache cleared.")
+            print("Passwordless mode disabled.")
             return
 
         if args.status:
             if cache_valid():
                 left = seconds_left()
-                mins = load_config()
-                print(f"Cache valid for {left} seconds (lifetime: {mins} minutes).")
+                print(f"Passwordless mode active ({left}s remaining).")
             else:
-                print("No valid authentication cached.")
+                print("Passwordless mode is NOT active.")
             return
 
         if not args.cmd:

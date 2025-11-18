@@ -1,3 +1,11 @@
 # /etc/pam.d/syscall
-auth     include   system-auth
-account  include   system-auth
+
+# Restrict to wheel group
+auth       required   pam_wheel.so group=wheel
+
+# Always ask for password — NO PAM caching
+auth       required   pam_unix.so nullok try_first_pass
+
+account    include    system-auth
+session    include    system-auth
+
