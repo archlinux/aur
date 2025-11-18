@@ -1,0 +1,14 @@
+pkgbase = modustoolbox-gcc-system
+	pkgdesc = Configures modustoolbox to use the system install of the arm-none-eabi gcc and binutils
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	license = LicenseRef-modustoolbox-gcc-system
+	depends = modustoolbox
+	depends = arm-none-eabi-gcc
+	depends = arm-none-eabi-newlib
+	options = !strip
+	source = file://modustoolbox-gcc-system.sh
+	sha256sums = a22c791de9d7002feb2c443b77bc57d9a6431b4c67b375a0c40274a981ddf895
+
+pkgname = modustoolbox-gcc-system
