@@ -1,7 +1,7 @@
 pkgbase = spacedrive-clean
 	pkgdesc = A file manager from the future - powered by a virtual distributed filesystem. A cleaner version, since other packages are bloated or broken.
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.spacedrive.com
 	arch = x86_64
 	license = AGPL-3.0-only

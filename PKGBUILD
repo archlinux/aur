@@ -1,7 +1,7 @@
 # Maintainer: Kaleb <vitor.guttler@edu.pucrs.br>
 pkgname=spacedrive-clean
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A file manager from the future - powered by a virtual distributed filesystem. A cleaner version, since other packages are bloated or broken."
 arch=('x86_64')
 url="https://www.spacedrive.com"
@@ -22,6 +22,10 @@ options=(!strip)
 package() {
     # Extract data from deb directly to pkgdir
     bsdtar -xf data.tar.gz -C "${pkgdir}"
+    
+    # Fix case-sensitivity issue: binary expects lowercase 'spacedrive' in RUNPATH
+    # but .deb extracts to 'Spacedrive' (capital S)
+    mv "${pkgdir}/usr/lib/Spacedrive" "${pkgdir}/usr/lib/spacedrive"
     
     # Fix permissions
     chmod 755 "${pkgdir}/usr/bin/spacedrive"
