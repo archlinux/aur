@@ -1,0 +1,3 @@
+[fcitx-mozc]
+source = "git"
+git = "https://github.com/fcitx/mozc.git"
