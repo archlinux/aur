@@ -4,7 +4,7 @@
 pkgname=antigravity-bin-hardened
 pkgver=1.11.2
 _buildid=6251250307170304
-pkgrel=9
+pkgrel=10
 pkgdesc="Google Antigravity Agentic Development Platform (Pre-built Binary). Hardened version with strict permissions and verified dependencies."
 arch=('x86_64')
 url="https://antigravity.google/"

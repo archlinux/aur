@@ -1,7 +1,7 @@
 pkgbase = antigravity-bin-hardened
 	pkgdesc = Google Antigravity Agentic Development Platform (Pre-built Binary). Hardened version with strict permissions and verified dependencies.
 	pkgver = 1.11.2
-	pkgrel = 9
+	pkgrel = 10
 	url = https://antigravity.google/
 	arch = x86_64
 	license = Proprietary
