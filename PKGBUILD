@@ -5,7 +5,7 @@ pkgver=r263.6d86243
 pkgrel=1
 pkgdesc="A free and open-source iDevice management tool."
 arch=('x86_64')
-url="https://github.com/uncor3/iDescriptor"
+url="https://github.com/iDescriptor/iDescriptor"
 license=('AGPL3-or-later')
 provides=("$_pkgname")
 depends=(
@@ -14,6 +14,7 @@ depends=(
     'libimobiledevice-glue'
     'libplist'
     'usbmuxd'
+    'libusbmuxd'
     'openssl'
     'libssh'
     'libusb'
@@ -31,24 +32,21 @@ depends=(
     'libsecret'
     'gnome-keyring'
     'ffmpeg'
-    # GStreamer dependencies for AirPlay functionality
+    'ifuse'
     'gstreamer'
     'gst-plugins-base-libs'
     'gst-plugins-good'
     'gst-plugins-bad'
-)
-# Optional dependencies for wider codec support
-optdepends=(
-    'gst-plugins-ugly: for extra codecs'
-    'gst-libav: for FFmpeg-based codecs'
+    'gst-plugins-ugly'
+    'gst-libav'
 )
 makedepends=(
     'git'
     'cmake'
-    'go' # Required for the ipatool-go submodule
+    'go'
 )
 options=('!debug')
-source=("git+https://github.com/uncor3/iDescriptor.git")
+source=("git+https://github.com/iDescriptor/iDescriptor.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -66,7 +64,9 @@ build() {
   cmake -B build -S . \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DENABLE_RECOVERY_DEVICE_SUPPORT=OFF
+    -DENABLE_RECOVERY_DEVICE_SUPPORT=OFF \
+    -DPACKAGE_MANAGER_MANAGED=ON \
+    -DPACKAGE_MANAGER_HINT=yay/paru
   cmake --build build
 }
 
