@@ -2,10 +2,10 @@
 pkgname=antigravity-bin
 pkgver=1.11.2
 _buildid=6251250307170304
-pkgrel=2
+pkgrel=4
 pkgdesc="Google Antigravity - Agentic Development Platform (Pre-built Binary)"
 arch=('x86_64')
-url="https://antigravity.google.com"
+url="https://antigravity.google/"
 license=('Proprietary')
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst' 'xdg-utils' 'glibc' 'nspr' 'at-spi2-core' 'libdrm' 'mesa')
 options=('!strip')
@@ -15,8 +15,6 @@ sha256sums=('d1b1115ae76c275c376ea660e1e4d2dc20eb3e72d6a206b096505b944a5f64b7')
 package() {
     install -d "$pkgdir/opt/antigravity"
 
-    # Locate the extracted directory. 
-    # Usually "Antigravity" or "antigravity-linux-x64" inside srcdir
     _extracted_dir=$(find "$srcdir" -maxdepth 1 -type d -name "Antigravity*" | head -n 1)
 
     if [ -z "$_extracted_dir" ]; then
@@ -24,13 +22,10 @@ package() {
         exit 1
     fi
 
-    # Copy contents from the nested folder to /opt/antigravity to flatten structure
     cp -r "$_extracted_dir"/* "$pkgdir/opt/antigravity/"
 
-    # Create the binary symlink
     install -d "$pkgdir/usr/bin"
-
-    # Check if binary is named "Antigravity" (Capital) or "antigravity" (Lower)
+    
     if [ -f "$pkgdir/opt/antigravity/Antigravity" ]; then
         chmod +x "$pkgdir/opt/antigravity/Antigravity"
         ln -s "/opt/antigravity/Antigravity" "$pkgdir/usr/bin/antigravity"
@@ -39,22 +34,37 @@ package() {
         ln -s "/opt/antigravity/antigravity" "$pkgdir/usr/bin/antigravity"
     else
         echo "Error: Could not find binary 'antigravity' or 'Antigravity' in /opt/antigravity"
-        # List files to help debugging if this fails
         ls -R "$pkgdir/opt/antigravity"
         exit 1
     fi
 
-    # Install .desktop file if it exists
-    if [ -f "$pkgdir/opt/antigravity/antigravity.desktop" ]; then
-        install -d "$pkgdir/usr/share/applications"
-        # Fix common issue where .desktop Exec path is relative
-        sed -i 's|^Exec=.*|Exec=/usr/bin/antigravity|' "$pkgdir/opt/antigravity/antigravity.desktop"
-        ln -s "/opt/antigravity/antigravity.desktop" "$pkgdir/usr/share/applications/antigravity.desktop"
+    install -d "$pkgdir/usr/share/pixmaps"
+    
+    _icon_path="$pkgdir/opt/antigravity/resources/app/resources/linux/code.png"
+    
+    if [ -f "$_icon_path" ]; then
+        ln -s "/opt/antigravity/resources/app/resources/linux/code.png" "$pkgdir/usr/share/pixmaps/antigravity.png"
+    else
+        echo "Warning: Specific icon path not found. Searching for alternatives..."
+        _found_icon=$(find "$pkgdir/opt/antigravity" -name "*.png" | head -n 1)
+        if [ -n "$_found_icon" ]; then
+            # ln -s requires absolute path, ensure we use the destination path /opt/...
+            _rel_path=${_found_icon#$pkgdir}
+            ln -s "$_rel_path" "$pkgdir/usr/share/pixmaps/antigravity.png"
+        fi
     fi
 
-    # Install Icon
-    if [ -f "$pkgdir/opt/antigravity/product_logo_256.png" ]; then
-        install -d "$pkgdir/usr/share/pixmaps"
-        ln -s "/opt/antigravity/product_logo_256.png" "$pkgdir/usr/share/pixmaps/antigravity.png"
-    fi
+    install -d "$pkgdir/usr/share/applications"
+    
+    cat > "$pkgdir/usr/share/applications/antigravity.desktop" <<EOF
+[Desktop Entry]
+Name=Antigravity
+Comment=Agentic Development Platform
+Exec=/usr/bin/antigravity
+Icon=antigravity
+Type=Application
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=Antigravity
+EOF
 }
