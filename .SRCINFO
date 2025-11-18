@@ -1,6 +1,6 @@
 pkgbase = smoothcsv-bin
 	pkgdesc = A powerful and intuitive tool for editing CSV files
-	pkgver = 3.8.0
+	pkgver = 3.9.3
 	pkgrel = 1
 	url = https://smoothcsv.com/
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = smoothcsv-bin
 	depends = hicolor-icon-theme
 	provides = smoothcsv
 	conflicts = smoothcsv
-	source = https://github.com/kohii/smoothcsv3/releases/download/v3.8.0/SmoothCSV-3.8.0-1.x86_64_linux.rpm
+	source = https://github.com/kohii/smoothcsv3/releases/download/v3.9.3/SmoothCSV-3.9.3-1.x86_64.rpm
 	source = LICENSE-SmoothCSV.md::https://raw.githubusercontent.com/kohii/smoothcsv-website/refs/heads/main/src/pages/terms.md
-	sha256sums = fc9ad0b34257a989309e510b41286671c38137d111edefaf65a13affc192c94d
+	sha256sums = 516a6c4dadaa6a65be0d80e92e68ca558ecb148c349ce42339bd1c0e1e3f00aa
 	sha256sums = 0f88656d439d2bdc420308789d65f484632f0d3f7b54464f24fde19973d074a5
 
 pkgname = smoothcsv-bin
