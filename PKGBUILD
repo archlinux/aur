@@ -12,7 +12,7 @@ optdepends=('jq: for JSON output formatting')
 provides=('echomind')
 conflicts=('echomind-git')
 source=("https://github.com/thepinak503/echomind/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('NEW_SHA256')
+sha256sums=('32aae07a6641066b314f47b143599669b8f4ef23d3c4030d783b06ea29c86839')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
