@@ -1,0 +1,3 @@
+[lib32-libsoup3]
+source = "git"
+git = "https://gitlab.gnome.org/GNOME/libsoup.git"
