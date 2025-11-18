@@ -1,8 +1,8 @@
 # Maintainer: wintrx1155 <wintrx1155@proton.me>
 
 pkgname=clara-verse
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.3.1.beta
+pkgrel=3
 pkgdesc="A privacy-first, All in one AI workspace featuring LLMs, ComfyUI, n8n, and more"
 arch=('x86_64')
 url="https://github.com/claraverse-space/ClaraVerse"
