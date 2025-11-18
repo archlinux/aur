@@ -1,0 +1,3 @@
+[gdl]
+source = "git"
+git = "https://gitlab.gnome.org/Archive/gdl.git"
