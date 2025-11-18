@@ -1,0 +1,3 @@
+[lib32-speex]
+source = "git"
+git = "https://gitlab.xiph.org/xiph/speex.git"
