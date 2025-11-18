@@ -1,4 +1,4 @@
-# Maintainer: Musee "lae" Ullah <lae(at)lae(dot)is>
+# Maintainer: lae <lae(at)lae(dot)is>
 
 pkgname=ytsubconverter-bin
 _reponame=YTSubConverter
