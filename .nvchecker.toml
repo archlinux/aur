@@ -1,0 +1,3 @@
+[seahorse-nautilus]
+source = "git"
+git = "https://gitlab.gnome.org/Archive/seahorse-nautilus.git"
