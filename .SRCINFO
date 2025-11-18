@@ -1,5 +1,5 @@
 pkgbase = vapoursynth-plugin-vship-amd-git
-	pkgdesc = Plugin for Vapoursynth: vship-amd (GIT version)
+	pkgdesc = Plugin for Vapoursynth: vship for amd gpus (GIT version)
 	pkgver = 3.0.0.13.g1ed2fb3
 	pkgrel = 1
 	url = https://github.com/Line-fr/Vship
@@ -7,12 +7,11 @@ pkgbase = vapoursynth-plugin-vship-amd-git
 	license = MIT
 	makedepends = git
 	makedepends = make
-	makedepends = clang
 	depends = vapoursynth
 	depends = hip-runtime-amd
-	provides = vapoursynth-plugin-vship-amd
-	conflicts = vapoursynth-plugin-vship-amd
-	source = vship-amd::git+https://github.com/Line-fr/Vship.git
+	provides = vapoursynth-plugin-vship
+	conflicts = vapoursynth-plugin-vship
+	source = vship::git+https://github.com/Line-fr/Vship.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-vship-amd-git
