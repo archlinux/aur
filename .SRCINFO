@@ -1,6 +1,6 @@
 pkgbase = python-memory-graph
 	pkgdesc = Generate intuitive graphs of your Python data
-	pkgver = 0.3.62
+	pkgver = 0.3.64
 	pkgrel = 1
 	url = https://github.com/bterwijn/memory_graph
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-memory-graph
 	depends = python-graphviz
 	depends = python-numpy
 	depends = python-pandas
-	source = https://files.pythonhosted.org/packages/source/m/memory_graph/memory_graph-0.3.62.tar.gz
-	sha256sums = 122782d5c2c4b7bc8eb6548bcb973061873ef6cd107202f7f92b21bc0a4b3c7c
+	source = https://files.pythonhosted.org/packages/source/m/memory_graph/memory_graph-0.3.64.tar.gz
+	sha256sums = 1eebc6992fe4f1a60f56961cfe510ef610f194ad7a375c906d9cb6f8ba6ef659
 
 pkgname = python-memory-graph
