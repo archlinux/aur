@@ -4,7 +4,7 @@ pkgname="${_appname}-electron-bin"
 _pkgname=Feishin
 pkgver=0.21.2
 _electronversion=35
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern self-hosted music player.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -47,6 +47,7 @@ prepare() {
     sed -i -e "
         s/AppRun --no-sandbox/${pkgname%-bin}/g
         s/Icon=${_appname}/Icon=${pkgname%-bin}/g
+        s/StartupWMClass=${_pkgname}/StartupWMClass=${_appname}/g
     " "${srcdir}/squashfs-root/${_appname}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
     find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +

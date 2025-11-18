@@ -1,7 +1,7 @@
 pkgbase = feishin-electron-bin
 	pkgdesc = A modern self-hosted music player.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.21.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://feishin.vercel.app/
 	arch = aarch64
 	arch = x86_64
