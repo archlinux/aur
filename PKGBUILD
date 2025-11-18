@@ -6,7 +6,7 @@ _pkgname=walker
 
 pkgname=${_pkgname}-bin
 
-pkgver=2.11.0
+pkgver=2.11.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -65,7 +65,7 @@ sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '3d7b33913fca6e14946403c74595004788fcf67ade9c28d8b0fde1bba2b06a53'
             '073a912e3eee95249236af90ce50496a3b94bd840919b2d94e058054dbf3ca25'
             'acf4ed26a8b3bf922ea34f24b1aeccb3e83688cab488a56d1f912ba7ee67cfe8')
-sha256sums_x86_64=('d8ec16634ff9503f971ae7414e7942223144b26f0cf16ca4bc26d1dd7fec2a93')
+sha256sums_x86_64=('d3a1d50084c0b4d9586961646fd46d23f71bf374d8e141336efa0a8cefac0ce9')
 
 prepare() {
     cd "${srcdir}" || exit 1
