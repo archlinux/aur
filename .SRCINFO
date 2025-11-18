@@ -1,0 +1,16 @@
+pkgbase = remote-utilities-viewer
+	pkgdesc = Remote Utilities is highly configurable and secure remote desktop software for IT professionals
+	pkgver = 1.0.22.b22
+	pkgrel = 1
+	url = https://www.remoteutilities.com/download/linux.php
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = libxcb
+	depends = libx11
+	provides = remote-utilities-viewer
+	options = !strip
+	source_x86_64 = https://www.remoteutilities.com/download/viewer1.0.22.b22_amd64.deb
+	sha256sums_x86_64 = 02ca313f3e08321ff266b0056758596c0d5b591a02c1ed05e1680b8fa5e7d376
+
+pkgname = remote-utilities-viewer
