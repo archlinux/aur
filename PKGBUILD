@@ -1,23 +1,24 @@
 pkgname=sescript-git
-pkgver=93
+_pkgname=sescript
+pkgver=94
 pkgrel=1
 pkgdesc="compiles scheme-like s-expressions to ecmascript/javascript"
 arch=(any)
-license=(gpl3+)
+url="https://sph.mn/computer/software/sescript.html"
+license=(GPL3)
+depends=(guile)
 makedepends=(git)
-depends=(guile sph-lib)
-provides=(sescript)
-conflicts=(sescript)
-source=("git://git.sph.mn/sescript")
-url="http://sph.mn"
-md5sums=(SKIP)
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=("${_pkgname}::git+https://github.com/sph-mn/${_pkgname}.git")
+sha256sums=(SKIP)
 
 pkgver() {
-  cd sescript
+  cd "$srcdir/${_pkgname}"
   git rev-list --count HEAD
 }
 
 package() {
-  cd sescript
+  cd "$srcdir/${_pkgname}"
   ./exe/install "$pkgdir"
 }
