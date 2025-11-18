@@ -3,7 +3,7 @@
 # Contributor: Olivier Biesmans <o dot archlinux at biesmans dot fr>
 
 pkgname=certigo
-pkgver=1.16.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc='A utility to examine and validate certificates in a variety of formats'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('go' 'git')
 depends=('glibc')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/square/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('a6ce89964ca2fbe7d45d2e2019b06a21984f133c4f1f110eee12a67dd60c4145')
+sha256sums=('4ac183d25d89246519cce0c7d3ed3e3be261ac72f4ed3b15b9e0690c91778ed4')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
