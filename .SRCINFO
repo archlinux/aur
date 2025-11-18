@@ -1,5 +1,5 @@
 pkgbase = kiro-bin-hardened
-	pkgdesc = Agentic AI IDE from prototype to production. Spec-driven development with EARS notation, architectural design backed by best practices, and discrete task-based implementation with advanced agents. Hardened version with strict permissions and verified dependencies.
+	pkgdesc = Spec-driven AI IDE from prototype to production. Hardened with strict permissions and verified dependencies.
 	pkgver = 0.6.0
 	pkgrel = 1
 	epoch = 1

@@ -6,7 +6,7 @@ _name="${pkgname%-bin-hardened}"
 pkgver=0.6.0
 pkgrel=1
 epoch=1
-pkgdesc="Agentic AI IDE from prototype to production. Spec-driven development with EARS notation, architectural design backed by best practices, and discrete task-based implementation with advanced agents. Hardened version with strict permissions and verified dependencies."
+pkgdesc="Spec-driven AI IDE from prototype to production. Hardened with strict permissions and verified dependencies."
 arch=('x86_64')
 url='https://kiro.dev/'
 # By downloading and using Kiro, you agree to the following:
