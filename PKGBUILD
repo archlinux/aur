@@ -1,6 +1,6 @@
 # Maintainer: Pinak Dhabu <thepinak503@duck.com>
 pkgname=echomind
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="AI-powered CLI tool with multiple provider support, streaming, and interactive mode"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('jq: for JSON output formatting')
 provides=('echomind')
 conflicts=('echomind-git')
 source=("https://github.com/thepinak503/echomind/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
+sha256sums=('NEW_SHA256')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
