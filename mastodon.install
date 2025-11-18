@@ -32,16 +32,16 @@ post_upgrade() {
 	echo "### No matter which version you're coming from, First go into the mastodon directory and set the ownership (all commands as root)###"
 	echo "cd /var/lib/mastodon; find -path ./public/system -prune -o -exec chown -h mastodon:mastodon {} +"
 	echo
-#	echo "#########################################"
-#	echo "### For people who are already at 4.5 ###"
-#	echo "#########################################"
-#	echo
-#	echo "### Precompile the assets ###"
-#	echo "sudo -u mastodon RAILS_ENV=production bundle exec rails assets:precompile"
-#	echo
-#	echo "### And restart all services ###"
-#	echo "systemctl daemon-reload; systemctl restart mastodon-web mastodon-sidekiq mastodon-streaming"
-#	echo
+	echo "#########################################"
+	echo "### For people who are already at 4.5 ###"
+	echo "#########################################"
+	echo
+	echo "### Precompile the assets ###"
+	echo "sudo -u mastodon RAILS_ENV=production bundle exec rails assets:precompile"
+	echo
+	echo "### And restart all services ###"
+	echo "systemctl daemon-reload; systemctl restart mastodon-web mastodon-sidekiq mastodon-streaming"
+	echo
 	echo "#####################################"
 	echo "### For people upgrading from 4.4 ###"
 	echo "#####################################"
