@@ -2,8 +2,9 @@
 
 _pkgname="redot-mono"
 pkgname="$_pkgname-bin"
-_pkgver=4.4-beta
-pkgver=4.4_beta
+_pkgver=4.4-rc.1
+pkgver=4.4_rc1
+_pkgfmt=_linux_mono_
 pkgrel=1
 pkgdesc="A multi-platform 2D and 3D game engine"
 url="https://www.redotengine.org/"
@@ -12,14 +13,18 @@ provides=("$_pkgname")
 conflicts=('redot' 'redot-bin' "$_pkgname")
 
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
-_arch='x86_64'
+_arch='x64'
+_arch2='x86_64'
 
 if test "$CARCH" == 'i686'; then
-  _arch='x86_32'
+  _arch='x86'
+  _arch2='x86_32'
 elif test "$CARCH" == 'armv7h'; then
   _arch='arm32'
+  _arch2='arm32'
 elif test "$CARCH" == 'aarch64'; then
   _arch='arm64'
+  _arch2='arm64'
 fi
 
 depends=(
@@ -50,22 +55,18 @@ optdepends=(
   'pipewire-pulse: for audio support'
 )
 
-makedepends=(
-  7zip
-)
-
 source=("${_pkgname}.desktop" 'icon.png' 'LICENSE.txt')
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
-source_x86_64=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${_pkgver}/Redot_v${_pkgver}_mono_linux_x86_64.zip")
-source_i686=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${_pkgver}/Redot_v${_pkgver}_mono_linux_x86_32.zip")
-source_armv7h=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${_pkgver}/Redot_v${_pkgver}_mono_linux_arm32.zip")
-source_aarch64=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${_pkgver}/Redot_v${_pkgver}_mono_linux_arm64.zip")
+source_x86_64=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${_pkgver}/Redot_v${_pkgver}${_pkgfmt}${_arch}.zip")
+source_i686=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${_pkgver}/Redot_v${_pkgver}${_pkgfmt}${_arch}.zip")
+source_armv7h=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${_pkgver}/Redot_v${_pkgver}${_pkgfmt}${_arch}.zip")
+source_aarch64=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${_pkgver}/Redot_v${_pkgver}${_pkgfmt}${_arch}.zip")
 
-sha256sums_x86_64=('bf42de2cd9bfff42f60d1bad3bfda43187c6c45aa75e2bc8e127d5cfbfa3adfb')
-sha256sums_i686=('63d853ec5a820827f9eb4b43dc4975d1812e6c048851de6a7b0ba2e459b4e97e')
-sha256sums_armv7h=('32de2100bf504f4e8f7831c837b31894fd70768d150edc4b1145488f2b13f3d9')
-sha256sums_aarch64=('c9c505e16a72fe629f198140472ce379e7ac833808ddc7c063cf885351e592a3')
+sha256sums_x86_64=('a4e8a7dd3e157c0d24f0a9b5ca7b993e241bbe62417f415631fab4fb914ada51')
+sha256sums_i686=('3910214ab66d4b0e516149c25ef7a97e7f2a062eafe48bed8141ef4eb2b1544f')
+sha256sums_armv7h=('7888afe4a56a0f6e19f5ad6a4a7d1da4c29dea4b3d2e9fea78b45576b6381aed')
+sha256sums_aarch64=('affd1732c78720313bd332303dfa49ec792616c3a087ca135d281a3a297e090b')
 
 package() {
   mkdir -p ${pkgdir}/opt/${_pkgname}
@@ -73,15 +74,13 @@ package() {
 
   cd ${srcdir} || exit
 
-  7za x Redot_v${_pkgver}_mono_linux_${_arch}.zip -o${_pkgname}
-
-  cp -r ${_pkgname}/Redot_v${_pkgver}_mono_linux_${_arch}/* ${pkgdir}/opt/${_pkgname}/
+  cp -r redot-mono/out/linuxbsd/${_arch2}/tools-mono/* ${pkgdir}/opt/${_pkgname}/
 
   # move into directory
   cd ${pkgdir}/opt/${_pkgname}
 
   # rename executable
-  mv Redot_v${_pkgver}_mono_linux.${_arch} ${_pkgname}
+  mv redot.linuxbsd.editor.${_arch2}.mono ${_pkgname}
 
   # back to top
   cd ${srcdir}
