@@ -1,7 +1,7 @@
 # Maintainer: Avenge Media LLC <avengemediallc at gmail dot com>
 pkgname=dms-shell-bin
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
 url='https://github.com/AvengeMedia/DankMaterialShell'
@@ -39,12 +39,12 @@ sha256sums_x86_64=('513be09c9a4f56fe1274b6bc823d2eafaa3f3da9892bd668767844b83c94
                    '61e116dd2fe4cd87ab203f6a3d193404dd5f3c0c0f6dc262439a64411bcb30c4'
                    '8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667'
                    '41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d'
-                   'a6e48c7540eac5436a4f8e41d6e56f34f3181263b4406942480549a65f53dbd0')
+                   '8a2cdeef1fce5edc82c2c3cb1e75ae209c77095709188cf45ab92e7c7c5d7d0e')
 sha256sums_aarch64=('513be09c9a4f56fe1274b6bc823d2eafaa3f3da9892bd668767844b83c94011a'
                     '61e116dd2fe4cd87ab203f6a3d193404dd5f3c0c0f6dc262439a64411bcb30c4'
                     '8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667'
                     '41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d'
-                    '93eef01fd5ec2df78e6b7e4876449cdf65248b4b73b5dfcbbb4b168f48508e3f')
+                    '007176908e11938fa9a1f10fd135853fda29b9f40d5f71ece0058fd25d6bb2e1')
 
 package() {
     install -Dm0755 "$srcdir/bin/dms-distropkg" "$pkgdir/usr/bin/dms"
