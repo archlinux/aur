@@ -15,4 +15,4 @@ while true; do
     shift
 done
 
-exec /usr/bin/mono /opt/YTSubConverter/YTSubConverter.exe $@
+exec /opt/ytsubconverter/ytsubconverter $@
