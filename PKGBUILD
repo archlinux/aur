@@ -29,7 +29,7 @@ md5sums=('2a16822da0884d7956d10760d0b4ae30')
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    sed -i -e '/--flake8/d' pyproject.toml
+    sed -i -e '/--flake8/d' -e '/exclude/a \    "docs*",' pyproject.toml
 }
 
 build() {
