@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  export RUSTFLAGS="--remap-path-prefix=$(pwd)=."
+  export RUSTFLAGS="--remap-path-prefix=$(pwd)=. -C linker=gcc"
   cargo clean
   cargo build --release
 }
