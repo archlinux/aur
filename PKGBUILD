@@ -28,6 +28,9 @@ makedepends=(
   'git'
 )
 
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
 options=('!lto')
 
 _pkgsrc="$_pkgname"
