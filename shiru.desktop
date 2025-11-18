@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Shiru
-Comment=BitTorrent streaming software with no paws in the way—watch anime in real-time, no waiting for downloads!
+Comment=Manage your personal media library, organize your collection, and stream your content in real time, no waiting required!
 Exec=/usr/bin/shiru
 Icon=shiru
 Terminal=false
