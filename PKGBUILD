@@ -1,4 +1,5 @@
-# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
+# Contributor: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Olivier Biesmans <o dot archlinux at biesmans dot fr>
 
 pkgname=certigo
