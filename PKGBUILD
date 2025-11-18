@@ -2,7 +2,7 @@
 # Contributor: Ben Greiner <code@bnavigator.de>
 _base=slycot
 pkgname="python-${_base}-mkl"
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A wrapper for the SLICOT control and systems library. Built against Intel MKL"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ makedepends=(python-setuptools-scm python-scikit-build gcc-fortran intel-oneapi-
 provides=("python-${_base}=${pkgver}")
 conflicts=("python-${_base}")
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('69b7189331fcf0cf762c7abf02f98e17a833698621aea26f799766879588341ba385df18e61937f9fdb7d82c582e9c348df880860b9b478c0d8b8310b908a317')
+sha512sums=('da5d691d7f78fbdf6cf6ca7cf58a44e4fbeec68c2759f988a1b11ddf4114f989da5d8934c8f18120e24b2ea9bad535c1e6c3c3f3dd6f73948a1afa9bcdc07938')
 
 build() {
   cd ${_base}-${pkgver}
