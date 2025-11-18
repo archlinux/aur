@@ -2,7 +2,7 @@
 # Contributor: Benjamin Schäfer <b-schaefer at posteo dot de>
 # Contributor: Lorenzo Giuliani <lorenzo at giuliani dot me>
 pkgname=pgmanage-bin
-pkgver=1.3.1
+pkgver=1.4
 pkgrel=1
 pkgdesc="A modern multi-platform Postgres-centric database client/administration tool.(Prebuilt version)"
 arch=('x86_64')
@@ -26,15 +26,12 @@ depends=(
 	'libdrm'
 	'libcups'
 )
-makedepends=(
-    'fuse2'
-)
 source=(
-	"${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
+	"${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/${pkgver}-release/${pkgname%-bin}-${pkgver}.AppImage"
 	"LICENSE-${pkgver}::https://raw.githubusercontent.com/commandprompt/pgmanage/${pkgver}/LICENSE"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('46f659d5c376cc71951157557d29092b79195fa7d08586d999e1688e82276d09'
+sha256sums=('fffd9215fb7dda18b8234a6e41187a55a61be430b41bfc9f313b7bb98904f9d4'
             'a62f1391fdfdce658169890e40e04d788c1386aade44c5271e3cae73d63e8dff'
             '7fc2b726adb41bfc30899035594c00ac4694e5cd37dd49e355d897b85f9fe355')
 prepare() {
@@ -44,6 +41,9 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
+	if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
     fi
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i -e "
