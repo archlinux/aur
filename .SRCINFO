@@ -1,0 +1,17 @@
+pkgbase = python-ensurepath
+	pkgdesc = Ensure python, pip and with pip installed binarys (scripts for win) are in your PATH variable
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/knoxell/ensurepath
+	arch = any
+	license = Unlicense
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-userpath
+	source = https://files.pythonhosted.org/packages/source/e/ensurepath/ensurepath-0.2.6.tar.gz
+	sha256sums = 6c4405842a864b8721ff975546c493ce8fb42d49abf5aff88bcc273f2f9810e7
+
+pkgname = python-ensurepath

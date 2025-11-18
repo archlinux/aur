@@ -1,0 +1,3 @@
+[python-ensurepath]
+source = "pypi"
+pypi = "ensurepath"
