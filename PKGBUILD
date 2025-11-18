@@ -3,8 +3,8 @@
 pkgname=printnotes-git
 _appname=PrintNotes
 _reponame=printnotes
-pkgver=r215.d23c892
-pkgrel=2
+pkgver=r218.c424029
+pkgrel=1
 pkgdesc="A better way to take notes inspired by Google Keep and Obsidian (git version)"
 arch=('x86_64')
 url="https://github.com/RoBoT095/printnotes"
