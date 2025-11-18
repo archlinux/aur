@@ -2,14 +2,15 @@
 
 pkgname=happ-desktop-bin
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A proxy client for secure and private internet access"
 arch=('x86_64')
 url="https://github.com/Happ-proxy/happ-desktop"
 license=('custom')
-depends=('fuse2' 'glibc' 'gcc-libs' 'hicolor-icon-theme')
+depends=('fuse2' 'glibc' 'gcc-libs' 'hicolor-icon-theme' 'libcap')
 provides=('happ-desktop')
 conflicts=('happ-desktop')
+install="${pkgname}.install"
 options=('!strip')
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/Happ-proxy/happ-desktop/releases/download/1.0.2/Happ.linux.x86.AppImage")
 sha256sums=('0b0209d918b69c3c70cb1e62098cba2c409d45a59383510248b348277d6bf440')

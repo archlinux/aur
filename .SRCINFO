@@ -1,14 +1,16 @@
 pkgbase = happ-desktop-bin
 	pkgdesc = A proxy client for secure and private internet access
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Happ-proxy/happ-desktop
+	install = happ-desktop-bin.install
 	arch = x86_64
 	license = custom
 	depends = fuse2
 	depends = glibc
 	depends = gcc-libs
 	depends = hicolor-icon-theme
+	depends = libcap
 	provides = happ-desktop
 	conflicts = happ-desktop
 	options = !strip
