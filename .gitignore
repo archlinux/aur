@@ -1,0 +1,14 @@
+# Build artifacts
+src/
+pkg/
+*.pkg.tar.zst
+*.tar.gz
+
+# Update script (not tracked)
+update-version.sh
+
+# Backup files
+*.backup
+
+# Temporary files
+*.tmp

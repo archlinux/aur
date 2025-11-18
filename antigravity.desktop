@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=Antigravity
+Comment=AI-powered development environment
+GenericName=Code Editor
+Exec=/usr/bin/antigravity %F
+Icon=antigravity
+Type=Application
+StartupNotify=false
+StartupWMClass=antigravity
+Categories=Development;IDE;
+MimeType=text/plain;inode/directory;
+Actions=new-empty-window;
+Keywords=google;code;editor;ide;development;
+
+[Desktop Action new-empty-window]
+Name=New Empty Window
+Exec=/usr/bin/antigravity --new-window %F
+Icon=antigravity
