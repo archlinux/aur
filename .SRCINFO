@@ -1,7 +1,7 @@
 pkgbase = tl-render
 	pkgdesc = tlRender is an open source library for building playback and review applications for visual effects, film, and animation.
-	pkgver = 0.10.0
-	pkgrel = 2
+	pkgver = 0.13.0
+	pkgrel = 1
 	url = https://github.com/darbyjohnston/tlRender
 	arch = x86_64
 	license = BSD-3-Clause
@@ -17,13 +17,9 @@ pkgbase = tl-render
 	depends = libtiff
 	depends = libjpeg-turbo
 	depends = sdl2
-	source = tlRender-0.10.0.tar.gz::https://github.com/darbyjohnston/tlRender/archive/refs/tags/0.10.0.tar.gz
-	source = 0001-minizip-ng.patch
+	source = tlRender-0.13.0.tar.gz::https://github.com/darbyjohnston/tlRender/archive/refs/tags/0.13.0.tar.gz
 	source = zlibng-config.cmake
-	source = dynamic-libjpeg-turbo-and-sdl2.patch
-	sha256sums = 7bf07511c699b868607a3ac7fc07aa1347bda15dedd8cfb1a96761debee6f880
-	sha256sums = c22d9bf779d8298af6c89c86c63c07308232c6c28ad81458ad63a92c00728e6b
+	sha256sums = 93d0d44d46ad91e842b70030d03f08ef3c98e83022f3047fbb78d92f950b8c8f
 	sha256sums = 72d993ec6dceff21552f22c25aff2bc8ceea4cb7315029e0ab6bf7878af9ec21
-	sha256sums = b1fb3d32c55639463946a10e0af7b13e1e036224712252dea8ace09575a4fc49
 
 pkgname = tl-render
