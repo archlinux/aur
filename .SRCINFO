@@ -6,6 +6,7 @@ pkgbase = cognito-local-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	makedepends = npm
 	depends = nodejs
 	depends = npm
 	provides = cognito-local
