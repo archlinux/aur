@@ -1,0 +1,3 @@
+[clutter-gst]
+source = "git"
+git = "https://gitlab.gnome.org/GNOME/clutter-gst.git"
