@@ -1,0 +1,4 @@
+[lib32-libcanberra]
+source = "git"
+git = "https://git.0pointer.net/clone/libcanberra.git"
+prefix = "v"
