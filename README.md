@@ -5,7 +5,7 @@ AUR arch installer for the [saveoursecrets](https://saveoursecrets.com) secure p
 ## Developer
 
 ```
-makepkg --check -f
+rm -f saveoursecrets.tgz && makepkg --check -f
 ```
 
 If that works you can install with:

@@ -1,6 +1,6 @@
 # Maintainer: sos-developers <aur@saveoursecrets.com>
 pkgname=saveoursecrets-bin
-pkgver=2.0.1+125
+pkgver=2.0.2+126
 pkgrel=1
 pkgdesc="Secure password manager and wallet"
 arch=('x86_64')
@@ -13,8 +13,7 @@ depends=(
   'dbus'
 )
 source=("https://releases.saveoursecrets.com/beta/gui/${pkgver}/arch/x86_64/saveoursecrets.tgz")
-sha256sums=('92e8d9b44d1e9f397fb03d78437c85fb46788ff8bc4b86b2f7476e5347f247ed')
-# sha256sums=('SKIP')
+sha256sums=('126ae41975dc2567a6112b7445e4c01c03de69d5902edb8f15cae94f5993ed04')
 
 package() {
   cd "$srcdir/saveoursecrets-${pkgver}"
