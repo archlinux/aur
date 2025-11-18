@@ -2,7 +2,7 @@
 # Contributor: Cogumelo <cogumelo@tutamail.com>
 
 pkgname=spectacle-no-purpose
-pkgver=6.5.2
+pkgver=6.5.3
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 epoch=1
@@ -48,7 +48,7 @@ makedepends=(extra-cmake-modules
              ninja)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/spectacle-$pkgver.tar.xz)
-sha256sums=('4641fb164ddb3cfdef77597d8db75218e0c8b7ab63c0bdfc20ca0c7a2420992e')
+sha256sums=('cf150166ecd4b40c2fa7b3b4761cee22ff08b2cc8da68cf8cd6ffc0efc78c8b7')
 
 build() {
   cmake -B build -G Ninja -S spectacle-$pkgver \
