@@ -2,7 +2,7 @@
 pkgname=folder-color-caja
 _pkgname=${pkgname%-caja}
 pkgver=0.4.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Change your folder color in Caja"
 arch=('any')
 url="https://github.com/costales/folder-color"
@@ -23,6 +23,7 @@ sha256sums=('f1d36bbef81a356f9d84324b39d5201256204a23754d79ceeb441798c755bd03')
 
 build() {
   cd "${_pkgname}"
+  git clean -dfx
 
   pushd install-scripts
   ./caja.sh GTK3
