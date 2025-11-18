@@ -2,10 +2,10 @@
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=core-lightning-git
-pkgver=23.08.r13576.990096f90
+pkgver=25.09.3.r17147.73147dafe
 pkgrel=1
-pkgdesc='A lightweight, highly customizable and standard compliant implementation of the Lightning Network protocol.'
-arch=('i686' 'x86_64')
+pkgdesc='A lightweight, highly customizable and standard-compliant implementation of the Lightning Network protocol.'
+arch=('x86_64')
 url='https://github.com/ElementsProject/lightning'
 license=('custom')
 depends=('gmp' 'libsodium' 'sqlite' 'python-grpcio-tools' 'python-flask' 'python-json5' 'gunicorn' 'python-flask-restx')
@@ -31,7 +31,13 @@ pkgver() {
 
 prepare() {
     cd lightning
+
     sed -e 's/ -Werror//' -i configure
+
+    # To avoid Built-in generator --grpc_python_out specifies a maximum edition 2023 which is not the protoc maximum 2024. 
+    # which is a protobuf edition mismatch between protoc and grpc_tools
+    sed -i 's/grpc_tools.protoc/grpc_tools.protoc --experimental_editions/g' Makefile contrib/pyln-grpc-proto/Makefile
+    python -m grpc_tools.protoc --experimental_editions -I cln-grpc/proto --python_out=contrib/pyln-grpc-proto/pyln/grpc/ --grpc_python_out=contrib/pyln-grpc-proto/pyln/grpc/ cln-grpc/proto/node.proto
 }
 
 build() {
