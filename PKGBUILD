@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=walker
-pkgver=2.10.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc='wayland application runner'
 url='https://github.com/abenz1267/walker'
@@ -12,7 +12,7 @@ depends=('gtk4-layer-shell' 'poppler-glib' 'cairo')
 conflicts=('walker')
 provides=('walker')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("83c8274df0c1c5f0ddb62bc4b30bbb45aacbda34eb3be8e2250e4d901c6ddb27")
+sha256sums=("bd2a0d183b9660ed46ec5455b5e52fcb06f8199a6fbc9b36c5a98c3fb757f8e1")
 
 build() {
     cd ${pkgname}-${pkgver}
@@ -39,6 +39,7 @@ package() {
     install -Dm 644 item_files.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
     install -Dm 644 item_providerlist.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
     install -Dm 644 item_symbols.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
+    install -Dm 644 item_symbols_grid.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
     install -Dm 644 item_archlinuxpkgs.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
     install -Dm 644 item_todo.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
     install -Dm 644 item_unicode.xml -t "${pkgdir}/etc/xdg/walker/themes/default"
