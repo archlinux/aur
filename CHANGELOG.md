@@ -13,7 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Search dependencies
 - Options on description menu
 - Show interface on properties list
-- Can create and edit DropIns
+- Can create unit' Drop-Ins
+
+## [2.9.0] - 2025-11-18
+### Added
+  - Can see and edit current unit' drop-ins
 
 ## [2.8.1] - 2025-11-13
 ### Added
