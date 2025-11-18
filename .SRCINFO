@@ -1,9 +1,10 @@
 pkgbase = dimland-git
 	pkgdesc = Wayland screen dimmer
 	pkgver = r36.3934c32
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/keifufu/dimland.git
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = git
 	makedepends = cargo
