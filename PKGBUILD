@@ -1,10 +1,10 @@
-# Maintainer: xiota / aur.chaotic.cx
+# Maintainer:
 # Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Kevin Majewski <kevin.majewski02@gmail.com>
 
 _pkgname="sushi"
 pkgname="$_pkgname-git"
-pkgver=46.0.r1.g819642a
+pkgver=46.0.r19.ga3955df
 pkgrel=1
 pkgdesc="A quick previewer for Nautilus"
 url="https://gitlab.gnome.org/GNOME/sushi"
@@ -28,7 +28,7 @@ optdepends=(
   'libreoffice: OpenDocument formats'
 )
 
-provides=("$_pkgname=${pkgver%%.r*}")
+provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
