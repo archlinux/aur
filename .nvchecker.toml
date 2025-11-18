@@ -1,0 +1,3 @@
+[vinagre]
+source = "git"
+git = "https://gitlab.gnome.org/GNOME/vinagre.git"
