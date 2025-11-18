@@ -1,15 +1,15 @@
 pkgbase = cognito-local
-	pkgdesc = Local emulator for Amazon Cognito
-	pkgver = 5.1.0
-	pkgrel = 1
-	url = https://github.com/jagregory/cognito-local
-	arch = x86_64
-	license = MIT
-	depends = nodejs
-	depends = npm
-	provides = cognito-local
-	conflicts = cognito-local-git
-	source = cognito-local-5.1.0.tar.gz::https://github.com/jagregory/cognito-local/archive/refs/tags/v5.1.0.tar.gz
-	sha256sums = 00cf6a89f31ec0c5bb8ccb079aaf412d383cce98939ad2d09ea9ea2ad49f77f2
+pkgdesc = Local emulator for Amazon Cognito
+pkgver = 5.1.0
+pkgrel = 1
+url = https://github.com/jagregory/cognito-local
+arch = x86_64
+license = MIT
+depends = nodejs
+depends = npm
+provides = cognito-local
+conflicts = cognito-local-git
+source = cognito-local-5.1.0.tar.gz::https://github.com/jagregory/cognito-local/archive/refs/tags/v5.1.0.tar.gz
+sha256sums = 00cf6a89f31ec0c5bb8ccb079aaf412d383cce98939ad2d09ea9ea2ad49f77f2
 
 pkgname = cognito-local
