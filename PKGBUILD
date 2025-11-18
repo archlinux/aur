@@ -2,7 +2,7 @@
 pkgname=folder-color-nemo
 _pkgname=${pkgname%-nemo}
 pkgver=0.4.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Change your folder color in Nemo"
 arch=('any')
 url="https://github.com/costales/folder-color"
@@ -23,6 +23,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "${_pkgname}"
+  git clean -dfx
 
   pushd install-scripts
   ./nemo.sh GTK3
