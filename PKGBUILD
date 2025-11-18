@@ -1,5 +1,5 @@
 pkgname=sph-lib-git
-pkgver=739.g4c68433
+pkgver=741.g51daa48
 pkgrel=1
 pkgdesc="more than 80 gpl3+ licensed guile scheme libraries"
 arch=(x86_64)
@@ -19,10 +19,11 @@ pkgver() {
 
 build() {
   cd "$srcdir/sph-lib"
-  inc="$(pkg-config --cflags-only-I guile-3.0 2>/dev/null | tr ' ' '\n' | sed 's/^-I//' | paste -sd: -)"
-  test -n "$inc" || inc="$(pkg-config --cflags-only-I guile-2.2 2>/dev/null | tr ' ' '\n' | sed 's/^-I//' | paste -sd: -)"
-  test -n "$inc" || inc="/usr/include/guile/3.0:/usr/include/guile/2.2"
-  export C_INCLUDE_PATH="$inc"
+  local _inc
+  _inc="$(pkg-config --cflags-only-I guile-3.0 2>/dev/null | tr ' ' '\n' | sed 's/^-I//' | paste -sd: -)"
+  test -n "$_inc" || _inc="$(pkg-config --cflags-only-I guile-2.2 2>/dev/null | tr ' ' '\n' | sed 's/^-I//' | paste -sd: -)"
+  test -n "$_inc" || _inc="/usr/include/guile/3.0:/usr/include/guile/2.2"
+  export C_INCLUDE_PATH="$_inc"
   ./exe/compile-extension
 }
 

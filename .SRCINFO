@@ -1,6 +1,6 @@
 pkgbase = sph-lib-git
 	pkgdesc = more than 80 gpl3+ licensed guile scheme libraries
-	pkgver = 739.g4c68433
+	pkgver = 741.g51daa48
 	pkgrel = 1
 	url = https://sph.mn/computer/software/sph-lib.html
 	arch = x86_64
