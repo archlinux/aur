@@ -1,0 +1,3 @@
+[lib32-smpeg]
+source = "git"
+git = "https://github.com/icculus/smpeg.git"
