@@ -1,0 +1,18 @@
+pkgbase = sysd-manager-git
+	pkgdesc = A systemd GUI to manage service, timer, socket and other units
+	pkgver = 2.9.0.r0.g38b4c7d
+	pkgrel = 1
+	url = https://github.com/plrigaux/sysd-manager
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gtk4
+	depends = gtksourceview5
+	depends = libadwaita
+	depends = systemd-libs
+	options = !lto
+	source = sysd-manager::git+https://github.com/plrigaux/sysd-manager.git
+	sha256sums = SKIP
+
+pkgname = sysd-manager-git
