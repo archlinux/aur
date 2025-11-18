@@ -2,7 +2,7 @@
 # Co-Maintainer: Chris Billington <chrisjbillington at gmail dot com>
 pkgname=git-nautilus-icons-git
 pkgver=2.2.0.r0.g92bbecb
-pkgrel=1
+pkgrel=2
 pkgdesc="A Nautilus, Nemo, and Caja extension to overlay icons on files in git repositories"
 arch=('any')
 url="https://github.com/chrisjbillington/git-nautilus-icons"
@@ -33,6 +33,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${pkgname%-git}"
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  git -C "${pkgname%-git}" clean -dfx
 }
 
 build() {
