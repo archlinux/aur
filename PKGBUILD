@@ -3,7 +3,7 @@
 pkgname=github-copilot-cli
 _pkgexec=copilot
 
-pkgver=0.0.359
+pkgver=0.0.360
 pkgrel=1
 
 pkgdesc="GitHub Copilot CLI brings the power of Copilot coding agent directly to your terminal."
@@ -28,7 +28,7 @@ source=("https://registry.npmjs.org/@github/copilot/-/copilot-${pkgver}.tgz"
 noextract=("copilot-${pkgver}.tgz")
 changelog="changelog.md"
 
-b2sums=('541be4ed022bddc29d0a4c5b7900f430022efc8e71108748622afd7b95f013d1bb4f9984473f23804610a8e835ba779f2fa8043b3f65c25dcb230865eed9d618'
+b2sums=('09818c62786f2b11a7dfdd8a4454e1a312534ebbe149b932365aa86f1e1b4b4fbbbbe204290e066ff38a27481a70d83962e9f6f684ba04784b5427d6a45fec86'
         '4f1ae6117d08e8e0a9b3bb838970059dcfa151b5f8764bb7d62e320b72570fccb7ac209011ba6778b5e9895ee586bdbbb190e5ff97b7b10cd14eee0f80caee35'
         'b8437e4bcac71d24c1a58690e767bafbdeb97abe690c40d1721c31ae4e0127fd780ed4f72e08f7c83638668df73379832709dbbb6fad5343eb709d47ba7d1951')
 
