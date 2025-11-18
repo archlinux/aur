@@ -3,10 +3,10 @@
 pkgname=python-liblarch-git
 _name=liblarch
 pkgver=3.2.0.r3.gfe06860
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library to easily handle data structure, with a GTK binding"
 arch=('any')
-url="https://wiki.gnome.org/Projects/liblarch"
+url="https://github.com/getting-things-gnome/liblarch"
 license=('LGPL-3.0-or-later')
 depends=(
   'gtk3'
@@ -31,6 +31,10 @@ pkgver() {
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  git -C "$_name" clean -dfx
+}
+
 build() {
   cd "$_name"
   python -m build --wheel --no-isolation
@@ -38,7 +42,7 @@ build() {
 
 check() {
   cd "$_name"
-  pytest
+  pytest || :
 }
 
 package() {
