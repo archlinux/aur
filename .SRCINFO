@@ -1,7 +1,7 @@
 pkgbase = folder-color-nautilus
 	pkgdesc = Change your folder color in Nautilus
 	pkgver = 0.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/costales/folder-color
 	arch = any
 	license = GPL-3.0-or-later
