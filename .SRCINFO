@@ -1,6 +1,6 @@
 pkgbase = zing-8-bin
 	pkgdesc = Azul Platform Prime is a modern, TCK-compliant Java platform based on OpenJDK.
-	pkgver = 8.0.452
+	pkgver = 8.0.471
 	pkgrel = 4
 	url = https://docs.azul.com/prime/prime-quick-start-tar
 	install = zing-8-bin.install
@@ -21,9 +21,9 @@ pkgbase = zing-8-bin
 	provides = java-runtime-openjdk=8
 	source = zing-8-bin.install
 	sha256sums = 1762188053ca0c6413cfeb4fba26a5075072726fe230e54e1a18a1793abe5b84
-	source_aarch64 = https://cdn.azul.com/zing-zvm/ZVM25.06.0.0/zing25.06.0.0-2-jdk8.0.452-linux_aarch64.tar.gz
-	sha256sums_aarch64 = e93b0153d1d5fa69cf9f74ab0a4668ef6fa882b6a326d7efdcf3e92b08fc8d01
-	source_x86_64 = https://cdn.azul.com/zing-zvm/ZVM25.06.0.0/zing25.06.0.0-2-jdk8.0.452-linux_x64.tar.gz
-	sha256sums_x86_64 = 88ef276262625f7c958e00d2ab932e1e11a3f87e6b64f02dc459f75307fdd926
+	source_aarch64 = https://cdn.azul.com/zing-zvm/ZVM25.10.0.0/zing25.10.0.0-4-jdk8.0.471-linux_aarch64.tar.gz
+	sha256sums_aarch64 = 1d9a5d81eb1f887c2b78e3e0388286408e5dc9d6addbf2e21db49157300d1b24
+	source_x86_64 = https://cdn.azul.com/zing-zvm/ZVM25.10.0.0/zing25.10.0.0-4-jdk8.0.471-linux_x64.tar.gz
+	sha256sums_x86_64 = eb85bddb00240080e69b1cb5953d591080c32e50200c366d2e484dbdaa6f6e57
 
 pkgname = zing-8-bin
