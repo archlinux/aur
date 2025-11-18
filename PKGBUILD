@@ -4,7 +4,7 @@
 # Contributor: Dimitrios Vogiatzis <me@dimtree.net>
 pkgname=python-plexapi-girens
 pkgver=3.0.6+559+gcadb3d2
-pkgrel=2
+pkgrel=3
 pkgdesc="Python bindings for the Plex API."
 arch=('any')
 url="https://github.com/tijder/python-plexapi"
@@ -30,6 +30,10 @@ sha256sums=('8da661f11a423b133a18bfff5cd1e5965f04794550b733cc929d3ea170c5cdf7')
 pkgver() {
   cd python-plexapi
   git describe --tags --abbrev=7 | sed 's/-/+/g'
+}
+
+prepare() {
+  git -C python-plexapi clean -dfx
 }
 
 build() {

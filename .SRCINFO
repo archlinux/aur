@@ -1,7 +1,7 @@
 pkgbase = python-plexapi-girens
 	pkgdesc = Python bindings for the Plex API.
 	pkgver = 3.0.6+559+gcadb3d2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tijder/python-plexapi
 	arch = any
 	license = BSD-3-Clause
