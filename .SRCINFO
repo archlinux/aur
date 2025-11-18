@@ -1,7 +1,7 @@
 pkgbase = cdir-git
 	pkgdesc = A faster way to navigate folders and browse files in Windows and Linux shells.
-	pkgver = 1.3.r48.a2e4ad8
-	pkgrel = 4
+	pkgver = 1.4.r51.05c8730
+	pkgrel = 1
 	url = https://github.com/EskelinenAntti/cdir
 	arch = any
 	license = MIT

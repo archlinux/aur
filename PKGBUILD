@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cdir-git
-pkgver=1.3.r48.a2e4ad8
-pkgrel=4
+pkgver=1.4.r51.05c8730
+pkgrel=1
 pkgdesc="A faster way to navigate folders and browse files in Windows and Linux shells."
 arch=('any')
 url="https://github.com/EskelinenAntti/cdir"
@@ -22,6 +22,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${pkgname%-git}"
   printf "$(python setup.py --version).r$(git rev-list --count HEAD).$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+  git -C "${pkgname%-git}" clean -dfx
 }
 
 build() {
