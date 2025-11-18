@@ -1,0 +1,3 @@
+[colorhug-client]
+source = "git"
+git = "https://github.com/hughski/colorhug-client.git"
