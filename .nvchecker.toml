@@ -1,0 +1,3 @@
+[lib32-dbus-glib]
+source = "git"
+git = "https://gitlab.freedesktop.org/dbus/dbus-glib.git"
