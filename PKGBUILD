@@ -95,6 +95,13 @@ package() {
         msg2 "Securing chrome-sandbox..."
         chmod 4755 "$pkgdir/opt/antigravity/chrome-sandbox"
     fi
+     # D. Chrome Crashpad Handler (Critical for crash reporting):
+     # Must be executable for Electron to handle crashes
+     if [ -f "$pkgdir/opt/antigravity/chrome_crashpad_handler" ]; then
+         msg2 "Setting executable permissions for chrome_crashpad_handler..."
+         chmod 755 "$pkgdir/opt/antigravity/chrome_crashpad_handler"
+     fi
+
 
     # 4. System Integration
     # --------------------------------------------------------------------------
