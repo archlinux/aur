@@ -1,22 +1,22 @@
 # Maintainer: William Tang <ttc0419@outlook.com>
 
 pkgname=unreal-engine-bin
-pkgver=5.6.1
+pkgver=5.7.0
 pkgrel=1
 pkgdesc="The world's most open and advanced real-time 3D creation tool"
 arch=('x86_64')
 url='https://www.unrealengine.com/'
 license=('custom')
 conflicts=('unreal-engine' 'unreal-engine-4' 'unreal-engine-git')
-provides=('unreal-engine=5.5')
-depends=('alsa-lib' 'at-spi2-core' 'glu' 'libxkbcommon' 'lttng-ust2.12' 'nss' 'pango' 'vulkan-icd-loader')
+provides=('unreal-engine=5.7')
+depends=('alsa-lib' 'at-spi2-core' 'avahi' 'glu' 'libxcomposite' 'libxdamage' 'libxkbcommon' 'libxrandr' 'lttng-ust2.12' 'nss' 'pango')
 optdepends=('android-ndk: Android build support'
             'clion: CLion IDE support'
             'code: Visual Studio Code IDE support')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the zip file manually from https://www.unrealengine.com/linux')
 source=("manual://Linux_Unreal_Engine_${pkgver}.zip" 'unreal-engine.desktop' 'unreal-engine.xml' {16,24,32,48,64,256}.png)
-sha256sums=('60cbb9942827ba15600452818f497fde96cb4568fa8f07e688dad8185acc3a81'
+sha256sums=('3a308efc60d8852ce289b44ce5fddf77cfa2012b73ae728e0b9a970791087ce3'
             '8a71e10dee1d44ad6f85d993bdf25dd4835f6415e983125ac79a912ee0c3d905'
             '752dc3628639adb84ebda281040ec106227431eb7a5f92375511d96c6ceacf91'
             '16197bc88f2ec77ad2690fae280bf3584c54c7d7b018d8fa4086b7c00fd4effc'
@@ -29,17 +29,10 @@ sha256sums=('60cbb9942827ba15600452818f497fde96cb4568fa8f07e688dad8185acc3a81'
 options=(staticlibs !strip)
 install='unreal-engine-bin.install'
 
-prepare() {
-    # Remove chmod commands for SetupDotnet.sh
-    chmod 777 "$srcdir"/Engine/Build/BatchFiles/Linux/SetupDotnet.sh
-    sed -i '/chmod/d' "$srcdir"/Engine/Build/BatchFiles/Linux/SetupDotnet.sh
-    chmod 555 "$srcdir"/Engine/Build/BatchFiles/Linux/SetupDotnet.sh
-}
-
 package() {
     # Application files
     mkdir -p "$pkgdir"/opt/unreal-engine
-    mv Engine FeaturePacks Samples Templates "$pkgdir"/opt/unreal-engine/
+    mv Engine FeaturePacks Templates "$pkgdir"/opt/unreal-engine/
 
     # Application & MIME icons
     for res in 16 24 32 48 64 256; do
