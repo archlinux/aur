@@ -2,7 +2,7 @@
 
 _name=unoserver
 pkgname="python-${_name}"
-pkgver=3.4 # renovate: datasource=github-tags depName=unoconv/unoserver
+pkgver=3.5 # renovate: datasource=github-tags depName=unoconv/unoserver
 pkgrel=1
 pkgdesc="Using LibreOffice as a server for converting documents"
 arch=('any')
@@ -23,4 +23,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-sha256sums=('2cb7bb13b47780645f9ebb6e0d05961204f99db85ab972677527fbfddf4bccc5')
+sha256sums=('01b2dcaf081a377f9543c34355eadfb3aa1f41d2f1b2b2a5c0732f50fe513576')
