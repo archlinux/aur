@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=fingwit
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Fingerprint Configuration Tool"
 url="https://github.com/xapp-project/fingwit"
@@ -18,13 +18,14 @@ depends=(
     'python-gobject'
     'python-setproctitle'
     'xapp'
+    'xapp-symbolic-icons'
 )
 makedepends=(
     'meson'
     'ninja'
 )
 source=("${pkgname}_${pkgver}.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('46176a0cb107a64c8303b8dc350f3ee2510169ddc06b16d97d3879c81d3cf90b')
+sha256sums=('c169f889dd8977beabe70966060efb29df5fe1d78911ed465f452b4c8f39a99b')
 
 prepare(){
     cd $pkgname-$pkgver
