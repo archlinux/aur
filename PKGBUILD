@@ -2,7 +2,7 @@
 
 pkgname=ti99sim
 pkgver=0.16.0
-pkgrel=4
+pkgrel=3
 pkgdesc="Texas Instruments TI-99/4A Home Computer Emulator"
 arch=('x86_64')
 url="http://www.mrousseau.org/programs/ti99sim"
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('sdl')
 makedepends=('sdl')
 source=("${url}/archives/${pkgname}-${pkgver}.src.tar.xz"
-        "https://ftp.lloyd.fm/ti99sim/TIMRaD2.zip"
+        "https://www.99er.net/files/TIMRaD2.Zip"
         "include-cstring.patch")
 sha256sums=('14bd72f372fe1a253c3a25bca579d29b5c3e47aff2f22622188dc4023576b159'
             'bf01737f996a335f4be84d2b170d2e16704b8242bd8447c5b6debb5b4f959b55'
@@ -38,19 +38,21 @@ build() {
 package() {
   cd "${srcdir}"/${pkgname}-${pkgver}
 
-  # used by `Makefile.linux`
-  export DATA_DIR="${pkgdir}"/opt/${pkgname}
-  export BIN_DIR="${DATA_DIR}"/bin
-  export SYS_BIN="${BIN_DIR}" # prevent automatic symlink creation
+  local DATA_ROOT=/opt/"${pkgname}"
+  export DATA_DIR="${pkgdir}${DATA_ROOT}"
+  export SYS_BIN="${pkgdir}"/usr/bin
+  mkdir -p "${DATA_DIR}" "${SYS_BIN}"
 
-  mkdir -p "${BIN_DIR}" "${pkgdir}"/usr/bin
   make install
 
   cp "${srcdir}"/ROMs/TI-994A.ctg "${DATA_DIR}"/console
   cp "${srcdir}"/ROMs/ti-disk.ctg "${DATA_DIR}"/console
   cp "${srcdir}"/ROMs/spchrom.bin "${DATA_DIR}"/console
 
-  ln -s "${BIN_DIR}"/ti99sim-console "${pkgdir}"/usr/bin/
-  ln -s "${BIN_DIR}"/ti99sim-sdl "${pkgdir}"/usr/bin/
-  ln -s "${pkgdir}"/usr/bin/ti99sim-sdl "${pkgdir}"/usr/bin/ti99sim
+  for SYMLINK in "${SYS_BIN}"/*; do
+    SYMLINK_NAME=$(basename "$SYMLINK")
+    ln -sf "${DATA_ROOT}/bin/${SYMLINK_NAME}" "${SYS_BIN}/${SYMLINK_NAME}"
+  done
+
+  ln -s "${DATA_ROOT}"/bin/ti99sim-sdl "${SYS_BIN}"/ti99sim
 }

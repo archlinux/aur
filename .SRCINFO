@@ -1,14 +1,14 @@
 pkgbase = ti99sim
 	pkgdesc = Texas Instruments TI-99/4A Home Computer Emulator
 	pkgver = 0.16.0
-	pkgrel = 4
+	pkgrel = 3
 	url = http://www.mrousseau.org/programs/ti99sim
 	arch = x86_64
 	license = GPL
 	makedepends = sdl
 	depends = sdl
 	source = http://www.mrousseau.org/programs/ti99sim/archives/ti99sim-0.16.0.src.tar.xz
-	source = https://ftp.lloyd.fm/ti99sim/TIMRaD2.zip
+	source = https://www.99er.net/files/TIMRaD2.Zip
 	source = include-cstring.patch
 	sha256sums = 14bd72f372fe1a253c3a25bca579d29b5c3e47aff2f22622188dc4023576b159
 	sha256sums = bf01737f996a335f4be84d2b170d2e16704b8242bd8447c5b6debb5b4f959b55
