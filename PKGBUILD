@@ -12,7 +12,7 @@ depends=('bash' 'openssl' 'jq' 'vim' 'zip' 'coreutils')
 makedepends=('git')
 provides=('bashhound')
 conflicts=('bashhound')
-source=("${_pkgname}::git+${url}.git")
+source=("${_pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {

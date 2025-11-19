@@ -14,7 +14,7 @@ pkgbase = bashhound
 	depends = coreutils
 	provides = bashhound
 	conflicts = bashhound
-	source = bashhound-git::git+https://github.com/0xbbuddha/BashHound.git
+	source = bashhound::git+https://github.com/0xbbuddha/BashHound.git
 	sha256sums = SKIP
 
 pkgname = bashhound
