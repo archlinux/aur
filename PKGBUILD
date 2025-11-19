@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Translate text by google, bing, youdaozhiyun, haici, stardict, etc at same time from CLI, GUI (GNU/Linux, Android, macOS and Windows), REPL, python, shell and vim."
 arch=(any)
 url=https://github.com/Freed-Wu/translate-shell
-depends=(python-aiohttp python-clipman)
+depends=(python-aiohttp python-clipman python-notify-py)
 makedepends=(python-installer)
 optdepends=(
 	'python-repl-python-wakatime: wakatime support'
@@ -18,7 +18,6 @@ optdepends=(
 	'python-keyring: store APP secrets securely'
 	'python-langdetect: detect language automatically for offline dictionary'
 	'python-pystardict: offline dictionary'
-	'python-notifypy: GUI notification'
 	'espeak-ng: speaker support'
 	'festival: speaker support'
 	'python-pygls: LSP support'
