@@ -1,0 +1,14 @@
+pkgbase = meloic
+	pkgdesc = A simple TUI music listening tool written in Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Huseynteymurzade28/meloic
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	source = git+https://github.com/Huseynteymurzade28/meloic.git
+	sha256sums = SKIP
+
+pkgname = meloic
