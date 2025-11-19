@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Space Funeral
+Comment=A short surreal adventure
+Type=Application
+Exec=space-funeral
+Categories=Game;AdventureGame;
+Terminal=false
+StartupWMClass=EasyRPG Player

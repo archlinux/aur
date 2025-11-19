@@ -1,0 +1,17 @@
+pkgbase = space-funeral
+	pkgdesc = A short comedy adventure game made by thecatamites with RPG Maker 2003
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://thecatamites.itch.io/space-funeral
+	arch = any
+	license = LicenseRef-Freeware
+	makedepends = libarchive
+	depends = easyrpg-player
+	source = https://archive.org/download/space-funeral/Space_Funeral.rar
+	source = space-funeral.desktop
+	source = space-funeral.sh
+	sha256sums = ab54f037b9f67abc35842e9fbfb7649845695870528d56f6350d1ee548e92f09
+	sha256sums = 65024f76c20472e714951a2263fa42c6dc1a19049867ab3f854fb92ff650dd5d
+	sha256sums = 927b610b3a943226e68b80a27cd12fbb9fde75838485296b421b2d1d21397577
+
+pkgname = space-funeral
