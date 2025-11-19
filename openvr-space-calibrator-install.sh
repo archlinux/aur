@@ -101,21 +101,25 @@ if [ -n "$VRPATHREG" ]; then
         OPENVR_LIB="$(dirname "$VRPATHREG")"
     fi
     
+    echo "Registering driver with SteamVR..."
     if [ -n "$OPENVR_LIB" ] && [ "$OPENVR_LIB" != "." ]; then
-        if LD_LIBRARY_PATH="$OPENVR_LIB:$LD_LIBRARY_PATH" "$VRPATHREG" adddriver "$STEAMVR_DRIVERS_DIR" 2>/dev/null; then
+        if LD_LIBRARY_PATH="$OPENVR_LIB:$LD_LIBRARY_PATH" "$VRPATHREG" adddriver "$STEAMVR_DRIVERS_DIR" 2>&1; then
             echo "Driver registered with SteamVR"
         else
-            echo "Note: Driver registration failed (may already be registered)"
+            REGISTER_ERROR=$?
+            echo "Note: Driver registration returned error code $REGISTER_ERROR (may already be registered or SteamVR not running)"
         fi
     else
-        if "$VRPATHREG" adddriver "$STEAMVR_DRIVERS_DIR" 2>/dev/null; then
+        if "$VRPATHREG" adddriver "$STEAMVR_DRIVERS_DIR" 2>&1; then
             echo "Driver registered with SteamVR"
         else
-            echo "Note: Driver registration failed (may already be registered)"
+            REGISTER_ERROR=$?
+            echo "Note: Driver registration returned error code $REGISTER_ERROR (may already be registered or SteamVR not running)"
         fi
     fi
 else
     echo "Warning: vrpathreg not found - manual registration may be required"
+    echo "Driver files installed, but driver registration skipped. Run 'openvr-space-calibrator-install' manually after SteamVR is installed."
 fi
 
 MANIFEST_PATH="$STEAMVR_DRIVERS_DIR/bin/linux64/manifest.vrmanifest"
