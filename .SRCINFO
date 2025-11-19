@@ -1,6 +1,6 @@
 pkgbase = zapzap-git
 	pkgdesc = WhatsApp desktop application written in Pyqt6 + PyQt6-WebEngine
-	pkgver = 6.2.4.r0.g3aa039d
+	pkgver = 6.2.4.r1.g37f7103
 	pkgrel = 1
 	url = https://github.com/rafatosta/zapzap
 	arch = x86_64
