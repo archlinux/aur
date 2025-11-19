@@ -3,9 +3,9 @@
 pkgname=opentracecapture
 pkgver=0.2.0
 pkgrel=1
-pkgdesc="A brief description of your project."
+pkgdesc="Signal analysis library for logic analyzers, oscilloscopes, and multimeters."
 arch=('x86_64')
-url="https://example.com/your-project"
+url="https://opentracelab.github.io/website/"
 license=('GPL-3.0-only') 
 makedepends=('meson' 'ninja' 'pkg-config') # Add any other build dependencies here
 depends=('glib2' 'libusb' 'libzip') # Add any runtime dependencies here
