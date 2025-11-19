@@ -1,0 +1,15 @@
+pkgbase = hackneyed-cursor-magenta-bin
+	pkgdesc = Hackneyed Magenta Multi Animated cursor theme (right-handed, high-contrast)
+	pkgver = 0.9.3
+	pkgrel = 0
+	url = https://futurehorizondesign.net.au/portfolio/hackneyedhighcontraststaticcursors.html
+	arch = any
+	license = MIT
+	license = GPL3
+	optdepends = lxappearance: GUI cursor selector
+	optdepends = gnome-tweaks: GNOME cursor selector
+	provides = hackneyed-cursor-magenta
+	source = https://futurehorizondesign.net.au/docs/hackneyedhighcontrast/Hackneyed-Magenta-Multi-Animated.tar.bz2
+	sha256sums = 007749096f253c99a3c07bc2ee3b9233838c76b197f6ab4d590c82665572077b
+
+pkgname = hackneyed-cursor-magenta-bin

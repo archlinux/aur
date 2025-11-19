@@ -1,0 +1,3 @@
+[hackneyed-cursor-magenta-bin]
+source = "git"
+git = "https://github.com/.git"
