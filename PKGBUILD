@@ -1,4 +1,5 @@
-# Maintainer: mmh <aur@with-h.at>
+# Maintainer: Daniele Paolella <danpaolella@gmail.com>
+# Contributor: mmh <aur@with-h.at>
 
 pkgname="git-store-meta"
 pkgver=2.1.1
