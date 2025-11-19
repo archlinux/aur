@@ -145,6 +145,10 @@ package() {
   # Install space-calibrator binary to /usr/bin
   install -Dm755 build/bin/space-calibrator "${pkgdir}/usr/bin/space-calibrator"
   
+  # Install manifest and actions.json to /usr/bin (required when running executable directly)
+  install -Dm644 build/manifest.vrmanifest "${pkgdir}/usr/bin/manifest.vrmanifest"
+  install -Dm644 build/actions.json "${pkgdir}/usr/bin/actions.json"
+  
   # Install register-overlay utility if built
   if [ -f build/bin/register-overlay ]; then
     install -Dm755 build/bin/register-overlay "${pkgdir}/usr/bin/openvr-space-calibrator-register"
