@@ -1,0 +1,14 @@
+pkgbase = nitchrevived-bin
+	pkgdesc = Incredibly fast system fetch written in nim (binary)
+	pkgver = 0.1.7.3
+	pkgrel = 1
+	url = https://github.com/gnuvalerie/nitchrevived
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source = nitchrevived::https://github.com/gnuvalerie/nitchrevived/raw/binary/bin/nitchrevived
+	source = LICENSE::https://raw.githubusercontent.com/gnuvalerie/nitchrevived/main/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = nitchrevived-bin
