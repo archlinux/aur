@@ -1,0 +1,23 @@
+pkgbase = raylua-git
+	pkgdesc = A modern LuaJIT binding for raylib
+	pkgver = r213.d7c7172
+	pkgrel = 1
+	url = https://github.com/TSnake41/raylib-lua
+	arch = aarch64
+	license = ISC
+	depends = alsa-lib
+	depends = mesa
+	depends = libx11
+	depends = libxrandr
+	depends = libxi
+	depends = xorg-server
+	depends = xorgproto
+	depends = glu
+	provides = raylua
+	provides = raylib-lua
+	conflicts = raylua
+	conflicts = raylib-lua
+	source = git+https://github.com/TSnake41/raylib-lua
+	sha256sums = SKIP
+
+pkgname = raylua-git
