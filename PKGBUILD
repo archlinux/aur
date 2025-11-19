@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=weimail-bin
 _uosname="cn.ankexinchuang.${pkgname%-bin}"
-pkgver=2.3.6.7
+pkgver=2.3.6.8
 pkgrel=1
 pkgdesc="Native Xinchuang email client, free email client software that supports multiple Xinchuang platforms.Just used in China.(Prebuilt version)"
 arch=(
@@ -25,8 +25,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_downurl}/latest/${pkgname%-bin}-latest-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_downurl}/latest/${pkgname%-bin}-latest-amd64.deb")
 sha256sums=('9c37097fe7ef47cb66652053d95471239ec132a05d5e78664fe47b936878aa1d')
-sha256sums_aarch64=('373a758528aa16d97166b5f87537ae9378055f8f615b5c0ac1462b568a5dd0c7')
-sha256sums_x86_64=('73ebbc19b82425fcea39b08b157bb4ae951e2a2c629e7080cdf9fca0198bdd1c')
+sha256sums_aarch64=('890654f83638cde76270fd37501cd2c680386cf49230b68ee194bd905ed33727')
+sha256sums_x86_64=('474ae824a53e4878c25f9b3095b7e664e669ab4f1f7510281d8ef03ce3a06c2a')
 pkgver() {
     cd "${srcdir}/opt/apps/${_uosname}/entries/applications"
     grep "Version=" "${_uosname}.desktop" | sed "s/Version=//g"
