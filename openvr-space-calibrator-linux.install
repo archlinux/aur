@@ -28,7 +28,8 @@ post_install() {
             FOUND_STEAMVR=1
             echo "Found SteamVR for user: $user (home: $user_home)" >&2
             echo "Installing driver..." >&2
-            if /usr/bin/openvr-space-calibrator-install "$user_home" 2>&1; then
+            # Run install script as the user (not root) so vrpathreg can access user's SteamVR config
+            if sudo -u "$user" /usr/bin/openvr-space-calibrator-install "$user_home" 2>&1; then
                 echo "Installation completed for user $user" >&2
             else
                 INSTALL_ERROR=$?
