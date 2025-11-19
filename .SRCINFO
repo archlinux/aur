@@ -1,7 +1,7 @@
 pkgbase = kiro-cli-bin
 	pkgdesc = Prompt to code to deployment in your terminal
 	pkgver = 1.20.0
-	pkgrel = 4
+	pkgrel = 6
 	url = https://kiro.dev/cli/
 	install = kiro-cli.install
 	arch = aarch64

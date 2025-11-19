@@ -3,7 +3,7 @@
 pkgname=kiro-cli-bin
 _name=${pkgname%-bin}
 pkgver=1.20.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Prompt to code to deployment in your terminal"
 arch=('aarch64' 'x86_64')
 url='https://kiro.dev/cli/'
@@ -26,6 +26,11 @@ source_aarch64=("$_name-$pkgver-aarch64.zip::https://desktop-release.q.us-east-1
 b2sums=('798614bf2021111f2c6226ef97b2cd92aeb5201595b18c195921e48c8c225310ed5b85c28ec8a2b94a2649ed1fb3b9c7f6317cec218fe7e124469083a9e4b759')
 b2sums_aarch64=('7eda3c969580f1bdf2cc7a639a00b11781abce5e3a9883100f0b3029b4f0ece9155b613b460e2aee2037497670d71d12343443503ed340327dc31877fecd2ccd')
 b2sums_x86_64=('778b1532296eb1965713d17bb6a919d7d7f8ec17a8526b9a037770d1396080471736c3bbf93c77f1c8f8bd43057ee136dc92f43b7df3822394aa69dd44cbe575')
+
+prepare() {
+    cd kirocli/bin
+    sed -i 's|\$HOME/.local/bin/kiro-cli|/usr/bin/kiro-cli|g' q qchat
+}
 
 build() {
     cd kirocli
