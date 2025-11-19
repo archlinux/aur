@@ -1,0 +1,10 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!lidarr.service
+!lidarr.sysusers
+!lidarr.tmpfiles
+!lidarr.install
+!package_info

@@ -1,0 +1,5 @@
+[lidarr-plugins]
+source = "jq"
+url = "https://lidarr.servarr.com/v1/update/plugins/changes?os=linux&runtime=netcore&arch=x64"
+filter = '.[0].version'
+include_regex = "(\\d+\\.\\d+\\.\\d+\\.\\d+)"
