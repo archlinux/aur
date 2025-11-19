@@ -8,6 +8,7 @@ pkgbase = echomind
 	makedepends = rust
 	makedepends = cargo
 	makedepends = git
+	makedepends = clang
 	depends = openssl
 	depends = gcc-libs
 	optdepends = jq: for JSON output formatting
