@@ -1,5 +1,6 @@
-# Maintainer: Ender_Shiru
-# Credit to sum01 
+# Maintainer: Ender Shiru <endershiru@outlook.com>
+# Contributor: sdkbn <sdk@pm.me>
+# Contributor: sum01 <sum01@protonmail.com>
 pkgname=sqlitecpp
 _dirname='SQLiteCpp'
 pkgver=3.3.3
