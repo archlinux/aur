@@ -2,7 +2,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=browser360-bin
 _pkgname=com.360.browser-stable
-pkgver=13.4.1000.77
+pkgver=13.4.1100.108
 pkgrel=1
 pkgdesc="360 Browser stable version"
 arch=(
@@ -24,12 +24,12 @@ depends=(
 install="${pkgname%-bin}.install"
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::https://gedown.360safe.com/gc/signed_${_pkgname}_${pkgver}-1_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::https://gedown.360safe.com/gc/signed_${_pkgname}_${pkgver}-1_amd64.deb")
-sha256sums_aarch64=('b54083ee20b1d7a8cb08cd81bd5d37b607e2d4238f638d1231460f26d54a6164')
-sha256sums_x86_64=('04314404237f80daa3f0896ef56f0296e39656f4af7be94e5d67318ccd168b5c')
+sha256sums_aarch64=('513c4b7d3daa25cf4b1647901cf859921a94fab405c309aad5105e63a353607c')
+sha256sums_x86_64=('568d5c14674ed9a53b4a07fdcd9e78169b0f12f2e77da21c33808b3411d7a468')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
-    rm -rf "${srcdir}/opt/apps/${_pkgname}/info" \
-           "${srcdir}/opt/apps/${_pkgname}/entries/autostart"
+    rm -rf  "${srcdir}/opt/apps/${_pkgname}/info" \
+            "${srcdir}/opt/apps/${_pkgname}/entries/autostart"
 }
 package() {
     cp -Pr --no-preserve=ownership "${srcdir}/opt" "${pkgdir}"
