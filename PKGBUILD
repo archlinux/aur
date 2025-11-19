@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: zhullyb <zhullyb [at] outlook dot com>
 pkgname=wolai-bin
-pkgver=1.2.10
+pkgver=1.2.12
 _electronversion=22
-pkgrel=4
+pkgrel=1
 pkgdesc="A new form of one-stop collaboration platform, it is different from all the traditional documents you used to use, online documents.(Use system-wide electron)一种新形态的文档/笔记/信息系统,它与你过去使用的所有传统文档、在线文档都有很多不同,学会使用wolai就等于拥有了一个强大的个人与团队生产力工具。"
 arch=(
     'aarch64'
@@ -26,9 +26,13 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('04b7a1e4cecbadd2e1bc903b3ad518834f93b9b76542bf53fcb18f24faac099c'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('18e7f956b85e0396320ee938455c80e16446d267a5c7b35268f9d046d8cd86b7')
-sha256sums_x86_64=('512b11d5f9a743e59bb188eb2179bcfdd2313c81c0ac1f6a60cf1936cb7c0636')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums_aarch64=('cbab7af907f46d7117dbc07a8f4b55a0d8db3c539795d37cdd838a5d12d8cbf6')
+sha256sums_x86_64=('fa227fecf5dfa0bdf5e9e44fa05b7af951e57e5e3e4133ba90c459f53fbb571f')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -38,6 +42,7 @@ prepare() {
         s/@options@//g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i -e "
         s/\/opt\/${pkgname%-bin}\///g
         3i\Name[zh_CN]=我来
