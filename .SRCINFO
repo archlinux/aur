@@ -1,8 +1,9 @@
 pkgbase = git-store-meta
 	pkgdesc = Simple file metadata storing and applying for git
 	pkgver = 2.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/danny0838/git-store-meta
+	changelog = git-store-meta.changelog
 	arch = any
 	license = MIT
 	depends = coreutils
@@ -13,4 +14,3 @@ pkgbase = git-store-meta
 	sha256sums = a3357ae82b8382945ce07823441af67f8591efc2ce019d688ff1184757bbee7f
 
 pkgname = git-store-meta
-
