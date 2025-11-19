@@ -1,0 +1,23 @@
+pkgbase = python-clipman
+	pkgdesc = Python3 module for working with clipboard. Created because pyperclip is discontinued.
+	pkgver = 3.3.3
+	pkgrel = 1
+	url = None
+	arch = any
+	license = custom:Mozilla Public License 2.0 (MPL 2.0)
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = python
+	optdepends = xsel: clipboard support
+	optdepends = xclip: clipboard support
+	optdepends = wl-clipboard: clipboard support
+	optdepends = lemonade: clipboard support
+	optdepends = doit: clipboard support
+	optdepends = tmux: clipboard support
+	optdepends = cygutils: clipboard support for Msys2
+	source = https://files.pythonhosted.org/packages/0e/a5/ca13f5e436b5eb968c41165d3adc4c5c7146f11ace92ef830ec7618f9884/clipman-3.3.3.tar.gz
+	sha256sums = 80341d718ef3e5344001167e50173b2946516f8970b9180335d2de95d57f403c
+
+pkgname = python-clipman
