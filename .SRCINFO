@@ -1,12 +1,13 @@
 pkgbase = yabasic
 	pkgdesc = Yet Another Basic
 	pkgver = 2.91.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.yabasic.de/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = libxt
+	depends = glibc
 	depends = libx11
 	depends = ncurses
 	depends = libffi
