@@ -1,7 +1,7 @@
 pkgbase = archi
 	pkgdesc = Free, open source, cross-platform tool and editor to create ArchiMate models.
 	pkgver = 5.7.0
-	pkgrel = 0
+	pkgrel = 1
 	url = http://www.archimatetool.com/
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = archi
 	depends = curl
 	optdepends = webkitgtk2: hints view support
 	provides = archi
-	source = https://github.com/archimatetool/archi.io/releases/download/5.7.0/Archi-Linux64-5.7.0.tgz
+	source = https://github.com/archimatetool/archi.io/releases/download/latest/Archi-Linux64-5.7.0.tgz
 	source = archi.desktop
 	source = LICENSE
 	sha1sums = d4757c33e019e8da3522aa89807634644a309c25

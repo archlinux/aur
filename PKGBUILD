@@ -11,7 +11,7 @@ _pkgver_major=5
 _pkgver_minor=7
 _pkgver_patch=0
 pkgver=${_pkgver_major}.${_pkgver_minor}.${_pkgver_patch}
-pkgrel=0
+pkgrel=1
 pkgdesc="Free, open source, cross-platform tool and editor to create ArchiMate models."
 arch=('x86_64')
 url="http://www.archimatetool.com/"
@@ -22,7 +22,7 @@ provides=('archi')
 
 # The first source is just a placeholder to avoid makepkg error.
 # The real archive is downloaded manually in prepare() with fallback support.
-source=("https://github.com/archimatetool/archi.io/releases/download/${pkgver}/Archi-Linux64-${pkgver}.tgz"
+source=("https://github.com/archimatetool/archi.io/releases/download/latest/Archi-Linux64-${pkgver}.tgz"
         "${pkgname}.desktop"
         "LICENSE")
 sha1sums=('d4757c33e019e8da3522aa89807634644a309c25'
