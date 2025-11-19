@@ -1,9 +1,10 @@
 # Maintainer: Joelton D. Brandão <joeltondbrandao at freedxm dot com>
 # Maintainer: Ruben Di Battista  <rubendibattista at gmail dot com>
 # Contributor: Tobias M. Baust <tobias.baust at tutanota dot com>
+
 _pkgname=cantera
 pkgname="${_pkgname}"
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='suite of tools for kinetics, thermodynamics, and transport processes'
 arch=('x86_64')

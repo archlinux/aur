@@ -1,6 +1,6 @@
 pkgbase = cantera
 	pkgdesc = suite of tools for kinetics, thermodynamics, and transport processes
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://cantera.org/
 	arch = x86_64
