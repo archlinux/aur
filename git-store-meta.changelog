@@ -3,4 +3,5 @@
 	* 2.3.7-1:
 	update to latest release;
 	restore original executable filename;
+	install license;
 	add changelog.

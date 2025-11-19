@@ -17,4 +17,5 @@ sha256sums=('86ab4b587e0dbe7b6458bdebd6b97bf1aac9010d3c029be93934118736811bfe')
 package() {
 	cd "$pkgname-$pkgver"
 	install -D git-store-meta.pl "$pkgdir/usr/bin/git-store-meta.pl"
+	install -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
