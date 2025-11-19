@@ -155,5 +155,13 @@ fi
 
 echo ""
 echo "Installation complete!"
+echo ""
+echo "IMPORTANT: To enable the overlay:"
+echo "1. Start SteamVR"
+echo "2. The overlay should appear automatically in the SteamVR dashboard"
+echo "3. If it doesn't appear, manually launch it once:"
+echo "   space-calibrator"
+echo "   (It will register itself and then auto-start on future SteamVR launches)"
+echo ""
 echo "Restart SteamVR to activate the driver and overlay."
 
