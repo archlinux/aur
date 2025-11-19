@@ -2,7 +2,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='keylightd-tray-bin'
-pkgver=0.0.40
+pkgver=0.0.41
 pkgrel=1
 pkgdesc='System tray application for controlling Key Lights via keylightd'
 url='https://github.com/jmylchreest/keylightd'
@@ -13,11 +13,11 @@ conflicts=('keylightd-tray')
 depends=('gtk3' 'webkit2gtk-4.1')
 optdepends=('keylightd: for local socket connection')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/keylightd/releases/download/v0.0.40/keylightd-tray_v0.0.40_linux_arm64.tar.gz")
-sha256sums_aarch64=('4d06802b10589a557c10bc3fb2d96412ff6a958f5144cda2c4bc0fa94a7bd082')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/keylightd/releases/download/v0.0.41/keylightd-tray_v0.0.41_linux_arm64.tar.gz")
+sha256sums_aarch64=('591e0bc5556b49cc69d18b0e0babb36ea99927b5764125c49ab79e84df6569a9')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/keylightd/releases/download/v0.0.40/keylightd-tray_v0.0.40_linux_amd64.tar.gz")
-sha256sums_x86_64=('6ab95ffab9c951892d35e3021e46d3087b3357a165136e46ba110c7632e54af7')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/keylightd/releases/download/v0.0.41/keylightd-tray_v0.0.41_linux_amd64.tar.gz")
+sha256sums_x86_64=('aedfd058f394a45aea0047927ac048269f8f8802bbf6a1754f1fc75e8022f6ae')
 
 package() {
   # binary
