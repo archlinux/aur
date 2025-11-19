@@ -1,0 +1,17 @@
+pkgbase = visagevault-bin
+	pkgdesc = Gestor de fotografías inteligente con reconocimiento facial (Binario precompilado)
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/danitxu79/visagevault
+	arch = x86_64
+	license = LGPL3
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	provides = visagevault
+	conflicts = visagevault
+	options = !strip
+	source = https://github.com/danitxu79/visagevault/releases/download/v1.4/visagevault-1.4-1.x86_64.pkg.tar.zst
+	sha256sums = SKIP
+
+pkgname = visagevault-bin
