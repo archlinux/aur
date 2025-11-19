@@ -2,7 +2,7 @@
 
 pkgname=ti99sim
 pkgver=0.16.0
-pkgrel=3
+pkgrel=5
 pkgdesc="Texas Instruments TI-99/4A Home Computer Emulator"
 arch=('x86_64')
 url="http://www.mrousseau.org/programs/ti99sim"
