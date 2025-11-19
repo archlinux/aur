@@ -7,6 +7,10 @@ pkgdesc="龙芯浏览器V3版（基于 Chromium）"
 arch=('x86_64' 'loongarch64')
 url="https://www.loongnix.cn/zh/api/lbrowser/"
 license=('unknown')
+depends=(
+	'gtk2'
+	'libxcrypt-compat'
+)
 conflicts=("lbrowser-v2")
 source_x86_64=("https://ftp.loongnix.cn/browser/${_pkgname}/${pkgver}/amd64/${_pkgname}_${pkgver}-1.stable.amd64.deb")
 source_loongarch64=("https://ftp.loongnix.cn/browser/${_pkgname}/${pkgver}/la64/${_pkgname}_${pkgver}-1.stable.loongarch64.deb")
