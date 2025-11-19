@@ -1,7 +1,7 @@
 # Maintainer: Michał Lisowski <lisu at riseup dot net>
 
 pkgname=manjaro-hyprland-settings
-pkgver="20251118"
+pkgver="20251119"
 _commit='523939330966e8f9a50697fa7a0a4fed611e3438'
 pkgrel=1
 arch=('any')
@@ -23,6 +23,7 @@ package() {
 
   depends=(
     'beautyline'
+    'brightnessctl'
     'cliphist'
     'emote'
     'foot'
