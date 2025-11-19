@@ -1,0 +1,14 @@
+pkgbase = pulsebench
+	pkgdesc = PulseBench - multi-threaded CPU benchmarking tool
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/hent83722/PulseBench
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = pkg-config
+	source = https://github.com/hent83722/PulseBench/archive/refs/tags/v1.2.1.tar.gz
+	sha512sums = d1cc37a63ab2ba00e1682c06d16e5142d2b1b8280602bbeb143f89a646247090d222aef4f7d3db7a2acaacd20f10912dab6af98d64aae07fd3e5c363d251391e
+
+pkgname = pulsebench
