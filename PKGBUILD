@@ -1,21 +1,21 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 
 _pyname=plumb
-pkgname=python-${_pyname,,}
+pkgname=python-plumb
 pkgver=1.2.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Connect systems via many brokers such as Kafka, AWS SQS, RabbitMQ and more'
 arch=(any)
 url="https://pypi.org/project/$_pyname"
 license=(MIT)
-_pydeps=(boto3
-         botocore
-         confluent_kafka
-         dateutil
-         pika
-         redis)
-depends=(python
-         "${_pydeps[@]/#/python-}")
+depends=(
+   python
+   python-boto3
+   python-botocore
+   python-confluent-kafka
+   python-dateutil
+   python-pika
+   redis)
 makedepends=(python-{build,installer,wheel}
              python-setuptools)
 _archive="$_pyname-$pkgver"
