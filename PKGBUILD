@@ -4,7 +4,7 @@
 _pkgname=longbridge
 
 pkgname="${_pkgname}"-pro-appimage
-pkgver=0.8.2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A professional trading platform tailored to your needs"
 arch=('x86_64')
@@ -18,7 +18,7 @@ _license="LICENSE.pdf"
 source_x86_64=("${_appimage}::https://assets.lbctrl.com/github/release/${_pkgname}-desktop/stable/${_pkgname}-v${pkgver}-linux-x86_64.AppImage"
                "${_license}::https://pub.lbkrs.com/static/offline/202508/FN9DnQt1WuLR5Wmz/LBPL_Platform_TnCs_3_December_2024.pdf")
 noextract=("${_appimage}")
-sha256sums_x86_64=('6212bae37e58a99cfe95ce7d2e41d99beaf060b0a1fdc403160ee8109686c7c8'
+sha256sums_x86_64=('bce0ab51970a0cfa1d691d0655d142fe22c4722ae23cff87ed710249fa942825'
                    'c7ed0deafa4570da6fd7d173f8be759645673ee55d3a41ef9473e0d6658ad231')
 
 prepare() {
