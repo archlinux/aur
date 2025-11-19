@@ -2,7 +2,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='tinct-plugin-wob-bin'
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Wob (Wayland Overlay Bar) output plugin for Tinct'
 url='https://github.com/jmylchreest/tinct'
@@ -13,14 +13,14 @@ conflicts=('tinct')
 depends=('tinct')
 install=tinct-plugin-wob.install
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.1.2/tinct-plugin-wob_0.1.2_Linux_arm64.tar.gz")
-sha256sums_aarch64=('d2428cc34d90c8a8c68dc2ed1c3ad7b71d6f30e9e740326d6d0783e246e548c9')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.1.3/tinct-plugin-wob_0.1.3_Linux_arm64.tar.gz")
+sha256sums_aarch64=('6b23f4807821dc69035d47b629dd138eb73cf859583e2bd35259e41644dd9a3f')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.1.2/tinct-plugin-wob_0.1.2_Linux_armv7.tar.gz")
-sha256sums_armv7h=('61cd74f96a77cda11790ea03481a69a9d6e301ff192c6e111e1815114ceeeacd')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.1.3/tinct-plugin-wob_0.1.3_Linux_armv7.tar.gz")
+sha256sums_armv7h=('40376f32c4954650f85106361dd558cc35fff73a995bf645afcf38c1b5990aca')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.1.2/tinct-plugin-wob_0.1.2_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('a6a7eb141ee39bea79a98304b56f3d7902cc634e0372345d8611ba59b563e179')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.1.3/tinct-plugin-wob_0.1.3_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('f11ad4be432552e817d765cf09ceddc8d22e9116cb746a22e3ab045e1a354b87')
 
 package() {
   # bin
