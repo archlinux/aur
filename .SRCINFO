@@ -1,0 +1,32 @@
+pkgbase = hadoop-bin
+	pkgdesc = An open-source software for reliable, scalable, distributed computing
+	pkgver = 3.4.2
+	pkgrel = 1
+	url = https://hadoop.apache.org/
+	install = hadoop.install
+	arch = x86_64
+	license = APACHE
+	depends = inetutils
+	depends = java-runtime-headless>=11
+	depends = openssh
+	depends = protobuf
+	conflicts = yarn
+	conflicts = hadoop
+	source = https://dlcdn.apache.org/hadoop/common/hadoop-3.4.2/hadoop-3.4.2-lean.tar.gz
+	source = hadoop
+	source = hadoop.sh
+	source = hadoop-datanode.service
+	source = hadoop-historyserver.service
+	source = hadoop-namenode.service
+	source = hadoop-resourcemanager.service
+	source = hadoop-secondarynamenode.service
+	sha256sums = 6324a83fe11e517890436fc6d80bc829506ed252cbe2465752b91220900dfb83
+	sha256sums = 22ea61fd1f1e33a444360a99effb4540784f4254e6be631ead9c7106799e0960
+	sha256sums = 35476cfcad71d441d5df372af6af44b19e5ea65eafa732b3fc54d503c2871a16
+	sha256sums = 876d40b0a2ec9b9cec9b667d7909591ee0ef1acbd5417a0357c33539d8a54e1a
+	sha256sums = f8f3b3a93a9e455da198ee93a873012399878459e78a3a7de0e396d69e81b61f
+	sha256sums = 3d4aa2a660bd509e658c8109d9e91c00b0f0eee3a2ecab71a4785a76529ea242
+	sha256sums = 2f6b8893a4b4e2ef120193ecfc2d929a8558d2a1c5b0af12e9224342ca90a158
+	sha256sums = ed1e7f13d2023d49a51dc04c4459d12a53bff258a05b852a3e10a9fd2d18bbb8
+
+pkgname = hadoop-bin
