@@ -1,6 +1,7 @@
 # Maintainer: 0xbbuddha <killian@archimedeos.org>
 
-pkgname=bashhound
+pkgname=bashhound-git
+_pkgname=${pkgname%-git}
 pkgver=r6.f5500dd
 pkgrel=1
 pkgdesc="Active Directory data collector for BloodHound written in Bash"
@@ -11,26 +12,24 @@ depends=('bash' 'openssl' 'jq' 'vim' 'zip' 'coreutils')
 makedepends=('git')
 provides=('bashhound')
 conflicts=('bashhound')
-source=("git+https://github.com/0xbbuddha/BashHound.git")
+source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/BashHound"
+    cd "$srcdir/${_pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "$srcdir/BashHound"
+    cd "$srcdir/${_pkgname}"
     
-    sed -i 's|^SCRIPT_DIR=.*|SCRIPT_DIR="/usr/lib/bashhound"|' bashhound
-    
+    sed -i 's|^SCRIPT_DIR=.*|SCRIPT_DIR="/usr/lib/bashhound"|' bashhound    
     sed -i 's|^LIB_DIR=.*|LIB_DIR="/usr/lib/bashhound/lib"|' lib/collectors.sh
-    
     sed -i 's|^LIB_DIR=.*|LIB_DIR="/usr/lib/bashhound/lib"|' lib/ldap.sh
 }
 
 package() {
-    cd "$srcdir/BashHound"
+    cd "$srcdir/${_pkgname}"
     
     install -Dm755 bashhound "$pkgdir/usr/bin/bashhound"
     
