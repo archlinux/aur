@@ -142,13 +142,6 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-main"
   
-  # Install space-calibrator binary to /usr/bin
-  install -Dm755 build/bin/space-calibrator "${pkgdir}/usr/bin/space-calibrator"
-  
-  # Install manifest and actions.json to /usr/bin (required when running executable directly)
-  install -Dm644 build/manifest.vrmanifest "${pkgdir}/usr/bin/manifest.vrmanifest"
-  install -Dm644 build/actions.json "${pkgdir}/usr/bin/actions.json"
-  
   # Install register-overlay utility if built
   if [ -f build/bin/register-overlay ]; then
     install -Dm755 build/bin/register-overlay "${pkgdir}/usr/bin/openvr-space-calibrator-register"
@@ -156,6 +149,7 @@ package() {
   
   # Install driver files to /usr/lib/openvr-space-calibrator-linux (as expected by install script)
   install -Dm755 build/lib/driver_01spacecalibrator.so "${pkgdir}/usr/lib/openvr-space-calibrator-linux/driver_01spacecalibrator.so"
+  install -Dm755 build/bin/space-calibrator "${pkgdir}/usr/lib/openvr-space-calibrator-linux/space-calibrator"
   install -Dm644 build/manifest.vrmanifest "${pkgdir}/usr/lib/openvr-space-calibrator-linux/manifest.vrmanifest"
   install -Dm644 build/actions.json "${pkgdir}/usr/lib/openvr-space-calibrator-linux/actions.json"
   install -Dm644 driver_01spacecalibrator/driver.vrdrivermanifest "${pkgdir}/usr/lib/openvr-space-calibrator-linux/driver.vrdrivermanifest"

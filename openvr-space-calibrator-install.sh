@@ -44,8 +44,18 @@ OWNER_USER=$(stat -c '%U' "$USER_HOME" 2>/dev/null || echo "")
 OWNER_GROUP=$(stat -c '%G' "$USER_HOME" 2>/dev/null || echo "")
 
 cp "$PKG_DIR/driver_01spacecalibrator.so" "$STEAMVR_DRIVERS_DIR/bin/linux64/"
-cp /usr/bin/space-calibrator "$STEAMVR_DRIVERS_DIR/bin/linux64/"
+
+# Copy binary to SteamVR directory (this is where it needs to run from)
+if [ -f "$PKG_DIR/space-calibrator" ]; then
+    cp "$PKG_DIR/space-calibrator" "$STEAMVR_DRIVERS_DIR/bin/linux64/"
+elif [ -f "/usr/bin/space-calibrator" ]; then
+    cp "/usr/bin/space-calibrator" "$STEAMVR_DRIVERS_DIR/bin/linux64/"
+else
+    echo "Error: space-calibrator binary not found" >&2
+    exit 1
+fi
 chmod +x "$STEAMVR_DRIVERS_DIR/bin/linux64/space-calibrator"
+
 cp "$PKG_DIR/manifest.vrmanifest" "$STEAMVR_DRIVERS_DIR/bin/linux64/"
 
 if [ -f "$PKG_DIR/actions.json" ]; then
@@ -151,6 +161,20 @@ if [ -f "$MANIFEST_PATH" ]; then
     fi
 else
     echo "Warning: Manifest file not found at $MANIFEST_PATH"
+fi
+
+# Create symlink in /usr/bin pointing to SteamVR directory executable
+# This ensures the binary always runs from the correct location with manifest/actions.json
+if [ -f "$STEAMVR_DRIVERS_DIR/bin/linux64/space-calibrator" ]; then
+    echo ""
+    echo "Creating system symlink..."
+    if [ "$(id -u)" -eq 0 ]; then
+        ln -sf "$STEAMVR_DRIVERS_DIR/bin/linux64/space-calibrator" /usr/bin/space-calibrator 2>/dev/null || {
+            echo "Warning: Could not create symlink (may need manual creation)" >&2
+        }
+    else
+        echo "Note: Run 'sudo ln -sf $STEAMVR_DRIVERS_DIR/bin/linux64/space-calibrator /usr/bin/space-calibrator' to create system symlink"
+    fi
 fi
 
 echo ""
