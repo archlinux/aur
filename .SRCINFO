@@ -1,15 +1,15 @@
 pkgbase = mips64-ultra-elf-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files for mips64-ultra-elf
-	pkgver = 2.45_r225.be7ccd0
+	pkgver = 2.45.1_r228.e13a7ec
 	pkgrel = 1
 	url = http://www.gnu.org/software/binutils/
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = libelf
-	source = ftp://ftp.gnu.org/gnu/binutils/binutils-2.45.tar.bz2
+	source = ftp://ftp.gnu.org/gnu/binutils/binutils-2.45.1.tar.bz2
 	source = git+https://github.com/glankk/n64.git#branch=n64-ultra
-	sha256sums = 1393f90db70c2ebd785fb434d6127f8888c559d5eeb9c006c354b203bab3473e
+	sha256sums = 860daddec9085cb4011279136fc8ad29eb533e9446d7524af7f517dd18f00224
 	sha256sums = SKIP
 
 pkgname = mips64-ultra-elf-binutils
