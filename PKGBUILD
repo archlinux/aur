@@ -12,8 +12,10 @@ makedepends=('cmake' 'base-devel' 'eigen' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xi-ve/openvr-space-calibrator-linux/archive/main.tar.gz"
         "openvr-headers.tar.gz::https://github.com/ValveSoftware/openvr/archive/master.tar.gz"
         "imgui.tar.gz::https://github.com/ocornut/imgui/archive/refs/heads/master.tar.gz"
-        "eigen.tar.gz::https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz")
+        "eigen.tar.gz::https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz"
+        "openvr-space-calibrator-install.sh")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -162,5 +164,5 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   
   # Install install script
-  install -Dm755 openvr-space-calibrator-install.sh "${pkgdir}/usr/bin/openvr-space-calibrator-install"
+  install -Dm755 "${srcdir}/openvr-space-calibrator-install.sh" "${pkgdir}/usr/bin/openvr-space-calibrator-install"
 }

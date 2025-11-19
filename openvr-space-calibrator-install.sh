@@ -47,7 +47,12 @@ cp "$PKG_DIR/driver_01spacecalibrator.so" "$STEAMVR_DRIVERS_DIR/bin/linux64/"
 cp /usr/bin/space-calibrator "$STEAMVR_DRIVERS_DIR/bin/linux64/"
 chmod +x "$STEAMVR_DRIVERS_DIR/bin/linux64/space-calibrator"
 cp "$PKG_DIR/manifest.vrmanifest" "$STEAMVR_DRIVERS_DIR/bin/linux64/"
-cp "$PKG_DIR/actions.json" "$STEAMVR_DRIVERS_DIR/bin/linux64/" 2>/dev/null || echo "Warning: actions.json not found in package directory"
+
+if [ -f "$PKG_DIR/actions.json" ]; then
+    cp "$PKG_DIR/actions.json" "$STEAMVR_DRIVERS_DIR/bin/linux64/"
+else
+    echo "Warning: actions.json not found at $PKG_DIR/actions.json - playspace movement bindings may not work" >&2
+fi
 cat > "$STEAMVR_DRIVERS_DIR/driver.vrdrivermanifest" << 'DRIVER_MANIFEST_EOF'
 {
 	"alwaysActivate": true,
