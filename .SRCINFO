@@ -1,7 +1,7 @@
 pkgbase = syscgo
 	pkgdesc = Terminal animation library and CLI tool for Go
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nomadcxx/sysc-Go
 	arch = x86_64
 	arch = aarch64

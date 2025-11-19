@@ -1,7 +1,7 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=syscgo
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal animation library and CLI tool for Go"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nomadcxx/sysc-Go"
@@ -32,11 +32,15 @@ package() {
 
   # Install fonts for TUI
   install -dm755 "${pkgdir}/usr/share/syscgo/fonts"
-  cp -r fonts/*.bit "${pkgdir}/usr/share/syscgo/fonts/"
+  if [ -d "assets/fonts" ]; then
+    cp -r assets/fonts/*.bit "${pkgdir}/usr/share/syscgo/fonts/"
+  fi
 
   # Install assets
   install -dm755 "${pkgdir}/usr/share/syscgo/assets"
-  cp -r assets/*.txt "${pkgdir}/usr/share/syscgo/assets/" 2>/dev/null || true
+  if [ -d "assets" ]; then
+    find assets -maxdepth 1 -type f -name "*.txt" -exec cp {} "${pkgdir}/usr/share/syscgo/assets/" \;
+  fi
 
   # Install license
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
