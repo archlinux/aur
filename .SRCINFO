@@ -1,6 +1,6 @@
 pkgbase = dl-bin
 	pkgdesc = Deploy Local - site deployment assistant locally. A convenient wrapper over docker-compose, which simplifies the local deployment of the project.
-	pkgver = 1.1.3
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://local-deploy.github.io
 	arch = aarch64
@@ -8,9 +8,9 @@ pkgbase = dl-bin
 	license = MIT
 	provides = dl
 	conflicts = dl
-	source_aarch64 = dl-bin_1.1.3_aarch64.tar.gz::https://github.com/local-deploy/dl/releases/download/1.1.3/dl-1.1.3-linux-arm64.tar.gz
-	sha256sums_aarch64 = 370b415964a02245904067bb32149503934bf2b22c2b2adb22809f3be5fb8f56
-	source_x86_64 = dl-bin_1.1.3_x86_64.tar.gz::https://github.com/local-deploy/dl/releases/download/1.1.3/dl-1.1.3-linux-amd64.tar.gz
-	sha256sums_x86_64 = 046072ca1a57d27a64298f5ba56d72aed2ac9e7ec49be49398f67e242c39d5ae
+	source_aarch64 = dl-bin_1.2.0_aarch64.tar.gz::https://github.com/local-deploy/dl/releases/download/1.2.0/dl-1.2.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 0bde34fd46429ec31a136f11cc0f1da5331a48c689ac5f279b5ba543674407da
+	source_x86_64 = dl-bin_1.2.0_x86_64.tar.gz::https://github.com/local-deploy/dl/releases/download/1.2.0/dl-1.2.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = b368437ffaa6de121007b9da992392bb12b16fabe561dfb6ecd34e7b22444c62
 
 pkgname = dl-bin
