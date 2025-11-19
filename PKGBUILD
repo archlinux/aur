@@ -15,8 +15,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 options=('!strip')
 
-# v1.0.0 provides unified Linux build - no more separate variants
-source=("https://github.com/puneetsl/lotion/releases/download/v1.0.0/Lotion-linux-x64-1.0.0.zip"
+source=("https://github.com/puneetsl/lotion/releases/download/v${pkgver}/Lotion-linux-x64-${pkgver}.zip"
         "https://raw.githubusercontent.com/puneetsl/lotion/master/icon.png")
 sha256sums=('SKIP'
             'SKIP')
@@ -26,9 +25,8 @@ prepare() {
     rm -rf "${srcdir}/lotion-app"
     mkdir -p "${srcdir}/lotion-app"
     
-    # Extract the archive (v1.0.0 uses zip format)
     # Use -o flag to overwrite files without prompting
-    unzip -o -q "${srcdir}/Lotion-linux-x64-1.0.0.zip" -d "${srcdir}/"
+    unzip -o -q "${srcdir}/Lotion-linux-x64-${pkgver}.zip" -d "${srcdir}/"
     
     # Move contents from subdirectory to lotion-app
     cp -r "${srcdir}/Lotion-linux-x64"/* "${srcdir}/lotion-app/"
@@ -42,7 +40,7 @@ package() {
     install -dm755 "${pkgdir}/opt/${pkgname}"
     cp -a . "${pkgdir}/opt/${pkgname}/"
     
-    # Make the main executable actually executable (v1.0.0 uses lowercase 'lotion')
+    # Make the main executable actually executable
     chmod +x "${pkgdir}/opt/${pkgname}/lotion"
     
     # Create wrapper script in /usr/bin
@@ -59,7 +57,7 @@ EOF
     cat > "${pkgdir}/usr/share/applications/${pkgname}.desktop" << EOF
 [Desktop Entry]
 Name=Lotion
-Comment=Unofficial Notion.so app for Linux (v1.0.0)
+Comment=Unofficial Notion.so app for Linux
 Exec=${pkgname} %U
 Icon=${pkgname}
 Type=Application
@@ -90,14 +88,7 @@ EOF
     
     # Skip SVG creation as it causes black/white issues in Dash to Dock
     # PNG icons work better for this application
-    
-    # Add 512x512 size for high-DPI displays
-    install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
-    magick "${srcdir}/icon.png" -resize "512x512" -quality 100 "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
-    
-    # Add 512x512 size for high-DPI displays
-    install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
-    magick "${srcdir}/icon.png" -resize "512x512" -quality 100 "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
+    # Note: 512x512 is already included in the loop above
     
     # Create install script to refresh icon cache (helps with GNOME icon recognition)
     install -dm755 "${pkgdir}/usr/share/${pkgname}"
