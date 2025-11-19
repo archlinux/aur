@@ -5,7 +5,7 @@
 # Contributor: chaseme <aur@chase.ninja>
 
 pkgname='tenv-bin'
-pkgver=4.7.21
+pkgver=4.8.3
 pkgrel=1
 pkgdesc='OpenTofu, Terraform, Terragrunt, Terramate and Atmos version manager, written in Go'
 url='https://tofuutils.github.io/tenv/'
@@ -15,14 +15,14 @@ provides=('atmos' 'tenv' 'terraform' 'terragrunt' 'terramate' 'tf' 'tofu')
 conflicts=('atmos' 'atmos-bin' 'opentofu' 'opentofu-bin' 'opentofu-bin-stable' 'opentofu-git' 'terraform' 'terragrunt' 'terramate' 'tfenv' 'tgenv' 'tofuenv')
 optdepends=('cosign: package validation for OpenTofu')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/tofuutils/tenv/releases/download/v4.7.21/tenv_v4.7.21_Linux_arm64.tar.gz")
-sha256sums_aarch64=('49ee0e8be761f4a7fb1ac8920247023cc7716864550b85c544710a379be09aa6')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/tofuutils/tenv/releases/download/v4.8.3/tenv_v4.8.3_Linux_arm64.tar.gz")
+sha256sums_aarch64=('1fade16637ceb8d96d550b4813c83c57bf33c53ee11bbe1d0bedf8f627a4359c')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/tofuutils/tenv/releases/download/v4.7.21/tenv_v4.7.21_Linux_i386.tar.gz")
-sha256sums_i686=('c7726a8d2c82cf03709a8b09f725693587b053bad6b36e2d0f2af8c8f3e73c5d')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/tofuutils/tenv/releases/download/v4.8.3/tenv_v4.8.3_Linux_i386.tar.gz")
+sha256sums_i686=('c783f947e556f1333d9d7fc3e9476133abf974cea4f56b1f502c59ef334f6dd5')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/tofuutils/tenv/releases/download/v4.7.21/tenv_v4.7.21_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('9fad45e8d09c77aab6a0670401cedc7eaf04cf48bcdfeb104cc8972790975905')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/tofuutils/tenv/releases/download/v4.8.3/tenv_v4.8.3_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('03df4fff5b72ac00e0c7bc9c97455c3535cf527a5259458d3d4b69624653339b')
 
 package() {
   # bin
@@ -30,7 +30,7 @@ package() {
   install -Dm 0755 "tenv" "${pkgdir}/usr/bin/tenv"
   install -Dm 0755 "terraform" "${pkgdir}/usr/bin/terraform"
   install -Dm 0755 "terragrunt" "${pkgdir}/usr/bin/terragrunt"
-  install -Dm 0755 "terragrunt" "${pkgdir}/usr/bin/terramate"
+  install -Dm 0755 "terramate" "${pkgdir}/usr/bin/terramate"
   install -Dm 0755 "tf" "${pkgdir}/usr/bin/tf"
   install -Dm 0755 "tofu" "${pkgdir}/usr/bin/tofu"
 
