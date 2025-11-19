@@ -1,0 +1,12 @@
+pkgbase = proton-cachyos-updater
+	pkgdesc = Automatically download and install/update proton-cachyos from the CachyOS repo using proton-update
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = curl
+	depends = pacman
+	source = proton-update.sh
+	sha256sums = SKIP
+
+pkgname = proton-cachyos-updater
