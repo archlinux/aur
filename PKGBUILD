@@ -1,145 +1,72 @@
 # Maintainer: Markus Maiwald <markus@maiwald.work>
-# Refactored from: Voxis Forge AI
+# Working baseline from: antigravity-bin pkgver=1.11.3
 
 pkgname=antigravity-bin-hardened
 pkgver=1.11.3
 _buildid=6583016683339776
-pkgrel=4
-pkgdesc="Google Antigravity Agentic Development Platform (Pre-built Binary). Hardened version with strict permissions and verified dependencies."
+pkgrel=5
+pkgdesc="Google Antigravity - Agentic Development Platform (Pre-built Binary)"
 arch=('x86_64')
 url="https://antigravity.google/"
 license=('Proprietary')
-install=$pkgname.install
-depends=(
-    'alsa-lib'
-    'at-spi2-atk'
-    'atk'
-    'cairo'
-    'cups'
-    'curl'
-    'dbus'
-    'expat'
-    'glib2'
-    'gtk3'
-    'libx11'
-    'libxcb'
-    'libxcomposite'
-    'libxdamage'
-    'libxext'
-    'libxfixes'
-    'libxkbcommon'
-    'libxrandr'
-    'nss'
-    'pango'
-    'xdg-utils'
-    'ca-certificates'
-)
-optdepends=(
-    'apparmor: Mandatory Access Control (MAC) security framework'
-    'firejail: Application sandboxing for enhanced isolation'
-    'bubblewrap: Lightweight application sandboxing'
-)
-# !strip: Prevent stripping of signed binaries (breaks Electron)
-# !emptydirs: Keep empty directories if they are needed
-options=('!strip' '!emptydirs')
-source=(
-    "https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/1.11.3-6583016683339776/linux-x64/Antigravity.tar.gz"
-    "antigravity.desktop"
-    "antigravity-url-handler.desktop"
-    "antigravity.apparmor"
-)
-sha256sums=('025da512f9799a7154e2cc75bc0908201382c1acf2e8378f9da235cb84a5615b'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst' 'xdg-utils' 'glibc' 'nspr' 'at-spi2-core' 'libdrm' 'mesa')
+options=('!strip')
+source=("https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/${pkgver}-${_buildid}/linux-x64/Antigravity.tar.gz")
+sha256sums=('025da512f9799a7154e2cc75bc0908201382c1acf2e8378f9da235cb84a5615b')
 
 package() {
-    # 1. Preparation
-    # --------------------------------------------------------------------------
-    msg2 "Locating extracted directory..."
-    local _extracted_dir
+    install -d "$pkgdir/opt/antigravity"
+
     _extracted_dir=$(find "$srcdir" -maxdepth 1 -type d -name "Antigravity*" | head -n 1)
 
     if [ -z "$_extracted_dir" ]; then
-        error "Could not find extracted directory 'Antigravity*'."
-        return 1
+        echo "Error: Could not find extracted directory."
+        exit 1
     fi
 
-    # 2. Installation to /opt
-    # --------------------------------------------------------------------------
-    msg2 "Installing to /opt/antigravity..."
-    install -d "$pkgdir/opt/antigravity"
     cp -r "$_extracted_dir"/* "$pkgdir/opt/antigravity/"
 
-    # 3. Hardening Protocol (Voxis Standard)
-    # --------------------------------------------------------------------------
-    msg2 "Applying hardening protocols..."
-
-    # A. Base Permissions: 
-    # Directories -> 755 (rwxr-xr-x)
-    # Files       -> 644 (rw-r--r--)
-    find "$pkgdir/opt/antigravity" -type d -exec chmod 755 {} +
-    find "$pkgdir/opt/antigravity" -type f -exec chmod 644 {} +
-
-    # B. Executables:
-    # Main binary -> 755
-    if [ -f "$pkgdir/opt/antigravity/Antigravity" ]; then
-        chmod 755 "$pkgdir/opt/antigravity/Antigravity"
-    elif [ -f "$pkgdir/opt/antigravity/antigravity" ]; then
-        chmod 755 "$pkgdir/opt/antigravity/antigravity"
-    fi
-
-    # C. Chrome Sandbox (Critical for Electron Security):
-    # Must be 4755 (SUID root) if it exists
-    if [ -f "$pkgdir/opt/antigravity/chrome-sandbox" ]; then
-        msg2 "Securing chrome-sandbox..."
-        chmod 4755 "$pkgdir/opt/antigravity/chrome-sandbox"
-    fi
-     # D. Chrome Crashpad Handler (Critical for crash reporting):
-     # Must be executable for Electron to handle crashes
-     if [ -f "$pkgdir/opt/antigravity/chrome_crashpad_handler" ]; then
-         msg2 "Setting executable permissions for chrome_crashpad_handler..."
-         chmod 755 "$pkgdir/opt/antigravity/chrome_crashpad_handler"
-     fi
-
-
-    # 4. System Integration
-    # --------------------------------------------------------------------------
-    msg2 "Creating system links and assets..."
-
-    # Binary Symlink
     install -d "$pkgdir/usr/bin"
+    
     if [ -f "$pkgdir/opt/antigravity/Antigravity" ]; then
+        chmod +x "$pkgdir/opt/antigravity/Antigravity"
         ln -s "/opt/antigravity/Antigravity" "$pkgdir/usr/bin/antigravity"
     elif [ -f "$pkgdir/opt/antigravity/antigravity" ]; then
+        chmod +x "$pkgdir/opt/antigravity/antigravity"
         ln -s "/opt/antigravity/antigravity" "$pkgdir/usr/bin/antigravity"
+    else
+        echo "Error: Could not find binary 'antigravity' or 'Antigravity' in /opt/antigravity"
+        ls -R "$pkgdir/opt/antigravity"
+        exit 1
     fi
 
-    # Icon
     install -d "$pkgdir/usr/share/pixmaps"
-    local _icon_path="$pkgdir/opt/antigravity/resources/app/resources/linux/code.png"
+    
+    _icon_path="$pkgdir/opt/antigravity/resources/app/resources/linux/code.png"
     
     if [ -f "$_icon_path" ]; then
         ln -s "/opt/antigravity/resources/app/resources/linux/code.png" "$pkgdir/usr/share/pixmaps/antigravity.png"
     else
-        # Fallback search
-        local _found_icon
+        echo "Warning: Specific icon path not found. Searching for alternatives..."
         _found_icon=$(find "$pkgdir/opt/antigravity" -name "*.png" | head -n 1)
         if [ -n "$_found_icon" ]; then
-            local _rel_path=${_found_icon#$pkgdir}
+            # ln -s requires absolute path, ensure we use the destination path /opt/...
+            _rel_path=${_found_icon#$pkgdir}
             ln -s "$_rel_path" "$pkgdir/usr/share/pixmaps/antigravity.png"
         fi
     fi
 
-    # Desktop Integration
-    install -Dm644 antigravity.desktop "$pkgdir/usr/share/applications/antigravity.desktop"
-    install -Dm644 antigravity-url-handler.desktop "$pkgdir/usr/share/applications/antigravity-url-handler.desktop"
-
-    # AppArmor Profile (Optional Security Enhancement)
-    install -Dm644 antigravity.apparmor "$pkgdir/usr/share/apparmor/antigravity.apparmor"
-
-    # License
-    if [ -f "$srcdir/LICENSE" ]; then
-        install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    fi
+    install -d "$pkgdir/usr/share/applications"
+    
+    cat > "$pkgdir/usr/share/applications/antigravity.desktop" <<EOF
+[Desktop Entry]
+Name=Antigravity
+Comment=Agentic Development Platform
+Exec=/usr/bin/antigravity
+Icon=antigravity
+Type=Application
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=Antigravity
+EOF
 }
