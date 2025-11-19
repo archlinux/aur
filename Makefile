@@ -1,9 +1,9 @@
 
 .SRCINFO: PKGBUILD
+	updpkgsums
 	makepkg --printsrcinfo > .SRCINFO
 
 package: PKGBUILD .SRCINFO
-	updpkgsums
 	makepkg --syncdeps --rmdeps --force --clean --noconfirm
 
 all: package
