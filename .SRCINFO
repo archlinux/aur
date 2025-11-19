@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-git
 	pkgdesc = Official Telegram Desktop client
-	pkgver = 6.1.4.r1.g147439a
+	pkgver = 6.3.1.r6.gc1769b9
 	pkgrel = 1
 	url = https://github.com/telegramdesktop/tdesktop
 	arch = x86_64
@@ -46,7 +46,7 @@ pkgbase = telegram-desktop-git
 	depends = libxtst
 	optdepends = webkit2gtk: embedded browser features
 	optdepends = xdg-desktop-portal: desktop integration
-	provides = telegram-desktop=6.1.4
+	provides = telegram-desktop=6.3.1
 	conflicts = telegram-desktop
 	source = telegram-desktop::git+https://github.com/telegramdesktop/tdesktop.git
 	source = telegram-tdlib::git+https://github.com/tdlib/td.git

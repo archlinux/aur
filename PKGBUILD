@@ -8,7 +8,7 @@
 
 _pkgname="telegram-desktop"
 pkgname="$_pkgname-git"
-pkgver=6.1.4.r1.g147439a
+pkgver=6.3.1.r6.gc1769b9
 pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 url="https://github.com/telegramdesktop/tdesktop"
@@ -131,8 +131,6 @@ _source_tg_owt() {
     cd "$_pkgsrc_tgowt"
     git rm -r 'src/third_party/crc32c/src'
     git submodule update --init --recursive --depth=1
-
-    patch -Np1 -F100 -i "$srcdir/libtg_owt-0001-Replace-absl-template-nullability-annotations.patch"
   )
 
   _build_tg_owt() (
@@ -244,7 +242,10 @@ package() {
       'libgio-2.0.so'
       'libglib-2.0.so'
       'libgobject-2.0.so'
+      'libheif.so'
       'libjpeg.so'
+      'libjxl.so'
+      'libjxl_threads.so'
       'liblz4.so'
       'libopenal.so'
       'libopenh264.so'
@@ -255,6 +256,7 @@ package() {
       'libswresample.so'
       'libswscale.so'
       'libvpx.so'
+      'libxkbcommon.so'
       'libxxhash.so'
       'libz.so'
     )"

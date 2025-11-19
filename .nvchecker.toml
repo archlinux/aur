@@ -1,4 +1,0 @@
-[telegram-desktop-git]
-source = "git"
-git = "https://github.com/telegramdesktop/tdesktop.git"
-prefix = "v"
