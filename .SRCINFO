@@ -1,7 +1,7 @@
 pkgbase = textmerger
 	pkgdesc = A Python GUI application for merging text files
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pierspad/textmerger
 	arch = any
 	license = MIT

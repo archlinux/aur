@@ -1,7 +1,7 @@
 # Maintainer: pierspad
 pkgname=textmerger
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python GUI application for merging text files"
 arch=('any')
 url="https://github.com/pierspad/textmerger"
