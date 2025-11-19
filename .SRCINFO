@@ -1,0 +1,22 @@
+pkgbase = buttery-bin
+	pkgdesc = A video editor with manual motion smoothing
+	pkgver = 0.0.20
+	pkgrel = 1
+	url = https://github.com/mcandre/buttery
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = BSD-2-Clause
+	depends = glibc
+	depends = gcc-libs
+	provides = buttery
+	conflicts = buttery
+	conflicts = buttery-git
+	source = buttery-0.0.20.tgz::https://github.com/mcandre/buttery/releases/download/v0.0.20/buttery-0.0.20.tgz
+	source = README-0.0.20.md::https://raw.githubusercontent.com/mcandre/buttery/v0.0.20/README.md
+	source = LICENSE-0.0.20::https://raw.githubusercontent.com/mcandre/buttery/v0.0.20/LICENSE.md
+	sha256sums = 8c9bfb6a959344e5d030aedddd8e48ede01dc747ed1d6faa9ce5ace572df1e7e
+	sha256sums = de99fea51770b52de3a0685e90d1579aab038524addc70e9214cab28e56d5faf
+	sha256sums = 57f53599a9a2272ea3ac34a2ca701bb512fec522b905ef5fc06671cd1636eeec
+
+pkgname = buttery-bin

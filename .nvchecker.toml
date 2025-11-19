@@ -1,0 +1,5 @@
+["buttery-bin"]
+source = "github"
+github = "mcandre/buttery"
+use_latest_release = true
+prefix = "v"
