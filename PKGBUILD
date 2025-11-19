@@ -2,7 +2,7 @@
 _pkgname="asus-5606-fan-state"
 pkgname="${_pkgname}-git"
 pkgver=r17.81a8dee
-pkgrel=1
+pkgrel=2
 pkgdesc="Script to set the fan state on the ZenBook S 16 UM5606 and Vivobook M5606"
 arch=('any')
 url="https://github.com/ThatOneCalculator/${_pkgname}"
@@ -11,6 +11,7 @@ depends=('bash')
 source=("git+$url.git")
 noextract=()
 sha256sums=('SKIP')
+install="${_pkgname}.install"
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -18,10 +19,6 @@ pkgver() {
         git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
-}
-
-prepare() {
-    printf "%b" "\n\n-----------------------\nInstalled as \e[1;34mfan_state\e[0m\n-----------------------\n\n"
 }
 
 package() {
