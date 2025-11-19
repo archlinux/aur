@@ -1,7 +1,7 @@
 # Maintainer: Christopher Cooper <christopher@cg505.com>
 # Maintainer: Jérôme Poulin <jeromepoulin@gmail.com>
 pkgname=claude-code
-pkgver=2.0.45
+pkgver=2.0.46
 pkgrel=1
 pkgdesc="An agentic coding tool that lives in your terminal"
 arch=('x86_64' 'aarch64')
@@ -25,8 +25,8 @@ source_x86_64=("claude-${pkgver}-x86_64::${_gcs_bucket}/${pkgver}/linux-x64/clau
 source_aarch64=("claude-${pkgver}-aarch64::${_gcs_bucket}/${pkgver}/linux-arm64/claude")
 
 sha256sums=('728158fd1037143fad6907e8fa34804177e598b7326519503fe83cafdef849e6')
-sha256sums_x86_64=('2ab82439665eddd102833dc1917ae7afa8bfeea92c1daeda5c3e42ef407e60af')
-sha256sums_aarch64=('2e6e7e00a2cedcb5e05bd2434d3224056d7eff50484ebf5a04683b5bce6112c0')
+sha256sums_x86_64=('a45bc2ea58c84dd263420b3284194d2648c4a5095563487b1d0678621de5e28a')
+sha256sums_aarch64=('f81b64b2c95395d162d149fe5934b850a2b93b1a6eecad69d5e59ad756e1be0e')
 
 package() {
 	install -Dm755 "${srcdir}/claude-${pkgver}-${CARCH}" "${pkgdir}/opt/claude-code/bin/claude"
