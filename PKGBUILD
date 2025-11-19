@@ -2,8 +2,8 @@
 # Upstream: Immersed Inc. <info at immersed dot com>
 
 pkgname=immersed
-pkgver=10.9.0
-pkgrel=2
+pkgver=10.10.0
+pkgrel=1
 pkgdesc="Immersed Desktop Agent"
 arch=('x86_64')
 url="https://immersed.com/"
@@ -23,7 +23,7 @@ _appimage_unversioned="${_pkgname_ucfirst}-${arch}.AppImage"
 _appimage_versioned="${_pkgname_ucfirst}-${pkgver}-${arch}.AppImage"
 
 source=("${_appimage_versioned}::https://static.immersed.com/dl/${_appimage_unversioned}")
-sha256sums=('a6519cbd946957e9e143816862222e2e6c8e83f48727c6634f8161e94c87f56d')
+sha256sums=('385908e2523d87db5bfdd8a78b1b6cda11d8768d9498ed8bfc540bc6a468b475')
 
 prepare() {
     chmod +x "${srcdir}/${_appimage_versioned}"
