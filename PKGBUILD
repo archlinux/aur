@@ -3,7 +3,7 @@
 
 pkgname=hatari-enhanced-git
 realpkgname=hatari
-pkgver=v2.6.1.r89.ge626bb1
+pkgver=v2.6.1.r141.g2ba1972
 pkgrel=1
 pkgdesc='An Atari ST and STE emulator. This build uses capsimage for using IPF and STX disk images.'
 arch=('x86_64')
