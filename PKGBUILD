@@ -1,16 +1,16 @@
 # Maintainer: Balint Reczey <rbalint at balintreczey dot hu>
 
 pkgname=firebuild
-pkgver=0.8.4
+pkgver=0.8.5.1
 pkgrel=1
 pkgdesc="Automatic build accelerator cache for Linux"
 url="https://firebuild.com/"
 arch=('x86_64')
 license=('custom')
-depends=('libconfig' 'glibc' 'jemalloc' 'gcc-libs')
-makedepends=('cmake' 'hopscotch-map' 'xxhash' 'python' 'python-jinja' 'libxslt' 'docbook-xsl')
+depends=('libconfig' 'glibc' 'jemalloc' 'gcc-libs' 'libelf')
+makedepends=('cmake' 'hopscotch-map' 'xxhash' 'python' 'python-jinja' 'libelf' 'libxslt' 'docbook-xsl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/firebuild/firebuild/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('00c1130e8d5fb21136cc10519e2769003041b2f61aa516339576dd76cb785497')
+sha256sums=('ebfceb574ca6b04f358bd25c4c13d52ec144fe6af574ea05775abecbbd13609b')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" \
