@@ -3,7 +3,7 @@
 _pkgauthor=fioncat
 _pkgname=otree
 pkgname=${_pkgname}-bin
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Object Tree TUI Viewer"
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -23,9 +23,9 @@ source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/downlo
 sha256sums=('c7dc85e2deab624457e3f411dd0e6eb9531611c4a11e3028c38e02999f27d94d'
             'e5eb45bb8901986913143f97134d7e37d22fe687c795c8fc2052198b379bb382'
             'caa97cc0b15908af44774ea358ce12aeef822d5c30c1f81b4c7da57313c8ee71'
-            'f5527aa1ed20fd0e915f947c61370d14476f21a41f4237846554b7256be790a3')
-sha256sums_x86_64=('10a348593468bc34ee28d7e331f69cb6fb37fe4733bc220b200d49edff4aa1ee')
-sha256sums_aarch64=('e6798d73d54f70c872ab791c256bbaf64cea8db72a3ee71e37d61ecc87634e97')
+            '0dda4444ce90c572554ea3fb60954b506d42c0ca6c8210bb5cb9d62b3ffabd3b')
+sha256sums_x86_64=('76af3e61f0ec00b96eea16696656cc754ab57b795bcf600a2d19bdf0e5142983')
+sha256sums_aarch64=('0d413cada5973128217610e74feab9cf946760a1116756e803d8aaf55be0fb5c')
 
 
 build() {
