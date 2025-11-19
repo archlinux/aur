@@ -1,0 +1,16 @@
+pkgbase = ao-theoddcell-git
+	pkgdesc = Arg 0
+	pkgver = r12.779d1e2
+	pkgrel = 1
+	url = https://github.com/TheOddCell/ao
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	provides = ao
+	conflicts = ao-git
+	source = ao-theoddcell-git::git+https://github.com/TheOddCell/ao
+	sha256sums = SKIP
+
+pkgname = ao-theoddcell-git
