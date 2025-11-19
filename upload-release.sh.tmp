@@ -1,0 +1,125 @@
+#!/bin/bash
+
+# Script para crear el release en GitHub usando gh CLI
+# Asegúrate de tener instalado gh: https://cli.github.com/
+
+VERSION="0.1.5_preview"
+TAG="v${VERSION}"
+TARBALL="/home/abel/Programacion/notnative/notnative-app-bin/notnative-app-bin-${VERSION}-x86_64.tar.gz"
+REPO="k4ditano/notnative-omarchy"
+
+echo "🚀 Creando release en GitHub para NotNative ${VERSION}"
+echo ""
+
+# Verificar que gh esté instalado
+if ! command -v gh &> /dev/null; then
+    echo "❌ Error: gh CLI no está instalado"
+    echo ""
+    echo "Instala con:"
+    echo "  yay -S github-cli"
+    echo ""
+    echo "O crea el release manualmente en:"
+    echo "  https://github.com/${REPO}/releases/new"
+    exit 1
+fi
+
+# Verificar autenticación
+if ! gh auth status &> /dev/null; then
+    echo "⚠️  No estás autenticado en GitHub"
+    echo "Ejecuta: gh auth login"
+    exit 1
+fi
+
+# Verificar que el tarball existe
+if [ ! -f "$TARBALL" ]; then
+    echo "❌ Error: No se encuentra el tarball en $TARBALL"
+    exit 1
+fi
+
+echo "✅ gh CLI instalado y autenticado"
+echo "✅ Tarball encontrado: $TARBALL"
+echo ""
+
+# Crear el release
+echo "📦 Creando release..."
+gh release create "$TAG" \
+    --repo "$REPO" \
+    --title "NotNative v0.1.5-preview" \
+    --notes "## 🎉 NotNative v0.1.5-preview
+
+Esta es una versión preview con nuevas funcionalidades experimentales.
+
+### ✨ Nuevas Características
+
+- **🔄 Modo en segundo plano**: La aplicación permanece activa cuando se cierra la ventana
+- **🎮 Sistema de control externo**: Control vía archivos (\`notnative-control show|hide|toggle|quit\`)
+- **🔌 Servidor MCP integrado**: API REST para automatización externa
+- **🎵 Reproductor de música mejorado**: Búsqueda en YouTube, playlists, controles completos
+- **🤖 Chat con IA**: Integración con OpenAI API
+- **🌍 Internacionalización**: Soporte completo para español e inglés
+- **🔍 Detección de instancia única**: Previene múltiples instancias
+
+### 📦 Instalación (Arch Linux)
+
+\`\`\`bash
+# Instalar desde AUR
+yay -S notnative-app-bin
+
+# O instalar manualmente
+pacman -U notnative-app-bin-0.1.5_preview-1-x86_64.pkg.tar.zst
+\`\`\`
+
+### 🔧 Integración con Waybar
+
+\`\`\`json
+{
+    \"custom/notnative\": {
+        \"format\": \"📝\",
+        \"on-click\": \"notnative-control toggle\",
+        \"tooltip\": false
+    }
+}
+\`\`\`
+
+### 📚 Documentación
+
+- [README](https://github.com/${REPO}/blob/master/README.md)
+- [MCP Integration](https://github.com/${REPO}/blob/master/docs/MCP_INTEGRATION.md)
+- [Background Control](https://github.com/${REPO}/blob/master/docs/BACKGROUND_CONTROL.md)
+
+### 🐛 Limitaciones Conocidas
+
+- Sistema tray visual no disponible en Wayland (usar control por archivos)
+- Requiere configuración manual de API key para funciones de IA
+
+### 📊 Estadísticas del Proyecto
+
+- **6000+ líneas** de código Rust
+- **27 tests** pasando
+- **30+ traducciones** (ES/EN)
+- **4 módulos principales**: Editor, Música, IA, MCP" \
+    --prerelease \
+    "$TARBALL"
+
+if [ $? -eq 0 ]; then
+    echo ""
+    echo "✅ Release creado exitosamente!"
+    echo ""
+    echo "🔗 Ver release en: https://github.com/${REPO}/releases/tag/${TAG}"
+    echo ""
+    echo "📋 Próximos pasos:"
+    echo "  1. Verificar que el release se vea bien en GitHub"
+    echo "  2. Probar instalación: yay -S notnative-app-bin"
+    echo "  3. Verificar que funcione correctamente"
+    echo ""
+else
+    echo ""
+    echo "❌ Error al crear el release"
+    echo ""
+    echo "Puedes crear el release manualmente en:"
+    echo "  https://github.com/${REPO}/releases/new"
+    echo ""
+    echo "Archivos necesarios:"
+    echo "  - Tag: ${TAG}"
+    echo "  - Tarball: ${TARBALL}"
+fi
