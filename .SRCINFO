@@ -1,7 +1,7 @@
 pkgbase = freerdp-sdl3
 	pkgdesc = Free implementation of the Remote Desktop Protocol (RDP) (SDL3 only)
-	pkgver = 3.17.2
-	pkgrel = 2
+	pkgver = 3.18.0
+	pkgrel = 1
 	epoch = 1
 	url = https://www.freerdp.com/
 	arch = x86_64
@@ -41,8 +41,8 @@ pkgbase = freerdp-sdl3
 	provides = libwinpr-tools3.so
 	provides = libwinpr3.so
 	conflicts = freerdp
-	source = https://github.com/freerdp/freerdp/archive/3.17.2/freerdp-3.17.2.tar.gz
-	sha256sums = 04a2e8049602e7aba767880990959facf2ebf7b5fbeeb5120e81838d8c2d2f17
+	source = https://github.com/freerdp/freerdp/archive/3.18.0/freerdp-3.18.0.tar.gz
+	sha256sums = d2ec022566fa523ef33c29db952d428eb0ddc0a7b7f36204499fd06185178e5e
 
 pkgname = freerdp-sdl3
 	depends = fuse3
