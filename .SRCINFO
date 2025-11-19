@@ -20,7 +20,7 @@ pkgbase = hypryou
 	depends = hyprland
 	depends = dbus
 	depends = dbus-glib
-	depends = python-pillow
+	depends = python-pyvips
 	depends = cairo
 	depends = libnm
 	depends = hyprsunset
@@ -47,6 +47,7 @@ pkgbase = hypryou
 	optdepends = ttf-meslo-nerd-font-powerlevel10k: Font for alacritty
 	optdepends = alacritty: I recommend to use this terminal
 	optdepends = tela-circle-icon-theme-nord: Default icons
+	optdepends = satty: Screenshot editor
 	source = hyprland-material-you::git+https://github.com/koeqaife/hyprland-material-you.git#tag=v2.1.9
 	sha256sums = 6c64e9728718759890f64deed8a0f96cc23e1c634a79f467de00faf607ed5a67
 
