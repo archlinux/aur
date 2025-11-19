@@ -3,7 +3,7 @@
 _name=networkx
 
 pkgname=python-networkx-git
-pkgver=3.5.r52.g36e8a1ee8
+pkgver=3.6rc0.r8.g6dbed05b6
 pkgrel=1
 pkgdesc="Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks."
 
@@ -31,6 +31,9 @@ makedepends=(
     "python-setuptools"
     "python-wheel"
 )
+checkdepends=(
+    "python-pytest"
+)
 
 pkgver () {
     cd "$srcdir/$_name" || exit
@@ -40,6 +43,11 @@ pkgver () {
 build () {
     cd "$srcdir/$_name" || exit
     python -m build --wheel --no-isolation
+}
+
+check () {
+    cd "$srcdir/$_name"
+    pytest
 }
 
 package () {
