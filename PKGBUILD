@@ -11,6 +11,7 @@ depends=(
     'mpv'
     'gcc-libs'
     'glibc'
+    'zstd'
 )
 makedepends=(
     'rust'

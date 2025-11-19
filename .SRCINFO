@@ -14,6 +14,7 @@ pkgbase = wayvid-git
 	depends = mpv
 	depends = gcc-libs
 	depends = glibc
+	depends = zstd
 	optdepends = mesa: Hardware video decoding with VA-API
 	optdepends = libva-intel-driver: Intel GPU hardware acceleration
 	optdepends = libva-mesa-driver: AMD GPU hardware acceleration
