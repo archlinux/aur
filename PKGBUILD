@@ -1,4 +1,4 @@
-# Maintainer: fk29g <fk29g.uphill912@slmails.com>
+# Maintainer: nicknb <nicknb at posteo dot com>
 pkgname="genpw"
 pkgver=0.0.3
 pkgrel=3
