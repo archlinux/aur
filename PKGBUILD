@@ -2,7 +2,7 @@
 # Contributor: Puneet Singh Lamba <puneet.lamba@gmail.com>
 
 pkgname=lotion
-pkgver=1.0.0
+pkgver=1.5.0
 pkgrel=7
 pkgdesc="Unofficial Notion.so desktop application for Linux"
 arch=('x86_64')
@@ -90,6 +90,10 @@ EOF
     
     # Skip SVG creation as it causes black/white issues in Dash to Dock
     # PNG icons work better for this application
+    
+    # Add 512x512 size for high-DPI displays
+    install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
+    magick "${srcdir}/icon.png" -resize "512x512" -quality 100 "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
     
     # Add 512x512 size for high-DPI displays
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
