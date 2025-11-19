@@ -1,7 +1,7 @@
 pkgbase = postgresql17
 	pkgdesc = Sophisticated object-relational DBMS
 	pkgver = 17.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.postgresql.org/
 	arch = x86_64
 	license = custom:PostgreSQL
@@ -19,6 +19,8 @@ pkgbase = postgresql17
 	makedepends = llvm
 	makedepends = clang
 	makedepends = libxslt
+	makedepends = docbook-xml
+	makedepends = docbook-xsl
 	provides = postgresql
 	source = https://ftp.postgresql.org/pub/source/v17.7/postgresql-17.7.tar.bz2
 	source = postgresql.service
