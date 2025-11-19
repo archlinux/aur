@@ -791,18 +791,6 @@ index 9cd6fd2..b7f6e62 100644
  
  if("${PROJECT_NAME}" STREQUAL "${CMAKE_PROJECT_NAME}")
      find_package(McrtMessages REQUIRED)
-diff --git a/moonray/moonray_arras/mcrt_dataio/lib/engine/mcrt/McrtControl.h b/moonray/moonray_arras/mcrt_dataio/lib/engine/mcrt/McrtControl.h
-index 396442a..60b4339 100644
---- a/moonray/moonray_arras/mcrt_dataio/lib/engine/mcrt/McrtControl.h
-+++ b/moonray/moonray_arras/mcrt_dataio/lib/engine/mcrt/McrtControl.h
-@@ -16,6 +16,7 @@
- #include <cstdint>
- #include <functional>
- #include <iostream>
-+#include <cstdint>
- 
- namespace mcrt_dataio {
- 
 diff --git a/moonray/moonray_arras/mcrt_dataio/lib/share/codec/InfoCodec.h b/moonray/moonray_arras/mcrt_dataio/lib/share/codec/InfoCodec.h
 index 613d0fb..f459842 100644
 --- a/moonray/moonray_arras/mcrt_dataio/lib/share/codec/InfoCodec.h
@@ -827,19 +815,6 @@ index d172ece..3121630 100644
  #include <string>
  
  namespace mcrt_dataio {
-diff --git a/moonray/moonray_arras/mcrt_dataio/lib/share/util/FpsTracker.h b/moonray/moonray_arras/mcrt_dataio/lib/share/util/FpsTracker.h
-index b2957f8..2de2899 100644
---- a/moonray/moonray_arras/mcrt_dataio/lib/share/util/FpsTracker.h
-+++ b/moonray/moonray_arras/mcrt_dataio/lib/share/util/FpsTracker.h
-@@ -6,6 +6,7 @@
- #include <cstdint>
- #include <queue>
- #include <string>
-+#include <cstdint>
- 
- namespace mcrt_dataio {
- 
-Submodule moonray/moonray_gui contains modified content
 diff --git a/moonray/moonray_gui/cmd/moonray_gui/CMakeLists.txt b/moonray/moonray_gui/cmd/moonray_gui/CMakeLists.txt
 index 8b05082..d7d2dba 100644
 --- a/moonray/moonray_gui/cmd/moonray_gui/CMakeLists.txt
@@ -1140,19 +1115,6 @@ index 76bfd84..ca5c9f2 100644
  # these libraries are required by USD, but we don't
  # currently have a USD config with the dependencies linked
 Submodule moonray/scene_rdl2 contains modified content
-diff --git a/moonray/scene_rdl2/cmd/mcrt_cmd/numaInfo/NumaInfo.cc b/moonray/scene_rdl2/cmd/mcrt_cmd/numaInfo/NumaInfo.cc
-index 41388a6..8b5ff7d 100644
---- a/moonray/scene_rdl2/cmd/mcrt_cmd/numaInfo/NumaInfo.cc
-+++ b/moonray/scene_rdl2/cmd/mcrt_cmd/numaInfo/NumaInfo.cc
-@@ -8,6 +8,8 @@
- 
- #include <cstdint>
- 
-+#include <cstdint>
-+
- namespace scene_rdl2 {
- namespace grid_util {
- 
 diff --git a/moonray/scene_rdl2/lib/common/grid_util/AffinityResourceControl.cc b/moonray/scene_rdl2/lib/common/grid_util/AffinityResourceControl.cc
 index ce6672d..6c2360a 100644
 --- a/moonray/scene_rdl2/lib/common/grid_util/AffinityResourceControl.cc
