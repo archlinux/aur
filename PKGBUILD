@@ -11,10 +11,8 @@ install="gucli.install"
 source=(
   "gucli::${url}/releases/download/v${pkgver}/gucli"
   "gucli.desktop"
-  "icons::git+${url}.git#branch=master&subdirectory=src-tauri/icons"
 )
 sha256sums=('ed78be9c5bd6614faac9b0957d04b8a4d3be6688b6508693eabbc6c1894fdcff'
-            'SKIP'
             'SKIP')
 
 
@@ -25,7 +23,7 @@ package() {
   # Install desktop file
   install -Dm644 "gucli.desktop" "${pkgdir}/usr/share/applications/gucli.desktop"
   
-  # Install icons from git subdirectory
+  # Install icons from local directory
   for icon_size in 16 24 32 48 64 128 256 512; do
     if [[ -f "icons/${icon_size}x${icon_size}.png" ]]; then
       install -Dm644 "icons/${icon_size}x${icon_size}.png" \
