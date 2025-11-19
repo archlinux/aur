@@ -2,9 +2,9 @@
 # Maintainer: Calvin McAnarney <calvin@mcanarney.org>
 
 pkgname=fulcrum
-pkgdesc='A fast & nimble SPV server for Bitcoin Cash'
+pkgdesc='A fast & nimble SPV server for BCH, BTC, and LTC'
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 url='https://fulcrumserver.org'
 arch=('x86_64')
 license=('GPL3')
