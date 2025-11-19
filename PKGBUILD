@@ -2,12 +2,12 @@
 # Contributor: David Runge <dave@sleepmap.de>
 
 pkgname=etesync-dav
-pkgver=0.34.0
+pkgver=0.35.1
 pkgrel=1
 pkgdesc="A CalDAV and CardDAV adapter for EteSync"
 arch=('any')
 url="https://github.com/etesync/etesync-dav/"
-license=('GPL')
+license=('GPL-3.0-only')
 depends=(
          'python-setuptools'
          'python-appdirs'
@@ -20,13 +20,16 @@ depends=(
 replaces=('python-radicale-storage-etesync')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        "0001-Fix-radicale-compatibility.patch")
-sha256sums=('0517d4a4fbbbf29855f3da1a0aab3950c2e7a5835176c99a4d09c3e460d69d26'
-            'c7f20e8f7e21d1a05fb9408658d3475851e7b75f42c2fb414683963e9ccceefb')
+        "0001-Fix-usage-with-radicale-3.5.1.patch"
+        "0001-Fix-compatibility-with-radicale-3.5.5.patch")
+sha256sums=('1f2eee6a4b32fe2d3de238b4efeebae9a7ea433c930e84d632c14166a019fb97'
+            '0b6397033b4ff33f2fed0b6ef6bc5e4b0a134c328309c207a0934856c0e18058'
+            'f1367eff9b3048c5e83fd2db9d4a326b3ff0705c53cce95a544a6a9759342f6f')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  patch -p1 < "$srcdir/0001-Fix-radicale-compatibility.patch"
+  patch -p1 < "$srcdir/0001-Fix-usage-with-radicale-3.5.1.patch"
+  patch -p1 < "$srcdir/0001-Fix-compatibility-with-radicale-3.5.5.patch"
 }
 
 build() {

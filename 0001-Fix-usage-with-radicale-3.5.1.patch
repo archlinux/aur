@@ -1,0 +1,25 @@
+From a46be3b746c804a555fe40918fc2d10caf90dd21 Mon Sep 17 00:00:00 2001
+From: kraftnix <kraftnix@protonmail.com>
+Date: Tue, 23 Sep 2025 05:18:10 +0200
+Subject: [PATCH] Fix usage with radicale >= 3.5.1
+
+---
+ etesync_dav/radicale/storage.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/etesync_dav/radicale/storage.py b/etesync_dav/radicale/storage.py
+index 7ec992b..d6312b1 100644
+--- a/etesync_dav/radicale/storage.py
++++ b/etesync_dav/radicale/storage.py
+@@ -605,7 +605,7 @@ class Storage(BaseStorage):
+         raise NotImplementedError
+ 
+     @contextmanager
+-    def acquire_lock(self, mode, user=None):
++    def acquire_lock(self, mode, user=None, *args, **kwargs):
+         """Set a context manager to lock the whole storage.
+ 
+         ``mode`` must either be "r" for shared access or "w" for exclusive
+-- 
+2.52.0
+
