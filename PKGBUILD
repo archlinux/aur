@@ -2,7 +2,7 @@
 # Contributor: Julien Savard <juju@juju2143.ca>
 pkgname=('x16-emulator-bin' 'x16-rom-bin' 'x16-docs-bin')
 pkgbase=x16-emulator-bin
-pkgver=r48
+pkgver=r49
 pkgrel=1
 pkgdesc="An emulator for The 8-Bit Guy's Commander X16 (release package)"
 arch=('any')
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/X16Community/x16-emulator/releases/download/$pkgver/x16emu_linux-x86_64-$pkgver.zip"
 	"https://raw.githubusercontent.com/X16Community/x16-emulator/$pkgver/.gh/logo.png")
-sha256sums=('5954bda81e28ff092f4facb8385aba5757bf88f3daebc2a5dc206d8ae2c1829b'
+sha256sums=('efb2d4ad36ae4244370004891aa67bdf85d2ec01b42b7f12f97b48b62aff009d'
             'd6765978fb80bea04c774d58667ea2c974395958506ef7add48fcd7f4ceb8988')
 
 prepare() {
