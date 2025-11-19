@@ -5,13 +5,17 @@ pkgrel=1
 pkgdesc="Linux port of OVR Lighthouse Manager - manage SteamVR base station power via Bluetooth LE. Requires SteamVR to be installed (provides OpenVR headers)."
 arch=('x86_64')
 url="https://github.com/xi-ve/openvr-lighthouse-manager-linux"
-license=('MIT')
+license=('GPL3')
 install="${pkgname}.install"
 depends=('bluez-libs' 'dbus' 'glfw-x11' 'libx11')
 makedepends=('cmake' 'base-devel' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xi-ve/openvr-lighthouse-manager-linux/archive/main.tar.gz"
-        "openvr-headers.tar.gz::https://github.com/ValveSoftware/openvr/archive/master.tar.gz")
+        "openvr-headers.tar.gz::https://github.com/ValveSoftware/openvr/archive/master.tar.gz"
+        "openvr-lighthouse-manager-install.sh"
+        "LICENSE")
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP')
 
 prepare() {
@@ -98,20 +102,18 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-main"
   
-  # Install binaries to /usr/bin
-  install -Dm755 build/bin/lighthouse-manager "${pkgdir}/usr/bin/lighthouse-manager"
-  install -Dm755 build/bin/lighthouse-manager-gui "${pkgdir}/usr/bin/lighthouse-manager-gui"
+  # Install binaries to package directory (will be copied to SteamVR directory by install script)
+  install -Dm755 build/bin/lighthouse-manager "${pkgdir}/usr/lib/${pkgname}/lighthouse-manager"
+  install -Dm755 build/bin/lighthouse-manager-gui "${pkgdir}/usr/lib/${pkgname}/lighthouse-manager-gui"
   
-  # Install manifest and install script to package directory (for install hook)
+  # Install manifest and install script
   install -Dm644 manifest.vrmanifest "${pkgdir}/usr/lib/${pkgname}/manifest.vrmanifest"
-  install -Dm755 openvr-lighthouse-manager-install.sh "${pkgdir}/usr/bin/${pkgname}-install"
+  install -Dm755 "${srcdir}/openvr-lighthouse-manager-install.sh" "${pkgdir}/usr/bin/${pkgname}-install"
   
   # Install README
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   
-  # Install LICENSE if it exists
-  if [ -f LICENSE ]; then
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  fi
+  # Install LICENSE
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 

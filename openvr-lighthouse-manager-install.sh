@@ -43,9 +43,9 @@ echo "Installing Lighthouse Manager to SteamVR for $USER_HOME..."
 OWNER_USER=$(stat -c '%U' "$USER_HOME" 2>/dev/null || echo "")
 OWNER_GROUP=$(stat -c '%G' "$USER_HOME" 2>/dev/null || echo "")
 
-# Copy binaries
-cp /usr/bin/lighthouse-manager "$STEAMVR_DRIVERS_DIR/"
-cp /usr/bin/lighthouse-manager-gui "$STEAMVR_DRIVERS_DIR/"
+# Copy binaries from package directory
+cp "$PKG_DIR/lighthouse-manager" "$STEAMVR_DRIVERS_DIR/"
+cp "$PKG_DIR/lighthouse-manager-gui" "$STEAMVR_DRIVERS_DIR/"
 chmod +x "$STEAMVR_DRIVERS_DIR/lighthouse-manager"
 chmod +x "$STEAMVR_DRIVERS_DIR/lighthouse-manager-gui"
 

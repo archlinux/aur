@@ -30,9 +30,27 @@ post_install() {
             FOUND_STEAMVR=1
             echo "Found SteamVR for user: $user (home: $user_home)" >&2
             echo "Installing Lighthouse Manager..." >&2
-            "$INSTALL_SCRIPT" "$user_home" 2>&1 || {
-                echo "WARNING: Installation failed for user $user, continuing..." >&2
+            # Run install script as the user (not root) so vrpathreg can access user's SteamVR config
+            sudo -u "$user" "$INSTALL_SCRIPT" "$user_home" 2>&1 || {
+                INSTALL_ERROR=$?
+                echo "WARNING: Installation script returned error code $INSTALL_ERROR for user $user" >&2
+                echo "You may need to run '${pkgname}-install' manually" >&2
             }
+            
+            # Create symlinks in /usr/bin pointing to SteamVR directory executables
+            # This ensures the binaries always run from the correct location with manifest
+            STEAMVR_DRIVERS_DIR="$user_home/.local/share/SteamVR/drivers/lighthouse-manager/bin/linux64"
+            if [ -f "$STEAMVR_DRIVERS_DIR/lighthouse-manager" ]; then
+                echo "Creating system symlinks..." >&2
+                ln -sf "$STEAMVR_DRIVERS_DIR/lighthouse-manager" /usr/bin/lighthouse-manager 2>/dev/null || {
+                    echo "WARNING: Could not create symlink for lighthouse-manager" >&2
+                }
+            fi
+            if [ -f "$STEAMVR_DRIVERS_DIR/lighthouse-manager-gui" ]; then
+                ln -sf "$STEAMVR_DRIVERS_DIR/lighthouse-manager-gui" /usr/bin/lighthouse-manager-gui 2>/dev/null || {
+                    echo "WARNING: Could not create symlink for lighthouse-manager-gui" >&2
+                }
+            fi
         fi
     done < "$TMPFILE"
     
