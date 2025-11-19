@@ -11,8 +11,8 @@ depends=('bluez-libs' 'dbus' 'glfw-x11' 'libx11')
 makedepends=('cmake' 'base-devel' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xi-ve/openvr-lighthouse-manager-linux/archive/main.tar.gz"
         "openvr-headers.tar.gz::https://github.com/ValveSoftware/openvr/archive/master.tar.gz"
-        "openvr-lighthouse-manager-install.sh"
-        "LICENSE")
+        "openvr-lighthouse-manager-install.sh::https://raw.githubusercontent.com/xi-ve/openvr-lighthouse-manager-linux/main/openvr-lighthouse-manager-install.sh"
+        "LICENSE::https://raw.githubusercontent.com/xi-ve/openvr-lighthouse-manager-linux/main/LICENSE")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -108,12 +108,24 @@ package() {
   
   # Install manifest and install script
   install -Dm644 manifest.vrmanifest "${pkgdir}/usr/lib/${pkgname}/manifest.vrmanifest"
+  
+  # Verify install script exists before installing
+  if [ ! -f "${srcdir}/openvr-lighthouse-manager-install.sh" ]; then
+    echo "ERROR: Install script not found at ${srcdir}/openvr-lighthouse-manager-install.sh"
+    echo "Available files in ${srcdir}:"
+    ls -la "${srcdir}/" 2>&1 || true
+    exit 1
+  fi
   install -Dm755 "${srcdir}/openvr-lighthouse-manager-install.sh" "${pkgdir}/usr/bin/${pkgname}-install"
   
   # Install README
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   
-  # Install LICENSE
+  # Verify LICENSE exists before installing
+  if [ ! -f "${srcdir}/LICENSE" ]; then
+    echo "ERROR: LICENSE not found at ${srcdir}/LICENSE"
+    exit 1
+  fi
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
