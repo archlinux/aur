@@ -2,7 +2,7 @@
 pkgname=antigravity-bin
 pkgver=1.11.3
 _buildid=6583016683339776
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Antigravity - Agentic Development Platform (Pre-built Binary)"
 arch=('x86_64')
 url="https://antigravity.google/"
@@ -58,13 +58,13 @@ package() {
     
     cat > "$pkgdir/usr/share/applications/antigravity.desktop" <<EOF
 [Desktop Entry]
-Name=Antigravity
-Comment=Agentic Development Platform
-Exec=/usr/bin/antigravity
-Icon=antigravity
 Type=Application
+Name=Antigravity
+Icon=antigravity
 Categories=Development;IDE;
-Terminal=false
 StartupWMClass=Antigravity
+MimeType=x-scheme-handler/antigravity;
+X-KDE-Protocols=antigravity;
+Exec=/usr/bin/antigravity %u
 EOF
 }
