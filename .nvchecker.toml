@@ -1,0 +1,4 @@
+[mergerfs-bin]
+source = "github"
+github = "trapexit/mergerfs"
+use_latest_release = true

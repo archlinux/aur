@@ -1,0 +1,25 @@
+pkgbase = mergerfs-bin
+	pkgdesc = Featureful union filesystem. Combines directories from various filesystems into a storage pool
+	pkgver = 2.41.1
+	pkgrel = 1
+	url = https://github.com/trapexit/mergerfs
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = ISC
+	optdepends = mergerfs-tools-git: manage data in a pool
+	provides = mergerfs
+	conflicts = mergerfs
+	options = !strip
+	source = LICENSE-2.41.1::https://raw.githubusercontent.com/trapexit/mergerfs/2.41.1/LICENSE
+	source = README-2.41.1.md::https://raw.githubusercontent.com/trapexit/mergerfs/2.41.1/README.md
+	sha256sums = b442f17731ef6c5638e49aeb8abb0add16d4f9f624105246812ef984d41c19f4
+	sha256sums = 26de2f82a16dc31e33a99ba3d148d1f4f7ccc0e6faa5f1de7e79caac6ba6f9b5
+	source_x86_64 = mergerfs-x86_64-2.41.1.tgz::https://github.com/trapexit/mergerfs/releases/download/2.41.1/mergerfs-2.41.1-static-linux_amd64.tar.gz
+	sha256sums_x86_64 = 56651d4bb0d8e672046cc00d396f766874b5478487f0b031fe04b9ec2f2de6ba
+	source_i686 = mergerfs-i686-2.41.1.tgz::https://github.com/trapexit/mergerfs/releases/download/2.41.1/mergerfs-2.41.1-static-linux_i386.tar.gz
+	sha256sums_i686 = cbe31cf6fd4ef61d85c9fd48966ee99f68b34bf432ceafdd970d35ee67125263
+	source_aarch64 = mergerfs-aarch64-2.41.1.tgz::https://github.com/trapexit/mergerfs/releases/download/2.41.1/mergerfs-2.41.1-static-linux_arm64.tar.gz
+	sha256sums_aarch64 = e3fc92b53b6a28dbaa2b7320a1a608657cf6eb9aee1a506789a20c6bcbec44a4
+
+pkgname = mergerfs-bin
