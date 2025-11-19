@@ -8,7 +8,6 @@ url="https://github.com/jager1win/gucli"
 license=('GPL-3.0')
 depends=('gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator-glib' 'libnotify')
 install="gucli.install"
-source_x86_64=("gucli::${url}/releases/download/v${pkgver}/gucli")
 source=(
   "gucli::${url}/releases/download/v${pkgver}/gucli"
   "gucli.desktop"
