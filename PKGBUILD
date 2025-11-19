@@ -5,7 +5,7 @@ pkgname=(
   'aider-chat-dwash96'
 )
 _gitpkgname=aider-ce
-pkgver=0.87.11.dev
+pkgver=0.88.21
 pkgrel=1
 pkgdesc='AI pair programming in your terminal - dwash96 fork with MCP support'
 arch=('any')
@@ -84,10 +84,10 @@ source=(
   'fix-build-from-tarball.patch'
 )
 
-sha512sums=('83f067861fb1fe1fe557e1552f4566db3a4cfdc7eca9541327d01ca68f198f2dd3df6658552e6753a0e5db7946f91747c54c12373fb50534f1502a29ca380a0e'
+sha512sums=('9906bc4d77553e36c6d2cebd59128dbf212797866af7bb8df10228b5f6b8a54064e98e97347a1f33952d72e06e2e5621d64e36739864a6ded318510feb685d40'
             'd06a880fbfbd394b37cca7c3c2243090a641c6d22eae7ce90afc5d906b1884d1b17c0ac8c97ec371fd6c4f8472555d86bb123bae90de101a10a0489ce202af78'
             '39466f05535330372d3f89a361b3984ef82bfdbf3e1b9f359cc0c039bbe098163c4253634155d74dd3971145131fa12afdfc9aff001f05b8cd0840b870a68555'
-            'd784c2dae03810cb69059bdc399c437d6a8a8d9d746d69fce2b2a4b3fb5536dbf437918799a57278ae74eeb491233ae4bf38e7f56533210ad89df92f9128deac')
+            'dbea0b1470112bbbd5e98d26c78b147dc2815c14ea653a20364f88a53db3688e0dbd4e4ae1c54069e8693734fe313dd09bd5461d28d631c294f47e48483bf75f')
 
 prepare() {
   cd "${_gitpkgname}-${pkgver}"
