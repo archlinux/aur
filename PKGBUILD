@@ -2,12 +2,12 @@
 
 _pkgbase=jan
 pkgname=${_pkgbase}-git
-pkgver=0.7.0.r10.gabb0da4
-pkgrel=2
+pkgver=0.7.3.r43.g4957509
+pkgrel=1
 pkgdesc="An open source alternative to ChatGPT that runs 100% offline on your computer"
 url="https://jan.ai/"
 arch=('x86_64')
-license=('AGPL-3.0')
+license=('Apache-2.0')
 source=("$_pkgbase::git+https://github.com/menloresearch/jan.git")
 sha256sums=('SKIP')
 provides=("$_pkgbase")
@@ -19,6 +19,8 @@ depends=(
 )
 optdepends=(
 	'libappindicator-gtk3: for tray icon support'
+	'uv: for MCP servers based on Python'
+	'npm: for MCP servers based on Node.js'
 )
 makedepends=(
 	'git'
@@ -28,15 +30,15 @@ makedepends=(
 	'libappindicator-gtk3'
 )
 
-pkgver() {
-	cd "$_pkgbase"
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
-}
-
 _ensure_local_nvm() {
     which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+}
+
+pkgver() {
+	cd "$_pkgbase"
+	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
@@ -61,7 +63,11 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
 
 	cd src-tauri/target/release/bundle/deb/Jan_*/data/usr
-	install -Dm755 bin/* -t "$pkgdir"/usr/bin
+	install -Dm755 bin/Jan -t "$pkgdir"/usr/bin
+
 	install -dm755 "$pkgdir"/usr/share
 	cp -r share/* "$pkgdir"/usr/share
+
+	install -dm755 "$pkgdir"/usr/lib
+	cp -r lib/* "$pkgdir"/usr/lib
 }
