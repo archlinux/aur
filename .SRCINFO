@@ -1,6 +1,6 @@
 pkgbase = lenspect
 	pkgdesc = Lightweight security threat scanner intended to make malware detection more accessible and efficient
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/vmkspv/lenspect
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = lenspect
 	depends = hicolor-icon-theme
 	depends = libadwaita
 	depends = python-gobject
-	source = lenspect-1.0.2.tar.gz::https://github.com/vmkspv/lenspect/archive/v1.0.2.tar.gz
-	sha256sums = 99e83e7b3c1eb69ba19e9f0a0076dbee8b5bb2ba7ec2d88455fa600d0e80b8a1
+	source = lenspect-1.0.3.tar.gz::https://github.com/vmkspv/lenspect/archive/v1.0.3.tar.gz
+	sha256sums = dba8e37684b6008ed8ceb8a7509641b9b260695a471177ff7463ac8c4db62d97
 
 pkgname = lenspect
