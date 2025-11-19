@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=scrcpy
+GenericName=Android Screen Mirror
+Comment=Display and control Android devices
+Exec=scrcpy
+Icon=scrcpy
+Terminal=false
+Categories=Utility;System;
+Keywords=android;screen;mirror;cast;remote;control;

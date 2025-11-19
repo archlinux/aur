@@ -1,7 +1,7 @@
 pkgbase = scrcpy-bin
 	pkgdesc = Display and control your Android device
 	pkgver = 3.3.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/Genymobile/scrcpy
 	arch = x86_64
 	license = Apache-2.0
@@ -13,6 +13,8 @@ pkgbase = scrcpy-bin
 	provides = scrcpy
 	conflicts = scrcpy
 	source = https://github.com/Genymobile/scrcpy/releases/download/v3.3.3/scrcpy-linux-x86_64-v3.3.3.tar.gz
+	source = scrcpy.desktop
 	sha256sums = 9b30e813e8191329ba8025dc80cb0f198fb0a318960a3b5c15395cf675c9c638
+	sha256sums = 17c3b3eda5c73b754e08f6eba4bccede72f0a1c00149ff800539319073ca3587
 
 pkgname = scrcpy-bin
