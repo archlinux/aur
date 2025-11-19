@@ -766,19 +766,6 @@ index 922b765..363bad2 100644
  #include <cmath> // round()
  #include <cstdlib>
  #include <stdint.h>
-diff --git a/moonray/moonray_arras/mcrt_computation/lib/engine/mcrt/McrtUpdate.h b/moonray/moonray_arras/mcrt_computation/lib/engine/mcrt/McrtUpdate.h
-index ff90c24..db2ffb8 100644
---- a/moonray/moonray_arras/mcrt_computation/lib/engine/mcrt/McrtUpdate.h
-+++ b/moonray/moonray_arras/mcrt_computation/lib/engine/mcrt/McrtUpdate.h
-@@ -5,6 +5,7 @@
- //
- #pragma once
- 
-+#include <functional>
- #include <message_api/Message.h>
- #include <message_api/messageapi_names.h>
- #include <message_api/Object.h>
-Submodule moonray/moonray_arras/mcrt_dataio contains modified content
 diff --git a/moonray/moonray_arras/mcrt_dataio/CMakeLists.txt b/moonray/moonray_arras/mcrt_dataio/CMakeLists.txt
 index 9cd6fd2..b7f6e62 100644
 --- a/moonray/moonray_arras/mcrt_dataio/CMakeLists.txt
