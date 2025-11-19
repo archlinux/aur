@@ -15,17 +15,28 @@ build() {
 
     add_binary '/usr/lib/pkcs11/librtpkcs11ecp.so'
 
-    add_systemd_unit 'pcscd.service'
     printf '%s\n' \
         '[Unit]' \
+        'Description=PC/SC Smart Card Daemon' \
         'DefaultDependencies=no' \
+        'Requires=pcscd.socket' \
         '[Service]' \
-        'ExecStart=' \
         'ExecStart=/usr/bin/pcscd --foreground --disable-polkit' \
-    | add_systemd_drop_in 'pcscd.service' 'mkinitcpio'
+        'ExecReload=/usr/bin/pcscd --hotplug' \
+        'RuntimeDirectory=pcscd' \
+        'RuntimeDirectoryPreserve=true' \
+        'PIDFile=/run/pcscd/pcscd.pid' \
+    | add_file - '/usr/lib/systemd/system/pcscd.service' 644
 
-    add_systemd_unit 'pcscd.socket'
-    printf '[Unit]\nDefaultDependencies=no\n' | add_systemd_drop_in 'pcscd.socket' 'mkinitcpio'
+    add_binary '/usr/bin/pcscd'
+
+    printf '%s\n' \
+        '[Unit]' \
+        'Description=PC/SC Smart Card Daemon Activation Socket' \
+        'DefaultDependencies=no' \
+        '[Socket]' \
+        'ListenStream=/run/pcscd/pcscd.comm' \
+    | add_file - '/usr/lib/systemd/system/pcscd.socket' 644
 
     # pcscd.socket -> cryptsetup-pre.target -> systemd-cryptsetup@.service -> cryptsetup.target
     add_systemd_unit 'cryptsetup-pre.target'
