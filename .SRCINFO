@@ -1,0 +1,20 @@
+pkgbase = pqhex
+	pkgdesc = The Pokemon Quest save editor
+	pkgver = v1.0.5f69ed1
+	pkgrel = 1
+	url = https://github.com/kylon/PQHex
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = qt6-base
+	provides = pqhex
+	conflicts = pqhex
+	source = pqhex::git+https://github.com/kylon/PQHex.git
+	source = pqhex.ico
+	source = pqhex.desktop
+	sha256sums = SKIP
+	sha256sums = 657c802cfd37460d06d908eadbd05723e64bfa4cd76368c7d2202b90f25a7368
+	sha256sums = aaea65499cd447e1324aebcbfac1123887a9d7d2e433942a23615cc694154daf
+
+pkgname = pqhex-git

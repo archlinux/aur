@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=PQHex
+GenericName=PQHex
+Exec=/usr/bin/PQHex
+Icon=/usr/share/icons/pqhex.ico
+Type=Application
+Terminal=false
+Categories=Utility;Games;
+Comment="The Pokemon Quest save editor"
