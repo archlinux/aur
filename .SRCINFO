@@ -1,0 +1,21 @@
+pkgbase = gucli-bin
+	pkgdesc = Your personal command center in the system tray
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jager1win/gucli
+	install = gucli.install
+	arch = x86_64
+	license = GPL-3.0
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator-glib
+	depends = libnotify
+	source = gucli::https://github.com/jager1win/gucli/releases/download/v1.0.0/gucli
+	source = gucli.desktop
+	source = icons::git+https://github.com/jager1win/gucli.git#branch=master&subdirectory=src-tauri/icons
+	sha256sums = ed78be9c5bd6614faac9b0957d04b8a4d3be6688b6508693eabbc6c1894fdcff
+	sha256sums = SKIP
+	sha256sums = SKIP
+	source_x86_64 = gucli::https://github.com/jager1win/gucli/releases/download/v1.0.0/gucli
+
+pkgname = gucli-bin

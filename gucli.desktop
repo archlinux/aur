@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Gucli
+Comment=Your personal command center in system tray
+Exec=gucli
+Icon=gucli
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupNotify=false
