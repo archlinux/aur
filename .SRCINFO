@@ -1,6 +1,6 @@
 pkgbase = beautysh
 	pkgdesc = A Bash beautifier for the masses
-	pkgver = 6.4.1
+	pkgver = 6.4.2
 	pkgrel = 1
 	url = https://github.com/lovesegfault/beautysh
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = beautysh
 	makedepends = python-wheel
 	depends = python-colorama
 	depends = python-editorconfig
-	source = https://github.com/lovesegfault/beautysh/releases/download/v6.4.1/beautysh-6.4.1.tar.gz
-	sha256sums = 5beeccdddf02cb11088e009d60e367a28aab1609fbe8da9e5a19a7c59fa28f56
+	source = https://github.com/lovesegfault/beautysh/releases/download/v6.4.2/beautysh-6.4.2.tar.gz
+	sha256sums = e3d762006e8930e6fec8842adeb7e124c283bd63dbd83a1466f91e4caf5765b4
 
 pkgname = beautysh

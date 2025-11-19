@@ -3,7 +3,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=beautysh
-pkgver=6.4.1
+pkgver=6.4.2
 pkgrel=1
 pkgdesc="A Bash beautifier for the masses"
 arch=(
@@ -32,7 +32,7 @@ source=(
 	"${url}/releases/download/v${pkgver}/beautysh-${pkgver}.tar.gz"
 )
 sha256sums=(
-	5beeccdddf02cb11088e009d60e367a28aab1609fbe8da9e5a19a7c59fa28f56
+	e3d762006e8930e6fec8842adeb7e124c283bd63dbd83a1466f91e4caf5765b4
 )
 
 : "${pkgname}"
