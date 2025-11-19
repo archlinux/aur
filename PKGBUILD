@@ -1,7 +1,7 @@
 # Maintainer: Donien <donien.96@hotmail.com>
 
 pkgname="icingadb-web"
-pkgver="1.2.3"
+pkgver="1.3.0"
 pkgrel=1
 epoch=0
 pkgdesc="Provides a graphical interface to your Icinga monitoring "
@@ -11,8 +11,8 @@ license=("GPL")
 groups=()
 depends=(
     "icingaweb2>=2.9"
-    "icinga-php-library>=0.17.1"
-    "icinga-php-thirdparty>=0.13.0"
+    "icinga-php-library>=0.18.0"
+    "icinga-php-thirdparty>=0.14.0"
 )
 makedepends=()
 optdepends=()
@@ -38,7 +38,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-    "0b90634e8a75b8c0ca28a8fc8c2d45e6c41ae6dcbe1017a8b4f662ec95931d51"
+    "3e4d608e4d1587d86231312c9fa4801e2c5819de7f3fb952bfa569b766720ca4"
     "SKIP"
     "SKIP"
     "SKIP"

@@ -1,6 +1,6 @@
 pkgbase = icingadb-web
 	pkgdesc = Provides a graphical interface to your Icinga monitoring
-	pkgver = 1.2.3
+	pkgver = 1.3.0
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/Icinga/icingadb-web
@@ -9,18 +9,18 @@ pkgbase = icingadb-web
 	arch = any
 	license = GPL
 	depends = icingaweb2>=2.9
-	depends = icinga-php-library>=0.17.1
-	depends = icinga-php-thirdparty>=0.13.0
+	depends = icinga-php-library>=0.18.0
+	depends = icinga-php-thirdparty>=0.14.0
 	provides = icingadb-web
 	provides = icingaweb2-module-icingadb
 	backup = etc/icingaweb2/modules/icingadb/commandtransports.ini
 	backup = etc/icingaweb2/modules/icingadb/config.ini
 	backup = etc/icingaweb2/modules/icingadb/redis.ini
-	source = https://github.com/Icinga/icingadb-web/archive/refs/tags/v1.2.3.tar.gz
+	source = https://github.com/Icinga/icingadb-web/archive/refs/tags/v1.3.0.tar.gz
 	source = commandtransports.ini
 	source = config.ini
 	source = redis.ini
-	sha256sums = 0b90634e8a75b8c0ca28a8fc8c2d45e6c41ae6dcbe1017a8b4f662ec95931d51
+	sha256sums = 3e4d608e4d1587d86231312c9fa4801e2c5819de7f3fb952bfa569b766720ca4
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
