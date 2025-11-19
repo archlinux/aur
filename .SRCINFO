@@ -16,6 +16,6 @@ pkgbase = ai-pkg-bin
 	provides = ai-pkg
 	conflicts = ai-pkg
 	source = https://github.com/rohankrsingh/ai-pkg/releases/download/v0.1.7/ai_pkg-0.1.7-py3-none-any.whl
-	sha256sums = c273c07909e50733f42cb3c924e752e694ed4251f9cc917d07db9e8c07a47c3c
+	sha256sums = 57159a39e67a36df13f28f87cda2246fd5c4b894e5afc91d2317aefec0d9a9f9
 
 pkgname = ai-pkg-bin
