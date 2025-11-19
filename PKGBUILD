@@ -2,7 +2,7 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 
 pkgname='tkn-pac'
-pkgver=0.17.2
+pkgver=0.39.2
 pkgrel=1
 pkgdesc='tkn-pac - A command line interface for interacting with Pipelines as Code'
 url='https://pipelinesascode.com'
@@ -11,11 +11,10 @@ license=('Apache 2.0')
 provides=('pipelines-as-code')
 conflicts=('pipelines-as-code')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/openshift-pipelines/pipelines-as-code/releases/download/0.9.0/tkn-pac_0.9.0_Linux_arm64.tar.gz")
-sha256sums_aarch64=('b15b8e12981b6ee97452ffe7b21f094b66c7e97fd94ae258889fc8fb170582e8')
-sha256sums_x86_64=('6d77676be23b7e0ddb3d535076f90cafe29b2b9d8b86c6ff0e1b1e4a67034f97')
-
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/openshift-pipelines/pipelines-as-code/releases/download/0.9.0/tkn-pac_0.9.0_Linux_x86_64.tar.gz")
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/openshift-pipelines/pipelines-as-code/releases/download/v$pkgver/tkn-pac_${pkgver}_linux_arm64.tar.gz")
+sha256sums_aarch64=('6ef6cdf680ae60d3732628feb3b10aa53b451bf80c95ca05736bc6f0b54bf525')
+sha256sums_x86_64=('b6f11366b8a97498f15572658327086cb5f51640af2156b28b00d3834481f73f')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/openshift-pipelines/pipelines-as-code/releases/download/v$pkgver/tkn-pac_${pkgver}_linux_x86_64.tar.gz")
 
 package() {
   # bin
@@ -28,8 +27,8 @@ package() {
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
   mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
 
-  ./tkn-pac completion zsh > tkn-pac.zsh
-  ./tkn-pac completion bash > tkn-pac.bash
+  ./tkn-pac completion zsh >tkn-pac.zsh
+  ./tkn-pac completion bash >tkn-pac.bash
 
   install -Dm644 "tkn-pac.bash" "${pkgdir}/usr/share/bash-completion/completions/tkn-pac"
   install -Dm644 "tkn-pac.zsh" "${pkgdir}/usr/share/zsh/site-functions/_tkn-pac"
