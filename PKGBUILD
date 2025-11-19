@@ -5,7 +5,7 @@
 
 pkgname=pyglossary
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="convert dictionary files/glossaries with various formats"
 arch=(any)
 url="https://github.com/ilius/pyglossary"
@@ -45,6 +45,9 @@ package() {
   install -Dm644 pkg/${pkgname}.desktop -t ${pkgdir}/usr/share/applications
   install -Dm644 res/hicolor/scalable/apps/${pkgname}.svg \
     -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
+  # Remove unwanted test files
+  rm -f "$pkgdir/usr/lib/python3.13/site-packages/tests/__init__.py"
+  rm -f "$pkgdir/usr/lib/python3.13/site-packages/tests/deprecated/__init__.py"
 }
 
 # vim:set ts=2 sw=2 et:
