@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=goodlink-bin
 _pkgname=GoodLink
-pkgver=2.1.8
+pkgver=2.1.9
 pkgrel=1
 pkgdesc="The simplest, zero-cost intranet penetration in the whole network, a single command directly connects any two hosts on the Internet.(Prebuilt version,written in Go)"
 arch=(
@@ -20,10 +20,10 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/releases/download
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-arm-cmd.zip")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-386-cmd.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64-cmd.zip")
-sha256sums_aarch64=('442498b18d1eba94a4cba1732351e58f63ae92ea55de13c7cfeba7c3d4a10c86')
-sha256sums_armv7h=('b13d6b3e5937732b0f0cfd900c4dc19b6cd69d9b636be0a26011980fdf2467c5')
-sha256sums_i686=('cce28ac7592734b7993c536f204196e32a21c6510225af47477b0eca536efe2a')
-sha256sums_x86_64=('c70b4cf6c4217034868f3f60cdbdfd237276e85e0717c722f0ad3d2eb14e771a')
+sha256sums_aarch64=('01c18342cc12eda6918ae747944ca42975672a9618349a48e12d4b47b549893e')
+sha256sums_armv7h=('6aacac2277e675a03b8ac34008f586b7baa3e59db8e7ff4a8605638f93bcb668')
+sha256sums_i686=('b2db80df91c4cf5e5546522ffb06b7f0f4e81f94c2813cfbfd158dbcaca3d593')
+sha256sums_x86_64=('a2492b380289dc795fc76f67a7a89d6ac15a8110a701e96c99ff8dbea288d730')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}-linux-"*-cmd "${pkgdir}/usr/bin/${pkgname%-bin}"
 }

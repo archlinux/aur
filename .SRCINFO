@@ -1,6 +1,6 @@
 pkgbase = goodlink-bin
 	pkgdesc = The simplest, zero-cost intranet penetration in the whole network, a single command directly connects any two hosts on the Internet.(Prebuilt version,written in Go)
-	pkgver = 2.1.8
+	pkgver = 2.1.9
 	pkgrel = 1
 	url = https://gitee.com/konyshe/goodlink
 	arch = aarch64
@@ -8,15 +8,15 @@ pkgbase = goodlink-bin
 	arch = i686
 	arch = x86_64
 	license = Apache-2.0
-	provides = goodlink=2.1.8
+	provides = goodlink=2.1.9
 	conflicts = goodlink
-	source_aarch64 = goodlink-2.1.8-aarch64.zip::https://gitee.com/konyshe/goodlink/releases/download/v2.1.8/goodlink-linux-arm64-cmd.zip
-	sha256sums_aarch64 = 442498b18d1eba94a4cba1732351e58f63ae92ea55de13c7cfeba7c3d4a10c86
-	source_armv7h = goodlink-2.1.8-armv7h.zip::https://gitee.com/konyshe/goodlink/releases/download/v2.1.8/goodlink-linux-arm-cmd.zip
-	sha256sums_armv7h = b13d6b3e5937732b0f0cfd900c4dc19b6cd69d9b636be0a26011980fdf2467c5
-	source_i686 = goodlink-2.1.8-i686.zip::https://gitee.com/konyshe/goodlink/releases/download/v2.1.8/goodlink-linux-386-cmd.zip
-	sha256sums_i686 = cce28ac7592734b7993c536f204196e32a21c6510225af47477b0eca536efe2a
-	source_x86_64 = goodlink-2.1.8-x86_64.zip::https://gitee.com/konyshe/goodlink/releases/download/v2.1.8/goodlink-linux-amd64-cmd.zip
-	sha256sums_x86_64 = c70b4cf6c4217034868f3f60cdbdfd237276e85e0717c722f0ad3d2eb14e771a
+	source_aarch64 = goodlink-2.1.9-aarch64.zip::https://gitee.com/konyshe/goodlink/releases/download/v2.1.9/goodlink-linux-arm64-cmd.zip
+	sha256sums_aarch64 = 01c18342cc12eda6918ae747944ca42975672a9618349a48e12d4b47b549893e
+	source_armv7h = goodlink-2.1.9-armv7h.zip::https://gitee.com/konyshe/goodlink/releases/download/v2.1.9/goodlink-linux-arm-cmd.zip
+	sha256sums_armv7h = 6aacac2277e675a03b8ac34008f586b7baa3e59db8e7ff4a8605638f93bcb668
+	source_i686 = goodlink-2.1.9-i686.zip::https://gitee.com/konyshe/goodlink/releases/download/v2.1.9/goodlink-linux-386-cmd.zip
+	sha256sums_i686 = b2db80df91c4cf5e5546522ffb06b7f0f4e81f94c2813cfbfd158dbcaca3d593
+	source_x86_64 = goodlink-2.1.9-x86_64.zip::https://gitee.com/konyshe/goodlink/releases/download/v2.1.9/goodlink-linux-amd64-cmd.zip
+	sha256sums_x86_64 = a2492b380289dc795fc76f67a7a89d6ac15a8110a701e96c99ff8dbea288d730
 
 pkgname = goodlink-bin
