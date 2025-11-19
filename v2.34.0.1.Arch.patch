@@ -1127,18 +1127,6 @@ index ce6672d..6c2360a 100644
  #include <iostream> // debug
  #include <unistd.h> // getpid()
  #include <unordered_set>
-diff --git a/moonray/scene_rdl2/lib/common/grid_util/ShmData.h b/moonray/scene_rdl2/lib/common/grid_util/ShmData.h
-index 5cc8a0a..f5ee1a3 100644
---- a/moonray/scene_rdl2/lib/common/grid_util/ShmData.h
-+++ b/moonray/scene_rdl2/lib/common/grid_util/ShmData.h
-@@ -6,6 +6,7 @@
- #include <cstring> // memcpy
- #include <functional>
- #include <string>
-+#include <cstdint>
- 
- namespace scene_rdl2 {
- namespace grid_util {
 diff --git a/moonray/scene_rdl2/mod/python/py_scene_rdl2/CMakeLists.txt b/moonray/scene_rdl2/mod/python/py_scene_rdl2/CMakeLists.txt
 index a36f8f3..aa9873e 100644
 --- a/moonray/scene_rdl2/mod/python/py_scene_rdl2/CMakeLists.txt
