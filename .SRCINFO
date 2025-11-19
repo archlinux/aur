@@ -1,6 +1,6 @@
 pkgbase = python-speechrecognition
 	pkgdesc = Google-powered speech recognition for Python
-	pkgver = 3.14.3
+	pkgver = 3.14.4
 	pkgrel = 1
 	url = https://github.com/Uberi/speech_recognition
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = python-speechrecognition
 	optdepends = python-vosk: Required for Vosk recognizer
 	optdepends = python-groq: Required for Groq Whisper API
 	provides = python-speech_recognition
-	source = git+https://github.com/Uberi/speech_recognition.git#tag=3.14.3
-	sha256sums = 6330348e101e2115e56e9f14e16b8908727ebc01c0d236aa78ea637a244d5fc9
+	source = git+https://github.com/Uberi/speech_recognition.git#tag=3.14.4
+	sha256sums = 8e0faf51aa924510a58406f57c937d9f01b4fb45b2d7269b4fe2bbd68784e72e
 
 pkgname = python-speechrecognition
