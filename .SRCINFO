@@ -1,6 +1,6 @@
 pkgbase = hypryou
 	pkgdesc = Dynamic and elegant desktop setup inspired by Material You, featuring auto-generated colors, fluid animations, and customizable user experience.
-	pkgver = 2.1.8
+	pkgver = 2.1.9
 	pkgrel = 1
 	url = https://github.com/koeqaife/hyprland-material-you
 	install = hypryou.install
@@ -47,7 +47,7 @@ pkgbase = hypryou
 	optdepends = ttf-meslo-nerd-font-powerlevel10k: Font for alacritty
 	optdepends = alacritty: I recommend to use this terminal
 	optdepends = tela-circle-icon-theme-nord: Default icons
-	source = hyprland-material-you::git+https://github.com/koeqaife/hyprland-material-you.git#tag=v2.1.8
-	sha256sums = ef3b887d7dcd2516ed3de072977d0e617c1e2cf1cea594f54437981963c547c3
+	source = hyprland-material-you::git+https://github.com/koeqaife/hyprland-material-you.git#tag=v2.1.9
+	sha256sums = 6c64e9728718759890f64deed8a0f96cc23e1c634a79f467de00faf607ed5a67
 
 pkgname = hypryou
