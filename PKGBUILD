@@ -5,7 +5,7 @@ pkgver='3.3.3'
 pkgrel=1
 pkgdesc="Python3 module for working with clipboard. Created because pyperclip is discontinued."
 url="None"
-depends=('python')
+depends=('python-dbus-next')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm')
 optdepends=(
 	'xsel: clipboard support'
