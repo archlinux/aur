@@ -1,0 +1,16 @@
+pkgbase = apkg
+	pkgdesc = APKG — GP Team’s Unified Package Manager (unified CLI for apt, pacman, dnf, yum, zypper, apk)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/gpteamofficial/apkg
+	arch = any
+	license = GPL3
+	depends = bash
+	source = apkg::https://raw.githubusercontent.com/gpteamofficial/apkg/main/apkg
+	source = LICENSE::https://raw.githubusercontent.com/gpteamofficial/apkg/main/LICENSE
+	source = README.md::https://raw.githubusercontent.com/gpteamofficial/apkg/main/README.md
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = apkg
