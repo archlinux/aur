@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=distroshelf
-pkgver=1.0.15
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A GUI for Distrobox Containers"
 arch=('x86_64' 'aarch64')
@@ -10,6 +10,7 @@ depends=(
   'distrobox'
   'gtk4'
   'libadwaita'
+  'vte4'
   'which'
 )
 makedepends=(
@@ -17,7 +18,7 @@ makedepends=(
   'meson'
 )
 source=("DistroShelf-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0b2a388d0c944173d20769447c94cab2e01250ddc44ed8a09b53aa6959ebec85')
+sha256sums=('55eb24be910b3c90ce63d5a9a3ccfe90524722a757daac65daeeb849b61e9c7b')
 
 prepare() {
   cd "DistroShelf-$pkgver"
