@@ -1,6 +1,6 @@
 pkgbase = linux-clear-cjktty-zfs
 	pkgdesc = Clear Linux内核,带有zfs和cjktty并开启kexec
-	pkgver = 6.16.9
+	pkgver = 6.17.7
 	pkgrel = 1
 	url = https://git.staropensource.de/StarOpenSource/Linux-Tachyon
 	arch = x86_64
@@ -18,21 +18,21 @@ pkgbase = linux-clear-cjktty-zfs
 	makedepends = zstd
 	options = !strip
 	options = !debug
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.16.tar.xz
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.16.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.16.9.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.17.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.17.tar.sign
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-6.17.7.xz
 	source = tachyon::git+https://git.staropensource.de/StarOpenSource/Linux-Tachyon.git
 	source = more-uarches-20250818.2.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20250818.2.tar.gz
-	source = git+https://github.com/openzfs/zfs.git#tag=zfs-2.3.4
+	source = git+https://github.com/openzfs/zfs.git#tag=zfs-2.3.5
 	source = 0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v6.x/cjktty-6.16.patch
 	source = 0002-cjktty-32.patch::https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = E27E5D8A3403A2EF66873BBCDEA66FF797772CDC
 	validpgpkeys = AC2B29BD34A6AFDDB3F68F35E7BFC8EC95861109
-	sha256sums = 1a4be2fe6b5246aa4ac8987a8a4af34c42a8dd7d08b46ab48516bcc1befbcd83
+	sha256sums = 9b607166a1c999d8326098121222feb080a20a3253975fcdfa2de96ba7f757a7
 	sha256sums = SKIP
-	sha256sums = 7a1a1a2bb6746977e47363e32c7096018ff88e4ecae827714700f13b27bd54ce
+	sha256sums = a017a72f03a01504f9ba9d9d0882699b451256bf8d4798d8b899fac959e5ff5c
 	sha256sums = SKIP
 	sha256sums = 326701c512295d50b7ee5b281287959b0e318bba8fed7abe746099e5b658849a
 	sha256sums = SKIP

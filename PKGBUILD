@@ -181,10 +181,10 @@
 
 
 # Kernel version
-_kernel_major=6.16
-_kernel_minor=9
+_kernel_major=6.17
+_kernel_minor=7
 # Clear Linux patches version
-_clr=6.16.1-1593
+_clr=6.17.6-1594
 # kernel_compiler_patch version
 _kernelcompilerpatch="20250818.2"
 # kernel_compiler_patch name
@@ -204,14 +204,14 @@ license=("GPL-2.0-only")
 makedepends=("bc" "cpio" "gettext" "git" "libelf" "pahole" "perl" "python" "tar" "xz" "zstd")
 options=("!strip" "!debug")
 source=(
-  "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.xz"
-  "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.sign"
-  "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${_kernel_major}.${_kernel_minor}.xz"
-  "tachyon::git+https://git.staropensource.de/StarOpenSource/Linux-Tachyon.git"
-  "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
-  "git+https://github.com/openzfs/zfs.git#tag=zfs-2.3.4"
-  "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v6.x/cjktty-6.16.patch"
-  "0002-cjktty-32.patch::https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch"
+    "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.xz"
+    "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-${_kernel_major}.tar.sign"
+    "https://cdn.kernel.org/pub/linux/kernel/v6.x/patch-${_kernel_major}.${_kernel_minor}.xz"
+    "tachyon::git+https://git.staropensource.de/StarOpenSource/Linux-Tachyon.git"
+    "more-uarches-${_kernelcompilerpatch}.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/${_kernelcompilerpatch}.tar.gz"
+    "git+https://github.com/openzfs/zfs.git#tag=zfs-2.3.5"
+    "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v6.x/cjktty-6.16.patch"
+    "0002-cjktty-32.patch::https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch"
 )
 
 
@@ -219,14 +219,14 @@ source=(
 # -> SHA-256 checksums of the package's sources
 #    These need to be updated each release; see the 'source' array
 sha256sums=(
-    "1a4be2fe6b5246aa4ac8987a8a4af34c42a8dd7d08b46ab48516bcc1befbcd83"
-            "SKIP"
-            "7a1a1a2bb6746977e47363e32c7096018ff88e4ecae827714700f13b27bd54ce"
-            "SKIP"
-            "326701c512295d50b7ee5b281287959b0e318bba8fed7abe746099e5b658849a"
-            'SKIP'
-            'SKIP'
-            'SKIP'
+    "9b607166a1c999d8326098121222feb080a20a3253975fcdfa2de96ba7f757a7"
+    "SKIP"
+    "a017a72f03a01504f9ba9d9d0882699b451256bf8d4798d8b899fac959e5ff5c"
+    "SKIP"
+    "326701c512295d50b7ee5b281287959b0e318bba8fed7abe746099e5b658849a"
+    'SKIP'
+    'SKIP'
+    'SKIP'
 )
 
 # -> Kernel PGP signer fingerprints
@@ -637,7 +637,7 @@ _update_defconfig() {
 
     # EDAC enablement for modern CPUs
     scripts/config -e EDAC_AMD64 \
-                -e EDAC_IGEN6
+                   -e EDAC_IGEN6
 
     # Enable LLVM compilation
     [ -n "${_use_llvm_lto}" ] && scripts/config -d LTO_NONE \
@@ -651,15 +651,15 @@ _update_defconfig() {
 
     # Enable or disable debug settings
     [ "${_debug}" == "y" ] && scripts/config -e DEBUG_INFO \
-                                            -e DEBUG_INFO_BTF \
-                                            -e DEBUG_INFO_DWARF4 \
-                                            -e PAHOLE_HAS_SPLIT_BTF \
-                                            -e DEBUG_INFO_BTF_MODULES
+                                             -e DEBUG_INFO_BTF \
+                                             -e DEBUG_INFO_DWARF4 \
+                                             -e PAHOLE_HAS_SPLIT_BTF \
+                                             -e DEBUG_INFO_BTF_MODULES
     [ "${_debug}" == "n" ] && scripts/config -d DEBUG_INFO \
-                                            -d DEBUG_INFO_BTF \
-                                            -d DEBUG_INFO_DWARF4 \
-                                            -d PAHOLE_HAS_SPLIT_BTF \
-                                            -d DEBUG_INFO_BTF_MODULES
+                                             -d DEBUG_INFO_BTF \
+                                             -d DEBUG_INFO_DWARF4 \
+                                             -d PAHOLE_HAS_SPLIT_BTF \
+                                             -d DEBUG_INFO_BTF_MODULES
 
     # Run olddefconfig
     _info "Executing 'make olddefconfig'"
