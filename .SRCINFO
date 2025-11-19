@@ -1,6 +1,6 @@
 pkgbase = protoc-gen-js
 	pkgdesc = Protocol Buffers for JavaScript
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://github.com/protocolbuffers/protobuf-javascript
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = protoc-gen-js
 	makedepends = bazel
 	makedepends = npm
 	depends = protobuf
-	source = protoc-gen-js-4.0.0.tar.gz::https://github.com/protocolbuffers/protobuf-javascript/archive/refs/tags/v4.0.0.tar.gz
-	sha256sums = 7d3cd714bf99660ecc96882468a5a23465efca07064ff8105da634372649ee6e
+	source = protoc-gen-js-4.0.1.tar.gz::https://github.com/protocolbuffers/protobuf-javascript/archive/refs/tags/v4.0.1.tar.gz
+	sha256sums = 123fac2e86109b24e80ccd356aa914e268bf5863ad1354d224d6ceaed6f5c45b
 
 pkgname = protoc-gen-js
