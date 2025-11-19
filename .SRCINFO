@@ -1,6 +1,6 @@
 pkgbase = gnucobol-svn
 	pkgdesc = A free/libre COBOL compiler
-	pkgver = r5501
+	pkgver = r5608
 	pkgrel = 1
 	url = https://gnucobol.sourceforge.io/
 	arch = i686
@@ -16,7 +16,9 @@ pkgbase = gnucobol-svn
 	depends = gmp
 	depends = libxml2
 	depends = ncurses
-	provides = gnucobol=r5501
+	optdepends = readline: for cobfile
+	optdepends = sh: for cob-config
+	provides = gnucobol=r5608
 	conflicts = gnucobol
 	options = staticlibs
 	source = svn+https://svn.code.sf.net/p/gnucobol/code/trunk

@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gnucobol-svn
-pkgver=r5501
+pkgver=r5608
 pkgrel=1
 pkgdesc="A free/libre COBOL compiler"
 arch=('i686' 'x86_64')
@@ -9,6 +9,8 @@ url="https://gnucobol.sourceforge.io/"
 license=('GPL-3.0-or-later' 'LGPL-3.0-or-later')
 depends=('glibc' 'cjson' 'db' 'gmp' 'libxml2' 'ncurses')
 makedepends=('subversion' 'help2man' 'rsync')
+optdepends=('readline: for cobfile'
+            'sh: for cob-config')
 provides=("gnucobol=$pkgver")
 conflicts=('gnucobol')
 options=('staticlibs')
