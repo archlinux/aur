@@ -38,6 +38,7 @@ build() {
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE \
     -DCLANG_DIR=/usr/lib/cmake/clang/ \
     -DMLIR_TABLEGEN_EXE=/usr/bin/mlir-tblgen \
     -DFLANG_INCLUDE_TESTS=OFF \
@@ -49,6 +50,7 @@ build() {
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE \
     -DCMAKE_Fortran_COMPILER="$srcdir"/flang-$pkgver.src/build/bin/flang \
     -DCMAKE_Fortran_COMPILER_WORKS=yes \
     -DCMAKE_Fortran_FLAGS="" \
