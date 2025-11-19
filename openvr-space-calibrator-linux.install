@@ -75,48 +75,14 @@ post_remove() {
         FOUND_STEAMVR=1
         echo "Found Space Calibrator installation for user: $user (home: $user_home)" >&2
         
-        # Find vrpathreg
-        VRPATHREG=""
-        for path in \
-            "$user_home/.local/share/Steam/steamapps/common/SteamVR/bin/linux64/vrpathreg" \
-            "$user_home/.steam/steam/steamapps/common/SteamVR/bin/linux64/vrpathreg" \
-            "$user_home/.steam/root/steamapps/common/SteamVR/bin/linux64/vrpathreg" \
-            "/usr/local/bin/vrpathreg" \
-            "/usr/bin/vrpathreg"; do
-            if [ -f "$path" ]; then
-                VRPATHREG="$path"
-                break
-            fi
-        done
-        
-        if [ -z "$VRPATHREG" ] && command -v vrpathreg &> /dev/null; then
-            VRPATHREG="vrpathreg"
-        fi
-        
-        # Remove overlay config file (overlays are registered via OpenVR API, not vrpathreg)
-        # Removing the config file prevents auto-launch and SteamVR will clean up on restart
+        # Remove overlay config file (prevents auto-launch)
         OVERLAY_CONFIG="$user_home/.local/share/Steam/config/vrappconfig/spacecalibrator.linux.vrappconfig"
         if [ -f "$OVERLAY_CONFIG" ]; then
             echo "Removing overlay config..." >&2
             rm -f "$OVERLAY_CONFIG" 2>/dev/null || true
         fi
         
-        # Remove driver registration
-        if [ -n "$VRPATHREG" ]; then
-            echo "Removing driver registration..." >&2
-            if [ -f "$VRPATHREG" ]; then
-                VRPATHREG_DIR="$(dirname "$VRPATHREG")"
-                LD_LIBRARY_PATH="$VRPATHREG_DIR:$LD_LIBRARY_PATH" "$VRPATHREG" removedriver "$STEAMVR_DRIVERS_DIR" 2>/dev/null || {
-                    echo "Note: Driver unregistration failed (may not have been registered)" >&2
-                }
-            else
-                "$VRPATHREG" removedriver "$STEAMVR_DRIVERS_DIR" 2>/dev/null || {
-                    echo "Note: Driver unregistration failed (may not have been registered)" >&2
-                }
-            fi
-        fi
-        
-        # Remove files
+        # Remove files (SteamVR will detect driver is gone on restart)
         echo "Removing installation files..." >&2
         rm -rf "$STEAMVR_DRIVERS_DIR" 2>/dev/null || {
             echo "WARNING: Could not remove all files from $STEAMVR_DRIVERS_DIR" >&2
