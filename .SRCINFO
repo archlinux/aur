@@ -1,6 +1,6 @@
 pkgbase = illogical-updots
 	pkgdesc = GTK based updater for end4 dotfiles
-	pkgver = 1.0.8
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/FoxyIsCoding/illogical-updots
 	arch = any

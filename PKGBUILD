@@ -1,6 +1,6 @@
 # Maintainer: Matthew Bielik (matej.bielik@proton.me)
 pkgname=illogical-updots
-pkgver=1.0.8
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="GTK based updater for end4 dotfiles"
 arch=('any')
