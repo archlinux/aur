@@ -1,7 +1,7 @@
 pkgbase = baidu-translate-client-bin
 	pkgdesc = Baidu translate.(Prebuilt version.Use system-wide electron)百度翻译
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://fanyi.baidu.com/
 	arch = i686
 	arch = x86_64
@@ -10,16 +10,16 @@ pkgbase = baidu-translate-client-bin
 	makedepends = icoutils
 	depends = electron11
 	depends = libxkbcommon-x11
-	provides = baidu-translate-client=2.0.0
-	provides = baidu-translate=2.0.0
+	provides = baidu-translate-client=2.1.0
+	provides = baidu-translate=2.1.0
 	conflicts = baidu-translate-client
-	source = baidu-translate-client-2.0.0.exe::https://fanyiapp.cdn.bcebos.com/fanyi-client/pkg/win/2.0.0/%E7%99%BE%E5%BA%A6%E7%BF%BB%E8%AF%91_Setup_2.0.0.exe
+	source = baidu-translate-client-2.1.0.exe::https://fanyiapp.cdn.bcebos.com/fanyi-client/pkg/win/2.1.0/%E7%99%BE%E5%BA%A6%E7%BF%BB%E8%AF%91_Setup_2.1.0.exe
 	source = baidu-translate-client.desktop
-	source = LICENSE-2.0.0.html::https://fanyi.baidu.com/static/webpage/agreement.html
+	source = LICENSE-2.1.0.html::https://fanyi.baidu.com/static/webpage/agreement.html
 	source = baidu-translate-client.sh
-	sha256sums = af0bf0c83a93ea737c5a91f1a03bd29435ca012d8038f7fc5dec4dab5abd5169
+	sha256sums = 14b28e1f65e2116cf5376a063d79fa1450128f043de0d12811d393a4275a8e69
 	sha256sums = 883caab57df8960f025758fa321da15cdac180dfc3688d7ec975c142ccd0d3ad
-	sha256sums = ef6eb077ee83490ded38457163af72b73171b99d9e5540605cd6c4bc7d1ac661
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 1bac6150492bcebb1b2f74fc4a6712a8cd9317abf3107e6fa8ca357e5023bbf7
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = baidu-translate-client-bin

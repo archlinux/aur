@@ -3,9 +3,9 @@
 pkgname=baidu-translate-client-bin
 _pkgname=BdTranslateClient
 _zhsname='百度翻译'
-pkgver=2.0.0
+pkgver=2.1.0
 _electronversion=11
-pkgrel=2
+pkgrel=1
 pkgdesc="Baidu translate.(Prebuilt version.Use system-wide electron)${_zhsname}"
 arch=(
     'i686'
@@ -32,10 +32,14 @@ source=(
     "LICENSE-${pkgver}.html::https://fanyi.baidu.com/static/webpage/agreement.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('af0bf0c83a93ea737c5a91f1a03bd29435ca012d8038f7fc5dec4dab5abd5169'
+sha256sums=('14b28e1f65e2116cf5376a063d79fa1450128f043de0d12811d393a4275a8e69'
             '883caab57df8960f025758fa321da15cdac180dfc3688d7ec975c142ccd0d3ad'
-            'ef6eb077ee83490ded38457163af72b73171b99d9e5540605cd6c4bc7d1ac661'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+            '1bac6150492bcebb1b2f74fc4a6712a8cd9317abf3107e6fa8ca357e5023bbf7'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/${_zhsname}.exe" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare(){
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -45,6 +49,7 @@ prepare(){
         s/@options@/--disable-gpu-sandbox/g
     " "${srcdir}/${pkgname%-bin}.sh"
     7z e "${srcdir}/${pkgname%-bin}-${pkgver}.exe" -aoa
+    _get_electron_version
     wrestool -x --output="${srcdir}" -t14 "${srcdir}/${pkgname%-bin}-${pkgver}.exe"
     icotool -i 5 -x "${srcdir}/"*.ico -o "${srcdir}/${pkgname%-bin}.png"
     case "${CARCH}" in
