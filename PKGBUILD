@@ -1,6 +1,6 @@
 # Maintainer: Avenge Media LLC <avengemediallc at gmail dot com>
 pkgname=dms-shell-bin
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
@@ -39,12 +39,12 @@ sha256sums_x86_64=('513be09c9a4f56fe1274b6bc823d2eafaa3f3da9892bd668767844b83c94
                    '61e116dd2fe4cd87ab203f6a3d193404dd5f3c0c0f6dc262439a64411bcb30c4'
                    '8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667'
                    '41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d'
-                   '39dc84116ec9a7555c6f39c90e9f729ae24a74cbdcd712da05b7f1b02bee0e43')
+                   '1fc698c21ee329c33237d1995a22180a3744652247832a4d6d88495bafde3426')
 sha256sums_aarch64=('513be09c9a4f56fe1274b6bc823d2eafaa3f3da9892bd668767844b83c94011a'
                     '61e116dd2fe4cd87ab203f6a3d193404dd5f3c0c0f6dc262439a64411bcb30c4'
                     '8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667'
                     '41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d'
-                    '3bd2bec46bc666bb9471c6b61d24ab467ab6446ea2572821216f3f6d30271975')
+                    '9f7ea53413362b1959ec357d0627995ff89daf614d016d41f1f239582edc1d27')
 
 package() {
     install -Dm0755 "$srcdir/bin/dms-distropkg" "$pkgdir/usr/bin/dms"
