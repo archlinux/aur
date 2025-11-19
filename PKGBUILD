@@ -2,10 +2,10 @@
 pkgname=pclink
 _app_id=xyz.bytedz.PCLink
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop app for secure remote PC control and management"
 arch=('any')
-url="https://github.com/BYTEDz/PCLink"
+url="https://bytedz.xyz/products/pclink"
 license=('AGPL-3.0-or-later')
 depends=(
   'libappindicator'
@@ -39,7 +39,7 @@ optdepends=(
   'python-aiofiles: Improves upload performance with async file I/O'
   'python-pystray: fallback for system tray'
 )
-source=("PCLink-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+source=("PCLink-$pkgver.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v$pkgver.tar.gz"
         "${_app_id}.desktop"
          "$pkgname.1")
 sha256sums=('1e77be6be73a46bd3e76f8968887c02f21c5f2f66b47af6f596870f4e90f13a7'

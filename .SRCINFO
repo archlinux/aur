@@ -1,8 +1,8 @@
 pkgbase = pclink
 	pkgdesc = Desktop app for secure remote PC control and management
 	pkgver = 2.5.0
-	pkgrel = 1
-	url = https://github.com/BYTEDz/PCLink
+	pkgrel = 2
+	url = https://bytedz.xyz/products/pclink
 	arch = any
 	license = AGPL-3.0-or-later
 	makedepends = python-build
