@@ -1,7 +1,7 @@
 pkgbase = openmx_openblas
 	pkgdesc = A software package for nano-scale material simulations.
 	pkgver = 3.9.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.openmx-square.org/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -16,8 +16,10 @@ pkgbase = openmx_openblas
 	source = openmx-patch-3.9.9.tar.gz::https://www.openmx-square.org/bugfixed/21Oct17/patch3.9.9.tar.gz
 	source = Generate_Wannier.patch
 	source = openmx_common.patch
+	source = bandgnu13.patch
 	sha256sums = 27bb56bd4d1582d33ad32108fb239b546bdd1bdffd6f5b739b4423da1ab93ae2
 	sha256sums = 20cccc4e3412a814a53568f400260e90f79f0bfb7e2bed84447fe071b26edd38
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
