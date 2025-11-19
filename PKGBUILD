@@ -1,7 +1,7 @@
 # Maintainer: 0xbbuddha <killian@archimedeos.org>
 
-pkgname=bashhound-git
-_pkgname=${pkgname%-git}
+pkgname=bashhound
+_pkgname=${pkgname}-git
 pkgver=r6.f5500dd
 pkgrel=1
 pkgdesc="Active Directory data collector for BloodHound written in Bash"

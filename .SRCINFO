@@ -1,4 +1,4 @@
-pkgbase = bashhound-git
+pkgbase = bashhound
 	pkgdesc = Active Directory data collector for BloodHound written in Bash
 	pkgver = r6.f5500dd
 	pkgrel = 1
@@ -14,7 +14,7 @@ pkgbase = bashhound-git
 	depends = coreutils
 	provides = bashhound
 	conflicts = bashhound
-	source = bashhound::git+https://github.com/0xbbuddha/BashHound.git
+	source = bashhound-git::git+https://github.com/0xbbuddha/BashHound.git
 	sha256sums = SKIP
 
-pkgname = bashhound-git
+pkgname = bashhound
