@@ -163,19 +163,8 @@ else
     echo "Warning: Manifest file not found at $MANIFEST_PATH"
 fi
 
-# Create symlink in /usr/bin pointing to SteamVR directory executable
-# This ensures the binary always runs from the correct location with manifest/actions.json
-if [ -f "$STEAMVR_DRIVERS_DIR/bin/linux64/space-calibrator" ]; then
-    echo ""
-    echo "Creating system symlink..."
-    if [ "$(id -u)" -eq 0 ]; then
-        ln -sf "$STEAMVR_DRIVERS_DIR/bin/linux64/space-calibrator" /usr/bin/space-calibrator 2>/dev/null || {
-            echo "Warning: Could not create symlink (may need manual creation)" >&2
-        }
-    else
-        echo "Note: Run 'sudo ln -sf $STEAMVR_DRIVERS_DIR/bin/linux64/space-calibrator /usr/bin/space-calibrator' to create system symlink"
-    fi
-fi
+# Note: Symlink creation is handled in the .install file's post_install hook
+# (which runs as root) to ensure proper permissions
 
 echo ""
 echo "Installation complete!"

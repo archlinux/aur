@@ -31,6 +31,15 @@ post_install() {
             /usr/bin/openvr-space-calibrator-install "$user_home" 2>&1 || {
                 echo "WARNING: Installation failed for user $user, continuing..." >&2
             }
+            
+            # Create symlink in /usr/bin pointing to SteamVR directory executable
+            STEAMVR_DRIVERS_DIR="$user_home/.local/share/SteamVR/drivers/01spacecalibrator"
+            if [ -f "$STEAMVR_DRIVERS_DIR/bin/linux64/space-calibrator" ]; then
+                echo "Creating system symlink..." >&2
+                ln -sf "$STEAMVR_DRIVERS_DIR/bin/linux64/space-calibrator" /usr/bin/space-calibrator 2>/dev/null || {
+                    echo "WARNING: Could not create symlink" >&2
+                }
+            fi
         fi
     done < "$TMPFILE"
     
