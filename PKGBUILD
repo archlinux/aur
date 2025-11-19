@@ -1,6 +1,6 @@
 # Maintainer: pierspad
 pkgname=textmerger
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A Python GUI application for merging text files"
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/pierspad/textmerger/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('c5d4e0b816b347c3fb6ca15e3878af91f60eee6bd85bf6d16707c5adda4a6a5c')
+sha256sums=('cf96439171d66b7ee6f2fb2cac5bb1047b29cf76942c3172d99aad04b419a1b0')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -31,7 +31,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  python -m build --wheel --no-isolation
+  python -m build --wheel
 }
 
 package() {
