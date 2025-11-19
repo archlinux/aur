@@ -13,16 +13,15 @@ pkgdesc="Desktop client for the Drop OSS project."
 arch=(any)
 url="https://droposs.org/"
 license=('AGPL-3.0-only')
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'umu-launcher')
+depends=('glib2' 'glibc' 'gcc-libs' 'webkit2gtk-4.1' 'umu-launcher' 'libappindicator' 'libayatana-appindicator')
 source=("git+https://github.com/Drop-OSS/drop-app.git#commit=28d7a741c12b318959717e3e788fafaf29c8493c")
-# source=('https://github.com/Drop-OSS/drop-app/archive/refs/tags/v0.3.3.tar.gz')
-makedepends=('yarn' 'cargo')
+makedepends=('pnpm' 'cargo' 'gcc' 'pkgconf')
 sha256sums=('7122692292968c80f1bcab189d7580fa3318bd6e66f703bd14ce6bc642452918')
 
 _desktop="
 [Desktop Entry]\n
 Type=Application\n
-Version=0.3.3\n
+Version=0.3.4\n
 Name=Drop Desktop App\n
 Comment=Drop client for Linux\n
 Path=/usr/bin/\n
@@ -40,10 +39,10 @@ prepare() {
 build() {
 	cd drop-app/
 	git submodule update --init --recursive
-	yarn
+	pnpm install
 	export RUSTUP_TOOLCHAIN=nightly
 	CFLAGS+=' -ffat-lto-objects'
-	yarn tauri build --no-bundle
+	pnpm tauri build --no-bundle
 }
 
 package() {
