@@ -1,0 +1,5 @@
+[vtf-thumbnailer]
+source = "github"
+github = "craftablescience/vtf-thumbnailer"
+use_max_tag = true
+prefix = "v"
