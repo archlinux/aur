@@ -1,12 +1,16 @@
 pkgbase = vencord-installer
 	pkgdesc = A cross platform gui/cli app for installing Vencord
 	pkgver = 1.4.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/Vencord/Installer
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = go
 	makedepends = git
+	makedepends = libxrandr
+	makedepends = libxcursor
+	makedepends = libxinerama
+	makedepends = libxi
 	depends = hicolor-icon-theme
 	depends = glibc
 	depends = gcc-libs

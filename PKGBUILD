@@ -1,13 +1,13 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vencord-installer
 pkgver=1.4.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A cross platform gui/cli app for installing Vencord"
 arch=('x86_64')
 url="https://github.com/Vencord/Installer"
 license=('GPL-3.0-only')
 depends=('hicolor-icon-theme' 'glibc' 'gcc-libs' 'libglvnd' 'libx11')
-makedepends=('go' 'git')
+makedepends=('go' 'git' 'libxrandr' 'libxcursor' 'libxinerama' 'libxi')
 source=("${pkgname}::git+$url.git#tag=v${pkgver}")
 sha256sums=('f38ba4bfc9c5f74aebe32a1676eec51356def7aa4621143e467801f9c0ba42bd')
 
