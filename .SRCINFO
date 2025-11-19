@@ -1,6 +1,6 @@
 pkgbase = notnative-app-bin
 	pkgdesc = Note-taking application with Vim-like keybindings, MCP server (40+ tools), AI chat, and smart tags (binary package)
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/k4ditano/notnative-omarchy
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = notnative-app-bin
 	optdepends = waybar: For system tray integration
 	provides = notnative-app
 	conflicts = notnative-app
-	source = notnative-app-bin-0.1.8.tar.gz::https://github.com/k4ditano/notnative-omarchy/releases/download/v0.1.8/notnative-app-bin-0.1.8-x86_64.tar.gz
-	sha256sums = 26da8e51129fe54a3c943876d7b9964b167d10e7454a24295931493e2aa7ee78
+	source = notnative-app-bin-0.1.9.tar.gz::https://github.com/k4ditano/notnative-omarchy/releases/download/v0.1.9/notnative-app-bin-0.1.9-x86_64.tar.gz
+	sha256sums = bb8af7a8d4ebb5f2f4ec487954cfb43a932c35ba78329dcef2e774a37c21af67
 
 pkgname = notnative-app-bin
