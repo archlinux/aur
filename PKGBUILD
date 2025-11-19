@@ -1,4 +1,5 @@
-# Maintainer: Nathaniel van Diepen <eeems@eeems.email>
+# Maintainer: Alexandre DIDIER <archlinux.58b1s@passmail.net>
+# Contributor: Nathaniel van Diepen <eeems@eeems.email>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=gnome-shell-extension-burn-my-windows

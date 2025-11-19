@@ -7,7 +7,7 @@ pkgbase = gnome-shell-extension-burn-my-windows
 	license = GPL3
 	makedepends = zip
 	depends = gnome-shell
-	source = https://github.com/Schneegans/Burn-My-Windows/archive/v46.tar.gz
+	source = https://github.com/Schneegans/Burn-My-Windows/archive/v47.tar.gz
 	sha256sums = b0bcfaddef021470d0266f98344a8c924705fca82da7c0d9ae6fa4ace7f8f3b3
 
 pkgname = gnome-shell-extension-burn-my-windows
