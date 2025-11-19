@@ -2,12 +2,12 @@
 
 pkgname=opera-developer
 pkgver=125.0.5720.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and secure web browser and Internet suite - developer stream'
 arch=('x86_64')
 url='https://www.opera.com/computer'
 license=('custom:opera')
-provides=('opera')
+provides=('opera-developer')
 depends=(
     'gtk3' 
     'alsa-lib' 

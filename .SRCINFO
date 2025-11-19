@@ -1,7 +1,7 @@
 pkgbase = opera-developer
 	pkgdesc = A fast and secure web browser and Internet suite - developer stream
 	pkgver = 125.0.5720.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.opera.com/computer
 	arch = x86_64
 	license = custom:opera
@@ -17,7 +17,7 @@ pkgbase = opera-developer
 	depends = hicolor-icon-theme
 	depends = upower
 	optdepends = opera-developer-ffmpeg-codecs
-	provides = opera
+	provides = opera-developer
 	source = https://get.geo.opera.com/pub/opera-developer/125.0.5720.0/linux/opera-developer_125.0.5720.0_amd64.deb
 	source = opera
 	source = default
