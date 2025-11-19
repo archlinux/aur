@@ -1,0 +1,5 @@
+["crycco-bin"]
+source = "github"
+github = "ralsina/crycco"
+use_latest_release = true
+prefix = "v"

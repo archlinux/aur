@@ -1,0 +1,23 @@
+pkgbase = crycco-bin
+	pkgdesc = A literate programming tool
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/ralsina/crycco
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = crycco
+	conflicts = crycco
+	options = !strip
+	source = LICENSE-0.4.0::https://raw.githubusercontent.com/ralsina/crycco/v0.4.0/LICENSE
+	source = README-0.4.0.md::https://raw.githubusercontent.com/ralsina/crycco/v0.4.0/README.md
+	source = CHANGELOG-0.4.0.md::https://raw.githubusercontent.com/ralsina/crycco/v0.4.0/CHANGELOG.md
+	sha256sums = 91c5a6fc53adf00971f7b4851ae27b91291e470a67f2474d00c965d05dc7d286
+	sha256sums = ceaf8c21a688ce15b2575e4dbb0fa8a6b210720aa71596b004e18d4137a626c7
+	sha256sums = 08252fe65a458b0f5c61b2c4499ff8e41fdfd042033ccca80c3adab708815387
+	source_x86_64 = https://github.com/ralsina/crycco/releases/download/v0.4.0/crycco-static-linux-amd64
+	sha256sums_x86_64 = 4ad7cd4201b7d9a4462a38d92fbb2e362c8e39193ef46566c8913b12fe3371f5
+	source_aarch64 = https://github.com/ralsina/crycco/releases/download/v0.4.0/crycco-static-linux-arm64
+	sha256sums_aarch64 = 293ca85bb8befd5c97414f2a46ad4ded40803c3c283dba782422109092e770de
+
+pkgname = crycco-bin
