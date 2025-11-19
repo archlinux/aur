@@ -1,6 +1,6 @@
 pkgbase = objdiff
 	pkgdesc = A local diffing tool for decompilation projects
-	pkgver = 3.4.0
+	pkgver = 3.4.1
 	pkgrel = 1
 	url = https://github.com/encounter/objdiff
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = objdiff
 	options = !strip
 	options = !lto
 	options = !debug
-	source = objdiff-3.4.0.tar.gz::https://github.com/encounter/objdiff/archive/refs/tags/v3.4.0.tar.gz
+	source = objdiff-3.4.1.tar.gz::https://github.com/encounter/objdiff/archive/refs/tags/v3.4.1.tar.gz
 	source = objdiff.desktop
 	source = objdiff.png
-	b2sums = e84039236bcb5e970d0a3d7d42bf84dc2c03c6730789f6839951d58e7839b02efc45c18af47f03b73824bf523dff01feb73c486e96f755ac54ea1337d8967472
+	b2sums = 79bdda0ddb58f36daca2a23ebd3c64551f4e38a17f850402b210d002bb847c25cd7a1e5bc7194549ec393d93365058e0a1dee3d69175c4dffa9c3c04f10d9661
 	b2sums = SKIP
 	b2sums = SKIP
 
