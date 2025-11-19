@@ -5,7 +5,7 @@
  
 pkgname=thunderbird-bin
 _pkgname=thunderbird
-pkgver=144.0.1
+pkgver=145.0
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -26,25 +26,16 @@ source=(
   'vendor.js'
 )
 source_x86_64=(
-  thunderbird-$pkgver-x86_64.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/144.0.1/linux-x86_64/en-US/thunderbird-144.0.1.tar.xz
-#thunderbird-$pkgver-x86_64.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/144.0.1/linux-x86_64/thunderbird-$pkgver.tar.xz.asc
+  thunderbird-$pkgver-x86_64.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/145.0/linux-x86_64/en-US/thunderbird-145.0.tar.xz
+#thunderbird-$pkgver-x86_64.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/145.0/linux-x86_64/thunderbird-$pkgver.tar.xz.asc
 )
-source_pentium4=(
-  thunderbird-$pkgver-pentium4.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/144.0.1/linux-i686/en-US/thunderbird-144.0.1.tar.xz
-#thunderbird-$pkgver-pentium4.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/144.0.1/linux-i686/thunderbird-$pkgver.tar.xz.asc
-)
-source_i686=(
-  thunderbird-$pkgver-i686.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/144.0.1/linux-i686/en-US/thunderbird-144.0.1.tar.xz
-#thunderbird-$pkgver-i686.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/144.0.1/thunderbird-$pkgver.tar.xz.asc
-)
+
 
 validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>
 
 sha512sums=('6813e1dfd43c67ad7517714988ac27e7fdfe4857c8e6612c165a8aa89fa013c5ab4f270c13945010422d3bda82a7b7cd5496eaa5cb5524f6b2fa1732e59fd737'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_x86_64=('33d7fc4c22e4871a31857bd1b43aff0bdd9b50578521352104524e4835657add26ee14d8083e843f9dc50f9fbaf4e673e7f771db9e96bb6afa1e59a4ec48e477')
-sha512sums_pentium4=('92592613ca0aeb8e48750ca32c2af4f71735b39b3cc0e935a03bb70c75b29b664cc94489acb8a155be43278885bb00bb6c53e2b7e517ad6ba0ced55538f3d1d7')
-sha512sums_i686=('92592613ca0aeb8e48750ca32c2af4f71735b39b3cc0e935a03bb70c75b29b664cc94489acb8a155be43278885bb00bb6c53e2b7e517ad6ba0ced55538f3d1d7')
+sha512sums_x86_64=('977b05e0b168240aae32ecb4d20dadabc752f7e1dd805cd2591f594d7140fbb4ee6e97d45ec538caf8ff3710159afec4eb57f47cf9abe2d308f0e4ced4c1f57e')
 
 
 
