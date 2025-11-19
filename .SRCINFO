@@ -8,6 +8,7 @@ pkgbase = sixteen-bin
 	license = MIT
 	provides = sixteen
 	conflicts = sixteen
+	options = !strip
 	source = LICENSE-0.5.2::https://raw.githubusercontent.com/ralsina/sixteen/v0.5.2/LICENSE
 	source = README-0.5.2.md::https://raw.githubusercontent.com/ralsina/sixteen/v0.5.2/README.md
 	source = CHANGELOG-0.5.2.md::https://raw.githubusercontent.com/ralsina/sixteen/v0.5.2/CHANGELOG.md
