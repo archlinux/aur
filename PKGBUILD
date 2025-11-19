@@ -2,7 +2,7 @@
 
 pkgname="ukrmol-out"
 pkgver=3.2
-pkgrel=4
+pkgrel=5
 _minCmake="3.10"
 epoch=
 pkgdesc="Outer region programs for UKRmol+"
@@ -27,11 +27,16 @@ sha256sums=('9d3acc132c4128957d0a34ac8700924d3efdb7b84e37107fad6f80ac840aee59')
 
 build() {
 
+  export BLAS_LIBRARIES="$(pkg-config --libs blas64)"
+  export LAPACK_LIBRARIES="$(pkg-config --libs lapack64)"
+  export BLAS_CFLAGS="$(pkg-config --cflags blas64)"
+  export LAPACK_CFLAGS="$(pkg-config --cflags lapack64)"
+
   local _cmakeOptions=(
     -D CMAKE_POLICY_VERSION_MINIMUM="${_minCmake}"
-    -D CMAKE_C_COMPILER="$(command -v gcc)"
-    -D CMAKE_CXX_COMPILER="$(command -v gcc)"
-    -D CMAKE_Fortran_COMPILER="$(command -v mpifort)"
+    -D CMAKE_C_COMPILER='/opt/mpich-fint64/bin/mpicc'
+    -D CMAKE_CXX_COMPILER='/opt/mpich-fint64/bin/mpicc'
+    -D CMAKE_Fortran_COMPILER='/opt/mpich-fint64/bin/mpifort'
     -D CMAKE_Fortran_FLAGS='-fdefault-integer-8'
     -D GBTOLIB_INCLUDE_DIRS="/usr/mod/gbtolib"
     -D GBTOLIB_LIBRARIES="$(whereis libGBTO.a | cut -d " " -f2)"
