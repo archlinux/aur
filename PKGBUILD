@@ -3,7 +3,7 @@
 _pkgauthor=mcandre
 _pkgname=slick
 pkgname=${_pkgname}-bin
-pkgver=0.0.17
+pkgver=0.0.18
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="A CI-ready shell language syntax checker"
@@ -19,7 +19,7 @@ provides=("${_pkgexecs[@]}")
 source=("${_pkgname}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}.tgz"
         "README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE.md")
-sha256sums=('deaa6ac8ea44d2df2ae7394f97e9aac2ff27bdb1c555d94d4688b6db0398e3f0'
+sha256sums=('b7d5c2116788f277249a3edafe51d769cd1e344c5a922a1ae3a5d55b9ebc6647'
             'bbfd5987134a3df4dbf6c63d0184154a9c8c861f88abc98594e60587f4525d2a'
             '209f2bba163b033a6911ed879497d720a64095962f5b38dac2c476674d328269')
 
