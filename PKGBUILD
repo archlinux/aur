@@ -1,10 +1,10 @@
-# Maintainer: Markus Maiwald <markus at maiwald dot work>
-# Refactored by: Voxis Forge AI
+# Maintainer: Markus Maiwald <markus@maiwald.work>
+# Refactored from: Voxis Forge AI
 
 pkgname=antigravity-bin-hardened
 pkgver=1.11.3
 _buildid=6583016683339776
-pkgrel=3
+pkgrel=4
 pkgdesc="Google Antigravity Agentic Development Platform (Pre-built Binary). Hardened version with strict permissions and verified dependencies."
 arch=('x86_64')
 url="https://antigravity.google/"
@@ -48,7 +48,7 @@ source=(
     "antigravity-url-handler.desktop"
     "antigravity.apparmor"
 )
-sha256sums=('ab9dbab873fff677deb2cfd95ea60b9295ebd53b58ec8533e9e1110b2451e540'
+sha256sums=('025da512f9799a7154e2cc75bc0908201382c1acf2e8378f9da235cb84a5615b'
             'SKIP'
             'SKIP'
             'SKIP')
