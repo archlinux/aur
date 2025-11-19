@@ -1,0 +1,22 @@
+pkgbase = tug-bin
+	pkgdesc = Multi-platform Docker rescue ship
+	pkgver = 0.0.18
+	pkgrel = 1
+	url = https://github.com/mcandre/tug
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = BSD-2-Clause
+	depends = glibc
+	depends = gcc-libs
+	provides = tug
+	conflicts = tug
+	conflicts = tug-git
+	source = tug-0.0.18.tgz::https://github.com/mcandre/tug/releases/download/v0.0.18/tug-0.0.18.tgz
+	source = README-0.0.18.md::https://raw.githubusercontent.com/mcandre/tug/v0.0.18/README.md
+	source = LICENSE-0.0.18::https://raw.githubusercontent.com/mcandre/tug/v0.0.18/LICENSE.md
+	sha256sums = 651c36a3a89ecb122fbeb2182e0222d5c9b23268707dea8fff91da906c4eb156
+	sha256sums = 451c83e154a1ea9a799853b50af0f83e73276dfdf1d052372b7aad613b05a25e
+	sha256sums = 319362074fd4edb39f6d61509c06d94b24ed06639657094dfa19b9135f19d882
+
+pkgname = tug-bin

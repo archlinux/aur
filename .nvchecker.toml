@@ -1,0 +1,5 @@
+["tug-bin"]
+source = "github"
+github = "mcandre/tug"
+use_latest_release = true
+prefix = "v"
