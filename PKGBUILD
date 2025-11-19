@@ -3,7 +3,7 @@
 pkgname=eigenwallet-developertools-bin
 _pkgver="3.3.7"
 pkgver=${_pkgver/-beta./.}
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="λ eigenwallet developer tools are command-line tools for debugging purposes or to run a a maker (to provide liquidity) for eigenwallet's XMR<>BTC atomic swaps"
 arch=('x86_64')
@@ -32,10 +32,7 @@ sha256sums=('40d7b90a0d560fc01666cecd53840c32e700aaa537e070de0bb75c0cb2b8cc2f'
             'e9d5b0a80a47ec8c5866b48fe4cde70bd00eb982e55b18a4cbff53cf6ea4996c'
             '516cd9f295e632077097ebfd31b6d6cb865fdb9ca7625d10801405921438693b')
 validpgpkeys=()
-
-prepare() {
-	printf "%b" "\n----------------------------------------------------------------------\nInstalled \e[1;34masb\e[0m, \e[1;34masb-controller\e[0m, \e[1;34mswap\e[0m, \e[1;34morchestrator\e[0m, and \e[1;34mrendezvous-node\e[0m\n----------------------------------------------------------------------\n"
-}
+install="$pkgname.install"
 
 package() {
   install -Dm755 "${srcdir}/asb" "$pkgdir/usr/bin/asb"
