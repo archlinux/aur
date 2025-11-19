@@ -25,7 +25,7 @@ pkgbase = github-copilot-cli
 	source = README-0.0.361.md::https://raw.githubusercontent.com/github/copilot-cli/v0.0.361/README.md
 	source = LICENSE-0.0.361::https://raw.githubusercontent.com/github/copilot-cli/v0.0.361/LICENSE.md
 	b2sums = 91c030905313e98261ad2346da06b3f41313aaa14c7dde8c33b859c323271b5a41a9146337422247bb38c88883c5262386f07bd78bd42ccb394833f2fc58baf2
-	b2sums = 970edbdc4e4b9886a1a4452581179b3d82421fa12ed72cfb1560d5b74c241305fd405a5c4efb4ee4b9089f49701ed46b7567676cf135b5df7688ac0b1a054981
+	b2sums = b8437e4bcac71d24c1a58690e767bafbdeb97abe690c40d1721c31ae4e0127fd780ed4f72e08f7c83638668df73379832709dbbb6fad5343eb709d47ba7d1951
 	b2sums = 4f1ae6117d08e8e0a9b3bb838970059dcfa151b5f8764bb7d62e320b72570fccb7ac209011ba6778b5e9895ee586bdbbb190e5ff97b7b10cd14eee0f80caee35
 
 pkgname = github-copilot-cli
