@@ -24,7 +24,7 @@ prepare() {
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd ceres-solver-$pkgver
   cmake \
       -Bbuild \
       -GNinja \
@@ -45,7 +45,7 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd ceres-solver-$pkgver
   DESTDIR=$pkgdir ninja -C build install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
