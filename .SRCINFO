@@ -1,13 +1,13 @@
 pkgbase = helmify
 	pkgdesc = Creates Helm chart from Kubernetes yaml
-	pkgver = 0.4.18
+	pkgver = 0.4.19
 	pkgrel = 1
 	url = https://github.com/arttor/helmify
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = helmify-0.4.18.tar.gz::https://github.com/arttor/helmify/archive/refs/tags/v0.4.18.tar.gz
-	sha512sums = 5b37ec3e92a4b98a33b2190fe417f3a12d7842d3951e589ad82707e3b21510d32bb5cfdf38b41f6a483eef184f5de74f48b803b1a004d906d1dcfd1ecf804243
+	source = helmify-0.4.19.tar.gz::https://github.com/arttor/helmify/archive/refs/tags/v0.4.19.tar.gz
+	sha512sums = 2b9a8acbdc3fb1d81bf02c79c0a17acd3ebc3b1959cb7b2ea56826083686fbfb42b6ac697ebba1dbc9447947fa97a7313bb1e76fbc1935388264de0e2814cbcc
 
 pkgname = helmify
