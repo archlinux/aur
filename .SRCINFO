@@ -1,10 +1,10 @@
 pkgbase = retroshare
 	pkgdesc = Serverless encrypted instant messenger with filesharing, chatgroups, e-mail
 	pkgver = 0.6.7.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/retroshare/retroshare
 	arch = x86_64
-	license = AGPL-3.0-or-later
+	license = AGPL-3.0-only
 	makedepends = asio
 	makedepends = cmake
 	makedepends = doxygen

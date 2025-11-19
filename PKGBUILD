@@ -8,10 +8,10 @@
 _pkgname="retroshare"
 pkgname="$_pkgname"
 pkgver=0.6.7.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail"
 url="https://github.com/retroshare/retroshare"
-license=('AGPL-3.0-or-later')
+license=('AGPL-3.0-only')
 arch=('x86_64') # --ignorearch
 
 depends=(
@@ -91,4 +91,7 @@ package() {
 
   cd "$_pkgsrc"
   make INSTALL_ROOT="$pkgdir" install
+
+  # components have various OSI-approved licenses
+  install -Dm644 .reuse/dep5 "$pkgdir/usr/share/licenses/$pkgname/LICENSES"
 }
