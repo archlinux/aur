@@ -1,4 +1,4 @@
-From d3d5c3ac8cf2b7e673277c1042a43bfc39e0fcea Mon Sep 17 00:00:00 2001
+From b3a9fe64fa934dc93c337f84bab0eb69b7356d8d Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jerzy=20Ko=C5=82osowski?= <jerzy@kolosowscy.pl>
 Date: Fri, 14 Nov 2025 21:50:53 +0100
 Subject: [PATCH 1/3] plugins/screencast: Add D-Bus API for stream
@@ -3459,7 +3459,7 @@ index a16a0a7536..73c13d4c77 100644
 2.51.2
 
 
-From 0d6fefdc8cdaa4125f125b80180ad7f39b00d410 Mon Sep 17 00:00:00 2001
+From f9beee854466be9ed25d0c0c581d491187968b87 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jerzy=20Ko=C5=82osowski?= <jerzy@kolosowscy.pl>
 Date: Fri, 14 Nov 2025 21:55:44 +0100
 Subject: [PATCH 2/3] plugins/screencastborder: Add visual feedback for active
@@ -8605,7 +8605,7 @@ index 0000000000..ed84c1214c
 2.51.2
 
 
-From dfc2a79d51f9901bd0b193eed66434e4856b5a3b Mon Sep 17 00:00:00 2001
+From 2ae6b6b80ba0206e402a79a95808482046ad9de6 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jerzy=20Ko=C5=82osowski?= <jerzy@kolosowscy.pl>
 Date: Sat, 15 Nov 2025 13:38:21 +0100
 Subject: [PATCH 3/3] plugins/screencastborder: Add per-application color
