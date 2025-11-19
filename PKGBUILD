@@ -3,7 +3,7 @@
 _pkg=newspaper4k
 pkgname=python-${_pkg}
 pkgdesc='A fork and continuation of the newspaper3k/newspaper package.'
-pkgver=0.9.4
+pkgver=0.9.4.1
 pkgrel=1
 url="https://github.com/andythefactory/newspaper4k"
 arch=('any')
@@ -22,7 +22,7 @@ depends=(
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'python-poetry')
 optdepends=('python-numpy' 'python-pandas' 'python-tinysegmenter' 'python-pythainlp' 'python-jieba' 'python-indic-nlp-library' 'python-cloudscraper' 'python-gnews')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('a132c76b9c88042e654bf40823ffcc100252bdb94965fe1d2d9d400567914cc7169e5fd1ab7d57eac2713ef860c39bc665fc91ca114cc278ca3d809bac581217')
+b2sums=('9e0aa228cb8c29e41c41b90b0bda90f2f51b7c6e3ddec572b60d7fb1a7a734d6c0f313f9bc277fda9bbb5ebb1794efa0147c65bbdc63cff73e45fb03fe36ee41')
 
 build() {
 	cd "$_pkg-$pkgver"
