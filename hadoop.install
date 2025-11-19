@@ -1,0 +1,17 @@
+post_install() {
+	getent group hadoop || groupadd hadoop
+	getent passwd hadoop || useradd -g hadoop -r -d /var/lib/hadoop hadoop
+	chown -R hadoop:hadoop /var/{lib,log}/hadoop
+}
+
+pre_remove() {
+	for s in datanode historyserver namenode resourcemanager secondarynamenode; do
+		systemctl stop hadoop-$s.service
+		systemctl --no-reload disable hadoop-$s.service
+	done
+}
+
+post_remove() {
+	userdel -r hadoop
+	rm -rf /var/log/hadoop
+}

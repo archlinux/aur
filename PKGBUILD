@@ -1,0 +1,71 @@
+# Maintainer: max.bra <max dot bra dot gtalk at gmail dot com>
+# Contributor: Matt Quintanilla <matt @ matt quintanilla . xyz>
+# Contributor: William Tang <galaxyking0419@gmail.com>
+# Contributor: Chris Severance <aur.severach@spamgourmet.com>
+# Contributor: David Roheim <david.roheim@gmail.com>
+
+pkgname=hadoop-bin
+pkgver=3.4.2
+pkgrel=1
+pkgdesc='An open-source software for reliable, scalable, distributed computing'
+arch=('x86_64')
+url='https://hadoop.apache.org/'
+license=('APACHE')
+conflicts=('yarn' 'hadoop')
+depends=('inetutils' 'java-runtime-headless>=11' 'openssh' 'protobuf')
+
+source=("https://dlcdn.apache.org/hadoop/common/hadoop-${pkgver}/hadoop-${pkgver}-lean.tar.gz"
+        "hadoop" "hadoop.sh"
+        hadoop-{datanode,historyserver,namenode,resourcemanager,secondarynamenode}.service)
+sha256sums=('6324a83fe11e517890436fc6d80bc829506ed252cbe2465752b91220900dfb83'
+            '22ea61fd1f1e33a444360a99effb4540784f4254e6be631ead9c7106799e0960'
+            '35476cfcad71d441d5df372af6af44b19e5ea65eafa732b3fc54d503c2871a16'
+            '876d40b0a2ec9b9cec9b667d7909591ee0ef1acbd5417a0357c33539d8a54e1a'
+            'f8f3b3a93a9e455da198ee93a873012399878459e78a3a7de0e396d69e81b61f'
+            '3d4aa2a660bd509e658c8109d9e91c00b0f0eee3a2ecab71a4785a76529ea242'
+            '2f6b8893a4b4e2ef120193ecfc2d929a8558d2a1c5b0af12e9224342ca90a158'
+            'ed1e7f13d2023d49a51dc04c4459d12a53bff258a05b852a3e10a9fd2d18bbb8')
+
+install=hadoop.install
+
+package() {
+    # Extract and copy files to /usr
+    mkdir -p "$pkgdir"/usr
+    tar -xzf "$srcdir"/hadoop-${pkgver}-lean.tar.gz -C "$pkgdir"/usr --strip-components=1
+
+    # Move sbin files to bin
+    cd "$pkgdir"/usr
+    mv sbin/* bin/
+    rmdir sbin
+
+    # Move native libraries to /usr/lib
+    mv lib/native/* lib/
+    rmdir lib/native
+
+    # Move license and notice files
+    mkdir -p "$pkgdir"/usr/share/licenses/hadoop/
+    mv licenses-binary/* LICENSE* NOTICE* README.txt "$pkgdir"/usr/share/licenses/hadoop/
+    rmdir licenses-binary
+
+    # Remove windows batch files
+    rm {etc/hadoop,bin,libexec,share/hadoop/tools/resourceestimator/bin}/*.cmd
+
+    # Move etc directory
+    mv "$pkgdir"/usr/etc "$pkgdir"/
+
+    # Install profile script
+    cd "$srcdir"
+    mkdir "$pkgdir"/etc/profile.d
+    cp hadoop.sh "$pkgdir"/etc/profile.d/
+
+    # Install eviroment file
+    mkdir "$pkgdir"/etc/conf.d
+    cp hadoop "$pkgdir"/etc/conf.d/
+
+    # Install systemd service files
+    mkdir -p "$pkgdir"/usr/lib/systemd/system
+    cp hadoop-{datanode,historyserver,namenode,resourcemanager,secondarynamenode}.service "$pkgdir"/usr/lib/systemd/system/
+
+    # Create required directories
+    mkdir -p "$pkgdir"/var/{lib,log}/hadoop
+}
