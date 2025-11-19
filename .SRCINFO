@@ -1,0 +1,17 @@
+pkgbase = declarch
+	pkgdesc = A declarative package management for Arch base Linux, inspired by Nix workflow.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/nixval/declarch
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = pacman
+	depends = git
+	optdepends = paru: AUR backend for syncing
+	optdepends = yay: alternative AUR backend
+	optdepends = flatpak: For managing Flatpak applications
+	source = declarch-0.2.0.tar.gz::https://github.com/nixval/declarch/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = dddf761380f76c6ba6b25f2d9693daa61f94f108333558db91caa68d0a637173
+
+pkgname = declarch
