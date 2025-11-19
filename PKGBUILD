@@ -6,7 +6,7 @@
 # maintained by Heftig for the 'linux' package in the Arch 'Core' repo. 
 
 pkgbase=linux-stub
-pkgver=6.17.7.arch1
+pkgver=6.17.8.arch1
 pkgrel=1
 #pkgdesc
   _oldpkgdesc='Linux'
@@ -48,17 +48,17 @@ validpgpkeys=(
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-# https://gitlab.archlinux.org/packaging/packages/linux/blob/6.17.7.arch1-1/PKGBUILD
-sha256sums=('ddf2ea0d4439e1d57136be3623102af9458f601f5b1cb77e83246e88aea09d0e'
+# https://gitlab.archlinux.org/packaging/packages/linux/blob/6.17.8.arch1-1/PKGBUILD
+sha256sums=('5a8de64a75fca706c01c6c0a77cf75a74618439db195e25f1f0268af6b2fb1da'
             'SKIP'
-            '8bb8d08a419971c0cf96346de3de69c980e0c9a384f46cca49ca9c74eb60343a'
+            '9d04f6d76161ab5f9aa7c4be26c11e14da46c9f8b179ac7038b969872a4565b1'
             'SKIP'
-            '4e6c3f6a35fed3e2bee7309d430ddf87b435ffb6e697c5d53a6c2eb73c42079a')
-b2sums=('7338c33e209a87d2acdc80cb30066b719a1924ac38db0ac4087c4cb2ae6d510d75fbc97eeadac9bbc070afe09f29e65fd7ab18383fe677adcf993c17d4407535'
+            '4bf24013d1a837bf6b51dbbfd1a162c59769f8371f2cf919e34b21271697f9c5')
+b2sums=('1476969a9ad9252f97c16edb3c9fb37d75de3c00280af42057a2704666aa4945ac50d458e61d1e2b751e224ec38c99789b80f23636bc93f79f5b5e51a163980b'
         'SKIP'
-        '446bbb888e4588285d9629b6142420a308919105612d81cc9add844857c6930caf8fa8477e3120f51a596609f4aba6f166447902fc6936ba8c60870976690db2'
+        '20bd7e6186671d21cbba127a44d4c3f6799d4e6ca7bec37a391d3133386f20c122829b0b701d59b08f2f551166e6f93b9c9d0da7d4e58712c973cec5d07eea8b'
         'SKIP'
-        '7d8b33b9ef36bbd599ad283210d19c8f6a481ac3e540be0ac519c4942865bf8a25f01bfcfba4ff4c6fc237a5d7586eb6bb0fbf3eb657d5df6856bd4395475f78')
+        '1ec4d533d25e9127c61eb09dfcd840c88e34cff2c55bcf6745c926892d275c88a5f810bd8ccf63903b5e33c211d4e814abdb057d5c060096d1a3b65280f2c347')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
