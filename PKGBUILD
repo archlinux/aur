@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/notnative-app-
 sha256sums=('bb8af7a8d4ebb5f2f4ec487954cfb43a932c35ba78329dcef2e774a37c21af67')
 
 package() {
-    cd "$srcdir/pkg-files"
+    cd "$srcdir"
 
     # Instalar binario
     install -Dm755 "notnative-app" "$pkgdir/usr/bin/notnative-app"
