@@ -1,10 +1,11 @@
 pkgbase = gnome-shell-extension-burn-my-windows
-	pkgdesc = Disintegrate your apps the old-school way.
+	pkgdesc = Disintegrate your windows with style. A GNOME Shell extension.
 	pkgver = 47
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Schneegans/Burn-My-Windows
 	arch = any
 	license = GPL3
+	makedepends = glib2
 	makedepends = zip
 	depends = gnome-shell
 	source = https://github.com/Schneegans/Burn-My-Windows/archive/v47.tar.gz
