@@ -1,11 +1,11 @@
 # Maintainer: wayvid contributors
 pkgname=wayvid-git
-pkgver=r50.012fba5
+pkgver=r137.f18b503
 pkgrel=2
 pkgdesc="Dynamic video wallpaper engine for Wayland with Steam Workshop and Niri support (git version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/YangYuS8/wayvid"
-license=('MIT' 'Apache-2.0')
+license=('MIT')
 depends=(
     'wayland'
     'mpv'
@@ -17,6 +17,10 @@ makedepends=(
     'rust'
     'cargo'
     'git'
+    'wayland-protocols'
+    'mesa'
+    'libxkbcommon'
+    'fontconfig'
 )
 optdepends=(
     'mesa: Hardware video decoding with VA-API'
@@ -49,6 +53,9 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     
+    # Use system zstd library instead of building from source
+    export ZSTD_SYS_USE_PKG_CONFIG=1
+    
     # Build with all features including GUI
     cargo build --frozen --release --all-features --features gui
 }
@@ -76,13 +83,13 @@ package() {
     
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 docs/QUICKSTART.md "$pkgdir/usr/share/doc/$pkgname/QUICKSTART.md"
-    install -Dm644 docs/IPC.md "$pkgdir/usr/share/doc/$pkgname/IPC.md"
-    install -Dm644 docs/VIDEO_SOURCES.md "$pkgdir/usr/share/doc/$pkgname/VIDEO_SOURCES.md"
-    install -Dm644 docs/WE_FORMAT.md "$pkgdir/usr/share/doc/$pkgname/WE_FORMAT.md"
-    install -Dm644 docs/M6_ROADMAP.md "$pkgdir/usr/share/doc/$pkgname/M6_ROADMAP.md"
+    # Install available docs (skip if missing)
+    for doc in docs/*.md; do
+        [ -f "$doc" ] && install -Dm644 "$doc" "$pkgdir/usr/share/doc/$pkgname/$(basename $doc)" || true
+    done
     
     # Install licenses
     install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
-    install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
+    # Install Apache license if it exists
+    [ -f LICENSE-APACHE ] && install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE" || true
 }
