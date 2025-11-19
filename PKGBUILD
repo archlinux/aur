@@ -1,3 +1,4 @@
+# Maintainer: Jager1win jagerwin@ya.ru
 pkgname=gucli-bin
 pkgver=1.0.0
 pkgrel=1
