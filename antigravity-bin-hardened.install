@@ -1,0 +1,75 @@
+post_install() {
+  cat << EOF
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║              ANTIGRAVITY-BIN-HARDENED SECURITY NOTICE                      ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+🔒 HARDENED SECURITY FEATURES ENABLED:
+
+  ✓ Strict file permissions (755/644/4755)
+  ✓ Chrome-sandbox SUID protection
+  ✓ Enhanced dependency validation
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🛡️  OPTIONAL SECURITY ENHANCEMENTS:
+
+  1. AppArmor (Mandatory Access Control)
+     └─ Profile installed: /usr/share/apparmor/antigravity.apparmor
+     └─ Enable with:
+        sudo pacman -S apparmor
+        sudo cp /usr/share/apparmor/antigravity.apparmor /etc/apparmor.d/antigravity
+        sudo apparmor_parser -r /etc/apparmor.d/antigravity
+        sudo aa-enforce /etc/apparmor.d/antigravity
+
+  2. Firejail (Application Sandboxing)
+     └─ Install: sudo pacman -S firejail
+     └─ Run: firejail antigravity
+
+  3. Bubblewrap (Lightweight Sandboxing)
+     └─ Install: sudo pacman -S bubblewrap
+     └─ Custom sandbox wrapper available
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📋 SECURITY BEST PRACTICES:
+
+  • Review AppArmor profile before enabling
+  • Use sandboxing for untrusted projects
+  • Keep Antigravity updated via: yay -Syu antigravity-bin-hardened
+  • Monitor logs: journalctl -u apparmor (if enabled)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📖 Documentation: https://antigravity.google/
+🔐 Security: See SECURITY.md in package directory
+
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  cat << EOF
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║            ANTIGRAVITY-BIN-HARDENED REMOVAL NOTICE                         ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+🧹 CLEANUP RECOMMENDATIONS:
+
+  • User data preserved in: ~/.config/Antigravity, ~/.cache/Antigravity
+  • AppArmor profile (if installed): /etc/apparmor.d/antigravity
+  
+  To remove user data:
+    rm -rf ~/.config/Antigravity ~/.cache/Antigravity ~/.local/share/Antigravity
+
+  To remove AppArmor profile:
+    sudo rm /etc/apparmor.d/antigravity
+    sudo systemctl reload apparmor
+
+EOF
+}

@@ -4,11 +4,12 @@
 pkgname=antigravity-bin-hardened
 pkgver=1.11.2
 _buildid=6251250307170304
-pkgrel=10
+pkgrel=11
 pkgdesc="Google Antigravity Agentic Development Platform (Pre-built Binary). Hardened version with strict permissions and verified dependencies."
 arch=('x86_64')
 url="https://antigravity.google/"
 license=('Proprietary')
+install=$pkgname.install
 depends=(
     'alsa-lib'
     'at-spi2-atk'
@@ -33,11 +34,24 @@ depends=(
     'xdg-utils'
     'ca-certificates'
 )
+optdepends=(
+    'apparmor: Mandatory Access Control (MAC) security framework'
+    'firejail: Application sandboxing for enhanced isolation'
+    'bubblewrap: Lightweight application sandboxing'
+)
 # !strip: Prevent stripping of signed binaries (breaks Electron)
 # !emptydirs: Keep empty directories if they are needed
 options=('!strip' '!emptydirs')
-source=("https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/${pkgver}-${_buildid}/linux-x64/Antigravity.tar.gz")
-sha256sums=('d1b1115ae76c275c376ea660e1e4d2dc20eb3e72d6a206b096505b944a5f64b7')
+source=(
+    "https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/${pkgver}-${_buildid}/linux-x64/Antigravity.tar.gz"
+    "antigravity.desktop"
+    "antigravity-url-handler.desktop"
+    "antigravity.apparmor"
+)
+sha256sums=('d1b1115ae76c275c376ea660e1e4d2dc20eb3e72d6a206b096505b944a5f64b7'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 package() {
     # 1. Preparation
@@ -110,19 +124,12 @@ package() {
         fi
     fi
 
-    # Desktop Entry
-    install -d "$pkgdir/usr/share/applications"
-    cat > "$pkgdir/usr/share/applications/antigravity.desktop" <<EOF
-[Desktop Entry]
-Name=Antigravity
-Comment=Agentic Development Platform
-Exec=/usr/bin/antigravity
-Icon=antigravity
-Type=Application
-Categories=Development;IDE;
-Terminal=false
-StartupWMClass=Antigravity
-EOF
+    # Desktop Integration
+    install -Dm644 antigravity.desktop "$pkgdir/usr/share/applications/antigravity.desktop"
+    install -Dm644 antigravity-url-handler.desktop "$pkgdir/usr/share/applications/antigravity-url-handler.desktop"
+
+    # AppArmor Profile (Optional Security Enhancement)
+    install -Dm644 antigravity.apparmor "$pkgdir/usr/share/apparmor/antigravity.apparmor"
 
     # License
     if [ -f "$srcdir/LICENSE" ]; then

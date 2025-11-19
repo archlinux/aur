@@ -1,0 +1,26 @@
+[Desktop Entry]
+Name=Antigravity
+Comment=Google Agentic Development Platform - Hardened Edition
+GenericName=AI Development Platform
+Exec=/usr/bin/antigravity %F
+Icon=antigravity
+Type=Application
+Categories=Development;IDE;X-AI;
+Keywords=antigravity;ai;agentic;development;google;
+Terminal=false
+StartupWMClass=Antigravity
+Actions=new-empty-window;
+
+[Desktop Action new-empty-window]
+Name=New Empty Window
+Name[de]=Neues leeres Fenster
+Name[es]=Nueva ventana vacía
+Name[fr]=Nouvelle fenêtre vide
+Name[it]=Nuova finestra vuota
+Name[ja]=新しい空のウィンドウ
+Name[ko]=새 빈 창
+Name[ru]=Новое пустое окно
+Name[zh_CN]=新建空窗口
+Name[zh_TW]=開新空視窗
+Exec=/usr/bin/antigravity --new-window %F
+Icon=antigravity
