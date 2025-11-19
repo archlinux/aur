@@ -24,14 +24,14 @@ if command -v git > /dev/null; then
     fi
 else
     # We are probably inside a clean chroot environment, use fixed version info instead
-    _git_branch="branch=zfs-2.3.5-staging"
-    _staging_ver="2.3.5"
-    _base_ver="2.3.4"
+    _git_branch="branch=zfs-2.3.6-staging"
+    _staging_ver="2.3.6"
+    _base_ver="2.3.5"
 fi
 
 pkgname=${_pkgname}-dkms-staging-git
-pkgver=2.3.4.r0.g34f96a15c7
-pkgrel=3
+pkgver=2.3.5.r0.gab38521f31
+pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch) with compatibility patches for latest stable kernel."
 arch=('any')
 url="https://zfsonlinux.org/"
@@ -44,13 +44,11 @@ source=("${_pkgname}::git+${_git_repo}#${_git_branch}"
         "0001-only-build-the-module-in-dkms.conf.patch"
         "69-zfs-dkms-check.hook"
         "zfs-dkms-check"
-        "linux617-d_set_d_op_is_no_longer_available.patch::https://github.com/openzfs/zfs/commit/0df91abe821e52bc63c59f4fd0548835081dc3ad.patch?full_index=1"
         "Fix-LLVM-21-Wuninitialized-const-pointer-warning.patch::https://github.com/openzfs/zfs/commit/9acedbaceec362d08a33ebfe7c4c7efcee81d094.patch?full_index=1")
 sha256sums=('SKIP'
             '8d5c31f883a906ab42776dcda79b6c89f904d8f356ade0dab5491578a6af55a5'
             '6c793cdbcf0c758b7bc78dcac85d116052b7a66416e4c54179cb0955687b3875'
             '59656435058e41620f15b5691ef1f753355fe81c01a562d92b7c8028aa527b1f'
-            'aed996fed71d0b82c8d5245555b3a2500a325028d1b6726e72605924fe32e563'
             'd4c85e438f8bc9619b4980bdc460074a581058e3043cb1c493eab1b19c560cdb')
 
 prepare() {
