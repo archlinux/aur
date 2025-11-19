@@ -19,6 +19,7 @@ build() {
   export CC=clang
   export CXX=clang++
   export RUSTFLAGS="--remap-path-prefix=$(pwd)=. -C linker=clang"
+  rm -rf ~/.cargo/registry/src
   cargo clean
   cargo build --release
 }
