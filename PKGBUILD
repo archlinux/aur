@@ -2,7 +2,7 @@
 pkgname=google-antigravity-bin
 pkgver=1.11.3
 _buildid=6583016683339776
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Antigravity Agentic IDE (Binary Release)"
 arch=('x86_64')
 url="https://antigravity.google"
@@ -16,7 +16,7 @@ source=("https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/${p
         "google-antigravity.desktop")
 
 sha256sums=('025da512f9799a7154e2cc75bc0908201382c1acf2e8378f9da235cb84a5615b'
-            '7f899f2048b7e24b5c35592ef0aadb95131867ec4cc7ab04de34b9d87e893899')
+            '293b2a68d78ded9d2e8acf5bebf763ecef7c7e915db37f14a3979f41dc3a373e')
 
 package() {
     # Install the main directory to /opt
@@ -32,8 +32,8 @@ package() {
         "${pkgdir}/usr/share/applications/google-antigravity.desktop"
 
     # Install the icon
-    install -Dm644 "${srcdir}/Antigravity/resources/app/resources/linux/code.png" \
-        "${pkgdir}/usr/share/pixmaps/google-antigravity.png"
+    install -Dm644 "${srcdir}/Antigravity/resources/app/out/vs/workbench/contrib/antigravityCustomAppIcon/browser/media/antigravity/antigravity.png" \
+    "${pkgdir}/usr/share/pixmaps/google-antigravity.png"
 
     # Install the License
     install -Dm644 "${srcdir}/Antigravity/LICENSES.chromium.html" \

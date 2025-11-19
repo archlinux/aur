@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Google Antigravity
+Name=Antigravity
 Comment=Google Agentic IDE
 Exec=/usr/bin/google-antigravity %U
-Icon=google-antigravity
+Icon=/usr/share/pixmaps/google-antigravity.png
 Type=Application
 StartupNotify=true
 Categories=Development;IDE;
