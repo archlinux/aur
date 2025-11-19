@@ -1,6 +1,6 @@
 pkgbase = hyprwat-bin
 	pkgdesc = Hyprwat - A Wayland menu tool
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/zackb/hyprwat
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = hyprwat-bin
 	depends = pipewire
 	provides = hyprwat
 	conflicts = hyprwat
-	source = https://github.com/zackb/hyprwat/releases/download/0.7.0/hyprwat-0.7.0.tar.gz
-	sha256sums = b0366eb1c754597ebdc9b898eb9bc56d9c263397084c7a35200c7f388c311857
+	source = https://github.com/zackb/hyprwat/releases/download/0.8.0/hyprwat-0.8.0.tar.gz
+	sha256sums = c1c968caa031b866facce930dbaef1a77955989fb231acd3459d8add46f1b9f7
 
 pkgname = hyprwat-bin
