@@ -18,4 +18,5 @@ package() {
 	cd "$pkgname-$pkgver"
 	install -D git-store-meta.pl "$pkgdir/usr/bin/git-store-meta.pl"
 	install -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -D README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
