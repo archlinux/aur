@@ -1,6 +1,6 @@
 _pkgname=gamescope
 pkgname=${_pkgname}-sk
-_tag=3.16.ba141r
+_tag=3.16.ba147
 pkgver="$_tag"
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
@@ -76,7 +76,7 @@ source=(
 )
 
 
-b2sums=('e52235f1a2f0bd53b2757140eb050d09631e63b8550b4b276d573c4943aeb7602406744d7643cca56ee941f11d7c54e891b31eca1ecfdeacf472e1c5f9a2e5ce'
+b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
