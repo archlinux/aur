@@ -1,10 +1,10 @@
-# Maintainer: Mufaro <contact@mufaro.dev>
-# Refactored by: Voxis Forge <ai-mentor@internal>
+# Maintainer: Markus Maiwald <markus at maiwald dot work>
+# Refactored by: Voxis Forge AI
 
 pkgname=antigravity-bin-hardened
 pkgver=1.11.3
 _buildid=6583016683339776
-pkgrel=1
+pkgrel=3
 pkgdesc="Google Antigravity Agentic Development Platform (Pre-built Binary). Hardened version with strict permissions and verified dependencies."
 arch=('x86_64')
 url="https://antigravity.google/"
@@ -43,12 +43,12 @@ optdepends=(
 # !emptydirs: Keep empty directories if they are needed
 options=('!strip' '!emptydirs')
 source=(
-    "https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/${pkgver}-${_buildid}/linux-x64/Antigravity.tar.gz"
+    "https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/1.11.3-6583016683339776/linux-x64/Antigravity.tar.gz"
     "antigravity.desktop"
     "antigravity-url-handler.desktop"
     "antigravity.apparmor"
 )
-sha256sums=('025da512f9799a7154e2cc75bc0908201382c1acf2e8378f9da235cb84a5615b'
+sha256sums=('ab9dbab873fff677deb2cfd95ea60b9295ebd53b58ec8533e9e1110b2451e540'
             'SKIP'
             'SKIP'
             'SKIP')

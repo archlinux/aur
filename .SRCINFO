@@ -1,7 +1,7 @@
 pkgbase = antigravity-bin-hardened
 	pkgdesc = Google Antigravity Agentic Development Platform (Pre-built Binary). Hardened version with strict permissions and verified dependencies.
 	pkgver = 1.11.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://antigravity.google/
 	install = antigravity-bin-hardened.install
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = antigravity-bin-hardened
 	source = antigravity.desktop
 	source = antigravity-url-handler.desktop
 	source = antigravity.apparmor
-	sha256sums = 025da512f9799a7154e2cc75bc0908201382c1acf2e8378f9da235cb84a5615b
+	sha256sums = ab9dbab873fff677deb2cfd95ea60b9295ebd53b58ec8533e9e1110b2451e540
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
