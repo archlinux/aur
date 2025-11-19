@@ -1,6 +1,6 @@
 pkgbase = lidarr-nightly-bin
 	pkgdesc = Music collection manager for newsgroup and torrent users (nightly builds)
-	pkgver = 3.1.1.4876
+	pkgver = 3.1.1.4880
 	pkgrel = 1
 	url = https://lidarr.audio
 	install = lidarr.install
@@ -40,11 +40,11 @@ pkgbase = lidarr-nightly-bin
 	sha256sums = 85098d47734e8087480f8a29eafec50faa453487221ef01173888155d2b06e42
 	sha256sums = d71e37213ac65722e42f6f2c5772d4515c2d28a77b9f7608dc05c787d86ebaa5
 	sha256sums = 90a1960fef0d3833cd3635cedd16af3ee9ae6c7b95babc3021f6031d4e44c200
-	source_x86_64 = Lidarr.nightly.3.1.1.4876.linux-core-x64.tar.gz::https://lidarr.servarr.com/v1/update/nightly/updatefile?version=3.1.1.4876&os=linux&runtime=netcore&arch=x64
-	sha256sums_x86_64 = 1c8e6f5f95bb5a597053432d25b18d3b16263d697edfd81583686f00f4d481ed
-	source_aarch64 = Lidarr.nightly.3.1.1.4876.linux-core-arm64.tar.gz::https://lidarr.servarr.com/v1/update/nightly/updatefile?version=3.1.1.4876&os=linux&runtime=netcore&arch=arm64
-	sha256sums_aarch64 = 9c28240f67b1453e014e4b124ece7004cf76bda74a422d1e6345f7be85072631
-	source_armv7h = Lidarr.nightly.3.1.1.4876.linux-core-arm.tar.gz::https://lidarr.servarr.com/v1/update/nightly/updatefile?version=3.1.1.4876&os=linux&runtime=netcore&arch=arm
-	sha256sums_armv7h = 1df68edd14617a959e7bfea47e30d88185d55e79b652950088849e88dbd9067c
+	source_x86_64 = Lidarr.nightly.3.1.1.4880.linux-core-x64.tar.gz::https://lidarr.servarr.com/v1/update/nightly/updatefile?version=3.1.1.4880&os=linux&runtime=netcore&arch=x64
+	sha256sums_x86_64 = 464b8aea6835411c49bb6118f764877940db338b2ed300e6ffaa996358e0fe59
+	source_aarch64 = Lidarr.nightly.3.1.1.4880.linux-core-arm64.tar.gz::https://lidarr.servarr.com/v1/update/nightly/updatefile?version=3.1.1.4880&os=linux&runtime=netcore&arch=arm64
+	sha256sums_aarch64 = 1e9e6bc177cf6c3cdfad1fd3d606d587f7431366bd47327f570d31e28449ea99
+	source_armv7h = Lidarr.nightly.3.1.1.4880.linux-core-arm.tar.gz::https://lidarr.servarr.com/v1/update/nightly/updatefile?version=3.1.1.4880&os=linux&runtime=netcore&arch=arm
+	sha256sums_armv7h = e28201d4dc6f1e5b45b8cdeec2c220b71df7a61ce2c1a5a2c1d131d29e485c26
 
 pkgname = lidarr-nightly-bin
