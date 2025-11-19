@@ -1,0 +1,15 @@
+pkgbase = vtf-thumbnailer-bin
+	pkgdesc = Adds previews for VTF files in your file explorer of choice on Windows and Linux.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/craftablescience/vtf-thumbnailer
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = vtf-thumbnailer
+	conflicts = vtf-thumbnailer
+	source = https://github.com/craftablescience/vtf-thumbnailer/releases/download/v1.1.0/VTF-Thumbnailer-1.1.0-Linux.rpm
+	sha256sums = cdbca40ff1f1ca668692770054645e4708111ca7884c9db0561b021e5f34cff8
+
+pkgname = vtf-thumbnailer-bin
