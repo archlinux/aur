@@ -1,6 +1,6 @@
 # Maintainer: Alastair Ozmond <alastair.ozmond@gmail.com>
 pkgname=usb-tree-app
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="USB device tree viewer with detailed information and monitor"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('go' 'bun-bin' 'git')
 provides=('usb-tree')
 conflicts=('usb-tree' 'usb-tree-app-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b78c77281b1b81b53e32824e75aefdac670f914e78a4cc787c5aa45620da7c91')
+sha256sums=('fca05d983fe1f566ecadc08342c0efa9d13f26a109de5d979e146c15bc5781e6')
 
 build() {
     cd "${srcdir}/usb-tree-${pkgver}"

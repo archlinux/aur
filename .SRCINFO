@@ -1,6 +1,6 @@
 pkgbase = usb-tree-app
 	pkgdesc = USB device tree viewer with detailed information and monitor
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/AOzmond/usb-tree
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = usb-tree-app
 	provides = usb-tree
 	conflicts = usb-tree
 	conflicts = usb-tree-app-bin
-	source = usb-tree-app-0.0.3.tar.gz::https://github.com/AOzmond/usb-tree/archive/refs/tags/0.0.3.tar.gz
-	sha256sums = b78c77281b1b81b53e32824e75aefdac670f914e78a4cc787c5aa45620da7c91
+	source = usb-tree-app-0.0.4.tar.gz::https://github.com/AOzmond/usb-tree/archive/refs/tags/0.0.4.tar.gz
+	sha256sums = fca05d983fe1f566ecadc08342c0efa9d13f26a109de5d979e146c15bc5781e6
 
 pkgname = usb-tree-app
