@@ -17,7 +17,7 @@ pkgbase = antigravity-bin
 	depends = libdrm
 	depends = mesa
 	options = !strip
-	source = https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/1.11.3-6583016683339776/linux-x64/Antigravity.tar.gz
+	source = antigravity-bin-1.11.3.tar.gz::https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/1.11.3-6583016683339776/linux-x64/Antigravity.tar.gz
 	sha256sums = 025da512f9799a7154e2cc75bc0908201382c1acf2e8378f9da235cb84a5615b
 
 pkgname = antigravity-bin
