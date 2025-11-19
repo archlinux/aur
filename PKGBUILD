@@ -24,13 +24,13 @@ if command -v git > /dev/null; then
     fi
 else
     # We are probably inside a clean chroot environment, use fixed version info instead
-    _git_branch="branch=zfs-2.3.5-staging"
-    _staging_ver="2.3.5"
-    _base_ver="2.3.4"
+    _git_branch="branch=zfs-2.3.6-staging"
+    _staging_ver="2.3.6"
+    _base_ver="2.3.5"
 fi
 
 pkgname=${_pkgname}-utils-staging-git
-pkgver=2.3.4.r0.g34f96a15c7
+pkgver=2.3.5.r0.gab38521f31
 pkgrel=1
 pkgdesc="Userspace utilities for the Zettabyte File System (release staging branch)."
 arch=("i686" "x86_64" "aarch64")
