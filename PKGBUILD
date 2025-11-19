@@ -1,7 +1,7 @@
 # Maintainer: banana-bred <j.forer@posteo.net>
 pkgname="molden"
 pkgver=7.3
-pkgrel=5
+pkgrel=6
 pkgdesc="A program for molecular and electronic structure visualization"
 arch=('i686' 'x86_64')
 url="https://www.theochem.ru.nl/molden/"
@@ -44,9 +44,15 @@ prepare() {
   # -- use mkstemp instead of mktemp
   sed -i 's/mktemp/mkstemp/g' src/xwin.c
 
+  sed -i 's/int logfd = open("log",O_CREAT|O_WRONLY);/int logfd = open("log",O_CREAT|O_WRONLY,0600);/' src/xwin.c
+
   # -- ensure Wno-implicit-function-declaration is used to suppress this warning that becomes an error
   sed -i "106s/^/# /; 109s/^/# /" makefile
   sed -i "68s/^/# /; 71s/^/# /" docker/makefile
+
+  # -- older c std, gcc15 is too strict ?
+  sed -i 's/^CFLAGS *= \(.*\)$/CFLAGS = -std=gnu89 \1/' makefile
+  sed -i 's/^CFLAGS *= \(.*\)$/CFLAGS = -std=gnu89 \1/' docker/makefile
 
   # -- get the path to the current gcc version to add as an include directory for 'surf'
   _gccInclude="$(echo "$(dirname "$(gcc -print-prog-name=cc1)")/include" | sed 's/\//\\\//g')"
@@ -58,7 +64,7 @@ prepare() {
 
 build() {
   cd "molden${pkgver}"
-  make -k
+  make -k -j
 }
 
 package() {
