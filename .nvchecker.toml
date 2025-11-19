@@ -1,4 +1,5 @@
 [python-srsly]
-source = "git"
-git = "https://github.com/explosion/srsly.git"
-prefix = "v"
+source="github"
+github="explosion/srsly"
+use_latest_tag=true
+prefix="release-v"

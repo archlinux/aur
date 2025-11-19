@@ -3,7 +3,7 @@
 
 _pkgname=srsly
 pkgname=python-${_pkgname}
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc='Modern high-performance serialization utilities for Python'
 arch=(x86_64 aarch64)
@@ -13,7 +13,7 @@ depends=('cython' 'python-catalogue' 'python-pytz' 'python-numpy' 'python-psutil
 checkdepends=('python-pytest' 'python-pytest-timeout' 'python-mock')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz"::${url}/archive/refs/tags/release-v${pkgver}.tar.gz)
-b2sums=('6c255c91048579b4bb3815a059c954e5f7a0ed151b7d72525f5f012a14a3d74a87f6b9dd9e9b63c8a19db6bf3542117df8a606672b4be6d7b6a247637120e7cf')
+b2sums=('aab314200b53af01aee5bce9337b655cd8fa0c5d1038a59b71575c7175da873ac4c9e079d6436314adfb5c471f415d905c2d8f297ed6762bb4bdf7613a56748e')
 
 build() {
 	cd "${_pkgname}-release-v${pkgver}"
