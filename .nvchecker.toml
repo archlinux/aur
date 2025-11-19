@@ -1,3 +1,4 @@
 [gnome-bluetooth]
 source = "git"
 git = "https://gitlab.gnome.org/GNOME/gnome-bluetooth.git"
+include_regex = '3\.34(\.\d+)*'
