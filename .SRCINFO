@@ -1,6 +1,6 @@
 pkgbase = gimp-devel
 	pkgdesc = GNU Image Manipulation Program (development release)
-	pkgver = 3.1.4
+	pkgver = 3.2.0rc1
 	pkgrel = 1
 	url = https://www.gimp.org/
 	arch = x86_64
@@ -80,11 +80,11 @@ pkgbase = gimp-devel
 	optdepends = libilbm: ILBM support
 	optdepends = luajit: LUA scripting support
 	optdepends = lua51-lgi: LUA scripting support
-	provides = gimp=3.1.4
+	provides = gimp=3.2.0rc1
 	conflicts = gimp
-	source = https://download.gimp.org/pub/gimp/v3.1/gimp-3.1.4.tar.xz
+	source = https://download.gimp.org/pub/gimp/v3.2/gimp-3.2.0-RC1.tar.xz
 	source = linux.gpl
-	sha256sums = 060df415a85bb18bfeca65dceb7377b191b47832f2b608a6fc433e08da2cbcb7
+	sha256sums = 24256eca2c658238e2979dac42c6b12a9a1f9b7b439a8e736e457a57e7adf7d9
 	sha256sums = 1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3
 
 pkgname = gimp-devel

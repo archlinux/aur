@@ -2,7 +2,8 @@
 
 _pkgname=gimp
 pkgname=${_pkgname}-devel
-pkgver=3.1.4
+pkgver=3.2.0rc1
+_pkgver=3.2.0-RC1
 pkgrel=1
 pkgdesc='GNU Image Manipulation Program (development release)'
 url='https://www.gimp.org/'
@@ -91,10 +92,10 @@ optdepends=(
 )
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
-source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"
+source=("https://download.gimp.org/pub/gimp/v${_pkgver%.*}/${_pkgname}-${_pkgver}.tar.xz"
         'linux.gpl'
 )
-sha256sums=('060df415a85bb18bfeca65dceb7377b191b47832f2b608a6fc433e08da2cbcb7'
+sha256sums=('24256eca2c658238e2979dac42c6b12a9a1f9b7b439a8e736e457a57e7adf7d9'
             '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
 
 build() {
@@ -111,7 +112,7 @@ build() {
     -Dlua=true
   )
 
-  arch-meson ${_pkgname}-${pkgver} build "${meson_options[@]}"
+  arch-meson ${_pkgname}-${_pkgver} build "${meson_options[@]}"
   meson compile -C build
 }
 
