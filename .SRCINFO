@@ -1,7 +1,7 @@
 pkgbase = python-pinecone
 	pkgdesc = Python Pinecone client and SDK
 	pkgver = 8.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pinecone-io/pinecone-python-client
 	arch = any
 	license = Apache-2.0
@@ -10,6 +10,7 @@ pkgbase = python-pinecone
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-poetry
+	makedepends = python-hatchling
 	depends = python
 	depends = python-urllib3
 	depends = python-certifi
