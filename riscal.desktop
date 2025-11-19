@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=RISCAL
+GenericName=RISC Algorithm Language
+Comment=RISC Algorithm Language model checker and exploration tool
+Exec=riscal
+Icon=riscal
+Terminal=false
+Categories=Education;Science;Math;Development;ComputerScience;
+StartupNotify=false

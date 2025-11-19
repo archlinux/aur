@@ -1,0 +1,21 @@
+pkgbase = riscal-bin
+	pkgdesc = RISC Algorithm Language model checker and exploration tool
+	pkgver = 4.3.6
+	pkgrel = 1
+	url = https://www3.risc.jku.at/research/formal/software/RISCAL/
+	arch = x86_64
+	license = GPL3
+	depends = java-runtime>=17
+	depends = gtk3
+	optdepends = webkit2gtk: embedded help viewer
+	optdepends = java-openjfx: visualization mode (-visual)
+	source = RISCAL-4.3.6.tgz::https://www3.risc.jku.at/research/formal/software/RISCAL/release/RISCAL-4.3.6.tgz
+	source = riscal.sh
+	source = riscal.desktop
+	source = riscal.svg
+	sha256sums = 53151e8549179749abfed8a70fea577fa9c6fcf4e2ff3ecf9e70618663946814
+	sha256sums = fec2f1a32b3832ee9da97e608acf043c5ea91d2bdd9a7c1afeb1d03c25e96e08
+	sha256sums = 821c80db1b2418d3c7574ab3b95355c06032c9dd332ccee2075826752081bf66
+	sha256sums = f9a4d622855241fa0eeda9cdae15abc9479a044d648e91f7f657bcea8fea3064
+
+pkgname = riscal-bin
