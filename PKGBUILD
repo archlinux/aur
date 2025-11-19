@@ -1,7 +1,7 @@
 # Maintainer: 咸粽子 <xianzongzi aliyun.com>
 pkgname=angie-tongsuo
 _pkgname=angie
-pkgver=1.10.0
+pkgver=1.10.3
 _tongsuo_version=8.4.0
 pkgrel=1
 pkgdesc="Angie is an efficient, powerful, and scalable web server that was forked from angie.With Tongsuo.带了铜锁密码库的 angie，支持国密 NTLS。"
@@ -28,7 +28,7 @@ backup=(etc/angie/fastcgi.conf
 source=(https://download.angie.software/files/$_pkgname-$pkgver.tar.gz
         Tongsuo-$_tongsuo_version.tar.gz::https://github.com/Tongsuo-Project/Tongsuo/archive/refs/tags/$_tongsuo_version.tar.gz
 )
-sha256sums=('929caf8d86b3b35b0cf0702eaa8b639571ae18199aaec69944f886bf356e1f35'
+sha256sums=('ff820ec9dc7ac8b0e873c52ddc48b3417f5054f157b5d2df5c1b8ed7adfb2256'
             '57c2741750a699bfbdaa1bbe44a5733e9c8fc65d086c210151cfbc2bbd6fc975')
 
 
