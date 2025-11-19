@@ -1,7 +1,7 @@
 # Maintainer: Sandwich <sandwich@archworks.co>
 pkgname=riscal-bin
 pkgver=4.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="RISC Algorithm Language model checker and exploration tool"
 arch=('x86_64')
 url="https://www3.risc.jku.at/research/formal/software/RISCAL/"
