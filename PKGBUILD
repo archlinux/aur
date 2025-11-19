@@ -2,7 +2,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='tinct-plugin-zed-bin'
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Zed editor theme plugin for Tinct'
 url='https://github.com/jmylchreest/tinct'
@@ -13,11 +13,11 @@ conflicts=('tinct')
 depends=('tinct')
 install=tinct-plugin-zed.install
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.1.1/tinct-plugin-zed_0.1.1_Linux_arm64.tar.gz")
-sha256sums_aarch64=('dbe517d9f66df96378b705d92e95553166ab83544d7eeffbd797253402d1cc41')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.1.2/tinct-plugin-zed_0.1.2_Linux_arm64.tar.gz")
+sha256sums_aarch64=('914e348f6b6279db9bd4b000c49c76e17f22a1d915af81924a77994d91365d06')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.1.1/tinct-plugin-zed_0.1.1_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('84b857e48d24bae120d2c068641c4674f9d3ad5e6389fb85f083dde8ee4dc41a')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.1.2/tinct-plugin-zed_0.1.2_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('c47dbe54689e1af1d489ab644d6720bdf1a422edc0a4c90b4471a87e57f74678')
 
 package() {
   # bin
