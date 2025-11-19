@@ -1,6 +1,6 @@
 pkgbase = plutovg
 	pkgdesc = Tiny 2D vector graphics library in C
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/sammycage/plutovg
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = plutovg
 	makedepends = ninja
 	depends = glibc
 	provides = libplutovg.so
-	source = plutovg::git+https://github.com/sammycage/plutovg.git#tag=v1.3.1
-	sha256sums = 80883b9ccbd2449207ee45c63aac44cd1a97aba3364a803fd362b1fc7feffb33
+	source = plutovg::git+https://github.com/sammycage/plutovg.git#tag=v1.3.2
+	sha256sums = 72952e7aab0ead0e2d667674699f63435f69421fac3fbe1ff4280900f73f093e
 
 pkgname = plutovg
