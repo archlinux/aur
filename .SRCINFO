@@ -1,6 +1,6 @@
 pkgbase = sdl3-git
 	pkgdesc = Simple Directmedia Layer (Version 3)
-	pkgver = 3.2.4.r132.g52e64f816
+	pkgver = 3.3.2.r251.g6d60cc65cf
 	pkgrel = 1
 	url = https://www.libsdl.org
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = sdl3-git
 	makedepends = libdecor
 	makedepends = git
 	makedepends = sndio
+	makedepends = vulkan-headers
 	depends = glibc
 	depends = libxext
 	depends = libxrender

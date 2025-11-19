@@ -3,7 +3,7 @@
 # Contributor: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=sdl3-git
-pkgver=3.2.4.r132.g52e64f816
+pkgver=3.3.2.r251.g6d60cc65cf
 pkgrel=1
 pkgdesc="Simple Directmedia Layer (Version 3)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -12,7 +12,7 @@ license=('Zlib')
 depends=('glibc' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor' 'hidapi' 'libusb')
 makedepends=('alsa-lib' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'wayland' 'libxkbcommon'
              'wayland-protocols' 'ibus' 'libxss' 'cmake' 'jack' 'ninja' 'pipewire'
-	         'libdecor' 'git' 'sndio')
+	     'libdecor' 'git' 'sndio' 'vulkan-headers')
 optdepends=('alsa-lib: ALSA audio driver'
             'libpulse: PulseAudio audio driver'
             'jack: JACK audio driver'
@@ -30,7 +30,6 @@ pkgver() {
 }
 
 build() {
-	CFLAGS+=" -ffat-lto-objects"
 	cmake -S SDL -B build -G Ninja \
 	-D CMAKE_BUILD_TYPE=None \
 	-D SDL_HIDAPI_LIBUSB=ON \
