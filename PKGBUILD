@@ -1,7 +1,7 @@
 # Maintainer: bbaster <bbaster at tutanota dot org>
 
 pkgname=flashpoint-launcher-bin
-pkgver=14.0.1_20250416
+pkgver=14.0.3_20251103
 _launcherver=${pkgver%_*}
 _timestamp=${pkgver#*_}
 
@@ -28,8 +28,8 @@ optdepends=(
 	'libxt: native Flash support'
 )
 
-source=("https://download.unstable.life/upload/fp${_launcherver}_lin_main_${_timestamp}.7z")
-sha256sums=('8a5f8e2206885f2f757f3ff47b7b4af8d066bdff94c584ce8c01923460dd8c00')
+source=("https://download.flashpointarchive.org/upload/fp${_launcherver}_lin_${_timestamp}.7z")
+sha256sums=('a7374822beb2378ee3d963a504c4e18fa68c0f60b3f79a285fba8d284fcbe953')
 
 prepare() {
  	patch -p1 -i ../setup-desktop-entry.patch -d "${srcdir}"
