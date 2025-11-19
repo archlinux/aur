@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gss
-_pkgver=2.2-9
+_pkgver=2.2-10
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ddf4f02f04d51213371f2bd48f661971')
-b2sums=('e05ffb9cd4b4c53cb9682517386e8d082a3769df979b536c5f4219efc1b122238062c9769cb9047eca9eee65570ea7ef4e2dbf80c3fc746d63f7676eb52353f7')
+md5sums=('1137abcf14ddb41297c99c6d88d31c97')
+b2sums=('d134390891ab604e1dea09682722f702b9e3d5240099bc7e1d5a1ab6dcbe302d6ed635e4033bff6ffeeec474e6a1ea55420bc5f9c5927f12ba01dcbd61eccd4b')
 
 build() {
   mkdir build
