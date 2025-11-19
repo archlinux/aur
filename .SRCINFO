@@ -1,6 +1,6 @@
 pkgbase = pplink-bin
 	pkgdesc = Dedicated to direct interconnection across devices, networks, and platforms.(Prebuilt version.Use system-wide electron)帮助电脑、手机、平板等设备建立点到点的安全直连
-	pkgver = 15.0.3
+	pkgver = 15.2.1
 	pkgrel = 1
 	url = https://www.ppzhilian.com
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = pplink-bin
 	depends = python>=3
 	depends = nodejs
 	depends = aria2
-	provides = pplink=15.0.3
+	provides = pplink=15.2.1
 	conflicts = pplink
-	source = pplink-15.0.3.deb::https://www.ppzhilian.com/download/linux/pplink_15.0.3_amd64.deb
+	source = pplink-15.2.1.deb::https://www.ppzhilian.com/download/linux/pplink_15.2.1_amd64.deb
 	source = LICENSE.md
 	source = pplink.sh
-	sha256sums = 3ba5c08048d2ef81bfb3b6badafe9f323b24e2e2c21947d4aa21562b6b94bfac
+	sha256sums = 3874ffa83b86ca289eeab1c96a8ab752a70935d52655ea61add16f1644551e82
 	sha256sums = 6acc470ced558f0572421e8d554fe5f99abc45be5f390f52d170a1e5d51440bb
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
