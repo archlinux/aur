@@ -1,4 +1,4 @@
 [mathjax2]
 source = "git"
 git = "https://github.com/mathjax/MathJax.git"
-prefix = "v"
+include_regex = "2..*"
