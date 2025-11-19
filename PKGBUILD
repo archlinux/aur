@@ -1,4 +1,5 @@
 # Maintainer: Groctel <aur@taxorubio.com>
+# shellcheck disable=SC2034,SC2154,SC2164
 
 _name=backports.cached_property
 
@@ -22,16 +23,29 @@ makedepends=(
     "python-setuptools-scm"
     "python-wheel"
 )
+checkdepends=(
+    "python-pytest"
+    "python-pytest-mock"
+    "python-virtualenv"
+)
 
-build ()
-{
+build () {
     cd "$srcdir/$_name-$pkgver" || exit
     SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver} \
         python -m build --wheel --no-isolation
 }
 
-package ()
-{
+check () {
+    cd "$srcdir/$_name-$pkgver"
+
+    python -m venv --system-site-packages venv
+    source venv/bin/activate
+    pip install ./dist/*.whl
+    PYTHONPATH="$PYTHONPATH:." pytest
+    rm -rf venv
+}
+
+package () {
     cd "$srcdir/$_name-$pkgver" || exit
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
