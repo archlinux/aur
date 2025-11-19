@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/thepinak503/echomind"
 license=('MIT')
 depends=('openssl' 'gcc-libs')
-makedepends=('rust' 'cargo' 'git')
+makedepends=('rust' 'cargo' 'git' 'clang')
 optdepends=('jq: for JSON output formatting')
 provides=('echomind')
 conflicts=('echomind-git')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  export RUSTFLAGS="--remap-path-prefix=$(pwd)=. -C linker=gcc"
+  export RUSTFLAGS="--remap-path-prefix=$(pwd)=. -C linker=clang"
   cargo clean
   cargo build --release
 }
@@ -30,16 +30,5 @@ package() {
   install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
   install -Dm644 echomind.1 "$pkgdir/usr/share/man/man1/echomind.1"
   gzip "$pkgdir/usr/share/man/man1/echomind.1"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-package() {
-  cd "$srcdir/$pkgname"
-  install -Dm755 target/release/echomind "$pkgdir/usr/bin/echomind"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 CONTRIBUTING.md "$pkgdir/usr/share/doc/$pkgname/CONTRIBUTING.md"
-  install -Dm644 config.example.toml "$pkgdir/usr/share/doc/$pkgname/config.example.toml"
-  install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
-  install -Dm644 echomind.1 "$pkgdir/usr/share/man/man1/echomind.1"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
