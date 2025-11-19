@@ -151,6 +151,7 @@ package() {
   # Install driver files to /usr/lib/openvr-space-calibrator-linux (as expected by install script)
   install -Dm755 build/lib/driver_01spacecalibrator.so "${pkgdir}/usr/lib/openvr-space-calibrator-linux/driver_01spacecalibrator.so"
   install -Dm644 build/manifest.vrmanifest "${pkgdir}/usr/lib/openvr-space-calibrator-linux/manifest.vrmanifest"
+  install -Dm644 build/actions.json "${pkgdir}/usr/lib/openvr-space-calibrator-linux/actions.json"
   install -Dm644 driver_01spacecalibrator/driver.vrdrivermanifest "${pkgdir}/usr/lib/openvr-space-calibrator-linux/driver.vrdrivermanifest"
   cp -r driver_01spacecalibrator/resources "${pkgdir}/usr/lib/openvr-space-calibrator-linux/"
   
