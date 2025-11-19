@@ -1,0 +1,11 @@
+pkgbase = i686-elf-binutils-baremetal
+	pkgdesc = GNU Binutils for cross-compiling to i686-elf
+	pkgver = 2.45
+	pkgrel = 1
+	url = https://www.gnu.org/software/binutils/
+	arch = x86_64
+	license = GPL
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.45.tar.xz
+	sha256sums = SKIP
+
+pkgname = i686-elf-binutils-baremetal
