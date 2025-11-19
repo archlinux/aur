@@ -11,7 +11,7 @@ license=('MIT')
 depends=('coreutils' 'git>=1.7.2' 'perl>=5.8')
 optdepends=('acl: for manipulating ACL metadata')
 changelog=$pkgname.changelog
-source=("https://github.com/danny0838/git-store-meta/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/danny0838/git-store-meta/archive/$pkgver.tar.gz")
 sha256sums=('86ab4b587e0dbe7b6458bdebd6b97bf1aac9010d3c029be93934118736811bfe')
 
 package() {
