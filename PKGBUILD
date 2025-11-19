@@ -3,8 +3,8 @@
 
 _pkgname="libresprite"
 pkgname="$_pkgname-git"
-pkgver=1.2.r12.g5770468
-pkgrel=2
+pkgver=1.2.r14.g94f52fa
+pkgrel=1
 pkgdesc="Animated sprite editor and pixel art tool"
 url='https://github.com/LibreSprite/LibreSprite'
 license=('GPL-2.0-only')
@@ -34,16 +34,12 @@ conflicts=("$_pkgname")
 _pkgsrc="$_pkgname"
 source=(
   "$_pkgsrc"::"git+https://github.com/LibreSprite/LibreSprite.git"
-  'aseprite.clip'::'git+https://github.com/aseprite/clip.git'
   'aseprite.flic'::'git+https://github.com/aseprite/flic.git'
   'aseprite.simpleini'::'git+https://github.com/aseprite/simpleini.git'
-  'aseprite.undo'::'git+https://github.com/aseprite/undo.git'
   'libresprite.duktape'::'git+https://github.com/libresprite/duktape.git'
 )
 
 sha256sums=(
-  'SKIP'
-  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
@@ -59,10 +55,8 @@ pkgver() {
 prepare() {
   cd "$_pkgsrc"
   local _submodules=(
-    'aseprite.clip'::'src/clip'
     'aseprite.flic'::'src/flic'
     'aseprite.simpleini'::'third_party/simpleini'
-    'aseprite.undo'::'src/undo'
     'libresprite.duktape'::'third_party/duktape'
   )
   local _module
@@ -80,7 +74,6 @@ build() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     -DUSE_SDL2_BACKEND=ON
     -DWITH_WEBP_SUPPORT=ON
     -DWITH_DESKTOP_INTEGRATION=ON
