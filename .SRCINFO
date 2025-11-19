@@ -1,0 +1,22 @@
+pkgbase = chandler-bin
+	pkgdesc = TAR normalizer
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/mcandre/chandler
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = BSD-2-Clause
+	depends = glibc
+	depends = gcc-libs
+	provides = chandler
+	conflicts = chandler
+	conflicts = chandler-git
+	source = chandler-0.0.3.tgz::https://github.com/mcandre/chandler/releases/download/v0.0.3/chandler-0.0.3.tgz
+	source = README-0.0.3.md::https://raw.githubusercontent.com/mcandre/chandler/v0.0.3/README.md
+	source = LICENSE-0.0.3::https://raw.githubusercontent.com/mcandre/chandler/v0.0.3/LICENSE.md
+	sha256sums = 2a0aa990192429d75a73f2f7083546fab392ca1be0a8a5ae53034a21d7b9b99c
+	sha256sums = 1cc69d546a58a232825aca67c2338769669ac25c393d5e7a6da3f67a7f67bdd1
+	sha256sums = 101d1171849ca84c68bc5a59bbd8e54f18a4f8ab7e9bdc3d3fdfb7c173ffbf7f
+
+pkgname = chandler-bin
