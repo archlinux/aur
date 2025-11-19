@@ -1,0 +1,4 @@
+[pclink]
+source = "git"
+git = "https://github.com/BYTEDz/PCLink.git"
+prefix = "v"
