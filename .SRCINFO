@@ -1,4 +1,4 @@
-pkgbase = CTDB
+pkgbase = ctdb
 	pkgdesc = For controlling discord bots (Python script)
 	pkgver = 0.1.0a
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = CTDB
 	source = https://raw.githubusercontent.com/makk-r/CTDB/main/Program/Download/CTDB-0.1.0a.tar.gz
 	sha256sums = ad8118e4f3a2e100aa064d9d5381518180d96c467beab4f4ffb6e02dbdee8e0c
 
-pkgname = CTDB
+pkgname = ctdb

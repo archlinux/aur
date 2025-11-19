@@ -1,5 +1,5 @@
 # Maintainer: Mr.Makkhawan Sardlan <makkawan2553@gmail.com>
-pkgname='CTDB'
+pkgname='ctdb'
 pkgver='0.1.0a'
 pkgrel=1
 epoch=
