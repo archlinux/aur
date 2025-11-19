@@ -1,7 +1,7 @@
 pkgbase = buffybox
 	pkgdesc = A suite of graphical applications for the terminal
 	pkgver = 3.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.postmarketos.org/postmarketOS/buffybox/
 	arch = x86_64
 	arch = aarch64
@@ -16,8 +16,12 @@ pkgbase = buffybox
 	source = https://gitlab.postmarketos.org/postmarketOS/buffybox/-/archive/3.4.2/buffybox-3.4.2.tar.bz2
 	source = https://github.com/lvgl/lvgl/archive/75557e5fe22196ebbba5bfd82386bd23c046a853.tar.gz
 	source = sd-unl0kr
+	source = unl0kr-install
+	source = unl0kr-hooks
 	b2sums = 3221e427c7b7c4ac77e738cf765f8147dfc155d1cc409353179f1b915d0b2b6af665d759bee142c0a547fc8f0b4c073b06b3fcb8183e26a36df25a0669d68dfb
 	b2sums = 79b88cbec3c58d693adfa0e7f62234c0a1fb398da17a14cf135ca54be653ededf037eb42638ad6c7a7d934c0b6545b65fd7c9ae85970ea557f9dce634de6302e
+	b2sums = SKIP
+	b2sums = SKIP
 	b2sums = SKIP
 
 pkgname = buffyboard
