@@ -8,6 +8,7 @@ pkgbase = markterm-bin
 	license = MIT
 	provides = markterm
 	conflicts = markterm
+	options = !strip
 	source = LICENSE-0.6.0::https://raw.githubusercontent.com/ralsina/markterm/v0.6.0/LICENSE
 	source = README-0.6.0.md::https://raw.githubusercontent.com/ralsina/markterm/v0.6.0/README.md
 	source = CHANGELOG-0.6.0.md::https://raw.githubusercontent.com/ralsina/markterm/v0.6.0/CHANGELOG.md
