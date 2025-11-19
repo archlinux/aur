@@ -12,6 +12,7 @@ pkgbase = flang
 	depends = clang
 	depends = llvm-libs
 	options = staticlibs
+	options = !debug
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.5/flang-21.1.5.src.tar.xz
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.5/flang-21.1.5.src.tar.xz.sig
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.5/cmake-21.1.5.src.tar.xz
