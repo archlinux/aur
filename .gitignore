@@ -1,0 +1,9 @@
+src
+pkg
+*.src.tar.gz
+*.gz
+*.tar.bz2
+*.part
+*.pkg.tar.*
+*.log
+*.png

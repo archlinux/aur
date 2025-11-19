@@ -1,0 +1,36 @@
+pkgbase = python-stpsf
+	pkgdesc = Creates simulated point spread functions for Space Telescopes (James Webb, Roman)
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://stpsf.readthedocs.io
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-setuptools-scm>=3.4.3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-sphinx-astropy
+	makedepends = python-sphinx-issues
+	makedepends = python-nbsphinx
+	makedepends = python-stsci_rtd_theme
+	makedepends = python-astroquery
+	makedepends = python-poppy
+	makedepends = python-photutils
+	makedepends = python-pysiaf
+	makedepends = pandoc
+	makedepends = graphviz
+	source = https://files.pythonhosted.org/packages/source/s/stpsf/stpsf-2.1.0.tar.gz
+	md5sums = 6db148cb6f1c44b476168ba8ae111a4e
+
+pkgname = python-stpsf
+	depends = python>=3.10
+	depends = python-astroquery>=0.4.6
+	depends = python-scipy>=1.5.0
+	depends = python-matplotlib>=3.2.0
+	depends = python-photutils>=1.10.0
+	depends = python-poppy>=1.0.0
+	depends = python-pysiaf>=0.23.3
+	depends = python-synphot>=1.0.0
+	optdepends = python-stpsf-doc: Documentation for STPSF
+
+pkgname = python-stpsf-doc
+	pkgdesc = Documentation for Python STPSF
