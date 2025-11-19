@@ -2,7 +2,7 @@
 
 pkgbase=cloud-fs-bin
 pkgname=(cloud-fs-bin clouddrive)
-pkgver=0.9.15
+pkgver=0.9.16
 pkgrel=1
 epoch=2
 pkgdesc="Unlocking the Unlimited Possibilities of Cloud Storage"
@@ -30,8 +30,8 @@ source=(
 )
 sha256sums=('c336f41e259916212c7fdd3e21a26a2faf94d725b5daf686bca501978efbf17e'
             'f2d0bffedcfcb542ee07eef4f797dc848703f6d63f0d7b837a89a190dcc09780'
-            'fd5983072078b80cb1d11d85e44a48ec5bdeecb2313369013297409a315930b9'
-            '3f7fa869200255f7b8f07791bb88601a639ca6fed74c74833ae19d19e04582d5')
+            '08d0749d4316a42172ff8e2678767dab8c2a69038adca815e1cc2565e92efa8e'
+            '38ea4b87454fc9c7c47266982e56b28ab810a21650c757fa2c126045945a2d39')
 noextract=(
     clouddrive-${epoch}-x86_64-${pkgver}.tgz
     clouddrive-${epoch}-aarch64-${pkgver}.tgz
