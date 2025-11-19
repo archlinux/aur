@@ -1,6 +1,2 @@
-2.37.3-1 [2025-11-12]
-- [Desktop][Android][Enterprise] Added Ulaa device ID to the enrollment configuration.
-- [Desktop][Enterprise] Refined Enterprise Log data.
-- [Desktop][BugFix] Sent Enterprise Logs to enrollment-based region.
-- Introduced `Stay on Browser` feature.
-- Updated with the latest security patches and performance enhancements. Chromium engine updated to 142.0.7444.163.
+2.37.4-1 [2025-11-18]
+- Updated with the latest security patches and performance enhancements. Chromium engine updated to 142.0.7444.176.
