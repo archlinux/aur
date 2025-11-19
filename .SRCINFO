@@ -1,0 +1,22 @@
+pkgbase = dhbw-next-git
+	pkgdesc = DHBW Horb Studenten App - Desktop application for DHBW Stuttgart students
+	pkgver = 1.0.6.r0.gc1b5359
+	pkgrel = 1
+	url = https://github.com/Joinsider/dhbw-next
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = java-environment=21
+	makedepends = jdk21-openjdk
+	makedepends = git
+	depends = java-runtime>=21
+	depends = hicolor-icon-theme
+	depends = libsecret
+	optdepends = gnome-keyring: Secret Service backend for GNOME
+	optdepends = kwallet: Secret Service backend for KDE Plasma
+	provides = dhbw-next
+	conflicts = dhbw-next
+	source = dhbw-next::git+https://github.com/Joinsider/dhbw-next.git
+	sha256sums = SKIP
+
+pkgname = dhbw-next-git
