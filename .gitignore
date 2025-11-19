@@ -1,0 +1,4 @@
+pkg/
+src/
+*.tar.gz
+git-store-meta-*.pkg.tar.*
