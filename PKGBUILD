@@ -2,7 +2,7 @@
 
 pkgname="ukrmol-in"
 pkgver=3.2
-pkgrel=4
+pkgrel=5
 _minCmake="3.10"
 pkgdesc="Inner region programs for UKRmol+"
 arch=('any')
@@ -36,12 +36,19 @@ prepare() {
 
 build() {
 
+  export BLAS_LIBRARIES="$(pkg-config --libs blas64)"
+  export LAPACK_LIBRARIES="$(pkg-config --libs lapack64)"
+  export BLAS_CFLAGS="$(pkg-config --cflags blas64)"
+  export LAPACK_CFLAGS="$(pkg-config --cflags lapack64)"
+
   local _cmakeOptions=(
     -D CMAKE_POLICY_VERSION_MINIMUM="${_minCmake}"
     -D CMAKE_C_COMPILER='/opt/mpich-fint64/bin/mpicc'
     -D CMAKE_CXX_COMPILER='/opt/mpich-fint64/bin/mpicc'
     -D CMAKE_Fortran_COMPILER='/opt/mpich-fint64/bin/mpifort'
     -D CMAKE_Fortran_FLAGS='-fdefault-integer-8'
+    -D LAPACK_LIBRARIES="${LAPACK_LIBRARIES}"
+    -D BLAS_LIBRARIES="${BLAS_LIBRARIES}"
     -D MPIEXEC_EXECUTABLE='/opt/mpich-fint64/bin/mpiexec'
   )
 

@@ -1,7 +1,7 @@
 pkgbase = ukrmol-in
 	pkgdesc = Inner region programs for UKRmol+
 	pkgver = 3.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://zenodo.org/records/5799110
 	arch = any
 	license = GPL3
