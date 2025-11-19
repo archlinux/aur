@@ -11,8 +11,8 @@ depends=('bluez-libs' 'dbus' 'glfw-x11' 'libx11')
 makedepends=('cmake' 'base-devel' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xi-ve/openvr-lighthouse-manager-linux/archive/main.tar.gz"
         "openvr-headers.tar.gz::https://github.com/ValveSoftware/openvr/archive/master.tar.gz"
-        "openvr-lighthouse-manager-install.sh::https://raw.githubusercontent.com/xi-ve/openvr-lighthouse-manager-linux/main/openvr-lighthouse-manager-install.sh"
-        "LICENSE::https://raw.githubusercontent.com/xi-ve/openvr-lighthouse-manager-linux/main/LICENSE")
+        "openvr-lighthouse-manager-install.sh"
+        "LICENSE")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
