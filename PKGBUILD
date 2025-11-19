@@ -2,7 +2,7 @@
 
 _pkgname=openexr
 pkgname=mingw-w64-${_pkgname}
-pkgver=3.4.3
+pkgver=3.4.4
 pkgrel=1
 epoch=1
 pkgdesc='An high dynamic-range image file format library (mingw-w64)'
@@ -16,7 +16,7 @@ options=('staticlibs' '!buildflags' '!strip')
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/${_pkgname}/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('06494da42eb91c47265ffbad02d0c73cf65d8ad7f24683b801f34d842c4ecb6d')
+sha256sums=('7c663c3c41da9354b5af277bc2fd1d2360788050b4e0751a32bcd50e8abaef8f')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release
