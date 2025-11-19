@@ -1,7 +1,7 @@
 # Maintainer: Marshal Horn <kamocat at gmail dot com>
 
 pkgname=opentracecapture
-pkgver=0.1.2_alpha.12
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A brief description of your project."
 arch=('x86_64')
@@ -23,25 +23,25 @@ optdepends=('zlib: used for CRC32 in STF input'
         'check>=0.9.4: to run unit tests'
         'doxygen: for the C API docs'
 	'graphviz: for the C API docs')
-source=("v${pkgver//_/-}.tar.gz::https://github.com/OpenTraceLab/OpenTraceCapture/archive/refs/tags/v${pkgver//_/-}.tar.gz")
-sha256sums=('3717ea78c8c19a8951243e737f0c1e12a19f1084ca46a6072e3e6e3f53cb7c64')
+source=("v${pkgver}.tar.gz::https://github.com/OpenTraceLab/OpenTraceCapture/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('4514756fe7d53c9b638693224e4a347dd209e25bbded28a602b4cf191ed0e520') #generate with makepkg -g
 
 prepare() {
-  patch -d "OpenTraceCapture-${pkgver//_/-}" -Np1 -i ../../gpib.patch
+  patch -d "OpenTraceCapture-${pkgver}" -Np1 -i ../../gpib.patch
 }
 
 build() {
-  cd "OpenTraceCapture-${pkgver//_/-}"
+  cd "OpenTraceCapture-${pkgver}"
   arch-meson build # Configure Meson build directory
   meson compile -C build # Compile the project
 }
 
 check() {
-  cd "OpenTraceCapture-${pkgver//_/-}"
+  cd "OpenTraceCapture-${pkgver}"
   meson test -C build --print-errorlogs # Run tests (optional)
 }
 
 package() {
-  cd "OpenTraceCapture-${pkgver//_/-}"
+  cd "OpenTraceCapture-${pkgver}"
   meson install -C build --destdir "$pkgdir" # Install files to pkgdir
 }
