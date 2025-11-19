@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=otree
-pkgver=0.6.2
-_commit=57a40834f7cd91829532ffc1d6bebf2bcfaecb75
+pkgver=0.6.3
+_commit=0e97a64dc3b977219a73926ce0b6d30fcb741e43
 pkgrel=1
 pkgdesc="Object Tree TUI Viewer"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver::git+$url#commit=$_commit")
-sha512sums=('d4a4a57eab7f39cc909edbe3af8e3d26cd190766ddff9bc83460c70bb40a727c19c480bdaa6d40355729e204737217b2d7b295ba12fe51016f1af722fa20cea9')
+sha512sums=('6de5431cbc7f63ef617b1960d0c64be6748e4eae5c646326366bd26c50bb56c2e2aee9fd947176aedfd4b7262f40d9f4831f006ed56e4373562b760ca1246cee')
 
 prepare() {
   cd "$pkgname-$pkgver"
