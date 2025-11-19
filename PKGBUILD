@@ -2,8 +2,9 @@
 
 pkgname=kwin-x11-lite
 _pkgname=kwin-x11
-pkgver=6.5.2
-_pkgver=6.5.2
+pkgver=6.5.3
+_pkgver=6.5.3
+_pkgtag=6.5.3
 pkgrel=1
 pkgdesc='kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for XLibre'
 arch=(x86_64)
@@ -72,10 +73,10 @@ makedepends=(extra-cmake-modules
              wayland-protocols)
 provides=($_pkgname $_pkgname-improved)
 conflicts=($_pkgname $_pkgname-improved)
-source=("git+${url}.git#tag=${pkgver}")
+source=("git+${url}.git#tag=${_pkgtag}")
 install="$pkgname.install"
 options=(!debug)
-sha256sums=('d0f2a99c55000fcfa12e55f7ae62126e75b22b0a06b413d8bbf48c8d30c448a1')
+sha256sums=('6a927005f8b2d6b89dd1dc6e2ba956e581e052af510079847d00ec8fb3efb1d9')
 
 build() {
   cmake -B build -S $pkgname \
