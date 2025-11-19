@@ -19,11 +19,11 @@
 : ${_install_path:=usr/lib}
 : ${_wmclass:=floorp}
 
-: ${_runtime_commit:=008ea1e2a8c00d729f2ef4c58b031ca6246ff16d} # daily-556
+: ${_runtime_commit:=b34110b434f081a720c01d64a6a8c1b9ba53c65a} # daily-599
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=12.5.0
+pkgver=12.6.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -111,12 +111,11 @@ source=(
   "$_pkgname-components-$pkgver.$_pkgext"::"https://github.com/Floorp-Projects/Floorp/archive/refs/tags/v$pkgver.$_pkgext"
   "$_pkgname-runtime-${_runtime_commit::7}.$_pkgext"::"https://github.com/Floorp-Projects/Floorp-runtime/archive/$_runtime_commit.$_pkgext"
   "floorp-projects.floorp-core"::"git+https://github.com/Floorp-Projects/Floorp-core.git"
-  #"floorp-projects.unified-l10n-central"::"git+https://github.com/Floorp-Projects/Unified-l10n-central.git"
   "$_pkgname.desktop"
 )
 sha256sums=(
-  'f3b59f17ec5434e8949672401a04efe237022e3c871790c4eba136e2ef2ee938'
-  'f7cf0c21f27fb3633abe569707a236e0967daed93cdfac8b1a1aac305f48d12f'
+  'ca8ed473ad196140a66298012a04fc33cd1fca30b4d7ac0dbbadc14768f00fbc'
+  'SKIP'
   'SKIP'
   '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
 )
@@ -165,9 +164,6 @@ ac_add_options --allow-addon-sideload
 export MOZ_APP_NAME=$_pkgname
 export MOZ_APP_REMOTINGNAME=$_pkgname
 MOZ_REQUIRE_SIGNING=
-
-# Localization
-#ac_add_options --with-l10n-base="$srcdir/floorp-projects.unified-l10n-central"
 
 # Keys
 ac_add_options --with-mozilla-api-keyfile="$srcdir/api-mozilla-key"
@@ -486,10 +482,8 @@ END
   local _desktop=$(sed -e "s/@WMCLASS@/$_wmclass/" "$srcdir/$_pkgname.desktop")
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" <<< "$_desktop"
 
-  # icons
-  local i theme=floorp-official
-  for i in 16 22 24 32 48 64 128 256; do
-    install -Dm644 browser/branding/$theme/default$i.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
-  done
+  # icon
+  local theme=floorp-official
+  install -Dm644 "browser/branding/$theme/default256.png" \
+    "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
 }
