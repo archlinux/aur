@@ -1,0 +1,14 @@
+pkgbase = diff2html-cli
+	pkgdesc = Diff to Html generates pretty HTML diffs from unified and git diff output in your terminal
+	pkgver = 5.2.15
+	pkgrel = 1
+	url = https://github.com/rtfpessoa/diff2html-cli
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = diff2html-cli-5.2.15.tgz
+	source = https://registry.npmjs.org/diff2html-cli/-/diff2html-cli-5.2.15.tgz
+	sha256sums = SKIP
+
+pkgname = diff2html-cli
