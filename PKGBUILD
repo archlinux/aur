@@ -2,15 +2,16 @@
 
 pkgname="ukrmol-out"
 pkgver=3.2
-pkgrel=3
+pkgrel=4
+_minCmake="3.10"
 epoch=
 pkgdesc="Outer region programs for UKRmol+"
 arch=('any')
 url='https://zenodo.org/records/5799134'
 license=('custom')
 groups=()
-depends=('lapack' 'blas' 'gbtolib')
-makedepends=('cmake' 'gcc' 'gcc-fortran' 'cmake' 'doxygen' 'openmpi')
+depends=('lapack64' 'blas64-openblas' 'gbtolib' 'mpich-fint64')
+makedepends=('cmake' 'gcc' 'gcc-fortran' 'cmake' 'doxygen')
 checkdepends=()
 optdepends=()
 provides=()
@@ -27,6 +28,7 @@ sha256sums=('9d3acc132c4128957d0a34ac8700924d3efdb7b84e37107fad6f80ac840aee59')
 build() {
 
   local _cmakeOptions=(
+    -D CMAKE_POLICY_VERSION_MINIMUM="${_minCmake}"
     -D CMAKE_C_COMPILER="$(command -v gcc)"
     -D CMAKE_CXX_COMPILER="$(command -v gcc)"
     -D CMAKE_Fortran_COMPILER="$(command -v mpifort)"
