@@ -5,4 +5,5 @@
 	restore original executable filename;
 	install license;
 	install readme;
-	add changelog.
+	add changelog;
+	add package sources license.
