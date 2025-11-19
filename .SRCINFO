@@ -1,11 +1,12 @@
 pkgbase = sddm-idle
 	pkgdesc = QML based X11 and Wayland display manager
 	pkgver = 0.21.0
-	pkgrel = 6.1
+	pkgrel = 6.2
 	url = https://github.com/sddm/sddm
 	arch = x86_64
-	license = GPL-2.0-only
+	license = GPL-2.0-or-later
 	makedepends = extra-cmake-modules
+	makedepends = git
 	makedepends = python-docutils
 	makedepends = qt5-base
 	makedepends = qt5-declarative
@@ -32,9 +33,9 @@ pkgbase = sddm-idle
 	backup = etc/pam.d/sddm
 	backup = etc/pam.d/sddm-autologin
 	backup = etc/pam.d/sddm-greeter
-	source = https://github.com/sddm/sddm/archive/v0.21.0/sddm-0.21.0.tar.gz
+	source = git+https://github.com/sddm/sddm#tag=v0.21.0
 	source = https://patch-diff.githubusercontent.com/raw/sddm/sddm/pull/1878.patch
-	sha256sums = f895de2683627e969e4849dbfbbb2b500787481ca5ba0de6d6dfdae5f1549abf
+	sha256sums = 67394c93f331fc02f89559f68e149a992efaed07690f548e6a83ec384ebb8000
 	sha256sums = 9cb66283309fe7274d289a93d76696904e4dc47b1dfb2c15a3d3a44e1d6573d3
 
 pkgname = sddm-idle

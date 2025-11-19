@@ -6,11 +6,11 @@
 pkgname=sddm-idle
 _pkgname=sddm
 pkgver=0.21.0
-pkgrel=6.1
+pkgrel=6.2
 pkgdesc='QML based X11 and Wayland display manager'
 arch=(x86_64)
 url='https://github.com/sddm/sddm'
-license=(GPL-2.0-only)
+license=(GPL-2.0-or-later)
 depends=(bash
          gcc-libs
          glibc
@@ -24,6 +24,7 @@ depends=(bash
          xorg-server
          xorg-xauth)
 makedepends=(extra-cmake-modules
+             git
              python-docutils
              qt5-base
              qt5-declarative
@@ -37,30 +38,29 @@ backup=('usr/share/sddm/scripts/Xsetup'
         'etc/pam.d/sddm-greeter')
 provides=(display-manager sddm)
 conflicts=(sddm)
-source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver/$_pkgname-$pkgver.tar.gz
+source=(git+https://github.com/$_pkgname/$_pkgname#tag=v$pkgver
         https://patch-diff.githubusercontent.com/raw/sddm/sddm/pull/1878.patch)
-sha256sums=('f895de2683627e969e4849dbfbbb2b500787481ca5ba0de6d6dfdae5f1549abf'
+sha256sums=('67394c93f331fc02f89559f68e149a992efaed07690f548e6a83ec384ebb8000'
             '9cb66283309fe7274d289a93d76696904e4dc47b1dfb2c15a3d3a44e1d6573d3')
 
 prepare() {
-  patch -d $_pkgname-$pkgver -Np1 -i ../../1878.patch
+  git -C $_pkgname cherry-pick -n 228778c2b4b7e26db1e1d69fe484ed75c5791c3a # Fix build with cmake 4
+  patch -d $_pkgname -Np1 -i "$srcdir/1878.patch"
 }
 
 build() {
-  cmake -B build -S $_pkgname-$pkgver \
+  cmake -B build -S $_pkgname \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib/sddm \
         -DBUILD_WITH_QT6=ON \
         -DDBUS_CONFIG_DIR=/usr/share/dbus-1/system.d \
         -DDBUS_CONFIG_FILENAME=sddm_org.freedesktop.DisplayManager.conf \
         -DBUILD_MAN_PAGES=ON \
-        -DUID_MAX=60513 \
-        -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+        -DUID_MAX=60513
   cmake --build build
 
-  cmake -B build5 -S $_pkgname-$pkgver \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+  cmake -B build5 -S $_pkgname \
+        -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build5/src/greeter
   cmake --build build5/components
 }
