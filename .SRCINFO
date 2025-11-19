@@ -6,7 +6,6 @@ pkgbase = git-store-meta
 	changelog = git-store-meta.changelog
 	arch = any
 	license = MIT
-	depends = coreutils
 	depends = git>=1.7.2
 	depends = perl>=5.8
 	optdepends = acl: for manipulating ACL metadata

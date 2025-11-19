@@ -8,7 +8,7 @@ pkgdesc="Simple file metadata storing and applying for git"
 arch=('any')
 url="https://github.com/danny0838/git-store-meta"
 license=('MIT')
-depends=('coreutils' 'git>=1.7.2' 'perl>=5.8')
+depends=('git>=1.7.2' 'perl>=5.8')
 optdepends=('acl: for manipulating ACL metadata')
 changelog=$pkgname.changelog
 source=("$pkgname-$pkgver.tar.gz::https://github.com/danny0838/git-store-meta/archive/$pkgver.tar.gz")
