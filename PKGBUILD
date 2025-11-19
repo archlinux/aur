@@ -1,5 +1,5 @@
 pkgname=pgadmin4-bin
-pkgver=9.9
+pkgver=9.10
 pkgrel=1
 pkgdesc='Installs all required components to run pgAdmin in desktop and web modes. pgAdmin is the most popular and feature rich Open Source administration and development platform for PostgreSQL, the most advanced Open Source database in the world.'
 arch=('x86_64')
@@ -16,9 +16,9 @@ sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 package() {
     # Merge all components into package directory
-    bsdtar -xvf "${srcdir}/pgadmin4-server-9.8-x86_64.pkg.tar.zst" -C "${pkgdir}"
-    bsdtar -xvf "${srcdir}/pgadmin4-desktop-9.8-x86_64.pkg.tar.zst" -C "${pkgdir}"
-    bsdtar -xvf "${srcdir}/pgadmin4-web-9.8-x86_64.pkg.tar.zst" -C "${pkgdir}"
+    bsdtar -xvf "${srcdir}/pgadmin4-server-${pkgver}-x86_64.pkg.tar.zst" -C "${pkgdir}"
+    bsdtar -xvf "${srcdir}/pgadmin4-desktop-${pkgver}-x86_64.pkg.tar.zst" -C "${pkgdir}"
+    bsdtar -xvf "${srcdir}/pgadmin4-web-${pkgver}-x86_64.pkg.tar.zst" -C "${pkgdir}"
 
     # Install license
     install -Dm644 "${pkgdir}/usr/pgadmin4/LICENSE" \
