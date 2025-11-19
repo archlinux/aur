@@ -1,6 +1,6 @@
 pkgbase = threema-desktop-bin
 	pkgdesc = Threema Desktop (Threema Web in Electron).
-	pkgver = 1.2.48
+	pkgver = 1.2.49
 	pkgrel = 1
 	url = https://github.com/threema-ch/threema-web-electron
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = threema-desktop-bin
 	depends = nss
 	provides = threema-desktop
 	conflicts = threema-desktop
-	source = threema-desktop-bin-1.2.48.deb::https://releases.threema.ch/web-electron/archive/latest-1.2.48/Threema-Latest.deb
-	sha256sums = 3056bff2b45f4e7d3b57e7be90d2d416b2f61c57179661b2aead9618fe7cb3c7
+	source = threema-desktop-bin-1.2.49.deb::https://releases.threema.ch/web-electron/archive/latest-1.2.49/Threema-Latest.deb
+	sha256sums = d9fbe66e5d18d449bab0df92ed73e1327ac22b63e4bf6f847553213fe6a52699
 
 pkgname = threema-desktop-bin
