@@ -1,5 +1,5 @@
-pkgbase = ceres-solver
-	pkgdesc = Solver for nonlinear least squares problems
+pkgbase = ceres-solver-cuda
+	pkgdesc = Solver for nonlinear least squares problems, CUDA and CUDSS enabled build
 	pkgver = 2.2.0
 	pkgrel = 6
 	url = http://ceres-solver.org/
@@ -10,8 +10,12 @@ pkgbase = ceres-solver
 	makedepends = eigen
 	depends = google-glog
 	depends = metis
+	depends = cuda
+	depends = cudss
 	optdepends = openmp
+	provides = ceres-solver
+	conflicts = ceres-solver
 	source = http://ceres-solver.org/ceres-solver-2.2.0.tar.gz
 	sha256sums = 48b2302a7986ece172898477c3bcd6deb8fb5cf19b3327bc49969aad4cede82d
 
-pkgname = ceres-solver
+pkgname = ceres-solver-cuda
