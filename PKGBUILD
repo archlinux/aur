@@ -2,7 +2,7 @@
 
 _pkgbase=pakku-mc
 pkgname="$_pkgbase"
-pkgver=1.3.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Modpack manager for Minecraft: Java Edition"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('git' 'java-environment=21')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 source=("$_pkgbase::git+https://github.com/juraj-hrivnak/Pakku.git#tag=v$pkgver")
-sha256sums=('7b320c407a2d93576344ceec9fe234340fbe795a542c5ed44a3b1a1c3d8ee682')
+sha256sums=('ee4d9dedde84b594ec8ce9d21618efd50d2d78bbafca3675784ac43f3f9f3b86')
 
 prepare() {
 	cd "$_pkgbase"
