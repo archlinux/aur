@@ -2,7 +2,7 @@
 
 pkgname=mangowc-git
 pkgver=r761.3346c8a
-pkgrel=1.5
+pkgrel=1.6
 pkgdesc="A Wayland compositor with smooth animation"
 url="https://github.com/DreamMaoMao/mangowc"
 arch=("x86_64")
@@ -16,7 +16,7 @@ depends=(
   libxkbcommon
   pcre2
   'libwlroots-0.19.so'
-  'scenefx-git'
+  'scenefx0.4'
 )
 
 makedepends=(
