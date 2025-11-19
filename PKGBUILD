@@ -43,12 +43,12 @@
 #       run: tkginstaller help
 # -----------------------------------------------------------------------------
 pkgname=tkginstaller-git
-pkgver=0.26.2
+pkgver=0.26.3
 pkgrel=1
 provides=('tkginstaller')
 replaces=('tkginstaller')
 conflicts=('tkginstaller')
-pkgdesc="Tool for easily building, installing and customizing TKG source packages from the Frogging-Family repositories"
+pkgdesc="Helper for building, installing and customizing -TKG- source packages from the Frogging-Family repositories"
 arch=('x86_64')
 url="https://github.com/damachine/tkginstaller"
 license=('MIT')
@@ -61,7 +61,7 @@ optdepends=('bat: for syntax highlighting'
             'wdiff: for comparing config files')
 install=tkginstaller.install
 source=("tkginstaller::https://raw.githubusercontent.com/damachine/tkginstaller/refs/heads/master/tkginstaller")
-sha256sums=('9d152af0c345161c837d010f1a795c3c2db27eabefa6428f92efb406a6151edb')
+sha256sums=('204f249fa5c76c274fd931ebd835660f2f26838ebaf304d1984992e5ef2e98b0')
 
 package() {
     install -Dm755 "$srcdir/tkginstaller" "$pkgdir/usr/bin/tkginstaller"
