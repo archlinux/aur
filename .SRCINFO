@@ -1,6 +1,6 @@
 pkgbase = shai
 	pkgdesc = Terminal coding agent and pair-programming buddy
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/ovh/shai
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = shai
 	makedepends = rust
 	makedepends = pkgconf
 	depends = openssl
-	source = shai-0.1.9.tar.gz::https://github.com/ovh/shai/archive/refs/tags/v0.1.9.tar.gz
-	sha256sums = 9d6720f7128ca64f8b4d087d48d302cd3af17ffddf4ead822fcff329dd61ec5f
+	source = shai-0.1.10.tar.gz::https://github.com/ovh/shai/archive/refs/tags/v0.1.10.tar.gz
+	sha256sums = 05e181a683fa5591ea971ab8f56cbffbd3ffefccdc7a4767059d7783e5395348
 
 pkgname = shai
