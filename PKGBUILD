@@ -2,7 +2,7 @@
 _pkgname=wenku
 pkgname="baidu${_pkgname}-bin"
 _zhsname='百度文库'
-pkgver=3.4.0
+pkgver=3.4.1
 _electronversion=22
 pkgrel=1
 pkgdesc="Baidu wenku Client.(Prebuilt version.Use system-wide electron)一款由百度发布的供网友在线分享文档的平台"
@@ -32,15 +32,15 @@ source=(
     "LICENSE.html::https://edu-wenku.bdimg.com/v1/pc/protocols/help24-new.htm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f8e33293cd48a0b093c67a26919c7cc0df889e09aca85497ef9968b7fbc48154'
+sha256sums=('1f7cf613e18cbde4447d18eb9539e4f589d9fdfc5741877acb02814f6a7c4a07'
             'eb85aa9b3586dcd16b0f18b4b467b46b076688f9d1f723dea7f2eb92cd797ce7'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _electronversion="strings ${srcdir}/tmp/${_zhsname}.exe  | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1"
 }
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/tmp/${_zhsname}.exe" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/tmp/${_zhsname}.exe" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
