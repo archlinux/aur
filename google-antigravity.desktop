@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Google Antigravity
+Comment=Google Agentic IDE
+Exec=/usr/bin/google-antigravity %U
+Icon=google-antigravity
+Type=Application
+StartupNotify=true
+Categories=Development;IDE;
+MimeType=text/plain;inode/directory;x-scheme-handler/antigravity;
