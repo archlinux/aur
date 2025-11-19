@@ -12,7 +12,7 @@ url="https://github.com/github/copilot-cli"
 _urlraw="https://raw.githubusercontent.com/github/copilot-cli/v${pkgver}"
 
 conflicts=("${pkgname%%-cli}" "${pkgname}-legacy")
-depends=("glibc" "gcc-libs" "glib2" "libsecret")
+depends=("glibc" "gcc-libs" "nodejs" "glib2" "libsecret")
 replaces=("${pkgname%%-cli}")
 makedepends=("npm" "jq")
 provides=("${_pkgexec}")

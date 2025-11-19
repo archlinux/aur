@@ -10,6 +10,7 @@ pkgbase = github-copilot-cli
 	makedepends = jq
 	depends = glibc
 	depends = gcc-libs
+	depends = nodejs
 	depends = glib2
 	depends = libsecret
 	provides = copilot
