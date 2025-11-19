@@ -1,6 +1,6 @@
 pkgbase = python-roman
 	pkgdesc = Integer to Roman numerals converter
-	pkgver = 5.0
+	pkgver = 5.2
 	pkgrel = 1
 	url = https://github.com/zopefoundation/roman
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-roman
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = roman-5.0.tar.gz::https://github.com/zopefoundation/roman/archive/5.0.tar.gz
-	sha256sums = c9068177a84dd6e676dce132f2cf97533e4518d238284c2d9cdc5b8182ac2629
+	source = roman-5.2.tar.gz::https://github.com/zopefoundation/roman/archive/5.2.tar.gz
+	sha256sums = 96c63e63f2cd66c6c1d20c6d5f9e61072b73ae4f405f73bf3f31198ed38c3415
 
 pkgname = python-roman

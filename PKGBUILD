@@ -3,7 +3,7 @@
 # Contributor: Aaron DeVore <aaron.devore@gmail.com>
 
 pkgname=python-roman
-pkgver=5.0
+pkgver=5.2
 pkgrel=1
 pkgdesc="Integer to Roman numerals converter"
 depends=(python)
@@ -12,7 +12,7 @@ license=("PSF")
 arch=("any")
 url="https://github.com/zopefoundation/roman"
 source=("roman-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('c9068177a84dd6e676dce132f2cf97533e4518d238284c2d9cdc5b8182ac2629')
+sha256sums=('96c63e63f2cd66c6c1d20c6d5f9e61072b73ae4f405f73bf3f31198ed38c3415')
 
 
 build() {
