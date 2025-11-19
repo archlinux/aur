@@ -4,7 +4,7 @@
 # Contributor: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=lib32-sdl3-git
-pkgver=3.2.6.r230.g210b317d8
+pkgver=3.3.2.r251.g6d60cc65cf
 pkgrel=1
 pkgdesc="Simple Directmedia Layer (Version 3)"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ license=('Zlib')
 depends=('sdl3' 'lib32-glibc' 'lib32-libxext' 'lib32-libxrender' 'lib32-libx11' 'lib32-libgl' 'lib32-libxcursor' 'hidapi' 'lib32-libusb')
 makedepends=('lib32-alsa-lib' 'lib32-mesa' 'lib32-libpulse' 'lib32-libxrandr' 'lib32-libxinerama' 'lib32-wayland' 'lib32-libxkbcommon'
              'wayland-protocols' 'lib32-libxss' 'cmake' 'lib32-jack' 'ninja' 'lib32-pipewire'
-	     'lib32-libdecor' 'git' 'lib32-sndio')
+	     'lib32-libdecor' 'git' 'lib32-sndio' 'vulkan-headers')
 optdepends=('lib32-alsa-lib: ALSA audio driver'
             'lib32-libpulse: PulseAudio audio driver'
             'lib32-jack: JACK audio driver'
