@@ -1,6 +1,6 @@
 pkgbase = shadps4-qtlauncher-bin
 	pkgdesc = shadPS4 PlayStation 4 emulator Qt launcher
-	pkgver = 2025.11.16.d656964
+	pkgver = 2025.11.19.9ef32fa
 	pkgrel = 1
 	url = https://shadps4.net/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = shadps4-qtlauncher-bin
 	provides = shadps4-qtlauncher
 	conflicts = shadps4-qtlauncher
 	options = !strip
-	source = shadPS4QtLauncher-linux-qt-2025-11-16-d656964.zip::https://github.com/mdmrk/shadps4-qtlauncher-bin/releases/download/shadPS4QtLauncher-2025-11-16-d65696417ceb964a9a4767b297ed397dae71fefb/shadPS4QtLauncher-linux-qt-2025-11-16-d656964.zip
+	source = shadPS4QtLauncher-linux-qt-2025-11-19-9ef32fa.zip::https://github.com/mdmrk/shadps4-qtlauncher-bin/releases/download/shadPS4QtLauncher-2025-11-19-9ef32fa7f171c5b5e4aa4c67fb92388a7e93bbb9/shadPS4QtLauncher-linux-qt-2025-11-19-9ef32fa.zip
 	sha256sums = SKIP
 
 pkgname = shadps4-qtlauncher-bin
