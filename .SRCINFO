@@ -1,6 +1,6 @@
 pkgbase = av1an-git
 	pkgdesc = A cross-platform all-in-one tool for streamlining AV1 encoding
-	pkgver = r2424.b3f8b2f
+	pkgver = r2504.fed7fc0c
 	pkgrel = 1
 	url = https://github.com/master-of-zen/Av1an
 	arch = x86_64
@@ -21,8 +21,7 @@ pkgbase = av1an-git
 	optdepends = ffms2: Vapoursynth source filter
 	optdepends = vapoursynth-plugin-lsmashsource: Vapoursynth source filter
 	optdepends = vapoursynth-plugin-vszip: Metrics support
-	optdepends = vapoursynth-plugin-vship-cuda: GPU accelerated metrics (NVIDIA)
-	optdepends = vapoursynth-plugin-vship-amd: GPU accelerated metrics (AMD GPU)
+	optdepends = vapoursynth-plugin-vship: GPU accelerated metrics
 	provides = av1an
 	conflicts = av1an
 	source = git+https://github.com/master-of-zen/Av1an.git
