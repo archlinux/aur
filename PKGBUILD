@@ -1,7 +1,7 @@
 # Maintainer: pierspad
 pkgname=textmerger
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python GUI application for merging text files"
 arch=('any')
 url="https://github.com/pierspad/textmerger"
@@ -31,12 +31,12 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  python -m build --wheel
+  /usr/bin/python -m build --wheel
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
   
   # Install desktop file
   install -Dm644 packaging/textmerger.desktop "$pkgdir/usr/share/applications/textmerger.desktop"
