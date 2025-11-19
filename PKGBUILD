@@ -7,7 +7,7 @@ url="https://mlir.llvm.org/"
 license=("Apache-2.0 WITH LLVM-exception")
 depends=("llvm-libs")
 makedepends=("cmake" "llvm>=${pkgver%%.*}")
-options=(!lto)
+options=(!lto !debug)
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
 source=($_source_base/mlir-$pkgver.src.tar.xz{,.sig}
         $_source_base/cmake-$pkgver.src.tar.xz{,.sig})
