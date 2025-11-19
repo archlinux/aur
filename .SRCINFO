@@ -1,0 +1,16 @@
+pkgbase = keylightd-tray-bin
+	pkgdesc = System tray application for controlling Key Lights via keylightd
+	pkgver = 0.0.29
+	pkgrel = 1
+	url = https://github.com/jmylchreest/keylightd
+	license = MIT
+	optdepends = keylightd: for local socket connection
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	conflicts = keylightd-tray
+	provides = keylightd-tray
+	arch = x86_64
+	source_x86_64 = https://github.com/jmylchreest/keylightd/releases/download/v0.0.29/keylightd-tray_0.0.29_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9f11c41814f893f70705690768b0bd5e8eee2cdd1fe93387b2f852a01036e179
+	
+pkgname = keylightd-tray-bin
