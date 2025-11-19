@@ -1,0 +1,5 @@
+["hace-bin"]
+source = "github"
+github = "ralsina/hace"
+use_latest_release = true
+prefix = "v"

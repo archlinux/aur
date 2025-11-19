@@ -3,7 +3,7 @@
 _pkgauthor=ralsina
 _pkgname=hace
 pkgname=${_pkgname}-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A task-launching app (think make)"
 arch=('x86_64' 'aarch64')
@@ -15,6 +15,8 @@ license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
+options=(!strip)
+
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md"
         "CHANGELOG-${pkgver}.md::${_urlraw}/CHANGELOG.md")
@@ -22,9 +24,9 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-static-linux-${_
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-static-linux-${_barch[1]}")
 sha256sums=('e50dacbce1f6e8737ee91f43aa0b3a322aabda7e15ea0011b4059cb51dc9a274'
             '54f0fafaf1aeb89b6de8035cc15b06ad373da29a02d4058c6ab8980ca771342e'
-            'e36819728e458ccf07eeac469e6b6a8f4983a9ebf89caddcc12db8a9a58e3cad')
-sha256sums_x86_64=('b16ccf886a3189cafd1e60ac98e8b5d0aaf75ebb7b84f2b0a555958987dc0635')
-sha256sums_aarch64=('4008b771088635385db6c8f91867de0f3548e46089f5e57fb2636129676821bd')
+            '86ea53ec8c171f0cbe92bc38baa511effc68c44886a8371b1e2895138950f818')
+sha256sums_x86_64=('9b137a5906e7f6dcc3f0bd6366fed38b515e0a78b0d6284457d297f5a8557921')
+sha256sums_aarch64=('51b53cd81ddec534943de45e4d8afc53759acb072ce4082fc941983874b3222f')
 
 
 package() {
