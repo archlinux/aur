@@ -1,4 +1,4 @@
-
+# Maintainer: nixval <nicovaliantoku@gmail.com>
 pkgname=declarch
 pkgver=0.2.0
 pkgrel=1
