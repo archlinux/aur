@@ -3,12 +3,12 @@
 # Updated by https://github.com/Freed-Wu/translate-shell/blob/main/.github/workflows/main.yml
 _pkgname=translate-shell
 pkgname=python-$_pkgname
-pkgver=0.0.58
+pkgver=0.0.59
 pkgrel=1
 pkgdesc="Translate text by google, bing, youdaozhiyun, haici, stardict, etc at same time from CLI, GUI (GNU/Linux, Android, macOS and Windows), REPL, python, shell and vim."
 arch=(any)
 url=https://github.com/Freed-Wu/translate-shell
-depends=(python-aiohttp)
+depends=(python-aiohttp python-clipman)
 makedepends=(python-installer)
 optdepends=(
 	'python-repl-python-wakatime: wakatime support'
@@ -18,14 +18,7 @@ optdepends=(
 	'python-keyring: store APP secrets securely'
 	'python-langdetect: detect language automatically for offline dictionary'
 	'python-pystardict: offline dictionary'
-	'python-py-notifier>=0.5.0: GUI notification'
-	'xsel: clipboard support'
-	'xclip: clipboard support'
-	'wl-clipboard: clipboard support'
-	'lemonade: clipboard support'
-	'doit: clipboard support'
-	'tmux: clipboard support'
-	'cygutils: clipboard support for Msys2'
+	'python-notifypy: GUI notification'
 	'espeak-ng: speaker support'
 	'festival: speaker support'
 	'python-pygls: LSP support'
@@ -43,7 +36,7 @@ conflicts=("$_pkgname")
 license=(GPL3)
 _py=py3
 source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('13be99d524ec7a0485808a746f1d867dcd312b6556a5f56cccc02f4a624ea110')
+sha256sums=('a277af99df0c42924165a3761bb1c59c2d263f2dcecfde06422838578a1cf766')
 
 package() {
 	python -m installer --destdir="$pkgdir" ./*.whl
