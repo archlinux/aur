@@ -1,4 +1,4 @@
-# Maintainer: Chris Duncan (Zosoled) <chris@codecow.com>
+# Maintainer: Chris Duncan <chris@codecow.com>
 # Contributor: Paul Hentschel (hpmachining)
 # Contributor: greyltc
 
@@ -8,7 +8,7 @@ pkgrel=5
 pkgdesc='a library of cross-platform C++ utilities'
 arch=('x86_64')
 url='https://github.com/CauldronDevelopmentLLC/cbang'
-license=('LGPL2.1')
+license=('LGPL-2.1-only')
 depends=(
   'bzip2'
   'expat'
