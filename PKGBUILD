@@ -8,7 +8,7 @@ pkgname=balena-cli-bin
 _pkgname="${pkgname%-bin}"
 provides=(${_pkgname})
 pkgdesc='balena.io command line interface'
-pkgver=23.1.1
+pkgver=23.1.3
 pkgrel=1
 arch=('x86_64')
 url='https://balena.io/'
@@ -18,7 +18,6 @@ depends=()
 makedepends=()
 optdepends=(
   'docker: balena build/deploy'
-  'python2: balena preload'
   'openssh: balena ssh'
   'linux-aufs: balena preload/build/deploy --build'
   'avahi: balena scan'
@@ -27,7 +26,7 @@ optdepends_x86_64=('lib32-glibc: emulated builds')
 source=(https://github.com/balena-io/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x64-standalone.tar.gz)
 options=(!strip)
 replaces=('resin-cli')
-sha256sums=('e7da0dac1a3227a3b6fecdd51ab129244b65fe65ec915fe9ca1974a69b28a431')
+sha256sums=('95e73d9435381880d1fba66f713b4c3d12d53b6afb43e5f65d8d50afc9d435bf')
 
 package() {
    install -dm755 "${pkgdir}/opt/"
