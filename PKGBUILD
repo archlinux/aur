@@ -2,7 +2,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=upscaler
-pkgver=1.6.0
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="Upscale and enhance images"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(libadwaita python-gobject python-pillow python-vulkan upscayl-ncnn pyth
 makedepends=(git blueprint-compiler meson)
 checkdepends=(appstream-glib)
 source=("git+https://gitlab.gnome.org/World/Upscaler.git#tag=${pkgver}")
-b2sums=('e944cf4e67ea5acb3645258d2aed7b9703eda01d1232a22913d860b588f73e82c01f4f042aa25ef92237fc9f9680dd49aca75f8034ebbca49243aa07209066fc')
+b2sums=('28a35ec4e7cb66e0aca414f55eb767dbdb5ce7ea2eab238c5fdc70273af97483f5258e03b7c0b3232f4936cc6e12b1614a0756e8efc699fc6b7386fd7fa5ef19')
 
 build() {
   arch-meson Upscaler build
