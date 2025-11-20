@@ -1,0 +1,13 @@
+pkgbase = gim
+    pkgdesc = gim - g interactive mode, aka the interactive REPL for g, the *permissive* git wrapper.
+	pkgver = 001
+	pkgrel = 0
+	url = https://github.com/jstmaxlol/gim
+	arch = any
+	license = MIT
+    makedepends = git
+	makedepends = gcc
+    makedepends = vim
+	source = git+https://github.com/jstmaxlol/gim
+	md5sums = SKIP
+pkgname = gim
