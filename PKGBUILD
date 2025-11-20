@@ -4,8 +4,8 @@
 
 _name="mpm"
 pkgname="matlab-${_name}"
-_commit="741261e76ff40685cd9498892c86af39ad5adecb" # 2025.2.1
-pkgver=2025.2.1+r124.g741261e
+_commit="1ab4ac3371bfcd796614f58d4f814bc597e31564"
+pkgver=2025.2.1+r128.g1ab4ac3
 _pkgver="${pkgver%+*}"
 pkgrel=1
 epoch=1
@@ -26,9 +26,13 @@ optdepends=(
   "${pkgname}-input: input files used with '--inputfile'"
 )
 _pkgsrc="${_url##*/}"
-source=("${_pkgsrc}::git+${_url}.git#commit=${_commit}")
-source_x86_64=("${pkgname}-${_pkgver}-x86_64::https://ssd.mathworks.com/supportfiles/downloads/${_name}/${_pkgver}/glnxa64/${_name}")
-sha256sums=('0a380b5fc330b28f29b2413eeba41e1f72791dac1f349ade254246f42b77454f')
+source=(
+  "${_pkgsrc}::git+${_url}.git#commit=${_commit}"
+)
+source_x86_64=(
+  "${pkgname}-${_pkgver}-x86_64::https://ssd.mathworks.com/supportfiles/downloads/${_name}/${_pkgver}/glnxa64/${_name}"
+)
+sha256sums=('e9223687735a8b19ecdf8fc2140dbd45daa2ca6f58ded6b01acfe74cb0e3afe0')
 sha256sums_x86_64=('6049afb56971811f252f2a96f5e014a1204f625be0bd01e3217b1bf085b1df75')
 
 pkgver() {
@@ -38,11 +42,11 @@ pkgver() {
 
 package() {
   cd "${srcdir}"
-  install -vDm755 "${pkgname}-${_pkgver}-${CARCH}"   "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm755 "${pkgname}-${_pkgver}-${CARCH}" "${pkgdir}/usr/bin/${pkgname}"
 
   cd "${_pkgsrc}"
   install -vDm644 "MPM.md"     "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -vDm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 
-  ln -vsf "/usr/bin/${pkgname}" "${pkgdir}/usr/bin/${_name}"
+  ln -vsf "${pkgname}" "${pkgdir}/usr/bin/${_name}"
 }
