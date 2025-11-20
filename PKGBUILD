@@ -1,6 +1,6 @@
 pkgname=i686-elf-binutils-baremetal
 pkgver=2.45
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU Binutils for cross-compiling to i686-elf"
 arch=('x86_64')
 url="https://www.gnu.org/software/binutils/"
