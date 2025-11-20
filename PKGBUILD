@@ -2,8 +2,8 @@
 pkgname=dbgate-git
 _pkgname=DbGate
 _debname="org.${pkgname%-git}.${_pkgname}"
-pkgver=6.5.1.r0.ga10fe69
-_electronversion=30
+pkgver=6.7.0.r2.g1e06f65
+_electronversion=38
 _nodeversion=22
 pkgrel=1
 pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others.Use system-wide electron."
@@ -34,7 +34,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
@@ -47,6 +47,10 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver="$(grep -m 1 '"electron":' "${srcdir}/${pkgname//-/.}/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
     sed -i -e "
@@ -56,7 +60,7 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/
     " "${srcdir}/${pkgname%-git}.sh"
-    _ensure_local_nvm
+    _get_electron_version
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
         --pkgdesc="${pkgdesc}" \
@@ -89,6 +93,7 @@ prepare() {
         echo "${srcdir}/${pkgname//-/.}/packages/web" "${srcdir}/${pkgname//-/.}/app" | xargs -n 1 cp .yarnrc
         cat .yarnrc >> "${srcdir}/${pkgname//-/.}/packages/api/.yarnrc"
     fi
+    _ensure_local_nvm
     NODE_ENV=development    node adjustPackageJson --community
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
     NODE_ENV=production     yarn fillPackagedPlugins
@@ -104,6 +109,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}/app"
+    _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}"
