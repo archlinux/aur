@@ -1,0 +1,13 @@
+pkgbase = kiwi-soundboard
+	pkgdesc = An oddly specific soundboard daemon and control application.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://gitlab.com/ashe.sterling/kiwi-soundboard
+	arch = x86_64
+	license = WTFPL-2-or-later
+	makedepends = glibc
+	makedepends = gcc
+	source = kiwi-soundboard-v0.0.1.tar.gz::https://gitlab.com/ashe.sterling/kiwi-soundboard/-/archive/v0.0.1/kiwi-soundboard-v0.0.1.tar.gz
+	sha256sums = 36b2bee478c2218a073c54e6acbdc98c0da9ad98aeb7732ff716485713d74332
+
+pkgname = kiwi-soundboard
