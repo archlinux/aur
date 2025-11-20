@@ -1,28 +1,33 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=icewm-git
-pkgver=1.4.2.1048
+pkgver=3.9.0.r56.gd0bf414
 pkgrel=1
 pkgdesc="A window manager designed for speed, usability, and consistency"
-arch=('i686' 'x86_64')
+arch=(x86_64 i686)
 url="https://github.com/bbidulock/icewm"
-license=('LGPL')
-provides=('icewm' 'icewm2')
-conflicts=('icewm' 'icewm2' 'icwm-cvs' 'icwm-ak' 'icwm-init0' 'icwm-testing' 'icwm-zstegi')
-depends=('libxft' 'libxinerama' 'libxpm' 'libjpeg' 'libxrandr' 'libsndfile' 'fribidi')
-makedepends=('git' 'xorg-mkfontdir' 'asciidoctor')
+license=(LGPL-2.0-only)
+provides=(icewm icewm2)
+conflicts=(icewm icewm2)
+depends=(libxft libxinerama libxpm libjpeg libxrandr libsndfile fribidi libxcomposite libxcursor libxdamage libxfixes imlib2)
+makedepends=(git xorg-mkfontdir asciidoctor)
 optdepends=('icewm-extra-themes: extra themes')
-source=("$pkgname::git+https://github.com/bbidulock/icewm.git")
-md5sums=('SKIP')
+source=("git+https://github.com/bbidulock/icewm.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
-  git describe --tags --always | sed 's|^[^0-9]*||;s|[-_]|.|g;s|[.]g[a-f0-9]*$||'
+  cd icewm
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd icewm
+  ./autogen.sh
 }
 
 build() {
-  cd $pkgname
-  ./autogen.sh
+  cd icewm
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -31,8 +36,8 @@ build() {
 }
 
 package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir" install
+  cd icewm
+  make DESTDIR="${pkgdir}" install
 }
 
 # vim: sw=2 et:
