@@ -1,13 +1,13 @@
 pkgbase = miti
 	pkgdesc = A beautiful TUI calendar viewer with AD and BS (Bikram Sambat) support
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/saimon-dahal/miti
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = miti-0.1.1.tar.gz::https://github.com/saimon-dahal/miti/archive/v0.1.1.tar.gz
-	sha256sums = c116ee16423979540a262b6953b87f068d2ba521aca56b6e6e673f536c8f9a9a
+	source = miti-0.1.2.tar.gz::https://github.com/saimon-dahal/miti/archive/v0.1.2.tar.gz
+	sha256sums = a6397a9c28b9b5271f0393073df9ebd81263fdfd5b83fbbd3f6d28356c7209bc
 
 pkgname = miti
