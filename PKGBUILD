@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ffbox
 _pkgname=FFBox
-pkgver=5.0
+pkgver=5.1
 _electronversion=24
 _nodeversion=18
 pkgrel=1
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('ec8e8e8a2ddd0321fc706ab6659b74dc49a11946df738b79ca135f6add5b8dbe'
+sha256sums=('c97bbc469370e05e63e4868352d6353228575ccad4fa55adb87acbf488251e37'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -48,7 +48,6 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@//g
     " "${srcdir}/${pkgname}.sh"
-    _ensure_local_nvm
     gendesk -f -n -q \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
@@ -77,6 +76,7 @@ prepare() {
         echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
         } >> .npmrc
     fi
+    _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed "s/\.\.\/FFBoxService/\.\/FFBoxService/g" -i src/main/index.ts
     find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g;s/process.execPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
@@ -86,6 +86,7 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     local  electronDist="/usr/lib/electron${_electronversion}"
+    _ensure_local_nvm
     NODE_ENV=production     pnpm run build:frontend
     NODE_ENV=production     pnpm run build:backend
     NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.json5"
