@@ -15,8 +15,8 @@ sha256sums=('SKIP')
 package() {
   install -Dm755 "$srcdir/TF2CDownloaderLinux" "$pkgdir/usr/bin/TF2CDownloaderLinux"
   cat > "$pkgdir/usr/bin/tf2cdownloader" << 'EOF'
-  #!/bin/bash
-  exec /usr/bin/TF2CDownloaderLinux "$@"
-  EOF
+#!/bin/bash
+exec /usr/bin/TF2CDownloaderLinux "$@"
+EOF
   chmod +x "$pkgdir/usr/bin/tf2cdownloader"
 }
