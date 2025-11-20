@@ -1,18 +1,18 @@
 pkgbase = jubler
 	pkgdesc = Subtitle editor running on Java
-	pkgver = 7.0.3
-	pkgrel = 2
+	pkgver = 9.0.1
+	pkgrel = 1
 	url = http://www.jubler.org
 	arch = any
 	license = GPL2
-	depends = java-runtime>=17
+	depends = java-runtime>=21
 	optdepends = mplayer: live video preview for subtitles
 	optdepends = aspell
 	provides = jubler
-	noextract = Jubler-7.0.3.appimage
-	source = https://github.com/teras/Jubler/releases/download/v7.0.3/Jubler-7.0.3.x86_64.appimage
+	noextract = Jubler-9.0.1-x86_64.appimage
+	source = https://github.com/teras/Jubler/releases/download/v9.0.1/Jubler-9.0.1-x86_64.appimage
 	source = jubler.desktop
-	sha256sums = 8a82d6123f8f9b5d13640bcbf6296da1af31c359e69fa4717d2450c433ba2c04
-	sha256sums = 56f6d1af4d5086231c2f3935d46aaa0293dbba11ecfeaa5f95609a58a9e59056
+	sha256sums = b10684d930479069f500ae3b4870ffe8319bcf335720d2a2551932442f70b093
+	sha256sums = 83f4399e9aa7439c9cc78636c1777f322aa8c31add764b423d3ed19ba2ecc1df
 
 pkgname = jubler

@@ -18,7 +18,7 @@ source=("https://github.com/teras/${_AppName}/releases/download/v${pkgver}/${_Ap
 "jubler.desktop")
 sha256sums=('b10684d930479069f500ae3b4870ffe8319bcf335720d2a2551932442f70b093'
             '83f4399e9aa7439c9cc78636c1777f322aa8c31add764b423d3ed19ba2ecc1df')
-noextract=("${_AppName}-${pkgver}.appimage")
+noextract=("${_AppName}-${pkgver}-x86_64.appimage")
 
 package() {
     cd ${srcdir}
