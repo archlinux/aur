@@ -1,6 +1,6 @@
 # Maintainer: Christian Burkard <phantinuss at gmx dot com>
 pkgname=yara-x
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="A pure Rust implementation of YARA"
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=('rust')
 provides=(yara-x)
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/VirusTotal/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e4a2227cb0aa7b189549da36474d579230c791e66a02213636269284704b757b')
+sha256sums=('e45d8c0c7c705f1acf7b403402ae64109e1ad7ccc970437e32f9fdee29d0e1c2')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -31,7 +31,7 @@ check() {
     cd "${pkgname}-${pkgver}"
 
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --bin yr --profile release-lto --features=rules-profiling --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo test --frozen --profile release-lto --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 package() {

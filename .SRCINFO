@@ -1,6 +1,6 @@
 pkgbase = yara-x
 	pkgdesc = A pure Rust implementation of YARA
-	pkgver = 1.9.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/VirusTotal/yara-x
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = yara-x
 	makedepends = rust
 	provides = yara-x
 	options = !lto
-	source = yara-x-1.9.0.tar.gz::https://github.com/VirusTotal/yara-x/archive/refs/tags/v1.9.0.tar.gz
-	sha256sums = e4a2227cb0aa7b189549da36474d579230c791e66a02213636269284704b757b
+	source = yara-x-1.10.0.tar.gz::https://github.com/VirusTotal/yara-x/archive/refs/tags/v1.10.0.tar.gz
+	sha256sums = e45d8c0c7c705f1acf7b403402ae64109e1ad7ccc970437e32f9fdee29d0e1c2
 
 pkgname = yara-x
