@@ -1,6 +1,6 @@
 pkgbase = go-automate-git
 	pkgdesc = CLI utility to trigger Home Assistant automations via keyboard shortcuts (git version)
-	pkgver = 0.1.0.r34.gaf61c1a
+	pkgver = 0.1.0.r35.gabe79bf
 	pkgrel = 1
 	url = https://github.com/timmo001/go-automate
 	arch = x86_64
