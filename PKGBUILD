@@ -10,8 +10,8 @@ url="https://github.com/ggozad/textualeffects"
 arch=('any')
 license=('MIT')
 
-depends=('python' 'python-textual' 'python-rich' 'python-terminaltexteffects')
 makedepends=('python-installer' 'uv')
+depends=('python' 'python-textual' 'python-rich' 'python-terminaltexteffects')
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/ggozad/textualeffects/archive/${pkgver}.tar.gz")
 b2sums=('ace677eba2fdd9d3c6f265ff81807b5a76e6167ad4a2128ffec0ad9362e0a41d54f300aeeb4e853800a40640627724fc563038b3b5a41968fe59f6a4d0fa08f8')
