@@ -4,8 +4,8 @@ _appname=ledger-live-desktop
 _pkgname=ledger-live
 pkgname="${_pkgname}-git"
 _electron='electron38'
-pkgver=2.131.0.r0.g0ee34de
-pkgrel=3
+pkgver=2.133.0.r0.gb870b80
+pkgrel=1
 pkgdesc="Maintain your Ledger devices (git-main)"
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
@@ -26,7 +26,7 @@ _nvm_install() {
 }
 
 _check_electron() {
-  expected_electron="electron$(sed -n 's/.*"electron":[^"]*"\([^.]*\).*/\1/p' ${pkgname}/apps/${_appname}/package.json)"
+  expected_electron="electron$(grep -E '^\s+electron:' ${pkgname}/pnpm-workspace.yaml | awk '{print $2}' | cut -d. -f1)"
   if [[ "${_electron}" != "${expected_electron}" ]]; then
     echo -e "Using the wrong version of Electron! Expected '\e[32m${expected_electron}\e[0m' but using '\e[31m${_electron}\e[0m'."
     exit 1
