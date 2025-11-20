@@ -1,6 +1,6 @@
 # Maintainer: Saimon Dahal <saimondahal66@gmail.com>
 pkgname=miti
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A beautiful TUI calendar viewer with AD and BS (Bikram Sambat) support"
 arch=('x86_64')
