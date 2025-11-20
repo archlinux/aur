@@ -4,10 +4,10 @@
 _pkgname=Responder
 pkgname=responder
 pkgver=3.1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A LLMNR, NBT-NS and MDNS poisoner, with built-in HTTP/SMB/MSSQL/FTP/LDAP rogue authentication server supporting NTLMv1/NTLMv2/LMv2, Extended Security NTLMSSP and Basic HTTP authentication'
 arch=('any')
-depends=('python' 'python-netifaces')
+depends=('python' 'python-netifaces' 'python-aioquic')
 makedepends=('git')
 url='https://github.com/lgandx/responder/'
 license=('GPL-3.0-or-later')
