@@ -1,7 +1,7 @@
 # Maintainer: Eslam Allam eslamallam73@gmail.com
 pkgname=msty-deb
 conflicts=('msty')
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="Msty Studio brings advanced AI capabilities to your fingertips. Run sophisticated AI workflows while keeping your data private and local."
 arch=('x86_64')
