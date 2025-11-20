@@ -1,7 +1,7 @@
 pkgbase = soh-bin
 	pkgdesc = Ship of Harkinian Reimplimentation engine
 	pkgver = 9.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/linuxbombay/soh
 	arch = x86_64
 	arch = aarch64

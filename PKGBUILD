@@ -1,6 +1,6 @@
 pkgname=soh-bin
 pkgver=9.1.1
-pkgrel=1
+pkgrel=2
 scriptver=1.3
 pkgdesc="Ship of Harkinian Reimplimentation engine"
 arch=('x86_64' 'aarch64')
@@ -24,6 +24,8 @@ package() {
     
     find "$srcdir" -type f \( -name "*.o2r" -o -name "*.txt" \) -exec cp -r {} "$pkgdir/usr/share/games/Shipwright" \;
     ln -sf /usr/lib/libspdlog.so "$pkgdir/usr/lib/Shipwright/libspdlog.so.15"
+    ln -sf /usr/lib/libfmt.so "$pkgdir/usr/lib/Shipwright/libfmt.so.11"
+    
     cp -r "$srcdir/assets" "$pkgdir/usr/share/games/Shipwright"
     find "$srcdir" -type f -name "*.elf" -exec mv {} "$pkgdir/usr/share/games/Shipwright/soh" \;
     install -Dm755 "$srcdir/shipwright-$scriptver/soh" "$pkgdir/usr/bin/soh"
