@@ -1,6 +1,6 @@
 pkgbase = electron38
 	pkgdesc = Build cross platform desktop apps with web technologies
-	pkgver = 38.7.0
+	pkgver = 38.7.1
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = x86_64
@@ -71,7 +71,7 @@ pkgbase = electron38
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)
 	options = !lto
-	source = git+https://github.com/electron/electron.git#tag=v38.7.0
+	source = git+https://github.com/electron/electron.git#tag=v38.7.1
 	source = https://gitlab.com/Matt.Jolly/chromium-patches/-/archive/140/chromium-patches-140.tar.bz2
 	source = chromium-138-nodejs-version-check.patch
 	source = chromium-138-rust-1.86-mismatched_lifetime_syntaxes.patch
@@ -233,7 +233,7 @@ pkgbase = electron38
 	source = chromium-mirror_third_party_dawn_tools_protoc_wrapper::git+https://chromium.googlesource.com/chromium/src/tools/protoc_wrapper.git#commit=8ad6d21544b14c7f753852328d71861b363cc512
 	source = chromium-mirror_third_party_dawn_third_party_partition_alloc::git+https://chromium.googlesource.com/chromium/src/base/allocator/partition_allocator.git#commit=2041003ba674f918c33b1afaaad74e652f34bcea
 	source = chromium-mirror_third_party_openscreen_src_third_party_tinycbor_src::git+https://chromium.googlesource.com/external/github.com/intel/tinycbor.git#commit=d393c16f3eb30d0c47e6f9d92db62272f0ec4dc7
-	sha256sums = 1ed1b3cfdfd777eb201bbd052c820f9ecf16d42e7cb8a32d0c30b51f8fa0b2c9
+	sha256sums = 454a1478b29078c10d5febbb954bb5d6a95d7dc1206222c43d27c0b60082465a
 	sha256sums = e8b1c431dd64442bacaf8e1db57faf442c510e67d171ebc6e887aee8c6aa3f9f
 	sha256sums = 11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e
 	sha256sums = 5abc8611463b3097fc5ce58017ef918af8b70d616ad093b8b486d017d021bbdf
