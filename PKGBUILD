@@ -45,7 +45,7 @@ sha512sums=('209f86faf4d064b99828d301f0fac7ad4ebeab74b5d62763adc2bb5b0f80bd1ae53
 
 prepare() {
     sed -e "s/%pkgname%/$pkgname/g" -i "$srcdir/opera"
-    sed -e "s/%operabin%/$pkgname\/$pkgname/g" \
+    sed -e "s/%operabin%/$pkgname-stable\/$pkgname/g" \
         -i "$srcdir/opera"
 
 }
@@ -56,12 +56,12 @@ package() {
     # get rid of the extra subfolder {i386,x86_64}-linux-gnu
     (
         cd "$pkgdir/usr/lib/"*-linux-gnu/
-        mv "$pkgname" ../
+        mv "$pkgname-stable" ../
     )
     rm -rf "$pkgdir/usr/lib/"*-linux-gnu
 
     # suid opera_sandbox
-    chmod 4755 "$pkgdir/usr/lib/$pkgname/opera_sandbox"
+    chmod 4755 "$pkgdir/usr/lib/$pkgname-stable/opera_sandbox"
 
     # install default options
     install -Dm644 "$srcdir/default" "$pkgdir/etc/$pkgname/default"
