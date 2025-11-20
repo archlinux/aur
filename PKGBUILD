@@ -6,7 +6,7 @@
 pkgbase=rustdesk-appimage
 pkgname=(rustdesk-appimage)
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required."
 url="https://github.com/rustdesk/rustdesk"
 license=('AGPL-3.0-only')
@@ -26,13 +26,13 @@ _install_path="/opt/appimages"
 
 prepare() {
     cd ${srcdir}
-    chmod a+x ${pkgbase%-appimage}-${pkgver}-${CARCH}.AppImage
-    "./${pkgbase%-appimage}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    chmod a+x ${pkgbase%-appimage}-${pkgver}-${pkgrel}-${CARCH}.AppImage
+    "./${pkgbase%-appimage}-${pkgver}-${pkgrel}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed 's|usr/lib/rustdesk/rustdesk|/opt/appimages/rustdesk.AppImage|g' -i "${srcdir}/squashfs-root/${pkgbase%-appimage}.desktop"
 }
 
 package() {
-    install -Dm755 "${srcdir}"/${pkgbase%-appimage}-${pkgver}-${CARCH}.AppImage "${pkgdir}"/${_install_path}/${pkgbase%-appimage}.AppImage
+    install -Dm755 "${srcdir}"/${pkgbase%-appimage}-${pkgver}-${pkgrel}-${CARCH}.AppImage "${pkgdir}"/${_install_path}/${pkgbase%-appimage}.AppImage
 
     local _icon
     for _icon in 32 64 128 ; do
