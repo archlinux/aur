@@ -1,6 +1,6 @@
 pkgbase = ffdec-bin
 	pkgdesc = Open source Flash SWF decompiler and editor
-	pkgver = 24.1.0
+	pkgver = 24.1.1
 	pkgrel = 1
 	url = https://github.com/jindrapetrik/jpexs-decompiler/releases
 	arch = any
@@ -8,12 +8,12 @@ pkgbase = ffdec-bin
 	depends = java-runtime>=8
 	provides = ffdec
 	conflicts = ffdec
-	source = ffdec_24.1.0.zip::https://github.com/jindrapetrik/jpexs-decompiler/releases/download/version24.1.0/ffdec_24.1.0.zip
+	source = ffdec_24.1.1.zip::https://github.com/jindrapetrik/jpexs-decompiler/releases/download/version24.1.1/ffdec_24.1.1.zip
 	source = ffdec
 	source = ffdec-java8
 	source = ffdec.desktop
 	source = ffdec.png
-	md5sums = f5c042e9f3ae6be916ca72cf06f35cdc
+	md5sums = 84c57480101d73976803e7d73089998a
 	md5sums = 21b247c479b500fffdd0f1b306237b50
 	md5sums = b548b3503cae1f8948b44bec1d658e53
 	md5sums = 1630ed36db9aadb2325b8ad9eb00f2de
