@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ffbox-bin
 _pkgname=FFBox
-pkgver=5.0
+pkgver=5.1
 _electronversion=24
 pkgrel=1
 pkgdesc="An user-friendly ffmpeg GUI.(Prebuilt version.Use system-wide electron)一个多媒体转码百宝箱/一个 FFmpeg 的套壳"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Linux_${CARCH//_/-}_${_pkgname}_${pkgver}.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('5d745bc208f1df8f710c8804388603e38d2a4a5a4ce52a485751b8594b1c073f'
+sha256sums=('ef136dd62056a6760bba78b8eac4740697cdb9102420c8c7dfbad3db1d9da52e'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
