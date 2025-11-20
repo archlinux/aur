@@ -2,7 +2,7 @@
 
 
 pkgname=kumacub
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Run local Nagios-compatible checks; push results to Uptime Kuma."
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=(
     'python-installer'
 )
 source=("https://files.pythonhosted.org/packages/py3/${pkgname::1}/$pkgname/${pkgname//-/_}-$pkgver-py3-none-any.whl")
-sha256sums=('044732d4821448504112450976a8b3232f87307cd897e447833f32540d7a5a1c')
+sha256sums=('85015ce13b5c167ce0275eada99907dc671fd7bfeb4213ace4a69f3bf43dadec')
 backup=(
     "etc/kumacub/config.toml"
 )
