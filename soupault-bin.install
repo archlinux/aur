@@ -3,7 +3,7 @@
 post_install() {
   cat <<__EOT__
 »  Soupault plugins can be found in /usr/share/doc/soupault/plugins/.
-»  Please see https://soupault.app/plugins/ for their documentation.
+»  Please see https://soupault.net/plugins/ for their documentation.
 __EOT__
 }
 
