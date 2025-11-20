@@ -1,6 +1,6 @@
 pkgbase = melonds-bin
 	pkgdesc = DS emulator, sorta
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = http://melonds.kuribo64.net
 	arch = x86_64
@@ -17,11 +17,11 @@ pkgbase = melonds-bin
 	depends = hicolor-icon-theme
 	provides = melonds
 	conflicts = melonds
-	source = melonds-git::git+https://github.com/Arisotura/melonDS.git#tag=1.0
-	sha256sums = 414b376e14a66d8e095605b83a6b7711c04330be159b2649c87213fe8af0c9c6
-	source_x86_64 = https://github.com/melonDS-emu/melonDS/releases/download/1.0/melonDS-ubuntu-x86_64.zip
-	sha256sums_x86_64 = 1f6187a69a34261a8aa28ca0758493e89f0969f70ff14a38d0b861c8dc236160
-	source_aarch64 = https://github.com/melonDS-emu/melonDS/releases/download/1.0/melonDS-ubuntu-aarch64.zip
-	sha256sums_aarch64 = 6d385cf5e8c5d508a7dc1fc327649227fde06f781daa7ea158bd897c35461340
+	source = melonds-git::git+https://github.com/Arisotura/melonDS.git#tag=1.1
+	sha256sums = f40db55b2a58173e1829a27e2f49c68440115eebcd48ed19a5d45d6bfa4bc717
+	source_x86_64 = https://github.com/melonDS-emu/melonDS/releases/download/1.1/melonDS-1.1-ubuntu-x86_64.zip
+	sha256sums_x86_64 = 43bd28d9e6e864f08747905c9cbdeac701880d75f2dedad737279c7a005790f4
+	source_aarch64 = https://github.com/melonDS-emu/melonDS/releases/download/1.1/melonDS-1.1-ubuntu-aarch64.zip
+	sha256sums_aarch64 = 99465129f5413b2aad332e4377e523cf3cda905dc329d47dcb1ad01ce2cb3f66
 
 pkgname = melonds-bin
