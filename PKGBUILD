@@ -6,10 +6,10 @@
 _pkgname="retroshare"
 pkgname="$_pkgname-git"
 pkgver=0.6.7.2.r485.gfa9138076
-pkgrel=1
+pkgrel=2
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail"
 url="https://github.com/retroshare/retroshare"
-license=('AGPL-3.0-or-later')
+license=('AGPL-3.0-only')
 arch=('x86_64') # --ignorearch
 
 depends=(
@@ -51,6 +51,11 @@ prepare() {
     -i libretroshare/src/libretroshare.pro \
     libretroshare/src/use_libretroshare.pri \
     retroshare-service/src/retroshare-service.pro
+
+  sed -E -e 's&if\(.* EQUAL "3"\)&if(FALSE)&' \
+    -e '/QUIET botan-2/d' \
+    -e 's&"(lib)botan-2"&&g' \
+    -i supportlibs/librnp/cmake/Modules/FindBotan.cmake
 
   # disable warning-error
   sed -e '/inconsistent-missing-override/d' -i retroshare.pri
@@ -98,4 +103,7 @@ package() {
 
   cd "$_pkgsrc"
   make INSTALL_ROOT="$pkgdir" install
+
+  # components have various OSI-approved licenses
+  install -Dm644 .reuse/dep5 "$pkgdir/usr/share/licenses/$pkgname/LICENSES"
 }
