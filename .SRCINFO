@@ -8,9 +8,9 @@ pkgbase = python-textualeffects
 	makedepends = python-installer
 	makedepends = uv
 	depends = python
-	depends = python-terminaltexteffects
 	depends = python-textual
 	depends = python-rich
+	depends = python-terminaltexteffects
 	source = python-textualeffects-0.1.4.tgz::https://github.com/ggozad/textualeffects/archive/0.1.4.tar.gz
 	b2sums = ace677eba2fdd9d3c6f265ff81807b5a76e6167ad4a2128ffec0ad9362e0a41d54f300aeeb4e853800a40640627724fc563038b3b5a41968fe59f6a4d0fa08f8
 
