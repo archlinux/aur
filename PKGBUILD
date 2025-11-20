@@ -6,7 +6,7 @@
 pkgname=nccl
 pkgver=2.28.9
 _upstr_pkgrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives'
 arch=(x86_64)
 url='https://developer.nvidia.com/nccl/'
@@ -65,7 +65,9 @@ package() {
   cd $pkgname
 
   make CUDA_HOME=/opt/cuda PREFIX="${pkgdir}"/usr install
-  # fix permission on static lib
-  chmod 644 "$pkgdir"/usr/lib/libnccl_static.a
+
+  # remove static libs
+  rm "$pkgdir"/usr/lib/*.a
+
   install -vDm 644 LICENSE.txt -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
