@@ -9,4 +9,4 @@ pkgbase = getg
     makedepends = git
 	source = git+https://github.com/jstmaxlol/g
 	md5sums = SKIP
-pkgname = g
+pkgname = getg

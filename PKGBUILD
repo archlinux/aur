@@ -1,6 +1,6 @@
 #!/bin/bash
 # Maintainer: jstmax! <jstmaxlol@disroot.org> & <maxwasmailed@proton.me>
-pkgname=g
+pkgname=getg
 pkgver=11-20.001
 pkgrel=1
 pkgdesc="g - the *permissive* git wrapper."
