@@ -1,37 +1,40 @@
---- a/start-flashpoint.sh
+--- a/start-flashpoint.sh.old
 +++ b/start-flashpoint.sh
-@@ -2,19 +2,26 @@
+@@ -2,18 +2,29 @@
  
- # This script starts Flashpoint with the correct parameters for users who can't run desktop entries.
- # Stop if shell has root privilege.
--[ `id -u` -eq 0 ] && exit 1
-+[ $(id -u) -eq 0 ] && exit 1
+ [ `id -u` -ne 0 ] && cd -P -- "`dirname "$0"`" || exit 1
  
--# Change to script's directory. Resolve symlinks & hyphens. Stop on fail.
--cd -P -- "`dirname "$0"`" || exit 1
+-if [ "`file -b --mime-type Libraries/libgtk-3.so.0`" = 'application/x-sharedlib' ]; then
+-  export GALLIUM_DRIVER="i915,i965,iris,nouveau,nouveau_vieux,r200,r300,r600,radeon,radeonsi,zink,swrast" GDK_PIXBUF_MODULE_FILE="$PWD/Libraries/loader.cache" GSETTINGS_SCHEMA_DIR="$PWD/Libraries" LD_LIBRARY_PATH="$PWD/Libraries" LIBGL_DRIVERS_PATH="$PWD/Libraries"
+-  if [ ! -d FPSoftware/Wine/bin ]; then
 +# Set configurable Flashpoint root directory.
 +# Default: absolute path to script's directory
 +[ "$FP_DIR" ] || FP_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"
++
++
++if [ "`file -b --mime-type $FP_DIR/Libraries/libgtk-3.so.0`" = 'application/x-sharedlib' ]; then
++  export GALLIUM_DRIVER="i915,i965,iris,nouveau,nouveau_vieux,r200,r300,r600,radeon,radeonsi,zink,swrast" GDK_PIXBUF_MODULE_FILE="$FP_DIR/Libraries/loader.cache" GSETTINGS_SCHEMA_DIR="$FP_DIR/Libraries" LD_LIBRARY_PATH="$FP_DIR/Libraries" LIBGL_DRIVERS_PATH="$FP_DIR/Libraries"
++  if [ ! -d $FP_DIR/FPSoftware/Wine/bin ]; then
+     CMD="`command -v wine`"
+-    [ "$CMD" ] && export PATH="$PWD/Libraries:${CMD%/*}"
++    [ "$CMD" ] && export PATH="$FP_DIR/Libraries:${CMD%/*}"
+   else
+-    export PATH="$PWD/Libraries"
++    export PATH="$FP_DIR/Libraries"
+   fi
+ fi
  
- # Add some variables if libraries are installed.
- # TODO: Find a better way to check this.
- # (Not just checking all files individually, psycho.)
--[ -f Libraries/libgtk-3.so.0 ] && export GDK_PIXBUF_MODULE_FILE="$PWD/Libraries/loader.cache" GSETTINGS_SCHEMA_DIR="$PWD/Libraries" LD_LIBRARY_PATH="$PWD/Libraries" LIBGL_DRIVERS_PATH="$PWD/Libraries" && if [ -d FPSoftware/Wine/bin ]; then export PATH="$PWD/Libraries"; else export PATH="$PWD/Libraries:$PATH"; fi
-+[ -f "$FP_DIR/Libraries/libgtk-3.so.0" ] && export GDK_PIXBUF_MODULE_FILE="$FP_DIR/Libraries/loader.cache" GSETTINGS_SCHEMA_DIR="$FP_DIR/Libraries" LD_LIBRARY_PATH="$FP_DIR/Libraries" LIBGL_DRIVERS_PATH="$FP_DIR/Libraries" && if [ -d "$FP_DIR/FPSoftware/Wine/bin" ]; then export PATH="$FP_DIR/Libraries"; else export PATH="$FP_DIR/Libraries:$PATH"; fi
- 
- # Set the Wine prefix, so it doesn't potentially mess with the default one.
 -export WINEPREFIX="$PWD/FPSoftware/Wine"
 +export WINEPREFIX="$FP_DIR/FPSoftware/Wine"
 +
 +# Check for correct ownership
 +if [[ "$(stat -c %U "$FP_DIR/Data/flashpoint.sqlite")" != "$USER" ]]; then
-+	echo -e "WARNING: Flashpoint directory is not owned by current user! Expect issues.
-+Run \"sudo USER=\$USER chown -R \$USER $FP_DIR\" to correct this."
++    echo -e "WARNING: Flashpoint directory is not owned by current user! Expect issues.
++    Run \"sudo USER=\$USER chown -R \$USER $FP_DIR\" to correct this."
 +fi
  
- # Run launcher. Optimize for low RAM usage without affecting stability or security.
--cd Launcher
--./flashpoint-launcher --js-flags=--lite_mode --ozone-platform-hint=auto --process-per-tab &
+ [ $# -eq 0 ] && FP_FLAGS="--js-flags=--lite_mode --ozone-platform-hint=auto" || FP_FLAGS="$@"
+ cd Launcher
+-./flashpoint-launcher $FP_FLAGS &
 \ No newline at end of file
-+cd "$FP_DIR/Launcher"
-+./flashpoint-launcher --js-flags=--lite_mode --ozone-platform-hint=auto --process-per-tab &
++./flashpoint-launcher $FP_FLAGS &
