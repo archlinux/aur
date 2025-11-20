@@ -1,4 +1,5 @@
-# Maintainer: nixval <nicovaliantoku@gmail.com>
+# Maintainer: Nico Valianto Kusuma <YOUR_EMAIL@gmail.com>
+
 pkgname=declarch
 pkgver=0.2.0
 pkgrel=1
