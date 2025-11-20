@@ -23,6 +23,6 @@ pkgbase = custom-ime
 	depends = fmt
 	depends = unicode-cldr-annotations
 	source = custom-ime-1.0.0.tar.gz::https://github.com/fakeshinigami110/custom-IME/archive/v1.0.0.tar.gz
-	sha256sums = 48f79943cc431c713b11056212786f9fba8947f77e0d3cd77c4e1b3a8cc40372
+	sha256sums = 1ae5e7642cecbea040ffe63bfd037684ebc565b0d135ad6d4ad8c1af438eee7b
 
 pkgname = custom-ime
