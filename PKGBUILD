@@ -12,7 +12,7 @@ license=('BSD-2-Clause')
 depends=('java-runtime-headless')
 source=(LICENSE
         https://repo1.maven.org/maven2/org/postgresql/postgresql/${pkgver}/postgresql-${pkgver}.jar{,.asc})
-sha1sums=('6f576a07169a965cde25121df44c46acfbb32ce6'
+sha1sums=('98ca35c08254ed04b2f40e01aa5b1d29c2920665'
           '81b840fbfe0a6c0b7aa14c6bd4856108d36ed780'
           'SKIP')
 
