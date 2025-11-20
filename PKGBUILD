@@ -51,6 +51,11 @@ prepare() {
     libretroshare/src/use_libretroshare.pri \
     retroshare-service/src/retroshare-service.pro
 
+  sed -E -e 's&if\(.* EQUAL "3"\)&if(FALSE)&' \
+    -e '/QUIET botan-2/d' \
+    -e 's&"(lib)botan-2"&&g' \
+    -i supportlibs/librnp/cmake/Modules/FindBotan.cmake
+
   # disable warning-error
   sed -e '/inconsistent-missing-override/d' -i retroshare.pri
 
