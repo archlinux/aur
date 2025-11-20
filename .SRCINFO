@@ -1,7 +1,7 @@
 pkgbase = xtool-appimage
 	pkgdesc = Cross-platform Xcode replacement
 	pkgver = 1.16.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xtool-org/xtool
 	install = xtool-appimage.install
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = xtool-appimage
 	depends = swift-bin
 	depends = usbmuxd
 	depends = fuse2
+	depends = zip
 	provides = xtool
 	conflicts = xtool
 	noextract = xtool.AppImage
