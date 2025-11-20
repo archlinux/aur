@@ -1,6 +1,6 @@
 # Maintainer: mirrar-app <iknowarch@proton.me>
 pkgname=editt-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A Flutter-based image view and editor app for linux"
 arch=('x86_64')
