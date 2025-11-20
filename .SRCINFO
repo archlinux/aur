@@ -1,7 +1,7 @@
 pkgbase = webhookd-bin
 	pkgdesc = A very simple webhook server launching shell scripts
 	pkgver = 1.20.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ncarlier/webhookd
 	arch = x86_64
 	arch = aarch64

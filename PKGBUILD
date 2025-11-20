@@ -1,7 +1,8 @@
 # Maintainer: tee < teeaur at duck dot com >
+_pkgname=webhookd
 pkgname=webhookd-bin
 pkgver=1.20.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A very simple webhook server launching shell scripts'
 arch=('x86_64' 'aarch64')
 url='https://github.com/ncarlier/webhookd'
