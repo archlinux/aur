@@ -1,14 +1,24 @@
 pkgbase = warsmash-git
 	pkgdesc = An emulation engine to improve Warcraft III modding. (Original copy required)
-	pkgver = r346.6814a4c
+	pkgver = r592.356f154c
 	pkgrel = 1
 	url = https://github.com/Retera/WarsmashModEngine
 	arch = x86_64
-	license = MIT
+	license = AGPL-3.0-only
 	makedepends = git
 	makedepends = jdk17-temurin
 	depends = java-runtime
+	depends = alsa-lib
+	depends = freetype2
+	depends = libxrender
+	depends = libxi
+	depends = libxtst
+	depends = sh
+	depends = hicolor-icon-theme
+	provides = warsmash
 	source = warsmash::git+https://github.com/Retera/WarsmashModEngine.git
+	source = warsmash.sh
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = warsmash-git
