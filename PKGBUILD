@@ -3,7 +3,7 @@
 pkgbase=wps-office-365
 pkgname=('wps-office-365' 'wps-office-365-xiezuo' 'wps-office-365-fonts')
 pkgver=12.1.2.23578
-pkgrel=2
+pkgrel=3
 pkgdesc="WPS Office, is an office productivity suite."
 arch=('x86_64' 'aarch64' 'loong64')
 url="https://365.wps.cn/"
@@ -76,10 +76,9 @@ package_wps-office-365() {
   sed -i '2i [[ -f ~/.config/Kingsoft/fonts/fonts.conf ]] && export FONTCONFIG_FILE=~/.config/Kingsoft/fonts/fonts.conf' \
     usr/bin/{wps,wpp,et,wpspdf}
 
-  # fix xxx Njk0QkYtWVVEQkctRUFSNjktQlBSR0ItQVRRWEgK
-  #sed -i 's|YUA..=NsbhfV4nLv_oZGENyLSVZA..|YUA..=WHfH10HHgeQrW2N48LfXrA..|' \
-  #  opt/kingsoft/wps-office/office6/cfgs/oem.ini
-  #install -dm777 opt/kingsoft/.auth/
+  # disable force login
+  sed -i '2i sed -i "s/enableForceLogin=true/enableForceLogin=false/" $HOME/.config/Kingsoft/Office.conf' \
+    usr/bin/{wps,wpp,et,wpspdf}
 }
 
 package_wps-office-365-xiezuo() {
