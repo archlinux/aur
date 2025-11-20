@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=goverlay-git
-pkgver=1.6.1.r14.g538b0eb
+pkgver=1.6.1.r15.gae6d38d
 pkgrel=1
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
@@ -26,7 +26,8 @@ checkdepends=(
   'desktop-file-utils'
 )
 optdepends=(
-  'git: Clone reshade repository'
+  'git: Fallback for git operations'
+  'libgit2: Required for git operations'
   'pascube: Run pasCube (beta)'
   'vkbasalt: Configure vkBasalt'
   'vulkan-tools: Vulkan preview'
