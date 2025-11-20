@@ -1,6 +1,6 @@
 pkgbase = python-dissect.util
 	pkgdesc = A Dissect module implementing various utility functions for the other Dissect modules
-	pkgver = 3.22
+	pkgver = 3.23
 	pkgrel = 1
 	url = https://pypi.org/project/dissect.util
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-dissect.util
 	conflicts = dissect_util
 	conflicts = python-dissect.util
 	conflicts = dissect.util
-	source = dissect_util-3.22.tar.gz::https://files.pythonhosted.org/packages/source/d/dissect_util/dissect_util-3.22.tar.gz
-	sha256sums = be6271781a587333ec621f7cd7aff20ee5f21f59de756683aa4e82d8fc5f5b9b
+	source = dissect_util-3.23.tar.gz::https://files.pythonhosted.org/packages/source/d/dissect_util/dissect_util-3.23.tar.gz
+	sha256sums = 99922d3ce01d52680db8340814890a290c397c9978584323d2ea5abd3b9f8ade
 
 pkgname = python-dissect.util
