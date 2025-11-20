@@ -1,0 +1,12 @@
+pkgbase = g
+    pkgdesc = g - the *permissive* git wrapper.
+	pkgver = 11-20.001
+	pkgrel = 0
+	url = https://github.com/jstmaxlol/g
+	arch = any
+	license = MIT
+	makedepends = gcc
+    makedepends = git
+	source = git+https://github.com/jstmaxlol/g
+	md5sums = SKIP
+pkgname = g
