@@ -1,17 +1,17 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-pkgver=9.0.11.sdk307
+pkgver=9.0.11.sdk308
 _runtimever="${pkgver%.sdk*}"
 _dotnetver="${_runtimever%.*}"
 _sdkver="${_dotnetver}.${pkgver##"${_runtimever}.sdk"}"
 _netstandardver=2.1
-pkgrel=4
+pkgrel=1
 
-if   [ "${CARCH}" = 'aarch64' ]; then _arch=arm64;
-elif [ "${CARCH}" = 'armv7h'  ]; then _arch=arm;
-elif [ "${CARCH}" = 'x86_64'  ]; then _arch=x64;
-else _arch=DUMMY;
-fi
+declare -Ag _arch=(
+  [aarch64]=arm64
+  [armv7h]=arm
+  [x86_64]=x64
+)
 
 _pkgbase="dotnet-core-${_dotnetver}"
 _pkgname=(
@@ -26,9 +26,7 @@ pkgname=(
   "${_pkgname[@]/%/-bin}"
 )
 arch=(
-  'aarch64'
-  'armv7h'
-  'x86_64'
+  "${!_arch[@]}"
 )
 url="https://dotnet.microsoft.com"
 license=(
@@ -47,16 +45,16 @@ source_x86_64=(
   "https://builds.dotnet.microsoft.com/dotnet/Sdk/${_sdkver}/dotnet-sdk-${_sdkver}-linux-x64.tar.gz"
 )
 # curl -s "https://builds.dotnet.microsoft.com/dotnet/release-metadata/${_dotnetver}/releases.json" |
-#   jq -r --arg runtime "$_runtimever" --arg sdk "$_sdkver" --arg arch "$_arch" '
+#   jq -r --arg runtime "$_runtimever" --arg sdk "$_sdkver" --arg arch "${_arch[${CARCH}]}" '
 #     .releases[]
 #     | select(.sdk["runtime-version"]==$runtime and .sdk["version-display"]==$sdk)
 #     | .sdk.files[]
 #     | select(.rid == ("linux-" + $arch))
 #     | .hash
 #   '
-sha512sums_aarch64=('46bfb0bd3e8124f0fabdd234bcf20383a86459d55f3d3d73178a0bce288b40b82c5dfd172586be447520e211fdcfda86902cb106b5ecc4d315234d9c8f8bcb70')
-sha512sums_armv7h=('cdd6bc1bddee4faf1507e13d6db3e4e93acb05fe2b9fb7a1f6e5ce4eecf63b29533305933ed50386e87945fdd4c9baf6291df63a31af8bd99b69d22cfbeb8909')
-sha512sums_x86_64=('fcc178ac0026cfea1eb37320fb25ffd32e6bc2b1d48c091f6085b88a15f24080dae2a332343c51ca2421f613d5f7abde898346589f4959f1e51d619c2247d216')
+sha512sums_aarch64=('21fbdcdcb8762f3579ef2a8ac5d92cb0db960901f1c30d037fa1652238ef606bfc7bffa2e51fcc83f94f3c2c7d5bee5dcfed4b66baa455ae3d38681e264d23ff')
+sha512sums_armv7h=('de250787bbe4f9fb38b76d1f0bed6b3b8d8ed51b3d289dba68f1a4963ccce92fe54e940f22d970fd2f5209f123113a11499a98710584d53bb5d214a0fb767929')
+sha512sums_x86_64=('3aacff096524a1dae9bc035f71a6805fa7ec3430d395771fc1c85505165a78361ce2cc9c9c35433376e5c30aec37e2eb2e77de0a6ba7ddd7dc6053baf2c2709a')
 
 # pkgver() {
 #   cd "${srcdir}"
@@ -137,7 +135,7 @@ package_dotnet-targeting-pack-9.0-bin() {
 
   cd "${srcdir}"
   cp -a --parents --no-preserve=ownership -t "${pkgdir}/usr/share/dotnet" \
-    "packs/Microsoft.NETCore.App.Host.linux-${_arch}/${_runtimever}" \
+    "packs/Microsoft.NETCore.App.Host.linux-${_arch[${CARCH}]}/${_runtimever}" \
     "packs/Microsoft.NETCore.App.Ref/${_runtimever}"
 
   ln -vsf "dotnet-host" "${pkgdir}/usr/share/licenses/${pkgname%-bin}"

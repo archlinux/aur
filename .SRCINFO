@@ -1,18 +1,18 @@
 pkgbase = dotnet-core-9.0-bin
-	pkgver = 9.0.11.sdk307
-	pkgrel = 4
+	pkgver = 9.0.11.sdk308
+	pkgrel = 1
 	url = https://dotnet.microsoft.com
 	arch = aarch64
-	arch = armv7h
 	arch = x86_64
+	arch = armv7h
 	license = MIT
 	options = staticlibs
-	source_aarch64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/9.0.307/dotnet-sdk-9.0.307-linux-arm64.tar.gz
-	sha512sums_aarch64 = 46bfb0bd3e8124f0fabdd234bcf20383a86459d55f3d3d73178a0bce288b40b82c5dfd172586be447520e211fdcfda86902cb106b5ecc4d315234d9c8f8bcb70
-	source_armv7h = https://builds.dotnet.microsoft.com/dotnet/Sdk/9.0.307/dotnet-sdk-9.0.307-linux-arm.tar.gz
-	sha512sums_armv7h = cdd6bc1bddee4faf1507e13d6db3e4e93acb05fe2b9fb7a1f6e5ce4eecf63b29533305933ed50386e87945fdd4c9baf6291df63a31af8bd99b69d22cfbeb8909
-	source_x86_64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/9.0.307/dotnet-sdk-9.0.307-linux-x64.tar.gz
-	sha512sums_x86_64 = fcc178ac0026cfea1eb37320fb25ffd32e6bc2b1d48c091f6085b88a15f24080dae2a332343c51ca2421f613d5f7abde898346589f4959f1e51d619c2247d216
+	source_aarch64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/9.0.308/dotnet-sdk-9.0.308-linux-arm64.tar.gz
+	sha512sums_aarch64 = 21fbdcdcb8762f3579ef2a8ac5d92cb0db960901f1c30d037fa1652238ef606bfc7bffa2e51fcc83f94f3c2c7d5bee5dcfed4b66baa455ae3d38681e264d23ff
+	source_x86_64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/9.0.308/dotnet-sdk-9.0.308-linux-x64.tar.gz
+	sha512sums_x86_64 = 3aacff096524a1dae9bc035f71a6805fa7ec3430d395771fc1c85505165a78361ce2cc9c9c35433376e5c30aec37e2eb2e77de0a6ba7ddd7dc6053baf2c2709a
+	source_armv7h = https://builds.dotnet.microsoft.com/dotnet/Sdk/9.0.308/dotnet-sdk-9.0.308-linux-arm.tar.gz
+	sha512sums_armv7h = de250787bbe4f9fb38b76d1f0bed6b3b8d8ed51b3d289dba68f1a4963ccce92fe54e940f22d970fd2f5209f123113a11499a98710584d53bb5d214a0fb767929
 
 pkgname = dotnet-runtime-9.0-bin
 	pkgdesc = The .NET Core runtime
@@ -25,31 +25,31 @@ pkgname = dotnet-runtime-9.0-bin
 	depends = openssl
 	depends = zlib
 	optdepends = lttng-ust2.12: CoreCLR tracing
-	provides = dotnet-runtime-9.0=9.0.11.sdk307
+	provides = dotnet-runtime-9.0=9.0.11.sdk308
 	conflicts = dotnet-runtime-9.0
 
 pkgname = aspnet-runtime-9.0-bin
 	pkgdesc = The ASP.NET Core runtime
-	depends = dotnet-runtime-9.0-bin=9.0.11.sdk307
-	provides = aspnet-runtime-9.0=9.0.11.sdk307
+	depends = dotnet-runtime-9.0-bin=9.0.11.sdk308
+	provides = aspnet-runtime-9.0=9.0.11.sdk308
 	conflicts = aspnet-runtime-9.0
 
 pkgname = dotnet-targeting-pack-9.0-bin
 	pkgdesc = The .NET Core targeting pack
 	depends = netstandard-targeting-pack-2.1
-	provides = dotnet-targeting-pack-9.0=9.0.11.sdk307
+	provides = dotnet-targeting-pack-9.0=9.0.11.sdk308
 	conflicts = dotnet-targeting-pack-9.0
 
 pkgname = aspnet-targeting-pack-9.0-bin
 	pkgdesc = The ASP.NET Core targeting pack
-	depends = dotnet-targeting-pack-9.0-bin=9.0.11.sdk307
-	provides = aspnet-targeting-pack-9.0=9.0.11.sdk307
+	depends = dotnet-targeting-pack-9.0-bin=9.0.11.sdk308
+	provides = aspnet-targeting-pack-9.0=9.0.11.sdk308
 	conflicts = aspnet-targeting-pack-9.0
 
 pkgname = dotnet-sdk-9.0-bin
 	pkgdesc = The .NET Core SDK
-	depends = dotnet-runtime-9.0-bin=9.0.11.sdk307
-	depends = dotnet-targeting-pack-9.0-bin=9.0.11.sdk307
+	depends = dotnet-runtime-9.0-bin=9.0.11.sdk308
+	depends = dotnet-targeting-pack-9.0-bin=9.0.11.sdk308
 	optdepends = aspnet-targeting-pack-9.0-bin: Build ASP.NET Core applications
-	provides = dotnet-sdk-9.0=9.0.11.sdk307
+	provides = dotnet-sdk-9.0=9.0.11.sdk308
 	conflicts = dotnet-sdk-9.0
