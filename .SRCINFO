@@ -1,6 +1,6 @@
 pkgbase = remark-language-server
 	pkgdesc = A language server to lint and format markdown files with remark.
-	pkgver = 2.0.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://www.npmjs.com/package/remark-language-server
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = remark-language-server
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = remark-language-server-2.0.0.tgz
-	source = https://registry.npmjs.org/remark-language-server/-/remark-language-server-2.0.0.tgz
+	noextract = remark-language-server-3.0.0.tgz
+	source = https://registry.npmjs.org/remark-language-server/-/remark-language-server-3.0.0.tgz
 	source = https://github.com/remarkjs/remark-language-server/raw/main/license
-	sha256sums = bbcbfbd25769df496df0091ca012cba146f490c17f120289cdb5b69046a87b84
+	sha256sums = a0ddabbd3dea0539a4bead04573903db851a79677ba2536e332f43a5f4a33568
 	sha256sums = 5678151a96d1ec6e160f86852149bb5cbc018b76b87ce70b40a3339722abab46
 
 pkgname = remark-language-server

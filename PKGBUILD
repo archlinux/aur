@@ -2,7 +2,7 @@
 
 _pkgname=remark-language-server
 pkgname="$_pkgname"
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A language server to lint and format markdown files with remark."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz"
         https://github.com/remarkjs/remark-language-server/raw/main/license)
 noextract=("$_pkgname-$pkgver.tgz")
-sha256sums=('bbcbfbd25769df496df0091ca012cba146f490c17f120289cdb5b69046a87b84'
+sha256sums=('a0ddabbd3dea0539a4bead04573903db851a79677ba2536e332f43a5f4a33568'
             '5678151a96d1ec6e160f86852149bb5cbc018b76b87ce70b40a3339722abab46')
 
 package() {
