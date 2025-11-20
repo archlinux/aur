@@ -36,7 +36,7 @@ package() {
 
   install -Dm755 "src-tauri/target/release/app" "$pkgdir/usr/bin/zmk-studio"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm755  "$srcdir/ZMK Studio.desktop" "$pkgdir/usr/share/applications"
+  install -Dm755 "$srcdir/ZMK Studio.desktop" -t "$pkgdir/usr/share/applications"
   install -Dm755 src-tauri/icons/128x128.png -t "$pkgdir/usr/share/icons/hicolor/128x128/apps"
   install -Dm755 src-tauri/icons/32x32.png -t "$pkgdir/usr/share/icons/hicolor/32x32/apps"
 }
