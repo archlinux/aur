@@ -10,7 +10,7 @@ depends=('pacman' 'git')
 conflicts=('rauri')
 provides=('rauri')
 source_x86_64=("${pkgname}-${pkgver}.tar.gz::https://github.com/ognrdrch/rauri/releases/download/v${pkgver}/rauri-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('SKIP')  # Update with actual checksum
+sha256sums_x86_64=('0d570b21fb224da91aa5d9800ef486c87432ca510cbc6658cf26e6bdd30acce5')  # Update with actual checksum
 
 package() {
   cd "$srcdir"

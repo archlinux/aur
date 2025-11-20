@@ -10,6 +10,6 @@ pkgbase = rauri-bin
 	provides = rauri
 	conflicts = rauri
 	source_x86_64 = rauri-bin-0.1.2.tar.gz::https://github.com/ognrdrch/rauri/releases/download/v0.1.2/rauri-0.1.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = 0d570b21fb224da91aa5d9800ef486c87432ca510cbc6658cf26e6bdd30acce5
 
 pkgname = rauri-bin
