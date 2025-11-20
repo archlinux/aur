@@ -1,0 +1,22 @@
+pkgbase = python-pdfly
+	pkgdesc = Command-line PDF manipulation tool powered by Python
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/py-pdf/pdfly
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-flit-core
+	depends = python-endesive
+	depends = python-asn1crypto
+	depends = python-pypdf
+	depends = python-typer
+	depends = python-rich
+	depends = python-fpdf2
+	depends = python-pillow
+	source = python-pdfly-0.5.1.tar.gz::https://github.com/py-pdf/pdfly/archive/refs/tags/0.5.1.tar.gz
+	sha256sums = 19dd6b725efa0154c5b5b393e23a26ca36fe85bbf963bbba821524ac0bce5afc
+
+pkgname = python-pdfly
