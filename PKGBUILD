@@ -4,7 +4,7 @@ _pkgname=ITK
 pkgname=(itk-git python-itk-git)
 _pkgver=5.4.4
 pkgver=5.4.4.r57454.4baa61f33a
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source toolkit for multidimensional image analysis"
 arch=(x86_64)
 url="https://www.itk.org"
@@ -119,7 +119,7 @@ build() {
     -DModule_ITKReview=ON
     -DModule_MorphologicalContourInterpolation=ON
     -DModule_SimpleITKFilters=ON
-    # add more modules comparing to vtk from extra repo
+    # add more modules comparing to itk from extra repo
     -DModule_AdaptiveDenoising=ON
     -DModule_GenericLabelInterpolator=ON
     -DModule_GrowCut=ON

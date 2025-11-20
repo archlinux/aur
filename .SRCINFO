@@ -1,7 +1,7 @@
 pkgbase = itk-git
 	pkgdesc = An open-source toolkit for multidimensional image analysis
 	pkgver = 5.4.4.r57454.4baa61f33a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.itk.org
 	arch = x86_64
 	license = Apache-2.0
