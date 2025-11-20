@@ -2,7 +2,7 @@
 
 _pkgname=scopebuddy
 pkgname=$_pkgname-git
-pkgver=1.2.5.r0.g1c32fae
+pkgver=1.2.6.r0.geeff77a
 pkgrel=1
 pkgdesc="gamescope helper script"
 arch=(any)
@@ -10,7 +10,6 @@ url="https://github.com/HikariKnight/ScopeBuddy"
 license=('Apache-2.0')
 depends=(
     'bash'
-    'gamescope'
     'procps-ng'
     'perl'
     'coreutils'
@@ -18,6 +17,7 @@ depends=(
 )
 makedepends=('git')
 optdepends=(
+    'gamescope: gamescope integration'
     'jq: Automatic display detection'
     'libkscreen: Automatic display detection (Plasma)'
     'mutter: Automatic display detection (GNOME)'
