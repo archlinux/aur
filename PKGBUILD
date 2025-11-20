@@ -2,7 +2,7 @@
 
 pkgname=sipgate-app-clinq
 pkgdesc="Telephony desktop application for sipgate customers"
-pkgver=2.26.2
+pkgver=2.28.2
 _distfile="sipgate-${pkgver}-amd64.deb"
 pkgrel=1
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 )
 noextract=("${_distfile}")
 b2sums=(
-	'82cac994f7ce8e6961a2d468fe7a6ed62f72bd648f562e92b72157f26f54ea2b8410c66b5dcb164726f5f405a6c7d0983ee8ae34005df5fca652c73a3ab2b6a5'
+	'ae1f3eeaacee7d3024e260f4ce94774b99c760d5ef8a0f74927d9e42b4645d4c458fd384eba65bdb442963ab89723a7f780bd68834a66df38d3569183b786648'
 	'16f877664cb574917a7c5f6d310523e0dda7b00c162621410fc81de94e85f2a6699749210c931b7269b1063d434c41da44c5ee96cbb0eb621420746a76723830'
 )
 
