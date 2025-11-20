@@ -1,7 +1,7 @@
 pkgbase = seerr
 	pkgdesc = Request management and media discovery tool for the Plex ecosystem
 	pkgver = 2.7.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/seerr-team/seerr
 	install = seerr.install
 	arch = x86_64
