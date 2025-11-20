@@ -1,7 +1,7 @@
 pkgbase = flow
 	pkgdesc = A static type checker for JavaScript
 	pkgver = 0.291.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flow.org
 	arch = x86_64
 	arch = aarch64

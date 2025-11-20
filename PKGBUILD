@@ -5,7 +5,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 pkgname='flow'
 pkgver='0.291.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A static type checker for JavaScript'
 # If you're running on aarch64, you have to add it to the arch array of some AUR ocaml dependencies
 arch=('x86_64' 'aarch64')
@@ -37,7 +37,6 @@ prepare() {
 build() {
 	cd "$srcdir/$_sourcedirectory/"
 	FLOW_RELEASE=1 make
-	FLOW_RELEASE=1 make -C src/parser dist/libflowparser.zip
 }
 
 check() {
@@ -57,13 +56,6 @@ package() {
 
 	# Binary
 	install -Dm755 "bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
-
-	# Parser library files
-	install -dm755 "$pkgdir/usr/lib/ocaml/${pkgname}parser/"
-	install -Dm644 "src/parser/dist/lib${pkgname}parser/include/${pkgname}parser/"* "$pkgdir/usr/lib/ocaml/${pkgname}parser/"
-
-	install -dm755 "$pkgdir/usr/lib/"
-	install -Dm644 "src/parser/dist/lib${pkgname}parser/lib/"* "$pkgdir/usr/lib/"
 
 	# Misc files
 	install -Dm644 'resources/shell/bash-completion' "$pkgdir/usr/share/bash-completion/completions/$pkgname"
