@@ -18,6 +18,7 @@ depends=(
   'xdg-user-dirs'
   # flutter_file_picker - see https://github.com/miguelpruivo/flutter_file_picker/blob/master/lib/src/linux/file_picker_linux.dart#L115
   'zenity'
+  'libwebkit2gtk-4.1'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
