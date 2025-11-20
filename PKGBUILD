@@ -3,7 +3,7 @@
 pkgbase=python-rad
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.27.0
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="Nancy Grace Roman Space Telescope shared attributes for processing and archive"
 arch=('any')
@@ -14,15 +14,15 @@ makedepends=('python-setuptools-scm>=3.4'
              'python-installer'
              'python-sphinx-asdf')  # wheel required by new setuptools; importlib-metadata <- asdf
 # circular deps
-#checkdepends=('python-pytest-doctestplus'
+checkdepends=('python-pytest-doctestplus'
 #             'python-pytest-xdist'
-#              'python-asdf'
-#              'python-crds'
-#              'python-gitpython'
-#              'python-roman-datamodels>=0.22.0'
-#)
+              'python-pytest-asdf-plugin'
+              'python-deepdiff'
+              'python-crds'
+#             'python-roman-datamodels>=0.22.0'
+              'python-gitpython')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('5eb249d417969e6f5d91465c67076e75')
+md5sums=('f4068206f0a1c1ad4faf4f8c1a09dc2b')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -39,12 +39,14 @@ build() {
     PYTHONPATH="../src" make -C docs html
 }
 
-#check() {
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#
-##   PYTHONPATH="build/lib" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
-#    PYTHONPATH="src" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
-#}
+check() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+#   PYTHONPATH="build/lib" pytest -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
+    PYTHONPATH="src" pytest \
+        --ignore=tests/test_latest.py \
+        --ignore=tests/test_versioning.py || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
+}
 
 package_python-rad() {
     depends=('python>=3.11' 'python-asdf-astropy>=0.5.0')
