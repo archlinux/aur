@@ -7,7 +7,7 @@
 # Based on https://gitlab.archlinux.org/archlinux/packaging/packages/electrum/-/blob/6d9acc129748edcd352f41f33e98c0cee8637fc5/PKGBUILD by Santiago Torres-Arias <santiago@archlinux.org>
 
 pkgname=electrum-git
-pkgver=4.6.1.r47.g5a9f54fba
+pkgver=4.6.2.r193.g30d34238e
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
