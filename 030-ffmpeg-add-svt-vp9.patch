@@ -24,7 +24,7 @@
  libvvenc_encoder_deps="libvvenc"
  libwebp_encoder_deps="libwebp"
  libwebp_anim_encoder_deps="libwebp"
-@@ -7195,6 +7198,7 @@ enabled libvpx            && {
+@@ -7199,6 +7202,7 @@ enabled libvpx            && {
      fi
  }
  

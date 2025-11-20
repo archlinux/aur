@@ -2,8 +2,8 @@
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 pkgname=ffmpeg-full
-pkgver=8.0
-pkgrel=4
+pkgver=8.0.1
+pkgrel=1
 _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
 _obs_studio_ver='32.0.2'
 _whispercpp_ver='1.8.2'
@@ -168,25 +168,21 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '050-ffmpeg-fix-cuda-nvcc-with-gcc14.patch'
         '060-ffmpeg-whisper.cpp-fix-pkgconfig.patch'
-        '070-ffmpeg-lcevcdec4.0.0-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/fa23202cc7baab899894e8d22d82851a84967848'
         '080-ffmpeg-cuda13-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/f8a300c6739ea2ca648579d7faf3ae9811b9f19a'
-        '090-ffmpeg-glslang16-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/f1e9032a2000b8b885cffd6fed8eacd47b37673f'
         '100-ffmpeg-add-opencv4-support.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/c4ce51ee62205c74604767f1b7dab6a036edac7f'
         'LICENSE')
-sha256sums=('b2751fccb6cc4c77708113cd78b561059b6fa904b24162fa0be2d60273d27b8e'
+sha256sums=('05ee0b03119b45c0bdb4df654b96802e909e0a752f72e4fe3794f487229e5a41'
             'SKIP'
             'SKIP'
             '39e99b9fbdc77e7e87cfd9c7e8709d1d427627bad5b21b791019c887c8598d13'
             'bcee25589bb8052d9e155369f6759a05729a2022d2a8085c1aa4345108523077'
-            '4b1053cc01244c79e3b23dc696eaff1aeb0627a2098e1a720a025d4ad75b5c16'
+            'ccdc1cab97d1fe5a454cd57fbd2bb865256092d715fd7f380c30cc3f42891b3c'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-            'da01eb3ca31d35d23257760875e14bed808b3fea02f290028adaed76062125a0'
+            '60bfff3c6bf3c2f1ca674b051b4d1b40f5686087555d1bdde82fa37102e5a801'
             '5cb2475de410f5696072687af88e91461cdacd1bb636ac14a3b348e3383934f1'
             '9f3d84b3abe1077b3d6c1a25f36dcddf6419a7fe3217a4edd52aab6f0e4cd838'
             '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
-            'd2bacb3a5b0201503554c3394ea1f3fbc8ad79d5c2721e0c226134d40812ad08'
             '79e3fbc30c86e0db789af78e79dc23227e5f6887531bcd52b2defa8526d1455b'
-            '0010bf826a7008452ccc8a072b0186688e8687be0dbe2be2ca7540e26ca076f1'
             'f5b448f7e6e567273f74ed6e62ed25d8470f6bc9183c247993f1c03e78b57587'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
@@ -199,9 +195,7 @@ prepare() {
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/050-ffmpeg-fix-cuda-nvcc-with-gcc14.patch"
     patch -d "whisper.cpp-${_whispercpp_ver}" -Np1 -i "${srcdir}/060-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/070-ffmpeg-lcevcdec4.0.0-fix.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/080-ffmpeg-cuda13-fix.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/090-ffmpeg-glslang16-fix.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/100-ffmpeg-add-opencv4-support.patch"
 }
 
