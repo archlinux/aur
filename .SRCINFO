@@ -1,6 +1,6 @@
 pkgbase = kmscon-aetf-git
-	pkgdesc = Terminal emulator based on Kernel Mode Setting (KMS)
-	pkgver = v9.1.0.r37.gfbbc4f5
+	pkgdesc = Linux KMS/DRM based virtual Console Emulator (git development version)
+	pkgver = v9.1.0.r44.g85397b6
 	pkgrel = 1
 	url = https://github.com/Aetf/kmscon
 	arch = x86_64
