@@ -13,7 +13,7 @@ license=('MIT')
 
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-poetry-core')
-provides=('terminaltexteffects')
+provides=('terminaltexteffects' 'tte')
 conflicts=('terminaltexteffects')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/release-${pkgver}.tar.gz")
