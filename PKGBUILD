@@ -4,7 +4,7 @@
 
 pkgname=postman-bin
 pkgver=11.72.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Build, test, and document your APIs faster"
 provides=('postman')
 conflicts=('postman')
@@ -19,7 +19,7 @@ source_x86_64=("postman-${pkgver}-linux-x64.tar.gz::https://dl.pstmn.io/download
 source_aarch64=("postman-${pkgver}-linux-arm64.tar.gz::https://dl.pstmn.io/download/version/${pkgver}/linux_arm64")
 
 sha256sums=('d87542ac18455ff341da7c5efd01db96a01f659b1bf546840aa4ac8bd085802d')
-sha256sums_x86_64=('1328b36d01f04f3add2d591cb11d2ae79b04e6a41fbbff52c9e4ee92fc4a2ce9a')
+sha256sums_x86_64=('1328b36d01f04f3add2d591cb11d2ae79b04e6a41fbbff52c9e4ee92fc4a2ce9')
 sha256sums_aarch64=('b69959c0b266f18ff93dcc16dca37c9ffee6e3edd7bd5818653654b8bdd5b4cc')
 
 package() {
