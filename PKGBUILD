@@ -3,7 +3,7 @@
 pkgname=python-blackdoc
 _pypi=blackdoc
 pkgdesc='Run Black on documentation code snippets'
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 url='https://github.com/keewis/blackdoc'
 license=('MIT')
@@ -35,7 +35,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  '9da6a59f2005e1fbbe6ac651c3f283a398dada67e11e8c573be33dca789d8cfa'
+  '9cce04cd898ed0ceb1c423836e62024e1d118a38ee5f760b931cadf7761b964f'
 )
 
 build() {
