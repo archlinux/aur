@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/joel-sgc/bluepala"
 license=('WTFPL')
 makedepends=('go')
-source=("https://github.com/joel-sgc/bluepala/archive/refs/tags/${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
