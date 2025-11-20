@@ -12,7 +12,7 @@ index 03b233fb..01f2dd15 100644
    (:standard -safe-string)
    -w
 diff --git a/dune-project b/dune-project
-index 9b309ce8..474f816c 100644
+index ff31573f..4f0a5ab5 100644
 --- a/dune-project
 +++ b/dune-project
 @@ -23,7 +23,6 @@
@@ -34,10 +34,10 @@ index 17563c2e..0cd15393 100644
 - (libraries ppxlib ppxlib_traverse_builtins stdppx stdlib-shims))
 + (libraries ppxlib ppxlib_traverse_builtins stdppx))
 diff --git a/ppxlib.opam b/ppxlib.opam
-index 048070cb..abc5f92c 100644
+index 22689098..04f82c07 100644
 --- a/ppxlib.opam
 +++ b/ppxlib.opam
-@@ -27,7 +27,6 @@ depends: [
+@@ -26,7 +26,6 @@ depends: [
    "ppx_derivers" {>= "1.0"}
    "sexplib0" {>= "v0.12"}
    "sexplib0" {with-test & >= "v0.15"}

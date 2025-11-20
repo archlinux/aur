@@ -2,22 +2,22 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppxlib'
 pkgname="ocaml-$_projectname"
-pkgver='0.36.2'
+pkgver='0.37.0'
 pkgrel='1'
 epoch='1'
 pkgdesc='Utilities for working with Jane Street AST constructs'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-ppx/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.10.0' 'ocaml-base>=0.15.0' 'ocaml-cmdliner>=1.3.0' 'ocaml-compiler-libs-repackaged>=0.11.0' 'ocaml-ppx_derivers>=1.0.0' 'ocaml-sexplib0>=0.15.0' 'ocaml-yojson' 'zstd')
+depends=('ocaml>=4.10.0' 'ocaml-base>=0.15.0' 'ocaml-cmdliner>=1.3.0' 'ocaml-compiler-libs-repackaged>=0.11.0' 'ocaml-ppx_derivers>=1.0.0' 'ocaml-sexplib0>=0.15.0' 'ocaml-yojson>=2.2.2' 'zstd')
 makedepends=('dune>=3.8.0')
 options=('!strip')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
 	'remove-stdlib-shims-dep.diff'
 )
-b2sums=('38bea599c038103a966824582248b26b31b4c24347dd76ece3819cd4cc23f49218e8b47aaaf4783d9fa8d74437b03c9b320e9d8a13c712c0d13cd75f7270b1a2'
-        'c9a6dcaf6cb70796f58ca1d3f4c6f18abfcd0698778969a1af1bfdedac4b30f7763e2a636bd50081fbd7c0efd668dd5e7f34e6221bbdaa16711f9cb6e9319843')
+b2sums=('c1d1f3bed43e04377d094c758c751a887b280fdd3c7139392b0855672714f0e76de6fff566e8cc98ec5972b4228c7bfb46af580dec182dbe202b7b5bd55e420b'
+        '4cf15c42b407b0aaabae83c587fbd1bad451bf7bbe5a179852adea8f287c577c0fc9f576f19953438ddbd6f7c02b41c7631ddfc9aa8e52e601bd765dd66c34b5')
 
 _sourcedirectory="$_projectname-$pkgver"
 
