@@ -1,0 +1,5 @@
+[daylight-bin]
+source = "github"
+github = "jbreckmckye/daylight"
+use_latest_release = true
+prefix = "v"
