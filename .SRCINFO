@@ -6,7 +6,7 @@ pkgbase = bluepala
 	arch = x86_64
 	license = WTFPL
 	makedepends = go
-	source = bluepala-0.7.5.tar.gz::https://github.com/joel-sgc/bluepala/archive/refs/tags/v0.7.5.tar.gz
+	source = https://github.com/joel-sgc/bluepala/archive/refs/tags/0.7.5.tar.gz
 	sha256sums = SKIP
 
 pkgname = bluepala
