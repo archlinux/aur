@@ -4,7 +4,7 @@
 
 pkgname=pcloud-drive
 pkgver=1.14.18
-pkgrel=1
+pkgrel=2
 pkgdesc='pCloud drive. Electron edition.'
 arch=('x86_64')
 url='https://www.pcloud.com/'
@@ -23,7 +23,7 @@ _dlpath="$(echo ${_api_response} | grep -E -o "\"path\":\s{0,1}\".+\"" | cut -d 
 source=('LICENSE'
         "${_appimage}::https://${_dlhost}${_dlpath}")
 sha256sums=('9dce0249569d9dc9f00217009880458cf669a657ebb6604b4e52be4e875f1a42'
-            'fff197d835442997596a5033aff219517f08c46b151f70185a2a668bb22d8f4f')
+            'c78ae5bc069a83520d6db4d370bb4c88b7d31cb98760c9ab27fcdde47fb56b9b')
 
 prepare() {
     chmod +x "${_appimage}"
