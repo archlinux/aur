@@ -11,7 +11,6 @@ pkgbase = python-terminaltexteffects
 	makedepends = python-setuptools
 	makedepends = python-poetry-core
 	depends = python
-	provides = terminaltexteffects
 	provides = tte
 	conflicts = terminaltexteffects
 	source = python-terminaltexteffects-0.13.0.tgz::https://github.com/ChrisBuilds/terminaltexteffects/archive/release-0.13.0.tar.gz

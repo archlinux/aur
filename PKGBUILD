@@ -11,10 +11,11 @@ url="https://github.com/ChrisBuilds/terminaltexteffects"
 arch=('any')
 license=('MIT')
 
-depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-poetry-core')
-provides=('terminaltexteffects' 'tte')
+depends=('python')
+
 conflicts=('terminaltexteffects')
+provides=('tte')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/release-${pkgver}.tar.gz")
 b2sums=('1ea2e59d28f5c6f02e73f0c93d41f1e118d20ce53ff23988ed185037a3de26037e6f67d586caf03f41c609c42294e2380067a515b8c45c30b41e0b5f8333cf7f')
@@ -29,6 +30,8 @@ package() {
 	cd "${_pkgname}-release-${pkgver}" || exit
 
 	python -m installer --destdir="${pkgdir}" dist/*.whl
+
+	rm -rf "${pkgdir}/usr/bin/terminaltexteffects"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
