@@ -1,0 +1,5 @@
+[git-who-bin]
+source = "github"
+github = "sinclairtarget/git-who"
+use_latest_release = true
+prefix = "v"

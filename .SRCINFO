@@ -1,0 +1,20 @@
+pkgbase = git-who-bin
+	pkgdesc = Git blame for file trees
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/sinclairtarget/git-who
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = git-who
+	conflicts = git-who
+	source = LICENSE-1.2::https://raw.githubusercontent.com/sinclairtarget/git-who/v1.2/LICENSE
+	source = README-1.2.md::https://raw.githubusercontent.com/sinclairtarget/git-who/v1.2/README.md
+	sha256sums = 2707728d99e450c5df3dda7900d7061e17175b62603b237d65eb316468a36317
+	sha256sums = 8a17bbe4334a87e4c92fcb9adb54c5277c2253b1160a5afcdfc990eb70c36171
+	source_x86_64 = git-who-x86_64-1.2.tgz::https://github.com/sinclairtarget/git-who/releases/download/v1.2/gitwho_v1.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = ec7ed247b52867e5d303948511a52aede8754a53d1dd9a39cc1dc66f181beee6
+	source_aarch64 = git-who-aarch64-1.2.tgz::https://github.com/sinclairtarget/git-who/releases/download/v1.2/gitwho_v1.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 195e254a1f77591950031463024923ab09abbdd306b1701ef07d4ccbc10d0fdb
+
+pkgname = git-who-bin
