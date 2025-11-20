@@ -2,7 +2,7 @@
 
 pkgname=pda-git
 _pkgname=pda
-pkgver=r50.g25b4363
+pkgver=2025.47
 pkgrel=1
 pkgdesc="pda! your template-friendly key/value store for code snippets"
 arch=('x86_64')
@@ -13,6 +13,7 @@ makedepends=('go' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::git+$url.git")
+options=("!debug" "strip")
 sha256sums=('SKIP')
 
 pkgver() {
