@@ -2,8 +2,7 @@
 
 pkgbase=python-romanisim
 _pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}")
-#"python-${_pyname}-doc")
+pkgname=("python-${_pyname}" "python-${_pyname}-doc")
 pkgver=0.11.1
 pkgrel=1
 pkgdesc="Nancy Grace Roman Space Telescope WFI Simulator"

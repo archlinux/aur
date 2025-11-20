@@ -36,3 +36,6 @@ pkgname = python-romanisim
 	depends = python-photutils>=2.3.0
 	depends = cython>=0.29.21
 	optdepends = python-romanisiml-doc: Documentation for romanisim
+
+pkgname = python-romanisim-doc
+	pkgdesc = Documentation for Python Romanisim
