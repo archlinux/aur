@@ -12,13 +12,14 @@ groups=()
 
 depends=(
 	'libyaml'
+	'java-runtime-headless'
 )
 makedepends=(
 	'cmake'
 	'git'
 	'go'
 	'gradle'
-	'jdk17-openjdk'
+	'java-environment=17'
 	'pkg-config'
 	'rsync'
 	'unzip'
@@ -45,7 +46,7 @@ sha256sums=(
 	'SKIP'
 	'SKIP'
 	'ba66d01b8058644597d9b406d3b8ce7ed40aed77c7358f2b97ff0e262a4cbb98'
-	'0e663cc6bbfdb5af962001b4645c3c154f715874fb910adfb3b3293564383f14'
+	'9e4a033b122620fdcbe8181246f450e9e4009e1774b3ba2173d9e6a70494d984'
 )
 
 pkgver() {
@@ -78,6 +79,7 @@ build() {
 	git apply "${srcdir}/0002-builds_otel.sh.patch"
 
 	echo "--- Building otel ..."
+	java --version
 	CGO_ENABLED=1 ./builds/otel.sh "$_destdir"
 
 	echo "--- Building fluent_bit ..."

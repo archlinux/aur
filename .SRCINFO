@@ -10,12 +10,13 @@ pkgbase = google-cloud-ops-agent-git
 	makedepends = git
 	makedepends = go
 	makedepends = gradle
-	makedepends = jdk17-openjdk
+	makedepends = java-environment=17
 	makedepends = pkg-config
 	makedepends = rsync
 	makedepends = unzip
 	makedepends = zip
 	depends = libyaml
+	depends = java-runtime-headless
 	provides = google-cloud-ops-agent
 	conflicts = stackdriver-collectd
 	source = google-cloud-ops-agent-git::git+https://github.com/GoogleCloudPlatform/ops-agent.git
@@ -29,6 +30,6 @@ pkgbase = google-cloud-ops-agent-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = ba66d01b8058644597d9b406d3b8ce7ed40aed77c7358f2b97ff0e262a4cbb98
-	sha256sums = 0e663cc6bbfdb5af962001b4645c3c154f715874fb910adfb3b3293564383f14
+	sha256sums = 9e4a033b122620fdcbe8181246f450e9e4009e1774b3ba2173d9e6a70494d984
 
 pkgname = google-cloud-ops-agent-git
