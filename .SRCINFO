@@ -1,7 +1,7 @@
 pkgbase = tf2cdownloader-bin
 	pkgdesc = Cross-platform utility for automatically downloading and installing TF2 Classic
 	pkgver = 2023.05.27
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tf2classic/TF2CDownloader
 	arch = x86_64
 	license = GPL-3.0-only

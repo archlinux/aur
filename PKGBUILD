@@ -2,7 +2,7 @@
 pkgname=tf2cdownloader-bin
 _pkgname=tf2cdownloader
 pkgver=2023.05.27
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform utility for automatically downloading and installing TF2 Classic"
 arch=('x86_64')
 url="https://github.com/tf2classic/TF2CDownloader"
@@ -14,5 +14,9 @@ sha256sums=('SKIP')
 
 package() {
   install -Dm755 "$srcdir/TF2CDownloaderLinux" "$pkgdir/usr/bin/TF2CDownloaderLinux"
-  ln -s "TF2CDownloaderLinux" "$pkgdir/usr/bin/tf2cdownloader"
+  cat > "$pkgdir/usr/bin/tf2cdownloader" << 'EOF'
+  #!/bin/bash
+  exec /usr/bin/TF2CDownloaderLinux "$@"
+  EOF
+  chmod +x "$pkgdir/usr/bin/tf2cdownloader"
 }
