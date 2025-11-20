@@ -2,11 +2,11 @@
 
 _plug=vsengine
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.2.0.0.gddbb628
+pkgver=0.2.0.4.gc2bde81
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
-url='https://github.com/Irrational-Encoding-Wizardry/vs-engine'
+url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-engine'
 license=('MIT')
 depends=('vapoursynth'
 )
@@ -16,7 +16,7 @@ makedepends=('git'
 )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/Irrational-Encoding-Wizardry/vs-engine.git")
+source=("${_plug}::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-engine.git")
 sha256sums=('SKIP')
 
 pkgver() {
