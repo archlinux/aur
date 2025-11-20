@@ -13,11 +13,14 @@ arch=("x86_64")
 url="https://github.com/${pkgauthor}/${pkgname}"
 _urlraw="https://raw.githubusercontent.com/${pkgauthor}/${pkgname}/v${pkgver}"
 license=("MIT")
+
 replaces=("nodejs-${pkgname}")
 depends=("bash" "nodejs")
 makedepends=("npm" "jq")
 provides=("${pkgname}")
+
 options=(!strip emptydirs staticlibs zipman)
+changelog="changelog.md"
 
 source=("https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${pkgname}-${pkgver}.tgz"
 		"README-${pkgver}.md::${_urlraw}/README.md"
