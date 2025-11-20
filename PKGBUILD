@@ -1,6 +1,6 @@
 # Maintainer: Saimon Dahal <saimondahal66@gmail.com>
 pkgname=miti
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A beautiful TUI calendar viewer with AD and BS (Bikram Sambat) support"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a6397a9c28b9b5271f0393073df9ebd81263fdfd5b83fbbd3f6d28356c7209bc')
+sha256sums=('2692e4ddf347b5240a518616c78c4f2b0aee396395ec056a3611c3fa5ff9a2f7')
 
 build() {
     cd "$pkgname-$pkgver"
