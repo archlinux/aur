@@ -1,6 +1,6 @@
 pkgbase = r-mkl
 	pkgdesc = Language and environment for statistical computing and graphics, linked to the Intel(R) MKL.
-	pkgver = 4.5.1
+	pkgver = 4.5.2
 	pkgrel = 1
 	url = http://www.r-project.org/
 	install = r-mkl.install
@@ -34,7 +34,7 @@ pkgbase = r-mkl
 	optdepends = texlive-latex: LaTeX sty files
 	optdepends = gcc-fortran: needed to compile some CRAN packages
 	optdepends = tk: tcl-tk interface
-	provides = r=4.5.1
+	provides = r=4.5.2
 	conflicts = r
 	conflicts = microsoft-r-open
 	options = !emptydirs
@@ -43,16 +43,16 @@ pkgbase = r-mkl
 	backup = etc/R/ldpaths
 	backup = etc/R/repositories
 	backup = etc/R/javaconf
-	source = http://cran.r-project.org/src/base/R-4/R-4.5.1.tar.gz
+	source = http://cran.r-project.org/src/base/R-4/R-4.5.2.tar.gz
 	source = r.desktop
 	source = r.png
 	source = R.conf
 	source = vars.sh
-	sha256sums = b42a7921400386645b10105b91c68728787db5c4c83c9f6c30acdce632e1bb70
+	sha256sums = 0d71ff7106ec69cd7c67e1e95ed1a3cee355880931f2eb78c530014a9e379f20
 	sha256sums = 25b01ea93fa704884b65ba002d44d4e99725bd826997e8c73b6467df9f23c798
 	sha256sums = 82e3f55f9954dd89700605362fea8bb3589ff09fa9a442b09cbd5f249407e7e0
 	sha256sums = b7833166041b06f716b6a79095d27d4abd83549816dc53193213827139eae6ef
 	sha256sums = f14c5efb017f970363ddc7509960b7f04f9942074d82ef7567ecd41313bf0aeb
 
 pkgname = r-mkl
-	provides = r=4.5.1
+	provides = r=4.5.2
