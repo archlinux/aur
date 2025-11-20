@@ -1,4 +1,5 @@
-# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Maintainer: p0358 <>
+# Contributor: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=libuncso2-bin
 pkgver=1.2.0
