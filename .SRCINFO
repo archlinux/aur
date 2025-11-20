@@ -1,12 +1,12 @@
 pkgbase = rkdeveloptool-gui
 	pkgdesc = RKDevelopTool GUI is a graphical front-end for Rockchip's official rkdeveloptool
-	pkgver = 1.0.0
-	pkgrel = 6
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/gahingwoo/RKDevelopTool-GUI
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = git
-	makedepends = python-pyqt6
+	makedepends = pyside6
 	makedepends = nuitka
 	depends = glibc
 	depends = hicolor-icon-theme
@@ -16,9 +16,9 @@ pkgbase = rkdeveloptool-gui
 	options = !strip
 	options = !debug
 	options = !lto
-	source = rkdeveloptool-gui::git+https://github.com/gahingwoo/RKDevelopTool-GUI.git#tag=v1.0.0
+	source = rkdeveloptool-gui::git+https://github.com/gahingwoo/RKDevelopTool-GUI.git#tag=2.0.0
 	source = rkdeveloptool-gui.png
-	sha256sums = 87f2433138ef98ef578cc3de5e57f42ecc8fa06f6919e1ea94aa2aa669aa356a
+	sha256sums = 7bfb962eb94fe6ab4dde53e63d43f3c0481937d5f7f4641bc072d5c80ad0a316
 	sha256sums = 91619e46e6adff808ed8a3061be5226589ed07ddf9ecd8df33e1a99f5ac563c4
 
 pkgname = rkdeveloptool-gui
