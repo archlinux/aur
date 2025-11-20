@@ -5,10 +5,10 @@
 pkgname=smatch
 pkgver=1.73
 _fedora_spec_url="https://src.fedoraproject.org/rpms/smatch/raw/rawhide/f/smatch.spec"
-pkgrel=2
+pkgrel=3
 pkgdesc="Static analysis tool for C programs that performs semantic analysis to detect bugs and vulnerabilities."
 arch=(x86_64)
-url="https://smatch.sourceforge.net"
+url="https://github.com/error27/smatch"
 license=(GPL-2.0-or-later MIT BSD-3-Clause)
 depends=(sqlite openssl perl perl-dbd-sqlite perl-try-tiny)
 source=("smatch-${pkgver}.tar.gz::https://github.com/error27/smatch/archive/refs/tags/${pkgver}.tar.gz"
