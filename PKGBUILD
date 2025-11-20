@@ -9,7 +9,7 @@
 # Contributor: atweiden <archbaum@gmail.com>
 
 pkgname=ansible-core-git
-pkgver=r55169.0c7dcb65cff
+pkgver=r55249.ce84d3157d7
 pkgrel=1
 pkgdesc='Radically simple IT automation platform'
 arch=('any')
@@ -45,7 +45,7 @@ makedepends=('python-build' 'python-docutils' 'python-installer' 'python-setupto
 source=($pkgname::git+https://github.com/ansible/ansible.git
         'relax_strict_dependencies_upper_bound.patch')
 sha512sums=('SKIP'
-            '0b4b3bf9d145a0f69f2160c75d5a92b47a5208a1804e323e269ab062bbad36de430aa6970eb9ac7cae24f5734d6c9a4dbb29c0051f9d2f7e22a7e6aac69ba0a9')
+            '8ca5b1c4490dcfc0fe3cf6aef74e5ee811d576d525ca3b851b83faf7ad86ac1e060eb34512617999aac3903a6e4d8fa0ec71200e6acf84cb1575b9c47b8015ae')
 
 prepare() {
   cd "$pkgname"

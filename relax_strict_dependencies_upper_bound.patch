@@ -1,11 +1,11 @@
 diff --git a/pyproject.toml b/pyproject.toml
-index 7a16270c324..addcb7ee95c 100644
+index c1d8e68dc55..168481bbdf9 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
 @@ -1,5 +1,5 @@
  [build-system]
--requires = ["setuptools >= 70.1, <= 80.3.1"]  # lower bound to support controller Python versions, upper bound for latest version tested at release
-+requires = ["setuptools >= 70.1"]  # lower bound to support controller Python versions, upper bound for latest version tested at release
+-requires = ["setuptools >= 77.0.3, <= 80.3.1"]  # lower bound to support license/license-files (PEP 639), upper bound for latest version tested at release
++requires = ["setuptools >= 77.0.3"]  # lower bound to support license/license-files (PEP 639), upper bound for latest version tested at release
  build-backend = "setuptools.build_meta"
 
  [project]
