@@ -5,55 +5,73 @@
 
 # The following guidelines are specific to BZR, GIT, HG and SVN packages.
 # Other VCS sources are not natively supported by makepkg yet.
-
 # Maintainer: yinflying <yinflying@foxmail.com>
+# Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
+
 _proname=RTKLIB
 pkgname=rtklib-git
-pkgver=2.4.3b29
-pkgrel=3
+epoch=1
+pkgver=2.5.0+51.r1565.20251012.b28b5ac5
+pkgrel=1
 pkgdesc="An Open Source Program Package for GNSS Positioning"
 arch=('x86_64')
 url="http://www.rtklib.com/"
-license=('GPL')
+license=('BSD-2-Clause')
 groups=('GNSS')
 depends=('glibc')
-makedepends=('git' 'gcc-fortran') # 'bzr', 'git', 'mercurial' or 'subversion'
-provides=("${pkgname%-git}")
+makedepends=('git' 'gcc-fortran')
+provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
-options=()
-install=
-source=("${_proname}::git+https://github.com/tomojitakasu/RTKLIB.git#branch=rtklib_2.4.3")
+source=("${_proname}::git+https://github.com/rtklibexplorer/RTKLIB.git")
 noextract=()
 md5sums=('SKIP')
 
-#prepare() {
-    #cd "$srcdir/${_proname}/app"
-    ##sed -i "s/\/usr\/local\/bin/\/usr\/bin/g" makefile
-#}
+prepare() {
+    cd "$srcdir/${_proname}"
+
+    git log > git.log
+
+}
+
+pkgver() {
+    cd "${srcdir}/${_proname}"
+
+    _ver="$(git describe  --tags | sed 's|^[vV]||' | sed 's|-g[0-9a-fA-F]*$||' | tr '-' '+')"
+    _rev="$(git rev-list --count HEAD)"
+    _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+    _hash="$(git rev-parse --short HEAD)"
+
+    if [ -z "${_ver}"  ]; then
+        error "Version could not be determined."
+        return 1
+    else
+        printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
+    fi
+
+}
 
 build() {
     cd "$srcdir/${_proname}/lib/iers/gcc"
     make
-    cd "$srcdir/${_proname}/app"
+    cd "$srcdir/${_proname}/app/consapp"
     make
+
 }
 
 package() {
     # install bin file
-    install -Dm755 "$srcdir/${_proname}/app/pos2kml/gcc/pos2kml" "$pkgdir/usr/bin/pos2kml"
-    install -Dm755 "$srcdir/${_proname}/app/str2str/gcc/str2str" "$pkgdir/usr/bin/str2str"
-    install -Dm755 "$srcdir/${_proname}/app/rnx2rtkp/gcc/rnx2rtkp" "$pkgdir/usr/bin/rnx2rtkp"
-    install -Dm755 "$srcdir/${_proname}/app/rtkrcv/gcc/rtkrcv" "$pkgdir/usr/bin/rtkrcv"
-    install -Dm755 "$srcdir/${_proname}/app/convbin/gcc/convbin" "$pkgdir/usr/bin/convbin"
+    for _bin in pos2kml str2str rnx2rtkp convbin rtkrcv; do
+        install -Dvm755 -t "${pkgdir}/usr/bin" "$srcdir/${_proname}/app/consapp/${_bin}/gcc/${_bin}"
+    done
     # copy share file
-    mkdir -p "$pkgdir/usr/share/${pkgname}/data/"
-    for f in $srcdir/${_proname}/data/*;do
-        install -m644 "$f" "$pkgdir/usr/share/${pkgname}/data/"
-    done
-    mkdir -p "$pkgdir/usr/share/${pkgname}/rnx2rtkp/"
-    for f in $srcdir/${_proname}/app/rnx2rtkp/gcc/*.conf;do
-        install -m644 "$f" "$pkgdir/usr/share/${pkgname}/rnx2rtkp/"
-    done
+    install -dvm755 "$pkgdir/usr/share/${pkgname%-git}/data/"
+    cp -rv "$srcdir/${_proname}/data"/* "$pkgdir/usr/share/${pkgname%-git}/data"/
+    install -dvm755 "$pkgdir/usr/share/${pkgname%-git}/rnx2rtkp"
+    # cp -rv "$srcdir/${_proname}/app/consapp/rnx2rtkp/gcc"/*.conf "$pkgdir/usr/share/${pkgname%-git}/rnx2rtkp"/
+
+    install -Dvm644 -t "${pkgdir}/usr/share/doc/${pkgname%-git}" "$srcdir/${_proname}"/{readme.txt,git.log}
+    install -Dvm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "$srcdir/${_proname}/license.txt"
+
 }
