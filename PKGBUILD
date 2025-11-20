@@ -5,7 +5,7 @@
 
 pkgname=seerr
 pkgver=2.7.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Request management and media discovery tool for the Plex ecosystem'
 arch=(x86_64 aarch64)
 url='https://github.com/seerr-team/seerr'
@@ -56,6 +56,7 @@ prepare() {
   echo "{\"commitTag\": \"${pkgver}\"}" > committag.json
 
   export NEXT_TELEMETRY_DISABLED=1
+  pnpm update jwa
   pnpm install --frozen-lockfile
 }
 
