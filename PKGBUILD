@@ -23,7 +23,7 @@ build() {
 }
 
 package() {
-	cd "$_pkgname-$pkgver" || exit
+	cd "${_pkgname}-${pkgver}" || exit
 
 	python -m installer --destdir="${pkgdir}" dist/*.whl
 
