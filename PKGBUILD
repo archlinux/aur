@@ -2,7 +2,7 @@
 
 pkgname=python-pytest-localftpserver
 pkgdesc='PyTest plugin providing a local FTP server'
-pkgver=1.3.2
+pkgver=1.5.0
 pkgrel=1
 arch=('any')
 url='https://pytest-localftpserver.readthedocs.io/'
@@ -18,7 +18,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  'ee54a43c4782acefeb608596b5e8090ebaa7aa1e418855c72bb6da4dd832d3f3'
+  '15d8a70f3ceab51a399cabf49b8ce9579ea9aeda263d4493a833ac42d86ffa13'
 )
 
 build() {
@@ -33,10 +33,8 @@ check() {
   test-env/bin/python -m installer "dist/$_pypi-$pkgver"-*.whl
 
   # Run tests which don't load environment variables.
-  # Skip tests which fail because of use of a self-signed certificate.
   test-env/bin/python -m pytest -v \
-    --ignore=tests/test_pytest_localftpserver_with_env_var.py \
-    -k "not test_get_file_paths and not test_file_upload_user and not test_file_upload_anon"
+    --ignore=tests/test_pytest_localftpserver_with_env_var.py
 
   # And then set the environment and run those tests.
   # The variables and values are taken from tox.ini
