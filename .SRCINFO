@@ -1,12 +1,12 @@
 pkgbase = gptscript
 	pkgdesc = Natural Language Programming
-	pkgver = v0.9.5
+	pkgver = v0.9.7
 	pkgrel = 1
 	url = https://gptscript.ai/
 	arch = x86_64
 	license = Apache
 	conflicts = gptscript-git
-	source = gptscript-v0.9.5-linux-amd64.tar.gz::https://github.com/gptscript-ai/gptscript/releases/download/v0.9.5/gptscript-v0.9.5-linux-amd64.tar.gz
-	md5sums = f03cefb193cba7a48c650e7b523b0579
+	source = gptscript-v0.9.7-linux-amd64.tar.gz::https://github.com/gptscript-ai/gptscript/releases/download/v0.9.7/gptscript-v0.9.7-linux-amd64.tar.gz
+	md5sums = 52e7fabc211330a8349894ddd9886d2b
 
 pkgname = gptscript
