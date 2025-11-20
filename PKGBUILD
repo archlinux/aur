@@ -5,6 +5,8 @@ pkgdesc="GNU Binutils for cross-compiling to i686-elf"
 arch=('x86_64')
 url="https://www.gnu.org/software/binutils/"
 license=('GPL-3.0-or-later')
+install="$pkgname.install"
+
 source=("https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz"
         "https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz.sig")
 sha256sums=('c50c0e7f9cb188980e2cc97e4537626b1672441815587f1eab69d2a1bfbef5d2'

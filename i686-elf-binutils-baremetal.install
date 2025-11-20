@@ -1,0 +1,19 @@
+post_install() {
+  echo "==> Installation complete."
+  echo "==> To use this toolchain, add the following to your shell environment:"
+  echo "    export PATH=/opt/i686-elf/bin:\$PATH"
+  echo "==> Example for Bash:"
+  echo "    echo 'export PATH=/opt/i686-elf/bin:\$PATH' >> ~/.bash_profile"
+  echo "==> Example for Zsh:"
+  echo "    echo 'export PATH=/opt/i686-elf/bin:\$PATH' >> ~/.zshenv"
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo '==> The toolchain has been removed.'
+  echo '==> If you added /opt/i686-elf/bin to your PATH manually, you may want to remove that line.'
+}
+
