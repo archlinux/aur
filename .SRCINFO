@@ -1,12 +1,12 @@
 pkgbase = kfr
 	pkgdesc = Fast, modern C++ DSP framework, FFT, Sample Rate Conversion, FIR/IIR/Biquad Filters (SSE, AVX, AVX-512, ARM NEON)
-	pkgver = 6.3.1
+	pkgver = 7.0.1
 	pkgrel = 1
 	url = https://www.kfrlib.com/
 	arch = x86_64
 	license = GPL-2
 	makedepends = cmake
-	source = kfr-6.3.1::git+https://github.com/kfrlib/kfr#tag=6.3.1
-	sha256sums = c382d7bf97b3422917a28afb3269355f4fb80baccc6210c2ba53dd2ed981dfa5
+	source = kfr::git+https://github.com/kfrlib/kfr#tag=7.0.1
+	sha256sums = 3bb23bf010c2319b6362348582c65b74a8921c790f07bf51d22de1b30bb38ec7
 
 pkgname = kfr

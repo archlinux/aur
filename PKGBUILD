@@ -1,7 +1,7 @@
 # Maintainer: sfn
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=kfr
-pkgver=6.3.1
+pkgver=7.0.1
 pkgrel=1
 pkgdesc="Fast, modern C++ DSP framework, FFT, Sample Rate Conversion,
 FIR/IIR/Biquad Filters (SSE, AVX, AVX-512, ARM NEON)"
@@ -10,15 +10,15 @@ arch=(x86_64)
 license=('GPL-2')
 makedepends=(cmake)
 depends=()
-source=("${pkgname}-${pkgver}::git+https://github.com/kfrlib/kfr#tag=$pkgver")
-sha256sums=('c382d7bf97b3422917a28afb3269355f4fb80baccc6210c2ba53dd2ed981dfa5')
+source=("${pkgname}::git+https://github.com/kfrlib/kfr#tag=$pkgver")
+sha256sums=('3bb23bf010c2319b6362348582c65b74a8921c790f07bf51d22de1b30bb38ec7')
 
 CFLAGS+=" -ffat-lto-objects" # lto problems with static libs
 CXXFLAGS+=" -ffat-lto-objects" # lto problems with static libs
 
 build() {
-  mkdir -p "$srcdir/${pkgname}-${pkgver}/build"
-  cd "$srcdir/${pkgname}-${pkgver}/build"
+  mkdir -p "$srcdir/${pkgname}/build"
+  cd "$srcdir/${pkgname}/build"
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
   		-DCMAKE_BUILD_TYPE=Release \
         -DKFR_ENABLE_DFT=ON \
@@ -29,6 +29,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  cd "${srcdir}/${pkgname}/build"
   DESTDIR=${pkgdir} make install
 }
