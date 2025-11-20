@@ -1,0 +1,25 @@
+pkgbase = ucp3-gui
+	pkgdesc = GUI for Unofficial Crusader Patch 3
+	pkgver = 1.0.13
+	pkgrel = 0
+	url = https://github.com/UnofficialCrusaderPatch/UCP3-GUI
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = rust
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = git
+	makedepends = patchelf
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk
+	source = git+https://github.com/UnofficialCrusaderPatch/UCP3-GUI#tag=v1.0.13
+	sha256sums = 9f07ca3b11989d2f0d5c9bb55dd5522d2470420f47b8bba15761ab7b1ff23429
+
+pkgname = ucp3-gui
