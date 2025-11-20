@@ -2,9 +2,9 @@
 pkgname=coccoc-browser-stable
 _pkgname=coccoc-browser
 pkgver=140.0.7339.250
-pkgrel=2
+pkgrel=3
 _pkgrel=1
-pkgdesc="The web browser focused on the Vietnamese market"
+pkgdesc="The web browser from Coc Coc. Coc Coc is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
 arch=('x86_64')
 url="https://coccoc.com"
 license=('custom')
