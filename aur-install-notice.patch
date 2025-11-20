@@ -279,7 +279,7 @@ index be67ef10..2a6c18c5 100644
 -        "Install the development version of aider from the main branch?",
 -        ["git+https://github.com/Aider-AI/aider.git"],
 -        self_update=True,
-+        "aider-chat-git",
++        "aider-chat-dwash96",
      )
  
  
