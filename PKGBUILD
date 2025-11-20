@@ -2,23 +2,25 @@
 
 _plug=muxtools
 pkgname=python-${_plug}-git
-pkgver=0.1.0.7.g4b1ca0d
-pkgrel=3
+pkgver=0.4.0.21.gc5d0e90
+pkgrel=1
 pkgdesc="Python Package: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Jaded-Encoding-Thaumaturgy/muxtools'
 license=('MIT')
 depends=(
-    'python-requests'
-    # 'python-fontcollector' # package doesn't exist
     'python-ass'
-    'python-wget'
+    # 'python-fontcollector' # package doesn't exist
+    'python-mkvinfo'
     'python-py7zr'
-    'python-pymediainfo'
-    'python-rich'
-    'python-pyparsebluray-git'
     'python-pydantic'
+    'python-pymediainfo'
+    'python-pyparsebluray-git'
+    'python-requests'
+    'python-rich'
+    'python-typed-ffmpeg-compatible'
     'python-videotimestamps'
+    'python-wget'
 )
 makedepends=(
     'git'
