@@ -1,0 +1,11 @@
+--- a/src/cbang/js/v8/Value.h
++++ b/src/cbang/js/v8/Value.h
+@@ -135,7 +135,7 @@
+       std::string toString() const override;
+ 
+       int utf8Length() const {
+-        return v8::String::Cast(*value)->Utf8Length(getIso());
++        return v8::String::Cast(*value)->Utf8LengthV2(getIso());
+       }
+ 
+       // Object

@@ -1,0 +1,5 @@
+--- a/src/cbang/util/Regex.cpp
++++ b/src/cbang/util/Regex.cpp
+@@ -134,1 +134,1 @
+-      m.push_back(groups[i].as_string());
++      m.push_back(std::string(groups[i].data(), groups[i].size()));

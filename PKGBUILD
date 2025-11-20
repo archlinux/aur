@@ -3,9 +3,11 @@
 # Contributor: greyltc
 
 pkgname=cbang
-pkgver=1.8.0
-pkgrel=5
-pkgdesc='a library of cross-platform C++ utilities'
+pkgver=8.5.4
+_pkgver="bastet-v${pkgver}"
+_pkgname="${pkgname}-${_pkgver}"
+pkgrel=1
+pkgdesc='Library for cross-platform C++ development.'
 arch=('x86_64')
 url='https://github.com/CauldronDevelopmentLLC/cbang'
 license=('LGPL-2.1-only')
@@ -30,55 +32,57 @@ optdepends=(
   'mariadb-libs: MariaDB database support'
 )
 source=(
-  "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+  "${_pkgname}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz"
   '0001_v8_disable_checks.patch'
-  '0002_include_cstdint.patch'
   '0003_ScriptOrigin.patch'
   '0004_URI_contains.patch'
+  '0005_as_string.patch'
+  '0006_utf8length.patch'
 )
 sha256sums=(
-  '4be28b0aa0d024e5c9fd274264bed7f82551219414c12c45e35afd8946f6e7d7'
-  'b6bc2013fb3ac58daba7bab7b34cf1331ebd5a85da7947ef87feb09e6f6fe512'
-  'a2e16d999e58856fe9885243235d711afc0b2260c0c0b346b59aa4b948209d5c'
-  '664931b22afc7452e357e991a321fd35ffd49a06e8f1e33653e023cb02e2b5d0'
-  '130c32e2e03cbec45a8969dc6bd2b7ea1e8e21518f39a6116041cb620140a37b'
+  '5ac8218a2ba0f584fba17ef46218860c580229c6194810f73c3390bc1e8f2611'
+  '23cb01aa43a03db26953eead4f7008f5f30bb7e22e6a671edcb27711f91d77a2'
+  '9c2ea45a4e472f6676e9389448c62336876407b5b853fb4b8034b0df1c7c02d6'
+  '88fbd57ed4f33d314bda1fee97a6fc58ca21d2db8db764211bc85729d7b846f1'
+  '927ac60d93d777672089e114899b81a6c6dd2c31c8d51b4802369e2a9ef4de2a'
+  '8a10a0294452b497cf5fa8e7c909632eec62e2020e10f460c78b0b26a1a16684'
 )
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_pkgname}"
 
   patch -p1 -i '../0001_v8_disable_checks.patch'
-  patch -p1 -i '../0002_include_cstdint.patch'
   patch -p1 -i '../0003_ScriptOrigin.patch'
   patch -p1 -i '../0004_URI_contains.patch'
+  patch -p1 -i '../0005_as_string.patch'
+  patch -p1 -i '../0006_utf8length.patch'
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
-
+  cd "${_pkgname}"
   scons \
     ccflags="-DV8_ENABLE_SANDBOX -DV8_TARGET_ARCH_X64" \
     cxxstd="c++20" \
-    disable_local="libevent sqlite3 re2 libyaml zlib bzip2 expat"
+    disable_local="bzip2 expat libevent libyaml re2 sqlite3 zlib"
 }
 
 check() {
-  cd "${pkgname}-${pkgver}/tests"
+  cd "${_pkgname}/tests"
 
   scons \
     cxxstd="c++20" \
-    disable_local="libevent sqlite3 re2 libyaml zlib bzip2 expat"
+    disable_local="bzip2 expat libevent libyaml re2 sqlite3 zlib"
 
   python './testHarness'
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_pkgname}"
 
   scons install \
     prefix="${pkgdir}/opt/${pkgname}" \
     cxxstd="c++20" \
-    disable_local="libevent sqlite3 re2 libyaml zlib bzip2 expat"
+    disable_local="bzip2 expat libevent libyaml re2 sqlite3 zlib"
 
   install -m 0644 lib/libcbang.a -t "${pkgdir}/opt/${pkgname}/lib"
   install -m 0644 lib/libcbang-boost.a -t "${pkgdir}/opt/${pkgname}/lib"
