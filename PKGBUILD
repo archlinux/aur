@@ -2,13 +2,13 @@
 # Maintainer: SFN
 pkgname=tl-render
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="tlRender is an open source library for building playback and review applications for visual effects, film, and animation."
 arch=("x86_64")
 url="https://github.com/darbyjohnston/tlRender"
 license=('BSD-3-Clause')
 groups=()
-depends=('feather-tk' 'minizip-ng' 'opentimelineio' 'opencolorio' 'openexr' 'ffmpeg' 'libpng' 'libtiff' 'libjpeg-turbo' 'sdl2')
+depends=('feather-tk' 'minizip-ng' 'opentimelineio' 'opencolorio' 'openimageio' 'openexr' 'ffmpeg' 'libpng' 'libtiff' 'libjpeg-turbo' 'sdl2')
 makedepends=('cmake' 'make')
 replaces=()
 backup=()

@@ -1,7 +1,7 @@
 pkgbase = tl-render
 	pkgdesc = tlRender is an open source library for building playback and review applications for visual effects, film, and animation.
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/darbyjohnston/tlRender
 	arch = x86_64
 	license = BSD-3-Clause
@@ -11,6 +11,7 @@ pkgbase = tl-render
 	depends = minizip-ng
 	depends = opentimelineio
 	depends = opencolorio
+	depends = openimageio
 	depends = openexr
 	depends = ffmpeg
 	depends = libpng
