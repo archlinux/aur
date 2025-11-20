@@ -1,7 +1,7 @@
 # Maintainer: Nico Valianto Kusuma <YOUR_EMAIL@gmail.com>
 
 pkgname=declarch
-pkgver=0.2.0
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A declarative package management for Arch base Linux, inspired by Nix workflow."
 arch=('x86_64')
@@ -10,12 +10,11 @@ license=('MIT')
 depends=('pacman' 'git')
 optdepends=(
   'paru: AUR backend for syncing'
-  'yay: alternative AUR backend'
   'flatpak: For managing Flatpak applications'
 )
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dddf761380f76c6ba6b25f2d9693daa61f94f108333558db91caa68d0a637173')
+sha256sums=('9de016308a31c96de6eb372cd89a3ef44fda12ee2fd9553768f6a1bd65dee357')
 
 build() {
   cd "$pkgname-$pkgver"
