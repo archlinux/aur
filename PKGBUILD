@@ -1,7 +1,7 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 
 pkgname=allsorts-tools
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Font debugging tools based on the Allsorts font shaping engine'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/yeslogic/allsorts-tools"
 license=('Apache-2.0')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('551c5b75fdd45eee12b38af76ac51d717e2ec31f81b707062915a1b65544fdb4')
+sha256sums=('d09eaca87e2da4951629332cd59b243dd5e5080ff69aa52455374391086ebf59')
 
 build() {
   cd "$pkgname-$pkgver"
