@@ -1,7 +1,7 @@
 pkgbase = flawless-cut-bin
 	pkgdesc = Fast and lossless video cutter and merger based on Electron.(Prebuilt version.Use system-wide electron)
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/metadream/app-flawless-cut
 	arch = x86_64
 	license = MIT

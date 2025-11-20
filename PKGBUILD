@@ -2,7 +2,7 @@
 pkgname=flawless-cut-bin
 pkgver=1.1.0
 _electronversion=23
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and lossless video cutter and merger based on Electron.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://github.com/metadream/app-flawless-cut"
