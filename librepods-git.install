@@ -5,19 +5,17 @@ post_install() {
     echo "    Make sure that your device is already paired before running"
     echo "    Librepods, as it causes issues with pairing during runtime."
 
-    if ["ls '$HOME/.config/wireplumber' | grep -o wireplumber.conf.d" != "wireplumber.conf.d"]; then
-        mkdir "$HOME/.config/wireplumber/wireplumber.conf.d/"
-    fi
+    mkdir -p "$HOME/.config/wireplumber/wireplumber.conf.d"
 
-    cd "$HOME/.config/wireplumber/wireplumber.conf.d/"
-    if ["ls | grep '51-bluez'" != "51-bluez"]; then
-        touch "51-bluez-avrcp.conf"
-        echo "monitor.bluez.properties = {" >>"51-bluez-avrcp.conf"
-        echo "  # Enable dummy AVRCP player for proper media control support" >>"51-bluez-avrcp.conf"
-        echo "  # This is required for AirPods and other devices to send play/pause/skip commands" >>"51-bluez-avrcp.conf"
-        echo "  # This is required for AirPods and other devices to send play/pause/skip commands" >>"51-bluez-avrcp.conf"
-        echo "}" >>"51-bluez-avrcp.conf"
+    cd "$HOME/.config/wireplumber/wireplumber.conf.d" || return
+
+    if [ ! -f "51-bluez-avrcp.conf" ]; then
+        cat >"51-bluez-avrcp.conf" <<EOF
+monitor.bluez.properties = {
+  # Enable dummy AVRCP player for proper media control support
+  # This is required for AirPods and other devices to send play/pause/skip commands
+}
+EOF
         systemctl --user restart wireplumber
     fi
-
 }
