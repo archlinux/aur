@@ -2,7 +2,7 @@
 
 _pkgname=libtins
 pkgname=libtins-git
-pkgver=v4.0.r121.g00619e0
+pkgver=v4.0.r124.gfe22186
 pkgrel=1
 pkgdesc="High-level, multiplatform C++ network packet sniffing and crafting library"
 arch=('x86_64')
@@ -11,6 +11,8 @@ license=('BSD-2-Clause')
 optdepends=('boost: TCP ACK tracker feature')
 depends=('openssl' 'libpcap')
 makedepends=('git' 'cmake')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=(
   'git+https://github.com/mfontanini/libtins.git'
   'git+https://github.com/google/googletest.git'

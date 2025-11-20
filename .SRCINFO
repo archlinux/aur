@@ -1,6 +1,6 @@
 pkgbase = libtins-git
 	pkgdesc = High-level, multiplatform C++ network packet sniffing and crafting library
-	pkgver = v4.0.r121.g00619e0
+	pkgver = v4.0.r124.gfe22186
 	pkgrel = 1
 	url = https://libtins.github.io/
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = libtins-git
 	depends = openssl
 	depends = libpcap
 	optdepends = boost: TCP ACK tracker feature
+	provides = libtins
+	conflicts = libtins
 	source = git+https://github.com/mfontanini/libtins.git
 	source = git+https://github.com/google/googletest.git
 	md5sums = SKIP
