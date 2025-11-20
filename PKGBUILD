@@ -1,5 +1,6 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 # Co-Maintainer: tee <teeaur at duck dot com>
+# Co-Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname="gizmosql-bin"
 pkgver=1.12.11
