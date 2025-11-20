@@ -1,7 +1,7 @@
 pkgbase = codex-acp
 	pkgdesc = ACP adapter for OpenAI Codex
-	pkgver = 0.4.0
-	pkgrel = 3
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/zed-industries/codex-acp
 	arch = x86_64
 	arch = aarch64
@@ -9,9 +9,9 @@ pkgbase = codex-acp
 	depends = openai-codex
 	provides = codex-acp
 	conflicts = codex-acp
-	source_x86_64 = codex-acp-0.4.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/zed-industries/codex-acp/releases/download/v0.4.0/codex-acp-0.4.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 56b6eb0ad42d29e3c34bbf9211229e56e3e3997d19bae33a4a57570799365a7a
-	source_aarch64 = codex-acp-0.4.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/zed-industries/codex-acp/releases/download/v0.4.0/codex-acp-0.4.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 9ebc0a934d6ac786bf0a431f899e99fdcfcf4992cadb32ec42fc44bfb79c2680
+	source_x86_64 = codex-acp-0.5.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/zed-industries/codex-acp/releases/download/v0.5.0/codex-acp-0.5.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 0b02cc71639138d96deb1e13851caade10df85053ffb92a5fa3e9e8d7bf06509
+	source_aarch64 = codex-acp-0.5.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/zed-industries/codex-acp/releases/download/v0.5.0/codex-acp-0.5.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = c2a51db81e11a881f415c69f0bc609095ffa224890d2eb8dbd612ac85a79591b
 
 pkgname = codex-acp
