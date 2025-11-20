@@ -29,7 +29,7 @@ optdepends=(
 )
 
 source=("https://download.flashpointarchive.org/upload/fp${_launcherver}_lin_${_timestamp}.7z")
-sha256sums=('a7374822beb2378ee3d963a504c4e18fa68c0f60b3f79a285fba8d284fcbe953')
+sha256sums=('b3ff524f6ba3157b1b0661207e24ae6c478b12fccccca55720c2c31d3034f509')
 
 prepare() {
  	patch -p1 -i ../setup-desktop-entry.patch -d "${srcdir}"
