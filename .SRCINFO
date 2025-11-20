@@ -1,4 +1,4 @@
-pkgbase = g
+pkgbase = getg
     pkgdesc = g - the *permissive* git wrapper.
 	pkgver = 11-20.001
 	pkgrel = 0
