@@ -1,0 +1,19 @@
+pkgbase = python-endesive
+	pkgdesc = Python library for creating and validating PDF crypto signatures
+	pkgver = 2.19.1
+	pkgrel = 1
+	url = https://github.com/m32/endesive
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-cryptography
+	depends = python-pytz
+	depends = python-pillow
+	depends = python-pyopenssl
+	source = python-endesive-2.19.1.zip::https://github.com/m32/endesive/archive/refs/tags/v2.19.1.zip
+	sha256sums = 0f8b6580753e270d4a5e19a485b27ce819858c6fd63f7ddbd7c487153884761a
+
+pkgname = python-endesive
