@@ -4,7 +4,7 @@
 
 pkgname=pcloud-drive
 pkgver=1.14.18
-pkgrel=3
+pkgrel=4
 pkgdesc='pCloud drive. Electron edition.'
 arch=('x86_64')
 url='https://www.pcloud.com/'
