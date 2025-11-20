@@ -4,7 +4,7 @@
 _appname=ledger-live-desktop
 pkgname=ledger-live
 _electron='electron38'
-pkgver=2.132.0
+pkgver=2.133.0
 pkgrel=1
 pkgdesc="Maintain your Ledger devices"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('ledger-udev' "${_electron}")
 makedepends=('node-gyp' 'python' 'pnpm' 'nvm' 'desktop-file-utils')
 source=("${_appname}-${pkgver}.tar.gz::https://github.com/LedgerHQ/ledger-live/archive/@ledgerhq/live-desktop@${pkgver}.tar.gz"
         "${_appname}.sh")
-sha512sums=('e245a52ab6e7c8ed9eb36bf313e0b46cea1b16e10fab8a67aabeb1bca7fc6a090941a89dc61fdae9fe1695e9ac93acec7f78866d7210f061064bdc60f738f54a'
+sha512sums=('42572bbb262de80f2528a8ae874946bc4b8d68d22be07280e5cd0ef57e94fed2916581d0cec009e3ef2b24652aebc2e35bbe317de28436852e65b3919f268f25'
             '70effe952d7007e79e43523f5e8d868228eedb5049465c2ebea017f9c8b0b25f82e0c6f56cef59e40479d29149969cde8e7098edf8a0cad7b23a9a123e5f0755')
 
 _nvm_install() {
@@ -24,7 +24,7 @@ _nvm_install() {
 }
 
 _check_electron() {
-  expected_electron="electron$(sed -n 's/.*"electron":[^"]*"\([^.]*\).*/\1/p' ledger-live--ledgerhq-live-desktop-${pkgver}/apps/${_appname}/package.json)"
+  expected_electron="electron$(grep -E '^\s+electron:' ledger-live--ledgerhq-live-desktop-${pkgver}/pnpm-workspace.yaml | awk '{print $2}' | cut -d. -f1)"
   if [[ "${_electron}" != "${expected_electron}" ]]; then
     echo -e "Using the wrong version of Electron! Expected '\e[32m${expected_electron}\e[0m' but using '\e[31m${_electron}\e[0m'."
     exit 1
