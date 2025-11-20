@@ -1,0 +1,33 @@
+From 1a095f463f6ddd2ad45c563475ebcdb2517ae1ce Mon Sep 17 00:00:00 2001
+From: yangniao23 <yangniao23@gmail.com>
+Date: Thu, 20 Nov 2025 21:42:23 +0900
+Subject: [PATCH] add play function
+
+---
+ graphics/graphics.smi | 1 +
+ graphics/graphics.sml | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/graphics/graphics.smi b/graphics/graphics.smi
+index 3b480be..9bfaf54 100644
+--- a/graphics/graphics.smi
++++ b/graphics/graphics.smi
+@@ -46,4 +46,5 @@ struct
+   (* main *)
+   val start : (time -> graphics) -> unit
+   val switch : (time -> graphics) -> unit
++  val play : (real -> graphics) -> unit
+ end
+diff --git a/graphics/graphics.sml b/graphics/graphics.sml
+index 9c10066..fac326f 100644
+--- a/graphics/graphics.sml
++++ b/graphics/graphics.sml
+@@ -233,4 +233,5 @@ struct
+        draw epoch;
+        GLUT.glutMainLoop ())
+ 
++  fun play f = start (f o time)
+ end
+-- 
+2.51.2
+

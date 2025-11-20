@@ -1,0 +1,16 @@
+pkgbase = smlsharp-graphics
+	pkgdesc = A graphics library for SML#.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/uenob/smlsharp_graphics
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = smlsharp
+	depends = freeglut
+	source = git+https://github.com/uenob/smlsharp_graphics.git#tag=v0.1.1
+	source = add-play-function.patch
+	sha256sums = SKIP
+	sha256sums = beb57b710c0033431542b454b1a591400fefe01b9b34911a6202d3f55b202f2d
+
+pkgname = smlsharp-graphics
