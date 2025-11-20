@@ -1,6 +1,6 @@
 # Maintainer: SUDO <justmultiplythinks@gmail.com>
 pkgname=rootvim
-pkgver=1.1.4
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Custom Neovim configuration by realSUDO with isolated profile"
 arch=('any')
