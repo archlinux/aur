@@ -10,9 +10,14 @@ pkgbase = python-endesive
 	makedepends = python-wheel
 	depends = python
 	depends = python-cryptography
+	depends = python-asn1crypto
 	depends = python-pytz
 	depends = python-pillow
 	depends = python-pyopenssl
+	optdepends = python-lxml: optional XML parsing
+	optdepends = python-pykcs11: optional PKCS11 support
+	optdepends = python-requests: optional HTTP support
+	optdepends = python-paramiko: optional SSH support
 	source = python-endesive-2.19.1.zip::https://github.com/m32/endesive/archive/refs/tags/v2.19.1.zip
 	sha256sums = 0f8b6580753e270d4a5e19a485b27ce819858c6fd63f7ddbd7c487153884761a
 
