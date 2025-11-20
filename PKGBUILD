@@ -1,5 +1,5 @@
 pkgname=desktime
-pkgver=6.1.2
+pkgver=6.1.3
 pkgrel=0
 pkgdesc="Desktime client for Linux"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=(desktop-file-utils hicolor-icon-theme libappindicator-gtk2 libxss)
 install=$pkgname.install
 
 source=("$pkgname-$pkgver.deb::https://desktime.com/updates/electron/linux?deb")
-sha256sums=('0eb7513a6d644490a0af1d13b60bed602ec3ad7f0ef70da99545467c4640027e')
+sha256sums=('79fec9a56da8b0e07b8e34f91d0c9933d88451fdcc92e1f542be292702babd77')
 
 package()
 {
