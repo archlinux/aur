@@ -3,7 +3,7 @@
 _pkgauthor=unhappychoice
 _pkgname=gitlogue
 pkgname=${_pkgname}-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Turn your Git history into a living, animated story"
@@ -21,10 +21,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}-unknown-linux-gnu.tar.gz")
-sha256sums=('60d001199b2f2ed5e6ee51409216ba77c7f2e0f3b5c52f561c46154f555828b2'
+sha256sums=('6f554446489f37db4cf957de0f00acaee4e10c20a0e770ae5348c65b03a2569f'
             '8f7d4feb676b3700f48611aa9a3c8e444b7877593efb52fc90235577f3148cc9')
-sha256sums_x86_64=('67fd769eabe54d19fc4a0067805283378f54017ab68b17427e4c7e2292ab8d78')
-sha256sums_aarch64=('20416861bf0f1501eaec6ad233bc3859a823602d13537e1a3862038d82daa2c1')
+sha256sums_x86_64=('0a1975396898b36844c18a5e33dc093622cfa7efdd9bdf6baf04af2018fadd25')
+sha256sums_aarch64=('fab16a7646545203c3c79c0599df560ef0a0f3c449df2c03061c2671aa25b80b')
 
 
 package() {
