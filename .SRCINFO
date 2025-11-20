@@ -8,9 +8,6 @@ pkgbase = mangowc-wlonly-git
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
-	makedepends = fakeroot
-	makedepends = debugedit
-	makedepends = base-devel
 	makedepends = wayland-protocols>=1.41
 	depends = glibc
 	depends = wayland>=1.23.1
