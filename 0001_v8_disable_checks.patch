@@ -1,0 +1,4 @@
+--- a/src/cbang/js/v8/V8.h
++++ b/src/cbang/js/v8/V8.h
+@@ -43,1 +43,0 @@
+-#define V8_ENABLE_CHECKS

@@ -31,7 +31,7 @@ optdepends=(
 )
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-  '0001_v8_sandbox_enable.patch'
+  '0001_v8_disable_checks.patch'
   '0002_include_cstdint.patch'
   '0003_ScriptOrigin.patch'
   '0004_URI_contains.patch'
@@ -47,7 +47,7 @@ sha256sums=(
 prepare() {
   cd "${pkgname}-${pkgver}"
 
-  patch -p1 -i '../0001_v8_sandbox_enable.patch'
+  patch -p1 -i '../0001_v8_disable_checks.patch'
   patch -p1 -i '../0002_include_cstdint.patch'
   patch -p1 -i '../0003_ScriptOrigin.patch'
   patch -p1 -i '../0004_URI_contains.patch'
@@ -57,6 +57,7 @@ build() {
   cd "${pkgname}-${pkgver}"
 
   scons \
+    ccflags="-DV8_ENABLE_SANDBOX -DV8_TARGET_ARCH_X64" \
     cxxstd="c++20" \
     disable_local="libevent sqlite3 re2 libyaml zlib bzip2 expat"
 }
