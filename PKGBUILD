@@ -2,7 +2,7 @@
 _projectname='kcas'
 pkgname="ocaml-$_projectname"
 pkgver='0.7.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Software Transactional Memory for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-multicore/$_projectname"
@@ -14,9 +14,11 @@ options=('!strip')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
 	'remove-domain-shims-dep.diff'
+	'fix-mdx-mismatch.diff'
 )
 b2sums=('573c7b2b9f37eacb3c0253d63df4654afe05d2c3e4665fc633546191052c6c80dc0529f1094676cfc962fe0ea160a2713d902e84c21062b81ac442e396c8a1c0'
-        '64cd0ec04ab90686226c7d448a53889b0154c537673b9f15189cebf03a45c46b102f74474af0a4f02dd43a992ce3a156180eb2ceb3976b7b302265b6a3cb9a0f')
+        '64cd0ec04ab90686226c7d448a53889b0154c537673b9f15189cebf03a45c46b102f74474af0a4f02dd43a992ce3a156180eb2ceb3976b7b302265b6a3cb9a0f'
+        '5c58b3fef9c14de1943cd7d79da1cb68205553da88afae79cfa091f8a6f9c897653cf6b0eecb23072f383e4ab39a98ac666c3cb53a50edf26295c726c4c88f94')
 _sourcedirectory="$_projectname-$pkgver"
 
 prepare() {
@@ -24,6 +26,9 @@ prepare() {
 
 	# Remove domain_shims dependency, as we're always running on OCaml >= 5.0.0
 	patch --forward -p1 < '../remove-domain-shims-dep.diff'
+
+	# Fix mdx mismatch in READMEs and comments
+	patch --forward -p1 < '../fix-mdx-mismatch.diff'
 }
 
 build() {
