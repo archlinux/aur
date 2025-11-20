@@ -1,13 +1,13 @@
 pkgbase = dotnet-install
 	pkgdesc = Script used to install the .NET SDK and the shared runtime
 	pkgver = v1
-	pkgrel = 1
-	url = https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script
+	pkgrel = 2
+	url = https://dot.net/v1/dotnet-install.sh
 	arch = any
 	license = MIT
 	depends = curl
 	depends = bash
-	source = dotnet-install
-	md5sums = 5a995842b520f8d35a17ce8c58103c9f
+	source = dotnet-install::https://dot.net/v1/dotnet-install.sh
+	md5sums = d068b72ce751209caa65c809cdc2906d
 
 pkgname = dotnet-install
