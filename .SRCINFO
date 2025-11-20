@@ -1,20 +1,22 @@
 pkgbase = protonvpn-cli
 	pkgdesc = ProtonVPN CLI
-	pkgver = 0.1.0
+	pkgver = 0.1.2
 	pkgrel = 1
-	url = https://protonvpn.com
+	url = https://github.com/ProtonVPN/proton-vpn-cli
 	arch = any
 	license = GPL-3.0-or-later
-	depends = python>=3.13
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
 	depends = python-click
 	depends = python-dbus-fast
 	depends = python-packaging
 	depends = python-proton-keyring-linux
-	depends = python-proton-vpn-api-core
+	depends = python-proton-vpn-api-core>=4.13.2
 	depends = python-proton-core
-	depends = python-proton-vpn-network-manager
 	depends = python-proton-vpn-local-agent
-	source = https://repo.protonvpn.com/fedora-42-unstable/proton-vpn-cli/proton-vpn-cli-0.1.0-1.fc42.noarch.rpm
-	sha256sums = 3bcaa8f55a577e204643c6ffa9566fcb08fd79cb37325d406ea234fd5a96ac9d
+	depends = python-proton-vpn-network-manager
+	source = https://github.com/ProtonVPN/proton-vpn-cli/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 6dc9f3b60a3a434119f12c777534de68476f4ae027062618eb1cbb8b1da3a774
 
 pkgname = protonvpn-cli

@@ -1,33 +1,37 @@
 # Maintainer: Shahzeb Khattak <shahzebkhattak at proton dot me>
 
 pkgname=protonvpn-cli
-pkgver=0.1.0
+_gitpkgname=proton-vpn-cli
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="ProtonVPN CLI"
 arch=('any')
 license=('GPL-3.0-or-later')
-url="https://protonvpn.com"
+url="https://github.com/ProtonVPN/proton-vpn-cli"
 depends=(
-  'python>=3.13'
+  'python'
   'python-click'
   'python-dbus-fast'
   'python-packaging'
   'python-proton-keyring-linux'
-  'python-proton-vpn-api-core'
+  'python-proton-vpn-api-core>=4.13.2'
   'python-proton-core'
-  'python-proton-vpn-network-manager'
   'python-proton-vpn-local-agent'
+  'python-proton-vpn-network-manager'
 )
-source=("https://repo.protonvpn.com/fedora-42-unstable/proton-vpn-cli/proton-vpn-cli-${pkgver}-1.fc42.noarch.rpm")
-sha256sums=('3bcaa8f55a577e204643c6ffa9566fcb08fd79cb37325d406ea234fd5a96ac9d')
+makedepends=(
+  'git'
+  'python-setuptools'
+  )
+source=("https://github.com/ProtonVPN/${_gitpkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('6dc9f3b60a3a434119f12c777534de68476f4ae027062618eb1cbb8b1da3a774')
 
-prepare() {
-  mkdir -p "$srcdir/extracted-files"
-  echo "Extracting ProtonVPN CLI..."
-  bsdtar -xf "$srcdir/proton-vpn-cli-${pkgver}-1.fc42.noarch.rpm" -C "$srcdir/extracted-files"
+build() {
+  cd "${_gitpkgname}-${pkgver}"
+  python setup.py build
 }
 
 package() {
-  echo "Copying ProtonVPN CLI files..."
-  cp -r "$srcdir/extracted-files/usr" "$pkgdir/"
+  cd "${_gitpkgname}-${pkgver}"
+  python setup.py install --root="$pkgdir" --optimize=1
 }
