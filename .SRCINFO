@@ -1,12 +1,14 @@
 pkgbase = libtuntap-git
 	pkgdesc = The portable Tun/Tap devices configuration utility
-	pkgver = 0.4.r70.g18ee864
+	pkgver = 0.4.r90.g3aa91f3
 	pkgrel = 1
 	url = https://github.com/LaKabane/libtuntap/
 	arch = x86_64
 	license = ISC
 	makedepends = git
 	makedepends = cmake
+	provides = libtuntap
+	conflicts = libtuntap
 	source = git+https://github.com/LaKabane/libtuntap.git
 	md5sums = SKIP
 
