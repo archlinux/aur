@@ -6,14 +6,16 @@ arch=('x86_64')
 url="https://www.gnu.org/software/binutils/"
 license=('GPL-3.0-or-later')
 install="$pkgname.install"
+options=(!strip)
+
+_target=i686-elf
+_prefix=/opt/i686-elf
 
 source=("https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz"
         "https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz.sig")
 sha256sums=('c50c0e7f9cb188980e2cc97e4537626b1672441815587f1eab69d2a1bfbef5d2'
             'SKIP')
-
-_target=i686-elf
-_prefix=/opt/i686-elf
+validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F')
 
 provides=("$_target-binutils")
 conflicts=("$_target-binutils")
