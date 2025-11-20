@@ -1,0 +1,14 @@
+pkgbase = ark-vcs-bin
+	pkgdesc = VCS built from the ground up for performance and ease of use. Pre-compiled.
+	pkgver = 0.13.2
+	pkgrel = 1
+	url = https://ark-vcs.com/
+	arch = x86_64
+	license = custom
+	provides = ark-vcs
+	conflicts = ark-vcs
+	source = ark-vcs.png
+	source_x86_64 = https://ark-vcs.com/static/versions/Ark-Vcs_0_13_2_linux.zip
+	sha256sums_x86_64 = c72a948f20c5c9108cb1fcea6186702aad05e8893a267c965e915736cae6cdf8
+
+pkgname = ark-vcs-bin
