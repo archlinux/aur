@@ -1,7 +1,7 @@
 pkgbase = trickle
 	pkgdesc = Lightweight userspace bandwidth shaper
 	pkgver = 1.07
-	pkgrel = 13
+	pkgrel = 14
 	url = https://github.com/mariusae/trickle
 	arch = i686
 	arch = x86_64
@@ -15,9 +15,11 @@ pkgbase = trickle
 	source = fix-crasher.patch
 	source = https://github.com/mariusae/trickle/commit/20f221f166fc03323ed28dc3cad0b0da2c879513.patch
 	source = trickle-gcc14.patch
+	source = atomicio.patch
 	sha256sums = b07ffdff831d11972dc802a4fc2d4000af844933b39ad7f88de20a2866a55f37
 	sha256sums = 495aeb95039dcdeb3bfde46c40b3391fe2416ec51678a1ded9bbeced6f6d1349
 	sha256sums = 432194c2a25e934a865a06de9fa876545431a1729028ca1a60943554865fb40c
 	sha256sums = 07614e2a07ab61e95572da44b22b7a05b14d958ec62f4c400f7527104ff3492f
+	sha256sums = dfc2ffbf0bdd4e26f06f22b6d3271f9e41a766deb32f73595c38792944766894
 
 pkgname = trickle
