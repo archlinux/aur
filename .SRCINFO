@@ -1,6 +1,6 @@
 pkgbase = melonds
 	pkgdesc = DS emulator, sorta
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = http://melonds.kuribo64.net/
 	arch = x86_64
@@ -24,6 +24,6 @@ pkgbase = melonds
 	depends = libglvnd
 	depends = hicolor-icon-theme
 	source = melonds::git+https://github.com/melonDS-emu/melonDS.git#tag=1.0
-	sha256sums = 414b376e14a66d8e095605b83a6b7711c04330be159b2649c87213fe8af0c9c6
+	sha256sums = f40db55b2a58173e1829a27e2f49c68440115eebcd48ed19a5d45d6bfa4bc717
 
 pkgname = melonds

@@ -3,7 +3,7 @@
 # Maintainer: Harrison <htv04rules at gmail dot com>
 
 pkgname=melonds
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="DS emulator, sorta"
 arch=("x86_64" "i686" "pentium4" "armv7h" "aarch64")
@@ -12,7 +12,7 @@ license=("GPL-3.0-or-later")
 makedepends=("wayland" "git" "cmake" "pkg-config" "extra-cmake-modules" "clang")
 depends=("qt6-base" "qt6-multimedia" "qt6-svg" "sdl2" "enet" "libx11" "libglvnd" "hicolor-icon-theme")
 source=("$pkgname::git+https://github.com/melonDS-emu/melonDS.git#tag=${pkgver}")
-sha256sums=('414b376e14a66d8e095605b83a6b7711c04330be159b2649c87213fe8af0c9c6')
+sha256sums=('f40db55b2a58173e1829a27e2f49c68440115eebcd48ed19a5d45d6bfa4bc717')
 
 prepare() {
   cd $pkgname
