@@ -1,0 +1,8 @@
+pkgbase = bm-bin
+	pkgdesc = bootstrap
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = any
+	license = MIT
+
+pkgname = bm-bin
