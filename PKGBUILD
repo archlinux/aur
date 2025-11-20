@@ -2,15 +2,15 @@
 
 pkgname=karakeep
 pkgver=0.28.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search"
 arch=("x86_64" "aarch64")
 url="https://github.com/${pkgname}-app/${pkgname}"
 license=('AGPL-3.0-or-later')
 backup=("etc/${pkgname}/${pkgname}.env")
 replaces=("hoarder")
-depends=("chromium" "graphicsmagick" "ghostscript" "meilisearch" "monolith" "nodejs-lts-jod")
-makedepends=("git" "jq" "nodejs-lts-jod" "pnpm" "python")
+depends=("chromium" "graphicsmagick" "ghostscript" "meilisearch" "monolith" "nodejs")
+makedepends=("git" "jq" "nodejs" "pnpm" "python")
 optdepends=("${pkgname}-cli: ${pkgname} cli tool"
             "ollama: for automatic tagging"
             "yt-dlp: for downloading video")
