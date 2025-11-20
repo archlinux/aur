@@ -34,8 +34,8 @@ pkgbase = projtlauncher
         optdepends = xorg-xrandr: for older minecraft versions
         optdepends = java-runtime=8: for older minecraft versions
         optdepends = flite: minecraft voice narration
-        source = projt-launcher-${MAIN_COMMIT_HASH}.tar.gz::https://github.com/Project-Tick/ProjT-Launcher/archive/${MAIN_COMMIT_HASH}.tar.gz
-        source = libnbtplusplus-${LIB_COMMIT_HASH}.tar.gz::https://github.com/Project-Tick/libnbtplusplus/archive/${LIB_COMMIT_HASH}.tar.gz
+        source = projt-launcher.tar.gz::https://github.com/Project-Tick/ProjT-Launcher/archive/0154de9edd0b0a53bb5a8f674ed86a04ed213c17.tar.gz
+        source = libnbtplusplus.tar.gz::https://github.com/Project-Tick/libnbtplusplus/archive/23b955121b8217c1c348a9ed2483167a6f3ff4ad.tar.gz
         source = lionshead.license
         source = batch.license
         source = mdi.license
