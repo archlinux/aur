@@ -1,8 +1,16 @@
 pkgbase = bm-bin
-	pkgdesc = bootstrap
-	pkgver = 0.0.1
+	pkgdesc = Your command-line sidekick for teleporting to files, folders, and URLs in one hop.
+	pkgver = 0.1.0
 	pkgrel = 1
-	arch = any
+	url = https://github.com/Shu-AFK/bm
 	license = MIT
-
+	conflicts = bm
+	provides = bm
+	arch = aarch64
+	source_aarch64 = https://github.com/Shu-AFK/bm/releases/download/v0.1.0/bm_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = a0c6b4f254bf1a52137a9e15bc53d37a4286cf0d5aa1a1773a78d86a3af5c3c8
+	arch = x86_64
+	source_x86_64 = https://github.com/Shu-AFK/bm/releases/download/v0.1.0/bm_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = aec0d439893098449f96a1cdc4f27b11bbd663633af283c06d378a2e0b87ef05
+	
 pkgname = bm-bin
