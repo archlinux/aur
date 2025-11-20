@@ -1,7 +1,7 @@
 pkgbase = yesplaymusic-plus
 	pkgdesc = A third-party music player for Netease Music
-	pkgver = 0.4.9
-	pkgrel = 7
+	pkgver = 0.4.10
+	pkgrel = 1
 	url = https://github.com/qier222/YesPlayMusic
 	arch = x86_64
 	license = MIT
@@ -14,9 +14,8 @@ pkgbase = yesplaymusic-plus
 	makedepends = gcc
 	makedepends = python-setuptools
 	depends = electron
-	provides = yesplaymusic=0.4.9
+	provides = yesplaymusic=0.4.10
 	conflicts = my-yesplaymusic-bin
-	conflicts = r3play-bin
 	conflicts = r3playx-bin
 	conflicts = r3playx-git
 	conflicts = yesplaymusic
@@ -27,11 +26,11 @@ pkgbase = yesplaymusic-plus
 	conflicts = yesplaymusic-new
 	conflicts = yesplaymusicosd-origin-electron-git
 	conflicts = yesplaymusicosd-origin-git
-	source = yesplaymusic-plus-0.4.9.tar.gz::https://github.com/qier222/YesPlayMusic/archive/refs/tags/v0.4.9.tar.gz
+	source = yesplaymusic-plus-0.4.10.tar.gz::https://github.com/qier222/YesPlayMusic/archive/refs/tags/v0.4.10.tar.gz
 	source = yesplaymusic-plus.desktop
 	source = yesplaymusic-plus.sh
-	sha256sums = 9b240d6b605d547c9dbc7d6222a0d2f28bfb0586201e01181e1d0e25bb83885a
-	sha256sums = 8139caec51a8b831d7e41fccb4e89daecbe1119cc6a4be9fd9f4ed2848690a69
-	sha256sums = 6947c3866ce502e80f4e4cda811a8c22e4b902f69fca4c02495fe1eccda4a63b
+	sha256sums = 819caa59ebde11eb4e3a56e4c95e233c9245f1a707999e86d193b8d3609856cf
+	sha256sums = 2c70ded5b08d349db110f2fc80f8aa6b7dc8f6945b576c5c3324404fb8fbe55b
+	sha256sums = 8022475183b04d8c04168ff32aaa6d749e65ba1bf6966867b49982baa2953661
 
 pkgname = yesplaymusic-plus

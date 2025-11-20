@@ -6,8 +6,8 @@
 
 _pkgname=yesplaymusic
 pkgname=yesplaymusic-plus
-pkgver=0.4.9
-pkgrel=7
+pkgver=0.4.10
+pkgrel=1
 pkgdesc="A third-party music player for Netease Music"
 arch=('x86_64')
 url="https://github.com/qier222/YesPlayMusic"
@@ -19,7 +19,6 @@ _nodeversion=16
 
 conflicts=(
     "my-yesplaymusic-bin"
-    "r3play-bin"
     "r3playx-bin"
     "r3playx-git"
     "yesplaymusic"
@@ -51,9 +50,9 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/qier222/YesPlayMusic/archiv
         "$pkgname.desktop"
         "$pkgname.sh")
 
-sha256sums=('9b240d6b605d547c9dbc7d6222a0d2f28bfb0586201e01181e1d0e25bb83885a'
-            '8139caec51a8b831d7e41fccb4e89daecbe1119cc6a4be9fd9f4ed2848690a69'
-            '6947c3866ce502e80f4e4cda811a8c22e4b902f69fca4c02495fe1eccda4a63b'
+sha256sums=('819caa59ebde11eb4e3a56e4c95e233c9245f1a707999e86d193b8d3609856cf'
+            '2c70ded5b08d349db110f2fc80f8aa6b7dc8f6945b576c5c3324404fb8fbe55b'
+            '8022475183b04d8c04168ff32aaa6d749e65ba1bf6966867b49982baa2953661'
 )
 
 _ensure_local_nvm() {
