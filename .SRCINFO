@@ -1,15 +1,20 @@
 pkgbase = buck2-bin
 	pkgdesc = A large-scale build system from Meta, developed in Rust
-	pkgver = 2025.11.01
+	pkgver = 2025.11.15
 	pkgrel = 1
 	url = https://github.com/facebook/buck2
 	arch = x86_64
 	arch = aarch64
+	arch = riscv64gc
 	license = Apache
 	license = MIT
 	depends = zstd
 	options = !strip
-	source = https://github.com/facebook/buck2/releases/download/2025-11-01/buck2-x86_64-unknown-linux-gnu.zst
-	sha256sums = af89fc5360cba386c61a43aba32bd3aef353c8df803a195724f42866650a5f83
+	source_x86_64 = https://github.com/facebook/buck2/releases/download/2025-11-15/buck2-x86_64-unknown-linux-gnu.zst
+	sha256sums_x86_64 = 66abc16e0da33f690e10fab18435ffeee55fa66ebbb66748b63ee2f03ec2578d
+	source_aarch64 = https://github.com/facebook/buck2/releases/download/2025-11-15/buck2-aarch64-unknown-linux-gnu.zst
+	sha256sums_aarch64 = 8440b92d0fc8a7c79cb47f82e4352b96b7a3f6e32d4abef72518ec6d9f5b39ca
+	source_riscv64gc = https://github.com/facebook/buck2/releases/download/2025-11-15/buck2-riscv64gc-unknown-linux-gnu.zst
+	sha256sums_riscv64gc = df73e577b4bcec358cf7396e1fe9a4753c00e6c023084d4345d20a75e54bb693
 
 pkgname = buck2-bin
