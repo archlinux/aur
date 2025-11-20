@@ -1,6 +1,6 @@
 # Maintainer: Rui Jiang <me@ruijiang.me>
 pkgname=python-endesive
-pkgver=2.19.1
+pkgver=2.19.2
 pkgrel=1
 pkgdesc="Python library for creating and validating PDF crypto signatures"
 arch=('any')
@@ -21,8 +21,8 @@ optdepends=(
     'python-paramiko: optional SSH support'
 )
 makedepends=('python-build' 'python-installer' 'python-wheel')
-source=("$pkgname-$pkgver.zip::$url/archive/refs/tags/v$pkgver.zip")
-sha256sums=('0f8b6580753e270d4a5e19a485b27ce819858c6fd63f7ddbd7c487153884761a')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('5237dc68a9be3ea71689d2d92f9585a024c154a1b8f98ca178fe387cb0aa9d20')
 
 build() {
     cd "$srcdir/endesive-$pkgver"

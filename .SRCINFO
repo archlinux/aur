@@ -1,6 +1,6 @@
 pkgbase = python-endesive
 	pkgdesc = Python library for creating and validating PDF crypto signatures
-	pkgver = 2.19.1
+	pkgver = 2.19.2
 	pkgrel = 1
 	url = https://github.com/m32/endesive
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-endesive
 	optdepends = python-pykcs11: optional PKCS11 support
 	optdepends = python-requests: optional HTTP support
 	optdepends = python-paramiko: optional SSH support
-	source = python-endesive-2.19.1.zip::https://github.com/m32/endesive/archive/refs/tags/v2.19.1.zip
-	sha256sums = 0f8b6580753e270d4a5e19a485b27ce819858c6fd63f7ddbd7c487153884761a
+	source = python-endesive-2.19.2.tar.gz::https://github.com/m32/endesive/archive/refs/tags/v2.19.2.tar.gz
+	sha256sums = 5237dc68a9be3ea71689d2d92f9585a024c154a1b8f98ca178fe387cb0aa9d20
 
 pkgname = python-endesive
