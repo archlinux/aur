@@ -1,6 +1,6 @@
 pkgbase = goverlay-git
 	pkgdesc = A GUI to help manage Vulkan/OpenGL overlays
-	pkgver = 1.5.2.r56.g2a30e1b
+	pkgver = 1.6.1.r14.g538b0eb
 	pkgrel = 1
 	url = https://github.com/benjamimgois/goverlay
 	arch = x86_64
@@ -17,7 +17,6 @@ pkgbase = goverlay-git
 	depends = pciutils
 	depends = polkit
 	depends = qt6pas
-	depends = wget
 	optdepends = git: Clone reshade repository
 	optdepends = pascube: Run pasCube (beta)
 	optdepends = vkbasalt: Configure vkBasalt
