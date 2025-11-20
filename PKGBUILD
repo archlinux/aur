@@ -10,7 +10,7 @@
 
 pkgname=mullvad-browser-bin
 pkgver=15.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Privacy-focused web browser developed by Mullvad VPN and the Tor Project'
 arch=(x86_64)
 url=https://mullvad.net/en/browser
@@ -21,7 +21,7 @@ depends=(
   bash
   cairo
   dbus
-  ffmpeg
+  ffmpeg4.4
   fontconfig
   freetype2
   gcc-libs

@@ -1,7 +1,7 @@
 pkgbase = mullvad-browser-bin
 	pkgdesc = Privacy-focused web browser developed by Mullvad VPN and the Tor Project
 	pkgver = 15.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mullvad.net/en/browser
 	changelog = mullvad-browser.changelog
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = mullvad-browser-bin
 	depends = bash
 	depends = cairo
 	depends = dbus
-	depends = ffmpeg
+	depends = ffmpeg4.4
 	depends = fontconfig
 	depends = freetype2
 	depends = gcc-libs
