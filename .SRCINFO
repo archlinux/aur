@@ -1,0 +1,14 @@
+pkgbase = pda
+	pkgdesc = pda! your template-friendly key/value store for code snippets
+	pkgver = 2025.47
+	pkgrel = 1
+	url = https://github.com/llywelwyn/pda
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	options = !debug
+	options = strip
+	source = pda-2025.47.tar.gz::https://github.com/llywelwyn/pda/archive/refs/tags/2025.47.tar.gz
+	sha256sums = 807adc9642c631f7a7ca6e611231019ecbb491ce0fe6baf0eb82ec2de2dd0934
+
+pkgname = pda
