@@ -1,7 +1,7 @@
 pkgbase = antigravity-bin
 	pkgdesc = Google Antigravity - Agentic Development Platform (Pre-built Binary)
 	pkgver = 1.11.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://antigravity.google/
 	arch = x86_64
 	license = Proprietary

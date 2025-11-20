@@ -2,7 +2,7 @@
 pkgname=antigravity-bin
 pkgver=1.11.5
 _buildid=5234145629700096
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Antigravity - Agentic Development Platform (Pre-built Binary)"
 arch=('x86_64')
 url="https://antigravity.google/"
@@ -33,38 +33,68 @@ package() {
         chmod +x "$pkgdir/opt/antigravity/antigravity"
         ln -s "/opt/antigravity/antigravity" "$pkgdir/usr/bin/antigravity"
     else
-        echo "Error: Could not find binary 'antigravity' or 'Antigravity' in /opt/antigravity"
-        ls -R "$pkgdir/opt/antigravity"
+        echo "Error: Could not find binary in /opt/antigravity"
         exit 1
     fi
 
     install -d "$pkgdir/usr/share/pixmaps"
     
     _icon_path="$pkgdir/opt/antigravity/resources/app/resources/linux/code.png"
-    
     if [ -f "$_icon_path" ]; then
         ln -s "/opt/antigravity/resources/app/resources/linux/code.png" "$pkgdir/usr/share/pixmaps/antigravity.png"
     else
-        echo "Warning: Specific icon path not found. Searching for alternatives..."
         _found_icon=$(find "$pkgdir/opt/antigravity" -name "*.png" | head -n 1)
         if [ -n "$_found_icon" ]; then
-            # Ensure relative path calculation for symlink
             _rel_path=${_found_icon#$pkgdir}
             ln -s "$_rel_path" "$pkgdir/usr/share/pixmaps/antigravity.png"
         fi
     fi
 
     install -d "$pkgdir/usr/share/applications"
-    
+
+    cat > "$pkgdir/usr/share/applications/antigravity-url-handler.desktop" <<EOF
+[Desktop Entry]
+Name=Antigravity - URL Handler
+Comment=Experience liftoff
+GenericName=Text Editor
+Exec=/usr/bin/antigravity --open-url %U
+Icon=antigravity
+Type=Application
+NoDisplay=true
+StartupNotify=true
+Categories=Utility;TextEditor;Development;IDE;
+MimeType=x-scheme-handler/antigravity;
+Keywords=vscode;
+EOF
+
     cat > "$pkgdir/usr/share/applications/antigravity.desktop" <<EOF
 [Desktop Entry]
-Type=Application
 Name=Antigravity
+Comment=Experience liftoff
+GenericName=Text Editor
+Exec=/usr/bin/antigravity %F
 Icon=antigravity
-Categories=Development;IDE;
+Type=Application
+StartupNotify=false
 StartupWMClass=Antigravity
-MimeType=x-scheme-handler/antigravity;
-X-KDE-Protocols=antigravity;
-Exec=/usr/bin/antigravity %u
+Categories=TextEditor;Development;IDE;
+MimeType=application/x-antigravity-workspace;
+Actions=new-empty-window;
+Keywords=vscode;
+
+[Desktop Action new-empty-window]
+Name=New Empty Window
+Name[cs]=Nové prázdné okno
+Name[de]=Neues leeres Fenster
+Name[es]=Nueva ventana vacía
+Name[fr]=Nouvelle fenêtre vide
+Name[it]=Nuova finestra vuota
+Name[ja]=新しい空のウィンドウ
+Name[ko]=새 빈 창
+Name[ru]=Новое пустое окно
+Name[zh_CN]=新建空窗口
+Name[zh_TW]=開新空視窗
+Exec=/usr/bin/antigravity --new-window %F
+Icon=antigravity
 EOF
 }
