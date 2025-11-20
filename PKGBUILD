@@ -5,7 +5,7 @@
 
 pkgname='soupault-bin'
 _pkgname="${pkgname/-bin}"
-pkgver=5.1.0
+pkgver=5.2.0
 pkgrel=1
 pkgdesc='Static website generator based on HTML element tree rewriting (pre-compiled)'
 arch=('aarch64' 'x86_64')
@@ -20,7 +20,7 @@ provides=("$_pkgname")
 conflicts=("${provides[@]}")
 _relpath="$url/releases/download/$pkgver"
 _tarball="$_pkgname-$pkgver-linux-$CARCH.tar.gz"
-#_plugins_url='https://soupault.app/files/plugins'
+#_plugins_url='https://soupault.net/files/plugins'
 _plugins_url='https://raw.githubusercontent.com/PataphysicalSociety/soupault.app/refs/heads/main/assets/files/plugins/'
 _plugins=(
   "$_plugins_url/collapsible-list.lua"
@@ -57,17 +57,17 @@ verify() {
 }
 
 package() {
-  cd "${_tarball/.tar.gz}" || exit 1
+  cd "${_tarball/.tar.gz}"
 
-  install -vDsm0755 -t "$pkgdir/usr/bin/" \
+  install -vDsm0755 -t "$pkgdir/usr/bin" \
     soupault
-  install -vDm0644  -t "$pkgdir/usr/share/doc/$pkgname/" \
+  install -vDm0644  -t "$pkgdir/usr/share/doc/$pkgname" \
     {CHANGELOG,README}.md
-  install -vDm0644  -t "$pkgdir/usr/share/licenses/$pkgname/" \
+  install -vDm0644  -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE
 
   cd ..
-  install -vDm0644  -t "$pkgdir/usr/share/doc/$pkgname/plugins/" \
+  install -vDm0644  -t "$pkgdir/usr/share/doc/$pkgname/plugins" \
     ./*.lua
 
   cd "$pkgdir/usr/share/doc/"
