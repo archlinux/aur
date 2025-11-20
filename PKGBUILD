@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=flapc
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Experimental compiler for the Flap programming language'
 arch=(x86_64)
@@ -9,10 +9,11 @@ url='https://github.com/xyproto/flapc'
 license=(BSD3)
 makedepends=(git go)
 source=("git+$url#tag=v$pkgver")
-b2sums=('48919b3789d2cb9d56a50533bbad6883cc1521435419acc1ee60235b5b462a230652bcae50129b7cce2e1001268102327c73cf5b4306ce42684c16ae2ac550ff')
+b2sums=('a68e1dda1d096bd9ab9ea3724c84ad557cebe1a9a57a622bedc0ee804348bf9207daaf64b1fb5b89b2e51a6597afd44c0df042e5f2460d748d633d48f2ff3ab1')
 
 build() {
   cd $pkgname
+  export GOEXPERIMENT=greenteagc
   go build -v -mod=vendor -buildmode=pie -trimpath -ldflags="-s -w -extldflags \"${LDFLAGS}\""
 }
 
