@@ -16,7 +16,7 @@ index 3714cef2..72db257d 100644
 -)
 diff --git a/src/dynlink/lin_tests.ml b/src/dynlink/lin_tests.ml
 deleted file mode 100644
-index 7e81981d..00000000
+index dd676f37..00000000
 --- a/src/dynlink/lin_tests.ml
 +++ /dev/null
 @@ -1,41 +0,0 @@
@@ -53,9 +53,9 @@ index 7e81981d..00000000
 -module DynT = Lin_domain.Make(DynConf)
 -
 -let _ =
--  if Sys.win32 || Sys.cygwin
--  then
--    Printf.printf "Lin Dynlink tests disabled under Windows\n\n%!"
+-  if (Sys.win32 || Sys.cygwin) && Sys.(ocaml_release.major,ocaml_release.minor) < (5,4)
+-  then (* Parallel Dynlink usage under Cygwin+MinGW is unsafe https://github.com/ocaml/ocaml/issues/13046 *)
+-    Printf.printf "Lin Dynlink tests disabled on OCaml < 5.4 under Windows\n\n%!"
 -  else
 -    QCheck_base_runner.run_tests_main [
 -      DynT.neg_lin_test ~count:100  ~name:"negative Lin Dynlink test with Domain";
