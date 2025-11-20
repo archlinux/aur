@@ -1,7 +1,7 @@
 # Maintainer: nathan marchiori <nathan.marchiori@gmail.com>
 pkgname="drawy-git"
-pkgver=r115.413c4dc
-pkgrel=1
+pkgver=r150.3a90fe0
+pkgrel=2
 pkgdesc="an infinite whiteboard tool"
 arch=("x86_64")
 url="https://github.com/Prayag2/drawy"

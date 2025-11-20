@@ -1,7 +1,7 @@
 pkgbase = drawy-git
 	pkgdesc = an infinite whiteboard tool
-	pkgver = r115.413c4dc
-	pkgrel = 1
+	pkgver = r150.3a90fe0
+	pkgrel = 2
 	url = https://github.com/Prayag2/drawy
 	arch = x86_64
 	license = GPL-3.0-only
