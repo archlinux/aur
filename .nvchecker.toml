@@ -1,0 +1,4 @@
+[python-scienceplots]
+source = "github"
+github = "garrettj403/SciencePlots"
+use_latest_release = "true"
