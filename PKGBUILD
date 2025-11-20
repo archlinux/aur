@@ -1,4 +1,6 @@
-# Maintainer: Paul Hentschel (hpmachining)
+# Maintainer: Chris Duncan (Zosoled) <chris@codecow.com>
+# Contributor: Paul Hentschel (hpmachining)
+# Contributor: greyltc
 
 pkgname=cbang
 pkgver=1.8.0
