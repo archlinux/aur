@@ -3,7 +3,7 @@
 pkgname=pda
 pkgver=2025.47
 pkgrel=1
-pkgdesc="pda! your template-friendly key/value store for code snippets"
+pkgdesc="personal digital assistant! a key-value store with rich template support"
 arch=('x86_64')
 url="https://github.com/llywelwyn/$pkgname"
 license=('MIT')
