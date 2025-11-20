@@ -2,7 +2,7 @@
 _base=pyfonts
 pkgname=python-${_base}
 pkgdesc="A simple and reproducible way of using fonts in matplotlib"
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/y-sunflower/${_base}"
@@ -11,7 +11,7 @@ depends=(python-matplotlib python-requests)
 makedepends=(python-build python-installer python-setuptools-scm)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('dec75be884790144337f011d3e08e7c642dde210f2b296a2a3c14dde7992f3d915cd994f3c1bf2256aeaa8ace19eb17a8fb3235db482cb6351201cda4a2377e3')
+sha512sums=('2b1445613c96eeceb5348d1313bc35b6c21c1e193290915226ed52f13394cc77170f7a6a97fa29ffe4f12509919771ef4f8a4ce6198d72f1fe3c8005426c43a8')
 
 build() {
   cd ${_base}-${pkgver}
