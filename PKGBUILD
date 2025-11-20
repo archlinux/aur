@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Hibiki <JeremyJiang430@outlook.com>
 
 pkgname=cursor-beta-bin
-pkgver=2.0.77
+pkgver=2.1.6
 pkgrel=1
 pkgdesc='AI-first coding environment'
 arch=('x86_64')
@@ -13,10 +13,10 @@ depends=('ripgrep' 'xdg-utils'
   'gcc-libs' 'hicolor-icon-theme' 'libxkbfile')
 options=(!strip) # Don't break ext of VSCode
 _appimage="${pkgname}-${pkgver}.AppImage"
-_commit=ba90f2f88e4911312761abab9492c42442117cfe
-source=("${_appimage}::https://downloads.cursor.com/production/ba90f2f88e4911312761abab9492c42442117cfe/linux/x64/Cursor-2.0.77-x86_64.AppImage"
+_commit=92340560ea81cb6168e2027596519d68af6c90a1
+source=("${_appimage}::https://downloads.cursor.com/production/92340560ea81cb6168e2027596519d68af6c90a1/linux/x64/Cursor-2.1.6-x86_64.AppImage"
 https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh)
-sha512sums=('4b12579a8642d2b1d6f6e15a16a423b6042a4a35d18fe37f5e2951ca6dddafbecb6c61eea5107ac68e982b64a3f20fc698f8f4b2ad2744eb361bfe53c3e9defd'
+sha512sums=('1cd750640d4e99defe38d44884a66f407580acc0a54582da09392677e95c4064d6ccee980adaf0ed5f4ea0248e014b8dd44bfda6879ea3516f96601243a254da'
             '937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37')
 
 _app=usr/share/cursor/resources/app
@@ -35,7 +35,7 @@ package() {
   ln -svf /usr/bin/xdg-open ${_app}/node_modules/open/xdg-open
 
   # Electron version determined during build process
-  _electron=electron34
+  _electron=electron37
   echo $_electron
   depends+=($_electron)
   mv usr "${pkgdir}"/usr
