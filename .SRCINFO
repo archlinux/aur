@@ -1,0 +1,18 @@
+pkgbase = declarch-bin
+	pkgdesc = A declarative package manager for Arch Linux (Binary Release)
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/nixval/declarch
+	arch = x86_64
+	license = MIT
+	depends = pacman
+	depends = git
+	optdepends = paru: Recommended AUR helper
+	optdepends = yay: Alternative AUR helper
+	optdepends = flatpak: For managing Flatpak applications
+	provides = declarch
+	conflicts = declarch
+	source = declarch-v0.2.5-x86_64-unknown-linux-gnu.tar.gz::https://github.com/nixval/declarch/releases/download/v0.2.5/declarch-v0.2.5-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 2ab2388afedfa7268b5f5622630fdb83bb2ed47bd9230545b164817d709d1e6b
+
+pkgname = declarch-bin
