@@ -1,29 +1,36 @@
-# Maintainer: Daniel Chesters <archlinux@coin-coin.xyz>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Daniel Chesters <archlinux@coin-coin.xyz>
 # Contributor: RiverOnVenus <error@zhui.dev>
+
 pkgname=python-terminaltexteffects
 _pkgname=terminaltexteffects
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Visual effects engine applied to text in the terminal. '
 url="https://github.com/ChrisBuilds/terminaltexteffects"
 arch=('any')
 license=('MIT')
+
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-poetry-core')
 provides=('terminaltexteffects')
 conflicts=('terminaltexteffects')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ChrisBuilds/terminaltexteffects/archive/refs/tags/release-$pkgver.tar.gz")
+
+source=("${pkgname}-${pkgver}.tgz::${url}/archive/release-${pkgver}.tar.gz")
+b2sums=('1ea2e59d28f5c6f02e73f0c93d41f1e118d20ce53ff23988ed185037a3de26037e6f67d586caf03f41c609c42294e2380067a515b8c45c30b41e0b5f8333cf7f')
 
 build() {
-	cd "$_pkgname-release-$pkgver" || exit
+	cd "${_pkgname}-release-${pkgver}" || exit
+
 	python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$_pkgname-release-$pkgver" || exit
-	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
+	cd "${_pkgname}-release-${pkgver}" || exit
 
-# vim: set ts=2 sw=2 et:
-b2sums=('5129a3c28666d4ab1dac500ce47bd06f0a52ab053d6b39f0b6c5c592c6c2958ff20b63a658bd6fda2130f925ebb424415f935ce96565bbfbd233384ff1eb6de4')
+	python -m installer --destdir="${pkgdir}" dist/*.whl
+
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}

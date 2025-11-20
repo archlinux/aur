@@ -1,4 +1,4 @@
-[terminaltexteffects]
+[python-terminaltexteffects]
 source = "github"
 github = "ChrisBuilds/terminaltexteffects"
 use_latest_release = true
