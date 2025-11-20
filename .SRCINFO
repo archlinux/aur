@@ -1,6 +1,6 @@
 pkgbase = python-amulet-zlib
 	pkgdesc = A Python and C++ wrapper around zlib
-	pkgver = 1.0.8a3
+	pkgver = 1.0.8a4
 	pkgrel = 1
 	url = https://github.com/Amulet-Team/Amulet-zlib
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = python-amulet-zlib
 	depends = python
 	depends = pybind11
 	depends = python-amulet_pybind11_extensions
-	source = git+https://github.com/Amulet-Team/Amulet-zlib.git#tag=1.0.8a3
-	md5sums = a8fa178ae94b4cbff681a8511fae8920
+	source = git+https://github.com/Amulet-Team/Amulet-zlib.git#tag=1.0.8a4
+	md5sums = f9f318a820b613c30b92c457cc839e78
 
 pkgname = python-amulet-zlib
