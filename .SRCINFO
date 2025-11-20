@@ -1,7 +1,7 @@
 pkgbase = elasticsearch-bin
 	pkgdesc = Log analyzer. search, store and analyze logs
 	pkgver = 9.2.1
-	pkgrel = 1
+	pkgrel = 0
 	url = https://github.com/elastic/elasticsearch
 	arch = x86_64
 	license = ELv2
