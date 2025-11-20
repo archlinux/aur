@@ -1,7 +1,7 @@
 # Maintainer : Daniel Chesters <archlinux@coin-coin.xyz>
 # Contributor : Daniel Chesters <archlinux@coin-coin.xyz>
 pkgname=daylight
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="a command-line program for tracking sunrise and sunset times"
 arch=('i686' 'x86_64' 'aarch64')
@@ -25,5 +25,5 @@ package() {
 	cd "$pkgname-$pkgver" || exit
 	install -Dm755 "build/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
-b2sums=('e9598d2b72d2c59b4afbd1f42cc23d12cc0d2d22dcae5bb93bd90a5608ca4181500db3d1eb99672719ef93bad6089831479d240d1ff2c1bd4ff85f0d0fc66243')
+b2sums=('fd06fd95f036ae2c986f41149b1f5a2d21935a9f64680460b33daee08b1ef781a8ff6c60afacc73be2c629c221075842bfa4d1335293fccb93ba3b3c3253a427')
 # vim:set ts=2 sw=2 et:
