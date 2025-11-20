@@ -1,6 +1,6 @@
 pkgbase = python-tree-sitter-matlab
 	pkgdesc = MATLAB tree-sitter parser
-	pkgver = 1.2.8
+	pkgver = 1.2.9
 	pkgrel = 1
 	url = https://github.com/acristoffers/tree-sitter-matlab
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-tree-sitter-matlab
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = tree-sitter-matlab-1.2.8.tar.gz::https://github.com/acristoffers/tree-sitter-matlab/archive/v1.2.8.tar.gz
-	sha512sums = 836c3e11e8e8f78009a898859e672453fde76c33168f72f377657eba15057b44e3e9ed7a0d921008b036732fe8d12f6dbd7e1a94817249b9761f0c217a8478dc
+	source = tree-sitter-matlab-1.2.9.tar.gz::https://github.com/acristoffers/tree-sitter-matlab/archive/v1.2.9.tar.gz
+	sha512sums = 45c51476c00e93f473446160191e4b9c3540a9901eba9ca5ed738d976920f30da08797339c8f9fcf8847e0f799c4a98d6fb30e1c654867da23d347b3106545e7
 
 pkgname = python-tree-sitter-matlab
