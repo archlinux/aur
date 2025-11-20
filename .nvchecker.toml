@@ -1,4 +1,4 @@
-[terminaltexteffects]
+[python-textualeffects]
 source = "github"
 github = "ggozad/textualeffects"
 use_latest_release = true
