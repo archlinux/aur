@@ -1,3 +1,9 @@
+Mullvad Browser 15.0.2 - November 20 2025
+ * All Platforms
+   * Updated Mullvad Browser Extension to 0.9.6
+   * Bug 486: Possible race condition for upgrade message in about:mullvad-browser [mullvad-browser]
+   * Bug 488: Remove Leta search engine and migrate users to DuckDuckGo [mullvad-browser]
+
 Mullvad Browser 15.0.1 - November 11 2025
  * All Platforms
    * Updated Firefox to 140.5.0esr
