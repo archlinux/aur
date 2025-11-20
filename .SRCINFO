@@ -1,6 +1,6 @@
 pkgbase = waybar-lyric
 	pkgdesc = A waybar module for song lyric
-	pkgver = 0.13.3
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/Nadim147c/waybar-lyric
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = waybar-lyric
 	provides = waybar-lyric
 	conflicts = waybar-lyric-git
 	conflicts = waybar-lyric-bin
-	source = https://github.com/Nadim147c/waybar-lyric/archive/refs/tags/v0.13.3.tar.gz
-	sha256sums = dcd5d9db6cfe639c2ab709d43708cb5f79dc361317f07ee6c7859d41ed389cc1
+	source = https://github.com/Nadim147c/waybar-lyric/archive/refs/tags/v0.14.0.tar.gz
+	sha256sums = bc25d1a690c191eb652822c48af8cdcd95f5d89c0c6c962609093a56f590562d
 
 pkgname = waybar-lyric
