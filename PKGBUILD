@@ -3,7 +3,7 @@
 pkgbase=wps-office-365
 pkgname=('wps-office-365' 'wps-office-365-xiezuo' 'wps-office-365-fonts')
 pkgver=12.1.2.23578
-pkgrel=1
+pkgrel=2
 pkgdesc="WPS Office, is an office productivity suite."
 arch=('x86_64' 'aarch64' 'loong64')
 url="https://365.wps.cn/"
@@ -52,9 +52,6 @@ package_wps-office-365() {
     rm opt/kingsoft/wps-office/office6/addons/cef/libm.so*
     rm opt/kingsoft/wps-office/office6/libfreetype.so*
   fi
-
-  # disable wpscloudsvr
-  chmod -x opt/kingsoft/wps-office/office6/wpscloudsvr
 
   # fix template path
   sed -i 's|URL=.*|URL=/opt/kingsoft/wps-office/office6/mui/zh_CN/templates/newfile.docx|' \
