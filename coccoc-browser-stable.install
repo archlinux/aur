@@ -1,9 +1,9 @@
 post_install() {
     update-desktop-database -q
-    
-    update-mime-database /usr/share/mime &> /dev/null
-    
-    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor &> /dev/null
+
+    update-mime-database /usr/share/mime &> /dev/null || true
+
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor &> /dev/null || true
 }
 
 post_upgrade() {
@@ -12,8 +12,13 @@ post_upgrade() {
 
 post_remove() {
     update-desktop-database -q
-    
-    update-mime-database /usr/share/mime &> /dev/null
-    
-    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor &> /dev/null
+
+    update-mime-database /usr/share/mime &> /dev/null || true
+
+    for size in 16 24 32 48 64 128 256; do
+        rm -f "/usr/share/icons/hicolor/${size}x${size}/apps/coccoc-browser.png"
+    done
+    rm -f "/usr/share/icons/hicolor/32x32/apps/coccoc-browser.xpm"
+
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor &> /dev/null || true
 }

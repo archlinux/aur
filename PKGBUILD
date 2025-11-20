@@ -2,7 +2,8 @@
 pkgname=coccoc-browser-stable
 _pkgname=coccoc-browser
 pkgver=140.0.7339.250
-pkgrel=1
+pkgrel=2
+_pkgrel=1
 pkgdesc="The web browser focused on the Vietnamese market"
 arch=('x86_64')
 url="https://coccoc.com"
@@ -43,7 +44,7 @@ install=${pkgname}.install
 
 # validgpgkey='5DA62E7F05A744B437D54C1A414816EB7B41FA4B'
 source=(
-    "https://browser-linux.coccoc.com/deb/pool/main/${pkgname}_${pkgver}-${pkgrel}_amd64.deb"
+    "https://browser-linux.coccoc.com/deb/pool/main/${pkgname}_${pkgver}-${_pkgrel}_amd64.deb"
     # "https://browser-linux.coccoc.com/deb/public.gpg"
     "LICENSE.html::https://coccoc.com/termsofuse"
 )
@@ -56,9 +57,18 @@ sha256sums=(
 package() {
     tar -xJf data.tar.xz -C "$pkgdir"
     rm -r "$pkgdir"/etc
-    
+
     install -dm755 "$pkgdir/usr/bin"
     ln -s "/opt/coccoc/browser/coccoc-browser" "$pkgdir/usr/bin/coccoc-browser"
+
+    local icon_sizes=(16 24 32 48 64 128 256)
+    for size in "${icon_sizes[@]}"; do
+        install -Dm644 "$pkgdir/opt/coccoc/browser/product_logo_${size}.png" \
+            "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/coccoc-browser.png"
+    done
+    # Install 32x32 XPM icon
+    install -Dm644 "$pkgdir/opt/coccoc/browser/product_logo_32.xpm" \
+        "$pkgdir/usr/share/icons/hicolor/32x32/apps/coccoc-browser.xpm"
 
     install -Dm644 "LICENSE.html" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE.html"
     chmod -R go-w "$pkgdir"

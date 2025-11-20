@@ -1,7 +1,7 @@
 pkgbase = coccoc-browser-stable
 	pkgdesc = The web browser focused on the Vietnamese market
 	pkgver = 140.0.7339.250
-	pkgrel = 1
+	pkgrel = 2
 	url = https://coccoc.com
 	install = coccoc-browser-stable.install
 	arch = x86_64
