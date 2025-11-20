@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=noScribe
+Exec=/usr/bin/noscribe
+Icon=/opt/noScribe/_internal/noScribeLogo.png
+Terminal=false
+Categories=Utility;
+Comment=AI enabled audio transcription

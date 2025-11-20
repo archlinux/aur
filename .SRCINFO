@@ -1,0 +1,15 @@
+pkgbase = noscribe-cpu-bin
+	pkgdesc = cutting edge AI technology for automated audio transcription
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/kaixxx/noScribe
+	arch = x86_64
+	license = GPL-3.0-only
+	provides = noscribe
+	conflicts = noscribe-cuda-bin
+	source = noScribe_0.6.2c_legacy_cpu_linux_amd64.tar.gz::https://drive.switch.ch/index.php/s/HtKDKYRZRNaYBeI/download?path=%2FLinux&files=noScribe_0.6.2c_legacy_cpu_linux_amd64.tar.gz
+	source = noScribe.desktop
+	sha256sums = d100f51984fef6b300a6f5e49fac6c4666d06490469535b601ef0ff0c6feb4f5
+	sha256sums = b7a503311a68dce0b15266602b57e5f6f5dc5593919023198f48fe102b9bde57
+
+pkgname = noscribe-cpu-bin
