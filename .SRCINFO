@@ -1,10 +1,11 @@
 pkgbase = flax
 	pkgdesc = Flax Engine – multi-platform 3D game engine
-	pkgver = 1.9.6505
+	pkgver = 1.11.06802
 	pkgrel = 1
 	url = https://flaxengine.com
 	arch = x86_64
 	license = Flax EULA
+	makedepends = dotnet-host
 	depends = glibc
 	depends = libx11
 	depends = libxcursor

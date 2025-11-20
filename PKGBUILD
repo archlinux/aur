@@ -2,13 +2,14 @@
 # Fomer maintainer: Crawcik <crawcik@gmail.com>
 
 pkgname=flax
-pkgver=1.9.6505
+pkgver=1.11.06802
 pkgrel=1
 pkgdesc="Flax Engine – multi-platform 3D game engine"
 arch=('x86_64')
 url="https://flaxengine.com"
 license=('Flax EULA')
 depends=(glibc libx11 libxcursor libxinerama zlib libvorbis libxcb gcc-libs)
+makedepends=(dotnet-host)
 optdepends=('dotnet-sdk: Dotnet 8 SDK'
             'vulkan-driver: Vulkan graphics driver'
             'portaudio: PortAudio audio driver'
