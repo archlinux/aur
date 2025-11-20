@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=nmrs
+Comment=Wayland-native NetworkManager GUI
+Exec=nmrs
+Icon=network-wireless
+Terminal=false
+Type=Application
+Categories=Network;System;GTK;
+Keywords=network;wifi;wireless;networkmanager;

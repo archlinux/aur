@@ -1,0 +1,25 @@
+pkgname=nmrs
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Wayland-native GUI for NetworkManager, built with Rust and GTK4"
+arch=('x86_64')
+url="https://github.com/cachebag/nmrs"
+license=('MIT')
+depends=('gtk4' 'libadwaita' 'networkmanager')
+makedepends=('cargo' 'git')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/cachebag/nmrs/archive/v$pkgver-beta.tar.gz"
+        "nmrs.desktop")
+sha256sums=('4644c3d120aa9ab63aaf1d089433863dfd75b35820367ff423a308df10feab3e'
+            '2279f157e299d52fabad1dfd9abd9e862b48dbba83921680f5134a537db061ef')
+
+build() {
+    cd "$srcdir/$pkgname-$pkgver-beta"
+    cargo build --release --locked
+}
+
+package() {
+    cd "$srcdir/$pkgname-$pkgver-beta"
+    install -Dm755 "target/release/nmrs-ui" "$pkgdir/usr/bin/nmrs"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/nmrs.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+}
