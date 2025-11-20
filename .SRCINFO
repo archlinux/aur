@@ -1,6 +1,6 @@
 pkgbase = vk-calls-bin
 	pkgdesc = VK Calls for fast conference calls
-	pkgver = 1.42.36240
+	pkgver = 1.42.36871
 	pkgrel = 1
 	url = https://calls.vk.com
 	install = vk-calls-bin.install
@@ -15,7 +15,7 @@ pkgbase = vk-calls-bin
 	depends = openssl-1.1
 	options = !strip
 	options = !emptydirs
-	source = vk-calls-1.42.36240-amd64.deb::https://vkcalls-native-ac.vk-apps.com/1.42.36240/vk-calls-amd64.deb
-	sha256sums = ca7af14e4d959480c7422e2f1077d022bd64e426e90ff8b3857fe53f22d7b84f
+	source = vk-calls-1.42.36871-amd64.deb::https://vkcalls-native-ac.vk-apps.com/1.42.36871/vk-calls-amd64.deb
+	sha256sums = 88d83c442adbd48cbb034b78aafe72e65e1a7a94fa8d6c6fa84420aed87aa806
 
 pkgname = vk-calls-bin

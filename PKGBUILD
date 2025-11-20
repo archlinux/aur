@@ -3,7 +3,7 @@
 
 pkgname=vk-calls-bin
 pkgbasename='vk-calls'
-pkgver=1.42.36240
+pkgver=1.42.36871
 pkgrel=1
 pkgdesc="VK Calls for fast conference calls"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('gcc' 'hicolor-icon-theme' 'qt5-base' 'qt5-multimedia' 'qt5-svg' 'qt5-w
 options=('!strip' '!emptydirs')
 install=$pkgname.install
 source=("${pkgbasename}-${pkgver}-amd64.deb::https://vkcalls-native-ac.vk-apps.com/${pkgver}/${pkgbasename}-amd64.deb")
-sha256sums=('ca7af14e4d959480c7422e2f1077d022bd64e426e90ff8b3857fe53f22d7b84f')
+sha256sums=('88d83c442adbd48cbb034b78aafe72e65e1a7a94fa8d6c6fa84420aed87aa806')
 
 package() {
     # Extract package data
