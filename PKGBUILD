@@ -7,11 +7,11 @@ arch=('x86_64')
 pkgdesc="DiscImageCreator, official release with supplemental binaries and text files for full functionality."
 provides=('discimagecreator')
 conflicts=('discimagecreator')
-pkgver=20250501
+pkgver=20250901
 pkgrel=1
 license=('Apache')
-source=("https://github.com/user-attachments/files/20000183/DiscImageCreator_20250501.tar.gz")
-sha256sums=('814457c4e176cb7fa66c0de98af5608f2dca1f00f3630fbd5082db04f01a64b5')
+source=("https://github.com/user-attachments/files/22080484/DiscImageCreator_20250901.tar.gz")
+sha256sums=('2cd442eb60990ef282b8a0a84d9d821f9ebf26be09efd511e54635aed3af4060')
 
 package() {
 
