@@ -6,8 +6,8 @@ _pkgname=textualeffects
 pkgver=0.1.4
 pkgrel=1
 pkgdesc="Visual effects for Textual, a TermincalTextEffects wrapper."
-arch=('any')
 url="https://github.com/ggozad/textualeffects"
+arch=('any')
 license=('MIT')
 
 depends=('python' 'python-textual' 'python-rich' 'python-terminaltexteffects')
