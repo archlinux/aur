@@ -18,10 +18,10 @@ source=("${_pkgname}-git::git+https://github.com/Arisotura/melonDS.git#tag=${pkg
 sha256sums=("f40db55b2a58173e1829a27e2f49c68440115eebcd48ed19a5d45d6bfa4bc717")
 
 source_x86_64=("https://github.com/melonDS-emu/melonDS/releases/download/${pkgver}/melonDS-${pkgver}-ubuntu-x86_64.zip")
-sha256sums_x86_64=("43bd28d9e6e864f08747905c9cbdeac701880d75f2dedad737279c7a005790f4")
+sha256sums_x86_64=("99465129f5413b2aad332e4377e523cf3cda905dc329d47dcb1ad01ce2cb3f66")
 
 source_aarch64=("https://github.com/melonDS-emu/melonDS/releases/download/${pkgver}/melonDS-${pgver}-ubuntu-aarch64.zip")
-sha256sums_aarch64=("99465129f5413b2aad332e4377e523cf3cda905dc329d47dcb1ad01ce2cb3f66")
+sha256sums_aarch64=("43bd28d9e6e864f08747905c9cbdeac701880d75f2dedad737279c7a005790f4")
 
 package() {
   cd "${srcdir}"
