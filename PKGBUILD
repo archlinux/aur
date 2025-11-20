@@ -3,7 +3,7 @@ _pkgname=sui
 _env=mainnet
 pkgname=${_pkgname}-${_env}-bin
 pkgver=1.60.1
-pkgrel=2
+pkgrel=1
 pkgdesc="Sui, a next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model powered by the Move programming language"
 arch=("x86_64" "aarch64")
 url="https://github.com/MystenLabs/sui"
@@ -27,7 +27,6 @@ package() {
         sui-debug
         sui-faucet
         sui-graphql-rpc
-        sui-move-lsp
         sui-node
         sui-test-validator
         sui-tool
