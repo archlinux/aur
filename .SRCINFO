@@ -1,0 +1,14 @@
+pkgbase = pda-git
+	pkgver = r50.g25b4363
+	pkgrel = 1
+	url = https://github.com/llywelwyn/pda
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = pda
+	conflicts = pda
+	source = pda-git::git+https://github.com/llywelwyn/pda.git
+	sha256sums = SKIP
+
+pkgname = pda-git
