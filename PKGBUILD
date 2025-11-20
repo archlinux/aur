@@ -3,13 +3,14 @@
 
 pkgname=youtube-to-mp3
 pkgver=3.9.17
-pkgrel=4
+pkgrel=5
 build=251029
 pkgdesc='Downloads audio from YouTube or Vimeo and saves it to mp3 or m4a format to listen to locally'
 arch=('x86_64')
 url="https://www.mediahuman.com/download.html"
 license=('LicenseRef-custom')
-depends=('ffmpeg'
+depends=('icu<=76.1'
+         'ffmpeg'
          'hicolor-icon-theme'
          'qt5-declarative'
          'qt5-multimedia'
