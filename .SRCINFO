@@ -1,0 +1,17 @@
+pkgbase = quikgit-bin
+	pkgdesc = A GitHub repository manager with terminal user interface (TUI) (binary release)
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/lvcasx1/quikgit
+	license = MIT
+	depends = git
+	conflicts = quikgit
+	provides = quikgit
+	arch = aarch64
+	source_aarch64 = https://github.com/lvcasx1/quikgit/releases/download/v1.0.4/quikgit_1.0.4_Linux_arm64.tar.gz
+	sha256sums_aarch64 = e6ad906970e7ba3f581cab88a84b8c14822344c99037be698da885cc5ec85f7b
+	arch = x86_64
+	source_x86_64 = https://github.com/lvcasx1/quikgit/releases/download/v1.0.4/quikgit_1.0.4_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 3335c55bc285ac54cf9f0999ec2cbf540bfb474fbc5f1699bb848cf741459e09
+	
+pkgname = quikgit-bin
