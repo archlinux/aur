@@ -1,9 +1,9 @@
 # Maintainer: Mr.Makkhawan Sardlan <makkawan2553@gmail.com>
 pkgname='ctdb'
-pkgver='0.1.0a'
+pkgver='0.1.3a'
 pkgrel=1
 epoch=
-pkgdesc="For controlling discord bots (Python script)"
+pkgdesc="For controlling discord bots"
 arch=('any')
 url="https://github.com/makk-r/CTDB"
 license=('GPL')
@@ -19,14 +19,14 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://raw.githubusercontent.com/makk-r/CTDB/main/Program/Download/CTDB-${pkgver}.tar.gz")
+source=("https://raw.githubusercontent.com/makk-r/CTDB/main/Program/Download/${pkgname}-${pkgver}.tar.gz")
 noextract=()
-# 💡 สำคัญ: ต้องใส่ Checksum จริงที่ได้จาก makepkg -g
-sha256sums=('ad8118e4f3a2e100aa064d9d5381518180d96c467beab4f4ffb6e02dbdee8e0c') 
+
+sha256sums=('1adaead9d9c092c4baa87cdbc100f13ffaf2c545f947a7a97fb1f85710db1303') 
 validpgpkeys=()
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "CTDB-$pkgver"
     install -d "$pkgdir/usr/lib/$pkgname"
 
     cp -r usr/lib/* "$pkgdir/usr/lib/$pkgname/"
