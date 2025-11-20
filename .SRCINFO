@@ -1,7 +1,7 @@
 pkgbase = pam_ssh_agent_auth
 	pkgdesc = PAM module which permits authentication via the keyring in a forwarded ssh-agent.
 	pkgver = 0.10.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/jbeverly/pam_ssh_agent_auth
 	arch = i686
 	arch = x86_64
@@ -10,11 +10,18 @@ pkgbase = pam_ssh_agent_auth
 	arch = aarch64
 	license = custom:OpenSSL
 	makedepends = git
-	makedepends = gcc13
 	depends = openssl
 	optdepends = openssh: standard ssh-agent
 	optdepends = gnupg: gpg ssh-agent
 	source = git+https://github.com/jbeverly/pam_ssh_agent_auth.git#tag=pam_ssh_agent_auth-0.10.4
-	md5sums = SKIP
+	source = 0001-Fix-function-prototypes-in-configure.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/sys-auth/pam_ssh_agent_auth/files/pam_ssh_agent_auth-0.10.4-0001-Fix-function-prototypes-in-configure.patch?id=13974ec7fb699e6e3b3199348e3c0393c45e5f41
+	source = 0002-Add-missing-includes-implicit-function-declarations.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/sys-auth/pam_ssh_agent_auth/files/pam_ssh_agent_auth-0.10.4-0002-Add-missing-includes-implicit-function-declarations.patch?id=13974ec7fb699e6e3b3199348e3c0393c45e5f41
+	source = 0003-Fix-incompatible-pointer.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/sys-auth/pam_ssh_agent_auth/files/pam_ssh_agent_auth-0.10.4-0003-Fix-incompatible-pointer.patch?id=13974ec7fb699e6e3b3199348e3c0393c45e5f41
+	source = 0004-Always-call-linker.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/sys-auth/pam_ssh_agent_auth/files/pam_ssh_agent_auth-0.10.4-0004-Always-call-linker.patch?id=13974ec7fb699e6e3b3199348e3c0393c45e5f41
+	sha256sums = fd1a1dc2b82a15f2546a263215a74f74bd367353bf5ac9e51d1e873037bd8957
+	sha256sums = 5ff56f6ea23b8a1273828e74c0eadea3b01ae23dcca8d6e01827399d84888c47
+	sha256sums = 66dc5be89d21baad015f22f6197db3eb2b9d61efc416cccead4075424e4a1352
+	sha256sums = dae2ee19bfd2425b04b9c982653e1433610fdb92ead1c1f495772b6ecbf66292
+	sha256sums = 2f63a192e0c2777d80fec3fcbe615c24fec3f66697ae22e0b76931547531d838
 
 pkgname = pam_ssh_agent_auth
