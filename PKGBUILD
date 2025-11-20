@@ -1,51 +1,73 @@
 # Maintainer: Davide Gerhard <rainbow@irh.it>
 
 pkgname=freedv-gui
-pkgver=2.0.2
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Digital Voice for Radio Amateurs"
 arch=('x86_64' 'aarch64')
 license=('LGPL-2.1-or-later')
 url="https://freedv.org/"
-depends=('libpulse' 'hamlib' 'sox' 'wxwidgets-gtk3' 'codec2' 'speex' 'libao' 'libsamplerate' 'gsm' 'libsndfile' 'python-pytorch' 'python-torchaudio' 'python-matplotlib' 'python-tqdm')
-makedepends=('cmake')
+depends=('libpulse' 'hamlib' 'wxwidgets-gtk3' 'speex' 'libao' 'libsamplerate' 'gsm' 'libsndfile' 'python-pytorch' 'python-torchaudio' 'python-matplotlib' 'python-tqdm' 'libebur128')
+makedepends=('cmake' 'patchelf')
 source=(
-  "codec2_gp_interleaver.h.patch"
-  "disable_mimalloc.patch"
   "freedv.sh"
   "${pkgname}-${pkgver}.tar.gz::https://github.com/drowe67/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
   )
-sha512sums=('89aebd2ddec75e7770cd4f6224b6cdfe59de8175480040d55ee56201ecb77f5e087743a018b9a4b18cda0f19a8eebe13816d83609e1a703b461900a1dc6ceeff'
-            'd6c0792740cbba5cf687c6b75f8150d27f02626cfe6404ad5e5b653817108313386a85936cc3c47608fec726d197b9c03a4b204f2551c7a9053562ec65f3357f'
-            '7d505ff36176baeca347c52a5c7bdb819bea9cd059783588e3438a02a9f707d66cf2201ce7ff202cee660936ff33adcfda4b1a707013b14fcb25b82c3007531a'
-            '32cb1719d87b1693a4760202a548d44da5213c09c2d3b432034e5ea0ae40a4eef8c5834467bb071764f1135bfc2022da7d2e1eb7448c003d761f440c2471999c')
+sha512sums=('7d505ff36176baeca347c52a5c7bdb819bea9cd059783588e3438a02a9f707d66cf2201ce7ff202cee660936ff33adcfda4b1a707013b14fcb25b82c3007531a'
+            'e30d365ae89920de75ec42b693ed878fff92d624274fdadc00fb693a29b39f32aa83853475582c67ee484684b9bf851b9e0d4ae92853750fc1dd14cb6e0e5dd2')
 
-prepare() {
-  patch --directory="$pkgname-$pkgver" --forward --strip=1 --input="${srcdir}/codec2_gp_interleaver.h.patch"
-  patch --directory="$pkgname-$pkgver" --forward --strip=1 --input="${srcdir}/disable_mimalloc.patch"
-}
+## trying to use local library
+# Codec2:  fatal error: codec2_alloc.h: No such file or directory
+# Opus: in Radae, cmake patch dnn/nnet.h < ${CMAKE_SOURCE_DIR}/src/opus-nnet.h.diff
+#   then download https://github.com/xiph/opus/blob/f383ea8212f7f78d8c143b37a465897db72c3e26/dnn/download_model.sh
+#   cmake patch for opus but then they use a shell script to download opus_data
+# radae: who know?!
+# mimalloc: requires cmake patch
+# ebur128: from system
+
+radae_bins=(
+  "radae_rx"
+  "radae_tx"
+  "lpcnet_demo"
+  "test_rade_dec"
+  "test_rade_enc"
+  "write_rade_weights"
+)
+radae_libs=(
+  "librade.so.0.1"
+)
 
 build() {
-  # at the moment the installer downloads opus ;-(
   cmake -B build -S "$pkgname-$pkgver" \
     -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_STATIC_DEPS=FALSE \
-    -DUSE_NATIVE_AUDIO=TRUE
+    -DUSE_NATIVE_AUDIO=TRUE \
+    -DUSE_STATIC_EBUR128=FALSE
+
   make -C build
 }
 
 package() {
   make -C build DESTDIR="$pkgdir" install
-  install -m0755 -D "build/rade_build/src/radae_rx" "$pkgdir/usr/bin/radae_rx"
-  install -m0755 -D "build/rade_build/src/radae_tx" "$pkgdir/usr/bin/radae_tx"
-  install -m0755 -D "build/rade_build/src/lpcnet_demo" "$pkgdir/usr/bin/lpcnet_demo"
-  install -m0755 -D "build/rade_build/src/test_rade_dec" "$pkgdir/usr/bin/test_rade_dec"
-  install -m0755 -D "build/rade_build/src/test_rade_enc" "$pkgdir/usr/bin/test_rade_enc"
-  install -m0755 -D "build/rade_build/src/write_rade_weights" "$pkgdir/usr/bin/write_rade_weights"
-  install -m0755 -D "build/rade_build/src/librade.so" "$pkgdir/usr/lib/librade.so"
-  install -m0755 -D "build/rade_build/src/librade.so.0.1" "$pkgdir/usr/lib/librade.so.0.1"
+
+  # TODO: radae contains build folder in the header. need removing
+
+  # remove local RPATH and copy the file in pkgdir
+  for file in "${radae_bins[@]}"; do
+    patchelf --remove-rpath "build/rade_build/src/$file"
+    # can't pass -Wl,--strip-debug via CMAKE_C_FLAGS
+    #strip --remove-section=.debug_info "build/rade_build/src/$file"
+    install -m0755 -D "build/rade_build/src/${file}" "$pkgdir/usr/bin/${file}"
+  done
+  for file in "${radae_libs[@]}"; do
+    patchelf --remove-rpath "build/rade_build/src/$file"
+    #strip --remove-section=.debug_info "build/rade_build/src/$file"
+    install -m0755 -D "build/rade_build/src/${file}" "$pkgdir/usr/lib/${file}"
+  done
+  ln -s "/usr/lib/${radae_libs[0]}" "$pkgdir/usr/lib/librade.so"
+
   install -m0644 -D "$pkgname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/${pkgname}/COPYING"
 
   # not nice but this avoid to patch the code; copy as is without cleanup
