@@ -3,7 +3,7 @@
 pkgname=umi-ocr-bin
 _pkgname=Umi-OCR
 pkgver=2.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, Open-source, Batch Offline OCR Software.(Prebuilt version)开源、免费的离线OCR软件。支持截屏/批量导入图片，PDF文档识别，排除水印/页眉页脚，扫描/生成二维码。内置多国语言库"
 arch=('x86_64')
 url="https://github.com/hiroi-sora/Umi-OCR"
@@ -25,7 +25,6 @@ depends=(
     'libxcomposite'
     'libxcrypt-compat'
     'python-setuptools'
-    'qt6-virtualkeyboard'
     'python-pyqt6'
     'python-tornado'
     'openssl-1.1'
@@ -40,7 +39,6 @@ depends=(
     'python-pyqt5'
     'python-cairo'
     'qt6-multimedia'
-    'qt6-wayland'
     'postgresql-libs'
     'python-simplejson'
     'python-cryptography'
@@ -65,10 +63,32 @@ options=(
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_Linux_Paddle_${pkgver}.tar.xz")
 sha256sums=('7ff32e5dc818d67171820545100433c86e7e71155f9bad0851fad2ced9588f9b')
 prepare() {
-    gendesk -q -f -n --pkgname="${pkgname%-bin}" --pkgdesc="${pkgdesc}" --categories="Utility" --name="${_pkgname}" --exec="/usr/lib/${pkgname%-bin}/${pkgname%-bin}.sh"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-bin}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="/usr/lib/${pkgname%-bin}/${pkgname%-bin}.sh"
     find "${srcdir}/${_pkgname}_Linux_Paddle_${pkgver}" -type f -perm 600 -exec chmod 644 {} +
-    sed -i "s/UPLOAD_DIR = \".\/temp_doc\"/UPLOAD_DIR = os.path.join(os.environ.get(\'HOME\', \'\'), \'.cache\', \'umi-ocr-temp\')/g" \
+    sed -i "s/UPLOAD_DIR = \".\/temp_doc\"/UPLOAD_DIR = os.path.join(os.environ.get(\'XDG_CACHE_HOME\', os.path.expanduser(\'~\/.cache\')), \'umi-ocr\')/g" \
         "${srcdir}/${_pkgname}_Linux_Paddle_${pkgver}/UmiOCR-data/py_src/server/doc_server.py"
+    sed -i -e "
+        32i\from pathlib import Path
+        /# 日志保存目录/a \# 使用XDG标准目录\nconfig_dir = os.environ.get('XDG_CONFIG_HOME', os.path.expanduser('~\/.config'))
+        s/Logs_Dir = \".\/logs\"/Logs_Dir = os.path.join(config_dir, \"umi-ocr\", \"logs\")/g
+        /def open_logs_dir():/,/os.startfile(Logs_Dir)/ {
+            /def open_logs_dir():/a \    import subprocess
+            /os.startfile(Logs_Dir)/c \    subprocess.Popen(['xdg-open', Logs_Dir])
+        }
+    " "${srcdir}/${_pkgname}_Linux_Paddle_${pkgver}/UmiOCR-data/py_src/imports/umi_log.py"
+    sed -i -e "
+        6i\from pathlib import Path
+        7i\# 使用XDG标准目录\nconfig_dir = os.environ.get('XDG_CONFIG_HOME', os.path.expanduser('~\/.config'))
+        s/_FileName = \".\/\.pre_settings\"/_FileName = os.path.join(config_dir, \"umi-ocr\", \".pre_settings\")/g
+    " "${srcdir}/${_pkgname}_Linux_Paddle_${pkgver}/UmiOCR-data/py_src/utils/pre_configs.py"
+    # 修改 global_configs_connector.py 跳过写权限检查
+    sed -i 's/if not os.access(cwd, os.W_OK):/# 跳过写权限检查，因为程序已经修改了所有需要写权限的路径\n        #if not os.access(cwd, os.W_OK):/g' \
+        "${srcdir}/${_pkgname}_Linux_Paddle_${pkgver}/UmiOCR-data/py_src/utils/global_configs_connector.py"
 }
 package() {
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
