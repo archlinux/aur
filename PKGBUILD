@@ -13,5 +13,5 @@ source=("TF2CDownloaderLinux::https://github.com/tf2classic/TF2CDownloader/relea
 sha256sums=('SKIP')
 
 package() {
-  install -Dm755 "$srcdir/TF2CDownloaderLinux" "$pkgdir/usr/bin/tf2cdownloader"
+  install -Dm755 "$srcdir/TF2CDownloaderLinux" "$pkgdir/usr/bin/TF2CDownloaderLinux"
 }
