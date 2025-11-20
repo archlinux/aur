@@ -18,7 +18,7 @@ if [ -n "$1" ]; then
 else
     msg "Getting latest ${github_project} release"
     gh_url="https://api.github.com/repos/${github_owner}/${github_project}/git/matching-refs/tags/v${major_version}."
-    vers=$(curl -SsLl "${gh_url}" | jq -r 'reverse | .[0].ref' | sed -re 's;^refs/tags/v;;')
+    vers=$(curl -SsLl "${gh_url}" | jq -r '.[] | .ref | sub("refs/tags/v"; "")' | sort -V | tail -1)
     if ! [[ "$vers" =~ ^[0-9]+(\.[0-9]+)+$ ]]; then
 		echo "Version string "\""${vers}"\"" doesn't look like a valid version number" >&2
 		exit 1
