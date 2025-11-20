@@ -4,7 +4,7 @@ _pkgauthor=VirusTotal
 _pkgname=yara-x
 _pkgbin=yr
 pkgname=${_pkgname}-bin
-pkgver=1.9.0
+pkgver=1.10.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="A pure Rust implementation of YARA"
@@ -23,8 +23,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/downloa
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}-unknown-linux-gnu.gz")
 sha256sums=('fdf05444c9178e662fa28810d94a1fa6ec32d7be798241c98094213317265880'
             'fadd7f234cb2b70b3102db5af86649ffe3faa59519cbe1a46e68826c4df039f1')
-sha256sums_x86_64=('8a3a706ede8abaffbd899bfb7f009ab650502a834ead790d3596c1e0f56a0180')
-sha256sums_aarch64=('da293ae430229838f05d4845a2475482499838e4df7b15a6eec226b386a9aa99')
+sha256sums_x86_64=('361a880b38729647db53d1e7360d46af2416b08ddcc443fbb440f73c6cb1a90a')
+sha256sums_aarch64=('2eb7ff43ab8b456354c405df0dcc68ed46bfaa8dc8661d3d00c290d94cfcea95')
 
 
 package() {
