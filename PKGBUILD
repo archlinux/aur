@@ -4,7 +4,7 @@ _edition=' Beta'
 pkgname="mongodb-$_target"
 _pkgver='1.48.2-beta.2'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='2'
+pkgrel='3'
 pkgdesc='The official GUI for MongoDB - beta version'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
@@ -16,7 +16,6 @@ optdepends=('org.freedesktop.secrets')
 backup=('etc/mongodb-compass.conf')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
-	"$pkgname-$pkgver-html-webpack-plugin.diff::https://github.com/tophf/html-webpack-plugin/commit/592d76997c2144d07a7294f3d2d4065aa38f9286.diff"
 	'ignore-fix-ts-errors.diff'
 	'hadron-build-ffmpeg.diff'
 	'fix-argv.diff'
@@ -25,12 +24,11 @@ source=(
 	'mongodb-compass.conf'
 )
 b2sums=('64dbe69898acc1b007b4c73f8eb711ec6ba2fe22577dfed8b045ef5f0fd59b18cbeebd03c5a0955b80e2d714a393c729ad57eda7c15632dcdd9436441d1fba48'
-        '4be67fe645ffea7813be2e4a8766c1a224ccba07b028dc710043f143a12c7127e0c18959974cc532907be46f04406969a71968270de1e2a38d3db0e207e76bb3'
         'd392a97281780657529841933474b370f0ae9df9a063aa95a7c90ae43f82baacbef3840e2a3eabd0848d84dc19665cc6f7ea5a2311f1dc2eda9d03eff9be2eea'
         'c0f139a686be88867b54ee530bd95bf51e71ccf2d07f25a8a70fffdfc7592ff017fd386641170a80596f855b2df39da5dc05fc563c018540fc3bc610e16971e1'
         '925dbea3aa18e5ac3529276f0c5d4c42d7ae5cb81cc9e5df3b411af751b8314e9a20bd0c5c7af144d2cdd11a26634a11aa7c064545d96003566640f5005375df'
         '17d17d30bda15430b3a8fe15207ab41dc6820461aad52df07bf7b7a0ecc342c5605bdf57673aab24f8a136560b6cad30b059fadb2f2e271cacda6a2b903daa40'
-        'da79c9f1611cbd560dd86aa52c467bad7b43065e5e3257c393ee4daac2cb2d49787bb9c4e996696ff80d7d48ea2ea32ee21760e5d559b8c00b2e9fb3db62d206'
+        'a3c850d924e3f55e1319dd5c2fceb02ca07220a4a95e77847b53a2321e0268741fb0c62a712af99e10a5c50de3e5ee5af272d3465e9556510fdc46abe8edab9d'
         '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
 
 _sourcedirectory="compass-$_pkgver"
@@ -61,7 +59,7 @@ prepare() {
 	## electron-to-chromium - ensure compatibility with the Electron version set above
 	## nan - fix build with current node/kernel version
 	## ssh2 - fix build with current node/kernel version
-	## html-webpack-plugin - update to version for which a patch to fix build with node>=25.1.0 can be applied
+	## html-webpack-plugin - fix build with node>=25.1.0
 	npm update electron electron-to-chromium nan ssh2 html-webpack-plugin --package-lock-only
 
 	# Add missing dependencies that don't get installed by default for some reason
@@ -69,10 +67,6 @@ prepare() {
 
 	# Run the bootstrap command
 	HUSKY=0 GYP_DEFINES='libmongocrypt_link_type=dynamic' npm run bootstrap
-
-	# Apply html-webpack-plugin patch to fix build with node=>25.1.0 due to localStorage behavior changes (https://github.com/jantimon/html-webpack-plugin/pull/1880)
-	cd "$srcdir/$_sourcedirectory/node_modules/html-webpack-plugin/"
-	patch --forward -p1 < "$srcdir/$pkgname-$pkgver-html-webpack-plugin.diff"
 }
 
 build() {
