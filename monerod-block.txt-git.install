@@ -1,0 +1,8 @@
+post_install() {
+    cat <<EOF
+===========================================================================
+block.txt needs to be added to the monerod configuration file. For example,
+\`echo ban-list=/usr/share/monero/block.txt | sudo tee -a /etc/monerod.conf\`
+===========================================================================
+EOF
+}

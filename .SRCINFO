@@ -1,0 +1,16 @@
+pkgbase = monerod-block.txt-git
+	pkgdesc = Popular block.txt for monerod
+	pkgver = r2.8c4c9a5
+	pkgrel = 1
+	url = https://github.com/eleanor-k/block.txt
+	install = monerod-block.txt-git.install
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	depends = monero
+	provides = monerod-block.txt
+	conflicts = monerod-block.txt
+	source = monerod-block.txt::git+https://github.com/eleanor-k/block.txt
+	b2sums = SKIP
+
+pkgname = monerod-block.txt-git
