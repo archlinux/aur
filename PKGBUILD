@@ -2,7 +2,7 @@
 # Maintainer: Amr Saber <amr.m.saber.mail@gmail.com>
 
 pkgname='kv-bin'
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='A lightweight, feature-rich command-line key-value store with encryption, TTL, and version control'
 url='https://github.com/AmrSaber/kv'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('kv')
 conflicts=('kv')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.binary::https://github.com/AmrSaber/kv/releases/download/v0.1.1/kv_0.1.1_linux_arm64")
-sha256sums_aarch64=('698d97f9de9d7a6f8f432c9d932c992fcc47ad8d298efdff01ae8fbd611ad14f')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.binary::https://github.com/AmrSaber/kv/releases/download/v0.1.2/kv_0.1.2_linux_arm64")
+sha256sums_aarch64=('d07aafd9d39f15775a3c397ea10d6c64af7cec9e87baf063ad2c974e6fd66cd7')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/AmrSaber/kv/releases/download/v0.1.1/kv_0.1.1_Linux_arm64.tar.gz")
-sha256sums_aarch64=('1449ad39d0cf2ade752a3742a26db0db7190c35e362ae29b121feccaae8c168e')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/AmrSaber/kv/releases/download/v0.1.2/kv_0.1.2_Linux_arm64.tar.gz")
+sha256sums_aarch64=('119f8b7ab5c90804f5339081cec17e7ef1503d3f9beabf01f4cc3ee40b033145')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.binary::https://github.com/AmrSaber/kv/releases/download/v0.1.1/kv_0.1.1_linux_amd64")
-sha256sums_x86_64=('96bd60f528a1209a5ed1fa55192c9cd9f2778d0905bd43cdbac96365edb82e36')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.binary::https://github.com/AmrSaber/kv/releases/download/v0.1.2/kv_0.1.2_linux_amd64")
+sha256sums_x86_64=('5f6dd68b9026242748edb86f9cd438ca946d0ce1cd01522c1dfdf739de01eb3d')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/AmrSaber/kv/releases/download/v0.1.1/kv_0.1.1_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('3c19217badffe2269848e3c85f4d051e242fb3e00f47d675ee964f03adadb6d2')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/AmrSaber/kv/releases/download/v0.1.2/kv_0.1.2_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('1060560540b4b21020798cf6b5082bf2f2d8656675d9f6a649fed2c9165ae2c0')
 
 package() {
   # bin
