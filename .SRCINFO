@@ -1,0 +1,23 @@
+pkgbase = python-spandrel-extra-arches
+	pkgdesc = Additional architecture implementations for Spandrel (PyTorch model loader)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/chaiNNer-org/spandrel
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-spandrel
+	depends = python-pytorch
+	depends = python-torchvision
+	depends = python-safetensors
+	depends = python-numpy
+	depends = python-einops
+	depends = python-typing_extensions
+	source = spandrel-0.4.1.tar.gz::https://github.com/chaiNNer-org/spandrel/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 12063b78bb3a1979617e697a66994be9e651117425e19f7004af2a3e34ad2b97
+
+pkgname = python-spandrel-extra-arches
