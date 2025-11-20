@@ -1,16 +1,13 @@
 pkgbase = mangowc-git
 	pkgdesc = A Wayland compositor with smooth animation
-	pkgver = r761.3346c8a
-	pkgrel = 1.6
+	pkgver = r1105.8e4d3b7
+	pkgrel = 1
 	url = https://github.com/DreamMaoMao/mangowc
 	arch = x86_64
 	license = GPL-3.0
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
-	makedepends = fakeroot
-	makedepends = debugedit
-	makedepends = base-devel
 	makedepends = wayland-protocols>=1.41
 	depends = glibc
 	depends = wayland>=1.23.1

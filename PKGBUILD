@@ -1,8 +1,8 @@
 # Maintainer: DreamMaoMao <maoopzopaasnmakslpo@gmail.com>
 
 pkgname=mangowc-git
-pkgver=r761.3346c8a
-pkgrel=1.6
+pkgver=r1105.8e4d3b7
+pkgrel=1
 pkgdesc="A Wayland compositor with smooth animation"
 url="https://github.com/DreamMaoMao/mangowc"
 arch=("x86_64")
@@ -23,9 +23,6 @@ makedepends=(
   git
   meson
   ninja
-  fakeroot
-  debugedit
-  base-devel
   'wayland-protocols>=1.41'
 )
 
