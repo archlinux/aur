@@ -21,9 +21,9 @@ pkgbase = flax
 	conflicts = flax-git
 	noextract = FlaxEditorLinux.zip
 	noextract = Linux.zip
-	source = https://vps2.flaxengine.com/store/builds/Package_1_09_06605/FlaxEditorLinux.zip
-	source = https://vps2.flaxengine.com/store/builds/Package_1_09_06605/Linux.zip
-	sha256sums = add61cfddacc02760eb18709d0be1279bd9a2c35346c14c5e2725f470061b69c
-	sha256sums = 91b94472789e1762f5906b5599304a8ee7628a9b8593c96291907e8e528a6cc1
+	source = https://vps2.flaxengine.com/store/builds/Package_1_11_06802/FlaxEditorLinux.zip
+	source = https://vps2.flaxengine.com/store/builds/Package_1_11_06802/Linux.zip
+	sha256sums = 3a42f31c5b3e22f4074fbf6d549ce5a17aa7076e4286459dfbded16bff674960
+	sha256sums = 1373a181b3af08a827f128ffb33478c3e8e5f9179896f95720c6bb9ee7530c92
 
 pkgname = flax

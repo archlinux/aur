@@ -1,4 +1,5 @@
-# Maintainer: Crawcik <crawcik@gmail.com>
+# Maintainer: Totchi Lagawi <chatnoir420 at gmx dot com>
+# Fomer maintainer: Crawcik <crawcik@gmail.com>
 
 pkgname=flax
 pkgver=1.9.6505
@@ -13,10 +14,10 @@ optdepends=('dotnet-sdk: Dotnet 8 SDK'
             'portaudio: PortAudio audio driver'
             'libpulse: PulseAudio audio driver'
             'jack: JACK audio driver')
-source=(https://vps2.flaxengine.com/store/builds/Package_1_09_06605/{FlaxEditorLinux,Linux}.zip)
+source=(https://vps2.flaxengine.com/store/builds/Package_1_11_06802/{FlaxEditorLinux,Linux}.zip)
 noextract=({FlaxEditorLinux,Linux}.zip)
 conflicts=(flax-git)
-sha256sums=('add61cfddacc02760eb18709d0be1279bd9a2c35346c14c5e2725f470061b69c' '91b94472789e1762f5906b5599304a8ee7628a9b8593c96291907e8e528a6cc1')
+sha256sums=('3a42f31c5b3e22f4074fbf6d549ce5a17aa7076e4286459dfbded16bff674960' '1373a181b3af08a827f128ffb33478c3e8e5f9179896f95720c6bb9ee7530c92')
 
 package() {
 	cd "$srcdir"
