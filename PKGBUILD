@@ -24,7 +24,7 @@ source=("https://github.com/Natsumi-sama/VRCX/releases/download/${_pkgver}/VRCX_
         "LICENSE-v$_pkgver::https://raw.githubusercontent.com/Natsumi-sama/VRCX/refs/tags/$_pkgver/LICENSE"
         'vrcx'
         'VRCX.desktop')
-sha256sums=('001b73f21a03168de7c5132d27c7430e2655990519f3752085588e9943f5e76a'
+sha256sums=('6d1d8686180700f94b35e05eca6db54e95eacad4ae4eae4412052e9a1016dd76'
             '1927804117a7ac55e00646df36f77edd09d2cfee850588fc453a81d01bad90d1'
             'f7b1a299fe162337a9a3b066478b38a1cb524dae7a7e55669d3c6f02dc5f361b'
             '7582adf143859d66d1b75fd13f4d5be6041fb99bc949764f247ba8c3d790e76c')
