@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=media-hoarder-bin
 _pkgname='Media Hoarder'
-pkgver=1.4.5
+pkgver=1.4.6
 _electronversion=13
 pkgrel=1
 pkgdesc="The media frontend for data hoarders and movie lovers.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/theMK2k/Media-Hoarder/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ffed84824bd25165a221b83a1360f92eb2aaa03f9418345c86bc65d74f1b703b'
+sha256sums=('d6f7d4738246afa4673b5f312514f1a7ef150badbe3095968560ed9bcd19c238'
             '3c67fce0428a3d133bb589cd1db329789ec235049af1412511f89420c99ae9a6'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
