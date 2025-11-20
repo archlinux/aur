@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=grok-jpeg2000-git
-pkgver=20.0.0.r8.g1032548
+pkgver=20.0.2.r2.gf1f36f1
 pkgrel=1
 pkgdesc="A high performance open source JPEG 2000 codec"
 arch=(x86_64)
@@ -42,7 +42,7 @@ build() {
 
 package() {
   # patchelf --replace-needed liboriginal.so.1 libreplacement.so.1 my-program
-  patchelf --replace-needed libperl.so /usr/lib/perl5/5.42/core_perl/CORE/libperl.so build/bin/libgrokj2kcodec.so.20.0.0
+  patchelf --replace-needed libperl.so /usr/lib/perl5/5.42/core_perl/CORE/libperl.so build/bin/libgrokj2kcodec.so.20.0.2
 
   DESTDIR="${pkgdir}" cmake --install build
 }
