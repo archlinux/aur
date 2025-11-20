@@ -1,0 +1,14 @@
+pkgbase = waybar-weather-info
+	pkgdesc = Waybar weather module using yr.no
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/eegseth/waybar-weather-info
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = openssl
+	source = waybar-weather-info-0.1.2.tar.gz::https://github.com/eegseth/waybar-weather-info/archive/refs/tags/0.1.2.tar.gz
+	sha256sums = 64af907a79558c6b837754f3b8e0accbf7cb4dde5b8ea1d4aa66a6ddb967dd1d
+
+pkgname = waybar-weather-info
