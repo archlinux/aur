@@ -11,7 +11,7 @@ makedepends=('go' 'bun-bin' 'git')
 provides=('usb-tree')
 conflicts=('usb-tree' 'usb-tree-app-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('2920048cd8372c0fa6648dc3160e2b16235af1dc42b97ebd06e7947e861dcc11')
+sha256sums=('e8f3c14a71635398a79cb233bdcba7f5a23a6001774e74fa1fcf4b0e9084a3c2')
 
 build() {
     cd "${srcdir}/usb-tree-${pkgver}"
