@@ -47,7 +47,7 @@ makedepends=(
 
 _pkg_ext='.tar.gz'
 source=("${pkgname}-${pkgver}${_pkg_ext}::${url}/archive/refs/tags/v${pkgver}${_pkg_ext}")
-b2sums=('b890ee9c4a551f92ad819c6cf118f212e0d60127f2c3e8c45aafbfabd6408a4edec31ebc627736c1d4ae031e9598c752a804ec762dc38ce0b715e74ebc5f1c65')
+b2sums=('dca409aa246de4081cd05f139d073050ed8530b65338885abf418e3b309b0466941d12f7108c80f17767bfb7f3b99ceca7d7000e6b5759f866bc4658bb25fbd7')
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}/core"
