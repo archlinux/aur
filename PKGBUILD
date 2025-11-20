@@ -2,7 +2,7 @@
 pkgname=python-typed-ffmpeg-compatible
 _origpkgname=typed_ffmpeg_compatible
 pkgver=3.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern Python FFmpeg wrappers offer comprehensive support for complex filters, complete with detailed typing and documentation."
 arch=("x86_64")
 url='https://pypi.org/project/typed-ffmpeg-compatible/'
@@ -13,6 +13,7 @@ makedepends=(
 	"python-installer"
 	"python-wheel"
 	"python-setuptools"
+	"python-setuptools-scm"
 	"python-hatchling"
 )
 source=("https://files.pythonhosted.org/packages/d5/6e/10ae1ea1ee255a48039ca6cce5db46b47dd00f4c09c32460b12041e1d7ec/typed_ffmpeg_compatible-3.7.1.tar.gz")
