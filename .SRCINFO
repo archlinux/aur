@@ -1,6 +1,6 @@
 pkgbase = wcd
 	pkgdesc = A command-line program to change directory fast
-	pkgver = 6.0.5
+	pkgver = 6.0.6
 	pkgrel = 1
 	url = https://waterlan.home.xs4all.nl/wcd.html
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = wcd
 	license = GPL-2.0-only
 	depends = glibc
 	depends = ncurses
-	source = https://waterlan.home.xs4all.nl/wcd/wcd-6.0.5.tar.gz
-	source = https://waterlan.home.xs4all.nl/wcd/wcd-6.0.5.tar.gz.asc
+	source = https://waterlan.home.xs4all.nl/wcd/wcd-6.0.6.tar.gz
+	source = https://waterlan.home.xs4all.nl/wcd/wcd-6.0.6.tar.gz.asc
 	source = wcd.sh
 	validpgpkeys = F8F1BEA490496A09CCA328CC38C1F572B12725BE
-	sha256sums = f2970e01a52886d330604490fdbedd7373faff0910ff2e14889435677f563763
+	sha256sums = c5d1b22aefbb0f142e27b1cddad17021c43034c76103830fb2757387ac593eb1
 	sha256sums = SKIP
 	sha256sums = 59b19ccded26d9ba356b5e8c435faa6f300d9f36aef1436bb25e2311195aeeed
 
