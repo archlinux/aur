@@ -1,0 +1,11 @@
+--- Makefile	2023-03-14 18:10:47.908000000 +0100
++++ Makefile	2023-03-14 18:10:35.072000000 +0100
+@@ -268,7 +268,7 @@
+ 	smatch_scripts/trace_params.pl smatch_scripts/unlocked_paths.pl \
+ 	smatch_scripts/whitespace_only.sh smatch_scripts/wine_checker.sh \
+ 
+-SMATCH_LDFLAGS := -lsqlite3  -lssl -lcrypto -lm
++SMATCH_LDFLAGS := -lsqlite3  -lssl -lcrypto -lm $(LDFLAGS)
+ 
+ smatch: smatch.o $(SMATCH_OBJS) $(SMATCH_CHECKS) $(LIBS)
+ 	$(Q)$(LD) -o $@ $< $(SMATCH_OBJS) $(SMATCH_CHECKS) $(LIBS) $(SMATCH_LDFLAGS)

@@ -1,0 +1,11 @@
+--- a/Makefile	2023-03-11 21:10:36.362000000 +0100
++++ b/Makefile	2023-03-11 21:11:29.114000000 +0100
+@@ -383,7 +383,7 @@
+ 	touch check_list_local.h
+ 
+ smatch.o: smatch.c $(LIB_H) smatch.h check_list.h check_list_local.h
+-	$(CC) $(CFLAGS) -c smatch.c -DSMATCHDATADIR='"$(smatch_datadir)"'
++	$(CC) $(CFLAGS) -c smatch.c -DSMATCHDATADIR='"$(SHAREDIR)/smatch"'
+ 
+ $(SMATCH_OBJS) $(SMATCH_CHECKS): smatch.h smatch_slist.h smatch_extra.h \
+ 	smatch_constants.h avl.h
