@@ -7,7 +7,7 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="mozillavpn"
 pkgname="$_pkgname-git"
-pkgver=2.31.1.r28.g7214aaf
+pkgver=2.32.0.r41.gd364bc2
 pkgrel=1
 pkgdesc="Fast, secure, and easy to use VPN from the makers of Firefox"
 url="https://github.com/mozilla-mobile/mozilla-vpn-client"
@@ -74,6 +74,8 @@ pkgver() {
 }
 
 build() {
+  export CXXFLAGS+=" -Wno-error=unused-result"
+
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
