@@ -2,7 +2,7 @@
 _appname=memos
 pkgname="${_appname}pot-bin"
 _pkgname=Memospot
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Self-contained desktop version of Memos -a privacy-first, lightweight note-taking service.(Prebuilt version)"
 arch=('x86_64')
@@ -13,10 +13,10 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=()
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}_linux.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/memospot/memospot/v${pkgver}/LICENSE"
 )
-sha256sums=('65aaf01339d0a0aef32f33425e101f04dd728fa0d8add14b14d8d3ebaddcc99d'
+sha256sums=('cbd3971ebfb7a61a854bd6110daf977a2d16f9d5477aa2623e8e923a9bf8aaa7'
             '7b6871a7c7b860a8a3d9ff677ac8aea44a3dd8aa9e33da91adcd26cc54182cde')
 package() {
     install -Dm755 "${srcdir}/usr/bin/"{"${_appname}","${pkgname%-bin}"} -t "${pkgdir}/usr/bin"
