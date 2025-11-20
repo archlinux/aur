@@ -1,0 +1,5 @@
+[gizmosql-bin]
+source = "github"
+github = "gizmodata/gizmosql"
+use_latest_release = true
+prefix = "v"
