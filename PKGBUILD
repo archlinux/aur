@@ -2,8 +2,8 @@
 # Contributor: Jan Koppe <post@jankoppe.de>
 
 pkgname=ffmpeg-decklink
-pkgver=8.0
-pkgrel=2
+pkgver=8.0.1
+pkgrel=1
 epoch=1
 _obs_studio_ver='32.0.1'
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
@@ -111,19 +111,16 @@ conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         "https://github.com/obsproject/obs-studio/archive/${_obs_studio_ver}/obs-studio-${_obs_studio_ver}.tar.gz"
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
-        '090-ffmpeg-glslang16-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/f1e9032a2000b8b885cffd6fed8eacd47b37673f'
         'LICENSE')
-sha256sums=('b2751fccb6cc4c77708113cd78b561059b6fa904b24162fa0be2d60273d27b8e'
+sha256sums=('05ee0b03119b45c0bdb4df654b96802e909e0a752f72e4fe3794f487229e5a41'
             'SKIP'
             '906278ccedb5ed919e586697467eb7fa4205fceeda127386ce5b74026113ba96'
             '5cb2475de410f5696072687af88e91461cdacd1bb636ac14a3b348e3383934f1'
-            '0010bf826a7008452ccc8a072b0186688e8687be0dbe2be2ca7540e26ca076f1'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
 prepare() {
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/090-ffmpeg-glslang16-fix.patch"
 }
 
 build() {
