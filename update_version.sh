@@ -18,7 +18,7 @@ else
     gh_url="https://api.github.com/repos/gravitational/teleport/git/matching-refs/tags/v${major_version}."
     # There are lots of dev release tags in the teleport repo.
     # Filter them out by only selecting tags which are valid semantic version numbers.
-    vers=$(curl -SsLl "${gh_url}" | jq -r 'reverse | [ .[] | select(.ref| test("^refs/tags/v[0-9]+(\\.[0-9]+){2}$"))  ] | .[0].ref' | sed -re 's;^refs/tags/v;;')
+    vers=$(curl -SsLl "${gh_url}" | jq -r '.[] | select(.ref | test("^refs/tags/v[0-9]+(\\.[0-9]+){2}$")) | .ref | sub("refs/tags/v"; "")' | sort -V | tail -1)
     if ! [[ "$vers" =~ ^[0-9]+(\.[0-9]+)+$ ]]; then
 		echo "Version string "\""${vers}"\"" doesn't look like a valid version number" >&2
 		exit 1

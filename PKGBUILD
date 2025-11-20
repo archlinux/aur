@@ -4,7 +4,7 @@
 
 pkgname=teleport
 _pkgname=teleport
-pkgver=18.3.2
+pkgver=18.4.1
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
@@ -114,7 +114,7 @@ package_teleport() {
     cp -r examples "${pkgdir}/usr/share/teleport/"
 }
 
-sha512sums=('5a0f5a80c8246fde00cf9d218314ff76716e81bed91110e4faacd7b61fe0ecfc8d828f34ff12741e09bd2fff33416abd733a0de89d519f1d8d84ad9bea04b321'
+sha512sums=('fda5a18fe7ace1f17f57506fd5fe6fad2adde343492c71981ee842242e136276183c227f4b44211d9b517169a1faa2126d1b265919c06fbb672f37b0be5f0dbb'
             '409116e201c40b7e0a379b316123500ab7691cbf441ecee048811885f97cd1185671676bb61bf36cb288399e8c0355a0a9f963ce7f94e44ba49e061187c9249e'
             '469249bebaa974e5e205c66c0459ed071b06a35aa9b94a3f34d3cbc5e75aa0f290d70ba8e5c63b49a6319a0f524a846ded459e07e3dde4c260e7668959821b96'
             '71edc21c14d83fec85be730eb6c83c5371932cc08113d0d69167e1bc7a810965b82b3a8591ee7adb3f4b1004db66ee1857350d4fd30a30dcbf20f1146ffdc345')
