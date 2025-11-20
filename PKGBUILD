@@ -1,6 +1,6 @@
 # Maintainer: Bui Doan Quang Huy <qhuylovegd@gmail.com>
 pkgname=astralrinth-bin
-pkgver=0.10.304
+pkgver=0.10.601
 pkgrel=1
 pkgdesc="A fork of the Modrinth Launcher developed by didirus"
 arch=('x86_64')
@@ -11,10 +11,10 @@ optdepends=('xorg-xrandr: for older minecraft versions')
 options=('!strip' '!emptydirs' '!debug')
 conflicts=('modrinth-app-bin' 'modrinth-app-git' 'modrinth-app-ammipamge' 'modrinth-app')
 install=${pkgname}.install
-source=("AstralRinth_App_${pkgver}_amd64.deb::https://git.astralium.su/didirus/AstralRinth/releases/download/AR-${pkgver}/AstralRinth%20App_${pkgver}_amd64.deb"
+source=("AstralRinth_App_${pkgver}_amd64.deb"
         "astralrinth-app"
         "astralrinth-file-extensions.xml")
-sha512sums=('SKIP'
+sha512sums=('ffaea3cefcc9300f28b9a9e476b8e8c5b1afbef3c5eb5c1a34d68fb93f1e8bb9d2e316b1bd4d2c8af5f52be7c3fec878581742570e8a4876003604c1ff612c2b'
             '9bd0a35204fb4bae20b0bec5382410556ce4eb3649c95b44fb6b4f852ac71526bace6a457d5f3e7c84e7959d24f9dc2a0c746af783d79c5d635b834991cec35a'
             '38fedb2532850677ff638d5c7e20fbc78efc18b5deb26f77dfcc079b42f48f16473f0a27d7af183ef02ad3cd94729c86249bdac60b2bc1b25b47a1ebd2ba0c0d')
 
