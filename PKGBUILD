@@ -1,8 +1,9 @@
+# Maintainer: zbe <aur at zbe dot bz>
 # Maintainer: Winston Astrachan <rew1red at rew1 dot red>
 # Contributor: Plague-doctor <plague at privacyrequired dot com>
 
 pkgname=pcloud-drive
-pkgver=1.14.16
+pkgver=1.14.18
 pkgrel=1
 pkgdesc='pCloud drive. Electron edition.'
 arch=('x86_64')
@@ -15,7 +16,7 @@ install="${pkgname}.install"
 replaces=('pcloud-git' 'pcloud')
 _shortname='pcloud'
 _appimage="${pkgname}-${pkgver}-${pkgrel}.AppImage"
-_api_code='XZbJvD5ZfXtwygX5xg7F9ywtRup5H5sBvfhy'
+_api_code='XZ2gJM5Z8pdJVlCT0s5FI1aTKxxgt48aEr8k'
 _api_response="$(curl -s "https://api.pcloud.com/getpublinkdownload?code=${_api_code}")"
 _dlhost="$(echo ${_api_response} | grep -E -o '[a-zA-Z0-9\-]+\.pcloud\.com' | head -n 2 | sort -R | head -n 1)"
 _dlpath="$(echo ${_api_response} | grep -E -o "\"path\":\s{0,1}\".+\"" | cut -d '"' -f 4 | tr -d '\\')"
