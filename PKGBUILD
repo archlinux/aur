@@ -2,7 +2,7 @@
 # Maintainer: LvcasX1 <noreply@github.com>
 
 pkgname='quikgit-bin'
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='A GitHub repository manager with terminal user interface (TUI) (binary release)'
 url='https://github.com/lvcasx1/quikgit'
@@ -12,11 +12,11 @@ provides=('quikgit')
 conflicts=('quikgit')
 depends=('git')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/lvcasx1/quikgit/releases/download/v1.0.4/quikgit_1.0.4_Linux_arm64.tar.gz")
-sha256sums_aarch64=('e6ad906970e7ba3f581cab88a84b8c14822344c99037be698da885cc5ec85f7b')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/lvcasx1/quikgit/releases/download/v1.0.5/quikgit_1.0.5_Linux_arm64.tar.gz")
+sha256sums_aarch64=('e4e707669a64719feda7a840cc540bd3acd63eaaead80b958d216916ea00fb8e')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/lvcasx1/quikgit/releases/download/v1.0.4/quikgit_1.0.4_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('3335c55bc285ac54cf9f0999ec2cbf540bfb474fbc5f1699bb848cf741459e09')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/lvcasx1/quikgit/releases/download/v1.0.5/quikgit_1.0.5_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('ee71d496542a8f76aa10e72d40bd292100b198a9bd2d18e303df0742e7059c47')
 
 package() {
   # bin
