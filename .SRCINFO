@@ -8,12 +8,11 @@ pkgbase = libexecinfo
 	arch = aarch64
 	arch = armv7h
 	license = BSD
+	makedepends = python
 	depends = glibc
 	provides = libexecinfo.so
 	conflicts = libexecinfo-git
-	source = libexecinfo-1.1.0.tar.gz::https://github.com/fam007e/libexecinfo/releases/download/v1.1.0.13/libexecinfo-1.1.0.tar.gz
-	source = libexecinfo.pc.in
-	sha256sums = 8845169352088a02522ab779a5d3706449eea56cc5e24a67aaf2e19980518291
-	sha256sums = 5e67fc815189d99d1493c1f936ac1509537e394fd7f8c74404d746144636a1a2
+	source = libexecinfo-1.1.0.tar.gz::https://github.com/fam007e/libexecinfo/releases/latest/download/libexecinfo-1.1.0.tar.gz
+	sha256sums = d9e80993750dbf8484aa7c5b0fb1ac02d6728136c2a01ca7196bf971c1cb7e2d
 
 pkgname = libexecinfo
