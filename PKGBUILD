@@ -1,7 +1,7 @@
 # Maintainer: 0xbbuddha <killian@archimedeos.org>
 
-pkgname=bashhound
-_pkgname=${pkgname}-git
+pkgname=bashhound-git
+_pkgname=${pkgname%-git}
 pkgver=r6.f5500dd
 pkgrel=1
 pkgdesc="Active Directory data collector for BloodHound written in Bash"
@@ -12,7 +12,7 @@ depends=('bash' 'openssl' 'jq' 'vim' 'zip' 'coreutils')
 makedepends=('git')
 provides=('bashhound')
 conflicts=('bashhound')
-source=("${_pkgname%-git}::git+${url}.git")
+source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
