@@ -9,7 +9,7 @@ depends=('gtk4' 'libadwaita' 'networkmanager')
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cachebag/nmrs/archive/v$pkgver-beta.tar.gz"
         "nmrs.desktop")
-sha256sums=('4644c3d120aa9ab63aaf1d089433863dfd75b35820367ff423a308df10feab3e'
+sha256sums=('f26772ffdc3f66932f34ea0a2320bb155e82de9dadd94309848f8c555510e117'
             '2279f157e299d52fabad1dfd9abd9e862b48dbba83921680f5134a537db061ef')
 
 build() {

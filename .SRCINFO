@@ -12,7 +12,7 @@ pkgbase = nmrs
 	depends = networkmanager
 	source = nmrs-0.1.1.tar.gz::https://github.com/cachebag/nmrs/archive/v0.1.1-beta.tar.gz
 	source = nmrs.desktop
-	sha256sums = 4644c3d120aa9ab63aaf1d089433863dfd75b35820367ff423a308df10feab3e
+	sha256sums = f26772ffdc3f66932f34ea0a2320bb155e82de9dadd94309848f8c555510e117
 	sha256sums = 2279f157e299d52fabad1dfd9abd9e862b48dbba83921680f5134a537db061ef
 
 pkgname = nmrs
