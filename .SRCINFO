@@ -1,6 +1,6 @@
 pkgbase = donkey-gauntlet-git
 	pkgdesc = A simple Python/Pygame game inspired by Donkey.bas
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/peterclifton/donkey-gauntlet
 	arch = any
