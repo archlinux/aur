@@ -8,7 +8,7 @@
 
 _pkgname="forkgram"
 pkgname="$_pkgname"
-pkgver=6.3.1
+pkgver=6.3.2
 pkgrel=1
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
@@ -77,7 +77,7 @@ source=(
   "$_pkgsrc_tdlib"::"git+https://github.com/tdlib/td.git"
 )
 sha256sums=(
-  '9c24e00e9048144d476921208d93ec62829648769f60d2ece8e1fb9539323ec0'
+  'e9199bd790cd20f459cc585703306975459281e99f057e0a7b6c41a942420131'
   'SKIP'
 )
 
@@ -92,10 +92,6 @@ prepare() {
       patch -d "$_pkgsrc" -Np1 -F100 -i "${srcdir:?}/$src"
     fi
   done
-
-  # fix type mismatch (@ 1191/1657)
-  sed -E -e 's&(\?) (_openedFolder)$&\1 static_cast<bool>(\2)&' \
-    -i "$_pkgsrc"/Telegram/SourceFiles/dialogs/dialogs_widget.cpp
 }
 
 build() {
