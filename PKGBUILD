@@ -3,7 +3,7 @@
 pkgbase=wps-office-365
 pkgname=('wps-office-365' 'wps-office-365-xiezuo' 'wps-office-365-fonts')
 pkgver=12.1.2.23578
-pkgrel=3
+pkgrel=4
 pkgdesc="WPS Office, is an office productivity suite."
 arch=('x86_64' 'aarch64' 'loong64')
 url="https://365.wps.cn/"
@@ -38,9 +38,12 @@ package_wps-office-365() {
   conflicts=('wps-office')
   provides=('wps-office')
 
-  _install --exclude ./usr/*xiezuo* --exclude ./usr/share/fonts \
-    --exclude ./usr/share/desktop-directories \
-    ./opt/kingsoft/wps-office/office6 ./usr
+  _install --exclude ./usr/*xiezuo* \
+          --exclude ./usr/share/fonts \
+          --exclude ./usr/share/desktop-directories \
+          --exclude ./usr/share/templates \
+          ./opt/kingsoft/wps-office/office6 \
+          ./usr
 
   # to save typing pkgdir
   cd "${pkgdir}"
@@ -53,20 +56,8 @@ package_wps-office-365() {
     rm opt/kingsoft/wps-office/office6/libfreetype.so*
   fi
 
-  # fix template path
-  sed -i 's|URL=.*|URL=/opt/kingsoft/wps-office/office6/mui/zh_CN/templates/newfile.docx|' \
-    usr/share/templates/wps-office-wps-template.desktop
-  sed -i 's|URL=.*|URL=/opt/kingsoft/wps-office/office6/mui/zh_CN/templates/newfile.xlsx|' \
-    usr/share/templates/wps-office-et-template.desktop
-  sed -i 's|URL=.*|URL=/opt/kingsoft/wps-office/office6/mui/zh_CN/templates/newfile.pptx|' \
-    usr/share/templates/wps-office-wpp-template.desktop
-
   # fix menu category
   sed -i 's|Categories=.*|&Office;|' usr/share/applications/*.desktop
-
-  # fix background process
-  sed -i '2i [[ $(ps -ef | grep -c "office6/$(basename $0)") == 1 ]] && export gOptExt=-multiply' \
-    usr/bin/{wps,wpp,et,wpspdf}
 
   # fix input method
   sed -i '2i [[ "$XMODIFIERS" == "@im=fcitx" ]] && export QT_IM_MODULE=fcitx' \
@@ -79,6 +70,9 @@ package_wps-office-365() {
   # disable force login
   sed -i '2i sed -i "s/enableForceLogin=true/enableForceLogin=false/" $HOME/.config/Kingsoft/Office.conf' \
     usr/bin/{wps,wpp,et,wpspdf}
+
+  # fix bsdtar warning
+  export LC_ALL=en_US.UTF-8
 }
 
 package_wps-office-365-xiezuo() {
