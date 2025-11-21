@@ -1,8 +1,8 @@
 # Maintainer: Firstpick firstpick1992@proton.me
 pkgname=pacsea-bin
-pkgver=0.5.0
+pkgver=0.5.1
 _tag="v$pkgver"
-pkgrel=2
+pkgrel=1
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (binary version)"
 arch=('x86_64')
 url="https://github.com/Firstp1ck/Pacsea"
@@ -42,24 +42,19 @@ provides=("pacsea=${pkgver}")
 conflicts=('pacsea' 'pacsea-git')
 source=("Pacsea::https://github.com/Firstp1ck/Pacsea/releases/download/${_tag}/Pacsea"
         "Pacsea-${_tag}.tar.gz::https://github.com/Firstp1ck/Pacsea/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('10cbb8f93d404b489ae41ce62a63f5b66e49127f9d14a946829f47f0f75d7e36'
-            '2f37e7ffddabedb8c2510b4cc8a2187612b3ebbc890a9e2047f26f49e80eb055')
+sha256sums=('cf17625d1a62a3ab2ca0b493ecb306d1e8d5a3e47884491593f01f046085ab31'
+            'c49556b9ddef3de4c5af6bebb5d10888433b5cc40d7da9367b1e613e51c7d593')
 
 package() {
-  : "${pkgdir:?pkgdir is not set}"
-  : "${srcdir:?srcdir is not set}"
-
-  # Install binary (release asset is named 'Pacsea'; install as lowercase 'pacsea')
+  cd "$srcdir"/Pacsea-* || exit 1
   install -Dm755 "$srcdir/Pacsea" "$pkgdir/usr/bin/pacsea"
-
-  # Install license and documentation from tagged source tarball
-  install -Dm644 "$srcdir"/Pacsea-*/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "$srcdir"/Pacsea-*/README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   
   # Install i18n configuration
-  install -Dm644 "$srcdir"/Pacsea-*/config/i18n.yml "$pkgdir/usr/share/pacsea/config/i18n.yml"
+  install -Dm644 "config/i18n.yml" "$pkgdir/usr/share/pacsea/config/i18n.yml"
   
   # Install locale files
   install -d "$pkgdir/usr/share/pacsea/locales"
-  install -m644 "$srcdir"/Pacsea-*/config/locales/*.yml "$pkgdir/usr/share/pacsea/locales/"
+  install -m644 config/locales/*.yml "$pkgdir/usr/share/pacsea/locales/"
 }
