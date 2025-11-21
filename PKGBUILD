@@ -5,12 +5,12 @@ if [[ (-z "$_srcinfo" && -z "$_pkgver") ]]; then
   : ${_autoupdate:=true}
 fi
 
-#: ${_dotnet_type=-bin}
+: ${_dotnet_type=-bin}
 : ${_install_path:=usr/lib}
 
 _pkgname="ryujinx"
 pkgname="$_pkgname-canary"
-pkgver=1.3.203
+pkgver=1.3.227
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 url="https://git.ryujinx.app/ryubing/ryujinx"
@@ -49,6 +49,8 @@ pkgver() {
 build() (
   export HOME="$SRCDEST/nuget-home"
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+  mkdir -p "$HOME" # must exist
 
   local _runtime="linux-x64"
   local _args=(
