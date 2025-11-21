@@ -1,13 +1,13 @@
 pkgbase = ly-git
 	pkgdesc = TUI display manager
-	pkgver = 1.0.0.r94.gc87d5b4
+	pkgver = 1.2.0.r19.g816be74
 	pkgrel = 1
-	url = https://github.com/fairyglade/ly
+	url = https://codeberg.org/AnErrupTion/ly.git
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = custom:WTFPL
-	makedepends = zig
+	makedepends = zig>=0.14.0
 	makedepends = git
 	makedepends = libxcb
 	depends = pam
@@ -16,7 +16,7 @@ pkgbase = ly-git
 	conflicts = ly
 	backup = etc/ly/config.ini
 	backup = etc/ly/setup.sh
-	source = git+https://github.com/fairyglade/ly.git
+	source = git+https://codeberg.org/AnErrupTion/ly.git
 	md5sums = SKIP
 
 pkgname = ly-git
