@@ -1,26 +1,24 @@
 pkgbase = opentracecapture
 	pkgdesc = Signal analysis library for logic analyzers, oscilloscopes, and multimeters.
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opentracelab.github.io/website/
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = meson
 	makedepends = ninja
-	makedepends = pkg-config
+	makedepends = pkgconf
 	depends = glib2
 	depends = libusb
 	depends = libzip
 	optdepends = zlib: used for CRC32 in STF input
-	optdepends = libtirpc: optional, used by VXI, fallback when glibc >= 2.26
+	optdepends = libtirpc: used by VXI, fallback when glibc >= 2.26
 	optdepends = libserialport>=0.1.1: used by some drivers
-	optdepends = librevisa>=0.0.20130412: used by some drivers
 	optdepends = hidapi>=0.8.0: used for some HID based "serial cables"
 	optdepends = bluez: for Bluetooth or BLE communication
-	optdepends = libftdi1>=1.0: used by some drivers
-	optdepends = libgpib: used by some drivers
+	optdepends = libftdi>=1.0: used by some drivers
+	optdepends = linux-gpib: used by some drivers
 	optdepends = libieee1284: used by some drivers
-	optdepends = libgio>=2.32.0: used by some drivers
 	optdepends = nettle: used by some drivers
 	optdepends = check>=0.9.4: to run unit tests
 	optdepends = doxygen: for the C API docs

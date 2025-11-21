@@ -2,23 +2,21 @@
 
 pkgname=opentracecapture
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Signal analysis library for logic analyzers, oscilloscopes, and multimeters."
 arch=('x86_64')
 url="https://opentracelab.github.io/website/"
 license=('GPL-3.0-only') 
-makedepends=('meson' 'ninja' 'pkg-config') # Add any other build dependencies here
+makedepends=('meson' 'ninja' 'pkgconf') # Add any other build dependencies here
 depends=('glib2' 'libusb' 'libzip') # Add any runtime dependencies here
 optdepends=('zlib: used for CRC32 in STF input' 
-	'libtirpc: optional, used by VXI, fallback when glibc >= 2.26'
+	'libtirpc: used by VXI, fallback when glibc >= 2.26'
         'libserialport>=0.1.1: used by some drivers'
-        'librevisa>=0.0.20130412: used by some drivers'
         'hidapi>=0.8.0: used for some HID based "serial cables"'
         'bluez: for Bluetooth or BLE communication'
-        'libftdi1>=1.0: used by some drivers'
-        'libgpib: used by some drivers'
+        'libftdi>=1.0: used by some drivers'
+        'linux-gpib: used by some drivers'
         'libieee1284: used by some drivers'
-        'libgio>=2.32.0: used by some drivers'
         'nettle: used by some drivers'
         'check>=0.9.4: to run unit tests'
         'doxygen: for the C API docs'
