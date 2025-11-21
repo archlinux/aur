@@ -1,6 +1,6 @@
 # Maintainer: Gilbert Gilb's <gilbsgilbert@gmail.com>
 pkgname=riscv64-gnu-toolchain-musl-bin
-pkgver=2025.11.04
+pkgver=2025.11.21
 pkgrel=1
 pkgdesc="GNU toolchain for riscv64 MUSL, including GCC."
 arch=('x86_64')
@@ -14,10 +14,10 @@ optdepends=()
 makedepends=()
 options=(!strip)
 source=(
-  "https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2025.11.04/riscv64-musl-ubuntu-24.04-gcc.tar.xz"
+  "https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2025.11.21/riscv64-musl-ubuntu-24.04-gcc.tar.xz"
 )
 sha512sums=(
-  "2f9edbb812b8f059cc50ef9ddaec6f6a02c305653236253ee3ab51aa39ec05c966117311ba444c8b15a25349100fe6c488e551cfb1c08ad4e2356afdc3dae322"
+  "4da740a2aff1dd3b745e654e55d75ef91bd202ce63bd513618002d0707b2d7af981e536ea9d892939d41f1709ad7091762d094c2d3f655371f5f83db19ef05ef"
 )
 
 package() {
