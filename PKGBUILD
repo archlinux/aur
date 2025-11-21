@@ -4,7 +4,7 @@
 
 _pkgname=gns3-server
 pkgname="$_pkgname"-2
-pkgver=2.2.54
+pkgver=2.2.55
 pkgrel=1
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64' 'aarch64')
@@ -40,15 +40,15 @@ provides=('gns3-server')
 install="$_pkgname".install
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$_pkgname@.service"
-        "fix_requirements_for_Arch.diff")
-sha256sums=('fe17019797f400a55350f3a7f3e0b9b3b89e14adacf68641e85ca895cd9cf1b9'
+        "fix_requirements_for_Arch.patch")
+sha256sums=('4061931162cdd87a5ede78e706c24d882695bb8d9a37532bf26116a4ce66d96f'
             'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f'
-            'f9cceb3a7d86ac13b0aee2284efd3c51afb72f04ed087d325a734203e9b23cb4')
+            '003edd2b586306d9bb5f5d30e2d1b77a3a9252d6819f65926df394c0239617c4')
 
 prepare() {
     cd "$_pkgname-$pkgver"
     # Arch usually has the latest versions. Patch requirements to allow them.
-    patch --strip=2 -i "$srcdir"/fix_requirements_for_Arch.diff
+    patch --strip=2 -i "$srcdir"/fix_requirements_for_Arch.patch
 }
 
 build() {
