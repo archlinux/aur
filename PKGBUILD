@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=sshpilot
-pkgver=4.4.0
+pkgver=4.4.1
 pkgrel=1
 pkgdesc='SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support.'
 url='https://github.com/mfat/sshpilot'
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('python')
 makedepends=()
 arch=('any')
-sha256sums=('4336b0ba5c31524b4c10a57196d0b49dd8df1281d86078d65782b230e8258217')
+sha256sums=('b50a6d92c6b2fbbca8681935926ab45cc6fec9f578253c19542db18f9eec61f6')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 _srcdir="${pkgname}-${pkgver}"
