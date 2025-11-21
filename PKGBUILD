@@ -1,7 +1,7 @@
 # Maintainer: graysky <therealgraysky AT proton DOT me>
 pkgname=zmk-studio
 pkgver=0.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool for runtime keymap updates on ZMK-powered devices without reflashing firmware"
 arch=(x86_64)
 url="https://github.com/zmkfirmware/zmk-studio"
@@ -37,6 +37,6 @@ package() {
   install -Dm755 "src-tauri/target/release/app" "$pkgdir/usr/bin/zmk-studio"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm755 "$srcdir/ZMK Studio.desktop" -t "$pkgdir/usr/share/applications"
-  install -Dm755 src-tauri/icons/128x128.png -t "$pkgdir/usr/share/icons/hicolor/128x128/apps"
-  install -Dm755 src-tauri/icons/32x32.png -t "$pkgdir/usr/share/icons/hicolor/32x32/apps"
+  install -Dm755 src-tauri/icons/128x128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
+  install -Dm755 src-tauri/icons/32x32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
 }
