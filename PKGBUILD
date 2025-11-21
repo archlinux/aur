@@ -4,8 +4,9 @@
 pkgname=antigravity-bin-hardened
 pkgver=1.11.3
 _buildid=6583016683339776
-pkgrel=6
-pkgdesc="Google Antigravity - Agentic Development Platform (Pre-built Binary)"
+pkgrel=12
+pkgdesc="Google Antigravity - Agentic Development Platform (Hardened for High-Security/Corporate Environments)"
+# Hardening: Strict permissions, AppArmor profile, and dependency enforcement.
 arch=('x86_64')
 url="https://antigravity.google/"
 license=('Proprietary')
@@ -16,8 +17,10 @@ optdepends=(
 )
 options=('!strip')
 source=("https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/${pkgver}-${_buildid}/linux-x64/Antigravity.tar.gz"
-        "antigravity.apparmor")
+        "antigravity.apparmor"
+        "antigravity-launcher.sh")
 sha256sums=('025da512f9799a7154e2cc75bc0908201382c1acf2e8378f9da235cb84a5615b'
+            'SKIP'
             'SKIP')
 
 package() {
@@ -32,19 +35,24 @@ package() {
 
     cp -r "$_extracted_dir"/* "$pkgdir/opt/antigravity/"
 
-    install -d "$pkgdir/usr/bin"
+    # DO NOT chmod files - Electron needs original permissions from tarball
+    # Changing permissions causes segfaults and crashes
+    # VOXIS HARDENING: We apply strict permissions AFTER extraction where safe.
     
-    if [ -f "$pkgdir/opt/antigravity/Antigravity" ]; then
-        chmod +x "$pkgdir/opt/antigravity/Antigravity"
-        ln -s "/opt/antigravity/Antigravity" "$pkgdir/usr/bin/antigravity"
-    elif [ -f "$pkgdir/opt/antigravity/antigravity" ]; then
-        chmod +x "$pkgdir/opt/antigravity/antigravity"
-        ln -s "/opt/antigravity/antigravity" "$pkgdir/usr/bin/antigravity"
-    else
-        echo "Error: Could not find binary 'antigravity' or 'Antigravity' in /opt/antigravity"
-        ls -R "$pkgdir/opt/antigravity"
-        exit 1
-    fi
+    # 1. Secure the directory structure (Owner write only)
+    find "$pkgdir/opt/antigravity" -type d -exec chmod 755 {} +
+    find "$pkgdir/opt/antigravity" -type f -exec chmod 644 {} +
+    
+    # 2. Restore executable permissions for the binary
+    chmod 755 "$pkgdir/opt/antigravity/Antigravity"
+    
+    # 3. CRITICAL: chrome-sandbox must be SUID root (4755)
+    # This is required for Electron's Layer 1 Sandbox to work.
+    # Without this, the app is LESS secure as it cannot sandbox renderer processes.
+    chmod 4755 "$pkgdir/opt/antigravity/chrome-sandbox"
+
+    # Install launcher wrapper script (auto-detects Wayland/X11)
+    install -Dm755 antigravity-launcher.sh "$pkgdir/usr/bin/antigravity"
 
     install -d "$pkgdir/usr/share/pixmaps"
     
@@ -78,4 +86,7 @@ EOF
 
     # AppArmor Profile (Optional Security Enhancement)
     install -Dm644 antigravity.apparmor "$pkgdir/usr/share/apparmor/antigravity.apparmor"
+
+    # Install Security Documentation
+    install -Dm644 SECURITY.md "$pkgdir/usr/share/doc/$pkgname/SECURITY.md"
 }
