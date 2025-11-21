@@ -1,0 +1,13 @@
+pkgbase = brother-hl-l1230w
+	pkgdesc = LPR and CUPS driver for the Brother HL-L1230W
+	pkgver = 4.4.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=as_ot&lang=en&prod=hll1230w_eu_as
+	arch = x86_64
+	license = custom:Brother commercial license
+	depends = cups
+	depends = ghostscript
+	source = https://download.brother.com/welcome/dlf106421/hll1230wpdrv-4.4.0-1.x86_64.rpm
+	sha256sums = ae0ef9f1f720f7822b377b1a9b9677c840db54c98329f744756d49a4a4f461ad
+
+pkgname = brother-hl-l1230w
