@@ -4,7 +4,7 @@
 
 pkgbase=uutils-coreutils-git
 pkgname=($pkgbase coreutils-uutils)
-pkgver=0.4.0.r86.g7f4d902
+pkgver=0.4.0.r140.g4ee588e
 pkgrel=1
 pkgdesc="Rust rewrite of coreutils"
 url=https://github.com/uutils/coreutils
@@ -36,13 +36,13 @@ prepare(){
   echo -e "[patch.crates-io]\nnix = { path = \"rust-vendor/nix\" }" >> Cargo.toml
 }
 # Packaging guideline cause double build.
-export RUSTONIG_DYNAMIC_LIBONIG=1 #LOCALES=n SKIP_UTILS="arch kill more uptime hostname"
+export RUSTONIG_DYNAMIC_LIBONIG=1
 [ $RUSTC_BOOTSTRAP = 1 ] && export CARGOFLAGS="-Zbuild-std=std,panic_abort -Zbuild-std-features=panic_immediate_abort"
 package_uutils-coreutils-git(){
   cd ${pkgbase%-git}
   unset optdepends
   make install DESTDIR="$pkgdir" PREFIX=/usr PROFILE=release-fast MULTICALL=y LN="ln -f" \
-    PROG_PREFIX=uu- LIBSTDBUF_DIR=/usr/lib/${pkgname%-git}
+    PROG_PREFIX=uu- LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} #LOCALES=n SKIP_UTILS="arch kill more uptime hostname"
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgbase%-git}
 }
 
@@ -52,8 +52,7 @@ package_coreutils-uutils(){
   conflicts=(coreutils)
   cd ${pkgbase%-git}
   unset optdepends
-  # We should build smaller non-prefixed binary with SKIP_UTILS, but it is slow and breaks bash-completion...
-  # Or this feature should be included to upstream.
+  # Remove this hack after patch was removed
   depends=(uutils-coreutils)
   install -d "$pkgdir"/usr/{bin,share/{licenses/${pkgname},man/man1,zsh/site-functions,fish/vendor_completions.d}}
   cd "$pkgdir"/usr
@@ -61,7 +60,6 @@ package_coreutils-uutils(){
   for _f in $("$srcdir"/uutils-coreutils/target/release-fast/coreutils --list | grep -v -E '^(kill|more|uptime|hostname|hashsum|\[)$') ; do
     ln -sf uu-$_f bin/$_f
     ln -sf uu-${_f}.1.gz share/man/man1/${_f}.1.gz
-    # bash completes symlinks
     echo -e "#compdef ${_f}=uu-${_f}\n_uu-${_f}" > share/zsh/site-functions/_$_f
     echo "complete -c ${_f} -w uu-${_f}" > share/fish/vendor_completions.d/${_f}.fish
   done
