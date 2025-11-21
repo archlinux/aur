@@ -1,6 +1,6 @@
 pkgbase = beekeeper-qt
 	pkgdesc = Deduplicate redundant data in your disk and save space
-	pkgver = a0339c8
+	pkgver = g2b18de0
 	pkgrel = 1
 	url = https://github.com/techmanwalker/beekeeper-qt
 	arch = x86_64

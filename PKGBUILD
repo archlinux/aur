@@ -1,7 +1,10 @@
 # Maintainer: Ángel Navarro <lito.15[at]proton[dot]me>
+# Note: if you already cloned the original techmanwalker/beekeeper-qt repo, 
+# this will clone it again. To use this PKGBUILD, it's better to
+# download it separately.
 
 pkgname=beekeeper-qt
-pkgver=a0339c8
+pkgver=g2b18de0
 pkgrel=1
 pkgdesc="Deduplicate redundant data in your disk and save space"
 url="https://github.com/techmanwalker/beekeeper-qt"
