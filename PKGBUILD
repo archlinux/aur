@@ -3,13 +3,14 @@ _pkgname=pawn-appetit
 
 pkgname="${_pkgname}"-bin
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ultimate Chess Toolkit"
 arch=('x86_64')
 url="https://github.com/Pawn-Appetit/pawn-appetit"
 license=('GPL-3.0')
 conflicts=()
-depends=('hicolor-icon-theme' openssl-1.1
+depends=('hicolor-icon-theme'
+    openssl-1.1
 	pango
  	webkit2gtk-4.1
 	gtk3
@@ -19,6 +20,7 @@ depends=('hicolor-icon-theme' openssl-1.1
 	gcc-libs
 	gdk-pixbuf2
 	glibc
+    gst-plugins-good
 )
 
 source_x86_64=("https://github.com/Pawn-Appetit/pawn-appetit/releases/download/v${pkgver}/Pawn.Appetit_${pkgver}_amd64_linux.deb")
