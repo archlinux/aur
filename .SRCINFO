@@ -1,7 +1,7 @@
 pkgbase = errands-c-git
-	pkgdesc = Todo application for those who prefer simplicity. (Rewrite in C.)
-	pkgver = 49.0.r0.g84a1d48
-	pkgrel = 1
+	pkgdesc = Todo application for those who prefer simplicity. (Rewrite in C. Experimental / potentially data-breaking)
+	pkgver = 46.2.4.r302.gcc0183d
+	pkgrel = 2
 	url = https://github.com/mrvladus/Errands
 	arch = x86_64
 	license = MIT

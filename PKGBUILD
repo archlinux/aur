@@ -3,8 +3,8 @@
 pkgname=errands-c-git
 _name=errands
 pkgver=46.2.4.r302.gcc0183d
-pkgrel=1
-pkgdesc="Todo application for those who prefer simplicity. (Rewrite in C.)"
+pkgrel=2
+pkgdesc="Todo application for those who prefer simplicity. (Rewrite in C. Experimental / potentially data-breaking)"
 arch=('x86_64')
 url="https://github.com/mrvladus/Errands"
 license=('MIT')
