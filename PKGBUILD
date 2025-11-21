@@ -5,11 +5,12 @@ pkgrel=1
 pkgdesc='Animated doom fire effect wallpaper for Wayland compositors'
 arch=('x86_64')
 url='https://github.com/larry-oates/doomfire-wallpaper'
-license=('GPL3')
+license=('0BSD')
 depends=('gtk4' 'gtk4-layer-shell' 'wayland')
 optdepends=('grim: for the screen_burn feature')
 provides=('doomfire-wallpaper')
 conflicts=('doomfire-wallpaper')
+options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/doomfire-wallpaper-v${pkgver}-x86_64.tar.gz")
 sha256sums=('SKIP')
 

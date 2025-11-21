@@ -4,13 +4,14 @@ pkgbase = doomfire-wallpaper-bin
 	pkgrel = 1
 	url = https://github.com/larry-oates/doomfire-wallpaper
 	arch = x86_64
-	license = GPL3
+	license = 0BSD
 	depends = gtk4
 	depends = gtk4-layer-shell
 	depends = wayland
 	optdepends = grim: for the screen_burn feature
 	provides = doomfire-wallpaper
 	conflicts = doomfire-wallpaper
+	options = !debug
 	source = doomfire-wallpaper-bin-1.2.1.tar.gz::https://github.com/larry-oates/doomfire-wallpaper/releases/download/v1.2.1/doomfire-wallpaper-v1.2.1-x86_64.tar.gz
 	sha256sums = SKIP
 
