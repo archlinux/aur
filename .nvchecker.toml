@@ -1,4 +1,0 @@
-[openems-git]
-source = "git"
-git = "https://github.com/thliebig/openEMS.git"
-prefix = "v"

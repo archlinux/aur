@@ -3,11 +3,9 @@
 ## options
 : ${_build_python:=true}
 
-_pkgtype="-git"
-
 _pkgname="openems"
-pkgbase="$_pkgname${_pkgtype:-}"
-pkgver=0.0.36.r75.g954723d
+pkgbase="$_pkgname-git"
+pkgver=0.0.36.r123.g02cf7de
 pkgrel=1
 pkgdesc="A free and open source EC-FDTD solver"
 url="https://github.com/thliebig/openEMS"
@@ -85,13 +83,14 @@ _build_openems() {
 _build_python-openems() (
   [ "${_build_python::1}" != "t" ] && return
 
-  cd "$_pkgsrc/python"
-
   export CXXFLAGS LDFLAGS
   CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
   CXXFLAGS+=" -I${srcdir@Q}/deps/usr/include"
   LDFLAGS+=" -L${srcdir@Q}/deps/usr/lib"
 
+  export OPENEMS_INSTALL_PATH_IGNORE=1
+
+  cd "$_pkgsrc/python"
   python -m build --no-isolation --wheel --skip-dependency-check
 )
 
@@ -125,6 +124,8 @@ _package_python-openems() {
   cd "$_pkgsrc/python"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
+
+_pkgtype="${pkgbase#$_pkgname}"
 
 pkgname=("$_pkgname${_pkgtype:-}")
 [[ "${_build_python::1}" == "t" ]] && pkgname+=("python-$_pkgname${_pkgtype:-}")
