@@ -11,7 +11,7 @@ url="https://github.com/ChrisBuilds/terminaltexteffects"
 arch=('any')
 license=('MIT')
 
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-poetry-core')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-poetry-core' 'python-hatchling')
 depends=('python')
 
 conflicts=('terminaltexteffects')

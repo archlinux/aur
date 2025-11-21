@@ -10,6 +10,7 @@ pkgbase = python-terminaltexteffects
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = python-poetry-core
+	makedepends = python-hatchling
 	depends = python
 	provides = tte
 	conflicts = terminaltexteffects
