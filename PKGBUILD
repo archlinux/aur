@@ -1,4 +1,4 @@
-# Maintainer: Janis Jansons <aur@janhouse.lv>
+# Maintainer: Sebastian Tobie <archlinux@sebastian-tobie.de>
 pkgname=cecdaemon-git
 pkgver=1.0.0.r7.ge87b85f
 pkgrel=2
@@ -10,7 +10,7 @@ depends=('python' 'libcec' 'python-cec-git' 'python-uinput')
 provides=('cecdaemon')
 conflicts=('cecdaemon')
 makedepends=('git' 'python-setuptools')
-source=("cecdaemon-git::git+https://github.com/Janhouse/cecdaemon.git")
+source=("cecdaemon-git::git+https://github.com/simons-public/cecdaemon.git")
 md5sums=('SKIP')
 backup=(etc/{cecdaemon.conf,systemd/system/multi-user.target.wants/cecdaemon.service})
 

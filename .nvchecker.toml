@@ -1,0 +1,7 @@
+[__config__]
+oldver = ".nvchecker_version.json"
+newver = ".nvchecker_update.json"
+
+[cec-daemon]
+source = "github"
+github = "simons-public/cecdaemon"

@@ -1,7 +1,7 @@
 pkgbase = cecdaemon-git
 	pkgdesc = CEC Daemon for linux media centers
-	pkgver = 1.0.0.r4.g0de2f51
-	pkgrel = 1
+	pkgver = 1.0.0.r7.ge87b85f
+	pkgrel = 2
 	url = https://github.com/simons-public/cecdaemon
 	arch = any
 	license = BSD
@@ -15,8 +15,7 @@ pkgbase = cecdaemon-git
 	conflicts = cecdaemon
 	backup = etc/cecdaemon.conf
 	backup = etc/systemd/system/multi-user.target.wants/cecdaemon.service
-	source = cecdaemon-git::git+https://github.com/Janhouse/cecdaemon.git
+	source = cecdaemon-git::git+https://github.com/simons-public/cecdaemon.git
 	md5sums = SKIP
 
 pkgname = cecdaemon-git
-

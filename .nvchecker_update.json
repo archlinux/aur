@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "data": {
+    "cec-daemon": {
+      "version": "20251112.133628",
+      "revision": "ac6d1d9edeca4a79dfdfdad1edc8976f3f14c4dd",
+      "url": "https://github.com/simons-public/cecdaemon/commit/ac6d1d9edeca4a79dfdfdad1edc8976f3f14c4dd"
+    }
+  }
+}
