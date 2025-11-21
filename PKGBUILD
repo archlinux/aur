@@ -10,7 +10,7 @@ url="https://github.com/motherduckdb/metabase_duckdb_driver"
 license=("Apache-2.0")
 depends=("metabase")
 source=("$url/releases/download/$pkgver/duckdb.metabase-driver.jar")
-b2sums=('bbf3eb3a6c4b9158c2285118bf6ef82df986821c81d9c4c2c15ee34890fee58be0997e41b0f3e0107685bdd67222f26f29a494dc99377e1354c982c6fe61014b')
+b2sums=('332c6f3f109b88d63c4612d43796d7f1846639769517fcc17e99b7d0ee993b7e517fb5304545f0aae99105d05006639247f4ec9a60209603badb400a1f0111f0')
 noextract=("duckdb.metabase-driver.jar")
 options=("!strip")
 
