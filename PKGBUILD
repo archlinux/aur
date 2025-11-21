@@ -4,7 +4,7 @@
 pkgname=antigravity-bin-hardened
 pkgver=1.11.3
 _buildid=6583016683339776
-pkgrel=12
+pkgrel=13
 pkgdesc="Google Antigravity - Agentic Development Platform (Hardened for High-Security/Corporate Environments)"
 # Hardening: Strict permissions, AppArmor profile, and dependency enforcement.
 arch=('x86_64')
@@ -18,8 +18,10 @@ optdepends=(
 options=('!strip')
 source=("https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/${pkgver}-${_buildid}/linux-x64/Antigravity.tar.gz"
         "antigravity.apparmor"
-        "antigravity-launcher.sh")
+        "antigravity-launcher.sh"
+        "SECURITY.md")
 sha256sums=('025da512f9799a7154e2cc75bc0908201382c1acf2e8378f9da235cb84a5615b'
+            'SKIP'
             'SKIP'
             'SKIP')
 
