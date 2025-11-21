@@ -20,8 +20,6 @@ pkgbase = thrive-bin
 	provides = thrive
 	conflicts = thrive
 	options = !strip
-	source = thrive.sh
-	sha256sums = a636c2208f729198f78f31dad69a8272d85c0e6ae6c1a27608da6d62f79696c9
 	source_x86_64 = https://github.com/Revolutionary-Games/Thrive/releases/download/v0.9.0.1/Thrive_0.9.0.1_linux_x11.7z
 	sha256sums_x86_64 = f14cd75dd07aa202cc77bfeff4e0cdf7de3219a2cde8cae9a1e785043c5b6aee
 
