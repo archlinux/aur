@@ -2,7 +2,7 @@
 
 pkgname=notionsafe
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A cross-platform desktop app to backup Notion workspaces locally."
 arch=('any')
 url="https://github.com/KanishkMishra143/NotionSafe"
@@ -40,7 +40,7 @@ package() {
   # Use python-installer to place the wheel and its dependencies from pyproject.toml into the package
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  # Install desktop file and icon
+  # Install desktop file and icon from within the source directory
   install -D -m644 notionsafe.desktop "${pkgdir}/usr/share/applications/notionsafe.desktop"
   install -D -m644 assets/logo.png "${pkgdir}/usr/share/icons/hicolor/scalable/apps/notionsafe.png"
 }
