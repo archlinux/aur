@@ -2,7 +2,7 @@
 
 pkgname=thrive-launcher-bin
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Thrive Launcher for installing and automatically updating Thrive."
 arch=(x86_64)
 url="https://revolutionarygamesstudio.com"
@@ -10,9 +10,7 @@ license=(custom MIT)
 depends=(glibc zlib libxi libxinerama libxrender libxcursor libxext libglvnd libxrandr libx11)
 provides=(thrive-launcher)
 conflicts=(thrive-launcher)
-source=(thrive-launcher.sh)
 source_x86_64=("https://github.com/Revolutionary-Games/Thrive-Launcher/releases/download/v${pkgver%.0}/ThriveLauncher_${pkgver}_linux_standalone.7z")
-sha256sums=('555adf4db8b4306cd770b51bd664e46b3277659a2bc6b23a98f252474ceaa929')
 sha256sums_x86_64=('cea449864e82ea35e7abb692da6e3733bdf93f90257f011536b0274addde6850')
 options=(!strip)
 
