@@ -2,41 +2,28 @@
 pkgname=coccoc-browser-stable
 _pkgname=coccoc-browser
 pkgver=140.0.7339.250
-pkgrel=3
+pkgrel=4
 _pkgrel=1
 pkgdesc="The web browser from Coc Coc. Coc Coc is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
 arch=('x86_64')
 url="https://coccoc.com"
 license=('custom')
-depends=('ca-certificates'
+depends=(
     'ttf-liberation'
     'alsa-lib'
-    'atk'
-    'at-spi2-core'
-    'glibc'
-    'cairo'
     'libcups'
-    'curl'
-    'dbus'
-    'expat'
-    'mesa'
-    'glib2'
     'gtk3'
-    'nspr'
     'nss'
-    'pango'
-    'systemd'
-    'vulkan-icd-loader'
-    'libx11'
-    'libxcb'
-    'libxcomposite'
-    'libxdamage'
-    'libxext'
-    'libxfixes'
-    'libxkbcommon'
-    'libxrandr'
-    'wget'
+    'libxss'
+    'libxtst'
     'xdg-utils'
+)
+optdepends=(
+    'pipewire: WebRTC desktop sharing under Wayland'
+    'kdialog: for file dialogs in KDE'
+    'gnome-keyring: for storing passwords in GNOME keyring'
+    'libunity: for download progress on KDE'
+    'kwallet: for storing passwords in KWallet'
 )
 conflicts=('coccoc-browser')
 options=('!strip' '!emptydirs')
@@ -55,21 +42,23 @@ sha256sums=(
 )
 
 package() {
-    tar -xJf data.tar.xz -C "$pkgdir"
-    rm -r "$pkgdir"/etc
-
+    bsdtar -xf data.tar.xz -C "$pkgdir/"
+    
     install -dm755 "$pkgdir/usr/bin"
     ln -s "/opt/coccoc/browser/coccoc-browser" "$pkgdir/usr/bin/coccoc-browser"
-
+    
     local icon_sizes=(16 24 32 48 64 128 256)
     for size in "${icon_sizes[@]}"; do
         install -Dm644 "$pkgdir/opt/coccoc/browser/product_logo_${size}.png" \
-            "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/coccoc-browser.png"
+        "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/coccoc-browser.png"
+        rm "$pkgdir/opt/coccoc/browser/product_logo_${size}.png"
     done
     # Install 32x32 XPM icon
     install -Dm644 "$pkgdir/opt/coccoc/browser/product_logo_32.xpm" \
-        "$pkgdir/usr/share/icons/hicolor/32x32/apps/coccoc-browser.xpm"
-
+    "$pkgdir/usr/share/pixmaps/coccoc-browser.xpm"
+    rm "$pkgdir/opt/coccoc/browser/product_logo_32.xpm"
+    
     install -Dm644 "LICENSE.html" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE.html"
     chmod -R go-w "$pkgdir"
+    rm -r "$pkgdir/etc/cron.daily/" "$pkgdir/opt/coccoc/browser/cron/" 
 }
