@@ -1,7 +1,7 @@
 pkgbase = python-certbot-pkcs12
 	pkgdesc = PKCS#12 installer plugin for Certbot and Let's Encrypt
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/nasa-gcn/certbot-pkcs12
 	arch = any
 	license = Apache-2.0
@@ -12,7 +12,7 @@ pkgbase = python-certbot-pkcs12
 	makedepends = python-setuptools-scm
 	depends = certbot
 	depends = python-cryptography>38.0
-	source = certbot-pkcs12::git+https://github.com/nasa-gcn/certbot-pkcs12/#tag=v0.3.0
-	sha256sums = cb57127b5c6e79db152ca327c8f3da73ba1b0c441baf80a034763a6e20a38a27
+	source = certbot-pkcs12::git+https://github.com/nasa-gcn/certbot-pkcs12/#tag=v0.3.1
+	sha256sums = d6385fcc500ebd85cf348947eb07d1b8085dc67e0241874168db2344db274593
 
 pkgname = python-certbot-pkcs12
