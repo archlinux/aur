@@ -2,7 +2,7 @@
 pkgname=sing-box-ref1nd-git
 _pkgname=sing-box
 pkgver=1.13.0.alpha.27.reF1nd.1
-pkgrel=1
+pkgrel=2
 
 pkgdesc='The universal proxy platform.'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
