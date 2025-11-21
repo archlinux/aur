@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=elephant-nirisessions
-pkgver=2.16.0
+pkgver=2.16.1
 pkgrel=1
 pkgdesc='nirisessions provider for elephant'
 url='https://github.com/abenz1267/elephant'
@@ -12,7 +12,7 @@ makedepends=('go')
 conflicts=('elephant-nirisessions')
 provides=('elephant-nirisessions')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("ec0f2f02c0d73c651a45bc4e1ff1743f92aefaf0f17e81cec6eea0256215399b")
+sha256sums=("2fcf0ce5e060f304a6a175a4528feef05b417238baae31cce9966be495784b1a")
 
 build() {
     cd elephant-${pkgver}/internal/providers/nirisessions
