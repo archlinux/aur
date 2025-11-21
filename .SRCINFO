@@ -1,18 +1,18 @@
 pkgbase = seamly2d-git
-	pkgdesc = Open source patternmaking software
-	pkgver = v0.6.0.1.r355.g9af57415f
+	pkgdesc = Open source patternmaking software to democratize fashion
+	pkgver = v0.6.0.1.r2186.g94c2a386b9
 	pkgrel = 1
 	url = https://seamly.net
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = qt5-tools
-	depends = qt5-svg
-	depends = qt5-xmlpatterns
+	makedepends = qt6-tools
+	depends = qt6-svg
+	depends = poppler
 	depends = desktop-file-utils
+	depends = qt6-5compat
 	source = git+https://github.com/FashionFreedom/Seamly2D.git#branch=develop
-	md5sums = SKIP
+	b2sums = SKIP
 
 pkgname = seamly2d-git
-
