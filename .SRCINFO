@@ -1,6 +1,6 @@
 pkgbase = scalafmt
 	pkgdesc = code formatter for the Scala programming language
-	pkgver = 3.10.0
+	pkgver = 3.10.1
 	pkgrel = 1
 	url = https://github.com/scalameta/scalafmt
 	arch = any
