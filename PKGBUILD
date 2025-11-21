@@ -1,52 +1,49 @@
 # Maintainer: ariurn <admin@ariurn.com>
 
 pkgname=happ-desktop-bin
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="A proxy client for secure and private internet access"
 arch=('x86_64')
 url="https://github.com/Happ-proxy/happ-desktop"
 license=('custom')
-depends=('fuse2' 'glibc' 'gcc-libs' 'hicolor-icon-theme' 'libcap')
+depends=('glibc' 'gcc-libs' 'hicolor-icon-theme')
 provides=('happ-desktop')
 conflicts=('happ-desktop')
 install="${pkgname}.install"
 options=('!strip')
-source=("${pkgname}-${pkgver}.AppImage::https://github.com/Happ-proxy/happ-desktop/releases/download/1.0.2/Happ.linux.x86.AppImage")
-sha256sums=('0b0209d918b69c3c70cb1e62098cba2c409d45a59383510248b348277d6bf440')
-_appimage="${pkgname}-${pkgver}.AppImage"
+source=("${pkgname}-${pkgver}.deb::https://github.com/Happ-proxy/happ-desktop/releases/download/${pkgver}/Happ.linux.x64.deb")
+sha256sums=('23601b716fbd18bef760903a971584bb963acdc51543a47c38e432d58960f31b')
+_debfile="${pkgname}-${pkgver}.deb"
 
 prepare() {
-    chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract >/dev/null
+    # Extract deb package
+    bsdtar -xf "${_debfile}"
+    bsdtar -xf data.tar.zst
 }
 
 package() {
-    # Install AppImage contents
-    install -dm755 "${pkgdir}/opt/happ-desktop"
-    cp -r squashfs-root/* "${pkgdir}/opt/happ-desktop/"
+    # Copy extracted files from deb package
+    cp -a opt "${pkgdir}/"
+    cp -a usr "${pkgdir}/"
+    cp -a etc "${pkgdir}/"
+    
+    # Install wrapper script
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/happ" <<'EOF'
+#!/bin/bash
+# Clean up stale temporary files
+find /dev/shm /tmp -regextype posix-extended -regex '.*\=$' 2>/dev/null -delete
 
-    # Create executable symlink
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/happ-desktop/AppRun" "${pkgdir}/usr/bin/happ"
+# Force system OpenSSL instead of bundled old version
+export LD_LIBRARY_PATH="/usr/lib:$LD_LIBRARY_PATH"
 
-    # Install desktop file
-    install -Dm644 "squashfs-root/Happ.desktop" "${pkgdir}/usr/share/applications/happ.desktop"
+# Set Qt platform to XCB
+export QT_QPA_PLATFORM=xcb
 
-    # Fix desktop file paths
-    sed -i "s|Exec=.*|Exec=/usr/bin/happ|" "${pkgdir}/usr/share/applications/happ.desktop"
-    sed -i "s|Icon=.*|Icon=happ|" "${pkgdir}/usr/share/applications/happ.desktop"
+# Launch Happ
+exec /opt/happ/bin/Happ "$@"
+EOF
 
-    # Install icons
-    for size in 16 32 48 64 128 256 512; do
-        if [ -f "squashfs-root/usr/share/icons/hicolor/${size}x${size}/apps/happ.png" ]; then
-            install -Dm644 "squashfs-root/usr/share/icons/hicolor/${size}x${size}/apps/happ.png" \
-                "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/happ.png"
-        fi
-    done
-
-    # Install main icon as fallback
-    if [ -f "squashfs-root/happ.png" ]; then
-        install -Dm644 "squashfs-root/happ.png" "${pkgdir}/usr/share/pixmaps/happ.png"
-    fi
+    # Update desktop file to use wrapper
+    sed -i 's|Exec=/opt/happ/bin/Happ|Exec=/usr/bin/happ|' "${pkgdir}/usr/share/applications/Happ.desktop"
 }
