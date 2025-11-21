@@ -19,12 +19,15 @@ pkgbase = coccoc-browser-stable
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
 	optdepends = libunity: for download progress on KDE
 	optdepends = kwallet: for storing passwords in KWallet
+	provides = coccoc-browser
+	provides = coccoc
 	conflicts = coccoc-browser
+	conflicts = coccoc
 	options = !strip
 	options = !emptydirs
 	source = https://browser-linux.coccoc.com/deb/pool/main/coccoc-browser-stable_140.0.7339.250-1_amd64.deb
-	source = LICENSE.html::https://coccoc.com/termsofuse
+	source = LICENSE.html
 	sha256sums = 54f1216130f200e3cd16d529af47fe79755dc1662758d4ee88d065c7592042b2
-	sha256sums = SKIP
+	sha256sums = 22bf4605260a7432eee169b0afbfae6782b9812c2bc776fdc1a887f6e2b10ec6
 
 pkgname = coccoc-browser-stable

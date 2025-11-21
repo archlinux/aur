@@ -25,7 +25,8 @@ optdepends=(
     'libunity: for download progress on KDE'
     'kwallet: for storing passwords in KWallet'
 )
-conflicts=('coccoc-browser')
+provides=('coccoc-browser' 'coccoc')
+conflicts=('coccoc-browser' 'coccoc')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 
@@ -33,12 +34,12 @@ install=${pkgname}.install
 source=(
     "https://browser-linux.coccoc.com/deb/pool/main/${pkgname}_${pkgver}-${_pkgrel}_amd64.deb"
     # "https://browser-linux.coccoc.com/deb/public.gpg"
-    "LICENSE.html::https://coccoc.com/termsofuse"
+    "LICENSE.html"
 )
 sha256sums=(
     '54f1216130f200e3cd16d529af47fe79755dc1662758d4ee88d065c7592042b2'
     # '6119c4e31caf078f03f9ce5a2cf301646abcb78a687a70d28bdae9901c478300'
-    'SKIP'
+    '22bf4605260a7432eee169b0afbfae6782b9812c2bc776fdc1a887f6e2b10ec6'
 )
 
 package() {
