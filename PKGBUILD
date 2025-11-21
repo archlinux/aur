@@ -2,7 +2,7 @@
 
 pkgname=protonup-rs-bin
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI program to automate the installation and update of Proton-GE"
 url="https://github.com/auyer/Protonup-rs"
 license=("Apache")
