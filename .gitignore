@@ -1,1 +1,5 @@
 *.gz
+*.zst
+*.log
+pkg/
+src/

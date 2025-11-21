@@ -2,11 +2,12 @@
 
 pkgname=dongbei
 pkgver=0.0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="东北方言编程语言"
 arch=('any')
 url="https://github.com/zhanyong-wan/dongbei"
 license=('MIT')
+depends=("python-absl")
 makedepends=('python-setuptools-scm' 'python-setuptools')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/zhanyong-wan/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('2ac9deb013a865fd33d383441d39b3d73414801be8389789d096be42197787d4')
