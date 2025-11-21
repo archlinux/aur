@@ -1,7 +1,4 @@
-LiteLoaderQQNT/
-*.tar
-*.tar.xz
-*.tar.gz
-*.tar.zst
-src/
-pkg/
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
