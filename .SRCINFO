@@ -1,10 +1,11 @@
 pkgbase = tieba-cloud-sign
 	pkgdesc = Baidu Tieba Cloud Sign | 百度贴吧云签到
-	pkgver = 20250310.235356
+	pkgver = 20251120.140351
 	pkgrel = 1
 	url = https://github.com/MoeNetwork/Tieba-Cloud-Sign
 	arch = any
 	license = custom
+	makedepends = git
 	depends = cronie
 	depends = mariadb
 	depends = php-fpm

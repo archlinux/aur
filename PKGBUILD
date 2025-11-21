@@ -1,13 +1,14 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=tieba-cloud-sign
-pkgver=20250310.235356
+pkgver=20251120.140351
 pkgrel=1
 pkgdesc="Baidu Tieba Cloud Sign | 百度贴吧云签到"
 arch=("any")
 url="https://github.com/MoeNetwork/Tieba-Cloud-Sign"
 license=("custom")
 depends=("cronie" "mariadb" "php-fpm")
+makedepends=("git")
 backup=("srv/${pkgname}/config.php")
 optdepends=("php-gd: image processing for generating verification codes"
             "apache: http service"
