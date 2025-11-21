@@ -1,13 +1,17 @@
 pkgbase = python-engineering-notation
 	pkgdesc = Human-readable engineering notation
-	pkgver = 0.6.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://pypi.org/project/engineering-notation
 	arch = any
 	license = MIT
 	makedepends = python-installer
-	noextract = engineering_notation-0.6.0-py3-none-any.whl
-	source = engineering_notation-0.6.0-py3-none-any.whl::https://files.pythonhosted.org/packages/py3/e/engineering-notation/engineering_notation-0.6.0-py3-none-any.whl
-	sha256sums = 1ea1e450d575b4804723d0711b0609d2711dffac2f4b5548ee632c16a636d9f6
+	depends = python
+	optdepends = python-numpy: support for numpy integer types
+	noextract = engineering_notation-0.10.0-py3-none-any.whl
+	source = engineering_notation-0.10.0-py3-none-any.whl::https://files.pythonhosted.org/packages/py3/e/engineering-notation/engineering_notation-0.10.0-py3-none-any.whl
+	source = LICENSE::https://raw.githubusercontent.com/slightlynybbled/engineering_notation/v0.10.0/license.txt
+	sha256sums = 49ff22ba8377673c8cd5f45298b87c41946b5a84583806a4655760124e22c451
+	sha256sums = 416b2eca583dec4f95752742f8938b1f16f274c15dcd174567f8bab2016f2e48
 
 pkgname = python-engineering-notation
