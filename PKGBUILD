@@ -6,17 +6,18 @@ license=('GPL')
 arch=('x86_64')
 url="https://github.com/jeromerobert/hmat-oss"
 depends=('cblas' 'lapacke')
-makedepends=('cmake' 'gcc14')
+makedepends=('cmake')
 source=("https://github.com/jeromerobert/hmat-oss/archive/${pkgver}.tar.gz")
 sha256sums=('357969e54d4d213cbab9c0eb4ca944a160d519b0790c8300431b4acc151387e5')
 
 prepare() {
   cd $pkgname-$pkgver
+  curl -L https://github.com/jeromerobert/hmat-oss/commit/0b05cd2.patch | patch -p1
 }
 
 build() {
   cd $pkgname-$pkgver
-  CC=/usr/bin/gcc-14 CXX=/usr/bin/g++-14 cmake -DHMAT_GIT_VERSION=OFF -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_UNITY_BUILD=ON -DBLA_VENDOR=Generic .
+  cmake -DHMAT_GIT_VERSION=OFF -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_UNITY_BUILD=ON -DBLA_VENDOR=Generic .
   make
 }
 
