@@ -8,7 +8,6 @@ pkgname=(
   'aspnet-runtime-10.0-bin'
   'dotnet-runtime-10.0-bin'
   'dotnet-sdk-10.0-bin'
-  'netstandard-targeting-pack-10.0-bin'
   'dotnet-targeting-pack-10.0-bin'
   'aspnet-targeting-pack-10.0-bin'
  )
@@ -86,7 +85,6 @@ package_dotnet-sdk-10.0-bin() {
     'gcc-libs'
     'dotnet-runtime-10.0-bin'
     'dotnet-targeting-pack-10.0-bin'
-    'netstandard-targeting-pack-10.0-bin'
     'aspnet-runtime-10.0-bin'
     'aspnet-targeting-pack-10.0-bin'
   )
@@ -98,21 +96,9 @@ package_dotnet-sdk-10.0-bin() {
   ln -s dotnet-host-10.0-bin "${pkgdir}"/usr/share/licenses/dotnet-sdk-10.0-bin
 }
 
-package_netstandard-targeting-pack-10.0-bin() {
-  pkgdesc='The .NET Standard targeting pack (binary) - .NET 10.0 LTS'
-  provides=('netstandard-targeting-pack-2.1' 'netstandard-targeting-pack')
-  conflicts=('netstandard-targeting-pack-2.1' 'netstandard-targeting-pack')
-
-  install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
-  if [ -d "packs/NETStandard.Library.Ref" ]; then
-    cp -dr --no-preserve='ownership' packs/NETStandard.Library.Ref "${pkgdir}"/usr/share/dotnet/packs/
-  fi
-  ln -s dotnet-host-10.0-bin "${pkgdir}"/usr/share/licenses/netstandard-targeting-pack-10.0-bin
-}
-
 package_dotnet-targeting-pack-10.0-bin() {
   pkgdesc='The .NET Core targeting pack (binary) - .NET 10.0 LTS'
-  depends=(netstandard-targeting-pack-10.0-bin)
+  depends=()
   provides=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-${_short_ver})
   conflicts=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-${_short_ver})
 

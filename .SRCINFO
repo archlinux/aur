@@ -52,7 +52,6 @@ pkgname = dotnet-sdk-10.0-bin
 	depends = gcc-libs
 	depends = dotnet-runtime-10.0-bin
 	depends = dotnet-targeting-pack-10.0-bin
-	depends = netstandard-targeting-pack-10.0-bin
 	depends = aspnet-runtime-10.0-bin
 	depends = aspnet-targeting-pack-10.0-bin
 	provides = dotnet-sdk=10.0.0.sdk100
@@ -60,16 +59,9 @@ pkgname = dotnet-sdk-10.0-bin
 	conflicts = dotnet-sdk=10.0.0
 	conflicts = dotnet-sdk-10.0
 
-pkgname = netstandard-targeting-pack-10.0-bin
-	pkgdesc = The .NET Standard targeting pack (binary) - .NET 10.0 LTS
-	provides = netstandard-targeting-pack-2.1
-	provides = netstandard-targeting-pack
-	conflicts = netstandard-targeting-pack-2.1
-	conflicts = netstandard-targeting-pack
-
 pkgname = dotnet-targeting-pack-10.0-bin
 	pkgdesc = The .NET Core targeting pack (binary) - .NET 10.0 LTS
-	depends = netstandard-targeting-pack-10.0-bin
+	depends = 
 	provides = dotnet-targeting-pack=10.0.0
 	provides = dotnet-targeting-pack-10.0
 	conflicts = dotnet-targeting-pack=10.0.0
