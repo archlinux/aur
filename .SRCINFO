@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-bin
 	pkgdesc = LLM inference in C/C++ (precompiled Linux binaries)
-	pkgver = b7122
+	pkgver = b7126
 	pkgrel = 1
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = llama.cpp-bin
 	conflicts = llama.cpp
 	conflicts = libggml
 	conflicts = ggml
-	source = llama.cpp-b7122.zip::https://github.com/ggerganov/llama.cpp/releases/download/b7122/llama-b7122-bin-ubuntu-x64.zip
-	source = README-b7122.md::https://raw.githubusercontent.com/ggml-org/llama.cpp/b7122/README.md
-	sha256sums = 647d908dd0883e15856f19b6343ad5e1dea6fc09ab81efa55fdb6ab81ec30155
+	source = llama.cpp-b7126.zip::https://github.com/ggerganov/llama.cpp/releases/download/b7126/llama-b7126-bin-ubuntu-x64.zip
+	source = README-b7126.md::https://raw.githubusercontent.com/ggml-org/llama.cpp/b7126/README.md
+	sha256sums = 5f1f5233b81d6917fed4e79738461829c237ee07ea75adf6245e3fa282ce6a33
 	sha256sums = a859b5008203c4500111149bc0ebd5d98db09ea129316327399c9fc89ef081bf
 
 pkgname = llama.cpp-bin
