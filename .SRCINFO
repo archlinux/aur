@@ -1,0 +1,15 @@
+pkgbase = perl-harfbuzz-shaper
+	pkgdesc = Run JavaScript via QuickJS in Perl
+	pkgver = 0.031
+	pkgrel = 2
+	url = https://metacpan.org/pod/HarfBuzz::Shaper
+	arch = x86_64
+	license = Artistic-1.0-Perl
+	license = GPL-1.0-or-later
+	depends = perl-text-layout
+	depends = harfbuzz
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/J/JV/JV/HarfBuzz-Shaper-0.031.tar.gz
+	sha512sums = 02bb1e55a725999d002ef9a204504f4aca3c375cf1a08278ad30518de2a977a857f176de36bbc172ffc950ba3bdfc156f1d1728795588f2be5c3c6dd8d0abd26
+
+pkgname = perl-harfbuzz-shaper
