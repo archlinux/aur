@@ -1,7 +1,8 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
+# Co-Maintainer: Naxels <naxels at gmail dot com>
 
 pkgname="metabase-driver-duckdb"
-pkgver=0.4.1.1
+pkgver=1.4.1.1
 pkgrel=1
 pkgdesc="DuckDB driver for Metabase"
 arch=("any")
