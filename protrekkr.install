@@ -1,0 +1,3 @@
+post_install() {
+echo "You may want to copy the included assets directory /usr/lib/protrekkr/ to your home directory such that you can write to it."
+}

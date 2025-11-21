@@ -1,0 +1,18 @@
+pkgbase = protrekkr
+	pkgdesc = Tracker/Synth program
+	pkgver = v2.8.3_PRE_2.r49.g41a1ce8
+	pkgrel = 1
+	url = https://github.com/hitchhikr/protrekkr
+	install = protrekkr.install
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = sdl12-compat
+	depends = libglvnd
+	depends = alsa-lib
+	source = git+https://github.com/hitchhikr/protrekkr.git
+	sha512sums = SKIP
+
+pkgname = protrekkr
