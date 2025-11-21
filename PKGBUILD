@@ -2,7 +2,7 @@
 pkgname=pacsea-bin
 pkgver=0.5.1
 _tag="v$pkgver"
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (binary version)"
 arch=('x86_64')
 url="https://github.com/Firstp1ck/Pacsea"
@@ -46,7 +46,8 @@ sha256sums=('cf17625d1a62a3ab2ca0b493ecb306d1e8d5a3e47884491593f01f046085ab31'
             'c49556b9ddef3de4c5af6bebb5d10888433b5cc40d7da9367b1e613e51c7d593')
 
 package() {
-  cd "$srcdir/Pacsea-${_tag}" || exit 1
+  # GitHub tarballs from tags extract to Pacsea-<version> (without 'v' prefix)
+  cd "$srcdir/Pacsea-${pkgver}" || exit 1
   install -Dm755 "$srcdir/Pacsea" "$pkgdir/usr/bin/pacsea"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
