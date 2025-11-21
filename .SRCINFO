@@ -1,0 +1,25 @@
+pkgbase = errands-c-git
+	pkgdesc = Todo application for those who prefer simplicity. (Rewrite in C.)
+	pkgver = 49.0.r0.g84a1d48
+	pkgrel = 1
+	url = https://github.com/mrvladus/Errands
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = blueprint-compiler
+	makedepends = gcc
+	makedepends = make
+	depends = libadwaita
+	depends = gtksourceview5
+	depends = libical
+	depends = libportal
+	depends = curl
+	depends = webkitgtk-6.0
+	provides = errands
+	conflicts = errands
+	source = errands-c-git::git+https://github.com/mrvladus/Errands.git#branch=rewrite-in-c
+	source = LICENSE::https://raw.githubusercontent.com/mrvladus/Errands/master/LICENSE
+	sha256sums = SKIP
+	sha256sums = 6a13dd0186cd67d3533ead401ea891f7864388eb72f9d4b5bc76ade8adb040a0
+
+pkgname = errands-c-git
