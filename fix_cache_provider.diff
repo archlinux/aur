@@ -1,0 +1,43 @@
+diff --git a/seahub/settings.py b/seahub/settings.py
+index 4a149b58d..937cd6b33 100644
+--- a/seahub/settings.py
++++ b/seahub/settings.py
+@@ -546,9 +546,12 @@ install_topdir = os.path.expanduser(os.path.join(os.path.dirname(__file__), '..'
+ central_conf_dir = os.environ.get('SEAFILE_CENTRAL_CONF_DIR', '')
+ 
+ CACHES = {
++    # By default, uses the file system
++    # This can be overridden by setting the environment variable 'CACHE_PROVIDER'
++    # https://docs.djangoproject.com/en/5.2/topics/cache/#filesystem-caching
+     'default': {
+-        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+-        'LOCATION': 'redis://redis:6379',
++        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
++        'LOCATION': CACHE_DIR,
+     },
+ }
+ _preset_cache_cfg = copy.deepcopy(CACHES)
+@@ -1229,7 +1232,7 @@ if 'mysql' in DATABASES['default'].get('ENGINE', ''):
+         except:
+             raise ValueError(f"Invalid database port: {DATABASES['default']['PORT']}")
+ 
+-CACHE_PROVIDER = os.getenv('CACHE_PROVIDER', 'redis')
++CACHE_PROVIDER = os.getenv('CACHE_PROVIDER')
+ 
+ ## use update methods to get user's cfg
+ _tmp_cache_cfg = copy.deepcopy(_preset_cache_cfg)
+@@ -1275,11 +1278,11 @@ elif CACHE_PROVIDER == 'memcached':
+     mem_port = int(os.getenv('MEMCACHED_PORT', 0)) or conf_mem_port
+ 
+     CACHES['default'] = {
+-        'BACKEND': 'django_pylibmc.memcached.PyLibMCCache',
++        # Django natively supports Memcached
++        # https://docs.djangoproject.com/en/5.2/topics/cache/#memcached
++        'BACKEND': 'django.core.cache.backends.memcached.PyLibMCCache',
+         'LOCATION': f'{mem_host}:{mem_port}'
+     }
+-else:
+-    raise ValueError(f'Invalid CACHE_PROVIDER: {CACHE_PROVIDER}')
+ 
+ if os.environ.get('ENABLE_SEADOC'):
+     ENABLE_SEADOC = os.environ.get('ENABLE_SEADOC', 'false').lower() == 'true'

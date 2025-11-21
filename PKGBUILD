@@ -4,8 +4,8 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seahub
-pkgver=12.0.14
-pkgrel=2
+pkgver=13.0.12
+pkgrel=1
 pkgdesc='The web frontend for seafile server'
 arch=('any')
 url='https://github.com/haiwen/seahub'
@@ -38,40 +38,41 @@ depends=(
     'pypinyin'
     'python-dnspython'
     'python-pillow-heif'
+    'python-cairosvg'
 )
 optdepends=(
     'python-pymysql: Installation script'
     'python-wsgidav-seafile: Webdav support'
     'python-pylibmc: Memcached support'
+    'python-redis: Redis support'
     'ffmpeg: For video thumbnails'
 )
-django_version=4.2.24
 source=(
     "$pkgname-$pkgver-server.tar.gz::$url/archive/v$pkgver-server.tar.gz"
-    "python-django-$django_version.tar.gz::https://github.com/django/django/archive/$django_version.tar.gz"
     'seahub@.service'
+    'seahub.service'
     'nginx.example.conf'
-    'fix_avatar_storage.diff'
     'fix_gunicorn_no_daemon.diff'
     'fix_seafevents_error.diff'
+    'fix_cache_provider.diff'
 )
 sha256sums=(
-    '127ad4161f37321ac198c09625ada6114dbfe0ea5fdd6d9fa568073bb9483fe9'
-    'a1bde6af40756bc1ffd574c6e9e054e514890500b437a39a053abfbf555f2f5e'
-    '67bb375871ce908b48bef53277284c9d8f80ee2e733efc89cb66d987647195e4'
-    '461591ba500d012523d6fdecbcc230461f6fd8d708b92eefdedc8b93b1542171'
-    '371f9c01a31691167b76c43e29277c266a4b3aec985fb29ff8a0180a8db5b59f'
+    'c86098797d1144c40d11f8a067b0fb02be712fd657204f1698a14a2f96801ed7'
+    'ba48ce265a8f411184ab92e8d914d2a02e06f19156333d6058eb3fcf861d780a'
+    'c80abc71a12d86c6e42f860a69acfc079f1542a9e21f1b93692ce3313130b21c'
+    '9ef2e5753f031ff6c5e2e1c7fd7399a01cbde795a3d01fac4749fa372ca1f689'
     'cbb614ada361aa594be8cafbdb532788a3884f4f63998748cfede8b49be4664c'
-    'fc0c98d3b381752976557f53390ee59e8956d3fa2418cdeb97888bf3de37d7ad'
+    '86ada5079decbc58d8afd4fbd9b14ff01fe1f4a377420429171d1faf66ef6e91'
+    '19666e434d6cde4d5e016d657d8095a52f31d10f8b61293bb3d902e66e3b50ff'
 )
 options=('!strip')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver-server"
 
-    patch -p1 -i "$srcdir/fix_avatar_storage.diff"
     patch -p1 -i "$srcdir/fix_gunicorn_no_daemon.diff"
     patch -p1 -i "$srcdir/fix_seafevents_error.diff"
+    patch -p1 -i "$srcdir/fix_cache_provider.diff"
 
     # Remove useless files and directories
     rm -rf \
@@ -98,23 +99,17 @@ build() {
 }
 
 package() {
-    cd "$srcdir/seahub-$pkgver-server/"
+    cd "$srcdir/seahub-$pkgver-server"
 
     install -dm755 "$pkgdir/usr/share/seafile-server/seahub"
     cp -rp ./* "$pkgdir/usr/share/seafile-server/seahub"
     mv "$pkgdir/usr/share/seafile-server/seahub/scripts/"* \
         "$pkgdir/usr/share/seafile-server"
 
-    cp -a "$srcdir/django-$django_version/django" \
-        "$pkgdir/usr/share/seafile-server/$pkgname/thirdpart"
-    rm -rf "$pkgdir"/usr/{bin,share/seafile-server/"$pkgname"/thirdpart/*.egg-info}
-
     python -m compileall -f -j 0 -o 1 \
         -s "$pkgdir" -p / "$pkgdir/usr/share/seafile-server/seahub"
 
-    install -Dm644 \
-        "$srcdir/seahub@.service" \
-        "$pkgdir/usr/lib/systemd/system/seahub@.service"
+    install -Dm644 "$srcdir"/*.service -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 \
         "$srcdir/nginx.example.conf" \
         "$pkgdir/etc/webapps/$pkgname/nginx.conf"
