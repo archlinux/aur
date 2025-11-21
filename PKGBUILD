@@ -1,17 +1,18 @@
-# Maintainer: Jaden Peterson <jadenpeterson150@gmail.com>
+# Maintainer: Mark <mark@archlinux.org>
+# Contributor: Jaden Peterson <jadenpeterson150@gmail.com>
 
 pkgname=aurvote-utils-git
-pkgver=1.0.0.r6.g07c9666
+pkgver=1.1.0.r7.g3e82548
 pkgrel=1
 pkgdesc='A set of utilities for managing AUR votes'
 arch=('any')
-url=https://github.com/jadenPete/aurvote-utils
+url=https://github.com/gwuen/aurvote-utils
 provides=('aurvote-utils')
 conflicts=('aurvote-utils')
 license=('MIT')
 depends=('python' 'python-beautifulsoup4' 'python-requests')
 makedepends=('git')
-source=("git+https://github.com/jadenPete/aurvote-utils.git")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {

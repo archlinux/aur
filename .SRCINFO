@@ -1,8 +1,8 @@
 pkgbase = aurvote-utils-git
 	pkgdesc = A set of utilities for managing AUR votes
-	pkgver = 1.0.0.r6.g07c9666
+	pkgver = 1.1.0.r7.g3e82548
 	pkgrel = 1
-	url = https://github.com/jadenPete/aurvote-utils
+	url = https://github.com/gwuen/aurvote-utils
 	arch = any
 	license = MIT
 	makedepends = git
@@ -11,8 +11,7 @@ pkgbase = aurvote-utils-git
 	depends = python-requests
 	provides = aurvote-utils
 	conflicts = aurvote-utils
-	source = git+https://github.com/jadenPete/aurvote-utils.git
+	source = git+https://github.com/gwuen/aurvote-utils.git
 	sha256sums = SKIP
 
 pkgname = aurvote-utils-git
-
