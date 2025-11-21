@@ -10,7 +10,7 @@ makedepends=('cargo')
 depends=('glibc')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("https://github.com/hansbinderup/aliasx/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('a1afacb616f0c0dd6f670468878227e49e00b219b71738cef22557cd2f02c529')
+sha256sums=('11f2c3238a5bee75970d1d40c79382f3c49cacf56724a861abda1176681facba')
 
 build() {
     export RUSTUP_TOOLCHAIN=stable
