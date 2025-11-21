@@ -1,12 +1,12 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=stardrop-bin
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="an Open Source Cross-platform mod manager for Stardew Valley"
 arch=("x86_64")
 url="https://floogen.gitbook.io/stardrop"
 license=('GPL-3.0-or-later')
-depends=("dotnet-runtime-7.0-bin")
+depends=("dotnet-runtime-7.0")
 makedepends=("imagemagick" "gendesk")
 options=(!strip)
 provides=("stardrop")

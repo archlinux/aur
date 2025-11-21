@@ -1,13 +1,13 @@
 pkgbase = stardrop-bin
 	pkgdesc = an Open Source Cross-platform mod manager for Stardew Valley
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://floogen.gitbook.io/stardrop
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = imagemagick
 	makedepends = gendesk
-	depends = dotnet-runtime-7.0-bin
+	depends = dotnet-runtime-7.0
 	provides = stardrop
 	conflicts = stardrop
 	options = !strip
