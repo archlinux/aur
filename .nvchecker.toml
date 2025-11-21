@@ -1,0 +1,4 @@
+[glhack]
+source = 'regex'
+url = 'https://sourceforge.net/projects/glhack/files/glhack/'
+regex = '/files/glhack/([\d.]+)'
