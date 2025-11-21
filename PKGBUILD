@@ -16,7 +16,7 @@ source=("$_pkgname::git+https://github.com/reF1nd/sing-box.git#branch=reF1nd-dev
 sha256sums=(SKIP)
 
 
-conflicts=("$_pkgname-git" "$_pkgname-alpha" "$_pkgname-beta")
+conflicts=("$_pkgname-git" "$_pkgname-alpha" "$_pkgname-beta" "$_pkgname-ref1nd")
 
 backup=("etc/$_pkgname/config.json")
 
