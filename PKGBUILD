@@ -1,5 +1,5 @@
 pkgname='python-wikiteam3'
-pkgver='4.4.5'
+pkgver='4.4.6'
 _src_folder=${pkgname#python-}-$pkgver
 pkgrel=1
 pkgdesc="Tools for downloading and preserving MediaWikis. We archive MediaWikis, from Wikipedia to tiniest wikis."
@@ -24,7 +24,7 @@ makedepends=(
 license=('GPL-3.0-or-later')
 arch=('any')
 source=("https://pypi.io/packages/source/${_src_folder::1}/${pkgname#python-}/${_src_folder}.tar.gz")
-sha256sums=('62321edfceb4bd2e64a3f9b18fce800eb4c1e75b745a3356de6799cd12c87139')
+sha256sums=('a4ab24d73795b8f33cea8067578c831b0b949484c8b0aa8e88858a3bd003ac9c')
 
 build() {
     cd "${srcdir}/${_src_folder}"
