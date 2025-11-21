@@ -1,6 +1,6 @@
 # Maintainer: Jiří Sejkora <sejsel@sejsel.cz>
 pkgname=ksplang
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="An interpreter for ksplang"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ksp/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('b8978d79729e3fef3b79edbccf3ce97a835ce04e81eea4e181917c8d88d8cfa0379e7297a1e32d9c079f0e9883cdb25b5affeeda059f027c8aab4b4400c4ab79')
+sha512sums=('28b25e2c2f175bac07f9d2d9874f87fd9f09bca316703f9318f15e57df0d3cb420f4ff624197fb8d2e5fe5dc54ac59fd070d34571fee4a4f5585b59d8cc49103')
 
 prepare() {
     cd $pkgname-$pkgver
