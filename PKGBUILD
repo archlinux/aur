@@ -2,7 +2,7 @@
 
 _name="lxst"
 pkgname="python-${_name}"
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Lightweight Extensible Signal Transport for Reticulum"
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   'python-audioop-lts>=0.2.1'
   'python-numpy>=2.3.4'
   'python-pycodec2>=4.1.0'
-  'python-rns>=1.0.1'
+  'python-rns>=1.0.3'
   'python-soundcard>=0.4.5'
 )
 makedepends=(
@@ -36,7 +36,7 @@ source=(
 noextract=(
   "${source[@]##*/}"
 )
-sha256sums=('6174306f9002fd4eb2ea2c3658e3402735cae691ac43b37a22790c23f5ccb9b0')
+sha256sums=('a5e63364785a389d5cc39e3936bdf718c3af8a1cf026503642cebcbdd8b5b029')
 
 package() {
   local site_packages="$(python -c "import site; print(site.getsitepackages()[0])")"
