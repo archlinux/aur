@@ -4,7 +4,7 @@
 
 pkgname=cs-script
 pkgver=4.12.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Run C# sources like scripts"
 arch=('any')
 url="https://github.com/oleg-shilo/cs-script"
