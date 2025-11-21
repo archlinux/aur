@@ -15,6 +15,5 @@ post_upgrade() {
         source venv/bin/activate
         python manage.py migrate
         python manage.py collectstatic --no-input
-        python manage.py collectstatic_js_reverse
 }
 
