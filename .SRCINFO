@@ -1,0 +1,13 @@
+pkgbase = dxfl
+	pkgdesc = A CLI tool to manage your Deuxfleurs account.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://www.npmjs.com/package/dxfl
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	source = https://registry.npmjs.org/dxfl/-/dxfl-0.3.1.tgz
+	sha512sums = a4315aa014402ed3284252fa1801ba4597d5358785aad7b2c000f7e07036b9c6cff1be94c76079cd1cab659272c839cf2ae67ebf08d9a2e2f8568ea37fec0590
+
+pkgname = dxfl
