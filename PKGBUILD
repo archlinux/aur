@@ -4,7 +4,7 @@
 
 _pkgname=gns3-gui
 pkgname="$_pkgname"-2
-pkgver=2.2.54
+pkgver=2.2.55
 pkgrel=1
 pkgdesc='GNS3 network simulator. Graphical user interface package.'
 arch=('any')
@@ -22,7 +22,6 @@ depends=(
     'python-setuptools'
     'python-truststore'
     'qt5-svg'
-    'qt5-websockets'
 )
 optdepends=(
     'gns3-server: GNS3 backend. Manages emulators such as Dynamips, VirtualBox or Qemu/KVM'
@@ -32,15 +31,15 @@ conflicts=('gns3-gui')
 provides=('gns3-gui')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'gns3.desktop'
-        'fix_requirements_for_Arch.diff')
-sha256sums=('98e1d4eba48041674945980d95f42d4fb70682a3814e73fbd6cf2877c2e7d1f4'
+        'fix_requirements_for_Arch.patch')
+sha256sums=('bf8f5d71cce30131eae266c496d426b16cbc9fd118f733caf9acb8f23e8dce08'
             '51e6db5b47e6af3d008d85e8c597755369fafb75ddb2af9e79a441f943f4c166'
-            '433131b131010a328a031d3db60ce3647ab2e5591c13fa1334479d3e6081bd39')
+            '5b3995d37d247e1d30b8322a912b5384e8b9faabf26041592ebdbb48a3cda863')
 
 prepare() {
     cd "$_pkgname-$pkgver"
     # Arch usually has the latest versions. Patch requirements to allow them.
-    patch --strip=2 -i "$srcdir"/fix_requirements_for_Arch.diff
+    patch --strip=2 -i "$srcdir"/fix_requirements_for_Arch.patch
 }
 
 build() {
