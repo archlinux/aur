@@ -33,4 +33,6 @@ package() {
         -Ddest_directory="$pkgdir" \
         -Dname="ly-dm" \
         -Dinit_system=systemd
+
+    install -DZ -m644 license.md "$pkgdir/usr/share/licenses/$pkgname/WTFPL"
 }
