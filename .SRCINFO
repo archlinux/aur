@@ -1,6 +1,6 @@
 pkgbase = pyspread
 	pkgdesc = Python based non-traditional spreadsheet application with GUI
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://pyspread.gitlab.io/
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = pyspread
 	optdepends = r-ggplot2: R plotting
 	optdepends = python-openpyxl: Excel file support
 	options = !emptydirs
-	source = pyspread-2.4.1.tar.gz::https://files.pythonhosted.org/packages/source/p/pyspread/pyspread-2.4.1.tar.gz
-	sha256sums = 6686fe39741b6b28449d298a52ebe791a12e061eda3b627c0eb1f2cde3f9e83c
+	source = pyspread-2.4.2.tar.gz::https://files.pythonhosted.org/packages/source/p/pyspread/pyspread-2.4.2.tar.gz
+	sha256sums = f3135a599d10371848459d8aa6aff98e107773148bc815d2e658522a514f452e
 
 pkgname = pyspread

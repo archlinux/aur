@@ -4,9 +4,8 @@
 # Contributor Sindwiller
 # Contributor SecByShresth <shresthpaul133@gmail.com>
 
-# Maintainer: Your Name <youremail@example.com>
 pkgname=pyspread
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="Python based non-traditional spreadsheet application with GUI"
 arch=('any')
@@ -33,7 +32,7 @@ optdepends=(
 )
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pyspread/pyspread-$pkgver.tar.gz")
-sha256sums=('6686fe39741b6b28449d298a52ebe791a12e061eda3b627c0eb1f2cde3f9e83c')
+sha256sums=('f3135a599d10371848459d8aa6aff98e107773148bc815d2e658522a514f452e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -44,11 +43,16 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
 
-  # Install icon
-  install -D "data/icons/pyspread.svg" \
-    "$pkgdir/usr/share/pixmaps/${pkgname}.svg"
-
   # Install desktop entry
-  install -D -m644 "data/pyspread.desktop" \
-    "$pkgdir/usr/share/applications/${pkgname}.desktop"
+  install -D -m644 \
+    "pyspread/share/applications/io.gitlab.pyspread.pyspread.desktop" \
+    "$pkgdir/usr/share/applications/pyspread.desktop"
+
+  # Install icon from correct upstream path
+  install -D -m644 \
+    "pyspread/share/icons/hicolor/svg/pyspread.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/pyspread.svg"
+
+  # Remove wrong upstream directory
+  rm -rf "$pkgdir/usr/pyspread"
 }
