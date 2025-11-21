@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/bin/java -jar "/usr/share/java/metabase/metabase.jar" "$@"
+exec /usr/bin/java --add-opens java.base/java.nio=ALL-UNNAMED -jar "/usr/share/java/metabase/metabase.jar" "$@"

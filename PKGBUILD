@@ -1,11 +1,12 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
+# Co-Maintainer: Naxels <naxels at gmail dot com>
 
 # https://wiki.archlinux.org/title/Java_package_guidelines
 # https://www.metabase.com/docs/latest/installation-and-operation/running-the-metabase-jar-file
 # https://www.metabase.com/docs/latest/installation-and-operation/running-metabase-on-debian
 
 pkgname="metabase"
-pkgver=0.56.10
+pkgver=0.57.3
 pkgrel=1
 pkgdesc="The simplest, fastest way to get business intelligence and analytics to everyone in your company"
 arch=("x86_64" "aarch64")
@@ -18,15 +19,15 @@ optdepends=("metabase-driver-clickhouse: connect to clickhouse databases"
             "metabase-driver-duckdb: connect to duckdb files"
             "metabase-driver-teradata: connect to teradata databases"
            )
-source=("metabase-$pkgver.jar::https://downloads.metabase.com/v$pkgver/metabase.jar"
+source=("metabase-$pkgver.jar::https://downloads.metabase.com/v$pkgver.x/metabase.jar"
         "metabase"
         "metabase.conf"
         "metabase.service"
         "metabase.sysusers"
         "metabase.tmpfiles"
         )
-b2sums=('9f96762dc2d69afa3d004e8c4444cb270122113a6b273f367fcdde149db20c99321754c97c17ecd88e842ff93d4f754de4b2118efec1ccc02d73647962d44322'
-        'c7e882fab59a0db73dc5a12ade3e5f7d12f695b8e9d2377824fa966e84c624a2e19871678d151ac11027c4910b538249b857ef3d14e3b909065aac8d08b44c92'
+b2sums=('a580233c366f7519010c47054bbac21a0f3d027cd3e0258b2953fbe69846451ea863fe73d0af9dcd72231c40756454c8d5fa917785a684774a6de7d8d14f9f4a'
+        '018307ca071fe70426c22b6bdf5801e74b6498735636ba9b8c97d0d6d3c96380fe56a81f608e564fb359fbfd62f44c8b0dbb7a5d4dceeed09111a8764cc23f5d'
         '7c97fd3a8adbe86d29ca92fed57a99b406f12cd742baf091a686c3dffcb6af837b3944299ca30e96ba041db851effee58df30d9eafef2abc967f4b7eb4c26c12'
         '52e9b37eaf29f24d3f10b29813b7bc36bb984ab55d20422b4d4b0df93ba19b62835081c4f261cf3c78d80baf973d9568fa6b910df17a07caeac098b2efe624fa'
         '4a0e18e9dac9bb3fe2a002e295e65bf5526967bd3c2f525936894ffde416b8b5855d3f9f37355d5c22bb9c25d2171c5f6884e964a6c4dcef9c4f158f84d777ac'
