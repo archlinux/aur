@@ -15,6 +15,7 @@ depends=('gtk2')
 makedepends=('dbus-glib'
              'git' 
              'intltool')
+conflicts=('lxappearance')
 source=("git+https://github.com/lxde/lxappearance.git#tag=${pkgver}")
 sha512sums=('1c592214bf4f409af1ee11cb06788ead4e21c77ea979b1b1322008fdfe271a45e01f8737e570de64c345297c6a8d1f44e931d3da3b3aa9729ca13b90c4939ed4')
 
