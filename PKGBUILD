@@ -1,7 +1,4 @@
 # Maintainer: Rooki  <aur at rooki dot xyz>
-# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
-# Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
-# Contributor: Sebastien Duthil
 
 pkgname=thrive-launcher-bin
 pkgver=2.2.1
@@ -9,7 +6,7 @@ pkgrel=1
 pkgdesc="Thrive Launcher for installing and automatically updating Thrive."
 arch=(x86_64)
 url="https://revolutionarygamesstudio.com"
-license=(GPL3 'CCPL:cc-by-sa-3.0' custom)
+license=(custom MIT)
 depends=(glibc zlib libxi libxinerama libxrender libxcursor libxext libglvnd libxrandr libx11)
 provides=(thrive-launcher)
 conflicts=(thrive-launcher)
