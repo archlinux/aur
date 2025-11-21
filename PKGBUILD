@@ -15,8 +15,10 @@ makedepends=('patchelf')
 conflicts=(harmonoid)
 optdepends=('playerctl: mpris support')
 options=(!strip)
-source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7f047ce54a09f21b858f549ca94cddf8eb41132fd82a4c69ead90bc54a389a6d')
+source=("$url/archive/refs/tags/v${pkgver}.tar.gz"
+"harmonoid-linux-${pkgver//_/-}-x86_64.tar.gz::https://github.com/alexmercerind2/harmonoid-releases/releases/download/v${pkgver//_/-}/harmonoid-linux-x86_64.tar.gz")
+sha256sums=('7f047ce54a09f21b858f549ca94cddf8eb41132fd82a4c69ead90bc54a389a6d'
+'ed753d1fb1e0c36e81f084b86108dfb65a14cc4b0ad34578170f9f8fc1972122')
 
 package() {
    cp -dr "$srcdir"/usr "$pkgdir"/usr
