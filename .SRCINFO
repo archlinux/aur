@@ -18,6 +18,7 @@ pkgbase = antigravity-binary
 	depends = xdg-utils
 	provides = antigravity
 	conflicts = antigravity
+	options = !strip
 	source = antigravity-1.11.5.rpm::https://us-central1-yum.pkg.dev/projects/antigravity-auto-updater-dev/antigravity-rpm/Packages/2a06354d15ee9c6465b25b79a9f9971b71b42fcf5e3600585559b8c678a7548c-antigravity-1.11.5-1763625986.el8.x86_64.rpm
 	sha256sums = 2a06354d15ee9c6465b25b79a9f9971b71b42fcf5e3600585559b8c678a7548c
 
