@@ -2,7 +2,7 @@
 
 pkgname=ecss-elph-bin
 _pkgname=ecss-elph
-pkgver=2.12.2.1
+pkgver=2.12.2.13
 pkgrel=1
 pkgdesc="An application to extend the functionality of an ECSS-10 enabled telephone set and use it as a software SIP client"
 arch=("x86_64")
