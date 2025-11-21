@@ -4,7 +4,7 @@
 pkgname=antigravity-bin-hardened
 pkgver=1.11.3
 _buildid=6583016683339776
-pkgrel=13
+pkgrel=14
 pkgdesc="Google Antigravity - Agentic Development Platform (Hardened for High-Security/Corporate Environments)"
 # Hardening: Strict permissions, AppArmor profile, and dependency enforcement.
 arch=('x86_64')
@@ -46,7 +46,11 @@ package() {
     find "$pkgdir/opt/antigravity" -type f -exec chmod 644 {} +
     
     # 2. Restore executable permissions for the binary
-    chmod 755 "$pkgdir/opt/antigravity/Antigravity"
+    if [ -f "$pkgdir/opt/antigravity/Antigravity" ]; then
+        chmod 755 "$pkgdir/opt/antigravity/Antigravity"
+    elif [ -f "$pkgdir/opt/antigravity/antigravity" ]; then
+        chmod 755 "$pkgdir/opt/antigravity/antigravity"
+    fi
     
     # 3. CRITICAL: chrome-sandbox must be SUID root (4755)
     # This is required for Electron's Layer 1 Sandbox to work.
