@@ -3,12 +3,12 @@
 pkgname=opentracedecode-git
 _pkgname=OpenTraceDecode
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="protocol decoder library for signal analysis"
 arch=('x86_64')
 url="https://opentracelab.github.io/website/"
 license=('GPL-3.0-only') 
-makedepends=('git' 'meson' 'ninja' 'pkg-config') # Add any other build dependencies here
+makedepends=('git' 'meson' 'ninja' 'pkgconf') # Add any other build dependencies here
 depends=('glib2' 'python') # Add any runtime dependencies here
 provides=('opentracedecode')
 source=("git+https://github.com/OpenTraceLab/OpenTraceDecode.git")

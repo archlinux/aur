@@ -1,14 +1,14 @@
 pkgbase = opentracedecode-git
 	pkgdesc = protocol decoder library for signal analysis
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opentracelab.github.io/website/
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
-	makedepends = pkg-config
+	makedepends = pkgconf
 	depends = glib2
 	depends = python
 	provides = opentracedecode
