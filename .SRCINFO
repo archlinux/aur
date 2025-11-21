@@ -1,6 +1,6 @@
 pkgbase = statwrap-git
 	pkgdesc = A free and open-source assistive, non-invasive discovery and inventory tool to document research projects.(Use system-wide electron)
-	pkgver = 0.0.16.r9.g2ad92ba
+	pkgver = 0.0.18.r1.g4eee95c
 	pkgrel = 1
 	url = https://sites.northwestern.edu/statwrap/
 	arch = any
@@ -10,12 +10,12 @@ pkgbase = statwrap-git
 	makedepends = git
 	makedepends = curl
 	makedepends = gendesk
-	depends = electron30
-	provides = statwrap=0.0.16
+	depends = electron33
+	provides = statwrap=0.0.18
 	conflicts = statwrap
 	source = statwrap.git::git+https://github.com/StatTag/StatWrap.git
 	source = statwrap.sh
 	sha256sums = SKIP
-	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = statwrap-git

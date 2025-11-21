@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=statwrap-git
 _pkgname=StatWrap
-pkgver=0.0.16.r9.g2ad92ba
-_electronversion=30
+pkgver=0.0.18.r1.g4eee95c
+_electronversion=33
 _nodeversion=22
 pkgrel=1
 pkgdesc="A free and open-source assistive, non-invasive discovery and inventory tool to document research projects.(Use system-wide electron)"
@@ -27,7 +27,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
@@ -40,8 +40,13 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver="$(grep -m 1 '"electron":' "${srcdir}/${pkgname//-/.}/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -49,7 +54,6 @@ prepare() {
         s/@cfgdirname@/${pkgname%-git}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
-    _ensure_local_nvm
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
         --pkgdesc="${pkgdesc}" \
@@ -79,6 +83,7 @@ prepare() {
         cp .yarnrc app/
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
+    _ensure_local_nvm
     find app -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     cp resources/icon.png app/images/
     sed -i '/height: defaultHeight,/a\        icon: path.join(__dirname, "images\/icon.png"),' app/main.dev.js
@@ -87,6 +92,7 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
+    _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     yarn run build
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}"
