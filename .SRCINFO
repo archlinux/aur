@@ -1,0 +1,28 @@
+pkgbase = lx-music-dev-git
+	pkgdesc = An Electron-based music player (development version)
+	pkgver = 2.11.0.r43.g2bd5467
+	pkgrel = 1
+	url = https://github.com/lyswhut/lx-music-desktop
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	makedepends = asar
+	makedepends = npm
+	makedepends = git
+	makedepends = node-gyp
+	makedepends = jq
+	makedepends = moreutils
+	makedepends = python-setuptools
+	provides = lx-music
+	conflicts = lx-music
+	source = git+https://github.com/lyswhut/lx-music-desktop.git#branch=dev
+	source = lx-music.sh
+	source = lx-music.desktop
+	source = dev-app-update.yml
+	sha256sums = SKIP
+	sha256sums = 1171a3688a136b75aa0493d5737cfb1e8c386a48030c8ca313d4cac48c0630e3
+	sha256sums = 732e98dfe569768c3cc90abbe8b1f6d24726dd2cb61317f57f8d5fe77fdefe2f
+	sha256sums = ffdd88036d10eb9780c0a26987894708720c2f486247bb3854f05fb5dd607423
+
+pkgname = lx-music-dev-git
+	depends = electron
