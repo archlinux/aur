@@ -4,7 +4,7 @@
 pkgname=antigravity-bin-hardened
 pkgver=1.11.3
 _buildid=6583016683339776
-pkgrel=14
+pkgrel=15
 pkgdesc="Google Antigravity - Agentic Development Platform (Hardened for High-Security/Corporate Environments)"
 # Hardening: Strict permissions, AppArmor profile, and dependency enforcement.
 arch=('x86_64')
@@ -37,20 +37,10 @@ package() {
 
     cp -r "$_extracted_dir"/* "$pkgdir/opt/antigravity/"
 
-    # DO NOT chmod files - Electron needs original permissions from tarball
-    # Changing permissions causes segfaults and crashes
-    # VOXIS HARDENING: We apply strict permissions AFTER extraction where safe.
-    
-    # 1. Secure the directory structure (Owner write only)
-    find "$pkgdir/opt/antigravity" -type d -exec chmod 755 {} +
-    find "$pkgdir/opt/antigravity" -type f -exec chmod 644 {} +
-    
-    # 2. Restore executable permissions for the binary
-    if [ -f "$pkgdir/opt/antigravity/Antigravity" ]; then
-        chmod 755 "$pkgdir/opt/antigravity/Antigravity"
-    elif [ -f "$pkgdir/opt/antigravity/antigravity" ]; then
-        chmod 755 "$pkgdir/opt/antigravity/antigravity"
-    fi
+    # Per pkgrel=9 findings, DO NOT recursively chmod files.
+    # Electron applications are sensitive to permission changes and ship with the
+    # permissions they need. Changing them causes crashes.
+    # The only required change is for the SUID sandbox.
     
     # 3. CRITICAL: chrome-sandbox must be SUID root (4755)
     # This is required for Electron's Layer 1 Sandbox to work.
