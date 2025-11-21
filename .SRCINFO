@@ -1,0 +1,16 @@
+pkgbase = youtubedr-bin
+	pkgdesc = Download YouTube videos
+	pkgver = 2.10.5
+	pkgrel = 1
+	url = https://github.com/kkdai/youtube
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = youtube
+	conflicts = youtube
+	source_x86_64 = youtubedr-x86_64-2.10.5.tgz::https://github.com/kkdai/youtube/releases/download/v2.10.5/youtubedr_2.10.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = ce32c68e74222ef245b99200a0abbebb9731c36fd1543cf6d2285327a2ac4d74
+	source_aarch64 = youtubedr-aarch64-2.10.5.tgz::https://github.com/kkdai/youtube/releases/download/v2.10.5/youtubedr_2.10.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = 87412ff4c8bea55b1655f6f44fcf5774caf16fb6d895ff3dde58291563efc369
+
+pkgname = youtubedr-bin

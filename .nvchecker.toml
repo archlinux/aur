@@ -1,0 +1,5 @@
+[youtubedr-bin]
+source = "github"
+github = "kkdai/youtube"
+use_latest_release = true
+prefix = "v"
