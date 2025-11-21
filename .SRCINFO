@@ -1,8 +1,9 @@
 pkgbase = antigravity-bin-hardened
 	pkgdesc = Google Antigravity - Agentic Development Platform (Pre-built Binary)
 	pkgver = 1.11.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://antigravity.google/
+	install = antigravity-bin-hardened.install
 	arch = x86_64
 	license = Proprietary
 	depends = gtk3
@@ -16,8 +17,11 @@ pkgbase = antigravity-bin-hardened
 	depends = at-spi2-core
 	depends = libdrm
 	depends = mesa
+	optdepends = apparmor: Mandatory Access Control (MAC) security framework
 	options = !strip
 	source = https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/1.11.3-6583016683339776/linux-x64/Antigravity.tar.gz
+	source = antigravity.apparmor
 	sha256sums = 025da512f9799a7154e2cc75bc0908201382c1acf2e8378f9da235cb84a5615b
+	sha256sums = SKIP
 
 pkgname = antigravity-bin-hardened

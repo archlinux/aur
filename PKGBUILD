@@ -4,15 +4,21 @@
 pkgname=antigravity-bin-hardened
 pkgver=1.11.3
 _buildid=6583016683339776
-pkgrel=5
+pkgrel=6
 pkgdesc="Google Antigravity - Agentic Development Platform (Pre-built Binary)"
 arch=('x86_64')
 url="https://antigravity.google/"
 license=('Proprietary')
+install=$pkgname.install
 depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst' 'xdg-utils' 'glibc' 'nspr' 'at-spi2-core' 'libdrm' 'mesa')
+optdepends=(
+    'apparmor: Mandatory Access Control (MAC) security framework'
+)
 options=('!strip')
-source=("https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/${pkgver}-${_buildid}/linux-x64/Antigravity.tar.gz")
-sha256sums=('025da512f9799a7154e2cc75bc0908201382c1acf2e8378f9da235cb84a5615b')
+source=("https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/${pkgver}-${_buildid}/linux-x64/Antigravity.tar.gz"
+        "antigravity.apparmor")
+sha256sums=('025da512f9799a7154e2cc75bc0908201382c1acf2e8378f9da235cb84a5615b'
+            'SKIP')
 
 package() {
     install -d "$pkgdir/opt/antigravity"
@@ -69,4 +75,7 @@ Categories=Development;IDE;
 Terminal=false
 StartupWMClass=Antigravity
 EOF
+
+    # AppArmor Profile (Optional Security Enhancement)
+    install -Dm644 antigravity.apparmor "$pkgdir/usr/share/apparmor/antigravity.apparmor"
 }

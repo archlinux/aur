@@ -1,0 +1,25 @@
+# Build artifacts
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.deb
+*.rpm
+*.pem
+*.bin
+*.gz
+*.xz
+*.zst
+
+# Package build directories
+src/
+pkg/
+
+# Logs
+*.log
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
