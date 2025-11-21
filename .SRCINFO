@@ -1,7 +1,7 @@
 pkgbase = soh-bin
 	pkgdesc = Ship of Harkinian Reimplimentation engine
 	pkgver = 9.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/linuxbombay/soh
 	arch = x86_64
 	arch = aarch64
@@ -14,11 +14,12 @@ pkgbase = soh-bin
 	depends = zenity
 	depends = tinyxml2
 	depends = spdlog
+	depends = opusfile
 	source = https://gitlab.com/linuxbombay/soh/shipwright/-/archive/1.3/shipwright-1.3.tar.bz2
 	sha256sums = 20d00d440c6d9d0580612aa62237424ae1135034a2e8ab907c67b845bc448f90
 	source_x86_64 = shipwright-9.1.1-linux-x64.zip::https://gitlab.com/linuxbombay/soh/binaries/9.1.1/-/raw/main/shipwright-linux-x64.zip
-	sha256sums_x86_64 = 40a7e6a32bf1df7057a78872ffce057904ca791b142a0dd0cbadce5414901bd9
+	sha256sums_x86_64 = 8a436d0588768667bd7f4f3c82185b560239c217d958918a7286195607d1b64e
 	source_aarch64 = shipwright-9.1.1-linux-arm64.zip::https://gitlab.com/linuxbombay/soh/binaries/9.1.1/-/raw/main/shipwright-linux-arm64.zip
-	sha256sums_aarch64 = d460741c8168a0dcfaec9ab8de15c175a79216a28e0490528999dc078033fcb3
+	sha256sums_aarch64 = ee3f23ee18e0f4730c06348e513529b383a970bcdfc1010763b6ae175c131561
 
 pkgname = soh-bin
