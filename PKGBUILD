@@ -2,7 +2,7 @@
 
 pkgname=notionsafe
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform desktop app to backup Notion workspaces locally."
 arch=('any')
 url="https://github.com/KanishkMishra143/NotionSafe"
@@ -27,7 +27,7 @@ makedepends=(
     'python-wheel'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KanishkMishra143/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('41652efa1b8b86621e4965a9f34bcf2d4eb9e952f6c7bcbb71b63154fb4b50c3')
+sha256sums=('bcf8126b383e49251e1d3fc32836ec87faed994c2518d56b55bd2bdd09cf3077')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
