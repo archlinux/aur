@@ -13,7 +13,7 @@ pkgname=(regina-rexx{,-doc})
 pkgdesc='ANSI compliant REXX interpreter for multiple platforms'
 epoch=1
 pkgver=3.9.7
-pkgrel=2
+pkgrel=3
 url='https://regina-rexx.sourceforge.io/'
 source=(
   "https://downloads.sourceforge.net/regina-rexx/$_pkgname-$_pkgsuff-$pkgver.tar.gz"
@@ -38,8 +38,13 @@ build() {
     --sysconfdir=/etc
 
   # Build will fail for N>2,
-  # so let's play it safe and use one make thread only:
-  make -j1
+  # so let's play it safe and use a maximum of two make threads:
+  _nproc=$(nproc 2>/dev/null || echo 1)
+  case "$_nproc" in
+    1|2) _jobs="$_nproc" ;;
+      *) _jobs=2 ;;
+  esac
+  make "-j$_jobs"
 }
 
 package_regina-rexx() {
