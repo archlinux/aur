@@ -15,7 +15,7 @@ provides=("$_pkgname")
 source=("$_pkgname-$pkgver-reF1nd.tar.gz::https://github.com/reF1nd/sing-box/archive/refs/tags/v$pkgver-reF1nd.tar.gz")
 sha256sums=('02f1950da81ecd0ca362cba756c3d157f3bfd27153a07bd8427c364996fdb0bb')
 
-conflicts=("$_pkgname-git" "$_pkgname-alpha" "$_pkgname-beta" "$_pkgname-git")
+conflicts=("$_pkgname-git" "$_pkgname-alpha" "$_pkgname-beta" "$pkgname-git")
 
 backup=("etc/$_pkgname/config.json")
 
