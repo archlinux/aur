@@ -1,0 +1,16 @@
+pkgbase = geteduroam-gui
+	pkgdesc = A gui to automatically setup eduroam
+	pkgver = 0.12
+	pkgrel = 1
+	url = https://github.com/geteduroam/linux-app
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = go>=1.18
+	depends = networkmanager
+	depends = gtk4>=4.06
+	depends = libadwaita>=1.1
+	source = geteduroam-0.12.tar.gz::https://github.com/geteduroam/linux-app/archive/refs/tags/0.12.tar.gz
+	sha256sums = 25b367d30efa3bba0ca414ff29b80f7e49cf2fa5f252d1e47ee49e59e9db5ff8
+
+pkgname = geteduroam-gui
