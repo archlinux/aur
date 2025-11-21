@@ -7,7 +7,7 @@ pkgbase = protonup-rs-bin
 	license = Apache
 	provides = protonup-rs
 	conflicts = protonup-rs
-	source = https://github.com/auyer/Protonup-rs/releases/download/v0.9.2/protonup-rs-linux-amd64.tar.gz
+	source = protonup-rs-bin-0.9.2.tar.gz::https://github.com/auyer/Protonup-rs/releases/download/v0.9.2/protonup-rs-linux-amd64.tar.gz
 	sha256sums = dc5f5671518ff5956d4ca7cbb49da827df97811e8475ca866a8996db1a16145a
 
 pkgname = protonup-rs-bin

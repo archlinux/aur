@@ -9,7 +9,7 @@ license=("Apache")
 arch=('any')
 provides=('protonup-rs')
 conflicts=('protonup-rs')
-source=(https://github.com/auyer/Protonup-rs/releases/download/v$pkgver/protonup-rs-linux-amd64.tar.gz)
+source=($pkgname-$pkgver.tar.gz::https://github.com/auyer/Protonup-rs/releases/download/v$pkgver/protonup-rs-linux-amd64.tar.gz)
 
 sha256sums=('dc5f5671518ff5956d4ca7cbb49da827df97811e8475ca866a8996db1a16145a')
 
