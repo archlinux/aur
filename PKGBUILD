@@ -3,7 +3,7 @@
 
 pkgname=python-glue-vispy-viewers
 _pyname=glue_vispy_viewers
-pkgver=1.2.3
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="3-d data viewers for glue based on VisPy"
 arch=('any')
@@ -16,7 +16,7 @@ checkdepends=('python-pytest-xvfb'
               'python-opengl'
               'python-vispy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('72f1a5645920a79164c47ffad6ea61e3edd7415e389d2b5c6025ad52601a2545')
+sha256sums=('4d3fe2a605c567977e546a9367f1f0eddc1cc0b2b3234e71aec66ec3669ed45e')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -27,13 +27,13 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count # no need -p xvfb
+    pytest -vv -l -ra --color=yes -o console_output_style=count #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count # no need -p xvfb
 }
 
 package() {
-    depends=('python>=3.8' 'python-matplotlib' 'python-opengl' 'python-scipy' 'python-glue-core>=1.13.1' 'python-vispy>=0.12.0' 'python-glfw' 'python-imageio')
+    depends=('python>=3.8' 'python-matplotlib' 'python-opengl' 'python-scipy' 'python-glue-core>=1.17.0' 'python-vispy>=0.12.0' 'python-glfw' 'python-imageio')
     optdepends=('python-qtpy: pyqt, pyside'
-                'python-glue-qt: pyqt, pyside'
+                'python-glue-qt>=0.4.0: pyqt, pyside'
                 'python-pyqt6: pyqt'
                 'pyside6: pyside')
     cd "${srcdir}/${_pyname}-${pkgver}"
