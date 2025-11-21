@@ -2,7 +2,7 @@
 
 pkgname=freetube-electron-git
 _pkgname=FreeTube
-pkgver=0.23.12.beta.r9465.cb14c8c
+pkgver=0.23.12.beta.r9497.c6722b8
 pkgrel=1
 pkgdesc='A private YouTube client - built from latest git, with the default electron.'
 arch=('x86_64')
@@ -27,8 +27,8 @@ prepare() {
 
 build() {
   cd $_pkgname
-  yarn install
-  yarn run build
+  NODE_OPTIONS="--no-experimental-webstorage" yarn install
+  NODE_OPTIONS="--no-experimental-webstorage" yarn run build
 }
 
 package() {
