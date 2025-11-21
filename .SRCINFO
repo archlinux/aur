@@ -1,5 +1,22 @@
 pkgbase = skyemu-git
-	pkgver = 0
-	pkgrel = 0
+	pkgdesc = An emulator for GB, GBC, GBA, and DS
+	pkgver = 4.r8.g246ba26
+	pkgrel = 2
+	url = https://github.com/skylersaleh/SkyEmu
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = alsa-lib
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = libxcursor
+	depends = libxi
+	depends = sdl2
+	provides = skyemu
+	conflicts = skyemu
+	source = skyemu::git+https://github.com/skylersaleh/SkyEmu.git
+	sha256sums = SKIP
 
 pkgname = skyemu-git
