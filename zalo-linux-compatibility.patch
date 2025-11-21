@@ -1,0 +1,39 @@
+--- a/native/nativelibs/index.js
++++ b/native/nativelibs/index.js
+@@ -3,7 +3,7 @@
+     fileUtils: () => {
+         return require('./file-utils/index.js');
+     },
+-    winUtils : ()=>{    	
++    winUtils : ()=>{
+     	return require('./win-utils/index.js');
+     },
+     zcall : ()=>{
+@@ -34,7 +34,21 @@
+         return require('./zfile/index.js');
+     },
+     fileUtilities: () => {
+-        return require('./file-utilities/index.js');
++        try {
++            return require('./file-utilities/index.js');
++        } catch (error) {
++            // Return placeholder functions for unsupported platforms (Linux)
++            return {
++                getDirectorySizeSync: () => ({ size: 0, fileCount: 0 }),
++                getDirectorySizeAsync: async () => ({ size: 0, fileCount: 0 }),
++                detectHardlinksSync: () => false,
++                detectHardlinksAsync: async () => false,
++                detectFilesystemSync: () => ({ type: "unknown" }),
++                detectFilesystemAsync: async () => ({ type: "unknown" }),
++                getDirectorySizeByGlobSync: () => ({ size: 0, fileCount: 0 }),
++                getDirectorySizeByGlobAsync: async () => ({ size: 0, fileCount: 0 }),
++            };
++        }
+     },
+     mp4thumb: () => {
+         return require('./mp4thumb/index.js');
+@@ -49,4 +63,3 @@
+ 	instance.zimage().then(console.error).catch(console.error);
+ }
+ // test();
+-
