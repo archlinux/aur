@@ -1,0 +1,310 @@
+diff --git a/simple.common b/simple.common
+index 73b7112..0db2cd1 100644
+--- a/simple.common
++++ b/simple.common
+@@ -1,4 +1,4 @@
+-GTKL=$(shell pkg-config --libs gtk+-2.0)
++GTKL=$(shell pkg-config --libs gtk+-3.0)
+ XL=$(shell pkg-config --libs x11)
+ FONTL=$(shell pkg-config --libs fontconfig)
+ FREEL=$(shell pkg-config --libs freetype2)
+@@ -17,9 +17,9 @@ check_dep:
+ 	i=$$(echo "$$v"|grep "$$t"|sed 's!.* !!'); if [ -n "$$i" ]; then v="$$i"; fi; \
+ 	echo "$$ft 'V=$$v' OK"; fi; \
+ 	done
+-	@echo "    Need gtk+-2.0 x11 fontconfig and freetype2"
++	@echo "    Need gtk+-3.0 x11 fontconfig and freetype2"
+ 	@echo -n "Checking for gtk.. "
+-	@if [ -z "$(GTKL)" ]; then echo "No gtk+-2.0 libs"; exit 1; else echo OK; fi
++	@if [ -z "$(GTKL)" ]; then echo "No gtk+-3.0 libs"; exit 1; else echo OK; fi
+ 	@echo -n "Checking for X11.. "
+ 	@if [ -z "$(XL)" ]; then echo "No x11 libs"; exit 1; else echo OK; fi
+ 	@echo -n "Checking for fontconfig.. "
+diff --git a/src/Makefile b/src/Makefile
+index 48b2c9f..211be0a 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -22,7 +22,7 @@ include ../simple.common
+ CFILES=attr_list.c daemon.c eggaccelerators.c  history.c keybinder.c main.c preferences.c utils.c
+ 
+ OBJS=$(patsubst %.c,%.o,$(CFILES))
+-GTKC=$(shell pkg-config --cflags gtk+-2.0)
++GTKC=$(shell pkg-config --cflags gtk+-3.0)
+ FONTC=$(shell pkg-config --cflags fontconfig)
+ FREEC=$(shell pkg-config --cflags freetype2)
+ LIBAPP=$(shell $(PRFX)/appsuck.sh cflags)
+diff --git a/src/eggaccelerators.c b/src/eggaccelerators.c
+index de1f545..2602327 100644
+--- a/src/eggaccelerators.c
++++ b/src/eggaccelerators.c
+@@ -21,7 +21,6 @@
+ 
+ #include <string.h>
+ #include <gdk/gdkx.h>
+-#include <gdk/gdkkeysyms.h>
+ 
+ enum
+ {
+@@ -537,20 +536,20 @@ static void reload_modmap (GdkKeymap *keymap, EggModmap *modmap)
+       j = 0;
+       while (j < n_entries)
+         {          
+-          if (keyvals[j] == GDK_Num_Lock)
++          if (keyvals[j] == GDK_KEY_Num_Lock)
+             mask |= EGG_VIRTUAL_NUM_LOCK_MASK;
+-          else if (keyvals[j] == GDK_Scroll_Lock)
++          else if (keyvals[j] == GDK_KEY_Scroll_Lock)
+             mask |= EGG_VIRTUAL_SCROLL_LOCK_MASK;
+-          else if (keyvals[j] == GDK_Meta_L ||
+-                   keyvals[j] == GDK_Meta_R)
++          else if (keyvals[j] == GDK_KEY_Meta_L ||
++                   keyvals[j] == GDK_KEY_Meta_R)
+             mask |= EGG_VIRTUAL_META_MASK;
+-          else if (keyvals[j] == GDK_Hyper_L ||
+-                   keyvals[j] == GDK_Hyper_R)
++          else if (keyvals[j] == GDK_KEY_Hyper_L ||
++                   keyvals[j] == GDK_KEY_Hyper_R)
+             mask |= EGG_VIRTUAL_HYPER_MASK;
+-          else if (keyvals[j] == GDK_Super_L ||
+-                   keyvals[j] == GDK_Super_R)
++          else if (keyvals[j] == GDK_KEY_Super_L ||
++                   keyvals[j] == GDK_KEY_Super_R)
+             mask |= EGG_VIRTUAL_SUPER_MASK;
+-          else if (keyvals[j] == GDK_Mode_switch)
++          else if (keyvals[j] == GDK_KEY_Mode_switch)
+             mask |= EGG_VIRTUAL_MODE_SWITCH_MASK;
+           
+           ++j;
+diff --git a/src/keybinder.c b/src/keybinder.c
+index 7f40999..fdc2525 100644
+--- a/src/keybinder.c
++++ b/src/keybinder.c
+@@ -86,7 +86,7 @@ grab_ungrab_with_ignorable_modifiers (GdkWindow *rootwin,
+ 			XGrabKey (GDK_WINDOW_XDISPLAY (rootwin), 
+ 				  binding->keycode, 
+ 				  binding->modifiers | mod_masks [i], 
+-				  GDK_WINDOW_XWINDOW (rootwin), 
++				  GDK_WINDOW_XID (rootwin), 
+ 				  False, 
+ 				  GrabModeAsync,
+ 				  GrabModeAsync);
+@@ -94,7 +94,7 @@ grab_ungrab_with_ignorable_modifiers (GdkWindow *rootwin,
+ 			XUngrabKey (GDK_WINDOW_XDISPLAY (rootwin),
+ 				    binding->keycode,
+ 				    binding->modifiers | mod_masks [i], 
+-				    GDK_WINDOW_XWINDOW (rootwin));
++				    GDK_WINDOW_XID (rootwin));
+ 		}
+ 	}
+ }
+@@ -309,7 +309,7 @@ keybinder_is_modifier (guint keycode)
+ 	XModifierKeymap *mod_keymap;
+ 	gboolean retval = FALSE;
+ 
+-	mod_keymap = XGetModifierMapping (gdk_display);
++	mod_keymap = XGetModifierMapping (GDK_DISPLAY_XDISPLAY(gdk_display_get_default()));
+ 
+ 	map_size = 8 * mod_keymap->max_keypermod;
+ 
+diff --git a/src/main.c b/src/main.c
+index 2029fba..294a74b 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -398,7 +398,17 @@ gchar *update_clipboard(GtkClipboard *clip,gchar *intext,  gint mode)
+ 	
+ 	
+ 	if( H_MODE_CHECK==mode &&clip == primary){/*fix auto-deselect of text in applications like DevHelp and LyX*/
+-   	gdk_window_get_pointer(NULL, NULL, NULL, &button_state);
++	GdkScreen *screen = gdk_screen_get_default();
++	if (screen)
++	{
++		GdkDisplay *display = gdk_screen_get_display(screen);
++		GdkWindow *window = gdk_screen_get_root_window(screen);
++		GdkSeat *seat = gdk_display_get_default_seat(display);
++
++		gdk_window_get_device_position(window, gdk_seat_get_pointer(seat), NULL,
++		NULL, &button_state);
++	}
++  	/* gdk_window_get_pointer(NULL, NULL, NULL, &button_state); */
+ 		if ( button_state & (GDK_BUTTON1_MASK|GDK_SHIFT_MASK) ) /**button down, done.  */
+ 			goto done;
+ 	}
+@@ -698,7 +708,7 @@ static void action_exit(GPid pid, gint status, gpointer data)
+   g_spawn_close_pid(pid);
+   if (!have_appindicator && show_icon) {
+ 		gtk_status_icon_set_from_icon_name((GtkStatusIcon*)status_icon, get_pref_string("icon_name"));
+-    gtk_status_icon_set_tooltip((GtkStatusIcon*)status_icon, _("Clipboard Manager"));
++    gtk_status_icon_set_tooltip_text((GtkStatusIcon*)status_icon, _("Clipboard Manager"));
+   }
+   actions_lock = FALSE;
+ }
+@@ -710,7 +720,7 @@ static void action_selected(GtkButton *button, gpointer user_data)
+   actions_lock = TRUE;
+   if (!have_appindicator && show_icon) {
+     gtk_status_icon_set_from_stock((GtkStatusIcon*)status_icon, GTK_STOCK_EXECUTE);
+-    gtk_status_icon_set_tooltip((GtkStatusIcon*)status_icon, _("Executing action..."));
++     gtk_status_icon_set_tooltip_text((GtkStatusIcon*)status_icon, _("Executing action..."));
+   }
+   /* Insert clipboard into command (user_data), and prepare it for execution */
+   gchar* clipboard_text = gtk_clipboard_wait_for_text(clipboard);
+@@ -806,7 +816,7 @@ static void edit_selected(GtkMenuItem *menu_item, gpointer user_data)
+     
+     /* Create the dialog */
+     GtkWidget* dialog = gtk_dialog_new_with_buttons(_("Editing Clipboard"), NULL,
+-                                                   (GTK_DIALOG_MODAL   +    GTK_DIALOG_NO_SEPARATOR),
++                                                   (GTK_DIALOG_MODAL),
+                                                     GTK_STOCK_CANCEL,       GTK_RESPONSE_REJECT,
+                                                     GTK_STOCK_OK,           GTK_RESPONSE_ACCEPT, NULL);
+     
+@@ -820,7 +830,7 @@ static void edit_selected(GtkMenuItem *menu_item, gpointer user_data)
+     gtk_scrolled_window_set_policy((GtkScrolledWindow*)scrolled_window,
+                                    GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+     
+-    gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dialog)->vbox), scrolled_window, TRUE, TRUE, 2);
++    gtk_box_pack_start(GTK_BOX(gtk_dialog_get_content_area(GTK_DIALOG(dialog))), scrolled_window, TRUE, TRUE, 2);
+     GtkWidget* text_view = gtk_text_view_new_with_buffer(text_buffer);
+     gtk_text_view_set_left_margin((GtkTextView*)text_view, 2);
+     gtk_text_view_set_right_margin((GtkTextView*)text_view, 2);
+@@ -1139,7 +1149,7 @@ static void show_about_dialog(GtkMenuItem *menu_item, gpointer user_data)
+     gtk_window_set_icon((GtkWindow*)about_dialog,
+                         gtk_widget_render_icon(about_dialog, GTK_STOCK_ABOUT, -1, NULL));
+     
+-    gtk_about_dialog_set_name((GtkAboutDialog*)about_dialog, "Parcellite");
++    gtk_about_dialog_set_program_name((GtkAboutDialog*)about_dialog, "Parcellite");
+     #ifdef HAVE_CONFIG_H	/**VER=555; sed "s#\(.*\)svn.*\".*#\1svn$VER\"#" config.h  */
+     gtk_about_dialog_set_version((GtkAboutDialog*)about_dialog, VERSION);
+     #endif
+@@ -1312,7 +1322,7 @@ static gboolean show_actions_menu(gpointer data)
+   gtk_menu_shell_append((GtkMenuShell*)menu, menu_item);
+   /* Popup the menu... */
+   gtk_widget_show_all(menu);
+-  gtk_menu_popup((GtkMenu*)menu, NULL, NULL, NULL, NULL, 1, gtk_get_current_event_time());
++  gtk_menu_popup((GtkMenu*)menu, NULL, NULL, status_icon ? gtk_status_icon_position_menu : NULL, status_icon, 1, gtk_get_current_event_time());
+   /* Return false so the g_timeout_add() function is called only once */
+   return FALSE;
+ }
+@@ -2122,7 +2132,7 @@ next_loop:
+ 	g_signal_connect(menu,"selection-done",(GCallback)destroy_history_menu,(gpointer)&h);
+   /* Popup the menu... */
+   gtk_widget_show_all(menu);
+-  gtk_menu_popup((GtkMenu*)menu, NULL, NULL, get_pref_int32("history_pos")?postition_history:set_menu_xy, NULL, 1, gtk_get_current_event_time());
++  gtk_menu_popup((GtkMenu*)menu, NULL, NULL, get_pref_int32("history_pos")?postition_history:status_icon ? gtk_status_icon_position_menu : set_menu_xy, status_icon, 1, gtk_get_current_event_time());
+ 	/**set last entry at first -fixes bug 2974614 */
+ 	if(get_pref_int32("reverse_history") && NULL != h.clip_item)
+ 		gtk_menu_shell_select_item((GtkMenuShell*)menu,h.clip_item);
+@@ -2206,14 +2216,15 @@ GtkWidget *create_parcellite_menu(guint button, guint activate_time)
+   gtk_menu_shell_append((GtkMenuShell*)menu, menu_item);
+   /* Popup the menu... */
+   gtk_widget_show_all(menu);
+-  gtk_menu_popup((GtkMenu*)menu, NULL, NULL, set_menu_xy, (gpointer)1, button, activate_time);
++  gtk_menu_popup((GtkMenu*)menu, NULL, NULL, status_icon ? gtk_status_icon_position_menu : set_menu_xy, status_icon, button, activate_time);
+   return menu;
+ }
+ 
+ /* Called when status icon is right-clicked */
+-static void  show_parcellite_menu(GtkStatusIcon *status_icon, guint button, guint activate_time,  gpointer data)
++static gboolean show_parcellite_menu(GtkStatusIcon *status_icon, guint button, guint activate_time,  gpointer data)
+ {
+ 	create_parcellite_menu(button, activate_time);
++	return FALSE;
+ }
+ 
+ 
+@@ -2229,13 +2240,13 @@ static void status_icon_clicked(GtkStatusIcon *status_icon, gpointer user_data)
+ 		g_fprintf(stderr,"Got Ctrl-click\n");
+     if (actions_lock == FALSE)
+     {
+-      g_timeout_add(POPUP_DELAY, show_actions_menu, NULL);
++      show_actions_menu(NULL);
+     }
+   }
+   /* Normal click */
+   else
+   {
+-    g_timeout_add(POPUP_DELAY, show_history_menu, GINT_TO_POINTER(figure_histories()));
++    show_history_menu(GINT_TO_POINTER(figure_histories()));
+   }
+ }
+ /***************************************************************************/
+@@ -2248,7 +2259,7 @@ void setup_icon( void )
+ 	if(0 == have_appindicator){/* no Indicator */
+ 		if(NULL == status_icon){
+ 			status_icon = gtk_status_icon_new_from_icon_name(get_pref_string("icon_name")); 
+-			gtk_status_icon_set_tooltip((GtkStatusIcon*)status_icon, _("Clipboard Manager"));
++			gtk_status_icon_set_tooltip_text((GtkStatusIcon*)status_icon, _("Clipboard Manager"));
+ 			g_signal_connect((GObject*)status_icon, "activate", (GCallback)status_icon_clicked, NULL);
+ 			g_signal_connect((GObject*)status_icon, "popup-menu", (GCallback)show_parcellite_menu, NULL);	
+ 		}	else {
+@@ -2304,6 +2315,13 @@ void actions_hotkey(char *keystring, gpointer user_data)
+   g_timeout_add(POPUP_DELAY, show_actions_menu, NULL);
+ }
+ 
++gboolean
++timeout_show_menu_cb(gpointer user_data)
++{
++  create_parcellite_menu(0, gtk_get_current_event_time());
++  return FALSE;
++}
++
+ /* Called when actions global hotkey is pressed */
+ void menu_hotkey(char *keystring, gpointer user_data)
+ {
+@@ -2313,7 +2331,7 @@ void menu_hotkey(char *keystring, gpointer user_data)
+ 	/** GtkWidget * w=create_parcellite_menu(0, gtk_get_current_event_time());
+ 	app_indicator_set_menu (indicator, GTK_MENU (w));*/
+ #else
+-  show_parcellite_menu(status_icon, 0, 0, NULL);
++  g_timeout_add(POPUP_DELAY, timeout_show_menu_cb, NULL);
+ #endif
+ }
+ 
+@@ -2519,7 +2537,7 @@ int main(int argc, char *argv[])
+ 	}	
+   
+   /* Init Parcellite */
+-  parcellite_init(mode);
++  parcellite_init();
+   /*g_printf("Start main loop\n"); */
+   /* Run GTK+ loop */
+   gtk_main();
+diff --git a/src/main.h b/src/main.h
+index d6d435f..24f570e 100644
+--- a/src/main.h
++++ b/src/main.h
+@@ -24,7 +24,7 @@ G_BEGIN_DECLS
+ extern GMutex hist_lock;
+ 
+ #define ACTIONS_TAB    2
+-#define POPUP_DELAY    100
++#define POPUP_DELAY    200
+ #define CHECK_INTERVAL 500
+ #define CHECK_APPINDICATOR_INTERVAL 30000 /**check for existence of indicator-appmenu  */
+ #define ID_PRIMARY   0
+diff --git a/src/preferences.c b/src/preferences.c
+index dc7e046..50d1871 100644
+--- a/src/preferences.c
++++ b/src/preferences.c
+@@ -1119,7 +1119,7 @@ void show_preferences(gint tab)
+   
+   /* Create the dialog */
+   GtkWidget* dialog = gtk_dialog_new_with_buttons(_("Preferences"),     NULL,
+-                                                   (GTK_DIALOG_MODAL  + GTK_DIALOG_NO_SEPARATOR),
++                                                   (GTK_DIALOG_MODAL),
+                                                     GTK_STOCK_CANCEL,   GTK_RESPONSE_REJECT,
+                                                     GTK_STOCK_OK,       GTK_RESPONSE_ACCEPT, NULL);
+   
+@@ -1177,10 +1177,10 @@ void show_preferences(gint tab)
+   label = gtk_label_new(_(p->desc));
+   gtk_misc_set_alignment((GtkMisc*)label, 0.0, 0.50);
+   gtk_box_pack_start((GtkBox*)hbox, label, FALSE, FALSE, 0);
+-  p->w = gtk_combo_box_new_text();
+-  gtk_combo_box_append_text((GtkComboBox*)p->w, _("Beginning"));
+-  gtk_combo_box_append_text((GtkComboBox*)p->w, _("Middle"));
+-  gtk_combo_box_append_text((GtkComboBox*)p->w, _("End"));
++  p->w = gtk_combo_box_text_new();
++  gtk_combo_box_text_append_text((GtkComboBoxText*)p->w, _("Beginning"));
++  gtk_combo_box_text_append_text((GtkComboBoxText*)p->w, _("Middle"));
++  gtk_combo_box_text_append_text((GtkComboBoxText*)p->w, _("End"));
+   gtk_box_pack_start((GtkBox*)hbox, p->w, FALSE, FALSE, 0);
+   gtk_box_pack_start((GtkBox*)vbox_display, frame, FALSE, FALSE, 0);
+ 	
