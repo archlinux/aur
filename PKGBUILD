@@ -1,8 +1,8 @@
 # Maintainer: Norbert <sandwich@archworks.co>
 
 pkgname=ft-bin
-pkgver=3.0.0
-pkgrel=0
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="Tunnel TCP connections through a file"
 arch=('x86_64' 'aarch64')
 url="https://github.com/fiddyschmitt/File-Tunnel"
