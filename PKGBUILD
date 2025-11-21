@@ -1,14 +1,14 @@
 # Maintainer: Kanehekili (mat dot wegmann at gmail dot com)
 pkgname=videocut
 pkgver=3.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast mp4/matroska/Av1/webm/mp2/mpts lossless Video cutter"
 url="https://github.com/kanehekili/VideoCut"
 license=('GPL-3.0-or-later')
 depends=('python-pyqt6' 'mpv' 'ffmpeg<2:9.0' 'python-pillow')
 arch=('x86_64')
 source=(https://github.com/kanehekili/VideoCut/releases/download/3.0.6/videocut3.0.6.tar)
-md5sums=(b7e579864aacfc4f26cd981bbf3e7b58)
+md5sums=(75171582f3e5a260518004cc73eb40a5)
 
 build() {
   make -C "${pkgname}/ffmpeg/src/" -f makefile all
@@ -18,7 +18,7 @@ package() {
   cd "${srcdir}/${pkgname}"
 
   install -Dm 644 *.py -t "${pkgdir}/opt/videocut"
-  rm "${pkgdir}/opt/videocut/"{FFMPEGTests,testmpv}.py
+  rm "${pkgdir}/opt/videocut/"{FFMPEGTests}.py
   install -Dm 755 VideoCut.py -t "${pkgdir}/opt/videocut"
   find data icons lib -type f \
     -exec install -Dm 644 "{}" "${pkgdir}/opt/videocut/{}" \;
