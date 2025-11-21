@@ -9,7 +9,7 @@ pkgbase = qtjambi
 	makedepends = ant
 	makedepends = chrpath
 	makedepends = gcc
-	makedepends = jdk21-openjdk
+	makedepends = jdk25-openjdk
 	makedepends = make
 	makedepends = patch
 	depends = qt6-base=6.10.0

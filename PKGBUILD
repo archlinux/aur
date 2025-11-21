@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://github.com/OmixVisualization/qtjambi"
 license=("LGPL" "GPL")
 depends=("qt6-base=${qtver}" "qt6-declarative=${qtver}")
-makedepends=("ant" "chrpath" "gcc" "jdk21-openjdk" "make" "patch")
+makedepends=("ant" "chrpath" "gcc" "jdk25-openjdk" "make" "patch")
 options=(!debug)
 source=(https://github.com/OmixVisualization/qtjambi/archive/refs/tags/v${qtjambiver}.tar.gz)
 sha256sums=(SKIP)
@@ -22,7 +22,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${qtjambiver}"
-  export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+  export JAVA_HOME=/usr/lib/jvm/java-25-openjdk
   export JAVA_HOME_TARGET=$JAVA_HOME
   ant generator.make
   ant generator.run
