@@ -1,7 +1,7 @@
 # Maintainer: Ali <ali205412@github.com>
 
 pkgname=yamli-editor
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="A native Yamli editor for Wayland"
 arch=('x86_64')
