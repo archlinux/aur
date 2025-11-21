@@ -4,10 +4,12 @@
 # options
 : ${_build_clang:=false}
 
+: ${_use_sodeps:=false}
+
 _pkgname="flycast"
 pkgname="$_pkgname-git"
-pkgver=2.5.r144.g8edd8fc
-pkgrel=1
+pkgver=2.5.r205.g5bce763
+pkgrel=2
 pkgdesc='Sega Dreamcast, Naomi, and Atomiswave emulator'
 url="https://github.com/flyinghead/flycast"
 license=('GPL-2.0-only')
@@ -15,10 +17,10 @@ arch=('x86_64')
 
 depends=(
   'alsa-lib'
+  'glslang'
   'hicolor-icon-theme'
   'libao'
   'libcdio'
-  'libgl'
   'libpulse'
   'libzip'
   'miniupnpc'
@@ -27,7 +29,6 @@ depends=(
 makedepends=(
   'cmake'
   'git'
-  'glslang'
   'ninja'
   'python'
   'vulkan-headers'
@@ -108,5 +109,20 @@ build() {
 }
 
 package() {
+  if [[ "${_use_sodeps::1}" == "t" ]]; then
+    eval "depends+=(
+      'libao.so'
+      'libasound.so'
+      'libcurl.so'
+      'libminiupnpc.so'
+      'libpulse.so'
+      'libz.so'
+      'libzip.so'
+    )"
+  fi
+
   DESTDIR="$pkgdir" cmake --install build
+
+  # unwanted
+  rm -rf "$pkgdir"/usr/{include,lib,share/pixmaps}
 }
