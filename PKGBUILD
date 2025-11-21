@@ -3,12 +3,18 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Patches applied by: Lito Parra <lito.15@proton.me>
 
+# Change this value to an interval shorter than
+# your monitor's max refresh rate, perhaps
+# the floored result of 1000 / your_monitor_refresh_rate
+# 4 ms smooths up to 240 Hz animations, balanced default
+HIFPS_TARGET_TIMER_INTERVAL=4
+
 pkgbase=qt6-base-hifps
 pkgname=(qt6-base-hifps
          qt6-xcb-private-headers-hifps)
 _pkgver=6.10.0
 pkgver=${_pkgver/-/}
-pkgrel=3
+pkgrel=4
 pkgdesc='A cross-platform application and UI framework - patched for high refresh rates for animations'
 arch=(x86_64)
 url='https://www.qt.io'
@@ -74,6 +80,7 @@ makedepends=(alsa-lib
              postgresql
              renderdoc
 	     rsync
+	     sed
              unixodbc
              vulkan-headers
              xmlstarlet)
@@ -94,7 +101,7 @@ source=(git+https://code.qt.io/qt/$_pkgfn.git
         0005-low-timer.patch)
 sha256sums=('SKIP'
             '56510cbf9141185f6b2f6e8048c64ab0368e4288884fd538baf388555df29496'
-            '9150994a131f17fe930302696c011811aafc0f5e1735355a45270e9550f72b03')
+            'SKIP')
 
 prepare() {
   echo ">>> Syncing official Arch qt6-base repo files..."
@@ -123,7 +130,14 @@ prepare() {
   patch -Np1 -i "${srcdir}/qt6-base-cflags.patch"  # Use system CFLAGS
   patch -Np1 -i "${srcdir}/qt6-base-nostrip.patch" # Don't strip binaries with qmake
 
-  echo ">>> Reducing Qt animation timer interval down to 1 ms to smooth out animations..."
+  echo ">>> Reducing Qt animation timer interval down to ${HIFPS_TARGET_TIMER_INTERVAL} ms to smooth out animations..."
+  tmpfile=$(mktemp)
+
+  sed -E "s|^\+#define DEFAULT_TIMER_INTERVAL .*|+#define DEFAULT_TIMER_INTERVAL ${HIFPS_TARGET_TIMER_INTERVAL}|" \
+  "$srcdir/0005-low-timer.patch" > "$tmpfile"
+
+  mv "$tmpfile" "$srcdir/0005-low-timer.patch"
+
   patch -Np1 -i "${srcdir}/0005-low-timer.patch" # apply 1 ms timing patch to make animations smoother
   git cherry-pick -n a374ab6ce9f01f1f559403ec377cde990a689890 # Fix yakuake
 

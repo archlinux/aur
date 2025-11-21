@@ -1,7 +1,7 @@
 pkgbase = qt6-base-hifps
 	pkgdesc = A cross-platform application and UI framework - patched for high refresh rates for animations
 	pkgver = 6.10.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.qt.io
 	arch = x86_64
 	groups = qt6
@@ -24,6 +24,7 @@ pkgbase = qt6-base-hifps
 	makedepends = postgresql
 	makedepends = renderdoc
 	makedepends = rsync
+	makedepends = sed
 	makedepends = unixodbc
 	makedepends = vulkan-headers
 	makedepends = xmlstarlet
@@ -84,7 +85,7 @@ pkgbase = qt6-base-hifps
 	source = 0005-low-timer.patch
 	sha256sums = SKIP
 	sha256sums = 56510cbf9141185f6b2f6e8048c64ab0368e4288884fd538baf388555df29496
-	sha256sums = 9150994a131f17fe930302696c011811aafc0f5e1735355a45270e9550f72b03
+	sha256sums = SKIP
 
 pkgname = qt6-base-hifps
 	pkgdesc = A cross-platform application and UI framework - patched for high refresh rates for animations
