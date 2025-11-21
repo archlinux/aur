@@ -1,7 +1,7 @@
 # Maintainer: nblock <nblock [/at\] archlinux DOT us>
 
 pkgname=vja
-pkgver=4.9.0
+pkgver=4.10.1
 pkgrel=1
 pkgdesc='A simple CLI for Vikunja'
 arch=('any')
@@ -14,10 +14,14 @@ depends=('python'
          'python-parsedatetime'
          'python-dateutil'
         )
-makedepends=('python-setuptools')
+makedepends=('python-build'
+             'python-setuptools'
+             'python-wheel'
+             'python-installer'
+            )
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha1sums=('2889a6682acee32ec2c2f1150a31c75046c811e4')
-sha256sums=('aba3a21d3e70d8dfe7d70f12bfd94e32804bf7d89f636c3924a4309b7725bbba')
+sha1sums=('c6b7ac7818b8a3b5c2a82b69a86367d4711a9ce8')
+sha256sums=('4d24feaf91868729714d8703fa60d8971f3d72ec36e609f86607edee0b0556ec')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -26,13 +30,13 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$pkgname-$pkgver"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  python setup.py install --skip-build --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 # vim:set ts=2 sw=2 noet:
