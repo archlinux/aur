@@ -4,7 +4,7 @@
 pkgname=kiro-bin-hardened
 _name="kiro"
 pkgver=0.6.0
-pkgrel=13
+pkgrel=15
 epoch=1
 pkgdesc='The AI IDE for prototype to production (Hardened for High-Security/Corporate Environments)'
 # Hardening: Strict permissions, AppArmor profile, and dependency enforcement.
@@ -82,16 +82,10 @@ package() {
     mkdir -p "$pkgdir/opt/Kiro"
     cp -r Kiro/* "$pkgdir/opt/Kiro"
 
-    # DO NOT chmod files - Electron needs original permissions from tarball
-    # Changing permissions causes segfaults and crashes
-    # VOXIS HARDENING: We apply strict permissions AFTER extraction where safe.
-    
-    # 1. Secure the directory structure (Owner write only)
-    find "$pkgdir/opt/Kiro" -type d -exec chmod 755 {} +
-    find "$pkgdir/opt/Kiro" -type f -exec chmod 644 {} +
-    
-    # 2. Restore executable permissions for the binary
-    chmod 755 "$pkgdir/opt/Kiro/kiro"
+    # Per pkgrel=9 findings, DO NOT recursively chmod files.
+    # Electron applications are sensitive to permission changes and ship with the
+    # permissions they need. Changing them causes crashes.
+    # The only required change is for the SUID sandbox.
     
     # 3. CRITICAL: chrome-sandbox must be SUID root (4755)
     # This is required for Electron's Layer 1 Sandbox to work.
