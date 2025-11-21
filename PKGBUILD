@@ -1,7 +1,7 @@
 # Maintainer: Larry Oates <leafman12345@gmail.com>
 pkgname=doomfire-wallpaper
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="DOOM-style animated fire wallpaper for Hyprland using hyprwinwrap"
 arch=('x86_64')
 url="https://github.com/larry-oates/doomfire-wallpaper"
@@ -9,6 +9,8 @@ license=('0BSD')
 depends=()
 makedepends=('git' 'cargo')
 optdepends=('grim: for the screen_burn feature')
+provides=('doomfire-wallpaper')
+conflicts=('doomfire-wallpaper')
 source=("$pkgname::git+https://github.com/larry-oates/doomfire-wallpaper")
 md5sums=('SKIP')
 
