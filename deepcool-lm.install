@@ -1,0 +1,74 @@
+post_install() {
+    echo ""
+    echo "==> Deepcool LM Series Driver installed successfully!"
+    echo ""
+
+    # Reload systemd to recognize the new service
+    systemctl daemon-reload
+
+    # Check if device is present
+    if lsusb | grep -q "3633:0026"; then
+        echo "==> Deepcool LM series device detected!"
+        echo "==> Enabling and starting service..."
+
+        systemctl enable deepcool-lm.service
+        systemctl start deepcool-lm.service
+
+        if systemctl is-active --quiet deepcool-lm.service; then
+            echo "==> Service started successfully! Check your LCD display."
+        else
+            echo "==> Service failed to start. Check logs: journalctl -u deepcool-lm"
+        fi
+    else
+        echo "==> No Deepcool LM series device detected"
+        echo "==> Service not started automatically"
+        echo "==> To start manually: sudo systemctl enable --now deepcool-lm"
+    fi
+
+    echo ""
+    echo "==> IMPORTANT: Temperature monitoring requires lm_sensors configuration"
+    echo "    Run: sudo sensors-detect"
+    echo "    Then: sudo systemctl enable --now lm_sensors"
+    echo ""
+    echo "==> CLI usage:"
+    echo "    sudo deepcool-lm monitor           # Start system monitoring"
+    echo "    sudo deepcool-lm image <file>      # Display custom image"
+    echo "    sudo deepcool-lm brightness up     # Adjust brightness"
+    echo "    sudo deepcool-lm --help            # Show all commands"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> Deepcool LM Series Driver upgraded"
+    echo "==> Restarting service if running..."
+
+    if systemctl is-active --quiet deepcool-lm.service; then
+        systemctl restart deepcool-lm.service
+        echo "==> Service restarted"
+    fi
+    echo ""
+}
+
+pre_remove() {
+    # Stop and disable service before removal
+    if systemctl is-active --quiet deepcool-lm.service; then
+        systemctl stop deepcool-lm.service
+        echo "==> Stopped deepcool-lm service"
+    fi
+
+    if systemctl is-enabled --quiet deepcool-lm.service 2>/dev/null; then
+        systemctl disable deepcool-lm.service
+        echo "==> Disabled deepcool-lm service"
+    fi
+}
+
+post_remove() {
+    # Reload systemd after service file removal
+    systemctl daemon-reload
+
+    echo ""
+    echo "==> Deepcool LM Series Driver removed"
+    echo "==> The display will return to default behavior"
+    echo ""
+}

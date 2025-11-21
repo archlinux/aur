@@ -1,0 +1,20 @@
+pkgbase = deepcool-lm
+	pkgdesc = Linux driver for Deepcool LM series AIO coolers with LCD display (tested on LM360)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/yourusername/deepcool-lm
+	install = deepcool-lm.install
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pyusb
+	depends = python-psutil
+	depends = python-pillow
+	depends = lm_sensors
+	backup = etc/systemd/system/deepcool-lm.service
+	source = deepcool-lm
+	source = deepcool-lm.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = deepcool-lm

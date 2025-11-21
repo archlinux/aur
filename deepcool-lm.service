@@ -1,0 +1,21 @@
+[Unit]
+Description=Deepcool LM360 LCD Display Driver
+After=systemd-udev-settle.service lm_sensors.service
+Wants=lm_sensors.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/deepcool-lm monitor --interval 2
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# Run as root (required for USB access)
+User=root
+
+# Clean up stale socket file before starting
+ExecStartPre=-/bin/rm -f /var/run/deepcool-lm.sock
+
+[Install]
+WantedBy=sysinit.target
