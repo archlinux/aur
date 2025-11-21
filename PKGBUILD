@@ -1,7 +1,7 @@
 # Maintainer: FTS427 <FTS427@outlook.com>
 # Contributor: EndstoneMC <hello@endstone.dev>
 pkgname=python-endstone-git
-pkgver=0.7.3
+pkgver=0.10.14
 pkgrel=1
 pkgdesc="High-level Plugin API for Bedrock Dedicated Servers (BDS), in both Python and C++"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/EndstoneMC/endstone"
 license=('Apache-2.0')
 makedepends=('cmake' 'ninja' 'clang' 'conan' 'make' 'm4' 'automake' 'autoconf' 'git' 'python' 'python-setuptools' 'python-wheel')
 conflicts=('python-endstone')
-source=("$pkgname::git+${url}.git#tag=v0.10.11")
+source=("$pkgname::git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 pkgver() {
     cd "$pkgname"
