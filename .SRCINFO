@@ -1,0 +1,27 @@
+pkgbase = pyside6-qtads
+	pkgdesc = PySide6 bindings to Qt Advanced Docking System
+	pkgver = 4.4.1.1
+	pkgrel = 1
+	url = https://github.com/mborgerson/pyside6_qtads
+	arch = any
+	license = LGPL-2.1-or-later
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = ninja
+	makedepends = python-build
+	makedepends = python-cmake-build-extension
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = pyside6
+	depends = python
+	depends = shiboken6
+	source = https://github.com/mborgerson/pyside6_qtads/archive/v4.4.1.1/pyside6-qtads-4.4.1.1.tar.gz
+	source = https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System/archive/4.4.1/Qt-Advanced-Docking-System-4.4.1.tar.gz
+	sha512sums = b30d28b4f34546518f6bb6b725687f8a952cadfcbeddcfb93f5eaa99a5c7d24b6430583f334d488d98414dc4697fab0eb316538d9df98ce23ec21b34c329bbf3
+	sha512sums = c5a7ddeb18e86cbda32829d0fc1e8fa7f14fdc7057dff1d1fb416a29f394ca676bcc611c3d537ebf496929ea4090ca9c1b2c9d1273117022de863565cdc3a1a6
+	b2sums = 1bdae958a7bb738e820a555a3ff78e0a4257882e8f9cfe0072f733687a4df561933cb78e950bd64dc3fa47cf5ec29dfa874eae1ee401a77e9455431efcb4a9b8
+	b2sums = f8fdc23d436f39ab9b662bc6b50d21aa9065eb43d6ab79e39f712e44b0c0f4a6e900b0b29d017708481947189120a5a470e57dad690f49d0321f88ac942c2a5a
+
+pkgname = pyside6-qtads

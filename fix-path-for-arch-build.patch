@@ -1,0 +1,124 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8c0bb49f61a4..2f68567df41a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -117,6 +117,8 @@ pyside_config(--python-link-flags-cmake python_linking_data 0)
+ pyside_config(--shiboken-module-shared-libraries-cmake shiboken_module_shared_libraries 0)
+ pyside_config(--pyside-shared-libraries-cmake pyside_shared_libraries 0)
+ 
++set(typesystem_path "/usr/share/PySide6/typesystems")
++
+ # Print the computed variables
+ message(STATUS "Shiboken module path: ${shiboken_module_path}")
+ message(STATUS "Shiboken generator path: ${shiboken_generator_path}")
+@@ -128,7 +130,7 @@ message(STATUS "Python linking data: ${python_linking_data}")
+ message(STATUS "Shiboken module shared libraries: ${shiboken_module_shared_libraries}")
+ message(STATUS "PySide shared libraries: ${pyside_shared_libraries}")
+ 
+-set(shiboken_path "${shiboken_generator_path}/shiboken6${CMAKE_EXECUTABLE_SUFFIX}")
++set(shiboken_path "/usr/bin/shiboken6${CMAKE_EXECUTABLE_SUFFIX}")
+ if(NOT EXISTS ${shiboken_path})
+     message(FATAL_ERROR "Shiboken executable not found at path: ${shiboken_path}")
+ endif()
+@@ -212,7 +214,7 @@ set(shiboken_options --generator-set=shiboken --enable-parent-ctor-heuristic
+     ${implicit_includes}
+     -I${qtads_dir}/src
+     -T${CMAKE_CURRENT_SOURCE_DIR}
+-    -T${pyside_path}/typesystems
++    -T${typesystem_path}
+     --output-directory=${CMAKE_CURRENT_BINARY_DIR}
+     )
+ 
+diff --git a/scripts/pyside_config.py b/scripts/pyside_config.py
+index ea021030f182..01a4ffbec5cd 100644
+--- a/scripts/pyside_config.py
++++ b/scripts/pyside_config.py
+@@ -50,11 +50,11 @@ options.append(("--python-include-path",
+                 python_include_error,
+                 "Print Python include path"))
+ options.append(("--shiboken-include-path",
+-                lambda: get_package_include_path(Package.SHIBOKEN_MODULE),
++                lambda: get_package_include_path(Package.SHIBOKEN_MODULE, SHIBOKEN),
+                 pyside_error,
+                 "Print shiboken module include paths"))
+ options.append(("--pyside-include-path",
+-                lambda: get_package_include_path(Package.PYSIDE_MODULE),
++                lambda: get_package_include_path(Package.PYSIDE_MODULE, PYSIDE_MODULE),
+                 pyside_error,
+                 "Print PySide6 include paths"))
+ 
+@@ -71,18 +71,18 @@ options.append(("--pyside-qmake-lflags",
+                 "Print PySide6 shared library link flags for qmake"))
+ 
+ options.append(("--shiboken-module-shared-libraries-qmake",
+-                lambda: get_shared_libraries_qmake(Package.SHIBOKEN_MODULE), pyside_libs_error,
++                lambda: get_shared_libraries_qmake(Package.SHIBOKEN_MODULE, SHIBOKEN), pyside_libs_error,
+                 "Print paths of shiboken shared libraries (.so's, .dylib's, .dll's) for qmake"))
+ options.append(("--shiboken-module-shared-libraries-cmake",
+-                lambda: get_shared_libraries_cmake(Package.SHIBOKEN_MODULE), pyside_libs_error,
++                lambda: get_shared_libraries_cmake(Package.SHIBOKEN_MODULE, SHIBOKEN), pyside_libs_error,
+                 "Print paths of shiboken shared libraries (.so's, .dylib's, .dll's) for cmake"))
+ 
+ options.append(("--pyside-shared-libraries-qmake",
+-                lambda: get_shared_libraries_qmake(Package.PYSIDE_MODULE), pyside_libs_error,
++                lambda: get_shared_libraries_qmake(Package.PYSIDE_MODULE, PYSIDE), pyside_libs_error,
+                 "Print paths of f{PYSIDE_MODULE} shared libraries (.so's, .dylib's, .dll's) "
+                 "for qmake"))
+ options.append(("--pyside-shared-libraries-cmake",
+-                lambda: get_shared_libraries_cmake(Package.PYSIDE_MODULE), pyside_libs_error,
++                lambda: get_shared_libraries_cmake(Package.PYSIDE_MODULE, PYSIDE), pyside_libs_error,
+                 f"Print paths of {PYSIDE_MODULE} shared libraries (.so's, .dylib's, .dll's) "
+                 "for cmake"))
+ 
+@@ -264,12 +264,12 @@ def python_link_data():
+     return flags
+ 
+ 
+-def get_package_include_path(which_package):
++def get_package_include_path(which_package, package_name):
+     package_path = find_package(which_package)
+     if package_path is None:
+         return None
+ 
+-    includes = f"{package_path}/include"
++    includes = f"{package_path}/include;/usr/include/{package_name}"
+ 
+     return includes
+ 
+@@ -287,12 +287,13 @@ def get_package_qmake_lflags(which_package):
+     return link
+ 
+ 
+-def get_shared_libraries_data(which_package):
++def get_shared_libraries_data(which_package, package_name):
+     package_path = find_package(which_package)
+     if package_path is None:
+         return None
+ 
+     glob_result = glob.glob(os.path.join(package_path, shared_library_glob_pattern()))
++    glob_result += glob.glob(f'/usr/lib/lib{package_name}*.so')
+     filtered_libs = filter_shared_libraries(glob_result)
+     libs = []
+     if sys.platform == 'win32':
+@@ -304,8 +305,8 @@ def get_shared_libraries_data(which_package):
+     return libs
+ 
+ 
+-def get_shared_libraries_qmake(which_package):
+-    libs = get_shared_libraries_data(which_package)
++def get_shared_libraries_qmake(which_package, package_name):
++    libs = get_shared_libraries_data(which_package, package_name)
+     if libs is None:
+         return None
+ 
+@@ -325,8 +326,8 @@ def get_shared_libraries_qmake(which_package):
+         return libs_string
+ 
+ 
+-def get_shared_libraries_cmake(which_package):
+-    libs = get_shared_libraries_data(which_package)
++def get_shared_libraries_cmake(which_package, package_name):
++    libs = get_shared_libraries_data(which_package, package_name)
+     result = ';'.join(libs)
+     return result
+ 
