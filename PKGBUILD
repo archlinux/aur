@@ -4,6 +4,7 @@ pkgname=zalo-macos
 provides=(zalo)
 pkgver=25.10.3
 pkgrel=1
+epoch=1
 pkgdesc="Unofficial Zalo client for Linux, ported from MacOS version"
 arch=('x86_64')
 url="https://zalo.me"
@@ -18,7 +19,7 @@ makedepends=(
     '7zip'
 )
 source=(
-    "zalo.dmg::https://res-download-pc-te-vnso-pt-34.zadn.vn/mac/ZaloSetup-universal-${pkgver}.dmg"
+    "zalo.dmg::https://res-download-pc-te-vnso-ne-2.zadn.vn/mac/ZaloSetup-universal-${pkgver}.dmg"
     "zalo.desktop"
     "zalo_py"
     "Zalo.png"
@@ -43,7 +44,6 @@ prepare() {
 }
 package() {
     install -d "${pkgdir}/opt/${_pkgname}"
-    rm -rf "${pkgdir}/opt/${_pkgname}/app"
     install -m644 "${srcdir}/build/app.asar" "${pkgdir}/opt/${_pkgname}/app.asar"
     install -m644 "${srcdir}/build/icon.icns" "${pkgdir}/opt/${_pkgname}/icon.icns"
     cp -r "${srcdir}/build/app.asar.unpacked" "${pkgdir}/opt/${_pkgname}/app.asar.unpacked"
