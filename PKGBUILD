@@ -1,6 +1,6 @@
 # Maintainer: Siddhesh Lakhani lakhani.siddhesh@gmail.com 
 pkgname=pico-color-picker
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Minimal X11 color picker with clipboard support"
 arch=('x86_64')
