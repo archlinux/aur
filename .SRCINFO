@@ -1,6 +1,6 @@
 pkgbase = hk-bin
 	pkgdesc = Git hooks and project lints
-	pkgver = 1.23.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://github.com/jdx/hk
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = hk-bin
 	depends = gcc-libs
 	provides = hk
 	conflicts = hk
-	source = LICENSE-1.23.0::https://raw.githubusercontent.com/jdx/hk/v1.23.0/LICENSE
-	source = README-1.23.0.md::https://raw.githubusercontent.com/jdx/hk/v1.23.0/README.md
+	source = LICENSE-1.24.0::https://raw.githubusercontent.com/jdx/hk/v1.24.0/LICENSE
+	source = README-1.24.0.md::https://raw.githubusercontent.com/jdx/hk/v1.24.0/README.md
 	sha256sums = 4580e1e27578e6fb28a76385413b4504b3b57d88b75f634a87d3b42c4eb6a459
 	sha256sums = 39fa4d7227deb764d456a5e1f5e995ff644417e2e9f2d8ed27008981bfad69be
-	source_x86_64 = hk-x86_64-1.23.0.tar.gz::https://github.com/jdx/hk/releases/download/v1.23.0/hk-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 6543686e85c6b5a29d10d75d0cf00fcfde6462764ef4cc46eb363a05a43c98ce
-	source_aarch64 = hk-aarch64-1.23.0.tar.gz::https://github.com/jdx/hk/releases/download/v1.23.0/hk-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 222a6dabe1fbc3d930f395e76b452f6433e0833013baa5f6a1a0655a0f4c9416
+	source_x86_64 = hk-x86_64-1.24.0.tar.gz::https://github.com/jdx/hk/releases/download/v1.24.0/hk-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 95685da921c2f8aa8b29d602c612ed73cd8f43a68fd44abedafb8b61c682bbb0
+	source_aarch64 = hk-aarch64-1.24.0.tar.gz::https://github.com/jdx/hk/releases/download/v1.24.0/hk-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 9b165f2dc14504ffa5d1ab5ba695f518ddf664fa4ddf32b8719216a1b2dabda7
 
 pkgname = hk-bin
