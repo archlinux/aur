@@ -4,7 +4,7 @@
 
 _pkgname="kitshell"
 pkgname="kitshell-git"
-pkgver=r270.695de49
+pkgver=r229.c42f1ad
 pkgrel=1
 pkgdesc="An easy to use panel for Wayland WMs"
 arch=(x86_64)
@@ -25,7 +25,7 @@ sha256sums=('SKIP')
 
 prepare() {
 	cd "$_pkgsrc"
-	fvm use 3.35.5
+	fvm use 3.38.2
 	rustup toolchain install stable 
 
 	cargo install flutter_rust_bridge_codegen
@@ -41,7 +41,7 @@ pkgver() {
 
 build() {
 	cd "$_pkgsrc"
-	PATH=$PATH:~/.cargo/bin/ # to make flutter_rust.. crate work
+	PATH=$PATH:~/.cargo/bin/ # to make flutter_rust_codegen crate work
 
 	fvm flutter --disable-analytics
 	fvm dart --disable-analytics
