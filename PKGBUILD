@@ -1,5 +1,5 @@
 pkgname=nmrs
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Wayland-native GUI for NetworkManager, built with Rust and GTK4"
 arch=('x86_64')
