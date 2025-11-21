@@ -4,8 +4,8 @@
 # Contributor: Lone_Wolf <lonewolf@xs4all.nl>
 
 pkgname=cfv
-pkgver=3.1.0
-pkgrel=1
+pkgver=3.2.0
+pkgrel=2
 pkgdesc='An utility to both test and create checksum files'
 arch=('any')
 url='https://github.com/cfv-project/cfv'
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('python')
 makedepends=('python-build' 'python-setuptools' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz"::"$url/archive/v$pkgver.tar.gz")
-sha512sums=('71c02cc0e5cb1dcf32aa180075744ccde27cf08765a6cf50b24bbdf68d61ba46d9e2e98cc9d414bddf1538ead1426f8eff56cfa788ad283981922c96519b10c4')
+sha512sums=('30b2d310c95335a25cc174ec2a2efd102c8cc53d93a083a64d6eca26bf17214b1622fd2565514414e2edfbfe12de9efe5ca423669ce06c2f4f69ca75d95cd32c')
 
 build() {
     cd "$pkgname-$pkgver"
