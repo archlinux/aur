@@ -8,6 +8,7 @@ pkgbase = sway-nvidia-git
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
+	makedepends = wlroots-git
 	makedepends = scdoc
 	makedepends = wayland-protocols
 	depends = wayland

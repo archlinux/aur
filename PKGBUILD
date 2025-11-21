@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/aalyaa/sway"
 license=('MIT')
 depends=('wayland' 'json-c' 'pcre2')
-makedepends=('git' 'meson' 'ninja' 'scdoc' 'wayland-protocols')
+makedepends=('git' 'meson' 'ninja' 'wlroots-git' 'scdoc' 'wayland-protocols')
 provides=('sway')
 conflicts=('sway')
 
