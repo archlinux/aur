@@ -26,5 +26,5 @@ build() {
 
 package() {
 	cd "${_name}"
-	python -m installer --destdir="${pkgdir}" dist/*.whl
+	python -m installer --destdir="${pkgdir}" dist/${_name//-/_}-${pkgver}*.whl
 }
