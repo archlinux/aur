@@ -1,5 +1,5 @@
 # Maintainer: sim0n <aur.direction446@aleeas.com>
-pkgname=sing-box-ref1nd-git
+pkgname=sing-box-ref1nd
 _pkgname=sing-box
 pkgver=1.13.0.alpha.27.reF1nd.1
 pkgrel=2
