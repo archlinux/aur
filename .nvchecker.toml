@@ -1,0 +1,4 @@
+[wasm-language-tools-bin]
+source = "git"
+git = "https://github.com/g-plane/wasm-language-tools.git"
+prefix = "v"
