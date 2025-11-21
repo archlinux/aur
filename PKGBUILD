@@ -82,7 +82,7 @@ optdepends=('maliit-keyboard: virtual keyboard')
 conflicts=('kwin')
 provides=('kwin')
 groups=(plasma)
-source=(git+https://github.com/KDE/kwin.git
+source=(git+https://invent.kde.org/plasma/kwin.git
         sync_official.sh
 	8436.patch::https://invent.kde.org/plasma/kwin/-/merge_requests/8436.patch
 )
