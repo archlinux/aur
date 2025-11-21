@@ -1,6 +1,7 @@
 # Mainteiner: piernov <piernov@piernov.org>
 # Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Torsten Keßler <tpkessler@archlinux.org>
+# Contributor: Jakub Klinkovský <lahwaacz at archlinux dot org>
 # Contributor: Stephen Zhang <zsrkmyn at gmail dot com>
 
 _pkgname=pytorch
@@ -8,8 +9,8 @@ pkgbase="python-${_pkgname}-cuda12.9"
 pkgname=("${pkgbase}" "python-${_pkgname}-opt-cuda12.9")
 # When updating pytorch, also check the compatibility table for torchvision
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
-pkgver=2.9.0
-pkgrel=2
+pkgver=2.9.1
+pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration (Maxwell/Pascal/Volta support)'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -31,6 +32,7 @@ depends=(
   pybind11
   python
   python-filelock
+  python-fsspec
   python-jinja
   python-networkx
   python-numpy
@@ -60,6 +62,9 @@ makedepends=(
   python-yaml
   shaderc
   vulkan-headers
+)
+optdepends=(
+  'python-onnxscript: for the ONNX exporter'
 )
 source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         # generated using parse-submodules
@@ -110,7 +115,7 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         aotriton_disable_install.patch
         pyproject.patch
         )
-b2sums=('b744fa2e28a641c6ae76e87cf32d511f68d4a8ed2a0d4c8d3cee8652fe7d2467d21925d59b303f4183040949c3ffbb685f83d3d52acc7f54df91d3a245b393e0'
+b2sums=('b11ed3fe133f4d75de45b26db565a431236c73005e68d8ba47a48b6657553df88d0a97686c4c24a6b810a9b2d4ce1aad9105cd4dce18a484b9d41150df00de3e'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -256,6 +261,7 @@ _prepare() {
   export PYTORCH_BUILD_NUMBER=1
 
   # Check tools/setup_helpers/cmake.py, setup.py and CMakeLists.txt for a list of flags that can be set via env vars.
+  export BUILD_TEST=OFF  # do not build tests
   export ATEN_NO_TEST=ON  # do not build ATen tests
   export USE_MKLDNN=ON
   export BUILD_CUSTOM_PROTOBUF=OFF
@@ -265,6 +271,7 @@ _prepare() {
   export USE_OBSERVERS=ON
   export USE_MAGMA=ON
   # export USE_SYSTEM_LIBS=ON  # experimental, not all libs present in repos
+  # USE_SYSTEM_ONNX=ON does not work and onnx itself should be removed from pytorch: https://github.com/pytorch/pytorch/issues/166546#issuecomment-3463370459
   export USE_NCCL=ON
   export USE_SYSTEM_NCCL=ON
   export USE_SYSTEM_PYBIND11=ON

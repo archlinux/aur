@@ -1,7 +1,7 @@
 pkgbase = python-pytorch-cuda12.9
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (Maxwell/Pascal/Volta support)
-	pkgver = 2.9.0
-	pkgrel = 2
+	pkgver = 2.9.1
+	pkgrel = 1
 	url = https://pytorch.org
 	arch = x86_64
 	license = BSD-3-Clause-Modification
@@ -38,6 +38,7 @@ pkgbase = python-pytorch-cuda12.9
 	depends = pybind11
 	depends = python
 	depends = python-filelock
+	depends = python-fsspec
 	depends = python-jinja
 	depends = python-networkx
 	depends = python-numpy
@@ -46,9 +47,10 @@ pkgbase = python-pytorch-cuda12.9
 	depends = python-yaml
 	depends = qt6-base
 	depends = vulkan-icd-loader
+	optdepends = python-onnxscript: for the ONNX exporter
 	options = !lto
 	options = !debug
-	source = pytorch::git+https://github.com/pytorch/pytorch.git#tag=v2.9.0
+	source = pytorch::git+https://github.com/pytorch/pytorch.git#tag=v2.9.1
 	source = python-pytorch-cuda12.9-FP16::git+https://github.com/Maratyszcza/FP16.git
 	source = python-pytorch-cuda12.9-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git
 	source = python-pytorch-cuda12.9-NNPACK::git+https://github.com/Maratyszcza/NNPACK.git
@@ -95,7 +97,7 @@ pkgbase = python-pytorch-cuda12.9
 	source = add_gpu_targets_rocm.patch
 	source = aotriton_disable_install.patch
 	source = pyproject.patch
-	b2sums = b744fa2e28a641c6ae76e87cf32d511f68d4a8ed2a0d4c8d3cee8652fe7d2467d21925d59b303f4183040949c3ffbb685f83d3d52acc7f54df91d3a245b393e0
+	b2sums = b11ed3fe133f4d75de45b26db565a431236c73005e68d8ba47a48b6657553df88d0a97686c4c24a6b810a9b2d4ce1aad9105cd4dce18a484b9d41150df00de3e
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -160,6 +162,7 @@ pkgname = python-pytorch-cuda12.9
 	depends = pybind11
 	depends = python
 	depends = python-filelock
+	depends = python-fsspec
 	depends = python-jinja
 	depends = python-networkx
 	depends = python-numpy
@@ -173,8 +176,8 @@ pkgname = python-pytorch-cuda12.9
 	depends = cudnn9.10-cuda12.9
 	depends = magma-cuda
 	depends = onednn
-	provides = python-pytorch=2.9.0
-	provides = python-pytorch-cuda=2.9.0
+	provides = python-pytorch=2.9.1
+	provides = python-pytorch-cuda=2.9.1
 	conflicts = python-pytorch
 
 pkgname = python-pytorch-opt-cuda12.9
@@ -194,6 +197,7 @@ pkgname = python-pytorch-opt-cuda12.9
 	depends = pybind11
 	depends = python
 	depends = python-filelock
+	depends = python-fsspec
 	depends = python-jinja
 	depends = python-networkx
 	depends = python-numpy
@@ -207,7 +211,7 @@ pkgname = python-pytorch-opt-cuda12.9
 	depends = cudnn9.10-cuda12.9
 	depends = magma-cuda
 	depends = onednn
-	provides = python-pytorch=2.9.0
-	provides = python-pytorch-cuda=2.9.0
-	provides = python-pytorch-cuda12.9=2.9.0
+	provides = python-pytorch=2.9.1
+	provides = python-pytorch-cuda=2.9.1
+	provides = python-pytorch-cuda12.9=2.9.1
 	conflicts = python-pytorch
