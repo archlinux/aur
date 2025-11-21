@@ -1,6 +1,6 @@
 pkgbase = python-dokuwikidumper
 	pkgdesc = A tool for archiving DokuWiki
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/saveweb/dokuwiki-dumper
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-dokuwikidumper
 	depends = python-slugify
 	depends = 7zip
 	depends = python-typing_extensions
-	source = https://pypi.io/packages/source/d/dokuwikidumper/dokuwikidumper-0.2.3.tar.gz
-	sha256sums = a65e4df3a2495c49e10da4a30caba4c03ce6693b91913eeeb8fed946e1c1f86d
+	source = https://pypi.io/packages/source/d/dokuwikidumper/dokuwikidumper-0.2.4.tar.gz
+	sha256sums = 7725450d3e917a09d0c6776124b5612386ea62221a5f25774a7f57eaec564026
 
 pkgname = python-dokuwikidumper
