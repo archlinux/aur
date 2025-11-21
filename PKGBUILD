@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=cargo-thanku
-pkgver=0.4.3
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A command-line tool for generating acknowledgments for your Rust project dependencies."
 arch=($CARCH)
@@ -19,7 +19,7 @@ backup=()
 options=('!lto' '!debug')
 install=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4d8556a1544c6f74547c60a86af198541b177ddebc06ab24e9d28f238797a951')
+sha256sums=('979e6a26b519ee87a30cc725214141037dc1c7ead85713411c98d4bcfdb5b2cb')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}/"
