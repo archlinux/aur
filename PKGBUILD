@@ -1,26 +1,29 @@
 # Maintainer: Gunther Schulz <dev@guntherschulz.de>
 
 pkgname=cursor-bin
-pkgver=2.0.77
+pkgver=2.1.17
 pkgrel=1
 pkgdesc='AI-first coding environment'
 arch=('x86_64')
 url="https://www.cursor.com"
 license=('LicenseRef-Cursor_EULA')
-_electron=electron34
+_electron=electron37
 depends=(xdg-utils ripgrep $_electron nodejs
   'gcc-libs' 'hicolor-icon-theme' 'libxkbfile')
 options=(!strip) # Don't break ext of VSCode
-_commit=ba90f2f88e4911312761abab9492c42442117cfe # sed'ded at GitHub WF
-source=("https://downloads.cursor.com/production/ba90f2f88e4911312761abab9492c42442117cfe/linux/x64/deb/amd64/deb/cursor_2.0.77_amd64.deb"
+_commit=6757269838ae9ac4caaa2be13f396fdfbcf1f9a6 # sed'ded at GitHub WF
+source=("https://downloads.cursor.com/production/${_commit}/linux/x64/deb/amd64/deb/cursor_${pkgver}_amd64.deb"
 https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh rg.sh)
-sha512sums=('453378af91e43960dbf25b9766f7bc161d2fcde257b824b0f65af94083b131a9bfd0bb9c8c922484994a99c6450697b3fb3700d65b0e4bd8f0bf07c6fa9863b4'
-            '937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37' 'SKIP')
-
+sha512sums=('SKIP'
+  '937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37'
+  'e79fe7659f59d1ae02fc68816399bfd31587315df6cdb6ccf1d0ca76f7cdc692c2a42b30591c0091147bd97ef14b1c7745dc26bd7cb3ea6bba45698e5044fa2a')
+sha512sums[0]=6d7e0f8182518b678d65720a5977015e2de824102c47deca91a4facc81164f9b2db3920ec9ce4413c89bb53637cc0cf57b30d7ec457e8b8b6d082cdc93bb72ff
+noextract=(cursor_${pkgver}_amd64.deb) # avoid double tarball
 _app=usr/share/cursor/resources/app
 package() {
   # Exclude electron
-  tar -xf data.tar.xz -C "$pkgdir" --exclude 'usr/share/cursor/[^r]*' --exclude 'usr/share/cursor/*.pak'
+  bsdtar -xOf ${noextract[0]} data.tar.xz | tar -xJf - -C "$pkgdir" \
+    --exclude 'usr/share/cursor/[^r]*' --exclude 'usr/share/cursor/*.pak'
   cd "$pkgdir"
   mv usr/share/zsh/{vendor-completions,site-functions}
   ln -sf /usr/bin/node ${_app}/resources/helpers/node
