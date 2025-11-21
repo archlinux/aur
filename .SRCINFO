@@ -1,0 +1,24 @@
+pkgbase = notionsafe
+	pkgdesc = A cross-platform desktop app to backup Notion workspaces locally.
+	pkgver = 0.1.0
+	pkgrel = 6
+	url = https://github.com/KanishkMishra143/NotionSafe
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-gobject
+	depends = python-gitpython
+	depends = python-keyring
+	depends = python-pyyaml
+	depends = python-requests
+	depends = python-psutil
+	depends = python-rich
+	depends = python-sqlalchemy
+	depends = git
+	source = notionsafe-0.1.0.tar.gz::https://github.com/KanishkMishra143/notionsafe/releases/download/v0.1.0/notionsafe-0.1.0.tar.gz
+	sha256sums = 41620c06ef5714c4a287e0f09ae9c144f69c11c01e7a210a51b124c81d828081
+
+pkgname = notionsafe
