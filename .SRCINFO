@@ -1,0 +1,23 @@
+pkgbase = wshowlyrics-git
+	pkgdesc = Wayland-based synchronized lyrics overlay with MPRIS integration
+	pkgver = r25.8dfaba6
+	pkgrel = 1
+	url = https://github.com/unstable-code/lyrics
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = wayland-protocols
+	depends = cairo
+	depends = fontconfig
+	depends = pango
+	depends = wayland
+	depends = playerctl
+	provides = wshowlyrics
+	conflicts = wshowlyrics
+	source = git+https://github.com/unstable-code/lyrics.git
+	sha256sums = SKIP
+
+pkgname = wshowlyrics-git
