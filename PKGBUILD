@@ -51,8 +51,8 @@ if [[ -z "$FFMPEG_OBS_VULKAN" ]]; then
 fi
 
 pkgname=ffmpeg-obs
-pkgver=8.0
-pkgrel=5
+pkgver=8.0.1
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -180,7 +180,7 @@ provides=(
   libswscale.so
 )
 conflicts=(ffmpeg)
-_tag=140fd653aed8cad774f991ba083e2d01e86420c7
+_tag=894da5ca7d742e4429ffb2af534fcda0103ef593
 _deps_tag=2024-09-12
 source=(
   "ffmpeg-src::git+https://code.ffmpeg.org/FFmpeg/FFmpeg.git#tag=${_tag}"
@@ -352,20 +352,15 @@ if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
   depends+=(svt-hevc svt-vp9)
   makedepends+=(patchutils)
   _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
-  _whispercpp_ver='1.8.0'
   source+=(
     "010-ffmpeg-add-svt-hevc.patch"
     "020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
     "030-ffmpeg-add-svt-vp9.patch"
-    "https://github.com/ggml-org/whisper.cpp/archive/v${_whispercpp_ver}/whisper.cpp-${_whispercpp_ver}.tar.gz"
-    "060-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
   )
   sha256sums+=(
     '4b1053cc01244c79e3b23dc696eaff1aeb0627a2098e1a720a025d4ad75b5c16'
     'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
     'da01eb3ca31d35d23257760875e14bed808b3fea02f290028adaed76062125a0'
-    'c006a5e472ee41e7a733d0bf7326e339c8b281d3a91a1c8a35468fa0a051940f'
-    '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
   )
   _args+=(--enable-libsvthevc --enable-libsvtvp9)
   provides+=(ffmpeg-svt-hevc ffmpeg-svt-vp9)
@@ -380,35 +375,110 @@ fi
 if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
   _nonfree_enabled=ON
   _add_gcc_libs_as_deps=ON
-  # uavs3d >= 1.1.41 is required by ffmpeg so switch to uavs3d-git
-  # lensfun >= 0.3.95 seems to needed with ffmpeg so switch to lensfun-git
   depends+=(
-    sndio 'chromaprint-fftw' libgcrypt
-    aribb24 libcaca 'celt' libcdio-paranoia codec2
-    'davs2' libdc1394 flite1 libgme libilbc 'libklvanc'
-    kvazaar 'lensfun-git' 'openh264' librabbitmq-c
-    rtmpdump 'shine' smbclient tesseract
-    twolame 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2'
-    zvbi lv2 lilv libmysofa openal
-    libomxil-bellagio 'rockchip-mpp' #'pocketsphinx'
-    lcms2 libraw1394 openvino libaribcaption opencv2
-    qrencode quirc xevd xeve vvenc lcevcdec liblc3
+    aribb24
+    'celt'
+    'chromaprint-fftw'
+    codec2
+    'davs2'
+    flite1
+    kvazaar
+    lcms2
+    'lensfun-git' # lensfun >= 0.3.95 seems to needed with ffmpeg so switch to lensfun-git
+    'libaribcaption'
+    libcaca
+    libcdio-paranoia
+    'lcevcdec'
+    libdc1394
+    libgcrypt
+    libgme
+    libilbc
+    'libklvanc'
+    liblc3
+    libmysofa
+    libomxil-bellagio
+    librabbitmq-c
+    libraw1394
+    lilv
+    lv2
+    openal
     'openapv'
+    opencv
+    openh264
+    'openvino'
+    #'pocketsphinx'
+    qrencode
+    'quirc'
+    'rockchip-mpp'
+    rtmpdump
+    'shine'
+    smbclient
+    sndio
+    tesseract
+    twolame
+    'uavs3d-git' # uavs3d >= 1.1.41 is required by ffmpeg so switch to uavs3d-git
+    'vvenc'
+    'vo-amrwbenc'
+    'xavs'
+    'xavs2'
+    'xevd'
+    'xeve'
+    zvbi
   )
   makedepends+=(patchutils)
   _args+=(
-    --enable-sndio --disable-rpath --enable-gray --enable-chromaprint --enable-gcrypt
-    --enable-libaribb24 --enable-libcaca --enable-libcelt --enable-libcdio --enable-libcodec2
-    --enable-libdavs2 --enable-libdc1394 --enable-libflite --enable-libgme --enable-libilbc --enable-libklvanc
-    --enable-libkvazaar --enable-liblensfun --enable-libopenh264 --enable-librabbitmq
-    --enable-librtmp --enable-libshine --enable-libsmbclient --enable-libtesseract
-    --enable-libtwolame --enable-libuavs3d --enable-libvo-amrwbenc --enable-libxavs --enable-libxavs2 --enable-libzmq
-    --enable-libzvbi --enable-lv2 --enable-libmysofa --enable-openal
-    --enable-omx --enable-rkmpp #--enable-pocketsphinx
-    --enable-lcms2 --enable-libopenvino --enable-libaribcaption --enable-libopencv
-    --enable-libqrencode --enable-libquirc --disable-libtorch --enable-libxevd --enable-libxeve
-    --enable-liblc3 --enable-liblcevc-dec --enable-libvvenc --enable-whisper
-    --disable-ohcodec --enable-liboapv
+    --disable-rpath
+    --enable-sndio 
+    --enable-chromaprint
+    --enable-gcrypt
+    --enable-gray
+    --enable-lcms2
+    --enable-libaribb24
+    --enable-libaribcaption
+    --enable-libcaca
+    --enable-libcelt
+    --enable-libcdio
+    --enable-libcodec2
+    --enable-libdavs2
+    --enable-libdc1394
+    --enable-libflite
+    --enable-libgme
+    --enable-libilbc
+    --enable-libklvanc
+    --enable-libkvazaar
+    --enable-liblc3
+    --enable-liblcevc-dec
+    --enable-liblensfun
+    --enable-libmysofa
+    --enable-liboapv
+    --enable-libopenh264
+    --enable-libopencv
+    --enable-libopenvino
+    --enable-libqrencode
+    --enable-libquirc
+    --enable-librabbitmq
+    --enable-librtmp
+    --enable-libshine
+    --enable-libsmbclient
+    --enable-libtesseract
+    --disable-libtorch
+    --enable-libtwolame
+    --enable-libuavs3d
+    --enable-libvo-amrwbenc
+    --enable-libvvenc
+    --enable-libxavs
+    --enable-libxavs2
+    --enable-libxevd
+    --enable-libxeve
+    --enable-libzmq
+    --enable-libzvbi
+    --enable-lv2
+    --disable-ohcodec
+    --enable-openal
+    --enable-omx
+    --disable-pocketsphinx
+    --enable-rkmpp
+    --disable-whisper # whisper.cpp conflicts with imagemagick
   )
   provides+=(ffmpeg-full)
 else
@@ -430,14 +500,16 @@ fi
 prepare() {
   cd ffmpeg-src
 
+  if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
+    git cherry-pick -n c4ce51ee62205c74604767f1b7dab6a036edac7f
+  fi
+
   ### ffmpeg-obs changes
 
   ### Arch Linux changes
 
   ## https://crbug.com/1251779
   patch -Np1 -i "${srcdir}"/0001-Add-av_stream_get_first_dts-for-Chromium.patch
-
-  git cherry-pick -n f1e9032a2000b8b885cffd6fed8eacd47b37673f
 
   ### OBS changes
 
@@ -487,28 +559,9 @@ prepare() {
     sed -i 's|IDeckLinkInputCallback|IDeckLinkInputCallback_v14_2_1|g' libavdevice/decklink_dec.cpp
     sed -i 's|IDeckLinkVideoInputFrame|IDeckLinkVideoInputFrame_v14_2_1|g' libavdevice/decklink_dec.cpp
   fi
-
-  if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
-    patch -d "${srcdir}/whisper.cpp-${_whispercpp_ver}" -Np1 -i "${srcdir}/060-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
-    sed -i 's|in->pts, 0|in->pts|g' libavcodec/lcevcdec.c libavfilter/vf_lcevc.c
-  fi
 }
 
 build() {
-  if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
-    # whisper.cpp AUR package conflicts with imagemagick at the time of writing
-    # building it locally as a static library for the time being, as imagemagick is a commonly used package (high usage in pkgstats)
-    cmake -B build/whisper.cpp -S "whisper.cpp-${_whispercpp_ver}" \
-        -G 'Unix Makefiles' \
-        -DBUILD_SHARED_LIBS:BOOL='OFF' \
-        -DCMAKE_BUILD_TYPE:STRING='None' \
-        -DCMAKE_INSTALL_PREFIX:PATH="${srcdir}/staging" \
-        -DWHISPER_BUILD_EXAMPLES:BOOL='OFF' \
-        -DWHISPER_BUILD_TESTS:BOOL='OFF' \
-        -Wno-dev
-    cmake --build build/whisper.cpp --target install
-  fi
-
   cd ffmpeg-src
 
   ## Manage extra flags and paths
@@ -518,7 +571,7 @@ build() {
   fi
 
   if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
-    export PKG_CONFIG_PATH="${srcdir}/staging/lib/pkgconfig${PKG_CONFIG_PATH:+":${PKG_CONFIG_PATH}"}"
+    export PKG_CONFIG_PATH="/usr/lib/lensfun2/pkgconfig${PKG_CONFIG_PATH:+":${PKG_CONFIG_PATH}"}"
     export CFLAGS+=' -Wno-error=incompatible-pointer-types'
   fi
 
