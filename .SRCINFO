@@ -1,15 +1,20 @@
 pkgbase = kicad-library-espressif-git
-	pkgdesc = KiCad libraries for Espressif chips and modules
-	pkgver = 2.0.0.r1.g1d73b2e
+	pkgdesc = KiCad libraries for Espressif chips and modules (symbols, footprints and 3D models)
+	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/espressif/kicad-libraries
+	install = kicad-library-espressif.install
 	arch = any
-	license = CC-BY-SA 4.0
+	license = CC-BY-SA-4.0
 	makedepends = git
 	depends = kicad
 	provides = kicad-library-espressif
 	conflicts = kicad-library-espressif
 	source = git+https://github.com/espressif/kicad-libraries.git
+	source = kicad-espressif-register
+	source = kicad-library-espressif.install
+	md5sums = SKIP
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = kicad-library-espressif-git

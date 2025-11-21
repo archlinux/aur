@@ -1,0 +1,229 @@
+#!/bin/sh
+# kicad-espressif-register
+#
+# Register the Espressif KiCad symbol and footprint libraries
+# (installed under /usr/share/kicad/espressif) into the user's
+# global KiCad library tables (sym-lib-table and fp-lib-table).
+#
+# Run this script as your normal user (NOT as root),
+# after installing or upgrading the package.
+
+set -e
+
+show_help() {
+  cat <<'EOF'
+kicad-espressif-register
+
+Register the Espressif KiCad symbol and footprint libraries installed
+under /usr/share/kicad/espressif into your global KiCad library tables.
+
+Usage:
+  kicad-espressif-register
+
+What this script does:
+
+  1. Detects your KiCad config directory:
+       $XDG_CONFIG_HOME/kicad/<version>
+       or ~/.config/kicad/<version>
+  2. Backs up:
+       sym-lib-table -> sym-lib-table.bak
+       fp-lib-table  -> fp-lib-table.bak
+     (only if the .bak file does not already exist)
+  3. For each Espressif *.kicad_sym file, adds a symbol library entry.
+  4. For each Espressif *.pretty directory, adds a footprint library entry.
+
+If something goes wrong, restore the .bak files manually.
+EOF
+}
+
+if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+  show_help
+  exit 0
+fi
+
+ESPR_BASE="/usr/share/kicad/espressif"
+ESPR_SYM_DIR="$ESPR_BASE/symbols"
+ESPR_FP_DIR="$ESPR_BASE/footprints"
+
+CONFIG_BASE="${XDG_CONFIG_HOME:-$HOME/.config}/kicad"
+
+# Detect KiCad config directory (prefer highest version)
+CFG_DIR=""
+KI_VERSION=""
+
+for v in 9.0 8.0 7.0 6.0; do
+  if [ -d "$CONFIG_BASE/$v" ]; then
+    CFG_DIR="$CONFIG_BASE/$v"
+    KI_VERSION="$v"
+    break
+  fi
+done
+
+if [ -z "$CFG_DIR" ]; then
+  echo "ERROR: Could not find a KiCad configuration directory under:"
+  echo "  $CONFIG_BASE/{9.0,8.0,7.0,6.0}"
+  echo "Open KiCad at least once and try again."
+  exit 1
+fi
+
+SYM_TABLE="$CFG_DIR/sym-lib-table"
+FP_TABLE="$CFG_DIR/fp-lib-table"
+
+ensure_sym_table() {
+  if [ -f "$SYM_TABLE" ]; then
+    return
+  fi
+  echo "No sym-lib-table found in:"
+  echo "  $CFG_DIR"
+  echo "Creating a minimal global symbol library table..."
+  cat >"$SYM_TABLE" <<'EOF'
+(sym_lib_table
+  (version 7)
+)
+EOF
+  echo "Created: $SYM_TABLE"
+  echo
+}
+
+ensure_fp_table() {
+  if [ -f "$FP_TABLE" ]; then
+    return
+  fi
+  echo "No fp-lib-table found in:"
+  echo "  $CFG_DIR"
+  echo "Creating a minimal global footprint library table..."
+  cat >"$FP_TABLE" <<'EOF'
+(fp_lib_table
+  (version 7)
+)
+EOF
+  echo "Created: $FP_TABLE"
+  echo
+}
+
+ensure_sym_table
+ensure_fp_table
+
+if [ ! -d "$ESPR_SYM_DIR" ] && [ ! -d "$ESPR_FP_DIR" ]; then
+  echo "ERROR: No Espressif libraries found under:"
+  echo "  $ESPR_BASE"
+  echo "Make sure the kicad-library-espressif-git package is installed."
+  exit 1
+fi
+
+echo "KiCad config directory : $CFG_DIR (version: $KI_VERSION)"
+echo "Espressif library root : $ESPR_BASE"
+echo
+
+# Backups (non-destructive)
+for tbl in "$SYM_TABLE" "$FP_TABLE"; do
+  if [ -f "$tbl" ] && [ ! -f "$tbl.bak" ]; then
+    cp "$tbl" "$tbl.bak"
+    echo "Created backup: $tbl.bak"
+  fi
+done
+echo
+
+update_sym_table() {
+  if [ ! -d "$ESPR_SYM_DIR" ]; then
+    echo "No Espressif symbol directory ($ESPR_SYM_DIR); skipping symbols."
+    return 0
+  fi
+
+  set -- "$ESPR_SYM_DIR"/*.kicad_sym
+  if [ "$1" = "$ESPR_SYM_DIR/*.kicad_sym" ] && [ ! -f "$1" ]; then
+    echo "No *.kicad_sym files found in $ESPR_SYM_DIR; skipping symbols."
+    return 0
+  fi
+
+  echo "Updating symbol library table: $SYM_TABLE"
+
+  tmp="$(mktemp)"
+  sed '$d' "$SYM_TABLE" > "$tmp"
+
+  added=0
+
+  for sym in "$ESPR_SYM_DIR"/*.kicad_sym; do
+    [ -f "$sym" ] || continue
+    base=$(basename "$sym" .kicad_sym)
+    nickname="Espressif_${base}"
+
+    if grep -q "name \"$nickname\"" "$SYM_TABLE"; then
+      echo "  - Symbol library '$nickname' already present; skipping."
+      continue
+    fi
+
+    printf '  (lib (name "%s")(type "KiCad")(uri "%s")(options "")(descr "Espressif symbol library %s"))\n' \
+      "$nickname" "$sym" "$base" >> "$tmp"
+    added=1
+    echo "  + Added symbol library '$nickname' -> $sym"
+  done
+
+  echo ")" >> "$tmp"
+
+  if [ "$added" -eq 1 ]; then
+    mv "$tmp" "$SYM_TABLE"
+    echo "Symbol library table updated successfully."
+  else
+    rm -f "$tmp"
+    echo "No new Espressif symbol libraries were added."
+  fi
+}
+
+update_fp_table() {
+  if [ ! -d "$ESPR_FP_DIR" ]; then
+    echo "No Espressif footprint directory ($ESPR_FP_DIR); skipping footprints."
+    return 0
+  fi
+
+  set -- "$ESPR_FP_DIR"/*.pretty
+  if [ "$1" = "$ESPR_FP_DIR/*.pretty" ] && [ ! -d "$1" ]; then
+    echo "No *.pretty footprint libraries found in $ESPR_FP_DIR; skipping footprints."
+    return 0
+  fi
+
+  echo "Updating footprint library table: $FP_TABLE"
+
+  tmp="$(mktemp)"
+  sed '$d' "$FP_TABLE" > "$tmp"
+
+  added=0
+
+  for fpdir in "$ESPR_FP_DIR"/*.pretty; do
+    [ -d "$fpdir" ] || continue
+    base=$(basename "$fpdir" .pretty)
+    nickname="Espressif_${base}"
+
+    if grep -q "name \"$nickname\"" "$FP_TABLE"; then
+      echo "  - Footprint library '$nickname' already present; skipping."
+      continue
+    fi
+
+    printf '  (lib (name "%s")(type "KiCad")(uri "%s")(options "")(descr "Espressif footprint library %s"))\n' \
+      "$nickname" "$fpdir" "$base" >> "$tmp"
+    added=1
+    echo "  + Added footprint library '$nickname' -> $fpdir"
+  done
+
+  echo ")" >> "$tmp"
+
+  if [ "$added" -eq 1 ]; then
+    mv "$tmp" "$FP_TABLE"
+    echo "Footprint library table updated successfully."
+  else
+    rm -f "$tmp"
+    echo "No new Espressif footprint libraries were added."
+  fi
+}
+
+update_sym_table
+echo
+update_fp_table
+
+echo
+echo "Done."
+echo "If something looks wrong, you can restore the backups:"
+echo "  $SYM_TABLE.bak"
+echo "  $FP_TABLE.bak"
+echo
+echo "Restart KiCad to ensure the updated libraries are visible."
