@@ -1,6 +1,6 @@
 pkgbase = riscv-gnu-toolchain-bin
 	pkgdesc = Meta-package for a pre-compiled GNU toolchain for riscv32 and riscv64, linux and ELF.
-	pkgver = 2025.11.04
+	pkgver = 2025.11.21
 	pkgrel = 1
 	url = https://github.com/riscv-collab/riscv-gnu-toolchain
 	arch = any
