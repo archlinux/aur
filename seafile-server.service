@@ -1,0 +1,15 @@
+[Unit]
+Description=Seafile Server Core.
+After=network.target
+
+[Service]
+Type=forking
+EnvironmentFile=/srv/seafile/conf/.env
+ExecStart=/srv/seafile/seafile-server/seafile.sh start
+ExecStop=/srv/seafile/seafile-server/seafile.sh stop
+WorkingDirectory=/srv/seafile
+User=seafile
+Group=seafile
+
+[Install]
+WantedBy=multi-user.target

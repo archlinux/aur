@@ -1,0 +1,14 @@
+[Unit]
+Description=Seafile Notification Server.
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/srv/seafile/%i/conf/.env
+ExecStart=/usr/bin/notification-server -c /srv/seafile/%i/conf -l /srv/seafile/%i/logs/notification-server.log
+WorkingDirectory=/srv/seafile/%i
+User=seafile
+Group=seafile
+
+[Install]
+WantedBy=multi-user.target

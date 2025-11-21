@@ -1,0 +1,11 @@
+diff -ru seafile-server-13.0.8-server.original/server/gc/fsck.c seafile-server-13.0.8-server/server/gc/fsck.c
+--- seafile-server-13.0.8-server.original/server/gc/fsck.c	2025-07-19 15:52:04.000000000 +1200
++++ seafile-server-13.0.8-server/server/gc/fsck.c	2025-08-25 18:00:50.311525838 +1200
+@@ -7,6 +7,7 @@
+ #include "utils.h"
+ 
+ #include "fsck.h"
++#include "seaf-utils.h"
+ 
+ typedef struct FsckData {
+     gboolean repair;

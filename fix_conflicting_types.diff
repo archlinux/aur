@@ -1,0 +1,12 @@
+diff -ru seafile-server-13.0.8-server.original/common/obj-cache.c seafile-server-13.0.8-server/common/obj-cache.c
+--- seafile-server-13.0.8-server.original/common/obj-cache.c	2025-07-19 15:52:04.000000000 +1200
++++ seafile-server-13.0.8-server/common/obj-cache.c	2025-08-25 20:28:16.256079791 +1200
+@@ -70,7 +70,7 @@
+ }
+ 
+ ObjCache *
+-objcache_new (GKeyFile *config)
++objcache_new ()
+ {
+     ObjCache *cache = NULL;
+     GError *error = NULL;

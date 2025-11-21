@@ -4,7 +4,7 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seafile-server
-pkgver=12.0.14
+pkgver=13.0.12
 pkgrel=1
 pkgdesc='Seafile server core'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -13,6 +13,7 @@ license=('AGPL-3.0-only' 'Apache-2.0')
 depends=(
     'argon2'
     'fuse2'
+    'hiredis'
     'mariadb-libs'
     'python'
     'libsearpc'
@@ -27,15 +28,25 @@ source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver-server.tar.gz"
     'fix_seafile-controller_paths.diff'
     'fix_incompatible_pointer.diff'
+    'fix_implicit_declaration.diff'
+    'fix_conflicting_types.diff'
     'seafile-server@.service'
+    'seafile-server.service'
+    'seafile-notification@.service'
+    'seafile-notification.service'
     'seafile-sysusers.conf'
     'seafile-tmpfiles.conf'
 )
 sha256sums=(
-    'b548fc0370ac81c173408eac4306c56035d89a205ebb7d1a9febba495ab53aad'
+    '728be0250f299a28a4cfbfed402537d081e4ba88043154dc6de82e13f4190d71'
     'c4bd2b24fa2e5919b1ada61fff0dda7486460a8814764dc37db79178378d4930'
-    '3a0dd0d5a659d29f9f4b0f2406074e91a6f594f6cdc472838b6b4c99c25de55c'
-    'b09ab24829df0692e78b777802298b8cac23bdcdc31306e12ed3543833a7088e'
+    '4d84d7b73aad520ef37d42f20a4a3b67f373a703a655e01d4e0a8158a5d985c0'
+    '54805cc9d5e54dae038f5bfa7fc0756e9e2673d5601540b702fdc9275b3ffee3'
+    'd4a3b4cbeafb9bd825d68636de2a66de63bb2ca43371f92e24181ba7afb9559b'
+    '3fb3d1218ef10560654c143b1ace8adadf08155d214f920ccc2c1cdc9a5c0dc7'
+    '3e3ceeef0423e4655a63534b729d0f8ff2042f6485480482772041018d27d8c4'
+    '69be9d180c550bb691f580124224fbf5de39569863dd0ed6e4ee0adf181b1176'
+    'fe619f5acd45893b45730d5f31c29c2793c13e3ecd5f0a90c68063e11fdd3ee3'
     '2faf52556d901ae18cfaa33b1cc55ee14abab4f78869eb6a2889ceeac4e3076a'
     '24962ce5cba697d18980b9d418c7654fbfc5118c69236f9fc94aa3cd526ac176'
 )
@@ -45,6 +56,8 @@ prepare() {
     sed -i 's|(DESTDIR)@prefix@|@prefix@|' './lib/libseafile.pc.in'
     patch -p1 -i "$srcdir/fix_seafile-controller_paths.diff"
     patch -p1 -i "$srcdir/fix_incompatible_pointer.diff"
+    patch -p1 -i "$srcdir/fix_implicit_declaration.diff"
+    patch -p1 -i "$srcdir/fix_conflicting_types.diff"
 }
 
 build() {
@@ -103,7 +116,5 @@ package() {
     install -Dm644 \
         "$srcdir/seafile-tmpfiles.conf" \
         "$pkgdir/usr/lib/tmpfiles.d/seafile.conf"
-    install -Dm644 \
-        "$srcdir/seafile-server@.service" \
-        "$pkgdir/usr/lib/systemd/system/seafile-server@.service"
+    install -Dm644 "$srcdir/"*.service -t "$pkgdir/usr/lib/systemd/system"
 }
