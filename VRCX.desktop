@@ -2,7 +2,7 @@
 Type=Application
 Name=VRCX
 Version=@PACKAGE_VERSION@
-Exec=vrcx %u
+Exec=vrcx %U
 Terminal=false
 Icon=vrcx
 StartupWMClass=VRCX

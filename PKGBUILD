@@ -9,12 +9,12 @@ _sdk_ver=110
 
 pkgname='vrcx-bin'
 pkgdesc='Friendship management tool for VRChat (extracted AppImage version)'
-pkgver='2025.10.27'
+pkgver='2025.11.16'
 pkgrel='1'
 arch=('x86_64')
 url='https://vrcx.app/'
 license=('MIT')
-depends=('nss' 'alsa-lib' 'nspr' 'hicolor-icon-theme' "dotnet-runtime-$_dotnet_ver" 'gtk3' 'libappindicator-gtk3' 'libindicator-gtk2' 'libnotify' 'libxss' 'libxtst')
+depends=('nss' 'alsa-lib' 'nspr' 'hicolor-icon-theme' "dotnet-runtime-$_dotnet_ver" 'gtk3' 'libnotify' 'libxss' 'libxtst')
 makedepends=('squashfs-tools')
 conflicts=('vrcx')
 provides=('vrcx')
@@ -22,10 +22,10 @@ source=("https://github.com/vrcx-team/VRCX/releases/download/v$pkgver/VRCX_${pkg
         "LICENSE-v$pkgver::https://raw.githubusercontent.com/vrcx-team/VRCX/refs/tags/v$pkgver/LICENSE"
         'vrcx'
         'VRCX.desktop')
-sha256sums=('81c6c4ec5586718164835571ff1bf12778549f8134cc3023dae0c71a820d1410'
+sha256sums=('d7a71c0948b08d327ccc989ae0990107819bd3dd5a704dab5b1fe717a627abfb'
             '1927804117a7ac55e00646df36f77edd09d2cfee850588fc453a81d01bad90d1'
-            'f7b1a299fe162337a9a3b066478b38a1cb524dae7a7e55669d3c6f02dc5f361b'
-            '7582adf143859d66d1b75fd13f4d5be6041fb99bc949764f247ba8c3d790e76c')
+            '464858e86b74bc4c49c8ec4b59aded48bcd8f0f57ab5366b1bbe77db1d868033'
+            'bdf079d1d72c5a207ae8322303a8c0c7b61fbcbc0eff6bd4a42b461f50137ff3')
 
 if [ "$_omit_libs" = true ]; then
     depends+=('libglvnd' 'vulkan-icd-loader' "electron$_electron_ver")
@@ -122,31 +122,7 @@ build() {
     rm -rf opt/vrcx/resources/app.asar.unpacked/build/Electron/dotnet-runtime
     rm -rf opt/vrcx/resources/dotnet-runtime
     if [ "$_omit_libs" = true ]; then
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/createdump.exe
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/clretwrc.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/clrgc.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/clrgcexp.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/clrjit.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/coreclr.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/e_sqlite3.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/hostfxr.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/hostpolicy.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/Microsoft.DiaSymReader.Native.amd64.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/mscordaccore_amd64_amd64_9.0.225.6610.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/mscordaccore_amd64_amd64_9.0.525.21509.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/mscordaccore.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/mscordbi.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/mscorrc.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/msquic.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/openvr_api.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/sni.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/Microsoft.Toolkit.Uwp.Notifications.dll
         rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/Microsoft.Win32.SystemEvents.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/SharpDX.Direct3D11.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/SharpDX.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/SharpDX.DXGI.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/SharpDX.Mathematics.dll
-        rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/System.IO.Compression.Native.dll
         rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/System.Management.dll
         rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/System.Private.Windows.Core.dll
         rm -f opt/vrcx/resources/app.asar.unpacked/build/Electron/System.Security.Cryptography.ProtectedData.dll
@@ -168,7 +144,7 @@ build() {
             done
             for path in net*; do
                 case "$path" in
-                    net9.0|net9.0.js) :;;
+                    net"$_dotnet_ver"|net"$_dotnet_ver".js) :;;
                     *) rm -rf -- "$path";;
                 esac
             done
@@ -244,6 +220,7 @@ build() {
 package() {
     install -d -Dm755 "$pkgdir/opt"
     cp -r opt/vrcx "$pkgdir/opt"
+    ln -s /dev/null "$pkgdir/opt/vrcx/.no-updater"
     install -d -Dm755 "$pkgdir/usr"
     install -d -Dm755 "$pkgdir/usr/bin"
     install -Dm755 vrcx -t "$pkgdir/usr/bin"
