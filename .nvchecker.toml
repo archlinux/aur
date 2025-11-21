@@ -1,0 +1,5 @@
+[sway]
+source = "git"
+git = "https://github.com/dawsers/scroll.git"
+exclude_regex = ".*(pre|a|alpha|b|beta|r|rc).*"
+
