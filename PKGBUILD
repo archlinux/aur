@@ -1,19 +1,40 @@
-# Maintainer: William Brown <glowinthedarkcia@horsefucker.org>
-pkgname="thrive-launcher-bin"
-pkgver="1.2.9"
-pkgrel="1"
-arch=("x86_64")
-pkgdesc="Manages downloading Thrive releases."
-url="https://revolutionarygamesstudio.com/"
-source=("https://github.com/Revolutionary-Games/Thrive-Launcher/releases/download/v$pkgver/thrive-launcher_${pkgver}_amd64.deb" "https://raw.githubusercontent.com/Revolutionary-Games/Thrive-Launcher/master/LICENSE.md")
-sha256sums=("769bd5a648e5da59cf1cd29597aee9c880d73d35f39a1e1bfb0454b60081f5f8" "cc1d44cfce6878a1c4bf3d0655ddc01166a4605e71cf8db48099aeaed320d932")
-license=("GPL" "MIT")
-depends=("gtk3" "nss" "lib32-glibc")
+# Maintainer: Rooki  <aur at rooki dot xyz>
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
+# Contributor: Sebastien Duthil
+
+pkgname=thrive-launcher-bin
+pkgver=2.2.1
+pkgrel=1
+pkgdesc="Thrive Launcher for installing and automatically updating Thrive."
+arch=(x86_64)
+url="https://revolutionarygamesstudio.com"
+license=(GPL3 'CCPL:cc-by-sa-3.0' custom)
+depends=(glibc zlib libxi libxinerama libxrender libxcursor libxext libglvnd libxrandr libx11)
+provides=(thrive-launcher)
+conflicts=(thrive-launcher)
+source=(thrive-launcher.sh)
+source_x86_64=("https://github.com/Revolutionary-Games/Thrive-Launcher/releases/download/v${pkgver%.0}/ThriveLauncher_${pkgver}_linux_standalone.7z")
+sha256sums=('555adf4db8b4306cd770b51bd664e46b3277659a2bc6b23a98f252474ceaa929')
+sha256sums_x86_64=('cea449864e82ea35e7abb692da6e3733bdf93f90257f011536b0274addde6850')
+options=(!strip)
+
+prepare() {
+  mv "ThriveLauncher_${pkgver}_linux"/ThriveLauncher.desktop .
+  mv "ThriveLauncher_${pkgver}_linux"/thrive-launcher-icon.png .
+  sed s,Exec=ThriveLauncher,Exec=/opt/thrivelauncher/ThriveLauncher, -i ThriveLauncher.desktop
+}
+
 package() {
-	bsdtar -C "$pkgdir" -xzf "$srcdir/data.tar.xz"
-	mkdir -p "$pkgdir/usr/share/licenses/thrive-launcher-bin"
-	cp LICENSE.md "$pkgdir/usr/share/licenses/thrive-launcher-bin/LICENSE"
-	mkdir -p "$pkgdir/usr/bin"
-	cd "$pkgdir"
-	ln -rs ./opt/Thrive\ Launcher/thrive-launcher ./usr/bin
+  install -dm755 --group games "$pkgdir/opt/thrivelauncher"
+  cp -r "ThriveLauncher_${pkgver}_linux"/* "$pkgdir/opt/thrivelauncher"
+
+  install -d "${pkgdir}/usr/bin"
+  ln -s "/opt/thrivelauncher/ThriveLauncher" "${pkgdir}/usr/bin/thrivelauncher"
+
+  install -D -t "${pkgdir}/usr/share/icons/" thrive-launcher-icon.png
+  install -D -t "${pkgdir}/usr/share/applications" ThriveLauncher.desktop
+
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644  "${pkgdir}/opt/thrivelauncher/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
