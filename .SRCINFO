@@ -1,0 +1,12 @@
+pkgbase = peer-to-peer
+	pkgdesc = Quick file transfer CLI tool using direct connection peer-to-peer
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/zelttrox/peer-to-peer
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = https://github.com/zelttrox/peer-to-peer/archive/refs/tags/Release.tar.gz
+	sha256sums = SKIP
+
+pkgname = peer-to-peer
