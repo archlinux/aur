@@ -1,7 +1,7 @@
 pkgbase = rawbit
 	pkgdesc = A camera RAW photo preprocessor and importer
 	pkgver = 0.1.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cartercanedy/rawbit
 	arch = x86_64
 	license = MIT

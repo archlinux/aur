@@ -3,7 +3,7 @@
 # https://github.com/adamperkowski/PKGBUILDs
 pkgname=rawbit
 pkgver=0.1.15
-pkgrel=1
+pkgrel=2
 pkgdesc='A camera RAW photo preprocessor and importer'
 arch=('x86_64')
 url="https://github.com/cartercanedy/$pkgname"
