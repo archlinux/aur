@@ -1,6 +1,6 @@
 pkgbase = looksyk-desktop
 	pkgdesc = A markdown centric, fast and local personal knowledge platform
-	pkgver = 1.17.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://sebastianrzk.github.io/Looksyk
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = looksyk-desktop
 	depends = git
 	provides = looksyk
 	provides = looksyk-backend
-	source = git+https://github.com/sebastianrzk/looksyk#tag=v1.17.0
+	source = git+https://github.com/sebastianrzk/looksyk#tag=v1.18.0
 	sha256sums = SKIP
 
 pkgname = looksyk-desktop
