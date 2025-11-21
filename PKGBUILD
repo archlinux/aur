@@ -18,7 +18,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/peer-to-peer-Realase"
+    cd "$srcdir/peer-to-peer-Release"
     install -Dm755 peer "$pkgdir/usr/bin/peer"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
