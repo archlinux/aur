@@ -4,7 +4,7 @@
 pkgname=kiro-bin-hardened
 _name="kiro"
 pkgver=0.6.0
-pkgrel=12
+pkgrel=13
 epoch=1
 pkgdesc='The AI IDE for prototype to production (Hardened for High-Security/Corporate Environments)'
 # Hardening: Strict permissions, AppArmor profile, and dependency enforcement.
@@ -59,6 +59,7 @@ source=(
     "$_name-workspace.xml"
     "$_name.apparmor"
     "$_name-launcher.sh"
+    "SECURITY.md"
 )
 b2sums=('8a9a239518b11067956c4f06e31872aacf14ddb67e45042ba39d94a3e64e6eff14d3704eb75903476cebd0dd04e15a53f0b325c28eea88f13f89f1ea731cfedd'
         '09676f21f9b2821f7fb789fde98f1825f53d1df64ab74932ec2117f6cf06985bc5795ea7a016d90e9318035b2dd7c2f9706dccf44eb4cd092e4268a5f4760a26'
@@ -67,6 +68,7 @@ b2sums=('8a9a239518b11067956c4f06e31872aacf14ddb67e45042ba39d94a3e64e6eff14d3704
         '422c58da03ba192980e0f867ad01ff6605e11e109086fec8abe27379ecff03d692f123f2016b2b76aa2d73f4038d44bcb476e6a806bec4c613304b3159a96642'
         'bf76f34c64e272831da98a3642f827b159582fafb3918db9f7334ed7ed9eace747148d6f0f863d2a5f1e751b7d43f109e35a8ac7ee1985c09d7ea90b73a40455'
         '95bbdc9155b621c078dc0e3d01d9f0ce658932b77120c02feb014c846a6e84b79089a5c5a54a7d4662ddac0edeeaf0bfd71a2cca45c38ae8b66e8e9aa0be8ace'
+        'SKIP'
         'SKIP')
 
 verify() {
