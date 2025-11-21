@@ -9,8 +9,8 @@
 # shellcheck disable=SC2148,SC2034,SC2154,SC2164
 
 pkgname=ffmpeg-headless
-pkgver=8.0
-pkgrel=2
+pkgver=8.0.1
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -109,12 +109,12 @@ provides=(
   ffmpeg
 )
 conflicts=('ffmpeg')
-_tag='a4044e04486d1136022498891088a90baf5b2775'
+_tag='d22ecc4f6f3fca77b3e71b18641ceddb25973e97'
 source=(
   "$pkgname::git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}"
   '0001-unbreak-glslang-build.patch'
 )
-b2sums=('7c71ec5f098e248b584fd3e28e7f648e5929ff7c5a6cfc5dcce8300a8a0b91de804cd92ef72963ef86dc57a73d15ab03aeab61d99d1872baad1163462730d7d6'
+b2sums=('0796d77c58d5db487ccda15454dadf129a6e0ae2a5a9cec562c86f2050b1e9314164c7f2dbf0a6c8cdae37dfd5e28f494d5ac248e970bc7f01b097100971fe8a'
         '650631d4f06dffec55bd6419f680d95617a9093d8e548b3dac0b379496477dcbd4121883128438343c568e992cb5b455efc0b7c4e34a5e7200518f9b5beaa231')
 validpgpkeys=('DD1EC9E8DE085C629B3E1846B18E8928B3948D64')   # Michael Niedermayer <michael@niedermayer.cc>
 
