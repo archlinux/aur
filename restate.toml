@@ -3,6 +3,7 @@ roles = [
     "admin",
     "metadata-server",
     "log-server",
+    "http-ingress",
 ]
 cluster-name = "localcluster"
 auto-provision = true
