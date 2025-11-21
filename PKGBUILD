@@ -5,7 +5,7 @@
 _pkgname=casual-pre-loader
 
 pkgname="${_pkgname}-git"
-pkgver=1.7.0.12.g6d7ef6d
+pkgver=1.7.1.3.g1a9b41e
 pkgrel=1
 
 pkgdesc='TF2 particle modifications via some wizardry.'
@@ -44,7 +44,11 @@ package() {
 
 	cd "${_pkgname}"
 
-	mkdir -p "${pkgdir}/usr"/{bin,share/pixmaps,"lib/${_pkgname}"}/ # pre-create dirs that we don't `install -D` into
+	# pre-create dirs that we don't `install -D` into
+	mkdir -p \
+		"${pkgdir}/usr/lib/${_pkgname}/" \
+		"${pkgdir}/usr/bin/" \
+		"${pkgdir}/usr/share/pixmaps/"
 
 	# all other files and directories needed to run
 	cp -a \
