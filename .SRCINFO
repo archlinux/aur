@@ -1,7 +1,7 @@
 pkgbase = notionsafe
 	pkgdesc = A cross-platform desktop app to backup Notion workspaces locally.
 	pkgver = 0.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/KanishkMishra143/NotionSafe
 	arch = any
 	license = MIT
