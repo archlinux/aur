@@ -1,0 +1,6 @@
+[gcompris-qt]
+source = 'gitlab'
+gitlab = 'education/gcompris'
+host = 'invent.kde.org'
+use_max_tag = true
+prefix = 'V'
