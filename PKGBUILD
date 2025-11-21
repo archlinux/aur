@@ -12,7 +12,7 @@ provides=('ai-pkg')
 conflicts=('ai-pkg')
 
 source=("https://github.com/rohankrsingh/ai-pkg/releases/download/v0.1.8/ai_pkg-0.1.8-py3-none-any.whl")
-sha256sums=('829656e9debe70448938bf5ce6f2f9ef13319b9f832daeed7a2144cedb6c3119')
+sha256sums=('ebd49259c271957b4e5080ff8d7f670d83eddec7d91cc84a2df47dc835eff4b3')
 
 package() {
     cd "$srcdir"
