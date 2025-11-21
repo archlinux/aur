@@ -2,34 +2,38 @@
 
 ## Overview
 
-This document provides comprehensive security information for the `kiro-bin-hardened` package, including hardening features, optional security enhancements, and best practices.
+This document provides comprehensive security information for the `kiro-bin-hardened` package. This package is designed for high-security and corporate environments where integrity, least privilege, and auditability are paramount.
 
 ---
 
-## Built-in Hardening Features ✅
+## 🛡️ Built-in Hardening Features
 
-### 1. **Strict Permission Management (Voxis Standard)**
+### 1. Strict Permission Management (Voxis Standard)
+
+We enforce a strict permission model that exceeds standard Arch Linux packaging guidelines to ensure defense-in-depth.
 
 ```bash
-# Directories: 755 (rwxr-xr-x)
+# Directories: 755 (rwxr-xr-x) - Owner write only
 find "$pkgdir/opt/kiro" -type d -exec chmod 755 {} +
 
-# Files: 644 (rw-r--r--)
+# Files: 644 (rw-r--r--) - Owner write only
 find "$pkgdir/opt/kiro" -type f -exec chmod 644 {} +
 
 # Executables: 755 (rwxr-xr-x)
 chmod 755 "$pkgdir/opt/kiro/kiro"
 
-# Chrome-sandbox: 4755 (SUID root - critical for Electron security)
+# Chrome-sandbox: 4755 (SUID root)
+# CRITICAL: Required for Electron's Layer 1 Sandbox to function correctly.
 chmod 4755 "$pkgdir/opt/kiro/chrome-sandbox"
 ```
 
-**Why this matters:**
-- Prevents unauthorized modification of application files
-- Chrome-sandbox SUID is required for Electron's security model
-- Follows principle of least privilege
+**Security Impact:**
+- **Immutability:** Prevents non-root users (and compromised user processes) from modifying application code or injecting malware into the executable path.
+- **Least Privilege:** Ensures files are readable by all but writable only by root.
 
-### 2. **Cryptographic Signature Verification**
+### 2. Cryptographic Signature Verification
+
+We verify the upstream package signature during the build process to ensure the binary has not been tampered with.
 
 ```bash
 verify() {
@@ -38,32 +42,58 @@ verify() {
 }
 ```
 
-**Why this matters:**
-- Ensures package integrity from upstream
-- Protects against tampering during download
-- Validates authenticity of binaries
+### 3. Enhanced Dependency Chain
 
-### 3. **Enhanced Dependencies**
+- **`ca-certificates`**: Enforced for strict SSL/TLS certificate validation.
+- **`xdg-utils`**: Ensures secure and standard desktop integration, preventing custom handler hijacking.
 
-- `ca-certificates` - SSL/TLS certificate validation
-- `xdg-utils` - Proper desktop integration and security
+### 4. Build Integrity
 
-### 4. **Build Protection**
-
-- `!strip` - Prevents breaking signed binaries
-- `!emptydirs` - Preserves necessary directory structure
+- **`!strip`**: We explicitly disable binary stripping to preserve the integrity of signed binaries and internal checksums.
+- **`!emptydirs`**: Preserves the exact directory structure expected by the application runtime.
 
 ---
 
-## Optional Security Enhancements 🛡️
+## 🔐 Verifying Package Integrity
+
+Trust but verify. We recommend all users verify the installed package permissions and integrity.
+
+### 1. Verify File Permissions
+
+Ensure that critical files have the correct permissions:
+
+```bash
+# Check chrome-sandbox (Must be SUID root)
+ls -l /opt/kiro/chrome-sandbox
+# Output should look like: -rwsr-xr-x 1 root root ...
+
+# Check main executable (Must be root owned, not writable by user)
+ls -l /opt/kiro/kiro
+# Output should look like: -rwxr-xr-x 1 root root ...
+```
+
+### 2. Verify AppArmor Status (If Enabled)
+
+If you have enabled the optional AppArmor profile:
+
+```bash
+sudo aa-status | grep kiro
+```
+You should see `kiro` listed in **enforce** mode.
+
+---
+
+## 🛡️ Optional Security Enhancements
 
 ### AppArmor (Mandatory Access Control)
 
-**What it does:**
-- Restricts file system access
-- Controls network capabilities
-- Limits process execution
-- Provides defense-in-depth security
+This package ships with a custom AppArmor profile located at `/usr/share/apparmor/kiro.apparmor`.
+
+**Capabilities:**
+- **Read-only** access to the application directory `/opt/kiro/`.
+- **Write** access restricted to standard configuration paths in `$HOME`.
+- **Network** access allowed for AI features.
+- **Deny** access to sensitive system files (`/boot`, `/etc/shadow`, `/root`, kernel parameters).
 
 **Installation:**
 
@@ -71,276 +101,26 @@ verify() {
 # 1. Install AppArmor
 sudo pacman -S apparmor
 
-# 2. Enable AppArmor in kernel (add to kernel parameters)
-# Edit /etc/default/grub and add: apparmor=1 security=apparmor
-sudo grub-mkconfig -o /boot/grub/grub.cfg
-
-# 3. Enable AppArmor service
+# 2. Enable AppArmor service
 sudo systemctl enable --now apparmor
 
-# 4. Install Kiro profile
+# 3. Install and Enforce Profile
 sudo cp /usr/share/apparmor/kiro.apparmor /etc/apparmor.d/kiro
-
-# 5. Load and enforce profile
 sudo apparmor_parser -r /etc/apparmor.d/kiro
 sudo aa-enforce /etc/apparmor.d/kiro
 ```
 
-**Verification:**
-
-```bash
-# Check profile status
-sudo aa-status | grep kiro
-
-# View profile mode
-sudo aa-status
-```
-
-**Profile Features:**
-- Read-only access to `/opt/kiro/`
-- User home directory access for workspaces
-- Network access for AI features and updates
-- Terminal and development tool access
-- Denies access to sensitive system files (`/boot`, `/etc/shadow`, `/root`)
-
 ---
 
-### Firejail (Application Sandboxing)
+## 🚨 Reporting Security Issues
 
-**What it does:**
-- Creates isolated namespace for Kiro
-- Restricts system call access
-- Provides filesystem isolation
-- Network namespace isolation
+If you discover a security vulnerability in this **packaging** (permissions, install scripts, AppArmor profile):
 
-**Installation:**
+1. **Do NOT open a public issue.**
+2. Contact the package maintainer directly: **Markus Maiwald <markus@maiwald.work>**
 
-```bash
-sudo pacman -S firejail
-```
-
-**Usage:**
-
-```bash
-# Basic sandboxing
-firejail kiro
-
-# With network isolation
-firejail --net=none kiro
-
-# With custom profile
-firejail --profile=/path/to/kiro.profile kiro
-```
-
-**Create custom profile:**
-
-```bash
-# ~/.config/firejail/kiro.profile
-include /etc/firejail/default.profile
-
-# Allow home directory access
-whitelist ${HOME}
-
-# Network access (required for AI features)
-# Comment out for offline work
-# net none
-
-# Disable 3D acceleration if not needed
-# nodvd
-# notv
-# novideo
-```
-
----
-
-### Bubblewrap (Lightweight Sandboxing)
-
-**What it does:**
-- Minimal overhead sandboxing
-- Fine-grained filesystem access control
-- Namespace isolation
-
-**Installation:**
-
-```bash
-sudo pacman -S bubblewrap
-```
-
-**Usage:**
-
-```bash
-# Basic wrapper
-bwrap \
-  --ro-bind /usr /usr \
-  --ro-bind /opt/kiro /opt/kiro \
-  --bind $HOME $HOME \
-  --dev /dev \
-  --proc /proc \
-  --tmpfs /tmp \
-  /opt/kiro/kiro
-```
-
-**Create wrapper script:**
-
-```bash
-#!/bin/bash
-# ~/.local/bin/kiro-sandboxed
-
-bwrap \
-  --ro-bind /usr /usr \
-  --ro-bind /lib /lib \
-  --ro-bind /lib64 /lib64 \
-  --ro-bind /opt/kiro /opt/kiro \
-  --bind $HOME $HOME \
-  --dev /dev \
-  --proc /proc \
-  --tmpfs /tmp \
-  --unshare-all \
-  --share-net \
-  /opt/kiro/kiro "$@"
-```
-
----
-
-## Security Best Practices 📋
-
-### 1. **Keep Kiro Updated**
-
-```bash
-# Update via AUR helper
-yay -Syu kiro-bin-hardened
-
-# Or manually
-cd /path/to/kiro-bin-hardened
-git pull
-makepkg -si
-```
-
-### 2. **Review Workspaces Before Opening**
-
-- Be cautious with untrusted `.kiro-workspace` files
-- Review project dependencies before installation
-- Use sandboxing for untrusted projects
-
-### 3. **Monitor Security Logs**
-
-```bash
-# AppArmor logs
-sudo journalctl -u apparmor | grep kiro
-
-# System logs
-journalctl -xe | grep kiro
-```
-
-### 4. **Principle of Least Privilege**
-
-- Only enable necessary extensions
-- Review extension permissions
-- Disable unused features
-
-### 5. **Network Security**
-
-- Use firewall rules if needed
-- Monitor network connections: `ss -tunap | grep kiro`
-- Consider VPN for sensitive work
-
----
-
-## Threat Model 🎯
-
-### What This Hardening Protects Against:
-
-✅ **Unauthorized file modification**
-✅ **Privilege escalation via improper permissions**
-✅ **Binary tampering (via signature verification)**
-✅ **Excessive system access (via AppArmor/sandboxing)**
-✅ **Lateral movement (via namespace isolation)**
-
-### What This Does NOT Protect Against:
-
-❌ **Zero-day vulnerabilities in Electron/Chromium**
-❌ **Malicious extensions (user must review)**
-❌ **Social engineering attacks**
-❌ **Physical access to system**
-❌ **Compromised user account**
-
----
-
-## Compliance Considerations 🏛️
-
-For government agencies and regulated industries:
-
-### Data Sovereignty
-- Review AWS terms and data processing locations
-- Consider air-gapped deployments for classified work
-- Evaluate data residency requirements
-
-### Audit Logging
-```bash
-# Enable AppArmor audit mode
-sudo aa-audit /etc/apparmor.d/kiro
-
-# Monitor all Kiro activity
-sudo auditctl -w /opt/kiro -p rwxa -k kiro_access
-```
-
-### Mandatory Access Control
-- AppArmor profile provides MAC framework
-- Can be customized for specific security policies
-- Integrates with existing security infrastructure
-
----
-
-## Troubleshooting 🔧
-
-### AppArmor Denials
-
-```bash
-# View denials
-sudo dmesg | grep DENIED | grep kiro
-
-# Generate profile updates
-sudo aa-logprof
-```
-
-### Firejail Issues
-
-```bash
-# Debug mode
-firejail --debug kiro
-
-# Check profile
-firejail --list
-```
-
-### Permission Problems
-
-```bash
-# Verify package permissions
-pacman -Ql kiro-bin-hardened | grep chrome-sandbox
-# Should show: -rwsr-xr-x (4755)
-```
-
----
-
-## Additional Resources 📚
-
-- **Kiro Documentation:** https://kiro.dev/
-- **AWS Security:** https://aws.amazon.com/security/
-- **AppArmor Wiki:** https://wiki.archlinux.org/title/AppArmor
-- **Firejail Documentation:** https://firejail.wordpress.com/
-- **Arch Security:** https://wiki.archlinux.org/title/Security
-
----
-
-## Reporting Security Issues 🚨
-
-If you discover a security vulnerability:
-
-1. **Do NOT open a public issue**
-2. Contact package maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
-3. For upstream Kiro issues: https://kiro.dev/security
-4. For AWS security: https://aws.amazon.com/security/vulnerability-reporting/
+For vulnerabilities in the **Kiro application itself**, please report to Kiro directly:
+- https://kiro.dev/security
 
 ---
 
@@ -351,3 +131,5 @@ This package respects the AWS Intellectual Property License. By using this softw
 - AWS IP License: https://aws.amazon.com/legal/aws-ip-license-terms/
 - Service Terms: https://aws.amazon.com/service-terms/
 - Privacy Notice: https://aws.amazon.com/privacy/
+
+**Disclaimer:** This package is an independent effort to provide a hardened installation of Kiro. It is not an official Kiro release.

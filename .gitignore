@@ -6,6 +6,9 @@
 *.rpm
 *.pem
 *.bin
+*.gz
+*.xz
+*.zst
 
 # Package build directories
 src/
