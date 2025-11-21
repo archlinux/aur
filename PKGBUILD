@@ -12,7 +12,7 @@ sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/peer-to-peer-Release"
-    go build -o peer ./cmd/peer
+    go build -o peer .
     mkdir ~/.config/peer
     cp -r config/. ~/.config/peer/
 }
