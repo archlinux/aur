@@ -1,8 +1,8 @@
-# Maintainer: sim0n <aur dot direction446 at aleeas dot com>
+# Maintainer: sim0n <aur.direction446@aleeas.com>
 pkgname=sing-box-ref1nd-git
 _pkgname=sing-box
-pkgver=1.12.0.rc.3.reF1nd
-pkgrel=1
+pkgver=1.13.0.alpha.27.reF1nd.1
+pkgrel=2
 
 pkgdesc='The universal proxy platform.'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -12,10 +12,8 @@ license=('GPL3 with name use or association addition')
 makedepends=('go' 'git')
 provides=("$_pkgname")
 
-source=("$_pkgname::git+https://github.com/reF1nd/sing-box.git#branch=reF1nd-dev"
-        'sing-box.rules')
-sha256sums=(SKIP
-            '1365536e1875043b969e2e18d7313ab7c6f7f9f63387f25506bb04362b44f206')
+source=("$_pkgname::git+https://github.com/reF1nd/sing-box.git#branch=reF1nd-dev")
+sha256sums=(SKIP)
 
 
 conflicts=("$_pkgname-git" "$_pkgname-alpha" "$_pkgname-beta")
@@ -24,7 +22,15 @@ backup=("etc/$_pkgname/config.json")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  go run ./cmd/internal/read_tag | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  # Get the latest tag that contains ref1nd and (beta or alpha)
+  latest_tag=$(git tag --list | grep -i ref1nd | grep -E "(beta|alpha)" | sort -V | tail -1)
+  if [ -z "$latest_tag" ]; then
+    echo "No suitable tag found" >&2
+    exit 1
+  fi
+  # Remove 'v' prefix and convert to pkgver format
+  version=${latest_tag#v}
+  echo "$version" | sed 's/-/./g'
 }
 
 
@@ -71,7 +77,7 @@ package() {
     install -Dm644 "release/config/$_pkgname.service"  -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "release/config/$_pkgname@.service" -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "release/config/$_pkgname.sysusers"    "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
-    install -Dm644 "${srcdir}/sing-box.rules"            "$pkgdir/usr/share/polkit-1/rules.d/sing-box.rules"
+    install -Dm644 "release/config/sing-box.rules"       "$pkgdir/usr/share/polkit-1/rules.d/sing-box.rules"
 
     install -Dm644 completions/bash "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}.bash"
     install -Dm644 completions/fish "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
