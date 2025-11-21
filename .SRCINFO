@@ -1,6 +1,6 @@
 pkgbase = openstack_tui
 	pkgdesc = Terminal User Interface for the OpenStack written in Rust
-	pkgver = 0.13.2
+	pkgver = 0.13.3
 	pkgrel = 1
 	url = https://github.com/gtema/openstack
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = openstack_tui
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = git+https://github.com/gtema/openstack.git#tag=openstack_tui-v0.13.2
-	sha256sums = c9d3054308a91ed450ce261d04758c97a8a82a30b9dd5c8dcf3aaaa2e2638ff3
+	source = git+https://github.com/gtema/openstack.git#tag=openstack_tui-v0.13.3
+	sha256sums = a573466ba41ba3d28a96fe7597ae74aec775a8df800e86ae8bb8e9a9982bb0d7
 
 pkgname = openstack_tui
