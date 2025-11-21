@@ -1,8 +1,8 @@
 # Maintainers: kobe-koto <admin[at]koto.cc>, Ketal_Q_ray <k[at]ketal.icu>
 pkgname="liteloader-qqnt-git"
 _pkgname="LiteLoaderQQNT"
-pkgver=1.3.0.r11.g54c549b
-pkgrel=2
+pkgver=1.3.0.r32.gec5b588
+pkgrel=1
 pkgdesc="轻量, 简洁, 开源的 QQNT 插件加载器"
 arch=('any')
 url="https://github.com/LiteLoaderQQNT/LiteLoaderQQNT"
