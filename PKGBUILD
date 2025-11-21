@@ -1,6 +1,6 @@
 # Maintainer: Niel Nielsen <nn@sec1.dk>
 pkgname=aslookup
-pkgver=1.2.22
+pkgver=1.3.5
 pkgrel=1
 arch=('x86_64')
 pkgdesc="A command-line tool to resolve ASN information and IP ranges for a given IP address, using Cymru and BGPView APIs. Supports colored output and JSON parsing."
