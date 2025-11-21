@@ -1,6 +1,6 @@
 pkgbase = python-phonopy
 	pkgdesc = Phonopy is an open source package for phonon calculations at harmonic and quasi-harmonic levels
-	pkgver = 2.43.2
+	pkgver = 2.44.0
 	pkgrel = 1
 	url = https://github.com/phonopy/phonopy
 	arch = any
@@ -12,13 +12,13 @@ pkgbase = python-phonopy
 	makedepends = python-scikit-build-core
 	makedepends = python-setuptools-scm
 	depends = python-numpy
-	depends = python-pyaml
+	depends = python-yaml
 	depends = python-matplotlib
 	depends = spglib
 	depends = python-h5py
 	optdepends = python-seekpath
 	optdepends = python-symfc
-	source = git+https://github.com/phonopy/phonopy.git#tag=v2.43.2
+	source = git+https://github.com/phonopy/phonopy.git#tag=v2.44.0
 	sha256sums = SKIP
 
 pkgname = python-phonopy
