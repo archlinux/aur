@@ -1,48 +1,33 @@
 # Maintainer: sim0n <aur.direction446@aleeas.com>
-pkgname=sing-box-ref1nd-git
+pkgname=sing-box-ref1nd
 _pkgname=sing-box
-pkgver=1.13.0.alpha.27.reF1nd.1
-pkgrel=2
+pkgver=1.12.12
+pkgrel=1
 
 pkgdesc='The universal proxy platform.'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/reF1nd/sing-box/tree/reF1nd-dev'
 license=('GPL3 with name use or association addition')
 
-makedepends=('go' 'git')
+makedepends=('go')
 provides=("$_pkgname")
 
-source=("$_pkgname::git+https://github.com/reF1nd/sing-box.git#branch=reF1nd-dev")
-sha256sums=(SKIP)
+source=("$_pkgname-$pkgver-reF1nd.tar.gz::https://github.com/reF1nd/sing-box/archive/refs/tags/v$pkgver-reF1nd.tar.gz")
+sha256sums=('02f1950da81ecd0ca362cba756c3d157f3bfd27153a07bd8427c364996fdb0bb')
 
-
-conflicts=("$_pkgname-git" "$_pkgname-alpha" "$_pkgname-beta")
+conflicts=("$_pkgname-git" "$_pkgname-alpha" "$_pkgname-beta" "$_pkgname-git")
 
 backup=("etc/$_pkgname/config.json")
 
-pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  # Get the latest tag that contains ref1nd and (beta or alpha)
-  latest_tag=$(git tag --list | grep -i ref1nd | grep -E "(beta|alpha)" | sort -V | tail -1)
-  if [ -z "$latest_tag" ]; then
-    echo "No suitable tag found" >&2
-    exit 1
-  fi
-  # Remove 'v' prefix and convert to pkgver format
-  version=${latest_tag#v}
-  echo "$version" | sed 's/-/./g'
-}
-
-
 _tags=with_utls,with_gvisor,with_quic,with_wireguard,with_clash_api,with_acme,with_dhcp,with_tailscale
 build(){
-    cd "$_pkgname"
+    cd "$_pkgname-$pkgver-reF1nd"
 
     export CGO_CPPFLAGS="$CPPFLAGS"
     export CGO_CFLAGS="$CFLAGS"
     export CGO_CXXFLAGS="$CXXFLAGS"
     export CGO_LDFLAGS="$LDFLAGS"
-    export VERSION=$(go run ./cmd/internal/read_tag)
+    export VERSION="$pkgver"
 
     go build \
         -v \
@@ -69,7 +54,7 @@ build(){
 }
 
 package() {
-    cd "$_pkgname"
+    cd "$_pkgname-$pkgver"
 
     install -Dm644 LICENSE                            -t "$pkgdir/usr/share/licenses/$_pkgname"
     install -Dm755 "$_pkgname"                         -t "$pkgdir/usr/bin"
