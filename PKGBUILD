@@ -11,7 +11,7 @@ source=("$url/archive/refs/tags/Release.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/peer-to-peer-Release"
     go build -o peer ./cmd/peer
     mkdir ~/.config/peer
     cp -r config/. ~/.config/peer/
