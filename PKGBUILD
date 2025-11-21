@@ -5,7 +5,7 @@
 
 pkgname=thrive-bin
 pkgver=0.9.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Game about evolution, in which the player guides a species from their origin as a microbe to the space age and beyond."
 arch=(x86_64)
 url="https://revolutionarygamesstudio.com"
