@@ -1,4 +1,4 @@
-# Maintainer: Chris Nixon <chris.nixon@sigma.me.uk>
+# Maintainer: ilovemikael <itsmeguys2247 at gmail dot com>
 pkgname=ripgrep-git
 pkgver=15.1.0.r4.57c190d5
 pkgrel=1
@@ -7,8 +7,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/BurntSushi/ripgrep"
 license=('UNLICENSE' 'MIT')
 provides=("ripgrep")
-makedepends=('cargo' 'git' 'asciidoc')
-optdepends=('fish: fish completions')
+makedepends=('cargo' 'git')
+optdepends=('fish: fish completions' 'zsh: zsh completions')
 depends=('pcre2')
 conflicts=('ripgrep')
 source=("$pkgname::git+https://github.com/BurntSushi/ripgrep")
