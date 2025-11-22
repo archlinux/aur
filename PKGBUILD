@@ -1,6 +1,6 @@
 # Maintainer: Evan Church frothycurve@gmail.com
 pkgname=ghpkg
-pkgver=0.1
+pkgver=0.3
 pkgrel=1
 pkgdesc="An indev package manager, using github repos, to build from source."
 arch=('any')
