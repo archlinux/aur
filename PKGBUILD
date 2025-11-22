@@ -8,7 +8,7 @@
 pkgname=vscodium-bin
 _pkgname=VSCodium
 pkgver=1.106.27818
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing."
 arch=('x86_64' 'aarch64')
 url="https://github.com/VSCodium/vscodium"
@@ -49,7 +49,11 @@ package() {
   install -d -m755 "${pkgdir}/opt/${pkgname}"
   install -d -m755 "${pkgdir}/usr/bin"
   install -d -m755 "${pkgdir}/usr/share/"{applications,pixmaps}
-  cp -r "${srcdir}"/!(vscodium-bin?(-url-handler).desktop|${_pkgname}-linux-@(x|arm)64-${pkgver}.tar.gz) "${pkgdir}/opt/${pkgname}"
+  cp -r "${srcdir}"/* "${pkgdir}/opt/${pkgname}"
+  # remove source files links
+  cd "${pkgdir}/opt/${pkgname}"
+  rm $(find "${pkgdir}/opt/${pkgname}" -maxdepth 1 -type l)
+  cd -
   ln -s "/opt/${pkgname}/bin/codium" "${pkgdir}/usr/bin/codium"
   ln -s "/opt/${pkgname}/bin/codium" "${pkgdir}/usr/bin/vscodium"
   install -D -m644 "${srcdir}/vscodium-bin.desktop" "${pkgdir}/usr/share/applications/codium.desktop"
