@@ -1,7 +1,7 @@
 # Contributor: Xiangpeng Hao <me@haoxp.xyz>
 
 pkgname=pmdk-git
-pkgver=2.1.1.r29.g467fcef0e
+pkgver=2.1.2.r5.g9d3f4bf2a
 pkgrel=1
 pkgdesc="Persistent Memory Development Kit."
 arch=("x86_64")
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd pmdk
-    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+    git describe --long | sed -r 's/-rc/rc/;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
