@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-5.0-bin
 	pkgver = 5.0.17.sdk408
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
@@ -17,9 +17,7 @@ pkgbase = dotnet-core-5.0-bin
 pkgname = aspnet-runtime-5.0-bin
 	pkgdesc = The ASP.NET Core runtime version 5.0 (binary) - End of life
 	depends = dotnet-runtime-5.0-bin
-	provides = aspnet-runtime=5.0.17
 	provides = aspnet-runtime-5.0
-	conflicts = aspnet-runtime=5.0.17
 	conflicts = aspnet-runtime-5.0
 
 pkgname = dotnet-runtime-5.0-bin
@@ -32,9 +30,7 @@ pkgname = dotnet-runtime-5.0-bin
 	depends = openssl
 	depends = zlib
 	optdepends = lttng-ust: CoreCLR tracing
-	provides = dotnet-runtime=5.0.17
 	provides = dotnet-runtime-5.0
-	conflicts = dotnet-runtime=5.0.17
 	conflicts = dotnet-runtime-5.0
 
 pkgname = dotnet-sdk-5.0-bin
@@ -44,25 +40,17 @@ pkgname = dotnet-sdk-5.0-bin
 	depends = dotnet-targeting-pack-5.0-bin
 	depends = netstandard-targeting-pack-2.1
 	optdepends = aspnet-targeting-pack-5.0-bin: Build ASP.NET Core applications
-	provides = dotnet-sdk-5.0-bin
-	provides = dotnet-sdk=5.0.17.sdk408
 	provides = dotnet-sdk-5.0
-	conflicts = dotnet-sdk-5.0-bin
-	conflicts = dotnet-sdk=5.0.17.sdk408
 	conflicts = dotnet-sdk-5.0
 
 pkgname = dotnet-targeting-pack-5.0-bin
 	pkgdesc = The .NET Core targeting pack version 5.0 (binary) - End of life
 	depends = netstandard-targeting-pack-2.1
-	provides = dotnet-targeting-pack=5.0.17
 	provides = dotnet-targeting-pack-5.0
-	conflicts = dotnet-targeting-pack=5.0.17
 	conflicts = dotnet-targeting-pack-5.0
 
 pkgname = aspnet-targeting-pack-5.0-bin
 	pkgdesc = The ASP.NET Core targeting pack version 5.0 (binary) - End of life
 	depends = dotnet-targeting-pack-5.0-bin
-	provides = aspnet-targeting-pack=5.0.17
 	provides = aspnet-targeting-pack-5.0
-	conflicts = aspnet-targeting-pack=5.0.17
 	conflicts = aspnet-targeting-pack-5.0

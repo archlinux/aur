@@ -11,7 +11,7 @@ pkgname=(
 pkgver=5.0.17.sdk408
 _runtimever=5.0.17
 _sdkver=5.0.408
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
@@ -34,8 +34,8 @@ package_dotnet-runtime-5.0-bin() {
            'zlib'
   )
   optdepends=('lttng-ust: CoreCLR tracing')
-  provides=("dotnet-runtime=${_runtimever}" "dotnet-runtime-5.0")
-  conflicts=("dotnet-runtime=${_runtimever}" "dotnet-runtime-5.0")
+  provides=("dotnet-runtime-5.0")
+  conflicts=("dotnet-runtime-5.0")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.NETCore.App "${pkgdir}"/usr/share/dotnet/shared/
@@ -45,8 +45,8 @@ package_dotnet-runtime-5.0-bin() {
 package_aspnet-runtime-5.0-bin() {
   pkgdesc='The ASP.NET Core runtime version 5.0 (binary) - End of life'
   depends=('dotnet-runtime-5.0-bin')
-  provides=("aspnet-runtime=${_runtimever}" "aspnet-runtime-5.0")
-  conflicts=("aspnet-runtime=${_runtimever}" "aspnet-runtime-5.0")
+  provides=("aspnet-runtime-5.0")
+  conflicts=("aspnet-runtime-5.0")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet/shared,licenses}
   cp -dr --no-preserve='ownership' shared/Microsoft.AspNetCore.App "${pkgdir}"/usr/share/dotnet/shared/
@@ -61,8 +61,8 @@ package_dotnet-sdk-5.0-bin() {
     'dotnet-targeting-pack-5.0-bin'
     "netstandard-targeting-pack-2.1")
   optdepends=('aspnet-targeting-pack-5.0-bin: Build ASP.NET Core applications')
-  provides=("dotnet-sdk-5.0-bin" "dotnet-sdk=${pkgver}" "dotnet-sdk-5.0")
-  conflicts=("dotnet-sdk-5.0-bin" "dotnet-sdk=${pkgver}" "dotnet-sdk-5.0")
+  provides=("dotnet-sdk-5.0")
+  conflicts=("dotnet-sdk-5.0")
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,licenses}
   cp -dr --no-preserve='ownership' sdk templates "${pkgdir}"/usr/share/dotnet/
@@ -72,8 +72,8 @@ package_dotnet-sdk-5.0-bin() {
 package_dotnet-targeting-pack-5.0-bin() {
   pkgdesc='The .NET Core targeting pack version 5.0 (binary) - End of life'
   depends=("netstandard-targeting-pack-2.1")
-  provides=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-5.0)
-  conflicts=(dotnet-targeting-pack=${_runtimever} dotnet-targeting-pack-5.0)
+  provides=(dotnet-targeting-pack-5.0)
+  conflicts=(dotnet-targeting-pack-5.0)
 
   if [ $CARCH = 'x86_64' ]; then msarch=x64;
   elif [ $CARCH = 'armv7h' ]; then msarch=arm;
@@ -87,8 +87,8 @@ package_dotnet-targeting-pack-5.0-bin() {
 package_aspnet-targeting-pack-5.0-bin() {
   pkgdesc='The ASP.NET Core targeting pack version 5.0 (binary) - End of life'
   depends=(dotnet-targeting-pack-5.0-bin)
-  provides=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-5.0)
-  conflicts=(aspnet-targeting-pack=${_runtimever} aspnet-targeting-pack-5.0)
+  provides=(aspnet-targeting-pack-5.0)
+  conflicts=(aspnet-targeting-pack-5.0)
 
   install -dm 755 "${pkgdir}"/usr/share/{dotnet,dotnet/packs,licenses}
   cp -dr --no-preserve='ownership' packs/Microsoft.AspNetCore.App.Ref "${pkgdir}"/usr/share/dotnet/packs/
