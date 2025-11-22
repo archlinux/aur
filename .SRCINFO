@@ -1,0 +1,12 @@
+pkgbase = libac
+	pkgdesc = Library of miscellaneous utility functions
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/ac000/libac
+	arch = x86_64
+	arch = i686
+	license = LGPL-2.1-only
+	source = https://github.com/ac000/libac/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 8cef2d7478125c0f3de98e6035478cd8da2457d215ed075209660310f1e72344
+
+pkgname = libac
