@@ -1,0 +1,15 @@
+pkgbase = hyprmode
+	pkgdesc = Super+P style display mode switcher for Hyprland with auto Omarchy theming
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Zeus-Deus/hyprmode
+	arch = any
+	license = MIT
+	depends = python-textual
+	depends = hyprland
+	depends = alacritty
+	optdepends = python-tomli: Optional for Python < 3.11 for Omarchy theming support
+	source = hyprmode-0.1.1.tar.gz::https://github.com/Zeus-Deus/hyprmode/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = hyprmode
