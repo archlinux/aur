@@ -1,0 +1,29 @@
+pkgbase = heidisql-gtk2-git
+	pkgdesc = A lightweight GUI for managing MySQL, PostgreSQL, Microsoft SQL and SQLite databases (GTK2)
+	pkgver = r257.a1c84ae5
+	pkgrel = 1
+	url = http://www.heidisql.com/
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = lazarus
+	makedepends = make
+	makedepends = fpc
+	makedepends = gettext
+	makedepends = binutils
+	makedepends = gtk2
+	makedepends = git
+	depends = gtk2
+	depends = heidisql-common
+	depends = mariadb-libs
+	depends = postgresql-libs
+	depends = libperconaserverclient
+	depends = sqlite
+	depends = freetds
+	provides = heidisql-client
+	provides = heidisql
+	provides = heidisql-gtk2
+	conflicts = heidisql-gtk2
+	source = heidisql-gtk2-git::git+https://github.com/HeidiSQL/HeidiSQL.git#branch=lazarus
+	sha256sums = SKIP
+
+pkgname = heidisql-gtk2-git
