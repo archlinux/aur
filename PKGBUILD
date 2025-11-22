@@ -19,8 +19,8 @@ sha256sums=('SKIP'
 pkgver() {
   cd "$srcdir/PixelPantry"
 
-  git describe --long --tags --match '[0-9]*' 2>/dev/null \
-    | sed 's/\([^-]*-g\)/r\1/; s/-/./g' \
+  git describe --long --tags --match 'v[0-9]*' 2>/dev/null \
+    | sed 's/^v//;s/\([^-]*-g\)/r\1/; s/-/./g' \
   || printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
