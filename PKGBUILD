@@ -4,7 +4,7 @@
 
 _pkgname="nikola"
 pkgname="$_pkgname-git"
-pkgver=8.3.1.r2.gf7989de
+pkgver=8.3.3.r7.ge09ea79
 pkgrel=1
 pkgdesc="A static site and blog generator"
 url="https://github.com/getnikola/nikola"
@@ -19,7 +19,6 @@ depends=(
   python-dateutil
   python-docutils
   python-doit
-  python-logbook
   python-lxml
   python-mako
   python-markdown
@@ -38,7 +37,7 @@ makedepends=(
   python-aiohttp
   python-build
   python-ghp-import
-  python-husl
+  python-hsluv
   python-html5lib
   python-installer
   python-ipykernel
@@ -61,13 +60,13 @@ checkdepends=(
   python-pytest
 )
 optdepends=(
-  'libwebp: for WEBP image file support'
   'jupyter-notebook: for .ipynb support'
+  'libwebp: for WEBP image file support'
   'python-aiohttp: for nikola auto'
   'python-ghp-import: for upload to Github pages'
+  'python-hsluv: for optional color support'
   'python-hsluv: for section color mixing'
   'python-html5lib: for HTML5 minify and format support'
-  'python-husl: for optional color support'
   'python-ipykernel: for .ipynb support'
   'python-jinja: for jinja2 based themes'
   'python-micawber: for embedding media in posts'
@@ -80,7 +79,7 @@ optdepends=(
   'python-watchdog: for nikola auto'
 )
 
-provides=("$_pkgname=${pkgver%%.r*}")
+provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
