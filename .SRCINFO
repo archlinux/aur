@@ -1,5 +1,5 @@
-pkgbase = mythtv-git
-	pkgdesc = A Homebrew PVR project (Stable '-fixes' branch)
+pkgbase = mythtv-qt6-git
+	pkgdesc = A Homebrew PVR project (Stable '-fixes' branch, compiled against qt6)
 	pkgver = 35.0.r44.g7e93f0d37b
 	pkgrel = 1
 	url = https://www.mythtv.org/
@@ -65,8 +65,9 @@ pkgbase = mythtv-git
 	optdepends = python-requests: Python bindings
 	optdepends = python-requests-cache: Python bindings
 	optdepends = python-simplejson: Python bindings
+	provides = mythtv-git
 	provides = mythtv
-	conflicts = mythtv
+	conflicts = mythtv-git
 	options = !lto
 	source = git+https://github.com/MythTV/mythtv#branch=fixes/35
 	source = disable-amf.patch
@@ -83,4 +84,4 @@ pkgbase = mythtv-git
 	sha256sums = ecfd02bbbef5de9773f4de2c52e9b2b382ce8137735f249d7900270d304fd333
 	sha256sums = 470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae
 
-pkgname = mythtv-git
+pkgname = mythtv-qt6-git

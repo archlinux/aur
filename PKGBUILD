@@ -7,10 +7,10 @@
 # Contributor: <kleptophobiac@gmail.com>
 # Contributor: dorphell <dorphell@archlinux.org>
 
-pkgname=mythtv-git
+pkgname=mythtv-qt6-git
 pkgver=35.0.r44.g7e93f0d37b
 pkgrel=1
-pkgdesc="A Homebrew PVR project (Stable '-fixes' branch)"
+pkgdesc="A Homebrew PVR project (Stable '-fixes' branch, compiled against qt6)"
 arch=('x86_64')
 url="https://www.mythtv.org/"
 license=('GPL')
@@ -81,8 +81,8 @@ optdepends=(
     'python-simplejson: Python bindings'
 )
 options=(!lto)
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("mythtv-git" "mythtv")
+conflicts=("mythtv-git")
 source=(
     "git+https://github.com/MythTV/mythtv#branch=fixes/35"
     'disable-amf.patch'
