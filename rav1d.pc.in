@@ -1,0 +1,10 @@
+prefix=/usr
+exec_prefix=/usr
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: rav1d
+Description: An AV1 cross-platform decoder
+Version: @RAV1D_VERSION@
+Cflags: -I${includedir}
+Libs: -L${libdir} -lrav1d
