@@ -1,6 +1,6 @@
 pkgbase = passless-bin
 	pkgdesc = FIDO2 security token emulator
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/pando85/passless
 	install = passless.install
@@ -10,10 +10,10 @@ pkgbase = passless-bin
 	depends = gcc-libs
 	provides = passless
 	conflicts = passless
-	source = https://github.com/pando85/passless/releases/download/v0.1.0/passless-0.1.0-x86_64-unknown-linux-gnu.tar.gz
-	source = passless-0.1.0.tar.gz::https://github.com/pando85/passless/archive/refs/tags/v0.1.0.tar.gz
+	source = https://github.com/pando85/passless/releases/download/v0.2.0/passless-0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	source = passless-0.2.0.tar.gz::https://github.com/pando85/passless/archive/refs/tags/v0.2.0.tar.gz
 	source = passless.install
-	sha256sums = 478c15cbc83f278c744f698d5bb77d7152c2a57f412a4cf838299f58ba7605d2
+	sha256sums = b8d6b52eb968c18d71cb84eeaa4943d00f2efcade581efd3d20c03661896435e
 	sha256sums = SKIP
 	sha256sums = SKIP
 
