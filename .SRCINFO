@@ -1,6 +1,6 @@
 pkgbase = gatus
 	pkgdesc = Automated service health dashboard
-	pkgver = 5.31.0
+	pkgver = 5.33.0
 	pkgrel = 1
 	url = https://github.com/TwiN/gatus
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = gatus
 	backup = etc/gatus.yaml
 	source = gatus.service
 	source = sysusers.d
-	source = gatus-5.31.0.tar.gz::https://github.com/TwiN/gatus/archive/refs/tags/v5.31.0.tar.gz
+	source = gatus-5.33.0.tar.gz::https://github.com/TwiN/gatus/archive/refs/tags/v5.33.0.tar.gz
 	b2sums = 4ec6761e07afe08137d28ba38c208e6a6717c4943cea62fb732ce83cab7fa9455ac39ab2faab83a8f6554fbdc8443d99c4d400291d90dbe778e86a2c022e3f67
 	b2sums = a1818c1b4ff769285ea1eb3fcede9da445f0abbed0583d1817107b2b2798924559fac0b5e7a658a910c15a6bbf33f2fab4019e43e158eebf11b668a3af5f0a82
-	b2sums = a9dc5ee1836297403982f5799f6be65a226dc5b10529181dd20dc37362c474a27792b23a6a571677556c6d295785d0df5852db427165a1653ca3170795ef9772
+	b2sums = aeaac6b45a02a65335b0df987a96ce7ec7669d15f5a8910f38529c600d59fea714c827a435d28c2b51ad6abad1d9191ed8c0da57d9de3c47451dba1c97ae8254
 
 pkgname = gatus
