@@ -1,6 +1,6 @@
 # Maintainer: nicknb <nicknb at posteo dot com>
 pkgname=firefox-extension-refined-github-bin
-pkgver=25.11.19
+pkgver=25.11.22
 pkgrel=1
 pkgdesc="Simplifies the GitHub interface and adds many useful features"
 arch=("any")
