@@ -2,7 +2,7 @@
 
 _name=google-genai
 pkgname=python-$_name
-pkgver=1.49.0
+pkgver=1.52.0
 pkgrel=1
 pkgdesc="GenAI Python SDK."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 checkdepends=('python-certifi' 'python-pillow' 'python-pytest' 'python-pytest-asyncio' 'python-mcp' 'python-aiohttp' 'python-sentencepiece' 'python-protobuf')
 optdepends=('python-aiohttp: aiohttp' 'python-sentencepiece: local-tokenizer' 'python-protobuf: local-tokenizer')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('83e63ae5101a783b4dbba6eb69bc42f65d8bba598f11906c308f7637bf891590')
+sha256sums=('069dbd659dee45e7ba9db6be9a2df853ef2659ab8146b0856a07d5c17edcf083')
 
 prepare(){
   cd "$srcdir"/${pkgname//google-/}-$pkgver
@@ -33,6 +33,7 @@ check() {
     # Need Gemini developer API or Vertex AI API
     --ignore google/genai/tests/batches
     --ignore google/genai/tests/caches
+    --ignore google/genai/tests/documents
     --ignore google/genai/tests/files
     --ignore google/genai/tests/models
     --ignore google/genai/tests/tokens
