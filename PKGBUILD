@@ -85,29 +85,35 @@ prepare() {
 
 build() {
 
-  ## -DWITH_CUDA='ON'
-  ##  -DCUDA_DYNAMIC_LOADING='ON'
-  ##  -DCUDA_ARCH_LIST='Common'
+  ## WITH_CUDA='ON'
+  ## CUDA_DYNAMIC_LOADING='ON'
+  ## CUDA_ARCH_LIST='Common'
   # Only supports up to CUDA 12.4
 
   ## WITH_CUDNN='ON'
   # hard dependency if enabled, however convolution layers will not be supported on
   # GPU if CUDA is enabled without it
 
-  cmake -B build -S CTranslate2 \
-    -DCMAKE_C_COMPILER='gcc-14' \
-    -DCMAKE_CXX_COMPILER='g++-14' \
-    -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DOPENMP_RUNTIME='COMP' \
-    -DWITH_MKL='OFF' \
-    -DWITH_DNNL='OFF' \
-    -DWITH_OPENBLAS='ON' \
-    -DOPENBLAS_INCLUDE_DIR='/usr/include/openblas' \
-    -DWITH_RUY='ON' \
-    -DCMAKE_POLICY_VERSION_MINIMUM='3.5' \
-    -DENABLE_CPU_DISPATCH='OFF' \
-    -Wno-dev
+  local cmake_options=(
+    -B build
+    -S CTranslate2
+    -W no-dev
+    -D CMAKE_BUILD_TYPE='RelWithDebInfo'
+    -D CMAKE_INSTALL_PREFIX='/usr'
+    -D CMAKE_C_COMPILER='gcc-14'
+    -D CMAKE_CXX_COMPILER='g++-14'
+    -D CMAKE_BUILD_TYPE='RelWithDebInfo'
+    -D CMAKE_INSTALL_PREFIX='/usr'
+    -D OPENMP_RUNTIME='COMP'
+    -D WITH_MKL='OFF'
+    -D WITH_DNNL='OFF'
+    -D WITH_OPENBLAS='ON'
+    -D OPENBLAS_INCLUDE_DIR='/usr/include/openblas'
+    -D WITH_RUY='ON'
+    -D CMAKE_POLICY_VERSION_MINIMUM='3.5'
+    -D ENABLE_CPU_DISPATCH='OFF'
+  )
+  cmake "${cmake_options[@]}"
   cmake --build build
 
   pushd CTranslate2/python
