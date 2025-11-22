@@ -1,0 +1,27 @@
+pkgbase = rquickshare-git
+	pkgdesc = Rust implementation of NearbyShare/QuickShare from Android for Linux and macOS.
+	pkgver = 0.11.5.r4.g378d8ae
+	pkgrel = 1
+	url = https://github.com/Martichou/rquickshare
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = pnpm
+	makedepends = git
+	makedepends = protobuf
+	depends = glibc
+	depends = glib2
+	depends = gdk-pixbuf2
+	depends = hicolor-icon-theme
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = dbus
+	depends = gcc-libs
+	depends = libsoup3
+	depends = cairo
+	provides = rquickshare
+	conflicts = rquickshare
+	source = git+https://github.com/Martichou/rquickshare.git
+	sha256sums = SKIP
+
+pkgname = rquickshare-git
