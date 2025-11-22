@@ -9,6 +9,7 @@ pkgbase = calf-nogui-git
 	license = LGPL
 	makedepends = git
 	makedepends = cmake
+	makedepends = ninja
 	depends = fluidsynth
 	depends = lv2
 	provides = calf
