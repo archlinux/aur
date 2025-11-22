@@ -1,23 +1,19 @@
 post_install() {
-    echo "==> Enabling earctl user service globally..."
-    # Enable the service for all users (requires re-login or manual start)
-    systemctl --global enable earctl.service || true
-    echo "==> The service has been enabled globally."
-    echo "==> It will start automatically when you next log in."
-    echo "==> To start it immediately for your current session, run:"
-    echo "    systemctl --user start earctl.service"
+    echo "==> To start the earctl service, run:"
+    echo "    systemctl --user enable --now earctl.service"
     echo ""
-    echo "==> See help for more information:"
-    echo "    earctl --help"
+    echo "==> Then you can use the CLI:"
+    echo "    earctl auto-connect"
+    echo "    earctl battery"
 }
 
 post_upgrade() {
-    echo "==> Reloading systemd user daemon..."
-    # We cannot restart user services from root reliably, but we can re-enable
-    systemctl --global enable earctl.service || true
+    echo "==> If the service is running, you may need to restart it:"
+    echo "    systemctl --user restart earctl.service"
 }
 
 pre_remove() {
-    echo "==> Disabling earctl user service..."
-    systemctl --global disable earctl.service || true
+    # We cannot stop user services from a root script reliably.
+    # The user should stop it themselves or it will stop on logout.
+    true
 }

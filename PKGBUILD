@@ -1,6 +1,6 @@
 # Maintainer: Daan Hessen <daanh2002@gmail.com>
 pkgname=earctl
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A Rust API/CLI that allows every device on your network to control your Nothing earbuds"
 arch=('x86_64')
@@ -10,12 +10,14 @@ depends=('dbus')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('8c10e73f41e85310c95a6e45b3c8e513dadb5617876a9f1a6896e4739b0e0177')
+sha256sums=('cec6834f6694fb4412eba1ea788f708778ce4dff14358ce45c924653d55c043f')
 
 build() {
   cd "${pkgname}-${pkgver}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  # Explicitly disable LTO in RUSTFLAGS to ensure ring links correctly
+  export RUSTFLAGS="-C lto=off"
   cargo build --release --locked --all-features
 }
 
