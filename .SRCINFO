@@ -1,13 +1,13 @@
 pkgbase = png2lvgl
 	pkgdesc = Convert PNG images to LVGL C arrays
-	pkgver = 0.2.3
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/metaneutrons/png2lvgl
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = cargo
-	source = png2lvgl-0.2.3.tar.gz::https://github.com/metaneutrons/png2lvgl/archive/refs/tags/v0.2.3.tar.gz
+	source = png2lvgl-0.3.0.tar.gz::https://github.com/metaneutrons/png2lvgl/archive/refs/tags/v0.3.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = png2lvgl
