@@ -1,0 +1,5 @@
+[fastchess]
+source = "github"
+github = "Disservin/fastchess"
+use_max_tag = true
+prefix = "v"
