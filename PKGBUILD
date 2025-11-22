@@ -2,7 +2,7 @@
 
 _name=langgraph-prebuilt
 pkgname=python-$_name
-pkgver=1.0.2
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Library with high-level APIs for creating and executing LangGraph agents and tools."
 arch=('any')
@@ -10,9 +10,9 @@ license=('MIT')
 url="https://github.com/langchain-ai/langgraph/tree/main/libs/prebuilt"
 depends=('python' 'python-langgraph-checkpoint' 'python-langchain-core')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-langgraph' 'python-langgraph-checkpoint-sqlite' 'python-langgraph-checkpoint-postgres' 'python-syrupy' )
+checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-langgraph' 'python-langgraph-checkpoint-sqlite' 'python-langgraph-checkpoint-postgres' 'python-syrupy' 'python-psycopg')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('9896dbabf04f086eb59df4294f54ab5bdb21cd78e27e0a10e695dffd1cc6097d')
+sha256sums=('85802675ad778cc7240fd02d47db1e0b59c0c86d8369447d77ce47623845db2d')
 
 build() {
     cd "$srcdir"/${_name//-/_}-$pkgver
