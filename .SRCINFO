@@ -1,6 +1,6 @@
 pkgbase = pcsx-redux
 	pkgdesc = A collection of tools, research, hardware design, and libraries aiming at development and reverse engineering on the PlayStation 1.
-	pkgver = r6790.718f0912
+	pkgver = r6813.b745534e
 	pkgrel = 1
 	url = https://github.com/grumpycoders/pcsx-redux
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = pcsx-redux
 	depends = libxcb
 	depends = glfw
 	options = !lto
-	source = git+https://github.com/grumpycoders/pcsx-redux.git#commit=718f0912a44320faf2668e71d3ce9cc3207485bd
+	source = git+https://github.com/grumpycoders/pcsx-redux.git#commit=b745534eb231d3699ec57949f16a9a7bd5b79385
 	source = git+https://github.com/ocornut/imgui.git
 	source = git+https://github.com/libuv/libuv.git
 	source = git+https://github.com/grumpycoders/uC-sdk.git
@@ -58,7 +58,7 @@ pkgbase = pcsx-redux
 	source = git+https://github.com/LuaJIT/LuaJIT.git
 	source = git+https://github.com/lua/lua.git
 	source = git+https://github.com/keplerproject/lua-compat-5.3.git
-	sha256sums = 761a7e4d81416aef976949016a6086275769273c7461bed674043d9443fe4119
+	sha256sums = 1c64422ff2c249a61fa76698844cb912c45f015459ece98837518f7c226c42eb
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
