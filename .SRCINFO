@@ -23,6 +23,8 @@ pkgbase = sshpilot-bin
 	conflicts = sshpilot
 	options = !strip
 	source_x86_64 = https://github.com/mfat/sshpilot/releases/download/v4.4.3/sshpilot_4.4.3-1_all.deb
+	source_x86_64 = fix_desktop.patch
 	sha512sums_x86_64 = 70cce478bd7040fcd943c542b6a53754965c68f00f96aeb50536164a6b59fe47db63010b283502e8098269984c456a98186f201e4997e14a079474d544f610ca
+	sha512sums_x86_64 = 0b225440b59ee50017892c1ee0223135b7190e8db6651a997f01515e559d4adb4c77173296b885d329a1fa3ad155db3efb6e26b076ba206e642b5a21d310689a
 
 pkgname = sshpilot-bin

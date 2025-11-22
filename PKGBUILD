@@ -16,12 +16,16 @@ depends=('glib2' 'gtk4' 'gdk-pixbuf2' 'libsecret' 'pango' 'graphene' 'vte4' 'lib
 
 options=(!strip)
 
-source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-${pkgrel}_all.deb")
-sha512sums_x86_64=('70cce478bd7040fcd943c542b6a53754965c68f00f96aeb50536164a6b59fe47db63010b283502e8098269984c456a98186f201e4997e14a079474d544f610ca')
+source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-${pkgrel}_all.deb"
+               "fix_desktop.patch")
+sha512sums_x86_64=('70cce478bd7040fcd943c542b6a53754965c68f00f96aeb50536164a6b59fe47db63010b283502e8098269984c456a98186f201e4997e14a079474d544f610ca'
+                   '0b225440b59ee50017892c1ee0223135b7190e8db6651a997f01515e559d4adb4c77173296b885d329a1fa3ad155db3efb6e26b076ba206e642b5a21d310689a')
 
 package() {
     cd "${pkgdir}"
 
     # this extracts all into the pkgdir
     tar -xf "${srcdir}/data.tar.zst"
+
+    patch -p1 < "${srcdir}/fix_desktop.patch"
 }
