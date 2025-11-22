@@ -1,7 +1,7 @@
 # Maintainer: Alfonso Espadero Jr <pixelpantry.shelter185@passmail.net>
 pkgname=pixelpantry-git
 _pkgname=pixelpantry
-pkgver=1.0.1.r0.g0000000
+pkgver=1.0.1.r5.g267614f
 pkgrel=1
 pkgdesc="A gamified pixel-art pantry inventory tracker"
 arch=('x86_64')
