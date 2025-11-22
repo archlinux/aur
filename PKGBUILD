@@ -2,7 +2,7 @@
 pkgname=google-antigravity-bin
 pkgver=1.11.5
 _buildid=5234145629700096
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Antigravity Agentic IDE (Binary Release)"
 arch=('x86_64')
 url="https://antigravity.google"
