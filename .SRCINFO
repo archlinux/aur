@@ -1,0 +1,16 @@
+pkgbase = python-ass-tag-analyzer
+	pkgdesc = Parse .ass tags.
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://pypi.org/project/ass-tag-analyzer/
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	source = https://files.pythonhosted.org/packages/04/46/94e82b85be4be8164ae14d53abfef24cec5013927e5578efa9bbdd829992/ass_tag_analyzer-0.0.5.tar.gz
+	sha256sums = d526d3bff70d6db1946b7c349e79b9fde87c7fc69348b438b3e8962989475814
+
+pkgname = python-ass-tag-analyzer
