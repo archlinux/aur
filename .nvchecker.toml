@@ -1,0 +1,4 @@
+[shhopt]
+source = 'regex'
+url = 'https://shh.thathost.com/pub-unix/'
+regex = 'shhopt-([\d.]+).tar'
