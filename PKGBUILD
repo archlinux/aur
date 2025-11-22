@@ -1,5 +1,5 @@
 pkgname=phantom-wallet-bin
-pkgver=25.43.1
+pkgver=25.43.2
 pkgrel=1
 pkgdesc="A crypto wallet reimagined for DeFi & NFTs"
 arch=('x86_64')
@@ -9,16 +9,16 @@ depends=('hicolor-icon-theme')
 optdepends=('fuse2: for direct AppImage execution'
             'fuse3: for direct AppImage execution')
 options=(!strip)
-source=("https://sourceforge.net/projects/phantom-wallet/files/Phantom%20Wallet-25.43.0.tar.gz/download")
+source=("https://sourceforge.net/projects/phantom-wallet/files/Phantom%20Wallet-25.43.2.tar.gz/download")
 sha256sums=('d04063d120df750b8d3055f38290761e6350cfa315205a86a0090780839b81f1')
 
 prepare() {
-    cd "$srcdir/Phantom Wallet-25.43.0"
+    cd "$srcdir/Phantom Wallet-25.43.2"
     chmod +x "Phantom Wallet.AppImage"
 }
 
 package() {
-    cd "$srcdir/Phantom Wallet-25.43.0"
+    cd "$srcdir/Phantom Wallet-25.43.2"
 
     install -Dm755 "Phantom Wallet.AppImage" "$pkgdir/opt/${pkgname}/${pkgname}.AppImage"
 
