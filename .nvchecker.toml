@@ -1,0 +1,4 @@
+[docfd-bin]
+source = "github"
+github = "darrenldl/docfd"
+use_latest_release = true
