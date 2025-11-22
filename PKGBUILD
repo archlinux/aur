@@ -8,7 +8,7 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=mythtv-git
-pkgver=35.0.r0.g2cee6aa
+pkgver=35.0.r44.g7e93f0d37b
 pkgrel=1
 pkgdesc="A Homebrew PVR project (Stable '-fixes' branch)"
 arch=('x86_64')
@@ -34,9 +34,8 @@ depends=(
     'libxrandr'
     'libzip'
     'lzo'
-    'python-pyqt5-webengine'
+    'python-pyqt6-webengine'
     'python-requests-cache'
-    'qt5-script'
     'soundtouch'
     'taglib'
     'x264'
@@ -86,24 +85,29 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(
     "git+https://github.com/MythTV/mythtv#branch=fixes/35"
+    'disable-amf.patch'
     'mythbackend.service'
     'mythtv.desktop'
     'mythtv.png'
     '99-mythbackend.rules'
     'sysusers.d'
 )
-sha256sums=(
-    'SKIP'
-    '5ec7b0f6a3767068d1912188c6bc8957583a543abcb5b4ef52ea7126e316525b'
-    '3fd2018d0d5aaa7d530835305dac80d4ca7d8fc991cdf9e1cebadebd86e25c03'
-    '12cb52bf9b084a4f16419c9370fef0450ce6a11308b0c3f7240f4f83df7e2ab6'
-    'ecfd02bbbef5de9773f4de2c52e9b2b382ce8137735f249d7900270d304fd333'
-    '470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae'
-)
+sha256sums=('SKIP'
+            '9c8e3ce3c25e2ac058611615a232f7b7ee8fb933afed32409cfd72384ba90dd4'
+            '5ec7b0f6a3767068d1912188c6bc8957583a543abcb5b4ef52ea7126e316525b'
+            '3fd2018d0d5aaa7d530835305dac80d4ca7d8fc991cdf9e1cebadebd86e25c03'
+            '12cb52bf9b084a4f16419c9370fef0450ce6a11308b0c3f7240f4f83df7e2ab6'
+            'ecfd02bbbef5de9773f4de2c52e9b2b382ce8137735f249d7900270d304fd333'
+            '470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae')
 
 pkgver() {
   cd "$srcdir/mythtv/mythtv"
   printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
+}
+
+prepare() {
+  cd "$srcdir/mythtv"
+  patch -Np1 -i ../../disable-amf.patch
 }
 
 build() {

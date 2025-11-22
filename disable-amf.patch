@@ -1,0 +1,12 @@
+diff --git a/mythtv/configure b/mythtv/configure
+index 2749764e17..2de2364529 100755
+--- a/mythtv/configure
++++ b/mythtv/configure
+@@ -6397,6 +6397,7 @@ ffmpeg_optenable cross_compile libmp3lame libx264 libx265 libvpx libxvid
+ ffmpeg_optenable vdpau libxml2 libass dxva2
+ ffmpeg_optenable libbluray libfontconfig libfreetype libiec61883
+ ffmpeg_optenable sdl2 ffplay
++ffmpeg_optenable amf
+ 
+ if test $target_os = "android"; then
+     enabled mediacodec && enable jni
