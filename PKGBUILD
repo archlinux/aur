@@ -10,7 +10,7 @@ optdepends=('fuse2: for direct AppImage execution'
             'fuse3: for direct AppImage execution')
 options=(!strip)
 source=("https://sourceforge.net/projects/phantom-wallet/files/Phantom%20Wallet-25.43.2.tar.gz/download")
-sha256sums=('d04063d120df750b8d3055f38290761e6350cfa315205a86a0090780839b81f1')
+sha256sums=('df3c2011918e747bbc3bc66fc7c5e312a16dbe732d821a2b64ac2d012d1f2ce0')
 
 prepare() {
     cd "$srcdir/Phantom Wallet-25.43.2"
