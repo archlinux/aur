@@ -1,13 +1,13 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=rquickshare
 pkgver=0.11.5
-pkgrel=1
+pkgrel=2
 pkgdesc=" Rust implementation of NearbyShare/QuickShare from Android for Linux and macOS."
 arch=(x86_64)
 url="https://github.com/Martichou/rquickshare"
 license=('GPL-3.0-or-later')
 depends=('glibc' 'glib2' 'gdk-pixbuf2' 'hicolor-icon-theme' 'gtk3' 'webkit2gtk-4.1' 'dbus' 'gcc-libs' 'libsoup3' 'cairo')
-makedepends=('cargo' 'pnpm')
+makedepends=('cargo' 'pnpm' 'protobuf')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('6a82d63412703aa42c343619806cc0dec28ffcf164fb04c5b0bfd17b22257af3')
 
