@@ -1,7 +1,7 @@
 pkgbase = heidisql-common
 	pkgdesc = Shared files for HeidiSQL (locale files, ini files, documentation)
 	pkgver = 12.13.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.heidisql.com/
 	arch = x86_64
 	license = GPL-2.0

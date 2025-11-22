@@ -1,8 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
-# Contributor: Liviu Cristian Mirea-Ghiban <liviu dot mirea at wecodepixels dot com>
 pkgname=heidisql-common
 pkgver=12.13.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Shared files for HeidiSQL (locale files, ini files, documentation)"
 arch=(x86_64)
 url="http://www.heidisql.com/"
@@ -65,6 +64,9 @@ package() {
   # Install shared ini files
   mkdir -p "${pkgdir}/usr/share/heidisql"
   install -Dm644 extra/ini/*.ini "${pkgdir}/usr/share/heidisql/"
+
+  # Install icon
+  install -Dm644 res/deb-package-icon.png "${pkgdir}/usr/share/pixmaps/heidisql.png"
   
   # Install documentation
   mkdir -p "${pkgdir}/usr/share/doc/heidisql"
