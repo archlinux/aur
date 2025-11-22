@@ -8,6 +8,7 @@ url="https://github.com/unstable-code/lyrics"
 license=('GPL-3.0-or-later')
 depends=(
     'cairo'
+    'curl'
     'fontconfig'
     'pango'
     'wayland'

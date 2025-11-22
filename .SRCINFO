@@ -11,6 +11,7 @@ pkgbase = wshowlyrics-git
 	makedepends = ninja
 	makedepends = wayland-protocols
 	depends = cairo
+	depends = curl
 	depends = fontconfig
 	depends = pango
 	depends = wayland
