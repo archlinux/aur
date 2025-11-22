@@ -1,18 +1,21 @@
 pkgbase = electrumx
 	pkgdesc = Server implementation for the Electrum wallet
-	pkgver = 1.16.0
-	pkgrel = 3
+	pkgver = 1.19.0
+	pkgrel = 1
 	url = https://github.com/spesmilo/electrumx
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
+	makedepends = git
 	depends = leveldb
-	depends = python>=3.7
-	depends = python-aiorpcx>=0.18.5
-	depends = python-aiorpcx<0.19.0
+	depends = python>=3.10
+	depends = python-aiorpcx-git>=0.25.0
+	depends = python-aiorpcx-git<0.26.0
 	depends = python-attrs
 	depends = python-plyvel
-	depends = python-pylru
 	depends = python-aiohttp>=3.3.0
 	depends = python-aiohttp<4.0.0
 	depends = python-websockets
@@ -20,12 +23,13 @@ pkgbase = electrumx
 	optdepends = electrum: Bitcoin thin client
 	optdepends = python-rapidjson<2.0: Alternative JSON parsing library for improved performance
 	optdepends = python-ujson<4.0: Alternative JSON parsing library for improved performance
+	conflicts = electrumx
 	backup = etc/electrumx/electrumx.conf
-	source = electrumx-1.16.0.tar.gz::https://codeload.github.com/spesmilo/electrumx/tar.gz/1.16.0
+	source = electrumx-1.19.0.tar.gz::https://codeload.github.com/spesmilo/electrumx/tar.gz/1.19.0
 	source = electrumx.conf
 	source = electrumx.service
 	source = electrumx.sysusers
-	sha256sums = dac06fac1689150892e49d1d886b12797de84c2084db4952436cc2357993a732
+	sha256sums = cdc8297194530df582b5b1a43bd83112864792c82826e96054041e3b4a109982
 	sha256sums = ca05f8e8cf01c5074376df75a6691c1aea74cf278244f86ac838900cad9547fb
 	sha256sums = ece0696dc82e0159d9a266834e6e9e1e518caa68e6f145d262b291e1fc09d67e
 	sha256sums = 761a21723d21348d598be96655e6de4827b2fcff93270895303e82670e0532f1
