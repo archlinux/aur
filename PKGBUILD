@@ -2,12 +2,17 @@
 
 pkgname=clipse-git
 _pkgname=clipse
-pkgver=r260.1ef8545
+pkgver=r261.d21e265
 pkgrel=1
 pkgdesc="Configurable TUI clipboard manager for Unix"
 arch=("any")
 url="https://github.com/savedra1/clipse"
 license=("MIT")
+depends=(
+    "glibc"
+    "libx11"
+    "libxfixes"
+)
 makedepends=(
     "go"
     "git"
