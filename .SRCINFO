@@ -1,7 +1,7 @@
 pkgbase = perl-ole-storage-lite
 	pkgdesc = Simple Class for OLE document interface.
-	pkgver = 0.22
-	pkgrel = 3
+	pkgver = 0.24
+	pkgrel = 1
 	url = https://metacpan.org/release/OLE-Storage_Lite
 	arch = any
 	license = Artistic-1.0-Perl

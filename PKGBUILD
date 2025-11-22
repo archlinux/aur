@@ -2,8 +2,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-ole-storage-lite'
-pkgver='0.22'
-pkgrel='3'
+pkgver='0.24'
+pkgrel='1'
 pkgdesc="Simple Class for OLE document interface."
 arch=('any')
 license=('Artistic-1.0-Perl')
