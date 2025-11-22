@@ -1,6 +1,6 @@
 pkgbase = nng-git
 	pkgdesc = A lightweight, broker-less library
-	pkgver = 1.10.1.r570.g5b886b5
+	pkgver = 1.11.r687.g7291d12
 	pkgrel = 1
 	url = https://github.com/nanomsg/nng
 	arch = x86_64

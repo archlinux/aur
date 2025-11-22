@@ -1,5 +1,0 @@
-[nng-git]
-source = "git"
-git = "https://github.com/nanomsg/nng.git"
-prefix = "v"
-exclude_regex = '.*[A-Za-z]{2}.*'

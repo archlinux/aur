@@ -3,7 +3,7 @@
 
 _pkgname="nng"
 pkgname="$_pkgname-git"
-pkgver=1.10.1.r570.g5b886b5
+pkgver=1.11.r687.g7291d12
 pkgrel=1
 pkgdesc="A lightweight, broker-less library"
 url="https://github.com/nanomsg/nng"
@@ -47,14 +47,9 @@ build() {
     -DBUILD_SHARED_LIBS=ON
     -DNNG_ENABLE_TLS=ON
     -DNNG_TLS_ENGINE=wolf
+    -DNNG_TESTS=$CHECKFUNC
     -Wno-dev
   )
-
-  if ((CHECKFUNC)); then
-    _cmake_options+=(-DNNG_TESTS=ON)
-  else
-    _cmake_options+=(-DNNG_TESTS=OFF)
-  fi
 
   cmake "${_cmake_options[@]}"
   cmake --build build
