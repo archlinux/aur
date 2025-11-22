@@ -1,17 +1,16 @@
 # Maintainer: qr243vbi
-
 pkgname=(nekobox nekobox-core)
-pkgver=5.7.4
+pkgver=5.7.5
 pkgrel=1
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64')
 url="https://github.com/qr243vbi/nekobox"
 license=('GPL-3.0-or-later')
-makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative')
-makedepends+=('cmake' 'gendesk' 'go' 'protobuf' 'qt6-tools' 'vulkan-headers') 
-makedepends+=('cpio' 'upx')
+makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'qt6-grpc')
+makedepends+=('cmake' 'gendesk' 'go' 'protobuf' 'qt6-tools' 'vulkan-headers' 'cpio' 'upx')
 source=("https://github.com/qr243vbi/nekobox/releases/download/${pkgver}/nekobox-unified-source-${pkgver}.tar.xz")
-sha256sums=("71015a6e6d6dde704f846be88a903bb96f3842c3d4c7c486f85bbc439f4c41d5")
+sha256sums=("1b48839c85400dac3afd1eb1e12d6ab822ed0b8346807289fa4d359aa00c675e")
+
 
 prepare() {
     gendesk -f -n \
@@ -20,6 +19,7 @@ prepare() {
         --name "${pkgname^}" \
         --categories 'Network'
 }
+
 
 build() {
     export DEST=$PWD/build
@@ -34,7 +34,7 @@ build() {
     export GOFLAGS='-mod=vendor'
     export VERSION_SINGBOX="$(cat SingBox.Version)"
     ( bash -x script/build_go.sh ; )
-    
+
     cmake -B "${DEST}" -S . \
         -D CMAKE_BUILD_TYPE=Release \
         -D CMAKE_INSTALL_PREFIX=/usr \
@@ -43,6 +43,7 @@ build() {
     cmake --build "${DEST}"
     popd
 }
+
 
 package_nekobox-core() {
     depends=('gcc-libs' 'glibc')
@@ -68,3 +69,4 @@ package_nekobox() {
     echo "${pkgver}" > "${pkgdir}/usr/lib/NekoBox/version.txt"
     install -Dm644 res/public/On.png "${pkgdir}/usr/share/pixmaps/nekobox.png"
 }
+
