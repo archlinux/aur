@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Bill & Savings Tracker
+Comment=Track bills and manage budget
+Exec=billtracker
+Icon=accessories-calculator
+Categories=Office;Finance;GTK;
+Terminal=false
+StartupNotify=true

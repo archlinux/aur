@@ -1,0 +1,18 @@
+pkgbase = billtracker
+	pkgdesc = Bill & Savings Tracker using GTK4 and Libadwaita
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/grouvya/billtracker
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	source = Billtracker.py
+	source = billtracker.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = billtracker
