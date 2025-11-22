@@ -6,10 +6,10 @@
 # Contributor: Bjoern Franke <bjo+aur@schafweide.org>
 
 pkgname=akkoma
-pkgver=3.15.2
-pkgrel=3
-_erlangver=26.0.2
-_elixirver=1.15.4
+pkgver=3.16.0
+pkgrel=1
+_erlangver=28.0.1
+_elixirver=1.19.3
 pkgdesc='faster-paced fork of Pleroma'
 url='https://akkoma.dev/AkkomaGang/akkoma'
 license=('AGPL-3.0-or-later' 'CC-BY-4.0' 'CC-BY-SA-4.0')
@@ -30,7 +30,7 @@ sha256sums=('712bc7d7bb1c1a719e57ceb55a82f33479de5db9a2d5a128b13ec646cb85ddd4'
             'c3eb1099f605f84640fbc95d86594030d5b7886b90cf3408cfd38dd42bb0b82a'
             '4905a5b08a317366693a6b9e6580977e48dcc4932eef6b181de644fd3db62ef2'
             '16966b8c405892a36e00acf9ecdec6710362fa3659c02e90e844a09403ac6869'
-            'f5c31b0448e4a057660f28fcb87f5e7937893cee5911431d0558fba92cda143e')
+            'SKIP')
 
 # c.f. https://akkoma.dev/AkkomaGang/akkoma/src/commit/16d7d612ffe21d3c83606dadb6ccfdf0217184ee/.woodpecker/build-amd64.yml#L41
 
@@ -64,6 +64,10 @@ prepare() {
 
 build() {
     _setenv
+
+    # Remove broken example file in the SMTP dependency
+    rm -f $srcdir/akkoma/deps/gen_smtp/src/smtp_server_example.erl
+
     cd $pkgname
     mix release --overwrite --path release
 }

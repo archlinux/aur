@@ -1,7 +1,7 @@
 pkgbase = akkoma
 	pkgdesc = faster-paced fork of Pleroma
-	pkgver = 3.15.2
-	pkgrel = 3
+	pkgver = 3.16.0
+	pkgrel = 1
 	url = https://akkoma.dev/AkkomaGang/akkoma
 	install = akkoma.install
 	arch = x86_64
@@ -33,11 +33,11 @@ pkgbase = akkoma
 	source = akkoma.tmpfiles
 	source = akkoma.service
 	source = pleroma_ctl.patch
-	source = git+https://akkoma.dev/AkkomaGang/akkoma.git#tag=v3.15.2
+	source = git+https://akkoma.dev/AkkomaGang/akkoma.git#tag=v3.16.0
 	sha256sums = 712bc7d7bb1c1a719e57ceb55a82f33479de5db9a2d5a128b13ec646cb85ddd4
 	sha256sums = c3eb1099f605f84640fbc95d86594030d5b7886b90cf3408cfd38dd42bb0b82a
 	sha256sums = 4905a5b08a317366693a6b9e6580977e48dcc4932eef6b181de644fd3db62ef2
 	sha256sums = 16966b8c405892a36e00acf9ecdec6710362fa3659c02e90e844a09403ac6869
-	sha256sums = f5c31b0448e4a057660f28fcb87f5e7937893cee5911431d0558fba92cda143e
+	sha256sums = SKIP
 
 pkgname = akkoma
