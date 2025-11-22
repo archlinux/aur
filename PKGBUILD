@@ -1,8 +1,8 @@
 # Maintainer: fka-kafka
 pkgname=google-antigravity-bin
-pkgver=1.11.3
-_buildid=6583016683339776
-pkgrel=2
+pkgver=1.11.5
+_buildid=5234145629700096
+pkgrel=1
 pkgdesc="Google Antigravity Agentic IDE (Binary Release)"
 arch=('x86_64')
 url="https://antigravity.google"
@@ -15,7 +15,7 @@ options=('!strip')
 source=("https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/${pkgver}-${_buildid}/linux-x64/Antigravity.tar.gz"
         "google-antigravity.desktop")
 
-sha256sums=('025da512f9799a7154e2cc75bc0908201382c1acf2e8378f9da235cb84a5615b'
+sha256sums=('4e03151a55743cf30fac595abb343c9eb5a3b6a80d2540136d75b4ead8072112'
             '293b2a68d78ded9d2e8acf5bebf763ecef7c7e915db37f14a3979f41dc3a373e')
 
 package() {
