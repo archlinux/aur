@@ -3,7 +3,7 @@
 pkgbase=python-echo
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}"-doc)
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Callback Properties in Python"
 arch=('any')
@@ -22,7 +22,7 @@ checkdepends=('python-pytest-xvfb'
               'python-pyqt6')  # numpy already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'fix_sphinx-doc_link.patch')
-md5sums=('1f5129b40d0d71f9d988ec335efcc7b3'
+md5sums=('3bfc9611a1376d2b8c821a796149d0cd'
          'b6441be6fa18db4f59a7784b1fcc67a6')
 
 get_pyver() {

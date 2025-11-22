@@ -1,6 +1,6 @@
 pkgbase = python-echo
 	pkgdesc = Callback Properties in Python
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://echo.readthedocs.io
 	arch = any
@@ -15,9 +15,9 @@ pkgbase = python-echo
 	makedepends = python-sphinx-automodapi
 	makedepends = python-numpydoc
 	makedepends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/e/echo/echo-0.11.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/e/echo/echo-0.11.1.tar.gz
 	source = fix_sphinx-doc_link.patch
-	md5sums = 1f5129b40d0d71f9d988ec335efcc7b3
+	md5sums = 3bfc9611a1376d2b8c821a796149d0cd
 	md5sums = b6441be6fa18db4f59a7784b1fcc67a6
 
 pkgname = python-echo
