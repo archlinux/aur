@@ -2,9 +2,9 @@
 # Contributor: Slithery <aur [at] slithery [dot] uk>
 
 pkgname=linode-cli
-pkgver=5.63.0
-_pkgver=4.215.0
-pkgrel=2
+pkgver=5.64.0
+_pkgver=4.215.0-patch.1
+pkgrel=1
 pkgdesc="Linode API wrapper"
 arch=('any')
 url="https://techdocs.akamai.com/cloud-computing/docs/cli"
@@ -17,14 +17,14 @@ depends=('python-openapi3'
 makedepends=('python-build'
              'python-installer'
              'python-wheel')
-optdepends=('python-boto: Object Storage plugin')
+optdepends=('python-boto3: Object Storage plugin')
 replaces=("${pkgname}-dev")
 install="${pkgname}".install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname%%-*}/${pkgname}/archive/v${pkgver}.tar.gz"
-        "${pkgname%%-*}-api-docs-${_pkgver}.tar.gz::https://github.com/${pkgname%%-*}/${pkgname%%-*}-api-docs/archive/refs/tags/v${_pkgver}.tar.gz")
+        "${pkgname%%-*}-api-docs-${_pkgver}.tar.gz::https://github.com/${pkgname%%-*}/${pkgname%%-*}-api-docs/archive/refs/tags/${_pkgver}.tar.gz")
 noextract=("${pkgname%%-*}-api-docs-${_pkgver}.tar.gz")
-sha512sums=('0a618d60afdbde2419bcb331886ac2178e3f6399438090e379532cb0d57a7c42c9bfe2e350119308ecada2873a7314136e4f91d4802a556c6c6ca243e0e4da9f'
-            '7a2413f24cd1ab85c1fd001cc2e23e8ea5f505571f25326b26eb123e087aec8835053f30e3b7a031b5f56cd03d12a53b26b69701151fdd92ed73b845220e6e1d')
+sha512sums=('4f3c38af26c481db029c404cb6c68c649a980d828e70ed811fe999e37388c3193aa18cb2553b2db66cd3fb52ea9e146f405a98ff036b952be2bae0b1c409af69'
+            '08f436727e45203ab4c0faf65c77b0450c7c796a6458ef8efcf911cfcccc643ec0afaaca8f807f86a11f5a5f9f41e3f65cfdf06c87cf8a2e4bcc67369aad426f')
 
 prepare() {
   # Extract API spec
