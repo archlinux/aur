@@ -2,7 +2,7 @@
 # AUR package script for MayaFlux-dev
 # Maintainer: Ranjith Hegde <mayafluxcollective@proton.me>
 
-pkgname=MayaFlux-dev-bin
+pkgname=mayaflux-dev-bin
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="MayaFlux development build - A modern C++ framework for real-time graphics and audio"
