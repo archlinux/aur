@@ -35,7 +35,7 @@ build() {
     cd ${srcdir}/1Panel-${pkgver//_/-}/frontend
     npm install
     npm rum build:pro
-    cd ${srcdir}/1Panel-${pkgver//_/-}/backend
+    cd ${srcdir}/1Panel-${pkgver//_/-}/core
     GOOS=linux GOARCH=$(go env GOARCH) go build -trimpath -ldflags '-s -w' -o ${srcdir}/1Panel-${pkgver//_/-}/build/1panel ${srcdir}/1Panel-${pkgver//_/-}/cmd/server/main.go
 }
 
