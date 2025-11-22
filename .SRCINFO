@@ -1,6 +1,6 @@
 pkgbase = nitchrevived-bin
 	pkgdesc = Incredibly fast system fetch written in nim (binary)
-	pkgver = 0.1.7.3
+	pkgver = 0.1.7.4
 	pkgrel = 1
 	url = https://github.com/gnuvalerie/nitchrevived
 	arch = x86_64

@@ -1,5 +1,5 @@
 pkgname=nitchrevived-bin
-pkgver=0.1.7.3
+pkgver=0.1.7.4
 pkgrel=1
 pkgdesc="Incredibly fast system fetch written in nim (binary)"
 arch=(x86_64)
