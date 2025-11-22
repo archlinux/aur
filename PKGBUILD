@@ -3,7 +3,7 @@
 
 _pkgname="filelight"
 pkgname="$_pkgname-git"
-pkgver=24.02.2.r89.g45478b2
+pkgver=25.08.3.r67.g44c03e5
 pkgrel=1
 pkgdesc="View disk usage information"
 url='https://invent.kde.org/utilities/filelight'
@@ -11,29 +11,22 @@ license=('GPL-2.0-or-later' 'LGPL-2.0-or-later')
 arch=('i686' 'x86_64')
 
 depends=(
+  'hicolor-icon-theme'
   'kdeclarative'
   'kio'
   'kirigami-addons'
   'kquickcharts'
   'kxmlgui'
   'qqc2-desktop-style'
-
-  ## implicit
-  #kconfig
-  #kcoreaddons
-  #ki18n
-  #kirigami
-  #kwidgetsaddons
-  #qt6-base
-  #qt6-declarative
 )
 makedepends=(
   'extra-cmake-modules'
   'git'
   'kdoctools'
+  'ninja'
 )
 
-provides=("$_pkgname=${pkgver%%.r*}")
+provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
@@ -55,6 +48,7 @@ build() {
   local _cmake_options=(
     -B build
     -S "$_pkgsrc"
+    -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DKDE_INSTALL_LIBDIR='lib'
@@ -67,9 +61,5 @@ build() {
 }
 
 package() {
-  depends+=(
-    'hicolor-icon-theme'
-  )
-
   DESTDIR="$pkgdir" cmake --install build
 }
