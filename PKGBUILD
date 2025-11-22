@@ -3,8 +3,8 @@
 _name=findsystemfontsfilename
 
 pkgname=python-${_name,,}
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.3.3
+pkgrel=1
 pkgdesc="Find the system fonts filename"
 url="https://github.com/moi15moi/FindSystemFontsFilename/"
 makedepends=(python-build python-installer python-setuptools python-wheel)
@@ -12,7 +12,7 @@ depends=()
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('04551e69a4b5b7a778cc7301adfbff0813f85c606827428ba9901f27a7770c40')
+sha256sums=('c5b238da1690ea50676f318ba365d127b3b591aafd51834600160a242ab68498')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"

@@ -1,7 +1,7 @@
 pkgbase = python-findsystemfontsfilename
 	pkgdesc = Find the system fonts filename
-	pkgver = 0.3.1
-	pkgrel = 2
+	pkgver = 0.3.3
+	pkgrel = 1
 	url = https://github.com/moi15moi/FindSystemFontsFilename/
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = python-findsystemfontsfilename
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	source = https://files.pythonhosted.org/packages/source/f/findsystemfontsfilename/findsystemfontsfilename-0.3.1.tar.gz
-	sha256sums = 04551e69a4b5b7a778cc7301adfbff0813f85c606827428ba9901f27a7770c40
+	source = https://files.pythonhosted.org/packages/source/f/findsystemfontsfilename/findsystemfontsfilename-0.3.3.tar.gz
+	sha256sums = c5b238da1690ea50676f318ba365d127b3b591aafd51834600160a242ab68498
 
 pkgname = python-findsystemfontsfilename
