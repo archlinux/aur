@@ -1,0 +1,4 @@
+[banner]
+source = 'regex'
+url = 'https://shh.thathost.com/pub-unix/'
+regex = 'banner-([\d.]+).tar'
