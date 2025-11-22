@@ -1,0 +1,24 @@
+pkgbase = tuxguitar-git
+	pkgdesc = Open source guitar tablature editor
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/helge17/tuxguitar
+	arch = x86_64
+	license = LGPL-2.1
+	makedepends = gzip
+	depends = java-runtime>=9
+	depends = gtk3
+	depends = alsa-lib
+	optdepends = fluidsynth: FluidSynth plugin support
+	optdepends = jack: Jack plugin support
+	optdepends = lilv: LV2 plugin support
+	optdepends = lilypond: Compile exported LilyPond files
+	optdepends = lv2: LV2 plugin support
+	optdepends = qt5-base: LV2 plugin support
+	optdepends = suil: LV2 plugin support
+	replaces = tuxguitar
+	replaces = tuxguitar-bin
+	source = tuxguitar-2.0.0-linux-swt-amd64.tar.gz::https://github.com/helge17/tuxguitar/releases/download/2.0.0/tuxguitar-2.0.0-linux-swt-amd64.tar.gz
+	sha256sums = 3755020c0072cc5a0d9571348aa71c2ca83e5873f5dc611a39b3342d5b73fe86
+
+pkgname = tuxguitar-git
