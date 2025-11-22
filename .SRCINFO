@@ -1,7 +1,7 @@
 pkgbase = r8127-dkms
 	pkgdesc = Kernel module for Realtek 10GB Ethernet NICs
 	pkgver = 11.015.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.realtek.com/Download/List?cate_id=584
 	arch = any
 	license = GPL-2.0-only
