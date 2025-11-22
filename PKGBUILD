@@ -2,7 +2,7 @@
 
 pkgname=keyfinder-cli
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Estimate the musical key of many different audio file formats'
 arch=(x86_64 aarch64 armv7h)
 url='https://github.com/evanpurkhiser/keyfinder-cli'
@@ -40,4 +40,8 @@ package() {
 		-exec install -Dvm 644 -t "${pkgdir}/usr/share/licenses/${_basename}" {} +
 
 
+	# FIXME: temp workaround for upstream wrong usage of CMAKE_INSTALL_MANDIR, remove after 1.1.5 release
+	mkdir -p "${pkgdir}/usr/share/man/man1"
+	find "${pkgdir}/usr/share/man" -iname '*.1' \
+		-exec mv {} "${pkgdir}/usr/share/man/man1" \;
 }

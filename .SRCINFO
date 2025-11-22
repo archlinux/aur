@@ -1,7 +1,7 @@
 pkgbase = keyfinder-cli
 	pkgdesc = Estimate the musical key of many different audio file formats
 	pkgver = 1.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/evanpurkhiser/keyfinder-cli
 	arch = x86_64
 	arch = aarch64
