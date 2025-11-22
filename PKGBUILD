@@ -1,7 +1,7 @@
 # Maintainer: Alexander Aleschenko <alex.aleschenko@gmail.com>
 
 pkgname=emu80-git
-_commit=bf91e96
+_commit=7c20eef
 _pkgver=4.0.539
 pkgver=${_pkgver}.${_commit}
 pkgrel=1
