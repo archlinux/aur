@@ -1,7 +1,7 @@
 # Maintainer: Forrest Hilton <forrestmhilton at gmail dot com>
 pkgname=mandel
-pkgver=5.19
-pkgrel=2
+pkgver=5.20
+pkgrel=1
 pkgdesc="Wolf Jung's program and tutorials for complex dynamics researchers"
 arch=('i686' 'x86_64')
 url="https://www.mndynamics.com/"
