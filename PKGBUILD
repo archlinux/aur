@@ -3,7 +3,7 @@
 
 pkgname=dotter-rs-bin
 _pkgname=dotter
-pkgver=0.13.3
+pkgver=0.13.4
 pkgrel=1
 pkgdesc="A dotfile manager and templater written in Rust"
 arch=('x86_64' 'aarch64')
@@ -14,11 +14,11 @@ provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname-linux-x64-musl"
                "$pkgname-$pkgver-completions.zip::$url/releases/download/v$pkgver/completions.zip"
                "$pkgname-$pkgver-README.md::$url/raw/v$pkgver/README.md")
-sha512sums_x86_64=('1dbdbb4ede1b8a0cd680fc90fb15e693d5828200685046ebe8de7d1cc1b8c0d095648866856c9abd0ab665d7ba09caff3bdf6ea80a35eb7d7ceb4dc680ce3a91'
-                   'f248c28bee2c60ac0987beb2d1d0ec8b79a78075d0e628d3a4ba815b90923dc30087e380b1cf23a12e797c124993bf1af22cf0177fda5be5acb1ba6e13eefcec'
+sha512sums_x86_64=('54e549891b2255edf30a8cd67e7b2e0638009e2feb415815808e5d7f1c32eef7e57d1b2a9c32e37049658db2b73d527f16352defeee16ec4a00d000fbd8780ea'
+                   '865ef87ae1925eaa8750526c4925719a17ed636ee4e8ec54b3ff00d81652a5b04a290056c96a66d2ab3c4a3f4a98ec6840d60fd329565400aff28c35ad0cb346'
                    '65d34ba04b98f3f7905252da2de301635fadabb0ac374bdef4684419629e9dc06742e21390aea4d8b1ea4614fa9e290200c6404489261de397ea630066f7613d')
-sha512sums_aarch64=('1dbdbb4ede1b8a0cd680fc90fb15e693d5828200685046ebe8de7d1cc1b8c0d095648866856c9abd0ab665d7ba09caff3bdf6ea80a35eb7d7ceb4dc680ce3a91'
-                    'f248c28bee2c60ac0987beb2d1d0ec8b79a78075d0e628d3a4ba815b90923dc30087e380b1cf23a12e797c124993bf1af22cf0177fda5be5acb1ba6e13eefcec'
+sha512sums_aarch64=('54e549891b2255edf30a8cd67e7b2e0638009e2feb415815808e5d7f1c32eef7e57d1b2a9c32e37049658db2b73d527f16352defeee16ec4a00d000fbd8780ea'
+                    '865ef87ae1925eaa8750526c4925719a17ed636ee4e8ec54b3ff00d81652a5b04a290056c96a66d2ab3c4a3f4a98ec6840d60fd329565400aff28c35ad0cb346'
                     '65d34ba04b98f3f7905252da2de301635fadabb0ac374bdef4684419629e9dc06742e21390aea4d8b1ea4614fa9e290200c6404489261de397ea630066f7613d')
 source_aarch64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname-linux-arm64-musl"
                "$pkgname-$pkgver-completions.zip::$url/releases/download/v$pkgver/completions.zip"
