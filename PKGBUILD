@@ -1,6 +1,6 @@
 # Maintainer: Quintus Leung <quintusl@gmail.com>
 pkgname=cec2uinput
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="CEC to uinput bridge for Linux"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')

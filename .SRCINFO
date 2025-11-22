@@ -1,6 +1,6 @@
 pkgbase = cec2uinput
 	pkgdesc = CEC to uinput bridge for Linux
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/quintusl/cec2uinput
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = cec2uinput
 	depends = gcc-libs
 	options = !lto
 	backup = etc/cec2uinput/config.yml
-	source = cec2uinput-0.2.3.tar.gz::https://github.com/quintusl/cec2uinput/archive/v0.2.3.tar.gz
+	source = cec2uinput-0.2.4.tar.gz::https://github.com/quintusl/cec2uinput/archive/v0.2.4.tar.gz
 	sha256sums = SKIP
 
 pkgname = cec2uinput
