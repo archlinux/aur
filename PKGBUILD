@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='beekeeper-studio'
-pkgver='5.4.11'
+pkgver='5.4.12'
 pkgrel='1'
 epoch='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
@@ -22,7 +22,7 @@ source=(
 	'missing-log-app-name.diff'
 	'LICENSE.md'
 )
-b2sums=('27a16be49410604a2ca5f10337ecebbb0d89238e2ed4ad1300785ea9146facf2e4075a5ad0b63713cf26f037170d9226a5bf700cc3af3598948c8c789aee7782'
+b2sums=('06a2f74d56861c764e813f884eeee85cb96e1679f72fa1f94a56fb5f6f91d1ae7b8f7a5d451a26297b8c882e93cd9342c3f9838101617056e20bf0aa54768330'
         '54b46275a83a6099b22bc511a6293178abccccad6d1cc36bf812166f93f75b1379a3201dac9ee85e05cf7c3b0de7e94829fd3fb619ccca513924ebf3101850f0'
         'd48563db28f1b60f28dceaeb6a4e3864808a394b1ac9a37b1ee7a7efa09c6b271d157fc5fe9b11a1c7df309b714245607666dc568ffe3dd21e61e077a3bcd674'
         'd6c254a87121792caed6be8619aa51d2dc362342e31bc4268d37cfb72d4e827ad3191b88c3cac25bd7edec7ef47db168dbf1e3b27176efa07d8db4c04a537a76'
