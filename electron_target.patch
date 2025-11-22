@@ -1,9 +1,9 @@
 diff --git a/packages/insomnia/electron-builder.config.js b/packages/insomnia/electron-builder.config.js
-index a626cf41..17512e1f 100644
+index 8743d3f..4ddf8f7 100644
 --- a/packages/insomnia/electron-builder.config.js
 +++ b/packages/insomnia/electron-builder.config.js
-@@ -104,19 +104,7 @@ const config = {
-     category: 'Development',
+@@ -160,19 +160,7 @@ const config = {
+     },
      target: [
        {
 -        target: 'AppImage',

@@ -3,5 +3,5 @@
 !.SRCINFO
 !insomnia.sh
 !insomnia.desktop
-!electron_target.patch
 !disable_verify_bundle_plugins.patch
+!electron_target.patch
