@@ -1,7 +1,7 @@
 # Maintainer: krn1pnc <krn1pnc@outlook.com>
 
 pkgname=clangd-aosopt
-pkgver=20.1.8
+pkgver=21.1.6
 pkgrel=1
 pkgdesc="Standalone clangd binary, with a rough patch that fixes performance issue with large array of structure"
 arch=("x86_64")
@@ -11,8 +11,8 @@ depends=("ncurses" "zstd")
 makedepends=("cmake" "ninja")
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz"
         "array-of-structure-optimization.patch")
-sha256sums=("6898f963c8e938981e6c4a302e83ec5beb4630147c7311183cf61069af16333d"
-            "79996c96289061079da75cbae6a71f8cfed391be4f1178ced520f1de2f6663af")
+sha256sums=("ae67086eb04bed7ca11ab880349b5f1ab6f50e1b88cda376eaf8a845b935762b"
+            "860bd0c9e0c0ad56d28146e09ccca012200dfdaa106e6db57e5c21f3e03fa0ce")
 OPTIONS=(strip !debug)
 
 prepare() {
