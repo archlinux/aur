@@ -9,7 +9,7 @@ pkgbase = nitchrevived
 	makedepends = git
 	makedepends = openssl-1.1
 	depends = glibc
-	source = git+https://git.teto.party/pkgs/nitchrevived#commit=77b3caf542ffa45d3aa1526045421884fb7a81aa
+	source = git+https://git.teto.party/pkgs/nitchrevived#commit=59d778ff899c18ea4692420358d4d2e1c1656553
 	md5sums = SKIP
 
 pkgname = nitchrevived
