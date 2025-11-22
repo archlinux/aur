@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-bin
 	pkgver = 10.0.0.sdk100
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
@@ -27,7 +27,9 @@ pkgname = dotnet-host-bin
 pkgname = aspnet-runtime-bin
 	pkgdesc = The ASP.NET Core runtime (binary)
 	depends = dotnet-runtime-bin
+	provides = aspnet-runtime=10.0.0
 	provides = aspnet-runtime-10.0
+	conflicts = aspnet-runtime=10.0.0
 	conflicts = aspnet-runtime-10.0
 
 pkgname = dotnet-runtime-bin
@@ -60,11 +62,15 @@ pkgname = dotnet-sdk-bin
 
 pkgname = dotnet-targeting-pack-bin
 	pkgdesc = The .NET Core targeting pack (binary)
+	provides = dotnet-targeting-pack=10.0.0
 	provides = dotnet-targeting-pack-10.0
+	conflicts = dotnet-targeting-pack=10.0.0
 	conflicts = dotnet-targeting-pack-10.0
 
 pkgname = aspnet-targeting-pack-bin
 	pkgdesc = The ASP.NET Core targeting pack (binary)
 	depends = dotnet-targeting-pack-bin
+	provides = aspnet-targeting-pack=10.0.0
 	provides = aspnet-targeting-pack-10.0
+	conflicts = aspnet-targeting-pack=10.0.0
 	conflicts = aspnet-targeting-pack-10.0
