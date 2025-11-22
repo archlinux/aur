@@ -1,0 +1,19 @@
+pkgbase = fairouille
+	pkgdesc = A simple, elegant, and lightweight CalDAV task / TODO manager (TUI & GUI)
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://gitlab.com/trougnouf/fairouille
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = fontconfig
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxrandr
+	depends = libxcb
+	depends = vulkan-driver
+	source = fairouille-0.1.4.tar.gz::https://gitlab.com/trougnouf/fairouille/-/archive/v0.1.4/fairouille-v0.1.4.tar.gz
+	sha256sums = 6026bb44719abda562dfd8cc5406f77dfd18e2e84ef7362f0bd2a38d7c9f0fc4
+
+pkgname = fairouille
