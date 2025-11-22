@@ -4,3 +4,5 @@ src/
 *.tar
 *.tar.gz
 *.tar.zst
+*.txt
+
