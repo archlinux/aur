@@ -1,0 +1,178 @@
+diff --git a/Cargo.lock b/Cargo.lock
+index 2432a12..66c5033 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -26,6 +26,25 @@ dependencies = [
+  "memchr",
+ ]
+ 
++[[package]]
++name = "alpm"
++version = "4.0.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "e7af97d07874ead330d0d636e0953bfdb05973010bbf0ed996a600c283bcd05c"
++dependencies = [
++ "alpm-sys",
++ "bitflags 2.8.0",
++]
++
++[[package]]
++name = "alpm-sys"
++version = "4.0.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "b380d61cb56db2db0fc88072b77e760a107691521ac83012379d97d6d6e6f7ac"
++dependencies = [
++ "pkg-config",
++]
++
+ [[package]]
+ name = "ambient-authority"
+ version = "0.0.2"
+@@ -192,6 +211,7 @@ dependencies = [
+ name = "bootupd"
+ version = "0.2.29"
+ dependencies = [
++ "alpm",
+  "anyhow",
+  "bincode",
+  "bootc-internal-blockdev",
+diff --git a/Cargo.toml b/Cargo.toml
+index d06cb93..df1e845 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -20,6 +20,7 @@ name = "bootupd"
+ path = "src/main.rs"
+ 
+ [dependencies]
++alpm = "4"
+ anyhow = "1.0"
+ bincode = "1.3.2"
+ bootc-internal-blockdev = "0.0.0"
+diff --git a/src/packagesystem.rs b/src/packagesystem.rs
+index cc74d96..3dbecff 100644
+--- a/src/packagesystem.rs
++++ b/src/packagesystem.rs
+@@ -78,7 +78,101 @@ fn rpm_parse_metadata(stdout: &[u8]) -> Result<ContentMetadata> {
+     })
+ }
+ 
+-/// Query the rpm database and list the package and build times.
++mod archlinux {
++    use super::*;
++    use alpm::Alpm;
++    use rustix::path::Arg;
++
++    fn packages_to_content_metadata<'a>(
++        packages: impl IntoIterator<Item = &'a alpm::Package>,
++    ) -> Result<ContentMetadata> {
++        let mut timestamps = BTreeSet::new();
++        let mut version = String::new();
++        let mut and_x_more = 0;
++        let versions = packages.into_iter()
++            .map(|pkg| {
++                let timestamp = DateTime::from_timestamp(pkg.build_date(), 0)
++                    .ok_or(anyhow::Error::msg("alpm: failed to get a valid build date"))?;
++                timestamps.insert(timestamp);
++
++                if version.is_empty() {
++                    version.push_str(pkg.version().as_str());
++                } else {
++                    and_x_more += 1;
++                }
++
++                Ok(Module {
++                    name: pkg.name().to_string(),
++                    rpm_evr: pkg.version().to_string()
++                })
++            })
++            .collect::<Result<Vec<Module>>>()?;
++        if versions.is_empty() {
++            bail!("No packages were found");
++        }
++        let versions = Some(versions);
++        
++        if and_x_more > 0 {
++            version.push_str(&format!(" and {} more", and_x_more));
++        }
++
++        // SAFETY: pkgs has at least one element, as checked above
++        let timestamp = *timestamps
++            .last()
++            .unwrap();
++        Ok(ContentMetadata { timestamp, version, versions })
++    }
++
++    fn find_packages<T>(
++        db: &alpm::Db,
++        paths: impl IntoIterator<Item = T>,
++    ) -> Result<ContentMetadata>
++    where
++        T: AsRef<Path>,
++    {
++        let paths = paths
++            .into_iter()
++            .map(|path| {
++                path.as_ref()
++                    .canonicalize()?
++                    .as_str()
++                    .map(|s| {
++                        let s = match s.starts_with('/') {
++                            true => &s[1..],
++                            false => s,
++                        };
++                        s.to_string()
++                    })
++                    .map_err(|e| anyhow::Error::new(e))
++            })
++            .collect::<Result<Vec<String>>>()?;
++        println!("Query for: {:?}", paths);
++        let mut packages = Vec::new();
++        for package in db.pkgs() {
++            let files = package.files();
++            for path in &paths {
++                if files.contains(path.as_str()).is_some() {
++                    packages.push(package);
++                }
++            }
++        }
++        packages_to_content_metadata(packages)
++    }
++
++    /// Query the alpm database and list the package and build times.
++    pub(crate) fn query_files_alpm<T>(
++        sysroot_path: &str,
++        paths: impl IntoIterator<Item = T>,
++    ) -> Result<ContentMetadata>
++    where
++        T: AsRef<Path>,
++    {
++        let handle = Alpm::new(sysroot_path, "/var/lib/pacman")?;
++        let db = handle.localdb();
++        find_packages(db, paths)
++    }
++}
++
+ pub(crate) fn query_files<T>(
+     sysroot_path: &str,
+     paths: impl IntoIterator<Item = T>,
+@@ -86,19 +180,7 @@ pub(crate) fn query_files<T>(
+ where
+     T: AsRef<Path>,
+ {
+-    let mut c = ostreeutil::rpm_cmd(sysroot_path)?;
+-    c.args(["-q", "--queryformat", "%{nevra},%{buildtime} ", "-f"]);
+-    for arg in paths {
+-        c.arg(arg.as_ref());
+-    }
+-
+-    let rpmout = c.output()?;
+-    if !rpmout.status.success() {
+-        std::io::stderr().write_all(&rpmout.stderr)?;
+-        bail!("Failed to invoke rpm -qf");
+-    }
+-
+-    rpm_parse_metadata(&rpmout.stdout)
++    archlinux::query_files_alpm(sysroot_path, paths)
+ }
+ 
+ fn parse_evr(pkg: &str) -> Module {
