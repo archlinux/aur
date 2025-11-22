@@ -2,12 +2,13 @@
 
 pkgname=quantumlauncher-bin
 pkgver=0.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple, powerful Minecraft launcher"
 arch=('x86_64')
 url="https://github.com/Mrmayman/quantumlauncher"
 license=('GPL-3.0-or-later')
 depends=('glibc' 'gcc-libs')
+optdepends=('jre-openjdk: External Java Runtime for Minecraft Java')
 provides=('quantumlauncher')
 source=("${pkgname}-${pkgver}.zip::https://github.com/Mrmayman/quantumlauncher/releases/download/v${pkgver}/quantum_launcher_linux_x86_64.zip"
         "ql_logo_32x32.png::https://raw.githubusercontent.com/Mrmayman/quantumlauncher/02c9e1ae25e9b22f98403e189ea6e44e4284d865/assets/icon/32x32/ql_logo.png"
