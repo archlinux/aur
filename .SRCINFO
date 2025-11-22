@@ -1,6 +1,6 @@
 pkgbase = python-fontmake
 	pkgdesc = Compile fonts from sources (UFO, Glyphs) to binary (OpenType, TrueType)
-	pkgver = 3.11.0
+	pkgver = 3.11.1
 	pkgrel = 1
 	url = https://github.com/googlefonts/fontmake
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = python-fontmake
 	depends = python-unicodedata2
 	optdepends = python-mutatormath
 	optdepends = python-skia-pathops
-	source = https://files.pythonhosted.org/packages/source/f/fontmake/fontmake-3.11.0.zip
-	sha256sums = f5feb86f3021690eab8f7e45ee24e8bc0ed5420324ee49bb66bc238881fe4be7
+	source = https://files.pythonhosted.org/packages/source/f/fontmake/fontmake-3.11.1.tar.gz
+	sha256sums = a3b958a2f6d0b978a803a5643f04c27c88c5ed9dc5af999752408aa94053d082
 
 pkgname = python-fontmake
