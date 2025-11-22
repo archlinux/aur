@@ -1,6 +1,6 @@
 pkgbase = ripgrep-git
 	pkgdesc = A search tool that combines the usability of The Silver Searcher with the raw speed of grep.
-	pkgver = 11.0.1.r8.5ce2d73
+	pkgver = 15.1.0.r4.57c190d5
 	pkgrel = 1
 	url = https://github.com/BurntSushi/ripgrep
 	arch = i686
@@ -18,4 +18,3 @@ pkgbase = ripgrep-git
 	sha1sums = SKIP
 
 pkgname = ripgrep-git
-
