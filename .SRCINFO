@@ -1,0 +1,16 @@
+pkgbase = drinfo-git
+	pkgdesc = Linux system information tool written in C
+	pkgver = 1.2.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/Lennart1978/drinfo
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	provides = drinfo
+	conflicts = drinfo
+	source = drinfo::git+https://github.com/Lennart1978/drinfo.git
+	md5sums = SKIP
+
+pkgname = drinfo-git
