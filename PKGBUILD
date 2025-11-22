@@ -1,11 +1,10 @@
 # Based on the template from https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
-# Maintainer : Junder <QSkull@protonmail.com>
 
 
 _pkgname=open-pha
 
 pkgname="${_pkgname}"
-pkgver=2.2.8
+pkgver=2.2.18
 pkgrel=1
 pkgdesc="A comprehensive PHA, HAZOP and LOPA software solution from Kenexis"
 arch=('x86_64')
@@ -16,7 +15,7 @@ options=('!strip' '!debug')
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://d22j4f41zcdpc.cloudfront.net/Open+PHA-${pkgver}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('c5b86147787347e668458d634206b0a7f799dcc5b7a41fc3b7521246742c6a0b')
+sha256sums_x86_64=('2ae2bd7696785e04527cf674145f45999a1586c3b493885bc42d3f9943846d5e')
 
 
 prepare() {
