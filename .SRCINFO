@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-6.0-bin
 	pkgver = 6.0.36.sdk428
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
@@ -17,9 +17,7 @@ pkgbase = dotnet-core-6.0-bin
 pkgname = aspnet-runtime-6.0-bin
 	pkgdesc = The ASP.NET Core runtime (binary)
 	depends = dotnet-runtime-6.0-bin
-	provides = aspnet-runtime=6.0.36
 	provides = aspnet-runtime-6.0
-	conflicts = aspnet-runtime=6.0.36
 	conflicts = aspnet-runtime-6.0
 
 pkgname = dotnet-runtime-6.0-bin
@@ -33,9 +31,7 @@ pkgname = dotnet-runtime-6.0-bin
 	depends = zlib
 	depends = openssl
 	optdepends = lttng-ust: CoreCLR tracing
-	provides = dotnet-runtime=6.0.36
 	provides = dotnet-runtime-6.0
-	conflicts = dotnet-runtime=6.0.36
 	conflicts = dotnet-runtime-6.0
 
 pkgname = dotnet-sdk-6.0-bin
@@ -46,23 +42,17 @@ pkgname = dotnet-sdk-6.0-bin
 	depends = dotnet-targeting-pack-6.0-bin
 	depends = netstandard-targeting-pack
 	optdepends = aspnet-targeting-pack-bin: Build ASP.NET Core applications
-	provides = dotnet-sdk=6.0.36.sdk428
 	provides = dotnet-sdk-6.0
-	conflicts = dotnet-sdk=6.0.36.sdk428
 	conflicts = dotnet-sdk-6.0
 
 pkgname = dotnet-targeting-pack-6.0-bin
 	pkgdesc = The .NET Core targeting pack (binary)
 	depends = netstandard-targeting-pack
-	provides = dotnet-targeting-pack=6.0.36
 	provides = dotnet-targeting-pack-6.0
-	conflicts = dotnet-targeting-pack=6.0.36
 	conflicts = dotnet-targeting-pack-6.0
 
 pkgname = aspnet-targeting-pack-6.0-bin
 	pkgdesc = The ASP.NET Core targeting pack (binary)
 	depends = dotnet-targeting-pack-6.0-bin
-	provides = aspnet-targeting-pack=6.0.36
 	provides = aspnet-targeting-pack-6.0
-	conflicts = aspnet-targeting-pack=6.0.36
 	conflicts = aspnet-targeting-pack-6.0
