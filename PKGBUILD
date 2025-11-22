@@ -5,7 +5,7 @@ pkgver=3.0
 pkgrel=1
 pkgdesc="System optimization settings for Meowrch distribution with dconf integration"
 arch=('any')
-url="https://github.com/meowrch/meowrch"
+url="https://github.com/meowrch/meowrch-settings"
 license=('MIT')
 depends=('systemd' 'zram-generator' 'pipewire' 'earlyoom' 'pciutils' 'dconf')
 optdepends=('nvidia-utils: for NVIDIA GPU optimizations'
@@ -14,7 +14,7 @@ optdepends=('nvidia-utils: for NVIDIA GPU optimizations'
             'hdparm: for HDD performance optimizations')
 install=meowrch-settings.install
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8467f86014a9628b7a9576b39c04c5c7208a95d5f6a66b74fbcbf59b11075165')
+sha256sums=('4ebd6818eef538d72dc29ddadfbb0e15e322077a0d01df68bad3689d50eb5cdf')
 
 package() {
     cd "$srcdir/meowrch-settings-$pkgver"
