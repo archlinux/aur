@@ -4,6 +4,7 @@ pkgname=(
   'dns01proxy-acmedns'
   'dns01proxy-acmeproxy'
   'dns01proxy-alidns'
+  'dns01proxy-all-inkl'
   'dns01proxy-azure'
   'dns01proxy-bunny'
   'dns01proxy-cloudflare'
@@ -17,6 +18,7 @@ pkgname=(
   'dns01proxy-domainnameshop'
   'dns01proxy-duckdns'
   'dns01proxy-dynu'
+  'dns01proxy-dynv6'
   'dns01proxy-easydns'
   'dns01proxy-edgeone'
   'dns01proxy-gandi'
@@ -51,11 +53,12 @@ pkgname=(
   'dns01proxy-simplydotcom'
   'dns01proxy-spaceship'
   'dns01proxy-tencentcloud'
+  'dns01proxy-transip'
   'dns01proxy-vultr'
   'dns01proxy-westcn'
 )
 pkgbase='dns01proxy'
-pkgver='0.1.6'
+pkgver='0.1.8'
 pkgrel=1
 pkgdesc='ACME DNS-01 proxy server'
 arch=('x86_64' 'aarch64')
@@ -97,6 +100,7 @@ package_dns01proxy-acmedns() {
   conflicts=(
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -110,6 +114,7 @@ package_dns01proxy-acmedns() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -144,6 +149,7 @@ package_dns01proxy-acmedns() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -172,6 +178,7 @@ package_dns01proxy-acmeproxy() {
   conflicts=(
     'dns01proxy-acmedns'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -185,6 +192,7 @@ package_dns01proxy-acmeproxy() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -219,6 +227,7 @@ package_dns01proxy-acmeproxy() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -247,6 +256,7 @@ package_dns01proxy-alidns() {
   conflicts=(
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -260,6 +270,7 @@ package_dns01proxy-alidns() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -294,6 +305,7 @@ package_dns01proxy-alidns() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -318,11 +330,12 @@ package_dns01proxy-alidns() {
   sed -i 's/@BUILD@/alidns/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
 }
 
-package_dns01proxy-azure() {
+package_dns01proxy-all-inkl() {
   conflicts=(
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -335,6 +348,7 @@ package_dns01proxy-azure() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -369,6 +383,85 @@ package_dns01proxy-azure() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
+    'dns01proxy-vultr'
+    'dns01proxy-westcn'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-all-inkl "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/all-inkl/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
+package_dns01proxy-azure() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
+    'dns01proxy-bunny'
+    'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
+    'dns01proxy-dnsimple'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-dynv6'
+    'dns01proxy-easydns'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
+    'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-linode'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-nanelo'
+    'dns01proxy-netcup'
+    'dns01proxy-netlify'
+    'dns01proxy-nfsn'
+    'dns01proxy-njalla'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-powerdns'
+    'dns01proxy-rfc2136'
+    'dns01proxy-route53'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-spaceship'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -398,6 +491,7 @@ package_dns01proxy-bunny() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -410,6 +504,7 @@ package_dns01proxy-bunny() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -444,6 +539,7 @@ package_dns01proxy-bunny() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -473,6 +569,7 @@ package_dns01proxy-cloudflare() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudns'
@@ -485,6 +582,7 @@ package_dns01proxy-cloudflare() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -519,6 +617,7 @@ package_dns01proxy-cloudflare() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -548,6 +647,7 @@ package_dns01proxy-cloudns() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -560,6 +660,7 @@ package_dns01proxy-cloudns() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -594,6 +695,7 @@ package_dns01proxy-cloudns() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -623,6 +725,7 @@ package_dns01proxy-conoha() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -635,6 +738,7 @@ package_dns01proxy-conoha() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -669,6 +773,7 @@ package_dns01proxy-conoha() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -698,6 +803,7 @@ package_dns01proxy-desec() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -710,6 +816,7 @@ package_dns01proxy-desec() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -744,6 +851,7 @@ package_dns01proxy-desec() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -773,6 +881,7 @@ package_dns01proxy-digitalocean() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -785,6 +894,7 @@ package_dns01proxy-digitalocean() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -819,6 +929,7 @@ package_dns01proxy-digitalocean() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -848,6 +959,7 @@ package_dns01proxy-directadmin() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -860,6 +972,7 @@ package_dns01proxy-directadmin() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -894,6 +1007,7 @@ package_dns01proxy-directadmin() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -923,6 +1037,7 @@ package_dns01proxy-dnsimple() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -935,6 +1050,7 @@ package_dns01proxy-dnsimple() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -969,6 +1085,7 @@ package_dns01proxy-dnsimple() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -998,6 +1115,7 @@ package_dns01proxy-dode() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -1010,6 +1128,7 @@ package_dns01proxy-dode() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -1044,6 +1163,7 @@ package_dns01proxy-dode() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -1073,6 +1193,7 @@ package_dns01proxy-domainnameshop() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -1085,6 +1206,7 @@ package_dns01proxy-domainnameshop() {
     'dns01proxy-dode'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -1119,6 +1241,7 @@ package_dns01proxy-domainnameshop() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -1148,6 +1271,7 @@ package_dns01proxy-duckdns() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -1160,6 +1284,7 @@ package_dns01proxy-duckdns() {
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -1194,6 +1319,7 @@ package_dns01proxy-duckdns() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -1223,6 +1349,7 @@ package_dns01proxy-dynu() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -1235,6 +1362,7 @@ package_dns01proxy-dynu() {
     'dns01proxy-dode'
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -1269,6 +1397,7 @@ package_dns01proxy-dynu() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -1293,11 +1422,12 @@ package_dns01proxy-dynu() {
   sed -i 's/@BUILD@/dynu/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
 }
 
-package_dns01proxy-easydns() {
+package_dns01proxy-dynv6() {
   conflicts=(
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -1311,6 +1441,7 @@ package_dns01proxy-easydns() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
     'dns01proxy-gcore'
@@ -1344,6 +1475,85 @@ package_dns01proxy-easydns() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
+    'dns01proxy-vultr'
+    'dns01proxy-westcn'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-dynv6 "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/dynv6/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
+package_dns01proxy-easydns() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
+    'dns01proxy-azure'
+    'dns01proxy-bunny'
+    'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
+    'dns01proxy-dnsimple'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-dynv6'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
+    'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-linode'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-nanelo'
+    'dns01proxy-netcup'
+    'dns01proxy-netlify'
+    'dns01proxy-nfsn'
+    'dns01proxy-njalla'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-powerdns'
+    'dns01proxy-rfc2136'
+    'dns01proxy-route53'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-spaceship'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -1373,6 +1583,7 @@ package_dns01proxy-edgeone() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -1386,6 +1597,7 @@ package_dns01proxy-edgeone() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-gandi'
     'dns01proxy-gcore'
@@ -1419,6 +1631,7 @@ package_dns01proxy-edgeone() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -1448,6 +1661,7 @@ package_dns01proxy-gandi() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -1461,6 +1675,7 @@ package_dns01proxy-gandi() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gcore'
@@ -1494,6 +1709,7 @@ package_dns01proxy-gandi() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -1523,6 +1739,7 @@ package_dns01proxy-gcore() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -1536,6 +1753,7 @@ package_dns01proxy-gcore() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -1569,6 +1787,7 @@ package_dns01proxy-gcore() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -1598,6 +1817,7 @@ package_dns01proxy-glesys() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -1611,6 +1831,7 @@ package_dns01proxy-glesys() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -1644,6 +1865,7 @@ package_dns01proxy-glesys() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -1673,6 +1895,7 @@ package_dns01proxy-godaddy() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -1686,6 +1909,7 @@ package_dns01proxy-godaddy() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -1719,6 +1943,7 @@ package_dns01proxy-godaddy() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -1748,6 +1973,7 @@ package_dns01proxy-googleclouddns() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -1761,6 +1987,7 @@ package_dns01proxy-googleclouddns() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -1794,6 +2021,7 @@ package_dns01proxy-googleclouddns() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -1823,6 +2051,7 @@ package_dns01proxy-he() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -1836,6 +2065,7 @@ package_dns01proxy-he() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -1869,6 +2099,7 @@ package_dns01proxy-he() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -1898,6 +2129,7 @@ package_dns01proxy-hetzner() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -1911,6 +2143,7 @@ package_dns01proxy-hetzner() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -1944,6 +2177,7 @@ package_dns01proxy-hetzner() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -1973,6 +2207,7 @@ package_dns01proxy-huaweicloud() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -1986,6 +2221,7 @@ package_dns01proxy-huaweicloud() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -2019,6 +2255,7 @@ package_dns01proxy-huaweicloud() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -2048,6 +2285,7 @@ package_dns01proxy-infomaniak() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -2061,6 +2299,7 @@ package_dns01proxy-infomaniak() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -2094,6 +2333,7 @@ package_dns01proxy-infomaniak() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -2123,6 +2363,7 @@ package_dns01proxy-inwx() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -2136,6 +2377,7 @@ package_dns01proxy-inwx() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -2169,6 +2411,7 @@ package_dns01proxy-inwx() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -2198,6 +2441,7 @@ package_dns01proxy-ionos() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -2211,6 +2455,7 @@ package_dns01proxy-ionos() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -2244,6 +2489,7 @@ package_dns01proxy-ionos() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -2273,6 +2519,7 @@ package_dns01proxy-linode() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -2286,6 +2533,7 @@ package_dns01proxy-linode() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -2319,6 +2567,7 @@ package_dns01proxy-linode() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -2348,6 +2597,7 @@ package_dns01proxy-loopia() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -2361,6 +2611,7 @@ package_dns01proxy-loopia() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -2394,6 +2645,7 @@ package_dns01proxy-loopia() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -2423,6 +2675,7 @@ package_dns01proxy-luadns() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -2436,6 +2689,7 @@ package_dns01proxy-luadns() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -2469,6 +2723,7 @@ package_dns01proxy-luadns() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -2498,6 +2753,7 @@ package_dns01proxy-mailinabox() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -2511,6 +2767,7 @@ package_dns01proxy-mailinabox() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -2544,6 +2801,7 @@ package_dns01proxy-mailinabox() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -2573,6 +2831,7 @@ package_dns01proxy-metaname() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -2586,6 +2845,7 @@ package_dns01proxy-metaname() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -2619,6 +2879,7 @@ package_dns01proxy-metaname() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -2648,6 +2909,7 @@ package_dns01proxy-mijnhost() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -2661,6 +2923,7 @@ package_dns01proxy-mijnhost() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -2694,6 +2957,7 @@ package_dns01proxy-mijnhost() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -2723,6 +2987,7 @@ package_dns01proxy-mythicbeasts() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -2736,6 +3001,7 @@ package_dns01proxy-mythicbeasts() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -2769,6 +3035,7 @@ package_dns01proxy-mythicbeasts() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -2798,6 +3065,7 @@ package_dns01proxy-nanelo() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -2811,6 +3079,7 @@ package_dns01proxy-nanelo() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -2844,6 +3113,7 @@ package_dns01proxy-nanelo() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -2873,6 +3143,7 @@ package_dns01proxy-netcup() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -2886,6 +3157,7 @@ package_dns01proxy-netcup() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -2919,6 +3191,7 @@ package_dns01proxy-netcup() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -2948,6 +3221,7 @@ package_dns01proxy-netlify() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -2961,6 +3235,7 @@ package_dns01proxy-netlify() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -2994,6 +3269,7 @@ package_dns01proxy-netlify() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -3023,6 +3299,7 @@ package_dns01proxy-nfsn() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -3036,6 +3313,7 @@ package_dns01proxy-nfsn() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -3069,6 +3347,7 @@ package_dns01proxy-nfsn() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -3098,6 +3377,7 @@ package_dns01proxy-njalla() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -3111,6 +3391,7 @@ package_dns01proxy-njalla() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -3144,6 +3425,7 @@ package_dns01proxy-njalla() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -3173,6 +3455,7 @@ package_dns01proxy-ovh() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -3186,6 +3469,7 @@ package_dns01proxy-ovh() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -3219,6 +3503,7 @@ package_dns01proxy-ovh() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -3248,6 +3533,7 @@ package_dns01proxy-porkbun() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -3261,6 +3547,7 @@ package_dns01proxy-porkbun() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -3294,6 +3581,7 @@ package_dns01proxy-porkbun() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -3323,6 +3611,7 @@ package_dns01proxy-powerdns() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -3336,6 +3625,7 @@ package_dns01proxy-powerdns() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -3369,6 +3659,7 @@ package_dns01proxy-powerdns() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -3398,6 +3689,7 @@ package_dns01proxy-rfc2136() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -3411,6 +3703,7 @@ package_dns01proxy-rfc2136() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -3444,6 +3737,7 @@ package_dns01proxy-rfc2136() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -3473,6 +3767,7 @@ package_dns01proxy-route53() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -3486,6 +3781,7 @@ package_dns01proxy-route53() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -3519,6 +3815,7 @@ package_dns01proxy-route53() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -3548,6 +3845,7 @@ package_dns01proxy-scaleway() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -3561,6 +3859,7 @@ package_dns01proxy-scaleway() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -3594,6 +3893,7 @@ package_dns01proxy-scaleway() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -3623,6 +3923,7 @@ package_dns01proxy-simplydotcom() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -3636,6 +3937,7 @@ package_dns01proxy-simplydotcom() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -3669,6 +3971,7 @@ package_dns01proxy-simplydotcom() {
     'dns01proxy-scaleway'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -3698,6 +4001,7 @@ package_dns01proxy-spaceship() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -3711,6 +4015,7 @@ package_dns01proxy-spaceship() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -3744,6 +4049,7 @@ package_dns01proxy-spaceship() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -3773,6 +4079,7 @@ package_dns01proxy-tencentcloud() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -3786,6 +4093,7 @@ package_dns01proxy-tencentcloud() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -3819,6 +4127,7 @@ package_dns01proxy-tencentcloud() {
     'dns01proxy-scaleway'
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
     'dns01proxy-westcn'
   )
@@ -3843,11 +4152,12 @@ package_dns01proxy-tencentcloud() {
   sed -i 's/@BUILD@/tencentcloud/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
 }
 
-package_dns01proxy-vultr() {
+package_dns01proxy-transip() {
   conflicts=(
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -3861,6 +4171,7 @@ package_dns01proxy-vultr() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -3895,6 +4206,85 @@ package_dns01proxy-vultr() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-vultr'
+    'dns01proxy-westcn'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-transip "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/transip/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
+package_dns01proxy-vultr() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
+    'dns01proxy-azure'
+    'dns01proxy-bunny'
+    'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
+    'dns01proxy-dnsimple'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-dynv6'
+    'dns01proxy-easydns'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
+    'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-linode'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-nanelo'
+    'dns01proxy-netcup'
+    'dns01proxy-netlify'
+    'dns01proxy-nfsn'
+    'dns01proxy-njalla'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-powerdns'
+    'dns01proxy-rfc2136'
+    'dns01proxy-route53'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-spaceship'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3923,6 +4313,7 @@ package_dns01proxy-westcn() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
     'dns01proxy-azure'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
@@ -3936,6 +4327,7 @@ package_dns01proxy-westcn() {
     'dns01proxy-domainnameshop'
     'dns01proxy-duckdns'
     'dns01proxy-dynu'
+    'dns01proxy-dynv6'
     'dns01proxy-easydns'
     'dns01proxy-edgeone'
     'dns01proxy-gandi'
@@ -3970,6 +4362,7 @@ package_dns01proxy-westcn() {
     'dns01proxy-simplydotcom'
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
     'dns01proxy-vultr'
   )
   cd "$pkgbase"
@@ -3993,7 +4386,7 @@ package_dns01proxy-westcn() {
   sed -i 's/@BUILD@/westcn/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
 }
 
-b2sums=('958474ce9f37ae28fbdbb77e2c4a4d776bdb4453680774cf33a85cf0c04aa5af6ebbd4f3f9edd90a995dd717bf17c5b7bae459cd2d9acc56361ce358a1928407'
+b2sums=('71e13eaeef8ecf87287856962e4360466d31cb87a5ff9561ab7df78f59461c547bceec2d97ef61498da85fd2ae76fa37795edaf257363068024ce4a9ea4259a3'
         '3805fbcc7d8d73515f702e0c0bb9066a33477c389586c187f182b6d3989cdf33fe5d63c8b6a4059d2848bacd55014ebf97ff67437e27534c55f4a0a496f65531'
         '0b6a5ecf1e7e475cd5b74e60009f0f48f3e06ef51ef6ba96babe7fb5b9bb5aa80e1effe49c7d1be8fd9309d5446afb1b9800f14e690a71b48b7f442ccc739092'
         '790f85266921ee4634a376132ae394276c85dfd270692406233dcd69ca1e86b9a7cfd0a264c7c51ab30051a225afc1bc3fa3c017f8ec58631e33d27269ece83d'
