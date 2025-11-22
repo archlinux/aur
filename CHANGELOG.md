@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Show interface on properties list
 - Can create unit' Drop-Ins
 
+## [2.9.2] - 2025-11-22
+
+### Fixed
+  - Fix column filter clean menu option
+
 ## [2.9.1] - 2025-11-20
 
 ### Added
