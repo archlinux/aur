@@ -1,0 +1,18 @@
+pkgbase = coreusage-git
+	pkgdesc = Lightweight CPU core usage information tool written in C
+	pkgver = 1.0.5.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/Lennart1978/coreusage
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = lm_sensors
+	depends = lm_sensors
+	provides = coreusage
+	conflicts = coreusage
+	source = coreusage::git+https://github.com/Lennart1978/coreusage.git
+	md5sums = SKIP
+
+pkgname = coreusage-git
