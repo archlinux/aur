@@ -11,7 +11,7 @@
 
 pkgname=tiledb
 _pkgname=TileDB
-pkgver=2.28.0
+pkgver=2.29.2
 pkgrel=1
 pkgdesc="The Universal Storage Engine"
 arch=('x86_64')
@@ -20,11 +20,10 @@ license=('MIT')
 makedepends=('git' 'cmake')
 depends=('lz4' 'bzip2' 'zstd' 'zlib' 'libwebp' 'spdlog' 'curl' 'openssl' 'aws-sdk-cpp' 'vcpkg')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TileDB-Inc/TileDB/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('de731cd0c8e82fe8cfca084b937dc0df41e451c8eb93071e4cc5aba7bbef854e')
+sha256sums=('44fd4c6c25938a123edc711f082a1c3e632a9f8365e64fe745bbf1e782d671d4')
 
 build() {
   cd "$_pkgname-${pkgver//_/-}"
-  patch --strip=1 --input=../../blosc.patch
   [ -e "build" ] || mkdir build && cd build
   ../bootstrap \
     --prefix=/usr \
