@@ -2,7 +2,7 @@
 # Maintainer: gf <guyxfreeman at gmail dot com>
 
 pkgname=pearai-bin
-pkgver=1.7.0
+pkgver=1.8.9
 pkgrel=1
 pkgdesc="Open-source AI-powered code editor"
 arch=('x86_64')
