@@ -1,5 +1,7 @@
 # Contributor: Swift Geek
-# Maintainer: Walter Casanova
+# Maintainer: Walter Casanova - "Y29udGFjdG9Ad2FsdGVyY2FzYW5vdmEudGVjaAo="
+# indent = tab
+# tab-size = 4
 
 pkgname=seamly2d-git
 _pkgname=Seamly2D
