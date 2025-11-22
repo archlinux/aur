@@ -1,0 +1,22 @@
+pkgbase = pixelpantry-git
+	pkgdesc = A gamified pixel-art pantry inventory tracker
+	pkgver = 1.0.1.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/AlfEspadero/PixelPantry
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = git
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = glib2
+	provides = pixelpantry
+	conflicts = pixelpantry
+	source = git+https://github.com/AlfEspadero/PixelPantry.git#branch=main
+	source = pixelpantry.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = pixelpantry-git

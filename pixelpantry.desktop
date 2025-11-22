@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=PixelPantry
+Comment=A gamified pixel-art pantry inventory tracker
+Exec=pixelpantry
+Icon=pixelpantry
+Type=Application
+StartupNotify=true
+Categories=Utility;
