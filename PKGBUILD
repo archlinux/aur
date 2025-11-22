@@ -12,7 +12,7 @@ source=("git+$url#commit=$_commit")
 md5sums=(SKIP)
 
 build() {
-	cd "$pkgname"
+	cd "$pkgname/src"
 	nimble build -d:danger --opt:speed -y -o:"$pkgname"
 }
 
