@@ -1,6 +1,6 @@
 # Maintainer: wang1zhen <you@example.com>
 pkgname=lyricbridge
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="LyricBridge – Electron + FastAPI lyrics tool"
 arch=('x86_64' 'aarch64')
