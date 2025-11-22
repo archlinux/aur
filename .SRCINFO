@@ -1,0 +1,15 @@
+pkgbase = brother-dcp-9030cdn
+	pkgdesc = LPR and CUPS driver for the Brother DCP-9030CDN
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadtop.aspx?c=cn&lang=zh&prod=dcp9030cdn_cn
+	arch = i686
+	arch = x86_64
+	license = custom:Brother-EULA
+	makedepends = libarchive
+	depends = cups
+	source = https://d.brother-movie.com/201911/dcp9030cdnpdrv-1.0.2-0.i386.deb
+	sha256sums = a627ec6e6e682108efdb53ec134b7ad163869c550cc223ef675c03fcfbbb3c91
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-dcp-9030cdn
