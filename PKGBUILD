@@ -7,7 +7,7 @@ pkgdesc="Google Antigravity Agentic IDE (Binary Release)"
 arch=('x86_64')
 url="https://antigravity.google"
 license=('custom')
-depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst' 'xdg-utils')
+depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst' 'xdg-utils' 'libdrm' 'mesa' 'nspr' 'at-spi2-core')
 provides=('google-antigravity')
 conflicts=('google-antigravity')
 options=('!strip')
@@ -16,12 +16,17 @@ source=("https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/${p
         "google-antigravity.desktop")
 
 sha256sums=('4e03151a55743cf30fac595abb343c9eb5a3b6a80d2540136d75b4ead8072112'
-            '293b2a68d78ded9d2e8acf5bebf763ecef7c7e915db37f14a3979f41dc3a373e')
+            'cf6c09424e74e645bc87eb17f987c25b61bb12a01220686f3312080b44861071')
 
 package() {
     # Install the main directory to /opt
     install -d "${pkgdir}/opt/${pkgname}"
     cp -a "${srcdir}/Antigravity/"* "${pkgdir}/opt/${pkgname}/"
+
+    # Set proper permissions for chrome-sandbox
+    if [[ -f "${pkgdir}/opt/${pkgname}/chrome-sandbox" ]]; then
+        chmod 4755 "${pkgdir}/opt/${pkgname}/chrome-sandbox"
+    fi
 
     # Create the executable symlink
     install -d "${pkgdir}/usr/bin"
@@ -32,8 +37,8 @@ package() {
         "${pkgdir}/usr/share/applications/google-antigravity.desktop"
 
     # Install the icon
-    install -Dm644 "${srcdir}/Antigravity/resources/app/out/vs/workbench/contrib/antigravityCustomAppIcon/browser/media/antigravity/antigravity.png" \
-    "${pkgdir}/usr/share/pixmaps/google-antigravity.png"
+    install -Dm644 "${srcdir}/Antigravity/resources/app/resources/linux/code.png" \
+        "${pkgdir}/usr/share/pixmaps/google-antigravity.png"
 
     # Install the License
     install -Dm644 "${srcdir}/Antigravity/LICENSES.chromium.html" \

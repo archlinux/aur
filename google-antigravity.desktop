@@ -1,9 +1,10 @@
 [Desktop Entry]
 Name=Antigravity
-Comment=Google Agentic IDE
+Comment=Google's Next Generation IDE Built For The Agent-First Era
 Exec=/usr/bin/google-antigravity %U
-Icon=/usr/share/pixmaps/google-antigravity.png
+Icon=google-antigravity
 Type=Application
 StartupNotify=true
+StartupWMClass=Antigravity
 Categories=Development;IDE;
 MimeType=text/plain;inode/directory;x-scheme-handler/antigravity;
