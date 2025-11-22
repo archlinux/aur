@@ -1,0 +1,18 @@
+pkgbase = seed
+	pkgdesc = A cross-platform launcher for the Flax game engine
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = https://github.com/MineBill/Seed
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = sed
+	depends = libgit2
+	optdepends = dotnet-sdk: Dotnet 8 SDK
+	optdepends = vulkan-driver: Vulkan graphics driver
+	optdepends = portaudio: PortAudio audio driver
+	optdepends = libpulse: PulseAudio audio driver
+	optdepends = jack: JACK audio driver
+	source = https://github.com/MineBill/Seed/releases/download/v0.4.6/Seed.AppImage
+	sha256sums = 76bab15bf86f1091367d2652c6641c38273e103fd7bb3abab682c7cf4bdc320c
+
+pkgname = seed
