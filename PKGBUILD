@@ -1,7 +1,7 @@
 # Maintainer: Benoît Rouits <brouits at free dot fr>
 
 pkgname=qspeakers
-pkgver=1.8
+pkgver=1.8.5
 pkgrel=1
 pkgdesc="DIY speaker design software"
 url="http://brouits.free.fr/qspeakers/"
@@ -12,11 +12,11 @@ makedepends=('qt6-tools')
 conflicts=('qspeakers-svn')
 install=qspeakers.install
 source=(
-  "http://brouits.free.fr/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/be1/qspeakers/archive/refs/tags/${pkgver}.tar.gz"
 )
  
 sha256sums=(
-  '4518d55847670b4cca760a689312e63d682b418cddd22c330c738ef89e491047'
+  'c9c5dca9e380a7c1507a9e0c7a14212e170d82f697d6fba640bda867b54cd373'
 )
  
 build() {
