@@ -28,6 +28,10 @@ optdepends=(
 	'libxt: native Flash support'
 )
 
+options=(
+    !strip
+)
+
 source=("https://download.flashpointarchive.org/upload/fp${_launcherver}_lin_${_timestamp}.7z")
 sha256sums=('b3ff524f6ba3157b1b0661207e24ae6c478b12fccccca55720c2c31d3034f509')
 
@@ -46,7 +50,7 @@ package() {
 	cp -p ../flashpoint-launcher.sh "${pkgdir}/usr/bin/flashpoint-launcher"
 
 	echo "Creating the desktop file..."
-	env FAKEROOT=1 DIR="${srcdir}/flashpoint-archive.desktop" FP_DIR="/opt/Flashpoint/" "${srcdir}/setup-desktop-entry.sh"
+    ENTRY="${srcdir}/flashpoint-archive.desktop" FP_DIR="/opt/Flashpoint/" "./setup-desktop-entry.sh"
 
 	echo "Installing licenses and desktop file..."
 	mkdir -vp "${pkgdir}/usr/share/licenses"
