@@ -1,0 +1,15 @@
+pkgbase = podspawn
+	pkgdesc = Mock alternative based on OCI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/zvova7890/podspawn/
+	install = podspawn.install
+	arch = any
+	license = MIT
+	depends = podman
+	depends = usermode
+	depends = systemd
+	source = git+https://github.com/zvova7890/podspawn.git
+	sha256sums = SKIP
+
+pkgname = podspawn

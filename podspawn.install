@@ -1,0 +1,16 @@
+post_install() {
+    if ! getent group podspawn >/dev/null; then
+        echo "Creating system group 'podspawn'"
+        groupadd -r podspawn
+    fi
+}
+
+post_remove() {
+    # Optional cleanup: remove group only if no members
+    if getent group podspawn >/dev/null; then
+        if ! getent passwd | grep -q ":$(getent group podspawn | cut -d: -f3):"; then
+            echo "Removing group 'podspawn'"
+            groupdel podspawn || true
+        fi
+    fi
+}
