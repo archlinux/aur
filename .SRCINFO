@@ -1,7 +1,7 @@
 pkgbase = seadrive-gui
 	pkgdesc = GUI part of seadrive
 	pkgver = 3.0.17
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/haiwen/seadrive-gui
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = seadrive-gui
 	arch = armv6h
 	arch = aarch64
 	license = Apache
+	makedepends = git
 	makedepends = cmake
 	depends = qt6-webengine
 	depends = qt6-tools
