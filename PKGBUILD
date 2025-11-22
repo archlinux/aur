@@ -1,8 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
-# Contributor: Liviu Cristian Mirea-Ghiban <liviu dot mirea at wecodepixels dot com>
 pkgname=heidisql-gtk2
 pkgver=12.13.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, and SQLite databases (GTK2)"
 arch=(x86_64)
 url="http://www.heidisql.com/"
@@ -38,23 +37,12 @@ build() {
 package() {
   cd "${srcdir}/HeidiSQL-${pkgver}"
   
-  # Install the actual binary to /usr/share/heidisql/ (where locale files are located)
   mkdir -p "${pkgdir}/usr/share/heidisql"
   install -Dm755 "out/gtk2/heidisql" "${pkgdir}/usr/share/heidisql/heidisql-gtk2"
   
-  # Create a wrapper script in /usr/bin that calls the actual binary
-  mkdir -p "${pkgdir}/usr/bin"
-  cat > "${pkgdir}/usr/bin/heidisql-gtk2" << 'EOF'
-#!/bin/bash
-exec /usr/share/heidisql/heidisql-gtk2 "$@"
-EOF
-  chmod +x "${pkgdir}/usr/bin/heidisql-gtk2"
-  
   install -Dm644 "package-skeleton/usr/share/applications/heidisql.desktop" \
     "${pkgdir}/usr/share/applications/heidisql-gtk2.desktop"
-  sed -i 's/^Exec=heidisql/Exec=heidisql-gtk2/' "${pkgdir}/usr/share/applications/heidisql-gtk2.desktop"
+  sed -i 's/^Exec=heidisql/Exec=heidisql --gtk2/' "${pkgdir}/usr/share/applications/heidisql-gtk2.desktop"
   sed -i 's/^Name=HeidiSQL/Name=HeidiSQL (GTK2)/' "${pkgdir}/usr/share/applications/heidisql-gtk2.desktop"
-  
-  install -Dm644 "res/deb-package-icon.png" "${pkgdir}/usr/share/pixmaps/heidisql-gtk2.png"
 }
 

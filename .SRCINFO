@@ -1,7 +1,7 @@
 pkgbase = heidisql-gtk2
-	pkgdesc = A lightweight GUI for managing MySQL, PostgreSQL, and SQLite databases (GTK2)
+	pkgdesc = A lightweight GUI for managing MySQL, PostgreSQL, Microsoft SQL and SQLite databases (GTK2)
 	pkgver = 12.13.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.heidisql.com/
 	arch = x86_64
 	license = GPL-2.0
@@ -17,6 +17,7 @@ pkgbase = heidisql-gtk2
 	depends = postgresql-libs
 	depends = libperconaserverclient
 	depends = sqlite
+	depends = freetds
 	provides = heidisql-client
 	provides = heidisql
 	source = https://github.com/HeidiSQL/HeidiSQL/archive/v12.13.1.1.tar.gz
