@@ -1,0 +1,15 @@
+pkgbase = itsa
+	pkgdesc = itsa is a program for interacting with the UK’s HMRC Make Tax Digital APIs
+	pkgver = 002
+	pkgrel = 1
+	url = https://github.com/ac000/itsa
+	arch = x86_64
+	arch = i686
+	license = GPL-2.0-only
+	depends = sqlite
+	depends = libac
+	depends = libmtdac
+	source = https://github.com/ac000/itsa/archive/refs/tags/v002.tar.gz
+	sha256sums = 41b0c82e5ddcf706d4bbcb6ae4b82f99cdc2ddef6c83af359e80932f3842deb1
+
+pkgname = itsa
