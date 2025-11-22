@@ -1,6 +1,6 @@
 pkgbase = duckstation-qt-bin
 	pkgdesc = Fast PlayStation 1 emulator for PC and Android
-	pkgver = 0.1.r10091
+	pkgver = 0.1.r10130
 	pkgrel = 1
 	url = https://github.com/stenzek/duckstation
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = duckstation-qt-bin
 	conflicts = duckstation-qt
 	conflicts = duckstation
 	options = !strip
-	source = duckstation-qt-0.1.r10091-x64.AppImage::https://github.com/stenzek/duckstation/releases/download/v0.1-10091/DuckStation-x64.AppImage
-	source = duckstation-qt-0.1.r10091-x64-SSE2.AppImage::https://github.com/stenzek/duckstation/releases/download/v0.1-10091/Duckstation-x64-SSE2.AppImage
-	sha256sums = d6112ccc4fdcfa446dedbb91f755b8b440389232cb60a31516d3b5255a1c7b57
-	sha256sums = 437d94b1f84633380b7213e26dbc3d92f81e05fa250a73e2143c1d05ae91fa9e
+	source = duckstation-qt-0.1.r10130-x64.AppImage::https://github.com/stenzek/duckstation/releases/download/v0.1-10130/DuckStation-x64.AppImage
+	source = duckstation-qt-0.1.r10130-x64-SSE2.AppImage::https://github.com/stenzek/duckstation/releases/download/v0.1-10130/Duckstation-x64-SSE2.AppImage
+	sha256sums = 3c309ed774c8a84e7f483c4182d0f02f3201535b3c8d5b8880dff837e32e6121
+	sha256sums = 130aefaeccfb974b96b667bb014660d45f973e759264ca31c4fd6d599b0f9f75
 
 pkgname = duckstation-qt-bin
