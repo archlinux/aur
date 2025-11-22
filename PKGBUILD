@@ -25,7 +25,8 @@ pkgver() {
 build() {
   cd "PixelPantry"
   npm install
-  npm run build:linux
+  # Only build the unpacked directory to save time and resources
+  ./node_modules/.bin/electron-builder --linux --dir
 }
 
 package() {
