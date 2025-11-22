@@ -2,7 +2,7 @@
 
 _pkgname=sshpilot
 pkgname=${_pkgname}-bin
-pkgver=4.4.2
+pkgver=4.4.3
 pkgrel=1
 pkgdesc="SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support."
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('glib2' 'gtk4' 'gdk-pixbuf2' 'libsecret' 'pango' 'graphene' 'vte4' 'lib
 options=(!strip)
 
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-${pkgrel}_all.deb")
-sha512sums_x86_64=('676636c1c4a6e420c723ab94cf1fe6ff0a1a88c403c9eb8de23da2fd46042b89f057cd65b51cc8aba4d72c005e30c8d9028a761e9e46878e6e1e2a3d3c256ea3')
+sha512sums_x86_64=('70cce478bd7040fcd943c542b6a53754965c68f00f96aeb50536164a6b59fe47db63010b283502e8098269984c456a98186f201e4997e14a079474d544f610ca')
 
 package() {
     cd "${pkgdir}"
