@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="MayaFlux development build - A modern C++ framework for real-time graphics and audio"
 arch=('x86_64' 'aarch64')
 url="https://github.com/MayaFlux/MayaFlux"
-license=('MIT')
+license=('GPLv3')
 depends=(
     'llvm'
     'llvm-libs'
@@ -110,28 +110,6 @@ package() {
 
 export MAYAFLUX_ROOT="/usr"
 export CMAKE_PREFIX_PATH="/usr:$CMAKE_PREFIX_PATH"
-
-# Add MayaFlux binaries to PATH if not already present
-case ":${PATH}:" in
-    *:"/usr/bin":*)
-        ;;
-    *)
-        export PATH="/usr/bin:$PATH"
-        ;;
-esac
-
-# Set STB headers path if STB is installed
-if [ -d "/usr/include/stb" ]; then
-    export STB_ROOT="/usr/include"
-    export CMAKE_PREFIX_PATH="/usr/include:$CMAKE_PREFIX_PATH"
-    export CPATH="/usr/include/stb:$CPATH"
-fi
-
-# LLVM configuration
-if [ -d "/usr/lib/cmake/llvm" ]; then
-    export LLVM_DIR="/usr/lib/cmake/llvm"
-    export Clang_DIR="/usr/lib/cmake/clang"
-fi
 EOF
 
     chmod 755 "$pkgdir/etc/profile.d/mayaflux.sh"
