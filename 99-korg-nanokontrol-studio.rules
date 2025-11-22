@@ -1,0 +1,4 @@
+# udev rule for Korg Nanokontrol Studio Bluetooth connection
+# Triggers on any Bluetooth device connection, script will check if it's our device
+
+SUBSYSTEM=="bluetooth", ENV{DEVTYPE}=="link", ACTION=="add", RUN+="/usr/bin/korg-nanokontrol-connect.sh"

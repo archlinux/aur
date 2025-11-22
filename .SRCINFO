@@ -1,0 +1,17 @@
+pkgbase = korg-nanokontrol-studio-autoconnect
+	pkgdesc = Auto-connect Korg Nanokontrol Studio via Bluetooth to virtual MIDI through ALSA
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/korg-nanokontrol-studio-autoconnect
+	arch = any
+	license = GPL3
+	depends = bluez
+	depends = bluez-utils
+	depends = alsa-utils
+	depends = kmod
+	source = korg-nanokontrol-connect.sh
+	source = 99-korg-nanokontrol-studio.rules
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = korg-nanokontrol-studio-autoconnect
