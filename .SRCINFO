@@ -1,15 +1,16 @@
 pkgbase = qtheme
 	pkgdesc = Tool for management qtile desktop environment
-	pkgver = 2.0.6
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/loadept/qtheme
 	arch = any
 	license = MIT
+	makedepends = python-installer
 	depends = python>=3.12
 	depends = qtile
 	depends = kitty
 	depends = fastfetch
-	source = qtheme-2.0.6.tar.gz::https://github.com/loadept/qtheme/archive/refs/tags/v2.0.6.tar.gz
-	sha512sums = 23a484ea93cdf0586d0843371515ea6148ae502ff21a855aaf047d69d8f427081bab60cfc37c771ba9c2e84bb89c8065ddd532613bdecee7ed8fdc907c88e597
+	source = qtheme-3.0.1-py3-none-any.whl::https://github.com/loadept/qtheme/releases/download/v3.0.1/qtheme-3.0.1-py3-none-any.whl
+	sha512sums = 0b9196f5e77d3c3aa0c346688af5b7432820c2244a86047c0139111482f258d93039d1d69598607f42fb7212d4c4702d6b4fa838086cb17ef0858e996920d2d6
 
 pkgname = qtheme
