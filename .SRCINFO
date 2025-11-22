@@ -1,6 +1,6 @@
 pkgbase = duelsplus
 	pkgdesc = Lightweight, custom Minecraft Proxy designed to enhance your experience on Hypixel Duels.
-	pkgver = 2.6.0
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://duelsplus.com
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = duelsplus
 	conflicts = duelsplus-bin
 	options = !strip
 	options = !debug
-	source = Duels+-2.6.0-x64.AppImage::https://launcher-updates.duelsplus.com/download/flavor/default/2.6.0/linux_64/Duels+-2.6.0-x64.AppImage
-	sha256sums = 3b6497de522e615f8e4c66098d937714385f12bb6720a31938c75b72b4c9a4ee
+	source = Duels+-2.7.0-x64.AppImage::https://launcher-updates.duelsplus.com/download/flavor/default/2.7.0/linux_64/Duels+-2.7.0-x64.AppImage
+	sha256sums = 842ffc9a915cf9889ba973cfaaadb340f87b3e8b77824db19657aadfc28d7e0f
 
 pkgname = duelsplus
