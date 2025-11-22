@@ -1,5 +1,5 @@
 pkgname=phantom-wallet-bin
-pkgver=25.43.2
+pkgver=25.43.3
 pkgrel=1
 pkgdesc="A crypto wallet reimagined for DeFi & NFTs"
 arch=('x86_64')
