@@ -6,7 +6,7 @@ pkgdesc="An indev package manager, using github repos, to build from source."
 arch=('any')
 url="https://github.com/Frothy7650/ghpkg"
 license=('MIT')
-depends=('git' 'v')
+depends=('git' 'vlang')
 source=("git+https://github.com/Frothy7650/ghpkg.git")
 sha256sums=('SKIP')
 
