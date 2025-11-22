@@ -13,7 +13,7 @@ pkgbase = heidisql-gtk2-git
 	makedepends = gtk2
 	makedepends = git
 	depends = gtk2
-	depends = heidisql-common>=12.13.1.1-2
+	depends = heidisql-common
 	depends = mariadb-libs
 	depends = postgresql-libs
 	depends = libperconaserverclient
