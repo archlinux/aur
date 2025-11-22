@@ -1,32 +1,18 @@
-# Maintainer: hinaloe <hina@hinaloe.net>
-
-_project=rquickshare
-pkgname=${_project}-bin
-pkgver=0.8.2
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+pkgname=rquickshare-bin
+pkgver=0.11.5
 pkgrel=1
-pkgdesc="Rust implementation of NearbyShare/QuickShare from Android for Linux."
-arch=('x86_64')
-url='https://github.com/Martichou/rquickshare'
+pkgdesc=" Rust implementation of NearbyShare/QuickShare from Android for Linux and macOS."
+arch=(x86_64)
+url="https://github.com/Martichou/rquickshare"
 license=('GPL-3.0-or-later')
-
-depends=(
-    'gtk3'
-    'libayatana-appindicator'
-    'libwebkit2gtk-4.0.so'
-)
-
-conflicts=("${_project}")
-
-source_x86_64=(
-    https://github.com/Martichou/${_project}/releases/download/v${pkgver}/r-quick-share_${pkgver}_amd64.deb
-)
-
-sha256sums_x86_64=('061c8369fcac4dca58e8732a07525d90eb99bd4c75e669fb90434de34cab102d')
-
+provides=(${pkgname::-4})
+conflicts=(${pkgname::-4})
+depends=('glibc' 'glib2' 'gdk-pixbuf2' 'hicolor-icon-theme' 'gtk3' 'webkit2gtk-4.1' 'dbus' 'gcc-libs' 'libsoup3' 'cairo')
+source=("$url/releases/download/v${pkgver}/r-quick-share-main_v${pkgver}_glibc-2.39_amd64.deb")
+sha256sums=('49085e77e351bcadcb0aff7707d371435ec1cd5a409a1e146e2cf824f48ff189')
 
 package() {
-    bsdtar -xf data.tar.gz -C "${pkgdir}/"
-
-    install -dm 755 "${pkgdir}/usr/bin"
-    install -dm 755 "${pkgdir}/usr/share"
+	cd "$pkgdir"
+	bsdtar xf "$srcdir/data.tar.gz"
 }
