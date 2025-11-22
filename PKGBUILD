@@ -4,8 +4,8 @@ _pkgtitle=AltSendme
 _pkgauthor=tonyantony300
 _pkgname=alt-sendme
 pkgname=${_pkgname}-bin
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 pkgdesc='Frictionless, real-time file transfer tool'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
@@ -20,7 +20,7 @@ conflicts=("${_pkgname}")
 
 options=('!strip')
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgtitle}_${pkgver}_${_barch[0]}.deb")
-sha256sums_x86_64=('77aa3a728373ac3dea1f268767437ab66d5db0c3aaafe5727e7a6631c1904f5c')
+sha256sums_x86_64=('e168a58ac290f10cc09ed2c9149b0beed0494f3f630de44b97ce82ac0b8cd61c')
 
 
 package() {
