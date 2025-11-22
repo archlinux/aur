@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-7.0-bin
 	pkgver = 7.0.20.sdk410
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
@@ -33,9 +33,7 @@ pkgname = dotnet-runtime-7.0-bin
 	depends = zlib
 	depends = openssl
 	optdepends = lttng-ust: CoreCLR tracing
-	provides = dotnet-runtime=7.0.20
 	provides = dotnet-runtime-7.0
-	conflicts = dotnet-runtime=7.0.20
 	conflicts = dotnet-runtime-7.0
 
 pkgname = dotnet-sdk-7.0-bin
@@ -46,23 +44,17 @@ pkgname = dotnet-sdk-7.0-bin
 	depends = dotnet-targeting-pack-7.0-bin
 	depends = netstandard-targeting-pack
 	optdepends = aspnet-targeting-pack-bin: Build ASP.NET Core applications
-	provides = dotnet-sdk=7.0.20.sdk410
 	provides = dotnet-sdk-7.0
-	conflicts = dotnet-sdk=7.0.20.sdk410
 	conflicts = dotnet-sdk-7.0
 
 pkgname = dotnet-targeting-pack-7.0-bin
 	pkgdesc = The .NET Core targeting pack (binary)
 	depends = netstandard-targeting-pack
-	provides = dotnet-targeting-pack=7.0.20
 	provides = dotnet-targeting-pack-7.0
-	conflicts = dotnet-targeting-pack=7.0.20
 	conflicts = dotnet-targeting-pack-7.0
 
 pkgname = aspnet-targeting-pack-7.0-bin
 	pkgdesc = The ASP.NET Core targeting pack (binary)
 	depends = dotnet-targeting-pack-7.0-bin
-	provides = aspnet-targeting-pack=7.0.20
 	provides = aspnet-targeting-pack-7.0
-	conflicts = aspnet-targeting-pack=7.0.20
 	conflicts = aspnet-targeting-pack-7.0
