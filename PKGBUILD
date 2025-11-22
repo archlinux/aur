@@ -1,34 +1,41 @@
-# Maintainer: Alois <alois@tensamin.net>
-
+# Maintainer: Alois <aloisianer@proton.me>
 pkgname=tensamin-git
-_pkgname=tensamin
-pkgver=r470.29babf2
-_pkgver=0.1.3
+pkgver=a0e947
 pkgrel=1
 pkgdesc="True E2EE, decentralized messages. Open source and privacy first."
-arch=('x86_64' 'aarch64')
-url="https://github.com/Tensamin/Frontend"
-license=('Custom')
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1')
-makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'cargo' 'npm' 'nodejs')
-conflicts=('tensamin-bin')
-source=("git+${url}.git")
+arch=('x86_64')
+url="https://tensamin.net"
+license=('custom')
+depends=('gtk3' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'libappindicator-gtk3' 'libsecret')
+makedepends=('git' 'npm')
+provides=('tensamin')
+conflicts=('tensamin' 'tensamin-bin')
+source=("git+https://github.com/Tensamin/Frontend.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd Frontend
-  ( set -o pipefail
-    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-  )
+	cd "$srcdir/Frontend"
+	git rev-parse HEAD | cut -c1-6
 }
 
 build() {
-  cd Frontend
-  npx bun install
-  npx bun tauri build -b deb
+	sudo npm i -g bun
+
+	cd "$srcdir/Frontend"
+	bun install
+	bun run build
+	
+	cd desktop
+	bun install
+	bun run build
 }
 
 package() {
-  cp -a Frontend/tauri/target/release/bundle/deb/tensamin_${_pkgver}_*/data/* "${pkgdir}"
+	cd "$srcdir/Frontend/desktop/out/tensamin-linux-x64"
+	
+	install -dm755 "${pkgdir}/usr/lib/tensamin"
+	cp -r . "${pkgdir}/usr/lib/tensamin/"
+	
+	install -dm755 "${pkgdir}/usr/bin"
+	ln -s /usr/lib/tensamin/tensamin "${pkgdir}/usr/bin/tensamin"
 }
