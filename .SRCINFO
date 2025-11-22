@@ -1,0 +1,14 @@
+pkgbase = fflash
+	pkgdesc = Simple USB flash drive formatter tool
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Nick-cpp/fflash
+	arch = x86_64
+	license = GPL
+	depends = gcc-libs
+	depends = dosfstools
+	depends = e2fsprogs
+	source = fflash.cpp
+	sha256sums = SKIP
+
+pkgname = fflash
