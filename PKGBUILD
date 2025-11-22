@@ -4,20 +4,38 @@ _name="localai"
 _pkgname="local-ai"
 pkgname="${_pkgname}-bin"
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, Open Source OpenAI alternative. Self-hosted, community-driven and local-first"
-arch=('aarch64' 'x86_64')
+arch=(
+  'aarch64'
+  'x86_64'
+)
 url="https://localai.io"
 _url="https://github.com/mudler/LocalAI"
-license=('MIT')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+license=(
+  'MIT'
+)
+provides=(
+  "${_pkgname}"
+)
+conflicts=(
+  "${_pkgname}"
+)
+backup=(
+  "etc/${_pkgname}/${_pkgname}.conf"
+)
 _pkgsrc="${_pkgname}-${pkgver}"
-source=("${_pkgname}."{conf,service,sysusers,tmpfiles}
-        "${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/README.md"
-        "${_pkgsrc}-LICENSE::${_url}/raw/refs/tags/v${pkgver}/LICENSE")
-source_aarch64=("${_pkgsrc}-aarch64::${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64")
-source_x86_64=("${_pkgsrc}-x86_64::${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64")
+source=(
+  "${_pkgname}."{conf,service,sysusers,tmpfiles}
+  "${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/README.md"
+  "${_pkgsrc}-LICENSE::${_url}/raw/refs/tags/v${pkgver}/LICENSE"
+)
+source_aarch64=(
+  "${_pkgsrc}-aarch64::${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64"
+)
+source_x86_64=(
+  "${_pkgsrc}-x86_64::${_url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64"
+)
 sha256sums=('8153bc015f138655e08a49183c36d00f7fb661a2b9367110f44af844eab815ae'
             '6e4c0e2a2694867a5c27e21855e530a9327ae3658dbaa9b18fe028ab96df915a'
             '97ba21355c50ec658e220bc0558f506227b3dc77cc51f343b6f5657b0d77a19b'
