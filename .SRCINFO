@@ -1,6 +1,6 @@
 pkgbase = cyberdropdownloader
 	pkgdesc = Bulk downloader for multiple file hosts and forum sites
-	pkgver = 8.6.0
+	pkgver = 8.7.0
 	pkgrel = 1
 	url = https://github.com/jbsparrow/CyberDropDownloader
 	arch = any
@@ -42,7 +42,7 @@ pkgbase = cyberdropdownloader
 	optdepends = flaresolverr: A proxy server to bypass Cloudflare protection
 	conflicts = cyberdrop-dl
 	conflicts = cyberdrop-dl-git
-	source = https://files.pythonhosted.org/packages/source/c/cyberdrop_dl_patched/cyberdrop_dl_patched-8.6.0.tar.gz
-	sha256sums = 3c4ea098b207350173839b0d4f6e77f4f509af2836bf5091148332d24cc5af6c
+	source = https://files.pythonhosted.org/packages/source/c/cyberdrop_dl_patched/cyberdrop_dl_patched-8.7.0.tar.gz
+	sha256sums = 4f5b7c3e39f934e56ba9cba964a2ea6140ead57562068a02688db24cad10b6e0
 
 pkgname = cyberdropdownloader
