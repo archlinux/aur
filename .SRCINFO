@@ -1,0 +1,19 @@
+pkgbase = rustache
+	pkgdesc = A simple, elegant, and lightweight CalDAV task / TODO manager (TUI & GUI)
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://gitlab.com/trougnouf/rustache
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = fontconfig
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxrandr
+	depends = libxcb
+	depends = vulkan-driver
+	source = rustache-0.1.4.tar.gz::https://gitlab.com/trougnouf/rustache/-/archive/v0.1.4/rustache-v0.1.4.tar.gz
+	sha256sums = e2d3ed2fab2585f4ea9c5166750ec40dd7d7204f7316c35cc57ef6438c1cd8bb
+
+pkgname = rustache
