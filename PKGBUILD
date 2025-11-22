@@ -2,7 +2,7 @@
 # Contributor: EndstoneMC <hello@endstone.dev>
 pkgname=python-endstone
 _pkgname=endstone
-pkgver=0.10.14
+pkgver=0.10.15
 pkgrel=1
 pkgdesc="High-level Plugin API for Bedrock Dedicated Servers (BDS), in both Python and C++."
 arch=('x86_64')
