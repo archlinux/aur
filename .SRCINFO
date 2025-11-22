@@ -1,0 +1,20 @@
+pkgbase = bdfconv-git
+	pkgdesc = BDF font converter tool from u8g2 library
+	pkgver = r3213.924f3a93
+	pkgrel = 1
+	url = https://github.com/olikraus/u8g2
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = BSD
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = glibc
+	provides = bdfconv
+	conflicts = bdfconv
+	source = git+https://github.com/olikraus/u8g2.git
+	sha256sums = SKIP
+
+pkgname = bdfconv-git
