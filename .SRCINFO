@@ -1,6 +1,6 @@
 pkgbase = 1panel
 	pkgdesc = 1Panel, a modern open source linux panel.
-	pkgver = 2.0.12
+	pkgver = 2.0.13
 	pkgrel = 1
 	url = https://1panel.pro
 	install = 1panel.install
