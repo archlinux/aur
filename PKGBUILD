@@ -25,7 +25,7 @@ package() {
     install -d "$pkgdir/usr/bin"
     cat > "$pkgdir/usr/bin/${pkgname}" <<'EOF'
 #!/bin/bash
-APPIMAGE="/opt/phantom-wallet/phantom-wallet.AppImage"
+APPIMAGE="/opt/phantom-wallet-bin/phantom-wallet-bin.AppImage"
 
 if [ -c /dev/fuse ] && (lsmod | grep -q fuse || modinfo fuse &>/dev/null); then
     exec "$APPIMAGE" "$@"
