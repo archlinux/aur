@@ -1,0 +1,4 @@
+[beebeep]
+source = 'regex'
+url = 'https://sourceforge.net/projects/beebeep/files/Sources/'
+regex = 'beebeep-code-([\d.]+).zip'
