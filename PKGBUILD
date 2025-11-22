@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Grouvya! <grouvya@gmail.com>
 pkgname=billtracker
 pkgver=1.1.0
 pkgrel=1
