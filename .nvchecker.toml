@@ -1,0 +1,5 @@
+[fastjet]
+source = 'git'
+git = 'https://gitlab.com/fastjet/fastjet'
+prefix = 'fastjet-'
+include_regex = 'fastjet-.*'
