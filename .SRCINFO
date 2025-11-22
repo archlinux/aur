@@ -1,6 +1,6 @@
 pkgbase = flashpoint-launcher-bin
 	pkgdesc = An archive for games and animations from the web.
-	pkgver = 14.0.1_20250416
+	pkgver = 14.0.3_20251103
 	pkgrel = 5
 	url = https://flashpointarchive.org/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = flashpoint-launcher-bin
 	depends = bash
 	optdepends = gtk2: native Flash support
 	optdepends = libxt: native Flash support
-	source = https://download.unstable.life/upload/fp14.0.1_lin_main_20250416.7z
-	sha256sums = 8a5f8e2206885f2f757f3ff47b7b4af8d066bdff94c584ce8c01923460dd8c00
+	source = https://download.flashpointarchive.org/upload/fp14.0.3_lin_20251103.7z
+	sha256sums = b3ff524f6ba3157b1b0661207e24ae6c478b12fccccca55720c2c31d3034f509
 
 pkgname = flashpoint-launcher-bin
