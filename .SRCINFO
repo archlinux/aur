@@ -1,0 +1,20 @@
+pkgbase = rav1d
+	pkgdesc = An AV1 cross-platform decoder
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/memorysafety/rav1d/
+	arch = x86_64
+	license = BSD-2-Clause
+	checkdepends = meson
+	makedepends = cargo
+	makedepends = nasm
+	depends = gcc-libs
+	depends = glibc
+	source = https://github.com/memorysafety/rav1d/archive/v1.1.0/rav1d-1.1.0.tar.gz
+	source = 010-rav1d-fix-warnings-with-newer-toolchains.patch
+	source = rav1d.pc.in
+	sha256sums = 464399004fb5bee61d94ec24726e488d373a13dadf5147b0f7c9b1887959d0cb
+	sha256sums = 77eda6330c304207b21a99fa0b2ba96c7ac71ec26c9983693366715bb5fc1394
+	sha256sums = 8d269daccf97683eb663264a9f3062c86184acb87129fed5d246adbfb730de32
+
+pkgname = rav1d

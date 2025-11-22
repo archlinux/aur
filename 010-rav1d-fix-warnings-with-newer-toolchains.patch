@@ -1,0 +1,45 @@
+backport of:
+https://github.com/memorysafety/rav1d/commit/233e98a0179f6df7e317050e2b938158afa82038
+
+--- a/include/dav1d/picture.rs
++++ b/include/dav1d/picture.rs
+@@ -259,7 +259,7 @@ impl Rav1dPictureDataComponent {
+         BD::pxstride(self.byte_len() - (-stride) as usize)
+     }
+ 
+-    pub fn with_offset<BD: BitDepth>(&self) -> Rav1dPictureDataComponentOffset {
++    pub fn with_offset<BD: BitDepth>(&self) -> Rav1dPictureDataComponentOffset<'_> {
+         Rav1dPictureDataComponentOffset {
+             data: self,
+             offset: self.pixel_offset::<BD>(),
+@@ -530,7 +530,7 @@ impl From<Rav1dPicture> for Dav1dPicture {
+ }
+ 
+ impl Rav1dPicture {
+-    pub fn lf_offsets<BD: BitDepth>(&self, y: c_int) -> [Rav1dPictureDataComponentOffset; 3] {
++    pub fn lf_offsets<BD: BitDepth>(&self, y: c_int) -> [Rav1dPictureDataComponentOffset<'_>; 3] {
+         // Init loopfilter offsets. Point the chroma offsets in 4:0:0 to the luma
+         // plane here to avoid having additional in-loop branches in various places.
+         // We never use those values, so it doesn't really matter what they point
+--- a/src/cdf.rs
++++ b/src/cdf.rs
+@@ -153,7 +153,7 @@ impl CdfThreadContext {
+         }
+     }
+ 
+-    pub fn cdf_write(&self) -> RwLockWriteGuard<CdfContext> {
++    pub fn cdf_write(&self) -> RwLockWriteGuard<'_, CdfContext> {
+         match self {
+             Self::QCat(_) => panic!("Expected a Cdf"),
+             Self::Cdf(cdf) => cdf.cdf.try_write().unwrap(),
+--- a/src/wrap_fn_ptr.rs
++++ b/src/wrap_fn_ptr.rs
+@@ -53,7 +53,7 @@ macro_rules! wrap_fn_ptr {
+             /// This allows us to add a safer
+             /// (type-safe for sure, and increasingly fully safe)
+             /// interface for calling a `fn` ptr.
+-            #[derive(Clone, Copy, PartialEq, Eq)]
++            #[derive(Clone, Copy)]
+             #[repr(transparent)]
+             pub struct Fn(FnPtr);
+ 
