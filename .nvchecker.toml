@@ -1,0 +1,4 @@
+[ibm-sw-tpm2]
+source = 'regex'
+url = 'https://sourceforge.net/projects/ibmswtpm2/files/'
+regex = 'ibmswtpm2/files/ibmtpm(\d+).'
