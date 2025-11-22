@@ -1,7 +1,7 @@
 # Maintainer: Yong Do-Hyun <froster12@naver.com>
 
 pkgname=projtlauncher
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='A modernized, community-driven Minecraft launcher based on the MultiMC/Prism Launcher lineage.'
 url='https://projtlauncher.yongdohyun.org.tr'
@@ -42,11 +42,11 @@ optdepends=(
   'flite: minecraft voice narration'
 )
 source=(
-  'projt-launcher.tar.gz::https://github.com/Project-Tick/ProjT-Launcher/archive/0154de9edd0b0a53bb5a8f674ed86a04ed213c17.tar.gz'
+  'projt-launcher.tar.gz::https://github.com/Project-Tick/ProjT-Launcher/archive/bfbf6d2211945c2112bf90c311c3e365da23aaed.tar.gz'
   'libnbtplusplus.tar.gz::https://github.com/Project-Tick/libnbtplusplus/archive/23b955121b8217c1c348a9ed2483167a6f3ff4ad.tar.gz'
   {lionshead,batch,mdi}.license
 )
-sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5' 'd5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed' '2ee3ba8d96e9882150783b6444651ea4a65d779532ecac8646f2ecd3a48c2770' '009e25d32aab6dbae193aac4b82fa1a26cb07f288225b2906da425a0f219bc4c' '32646946afc31ef5a4ce2cbb5a5a68a9f552c540a78ef23344c51c3efca58fa6')
+sha256sums=('9e2639ce3a98913d3f708ded735c58667e65b4903710ede7e28ad23980cda84c' 'd5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed' '2ee3ba8d96e9882150783b6444651ea4a65d779532ecac8646f2ecd3a48c2770' '009e25d32aab6dbae193aac4b82fa1a26cb07f288225b2906da425a0f219bc4c' '32646946afc31ef5a4ce2cbb5a5a68a9f552c540a78ef23344c51c3efca58fa6')
 
 pkgver() {
   cd "projt-launcher"
