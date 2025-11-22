@@ -3,8 +3,8 @@
 
 _name=ydata-profiling
 pkgname=python-ydata-profiling
-pkgver=4.17.0
-pkgrel=3
+pkgver=4.18.0
+pkgrel=1
 pkgdesc='Create HTML profiling reports from pandas DataFrame objects'
 arch=(any)
 url='https://github.com/ydataai/ydata-profiling'
@@ -58,7 +58,7 @@ optdepends=(
 conflicts=(python-pandas-profiling)
 replaces=(python-pandas-profiling)
 source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-b2sums=('f6c9ec97bb51035d65c102f68b29abfe7a177aee176fe65d2f6bfa89690b09ad9f82f7905bad01b4e77b56cc8d3e7a37cf43aec8bfbd547fb10f1e120c9e02c0')
+b2sums=('96b87b32f1edab5c70529ce15bd4b7e12f36640f4646160e4c82ce2f273c249974ff41a488c344c0720091e79b2d6eb81867e7fe890063290bc5e01f8ec503f1')
 
 prepare() {
   # fix version fallback (the git snapshot does not contain the VERSION file)
@@ -67,10 +67,6 @@ prepare() {
   # drop version constraints for setuptools
   sed -i 's|"setuptools>=72.0.0,<80.0.0"|"setuptools"|' $_name-$pkgver/pyproject.toml
   sed -i 's|"setuptools-scm>=8.0.0,<9.0.0"|"setuptools-scm"|' $_name-$pkgver/pyproject.toml
-
-  # disable ydata-sdk advertisement
-  # https://github.com/ydataai/ydata-profiling/blob/develop/src/ydata_profiling/utils/information.py
-  sed -i 's|^SUPPRESS_BANNER = .*|SUPPRESS_BANNER = True|' $_name-$pkgver/src/ydata_profiling/utils/information.py
 }
 
 build() {
@@ -90,6 +86,8 @@ check() {
     --deselect tests/unit/test_correlations.py::test_standard_report_with_correlation_table
     --deselect tests/unit/test_correlations.py::test_standard_report_without_correlation_table
     --deselect tests/unit/test_modular.py::test_modular_present
+    # Connection to data.nasa.gov timed out. (connect timeout=None)
+    --deselect tests/unit/test_example.py::test_example
   )
 
   cd $_name-$pkgver
