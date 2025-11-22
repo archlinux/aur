@@ -3,8 +3,8 @@
 
 _pkgname="overlayfs-tools"
 pkgname="$_pkgname-git"
-pkgver=2024.07.r7.gd1636eb
-pkgrel=2
+pkgver=2025.01.r1.g1ccb445
+pkgrel=1
 pkgdesc="Tools for overlay filesystem"
 url="https://github.com/kmxz/overlayfs-tools"
 license=('WTFPL')

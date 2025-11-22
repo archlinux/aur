@@ -1,7 +1,7 @@
 pkgbase = overlayfs-tools-git
 	pkgdesc = Tools for overlay filesystem
-	pkgver = 2024.07.r7.gd1636eb
-	pkgrel = 2
+	pkgver = 2025.01.r1.g1ccb445
+	pkgrel = 1
 	url = https://github.com/kmxz/overlayfs-tools
 	arch = x86_64
 	license = WTFPL
