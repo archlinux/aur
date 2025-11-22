@@ -1,7 +1,7 @@
 pkgbase = python-slycot
 	pkgdesc = A wrapper for the SLICOT control and systems library.
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python-control/Slycot
 	arch = any
 	license = GPL-2.0 AND BSD-3-Clause

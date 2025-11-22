@@ -3,7 +3,7 @@
 _name=slycot
 pkgname=python-$_name
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A wrapper for the SLICOT control and systems library."
 arch=('any')
 url="https://github.com/python-control/Slycot"
@@ -19,6 +19,7 @@ sha256sums=('0ef1c71a16d4703797fd3955b6908c7df0c0079a06940ade96ede28c7b5520b0')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
+  export BLA_VENDOR=Generic
   python -m build --wheel --no-isolation --skip-dependency-check
 }
 
