@@ -1,0 +1,5 @@
+[folderhost-bin]
+source = "github"
+github = "MertJSX/folderhost"
+use_latest_release = true
+prefix = "v"
