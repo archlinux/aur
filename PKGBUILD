@@ -44,22 +44,23 @@ sha256sums=('e53c80c488f42e708f46512ccbb511e4ce21df01b892b5558345a5ce20c81bb0'
 
 build() {
   cd "libgit2-${_libgit2ver}"
-  cmake \
-   -DCMAKE_BUILD_TYPE='None' \
-   -DZERO_NSEC='ON' \
-   -DTHREADSAFE='ON' \
-   -DUSE_BUNDLED_ZLIB='ON' \
-   -DREGEX_BACKEND='builtin' \
-   -DUSE_HTTP_PARSER='builtin' \
-   -DUSE_SSH='OFF' \
-   -DUSE_HTTPS='OFF' \
-   -DBUILD_CLAR='OFF' \
-   -DUSE_GSSAPI='OFF' \
-   -DUSE_NTLMCLIENT='OFF' \
-   -DBUILD_SHARED_LIBS='OFF' \
-   -DENABLE_REPRODUCIBLE_BUILDS='ON' \
-   -Wno-dev \
-   .
+  local cmake_options=(
+    -W no-dev
+    -D CMAKE_BUILD_TYPE='None'
+    -D ZERO_NSEC='ON'
+    -D THREADSAFE='ON'
+    -D USE_BUNDLED_ZLIB='ON'
+    -D REGEX_BACKEND='builtin'
+    -D USE_HTTP_PARSER='builtin'
+    -D USE_SSH='OFF'
+    -D USE_HTTPS='OFF'
+    -D BUILD_CLAR='OFF'
+    -D USE_GSSAPI='OFF'
+    -D USE_NTLMCLIENT='OFF'
+    -D BUILD_SHARED_LIBS='OFF'
+    -D ENABLE_REPRODUCIBLE_BUILDS='ON'
+  )
+  cmake "${cmake_options[@]}" .
   make
 
   # build gitstatus
