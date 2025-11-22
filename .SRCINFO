@@ -1,7 +1,7 @@
 pkgbase = meowrch-settings
 	pkgdesc = System optimization settings for Meowrch distribution with dconf integration
-	pkgver = 2.0.0
-	pkgrel = 10
+	pkgver = 3.0
+	pkgrel = 1
 	url = https://github.com/meowrch/meowrch
 	install = meowrch-settings.install
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = meowrch-settings
 	optdepends = amd-ucode: for AMD CPU microcode
 	optdepends = intel-ucode: for Intel CPU microcode
 	optdepends = hdparm: for HDD performance optimizations
-	source = meowrch-settings-2.0.0.tar.gz::https://github.com/meowrch/meowrch/archive/refs/tags/v2.0.0-10.tar.gz
-	sha256sums = 14616e207edf0d3e7ab026f08554a19e7263dbb7ef1f799cb94f3b046c595b6f
+	source = https://github.com/meowrch/meowrch/archive/refs/tags/v3.0.tar.gz
+	sha256sums = 8467f86014a9628b7a9576b39c04c5c7208a95d5f6a66b74fbcbf59b11075165
 
 pkgname = meowrch-settings
