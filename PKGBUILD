@@ -6,13 +6,13 @@
 
 pkgname=seadrive-gui
 pkgver=3.0.17
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI part of seadrive"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/haiwen/${pkgname}"
 license=('Apache')
-depends=('qt6-webengine' 'qt6-tools' 'seadrive-daemon' 'libsearpc')
-makedepends=("cmake")
+depends=('qt6-webengine' 'qt6-tools' 'qt6-5compat' 'seadrive-daemon' 'libsearpc')
+makedepends=('git' 'cmake')
 source=(
     "${pkgname}-v${pkgver}::git+${url}.git#tag=v${pkgver}"
     "use-qt6.patch"
