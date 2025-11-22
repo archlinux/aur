@@ -1,7 +1,7 @@
 pkgbase = python-transformers
 	pkgdesc = State-of-the-art Natural Language Processing for Jax, PyTorch and TensorFlow
 	pkgver = 4.57.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/huggingface/transformers
 	arch = any
 	license = Apache-2.0

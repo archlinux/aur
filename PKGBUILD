@@ -4,7 +4,7 @@
 pkgname=python-transformers
 _pkgname=${pkgname#python-}
 pkgver=4.57.1
-pkgrel=1
+pkgrel=2
 pkgdesc="State-of-the-art Natural Language Processing for Jax, PyTorch and TensorFlow"
 arch=('any')
 url='https://github.com/huggingface/transformers'
@@ -37,6 +37,13 @@ source=(
   "python-transformers-$pkgver.tar.gz"::"https://github.com/huggingface/transformers/archive/refs/tags/v$pkgver.tar.gz"
 )
 sha256sums=('425e9f2e4281fe977be496902b5b4cd79c2bf0a6dab9e516bc16d2c56ab2f487')
+
+prepare() {
+  cd "transformers-$pkgver"
+  # Relax version restrictions on core package.
+  sed -i -E 's/("huggingface-hub.*<)1.0/\12/g' setup.py
+  python setup.py deps_table_update
+}
 
 build() {
   python -m build -nw "transformers-$pkgver"
