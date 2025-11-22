@@ -1,15 +1,16 @@
 # Maintainer: Daan Hessen <daanh2002@gmail.com>
 pkgname=earctl
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="A Rust API/CLI that allows every device on your network to control your Nothing earbuds"
 arch=('x86_64')
 url="https://github.com/DaanHessen/earctl"
 license=('AGPL-3.0-or-later')
 depends=('dbus')
 makedepends=('cargo')
+options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('386997aeca25911cd1252472bdf5898ec4a2c05977495665ed7fd92bf0050416')
+sha256sums=('8c10e73f41e85310c95a6e45b3c8e513dadb5617876a9f1a6896e4739b0e0177')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -30,10 +31,8 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   
-  # Install systemd user service
   install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
   
-  # Create post-install message
   mkdir -p "${pkgdir}/usr/share/${pkgname}"
   cat > "${pkgdir}/usr/share/${pkgname}/post-install.txt" << 'EOF'
 To start using earctl:
