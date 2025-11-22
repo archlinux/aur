@@ -1,8 +1,8 @@
 pkgbase = deepcool-lm
 	pkgdesc = Linux driver for Deepcool LM series AIO coolers with LCD display (tested on LM360)
 	pkgver = 1.0.0
-	pkgrel = 1
-	url = https://github.com/yourusername/deepcool-lm
+	pkgrel = 2
+	url = https://github.com/daedlock/deepcool-lm
 	install = deepcool-lm.install
 	arch = any
 	license = MIT

@@ -1,10 +1,10 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: dlock
 pkgname=deepcool-lm
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux driver for Deepcool LM series AIO coolers with LCD display (tested on LM360)"
 arch=('any')
-url="https://github.com/yourusername/deepcool-lm"
+url="https://github.com/daedlock/deepcool-lm"
 license=('MIT')
 depends=(
     'python'
