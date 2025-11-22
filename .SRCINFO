@@ -1,6 +1,6 @@
 pkgbase = nitchrevived
 	pkgdesc = Incredibly fast system fetch written in nim! NiTch Revived is project supposed to continue the NiTch after it become not maintained.
-	pkgver = 0.1.7.4
+	pkgver = 0.1.7.5
 	pkgrel = 3
 	url = https://git.teto.party/pkgs/nitchrevived
 	arch = x86_64
