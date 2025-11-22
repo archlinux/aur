@@ -1,7 +1,7 @@
 pkgbase = duelsplus
 	pkgdesc = Lightweight, custom Minecraft Proxy designed to enhance your experience on Hypixel Duels.
 	pkgver = 2.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://duelsplus.com
 	arch = x86_64
 	license = MIT

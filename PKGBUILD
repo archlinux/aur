@@ -2,7 +2,7 @@
 pkgname=duelsplus
 _pkgname=duelsplus
 pkgver=2.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight, custom Minecraft Proxy designed to enhance your experience on Hypixel Duels."
 arch=('x86_64')
 url="https://duelsplus.com"
@@ -38,7 +38,7 @@ package() {
 
         install -dm755 "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
 	install -Dm644 \
-    		"squashfs-root/usr/share/icons/hicolor/256x256/duelsplus-launcher.png" \
+    		"squashfs-root/usr/share/icons/hicolor/256x256/apps/duelsplus-launcher.png" \
     		"${pkgdir}/usr/share/icons/hicolor/256x256/apps/duelsplus-launcher.png"
 
 	install -dm755 "${pkgdir}/usr/bin"
