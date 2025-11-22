@@ -1,13 +1,13 @@
 pkgname=cmdcreate
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 arch=('x86_64')
-url="https://github.com/Meme-Supplier/cmdcreate"
+url="https://github.com/owen-debiasio/cmdcreate"
 license=('MIT')
 depends=('bash' 'curl' 'nano')
 makedepends=('cargo' 'git' 'rustup')
 pkgdesc="Allows you to create custom commands for your custom scripts"
-source=("git+https://github.com/Meme-Supplier/cmdcreate.git#tag=v$pkgver")
+source=("git+https://github.com/owen-debiasio/cmdcreate.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
