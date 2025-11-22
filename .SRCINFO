@@ -1,0 +1,21 @@
+pkgbase = icinga-notifications
+	pkgdesc = New and improved notifications and incident management for Icinga
+	pkgver = 0.2.0
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/Icinga/icinga-notifications
+	install = icinga-notifications.install
+	changelog = icinga-notifications.changelog
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = make
+	makedepends = go
+	backup = etc/icinga-notifications/config.yml
+	source = https://github.com/Icinga/icinga-notifications/archive/refs/tags/v0.2.0.tar.gz
+	source = icinga-notifications.sysusers
+	source = icinga-notifications.service
+	sha256sums = bf849735bd4dd1bf6464a12b729ed36ce6eab73b6cbf86650c0e809698bec6dd
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = icinga-notifications

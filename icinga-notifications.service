@@ -1,0 +1,13 @@
+[Unit]
+Description=Icinga Notifications
+Requires=network-online.target
+After=syslog.target network-online.target mariadb.service postgresql.service
+
+[Service]
+Type=notify
+NotifyAccess=main
+ExecStart=/usr/sbin/icinga-notifications
+User=icinga-notifications
+
+[Install]
+WantedBy=multi-user.target

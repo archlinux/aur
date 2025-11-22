@@ -1,0 +1,12 @@
+post_install() {
+    /usr/bin/systemd-sysusers icinga-notifications.conf
+    post_upgrade
+}
+
+post_upgrade() {
+    /usr/bin/chown -R icinga-notifications /etc/icinga-notifications
+}
+
+post_remove() {
+    echo "You might want to consider removing both user and group 'icinga-notifications'."
+}
