@@ -4,14 +4,14 @@
 
 pkgname=upower-git
 _pkgname=upower
-pkgver=1.90.2.r6.g029651a
+pkgver=1.90.10.r21.g391e332
 pkgrel=1
 pkgdesc="enumerating power devices, listening to events and querying history and statistics"
 url="https://upower.freedesktop.org"
 arch=(x86_64 i686)
 license=(GPL)
 depends=(libimobiledevice libgudev)
-makedepends=(docbook-xsl gobject-introspection python git gtk-doc meson)
+makedepends=(docbook-xsl gobject-introspection python git meson systemd-libs)
 optdepends=('python: for integration tests'
 	    'gobject-introspection-runtime: for integration tests')
 backup=(etc/UPower/UPower.conf)
@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
   cd $pkgname
-  arch-meson -Dintrospection=enabled -Dman=true -Dgtk-doc=true -Didevice=enabled . build
+  arch-meson -Dintrospection=enabled -Dman=true -Dgtk-doc=false -Didevice=enabled . build
   meson compile -C build
 }
 

@@ -1,6 +1,6 @@
 pkgbase = upower-git
 	pkgdesc = enumerating power devices, listening to events and querying history and statistics
-	pkgver = 1.90.2.r6.g029651a
+	pkgver = 1.90.10.r21.g391e332
 	pkgrel = 1
 	url = https://upower.freedesktop.org
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = upower-git
 	makedepends = gobject-introspection
 	makedepends = python
 	makedepends = git
-	makedepends = gtk-doc
 	makedepends = meson
+	makedepends = systemd-libs
 	depends = libimobiledevice
 	depends = libgudev
 	optdepends = python: for integration tests
 	optdepends = gobject-introspection-runtime: for integration tests
-	provides = upower=1.90.2-1
+	provides = upower=1.90.10-1
 	conflicts = upower
 	backup = etc/UPower/UPower.conf
 	source = upower-git::git+https://gitlab.freedesktop.org/upower/upower.git
