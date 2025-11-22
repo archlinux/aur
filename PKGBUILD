@@ -1,6 +1,6 @@
 # Maintainer: Adam Wahab <awahab@adhoc.tools>
 _name=tuxguitar
-pkgname=${_name,,}-bin
+pkgname=${_name,,}-git
 pkgver=2.0.0
 pkgrel=1
 pkgdesc="Open source guitar tablature editor"

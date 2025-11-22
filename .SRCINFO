@@ -17,7 +17,6 @@ pkgbase = tuxguitar-git
 	optdepends = qt5-base: LV2 plugin support
 	optdepends = suil: LV2 plugin support
 	replaces = tuxguitar
-	replaces = tuxguitar-bin
 	source = tuxguitar-2.0.0-linux-swt-amd64.tar.gz::https://github.com/helge17/tuxguitar/releases/download/2.0.0/tuxguitar-2.0.0-linux-swt-amd64.tar.gz
 	sha256sums = 3755020c0072cc5a0d9571348aa71c2ca83e5873f5dc611a39b3342d5b73fe86
 
