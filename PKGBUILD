@@ -1,5 +1,5 @@
 pkgname=figgy
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A modern colorful FIGLET-style TUI using Bubble Tea and Lipgloss"
 arch=('x86_64' 'aarch64')
