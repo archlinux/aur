@@ -1,0 +1,229 @@
+From 4c270fbc3cd6bb34ce0b0882f0d4168842864870 Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Sun, 21 Jul 2024 13:10:30 +0100
+Subject: [PATCH] Sync QtQuick animation driver to the render loop
+
+We render each offscreen QtQuick effect (if damaged) on every compositor
+paint. However currently the driving of animations is independently by a
+timer in QtBase code, because we force the basic render loop this is
+effectively a fallback case limited to 60fps and completely out of sync
+with when we render.
+
+This new code advances the animation driver used by QtQuick scenes just
+before any output renders with the expected final render time. This
+ensures that it matches the frame rate and timings are more accurate.
+
+For a multi-screen case animations are potentially advanced multiple
+times per frame, but this is relatively cheap, just updating a few
+numbers. The rendering is unchanged.
+
+Credit to Blazer Silving for the core investigation.
+
+BUG: 485927
+---
+ src/CMakeLists.txt                       |  1 +
+ src/compositor.cpp                       | 25 +++++++++++--
+ src/compositor.h                         |  3 ++
+ src/renderloopdrivenqanimationdriver.cpp | 46 ++++++++++++++++++++++++
+ src/renderloopdrivenqanimationdriver.h   | 43 ++++++++++++++++++++++
+ 5 files changed, 115 insertions(+), 3 deletions(-)
+ create mode 100644 src/renderloopdrivenqanimationdriver.cpp
+ create mode 100644 src/renderloopdrivenqanimationdriver.h
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 376a47328e..2043f13803 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -149,6 +149,7 @@ target_sources(kwin PRIVATE
+     popup_input_filter.cpp
+     qpainter/qpainterbackend.cpp
+     qpainter/qpainterswapchain.cpp
++    renderloopdrivenqanimationdriver.cpp
+     resources.qrc
+     rulebooksettings.cpp
+     rules.cpp
+diff --git a/src/compositor.cpp b/src/compositor.cpp
+index b5f39015bb..b9780d090f 100644
+--- a/src/compositor.cpp
++++ b/src/compositor.cpp
+@@ -26,6 +26,7 @@
+ #include "opengl/eglbackend.h"
+ #include "opengl/glplatform.h"
+ #include "qpainter/qpainterbackend.h"
++#include "renderloopdrivenqanimationdriver.h"
+ #include "scene/itemrenderer_opengl.h"
+ #include "scene/itemrenderer_qpainter.h"
+ #include "scene/surfaceitem.h"
+@@ -67,9 +68,21 @@ Compositor *Compositor::self()
+ 
+ Compositor::Compositor(QObject *workspace)
+     : QObject(workspace)
++    , m_allowOverlaysEnv(environmentVariableBoolValue("KWIN_USE_OVERLAYS"))
++    , m_renderLoopDrivenAnimationDriver(new RenderLoopDrivenQAnimationDriver(this))
+ {
+     // register DBus
+     new CompositorDBusInterface(this);
++
++    m_renderLoopDrivenAnimationDriver->install();
++    connect(m_renderLoopDrivenAnimationDriver, &RenderLoopDrivenQAnimationDriver::started, this, [this]() {
++        // foreach output, schedule repaint on render loop
++        for (const auto &it : m_primaryViews) {
++            RenderLoop *loop = it.first;
++            loop->scheduleRepaint();
++        }
++    });
++
+     FTraceLogger::create();
+ }
+ 
+@@ -580,7 +593,9 @@ void Compositor::composite(RenderLoop *renderLoop)
+         reinitialize();
+         return;
+     }
+-
++    if (m_renderLoopDrivenAnimationDriver->isRunning()) {
++        m_renderLoopDrivenAnimationDriver->advanceToNextFrame(renderLoop->nextPresentationTimestamp());
++    }
+     Output *output = findOutput(renderLoop);
+     const auto primaryView = m_primaryViews[renderLoop].get();
+     fTraceDuration("Paint (", output->name(), ")");
+@@ -933,8 +948,12 @@ void Compositor::composite(RenderLoop *renderLoop)
+         output->repairPresentation();
+     }
+ 
+-    if ((frame->brightness() && std::abs(*frame->brightness() - output->brightnessSetting() * output->dimming()) > 0.001)
+-        || (desiredArtificalHdrHeadroom && frame->artificialHdrHeadroom() && std::abs(*frame->artificialHdrHeadroom() - *desiredArtificalHdrHeadroom) > 0.001)) {
++    const bool forceRepaintForBrightness = (frame->brightness() && std::abs(*frame->brightness() - output->brightnessSetting() * output->dimming()) > 0.001)
++        || (desiredArtificalHdrHeadroom && frame->artificialHdrHeadroom() && std::abs(*frame->artificialHdrHeadroom() - *desiredArtificalHdrHeadroom) > 0.001);
++
++    const bool forceRepaintForOffscreenAnimations = m_renderLoopDrivenAnimationDriver->isRunning();
++
++    if (forceRepaintForBrightness || forceRepaintForOffscreenAnimations) {
+         // we're currently running an animation to change the brightness
+         renderLoop->scheduleRepaint();
+     }
+diff --git a/src/compositor.h b/src/compositor.h
+index 87fee7bfa0..98ceadeb4e 100644
+--- a/src/compositor.h
++++ b/src/compositor.h
+@@ -33,6 +33,7 @@ class Window;
+ class OutputFrame;
+ class SceneView;
+ class ItemView;
++class RenderLoopDrivenQAnimationDriver;
+ 
+ class KWIN_EXPORT Compositor : public QObject
+ {
+@@ -111,6 +112,8 @@ protected:
+     std::unordered_map<RenderLoop *, std::unique_ptr<SceneView>> m_primaryViews;
+     std::unordered_map<RenderLoop *, std::unordered_map<OutputLayer *, std::unique_ptr<ItemView>>> m_overlayViews;
+     std::unordered_set<RenderLoop *> m_brokenCursors;
++    std::optional<bool> m_allowOverlaysEnv;
++    RenderLoopDrivenQAnimationDriver *m_renderLoopDrivenAnimationDriver;
+ };
+ 
+ } // namespace KWin
+diff --git a/src/renderloopdrivenqanimationdriver.cpp b/src/renderloopdrivenqanimationdriver.cpp
+new file mode 100644
+index 0000000000..cdacafc3e6
+--- /dev/null
++++ b/src/renderloopdrivenqanimationdriver.cpp
+@@ -0,0 +1,46 @@
++/*
++    KWin - the KDE window manager
++    This file is part of the KDE project.
++
++    SPDX-FileCopyrightText: 2025 David Edmundson <davidedmundson@kde.org>
++
++    SPDX-License-Identifier: GPL-2.0-or-later
++*/
++
++#include "renderloopdrivenqanimationdriver.h"
++
++namespace KWin
++{
++
++RenderLoopDrivenQAnimationDriver::RenderLoopDrivenQAnimationDriver(QObject *parent)
++    : QAnimationDriver(parent)
++{
++}
++
++void RenderLoopDrivenQAnimationDriver::advanceToNextFrame(std::chrono::nanoseconds nextFramePresentationTime)
++{
++    Q_ASSERT(isRunning());
++    m_nextTime = nextFramePresentationTime;
++    advance();
++}
++
++void RenderLoopDrivenQAnimationDriver::start()
++{
++    m_offset = std::chrono::steady_clock::now().time_since_epoch();
++    m_nextTime = m_offset;
++    QAnimationDriver::start();
++}
++
++void RenderLoopDrivenQAnimationDriver::stop()
++{
++    m_offset = {};
++    m_nextTime = {};
++    QAnimationDriver::stop();
++}
++
++qint64 RenderLoopDrivenQAnimationDriver::elapsed() const
++{
++    return std::chrono::duration_cast<std::chrono::milliseconds>(m_nextTime - m_offset).count();
++}
++
++} // namespace KWin
+diff --git a/src/renderloopdrivenqanimationdriver.h b/src/renderloopdrivenqanimationdriver.h
+new file mode 100644
+index 0000000000..be582fe2c6
+--- /dev/null
++++ b/src/renderloopdrivenqanimationdriver.h
+@@ -0,0 +1,43 @@
++/*
++    KWin - the KDE window manager
++    This file is part of the KDE project.
++
++    SPDX-FileCopyrightText: 2025 KWin contributors
++
++    SPDX-License-Identifier: GPL-2.0-or-later
++*/
++#pragma once
++
++#include <QAnimationDriver>
++#include <chrono>
++
++namespace KWin
++{
++
++/**
++ * The RenderLoopDrivenQAnimationDriver class
++ * allowing kwin to control when Qt's internal animations update
++ * to the next position and the timestamp they are targetting.
++ */
++class RenderLoopDrivenQAnimationDriver : public QAnimationDriver
++{
++public:
++    explicit RenderLoopDrivenQAnimationDriver(QObject *parent = nullptr);
++
++    void advanceToNextFrame(std::chrono::nanoseconds nextPresentation);
++
++    /*
++     * The overrides are for Qt's usage
++     * we shouldn't need to call them from kwin code
++     */
++    void start() override;
++    void stop() override;
++    qint64 elapsed() const override;
++
++private:
++    std::chrono::nanoseconds m_nextTime = {};
++    // the elapsed time is a relative offset to when the animationDriver starts
++    std::chrono::nanoseconds m_offset = {};
++};
++
++} // namespace KWin
+-- 
+2.52.0
+

@@ -84,7 +84,7 @@ provides=('kwin')
 groups=(plasma)
 source=(git+https://invent.kde.org/plasma/kwin.git
         sync_official.sh
-	8436.patch::https://invent.kde.org/plasma/kwin/-/merge_requests/8436.patch
+	8436.patch
 )
 # unused: 0001-retick.patch::https://invent.kde.org/plasma/kwin/-/merge_requests/7980.patch
 sha256sums=('SKIP'
