@@ -27,7 +27,7 @@ prepare() {
 build() {
   # Adjust .desktop so it will work outside of AppImage container
   sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/VRChatPhotoManager|"\
-      "squashfs-root/VRChatPhotoManager.desktop"
+      "squashfs-root/VRChat Photo Manager.desktop"
   # Fix permissions; .AppImage permissions are 700 for all directories
   chmod -R a-x+rX squashfs-root/usr
 }
@@ -37,8 +37,8 @@ package() {
   install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
 
   # Desktop file
-  install -Dm644 "${srcdir}/squashfs-root/VRChatPhotoManager.desktop"\
-          "${pkgdir}/usr/share/applications/VRChatPhotoManager.desktop"
+  install -Dm644 "${srcdir}/squashfs-root/VRChat Photo Manager.desktop"\
+          "${pkgdir}/usr/share/applications/VRChat Photo Manager.desktop"
 
   # Icon images
   install -dm755 "${pkgdir}/usr/share/"
