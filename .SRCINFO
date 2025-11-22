@@ -1,0 +1,18 @@
+pkgbase = jarl-bin
+	pkgdesc = Fast linter for the R language
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/etiennebacher/jarl
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = zlib
+	options = !debug
+	source_x86_64 = jarl-bin-0.1.1.tar.gz::https://github.com/etiennebacher/jarl/releases/download/0.1.1/jarl-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = https://raw.githubusercontent.com/etiennebacher/jarl/refs/tags/0.1.1/LICENSE
+	provides_x86_64 = jarl=0.1.1
+	sha256sums_x86_64 = 6b71d49865e63d251b7f49c199910fde8c1b9676f1d321c59daf7c4151ba8ea9
+	sha256sums_x86_64 = 79725ebd381352c76377a38ad2e9bf763abe79d72892f9343d609ed603733adf
+
+pkgname = jarl-bin
