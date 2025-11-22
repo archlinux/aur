@@ -1,7 +1,7 @@
 # Maintainer: Alfonso Espadero Jr <pixelpantry.shelter185@passmail.net>
 pkgname=pixelpantry-git
 _pkgname=pixelpantry
-pkgver=1.0.1.r5.g267614f
+pkgver=0
 pkgrel=1
 pkgdesc="A gamified pixel-art pantry inventory tracker"
 arch=('x86_64')
@@ -17,9 +17,11 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd "PixelPantry"
-  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || \
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/PixelPantry"
+
+  git describe --long --tags --match '[0-9]*' 2>/dev/null \
+    | sed 's/\([^-]*-g\)/r\1/; s/-/./g' \
+  || printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
