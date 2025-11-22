@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-vulkan-bin
 	pkgdesc = LLM inference in C/C++ (with Vulkan GPU optimizations) (precompiled Linux binaries)
-	pkgver = b7126
+	pkgver = b7129
 	pkgrel = 1
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = llama.cpp-vulkan-bin
 	conflicts = llama.cpp
 	conflicts = libggml
 	conflicts = ggml
-	source = llama.cpp-vulkan-b7126.zip::https://github.com/ggerganov/llama.cpp/releases/download/b7126/llama-b7126-bin-ubuntu-vulkan-x64.zip
-	source = README-b7126.md::https://raw.githubusercontent.com/ggml-org/llama.cpp/b7126/README.md
-	sha256sums = 29081f83e9af56e006ba12b7cbf43cafc992f26e6399ed198250a9333312a6bf
+	source = llama.cpp-vulkan-b7129.zip::https://github.com/ggerganov/llama.cpp/releases/download/b7129/llama-b7129-bin-ubuntu-vulkan-x64.zip
+	source = README-b7129.md::https://raw.githubusercontent.com/ggml-org/llama.cpp/b7129/README.md
+	sha256sums = cf7f16ea6887c1fce3f3228fb77ec4ccb709b0168d394c7b9a7e8ad487191c40
 	sha256sums = a859b5008203c4500111149bc0ebd5d98db09ea129316327399c9fc89ef081bf
 
 pkgname = llama.cpp-vulkan-bin
