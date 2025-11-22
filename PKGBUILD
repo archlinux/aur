@@ -10,9 +10,16 @@ provides=("moonbit")
 conflicts=("moonbit")
 options=('!debug')
 _origin="https://cli.moonbitlang.com"
-source=("https://cli.moonbitlang.cn/binaries/latest/moonbit-linux-x86_64.tar.gz"
-        "https://cli.moonbitlang.cn/cores/core-latest.tar.gz"
-        "moon.sh")
+# Save downloads with a versioned local filename to avoid reusing an older
+# file that happens to have the same remote name (e.g. "latest/*.tar.gz").
+# This uses the URL fragment "#filename=" supported by makepkg.
+source=("https://cli.moonbitlang.cn/binaries/latest/moonbit-linux-x86_64.tar.gz#filename=${pkgname}-${pkgver}-linux-x86_64.tar.gz"
+  "https://cli.moonbitlang.cn/cores/core-latest.tar.gz#filename=moonbit-core-${pkgver}.tar.gz"
+  "moon.sh")
+
+# NOTE: After updating `pkgver`, update the corresponding `sha256sums`.
+# If a cached file with the old name exists in the build `src/` directory,
+# remove it (or run `makepkg -C`) so makepkg downloads the new file.
 
 package() {
   # Install main runtime binary (kept under /usr/lib so the wrapper can live in /usr/bin)

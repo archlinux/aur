@@ -12,8 +12,8 @@ pkgbase = moonbit-bin
 	provides = moonbit
 	conflicts = moonbit
 	options = !debug
-	source = https://cli.moonbitlang.cn/binaries/latest/moonbit-linux-x86_64.tar.gz
-	source = https://cli.moonbitlang.cn/cores/core-latest.tar.gz
+	source = https://cli.moonbitlang.cn/binaries/latest/moonbit-linux-x86_64.tar.gz#filename=moonbit-bin-0.1.20251117-linux-x86_64.tar.gz
+	source = https://cli.moonbitlang.cn/cores/core-latest.tar.gz#filename=moonbit-core-0.1.20251117.tar.gz
 	source = moon.sh
 	sha256sums = 50aba43ffda027d0a211df86b346a8b67ff870577f7f52a9771922a51b838871
 	sha256sums = 6b15031a291e7ea37b7d57bd85984f90ec99f8a1adb209a830d1b68562ecac60
