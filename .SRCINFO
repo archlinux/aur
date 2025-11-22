@@ -1,6 +1,6 @@
 pkgbase = rtw89-dkms-git
 	pkgdesc = Drivers for Realtek Wi-Fi 6/6E and Wi-Fi 7 adapters
-	pkgver = r1434.8a8ba9b
+	pkgver = r1549.3c05cf4
 	pkgrel = 1
 	url = https://github.com/morrownr/rtw89
 	arch = any
