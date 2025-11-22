@@ -2,7 +2,7 @@
 
 pkgname=runbox
 pkgver=0.1.0
-pkgrel=
+pkgrel=2
 pkgdesc="A popup runbox for both wayland and x11"
 arch=('x86_64')
 url="https://gitlab.lmao.sbs/Gerg0Vagyok/RunBox"
