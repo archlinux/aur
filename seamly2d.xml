@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/x-seamly2d-pattern">
+        <comment>Seamly2D Pattern File</comment>
+        <glob pattern="*.sm2d"/>
+        <icon name="application-x-seamly2d-2d_file"/>
+    </mime-type>
+</mime-info>

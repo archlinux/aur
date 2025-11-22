@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/x-seamlyme-individual_size_file">
+        <comment>SeamlyMe Individual Measurements</comment>
+        <glob pattern="*.smms"/>
+        <icon name="application-x-seamlyme-individual_size_file"/>
+    </mime-type>
+    <mime-type type="application/x-seamlyme-multi_size_file">
+        <comment>SeamlyMe Multisize Measurements</comment>
+        <glob pattern="*.smms"/>
+        <icon name="application-x-seamlyme-multi_size_file"/>
+    </mime-type>
+</mime-info>

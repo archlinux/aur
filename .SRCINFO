@@ -11,8 +11,13 @@ pkgbase = seamly2d-git
 	depends = qt6-svg
 	depends = poppler
 	depends = desktop-file-utils
+	depends = shared-mime-info
 	depends = qt6-5compat
 	source = git+https://github.com/FashionFreedom/Seamly2D.git#branch=develop
+	source = seamly2d.xml
+	source = seamlyme.xml
+	b2sums = SKIP
+	b2sums = SKIP
 	b2sums = SKIP
 
 pkgname = seamly2d-git
