@@ -7,8 +7,18 @@ pkgdesc="Active Directory account management tool"
 arch=(i686 x86_64)
 url="https://gitlab.freedesktop.org/realmd/adcli"
 license=(GPL3)
-depends=(cyrus-sasl-gssapi krb5 libldap)
-makedepends=(docbook-xml docbook-xsl git xmlto)
+depends=(
+  cyrus-sasl-gssapi
+  krb5
+  libldap
+)
+makedepends=(
+  docbook-xml
+  docbook-xsl
+  git
+  smbclient   # optional, for offline join support
+  xmlto
+)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+https://gitlab.freedesktop.org/realmd/adcli.git")

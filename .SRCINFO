@@ -9,6 +9,7 @@ pkgbase = adcli-git
 	makedepends = docbook-xml
 	makedepends = docbook-xsl
 	makedepends = git
+	makedepends = smbclient
 	makedepends = xmlto
 	depends = cyrus-sasl-gssapi
 	depends = krb5
