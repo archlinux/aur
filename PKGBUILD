@@ -14,7 +14,7 @@ pkgver=10.0.0.sdk100
 _runtimever=10.0.0
 _sdkver=10.0.100
 _short_ver=10.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
@@ -37,10 +37,11 @@ package_dotnet-host-bin() {
   )
   conflicts=('dotnet-host')
 
-  install -dm 755 "${pkgdir}"/usr/{bin,lib,share/{dotnet,licenses/dotnet-host}}
-  cp -dr --no-preserve='ownership' dotnet host "${pkgdir}"/usr/share/dotnet/
+  install -dm 755 "${pkgdir}"/usr/{bin,lib,share/{dotnet,dnx,licenses/dotnet-host}}
+  cp -dr --no-preserve='ownership' dotnet host dnx "${pkgdir}"/usr/share/dotnet/
   cp -dr --no-preserve='ownership' LICENSE.txt ThirdPartyNotices.txt "${pkgdir}"/usr/share/licenses/dotnet-host
   ln -sf /usr/share/dotnet/dotnet "${pkgdir}"/usr/bin/dotnet
+  ln -sf /usr/share/dotnet/dnx "${pkgdir}"/usr/bin/dnx
   ln -sf /usr/share/dotnet/host/fxr/"${_runtimever}"/libhostfxr.so "${pkgdir}"/usr/lib/libhostfxr.so
   install -Dm 644 "${srcdir}"/dotnet.sh -t "${pkgdir}"/etc/profile.d/
 }
