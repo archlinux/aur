@@ -16,7 +16,7 @@
 # Maintainer: Tim Hildering <hilderingt@posteo.net>
 
 pkgname=archlinux-overlayroot
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Overlay the root filesystem with a tmpfs filesystem."
 arch=('any')
@@ -25,28 +25,27 @@ license=('GPLv3')
 depends=(
   'mkinitcpio'
 )
+makedepends=(
+  'gcc'
+)
 source=(
-  'install.sh'
-  'hook.sh'
-  'mount.ovlroot'
-  'ovlroot.sh'
+  "git+$url"
 )
 sha256sums=(
-  'e942049ddb9b0a5b853b1f182453e82f6beb945ace699f1cb1a0d2d95825d619'
-  'bcf1c2d640e54988fd58ee37fa9077e3bd74684a0823cb55f89ef8afe1f33500'
-  'c6e15e20c35897e653d80a5ce6b3b78700d8ff35052803401bb9b2c214c45bfc'
-  '2948c07a187128024f705229851889a9b2e5a02c72dfa46143d7e49b49000f4b'
+  'SKIP'
 )
 
 build() {
-  :
+  (cd "$srcdir/archlinux-overlayroot" && git checkout tags/v$pkgver-$pkgrel 2>>/dev/null)
+  gcc -o ovlroot-helper "$srcdir/archlinux-overlayroot/ovlroot-helper.c"
 }
 
 package() {
-  install -D -m 644 "$srcdir/install.sh" "$pkgdir/usr/lib/initcpio/install/ovlroot"
-  install -D -m 644 "$srcdir/hook.sh" "$pkgdir/usr/lib/initcpio/hooks/ovlroot"
-  install -D -m 755 "$srcdir/mount.ovlroot" "$pkgdir/usr/bin/mount.ovlroot"
+  install -D -m 644 "$srcdir/archlinux-overlayroot/install.sh" "$pkgdir/usr/lib/initcpio/install/ovlroot"
+  install -D -m 644 "$srcdir/archlinux-overlayroot/hook.sh" "$pkgdir/usr/lib/initcpio/hooks/ovlroot"
+  install -D -m 755 "$srcdir/archlinux-overlayroot/mount.ovlroot" "$pkgdir/usr/bin/mount.ovlroot"
   mkdir -p "$pkgdir/usr/share/ovlroot"
-  install -D -m 644 "$srcdir/ovlroot.sh" "$pkgdir/usr/share/ovlroot/ovlroot.sh"
+  install -D -m 644 "$srcdir/archlinux-overlayroot/ovlroot.sh" "$pkgdir/usr/share/ovlroot/ovlroot.sh"
+  install -D -m 644 "$srcdir/ovlroot-helper" "$pkgdir/usr/share/ovlroot/ovlroot-helper"
   install -d -m 700 -o root -g root "$pkgdir/etc/ovlroot.d"
 }
