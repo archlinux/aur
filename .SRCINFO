@@ -1,11 +1,14 @@
 pkgbase = python-keyboard
 	pkgdesc = Hook and simulate keyboard events on Windows and Linux
 	pkgver = 0.13.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/boppreh/keyboard
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python3
 	source = https://github.com/boppreh/keyboard/archive/v0.13.5.tar.gz
 	sha512sums = cea0945671a83a0be411801c6bf90c94eb37036dd232e9cf46700aff49f3e23800b93292bcf1b108c558c9c3179dd01d73796b21916e0bed7e5a2407f9c8f094
