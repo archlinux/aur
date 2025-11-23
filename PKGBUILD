@@ -1,13 +1,14 @@
 # Maintainer: Alois <aloisianer@proton.me>
 pkgname=tensamin-git
-pkgver=89465d
+_pkgname=tensamin
+pkgver=87aa89
 pkgrel=1
 pkgdesc="True E2EE, decentralized messages. Open source and privacy first."
 arch=('x86_64')
 url="https://tensamin.net"
 license=('custom')
 depends=('gtk3' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'libappindicator-gtk3' 'libsecret')
-makedepends=('git' 'npm')
+makedepends=('git' 'npm' 'dpkg' 'fakeroot')
 provides=('tensamin')
 conflicts=('tensamin' 'tensamin-bin')
 source=("git+https://github.com/Tensamin/Frontend.git")
@@ -32,6 +33,8 @@ build() {
 
 package() {
 	cd "$srcdir/Frontend/desktop/out"
-	zipfile=$(find "$PWD" -path '*zip/linux/x64/*.zip' -print -quit)
-	bsdtar -xf "$zipfile" -C "${pkgdir}"
+	debfile=$(find "$PWD" -path '*zip/linux/x64/*.deb' -print -quit)
+	ar x "${debfile}"
+	bsdtar -xf "$debfile" -C "${pkgdir}/opt/${_pkgname}"
+	tar --zstd -xf data.tar.zst -C "${pkgdir}"
 }
