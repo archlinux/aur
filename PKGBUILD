@@ -1,9 +1,9 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=jriver-media-center
-_debpkgver=34.0.71
-pkgver=34.0.71
-pkgrel=2
+_debpkgver=35.0.24
+pkgver=35.0.24
+pkgrel=1
 pkgdesc="The Most Comprehensive Media Software"
 arch=('x86_64' 'x86_64_v3')
 url="http://www.jriver.com/"
@@ -11,13 +11,14 @@ license=('custom')
 depends=('alsa-lib' 'gcc-libs' 'libx11' 'libxext' 'libxcb' 'libxau' 'libxdmcp' 'util-linux' 'gtk3' 'ca-certificates' 'webkit2gtk-4.1')
 optdepends=('mesa-libgl: nouveau video support' 'nvidia-libgl: nvidia video support' 'vorbis-tools' 'musepack-tools')
 conflicts=('jriver-media-center26' 'jriver-media-center25' 'jriver-media-center24')
-source=("https://files.jriver-cdn.com/mediacenter/channels/v34/latest/MediaCenter-$_debpkgver-amd64.deb" 'License.txt')
-sha256sums=('f7b3a481347abb9111bf89e8ed46676195d1b6a75c89233ccf8cc0d41118781b' 'ee00f430918df6be37777a61e12812875b5583379c78daaa969bae7383a41fbd')
+source=("https://files.jriver-cdn.com/mediacenter/channels/v35/latest/MediaCenter-$_debpkgver-amd64.deb")
+sha256sums=('e82f320ecf1f8c3754e24fb6cb53098ab1d7bc395a19dccd7ad302e290e898c9')
 
 package() {
   cd "$srcdir"
   bsdtar xf data.tar.xz -C "$pkgdir"
-    install -Dm644 "License.txt" \
-    "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+
+  install -Dm644 "$pkgdir/usr/lib/jriver/Media Center 35/License.txt" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  
   rm -r "$pkgdir/etc"
 }
