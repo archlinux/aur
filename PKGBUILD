@@ -13,10 +13,11 @@ source=("$pkgname::git+$url"
         "app.png")
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
-# Generate pkgver from latest Git commit
 pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --tags --long 2>/dev/null | awk -F- '{print $1 "." $3}'
+    cd "$srcdir/$pkgname"
+    local commitnum=$(git rev-list --count HEAD)
+    local commitsha=$(git rev-parse --short HEAD)
+    echo "0.0.1.r${commitnum}.${commitsha}"
 }
 
 build() {
