@@ -1,8 +1,8 @@
 # Maintainer: Soymadip <soumadip@zohomail.in>
 
 pkgname=myctl
-pkgdesc="A powerful CLI to control Linux Desktop"
-pkgver=1.0.2
+pkgdesc="A powerful CLI to control your Linux Desktop"
+pkgver=1.0.3
 pkgrel=1
 arch=('any')
 url="https://github.com/mydehq/${pkgname}"
