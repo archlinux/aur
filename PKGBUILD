@@ -15,5 +15,5 @@ package(){
   wget -q -O ld64_530-2_amd64.deb "$url/ld64_530-2_amd64.deb"
   ar x ld64_530-2_amd64.deb
   tar -xf data.tar.xz
-  sudo cp -a usr/* /usr
+  sudo cp -r usr/ /
 }
