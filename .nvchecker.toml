@@ -1,0 +1,4 @@
+[openshift-install]
+source = "regex"
+url = "https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/"
+regex = 'openshift-install-linux-([0-9]+\.[0-9]+\.[0-9]+)\.tar\.gz'
