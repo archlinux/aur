@@ -3,7 +3,7 @@
 ##Email: pony at just-a-pony dot net
 pkgname=yukigram-desktop
 pkgver=6.2.4
-pkgrel=0
+pkgrel=1
 pkgdesc='A Fork of 64Gram,A Telegram Desktop fork'
 arch=('x86_64')
 url="https://github.com/yukigram/yukigram/"

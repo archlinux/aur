@@ -1,7 +1,7 @@
 pkgbase = yukigram-desktop
 	pkgdesc = A Fork of 64Gram,A Telegram Desktop fork
 	pkgver = 6.2.4
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/yukigram/yukigram/
 	arch = x86_64
 	license = GPL3
