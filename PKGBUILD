@@ -2,10 +2,10 @@
 pkgname='spectral'
 pkgdesc='Signal processing techniques to select representative regions from Paraver traces (from BSC).'
 pkgver='3.4.1.20180918'
-pkgrel='3'
+pkgrel='4'
 arch=('x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(fftw libbsctools extrae)
 source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-${pkgver%.*}-src.tar.bz2"
         "spectral-Build-fix-for-GCC-10-fno-common-default.patch")
