@@ -1,16 +1,11 @@
 pkgbase = ophcrack
-	pkgdesc = Windows password cracker based on rainbow tables
+	pkgdesc = Windows password cracker based on rainbow tables (no gui)
 	pkgver = 3.8.0
-	pkgrel = 5
-	url = http://ophcrack.sourceforge.net
+	pkgrel = 6
+	url = https://gitlab.com/objectifsecurite/ophcrack
 	arch = x86_64
 	license = GPL
-	depends = qt5-charts
-	source = https://downloads.sourceforge.net/project/ophcrack/ophcrack/3.8.0/ophcrack-3.8.0.tar.bz2
-	source = ophcrack.desktop
-	md5sums = d4449e15f65b1f0f82abfd963ceff452
-	md5sums = 664599c4fd7fd210e6c421459f60e20d
-	sha256sums = 048a6df57983a3a5a31ac7c4ec12df16aa49e652a29676d93d4ef959d50aeee0
-	sha256sums = 1b3731fcb835c1ec26518b22e2c78c2955f3a079d4ce7a718ebc896c07653a0c
+	source = https://gitlab.com/objectifsecurite/ophcrack/-/archive/3.8.0/ophcrack-3.8.0.tar.gz
+	sha512sums = cb61d540f70f7dbac8253065d1cd0d77c827f11589645917a2992860bef60a506d2b0f98ea6533101e0be331b6eb2be03c36d276ab14284d7bc2c41e9ca856af
 
 pkgname = ophcrack

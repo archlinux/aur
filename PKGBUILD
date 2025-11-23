@@ -1,4 +1,5 @@
-# Maintainer: Jonathan Steel <jsteel at archlinux.org>
+# Maintainer: korjjj
+# Contributor: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: Max Pray a.k.a. Synthead <synthead@gmail.com>
 # Contributor: Kaos < gianlucaatlas at gmail dot com >
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
@@ -6,34 +7,22 @@
 
 pkgname=ophcrack
 pkgver=3.8.0
-pkgrel=5
-pkgdesc="Windows password cracker based on rainbow tables"
+pkgrel=6
+pkgdesc="Windows password cracker based on rainbow tables (no gui)"
 arch=('x86_64')
-url="http://ophcrack.sourceforge.net"
+url="https://gitlab.com/objectifsecurite/ophcrack"
 license=('GPL')
-depends=('qt5-charts')
-source=(https://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.bz2
-        ophcrack.desktop)
-md5sums=('d4449e15f65b1f0f82abfd963ceff452'
-         '664599c4fd7fd210e6c421459f60e20d')
-sha256sums=('048a6df57983a3a5a31ac7c4ec12df16aa49e652a29676d93d4ef959d50aeee0'
-            '1b3731fcb835c1ec26518b22e2c78c2955f3a079d4ce7a718ebc896c07653a0c')
+source=(https://gitlab.com/objectifsecurite/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
+sha512sums=('cb61d540f70f7dbac8253065d1cd0d77c827f11589645917a2992860bef60a506d2b0f98ea6533101e0be331b6eb2be03c36d276ab14284d7bc2c41e9ca856af')
 
 build() {
   cd $pkgname-$pkgver
-
-  ./configure --prefix=/usr --enable-gui --enable-graph
-
+  autoreconf --install --force -W no-obsolete
+  ./configure --disable-gui --prefix=/usr
   make
 }
 
 package() {
   cd $pkgname-$pkgver
-
   make DESTDIR="$pkgdir" install
-
-  install -Dm644 "$srcdir"/ophcrack.desktop \
-    "$pkgdir"/usr/share/applications/ophcrack.desktop
-  install -Dm644 src/gui/pixmaps/os.xpm \
-    "$pkgdir"/usr/share/$pkgname/pixmaps/os.xpm
 }
