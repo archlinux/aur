@@ -13,6 +13,11 @@ depends=(
     'pango'
     'wayland'
     'playerctl'
+    'libappindicator-gtk3'
+    'gdk-pixbuf2'
+)
+optdepends=(
+    'snixembed: System tray support for Swaybar'
 )
 makedepends=(
     'git'
