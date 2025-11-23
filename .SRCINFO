@@ -1,0 +1,17 @@
+pkgbase = myctl
+	pkgdesc = A powerful CLI to control Linux Desktop
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/mydehq/myctl
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = gawk
+	depends = sed
+	depends = grep
+	depends = rofi
+	depends = wob
+	source = https://github.com/mydehq/myctl/releases/download/v0.0.4/myctl-0.0.4.tar.gz
+	sha256sums = SKIP
+
+pkgname = myctl
