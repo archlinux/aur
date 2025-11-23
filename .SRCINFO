@@ -1,0 +1,14 @@
+pkgbase = evolution-tray-git
+	pkgdesc = Evolution mail tray icon, using StatusNotifierItem
+	pkgver = r181.1ed10e5
+	pkgrel = 1
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = meson
+	depends = evolution
+	depends = libdbusmenu-glib
+	source = git+https://github.com/gkatev/evolution-tray.git
+	sha256sums = SKIP
+
+pkgname = evolution-tray-git
