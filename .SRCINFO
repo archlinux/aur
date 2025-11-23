@@ -1,13 +1,13 @@
 pkgbase = renvim-bin
 	pkgdesc = Open the file in the outer Neovim instance.
-	pkgver = 0.0.3
-	pkgrel = 3
+	pkgver = 0.0.6
+	pkgrel = 1
 	url = https://github.com/yskszk63/renvim
 	arch = x86_64
 	license = MIT,
 	license = Apache-2.0
 	depends = neovim
-	source = https://github.com/yskszk63/renvim/releases/download/v0.0.3/renvim_0.0.3_Linux_x86_64.tar.gz
-	b2sums = e13479799a759af8f6b9cb7a60167595f8c30a2e08be865b40e4fe94b762f036801c6e4b619f9477cafd564957fc0503d32841e305302d7887b30a2bd42b084b
+	source = https://github.com/yskszk63/renvim/releases/download/v0.0.6/renvim_0.0.6_linux_amd64.tar.gz
+	b2sums = f8c575566f1d107bc77c68ecb65d7dbf51d6137e731958ea192c9760fe4213ed61d0924d5381e077238e774e14f8400359f8eedddee22b34f2094a08efd81469
 
 pkgname = renvim-bin
