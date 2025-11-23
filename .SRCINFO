@@ -1,7 +1,7 @@
 pkgbase = mutn
 	pkgdesc = A simple, self-hosted, SSH-synchronized password/note manager for the CLI (based on libmutton)
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rwinkhart/MUTN
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = mutn
 	arch = aarch64
 	arch = armv7h
 	arch = riscv64
-	license = MIT
+	license = AGPL-3.0-only
 	makedepends = go
 	makedepends = grep
 	makedepends = gzip
