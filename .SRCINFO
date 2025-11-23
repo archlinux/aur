@@ -1,7 +1,7 @@
 pkgbase = libmcl
 	pkgdesc = Portable and fast pairing-based cryptography library
-	pkgver = 1.52
-	pkgrel = 2
+	pkgver = 3.04
+	pkgrel = 1
 	url = https://github.com/herumi/mcl
 	arch = x86_64
 	arch = i686
@@ -12,11 +12,8 @@ pkgbase = libmcl
 	license = BSD
 	makedepends = cmake
 	depends = gmp
-	provides = libmclbn384_256.so
-	provides = libmclbn384.so
-	provides = libmclbn256.so
 	provides = libmcl.so
-	source = libmcl-1.52.tar.gz::https://github.com/herumi/mcl/archive/v1.52.tar.gz
-	sha256sums = a9ef34e0fc035c43698caa877ce7fb4d101865563f81b818e923eb5b5b2f7105
+	source = libmcl-3.04.tar.gz::https://github.com/herumi/mcl/archive/v3.04.tar.gz
+	sha256sums = 6e1129ab8566ebbe5a26106953977178d3589578372d878dc4dc99db8e3a317b
 
 pkgname = libmcl
