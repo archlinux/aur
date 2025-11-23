@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=ChatGPT Desktop Unix
+Comment=Unofficial ChatGPT desktop app for Linux/BSD
+Exec=chatgpt-desktop-unix
+Icon=app.png
+Terminal=false
+Type=Application
+Categories=Network;Chat;

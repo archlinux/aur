@@ -1,19 +1,17 @@
 pkgbase = chatgpt-desktop-unix-git
-	pkgdesc = Unofficial ChatGPT desktop app for Linux and BSD (Qt6, CMake)
+	pkgdesc = Unofficial ChatGPT desktop app for Linux and BSD (Qt6, QtWebEngine)
 	pkgver = 0.0.1
 	pkgrel = 1
-	url = https://aur.archlinux.org/packages/chatgpt-desktop-unix-git
+	url = https://github.com/KuznixTeam/chatgpt-desktop-unix
 	arch = x86_64
 	license = GPL3
-	makedepends = cmake
 	makedepends = git
-	makedepends = ninja
-	makedepends = qt6-tools
 	depends = qt6-base
 	depends = qt6-webengine
-	depends = libgl
-	depends = cups
-	source = git+https://aur.archlinux.org/chatgpt-desktop-unix-git.git
-	md5sums = SKIP
+	depends = cmake
+	depends = gcc
+	depends = make
+	source = chatgpt-desktop-unix-git::git+https://github.com/KuznixTeam/chatgpt-desktop-unix
+	sha256sums = SKIP
 
 pkgname = chatgpt-desktop-unix-git
