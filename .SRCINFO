@@ -1,6 +1,6 @@
 pkgbase = dolfinx
 	pkgdesc = Next generation FEniCS problem solving environment
-	pkgver = 0.10.0.post2
+	pkgver = 0.10.0.post3
 	pkgrel = 1
 	url = https://github.com/FEniCS/dolfinx
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = dolfinx
 	depends = scotch
 	depends = petsc
 	depends = spdlog
-	source = dolfinx-0.10.0.post2.tar.gz::https://github.com/FEniCS/dolfinx/archive/v0.10.0.post2.tar.gz
-	sha512sums = bfc7726169679871ffcb6d44bfbeb4103878d248ead78aca5a84810e4df4741f7dbf689deca091afca0cb3f45658cc1c1d556b29f9d400371daa61348f3373ea
+	source = dolfinx-0.10.0.post3.tar.gz::https://github.com/FEniCS/dolfinx/archive/v0.10.0.post3.tar.gz
+	sha512sums = 4afaf283214336d897afb35a187dce01cdf2c6b5026d123946fa71dfdaab3472119f1a165668d924eeb24a12b2a6e1d1922d27d737791842adbb870948a16aff
 
 pkgname = dolfinx
