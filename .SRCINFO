@@ -1,14 +1,15 @@
 pkgbase = doctoc
 	pkgdesc = Generates table of contents for markdown files inside local git repository
-	pkgver = 2.6.4
-	pkgrel = 2
-	url = https://github.com/technote-space/doctoc
+	pkgver = 2.2.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/thlorenz/doctoc
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
 	options = !emptydirs
-	source = doctoc-2.6.4.tar.gz::https://github.com/technote-space/doctoc/archive/refs/tags/v2.6.4.tar.gz
-	sha256sums = 0e24a0e1b60390781368a3b040bb1ec42f19d5d96314c5b19162fd84c768352e
+	source = doctoc-0204461.tar.gz::https://github.com/thlorenz/doctoc/archive/020446129bb6d0cd5613096977b4e3bdcc651826.tar.gz
+	sha256sums = 0ae80113a3ddc189540518e1c43b64437fbe4734b9081f72a11e0d0b2c134d3e
 
 pkgname = doctoc
