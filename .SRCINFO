@@ -1,8 +1,8 @@
 pkgbase = mkdocs-gen-files
 	pkgdesc = MkDocs plugin to programmatically generate documentation pages during the build
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
-	url = https://oprypin.github.io/mkdocs-gen-files/
+	url = https://oprypin.github.io/mkdocs-gen-files
 	arch = any
 	license = MIT
 	checkdepends = python-pytest-golden
@@ -10,9 +10,9 @@ pkgbase = mkdocs-gen-files
 	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/m/mkdocs_gen_files/mkdocs_gen_files-0.5.0.tar.gz
-	sha256sums = 4c7cf256b5d67062a788f6b1d035e157fc1a9498c2399be9af5257d4ff4d19bc
+	source = https://files.pythonhosted.org/packages/source/m/mkdocs_gen_files/mkdocs_gen_files-0.6.0.tar.gz
+	sha256sums = 52022dc14dcc0451e05e54a8f5d5e7760351b6701eff816d1e9739577ec5635e
 
 pkgname = mkdocs-gen-files
 	depends = python>=3.7
-	depends = mkdocs>=1.0.3
+	depends = mkdocs>=1.4.1
