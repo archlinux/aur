@@ -1,7 +1,7 @@
 # Maintainer: TheBill2001 <tuantran1632001 at gmail dot com>
 
 pkgname=obs-urlsource
-pkgver=0.3.7
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='OBS plugin to fetch data from a URL or file, connect to an API or AI service, parse responses and display text, image or audio on scene'
 arch=(x86_64)
@@ -10,8 +10,8 @@ license=('GPL-2.0-only')
 depends=('obs-studio' 'qt6-base' 'curl' 'pugixml')
 makedepends=('git' 'cmake' 'gcc')
 source=("git+https://github.com/royshil/obs-urlsource.git#tag=$pkgver"
-        "git+https://github.com/pantor/inja.git#commit=67d6fea2b7fe6b032891d8fb32bb07fb7353f695"
-        "git+https://github.com/danielaparker/jsoncons.git#commit=62e38581f7a208314cb7dd52f0b0ff2473de3cb2")
+        "git+https://github.com/pantor/inja.git#commit=ebb7aeb3ae49ccb49a642aaecb0d41483078b8bd"
+        "git+https://github.com/danielaparker/jsoncons.git#commit=0dac68183388291c213aeb6552eac47c954a7351")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
@@ -25,9 +25,6 @@ prepare() {
 }
 
 build() {
-    export CFLAGS="$CFLAGS -Wno-error=deprecated-declarations"
-    export CXXFLAGS="$CXXFLAGS -Wno-error=deprecated-declarations"
-
     cmake -B build -S obs-urlsource \
         -W no-dev \
         -DCMAKE_BUILD_TYPE=None \
