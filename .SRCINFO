@@ -1,0 +1,15 @@
+pkgbase = jxl-rs
+	pkgdesc = A work-in-progress reimplementation of a JPEG XL decoder in Rust, aiming to be conforming, safe, and fast.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/libjxl/jxl-rs
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cargo
+	depends = glibc
+	depends = lcms2
+	depends = gcc-libs
+	source = https://github.com/libjxl/jxl-rs/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 204621c974385dfc438ff9c871662ed36cef3838290b38a31d2b87dd330c469e
+
+pkgname = jxl-rs
