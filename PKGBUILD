@@ -1,3 +1,4 @@
+#maintainer: Lennart Martens monkeynator78@gmail.com
 pkgname=coreusage-git
 pkgver=V1.0.5.r0.gb23bd84
 pkgrel=1

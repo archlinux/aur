@@ -1,6 +1,6 @@
 pkgbase = coreusage-git
 	pkgdesc = Lightweight CPU core usage information tool written in C
-	pkgver = 1.0.5.r0.g0000000
+	pkgver = V1.0.5.r0.gb23bd84
 	pkgrel = 1
 	url = https://github.com/Lennart1978/coreusage
 	arch = x86_64
