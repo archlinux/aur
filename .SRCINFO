@@ -1,0 +1,15 @@
+pkgbase = weatherfetch
+	pkgdesc = A rust fetch tool like neofetch or fastfetch but with Weather. Cli: wfetch
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/Nam4ik/WeatherFetch
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	depends = openssl
+	source = weatherfetch-0.0.4.tar.gz::https://github.com/Nam4ik/WeatherFetch/archive/v0.0.4.tar.gz
+	sha256sums = 8043b8644b55bf411965c0ba5030e06572a701f33a4d51804a37a7b534dc08c1
+
+pkgname = weatherfetch
