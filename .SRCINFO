@@ -1,11 +1,11 @@
 pkgbase = woof-doom
 	pkgdesc = Woof! is a continuation of Lee Killough's Doom source port MBF targeted at modern systems
 	pkgver = 15.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fabiangreffrath/woof
 	install = install.sh
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = cmake
 	makedepends = python3
 	depends = sdl2
