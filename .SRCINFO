@@ -1,7 +1,7 @@
 pkgbase = qb64
 	pkgdesc = BASIC for the modern era
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qb64.com/
 	install = qb64.install
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = qb64
 	makedepends = gcc
 	makedepends = zlib
 	makedepends = xorg-xmessage
+	depends = glu
 	options = !strip
 	source = https://github.com/QB64Official/qb64/archive/refs/tags/v2.1.tar.gz
 	sha256sums = 0fac0e540ed7fe18ec405e68c540b7348f5f1e7b4f0c140862d9b590ba2a1c44
