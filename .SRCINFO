@@ -1,21 +1,19 @@
 pkgbase = python-pytest-golden
 	pkgdesc = Plugin for pytest that offloads expected outputs to data files
-	pkgver = 0.2.2
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/oprypin/pytest-golden
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
-	checkdepends = python-atomicwrites
 	checkdepends = python-ruamel-yaml
-	makedepends = python-poetry
+	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://github.com/oprypin/pytest-golden/archive/refs/tags/v0.2.2.tar.gz
-	md5sums = f97ec3a4ee556e9439c366f913607e2a
+	source = https://files.pythonhosted.org/packages/source/p/pytest_golden/pytest_golden-1.0.0.tar.gz
+	md5sums = 1c5f124d80b420a2df976d938b593ffc
 
 pkgname = python-pytest-golden
 	depends = python-pytest>=6.1.2
 	depends = python-ruamel-yaml>=0.16.12
-	depends = python-atomicwrites>=1.4.0
 	depends = python-testfixtures>=6.15.0
