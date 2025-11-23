@@ -8,18 +8,18 @@
 # Contributor: kfgz <ffiasd at gmail dot com>
 
 pkgname=y-cruncher
-pkgver=0.8.6.9545
+pkgver=0.8.7.9547
 pkgrel=1
 pkgdesc="The first scalable multi-threaded Pi-benchmark for multi-core systems"
 arch=(x86_64)
 url="http://www.numberworld.org/$pkgname"
 license=(custom)
 options=('!strip')
-depends=(glibc gcc-libs numactl onetbb)
+depends=('glibc' 'gcc-libs' 'numactl' 'onetbb')
 
 #source=("https://github.com/Mysticial/$pkgname/releases/download/v$pkgver/$pkgname.v$pkgver-dynamic.tar.xz")
 source=("http://www.numberworld.org/$pkgname/$pkgname%20v$pkgver-dynamic.tar.xz")
-b2sums=('da30caff35f4e9a671f4693bea1a5d714df8934afd84923b4c7f44b224918e50a87a65d1dca066256207d78ec6e04bc885446e2f6f5e3d5d0b3d1cfeb6173282')
+b2sums=('a65aa450ee976651d3b837c72fa620d6816c4cb847d073988220eb1363330c984e83d32be0fe044ef1d65c68738b818003c0a66129a147f7f8a75c342d7c4214')
 
 prepare() {
 	cd "$pkgname v$pkgver-dynamic"
@@ -29,6 +29,7 @@ prepare() {
 
 	mv "Binaries/Digits/Gamma(⅓).txt" "Binaries/Digits/Gamma(1-3).txt"
 	mv "Binaries/Digits/Gamma(¼).txt" "Binaries/Digits/Gamma(1-4).txt"
+	mv "Binaries/Digits/Gamma(⅕).txt" "Binaries/Digits/Gamma(1-5).txt"
 }
 
 package() {

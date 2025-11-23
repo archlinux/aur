@@ -1,6 +1,6 @@
 pkgbase = y-cruncher
 	pkgdesc = The first scalable multi-threaded Pi-benchmark for multi-core systems
-	pkgver = 0.8.6.9545
+	pkgver = 0.8.7.9547
 	pkgrel = 1
 	url = http://www.numberworld.org/y-cruncher
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = y-cruncher
 	depends = numactl
 	depends = onetbb
 	options = !strip
-	source = http://www.numberworld.org/y-cruncher/y-cruncher%20v0.8.6.9545-dynamic.tar.xz
-	b2sums = da30caff35f4e9a671f4693bea1a5d714df8934afd84923b4c7f44b224918e50a87a65d1dca066256207d78ec6e04bc885446e2f6f5e3d5d0b3d1cfeb6173282
+	source = http://www.numberworld.org/y-cruncher/y-cruncher%20v0.8.7.9547-dynamic.tar.xz
+	b2sums = a65aa450ee976651d3b837c72fa620d6816c4cb847d073988220eb1363330c984e83d32be0fe044ef1d65c68738b818003c0a66129a147f7f8a75c342d7c4214
 
 pkgname = y-cruncher

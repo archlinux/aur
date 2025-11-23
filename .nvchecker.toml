@@ -1,0 +1,5 @@
+[y-cruncher]
+source = "github"
+github = "Mysticial/y-cruncher"
+use_latest_release = true
+prefix = "v"
