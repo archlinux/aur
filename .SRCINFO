@@ -1,6 +1,6 @@
 pkgbase = python-tryton
 	pkgdesc = Tryton desktop client
-	pkgver = 7.6.4
+	pkgver = 7.6.5
 	pkgrel = 1
 	url = https://tryton.org
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-tryton
 	optdepends = python-playsound: sound support
 	provides = tryton
 	conflicts = tryton
-	source = https://pypi.org/packages/source/t/tryton/tryton-7.6.4.tar.gz
-	sha512sums = 425ff043083e71b25b420505974acfbaf2f616faf2492b474d1758229512b6016fd557e70a667a82f4ce2cdfead325e618f0c2b86d36cebc15a04d9d4e194ac3
+	source = https://pypi.org/packages/source/t/tryton/tryton-7.6.5.tar.gz
+	sha512sums = d6175ca5d1511469be935b15cf2477fbf2cb978df9828ef3c0a5ac214ad905a3f8ec0a79164d1098b94310627899c29d96840272e33fc0dab7447e9b9cfe621c
 
 pkgname = python-tryton

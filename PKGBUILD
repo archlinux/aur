@@ -2,7 +2,7 @@
 # Contributor: Richard PALO <richard.palo@free.fr>
 _base=tryton
 pkgname=python-${_base}
-pkgver=7.6.4
+pkgver=7.6.5
 pkgrel=1
 pkgdesc="Tryton desktop client"
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 optdepends=('python-goocalendar: calendar support'
   'python-playsound: sound support')
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('425ff043083e71b25b420505974acfbaf2f616faf2492b474d1758229512b6016fd557e70a667a82f4ce2cdfead325e618f0c2b86d36cebc15a04d9d4e194ac3')
+sha512sums=('d6175ca5d1511469be935b15cf2477fbf2cb978df9828ef3c0a5ac214ad905a3f8ec0a79164d1098b94310627899c29d96840272e33fc0dab7447e9b9cfe621c')
 provides=(${_base})
 conflicts=(${_base})
 
