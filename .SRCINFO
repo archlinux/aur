@@ -1,8 +1,8 @@
 pkgbase = uamp-ffmpeg
 	pkgdesc = Ffmpeg decoder plugin for uamp (Universal Advanced Audio Player).
 	pkgver = 0.1.0
-	pkgrel = 2
-	url = https://bonnyad9.github.io/uamp-ffmpeg/
+	pkgrel = 3
+	url = https://github.com/BonnyAD9/uamp-ffmpeg/
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
