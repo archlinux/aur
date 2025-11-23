@@ -5,7 +5,7 @@ pkgname=bar-lobby-git
 _electronver=37
 ### ↑↑↑ This sadly cant be done automatically
 pkgver=VERSION
-pkgrel=1
+pkgrel=2
 pkgdesc="The new - stil Work_In_Progres lobby, for the RTS game Beyond All Reason (Github version)."
 arch=('x86_64')
 url="https://beyond-all-reason.github.io/bar-lobby/"
@@ -118,8 +118,8 @@ package() {
         install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname}"
         install -Dm644 "squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname}"
         cp -Pr --no-preserve=ownership "squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname}"
-        install -Dm644 "squashfs-root/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-        install -Dm644 "squashfs-root/usr/share/icons/hicolor/512x512/apps/${pkgname%-git}.png" -t "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+        install -Dm644 "squashfs-root/${pkgname%-git}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+        install -Dm644 "squashfs-root/usr/share/icons/hicolor/512x512/apps/${pkgname%-git}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
         cd "${srcdir}/${pkgname%-git}"/LICENSES
         install -Dm644 "CC-BY-3.0.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-CC-BY-3.0.txt"
