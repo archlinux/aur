@@ -1,7 +1,7 @@
 pkgbase = obs-urlsource
 	pkgdesc = OBS plugin to fetch data from a URL or file, connect to an API or AI service, parse responses and display text, image or audio on scene
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://obsproject.com/forum/resources/url-api-source-live-data-media-and-ai-on-obs-made-simple.1756/
 	arch = x86_64
 	license = GPL-2.0-only
@@ -12,11 +12,7 @@ pkgbase = obs-urlsource
 	depends = qt6-base
 	depends = curl
 	depends = pugixml
-	source = git+https://github.com/royshil/obs-urlsource.git#tag=0.4.0
-	source = git+https://github.com/pantor/inja.git#commit=ebb7aeb3ae49ccb49a642aaecb0d41483078b8bd
-	source = git+https://github.com/danielaparker/jsoncons.git#commit=0dac68183388291c213aeb6552eac47c954a7351
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = https://github.com/royshil/obs-urlsource/releases/download/0.4.0/obs-urlsource-0.4.0-source.tar.xz
+	sha256sums = c1dafbfee3e271bd730c0eca5c487007afaeaa9d9c6573660734f8856182f161
 
 pkgname = obs-urlsource
