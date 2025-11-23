@@ -11,4 +11,4 @@ pkgbase = overlayroot
 	source = git+https://github.com/hilderingt/archlinux-overlayroot
 	sha256sums = SKIP
 
-pkgname = overlayroot
+pkgname = archlinux-overlayroot
