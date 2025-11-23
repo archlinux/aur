@@ -1,6 +1,6 @@
 pkgbase = jellyfin-media-player-git
 	pkgdesc = Jellyfin Desktop Client
-	pkgver = r1890.6f54621
+	pkgver = r1893.811ca84
 	pkgrel = 1
 	url = https://github.com/jellyfin/jellyfin-media-player
 	arch = i686
