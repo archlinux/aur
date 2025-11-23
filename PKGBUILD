@@ -14,6 +14,7 @@ depends=(
 	ffmpeg
 	gcc-libs
 	glibc
+	libevdev
 	libpulse
 	nvidia-utils
 	openssl

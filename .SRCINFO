@@ -12,6 +12,7 @@ pkgbase = moonshine-git
 	depends = ffmpeg
 	depends = gcc-libs
 	depends = glibc
+	depends = libevdev
 	depends = libpulse
 	depends = nvidia-utils
 	depends = openssl
