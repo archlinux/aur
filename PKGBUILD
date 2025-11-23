@@ -1,16 +1,16 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=codemachine-cli
 _pkgname=CodeMachine-CLI
-pkgver=0.5.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Multi-agent workflow orchestration CLI"
 arch=('any')
 url="https://github.com/moazbuilds/CodeMachine-CLI"
 license=('MIT')
 depends=('nodejs>=20')
-makedepends=('npm' 'jq')
+makedepends=('npm' 'jq' 'bun')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/moazbuilds/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6b607d1a6f827a897c95be4d483ea05717e80d28def6c43dbcd6cac6ef763bf8')
+sha256sums=('4e56a341510fd48073069abd5da992d9559a3bcbec46a420e68e91c942909c12')
 
 pkgver() {
     curl -fs "https://api.github.com/repos/moazbuilds/${_pkgname}/releases/latest" \
@@ -22,7 +22,7 @@ build() {
 
     export npm_config_cache="${srcdir}/npm-cache"
     export HUSKY=0
-    npm ci
+    npm install
     npm run build
 }
 
@@ -36,7 +36,7 @@ package() {
     local install_dir="${pkgdir}/usr/lib/${pkgname}"
     install -dm755 "${install_dir}"
 
-    local _paths=(config dist docs prompts templates package.json package-lock.json node_modules)
+    local _paths=(config dist docs prompts templates package.json node_modules)
     for _path in "${_paths[@]}"; do
         if [ -e "${_path}" ]; then
             cp -r --no-preserve=ownership "${_path}" "${install_dir}/"
