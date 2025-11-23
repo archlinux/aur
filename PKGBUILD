@@ -1,13 +1,6 @@
 # Maintainer: Vamp898 <vamp898-aur@ikaros.space>
-# Contributor: Bjoern Franke <bjo+aur@schafweide.org>
-# Contributor: Anthony Wang <a at exozy dot me>
-# Contributor: ny-a <nyaarch64 at gmail dot com>
-# Contributor: Daniel Moch <daniel@danielmoch.com>
-# Contributor: Jean Lucas <jean@4ray.co>
-# Contributor: Fredrick Brennan <copypaste@kittens.ph>
-
 pkgname=mastodon
-pkgver=4.5.1
+pkgver=4.5.2
 pkgrel=1
 pkgdesc='Your self-hosted, globally interconnected microblogging community'
 arch=(any)
@@ -38,7 +31,7 @@ source=(https://github.com/mastodon/mastodon/archive/v$pkgver.tar.gz
         mastodon.sysusers.d
         mastodon.tmpfiles.d
         devise_pam.patch)
-sha256sums=('1b63614ef4c7780495e68fec448292ad6e5127c0b8b9852fe327e8979132d7cb'
+sha256sums=('5fc1f2409f59ac4fdd07addb01ed1ab0dba57251cd1f44a39c3e4a57037795d7'
             'e9928ced31f6490476100f02f2e158e41a076988dd7f3dff8f21d245bc2bb0ff'
             '1b67693f7de5802a34985b9ac969497fc6e6042dcae0b8abf6595b9fe15ee80e'
             '3fdd54dd1f374b7206c8beaebafdf890e74d30385f0c93f9cd99e1e4be92f8fa'
