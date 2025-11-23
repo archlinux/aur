@@ -1,0 +1,17 @@
+pkgbase = plasma-workspace-lite-bin
+	pkgdesc = KDE Plasma Workspace, light version with fixes and improvements for X11 session
+	pkgver = 6.5.3
+	pkgrel = 1
+	url = https://github.com/KDE-Lite/plasma-workspace-lite
+	arch = x86_64
+	license = custom
+	provides = plasma-workspace
+	provides = plasma-workspace-lite
+	conflicts = plasma-workspace
+	conflicts = plasma-workspace-lite
+	noextract = -6.5.3-1-x86_64.pkg.tar.zst
+	options = !strip
+	source = https://x11libre.net/repo/arch_based/x86_64/plasma-workspace-lite-6.5.3-1-x86_64.pkg.tar.zst
+	sha256sums = 27d3e892ed85b343c2ed217cbcea30212f7c366356f717ae9ff2d86baebb98fd
+
+pkgname = plasma-workspace-lite-bin
