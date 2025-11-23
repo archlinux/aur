@@ -1,7 +1,7 @@
 pkgbase = lib32-graphene
 	pkgdesc = A thin layer of graphic data types (32-bit)
 	pkgver = 1.10.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ebassi/graphene
 	arch = x86_64
 	license = MIT
