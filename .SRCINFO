@@ -1,14 +1,14 @@
 pkgbase = fritzbox-tools
 	pkgdesc = Manage FRITZ!Box devices via command line.
 	pkgver = 0.47
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mengelke.de/Projekte/FritzBox-Tools
 	install = fritzbox-tools.download
 	arch = any
 	license = GPL-3.0-only
 	makedepends = curl
 	makedepends = coreutils
-	makedepends = tinyxxd
+	makedepends = xxd
 	makedepends = bash
 	depends = php>=4.4
 	provides = fritzbox-tools=0.47
