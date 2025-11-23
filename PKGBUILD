@@ -1,10 +1,10 @@
-# Maintainer: Sainnhe Park <sainnhe@gmail.com>
-# Maintainer: Anupam Srivastava <anupam@dont.tech>
+# Maintainer: Amro Emad  <korialo001 at gmail dot com>
+
 pkgname=plasma6-themes-fluent-git
 _themeName=Fluent
 _gitname="$_themeName-kde"
 pkgver=r105.44794f2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fluent design theme for kde plasma"
 arch=('any')
 url="https://github.com/vinceliuice/${_gitname}"
