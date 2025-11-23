@@ -1,6 +1,6 @@
 pkgbase = python-decotools
 	pkgdesc = Python decorator tools.
-	pkgver = 0.0.2
+	pkgver = 0.0.3.1
 	pkgrel = 1
 	url = https://pypi.org/project/python-decotools
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-decotools
 	conflicts = python-decotools
 	options = !strip
 	options = !debug
-	source = python_decotools-0.0.2.tar.gz::https://files.pythonhosted.org/packages/source/p/python_decotools/python_decotools-0.0.2.tar.gz
-	sha256sums = 98c2e668951e3250d3070a88334e66c79cb3d6eacd522bc3c2dcf5d7655d9df1
+	source = python_decotools-0.0.3.1.tar.gz::https://files.pythonhosted.org/packages/source/p/python_decotools/python_decotools-0.0.3.1.tar.gz
+	sha256sums = 3bda0ae805ce72f661ab04bc9ea1775d35b242ad35a655535461ff94876d199d
 
 pkgname = python-decotools

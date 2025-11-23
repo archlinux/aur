@@ -2,7 +2,7 @@
 
 pkgname=python-decotools
 _name=${pkgname//-/_}
-pkgver=0.0.2
+pkgver=0.0.3.1
 pkgrel=1
 epoch=
 pkgdesc="Python decorator tools."
@@ -27,7 +27,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('98c2e668951e3250d3070a88334e66c79cb3d6eacd522bc3c2dcf5d7655d9df1')
+sha256sums=('3bda0ae805ce72f661ab04bc9ea1775d35b242ad35a655535461ff94876d199d')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
