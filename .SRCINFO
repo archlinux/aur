@@ -13,6 +13,10 @@ pkgbase = wshowlyrics
 	depends = pango
 	depends = curl
 	depends = fontconfig
+	depends = libappindicator-gtk3
+	depends = gdk-pixbuf2
+	depends = playerctl
+	optdepends = snixembed: System tray support for Swaybar
 	source = wshowlyrics-0.2.0.tar.gz::https://github.com/unstable-code/lyrics/archive/v0.2.0.tar.gz
 	sha256sums = SKIP
 
