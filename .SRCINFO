@@ -1,0 +1,14 @@
+pkgbase = ld64
+	pkgdesc = Apple LD64 for Arch Linux.
+	pkgver = 530_2
+	pkgrel = 0
+	url = http://assets.checkra.in/debian
+	arch = x86_64
+	license = unknown
+	makedepends = base-devel
+	makedepends = wget
+	depends = base-devel
+	source = http://assets.checkra.in/debian/ld64_530-2_amd64.deb
+	sha256sums = a2c017ca05d33325d4a39ba906ee2a535327d136adea5fd029fdc9407a4b7d31
+
+pkgname = ld64
