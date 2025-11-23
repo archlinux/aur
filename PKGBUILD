@@ -1,6 +1,6 @@
 # Maintainer: Alejandro Quintanar
 pkgname=term39
-pkgver=0.11.0
+pkgver=0.11.3
 pkgrel=1
 pkgdesc="A modern terminal multiplexer with classic MS-DOS aesthetic, built with Rust. Full-screen interface with window management and complete terminal emulation."
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alejandroqh/term39/archive/v$pkgver.tar.gz")
-sha256sums=('bb380acb5c28f2af1e0488fe9b6550e4de012ee0c9ad248b03bb6ede5c8f6c6b')
+sha256sums=('f97179a961d5c6c6be5f23e87e5af7603697524653ab4d0fede6963763470a48')
 
 build() {
     cd "$pkgname-$pkgver"
