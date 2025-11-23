@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='openvpn-auth-oauth2'
-pkgver='1.26.2'
+pkgver='1.26.3'
 pkgrel='1'
 pkgdesc='A Plugin/management interface client for OpenVPN server to handle an OIDC based single sign-on (SSO) auth flows'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('go')
 depends=('openvpn>=2.6.2')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('031c22b4edf3700b63a17911e815535426706688b46aaf836e7ded5bb648bdfe')
+sha256sums=('ca033657e016b60fdc3a840fa1636afb6d203383a3337757eebe0225d47f9dc2')
 backup=("etc/conf.d/${pkgname}"
 	"etc/${pkgname}/config.yaml")
 
@@ -37,16 +37,32 @@ prepare() {
 
 build() {
   cd "${GOPATH}/src/${_uri}/${pkgname}"
-  GOOS="${GOHOSTOS}" GOARCH="${GOHOSTARCH}" BUILDTAGS="no_otel" \
-  go build -x \
-    -buildmode="pie" \
-    -trimpath \
-    -mod="readonly" \
-    -modcacherw \
-    -ldflags "-linkmode external -extldflags '${LDFLAGS}' \
-    -X ${_uri}/${pkgname}/internal/version.Version=${pkgver} \
-    -X ${_uri}/${pkgname}/internal/version.Commit=$(git rev-parse HEAD) \
-    -X ${_uri}/${pkgname}/internal/version.Date=$(date -u '+%Y%m%d-%H:%M:%S' --date=@${SOURCE_DATE_EPOCH})"
+  GOOS="${GOHOSTOS}" GOARCH="${GOHOSTARCH}" BUILDTAGS="no_otel"
+
+  for e in "cmd" "lib"
+    do
+
+      if [[ "${e}" == "lib" ]]
+        then
+          mode="c-shared"
+          outname="${pkgname}.so"
+      else
+          mode="pie"
+          outname="${pkgname}"
+      fi
+
+      go build -x \
+        -buildmode="${mode}" \
+        -trimpath \
+        -mod="readonly" \
+        -modcacherw \
+        -ldflags "-linkmode external -extldflags '${LDFLAGS}' \
+        -X ${_uri}/${pkgname}/internal/version.Version=${pkgver} \
+        -X ${_uri}/${pkgname}/internal/version.Commit=$(git rev-parse HEAD) \
+        -X ${_uri}/${pkgname}/internal/version.Date=$(date -u '+%Y%m%d-%H:%M:%S' --date=@${SOURCE_DATE_EPOCH})" \
+        -o "${outname}" \
+        "./${e}/${pkgname}"
+    done
 }
 
 check() {
@@ -54,11 +70,13 @@ check() {
   go test -x ./...
 }
 
-
 package() {
   cd "${pkgname}-${pkgver}"
   install -Dm0644 "LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm0755 "${pkgname}" -t "${pkgdir}/usr/bin"
+  install -Dm0755 "${pkgname}.so" -t "${pkgdir}/usr/lib/openvpn/plugins"
+  install -Dm0644 "${pkgname}.h" -t "${pkgdir}/usr/include"
+
   pushd "packaging"
   install -Dm0644 "etc/${pkgname}/config.yaml" -t "${pkgdir}/etc/${pkgname}"
   install -Dm0644 "etc/sysconfig/${pkgname}" -t "${pkgdir}/etc/conf.d"
