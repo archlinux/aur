@@ -2,10 +2,10 @@
 pkgname='dimemas'
 pkgdesc='High-abstracted network simulator for message-passing programs (from BSC).'
 pkgver='5.5.0.20251028'
-pkgrel='2'
+pkgrel='3'
 arch=('x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
-license=('LGPL2.1')
+license=('LGPL-2.1-or-later')
 depends=(boost)
 source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-${pkgver%.*}-src.tar.bz2"
         "0001-Honor-SOURCE_DATE_EPOCH-for-reproducible-builds.patch")

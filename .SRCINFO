@@ -1,10 +1,10 @@
 pkgbase = dimemas
 	pkgdesc = High-abstracted network simulator for message-passing programs (from BSC).
 	pkgver = 5.5.0.20251028
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools
 	arch = x86_64
-	license = LGPL2.1
+	license = LGPL-2.1-or-later
 	depends = boost
 	source = https://ftp.tools.bsc.es/dimemas/dimemas-5.5.0-src.tar.bz2
 	source = 0001-Honor-SOURCE_DATE_EPOCH-for-reproducible-builds.patch
