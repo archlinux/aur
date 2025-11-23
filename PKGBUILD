@@ -2,12 +2,12 @@
 
 pkgname=moonshine
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
 url="https://github.com/hgaiser/moonshine"
 license=('BSD-2-Clause')
-makedepends=(clang cmake rust)
+makedepends=(clang cmake libc++ rust)
 depends=(
 	avahi
 	cuda
