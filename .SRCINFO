@@ -1,6 +1,6 @@
 pkgbase = nceplibs-g2c
 	pkgdesc = C decoder/encoder routines for GRIB edition 2
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/NOAA-EMC/NCEPLIBS-g2c
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = nceplibs-g2c
 	depends = openjpeg2
 	depends = libaec
 	options = staticlibs
-	source = NCEPLIBS-g2c-2.2.0.tar.gz::https://github.com/NOAA-EMC/NCEPLIBS-g2c/archive/refs/tags/v2.2.0.tar.gz
+	source = NCEPLIBS-g2c-2.3.0.tar.gz::https://github.com/NOAA-EMC/NCEPLIBS-g2c/archive/refs/tags/v2.3.0.tar.gz
 	sha256sums = cf0ac8f75aed662ccc64f4c44fbe46a70307bc27cbe95417fdfb6caf75245457
 
 pkgname = nceplibs-g2c

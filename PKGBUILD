@@ -2,7 +2,7 @@
 
 pkgname=nceplibs-g2c
 _pkgname=NCEPLIBS-g2c
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="C decoder/encoder routines for GRIB edition 2"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('LGPL-3.0-only')
 depends=('jasper' 'libpng' 'zlib' 'openjpeg2' 'libaec')
 makedepends=('cmake')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cf0ac8f75aed662ccc64f4c44fbe46a70307bc27cbe95417fdfb6caf75245457')
+sha256sums=('8520a24c066500cfd0d07a05c6b7b0cb92383d1a4737cf6e79d9f4919c8e79ab')
 options=('staticlibs')
 
 build() {
