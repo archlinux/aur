@@ -1,6 +1,6 @@
 pkgbase = qwen-code
 	pkgdesc = cli coding agent (fork of gemini-cli)
-	pkgver = 0.2.3n20251121.442a9aed
+	pkgver = 0.3.0n20251123.c9af7481
 	pkgrel = 1
 	url = https://github.com/QwenLM/qwen-code
 	arch = any
