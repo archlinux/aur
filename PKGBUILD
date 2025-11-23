@@ -4,7 +4,7 @@
 # https://github.com/virtualhere/script/blob/main/install_server
 
 pkgname=virtualhere-server-bin
-pkgver=4.6.4
+pkgver=4.8.5
 pkgrel=3
 pkgdesc="VirtualHere USB Server for Linux Desktop"
 OPTIONS=(!strip)
