@@ -1,7 +1,7 @@
 # Maintainer: unstable-code <assa0620@gmail.com>
 pkgname=wshowlyrics
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Wayland-native lyrics display for MPD with online fallback"
 arch=('x86_64')
 url="https://github.com/unstable-code/lyrics"
@@ -9,7 +9,6 @@ license=('GPL-3.0-or-later')
 depends=('wayland' 'cairo' 'pango' 'curl' 'fontconfig' 'libappindicator-gtk3' 'gdk-pixbuf2' 'playerctl')
 optdepends=('snixembed: System tray support for Swaybar')
 makedepends=('meson' 'ninja' 'wayland-protocols')
-backup=('etc/wshowlyrics/settings.ini')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
