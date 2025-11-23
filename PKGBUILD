@@ -7,8 +7,7 @@ pkgdesc="QtJambi is Qt bindings for the Java programming language originally dev
 arch=(x86_64)
 url="https://github.com/OmixVisualization/qtjambi"
 license=("LGPL" "GPL")
-depends=("qt6-base=${qtver}" "qt6-declarative=${qtver}")
-makedepends=("ant" "chrpath" "gcc" "jdk25-openjdk" "make" "patch")
+makedepends=("ant" "chrpath" "gcc" "jdk25-openjdk" "make" "patch" "qt6-base=${qtver}" "qt6-declarative=${qtver}")
 options=(!debug)
 source=(https://github.com/OmixVisualization/qtjambi/archive/refs/tags/v${qtjambiver}.tar.gz)
 sha256sums=(SKIP)
