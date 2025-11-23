@@ -28,7 +28,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=(!debug)
 source=("https://github.com/HiveGamesOSS/Chunker/releases/download/${pkgver}/Chunker-${pkgver}-amd64-linux.deb")
-sha256sums=('9b30288e0687ce9bd49d5937ca14a9b437aba16101cbd75b00c66e91b1c712a2')
+sha256sums=('d8f3a81d79198eac5ccd434569d73d9224cd118a110bec285f1469b8ef7707c5')
 
 package() {
   bsdtar -xf data.tar.xz -C "${pkgdir}/"
