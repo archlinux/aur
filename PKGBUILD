@@ -1,14 +1,14 @@
 # Maintainer: yskszk63 <yskszk63 at gmail dot com>
 pkgname=renvim-bin
-pkgver=0.0.3
-pkgrel=3
+pkgver=0.0.6
+pkgrel=0
 pkgdesc='Open the file in the outer Neovim instance.'
 arch=('x86_64')
 url='https://github.com/yskszk63/renvim'
 license=('MIT', 'Apache-2.0')
 depends=('neovim')
-source=("${url}/releases/download/v${pkgver}/renvim_${pkgver}_Linux_x86_64.tar.gz")
-b2sums=('e13479799a759af8f6b9cb7a60167595f8c30a2e08be865b40e4fe94b762f036801c6e4b619f9477cafd564957fc0503d32841e305302d7887b30a2bd42b084b')
+source=("${url}/releases/download/v${pkgver}/renvim_${pkgver}_linux_amd64.tar.gz")
+b2sums=('f8c575566f1d107bc77c68ecb65d7dbf51d6137e731958ea192c9760fe4213ed61d0924d5381e077238e774e14f8400359f8eedddee22b34f2094a08efd81469')
 
 package() {
     install -dm755 ${pkgdir}/usr/bin
