@@ -9,7 +9,7 @@ url='https://macslow.org'
 license=('GPL')
 depends=('libglade' 'librsvg')
 makedepends=('intltool')
-source=("http://ftp.de.debian.org/debian/pool/main/c/cairo-clock/${pkgname}_${pkgver}.orig.tar.gz"
+source=("https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/${pkgname}/${pkgver}-2ubuntu2/${pkgname}_${pkgver}.orig.tar.gz"
         'cairo-clock.patch')
 md5sums=('78e5b3aa3492aa6c182eaacae63a7c03'
          'a2ec378bf79dfb9a1b1418d7b2d341ff')
@@ -22,7 +22,8 @@ build() {
   # quick and dirty build fix, a proper patch was submitted upstream and is
   # pending approval
   sed -ie 's/-Wl, --export-dynamic/-Wl,--export-dynamic/g' src/Makefile*
-
+  
+  export LDFLAGS="$LDFLAGS -lm"
   ./configure --prefix=/usr
   make
 }
