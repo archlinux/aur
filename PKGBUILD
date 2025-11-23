@@ -1,6 +1,6 @@
-# Maintainer: Aiden Ops <aiden@example.com>
+# Maintainer: Aiden Tingler <tingleraiden@icloud.com>
 pkgname=pplhatearch
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Yay-like helper that pulls packages from the GitHub AUR backup"
 arch=('x86_64')
@@ -20,6 +20,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 pplhatearch "$pkgdir/usr/bin/pplhatearch"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/pplhatearch/README.md"
 
   install -Dm644 completions/pplhatearch.bash \
@@ -27,5 +28,5 @@ package() {
   install -Dm644 completions/pplhatearch.zsh \
     "$pkgdir/usr/share/zsh/site-functions/_pplhatearch"
   install -Dm644 completions/pplhatearch.fish \
-    "$pkgdir/usr/share/fish/completions/pplhatearch.fish"
+    "$pkgdir/usr/share/fish/vendor_completions.d/pplhatearch.fish"
 }
