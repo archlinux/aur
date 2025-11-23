@@ -1,11 +1,11 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=moc-fluidsynth-plugin
 pkgver=0.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for playing MIDI files with FluidSynth using the MOC (Music on Console) player."
 arch=(x86_64)
 url="https://github.com/joanbm/$pkgname"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=(moc fluidsynth libsmf)
 install=install.sh
 

@@ -1,11 +1,11 @@
 pkgbase = moc-fluidsynth-plugin
 	pkgdesc = Plugin for playing MIDI files with FluidSynth using the MOC (Music on Console) player.
 	pkgver = 0.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/joanbm/moc-fluidsynth-plugin
 	install = install.sh
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	depends = moc
 	depends = fluidsynth
 	depends = libsmf
