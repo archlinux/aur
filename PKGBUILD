@@ -2,7 +2,7 @@
 # Based on teamviewer package from AUR: https://aur.archlinux.org/packages/teamviewer
 
 pkgname=teamviewer-sandboxed
-pkgver=15.70.4
+pkgver=15.71.4
 pkgrel=2
 pkgdesc='TeamViewer with systemd and bubblewrap security sandboxing (recommended for client-only use)'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -28,10 +28,10 @@ source+=('teamviewerd-sandboxed.service'
          'teamviewer-gui-wrapper.sh')
 sha256sums=('cd2031c9b6559d0e5806b2bbb4261997d5eee7aae5620640af950f264fdad661'
             'd65c847dadc88ec3656f3d04ec287a2e9243d0d0780364bb8492b7bd417e7dc1')
-sha256sums_i686=('0c7319ff572e07cd3c27d5deef1934babbc2c85f3f1f279408c96786e3e0af0e')
-sha256sums_x86_64=('545fda7f3d4f527a0f85cfc18b63f7793033ea5d1a79c5849e5d1371e86fe110')
-sha256sums_armv7h=('9ac5b27420d1489b0aff68c99b09f942add69084b49f843ae4bfb216424325f9')
-sha256sums_aarch64=('5eba27a8b6cf9d7ac2505f2fea856350edb1bf838cf0cc892df7dbbfcfc511c8')
+sha256sums_i686=('1a7854ad92d80e967f7cc3b9385c33e034a67de6f6d8690186395f8f1a04d724')
+sha256sums_x86_64=('0f3b5945504815d2e4657d5af3db55c09bc989c82c9b9613bb1d1ecf258bd7ec')
+sha256sums_armv7h=('789445ea3e5ad78dd3d24dc8ed3621d27f45c98f0cba2a39c465acb51e9adaf4')
+sha256sums_aarch64=('94a100b8cb1271b9c492047a545ca41326abe79bbf15db7955c0969ca3f024b5')
 
 prepare() {
     warning "If the install fails, you need to uninstall previous major version of Teamviewer"
