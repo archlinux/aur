@@ -1,6 +1,6 @@
 pkgbase = osgrep
 	pkgdesc = Local grep-like semantic search tool for your codebase
-	pkgver = 0.3.0
+	pkgver = 0.3.5
 	pkgrel = 1
 	url = https://github.com/Ryandonofrio3/osgrep
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = osgrep
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = osgrep-0.3.0.tgz
-	source = https://registry.npmjs.org/osgrep/-/osgrep-0.3.0.tgz
-	sha256sums = eed1e5dd4c0a02196e705cac5e9284e15a0e474707bc5c855df8ff143e3d1c88
+	noextract = osgrep-0.3.5.tgz
+	source = https://registry.npmjs.org/osgrep/-/osgrep-0.3.5.tgz
+	sha256sums = 5beb2671d91b35ae4721fd047f6717dd9a6a2b664389082cfdd3031df6352f46
 
 pkgname = osgrep
