@@ -19,11 +19,11 @@
 : ${_install_path:=usr/lib}
 : ${_wmclass:=floorp}
 
-: ${_runtime_commit:=b34110b434f081a720c01d64a6a8c1b9ba53c65a} # daily-599
+: ${_runtime_commit:=faa8eab2596c709fa884dd7fd99875d9a12a41f6} # daily-624
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=12.6.0
+pkgver=12.7.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -114,7 +114,7 @@ source=(
   "$_pkgname.desktop"
 )
 sha256sums=(
-  'ca8ed473ad196140a66298012a04fc33cd1fca30b4d7ac0dbbadc14768f00fbc'
+  '4e371c2f4cd7276e58e2dfcb7611d639efd0caccba42d77d112270e72569f09c'
   'SKIP'
   'SKIP'
   '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
@@ -486,4 +486,10 @@ END
   local theme=floorp-official
   install -Dm644 "browser/branding/$theme/default256.png" \
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
+
+  for i in 16 32 48 64 128; do
+    local _icon_dest="$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
+    mkdir -pm755 "$_icon_dest"
+    ln -sf "/$_install_path/floorp/browser/chrome/icons/default/default${i}.png" "$_icon_dest/$_pkgname.png"
+  done
 }
