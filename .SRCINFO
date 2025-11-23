@@ -1,0 +1,20 @@
+pkgbase = ceres-solver-gpl
+	pkgdesc = Solver for nonlinear least squares problems (with SuiteSparse/GPL)
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = http://ceres-solver.org/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = eigen
+	depends = google-glog
+	depends = metis
+	depends = suitesparse
+	optdepends = openmp
+	provides = ceres-solver
+	conflicts = ceres-solver
+	source = http://ceres-solver.org/ceres-solver-2.2.0.tar.gz
+	sha256sums = 48b2302a7986ece172898477c3bcd6deb8fb5cf19b3327bc49969aad4cede82d
+
+pkgname = ceres-solver-gpl
