@@ -1,7 +1,7 @@
 pkgbase = osgrep
 	pkgdesc = Local grep-like semantic search tool for your codebase
 	pkgver = 0.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ryandonofrio3/osgrep
 	arch = any
 	license = MIT
