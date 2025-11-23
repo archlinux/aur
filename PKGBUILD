@@ -1,6 +1,6 @@
 pkgname=waveloggate-git
-pkgdesc="CAT-Bridge for WSJT-* and FLRig to Wavelog"
-pkgver=1.1.11
+pkgdesc="CAT and WSJT-X Bridge for WaveLog"
+pkgver=1.1.12
 pkgrel=0
 arch=('x86_64')
 makedepends=(
