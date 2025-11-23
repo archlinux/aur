@@ -8,9 +8,14 @@ url='https://github.com/bootc-dev/bootc'
 license=('Apache-2.0 OR MIT')
 makedepends=('cargo')
 depends=(
-    gcc
+    bash
+    gcc-libs
+    glib2
     glibc
+    openssl
     ostree
+    zlib
+    zstd
 )
 arch=('x86_64')
 source=("https://github.com/bootc-dev/bootc/releases/download/v$pkgver/bootc-$pkgver.tar.zstd")

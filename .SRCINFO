@@ -6,9 +6,14 @@ pkgbase = bootc
 	arch = x86_64
 	license = Apache-2.0 OR MIT
 	makedepends = cargo
-	depends = gcc
+	depends = bash
+	depends = gcc-libs
+	depends = glib2
 	depends = glibc
+	depends = openssl
 	depends = ostree
+	depends = zlib
+	depends = zstd
 	source = https://github.com/bootc-dev/bootc/releases/download/v1.10.0/bootc-1.10.0.tar.zstd
 	sha256sums = 39b39a9bb92680f1690e262c7190fb9cd2d5f2dec8d2904df2bbaecd594d1118
 
