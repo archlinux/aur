@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-headsetcontrol
 	pkgdesc = Gnome Shell Extension to visualize headset status from HeadsetControl
-	pkgver = 49.3
+	pkgver = 49.5
 	pkgrel = 0
 	url = https://github.com/ChrisLauinger77/gnome-shell-extension-HeadsetControl
 	arch = any
 	license = GPL
 	depends = gnome-shell
 	depends = headsetcontrol
-	source = gnome-shell-extension-headsetcontrol-49.3.tar.gz::https://github.com/ChrisLauinger77/gnome-shell-extension-HeadsetControl/archive/refs/tags/v49.3.tar.gz
-	sha256sums = 92b85dda9df61661d2a7ae1c4ea5072a20451e5960c6bc423751ceda76dc3504
+	source = gnome-shell-extension-headsetcontrol-49.5.tar.gz::https://github.com/ChrisLauinger77/gnome-shell-extension-HeadsetControl/archive/refs/tags/v49.5.tar.gz
+	sha256sums = cfe066f05fb1944714b8663f10575673746e07ea28d5c712e2ee61487021f710
 
 pkgname = gnome-shell-extension-headsetcontrol
