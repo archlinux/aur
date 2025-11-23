@@ -1,0 +1,15 @@
+pkgbase = vtun-ng
+	pkgdesc = Easy network tunneling with encryption and traffic shaping and rewrite of vtun.
+	pkgver = 3.0.22
+	pkgrel = 1
+	url = https://github.com/leakingmemory/vtun-ng
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = cargo
+	depends = net-tools
+	source = https://github.com/leakingmemory/vtun-ng/releases/download/v3.0.22/vtun-ng-3.0.22.tar.gz
+	sha256sums = ffb8a3404eb2890c01338fef207557b8c6cbee0d54ea0eb38629c6ed412ecc95
+
+pkgname = vtun-ng
