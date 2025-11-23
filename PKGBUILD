@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-vllm
 _pkgname=vllm
-pkgver=0.11.0
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs"
 arch=('x86_64')
@@ -73,7 +73,7 @@ optdepends=(
 )
 
 source=("git+https://github.com/vllm-project/vllm.git#tag=v${pkgver}")
-sha256sums=('2b70d83469464b9a3a2f00dd3994c501d78b6cc76e239a17517d5353a6e3e956')
+sha256sums=('2d84c78c02aebccf6bf16266e4b36410e29b32416985aa344740fdb6533c6ff1')
 #
 # the following patch was merged so only needed for 0.10.1.1
 if [ "$pkgver" = "0.10.1.1" ]; then

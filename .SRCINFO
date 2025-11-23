@@ -1,6 +1,6 @@
 pkgbase = python-vllm
 	pkgdesc = high-throughput and memory-efficient inference and serving engine for LLMs
-	pkgver = 0.11.0
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://github.com/vllm-project/vllm
 	arch = x86_64
@@ -61,7 +61,7 @@ pkgbase = python-vllm
 	optdepends = python-xgrammar: flexible structured generation
 	optdepends = python-depyf: required for debugging and profiling with complilation config
 	optdepends = python-lm-format-enforcer: required for JSON/REGEX llm output
-	source = git+https://github.com/vllm-project/vllm.git#tag=v0.11.0
-	sha256sums = 2b70d83469464b9a3a2f00dd3994c501d78b6cc76e239a17517d5353a6e3e956
+	source = git+https://github.com/vllm-project/vllm.git#tag=v0.11.2
+	sha256sums = 2d84c78c02aebccf6bf16266e4b36410e29b32416985aa344740fdb6533c6ff1
 
 pkgname = python-vllm
