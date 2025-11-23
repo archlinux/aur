@@ -2,7 +2,7 @@
 
 pkgname=python-essentials
 _name=${pkgname#python-}
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 epoch=
 pkgdesc="General purpose classes and functions, reusable in any kind of Python application"
@@ -37,7 +37,7 @@ checkdepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('e042e0b33d385cfc26e1f0cc189fce5570d0959a1983438a557e7963a87b5638')
+sha256sums=('7fbea3a518cbeafe5374fb7e2ea2c15a109e8a7fd1eaab62ae87cbd1b3b1e8d0')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
