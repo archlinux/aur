@@ -9,7 +9,7 @@ _noguipkgname="$_projectname-emu-nogui"
 _toolpkgname="$_projectname-emu-tool"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git" "$_toolpkgname-git")
-pkgver='2509.r469.g2d7ebe46e3'
+pkgver='2509.r528.gaeac5f1a58'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -45,7 +45,6 @@ source=(
 	"$pkgbase-vh::git+https://github.com/KhronosGroup/Vulkan-Headers.git"
 	"$pkgbase-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
 	"$pkgbase-watcher::git+https://github.com/e-dant/watcher.git"
-	'cmake-mgba.diff'
 )
 b2sums=('SKIP'
         'SKIP'
@@ -57,8 +56,7 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'SKIP'
-        'd9e6ba73de8e1c49a7ebf9efe6caffcffbe1a545dfb61caebe2b830d8f496aaa221269c25a3f849ba02228dfb866b362c8c74f7e897e66a9362469dea679721d')
+        'SKIP')
 
 _sourcedirectory="$pkgbase"
 
@@ -87,10 +85,6 @@ prepare() {
 		git config "submodule.$_path.url" "$srcdir/$pkgbase-$_submod/"
 		git -c protocol.file.allow=always submodule update "$_path"
 	done
-
-	# Patch cmake_minimum_required below 3.5.0
-	cd "$srcdir/$_sourcedirectory/Externals/mGBA/mgba/"
-	patch --forward -p1 < "$srcdir/cmake-mgba.diff"
 }
 
 pkgver() {
