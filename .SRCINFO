@@ -1,0 +1,17 @@
+pkgbase = plasma-x11-session-lite-bin
+	pkgdesc = KDE Plasma X11 Session, light version with fixes and improvements
+	pkgver = 6.5.3
+	pkgrel = 1
+	url = https://github.com/KDE-Lite/plasma-workspace-lite
+	arch = x86_64
+	license = custom
+	provides = plasma-x11-session
+	provides = plasma-x11-session-lite
+	conflicts = plasma-x11-session
+	conflicts = plasma-x11-session-lite
+	noextract = -6.5.3-1-x86_64.pkg.tar.zst
+	options = !strip
+	source = https://x11libre.net/repo/arch_based/x86_64/plasma-x11-session-lite-6.5.3-1-x86_64.pkg.tar.zst
+	sha256sums = 8edb9192e6dd0dfd4a3566301ca029b6082bfbb7384a06ca8686bd103b919f1d
+
+pkgname = plasma-x11-session-lite-bin
