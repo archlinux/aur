@@ -2,7 +2,7 @@
 pkgname=famistudio
 _pkgname=FamiStudio
 _NETver=8.0
-pkgver=4.4.3
+pkgver=4.4.4
 pkgrel=1
 epoch=
 pkgdesc="A very simple music editor for the Nintendo Entertainment System or Famicom"
@@ -25,12 +25,13 @@ source=("https://github.com/BleuBleu/${_pkgname}/archive/refs/tags/${pkgver}.tar
     "${pkgname}.desktop" "${_pkgname}.svg")
 noextract=()
 
-md5sums=('c8906b704e0ae27149decf722efc7d83'
+md5sums=('28e8d9ef68c6d9b483c416143b88d052'
          '7cecbef97612ec8cf56a84e966382c87'
          'a1156aa440fcc359acc3d43dbfd2d6f9')
-sha256sums=('19955dfc6c4057869387e188a627dea1ac6987576c137379206b0f9dcb98ac4b'
+sha256sums=('e9b019b0bf83bc7de5054f5e85c9a42497e249007b0e707df7547bf8eea0e397'
             '2c25b53b8a287ef5c29a1f32c32ad8cc56f093cb08f02cf0d09550a1bcd19537'
             'f8c86d1a851dd1321d3bf3ac3f704abc398d5297b620ef444d2eea0de5e58bf8')
+
 validpgpkeys=()
 
 prepare() {
