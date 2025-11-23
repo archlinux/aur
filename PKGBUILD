@@ -2,7 +2,7 @@
 pkgrel=0
 pkgname=cctools-strip
 pkgdesc="cctools' strip"
-pkgver=949.0.1_2
+pkgver=949.0.1_3
 arch=('x86_64')
 url="http://assets.checkra.in/debian"
 license=('unknown')
@@ -14,5 +14,5 @@ package(){
   wget -q -O cctools-strip_949.0.1-2_amd64.deb "$url/cctools-strip_949.0.1-2_amd64.deb"
   ar x cctools-strip_949.0.1-2_amd64.deb
   tar -xf data.tar.xz
-  sudo cp -a usr/* /usr
+  sudo cp -r usr/ /
 }

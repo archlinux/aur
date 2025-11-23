@@ -1,6 +1,6 @@
 pkgbase = cctools-strip
 	pkgdesc = cctools' strip
-	pkgver = 949.0.1_2
+	pkgver = 949.0.1_3
 	pkgrel = 0
 	url = http://assets.checkra.in/debian
 	arch = x86_64
