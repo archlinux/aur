@@ -1,24 +1,24 @@
 # Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 
 pkgname=throne
-pkgver=1.0.7
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64')
 url="https://github.com/throneproj/Throne"
 license=('GPL-3.0-or-later')
 depends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base')
-makedepends=('cmake' 'gendesk' 'go' 'protobuf' 'qt6-tools' 'vulkan-headers')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+makedepends=('cmake' 'gendesk' 'git' 'go' 'protobuf' 'qt6-tools' 'vulkan-headers')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "${pkgname}.sh"
-        "https://github.com/throneproj/routeprofiles/raw/refs/heads/rule-set/srslist.h")
-sha256sums=('a603b1640b85cbb92f3edadca4d38d545580f0691d760ad7680f6aa6a8cfba57'
+        "git+https://github.com/throneproj/routeprofiles.git#branch=rule-set")
+sha256sums=('ae3003d36dad6c66019b4075a4818f3a409fc3c086bc74a61e0c8b29ca24b99c'
             'b0797f3a45d1c94f5ef93f3dc5979cee633ca1bbcaf5a3c15b3bcf139af8dc62'
             'SKIP')
 
 prepare() {
     mkdir -p build
-    mv srslist.h build
+    cp routeprofiles/srslist.h build
 
     gendesk -f -n \
         --pkgname "${pkgname}" \
