@@ -1,7 +1,7 @@
 pkgbase = hyconf
 	pkgdesc = A simple shell script that uses fzf for configuring the Hyprland window manager config files (.yaml / .conf / .toml)
-	pkgver = 1.0.0
-	pkgrel = 1
+	pkgver = 1.0.1
+	pkgrel = 2
 	url = https://github.com/unjaks/hyconf
 	arch = any
 	license = GPL3

@@ -1,8 +1,8 @@
 # Maintainer: unjaks
 
 pkgname=hyconf
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.0.1
+pkgrel=2
 pkgdesc="A simple shell script that uses fzf for configuring the Hyprland window manager config files (.yaml / .conf / .toml)"
 arch=('any')
 url="https://github.com/unjaks/${pkgname}"
