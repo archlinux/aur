@@ -1,7 +1,7 @@
 # Maintainer: os-guy-original <https://github.com/os-guy-original>
 
 pkgname=khazaur
-pkgver=0.2.0beta
+pkgver=0.3.0beta
 pkgrel=1
 pkgdesc='Unified package manager for Arch Linux supporting AUR, repos, Flatpak, Snap, and Debian packages'
 arch=('x86_64' 'aarch64')
