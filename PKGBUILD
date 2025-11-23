@@ -1,0 +1,41 @@
+# Maintainer: Benoit Brummer (Trougnouf) <trougnouf@gmail.com>
+# Contributor: Your Name <you@example.com>
+pkgname=cfait-git
+_pkgname=cfait
+pkgver=v0.1.5.r5.gbbc3132
+pkgrel=1
+pkgdesc="A simple, elegant, and lightweight CalDAV task / TODO manager (TUI & GUI) (git version)"
+arch=('x86_64')
+url="https://gitlab.com/trougnouf/cfait"
+license=('GPL3')
+depends=('fontconfig' 'libx11' 'libxcursor' 'libxi' 'libxrandr' 'libxcb' 'vulkan-driver')
+makedepends=('cargo' 'git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git")
+sha256sums=('SKIP')
+replaces=('rustycal' 'rustache' 'fairouille')
+
+pkgver() {
+  cd "$_pkgname"
+  # Creates a version string like: 0.1.5.r1.g0e4952c
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "$_pkgname"
+  cargo build --release --features gui
+}
+
+package() {
+  cd "$_pkgname"
+  
+  install -Dm755 "target/release/cfait" "$pkgdir/usr/bin/cfait"
+  install -Dm755 "target/release/gui" "$pkgdir/usr/bin/cfait-gui"
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+  install -Dm644 "assets/cfait.desktop" "$pkgdir/usr/share/applications/cfait.desktop"
+  install -Dm644 "assets/cfait.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/cfait.svg"
+}
