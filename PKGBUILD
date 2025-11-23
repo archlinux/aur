@@ -1,7 +1,7 @@
 # Maintainer: srgooglo <srgooglo@ragestudio.net>
 pkgname=comty-desktop-bin
 
-_electronversion=37
+_electronversion=38
 
 pkgver="0.4.0"
 pkgrel=2
