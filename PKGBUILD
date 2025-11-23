@@ -1,6 +1,6 @@
 # Maintainer:  Rubin Simons <me@rubin55.org
 
-_sdk=10.0
+_sdk=9.0
 _Name="FsAutoComplete"
 _pkgname="${_Name,,}"
 pkgname="${_pkgname}-bin"
