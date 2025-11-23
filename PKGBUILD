@@ -1,6 +1,6 @@
 # Maintainer: metaneutrons <https://github.com/metaneutrons>
 pkgname=png2lvgl
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Convert PNG images to LVGL C arrays"
 arch=('x86_64' 'aarch64')
