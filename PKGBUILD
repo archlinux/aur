@@ -1,11 +1,11 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=sysbox-ce
 pkgver=0.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)"
 url="https://github.com/nestybox/sysbox"
 arch=('x86_64' 'aarch64')
-license=('Apache')
+license=('Apache-2.0')
 source=("git+https://github.com/nestybox/sysbox.git#tag=v$pkgver"
         # On a recursive clone, git submodule foreach --recursive git rev-parse HEAD
         "git+https://github.com/nestybox/dockerfiles.git#commit=f27a6f2b4a97377f932968d2897ba1603680036a"
