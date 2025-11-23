@@ -1,11 +1,12 @@
 pkgbase = precice-config-graph
 	pkgdesc = A Library that builds a graph from a preCICE configuration file for validation and visualization purposes
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/precice/config-graph
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
+	checkdepends = python-gitpython
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools-git-versioning
