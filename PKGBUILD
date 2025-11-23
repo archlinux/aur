@@ -1,6 +1,6 @@
 # Maintainer: Antariksh Singh <antarikshsingh212@gmail.com>
 pkgname=playtorrio-bin
-pkgver=2.1.4
+pkgver=2.1.5
 pkgrel=1
 pkgdesc="All-in-one media center for streaming and for downloading games"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('playtorrio')
 conflicts=('playtorrio' 'playtorrio-git')
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/ayman707-ux/PlayTorrio/releases/download/v${pkgver}/PlayTorrio.AppImage"
   "playtorrio.desktop")
-sha256sums=('10d319b9f0333f1330ebb01838ea2f1483e50b725376560e245e8eb918d0e607'
+sha256sums=('aeb2a1dcb16bb537da4bdd47bb30dc9f09ed8865a396fc6dc2c8eb309893fcf4'
             '75681351c5da62ada264bf23a2b1d89cf47d64b0739dc5286a8bd3464a079c28')
 noextract=("${pkgname}-${pkgver}.AppImage")
 
