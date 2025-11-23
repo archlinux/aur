@@ -6,8 +6,8 @@ TEST_GPU=0
 
 pkgname=python-kornia
 _name=kornia
-pkgver=0.8.1
-pkgrel=3
+pkgver=0.8.2
+pkgrel=1
 arch=(any)
 url='https://github.com/kornia/kornia'
 pkgdesc='Open Source Differentiable Computer Vision Library for PyTorch'
@@ -23,7 +23,7 @@ optdepends=(
 checkdepends=('python-kornia-rs' 'python-accelerate' 'python-pytest' 'python-pytest-cov' 'python-pytest-mypy' 'python-scipy' 'python-opencv')
 options=(!emptydirs)
 source=("${_name}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('4dd34e28a0e0cefa2f6333d34e81b670e800fadd1cbf1d156c47dc62eafee0c2')
+sha256sums=('57805554908c2a4b6efe7b5b7fc36511a477c4e6d3e09737be9705facc3f4aa9')
 
 build() {
   cd "${_name}-${pkgver}"
