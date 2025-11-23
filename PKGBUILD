@@ -2,11 +2,15 @@
 
 pkgname=ov-bin
 pkgver=0.45.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Feature-rich terminal-based text viewer. It is a so-called terminal pager."
 arch=('x86_64' 'armv7h' 'aarch64')
 conflicts=('ov')
 provides=('ov')
+optdepends=(
+  'xclip: clipboard support'
+  'xsel: clipboard support (alternative to xclip)'
+)
 install='ov-bin.install'
 source_x86_64=("$pkgname-$pkgver-x86_64.zip::https://github.com/noborus/ov/releases/download/v$pkgver/ov_${pkgver}_linux_amd64.zip")
 source_armv7h=("$pkgname-$pkgver-armv7h.zip::https://github.com/noborus/ov/releases/download/v$pkgver/ov_${pkgver}_linux_arm.zip")
