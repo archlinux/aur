@@ -1,8 +1,8 @@
 pkgbase = papilio-designlab
 	pkgdesc = It is an IDE specially designed to get you up and running quickly with Soft Processors on the Papilio FPGA boards
 	pkgver = 1.0.8
-	pkgrel = 3
-	url = http://forum.gadgetfactory.net/index.php?/files/file/236-papilio-designlab-ide/
+	pkgrel = 4
+	url = https://web.archive.org/web/20170825132938/http://forum.gadgetfactory.net/index.php?/files/file/236-papilio-designlab-ide/
 	install = papilio-designlab.install
 	arch = x86_64
 	arch = i686
@@ -18,9 +18,9 @@ pkgbase = papilio-designlab
 	md5sums = a4d2f7a5a0508106664d158e51f7e034
 	md5sums = 7e27108f30b6a253abf907f0b96c56b3
 	md5sums = 65c2c2b9df1c372efddfadaa49b76a89
-	source_x86_64 = DesignLab-1.0.8-linux64.tgz::http://www.gadgetfactory.net/download/DesignLab/DesignLab-1.0.8-linux64.tgz
+	source_x86_64 = DesignLab-1.0.8-linux64.tgz::http://dev.ivanov.eu/uploads/files/papilio-designlab/DesignLab-1.0.8-linux64.tgz
 	md5sums_x86_64 = 08bf01f7366c5cb85b8f03ef93696cab
-	source_i686 = DesignLab-1.0.8-linux32.tgz::http://www.gadgetfactory.net/download/DesignLab/DesignLab-1.0.8-linux32.tgz
+	source_i686 = DesignLab-1.0.8-linux32.tgz::http://dev.ivanov.eu/uploads/files/papilio-designlab/DesignLab-1.0.8-linux32.tgz
 	md5sums_i686 = abf1d56ca2957e459455fb861ab3d9d6
 
 pkgname = papilio-designlab

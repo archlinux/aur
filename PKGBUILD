@@ -2,17 +2,17 @@
 
 pkgname=papilio-designlab
 pkgver=1.0.8
-pkgrel=3
+pkgrel=4
 pkgdesc="It is an IDE specially designed to get you up and running quickly with Soft Processors on the Papilio FPGA boards"
 arch=('x86_64' 'i686')
-url="http://forum.gadgetfactory.net/index.php?/files/file/236-papilio-designlab-ide/"
+url="https://web.archive.org/web/20170825132938/http://forum.gadgetfactory.net/index.php?/files/file/236-papilio-designlab-ide/"
 license=('custom')
 groups=()
 options=(!strip staticlibs)
 PKGEXT='.pkg.tar'
 depends=('java-runtime=8')
-source_i686=("DesignLab-${pkgver}-linux32.tgz::http://www.gadgetfactory.net/download/DesignLab/DesignLab-${pkgver}-linux32.tgz")
-source_x86_64=("DesignLab-${pkgver}-linux64.tgz::http://www.gadgetfactory.net/download/DesignLab/DesignLab-${pkgver}-linux64.tgz")
+source_i686=("DesignLab-${pkgver}-linux32.tgz::http://dev.ivanov.eu/uploads/files/papilio-designlab/DesignLab-${pkgver}-linux32.tgz")
+source_x86_64=("DesignLab-${pkgver}-linux64.tgz::http://dev.ivanov.eu/uploads/files/papilio-designlab/DesignLab-${pkgver}-linux64.tgz")
 source=('designlab' 
         'designlab.desktop' 
         'designlab.png' 
