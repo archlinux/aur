@@ -1,6 +1,6 @@
 pkgbase = wshowlyrics-git
 	pkgdesc = Wayland-based synchronized lyrics overlay with MPRIS integration
-	pkgver = r63.fa39ca1
+	pkgver = r65.51f166d
 	pkgrel = 1
 	url = https://github.com/unstable-code/lyrics
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = wshowlyrics-git
 	optdepends = snixembed: System tray support for Swaybar
 	provides = wshowlyrics
 	conflicts = wshowlyrics
+	backup = etc/wshowlyrics/settings.ini
 	source = git+https://github.com/unstable-code/lyrics.git
 	sha256sums = SKIP
 
