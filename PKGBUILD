@@ -1,7 +1,7 @@
 # Maintainer: Alois <aloisianer@proton.me>
 pkgname=tensamin-git
 _pkgname=tensamin
-pkgver=dc1636
+pkgver=11d4df
 pkgrel=1
 pkgdesc="True E2EE, decentralized messages. Open source and privacy first."
 arch=('x86_64')
@@ -33,7 +33,7 @@ build() {
 
 package() {
 	cd "$srcdir/Frontend/desktop/out"
-	debfile=$(find "$PWD" -path 'make/deb/*/*.deb' -print -quit)
+	debfile=$(find "$PWD" -path '*.deb' -print -quit)
 	ar x "${debfile}"
 	tar --zstd -xf data.tar.zst -C "${pkgdir}"
 }
