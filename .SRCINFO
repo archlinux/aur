@@ -1,6 +1,6 @@
 pkgbase = xapp-symbolic-icons
 	pkgdesc = A set of symbolic icons for GTK applications and projects
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/xapp-project/xapp-symbolic-icons
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = xapp-symbolic-icons
 	makedepends = meson
 	depends = hicolor-icon-theme
 	depends = python
-	source = git+https://github.com/xapp-project/xapp-symbolic-icons.git#tag=1.0.1
-	sha256sums = 5d4b8225983cf43da7e204ba8c81141eb2e39f3a1ed06ee96c4ad12d4324091d
+	source = git+https://github.com/xapp-project/xapp-symbolic-icons.git#tag=1.0.2
+	sha256sums = cdf91c4d793b5de88cbc806d86d9fb1a0ee6dbd398a2fabf7fe59cd34e5a1f0a
 
 pkgname = xapp-symbolic-icons
