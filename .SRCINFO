@@ -1,6 +1,6 @@
 pkgbase = peroxide-ssh-manager-git
 	pkgdesc = A terminal-based SSH connection manager written in Rust
-	pkgver = 0.2.5.r0.g2f31a6e
+	pkgver = 0.4.0.r0.gc57c859
 	pkgrel = 1
 	url = https://github.com/0xGingi/peroxide
 	arch = x86_64
