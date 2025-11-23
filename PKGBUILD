@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgname=jellyfin-media-player-git
-pkgver=r1878.c2536f3
+pkgver=r1891.9afbb79
 pkgrel=1
 pkgdesc='Jellyfin Desktop Client'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 url='https://github.com/jellyfin/jellyfin-media-player'
 provides=('jellyfin-media-player')
 conflicts=('jellyfin-media-player')
-depends=('mpv' 'libcec' 'sdl2' 'p8-platform' 'protobuf' 'qt5-webengine' 'qt5-x11extras' 'qt5-quickcontrols')
+depends=('mpv' 'mpvqt' 'libcec' 'sdl2' 'p8-platform' 'protobuf' 'qt6-webengine' 'qt6-declarative')
 makedepends=('cmake' 'git' 'python')
 source=('git+https://github.com/jellyfin/jellyfin-media-player.git')
 sha256sums=('SKIP')
