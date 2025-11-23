@@ -1,10 +1,10 @@
 pkgbase = tracking
 	pkgdesc = Analyze how the behavior of a parallel application evolves through different scenarios (from BSC).
 	pkgver = 2.7.1.20250303
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools
 	arch = x86_64
-	license = LGPL-2.1-only
+	license = LGPL-2.1-or-later
 	depends = wxparaver
 	depends = clusteringsuite
 	depends = python-pillow
