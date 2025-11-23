@@ -1,0 +1,12 @@
+pkgbase = pmb887x-emu-git
+	pkgdesc = Yet another binary pattern finder.
+	pkgver = 0.0.17
+	pkgrel = 1
+	url = https://github.com/siemens-mobile-hacks/pmb887x-emu
+	arch = any
+	license = MIT
+	makedepends = cmake
+	source = git+https://github.com/siemens-mobile-hacks/pmb887x-emu#branch=next
+	sha256sums = SKIP
+
+pkgname = pmb887x-emu-git
