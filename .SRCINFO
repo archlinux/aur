@@ -1,0 +1,27 @@
+pkgbase = khazaur
+	pkgdesc = Unified package manager for Arch Linux supporting AUR, repos, Flatpak, Snap, and Debian packages
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/os-guy-original/khazaur
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = libgit2
+	depends = libssh2
+	depends = openssl
+	depends = zlib
+	optdepends = flatpak: Flatpak application support
+	optdepends = snapd: Snap package support
+	optdepends = debtap: Debian package conversion support
+	optdepends = pkexec: Privilege escalation (polkit)
+	optdepends = sudo: Privilege escalation (alternative to pkexec)
+	optdepends = doas: Privilege escalation (alternative to pkexec/sudo)
+	options = !lto
+	source = khazaur-0.2.0.tar.gz::https://github.com/os-guy-original/khazaur/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = khazaur
