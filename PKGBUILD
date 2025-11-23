@@ -1,7 +1,7 @@
 # Maintainer: Hans Gaiser <hansg91@email.com>
 
 pkgname=moonshine-git
-pkgver=r277.5ef81cd
+pkgver=r281.692bf6b
 pkgrel=1
 pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
@@ -27,9 +27,11 @@ options=(!lto)
 source=(
 	"${pkgname%-git}::git+https://github.com/hgaiser/moonshine"
 	"moonshine.service"
+	"60-moonshine.rules"
 )
 sha256sums=('SKIP'
-            '4e4d23f15633c14be1b1497efec7a8816dd48bcd9a08876963919c5aab0866fb')
+            '4e4d23f15633c14be1b1497efec7a8816dd48bcd9a08876963919c5aab0866fb'
+            'e896e8e448441f9b4a5c57def2b4ba15e9d03bf533eaa1133a77bbbf5004612e')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -46,4 +48,5 @@ package() {
 	install -Dm755 "$srcdir/moonshine/target/release/moonshine" "$pkgdir/usr/bin/moonshine"
 	install -Dm755 "$srcdir/moonshine/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 "$srcdir/moonshine.service" "$pkgdir/usr/lib/systemd/user/moonshine.service"
+	install -Dm644 "$srcdir/60-moonshine.rules" "$pkgdir/usr/lib/udev/rules.d/60-moonshine.rules"
 }
