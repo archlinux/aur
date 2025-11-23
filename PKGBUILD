@@ -5,7 +5,7 @@ pkgname=bar-lobby-git
 _electronver=37
 ### ↑↑↑ This sadly cant be done automatically
 pkgver=VERSION
-pkgrel=2
+pkgrel=3
 pkgdesc="The new - stil Work_In_Progres lobby, for the RTS game Beyond All Reason (Github version)."
 arch=('x86_64')
 url="https://beyond-all-reason.github.io/bar-lobby/"
@@ -140,7 +140,12 @@ package() {
     _prepare
 
     _install
-
+    
+     sed -i -e "
+            s/BeyondAllReason/${pkgname}/g
+            s/bar-lobby/${pkgname}/g
+            s/Comment=Lobby client for the RTS game Beyond All Reason/${pkgdesc}/g
+        " "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
 }
 
