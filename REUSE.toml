@@ -26,6 +26,10 @@ SPDX-License-Identifier = "0BSD"
 [[annotations]]
 path = [
     "0001-acpi-proc-idle-skip-dummy-wait.patch",
+    "0001-platform-x86-asus-armoury-Fix-error-code-in-mini_led.patch",
+    "0001-platform-x86-asus-armoury-fix-only-DC-tunables-being.patch",
+    "0002-platform-x86-asus-armoury-fix-mini-led-mode-show.patch",
+    "0003-platform-x86-asus-armoury-add-support-for-FA507UV.patch",
     "0004-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch",
     "0005-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch",
     "0007-workaround_hardware_decoding_amdgpu.patch",

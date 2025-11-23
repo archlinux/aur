@@ -4,7 +4,7 @@
 
 pkgbase=linux-g14
 pkgver=6.17.8.arch1
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
 _url='https://github.com/archlinux/linux'
@@ -44,6 +44,10 @@ source=(
   0000-asus-patch-series.patch::"https://raw.githubusercontent.com/CachyOS/kernel-patches/refs/heads/master/6.17/0001-asus.patch"
   # asus-patch-series.patch
   0001-acpi-proc-idle-skip-dummy-wait.patch
+  0001-platform-x86-asus-armoury-Fix-error-code-in-mini_led.patch
+  0001-platform-x86-asus-armoury-fix-only-DC-tunables-being.patch
+  0002-platform-x86-asus-armoury-fix-mini-led-mode-show.patch
+  0003-platform-x86-asus-armoury-add-support-for-FA507UV.patch
   0004-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
   0005-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
   0007-workaround_hardware_decoding_amdgpu.patch
@@ -70,6 +74,10 @@ sha256sums=('5a8de64a75fca706c01c6c0a77cf75a74618439db195e25f1f0268af6b2fb1da'
             '11e570d8a355c2c6ccd413b7ecea9ae1f9b9801eb9a16249f8c4c5e6c80a1ead'
             '65848b817866021ab61758333d7c834fb8581568c48d8fce1e514b1f913b9645'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
+            'f2e7f0f5bf499236f6e457e13270d7a907d00daf74111e6369b6e6c20fb6b9d0'
+            'e1d4954d0ca79d1857683bd87bab44f8088a08e16a0754ed46f1c462f6e5a34b'
+            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+            '89e1dddffde4f38e5f63645e116c1e9fad63c2fd8101c787b4d1cc0032eac4e7'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
             'e41198b29cee4de7a5132d8df606f48c2d0f9c9076fe4230b00a33c7e0b22c71'
@@ -353,7 +361,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-  provides=(linux-rog-headers)
+  provides=(linux-rog linux-rog-headers)
   depends=(pahole)
 
   cd $_srcname
@@ -388,9 +396,6 @@ _package-headers() {
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
-
-  # https://bugs.archlinux.org/task/71392
-  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;

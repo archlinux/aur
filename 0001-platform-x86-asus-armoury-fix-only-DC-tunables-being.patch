@@ -1,0 +1,32 @@
+From e813bf9e63f18170be20749d60045d8ff9cc264a Mon Sep 17 00:00:00 2001
+From: Denis Benato <denis.benato@linux.dev>
+Date: Sun, 23 Nov 2025 15:49:18 +0100
+Subject: [PATCH] platform/x86: asus-armoury: fix only DC tunables being
+ available
+
+Module asus-armoury must use  AC tunables to check availability
+of power-related firmware attributes: fix missing attributes
+by using AC attributes instead of DC.
+
+Signed-off-by: Denis Benato <denis.benato@linux.dev>
+---
+ drivers/platform/x86/asus-armoury.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/platform/x86/asus-armoury.c b/drivers/platform/x86/asus-armoury.c
+index 5106e8a41e25..9c1a9ad42bc4 100644
+--- a/drivers/platform/x86/asus-armoury.c
++++ b/drivers/platform/x86/asus-armoury.c
+@@ -869,7 +869,8 @@ static bool has_valid_limit(const char *name, const struct power_limits *limits)
+ 
+ static int asus_fw_attr_add(void)
+ {
+-	const struct rog_tunables *const ac_rog_tunables = asus_armoury.rog_tunables[ASUS_ROG_TUNABLE_DC];
++	const struct rog_tunables *const ac_rog_tunables =
++		asus_armoury.rog_tunables[ASUS_ROG_TUNABLE_AC];
+ 	const struct power_limits *limits;
+ 	bool should_create;
+ 	const char *name;
+-- 
+2.52.0
+
