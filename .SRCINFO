@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-havsfunc-git
 	pkgdesc = Plugin for Vapoursynth: havsfunc. (GIT Version)
-	pkgver = 33.181.g18fced2
+	pkgver = 33.184.g20830c7
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=166582
 	arch = any
@@ -12,12 +12,6 @@ pkgbase = vapoursynth-plugin-havsfunc-git
 	makedepends = python-setuptools
 	makedepends = python-hatchling
 	depends = vapoursynth-plugin-vsjetpack
-	optdepends = vapoursynth-plugin-fluxsmooth
-	optdepends = vapoursynth-plugin-misc-git
-	optdepends = vapoursynth-plugin-neo_f3kdb-git
-	optdepends = vapoursynth-plugin-nnedi3cl-git
-	optdepends = vapoursynth-plugin-removegrain-git
-	optdepends = vapoursynth-plugin-znedi3-git
 	provides = vapoursynth-plugin-havsfunc
 	conflicts = vapoursynth-plugin-havsfunc
 	source = git+https://github.com/HomeOfVapourSynthEvolution/havsfunc.git

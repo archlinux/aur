@@ -2,7 +2,7 @@
 
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=33.181.g18fced2
+pkgver=33.184.g20830c7
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}. (GIT Version)"
 arch=('any')
@@ -10,14 +10,6 @@ url='https://forum.doom9.org/showthread.php?t=166582'
 license=('GPL')
 depends=(
   'vapoursynth-plugin-vsjetpack'
-)
-optdepends=(
-  'vapoursynth-plugin-fluxsmooth'
-  'vapoursynth-plugin-misc-git'
-  'vapoursynth-plugin-neo_f3kdb-git'
-  'vapoursynth-plugin-nnedi3cl-git'
-  'vapoursynth-plugin-removegrain-git'
-  'vapoursynth-plugin-znedi3-git'
 )
 makedepends=(
   'git'
