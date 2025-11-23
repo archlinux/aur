@@ -1,6 +1,6 @@
 pkgbase = cosmic-ext-calculator-git
 	pkgdesc = Calculator for the COSMIC desktop.
-	pkgver = 0.2.0.r4.g36e3c2e
+	pkgver = 0.2.0.r14.gbb770fa
 	pkgrel = 1
 	url = https://github.com/cosmic-utils/calculator
 	arch = x86_64
