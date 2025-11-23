@@ -4,13 +4,13 @@
 pkgname=('linux-gpib-user')
 _pkgname=('linux-gpib')
 pkgver=4.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A support package for GPIB (IEEE 488) hardware (userland utils).'
 arch=('i686' 'x86_64')
 url='http://linux-gpib.sourceforge.net/'
 license=('GPL-2.0-only')
 depends=('bash' 'which')
-conflicts=('linux-gpib')
+conflicts=('linux-gpib' 'linux-gpib-dkms')
 makedepends=('perl' 'python' 'bison')
 optdepends=('fxload: firmware upload support for NI USB-B, Keithley KUSB-488 and Agilent 82357')
 source=("https://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}%20for%203.x.x%20and%202.6.x%20kernels/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
