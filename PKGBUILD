@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Tobie <archlinux@sebastian-tobie.de>
 pkgname=cecdaemon-git
-pkgver=1.0.0.r7.ge87b85f
-pkgrel=2
+pkgver=1.0.0.r7.ac6d1d9
+pkgrel=1
 pkgdesc="CEC Daemon for linux media centers"
 arch=('any')
 url="https://github.com/simons-public/cecdaemon"
@@ -15,8 +15,10 @@ md5sums=('SKIP')
 backup=(etc/{cecdaemon.conf,systemd/system/multi-user.target.wants/cecdaemon.service})
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$pkgname"
+    tag=$(git describe --tags | sed -E 's;^([^-]+)-([0-9]+).*;\1.r\2;g')
+    commit=$(git rev-parse --short=7 HEAD)
+    printf '%s.%s' "$tag" "$commit"
 }
 
 build() {

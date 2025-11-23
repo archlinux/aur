@@ -1,7 +1,7 @@
 pkgbase = cecdaemon-git
 	pkgdesc = CEC Daemon for linux media centers
-	pkgver = 1.0.0.r7.ge87b85f
-	pkgrel = 2
+	pkgver = 1.0.0.r7.ac6d1d9
+	pkgrel = 1
 	url = https://github.com/simons-public/cecdaemon
 	arch = any
 	license = BSD
