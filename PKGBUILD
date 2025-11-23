@@ -1,7 +1,7 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=7.0.170
+pkgver=7.1.10
 pkgrel=1
 pkgdesc="A proprietary music streaming service"
 arch=('any')
@@ -27,7 +27,7 @@ source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/art
     "13-disable-notifications.patch"
     "14-thumbar-actions.patch"
     "15-systray-icon.patch")
-sha256sums=('0e0da384b55e6c2c2aefc239f404f089d9e85796b4240488cf6bb780e2a88e8f'
+sha256sums=('74330760476407e73c782d766ee93d7fdb9a8003e302467f57d607be36f84dd6'
             '41a32f7e595a52c260aa872e8273430d83e4c5fcc8e529e21afa4dab3d6b1d9c'
             '14b4b2b553b66e2cf0e45bc7274679dd06bdb891f04f2aa3be7afa96eb84101e'
             '87aba4442321bb80da0847ab555cecf0f421ab3fccc42306f094070021819a7f'
@@ -37,7 +37,7 @@ sha256sums=('0e0da384b55e6c2c2aefc239f404f089d9e85796b4240488cf6bb780e2a88e8f'
             '049fccb9969159b5381eb53c592213d758dee1e3e0ee02303be09bb2669d0313'
             'e3ce50a99a94cf01bb16726333fd0c9c70c8fab94cf24be46e4b4c0dd30eaaed'
             '72a57ac93f35e7c3f5dfc9e6f1a5c2ac1eebb156ca62df9a1e644688f0ba1e3f'
-            'b0c28adc02623bad4ed684adbc71f6fac06b43ceb7ea28691857ebf6ded26c33'
+            'ee4beb6f49658576696963ab51e277195e74dbcb1381b5f8c9251bc85b3a6d78'
             'd681ec92a3f4409fe61734b09ad0ec5a2aa98fb67e9bc969afd94c2c733d213c'
             '75e27255a2a48fa981b973e2441c35937bcfa682d80a58fd83975ab8c7800156'
             'd22ae848e1e7cf118a0bd092455d24fdb4ef7cd25fa77fb59d04ef7e2f1e6961'
