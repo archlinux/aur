@@ -1,6 +1,6 @@
 pkgbase = ld64
 	pkgdesc = Apple LD64 for Arch Linux.
-	pkgver = 530_2
+	pkgver = 530_3
 	pkgrel = 0
 	url = http://assets.checkra.in/debian
 	arch = x86_64

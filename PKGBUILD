@@ -1,7 +1,7 @@
 # Maintainer: Alan Lutter (alan.lutter@outlook.sk)
 pkgrel=0
 pkgname=ld64
-pkgver=530_2
+pkgver=530_3
 pkgdesc="Apple LD64 for Arch Linux."
 arch=('x86_64')
 url="http://assets.checkra.in/debian"
