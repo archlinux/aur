@@ -1,6 +1,6 @@
 pkgbase = buchable
 	pkgdesc = The unofficial cross-platform app for Audiobookshelf
-	pkgver = 1.8.1
+	pkgver = 1.8.5
 	pkgrel = 1
 	url = https://github.com/Vito0912/abs_flutter
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = buchable
 	depends = xdg-user-dirs
 	provides = buchable
 	conflicts = buchable
-	source = buchable-1.8.1.tar.gz::https://github.com/Vito0912/abs_flutter/archive/refs/tags/v1.8.1.tar.gz
+	source = buchable-1.8.5.tar.gz::https://github.com/Vito0912/abs_flutter/archive/refs/tags/v1.8.5.tar.gz
 	sha256sums = SKIP
 
 pkgname = buchable

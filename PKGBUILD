@@ -1,7 +1,7 @@
 # Maintainer: 0xGingi <0xgingi@0xgingi.com>
 pkgname=buchable
 _pkgname=buchable
-pkgver=1.8.1
+pkgver=1.8.5
 pkgrel=1
 pkgdesc="The unofficial cross-platform app for Audiobookshelf"
 arch=('x86_64')
@@ -37,9 +37,9 @@ prepare() {
 build() {
     cd "abs_flutter-$pkgver"
     
-    # Fix build error
-    export CFLAGS="${CFLAGS} -Wno-error=deprecated-declarations"
-    export CXXFLAGS="${CXXFLAGS} -Wno-error=deprecated-declarations"
+    # Some bundled deps trigger deprecated literal operator warnings that are promoted to errors
+    export CFLAGS="${CFLAGS} -Wno-error=deprecated-declarations -Wno-error=deprecated-literal-operator"
+    export CXXFLAGS="${CXXFLAGS} -Wno-error=deprecated-declarations -Wno-error=deprecated-literal-operator"
     
     flutter build linux --release
 }
