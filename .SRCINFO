@@ -1,4 +1,4 @@
-pkgbase = overlayroot
+pkgbase = archlinux-overlayroot
 	pkgdesc = Overlay the root filesystem with a tmpfs filesystem.
 	pkgver = 0.9.1
 	pkgrel = 1
