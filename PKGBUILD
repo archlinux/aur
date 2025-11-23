@@ -9,6 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('wayland' 'cairo' 'pango' 'curl' 'fontconfig' 'libappindicator-gtk3' 'gdk-pixbuf2' 'playerctl')
 optdepends=('snixembed: System tray support for Swaybar')
 makedepends=('meson' 'ninja' 'wayland-protocols')
+backup=('etc/wshowlyrics/settings.ini')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
