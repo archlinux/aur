@@ -1,0 +1,15 @@
+pkgbase = tonkeeper-wallet-bin
+        pkgdesc = Tonkeeper is the easiest self-custody wallet to pay toncoin and other tokens
+        pkgver = 5.2.6
+        pkgrel = 1
+        url = https://tonkeeper.com
+        arch = x86_64
+        license = MIT
+        depends = hicolor-icon-theme
+        optdepends = fuse2: for direct AppImage execution
+        optdepends = fuse3: for direct AppImage execution
+        options = !strip
+        source =
+        sha256sums = c90b325695b509dc416f85064e4a9da829b13abcac6455403eb5fd150492aef0
+
+pkgname = tonkeeper-wallet-bin
