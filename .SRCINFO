@@ -1,0 +1,17 @@
+pkgbase = cclip
+	pkgdesc = Clipboard manager for wayland
+	pkgver = 3.2.1
+	pkgrel = 1
+	url = https://github.com/heather7283/cclip
+	arch = x86_64
+	license = GPL-3.0-or-later AND BSD-2-Clause AND MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = wayland
+	depends = glibc
+	depends = libwayland-client.so
+	depends = libsqlite3.so
+	source = cclip-3.2.1.tar.gz::https://github.com/heather7283/cclip/archive/refs/tags/3.2.1.tar.gz
+	b2sums = 46d28b8e26651780fc359082874b758bccb685d443b6fa0d336c69f1e89967e469b0094646d386717350ad3df3f9d299b4b1a07f9124abf552848f56657f5ddd
+
+pkgname = cclip
