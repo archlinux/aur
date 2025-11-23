@@ -1,13 +1,13 @@
 pkgbase = qmicroz
-	pkgdesc = C++/Qt wrapper over miniz. Zip/Unzip with Qt.
-	pkgver = 0.4
-	pkgrel = 2
+	pkgdesc = Minimalist Zip/Unzip library. C++/Qt wrapper over miniz.
+	pkgver = 0.5
+	pkgrel = 1
 	url = https://github.com/artemvlas/qmicroz
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	depends = qt6-base
-	source = https://github.com/artemvlas/qmicroz/archive/refs/tags/v0.4.tar.gz
-	sha256sums = 5f8f86916402f32d359fc23c9d2133194b9b74511e6ac6afb0041cb4ddeb5af8
+	source = https://github.com/artemvlas/qmicroz/archive/refs/tags/v0.5.tar.gz
+	sha256sums = 2307695ef0db85147e845a0cd1dc850f4d632a6156f44b3de2a05041eff2df30
 
 pkgname = qmicroz
