@@ -2,7 +2,7 @@
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 _base=NiaPy
 pkgname=python-${_base,,}
-pkgver=2.5.2
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Python micro framework for building nature-inspired algorithms"
 url="https://${_base}.org"
@@ -12,7 +12,7 @@ depends=(python-pandas python-matplotlib python-openpyxl)
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/NiaOrg/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('033bfa3847c29b68e2682aa11db5bccd200d07335ea4aa8e6ebbec12fa057728c503036d1101d5a332d524c6c36645fb1e92d43beec4fc3d89428cfb3b3aca08')
+sha512sums=('e1ccd9dc75623d6ff95ff88f36ca2236143834f5ca62450859fc1cb1798b443e459610982ba76cc87e4462984f7610eb622cd03436e9afff40a8598436e7c620')
 
 build() {
   cd ${_base}-${pkgver}
