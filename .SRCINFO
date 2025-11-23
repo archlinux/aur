@@ -1,10 +1,10 @@
 pkgbase = doom2masterlevelspatch
 	pkgdesc = Unofficial Master Levels For Doom 2 Patcher For ZDoom (Join all Master Levels WADs)
 	pkgver = 1.2
-	pkgrel = 5
+	pkgrel = 6
 	url = http://maniacsvault.net/projects
 	arch = x86_64
-	license = custom
+	license = custom:PublicDomain
 	makedepends = cmake
 	depends = qt5-base
 	source = http://maniacsvault.net/files/masterlevelspatch.7z

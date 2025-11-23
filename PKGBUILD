@@ -1,11 +1,11 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=doom2masterlevelspatch
 pkgver=1.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Unofficial Master Levels For Doom 2 Patcher For ZDoom (Join all Master Levels WADs)"
 url=http://maniacsvault.net/projects
 arch=('x86_64')
-license=('custom')
+license=('custom:PublicDomain')
 depends=('qt5-base')
 makedepends=('cmake')
 source=("http://maniacsvault.net/files/masterlevelspatch.7z"
