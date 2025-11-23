@@ -1,7 +1,7 @@
 # Maintainer: Pando85 <pando855@gmail.com>
 _pkgname=passless
 pkgname="${_pkgname}-bin"
-pkgver=0.2.0
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="FIDO2 security token emulator"
 arch=('x86_64' 'aarch64')
@@ -14,13 +14,34 @@ conflicts=("${_pkgname}")
 
 source=("https://github.com/pando85/passless/releases/download/v${pkgver}/passless-${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz"
         "passless-${pkgver}.tar.gz::https://github.com/pando85/passless/archive/refs/tags/v${pkgver}.tar.gz"
+        "https://github.com/pando85/passless/releases/download/v${pkgver}/passless-completions-${pkgver}.tar.gz"
         "passless.install")
-sha256sums=('b8d6b52eb968c18d71cb84eeaa4943d00f2efcade581efd3d20c03661896435e'
+sha256sums=('45eebf471fc2eff690209abfbd37bf58da8ff5491bc0acb24fb28384a1b316d9'
+            'SKIP'
             'SKIP'
             'SKIP')
 
 package() {
 	install -Dm755 passless "${pkgdir}/usr/bin/passless"
+
+	# Install shell completions
+	if [ -f "passless.bash" ]; then
+		install -Dm0644 passless.bash \
+			"${pkgdir}/usr/share/bash-completion/completions/passless"
+	fi
+	if [ -f "passless.fish" ]; then
+		install -Dm0644 passless.fish \
+			"${pkgdir}/usr/share/fish/vendor_completions.d/passless.fish"
+	fi
+	if [ -f "_passless" ]; then
+		install -Dm0644 _passless \
+			"${pkgdir}/usr/share/zsh/site-functions/_passless"
+	fi
+	if [ -f "passless.elv" ]; then
+		install -Dm0644 passless.elv \
+			"${pkgdir}/usr/share/elvish/lib/passless.elv"
+	fi
+
 	install -Dm0644 "passless-${pkgver}/contrib/systemd/passless.service" \
 		"${pkgdir}/usr/lib/systemd/user/passless.service"
 	install -Dm0644 "passless-${pkgver}/contrib/udev/90-passless.rules" \
