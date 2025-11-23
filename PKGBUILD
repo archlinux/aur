@@ -2,10 +2,10 @@
 pkgname='folding'
 pkgdesc='Combined instrumentation and sampling for instantaneous metric evolution with low overhead (from BSC).'
 pkgver='1.4.2.20250211'
-pkgrel='1'
+pkgrel='2'
 arch=('x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
-license=('GPL3')
+license=('LGPL-2.1-or-later')
 depends=(boost qt5-base libbsctools r clang python)
 makedepends=(gcc-fortran)
 source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-${pkgver%.*}-src.tar.bz2"
