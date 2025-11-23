@@ -38,14 +38,11 @@ check() {
 }
 
 package() {
-    install -o root -g root -m 755 -d $pkgdir/usr/bin
-    install -o root -g root -m 755 -t $pkgdir/usr/bin $pkgname-$pkgver/target/release/bootc
-    install -o root -g root -m 755 -t $pkgdir/usr/bin $pkgname-$pkgver/target/release/bootc-initramfs-setup
+    install -m 755 -t $pkgdir/usr/bin -D $pkgname-$pkgver/target/release/bootc
+    install -m 755 -t $pkgdir/usr/bin -D $pkgname-$pkgver/target/release/bootc-initramfs-setup
 
-    install -o root -g root -m 755 -d $pkgdir/usr/share/doc/$pkgname
-    install -o root -g root -m 644 -t $pkgdir/usr/share/doc/$pkgname $pkgname-$pkgver/README.md
+    install -m 644 -t $pkgdir/usr/share/doc/$pkgname -D $pkgname-$pkgver/README.md
 
-    install -o root -g root -m 755 -d $pkgdir/usr/share/licenses/$pkgname
-    install -o root -g root -m 644 -t $pkgdir/usr/share/licenses/$pkgname $pkgname-$pkgver/LICENSE-APACHE
-    install -o root -g root -m 644 -t $pkgdir/usr/share/licenses/$pkgname $pkgname-$pkgver/LICENSE-MIT
+    install -m 644 -t $pkgdir/usr/share/licenses/$pkgname -D $pkgname-$pkgver/LICENSE-APACHE
+    install -m 644 -t $pkgdir/usr/share/licenses/$pkgname -D $pkgname-$pkgver/LICENSE-MIT
 }
