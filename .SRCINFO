@@ -1,0 +1,14 @@
+pkgbase = pplhatearch
+	pkgdesc = Yay-like helper that pulls packages from the GitHub AUR backup
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/aiden04/pplhatearch
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = pacman
+	depends = git
+	source = pplhatearch-1.1.tar.gz::https://github.com/aiden04/pplhatearch/archive/refs/tags/v1.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = pplhatearch
