@@ -19,7 +19,7 @@ options=(!debug)
 
 source=("https://github.com/burhancodes/fagram-rpm/releases/download/v${pkgver}/fagram-${pkgver}.tar.gz")
 
-sha256sums=('8fb1df3118ac568166e9b1568415258e5fcfa86e146dd7fd8e30846753b26ced')
+sha256sums=('ad28824b8e3652c076fc4e82547f0b5c14d434f7d2482aed32434290c6ace4e5')
 
 package() {
     cd "${srcdir}/"
