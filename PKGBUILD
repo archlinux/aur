@@ -1,10 +1,9 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
-# Note: change to main when .net9 work merges
-_branch=artempyanykh/stack/8
+_branch=main
 _pkgname=marksman
 pkgname=${_pkgname}-git
-pkgver=r477.92d3db3
+pkgver=r500.1928e10
 pkgrel=1
 pkgdesc="Write Markdown with code assist and intelligence in the comfort of your favourite editor."
 arch=('any')

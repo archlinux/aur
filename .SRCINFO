@@ -1,6 +1,6 @@
 pkgbase = marksman-git
 	pkgdesc = Write Markdown with code assist and intelligence in the comfort of your favourite editor.
-	pkgver = r477.92d3db3
+	pkgver = r500.1928e10
 	pkgrel = 1
 	url = https://github.com/artempyanykh/marksman
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = marksman-git
 	makedepends = git
 	depends = dotnet-runtime
 	options = !strip
-	source = marksman-git::git+https://github.com/artempyanykh/marksman.git#branch=artempyanykh/stack/8
+	source = marksman-git::git+https://github.com/artempyanykh/marksman.git#branch=main
 	sha256sums = SKIP
 
 pkgname = marksman-git
