@@ -1,6 +1,6 @@
 pkgbase = python-plexapi
 	pkgdesc = Python bindings for the Plex API.
-	pkgver = 4.17.1
+	pkgver = 4.17.2
 	pkgrel = 1
 	url = https://github.com/pkkid/python-plexapi
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-plexapi
 	depends = python-requests
 	depends = python-tqdm
 	depends = python-websocket-client
-	source = https://files.pythonhosted.org/packages/source/p/plexapi/plexapi-4.17.1.tar.gz
-	sha256sums = 1e5bfb486bb150e058a80ff4fb9aff9e3efce644c56d52bb5297272e005d8241
+	source = https://files.pythonhosted.org/packages/source/p/plexapi/plexapi-4.17.2.tar.gz
+	sha256sums = 438fbc79817f298a0897163cbd4626817559640584ac326bcf9dd5026b0b6f04
 
 pkgname = python-plexapi
