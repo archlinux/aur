@@ -1,11 +1,12 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=qb64-git
 pkgver=2.1.r52.391983b6d
-pkgrel=1
+pkgrel=2
 pkgdesc='BASIC for the modern era'
 arch=('x86_64')
 url='https://www.qb64.com/'
 license=('custom')
+depends=('glu')
 makedepends=('gcc' 'zlib' 'xorg-xmessage')
 provides=('qb64')
 conflicts=('qb64')
@@ -37,5 +38,5 @@ package() {
 	cp -r internal licenses COPYING.txt qb64 qb64.1 run_qb64.sh "$pkgdir/opt/qb64"
 	chmod -R g+w "$pkgdir/opt/qb64/internal"
 	install -Dm644 qb64.desktop "$pkgdir/usr/share/applications/qb64.desktop"
-	install -Dm644 COPYING.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 COPYING.txt "$pkgdir/usr/share/licenses/qb64/LICENSE"
 }
