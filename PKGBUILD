@@ -2,7 +2,7 @@
 
 pkgname=bootc
 pkgver=1.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Boot and upgrade via container images'
 url='https://github.com/bootc-dev/bootc'
 license=('Apache-2.0 OR MIT')
