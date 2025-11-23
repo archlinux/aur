@@ -1,5 +1,5 @@
 pkgname=phantom-wallet-bin
-pkgver=25.43.4
+pkgver=25.43.5
 pkgrel=1
 pkgdesc="A crypto wallet reimagined for DeFi & NFTs"
 arch=('x86_64')
@@ -13,10 +13,10 @@ optdepends=(
 )
 
 options=(!strip)
-source=("http://localhost:3000/projects/phantom-wallet/files/Phantom%20Wallet-25.43.2.tar.gz/download")
+source=("https://sourceforge.net/projects/phantom-wallet/files/Phantom%20Wallet-25.43.2.tar.gz/download")
 
 
-sha256sums=('SKIP')
+sha256sums=('df3c2011918e747bbc3bc66fc7c5e312a16dbe732d821a2b64ac2d012d1f2ce0')
 
 install="${pkgname}.install"
 
