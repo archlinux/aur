@@ -27,6 +27,7 @@ makedepends=(
 )
 provides=('wshowlyrics')
 conflicts=('wshowlyrics')
+backup=('etc/wshowlyrics/settings.ini')
 source=("git+https://github.com/unstable-code/lyrics.git")
 sha256sums=('SKIP')
 
@@ -52,6 +53,9 @@ package() {
 
     # Install binary
     install -Dm755 build/lyrics "$pkgdir/usr/bin/wshowlyrics"
+
+    # Install system-wide configuration file
+    install -Dm644 settings.ini.example "$pkgdir/etc/wshowlyrics/settings.ini"
 
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
