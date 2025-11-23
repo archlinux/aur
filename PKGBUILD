@@ -8,6 +8,7 @@ pkgdesc="A set of symbolic icons for GTK applications and projects"
 arch=('any')
 url="https://github.com/xapp-project/xapp-symbolic-icons"
 license=('GPL-3.0-only' 'LGPL-3.0-only')
+provides=('xsi-symbolic-icons')
 depends=(
   'hicolor-icon-theme'
   'python'
