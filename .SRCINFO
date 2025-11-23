@@ -1,6 +1,6 @@
 pkgbase = snagboot
 	pkgdesc = Generic recovery and reflashing tool for embedded platforms
-	pkgver = 2.4
+	pkgver = 2.5
 	pkgrel = 1
 	url = https://github.com/bootlin/snagboot
 	install = snagboot.install
@@ -22,9 +22,9 @@ pkgbase = snagboot
 	depends = python-xmodem>=0.4.6
 	depends = python-yaml>=6.0
 	depends = swig>=4.1.1
-	source = https://github.com/bootlin/snagboot/archive/v2.4.tar.gz
+	source = https://github.com/bootlin/snagboot/archive/v2.5.tar.gz
 	source = snagboot.sysusers
-	b2sums = 4b053740f173a18011e7a515ed8571f18d3dce99747f920bd9fc8d70e06ff427658321b249d2ef99d10dc48e01f6b2841bac75e53ce05ebdcc9ddce9ee4708ca
+	b2sums = 52f2b1c1cc03293b981ac6b12f172cfca42cfe2b32f32d658d98afb6cbc81a65068d0870d0a471f920d217859d6d49c29aea2b2c02d9f54b5b3ecff9f26e8f60
 	b2sums = f48705e2a98ec318e26a4a1f01bafabbd8ab74622c7209be9cbae34bb0ccc999d6581b0fa5c827ab7a8bd41d6f32d32c4a2ed642342279308362953018843138
 
 pkgname = snagboot
