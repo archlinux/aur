@@ -2,10 +2,10 @@
 pkgname='clusteringsuite'
 pkgdesc='Automatically expose the main performance trends in applications'\'' computation structure (from BSC).'
 pkgver='2.6.9.20250303'
-pkgrel='1'
+pkgrel='2'
 arch=('x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
-license=('LGPL2.1')
+license=('LGPL-2.1-or-later')
 depends=(libxml2 boost libbsctools)
 source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-${pkgver%.*}-src.tar.bz2"
         clusteringsuite-Build-fix-for-GCC-11-invocable-as-const.patch
