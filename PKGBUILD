@@ -2,7 +2,7 @@
 _base=dolfinx
 pkgname=python-fenics-${_base}
 pkgdesc="Next generation FEniCS problem solving environment (python interface)"
-pkgver=0.10.0.post2
+pkgver=0.10.0.post3
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/FEniCS/${_base}"
@@ -15,7 +15,7 @@ optdepends=('python-pyvista: for plotting'
   'slepc: for eigenvalue solver support'
   'gmsh: for extract data from Gmsh models')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('bfc7726169679871ffcb6d44bfbeb4103878d248ead78aca5a84810e4df4741f7dbf689deca091afca0cb3f45658cc1c1d556b29f9d400371daa61348f3373ea')
+sha512sums=('4afaf283214336d897afb35a187dce01cdf2c6b5026d123946fa71dfdaab3472119f1a165668d924eeb24a12b2a6e1d1922d27d737791842adbb870948a16aff')
 
 build() {
   cd ${_base}-${pkgver}/python
