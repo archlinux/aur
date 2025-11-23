@@ -2,7 +2,7 @@
 
 pkgname=moonshine
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Streaming server for Moonlight clients, written in Rust."
 arch=('x86_64')
 url="https://github.com/hgaiser/moonshine"
@@ -14,6 +14,7 @@ depends=(
 	ffmpeg
 	gcc-libs
 	glibc
+	libevdev
 	libpulse
 	nvidia-utils
 	openssl
