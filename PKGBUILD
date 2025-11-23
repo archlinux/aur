@@ -2,8 +2,8 @@
 # Contributor : Mikhail Velichko  <efklid@gmail.com>
 
 pkgname=r7-office
-pkgver=7.2.2.40
-pkgrel=11
+pkgver=2025.3.1
+pkgrel=12
 pkgdesc='An enterprise office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
 url='https://r7-office.ru/'
@@ -24,15 +24,15 @@ conflicts=('r7-office')
 
 options=('!strip' '!emptydirs')
 
-source=("r7-office.deb"::"https://download.r7-office.ru/ubuntu/r7-office.deb")
+source=("r7-office_2025.3.1-923~stretch_amd64.deb"::"https://download.r7-office.ru/debian/r7-office_2025.3.1-923~stretch_amd64.deb")
 
-noextract=("r7-office.deb")
+noextract=("https://download.r7-office.ru/debian/r7-office_2025.3.1-923~stretch_amd64.deb")
 
-sha256sums=('2a0b8162eab6daeac762bb50f692f3496f69dc0d3a472e7f50465cde8eb45dc3')
+sha256sums=('403b00fed685c8d59aa773cee9177993cdb9133b7ee62c3e1d4ed64a71f0d587')
 
 prepare() {
     mkdir -p "r7-office-${pkgver}"
-    bsdtar -xf "${srcdir}/r7-office.deb" -C "r7-office-${pkgver}"
+    bsdtar -xf "${srcdir}/r7-office_2025.3.1-923~stretch_amd64.deb" -C "r7-office-${pkgver}"
 }
 
 package() {
