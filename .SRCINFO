@@ -1,6 +1,6 @@
 pkgbase = wgrib2
 	pkgdesc = Utility to read and write grib2 files
-	pkgver = 3.7.0
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://github.com/NOAA-EMC/wgrib2
 	arch = x86_64
@@ -12,7 +12,8 @@ pkgbase = wgrib2
 	depends = netcdf
 	depends = nceplibs-ip
 	depends = nceplibs-g2c
-	source = wgrib2-3.7.0.tar.gz::https://github.com/NOAA-EMC/wgrib2/archive/refs/tags/v3.7.0.tar.gz
-	sha256sums = b741a07710a8195c99a7d50de05bde90182ab4334f5c4a0d6d057c4e20cc6a75
+	conflicts = wgrib
+	source = wgrib2-3.8.0.tar.gz::https://github.com/NOAA-EMC/wgrib2/archive/refs/tags/v3.8.0.tar.gz
+	sha256sums = 39faebada36da5457c75f0980bb68fa299b221b3e6b335bb7d29006a35830c54
 
 pkgname = wgrib2

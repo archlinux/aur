@@ -3,7 +3,7 @@
 # Contributor: Graziano Giuliani <giuliani@lamma.rete.toscana.it>
 
 pkgname=wgrib2
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="Utility to read and write grib2 files"
 arch=('x86_64')
@@ -11,8 +11,9 @@ url="https://github.com/NOAA-EMC/wgrib2"
 license=('GPL' 'Apache' 'custom')
 depends=('netcdf' 'nceplibs-ip' 'nceplibs-g2c')
 makedepends=('gcc-fortran' 'cmake')
+conflicts=('wgrib')  # the wgrib binary is also part of this package
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NOAA-EMC/wgrib2/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b741a07710a8195c99a7d50de05bde90182ab4334f5c4a0d6d057c4e20cc6a75')
+sha256sums=('39faebada36da5457c75f0980bb68fa299b221b3e6b335bb7d29006a35830c54')
 
 build() {
   cmake -B build -S "$srcdir/$pkgname-$pkgver" -DCMAKE_INSTALL_PREFIX="/usr" \
