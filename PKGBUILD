@@ -1,8 +1,9 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: Rooki <aur at rooki dot xyz>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=cairo-clock
 pkgver=0.3.4
-pkgrel=4
+pkgrel=5
 pkgdesc='An analog clock displaying the system-time'
 arch=('i686' 'x86_64')
 url='https://macslow.org'
