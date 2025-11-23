@@ -2,7 +2,7 @@
 
 _plug=vsjetpack
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.4.0.65.g8bbac7c6
+pkgver=1.0.0rc1.10.g21a2c5fd
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -18,8 +18,10 @@ depends=(
     'vapoursynth-plugin-resize2'
 )
 makedepends=('git'
-    'python-pip'
-    'python-wheel'
+    'python-build'
+    'python-installer'
+    'python-hatchling'
+    'python-versioningit'
 )
 optdepends=(
     'ffms2'
@@ -127,12 +129,12 @@ pkgver() {
 build() {
     cd "${_plug}"
     rm -f dist/*.whl
-    pip wheel --no-deps . -w dist
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${_plug}"
-    pip install -I -U --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 
     install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
