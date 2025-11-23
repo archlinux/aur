@@ -12,6 +12,10 @@ pkgbase = chatgpt-desktop-unix-git
 	depends = gcc
 	depends = make
 	source = chatgpt-desktop-unix-git::git+https://github.com/KuznixTeam/chatgpt-desktop-unix
+	source = chatgpt-desktop-unix.desktop
+	source = app.png
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = chatgpt-desktop-unix-git

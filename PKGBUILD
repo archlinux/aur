@@ -8,20 +8,32 @@ url="https://github.com/KuznixTeam/chatgpt-desktop-unix"
 license=('GPL3')
 depends=('qt6-base' 'qt6-webengine' 'cmake' 'gcc' 'make')
 makedepends=('git')
-source=("$pkgname::git+$url")
-sha256sums=('SKIP')
+source=("$pkgname::git+$url"
+        "chatgpt-desktop-unix.desktop"
+        "app.png")
+sha256sums=('SKIP' 'SKIP' 'SKIP')
+
+# Generate pkgver from latest Git commit
+pkgver() {
+  cd "$srcdir/$pkgname"
+  git describe --tags --long 2>/dev/null | awk -F- '{print $1 "." $3}'
+}
 
 build() {
     cd "$srcdir/$pkgname"
     mkdir -p build
     cd build
-    cmake .. -DCMAKE_BUILD_TYPE=Release
+    cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
     make -j$(nproc)
 }
 
 package() {
     cd "$srcdir/$pkgname/build"
-    install -Dm755 chatgpt-desktop-unix "$pkgdir/usr/bin/chatgpt-desktop-unix"
-    install -Dm644 ../chatgpt-desktop-unix.desktop "$pkgdir/usr/share/applications/chatgpt-desktop-unix.desktop"
-    install -Dm644 ../app.png "$pkgdir/usr/share/pixmaps/app.png"
+    make DESTDIR="$pkgdir" install
+
+    # Install the .desktop file
+    install -Dm644 "$srcdir/chatgpt-desktop-unix.desktop" "$pkgdir/usr/share/applications/chatgpt-desktop-unix.desktop"
+
+    # Install the app icon
+    install -Dm644 "$srcdir/app.png" "$pkgdir/usr/share/pixmaps/app.png"
 }
