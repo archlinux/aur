@@ -32,5 +32,8 @@ pkgbase = mayaflux-dev-bin
 	provides = MayaFlux
 	conflicts = MayaFlux
 	source = MayaFlux-0.1.0-dev-Linux.tar.gz::https://github.com/MayaFlux/MayaFlux/releases/download/v0.1.0-dev/MayaFlux-0.1.0-dev-Linux.tar.gz
-	sha256sums = ef048fce1072f367558ec63f3e51ff066a27c545a7718ecfd73c552d6d70b449
+	source = MayaFlux-0.1.0-dev-Linux.tar.gz::https://github.com/MayaFlux/MayaFlux/releases/download/v0.1.0-dev/MayaFlux-0.1.0-dev-Linux.tar.gz.sha256
+	sha256sums = SKIP
+	sha256sums = SKIP
+
 pkgname = mayaflux-dev-bin

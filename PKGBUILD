@@ -40,11 +40,30 @@ optdepends=(
 )
 provides=('MayaFlux')
 conflicts=('MayaFlux')
-source=("MayaFlux-${pkgver}-dev-Linux.tar.gz::https://github.com/MayaFlux/MayaFlux/releases/download/v${pkgver}-dev/MayaFlux-${pkgver}-dev-Linux.tar.gz")
-sha256sums=('ef048fce1072f367558ec63f3e51ff066a27c545a7718ecfd73c552d6d70b449')
+source=(
+    "MayaFlux-${pkgver}-dev-Linux.tar.gz::https://github.com/MayaFlux/MayaFlux/releases/download/v${pkgver}-dev/MayaFlux-${pkgver}-dev-Linux.tar.gz"
+    "MayaFlux-${pkgver}-dev-Linux.tar.gz::https://github.com/MayaFlux/MayaFlux/releases/download/v${pkgver}-dev/MayaFlux-${pkgver}-dev-Linux.tar.gz.sha256"
+)
+sha256sums=('SKIP' 'SKIP')
 
 prepare() {
-    echo "Preparing MayaFlux development build..."
+    echo "Verifying package integrity..."
+
+    local expected_sha=$(cat "MayaFlux-${pkgver//_/-}-Linux.tar.gz.sha256")
+
+    local actual_sha=$(sha256sum "MayaFlux-${pkgver//_/-}-Linux.tar.gz" | cut -d' ' -f1)
+
+    echo "Expected SHA256: $expected_sha"
+    echo "Actual SHA256:   $actual_sha"
+
+    if [[ "$expected_sha" != "$actual_sha" ]]; then
+        error "SHA256 verification failed!"
+        error "Expected: $expected_sha"
+        error "Actual:   $actual_sha"
+        return 1
+    fi
+
+    echo "✅ SHA256 verification passed"
 }
 
 package() {
@@ -83,7 +102,7 @@ package() {
 
         # Copy share content
         if [ -d "share" ]; then
-            cp -r share/* "$pkgdir/usr/share/MayaFlux/"
+            cp -r share/* "$pkgdir/usr/share/"
         fi
 
         # Copy license if available
