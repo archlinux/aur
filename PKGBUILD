@@ -27,7 +27,6 @@ makedepends=(
 )
 provides=('wshowlyrics')
 conflicts=('wshowlyrics')
-backup=('etc/wshowlyrics/settings.ini')
 source=("git+https://github.com/unstable-code/lyrics.git")
 sha256sums=('SKIP')
 
