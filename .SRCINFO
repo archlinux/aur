@@ -1,0 +1,17 @@
+pkgbase = kwin-x11-lite-bin
+	pkgdesc = kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for XLibre
+	pkgver = 6.5.3
+	pkgrel = 1
+	url = https://github.com/KDE-Lite/kwin-x11-lite
+	arch = x86_64
+	license = custom
+	provides = kwin-x11-lite
+	provides = kwin-x11
+	conflicts = kwin-x11-lite
+	conflicts = kwin-x11
+	noextract = kwin-x11-lite-6.5.3-1-x86_64.pkg.tar.zst
+	options = !strip
+	source = https://x11libre.net/repo/arch_based/x86_64/kwin-x11-lite-6.5.3-1-x86_64.pkg.tar.zst
+	sha256sums = 730643816f3715619c9d847255b46f87177fc682243a7c992efebcccf0a0389e
+
+pkgname = kwin-x11-lite-bin
