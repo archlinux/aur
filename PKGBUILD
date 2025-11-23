@@ -1,5 +1,5 @@
 pkgname=drinfo-git
-pkgver=1.2.0.r0.g0000000
+pkgver=V.1.2.0.r1.g9b947d2
 pkgrel=1
 pkgdesc="Linux system information tool written in C"
 arch=('x86_64')
@@ -15,7 +15,17 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/drinfo"
-    git describe --long --tags 2>/dev/null | sed 's/^v//; s/-/./g'
+
+    # Falls Tags existieren → nutze sie
+    if git describe --tags --long >/dev/null 2>&1; then
+        git describe --tags --long \
+        | sed 's/^v//; s/-/.r/; s/-/./'
+    else
+        # Fallback, wenn KEINE Tags existieren
+        printf "0.r%s.g%s" \
+            "$(git rev-list --count HEAD)" \
+            "$(git rev-parse --short HEAD)"
+    fi
 }
 
 build() {
@@ -26,13 +36,8 @@ build() {
 package() {
     cd "$srcdir/drinfo"
 
-    # Binary
     install -Dm755 drinfo "$pkgdir/usr/bin/drinfo"
-
-    # Manpage
     install -Dm644 drinfo.1 "$pkgdir/usr/share/man/man1/drinfo.1"
-
-    # Lizenz und Doku
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
