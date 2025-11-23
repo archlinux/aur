@@ -51,6 +51,7 @@ gnupg/
 ############################
 
 # Internal files
+coolerdash/
 coolerdash-bin/
 
 # GitHub files
