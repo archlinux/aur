@@ -1,15 +1,15 @@
 # Maintainer: Luke Cotton <aur at cotton dot org dot uk>
 _pkgname='unbted'
 pkgname="${_pkgname}-git"
-pkgver=1.2.1.r1.ga2bd934
-pkgrel=2
+pkgver=1.2.2.r2.g0d1e1f2
+pkgrel=1
 pkgdesc="Una's NBT Editor - an advanced interactive command-line NBT editor"
 arch=('any')
 url="https://git.sleeping.town/unascribed/${_pkgname}"
 license=('GPL-3.0-only' 'Apache-2.0' 'MIT')
 groups=()
 depends=()
-makedepends=('git' 'gradle<9' 'java-environment<=17')
+makedepends=('git' 'java-environment<=24')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 replaces=()
@@ -17,7 +17,7 @@ backup=()
 options=()
 install=
 source=(
-	"git+https://github.com/unascribed/${_pkgname}.git"
+        "git+https://git.sleeping.town/unascribed/${_pkgname}.git"
 	"${_pkgname}.sh"
 )
 noextract=()
@@ -34,16 +34,16 @@ pkgver() {
 build() {
 	cd "$srcdir/$_pkgname"
 	# Suppress Gradle's welcome message on first build
-	gradle --version > /dev/null
-	gradle build
+        ./gradlew --version > /dev/null
+        ./gradlew build
 }
 
 package() {
-	depends=('java-runtime>=17' 'sh')
+	depends=('java-runtime>=8' 'sh')
 	_gittag="$(echo ${pkgver} | sed -e 's|^\([0-9]*\.[0-9]*\.[0-9]*\).*|\1|')"
 	install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
 	cd "${srcdir}/${_pkgname}"
 	install -Dm644 "build/libs/${_pkgname}-${_gittag}.jar" "${pkgdir}/usr/share/java/${_pkgname}/${_pkgname}.jar"
-	install -Dm644 "opennbt-LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/MIT"
+	install -Dm644 "opennbt-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/MIT"
 }
 
