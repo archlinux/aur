@@ -1,6 +1,6 @@
 pkgbase = voxd-git
 	pkgdesc = Voice-typing/dictation app for Linux using local speech-to-text processing (git version)
-	pkgver = r123.abc1234
+	pkgver = r254.9c067c6
 	pkgrel = 1
 	url = https://github.com/jakovius/voxd
 	arch = x86_64

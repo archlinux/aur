@@ -1,6 +1,6 @@
 # Maintainer: Luca Steccanella <steccas at pm dot me>
 pkgname=voxd-git
-pkgver=r123.abc1234
+pkgver=r254.9c067c6
 pkgrel=1
 pkgdesc="Voice-typing/dictation app for Linux using local speech-to-text processing (git version)"
 arch=('x86_64' 'aarch64')
