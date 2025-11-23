@@ -1,0 +1,17 @@
+# Build artifacts
+*.tar.gz
+*.tar.xz
+*.tar.zst
+pkg/
+src/
+*.pkg.tar.*
+
+# Makepkg files
+*.log
+
+# Editor files
+*~
+*.swp
+*.swo
+.vscode/
+.idea/
