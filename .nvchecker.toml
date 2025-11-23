@@ -1,0 +1,4 @@
+[silo]
+source = "github"
+github = "LLNL/Silo"
+use_latest_release = "true"
