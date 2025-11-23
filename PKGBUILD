@@ -3,7 +3,7 @@ pkgname=idescriptor-git
 _pkgname=iDescriptor
 pkgver=r263.6d86243
 pkgrel=1
-pkgdesc="A free and open-source iDevice management tool."
+pkgdesc="A free, open-source, and cross-platform iDevice management tool."
 arch=('x86_64')
 url="https://github.com/iDescriptor/iDescriptor"
 license=('AGPL3-or-later')
@@ -65,7 +65,6 @@ build() {
   cmake -B build -S . \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DENABLE_RECOVERY_DEVICE_SUPPORT=OFF \
     -DPACKAGE_MANAGER_MANAGED=ON \
     -DPACKAGE_MANAGER_HINT=yay/paru
   cmake --build build
