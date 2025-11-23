@@ -18,30 +18,30 @@ optdepends=(
     'doas: Privilege escalation (alternative to pkexec/sudo)'
 )
 options=('!lto')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     
     # Install binary
     install -Dm755 target/release/$pkgname -t "$pkgdir/usr/bin"

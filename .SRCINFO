@@ -21,7 +21,7 @@ pkgbase = khazaur
 	optdepends = sudo: Privilege escalation (alternative to pkexec)
 	optdepends = doas: Privilege escalation (alternative to pkexec/sudo)
 	options = !lto
-	source = khazaur-0.2.0beta.tar.gz::https://github.com/os-guy-original/khazaur/archive/refs/tags/v0.2.0beta.tar.gz
+	source = git+https://github.com/os-guy-original/khazaur.git
 	sha256sums = SKIP
 
 pkgname = khazaur
