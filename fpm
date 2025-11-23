@@ -6,18 +6,210 @@ cache_dir="/var/cache/pacman/pkg"
 
 _sk() {
   local header="$1"; shift
+  local query="${1:-}"
+  # If first arg after header looks like a query (not starting with --), use it
+  if [ -n "$query" ] && [[ ! "$query" =~ ^-- ]]; then
+    shift
+  else
+    query=""
+  fi
+  
   sk \
     --ansi \
+    --no-clear \
     --height 40% \
     --reverse \
     --prompt "fpm> " \
-    --bind "tab:toggle+down,ctrl-u:half-page-up,ctrl-d:half-page-down" \
+    --bind "tab:toggle+down,ctrl-u:half-page-up,ctrl-d:half-page-down,ctrl-r:toggle-preview" \
     --header "$header" \
+    --tiebreak=begin,length \
+    --preview-window=right:50%:wrap \
+    ${query:+--query "$query"} \
     "$@"
 }
 
 _require_sk() { command -v sk >/dev/null || { echo "skim (sk) missing"; exit 1; }; }
 _require_pacman() { command -v pacman >/dev/null || { echo "pacman missing"; exit 1; }; }
+
+# Get AUR packages list (cached for performance)
+_get_aur_packages() {
+  local cache_file="/tmp/fpm_aur_cache_$$"
+  local cache_age=3600 # 1 hour
+  
+  # Check if cache exists and is recent
+  if [ -f "$cache_file" ] && [ $(($(date +%s) - $(stat -c %Y "$cache_file" 2>/dev/null || echo 0))) -lt $cache_age ]; then
+    cat "$cache_file"
+    return
+  fi
+  
+  # Fetch AUR package list
+  curl -s 'https://aur.archlinux.org/packages.gz' | gunzip | tail -n +2 | \
+    awk '{printf "aur/%-40s %s\n", $1, $1}' | tee "$cache_file"
+}
+
+# Preview package info (official or AUR)
+_preview_pkg() {
+  local pkg="$1"
+  local cache_dir="/tmp/fpm_preview_cache"
+  local cache_file="$cache_dir/${pkg}.cache"
+  local lock_file="$cache_dir/${pkg}.lock"
+  local error_file="$cache_dir/${pkg}.error"
+  local fetching_file="$cache_dir/${pkg}.fetching"
+  
+  # Validate input
+  if [ -z "$pkg" ]; then
+    echo "⚠️  No package selected"
+    return
+  fi
+  
+  # Create cache directory if it doesn't exist
+  mkdir -p "$cache_dir"
+  
+  # Try official repos first (fast, no cache needed)
+  if pacman -Si "$pkg" 2>/dev/null; then
+    return
+  fi
+  
+  # Check if we have a cached error (valid for 5 minutes)
+  if [ -f "$error_file" ]; then
+    local error_age=$(($(date +%s) - $(stat -c %Y "$error_file" 2>/dev/null || echo 0)))
+    if [ $error_age -lt 300 ]; then
+      cat "$error_file"
+      return
+    else
+      rm -f "$error_file"
+    fi
+  fi
+  
+  # Check if we have a cached result (valid for 1 hour)
+  if [ -f "$cache_file" ]; then
+    local cache_age=$(($(date +%s) - $(stat -c %Y "$cache_file" 2>/dev/null || echo 0)))
+    if [ $cache_age -lt 3600 ]; then
+      cat "$cache_file"
+      return
+    fi
+  fi
+  
+  # Check if currently being fetched by another process
+  if [ -f "$fetching_file" ]; then
+    local fetch_age=$(($(date +%s) - $(stat -c %Y "$fetching_file" 2>/dev/null || echo 0)))
+    
+    # If fetching file is older than 10 seconds, assume it's stale
+    if [ $fetch_age -gt 10 ]; then
+      rm -f "$fetching_file" "$lock_file"
+    else
+      echo "⏳ Loading package information..."
+      return
+    fi
+  fi
+  
+  # Check if there's an active lock (another preview process)
+  if [ -f "$lock_file" ]; then
+    local lock_age=$(($(date +%s) - $(stat -c %Y "$lock_file" 2>/dev/null || echo 0)))
+    
+    # If lock is older than 10 seconds, assume it's stale
+    if [ $lock_age -gt 10 ]; then
+      rm -f "$lock_file"
+    else
+      # Another preview is being called, don't show anything (debounce)
+      echo "🔍 Fetching AUR package information..."
+      return
+    fi
+  fi
+  
+  # Create lock file to prevent multiple simultaneous fetches
+  touch "$lock_file"
+  
+  # Small debounce delay - if lock disappears, another process took over
+  sleep 0.05
+  if [ ! -f "$lock_file" ]; then
+    return
+  fi
+  
+  # Mark as fetching
+  touch "$fetching_file"
+  
+  # Show loading indicator
+  echo "🔍 Fetching AUR package information..."
+  
+  # Fetch from AUR synchronously but with timeout
+  local json=$(timeout 8 curl -s --max-time 8 "https://aur.archlinux.org/rpc/?v=5&type=info&arg=${pkg}" 2>/dev/null)
+  local curl_exit=$?
+  
+  # Check if curl failed or timed out
+  if [ $curl_exit -ne 0 ] || [ -z "$json" ]; then
+    echo "❌ Network error: Failed to fetch package information" | tee "$error_file"
+    rm -f "$lock_file" "$fetching_file"
+    return
+  fi
+  
+  # Check if we got valid JSON
+  if ! echo "$json" | grep -q '"resultcount"'; then
+    echo "❌ Invalid response from AUR API" | tee "$error_file"
+    rm -f "$lock_file" "$fetching_file"
+    return
+  fi
+  
+  # Check if we got valid JSON with results
+  local result_count=$(echo "$json" | grep -o '"resultcount":[0-9]*' | cut -d: -f2)
+  
+  if [ -z "$result_count" ] || [ "$result_count" -eq 0 ]; then
+    echo "📦 Package not found in AUR" | tee "$cache_file"
+    rm -f "$lock_file" "$fetching_file"
+    return
+  fi
+  
+  # Extract package data
+  local name=$(echo "$json" | grep -o '"Name":"[^"]*"' | head -1 | cut -d'"' -f4)
+  local version=$(echo "$json" | grep -o '"Version":"[^"]*"' | head -1 | cut -d'"' -f4)
+  local description=$(echo "$json" | grep -o '"Description":"[^"]*"' | head -1 | cut -d'"' -f4)
+  local url=$(echo "$json" | grep -o '"URL":"[^"]*"' | head -1 | cut -d'"' -f4)
+  local maintainer=$(echo "$json" | grep -o '"Maintainer":"[^"]*"' | head -1 | cut -d'"' -f4)
+  local votes=$(echo "$json" | grep -o '"NumVotes":[0-9]*' | head -1 | cut -d: -f2)
+  local popularity=$(echo "$json" | grep -o '"Popularity":[0-9.]*' | head -1 | cut -d: -f2)
+  local depends=$(echo "$json" | grep -o '"Depends":\[[^]]*\]' | sed 's/"Depends":\[//;s/\]//;s/"//g')
+  local makedepends=$(echo "$json" | grep -o '"MakeDepends":\[[^]]*\]' | sed 's/"MakeDepends":\[//;s/\]//;s/"//g')
+  
+  # Validate we got at least the essential data
+  if [ -z "$name" ]; then
+    echo "⚠️  Incomplete package data received" | tee "$error_file"
+    rm -f "$lock_file" "$fetching_file"
+    return
+  fi
+  
+  # Parse and format, then save to cache
+  {
+    echo "Repository      : aur"
+    echo "Name            : ${name}"
+    echo "Version         : ${version:-N/A}"
+    
+    if [ -z "$description" ]; then
+      echo "Description     : (No description available)"
+    else
+      echo "Description     : ${description}"
+    fi
+    
+    if [ -n "$url" ] && [ "$url" != "null" ]; then
+      echo "URL             : ${url}"
+    fi
+    
+    echo "Maintainer      : ${maintainer:-Orphaned}"
+    echo "Votes           : ${votes:-0}"
+    echo "Popularity      : ${popularity:-0}"
+    
+    # Extract dependencies if present
+    if [ -n "$depends" ]; then
+      echo "Depends On      : $depends"
+    fi
+    
+    if [ -n "$makedepends" ]; then
+      echo "Make Depends    : $makedepends"
+    fi
+  } | tee "$cache_file"
+  
+  # Remove lock and fetching files
+  rm -f "$lock_file" "$fetching_file"
+}
 
 # new sync command
 fpm_sync() {
@@ -32,13 +224,193 @@ _auto_sync() {
 }
 
 fpm_add() {
+  local initial_query="$1"
   _auto_sync
   _require_sk; _require_pacman
   sudo -v || exit 1
-  pacman -Sl | \
-    _sk "TAB=select • ENTER=install" --multi --preview "pacman -Si {2}" | \
+  
+  # Create a fast preview script
+  local preview_script="/tmp/fpm_preview_$$"
+  cat > "$preview_script" << 'PREVIEW_EOF'
+#!/usr/bin/env bash
+pkg="$1"
+cache_dir="/tmp/fpm_preview_cache"
+cache_file="$cache_dir/${pkg}.cache"
+error_file="$cache_dir/${pkg}.error"
+fetching_file="$cache_dir/${pkg}.fetching"
+lock_file="$cache_dir/${pkg}.lock"
+
+[ -z "$pkg" ] && { echo "⚠️  No package selected"; exit 0; }
+mkdir -p "$cache_dir"
+
+# Try official repos first (fast path)
+if pacman -Si "$pkg" 2>/dev/null; then exit 0; fi
+
+# Check cache first (fastest path)
+if [ -f "$cache_file" ]; then
+  cache_age=$(($(date +%s) - $(stat -c %Y "$cache_file" 2>/dev/null || echo 0)))
+  if [ $cache_age -lt 3600 ]; then
+    cat "$cache_file"
+    exit 0
+  fi
+fi
+
+# Check for cached error
+if [ -f "$error_file" ]; then
+  error_age=$(($(date +%s) - $(stat -c %Y "$error_file" 2>/dev/null || echo 0)))
+  if [ $error_age -lt 300 ]; then
+    cat "$error_file"
+    exit 0
+  fi
+fi
+
+# Check if fetching
+if [ -f "$fetching_file" ]; then
+  fetch_age=$(($(date +%s) - $(stat -c %Y "$fetching_file" 2>/dev/null || echo 0)))
+  if [ $fetch_age -le 10 ]; then
+    echo "⏳ Loading package information..."
+    exit 0
+  fi
+  rm -f "$fetching_file" "$lock_file"
+fi
+
+# Check for active lock
+if [ -f "$lock_file" ]; then
+  lock_age=$(($(date +%s) - $(stat -c %Y "$lock_file" 2>/dev/null || echo 0)))
+  if [ $lock_age -le 10 ]; then
+    echo "🔍 Fetching AUR package information..."
+    exit 0
+  fi
+  rm -f "$lock_file"
+fi
+
+# Acquire lock
+touch "$lock_file"
+sleep 0.05
+[ ! -f "$lock_file" ] && exit 0
+
+touch "$fetching_file"
+
+# Fetch in background to not block
+(
+  json=$(timeout 8 curl -s --max-time 8 "https://aur.archlinux.org/rpc/?v=5&type=info&arg=${pkg}" 2>/dev/null)
+  
+  if [ $? -ne 0 ] || [ -z "$json" ]; then
+    echo "❌ Network error: Failed to fetch package information" > "$error_file"
+    rm -f "$lock_file" "$fetching_file"
+    exit 0
+  fi
+  
+  if ! echo "$json" | grep -q '"resultcount"'; then
+    echo "❌ Invalid response from AUR API" > "$error_file"
+    rm -f "$lock_file" "$fetching_file"
+    exit 0
+  fi
+  
+  result_count=$(echo "$json" | grep -o '"resultcount":[0-9]*' | cut -d: -f2)
+  
+  if [ -z "$result_count" ] || [ "$result_count" -eq 0 ]; then
+    echo "📦 Package not found in AUR" > "$cache_file"
+    rm -f "$lock_file" "$fetching_file"
+    exit 0
+  fi
+  
+  name=$(echo "$json" | grep -o '"Name":"[^"]*"' | head -1 | cut -d'"' -f4)
+  [ -z "$name" ] && { echo "⚠️  Incomplete package data" > "$error_file"; rm -f "$lock_file" "$fetching_file"; exit 0; }
+  
+  version=$(echo "$json" | grep -o '"Version":"[^"]*"' | head -1 | cut -d'"' -f4)
+  description=$(echo "$json" | grep -o '"Description":"[^"]*"' | head -1 | cut -d'"' -f4)
+  url=$(echo "$json" | grep -o '"URL":"[^"]*"' | head -1 | cut -d'"' -f4)
+  maintainer=$(echo "$json" | grep -o '"Maintainer":"[^"]*"' | head -1 | cut -d'"' -f4)
+  votes=$(echo "$json" | grep -o '"NumVotes":[0-9]*' | head -1 | cut -d: -f2)
+  popularity=$(echo "$json" | grep -o '"Popularity":[0-9.]*' | head -1 | cut -d: -f2)
+  depends=$(echo "$json" | grep -o '"Depends":\[[^]]*\]' | sed 's/"Depends":\[//;s/\]//;s/"//g')
+  makedepends=$(echo "$json" | grep -o '"MakeDepends":\[[^]]*\]' | sed 's/"MakeDepends":\[//;s/\]//;s/"//g')
+  
+  {
+    echo "Repository      : aur"
+    echo "Name            : ${name}"
+    echo "Version         : ${version:-N/A}"
+    echo "Description     : ${description:-(No description available)}"
+    [ -n "$url" ] && [ "$url" != "null" ] && echo "URL             : ${url}"
+    echo "Maintainer      : ${maintainer:-Orphaned}"
+    echo "Votes           : ${votes:-0}"
+    echo "Popularity      : ${popularity:-0}"
+    [ -n "$depends" ] && echo "Depends On      : $depends"
+    [ -n "$makedepends" ] && echo "Make Depends    : $makedepends"
+  } > "$cache_file"
+  
+  rm -f "$lock_file" "$fetching_file"
+) >/dev/null 2>&1 &
+PREVIEW_EOF
+
+# Wait for result with polling (max 8 seconds)
+for i in {1..8}; do
+  if [ -f "$cache_file" ] || [ -f "$error_file" ]; then
+    # Result ready, display it
+    [ -f "$cache_file" ] && cat "$cache_file" && exit 0
+    [ -f "$error_file" ] && cat "$error_file" && exit 0
+  fi
+  
+  # Still waiting, show progress
+  if [ $i -eq 1 ]; then
+    echo "🔍 Fetching AUR package information..."
+  elif [ $i -le 3 ]; then
+    echo "🔍 Fetching AUR package information."
+  elif [ $i -le 5 ]; then
+    echo "🔍 Fetching AUR package information.."
+  else
+    echo "🔍 Fetching AUR package information..."
+  fi
+  
+  sleep 1
+done
+
+# Timeout - check one last time
+if [ -f "$cache_file" ]; then
+  cat "$cache_file"
+elif [ -f "$error_file" ]; then
+  cat "$error_file"
+else
+  echo "⏱️  Fetch timeout - please try again"
+fi
+  
+  chmod +x "$preview_script"
+  
+  # Get list of installed packages for marking
+  local installed_pkgs=$(pacman -Qq)
+  
+  # Combine official repos and AUR
+  {
+    pacman -Sl | awk -v installed="$installed_pkgs" '
+      BEGIN { split(installed, inst_arr, "\n"); for (i in inst_arr) inst[inst_arr[i]] = 1 }
+      { status = ($2 in inst) ? "[installed]" : ""; printf "%-20s %-40s %s\n", $1"/"$2, $2, status }'
+    _get_aur_packages | awk -v installed="$installed_pkgs" '
+      BEGIN { split(installed, inst_arr, "\n"); for (i in inst_arr) inst[inst_arr[i]] = 1 }
+      { split($0, parts, " "); pkg = parts[2]; status = (pkg in inst) ? "[installed]" : ""; printf "%-20s %-40s %s\n", parts[1], pkg, status }'
+  } | \
+    _sk "TAB=select • ENTER=install (official + AUR)" "$initial_query" --multi \
+      --preview "$preview_script {2}" | \
     awk '{print $2}' | \
-    xargs -r sudo pacman -S --
+    while read -r pkg; do
+      # Check if package is in AUR or official repos
+      if pacman -Si "$pkg" &>/dev/null; then
+        sudo pacman -S "$pkg"
+      else
+        # Install from AUR using makepkg
+        echo "Installing AUR package: $pkg"
+        tmpdir=$(mktemp -d)
+        cd "$tmpdir"
+        curl -s "https://aur.archlinux.org/cgit/aur.git/snapshot/${pkg}.tar.gz" | tar xz
+        cd "$pkg"
+        makepkg -si
+        cd -
+        rm -rf "$tmpdir"
+      fi
+    done
+  
+  # Cleanup
+  rm -f "$preview_script"
 }
 
 fpm_rm() {
@@ -51,9 +423,175 @@ fpm_rm() {
 }
 
 fpm_search() {
+  local initial_query="$1"
   _auto_sync
   _require_sk
-  pacman -Sl | _sk "Search repo packages" --preview "pacman -Si {2}"
+  
+  # Create a fast preview script
+  local preview_script="/tmp/fpm_preview_$$"
+  cat > "$preview_script" << 'PREVIEW_EOF'
+#!/usr/bin/env bash
+pkg="$1"
+cache_dir="/tmp/fpm_preview_cache"
+cache_file="$cache_dir/${pkg}.cache"
+error_file="$cache_dir/${pkg}.error"
+fetching_file="$cache_dir/${pkg}.fetching"
+lock_file="$cache_dir/${pkg}.lock"
+
+[ -z "$pkg" ] && { echo "⚠️  No package selected"; exit 0; }
+mkdir -p "$cache_dir"
+
+# Try official repos first (fast path)
+if pacman -Si "$pkg" 2>/dev/null; then exit 0; fi
+
+# Check cache first (fastest path)
+if [ -f "$cache_file" ]; then
+  cache_age=$(($(date +%s) - $(stat -c %Y "$cache_file" 2>/dev/null || echo 0)))
+  if [ $cache_age -lt 3600 ]; then
+    cat "$cache_file"
+    exit 0
+  fi
+fi
+
+# Check for cached error
+if [ -f "$error_file" ]; then
+  error_age=$(($(date +%s) - $(stat -c %Y "$error_file" 2>/dev/null || echo 0)))
+  if [ $error_age -lt 300 ]; then
+    cat "$error_file"
+    exit 0
+  fi
+fi
+
+# Check if fetching
+if [ -f "$fetching_file" ]; then
+  fetch_age=$(($(date +%s) - $(stat -c %Y "$fetching_file" 2>/dev/null || echo 0)))
+  if [ $fetch_age -le 10 ]; then
+    echo "⏳ Loading package information..."
+    exit 0
+  fi
+  rm -f "$fetching_file" "$lock_file"
+fi
+
+# Check for active lock
+if [ -f "$lock_file" ]; then
+  lock_age=$(($(date +%s) - $(stat -c %Y "$lock_file" 2>/dev/null || echo 0)))
+  if [ $lock_age -le 10 ]; then
+    echo "🔍 Fetching AUR package information..."
+    exit 0
+  fi
+  rm -f "$lock_file"
+fi
+
+# Acquire lock
+touch "$lock_file"
+sleep 0.05
+[ ! -f "$lock_file" ] && exit 0
+
+echo "🔍 Fetching AUR package information..."
+
+# Fetch in background to not block
+(
+  json=$(timeout 8 curl -s --max-time 8 "https://aur.archlinux.org/rpc/?v=5&type=info&arg=${pkg}" 2>/dev/null)
+  
+  if [ $? -ne 0 ] || [ -z "$json" ]; then
+    echo "❌ Network error: Failed to fetch package information" > "$error_file"
+    rm -f "$lock_file" "$fetching_file"
+    exit 0
+  fi
+  
+  if ! echo "$json" | grep -q '"resultcount"'; then
+    echo "❌ Invalid response from AUR API" > "$error_file"
+    rm -f "$lock_file" "$fetching_file"
+    exit 0
+  fi
+  
+  result_count=$(echo "$json" | grep -o '"resultcount":[0-9]*' | cut -d: -f2)
+  
+  if [ -z "$result_count" ] || [ "$result_count" -eq 0 ]; then
+    echo "📦 Package not found in AUR" > "$cache_file"
+    rm -f "$lock_file" "$fetching_file"
+    exit 0
+  fi
+  
+  name=$(echo "$json" | grep -o '"Name":"[^"]*"' | head -1 | cut -d'"' -f4)
+  [ -z "$name" ] && { echo "⚠️  Incomplete package data" > "$error_file"; rm -f "$lock_file" "$fetching_file"; exit 0; }
+  
+  version=$(echo "$json" | grep -o '"Version":"[^"]*"' | head -1 | cut -d'"' -f4)
+  description=$(echo "$json" | grep -o '"Description":"[^"]*"' | head -1 | cut -d'"' -f4)
+  url=$(echo "$json" | grep -o '"URL":"[^"]*"' | head -1 | cut -d'"' -f4)
+  maintainer=$(echo "$json" | grep -o '"Maintainer":"[^"]*"' | head -1 | cut -d'"' -f4)
+  votes=$(echo "$json" | grep -o '"NumVotes":[0-9]*' | head -1 | cut -d: -f2)
+  popularity=$(echo "$json" | grep -o '"Popularity":[0-9.]*' | head -1 | cut -d: -f2)
+  depends=$(echo "$json" | grep -o '"Depends":\[[^]]*\]' | sed 's/"Depends":\[//;s/\]//;s/"//g')
+  makedepends=$(echo "$json" | grep -o '"MakeDepends":\[[^]]*\]' | sed 's/"MakeDepends":\[//;s/\]//;s/"//g')
+  
+  {
+    echo "Repository      : aur"
+    echo "Name            : ${name}"
+    echo "Version         : ${version:-N/A}"
+    echo "Description     : ${description:-(No description available)}"
+    [ -n "$url" ] && [ "$url" != "null" ] && echo "URL             : ${url}"
+    echo "Maintainer      : ${maintainer:-Orphaned}"
+    echo "Votes           : ${votes:-0}"
+    echo "Popularity      : ${popularity:-0}"
+    [ -n "$depends" ] && echo "Depends On      : $depends"
+    [ -n "$makedepends" ] && echo "Make Depends    : $makedepends"
+  } > "$cache_file"
+  
+  rm -f "$lock_file" "$fetching_file"
+) >/dev/null 2>&1 &
+
+# Wait for result with polling (max 8 seconds)
+for i in {1..8}; do
+  if [ -f "$cache_file" ] || [ -f "$error_file" ]; then
+    # Result ready, display it
+    [ -f "$cache_file" ] && cat "$cache_file" && exit 0
+    [ -f "$error_file" ] && cat "$error_file" && exit 0
+  fi
+  
+  # Still waiting, show progress
+  if [ $i -eq 1 ]; then
+    echo "🔍 Fetching AUR package information..."
+  elif [ $i -le 3 ]; then
+    echo "🔍 Fetching AUR package information."
+  elif [ $i -le 5 ]; then
+    echo "🔍 Fetching AUR package information.."
+  else
+    echo "🔍 Fetching AUR package information..."
+  fi
+  
+  sleep 1
+done
+
+# Timeout - check one last time
+if [ -f "$cache_file" ]; then
+  cat "$cache_file"
+elif [ -f "$error_file" ]; then
+  cat "$error_file"
+else
+  echo "⏱️  Fetch timeout - please try again"
+fi
+PREVIEW_EOF
+  
+  chmod +x "$preview_script"
+  
+  # Get list of installed packages for marking
+  local installed_pkgs=$(pacman -Qq)
+  
+  # Combine official repos and AUR
+  {
+    pacman -Sl | awk -v installed="$installed_pkgs" '
+      BEGIN { split(installed, inst_arr, "\n"); for (i in inst_arr) inst[inst_arr[i]] = 1 }
+      { status = ($2 in inst) ? "[installed]" : ""; printf "%-20s %-40s %s\n", $1"/"$2, $2, status }'
+    _get_aur_packages | awk -v installed="$installed_pkgs" '
+      BEGIN { split(installed, inst_arr, "\n"); for (i in inst_arr) inst[inst_arr[i]] = 1 }
+      { split($0, parts, " "); pkg = parts[2]; status = (pkg in inst) ? "[installed]" : ""; printf "%-20s %-40s %s\n", parts[1], pkg, status }'
+  } | \
+    _sk "Search packages (official + AUR)" "$initial_query" \
+      --preview "$preview_script {2}"
+  
+  # Cleanup
+  rm -f "$preview_script"
 }
 
 fpm_info() {
@@ -157,6 +695,8 @@ fpm_help() {
 cat <<EOF
 fpm - fuzzy pacman wrapper
 
+Note: Searches official Arch repositories (core, extra, multilib) and AUR.
+
 Commands:
   sync      Sync pacman databases (pacman -Sy)
   add       Install packages
@@ -181,9 +721,9 @@ _main() {
   cmd="$1"; shift
   case "$cmd" in
     sync) fpm_sync ;;
-    add) fpm_add ;;
+    add) fpm_add "$@" ;;
     rm) fpm_rm ;;
-    search) fpm_search ;;
+    search) fpm_search "$@" ;;
     info) fpm_info ;;
     update) fpm_update ;;
     files) fpm_files ;;
@@ -195,7 +735,10 @@ _main() {
     cache) fpm_cache ;;
     bulk) fpm_bulk ;;
     help|-h|--help) fpm_help ;;
-    *) echo "Unknown command: $cmd"; fpm_help; exit 1 ;;
+    *) 
+      # If not a known command, treat as search query
+      fpm_search "$cmd" "$@"
+      ;;
   esac
 }
 
