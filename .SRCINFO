@@ -1,19 +1,15 @@
 pkgbase = elixir-ls
 	pkgdesc = A frontend-independent Language Server Protocol for Elixir
-	pkgver = 0.29.3
+	pkgver = 0.30.0
 	pkgrel = 1
 	url = https://github.com/elixir-lsp/elixir-ls
 	arch = any
 	license = Apache-2.0
 	makedepends = git
 	depends = elixir
-	depends = erlang-core
-	depends = erlang-asn1
-	depends = erlang-public_key
-	depends = erlang-ssl
-	depends = erlang-parsetools
-	source = elixir-ls-0.29.3.tar.gz::https://github.com/elixir-lsp/elixir-ls/archive/v0.29.3.tar.gz
-	sha256sums = 1058eb654d50f8e89c683ed2442b87f7ac8e97177e20711c11de6c3e6b80a499
-	b2sums = 668cca6e15a26ab6f978a2197d3c4260f0158de084fde1758e1ea703321556f2c841692c84045c6398e6b806377941321f01a4a363abb72436fa4cdf165bfbae
+	depends = erlang-headless
+	source = elixir-ls-0.30.0.tar.gz::https://github.com/elixir-lsp/elixir-ls/archive/v0.30.0.tar.gz
+	sha256sums = d8e6c1b7ffc2a122c280ab9790de3cc22b2c12cf98caeabca66e222c8b6a8da1
+	b2sums = 5e66cee4515b1de4208d08435549bfe3664f2efcab42461d8fd4301255dfaf9119b82c20bdb63e454672a357333cee5439fbe0057c9c674869ac92da7701c928
 
 pkgname = elixir-ls
