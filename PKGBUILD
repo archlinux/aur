@@ -3,10 +3,10 @@ pkgname='extrae'
 pkgdesc='Instrumentation framework to generate execution traces of the most used parallel runtimes (from BSC).'
 pkgver='4.3.3.20250926'
 libaddr2line_commit=70b1ab0087acf35d5825b2341b2b03cb3cce3e24
-pkgrel='1'
+pkgrel='2'
 arch=('x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
-license=('LGPL2.1')
+license=('LGPL-2.1-or-later')
 depends=(openmpi libunwind papi libxml2 zlib python)
 source=("https://github.com/bsc-performance-tools/$pkgname/archive/${pkgver%.*}.tar.gz"
         "https://github.com/bsc-performance-tools/libaddr2line/archive/${libaddr2line_commit}.tar.gz"
