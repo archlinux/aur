@@ -6,7 +6,10 @@ pkgrel=2
 pkgdesc='Boot and upgrade via container images'
 url='https://github.com/bootc-dev/bootc'
 license=('Apache-2.0 OR MIT')
-makedepends=('cargo')
+makedepends=(
+    cargo
+    go-md2man
+)
 depends=(
     bash
     gcc-libs
@@ -30,6 +33,7 @@ build() {
     export CARGO_TARGET_DIR=target
     cd $pkgname-$pkgver
     cargo build --frozen --release
+    cargo run --frozen --package xtask -- manpages
 }
 
 check() {

@@ -6,6 +6,7 @@ pkgbase = bootc
 	arch = x86_64
 	license = Apache-2.0 OR MIT
 	makedepends = cargo
+	makedepends = go-md2man
 	depends = bash
 	depends = gcc-libs
 	depends = glib2
