@@ -1,0 +1,21 @@
+pkgbase = rcl-bin
+	pkgdesc = A reasonable configuration language
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/ruuda/rcl
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = rcl
+	conflicts = rcl
+	source = LICENSE-0.11.0::https://raw.githubusercontent.com/ruuda/rcl/v0.11.0/LICENSE
+	source = README-0.11.0.md::https://raw.githubusercontent.com/ruuda/rcl/v0.11.0/README.md
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	sha256sums = 5c75808b98c2934070adf8c1522cf0951a5a78b6595d3b778402d513cf64ca32
+	source_x86_64 = rcl-x86_64-0.11.0::https://github.com/ruuda/rcl/releases/download/v0.11.0/rcl-0.11.0-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = b479b94b070b21c5955f28cd118dc2968e160e434d15abb240ad88a1e8736906
+	source_aarch64 = rcl-aarch64-0.11.0::https://github.com/ruuda/rcl/releases/download/v0.11.0/rcl-0.11.0-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = 7cb7aadf4346fa73daf29f0990ae1f375e2ad4e1587eb1432308bda59b5c217d
+
+pkgname = rcl-bin
