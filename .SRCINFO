@@ -1,0 +1,13 @@
+pkgbase = cctools-strip
+	pkgdesc = cctools' strip
+	pkgver = 949.0.1_2
+	pkgrel = 0
+	url = http://assets.checkra.in/debian
+	arch = x86_64
+	license = unknown
+	makedepends = wget
+	depends = base-devel
+	source = http://assets.checkra.in/debian/cctools-strip_949.0.1-2_amd64.deb
+	sha256sums = 8d0e99921de851faefcb1fc867ada0a2348605f3f279e24131b5a424df9fa700
+
+pkgname = cctools-strip
