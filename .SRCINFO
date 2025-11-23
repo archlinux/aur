@@ -1,6 +1,6 @@
 pkgbase = drinfo-git
 	pkgdesc = Linux system information tool written in C
-	pkgver = 1.2.0.r0.g0000000
+	pkgver = V.1.2.0.r1.g9b947d2
 	pkgrel = 1
 	url = https://github.com/Lennart1978/drinfo
 	arch = x86_64

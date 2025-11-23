@@ -1,3 +1,4 @@
+#maintainer: Lennart Martens monkeynator78@gmail.com
 pkgname=drinfo-git
 pkgver=V.1.2.0.r1.g9b947d2
 pkgrel=1
