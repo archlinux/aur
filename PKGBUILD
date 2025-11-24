@@ -9,8 +9,8 @@
 # Contributor: Vladimir Kirillov <proger@wilab.org.ua>
 
 pkgname=coccinelle
-pkgver=1.3.0
-pkgrel=3
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="C source code matching and transformation engine"
 arch=('x86_64')
 url="https://coccinelle.lip6.fr"
@@ -41,16 +41,9 @@ optdepends=(
 )
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/coccinelle/${pkgname}/archive/${pkgver}.tar.gz"
-    "0001-fix-bash-completion.patch"
 )
-b2sums=('f5aa1dfb138a2b9e306fb712294481dcd84042fc0c0f05711be83892b0d567134694ef8e7aad3762fb7d775ec2b02bfc7984b34bbe901b4566811fbaab9ffc5d'
-        'be6b5bf866c14a5f0e95bd11472563292a37331d2a81b2e52f65bac6a635c5a48293de6bbabe63e9b63e7fb3fefc4083229bcf961b07c53f13796d8dc061f290')
+b2sums=('4dfde0bee9f9c1b555a061e712f0f2c6026c3072ed1bd3e046339f46fd3e8a699b32de3abb00f07312143b9db7d8fa4cc9c6c32c406414380b64f1d43d30a146')
 options=('!strip')
-
-prepare() {
-    cd "$pkgname-$pkgver"
-    patch -p1 < ../0001-fix-bash-completion.patch
-}
 
 build() {
     cd "$pkgname-$pkgver"
@@ -81,13 +74,7 @@ build() {
 
 check() {
     cd "$pkgname-$pkgver"
-
-    # make check is interactive, so do it manually
-
-    ./spatch.opt --testall --no-update-score-file
-
-    cd cpptests
-    ../scripts/cpptests.sh
+    make check
 }
 
 package() {
