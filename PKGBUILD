@@ -2,7 +2,7 @@
 
 pkgname=smoothcsv-bin
 pkgver=3.9.3
-pkgrel=1
+pkgrel=2
 _rpmver=${pkgver}-1
 pkgdesc="A powerful and intuitive tool for editing CSV files"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ prepare() {
 }
 
 package() {
-  cp -a "$srcdir/usr" "$pkgdir/"
+  cp -dpR --no-preserve=ownership "$srcdir/usr" "$pkgdir/"
 
   install -Dm644 "$srcdir/LICENSE-SmoothCSV.md" \
     "$pkgdir/usr/share/licenses/${pkgname}/LICENSE-SmoothCSV.md"

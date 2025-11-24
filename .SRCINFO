@@ -1,7 +1,7 @@
 pkgbase = smoothcsv-bin
 	pkgdesc = A powerful and intuitive tool for editing CSV files
 	pkgver = 3.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://smoothcsv.com/
 	arch = x86_64
 	arch = aarch64
