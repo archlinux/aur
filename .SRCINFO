@@ -19,6 +19,7 @@ pkgbase = mewline-git
 	depends = cliphist
 	provides = mewline
 	conflicts = mewline
+	options = !debug
 	source = git+https://github.com/meowrch/mewline.git
 	sha256sums = SKIP
 

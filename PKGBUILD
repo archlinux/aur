@@ -24,6 +24,7 @@ makedepends=(
   'git'
   'python-virtualenv'
 )
+options=('!debug')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
