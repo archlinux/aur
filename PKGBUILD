@@ -4,7 +4,7 @@
 # ci|prebuild=_verformat.sh| https://github.com/envolution/aur/blob/main/maintain/build/qwen-code/_verformat.sh
 
 pkgname=qwen-code
-pkgver=0.3.0n20251123.c9af7481
+pkgver=0.3.0n20251124.c9af7481
 _pkgver=0.2.1
 pkgrel=1
 pkgdesc="cli coding agent (fork of gemini-cli)"
