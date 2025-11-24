@@ -1,0 +1,4 @@
+[lib32-ladspa]
+source = "regex"
+url = "https://www.ladspa.org/ladspa_sdk/overview.html"
+regex = "LADSPA SDK v([0-9]+\\.[0-9]+\\.?[0-9a-zA-Z]*) Overview"
