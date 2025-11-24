@@ -1,6 +1,6 @@
 pkgname=i686-elf-binutils-baremetal
 pkgver=2.45
-pkgrel=3
+pkgrel=4
 pkgdesc="GNU Binutils for cross-compiling to i686-elf"
 arch=('x86_64')
 url="https://www.gnu.org/software/binutils/"
@@ -10,6 +10,7 @@ options=(!strip)
 
 _target=i686-elf
 _prefix=/opt/i686-elf
+_cores = $(nproc)
 
 source=("https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz"
         "https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz.sig")
@@ -32,7 +33,7 @@ build() {
     --disable-nls \
     --disable-werror
 
-  make
+  make $_cores
 }
 
 package() {
@@ -40,5 +41,7 @@ package() {
   make DESTDIR="$pkgdir" install
 
   rm -f "$pkgdir/$_prefix/share/info/dir"
+
+  rm -rf "$pkgdir/usr/src/debug"
 }
 
