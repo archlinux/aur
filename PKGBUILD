@@ -4,7 +4,7 @@
 pkgname=libarchive-static
 _pkgname=libarchive
 pkgver=3.8.3
-pkgrel=1
+pkgrel=2
 _attrver=2.5.2
 _aclver=2.3.2
 _sslver=3.6.0

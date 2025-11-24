@@ -1,7 +1,7 @@
 pkgbase = libarchive-static
 	pkgdesc = Statically-compiled bsdtar (Multi-format archive and compression library, to fix badly broken systems)
 	pkgver = 3.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libarchive.org/
 	arch = i486
 	arch = i686
