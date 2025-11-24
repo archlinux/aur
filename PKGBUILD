@@ -3,7 +3,7 @@
 
 _name=integration_github
 pkgname=nextcloud-app-integration-github
-pkgver=2.0.6
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="GitHub integration in Nextcloud"
 arch=('any')
@@ -12,13 +12,13 @@ license=('AGPL3')
 makedepends=('nextcloud' 'yq')
 options=('!strip')
 source=("https://github.com/nextcloud-releases/${_name}/releases/download/v${pkgver}/${_name}-v${pkgver}.tar.gz")
-sha512sums=('e29a3a06fd8d7bd749a771398dba8d6ae52f1c62e58b8fca173c0b5ed0d8439bc722551df64437c159e4f9c6b13842b973ac93110b34009ee7562c1b2f6937c8')
+sha512sums=('ee2cb6b4b7242f07e37ffd6ed6c198fe3adbb6608bf24cadbf7b5b659a54069d2c3529bf08d289dedd344b97a7d44ae14a980ffabfecf8adf489f785e0997b50')
 
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
 # 2. Add makedepends+=(nextcloud yq)
-_phps=(php7 php)
+_phps=(php php-legacy)
 _get_supported_ranges() {
   _app_min_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@min-version"] | values')"
   _app_max_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@max-version"] | values | tonumber | .+1')"
