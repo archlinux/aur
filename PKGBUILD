@@ -11,10 +11,10 @@
 _basename=coccinelle
 pkgname=$_basename-git
 pkgver=1.3.1.r2.g5bf4aac
-pkgrel=1
+pkgrel=2
 pkgdesc="C source code matching and transformation engine"
 arch=('x86_64')
-url="https://coccinelle.lip6.fr"
+url="https://coccinelle.gitlabpages.inria.fr/website/"
 license=('GPL-2.0-or-later')
 makedepends=(
     'ocaml'
