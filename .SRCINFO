@@ -1,0 +1,17 @@
+pkgbase = gnome-menu-editor-git
+	pkgdesc = A simple Python/GTK3 Menu Editor for GNOME
+	pkgver = 1.0.0.r1.gabcdef
+	pkgrel = 1
+	url = https://github.com/YOUR_USERNAME/gnome-menu-editor
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = gtk3
+	depends = python-gobject
+	provides = gnome-menu-editor
+	conflicts = gnome-menu-editor
+	source = git+https://github.com/YOUR_USERNAME/gnome-menu-editor.git
+	sha256sums = SKIP
+
+pkgname = gnome-menu-editor-git
