@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-checksum
 	pkgdesc = Plugin for Nextcloud to create hashes of files
-	pkgver = 1.2.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/westberliner/checksum
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = nextcloud-app-checksum
 	makedepends = nextcloud
 	makedepends = yq
 	options = !strip
-	source = nextcloud-app-checksum-1.2.2.tar.gz::https://github.com/westberliner/checksum/releases/download/v1.2.2/checksum.tar.gz
-	sha512sums = a1608d6d0b6fd81e80836abec53c849bab792ec770907b37990fd34e2b0ca39e756d27ad80485f04d3cf8809547219ba4d3d5081090062431f9aa28de2ab27bd
+	source = nextcloud-app-checksum-2.0.3.tar.gz::https://github.com/westberliner/checksum/releases/download/v2.0.3/checksum.tar.gz
+	sha512sums = b1ab8175e75b0ee9bc0a5ee9dfbd88e54caf8af6b7c74592b98c3a2003124ca404d65417965e75a3c14964e4e2ba9bb43aa57e6fafe14b1005949904d6bd0f4f
 
 pkgname = nextcloud-app-checksum

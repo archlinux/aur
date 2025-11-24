@@ -3,7 +3,7 @@
 
 _name=checksum
 pkgname=nextcloud-app-checksum
-pkgver=1.2.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Plugin for Nextcloud to create hashes of files"
 arch=('any')
@@ -12,13 +12,13 @@ license=('GPL3')
 makedepends=('nextcloud' 'yq')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_name}.tar.gz")
-sha512sums=('a1608d6d0b6fd81e80836abec53c849bab792ec770907b37990fd34e2b0ca39e756d27ad80485f04d3cf8809547219ba4d3d5081090062431f9aa28de2ab27bd')
+sha512sums=('b1ab8175e75b0ee9bc0a5ee9dfbd88e54caf8af6b7c74592b98c3a2003124ca404d65417965e75a3c14964e4e2ba9bb43aa57e6fafe14b1005949904d6bd0f4f')
 
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
 # 2. Add makedepends+=(nextcloud yq)
-_phps=(php7 php)
+_phps=(php php-legacy)
 _get_supported_ranges() {
   _app_min_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@min-version"] | values')"
   _app_max_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@max-version"] | values | tonumber | .+1')"
