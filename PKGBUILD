@@ -15,7 +15,7 @@ source=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.jar"
         "${_pkgname}.desktop"
         "README.md"
         "LICENSE"
-        "logo.png"
+        "${_pkgname}.png"
         )
         
 sha512sums=('1eaf0dfd12d1ec4e1f1a1bc2874abb75fcba7711424b642ce51c0239d13d228d9f9a173b2ee735d07831cff93a70d4a3b831576c4e6415a8e0654af33ca5ffe4'
@@ -34,5 +34,5 @@ EOF
 
     chmod +x "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    install -Dm644 "${srcdir}/logo.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+    install -Dm644 "${srcdir}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 }
