@@ -1,14 +1,15 @@
 pkgbase = ocaml-stdcompat
 	pkgdesc = Compatibility module for OCaml standard library
 	pkgver = 21.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thierry-martinez/stdcompat
 	arch = x86_64
-	license = BSD-2-Clause
-	makedepends = ocaml-findlib
-	depends = glibc
-	depends = ocaml<5.4
+	license = LGPL-2.1-or-later
+	makedepends = dune
+	depends = ocaml
 	source = ocaml-stdcompat-21.1.tar.gz::https://github.com/thierry-martinez/stdcompat/archive/refs/tags/21.1.tar.gz
+	source = 0000-fedora-ocaml-stdcompat-ocaml5.4.patch::https://src.fedoraproject.org/rpms/ocaml-stdcompat/raw/2f4345ccea8eda0cd2a4cc33c337a9d92d66eb3c/f/ocaml-stdcompat-ocaml5.4.patch
 	b2sums = b351696f0aed268cd067e20a7d0917a5580399b43e5de3e60fce0ab30a8093cd1808eda610d5a20eb721033f77c45f9b5c8dabc6d55862b023c363b212a505e8
+	b2sums = 6e1a1f533977af92a3139a1acb6a8aaeaff2c1b12ca14bccb435d2ffaa8abf427a5da8dff172fc445d4f152e5c8a06d142ada7765a548149fb80d653ec0f8345
 
 pkgname = ocaml-stdcompat
