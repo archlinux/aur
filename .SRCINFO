@@ -1,6 +1,6 @@
 pkgbase = mariadb-git
 	pkgdesc = Fast SQL database server, derived from MySQL
-	pkgver = 12.0.2.r0.gaab83ae
+	pkgver = 12.1.2.r0.g7011746
 	pkgrel = 1
 	url = https://mariadb.org/
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = mariadb-git
 	makedepends = zlib
 	makedepends = zstd
 	makedepends = xz
-	source = mariadb::git+https://github.com/MariaDB/server.git#branch=12.0?signed
+	source = mariadb::git+https://github.com/MariaDB/server.git#branch=12.1?signed
 	source = git+https://github.com/MariaDB/mariadb-connector-c.git
 	source = git+https://github.com/facebook/rocksdb.git
 	source = git+https://github.com/codership/wsrep-lib.git
@@ -40,7 +40,7 @@ pkgbase = mariadb-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = cb22088c50f6deea0b3858180514cad905304794e4f1e5752f03702eae10c353
+	sha256sums = dd5e4846f6173097130e44d60cdd880c7d1b98bf5177baaca67c0ab9e5134516
 
 pkgname = mariadb-libs-git
 	pkgdesc = MariaDB libraries
@@ -69,18 +69,18 @@ pkgname = mariadb-libs-git
 
 pkgname = mariadb-clients-git
 	pkgdesc = MariaDB client tools
-	depends = mariadb-libs-git=12.0.2.r0.gaab83ae
+	depends = mariadb-libs-git=12.1.2.r0.g7011746
 	depends = jemalloc
 	depends = ncurses
 	depends = libncursesw.so
-	provides = mysql-clients=12.0.2.r0.gaab83ae
+	provides = mysql-clients=12.1.2.r0.g7011746
 	conflicts = mariadb-clients
 	conflicts = mysql-clients
 
 pkgname = mariadb-git
 	pkgdesc = Fast SQL database server, derived from MySQL
 	install = mariadb.install
-	depends = mariadb-clients-git=12.0.2.r0.gaab83ae
+	depends = mariadb-clients-git=12.1.2.r0.g7011746
 	depends = bzip2
 	depends = libbz2.so
 	depends = coreutils
@@ -99,8 +99,8 @@ pkgname = mariadb-git
 	optdepends = perl-dbd-mariadb: for mariadb-hotcopy, mariadb-convert-table-format and mariadb-setpermission
 	optdepends = python-mysqlclient: for myrocks_hotbackup
 	optdepends = xz: lzma provider
-	provides = mariadb-server=12.0.2.r0.gaab83ae
-	provides = mysql=12.0.2.r0.gaab83ae
+	provides = mariadb-server=12.1.2.r0.g7011746
+	provides = mysql=12.1.2.r0.g7011746
 	conflicts = mariadb
 	conflicts = mysql
 	options = emptydirs
@@ -121,5 +121,5 @@ pkgname = mytop-git
 	depends = perl
 	depends = perl-dbd-mariadb
 	depends = perl-term-readkey
-	provides = mytop=12.0.2.r0.gaab83ae
+	provides = mytop=12.1.2.r0.g7011746
 	conflicts = mytop

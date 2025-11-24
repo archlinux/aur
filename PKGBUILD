@@ -8,8 +8,8 @@
 pkgbase=mariadb-git
 pkgname=('mariadb-libs-git' 'mariadb-clients-git' 'mariadb-git' 'mytop-git')
 pkgdesc='Fast SQL database server, derived from MySQL'
-_pkgver=12.0
-pkgver=12.0.2.r0.gaab83ae
+_pkgver=12.1
+pkgver=12.1.2.r0.g7011746
 pkgrel=1
 arch=('x86_64')
 license=('GPL-2.0-only')
@@ -32,7 +32,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'cb22088c50f6deea0b3858180514cad905304794e4f1e5752f03702eae10c353')
+            'dd5e4846f6173097130e44d60cdd880c7d1b98bf5177baaca67c0ab9e5134516')
 
 pkgver() {
   cd mariadb/
@@ -73,6 +73,7 @@ build() {
     -DINSTALL_SYSCONFDIR=/etc
     -DINSTALL_SYSCONF2DIR=/etc/my.cnf.d
     # /run
+    -DINSTALL_RUNDATADIR=/run/mariadb
     -DINSTALL_UNIX_ADDRDIR=/run/mysqld/mysqld.sock
     # /usr
     -DCMAKE_INSTALL_PREFIX=/usr
