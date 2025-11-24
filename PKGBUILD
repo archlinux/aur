@@ -1,25 +1,24 @@
-# Maintainer: Barnaby Gray <barnaby@pickle.me.uk>
+# Maintainer: JP Roemer <jp+aur@roemer.im>
+# Contributor: Barnaby Gray <barnaby@pickle.me.uk>
+
 pkgname=cli53
-pkgver=0.8.17
+pkgver=0.8.25
 pkgrel=1
 pkgdesc="Command line tool for Amazon Route 53"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/barnybug/cli53"
 license=('BSD')
 depends=()
-makedepends=('go>=1.5' 'make')
-source=("https://github.com/barnybug/cli53/archive/$pkgver.tar.gz")
-sha256sums=('32b8e6ffe3234f87497328285c377b9280d1b302658e9acb45eb0dedbda0b14d')
+makedepends=('go' 'make')
+source=(${pkgname}_${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
+sha256sums=('7fc01388af416b88f164244e1c7269a122b8203485313970196913982b80e56d')
 
 build() {
-    export GOPATH="$srcdir"
-    rm -rf "$srcdir/src/github.com/barnybug/cli53"
-    mkdir -p "$srcdir/src/github.com/barnybug"
-    ln -s "$srcdir/$pkgname-$pkgver" "$srcdir/src/github.com/barnybug/cli53"
-    cd "$srcdir/src/github.com/barnybug/cli53"
-    make build
+    cd "${pkgname}-${pkgver}"
+    go build -o "${pkgname}" -ldflags="-s -w ${_flags[*]}" "./cmd/${pkgname}"
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	install -DT "cli53" "$pkgdir/usr/bin/cli53"
+    cd "${pkgname}-${pkgver}"
+    install -Dm 755 "${pkgname}" -t "{$pkgdir}/usr/bin"
 }
