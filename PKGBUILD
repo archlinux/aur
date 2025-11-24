@@ -1,5 +1,5 @@
 pkgname=('mingw-w64-llvm')
-pkgver=21.1.4
+pkgver=21.1.6
 pkgrel=1
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (mingw-w64)"
 arch=('any')
@@ -12,11 +12,11 @@ _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkg
 source=($_source_base/llvm-$pkgver.src.tar.xz{,.sig}
         $_source_base/cmake-$pkgver.src.tar.xz{,.sig}
         $_source_base/third-party-$pkgver.src.tar.xz{,.sig})
-sha256sums=('f311681255deb37f74bbf950a653e9434e7d8383a7b46a603a323c46cd4bf50e'
+sha256sums=('908bce97be0275943414b45af2e2b20e8f6d5d9266fdc120bd59f096ebc547ad'
             'SKIP'
-            'f4316d84a862ba3023ca1d26bd9c6a995516b4fa028b6fb329d22e24cc6d235e'
+            'e364f135fa14c343d70cac96f577f44e8e20bf026682f647f8c3c5687a0bebd1'
             'SKIP'
-            'ae8658390504e08e464f65ecea838a0584df4734c27cecedfe7eb32780e81564'
+            '8d09dc219cdb3da7dafd2161836aacdd6e02c1a113498ab5f37688599406dc8a'
             'SKIP')
 validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstellar@redhat.com>
               'D574BD5D1D0E98895E3BF90044F2485E45D59042'  # Tobias Hieta <tobias@hieta.se>
