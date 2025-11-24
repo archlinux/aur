@@ -2,7 +2,7 @@
 
 pkgname='netease-cloud-music-wine'
 pkgver=3.1.22.204707
-pkgrel=3
+pkgrel=4
 pkgdesc="NetEase Cloud Music Player. 使用wine运行网易云音乐windows官方包。"
 arch=('x86_64')
 license=('custom')
@@ -111,6 +111,7 @@ then
 fi
 
 wine "C:\\Netease\\CloudMusic\\cloudmusic.exe" "$@"
+wineserver -k
 
 EOF
 
