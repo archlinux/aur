@@ -3,7 +3,7 @@
 pkgbase='zl-equalizer'
 pkgname=('zl-equalizer-vst' 'zl-equalizer-lv2')
 groups=('zl-audio' 'pro-audio')
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 options=()
 pkgdesc="Parametric, dynamic equalizer plugin by ZL Audio"
@@ -15,7 +15,7 @@ makedepends=('git' 'cmake' 'kfr')
 
 source=("git+https://github.com/ZL-Audio/ZLEqualizer#tag=${pkgver}"
 		"git+https://github.com/ZL-Audio/JUCE#tag=b251f82")
-sha256sums=('664508e50b22dcb076adf91254fcc13b76fd3ed7b183626c82dca8faa4950492'
+sha256sums=('36051c0e65d9619b0990a3c9430e18b5e45b94fb4352d20afb4af61b7347066c'
             '01016c0970367a0da9f4bf3b9191334dbdbf8902e2acb6f47be0ede2acf598d7')
 
 prepare() {
@@ -31,7 +31,7 @@ prepare() {
 	
 	cmake -B Builds \
 	      -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_FLAGS="$CFLAGS" -DCMAKE_CXX_FLAGS="$CXXFLAGS" -DCMAKE_SKIP_INSTALL_RPATH=YES \
-	      -DZL_JUCE_COPY_PLUGIN=FALSE -DZL_JUCE_FORMATS="VST3;LV2" -DZL_EQ_BAND_NUM=24 .
+	      -DZL_JUCE_COPY_PLUGIN=FALSE -DZL_JUCE_FORMATS="VST3;LV2" -DZL_EQ_BAND_NUM=32 .
 }
 
 build() {
