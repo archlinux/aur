@@ -4,7 +4,7 @@
 
 pkgbase=linux-g14
 pkgver=6.17.8.arch1
-pkgrel=1.2
+pkgrel=1.3
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
 _url='https://github.com/archlinux/linux'
@@ -41,23 +41,42 @@ source=(
 
   # actual kernel patch series
   # 0000-asus-patch-series.patch::"https://gitlab.com/asus-linux/fedora-kernel/-/raw/rog-6.14/asus-patch-series.patch"
-  0000-asus-patch-series.patch::"https://raw.githubusercontent.com/CachyOS/kernel-patches/refs/heads/master/6.17/0001-asus.patch"
+  # 0000-asus-patch-series.patch::"https://raw.githubusercontent.com/CachyOS/kernel-patches/refs/heads/master/6.17/0001-asus.patch"
   # asus-patch-series.patch
-  0001-acpi-proc-idle-skip-dummy-wait.patch
+
+  0001-platform-x86-asus-wmi-export-symbols-used-for-read-w.patch
+  0002-platform-x86-asus-armoury-move-existing-tunings-to-a.patch
+  0003-platform-x86-asus-armoury-add-panel_hd_mode-attribut.patch
+  0004-platform-x86-asus-armoury-add-apu-mem-control-suppor.patch
+  0005-platform-x86-asus-armoury-add-screen-auto-brightness.patch
+  0006-platform-x86-asus-wmi-deprecate-bios-features.patch
+  0007-platform-x86-asus-wmi-rename-ASUS_WMI_DEVID_PPT_FPPT.patch
+  0008-platform-x86-asus-armoury-add-ppt_-and-nv_-tuning-kn.patch
   0001-platform-x86-asus-armoury-Fix-error-code-in-mini_led.patch
-  0001-platform-x86-asus-armoury-fix-only-DC-tunables-being.patch
   0002-platform-x86-asus-armoury-fix-mini-led-mode-show.patch
   0003-platform-x86-asus-armoury-add-support-for-FA507UV.patch
+  0001-platform-x86-asus-armoury-fix-only-DC-tunables-being.patch
+
+  PATCH-v8-01-10-HID-asus-simplify-RGB-init-sequence.patch
+
+  0001-acpi-proc-idle-skip-dummy-wait.patch
+  PATCH-v5-00-11-Improvements-to-S5-power-consumption.patch
+  PATCH-asus-wmi-fixup-screenpad-brightness.patch
+
+  asus-patch-series.patch
+
+  0070-acpi-x86-s2idle-Add-ability-to-configure-wakeup-by-A.patch
+
   0004-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
   0005-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
-  0007-workaround_hardware_decoding_amdgpu.patch
+
+  0040-workaround_hardware_decoding_amdgpu.patch
+  0081-amdgpu-adjust_plane_init_off_by_one.patch
+
   0084-enable-steam-deck-hdr.patch
-  0009-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch
-  0010-asus-nb-wmi-fix-tablet_mode_sw_int.patch
-  0011-amdgpu-adjust_plane_init_off_by_one.patch
-  0070-acpi-x86-s2idle-Add-ability-to-configure-wakeup-by-A.patch
-  PATCH-asus-wmi-fixup-screenpad-brightness.patch
-  PATCH-v5-00-11-Improvements-to-S5-power-consumption.patch
+
+  0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch
+  0048-asus-nb-wmi-fix-tablet_mode_sw_int.patch
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
@@ -72,22 +91,31 @@ sha256sums=('5a8de64a75fca706c01c6c0a77cf75a74618439db195e25f1f0268af6b2fb1da'
             '4bf24013d1a837bf6b51dbbfd1a162c59769f8371f2cf919e34b21271697f9c5'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             '11e570d8a355c2c6ccd413b7ecea9ae1f9b9801eb9a16249f8c4c5e6c80a1ead'
-            '65848b817866021ab61758333d7c834fb8581568c48d8fce1e514b1f913b9645'
-            '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
+            '47d8cea0e2edb636ff86b4c331e91e71396302fc4bbf9610b6bf62b0f745f755'
+            'e63f38241a9e041fd5366381e3ba00605fc081b267d415532a1823da57a4b3f7'
+            'b932e95ec04c612a2e6468527c028f8f57a198a9af783dcd63514065b0d29fb9'
+            '1fea6441e150e239028a45758c4c8fd1db57e06caf3c9201c05e063c1713b075'
+            '33eed5af89ae3dc6be95dfd1c205a0bb9e77fb923c79f35b5abeebee3a900921'
+            '3cdaa9e41e096fdf724ea4ad2cf02f5fea2e2e873e60e2e52d77a1c4b9ccced6'
+            'f89c7d9ab3711cc6a8bbf2b94f501954d17b7d402468b04d99ab5a0920453b60'
+            '3c9711ade705328889628107ea886f8d59c68ba3994200be6b745364ee44b98f'
             'f2e7f0f5bf499236f6e457e13270d7a907d00daf74111e6369b6e6c20fb6b9d0'
-            'e1d4954d0ca79d1857683bd87bab44f8088a08e16a0754ed46f1c462f6e5a34b'
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+            'b837555c1dd960d448bea5099134fa9a1d6868f98851c65800caabf5356006c6'
             '89e1dddffde4f38e5f63645e116c1e9fad63c2fd8101c787b4d1cc0032eac4e7'
+            'e1d4954d0ca79d1857683bd87bab44f8088a08e16a0754ed46f1c462f6e5a34b'
+            'c909206ef875381d2d7accf42034bc75e33978b1e85a06b84306608f853663bd'
+            '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
+            '83d40f889a96c492e15fcaf16914c864e8d0ac7fb85148690badef61e89d7afa'
+            '590752012b37a21c92b59ab98189f56f405a4722572dd87b39c925bb89bb17c4'
+            'b53ca1b78d3dd14780a3adae6bff8616dcb3af21a256e08533d1cbf30fdaeb39'
+            '7830a8efc59e0bb411c98cf1acc4e3b541dd0a5366773690700502cc570db62f'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
             'e41198b29cee4de7a5132d8df606f48c2d0f9c9076fe4230b00a33c7e0b22c71'
+            'e90bb17f74c5b232001de5558ff96e09612f35a8552e1fa506c8a3451b0516b7'
             'd89bedd7ef4d7bfe5c5d8b1f3c2e12cbb293ce7e11647700cc077e772d5f7fe8'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
-            '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85'
-            'e90bb17f74c5b232001de5558ff96e09612f35a8552e1fa506c8a3451b0516b7'
-            '7830a8efc59e0bb411c98cf1acc4e3b541dd0a5366773690700502cc570db62f'
-            '590752012b37a21c92b59ab98189f56f405a4722572dd87b39c925bb89bb17c4'
-            '83d40f889a96c492e15fcaf16914c864e8d0ac7fb85148690badef61e89d7afa')
+            '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85')
 
 # notable microarch levels:
 #

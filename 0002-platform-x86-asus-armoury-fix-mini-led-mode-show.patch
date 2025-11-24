@@ -1,0 +1,38 @@
+From 6b87f7ea741794d26d22ac40242ea5e1c57da7c9 Mon Sep 17 00:00:00 2001
+From: Denis Benato <denis.benato@linux.dev>
+Date: Thu, 20 Nov 2025 03:40:59 +0100
+Subject: [PATCH 2/3] platform/x86: asus-armoury: fix mini-led mode show
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Perform the actual check of the mini-led mode against supported modes
+and do not return the first one regardless of the WMI devstate.
+
+Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
+Closes: https://lore.kernel.org/all/aR1xbxEQyQPEvB9o@stanley.mountain/
+Signed-off-by: Denis Benato <denis.benato@linux.dev>
+Link: https://patch.msgid.link/20251120024059.1341326-1-denis.benato@linux.dev
+Reviewed-by: Ilpo Järvinen <ilpo.jarvinen@linux.intel.com>
+Signed-off-by: Ilpo Järvinen <ilpo.jarvinen@linux.intel.com>
+---
+ drivers/platform/x86/asus-armoury.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/platform/x86/asus-armoury.c b/drivers/platform/x86/asus-armoury.c
+index c23b711043e2..5106e8a41e25 100644
+--- a/drivers/platform/x86/asus-armoury.c
++++ b/drivers/platform/x86/asus-armoury.c
+@@ -373,7 +373,8 @@ static ssize_t mini_led_mode_current_value_show(struct kobject *kobj,
+ 	mode = FIELD_GET(ASUS_MINI_LED_MODE_MASK, 0);
+ 
+ 	for (i = 0; i < mini_led_mode_map_size; i++)
+-		return sysfs_emit(buf, "%u\n", mini_led_mode_map[i]);
++		if (mode == mini_led_mode_map[i])
++			return sysfs_emit(buf, "%u\n", i);
+ 
+ 	pr_warn("Unrecognized mini-LED mode: %u", mode);
+ 	return -EINVAL;
+-- 
+2.52.0
+

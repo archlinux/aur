@@ -1,0 +1,125 @@
+From 22ea7b9d96e26147b7a3ea1be7aa106cc700907c Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Sun, 2 Nov 2025 22:53:11 +0100
+Subject: [PATCH 13/24] platform/x86: asus-wmi: export symbols used for
+ read/write WMI
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Export symbols for reading/writing WMI symbols using a namespace.
+Existing functions:
+- asus_wmi_evaluate_method
+- asus_wmi_set_devstate
+New function:
+- asus_wmi_get_devstate_dsts
+
+The new function is intended for use with DSTS WMI method only and
+avoids requiring the asus_wmi driver data to select the WMI method.
+
+Co-developed-by: Denis Benato <denis.benato@linux.dev>
+Signed-off-by: Denis Benato <denis.benato@linux.dev>
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
+Link: https://patch.msgid.link/20251102215319.3126879-2-denis.benato@linux.dev
+Reviewed-by: Ilpo Järvinen <ilpo.jarvinen@linux.intel.com>
+Signed-off-by: Ilpo Järvinen <ilpo.jarvinen@linux.intel.com>
+---
+ drivers/platform/x86/asus-wmi.c            | 46 ++++++++++++++++++++--
+ include/linux/platform_data/x86/asus-wmi.h |  5 +++
+ 2 files changed, 48 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index e72a2b5d158e..c3e90517ce0f 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -390,7 +390,7 @@ int asus_wmi_evaluate_method(u32 method_id, u32 arg0, u32 arg1, u32 *retval)
+ {
+ 	return asus_wmi_evaluate_method3(method_id, arg0, arg1, 0, retval);
+ }
+-EXPORT_SYMBOL_GPL(asus_wmi_evaluate_method);
++EXPORT_SYMBOL_NS_GPL(asus_wmi_evaluate_method, "ASUS_WMI");
+ 
+ static int asus_wmi_evaluate_method5(u32 method_id,
+ 		u32 arg0, u32 arg1, u32 arg2, u32 arg3, u32 arg4, u32 *retval)
+@@ -554,12 +554,52 @@ static int asus_wmi_get_devstate(struct asus_wmi *asus, u32 dev_id, u32 *retval)
+ 	return 0;
+ }
+ 
+-int asus_wmi_set_devstate(u32 dev_id, u32 ctrl_param,
+-				 u32 *retval)
++/**
++ * asus_wmi_get_devstate_dsts() - Get the WMI function state.
++ * @dev_id: The WMI method ID to call.
++ * @retval: A pointer to where to store the value returned from WMI.
++ *
++ * Returns:
++ * * %-ENODEV	- method ID is unsupported.
++ * * %0			- successful and retval is filled.
++ * * %other		- error from WMI call.
++ */
++int asus_wmi_get_devstate_dsts(u32 dev_id, u32 *retval)
++{
++	int err;
++
++	err = asus_wmi_evaluate_method(ASUS_WMI_METHODID_DSTS, dev_id, 0, retval);
++	if (err)
++		return err;
++
++	if ((*retval & ASUS_WMI_DSTS_PRESENCE_BIT) == 0x00)
++		return -ENODEV;
++
++	return 0;
++}
++EXPORT_SYMBOL_NS_GPL(asus_wmi_get_devstate_dsts, "ASUS_WMI");
++
++/**
++ * asus_wmi_set_devstate() - Set the WMI function state.
++ *
++ * Note: an asus_wmi_set_devstate() call must be paired with a
++ * asus_wmi_get_devstate_dsts() to check if the WMI function is supported.
++ *
++ * @dev_id: The WMI function to call.
++ * @ctrl_param: The argument to be used for this WMI function.
++ * @retval: A pointer to where to store the value returned from WMI.
++ *
++ * Returns:
++ * * %-ENODEV	- method ID is unsupported.
++ * * %0			- successful and retval is filled.
++ * * %other		- error from WMI call.
++ */
++int asus_wmi_set_devstate(u32 dev_id, u32 ctrl_param, u32 *retval)
+ {
+ 	return asus_wmi_evaluate_method(ASUS_WMI_METHODID_DEVS, dev_id,
+ 					ctrl_param, retval);
+ }
++EXPORT_SYMBOL_NS_GPL(asus_wmi_set_devstate, "ASUS_WMI");
+ 
+ /* Helper for special devices with magic return codes */
+ static int asus_wmi_get_devstate_bits(struct asus_wmi *asus,
+diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
+index 8a515179113d..dbd44d9fbb6f 100644
+--- a/include/linux/platform_data/x86/asus-wmi.h
++++ b/include/linux/platform_data/x86/asus-wmi.h
+@@ -166,6 +166,7 @@ enum asus_ally_mcu_hack {
+ #if IS_REACHABLE(CONFIG_ASUS_WMI)
+ void set_ally_mcu_hack(enum asus_ally_mcu_hack status);
+ void set_ally_mcu_powersave(bool enabled);
++int asus_wmi_get_devstate_dsts(u32 dev_id, u32 *retval);
+ int asus_wmi_set_devstate(u32 dev_id, u32 ctrl_param, u32 *retval);
+ int asus_wmi_evaluate_method(u32 method_id, u32 arg0, u32 arg1, u32 *retval);
+ #else
+@@ -179,6 +180,10 @@ static inline int asus_wmi_set_devstate(u32 dev_id, u32 ctrl_param, u32 *retval)
+ {
+ 	return -ENODEV;
+ }
++static inline int asus_wmi_get_devstate_dsts(u32 dev_id, u32 *retval)
++{
++	return -ENODEV;
++}
+ static inline int asus_wmi_evaluate_method(u32 method_id, u32 arg0, u32 arg1,
+ 					   u32 *retval)
+ {
+-- 
+2.51.2
+

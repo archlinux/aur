@@ -1,0 +1,62 @@
+From d849a9f2380d5287d5133eac5bae602a147b86c2 Mon Sep 17 00:00:00 2001
+From: Denis Benato <denis.benato@linux.dev>
+Date: Sun, 2 Nov 2025 22:53:18 +0100
+Subject: [PATCH 19/24] platform/x86: asus-wmi: rename ASUS_WMI_DEVID_PPT_FPPT
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Maintain power-related WMI macros naming consistency:
+rename ASUS_WMI_DEVID_PPT_FPPT to ASUS_WMI_DEVID_PPT_PL3_FPPT.
+
+Link: https://lore.kernel.org/all/cad7b458-5a7a-4975-94a1-d0c74f6f3de5@oracle.com/
+
+Suggested-by: ALOK TIWARI <alok.a.tiwari@oracle.com>
+Signed-off-by: Denis Benato <denis.benato@linux.dev>
+Link: https://.../
+Link: https://patch.msgid.link/20251102215319.3126879-9-denis.benato@linux.dev
+Reviewed-by: Ilpo Järvinen <ilpo.jarvinen@linux.intel.com>
+Signed-off-by: Ilpo Järvinen <ilpo.jarvinen@linux.intel.com>
+---
+ drivers/platform/x86/asus-wmi.c            | 4 ++--
+ include/linux/platform_data/x86/asus-wmi.h | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index 6de633d4a748..64cfc0bf98dd 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -1218,7 +1218,7 @@ static ssize_t ppt_fppt_store(struct device *dev,
+ 	if (value < PPT_TOTAL_MIN || value > PPT_TOTAL_MAX)
+ 		return -EINVAL;
+ 
+-	err = asus_wmi_set_devstate(ASUS_WMI_DEVID_PPT_FPPT, value, &result);
++	err = asus_wmi_set_devstate(ASUS_WMI_DEVID_PPT_PL3_FPPT, value, &result);
+ 	if (err) {
+ 		pr_warn("Failed to set ppt_fppt: %d\n", err);
+ 		return err;
+@@ -4602,7 +4602,7 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
+ 	else if (attr == &dev_attr_ppt_pl1_spl.attr)
+ 		devid = ASUS_WMI_DEVID_PPT_PL1_SPL;
+ 	else if (attr == &dev_attr_ppt_fppt.attr)
+-		devid = ASUS_WMI_DEVID_PPT_FPPT;
++		devid = ASUS_WMI_DEVID_PPT_PL3_FPPT;
+ 	else if (attr == &dev_attr_ppt_apu_sppt.attr)
+ 		devid = ASUS_WMI_DEVID_PPT_APU_SPPT;
+ 	else if (attr == &dev_attr_ppt_platform_sppt.attr)
+diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
+index 3af075baf9f7..e7c95e9d29db 100644
+--- a/include/linux/platform_data/x86/asus-wmi.h
++++ b/include/linux/platform_data/x86/asus-wmi.h
+@@ -107,7 +107,7 @@
+ #define ASUS_WMI_DEVID_PPT_PL1_SPL		0x001200A3
+ #define ASUS_WMI_DEVID_PPT_APU_SPPT		0x001200B0
+ #define ASUS_WMI_DEVID_PPT_PLAT_SPPT	0x001200B1
+-#define ASUS_WMI_DEVID_PPT_FPPT			0x001200C1
++#define ASUS_WMI_DEVID_PPT_PL3_FPPT		0x001200C1
+ #define ASUS_WMI_DEVID_NV_DYN_BOOST		0x001200C0
+ #define ASUS_WMI_DEVID_NV_THERM_TARGET	0x001200C2
+ 
+-- 
+2.51.2
+
