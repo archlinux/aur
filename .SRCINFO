@@ -1,6 +1,6 @@
 pkgbase = term39-bin
 	pkgdesc = A modern terminal multiplexer with classic MS-DOS aesthetic, built with Rust. Full-screen interface with window management and complete terminal emulation. (binary release)
-	pkgver = 0.11.3
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/alejandroqh/term39
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = term39-bin
 	license = MIT
 	provides = term39
 	conflicts = term39
-	source_x86_64 = term39-bin-0.11.3-x86_64.tar.gz::https://github.com/alejandroqh/term39/releases/download/v0.11.3/term39-0.11.3-linux-64bit-x86-binary.tar.gz
-	sha256sums_x86_64 = 090de0b27cf06e4a436ea6e15a86afeb786d5ce671fb16908b82c2cb4940c6bb
-	source_aarch64 = term39-bin-0.11.3-aarch64.tar.gz::https://github.com/alejandroqh/term39/releases/download/v0.11.3/term39-0.11.3-linux-64bit-arm-binary.tar.gz
-	sha256sums_aarch64 = 9110409c4fe5b2af677ce70997bfcaa1dba3063e927bed3e0f5a58b5b8c46a3c
+	source_x86_64 = term39-bin-0.12.0-x86_64.tar.gz::https://github.com/alejandroqh/term39/releases/download/v0.12.0/term39-0.12.0-linux-64bit-x86-binary.tar.gz
+	sha256sums_x86_64 = 0188a5c75d9b65bc9bb8d00a9dd9a943c09d5917c8c9d2474283ae9a495b6d23
+	source_aarch64 = term39-bin-0.12.0-aarch64.tar.gz::https://github.com/alejandroqh/term39/releases/download/v0.12.0/term39-0.12.0-linux-64bit-arm-binary.tar.gz
+	sha256sums_aarch64 = cc71b0e81bdd7c24ef86405793e1c6b4efcf45babad0809b552eb86ff7659f54
 
 pkgname = term39-bin
