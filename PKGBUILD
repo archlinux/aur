@@ -3,22 +3,22 @@
 
 _name=integration_google
 pkgname=nextcloud-app-integration-google
-pkgver=2.0.2
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="Google integration in Nextcloud"
 arch=('any')
 url="https://apps.nextcloud.com/apps/integration_google"
-license=('AGPL3')
+license=('AGPL-3.0-or-later')
 makedepends=('nextcloud' 'yq')
 options=('!strip')
 source=("https://github.com/nextcloud-releases/${_name}/releases/download/v${pkgver}/${_name}-v${pkgver}.tar.gz")
-sha512sums=('90ff8d75f4377a80dd067854b2c2f0d27d4e3ce8b72daad7520784791b21559e110a23b2571da8a91aae65f793fb1ad65d51edf90f821a07112f74b015bf2cb6')
+sha512sums=('f34edccfc14f745d7a90abea2cd30ba3a7bb36e6d826e7e96cbac61a9d90f041aee4ff29bc63c31deae168b3e465dca40379f417d8e268cd18561c6ca2415a1d')
 
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
 # 2. Add makedepends+=(nextcloud yq)
-_phps=(php7 php)
+_phps=(php php-legacy)
 _get_supported_ranges() {
   _app_min_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@min-version"] | values')"
   _app_max_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@max-version"] | values | tonumber | .+1')"
