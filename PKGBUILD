@@ -1,6 +1,6 @@
 # Maintainer: Evgenii Tsvigun <gene@chainhackers.xyz>
 pkgname=correct-unicorn
-pkgver=0.2.0_rc1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Passphrase generator inspired by xkcd 936"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/utgarda/correct-unicorn"
 license=('MIT')
 depends=('words' 'gmp')
 makedepends=('stack')
-_tagver=0.2.0-rc1
+_tagver=0.2.0
 source=("git+https://github.com/utgarda/${pkgname}.git#tag=v${_tagver}")
 sha256sums=('SKIP')
 validpgpkeys=('37532468A03463C48B7631403B00CAB0BD4D8648')  # Evgenii Tsvigun <gene@chainhackers.xyz>

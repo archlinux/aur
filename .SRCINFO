@@ -1,6 +1,6 @@
 pkgbase = correct-unicorn
 	pkgdesc = Passphrase generator inspired by xkcd 936
-	pkgver = 0.2.0_rc1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/utgarda/correct-unicorn
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = correct-unicorn
 	makedepends = stack
 	depends = words
 	depends = gmp
-	source = git+https://github.com/utgarda/correct-unicorn.git#tag=v0.2.0-rc1
+	source = git+https://github.com/utgarda/correct-unicorn.git#tag=v0.2.0
 	validpgpkeys = 37532468A03463C48B7631403B00CAB0BD4D8648
 	sha256sums = SKIP
 
