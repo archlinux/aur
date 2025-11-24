@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ytdownloader-gui-bin
 _pkgname=YTDownloader
-pkgver=3.19.3
+pkgver=3.20.1
 _electronversion=30
 pkgrel=1
 pkgdesc="A modern GUI App for downloading Videos and Audios from hundreds of sites.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_Linux.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e49ef803ba89bff3b4fe3ac0faf663d0089c5807dd1bc0d34d18772e57669606'
+sha256sums=('71c81340f8b14d024dcc8b32548d4d375a07bab26bedb67bb9d3ca8acd07ce72'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-gui-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
