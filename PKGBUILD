@@ -1,18 +1,18 @@
 # Maintainer: Zeus-Deus
 pkgname=gazelle-tui
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Minimal NetworkManager TUI with complete 802.1X enterprise WiFi and WWAN support"
 arch=('any')
 url="https://github.com/Zeus-Deus/gazelle-tui"
 license=('MIT')
-depends=('python' 'python-textual' 'networkmanager' 'networkmanager-openvpn' 'wireguard-tools')
+depends=('python' 'python-textual' 'python-dbus' 'networkmanager' 'networkmanager-openvpn' 'wireguard-tools')
 optdepends=(
     'python-tomli: Omarchy theme detection for Python < 3.11'
     'modemmanager: WWAN/cellular modem support'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Zeus-Deus/gazelle-tui/archive/v$pkgver.tar.gz")
-sha256sums=('89ee2f37d89e711dc65726056e7c8f6ffccec555c46bdd78374fb3d14ee61600')
+sha256sums=('2041bcc62d471904b9628da1a5e58e52bc09b5cc02915ed4fffe3e3ab72c2cee')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
