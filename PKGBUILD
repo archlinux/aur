@@ -5,7 +5,7 @@ pkgname=(
     "icingadb"
     "icingadb-migrate"
 )
-pkgver="1.4.0"
+pkgver="1.5.0"
 pkgrel=1
 epoch=0
 pkgdesc="Icinga configuration and state database supporting multiple environments"
@@ -14,7 +14,7 @@ arch=(
     "aarch64"
 )
 url="https://github.com/Icinga/icingadb"
-license=("GPL")
+license=("GPL-2.0-only")
 groups=()
 depends=()
 makedepends=(
@@ -40,7 +40,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-    "e244998da7c6f817fc590ca0852451a12fee4bc8fda8d3183c4f6c4df1ab38bd"
+    "30f73091adc29d7615c0a4dcc801530f3e394c2a45398abf2125d356d988d949"
     "SKIP"
     "SKIP"
 )
