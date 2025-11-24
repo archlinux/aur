@@ -12,17 +12,17 @@ license=('FSL-1.1-MIT')
 provides=('crush')
 conflicts=('crush')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/crush/releases/download/v0.18.5/crush_0.18.5_Linux_arm64.tar.gz")
-sha256sums_aarch64=('b7a466bcf7da6986d69b9b40d732ce09fd5b9a7cf0c6c9655b2dfac596ead110')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/crush-internal/releases/download/v0.18.5/crush_0.18.5_Linux_arm64.tar.gz")
+sha256sums_aarch64=('c869390165ba400982481fc4608461e7aa0bf17f784b5dd0a0a5db3dc4b5653c')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/crush/releases/download/v0.18.5/crush_0.18.5_Linux_armv7.tar.gz")
-sha256sums_armv7h=('d5014dd0c36acc916d90b8132b1f5fe1c7ae381706b5654f33f5470d07d623d6')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/crush-internal/releases/download/v0.18.5/crush_0.18.5_Linux_armv7.tar.gz")
+sha256sums_armv7h=('3e097f6cf7b5329df6d5ec9f3da4163402db0e8f27520938d55d05b7458e11f4')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/crush/releases/download/v0.18.5/crush_0.18.5_Linux_i386.tar.gz")
-sha256sums_i686=('6b9d3826af2d5c1eb12c93e561281cbbc29f1056c0a6aee47d1cdbd6d22a9158')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/crush-internal/releases/download/v0.18.5/crush_0.18.5_Linux_i386.tar.gz")
+sha256sums_i686=('5492b73138ef545fcf235108707fc34235b771480f0f94388a6fd9b043b55e06')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/crush/releases/download/v0.18.5/crush_0.18.5_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('49f3c73ef754a1dfb218cf4e11e07cdc6c441bd4d9b113c137c481691da9bce3')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/crush-internal/releases/download/v0.18.5/crush_0.18.5_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('977db8da064e734903143495bfdb5425ec07cf6f0329f81102c395ee23f5c46e')
 
 package() {
   cd "${srcdir}/crush_${pkgver}_Linux_${CARCH}"
