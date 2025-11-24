@@ -2,7 +2,7 @@
 
 pkgname=adb-gui-kit-bin
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple, modern GUI for ADB and Fastboot"
 arch=('x86_64')
 url="https://github.com/Drenzzz/adb-gui-kit"
@@ -57,7 +57,7 @@ package() {
 
     cat <<EOF > "${pkgdir}/usr/bin/adb-gui-kit"
 #!/bin/sh
-cd "${_install_path}"
+cd "/opt/${pkgname}"
 exec ./adb-gui-kit "\$@"
 EOF
     chmod 755 "${pkgdir}/usr/bin/adb-gui-kit"
