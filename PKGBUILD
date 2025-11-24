@@ -1,7 +1,7 @@
 # Maintainer: Niklas Aldervall <aldervall@users.noreply.github.com>
 pkgname=voicetype-bin
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Local English voice transcription using whisper.cpp with hold-to-speak daemon'
 arch=('x86_64')
 url='https://github.com/aldervall/Voicetype'
