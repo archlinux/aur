@@ -6,16 +6,17 @@ pkgbase = perl-travel-status-de-deutschebahn
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	checkdepends = perl-test-compile>=0
-	checkdepends = perl-test-pod>=0
+	checkdepends = perl-file-slurp
+	makedepends = perl-module-build>=0.4
+	makedepends = perl-test-compile
+	makedepends = perl-test-pod
 	depends = perl-class-accessor>=0.16
-	depends = perl-datetime>=0
-	depends = perl-datetime-format-strptime>=0
-	depends = perl-file-slurp>=0
-	depends = perl-json>=0
-	depends = perl-lwp-protocol-https>=0
-	depends = perl-list-moreutils>=0
-	depends = perl-libwww>=0
+	depends = perl-datetime
+	depends = perl-datetime-format-strptime
+	depends = perl-json
+	depends = perl-lwp-protocol-https
+	depends = perl-list-moreutils
+	depends = perl-libwww
 	depends = perl>=5.14.0
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/D/DE/DERF/Travel-Status-DE-DeutscheBahn-6.15.tar.gz

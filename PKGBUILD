@@ -8,9 +8,9 @@ pkgdesc="Interface to the online arrival/departure"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-class-accessor>=0.16' 'perl-datetime>=0' 'perl-datetime-format-strptime>=0' 'perl-file-slurp>=0' 'perl-json>=0' 'perl-lwp-protocol-https>=0' 'perl-list-moreutils>=0' 'perl-libwww>=0' 'perl>=5.14.0')
-makedepends=()
-checkdepends=('perl-test-compile>=0' 'perl-test-pod>=0')
+depends=('perl-class-accessor>=0.16' 'perl-datetime' 'perl-datetime-format-strptime' 'perl-json' 'perl-lwp-protocol-https' 'perl-list-moreutils' 'perl-libwww' 'perl>=5.14.0')
+makedepends=('perl-module-build>=0.4' 'perl-test-compile' 'perl-test-pod')
+checkdepends=('perl-file-slurp')
 url='https://metacpan.org/release/Travel-Status-DE-DeutscheBahn'
 source=('http://search.cpan.org/CPAN/authors/id/D/DE/DERF/Travel-Status-DE-DeutscheBahn-6.15.tar.gz')
 md5sums=('4b9cc562aba6ba5c1ec8f6d35466e3cb')
