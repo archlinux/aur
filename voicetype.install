@@ -18,10 +18,9 @@ post_install() {
     echo "  Or use one-shot mode:"
     echo "     voicetype-input"
     echo ""
-    echo "📦 MODEL DOWNLOAD:"
+    echo "📦 MODEL INCLUDED:"
     echo ""
-    echo "  The whisper model (~142MB) downloads on first use."
-    echo "  This happens automatically when you first press F12."
+    echo "  The whisper model is already installed - ready to use!"
     echo ""
     echo "🔧 OPTIONAL DEPENDENCIES:"
     echo ""
@@ -42,8 +41,15 @@ post_upgrade() {
     echo "║                 VoiceType Upgraded!                        ║"
     echo "╚════════════════════════════════════════════════════════════╝"
     echo ""
-    echo "🔄 Restart the daemon to apply changes:"
-    echo "   systemctl --user restart voicetype-daemon"
+
+    # Auto-restart daemon if running (for each logged-in user)
+    for uid in $(loginctl list-users --no-legend | awk '{print $1}'); do
+        user=$(id -nu "$uid" 2>/dev/null) || continue
+        if systemctl --user -M "${user}@" is-active voicetype-daemon &>/dev/null; then
+            echo "🔄 Restarting daemon for user: $user"
+            systemctl --user -M "${user}@" restart voicetype-daemon
+        fi
+    done
     echo ""
 }
 
