@@ -1,0 +1,3 @@
+[python-weaviate-client]
+source = "pypi"
+pypi = "weaviate_client"
