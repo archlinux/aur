@@ -1,4 +1,7 @@
 post_install() {
+    echo "Setting permissions for routing directory..."
+    chmod -R 1777 /opt/happ/bin/core/routing/
+    
     echo "Enabling and starting happd service..."
     systemctl daemon-reload
     systemctl enable happd.service
@@ -7,6 +10,9 @@ post_install() {
 }
 
 post_upgrade() {
+    echo "Setting permissions for routing directory..."
+    chmod -R 1777 /opt/happ/bin/core/routing/
+    
     echo "Restarting happd service..."
     systemctl daemon-reload
     systemctl restart happd.service
