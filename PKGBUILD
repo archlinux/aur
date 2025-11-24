@@ -2,19 +2,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-travel-status-de-vrr'
-pkgver='2.00'
+pkgver='3.17'
 pkgrel='1'
 pkgdesc="unofficial VRR departure monitor."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-class-accessor>=0' 'perl-datetime>=0' 'perl-lwp-protocol-https>=0' 'perl-xml-libxml>=0' 'perl-libwww>=0' 'perl>=5.10.1')
-makedepends=('perl-file-slurp>=0' 'perl-module-build>=0.4' 'perl-test-pod>=0')
+depends=('perl-class-accessor' 'perl-datetime' 'perl-datetime-format-strptime' 'perl-json' 'perl-lwp-protocol-https' 'perl-uri' 'perl-libwww' 'perl>=5.10.1')
+makedepends=('perl-file-slurp' 'perl-module-build>=0.4')
 url='https://metacpan.org/release/Travel-Status-DE-VRR'
-source=('http://search.cpan.org/CPAN/authors/id/D/DE/DERF/Travel-Status-DE-VRR-2.00.tar.gz')
-md5sums=('caf301e1616ae85aae610ef22e300656')
-sha512sums=('954b670c68a4f1cb00e7e2defe192d77fda1df67abfa55cdcd5243441a5eaae2298eb8706d11da59cdeb06266ba90b4fdfaa5c7f2ac35b2e68df2fcdcb23fd3f')
-_distdir="Travel-Status-DE-VRR-2.00"
+source=('http://search.cpan.org/CPAN/authors/id/D/DE/DERF/Travel-Status-DE-VRR-3.17.tar.gz')
+md5sums=('0f954c4193963034121a18b211d4fdb9')
+sha512sums=('dd99b209edad52400bf82c18c1008d04fd0d27cbdeac7f18e323c538dd4e9d2183b275ba48dc9aff880af144be9d33b0ec3a4a2c01be195fa35a2de6953d60af')
+_distdir="Travel-Status-DE-VRR-3.17"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
