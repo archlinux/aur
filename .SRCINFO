@@ -1,5 +1,5 @@
 pkgbase = i686-elf-binutils-baremetal
-	pkgdesc = GNU Binutils for cross-compiling to i686-elf
+	pkgdesc = GNU Binutils for cross-compiling to i686-elf (bare metal)
 	pkgver = 2.45
 	pkgrel = 5
 	url = https://www.gnu.org/software/binutils/
