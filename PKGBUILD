@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/getseabird/seabird/rele
         "seabird.svg::https://raw.githubusercontent.com/getseabird/seabird/main/internal/icon/seabird.svg"
         "seabird-wrapper.sh")
 sha256sums=('552466de9291ba72c915838a0cfbff5f974c2967f6dcc6f00166bc6e24281be7'
-            '422b1db8810268990fc7989ba42af0ec60f79567a55993d3ac255c23dc6ca753'
+            '4d353ba16492894181ba6611e7dfe0a6270abda5117ecdf1c03d2bf4208d8381'
             '833bcc2b80d431f118cdbc1d193efe898b455856d5853b94e8aa9888fcdd4787'
             '71f51c5a1bfaa0ebb84d3f02de792d1b0cb0a9ed3342e4f1c4c442c637cbc4e5')
 

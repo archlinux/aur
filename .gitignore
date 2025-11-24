@@ -1,12 +1,15 @@
 # Build artifacts
 src/
 pkg/
-*.tar.gz
 *.pkg.tar.zst
 *.pkg.tar.xz
 *.log
 
-# Downloaded sources (will be re-downloaded)
+# Downloaded sources (will be re-downloaded by makepkg)
+seabird-bin-*.tar.gz
+seabird_linux_amd64.tar.gz
 seabird.desktop
 seabird.svg
-seabird-bin-*.tar.gz
+
+# Files extracted from source tarball
+LICENSE

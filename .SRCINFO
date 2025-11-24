@@ -1,0 +1,21 @@
+pkgbase = seabird-bin
+	pkgdesc = A native Kubernetes desktop IDE for GNOME
+	pkgver = 0.6.0
+	pkgrel = 5
+	url = https://github.com/getseabird/seabird
+	arch = x86_64
+	license = MPL-2.0
+	depends = gtk4
+	depends = libadwaita
+	provides = seabird
+	conflicts = seabird
+	source = seabird-bin-0.6.0.tar.gz::https://github.com/getseabird/seabird/releases/download/v0.6.0/seabird_linux_amd64.tar.gz
+	source = seabird.desktop::https://raw.githubusercontent.com/getseabird/seabird/main/dev.skynomads.Seabird.desktop
+	source = seabird.svg::https://raw.githubusercontent.com/getseabird/seabird/main/internal/icon/seabird.svg
+	source = seabird-wrapper.sh
+	sha256sums = 552466de9291ba72c915838a0cfbff5f974c2967f6dcc6f00166bc6e24281be7
+	sha256sums = 4d353ba16492894181ba6611e7dfe0a6270abda5117ecdf1c03d2bf4208d8381
+	sha256sums = 833bcc2b80d431f118cdbc1d193efe898b455856d5853b94e8aa9888fcdd4787
+	sha256sums = 71f51c5a1bfaa0ebb84d3f02de792d1b0cb0a9ed3342e4f1c4c442c637cbc4e5
+
+pkgname = seabird-bin
