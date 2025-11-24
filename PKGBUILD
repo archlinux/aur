@@ -19,7 +19,7 @@ source=(
   "https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
   "https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz.sig"
 )
-sha256sums=('a7b39bc69cbf9e25826c5a60ab26477001f7c08d85cec04bc0e29cabed6f3cc9'
+sha256sums=('438fd996826b0c82485a29da03a72d71d6e3541a83ec702df4271f6fe025d24e'
             'SKIP')
 
 validpgpkeys=('D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62')
