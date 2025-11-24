@@ -1,0 +1,13 @@
+pkgbase = pixie-icon-theme-git
+	pkgdesc = Pixie icon theme (development version from git)
+	pkgver = 0.0.1.r18.g704835d
+	pkgrel = 1
+	url = https://github.com/maxtron95/pixie-icon-theme
+	arch = any
+	license = CC-BY-SA-4.0
+	makedepends = git
+	conflicts = pixie-icon-theme
+	source = git+https://github.com/maxtron95/pixie-icon-theme.git
+	sha256sums = SKIP
+
+pkgname = pixie-icon-theme-git
