@@ -22,7 +22,7 @@ source=(
 sha256sums=('438fd996826b0c82485a29da03a72d71d6e3541a83ec702df4271f6fe025d24e'
             'SKIP')
 
-validpgpkeys=('D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62')
+validpgpkeys=('13975A70E63C361C73AE69EF6EEB81F8981C74C7')
 
 prepare() {
   cd "$srcdir/gcc-$pkgver"
