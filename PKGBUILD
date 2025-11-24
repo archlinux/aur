@@ -4,7 +4,7 @@
 _pkgname=sshpilot
 pkgname=${_pkgname}-bin
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support."
 arch=('x86_64')
 url="https://github.com/mfat/${_pkgname}"
@@ -13,7 +13,9 @@ license=('GPL-3.0')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('glib2' 'gtk4' 'gdk-pixbuf2' 'libsecret' 'pango' 'graphene' 'vte4' 'libadwaita' 'python' 'python-paramiko' 'python-cairo' 'python-gobject' 'python-keyring' 'python-psutil')
+depends=('glib2' 'gtk4' 'gdk-pixbuf2' 'libsecret' 'pango' 'graphene' 'vte4' 'libadwaita' 'python'
+ 'python-paramiko' 'python-gobject' 'python-keyring' 'python-psutil'  'python-cairo' 'python-cryptography' 
+ 'python-matplotlib' 'libadwaita' 'vte4' 'sshpass' 'libsecret')
 
 options=(!strip)
 
@@ -24,9 +26,18 @@ sha512sums_x86_64=('7c01b039601aaabb85b9c692b1b95c79372ac86dbceae51023d5765b1f63
 
 package() {
     cd "${pkgdir}"
+    local site_packages="$(python -c "import site; print(site.getsitepackages()[0])")"
 
     # this extracts all into the pkgdir
     tar -xf "${srcdir}/data.tar.zst"
+
+    # Fix: Install files properly from the correct location in the extracted package
+    install -d "${pkgdir}${site_packages}/sshpilot" "${pkgdir}${site_packages}/sshpilot/resources" "${pkgdir}${site_packages}/sshpilot/ui"
+    
+    install -Dm644 "${pkgdir}/usr/lib/python3/dist-packages/sshpilot"/*.py "${pkgdir}${site_packages}/sshpilot/"
+    install -Dm644 "${pkgdir}/usr/lib/python3/dist-packages/sshpilot/resources"/* "${pkgdir}${site_packages}/sshpilot/resources/"
+    
+    
     
     install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
