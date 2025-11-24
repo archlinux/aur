@@ -1,6 +1,6 @@
 pkgbase = r3playx-git
 	pkgdesc = A music player forked from YesPlayMusic.(Use system-wide electron)高颜值的第三方网易云播放器.
-	pkgver = 2.7.4.r31.gdc20e3b
+	pkgver = 2.7.5.r13.g5561ffc
 	pkgrel = 1
 	url = https://github.com/Sherlockouo/music
 	arch = aarch64
@@ -22,6 +22,6 @@ pkgbase = r3playx-git
 	source = r3playx.git::git+https://github.com/Sherlockouo/music.git
 	source = r3playx.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = r3playx-git
