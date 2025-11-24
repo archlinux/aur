@@ -4,7 +4,7 @@
 
 _distname='Data-DPath'
 pkgname="perl-${_distname@L}"
-pkgver='0.59'
+pkgver='0.60'
 pkgrel='1'
 pkgdesc="A library that provides data structures inspired by XPath"
 arch=('any')
@@ -21,7 +21,7 @@ checkdepends=('perl-test-deep')
 url="https://metacpan.org/release/$_distname"
 _author='SCHWIGON'
 source=("https://search.cpan.org/CPAN/authors/id/${_author::1}/${_author::2}/$_author/$_distname-$pkgver.tar.gz")
-sha512sums=('1020402bf810ef2c0f84ca002819b5235090df1ea83f70f4c846afa4e485868cd8d6583268cfeaf4c77a6ea37fdee803c98aa77d74c4df70b543c35e87ad1e0b')
+sha512sums=('4c5beaa2e9f035369cf5005ceabcce6b7f23226c554d20408f5254563b2d67e7811d1b47acf2188b917293d548f628f3721e6109b3c15a4bebaf843352ed26bd')
 _distdir="$_distname-$pkgver"
 
 build() {
