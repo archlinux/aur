@@ -3,7 +3,7 @@
 pkgname=pulse-remote-git
 pkgver=0.9.17.r0.g1008250
 pkgrel=1
-pkgdesc="Remote Audio Control for PulseAudio/PipeWire. Use your phone to adjust volume on your PC."
+pkgdesc="Server and web interface to control your Linux PC audio from any device"
 arch=('x86_64')
 url="https://github.com/undg/pulse-remote"
 license=('MIT')
