@@ -4,7 +4,7 @@
 
 _name=ConvertWithMoss
 pkgname=${_name,,}
-pkgver=14.2.0
+pkgver=15.0.0
 pkgrel=1
 pkgdesc='A tool for converting multi-samples from one format to another'
 url='https://mossgrabers.de/Software/ConvertWithMoss/ConvertWithMoss.html'
@@ -13,9 +13,17 @@ license=(LGPL-3.0-only)
 depends=('java-runtime>=16' sh)
 makedepends=(maven jdk-openjdk)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/git-moss/ConvertWithMoss/archive/refs/tags/$pkgver.tar.gz"
-        convertwithmoss.sh)
-sha256sums=('b84837fabc7e381cd5a48ab99f7243cb4e03918ec5f6666eb712fa2decbaeb38'
+        'convertwithmoss-javafx-version.patch'
+        'convertwithmoss.sh')
+sha256sums=('f8aae9d3b4023070ecff3f5a2acd0a2d3108ca16074c165f5b4dca693d5b85e7'
+            '9d59a6649f16196d4f466fe00d91a052958cf0fb569618043b63ce905aafd626'
             '119c190f92a96c3556b770d504ada91fc89d522e837bf490dd3c6b4577d7ca3d')
+
+prepare() {
+  cd $_name-$pkgver
+  # Change version of javafx dependency to pre-realease 26-ea+17 for aarch64 support
+  patch -p1 -N -r - -i "$srcdir"/convertwithmoss-javafx-version.patch
+}
 
 build() {
   cd $_name-$pkgver

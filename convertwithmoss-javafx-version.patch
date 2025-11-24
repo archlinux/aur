@@ -1,0 +1,12 @@
+diff -uNr ConvertWithMoss-15.0.0.orig/pom.xml ConvertWithMoss-15.0.0/pom.xml
+--- ConvertWithMoss-15.0.0.orig/pom.xml	2025-11-23 08:45:52.000000000 +0100
++++ ConvertWithMoss-15.0.0/pom.xml	2025-11-25 00:16:10.603065750 +0100
+@@ -34,7 +34,7 @@
+ 		<dependency>
+ 			<groupId>org.openjfx</groupId>
+ 			<artifactId>javafx-controls</artifactId>
+-			<version>25.0.1</version>
++			<version>26-ea+17</version>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>com.github.trilarion</groupId>
