@@ -1,7 +1,7 @@
 # Maintainer: Niklas Aldervall <aldervall@users.noreply.github.com>
 pkgname=voicetype-bin
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Local English voice transcription using whisper.cpp with hold-to-speak daemon'
 arch=('x86_64')
 url='https://github.com/aldervall/Voicetype'
@@ -54,15 +54,15 @@ package() {
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/voicetype-daemon" <<'EOF'
 #!/bin/bash
 # VoiceType daemon launcher
-cd /usr/lib/voicetype
-exec python -m voice_holdtospeak "$@"
+cd /usr/lib
+exec python -m voicetype.voice_holdtospeak "$@"
 EOF
 
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/voicetype-input" <<'EOF'
 #!/bin/bash
 # VoiceType one-shot voice input
-cd /usr/lib/voicetype
-exec python -m voice_to_text "$@"
+cd /usr/lib
+exec python -m voicetype.voice_to_text "$@"
 EOF
 
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/voicetype-stop-server" <<'EOF'

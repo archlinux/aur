@@ -1,7 +1,7 @@
 pkgbase = voicetype-bin
 	pkgdesc = Local English voice transcription using whisper.cpp with hold-to-speak daemon
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aldervall/Voicetype
 	install = voicetype.install
 	arch = x86_64
