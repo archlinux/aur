@@ -1,0 +1,11 @@
+pkgbase = sound-theme-simple
+	pkgdesc = Complete system sound theme with 70+ event sounds. Tested with Gnome (check docs on how to enable) and XFCE. Adapted from Smooth sound theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/spsf64/simple
+	arch = any
+	license = custom:combined
+	source = https://github.com/spsf64/simple/releases/download/1/simple-1.0.tar.gz
+	b2sums = 6fb0e00b2292e0ac400323655df3a7b8d8a2f63412d58b620f26285296a933411c0c32144f0b53568faad48121623bf1a11b3aec39dd3744f98ffa56d3faa0f8
+
+pkgname = sound-theme-simple

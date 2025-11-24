@@ -1,0 +1,3 @@
+[sound-theme-simple]
+source = "git"
+git = "https://github.com/spsf64/simple.git"
