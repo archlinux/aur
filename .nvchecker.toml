@@ -1,0 +1,6 @@
+[confidant]
+source = "gitea"
+gitea = "wreedb/confidant"
+branch = "main"
+host = "codeberg.org"
+use_latest_release = true
