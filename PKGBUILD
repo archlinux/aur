@@ -10,24 +10,19 @@ pkgdesc='A user space console screen reader written in python3'
 arch=('any')
 url="https://git.stormux.org/storm/fenrir"
 license=('LGPL')
-depends=('espeak-ng' 'python' 'python-pyudev' 'python-daemonize' 'python-evdev' 'python-dbus' 'python-pyperclip' 'python-pyte')
-optdepends=('brltty: For Braille support'
-'gstreamer: for soundicons via gstreamer'
+depends=('espeak-ng' 'python' 'python-pyudev' 'python-daemonize' 'python-evdev' 'python-dbus' 'python-pyperclip' 'python-pyte' 'python-pyxdg' 'python-setproctitle' 'python-pyenchant' 'python-pexpect')
+optdepends=('gstreamer: for soundicons via gstreamer'
 'socat: Control running Fenrir screenreader'
   'sox: The default sound driver'
-  'python-pythondialog: For TUI configuration tool'
-  'python-pyenchant: for spell check functionality'
   'xclip: for copy to X session clipboard'
   'speech-dispatcher: TTS support')
 makedepends=('git' 'python-setuptools' 'python-setuptools-scm')
 provides=('fenrir')
 conflicts=('fenrir')
 backup=('etc/fenrirscreenreader/settings/settings.conf')
-source=("git+https://git.stormux.org/storm/${_gitname}.git"
-  'fenrirscreenreader.service')
+source=("git+https://git.stormux.org/storm/${_gitname}.git")
 install=fenrir-git.install
-sha512sums=('SKIP'
-            'e5e690bd9084d20a3c96ed391989e1db5211ef65b36a18ca6a49f8e16b40771a8a35151388df69d3cc64459d075ecb5fd0c415e11dfb43bc6ed2927612262168')
+sha512sums=('SKIP')
 
 pkgver()
 {
@@ -37,10 +32,10 @@ pkgver()
 
 package()
 {
-  install -d "$pkgdir/usr/lib/systemd/system/"
-  install -Dm644 fenrirscreenreader.service "$pkgdir/usr/lib/systemd/system/fenrirscreenreader.service"
   cd "$srcdir/$_gitname"
   python setup.py install --force-settings --root="${pkgdir}/" --optimize=1
+  install -d "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 autostart/systemd/Arch/fenrir.service "$pkgdir/usr/lib/systemd/system/fenrirscreenreader.service"
 }
 
 # vim: set ts=2 sw=2 et:
