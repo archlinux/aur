@@ -1,7 +1,7 @@
 pkgbase = i686-elf-gcc-baremetal
-	pkgdesc = GCC cross-compiler for i686-elf (bare metal)
+	pkgdesc = GCC for cross-compiler to i686-elf (bare metal)
 	pkgver = 15.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gcc.gnu.org/
 	arch = x86_64
 	license = GPL-3.0-or-later

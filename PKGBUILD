@@ -2,8 +2,8 @@
 
 pkgname=i686-elf-gcc-baremetal
 pkgver=15.2.0
-pkgrel=1
-pkgdesc="GCC cross-compiler for i686-elf (bare metal)"
+pkgrel=2
+pkgdesc="GCC for cross-compiler to i686-elf (bare metal)"
 arch=('x86_64')
 url="https://gcc.gnu.org/"
 license=('GPL-3.0-or-later')
