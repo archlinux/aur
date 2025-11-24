@@ -2,7 +2,7 @@
 
 pkgname=rose-pine-bloom
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate Rosé Pine themes"
 arch=('x86_64')
 url="https://github.com/rose-pine/rose-pine-bloom"
@@ -18,11 +18,11 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  go build -o $pkgname -ldflags "-X github.com/rose-pine/rose-pine-bloom/cmd.version=$pkgver" main.go
+  go build -o bloom -ldflags "-X github.com/rose-pine/rose-pine-bloom/cmd.version=$pkgver" main.go
   mkdir -p completions
-  ./$pkgname completion bash > completions/$pkgname
-  ./$pkgname completion zsh > completions/_$pkgname
-  ./$pkgname completion fish > completions/$pkgname.fish
+  ./$pkgname completion bash > completions/bloom
+  ./$pkgname completion zsh > completions/_bloom
+  ./$pkgname completion fish > completions/bloom.fish
 }
 
 check() {
@@ -32,10 +32,10 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm 755 "$pkgname" -t "$pkgdir/usr/bin"
+  install -Dm 755 bloom -t "$pkgdir/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -D -m644 completions/$pkgname "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-  install -D -m644 completions/_$pkgname "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
-  install -D -m644 completions/$pkgname.fish "$pkgdir/usr/share/fish/completions/$pkgname.fish"
+  install -D -m644 completions/bloom "$pkgdir/usr/share/bash-completion/completions/bloom"
+  install -D -m644 completions/_bloom "$pkgdir/usr/share/zsh/site-functions/_bloom"
+  install -D -m644 completions/bloom.fish "$pkgdir/usr/share/fish/completions/bloom.fish"
 }
