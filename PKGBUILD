@@ -1,5 +1,5 @@
 #!/bin/bash
-# Maintainer: jstmax! <jstmaxlol@disroot.org> & <maxwasmailed@proton.me>
+# Maintainer: czjstmax <jstmaxlol@disroot.org>, <maxwasmailed@proton.me>
 pkgname=getg
 pkgver=11-20.001
 pkgrel=1
