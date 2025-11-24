@@ -1,3 +1,5 @@
+# Maintainer: shadowvolt <v3259914@gmail.com>
+
 pkgname=i686-elf-binutils-baremetal
 pkgver=2.45
 pkgrel=5
@@ -17,8 +19,6 @@ sha256sums=('c50c0e7f9cb188980e2cc97e4537626b1672441815587f1eab69d2a1bfbef5d2'
             'SKIP')
 validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F')
 
-provides=("$_target-binutils")
-conflicts=("$_target-binutils")
 
 build() {
   cd "$srcdir/binutils-$pkgver"
@@ -43,4 +43,7 @@ package() {
 
   rm -rf "$pkgdir/usr/src/debug"
 }
+
+provides=("$_target-binutils")
+conflicts=("$_target-binutils")
 
