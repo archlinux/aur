@@ -12,12 +12,12 @@ sha256sums=('SKIP')
 package() {
   cd "Rice-Switcher-main"
 
-  install -Dm755 rice-switcher.sh "$pkgdir/usr/bin/rice-switcher"
+  install -Dm755 config_switcher.sh "$pkgdir/usr/bin/rice-switcher"
 
   install -dm755 "$pkgdir/usr/share/rice-switcher/"
   cp -r ./* "$pkgdir/usr/share/rice-switcher/"
 
-  rm "$pkgdir/usr/share/rice-switcher/rice-switcher.sh"
+  rm "$pkgdir/usr/share/rice-switcher/config_switcher.sh"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
