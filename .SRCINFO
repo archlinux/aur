@@ -1,7 +1,7 @@
 pkgbase = wgrib2
 	pkgdesc = Utility to read and write grib2 files
 	pkgver = 3.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NOAA-EMC/wgrib2
 	arch = x86_64
 	license = GPL

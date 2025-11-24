@@ -4,7 +4,7 @@
 
 pkgname=wgrib2
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility to read and write grib2 files"
 arch=('x86_64')
 url="https://github.com/NOAA-EMC/wgrib2"
@@ -18,7 +18,6 @@ sha256sums=('39faebada36da5457c75f0980bb68fa299b221b3e6b335bb7d29006a35830c54')
 build() {
   cmake -B build -S "$srcdir/$pkgname-$pkgver" -DCMAKE_INSTALL_PREFIX="/usr" \
     -DUSE_IPOLATES=ON -DBLA_VENDOR=OpenBLAS \
-    -DUSE_AEC=ON \
     -DUSE_NETCDF=ON \
     -DUSE_G2CLIB_LOW=ON
   cmake --build build
