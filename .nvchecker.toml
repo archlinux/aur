@@ -1,0 +1,3 @@
+[lib32-giflib]
+source = "git"
+git = "https://git.code.sf.net/p/giflib/code"
