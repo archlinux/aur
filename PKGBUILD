@@ -1,5 +1,5 @@
 #!/bin/bash
-# Maintainer: czjstmax! <jstmaxlol@disroot.org> & <maxwasmailed@proton.me>
+# Maintainer: czjstmax <jstmaxlol@disroot.org>, <maxwasmailed@proton.me>
 pkgname=fbd
 pkgver=1
 pkgrel=1
