@@ -1,7 +1,7 @@
 pkgbase = sui-testnet-bin
 	pkgdesc = Sui, a next-generation smart contract platform with high throughput, low latency, and an asset-oriented programming model powered by the Move programming language
 	pkgver = 1.61.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/MystenLabs/sui
 	arch = x86_64
 	arch = aarch64
