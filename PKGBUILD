@@ -1,6 +1,6 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 pkgname=perl-object-import
-pkgver=1.005
+pkgver=1.006
 pkgrel=1
 pkgdesc='Perl Object::Import CPAN module'
 _dist=Object-Import
@@ -10,7 +10,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl' 'perl-mro-compat')
 options=('!emptydirs' purge)
 source=("https://cpan.metacpan.org/authors/id/C/CO/CORION/${_dist}-${pkgver}.tar.gz")
-md5sums=('3007a2d1cbb139aa5cb1c0870a8c08e6')
+md5sums=('a84a12d63d47fc4686131c28b115b2da')
 
 build() {
   cd "$srcdir/$_dist-$pkgver"

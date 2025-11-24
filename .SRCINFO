@@ -1,6 +1,6 @@
 pkgbase = perl-object-import
 	pkgdesc = Perl Object::Import CPAN module
-	pkgver = 1.005
+	pkgver = 1.006
 	pkgrel = 1
 	url = http://metacpan.org/release/Object-Import
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = perl-object-import
 	depends = perl-mro-compat
 	options = !emptydirs
 	options = purge
-	source = https://cpan.metacpan.org/authors/id/C/CO/CORION/Object-Import-1.005.tar.gz
-	md5sums = 3007a2d1cbb139aa5cb1c0870a8c08e6
+	source = https://cpan.metacpan.org/authors/id/C/CO/CORION/Object-Import-1.006.tar.gz
+	md5sums = a84a12d63d47fc4686131c28b115b2da
 
 pkgname = perl-object-import
