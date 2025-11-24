@@ -1,0 +1,19 @@
+pkgbase = nuggetvpn-bin
+	pkgdesc = Modern, lightweight, and fast VPN client built with Tauri v2 and Svelte 5 (Binary release)
+	pkgver = 0.2.2
+	pkgrel = 2
+	url = https://github.com/Rigby-Foundation/nuggetvpn
+	arch = x86_64
+	license = GPL3
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = openssl
+	depends = glibc
+	provides = nuggetvpn
+	conflicts = nuggetvpn
+	options = !strip
+	source_x86_64 = NuggetVPN_0.2.2_amd64.deb::https://github.com/Rigby-Foundation/nuggetvpn/releases/download/v0.2.2/NuggetVPN_0.2.2_amd64.deb
+	sha256sums_x86_64 = 937a8ca9427a07e9ef2513734180188c5c06241f4091f0264b7fdbe797656211
+
+pkgname = nuggetvpn-bin
