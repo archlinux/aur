@@ -13,7 +13,6 @@ package() {
   cd "Rice-Switcher-main"
 
   install -Dm755 config_switcher.sh "$pkgdir/usr/bin/rice-switcher"
-
   install -dm755 "$pkgdir/usr/share/rice-switcher/"
   cp -r ./* "$pkgdir/usr/share/rice-switcher/"
 
