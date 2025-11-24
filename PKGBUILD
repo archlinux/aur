@@ -3,43 +3,43 @@
 
 pkgname=libarchive-static
 _pkgname=libarchive
-pkgver=3.7.7
-pkgrel=3
+pkgver=3.8.3
+pkgrel=1
 _attrver=2.5.2
 _aclver=2.3.2
-_sslver=3.4.1
+_sslver=3.6.0
 _zlibver=1.3.1
-_xzver=5.6.4
+_xzver=5.8.1
 _bzipver=1.0.8
-_zstdver=1.5.6
+_zstdver=1.5.7
 pkgdesc='Statically-compiled bsdtar (Multi-format archive and compression library, to fix badly broken systems)'
 arch=('i486' 'i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://libarchive.org/'
 license=('BSD')
 makedepends=('musl' 'kernel-headers-musl' 'git')
 options=('!emptydirs' '!lto')
-validpgpkeys=('A5A45B12AD92D964B89EEE2DEC560C81CEC2276E'  # Martin Matuska <mm@FreeBSD.org>
-              'DB2C7CF1B4C265FAEF56E3FC5848A18B8F14184B') # Martin Matuska <martin@matuska.org>
+validpgpkeys=('DB2C7CF1B4C265FAEF56E3FC5848A18B8F14184B'  # Martin Matuska <martin@matuska.org>
+              '659C84C0E23EA1FA97E0B58CC040B508D63D2B36') # Martin Matuska <mm@FreeBSD.org>
 source=("git+https://github.com/${_pkgname}/${_pkgname}.git?signed#tag=v${pkgver}"
-       "libarchive-3.7.7-all-static.patch")
+       "libarchive-3.8.3-all-static.patch")
 
-sha512sums=('e5bb4b6663c79821a175a231e13ba03ffa1f68f8ea33ec194eca082217bf1a74e72ad9605e6a1063306e836a2e9363facd47d831231ff4f9f819ae62deb505f0'
-            'b436f07b28aeee17e1fd2dec36e7d6393f719a782b5c8902ffb443544248fdffafda8e7a471cea1d0136806b34cf92d7ecbc7ba83d4c1a904ef44179ce65adc3'
+sha512sums=('4e6d6c58a7012db2c950e617aa9df100de1ee3ed3b13b6ea2ebeda188af49150d1c0cde2cf64125b656b358143e12011af75a1b7dc02c1c0b00cbbad6d444432'
+            '8478795f3d980073128c31ddd388a113c55d7d2ecc60ccb0488edf5b34d5156f5e773d62a61083dedd5333ef71613d5af619e1dcf2d9acea372c76746b16f879'
             'f587ea544effb7cfed63b3027bf14baba2c2dbe3a9b6c0c45fc559f7e8cb477b3e9a4a826eae30f929409468c50d11f3e7dc6d2500f41e1af8662a7e96a30ef3'
             'SKIP'
             '6e6588e75c4868bac104496a6709f2874e39b81deff2d5d05706039d6e67fbc5bcd0100bdb0aa840a0e09f99443b1d4fa0a44bd4d5d334f7ae57916c1aee4875'
             '31aeb39958d8af5d08933dd3a89333a41025c3eb49fc461fa3c291caca51dad575ec13faeb7deba9b3c2ebf7615be7d45e2b78e50d4f83d8ec933c95931a7682'
             'SKIP'
-            '1de6307c587686711f05d1e96731c43526fa3af51e4cd94c06c880954b67f6eb4c7db3177f0ea5937d41bc1f8cadcf5bce75025b5c1a46a469376960f1001c5f'
+            '866825a1cdf0b705b409402fbc7a713e7d9b8e7736c5126be57b354927954c148a341fc52b02c0629c1e015a889bfd40217f8e703b73235892e91da060909b76'
             'SKIP'
             'b1873dbb7a49460b007255689102062756972de5cc2d38b12cc9f389b6be412da6797579b1acd3717a8cd2ee118fd9801b94e55f063d4328f050f0876a5eb53c'
             'b5887ea77417fae49b6cb1e9fa782d3021f268d5219701d87a092235964f73fa72a31428b630445517f56f2bb69dcbbb24119ef9dbf8b4e40a753369a9f9a16f'
             '580677aad97093829090d4b605ac81c50327e74a6c2de0b85dd2e8525553f3ddde17556ea46f8f007f89e435493c9a20bc997d1ef1c1c2c23274528e3c46b94f'
             'SKIP'
-            'e3216eca5fae2c9ce419e698bfbe186903088dad0a579749cb49bcde8f9d4073b98bf1570fe69190a9a41feb2a7c9814498ec9b867527de1c74ff75a1cbdfc17'
+            'b9a0f746215cd93c04fecd390ca44fc281d892b989e740ec6abbaa6a1eb457bbef40a33596dfe6e2285a319f2b09ae1994d778f0cf61114cbee9454a0eaa754b'
             '083f5e675d73f3233c7930ebe20425a533feedeaaa9d8cc86831312a6581cefbe6ed0d08d2fa89be81082f2a5abdabca8b3c080bf97218a1bd59dc118a30b9f3'
             'SKIP'
-            '21f9da445afd76acaf3acb22d216c2b584d95e8c68e00f5cb3f6673f2d556dd14a7593344adf8ffd194bba3314387ee0e486d6248f6c935abca2edd8a4cf95ed'
+            '2af02be3df319556b65403450acc55964d971fe263fed87dea823fb264a862db807a2a3d89358564277a83e5b303302cc677f66b5e523e3d224120b884e5ef1b'
             'SKIP')
 # i486, shasumming git archives is broken?
 if [ "${CARCH}" = "i486" ]; then
@@ -48,8 +48,6 @@ if [ "${CARCH}" = "i486" ]; then
 fi
 
 _backports=(
-  # fix CVE-2025-1632 and CVE-2025-25724 (#2532)
-  'c9bc934e7e91d302e0feca6e713ccc38d6d01532'
 )
 
 _reverts=(
@@ -134,13 +132,17 @@ prepare() {
 
     # patch for libtool building static binaries with -all-static
     # (thanks to the Gentoo people: https://bugs.gentoo.org/591096)    
-    patch -Np1 < "${srcdir}/libarchive-3.7.7-all-static.patch"
+    patch -Np1 < "${srcdir}/libarchive-3.8.3-all-static.patch"
 
     autoreconf -fiv
 
     # attr
     cd "${srcdir}"/attr-${_attrver}
     patch -Np1 -i "${srcdir}/attr-2.5.2-basename-libgen.patch"
+	
+	# remove the nfs entries from /etc/xattr.conf
+	# http://lists.gnu.org/archive/html/bug-coreutils/2019-03/msg00008.html
+	sed -i '/nfs/d' xattr.conf
 
     # openssl
     cd "${srcdir}"/openssl-${_sslver}
