@@ -6,11 +6,12 @@ pkgbase = perl-furl
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	checkdepends = perl-test-requires>=0
+	checkdepends = perl-test-requires
 	checkdepends = perl-test-tcp>=2.11
-	depends = perl-class-accessor-lite>=0
+	makedepends = perl-module-build-tiny>=0.035
+	depends = perl-class-accessor-lite
 	depends = perl-http-parser-xs>=0.11
-	depends = perl-mozilla-ca>=0
+	depends = perl-mozilla-ca
 	depends = perl>=5.8.1
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/S/SY/SYOHEX/Furl-3.15.tar.gz

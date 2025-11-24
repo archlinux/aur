@@ -8,9 +8,9 @@ pkgdesc="Lightning-fast URL fetcher"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-class-accessor-lite>=0' 'perl-http-parser-xs>=0.11' 'perl-mozilla-ca>=0' 'perl>=5.8.1')
-makedepends=()
-checkdepends=('perl-test-requires>=0' 'perl-test-tcp>=2.11')
+depends=('perl-class-accessor-lite' 'perl-http-parser-xs>=0.11' 'perl-mozilla-ca' 'perl>=5.8.1')
+makedepends=('perl-module-build-tiny>=0.035')
+checkdepends=('perl-test-requires' 'perl-test-tcp>=2.11')
 url='https://metacpan.org/release/Furl'
 source=('http://search.cpan.org/CPAN/authors/id/S/SY/SYOHEX/Furl-3.15.tar.gz')
 md5sums=('9e7ae8abdc7ba4497316d0d084536140')
