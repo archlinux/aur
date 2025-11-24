@@ -5,12 +5,12 @@
 # Contributor: userwithuid < userwithuid at gmail dot com >
 
 _pkgname=rust
-_date=2025-08-07
-_rustc=1.89.0
+_date=2025-09-18
+_rustc=1.90.0
 
 pkgname=mingw-w64-rust
 _prefix=opt/rust
-pkgver=1.90.0
+pkgver=1.91.1
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
@@ -38,15 +38,15 @@ source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.xz"{,.asc}
 noextract=("rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "cargo-${_rustc}-x86_64-unknown-linux-gnu.tar.xz")
-b2sums=('82dbbe3b5fe79f623c74fb81a4c4372b14e7d765f0e9af3d76a6c4bde9899007c85c8af70dfd9facc06c37a9c8d03a4597ec87b2d053585ccbc2287332b27e70'
+b2sums=('131a1b09954fcc505cb3976a78ed6fa2cd011b03d525f55f1101cbf2b1a467436eae6530c8cac09d0b2ace2606852781bd158335d2b3e7808d808de9a2d03403'
         'SKIP'
-        '324e4268e1ea01990af08c6b0c81f7ea03aea7c43aa49662a0ee73a7f4f85eb8d01730d2e898161234bf687ede6b9dce19778da289c33a12999ea6512a58ca62'
+        '38337867de2001806db371dbe92ff78eb7f8c9f2361b2669744b03b2a1b5f661d3ed60df2c56885464e948d53d83a76d8973147386f0b18174209efe81b30041'
         'SKIP'
-        '2738065c9c5e386b71a6119a5371eaee52e44d7a8f5fbacccf96631092e91cd3ec8f250b9bb8d9033f4e5b3c503cec0f381568ad4d1f255a4d2bfd4b10b1208b'
+        '1fd177d9da7116a28f745637540cb09114a42323a58dc8fe14faa6deeaf8a37e7bde9c7b2a215408c0792ee9efbf341e95f2ab6b37752286592dda48646057f6'
         'SKIP'
-        '933968dfc4a743b13f798cd18cd32bef935c2604ce4ba963b9822a7efabfb696f51f7123c549600803f1ee146dec5be03dca5f53b9715529fcc03acad8986317'
+        '71e4628e71fdb616a0d30fd524e33d8a07ceacecb31d21b76904594f2ed41c3bf2d1c0c78bdc1761be18c0c4d3763df3c068458f20af1482f66d00c8badba282'
         'SKIP'
-        '39c5e93e778ef2e13534a4ae782ef9d6f7918bd6224056b80302a1f1e3ec19aa856ca976663998c34096773beb39142ad8df9fecff4e1f3f751a982974519be4')
+        '5590862d93c18e04111f36ee07786d346261c2db6d0d6b2f15984c5a86427b9a3bdc261605c2cc115eda7400108aa19d64eb581e4d7a50aa153fd4cfd31ff1e6')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
 backup=("opt/rust/cargo/config")
@@ -97,7 +97,7 @@ package() {
 
   # strip
   strip --strip-all "${pkgdir}/${_prefix}/bin/"{cargo,rustc,rustdoc}
-  strip --strip-all "${pkgdir}/${_prefix}/lib/rustlib/x86_64-unknown-linux-gnu/bin/"rust-lld
+  strip --strip-all "${pkgdir}/${_prefix}/lib/rustlib/x86_64-unknown-linux-gnu/bin/"{rust-,ll,opt}*
   strip --strip-unneeded "${pkgdir}/${_prefix}/lib/librustc_driver"*.so
   strip --strip-unneeded "${pkgdir}/${_prefix}/lib/rustlib/x86_64-unknown-linux-gnu/lib/"*.so
   i686-w64-mingw32-strip --strip-unneeded "${pkgdir}/${_prefix}/lib/rustlib/i686-pc-windows-gnu/lib/"*.dll
