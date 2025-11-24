@@ -1,6 +1,6 @@
 pkgbase = psi4
-	pkgdesc = Open-source quantum chemistry - an electronic structure package in C++ driven by Python
-	pkgver = 1.7
+	pkgdesc = Open-Source Quantum Chemistry - an electronic structure package in C++ driven by Python
+	pkgver = 1.10
 	pkgrel = 1
 	url = http://psicode.org
 	arch = x86_64
@@ -28,8 +28,7 @@ pkgbase = psi4
 	optdepends = python-nbsphinx
 	provides = psi4
 	conflicts = psi4-git
-	source = https://github.com/psi4/psi4
-	md5sums = 85a2772a148d57423a909fd91f3f9b068ae393b161510e78e7a824fbe3997366
+	source = psi4-1.10.tar.gz::https://github.com/psi4/psi4/archive/v1.10.tar.gz
+	sha256sums = 2d0ffcec6ff61141fbf13e8ee7ba984e28fc268659f67833352303a6356cc4e4
 
 pkgname = psi4
-

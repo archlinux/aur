@@ -1,5 +1,7 @@
+# Maintainer:  Michael     (https://aur.archlinux.org/account/michael_wzq)
+
 pkgname=psi4
-pkgver=1.7
+pkgver=1.10
 pkgrel=1
 pkgdesc="Open-Source Quantum Chemistry - an electronic structure package in C++ driven by Python"
 arch=("x86_64")
@@ -13,20 +15,19 @@ checkdepends=()
 optdepends=(perl python-pytest python-pytest-xdist python-sphinx python-nbsphinx)
 provides=(psi4)
 conflicts=(psi4-git)
-source=($pkgname-$pkgver.tar.gz::https://github.com/psi4/psi4/archive/v1.7.tar.gz)
-sha256sums=('85a2772a148d57423a909fd91f3f9b068ae393b161510e78e7a824fbe3997366')
+source=($pkgname-$pkgver.tar.gz::https://github.com/psi4/psi4/archive/v${pkgver}.tar.gz)
+sha256sums=('2d0ffcec6ff61141fbf13e8ee7ba984e28fc268659f67833352303a6356cc4e4')
 
 build() {
     cd $pkgname-$pkgver
-	cmake -S. -Bbuild -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/"
+	cmake -S . -B build -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/"
 	cd build
 	make -j`getconf _NPROCESSORS_ONLN`
 }
 
 check() {
 	cd "$pkgname-$pkgver/build"
-	#test 243 skipped. See https://github.com/psi4/psi4/issues/2828
-	ctest -j`getconf _NPROCESSORS_ONLN` -L quick -E 243
+	ctest -L quick
 }
 
 package() {
