@@ -8,7 +8,10 @@ pkgbase = ramalama
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python-argcomplete
+	depends = python-jsonschema
+	depends = python-jinja
 	source = https://files.pythonhosted.org/packages/source/r/ramalama/ramalama-0.14.0.tar.gz
 	sha256sums = 0564bada1cc6fac2d45143024fd9b29219b7a7508f1d591cbe14d8e6db363b2c
 
