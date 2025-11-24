@@ -1,7 +1,7 @@
 pkgbase = rose-pine-bloom
 	pkgdesc = Generate Rosé Pine themes
 	pkgver = 3.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rose-pine/rose-pine-bloom
 	arch = x86_64
 	license = MIT

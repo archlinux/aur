@@ -37,5 +37,5 @@ package() {
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -D -m644 completions/bloom "$pkgdir/usr/share/bash-completion/completions/bloom"
   install -D -m644 completions/_bloom "$pkgdir/usr/share/zsh/site-functions/_bloom"
-  install -D -m644 completions/bloom.fish "$pkgdir/usr/share/fish/completions/bloom.fish"
+  install -D -m644 completions/bloom.fish "$pkgdir/usr/share/fish/vendor_completions.d/bloom.fish"
 }

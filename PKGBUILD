@@ -2,7 +2,7 @@
 
 pkgname=rose-pine-bloom
 pkgver=3.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Generate Rosé Pine themes"
 arch=('x86_64')
 url="https://github.com/rose-pine/rose-pine-bloom"
@@ -37,5 +37,5 @@ package() {
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -D -m644 completions/bloom "$pkgdir/usr/share/bash-completion/completions/bloom"
   install -D -m644 completions/_bloom "$pkgdir/usr/share/zsh/site-functions/_bloom"
-  install -D -m644 completions/bloom.fish "$pkgdir/usr/share/fish/completions/bloom.fish"
+  install -D -m644 completions/bloom.fish "$pkgdir/usr/share/fish/vendor_completions.d/bloom.fish"
 }
