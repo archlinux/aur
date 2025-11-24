@@ -1,17 +1,15 @@
 pkgbase = uncso2-bin
 	pkgdesc = A file extractor for Counter-Strike: Online 2 and Titanfall Online (binary release)
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/harmonytf/UnCSO2
 	arch = x86_64
 	license = GPL-3.0-only
-	depends = libuncso2
+	depends = libuncso2>=1.2.0
 	depends = qt6-base
 	provides = uncso2
 	conflicts = uncso2
-	source = https://github.com/harmonytf/UnCSO2/releases/download/v2.1.0/UnCSO2-2.1.0-linux64_gcc.AppImage
-	source = https://github.com/harmonytf/UnCSO2/raw/refs/tags/v2.1.0/resources/uncso2.svg
-	sha256sums = 89d40523149cc1a7c74f13c4192c9841b86fe3a4acaf9049c27bf65edd1b176f
-	sha256sums = c3f8e700a18aa951701e50c33556740574d04bcfbfd31e9eb9083b34d44c107f
+	source = https://github.com/harmonytf/UnCSO2/releases/download/v2.1.1/UnCSO2-2.1.1-linux-x86_64-gcc-install.zip
+	sha256sums = 61634836a9a5ca702b486a52797cb8bdadf4b9824c8f9faf28c5a7e8cd487cb5
 
 pkgname = uncso2-bin
