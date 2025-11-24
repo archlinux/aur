@@ -1,7 +1,7 @@
 # Maintainer: moparisthebest <admin dot archlinux AT moparisthebest dot com>
 
 pkgname=nextcloud-app-user-external
-pkgver=3.0.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc=" External user authentication methods like IMAP, SMB and FTP"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nextcloud')
 makedepends=()
 options=('!strip')
 source=("https://github.com/nextcloud-releases/user_external/releases/download/v${pkgver}/user_external-v${pkgver}.tar.gz")
-sha256sums=("25cd717780993091bac9e76f81c01fad02a1844917d2ac3973481f93a31ff276")
+sha256sums=('5a7fbed5da3cbe335f753027b662179c92c17fb37babc875e9e285d8a13d47f3')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
