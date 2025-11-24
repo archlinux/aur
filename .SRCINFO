@@ -23,6 +23,7 @@ pkgbase = kmscon-aetf-git
 	depends = systemd-libs
 	provides = kmscon
 	conflicts = kmscon
+	backup = etc/kmscon/kmscon.conf
 	source = kmscon-aetf-git::git+https://github.com/Aetf/kmscon.git
 	sha256sums = SKIP
 

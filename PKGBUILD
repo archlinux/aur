@@ -25,6 +25,7 @@ conflicts=("kmscon")
 makedepends=('check' 'libxslt' 'docbook-xsl' 'linux-api-headers' 'meson')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
+backup=('etc/kmscon/kmscon.conf')
 
 pkgver() {
   cd "$pkgname"
