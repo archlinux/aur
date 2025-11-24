@@ -2,13 +2,13 @@
 # Contributor: Nicola Fontana <ntd@entidi.it>
 
 pkgname=pforth-git
-pkgver=20250606
-pkgrel=2
+pkgver=20250920
+pkgrel=1
 pkgdesc='A portable implementation of the Forth programming language written in ANSI C'
 arch=(any)
 url='http://www.softsynth.com/pforth/'
 license=(custom)
-depends=()
+depends=('glibc')
 makedepends=('git')
 conflicts=('pforth')
 provides=('pforth')
