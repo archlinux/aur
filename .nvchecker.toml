@@ -1,0 +1,4 @@
+[lib32-aalib]
+source = "regex"
+url = "https://sourceforge.net/projects/aa-project/best_release.json"
+regex = "aalib-([^\"]*).tar.gz"
