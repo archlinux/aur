@@ -15,7 +15,7 @@ conflicts=("$_binname" "$_binname-git")
 
 source=("$url/releases/download/v$pkgver/gde-creator-linux-x64.tar.gz")
 
-sha256sums=('b5d1d8ddb98645521fb1f9f749946dcdfbefe8fd19f8e16f8c9a55a87716797d')
+sha256sums=('b497c31e5998e596d85cbaab3fe69335ed6a5ee2c2c86d5f6ea94d93a9992828')
 
 package() {
   cd "$srcdir"
