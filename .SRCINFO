@@ -1,7 +1,7 @@
 pkgbase = r3playx-bin
 	pkgdesc = A music player forked from YesPlayMusic.(Prebuilt version.Use system-wide electron)高颜值的第三方网易云播放器
-	pkgver = 2.7.5
-	pkgrel = 4
+	pkgver = 2.7.6
+	pkgrel = 1
 	url = https://github.com/Sherlockouo/music
 	arch = aarch64
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = r3playx-bin
 	conflicts = yesplaymusic
 	conflicts = my-yesplaymusic
 	source = r3playx.sh
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = r3playx-2.7.5-aarch64.deb::https://github.com/Sherlockouo/music/releases/download/2.7.5/R3PLAYX-2.7.5-linux-arm64.deb
-	sha256sums_aarch64 = 631444fcc800d112738d1abb8aacea2c94e0dfeaa39045055cd988fc144dbca2
-	source_x86_64 = r3playx-2.7.5-x86_64.deb::https://github.com/Sherlockouo/music/releases/download/2.7.5/R3PLAYX-2.7.5-linux-amd64.deb
-	sha256sums_x86_64 = 29412fd8023306a96bfa64c9766c580848b28578b70c266c75a55a7408d777c9
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source_aarch64 = r3playx-2.7.6-aarch64.deb::https://github.com/Sherlockouo/music/releases/download/2.7.6/R3PLAYX-2.7.6-linux-arm64.deb
+	sha256sums_aarch64 = ed43de2ea575edcb4a9e97825437d00870cde94bd576b14aeff316bcabc422c5
+	source_x86_64 = r3playx-2.7.6-x86_64.deb::https://github.com/Sherlockouo/music/releases/download/2.7.6/R3PLAYX-2.7.6-linux-amd64.deb
+	sha256sums_x86_64 = 2a2d4c1c4cebe648e5c483f86ff39f2048811ae0ba1d42ebd82a165c7de150e7
 
 pkgname = r3playx-bin

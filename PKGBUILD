@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=r3playx-bin
 _pkgname=R3PLAYX
-pkgver=2.7.5
+pkgver=2.7.6
 _electronversion=28
-pkgrel=4
+pkgrel=1
 pkgdesc="A music player forked from YesPlayMusic.(Prebuilt version.Use system-wide electron)高颜值的第三方网易云播放器"
 arch=(
     'aarch64'
@@ -27,9 +27,13 @@ makedepends=(
 source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
-sha256sums=('291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
-sha256sums_aarch64=('631444fcc800d112738d1abb8aacea2c94e0dfeaa39045055cd988fc144dbca2')
-sha256sums_x86_64=('29412fd8023306a96bfa64c9766c580848b28578b70c266c75a55a7408d777c9')
+sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums_aarch64=('ed43de2ea575edcb4a9e97825437d00870cde94bd576b14aeff316bcabc422c5')
+sha256sums_x86_64=('2a2d4c1c4cebe648e5c483f86ff39f2048811ae0ba1d42ebd82a165c7de150e7')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/desktop" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -39,6 +43,7 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
+    _get_electron_version
     sed -i -e "
         s/\/opt\/${_pkgname}\/desktop/${pkgname%-bin}/g
         s/Icon=desktop/Icon=${pkgname%-bin}/g
