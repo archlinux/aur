@@ -2,7 +2,7 @@
 # Maintainer: czjstmax : <jstmaxlol@disroot.org>, <maxwasmailed@proton.me>
 pkgname=gim
 pkgver=00001
-pkgrel=1
+pkgrel=2
 pkgdesc="gim - g interactive mode, aka the interactive REPL for g, the *permissive* git wrapper."
 arch=('any')
 url="https://github.com/jstmaxlol/gim"
