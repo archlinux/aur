@@ -1,7 +1,7 @@
 pkgbase = intel-xed-git
 	pkgdesc = A library for encoding and decoding x86 instructions
-	pkgver = 2025.03.02.r0.g1bdc793
-	pkgrel = 1
+	pkgver = 2025.11.23.r0.g722cd23
+	pkgrel = 2
 	url = https://github.com/intelxed/xed
 	arch = x86_64
 	license = Apache-2.0
@@ -12,7 +12,7 @@ pkgbase = intel-xed-git
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = glibc
-	provides = intel-xed=2025.03.02
+	provides = intel-xed=2025.11.23
 	conflicts = intel-xed
 	source = intel-xed::git+https://github.com/intelxed/xed.git
 	source = intelxed.mbuild::git+https://github.com/intelxed/mbuild

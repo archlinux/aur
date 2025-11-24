@@ -2,8 +2,8 @@
 
 _pkgname="intel-xed"
 pkgname="$_pkgname-git"
-pkgver=2025.03.02.r0.g1bdc793
-pkgrel=1
+pkgver=2025.11.23.r0.g722cd23
+pkgrel=2
 pkgdesc="A library for encoding and decoding x86 instructions"
 url="https://github.com/intelxed/xed"
 license=('Apache-2.0')
@@ -59,23 +59,23 @@ package() {
   cd "$_pkgsrc"/kits/xed-install-base-*-lin-x86-64/
 
   # headers
-  install -dm755 "$pkgdir/usr/include"
-  cp --reflink=auto -a include/* "$pkgdir/usr/include/"
+  mkdir -pm755 "$pkgdir/usr/include"
+  cp -r include/* "$pkgdir/usr/include/"
 
   # libs
   install -Dm644 lib/* -t "$pkgdir/usr/lib/"
 
   # binaries and symlink
-  install -Dm755 bin/* -t "$pkgdir/usr/lib/$_pkgname/bin/"
-  install -dm755 "$pkgdir/usr/bin"
-  ln -srf "$pkgdir/usr/lib/$_pkgname/bin/xed" "$pkgdir/usr/bin/intel-xed"
+  install -Dm755 bin/* -t "$pkgdir/usr/lib/$_pkgname/"
+  mkdir -pm755 "$pkgdir/usr/bin"
+  ln -sf "/usr/lib/$_pkgname/xed" "$pkgdir/usr/bin/intel-xed"
 
   # reference
-  install -dm755 "$pkgdir/usr/lib/$_pkgname/ref-manual"
-  cp --reflink=auto -a doc/ref-manual/html/* "$pkgdir/usr/lib/$_pkgname/ref-manual/"
+  mkdir -pm755 "$pkgdir/usr/share/doc/$_pkgname"
+  cp -r doc/ref-manual/html "$pkgdir/usr/share/doc/$_pkgname/ref-manual"
 
   # examples
-  install -Dm644 examples/* -t "$pkgdir/usr/lib/$_pkgname/examples/"
+  cp -r examples "$pkgdir/usr/share/doc/$_pkgname/examples"
 
   # permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
