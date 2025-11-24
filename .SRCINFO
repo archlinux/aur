@@ -1,0 +1,20 @@
+pkgbase = fixel-font
+	pkgdesc = Grotesque sans typeface with a human touch by MacPaw
+	pkgver = 1.21
+	pkgrel = 1
+	url = https://fixel.macpaw.com
+	arch = any
+	license = OFL-1.1
+	source = https://fonts.macpaw.com/fonts/FixelAll.zip
+	source = https://openfontlicense.org/documents/OFL.txt
+	sha512sums = 49b06cf51b45601c7f2170a785cbf93aeb72fce7586f7aea9957d3214382c06a15807ac8be0d307b10175ef1f429b75f96716abe50964b9ad93c02f6de64e4b8
+	sha512sums = 2d0dfbba4d6a6ca9c27379ec1be0fcf86f801315ece6db5992140f3d524bcec65cd93acd61cbdc064d383aa86a9830fbe6709c5ee00c5f33c8c809e0ba2c6828
+
+pkgname = otf-fixel-text
+	pkgdesc = Grotesque sans typeface with a human touch by MacPaw (text)
+
+pkgname = otf-fixel-display
+	pkgdesc = Grotesque sans typeface with a human touch by MacPaw (display)
+
+pkgname = ttf-fixel-variable
+	pkgdesc = Grotesque sans typeface with a human touch by MacPaw (variable version)
