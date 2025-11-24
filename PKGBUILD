@@ -21,7 +21,7 @@ source=(
     )
 noextract=("${_appimage}")
 sha256sums=('cc48565ca2c9a165f0af17cc4a785cdcb2a3d10aa5ecd15585b6959b79b81c6d'
-            '43312631ff7d43338a0cdc37fbf343a80318459a145c7c983175eed09123ea49'
+            'de93f2424e524c2785c23207305d0577c90e4e618389498db0fc14686e1783dc'
             '41dede6dc49b7fc9beebc92437f8d0257f209f149e909b570a877cc1d7463251')
 
 package() {
