@@ -2,19 +2,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-io-zlib'
-pkgver='1.14'
+pkgver='1.15'
 pkgrel='1'
-pkgdesc="IO:: style interface to Compress::Zlib"
+pkgdesc="unknown"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=0')
+depends=('perl')
 makedepends=()
 url='https://metacpan.org/release/IO-Zlib'
-source=('http://search.cpan.org/CPAN/authors/id/T/TO/TOMHUGHES/IO-Zlib-1.14.tar.gz')
-md5sums=('e628c00af8459d931b47a734b082e2aa')
-sha512sums=('b638be7f4be266035a029ea6553b782f8bb6e3876e371cebeab60c975b3faca722d20c90e58167dcdae77fb0329271fbf45aa225e79ad45934735b3017e33237')
-_distdir="IO-Zlib-1.14"
+source=('http://search.cpan.org/CPAN/authors/id/T/TO/TOMHUGHES/IO-Zlib-1.15.tar.gz')
+md5sums=('be82e37ac2e2a621e0e146c4a642f869')
+sha512sums=('479dbdd0ce05ea090f9bc7e555142173772066f18092bb7511e33066b49deb42dff44680067447220703ec1f055a4491a6d03f311f16de6fbbb5b5162e2717bd')
+_distdir="IO-Zlib-1.15"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
