@@ -1,6 +1,6 @@
 pkgbase = wayscriber-bin
 	pkgdesc = Screen annotation tool for Wayland compositors (prebuilt binaries)
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://wayscriber.com
 	install = wayscriber-bin.install
@@ -19,7 +19,7 @@ pkgbase = wayscriber-bin
 	conflicts = wayscriber
 	conflicts = wayscriber-debug
 	replaces = wayscriber-debug
-	source_x86_64 = wayscriber-v0.8.1-linux-x86_64.tar.gz::https://github.com/devmobasa/wayscriber/releases/download/v0.8.1/wayscriber-v0.8.1-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 371737fb36ce45231a9ff998524ae7946e281a64d78f08f27438ceb4987792d5
+	source_x86_64 = wayscriber-v0.8.2-linux-x86_64.tar.gz::https://github.com/devmobasa/wayscriber/releases/download/v0.8.2/wayscriber-v0.8.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 7f5804faa322c9c4bffdb5ea56b15463eff43af70dbbc67b8f11de16b28bef5f
 
 pkgname = wayscriber-bin
