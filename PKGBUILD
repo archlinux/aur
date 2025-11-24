@@ -3,7 +3,7 @@
 _pkgauthor=MertJSX
 _pkgname=folderhost
 pkgname=${_pkgname}-bin
-pkgver=25.11.9
+pkgver=25.11.10
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Your own private cloud in one executable. Share files, collaborate on code, and manage users without complex setup"
@@ -21,8 +21,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.zip::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[0]}.zip")
 sha256sums=('bcca794627066c8b5b93d00043b5f8111dd7e49b95c71ba0c092eea27f5915ef'
-            'e73e5071918d8a82edb32a0e30172d3be164f65621709cb78da42e635f4e5cc9')
-sha256sums_x86_64=('c6a5ef10fdb5432016e5e7102e935fc0bb11872781cba1df0e345db11f165b78')
+            'cf807c7ff1324ef8e56f46f7a102d3cae59c31816c7f8bb5618ced06eacd6b3a')
+sha256sums_x86_64=('4c67f2830e261a8d47134dbc6f0c23762cab6f004b519d86e1d510a8ac03bcff')
 
 package() {
 	cd "${srcdir}/" || exit

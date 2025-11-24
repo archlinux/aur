@@ -1,6 +1,6 @@
 pkgbase = folderhost-bin
 	pkgdesc = Your own private cloud in one executable. Share files, collaborate on code, and manage users without complex setup
-	pkgver = 25.11.9
+	pkgver = 25.11.10
 	pkgrel = 1
 	url = https://github.com/MertJSX/folderhost
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = folderhost-bin
 	depends = glibc
 	provides = folderhost
 	conflicts = folderhost
-	source = LICENSE-25.11.9::https://raw.githubusercontent.com/MertJSX/folderhost/v25.11.9/LICENSE
-	source = README-25.11.9.md::https://raw.githubusercontent.com/MertJSX/folderhost/v25.11.9/README.md
+	source = LICENSE-25.11.10::https://raw.githubusercontent.com/MertJSX/folderhost/v25.11.10/LICENSE
+	source = README-25.11.10.md::https://raw.githubusercontent.com/MertJSX/folderhost/v25.11.10/README.md
 	sha256sums = bcca794627066c8b5b93d00043b5f8111dd7e49b95c71ba0c092eea27f5915ef
-	sha256sums = e73e5071918d8a82edb32a0e30172d3be164f65621709cb78da42e635f4e5cc9
-	source_x86_64 = folderhost-x86_64-25.11.9.zip::https://github.com/MertJSX/folderhost/releases/download/v25.11.9/folderhost-linux-amd64.zip
-	sha256sums_x86_64 = c6a5ef10fdb5432016e5e7102e935fc0bb11872781cba1df0e345db11f165b78
+	sha256sums = cf807c7ff1324ef8e56f46f7a102d3cae59c31816c7f8bb5618ced06eacd6b3a
+	source_x86_64 = folderhost-x86_64-25.11.10.zip::https://github.com/MertJSX/folderhost/releases/download/v25.11.10/folderhost-linux-amd64.zip
+	sha256sums_x86_64 = 4c67f2830e261a8d47134dbc6f0c23762cab6f004b519d86e1d510a8ac03bcff
 
 pkgname = folderhost-bin
