@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=japreader-bin
-pkgver=1.10.0
+pkgver=1.11.0
 _electronversion=34
 pkgrel=1
 pkgdesc="An Electron app that helps you read Japanese text.(Prebuilt version.Use system-wide electron)"
@@ -13,7 +13,6 @@ depends=(
     "electron${_electronversion}"
     'libx11'
     'libxfixes'
-    'nodejs'
 )
 options=(
     '!strip'
@@ -23,9 +22,14 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('42b273d66fa75bdfdb37c3479c6c2379e88255c3e72727c8661b46dead3fd2c9'
-            '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
+sha256sums=('9b2bf2eaeff5bb29e34ae6450249012514a29dbe3ef824ff4e376db2abab038b'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
+    _get_electron_version
     sed -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
