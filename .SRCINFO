@@ -17,7 +17,7 @@ pkgbase = doomseeker
 	optdepends = zandronum: GZDoom fork supporting client/server multiplayer
 	optdepends = odamex: Classic client/server multiplayer fork
 	optdepends = chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom
-	source = doomseeker::git+https://bitbucket.org/Doomseeker/doomseeker#tag=1.5.1
-	sha256sums = SKIP
+	source = doomseeker::git+https://bitbucket.org/Doomseeker/doomseeker#tag=1.5.2
+	sha256sums = 072bfb4d6e9d2e5048828ee1e3fe3fd997257fd131c2b37c1693ddd264e732d7
 
 pkgname = doomseeker
