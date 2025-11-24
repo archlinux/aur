@@ -1,26 +1,30 @@
 # Maintainer: Nickid2018 <nickid2018@outlook.com>
 _pkgname='minecraft-ping'
 pkgname=minecraft-ping
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="A tool for pinging minecraft servers"
+pkgdesc="A tool for pinging Minecraft servers"
 arch=('x86_64')
 url="https://github.com/Nickid2018/minecraft-ping"
 license=('MIT')
-depends=('cjson')
-makedepends=(cmake)
+depends=()
+makedepends=(cargo)
 source=("https://github.com/Nickid2018/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('24b16745d49615446b7637bd48d656e537cc4641272c091059df7cf7a905de66')
+sha256sums=('5de73223b471d926ced1f4d969880cda48df9af812a7bfc516c0f3ca11647b5d')
+
+prepare() {
+    export RUSTUP_TOOLCHAIN=stable
+    cd "$pkgname-$pkgver"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 build() {
-    cmake -B build -S "$_pkgname-$pkgver" \
-        -DCMAKE_BUILD_TYPE='None' \
-	-DCMAKE_INSTALL_PREFIX=/usr \
-        -Wno-dev
-    cmake --build build
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cd "$pkgname-$pkgver"
+    cargo build --frozen --release --all-features
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install build
+    install -Dm0755 -t "$pkgdir/usr/bin/" "$pkgname-$pkgver/target/release/mcping"
 }
-
