@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=xxhash-git
-pkgver=0.8.2.r106.gac3a25d
+pkgver=0.8.3.r145.g136cc1f
 pkgrel=1
 pkgdesc="Extremely fast non-cryptographic hash algorithm"
 arch=('i686' 'x86_64')
-url="https://cyan4973.github.io/xxHash/"
+url="https://xxhash.com/"
 license=('BSD-2-Clause')
 depends=('glibc')
 makedepends=('git')
-checkdepends=('valgrind')
+checkdepends=('time' 'valgrind')
 provides=("xxhash=$pkgver")
 conflicts=('xxhash')
 source=("git+https://github.com/Cyan4973/xxHash.git")
