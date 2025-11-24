@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pclink
 _app_id=xyz.bytedz.PCLink
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.6.0
+pkgrel=1
 pkgdesc="Desktop app for secure remote PC control and management"
 arch=('any')
 url="https://bytedz.xyz/products/pclink"
@@ -42,9 +42,9 @@ optdepends=(
 source=("PCLink-$pkgver.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v$pkgver.tar.gz"
         "${_app_id}.desktop"
          "$pkgname.1")
-sha256sums=('1e77be6be73a46bd3e76f8968887c02f21c5f2f66b47af6f596870f4e90f13a7'
+sha256sums=('d4e5ab45cae3071f8b38828e2c71e1bd900ccc93658e815b94893f6d562be834'
             '7e5df0da74ea06cd786dcb46b63de9d4822b746fa1a2cca6b6e41f42b5e5322c'
-            '44d68fed3029d569b1f9233e368da9c98628df4866a7d75e676751914138e733')
+            '25e48aaf46a06e432486d30dc6d95d7fdf12db0a55eaf60336a5d9efb4a32ce7')
 
 build() {
   cd "PCLink-$pkgver"
@@ -61,7 +61,7 @@ package() {
   install -m440 "scripts/linux/$pkgname-sudoers" "$pkgdir/etc/sudoers.d/$pkgname"
   install -Dm644 "scripts/linux/$pkgname.service.template" \
     "$pkgdir/usr/lib/systemd/user/$pkgname.service"
-  install -Dm644 "docs/assets/${pkgname}_icon.svg" \
+  install -Dm644 "assets/${pkgname}_icon.svg" \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/${_app_id}.svg"
   install -Dm644 "$srcdir/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "$srcdir/$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
