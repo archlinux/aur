@@ -1,6 +1,6 @@
 pkgbase = passless
 	pkgdesc = FIDO2 security token emulator
-	pkgver = 0.3.3
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/pando85/passless
 	install = passless.install
@@ -13,7 +13,7 @@ pkgbase = passless
 	depends = gcc-libs
 	provides = passless
 	conflicts = passless
-	source = git+https://github.com/pando85/passless.git#tag=v0.3.3?signed
+	source = git+https://github.com/pando85/passless.git#tag=v0.4.0?signed
 	source = passless.install
 	validpgpkeys = CD1DB60B2C8465FD50028EF6D381D73787B45B3E
 	sha512sums = SKIP
