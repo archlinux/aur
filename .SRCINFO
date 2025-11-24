@@ -1,6 +1,6 @@
 pkgbase = perl-selenium-remote-driver
 	pkgdesc = Perl Client for Selenium Remote Driver
-	pkgver = 1.49
+	pkgver = 1.50
 	pkgrel = 1
 	url = https://metacpan.org/release/Selenium-Remote-Driver
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = perl-selenium-remote-driver
 	checkdepends = perl-test-deep>=0
 	checkdepends = perl-test-fatal>=0
 	checkdepends = perl-test-lwp-useragent>=0
+	checkdepends = perl-test-longstring>=0
 	checkdepends = perl-test-mockmodule>=0.13.0
 	depends = perl-archive-zip>=0
 	depends = perl-clone>=0
@@ -17,15 +18,14 @@ pkgbase = perl-selenium-remote-driver
 	depends = perl-json>=0
 	depends = perl-moo>=1.005
 	depends = perl-sub-install>=0
-	depends = perl-test-longstring>=0
 	depends = perl-try-tiny>=0
 	depends = perl-xml-simple>=0
 	depends = perl-libwww>=0
 	depends = perl-namespace-clean>=0
 	depends = perl>=5.010
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/T/TE/TEODESIAN/Selenium-Remote-Driver-1.49.tar.gz
-	md5sums = 7878c2ce428046413a9316eec8103eae
-	sha512sums = d6e18de7515b65db367c8d870df79f4682346d4f8550e6c6b3bd45aee2eaf2a9e072b495d26e992a76b93b7619ffe876eb9c4e84646f40241e7fa9033595e48d
+	source = http://search.cpan.org/CPAN/authors/id/T/TE/TEODESIAN/Selenium-Remote-Driver-1.50.tar.gz
+	md5sums = 55fb02995bb4c1f6f5c57df959f85d76
+	sha512sums = 6cd8f8cbb0a74204d6112f4d86b720b349ef1e4e3d230d3a9d0c89ba2843c6e8ccd414c940bc10647eb998f1a5806f4aa3aeba829e8c079238d7afd58ef15df6
 
 pkgname = perl-selenium-remote-driver

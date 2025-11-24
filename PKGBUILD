@@ -2,20 +2,20 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-selenium-remote-driver'
-pkgver='1.49'
+pkgver='1.50'
 pkgrel='1'
 pkgdesc="Perl Client for Selenium Remote Driver"
 arch=('any')
 license=('Apache 2.0')
 options=('!emptydirs')
-depends=('perl-archive-zip>=0' 'perl-clone>=0' 'perl-file-which>=0' 'perl-http-message>=0' 'perl-io-string>=0' 'perl-json>=0' 'perl-moo>=1.005' 'perl-sub-install>=0' 'perl-test-longstring>=0' 'perl-try-tiny>=0' 'perl-xml-simple>=0' 'perl-libwww>=0' 'perl-namespace-clean>=0' 'perl>=5.010')
+depends=('perl-archive-zip>=0' 'perl-clone>=0' 'perl-file-which>=0' 'perl-http-message>=0' 'perl-io-string>=0' 'perl-json>=0' 'perl-moo>=1.005' 'perl-sub-install>=0' 'perl-try-tiny>=0' 'perl-xml-simple>=0' 'perl-libwww>=0' 'perl-namespace-clean>=0' 'perl>=5.010')
 makedepends=()
-checkdepends=('perl-test-deep>=0' 'perl-test-fatal>=0' 'perl-test-lwp-useragent>=0' 'perl-test-mockmodule>=0.13.0')
+checkdepends=('perl-test-deep>=0' 'perl-test-fatal>=0' 'perl-test-lwp-useragent>=0' 'perl-test-longstring>=0' 'perl-test-mockmodule>=0.13.0')
 url='https://metacpan.org/release/Selenium-Remote-Driver'
-source=('http://search.cpan.org/CPAN/authors/id/T/TE/TEODESIAN/Selenium-Remote-Driver-1.49.tar.gz')
-md5sums=('7878c2ce428046413a9316eec8103eae')
-sha512sums=('d6e18de7515b65db367c8d870df79f4682346d4f8550e6c6b3bd45aee2eaf2a9e072b495d26e992a76b93b7619ffe876eb9c4e84646f40241e7fa9033595e48d')
-_distdir="Selenium-Remote-Driver-1.49"
+source=('http://search.cpan.org/CPAN/authors/id/T/TE/TEODESIAN/Selenium-Remote-Driver-1.50.tar.gz')
+md5sums=('55fb02995bb4c1f6f5c57df959f85d76')
+sha512sums=('6cd8f8cbb0a74204d6112f4d86b720b349ef1e4e3d230d3a9d0c89ba2843c6e8ccd414c940bc10647eb998f1a5806f4aa3aeba829e8c079238d7afd58ef15df6')
+_distdir="Selenium-Remote-Driver-1.50"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
