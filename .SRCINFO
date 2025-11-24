@@ -1,6 +1,6 @@
 pkgbase = intel-xed
 	pkgdesc = A library for encoding and decoding x86 instructions
-	pkgver = 2025.06.08
+	pkgver = 2025.11.23
 	pkgrel = 1
 	url = https://github.com/intelxed/xed
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = intel-xed
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = glibc
-	source = intel-xed::git+https://github.com/intelxed/xed.git#tag=v2025.06.08
+	source = intel-xed::git+https://github.com/intelxed/xed.git#tag=v2025.11.23
 	source = intelxed.mbuild::git+https://github.com/intelxed/mbuild
-	sha256sums = c7f95b76cb33ad68d10ac173d0846138c38f4f675786c0c4e03d45425efb9bbd
+	sha256sums = 6ad20029439a9c8c8f0badd7481613a2a715ffc16e72bca41c5d98e7df7542d9
 	sha256sums = SKIP
 
 pkgname = intel-xed

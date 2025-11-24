@@ -2,7 +2,7 @@
 
 _pkgname="intel-xed"
 pkgname="$_pkgname"
-pkgver=2025.06.08
+pkgver=2025.11.23
 pkgrel=1
 pkgdesc="A library for encoding and decoding x86 instructions"
 url="https://github.com/intelxed/xed"
@@ -28,7 +28,7 @@ source=(
   "$_pkgsrc_mbuild"::"git+https://github.com/intelxed/mbuild"
 )
 sha256sums=(
-  'c7f95b76cb33ad68d10ac173d0846138c38f4f675786c0c4e03d45425efb9bbd'
+  '6ad20029439a9c8c8f0badd7481613a2a715ffc16e72bca41c5d98e7df7542d9'
   'SKIP'
 )
 
@@ -50,23 +50,23 @@ package() {
   cd "$_pkgsrc"/kits/xed-install-base-*-lin-x86-64/
 
   # headers
-  install -dm755 "$pkgdir/usr/include"
-  cp --reflink=auto -a include/* "$pkgdir/usr/include/"
+  mkdir -pm755 "$pkgdir/usr/include"
+  cp -r include/* "$pkgdir/usr/include/"
 
   # libs
   install -Dm644 lib/* -t "$pkgdir/usr/lib/"
 
   # binaries and symlink
-  install -Dm755 bin/* -t "$pkgdir/usr/lib/$_pkgname/bin/"
-  install -dm755 "$pkgdir/usr/bin"
-  ln -srf "$pkgdir/usr/lib/$_pkgname/bin/xed" "$pkgdir/usr/bin/intel-xed"
+  install -Dm755 bin/* -t "$pkgdir/usr/lib/$_pkgname/"
+  mkdir -pm755 "$pkgdir/usr/bin"
+  ln -sf "/usr/lib/$_pkgname/xed" "$pkgdir/usr/bin/intel-xed"
 
   # reference
-  install -dm755 "$pkgdir/usr/lib/$_pkgname/ref-manual"
-  cp --reflink=auto -a doc/ref-manual/html/* "$pkgdir/usr/lib/$_pkgname/ref-manual/"
+  mkdir -pm755 "$pkgdir/usr/share/doc/$_pkgname"
+  cp -r doc/ref-manual/html "$pkgdir/usr/share/doc/$_pkgname/ref-manual"
 
   # examples
-  install -Dm644 examples/* -t "$pkgdir/usr/lib/$_pkgname/examples/"
+  cp -r examples "$pkgdir/usr/share/doc/$_pkgname/examples"
 
   # permissions
   chmod -R u+rwX,go+rX,go-w "$pkgdir/"
