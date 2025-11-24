@@ -1,0 +1,13 @@
+pkgbase = tfplan
+	pkgdesc = A minimal CLI tool to format Terraform plan output in a beautiful, human-readable format
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hichambouzkraoui/terraform-plan-formatter
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = tfplan-0.1.0.tar.gz::https://github.com/hichambouzkraoui/terraform-plan-formatter/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = tfplan
