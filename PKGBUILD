@@ -8,7 +8,7 @@ pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=10.3.0
 _xaliaver=0.4.6
-pkgrel=1
+pkgrel=2
 epoch=1
 
 source=(
@@ -219,9 +219,40 @@ prepare() {
     mv "$srcdir"/wine-mono-${_monover}-x86.tar.xz contrib/
     mv "$srcdir"/xalia-${_xaliaver}-net48-mono.zip contrib/
 
+    _submodules=(
+        dav1d
+        dxvk
+        dxvk-gplasync
+        dxvk-nvapi
+        dxvk-sarek
+        ffmpeg
+        fonts/liberation-fonts
+        glslang
+        graphene
+        gst-orc
+        gst-plugins-rs
+        gstreamer
+        libpcap
+        libxkbcommon
+        meson
+        nvidia-libs/dxvk-nvapi
+        nvidia-libs/nvcuda
+        nvidia-libs/nvenc
+        nvidia-libs/wine-nvml
+        nvidia-libs/wine-nvoptix
+        openvr
+        OpenXR-SDK
+        protonfixes
+        SPIRV-Headers
+        vkd3d
+        vkd3d-proton
+        Vulkan-Headers
+        wine
+    )
+
     # Explicitly set origin URL for submodules using relative paths
     git remote set-url origin https://github.com/CachyOS/proton-cachyos.git
-    git submodule update --init --filter=tree:0 --recursive
+    git submodule update --init --filter=tree:0 --recursive ${_submodules[@]}
 
     ./patches/apply.sh
 
