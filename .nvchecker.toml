@@ -1,0 +1,4 @@
+[lib32-libdv]
+source = "regex"
+url = "https://sourceforge.net/projects/libdv/best_release.json"
+regex = "libdv-([^\"]*).tar.gz"
