@@ -1,17 +1,18 @@
 pkgbase = perl-chemistry-mol
 	pkgdesc = Molecule object toolkit
-	pkgver = 0.39
+	pkgver = 0.40
 	pkgrel = 1
 	url = https://metacpan.org/release/Chemistry-Mol
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl-clone>=0
-	depends = perl-io-string>=0
+	checkdepends = perl-clone
+	depends = perl-io-string
 	depends = perl-math-vectorreal>=1.0
+	depends = perl-set-object
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/ME/MERKYS/Chemistry-Mol-0.39.tar.gz
-	md5sums = 7824e55c3fb76c33addd81d61d6bd47e
-	sha512sums = 61d413c3a55f263da73f3dc3349fc3042f1906bea2294998ada176f2cd2b49d808bc442459a0a2b6ab203c8958e808a7ca3a8c90fa1be6a2ea437631df07a51d
+	source = http://search.cpan.org/CPAN/authors/id/M/ME/MERKYS/Chemistry-Mol-0.40.tar.gz
+	md5sums = 93a0854c884e43d29b34cf29b6e02990
+	sha512sums = 31d89c533f0deff4b32a221ed1de69a956822ce6736d015dcb484fae98c3e04d61217e35cc1a64755d66ae0d3d8fec59db5889ae1162a9aab997e2ab1ff5d66d
 
 pkgname = perl-chemistry-mol

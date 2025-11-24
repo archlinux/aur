@@ -2,19 +2,20 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-chemistry-mol'
-pkgver='0.39'
+pkgver='0.40'
 pkgrel='1'
 pkgdesc="Molecule object toolkit"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-clone>=0' 'perl-io-string>=0' 'perl-math-vectorreal>=1.0')
+depends=('perl-io-string' 'perl-math-vectorreal>=1.0' 'perl-set-object')
 makedepends=()
+checkdepends=('perl-clone')
 url='https://metacpan.org/release/Chemistry-Mol'
-source=('http://search.cpan.org/CPAN/authors/id/M/ME/MERKYS/Chemistry-Mol-0.39.tar.gz')
-md5sums=('7824e55c3fb76c33addd81d61d6bd47e')
-sha512sums=('61d413c3a55f263da73f3dc3349fc3042f1906bea2294998ada176f2cd2b49d808bc442459a0a2b6ab203c8958e808a7ca3a8c90fa1be6a2ea437631df07a51d')
-_distdir="Chemistry-Mol-0.39"
+source=('http://search.cpan.org/CPAN/authors/id/M/ME/MERKYS/Chemistry-Mol-0.40.tar.gz')
+md5sums=('93a0854c884e43d29b34cf29b6e02990')
+sha512sums=('31d89c533f0deff4b32a221ed1de69a956822ce6736d015dcb484fae98c3e04d61217e35cc1a64755d66ae0d3d8fec59db5889ae1162a9aab997e2ab1ff5d66d')
+_distdir="Chemistry-Mol-0.40"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
