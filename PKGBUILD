@@ -5,7 +5,10 @@ pkgver=0.0.14
 _electronversion=29
 pkgrel=1
 pkgdesc="A free and open source drill-writing app built on web frameworks.(Prebuilt version.Use system-wide electron)"
-arch=('x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="http://openmarch.com/"
 _ghurl="https://github.com/OpenMarch/OpenMarch"
 license=('GPL-3.0-or-later')
@@ -14,15 +17,12 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
 )
-makedepends=(
-    'fuse2'
-)
-source=(
-    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-linux_${CARCH}.AppImage"
-    "${pkgname%-bin}.sh"
-)
-sha256sums=('4ee7b6cfd72477ae791c769debc7c4d78efc86e8bc48638a68cfc8ddf7d8afdd'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+source=("${pkgname%-bin}.sh")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-linux_arm64.AppImage")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-linux_x86_64.AppImage")
+sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums_aarch64=('1402d6988a769c9cff817df3b33d6c8aae45929a57ea7c7cc8df92f604a487ba')
+sha256sums_x86_64=('4ee7b6cfd72477ae791c769debc7c4d78efc86e8bc48638a68cfc8ddf7d8afdd')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
