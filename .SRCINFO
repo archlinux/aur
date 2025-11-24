@@ -1,6 +1,6 @@
 pkgbase = rift-bin
 	pkgdesc = The RIFT Intel Fusion Tool, for Eve Online
-	pkgver = 5.9.5
+	pkgver = 5.11.0
 	pkgrel = 1
 	url = https://riftforeve.online/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = rift-bin
 	optdepends = xorg-xwayland
 	provides = rift
 	conflicts = rift
-	source = https://riftforeve.online/download/debian/rift_5.9.5_amd64.deb
-	sha256sums = 5fbe8e11827deb15ed6686ec30b7368d064e0777f2da0cb6556f6350e55a3bc0
+	source = https://riftforeve.online/download/debian/rift_5.11.0_amd64.deb
+	sha256sums = d709fb1e302abea082ec579a348eae6be40fdb60a6526ce15f39753a146a8b6f
 
 pkgname = rift-bin
