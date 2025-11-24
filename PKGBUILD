@@ -8,10 +8,11 @@ license=("MIT")
 depends=("vlc" "ffmpeg" "dotnet-runtime")
 makedepends=("dotnet-sdk")
 source=("https://github.com/raula09/LocalMusicPlayerApp/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d6e1547f1e70340b842543a4238436b516ccd4d5f9a8e2b6f69b5b2b20d82bd4')
+sha256sums=('CHANGE_ME')
 
 build() {
-  cd "${srcdir}/NoctuneMusicPlayer-${pkgver}"
+  cd "${srcdir}/LocalMusicPlayerApp-${pkgver}"
+
   dotnet publish -c Release \
     -p:PublishSingleFile=false \
     -p:SelfContained=false \
@@ -20,8 +21,10 @@ build() {
 }
 
 package() {
+  cd "${srcdir}/LocalMusicPlayerApp-${pkgver}"
+
   install -dm755 "${pkgdir}/usr/lib/noctune"
-  cp -r "${srcdir}/NoctuneMusicPlayer-${pkgver}/publish/"* "${pkgdir}/usr/lib/noctune/"
+  cp -r publish/* "${pkgdir}/usr/lib/noctune/"
 
   install -dm755 "${pkgdir}/usr/bin"
   cat <<EOF > "${pkgdir}/usr/bin/noctune"

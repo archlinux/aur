@@ -1,6 +1,6 @@
 pkgbase = noctune
 	pkgdesc = A modern local music player with a Spotify-inspired UI. Built with Avalonia and LibVLC.
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/raula09/LocalMusicPlayerApp
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = noctune
 	depends = vlc
 	depends = ffmpeg
 	depends = dotnet-runtime
-	source = https://github.com/raula09/LocalMusicPlayerApp/archive/refs/tags/v1.2.0.tar.gz
-	sha256sums = d6e1547f1e70340b842543a4238436b516ccd4d5f9a8e2b6f69b5b2b20d82bd4
+	source = https://github.com/raula09/LocalMusicPlayerApp/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = CHANGE_ME
 
 pkgname = noctune
