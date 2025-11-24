@@ -2,7 +2,7 @@
 # Contributor: criptixo <therealcriptixo@gmail.com>
 pkgname=waveterm-bin
 _pkgname=Wave
-pkgver=0.12.3
+pkgver=0.12.4
 _electronversion=38
 pkgrel=1
 pkgdesc='An open-source, cross-platform terminal for seamless workflows.(Prebuilt version.Use system-wide electron)'
@@ -25,8 +25,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-aarch64-${pkgver}.pacman")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64-${pkgver}.pacman")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('fc314184cf6ab8fa8c75aa28ac45851d7d827ce11aa31191d39922c9977d6717')
-sha256sums_x86_64=('770df5941a6f8f3a75e8b68fa75c34ef4ef32fa7a00b69505f2a46bdc09ef950')
+sha256sums_aarch64=('0b376f449d30072184e520be189a568ec5f509a702ccd02a2a258fee9896d02a')
+sha256sums_x86_64=('cc0659d947d1132f18ebc9ca5cbf0a273e884ec05c7da57746ee521bfa851815')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
