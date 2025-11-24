@@ -1,0 +1,13 @@
+pkgbase = fcitx5-meta
+	pkgdesc = Meta package to install Fcitx5
+	pkgver = 5.1
+	pkgrel = 1
+	url = https://github.com/fcitx/fcitx5
+	arch = any
+	license = None
+	depends = fcitx5
+	depends = fcitx5-configtool
+	depends = fcitx5-gtk
+	depends = fcitx5-qt
+
+pkgname = fcitx5-meta
