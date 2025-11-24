@@ -1,0 +1,3 @@
+[uptimekit]
+source = "npm"
+npm = "uptimekit"
