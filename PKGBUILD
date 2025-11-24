@@ -1,4 +1,5 @@
-# Maintainer: Daniel Peukert <daniel@peukert.cc>
+# Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
+# Contributor: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
 # Contributor: Sergei Lebedev <superbobry@gmail.com
@@ -11,7 +12,16 @@ pkgdesc='A library for cooperative threads in OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
 license=('MIT')
-depends=('libev' 'dune>=3.15.0' 'ocaml>=5.1.0' 'ocaml-findlib>=1.7.3' 'ocaml-ocplib-endian' 'ocaml-ppxlib>=0.36.0' 'ocaml-react>=1.0.0' 'zstd')
+depends=(
+    'dune>=3.15.0'
+    'libev'
+    'ocaml-findlib>=1.7.3'
+    'ocaml-ocplib-endian'
+    'ocaml-ppxlib>=0.36.0'
+    'ocaml-react>=1.0.0'
+    'ocaml>=5.1.0'
+    'zstd'
+)
 makedepends=('cppo>=1.1.0')
 checkdepends=('ocaml-ppx_let>=0.17.1')
 options=('!strip')

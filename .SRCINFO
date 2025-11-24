@@ -8,13 +8,13 @@ pkgbase = ocaml-lwt
 	license = MIT
 	checkdepends = ocaml-ppx_let>=0.17.1
 	makedepends = cppo>=1.1.0
-	depends = libev
 	depends = dune>=3.15.0
-	depends = ocaml>=5.1.0
+	depends = libev
 	depends = ocaml-findlib>=1.7.3
 	depends = ocaml-ocplib-endian
 	depends = ocaml-ppxlib>=0.36.0
 	depends = ocaml-react>=1.0.0
+	depends = ocaml>=5.1.0
 	depends = zstd
 	options = !strip
 	source = ocaml-lwt-5.9.2.tar.gz::https://github.com/ocsigen/lwt/archive/5.9.2.tar.gz
