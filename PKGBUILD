@@ -8,8 +8,7 @@ pkgdesc="Audio Player for Nextcloud and ownCloud"
 arch=('any')
 url="https://rello.github.io/audioplayer"
 license=('AGPL-3.0-or-later')
-depends=('nextcloud')
-makedepends=('yq')
+makedepends=('nextcloud' 'yq')
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Rello/audioplayer/archive/${pkgver}.tar.gz")
 sha512sums=('6dbc2c6aac0c8348940fe5b269f14144525aed49cc79b451996b8d9436f443d06d6d3dea5f62b167d55e19a92a606fd8251f6a01477c8540a9d475c6ceac258a')
 

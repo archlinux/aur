@@ -5,8 +5,8 @@ pkgbase = nextcloud-app-audioplayer
 	url = https://rello.github.io/audioplayer
 	arch = any
 	license = AGPL-3.0-or-later
+	makedepends = nextcloud
 	makedepends = yq
-	depends = nextcloud
 	source = audioplayer-3.7.0.tar.gz::https://github.com/Rello/audioplayer/archive/3.7.0.tar.gz
 	sha512sums = 6dbc2c6aac0c8348940fe5b269f14144525aed49cc79b451996b8d9436f443d06d6d3dea5f62b167d55e19a92a606fd8251f6a01477c8540a9d475c6ceac258a
 
