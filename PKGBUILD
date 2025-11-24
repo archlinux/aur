@@ -2,8 +2,8 @@
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
 
 pkgname='perl-module-signature'
-pkgver='0.88'
-pkgrel='2'
+pkgver='0.93'
+pkgrel='1'
 pkgdesc="Module signature file manipulation"
 arch=('any')
 license=('Artistic-1.0-Perl' 'GPL-1.0-or-later' 'CC0-1.0')
@@ -11,10 +11,9 @@ options=('!emptydirs')
 depends=('perl>=5.005')
 makedepends=('perl-ipc-run')
 url='https://metacpan.org/dist/Module-Signature'
-source=('https://cpan.metacpan.org/authors/id/A/AU/AUDREYT/Module-Signature-0.88.tar.gz')
-md5sums=('af534a2d5cb4dd55e4cc1ded88d97e77')
-sha512sums=('624d7508b7854e05c50915b9192552fddd17e22043f2b330c02c34ad44dd01cb0ffd657fcd4e5333324b2ce9a05e044772e80c3ae061608f91d8101d00b3666c')
-_distdir="Module-Signature-0.88"
+source=('https://cpan.metacpan.org/authors/id/T/TI/TIMLEGGE/Module-Signature-0.93.tar.gz')
+md5sums=('4ff16085d07556549d96905c006cc218')
+_distdir="Module-Signature-0.93"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
