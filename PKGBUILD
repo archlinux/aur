@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-perl-version'
-pkgver='1.017'
+pkgver='1.018'
 pkgrel='1'
 pkgdesc="Parse and manipulate Perl version strings"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl>=5.010')
 makedepends=()
 url='https://metacpan.org/release/Perl-Version'
-source=('http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/Perl-Version-1.017.tar.gz')
-md5sums=('21767c76c495ee12f274897990a060f5')
-sha512sums=('0aafef2f0fa208502236f1f32cf7e19a5d29b628587f116a46be3b0111036cd0304581b3ca0ab53f6277aedfe18681cf2dea842172289a7ec67124f1f4ef4697')
-_distdir="Perl-Version-1.017"
+source=('http://search.cpan.org/CPAN/authors/id/B/BR/BRIANDFOY/Perl-Version-1.018.tar.gz')
+md5sums=('3eba36d12f420b5b66135f6f5f1cb4ea')
+sha512sums=('fb8f3cb8db5c8110ae2d68667e5491c9b63ffd24c717d9d4c4ff04a938c503a2d49abcd59fd9b21cfc157a6f5b59369248a166e5cd6e911180eef9e8f14d0527')
+_distdir="Perl-Version-1.018"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
