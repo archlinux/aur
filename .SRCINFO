@@ -1,13 +1,13 @@
 pkgbase = nextcloud-app-audioplayer
 	pkgdesc = Audio Player for Nextcloud and ownCloud
-	pkgver = 3.1.0
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://rello.github.io/audioplayer
 	arch = any
-	license = AGPL3
+	license = AGPL-3.0-or-later
+	makedepends = yq
 	depends = nextcloud
-	source = nextcloud-app-audioplayer-3.1.0.tar.gz::https://github.com/Rello/audioplayer/archive/3.1.0.tar.gz
-	sha512sums = 02ac587f16dfee91837789e83ab64e51a14be3d3aee7881a6fb1bd1ce587c6aef99f319f82997af465989dfd74d3fd69226a6c86145a0b8b778532102b3fdc58
+	source = audioplayer-3.7.0.tar.gz::https://github.com/Rello/audioplayer/archive/3.7.0.tar.gz
+	sha512sums = 6dbc2c6aac0c8348940fe5b269f14144525aed49cc79b451996b8d9436f443d06d6d3dea5f62b167d55e19a92a606fd8251f6a01477c8540a9d475c6ceac258a
 
 pkgname = nextcloud-app-audioplayer
-
