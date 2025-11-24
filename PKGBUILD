@@ -4,8 +4,8 @@
 
 _pkgname=winboat
 pkgname=winboat-electron
-pkgver=0.8.7
-pkgrel=4
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="Run Windows apps on Linux with seamless integration"
 arch=('x86_64')
 url="https://www.winboat.app"
@@ -30,7 +30,7 @@ makedepends=(
 )
 options=('!strip')
 source=("git+https://github.com/TibixDev/winboat.git#tag=v$pkgver")
-sha256sums=('bf74ba69a303235d671a61b881dc42c9ce0dc99bcbcaab6713f43eb160984014')
+sha256sums=('11051ae91c399ccc75ef69910d4e8a526f6cc50210f9c70525829d5017715cce')
 provides=('winboat')
 conflicts=('winboat')
 
@@ -66,7 +66,7 @@ build() {
 
   mkdir -p dist/.icon-set
   for i in 16 32 48 64 128 256 512; do
-    magick icons/icon.png -resize "${i}x${i}" "dist/.icon-set/icon_${i}x${i}.png"
+    magick icons/winboat_logo.svg -resize "${i}x${i}" "dist/.icon-set/icon_${i}x${i}.png"
   done
 }
 
