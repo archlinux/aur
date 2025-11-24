@@ -2,7 +2,7 @@
 
 pkgname=adb-gui-kit-bin
 pkgver=1.1
-pkgrel=1
+pkgrel=3
 pkgdesc="A simple, modern GUI for ADB and Fastboot"
 arch=('x86_64')
 url="https://github.com/Drenzzz/adb-gui-kit"
@@ -21,19 +21,48 @@ sha256sums_x86_64=('4217c4aa50502d1f0e0f299191a7a977acb00db63907ef69f903a809f74c
                    '30bb96b234bcaaed28edb520d8c2b2759de28bcd83936a1544917465d45583d3')
 
 package() {
+    local _app_dir="${srcdir}" 
+    local _install_path="${pkgdir}/opt/${pkgname}"
+
     install -d "${pkgdir}/usr/bin"
     install -d "${pkgdir}/usr/share/applications"
     install -d "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
-    install -d "${pkgdir}/opt/${pkgname}"
-
-    cd "${srcdir}/ADBKit" || cd "${srcdir}" 
     
-    install -m755 ADBKit "${pkgdir}/opt/${pkgname}/adb-gui-kit"
+    install -d "${_install_path}/bin/linux"
 
-    ln -s "/opt/${pkgname}/adb-gui-kit" "${pkgdir}/usr/bin/adb-gui-kit"
-
-    cd "${srcdir}"
-    install -m644 adb-gui-kit.desktop "${pkgdir}/usr/share/applications/"
+    install -m755 "${_app_dir}/ADBKit" "${_install_path}/adb-gui-kit"
     
-    install -m644 logo.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/adb-gui-kit.png"
+    rsync -a \
+        --exclude='bin/' \
+        --exclude="${pkgname}-${pkgver}.tar.gz" \
+        --exclude="adb-gui-kit.desktop" \
+        --exclude="logo.png" \
+        "${_app_dir}/" \
+        "${_install_path}/"
+
+    cp "${_app_dir}/bin/linux/mke2fs.conf" "${_install_path}/bin/linux/"
+    
+    local _bin_path="${_install_path}/bin/linux"
+    
+    ln -s /usr/bin/adb "${_bin_path}/adb"
+    ln -s /usr/bin/fastboot "${_bin_path}/fastboot"
+    ln -s /usr/bin/etc1tool "${_bin_path}/etc1tool"
+    ln -s /usr/bin/hprof-conv "${_bin_path}/hprof-conv"
+    
+    ln -s /usr/bin/sqlite3 "${_bin_path}/sqlite3"
+    
+    ln -s /usr/bin/mke2fs "${_bin_path}/mke2fs"
+    ln -s /usr/bin/make_f2fs "${_bin_path}/make_f2fs"
+    ln -s /usr/bin/make_f2fs "${_bin_path}/make_f2fs_casefold"
+
+    cat <<EOF > "${pkgdir}/usr/bin/adb-gui-kit"
+#!/bin/sh
+cd "${_install_path}"
+exec ./adb-gui-kit "\$@"
+EOF
+    chmod 755 "${pkgdir}/usr/bin/adb-gui-kit"
+
+    install -m644 "${srcdir}/adb-gui-kit.desktop" "${pkgdir}/usr/share/applications/"
+
+    install -m644 "${srcdir}/logo.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/adb-gui-kit.png"
 }
