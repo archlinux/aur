@@ -6,6 +6,7 @@ arch=('x86_64')
 url="https://www.gnu.org/software/binutils/"
 license=('GPL-3.0-or-later')
 install="$pkgname.install"
+options=(!debug)
 
 _target=i686-elf
 _prefix=/opt/i686-elf
