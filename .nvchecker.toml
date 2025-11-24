@@ -1,0 +1,4 @@
+[lib32-gettext]
+source = "git"
+git = "https://git.savannah.gnu.org/git/gettext.git"
+prefix = "v"
