@@ -1,0 +1,18 @@
+pkgbase = hyprwallhaven-git
+	pkgdesc = A CLI tool for managing Wallhaven wallpapers on Hyprland with fuzzel integration
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/AnatolyRugalev/hyprwallhaven
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = fuzzel
+	depends = hyprpaper
+	provides = hyprwallhaven
+	conflicts = hyprwallhaven
+	options = !debug
+	source = git+https://github.com/AnatolyRugalev/hyprwallhaven.git
+	md5sums = SKIP
+
+pkgname = hyprwallhaven-git
