@@ -1,8 +1,7 @@
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-sub-delete'
-pkgver='1.00002'
+pkgver='1.00003'
 pkgrel='1'
 pkgdesc="Perl module enabling one to delete subroutines"
 arch=('any')
@@ -11,10 +10,9 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='http://search.cpan.org/dist/Sub-Delete'
-source=('http://search.cpan.org/CPAN/authors/id/S/SP/SPROUT/Sub-Delete-1.00002.tar.gz')
-md5sums=('3c0b6adb2a241f626245b72688efd5aa')
-sha512sums=('41a926099634e24d805756123be6ed7153568b45acc061fa5b3d91141eea6a1c6109681a725f4351bcbe6ef320210d2f18800b7da7e9631574f535979ff22e06')
-_distdir="Sub-Delete-1.00002"
+source=('https://cpan.metacpan.org/authors/id/D/DJ/DJERIUS/Sub-Delete-1.00003.tar.gz')
+md5sums=('3fcb8711ab4f7bf4fc6b7da6eb507e34')
+_distdir="Sub-Delete-1.00003"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
