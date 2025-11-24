@@ -1,8 +1,9 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Maintainer: Rooki <aur at rooki dot xyz>
+# Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgname=sshpilot
 pkgname=${_pkgname}-bin
-pkgver=4.4.4
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support."
 arch=('x86_64')
@@ -16,16 +17,16 @@ depends=('glib2' 'gtk4' 'gdk-pixbuf2' 'libsecret' 'pango' 'graphene' 'vte4' 'lib
 
 options=(!strip)
 
-source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-${pkgrel}_all.deb"
-               "fix_desktop.patch")
-sha512sums_x86_64=('e972bc79af4ddfd67c9cefb0a96cffda35bef40386ec55edf3d84865e41a67242a994dbbfd5305c4dc2d0f3f6dbf24c3950f955414796b4ac3f9410c636638f8'
-                   '0b225440b59ee50017892c1ee0223135b7190e8db6651a997f01515e559d4adb4c77173296b885d329a1fa3ad155db3efb6e26b076ba206e642b5a21d310689a')
+source=("https://raw.githubusercontent.com/mfat/${_pkgname}/refs/tags/v${pkgver}/LICENSE")
+source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-${pkgrel}_all.deb")
+sha512sums=('714d66c4a17e6dfc1553521af2be03f4579fac64048c0b96c592177562b01fc70a8e184bb21725e11ef96a54bf466ae1abd4992b8940f0fe2c0859d6a166a2ef')
+sha512sums_x86_64=('7c01b039601aaabb85b9c692b1b95c79372ac86dbceae51023d5765b1f632b668d5e8c8b163446e0be17ce32affe7e4c858d2e8c567e9d45b74cab2489fe3f4b')
 
 package() {
     cd "${pkgdir}"
 
     # this extracts all into the pkgdir
     tar -xf "${srcdir}/data.tar.zst"
-
-    patch -p1 < "${srcdir}/fix_desktop.patch"
+    
+    install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
