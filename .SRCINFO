@@ -1,0 +1,12 @@
+pkgbase = rose-pine-bloom
+	pkgdesc = Generate Rosé Pine themes
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/rose-pine/rose-pine-bloom
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = rose-pine-bloom-3.0.1.tar.gz::https://github.com/rose-pine/rose-pine-bloom/archive/v3.0.1.tar.gz
+	sha256sums = 257b0a66db0cef2acf51df009726aa51fc1a6044bf8692527f41e724994c8f4c
+
+pkgname = rose-pine-bloom
