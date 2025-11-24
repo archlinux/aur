@@ -29,5 +29,6 @@ package() {
   install -Dm755 "target/release/stasis" "$pkgdir/usr/bin/stasis"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "examples/stasis.rune" "$pkgdir/etc/stasis/stasis.rune"
+  install -Dm644 "systemd/stasis.service" "$pkgdir/usr/lib/systemd/user/stasis.service"
 }
 
