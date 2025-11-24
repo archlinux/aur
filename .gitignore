@@ -1,4 +1,5 @@
 *.pkg.tar*
+*.log
 pkg
 src
 fernflower
