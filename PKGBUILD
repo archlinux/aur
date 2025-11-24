@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mullvad-ping
-pkgver=0.9.1
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="Gets the list of Mullvad servers with the best latency according to ping"
 arch=('x86_64' 'aarch64')
@@ -16,12 +16,12 @@ makedepends=(
 )
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('181bc4819ceac5ae711dc8891928c12aeaa32d68202304fc1a922f63beba658b')
+sha256sums=('f6d7f8d3eadd88e5360e58847f1f2950c4a6488b126c49baa2407e2e3ad9e448')
 
 build() {
   cd "$pkgname-$pkgver"
   deno compile \
-    --allow-net=api.mullvad.net,deno.land \
+    --allow-net=api.mullvad.net,jsr.io \
     --allow-run=ping \
     --target ${CARCH}-unknown-linux-gnu \
     -o "$pkgname" script.ts

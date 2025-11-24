@@ -1,6 +1,6 @@
 pkgbase = mullvad-ping
 	pkgdesc = Gets the list of Mullvad servers with the best latency according to ping
-	pkgver = 0.9.1
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://github.com/grant0417/mullvad-ping
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = mullvad-ping
 	depends = gcc-libs
 	depends = iputils
 	options = !strip
-	source = mullvad-ping-0.9.1.tar.gz::https://github.com/grant0417/mullvad-ping/archive/refs/tags/v0.9.1.tar.gz
-	sha256sums = 181bc4819ceac5ae711dc8891928c12aeaa32d68202304fc1a922f63beba658b
+	source = mullvad-ping-0.9.5.tar.gz::https://github.com/grant0417/mullvad-ping/archive/refs/tags/v0.9.5.tar.gz
+	sha256sums = f6d7f8d3eadd88e5360e58847f1f2950c4a6488b126c49baa2407e2e3ad9e448
 
 pkgname = mullvad-ping
