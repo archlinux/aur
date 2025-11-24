@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=issie-bin
-pkgver=5.12.0
+pkgver=5.12.1
 _electronversion=35
 pkgrel=1
 pkgdesc="An intuitive cross-platform hardware design application."
@@ -22,10 +22,10 @@ makedepends=(
     'gendesk'
 )
 noextract=("${pkgname%-bin}-${pkgver}-${CARCH}.zip")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-5.10.3-linux-arm64.zip")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-5.10.3-linux-x64.zip")
-sha256sums_aarch64=('f967ebf17d7aa54427f4e5843a1e0a808b322b7ca94f8b78c475ddacaa7d1f7a')
-sha256sums_x86_64=('10e502ced805c1f014234b5526595bc1889c71adb6b3c0a9af2edb1721992265')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-arm64.zip")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.zip")
+sha256sums_aarch64=('52a3981192dab12748eda8ac8d075e099eff1d1db3b9b1f2833e85fc32d86125')
+sha256sums_x86_64=('b7e7b87313e2d0554eda1c1d93e893c63f2457621fd6667b9a1f9bd2f580861a')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
