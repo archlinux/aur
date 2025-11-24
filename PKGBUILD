@@ -8,7 +8,7 @@ pkgname=kdeconnect-no-mdns
 provides=($_pkgname)
 conflicts=($_pkgname)
 pkgver=25.08.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Adds communication between KDE and your smartphone. Version without MDNS support, for KDE bug 487719.'
 url='https://kdeconnect.kde.org/'
 arch=(x86_64)
@@ -56,13 +56,18 @@ optdepends=('python-nautilus: Nautilus integration'
             'sshfs: remote filesystem browser')
 groups=(kde-applications
         kde-network)
-source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-kde-$pkgver.tar.xz{,.sig})
+source=(https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-kde-$pkgver.tar.xz{,.sig}
+        https://invent.kde.org/network/kdeconnect-kde/-/commit/1d757349.patch)
 sha256sums=('6e41f1f22e85f5e70a92dd6ca3e6968364896de37afe5daeb7cda599f03e5e2b'
-            'SKIP')
+            'SKIP'
+            '503ce83b17c7073bd72294e532f95e5d4b74d8894e90e397896ea660b2d4f847')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
               D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
 
+prepare() {
+  patch -d $_pkgname-kde-$pkgver -p1 < 1d757349.patch # CVE fix
+}
 
 build() {
   cmake -B build -S $_pkgname-kde-$pkgver \
