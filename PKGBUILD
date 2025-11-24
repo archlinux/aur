@@ -1,7 +1,7 @@
 # Maintainer: fuero <fuerob@gmail.com>
 pkgname=kubectl-find
 # renovate: datasource=github-releases depName=alikhil/kubectl-find
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='plugin for kubectl that gives you a UNIX find-like experience'
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ depends=('kubectl' 'glibc' 'bash')
 makedepends=('go')
 groups=('kubectl-plugins')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('24fe0a932e10b883b02c84a2c60c5950fdb0eb38724d6a9de029e6c85ff7563a882477b61060a9ebfab7cde0660f915b3ed904cd769c8ecdd2a7469936c635d7')
-b2sums=('121e9468888d3b786d0b2434e19e102e1529ded787b0640074baad148da1470e8d763204657efdc74465777b053fd03e51b4b14b3c2855741614e3a803b0f1c3')
+sha512sums=('15457b60a4ed23c17541a560905fc4f92a005bb8221ac047a549907169012a02d9a03cb681afc8b18c0ec673996aed6b35323d9e107f65f29c0a84a23663baaf')
+b2sums=('ad090e7d07cbe73c06603605e3aa643181d8dbe288f39e0fc9f862fff79931c1a4d182892ede4bd927f329a35ca0363b7b51c1aa869dac4b23f38b108bab332b')
 
 build() {
   local _x _commit
