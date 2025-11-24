@@ -22,6 +22,7 @@ depends=(
 	zlib
 	systemd-libs
 	libudev.so
+	capstone
 )
 makedepends=(
 	cmake

@@ -65,6 +65,7 @@ pkgbase = pmb887x-emu-git
 	depends = zlib
 	depends = systemd-libs
 	depends = libudev.so
+	depends = capstone
 	source = git+https://github.com/siemens-mobile-hacks/pmb887x-emu#branch=next
 	sha256sums = SKIP
 
