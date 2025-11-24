@@ -1,8 +1,8 @@
 pkgbase = yaacs
 	pkgdesc = Convert your Audiobooks to Opus in parallel
 	pkgver = 2.1.0
-	pkgrel = 1
-	url = https://github.com/rgarber11/yaacs
+	pkgrel = 2
+	url = https://github.com/rgarber11/YetAnotherAudiobookConverterScript
 	arch = any
 	license = GPL-2.0-only
 	makedepends = python-setuptools

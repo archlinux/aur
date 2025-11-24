@@ -2,9 +2,9 @@
 
 pkgname=yaacs
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert your Audiobooks to Opus in parallel"
-url="https://github.com/rgarber11/yaacs"
+url="https://github.com/rgarber11/YetAnotherAudiobookConverterScript"
 arch=('any')
 license=(GPL-2.0-only)
 depends=('python>=3.9' 'ffmpeg' 'python-packaging' 'python-mutagen')
