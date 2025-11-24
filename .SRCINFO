@@ -1,6 +1,6 @@
 pkgbase = discord-electron-openasar
 	pkgdesc = Discord packaged with OpenAsar using system provided electron (v38) for increased security and performance
-	pkgver = 0.0.115+846
+	pkgver = 0.0.116+847
 	pkgrel = 1
 	url = https://discord.com
 	install = discord-electron-openasar.install
@@ -20,13 +20,13 @@ pkgbase = discord-electron-openasar
 	provides = discord
 	conflicts = discord
 	options = !strip
-	source = https://dl.discordapp.net/apps/linux/0.0.115/discord-0.0.115.tar.gz
+	source = https://dl.discordapp.net/apps/linux/0.0.116/discord-0.0.116.tar.gz
 	source = discord-launcher.sh
 	source = krisp-patcher.py
-	source = git+https://github.com/goosemod/openasar.git#commit=bf8a71e2fcf1c77761092b7b899839164e3a596c
-	sha512sums = 92fea8b546027d972901cf7773f0736f61b66b8b0d7f96b0b18f0a65a6299983d29a9b630970f9ce0216b39d6148bed37e67274ae8a4fbdc54937d11b3cf222f
+	source = git+https://github.com/goosemod/openasar.git#commit=5b259e4efaf9eee69aeca7b2ef153e5bfedc35d0
+	sha512sums = 801a228ff7c84aba76ce4565535d1da1d0ee3e7c30e2c381a118db32b2c7dcbdfe0f52ea8caa369732ca29c5a23a3ef7bb5439adc57e70243beb6ab7fc539a7f
 	sha512sums = 618c89fdd90d6826dd44c3d5973428fb68b1836f1198a356e936da0b78c18b748d522ff7ecee15752d590dcd137ef16c4370ac6325c5b5f0aced4b5cce36b825
 	sha512sums = 42cef68c1f7d574b4fbe859a4dc616e8994c7d16f62bcae3ff1f88e1edc58ac37b39c238d7defa9c97ceda417fcd6224cf0a0fd2608b8d18d0877e3c1befa59c
-	sha512sums = b25328161b958683c60a33c3295577286057e724449e932eea828169c65b6e1103a2dcfc83deb088119e8b8b49871b7cd355d489c4d713aeac837b91f7a40a1e
+	sha512sums = 86e296524f831b450620e4c0abb576f5b370982f70951beafdc821bcbce7db4b7b000bb2a7ce29516c209c2590fb428e8fed9450387ec37918dd79fc0a0a85e4
 
 pkgname = discord-electron-openasar
