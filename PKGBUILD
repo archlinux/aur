@@ -9,7 +9,7 @@ url="https://github.com/KinanMaarrawi/terra-tui"
 license=('MIT')
 depends=('ghc' 'haskell-optparse-applicative' 'haskell-brick' 'haskell-vty')
 makedepends=('stack' 'git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/KinanMaarrawi/terra-tui/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/KinanMaarrawi/terra-tui/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {

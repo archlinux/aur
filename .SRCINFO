@@ -11,7 +11,7 @@ pkgbase = terra-tui
 	depends = haskell-optparse-applicative
 	depends = haskell-brick
 	depends = haskell-vty
-	source = terra-tui-1.0.0.tar.gz::https://github.com/KinanMaarrawi/terra-tui/archive/refs/tags/v1.0.0.tar.gz
+	source = terra-tui-1.0.0.tar.gz::https://github.com/KinanMaarrawi/terra-tui/archive/refs/tags/1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = terra-tui
