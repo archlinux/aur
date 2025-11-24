@@ -8,8 +8,8 @@ pkgdesc="Future-returning IO methods"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-future>=0' 'perl-struct-dumb>=0' 'perl>=5.014')
-makedepends=()
+depends=('perl-future' 'perl-struct-dumb' 'perl>=5.014')
+makedepends=('perl-module-build>=0.4004')
 checkdepends=('perl-test-expectandcheck>=0.06' 'perl-test-future-io-impl>=0.15')
 url='https://metacpan.org/release/Future-IO'
 source=('http://search.cpan.org/CPAN/authors/id/P/PE/PEVANS/Future-IO-0.17.tar.gz')

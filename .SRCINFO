@@ -8,8 +8,9 @@ pkgbase = perl-future-io
 	license = GPL
 	checkdepends = perl-test-expectandcheck>=0.06
 	checkdepends = perl-test-future-io-impl>=0.15
-	depends = perl-future>=0
-	depends = perl-struct-dumb>=0
+	makedepends = perl-module-build>=0.4004
+	depends = perl-future
+	depends = perl-struct-dumb
 	depends = perl>=5.014
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/P/PE/PEVANS/Future-IO-0.17.tar.gz
