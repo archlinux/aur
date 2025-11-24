@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Audacity 4 Alpha
+GenericName=Sound Editor
+Comment=Record and edit audio files
+Exec=audacity4-alpha %F
+Icon=audacity
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;AudioVideoEditing;
+MimeType=application/x-audacity-project;audio/aup;audio/aup3;audio/x-wav;audio/x-flac;audio/mpeg;
+StartupNotify=true
+StartupWMClass=audacity
