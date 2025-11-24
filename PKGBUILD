@@ -3,11 +3,11 @@
 
 pkgname=cli53
 pkgver=0.8.25
-pkgrel=2
+pkgrel=3
 pkgdesc="Command line tool for Amazon Route 53"
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/barnybug/cli53"
-license=('BSD')
+license=('MIT')
 depends=()
 makedepends=('go' 'make')
 source=(${pkgname}_${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
