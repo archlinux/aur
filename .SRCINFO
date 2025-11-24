@@ -1,0 +1,14 @@
+pkgbase = rice-switcher
+	pkgdesc = Tool for switching and managing RICE for your linux desktop
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/S1rEx1/Rice-Switcher
+	arch = any
+	license = MIT
+	depends = bash
+	depends = jq
+	depends = fzf
+	source = rice-switcher-1.0.0.tar.gz::https://github.com/S1rEx1/Rice-Switcher/archive/refs/heads/main.tar.gz
+	sha256sums = SKIP
+
+pkgname = rice-switcher
