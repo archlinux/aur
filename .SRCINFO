@@ -1,0 +1,11 @@
+pkgbase = lbforth
+	pkgdesc = A minimal Forth compiler in C.
+	pkgver = 20241115
+	pkgrel = 1
+	url = https://github.com/DosWorld/lbforth
+	arch = x86_64
+	license = custom:Public Domain
+	source = lbforth-20241115.tar.gz::https://github.com/DosWorld/lbforth/archive/refs/tags/RELEASE-20241115.tar.gz
+	sha512sums = d46c4580d1a1688c6287a428a20ed6d7d5def1cac797f6faeb58cd3c01244880e2cff5f0acff38b13ea1f31474dfd415ed0835b273d0b6d881d0dc4b04b9f8c8
+
+pkgname = lbforth
