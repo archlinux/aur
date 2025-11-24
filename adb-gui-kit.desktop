@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=ADB GUI Kit
+Comment=A graphical user interface for ADB commands
+Exec=adb-gui-kit
+Icon=adb-gui-kit
+Terminal=false
+Categories=Development;Utility;Android;
+Keywords=android;adb;debug;tool;
+StartupNotify=true
