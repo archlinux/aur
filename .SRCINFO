@@ -1,6 +1,6 @@
 pkgbase = xmount
 	pkgdesc = Tool to crossmount between multiple input and output harddisk image files
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://sits.lu/
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = xmount
 	makedepends = make
 	depends = fuse
 	options = !makeflags
-	source = https://code.sits.lu/foss/xmount/-/archive/1.2.0/xmount-1.2.0.tar.gz
-	sha256sums = abded7b53646c5d56ab9caf30473d75d0deb543e8262cadf2af572da3e1d127d
+	source = https://code.sits.lu/foss/xmount/-/archive/1.2.1/xmount-1.2.1.tar.gz
+	sha256sums = 61b0b777ca0cd4eda30aeeeca7ec17a49d2657599a37745fb94f8dcc432b93c7
 
 pkgname = xmount
 
