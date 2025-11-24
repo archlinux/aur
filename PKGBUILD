@@ -3,7 +3,7 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 _distname=Dist-Zilla
 pkgname=perl-dist-zilla
-pkgver=6.033
+pkgver=6.036
 pkgrel=1
 pkgdesc="distribution builder; installer not included!"
 arch=('any')
@@ -55,13 +55,12 @@ checkdepends=('perl-test-deep'
               'perl-test-failwarnings'
               'perl-test-fatal'
               'perl-test-file-sharedir')
-optdepends=('perl-archive-tar-wrapper: API wrapper around the tar utility'
-            'perl-data-optlist: Parse and validate simple name/value option pairs'
+optdepends=('perl-data-optlist: Parse and validate simple name/value option pairs'
             'perl-ppi-xs: Minor XS acceleration for PPI'
             'perl-term-readline-gnu: GNU Readline XS library wrapper')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/$_distname-$pkgver.tar.gz")
-md5sums=('1fb19d2057a65317cfc3fe495b57492e')
+md5sums=('e6e1640020761f527641f6fb5f1697b5')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \

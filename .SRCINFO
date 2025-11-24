@@ -1,6 +1,6 @@
 pkgbase = perl-dist-zilla
 	pkgdesc = distribution builder; installer not included!
-	pkgver = 6.033
+	pkgver = 6.036
 	pkgrel = 1
 	url = https://metacpan.org/dist/Dist-Zilla
 	arch = any
@@ -51,12 +51,11 @@ pkgbase = perl-dist-zilla
 	depends = perl-try-tiny
 	depends = perl-yaml-tiny
 	depends = perl-namespace-autoclean
-	optdepends = perl-archive-tar-wrapper: API wrapper around the tar utility
 	optdepends = perl-data-optlist: Parse and validate simple name/value option pairs
 	optdepends = perl-ppi-xs: Minor XS acceleration for PPI
 	optdepends = perl-term-readline-gnu: GNU Readline XS library wrapper
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Dist-Zilla-6.033.tar.gz
-	md5sums = 1fb19d2057a65317cfc3fe495b57492e
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Dist-Zilla-6.036.tar.gz
+	md5sums = e6e1640020761f527641f6fb5f1697b5
 
 pkgname = perl-dist-zilla
