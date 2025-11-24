@@ -9,7 +9,7 @@ license=('MIT')
 depends=('words' 'gmp')
 makedepends=('stack')
 _tagver=0.2.0
-source=("git+https://github.com/utgarda/${pkgname}.git#tag=v${_tagver}")
+source=("git+https://github.com/utgarda/${pkgname}.git?signed#tag=v${_tagver}")
 sha256sums=('SKIP')
 validpgpkeys=('37532468A03463C48B7631403B00CAB0BD4D8648')  # Evgenii Tsvigun <gene@chainhackers.xyz>
 

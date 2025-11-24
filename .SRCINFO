@@ -9,7 +9,7 @@ pkgbase = correct-unicorn
 	makedepends = stack
 	depends = words
 	depends = gmp
-	source = git+https://github.com/utgarda/correct-unicorn.git#tag=v0.2.0
+	source = git+https://github.com/utgarda/correct-unicorn.git?signed#tag=v0.2.0
 	validpgpkeys = 37532468A03463C48B7631403B00CAB0BD4D8648
 	sha256sums = SKIP
 
