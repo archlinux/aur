@@ -1,7 +1,7 @@
 pkgbase = perl-extutils-builder-compiler
 	pkgdesc = An interface around different compilers.
-	pkgver = 0.031
-	pkgrel = 5
+	pkgver = 0.032
+	pkgrel = 6
 	url = https://metacpan.org/release/ExtUtils-Builder-Compiler
 	arch = any
 	license = PerlArtistic
@@ -11,8 +11,8 @@ pkgbase = perl-extutils-builder-compiler
 	depends = perl-extutils-helpers>=0.027
 	depends = perl>=5.010
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/ExtUtils-Builder-Compiler-0.031.tar.gz
-	md5sums = a8e597a17b0e638f12b8528ae497e1a3
-	sha512sums = 437794d22bf04f31842781a385c330aa6e7c7ffdf1ed19c6cabd64149bb265e9f6f42880c973954a8a4599e8d8a2b0417274f07f683240e0811b37300db2f0b5
+	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/ExtUtils-Builder-Compiler-0.032.tar.gz
+	md5sums = 86c12e6481b5c9726fb1b91cd42e1fea
+	sha512sums = 6f2d645652fc40c7b88250d664f25d87c0212f9d7f09694d64f6c2ddec4e3f7d24de5abdf17d69435b9b9e63098f897baebe0b0d540cee01e89767dc10a00230
 
 pkgname = perl-extutils-builder-compiler
