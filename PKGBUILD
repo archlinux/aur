@@ -2,7 +2,7 @@
 
 pkgname=rose-pine-bloom
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Generate Rosé Pine themes"
 arch=('x86_64')
 url="https://github.com/rose-pine/rose-pine-bloom"
@@ -20,9 +20,9 @@ build() {
   cd "$pkgname-$pkgver"
   go build -o bloom -ldflags "-X github.com/rose-pine/rose-pine-bloom/cmd.version=$pkgver" main.go
   mkdir -p completions
-  ./$pkgname completion bash > completions/bloom
-  ./$pkgname completion zsh > completions/_bloom
-  ./$pkgname completion fish > completions/bloom.fish
+  ./bloom completion bash > completions/bloom
+  ./bloom completion zsh > completions/_bloom
+  ./bloom completion fish > completions/bloom.fish
 }
 
 check() {
