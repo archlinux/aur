@@ -1,7 +1,7 @@
 #!/bin/bash
-# Maintainer: jstmax! <jstmaxlol@disroot.org> & <maxwasmailed@proton.me>
+# Maintainer: czjstmax : <jstmaxlol@disroot.org>, <maxwasmailed@proton.me>
 pkgname=gim
-pkgver=1
+pkgver=00001
 pkgrel=1
 pkgdesc="gim - g interactive mode, aka the interactive REPL for g, the *permissive* git wrapper."
 arch=('any')
