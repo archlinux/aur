@@ -1,0 +1,24 @@
+pkgbase = iwd-nosystemd-git
+	pkgdesc = Internet Wireless Daemon - compiled without support for systemd.
+	pkgver = 3.10.r0.g3e7a8fee
+	pkgrel = 1
+	url = https://git.kernel.org/cgit/network/wireless/iwd.git/
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = python-docutils
+	makedepends = dbus
+	depends = glibc
+	depends = readline
+	depends = libreadline.so
+	depends = gcc-libs
+	optdepends = qrencode: for displaying QR code after DPP is started
+	provides = iwd
+	conflicts = iwd
+	options = !lto
+	source = git+https://git.kernel.org/pub/scm/network/wireless/iwd.git
+	source = git+https://git.kernel.org/pub/scm/libs/ell/ell.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = iwd-nosystemd-git
