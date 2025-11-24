@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hype
 _pkgname=Hype
-pkgver=1.0.19
+pkgver=1.0.20
 _electronversion=39
 _nodeversion=22
 pkgrel=1
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('293660c3e9082c088bee8ec4cfe6f7fe682d865d1fc4df9c45bc6c7dd5fb32c8'
+sha256sums=('602dc3a43ca3c8396a51f8664b86d3194fbb075ed8afd774ef687c066ec058c1'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
