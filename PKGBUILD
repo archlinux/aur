@@ -2,7 +2,7 @@
 
 pkgname=yewtube-git
 _pkgname=yewtube
-pkgver=2.10.4.r0.g49e75e9
+pkgver=2.12.1.r1.g81f7a65
 pkgrel=1
 pkgdesc="Terminal based YouTube player and downloader. No Youtube API key required."
 url='https://github.com/mps-youtube/yewtube'
@@ -22,12 +22,14 @@ depends=(
     python-setuptools
     python-websockets
     youtube-search-python-git
+    panda3d-git
 )
 makedepends=(
     git
     python-build
     python-installer
     python-wheel
+    panda3d-git
 )
 optdepends=(
     'mpv: Alternative to mplayer for playback'
