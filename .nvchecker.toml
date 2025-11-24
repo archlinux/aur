@@ -1,0 +1,4 @@
+[lib32-libappindicator]
+source = 'regex'
+url = 'https://old-releases.ubuntu.com/ubuntu/pool/universe/liba/libappindicator/'
+regex = 'libappindicator_([\d.]+)'
