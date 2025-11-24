@@ -1,0 +1,25 @@
+pkgbase = voicetype-bin
+	pkgdesc = Local English voice transcription using whisper.cpp with hold-to-speak daemon
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/aldervall/Voicetype
+	install = voicetype.install
+	arch = x86_64
+	license = MIT
+	depends = python
+	depends = python-requests
+	depends = python-sounddevice
+	depends = python-scipy
+	depends = python-numpy
+	depends = python-evdev
+	optdepends = ydotool: for auto-paste in daemon mode (recommended)
+	optdepends = wl-clipboard: clipboard support on Wayland
+	optdepends = xclip: clipboard support on X11
+	optdepends = libnotify: desktop notifications
+	optdepends = pulseaudio: audio feedback beeps
+	provides = voicetype
+	conflicts = voicetype
+	source = voicetype-bin-1.4.0.tar.gz::https://github.com/aldervall/Voicetype/archive/v1.4.0.tar.gz
+	sha256sums = 58dc15b449a7d6e8cb0870e6b39b655ec4c721328a512438e905a67c8ba9e04b
+
+pkgname = voicetype-bin
