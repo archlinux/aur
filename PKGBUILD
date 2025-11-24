@@ -1,7 +1,7 @@
 # Maintainer: gmzr
 pkgname=gde-creator-bin
 _binname=gde-creator
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="GDE-Creator is a modern CLI tool that automatically search steam database, fetch name and icons and generate compliant .desktop file in your Linux system."
 arch=('x86_64')
