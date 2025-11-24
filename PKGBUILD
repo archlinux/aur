@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electronwmd-bin
 _pkgname='Electron Web MiniDisc'
-pkgver=0.5.1_1.5.2
+pkgver=0.5.2_1.5.3
 _electronversion=31
 pkgrel=1
 pkgdesc="Electron version of Web MiniDisc Pro.(Prebuilt version.Use system-wide electron)"
@@ -25,7 +25,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-${pkgver//_/-}-linux_${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('55c2178824df953d7362faad7f46919722ae89a3348f566f4ea1882c47d8f9ad'
+sha256sums=('c63589e1f701afc659feb8753efa8b1e5b313fbd32f38d6a877616b24916727a'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
