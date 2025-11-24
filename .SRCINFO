@@ -1,6 +1,6 @@
 pkgbase = ani-rss
 	pkgdesc = 自动追番、订阅、下载 蜜柑RSS动漫
-	pkgver = 2.4.5
+	pkgver = 2.4.8
 	pkgrel = 1
 	url = https://github.com/wushuo894/ani-rss
 	install = ani-rss.install
@@ -8,10 +8,10 @@ pkgbase = ani-rss
 	license = GPL-2.0
 	depends = java-runtime>=17
 	backup = etc/ani-rss/config.v2.json
-	source = ani-rss-2.4.5.jar::https://github.com/wushuo894/ani-rss/releases/download/v2.4.5/ani-rss-jar-with-dependencies.jar
+	source = ani-rss-2.4.8.jar::https://github.com/wushuo894/ani-rss/releases/download/v2.4.8/ani-rss-jar-with-dependencies.jar
 	source = ani-rss.service
 	source = LICENSE
-	sha512sums = 90171f4c5cb3c7d44241d633d1df9d1b92f2545aa6c8333521dcb693c9598d361c1213cbf6cb879749ae2beecd2e1527e27a489747b2391d3431fd0d307f68a1
+	sha512sums = 88bfdc28040c8cd7a479b7defc6951e31874298a5747573cef19f2af2b4c47dacf509bd61fb90a2f1733e986792b95355853385a555d64e14000c40e4d060e97
 	sha512sums = 68b316811e619a1970993c98326f4a0c7296c323ec4d881077d060da1ce81bd255d06db1eccbfae6f936dc9e9bc7b0c6b7dd9256c6d9fa96911e7bdcf694cdeb
 	sha512sums = aee80b1f9f7f4a8a00dcf6e6ce6c41988dcaedc4de19d9d04460cbfb05d99829ffe8f9d038468eabbfba4d65b38e8dbef5ecf5eb8a1b891d9839cda6c48ee957
 
