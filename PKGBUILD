@@ -3,7 +3,7 @@
 
 pkgname=(zoho-cliq zoho-cliq-upstream-electron)
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Zoho Cliq communication software'
 arch=('x86_64')
 url="https://www.zoho.com/cliq/desktop/linux.html"
@@ -27,7 +27,7 @@ package_zoho-cliq() {
 }
 
 package_zoho-cliq-upstream-electron() {
-    electron_ver='electron34'
+    electron_ver='electron36'
     depends+=($electron_ver)
     conflicts=('zoho-cliq')
     pkgdesc='Zoho Cliq running on upstream Electron (experimental)'
