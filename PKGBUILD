@@ -21,6 +21,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
+  export CXXFLAGS=${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=3/}
   qmake
   make PREFIX=/usr
 }
