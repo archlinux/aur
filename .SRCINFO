@@ -1,6 +1,6 @@
 pkgbase = pawlette
 	pkgdesc = 😺 Utility for changing themes in the meowrch (stable)
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/meowrch/pawlette
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = pawlette
 	depends = python
 	provides = pawlette-git
 	conflicts = pawlette-git
-	source = https://github.com/meowrch/pawlette/archive/refs/tags/v1.2.2.tar.gz
-	sha256sums = 0005beaf339cca358f2dd7bfd39962d439c33cba90ad1a4f9cf46ba853d4ea4e
+	source = https://github.com/meowrch/pawlette/archive/refs/tags/v1.2.3.tar.gz
+	sha256sums = 267f81c21de346fcb4228074daecdf2737886d130b7ae9dd6ed83bc5f1514ed0
 
 pkgname = pawlette
