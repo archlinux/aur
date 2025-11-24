@@ -10,7 +10,7 @@
 
 _basename=coccinelle
 pkgname=$_basename-git
-pkgver=1.3.r203.g9e8fb87
+pkgver=1.3.1.r2.g5bf4aac
 pkgrel=1
 pkgdesc="C source code matching and transformation engine"
 arch=('x86_64')
@@ -45,6 +45,11 @@ b2sums=('SKIP')
 options=('!strip')
 provides=($_basename)
 conflicts=($_basename)
+
+prepare() {
+    cd $_basename
+    git clean -dfx
+}
 
 pkgver() {
     cd $_basename
