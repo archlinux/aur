@@ -1,13 +1,13 @@
 pkgbase = rice-switcher
-	pkgdesc = Tool for switching and managing RICE themes for your desktop
-	pkgver = 1.0.0
+	pkgdesc = CLI tool for managing and switching between Linux config sets
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/S1rEx1/Rice-Switcher
 	arch = any
-	license = GPL
-	depends = bash
+	license = MIT
+	depends = jq
 	depends = fzf
-	source = rice-switcher-1.0.0.tar.gz::https://github.com/S1rEx1/Rice-Switcher/archive/refs/heads/main.tar.gz
-	sha256sums = SKIP
+	source = https://github.com/S1rEx1/Rice-Switcher/archive/refs/heads/main.tar.gz
+	sha256sums = c56d68fca23977dbaeeb88ff338779bdec694185e1dbf5bb871c571fbd623671
 
 pkgname = rice-switcher

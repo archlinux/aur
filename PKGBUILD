@@ -1,25 +1,37 @@
 pkgname=rice-switcher
-pkgver=1.0.0
+pkgver=1.0
 pkgrel=1
-pkgdesc="Tool for switching and managing RICE themes for your desktop"
+pkgdesc="CLI tool for managing and switching between Linux config sets"
 arch=('any')
 url="https://github.com/S1rEx1/Rice-Switcher"
-license=('GPL')
-depends=('bash' 'fzf')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/S1rEx1/Rice-Switcher/archive/refs/heads/main.tar.gz")
-sha256sums=('SKIP')
-
-prepare() {
-  cd "Rice-Switcher-main"
-  sed -i 's|source "$SCRIPT_DIR/lib/|source "/usr/lib/rice-switcher/|g' config_switcher.sh
-  sed -i 's|CONFIG_FILE=".*"|CONFIG_FILE="/usr/share/rice-switcher/config.json"|g' lib/config.sh
-}
+license=('MIT')
+depends=('jq' 'fzf')
+source=("https://github.com/S1rEx1/Rice-Switcher/archive/refs/heads/main.tar.gz")
+sha256sums=('c56d68fca23977dbaeeb88ff338779bdec694185e1dbf5bb871c571fbd623671')
 
 package() {
-  cd "Rice-Switcher-main"
-  install -Dm755 config_switcher.sh "$pkgdir/usr/bin/rice-switcher"
-  install -dm755 "$pkgdir/usr/lib/rice-switcher/"
-  install -Dm755 lib/*.sh "$pkgdir/usr/lib/rice-switcher/"
-  install -Dm644 config.json "$pkgdir/usr/share/rice-switcher/config.json"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${srcdir}/Rice-Switcher-main"
+
+  install -d "$pkgdir/usr/bin"
+  install -d "$pkgdir/usr/share/rice-switcher/lib"
+  install -d "$pkgdir/usr/share/rice-switcher"
+
+  # Основной скрипт
+  install -m755 config-switcher.sh "$pkgdir/usr/share/rice-switcher/core.sh"
+
+  # Библиотеки
+  install -m644 lib/*.sh "$pkgdir/usr/share/rice-switcher/lib/"
+
+  # Конфиг (в правильном месте)
+  install -m644 config.json "$pkgdir/usr/share/rice-switcher/config.json"
+
+  # Wrapper
+  cat >"$pkgdir/usr/bin/rice-switcher" <<'EOF'
+#!/bin/bash
+export RICE_SWITCHER_LIB_DIR="/usr/share/rice-switcher/lib"
+export RICE_SWITCHER_CONFIG="/usr/share/rice-switcher/config.json"
+exec /usr/share/rice-switcher/core.sh "$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/rice-switcher"
 }
