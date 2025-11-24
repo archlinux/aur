@@ -3,17 +3,22 @@
 
 pkgname=libuncso2-bin
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Backend for UnCSO2 (binary release)"
 url="https://github.com/harmonytf/libuncso2"
-license=('GPL-3.0-only')
-arch=('x86_64')
-provides=("libuncso2")
-conflicts=("libuncso2")
-source=("libuncso2-1.2.0.zip::$url/releases/download/v$pkgver/libuncso2-gcc-ubuntu-latest.zip")
-sha256sums=('e1494c253eeb895e8c4d4921cf8e0320ed0ef5750632dc85b42a864738dc7261')
+_upstream_app_url="https://github.com/harmonytf/UnCSO2"
+_upstream_app_ver=2.1.1
+license=(GPL-3.0-only)
+arch=(x86_64)
+provides=(libuncso2)
+conflicts=(libuncso2)
+source=("$_upstream_app_url/releases/download/v$_upstream_app_ver/UnCSO2-$_upstream_app_ver-linux-$CARCH-gcc-install.zip")
+sha256sums=('61634836a9a5ca702b486a52797cb8bdadf4b9824c8f9faf28c5a7e8cd487cb5')
 
 package() {
-  install -Dm755 libuncso2.so -t "$pkgdir/usr/lib"
-  ln -s /usr/lib/libuncso2.so "$pkgdir/usr/lib/libuncso2.so.$pkgver"
+	# We are using a common app+lib package source, only extract libuncso2 stuff
+	mkdir -p "$pkgdir/usr/share/licenses"
+	cp -a --reflink=auto "$srcdir/include" "$pkgdir/usr/"
+	cp -a --reflink=auto "$srcdir/lib" "$pkgdir/usr/"
+	cp -a --reflink=auto "$srcdir/share/licenses/libuncso2" "$pkgdir/usr/share/licenses/"
 }

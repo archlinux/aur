@@ -1,13 +1,13 @@
 pkgbase = libuncso2-bin
 	pkgdesc = Backend for UnCSO2 (binary release)
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/harmonytf/libuncso2
 	arch = x86_64
 	license = GPL-3.0-only
 	provides = libuncso2
 	conflicts = libuncso2
-	source = libuncso2-1.2.0.zip::https://github.com/harmonytf/libuncso2/releases/download/v1.2.0/libuncso2-gcc-ubuntu-latest.zip
-	sha256sums = e1494c253eeb895e8c4d4921cf8e0320ed0ef5750632dc85b42a864738dc7261
+	source = https://github.com/harmonytf/UnCSO2/releases/download/v2.1.1/UnCSO2-2.1.1-linux-x86_64-gcc-install.zip
+	sha256sums = 61634836a9a5ca702b486a52797cb8bdadf4b9824c8f9faf28c5a7e8cd487cb5
 
 pkgname = libuncso2-bin
