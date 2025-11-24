@@ -1,6 +1,6 @@
 pkgbase = python-lizard
 	pkgdesc = Code analyzer for Java, C/C++, JavaScript, Python, Ruby, Swift and Objective C
-	pkgver = 1.18.0
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = https://github.com/terryyin/lizard
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-lizard
 	depends = python-jinja
 	depends = python-pathspec
 	depends = python-pygments
-	source = python-lizard-1.18.0.tar.gz::https://github.com/terryyin/lizard/archive/refs/tags/1.18.0.tar.gz
-	b2sums = 3b692e0ef662a6bb0d95cfcad5bc4e79cff5a388d75a41500b7e136a779c589a478dcbff2bf0053bb30260123b281a90c75f549c027c06cfee022ea9ed8e28a6
+	source = python-lizard-1.19.0.tar.gz::https://github.com/terryyin/lizard/archive/refs/tags/1.19.0.tar.gz
+	b2sums = b4fd02b2e99d1cfcb9043402f6831b0386d268df5df3c27abc9ac6360379f94e48871ff15778846ed0f2154690457ef6e57dfe71ed0f55703bc6e923fe403f7b
 
 pkgname = python-lizard
