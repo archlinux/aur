@@ -5,7 +5,7 @@
 # Contributor SecByShresth <shresthpaul133@gmail.com>
 
 pkgname=pyspread
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="Python based non-traditional spreadsheet application with GUI"
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
 )
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pyspread/pyspread-$pkgver.tar.gz")
-sha256sums=('f3135a599d10371848459d8aa6aff98e107773148bc815d2e658522a514f452e')
+sha256sums=('58829be31aa51ad655221b095b006dd8ab21d19da94217cfe73f49ab8dccc357')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
