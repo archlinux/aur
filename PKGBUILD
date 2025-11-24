@@ -2,13 +2,13 @@
 
 pkgbase=brotli-git
 pkgname=('brotli-git' 'python-brotli-git')
-pkgver=1.1.0.r65.g1b3a5cc
+pkgver=1.2.0.r25.g61af0e5
 pkgrel=1
 pkgdesc="Brotli compression library"
 arch=('i686' 'x86_64')
 url="https://github.com/google/brotli"
 license=('MIT')
-makedepends=('git' 'cmake' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('git' 'cmake' 'pkgconf' 'python-build' 'python-installer' 'python-pkgconfig' 'python-setuptools' 'python-wheel')
 source=("git+https://github.com/google/brotli.git")
 sha256sums=('SKIP')
 
@@ -57,7 +57,7 @@ package_brotli-git() {
 }
 
 package_python-brotli-git() {
-  depends=('python')
+  depends=('glibc' 'python')
   provides=("python-brotli=$pkgver")
   conflicts=('python-brotli')
 
