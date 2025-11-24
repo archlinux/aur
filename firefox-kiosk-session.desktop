@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Firefox Kiosk
+Comment=Launch Firefox in kiosk mode
+Exec=/usr/bin/firefox-kiosk-session
+TryExec=/usr/bin/firefox-kiosk-session
+Type=Application
+DesktopNames=firefox-kiosk

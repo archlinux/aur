@@ -1,0 +1,12 @@
+pkgbase = firefox-kiosk-session
+	pkgdesc = Firefox Kiosk Xsession
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	depends = firefox
+	source = firefox-kiosk-session.desktop
+	source = firefox-kiosk-session.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = firefox-kiosk-session
