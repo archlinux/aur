@@ -2,7 +2,7 @@
 # Contributor: Angel de Vicente <angel.vicente.garrido at gmail dot com>
 
 pkgname="parallel-git"
-pkgver=20251022.r0.g4a38dfac
+pkgver=20251122.r0.g4ae2d438
 pkgrel=1
 pkgdesc="A shell tool for executing jobs in parallel"
 arch=('any')
@@ -16,7 +16,7 @@ source=("${pkgname%-git}::git+https://git.savannah.gnu.org/git/parallel.git"
 	'0001-Remove-citation-things.patch'
 	'0002-skip-rst-pdf-generation.patch')
 sha256sums=('SKIP'
-            '68bca20d35a0020964145d95d604e5ce171a3bdc13170beb9441323284afc6ab'
+            '7c37b4518b0ca00540e3eb971e57be688f4df73146f481a91a8b807706883fd1'
             '85eae9f01bdb8d7ab14b0a3e266ae7e9d5582b77b2a81493225daddedab87e7e')
 
 pkgver() {
@@ -40,5 +40,3 @@ package() {
 	cd "${pkgname%-git}"
 	make DESTDIR="$pkgdir/" install
 }
-
-

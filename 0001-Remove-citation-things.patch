@@ -1,5 +1,5 @@
 diff --git a/src/parallel b/src/parallel
-index ea1e530d..a2c45048 100755
+index 7a8f5c40..bb28cdaa 100755
 --- a/src/parallel
 +++ b/src/parallel
 @@ -2142,11 +2142,6 @@ sub options_completion_hash() {
@@ -126,8 +126,8 @@ index ea1e530d..a2c45048 100755
 -	 "If you use programs that use GNU Parallel to process data for an article in a",
 -	 "scientific publication, please cite:",
 -	 "",
--	 "  Tange, O. (2025, October 22). GNU Parallel 20251022 ('Goodall').",
--	 "  Zenodo. https://doi.org/10.5281/zenodo.17488917",
+-	 "  Tange, O. (2025, November 22). GNU Parallel 20251122 ('Mamdani').",
+-	 "  Zenodo. https://doi.org/10.5281/zenodo.17692695",
 -	 "",
 -	 # Before changing these lines,  please read
 -	 # https://www.gnu.org/software/parallel/parallel_design.html#citation-notice
@@ -159,8 +159,8 @@ index ea1e530d..a2c45048 100755
 -	     "If you use programs that use GNU Parallel to process data for an article in a",
 -	     "scientific publication, please cite:",
 -	     "",
--	     "  Tange, O. (2025, October 22). GNU Parallel 20251022 ('Goodall').",
--	     "  Zenodo. https://doi.org/10.5281/zenodo.17488917",
+-	     "  Tange, O. (2025, November 22). GNU Parallel 20251122 ('Mamdani').",
+-	     "  Zenodo. https://doi.org/10.5281/zenodo.17692695",
 -	     "",
 -	     # Before changing these line,   please read
 -	     # https://www.gnu.org/software/parallel/parallel_design.html#citation-notice and
