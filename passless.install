@@ -3,16 +3,6 @@ post_install() {
     echo "==> Passless has been installed successfully!"
     echo ""
 
-    # Set capability for memory locking without root
-    if setcap cap_ipc_lock=+ep /usr/bin/passless 2>/dev/null; then
-        echo "    ✓ CAP_IPC_LOCK capability set for memory locking"
-    else
-        echo "    ✗ Failed to set CAP_IPC_LOCK capability"
-        echo "      To enable memory locking without root, run:"
-        echo "        sudo setcap cap_ipc_lock=+ep /usr/bin/passless"
-    fi
-    echo ""
-
     echo "    The 'fido' group has been created. Add your user to it:"
     echo "      sudo usermod -a -G fido \$USER"
     echo ""
@@ -39,16 +29,6 @@ post_install() {
 post_upgrade() {
     echo ""
     echo "==> Passless has been upgraded."
-    echo ""
-
-    # Re-apply capability for memory locking in case it was removed
-    if setcap cap_ipc_lock=+ep /usr/bin/passless 2>/dev/null; then
-        echo "    ✓ CAP_IPC_LOCK capability set for memory locking"
-    else
-        echo "    ✗ Failed to set CAP_IPC_LOCK capability"
-        echo "      To enable memory locking without root, run:"
-        echo "        sudo setcap cap_ipc_lock=+ep /usr/bin/passless"
-    fi
     echo ""
 
     echo "    If running as a systemd service, restart it with:"
