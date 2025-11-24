@@ -7,7 +7,7 @@ url="https://github.com/S1rEx1/Rice-Switcher"
 license=('MIT')
 depends=('jq' 'fzf')
 source=("https://github.com/S1rEx1/Rice-Switcher/archive/refs/heads/main.tar.gz")
-sha256sums=('c56d68fca23977dbaeeb88ff338779bdec694185e1dbf5bb871c571fbd623671')
+sha256sums=('SKIP')
 
 package() {
   cd "${srcdir}/Rice-Switcher-main"
@@ -16,13 +16,13 @@ package() {
   install -d "$pkgdir/usr/share/rice-switcher/lib"
   install -d "$pkgdir/usr/share/rice-switcher"
 
-  # Основной скрипт
+  # Основной скрипт (имя файла config-switcher.sh)
   install -m755 config-switcher.sh "$pkgdir/usr/share/rice-switcher/core.sh"
 
   # Библиотеки
   install -m644 lib/*.sh "$pkgdir/usr/share/rice-switcher/lib/"
 
-  # Конфиг (в правильном месте)
+  # Конфиг
   install -m644 config.json "$pkgdir/usr/share/rice-switcher/config.json"
 
   # Wrapper
