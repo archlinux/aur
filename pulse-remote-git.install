@@ -1,0 +1,11 @@
+post_install() {
+	echo "==> pulse-remote runs as a user service (not system-wide)"
+	echo "==> Enable and start: systemctl --user enable --now pulse-remote.service"
+	echo "==> Web UI: http://localhost:8448"
+}
+
+post_upgrade() {
+	echo "==> pulse-remote has been updated"
+	echo "==> If the service is running, restart it to use the new version:"
+	echo "==> systemctl --user restart pulse-remote.service"
+}
