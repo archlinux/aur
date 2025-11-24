@@ -3,22 +3,22 @@
 
 _name=integration_dropbox
 pkgname=nextcloud-app-integration-dropbox
-pkgver=2.0.1
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Dropbox integration into Nextcloud"
 arch=('any')
 url="https://github.com/eneiluj/integration_dropbox"
-license=('AGPL3')
+license=('AGPL-3.0-or-later')
 makedepends=('nextcloud' 'yq')
 options=('!strip')
 source=("https://github.com/nextcloud-releases/${_name}/releases/download/v${pkgver}/${_name}-v${pkgver}.tar.gz")
-sha512sums=('18c0d3c025eb84fd1a344b51243f1ed3fc0a562ee702920a0091729558cc3b136097da55aa7e50aa09c948401768cfcb5bd98bdd6de64c74eddfb33549fe1a85')
+sha512sums=('f9cda08001f037e41bbc5985489c2d99535776b4f44e50a0804e772769fcc52fd7fbf88fd7693d781351184f9c094b33a03003ca35bd92cbb0fb5064bbda57bf')
 
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
 # 2. Add makedepends+=(nextcloud yq)
-_phps=(php7 php)
+_phps=(php php-legacy)
 _get_supported_ranges() {
   _app_min_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@min-version"] | values')"
   _app_max_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@max-version"] | values | tonumber | .+1')"
