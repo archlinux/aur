@@ -1,8 +1,8 @@
-# Contributor: Anonymous
+# Contributor: CpanBot <cpanbot at sch bme hu>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-net-stomp'
-pkgver='0.61'
+pkgver='0.62'
 pkgrel='1'
 pkgdesc="A Streaming Text Orientated Messaging Protocol Client"
 arch=('any')
@@ -12,10 +12,10 @@ depends=('perl-class-accessor>=0' 'perl-log-any>=1.707' 'perl-log-any-adapter-ta
 makedepends=()
 checkdepends=('perl-test-deep>=0' 'perl-test-fatal>=0' 'perl-test-nicedump>=1.0.0')
 url='https://metacpan.org/release/Net-Stomp'
-source=('http://search.cpan.org/CPAN/authors/id/D/DA/DAKKAR/Net-Stomp-0.61.tar.gz')
-md5sums=('c2c4fc5fa031d412e0ad7e79d097c8de')
-sha512sums=('d6010916f417c28bc42d5535aee92ff5b6fec78c9a2810c8988ffc97af01b09b1fd5383f2a1a1f335de6b33cf77a572781ca9b21973b88d7b0b310909f27aa26')
-_distdir="Net-Stomp-0.61"
+source=('http://search.cpan.org/CPAN/authors/id/D/DA/DAKKAR/Net-Stomp-0.62.tar.gz')
+md5sums=('e391a3dd19290ffd44937831527ce85f')
+sha512sums=('6491a7c46849f0eab01d774f156274e24edece3e3531ba75d99339e8bbdf16687a7d818bb8cba927aede2a36860df1f8bb46bae3d618b6a92ed0a333a3fd32ae')
+_distdir="Net-Stomp-0.62"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
