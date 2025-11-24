@@ -4,4 +4,5 @@ Name=Ymir
 GenericName=Sega Saturn Emulator
 Comment=Sega Saturn Emulator
 Exec=ymir-sdl3 -p $HOME/.config/ymir
+Icon=ymir-emu
 Categories=Game;Emulator;

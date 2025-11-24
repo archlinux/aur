@@ -2,7 +2,7 @@
 
 pkgname=ymir-emu
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Sega Saturn Emulator"
 arch=("x86_64")
 url="https://github.com/StrikerX3/Ymir"
@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=(
     "SKIP"
-    "60aa8a14977ebe5a4510c20a9da6bf31a86bb6525e50692d8d0cf71d515c6bd8"
+    "35458feda17c3b8d7d8b66f87f6f8e01462b6146b1c85c7c9a7d048dbb5bd722"
     "9fafa7633fc4349ccb7ef5b2dac126f11ea2c2ae4c0a0d855b87bb5cf2638592"
 )
 
@@ -55,5 +55,6 @@ package() {
     cd $srcdir/ymir
     DESTDIR="${pkgdir}" cmake --install "build"
     install -Dm644 $srcdir/ymir-emu.desktop -t ${pkgdir}/usr/share/applications
+    install -Dm644 $srcdir/ymir/apps/ymir-sdl3/res/ymir.png $pkgdir/usr/share/pixmaps/$pkgname.png
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
