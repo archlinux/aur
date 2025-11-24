@@ -99,6 +99,13 @@ prepare() {
 }
 
 build() {
+  # Set no_direct_extern_access based on architecture
+  if [[ $CARCH == "aarch64" ]]; then
+    _no_direct_extern_access=OFF
+  else
+    _no_direct_extern_access=ON
+  fi
+
   cmake -B build -S $_pkgfn -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
@@ -116,7 +123,7 @@ build() {
     -DFEATURE_openssl_linked=ON \
     -DFEATURE_system_sqlite=ON \
     -DFEATURE_system_xcb_xinput=ON \
-    -DFEATURE_no_direct_extern_access=ON \
+    -DFEATURE_no_direct_extern_access=$_no_direct_extern_access \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DCMAKE_MESSAGE_LOG_LEVEL=STATUS
   cmake --build build
