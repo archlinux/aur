@@ -1,7 +1,7 @@
 # Maintainer: Niklas Aldervall <aldervall@users.noreply.github.com>
 pkgname=voicetype-bin
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc='Local English voice transcription using whisper.cpp with hold-to-speak daemon'
 arch=('x86_64')
 url='https://github.com/aldervall/Voicetype'
@@ -26,7 +26,7 @@ conflicts=('voicetype')
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('36b080ff8a85675fdba0db568b2dff024f5e11dd6f1db02524d328918a803371')
+sha256sums=('2356875f20d8d2c70b8a613980648e6742d0adc62f7fc8de1363e7e361c9613e')
 install=voicetype.install
 
 package() {
