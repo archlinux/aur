@@ -18,7 +18,7 @@ options=()
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    printf "0.0.1.r%s.g%s" "$basever" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    printf "0.0.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
