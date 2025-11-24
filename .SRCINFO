@@ -1,7 +1,7 @@
 pkgbase = cli53
 	pkgdesc = Command line tool for Amazon Route 53
 	pkgver = 0.8.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/barnybug/cli53
 	arch = i686
 	arch = x86_64

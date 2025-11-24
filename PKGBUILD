@@ -3,7 +3,7 @@
 
 pkgname=cli53
 pkgver=0.8.25
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool for Amazon Route 53"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/barnybug/cli53"
@@ -20,5 +20,5 @@ build() {
 
 package() {
     cd "${pkgname}-${pkgver}"
-    install -Dm 755 "${pkgname}" -t "{$pkgdir}/usr/bin"
+    install -Dm 755 "${pkgname}" -t "${pkgdir}/usr/bin"
 }
