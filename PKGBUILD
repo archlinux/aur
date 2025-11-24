@@ -3,7 +3,7 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=naabu-bin
-pkgver=2.3.5
+pkgver=2.3.7
 pkgrel=1
 pkgdesc='Fast port scanner with a focus on reliability and simplicity'
 arch=('x86_64')
@@ -18,8 +18,8 @@ source=(
   "$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/naabu_${pkgver}_linux_amd64.zip"
 )
 sha256sums=('cbcdaab87df3175107aa28915bd253cebdd618a49c9ac5d6c669c0b1cbebcacb'
-            '239d2f4b84e281aa78d65cf3634c807f7f4577af9514692ef9e521154b50402b'
-            'b9bdd64883b3f8e3962794889f234ec84e4a563b348ba757a715ee44500e39b5')
+            '2a9853499cae425d28012be196806a93afa6d49885574a0ae2c13a9999edc610'
+            '5e79fb1f6df2735301339b47d39ed7b50849525521afcafc5ba9d94ce548c79b')
 
 package() {
   install -Dv naabu -t "$pkgdir/usr/bin"

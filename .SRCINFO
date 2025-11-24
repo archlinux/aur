@@ -1,6 +1,6 @@
 pkgbase = naabu-bin
 	pkgdesc = Fast port scanner with a focus on reliability and simplicity
-	pkgver = 2.3.5
+	pkgver = 2.3.7
 	pkgrel = 1
 	url = https://github.com/projectdiscovery/naabu
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = naabu-bin
 	depends = libpcap
 	provides = naabu
 	conflicts = naabu
-	source = LICENSE-2.3.5::https://raw.githubusercontent.com/projectdiscovery/naabu/v2.3.5/LICENSE.md
-	source = README-2.3.5::https://raw.githubusercontent.com/projectdiscovery/naabu/v2.3.5/README.md
-	source = naabu-bin-2.3.5.zip::https://github.com/projectdiscovery/naabu/releases/download/v2.3.5/naabu_2.3.5_linux_amd64.zip
+	source = LICENSE-2.3.7::https://raw.githubusercontent.com/projectdiscovery/naabu/v2.3.7/LICENSE.md
+	source = README-2.3.7::https://raw.githubusercontent.com/projectdiscovery/naabu/v2.3.7/README.md
+	source = naabu-bin-2.3.7.zip::https://github.com/projectdiscovery/naabu/releases/download/v2.3.7/naabu_2.3.7_linux_amd64.zip
 	sha256sums = cbcdaab87df3175107aa28915bd253cebdd618a49c9ac5d6c669c0b1cbebcacb
-	sha256sums = 239d2f4b84e281aa78d65cf3634c807f7f4577af9514692ef9e521154b50402b
-	sha256sums = b9bdd64883b3f8e3962794889f234ec84e4a563b348ba757a715ee44500e39b5
+	sha256sums = 2a9853499cae425d28012be196806a93afa6d49885574a0ae2c13a9999edc610
+	sha256sums = 5e79fb1f6df2735301339b47d39ed7b50849525521afcafc5ba9d94ce548c79b
 
 pkgname = naabu-bin
