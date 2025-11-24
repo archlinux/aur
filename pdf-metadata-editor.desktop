@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=PDF Metadata Editor
+Comment=Edit PDF metadata (Author, Title, etc.)
+Exec=pdf-metadata-editor %f
+Icon=java  
+Terminal=false
+Type=Application
+Categories=Office;Utility;Java;
+MimeType=application/pdf;
+StartupNotify=true

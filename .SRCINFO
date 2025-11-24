@@ -1,0 +1,19 @@
+pkgbase = pdf-metadata-editor-bin
+	pkgdesc = A simple tool to edit PDF metadata (Java/JAR version)
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://github.com/zaro/pdf-metadata-editor
+	arch = any
+	license = MIT
+	depends = java-runtime
+	depends = bash
+	provides = pdf-metadata-editor
+	conflicts = pdf-metadata-editor
+	source = https://github.com/zaro/pdf-metadata-editor/releases/download/v3.1.1/pdf-metadata-editor-3.1.1.jar
+	source = pdf-metadata-editor.desktop
+	source = LICENSE
+	sha512sums = 1eaf0dfd12d1ec4e1f1a1bc2874abb75fcba7711424b642ce51c0239d13d228d9f9a173b2ee735d07831cff93a70d4a3b831576c4e6415a8e0654af33ca5ffe4
+	sha512sums = 397b1f2ad1fa02836335e786cc58032953c1e0a93416164b20db7a62050a394c6f983f1aea19ee2811a349bb1e9348199eb056aedbb5971094cac0e8b60cabb8
+	sha512sums = 071951fc98d1200aa277fb7a3e9c12c10a58e987cd833fa46795721cead1734a6ca18e48e0d6ebc5ef20c962146bf4a7d2709e5a94078e71b964ac0df623d90b
+
+pkgname = pdf-metadata-editor-bin
