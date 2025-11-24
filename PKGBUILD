@@ -2,7 +2,7 @@
 pkgname=pawlette
 conflicts=('pawlette-git')
 provides=('pawlette-git')
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="😺 Utility for changing themes in the meowrch (stable)"
 arch=('any')
@@ -10,8 +10,9 @@ url="https://github.com/meowrch/pawlette"
 license=('GPL-3.0')
 depends=('python')
 makedepends=('python-uv' 'python-virtualenv' 'git')
+options=('!debug')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('267f81c21de346fcb4228074daecdf2737886d130b7ae9dd6ed83bc5f1514ed0')
+sha256sums=('ae4da4a35bd4efced74c3d218b2412e78a1b48149ab44afb9a219b3c6c7d381f')
 
 package() {
   cd "$srcdir/pawlette-$pkgver"
