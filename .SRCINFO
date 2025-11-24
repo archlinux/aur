@@ -1,11 +1,13 @@
 pkgbase = retroforth-fossil
 	pkgdesc = A modern, pragmatic Forth
-	pkgver = r1939.56a264e
+	pkgver = r1958.0dbfc62
 	pkgrel = 1
 	url = https://retroforth.org/
 	arch = x86_64
 	license = ISC
 	makedepends = fossil
+	depends = glibc
+	depends = bash
 	provides = retroforth
 	conflicts = retroforth
 	source = retroforth.fossil::fossil+http://fossils.retroforth.org:8000/nga

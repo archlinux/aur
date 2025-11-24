@@ -1,13 +1,13 @@
 # Maintainer: Lobo Torres <lobo@quiltro.org>
 
 pkgname=retroforth-fossil
-pkgver=r1939.56a264e
+pkgver=r1958.0dbfc62
 pkgrel=1
 pkgdesc="A modern, pragmatic Forth"
 arch=('x86_64')
 url="https://retroforth.org/"
 license=('ISC')
-depends=()
+depends=('glibc' 'bash')
 makedepends=('fossil')
 provides=("${pkgname%-fossil}")
 conflicts=("${pkgname%-fossil}")
