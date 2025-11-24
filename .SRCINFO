@@ -1,6 +1,6 @@
 pkgbase = alias-manager
 	pkgdesc = Lightweight CLI tool for managing shell aliases
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/kazetachinuu/alias_manager
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = alias-manager
 	makedepends = gcc
 	makedepends = make
 	depends = glibc
-	source = alias-manager-2.3.0.tar.gz::https://github.com/kazetachinuu/alias_manager/archive/v2.3.0.tar.gz
-	sha256sums = ff24e4f2fe14655c12b25b636eefcf757f4cccaf5080afc8af444402e55effc2
+	source = alias-manager-2.3.1.tar.gz::https://github.com/kazetachinuu/alias_manager/archive/v2.3.1.tar.gz
+	sha256sums = 1ae31d1ef0999406e42b6921fd4580bd9aba0f3d67139321bc5621bfd1ff0b9d
 
 pkgname = alias-manager
