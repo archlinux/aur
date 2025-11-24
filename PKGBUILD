@@ -8,7 +8,7 @@ pkgname=(
   vbam-sdl
   vbam-wx
 )
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc='Nintendo GameBoy Advance emulator'
 arch=(x86_64)
@@ -34,14 +34,14 @@ makedepends=(
 _pkgname=visualboyadvance-m
 source=("git+https://github.com/${_pkgname}/${_pkgname}.git?signed#tag=v${pkgver}")
 #source=("https://github.com/${_pkgname}/${_pkgname}/archive/v$pkgver.tar.gz")
-b2sums=('b5f6cfc77af3c8b4c4c50d10c2ad26adf06d8cddba31ee1f0061cafdcd72fa6a79cdef8338ab019d8dd28bb540055f1391592ab288ddc829dbe74cc5a8ccb3ad')
+b2sums=('0a9ad88c99d08845fd7bb1769a589ad5e7153cadbb2df389d1389e43b7b7bb2bd4cfbcd8038c3767133b61d0d798507b153eb3c1b9d3c1f3db7a167045dbccf7')
 validpgpkeys=('A0C0E526E36FD2138C149D4D08AB596679D86240' # Rafael Kitover <rkitover@gmail.com>
               'A4E3697D524B238DECCF3A17EB0E0FF1C62782D8' # Zach Bacon <zachbacon@vba-m.com>
 )
 
 prepare() {
   cd ${_pkgname}
-  cp cmake/FindAppleFFMPEG.cmake cmake/FindFFMPEG.cmake
+  #cp cmake/FindAppleFFMPEG.cmake cmake/FindFFMPEG.cmake
 }
 
 build() {
