@@ -1,13 +1,14 @@
 pkgbase = uncso2
 	pkgdesc = Extract Counter-Strike: Online 2 and Titanfall Online game files
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/harmonytf/UnCSO2
 	arch = any
 	license = GPL-3.0-only
 	makedepends = cmake
-	depends = libuncso2
-	source = uncso2::git+https://github.com/harmonytf/UnCSO2.git#commit=bfe8a91e33887ab5676a8f232b09a0a25f29d8b4
+	depends = libuncso2>=1.2.0
+	depends = qt6-base
+	source = uncso2::git+https://github.com/harmonytf/UnCSO2.git#tag=v2.1.1
 	sha256sums = SKIP
 
 pkgname = uncso2

@@ -1,15 +1,14 @@
 pkgname=uncso2
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Extract Counter-Strike: Online 2 and Titanfall Online game files"
-arch=(any)
 url="https://github.com/harmonytf/UnCSO2"
 license=(GPL-3.0-only)
-depends=(libuncso2)
+arch=(any)
+depends=('libuncso2>=1.2.0' qt6-base)
 makedepends=(cmake)
-_commit=bfe8a91e33887ab5676a8f232b09a0a25f29d8b4
 _dirname="$pkgname"
-source=("$_dirname::git+$url.git#commit=$_commit")
+source=("$_dirname::git+$url.git#tag=v$pkgver")
 sha256sums=("SKIP")
 
 prepare() {
