@@ -1,0 +1,4 @@
+[lib32-libiec61883]
+source = 'regex'
+url = 'https://www.kernel.org/pub/linux/libs/ieee1394/'
+regex = 'libiec61883-([\d.]+).tar'
