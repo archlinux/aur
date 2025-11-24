@@ -1,6 +1,6 @@
 # Maintainer: Niklas Aldervall <aldervall@users.noreply.github.com>
 pkgname=voicetype-bin
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Local English voice transcription using whisper.cpp with hold-to-speak daemon'
 arch=('x86_64')
@@ -26,7 +26,7 @@ conflicts=('voicetype')
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('58dc15b449a7d6e8cb0870e6b39b655ec4c721328a512438e905a67c8ba9e04b')
+sha256sums=('36b080ff8a85675fdba0db568b2dff024f5e11dd6f1db02524d328918a803371')
 install=voicetype.install
 
 package() {
@@ -35,7 +35,6 @@ package() {
     # Install Python modules
     install -dm755 "$pkgdir/usr/lib/voicetype"
     install -Dm644 src/*.py -t "$pkgdir/usr/lib/voicetype/"
-    install -Dm644 src/config.py "$pkgdir/usr/lib/voicetype/config.py"
 
     # Install whisper-server binary
     install -dm755 "$pkgdir/usr/lib/voicetype/whisper/bin"
