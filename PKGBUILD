@@ -1,6 +1,6 @@
 # Maintainer: kpnicz@gmail.com
 pkgname=proton-cachyos-updater
-pkgver=1.0
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Automatically download and install/update proton-cachyos from the CachyOS repo using proton-update"
 arch=('any')
