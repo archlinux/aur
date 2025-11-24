@@ -2,7 +2,7 @@
 
 _rockname=resilient.sile
 pkgname=("sile-${_rockname%.sile}")
-pkgver=3.2.0
+pkgver=3.3.0
 _rockrel=1
 pkgrel=1
 pkgdesc='Advanced book classes and packages for the SILE typesetting system'
@@ -28,7 +28,7 @@ makedepends=(lua51
              luarocks)
 _archive="$_rockname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('2355387859cf00412bcdd1f8ea8985359a692ce82f768e30a6a577e030cbda93')
+sha256sums=('096e1a552fc39a7f2cdd3f927f7182690a1ce8b4f76b08459cf6d443ba28d7aa')
 
 package() {
 	cd "$_archive"
