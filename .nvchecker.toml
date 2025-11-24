@@ -1,0 +1,4 @@
+[lib32-libraw1394]
+source = 'regex'
+url = 'https://www.kernel.org/pub/linux/libs/ieee1394/'
+regex = 'libraw1394-([\d.]+).tar'
