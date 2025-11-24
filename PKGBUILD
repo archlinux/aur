@@ -1,6 +1,6 @@
 # Maintainer: Byson94 <byson94wastaken@gmail.com>
 pkgname=ewwii-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Powerful and flexible widget system for Linux"
 arch=('x86_64')
