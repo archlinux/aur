@@ -10,6 +10,7 @@ depends=(
     'cairo'
     'curl'
     'fontconfig'
+    'openssl'
     'pango'
     'wayland'
     'playerctl'
