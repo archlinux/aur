@@ -1,5 +1,5 @@
 pkgname=rice-switcher
-pkgver=1.0
+pkgver=1.2
 pkgrel=1
 pkgdesc="CLI tool for managing and switching between Linux config sets"
 arch=('any')
