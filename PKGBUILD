@@ -10,7 +10,7 @@ license=('FSL-1.1-MIT')
 provides=('crush')
 conflicts=('crush')
 makedepends=('go' 'git')
-source=("${pkgname}_${pkgver}.tar.gz::https://github.com/charmbracelet/crush/releases/download/v0.18.5/crush-0.18.5.tar.gz")
+source=("${pkgname}_${pkgver}.tar.gz::https://github.com/charmbracelet/crush-internal/releases/download/v0.18.5/crush-0.18.5.tar.gz")
 sha256sums=('b26a2ffad27ce9bd80962dec8d96e465d309d4f53152962e7fdab57611734ecd')
 prepare() {
   go mod download
