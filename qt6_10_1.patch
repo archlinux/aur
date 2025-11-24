@@ -1,0 +1,33 @@
+diff --git a/releases.properties b/releases.properties
+index f78c9667..4b3dc1ff 100644
+--- a/releases.properties
++++ b/releases.properties
+@@ -10,4 +10,5 @@
+ 6.8.0=23
+ 6.9.0=26
+ 6.10.0=29
+-current=29
+\ No newline at end of file
++6.10.1=30
++current=30
+diff --git a/src/cpp/QtJambiWebEngineCore/hashes.h b/src/cpp/QtJambiWebEngineCore/hashes.h
+index 1344961c..72a63739 100644
+--- a/src/cpp/QtJambiWebEngineCore/hashes.h
++++ b/src/cpp/QtJambiWebEngineCore/hashes.h
+@@ -201,14 +201,14 @@ hash_type qHash(const QWebEngineFrame &value, hash_type seed = 0);
+ #else
+ #include <QtWebEngineCore/QWebEngineFrame>
+ 
+-class QQuickWebEngineViewPrivate{
++class QQuickWebEngineView{
+ public:
+     static hash_type hash(const QWebEngineFrame &value, hash_type seed) {
+         return qHashMulti(seed, value.m_adapter.toStrongRef().get(), value.m_id);
+     }
+ };
+ inline hash_type qHash(const QWebEngineFrame &value, hash_type seed = 0){
+-    return qHash(QQuickWebEngineViewPrivate::hash(value, seed), seed);
++    return qHash(QQuickWebEngineView::hash(value, seed), seed);
+ }
+ #endif
+ #endif //QT_VERSION >= QT_VERSION_CHECK(6, 10, 0)
