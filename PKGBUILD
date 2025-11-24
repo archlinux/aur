@@ -7,7 +7,7 @@ url="https://github.com/S1rEx1/Rice-Switcher"
 license=('MIT')
 depends=('jq' 'fzf')
 source=("https://github.com/S1rEx1/Rice-Switcher/archive/refs/heads/main.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('c56d68fca23977dbaeeb88ff338779bdec694185e1dbf5bb871c571fbd623671')
 
 package() {
   cd "${srcdir}/Rice-Switcher-main"
