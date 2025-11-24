@@ -1,0 +1,4 @@
+[lib32-alsa-oss]
+source = "git"
+git = "https://github.com/alsa-project/alsa-oss"
+prefix = "v"
