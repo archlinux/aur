@@ -1,24 +1,52 @@
-# Maintainer: yuri_k7 <riyu12383@gmail.com>
 pkgname=smpeg0
 pkgver=0.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="SDL MPEG Player Library - Legacy version 0.4.5"
-arch=(x86_64)
+arch=($CARCH)
 url=https://icculus.org/smpeg/
-license=(LGPL)
-depends=(sdl)
-optdepends=('glu: to use glmovie')
-provides=(smpeg0)
-source=('https://archive.archlinux.org/packages/s/smpeg/smpeg-0.4.5-5-x86_64.pkg.tar.zst')
-sha256sums=('a25ef96ff199930e3be79b186f66bc5768909aaabf273d3b301a85f7ddb295b5')
+license=(LGPL-2.0-only)
+makedepends=(subversion)
+depends=(gcc-libs glibc glu libglvnd libx11 libxau libxcb libxdmcp "sdl>=1:1" "sdl<1:2" ) # sdl12-compat
+source=("$pkgname-$pkgver::svn://svn.icculus.org/smpeg/tags/release_${pkgver//./_}")
+sha256sums=(SKIP)
+
 prepare(){
-  rm "${srcdir}/usr/bin/plaympeg"
-  rm "${srcdir}/usr/share/man/man1/plaympeg.1.gz"
+
+	# time machine
+	# env CXXFLAGS= does not work
+	# sh ./configure CXXFLAGS= does not work
+	export CC=" gcc -std=c11 "
+	export CXX=" g++ -std=c++11 -Wno-narrowing "
+
+	# configure
+	cd $pkgname-$pkgver
+	./autogen.sh
+	C=(
+	 ./configure
+	 --prefix=/usr
+	 --disable-gtk-player
+	 --disable-gtktest
+	 --enable-opengl-player
+	 --with-x
+	 CC="$CC"
+	 CXX="$CXX"
+	)
+	"${C[@]}"
+
 }
+
+build() {
+	cd $pkgname-$pkgver
+	make
+}
+
 package(){
-  install -dm755 "${srcdir}/usr/bin" "${pkgdir}/usr/bin/"
-  install -dm755 "${srcdir}/usr/include/" "${pkgdir}/usr/include/"
-  install -dm755 "${srcdir}/usr/lib" "${pkgdir}/usr/lib/"
-  install -dm755 "${srcdir}/usr/share" "${pkgdir}/usr/share/"
-  cp -R "${srcdir}/usr" "${pkgdir}"
+
+	cd $pkgname-$pkgver
+	make DESTDIR="$pkgdir" install
+
+	cd "$pkgdir"/usr/share/man
+	rm man1/gtv.1
+	cd -
+
 }

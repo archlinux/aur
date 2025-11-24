@@ -1,14 +1,22 @@
 pkgbase = smpeg0
 	pkgdesc = SDL MPEG Player Library - Legacy version 0.4.5
 	pkgver = 0.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://icculus.org/smpeg/
 	arch = x86_64
-	license = LGPL
-	depends = sdl
-	optdepends = glu: to use glmovie
-	provides = smpeg0
-	source = https://archive.archlinux.org/packages/s/smpeg/smpeg-0.4.5-5-x86_64.pkg.tar.zst
-	sha256sums = a25ef96ff199930e3be79b186f66bc5768909aaabf273d3b301a85f7ddb295b5
+	license = LGPL-2.0-only
+	makedepends = subversion
+	depends = gcc-libs
+	depends = glibc
+	depends = glu
+	depends = libglvnd
+	depends = libx11
+	depends = libxau
+	depends = libxcb
+	depends = libxdmcp
+	depends = sdl>=1:1
+	depends = sdl<1:2
+	source = smpeg0-0.4.5::svn://svn.icculus.org/smpeg/tags/release_0_4_5
+	sha256sums = SKIP
 
 pkgname = smpeg0
