@@ -3,7 +3,7 @@
 
 _name=carnet
 pkgname=nextcloud-app-carnet
-pkgver=0.25.2
+pkgver=0.25.11
 pkgrel=1
 pkgdesc='Nextcloud server app providing digital sticky notes to users'
 arch=('any')
@@ -12,13 +12,13 @@ url="https://github.com/PhieF/CarnetNextcloud"
 makedepends=('nextcloud' 'yq')
 options=('!strip')
 source=("${_name}-${pkgver}.tar.gz::https://github.com/CarnetApp/CarnetNextcloud/releases/download/v${pkgver}/${_name}-nc-v${pkgver}.tar.gz")
-sha256sums=('1c0ac3f8ce9403d0614acae5a69fe0b0a5a4513580a0d1e5fe0af44b70252b38')
+sha256sums=('a99273a3a13c1dfa3373a614477e602b08a03951a2af7a34d2c7c1ad1caec4d8')
 
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
 # 2. Add makedepends+=(nextcloud yq)
-_phps=(php7 php)
+_phps=(php php-legacy)
 _get_supported_ranges() {
   _app_min_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@min-version"] | values')"
   _app_max_nextcloud="$(< appinfo/info.xml xq -r '.info.dependencies.nextcloud["@max-version"] | values | tonumber | .+1')"
