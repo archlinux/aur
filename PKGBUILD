@@ -2,20 +2,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-dist-zilla-plugin-readmefrompod'
-pkgver='0.38'
+pkgver='0.40'
 pkgrel='1'
 pkgdesc="dzil plugin to generate README from POD"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-dist-zilla>=6.000' 'perl-io-string>=0' 'perl-moose>=0' 'perl-path-tiny>=0.004' 'perl-pod-readme>=1.2.0')
+depends=('perl-dist-zilla>=6.000' 'perl-io-string>=0' 'perl-moose>=0' 'perl-path-tiny>=0.004' 'perl-pod-readme>=1.2.0' 'perl>=5.006')
 makedepends=()
-checkdepends=('perl>=5.006')
 url='https://metacpan.org/release/Dist-Zilla-Plugin-ReadmeFromPod'
-source=('http://search.cpan.org/CPAN/authors/id/F/FA/FAYLAND/Dist-Zilla-Plugin-ReadmeFromPod-0.38.tar.gz')
-md5sums=('52bba856a70f3adef86ab656017db3e8')
-sha512sums=('28733165ae4061e6df25d2d1f9ca3dd35eac156ae5d7709676a64ae7f087fac19bad2327ce462217192e821a5639388693488ec13fef988ead964144138785b1')
-_distdir="Dist-Zilla-Plugin-ReadmeFromPod-0.38"
+source=('http://search.cpan.org/CPAN/authors/id/F/FA/FAYLAND/Dist-Zilla-Plugin-ReadmeFromPod-0.40.tar.gz')
+md5sums=('32849c89ecb9ebeec214d1107752e990')
+sha512sums=('7c5a9f283db91d52aa36e1429176d51686c57110eb33bb13cbe94afc915904ae92d4996344d95aef968d0d13fcecb523eef80cf291915ef0f768178e9573fc3c')
+_distdir="Dist-Zilla-Plugin-ReadmeFromPod-0.40"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
