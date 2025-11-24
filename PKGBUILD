@@ -2,21 +2,21 @@
 
 _pkgname=draupnir
 pkgname="${_pkgname}"
-pkgver=2.7.1
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="A Matrix moderation bot"
 arch=('x86_64')
 options=(!debug !zipman !purge !lto)
 url="https://github.com/the-draupnir-project/Draupnir"
 license=('AFL-3.0' 'Apache-2.0' 'CC-BY-SA-4.0' 'CC0-1.0')
-makedepends=('git' 'go' 'gcc' 'yarn' 'python' 'nodejs-lts-jod')
+makedepends=('git' 'go' 'gcc' 'yarn' 'python' 'nodejs-lts-jod' corepack)
 #depends=("python" "gcc" "nodejs" "node-gyp" "nodejs-matrix-bot-sdk" "nodejs-js-yaml" "nodejs-config" "nodejs-matrix-protection-suite" "nodejs-matrix-protection-suite-for-matrix-bot-sdk" "nodejs-sentry-node" "nodejs-matrix-basic-types" "nodejs-typescript-result" "nodejs-html-to-text" "nodejs-jsdom" "nodejs-typebox" "nodejs-interface-manager" "nodejs-better-sqlite3" "nodejs-body-parser" "nodejs-express" "nodejs-matrix-appservice-bridge" "nodejs-pg")
 depends=("python" "gcc" "nodejs-lts-jod" "node-gyp" "nodejs-bindings")
 conflicts=("${_pkgname}")
 source=(
 	"${_pkgname}::git+https://github.com/the-draupnir-project/Draupnir.git#tag=v$(echo ${pkgver} | sed 's|_|-|g')"
 )
-sha256sums=('5677465b72a9d3e8af8ff6092035d42a64e0dbf34bbcf74b5fdbc8ee813e1375')
+sha256sums=('b77b7b37b207fe677529cdfb28861f8eeb7a08ad0507e4ec575c401e089f6b3f')
 
 function prepare() {
 	cd "${_pkgname}"

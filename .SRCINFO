@@ -1,6 +1,6 @@
 pkgbase = draupnir
 	pkgdesc = A Matrix moderation bot
-	pkgver = 2.7.1
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/the-draupnir-project/Draupnir
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = draupnir
 	makedepends = yarn
 	makedepends = python
 	makedepends = nodejs-lts-jod
+	makedepends = corepack
 	depends = python
 	depends = gcc
 	depends = nodejs-lts-jod
@@ -24,7 +25,7 @@ pkgbase = draupnir
 	options = !zipman
 	options = !purge
 	options = !lto
-	source = draupnir::git+https://github.com/the-draupnir-project/Draupnir.git#tag=v2.7.1
-	sha256sums = 5677465b72a9d3e8af8ff6092035d42a64e0dbf34bbcf74b5fdbc8ee813e1375
+	source = draupnir::git+https://github.com/the-draupnir-project/Draupnir.git#tag=v2.8.0
+	sha256sums = b77b7b37b207fe677529cdfb28861f8eeb7a08ad0507e4ec575c401e089f6b3f
 
 pkgname = draupnir
