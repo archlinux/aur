@@ -1,7 +1,7 @@
 pkgbase = pekka-kana-2
 	pkgdesc = an oldschool 2D platformer where you control a rooster called Pekka
 	pkgver = 1.2.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pistegamez.net/game_pk2.html
 	arch = aarch64
 	license = BSD-2-Clause

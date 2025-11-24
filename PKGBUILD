@@ -2,7 +2,7 @@
 
 pkgname=pekka-kana-2
 pkgver=1.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="an oldschool 2D platformer where you control a rooster called Pekka"
 arch=($CARCH)
 url="https://pistegamez.net/game_pk2.html"
