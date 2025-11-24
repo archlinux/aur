@@ -1,5 +1,5 @@
 pkgbase = pixie-icon-theme-git
-	pkgdesc = Pixie icon theme (development version from git)
+	pkgdesc = Pixie icon theme (git development version)
 	pkgver = 0.0.1.r18.g704835d
 	pkgrel = 1
 	url = https://github.com/maxtron95/pixie-icon-theme
