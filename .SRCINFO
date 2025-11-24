@@ -1,12 +1,12 @@
 pkgbase = msty-deb
 	pkgdesc = Msty Studio brings advanced AI capabilities to your fingertips. Run sophisticated AI workflows while keeping your data private and local.
-	pkgver = 2.1
-	pkgrel = 2
+	pkgver = 2.1.0
+	pkgrel = 3
 	url = https://msty.ai/
 	arch = x86_64
 	license = custom
 	conflicts = msty
-	source = https://next-assets.msty.studio/app/latest/linux/MstyStudio_amd64.deb
-	sha256sums = 521b7d2e23a456bec89cc8daa9b447f62ce2d1cb074840e6d4f23078a2b0c7e6
+	source = MstyStudio_amd64_2.1.0.deb::https://next-assets.msty.studio/app/latest/linux/MstyStudio_amd64.deb?ver=2.1.0
+	sha256sums = 5d72a41d0d1e784daf8fe12b83c678368ed79a49bc4c86e44ae1482487632752
 
 pkgname = msty-deb
