@@ -1,7 +1,7 @@
 # Maintainer: Adam 'TheElevatedOne' Mladý <admin@elevated.ovh> -> https://github.com/TheElevatedOne
 
 pkgname=waycentral-bin
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Centalized Program for Waybar Custom Modules"
 arch=('any')
