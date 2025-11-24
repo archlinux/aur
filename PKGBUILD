@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=distances
-_pkgver=0.1.12
+_pkgver=0.1.13
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,8 +16,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('aa8cd9bda565a964e043432ba2f7c5bc')
-b2sums=('d969fb063d2c3b59f6179ec2a2630e320b1ad91c0cf77b3b6583fe8cc69c9d250c50caa1f64226598346730a9328f0375fc0eb1fcde43a59436d2b6e3084d908')
+md5sums=('69dc1380c11a91591642c5647b48db42')
+b2sums=('93de3748e0e48bb3e3161cf2d59521f1be426d62d1a9b16127f109921e1e51616206ba1bffdde2d659f5fd0e764ce913909b92048e8613f023e327e6bf438f3c')
 
 build() {
   mkdir build
