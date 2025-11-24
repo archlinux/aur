@@ -2,8 +2,8 @@
 # Contributor: ark Wagie (yochananmarqos) <mark.wagie@proton.me>
 
 pkgname=xapp-symbolic-icons-git
-pkgver=r8.ab8fefc
-pkgrel=3
+pkgver=1.0.2+0
+pkgrel=1
 pkgdesc="A set of symbolic icons for GTK applications and projects (git)"
 arch=('any')
 url="https://github.com/xapp-project/xapp-symbolic-icons"
@@ -16,14 +16,14 @@ makedepends=(
   'git'
   'meson'
 )
-provides=('xapp-symbolic-icons')
-conflicts=('xapp-symbolic-icons')
+provides=('xapp-symbolic-icons' 'xsi-symbolic-icons')
+conflicts=('xapp-symbolic-icons' 'xsi-symbolic-icons')
 source=("${pkgname}::git+https://github.com/xapp-project/xapp-symbolic-icons.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  echo "$(git describe --long | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/+/' | sed 's/v//g' )"
 }
 
 build() {
@@ -34,4 +34,3 @@ build() {
 package() {
   meson install -C build --no-rebuild --destdir "$pkgdir"
 }
-
