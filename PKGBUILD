@@ -2,14 +2,14 @@
 
 pkgname='perl-ex-monkeypatched'
 pkgver='0.03'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Experimental API for safe monkey-patching"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-sub-name')
 makedepends=()
-url='https://metacpan.org/pod/Sub::Name'
+url='https://metacpan.org/dist/ex-monkeypatched'
 source=("https://cpan.metacpan.org/authors/id/A/AR/ARC/ex-monkeypatched-$pkgver.tar.gz")
 md5sums=('ace33fd3954f24d3d9b8512626c0ede8')
 sha512sums=('8cd864dccd9c7ab39090171ef7e86d359d40d9c04f7b7f3912aff367322b5e17816d50f39f680f344c75a2c5673bad74fdd9257e8f18ad61b2884c6ca3190825')

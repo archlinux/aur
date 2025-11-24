@@ -1,8 +1,8 @@
 pkgbase = perl-ex-monkeypatched
 	pkgdesc = Experimental API for safe monkey-patching
 	pkgver = 0.03
-	pkgrel = 1
-	url = https://metacpan.org/pod/Sub::Name
+	pkgrel = 2
+	url = https://metacpan.org/dist/ex-monkeypatched
 	arch = any
 	license = PerlArtistic
 	license = GPL
