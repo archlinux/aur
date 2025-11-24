@@ -4,7 +4,7 @@
 pkgname=(backintime backintime-cli)
 _pkgname="backintime"
 pkgver=1.5.6
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/bit-team/backintime"
 license=(GPL)
@@ -37,7 +37,7 @@ build() {
 
 package_backintime-cli() {
   pkgdesc="Simple backup system inspired from the Flyback Project and TimeVault. CLI version."
-  depends=(cron openssh python-dbus python-keyring rsync python-packaging)
+  depends=(openssh python-dbus python-keyring rsync python-packaging)
   optdepends=('backintime: Qt6 GUI version')
 
   cd "$_pkgname-$pkgver/common"

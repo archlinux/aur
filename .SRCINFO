@@ -1,6 +1,6 @@
 pkgbase = backintime
 	pkgver = 1.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bit-team/backintime
 	arch = any
 	license = GPL
@@ -28,7 +28,6 @@ pkgname = backintime
 
 pkgname = backintime-cli
 	pkgdesc = Simple backup system inspired from the Flyback Project and TimeVault. CLI version.
-	depends = cron
 	depends = openssh
 	depends = python-dbus
 	depends = python-keyring
