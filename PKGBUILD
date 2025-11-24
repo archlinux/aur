@@ -1,6 +1,6 @@
 # Maintainer: Niklas Aldervall <aldervall@users.noreply.github.com>
 pkgname=voicetype-bin
-pkgver=1.5.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Local English voice transcription using whisper.cpp with hold-to-speak daemon'
 arch=('x86_64')
@@ -26,44 +26,43 @@ conflicts=('voicetype')
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('36b080ff8a85675fdba0db568b2dff024f5e11dd6f1db02524d328918a803371')
+sha256sums=('58dc15b449a7d6e8cb0870e6b39b655ec4c721328a512438e905a67c8ba9e04b')
 install=voicetype.install
 
 package() {
     cd "$srcdir/Voicetype-$pkgver"
 
-    # Install Python modules as a proper package
-    # Uses python -c to get the correct site-packages path
-    local site_packages
-    site_packages="$pkgdir$(python -c 'import site; print(site.getsitepackages()[0])')"
-    install -dm755 "$site_packages/voicetype"
-    install -Dm644 src/*.py -t "$site_packages/voicetype/"
+    # Install Python modules
+    install -dm755 "$pkgdir/usr/lib/voicetype"
+    install -Dm644 src/*.py -t "$pkgdir/usr/lib/voicetype/"
+    install -Dm644 src/config.py "$pkgdir/usr/lib/voicetype/config.py"
 
-    # Install whisper-server binary and scripts
-    # Code expects whisper at ../.whisper/ relative to src/
-    # So we install to site-packages/.whisper/ (parent of voicetype/)
-    install -dm755 "$site_packages/.whisper/bin"
+    # Install whisper-server binary
+    install -dm755 "$pkgdir/usr/lib/voicetype/whisper/bin"
     install -Dm755 .whisper/bin/whisper-server-linux-x64 \
-        "$site_packages/.whisper/bin/whisper-server-linux-x64"
-
-    # Create models directory (model downloads on first use)
-    install -dm755 "$site_packages/.whisper/models"
+        "$pkgdir/usr/lib/voicetype/whisper/bin/whisper-server"
 
     # Install helper scripts
-    install -dm755 "$site_packages/.whisper/scripts"
-    install -Dm755 .whisper/scripts/*.sh -t "$site_packages/.whisper/scripts/"
+    install -dm755 "$pkgdir/usr/lib/voicetype/whisper/scripts"
+    install -Dm755 .whisper/scripts/*.sh -t "$pkgdir/usr/lib/voicetype/whisper/scripts/"
+
+    # Install sound files for audio feedback
+    install -dm755 "$pkgdir/usr/lib/voicetype/sounds"
+    install -Dm644 sounds/*.wav -t "$pkgdir/usr/lib/voicetype/sounds/"
 
     # Install launcher scripts
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/voicetype-daemon" <<'EOF'
 #!/bin/bash
 # VoiceType daemon launcher
-exec python -m voicetype.voice_holdtospeak "$@"
+cd /usr/lib/voicetype
+exec python -m voice_holdtospeak "$@"
 EOF
 
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/voicetype-input" <<'EOF'
 #!/bin/bash
 # VoiceType one-shot voice input
-exec python -m voicetype.voice_to_text "$@"
+cd /usr/lib/voicetype
+exec python -m voice_to_text "$@"
 EOF
 
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/voicetype-stop-server" <<'EOF'
