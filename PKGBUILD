@@ -1,6 +1,6 @@
 pkgname=stasis-git
-pkgver=0.5.2.r35.g4bd98dd   # auto-generated
-pkgrel=1
+pkgver=0.5.2.r35.g4bd98dd
+pkgrel=2
 pkgdesc="A modern Wayland idle manager designed for simplicity and effectiveness (git version)"
 arch=('x86_64')
 url="https://github.com/saltnpepper97/stasis"
