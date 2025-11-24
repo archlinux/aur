@@ -4,5 +4,10 @@ src/
 *.xz
 *.zst
 
+# makechrootpkg files
+*-build.log
+*-check.log
+*-package.log
+
 # source files
 *.gz
