@@ -1,5 +1,5 @@
 # Maintainer: Pablo Lezaeta Reyes (JotaRandom) <prflr88@gmail.com>
-# Contributor: ark Wagie (yochananmarqos) <mark.wagie@proton.me>
+# Contributor: Mark Wagie (yochananmarqos) <mark.wagie@proton.me>
 
 pkgname=xapp-symbolic-icons
 pkgver=1.0.2
@@ -29,4 +29,3 @@ build() {
 package() {
   meson install -C build --no-rebuild --destdir "$pkgdir"
 }
-
