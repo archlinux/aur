@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-future-io'
-pkgver='0.16'
+pkgver='0.17'
 pkgrel='1'
 pkgdesc="Future-returning IO methods"
 arch=('any')
@@ -10,12 +10,12 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-future>=0' 'perl-struct-dumb>=0' 'perl>=5.014')
 makedepends=()
-checkdepends=('perl-test-expectandcheck>=0.06' 'perl-test-future-io-impl>=0')
+checkdepends=('perl-test-expectandcheck>=0.06' 'perl-test-future-io-impl>=0.15')
 url='https://metacpan.org/release/Future-IO'
-source=('http://search.cpan.org/CPAN/authors/id/P/PE/PEVANS/Future-IO-0.16.tar.gz')
-md5sums=('1f20f9a2f698f27cc9a07b1831ebd500')
-sha512sums=('9e5a9bf839127693ae028673ffa6bf47480fae1347e9b0c48b5f17380c35b221f15e9f86092165d2f04747f4652a7ce5dda7d8d43e89df8101abe07d3acb7491')
-_distdir="Future-IO-0.16"
+source=('http://search.cpan.org/CPAN/authors/id/P/PE/PEVANS/Future-IO-0.17.tar.gz')
+md5sums=('3de59ae264a39f6afc383c8500f99c1a')
+sha512sums=('671eb8f2eee0cda55477631fd6a89bcc98495cd98e98bef55ed5b50e2b877f47451fcaed98cec48d13604351dd96ea06b69bab80246c393aa69b3940efca52b6')
+_distdir="Future-IO-0.17"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
