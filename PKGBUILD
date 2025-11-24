@@ -1,9 +1,9 @@
 # Maintainer: pierspad
 pkgname=textmerger
-pkgver=1.2.1
-pkgrel=3
+pkgver=1.3.2
+pkgrel=1
 pkgdesc="A Python GUI application for merging text files"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/pierspad/textmerger"
 license=('MIT')
 
@@ -14,7 +14,7 @@ depends=(
   'python-werkzeug'
 )
 
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'cython' 'gcc')
 optdepends=(
     'python-nbformat: for Jupyter Notebook support'
     'python-pypdf2: for PDF support'
@@ -23,7 +23,7 @@ optdepends=(
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/pierspad/textmerger/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('cf96439171d66b7ee6f2fb2cac5bb1047b29cf76942c3172d99aad04b419a1b0')
+sha256sums=('27b0f1f9cfd84683bc468d41e4a31623328e8e936e1fd223a0633b381f40edad')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -31,7 +31,9 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  /usr/bin/python -m build --wheel
+  echo "Building wheel package with Cython extensions..."
+  /usr/bin/python -m build --wheel >/dev/null 2>&1 || /usr/bin/python -m build --wheel
+  echo "✓ Build completed"
 }
 
 package() {
