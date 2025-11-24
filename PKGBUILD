@@ -1,5 +1,5 @@
 #!/bin/bash
-# Maintainer: jstmax! <jstmaxlol@disroot.org> & <maxwasmailed@proton.me>
+# Maintainer: czjstmax : <jstmaxlol@disroot.org>, <maxwasmailed@proton.me>
 pkgname=pacdo
 pkgver=2025.11.1607
 pkgrel=0
