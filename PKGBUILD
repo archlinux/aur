@@ -3,7 +3,7 @@
 
 pkgname=winboat
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Run Windows apps on Linux with seamless integration"
 arch=('x86_64')
 url="https://www.winboat.app"
@@ -52,7 +52,7 @@ build() {
 
   mkdir dist/.icon-set
   for i in 16 32 48 64 128 256 512; do
-    magick icons/icon.png -resize "${i}x${i}" "dist/.icon-set/icon_${i}x${i}.png"
+    magick -background none icons/winboat_logo.svg -resize "${i}x${i}" "dist/.icon-set/icon_${i}x${i}.png"
   done
 }
 
