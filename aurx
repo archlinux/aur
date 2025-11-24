@@ -233,6 +233,9 @@ print_error() {
 		79 )
 			echo "[!] \"${CFG_VAR}\" config key unknown. Discarding."
 			;;
+		80 )
+			echo "[-] Your kernel has been upgraded recently. Please reboot."
+			;;
 		* )
 			echo "[-] No error message found for error ${GIVEN_ERROR}."
 			;;
@@ -364,6 +367,11 @@ aurx_completion() {
 }
 
 launch_sanity_checks() {
+	if [ $(vercmp $(pacman -Q linux | cut -d " " -f 2) $(uname -r)) -ne 0 ]; then
+		print_error 80
+		exit 80
+	fi
+
 	if [[ ! "${POSSIBLE_OPERATIONS[*]}" =~ ${CURRENT_OPERATION} ]]; then
 		print_error 55
 		exit 55
@@ -1211,7 +1219,7 @@ execute_script() {
 }
 
 # Metadata.
-INTERNAL_VERSION="1.0.4-3"
+INTERNAL_VERSION="1.0.5-1"
 INTERNAL_VARIABLES=("ALL" "BLOCK_OVERWRITE" "CLEAN_OPERATION" "CLEANUP" "COMPARISON_CRITERIA" \
 	"DOWNLOAD_ONLY" "EXECUTABLE_NAME" "FORCE" "KEEP_FAILED_SOURCES" "KEEP_SOURCES" "MAINTAINED" \
 	"NO_MARK_INSTALLED" "NO_MARK_UPDATE" "NO_OUT_OF_DATE" "ORDER_BY" "OUTPUT" "OVERWRITE_EXISTING" \
