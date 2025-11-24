@@ -1,6 +1,6 @@
 pkgbase = voicetype-bin
 	pkgdesc = Local English voice transcription using whisper.cpp with hold-to-speak daemon
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/aldervall/Voicetype
 	install = voicetype.install
@@ -19,9 +19,9 @@ pkgbase = voicetype-bin
 	optdepends = pulseaudio: audio feedback beeps
 	provides = voicetype
 	conflicts = voicetype
-	source = voicetype-bin-1.5.2.tar.gz::https://github.com/aldervall/Voicetype/archive/v1.5.2.tar.gz
+	source = voicetype-bin-1.5.3.tar.gz::https://github.com/aldervall/Voicetype/archive/v1.5.3.tar.gz
 	source = ggml-base.en.bin::https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.en.bin
-	sha256sums = 89704ac816c9fe739b4cad7e5d6ef57f0c62b482fdfdb10db9e627b05a97d205
+	sha256sums = d8f05fd160f05633b35121c735e99b00301ae6853954ca377e955fb494607337
 	sha256sums = a03779c86df3323075f5e796cb2ce5029f00ec8869eee3fdfb897afe36c6d002
 
 pkgname = voicetype-bin

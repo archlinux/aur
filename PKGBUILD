@@ -1,6 +1,6 @@
 # Maintainer: Niklas Aldervall <aldervall@users.noreply.github.com>
 pkgname=voicetype-bin
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc='Local English voice transcription using whisper.cpp with hold-to-speak daemon'
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
     "ggml-base.en.bin::https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.en.bin"
 )
-sha256sums=('89704ac816c9fe739b4cad7e5d6ef57f0c62b482fdfdb10db9e627b05a97d205'
+sha256sums=('d8f05fd160f05633b35121c735e99b00301ae6853954ca377e955fb494607337'
             'a03779c86df3323075f5e796cb2ce5029f00ec8869eee3fdfb897afe36c6d002')
 install=voicetype.install
 
