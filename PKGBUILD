@@ -2,19 +2,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-dist-zilla-plugin-test-perl-critic'
-pkgver='3.004'
+pkgver='3.005'
 pkgrel='1'
 pkgdesc="Tests to check your code against best practices"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-data-section>=0.004' 'perl-dist-zilla>=0' 'perl-moose>=0' 'perl-sub-exporter-formethods>=0' 'perl-namespace-autoclean>=0' 'perl>=5.008')
+depends=('perl-data-section>=0.004' 'perl-dist-zilla>=0' 'perl-moose>=0' 'perl-path-tiny>=0' 'perl-sub-exporter-formethods>=0' 'perl-namespace-autoclean>=0' 'perl>=5.008')
 makedepends=()
 url='https://metacpan.org/release/Dist-Zilla-Plugin-Test-Perl-Critic'
-source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Dist-Zilla-Plugin-Test-Perl-Critic-3.004.tar.gz')
-md5sums=('840e4c90ef2039b7a804191612222524')
-sha512sums=('c71e8cd7dc552a3b5564657319d3b5e4bee2f53238d7ef8ab06b495b65f82ba120042061681386c46dbb373f0106e5aa578afa0fdf0bf9245b9da3ca75f7dd57')
-_distdir="Dist-Zilla-Plugin-Test-Perl-Critic-3.004"
+source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Dist-Zilla-Plugin-Test-Perl-Critic-3.005.tar.gz')
+md5sums=('221dd284440375d648620a601c37af3c')
+sha512sums=('2cb43dbc06b20e5b307795ddd2c532f598105a9f04b336aefcf12a38480b16a27530d5dd205ceb866147a87e57009658a12338b70643c81518a4ad0df166735c')
+_distdir="Dist-Zilla-Plugin-Test-Perl-Critic-3.005"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -24,21 +24,21 @@ build() {
       MODULEBUILDRC=/dev/null
 
     cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
+    /usr/bin/perl Build.PL
+    /usr/bin/perl Build
   )
 }
 
 check() {
   cd "$srcdir/$_distdir"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
+    /usr/bin/perl Build test
   )
 }
 
 package() {
   cd "$srcdir/$_distdir"
-  make install
+  /usr/bin/perl Build install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
