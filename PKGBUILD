@@ -4,12 +4,12 @@
 _pkgname=sshpilot
 pkgname=${_pkgname}-bin
 pkgver=4.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support."
 arch=('x86_64')
 url="https://github.com/mfat/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/mfat/${_pkgname}/v${pkgver}"
-license=('GPL-3.0')
+license=('GPL-3.0-only')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
