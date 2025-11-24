@@ -1,0 +1,4 @@
+*.xpi
+pkg/
+*.lz4
+*.zst
