@@ -10,6 +10,7 @@ url="https://github.com/meowrch/pawlette"
 license=('GPL-3.0')
 depends=('python')
 makedepends=('python-uv' 'python-virtualenv' 'git')
+options=('!debug')
 source=("git+https://github.com/meowrch/pawlette.git")
 sha256sums=('SKIP')
 

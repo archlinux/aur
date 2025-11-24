@@ -11,6 +11,7 @@ pkgbase = pawlette-git
 	depends = python
 	provides = pawlette
 	conflicts = pawlette
+	options = !debug
 	source = git+https://github.com/meowrch/pawlette.git
 	sha256sums = SKIP
 
