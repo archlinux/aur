@@ -15,7 +15,7 @@ pkgbase = tensamin-bin
 	provides = tensamin
 	conflicts = tensamin
 	conflicts = tensamin-git
-	source = https://github.com/Tensamin/Frontend/releases/download/v0.1.4/tensamin_0.1.4_amd64.deb
+	source = https://github.com/Tensamin/Frontend/releases/download/desktop-v0.1.4/tensamin_0.1.4_amd64.deb
 	sha256sums = SKIP
 
 pkgname = tensamin-bin

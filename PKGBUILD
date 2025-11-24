@@ -10,7 +10,7 @@ license=('custom')
 depends=('gtk3' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'libappindicator-gtk3' 'libsecret')
 provides=('tensamin')
 conflicts=('tensamin' 'tensamin-git')
-source=("https://github.com/Tensamin/Frontend/releases/download/v${pkgver}/tensamin_${pkgver}_amd64.deb")
+source=("https://github.com/Tensamin/Frontend/releases/download/desktop-v${pkgver}/tensamin_${pkgver}_amd64.deb")
 sha256sums=('SKIP')
 
 package() {
