@@ -1,7 +1,7 @@
 # Maintainer: Niklas Aldervall <aldervall@users.noreply.github.com>
 pkgname=voicetype-bin
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Local English voice transcription using whisper.cpp with hold-to-speak daemon'
 arch=('x86_64')
 url='https://github.com/aldervall/Voicetype'
@@ -25,8 +25,10 @@ provides=('voicetype')
 conflicts=('voicetype')
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+    "ggml-base.en.bin::https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.en.bin"
 )
-sha256sums=('2356875f20d8d2c70b8a613980648e6742d0adc62f7fc8de1363e7e361c9613e')
+sha256sums=('2356875f20d8d2c70b8a613980648e6742d0adc62f7fc8de1363e7e361c9613e'
+            'a03779c86df3323075f5e796cb2ce5029f00ec8869eee3fdfb897afe36c6d002')
 install=voicetype.install
 
 package() {
@@ -45,6 +47,10 @@ package() {
     # Install helper scripts
     install -dm755 "$pkgdir/usr/lib/voicetype/whisper/scripts"
     install -Dm755 .whisper/scripts/*.sh -t "$pkgdir/usr/lib/voicetype/whisper/scripts/"
+
+    # Install whisper model (downloaded during build)
+    install -dm755 "$pkgdir/usr/lib/voicetype/whisper/models"
+    install -Dm644 "$srcdir/ggml-base.en.bin" "$pkgdir/usr/lib/voicetype/whisper/models/ggml-base.en.bin"
 
     # Install sound files for audio feedback
     install -dm755 "$pkgdir/usr/lib/voicetype/sounds"
