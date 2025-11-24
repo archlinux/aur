@@ -1,0 +1,4 @@
+[lib32-libavc1394]
+source = "regex"
+url = "https://sourceforge.net/projects/libavc1394/best_release.json"
+regex = "libavc1394-([^\"]*).tar.gz"
