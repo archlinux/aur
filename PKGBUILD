@@ -2,7 +2,7 @@
 
 _basename=xfce-winxp-tc
 pkgname=('xfce-winxp-tc-git' 'libwintc-git')
-pkgver=r364.4f73e4a
+pkgver=r416.1a2f8d5
 pkgrel=1
 pkgdesc="Windows XP Total Conversion for XFCE"
 arch=('x86_64' 'aarch64')
@@ -11,6 +11,7 @@ license=('GPL')
 depends=(
 	'python'
 	'sqlite'
+	'libxml2'
 )
 makedepends=(
 	'git'
