@@ -1,14 +1,14 @@
 # Maintainer: Daniel Cafe <dcafe@unb.br>
 pkgname=dsim
 pkgver=2026
-pkgrel=2
+pkgrel=3
 pkgdesc="DSim is an optimizing compiled-code digital logic simulator supporting Verilog, SystemVerilog and VHDL."
 arch=('x86_64')
 url="https://altair.com/dsim"
 license=('Altair')
 depends=('uvm')
 installer="AltairDSim${pkgver}_linux64.bin"
-source=(file://${installer}
+source=(file://$HOME/Downloads/${installer}
         "dsim.sh")
 sha256sums=('56612e2cbad142eebdade8977c3b82ad78f65bfa59d254a1c62da3edb78414ea'
 	    'SKIP')

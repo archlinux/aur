@@ -1,14 +1,14 @@
 pkgbase = dsim
 	pkgdesc = DSim is an optimizing compiled-code digital logic simulator supporting Verilog, SystemVerilog and VHDL.
 	pkgver = 2026
-	pkgrel = 2
+	pkgrel = 3
 	url = https://altair.com/dsim
 	install = dsim.install
 	arch = x86_64
 	license = Altair
 	depends = uvm
 	options = !debug
-	source = file://AltairDSim2026_linux64.bin
+	source = file://$HOME/Downloads/AltairDSim2026_linux64.bin
 	source = dsim.sh
 	sha256sums = 56612e2cbad142eebdade8977c3b82ad78f65bfa59d254a1c62da3edb78414ea
 	sha256sums = SKIP
