@@ -1,0 +1,3 @@
+[python-azure-search-documents]
+source = "pypi"
+pypi = "azure-search-documents"

@@ -1,0 +1,20 @@
+pkgbase = python-azure-search-documents
+	pkgdesc = Microsoft Azure Cognitive Search Client Library for Python
+	pkgver = 11.6.0
+	pkgrel = 1
+	url = https://github.com/Azure/azure-sdk-for-python
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-azure-core
+	depends = python-isodate
+	depends = python-azure-common
+	depends = python-typing_extensions
+	source = python-azure-search-documents-11.6.0.tar.gz::https://github.com/Azure/azure-sdk-for-python/archive/azure-search-documents_11.6.0.tar.gz
+	b2sums = 08effdf081eb99efac12434eae77873ce021301d51b1c5c64b9e765c795974e953907e72db43174fcac1bf1a0134425b3ed166cde2fe585bd7d2d29cc2827f49
+
+pkgname = python-azure-search-documents
