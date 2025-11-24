@@ -2,7 +2,7 @@
 
 pkgname=claude-desktop-native
 pkgver=0.14.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Claude Desktop for Linux"
 arch=('x86_64')
 url="https://github.com/jkoelker/claude-desktop-native"
@@ -107,7 +107,7 @@ package() {
 Name=Claude
 GenericName=Claude Desktop
 Exec=${pkgname} %u
-Icon=${pkgname}
+Icon=claude
 Type=Application
 Terminal=false
 Categories=Office;Utility;

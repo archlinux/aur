@@ -1,7 +1,7 @@
 pkgbase = claude-desktop-native
 	pkgdesc = Unofficial Claude Desktop for Linux
 	pkgver = 0.14.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jkoelker/claude-desktop-native
 	arch = x86_64
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = claude-desktop-native
 	makedepends = tar
 	depends = electron
 	optdepends = docker: for running MCP servers
-	source = Claude-Setup-x64-0.14.10-1.exe::https://storage.googleapis.com/osprey-downloads-c02f6a0d-347c-492b-a752-3e0651722e97/nest-win-x64/Claude-Setup-x64.exe
+	source = Claude-Setup-x64-0.14.10-2.exe::https://storage.googleapis.com/osprey-downloads-c02f6a0d-347c-492b-a752-3e0651722e97/nest-win-x64/Claude-Setup-x64.exe
 	source = patchy-cnb::git+https://github.com/k3d3/claude-desktop-linux-flake.git
 	sha256sums = 4a7fe5bcc95f29dedbfeeb45bc2c6b916343253ba0e0e392038968f5857c6aa9
 	sha256sums = SKIP
