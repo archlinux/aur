@@ -1,7 +1,7 @@
 # Maintainer: Daniel Serrano <dani.eus79@gmail.com>
 pkgname=visagevault-bin
 _pkgname=visagevault
-pkgver=1.6.1
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="Gestor de fotografías inteligente con reconocimiento facial (Binario precompilado)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ options=('!strip') # Importante para no romper binarios de PyInstaller
 source=("https://github.com/danitxu79/visagevault/releases/download/v${pkgver}/VisageVault-${pkgver}-1-x86_64.pkg.tar.zst")
 
 # Para saltar la comprobación de checksums (puedes poner 'SKIP' o generar el sha256sum real con 'sha256sum archivo')
-sha256sums=('86e1deb6dfca1e25a9b574fc80a236c88a9a1c06021c15ceef9d8ba8236acb56')
+sha256sums=('100a5f87cb5a41c71e5799148f29f6b13973113ae74c3164c803a7ebbeffe21e')
 
 package() {
     # Como el archivo fuente ya es un paquete de Arch (.pkg.tar.zst),
