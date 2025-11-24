@@ -107,137 +107,137 @@ print_error() {
 
 	case "${GIVEN_ERROR}" in
 		10 )
-			echo "[!] Could not remove files for target: \"${SELECTED_PACKAGE}\"."
-			echo "[i] Check file permissions."
+			echo "[!] Could not remove files for target: \"${SELECTED_PACKAGE}\"." >&2
+			echo "[i] Check file permissions." >&2
 			;;
 		11 )
-			echo "[!] Could not pull repository: \"${SELECTED_PACKAGE}\"."
+			echo "[!] Could not pull repository: \"${SELECTED_PACKAGE}\"." >&2
 			;;
 		12 )
-			echo "[!] Could not clone git repository of \"${SELECTED_PACKAGE}\"."
+			echo "[!] Could not clone git repository of \"${SELECTED_PACKAGE}\"." >&2
 			;;
 		13 )
-			echo "[!] Could not build \"${SELECTED_PACKAGE}\"."
+			echo "[!] Could not build \"${SELECTED_PACKAGE}\"." >&2
 			;;
 		14 )
-			echo "[!] Could not write \"${SELECTED_PACKAGE}\" to the package_list."
+			echo "[!] Could not write \"${SELECTED_PACKAGE}\" to the package_list." >&2
 			;;
 		20 )
-			echo "[!] Could not remove \"${SELECTED_PACKAGE}\" from system."
+			echo "[!] Could not remove \"${SELECTED_PACKAGE}\" from system." >&2
 			;;
 		21 )
-			echo "[!] Could not remove \"${SELECTED_PACKAGE}\" from the package_list."
+			echo "[!] Could not remove \"${SELECTED_PACKAGE}\" from the package_list." >&2
 			;;
 		30 )
-			echo "[!] Could not gather AUR HTTP data."
+			echo "[!] Could not gather AUR HTTP data." >&2
 			;;
 		31 )
-			echo "[!] Could not filter AUR HTTP responses."
+			echo "[!] Could not filter AUR HTTP responses." >&2
 			;;
 		32 )
-			echo "[!] Could not print AUR HTTP data."
+			echo "[!] Could not print AUR HTTP data." >&2
 			;;
 		40 )
-			echo "[!] Could not get suggest results."
+			echo "[!] Could not get suggest results." >&2
 			;;
 		50|51 )
-			echo "[-] getopt not working properly."
+			echo "[-] getopt not working properly." >&2
 			;;
 		52 )
-			echo "[-] Unknown search criteria: \"${SEARCH_CRITERIA}\"."
-			echo "[i] Possible options are: name, name-desc, depends, checkdepends, optdepends, makedepends, maintainer, submitter, provides, conflicts, replaces, keywords, groups, comaintainers."
+			echo "[-] Unknown search criteria: \"${SEARCH_CRITERIA}\"." >&2
+			echo "[i] Possible options are: name, name-desc, depends, checkdepends, optdepends, makedepends, maintainer, submitter, provides, conflicts, replaces, keywords, groups, comaintainers." >&2
 			;;
 		53 )
-			echo "[-] Unknown error while parsing options."
+			echo "[-] Unknown error while parsing options." >&2
 			;;
 		54 )
-			echo "[-] No operation selected. Possible options are: ${POSSIBLE_OPERATIONS[*]}."
+			echo "[-] No operation selected. Possible options are: ${POSSIBLE_OPERATIONS[*]}." >&2
 			;;
 		55 )
-			echo "[-] Unknown operation: \"${CURRENT_OPERATION}\". Possible options are: ${POSSIBLE_OPERATIONS[*]}."
+			echo "[-] Unknown operation: \"${CURRENT_OPERATION}\". Possible options are: ${POSSIBLE_OPERATIONS[*]}." >&2
 			;;
 		56 )
-			echo "[-] No parameters found and the current \"${CURRENT_OPERATION}\" operation requires at least one."
+			echo "[-] No parameters found and the current \"${CURRENT_OPERATION}\" operation requires at least one." >&2
 			;;
 		57 )
-			echo "[!] Can't install or update packages as root."
+			echo "[!] Can't install or update packages as root." >&2
 			;;
 		58 )
-			echo "[-] Unknown verbosity level \"${VERBOSITY}\"."
-			echo "[i] Possible options are: 0 - nothing, 1 - stderr, 2 - all"
+			echo "[-] Unknown verbosity level \"${VERBOSITY}\"." >&2
+			echo "[i] Possible options are: 0 - nothing, 1 - stderr, 2 - all" >&2
 			;;
 		59 )
-			echo "[-] The following required packages are not installed: ${ABSENT_PACKAGES[*]}."
+			echo "[-] The following required packages are not installed: ${ABSENT_PACKAGES[*]}." >&2
 			;;
 		60 )
-			echo "[-] Shell type \"${SHELL_TYPE}\" is not supported."
+			echo "[-] Shell type \"${SHELL_TYPE}\" is not supported." >&2
 			;;
 		61 )
-			echo "[-] Uknown error code ${ERROR_CODE} received."
+			echo "[-] Uknown error code ${ERROR_CODE} received." >&2
 			;;
 		62 )
-			echo "[-] Completion for \"${COMPLETION_TYPE}\" is not available."
+			echo "[-] Completion for \"${COMPLETION_TYPE}\" is not available." >&2
 			;;
 		63 )
-			echo "[-] pushd failed at \"${PWD}\"."
+			echo "[-] pushd failed at \"${PWD}\"." >&2
 			;;
 		64 )
-			echo "[-] popd failed at \"${PWD}\"."
+			echo "[-] popd failed at \"${PWD}\"." >&2
 			;;
 		65 )
-			echo "[-] Unknown sort-by value: \"${SORT_BY}\"."
-			echo "[i] Possible options are: firstsubmitted, lastmodified, votes, popularity."
+			echo "[-] Unknown sort-by value: \"${SORT_BY}\"." >&2
+			echo "[i] Possible options are: firstsubmitted, lastmodified, votes, popularity." >&2
 			;;
 		66 )
-			echo "[-] Unknown order-by value: \"${ORDER_BY}\"."
-			echo "[i] Possible options are: ascending, descending."
+			echo "[-] Unknown order-by value: \"${ORDER_BY}\"." >&2
+			echo "[i] Possible options are: ascending, descending." >&2
 			;;
 		67 )
-			echo "[-] Could not pull repository: \"${SELECTED_PACKAGE}\"."
+			echo "[-] Could not pull repository: \"${SELECTED_PACKAGE}\"." >&2
 			;;
 		68 )
-			echo "[-] Unknown comparison criteria: \"${COMPARISON_CRITERIA}\"."
-			echo "[i] Possible options are: pkgbuild, rpc."
+			echo "[-] Unknown comparison criteria: \"${COMPARISON_CRITERIA}\"." >&2
+			echo "[i] Possible options are: pkgbuild, rpc." >&2
 			;;
 		70 )
-			echo "[-] Could not find PKGBUILD for \"${SELECTED_PACKAGE}\" with comparison criteria \"pkgbuild\"."
+			echo "[-] Could not find PKGBUILD for \"${SELECTED_PACKAGE}\" with comparison criteria \"pkgbuild\"." >&2
 			;;
 		71 )
-			echo "[-] Internal error during execution phase."
+			echo "[-] Internal error during execution phase." >&2
 			;;
 		72 )
-			echo "[-] Could not create required directory \"${REQUIRED_DIRECTORY}\"."
+			echo "[-] Could not create required directory \"${REQUIRED_DIRECTORY}\"." >&2
 			;;
 		73 )
-			echo "[-] Could not touch required file \"${REQUIRED_FILE}\"."
+			echo "[-] Could not touch required file \"${REQUIRED_FILE}\"." >&2
 			;;
 		74 )
-			echo "[-] Could not establish a connection to the AUR RPC HTTP API."
+			echo "[-] Could not establish a connection to the AUR RPC HTTP API." >&2
 			;;
 		75 )
-			echo "[-] Unknown output: \"${OUTPUT}\"."
-			echo "[i] Possible options are: formatted, json-lines, json."
+			echo "[-] Unknown output: \"${OUTPUT}\"." >&2
+			echo "[i] Possible options are: formatted, json-lines, json." >&2
 			;;
 		76 )
 			local TEMP_PACKAGES
 			TEMP_PACKAGES="${PACKAGES_NOT_FOUND[*]}"
-			echo "[!] Could not find ${TEMP_PACKAGES//\ /,\ }."
+			echo "[!] Could not find ${TEMP_PACKAGES//\ /,\ }." >&2
 			;;
 		77 )
-			echo "[!] The suggest operation can not output json."
-			echo "[i] Possible options are: formatted, json-lines."
+			echo "[!] The suggest operation can not output json." >&2
+			echo "[i] Possible options are: formatted, json-lines." >&2
 			;;
 		78 )
-			echo "[!] \"${CFG_VAR}\" config value has stacked values. Discarding."
+			echo "[!] \"${CFG_VAR}\" config value has stacked values. Discarding." >&2
 			;;
 		79 )
-			echo "[!] \"${CFG_VAR}\" config key unknown. Discarding."
+			echo "[!] \"${CFG_VAR}\" config key unknown. Discarding." >&2
 			;;
 		80 )
-			echo "[-] Your kernel has been upgraded recently. Please reboot."
+			echo "[-] Your kernel has been upgraded recently. Please reboot." >&2
 			;;
 		* )
-			echo "[-] No error message found for error ${GIVEN_ERROR}."
+			echo "[-] No error message found for error ${GIVEN_ERROR}." >&2
 			;;
 	esac
 }
@@ -1219,7 +1219,7 @@ execute_script() {
 }
 
 # Metadata.
-INTERNAL_VERSION="1.0.5-1"
+INTERNAL_VERSION="1.0.5-2"
 INTERNAL_VARIABLES=("ALL" "BLOCK_OVERWRITE" "CLEAN_OPERATION" "CLEANUP" "COMPARISON_CRITERIA" \
 	"DOWNLOAD_ONLY" "EXECUTABLE_NAME" "FORCE" "KEEP_FAILED_SOURCES" "KEEP_SOURCES" "MAINTAINED" \
 	"NO_MARK_INSTALLED" "NO_MARK_UPDATE" "NO_OUT_OF_DATE" "ORDER_BY" "OUTPUT" "OVERWRITE_EXISTING" \
