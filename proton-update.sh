@@ -21,7 +21,7 @@ URL="https://cdn77.cachyos.org/repo/x86_64/cachyos/$URL_SUFFIX"
 
 curl "$URL" --output proton-cachyos.pkg.tar.zst
 
-pacman -U proton-cachyos.pkg.tar.zst
+pacman -U proton-cachyos.pkg.tar.zst --needed
 
 rm -r proton-cachyos.pkg.tar.zst
 
