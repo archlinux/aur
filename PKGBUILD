@@ -2,7 +2,7 @@
 _base=scipy-stubs
 pkgname=python-${_base}
 pkgdesc="Type annotations for SciPy"
-pkgver=1.16.3.0
+pkgver=1.16.3.1
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/jorenham/${_base}"
@@ -11,7 +11,7 @@ depends=(python-optype python-numpy)
 makedepends=(python-build python-installer python-uv-build)
 optdepends=('python-scipy: for SciPy support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('11860e6d92246d6c83b3a702702e59f8681e5904cfe87fd1511d8fdd305715aae61cdbc1a9261c91083dbc81d4f14c924a3cb6627c6c0a1ae234297e42f1a41d')
+sha512sums=('17cc9b739809606892f34bbaab2c3e80702cd591f15e0cf52a800892afab0e6df1790a03f35ff688d7967116f38586b95f9bc198745cc45d63c107c27dbf362a')
 
 build() {
   cd ${_base}-${pkgver}
