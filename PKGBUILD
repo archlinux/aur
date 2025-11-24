@@ -4,7 +4,7 @@
 pkgname='perl-io-zlib'
 pkgver='1.15'
 pkgrel='1'
-pkgdesc="unknown"
+pkgdesc="IO:: style interface to Compress::Zlib"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')

@@ -1,5 +1,5 @@
 pkgbase = perl-io-zlib
-	pkgdesc = unknown
+	pkgdesc = IO:: style interface to Compress::Zlib
 	pkgver = 1.15
 	pkgrel = 1
 	url = https://metacpan.org/release/IO-Zlib
