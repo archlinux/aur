@@ -2,10 +2,11 @@
 
 pkgname=asa
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert Fortran carriage control characters'
-arch=('any')
-license=('GPL2')
+arch=('x86_64')
+license=('GPL-2.0-only')
+depends=('glibc')
 source=('http://archive.debian.org/debian/dists/slink/main/source/text/asa_1.2.orig.tar.gz'
         'https://src.fedoraproject.org/rpms/asa/raw/f16/f/asa-1.2-declare.patch')
 sha256sums=('3a4189cd3e3da1d702031d619a9529cb247363a41ce037f14fc9b95228dbf603'
