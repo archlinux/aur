@@ -2,19 +2,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-compress-raw-zlib'
-pkgver='2.206'
+pkgver='2.214'
 pkgrel='1'
-pkgdesc="Perl module Low-Level Interface to zlib compression library"
+pkgdesc="Perl interface to zlib/zlib-ng compression libraries"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=0')
+depends=('perl')
 makedepends=()
 url='https://metacpan.org/release/Compress-Raw-Zlib'
-source=('http://search.cpan.org/CPAN/authors/id/P/PM/PMQS/Compress-Raw-Zlib-2.206.tar.gz')
-md5sums=('a314463a2a6630b26f03551bdea4a9c4')
-sha512sums=('3c722e6f363de90f6367446624090a9c482c9ed09f34b749765706da68e55e63f94608ea1d06669af567d8f8111d3311415f1f8a3daf782368c9a7bd4ff226f5')
-_distdir="Compress-Raw-Zlib-2.206"
+source=('http://search.cpan.org/CPAN/authors/id/P/PM/PMQS/Compress-Raw-Zlib-2.214.tar.gz')
+md5sums=('affe2a040b74a3faf3344793b711fb98')
+sha512sums=('fc7eb7640f7f8d2ed630e9221bcff6a3d628b9bd6f49281dcbd520fd7dc16311317741fb6a3a080c49b658bbcc5af56a566ce51b1186cb22948a280853c47c69')
+_distdir="Compress-Raw-Zlib-2.214"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
