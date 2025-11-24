@@ -1,6 +1,6 @@
 pkgbase = perl-test-expectandcheck
 	pkgdesc = expect/check-style unit testing with object methods
-	pkgver = 0.06
+	pkgver = 0.07
 	pkgrel = 1
 	url = https://metacpan.org/release/Test-ExpectAndCheck
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = perl-test-expectandcheck
 	depends = perl-test-deep
 	options = !emptydirs
 	options = purge
-	source = https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Test-ExpectAndCheck-0.06.tar.gz
-	md5sums = 135c7ec09ad7baa547198461562a206c
+	source = https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Test-ExpectAndCheck-0.07.tar.gz
+	md5sums = fff6005399702dbf54f5f4d275121c2a
 
 pkgname = perl-test-expectandcheck

@@ -1,6 +1,6 @@
 # Contributor: John Regan <john@jrjrtech.com>
 pkgname=perl-test-expectandcheck
-pkgver=0.06
+pkgver=0.07
 pkgrel=1
 pkgdesc='expect/check-style unit testing with object methods'
 _dist=Test-ExpectAndCheck
@@ -11,7 +11,7 @@ depends=('perl' 'perl-future' 'perl-test-deep')
 makedepends=('perl-module-build')
 options=('!emptydirs' 'purge')
 source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/${_dist}-${pkgver}.tar.gz")
-md5sums=('135c7ec09ad7baa547198461562a206c')
+md5sums=('fff6005399702dbf54f5f4d275121c2a')
 
 build() {
   cd $_dist-$pkgver
