@@ -1,6 +1,6 @@
 pkgbase = tigerbeetle
 	pkgdesc = The financial transactions database designed for mission critical safety and performance
-	pkgver = 0.16.64
+	pkgver = 0.16.65
 	pkgrel = 1
 	url = https://tigerbeetle.com
 	arch = aarch64
@@ -8,9 +8,9 @@ pkgbase = tigerbeetle
 	license = Apache-2.0
 	makedepends = jq
 	makedepends = zig0.14-bin
-	source = tigerbeetle-0.16.64.tar.gz::https://github.com/tigerbeetle/tigerbeetle/archive/refs/tags/0.16.64.tar.gz
-	source = tigerbeetle-0.16.64.github.yaml::https://api.github.com/repos/tigerbeetle/tigerbeetle/git/ref/tags/0.16.64
-	b2sums = 79b71887181fc1ec8e25c512c80c64bb7d4caf27d608c2e90b544a0204054709678d1403272911187f7e01b4c25e48ece376f730b2784fac0dc63ffcdb3095e7
-	b2sums = d04d58707a4956daaffe50947a461e4d5b325cc33fcc508dde56174aef2991cb097c0f4db6058b1744b191f68f8ab37ef6b3c3bb0ed323442b252b7f6c155508
+	source = tigerbeetle-0.16.65.tar.gz::https://github.com/tigerbeetle/tigerbeetle/archive/refs/tags/0.16.65.tar.gz
+	source = tigerbeetle-0.16.65.github.json::https://api.github.com/repos/tigerbeetle/tigerbeetle/git/ref/tags/0.16.65
+	b2sums = ba45183a7fef97e3f34e1a74f52fdb7f6914bfae596b76caae3380a6b94e4ed93b368a7a32ad42e765e5f05e797a3972d9eb9ceb5dedb45191ab5df892d236a2
+	b2sums = f3a7f7fc38075df6f2fc75a27cc646914ac64e64c9d1bbd7994370e0fc6d86e01ae803d273dc1fa1f6e221e9d1b7f4640205f797a256a021b39a1ba1cf3090cb
 
 pkgname = tigerbeetle
