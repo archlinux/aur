@@ -5,12 +5,15 @@
 
 _android_arch=x86-64
 pkgname=android-$_android_arch-qt6-5compat
-_qtver=6.10.0
+_qtver=6.10.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
 url='https://www.qt.io'
-license=(GPL3 LGPL3 FDL custom)
+license=(GPL-3.0-only
+         LGPL-3.0-only
+         LicenseRef-Qt-Commercial
+         Qt-GPL-exception-1.0)
 pkgdesc='Module that contains unsupported Qt 5 APIs (android)'
 depends=('android-x86-64-qt6-base')
 makedepends=('android-cmake' 'qt6-base' 'ninja')
@@ -18,7 +21,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qt5compat-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('d025c59d658b5e1f5fa1650bf01f23ddec15ce8f4c6ae5f6bc343f8427b02b7e')
+sha256sums=('72396d160a153dee01b41cf0cae9ad46204cf613adb791b3ee85a7efeadffe24')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
@@ -28,6 +31,7 @@ build() {
     -DQT_BINARY_DIR=${ANDROID_PREFIX_BIN} \
     -DQT_INCLUDE_DIRS_NO_SYSTEM=ON \
     -DQT_HOST_PATH=/usr \
+    -DQT_NO_PACKAGE_VERSION_CHECK:BOOL=TRUE \
     -DANDROID_SDK_ROOT=${ANDROID_HOME} \
     -DANDROID_NDK_ROOT=${ANDROID_NDK_HOME} \
     -DANDROID_STL="c++_shared" \
