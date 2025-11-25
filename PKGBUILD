@@ -3,7 +3,7 @@
 pkgname=canonical-multipass
 _realname=multipass
 pkgver=1.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Multipass is a lightweight VM manager for Linux, Windows and macOS."
 arch=('x86_64')
 url="https://multipass.run"
@@ -42,5 +42,5 @@ package() {
   install -Dm644 "$srcdir"/multipassd.service "$pkgdir"/usr/lib/systemd/system/multipassd.service
 }
 
-sha256sums=('f03ea0b7a61a0c049a82dd531b2c073c8f4d0dd7e3cca759b9705d8ef94d05e5'
+sha256sums=('3cfe94b4620752445faa6f2afcdcc6dc8a3047ae833126c9a0ce7bbf7049e631'
             'f7aebd4ab185048ee10e8185ac230c8ac549ff29b2e52722fbf366ad6f3c6b59')
