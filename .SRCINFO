@@ -1,7 +1,7 @@
 pkgbase = yarr
 	pkgdesc = Self-hosted RSS reader with vue.js front and sqlite back
 	pkgver = 2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nkanaev/yarr
 	arch = aarch64
 	arch = x86_64

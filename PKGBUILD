@@ -4,7 +4,7 @@
 
 pkgname=yarr
 pkgver=2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Self-hosted RSS reader with vue.js front and sqlite back'
 arch=('aarch64' 'x86_64')
 url='https://github.com/nkanaev/yarr'
@@ -32,7 +32,7 @@ build(){
 package() {
   cd "$pkgname-$pkgver"
 
-  install -vDm0755 -t "$pkgdir/usr/bin/yarr" out/yarr
+  install -vDm0755 -t "$pkgdir/usr/bin" out/yarr
   install -vDm0644 readme.md "$pkgdir/usr/share/doc/$pkgname/readme.md"
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" doc/*.{md,txt}
   install -vDm0644 license "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
