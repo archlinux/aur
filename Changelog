@@ -1,26 +1,32 @@
 -------------------------------------------------------
  Changelog    : iwinfo
- Tags         : 4.1.0 ➙ 4.5.0
-              : 2025-05-21 ➙ 2025-06-26
+ Tags         : 4.2.0 ➙ 4.7.1
+              : 2025-06-16 ➙ 2025-11-25
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
+ 2025-11-25   : 4.7.1
+              - * Bug fix: Scan occasionally gets device busy which is handled by a couple of retries.
+                  However, when device is not responding at all this kept trying repeatedly. Fixed
+            
+                * Bug fix: Misidentification of some phy(sical) (hardware) capabilities. Notably 802.11be (wifi-7)
+ 2025-06-26   ⋯
+              - update Docs/Changelog Docs/${my_name}.pdf
+
  2025-06-26   : 4.5.0
-                Update local copy of latest run_prog() from pyconcurrent
- 2025-06-22     update Docs/Changelog Docs/${my_name}.pdf
+              - Update local copy of latest run_prog() from pyconcurrent
+ 2025-06-22   ⋯
+              - update Docs/Changelog Docs/${my_name}.pdf
 
  2025-06-22   : 4.4.0
-                Put run_cmd in its own file
+              - Put run_cmd in its own file
 
  2025-06-22   : 4.3.0
-                run_prog: sync our copy with latest from pyconcurrent
- 2025-06-16     update Docs/Changelog Docs/${my_name}.pdf
+              - run_prog: sync our copy with latest from pyconcurrent
+ 2025-06-16   ⋯
+              - update Docs/Changelog Docs/${my_name}.pdf
 
  2025-06-16   : 4.2.0
-                Improve way we run external programs - handle larger output, better
-                exception managemen etc
- 2025-05-21     update Docs/Changelog Docs/${my_name}.pdf
-
- 2025-05-21   : 4.1.0
-                Use builtin types where possible. e.g. typing.List -> list
- 2025-05-18     update Docs/Changelog Docs/${my_name}.pdf
+              - Improve way we run external programs - handle larger output, better exception managemen etc
+ 2025-05-21   ⋯
+              - update Docs/Changelog Docs/${my_name}.pdf
