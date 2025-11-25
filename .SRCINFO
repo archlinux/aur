@@ -1,7 +1,7 @@
 pkgbase = bitburner
 	pkgdesc = Bitburner is a programming-based incremental game
 	pkgver = 2.8.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bitburner-official/bitburner-src
 	arch = x86_64
 	license = Apache
