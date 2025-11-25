@@ -286,7 +286,6 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_HOME="${SRCDEST}"/proton-cargo
-    export CCACHE_DISABLE=1
 
     cd build
     ROOTLESS_CONTAINER="" \
