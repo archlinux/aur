@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=NiaARM
 pkgname=python-${_base,,}
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="A minimalistic framework for numerical association rule mining"
 url="https://github.com/firefly-cpp/${_base}"
@@ -11,7 +11,7 @@ depends=(python-niapy python-nltk python-plotly python-scikit-learn)
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('5562637788225185743c516a50cd3fff5a61744b61ef7cc5dc34bdba592939bd17f9d564a4e895e5d9761d984951d865604b643cbb3737608d4a7103c4df3e9a')
+sha512sums=('94d58c13f0d2888ef8d089ae311ab4519608e3bdb16a7185c5f49bf9f6b5f404186131eb89318c2eff9975cf4e8cb281cccc99cdb64a012412be809c63c8df2f')
 
 build() {
   cd ${_base}-${pkgver}
