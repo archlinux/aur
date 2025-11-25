@@ -4,12 +4,15 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-virtualkeyboard-static
-_qtver=6.10.0
+_qtver=6.10.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
 url='https://www.qt.io'
-license=(GPL3 LGPL3 FDL custom)
+license=(GPL-3.0-only
+         LGPL-3.0-only
+         LicenseRef-Qt-Commercial
+         Qt-GPL-exception-1.0)
 pkgdesc='Virtual keyboard framework (mingw-w64)'
 depends=('mingw-w64-qt6-declarative-static' 'mingw-w64-qt6-svg-static')
 makedepends=('mingw-w64-cmake-static' 'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-loader' 'qt6-declarative' 'qt6-shadertools' 'ninja')
@@ -17,7 +20,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtvirtualkeyboard-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('abb267f2682bc66d078b71fb342aca946414d3c60adb97d454308acc0ca31381')
+sha256sums=('5b9cde3188afbc01b602b9016cee95ccd536aea43a6e6cfd297b44f328b9b6df')
 
 _architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
@@ -33,6 +36,7 @@ build() {
       -DCMAKE_DISABLE_FIND_PACKAGE_harfbuzz=TRUE \
       -DUSE_LINK_GROUP=OFF \
       -DFEATURE_static_runtime=ON \
+      -DQT_NO_PACKAGE_VERSION_CHECK:BOOL=TRUE \
       -DFEATURE_pkg_config=ON
     cmake --build build-$_arch
   done
