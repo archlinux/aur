@@ -2,7 +2,7 @@
 # Maintainer: bsub.io <contact@bsub.io>
 
 pkgname='bsubio-bin'
-pkgver=0.15.5
+pkgver=0.15.6
 pkgrel=1
 pkgdesc='CLI for easy running heavy duty compute jobs in the cloud'
 url='https://www.bsub.io'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('cli')
 conflicts=('cli')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bsubio/cli/releases/download/v0.15.5/cli_0.15.5_linux_arm64.tar.gz")
-sha256sums_aarch64=('ca9c4a26e298424db9f1eeb4f7dc3f40eac0ab7adcb74e2fcdb05a515beefa3a')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bsubio/cli/releases/download/v0.15.6/cli_0.15.6_linux_arm64.tar.gz")
+sha256sums_aarch64=('6066e510178ba24645b9e8e485f70810e984b4bd96883e3f6a1e312600727b91')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bsubio/cli/releases/download/v0.15.5/cli_0.15.5_linux_amd64.tar.gz")
-sha256sums_x86_64=('efde6633c9b6c315c825d9d3947b00309ef4a4a586b29edb10b91bfe2ca687d3')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bsubio/cli/releases/download/v0.15.6/cli_0.15.6_linux_amd64.tar.gz")
+sha256sums_x86_64=('6ab9e81e498529bf772f7d08d2276a63a1b316af71250cca6b753ec9ef692f26')
 
 package() {
   # binary package
