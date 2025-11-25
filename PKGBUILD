@@ -1,9 +1,9 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-graphics-compiler-bin
-pkgver=2.20.3
-_build=19972
-_oclcommit=28d3ab37a1ff218790f6ad861d30ef09a8cbf9a8
+pkgver=2.22.2
+_build=20121
+_oclcommit=43611737fe738e227da35d65e787f4e10a88c9c9
 pkgrel=1
 epoch=1
 pkgdesc='Intel Graphics Compiler for OpenCL (pre-compiled binaries)'
@@ -30,11 +30,11 @@ noextract=("intel-igc-core-${pkgver%%.*}_${pkgver}+${_build}_amd64.deb"
            "intel-igc-core-devel_${pkgver}+${_build}_amd64.deb"
            "intel-igc-opencl-${pkgver%%.*}_${pkgver}+${_build}_amd64.deb"
            "intel-igc-opencl-devel_${pkgver}+${_build}_amd64.deb")
-sha256sums=('94743ddf48b3272119eaffb9c77b47a0114f5a1ff83a4d94b8b2e86a72134410'
-            '77b6e62cd846e5f4e48531696ec3f9337cadb1bb83854885ea9004e53009e249'
-            '97b15016bfea380bc94d65dea3f78e8970c8e501e84824f466c37a51ad5ca958'
-            '29a26cdeffebe64452163e83b71369d059665733b7af653132dd9caf5155057c'
-            'a0c262b6af0560173aef8ab9b935174cd8b45417ab9d6a72673361a1831da94a'
+sha256sums=('ee6238e648f65c4404e222464868f0d2624701c10cc85576310470d92073d6ca'
+            '2b668a2253d4bbfd3e1d7acc7a8e0c52dd9a94e8bcfbcb8db950172c7b3b90f4'
+            '17147aebb29ebfb73b3a0b78d3d0b260c4c2fc79585d6dc85299c037eaae189c'
+            'be4334962a9ed13d993860d38078a0aebace2d48b037208b2d0190f944bd3882'
+            '353c46ec4a4354ad1f55c958b294f2ba10cd4ee329b101bf31d30b5351b65011'
             '72d9ed65b0068110b0dcef7e2b52cd32d90ceaeb743b7b6fb8ad07265f230716')
 
 prepare() {
