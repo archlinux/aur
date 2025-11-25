@@ -99,7 +99,7 @@ prepare() {
 		-e 's/yarn \(install\|run\)/yarn --offline \1/' \
 		-e 's/cargo \(build\|install\|test\)/cargo --offline \1/'
 	./bootstrap.sh
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cargo fetch --locked --target "$(rustc --print host-tuple)"
 	export YARN_CACHE_FOLDER="$srcdir/node_modules"
 	yarn install --production --frozen-lockfile
 }
