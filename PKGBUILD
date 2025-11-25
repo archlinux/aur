@@ -3,7 +3,7 @@
 
 pkgname=kopia-ui-bin
 pkgdesc='A cross-platform backup-tool with encryption, deduplication, compression and cloud support.'
-pkgver=0.22.0
+pkgver=0.22.1
 # Uncomment for releases with hyphens
 # _pkgver=$(echo "$pkgver" | tr '~' -)
 pkgrel=1
@@ -18,9 +18,9 @@ source_x86_64=("https://github.com/kopia/kopia/releases/download/v$pkgver/${pkgn
 source_aarch64=("https://github.com/kopia/kopia/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_arm64.deb")
 source_armv7h=("https://github.com/kopia/kopia/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_armv7l.deb")
 sha256sums=('6e04ed70f54a3d70c22240cd6e4f65df4ad2f3e8aa1608aca20dc91c594bd83b')
-sha256sums_x86_64=('cf07756926c0b9a94d959e6c3bdb3ed9fca096460ad61a8b76c1fbb25bd7708d')
-sha256sums_aarch64=('3c63d090ade0ac32d1e970552919de90ca8bd8ae40ce32a0eeb68eba1b401633')
-sha256sums_armv7h=('73d74096f1320f8f53a6499e74f57c5a0e7c3997bda10b68629d557f61a0f9da')
+sha256sums_x86_64=('452bedcf6ed6034671289e476b56bee045297f1828c707e85347d21a003ec982')
+sha256sums_aarch64=('110fb4f79d67f539ae5824b36d8a67e702951c686360490b9c8dbf520e936d8b')
+sha256sums_armv7h=('4a9a561deb347911deeaf890f86866eb64da9ef222267c8b40a6bb04d3361710')
 options=('!debug')
 
 package() {
