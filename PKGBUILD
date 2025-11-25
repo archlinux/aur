@@ -11,12 +11,15 @@
 # All patches are managed at https://github.com/Martchus/qtbase
 
 pkgname=mingw-w64-qt6-base
-_qtver=6.10.0
+_qtver=6.10.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
 url='https://www.qt.io'
-license=(GPL3 LGPL3 FDL custom)
+license=(GPL-3.0-only
+         LGPL-3.0-only
+         LicenseRef-Qt-Commercial
+         Qt-GPL-exception-1.0)
 pkgdesc='A cross-platform application and UI framework (mingw-w64)'
 depends=('mingw-w64-crt' 'mingw-w64-cppwinrt' 'mingw-w64-zlib' 'mingw-w64-libjpeg-turbo' 'mingw-w64-sqlite'
          'mingw-w64-libpng' 'mingw-w64-openssl' 'mingw-w64-dbus' 'mingw-w64-harfbuzz'
@@ -53,27 +56,27 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0018-Drop-CMAKE_SYSTEM_VERSION-from-modules-json-if-Linux.patch'
         '0019-Workaround-linker-error-about-missing-symbol-__sync_.patch'
         '0020-Fix-Android-build-after-ec2e3e7ac92d000e0df0c693b9a6.patch')
-sha256sums=('ead4623bcb54a32257c5b3e3a5aec6d16ec96f4cda58d2e003f5a0c16f72046d'
-            '87ef32a9e2a122aa831ddb675ff072181c92152836544a3602e8fddbb4bd9788'
-            'e806a7e9c2964dbf41a8fb2490b3d2302743c02279965702ac7ae880a3755816'
-            '337fbbe749e4db3f1736c2f01bd47c8ac0e59218ac357d3c635d87ac4643cff7'
-            '90834244a76b8f65b49cc5e0e167c937564da219fe3384e2db6c04ba933db266'
-            'ca3eeb1808f16d6a309f9f4e2ebb5b07431e0abf389ba502eb0dd09de7adffa8'
-            'bc1c71b3ae3f29f150ae590028f3decee2811cd90a707a78f94c8649c3af5c96'
-            '98d9b3848a33536426a9c586f4e629895c528bb059997d9dd45f444a18fb8c4e'
-            'e4eb19c0bb9027937d7271c416038821bebee8e30be72f4d058d050e256b1a21'
-            '5a03020f5772cf10ce622d82162a86210332b3f9c64be70fcb42d2fafbaf8349'
-            'cab1f4d5e4928987659f06dbffb1e721487b62c5ea8e42ba130e140ff09767b9'
-            '7d39a7f582795fff773a361fff8f65f0d1bc0517736dd63c0371961c6662d0f8'
-            'a07e36448cfe25ba0c8f9c37fa311fc43ac150aa147757db3d3a3c9624cef6e7'
-            'e4134eb37252de9096caafc893e9cc105653a475a0cf7ef18e0835879a5ce23a'
-            'b9f9927b994dae4cc4b70ea732e4b7af8e22dc7009393ded8cd36f02cf688fa2'
-            'a7bb191656a3a83a35d14ecf097771a98c2b77697b16922cc805528fbf41ef81'
-            'b938edd4ef7d1385093b6796f7ad561f42502a306b0c5e1496625eef836d7e62'
-            '36c7502e672546433c98ddf06716411ce2c9c34a0091bb3d1c03827fbe5f09b5'
-            'ff9d23b08375bfb20ffabf5d14953dda2593c95dd4f73a8027f8dbdd8e5d8fca'
-            'f747bb4883ce88d615166c4268e9d12b9bc6fd5254d987bc098962cde27af5db'
-            'caba7450bd4f28ed3e1ac85fa3180ed5207b791dfd7858430973f1ce561be437')
+sha256sums=('5a6226f7e23db51fdc3223121eba53f3f5447cf0cc4d6cb82a3a2df7a65d265d'
+            '0f03776b94757fa171b10410870142627886f428a7d1c148eada92e4b378ea55'
+            '0c2b64aa5fe1aef64ce2cf755451ec4759b88b073afb877468f4b507e9a1d205'
+            '530461532946fce52c9c68aff1ba4ec9cb0a14a76ede5aad7715663900833b89'
+            '766fdcf5f760007617c851293d6c500b04f74c3c2fd7d011d757d370c5d661fe'
+            '532a54e7d952184ce3d57c0264a8e884bba6e5b42defea5caa7903c07b4a2a65'
+            'c9aac3871b4cc8e362bf17ba32eafd7709e8d680cd0d21d43a4c43ee2e3fe452'
+            '3c232d2b1f772d269ec0cb20862679b0691c35b36dac681d4d42cd9c11f059d4'
+            '083a28fd5c64bdc65974c86d1c253bfd36bcba41e1b023a0ba6ca26167a54011'
+            '49b3a49812aa4b52231e99c9989cb5b3fb27e4d465699ba96ba476a3d84f16a5'
+            '0ce2efbddd69a9fc8cd23cf975663c5add4d1ec4d414436ebfbee3e5c9b131bd'
+            '3e709a2e268e6d65ccd467d6c7b0f89b532070c8db72ff2a048a7ad0ac75067c'
+            '8a69dfde420ac520616828d0eb81af6ede1f2d274807199c56549374f3ff58b6'
+            'd4df5a66dbe460a5d17e3acc7e3007cb9d1a2815def091d65cb879763744058a'
+            '498257c1b259e46bdf569b37d9c0bd3194751c4c35ec75b42b2deb15c171fc49'
+            'c25f1941eac2241140f942fb6c1aad5509c94fb8e34008772259f1b01593d75e'
+            '117ca3f87dad78d79cce494e42cd4395663c10e9ae6ef16f2789ed49b28a94fb'
+            '13ce923c2735c2d7097330aea6d137237354469c4df1b04aba4e3ff12466ac6a'
+            '74ca87c89118560aa6a4feaee9cd668996c17da7e66bc4e3ea6594f843e584ee'
+            '760788b8eb19e876515e05b59381d322419ba9be3615e0da922a06c0f0d277ed'
+            '6e1fb73a571158dca4c7d32e75ed71b1ea9beae2d3dfa7c67ba1d8f56d5a10e9')
 
 # disable i686 build because 32-bit Windows is generally not supported by upstream and
 # it does not build anymore as of GCC 14 (probably due to commit 9a19fa8b616f83474c35cc5b34a3865073ced829)
@@ -132,6 +135,7 @@ build() {
       -DINSTALL_INCLUDEDIR=include/qt6 \
       -DINSTALL_MKSPECSDIR=lib/qt6/mkspecs \
       -DINSTALL_EXAMPLESDIR=share/doc/qt6/examples \
+      -DQT_NO_PACKAGE_VERSION_CHECK:BOOL=TRUE \
       -DINPUT_openssl=runtime \
       "${additional_flags[@]}"
     VERBOSE=1 cmake --build build-$_arch
