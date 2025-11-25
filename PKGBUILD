@@ -10,6 +10,7 @@ pkgdesc="The new - stil Work_In_Progres lobby, for the RTS game Beyond All Reaso
 arch=('x86_64')
 url="https://beyond-all-reason.github.io/bar-lobby/"
 _ghurl="https://github.com/beyond-all-reason/bar-lobby"
+options=(debug strip)
 ### Only use _tag or _git_commit never use both at the same time! Default is neither to build latest master.
 #_tag="#tag=v0.15.1"
 #_git_commit='#commit=2bf7e22d2792236377c218f8c06e27ded2984f81'
