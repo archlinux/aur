@@ -1,5 +1,5 @@
 pkgbase = python-pyvcd
-	pkgdesc = Python package for writing Value Change Dump (VCD) files
+	pkgdesc = Python package for writing Value Change Dump (VCD) files.
 	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/SanDisk-Open-Source/pyvcd
