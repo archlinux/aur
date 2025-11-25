@@ -5,12 +5,15 @@
 
 _android_arch=x86
 pkgname=android-$_android_arch-qt6-tools
-_qtver=6.10.0
+_qtver=6.10.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
 url='https://www.qt.io'
-license=(GPL3 LGPL3 FDL custom)
+license=(GPL-3.0-only
+         LGPL-3.0-only
+         LicenseRef-Qt-Commercial
+         Qt-GPL-exception-1.0)
 pkgdesc='A cross-platform application and UI framework (tools, android)'
 depends=('android-x86-qt6-base')
 makedepends=('android-cmake' 'android-x86-qt6-declarative' 'qt6-declarative' 'qt6-tools' 'ninja')
@@ -19,8 +22,8 @@ groups=(android-${_android_arch}-qt6)
 _pkgfqn="qttools-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Enable-only-SQL-plugins-which-are-known-to-work.patch')
-sha256sums=('d86d5098cf3e3e599f37e18df477e65908fc8f036e10ea731b3469ec4fdbd02a'
-            '82b7b7405760e302465536afd62311105cf4e2a001040ce552b628e3f90bcd9c')
+sha256sums=('8148408380ffea03101a26305c812b612ea30dbc07121e58707601522404d49b'
+            'fcdbd125a9b9cf7a40df408c445aad739040edc86693c2dbc412bde60b542589')
 
 prepare () {
   cd $_pkgfqn
@@ -40,6 +43,7 @@ build() {
     -DQT_BINARY_DIR=${ANDROID_PREFIX_BIN} \
     -DQT_INCLUDE_DIRS_NO_SYSTEM=ON \
     -DQT_HOST_PATH=/usr \
+    -DQT_NO_PACKAGE_VERSION_CHECK:BOOL=TRUE \
     -DANDROID_SDK_ROOT=${ANDROID_HOME} \
     -DANDROID_NDK_ROOT=${ANDROID_NDK_HOME} \
     -DANDROID_STL="c++_shared" \
