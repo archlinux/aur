@@ -1,0 +1,4 @@
+[hid-velocityone-multi-shift]
+source = "git"
+git = "https://github.com/mtorromeo/hid-velocityone-multi-shift.git"
+prefix = "v"
