@@ -1,0 +1,5 @@
+[lnk-bin]
+source = "github"
+github = "yarlson/lnk"
+use_latest_release = true
+prefix = "v"
