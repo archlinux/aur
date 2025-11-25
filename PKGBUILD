@@ -2,11 +2,11 @@
 
 pkgname=atmosim
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI maxcap calculator for Space Station 14"
 arch=(any)
 url="https://github.com/Ilya246/atmosim"
-license=('custom') # No licence file in the repo
+license=('GPL-3.0-or-later')
 makedepends=(git)
 source=("git+$url#tag=$pkgver")
 md5sums=('SKIP')
@@ -24,5 +24,5 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname/out"
-	install -Dm755 atmosim "$pkgdir/usr/bin/atmosim"
+	install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
 }
