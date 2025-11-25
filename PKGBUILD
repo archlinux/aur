@@ -16,6 +16,7 @@ options=(debug strip)
 #_git_commit='#commit=2bf7e22d2792236377c218f8c06e27ded2984f81'
 ### https://github.com/beyond-all-reason/bar-lobby/releases/latest
 
+groups=('BAR')
 license=(
     'MIT'
     'CC-BY-NC-ND-4.0'

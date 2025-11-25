@@ -5,6 +5,7 @@ pkgbase = bar-lobby-git
 	url = https://beyond-all-reason.github.io/bar-lobby/
 	install = bar-lobby.install
 	arch = x86_64
+	groups = BAR
 	license = MIT
 	license = CC-BY-NC-ND-4.0
 	license = CC-BY-3.0
