@@ -1,0 +1,4 @@
+[bcvk-bin]
+source = "git"
+git = "https://github.com/bootc-dev/bcvk.git"
+prefix = "v"

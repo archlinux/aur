@@ -1,0 +1,18 @@
+pkgbase = bcvk-bin
+	pkgdesc = bcvk - bootc virtualization kit
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/bootc-dev/bcvk
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = gcc-libs
+	depends = qemu-system-x86
+	depends = libvirt
+	depends = podman
+	depends = virtiofsd
+	depends = openssh
+	source = https://github.com/bootc-dev/bcvk/releases/download/v0.7.0/bcvk-x86_64-unknown-linux-gnu.tar.gz
+	b2sums = be1579364d8d9f2f592f0f443f41bf2ebdba59d116e1fe8cee097cd36721edba554e8fe40457c0b0f8f8534e748ed03f4f37091e9ded9daf4e71756b846633b9
+
+pkgname = bcvk-bin
