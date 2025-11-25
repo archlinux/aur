@@ -1,7 +1,7 @@
 # Maintainer: kkernick <kkernick at protonmail dot com>
 pkgname=antimony-sandbox
 pkgdesc="Sandbox Applications"
-pkgver=1.3.0
+pkgver=2.0.1
 pkgrel=1
 
 install=antimony.install
@@ -16,7 +16,7 @@ arch=("any")
 prepare() {
   cd $srcdir/antimony
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
