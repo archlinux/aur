@@ -1,0 +1,21 @@
+pkgbase = lux-dl-git
+	pkgdesc = Fast and simple video download library and CLI tool written in Go
+	pkgver = 0.24.1.r23.baece38
+	pkgrel = 1
+	url = https://github.com/iawia002/lux
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = ffmpeg
+	provides = lux-dl
+	conflicts = lux-dl
+	conflicts = lux-dl-bin
+	conflicts = lux-go
+	conflicts = annie
+	conflicts = lux
+	source = lux-dl-git::git+https://github.com/iawia002/lux.git#commit=baece3801cf0039fc8d6624650c682aee9e85015
+	sha256sums = SKIP
+
+pkgname = lux-dl-git
