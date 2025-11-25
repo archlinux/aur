@@ -1,0 +1,18 @@
+pkgbase = uupd
+	pkgdesc = Centralized update service/checker made for Universal Blue
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://github.com/ublue-os/uupd
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	makedepends = just
+	depends = libnotify
+	depends = systemd
+	optdepends = bootc
+	optdepends = distrobox
+	optdepends = flatpak
+	source = https://github.com/ublue-os/uupd/archive/refs/tags/v1.2.5.tar.gz
+	sha256sums = 422bab0a35272d6e02e01b26ac4fcde15faca3166fff6c599795d87a97a1f1f1
+
+pkgname = uupd
