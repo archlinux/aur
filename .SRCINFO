@@ -1,0 +1,14 @@
+pkgbase = dify-plugin-daemon-bin
+	pkgdesc = Dify Plugin Daemon CLI and daemon (prebuilt binary for Linux amd64)
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/langgenius/dify-plugin-daemon
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	provides = dify
+	conflicts = dify-plugin-daemon
+	source = dify-plugin-linux-amd64::https://github.com/langgenius/dify-plugin-daemon/releases/download/0.4.1/dify-plugin-linux-amd64
+	sha256sums = 5d0e6684ad460c45e8e28b4a84b316c586c3a0fe2edbe1cd5b25a16d8494940b
+
+pkgname = dify-plugin-daemon-bin
