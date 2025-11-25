@@ -5,12 +5,15 @@
 
 _android_arch=armv7a-eabi
 pkgname=android-$_android_arch-qt6-svg
-_qtver=6.10.0
+_qtver=6.10.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
 url='https://www.qt.io'
-license=(GPL3 LGPL3 FDL custom)
+license=(GPL-3.0-only
+         LGPL-3.0-only
+         LicenseRef-Qt-Commercial
+         Qt-GPL-exception-1.0)
 pkgdesc='Classes for displaying the contents of SVG files (android)'
 depends=('android-armv7a-eabi-qt6-base')
 makedepends=('android-cmake' 'qt6-base' 'ninja')
@@ -18,7 +21,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtsvg-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('5ed2c0e04d5e73ff75c2a2ed92db5dc1788ba70f704fc2b71bc21644beda2533')
+sha256sums=('c02f355a58f3bbcf404a628bf488b6aeb2d84a94c269afdb86f6e529343ab01f')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
@@ -28,6 +31,7 @@ build() {
     -DQT_BINARY_DIR=${ANDROID_PREFIX_BIN} \
     -DQT_INCLUDE_DIRS_NO_SYSTEM=ON \
     -DQT_HOST_PATH=/usr \
+    -DQT_NO_PACKAGE_VERSION_CHECK:BOOL=TRUE \
     -DANDROID_SDK_ROOT=${ANDROID_HOME} \
     -DANDROID_NDK_ROOT=${ANDROID_NDK_HOME} \
     -DANDROID_STL="c++_shared" \
