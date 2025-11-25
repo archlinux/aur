@@ -8,7 +8,7 @@ pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=10.3.0
 _xaliaver=0.4.6
-pkgrel=2
+pkgrel=3
 epoch=1
 
 source=(
@@ -286,6 +286,7 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_HOME="${SRCDEST}"/proton-cargo
+    export CCACHE_DISABLE=1
 
     cd build
     ROOTLESS_CONTAINER="" \
