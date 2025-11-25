@@ -1,0 +1,17 @@
+pkgbase = btrsync
+	pkgdesc = btrfs replication made easy
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/andreittr/btrsync
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.9
+	source = btrsync-0.3::git+https://github.com/andreittr/btrsync.git#tag=v0.3
+	b2sums = f18451c5f562107c8d576ad51e367d93404754a5d4fd01f1a4ec47e4d8978779cb3bbbb41a27b77e2c398088adf2f622f62fc12aa0750a216c7712d0be81f287
+
+pkgname = btrsync
