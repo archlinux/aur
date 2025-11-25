@@ -1,10 +1,10 @@
-# Bakımcı (Maintainer): Adınız Soyadınız <E-posta Adresiniz>
+# Bakımcı (Maintainer): Hİdayet Erdem
 pkgname=treex
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Directory lister with optional features (size, lines, summary, color support) written in Python, similar to the tree command."
 arch=('any')
-url="https://github.com/KullaniciAdiniz/treex" # Lütfen GitHub/proje linkinizle değiştirin
+url="https://github.com/herdem09/treex" # Lütfen GitHub/proje linkinizle değiştirin
 license=('MIT') # Veya kullandığınız lisans (örneğin GPL)
 
 # Bağımlılıklar
@@ -13,7 +13,7 @@ depends=('python')
 # Kaynak dosyalar ve sağlama toplamları
 # Betiğinizin adını "main.py" olarak aldım.
 source=("main.py") 
-sha256sums=('f28f0b5f7a5f151192cbafb66a3191da8362e169aa367d421ace839172741406') 
+sha256sums=('f28f0b5f7a5f151192cbafb66a3191da8362e169aa367d421ace839172741406')
 
 # Betiğin herhangi bir derleme ihtiyacı yok
 build() {
