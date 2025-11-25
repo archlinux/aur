@@ -3,7 +3,7 @@
 pkgbase=python-cdflib
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.3.6
+pkgver=1.3.7
 pkgrel=1
 pkgdesc="A python module for reading NASA's Common Data Format (cdf) files Resources"
 arch=('any')
@@ -12,18 +12,18 @@ license=('MIT')
 makedepends=('python-setuptools-scm'
              'python-build'
              'python-installer'
-             'python-sphinx-automodapi'
-             'python-sphinx-copybutton'
-             'python-sphinx_rtd_theme'
-             'python-astropy'
-             'python-xarray')  # wheel required by new setuptools
+             'mkdocs-material'
+             'mkdocs-material-extensions'
+             'mkdocstrings-python')  # pymdown-extensions <- material-extensions, mkdocstrings
 #checkdepends=('python-pytest-cov'
 #              'python-pytest-remotedata'
 #             'python-pytest-xdist'
+#              'python-xarray'
+#              'python-astropy'
 #              'python-hypothesis'
 #              'python-netcdf4'
 #             )
-#             'python-netcdf4')  # astropy xarray in makedepends; netcdf4 needs remote-data
+#             'python-netcdf4')  # netcdf4 needs remote-data
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       "https://lasp.colorado.edu/maven/sdc/public/data/sdc/web/cdflib_testing/mms1_fpi_brst_l2_des-moms_20151016130334_v3.3.0.cdf"
 #       "https://lasp.colorado.edu/maven/sdc/public/data/sdc/web/cdflib_testing/mms1_fpi_brst_l2_des-moms_20151016130334_v3.3.0.nc"
@@ -68,7 +68,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #       "https://lasp.colorado.edu/maven/sdc/public/data/sdc/web/cdflib_testing/wi_k0_spha_20210121_v01.cdf"
 #       "https://lasp.colorado.edu/maven/sdc/public/data/sdc/web/cdflib_testing/wi_k0_spha_20210121_v01.nc")
 #       'fix-module-import.patch')
-md5sums=('0f67fb9748b7a5829c41c8b5b7986efd')
+md5sums=('b82fc8c1a7366ce5ac9ceeb690e77bf0')
 #        'ba680f74500be6839d3fe232e6a22eb1'
 #        '0239191dd5d8400aaf68ff5a6ee4de0d'
 #        '269b0b2dae018ffa3e7442349e65b0ad'
@@ -118,7 +118,8 @@ prepare() {
 #   ln -rs ${srcdir}/*.cdf .
 #   ln -rs ${srcdir}/*.nc .
 #   ln -rs ${srcdir}/*.ncdf .
-#   sed -i "/language\ = /s/None/'en'/" doc/conf.py
+##  sed -i "/language\ = /s/None/'en'/" doc/conf.py
+    sed -i '$a use_directory_urls: false' mkdocs.yml
 }
 
 build() {
@@ -126,7 +127,7 @@ build() {
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    PYTHONPATH="../build/lib" make SPHINXOPTS="" -C doc html
+    mkdocs build
 }
 
 #check() {
@@ -136,7 +137,7 @@ build() {
 #}
 
 package_python-cdflib() {
-    depends=('python>=3.8' 'python-numpy>=1.21')
+    depends=('python>=3.9' 'python-numpy>=1.21')
     optdepends=('python-astropy: for CDF Astropy Epochs'
                 'python-xarray: for working with XArray'
                 'python-cdflib-doc: Documentation for CDFlib')
@@ -149,9 +150,9 @@ package_python-cdflib() {
 
 package_python-cdflib-doc() {
     pkgdesc="Documentation for Python CDFlib"
-    cd ${srcdir}/${_pyname}-${pkgver}/doc/_build
+    cd ${srcdir}/${_pyname}-${pkgver}
 
-    install -D -m644 ../../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
-    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
+    cp -a site "${pkgdir}/usr/share/doc/${pkgbase}"
 }
