@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Inkscape
+Comment=Create and edit Scalable Vector Graphics images
+GenericName=Vector Graphics Editor
+Exec=inkscape %F
+Icon=org.inkscape.Inkscape
+Terminal=false
+Type=Application
+Categories=Graphics;VectorGraphics;GTK;
+MimeType=image/svg+xml;image/svg+xml-compressed;application/vnd.corel-draw;application/pdf;application/postscript;image/x-eps;application/illustrator;image/x-wmf;image/x-emf;
+StartupNotify=true
+StartupWMClass=inkscape
+Keywords=vector;graphics;svg;drawing;illustration;

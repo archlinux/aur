@@ -1,0 +1,25 @@
+pkgbase = inkscape-bin
+	pkgdesc = Professional vector graphics editor - Prebuilt AppImage
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://inkscape.org
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = fuse2
+	depends = hicolor-icon-theme
+	optdepends = python: for extensions
+	optdepends = python-numpy: for some extensions
+	optdepends = python-lxml: for some extensions
+	optdepends = fig2dev: xfig import
+	optdepends = gvfs: file system support
+	optdepends = pstoedit: PostScript support
+	provides = inkscape
+	conflicts = inkscape
+	noextract = inkscape-1.4.2.AppImage
+	options = !strip
+	source = inkscape-1.4.2.AppImage::https://inkscape.org/gallery/item/56343/Inkscape-ebf0e94-x86_64.AppImage
+	source = inkscape.desktop
+	sha256sums = 99c333c03ce77e207942ddcd5c8a5b77cde89959a23651bc7872ae880cf4ba6b
+	sha256sums = SKIP
+
+pkgname = inkscape-bin
