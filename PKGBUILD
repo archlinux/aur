@@ -1,10 +1,10 @@
 # Maintainer: Tucker Boniface <tucker@boniface.tech>
 # Maintainer: Jguer <pkgbuilds at jguer.space>
-pkgname="yay-git"
+pkgname="yay-gzip-fix"
 _pkgname="yay"
-pkgver=12.5.1.r0.g60b7f639
-pkgrel=2
-pkgdesc="Yet another yogurt. Pacman wrapper and AUR helper written in go. (development version)"
+pkgver=12.5.2.r0.924ecd319
+pkgrel=1
+pkgdesc="Yet another yogurt. Pacman wrapper and AUR helper written in go. (with gzip decompression fix)"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64' 'riscv64')
 url="https://github.com/Jguer/yay"
 license=('GPL-3.0-or-later')
@@ -20,13 +20,13 @@ makedepends=('go>=1.24')
 options=(!lto)
 conflicts=('yay')
 provides=('yay')
-source=("yay::git+https://github.com/Jguer/yay.git#branch=next")
+source=("yay::git+https://github.com/espeer/yay.git#branch=issue-2709")
 sha256sums=("SKIP")
 
-pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
+# pkgver() {
+#   cd "$srcdir/$_pkgname"
+#   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+# }
 
 build() {
   export GOPATH="$srcdir"/gopath
