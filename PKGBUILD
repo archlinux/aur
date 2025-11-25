@@ -1,7 +1,7 @@
 # Maintainer: MLM-stuff gfxoxinzh@mozmail.com
 pkgname=inkscape-bin
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Professional vector graphics editor - Prebuilt AppImage"
 arch=('x86_64')
 url="https://inkscape.org"
@@ -40,7 +40,7 @@ WRAPPER
     install -Dm644 "$srcdir/inkscape.desktop" "$pkgdir/usr/share/applications/org.inkscape.Inkscape.desktop"
     
     if [[ -d "$srcdir/squashfs-root/usr/share/icons" ]]; then
-        cp -r "$srcdir/squashfs-root/usr/share/icons"/* "$pkgdir/usr/share/icons/" 2>/dev/null || true
+        cp -r "$srcdir/squashfs-root/usr/share/icons/hicolor" "$pkgdir/usr/share/icons/"
     fi
     
     if [[ -f "$srcdir/squashfs-root/org.inkscape.Inkscape.svg" ]]; then
