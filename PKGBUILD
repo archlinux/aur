@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=147.0a1+20251124.1+hdca44e6b1f20
+pkgver=147.0a1+20251125.1+h95ed8ab23f39
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (Nightly version)"
 url="https://www.mozilla.org/firefox/channel/desktop/#nightly"
@@ -15,7 +15,7 @@ depends=(
   bash
   cairo
   dbus
-  ffmpeg4.4
+  ffmpeg
   fontconfig
   freetype2
   gcc-libs
