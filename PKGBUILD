@@ -22,10 +22,8 @@ ${pkgname%-*}.hook::https://aur.archlinux.org/cgit/aur.git/plain/${pkgname%-*}.h
 sha256sums=('65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
             'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
             'SKIP'
-            '684a839ddd1aa3a25a938cad68867341fd43be10a0a8cce59487353b471d6005'
-            'c6ce8624456bad1e34941af3fa4f0f21fed5f8c6f9687ee1e0daee10a72a0bbd')
-#sha256sums[0]=SKIP
-#sha256sums[1]=SKIP
+            '2726a8abe72d73bab070f0868c653fc5b8aa6f0697ddb1d6bd3adbefdd6fd425'
+            'f3371c17a935787a17e949cd87c2a4527058eb220c4c8b1719ca7915e64092d0')
 depends=(glibc)
 makedepends=(nasm git
 gcc make sed) # base-devel
@@ -89,5 +87,5 @@ package(){
   install -Dm644 ${pkgname}.hook -t "$pkgdir"/usr/share/libalpm/hooks
   # Block DL binary
   install -d "${pkgdir}"/opt/vivaldi{,-snapshot}
-  touch "$pkgdir"/opt/vivaldi{,-snapshot}/${_so}.{7.5,7.6,7.7,7.8,7.9,8.0}
+  touch "$pkgdir"/opt/vivaldi{,-snapshot}/${_so}.{7.7,7.8,7.9,8.0,8.1,8.2,8.3,8.4,8.5,8.6,8.7}
 }
