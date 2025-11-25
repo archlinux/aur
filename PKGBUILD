@@ -46,12 +46,9 @@ package() {
         read email
         echo -e "\nEnter Vanta key:"
         read key
-        echo -e "\nEnter Vanta region:"
-        read region
 
         sed -i "s/\"OWNER_EMAIL\": \"\"/\"OWNER_EMAIL\": \"$email\"/g" $srcdir/etc/$_binname.conf
         sed -i "s/\"AGENT_KEY\": \"\"/\"AGENT_KEY\": \"$key\"/g" $srcdir/etc/$_binname.conf
-        sed -i '/"OWNER_EMAIL"/a\  "REGION": "'"$region"'",' $srcdir/etc/$_binname.conf
         chmod 640 $srcdir/etc/$_binname.conf
         cp $srcdir/etc/$_binname.conf /tmp/$_binname.conf
 
