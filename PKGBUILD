@@ -1,6 +1,6 @@
 pkgname=rusty-pipes
 pkgver=0.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A MIDI-controlled virtual pipe organ simulator compatible with GrandOrgue and Hauptwerk sample sets."
 arch=('x86_64')
 url="https://github.com/dividebysandwich/rusty-pipes"
@@ -42,10 +42,10 @@ package() {
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     
     # Install the desktop file (for the menu)
-    install -Dm644 "../../rusty-pipes.desktop" "$pkgdir/usr/share/applications/rusty-pipes.desktop"
-    install -Dm644 "../../rusty-pipes-text.desktop" "$pkgdir/usr/share/applications/rusty-pipes-text.desktop"
+    install -Dm644 "$srcdir/rusty-pipes.desktop" "$pkgdir/usr/share/applications/rusty-pipes.desktop"
+    install -Dm644 "$srcdir/rusty-pipes-text.desktop" "$pkgdir/usr/share/applications/rusty-pipes-text.desktop"
     
     # Install the icon
-    install -Dm644 "../../rusty-pipes.png" "$pkgdir/usr/share/pixmaps/rusty-pipes.png"
+    install -Dm644 "$srcdir/rusty-pipes.png" "$pkgdir/usr/share/pixmaps/rusty-pipes.png"
 
 }
