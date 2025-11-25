@@ -31,8 +31,9 @@ build() {
 }
 
 package() {
-    install -dm 755 "$pkgdir"/{opt,usr/bin}
+    install -dm755 "$pkgdir"/{opt,usr/bin}
     cp -dr --no-preserve='ownership' "bitburner-src/.build/bitburner-linux-x64" "$pkgdir/opt/$pkgname"
+    chmod 755 "$pkgdir/opt/$pkgname"
     ln -s "/opt/$pkgname/resources/app/steam_appid.txt" "$pkgdir/opt/$pkgname/steam_appid.txt"
     ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
