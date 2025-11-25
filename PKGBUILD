@@ -4,28 +4,29 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Geoffroy Carrier <geoffroy@archlinux.org>
 # Maintainer: Cooky-12 cooky-12@qq.com
+pkg____=bluez
 pkgname=('bluez-ps3')
-pkgver=5.84
+pkgver=5.85
 pkgrel=1
 url="http://www.bluez.org/"
 arch=('x86_64')
 license=('GPL-2.0-only')
 makedepends=('dbus' 'libical' 'systemd' 'alsa-lib' 'json-c' 'ell' 'python-docutils' 'python-pygments'      )
-source=(https://www.kernel.org/pub/linux/bluetooth/bluez-${pkgver}.tar.xz fake-ps3.patch
+source=(https://www.kernel.org/pub/linux/bluetooth/${pkg____}-${pkgver}.tar.xz fake-ps3.patch
         bluetooth.modprobe)
 # see https://www.kernel.org/pub/linux/bluetooth/sha256sums.asc
-sha256sums=('5ba73d030f7b00087d67800b0e321601aec0f892827c72e5a2c8390d8c886b11'
+sha256sums=('ad028e49254bc4551a13f08fe7904c63d02ba650d77be8ae15bb3b0a0ad94a6f'
             '2eb8953fa0491315af34eaa940c77f7373cbd18d7f67acc780f460f3edb64ffb'
             '46c021be659c9a1c4e55afd04df0c059af1f3d98a96338236412e449bf7477b4')
 
 
 prepare() {
   # Remove the vendored ell to avoid conflicts in header search paths
-  rm -r "bluez-${pkgver}"/ell
+  rm -r "${pkg____}-${pkgver}"/ell
 }
 
 build() {
-  cd bluez-${pkgver} ;  patch --forward --strip=1 --input="${srcdir}/fake-ps3.patch"
+  cd "${pkg____}"-${pkgver} ;  patch --forward --strip=1 --input="${srcdir}/fake-ps3.patch"
   ./configure \
           --prefix=/usr \
           --mandir=/usr/share/man \
@@ -50,7 +51,7 @@ build() {
   # add missing tools FS#41132, FS#41687, FS#42716
   for files in `find tools/ -type f -perm -755`; do
     filename=$(basename $files)
-    install -Dm755 "${srcdir}"/bluez-${pkgver}/tools/$filename "${srcdir}/fakeinstall"/usr/bin/$filename
+    install -Dm755 "${srcdir}"/"${pkg____}"-${pkgver}/tools/$filename "${srcdir}/fakeinstall"/usr/bin/$filename
   done
 }
 
@@ -67,9 +68,8 @@ _install() {
 }
 
 check() {
-  cd bluez-$pkgver
-  # fails test-vcp due to lto - https://github.com/bluez/bluez/issues/683
-  make check || /bin/true
+  cd "$pkg____"-$pkgver
+  make check
 }
 
 
@@ -92,8 +92,8 @@ package_bluez-ps3() {
   chmod -v 555 "${pkgdir}"/etc/bluetooth
 
   # add basic documention
-  install -dm755 "${pkgdir}"/usr/share/doc/bluez/dbus-apis
-  cp -a bluez-${pkgver}/doc/*.txt "${pkgdir}"/usr/share/doc/bluez/dbus-apis/
+  install -dm755 "${pkgdir}"/usr/share/doc/"${pkg____}"/dbus-apis
+  cp -a "${pkg____}"-${pkgver}/doc/*.txt "${pkgdir}"/usr/share/doc/"${pkg____}"/dbus-apis/
   # fix module loading errors
   install -dm755 "${pkgdir}"/usr/lib/modprobe.d
   install -Dm644 "${srcdir}"/bluetooth.modprobe "${pkgdir}"/usr/lib/modprobe.d/bluetooth-usb.conf

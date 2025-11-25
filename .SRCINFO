@@ -1,5 +1,5 @@
 pkgbase = bluez-ps3
-	pkgver = 5.84
+	pkgver = 5.85
 	pkgrel = 1
 	url = http://www.bluez.org/
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = bluez-ps3
 	makedepends = ell
 	makedepends = python-docutils
 	makedepends = python-pygments
-	source = https://www.kernel.org/pub/linux/bluetooth/bluez-5.84.tar.xz
+	source = https://www.kernel.org/pub/linux/bluetooth/bluez-5.85.tar.xz
 	source = fake-ps3.patch
 	source = bluetooth.modprobe
-	sha256sums = 5ba73d030f7b00087d67800b0e321601aec0f892827c72e5a2c8390d8c886b11
+	sha256sums = ad028e49254bc4551a13f08fe7904c63d02ba650d77be8ae15bb3b0a0ad94a6f
 	sha256sums = 2eb8953fa0491315af34eaa940c77f7373cbd18d7f67acc780f460f3edb64ffb
 	sha256sums = 46c021be659c9a1c4e55afd04df0c059af1f3d98a96338236412e449bf7477b4
 
