@@ -4,7 +4,7 @@
 
 # Based on official PKGBUILD from Arch Linux with an annoying bug reverted
 pkgname=telegram-desktop-kdefix
-pkgver=6.2.4
+pkgver=6.3.0
 pkgrel=1
 pkgdesc='Telegram Desktop client with KDE unread counter bug reverted'
 arch=('x86_64')
@@ -73,7 +73,7 @@ source=(
   "git+https://github.com/tdlib/td.git#tag=${_td_commit}"
   0001-kde-theme-injection-fix.patch
 )
-sha512sums=('8cbeb3ff205959a26c6b2da71984c01584207645eb73b4548f77ecd487f3cef6c27d5be7c730e9c0e046ac4327b551f7e740ffe138028b1a3247640431f6c3d8'
+sha512sums=('502b98b6aec97e3d4390ca39ff4f3eed94d56362b54f1dfef269461a5e1fd6ec1a166d3942cc23592572b009b771f01e248097d859e556ced748953bbd71d5f8'
             '6dc6e684a0bf35bb83f6fa6579a0da82d604190b222f2cd2de9b8ef5b93f5f18ac9a8733e2c5cf2a64ed9933b346ea31e26a4bcc0039956280ec2deef9649457'
             '6544086fd4946384509c053edd447a59e9ae405af65f9a7fa632ae5734099ef57b7211b7dbebf7a0c38665e05dd7c4d2414fa5d2cb5c6ee718cc5e824f5f509a')
 
