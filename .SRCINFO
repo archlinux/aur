@@ -1,0 +1,24 @@
+pkgbase = sot
+	pkgdesc = Command-line System Obervation Tool
+	pkgver = 4.4.2
+	pkgrel = 1
+	url = https://github.com/anistark/sot
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-textual
+	depends = python-distro
+	depends = python-psutil
+	depends = python-py-cpuinfo
+	depends = python-rich
+	provides = sot
+	conflicts = python-sot
+	replaces = python-sot
+	source = sot-4.4.2.tar.gz::https://github.com/anistark/sot/archive/refs/tags/v4.4.2.tar.gz
+	sha256sums = 7ef208f5154f99abe8fd4600b577d78efad15600934b1d5a707425cb7ea86640
+
+pkgname = sot
