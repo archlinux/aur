@@ -3,7 +3,7 @@
 
 _pkgname=libinput
 pkgname="$_pkgname-three-finger-drag"
-pkgver=1.29.2
+pkgver=1.30.0
 pkgrel=1
 pkgdesc="Input device management and event handling library"
 url="https://gitlab.freedesktop.org/libinput/libinput"
@@ -23,7 +23,7 @@ source=("git+https://gitlab.freedesktop.org/$_pkgname/$_pkgname.git?signed#tag=$
         0001-enable-3fg-drag-by-default.patch
         )
 b2sums=('SKIP'
-        'a1bab152c9ff05b84410be92736c7f73352dc56149d71b240d6983b799fb9c211f00037511f829fc175b632004550947ece607f73915376d08de19d7041a4bdb'
+        'e8c528be23793144d3f92d4c0eb98279c44595b4bd617e1ea642a0eb7ea555f1555f92b87ac8757f4553b09ff4d9473ec96a79560e1ddf30db71ff550e88af68'
         )
 validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF') # Peter Hutterer (Who-T) <office@who-t.net>
 
