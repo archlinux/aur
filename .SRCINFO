@@ -1,16 +1,17 @@
 pkgbase = confidant
 	pkgdesc = Dotfile management tool designed to be simple (but powerful), fast and easy to use
-	pkgver = 0.4.1
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://wreedb.github.io/confidant
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = meson
 	makedepends = scdoc
+	makedepends = gettext
 	depends = libucl
 	depends = gcc-libs
 	depends = glibc
-	source = https://codeberg.org/wreedb/confidant/releases/download/v0.4.1/confidant-0.4.1.source.tar.gz
-	b2sums = 957431956b61c83775e3bf4b41687ab1c28c95413c34d1d6772fefad08ef04d685dcf2af078c89831d0dbb95d84b1d9b42fadd03d7e3d753940d4a7cca31e558
+	source = https://codeberg.org/wreedb/confidant/releases/download/v0.4.3/confidant-0.4.3.source.tar.gz
+	b2sums = 3597825edfde42fee38c86650521568ee01872371d3bd53cf25f58e630aec7fdd75de33f0302450de61ae7e841b91948cec3b3b2de2a08e484cbeb37b7ca0a33
 
 pkgname = confidant
