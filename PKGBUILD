@@ -40,7 +40,8 @@ WRAPPER
     install -Dm644 "$srcdir/inkscape.desktop" "$pkgdir/usr/share/applications/org.inkscape.Inkscape.desktop"
     
     if [[ -d "$srcdir/squashfs-root/usr/share/icons" ]]; then
-        cp -r "$srcdir/squashfs-root/usr/share/icons/hicolor" "$pkgdir/usr/share/icons/"
+        install -dm755 "$pkgdir/usr/share/icons/hicolor"
+        cp -r "$srcdir/squashfs-root/usr/share/icons/hicolor"/* "$pkgdir/usr/share/icons/hicolor/"
     fi
     
     if [[ -f "$srcdir/squashfs-root/org.inkscape.Inkscape.svg" ]]; then
