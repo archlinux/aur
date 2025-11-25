@@ -1,7 +1,7 @@
 # Maintainer: Mark Grimes <mgrimes at peculier.com>
 
 pkgname=perl-regexp-grammars
-pkgver=1.057
+pkgver=1.058
 pkgrel=1
 pkgdesc="Perl/CPAN Module Regexp::Grammars - Add grammatical parsing features to Perl regexes"
 _dist=Regexp-Grammars
@@ -11,7 +11,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10' 'perl-b-hooks-parser')
 options=('!emptydirs' purge)
 source=(https://cpan.metacpan.org/authors/id/D/DC/DCONWAY/$_dist-$pkgver.tar.gz)
-md5sums=('6713a82c633c7c1f121c70b435146f5b')
+md5sums=('e08fcf26636d7426f91db6547280d4c8')
 
 # Setup environment to ensure installation in system perl and vender directory
 clean_env() {
