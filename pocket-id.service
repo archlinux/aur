@@ -1,0 +1,34 @@
+[Unit]
+Description=Pocket ID OIDC Provider
+After=network-online.target
+Wants=network-online.target
+Documentation=https://pocket-id.org/docs
+
+[Service]
+Type=simple
+User=pocket-id
+Group=pocket-id
+EnvironmentFile=/etc/pocket-id/config.env
+Environment=HOME=/var/lib/pocket-id
+WorkingDirectory=/var/lib/pocket-id
+ExecStart=/usr/bin/pocket-id
+Restart=on-failure
+
+ProtectSystem=strict
+ReadWritePaths=/var/lib/pocket-id
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+NoNewPrivileges=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+CapabilityBoundingSet=
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictAddressFamilies=AF_INET AF_INET6
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+
+[Install]
+WantedBy=multi-user.target

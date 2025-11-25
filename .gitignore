@@ -1,0 +1,5 @@
+config.env
+pocket-id
+pocket-id-bin*
+pkg/
+src/

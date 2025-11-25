@@ -1,0 +1,22 @@
+pkgbase = pocket-id-bin
+	pkgdesc = A simple and easy-to-use OIDC provider (Pre-compiled binary)
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = https://github.com/pocket-id/pocket-id
+	arch = x86_64
+	license = BSD
+	provides = pocket-id
+	conflicts = pocket-id
+	backup = etc/pocket-id/config.env
+	source = pocket-id::https://github.com/pocket-id/pocket-id/releases/download/v1.15.0/pocket-id-linux-amd64
+	source = config.env::https://raw.githubusercontent.com/pocket-id/pocket-id/v1.15.0/.env.example
+	source = pocket-id.service
+	source = pocket-id.sysusers
+	source = pocket-id.tmpfiles
+	sha256sums = 3717df5497c9b4e4c7351b7c0e0e4bafaae9f5491d9933101725dee920fabdc5
+	sha256sums = a57d3a977f6e19fe6120a2f676b8d93a530cfdf8a69bd9473c53bffb0568d4d0
+	sha256sums = 990542db169d69c19723db492375cf75000468458777200aab17ebe755afcd6e
+	sha256sums = 48ee29e40d3b949bb884fb6c3bb2b6739626c38a42ab4f8ab10a5a4e3d7c735d
+	sha256sums = fdead2921933c62fe2a0bccdfa2b2a0ff630edce3a3b62d0a97594302dd05e44
+
+pkgname = pocket-id-bin
