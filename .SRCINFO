@@ -1,6 +1,6 @@
 pkgbase = tinct-plugin-dunstify-bin
 	pkgdesc = Desktop notification plugin for Tinct
-	pkgver = 0.1.5
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/jmylchreest/tinct
 	license = MIT
@@ -8,13 +8,13 @@ pkgbase = tinct-plugin-dunstify-bin
 	conflicts = tinct
 	provides = tinct
 	arch = aarch64
-	source_aarch64 = https://github.com/jmylchreest/tinct/releases/download/v0.1.5/tinct-plugin-dunstify_0.1.5_Linux_arm64.tar.gz
-	sha256sums_aarch64 = dcb22984f0796f9fa98559fc6db95eacc4c40162cdb048efb77d3a13fe01f4cc
+	source_aarch64 = https://github.com/jmylchreest/tinct/releases/download/v0.1.7/tinct-plugin-dunstify_0.1.7_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 8394886d7d84b3072c60cb2246981e87daf054a7a8e6c80e305a79c0773346d4
 	arch = armv7h
-	source_armv7h = https://github.com/jmylchreest/tinct/releases/download/v0.1.5/tinct-plugin-dunstify_0.1.5_Linux_armv7.tar.gz
-	sha256sums_armv7h = e99522772704d3249a432ff3b178260fb404d0a9a11e7226e714464172678146
+	source_armv7h = https://github.com/jmylchreest/tinct/releases/download/v0.1.7/tinct-plugin-dunstify_0.1.7_Linux_armv7.tar.gz
+	sha256sums_armv7h = 48af109c293bc325e898a190c18119d370a908cf7f325e290774f6e58d146159
 	arch = x86_64
-	source_x86_64 = https://github.com/jmylchreest/tinct/releases/download/v0.1.5/tinct-plugin-dunstify_0.1.5_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 48e998995ae2194aff5a2e26d10fcd0e0e98dd9cd24848ded5f2e097785f5235
+	source_x86_64 = https://github.com/jmylchreest/tinct/releases/download/v0.1.7/tinct-plugin-dunstify_0.1.7_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 086bd171dfc7c52b93b5c18811794774956803a112c364b028b65023a2bcd4f9
 	
 pkgname = tinct-plugin-dunstify-bin
