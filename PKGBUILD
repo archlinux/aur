@@ -1,7 +1,7 @@
 # Maintainer: Digital Artifex <7929434+DigitalArtifex@users.noreply.github.com>
 
 pkgname="plasma6-wallpapers-komplex"
-pkgver=1.0.8
+pkgver=1.0.8.1
 pkgrel=1
 pkgdesc="Use complex shader arrangements as a desktop background"
 arch=('x86_64')
@@ -15,7 +15,6 @@ backup=('etc/profile')
 install='komplex.install'
 changelog='changelog'
 source=("https://github.com/DigitalArtifex/kde-komplex-wallpaper-engine/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('eacf90804f2d6d7c8b8cd5fb5102b40a339dabe6554c26dabb03821622df41d0')
 
 build() {
 	cd "kde-komplex-wallpaper-engine-$pkgver"
@@ -31,3 +30,4 @@ package() {
 	cp -r tools/ShaderToyProcessor.py "$pkgdir/usr/share/komplex/stc.py"
 	chmod -R 755 "$pkgdir/usr/share/komplex/"
 }
+sha256sums=('d31fbcbaa2907098dbee7df325b83b123d25d63c47ced55d1a192b72d90bf79e')

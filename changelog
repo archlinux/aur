@@ -1,22 +1,7 @@
 # plasma6-wallpapers-komplex
-## [r108.8f0a6df] - 2025-11-20
-### Added
-- Texture Wrapping Setting
-- Texture Mirroring Setting
-- Cubemap API Hub
-- `unzip` dependency to process Cubemaps
+## [1.0.8.1] - 2025-11-25
 
-### Removed
-- Channel Invert Setting
-- API Keys from build process
-- Cubemaps from data distribution
-
-### Changed
-- Updated framerate limiting method
-- Recursive Frame Buffer logic
-- Improved pack parsing logic
-- Moved Pexels Requests to API
-- AUR and generic distribution returned to source builds
-
-### Fixed
-- Bug with audio texture resizing
+### Fixes
+- Removed Invert reference in KomplexModel.qml that was missed
+- Binding property loops in congif.qml
+- Initialization State of default audio texture
