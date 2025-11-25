@@ -4,7 +4,8 @@
 _pkgname=sshpilot
 pkgname=${_pkgname}-bin
 pkgver=4.5.0
-pkgrel=3
+pkgrel=4
+_pgrel=1
 pkgdesc="SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support."
 arch=('x86_64')
 url="https://github.com/mfat/${_pkgname}"
@@ -20,7 +21,7 @@ depends=('glib2' 'gtk4' 'gdk-pixbuf2' 'libsecret' 'pango' 'graphene' 'vte4' 'lib
 options=(!strip)
 
 source=("https://raw.githubusercontent.com/mfat/${_pkgname}/refs/tags/v${pkgver}/LICENSE")
-source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-${pkgrel}_all.deb")
+source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-${_pgrel}_all.deb")
 sha512sums=('714d66c4a17e6dfc1553521af2be03f4579fac64048c0b96c592177562b01fc70a8e184bb21725e11ef96a54bf466ae1abd4992b8940f0fe2c0859d6a166a2ef')
 sha512sums_x86_64=('7c01b039601aaabb85b9c692b1b95c79372ac86dbceae51023d5765b1f632b668d5e8c8b163446e0be17ce32affe7e4c858d2e8c567e9d45b74cab2489fe3f4b')
 
