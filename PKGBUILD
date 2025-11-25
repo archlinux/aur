@@ -1,6 +1,6 @@
 # Maintainer: Adrian Holfter < aholfter PLUS aur AT googlemail DOT com >
 pkgname=libcitygml
-pkgver=2.5.2
+pkgver=2.5.3
 pkgrel=1
 pkgdesc='C++ library for parsing CityGML files'
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('glu' 'xerces-c' 'gdal')
 makedepends=('cmake')
 license=('LGPL')
 source=("https://github.com/jklimke/libcitygml/archive/v${pkgver}.tar.gz")
-sha256sums=('ec3f026697ac749290a48d0fc93a75283e6326b0bade83763b3c375cc7dab0d2')
+sha256sums=('49e4ad5a767ba5ce0eb95fbb6db9d75ea0370c1a735af123aed3a66c6a5a44d3')
 
 build() {
   cmake \
