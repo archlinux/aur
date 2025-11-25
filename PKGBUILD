@@ -1,24 +1,29 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
+_zig=0.15
 pkgname="minizign"
-_commit_rel="b00a331c225a55ce8736872a8394c80fc44f7ef6" # 0.1.4
-_commit="9ba13dcad472bd219b30e2957c8487bae50c6e71" # r10
-pkgver="0.1.4+r10+g${_commit::7}"
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Minisign reimplemented in Zig"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://github.com/jedisct1/zig-minisign"
-license=('ISC')
-depends=(
-  'glibc'
+license=(
+  'ISC'
 )
 makedepends=(
-  'zig>=0.15.1'
-  'zig<0.16'
+  'git'
+  "zig>=${_zig}"
 )
-_pkgsrc="${url##*/}-${_commit}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/${_commit}.tar.gz")
-b2sums=('6db98cdedb2ba164a9985e918738f1e59d56832aee45eca2a2e29aca8087fddb19efcf9971d679297dc3ad13822a36227e40101ad8985186ae93972e254f6a49')
+_pkgsrc="${url##*/}"
+source=(
+  "${_pkgsrc}::git+${url}.git#tag=${pkgver}?signed"
+)
+b2sums=('287ea362c1973b97ebd7ceb1ba066637f128df0a0f25706b66f429040682e9bed1c7e28c874d7da422e4c67d1787aca48441db4986bd987cfbf84a8f246d91c7')
+validpgpkeys=(
+  '54A2B8892CC3D6A597B92B6C210627AABA709FE1' # Frank Denis (Jedi/Sector One) <pgp@pureftpd.org>
+)
 
 build() {
   local zig_options=(
@@ -35,7 +40,6 @@ build() {
 
   cd "${srcdir}/${_pkgsrc}"
   DESTDIR="build" zig build "${zig_options[@]}"
-  #find "build" -type f -name '*.zig' -delete
 }
 
 check() {
@@ -57,7 +61,7 @@ check() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  cp -va --no-preserve=ownership build/* "${pkgdir}"
+  cp -vaT --no-preserve=ownership "build" "${pkgdir}"
 
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
