@@ -1,27 +1,23 @@
 pkgbase = perl-plack-test-agent
 	pkgdesc = OO interface for testing low-level Plack/PSGI apps
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
-	url = https://metacpan.org/pod/Plack::Test::Agent
+	url = https://metacpan.org/release/Plack-Test-Agent
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	checkdepends = perl
-	checkdepends = perl-http-cookies
-	checkdepends = perl-http-server-simple-psgi
-	checkdepends = perl-modern-perl
-	checkdepends = perl-plack
-	checkdepends = perl-test-memory-cycle
-	checkdepends = perl-test-simple
-	checkdepends = perl-test-requires
-	depends = perl
-	depends = perl-http-message
-	depends = perl-plack
-	depends = perl-test-tcp
-	depends = perl-test-www-mechanize
+	license = Artistic-1.0
+	checkdepends = perl-test-memory-cycle>=0
+	checkdepends = perl-test-requires>=0
+	checkdepends = perl-test-tcp>=0
+	checkdepends = perl-test-www-mechanize>=0
+	depends = perl-http-cookies>=0
+	depends = perl-http-message>=0
+	depends = perl-http-server-simple-psgi>=0
+	depends = perl-modern-perl>=0
+	depends = perl-plack>=0
+	depends = perl>=5.008
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/O/OA/OALDERS/Plack-Test-Agent-1.5.tar.gz
-	md5sums = 4d33d920db3939e6a7cee934141f8af2
-	sha512sums = bc618d7c6f7dccdb889314da7282fb1aeb5c7cef63bc69fa0fed154d2053796ecad17eb7328c5a712326d6d15b012edeac66468cffae7f8094f87916672a5f27
+	source = http://search.cpan.org/CPAN/authors/id/O/OA/OALDERS/Plack-Test-Agent-1.6.tar.gz
+	md5sums = f67a7551f758affa7738d42aafc27a00
+	sha512sums = 1372ab15d91f861f94dd99d07058b25aea482974c6918dc8a9d42587db7c5193502cc3884733824ff7f0870deedbcbb62d1ed2ce20a18c1b2375d1f1140d5c93
 
 pkgname = perl-plack-test-agent
