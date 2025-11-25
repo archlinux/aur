@@ -2,7 +2,7 @@
 
 pkgname=ik-llama.cpp-cuda
 _pkgname=ik_llama.cpp
-pkgver=r4015.912c98f6
+pkgver=r4025.36c26701
 pkgrel=1
 pkgdesc="llama.cpp fork with additional SOTA quants and improved performance (CUDA Backend)"
 arch=(x86_64 armv7h aarch64)
