@@ -17,7 +17,7 @@ optdepends=(
 	'bsdutils: sysinfo color support'
 )
 source=("brrtfetch::git+https://github.com/ferrebarrat/brrtfetch.git")
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
