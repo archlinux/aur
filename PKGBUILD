@@ -2,8 +2,8 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=mago
-pkgver=1.0.0_rc.4
-_pkgver=1.0.0-rc.4
+pkgver=1.0.0_rc.5
+_pkgver=1.0.0-rc.5
 pkgrel=1
 pkgdesc="A CLI text viewer tool that works interactively like less command on small pane within the terminal window."
 url="https://github.com/carthage-software/mago"
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('git' 'cargo' 'openssl')
 source=("git+https://github.com/carthage-software/mago.git#tag=${_pkgver}")
-b2sums=('7655fd7cccc191c391ab1dd092adb1456bac94bb1bebe5a30015b2020ffd0a5323bae1587528bc7496f75fede9d86871758ebaa4c7cbe0712b351f32e75be14f')
+b2sums=('f6ee8a02c784dc6b4e85b2d99bbfef46f052290c32618c9a6f353e4ddb7c58260eda1ce06aa8715bd50f9cdaeffdf8310ad3649a5b6ea034447f47da7f599629')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
