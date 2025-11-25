@@ -1,5 +1,5 @@
 pkgbase = tkginstaller-git
-	pkgdesc = Helper for building, installing and customizing -TKG- source-based packages from the Frogging-Family repositories
+	pkgdesc = Wrapper for building, installing and customizing -TKG- source-based packages from the Frogging-Family repositories
 	pkgver = 0.26.6
 	pkgrel = 1
 	url = https://github.com/damachine/tkginstaller
