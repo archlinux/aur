@@ -2,7 +2,7 @@
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 
 pkgname=intel-npu-driver
-pkgver=1.24.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='Intel Neural Processing Unit (NPU) driver'
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=("git+https://github.com/intel/linux-npu-driver.git#tag=v${pkgver}"
         '020-intel-npu-driver-disable-gtest-and-yaml.patch'
         '030-intel-npu-driver-fix-firmware-install-path.patch'
         '040-intel-npu-driver-use-system-level-zero.patch')
-sha256sums=('2a1ef596875a7de81d61d9d477b27230c8f933d45d402b146ccfdb11c1a62c8d'
+sha256sums=('97d629acdbcd54de66a0e9980ef8531428ced97ea78b2e9000481056c56e6924'
             'SKIP'
             'SKIP'
             'SKIP'
