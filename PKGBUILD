@@ -2,8 +2,8 @@
 
 pkgname=nextcloud-talk-desktop-bin
 _pkgname=nextcloud-talk-desktop
-pkgver=2.0.3
-_pkgver=2.0.3
+pkgver=2.0.4
+_pkgver=2.0.4
 pkgrel=1
 pkgdesc="Nextcloud Talk Desktop client based on Nextcloud Talk web application bundling"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(Nextcloud.Talk-linux-x64-${_pkgver}-${pkgrel}.zip::https://github.com/ne
         # nextcloud-talk.svg::'https://github.com/nextcloud/talk-desktop/blob/main/img/talk-icon-rounded.svg'
 
         
-sha256sums=('ee59a439c234c943fbc3b586bf5edf228cfbabd28a114cb1bc407cc746288385'
+sha256sums=('33a11be734050497eaa2060d66c5c31208beb04cd1a3b8e010ca9f77489211ab'
             'c657fd6071464318bc63ea09844470efc3d4210f179ed2deb8efee53052dac44'
             '8be5aed4243e7e25d46f41d68ebf7b3f85ebc4925e98391ad7e55fa98f2b83cb'
             '90d29341005410d944d5dd2c6339792d62126f3c865f8d7db86472d13902e884')
