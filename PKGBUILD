@@ -4,7 +4,7 @@
 # Contributor: Vladimir Kutyavin <vlkut(AT)bk(DOT)ru>
 pkgname=xtables-addons-dkms
 _pkgname="${pkgname%-*}"
-pkgver=3.29
+pkgver=3.30
 pkgrel=1
 pkgdesc='DKMS for additional extensions for Xtables packet filter present in the Linux kernel'
 arch=('x86_64' 'aarch64')
@@ -17,9 +17,9 @@ optdepends=('perl-text-csv-xs: required for building GeoIP database'
             'unzip: required for building GeoIP database')
 conflicts=("${_pkgname}" "${_pkgname}-git" "${_pkgname}-multikernel")
 replaces=("${_pkgname}" "${_pkgname}-git" "${_pkgname}-multikernel")
-source=("https://inai.de/files/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"
+source=("https://inai.de/files/${_pkgname}/${_pkgname}-${pkgver}.tar.zst"
         dkms.conf)
-sha256sums=('eb4a2238a1e928f817f5eb2a58ffb830e2e3bea31fac936d7565c7f2069a38b1'
+sha256sums=('d43400322980390180bef05eb6f798af49285987c217b7f1c6332da74920d9a4'
             '5e131d43ce1b282ada4b02599d2c203a01e2444817f5835bd11ba55578e49111')
 
 prepare() {
