@@ -1,7 +1,7 @@
 pkgbase = convertwithmoss
 	pkgdesc = A tool for converting multi-samples from one format to another
 	pkgver = 15.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mossgrabers.de/Software/ConvertWithMoss/ConvertWithMoss.html
 	arch = aarch64
 	arch = x86_64
