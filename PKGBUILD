@@ -4,12 +4,15 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-location-static
-_qtver=6.10.0
+_qtver=6.10.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
 url='https://www.qt.io'
-license=(GPL3 LGPL3 FDL custom)
+license=(GPL-3.0-only
+         LGPL-3.0-only
+         LicenseRef-Qt-Commercial
+         Qt-GPL-exception-1.0)
 pkgdesc='Helps you create viable mapping solutions using the data available from some of the popular location services (mingw-w64)'
 depends=('mingw-w64-qt6-declarative-static' 'mingw-w64-qt6-positioning-static')
 makedepends=('mingw-w64-cmake-static' 'mingw-w64-qt6-shadertools-static' 'mingw-w64-qt6-declarative-static' 'qt6-shadertools' 'qt6-declarative' 'ninja')
@@ -17,7 +20,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtlocation-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('cbd43e87fb4b2cccd8e01e0c762f951fc3c3d6b99cd2b80d6e526120a25df800')
+sha256sums=('2b9618f1b99cdc51d6697a79f3a57f4c2b629711549912067db8cd2b40794f09')
 
 _architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
@@ -33,6 +36,7 @@ build() {
       -DCMAKE_DISABLE_FIND_PACKAGE_harfbuzz=TRUE \
       -DUSE_LINK_GROUP=OFF \
       -DFEATURE_static_runtime=ON \
+      -DQT_NO_PACKAGE_VERSION_CHECK:BOOL=TRUE \
       -DFEATURE_pkg_config=ON \
       -DFEATURE_geoservices_mapbox=OFF \
       -DFEATURE_geoservices_mapboxgl=OFF \
