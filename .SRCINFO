@@ -2,13 +2,14 @@ pkgbase = amd-real-ucode-git
 	pkgdesc = Actually provides the latest CPU microcode for AMD
 	pkgver = 20251116.ea1ed78
 	pkgrel = 1
+	url = https://github.com/divestedcg/real-ucode
 	arch = any
 	license = custom
 	makedepends = git
 	makedepends = perl-rename
 	provides = amd-ucode
 	conflicts = amd-ucode
-	source = real-ucode::git+https://github.com/divestedcg/real-ucode
+	source = git+https://github.com/divestedcg/real-ucode
 	sha256sums = SKIP
 
 pkgname = amd-real-ucode-git

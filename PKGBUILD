@@ -10,7 +10,8 @@ license=('custom')
 makedepends=('git' 'perl-rename')
 conflicts=('amd-ucode')
 provides=('amd-ucode')
-source=('real-ucode::git+https://github.com/divestedcg/real-ucode')
+url='https://github.com/divestedcg/real-ucode'
+source=("git+$url")
 sha256sums=(SKIP)
 
 pkgver() {
