@@ -1,7 +1,7 @@
 pkgbase = perl-log-any
 	pkgdesc = Bringing loggers and listeners together
 	pkgver = 1.718
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/dist/Log-Any
 	arch = any
 	license = GPL-1.0-or-later OR Artistic-1.0-Perl
@@ -10,7 +10,9 @@ pkgbase = perl-log-any
 	checkdepends = perl-io
 	checkdepends = perl
 	checkdepends = perl-test-simple
+	checkdepends = perl-devel-stacktrace>=2.00
 	makedepends = perl-extutils-makemaker
+	optdepends = perl-devel-stacktrace>=2.00: for Log::Any::Proxy::WithStackTrace
 	options = !emptydirs
 	options = purge
 	source = https://cpan.metacpan.org/authors/id/P/PR/PREACTION/Log-Any-1.718.tar.gz

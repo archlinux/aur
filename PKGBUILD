@@ -1,11 +1,12 @@
 # Maintainer: marmis <tiagodepalves@gmail.com>
+# Contributor: micwoj92
 # Contributor: "marmis" Tiago de Paula <tiagodepalves@gmail.com>
 # Contributor: arojas <arojas@archlinux.org>
 # Contributor: Florian Pritz <bluewind@archlinux.org>
 
 pkgname=perl-log-any
 pkgver=1.718
-pkgrel=1
+pkgrel=2
 pkgdesc='Bringing loggers and listeners together'
 arch=('any')
 url='https://metacpan.org/dist/Log-Any'
@@ -25,6 +26,12 @@ checkdepends=(
   'perl-io'          # "IO::Handle"
   'perl'             # "IPC::Open3"
   'perl-test-simple' # "Test::More"
+  # See https://github.com/preaction/Log-Any/commit/c2cc64c245f90068f7135895e3c3f642d587703c
+  'perl-devel-stacktrace>=2.00'
+)
+optdepends=(
+  # See https://github.com/preaction/Log-Any/commit/c2cc64c245f90068f7135895e3c3f642d587703c
+  'perl-devel-stacktrace>=2.00: for Log::Any::Proxy::WithStackTrace'
 )
 options=(!emptydirs purge)
 source=("https://cpan.metacpan.org/authors/id/P/PR/PREACTION/Log-Any-${pkgver}.tar.gz")
