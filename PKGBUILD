@@ -12,8 +12,13 @@ license=('custom:combined')
 
 # _src_url='https://my.opendesktop.org/s/QrcjmXiTpqQsciE/download/Smooth_v1.2.tar.gz'
 # source=("${pkgname}-${pkgver}.tar.gz::${_src_url}")
-source=("https://github.com/spsf64/simple/releases/download/1/simple-1.0.tar.gz")
-b2sums=('6fb0e00b2292e0ac400323655df3a7b8d8a2f63412d58b620f26285296a933411c0c32144f0b53568faad48121623bf1a11b3aec39dd3744f98ffa56d3faa0f8')
+source=("https://github.com/spsf64/simple/releases/download/1/simple-1.0.tar.gz"
+	'.nvchecker.toml'
+	'.SRCINFO')
+
+b2sums=('7e48a2a13cc5d42db7f30dfeb789803bda1847178e5ff7bbcac0e95a88c2cf167411caa37b02d4e79cc21275d271f12af0b5dc4898616c2810b7efcafe94a4ae'
+        'c5b42dda10f7912553fc29a6d09833b8017b957402bfdc7a439d22b4b8c28999b35e38cb46a9ea96433b4f15fc8326866d74c3a32cac38d45db081114cf5b1c2'
+        '1f0d30f70d51ba85c735c29fa1bdcc0a6483d73b651f4c821db6e4fd7e45f06efec9876dd0344fcd40d71aaf593f4c64508df9e156a2b0314a649671c37153e1')
 
 package() {
   install -dm755 "${pkgdir}/usr/share/sounds/simple"
