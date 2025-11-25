@@ -26,14 +26,14 @@ provides=(telegram-desktop)
 
 # Sources
 source=(
-	"org.telegram.desktop"
+	"org.telegram.desktop.desktop"
 	tg.protocol
 	$url/raw/master/Telegram/Resources/art/icon{16,32,48,64,128,256,512}.png
 	$url/releases/download/v${pkgver}/tsetup.${pkgver}.tar.xz
 )
 
 # Checksums
-sha256sums=('24156094fc899c1f8a9760a2620b4e03b70df5a324436d58c150d154ed34f444'
+sha256sums=('1840a4f719fbb37d6c018f33811e292729788bf13556970d2b05f324f0958151'
             'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb'
             'ea1f36152b143cc2664daef5026656d55be2230ed42d43628e17ef7d2fff718c'
             '9e4180c78c895783b4559c5e1a7868a2c9aa30a29969fe5dbe9a4ce4cf5cde6c'
@@ -60,7 +60,7 @@ package() {
 
 	# Desktop launcher
 	install -Dm644 "$srcdir/icon256.png" "$pkgdir/usr/share/pixmaps/telegram.png"
-	install -Dm644 "$srcdir/org.telegram.desktop" "$pkgdir/usr/share/applications/org.telegram.desktop"
+	install -Dm644 "$srcdir/org.telegram.desktop.desktop" "$pkgdir/usr/share/applications/org.telegram.desktop.desktop"
 
 	# KDE5 & KDE4 protocol file
 	install -d "$pkgdir/usr/share/kservices5"
