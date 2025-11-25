@@ -1,6 +1,6 @@
 pkgbase = quakewatch
 	pkgdesc = Lists the latest earthquakes on the command-line
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/baraclese/quakewatch
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = quakewatch
 	depends = python
 	depends = python-requests
 	depends = python-tabulate
-	source = https://github.com/baraclese/quakewatch/archive/v1.0.tar.gz
-	sha256sums = ca1f56d9277a063bd0dd8f05e789dce858ffaf51afd31432fda68ac7ac02b2c3
+	source = https://github.com/baraclese/quakewatch/archive/v1.0.1.tar.gz
+	sha256sums = 0378364c52c6b481b5f7719936226eccf99cc1c766db347960685ab5175986a9
 
 pkgname = quakewatch
-
