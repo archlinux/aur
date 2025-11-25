@@ -1,0 +1,199 @@
+--- Ogre_original_version/Ogre/ogre/utils/utils.py	2025-11-02 15:00:14.132902503 +0100
++++ Ogre_version_OK/ogre/utils/utils.py	2025-10-26 13:52:14.000000000 +0100
+@@ -30,8 +30,11 @@
+     """
+     file_name = working_dir + "/temp.POSCAR.vasp"
+     io.write(file_name, images,parallel=False)
+-    modify_poscar(file_name)
+-    slab = mg.Structure.from_file(file_name)
++    io.write(file_name+'_before_modify_poscar', images, parallel=False)
++    #modify_poscar(file_name)
++
++    print('calling mg.core.Structure.from_file with arg:', file_name, type(file_name))
++    slab = mg.core.Structure.from_file(file_name)
+     os.remove(file_name)
+     return slab
+ 
+@@ -267,7 +270,7 @@
+             continue
+         species = [slab_supercell_sg.structure[n].specie
+                    for n in subgraph.nodes()]
+-        molecule = mg.Molecule(species=species, coords=coords)
++        molecule = mg.core.Molecule(species=species, coords=coords)
+         molecules.append(molecule)
+     # molecules are the list of molecules that need to be moved
+     move_list = []
+@@ -349,7 +352,7 @@
+     sites = []
+     for slab_molecule in slab_molecules:
+         for curr_site in slab_molecule:
+-            curr_site = mg.PeriodicSite(curr_site.specie,
++            curr_site = PeriodicSite(curr_site.specie,
+                                         curr_site.coords,
+                                         slab.lattice,
+                                         coords_are_cartesian=True)
+@@ -650,7 +653,7 @@
+     with open(output_file, 'w') as final_file_1:
+         for i in range(len(lines)):
+             final_file_1.writelines(lines[i])
+-    structure = mg.Structure.from_file(output_file)
++    structure = mg.core.Structure.from_file(output_file)
+     lattice = Lattice(structure.lattice.matrix)
+     frac_coords = lattice.get_fractional_coords(structure.cart_coords)
+     for i in range(frac_coords.shape[0]):
+@@ -703,8 +706,10 @@
+         Molecules that are correlated to the subgraphs.
+     """
+     bulk_super_structure_sg_graph = nx.Graph(bulk_structure_sg.graph)
+-    all_super_subgraphs = list(nx.connected_component_subgraphs
+-                               (bulk_super_structure_sg_graph))
++    G = bulk_super_structure_sg_graph
++    # all_super_subgraphs = list(nx.connected_component_subgraphs
++    #                            (bulk_super_structure_sg_graph))
++    all_super_subgraphs = [G.subgraph(c).copy() for c in nx.connected_components(G)]
+     super_subgraphs = []
+     for subgraph in all_super_subgraphs:
+         in_boundary = any([d['to_jimage'] == (0, 0, 0)
+@@ -725,7 +730,7 @@
+                   for n in subgraph.nodes()]
+         species = [bulk_structure_sg.structure[n].specie
+                    for n in subgraph.nodes()]
+-        molecule = mg.Molecule(species=species, coords=coords)
++        molecule = mg.core.Molecule(species=species, coords=coords)
+         molecules.append(molecule)
+     return super_subgraphs, molecules
+ 
+@@ -761,7 +766,7 @@
+                   for n in subgraph.nodes()]
+         species = [bulk_structure_sg.structure[n].specie
+                    for n in subgraph.nodes()]
+-        molecule = mg.Molecule(species=species, coords=coords)
++        molecule = mg.core.Molecule(species=species, coords=coords)
+         molecules.append(molecule)
+     return all_super_subgraphs, molecules
+ 
+@@ -789,8 +794,10 @@
+         Molecules that are correlated to the subgraphs.
+     """
+     bulk_super_structure_sg_graph = nx.Graph(bulk_structure_sg.graph)
+-    all_super_subgraphs = list(nx.connected_component_subgraphs
+-                               (bulk_super_structure_sg_graph))
++    # all_super_subgraphs = list(nx.connected_component_subgraphs
++    #                            (bulk_super_structure_sg_graph))
++    G = bulk_super_structure_sg_graph
++    all_super_subgraphs = [G.subgraph(c).copy() for c in nx.connected_components(G)]
+     for subgraph in all_super_subgraphs:
+         for n in subgraph:
+             subgraph.add_node(n,
+@@ -836,7 +843,7 @@
+                   for n in subgraph.nodes()]
+         species = [bulk_structure_sg.structure[n].specie
+                    for n in subgraph.nodes()]
+-        molecule = mg.Molecule(species=species, coords=coords)
++        molecule = mg.core.Molecule(species=species, coords=coords)
+         molecules.append(molecule)
+     return delta, all_super_subgraphs, molecules
+ 
+@@ -890,7 +897,7 @@
+                   for n in subgraph.nodes()]
+         species = [bulk_structure_sg.structure[n].specie
+                    for n in subgraph.nodes()]
+-        molecule = mg.Molecule(species=species, coords=coords)
++        molecule = mg.core.Molecule(species=species, coords=coords)
+         molecules.append(molecule)
+     return unique_super_subgraphs, molecules
+ 
+@@ -913,7 +920,7 @@
+         are different from those in bulk. In this function,
+         we would only find the different subgraphs based on its species.
+     slab_molecules : list
+-        [slab_molecule, ...], slab_molecule is the mg.Molecule of diffenert_subgraphs.
++        [slab_molecule, ...], slab_molecule is the mg.core.Molecule of diffenert_subgraphs.
+     """
+     slab_supercell_sg_graph = nx.Graph(slab_supercell_sg.graph)
+     all_subgraphs = list(nx.connected_component_subgraphs
+@@ -946,7 +953,7 @@
+                   for n in subgraph.nodes()]
+         species = [slab_supercell_sg.structure[n].specie
+                    for n in subgraph.nodes()]
+-        molecule = mg.Molecule(species=species, coords=coords)
++        molecule = mg.core.Molecule(species=species, coords=coords)
+         slab_molecules.append(molecule)
+     return different_subgraphs, slab_molecules
+ 
+@@ -1238,7 +1245,7 @@
+                   for new_relative in new_relatives]
+         species = [bulk_super_structure_sg.structure[n].specie
+                    for n in qualified_unique_subgraphs[i].nodes()]
+-        molecule = mg.Molecule(species=species, coords=coords)
++        molecule = mg.core.Molecule(species=species, coords=coords)
+         molecules_new.append(molecule)
+     sites = []
+     molecules_new_backup = list(molecules_new)
+@@ -1247,7 +1254,7 @@
+         while i < len(molecules_new):
+             under = False
+             for curr_site in molecules_new[i]:
+-                curr_site = mg.PeriodicSite(curr_site.specie,
++                curr_site = PeriodicSite(curr_site.specie,
+                                             curr_site.coords,
+                                             slab.lattice,
+                                             coords_are_cartesian=True)
+@@ -1261,7 +1268,7 @@
+         molecules_new = molecules_new_backup
+     for molecule in molecules_new:
+         for curr_site in molecule:
+-            curr_site = mg.PeriodicSite(curr_site.specie,
++            curr_site = PeriodicSite(curr_site.specie,
+                                         curr_site.coords,
+                                         slab.lattice,
+                                         coords_are_cartesian=True)
+@@ -1284,10 +1291,10 @@
+         for j in range(coords.shape[1]):
+             coords[i, j] = coords[i, j] % 1
+     species = slab.species
+-    molecule = mg.Molecule(species, coords)
++    molecule = mg.core.Molecule(species, coords)
+     sites = []
+     for site in molecule:
+-        site = mg.PeriodicSite(site.specie,
++        site = PeriodicSite(site.specie,
+                                site.coords,
+                                slab.lattice)
+         tmp = [site.is_periodic_image(item, tolerance=1e-5) for item in sites]
+@@ -1439,7 +1446,7 @@
+                   for new_relative in new_relatives]
+         species = [bulk_super_structure_sg.structure[n].specie
+                    for n in less_intact_subgraphs[i].nodes()]
+-        molecule = mg.Molecule(species=species, coords=coords)
++        molecule = mg.core.Molecule(species=species, coords=coords)
+         molecules_new.append(molecule)
+     sites = []
+     molecules_new_backup = list(molecules_new)
+@@ -1448,7 +1455,7 @@
+         while i < len(molecules_new):
+             under = False
+             for curr_site in molecules_new[i]:
+-                curr_site = mg.PeriodicSite(curr_site.specie,
++                curr_site = PeriodicSite(curr_site.specie,
+                                             curr_site.coords,
+                                             slab.lattice,
+                                             coords_are_cartesian=True)
+@@ -1462,7 +1469,7 @@
+         molecules_new = molecules_new_backup
+     for molecule in molecules_new:
+         for curr_site in molecule:
+-            curr_site = mg.PeriodicSite(curr_site.specie,
++            curr_site = PeriodicSite(curr_site.specie,
+                                         curr_site.coords,
+                                         slab.lattice,
+                                         coords_are_cartesian=True)
+@@ -1617,7 +1624,7 @@
+         slab_delete_layer.center(vacuum=vacuum_size, axis=2)
+         io.write(file_name, images=slab_delete_layer,parallel=False)
+         modify_poscar(file_name)
+-        slab_delete = mg.Structure.from_file(file_name)
++        slab_delete = mg.core.Structure.from_file(file_name)
+         os.remove(file_name)
+         return slab_delete
+ 

@@ -1,0 +1,19 @@
+pkgbase = python-ogre
+	pkgdesc = Ogre: A Python Package for Molecular Crystal Surface Generation with Applications to Surface Energy and Crystal Habit Prediction
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Shuyangzero/Ogre
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-pip
+	depends = python
+	depends = python-numpy
+	depends = python-pymatgen
+	depends = python-setuptools
+	source = git+https://github.com/Shuyangzero/Ogre.git
+	source = utils.patch
+	md5sums = SKIP
+	md5sums = f2e1a2ed57d07e16d05977436128f806
+
+pkgname = python-ogre
