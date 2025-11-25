@@ -13,4 +13,4 @@ Target=opera-developer
 
 [Action]
 When=PostTransaction
-Exec=/usr/bin/bash -c 'chmod a-r /usr/lib/opera{,-beta,-developer}/libffmpeg.so /opt/{vivaldi,vivaldi-snapshot,nwjs}/lib/libffmpeg.so 2>/dev/null||:'
+Exec=/usr/bin/bash -c 'chmod a-r /usr/lib/opera-{stable,beta,developer}/libffmpeg.so /opt/{vivaldi,vivaldi-snapshot,nwjs}/lib/libffmpeg.so 2>/dev/null||:'
