@@ -1,8 +1,8 @@
 # Maintainer: Benoit Brummer (Trougnouf) <trougnouf@gmail.com>
 pkgname=cfait-git
 _pkgname=cfait
-pkgver=v0.1.5.r5.gbbc3132
-pkgrel=2
+pkgver=v0.1.6.r8.gd98351d
+pkgrel=1
 pkgdesc="A simple, elegant, and lightweight CalDAV task / TODO manager (TUI & GUI) (git version)"
 arch=('x86_64')
 url="https://gitlab.com/trougnouf/cfait"
