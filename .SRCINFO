@@ -1,6 +1,6 @@
 pkgbase = adbmanager-bin
 	pkgdesc = ADB manager for Android devices.(Prebuilt version)
-	pkgver = 3.9
+	pkgver = 4.0
 	pkgrel = 1
 	url = https://github.com/AKotov-dev/adbmanager
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = adbmanager-bin
 	depends = gtk2
 	depends = sakura
 	depends = qt6pas
-	provides = adbmanager=3.9
+	provides = adbmanager=4.0
 	conflicts = adbmanager
-	source = adbmanager-3.9.rpm::https://github.com/AKotov-dev/adbmanager/releases/download/v3.9/adbmanager-3.9-0.mrx9.x86_64.rpm
+	source = adbmanager-4.0.rpm::https://github.com/AKotov-dev/adbmanager/releases/download/v4.0/adbmanager-4.0-0.mrx9.x86_64.rpm
 	source = adbmanager.sh
-	sha256sums = 73d2c2af5c175a5e5e371e2de03964dc8dc044d6a62e677c002f6554e1678d1e
+	sha256sums = 411198d3c437dac9e57095bc903f42878e3383d96e6d088f72d28cec8447bfd7
 	sha256sums = b046dc662796f382c9300642d94724a97c20baf60de1fe9b34844a6a735aaf7d
 
 pkgname = adbmanager-bin
