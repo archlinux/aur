@@ -1,0 +1,4 @@
+[lib32-pcre]
+source = 'regex'
+url = 'https://sourceforge.net/projects/pcre/best_release.json'
+regex = 'pcre-([\d.]+).tar'
