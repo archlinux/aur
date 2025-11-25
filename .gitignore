@@ -1,5 +1,0 @@
-bun
-*.tar.*
-*.zip
-pkg/
-src/

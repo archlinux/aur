@@ -1,14 +1,14 @@
 # Maintainer: Daniele Basso <d dot bass 05 at proton dot me>
 pkgname=bun
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Bun is a fast JavaScript all-in-one toolkit. This PKGBUILD builds from source, resulting into a smaller and faster binary depending on your CPU."
 arch=(x86_64)
 url="https://github.com/oven-sh/bun"
-license=('GPL')
+license=('MIT')
 #depends=(c-ares libarchive libuv mimalloc tcc zlib zstd)
 makedepends=(
-  ccache clang cmake git go icu libdeflate libiconv libtool lld llvm ninja mold pkgconf python ruby ruby-getoptlong rust unzip zig
+  ccache clang cmake git go icu libdeflate libiconv libtool lld llvm ninja pkgconf python ruby ruby-getoptlong rust unzip zig
 )
 conflicts=(bun-bin bun-git)
 source=(bun::git+$url.git#tag=bun-v$pkgver
@@ -23,7 +23,7 @@ _j=$(( $(nproc) / 2 + 1 )) # Chooses parallel job count automatically
 
 prepare() {
   _webkitver=$(grep -Eom1 [a-f0-9]{40} $srcdir/bun/cmake/tools/SetupWebKit.cmake) #https://github.com/oven-sh/bun/blob/main/cmake/tools/SetupWebKit.cmake#L5
-  # rm -rf WebKit
+
   if ! [[ -d WebKit ]]; then
       git clone --filter=tree:0 --sparse https://github.com/oven-sh/WebKit.git -b autobuild-$_webkitver
   else
@@ -31,19 +31,15 @@ prepare() {
       git -C WebKit switch --detach autobuild-$_webkitver
   fi
 
-  cd WebKit
+  git -C WebKit sparse-checkout set Source
 
-  git sparse-checkout set Source
-
-  cd ../bun
+  cd $srcdir/bun
 
   # mkdir -p ./vendor
   # ln -sf $srcdir/WebKit ./vendor/WebKit
 
   patch -Np1 -i ../brotliFlag.patch
 }
-
-export MOLD_JOBS=1
 
 build() {
   export PATH="${srcdir}/bun-linux-x64:$PATH"
@@ -66,7 +62,7 @@ build() {
   CMAKE_LINKER_TYPE="mold" \
   CXXFLAGS="-Wno-unused-result -Wno-character-conversion ${CXXFLAGS}" bun ./scripts/build.mjs -GNinja -B $srcdir/build -S $srcdir/bun -Wno-dev -DCMAKE_BUILD_TYPE=Release -DUSE_STATIC_LIBATOMIC=OFF \
         -DENABLE_CCACHE=ON -DENABLE_LTO=ON -DENABLE_ASAN=OFF -DUSE_STATIC_SQLITE=OFF -DWEBKIT_LOCAL=ON -DWEBKIT_PATH=$srcdir/WebKitBuild/output  -j$_j -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-        -DFETCHCONTENT_FULLY_DISCONNECTED=ON -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=mold" -DLLVM_VERSION=20.1.8 -DZIG_PATH="/usr/lib/zig" -DLLVM_VERSION=21.1.4
+        -DFETCHCONTENT_FULLY_DISCONNECTED=ON -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" -DLLVM_VERSION=20.1.8 -DZIG_PATH="/usr/lib/zig" -DLLVM_VERSION=21.1.4
 }
 
 build_webkit(){
@@ -90,7 +86,6 @@ build_webkit(){
   export CXXFLAGS="${DEFAULT_CFLAGS} $CXXFLAGS $LTO_FLAG -fno-c++-static-destructors "
 
   CC="/usr/bin/clang" CXX="/usr/bin/clang++" \
-  CMAKE_LINKER_TYPE="mold" \
   cmake \
       -S . \
       -B $srcdir/WebKitBuild \
@@ -108,7 +103,7 @@ build_webkit(){
       -DJSEXPORT_PRIVATE=WTF_EXPORT_DECLARATION \
       -DUSE_VISIBILITY_ATTRIBUTE=1 \
       -DENABLE_REMOTE_INSPECTOR=ON \
-      -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=mold"
+      -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld"
 
   cd $srcdir/WebKitBuild
   ninja jsc -j$_j
