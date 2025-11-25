@@ -1,0 +1,47 @@
+pkgbase = matlab-jdk
+	pkgdesc = A high-level language for numerical computation and visualization
+	pkgver = R2025b
+	pkgrel = 1
+	url = https://www.mathworks.com/support/requirements/openjdk.html
+	arch = any
+	license = custom:None
+
+pkgname = matlab-jdk8
+	pkgdesc = A high-level language for numerical computation and visualization (JDK8 runtime dependency (system-wide))
+	depends = java-environment=8
+	provides = matlab-r2020a-jdk
+	provides = matlab-r2020b-jdk
+	provides = matlab-r2021a-jdk
+	provides = matlab-r2021b-jdk
+	provides = matlab-r2022a-jdk
+	provides = matlab-r2022b-jdk
+	provides = matlab-r2023a-jdk
+	provides = matlab-r2023b-jdk
+	provides = matlab-r2024a-jdk
+	provides = matlab-r2024b-jdk
+	provides = matlab-r2025a-jdk
+	provides = matlab-r2025b-jdk
+
+pkgname = matlab-jdk21
+	pkgdesc = A high-level language for numerical computation and visualization (JDK21 runtime dependency (system-wide))
+	depends = java-environment=21
+	provides = matlab-r2025a-jdk
+	provides = matlab-r2025b-jdk
+
+pkgname = matlab-jdk11
+	pkgdesc = A high-level language for numerical computation and visualization (JDK11 runtime dependency (system-wide))
+	depends = java-environment=11
+	provides = matlab-r2023a-jdk
+	provides = matlab-r2023b-jdk
+	provides = matlab-r2024a-jdk
+	provides = matlab-r2024b-jdk
+	provides = matlab-r2025a-jdk
+	provides = matlab-r2025b-jdk
+
+pkgname = matlab-jdk17
+	pkgdesc = A high-level language for numerical computation and visualization (JDK17 runtime dependency (system-wide))
+	depends = java-environment=17
+	provides = matlab-r2024a-jdk
+	provides = matlab-r2024b-jdk
+	provides = matlab-r2025a-jdk
+	provides = matlab-r2025b-jdk
