@@ -4,7 +4,7 @@
 _name=CloudReverb
 pkgname=${_name,,}
 _plugin_uri="http://github.com/xunil-cloud/$_name"
-pkgver=0.3.1
+pkgver=0.4
 pkgrel=1
 pkgdesc='An algorithmic reverb plugin and app for creating huge, endless spaces and modulated echoes'
 arch=(x86_64 aarch64)
@@ -19,14 +19,14 @@ optdepends=(
   'vst3-host: for loading the VST3 plugin'
 )
 groups=(lv2-plugins pro-audio vst3-plugins)
-_juce_commit='69795dc8e589a9eb5df251b6dd994859bf7b3fab'
+_juce_commit='d6181bde38d858c283c3b7bf699ce6340c050b5d'
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/xunil-cloud/$_name/archive/refs/tags/v$pkgver.tar.gz"
   "JUCE-$_juce_commit.tar.gz::https://github.com/juce-framework/JUCE/archive/$_juce_commit.tar.gz"
 )
 
-sha256sums=('2d027834765fd70f2ecb72f9a0a11468f06abec5d44ae63a6fb69edcde502abf'
-            'd81a078d529f744fe0993fc3648532eb07a6c904a9cb6aeefec8c0586758b19a')
+sha256sums=('076dd690fcc31188e4eaa0a0ea7c39a2dfc339c55697ac81d37dcd6199fba2d1'
+            'ab02a58f4cc0e42102a22e863e8bbe3aaa1c3e72899fd567154a5a1aa7898219')
 
 prepare() {
   cd $_name-$pkgver
