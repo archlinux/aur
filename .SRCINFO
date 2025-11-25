@@ -1,7 +1,7 @@
 pkgbase = rumdl-bin
 	pkgdesc = Markdown Linter and Formatter written in Rust
 	pkgver = 0.0.181
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rvben/rumdl
 	arch = x86_64
 	arch = aarch64

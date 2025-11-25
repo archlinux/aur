@@ -2,7 +2,7 @@
 
 pkgname=rumdl-bin
 pkgver=0.0.181
-pkgrel=1
+pkgrel=2
 pkgdesc='Markdown Linter and Formatter written in Rust'
 arch=('x86_64' 'aarch64')
 url=https://github.com/rvben/rumdl
@@ -32,5 +32,5 @@ sha256sums_aarch64=('03c28593205524020bd0858fe8a484416f0c69fc213ffb7c252ff24b640
 
 package() {
   install -Dm0755 -t "$pkgdir/usr/bin/" "${pkgname%-bin}"
-  install -Dm0755 -t "$pkgdir/usr/share/licenses/${pkgname%-bin}"/ LICENSE
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE"
 }
