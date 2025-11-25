@@ -1,0 +1,6 @@
+[lib32-popt]
+source = "git"
+git = "https://github.com/rpm-software-management/popt.git"
+from_pattern = 'popt-(\d+).(\d+)-release'
+to_pattern = '\1.\2'
+use_max_tag = true
