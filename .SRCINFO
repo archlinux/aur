@@ -1,6 +1,6 @@
 pkgbase = r-biocsingular
 	pkgdesc = Singular Value Decomposition for Bioconductor Packages
-	pkgver = 1.26.0
+	pkgver = 1.26.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BiocSingular
 	arch = x86_64
@@ -21,8 +21,8 @@ pkgbase = r-biocsingular
 	optdepends = r-residualmatrix
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocSingular_1.26.0.tar.gz
-	md5sums = dc81b2fec6ad99ebe5593e670b9d1301
-	b2sums = 980644686b81a265f462de7b867600fbee569550ec46dc4691f2674731dd6018ad6e64dedebee06ae7f54d6fac23c85d00a2ee3ed61b84066b791770cfae400f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocSingular_1.26.1.tar.gz
+	md5sums = d46f70d8e4e3b07ded33f9f2378fbe89
+	b2sums = 5de4698cab793e568a8112f6bc4cee71f165beb7a2a1872ea0050075cdf9f9d10566580304f15977df0db94fabb208bdd58188b6cc394a3593b99dabda257679
 
 pkgname = r-biocsingular
