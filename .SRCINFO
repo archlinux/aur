@@ -1,6 +1,6 @@
 pkgbase = mitmproxy-git
 	pkgdesc = SSL-capable man-in-the-middle HTTP proxy
-	pkgver = 12.2.0.r1.g2208605ef
+	pkgver = 12.2.1.r1.gcf58bdfb7
 	pkgrel = 1
 	url = https://mitmproxy.org/
 	arch = any
@@ -29,7 +29,6 @@ pkgbase = mitmproxy-git
 	depends = python-ldap3
 	depends = python-mitmproxy-rs-git
 	depends = python-msgpack
-	depends = python-passlib
 	depends = python-protobuf
 	depends = python-publicsuffix2
 	depends = python-pyopenssl
