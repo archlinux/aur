@@ -1,6 +1,6 @@
 pkgbase = php-codesniffer-wordpress
 	pkgdesc = PHP_CodeSniffer rules (sniffs) to enforce WordPress coding conventions
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/WordPress/WordPress-Coding-Standards
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = php-codesniffer-wordpress
 	depends = php-codesniffer
 	depends = php-codesniffer-phpcsextra
 	depends = php-codesniffer-phpcsutils
-	source = php-codesniffer-wordpress-3.2.0.tar.gz::https://github.com/WordPress/WordPress-Coding-Standards/archive/3.2.0.tar.gz
-	b2sums = 53a8517b567a4b477594a32ce9facc30c30d04c0a56248fd0852dbc10da88b9444fad285ffe611dfab8be013572af2e1430c7ff2be48ed639407e08ba7951cff
+	source = php-codesniffer-wordpress-3.3.0.tar.gz::https://github.com/WordPress/WordPress-Coding-Standards/archive/3.3.0.tar.gz
+	b2sums = 57e2ae5b533670979cad2317053e062bbfc11d1ad88a47126f652e8424cf271f5307f78e20800dfe6b955ea47cafa584295aec4397690cb6ab97deda75cc6f1d
 
 pkgname = php-codesniffer-wordpress

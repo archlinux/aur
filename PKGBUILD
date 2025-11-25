@@ -3,7 +3,7 @@
 
 pkgname=php-codesniffer-wordpress
 _pkgname=WordPress-Coding-Standards
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="PHP_CodeSniffer rules (sniffs) to enforce WordPress coding conventions "
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('php-codesniffer' 'php-codesniffer-phpcsextra' 'php-codesniffer-phpcsutils')
 makedepends=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/WordPress/$_pkgname/archive/$pkgver.tar.gz")
-b2sums=('53a8517b567a4b477594a32ce9facc30c30d04c0a56248fd0852dbc10da88b9444fad285ffe611dfab8be013572af2e1430c7ff2be48ed639407e08ba7951cff')
+b2sums=('57e2ae5b533670979cad2317053e062bbfc11d1ad88a47126f652e8424cf271f5307f78e20800dfe6b955ea47cafa584295aec4397690cb6ab97deda75cc6f1d')
 
 package() {
   install -d "${pkgdir}/usr/share/pear/PHP/CodeSniffer/Standards/WordPress"
