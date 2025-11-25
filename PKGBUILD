@@ -7,16 +7,16 @@
 pkgname=('0ad-git' '0ad-data-git')
 _pkgname=0ad
 epoch=1
-pkgver=a26.r1606.gff03dd45c4
+pkgver=a26.r2052.g7ec2d3f0e0
 pkgrel=1
 pkgdesc="Cross-platform, 3D and historically-based real-time strategy game (git version)"
 arch=('i686' 'x86_64')
 url="https://play0ad.com"
-license=('GPL-2.0-or-later' 'LicenseRef-CCPL')
+license=('GPL-2.0-or-later' 'CC-BY-NC-SA-3.0')
 makedepends=('boost' 'cmake' 'mesa' 'zip' 'libsm' 'rust' 'git' 'enet' 'fmt'
              'gloox' 'libminiupnpc.so' 'libpng' 'libsodium' 'libvorbis'
              'miniupnpc' 'openal' 'sdl2' 'wxwidgets-gtk3' 'which' 'subversion'
-             'makepkg-git-lfs-proto' 'python' 'llvm')
+             'makepkg-git-lfs-proto' 'python' 'llvm' 'cbindgen')
 options=('!lto' '!debug') # lto breaks spidermonkey linking (https://bugs.gentoo.org/746947)
 source=(
   "git-lfs+https://gitea.wildfiregames.com/0ad/0ad"
