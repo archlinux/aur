@@ -1,7 +1,7 @@
 pkgbase = orfeo-toolbox
 	pkgdesc = ORFEO Toolbox (OTB) is an open source library of image processing algorithms
 	pkgver = 9.1.1
-	pkgrel = 2
+	pkgrel = 6
 	url = http://www.orfeo-toolbox.org
 	arch = x86_64
 	arch = i686
@@ -30,7 +30,7 @@ pkgbase = orfeo-toolbox
 	source = package.patch
 	source = git+https://github.com/jmichel-otb/GKSVM.git
 	md5sums = 0d5a054a59e0b17e0e7539a3f6130f9d
-	md5sums = 28eca0a5a7d488745b62c23ea3a3f0bf
+	md5sums = 31db247b6aee9c0c7c53077f28a49d5a
 	md5sums = SKIP
 
 pkgname = orfeo-toolbox

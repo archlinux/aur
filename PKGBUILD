@@ -5,7 +5,7 @@
 pkgname=orfeo-toolbox
 pkgver=9.1.1
 _pkgver=9.1
-pkgrel=2
+pkgrel=6
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
 url="http://www.orfeo-toolbox.org"
@@ -29,7 +29,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://www.orfeo-toolbox.org/packages/OTB
 noextract=()
 
 md5sums=('0d5a054a59e0b17e0e7539a3f6130f9d'
-         '28eca0a5a7d488745b62c23ea3a3f0bf'
+         '31db247b6aee9c0c7c53077f28a49d5a'
          'SKIP')
 
 
@@ -84,7 +84,7 @@ build() {
   -DOTB_USE_SHARK=OFF \
   -DITK_DIR=/opt/insight-toolkit4 \
   -DCMAKE_PREFIX_PATH=/opt/insight-toolkit4 \
-  -DCMAKE_CXX_STANDARD=17 \
+  -DCMAKE_CXX_STANDARD=20 \
   -DCMAKE_CXX_FLAGS:STRING="-march=native" \
   -DBoost_USE_STATIC_LIBS=OFF
          
