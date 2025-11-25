@@ -3,7 +3,7 @@
 
 pkgname='perl-crypt-argon2'
 pkgver='0.030'
-pkgrel='20'
+pkgrel='1'
 pkgdesc="Perl interface to the Argon2 key derivation functions"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')

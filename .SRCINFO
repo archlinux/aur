@@ -1,7 +1,7 @@
 pkgbase = perl-crypt-argon2
 	pkgdesc = Perl interface to the Argon2 key derivation functions
 	pkgver = 0.030
-	pkgrel = 20
+	pkgrel = 1
 	url = https://metacpan.org/release/Crypt-Argon2
 	arch = i686
 	arch = x86_64
