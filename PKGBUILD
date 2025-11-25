@@ -5,8 +5,8 @@
 
 pkgname=hmcl-new
 _pkgname=HMCL
-_ver=3.6
-_build=20
+_ver=3.7
+_build=6
 _pkgver=v$_ver.$_build
 pkgver=$_ver.$_build
 pkgrel=1
@@ -27,9 +27,9 @@ source=('hmcl.desktop'
 sha256sums=('b4e8aa0f349bb3f5dd15a31c5a13ac3e10e5a5bcd2f97cf390041924275e43ef'
   '4fcd4bf8f8d2ca39cf25a8d59daeb53ffa54fbca0356bd55aa17a5ee31d59a95'
   'd4e56ae2e8c0d991dba01ef3124ef4d38918825f58728338a8bab5e78319306a'
-  'febb336eec022ac87e9dfd88da54beee1597fe594a61300c3ac2c8cc88dd30b6'
-  'c41660be2585c6feae10e6edd40d1c9cddffe8dae99b784f54624b5bbdf6208f'
-  '1a75f0f5aaa498287c44bc6232a96c2c95f5daccbafb2456a001f8c7dacb9c66')
+  'cacfed34b3afabfde7361182ac41cb5e11875223ac16eb542d2977dfc1713d19'
+  '71c0bed8026c12c8cbd955df2104d0aae2be9831acfa64fdc9b0198bbd9d1b5c'
+  'f8726411f783a5529c0403ec37aa797253f42e76ace8ccf2ccfc0a83bdc13b27')
 
 prepare() {
   cd "$_pkgname-$pkgver"
@@ -55,7 +55,7 @@ build() {
 check() {
   cd "$_pkgname-$pkgver"
   gradle test --no-daemon \
-    -D 'org.gradle.jvmargs=-Xmx2g -XX:MaxMetaspaceSize=512m' || true
+    -D 'org.gradle.jvmargs=-Xmx2g -XX:MaxMetaspaceSize=512m'
 }
 
 package() {

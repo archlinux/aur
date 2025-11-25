@@ -1,36 +1,60 @@
-From db00e29f0f01f62abd15f459b6d263b3516789a3 Mon Sep 17 00:00:00 2001
+From 06f1427fc0f06176e45ff66e277397c1946a92c5 Mon Sep 17 00:00:00 2001
 From: Aviana Cruz <gwencroft@proton.me>
 Date: Sun, 6 Nov 2022 13:33:14 +0800
 Subject: [PATCH 2/2] Cleanup
 
 Co-authored-by: zhaose <weiliang1503@outlook.com>
 ---
- HMCL/build.gradle.kts                         |  56 +---
+ HMCL/build.gradle.kts                         |  56 +-
  .../java/org/jackhuang/hmcl/Launcher.java     |   9 -
  .../java/org/jackhuang/hmcl/Metadata.java     |   3 -
- .../org/jackhuang/hmcl/ui/Controllers.java    |   6 -
+ .../jackhuang/hmcl/setting/GlobalConfig.java  |  16 +-
+ .../hmcl/terracotta/TerracottaManager.java    | 320 --------
+ .../hmcl/terracotta/TerracottaMetadata.java   | 205 -----
+ .../hmcl/terracotta/TerracottaNative.java     | 147 ----
+ .../hmcl/terracotta/TerracottaState.java      | 304 --------
+ .../hmcl/terracotta/profile/ProfileKind.java  |  29 -
+ .../terracotta/profile/TerracottaProfile.java |  57 --
+ .../terracotta/provider/GeneralProvider.java  |  67 --
+ .../provider/ITerracottaProvider.java         |  77 --
+ .../terracotta/provider/MacOSProvider.java    | 121 ---
+ .../org/jackhuang/hmcl/ui/Controllers.java    |  30 -
  .../org/jackhuang/hmcl/ui/CrashWindow.java    |   3 -
- .../org/jackhuang/hmcl/ui/UpgradeDialog.java  | 110 -------
+ .../org/jackhuang/hmcl/ui/UpgradeDialog.java  | 110 ---
  .../hmcl/ui/account/CreateAccountPane.java    |  16 -
- .../hmcl/ui/download/VersionsPage.java        |  12 -
- .../jackhuang/hmcl/ui/main/FeedbackPage.java  |  75 -----
+ .../jackhuang/hmcl/ui/main/FeedbackPage.java  |  75 --
  .../hmcl/ui/main/LauncherSettingsPage.java    |   9 +-
- .../org/jackhuang/hmcl/ui/main/MainPage.java  | 164 +---------
- .../org/jackhuang/hmcl/ui/main/RootPage.java  |  11 -
- .../jackhuang/hmcl/ui/main/SettingsPage.java  |  63 ----
- .../jackhuang/hmcl/ui/main/SettingsView.java  |  68 ----
- .../hmcl/upgrade/ExecutableHeaderHelper.java  | 124 --------
- .../hmcl/upgrade/HMCLDownloadTask.java        |  53 ----
- .../hmcl/upgrade/IntegrityChecker.java        | 145 ---------
- .../jackhuang/hmcl/upgrade/RemoteVersion.java | 103 -------
- .../jackhuang/hmcl/upgrade/UpdateChannel.java |  42 ---
- .../jackhuang/hmcl/upgrade/UpdateChecker.java | 129 --------
- .../jackhuang/hmcl/upgrade/UpdateHandler.java | 291 ------------------
- .../jackhuang/hmcl/util/CrashReporter.java    |  23 --
+ .../org/jackhuang/hmcl/ui/main/MainPage.java  | 162 +---
+ .../org/jackhuang/hmcl/ui/main/RootPage.java  |  33 +-
+ .../jackhuang/hmcl/ui/main/SettingsPage.java  |  63 --
+ .../jackhuang/hmcl/ui/main/SettingsView.java  |  68 --
+ .../terracotta/TerracottaControllerPage.java  | 712 ------------------
+ .../hmcl/ui/terracotta/TerracottaPage.java    | 120 ---
+ .../hmcl/upgrade/ExecutableHeaderHelper.java  | 124 ---
+ .../hmcl/upgrade/HMCLDownloadTask.java        |  56 --
+ .../hmcl/upgrade/IntegrityChecker.java        | 145 ----
+ .../jackhuang/hmcl/upgrade/RemoteVersion.java | 103 ---
+ .../jackhuang/hmcl/upgrade/UpdateChannel.java |  42 --
+ .../jackhuang/hmcl/upgrade/UpdateChecker.java | 129 ----
+ .../jackhuang/hmcl/upgrade/UpdateHandler.java | 280 -------
+ .../jackhuang/hmcl/util/CrashReporter.java    |  23 -
  .../hmcl/game/GameDumpGenerator.java          |   6 +-
- 23 files changed, 5 insertions(+), 1516 deletions(-)
+ build.gradle.kts                              |   9 -
+ .../jackhuang/hmcl/gradle/ci/CheckUpdate.java | 235 ------
+ 36 files changed, 10 insertions(+), 3954 deletions(-)
+ delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/terracotta/TerracottaManager.java
+ delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/terracotta/TerracottaMetadata.java
+ delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/terracotta/TerracottaNative.java
+ delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/terracotta/TerracottaState.java
+ delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/terracotta/profile/ProfileKind.java
+ delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/terracotta/profile/TerracottaProfile.java
+ delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/terracotta/provider/GeneralProvider.java
+ delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/terracotta/provider/ITerracottaProvider.java
+ delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/terracotta/provider/MacOSProvider.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
+ delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/terracotta/TerracottaControllerPage.java
+ delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/terracotta/TerracottaPage.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/ExecutableHeaderHelper.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/HMCLDownloadTask.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/IntegrityChecker.java
@@ -38,12 +62,13 @@ Co-authored-by: zhaose <weiliang1503@outlook.com>
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChannel.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChecker.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java
+ delete mode 100644 buildSrc/src/main/java/org/jackhuang/hmcl/gradle/ci/CheckUpdate.java
 
 diff --git a/HMCL/build.gradle.kts b/HMCL/build.gradle.kts
-index 5356758ee..987a59fe5 100644
+index 04f8f1193..217073a9f 100644
 --- a/HMCL/build.gradle.kts
 +++ b/HMCL/build.gradle.kts
-@@ -17,9 +17,7 @@ plugins {
+@@ -21,9 +21,7 @@ plugins {
  
  val projectConfig = PropertiesUtils.load(rootProject.file("config/project.properties").toPath())
  
@@ -54,7 +79,7 @@ index 5356758ee..987a59fe5 100644
  val versionRoot = System.getenv("VERSION_ROOT") ?: projectConfig.getProperty("versionRoot") ?: "3"
  
  val microsoftAuthId = System.getenv("MICROSOFT_AUTH_ID") ?: ""
-@@ -39,10 +37,8 @@ if (buildNumber != null) {
+@@ -43,10 +41,8 @@ if (buildNumber != null) {
      val shortCommit = System.getenv("GITHUB_SHA")?.lowercase()?.substring(0, 7)
      version = if (shortCommit.isNullOrBlank()) {
          "$versionRoot.SNAPSHOT"
@@ -66,8 +91,8 @@ index 5356758ee..987a59fe5 100644
      }
  }
  
-@@ -57,47 +53,6 @@ dependencies {
-     }
+@@ -66,47 +62,6 @@ dependencies {
+     embedResources(libs.authlib.injector)
  }
  
 -fun digest(algorithm: String, bytes: ByteArray): ByteArray = MessageDigest.getInstance(algorithm).digest(bytes)
@@ -111,10 +136,10 @@ index 5356758ee..987a59fe5 100644
 -    }
 -}
 -
- val java11 = sourceSets.create("java11") {
-     java {
-         srcDir("src/main/java11")
-@@ -175,11 +130,6 @@ tasks.shadowJar {
+ tasks.withType<JavaCompile> {
+     sourceCompatibility = "21"
+     targetCompatibility = "21"
+@@ -210,11 +165,6 @@ tasks.shadowJar {
              from(file(launcherExe))
          }
      }
@@ -126,7 +151,7 @@ index 5356758ee..987a59fe5 100644
  }
  
  tasks.processResources {
-@@ -210,8 +160,6 @@ val makeExecutables by tasks.registering {
+@@ -256,8 +206,6 @@ val makeExecutables by tasks.registering {
                      zipFile.getInputStream(entry).use { it.copyTo(outputStream) }
                      outputStream.write(jarContent)
                  }
@@ -136,10 +161,10 @@ index 5356758ee..987a59fe5 100644
          }
      }
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java b/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
-index b8da9da44..f74a90f99 100644
+index a558c4b74..7d79850f6 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
-@@ -31,8 +31,6 @@ import org.jackhuang.hmcl.util.FileSaver;
+@@ -33,8 +33,6 @@ import org.jackhuang.hmcl.util.FileSaver;
  import org.jackhuang.hmcl.task.AsyncTaskExecutor;
  import org.jackhuang.hmcl.task.Schedulers;
  import org.jackhuang.hmcl.ui.Controllers;
@@ -148,7 +173,7 @@ index b8da9da44..f74a90f99 100644
  import org.jackhuang.hmcl.util.CrashReporter;
  import org.jackhuang.hmcl.util.Lang;
  import org.jackhuang.hmcl.util.StringUtils;
-@@ -120,8 +118,6 @@ public final class Launcher extends Application {
+@@ -122,8 +120,6 @@ public final class Launcher extends Application {
                  Platform.setImplicitExit(false);
                  Controllers.initialize(primaryStage);
  
@@ -157,7 +182,7 @@ index b8da9da44..f74a90f99 100644
                  primaryStage.show();
              });
          } catch (Throwable e) {
-@@ -224,11 +220,6 @@ public final class Launcher extends Application {
+@@ -226,11 +222,6 @@ public final class Launcher extends Application {
      }
  
      public static void main(String[] args) {
@@ -170,10 +195,10 @@ index b8da9da44..f74a90f99 100644
          AsyncTaskExecutor.setUncaughtExceptionHandler(new CrashReporter(false));
  
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/Metadata.java b/HMCL/src/main/java/org/jackhuang/hmcl/Metadata.java
-index a42bca287..e55146bee 100644
+index 7d54402df..d97a4220a 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/Metadata.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/Metadata.java
-@@ -47,16 +47,13 @@ public final class Metadata {
+@@ -48,16 +48,13 @@ public final class Metadata {
      public static final String PUBLISH_URL = "https://hmcl.huangyuhui.net";
      public static final String ABOUT_URL = PUBLISH_URL + "/about";
      public static final String DOWNLOAD_URL = PUBLISH_URL + "/download";
@@ -185,28 +210,1497 @@ index a42bca287..e55146bee 100644
      public static final String EULA_URL = DOCS_URL + "/eula/hmcl.html";
 -    public static final String GROUPS_URL = "https://www.bilibili.com/opus/905435541874409529";
  
-     public static final String BUILD_CHANNEL = JarUtils.getManifestAttribute("Build-Channel", "nightly");
--    public static final String GITHUB_SHA = JarUtils.getManifestAttribute("GitHub-SHA", null);
+     public static final String BUILD_CHANNEL = JarUtils.getAttribute("hmcl.version.type", "nightly");
+-    public static final String GITHUB_SHA = JarUtils.getAttribute("hmcl.version.hash", null);
  
      public static final Path CURRENT_DIRECTORY = Paths.get(System.getProperty("user.dir")).toAbsolutePath().normalize();
      public static final Path MINECRAFT_DIRECTORY = OperatingSystem.getWorkingDirectory("minecraft");
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/setting/GlobalConfig.java b/HMCL/src/main/java/org/jackhuang/hmcl/setting/GlobalConfig.java
+index 8b5c08ed6..c7affbf1c 100644
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/setting/GlobalConfig.java
++++ b/HMCL/src/main/java/org/jackhuang/hmcl/setting/GlobalConfig.java
+@@ -84,27 +84,19 @@ public final class GlobalConfig implements Observable {
+         return Config.CONFIG_GSON.toJson(this);
+     }
+ 
+-    public int getAgreementVersion() {
++    private int getAgreementVersion() {
+         return agreementVersion.get();
+     }
+ 
+-    public IntegerProperty agreementVersionProperty() {
+-        return agreementVersion;
+-    }
+-
+-    public void setAgreementVersion(int agreementVersion) {
++    private void setAgreementVersion(int agreementVersion) {
+         this.agreementVersion.set(agreementVersion);
+     }
+ 
+-    public int getTerracottaAgreementVersion() {
++    private int getTerracottaAgreementVersion() {
+         return terracottaAgreementVersion.get();
+     }
+ 
+-    public IntegerProperty terracottaAgreementVersionProperty() {
+-        return terracottaAgreementVersion;
+-    }
+-
+-    public void setTerracottaAgreementVersion(int terracottaAgreementVersion) {
++    private void setTerracottaAgreementVersion(int terracottaAgreementVersion) {
+         this.terracottaAgreementVersion.set(terracottaAgreementVersion);
+     }
+ 
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/TerracottaManager.java b/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/TerracottaManager.java
+deleted file mode 100644
+index ea7060860..000000000
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/TerracottaManager.java
++++ /dev/null
+@@ -1,320 +0,0 @@
+-/*
+- * Hello Minecraft! Launcher
+- * Copyright (C) 2025  huangyuhui <huanghongxun2008@126.com> and contributors
+- *
+- * This program is free software: you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License as published by
+- * the Free Software Foundation, either version 3 of the License, or
+- * (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+- */
+-package org.jackhuang.hmcl.terracotta;
+-
+-import com.google.gson.JsonObject;
+-import com.google.gson.reflect.TypeToken;
+-import javafx.application.Platform;
+-import javafx.beans.property.ReadOnlyDoubleWrapper;
+-import javafx.beans.property.ReadOnlyObjectProperty;
+-import javafx.beans.property.ReadOnlyObjectWrapper;
+-import org.jackhuang.hmcl.auth.Account;
+-import org.jackhuang.hmcl.setting.Accounts;
+-import org.jackhuang.hmcl.task.DownloadException;
+-import org.jackhuang.hmcl.task.GetTask;
+-import org.jackhuang.hmcl.task.Schedulers;
+-import org.jackhuang.hmcl.task.Task;
+-import org.jackhuang.hmcl.terracotta.provider.ITerracottaProvider;
+-import org.jackhuang.hmcl.ui.FXUtils;
+-import org.jackhuang.hmcl.util.InvocationDispatcher;
+-import org.jackhuang.hmcl.util.Lang;
+-import org.jackhuang.hmcl.util.gson.JsonUtils;
+-import org.jackhuang.hmcl.util.io.FileUtils;
+-import org.jackhuang.hmcl.util.io.NetworkUtils;
+-import org.jackhuang.hmcl.util.platform.ManagedProcess;
+-import org.jackhuang.hmcl.util.platform.SystemUtils;
+-import org.jackhuang.hmcl.util.tree.TarFileTree;
+-import org.jetbrains.annotations.Nullable;
+-
+-import java.io.IOException;
+-import java.net.URI;
+-import java.nio.file.Files;
+-import java.nio.file.Path;
+-import java.util.concurrent.CancellationException;
+-import java.util.concurrent.ThreadLocalRandom;
+-import java.util.concurrent.atomic.AtomicReference;
+-import java.util.concurrent.locks.LockSupport;
+-
+-import static org.jackhuang.hmcl.util.i18n.I18n.i18n;
+-import static org.jackhuang.hmcl.util.logging.Logger.LOG;
+-
+-public final class TerracottaManager {
+-    private TerracottaManager() {
+-    }
+-
+-    private static final AtomicReference<TerracottaState> STATE_V = new AtomicReference<>(TerracottaState.Bootstrap.INSTANCE);
+-    private static final ReadOnlyObjectWrapper<TerracottaState> STATE = new ReadOnlyObjectWrapper<>(STATE_V.getPlain());
+-    private static final InvocationDispatcher<TerracottaState> STATE_D = InvocationDispatcher.runOn(Platform::runLater, STATE::set);
+-
+-    static {
+-        Schedulers.io().execute(() -> {
+-            try {
+-                if (TerracottaMetadata.PROVIDER == null)
+-                    throw new IOException("Unsupported platform: " + org.jackhuang.hmcl.util.platform.Platform.CURRENT_PLATFORM);
+-
+-                switch (TerracottaMetadata.PROVIDER.status()) {
+-                    case NOT_EXIST -> setState(new TerracottaState.Uninitialized(false));
+-                    case LEGACY_VERSION -> setState(new TerracottaState.Uninitialized(true));
+-                    case READY -> launch(setState(new TerracottaState.Launching()));
+-                }
+-            } catch (Exception e) {
+-                compareAndSet(TerracottaState.Bootstrap.INSTANCE, new TerracottaState.Fatal(TerracottaState.Fatal.Type.UNKNOWN));
+-            }
+-        });
+-    }
+-
+-    public static ReadOnlyObjectProperty<TerracottaState> stateProperty() {
+-        return STATE.getReadOnlyProperty();
+-    }
+-
+-    static {
+-        Lang.thread(() -> {
+-            while (true) {
+-                TerracottaState state = STATE_V.get();
+-                if (!(state instanceof TerracottaState.PortSpecific portSpecific)) {
+-                    LockSupport.parkNanos(500_000);
+-                    continue;
+-                }
+-
+-                int port = portSpecific.port;
+-                int index = state instanceof TerracottaState.Ready ready ? ready.index : Integer.MIN_VALUE;
+-
+-                TerracottaState next;
+-                try {
+-                    next = new GetTask(URI.create(String.format("http://127.0.0.1:%d/state", port)))
+-                            .setSignificance(Task.TaskSignificance.MINOR)
+-                            .thenApplyAsync(jsonString -> {
+-                                TerracottaState.Ready object = JsonUtils.fromNonNullJson(jsonString, TypeToken.get(TerracottaState.Ready.class));
+-                                if (object.index <= index) {
+-                                    return null;
+-                                }
+-
+-                                object.port = port;
+-                                return object;
+-                            })
+-                            .setSignificance(Task.TaskSignificance.MINOR)
+-                            .run();
+-                } catch (Exception e) {
+-                    LOG.warning("Cannot fetch state from Terracotta.", e);
+-                    next = new TerracottaState.Fatal(TerracottaState.Fatal.Type.TERRACOTTA);
+-                }
+-
+-                if (next != null) {
+-                    compareAndSet(state, next);
+-                }
+-
+-                LockSupport.parkNanos(500_000);
+-            }
+-        }, "Terracotta Background Daemon", true);
+-    }
+-
+-    public static boolean validate(Path file) {
+-        return FileUtils.getName(file).equalsIgnoreCase(TerracottaMetadata.PACKAGE_NAME);
+-    }
+-
+-    public static TerracottaState.Preparing install(@Nullable Path file) {
+-        FXUtils.checkFxUserThread();
+-
+-        TerracottaState state = STATE_V.get();
+-        if (!(state instanceof TerracottaState.Uninitialized ||
+-                state instanceof TerracottaState.Preparing preparing && preparing.hasInstallFence() ||
+-                state instanceof TerracottaState.Fatal && ((TerracottaState.Fatal) state).isRecoverable())
+-        ) {
+-            return null;
+-        }
+-
+-        if (file != null && !FileUtils.getName(file).equalsIgnoreCase(TerracottaMetadata.PACKAGE_NAME)) {
+-            return null;
+-        }
+-
+-        TerracottaState.Preparing preparing = new TerracottaState.Preparing(new ReadOnlyDoubleWrapper(-1));
+-
+-        Task.supplyAsync(Schedulers.io(), () -> {
+-            return file != null ? TarFileTree.open(file) : null;
+-        }).thenComposeAsync(Schedulers.javafx(), tree -> {
+-            return getProvider().install(preparing, tree).whenComplete(exception -> {
+-                if (tree != null) {
+-                    tree.close();
+-                }
+-                if (exception != null) {
+-                    throw exception;
+-                }
+-            });
+-        }).whenComplete(exception -> {
+-            if (exception == null) {
+-                try {
+-                    TerracottaMetadata.removeLegacyVersionFiles();
+-                } catch (IOException e) {
+-                    LOG.warning("Unable to remove legacy terracotta files.", e);
+-                }
+-
+-                TerracottaState.Launching launching = new TerracottaState.Launching();
+-                if (compareAndSet(preparing, launching)) {
+-                    launch(launching);
+-                }
+-            } else if (exception instanceof CancellationException) {
+-            } else if (exception instanceof ITerracottaProvider.ArchiveFileMissingException) {
+-                LOG.warning("Cannot install terracotta from local package.", exception);
+-                compareAndSet(preparing, new TerracottaState.Fatal(TerracottaState.Fatal.Type.INSTALL));
+-            } else if (exception instanceof DownloadException) {
+-                compareAndSet(preparing, new TerracottaState.Fatal(TerracottaState.Fatal.Type.NETWORK));
+-            } else {
+-                compareAndSet(preparing, new TerracottaState.Fatal(TerracottaState.Fatal.Type.INSTALL));
+-            }
+-        }).start();
+-
+-        return compareAndSet(state, preparing) ? preparing : null;
+-    }
+-
+-    private static ITerracottaProvider getProvider() {
+-        ITerracottaProvider provider = TerracottaMetadata.PROVIDER;
+-        if (provider == null) {
+-            throw new AssertionError("Terracotta Provider must NOT be null.");
+-        }
+-        return provider;
+-    }
+-
+-    public static TerracottaState recover(@Nullable Path file) {
+-        FXUtils.checkFxUserThread();
+-
+-        TerracottaState state = STATE_V.get();
+-        if (!(state instanceof TerracottaState.Fatal && ((TerracottaState.Fatal) state).isRecoverable())) {
+-            return null;
+-        }
+-
+-        try {
+-            return switch (getProvider().status()) {
+-                case NOT_EXIST, LEGACY_VERSION -> install(file);
+-                case READY -> {
+-                    TerracottaState.Launching launching = setState(new TerracottaState.Launching());
+-                    launch(launching);
+-                    yield launching;
+-                }
+-            };
+-        } catch (NullPointerException | IOException e) {
+-            LOG.warning("Cannot determine Terracotta state.", e);
+-            return setState(new TerracottaState.Fatal(TerracottaState.Fatal.Type.UNKNOWN));
+-        }
+-    }
+-
+-    private static void launch(TerracottaState.Launching state) {
+-        Task.supplyAsync(() -> {
+-            Path path = Files.createTempDirectory(String.format("hmcl-terracotta-%d", ThreadLocalRandom.current().nextLong())).resolve("http").toAbsolutePath();
+-            ManagedProcess process = new ManagedProcess(new ProcessBuilder(getProvider().ofCommandLine(path)));
+-            process.pumpInputStream(SystemUtils::onLogLine);
+-            process.pumpErrorStream(SystemUtils::onLogLine);
+-
+-            long exitTime = -1;
+-            while (true) {
+-                if (Files.exists(path)) {
+-                    JsonObject object = JsonUtils.fromNonNullJson(Files.readString(path), JsonObject.class);
+-                    return object.get("port").getAsInt();
+-                }
+-
+-                if (!process.isRunning()) {
+-                    if (exitTime == -1) {
+-                        exitTime = System.currentTimeMillis();
+-                    } else if (System.currentTimeMillis() - exitTime >= 10000) {
+-                        throw new IllegalStateException("Process has exited for 10s.");
+-                    }
+-                }
+-            }
+-        }).whenComplete(Schedulers.javafx(), (port, exception) -> {
+-            TerracottaState next;
+-            if (exception == null) {
+-                next = new TerracottaState.Unknown(port);
+-            } else {
+-                next = new TerracottaState.Fatal(TerracottaState.Fatal.Type.TERRACOTTA);
+-            }
+-            compareAndSet(state, next);
+-        }).start();
+-    }
+-
+-    public static Task<String> exportLogs() {
+-        if (STATE_V.get() instanceof TerracottaState.PortSpecific portSpecific) {
+-            return new GetTask(URI.create(String.format("http://127.0.0.1:%d/log?fetch=true", portSpecific.port)))
+-                    .setSignificance(Task.TaskSignificance.MINOR);
+-        }
+-        return Task.completed(null);
+-    }
+-
+-    public static TerracottaState.Waiting setWaiting() {
+-        TerracottaState state = STATE_V.get();
+-        if (state instanceof TerracottaState.PortSpecific portSpecific) {
+-            new GetTask(URI.create(String.format("http://127.0.0.1:%d/state/ide", portSpecific.port)))
+-                    .setSignificance(Task.TaskSignificance.MINOR)
+-                    .start();
+-            return new TerracottaState.Waiting(-1, -1, null);
+-        }
+-        return null;
+-    }
+-
+-    private static String getPlayerName() {
+-        Account account = Accounts.getSelectedAccount();
+-        return account != null ? account.getCharacter() : i18n("terracotta.player_anonymous");
+-    }
+-
+-    public static TerracottaState.HostScanning setScanning() {
+-        TerracottaState state = STATE_V.get();
+-        if (state instanceof TerracottaState.PortSpecific portSpecific) {
+-            new GetTask(NetworkUtils.toURI(String.format(
+-                    "http://127.0.0.1:%d/state/scanning?player=%s", portSpecific.port, getPlayerName()))
+-            ).setSignificance(Task.TaskSignificance.MINOR).start();
+-
+-            return new TerracottaState.HostScanning(-1, -1, null);
+-        }
+-        return null;
+-    }
+-
+-    public static Task<TerracottaState.GuestStarting> setGuesting(String room) {
+-        TerracottaState state = STATE_V.get();
+-        if (state instanceof TerracottaState.PortSpecific portSpecific) {
+-            return new GetTask(NetworkUtils.toURI(String.format(
+-                    "http://127.0.0.1:%d/state/guesting?room=%s&player=%s", portSpecific.port, room, getPlayerName()
+-            )))
+-                    .setSignificance(Task.TaskSignificance.MINOR)
+-                    .thenSupplyAsync(() -> new TerracottaState.GuestStarting(-1, -1, null))
+-                    .setSignificance(Task.TaskSignificance.MINOR);
+-        } else {
+-            return null;
+-        }
+-    }
+-
+-    private static <T extends TerracottaState> T setState(T value) {
+-        if (value == null) {
+-            throw new AssertionError();
+-        }
+-
+-        STATE_V.set(value);
+-        STATE_D.accept(value);
+-        return value;
+-    }
+-
+-    private static boolean compareAndSet(TerracottaState previous, TerracottaState next) {
+-        if (next == null) {
+-            throw new AssertionError();
+-        }
+-
+-        if (STATE_V.compareAndSet(previous, next)) {
+-            STATE_D.accept(next);
+-            return true;
+-        } else {
+-            return false;
+-        }
+-    }
+-}
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/TerracottaMetadata.java b/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/TerracottaMetadata.java
+deleted file mode 100644
+index e35387e93..000000000
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/TerracottaMetadata.java
++++ /dev/null
+@@ -1,205 +0,0 @@
+-/*
+- * Hello Minecraft! Launcher
+- * Copyright (C) 2025  huangyuhui <huanghongxun2008@126.com> and contributors
+- *
+- * This program is free software: you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License as published by
+- * the Free Software Foundation, either version 3 of the License, or
+- * (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+- */
+-package org.jackhuang.hmcl.terracotta;
+-
+-import com.google.gson.annotations.SerializedName;
+-import org.jackhuang.hmcl.Metadata;
+-import org.jackhuang.hmcl.task.FileDownloadTask;
+-import org.jackhuang.hmcl.terracotta.provider.GeneralProvider;
+-import org.jackhuang.hmcl.terracotta.provider.ITerracottaProvider;
+-import org.jackhuang.hmcl.terracotta.provider.MacOSProvider;
+-import org.jackhuang.hmcl.util.Lang;
+-import org.jackhuang.hmcl.util.gson.JsonUtils;
+-import org.jackhuang.hmcl.util.i18n.LocaleUtils;
+-import org.jackhuang.hmcl.util.i18n.LocalizedText;
+-import org.jackhuang.hmcl.util.io.FileUtils;
+-import org.jackhuang.hmcl.util.io.NetworkUtils;
+-import org.jackhuang.hmcl.util.platform.Architecture;
+-import org.jackhuang.hmcl.util.platform.OSVersion;
+-import org.jackhuang.hmcl.util.platform.OperatingSystem;
+-import org.jetbrains.annotations.Nullable;
+-
+-import java.io.IOException;
+-import java.io.InputStream;
+-import java.net.URI;
+-import java.nio.file.DirectoryStream;
+-import java.nio.file.Files;
+-import java.nio.file.Path;
+-import java.util.ArrayList;
+-import java.util.Collections;
+-import java.util.List;
+-import java.util.Map;
+-import java.util.regex.Pattern;
+-
+-import static org.jackhuang.hmcl.util.logging.Logger.LOG;
+-
+-public final class TerracottaMetadata {
+-    private TerracottaMetadata() {
+-    }
+-
+-    public record Link(@SerializedName("desc") LocalizedText description, String link) {
+-    }
+-
+-    private record Config(
+-            @SerializedName("version_legacy") String legacy,
+-            @SerializedName("version_recent") List<String> recent,
+-            @SerializedName("version_latest") String latest,
+-
+-            @SerializedName("classifiers") Map<String, String> classifiers,
+-            @SerializedName("downloads") List<String> downloads,
+-            @SerializedName("downloads_CN") List<String> downloadsCN,
+-            @SerializedName("links") List<Link> links
+-    ) {
+-        private @Nullable TerracottaNative of(String classifier) {
+-            String hash = this.classifiers.get(classifier);
+-            if (hash == null)
+-                return null;
+-
+-            if (!hash.startsWith("sha256:"))
+-                throw new IllegalArgumentException(String.format("Invalid hash value %s for classifier %s.", hash, classifier));
+-            hash = hash.substring("sha256:".length());
+-
+-            List<URI> links = new ArrayList<>(this.downloads.size() + this.downloadsCN.size());
+-            for (String download : LocaleUtils.IS_CHINA_MAINLAND
+-                    ? Lang.merge(this.downloadsCN, this.downloads)
+-                    : Lang.merge(this.downloads, this.downloadsCN)) {
+-                links.add(URI.create(download.replace("${version}", this.latest).replace("${classifier}", classifier)));
+-            }
+-
+-            return new TerracottaNative(
+-                    Collections.unmodifiableList(links),
+-                    Metadata.DEPENDENCIES_DIRECTORY.resolve(
+-                            String.format("terracotta/%s/terracotta-%s-%s", this.latest, this.latest, classifier)
+-                    ).toAbsolutePath(),
+-                    new FileDownloadTask.IntegrityCheck("SHA-256", hash)
+-            );
+-        }
+-    }
+-
+-    public static final ITerracottaProvider PROVIDER;
+-    public static final String PACKAGE_NAME;
+-    public static final List<Link> PACKAGE_LINKS;
+-    public static final String FEEDBACK_LINK = NetworkUtils.withQuery("https://docs.hmcl.net/multiplayer/feedback.html", Map.of(
+-            "v", "v1",
+-            "launcher_version", Metadata.VERSION
+-    ));
+-
+-    private static final Pattern LEGACY;
+-    private static final List<String> RECENT;
+-    private static final String LATEST;
+-
+-    static {
+-        Config config;
+-        try (InputStream is = TerracottaMetadata.class.getResourceAsStream("/assets/terracotta.json")) {
+-            config = JsonUtils.fromNonNullJsonFully(is, Config.class);
+-        } catch (IOException e) {
+-            throw new ExceptionInInitializerError(e);
+-        }
+-
+-        LEGACY = Pattern.compile(config.legacy);
+-        RECENT = config.recent;
+-        LATEST = config.latest;
+-
+-        ProviderContext context = locateProvider(config);
+-        PROVIDER = context != null ? context.provider() : null;
+-        PACKAGE_NAME = context != null ? String.format("terracotta-%s-%s-pkg.tar.gz", config.latest, context.branch) : null;
+-
+-        if (context != null) {
+-            List<Link> packageLinks = new ArrayList<>(config.links.size());
+-            for (Link link : config.links) {
+-                packageLinks.add(new Link(
+-                        link.description,
+-                        link.link.replace("${version}", LATEST)
+-                                .replace("${classifier}", context.branch)
+-                ));
+-            }
+-
+-            Collections.shuffle(packageLinks);
+-            PACKAGE_LINKS = Collections.unmodifiableList(packageLinks);
+-        } else {
+-            PACKAGE_LINKS = null;
+-        }
+-    }
+-
+-    private record ProviderContext(ITerracottaProvider provider, String branch) {
+-        ProviderContext(ITerracottaProvider provider, String system, String arch) {
+-            this(provider, system + "-" + arch);
+-        }
+-    }
+-
+-    @Nullable
+-    private static ProviderContext locateProvider(Config config) {
+-        String arch = Architecture.SYSTEM_ARCH.getCheckedName();
+-        return switch (OperatingSystem.CURRENT_OS) {
+-            case WINDOWS -> {
+-                if (!OperatingSystem.SYSTEM_VERSION.isAtLeast(OSVersion.WINDOWS_10))
+-                    yield null;
+-
+-                TerracottaNative target = config.of("windows-%s.exe".formatted(arch));
+-                yield target != null
+-                        ? new ProviderContext(new GeneralProvider(target), "windows", arch)
+-                        : null;
+-            }
+-            case LINUX -> {
+-                TerracottaNative target = config.of("linux-%s".formatted(arch));
+-                yield target != null
+-                        ? new ProviderContext(new GeneralProvider(target), "linux", arch)
+-                        : null;
+-            }
+-            case MACOS -> {
+-                TerracottaNative installer = config.of("macos-%s.pkg".formatted(arch));
+-                TerracottaNative binary = config.of("macos-%s".formatted(arch));
+-
+-                yield installer != null && binary != null
+-                        ? new ProviderContext(new MacOSProvider(installer, binary), "macos", arch)
+-                        : null;
+-            }
+-            default -> null;
+-        };
+-    }
+-
+-    public static void removeLegacyVersionFiles() throws IOException {
+-        try (DirectoryStream<Path> terracotta = Files.newDirectoryStream(Metadata.DEPENDENCIES_DIRECTORY.resolve("terracotta").toAbsolutePath())) {
+-            for (Path path : terracotta) {
+-                String name = FileUtils.getName(path);
+-                if (LATEST.equals(name) || RECENT.contains(name) || !LEGACY.matcher(name).matches()) {
+-                    continue;
+-                }
+-
+-                try {
+-                    FileUtils.deleteDirectory(path);
+-                } catch (IOException e) {
+-                    LOG.warning(String.format("Unable to remove legacy terracotta files: %s", path), e);
+-                }
+-            }
+-        }
+-    }
+-
+-    public static boolean hasLegacyVersionFiles() throws IOException {
+-        try (DirectoryStream<Path> terracotta = Files.newDirectoryStream(Metadata.DEPENDENCIES_DIRECTORY.resolve("terracotta").toAbsolutePath())) {
+-            for (Path path : terracotta) {
+-                String name = FileUtils.getName(path);
+-                if (!LATEST.equals(name) && (RECENT.contains(name) || LEGACY.matcher(name).matches())) {
+-                    return true;
+-                }
+-            }
+-        }
+-
+-        return false;
+-    }
+-}
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/TerracottaNative.java b/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/TerracottaNative.java
+deleted file mode 100644
+index 079537978..000000000
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/TerracottaNative.java
++++ /dev/null
+@@ -1,147 +0,0 @@
+-/*
+- * Hello Minecraft! Launcher
+- * Copyright (C) 2025  huangyuhui <huanghongxun2008@126.com> and contributors
+- *
+- * This program is free software: you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License as published by
+- * the Free Software Foundation, either version 3 of the License, or
+- * (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+- */
+-package org.jackhuang.hmcl.terracotta;
+-
+-import kala.compress.archivers.tar.TarArchiveEntry;
+-import org.jackhuang.hmcl.task.FileDownloadTask;
+-import org.jackhuang.hmcl.task.Task;
+-import org.jackhuang.hmcl.terracotta.provider.ITerracottaProvider;
+-import org.jackhuang.hmcl.util.DigestUtils;
+-import org.jackhuang.hmcl.util.io.FileUtils;
+-import org.jackhuang.hmcl.util.logging.Logger;
+-import org.jackhuang.hmcl.util.tree.TarFileTree;
+-import org.jetbrains.annotations.NotNull;
+-import org.jetbrains.annotations.Nullable;
+-
+-import java.io.IOException;
+-import java.io.InputStream;
+-import java.io.OutputStream;
+-import java.net.URI;
+-import java.net.http.HttpResponse;
+-import java.nio.file.Files;
+-import java.nio.file.Path;
+-import java.security.MessageDigest;
+-import java.util.HexFormat;
+-import java.util.List;
+-import java.util.concurrent.CancellationException;
+-
+-public final class TerracottaNative {
+-    private final List<URI> links;
+-    private final FileDownloadTask.IntegrityCheck checking;
+-    private final Path path;
+-
+-    public TerracottaNative(List<URI> links, Path path, FileDownloadTask.IntegrityCheck checking) {
+-        this.links = links;
+-        this.path = path;
+-        this.checking = checking;
+-    }
+-
+-    public Path getPath() {
+-        return path;
+-    }
+-
+-    public Task<?> install(ITerracottaProvider.Context context, @Nullable TarFileTree tree) {
+-        if (tree == null) {
+-            return new FileDownloadTask(links, path, checking) {
+-                @Override
+-                protected Context getContext(HttpResponse<?> response, boolean checkETag, String bmclapiHash) throws IOException {
+-                    Context delegate = super.getContext(response, checkETag, bmclapiHash);
+-                    return new Context() {
+-                        @Override
+-                        public void withResult(boolean success) {
+-                            delegate.withResult(success);
+-                        }
+-
+-                        @Override
+-                        public void write(byte[] buffer, int offset, int len) throws IOException {
+-                            if (!context.hasInstallFence()) {
+-                                throw new CancellationException("User has installed terracotta from local archives.");
+-                            }
+-                            delegate.write(buffer, offset, len);
+-                        }
+-
+-                        @Override
+-                        public void close() throws IOException {
+-                            if (isSuccess() && !context.requestInstallFence()) {
+-                                throw new CancellationException();
+-                            }
+-
+-                            delegate.close();
+-                        }
+-                    };
+-                }
+-            };
+-        }
+-
+-        return Task.runAsync(() -> {
+-            String name = FileUtils.getName(path);
+-            TarArchiveEntry entry = tree.getRoot().getFiles().get(name);
+-            if (entry == null) {
+-                throw new ITerracottaProvider.ArchiveFileMissingException("Cannot exact entry: " + name);
+-            }
+-
+-            if (!context.requestInstallFence()) {
+-                throw new CancellationException();
+-            }
+-
+-            Files.createDirectories(path.toAbsolutePath().getParent());
+-
+-            MessageDigest digest = DigestUtils.getDigest(checking.getAlgorithm());
+-            try (
+-                    InputStream stream = tree.getInputStream(entry);
+-                    OutputStream os = Files.newOutputStream(path)
+-            ) {
+-                stream.transferTo(new OutputStream() {
+-                    @Override
+-                    public void write(int b) throws IOException {
+-                        os.write(b);
+-                        digest.update((byte) b);
+-                    }
+-
+-                    @Override
+-                    public void write(byte @NotNull [] buffer, int offset, int len) throws IOException {
+-                        os.write(buffer, offset, len);
+-                        digest.update(buffer, offset, len);
+-                    }
+-                });
+-            }
+-            String checksum = HexFormat.of().formatHex(digest.digest());
+-            if (!checksum.equalsIgnoreCase(checking.getChecksum())) {
+-                Files.delete(path);
+-                throw new ITerracottaProvider.ArchiveFileMissingException("Incorrect checksum (" + checking.getAlgorithm() + "), expected: " + checking.getChecksum() + ", actual: " + checksum);
+-            }
+-        });
+-    }
+-
+-    public ITerracottaProvider.Status status() throws IOException {
+-        if (Files.exists(path)) {
+-            if (DigestUtils.digestToString(checking.getAlgorithm(), path).equalsIgnoreCase(checking.getChecksum())) {
+-                return ITerracottaProvider.Status.READY;
+-            }
+-        }
+-
+-        try {
+-            if (TerracottaMetadata.hasLegacyVersionFiles()) {
+-                return ITerracottaProvider.Status.LEGACY_VERSION;
+-            }
+-        } catch (IOException e) {
+-            Logger.LOG.warning("Cannot determine whether legacy versions exist.");
+-        }
+-        return ITerracottaProvider.Status.NOT_EXIST;
+-    }
+-}
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/TerracottaState.java b/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/TerracottaState.java
+deleted file mode 100644
+index bce764013..000000000
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/TerracottaState.java
++++ /dev/null
+@@ -1,304 +0,0 @@
+-/*
+- * Hello Minecraft! Launcher
+- * Copyright (C) 2025  huangyuhui <huanghongxun2008@126.com> and contributors
+- *
+- * This program is free software: you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License as published by
+- * the Free Software Foundation, either version 3 of the License, or
+- * (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+- */
+-package org.jackhuang.hmcl.terracotta;
+-
+-import com.google.gson.JsonParseException;
+-import com.google.gson.annotations.SerializedName;
+-import javafx.beans.property.ReadOnlyDoubleProperty;
+-import javafx.beans.property.ReadOnlyDoubleWrapper;
+-import javafx.beans.value.ObservableValue;
+-import org.jackhuang.hmcl.terracotta.profile.TerracottaProfile;
+-import org.jackhuang.hmcl.terracotta.provider.ITerracottaProvider;
+-import org.jackhuang.hmcl.util.gson.JsonSubtype;
+-import org.jackhuang.hmcl.util.gson.JsonType;
+-import org.jackhuang.hmcl.util.gson.TolerableValidationException;
+-import org.jackhuang.hmcl.util.gson.Validation;
+-
+-import java.util.List;
+-import java.util.concurrent.atomic.AtomicBoolean;
+-
+-public abstract sealed class TerracottaState {
+-    protected TerracottaState() {
+-    }
+-
+-    public boolean isUIFakeState() {
+-        return false;
+-    }
+-
+-    public boolean isForkOf(TerracottaState state) {
+-        return false;
+-    }
+-
+-    public static final class Bootstrap extends TerracottaState {
+-        static final Bootstrap INSTANCE = new Bootstrap();
+-
+-        private Bootstrap() {
+-        }
+-    }
+-
+-    public static final class Uninitialized extends TerracottaState {
+-        private final boolean hasLegacy;
+-
+-        Uninitialized(boolean hasLegacy) {
+-            this.hasLegacy = hasLegacy;
+-        }
+-
+-        public boolean hasLegacy() {
+-            return hasLegacy;
+-        }
+-    }
+-
+-    public static final class Preparing extends TerracottaState implements ITerracottaProvider.Context {
+-        private final ReadOnlyDoubleWrapper progress;
+-
+-        private final AtomicBoolean installFence = new AtomicBoolean(false);
+-
+-        Preparing(ReadOnlyDoubleWrapper progress) {
+-            this.progress = progress;
+-        }
+-
+-        public ReadOnlyDoubleProperty progressProperty() {
+-            return progress.getReadOnlyProperty();
+-        }
+-
+-        @Override
+-        public void bindProgress(ObservableValue<? extends Number> value) {
+-            progress.bind(value);
+-        }
+-
+-        @Override
+-        public boolean requestInstallFence() {
+-            return installFence.compareAndSet(false, true);
+-        }
+-
+-        @Override
+-        public boolean hasInstallFence() {
+-            return !installFence.get();
+-        }
+-    }
+-
+-    public static final class Launching extends TerracottaState {
+-        Launching() {
+-        }
+-    }
+-
+-    static abstract sealed class PortSpecific extends TerracottaState {
+-        transient int port;
+-
+-        protected PortSpecific(int port) {
+-            this.port = port;
+-        }
+-    }
+-
+-    @JsonType(
+-            property = "state",
+-            subtypes = {
+-                    @JsonSubtype(clazz = Waiting.class, name = "waiting"),
+-                    @JsonSubtype(clazz = HostScanning.class, name = "host-scanning"),
+-                    @JsonSubtype(clazz = HostStarting.class, name = "host-starting"),
+-                    @JsonSubtype(clazz = HostOK.class, name = "host-ok"),
+-                    @JsonSubtype(clazz = GuestStarting.class, name = "guest-connecting"),
+-                    @JsonSubtype(clazz = GuestStarting.class, name = "guest-starting"),
+-                    @JsonSubtype(clazz = GuestOK.class, name = "guest-ok"),
+-                    @JsonSubtype(clazz = Exception.class, name = "exception"),
+-            }
+-    )
+-    static abstract sealed class Ready extends PortSpecific {
+-        @SerializedName("index")
+-        final int index;
+-
+-        @SerializedName("state")
+-        private final String state;
+-
+-        Ready(int port, int index, String state) {
+-            super(port);
+-            this.index = index;
+-            this.state = state;
+-        }
+-
+-        @Override
+-        public boolean isUIFakeState() {
+-            return this.index == -1;
+-        }
+-    }
+-
+-    public static final class Unknown extends PortSpecific {
+-        Unknown(int port) {
+-            super(port);
+-        }
+-    }
+-
+-    public static final class Waiting extends Ready {
+-        Waiting(int port, int index, String state) {
+-            super(port, index, state);
+-        }
+-    }
+-
+-    public static final class HostScanning extends Ready {
+-        HostScanning(int port, int index, String state) {
+-            super(port, index, state);
+-        }
+-    }
+-
+-    public static final class HostStarting extends Ready {
+-        HostStarting(int port, int index, String state) {
+-            super(port, index, state);
+-        }
+-    }
+-
+-    public static final class HostOK extends Ready implements Validation {
+-        @SerializedName("room")
+-        private final String code;
+-
+-        @SerializedName("profile_index")
+-        private final int profileIndex;
+-
+-        @SerializedName("profiles")
+-        private final List<TerracottaProfile> profiles;
+-
+-        HostOK(int port, int index, String state, String code, int profileIndex, List<TerracottaProfile> profiles) {
+-            super(port, index, state);
+-            this.code = code;
+-            this.profileIndex = profileIndex;
+-            this.profiles = profiles;
+-        }
+-
+-        @Override
+-        public void validate() throws JsonParseException, TolerableValidationException {
+-            if (code == null) {
+-                throw new JsonParseException("code is null");
+-            }
+-            if (profiles == null) {
+-                throw new JsonParseException("profiles is null");
+-            }
+-        }
+-
+-        public String getCode() {
+-            return code;
+-        }
+-
+-        public List<TerracottaProfile> getProfiles() {
+-            return profiles;
+-        }
+-
+-        @Override
+-        public boolean isForkOf(TerracottaState state) {
+-            return state instanceof HostOK hostOK && this.index - hostOK.index <= profileIndex;
+-        }
+-    }
+-
+-    public static final class GuestStarting extends Ready {
+-        GuestStarting(int port, int index, String state) {
+-            super(port, index, state);
+-        }
+-    }
+-
+-    public static final class GuestOK extends Ready implements Validation {
+-        @SerializedName("url")
+-        private final String url;
+-
+-        @SerializedName("profile_index")
+-        private final int profileIndex;
+-
+-        @SerializedName("profiles")
+-        private final List<TerracottaProfile> profiles;
+-
+-        GuestOK(int port, int index, String state, String url, int profileIndex, List<TerracottaProfile> profiles) {
+-            super(port, index, state);
+-            this.url = url;
+-            this.profileIndex = profileIndex;
+-            this.profiles = profiles;
+-        }
+-
+-        @Override
+-        public void validate() throws JsonParseException, TolerableValidationException {
+-            if (profiles == null) {
+-                throw new JsonParseException("profiles is null");
+-            }
+-        }
+-
+-        public String getUrl() {
+-            return url;
+-        }
+-
+-        public List<TerracottaProfile> getProfiles() {
+-            return profiles;
+-        }
+-
+-        @Override
+-        public boolean isForkOf(TerracottaState state) {
+-            return state instanceof GuestOK guestOK && this.index - guestOK.index <= profileIndex;
+-        }
+-    }
+-
+-    public static final class Exception extends Ready implements Validation {
+-        public enum Type {
+-            PING_HOST_FAIL,
+-            PING_HOST_RST,
+-            GUEST_ET_CRASH,
+-            HOST_ET_CRASH,
+-            PING_SERVER_RST,
+-            SCAFFOLDING_INVALID_RESPONSE
+-        }
+-
+-        private static final TerracottaState.Exception.Type[] LOOKUP = Type.values();
+-
+-        @SerializedName("type")
+-        private final int type;
+-
+-        Exception(int port, int index, String state, int type) {
+-            super(port, index, state);
+-            this.type = type;
+-        }
+-
+-        @Override
+-        public void validate() throws JsonParseException, TolerableValidationException {
+-            if (type < 0 || type >= LOOKUP.length) {
+-                throw new JsonParseException(String.format("Type must between [0, %s)", LOOKUP.length));
+-            }
+-        }
+-
+-        public Type getType() {
+-            return LOOKUP[type];
+-        }
+-    }
+-
+-    public static final class Fatal extends TerracottaState {
+-        public enum Type {
+-            OS,
+-            NETWORK,
+-            INSTALL,
+-            TERRACOTTA,
+-            UNKNOWN;
+-        }
+-
+-        private final Type type;
+-
+-        public Fatal(Type type) {
+-            this.type = type;
+-        }
+-
+-        public Type getType() {
+-            return type;
+-        }
+-
+-        public boolean isRecoverable() {
+-            return this.type != Type.UNKNOWN;
+-        }
+-    }
+-}
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/profile/ProfileKind.java b/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/profile/ProfileKind.java
+deleted file mode 100644
+index 7fcec7125..000000000
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/profile/ProfileKind.java
++++ /dev/null
+@@ -1,29 +0,0 @@
+-/*
+- * Hello Minecraft! Launcher
+- * Copyright (C) 2025  huangyuhui <huanghongxun2008@126.com> and contributors
+- *
+- * This program is free software: you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License as published by
+- * the Free Software Foundation, either version 3 of the License, or
+- * (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+- */
+-package org.jackhuang.hmcl.terracotta.profile;
+-
+-import com.google.gson.annotations.SerializedName;
+-
+-public enum ProfileKind {
+-    @SerializedName("HOST")
+-    HOST,
+-    @SerializedName("LOCAL")
+-    LOCAL,
+-    @SerializedName("GUEST")
+-    GUEST
+-}
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/profile/TerracottaProfile.java b/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/profile/TerracottaProfile.java
+deleted file mode 100644
+index 660e1d0d9..000000000
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/profile/TerracottaProfile.java
++++ /dev/null
+@@ -1,57 +0,0 @@
+-/*
+- * Hello Minecraft! Launcher
+- * Copyright (C) 2025  huangyuhui <huanghongxun2008@126.com> and contributors
+- *
+- * This program is free software: you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License as published by
+- * the Free Software Foundation, either version 3 of the License, or
+- * (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+- */
+-package org.jackhuang.hmcl.terracotta.profile;
+-
+-import com.google.gson.annotations.SerializedName;
+-
+-public final class TerracottaProfile {
+-    @SerializedName("machine_id")
+-    private final String machineID;
+-
+-    @SerializedName("name")
+-    private final String name;
+-
+-    @SerializedName("vendor")
+-    private final String vendor;
+-
+-    @SerializedName("kind")
+-    private final ProfileKind type;
+-
+-    private TerracottaProfile(String machineID, String name, String vendor, ProfileKind type) {
+-        this.machineID = machineID;
+-        this.name = name;
+-        this.vendor = vendor;
+-        this.type = type;
+-    }
+-
+-    public String getMachineID() {
+-        return machineID;
+-    }
+-
+-    public String getName() {
+-        return name;
+-    }
+-
+-    public String getVendor() {
+-        return vendor;
+-    }
+-
+-    public ProfileKind getType() {
+-        return type;
+-    }
+-}
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/provider/GeneralProvider.java b/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/provider/GeneralProvider.java
+deleted file mode 100644
+index 7e585e55a..000000000
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/provider/GeneralProvider.java
++++ /dev/null
+@@ -1,67 +0,0 @@
+-/*
+- * Hello Minecraft! Launcher
+- * Copyright (C) 2025  huangyuhui <huanghongxun2008@126.com> and contributors
+- *
+- * This program is free software: you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License as published by
+- * the Free Software Foundation, either version 3 of the License, or
+- * (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+- */
+-package org.jackhuang.hmcl.terracotta.provider;
+-
+-import org.jackhuang.hmcl.task.Task;
+-import org.jackhuang.hmcl.terracotta.TerracottaNative;
+-import org.jackhuang.hmcl.util.platform.OperatingSystem;
+-import org.jackhuang.hmcl.util.tree.TarFileTree;
+-import org.jetbrains.annotations.Nullable;
+-
+-import java.io.IOException;
+-import java.nio.file.Files;
+-import java.nio.file.Path;
+-import java.nio.file.attribute.PosixFilePermission;
+-import java.util.List;
+-import java.util.Set;
+-
+-public final class GeneralProvider implements ITerracottaProvider {
+-    private final TerracottaNative target;
+-
+-    public GeneralProvider(TerracottaNative target) {
+-        this.target = target;
+-    }
+-
+-    @Override
+-    public Status status() throws IOException {
+-        return target.status();
+-    }
+-
+-    @Override
+-    public Task<?> install(Context context, @Nullable TarFileTree tree) throws IOException {
+-        Task<?> task = target.install(context, tree);
+-        context.bindProgress(task.progressProperty());
+-        if (OperatingSystem.CURRENT_OS.isLinuxOrBSD()) {
+-            task = task.thenRunAsync(() -> Files.setPosixFilePermissions(target.getPath(), Set.of(
+-                    PosixFilePermission.OWNER_READ,
+-                    PosixFilePermission.OWNER_WRITE,
+-                    PosixFilePermission.OWNER_EXECUTE,
+-                    PosixFilePermission.GROUP_READ,
+-                    PosixFilePermission.GROUP_EXECUTE,
+-                    PosixFilePermission.OTHERS_READ,
+-                    PosixFilePermission.OTHERS_EXECUTE
+-            )));
+-        }
+-        return task;
+-    }
+-
+-    @Override
+-    public List<String> ofCommandLine(Path path) {
+-        return List.of(target.getPath().toString(), "--hmcl", path.toString());
+-    }
+-}
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/provider/ITerracottaProvider.java b/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/provider/ITerracottaProvider.java
+deleted file mode 100644
+index be6b8dd52..000000000
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/provider/ITerracottaProvider.java
++++ /dev/null
+@@ -1,77 +0,0 @@
+-/*
+- * Hello Minecraft! Launcher
+- * Copyright (C) 2025  huangyuhui <huanghongxun2008@126.com> and contributors
+- *
+- * This program is free software: you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License as published by
+- * the Free Software Foundation, either version 3 of the License, or
+- * (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+- */
+-package org.jackhuang.hmcl.terracotta.provider;
+-
+-import javafx.beans.value.ObservableValue;
+-import org.jackhuang.hmcl.task.Task;
+-import org.jackhuang.hmcl.util.tree.TarFileTree;
+-import org.jetbrains.annotations.Nullable;
+-
+-import java.io.IOException;
+-import java.nio.file.Path;
+-import java.util.List;
+-
+-public interface ITerracottaProvider {
+-    enum Status {
+-        NOT_EXIST,
+-        LEGACY_VERSION,
+-        READY
+-    }
+-
+-    interface Context {
+-        void bindProgress(ObservableValue<? extends Number> value);
+-
+-        boolean requestInstallFence();
+-        
+-        boolean hasInstallFence();
+-    }
+-
+-    abstract class ProviderException extends IOException {
+-        public ProviderException(String message) {
+-            super(message);
+-        }
+-
+-        public ProviderException(String message, Throwable cause) {
+-            super(message, cause);
+-        }
+-
+-        public ProviderException(Throwable cause) {
+-            super(cause);
+-        }
+-    }
+-
+-    final class ArchiveFileMissingException extends ProviderException {
+-        public ArchiveFileMissingException(String message) {
+-            super(message);
+-        }
+-
+-        public ArchiveFileMissingException(String message, Throwable cause) {
+-            super(message, cause);
+-        }
+-
+-        public ArchiveFileMissingException(Throwable cause) {
+-            super(cause);
+-        }
+-    }
+-
+-    Status status() throws IOException;
+-
+-    Task<?> install(Context context, @Nullable TarFileTree tree) throws IOException;
+-
+-    List<String> ofCommandLine(Path path);
+-}
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/provider/MacOSProvider.java b/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/provider/MacOSProvider.java
+deleted file mode 100644
+index abb6195b4..000000000
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/terracotta/provider/MacOSProvider.java
++++ /dev/null
+@@ -1,121 +0,0 @@
+-/*
+- * Hello Minecraft! Launcher
+- * Copyright (C) 2025  huangyuhui <huanghongxun2008@126.com> and contributors
+- *
+- * This program is free software: you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License as published by
+- * the Free Software Foundation, either version 3 of the License, or
+- * (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+- */
+-package org.jackhuang.hmcl.terracotta.provider;
+-
+-import org.jackhuang.hmcl.Metadata;
+-import org.jackhuang.hmcl.task.Task;
+-import org.jackhuang.hmcl.terracotta.TerracottaNative;
+-import org.jackhuang.hmcl.util.io.FileUtils;
+-import org.jackhuang.hmcl.util.platform.ManagedProcess;
+-import org.jackhuang.hmcl.util.platform.SystemUtils;
+-import org.jackhuang.hmcl.util.tree.TarFileTree;
+-import org.jetbrains.annotations.Nullable;
+-
+-import java.io.IOException;
+-import java.nio.file.Files;
+-import java.nio.file.Path;
+-import java.nio.file.StandardCopyOption;
+-import java.nio.file.attribute.PosixFilePermission;
+-import java.util.List;
+-import java.util.Set;
+-
+-import static org.jackhuang.hmcl.util.i18n.I18n.i18n;
+-import static org.jackhuang.hmcl.util.logging.Logger.LOG;
+-
+-public final class MacOSProvider implements ITerracottaProvider {
+-    public final TerracottaNative installer, binary;
+-
+-    public MacOSProvider(TerracottaNative installer, TerracottaNative binary) {
+-        this.installer = installer;
+-        this.binary = binary;
+-    }
+-
+-    @Override
+-    public Status status() throws IOException {
+-        assert binary != null;
+-
+-        if (!Files.exists(Path.of("/Applications/terracotta.app"))) {
+-            return Status.NOT_EXIST;
+-        }
+-
+-        return binary.status();
+-    }
+-
+-    @Override
+-    public Task<?> install(Context context, @Nullable TarFileTree tree) throws IOException {
+-        assert installer != null && binary != null;
+-
+-        Task<?> installerTask = installer.install(context, tree);
+-        Task<?> binaryTask = binary.install(context, tree);
+-        context.bindProgress(installerTask.progressProperty().add(binaryTask.progressProperty()).multiply(0.4)); // (1 + 1) * 0.4 = 0.8
+-
+-        return Task.allOf(
+-                installerTask.thenComposeAsync(() -> {
+-                    Path osascript = SystemUtils.which("osascript");
+-                    if (osascript == null) {
+-                        throw new IllegalStateException("Cannot locate 'osascript' system executable on MacOS for installing Terracotta.");
+-                    }
+-
+-                    Path pkg = Files.createTempDirectory(Metadata.HMCL_GLOBAL_DIRECTORY, "terracotta-pkg")
+-                            .toRealPath()
+-                            .resolve(FileUtils.getName(installer.getPath()));
+-                    Files.copy(installer.getPath(), pkg, StandardCopyOption.REPLACE_EXISTING);
+-
+-                    ManagedProcess process = new ManagedProcess(new ProcessBuilder(
+-                            osascript.toString(), "-e", String.format(
+-                            "do shell script \"installer -pkg '%s' -target /\" with prompt \"%s\" with administrator privileges",
+-                            pkg, i18n("terracotta.sudo_installing")
+-                    )));
+-                    process.pumpInputStream(SystemUtils::onLogLine);
+-                    process.pumpErrorStream(SystemUtils::onLogLine);
+-
+-                    return Task.fromCompletableFuture(process.getProcess().onExit()).thenRunAsync(() -> {
+-                        try {
+-                            FileUtils.cleanDirectory(pkg.getParent());
+-                        } catch (IOException e) {
+-                            LOG.warning("Cannot remove temporary Terracotta package file.", e);
+-                        }
+-
+-                        if (process.getExitCode() != 0) {
+-                            throw new IllegalStateException(String.format(
+-                                    "Cannot install Terracotta %s: system installer exited with code %d",
+-                                    pkg,
+-                                    process.getExitCode()
+-                            ));
+-                        }
+-                    });
+-                }),
+-                binaryTask.thenRunAsync(() -> Files.setPosixFilePermissions(binary.getPath(), Set.of(
+-                        PosixFilePermission.OWNER_READ,
+-                        PosixFilePermission.OWNER_WRITE,
+-                        PosixFilePermission.OWNER_EXECUTE,
+-                        PosixFilePermission.GROUP_READ,
+-                        PosixFilePermission.GROUP_EXECUTE,
+-                        PosixFilePermission.OTHERS_READ,
+-                        PosixFilePermission.OTHERS_EXECUTE
+-                )))
+-        );
+-    }
+-
+-    @Override
+-    public List<String> ofCommandLine(Path path) {
+-        assert binary != null;
+-
+-        return List.of(binary.getPath().toString(), "--hmcl", path.toString());
+-    }
+-}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
-index 5e9deca32..78036b05d 100644
+index 54da5cb6e..37cad5b01 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
-@@ -428,12 +428,6 @@ public final class Controllers {
+@@ -56,7 +56,6 @@ import org.jackhuang.hmcl.ui.download.DownloadPage;
+ import org.jackhuang.hmcl.ui.download.ModpackInstallWizardProvider;
+ import org.jackhuang.hmcl.ui.main.LauncherSettingsPage;
+ import org.jackhuang.hmcl.ui.main.RootPage;
+-import org.jackhuang.hmcl.ui.terracotta.TerracottaPage;
+ import org.jackhuang.hmcl.ui.versions.GameListPage;
+ import org.jackhuang.hmcl.ui.versions.VersionPage;
+ import org.jackhuang.hmcl.ui.versions.Versions;
+@@ -112,7 +111,6 @@ public final class Controllers {
+         return accountListPage;
+     });
+     private static Lazy<LauncherSettingsPage> settingsPage = new Lazy<>(LauncherSettingsPage::new);
+-    private static Lazy<TerracottaPage> terracottaPage = new Lazy<>(TerracottaPage::new);
  
+     private Controllers() {
+     }
+@@ -155,11 +153,6 @@ public final class Controllers {
+         return downloadPage.get();
+     }
+ 
+-    // FXThread
+-    public static Node getTerracottaPage() {
+-        return terracottaPage.get();
+-    }
+-
+     // FXThread
+     public static DecoratorController getDecorator() {
+         return decorator;
+@@ -376,25 +369,6 @@ public final class Controllers {
+                             config().getShownTips().put(SOFTWARE_RENDERING, true))
+                     .build());
+         }
+-
+-        if (globalConfig().getAgreementVersion() < 1) {
+-            JFXDialogLayout agreementPane = new JFXDialogLayout();
+-            agreementPane.setHeading(new Label(i18n("launcher.agreement")));
+-            agreementPane.setBody(new Label(i18n("launcher.agreement.hint")));
+-            JFXHyperlink agreementLink = new JFXHyperlink(i18n("launcher.agreement"));
+-            agreementLink.setExternalLink(Metadata.EULA_URL);
+-            JFXButton yesButton = new JFXButton(i18n("launcher.agreement.accept"));
+-            yesButton.getStyleClass().add("dialog-accept");
+-            yesButton.setOnAction(e -> {
+-                globalConfig().setAgreementVersion(1);
+-                agreementPane.fireEvent(new DialogCloseEvent());
+-            });
+-            JFXButton noButton = new JFXButton(i18n("launcher.agreement.decline"));
+-            noButton.getStyleClass().add("dialog-cancel");
+-            noButton.setOnAction(e -> javafx.application.Platform.exit());
+-            agreementPane.setActions(agreementLink, yesButton, noButton);
+-            Controllers.dialog(agreementPane);
+-        }
+     }
+ 
+     public static void dialog(Region content) {
+@@ -508,10 +482,6 @@ public final class Controllers {
      public static void onHyperlinkAction(String href) {
          if (href.startsWith("hmcl://")) {
--            switch (href) {
+             switch (href) {
 -                case "hmcl://settings/feedback":
 -                    Controllers.getSettingsPage().showFeedback();
 -                    Controllers.navigate(Controllers.getSettingsPage());
 -                    break;
--            }
-         } else {
-             FXUtils.openLink(href);
-         }
+                 case "hmcl://game/launch":
+                     Profile profile = Profiles.getSelectedProfile();
+                     Versions.launch(profile, profile.getSelectedVersion(), LauncherHelper::setKeep);
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/CrashWindow.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/CrashWindow.java
 index 5af27b6a6..69988b270 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/CrashWindow.java
@@ -345,10 +1839,10 @@ index ddbe6808b..000000000
 -    }
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java
-index 9b4bd3f09..61e3c279f 100644
+index e2c00c369..7b2620d55 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java
-@@ -63,7 +63,6 @@ import org.jackhuang.hmcl.ui.FXUtils;
+@@ -59,7 +59,6 @@ import org.jackhuang.hmcl.ui.FXUtils;
  import org.jackhuang.hmcl.ui.SVG;
  import org.jackhuang.hmcl.ui.WeakListenerHolder;
  import org.jackhuang.hmcl.ui.construct.*;
@@ -356,7 +1850,7 @@ index 9b4bd3f09..61e3c279f 100644
  import org.jackhuang.hmcl.util.StringUtils;
  import org.jackhuang.hmcl.util.gson.UUIDTypeAdapter;
  import org.jackhuang.hmcl.util.javafx.BindingMapping;
-@@ -353,12 +352,6 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
+@@ -328,12 +327,6 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
                  box.getChildren().setAll(profileLink, birthLink, purchaseLink, deauthorizeLink, forgotpasswordLink, createProfileLink, bannedQueryLink);
                  GridPane.setColumnSpan(box, 2);
  
@@ -369,7 +1863,7 @@ index 9b4bd3f09..61e3c279f 100644
                  vbox.getChildren().addAll(hintPane, box);
  
                  btnAccept.setDisable(false);
-@@ -430,15 +423,6 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
+@@ -405,15 +398,6 @@ public class CreateAccountPane extends JFXDialogLayout implements DialogAware {
  
              int rowIndex = 0;
  
@@ -385,43 +1879,6 @@ index 9b4bd3f09..61e3c279f 100644
              if (factory instanceof BoundAuthlibInjectorAccountFactory) {
                  this.server = ((BoundAuthlibInjectorAccountFactory) factory).getServer();
  
-diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/download/VersionsPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/download/VersionsPage.java
-index 5ec976168..200f00e2b 100644
---- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/download/VersionsPage.java
-+++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/download/VersionsPage.java
-@@ -54,7 +54,6 @@ import org.jackhuang.hmcl.ui.SVG;
- import org.jackhuang.hmcl.ui.animation.ContainerAnimations;
- import org.jackhuang.hmcl.ui.animation.TransitionPane;
- import org.jackhuang.hmcl.ui.construct.ComponentList;
--import org.jackhuang.hmcl.ui.construct.HintPane;
- import org.jackhuang.hmcl.ui.construct.IconedTwoLineListItem;
- import org.jackhuang.hmcl.ui.construct.RipplerContainer;
- import org.jackhuang.hmcl.ui.wizard.Navigation;
-@@ -107,13 +106,6 @@ public final class VersionsPage extends BorderPane implements WizardPage, Refres
-         this.libraryId = libraryId;
-         this.navigation = navigation;
- 
--        HintPane hintPane = new HintPane();
--        hintPane.setText(i18n("sponsor.bmclapi"));
--        hintPane.getStyleClass().add("sponsor-pane");
--        FXUtils.onClicked(hintPane, this::onSponsor);
--        BorderPane.setMargin(hintPane, new Insets(10, 10, 0, 10));
--        this.setTop(hintPane);
--
-         root = new TransitionPane();
-         BorderPane toolbarPane = new BorderPane();
-         JFXButton btnRefresh;
-@@ -360,10 +352,6 @@ public final class VersionsPage extends BorderPane implements WizardPage, Refres
-         navigation.onPrev(true);
-     }
- 
--    private void onSponsor() {
--        FXUtils.openLink("https://bmclapidoc.bangbang93.com");
--    }
--
-     private static class RemoteVersionListCell extends ListCell<RemoteVersion> {
-         final IconedTwoLineListItem content = new IconedTwoLineListItem();
-         final RipplerContainer ripplerContainer = new RipplerContainer(content);
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
 deleted file mode 100644
 index 4b39d6197..000000000
@@ -546,20 +2003,20 @@ index d2f6a5f70..b3eec9ea2 100644
      public ReadOnlyObjectProperty<State> stateProperty() {
          return state.getReadOnlyProperty();
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
-index 95b34d456..da70973a2 100644
+index 67f33d904..35a0a3ef2 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
-@@ -59,9 +59,6 @@ import org.jackhuang.hmcl.ui.construct.TwoLineListItem;
+@@ -65,9 +65,6 @@ import org.jackhuang.hmcl.ui.construct.TwoLineListItem;
  import org.jackhuang.hmcl.ui.decorator.DecoratorPage;
  import org.jackhuang.hmcl.ui.versions.GameItem;
  import org.jackhuang.hmcl.ui.versions.Versions;
 -import org.jackhuang.hmcl.upgrade.RemoteVersion;
 -import org.jackhuang.hmcl.upgrade.UpdateChecker;
 -import org.jackhuang.hmcl.upgrade.UpdateHandler;
+ import org.jackhuang.hmcl.util.Holder;
  import org.jackhuang.hmcl.util.Lang;
- import org.jackhuang.hmcl.util.javafx.BindingMapping;
- import org.jackhuang.hmcl.util.javafx.MappedObservableList;
-@@ -84,14 +81,10 @@ public final class MainPage extends StackPane implements DecoratorPage {
+ import org.jackhuang.hmcl.util.StringUtils;
+@@ -99,14 +96,10 @@ public final class MainPage extends StackPane implements DecoratorPage {
      private final JFXPopup popup = new JFXPopup(popupWrapper);
  
      private final StringProperty currentGame = new SimpleStringProperty(this, "currentGame");
@@ -574,7 +2031,7 @@ index 95b34d456..da70973a2 100644
      private final JFXButton menuButton;
  
      {
-@@ -108,90 +101,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -127,88 +120,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
  
          setPadding(new Insets(20));
  
@@ -595,18 +2052,16 @@ index 95b34d456..da70973a2 100644
 -            titleBar.getStyleClass().add("title");
 -            titleBar.setLeft(new Label(title));
 -
--            Node hideNode = SVG.CLOSE.createIcon(Theme.blackFill(), 20);
--            hideNode.setCursor(Cursor.HAND);
--            titleBar.setRight(hideNode);
--            FXUtils.onClicked(hideNode, () -> {
--                if (announcementPane != null) {
--                    if (Metadata.isDev()) {
--                        config().getShownTips().put(ANNOUNCEMENT, Metadata.VERSION);
--                    }
--
--                    announcementPane.setContent(new StackPane(), ContainerAnimations.FADE);
+-            JFXButton btnHide = new JFXButton();
+-            btnHide.setOnAction(e -> {
+-                announcementPane.setContent(new StackPane(), ContainerAnimations.FADE);
+-                if (Metadata.isDev()) {
+-                    config().getShownTips().put(ANNOUNCEMENT, Metadata.VERSION);
 -                }
 -            });
+-            btnHide.getStyleClass().add("announcement-close-button");
+-            btnHide.setGraphic(SVG.CLOSE.createIcon(Theme.blackFill(), 20));
+-            titleBar.setRight(btnHide);
 -
 -            TextFlow body = FXUtils.segmentToTextFlow(content, Controllers::onHyperlinkAction);
 -            body.setLineSpacing(4);
@@ -665,7 +2120,7 @@ index 95b34d456..da70973a2 100644
          StackPane launchPane = new StackPane();
          launchPane.getStyleClass().add("launch-pane");
          launchPane.setMaxWidth(230);
-@@ -273,7 +182,7 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -296,7 +207,7 @@ public final class MainPage extends StackPane implements DecoratorPage {
              launchPane.getChildren().setAll(launchButton, separator, menuButton);
          }
  
@@ -674,7 +2129,7 @@ index 95b34d456..da70973a2 100644
  
          menu.setMaxHeight(365);
          menu.setMaxWidth(545);
-@@ -286,40 +195,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -312,40 +223,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          });
          Bindings.bindContent(menu.getContent(), versionNodes);
      }
@@ -713,9 +2168,9 @@ index 95b34d456..da70973a2 100644
 -    }
 -
      private void launch() {
-         Versions.launch(Profiles.getSelectedProfile());
-     }
-@@ -348,19 +223,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+         Profile profile = Profiles.getSelectedProfile();
+         Versions.launch(profile, profile.getSelectedVersion(), null);
+@@ -413,19 +290,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          );
      }
  
@@ -735,8 +2190,8 @@ index 95b34d456..da70973a2 100644
      @Override
      public ReadOnlyObjectWrapper<State> stateProperty() {
          return state;
-@@ -378,30 +240,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
-         this.currentGame.set(currentGame);
+@@ -451,30 +315,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+         return versions;
      }
  
 -    public boolean isShowUpdate() {
@@ -767,10 +2222,18 @@ index 95b34d456..da70973a2 100644
          FXUtils.checkFxUserThread();
          this.profile = profile;
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
-index 257d492ad..51eada567 100644
+index 4fce798cd..bd88d4672 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
-@@ -44,7 +44,6 @@ import org.jackhuang.hmcl.ui.nbt.NBTEditorPage;
+@@ -30,7 +30,6 @@ import org.jackhuang.hmcl.setting.Profile;
+ import org.jackhuang.hmcl.setting.Profiles;
+ import org.jackhuang.hmcl.task.Schedulers;
+ import org.jackhuang.hmcl.task.Task;
+-import org.jackhuang.hmcl.terracotta.TerracottaMetadata;
+ import org.jackhuang.hmcl.ui.Controllers;
+ import org.jackhuang.hmcl.ui.FXUtils;
+ import org.jackhuang.hmcl.ui.SVG;
+@@ -45,7 +44,6 @@ import org.jackhuang.hmcl.ui.nbt.NBTEditorPage;
  import org.jackhuang.hmcl.ui.nbt.NBTFileType;
  import org.jackhuang.hmcl.ui.versions.GameAdvancedListItem;
  import org.jackhuang.hmcl.ui.versions.Versions;
@@ -778,7 +2241,7 @@ index 257d492ad..51eada567 100644
  import org.jackhuang.hmcl.util.Lang;
  import org.jackhuang.hmcl.util.StringUtils;
  import org.jackhuang.hmcl.util.TaskCancellationAction;
-@@ -111,8 +110,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
+@@ -114,8 +112,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
                      });
  
              FXUtils.onChangeAndOperate(Profiles.selectedVersionProperty(), mainPage::setCurrentGame);
@@ -787,33 +2250,54 @@ index 257d492ad..51eada567 100644
  
              Profiles.registerVersionsListener(profile -> {
                  HMCLGameRepository repository = profile.getRepository();
-@@ -176,13 +173,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
+@@ -183,31 +179,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
              launcherSettingsItem.setTitle(i18n("settings"));
              launcherSettingsItem.setOnAction(e -> Controllers.navigate(Controllers.getSettingsPage()));
  
 -            // sixth item in left sidebar
--            AdvancedListItem chatItem = new AdvancedListItem();
--            chatItem.setLeftGraphic(wrap(SVG.CHAT));
--            chatItem.setActionButtonVisible(false);
--            chatItem.setTitle(i18n("chat"));
--            chatItem.setOnAction(e -> FXUtils.openLink(Metadata.GROUPS_URL));
+-            AdvancedListItem terracottaItem = new AdvancedListItem();
+-            terracottaItem.setLeftGraphic(wrap(SVG.GRAPH2));
+-            terracottaItem.setActionButtonVisible(false);
+-            terracottaItem.setTitle(i18n("terracotta"));
+-
+-            terracottaItem.setOnAction(e -> {
+-                if (TerracottaMetadata.PROVIDER != null) {
+-                    Controllers.navigate(Controllers.getTerracottaPage());
+-                } else {
+-                    String message;
+-                    if (Architecture.SYSTEM_ARCH.getBits() == Bits.BIT_32)
+-                        message = i18n("terracotta.unsupported.arch.32bit");
+-                    else if (OperatingSystem.CURRENT_OS == OperatingSystem.WINDOWS
+-                            && !OperatingSystem.SYSTEM_VERSION.isAtLeast(OSVersion.WINDOWS_10))
+-                        message = i18n("terracotta.unsupported.os.windows.old");
+-                    else if (Platform.SYSTEM_PLATFORM.equals(OperatingSystem.LINUX, Architecture.LOONGARCH64_OW))
+-                        message = i18n("terracotta.unsupported.arch.loongarch64_ow");
+-                    else
+-                        message = i18n("terracotta.unsupported");
+-
+-                    Controllers.dialog(message, null, MessageDialogPane.MessageType.WARNING);
+-                }
+-            });
 -
              // the left sidebar
              AdvancedListBox sideBar = new AdvancedListBox()
                      .startCategory(i18n("account").toUpperCase(Locale.ROOT))
-@@ -193,7 +183,6 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
+@@ -217,9 +188,7 @@ public class RootPage extends DecoratorAnimatedPage implements DecoratorPage {
+                     .add(gameItem)
                      .add(downloadItem)
                      .startCategory(i18n("settings.launcher.general").toUpperCase(Locale.ROOT))
-                     .add(launcherSettingsItem)
--                    .add(chatItem)
-                     ;
+-                    .add(launcherSettingsItem)
+-                    .add(terracottaItem)
+-                    .addNavigationDrawerItem(i18n("chat"), SVG.CHAT, () -> FXUtils.openLink(Metadata.GROUPS_URL));
++                    .add(launcherSettingsItem);
  
              // the root page, with the sidebar in left, navigator in center.
+             setLeft(sideBar);
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsPage.java
-index 03db696d4..2de8c21d2 100644
+index ddc700a71..185acc6cd 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsPage.java
-@@ -27,10 +27,6 @@ import org.jackhuang.hmcl.setting.Settings;
+@@ -28,10 +28,6 @@ import org.jackhuang.hmcl.setting.Settings;
  import org.jackhuang.hmcl.ui.Controllers;
  import org.jackhuang.hmcl.ui.FXUtils;
  import org.jackhuang.hmcl.ui.construct.MessageDialogPane.MessageType;
@@ -822,9 +2306,9 @@ index 03db696d4..2de8c21d2 100644
 -import org.jackhuang.hmcl.upgrade.UpdateChecker;
 -import org.jackhuang.hmcl.upgrade.UpdateHandler;
  import org.jackhuang.hmcl.util.StringUtils;
- import org.jackhuang.hmcl.util.i18n.Locales;
+ import org.jackhuang.hmcl.util.i18n.SupportedLocale;
  import org.jackhuang.hmcl.util.io.FileUtils;
-@@ -68,60 +64,6 @@ public final class SettingsPage extends SettingsView {
+@@ -76,60 +72,6 @@ public final class SettingsPage extends SettingsView {
                  Bindings.createObjectBinding(() -> Optional.ofNullable(Settings.instance().getCommonDirectory())
                                  .orElse(i18n("launcher.cache_directory.disabled")),
                          config().commonDirectoryProperty(), config().commonDirTypeProperty()));
@@ -884,8 +2368,8 @@ index 03db696d4..2de8c21d2 100644
 -        UpdateHandler.updateFrom(target);
      }
  
-     @Override
-@@ -145,11 +87,6 @@ public final class SettingsPage extends SettingsView {
+     /// This method guarantees to close both `input` and the current zip entry.
+@@ -249,11 +191,6 @@ public final class SettingsPage extends SettingsView {
          });
      }
  
@@ -896,13 +2380,13 @@ index 03db696d4..2de8c21d2 100644
 -
      @Override
      protected void clearCacheDirectory() {
-         FileUtils.cleanDirectoryQuietly(new File(Settings.instance().getCommonDirectory(), "cache"));
+         String commonDirectory = Settings.instance().getCommonDirectory();
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java
-index 64bf0e118..df110424b 100644
+index 6b9022164..31bcf16c1 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java
-@@ -52,12 +52,6 @@ public abstract class SettingsView extends StackPane {
-     protected final JFXComboBox<SupportedLocale> cboLanguage;
+@@ -53,12 +53,6 @@ public abstract class SettingsView extends StackPane {
+     protected final OptionToggleButton disableAutoGameOptionsPane;
      protected final MultiFileItem<EnumCommonDirectory> fileCommonLocation;
      protected final ComponentSublist fileCommonLocationSublist;
 -    protected final Label lblUpdate;
@@ -914,7 +2398,7 @@ index 64bf0e118..df110424b 100644
      protected final ScrollPane scroll;
  
      public SettingsView() {
-@@ -73,11 +67,6 @@ public abstract class SettingsView extends StackPane {
+@@ -74,11 +68,6 @@ public abstract class SettingsView extends StackPane {
                  ComponentList settingsPane = new ComponentList();
                  {
                      {
@@ -926,7 +2410,7 @@ index 64bf0e118..df110424b 100644
                          GridPane gridPane = new GridPane();
  
                          ColumnConstraints col = new ColumnConstraints();
-@@ -100,60 +89,7 @@ public abstract class SettingsView extends StackPane {
+@@ -101,60 +90,7 @@ public abstract class SettingsView extends StackPane {
                              GridPane.setColumnIndex(label, 0);
                              gridPane.getChildren().add(label);
                          }
@@ -987,8 +2471,8 @@ index 64bf0e118..df110424b 100644
                  }
  
                  {
-@@ -232,11 +168,7 @@ public abstract class SettingsView extends StackPane {
-         FXUtils.openFolder(LOG.getLogFile().getParent().toFile());
+@@ -247,11 +183,7 @@ public abstract class SettingsView extends StackPane {
+         FXUtils.openFolder(LOG.getLogFile().getParent());
      }
  
 -    protected abstract void onUpdate();
@@ -999,9 +2483,853 @@ index 64bf0e118..df110424b 100644
 -
      protected abstract void clearCacheDirectory();
  }
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/terracotta/TerracottaControllerPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/terracotta/TerracottaControllerPage.java
+deleted file mode 100644
+index cbb5e6567..000000000
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/terracotta/TerracottaControllerPage.java
++++ /dev/null
+@@ -1,712 +0,0 @@
+-/*
+- * Hello Minecraft! Launcher
+- * Copyright (C) 2025  huangyuhui <huanghongxun2008@126.com> and contributors
+- *
+- * This program is free software: you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License as published by
+- * the Free Software Foundation, either version 3 of the License, or
+- * (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+- */
+-package org.jackhuang.hmcl.ui.terracotta;
+-
+-import com.jfoenix.controls.JFXProgressBar;
+-import javafx.beans.property.DoubleProperty;
+-import javafx.beans.property.ObjectProperty;
+-import javafx.beans.property.SimpleDoubleProperty;
+-import javafx.beans.property.SimpleObjectProperty;
+-import javafx.beans.property.SimpleStringProperty;
+-import javafx.beans.property.StringProperty;
+-import javafx.beans.value.ChangeListener;
+-import javafx.beans.value.WeakChangeListener;
+-import javafx.collections.FXCollections;
+-import javafx.collections.ObservableList;
+-import javafx.geometry.Insets;
+-import javafx.geometry.Pos;
+-import javafx.scene.Cursor;
+-import javafx.scene.Node;
+-import javafx.scene.control.Label;
+-import javafx.scene.control.ScrollPane;
+-import javafx.scene.image.Image;
+-import javafx.scene.image.ImageView;
+-import javafx.scene.layout.HBox;
+-import javafx.scene.layout.Priority;
+-import javafx.scene.layout.StackPane;
+-import javafx.scene.layout.VBox;
+-import javafx.scene.paint.Color;
+-import javafx.scene.text.Text;
+-import javafx.scene.text.TextFlow;
+-import org.jackhuang.hmcl.game.LauncherHelper;
+-import org.jackhuang.hmcl.setting.Profile;
+-import org.jackhuang.hmcl.setting.Profiles;
+-import org.jackhuang.hmcl.setting.Theme;
+-import org.jackhuang.hmcl.task.Schedulers;
+-import org.jackhuang.hmcl.task.Task;
+-import org.jackhuang.hmcl.terracotta.TerracottaManager;
+-import org.jackhuang.hmcl.terracotta.TerracottaMetadata;
+-import org.jackhuang.hmcl.terracotta.TerracottaState;
+-import org.jackhuang.hmcl.terracotta.profile.TerracottaProfile;
+-import org.jackhuang.hmcl.ui.Controllers;
+-import org.jackhuang.hmcl.ui.FXUtils;
+-import org.jackhuang.hmcl.ui.SVG;
+-import org.jackhuang.hmcl.ui.WeakListenerHolder;
+-import org.jackhuang.hmcl.ui.animation.ContainerAnimations;
+-import org.jackhuang.hmcl.ui.animation.TransitionPane;
+-import org.jackhuang.hmcl.ui.construct.ComponentList;
+-import org.jackhuang.hmcl.ui.construct.ComponentSublist;
+-import org.jackhuang.hmcl.ui.construct.MessageDialogPane;
+-import org.jackhuang.hmcl.ui.construct.RipplerContainer;
+-import org.jackhuang.hmcl.ui.construct.SpinnerPane;
+-import org.jackhuang.hmcl.ui.construct.TwoLineListItem;
+-import org.jackhuang.hmcl.ui.versions.Versions;
+-import org.jackhuang.hmcl.util.i18n.I18n;
+-import org.jackhuang.hmcl.util.io.FileUtils;
+-import org.jackhuang.hmcl.util.io.Zipper;
+-import org.jackhuang.hmcl.util.logging.Logger;
+-
+-import java.io.OutputStream;
+-import java.nio.charset.StandardCharsets;
+-import java.nio.file.Files;
+-import java.nio.file.Path;
+-import java.time.LocalDateTime;
+-import java.time.format.DateTimeFormatter;
+-import java.util.ArrayList;
+-import java.util.List;
+-import java.util.Locale;
+-import java.util.concurrent.ThreadLocalRandom;
+-
+-import static org.jackhuang.hmcl.setting.ConfigHolder.config;
+-import static org.jackhuang.hmcl.util.i18n.I18n.i18n;
+-
+-public class TerracottaControllerPage extends StackPane {
+-    private static final String FEEDBACK_TIP = "terracotta-feedback";
+-    private static final ObjectProperty<TerracottaState> UI_STATE = new SimpleObjectProperty<>();
+-
+-    static {
+-        FXUtils.onChangeAndOperate(TerracottaManager.stateProperty(), state -> {
+-            if (state != null) {
+-                UI_STATE.set(state);
+-            }
+-        });
+-    }
+-
+-    private final WeakListenerHolder holder = new WeakListenerHolder();
+-
+-    /* FIXME: It's sucked to have such a long logic, containing UI for all states defined in TerracottaState, with unclear control flows.
+-         Consider moving UI into multiple files for each state respectively. */
+-    public TerracottaControllerPage() {
+-        TransitionPane transition = new TransitionPane();
+-
+-        ObjectProperty<String> statusProperty = new SimpleObjectProperty<>();
+-        DoubleProperty progressProperty = new SimpleDoubleProperty();
+-        ObservableList<Node> nodesProperty = FXCollections.observableList(new ArrayList<>());
+-
+-        FXUtils.applyDragListener(this, path -> {
+-            TerracottaState state = UI_STATE.get();
+-
+-            if (state instanceof TerracottaState.Uninitialized ||
+-                    state instanceof TerracottaState.Preparing preparing && preparing.hasInstallFence() ||
+-                    state instanceof TerracottaState.Fatal fatal && fatal.getType() == TerracottaState.Fatal.Type.NETWORK
+-            ) {
+-                return Files.isReadable(path) && FileUtils.getName(path).toLowerCase(Locale.ROOT).endsWith(".tar.gz");
+-            } else {
+-                return false;
+-            }
+-        }, files -> {
+-            Path path = files.get(0);
+-
+-            if (!TerracottaManager.validate(path)) {
+-                Controllers.dialog(
+-                        i18n("terracotta.from_local.file_name_mismatch", TerracottaMetadata.PACKAGE_NAME, FileUtils.getName(path)),
+-                        i18n("message.error"),
+-                        MessageDialogPane.MessageType.ERROR
+-                );
+-                return;
+-            }
+-
+-            TerracottaState state = UI_STATE.get(), next;
+-            if (state instanceof TerracottaState.Uninitialized || state instanceof TerracottaState.Preparing preparing && preparing.hasInstallFence()) {
+-                if (state instanceof TerracottaState.Uninitialized uninitialized && !uninitialized.hasLegacy()) {
+-                    Controllers.confirmWithCountdown(i18n("terracotta.confirm.desc"), i18n("terracotta.confirm.title"), 5,
+-                            MessageDialogPane.MessageType.INFO, () -> {
+-                                TerracottaState.Preparing s = TerracottaManager.install(path);
+-                                if (s != null) {
+-                                    UI_STATE.set(s);
+-                                }
+-                            }, null);
+-                    return;
+-                }
+-
+-                next = TerracottaManager.install(path);
+-            } else if (state instanceof TerracottaState.Fatal fatal && fatal.getType() == TerracottaState.Fatal.Type.NETWORK) {
+-                next = TerracottaManager.recover(path);
+-            } else {
+-                return;
+-            }
+-            if (next != null) {
+-                UI_STATE.set(next);
+-            }
+-        });
+-
+-        ChangeListener<TerracottaState> listener = (_uiState, legacyState, state) -> {
+-            if (legacyState != null && legacyState.isUIFakeState() && !state.isUIFakeState() && legacyState.getClass() == state.getClass()) {
+-                return;
+-            }
+-
+-            progressProperty.unbind();
+-
+-            if (state instanceof TerracottaState.Bootstrap) {
+-                statusProperty.set(i18n("terracotta.status.bootstrap"));
+-                progressProperty.set(-1);
+-                nodesProperty.setAll();
+-            } else if (state instanceof TerracottaState.Uninitialized uninitialized) {
+-                String fork = uninitialized.hasLegacy() ? "update" : "not_exist";
+-
+-                statusProperty.set(i18n("terracotta.status.uninitialized." + fork));
+-                progressProperty.set(0);
+-
+-                TextFlow body = FXUtils.segmentToTextFlow(i18n("terracotta.confirm.desc"), Controllers::onHyperlinkAction);
+-                body.setLineSpacing(4);
+-
+-                LineButton download = LineButton.of();
+-                download.setLeftImage(FXUtils.newBuiltinImage("/assets/img/terracotta.png"));
+-                download.setTitle(i18n(String.format("terracotta.status.uninitialized.%s.title", fork)));
+-                download.setSubtitle(i18n("terracotta.status.uninitialized.desc"));
+-                download.setRightIcon(SVG.ARROW_FORWARD);
+-                FXUtils.onClicked(download, () -> {
+-                    TerracottaState.Preparing s = TerracottaManager.install(null);
+-                    if (s != null) {
+-                        UI_STATE.set(s);
+-                    }
+-
+-                    if (uninitialized.hasLegacy() && I18n.isUseChinese()) {
+-                        Object feedback = config().getShownTips().get(FEEDBACK_TIP);
+-                        if (!(feedback instanceof Number number) || number.intValue() < 1) {
+-                            Controllers.confirm(i18n("terracotta.feedback.desc"), i18n("terracotta.feedback.title"), () -> {
+-                                FXUtils.openLink(TerracottaMetadata.FEEDBACK_LINK);
+-                                config().getShownTips().put(FEEDBACK_TIP, 1);
+-                            }, () -> {
+-                            });
+-                        }
+-                    }
+-                });
+-
+-                nodesProperty.setAll(body, download, getThirdPartyDownloadNodes());
+-            } else if (state instanceof TerracottaState.Preparing) {
+-                statusProperty.set(i18n("terracotta.status.preparing"));
+-                progressProperty.bind(((TerracottaState.Preparing) state).progressProperty());
+-                nodesProperty.setAll(getThirdPartyDownloadNodes());
+-            } else if (state instanceof TerracottaState.Launching) {
+-                statusProperty.set(i18n("terracotta.status.launching"));
+-                progressProperty.set(-1);
+-                nodesProperty.setAll();
+-            } else if (state instanceof TerracottaState.Unknown) {
+-                statusProperty.set(i18n("terracotta.status.unknown"));
+-                progressProperty.set(-1);
+-                nodesProperty.setAll();
+-            } else if (state instanceof TerracottaState.Waiting) {
+-                statusProperty.set(i18n("terracotta.status.waiting"));
+-                progressProperty.set(1);
+-
+-                TextFlow flow = FXUtils.segmentToTextFlow(i18n("terracotta.confirm.desc"), Controllers::onHyperlinkAction);
+-                flow.setLineSpacing(4);
+-
+-                LineButton host = LineButton.of();
+-                host.setLeftIcon(SVG.HOST);
+-                host.setTitle(i18n("terracotta.status.waiting.host.title"));
+-                host.setSubtitle(i18n("terracotta.status.waiting.host.desc"));
+-                host.setRightIcon(SVG.ARROW_FORWARD);
+-                FXUtils.onClicked(host, () -> {
+-                    if (LauncherHelper.countMangedProcesses() >= 1) {
+-                        TerracottaState.HostScanning s1 = TerracottaManager.setScanning();
+-                        if (s1 != null) {
+-                            UI_STATE.set(s1);
+-                        }
+-                    } else {
+-                        Controllers.dialog(new MessageDialogPane.Builder(
+-                                i18n("terracotta.status.waiting.host.launch.desc"),
+-                                i18n("terracotta.status.waiting.host.launch.title"),
+-                                MessageDialogPane.MessageType.QUESTION
+-                        ).addAction(i18n("version.launch"), () -> {
+-                            Profile profile = Profiles.getSelectedProfile();
+-                            Versions.launch(profile, profile.getSelectedVersion(), LauncherHelper::setKeep);
+-                        }).addCancel(i18n("terracotta.status.waiting.host.launch.skip"), () -> {
+-                            TerracottaState.HostScanning s1 = TerracottaManager.setScanning();
+-                            if (s1 != null) {
+-                                UI_STATE.set(s1);
+-                            }
+-                        }).addCancel(() -> {
+-                        }).build());
+-                    }
+-                });
+-
+-                LineButton guest = LineButton.of();
+-                guest.setLeftIcon(SVG.ADD_CIRCLE);
+-                guest.setTitle(i18n("terracotta.status.waiting.guest.title"));
+-                guest.setSubtitle(i18n("terracotta.status.waiting.guest.desc"));
+-                guest.setRightIcon(SVG.ARROW_FORWARD);
+-                FXUtils.onClicked(guest, () -> {
+-                    Controllers.prompt(i18n("terracotta.status.waiting.guest.prompt.title"), (code, resolve, reject) -> {
+-                        Task<TerracottaState.GuestStarting> task = TerracottaManager.setGuesting(code);
+-                        if (task != null) {
+-                            task.whenComplete(Schedulers.javafx(), (s, e) -> {
+-                                if (e != null) {
+-                                    reject.accept(i18n("terracotta.status.waiting.guest.prompt.invalid"));
+-                                } else {
+-                                    resolve.run();
+-                                    UI_STATE.set(s);
+-                                }
+-                            }).setSignificance(Task.TaskSignificance.MINOR).start();
+-                        } else {
+-                            resolve.run();
+-                        }
+-                    });
+-                });
+-
+-                if (ThreadLocalRandom.current().nextDouble() < 0.02D) {
+-                    LineButton feedback = LineButton.of();
+-                    feedback.setLeftIcon(SVG.FEEDBACK);
+-                    feedback.setTitle(i18n("terracotta.feedback.title"));
+-                    feedback.setSubtitle(i18n("terracotta.feedback.desc"));
+-                    feedback.setRightIcon(SVG.OPEN_IN_NEW);
+-                    FXUtils.onClicked(feedback, () -> FXUtils.openLink(TerracottaMetadata.FEEDBACK_LINK));
+-
+-                    nodesProperty.setAll(flow, host, guest, feedback);
+-                } else {
+-                    nodesProperty.setAll(flow, host, guest);
+-                }
+-            } else if (state instanceof TerracottaState.HostScanning) {
+-                statusProperty.set(i18n("terracotta.status.scanning"));
+-                progressProperty.set(-1);
+-
+-                TextFlow body = FXUtils.segmentToTextFlow(i18n("terracotta.status.scanning.desc"), Controllers::onHyperlinkAction);
+-                body.setLineSpacing(4);
+-
+-                LineButton room = LineButton.of();
+-                room.setLeftIcon(SVG.ARROW_BACK);
+-                room.setTitle(i18n("terracotta.back"));
+-                room.setSubtitle(i18n("terracotta.status.scanning.back"));
+-                FXUtils.onClicked(room, () -> {
+-                    TerracottaState.Waiting s = TerracottaManager.setWaiting();
+-                    if (s != null) {
+-                        UI_STATE.set(s);
+-                    }
+-                });
+-
+-                nodesProperty.setAll(body, room);
+-            } else if (state instanceof TerracottaState.HostStarting) {
+-                statusProperty.set(i18n("terracotta.status.host_starting"));
+-                progressProperty.set(-1);
+-
+-                LineButton room = LineButton.of();
+-                room.setLeftIcon(SVG.ARROW_BACK);
+-                room.setTitle(i18n("terracotta.back"));
+-                room.setSubtitle(i18n("terracotta.status.host_starting.back"));
+-                FXUtils.onClicked(room, () -> {
+-                    TerracottaState.Waiting s = TerracottaManager.setWaiting();
+-                    if (s != null) {
+-                        UI_STATE.set(s);
+-                    }
+-                });
+-
+-                nodesProperty.setAll(room);
+-            } else if (state instanceof TerracottaState.HostOK hostOK) {
+-                if (hostOK.isForkOf(legacyState)) {
+-                    if (nodesProperty.get(nodesProperty.size() - 1) instanceof PlayerProfileUI profileUI) {
+-                        profileUI.updateProfiles(hostOK.getProfiles());
+-                    } else { // Should NOT happen
+-                        nodesProperty.add(new PlayerProfileUI(hostOK.getProfiles()));
+-                    }
+-                    return;
+-                } else {
+-                    String cs = hostOK.getCode();
+-                    copyCode(cs);
+-
+-                    statusProperty.set(i18n("terracotta.status.host_ok"));
+-                    progressProperty.set(1);
+-
+-                    VBox code = new VBox(4);
+-                    code.setAlignment(Pos.CENTER);
+-                    {
+-                        Label desc = new Label(i18n("terracotta.status.host_ok.code"));
+-                        desc.setMouseTransparent(true);
+-
+-                        Label label = new Label(cs);
+-                        label.setMouseTransparent(true);
+-                        label.setStyle("-fx-font-size: 24");
+-                        label.setAlignment(Pos.CENTER);
+-                        VBox.setMargin(label, new Insets(10, 0, 10, 0));
+-
+-                        code.getChildren().setAll(desc, label);
+-                    }
+-                    code.setCursor(Cursor.HAND);
+-                    FXUtils.onClicked(code, () -> copyCode(cs));
+-
+-                    LineButton copy = LineButton.of();
+-                    copy.setLeftIcon(SVG.CONTENT_COPY);
+-                    copy.setTitle(i18n("terracotta.status.host_ok.code.copy"));
+-                    copy.setSubtitle(i18n("terracotta.status.host_ok.code.desc"));
+-                    FXUtils.onClicked(copy, () -> copyCode(cs));
+-
+-                    LineButton back = LineButton.of();
+-                    back.setLeftIcon(SVG.ARROW_BACK);
+-                    back.setTitle(i18n("terracotta.back"));
+-                    back.setSubtitle(i18n("terracotta.status.host_ok.back"));
+-                    FXUtils.onClicked(back, () -> {
+-                        TerracottaState.Waiting s = TerracottaManager.setWaiting();
+-                        if (s != null) {
+-                            UI_STATE.set(s);
+-                        }
+-                    });
+-
+-                    if (hostOK.getProfiles().isEmpty()) {
+-                        nodesProperty.setAll(code, copy, back);
+-                    } else {
+-                        nodesProperty.setAll(code, copy, back, new PlayerProfileUI(hostOK.getProfiles()));
+-                    }
+-                }
+-            } else if (state instanceof TerracottaState.GuestStarting) {
+-                statusProperty.set(i18n("terracotta.status.guest_starting"));
+-                progressProperty.set(-1);
+-
+-                LineButton room = LineButton.of();
+-                room.setLeftIcon(SVG.ARROW_BACK);
+-                room.setTitle(i18n("terracotta.back"));
+-                room.setSubtitle(i18n("terracotta.status.guest_starting.back"));
+-                FXUtils.onClicked(room, () -> {
+-                    TerracottaState.Waiting s = TerracottaManager.setWaiting();
+-                    if (s != null) {
+-                        UI_STATE.set(s);
+-                    }
+-                });
+-
+-                nodesProperty.setAll(room);
+-            } else if (state instanceof TerracottaState.GuestOK guestOK) {
+-                if (guestOK.isForkOf(legacyState)) {
+-                    if (nodesProperty.get(nodesProperty.size() - 1) instanceof PlayerProfileUI profileUI) {
+-                        profileUI.updateProfiles(guestOK.getProfiles());
+-                    } else { // Should NOT happen
+-                        nodesProperty.add(new PlayerProfileUI(guestOK.getProfiles()));
+-                    }
+-                    return;
+-                } else {
+-                    statusProperty.set(i18n("terracotta.status.guest_ok"));
+-                    progressProperty.set(1);
+-
+-                    LineButton tutorial = LineButton.of();
+-                    tutorial.setTitle(i18n("terracotta.status.guest_ok.title"));
+-                    tutorial.setSubtitle(i18n("terracotta.status.guest_ok.desc", guestOK.getUrl()));
+-
+-                    LineButton back = LineButton.of();
+-                    back.setLeftIcon(SVG.ARROW_BACK);
+-                    back.setTitle(i18n("terracotta.back"));
+-                    back.setSubtitle(i18n("terracotta.status.guest_ok.back"));
+-                    FXUtils.onClicked(back, () -> {
+-                        TerracottaState.Waiting s = TerracottaManager.setWaiting();
+-                        if (s != null) {
+-                            UI_STATE.set(s);
+-                        }
+-                    });
+-
+-                    if (guestOK.getProfiles().isEmpty()) {
+-                        nodesProperty.setAll(tutorial, back);
+-                    } else {
+-                        nodesProperty.setAll(tutorial, back, new PlayerProfileUI(guestOK.getProfiles()));
+-                    }
+-                }
+-            } else if (state instanceof TerracottaState.Exception exception) {
+-                statusProperty.set(i18n("terracotta.status.exception.desc." + exception.getType().name().toLowerCase(Locale.ROOT)));
+-                progressProperty.set(1);
+-                nodesProperty.setAll();
+-
+-                LineButton back = LineButton.of();
+-                back.setLeftIcon(SVG.ARROW_BACK);
+-                back.setTitle(i18n("terracotta.back"));
+-                back.setSubtitle(i18n("terracotta.status.exception.back"));
+-                FXUtils.onClicked(back, () -> {
+-                    TerracottaState.Waiting s = TerracottaManager.setWaiting();
+-                    if (s != null) {
+-                        UI_STATE.set(s);
+-                    }
+-                });
+-
+-                SpinnerPane exportLog = new SpinnerPane();
+-                LineButton exportLogInner = LineButton.of();
+-                exportLogInner.setLeftIcon(SVG.OUTPUT);
+-                exportLogInner.setTitle(i18n("terracotta.export_log"));
+-                exportLogInner.setSubtitle(i18n("terracotta.export_log.desc"));
+-                exportLog.setContent(exportLogInner);
+-                exportLog.getProperties().put("ComponentList.noPadding", true);
+-                // FIXME: SpinnerPane loses its content width in loading state.
+-                exportLog.minHeightProperty().bind(back.heightProperty());
+-
+-                FXUtils.onClicked(exportLogInner, () -> {
+-                    exportLog.setLoading(true);
+-
+-                    TerracottaManager.exportLogs().thenAcceptAsync(Schedulers.io(), data -> {
+-                        if (data == null || data.isEmpty()) {
+-                            return;
+-                        }
+-
+-                        Path path = Path.of("terracotta-log-" + LocalDateTime.now().format(
+-                                DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH-mm-ss")
+-                        ) + ".zip").toAbsolutePath();
+-                        try (Zipper zipper = new Zipper(path)) {
+-                            zipper.putTextFile(data, StandardCharsets.UTF_8, "terracotta.log");
+-                            try (OutputStream os = zipper.putStream("hmcl-latest.log")) {
+-                                Logger.LOG.exportLogs(os);
+-                            }
+-                        }
+-                        FXUtils.showFileInExplorer(path);
+-                    }).thenRunAsync(
+-                            () -> Thread.sleep(3000)
+-                    ).whenComplete(
+-                            Schedulers.javafx(),
+-                            e -> exportLog.setLoading(false)
+-                    ).start();
+-                });
+-
+-                nodesProperty.setAll(back, exportLog);
+-            } else if (state instanceof TerracottaState.Fatal fatal) {
+-                String message = i18n("terracotta.status.fatal." + fatal.getType().name().toLowerCase(Locale.ROOT));
+-
+-                statusProperty.set(message);
+-                progressProperty.set(1);
+-
+-                if (fatal.isRecoverable()) {
+-                    LineButton retry = LineButton.of();
+-                    retry.setLeftIcon(SVG.RESTORE);
+-                    retry.setTitle(i18n("terracotta.status.fatal.retry"));
+-                    retry.setSubtitle(message);
+-                    FXUtils.onClicked(retry, () -> {
+-                        TerracottaState s = TerracottaManager.recover(null);
+-                        if (s != null) {
+-                            UI_STATE.set(s);
+-                        }
+-                    });
+-
+-                    if (fatal.getType() == TerracottaState.Fatal.Type.NETWORK) {
+-                        nodesProperty.setAll(retry, getThirdPartyDownloadNodes());
+-                    } else {
+-                        nodesProperty.setAll(retry);
+-                    }
+-                } else {
+-                    nodesProperty.setAll();
+-                }
+-            } else {
+-                throw new AssertionError(state.getClass().getName());
+-            }
+-
+-            ComponentList components = new ComponentList();
+-            {
+-                VBox statusPane = new VBox(8);
+-                VBox.setMargin(statusPane, new Insets(0, 0, 0, 4));
+-                {
+-                    Label status = new Label();
+-                    status.textProperty().bind(statusProperty);
+-                    JFXProgressBar progress = new JFXProgressBar();
+-                    progress.progressProperty().bind(progressProperty);
+-                    progress.setMaxWidth(Double.MAX_VALUE);
+-
+-                    statusPane.getChildren().setAll(status, progress);
+-                }
+-
+-                ObservableList<Node> children = components.getContent();
+-                children.add(statusPane);
+-                children.addAll(nodesProperty);
+-            }
+-
+-            transition.setContent(components, ContainerAnimations.SWIPE_LEFT_FADE_SHORT);
+-        };
+-        listener.changed(UI_STATE, null, UI_STATE.get());
+-        holder.add(listener);
+-        UI_STATE.addListener(new WeakChangeListener<>(listener));
+-
+-        VBox content = new VBox(10);
+-        content.getChildren().addAll(ComponentList.createComponentListTitle(i18n("terracotta.status")), transition);
+-        content.setPadding(new Insets(10));
+-        content.setFillWidth(true);
+-
+-        ScrollPane scrollPane = new ScrollPane(content);
+-        FXUtils.smoothScrolling(scrollPane);
+-        scrollPane.setFitToWidth(true);
+-
+-        getChildren().setAll(scrollPane);
+-    }
+-
+-    private ComponentList getThirdPartyDownloadNodes() {
+-        ComponentSublist locals = new ComponentSublist();
+-        locals.setComponentPadding(false);
+-
+-        LineButton header = LineButton.of(false);
+-        header.setLeftImage(FXUtils.newBuiltinImage("/assets/img/terracotta.png"));
+-        header.setTitle(i18n("terracotta.from_local.title"));
+-        header.setSubtitle(i18n("terracotta.from_local.desc"));
+-        locals.setHeaderLeft(header);
+-
+-        for (TerracottaMetadata.Link link : TerracottaMetadata.PACKAGE_LINKS) {
+-            HBox node = new HBox();
+-            node.setAlignment(Pos.CENTER_LEFT);
+-            node.setPadding(new Insets(10, 16, 10, 16));
+-
+-            Label description = new Label(link.description().getText(I18n.getLocale().getCandidateLocales()));
+-            HBox placeholder = new HBox();
+-            HBox.setHgrow(placeholder, Priority.ALWAYS);
+-            Node icon = SVG.OPEN_IN_NEW.createIcon(Theme.blackFill(), 16);
+-            node.getChildren().setAll(description, placeholder, icon);
+-
+-            String url = link.link();
+-            RipplerContainer container = new RipplerContainer(node);
+-            container.setOnMouseClicked(ev -> Controllers.dialog(
+-                    i18n("terracotta.from_local.guide", TerracottaMetadata.PACKAGE_NAME),
+-                    i18n("message.info"), MessageDialogPane.MessageType.INFO,
+-                    () -> FXUtils.openLink(url)
+-            ));
+-            container.getProperties().put("ComponentList.noPadding", true);
+-            locals.getContent().add(container);
+-        }
+-        return locals;
+-    }
+-
+-    private void copyCode(String code) {
+-        FXUtils.copyText(code, i18n("terracotta.status.host_ok.code.copy.toast"));
+-    }
+-
+-    private static final class LineButton extends RipplerContainer {
+-        private final WeakListenerHolder holder = new WeakListenerHolder();
+-
+-        private final ObjectProperty<Node> left = new SimpleObjectProperty<>(this, "left");
+-        private final ObjectProperty<Node> right = new SimpleObjectProperty<>(this, "right");
+-        private final StringProperty title = new SimpleStringProperty(this, "title", "");
+-        private final StringProperty subTitle = new SimpleStringProperty(this, "subTitle", "");
+-
+-        public static LineButton of() {
+-            return of(true);
+-        }
+-
+-        public static LineButton of(boolean padding) {
+-            HBox container = new HBox();
+-            if (padding) {
+-                container.setPadding(new Insets(10, 16, 10, 16));
+-            }
+-            container.setAlignment(Pos.CENTER_LEFT);
+-            container.setCursor(Cursor.HAND);
+-            container.setSpacing(16);
+-
+-            LineButton button = new LineButton(container);
+-            VBox spacing = new VBox();
+-            HBox.setHgrow(spacing, Priority.ALWAYS);
+-            button.holder.add(FXUtils.observeWeak(() -> {
+-                List<Node> nodes = new ArrayList<>(4);
+-                Node left = button.left.get();
+-                if (left != null) {
+-                    nodes.add(left);
+-                }
+-
+-                {
+-                    // FIXME: It's sucked to have the following TwoLineListItem-liked logic whose subtitle is a TextFlow.
+-                    VBox middle = new VBox();
+-                    middle.getStyleClass().add("two-line-list-item");
+-                    middle.setMouseTransparent(true);
+-                    {
+-                        HBox firstLine = new HBox();
+-                        firstLine.getStyleClass().add("first-line");
+-                        {
+-                            Label lblTitle = new Label(button.title.get());
+-                            lblTitle.getStyleClass().add("title");
+-                            firstLine.getChildren().setAll(lblTitle);
+-                        }
+-
+-                        HBox secondLine = new HBox();
+-                        {
+-                            Text text = new Text(button.subTitle.get());
+-                            text.setFill(new Color(0, 0, 0, 0.5));
+-
+-                            TextFlow lblSubtitle = new TextFlow(text);
+-                            lblSubtitle.getStyleClass().add("subtitle");
+-                            secondLine.getChildren().setAll(lblSubtitle);
+-                        }
+-
+-                        middle.getChildren().setAll(firstLine, secondLine);
+-                    }
+-                    nodes.add(middle);
+-                }
+-
+-                nodes.add(spacing);
+-
+-                Node right = button.right.get();
+-                if (right != null) {
+-                    nodes.add(right);
+-                }
+-
+-                container.getChildren().setAll(nodes);
+-            }, button.title, button.subTitle, button.left, button.right));
+-            button.getProperties().put("ComponentList.noPadding", true);
+-
+-            return button;
+-        }
+-
+-        private LineButton(Node container) {
+-            super(container);
+-        }
+-
+-        public void setTitle(String title) {
+-            this.title.set(title);
+-        }
+-
+-        public void setSubtitle(String subtitle) {
+-            this.subTitle.set(subtitle);
+-        }
+-
+-        public void setLeftImage(Image left) {
+-            this.left.set(new ImageView(left));
+-        }
+-
+-        public void setLeftIcon(SVG left) {
+-            this.left.set(left.createIcon(Theme.blackFill(), 28));
+-        }
+-
+-        public void setRightIcon(SVG right) {
+-            this.right.set(right.createIcon(Theme.blackFill(), 28));
+-        }
+-    }
+-
+-    private static final class PlayerProfileUI extends VBox {
+-        private final TransitionPane transition;
+-
+-        public PlayerProfileUI(List<TerracottaProfile> profiles) {
+-            super(8);
+-            VBox.setMargin(this, new Insets(0, 0, 0, 4));
+-            {
+-                Label status = new Label();
+-                status.setText(i18n("terracotta.player_list"));
+-
+-                transition = new TransitionPane();
+-                getChildren().setAll(status, transition);
+-
+-                updateProfiles(profiles);
+-            }
+-        }
+-
+-        private void updateProfiles(List<TerracottaProfile> profiles) {
+-            VBox pane = new VBox(8);
+-
+-            for (TerracottaProfile profile : profiles) {
+-                TwoLineListItem item = new TwoLineListItem();
+-                item.setTitle(profile.getName());
+-                item.setSubtitle(profile.getVendor());
+-                item.addTag(i18n("terracotta.player_kind." + profile.getType().name().toLowerCase(Locale.ROOT)));
+-                pane.getChildren().add(item);
+-            }
+-
+-            this.transition.setContent(pane, ContainerAnimations.SWIPE_LEFT_FADE_SHORT);
+-        }
+-    }
+-}
+diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/terracotta/TerracottaPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/terracotta/TerracottaPage.java
+deleted file mode 100644
+index 303830a90..000000000
+--- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/terracotta/TerracottaPage.java
++++ /dev/null
+@@ -1,120 +0,0 @@
+-/*
+- * Hello Minecraft! Launcher
+- * Copyright (C) 2025  huangyuhui <huanghongxun2008@126.com> and contributors
+- *
+- * This program is free software: you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License as published by
+- * the Free Software Foundation, either version 3 of the License, or
+- * (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+- */
+-package org.jackhuang.hmcl.ui.terracotta;
+-
+-import javafx.beans.property.ReadOnlyObjectProperty;
+-import javafx.beans.property.ReadOnlyObjectWrapper;
+-import javafx.beans.value.ChangeListener;
+-import javafx.geometry.Insets;
+-import javafx.scene.layout.BorderPane;
+-import javafx.scene.layout.Priority;
+-import javafx.scene.layout.VBox;
+-import org.jackhuang.hmcl.game.LauncherHelper;
+-import org.jackhuang.hmcl.setting.Profile;
+-import org.jackhuang.hmcl.setting.Profiles;
+-import org.jackhuang.hmcl.terracotta.TerracottaMetadata;
+-import org.jackhuang.hmcl.ui.Controllers;
+-import org.jackhuang.hmcl.ui.FXUtils;
+-import org.jackhuang.hmcl.ui.SVG;
+-import org.jackhuang.hmcl.ui.animation.ContainerAnimations;
+-import org.jackhuang.hmcl.ui.animation.TransitionPane;
+-import org.jackhuang.hmcl.ui.construct.*;
+-import org.jackhuang.hmcl.ui.decorator.DecoratorAnimatedPage;
+-import org.jackhuang.hmcl.ui.decorator.DecoratorPage;
+-import org.jackhuang.hmcl.ui.main.MainPage;
+-import org.jackhuang.hmcl.ui.versions.Versions;
+-import org.jackhuang.hmcl.util.Lang;
+-import org.jackhuang.hmcl.util.StringUtils;
+-
+-import static org.jackhuang.hmcl.setting.ConfigHolder.globalConfig;
+-import static org.jackhuang.hmcl.util.i18n.I18n.i18n;
+-
+-public class TerracottaPage extends DecoratorAnimatedPage implements DecoratorPage, PageAware {
+-    private static final int TERRACOTTA_AGREEMENT_VERSION = 2;
+-
+-    private final ReadOnlyObjectWrapper<State> state = new ReadOnlyObjectWrapper<>(State.fromTitle(i18n("terracotta.terracotta")));
+-    private final TabHeader tab;
+-    private final TabHeader.Tab<TerracottaControllerPage> statusPage = new TabHeader.Tab<>("statusPage");
+-    private final TransitionPane transitionPane = new TransitionPane();
+-
+-    @SuppressWarnings("unused")
+-    private ChangeListener<String> instanceChangeListenerHolder;
+-
+-    public TerracottaPage() {
+-        statusPage.setNodeSupplier(TerracottaControllerPage::new);
+-        tab = new TabHeader(statusPage);
+-        tab.select(statusPage);
+-
+-        transitionPane.setContent(statusPage.getNode(), ContainerAnimations.NONE);
+-        FXUtils.onChange(tab.getSelectionModel().selectedItemProperty(), newValue -> {
+-            transitionPane.setContent(newValue.getNode(), ContainerAnimations.FADE);
+-        });
+-
+-        BorderPane left = new BorderPane();
+-        FXUtils.setLimitWidth(left, 200);
+-        VBox.setVgrow(left, Priority.ALWAYS);
+-        setLeft(left);
+-
+-        AdvancedListBox sideBar = new AdvancedListBox()
+-                .addNavigationDrawerTab(tab, statusPage, i18n("terracotta.status"), SVG.TUNE);
+-        left.setTop(sideBar);
+-
+-        AdvancedListBox toolbar = new AdvancedListBox()
+-                .addNavigationDrawerItem(i18n("version.launch"), SVG.ROCKET_LAUNCH, () -> {
+-                    Profile profile = Profiles.getSelectedProfile();
+-                    Versions.launch(profile, profile.getSelectedVersion(), LauncherHelper::setKeep);
+-                }, item -> {
+-                    instanceChangeListenerHolder = FXUtils.onWeakChangeAndOperate(Profiles.selectedVersionProperty(),
+-                            instanceName -> item.setSubtitle(StringUtils.isNotBlank(instanceName) ? instanceName : i18n("version.empty"))
+-                    );
+-
+-                    MainPage mainPage = Controllers.getRootPage().getMainPage();
+-                    FXUtils.onScroll(item, mainPage.getVersions(), list -> {
+-                        String currentId = mainPage.getCurrentGame();
+-                        return Lang.indexWhere(list, instance -> instance.getId().equals(currentId));
+-                    }, it -> mainPage.getProfile().setSelectedVersion(it.getId()));
+-                })
+-                .addNavigationDrawerItem(i18n("terracotta.feedback.title"), SVG.FEEDBACK, () -> FXUtils.openLink(TerracottaMetadata.FEEDBACK_LINK))
+-                .addNavigationDrawerItem(i18n("terracotta.easytier"), SVG.HOST, () -> FXUtils.openLink("https://easytier.cn/"));
+-        BorderPane.setMargin(toolbar, new Insets(0, 0, 12, 0));
+-        left.setBottom(toolbar);
+-
+-        setCenter(transitionPane);
+-    }
+-
+-    @Override
+-    public void onPageShown() {
+-        tab.onPageShown();
+-
+-        if (globalConfig().getTerracottaAgreementVersion() < TERRACOTTA_AGREEMENT_VERSION) {
+-            Controllers.confirmWithCountdown(i18n("terracotta.confirm.desc"), i18n("terracotta.confirm.title"), 5, MessageDialogPane.MessageType.INFO, () -> {
+-                globalConfig().setTerracottaAgreementVersion(TERRACOTTA_AGREEMENT_VERSION);
+-            }, () -> fireEvent(new PageCloseEvent()));
+-        }
+-    }
+-
+-    @Override
+-    public void onPageHidden() {
+-        tab.onPageHidden();
+-    }
+-
+-    @Override
+-    public ReadOnlyObjectProperty<State> stateProperty() {
+-        return state.getReadOnlyProperty();
+-    }
+-}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/ExecutableHeaderHelper.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/ExecutableHeaderHelper.java
 deleted file mode 100644
-index 7c47f586d..000000000
+index 01e8a32f5..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/ExecutableHeaderHelper.java
 +++ /dev/null
 @@ -1,124 +0,0 @@
@@ -1071,7 +3399,7 @@ index 7c47f586d..000000000
 -            ZipEntry entry = zip.getEntry(location);
 -            if (entry != null && !entry.isDirectory()) {
 -                try (InputStream in = zip.getInputStream(entry)) {
--                    return Optional.of(IOUtils.readFullyAsByteArray(in));
+-                    return Optional.of(IOUtils.readFully(in));
 -                }
 -            }
 -        }
@@ -1131,10 +3459,10 @@ index 7c47f586d..000000000
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/HMCLDownloadTask.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/HMCLDownloadTask.java
 deleted file mode 100644
-index e4e72e705..000000000
+index a955ae83c..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/HMCLDownloadTask.java
 +++ /dev/null
-@@ -1,53 +0,0 @@
+@@ -1,56 +0,0 @@
 -/*
 - * Hello Minecraft! Launcher
 - * Copyright (C) 2020  huangyuhui <huanghongxun2008@126.com> and contributors
@@ -1155,16 +3483,16 @@ index e4e72e705..000000000
 -package org.jackhuang.hmcl.upgrade;
 -
 -import org.jackhuang.hmcl.task.FileDownloadTask;
--import org.jackhuang.hmcl.util.io.NetworkUtils;
 -
+-import java.nio.file.Files;
 -import java.nio.file.Path;
 -
--class HMCLDownloadTask extends FileDownloadTask {
+-final class HMCLDownloadTask extends FileDownloadTask {
 -
--    private RemoteVersion.Type archiveFormat;
+-    private final RemoteVersion.Type archiveFormat;
 -
 -    public HMCLDownloadTask(RemoteVersion version, Path target) {
--        super(NetworkUtils.toURL(version.getUrl()), target.toFile(), version.getIntegrityCheck());
+-        super(version.getUrl(), target, version.getIntegrityCheck());
 -        archiveFormat = version.getType();
 -    }
 -
@@ -1173,8 +3501,7 @@ index e4e72e705..000000000
 -        super.execute();
 -
 -        try {
--            Path target = getFile().toPath();
--
+-            Path target = getPath();
 -            switch (archiveFormat) {
 -                case JAR:
 -                    break;
@@ -1182,7 +3509,11 @@ index e4e72e705..000000000
 -                    throw new IllegalArgumentException("Unknown format: " + archiveFormat);
 -            }
 -        } catch (Throwable e) {
--            getFile().delete();
+-            try {
+-                Files.deleteIfExists(getPath());
+-            } catch (Throwable e2) {
+-                e.addSuppressed(e2);
+-            }
 -            throw e;
 -        }
 -    }
@@ -1190,7 +3521,7 @@ index e4e72e705..000000000
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/IntegrityChecker.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/IntegrityChecker.java
 deleted file mode 100644
-index 510a59c8a..000000000
+index f1785087c..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/IntegrityChecker.java
 +++ /dev/null
 @@ -1,145 +0,0 @@
@@ -1251,7 +3582,7 @@ index 510a59c8a..000000000
 -            if (in == null) {
 -                throw new IOException("Public key not found");
 -            }
--            return KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(IOUtils.readFullyAsByteArray(in)));
+-            return KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(IOUtils.readFully(in)));
 -        } catch (GeneralSecurityException e) {
 -            throw new IOException("Failed to load public key", e);
 -        }
@@ -1272,7 +3603,7 @@ index 510a59c8a..000000000
 -                    }
 -
 -                    if (SIGNATURE_FILE.equals(filename)) {
--                        signature = IOUtils.readFullyAsByteArray(in);
+-                        signature = IOUtils.readFully(in);
 -                    } else {
 -                        md.reset();
 -                        fileFingerprints.put(filename, DigestUtils.digest(md, in));
@@ -1341,7 +3672,7 @@ index 510a59c8a..000000000
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/RemoteVersion.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/RemoteVersion.java
 deleted file mode 100644
-index dcbdb6485..000000000
+index 142dcd6b1..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/RemoteVersion.java
 +++ /dev/null
 @@ -1,103 +0,0 @@
@@ -1378,7 +3709,7 @@ index dcbdb6485..000000000
 -
 -    public static RemoteVersion fetch(UpdateChannel channel, boolean preview, String url) throws IOException {
 -        try {
--            JsonObject response = JsonUtils.fromNonNullJson(NetworkUtils.doGet(NetworkUtils.toURL(url)), JsonObject.class);
+-            JsonObject response = JsonUtils.fromNonNullJson(NetworkUtils.doGet(url), JsonObject.class);
 -            String version = Optional.ofNullable(response.get("version")).map(JsonElement::getAsString).orElseThrow(() -> new IOException("version is missing"));
 -            String jarUrl = Optional.ofNullable(response.get("jar")).map(JsonElement::getAsString).orElse(null);
 -            String jarHash = Optional.ofNullable(response.get("jarsha1")).map(JsonElement::getAsString).orElse(null);
@@ -1498,7 +3829,7 @@ index 998a3da7d..000000000
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChecker.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChecker.java
 deleted file mode 100644
-index 4f7856938..000000000
+index 1504828d7..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChecker.java
 +++ /dev/null
 @@ -1,129 +0,0 @@
@@ -1592,7 +3923,7 @@ index 4f7856938..000000000
 -            throw new IOException("Self verification failed");
 -        }
 -
--        LinkedHashMap<String, String> query = new LinkedHashMap<>();
+-        var query = new LinkedHashMap<String, String>();
 -        query.put("version", Metadata.VERSION);
 -        query.put("channel", preview ? channel.channelName + "-preview" : channel.channelName);
 -
@@ -1633,10 +3964,10 @@ index 4f7856938..000000000
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java
 deleted file mode 100644
-index 9a25dd1bc..000000000
+index c8ff9edac..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java
 +++ /dev/null
-@@ -1,291 +0,0 @@
+@@ -1,280 +0,0 @@
 -/*
 - * Hello Minecraft! Launcher
 - * Copyright (C) 2020  huangyuhui <huanghongxun2008@126.com> and contributors
@@ -1660,18 +3991,17 @@ index 9a25dd1bc..000000000
 -import com.google.gson.JsonParseException;
 -import javafx.application.Platform;
 -
+-import org.jackhuang.hmcl.EntryPoint;
 -import org.jackhuang.hmcl.Main;
 -import org.jackhuang.hmcl.Metadata;
 -import org.jackhuang.hmcl.task.Task;
 -import org.jackhuang.hmcl.task.TaskExecutor;
 -import org.jackhuang.hmcl.ui.Controllers;
 -import org.jackhuang.hmcl.ui.UpgradeDialog;
--import org.jackhuang.hmcl.ui.construct.MessageDialogPane;
 -import org.jackhuang.hmcl.ui.construct.MessageDialogPane.MessageType;
 -import org.jackhuang.hmcl.util.StringUtils;
--import org.jackhuang.hmcl.ui.SwingUtils;
+-import org.jackhuang.hmcl.util.SwingUtils;
 -import org.jackhuang.hmcl.util.TaskCancellationAction;
--import org.jackhuang.hmcl.util.io.FileUtils;
 -import org.jackhuang.hmcl.util.io.JarUtils;
 -import org.jackhuang.hmcl.java.JavaRuntime;
 -import org.jackhuang.hmcl.util.platform.OperatingSystem;
@@ -1742,16 +4072,6 @@ index 9a25dd1bc..000000000
 -            return;
 -        }
 -
--        if (JavaRuntime.CURRENT_VERSION < Metadata.MINIMUM_SUPPORTED_JAVA_VERSION) {
--            MessageDialogPane.Builder builder = new MessageDialogPane.Builder(i18n("fatal.deprecated_java_version.update"), i18n("message.error"), MessageType.ERROR);
--            String downloadLink = Metadata.getSuggestedJavaDownloadLink();
--            if (downloadLink != null)
--                builder.addHyperLink(i18n("fatal.deprecated_java_version.download_link", 21), downloadLink);
--            builder.ok(null);
--            Controllers.dialog(builder.build());
--            return;
--        }
--
 -        Controllers.dialog(new UpgradeDialog(version, () -> {
 -            Path downloaded;
 -            try {
@@ -1775,7 +4095,7 @@ index 9a25dd1bc..000000000
 -                        }
 -
 -                        requestUpdate(downloaded, getCurrentLocation());
--                        Main.exit(0);
+-                        EntryPoint.exit(0);
 -                    } catch (IOException e) {
 -                        LOG.warning("Failed to update to " + version, e);
 -                        Platform.runLater(() -> Controllers.dialog(StringUtils.getStackTrace(e), i18n("update.failed"), MessageType.ERROR));
@@ -1914,7 +4234,7 @@ index 9a25dd1bc..000000000
 -        Path hmclVersionJson = Metadata.HMCL_GLOBAL_DIRECTORY.resolve("hmclver.json");
 -        if (Files.isRegularFile(hmclVersionJson)) {
 -            try {
--                Map<?, ?> content = new Gson().fromJson(FileUtils.readText(hmclVersionJson), Map.class);
+-                Map<?, ?> content = new Gson().fromJson(Files.readString(hmclVersionJson), Map.class);
 -                Object ver = content.get("ver");
 -                if (ver instanceof String && ((String) ver).startsWith("3.")) {
 -                    Files.delete(hmclVersionJson);
@@ -1929,7 +4249,7 @@ index 9a25dd1bc..000000000
 -    }
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/util/CrashReporter.java b/HMCL/src/main/java/org/jackhuang/hmcl/util/CrashReporter.java
-index 3eb8d38cd..790c140fd 100644
+index e4ed74b51..90e466838 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/util/CrashReporter.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/util/CrashReporter.java
 @@ -23,8 +23,6 @@ import javafx.scene.control.Alert.AlertType;
@@ -1941,7 +4261,7 @@ index 3eb8d38cd..790c140fd 100644
  import org.jackhuang.hmcl.util.io.NetworkUtils;
  
  import java.io.IOException;
-@@ -102,9 +100,6 @@ public final class CrashReporter implements Thread.UncaughtExceptionHandler {
+@@ -103,9 +101,6 @@ public final class CrashReporter implements Thread.UncaughtExceptionHandler {
                      if (showCrashWindow) {
                          new CrashWindow(report).show();
                      }
@@ -1951,7 +4271,7 @@ index 3eb8d38cd..790c140fd 100644
                  }
              });
          } catch (Throwable handlingException) {
-@@ -114,22 +109,4 @@ public final class CrashReporter implements Thread.UncaughtExceptionHandler {
+@@ -115,22 +110,4 @@ public final class CrashReporter implements Thread.UncaughtExceptionHandler {
          FileSaver.shutdown();
          LOG.shutdown();
      }
@@ -1963,7 +4283,7 @@ index 3eb8d38cd..790c140fd 100644
 -            map.put("version", Metadata.VERSION);
 -            map.put("log", LOG.getLogs());
 -            try {
--                String response = NetworkUtils.doPost(NetworkUtils.toURL(Metadata.PUBLISH_URL + "/hmcl/crash.php"), map);
+-                String response = NetworkUtils.doPost(URI.create(Metadata.PUBLISH_URL + "/hmcl/crash.php"), map);
 -                if (StringUtils.isNotBlank(response))
 -                    LOG.error("Crash server response: " + response);
 -            } catch (IOException ex) {
@@ -1990,6 +4310,268 @@ index 36ab72ee2..eae748add 100644
 +        throw new AttachNotSupportedException("Unsupported VM implementation " + vm.getClass().getName());
      }
  }
+diff --git a/build.gradle.kts b/build.gradle.kts
+index b3b3fe7ca..348c2f671 100644
+--- a/build.gradle.kts
++++ b/build.gradle.kts
+@@ -1,4 +1,3 @@
+-import org.jackhuang.hmcl.gradle.ci.CheckUpdate
+ import org.jackhuang.hmcl.gradle.docs.UpdateDocuments
+ 
+ plugins {
+@@ -80,11 +79,3 @@ defaultTasks("clean", "build")
+ tasks.register<UpdateDocuments>("updateDocuments") {
+     documentsDir.set(layout.projectDirectory.dir("docs"))
+ }
+-
+-tasks.register<CheckUpdate>("checkUpdateDev") {
+-    uri.set("https://ci.huangyuhui.net/job/HMCL-nightly")
+-}
+-
+-tasks.register<CheckUpdate>("checkUpdateStable") {
+-    uri.set("https://ci.huangyuhui.net/job/HMCL-stable")
+-}
+diff --git a/buildSrc/src/main/java/org/jackhuang/hmcl/gradle/ci/CheckUpdate.java b/buildSrc/src/main/java/org/jackhuang/hmcl/gradle/ci/CheckUpdate.java
+deleted file mode 100644
+index 3c2e4ae96..000000000
+--- a/buildSrc/src/main/java/org/jackhuang/hmcl/gradle/ci/CheckUpdate.java
++++ /dev/null
+@@ -1,235 +0,0 @@
+-/*
+- * Hello Minecraft! Launcher
+- * Copyright (C) 2025 huangyuhui <huanghongxun2008@126.com> and contributors
+- *
+- * This program is free software: you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License as published by
+- * the Free Software Foundation, either version 3 of the License, or
+- * (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+- */
+-package org.jackhuang.hmcl.gradle.ci;
+-
+-import com.google.gson.Gson;
+-import com.google.gson.JsonObject;
+-import com.google.gson.reflect.TypeToken;
+-import org.gradle.api.DefaultTask;
+-import org.gradle.api.GradleException;
+-import org.gradle.api.logging.Logger;
+-import org.gradle.api.logging.Logging;
+-import org.gradle.api.provider.Property;
+-import org.gradle.api.tasks.Input;
+-import org.gradle.api.tasks.TaskAction;
+-
+-import java.io.IOException;
+-import java.io.PrintWriter;
+-import java.net.URI;
+-import java.net.http.HttpClient;
+-import java.net.http.HttpRequest;
+-import java.net.http.HttpResponse;
+-import java.nio.file.Files;
+-import java.nio.file.Path;
+-import java.nio.file.StandardOpenOption;
+-import java.util.Comparator;
+-import java.util.List;
+-import java.util.Objects;
+-import java.util.function.BiConsumer;
+-import java.util.regex.Matcher;
+-import java.util.regex.Pattern;
+-
+-/// @author Glavo
+-public abstract class CheckUpdate extends DefaultTask {
+-    private static final Logger LOGGER = Logging.getLogger(CheckUpdate.class);
+-
+-    private static final String WORKFLOW_JOB = "org.jenkinsci.plugins.workflow.job.WorkflowJob";
+-    private static final String WORKFLOW_MULTI_BRANCH_PROJECT = "org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject";
+-    private static final String FREE_STYLE_PROJECT = "hudson.model.FreeStyleProject";
+-
+-    @Input
+-    public abstract Property<String> getUri();
+-
+-    public CheckUpdate() {
+-        getOutputs().upToDateWhen(task -> false);
+-    }
+-
+-    private static URI toURI(String baseUri, String suffix) {
+-        return URI.create(baseUri.endsWith("/")
+-                ? baseUri + suffix
+-                : baseUri + "/" + suffix
+-        );
+-    }
+-
+-    private static String concatUri(String base, String... others) {
+-        var builder = new StringBuilder(base);
+-        for (String other : others) {
+-            if (builder.charAt(builder.length() - 1) != '/') {
+-                builder.append('/');
+-            }
+-            builder.append(Objects.requireNonNull(other));
+-        }
+-        return builder.toString();
+-    }
+-
+-    @TaskAction
+-    public void run() throws Exception {
+-        String uri = getUri().get();
+-        URI apiUri = URI.create(concatUri(uri, "api", "json"));
+-        LOGGER.quiet("Fetching metadata from {}", apiUri);
+-
+-        BuildMetadata buildMetadata;
+-
+-        try (var helper = new Helper()) {
+-            JsonObject body = Objects.requireNonNull(helper.fetch(apiUri, JsonObject.class));
+-            String jobType = Objects.requireNonNull(body.getAsJsonPrimitive("_class"), "Missing _class property")
+-                    .getAsString();
+-
+-            if (WORKFLOW_MULTI_BRANCH_PROJECT.equals(jobType)) {
+-                Pattern namePattern = Pattern.compile("release%2F3\\.\\d+");
+-
+-                List<BuildMetadata> metadatas = Objects.requireNonNull(helper.gson.fromJson(body.get("jobs"), new TypeToken<List<SubJobInfo>>() {
+-                        }), "jobs")
+-                        .stream()
+-                        .filter(it -> WORKFLOW_JOB.equals(it._class()))
+-                        .filter(it -> namePattern.matcher(it.name()).matches())
+-                        .filter(it -> !it.color().equals("disabled"))
+-                        .map(it -> {
+-                            try {
+-                                return fetchBuildInfo(helper, it.url);
+-                            } catch (Throwable e) {
+-                                throw new GradleException("Failed to fetch build info from " + it.url(), e);
+-                            }
+-                        }).sorted(Comparator.comparing(BuildMetadata::timestamp))
+-                        .toList();
+-
+-                if (metadatas.isEmpty())
+-                    throw new GradleException("Failed to fetch build metadata from " + apiUri);
+-
+-                buildMetadata = metadatas.get(metadatas.size() - 1);
+-            } else if (WORKFLOW_JOB.equals(jobType) || FREE_STYLE_PROJECT.equals(jobType)) {
+-                buildMetadata = fetchBuildInfo(helper, uri);
+-            } else {
+-                throw new GradleException("Unsupported job type: " + jobType);
+-            }
+-        }
+-
+-        LOGGER.quiet("Build metadata found: {}", buildMetadata);
+-
+-        String githubEnv = Objects.requireNonNullElse(System.getenv("GITHUB_ENV"), "");
+-        if (githubEnv.isBlank())
+-            LOGGER.warn("GITHUB_ENV is not set");
+-
+-        try (PrintWriter writer = githubEnv.isBlank()
+-                ? null
+-                : new PrintWriter(Files.newBufferedWriter(Path.of(githubEnv), StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.APPEND))) {
+-
+-            BiConsumer<String, String> addEnv = (name, value) -> {
+-                String item = name + "=" + value;
+-                LOGGER.quiet(item);
+-                if (writer != null)
+-                    writer.println(item);
+-            };
+-
+-            addEnv.accept("HMCL_COMMIT_SHA", buildMetadata.revision());
+-            addEnv.accept("HMCL_VERSION", buildMetadata.version());
+-            addEnv.accept("HMCL_TAG_NAME", "v" + buildMetadata.version());
+-            addEnv.accept("HMCL_CI_DOWNLOAD_BASE_URI", buildMetadata.downloadBaseUri);
+-        }
+-    }
+-
+-    private record BuildMetadata(String version, String revision, long timestamp, String downloadBaseUri) {
+-    }
+-
+-    private BuildMetadata fetchBuildInfo(Helper helper, String jobUri) throws IOException, InterruptedException {
+-        URI uri = URI.create(concatUri(jobUri, "lastSuccessfulBuild", "api", "json"));
+-
+-        LOGGER.quiet("Fetching build info from {}", uri);
+-
+-        BuildInfo buildInfo = Objects.requireNonNull(helper.fetch(uri, BuildInfo.class), "build info");
+-
+-        String revision = Objects.requireNonNullElse(buildInfo.actions(), List.<ActionInfo>of())
+-                .stream()
+-                .filter(action -> "hudson.plugins.git.util.BuildData".equals(action._class()))
+-                .map(ActionInfo::lastBuiltRevision)
+-                .map(BuiltRevision::SHA1)
+-                .findFirst()
+-                .orElseThrow(() -> new GradleException("Could not find revision"));
+-        if (!revision.matches("[0-9a-z]{40}"))
+-            throw new GradleException("Invalid revision: " + revision);
+-
+-        Pattern fileNamePattern = Pattern.compile("HMCL-(?<version>\\d+(?:\\.\\d+)+)\\.jar");
+-        ArtifactInfo jarArtifact = Objects.requireNonNullElse(buildInfo.artifacts(), List.<ArtifactInfo>of()).stream()
+-                .filter(it -> fileNamePattern.matcher(it.fileName()).matches())
+-                .findFirst()
+-                .orElseThrow(() -> new GradleException("Could not find .jar artifact"));
+-
+-        String fileName = jarArtifact.fileName();
+-        String relativePath = jarArtifact.relativePath();
+-        if (!relativePath.endsWith("/" + fileName)) {
+-            throw new GradleException("Invalid artifact relative path: " + jarArtifact);
+-        }
+-
+-        Matcher matcher = fileNamePattern.matcher(fileName);
+-        if (!matcher.matches()) {
+-            throw new AssertionError("Artifact: " + jarArtifact.fileName());
+-        }
+-
+-        String version = matcher.group("version");
+-
+-        String downloadBaseUrl = concatUri(buildInfo.url(), "artifact",
+-                relativePath.substring(0, relativePath.length() - fileName.length() - 1));
+-
+-        return new BuildMetadata(version, revision, buildInfo.timestamp(), downloadBaseUrl);
+-    }
+-
+-    private static final class Helper implements AutoCloseable {
+-        private final HttpClient client = HttpClient.newBuilder()
+-                .followRedirects(HttpClient.Redirect.ALWAYS)
+-                .build();
+-        private final Gson gson = new Gson();
+-
+-        private <T> T fetch(URI uri, Class<T> type) throws IOException, InterruptedException {
+-            HttpResponse<String> response = client.send(HttpRequest.newBuilder(uri).build(), HttpResponse.BodyHandlers.ofString());
+-            if (response.statusCode() / 100 != 2) {
+-                throw new IOException("Bad status code " + response.statusCode() + " for " + uri);
+-            }
+-
+-            return gson.fromJson(response.body(), type);
+-        }
+-
+-        @Override
+-        public void close() throws Exception {
+-            // HttpClient implements AutoCloseable since Java 21
+-            if (((Object) client) instanceof AutoCloseable closeable) {
+-                closeable.close();
+-            }
+-        }
+-    }
+-
+-    private record SubJobInfo(String _class, String name, String url, String color) {
+-
+-    }
+-
+-    private record BuildInfo(String url,
+-                             long number,
+-                             long timestamp,
+-                             List<ArtifactInfo> artifacts,
+-                             List<ActionInfo> actions
+-    ) {
+-    }
+-
+-    record ArtifactInfo(String fileName, String relativePath) {
+-    }
+-
+-    record ActionInfo(String _class, BuiltRevision lastBuiltRevision) {
+-    }
+-
+-    record BuiltRevision(String SHA1) {
+-    }
+-}
 -- 
-2.51.0
+2.51.2
 

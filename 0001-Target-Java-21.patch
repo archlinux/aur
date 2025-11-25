@@ -1,27 +1,59 @@
-From 8da4282d0010648a287e5d60a2ca495800943b66 Mon Sep 17 00:00:00 2001
+From f9fde48f6b75b5fe50693d2d276610cb751dc462 Mon Sep 17 00:00:00 2001
 From: Aviana Cruz <gwencroft@proton.me>
 Date: Sun, 6 Nov 2022 13:28:59 +0800
 Subject: [PATCH 1/2] Target Java 21
 
 ---
- build.gradle.kts | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ HMCL/build.gradle.kts     | 4 ++--
+ HMCLCore/build.gradle.kts | 4 ++--
+ buildSrc/build.gradle.kts | 4 ++--
+ 3 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/build.gradle.kts b/build.gradle.kts
-index 25aa241fe..c8c09cc9f 100644
---- a/build.gradle.kts
-+++ b/build.gradle.kts
-@@ -31,8 +31,8 @@ subprojects {
-     }
+diff --git a/HMCL/build.gradle.kts b/HMCL/build.gradle.kts
+index 5c8d476b5..04f8f1193 100644
+--- a/HMCL/build.gradle.kts
++++ b/HMCL/build.gradle.kts
+@@ -108,8 +108,8 @@ fun attachSignature(jar: File) {
+ }
  
-     tasks.withType<JavaCompile> {
--        sourceCompatibility = "1.8"
--        targetCompatibility = "1.8"
-+        sourceCompatibility = "21"
-+        targetCompatibility = "21"
+ tasks.withType<JavaCompile> {
+-    sourceCompatibility = "17"
+-    targetCompatibility = "17"
++    sourceCompatibility = "21"
++    targetCompatibility = "21"
+ }
  
-         options.encoding = "UTF-8"
-     }
+ tasks.checkstyleMain {
+diff --git a/HMCLCore/build.gradle.kts b/HMCLCore/build.gradle.kts
+index 86ca2bde9..3590b06b7 100644
+--- a/HMCLCore/build.gradle.kts
++++ b/HMCLCore/build.gradle.kts
+@@ -3,8 +3,8 @@ plugins {
+ }
+ 
+ tasks.withType<JavaCompile> {
+-    sourceCompatibility = "17"
+-    targetCompatibility = "17"
++    sourceCompatibility = "21"
++    targetCompatibility = "21"
+ }
+ 
+ tasks.compileJava {
+diff --git a/buildSrc/build.gradle.kts b/buildSrc/build.gradle.kts
+index f0b6737ce..67f533827 100644
+--- a/buildSrc/build.gradle.kts
++++ b/buildSrc/build.gradle.kts
+@@ -13,8 +13,8 @@ dependencies {
+ }
+ 
+ java {
+-    sourceCompatibility = JavaVersion.VERSION_17
+-    targetCompatibility = JavaVersion.VERSION_17
++    sourceCompatibility = JavaVersion.VERSION_21
++    targetCompatibility = JavaVersion.VERSION_21
+ }
+ 
+ tasks.withType<JavaCompile> {
 -- 
-2.51.0
+2.51.2
 
