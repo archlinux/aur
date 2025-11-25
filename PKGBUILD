@@ -17,7 +17,7 @@ _appver="0.2.7-hot1"
 _appimage="vrcpm-${_appver}.AppImage"
 
 source_x86_64=("${url}/releases/download/${_appver}/${_appimage}")
-b2sums_x86_64=("d4e93ceabe6087cf69a119ed0dc20bac06e79b3ba8f17eb25fe38aa7e2eaf630849f2241691b7aaa173819ee1300fb87205b8d2c9622d441fc4df7ba03f843a1")
+b2sums_x86_64=("4a80d0cf04bc35fdd41a1cdd38019ec7905100321b196eb8ee87f765f2f2af466bb664424d58cba00e922446bb7ad2b1caabe257cdd7173096bd5492991c5b55")
 
 prepare() {
   chmod +x "${_appimage}"
