@@ -5,12 +5,15 @@
 
 _android_arch=x86
 pkgname=android-$_android_arch-qt6-sensors
-_qtver=6.10.0
+_qtver=6.10.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
 url='https://www.qt.io'
-license=(GPL3 LGPL3 FDL custom)
+license=(GPL-3.0-only
+         LGPL-3.0-only
+         LicenseRef-Qt-Commercial
+         Qt-GPL-exception-1.0)
 pkgdesc='Provides access to sensor hardware and motion gesture recognition (android)'
 depends=('android-x86-qt6-connectivity')
 optdepends=('android-x86-qt6-declarative: QML bindings')
@@ -19,7 +22,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtsensors-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('67525e1ad1833ce556a208c4fd8adc59fe6e20d9450e621977ade96300668739')
+sha256sums=('49ce9ce033234689706dfcacef4eac7e562cff127cacc889ffcb3b68d684b395')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
@@ -29,6 +32,7 @@ build() {
     -DQT_BINARY_DIR=${ANDROID_PREFIX_BIN} \
     -DQT_INCLUDE_DIRS_NO_SYSTEM=ON \
     -DQT_HOST_PATH=/usr \
+    -DQT_NO_PACKAGE_VERSION_CHECK:BOOL=TRUE \
     -DANDROID_SDK_ROOT=${ANDROID_HOME} \
     -DANDROID_NDK_ROOT=${ANDROID_NDK_HOME} \
     -DANDROID_STL="c++_shared" \
