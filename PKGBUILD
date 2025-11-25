@@ -1,8 +1,9 @@
+# Maintainer: Davikch <davidoglud at gmail dot com>
 # Contributor: maz-1 <ohmygod19993 at gmail dot com>
 
 pkgname=yumenikki-en
 pkgver=0.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Surrealistic adventure game about exploring the dreams"
 url='http://www3.nns.ne.jp/pri/tk-mto/'
 arch=('any')
