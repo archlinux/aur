@@ -1,6 +1,6 @@
 pkgbase = grok-jpeg2000-git
 	pkgdesc = A high performance open source JPEG 2000 codec
-	pkgver = 20.0.3.r0.g652fd2d
+	pkgver = 20.0.4.r1.g3350326
 	pkgrel = 1
 	url = https://github.com/GrokImageCompression/grok
 	arch = x86_64
