@@ -3,7 +3,7 @@
 pkgname=protonvpn-cli
 _gitpkgname=proton-vpn-cli
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ProtonVPN CLI"
 arch=('any')
 license=('GPL-3.0-or-later')
@@ -20,10 +20,9 @@ depends=(
   'python-proton-vpn-network-manager'
 )
 makedepends=(
-  'git'
   'python-setuptools'
   )
-source=("https://github.com/ProtonVPN/${_gitpkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+source=(${_gitpkgname}-${pkgver}.tar.gz::"https://github.com/ProtonVPN/${_gitpkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('6dc9f3b60a3a434119f12c777534de68476f4ae027062618eb1cbb8b1da3a774')
 
 build() {

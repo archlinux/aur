@@ -1,11 +1,10 @@
 pkgbase = protonvpn-cli
 	pkgdesc = ProtonVPN CLI
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ProtonVPN/proton-vpn-cli
 	arch = any
 	license = GPL-3.0-or-later
-	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-click
@@ -16,7 +15,7 @@ pkgbase = protonvpn-cli
 	depends = python-proton-core
 	depends = python-proton-vpn-local-agent
 	depends = python-proton-vpn-network-manager
-	source = https://github.com/ProtonVPN/proton-vpn-cli/archive/refs/tags/v0.1.2.tar.gz
+	source = proton-vpn-cli-0.1.2.tar.gz::https://github.com/ProtonVPN/proton-vpn-cli/archive/refs/tags/v0.1.2.tar.gz
 	sha256sums = 6dc9f3b60a3a434119f12c777534de68476f4ae027062618eb1cbb8b1da3a774
 
 pkgname = protonvpn-cli
