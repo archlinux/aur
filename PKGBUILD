@@ -1,7 +1,7 @@
 # Maintainer: Arne Brücher <archlinux [at] arne-bruecher [dot] de>
 
 pkgname=pinokio-bin
-pkgver=3.9.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc='AI Browser.'
 arch=('x86_64' 'aarch64')
@@ -12,11 +12,11 @@ optdepends=('libappindicator-gtk3')
 makedepends=('binutils' 'tar')
 provides=('pinokio')
 conflicts=('pinokio')
-source_x86_64=("$url/releases/download/$pkgver/Pinokio_${pkgver}_amd64.deb")
-source_aarch64=("$url/releases/download/$pkgver/Pinokio_${pkgver}_arm64.deb")
+source_x86_64=("$url/releases/download/v${pkgver}/Pinokio_${pkgver}_amd64.deb")
+source_aarch64=("$url/releases/download/v${pkgver}/Pinokio_${pkgver}_arm64.deb")
 
-sha256sums_x86_64=('bf80c658d2b99cdbdce6626ac35060f124014a76d3e5b93c5b5ca7b4a7720cc4')
-sha256sums_aarch64=('fddcf2c8e0eb1195e038a9c1b922745a357588c1721a36979186a54d42ed147f')
+sha256sums_x86_64=('8adf1208daa0b80c96b509f311f30fbfcdc2dbb0b4e8f7752ddc70b347780f6d')
+sha256sums_aarch64=('3d68cb5abdaead1a732a16d0726cd5b444ed07dbe2b0cfeb472effe52b2dcd22')
 
 prepare() {
 	if [[ "$CARCH" == "x86_64" ]]; then
@@ -28,7 +28,7 @@ prepare() {
 }
 
 package() {
-	install -D "$srcdir/usr/share/icons/hicolor/0x0/apps/pinokio.png" "$pkgdir/usr/share/icons/hicolor/0x0/apps/pinokio.png"
+	install -D "$srcdir/usr/share/icons/hicolor/512x512/apps/pinokio.png" "$pkgdir/usr/share/icons/hicolor/0x0/apps/pinokio.png"
 	install -D "$srcdir/usr/share/applications/pinokio.desktop" "$pkgdir/usr/share/applications/pinokio.desktop"
 	install -D "$srcdir/usr/share/doc/pinokio/changelog.gz" "$pkgdir/usr/share/doc/pinokio/changelog.gz"
 	install -d "$pkgdir/opt/Pinokio"
