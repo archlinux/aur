@@ -1,4 +1,4 @@
-# Maintainer: KoNicks <konicksdev@gmail.com>
+# Maintainer: Ioachim Radu <righita@disroot.org>
 pkgname=koffe
 pkgver=1.4.0
 pkgrel=1
@@ -19,18 +19,13 @@ backup=()
 options=()
 install=
 changelog=
-source=('git+https://github.com/konickss/koffe.git')
+source=('git+https://github.com/konickss/koffe.git#commit=d4a3354b0dd6b426c517b7c4e88d550d2ddda31c')
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
 package() {
-	cd koffe
-	mkdir $pkgdir/usr/
-	mkdir $pkgdir/usr/bin/
-	mkdir $pkgdir/usr/share/
-	cp koffe $pkgdir/usr/bin/
-	mkdir $pkgdir/usr/share/koffe/
-	cp install $pkgdir/usr/share/koffe/
-	cp pi.is $pkgdir/usr/share/koffe/
+	install -Dm755 ${srcdir}/koffe/koffe ${pkgdir}/usr/bin/koffe
+	install -Dm644 ${srcdir}/koffe/install ${pkgdir}/usr/share/koffe/install
+	install -Dm644 ${srcdir}/koffe/pi.is ${pkgdir}/usr/share/koffe/pi.is
 }

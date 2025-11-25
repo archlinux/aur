@@ -12,7 +12,7 @@ pkgbase = koffe
 	depends = libnewt
 	depends = wget
 	depends = git
-	source = git+https://github.com/konickss/koffe.git
+	source = git+https://github.com/konickss/koffe.git#commit=d4a3354b0dd6b426c517b7c4e88d550d2ddda31c
 	md5sums = SKIP
 
 pkgname = koffe
