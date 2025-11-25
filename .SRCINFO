@@ -1,13 +1,13 @@
 pkgbase = adguard-cli-nightly-bin
 	pkgdesc = Tool to protect against ads, trackers and malicious websites
-	pkgver = 1.2.13
+	pkgver = 1.2.15
 	pkgrel = 1
 	url = https://github.com/AdguardTeam/AdGuardCLI
 	install = adguard-cli.install
 	arch = x86_64
 	conflicts = adguard-cli-bin
 	options = !strip
-	source = https://github.com/AdguardTeam/AdGuardCLI/releases/download/v1.2.13-nightly/adguard-cli-1.2.13-linux-x86_64.tar.gz
-	sha256sums = e41cd7e52a965bc3542751d48e4407eec6626b425b77e70b2917f586c0904cfe
+	source = https://github.com/AdguardTeam/AdGuardCLI/releases/download/v1.2.15-nightly/adguard-cli-1.2.15-linux-x86_64.tar.gz
+	sha256sums = 2407f94c61a358bd725af8cce227e2fe4480b1f60d72da6800e7be750df3aaa4
 
 pkgname = adguard-cli-nightly-bin
