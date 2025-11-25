@@ -2,17 +2,17 @@
 # Maintainer: Rafael Silva (perigoso) <perigoso at riseup.net>
 
 pkgname='firefox-extension-multi-account-containers-bin'
-pkgver=8.3.4
+pkgver=8.3.6
 pkgrel=2
 pkgdesc='Firefox Multi-Account Containers lets you keep parts of your online life separated into color-coded tabs. Cookies are separated by container, allowing you to use the web with multiple accounts and integrate Mozilla VPN for an extra layer of privacy.'
 arch=('any')
 url='https://github.com/mozilla/multi-account-containers/#readme'
 license=('MPL-2.0')
 depends=('firefox')
-_source_file_id=4607779
+_source_file_id=4627302
 source=('multi-account-containers.xpi'::"https://addons.mozilla.org/firefox/downloads/file/${_source_file_id}/multi_account_containers-${pkgver}.xpi")
 noextract=('multi-account-containers.xpi')
-sha256sums=('c7d1018e7856ac6b27b26eccedd85222398398b00ce7344e93cbb1495d8ea632')
+sha256sums=('bf3de35b844becf166449f1d927f994a2abafb8fc4ce877eca7a8c6cd124d34a')
 
 package() {
   install -Dm644 'multi-account-containers.xpi' "${pkgdir}/usr/lib/firefox/browser/extensions/@testpilot-containers.xpi"
