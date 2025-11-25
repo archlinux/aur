@@ -14,7 +14,7 @@ arch=('any')
 url='https://github.com/xavierog/moulti'
 license=('MIT')
 
-provides=("moulti")
+provides=("${_pypi_package}")
 replaces=("python-${pkgname}")
 conflicts=("python-${pkgname}")
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
