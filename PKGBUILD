@@ -2,7 +2,7 @@
 
 _base=mathparse
 pkgname=python-${_base}
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="A Python library for evaluating natural language mathematical equations."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz"::${url}/archive/refs/tags/${pkgver}.tar.gz)
-sha512sums=('7db9feba994d86ccc96d752ff91fbd31d866826479a9b619d71d4547763794f487318f0ed108086cecd9900d4c6f00c300f39fff375a95f8cd65abd7e6ca7676')
+sha512sums=('851f317f63d2d82aab01bd1992612929e86b64b05f1c8c140bc4801141abce0a6092aa06a85d22b81eedb73f0e1ba8a8297f7dbacd728de7ef10deaeeff5810b')
 
 build() {
   cd "${_base}-${pkgver}"
