@@ -1,20 +1,21 @@
 # Maintainer: Boris Barbulovski <bbarbulovski@gmail.com>
-pkgname='cfrds'
-pkgver='0.9.5'
+pkgname=('cfrds' 'python-cfrds')
+pkgver='0.9.6'
 pkgrel=1
+options=(!debug)
 pkgdesc='Client side ColdFusion RDS protocol.'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url='https://github.com/bokic/cfrds'
 license=('MIT')
 makedepends=('cmake' 'ninja' 'gcc' 'pkgconf')
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'gcc-libs' 'libxml2')
 
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/bokic/$pkgname/archive/refs/tags/${pkgver}.tar.gz"
 )
 
 sha512sums=(
-    '3c891828f27715bafcf2ecc9e487ecc91af8bed35491f4a6a0f366eb41d9fb45f231782228030a1d48f33ed3b564036a9adfb366f03168d16e5b2cfcf11cbc74'
+    'cdd6bbab451c6ad1a624e7d63a3c3f5b2af569c3d6f373da8e678b1f1670976432868a109ac8daecf87bfc6d506dacc653e39c1dfbbb8138fb278a3fadb503c8'
 )
 
 build() {
@@ -22,8 +23,13 @@ build() {
     cmake --build "$pkgname-$pkgver/build"
 }
 
-package() {
+package_cfrds() {
     cmake --install "$srcdir/$pkgname-$pkgver/build"
     install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/cfrds/LICENSE"
     install -Dm644 "$srcdir/$pkgname-$pkgver/pkgconfig/cfrds.pc" "$pkgdir/usr/lib/pkgconfig/cfrds.pc"
+}
+
+package_python-cfrds() {
+    cp -r "$srcdir/cfrds-$pkgver/bin/usr" "$pkgdir/usr"
+    install -Dm644 "$srcdir/cfrds-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
