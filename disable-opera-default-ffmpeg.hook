@@ -8,4 +8,4 @@ Target=opera
 [Action]
 Description=Disabling default opera libffmpeg.so...
 When=PostTransaction
-Exec=/usr/bin/bash -c 'chmod a-r /usr/lib/opera/libffmpeg.so 2>/dev/null||:'
+Exec=/usr/bin/bash -c 'chmod a-r /usr/lib/opera-stable/libffmpeg.so 2>/dev/null||:'
