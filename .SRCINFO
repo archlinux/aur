@@ -1,0 +1,19 @@
+pkgbase = python-pymatgen
+	pkgdesc = Python Materials Genomics - bibliothèque Python open source pour l’analyse des matériaux
+	pkgver = 2025.7.8
+	pkgrel = 1
+	url = https://github.com/materialsproject/pymatgen
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-pandas
+	depends = python-matplotlib
+	depends = python-requests
+	source = python-pymatgen::git+https://github.com/materialsproject/pymatgen.git
+	md5sums = SKIP
+
+pkgname = python-pymatgen
