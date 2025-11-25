@@ -1,7 +1,7 @@
 # Maintainer: Not_Noob <github.refusal864@passinbox.com>
 pkgname=octarine-bin
 pkgdesc="Octarine is an opinionated tool for taking notes, tasks and organising your thoughts."
-pkgver=0.30.2
+pkgver=0.30.4
 pkgrel=1
 arch=("x86_64")
 url="https://octarine.app"
