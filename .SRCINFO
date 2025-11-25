@@ -9,8 +9,8 @@ pkgbase = zsh-thefuck-git
 	makedepends = git
 	depends = thefuck
 	depends = zsh
-	provides = zsh-thefuck-git
-	conflicts = zsh-thefuck-git
+	provides = zsh-thefuck
+	conflicts = zsh-thefuck
 	source = git+https://github.com/laggardkernel/zsh-thefuck.git
 	sha512sums = SKIP
 
