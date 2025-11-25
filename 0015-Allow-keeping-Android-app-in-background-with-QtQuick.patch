@@ -1,4 +1,4 @@
-From 68e88a65858f816e12c3b9384b30563e9bb839d8 Mon Sep 17 00:00:00 2001
+From f8c3b669cc27242d24d894b40b1f5de25e6f7de0 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 4 May 2025 00:51:18 +0200
 Subject: [PATCH 15/20] Allow keeping Android app in background with
@@ -44,5 +44,5 @@ index d1e81d62e27..36b36498cc7 100644
  
  #if QT_CONFIG(accessibility)
 -- 
-2.51.0
+2.52.0
 

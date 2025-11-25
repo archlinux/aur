@@ -1,4 +1,4 @@
-From a32cad00fada7f1302f79aad4f7e2fbdab916c39 Mon Sep 17 00:00:00 2001
+From d7ab1636266f54c22a4a78713ec3797753ee0f98 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 8 Nov 2020 00:33:12 +0100
 Subject: [PATCH 06/20] Support finding static MariaDB client library
@@ -34,5 +34,5 @@ index 175c064e648..aff77a6af0d 100644
  endif()
  
 -- 
-2.51.0
+2.52.0
 

@@ -1,4 +1,4 @@
-From 4e1ab2431f5340d88c1729b39df270b04cfec2c5 Mon Sep 17 00:00:00 2001
+From 401aa25e0da0908569820a6d18d7e4a7a11c5c67 Mon Sep 17 00:00:00 2001
 From: Cristian Le <cristian.le@qt.io>
 Date: Thu, 19 Jun 2025 17:12:46 +0200
 Subject: [PATCH 18/20] Drop CMAKE_SYSTEM_VERSION from modules json if Linux
@@ -31,7 +31,7 @@ index e8b58387d9e..5d41bc8e377 100644
      "repository": "${lower_case_project_name}",
      "version": "${PROJECT_VERSION}",${extra_module_information}
 diff --git a/cmake/QtModuleHelpers.cmake b/cmake/QtModuleHelpers.cmake
-index 75c152a0a77..711d2f0cce6 100644
+index dcbb85238c3..67da7b52c79 100644
 --- a/cmake/QtModuleHelpers.cmake
 +++ b/cmake/QtModuleHelpers.cmake
 @@ -1585,9 +1585,13 @@ ${indent3}\"name\": \"${platform_name}\",")
@@ -50,5 +50,5 @@ index 75c152a0a77..711d2f0cce6 100644
          string(APPEND platforms_information "
  ${indent3}\"compiler_id\": \"${CMAKE_CXX_COMPILER_ID}\",
 -- 
-2.51.0
+2.52.0
 
