@@ -4,12 +4,15 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-tools-static
-_qtver=6.10.0
+_qtver=6.10.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
 url='https://www.qt.io'
-license=(GPL3 LGPL3 FDL custom)
+license=(GPL-3.0-only
+         LGPL-3.0-only
+         LicenseRef-Qt-Commercial
+         Qt-GPL-exception-1.0)
 pkgdesc='A cross-platform application and UI framework (tools, mingw-w64)'
 depends=('mingw-w64-qt6-base-static')
 makedepends=('mingw-w64-cmake-static' 'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-loader' 'mingw-w64-qt6-declarative-static' 'qt6-declarative' 'qt6-tools' 'ninja')
@@ -18,8 +21,8 @@ groups=(mingw-w64-qt6)
 _pkgfqn="qttools-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Enable-only-SQL-plugins-which-are-known-to-work.patch')
-sha256sums=('d86d5098cf3e3e599f37e18df477e65908fc8f036e10ea731b3469ec4fdbd02a'
-            '82b7b7405760e302465536afd62311105cf4e2a001040ce552b628e3f90bcd9c')
+sha256sums=('8148408380ffea03101a26305c812b612ea30dbc07121e58707601522404d49b'
+            'fcdbd125a9b9cf7a40df408c445aad739040edc86693c2dbc412bde60b542589')
 
 _architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
@@ -45,6 +48,7 @@ build() {
       -DCMAKE_DISABLE_FIND_PACKAGE_harfbuzz=TRUE \
       -DUSE_LINK_GROUP=OFF \
       -DFEATURE_static_runtime=ON \
+      -DQT_NO_PACKAGE_VERSION_CHECK:BOOL=TRUE \
       -DFEATURE_pkg_config=ON \
       -DFEATURE_windeployqt=OFF
     cmake --build build-$_arch
