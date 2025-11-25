@@ -1,6 +1,6 @@
 pkgbase = perl-regexp-grammars
 	pkgdesc = Perl/CPAN Module Regexp::Grammars - Add grammatical parsing features to Perl regexes
-	pkgver = 1.057
+	pkgver = 1.058
 	pkgrel = 1
 	url = https://metacpan.org/release/Regexp-Grammars
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = perl-regexp-grammars
 	depends = perl-b-hooks-parser
 	options = !emptydirs
 	options = purge
-	source = https://cpan.metacpan.org/authors/id/D/DC/DCONWAY/Regexp-Grammars-1.057.tar.gz
-	md5sums = 6713a82c633c7c1f121c70b435146f5b
+	source = https://cpan.metacpan.org/authors/id/D/DC/DCONWAY/Regexp-Grammars-1.058.tar.gz
+	md5sums = e08fcf26636d7426f91db6547280d4c8
 
 pkgname = perl-regexp-grammars
-
