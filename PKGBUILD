@@ -17,7 +17,7 @@ sha256sums=('a14aa1e3a69d04d1624dc127cf400793372ff53368d49f277fad36a4c8437460'
             '4c24ba558a08c55ce2e0d40d4121f5729088a8fd5e3a8006cc4f71e793fca74c')
          
 package() {
-  rm -f ${pkgname}/{*.exe,*/Thumbs.db} #todo: replace bundled RTP with rpg2003-rtp
+  rm -f ${pkgname}/*.exe
   install -d "$pkgdir/opt"
   mv $pkgname "$pkgdir/opt/$pkgname"
   install -Dm644 16x16.png "$pkgdir/usr/share/pixmaps/${pkgname}.png"
