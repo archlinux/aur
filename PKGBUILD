@@ -22,7 +22,7 @@ conflicts=("android-sources-${_sdkint}")
 options=('!strip' '!debug')
 source=("https://dl.google.com/android/repository/source-${_sdkint}_${_rev}.zip"
         "package.xml")
-sha256sums=('7e5a8ac69bad555138397b8bae1688ccfa346fb326066d118c0b8af1496ac2c1'
+sha256sums=('bd97900346a70c784ac8b15c809539ddef34ed3b5be1df8a9a89cf298be93798'
             'c073fb89484b6790ad71e8a500a4a53f78148e38866d14b714b34425cb525f7d')
 
 package() {
