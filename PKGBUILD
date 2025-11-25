@@ -1,8 +1,8 @@
 # Maintainer: Mikata Riko <sanbikappa at qq dot com>
 
 pkgname='netease-cloud-music-wine'
-pkgver=3.1.22.204707
-pkgrel=4
+pkgver=3.1.23.204764
+pkgrel=1
 pkgdesc="NetEase Cloud Music Player. 使用wine运行网易云音乐windows官方包。"
 arch=('x86_64')
 license=('custom')
@@ -20,7 +20,7 @@ source=(
     "LICENSE"
 )
 sha256sums=(
-    "279c0379261456dcd1abe28616a00eea9685be06c539afe4e891ccaa0c19141b"
+    "d1bdc56accd19ce7fbd2817c16d4ea27578e0b5bd108040640726e9bf7f9f84b"
     "e6fa7eb9853b955c49cba5f5fbd83bf8039235d5c0d3eeaac81c2e99b0b7ff81"
 )
 
