@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-tuner-panel
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Plugin for Tuner that adds panel mode switcher to Tweaks appearance page."
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(
   'vala'
 )
 source=("git+https://altlinux.space/alt-gnome/tunerpanel.git#tag=$pkgver")
-sha256sums=('f6f84036f007f7efe3471e539ec858d00cdab0cd4acb71366267dba8299c4f67')
+sha256sums=('96fb20bfcd5ef2bc0274674a0332d8a05f494462fb2014b4dd10cccf98776f20')
 
 build() {
   arch-meson tunerpanel build
