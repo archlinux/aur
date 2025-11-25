@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Ultrapaper
+Comment=GTK4 GUI for hyprpaper (Hyprland wallpaper management)
+Exec=ultrapaper
+Icon=preferences-desktop-wallpaper
+Terminal=false
+Categories=Graphics;Photography;
+Keywords=wallpaper;hyprpaper;hyprland;background;
+StartupWMClass=ultrapaper
