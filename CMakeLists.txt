@@ -19,6 +19,10 @@ target_include_directories(
 	$<INSTALL_INTERFACE:include>
 )
 
+set_target_properties(${PROJECT_NAME} PROPERTIES
+        SOVERSION 0
+)
+
 install(
 	TARGETS ${PROJECT_NAME}
 	EXPORT ${PROJECT_NAME}_target
