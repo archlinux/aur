@@ -1,12 +1,12 @@
 pkgname=psst-bin
 pkgver=2025.11.25_2c2a08c
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and multi-platform Spotify client with native GUI"
 arch=('x86_64')
 url="https://github.com/jpochyla/psst"
 license=('MIT')
 depends=('gtk3' 'alsa-lib' 'openssl')
-source=("psst-linux-x86_64::$url/releases/download/rolling/psst-linux-x86_64"
+source=("psst-linux-x86_64-${pkgver}::$url/releases/download/rolling/psst-linux-x86_64"
         "psst.desktop::https://raw.githubusercontent.com/jpochyla/psst/refs/heads/main/.pkg/psst.desktop"
         "logo_32.png::https://github.com/jpochyla/psst/blob/main/psst-gui/assets/logo_32.png?raw=true"
         "logo_64.png::https://github.com/jpochyla/psst/blob/main/psst-gui/assets/logo_64.png?raw=true"
@@ -23,7 +23,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 package() {
-    install -Dm755 psst-linux-x86_64 "$pkgdir/usr/bin/psst"
+    install -Dm755 "psst-linux-x86_64-${pkgver}" "$pkgdir/usr/bin/psst"
     install -Dm644 psst.desktop "$pkgdir/usr/share/applications/psst.desktop"
     ln -s psst "$pkgdir/usr/bin/psst-gui"
     
