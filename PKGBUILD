@@ -7,7 +7,16 @@ pkgdesc="True E2EE, decentralized messages. Open source and privacy first."
 arch=('x86_64')
 url="https://tensamin.net"
 license=('custom')
-depends=('electron' 'libxss')
+depends=(c-ares
+         gcc-libs # libgcc_s.so
+         glibc # libc.so libm.so
+         gtk3 libgtk-3.so
+         libevent
+         libffi libffi.so
+         libpulse libpulse.so
+         nss # libnss3.so
+         zlib libz.so
+		 libxss)
 provides=('tensamin')
 conflicts=('tensamin' 'tensamin-git')
 source=("https://github.com/Tensamin/Frontend/releases/download/desktop-v${pkgver}/tensamin_${pkgver}_amd64.deb")
