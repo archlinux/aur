@@ -1,17 +1,18 @@
 pkgbase = vchef
 	pkgdesc = The CHEF Package Mangement System
-	pkgver = 1.4.3
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://github.com/Meulengracht/bake
 	arch = any
 	license = GPL
 	makedepends = git
 	makedepends = cmake
+	depends = sqlite>=3.51.0
 	depends = fuse3>=3.0.0
 	depends = libcap>=2.0.0
 	depends = curl>=8.0.0
 	depends = openssl>=3.3.0
-	source = git+https://github.com/meulengracht/bake.git#tag=v1.4.3
+	source = git+https://github.com/meulengracht/bake.git#tag=v1.4.4
 	source = git+https://github.com/meulengracht/libgracht
 	source = git+https://github.com/Meulengracht/vali-rofs
 	sha256sums = SKIP

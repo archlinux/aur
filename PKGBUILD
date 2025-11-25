@@ -1,6 +1,6 @@
 # Maintainer: Philip Meulengracht <the_meulengracht@hotmail.com>
 pkgname=vchef
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 _gitname=bake
 epoch=
@@ -10,6 +10,7 @@ url="https://github.com/Meulengracht/${_gitname}"
 license=('GPL')
 groups=()
 depends=(
+	'sqlite>=3.51.0'
 	'fuse3>=3.0.0'
 	'libcap>=2.0.0'
 	'curl>=8.0.0'
