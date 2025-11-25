@@ -1,0 +1,22 @@
+pkgbase = omnote-git
+	pkgdesc = Minimalist plain-text notepad for Linux (GTK4 + libadwaita)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/litescript/OmNote
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = git
+	depends = python>=3.11
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	optdepends = python-pyyaml: YAML theme config parsing
+	provides = omnote
+	conflicts = omnote
+	source = omnote-git::git+https://github.com/litescript/OmNote.git
+	sha256sums = SKIP
+
+pkgname = omnote-git
