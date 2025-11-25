@@ -6,7 +6,7 @@
 # for change request, PLEASE MAKE A PR ON GITHUB REPO, keep commenting here would be ignored
 
 pkgname=siyuan-bin
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="auto upload to AUR when SiYuan stable release"
 arch=("x86_64")
