@@ -1,6 +1,6 @@
 pkgbase = python-unoserver
 	pkgdesc = Using LibreOffice as a server for converting documents
-	pkgver = 3.5
+	pkgver = 3.6
 	pkgrel = 1
 	url = https://github.com/unoconv/unoserver
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-unoserver
 	makedepends = python-wheel
 	depends = python
 	options = !emptydirs
-	source = python-unoserver-3.5.tar.gz::https://github.com/unoconv/unoserver/archive/refs/tags/3.5.tar.gz
-	sha256sums = 01b2dcaf081a377f9543c34355eadfb3aa1f41d2f1b2b2a5c0732f50fe513576
+	source = python-unoserver-3.6.tar.gz::https://github.com/unoconv/unoserver/archive/refs/tags/3.6.tar.gz
+	sha256sums = b2f0ecac6f2c1d0939554fe4afaa02c3904d94e631712d9f114264fea97ca992
 
 pkgname = python-unoserver
