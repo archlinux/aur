@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="The ldap authentication extension for Guacamole Client"
 arch=('any')
 url="https://guacamole.apache.org/"
-license=('GPL3')
+license=('Apache-2.0')
 depends=('guacamole-client')
 source=("https://archive.apache.org/dist/guacamole/${pkgver}/binary/guacamole-auth-ldap-${pkgver}.tar.gz")
 
