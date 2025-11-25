@@ -1,4 +1,4 @@
-From c96bc0a0a3339ec619e62b48007a877071b71732 Mon Sep 17 00:00:00 2001
+From ac4aca3f2ccb0ad1e5f317966d2e77abfad34278 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 9 Jun 2024 23:31:12 +0200
 Subject: [PATCH 14/20] Fix configuration when `EMSCRIPTEN_ROOT` is an absolute
@@ -30,5 +30,5 @@ index 32309ed05ba..81b8bb10f71 100644
      set(${out_var} "${EMROOT_PATH}" PARENT_SCOPE)
  endfunction()
 -- 
-2.51.0
+2.52.0
 
