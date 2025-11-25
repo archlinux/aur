@@ -3,7 +3,7 @@
 _distname='Text-VisualWidth-PP'
 
 pkgname=perl-text-visualwidth-pp
-pkgver=0.07
+pkgver=0.08
 pkgrel=1
 pkgdesc="Perl/CPAN Module ${_distname//-/::}"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('perl'
 makedepends=('perl-module-build-tiny')
 options=(!emptydirs)
 source=("https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/${_distname}-${pkgver}.tar.gz")
-sha512sums=('49edf746da41a8f725229d3720e2d2d47783acde411aa28762d30a9b645239da7685c9e8b61b6ce6e101a290bcb71883169ecb0e96e1b98b9b4e20f36d2c82b1')
+sha512sums=('2091fbe2d826a7d0afd1dab75a66eb8528bda06e7648196f43ca2dfbd9c4b8998c401f6d00d117358c158a49e8f241a06c391fb45fee0eb0dd0a680cc9fd723e')
 
 build() {
   cd "${srcdir}/${_distname}-${pkgver}"
