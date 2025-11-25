@@ -2,14 +2,14 @@
 # Contributor: Pierre Mavro <pmavro at qovery dot com>
 # Contributor: Mesmer <ldepaulaf at gmail dot com
 # 
-# Check for new Linux releases in: https://app.vanta.com/employee/onboarding
+# Check for new Linux releases in: https://github.com/VantaInc/vanta-agent-scripts/blob/main/install-linux.sh
 
 _binname=vanta
 _svcname=vanta-agent
 
 pkgname=vanta-agent
 # https://app.vanta.com/downloads
-pkgver=2.14.0
+pkgver=2.15.0
 pkgrel=1
 pkgdesc="Vanta agent"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
     "https://agent-downloads.vanta.com/targets/versions/${pkgver}/${_binname}-amd64.deb"
     "${_svcname}.conf"
 )
-sha256sums=('21845a5e9477cfb61f779a9c1d9af2c9ad94cd7f6b95d8dd076effb935ee7d49'
+sha256sums=('02ba826388dee61aaf3e97f4bec61896620bc616754e7d107c0efcc79abd43a0'
             '2d650c20f8cabb78d3c629c38d8eed3b15f0e3f9f0b96b68f67fbe5831b41307')
 
 package() {
