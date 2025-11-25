@@ -1,2 +1,9 @@
-*.tar.*
-Log-Any-*/
+*
+# dev tools
+!.gitignore
+!.nvchecker.toml
+!.shellcheckrc
+!.editorconfig
+# actual package
+!PKGBUILD
+!.SRCINFO

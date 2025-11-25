@@ -21,12 +21,12 @@ depends=(
 checkdepends=(
   ## TEST_REQUIRES
   'perl-extutils-makemaker'
-  'perl-pathtools' # "File::Spec"
-  'perl-io' # "IO::Handle"
-  'perl' # "IPC::Open3"
+  'perl-pathtools'   # "File::Spec"
+  'perl-io'          # "IO::Handle"
+  'perl'             # "IPC::Open3"
   'perl-test-simple' # "Test::More"
 )
-options=('!emptydirs' 'purge')
+options=(!emptydirs purge)
 source=("https://cpan.metacpan.org/authors/id/P/PR/PREACTION/Log-Any-${pkgver}.tar.gz")
 b2sums=('bbf9418026fbc301df7cec3c7a52027215fc7737e1c7678a6a0ae0040143398173e67b0b6c249359490956554e942458a3ae923b060c212b35de08e2cf1af256')
 
