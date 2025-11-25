@@ -1,9 +1,10 @@
 # Maintainer: Joel Grunbaum <joelgrun@gmail.com>
 # Contributor: Julius Dehner <julius.dehner@protonmail.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
+# Co-Maintainer: Naxels <naxels at gmail dot com>
 
 pkgname=plexamp-appimage
-pkgver=4.12.4
+pkgver=4.13.0
 pkgrel=1
 pkgdesc="Modern music client for Plex"
 provides=('plexamp')
@@ -18,7 +19,7 @@ _filename=Plexamp-${pkgver}.AppImage
 source=(
   https://plexamp.plex.tv/plexamp.plex.tv/desktop/${_filename}
 )
-sha512sums=('2ed62a0b8a6a5fb840f9c9548fd515ae9d1859e6c42d42ccdb74ac6252a75437186d99fc2c995d88e39e6d2d3e494e11a8ad5af19dca8787cf27f1df8a33f4ab')
+sha512sums=('dc1960977b76d611fa9600dee6edefcb723fde4f5be153350afa19836a1ab219065d20f057cabb3004cdf588ec0605b2b0d5f0766ee743fcab150ec38917dd62')
 
 
 prepare() {
