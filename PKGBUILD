@@ -15,20 +15,18 @@ sha256sums=('20dc367f1316ec56f4bd0379a85ae62a71ff1de1b768ae96758cf6bd2ced4528')
 
 prepare() {
 	cd $srcdir/repak
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target "$(rustc --print host-tuple)"
+
 }
 
 build() {
 	cd $srcdir/repak
-    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
 }
 
 check() {
 	cd $srcdir/repak
-    export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
 
