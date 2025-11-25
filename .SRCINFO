@@ -1,0 +1,16 @@
+pkgbase = python-logboth
+	pkgdesc = Python library for logging to stdout and a file
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/zehkira/logboth
+	arch = any
+	license = 0BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://gitlab.com/zehkira/logboth/-/archive/v0.1.0/logboth-v0.1.0.tar.gz
+	sha256sums = 57a5c108439b25a3c116f06f43829e87b084f131234bb74ee0adbfc8835de77c
+
+pkgname = python-logboth

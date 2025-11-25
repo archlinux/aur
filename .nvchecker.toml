@@ -1,0 +1,4 @@
+[python-logboth]
+source = "git"
+git = "https://gitlab.com/zehkira/logboth.git"
+prefix = "v"
