@@ -1,7 +1,7 @@
 pkgbase = bitburner
 	pkgdesc = Bitburner is a programming-based incremental game
 	pkgver = 2.8.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/bitburner-official/bitburner-src
 	arch = x86_64
 	license = Apache
@@ -10,7 +10,7 @@ pkgbase = bitburner
 	depends = electron
 	optdepends = steam: achievement support
 	optdepends = steam-native-runtime: achievement support
-	source = git+https://github.com/bitburner-official/bitburner-src#commit=d0d776700388a8ed90380bdb806b94a3b0090d94
+	source = git+https://github.com/bitburner-official/bitburner-src#tag=v2.8.1
 	source = bitburner.desktop
 	sha256sums = SKIP
 	sha256sums = 67afcadd5c5d826303611ad579f7dbbad9446d7ca684ee647ec2242402b361f3
