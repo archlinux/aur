@@ -1,17 +1,17 @@
 pkgbase = iceshrimp.net-git
 	pkgdesc = Decentralized and federated social networking service, implementing the ActivityPub standard
-	pkgver = 2024.1.beta4.r98.gdd7b7634
-	pkgrel = 2
+	pkgver = 2025.1.beta5.patch2.r618.g15d70de7
+	pkgrel = 1
 	url = https://iceshrimp.dev/iceshrimp/iceshrimp.net
 	install = iceshrimp.net.install
 	arch = x86_64
 	arch = aarch64
 	license = EUPL
-	makedepends = dotnet-sdk>=9.0
-	makedepends = aspnet-targeting-pack>=9.0
-	makedepends = aspnet-targeting-pack<10.0
-	depends = aspnet-runtime>=9.0
-	depends = aspnet-runtime<10.0
+	makedepends = dotnet-sdk>=10.0
+	makedepends = aspnet-targeting-pack>=10.0
+	makedepends = aspnet-targeting-pack<11.0
+	depends = aspnet-runtime>=10.0
+	depends = aspnet-runtime<11.0
 	optdepends = ffmpeg: for video transcoding
 	provides = iceshrimp.net
 	conflicts = iceshrimp.net
@@ -30,8 +30,8 @@ pkgbase = iceshrimp.net-git
 	sha512sums = 085d94b31e8eb3109b18251381766799d45c351ec6c7ec45d6edad1915ed89fa9b32765f6deaec191a501274b791000e75ecd052af46bf5341af619b1c7a9bf7
 
 pkgname = iceshrimp.net-git
-	depends = aspnet-runtime>=9.0
-	depends = aspnet-runtime<10.0
+	depends = aspnet-runtime>=10.0
+	depends = aspnet-runtime<11.0
 	depends = postgresql
 	depends = libvips
 	depends = openjpeg2

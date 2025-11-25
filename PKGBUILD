@@ -1,15 +1,15 @@
 # Maintainer: zotan <aur@zotan.email>
 
 pkgname=iceshrimp.net-git
-pkgver=2024.1.beta4.r98.gdd7b7634
-pkgrel=2
+pkgver=2025.1.beta5.patch2.r618.g15d70de7
+pkgrel=1
 pkgdesc="Decentralized and federated social networking service, implementing the ActivityPub standard"
 arch=(x86_64 aarch64)
 url="https://iceshrimp.dev/iceshrimp/iceshrimp.net"
 license=(EUPL)
 
-makedepends=('dotnet-sdk>=9.0' 'aspnet-targeting-pack>=9.0' 'aspnet-targeting-pack<10.0')
-depends=('aspnet-runtime>=9.0' 'aspnet-runtime<10.0')
+makedepends=('dotnet-sdk>=10.0' 'aspnet-targeting-pack>=10.0' 'aspnet-targeting-pack<11.0')
+depends=('aspnet-runtime>=10.0' 'aspnet-runtime<11.0')
 optdepends=(
   "ffmpeg: for video transcoding"
 )
@@ -50,6 +50,10 @@ rid() {
   fi
 }
 
+sdkver() {
+  cat "${srcdir}/iceshrimp.net/Directory.Build.props" | grep -oP '(?<=<TargetFramework>).*?(?=</TargetFramework>)'
+}
+
 build() {
   cd "${srcdir}/iceshrimp.net/Iceshrimp.Backend"
 
@@ -85,5 +89,5 @@ package() {
   install -Dm 644 "${srcdir}/iceshrimp.net.hook" "${pkgdir}/usr/share/libalpm/hooks/iceshrimp.net.hook"
   install -Dm 640 "${srcdir}/iceshrimp.net/Iceshrimp.Backend/configuration.ini" "${pkgdir}/etc/iceshrimp.net/configuration.ini"
 
-  cp -dpTr --no-preserve=ownership "${srcdir}/iceshrimp.net/Iceshrimp.Backend/bin/Release/net9.0/$(rid)/publish/" "${pkgdir}/usr/share/iceshrimp.net"
+  cp -dpTr --no-preserve=ownership "${srcdir}/iceshrimp.net/Iceshrimp.Backend/bin/Release/$(sdkver)/$(rid)/publish/" "${pkgdir}/usr/share/iceshrimp.net"
 }
