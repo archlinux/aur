@@ -4,12 +4,15 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-translations
-_qtver=6.10.0
+_qtver=6.10.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
 url='https://www.qt.io'
-license=(GPL3 LGPL3 FDL custom)
+license=(GPL-3.0-only
+         LGPL-3.0-only
+         LicenseRef-Qt-Commercial
+         Qt-GPL-exception-1.0)
 pkgdesc='A cross-platform application and UI framework (Translations, mingw-w64)'
 depends=('mingw-w64-qt6-base')
 makedepends=('mingw-w64-cmake' 'mingw-w64-qt6-tools' 'qt6-tools' 'ninja')
@@ -17,7 +20,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qttranslations-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('326e8253cfd0cb5745238117f297da80e30ce8f4c1db81990497bd388b026cde')
+sha256sums=('8e49a2df88a12c376a479ae7bd272a91cf57ebb4e7c0cf7341b3565df99d2314')
 
 _architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
@@ -29,6 +32,7 @@ build() {
     [[ $pkgname =~ .*-clang-.* ]] || export CXXFLAGS+=' -Wno-template-body -fcoroutines'
 
     $_arch-cmake -G Ninja -B build-$_arch -S $_pkgfqn \
+      -DQT_NO_PACKAGE_VERSION_CHECK:BOOL=TRUE \
       -DFEATURE_pkg_config=ON
     cmake --build build-$_arch
   done
