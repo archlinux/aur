@@ -1,6 +1,6 @@
 # Maintainer: Mr.Makkhawan Sardlan <makkawan2553@gmail.com>
 pkgname='ctdb'
-pkgver='0.2.0a'
+pkgver='0.2.1a'
 pkgrel=1
 epoch=
 pkgdesc="For controlling discord bots"
@@ -22,7 +22,7 @@ changelog=
 source=("https://raw.githubusercontent.com/makk-r/CTDB/main/Program/Download/${pkgname}-${pkgver}.tar.gz")
 noextract=()
 
-sha256sums=('5ad089528580b00d76f930cd48d9ab5d31d6550cdd23186aea8c57639c010e69') 
+sha256sums=('34beb66342f924fc11ead3c73d92b8c2b1608eac087b4600abbb17b41f1ce5e5') 
 validpgpkeys=()
 
 package() {
@@ -32,6 +32,12 @@ package() {
     cp -r usr/lib/* "$pkgdir/usr/lib/$pkgname/"
 
 	find "$pkgdir/usr/lib/$pkgname" -type f -exec chmod 644 {} \;
+
+    install -d "$pkgdir/usr/share/$pkgname"
+
+    cp -r usr/share/* "$pkgdir/usr/share/$pkgname/"
+
+    find "$pkgdir/usr/share/$pkgname" -type f -exec chmod 644 {} \;
 
 	install -Dm755 /dev/null "$pkgdir/usr/bin/$pkgname"
 
