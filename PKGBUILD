@@ -5,12 +5,15 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-scxml
-_qtver=6.10.0
+_qtver=6.10.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
 url='https://www.qt.io'
-license=(GPL3 LGPL3 FDL custom)
+license=(GPL-3.0-only
+         LGPL-3.0-only
+         LicenseRef-Qt-Commercial
+         Qt-GPL-exception-1.0)
 pkgdesc='Static and runtime integration of SCXML models into Qt6 code (android)'
 depends=('android-aarch64-qt6-base')
 optdepends=('android-aarch64-qt6-declarative: QML bindings')
@@ -19,7 +22,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtscxml-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('b5946c405fe1e568a8b0589695f9572dfabf85ac9ac8ec3778f9f791e76131e4')
+sha256sums=('eb67a0e5d4c6d488e3013f8dbef859a00e10bb033472eb53688fce350e3a1869')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
@@ -29,6 +32,7 @@ build() {
     -DQT_BINARY_DIR=${ANDROID_PREFIX_BIN} \
     -DQT_INCLUDE_DIRS_NO_SYSTEM=ON \
     -DQT_HOST_PATH=/usr \
+    -DQT_NO_PACKAGE_VERSION_CHECK:BOOL=TRUE \
     -DANDROID_SDK_ROOT=${ANDROID_HOME} \
     -DANDROID_NDK_ROOT=${ANDROID_NDK_HOME} \
     -DANDROID_STL="c++_shared" \
