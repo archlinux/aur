@@ -1,0 +1,15 @@
+pkgbase = kireisakura-kit
+	pkgdesc = Bash framework to create Powerful shell scripts.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/soymadip/kireisakura-kit
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = gawk
+	depends = sed
+	depends = grep
+	source = https://github.com/soymadip/kireisakura-kit/releases/download/v1.0.2/KireiSakura-Kit.tar.gz
+	sha256sums = SKIP
+
+pkgname = kireisakura-kit
