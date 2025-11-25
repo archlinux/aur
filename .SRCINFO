@@ -17,6 +17,7 @@ pkgbase = hypnotix
 	depends = python-unidecode
 	depends = xapp
 	depends = yt-dlp
+	depends = xapp-symbolic-icons
 	source = hypnotix-5.4.tar.gz::https://github.com/linuxmint/hypnotix/archive/refs/tags/5.4.tar.gz
 	sha256sums = 8eb7991ceeab93096c8a8c9850b2fd920511b52ad13330b1a25fd8488b6fd71f
 

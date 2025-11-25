@@ -24,6 +24,7 @@ depends=(
     'python-unidecode'
     'xapp'
     'yt-dlp'
+    'xapp-symbolic-icons'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('8eb7991ceeab93096c8a8c9850b2fd920511b52ad13330b1a25fd8488b6fd71f')
