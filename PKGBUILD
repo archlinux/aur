@@ -3,25 +3,20 @@
 pkgname=wayvnc-git
 _pkgname=wayvnc
 pkgver=0.9.1+31.ge12cb689f3
-pkgrel=1
+pkgrel=2
 pkgdesc='VNC server for wlroots-based Wayland compositors'
 arch=(x86_64 i686 aarch64 armv7h)
 url=https://github.com/any1/wayvnc
 license=(custom:ISC)
 depends=(
-  libdrm
-  gbm
+  ffmpeg
+  mesa
   libxkbcommon
-  pam
-  pixman
-  jansson
   wayland
 )
 makedepends=(
   git
   meson
-  ninja
-  pam
   scdoc
 )
 source=(
