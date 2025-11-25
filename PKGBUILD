@@ -3,7 +3,7 @@
 
 pkgname='perl-extutils-builder-compiler'
 pkgver='0.032'
-pkgrel='6'
+pkgrel='1'
 pkgdesc="An interface around different compilers."
 arch=('any')
 license=('PerlArtistic' 'GPL')
