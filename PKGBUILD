@@ -4,12 +4,15 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-quicktimeline-static
-_qtver=6.10.0
+_qtver=6.10.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
 url='https://www.qt.io'
-license=(GPL3 LGPL3 FDL custom)
+license=(GPL-3.0-only
+         LGPL-3.0-only
+         LicenseRef-Qt-Commercial
+         Qt-GPL-exception-1.0)
 pkgdesc='Qt module for keyframe-based timeline construction (mingw-w64)'
 depends=('mingw-w64-qt6-declarative-static')
 makedepends=('mingw-w64-cmake-static' 'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-loader' 'qt6-declarative' 'ninja')
@@ -17,7 +20,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtquicktimeline-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('dfbc185d58dc8fb80ec72e297abf461927ea6455b96a780cd2a8bb58c5b14ba0')
+sha256sums=('882ed289b4c229ace324e2545a71d7611c201626bc007d50e514bfd2f6e251b7')
 
 _architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
@@ -33,6 +36,7 @@ build() {
       -DCMAKE_DISABLE_FIND_PACKAGE_harfbuzz=TRUE \
       -DUSE_LINK_GROUP=OFF \
       -DFEATURE_static_runtime=ON \
+      -DQT_NO_PACKAGE_VERSION_CHECK:BOOL=TRUE \
       -DFEATURE_pkg_config=ON
     cmake --build build-$_arch
   done
