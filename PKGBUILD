@@ -11,9 +11,6 @@ license=('GPL-3.0-or-later')
 provides=("${pkgname%-appimage}=${pkgver}")
 conflicts=("${pkgname%-appimage}")
 depends=()
-makedepends=(
-    'fuse2'
-)
 options=('!strip')
 _install_path="/usr/lib/appimages"
 source=(

@@ -5,7 +5,6 @@ pkgbase = gridplayer-appimage
 	url = https://github.com/vzhd1701/gridplayer
 	arch = x86_64
 	license = GPL-3.0-or-later
-	makedepends = fuse2
 	provides = gridplayer=0.5.4
 	conflicts = gridplayer
 	options = !strip
