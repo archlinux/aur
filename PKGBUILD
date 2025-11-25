@@ -1,7 +1,7 @@
 # Maintainer: aliu <aaronliu 0 1 3 0  gmail com>
 # Contributor: pikl <me@pikl.uk>
 pkgname=immich-machine-learning
-pkgver=2.2.3
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Machine learning server for the Immich photo management system"
 arch=(any)
@@ -22,7 +22,7 @@ optdepends=(
 )
 source=("immich-${pkgver}.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v${pkgver}.tar.gz"
 	"immich-machine-learning.service")
-sha256sums=('aa7fe92d8ff38a97de8d1252c1e73d2c1cbd32cac5796dade2c4648bbca7557c'
+sha256sums=('20bd60862447e7e369189f9390f8e013b50101cf2fb7561ed47793bcb63c6cc8'
             'ce6fae49e23d705b8d08205d981bb217eaf55347a499a8d0492b7ed95b520cff')
 
 _installdir=/usr/lib/immich/immich-machine-learning
@@ -36,9 +36,6 @@ build() {
     export PYTHONUNBUFFERED=1  # for logging
     uv sync --frozen --extra cpu --no-dev --no-editable --no-progress --python 3.12 --no-managed-python
 
-    # delete any uv bytecode
-    find ".venv" -type f -name "*.py[co]" -delete
-    find ".venv" -type d -name "__pycache__" -delete
     # relocate without breaking
     sed -i "s|${srcdir}/immich-${pkgver}/machine-learning/\.venv|${_venvdir}|g" ".venv/bin/"*
     ## I personally build this together with the immich PKGBASE with a symlinked srcdir which needs this
