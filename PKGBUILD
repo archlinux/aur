@@ -3,7 +3,7 @@
 
 pkgname=honk
 pkgver=1.5.2
-pkgrel=19
+pkgrel=1
 epoch=0
 pkgdesc="ActivityPub compatible server with web frontend."
 arch=("x86_64")

@@ -1,7 +1,7 @@
 pkgbase = honk
 	pkgdesc = ActivityPub compatible server with web frontend.
 	pkgver = 1.5.2
-	pkgrel = 19
+	pkgrel = 1
 	epoch = 0
 	url = https://humungus.tedunangst.com/r/honk
 	install = honk.install
