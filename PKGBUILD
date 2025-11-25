@@ -4,12 +4,15 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-serialbus
-_qtver=6.10.0
+_qtver=6.10.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
 url='https://www.qt.io'
-license=(GPL3 LGPL3 FDL custom)
+license=(GPL-3.0-only
+         LGPL-3.0-only
+         LicenseRef-Qt-Commercial
+         Qt-GPL-exception-1.0)
 pkgdesc='Qt module for general purpose serial bus access (mingw-w64)'
 depends=('mingw-w64-qt6-serialport')
 makedepends=('mingw-w64-cmake' 'qt6-base' 'qt6-serialbus' 'ninja')
@@ -17,7 +20,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtserialbus-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('c627b2bfffe267bb53bbdbac60c22a08bcdbfb6775983ae5d16c975298a4ec30')
+sha256sums=('2539fcf77af2dfa59756338e0c44d491995eb2576f9a288fa4888efd9eab3ed5')
 
 _architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
@@ -29,6 +32,7 @@ build() {
     [[ $pkgname =~ .*-clang-.* ]] || export CXXFLAGS+=' -Wno-template-body -fcoroutines'
 
     $_arch-cmake -G Ninja -B build-$_arch -S $_pkgfqn \
+      -DQT_NO_PACKAGE_VERSION_CHECK:BOOL=TRUE \
       -DFEATURE_pkg_config=ON
     cmake --build build-$_arch
   done
