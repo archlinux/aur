@@ -3,7 +3,7 @@
 
 pkgname='perl-dist-build'
 pkgver='0.021'
-pkgrel='4'
+pkgrel='1'
 pkgdesc="A modern module builder, author tools not included!"
 arch=('any')
 license=('PerlArtistic' 'GPL')
