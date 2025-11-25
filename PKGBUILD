@@ -1,5 +1,5 @@
 pkgname=kraken2
-pkgver=2.17
+pkgver=2.17.1
 # _pkgver=$(echo "$pkgver" | sed 's/\.//2')
 pkgrel=1
 pkgdesc="Improved vesion of kraken ultrafast metagenomic sequence classification tool. https://doi.org/10.1186/s13059-019-1891-0"
@@ -10,8 +10,8 @@ depends=('glibc' 'gcc-libs' 'blast+' 'perl' 'bash' 'python' 'zlib')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/DerrickWood/kraken2/archive/refs/tags/v${pkgver}.tar.gz"
         'Makefile.patch'
         )
-sha256sums=('69380e7c22e314245cbe61b2a69d6719c95edadd80ad171577c1e681927c7b88'
-            '61ca474b78d8594c9e61e4541d854f8d797aa18bd5fa5e605cf7710d85fdafc7')
+sha256sums=('4dc64ead045b5ae9180731c260046aa37b6642244be085a9ba9b15db78ab442d'
+            '651cd0bd76cfd5af915f20271338f9ccc5e159e7704ccfe1b232ef372ead5594')
 
 prepare() {
     cd ${pkgname}-${pkgver}
