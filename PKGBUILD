@@ -8,7 +8,7 @@ license=('MIT')
 depends=('python')
 _gitname="${pkgname}-main"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/main.tar.gz")
-sha256sums=('5e38b6bcf9c22a0a9e43050fb3ab784001d7fb128a7f8776d79ff7780fa83341')
+sha256sums=('cc49e55b6d18eda54fd5a8962a32263fab94102e33491eed9726dba6218baa1a')
 
 package() {
   install -Dm755 "${srcdir}/${_gitname}/main.py" "${pkgdir}/usr/bin/treex"
