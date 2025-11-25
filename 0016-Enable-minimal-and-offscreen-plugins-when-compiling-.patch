@@ -1,4 +1,4 @@
-From 8a6a1790356bdf0ff4217563fbb18886a9bf6a5f Mon Sep 17 00:00:00 2001
+From e88a19af5777dd865076af2ea0853f1b408c0d7e Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 9 Jun 2025 21:15:42 +0200
 Subject: [PATCH 16/20] Enable minimal and offscreen plugins when compiling for
@@ -31,5 +31,5 @@ index f30c27c24be..498a0772bc9 100644
  endif()
  if(QT_FEATURE_xcb)
 -- 
-2.51.0
+2.52.0
 

@@ -1,4 +1,4 @@
-From 6992733c025f677319cb6b435450187e6728d738 Mon Sep 17 00:00:00 2001
+From 7bae66d5acfe32355dd3f2e4d892fb40cea656c9 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Tue, 26 Apr 2022 20:16:31 +0200
 Subject: [PATCH 10/20] Allow using properties of PkgConfig targets for glib2
@@ -70,5 +70,5 @@ index a6a16b494fd..a5da57824c9 100644
  set_package_properties(GLIB2 PROPERTIES
    URL "https://wiki.gnome.org/Projects/GLib"
 -- 
-2.51.0
+2.52.0
 
