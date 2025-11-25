@@ -10,7 +10,8 @@ makedepends=('iucode-tool' 'git')
 replaces=('microcode_ctl')
 conflicts=('intel-ucode')
 provides=('intel-ucode')
-source=('CPUMicrocodes::git+https://github.com/platomav/CPUMicrocodes')
+url='https://github.com/platomav/CPUMicrocodes'
+source=("git+$url")
 sha256sums=(SKIP)
 
 pkgver() {
