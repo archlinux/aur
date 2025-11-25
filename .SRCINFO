@@ -1,6 +1,6 @@
 pkgbase = ctdb
 	pkgdesc = For controlling discord bots
-	pkgver = 0.1.3a
+	pkgver = 0.2.0a
 	pkgrel = 1
 	url = https://github.com/makk-r/CTDB
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = ctdb
 	depends = python3
 	depends = python-requests
 	depends = python-dotenv
-	source = https://raw.githubusercontent.com/makk-r/CTDB/main/Program/Download/ctdb-0.1.3a.tar.gz
-	sha256sums = 1adaead9d9c092c4baa87cdbc100f13ffaf2c545f947a7a97fb1f85710db1303
+	source = https://raw.githubusercontent.com/makk-r/CTDB/main/Program/Download/ctdb-0.2.0a.tar.gz
+	sha256sums = 5ad089528580b00d76f930cd48d9ab5d31d6550cdd23186aea8c57639c010e69
 
 pkgname = ctdb
