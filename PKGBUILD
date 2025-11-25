@@ -6,8 +6,8 @@
 # Contributor: joel schaerer <joel.schaerer@laposte.net>
 
 pkgname=itk-lite
-pkgver=5.4.4
-pkgrel=2
+pkgver=5.4.5
+pkgrel=1
 pkgdesc="Cross-platform system that provides developers with an extensive suite of software tools for image analysis"
 arch=(x86_64)
 url="https://itk.org/"
@@ -20,7 +20,7 @@ conflicts=(itk insight-toolkit)
 source=("https://github.com/InsightSoftwareConsortium/ITK/releases/download/v${pkgver}/InsightToolkit-${pkgver}.tar.gz"
         #"${pkgname}-${pkgver}.tar.gz::https://github.com/InsightSoftwareConsortium/ITK/archive/refs/tags/v${pkgver}.tar.gz"
         )
-sha512sums=('98e01bbbe6f9d1d2634dc6bd957edd3aef7ba6f2c3fc1d3de9dd00be1b2cda90df959c86275b3c6a57f7945852970d7b4bbe8f82ea8114a89f9a92cca15e2638')
+sha512sums=('5dce426ea65d1c48049f7e6d04f9b1aa3912af449842b3f8e029fc0fbab54cf517bf3645aa437ddb655bc465dd2b75067b7f4e541f24029dc2ebac8ebeb3856e')
 
 build() {
   export CC=/usr/bin/gcc-14 CXX=/usr/bin/g++-14
