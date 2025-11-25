@@ -1,7 +1,7 @@
-diff --git a/blackmagic-15.2a1/dkms.conf b/blackmagic-15.2a1/dkms.conf
+diff --git a/blackmagic-15.3a5/dkms.conf b/blackmagic-15.3a5/dkms.conf
 index 226da41..624936a 100644
---- a/blackmagic-15.2a1/dkms.conf
-+++ b/blackmagic-15.2a1/dkms.conf
+--- a/blackmagic-15.3a5/dkms.conf
++++ b/blackmagic-15.3a5/dkms.conf
 @@ -30,7 +30,6 @@ MAKE="make KERNELRELEASE=$kernelver"
  MAKE_smp="make SMP=1 KERNELRELEASE=$kernelver"
  DEST_MODULE_LOCATION="/kernel/drivers/blackmagic"
@@ -10,10 +10,10 @@ index 226da41..624936a 100644
  AUTOINSTALL="yes"
  POST_BUILD="dkms-helper post-build $PACKAGE_NAME $PACKAGE_VERSION"
  POST_INSTALL="dkms-helper post-install $PACKAGE_NAME $PACKAGE_VERSION"
-diff --git a/blackmagic-io-15.2a1/dkms.conf b/blackmagic-io-15.2a1/dkms.conf
+diff --git a/blackmagic-io-15.3a5/dkms.conf b/blackmagic-io-15.3a5/dkms.conf
 index b535d68..50ce023 100644
---- a/blackmagic-io-15.2a1/dkms.conf
-+++ b/blackmagic-io-15.2a1/dkms.conf
+--- a/blackmagic-io-15.3a5/dkms.conf
++++ b/blackmagic-io-15.3a5/dkms.conf
 @@ -28,7 +28,6 @@ PACKAGE_NAME="blackmagic-io"
  PACKAGE_VERSION="14.4.1a4"
  MAKE="make KERNELRELEASE=$kernelver"

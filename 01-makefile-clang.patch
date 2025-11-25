@@ -1,7 +1,7 @@
-diff --git a/blackmagic-15.2a1/Makefile b/blackmagic-15.2a1/Makefile
+diff --git a/blackmagic-15.3a5/Makefile b/blackmagic-15.3a5/Makefile
 index 8c05502..8acc90b 100644
---- a/blackmagic-15.2a1/Makefile
-+++ b/blackmagic-15.2a1/Makefile
+--- a/blackmagic-15.3a5/Makefile
++++ b/blackmagic-15.3a5/Makefile
 @@ -26,7 +26,7 @@
  
  KERNELRELEASE=`uname -r`
@@ -11,10 +11,10 @@ index 8c05502..8acc90b 100644
  
  $(KMOD_NAME)-objs := \
          blackmagic_serial.o blackmagic_core.o blackmagic_lib.o blackmagic_dma.o blackmagic_gate.o bmd-support.o
-diff --git a/blackmagic-io-15.2a1/Makefile b/blackmagic-io-15.2a1/Makefile
+diff --git a/blackmagic-io-15.3a5/Makefile b/blackmagic-io-15.3a5/Makefile
 index c405200..7578ec7 100644
---- a/blackmagic-io-15.2a1/Makefile
-+++ b/blackmagic-io-15.2a1/Makefile
+--- a/blackmagic-io-15.3a5/Makefile
++++ b/blackmagic-io-15.3a5/Makefile
 @@ -26,7 +26,7 @@
  
  KERNELRELEASE=`uname -r`
