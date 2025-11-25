@@ -18,6 +18,15 @@
 #define WHITE "\033[37m"
 #define RESET "\033[0m"
 
+
+#ifndef VERSION
+#define VERSION "unknown"
+#endif
+
+void print_installed_version() {
+    printf("aslookup version: %s\n", VERSION);
+}
+
 struct MemoryStruct {
     char *memory;
     size_t size;
@@ -175,13 +184,14 @@ void fetch_bgpview_info(const char *asn, FILE *output) {
 }
 
 void print_help(const char *progname, FILE *output) {
-    fprintf(output, CYAN "Usage: %s -i <options>\n", progname);
+    fprintf(output, CYAN "Usage: %s <options>\n", progname);
     fprintf(output, CYAN "Options:\n");
     fprintf(output, WHITE " -i <IP[,IP,...]> Specify one or more IP addresses (comma-separated)\n");
     fprintf(output, WHITE " -d <domain[,domain,...]> Specify one or more domain names (comma-separated)\n");
     fprintf(output, WHITE " -f <file> Save output to a formatted text file\n");
     fprintf(output, WHITE " --help Show this help message\n");
-    fprintf(output, WHITE " --version Show latest GitHub release version\n");
+    fprintf(output, WHITE " --version Show installed version\n");
+    fprintf(output, WHITE " --ghversion Show latest GitHub release version\n");
 }
 
 char *resolve_domain_to_ip(const char *domain) {
@@ -208,6 +218,10 @@ int main(int argc, char *argv[]) {
 
     for (int i = 1; i < argc; i++) {
         if (strcmp(argv[i], "--version") == 0) {
+            print_installed_version();
+            return 0;
+        }
+        if (strcmp(argv[i], "--ghversion") == 0) {
             print_latest_github_version();
             return 0;
         }
