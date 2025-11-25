@@ -1,0 +1,17 @@
+pkgbase = python-pyrodigal-gv
+	pkgdesc = A Pyrodigal extension to predict genes in giant viruses and viruses with alternative genetic code.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/althonos/pyrodigal-gv
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-packaging
+	depends = python
+	depends = python-pyrodigal
+	source = https://files.pythonhosted.org/packages/source/p/pyrodigal-gv/pyrodigal_gv-0.3.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-pyrodigal-gv
