@@ -2,7 +2,7 @@
 
 pkgname=perl-webservice-nfsn
 pkgver=1.04
-pkgrel=3
+pkgrel=1
 pkgdesc="Client for the NearlyFreeSpeech.NET API"
 arch=('any')
 url="https://metacpan.org/pod/WebService::NFSN"
