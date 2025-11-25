@@ -1,6 +1,6 @@
 --- a/src/vpux_driver_compiler/CMakeLists.txt
 +++ b/src/vpux_driver_compiler/CMakeLists.txt
-@@ -19,7 +19,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+@@ -18,7 +18,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
  add_subdirectory(src)
  add_subdirectory(test)
  
@@ -9,7 +9,7 @@
      FILES
          "${PROJECT_SOURCE_DIR}/src/vpux_driver_compiler/CHANGES.txt"
      DESTINATION cid
-@@ -29,4 +29,4 @@ install(
+@@ -28,4 +28,4 @@ install(
      FILES
          "${PROJECT_SOURCE_DIR}/src/vpux_driver_compiler/README.md"
      DESTINATION cid
@@ -26,7 +26,7 @@
          DESTINATION cid/vpux_elf/loader/include/
          COMPONENT ${CID_COMPONENT})
  
-@@ -207,4 +207,4 @@ install(TARGETS npu_elf
+@@ -205,4 +205,4 @@ install(TARGETS npu_elf
          CONFIGURATIONS RelWithDebInfo
          LIBRARY DESTINATION cid/vpux_elf/lib/RelWithDebInfo COMPONENT ${CID_COMPONENT}
          ARCHIVE DESTINATION cid/vpux_elf/lib/RelWithDebInfo COMPONENT ${CID_COMPONENT}
@@ -34,7 +34,7 @@
 +        RUNTIME DESTINATION cid/vpux_elf/lib/RelWithDebInfo COMPONENT ${CID_COMPONENT})]]
 --- a/src/vpux_driver_compiler/src/vpux_compiler_l0/CMakeLists.txt
 +++ b/src/vpux_driver_compiler/src/vpux_compiler_l0/CMakeLists.txt
-@@ -87,12 +87,12 @@ if(WIN32)
+@@ -89,12 +89,12 @@ if(WIN32)
              COMPONENT ${CID_COMPONENT})
  else()
      install(TARGETS ${TARGET_NAME}
@@ -51,7 +51,7 @@
          COMPONENT ${CID_COMPONENT})
 --- a/src/vpux_driver_compiler/test/functional/CMakeLists.txt
 +++ b/src/vpux_driver_compiler/test/functional/CMakeLists.txt
-@@ -46,7 +46,7 @@ endif()
+@@ -45,7 +45,7 @@ endif()
  if(ENABLE_PREBUILT_LLVM_MLIR_LIBS)
      find_package(MLIR REQUIRED CONFIG)
  endif()
@@ -60,7 +60,7 @@
  target_include_directories(${FUNCTIONAL_TARGET}
      SYSTEM PRIVATE
          $<BUILD_INTERFACE:${LLVM_SOURCE_DIR}/include>
-@@ -68,7 +68,7 @@ ov_link_system_libraries(${FUNCTIONAL_TARGET}
+@@ -67,7 +67,7 @@ ov_link_system_libraries(${FUNCTIONAL_TARGET}
  ov_add_api_validator_post_build_step(TARGET vpuxCompilerL0Test)
  
  install(TARGETS vpuxCompilerL0Test

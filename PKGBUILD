@@ -8,10 +8,10 @@
 # end of the cmake build command.
 
 pkgname=intel-npu-compiler
-pkgver=2025.38rc1
+pkgver=2025.44rc1
 pkgrel=1
-_npu_compiler_tag=npu_ud_2025_38_rc1
-_openvino_commit=7ced823330831da23d1985ee27e32b96ebfcf110
+_npu_compiler_tag=npu_ud_2025_44_rc1
+_openvino_commit=80e587bccec151a9acb0bc73fb96d007daa56e82
 pkgdesc='Intel Neural Processing Unit (NPU) compiler'
 arch=('x86_64')
 url='https://github.com/openvinotoolkit/npu_compiler/'
@@ -31,8 +31,6 @@ makedepends=(
     'python')
 source=("git+https://github.com/openvinotoolkit/npu_compiler.git#tag=${_npu_compiler_tag}"
         "git+https://github.com/openvinotoolkit/openvino.git#commit=${_openvino_commit}"
-        # common git submodules
-        'git+https://github.com/google/flatbuffers.git'
         # npu-compiler git submodules
         'git+https://github.com/openvinotoolkit/npu_plugin_elf.git'
         'git+https://github.com/intel/npu-plugin-llvm.git'
@@ -54,6 +52,7 @@ source=("git+https://github.com/openvinotoolkit/npu_compiler.git#tag=${_npu_comp
         'git+https://github.com/nithinn/ncc.git'
         'git+https://github.com/oneapi-src/oneDNN.git'
         'git+https://github.com/nlohmann/json.git'
+        'git+https://github.com/google/flatbuffers.git'
         'git+https://github.com/ARM-software/ComputeLibrary.git'
         'git+https://github.com/openvinotoolkit/mlas.git'
         'git+https://github.com/oneapi-src/level-zero.git'
@@ -71,8 +70,8 @@ source=("git+https://github.com/openvinotoolkit/npu_compiler.git#tag=${_npu_comp
         '040-intel-npu-compiler-llvm-gcc15-fix.patch'
         '010-openvino-disable-werror.patch'
         '020-openvino-gtest-gcc15-fix.patch')
-sha256sums=('f988930d634afe4b5b8bfb54f826a496ae1d65879308897401e586f6d68e0dd3'
-            'd56e81c31d93aabb0986e5641ada2eaf629a852ba2147c7b30814857e0495d54'
+sha256sums=('b079fe27c6b9a7c23d8d5e3d2bfb45332885cc9f904122e15673e0102ea4abc1'
+            '43efd5dad7abca2db2595e736fbdf672d05319db53faa73f0f524ad26d66ca47'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -105,7 +104,7 @@ sha256sums=('f988930d634afe4b5b8bfb54f826a496ae1d65879308897401e586f6d68e0dd3'
             'SKIP'
             'b994175b16daa45d426d86952ab50fb6a1b3a47bcbf19be4752ecf82c6ebdde7'
             '142f2d9f63c0fcc0a8484711ba5f67b819eee83ba698ad60d70e281cba069c4a'
-            '444bdc87986952074811e6599ae86834005ebd68781dbc108a448b5124e07533'
+            '880e75bb3a0cd34fee3c5db2bf390e7f62592beb79b855c55d043b3100986453'
             'c4cb907528be3b72f01cc3529c7ae347880e00d661737039a23b3ea733ed3ca2'
             'ba2d8b40b8921acc70e0212138eb2b5db2b7311058b1092236356cf0dfe725f9'
             'e7ec20d4fb173ae29b5b1f682e7b85efa3f5359ee355b959a7f51148c84ecc7f')
