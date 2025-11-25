@@ -3,7 +3,7 @@
 _pkgauthor=horeah
 _pkgname=PyCmd
 pkgname=${_pkgname,,}-bin
-pkgver=20250905
+pkgver=20251112
 _pkgvername=${pkgver}
 pkgrel=1
 pkgdesc="Front-end for bash"
@@ -23,7 +23,7 @@ options=(!strip)
 noextract=("${_pkgname}-${CARCH}-${pkgver}.zip")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.zip::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}.zip")
-sha256sums_x86_64=('220e91125c490195b6a92b5525f98e6e00407c76a212187ccc567d4654c8e1df')
+sha256sums_x86_64=('0849178e9c7d5883c5c64ae2154738a29eb708d237f93007945daee43bba5b20')
 
 prepare() {
 	cd "${srcdir}/" || exit

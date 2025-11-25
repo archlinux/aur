@@ -1,0 +1,4 @@
+[pycmd-bin]
+source = "github"
+github = "horeah/PyCmd"
+use_latest_release = true

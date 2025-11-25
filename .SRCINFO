@@ -1,6 +1,6 @@
 pkgbase = pycmd-bin
 	pkgdesc = Front-end for bash
-	pkgver = 20250905
+	pkgver = 20251112
 	pkgrel = 1
 	url = https://github.com/horeah/PyCmd
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = pycmd-bin
 	depends = zlib
 	provides = PyCmd
 	conflicts = PyCmd
-	noextract = PyCmd-x86_64-20250905.zip
+	noextract = PyCmd-x86_64-20251112.zip
 	options = !strip
-	source_x86_64 = PyCmd-x86_64-20250905.zip::https://github.com/horeah/PyCmd/releases/download/20250905/PyCmd-20250905-linux64.zip
-	sha256sums_x86_64 = 220e91125c490195b6a92b5525f98e6e00407c76a212187ccc567d4654c8e1df
+	source_x86_64 = PyCmd-x86_64-20251112.zip::https://github.com/horeah/PyCmd/releases/download/20251112/PyCmd-20251112-linux64.zip
+	sha256sums_x86_64 = 0849178e9c7d5883c5c64ae2154738a29eb708d237f93007945daee43bba5b20
 
 pkgname = pycmd-bin
