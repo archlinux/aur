@@ -1,6 +1,6 @@
 # Maintainer: Strahinya Radich <contact@strahinja.org>
 pkgname=table
-pkgver=0.7.16
+pkgver=0.7.19
 pkgrel=1
 pkgdesc="Command line utility to format and display CSV"
 arch=('x86_64')
