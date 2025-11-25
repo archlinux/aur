@@ -4,12 +4,15 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-graphs
-_qtver=6.10.0
+_qtver=6.10.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
 url='https://www.qt.io'
-license=(GPL-3.0-only LGPL-3.0-only LicenseRef-Qt-Commercial Qt-GPL-exception-1.0)
+license=(GPL-3.0-only
+         LGPL-3.0-only
+         LicenseRef-Qt-Commercial
+         Qt-GPL-exception-1.0)
 pkgdesc='Qt Graphs for data visualization (mingw-w64)'
 depends=('mingw-w64-qt6-declarative' 'mingw-w64-qt6-quick3d')
 makedepends=('mingw-w64-cmake' 'mingw-w64-qt6-shadertools' 'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-loader' 'qt6-declarative' 'qt6-shadertools' 'qt6-quick3d' 'ninja')
@@ -17,7 +20,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtgraphs-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('6ec8f1b3b3bea6636da8846353e170794c76d5833fc908016f911647a6a714ea')
+sha256sums=('4d4fa0b21fa3c6b72ad5056e2a06e96e4bfda651e0a824d1f8e896c9ce5e576e')
 
 _architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
@@ -29,6 +32,7 @@ build() {
     [[ $pkgname =~ .*-clang-.* ]] || export CXXFLAGS+=' -Wno-template-body -fcoroutines'
 
     $_arch-cmake -G Ninja -B build-$_arch -S $_pkgfqn \
+      -DQT_NO_PACKAGE_VERSION_CHECK:BOOL=TRUE \
       -DFEATURE_pkg_config=ON
     cmake --build build-$_arch
   done
