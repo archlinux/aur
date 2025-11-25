@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-mosaic
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="GNOME window tiling extension"
 arch=('any')
@@ -21,7 +21,7 @@ source=("gnome-mosaic-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         '50_org.gnome.mutter.wayland.keybindings.gnome-mosaic.gschema.override'
         '50_org.gnome.settings-daemon.plugins.media-keys.gnome-mosaic.gschema.override'
         '50_org.gnome.shell.keybindings.gnome-mosaic.gschema.override')
-sha256sums=('746204c046b539444ebf253595c0db523f79fe545f7f45b4e509a1c3f9440fa6'
+sha256sums=('e370fb1d3402518c6d5ebc582298c5edef97b8311ff6a0494e96d719505748a6'
             '484bf48f12d2fa503c27ed34f6d190edb94ec844a0b49c6ff1bda872081e6b64'
             'f98115fbf502394ffb2eb2a38452a743ab087eadef7e009c62e93ee15c9f3849'
             'd3a4ac86303c9065fd76dace64283573079c3bdce4b9a2ca18be5f103eb6fd4c'
