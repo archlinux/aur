@@ -4,12 +4,15 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-imageformats
-_qtver=6.10.0
+_qtver=6.10.1
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
 url='https://www.qt.io'
-license=(GPL3 LGPL3 FDL custom)
+license=(GPL-3.0-only
+         LGPL-3.0-only
+         LicenseRef-Qt-Commercial
+         Qt-GPL-exception-1.0)
 #pkgdesc='Plugins for additional image formats: TIFF, MNG, TGA, WBMP (mingw-w64)'
 #depends=('mingw-w64-qt6-base' 'mingw-w64-jasper' 'mingw-w64-libmng' 'mingw-w64-libwebp')
 # FIXME: It doesn't actually build with MNG support at this point.
@@ -23,7 +26,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtimageformats-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('64450a52507c540de53616ed5e516df0e0905a99d3035ddfaa690f2b3f7c0cea')
+sha256sums=('498eabdf2381db96f808942b3e3c765f6360fe6c0e9961f0a45ff7a4c68d7a72')
 
 _architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
@@ -35,6 +38,7 @@ build() {
     [[ $pkgname =~ .*-clang-.* ]] || export CXXFLAGS+=' -Wno-template-body -fcoroutines'
 
     $_arch-cmake -G Ninja -B build-$_arch -S $_pkgfqn \
+      -DQT_NO_PACKAGE_VERSION_CHECK:BOOL=TRUE \
       -DFEATURE_pkg_config=ON
     cmake --build build-$_arch
   done
