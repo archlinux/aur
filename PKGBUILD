@@ -6,11 +6,11 @@ arch=('any')
 url="https://github.com/S1rEx1/Rice-Switcher"
 license=('MIT')
 depends=('jq' 'fzf')
-source=("https://github.com/S1rEx1/Rice-Switcher/archive/refs/heads/main.tar.gz")
-sha256sums=('c56d68fca23977dbaeeb88ff338779bdec694185e1dbf5bb871c571fbd623671')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/S1rEx1/Rice-Switcher/archive/refs/tags/rice_manager.tar.gz")
+sha256sums=('b4d9c9cf10634b04670f722541f8ff91859aab014ec0c0541142b695e8790a83')
 
 package() {
-  cd "${srcdir}/Rice-Switcher-main"
+  cd "${srcdir}/Rice-Switcher-rice_manager"
 
   install -d "$pkgdir/usr/bin"
   install -d "$pkgdir/usr/share/rice-switcher/lib"
@@ -22,7 +22,8 @@ package() {
   # Библиотеки
   install -m644 lib/*.sh "$pkgdir/usr/share/rice-switcher/lib/"
 
-  # Конфиг
+  # Catalog + default config
+  install -m644 rices.json "$pkgdir/usr/share/rice-switcher/rices.json"
   install -m644 config.json "$pkgdir/usr/share/rice-switcher/config.json"
 
   # Wrapper

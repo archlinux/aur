@@ -1,13 +1,13 @@
 pkgbase = rice-switcher
 	pkgdesc = CLI tool for managing and switching between Linux config sets
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/S1rEx1/Rice-Switcher
 	arch = any
 	license = MIT
 	depends = jq
 	depends = fzf
-	source = https://github.com/S1rEx1/Rice-Switcher/archive/refs/heads/main.tar.gz
-	sha256sums = c56d68fca23977dbaeeb88ff338779bdec694185e1dbf5bb871c571fbd623671
+	source = rice-switcher-1.3.tar.gz::https://github.com/S1rEx1/Rice-Switcher/archive/refs/tags/rice_manager.tar.gz
+	sha256sums = b4d9c9cf10634b04670f722541f8ff91859aab014ec0c0541142b695e8790a83
 
 pkgname = rice-switcher
