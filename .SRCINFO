@@ -1,7 +1,7 @@
 pkgbase = calf-gui
 	pkgdesc = LV2 plug-in suite and standalone Jack host - GUI enabled
 	pkgver = 0.90.8
-	pkgrel = 5
+	pkgrel = 6
 	url = http://calf-studio-gear.org
 	arch = x86_64
 	groups = lv2-plugins
@@ -22,6 +22,7 @@ pkgbase = calf-gui
 	depends = hicolor-icon-theme
 	depends = jack
 	provides = calf
+	conflicts = calf
 	source = git+https://github.com/calf-studio-gear/calf#tag=0.90.8
 	b2sums = 18b206958a945e47aa88e3097dfbc3ec960d163a26e4f23f2b239e58f2f4f71841b5e8cd5bac646e4adb8d37e60b232580edcc8a91bcc44b4a1f9a15ebfa2872
 

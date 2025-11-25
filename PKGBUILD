@@ -6,7 +6,7 @@
 _pkgname=calf
 pkgname=calf-gui
 pkgver=0.90.8
-pkgrel=5
+pkgrel=6
 pkgdesc='LV2 plug-in suite and standalone Jack host - GUI enabled'
 arch=(x86_64)
 url='http://calf-studio-gear.org' # http only
@@ -16,6 +16,7 @@ license=(GPL-2.0-or-later LGPL-2.0-or-later)
 depends=(cairo expat fluidsynth gcc-libs gdk-pixbuf2 glib2 glibc gtk2 hicolor-icon-theme jack)
 makedepends=(cmake git lv2)
 provides=($_pkgname)
+conflicts=($_pkgname)
 source=("git+$_url#tag=$pkgver")
 b2sums=('18b206958a945e47aa88e3097dfbc3ec960d163a26e4f23f2b239e58f2f4f71841b5e8cd5bac646e4adb8d37e60b232580edcc8a91bcc44b4a1f9a15ebfa2872')
 
