@@ -1,6 +1,6 @@
 pkgbase = round-drop-git
 	pkgdesc = Circle UI Desktop Application Launcher.(Use system-wide electron)
-	pkgver = 1.3.0.r0.g74e927b
+	pkgver = 1.4.0.r0.gcc27003
 	pkgrel = 1
 	url = https://github.com/nekobato/RoundDrop
 	arch = any
@@ -11,13 +11,13 @@ pkgbase = round-drop-git
 	makedepends = npm
 	makedepends = pnpm
 	makedepends = curl
-	depends = electron33
+	depends = electron39
 	depends = java-runtime
 	provides = round-drop
 	conflicts = round-drop
 	source = round-drop.git::git+https://github.com/nekobato/RoundDrop.git
 	source = round-drop.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = round-drop-git
