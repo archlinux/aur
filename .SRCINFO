@@ -1,7 +1,7 @@
 pkgbase = zsh-thefuck-git
 	pkgdesc = ZSH plugin. Initialize thefuck with cache support
 	pkgver = r6.136b5a2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/laggardkernel/zsh-thefuck
 	install = .install
 	arch = any
