@@ -1,20 +1,20 @@
 pkgbase = perl-cgi-compile
 	pkgdesc = Compile .cgi scripts to a code reference like ModPerl::Registry
 	pkgver = 0.27
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/CGI-Compile
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	checkdepends = perl-test-nowarnings>=0
-	checkdepends = perl-test-requires>=0
-	depends = perl-cgi>=0
-	depends = perl-capture-tiny>=0
-	depends = perl-file-pushd>=0
-	depends = perl-sub-identify>=0
-	depends = perl-sub-name>=0
-	depends = perl-try-tiny>=0
-	depends = perl-module-build-tiny
+	checkdepends = perl-cgi
+	checkdepends = perl-capture-tiny
+	checkdepends = perl-sub-identify
+	checkdepends = perl-test-nowarnings
+	checkdepends = perl-test-requires
+	checkdepends = perl-try-tiny
+	makedepends = perl-module-build-tiny>=0.034
+	depends = perl-file-pushd
+	depends = perl-sub-name
 	depends = perl>=5.8.1
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/R/RK/RKITOVER/CGI-Compile-0.27.tar.gz
