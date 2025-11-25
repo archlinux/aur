@@ -14,6 +14,7 @@ conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 replaces=('rustycal' 'rustache' 'fairouille')
+options=('!lto')
 
 pkgver() {
   cd "$_pkgname"

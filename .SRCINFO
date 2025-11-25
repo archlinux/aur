@@ -19,6 +19,7 @@ pkgbase = cfait-git
 	replaces = rustycal
 	replaces = rustache
 	replaces = fairouille
+	options = !lto
 	source = cfait::git+https://gitlab.com/trougnouf/cfait.git
 	sha256sums = SKIP
 
