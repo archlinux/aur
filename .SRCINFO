@@ -1,0 +1,18 @@
+pkgbase = pvs-studio-bin
+	pkgdesc = Static code analyzer for C and C++
+	pkgver = 7.39.99307.684
+	pkgrel = 1
+	url = https://pvs-studio.com/en/pvs-studio/
+	arch = x86_64
+	license = custom:pvs-studio
+	optdepends = how-to-use-pvs-studio-free: for adding special comments to a source code
+	optdepends = bash-completion: for bash completion
+	optdepends = strace: for analyzing via using strace logs
+	provides = pvs-studio
+	conflicts = pvs-studio
+	options = !strip
+	options = !debug
+	source = pvs-studio-7.39.99307.684-x86_64.tgz::https://files.pvs-studio.com/pvs-studio-7.39.99307.684-x86_64.tgz
+	sha256sums = 3c9eed7d6c209914738e0db383a8725a2c59d63e0cdf8a79a2797ad21b4ee4a9
+
+pkgname = pvs-studio-bin

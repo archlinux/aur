@@ -1,0 +1,9 @@
+pkg/
+src/
+
+# Source files
+pvs-studio-*-*.tgz
+
+# Compressed package
+pvs-studio-*-*.pkg.tar.xz
+pvs-studio-*-*-*.pkg.tar.zst
