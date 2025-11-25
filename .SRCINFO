@@ -1,6 +1,6 @@
 pkgbase = android-x86-64-qt6-graphs
 	pkgdesc = Qt Graphs for data visualization (android)
-	pkgver = 6.10.0
+	pkgver = 6.10.1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = android-x86-64-qt6-graphs
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.10/6.10.0/submodules/qtgraphs-everywhere-src-6.10.0.tar.xz
-	sha256sums = 6ec8f1b3b3bea6636da8846353e170794c76d5833fc908016f911647a6a714ea
+	source = https://download.qt.io/official_releases/qt/6.10/6.10.1/submodules/qtgraphs-everywhere-src-6.10.1.tar.xz
+	sha256sums = 4d4fa0b21fa3c6b72ad5056e2a06e96e4bfda651e0a824d1f8e896c9ce5e576e
 
 pkgname = android-x86-64-qt6-graphs
