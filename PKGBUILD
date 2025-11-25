@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Java and Maven components of Guacamole"
 arch=('any')
 url="https://guacamole.apache.org/"
-license=('GPL3')
+license=('Apache-2.0')
 replaces=('guacamole')
 depends=('java-runtime' 'java-environment<=19')
 makedepends=('maven' 'java-environment-openjdk<=19')
