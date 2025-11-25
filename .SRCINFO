@@ -1,6 +1,6 @@
 pkgbase = mintmenu
 	pkgdesc = Mint Menu for MATE
-	pkgver = 6.2.1
+	pkgver = 6.2.3
 	pkgrel = 1
 	url = https://github.com/linuxmint/mintmenu
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = mintmenu
 	depends = python-unidecode
 	optdepends = mate-screensaver: lock screen button
 	optdepends = pamac: package manager button
-	source = mintmenu-6.2.1::git+https://github.com/linuxmint/mintmenu#commit=d917324a9d108552d1615a4445f6e82884652af6
+	source = mintmenu-6.2.3::git+https://github.com/linuxmint/mintmenu#commit=b0ff4eb20c1e670d93a966e3d80d4374f25f0a1b
 	source = arch-compat.patch
 	sha256sums = SKIP
 	sha256sums = ad3b5267206782ea5631d030dc827b7f24c5eb6d5b71964d432e3ccb19266a9f
