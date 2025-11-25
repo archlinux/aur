@@ -1,8 +1,8 @@
 # Maintainer: Nguyen Hoang Ky <nhktmdzhg at gmail dot com>
 pkgname=coccoc-browser-stable
 _pkgname=coccoc-browser
-pkgver=140.0.7339.250
-pkgrel=4
+pkgver=141.0.7390.132
+pkgrel=1
 _pkgrel=1
 pkgdesc="The web browser from Coc Coc. Coc Coc is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
 arch=('x86_64')
@@ -37,7 +37,7 @@ source=(
     "LICENSE.html"
 )
 sha256sums=(
-    '54f1216130f200e3cd16d529af47fe79755dc1662758d4ee88d065c7592042b2'
+    '21ea1c0e4b6c81a26b422a43b365cf11ed42d620a621a5c4a0aef6be65c83836'
     # '6119c4e31caf078f03f9ce5a2cf301646abcb78a687a70d28bdae9901c478300'
     '22bf4605260a7432eee169b0afbfae6782b9812c2bc776fdc1a887f6e2b10ec6'
 )
@@ -54,10 +54,6 @@ package() {
         "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/coccoc-browser.png"
         rm "$pkgdir/opt/coccoc/browser/product_logo_${size}.png"
     done
-    # Install 32x32 XPM icon
-    install -Dm644 "$pkgdir/opt/coccoc/browser/product_logo_32.xpm" \
-    "$pkgdir/usr/share/pixmaps/coccoc-browser.xpm"
-    rm "$pkgdir/opt/coccoc/browser/product_logo_32.xpm"
     
     install -Dm644 "LICENSE.html" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE.html"
     chmod -R go-w "$pkgdir"
