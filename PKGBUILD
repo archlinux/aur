@@ -2,7 +2,7 @@
 
 pkgname=lean4-bin
 pkgver=4.25.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An interactive theorem prover"
 arch=('aarch64' 'x86_64')
 url="https://leanprover.github.io/"
@@ -11,17 +11,17 @@ optdepends=('bash')
 provides=("lean4=$pkgver")
 conflicts=('lean4')
 options=('staticlibs')
-source_x86_64=("https://github.com/leanprover/lean4/releases/download/v$pkgver/lean-4.25.0-linux.tar.zst")
-source_aarch64=("https://github.com/leanprover/lean4/releases/download/v$pkgver/lean-4.25.0-linux_aarch64.tar.zst")
-sha256sums_aarch64=('689babf14c92d14fe6ff0cc41ef60c1a1efd680cf80859493dd170e6be6952d8')
-sha256sums_x86_64=('6c712e5cd68788ec1f26204cf640c8b121f724c774c5c41b3bf9e9effad1caea')
+source_x86_64=("https://github.com/leanprover/lean4/releases/download/v$pkgver/lean-$pkgver-linux.tar.zst")
+source_aarch64=("https://github.com/leanprover/lean4/releases/download/v$pkgver/lean-$pkgver-linux_aarch64.tar.zst")
+sha256sums_aarch64=('8dbc724e0ff915c8263c174eb6835d54e5321b4ba454337b0268a120836e05de')
+sha256sums_x86_64=('41d5f900daa5167c08bd6185e6d69af83943ed3583a2dec44f2bfe7441b56cdb')
 
 
 package() {
   if [ "$CARCH" = "x86_64" ]; then
-    cd "lean-4.25.0-linux"
+    cd "lean-$pkgver-linux"
   else
-    cd "lean-4.25.0-linux_$CARCH"
+    cd "lean-$pkgver-linux_$CARCH"
   fi
 
   install -dm755 "$pkgdir/opt/lean4"
