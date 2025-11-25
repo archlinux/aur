@@ -56,7 +56,7 @@ prepare() {
 	cd "${pkgname%-git}"
 	sed Makefile.am -i -e "/^licensedir = /s#.(_casile)\$#$pkgname#"
 	./bootstrap.sh
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 _srcenv() {
