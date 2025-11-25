@@ -1,6 +1,6 @@
 pkgbase = easylpac
 	pkgdesc = lpac GUI Frontend
-	pkgver = 0.7.8.3
+	pkgver = 0.7.8.4
 	pkgrel = 1
 	url = https://github.com/creamlike1024/EasyLPAC
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = easylpac
 	depends = lpac
 	provides = easylpac
 	conflicts = easylpac
-	source = easylpac-0.7.8.3.tar.gz::https://github.com/creamlike1024/EasyLPAC/archive/refs/tags/0.7.8.3.tar.gz
-	sha256sums = cbfc36591724a6445203d27240b59ea93ac7a0de3915609637cc8c5484abaaf2
+	source = easylpac-0.7.8.4.tar.gz::https://github.com/creamlike1024/EasyLPAC/archive/refs/tags/0.7.8.4.tar.gz
+	sha256sums = bbbdb714fa38a2ea86677a167a5661c903f3deefd2aa404fd3a25e0b9be926e0
 
 pkgname = easylpac
