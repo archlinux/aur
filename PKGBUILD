@@ -1,7 +1,7 @@
 # Maintainer: ariurn <admin@ariurn.com>
 
 pkgname=happ-desktop-bin
-pkgver=1.2.2
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="A proxy client for secure and private internet access"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('happ-desktop')
 install="${pkgname}.install"
 options=('!strip')
 source=("${pkgname}-${pkgver}.deb::https://github.com/Happ-proxy/happ-desktop/releases/download/${pkgver}/Happ.linux.x64.deb")
-sha256sums=('33c9fad3d8c134a2b40fa98fde62951c2238faacc1cd9921c44797d3a8206dba')
+sha256sums=('5e76223bc6cb9315edeb61cf2d9783383594825fc2eda5080d9a4824e342b64b')
 _debfile="${pkgname}-${pkgver}.deb"
 
 prepare() {
