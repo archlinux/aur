@@ -8,10 +8,10 @@ Subject: [PATCH] runtest: Print output causing failure
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/tests/runtest.c b/tests/runtest.c
-index ee7417b8acaa..9634c10cfa8c 100644
+index 9c6a6e1c0fac..856302121183 100644
 --- a/tests/runtest.c
 +++ b/tests/runtest.c
-@@ -662,17 +662,17 @@ xsltTest(const char *filename, int options) {
+@@ -666,17 +666,17 @@ xsltTest(const char *filename, int options) {
      res = compareFileMem(outFilename, (char *) out, outSize);
      if (res != 0) {
          fprintf(stderr, "Result for %s failed\n", filename);

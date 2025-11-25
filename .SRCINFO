@@ -1,7 +1,7 @@
 pkgbase = lib32-libxslt
 	pkgdesc = XML stylesheet transformation library (32-bit)
-	pkgver = 1.1.43
-	pkgrel = 2
+	pkgver = 1.1.44
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/libxslt/-/wikis/home
 	arch = x86_64
 	license = MIT
@@ -14,10 +14,10 @@ pkgbase = lib32-libxslt
 	depends = lib32-libxml2
 	depends = lib32-xz
 	depends = libxslt
-	source = git+https://gitlab.gnome.org/GNOME/libxslt.git#tag=v1.1.43
+	source = git+https://gitlab.gnome.org/GNOME/libxslt.git#tag=v1.1.44
 	source = 0001-runtest-Print-output-causing-failure.patch
-	b2sums = c6a0dd9c21046586e823f837e685c6feced6359cfc9c9eab0465ddc0aab84499e2f02055e395d2d18623e5edfba84db8df7018c2463c768a3237921d7c98a683
-	b2sums = 077eb61fac59fc34615685695af84d131a7aaafda08cd61657d2381d639311d6858a3fcca612ff8755e2cb9b77fa2606582044ca987ff4e23131a94e58f3f751
+	b2sums = 23e59a4cbd7ef757d1e451543fd310b9841e48076613de9e15d25c732cd03d1ed879dad254acb02e5ff20b5ffd6d932ba6bced29cb9aabb80606585f73cc0d30
+	b2sums = 23c696c4201d0227c71ec12fc19ed23e5997d235b5d001a52e41a3cc2da0f4ddf62f54652927fde460ccda82eaff23a4f23b2cece491c5b58cfd78ee3d93ce3f
 
 pkgname = lib32-libxslt
 	provides = libxslt.so
