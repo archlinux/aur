@@ -4,7 +4,7 @@
 pkgname=i686-elf-gcc
 pkgver=15.2.0
 pkgrel=3
-pkgdesc="GNU gcc for the i686-elf-toolchain"
+pkgdesc="GNU gcc for the i686 toolchain"
 arch=('x86_64')
 url="https://www.gnu.org/software/gcc"
 license=('GPL')
