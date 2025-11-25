@@ -1,7 +1,7 @@
 pkgbase = tunarr-bin
 	pkgdesc = Create a classic TV experience using your own media - IPTV backed by Plex/Jellyfin/Emby
 	pkgver = 0.22.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tunarr.com/
 	arch = x86_64
 	arch = aarch64
