@@ -1,13 +1,22 @@
 # Maintainer: Alois <aloisianer@proton.me>
 pkgname=tensamin-git
 _pkgname=tensamin
-pkgver=1bc2b4
+pkgver=aea13d
 pkgrel=1
 pkgdesc="True E2EE, decentralized messages. Open source and privacy first."
 arch=('x86_64')
 url="https://tensamin.net"
 license=('custom')
-depends=('electron' 'libxss')
+depends=(c-ares
+         gcc-libs # libgcc_s.so
+         glibc # libc.so libm.so
+         gtk3 libgtk-3.so
+         libevent
+         libffi libffi.so
+         libpulse libpulse.so
+         nss # libnss3.so
+         zlib libz.so
+		 libxss)
 makedepends=('git' 'npm' 'dpkg' 'fakeroot')
 provides=('tensamin')
 conflicts=('tensamin' 'tensamin-bin')
