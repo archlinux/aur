@@ -1,13 +1,13 @@
 pkgbase = vacuum-bin
 	pkgdesc = An ultra-super-fast, lightweight OpenAPI linter and quality checking tool, written in golang and inspired by Spectral.
-	pkgver = 0.16.3
+	pkgver = 0.20.2
 	pkgrel = 1
 	url = https://github.com/daveshanley/vacuum
 	arch = x86_64
 	license = MIT
 	provides = vacuum
 	conflicts = vacuum
-	source = vacuum-bin-0.16.3.tar.gz::https://github.com/daveshanley/vacuum/releases/download/v0.16.3/vacuum_0.16.3_linux_x86_64.tar.gz
-	sha512sums = 104979c61c08e69c70946fcbdf94a63be2a4467a51d9576824352908c2696ee9591d638fd2890c7ae79ed2e4f8b495e481ecb9f5429885d77e22d9a498b19a48
+	source = vacuum-bin-0.20.2.tar.gz::https://github.com/daveshanley/vacuum/releases/download/v0.20.2/vacuum_0.20.2_linux_x86_64.tar.gz
+	sha512sums = 621bdcbe979b07da9b71843d34699525cbc9337cbe2aa433cdf2d3753831ea05df301d22d71edfc9d116159991203b2657f96c3e2ea6cf2e8f20f4e368eaf28c
 
 pkgname = vacuum-bin
