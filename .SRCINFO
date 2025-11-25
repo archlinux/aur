@@ -1,0 +1,25 @@
+pkgbase = rumdl-bin
+	pkgdesc = Markdown Linter and Formatter written in Rust
+	pkgver = 0.0.181
+	pkgrel = 1
+	url = https://github.com/rvben/rumdl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = rumdl
+	conflicts = rumdl
+	source_x86_64 = rumdl-bin-0.0.181-x86_64.tar.gz::https://github.com/rvben/rumdl/releases/download/v0.0.181/rumdl-v0.0.181-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = rumdl-bin-0.0.181-x86_64.tar.gz.sha256::https://github.com/rvben/rumdl/releases/download/v0.0.181/rumdl-v0.0.181-x86_64-unknown-linux-gnu.tar.gz.sha256
+	source_x86_64 = LICENSE
+	sha256sums_x86_64 = 148a7852730b4de37bdd0adcd48484cf9e46b6f26ed5569795ee19c48c5357c1
+	sha256sums_x86_64 = ca867d91f2730d473061648f36e2c8b13e799197a1e2f05c7a63cf05d5896bb6
+	sha256sums_x86_64 = 531eee1345aea0b92d0b2cb7c3994b233dffe9d738ed1d2a6ae3cddf49b3d773
+	source_aarch64 = rumdl-bin-0.0.181-aarch64.tar.gz::https://github.com/rvben/rumdl/releases/download/v0.0.181/rumdl-v0.0.181-aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = rumdl-bin-0.0.181-aarch64.tar.gz.sha256::https://github.com/rvben/rumdl/releases/download/v0.0.181/rumdl-v0.0.181-aarch64-unknown-linux-gnu.tar.gz.sha256
+	source_aarch64 = LICENSE
+	sha256sums_aarch64 = 03c28593205524020bd0858fe8a484416f0c69fc213ffb7c252ff24b640e4ae0
+	sha256sums_aarch64 = dcd2a8325f037ec5e43a715a27aa01ae690cb78a877403726a10e2d0ada80f0d
+	sha256sums_aarch64 = 531eee1345aea0b92d0b2cb7c3994b233dffe9d738ed1d2a6ae3cddf49b3d773
+
+pkgname = rumdl-bin
