@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Futubull
+Name[zh_CN]=富途牛牛
+Name[zh_HK]=富途牛牛
+Name[zh_TW]=富途牛牛
+Exec=env FTNN_HOME="/opt/futubull-desktop" LD_LIBRARY_PATH="/opt/futubull-desktop:/opt/futubull-desktop/lib:/opt/futubull-desktop/plugins/platforms:$LD_LIBRARY_PATH" QT_PLUGIN_PATH="/opt/futubull-desktop/plugins:/opt/futubull-desktop/plugins/platforms:$QT_PLUGIN_PATH" /usr/bin/futubull-desktop
+Icon=futubull-desktop
+Type=Application
+Categories=Finance;
+Comment=One-Stop Trading Platform for Hong Kong, US and China Connect Stocks
