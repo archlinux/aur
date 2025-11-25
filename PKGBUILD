@@ -6,13 +6,13 @@
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
 pkgrel=1
-pkgver=2.2.3
+pkgver=2.3.1
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('AGPL-3.0-only')
 arch=(x86_64)
 # ts-node required for CLI
-makedepends=('git' 'pnpm' 'jq' 'ts-node')
+makedepends=('git' 'pnpm' 'jq' 'ts-node' 'mise')
 
 # combination of server/CLI deps, see split package functions
 # for individual deps and commentary
@@ -72,7 +72,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
         'https://download.geonames.org/export/dump/admin1CodesASCII.txt'
         'https://download.geonames.org/export/dump/admin2Codes.txt'
         'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson')
-sha256sums=('aa7fe92d8ff38a97de8d1252c1e73d2c1cbd32cac5796dade2c4648bbca7557c'
+sha256sums=('20bd60862447e7e369189f9390f8e013b50101cf2fb7561ed47793bcb63c6cc8'
             '475291c45ec0a20b52f7ff927ddd7299f6f9e848e01145817066ff194cd50f07'
             'SKIP'
             'f7821053ceb6f0cf3a2b9a53b7795a7c56a74d3e0239ac38fa734642e9faf833'
@@ -80,9 +80,9 @@ sha256sums=('aa7fe92d8ff38a97de8d1252c1e73d2c1cbd32cac5796dade2c4648bbca7557c'
             '4ae8a73ccbef568b7841dbdfe9b9d8a76fa78db00051317b6313a6a50a66c900'
             '077b85d692df4625300a785eed1efdc7af8fbb8e05dfa8c7d8b4053c1eb76a58'
             '614b56dba38f9201d8a391d0f3d2cdf5571935a1ea6c5d19a74a942f18411763'
-            'SKIP'
-            'SKIP'
-            'SKIP'
+            'c4caf0bc94df71589684bfa43eb06c011b83c3e01aba68cc169ee095b99ae9e4'
+            'fcbd1334659c067257cc95b70d378dcb5138752f91fc5912b25fd543b6c8b175'
+            '9644c199c9a2caabea7f13a01996ab29aec6018362e6ac3dd49ac5c374d44e32'
             '239eec57ac17f100a11e2536cffc56752c318b50ae765b0918ff7aab4ce8f255')
 
 prepare() {
@@ -127,6 +127,13 @@ build() {
     rm cli/LICENSE  # deploy would've picked this up, duplicating standard /usr/share/licenses/spdx/AGPL-3.0-only
     pnpm --filter @immich/cli build
     pnpm --filter @immich/cli --prod --no-optional deploy output/cli-pruned
+
+    # build plugins
+    cd plugins
+    export MISE_TRUSTED_CONFIG_PATHS="${srcdir}/${pkgbase}-${pkgver}/plugins/mise.toml"
+    rm ../mise.toml  # otherwise asks to trust those, interrupting unattended builds
+    mise install  # --cd plugins just does the cd for you
+    mise run build
 }
 
 package_immich-server() {
@@ -150,9 +157,14 @@ package_immich-server() {
     install -dm755 "${pkgdir}/usr/lib/immich/app/server"
     cp -rT output/server-pruned "${pkgdir}/usr/lib/immich/app/server"
 
-    # install www
+    # install web
     install -dm755 "${pkgdir}/usr/lib/immich/build"
     cp -r web/build "${pkgdir}/usr/lib/immich/build/www"
+
+	# install plugins
+	install -dm755 "${pkgdir}/usr/lib/immich/build/corePlugin"
+	cp -r plugins/dist "${pkgdir}/usr/lib/immich/build/corePlugin/dist"
+	install -Dm644 plugins/manifest.json "${pkgdir}/usr/lib/immich/build/corePlugin/manifest.json"
 
     cd "${srcdir}"
 
