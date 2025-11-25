@@ -1,6 +1,6 @@
 pkgbase = psst-bin
 	pkgdesc = Fast and multi-platform Spotify client with native GUI
-	pkgver = 2025.11.17_8d290dc
+	pkgver = 2025.11.25_2c2a08c
 	pkgrel = 1
 	url = https://github.com/jpochyla/psst
 	arch = x86_64
