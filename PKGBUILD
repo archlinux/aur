@@ -2,7 +2,7 @@
 
 _name=sel4_deps
 pkgname="python-${_name/_/-}"
-pkgver=0.5.0
+pkgver=0.7.0
 pkgrel=1
 
 pkgdesc="metapackage for build dependencies for the seL4 microkernel"
@@ -31,7 +31,7 @@ depends=('python'
 makedepends=('python-setuptools')
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name/_/-}/${_name}-${pkgver}.tar.gz")
-sha256sums=('2348640c1e367af52ca31118c76f2fdbe13340d4c8bee2b979b14f4d02b7d3a7')
+sha256sums=('4b7907397cadb9de8f82b192a9e695f5374c4fb4fe52ea849c93a2c3ae36fe7e')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
