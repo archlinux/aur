@@ -1,0 +1,14 @@
+pkgbase = ruby-ruby-beautify2
+	pkgdesc = A CLI tool (and module) to beautify Ruby code
+	pkgver = 0.98.1
+	pkgrel = 1
+	url = https://github.com/jirutka/ruby-beautify2
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = ruby-beautify2-0.98.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/ruby-beautify2-0.98.1.gem
+	sha1sums = 51b9577c2700be7f137718230137df348d27b00e
+
+pkgname = ruby-ruby-beautify2
