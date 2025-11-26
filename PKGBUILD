@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 prepare() {
 	cd "${pkgname%-git}"
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 pkgver() {
