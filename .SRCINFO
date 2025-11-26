@@ -1,6 +1,6 @@
 pkgbase = python-airtable-wrapper
 	pkgdesc = Python Airtable Client Wrapper
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/gtalarico/pyairtable
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-airtable-wrapper
 	depends = python-typing_extensions
 	depends = python-urllib3
 	options = !emptydirs
-	source = https://github.com/gtalarico/pyairtable/archive/refs/tags/3.2.0.tar.gz
-	sha256sums = baca26f3b0cc1956b4c0a46aadfc87573b34337a622865a3be9ca4f9f3307c72
+	source = https://github.com/gtalarico/pyairtable/archive/refs/tags/3.3.0.tar.gz
+	sha256sums = 56dfb0aa5c5460d1367102826284cc41e29e6a35769c2c9ee78cfed3105348eb
 
 pkgname = python-airtable-wrapper
