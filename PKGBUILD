@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Run WebAssembly instantly in your browser with a single command"
 arch=('x86_64' 'aarch64')
 _barch=('x86_64' 'aarch64')
-url="https://github.com/anistark/wasmrun"
+url="https://github.com/anistark/${_basename}"
 license=('MIT')
 
 conflicts=("${_basename}")
