@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.15.7'
+_upstreamver='0.16.0'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='pipelex'
@@ -19,7 +19,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 depends=('python' 'python-aiofiles' 'python-markdown' 'python-filetype' 'python-yaml' 'python-jinja' 'python-google-auth' 'python-openai' 'python-rich' 'python-networkx' 'python-posthog' 'python-pillow' 'python-google-genai' 'python-pydantic' 'python-tomlkit' 'python-anthropic' 'python-click' 'python-aioboto3' 'python-typing_extensions' 'python-boto3' 'python-pytest' 'python-tomli' 'python-httpx' 'python-mistralai' 'python-dotenv' 'python-typer' 'python-shortuuid' 'python-polyfactory' 'python-json2html' 'python-yattag' 'python-instructor' 'python-pypdfium2' 'python-kajson')
 
 source=("${_pypi_package}-${_upstreamver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b5ee49aad89e38d9aeffe3f926e463f7c3fa579e5bcf00bd556201b406ebeef7')
+sha256sums=('ba6e924fd07c768e0a72f82b2b29b19b289ea3c0e682784fff5e7a020268a442')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${pkgver}/"
