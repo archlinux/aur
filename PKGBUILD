@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nasedkinpv/numr/archive/v$pkgver.tar.gz")
-sha256sums=('46cf1baf23d9a0ed9ed040647aff1448b8557cca77f5271fa75c322e3599d672')
+sha256sums=('52c1c3596862eaf7a6cb096cc43f3fdb4c977d0f8a026ab49ed49f8444fa2c50')
 
 prepare() {
     cd "$pkgname-$pkgver"
