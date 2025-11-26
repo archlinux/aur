@@ -1,0 +1,13 @@
+pkgbase = gimate-linux-wmi
+	pkgdesc = Kernel module allowing more control on Gigabyte Gaming GiMATE-enabled laptops
+	pkgver = 0.3.1
+	pkgrel = 2
+	url = https://github.com/oldzoomer-ru/gimate-linux-wmi
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	conflicts = gigabyte-laptop-wmi-dkms-git
+	source = https://github.com/oldzoomer-ru/gimate-linux-wmi/releases/download/v0.3.1/driver.tar.gz
+	sha256sums = 03b8e53aa92d1335556569830e103f528f0cdf7e86254f6cef6b7c655ba651ab
+
+pkgname = gimate-linux-wmi
