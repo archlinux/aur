@@ -2,8 +2,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-class-unload'
-pkgver='0.11'
-pkgrel='2'
+pkgver='0.12'
+pkgrel='1'
 pkgdesc="Perl/CPAN Module Class::Unload: Unload a class"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -12,10 +12,10 @@ depends=('perl-class-inspector')
 makedepends=()
 checkdepends=('perl-test-requires')
 url='https://metacpan.org/release/Class-Unload'
-source=('http://search.cpan.org/CPAN/authors/id/I/IL/ILMARI/Class-Unload-0.11.tar.gz')
-md5sums=('0c28497de640aea4c3900fb52b7c6cb5')
-sha512sums=('464e5c82578bf43ac97a9c434bb1b4889a7b2d5e97d51b5f6965c3de44d81016177d2b1596a93d09bfac38266ffff7bd668b1f15d11444c692530894df9348e8')
-_distdir="Class-Unload-0.11"
+source=("http://search.cpan.org/CPAN/authors/id/I/IL/ILMARI/Class-Unload-$pkgver.tar.gz")
+md5sums=('a1fb61fb984184d4a939e33f6973a7af')
+sha512sums=('53c0636e7b6f211288edcdba77721ab2e7015df183f85d524c8980638d641f2db29f72ae08e1b76313aaf1aecef35d1e4319fd13a893ef12356f0f61d8d599c9')
+_distdir="Class-Unload-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
