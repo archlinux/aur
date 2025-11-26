@@ -6,8 +6,8 @@
 # Contributor: darkcoder <mario_vazq@hotmail.com>
 pkgname=os-prober-btrfs
 _pkgname=os-prober
-pkgver=1.83
-pkgrel=2
+pkgver=1.84
+pkgrel=1
 pkgdesc='Utility to detect other OSes with various patches to support btrfs and other fixes'
 url='https://joeyh.name/code/os-prober/'
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=(https://deb.debian.org/debian/pool/main/o/${_pkgname}/${_pkgname}_${pkgv
         fix-blkid-path.patch
         grub-initrd-generation-fix.diff
         grub-initrd-generation-fix.hook.diff)
-sha512sums=('b6a75cfa9cd71338e43597d3529a9f65cf210013f5b0e05a3e7aada6d33d391453b73dfc366e452538b13701be3e2eb00ad8e22da34ab108f60822c35ec46623'
+sha512sums=('b6e3f8997cf647e44582513dcf2b186ca9f3bf76fe97beb49d15feb053ee16606c3600de88e77a1f6e2919b348a49e555c67b6b5453e5ca0033b2cb99e4f3a2b'
             '91be47af6589d4e53ccc035475a64bb62ec7dd0d70966e1770b7ef2095ebaa3f94fabec41dbfeb8f22c0d5db0d1269a6bbeb7996fd08da256dc4a58d3121eaf7'
             'e4026689a647ab8f82defa31c6440ecf3754c6dca75e5921ee07e7a0a17adb3c56679a5c83be35ad1b382d0047fb50ebe0c897012c920e86c5eca5ab6a1eaa09'
             'a4e8b655725bd5d56d1a164f58d54061b0161f91ec601e655aa98f9ebff5a76a29082f6828a586e55dd0127bf4bb7e70d19ab53d7dc6c897f441a4f970a9e71d'
@@ -47,7 +47,7 @@ sha512sums=('b6a75cfa9cd71338e43597d3529a9f65cf210013f5b0e05a3e7aada6d33d391453b
             'fd38bc9b79d34dea6ab17ee5981ec31bd84a472497e6607fb78294e507cca90f811243932cfc6b3793815bab66fa42746b6d223dcdb940bc3e0e5f8906403b5f'
             'd7775833639d2cbbdf4b083a69c7a7befa71b2b9bc7fdb7f75aef3fad44d943489b8dedb0bfc275541844edc575a5999bdb8fd0ca9a468dc5f308861c049bb3e'
             '036c5487f061debf11868389355e953b701742f6a32eeeba258dd853e4e568e3e5f84078c67e9ec7c308b6af37a85faf636a0f90a95f857be805f4c19aaffe71')
-b2sums=('ae0b5884f28dc60622142e8e7004e40f15fc2cc325eb634306fed0bbfa431c22331af75f7e52bdf78f60a0842fb9398c7d95be792cb06397223dda7aa9d36a8d'
+b2sums=('35030940a3913d64ea9b4bda9af64c0490a9bd38a39b069c057ef7cacb0db1af606e70f2b3ed8788d0a458a76b6f63867d55ee9e6b6b6daa1641e88198973751'
         'e2e1d069c56b79c65b310221d07e75cea413543416d5eee3c1b0d084d795bc33da1863081b0fce679780b19d0c9ca0c8d619b298ca5aa5eeec09daf1d3b03e30'
         '78ce30f144d83e3676c3d86afcdcad1643e09e089df5f460c33833adc17564ad267398588973f2b07b249f591219edab23c748167180f578e4f7b08e85c32d1a'
         '4aad146d474d6062e1b110e8468bb023a62ba3c4e6fe64526a5ddb9be8897eac2d8e8ce12d212f8f15e809641ac3b483c176c809b1c5ee4ae4900adc865ff0ee'
