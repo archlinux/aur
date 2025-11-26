@@ -1,7 +1,7 @@
 # Contributor: Mael Kerbiriou <mael.kerbiriouATfreeDOTfr>
 
 pkgname=wld-git
-pkgver=r171.6586736
+pkgver=r173.8990a83
 pkgrel=1
 
 pkgdesc='A primitive drawing library targeted at Wayland'
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('MIT')
 url='https://github.com/michaelforney/wld'
 
-depends=('wayland' 'libdrm' 'fontconfig' 'pixman')
+depends=('wayland' 'libdrm' 'fontconfig' 'freetype2' 'pixman' 'glibc')
 makedepends=('git')
 
 provides=('wld')
