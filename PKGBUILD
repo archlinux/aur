@@ -8,7 +8,7 @@
 
 _pkgname="forkgram"
 pkgname="$_pkgname"
-pkgver=6.3.2
+pkgver=6.3.4
 pkgrel=1
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
@@ -77,7 +77,7 @@ source=(
   "$_pkgsrc_tdlib"::"git+https://github.com/tdlib/td.git"
 )
 sha256sums=(
-  'e9199bd790cd20f459cc585703306975459281e99f057e0a7b6c41a942420131'
+  '1fb6956390b66707c6bd1e7f0f6078b73be419137e8f139765ee490cc34b68aa'
   'SKIP'
 )
 
