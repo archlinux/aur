@@ -1,6 +1,6 @@
 pkgbase = delta-shell-git
 	pkgdesc = A Desktop Shell for Niri and Hyprland
-	pkgver = r218.4d623ce
+	pkgver = r254.3916da8
 	pkgrel = 1
 	url = https://github.com/sinomor/delta-shell
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = delta-shell-git
 	optdepends = brightnessctl: for control brightness of monitors
 	optdepends = power-profiles-daemon: switch power profiles
 	optdepends = bluez: for connect to bluetooth devices
+	optdepends = libgtop: for cpu usage
 	source = git+https://github.com/sinomor/delta-shell.git
 	sha256sums = SKIP
 

@@ -1,6 +1,6 @@
 # Maintainer: sinomor
 pkgname=delta-shell-git
-pkgver=r218.4d623ce
+pkgver=r254.3916da8
 pkgrel=1
 pkgdesc="A Desktop Shell for Niri and Hyprland"
 arch=('x86_64')
@@ -32,6 +32,7 @@ optdepends=(
     'brightnessctl: for control brightness of monitors'
     'power-profiles-daemon: switch power profiles'
     'bluez: for connect to bluetooth devices'
+    'libgtop: for cpu usage'
 )
 source=("git+${url}.git")
 sha256sums=('SKIP')
