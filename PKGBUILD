@@ -1,17 +1,17 @@
-# Maintainer: Tomasz Zok <tomasz dot zok at gmail dot com>
+# Contributor: Tomasz Zok <tomasz dot zok at gmail dot com>
 pkgname=python-mmcif
 _name=mmcif
-pkgver=0.84
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="mmCIF Core Access Library"
 arch=(x86_64)
 url="http://mmcif.wwpdb.org"
 license=('Apache')
-makedepends=(cmake pybind11 python-build python-installer python-wheel)
-depends=(python python-future python-six python-requests python-msgpack)
+makedepends=(cmake python-build python-installer python-setuptools)
+depends=(python python-requests python-msgpack)
 checkdepends=()
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('1372d48053e4d8b57c2d5331932c51fac7d809a794df8b9342aa6217b9bea15b')
+sha256sums=('6d2949c9fb6b93daa2b7ae1c8cca5d433aece1355e010de7c46785d8ec21adba')
 
 build() {
     cd "${_name}-${pkgver}"
