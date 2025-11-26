@@ -1,0 +1,17 @@
+pkgbase = python-fastalite
+	pkgdesc = lightweight Python library designed for simple parsing and manipulation of FASTA/FASTQ sequence files
+	pkgver = 0.4.1
+	pkgrel = 0
+	url = https://github.com/nhoffman/fastalite
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-sphinx
+	makedepends = git
+	depends = python
+	options = !emptydirs
+	source = fastalite::git+https://github.com/nhoffman/fastalite.git#tag=0.4.1
+	b2sums = 2aed3ad88b77dab4bd225a5b7c6bc21174ce7546a4133a09ee0625f0e936d06b9b92a3ab7b495a9044285ac2ded858dfff937ac88de4d2fbf1006d2f9282f01a
+
+pkgname = python-fastalite
