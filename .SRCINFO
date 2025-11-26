@@ -1,7 +1,7 @@
 pkgbase = android-ndk-28
 	pkgdesc = Android C/C++ developer kit
 	pkgver = r28.c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.android.com/ndk/
 	install = android-ndk-28.install
 	arch = x86_64

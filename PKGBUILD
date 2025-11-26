@@ -6,7 +6,7 @@
 
 pkgname=android-ndk-28
 pkgver=r28.c
-pkgrel=1
+pkgrel=2
 pkgdesc='Android C/C++ developer kit'
 arch=('x86_64')
 url='https://developer.android.com/ndk/'
@@ -39,7 +39,7 @@ sha256sums_x86_64=('dfb20d396df28ca02a8c708314b814a4d961dc9074f9a161932746f815aa
 
 package() {
   install -Ddm755 "$pkgdir/opt"
-  mv "android-ndk-${pkgver/./}" "$pkgdir/opt/$pkgname"
+  mv "android-ndk-${pkgver/./}" "$pkgdir/opt/android-ndk"
 
   install -Dm644 android-ndk.sh -t "$pkgdir/etc/profile.d/"
 
