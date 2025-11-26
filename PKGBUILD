@@ -57,4 +57,7 @@ package() {
 	mkdir -vp "${pkgdir}/usr/share/licenses"
 	cp -rp "${pkgdir}/opt/Flashpoint/Launcher/licenses/" "${pkgdir}/usr/share/licenses/flashpoint"
 	install -Dm644 "${srcdir}/flashpoint-archive.desktop" "${pkgdir}/usr/share/applications/flashpoint-archive.desktop"
+
+    echo "Removing uneeded src folder"
+    rm -rf "${pkgdir}/opt/Flashpoint/src"
 }
