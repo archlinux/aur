@@ -1,12 +1,12 @@
 #Maintainer: Archisman Panigrahi <apandada1ATgmail.com>
 pkgname=quickbib
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="QuickBib: DOI/arXiv → BibTeX desktop utility"
 url="https://github.com/archisman-panigrahi/quickbib"
 license=('GPL3')
 arch=('any')
-depends=(python python-pyqt6 doi2bib3)
+depends=(python python-pyqt6 python-doi2bib3)
 makedepends=(meson ninja pkgconf)
 source=("git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
