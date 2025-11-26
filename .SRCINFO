@@ -10,7 +10,6 @@ pkgbase = feluda-bin
 	depends = glibc
 	depends = gcc-libs
 	depends = zlib
-	optdepends = wasm-pack
 	provides = feluda
 	conflicts = feluda
 	source_x86_64 = feluda-x86_64-1.10.3.deb::https://github.com/anistark/feluda/releases/download/v1.10.3/feluda-v1.10.3-x86_64.deb

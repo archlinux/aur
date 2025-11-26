@@ -14,7 +14,6 @@ conflicts=("${_basename}")
 provides=("${_basename}")
 
 depends=('glibc' 'gcc-libs' 'zlib')
-optdepends=('wasm-pack')
 makedepends=('tar')
 
 source_x86_64=("${_basename}-${arch[0]}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_basename}-v${pkgver}-${_barch[0]}.deb")
