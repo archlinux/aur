@@ -1,6 +1,6 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Irving Ernesto <business@irvingernesto.com>
 pkgname=codecontexter
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A fast CLI tool to aggregate codebase context for LLMs"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('29ec0d583af0be8112b67ba6018b8d73669a8f5d1a7ab3197407b44c316a2e5d')
+sha256sums=('7a0d9a1595a0d31f6db98ee12489f83bd549f075681faff95587339a86fe3fcc')
 
 prepare() {
     cd "$pkgname-$pkgver"
