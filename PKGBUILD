@@ -2,26 +2,23 @@
 
 _name=mcp
 pkgname=python-$_name
-pkgver=1.21.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Model Context Protocol SDK.'
 arch=('any')
 url='https://github.com/modelcontextprotocol/python-sdk'
 license=('MIT')
-depends=('python' 'python-anyio' 'python-httpx' 'python-httpx-sse' 'python-pydantic' 'python-starlette' 'python-python-multipart' 'python-sse-starlette' 'python-pydantic-settings' 'uvicorn' 'python-jsonschema' 'python-pyjwt' 'python-cryptography')
+depends=('python' 'python-anyio' 'python-httpx' 'python-httpx-sse' 'python-pydantic' 'python-starlette' 'python-python-multipart' 'python-sse-starlette' 'python-pydantic-settings' 'uvicorn' 'python-jsonschema' 'python-pyjwt' 'python-cryptography' 'python-typing_extensions' 'python-typing-inspection')
 makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'python-installer' 'python-wheel' 'git')
 checkdepends=('python-pytest' 'python-trio' 'python-pytest-xdist' 'python-pytest-examples' 'python-inline-snapshot' 'python-dirty-equals' 'python-rich' 'python-typer' 'python-dotenv' 'python-websockets' 'python-requests' 'uv' 'ruff')
 optdepends=('python-rich: rich' 'python-typer: cli' 'python-dotenv: cli' 'python-websockets: ws')
-source=("$_name::git+$url.git#tag=v$pkgver"
-        "fix-pydantic-2.12.x.patch")
-sha256sums=('eaf78cdec38a602f9505f0748115fdd3f9e98b4de7212a5c050cf6be6fcf2562'
-            '30f3aa2c6c50f6c3b5ac19ea43af30e0f037d6b88f91c2d9b658329ea1ef23b8')
+source=("$_name::git+$url.git#tag=v$pkgver")
+sha256sums=('3741b3945bf904ad632a4736059b4029fae7a7f16dc14863dbb650285999359f')
 
 prepare(){
   cd "$srcdir"/$_name
   git clean -fdx
   sed -i 's/timeout=5/timeout=60/' tests/client/test_config.py # Increate time limit
-  patch -Np1 -i ../fix-pydantic-2.12.x.patch # Fix compatibility with Pydantic >= 2.12
 }
 
 build() {
