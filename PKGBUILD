@@ -2,10 +2,10 @@
 # Contributor: devome <evinedeng@hotmail.com>
 
 pkgname="n8n"
-pkgver=1.120.4
+pkgver=1.121.2
 pkgrel=1
 pkgdesc="Free and source-available fair-code licensed workflow automation tool. Easily automate tasks across different services."
-arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
+arch=('x86_64')
 url="https://n8n.io"
 license=("custom:Sustainable Use License")
 backup=("etc/default/${pkgname}")
@@ -48,6 +48,35 @@ package() {
   # Basic cleanup - remove some development files
   find "${pkgdir}/usr/lib/node_modules/${pkgname}" -name "*.ts" -delete 2>/dev/null || true
   find "${pkgdir}/usr/lib/node_modules/${pkgname}" -name "*.js.map" -delete 2>/dev/null || true
+
+  local stacktrace_dir="${pkgdir}/usr/lib/node_modules/${pkgname}/node_modules/@sentry-internal/node-native-stacktrace/lib"
+  if [[ -d "${stacktrace_dir}" ]]; then
+    # Remove platform builds we cannot strip on this architecture to avoid fakeroot/strip failures
+    find "${stacktrace_dir}" -type f -name 'stack-trace-*.node' \
+      \( -name '*darwin*' -o -name '*win32*' \) \
+      -delete
+
+    local keep_pattern=""
+    case "${CARCH}" in
+      x86_64)
+        keep_pattern="linux-x64"
+        ;;
+      aarch64)
+        keep_pattern="linux-arm64"
+        ;;
+    esac
+
+    if [[ -n "${keep_pattern}" ]]; then
+      find "${stacktrace_dir}" -type f -name 'stack-trace-*.node' ! -name "*${keep_pattern}*" -delete
+    fi
+  fi
+
+  local node_root="${pkgdir}/usr/lib/node_modules/${pkgname}"
+  if [[ -d "${node_root}" ]]; then
+    find "${node_root}" -type f -name '*.node' \
+      \( -name '*darwin*' -o -name '*win32*' -o -name '*win64*' -o -name '*win-*' -o -name '*android*' -o -name '*freebsd*' -o -name '*arm64*' -o -name '*armv7*' -o -name '*armhf*' -o -name '*linux-arm*' -o -name '*-musl*' \) \
+      -delete
+  fi
 
   install -dm755 "${pkgdir}/usr/share/"{licenses,doc}"/${pkgname}"
   ln -s "/usr/lib/node_modules/${pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
