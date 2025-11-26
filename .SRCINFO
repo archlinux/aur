@@ -1,7 +1,7 @@
 pkgbase = lamzu-maya-x-udev
 	pkgdesc = udev rule for the Lamzu Maya X Gaming Mouse
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.0.1
+	pkgrel = 1
 	arch = any
 	license = GPL
 	source = 70-lamzu-maya-x.rules

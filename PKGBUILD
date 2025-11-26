@@ -1,8 +1,8 @@
-# Maintainer: crian <crian84@gmail.com>
+# Maintainer: crian <crian84 at gmail dot com>
 
 pkgname=lamzu-maya-x-udev
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='udev rule for the Lamzu Maya X Gaming Mouse'
 arch=('any')
 license=('GPL')
