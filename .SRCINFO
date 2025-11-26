@@ -1,7 +1,7 @@
-pkgbase = python-luwen-git
+pkgbase = python-luwen
 	pkgdesc = Python package for the tenstorrent system interface library
 	pkgver = 0.7.16.r0.gfbad73b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tenstorrent/luwen
 	arch = x86_64
 	license = Apache
@@ -17,6 +17,6 @@ pkgbase = python-luwen-git
 	source = luwen::git+https://github.com/tenstorrent/luwen.git
 	sha256sums = SKIP
 
-pkgname = python-luwen-git
+pkgname = python-luwen
 
-pkgname = luwencpp-git
+pkgname = luwencpp

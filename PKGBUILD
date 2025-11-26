@@ -1,9 +1,9 @@
 # Maintainer: Martin Chang <marty188586@gmail.com>
 
-pkgbase=python-luwen-git
-pkgname=(python-luwen-git luwencpp-git)
+pkgbase=python-luwen
+pkgname=(python-luwen luwencpp)
 pkgver=0.7.16.r0.gfbad73b
-pkgrel=1
+pkgrel=2
 pkgdesc="Python package for the tenstorrent system interface library"
 arch=('x86_64')
 url='https://github.com/tenstorrent/luwen'
@@ -31,13 +31,13 @@ build() {
     cargo build --release
 }
 
-package_python-luwen-git() {
+package_python-luwen() {
     cd luwen
     python -m installer --destdir="$pkgdir" target/wheels/*-linux*_x86_64.whl
 }
 
 
-package_luwencpp-git() {
+package_luwencpp() {
     cd luwen
     install -Dm755 target/release/libluwen.so "$pkgdir/usr/lib/libluwen.so"
     install -Dm644 target/release/luwen.h "$pkgdir/usr/include/luwen.h"
