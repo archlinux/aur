@@ -1,6 +1,6 @@
 pkgbase = python-spitch
 	pkgdesc = The official Python library for the spitch API.
-	pkgver = 1.41.0
+	pkgver = 1.41.2
 	pkgrel = 1
 	url = https://github.com/spi-tch/spitch-python
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = python-spitch
 	depends = python-anyio
 	depends = python-distro
 	depends = python-sniffio
-	source = https://github.com/spi-tch/spitch-python/archive/refs/tags/v1.41.0.tar.gz
-	sha256sums = cb1cb365721bf643a418289518d6b9755dc88ebc03986be56372331b288d9965
+	source = https://github.com/spi-tch/spitch-python/archive/refs/tags/v1.41.2.tar.gz
+	sha256sums = 4d400adc8d8317911648bb3a373a220fa5a49ebcd850d9d700d91e4e1b968265
 
 pkgname = python-spitch
