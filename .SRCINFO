@@ -1,12 +1,12 @@
 pkgbase = victoriametrics-bin
 	pkgdesc = Fast, cost-effective and scalable time series database
 	pkgver = 1.130.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://victoriametrics.github.io
 	install = victoriametrics.install
 	arch = x86_64
 	arch = aarch64
-	license = Apache
+	license = Apache-2.0
 	provides = victoriametrics
 	conflicts = victoriametrics
 	backup = etc/default/victoriametrics

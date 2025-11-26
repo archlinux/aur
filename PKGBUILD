@@ -1,11 +1,11 @@
 # Maintainer: Oleg "KawaiDesu" Vasilev <mail@zeym.org>
 pkgname=victoriametrics-bin
 pkgver=1.130.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast, cost-effective and scalable time series database"
 arch=('x86_64' 'aarch64')
 url="https://victoriametrics.github.io"
-license=('Apache')
+license=('Apache-2.0')
 provides=('victoriametrics')
 conflicts=('victoriametrics')
 backup=('etc/default/victoriametrics')
