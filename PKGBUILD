@@ -2,11 +2,12 @@
 # Co-Maintainer: Lysec <itslysec@gmail.com>
 pkgname=noctalia-shell
 pkgver=3.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A sleek and minimal desktop shell thoughtfully crafted for Wayland, built with Quickshell."
 arch=('any')
 url="https://github.com/noctalia-dev/noctalia-shell"
 license=('MIT')
+makedepends=('git')
 depends=(
   'quickshell'
   'ttf-roboto'
@@ -16,7 +17,7 @@ depends=(
 )
 optdepends=(
   'cliphist: For clipboard history support'
-  'matugen-bin: Material You color scheme generation'
+  'matugen: Material You color scheme generation'
   'cava: Audio visualizer component'
   'wlsunset: For supporting NightLight'
   'power-profiles-daemon: For power profile management'
