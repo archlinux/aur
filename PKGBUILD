@@ -45,13 +45,13 @@ source=("${_pkgname}::git+${_git_repo}#${_git_branch}"
         "69-zfs-dkms-check.hook"
         "zfs-dkms-check"
         "Fix-LLVM-21-Wuninitialized-const-pointer-warning.patch::https://github.com/openzfs/zfs/commit/9acedbaceec362d08a33ebfe7c4c7efcee81d094.patch?full_index=1"
-        "linux618-replace_nth_page.patch::https://github.com/openzfs/zfs/commit/9ae69e2f11c7ff12a8a14f24d49c12d0c6f7b4d5.patch?full_index=1"
-        "linux618-convert_ida_simple_calls.patch::https://github.com/openzfs/zfs/commit/2525b7726e3547af6e1a9ddc2b55b03b0eb51b32.patch?full_index=1"
-        "linux618-block_device_operations_getgeo_takes_struct_gendisk.patch::https://github.com/openzfs/zfs/commit/a8b443445897daf82883abec3f95cbf762908f0f.patch?full_index=1"
-        "linux618-replace_write_cache_pages.patch::https://github.com/openzfs/zfs/commit/72e04819f2382150d3be5f890fe9e270af13b995.patch?full_index=1"
-        "linux618-namespace_type_moved_to_ns_common.patch::https://github.com/openzfs/zfs/commit/74c39c4171b8a5098529c029e04b1a24433099a7.patch?full_index=1"
-        "linux618-sha256_generic_make_internal_functions_a_little_more_private.patch::https://github.com/openzfs/zfs/commit/fa694e8bde3717f6a070835eb854340b4293e843.patch?full_index=1"
-        "linux618-generic_drop_inode_and_generic_delete_inode_renamed.patch::https://github.com/openzfs/zfs/commit/13c6a707958493df8fc6a7909072e0a311660af2.patch?full_index=1")
+        "linux618-replace_nth_page.patch::https://github.com/darkbasic/zfs/commit/9ae69e2f11c7ff12a8a14f24d49c12d0c6f7b4d5.patch?full_index=1"
+        "linux618-convert_ida_simple_calls.patch::https://github.com/darkbasic/zfs/commit/2525b7726e3547af6e1a9ddc2b55b03b0eb51b32.patch?full_index=1"
+        "linux618-block_device_operations_getgeo_takes_struct_gendisk.patch::https://github.com/darkbasic/zfs/commit/a8b443445897daf82883abec3f95cbf762908f0f.patch?full_index=1"
+        "linux618-replace_write_cache_pages.patch::https://github.com/darkbasic/zfs/commit/72e04819f2382150d3be5f890fe9e270af13b995.patch?full_index=1"
+        "linux618-namespace_type_moved_to_ns_common.patch::https://github.com/darkbasic/zfs/commit/74c39c4171b8a5098529c029e04b1a24433099a7.patch?full_index=1"
+        "linux618-sha256_generic_make_internal_functions_a_little_more_private.patch::https://github.com/darkbasic/zfs/commit/fa694e8bde3717f6a070835eb854340b4293e843.patch?full_index=1"
+        "linux618-generic_drop_inode_and_generic_delete_inode_renamed.patch::https://github.com/darkbasic/zfs/commit/13c6a707958493df8fc6a7909072e0a311660af2.patch?full_index=1")
 sha256sums=('SKIP'
             '8d5c31f883a906ab42776dcda79b6c89f904d8f356ade0dab5491578a6af55a5'
             '6c793cdbcf0c758b7bc78dcac85d116052b7a66416e4c54179cb0955687b3875'
