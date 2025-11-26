@@ -3,7 +3,7 @@
 pkgname=oxdna-cuda-git
 pkgdesc="DNA/RNA/etc simulator, from lorenzo-rovigatti/oxDNA, with CUDA support and analysis tools."
 url="https://github.com/lorenzo-rovigatti/oxDNA"
-pkgver=3.7.0.r55.gaa678f6a
+pkgver=3.7.0.r71.ga1b559c1
 arch=('x86_64')
 license=('GPL-3.0-only')
 provides=('oxdna')
@@ -50,7 +50,7 @@ package() {
     cd "oxDNA/analysis"
     python -m installer --destdir="$pkgdir" dist/*.whl
 
-    cd "${srcdir}/build/oxpy/python/oxpy"
+    cd "${srcdir}/build/python"
     python setup.py install --root="$pkgdir" --optimize=1
 
     install -Dm644 "${srcdir}/build/src/liboxdna_common.so" "${pkgdir}/usr/lib/liboxdna_common.so"
