@@ -3,11 +3,12 @@
 pkgname=lexconvert-git
 _pkgname="${pkgname%-git}"
 pkgver=0.39.r2.ge096c20
-pkgrel=3
+pkgrel=4
 pkgdesc="Convert phoneme codes and lexicon formats for English speech synths"
 arch=('any')
 url="https://github.com/ssb22/lexconvert"
 license=('Apache-2.0')
+provides=("$_pkgname")
 makedepends=('git' 'dos2unix')
 depends=('python')
 # NOTE: Considering these require MacOS system voice resources at hardcoded

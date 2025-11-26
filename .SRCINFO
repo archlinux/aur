@@ -1,7 +1,7 @@
 pkgbase = lexconvert-git
 	pkgdesc = Convert phoneme codes and lexicon formats for English speech synths
 	pkgver = 0.39.r2.ge096c20
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ssb22/lexconvert
 	arch = any
 	license = Apache-2.0
@@ -9,6 +9,7 @@ pkgbase = lexconvert-git
 	makedepends = dos2unix
 	depends = python
 	optdepends = python2: for mac and mac-uk formats
+	provides = lexconvert
 	source = lexconvert-git::git+https://github.com/ssb22/lexconvert.git
 	sha256sums = SKIP
 
