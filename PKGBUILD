@@ -29,7 +29,7 @@ source=(
 source_x86_64=("${pkgname}-${pkgver}-amd64.AppImage::https://releases-dev.whatpulse.org/$pkgver/linux/whatpulse-linux-${pkgver}_amd64.AppImage")
 
 sha256sums=('5a4a6676a6b513824eeac8a2accd6de9e8bd2bc11b3e2967fa2b2a18d29fa35d'
-            'e1ce68d2edc6fe418bbd6b7615a65d3104efe81f408e09a024372b92c313374c'
+            'a57d62d6b70fdb06eb69df7965f5a49327f83c5251ea8de5918b3c61516c2b45'
             'cfea47f15bb3ba2494a7b1d50367139dc12709fc1e8ba0b25d86ee5f09748619')
 sha256sums_x86_64=('58e2255bd31e5af25e18e58fc05f74301e5a75336198fc773c99b6784bf967bf')
 
