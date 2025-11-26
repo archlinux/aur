@@ -1,6 +1,6 @@
 pkgbase = mailpit
 	pkgdesc = Web and API based SMTP testing
-	pkgver = 1.27.11
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://github.com/axllent/mailpit
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = mailpit
 	makedepends = npm
 	makedepends = go
 	optdepends = systemd
-	source = https://github.com/axllent/mailpit/archive/refs/tags/v1.27.11.tar.gz
+	source = https://github.com/axllent/mailpit/archive/refs/tags/v1.28.0.tar.gz
 	source = mailpit.service
-	sha256sums = 7c3e6a50727dc5936293ad43e66e368e26666fb58df222d39d9ca7be52562c42
+	sha256sums = 438581a2fd717d12b6259081420b10a8dab5af30b18b73c01db9cf5d83467869
 	sha256sums = 602494cc3d28d58fa430ec3c53fd66e694db9faa87e98e45effe00a844affc4b
 
 pkgname = mailpit
