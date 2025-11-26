@@ -1,7 +1,7 @@
 # Maintainer: sukulent
 # shellcheck disable=SC2034 # disable unused variables warning
 pkgname='namefix-cpp'
-pkgver="1.3.0"
+pkgver="1.3.1"
 pkgrel="1"
 # epoch=
 pkgdesc="Fix bad filenames"
@@ -22,7 +22,7 @@ replaces=('namefix')
 # changelog=
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/sukulent/namefix-cpp/tar.gz/refs/tags/v$pkgver")
 # noextract=()
-sha256sums=(32e948601d7cd24d3d498126789a1db72b2c176a10fca8a6f124f648c1c2c18d)
+sha256sums=(1c711180e6629e665d4cd8fbfc6ea4f97c3f0225c9bfb80021036cc5fb5cea23)
 # validpgpkeys=()
 
 
