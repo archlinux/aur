@@ -1,0 +1,4 @@
+[agena-bin]
+source = "regex"
+regex = "Agena ([\\d.]+)"
+url = "https://agena.sourceforge.net/download.html"

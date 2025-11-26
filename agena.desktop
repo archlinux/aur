@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Version=4.7.3
+Version=6.4.6
 Name=AgenaEdit
 Comment=An Algol-inspired procedural programming language designed for science, scripting, and other applications
 Exec=/usr/bin/agenaedit
