@@ -2,7 +2,7 @@
 pkgname=gde-creator-bin
 _binname=gde-creator
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GDE-Creator is a modern CLI tool that automatically search steam database, fetch name and icons and generate compliant .desktop file in your Linux system."
 arch=('x86_64')
 
@@ -12,6 +12,8 @@ license=('MIT')
 depends=('glibc' 'zlib')
 provides=("$_binname")
 conflicts=("$_binname" "$_binname-git")
+
+options=('!strip')
 
 source=("$url/releases/download/v$pkgver/gde-creator-linux-x64.tar.gz")
 
