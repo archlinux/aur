@@ -1,0 +1,15 @@
+pkgbase = udiskr
+	pkgdesc = Lightweight alternative to udiskie
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/uriib/udiskr
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo-nightly
+	depends = udisks2
+	optdepends = xdg-utils: open directory
+	source = https://github.com/uriib/udiskr/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = f6c0b620bb6df03a313b5fb119a733045c2ffff73b2d8afa09de27bcbe1cc4c7
+
+pkgname = udiskr
