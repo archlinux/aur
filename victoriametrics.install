@@ -4,3 +4,11 @@ post_install() {
 	echo ':: track it by yourself in changelog and follow the upgrade guides.'
 	echo ':: Settings could be adjusted in /etc/default/victoriametrics'
 }
+
+post_upgrade() {
+	if [ "$2" == "1.119.0-1" ]; then
+		echo ':: Please note that the executable name has changed to victoria-metrics'
+		echo ':: and that the "-storage-path" option is now set in the .service file'
+		echo ':: to work with systemds DynamicUser'
+	fi
+}

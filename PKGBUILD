@@ -1,28 +1,24 @@
 # Maintainer: Oleg "KawaiDesu" Vasilev <mail@zeym.org>
 pkgname=victoriametrics-bin
-pkgver=1.119.0
+pkgver=1.130.0
 pkgrel=1
 pkgdesc="Fast, cost-effective and scalable time series database"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://victoriametrics.github.io"
 license=('Apache')
 backup=('etc/default/victoriametrics')
 install=victoriametrics.install
-source=("https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v${pkgver}/victoria-metrics-linux-amd64-v${pkgver}.tar.gz"
-        "victoriametrics.service"
-        "victoriametrics.sysusers"
-        "victoriametrics.tmpfiles"
+source_x86_64=("https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v${pkgver}/victoria-metrics-linux-amd64-v${pkgver}.tar.gz")
+source_aarch64=("https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v${pkgver}/victoria-metrics-linux-arm64-v${pkgver}.tar.gz")
+source=("victoriametrics.service"
         "victoriametrics.default")
-sha256sums=('d8f7dc69b96380f96fd79085026a657c0e8b8116deff81065773a3ae9381bb37'
-            'c47defa8ff60515a704daeb01eedebf08e15e85bcd37217c40c7133b6302c967'
-            'ad4911f772a1a52d1bd5ba4236d27a84aabbb10fc057d2906bf50f30d179d4a4'
-            'e26f3359d0afc3bf0f236a9b4b05554ed9256d477ef4b4f1b013898fac7a723c'
-            'f538747c1384e6842561e1d13519c2118b8e74c6eb5132b9f2e8730f7d08cc26')
+sha256sums=('6622e315f00bb78e21b5d9c3d6fe5bc447c7cedb1ab2de7a3a1d4c7e951270a7'
+            '0fc91310e2c3140bd90b2fad62f497d8e7432cf3a2a8ab3a034b45958e01012a')
+sha256sums_x86_64=('8562de8a8fb1b2e912b78e1bac9468060ff9be3367a80e6dcc1fe667cfe7a8ac')
+sha256sums_aarch64=('e210a0f345f71ab11a588f5e05ac90c67fa2047b974fd17409d9b787c3e1bc6b')
 
 package(){
-  install -Dm755 "${srcdir}/victoria-metrics-prod" "${pkgdir}/usr/bin/victoriametrics"
+  install -Dm755 "${srcdir}/victoria-metrics-prod" "${pkgdir}/usr/bin/victoria-metrics"
   install -Dm640 "${srcdir}/victoriametrics.service" "${pkgdir}/usr/lib/systemd/system/victoriametrics.service"
   install -Dm640 "${srcdir}/victoriametrics.default" "${pkgdir}/etc/default/victoriametrics"
-  install -Dm644 "${srcdir}/victoriametrics.sysusers" "${pkgdir}/usr/lib/sysusers.d/victoriametrics.conf"
-  install -Dm644 "${srcdir}/victoriametrics.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/victoriametrics.conf"
 }
