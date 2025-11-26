@@ -1,0 +1,18 @@
+pkgbase = rgrc
+	pkgdesc = Rusty Generic Colouriser - like grc but faster and with more features
+	pkgver = 0.4.1.r6.gd26690b
+	pkgrel = 1
+	url = https://github.com/lazywalker/rgrc
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	checkdepends = cargo
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	source = rgrc::git+https://github.com/lazywalker/rgrc#branch=master
+	sha256sums = SKIP
+
+pkgname = rgrc
