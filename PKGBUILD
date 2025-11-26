@@ -26,7 +26,7 @@ sha256sums=('1f2cfff4edeeb04ccc94c5edfa354169bbde05152e0b98880be429c457e516e9')
 prepare() {
 	cd "$_archive"
 
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cargo fetch --locked --target "$(rustc --print host-tuple)"
 	pnpm install --frozen-lockfile
 
 	# disable ad-hoc pre-build script (we do it by hand in build(), see below)
@@ -61,9 +61,8 @@ build() {
 		-p but \
 		-p but-testing
 	# keep in sync with crates/gitbutler-tauri/inject-git-binaries.sh
-	local _triple="$(rustc -vV | sed -n 's/host: //p')"
 	for bin in target/release/{gitbutler-git-{askpass,setsid},but{,-testing}}; do
-		cp -av "$bin" "crates/gitbutler-tauri/${bin##*/}-${_triple}"
+		cp -av "$bin" "crates/gitbutler-tauri/${bin##*/}-$(rustc --print host-tuple)"
 	done
 	# tauri does not have "bare files" bundler, piggyback on the deb one
 	cargo tauri build \
