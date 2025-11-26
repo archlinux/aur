@@ -3,7 +3,7 @@
 
 pkgname=tdf
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI-based PDF viewer"
 arch=('x86_64')
 url="https://github.com/itsjunetime/tdf"
@@ -15,8 +15,6 @@ sha256sums=('8523b8a9a3e5d22cddea6fda5a8b6abf04f6736e919d05e8c6ba6652bc8b0683')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  # upstream lockfile is not in sync, c.f. https://github.com/itsjunetime/tdf/issues/98
-  cargo update
   cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
