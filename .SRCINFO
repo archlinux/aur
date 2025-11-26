@@ -1,13 +1,13 @@
 pkgbase = agru
 	pkgdesc = Ansible-Galaxy Requirements Updater - a fast ansible-galaxy replacement
-	pkgver = 0.1.18
+	pkgver = 0.1.19
 	pkgrel = 0
 	url = https://github.com/etkecc/agru
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = go
-	source = vcs-repository::git+https://github.com/etkecc/agru#tag=v0.1.18
+	source = vcs-repository::git+https://github.com/etkecc/agru#tag=v0.1.19
 	md5sums = SKIP
 
 pkgname = agru
