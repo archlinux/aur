@@ -1,7 +1,7 @@
 # Maintainer: Dennis Lichtenthaeler <gamy@mrgamy.space>
 # Contributor: Georgi Manov <lobo1@abv.bg>
 pkgname=norwester-otf
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A condensed geometric sans serif with uppercase, small caps,
 numbers & an assortment of symbols. By Jamie Wilson."
