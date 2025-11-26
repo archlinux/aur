@@ -1,6 +1,6 @@
 # Maintainer: Lauri Gustafsson <lauri at gustafla dot space>
 pkgname=zigdown-bin
-pkgver=1.0.2
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='A Markdown toolset in Zig'
 url='https://github.com/JacobCrabill/zigdown'
@@ -11,8 +11,8 @@ license=('MIT')
 depends=('glibc')
 conflicts=('zigdown')
 provides=('zigdown')
-sha256sums_x86_64=('9331f3f05afc8127a35f9e80a3a8db3d881cf2da337e7963c0a72dc66444eb10')
-sha256sums_aarch64=('4146c1c497867ae2c503e78c62b5b1efc17d3c650b9709f54a4ef8af0fbcc33a')
+sha256sums_x86_64=('6efd61f3e6ef97b7dc05821683b1aa051ce9e5e88f3eeca76d51178053ca68a6')
+sha256sums_aarch64=('f9d8ff9b026f8c4f214e684209f92518a2b8b62830cab22bc35a26b49ad59d70')
 
 package() {
   install -Dm755 "${srcdir}/zigdown" "${pkgdir}/usr/bin/zigdown"
