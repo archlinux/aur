@@ -1,0 +1,7 @@
+{
+  "name": "io.github.kuba2k2.webserial",
+  "description": "WebSerial for Firefox",
+  "path": "/usr/bin/firefox-webserial",
+  "type": "stdio",
+  "allowed_extensions": ["webserial@kuba2k2.github.io"]
+}
