@@ -1,17 +1,17 @@
 pkgbase = bitrise-bin
 	pkgdesc = Run your bitrise.io automations offline
-	pkgver = 2.35.1
+	pkgver = 2.35.2
 	pkgrel = 1
 	url = https://github.com/bitrise-io/bitrise
 	arch = x86_64
 	license = MIT
 	provides = bitrise
 	conflicts = bitrise
-	source = bitrise-2.35.1-README.md::https://github.com/bitrise-io/bitrise/raw/refs/tags/v2.35.1/README.md
-	source = bitrise-2.35.1-LICENSE::https://github.com/bitrise-io/bitrise/raw/refs/tags/v2.35.1/LICENSE
+	source = bitrise-2.35.2-README.md::https://github.com/bitrise-io/bitrise/raw/refs/tags/v2.35.2/README.md
+	source = bitrise-2.35.2-LICENSE::https://github.com/bitrise-io/bitrise/raw/refs/tags/v2.35.2/LICENSE
 	sha256sums = 50beabde262bb6069d8e751dc17ccaecc04c3d7451f8dcd8e684a6f16c964e04
 	sha256sums = a0379118157469b6a466bf070c8986ffbca0874d10bb4950e0c6018544914414
-	source_x86_64 = bitrise-2.35.1-x86_64::https://github.com/bitrise-io/bitrise/releases/download/v2.35.1/bitrise-Linux-x86_64
-	sha256sums_x86_64 = 553d0dea9f343ec09c8100746f98952aa16a031a10509529efcd197cbee69b95
+	source_x86_64 = bitrise-2.35.2-x86_64::https://github.com/bitrise-io/bitrise/releases/download/v2.35.2/bitrise-Linux-x86_64
+	sha256sums_x86_64 = 5cdfb48163d28a6e53bac944fbb70524ad7d29b816a0c02706641e4b18471704
 
 pkgname = bitrise-bin
