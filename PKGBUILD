@@ -26,7 +26,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/pierspad/textmerger/archive/refs/tags/v$pkgver.tar.gz"
 
 )
-sha256sums=('35e9eb12ea46e7d2c7bac2766140f534b6262ac84facd1ed2ae0c9df2894c4ab')
+sha256sums=('ed3f8dea62b0c398602e917bf9091dfb57927f906251bf623bd00c5761309ee8')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver/textmerger"
