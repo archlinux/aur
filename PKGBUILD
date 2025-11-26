@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yank-note
 _pkgname='Yank Note'
-pkgver=3.84.0
-_electronversion=33
-_nodeversion=20
+pkgver=3.85.1
+_electronversion=38
+_nodeversion=22
 pkgrel=1
 pkgdesc="A highly extensible Markdown editor. Version control, AI completion, mind map, documents encryption, code snippet running, integrated terminal, chart embedding, HTML applets, Reveal.js, plug-in, and macro replacement.(Use system-wide electron)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
     "${pkgname}.git::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('af447790700d1f0c2ba6d25a873f3f0b96542e4643e6b00e019a2b09614c34a1'
+sha256sums=('d40d89613410af2e6245cc5b6800df56a70db91654c6ef867cdba9439f9b9a9b'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -38,8 +38,8 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _electronversion="$(grep '^ *"electron": *"' "${srcdir}/${pkgname}.git/package.json" | cut -d'"' -f4 | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(grep '^ *"electron": *"' "${srcdir}/${pkgname}.git/package.json" | cut -d'"' -f4 | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname}.git"
