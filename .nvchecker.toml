@@ -1,0 +1,5 @@
+[ingest-bin]
+source = "github"
+github = "sammcj/ingest"
+use_latest_release = true
+prefix = "v"
