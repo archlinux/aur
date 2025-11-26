@@ -7,7 +7,7 @@
 pkgname=('0ad-git' '0ad-data-git')
 _pkgname=0ad
 epoch=1
-pkgver=a26.r2052.g7ec2d3f0e0
+pkgver=a26.r2085.ga32a28a5e3
 pkgrel=1
 pkgdesc="Cross-platform, 3D and historically-based real-time strategy game (git version)"
 arch=('i686' 'x86_64')
@@ -31,6 +31,9 @@ pkgver() {
 }
 
 build() {
+  # https://gitea.wildfiregames.com/0ad/0ad/issues/8571
+  export CXXFLAGS="${CXXFLAGS/-fexceptions/}"
+
   export CMAKE_POLICY_VERSION_MINIMUM=3.5
   cd "$srcdir/${_pkgname}/libraries"
   ./build-source-libs.sh
