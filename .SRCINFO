@@ -1,7 +1,7 @@
 pkgbase = spritz-wine-bin
 	pkgdesc = A compatibility layer for running Windows programs, with experimental custom patches for games (doesn't conflict with other Wine installations)
 	pkgver = 10.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NelloKudo/spritz-wine-aur
 	arch = x86_64
 	license = LGPL

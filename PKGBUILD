@@ -3,7 +3,8 @@
 pkgname="spritz-wine-bin"
 _pkgname=${pkgname%-bin}-tkg
 pkgver=10.19
-pkgrel=1
+pkgrel=2
+buildrel=1
 pkgdesc="A compatibility layer for running Windows programs, with experimental custom patches for games (doesn't conflict with other Wine installations)"
 url="https://github.com/NelloKudo/spritz-wine-aur"
 license=(LGPL)
@@ -19,13 +20,13 @@ depends=(
     'libxkbcommon'          'libxrandr'
     'systemd-libs'          'wayland'
 )
-source=("https://github.com/NelloKudo/spritz-wine-aur/releases/download/${_pkgname}-${pkgver}-${pkgrel}/${_pkgname}-staging-wow64-${pkgver}-${pkgrel}-x86_64.tar.xz")
+source=("https://github.com/NelloKudo/spritz-wine-aur/releases/download/${_pkgname}-${pkgver}-${buildrel}/${_pkgname}-staging-wow64-${pkgver}-${buildrel}-x86_64.tar.xz")
 sha256sums=('15025533f1621cd01618500e0d7f10893a82f208dff86df73ec52bbfdb2f8dbb')
 
 package() {
     # Install to /opt
     install -dm755 "$pkgdir/opt"
-    cp -a "$srcdir/$_pkgname-staging-wow64-$pkgver-$pkgrel" "$pkgdir/opt/$_pkgname"
+    cp -a "$srcdir/$_pkgname-staging-wow64-$pkgver-$buildrel" "$pkgdir/opt/$_pkgname"
     
     # Symlink to /usr/bin as 'spritz-wine'
     install -dm755 "$pkgdir/usr/bin"
