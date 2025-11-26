@@ -7,6 +7,7 @@ pkgbase = python-jetpytools
 	license = MIT
 	makedepends = python-installer
 	depends = python
+	depends = python-typing_extensions
 	provides = python-stgpytools
 	conflicts = python-stgpytools
 	source = https://files.pythonhosted.org/packages/4e/7e/627274b4f17e5c7198ea5de8ec6c7bb92fc9ca31395af375c27dfcbeacbe/jetpytools-1.7.3-py3-none-any.whl
