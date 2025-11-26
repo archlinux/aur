@@ -1,6 +1,6 @@
 # Maintainer: Irving Ernesto <business@irvingernesto.com>
 pkgname=codecontexter
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A fast CLI tool to aggregate codebase context for LLMs"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7a89558c01d4c75df5a8a4bfbe7b654b9f73b75638cb8066e0a19002e38bdd0c')
+sha256sums=('8632daf016f545fb8cbdb274643b26cfd2fe3d2d1f2de4543465190fb8d45bdb')
 
 prepare() {
     cd "$pkgname-$pkgver"

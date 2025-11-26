@@ -1,6 +1,6 @@
 pkgbase = codecontexter
 	pkgdesc = A fast CLI tool to aggregate codebase context for LLMs
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/Sekinal/codecontexter
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = codecontexter
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = codecontexter-0.1.2.tar.gz::https://github.com/Sekinal/codecontexter/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = 7a89558c01d4c75df5a8a4bfbe7b654b9f73b75638cb8066e0a19002e38bdd0c
+	source = codecontexter-0.1.3.tar.gz::https://github.com/Sekinal/codecontexter/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = 8632daf016f545fb8cbdb274643b26cfd2fe3d2d1f2de4543465190fb8d45bdb
 
 pkgname = codecontexter
