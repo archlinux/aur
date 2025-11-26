@@ -18,6 +18,7 @@ pkgbase = sonic-pi
 	license = custom:ISC
 	makedepends = boost>=1.74.0
 	makedepends = ruby-gettext>=3.4.4
+	makedepends = ruby-ruby-beautify2>=0.92.2
 	makedepends = erlang-asn1
 	makedepends = erlang-public_key
 	makedepends = erlang-ssl
