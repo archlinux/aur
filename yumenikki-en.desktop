@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Yume Nikki
+Comment=Explore the dreams
+Categories=Game;RolePlaying;
+Icon=yumenikki-en
+Exec=yumenikki-en
+StartupNotify=false
+StartupWMClass=EasyRPG Player
+Terminal=false
