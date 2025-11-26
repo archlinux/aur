@@ -3,7 +3,7 @@
 
 pkgname=llama.cpp-hip
 _pkgname="${pkgname%-hip}"
-pkgver=b7136
+pkgver=b7157
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -36,7 +36,7 @@ provides=(${_pkgname})
 conflicts=(${_pkgname} libggml ggml stable-diffusion.cpp)
 options=(lto !debug)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b08f799ade0151454420c3f68e7a3a8cc061086230aed514b34fd38f9fe3c23d')
+sha256sums=('11445b4b35b83c5f8781a8ccd62f0c15ef9cce85051e001c04aaaf92fb1a7133')
 
 prepare() {
   ln -sf "${_pkgname}-${pkgver}" llama.cpp
