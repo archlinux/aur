@@ -5,8 +5,8 @@
 # Original: Daniel Bermond <dbermond@archlinux.org> https://aur.archlinux.org/packages/mpv-full-git
 
 pkgname=mpv-amd-full-git
-pkgver=0.40.0.r429.g0a606d9e18
-pkgrel=2
+pkgver=0.40.0.r468.g57d9d4eb42
+pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs except Nvidia)'
 arch=('x86_64')
 license=('GPL-2.0-or-later')
@@ -129,6 +129,8 @@ build() {
         -Davfoundation='disabled' \
         -Djack='enabled' \
         -Dopenal='enabled' \
+        -Daudiotrack='disabled' \
+        -Daaudio='disabled' \
         -Dopensles='disabled' \
         -Doss-audio='disabled' \
         -Dpipewire='enabled' \
