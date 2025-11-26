@@ -1,7 +1,7 @@
 #!/bin/bash
 # Maintainer: Grigor Tonikyan <grigor.tonikyan@gmail.com>
 export pkgname=antigravity-binary
-export pkgver=1.11.5
+export pkgver=1.11.9
 export pkgrel=1
 export pkgdesc="Google Antigravity IDE. Pre built package from official RPM"
 export arch=('x86_64')
@@ -11,7 +11,7 @@ export depends=('alsa-lib' 'at-spi2-core' 'glibc' 'gtk3' 'libdrm' 'libxss' 'libx
 export provides=('antigravity')
 export conflicts=('antigravity')
 export options=('!strip')
-export source=("antigravity-${pkgver}.rpm::https://us-central1-yum.pkg.dev/projects/antigravity-auto-updater-dev/antigravity-rpm/Packages/2a06354d15ee9c6465b25b79a9f9971b71b42fcf5e3600585559b8c678a7548c-antigravity-1.11.5-1763625986.el8.x86_64.rpm")
+export source=("antigravity-${pkgver}.rpm::https://us-central1-yum.pkg.dev/projects/antigravity-auto-updater-dev/antigravity-rpm/Packages/b1bb95ae5f36ab983def9cb3d5eb3c282c5cea417bc3527ea60841bcaef41bd9-antigravity-1.11.9-1764119119.el8.x86_64.rpm")
 export sha256sums=('SKIP')
 
 srcdir="${srcdir:-.}"
@@ -28,4 +28,4 @@ package() {
 	mkdir -p "${pkgdir}/usr/bin"
 	ln -sf /opt/antigravity/bin/antigravity "${pkgdir}/usr/bin/antigravity"
 }
-sha256sums=('2a06354d15ee9c6465b25b79a9f9971b71b42fcf5e3600585559b8c678a7548c')
+sha256sums=('b1bb95ae5f36ab983def9cb3d5eb3c282c5cea417bc3527ea60841bcaef41bd9')

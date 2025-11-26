@@ -1,6 +1,6 @@
 pkgbase = antigravity-binary
 	pkgdesc = Google Antigravity IDE. Pre built package from official RPM
-	pkgver = 1.11.5
+	pkgver = 1.11.9
 	pkgrel = 1
 	url = https://antigravity.google/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = antigravity-binary
 	provides = antigravity
 	conflicts = antigravity
 	options = !strip
-	source = antigravity-1.11.5.rpm::https://us-central1-yum.pkg.dev/projects/antigravity-auto-updater-dev/antigravity-rpm/Packages/2a06354d15ee9c6465b25b79a9f9971b71b42fcf5e3600585559b8c678a7548c-antigravity-1.11.5-1763625986.el8.x86_64.rpm
-	sha256sums = 2a06354d15ee9c6465b25b79a9f9971b71b42fcf5e3600585559b8c678a7548c
+	source = antigravity-1.11.9.rpm::https://us-central1-yum.pkg.dev/projects/antigravity-auto-updater-dev/antigravity-rpm/Packages/b1bb95ae5f36ab983def9cb3d5eb3c282c5cea417bc3527ea60841bcaef41bd9-antigravity-1.11.9-1764119119.el8.x86_64.rpm
+	sha256sums = b1bb95ae5f36ab983def9cb3d5eb3c282c5cea417bc3527ea60841bcaef41bd9
 
 pkgname = antigravity-binary
