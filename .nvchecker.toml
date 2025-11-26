@@ -1,0 +1,5 @@
+[wasmrun-bin]
+source = "github"
+github = "anistark/wasmrun"
+use_latest_release = true
+prefix = "v"
