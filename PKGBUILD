@@ -1,14 +1,16 @@
-# Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: Alexander Bogdanov <andorn@gmail.com>
 
 pkgname=kchmviewer
 pkgver=8.0
-pkgrel=6
+pkgrel=7
 pkgdesc="A .chm files (MS HTML help file format) viewer"
 arch=('x86_64')
 url="http://kchmviewer.sourceforge.net/"
 license=('GPL')
 depends=('chmlib' 'libzip' 'qt5-webengine')
+makedepends=('qt5-base')
 changelog=$pkgname.changelog
 source=($pkgname-$pkgver.tar.gz::https://github.com/gyunaev/$pkgname/archive/refs/tags/RELEASE_8_0.tar.gz
        $pkgname-$pkgver-url-scheme.patch::https://github.com/gyunaev/$pkgname/commit/9ac73e7ad15de08aab6b1198115be2eb44da7afe.patch

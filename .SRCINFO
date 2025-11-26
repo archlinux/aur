@@ -1,11 +1,12 @@
 pkgbase = kchmviewer
 	pkgdesc = A .chm files (MS HTML help file format) viewer
 	pkgver = 8.0
-	pkgrel = 6
+	pkgrel = 7
 	url = http://kchmviewer.sourceforge.net/
 	changelog = kchmviewer.changelog
 	arch = x86_64
 	license = GPL
+	makedepends = qt5-base
 	depends = chmlib
 	depends = libzip
 	depends = qt5-webengine
