@@ -6,7 +6,7 @@ pkgver='1.019'
 pkgrel='1'
 pkgdesc="HTTP Basic and Digest authentication for Catalyst"
 arch=('any')
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
 options=('!emptydirs')
 depends=('perl-catalyst-plugin-authentication>=0' 'perl-catalyst-runtime>=0' 'perl-class-accessor>=0' 'perl-crypt-sysrandom>=0.007' 'perl-http-message>=0' 'perl-string-escape>=0' 'perl-uri>=0' 'perl>=5.006')
 makedepends=('perl-module-build-tiny')
