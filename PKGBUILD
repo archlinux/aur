@@ -5,7 +5,7 @@
 # Contributor: Florian Reimair <office /at/ florianreimair.at>
 
 pkgname=guake-git
-pkgver=3.10.16.gdf9fbbee
+pkgver=3.1.0.r802.g1c18e87
 pkgrel=1
 pkgdesc="Top-down terminal for Gnome using gtk3 and vte3"
 arch=('any')
@@ -21,7 +21,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  git describe --tags | sed 's,-,.,g'
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build(){
