@@ -7,6 +7,7 @@ pkgdesc="Tu Guardián de Red para Linux. Simple. Potente. Inteligente."
 arch=('x86_64')
 url="https://github.com/danitxu79/SentinelX"
 license=('LGPL3')
+keywords=('firewall' 'gui' 'security' 'firewalld' 'ufw' 'clamav' 'antivirus' 'network' 'protection' 'manager' 'python' 'qt6')
 provides=('sentinelx')
 conflicts=('sentinelx')
 
