@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-test-strict'
-pkgver='0.52'
+pkgver='0.54'
 pkgrel='1'
 pkgdesc="Perl/CPAN Module Test::Strict: Check syntax, presence of use strict; and test coverage"
 arch=('any')
@@ -12,8 +12,8 @@ depends=('perl-io-stringy' 'perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/Test-Strict'
 source=("http://search.cpan.org/CPAN/authors/id/M/MA/MANWAR/Test-Strict-$pkgver.tar.gz")
-md5sums=('d0bacf3430620aa6a673309d49752dd1')
-sha512sums=('2d2e27f8fa5156bae4b54c2a9da5f5bd37c820ca9f9594f51c0915695f74f16880445d8a47de5a86d0277482b8234d4ab8e1c8a7ba00871c950268be40f543b5')
+md5sums=('b0821dc4af3c50f152f4a58842d3a24e')
+sha512sums=('4e870dcc1c7d296ec4a49aa204c2dedd2eb77cdd02777c7565e5c1aefc1200ebac2a9e84e889f2cb36a80c34a0b51c70c5fb5772b6827272cf15c46dbc573fb5')
 _distdir="Test-Strict-$pkgver"
 
 build() {
