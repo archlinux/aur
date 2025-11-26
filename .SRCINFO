@@ -1,6 +1,6 @@
 pkgbase = mev-boost
 	pkgdesc = MEV middleware for Ethereum validators
-	pkgver = 1.10.0
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://boost.flashbots.net/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mev-boost
 	makedepends = git
 	depends = go
 	conflicts = mev-boost
-	source = git+https://github.com/flashbots/mev-boost.git#tag=v1.10.0
+	source = git+https://github.com/flashbots/mev-boost.git#tag=v1.10.1
 	sha256sums = SKIP
 
 pkgname = mev-boost
