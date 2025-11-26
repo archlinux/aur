@@ -1,18 +1,17 @@
 pkgbase = alienfx
 	pkgdesc = CLI and GUI utility to control the lighting effects of your Alienware computer written in Python.
 	pkgver = 2.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trackmastersteve/alienfx
 	arch = any
 	license = GPLv3
-	makedepends = python-setuptools
 	depends = python
 	depends = python-cairo
 	depends = python-gobject
 	depends = python-pyusb
-	depends = python-future
+	depends = python-setuptools
+	optdepends = python-future: gtkui
 	source = https://github.com/trackmastersteve/alienfx/archive/v2.4.3.tar.gz
 	sha256sums = 44cda16a00f8396043173fd939693a3a593811cf67c350b7035293b7d635c339
 
 pkgname = alienfx
-
