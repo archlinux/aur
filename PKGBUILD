@@ -3,7 +3,7 @@
 pkgname="spritz-wine-bin"
 _pkgname=${pkgname%-bin}-tkg
 pkgver=10.19
-pkgrel=2
+pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs, with experimental custom patches for games (doesn't conflict with other Wine installations)"
 url="https://github.com/NelloKudo/spritz-wine-aur"
 license=(LGPL)
