@@ -1,13 +1,12 @@
 pkgbase = norwester-otf
 	pkgdesc = A condensed geometric sans serif with uppercase, small caps, numbers & an assortment of symbols. By Jamie Wilson.
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
-	url = https://jamiewilson.io/norwester/
+	url = https://jamiewilson.github.io/norwester/
 	arch = any
 	license = SIL
 	provides = norwester.otf
-	source = https://jamiewilson.io/norwester/assets/norwester.zip
+	source = https://jamiewilson.github.io/norwester/assets/norwester.zip
 	md5sums = 6dbd8a89e9db2b9b646e57959db38689
 
 pkgname = norwester-otf
-
