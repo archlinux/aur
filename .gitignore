@@ -2,7 +2,8 @@
 !.gitignore
 !.nvchecker.toml
 !.SRCINFO
-!LICENSE
 !PKGBUILD
-!*.install
-!Kiro-LICENSE.txt
+!LICENSE
+!LICENSES/
+!LICENSES/*
+!REUSE.toml

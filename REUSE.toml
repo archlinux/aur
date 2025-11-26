@@ -1,0 +1,17 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    ".SRCINFO",
+    ".gitignore",
+    ".nvchecker.toml",
+    "*.install",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = ["Kiro-LICENSE.txt"]
+SPDX-FileCopyrightText = "Amazon.com, Inc. or its affiliates (collectively, “Amazon”)"
+SPDX-License-Identifier = "LicenseRef-AWS-IPL"
