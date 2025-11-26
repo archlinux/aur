@@ -2,13 +2,13 @@
 
 _plug=vship
 pkgname=vapoursynth-plugin-vship-cuda-git
-pkgrel=2
+pkgrel=3
 pkgver=4.0.0.21.g5308ad8
 pkgdesc="Plugin for Vapoursynth: vship for nvidia gpus (GIT version)"
 arch=('x86_64')
 url='https://github.com/Line-fr/Vship'
 license=('MIT')
-depends=('vapoursynth' 'cuda')
+depends=('cuda')
 makedepends=('git' 'make')
 optdepends=('vapoursynth: vapoursynth plugin usage')
 provides=("vapoursynth-plugin-vship" "libvship")
