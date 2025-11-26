@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=EDDiscovery (Proton)
+GenericName=Captains log and 3d star map for Elite Dangerous. Runs in ED's Proton-GE prefix
+Icon=eddiscovery
+Exec=/opt/eddiscovery-proton/eddiscovery-proton
+Categories=Games
+Terminal=false
