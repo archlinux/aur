@@ -3,13 +3,13 @@ pkgname="mommy"
 pkgdesc="mommy's here to support you~"
 pkgver=1.6.0
 pkgrel=1
-url="https://github.com/FWDekker/mommy"
+url="https://github.com/fwdekker/mommy"
 license=("Unlicense")
 arch=("any")
 depends=("sh")
 checkdepends=("shellspec" "man-db")
 optdepends=("man-db: for manual pages" "fish: for tab completion" "zsh: for tab completion")
-source=("git+https://github.com/FWDekker/mommy.git#tag=v$pkgver")
+source=("git+https://github.com/fwdekker/mommy.git#tag=v$pkgver")
 sha256sums=("SKIP")
 
 check() {
