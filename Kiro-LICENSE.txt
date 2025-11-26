@@ -1,6 +1,6 @@
 ©2025 Amazon.com, Inc. or its affiliates (collectively, “Amazon”). All Rights Reserved.
 
-The Kiro IDE and Kiro CLI are each licensed to you as “AWS Content” under the AWS Customer Agreement or other written agreement with us governing your use of AWS services, and the AWS Intellectual Property License.
+The Kiro IDE and Kiro CLI are each licensed to you as “AWS Content” under the AWS Customer Agreement (https://aws.amazon.com/agreement/) or other written agreement with us governing your use of AWS services, and the AWS Intellectual Property License (https://aws.amazon.com/legal/aws-ip-license-terms/).
 
 Open Source Attribution
 

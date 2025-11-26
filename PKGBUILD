@@ -23,7 +23,7 @@ install='kiro-cli.install'
 source=('Kiro-LICENSE.txt')
 source_x86_64=("$_name-$pkgver-x86_64.zip::https://desktop-release.q.us-east-1.amazonaws.com/$pkgver/kirocli-x86_64-linux.zip")
 source_aarch64=("$_name-$pkgver-aarch64.zip::https://desktop-release.q.us-east-1.amazonaws.com/$pkgver/kirocli-aarch64-linux.zip")
-b2sums=('798614bf2021111f2c6226ef97b2cd92aeb5201595b18c195921e48c8c225310ed5b85c28ec8a2b94a2649ed1fb3b9c7f6317cec218fe7e124469083a9e4b759')
+b2sums=('4fee11387ffa92e8fba85ca53dcd51906efb5aa0d581002510a66e63916e439c836539de374db5e5b5a4470a1790b6dc0348e7ceb555a8de4dd5210b6c0f7a01')
 b2sums_aarch64=('0ed7991607d5568f9f28830546fd2bf01370e45da1a2ee7f555cb929e2e4d3b6ed5d1d0cab9c9bd336b9667716c09a47601623a499e84c59bf951827b5a3c4f0')
 b2sums_x86_64=('e4f9e6b03bb2c0f154b8ab8140e929fb234e39f2ce7abec0d19d1b85b10bfb5b037e99920a361492f322532ed2b6a8a581c4f18cc4f0ed0b33746ddf9ceb4bc6')
 
