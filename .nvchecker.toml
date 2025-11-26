@@ -1,0 +1,4 @@
+[lib32-sdl_image]
+source = "regex"
+url = "https://www.libsdl.org/projects/SDL_image/release/"
+regex = "SDL_image-([\\d.]+)\\.tar\\.gz"
