@@ -1,6 +1,6 @@
 pkgbase = bab
 	pkgdesc = Custom commands for every project
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/bab-sh/bab
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = bab
 	conflicts = bab-bin
 	provides = bab
 	
-	source = https://github.com/bab-sh/bab/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 32567858aacd41d33a4deffa5deea3f2628f23c6103ac44ca4f84857eab17eec
+	source = https://github.com/bab-sh/bab/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 6cbbfd950e386ab3a88107cb7a51f4c35446d6c5c5fa44dea332023f1dc5a87e
 	
 pkgname = bab
