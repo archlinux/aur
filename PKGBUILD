@@ -3,12 +3,12 @@
 _name=imagine
 pkgname=${_name}-git
 pkgver=0.7.5.r0.g9b9000d
-pkgrel=1
+pkgrel=2
 pkgdesc="PNG/JPEG optimization app"
 arch=(x86_64)
 url="https://github.com/meowtec/${_name}"
 license=(MIT)
-depends=(electron libjpeg6-turbo)
+depends=(electron libjpeg-turbo)
 makedepends=(nodejs npm imagemagick git)
 provides=("${_name}")
 conflicts=("${_name}")
