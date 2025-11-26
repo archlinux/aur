@@ -2,7 +2,7 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=dooble
-pkgver=2025.07.18
+pkgver=2025.11.25
 pkgrel=1
 pkgdesc="A minimal, scientific, and stable Web browser"
 arch=('x86_64')
@@ -10,16 +10,17 @@ url="https://textbrowser.github.io/dooble"
 license=('BSD-3-Clause')
 depends=('bash' 'gcc-libs' 'glibc' 'gpgme' 'qt6-base' 'qt6-charts' 'qt6-declarative' 'qt6-webengine')
 makedepends=('git')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/textbrowser/dooble/archive/refs/tags/${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/textbrowser/dooble/archive/${pkgver}.tar.gz"
         "git+https://github.com/textbrowser/dooble-dictionaries.git"
         "${pkgname}.sh")
-sha256sums=('edd0b21b3cf579dee136e0b7ebd37fc451f434a02b972bbc033fadf7086603f7'
+sha256sums=('213b75a0ae17a64c826f48cb9e2e4fe51fbb033cf43bcbc275681f0f4c611fea'
             'SKIP'
             '39705af759145ffa3cb670353e8fe459228f92d70ae98aa16212006f0c239c1b')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
-    sed 's|/libexec/|/|g' -i dooble.pro
+    sed -i 's|/libexec/|/|g' dooble.pro
+    sed -i 's/-Werror/-Wno-error/g' dooble.pro
 }
 
 build() {
