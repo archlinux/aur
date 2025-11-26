@@ -3,7 +3,7 @@
 pkgbase=python-pysiaf
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.24.1
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="Handling of Science Instrument Aperture Files (SIAF) for space telescopes"
 arch=('any')
@@ -25,7 +25,7 @@ checkdepends=('python-pytest'
 #             'python-pytest-xdist'
               'python-requests') # astropy, lxml, matplotlib, openpyxl, scipy already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('33aa4791a4c6dbb91e31cacaa31137ba')
+md5sums=('d224074fe40f4799caffca8ca455bcce')
 
 get_pyinfo() {
     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \

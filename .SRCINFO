@@ -1,6 +1,6 @@
 pkgbase = python-pysiaf
 	pkgdesc = Handling of Science Instrument Aperture Files (SIAF) for space telescopes
-	pkgver = 0.24.1
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://pysiaf.readthedocs.io
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = python-pysiaf
 	makedepends = python-matplotlib
 	makedepends = python-openpyxl
 	makedepends = python-scipy
-	source = https://files.pythonhosted.org/packages/source/p/pysiaf/pysiaf-0.24.1.tar.gz
-	md5sums = 33aa4791a4c6dbb91e31cacaa31137ba
+	source = https://files.pythonhosted.org/packages/source/p/pysiaf/pysiaf-0.25.0.tar.gz
+	md5sums = d224074fe40f4799caffca8ca455bcce
 
 pkgname = python-pysiaf
 	depends = python-astropy>=4.3.1
