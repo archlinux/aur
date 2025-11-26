@@ -17,7 +17,7 @@ prepare() {
   cd "$pkgname-$pkgver"
   # upstream lockfile is not in sync, c.f. https://github.com/itsjunetime/tdf/issues/98
   cargo update
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
