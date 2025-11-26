@@ -16,7 +16,7 @@ license=('MIT')
 
 provides=("${_pypi_package}")
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
-depends=('python' 'python-aiofiles' 'python-markdown' 'python-filetype' 'python-yaml' 'python-jinja' 'python-google-auth' 'python-openai' 'python-rich' 'python-networkx' 'python-posthog' 'python-pillow' 'python-google-genai' 'python-pydantic' 'python-tomlkit' 'python-anthropic' 'python-click' 'python-aioboto3' 'python-typing_extensions' 'python-boto3' 'python-pytest' 'python-tomli' 'python-httpx' 'python-mistralai' 'python-dotenv' 'python-typer' 'python-shortuuid' 'python-polyfactory' 'python-json2html' 'python-yattag' 'python-instructor' 'python-pypdfium2' 'python-kajson')
+depends=('python' 'python-shortuuid' 'python-pydantic-core' 'python-posthog' 'python-strenum' 'python-anthropic' 'python-pydantic' 'python-fal-client' 'python-yaml' 'python-httpx' 'python-google-auth' 'python-rich' 'python-instructor' 'python-tomli' 'python-kajson' 'python-markdown' 'python-typing_extensions' 'python-dotenv' 'python-aiobotocore' 'python-aioboto3' 'python-filetype' 'python-typer' 'python-yattag' 'python-pillow' 'python-tomlkit' 'python-openai' 'python-json2html' 'python-click' 'python-google-genai' 'python-polyfactory' 'python-boto3' 'python-aiofiles' 'python-pytest' 'python-jinja' 'python-pypdfium2' 'python-mistralai' 'python-networkx')
 
 source=("${_pypi_package}-${_upstreamver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('ba6e924fd07c768e0a72f82b2b29b19b289ea3c0e682784fff5e7a020268a442')
