@@ -2,7 +2,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='tinct-plugin-keylightd-tray-bin'
-pkgver=0.1.8
+pkgver=0.1.10
 pkgrel=1
 pkgdesc='keylightd-tray theme plugin for Tinct'
 url='https://github.com/jmylchreest/tinct'
@@ -13,14 +13,14 @@ conflicts=('tinct')
 depends=('tinct')
 install=tinct-plugin-keylightd-tray.install
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.1.8/tinct-plugin-keylightd-tray_0.1.8_Linux_arm64.tar.gz")
-sha256sums_aarch64=('3200b1b198e952a79f076ac84a829ceae80422fee0596d43e00c8eb75184d418')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.1.10/tinct-plugin-keylightd-tray_0.1.10_Linux_arm64.tar.gz")
+sha256sums_aarch64=('e3c46e5d96daf447901e0854159ea100376ebc7e3c2d9dff848b538723de14d7')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.1.8/tinct-plugin-keylightd-tray_0.1.8_Linux_armv7.tar.gz")
-sha256sums_armv7h=('4fc7de1919be1933c50a7abd408c7ed197276c336d18a26b215258698b3376d5')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.1.10/tinct-plugin-keylightd-tray_0.1.10_Linux_armv7.tar.gz")
+sha256sums_armv7h=('d90651d190383a773ae7b2f2803aa8a682b8ceda43af79a22db0fbd08e87a18f')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.1.8/tinct-plugin-keylightd-tray_0.1.8_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('02a2dec46ca5724cd686b37e906a270ae4cd501155c55b262c72db21fb03e7a2')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v0.1.10/tinct-plugin-keylightd-tray_0.1.10_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('ebc88811b7cf46f168ddd9f268b8fd8179a37d51e5194f3f24db2160b4b38d8c')
 
 package() {
   # bin
