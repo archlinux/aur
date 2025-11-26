@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-cak
 	pkgdesc = Maya Kaqchikel language pack for Firefox Nightly
-	pkgver = 147.0a1.20251125.204654
+	pkgver = 147.0a1.20251126.092203
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-cak
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-cak-147.0a1.20251125.204654.xpi
-	source = firefox-nightly-i18n-cak-147.0a1.20251125.204654.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-147.0a1.cak.langpack.xpi
-	sha256sums = ea901260e1f7f6f9b54aa65e1544d7fa99d183a517c095d70d824cf3f03b6a88
+	noextract = firefox-nightly-i18n-cak-147.0a1.20251126.092203.xpi
+	source = firefox-nightly-i18n-cak-147.0a1.20251126.092203.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-147.0a1.cak.langpack.xpi
+	sha256sums = 6863edc4ddfd7e6f05d2429ffb91cda8757cd238fd9d08a509460382c300ab88
 
 pkgname = firefox-nightly-i18n-cak
