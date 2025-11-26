@@ -2,10 +2,10 @@
 # Contributor: peippo <christoph+aur@christophfink.com>
 
 _pkgname=sfheaders
-_pkgver=0.4.4
+_pkgver=0.4.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Converts Between R Objects and Simple Feature Objects"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -25,8 +25,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('28bd3e7fe95ab6d9d41c27d6f153c443')
-b2sums=('a8d0e94f1b6bf4ce9957f3dfce39e2c3c4c862886c659a11e315fd2ba8b6fbde35df3b5ab2fbde25e303d762d9860921f553fe5b0aa8f1187ea66d9a59fbb5ad')
+md5sums=('c408dea4599aeaa5403382d927344164')
+b2sums=('23ddd603bd2f4e7f2ea501479c110c610e54b3ab8652b9aa5708bc7b16701b00a4a1de657da7c0e727e6225b90157bc7463689b59f7860ca873e824c9c70b242')
 
 build() {
   mkdir build
