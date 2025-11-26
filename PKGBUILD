@@ -1,7 +1,7 @@
 # Maintainer: pierspad
 pkgname=textmerger
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Rust/Tauri GUI application for merging text files"
 arch=('x86_64')
 url="https://github.com/pierspad/textmerger"
