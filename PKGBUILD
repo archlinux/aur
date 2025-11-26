@@ -1,6 +1,6 @@
 # Maintainer: Tomasz Rakowski <akayami@gmail.com>
 pkgname=sms2mail
-pkgver=0.0.17
+pkgver=0.0.18
 pkgrel=1
 pkgdesc="SMS to Mail forwarder"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8059d1f26242c5199da42ba40d44061dcacf6048cb9240fbca3d34c8ceecd1bd')
+sha256sums=('7a7202c11a84a69831af5317f3ff72d8bc6d54ffdccb634aa095a4576bbaa795')
 
 build() {
   cd "$pkgname-$pkgver"
