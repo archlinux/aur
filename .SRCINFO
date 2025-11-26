@@ -1,6 +1,6 @@
 pkgbase = g2clib
 	pkgdesc = GRIB2 encoder/decoder (C version)
-	pkgver = 2.1.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/NOAA-EMC/NCEPLIBS-g2c
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = g2clib
 	depends = libpng
 	provides = g2clib
 	options = staticlibs
-	source = g2clib-2.1.0.tar.gz::https://github.com/NOAA-EMC/NCEPLIBS-g2c/archive/refs/tags/v2.1.0.tar.gz
-	md5sums = bf11e8ff0472afd8eb04188368d9911b
+	source = g2clib-2.3.0.tar.gz::https://github.com/NOAA-EMC/NCEPLIBS-g2c/archive/refs/tags/v2.3.0.tar.gz
+	md5sums = 26e6eee54ae59a2dcacfad13edd9d3b7
 
 pkgname = g2clib
