@@ -1,7 +1,7 @@
 # Maintainer: Daniel Serrano Armenta <dani.eus79@gmail.com>
 pkgname=sentinelx-bin
 _pkgname=sentinelx
-pkgver=0.4.1
+pkgver=1.0
 pkgrel=1
 pkgdesc="Tu Guardián de Red para Linux. Simple. Potente. Inteligente."
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("https://github.com/danitxu79/SentinelX/releases/download/v${pkgver}/Sen
 
 # Usamos SKIP para desarrollo rápido.
 # Para publicar "de verdad", deberías generar los sha256sums con 'updpkgsums'
-sha256sums=('1ac957f13b5d5e0bcb88aec7195688205e1b5d1540a384f53b9cc7b787d7ba72'
+sha256sums=('227cf61de45261c981e54f6a95a053d8e4743ab4068fa050ba27e62be1cf4ef0'
             'cef6978cd295b07bf81be4c1b5c6475fe8983fae9abdf6f5a03aefcea71c7fa3')
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = sentinelx-bin
 	pkgdesc = Tu Guardián de Red para Linux. Simple. Potente. Inteligente.
-	pkgver = 0.4.1
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/danitxu79/SentinelX
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = sentinelx-bin
 	depends = polkit
 	provides = sentinelx
 	conflicts = sentinelx
-	source = https://github.com/danitxu79/SentinelX/releases/download/v0.4.1/SentinelX-v0.4.1-x86_64.AppImage
+	source = https://github.com/danitxu79/SentinelX/releases/download/v1.0/SentinelX-v1.0-x86_64.AppImage
 	source = https://raw.githubusercontent.com/danitxu79/SentinelX/main/SentinelX-Icon-512.png
-	sha256sums = 1ac957f13b5d5e0bcb88aec7195688205e1b5d1540a384f53b9cc7b787d7ba72
+	sha256sums = 227cf61de45261c981e54f6a95a053d8e4743ab4068fa050ba27e62be1cf4ef0
 	sha256sums = cef6978cd295b07bf81be4c1b5c6475fe8983fae9abdf6f5a03aefcea71c7fa3
 
 pkgname = sentinelx-bin
