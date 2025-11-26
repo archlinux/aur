@@ -1,0 +1,4 @@
+[aurynk]
+source = "git"
+git = "https://github.com/IshuSinghSE/aurynk.git"
+prefix = "v"
