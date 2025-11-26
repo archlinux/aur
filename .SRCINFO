@@ -1,6 +1,6 @@
 pkgbase = emilua
 	pkgdesc = Lua execution engine
-	pkgver = 0.12.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://gitlab.com/emilua/emilua
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = emilua
 	depends = sord
 	depends = liburing
 	depends = libcap
-	source = emilua::git+https://gitlab.com/emilua/emilua.git#tag=v0.12.0
+	source = emilua::git+https://gitlab.com/emilua/emilua.git#tag=v0.12.1
 	md5sums = SKIP
 
 pkgname = emilua
