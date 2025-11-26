@@ -3,7 +3,7 @@
 # Author: LostRuins (concedo)
 
 pkgname=koboldcpp-cuda
-pkgver=1.101.1
+pkgver=1.102
 pkgrel=1
 pkgdesc="An easy-to-use AI text-generation software for GGML and GGUF models (with CUDA)"
 arch=('x86_64')
@@ -21,6 +21,7 @@ optdepends=(
     'python-psutil: increasing the process CPU priority'
     'zenity: native file picker dialogs'
     'yad: native file picker dialogs'
+    'python-jinja: jinja2 templates'
 )
 provides=(
     "koboldcpp=$pkgver"
@@ -34,7 +35,7 @@ source=(
     'koboldcpp.png'
 )
 sha256sums=(
-    'c6f62a13ca6ec2218fe302442cee69f647f3a83197f9880193b9ca91f392e386'
+    '9c6bfb9bec2ee7132805faaa5b7c12674ca3449383d273da79efc7fa01b7c1b1'
     'fcec7b843b908e1c03496fdc0605e6509f52526a855c43db16e287ef646503ef'
     'd244788c74a693a383bea7db6ab2bb2f762e6020de900be977b16e18dcd20f54'
 )
