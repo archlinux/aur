@@ -48,10 +48,10 @@ package() {
 	unzip -q "${_pkgname}-${CARCH}-${pkgver}.zip" -d "${pkgdir}/opt/"
 
 	install -d "${pkgdir}/usr/bin/"
-	ln -sf "${pkgdir}/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+	ln -sf "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
 	install -d "${pkgdir}/usr/share/icons/"
-	ln -sf "${pkgdir}/opt/${_pkgname}/${_pkgname}.ico" "${pkgdir}/usr/share/icons/${_pkgname}.ico"
+	ln -sf "/opt/${_pkgname}/${_pkgname}.ico" "${pkgdir}/usr/share/icons/${_pkgname}.ico"
 
 	install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
