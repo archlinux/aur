@@ -4,7 +4,7 @@ pkgname=nrc
 _pkgver=0.6.13
 _channel=beta
 _rel=15
-_is_beta=true
+_is_beta=false
 if [ "${_is_beta}" = "false" ]; then
     pkgver=${_pkgver}
 else
@@ -24,7 +24,7 @@ if [ "${_is_beta}" = "false" ]; then
 else
     source=("https://github.com/NoRiskClient/noriskclient-launcher/releases/download/v${_pkgver}-${_channel}.${_rel}/NoRiskClient-Linux.deb")
 fi
-sha256sums=('39cd438030e7b574e3872bbdf9941e0ebba37c6e413cf95e836cca72c4c2fedb')
+sha256sums=('a6bcd8e9941f0a5aa2d89e70061ce9105b82772de7e92953ab79704c47ac43b8')
 
 prepare() {
   dpkg-deb -x "$srcdir/NoRiskClient-Linux.deb" "$srcdir/pkg"

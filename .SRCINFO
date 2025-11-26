@@ -1,6 +1,6 @@
 pkgbase = nrc
 	pkgdesc = NoRiskClient Launcher – A Minecraft client from the YouTuber of the same name
-	pkgver = 0.6.13.beta15
+	pkgver = 0.6.13
 	pkgrel = 1
 	url = https://norisk.gg/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = nrc
 	depends = webkit2gtk
 	depends = xdg-utils
 	depends = libayatana-appindicator
-	source = https://github.com/NoRiskClient/noriskclient-launcher/releases/download/v0.6.13-beta.15/NoRiskClient-Linux.deb
+	source = https://github.com/NoRiskClient/noriskclient-launcher/releases/download/v0.6.13/NoRiskClient-Linux.deb
 	sha256sums = 39cd438030e7b574e3872bbdf9941e0ebba37c6e413cf95e836cca72c4c2fedb
 
 pkgname = nrc
