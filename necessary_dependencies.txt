@@ -777,6 +777,8 @@ Module: open_webui.utils.misc
     open_webui/internal/migrations/010_migrate_modelfiles_to_models.py
     open_webui/models/users.py
     open_webui/retrieval/utils.py
+    open_webui/retrieval/web/main.py
+    open_webui/retrieval/web/utils.py
     open_webui/routers/auths.py
     open_webui/routers/ollama.py
     open_webui/routers/openai.py
@@ -787,6 +789,7 @@ Module: open_webui.utils.misc
     open_webui/utils/payload.py
     open_webui/utils/response.py
     open_webui/utils/task.py
+    open_webui/utils/tools.py
 Module: open_webui.utils.payload
   Imported in:
     open_webui/functions.py
@@ -1427,6 +1430,7 @@ Module: open_webui.utils.channels
 Module: fastapi.concurrency
   Imported in:
     open_webui/retrieval/web/utils.py
+    open_webui/routers/knowledge.py
     open_webui/routers/retrieval.py
 Module: tiktoken
   Imported in:
