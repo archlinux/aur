@@ -1,7 +1,7 @@
 pkgbase = antigravity-bin-hardened
 	pkgdesc = Google Antigravity - Agentic Development Platform (Hardened for High-Security/Corporate Environments)
 	pkgver = 1.11.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://antigravity.google/
 	install = antigravity-bin-hardened.install
 	arch = x86_64

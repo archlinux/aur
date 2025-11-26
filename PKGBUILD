@@ -4,7 +4,7 @@
 pkgname=antigravity-bin-hardened
 pkgver=1.11.9
 _buildid=4787439284912128
-pkgrel=2
+pkgrel=3
 pkgdesc="Google Antigravity - Agentic Development Platform (Hardened for High-Security/Corporate Environments)"
 # Hardening: Strict permissions, AppArmor profile, and dependency enforcement.
 arch=('x86_64')
@@ -72,10 +72,11 @@ package() {
 [Desktop Entry]
 Name=Antigravity
 Comment=Agentic Development Platform
-Exec=/usr/bin/antigravity
+Exec=/usr/bin/antigravity %u
 Icon=antigravity
 Type=Application
 Categories=Development;IDE;
+MimeType=x-scheme-handler/antigravity;
 Terminal=false
 StartupWMClass=Antigravity
 EOF
