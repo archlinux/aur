@@ -1,0 +1,5 @@
+[feluda-bin]
+source = "github"
+github = "anistark/feluda"
+use_latest_release = true
+prefix = "v"

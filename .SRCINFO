@@ -1,0 +1,20 @@
+pkgbase = feluda-bin
+	pkgdesc = Detect license usage restrictions in your project
+	pkgver = 1.10.3
+	pkgrel = 1
+	url = https://github.com/anistark/feluda
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = tar
+	depends = glibc
+	depends = gcc-libs
+	optdepends = wasm-pack
+	provides = feluda
+	conflicts = feluda
+	source_x86_64 = feluda-x86_64-1.10.3.deb::https://github.com/anistark/feluda/releases/download/v1.10.3/feluda-v1.10.3-x86_64.deb
+	sha256sums_x86_64 = 929ebe1b41d9788e5857dcc46442bb8de6bb33b53c8dfc44a09990c6ad6bdc30
+	source_aarch64 = feluda-aarch64-1.10.3.deb::https://github.com/anistark/feluda/releases/download/v1.10.3/feluda-v1.10.3-aarch64.deb
+	sha256sums_aarch64 = 6f9c7ecf8bf91d7f0f219f6ac1f410ade3a27c0f028b55a56a2049f7eb59fba6
+
+pkgname = feluda-bin
