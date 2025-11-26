@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Dyad
+Comment=Local, open-source AI app builder
+Exec=/usr/bin/dyad %U
+Terminal=false
+Type=Application
+Icon=dyad
+Categories=Development;IDE;
+StartupWMClass=Dyad
