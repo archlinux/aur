@@ -1,15 +1,15 @@
 pkgbase = octave-quaternion
 	pkgdesc = Quaternion package for GNU Octave, includes a quaternion class with overloaded operators
-	pkgver = 2.4.0
-	pkgrel = 6
+	pkgver = 2.4.1
+	pkgrel = 1
 	url = https://gnu-octave.github.io/packages/quaternion
 	install = octave-quaternion.install
 	arch = any
 	groups = octave-forge
 	license = GPL3
 	depends = octave>=3.8.0
-	noextract = quaternion-2.4.0.tar.gz
-	source = https://downloads.sourceforge.net/octave/quaternion-2.4.0.tar.gz
-	sha512sums = cfdeaee08b8c17adb4f5e3ef4bdf8e55d3dad80cc4223dcdcf6b73555109589830ae74c9d0c44b67b91d7774996a1064d8f97a8658de6f22f0acffbb17497b6b
+	noextract = quaternion-2.4.1.tar.gz
+	source = https://downloads.sourceforge.net/octave/quaternion-2.4.1.tar.gz
+	sha512sums = 36855263d7f78082d234981642635904858d72dd7f0f196a4aadd6c6ce3178850047b792300dae92ce611cd00306f3ec562353c7ffb094ae4def567ebf27977a
 
 pkgname = octave-quaternion
