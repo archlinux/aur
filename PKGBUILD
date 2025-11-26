@@ -10,7 +10,7 @@ makedepends=('rust')
 source=("https://github.com/exaroth/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 # Non standard
 _newsboat_githash="1ea89e860553634e37daf1cc6de2e00a379d6378"
-_target="x86_64-unknown-linux-musl"
+_target="x86_64-unknown-linux-gnu"
 md5sums=('59052e65645a267d1b2edc2c5f9f33b4')
 
 prepare() {
@@ -20,7 +20,7 @@ prepare() {
 
 build() {
     cd "$pkgname-$pkgver"
-    make build
+    make target_t=$_target build
 }
 
 package() {
