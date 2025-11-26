@@ -1,8 +1,8 @@
 pkgbase = anytype-alpha-bin
-	pkgdesc = Local/offline first, decentralized, P2P & E2EE notes/mindmapping/'everything app' platform (alternative to Notion).
-	pkgver = 0.50.13
+	pkgdesc = Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users.
+	pkgver = 0.51.3
 	pkgrel = 1
-	url = https://anytype.io/
+	url = https://github.com/anyproto/anytype-ts
 	arch = x86_64
 	license = custom
 	depends = bash
@@ -17,9 +17,9 @@ pkgbase = anytype-alpha-bin
 	conflicts = anytype-legacy
 	conflicts = anytype-electron-bin
 	conflicts = anytype-bin
-	source = https://github.com/anyproto/anytype-ts/releases/download/v0.50.13-alpha/anytype_0.50.13-alpha_amd64.deb
-	source = https://raw.githubusercontent.com/anyproto/anytype-ts/main/LICENSE.md
-	sha256sums = b102b5dc8e7226ea4005e8f7959ffa8eaae632d717f3503acf4f535404d58fde
+	source = https://github.com/anyproto/anytype-ts/releases/download/v0.51.3-alpha/anytype_0.51.3-alpha_amd64.deb
+	source = https://raw.githubusercontent.com/anyproto/anytype-ts/refs/tags/v0.51.3-alpha/LICENSE.md
+	sha256sums = 562b49c0d5cc75421a6ad0d38ce6555e2a3dcf9c87c172822ed474c4eeccc649
 	sha256sums = daad9eb95adc6262b07115ba2cf87cd4c64acaca4b45d48e0fd3b15a72a31dc1
 
 pkgname = anytype-alpha-bin

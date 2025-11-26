@@ -1,15 +1,17 @@
-# Maintainer: Kainoa Kanter <kainoa@t1c.dev>
+# Maintainer: Rooki <aur at rooki dot xyz>
+# Contributor: Kainoa Kanter <kainoa@t1c.dev>
 # Based on:
 # - https://aur.archlinux.org/packages/anytype-electron-bin
 # - https://aur.archlinux.org/packages/element-desktop-nightly-bin
 
 pkgname=anytype-alpha-bin
+_pkgname=anytype
 _truetag="-alpha" # Usually -alpha, but sometimes they do the next version as -beta or blank (stable) which is weird
-pkgver=0.50.13
+pkgver=0.51.3
 pkgrel=1
-pkgdesc="Local/offline first, decentralized, P2P & E2EE notes/mindmapping/'everything app' platform (alternative to Notion)."
+pkgdesc="Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users."
 arch=('x86_64')
-url="https://anytype.io/"
+url="https://github.com/anyproto/anytype-ts"
 license=('custom')
 depends=(bash glibc gcc-libs libsecret glib2 hicolor-icon-theme)
 optdepends=('org.freedesktop.secrets: for not having to sign in each time')
@@ -20,13 +22,13 @@ conflicts=('anytype'
            'anytype-bin')
 source=(
 	"https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}${_truetag}/anytype_${pkgver}${_truetag}_amd64.deb"
-	"https://raw.githubusercontent.com/anyproto/anytype-ts/main/LICENSE.md"
+	"https://raw.githubusercontent.com/anyproto/anytype-ts/refs/tags/v${pkgver}${_truetag}/LICENSE.md"
 )
-sha256sums=('b102b5dc8e7226ea4005e8f7959ffa8eaae632d717f3503acf4f535404d58fde'
+sha256sums=('562b49c0d5cc75421a6ad0d38ce6555e2a3dcf9c87c172822ed474c4eeccc649'
             'daad9eb95adc6262b07115ba2cf87cd4c64acaca4b45d48e0fd3b15a72a31dc1')
 
 package() {
-  echo "Extracting the data.tar.xz..."
-  bsdtar -xf data.tar.xz -C "$pkgdir/"
-  install -Dm644 "${srcdir}"/LICENSE.md -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+    cd "${pkgdir}"
+    tar -xf "${srcdir}/data.tar.xz"
+    install -Dm644 "${srcdir}"/LICENSE.md -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
