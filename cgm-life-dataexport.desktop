@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Clickdoc Personal Data Exporter
+Comment=Personal data exporter for Clickdoc (formerly CGM Life) accounts
+Exec=/usr/bin/cgm-life-dataexport-desktop
+Icon=cgm-life-dataexport.png
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupNotify=true
+StartupWMClass=com.cgm.life.dataexport.Main

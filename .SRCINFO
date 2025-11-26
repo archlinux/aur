@@ -1,0 +1,23 @@
+pkgbase = cgm-life-dataexport
+	pkgdesc = Personal data exporter for Clickdoc (formerly CGM Life) accounts
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://one.cgm.com/clickdoc
+	arch = any
+	license = LicenseRef-unknown
+	makedepends = dpkg
+	makedepends = jq
+	makedepends = python-j2cli
+	depends = bash
+	depends = java-openjfx=21
+	depends = java-runtime-openjdk=21
+	options = !debug
+	options = !strip
+	source = cgm-life-dataexport-1.5.0.deb::https://docs.cgmlife.com/LIFEExportDesktopClient/PROD/cgm-life-dataexport-desktop-1.5.0.deb
+	source = cgm-life-dataexport.bash.j2
+	source = cgm-life-dataexport.desktop
+	sha512sums = 86e7fd805bbff930233bb8530a2bb233c861d5129056ac001799f0a315125da59c01b6f431616fa047761dbaed401a773226024b06c3d47e744fe250b4b052e9
+	sha512sums = 00a28686c9be3aa4e0cf29efdf4063b274720dfbe0193a30dc2b4e7122693b67817d6915e169a6689bbd1f3c934899b358edcb3a76d14800ca3c4be7ba8d9f3a
+	sha512sums = 65bf0d3ecb145fbcc07cd80b4a4a376f92aed0dd78ee03e20272299081da4bda2535abd955f875b289189c00687d22e7c4b774ff3d74573f065299cfc8821a61
+
+pkgname = cgm-life-dataexport

@@ -1,0 +1,17 @@
+[cgm-life-dataexport]
+source = "manual"
+manual = "1.5.0"
+
+# CGM operates an app version service but it requires a session cookie:
+
+# curl -sLS 'https://de.cgmlife.com/AppStore/AppService/getAppProperties' \
+#   -H 'Accept: application/json' \
+#   -H 'Content-Type: text/plain' \
+#   -H "CGM-Identity: ${SESSION_COOKIE:-new}" \
+#   --data-raw '["com.cgm.life.dataexport","java"]'
+
+# ==> {
+#   "LINUX_DOWNLOAD_URL": "https://docs.cgmlife.com/LIFEExportDesktopClient/PROD/cgm-life-dataexport-desktop-1.5.0.deb",
+#   "MAC_DOWNLOAD_URL": "https://docs.cgmlife.com/LIFEExportDesktopClient/PROD/cgm-life-dataexport-desktop-1.5.0.dmg",
+#   "WIN_DOWNLOAD_URL": "https://docs.cgmlife.com/LIFEExportDesktopClient/PROD/cgm-life-dataexport-desktop-1.5.0.msi"
+# }
