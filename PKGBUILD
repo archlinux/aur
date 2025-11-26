@@ -2,7 +2,7 @@
 
 pkgbase=cutelyst
 pkgname=('cutelyst' 'cutelyst-docs')
-pkgver=4.7.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc='A Web Framework built on top of Qt'
 arch=('i686' 'x86_64')
@@ -19,7 +19,6 @@ build() {
   cd build
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
-    -DPLUGIN_UWSGI=off \
     -DPLUGIN_CSRFPROTECTION=on \
     -DCMAKE_INSTALL_PREFIX=/usr ".."
   make
@@ -44,4 +43,4 @@ package_cutelyst() {
   install -d -m755 "${pkgdir}/usr/share/qtcreator/templates/wizards/"
   cp -r "${srcdir}/${pkgname}-${pkgver}/qtcreator/cutelyst" "${pkgdir}/usr/share/qtcreator/templates/wizards/"
 }
-sha256sums=('f20eed31748a3490a77f7a10d530fd44959888ad83fc1da2046acbab788c19f4')
+sha256sums=('38c059da13bfd1d0002eafb033e2d4a452b644f6a0c6cb909acad3495b31bd23')
