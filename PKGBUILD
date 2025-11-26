@@ -4,7 +4,7 @@
 # Contributor: zhangkaizhao <zhangkaizhao at gmail dot com>
 pkgname=dooble-bin
 _pkgname=Dooble
-pkgver=2025.07.04
+pkgver=2025.11.25
 pkgrel=1
 pkgdesc="Web browser based on QtWebEngine.(Prebuilt version)"
 arch=(
@@ -80,7 +80,7 @@ source=(
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}_amd64.deb")
 sha256sums=('c60bf2d6a8bfdf7c7418bba91c6767cbb4b48dccae36dd5d9ffdb48f756815dd'
             '062f45de85a166d6ad01bf85eb58916b420c52ac122c55e7ed8668defb11c030')
-sha256sums_x86_64=('a6ffd3d5897c1bb0e736c2fd6703f2d626ad1b50d53bc57cdfb7a7b3c984868e')
+sha256sums_x86_64=('15556a7a3b5a326ead958061fe60038f06c652f4d76b030c6426f61a8668daeb')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
