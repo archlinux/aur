@@ -1,3 +1,13 @@
+# 1.17.1
+
+- Fix: Use virtual documents instead of temp files to prevent linters running on diff previews within the VS Code plugin.
+
+- Fix: Restore terminal focus after showing diff in VS Code plugin.
+
+- Fix Close diff preview when user presses escape to cancel a tool in VS Code plugin.
+
+If there are any problems, feedback or thoughts please drop an issue or message us through Discord! Thank you for using Nanocoder. 🙌
+
 # 1.17.0
 
 - NEW VS Code extension - complete with live code diffs, diagnostics and more. This is version 1 of this with LSP support. There is a lot more room to expand and improve.
