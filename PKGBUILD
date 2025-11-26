@@ -3,7 +3,7 @@
 _pyname="meshcore-cli"
 _pkgname="${_pyname}"
 pkgname="${_pkgname}-git"
-pkgver=1.3.2+4.r405.20251118.8801453
+pkgver=1.3.7.r409.20251126.ed581e3
 pkgrel=1
 pkgdesc="Command line interface to MeshCore node."
 arch=(
@@ -56,7 +56,8 @@ prepare() {
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
+  _ver="$(grep -E '^[[:space:]]*version[[:space:]]*=' pyproject.toml  | head -n1 | awk -F= '{print $2}' | tr -d \'\"[[:space:]])"
+  #_ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
   _rev="$(git rev-list --count HEAD)"
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
   _hash="$(git rev-parse --short HEAD)"
