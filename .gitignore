@@ -1,0 +1,16 @@
+pkg/
+src/
+*.pkg.tar.*
+*.tar.zst
+*.tar.gz
+*.tar.xz
+
+*.part
+*.LOCK
+*~
+*.bak
+*.swp
+*.swx
+
+favicon.png
+Mirage-LinuxX64.zip

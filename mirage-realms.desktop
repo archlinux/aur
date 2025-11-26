@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Mirage Realms
+Exec=mirage-realms
+Icon=mirage-realms
+Terminal=false
+Type=Application
+Categories=Game;MMORPG;2D;
+StartupNotify=false

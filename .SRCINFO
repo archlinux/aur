@@ -1,0 +1,17 @@
+pkgbase = mirage-realms
+	pkgdesc = Free to play indie MMORPG for Android and PC
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.miragerealms.co.uk
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	depends = java-runtime>=11
+	source = https://www.miragerealms.co.uk/files/clients/legacy/Mirage-LinuxX64.zip
+	source = mirage-realms.desktop
+	source = https://www.miragerealms.co.uk/wp-content/uploads/2017/01/favicon.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mirage-realms
