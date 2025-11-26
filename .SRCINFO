@@ -1,6 +1,6 @@
 pkgbase = visagevault-bin
 	pkgdesc = Gestor de fotografías inteligente con reconocimiento facial (Binario precompilado)
-	pkgver = 1.6.7
+	pkgver = 1.6.8
 	pkgrel = 1
 	url = https://github.com/danitxu79/visagevault
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = visagevault-bin
 	provides = visagevault
 	conflicts = visagevault
 	options = !strip
-	source = https://github.com/danitxu79/visagevault/releases/download/v1.6.7/VisageVault-1.6.7-1-x86_64.pkg.tar.zst
-	sha256sums = 8e6f4ff29357a73b15e01b7170f7e3a2fd6107ce96c851bba61665f52bc801f4
+	source = https://github.com/danitxu79/visagevault/releases/download/v1.6.8/VisageVault-1.6.8-1-x86_64.pkg.tar.zst
+	sha256sums = bb7ad9c0edc54f0addebdea4602a2f4044eb6495767c66ece6b4c9791200cd29
 
 pkgname = visagevault-bin
