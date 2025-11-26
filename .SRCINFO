@@ -1,6 +1,6 @@
 pkgbase = sms2mail
 	pkgdesc = SMS to Mail forwarder
-	pkgver = 0.0.6
+	pkgver = 0.0.17
 	pkgrel = 1
 	url = https://github.com/akayami/sms2mail
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = sms2mail
 	license = Apache-2.0
 	makedepends = go
 	depends = glibc
-	source = sms2mail-0.0.6.tar.gz::https://github.com/akayami/sms2mail/archive/refs/tags/v0.0.6.tar.gz
-	sha256sums = SKIP
+	source = sms2mail-0.0.17.tar.gz::https://github.com/akayami/sms2mail/archive/refs/tags/v0.0.17.tar.gz
+	sha256sums = 8059d1f26242c5199da42ba40d44061dcacf6048cb9240fbca3d34c8ceecd1bd
 
 pkgname = sms2mail
