@@ -1,0 +1,33 @@
+pkgbase = pplacer
+	pkgdesc = Phylogenetic placement and downstream analysis
+	pkgver = 1.1.alpha20
+	pkgrel = 0
+	url = https://matsen.fredhutch.org/pplacer/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = m4
+	makedepends = ocamlbuild
+	makedepends = ocaml-findlib
+	makedepends = ocaml-topkg
+	makedepends = opam
+	makedepends = python-sphinx
+	makedepends = wget
+	makedepends = git
+	makedepends = rsync
+	makedepends = bubblewrap
+	makedepends = dune
+	depends = glibc
+	depends = gsl
+	depends = zlib
+	depends = sqlite
+	depends = python
+	depends = python-biopython
+	depends = python-taxtastic
+	source = pplacer::git+https://github.com/matsen/pplacer.git#tag=v1.1.alpha20
+	source = pplacer-gh-pages::git+https://github.com/matsen/pplacer.git#branch=gh-pages
+	source = mcl::git+https://github.com/fhcrc/mcl.git#commit=b1f7a969371d434eaa6848bdbb79a851de617c1f
+	sha256sums = 3e5422b358d3ef11869e7043f8273fd3a8425de6941c7c7865f97fb6b3387c59
+	sha256sums = SKIP
+	sha256sums = e416c1c4ba6c1ef5f1fb78b401eb9d9060d61fab5fa294d7d6734f785e7dc556
+
+pkgname = pplacer
