@@ -1,6 +1,6 @@
 pkgbase = python-evalidate
 	pkgdesc = Safe and fast evaluation of untrusted user-supplied python expressions
-	pkgver = 2.0.5
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/yaroslaff/evalidate
 	arch = any
@@ -12,7 +12,9 @@ pkgbase = python-evalidate
 	makedepends = python-hatchling
 	makedepends = python-wheel
 	depends = python
-	source = git+https://github.com/yaroslaff/evalidate#tag=v2.0.5
-	sha256sums = 046b7259659b405e76d843ef1f9dda9909c7e3a0196b1c9339d3f46830bbc447
+	depends = python-faker
+	depends = python-requests
+	source = git+https://github.com/yaroslaff/evalidate#tag=v2.1.0
+	sha256sums = 70312b6aceccfc8dd12b582933a9045bc6332574eb58dc9ae17aa03c6ab75179
 
 pkgname = python-evalidate
