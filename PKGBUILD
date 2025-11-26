@@ -1,52 +1,68 @@
 # Maintainer: pierspad
 pkgname=textmerger
-pkgver=1.3.2
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="A Python GUI application for merging text files"
+pkgdesc="A Rust/Tauri GUI application for merging text files"
 arch=('x86_64')
 url="https://github.com/pierspad/textmerger"
 license=('MIT')
 
+# Dipendenze di runtime necessarie per Tauri su Linux
 depends=(
-  'python'
-  'python-pyqt5'
-  'python-flask'
-  'python-werkzeug'
+  'webkit2gtk'
+  'gtk3'
+  'cairo'
+  'gdk-pixbuf2'
+  'glib2'
+  'pango'
+  'libappindicator-gtk3'
 )
 
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'cython' 'gcc')
-optdepends=(
-    'python-nbformat: for Jupyter Notebook support'
-    'python-pypdf2: for PDF support'
-)
+# Strumenti per compilare
+makedepends=('cargo' 'nodejs' 'npm')
 
+# Fonte: useremo il tarball locale generato dal tuo script o quello di GitHub
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/pierspad/textmerger/archive/refs/tags/v$pkgver.tar.gz"
+
 )
-sha256sums=('27b0f1f9cfd84683bc468d41e4a31623328e8e936e1fd223a0633b381f40edad')
+sha256sums=('4238dfc2b74417f3dfd829f634d5c6b6d83d09f14a0284a4e6a30d633a84897b')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver/textmerger"
+  # Installazione dipendenze Node (Frontend)
+  echo "Installing Node dependencies..."
+  npm install
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  echo "Building wheel package with Cython extensions..."
-  /usr/bin/python -m build --wheel >/dev/null 2>&1 || /usr/bin/python -m build --wheel
-  echo "✓ Build completed"
+  cd "$srcdir/$pkgname-$pkgver/textmerger"
+  
+  echo "Building Tauri application..."
+  # Disable bundling to avoid linuxdeploy dependency (we only need the binary)
+  sed -i 's/"active": true/"active": false/' src-tauri/tauri.conf.json
+  
+  # Rimuoviamo i flag specifici. Tauri costruirà i bundle di default.
+  # Noi li ignoreremo e prenderemo solo il binario compilato.
+  npm run tauri build
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
+  cd "$srcdir/$pkgname-$pkgver/textmerger"
   
-  # Install desktop file
-  install -Dm644 packaging/textmerger.desktop "$pkgdir/usr/share/applications/textmerger.desktop"
+  # 1. Installa il binario
+  install -Dm755 "src-tauri/target/release/textmerger" "$pkgdir/usr/bin/textmerger"
   
-  # Install icon
-  install -Dm644 textmerger/assets/logo/logo.png "$pkgdir/usr/share/pixmaps/textmerger.png"
+  # 2. Installa il file .desktop (Tauri ne genera uno o ne usiamo uno custom)
+  # Assumiamo tu ne abbia uno in packaging/ o usiamo quello generato se presente.
+  # Per ora usiamo un path generico, adattalo se hai il file in una cartella specifica.
+  install -Dm644 "../packaging/textmerger.desktop" "$pkgdir/usr/share/applications/textmerger.desktop"
   
-  # Install docs and license
+  # 3. Installa l'icona (Tauri ha le icone in src-tauri/icons o app-icon.png)
+  install -Dm644 "src-tauri/icons/128x128.png" "$pkgdir/usr/share/pixmaps/textmerger.png"
+  
+  # 4. Docs e Licenza
+  cd ..
   install -Dm644 docs/README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 docs/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
