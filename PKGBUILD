@@ -22,6 +22,7 @@ depends+=('qt5-base' 'qt5-tools' 'qt5-declarative' 'gcc-libs' 'glib2' 'glibc' 'a
 makedepends=('git' 'python' 'gperf' 'jsoncpp' 'ninja' 'poppler' 'pipewire' 'nodejs' 'python-html5lib')
 makedepends+=('perl' 'libxcursor' 'libxkbfile' 'libpulse' 'libxss')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland')
+options=('!lto') # dreieck
 groups=('qt5')
 _srcdir="kde-${pkgname/5-/}"
 _srcdir87='qtwebengine-chromium'

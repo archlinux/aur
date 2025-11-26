@@ -73,6 +73,7 @@ pkgbase = qt5-webengine
 	depends = opus
 	depends = zlib
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
+	options = !lto
 	source = qtwebengine-5.15.19-lts.tgz::https://github.com/qt/qtwebengine/archive/refs/tags/v5.15.19-lts.tar.gz
 	source = qtwebengine-chromium-87-based-20250423.tgz::https://github.com/qt/qtwebengine-chromium/archive/refs/heads/87-based.tar.gz
 	source = qt5-webengine-pipewire-0.3.patch
