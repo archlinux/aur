@@ -23,9 +23,8 @@ depends=(
 optdepends=(
     'opera-developer-ffmpeg-codecs'
 )
-# No need to maintain sha256sums manually anymore
 
-# Base URL construction
+# Base URL
 _baseurl="https://get.geo.opera.com/pub/${pkgname}/${pkgver}/linux"
 _debfile="${pkgname}_${pkgver}_amd64.deb"
 
@@ -34,8 +33,7 @@ source=(
     "opera"
     "default"
 )
-# Integrity checks: a sha256sums array where the first entry is fetched dynamically
-# (some makepkg versions/platforms prefer an array over a function)
+# dynamic Integrity checks
 sha256sums=(
     "$(curl -s "${_baseurl}/${_debfile}.sha256sum" | awk -v f="${_debfile}" '$0 ~ f {print $1; found=1; exit} {h=$1} END { if (!found) print h }')"
     "508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5"  # opera wrapper
