@@ -17,13 +17,13 @@ makepkg -si
 Verify the installation:
 
 ```
-pacman -Ql saveoursecrets
+pacman -Ql saveoursecrets-bin
 ```
 
-And then to unsinstall:
+And then to uninstall:
 
 ```
-sudo pacman -R saveoursecrets
+sudo pacman -R saveoursecrets-bin
 ```
 
 To publish, update `.SRCINFO`:
