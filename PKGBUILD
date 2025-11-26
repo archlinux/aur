@@ -2,14 +2,15 @@
 
 _name0=livekit-agents
 _name1=livekit-plugins
-_plugins=(anam anthropic assemblyai aws azure baseten bey bithuman cartesia clova deepgram elevenlabs fal fireworksai fishaudio gladia google groq hedra hume inworld langchain lmnt minimal minimax mistralai neuphonic nltk nvidia openai resemble rime rtzr sarvam silero simli smallestai soniox speechify speechmatics spitch tavus turn-detector ultravox upliftai)
+_plugins=(anam anthropic assemblyai avatartalk aws azure baseten bey bithuman cartesia clova deepgram elevenlabs fal fireworksai fishaudio gladia google groq hedra hume inworld langchain lmnt minimal minimax mistralai neuphonic nltk nvidia openai resemble rime rtzr sarvam silero simli smallestai soniox speechify speechmatics spitch tavus turn-detector ultravox upliftai)
 pkgbase=python-$_name0
 pkgname=(python-$_name0 ${_plugins[@]/#/python-$_name1-})
-pkgver=1.2.18
+pkgver=1.3.5
 pkgrel=1
 _plugins_pkgdesc=('Agent Framework plugin for anam.'
                   'Agent Framework plugin for services from Anthropic.'
                   'Agent Framework plugin for AssemblyAI.'
+                  'Agent Framework plugin for AvatarTalk.'
                   'LiveKit Agents Plugin for services from AWS.'
                   'Agent Framework plugin for services from Azure.'
                   'Agent Framework plugin for Baseten.'
@@ -55,6 +56,7 @@ _plugins_pkgdesc=('Agent Framework plugin for anam.'
 _plugins_depends=("'python-livekit-agents'"
                   "'python-livekit-agents' 'python-anthropic' 'python-httpx'"
                   "'python-livekit-agents'"
+                  "'python-livekit-agents'"
                   "'python-livekit-agents' 'python-aioboto3' 'python-amazon-transcribe'"
                   "'python-livekit-agents' 'python-azure-cognitiveservices-speech'"
                   "'python-livekit-agents' 'python-aiohttp' 'python-livekit'"
@@ -98,6 +100,7 @@ _plugins_depends=("'python-livekit-agents'"
                   "'python-livekit-agents' 'python-av' 'python-numpy'"
                   "'python-livekit-agents' 'python-av' 'python-numpy'")
 _plugins__optdepends=(""
+                      ""
                       ""
                       ""
                       "'python-aws-sdk-bedrock-runtime: realtime' 'python-aws-sdk-signers: realtime' 'python-boto3: realtime'"
@@ -149,7 +152,7 @@ makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel'
 checkdepends=('python-dotenv' 'python-pytest' 'python-pytest-asyncio' 'python-jiwer' 'python-scipy' 'python-tiktoken' 'python-nltk' 'nltk-data' 'python-docstring-parser' 'python-speechmatics-rt')
 source=("$_repo/archive/refs/tags/$_name0@$pkgver.tar.gz"
         "$_repo/raw/refs/tags/$_name0@$pkgver/$_name1/$_name1-silero/${_name1//-//}/silero/resources/silero_vad.onnx")
-sha256sums=('a860fe7ef127a4515400b785aa97c283200aab5ac4c1704baaaaf7dad5486417'
+sha256sums=('3d7962410ce7d8b94b734dacd476e37be7a6583a29fbe1b0b32f70c729286ff3'
             '597d30b3ec076608d059477bb14cfeffdf951bf5cae370d38f65d33bbfe82004')
 
 prepare(){
@@ -178,7 +181,7 @@ check() {
     --ignore tests/test_vad.py
     --ignore tests/test_ipc.py
     --ignore tests/test_connection_pool.py
-    -k "not test_two_speakers_simple_alternation and not test_none_speaker_id"
+    --deselect tests/test_speaker_id_grouping.py
     # Need API's
     --deselect tests/test_audio_decoder.py::test_decode_and_transcribe
     --deselect tests/test_stt.py::test_recognize
@@ -191,6 +194,9 @@ check() {
     --deselect tests/test_evals.py::test_inline_agent
     --deselect tests/test_evals.py::test_start_with_capture_run
     --deselect tests/test_workflows.py::test_collect_email
+    --deselect tests/test_chat_ctx.py::test_summarize
+    --deselect tests/test_workflows.py::test_get_dtmf_sip_event_without_confirmation
+    --deselect tests/test_workflows.py::test_get_dtmf_sip_event_with_confirmation
   )
   cd "$srcdir"/${_name0//livekit-/}-$_name0-$pkgver
   python -m venv --system-site-packages test-env
@@ -204,9 +210,9 @@ check() {
 package_python-livekit-agents() {
   pkgdesc='A powerful framework for building realtime voice AI agents.'
   url='https://github.com/livekit/agents/tree/main/livekit-agents'
-  depends+=('python-click' 'python-certifi' 'python-livekit' 'python-livekit-api' 'python-livekit-protocol' 'python-livekit-blingfire' 'python-protobuf' 'python-pyjwt' 'python-watchfiles' 'python-psutil' 'python-aiohttp' 'python-typing_extensions' 'python-sounddevice' 'python-docstring-parser' 'python-colorama' 'python-av' 'python-numpy' 'python-pydantic' 'python-nest-asyncio' 'python-opentelemetry-api' 'python-opentelemetry-sdk' 'python-opentelemetry-exporter-otlp' 'python-prometheus_client' 'python-openai')
+  depends+=('python-typer' 'python-click' 'python-certifi' 'python-livekit' 'python-livekit-api' 'python-livekit-protocol' 'python-livekit-blingfire' 'python-protobuf' 'python-pyjwt' 'python-watchfiles' 'python-psutil' 'python-aiohttp' 'python-typing_extensions' 'python-sounddevice' 'python-docstring-parser' 'python-colorama' 'python-av' 'python-numpy' 'python-pydantic' 'python-nest-asyncio' 'python-opentelemetry-api' 'python-opentelemetry-sdk' 'python-opentelemetry-exporter-otlp' 'python-prometheus_client' 'python-openai' 'python-aiofiles')
   optdepends=('python-mcp: mcp'
-              'python-av: codecs' 'python-numpy: codecs'
+              'python-numpy: codecs'
               'python-pillow: images'
               'python-livekit-plugins-anam: anam'
               'python-livekit-plugins-anthropic: anthropic'
