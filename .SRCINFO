@@ -1,6 +1,6 @@
 pkgbase = youtube-dl-nightly
 	pkgdesc = A command-line program to download videos from YouTube.com and a few more sites
-	pkgver = 2025.11.21
+	pkgver = 2025.11.26
 	pkgrel = 1
 	url = https://ytdl-org.github.io/youtube-dl
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = youtube-dl-nightly
 	optdepends = aria2: alternative parallel downloader
 	provides = youtube-dl
 	conflicts = youtube-dl
-	source = https://github.com/ytdl-org/ytdl-nightly/releases/download/2025.11.21/youtube-dl-2025.11.21.tar.gz
-	sha256sums = 1f56dfd6af5acb3057e0681c20cfccd0150a27e06f7dc4589aba123bc935ceb8
+	source = https://github.com/ytdl-org/ytdl-nightly/releases/download/2025.11.26/youtube-dl-2025.11.26.tar.gz
+	sha256sums = 3057800d1a6f18fd63da8f11554ec1c2c1c1fc05307905c6a6d1bca938af65ac
 
 pkgname = youtube-dl-nightly
