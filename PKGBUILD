@@ -1,6 +1,6 @@
 # Maintainer: Daniel Serrano Armenta <dani.eus79@gmail.com>
 pkgname=sentinelx
-pkgver=1.2
+pkgver=1.4
 pkgrel=1
 pkgdesc="Tu Guardián de Red para Linux. Simple. Potente. Inteligente. (Compila desde fuente)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('git' 'python-pip' 'python-setuptools' 'base-devel')
 
 # Descargamos el código fuente exacto de la versión
 source=("git+https://github.com/danitxu79/SentinelX.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('ce64755d82201b724a5ad9162997ffdb31356bf5cb5a989cd8628a33f9c9866f')
 
 build() {
     cd "SentinelX"
