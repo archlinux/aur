@@ -1,9 +1,15 @@
 -------------------------------------------------------
  Changelog    : iwinfo
- Tags         : 4.2.0 ➙ 4.7.1
-              : 2025-06-16 ➙ 2025-11-25
+ Tags         : 4.3.0 ➙ 4.8.0
+              : 2025-06-22 ➙ 2025-11-25
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-11-25   : 4.8.0
+              - New option "-v" prints all frequencies supported by each phy
+                  mark any disabled channels, show if a channel is connect only using *no initiate radio*
+                  DFS channels may display *radar detected*
+              - update Docs/Changelog Docs/${my_name}.pdf
 
  2025-11-25   : 4.7.1
               - * Bug fix: Scan occasionally gets device busy which is handled by a couple of retries.
@@ -24,9 +30,4 @@
  2025-06-22   : 4.3.0
               - run_prog: sync our copy with latest from pyconcurrent
  2025-06-16   ⋯
-              - update Docs/Changelog Docs/${my_name}.pdf
-
- 2025-06-16   : 4.2.0
-              - Improve way we run external programs - handle larger output, better exception managemen etc
- 2025-05-21   ⋯
               - update Docs/Changelog Docs/${my_name}.pdf
