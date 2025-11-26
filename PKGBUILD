@@ -2,15 +2,18 @@
 # Maintainer: ssprea <ssprea@proton.me>
 pkgname=ssprea-nvidia-control
 pkgver=1.1.8
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="GUI NVidia GPU overclock, power limit and fan manager"
 arch=('x86_64')
 url="https://github.com/ssprea/ssprea-nvidia-control"
 license=('unknown')
 groups=()
-depends=('dotnet-sdk-9.0')
-makedepends=('git')
+depends=()
+makedepends=(
+	'git'
+	'dotnet-sdk-9.0'
+)
 checkdepends=()
 optdepends=()
 provides=()
