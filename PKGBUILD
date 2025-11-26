@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='project dependencies & build artifacts cleanup tool'
 arch=(x86_64)
 url="https://github.com/sigoden/$pkgname"
-license=(MIT Apache)
+license=(MIT Apache-2.0)
 depends=(gcc-libs
          glibc)
 makedepends=(cargo)
@@ -16,7 +16,7 @@ sha256sums=('5bc3264ae7a74c93cedf206b5679a786e563df6287ab87e5a393bcb0e970199c')
 
 prepare() {
 	cd "$_archive"
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 _srcenv() {
