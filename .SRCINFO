@@ -1,6 +1,6 @@
 pkgbase = kwin-effects-better-blur-dx-git
 	pkgdesc = Continuation of the KWin forceblur effect
-	pkgver = r431.ff76aee
+	pkgver = r441.a97689a
 	pkgrel = 1
 	url = https://github.com/xarblu/kwin-effects-better-blur-dx
 	install = kwin-effects-better-blur-dx-git.install

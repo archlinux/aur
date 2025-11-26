@@ -1,7 +1,7 @@
 # Maintainer: Lily Vex <luxzi at pm dot me>
 
 pkgname=kwin-effects-better-blur-dx-git
-pkgver=r431.ff76aee
+pkgver=r441.a97689a
 pkgrel=1
 pkgdesc="Continuation of the KWin forceblur effect"
 arch=(x86_64)
