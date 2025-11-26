@@ -1,6 +1,6 @@
 # Maintainer: hyprarcher <hyprarcher@proton.me>
 pkgname=wayscriber-bin
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc='Screen annotation tool for Wayland compositors (prebuilt binaries)'
 arch=('x86_64')
@@ -11,20 +11,33 @@ depends=(
     'cairo'
     'wayland'
     'pango'
+    'libxkbcommon'
     'gcc-libs'
     'glibc'
     'wl-clipboard'
     'grim'
     'slurp'
+) 
+optdepends=(
+    'wayscriber-configurator: GUI configurator (F11)'
 )
-provides=('wayscriber' 'wayscriber-configurator')
+provides=('wayscriber')
 conflicts=('wayscriber' 'wayscriber-debug')
 replaces=('wayscriber-debug')
-source_x86_64=("wayscriber-v0.8.3-linux-x86_64.tar.gz::https://github.com/devmobasa/wayscriber/releases/download/v0.8.3/wayscriber-v0.8.3-linux-x86_64.tar.gz")
-sha256sums_x86_64=('c2e895dad9d0a33638f29a3b6733be5b0a79996f0ded4f8a115a351622a1ad9f')
+source_x86_64=("wayscriber-v0.8.4-linux-x86_64.tar.gz::https://github.com/devmobasa/wayscriber/releases/download/v0.8.4/wayscriber-v0.8.4-linux-x86_64.tar.gz")
+sha256sums_x86_64=('da8c27d73f3c4a719793a7b68daf55240db0db953256ea507548ed72bab321bc')
 
 _tarball="wayscriber-v${pkgver}-linux-${CARCH}.tar.gz"
 
 package() {
-    tar -xzf "${srcdir}/${_tarball}" -C "${pkgdir}" --strip-components=1
+    local srcdir_tmp="${srcdir}/extract"
+    rm -rf "${srcdir_tmp}"
+    mkdir -p "${srcdir_tmp}"
+    tar -xzf "${srcdir}/${_tarball}" -C "${srcdir_tmp}" --strip-components=1
+
+    install -Dm755 "${srcdir_tmp}/usr/bin/wayscriber" "$pkgdir/usr/bin/wayscriber"
+    install -Dm644 "${srcdir_tmp}/usr/lib/systemd/user/wayscriber.service" "$pkgdir/usr/lib/systemd/user/wayscriber.service"
+    install -Dm644 "${srcdir_tmp}/usr/share/doc/wayscriber/config.example.toml" "$pkgdir/usr/share/doc/wayscriber/config.example.toml"
+    install -Dm644 "${srcdir_tmp}/usr/share/doc/wayscriber/README.md" "$pkgdir/usr/share/doc/wayscriber/README.md"
+    [ -f "${srcdir_tmp}/usr/share/doc/wayscriber/LICENSE" ] && install -Dm644 "${srcdir_tmp}/usr/share/doc/wayscriber/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE" || true
 }
