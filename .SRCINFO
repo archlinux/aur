@@ -6,8 +6,8 @@ pkgbase = perl-catalyst-authentication-credential-http
 	pkgrel = 1
 	url = https://metacpan.org/release/Catalyst-Authentication-Credential-HTTP
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl
+	license = GPL-1.0-or-later
 	checkdepends = perl-test-exception>=0
 	checkdepends = perl-test-mockobject>=0
 	checkdepends = perl-test-needs>=0
