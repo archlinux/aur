@@ -1,7 +1,7 @@
 pkgbase = lib32-v4l-utils
 	pkgdesc = Userspace tools and conversion library for Video 4 Linux (32-bit)
-	pkgver = 1.30.1
-	pkgrel = 2
+	pkgver = 1.32.0
+	pkgrel = 1
 	url = https://linuxtv.org/
 	arch = x86_64
 	license = LGPL
@@ -14,13 +14,13 @@ pkgbase = lib32-v4l-utils
 	depends = lib32-systemd
 	depends = lib32-libglvnd
 	depends = lib32-json-c
-	provides = lib32-libv4l=1.30.1
+	provides = lib32-libv4l=1.32.0
 	conflicts = lib32-libv4l
 	replaces = lib32-libv4l
-	source = https://linuxtv.org/downloads/v4l-utils/v4l-utils-1.30.1.tar.xz
-	source = https://linuxtv.org/downloads/v4l-utils/v4l-utils-1.30.1.tar.xz.asc
+	source = https://linuxtv.org/downloads/v4l-utils/v4l-utils-1.32.0.tar.xz
+	source = https://linuxtv.org/downloads/v4l-utils/v4l-utils-1.32.0.tar.xz.asc
 	validpgpkeys = 05D0169C26E41593418129DF199A64FADFB500FF
-	sha512sums = b34ff9a233da9cb5a569cb5a6fcee288216277eb6f2f6e83c75e717422c1440f58da5e4f4c557b95a11f7650bbacc603c79edaa7451c277398aebf9c232761b3
+	sha512sums = 5bf24c28ec66a7ac1a0c9ee976521d825d4c2f8abbbeb59c7ac55e89db10dde6ebb643d238d217d636d79fda363244558fee1effe8c5e8c573c1a3e957fe391f
 	sha512sums = SKIP
 
 pkgname = lib32-v4l-utils
