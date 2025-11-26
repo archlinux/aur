@@ -1,0 +1,8 @@
+[lib32-sdl_ttf]
+source = "git"
+git = "https://github.com/libsdl-org/SDL_ttf.git"
+prefix = "release-"
+# This particular version is the last one compatible with sdl1 and is not going
+# to have another release.
+# So let's keep it on this version.
+include_regex = "release-2.0.11"
