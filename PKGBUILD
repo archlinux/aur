@@ -16,7 +16,7 @@ package() {
 
 	install -dm755 "$pkgdir/usr/share/fonts/norwester"
 
-	install -m644 norwester-v1.3/norwester.otf "$pkgdir/usr/share/fonts/norwester/norwester.otf"
+	install -m644 norwester-v1.2/norwester.otf "$pkgdir/usr/share/fonts/norwester/norwester.otf"
 
-	install -Dm644 norwester-v1.3/OFL.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 norwester-v1.2/OFL.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
