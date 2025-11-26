@@ -1,17 +1,17 @@
 pkgbase = openbao-bin
 	pkgdesc = solution to manage, store, and distribute sensitive data
-	pkgver = 2.4.3
+	pkgver = 2.4.4
 	pkgrel = 1
 	url = https://openbao.org
 	arch = x86_64
 	license = MPL-2.0
 	depends = glibc
-	provides = openbao=2.2.0
+	provides = openbao=2.4.4
 	conflicts = openbao
-	source = openbao-bin-2.4.3.tar.gz::https://github.com/openbao/openbao/releases/download/v2.4.3/bao_2.4.3_Linux_x86_64.tar.gz
-	source = openbao-bin-2.4.3.tar.gz.sig::https://github.com/openbao/openbao/releases/download/v2.4.3/bao_2.4.3_Linux_x86_64.tar.gz.gpgsig
+	source = openbao-bin-2.4.4.tar.gz::https://github.com/openbao/openbao/releases/download/v2.4.4/bao_2.4.4_Linux_x86_64.tar.gz
+	source = openbao-bin-2.4.4.tar.gz.sig::https://github.com/openbao/openbao/releases/download/v2.4.4/bao_2.4.4_Linux_x86_64.tar.gz.gpgsig
 	validpgpkeys = 66D15FDD87287219C8E15478D200CD702853E6D0
-	b2sums = 6300eef73e3c9a5b763c2fe548aac0350a0dddc2c4244608dd9a28b550aff5d07859876c3e7f7f9ff53bf13c635f0ad817a653ea52a3b161959038bebe4857d8
+	b2sums = 322b9c26b8f385054cd37a832bce1edfe42ff1da4eef9ac0c118ccbe14e4f069dec0ff70fa32eef682d6f7c4111d26babd1db913c5f1e5cd49a4a7ba4aa0cbe1
 	b2sums = SKIP
 
 pkgname = openbao-bin
