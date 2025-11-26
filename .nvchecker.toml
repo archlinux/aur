@@ -1,0 +1,4 @@
+[lib32-sdl_mixer]
+source = "regex"
+url = "https://www.libsdl.org/projects/SDL_mixer/release/"
+regex = "SDL_mixer-([\\d.]+)\\.tar\\.gz"
