@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GenSA
-_pkgver=1.1.14.1
+_pkgver=1.1.15
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,8 +14,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3009ca659f16f997ed1b04160948e252')
-b2sums=('7aaf894a643291affc915f617a44dd70ada72732af7f17445c89526a500203733f339e1216cfac7b4f724bec21904d1baea42b3de97fafee73c3f53177fa0566')
+md5sums=('87d723350eac50c0597a87233708f0bc')
+b2sums=('fe0830f4bc0288ab9c8a7846ec11ab82e14dc4a36cda5b3743ac0b84ac674121781c3b013bfc3fc6dffe8ca3bf1bf9f9692ab892f38341bd020c909d6bf4a29d')
 
 build() {
   mkdir build
