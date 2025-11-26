@@ -22,7 +22,7 @@ depends=(
   qscintilla-qt6 qt6-base qt6-svg qt6-wayland which
 )
 makedepends=(
-  'boost>=1.74.0' 'ruby-gettext>=3.4.4'  # devendored
+  'boost>=1.74.0' 'ruby-gettext>=3.4.4' 'ruby-ruby-beautify2>=0.92.2' # devendored
   erlang-asn1 erlang-public_key erlang-ssl erlang-parsetools erlang-sasl
   elixir git cmake gendesk chrpath qt6-tools
   ruby-prime ruby-erb ruby-rexml
@@ -110,6 +110,13 @@ prepare() {
   # Remove locale (will be pulled in automatically by ruby-gettext)
   rm -rf app/server/ruby/vendor/locale-*
 
+  # Devendor wavefile - use system ruby-wavefile package
+  printf "Removing vendored wavefile gem\n"
+  rm -rf app/server/ruby/vendor/wavefile-*
+
+  # printf "Removing vendored ruby-beautify gem\n"
+  rm -rf app/server/ruby/vendor/ruby-beautify
+
   # Remove test-only and unused gems
   printf "Removing vendored minitest gem\n"
   rm -rf app/server/ruby/vendor/minitest-*
@@ -125,19 +132,11 @@ prepare() {
   rm -rf app/server/ruby/vendor/rouge
 
   # Could not devendor:
-  #     'ruby-titleize>=1.4.1' - not on Arch/AUR?
-  #     'ruby-ruby-beautify2-git>=0.92.2' is an AUR package >_<, security?
-
-  # Devendor wavefile - use system ruby-wavefile package
-  printf "Removing vendored wavefile gem\n"
-  rm -rf app/server/ruby/vendor/wavefile-*
+  #     'ruby-titleize>=1.4.1' - not on AUR, not updated in 9 years, probably no point
 
   # Devendor titleize - use system ruby-titleize package
   # printf "Removing vendored titleize gem\n"
   # rm -rf app/server/ruby/vendor/titleize-*
-
-  # printf "Removing vendored ruby-beautify gem\n"
-  # rm -rf app/server/ruby/vendor/ruby-beautify
 
   # printf "Removing all contents of vendor except .keep\n"
   # find app/server/ruby/vendor -mindepth 1 ! -name .keep -exec rm -rf {} +
@@ -148,7 +147,6 @@ prepare() {
   # TODO: devendor benchmark-ips-2.3.0
   # TODO: devendor interception (bin)
   # TODO: devendor rubame
-  # TODO: devendor ruby-beautify
   # TODO: devendor ruby-prof-0.15.8
   # TODO: devendor thread_safe
   # TODO: devendor websocket-ruby-1.2.8
