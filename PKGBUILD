@@ -151,7 +151,6 @@ prepare() {
   # TODO: devendor ruby-beautify
   # TODO: devendor ruby-prof-0.15.8
   # TODO: devendor thread_safe
-  # TODO: devendor wavefile-0.8.1
   # TODO: devendor websocket-ruby-1.2.8
 
   # devendor gems requiring compilation:
