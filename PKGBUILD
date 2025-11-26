@@ -3,7 +3,7 @@
 _reponame=Stirling-PDF
 _pkgname="${_reponame,,}"
 pkgname="${_pkgname}-bin"
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Locally hosted web application that allows you to perform various operations on PDF files"
 arch=("any")
@@ -27,7 +27,8 @@ depends=(
     "tesseract-data-eng"
     "unpaper"
 )
-optdepends=("jbig2enc: for certain OCR functionality"
+optdepends=("calibre: for ebook conversion"
+            "jbig2enc: for certain OCR functionality"
             "tesseract-data-chi_sim: Chinese Simplified language OCR"
             "tesseract-data-deu: German language OCR"
             "tesseract-data-fra: French language OCR"
@@ -49,8 +50,8 @@ source=("${_pkgname}-${pkgver}.jar::${url}/releases/download/v${pkgver}/${_repon
         "${_pkgname}.sh"
         "${_pkgname}.sysusers"
         "${_pkgname}.tmpfiles")
-sha256sums=('26b56b4c08f7db6b409aaa56c508a014add1905e481af0bc6b4a0568e3356b7d'
-            '52b36234b707d4e3e588e4a2e83a332404a1d4f03bbd9323a5a6f13d32ce60c0'
+sha256sums=('b43432d696a2e0211b414a8ec6c7d1711fef8f532ba5da6bcd3b0c1abc53fe5d'
+            'd524c3242a68e5ad47f2bade85fa27ec1c3cbd00114325ce6b6c1363e8b02044'
             'd395992889fdf60de430509cd5866fc4606548aa1ba8f134b7e6bd4e29f293c9'
             '815d0d2c05daf40384a27413fba1dbd9d7db749a98b881d3ed113c164a83e833'
             '67654b2198898e23d0cf35829e83cc0585b7335b8bd7fcd9da0e4a2ce90082d6'
