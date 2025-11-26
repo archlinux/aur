@@ -1,0 +1,21 @@
+pkgbase = fplayer-git
+	pkgdesc = Cross-platform FSEQ file player for Light-O-Rama hardware
+	pkgver = r471.92a8c75
+	pkgrel = 1
+	url = https://github.com/Cryptkeeper/fplayer
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = cjson
+	depends = libserialport
+	depends = openal
+	depends = freealut
+	depends = zstd
+	provides = fplayer
+	conflicts = fplayer
+	source = git+https://github.com/Cryptkeeper/fplayer.git
+	sha256sums = SKIP
+
+pkgname = fplayer-git
