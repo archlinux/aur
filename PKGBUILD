@@ -29,7 +29,8 @@ optdepends=(
 )
 
 options=(
-    !strip
+    '!strip'
+    '!emptydirs'
 )
 
 source=("https://download.flashpointarchive.org/upload/fp${_launcherver}_lin_${_timestamp}.7z")
