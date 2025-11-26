@@ -1,20 +1,20 @@
-# Contributor: BluePeril <blueperil@blueperil.de>
+# Contributor: BluePeril <blueperil (at) blueperil _dot_ de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-catalyst-authentication-credential-http'
-pkgver='1.018'
-pkgrel='2'
+pkgver='1.019'
+pkgrel='1'
 pkgdesc="HTTP Basic and Digest authentication for Catalyst"
 arch=('any')
-license=('Artistic-1.0-Perl' 'GPL-1.0-or-later')
+license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-catalyst-plugin-authentication>=0' 'perl-catalyst-runtime>=0' 'perl-class-accessor>=0' 'perl-data-uuid>=0.11' 'perl-http-message>=0' 'perl-string-escape>=0' 'perl-uri>=0' 'perl>=5.006')
-makedepends=()
-checkdepends=('perl-test-exception>=0' 'perl-test-mockobject>=0' 'perl-test-needs>=0' 'perl-perlio-utf8-strict')
+depends=('perl-catalyst-plugin-authentication>=0' 'perl-catalyst-runtime>=0' 'perl-class-accessor>=0' 'perl-crypt-sysrandom>=0.007' 'perl-http-message>=0' 'perl-string-escape>=0' 'perl-uri>=0' 'perl>=5.006')
+makedepends=('perl-module-build-tiny')
+checkdepends=('perl-test-exception>=0' 'perl-test-mockobject>=0' 'perl-test-needs>=0')
 url='https://metacpan.org/release/Catalyst-Authentication-Credential-HTTP'
-source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Catalyst-Authentication-Credential-HTTP-${pkgver}.tar.gz")
-md5sums=('53ade94495ee45b5ff2871e5a241653d')
-sha512sums=('61dfcb2c42eea0b44bfda52681fd57d54a97cc830b9d1ce22838c4b8e8bf08f0a92c12fb2b434c89c194215af85d8be6e13083685597bec5f9b4dadeacca01d3')
+source=("http://search.cpan.org/CPAN/authors/id/A/AB/ABRAXXA/Catalyst-Authentication-Credential-HTTP-${pkgver}.tar.gz")
+md5sums=('27b822c38993759b70c231d516d5ea8b')
+sha512sums=('b8a071f641fcb7a655f10fe847078262e901a2e03da7f31ae87591713c0037c92817b56b6846682358f65009e57ffcc98bb5acf6af24ca9643a88fe1672b26b2')
 _distdir="Catalyst-Authentication-Credential-HTTP-${pkgver}"
 
 build() {
@@ -24,22 +24,22 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
       MODULEBUILDRC=/dev/null
 
-    cd "$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
+    cd "$srcdir/$_distdir"
+    /usr/bin/perl Build.PL
+    /usr/bin/perl Build
   )
 }
 
 check() {
-  cd "$_distdir"
+  cd "$srcdir/$_distdir"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
+    /usr/bin/perl Build test
   )
 }
 
 package() {
-  cd "$_distdir"
-  make install
+  cd "$srcdir/$_distdir"
+  /usr/bin/perl Build install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
