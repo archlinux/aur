@@ -1,7 +1,7 @@
 # Maintainer: Kemel Zaidan <kemelzaidan at gmail dot com>
 pkgname=kingfisher-bin
 _name=kingfisher
-pkgver=1.66.0
+pkgver=1.68.0
 pkgrel=1
 pkgdesc="Blazingly fast secret‑scanning and validation tool built in Rust. Pre-compiled."
 arch=("i686" "x86_64" "aarch64")

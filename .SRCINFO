@@ -1,6 +1,6 @@
 pkgbase = kingfisher-bin
 	pkgdesc = Blazingly fast secret‑scanning and validation tool built in Rust. Pre-compiled.
-	pkgver = 1.66.0
+	pkgver = 1.68.0
 	pkgrel = 1
 	url = https://github.com/mongodb/kingfisher
 	arch = i686
@@ -9,11 +9,11 @@ pkgbase = kingfisher-bin
 	license = Apache-2.0
 	depends = qt6-websockets
 	conflicts = kingfisher
-	source_i686 = https://github.com/mongodb/kingfisher/releases/download/v1.66.0/kingfisher-linux-x64.tgz
+	source_i686 = https://github.com/mongodb/kingfisher/releases/download/v1.68.0/kingfisher-linux-x64.tgz
 	sha256sums_i686 = 560ce2546e3acfca160e61c2d6628b6ac0b81ca24af3d699375f0a2a0b03ef9f
-	source_x86_64 = https://github.com/mongodb/kingfisher/releases/download/v1.66.0/kingfisher-linux-x64.tgz
+	source_x86_64 = https://github.com/mongodb/kingfisher/releases/download/v1.68.0/kingfisher-linux-x64.tgz
 	sha256sums_x86_64 = 560ce2546e3acfca160e61c2d6628b6ac0b81ca24af3d699375f0a2a0b03ef9f
-	source_aarch64 = https://github.com/mongodb/kingfisher/releases/download/v1.66.0/kingfisher-linux-arm64.tgz
+	source_aarch64 = https://github.com/mongodb/kingfisher/releases/download/v1.68.0/kingfisher-linux-arm64.tgz
 	sha256sums_aarch64 = f4694b95a6a1aea84995b041c5b82ac39ddd4259fab137859d27664e548f9227
 
 pkgname = kingfisher-bin
