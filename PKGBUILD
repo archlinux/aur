@@ -1,11 +1,13 @@
 # Maintainer: Oleg "KawaiDesu" Vasilev <mail@zeym.org>
 pkgname=victoriametrics-bin
 pkgver=1.130.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, cost-effective and scalable time series database"
 arch=('x86_64' 'aarch64')
 url="https://victoriametrics.github.io"
 license=('Apache')
+provides=('victoriametrics')
+conflicts=('victoriametrics')
 backup=('etc/default/victoriametrics')
 install=victoriametrics.install
 source_x86_64=("https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v${pkgver}/victoria-metrics-linux-amd64-v${pkgver}.tar.gz")
