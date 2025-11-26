@@ -2,7 +2,7 @@
 
 _name=livekit
 pkgname=python-$_name
-pkgver=1.0.18
+pkgver=1.0.19
 pkgrel=1
 pkgdesc="Python Real-time SDK for LiveKit."
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_na
         "https://github.com/livekit/python-sdks/raw/refs/tags/rtc-v$pkgver/livekit-rtc/tests/test_processed.wav")
 source_x86_64=("https://github.com/livekit/rust-sdks/releases/download/rust-sdks/livekit-ffi@0.12.39/ffi-linux-x86_64.zip")
 source_aarch64=("https://github.com/livekit/rust-sdks/releases/download/rust-sdks/livekit-ffi@0.12.39/ffi-linux-arm64.zip")
-sha256sums=('665c041459e5e124db2d35b20fe4f170ea75156d6831d7dd1f9d40aeef127358'
+sha256sums=('1617162fe42ae2d3b18745ef0e40a15bcab7bd27aef6e6f47787f03865f55b07'
             'ac5cba8b2477ab55c9bc5f95faffcd3d9b9ad4e6a01d79308fbe6eeef733ce80'
             '90626c2c532dfb8313ae52501a9500f1c90235570aab8ff1367e7f91fb697a7e'
             'cf50f57f00fa941ab612c57c24a28811b93c878d3c98edcb4a8f21508aa8e566'
