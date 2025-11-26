@@ -1,5 +1,5 @@
 pkgname=mingw-w64-mumps
-pkgver=5.7.3
+pkgver=5.8.1
 pkgrel=1
 pkgdesc='Sparse solver library using Gaussian elimination (mingw-w64)'
 url='https://mumps-solver.org'
@@ -9,14 +9,18 @@ makedepends=('mingw-w64-gcc')
 arch=('any')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://mumps-solver.org/MUMPS_${pkgver}.tar.gz")
-sha256sums=('84a47f7c4231b9efdf4d4f631a2cae2bdd9adeaabc088261d15af040143ed112')
+sha256sums=('e91b6dcd93597a34c0d433b862cf303835e1ea05f12af073b06c32f652f3edd8')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "${srcdir}/MUMPS_${pkgver}"
   cp Make.inc/Makefile.inc.generic.SEQ Makefile.inc
+
+  # calling convention
   sed -i "s|define MUMPS_CALL|define MUMPS_CALL __declspec(dllexport)|g" include/mumps_compat.h
+
+  # fortran mangling
   sed -i "s/#if defined(UPPER) || defined(MUMPS_WIN32)/#if defined(UPPER)/g" src/mumps_common.h
   sed -i "s/if defined(UPPER) || defined(MUMPS_WIN32)/if defined(UPPER)/g" src/mumps_c.c
 }
