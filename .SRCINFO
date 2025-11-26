@@ -9,6 +9,7 @@ pkgbase = feluda-bin
 	makedepends = tar
 	depends = glibc
 	depends = gcc-libs
+	depends = zlib
 	optdepends = wasm-pack
 	provides = feluda
 	conflicts = feluda

@@ -13,7 +13,7 @@ license=('MIT')
 conflicts=("${_basename}")
 provides=("${_basename}")
 
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'gcc-libs' 'zlib')
 optdepends=('wasm-pack')
 makedepends=('tar')
 
