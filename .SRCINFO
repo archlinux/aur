@@ -1,0 +1,16 @@
+pkgbase = gtklock-runshell-module
+	pkgdesc = A gtklock module that runs a shell command
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://gitlab.com/wef/gtklock-runshell-module
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	makedepends = wayland
+	depends = gtklock>=4
+	depends = gtklock<5
+	source = https://gitlab.com/wef/gtklock-runshell-module/-/archive/4.0.0/gtklock-runshell-module-4.0.0.tar.gz
+	sha256sums = 050414b5c8e5e8a1976032a29243d7faef715d7c7bd3461f83bf7ca1e5781ade
+
+pkgname = gtklock-runshell-module
