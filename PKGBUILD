@@ -48,7 +48,7 @@ prepare() {
 	git -C tectonic config submodule.reference_sources.url "$srcdir/tectonic-staging" 
 	git -c protocol.file.allow=always submodule update --init
 	pushd tectonic
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 pkgver() {
