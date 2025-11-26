@@ -1,7 +1,7 @@
 pkgbase = qt6-base-hifps
 	pkgdesc = A cross-platform application and UI framework - patched for high refresh rates for animations
 	pkgver = 6.10.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.qt.io
 	arch = x86_64
 	groups = qt6

@@ -14,7 +14,7 @@ pkgname=(qt6-base-hifps
          qt6-xcb-private-headers-hifps)
 _pkgver=6.10.0
 pkgver=${_pkgver/-/}
-pkgrel=4
+pkgrel=5
 pkgdesc='A cross-platform application and UI framework - patched for high refresh rates for animations'
 arch=(x86_64)
 url='https://www.qt.io'
@@ -130,6 +130,13 @@ prepare() {
   patch -Np1 -i "${srcdir}/qt6-base-cflags.patch"  # Use system CFLAGS
   patch -Np1 -i "${srcdir}/qt6-base-nostrip.patch" # Don't strip binaries with qmake
 
+  echo ">>> Applying scroll fixing patches..."
+    # GG: fix scrolling in libreoffice on wayland
+  echo "Apply additional patches for optimizing scrolling ..."
+  git cherry-pick -n 095759818854e5a011aa8f859e566bbc6368ab76 # wayland: Compress high frequency mouse events
+  git cherry-pick -n 6f25f703fd37a900c139e14a33a4639502bfeae7 # wayland: Optimize scroll operation
+  git cherry-pick -n 9dd0d936d6691904a4bb212dcf48999a5228b84f # wayland: Enable event compression and fix scroll end event
+
   echo ">>> Reducing Qt animation timer interval down to ${HIFPS_TARGET_TIMER_INTERVAL} ms to smooth out animations..."
   tmpfile=$(mktemp)
 
@@ -139,6 +146,8 @@ prepare() {
   mv "$tmpfile" "$srcdir/0005-low-timer.patch"
 
   patch -Np1 -i "${srcdir}/0005-low-timer.patch" # apply 1 ms timing patch to make animations smoother
+
+  echo ">>> Applying additional quality of life patches..."
   git cherry-pick -n a374ab6ce9f01f1f559403ec377cde990a689890 # Fix yakuake
 
   echo ">>> Patches applied"
