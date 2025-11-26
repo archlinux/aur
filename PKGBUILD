@@ -1,7 +1,7 @@
 # Maintainer: mopi <mopigames@proton.me>
 pkgname=westty
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TTY-like Weston session with Kitty fullscreen"
 arch=('any')
 url="https://github.com/MopigamesYT/westty"
@@ -15,6 +15,9 @@ package() {
 
     # Install the westty script
     install -Dm755 westty.sh "$pkgdir/usr/bin/westty"
+
+    # Fix the Exec path in desktop file
+    sed -i 's|/home/mopi/.local/bin/westty|/usr/bin/westty|g' westty.desktop
 
     # Install the desktop session file
     install -Dm644 westty.desktop "$pkgdir/usr/share/wayland-sessions/westty.desktop"

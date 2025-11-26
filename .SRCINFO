@@ -1,7 +1,7 @@
 pkgbase = westty
 	pkgdesc = TTY-like Weston session with Kitty fullscreen
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MopigamesYT/westty
 	arch = any
 	license = MIT
