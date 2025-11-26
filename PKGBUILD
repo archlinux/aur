@@ -64,7 +64,7 @@ prepare () {
 	git config submodule.libtexpdf.url "$srcdir/libtexpdf"
 	git -c protocol.file.allow=always submodule update
 	./bootstrap.sh
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 pkgver() {
