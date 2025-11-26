@@ -1,6 +1,6 @@
 # Maintainer: thorko contact@thorko.de
 pkgname=promtail-git
-pkgver=3.6.1
+pkgver=3.6.2
 pkgrel=0
 pkgdesc="Promtail - Logshipper for Loki"
 arch=('x86_64')
