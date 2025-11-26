@@ -15,11 +15,11 @@ pkgdesc='An educational tool for designing and simulating digital logic circuits
 provides=('logisim-evolution')
 conflicts=('logisim-evolution-git' 'logisim-evolution')
 arch=('any')
-url="https://github.com/reds-heig/logisim-evolution"
+url="https://github.com/logisim-evolution/logisim-evolution"
 license=('GPL3')
 depends=('java-runtime>=16' 'hicolor-icon-theme')
 makedepends=('java-environment>=10')
-source=("${_name}-${pkgver}.jar::https://github.com/reds-heig/logisim-evolution/releases/download/v${pkgver}/logisim-evolution-${pkgver}-all.jar"
+source=("${_name}-${pkgver}.jar::${url}/releases/download/v${pkgver}/logisim-evolution-${pkgver}-all.jar"
     'logisim-evolution.desktop'
     'logisim-evolution.sh'
     'logisim-evolution.xml')
