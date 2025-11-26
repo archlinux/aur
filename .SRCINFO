@@ -1,19 +1,21 @@
 pkgbase = pcsc-cyberjack
 	pkgdesc = PCSC Driver for Reiner SCT cyberjack Cardreaders
-	pkgver = 3.99.5_SP16
+	pkgver = 3.99.5_SP17
 	pkgrel = 1
 	url = https://forum.reiner-sct.com/index.php?/forum/59-cyberjack-treiber-f%C3%BCr-linux/
 	arch = i686
 	arch = x86_64
 	arch = aarch64
-	license = LGPL
+	license = GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later
+	depends = gcc-libs
+	depends = glibc
 	depends = libusb
 	depends = pcsclite
 	conflicts = ctapi-cyberjack
 	replaces = ctapi-cyberjack
 	options = !libtool
 	options = !docs
-	source = https://support.reiner-sct.de/downloads/LINUX/V3.99.5_SP16/pcsc-cyberjack-3.99.5final.SP16.tar.bz2
-	sha256sums = 141489261c0d436be4b92f78faf240c32694426685413d9d50e3585feba5eb79
+	source = https://support.reiner-sct.de/downloads/LINUX/V3.99.5_SP17/pcsc-cyberjack-3.99.5final.SP17.tar.bz2
+	sha256sums = f1a8e15db3a4268b0d79c32a76195b34d79518bb891685443e253311f9e9d30a
 
 pkgname = pcsc-cyberjack
