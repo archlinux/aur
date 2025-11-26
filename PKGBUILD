@@ -2,7 +2,7 @@
 
 _name=genai-prices
 pkgname=python-$_name
-pkgver=0.0.44
+pkgver=0.0.47
 pkgrel=1
 pkgdesc='Calculate prices for calling LLM inference APIs.'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-httpx' 'python-pydantic')
 makedepends=('python-uv-build' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-anyio' 'python-devtools' 'python-dirty-equals' 'python-inline-snapshot' 'python-pytest' 'python-pytest-recording' 'python-ruamel-yaml')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2d746f3573928d89a0fad4311b7cea81d1246b6c48c6bb929e41d48894164122')
+sha256sums=('c3dfc47be44cc5d8e9966eaff2f014bc7b3d82abc190c19f85d9ae8f3eed08c3')
 
 build() {
     cd "$srcdir"/$_name-$pkgver/packages/python
