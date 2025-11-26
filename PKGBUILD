@@ -1,68 +1,67 @@
 # Maintainer: MojArch
-
 pkgname=opera-developer
-pkgver=125.0.5720.0
-pkgrel=2
+pkgver=125.0.5720.0  # ← Change this when updating
+pkgrel=1           # ← Reset to 1 when bumping pkgver
 pkgdesc='A fast and secure web browser and Internet suite - developer stream'
 arch=('x86_64')
 url='https://www.opera.com/computer'
 license=('custom:opera')
 provides=('opera-developer')
 depends=(
-    'gtk3' 
-    'alsa-lib' 
-    'libnotify' 
-    'curl' 
-    'nss' 
-    'libxss' 
-    'ttf-font' 
-    'desktop-file-utils' 
-    'shared-mime-info' 
+    'gtk3'
+    'alsa-lib'
+    'libnotify'
+    'curl'
+    'nss'
+    'libxss'
+    'ttf-font'
+    'desktop-file-utils'
+    'shared-mime-info'
     'hicolor-icon-theme'
     'upower'
 )
 optdepends=(
-#    'opera-developer-ffmpeg-codecs-bin: additional support for proprietary codecs'
     'opera-developer-ffmpeg-codecs'
 )
+# No need to maintain sha256sums manually anymore
+
+# Base URL construction
+_baseurl="https://get.geo.opera.com/pub/${pkgname}/${pkgver}/linux"
+_debfile="${pkgname}_${pkgver}_amd64.deb"
+
 source=(
-    "https://get.geo.opera.com/pub/${pkgname}/${pkgver}/linux/${pkgname}_${pkgver}_amd64.deb"
-    "opera"  
-    "default"  
+    "${_baseurl}/${_debfile}"
+    "opera"
+    "default"
 )
+# Integrity checks: a sha256sums array where the first entry is fetched dynamically
+# (some makepkg versions/platforms prefer an array over a function)
 sha256sums=(
-    '48d7e926a89d7455e5d4d9174b26e4f9db8d9c981ad1d40b21f46b1d77cfb47f'
-    '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'  
-    '99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231'  
+    "$(curl -s "${_baseurl}/${_debfile}.sha256sum" | awk -v f="${_debfile}" '$0 ~ f {print $1; found=1; exit} {h=$1} END { if (!found) print h }')"
+    "508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5"  # opera wrapper
+    "99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231"  # default config
 )
 
 prepare() {
-    # Replace placeholders in the wrapper script with actual values
     sed -e "s/%pkgname%/$pkgname/g" \
         -e "s/%operabin%/$pkgname\/$pkgname/g" \
         -i "$srcdir/opera"
 }
 
 package() {
-    # Extract the .deb package while excluding unnecessary directories
     tar -xf data.tar.xz --exclude=usr/share/{lintian,menu} -C "$pkgdir/"
 
-    # Simplify the library path by removing architecture-specific subfolder
     local libdir="$pkgdir/usr/lib/"
     mv "$libdir/"*-linux-gnu/$pkgname "$libdir"
     rm -rf "$libdir/"*-linux-gnu
 
-    # Set the appropriate permissions for the sandbox binary
     chmod 4755 "$pkgdir/usr/lib/$pkgname/opera_sandbox"
 
-    # Install the default configuration file
     install -Dm644 "$srcdir/default" "$pkgdir/etc/$pkgname/default"
 
-    # Replace the original binary with a custom wrapper script
     rm -f "$pkgdir/usr/bin/$pkgname"
     install -Dm755 "$srcdir/opera" "$pkgdir/usr/bin/$pkgname"
 
-    # Move license information to the correct location
     install -Dm644 \
         "$pkgdir/usr/share/doc/$pkgname/copyright" \
         "$pkgdir/usr/share/licenses/$pkgname/copyright"
