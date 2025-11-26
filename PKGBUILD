@@ -12,5 +12,5 @@ source=("hypr-cycle::https://github.com/christopherdolan/hypr-cycle/releases/dow
 sha256sums=('SKIP')
 
 package() {
-    install -Dm755 hypr-cycle "$pkgdir/usr/bin/hypr-cycle"
+    install -Dm755 "$srcdir/hypr-cycle" "$pkgdir/usr/bin/hypr-cycle"
 }
