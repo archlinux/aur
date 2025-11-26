@@ -3,7 +3,7 @@
 # Script para crear el release de NotNative v0.1.5-preview
 # Este script debe ejecutarse desde el directorio raíz del proyecto
 
-VERSION="0.1.11"
+VERSION="0.1.2"
 TAG="v${VERSION}"
 TARBALL="notnative-app-bin-${VERSION}-x86_64.tar.gz"
 
