@@ -2,7 +2,7 @@
 
 pkgname=pplacer
 pkgver=1.1.alpha20
-pkgrel=0
+pkgrel=1
 pkgdesc="Phylogenetic placement and downstream analysis "
 arch=("x86_64")
 url="https://matsen.fredhutch.org/pplacer/"
@@ -32,8 +32,8 @@ prepare() {
   sed -i 's|git@github.com:matsen/pplacer.git|https://github.com/matsen/pplacer.git|g' .gitmodules
   sed -i 's|git@github.com:fhcrc/mcl.git|https://github.com/fhcrc/mcl.git|g' .gitmodules
   git submodule init
-  git config submodule.libs/git@github.com:matsen/pplacer.git "$srcdir/mcl"
-  git config submodule.libs/git@github.com:fhcrc/mcl.git "$srcdir/${pkgname}-gh-pages"
+  git config submodule.libs/https://github.com/fhcrc/mcl.git "$srcdir/mcl"
+  git config submodule.libs/https://github.com/matsen/pplacer.git "$srcdir/${pkgname}-gh-pages"
   git -c protocol.file.allow=always submodule update
   cd mcl
   # Fix conflicting 'usage' prototype by changing the declaration in src/mcl/procinit.h

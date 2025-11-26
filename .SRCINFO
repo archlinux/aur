@@ -1,7 +1,7 @@
 pkgbase = pplacer
 	pkgdesc = Phylogenetic placement and downstream analysis
 	pkgver = 1.1.alpha20
-	pkgrel = 0
+	pkgrel = 1
 	url = https://matsen.fredhutch.org/pplacer/
 	arch = x86_64
 	license = GPL-3.0-or-later
