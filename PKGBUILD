@@ -12,7 +12,7 @@ url='https://kiro.dev/cli/'
 #   AWS Intellectual Property License: https://aws.amazon.com/legal/aws-ip-license-terms/
 #   Service Terms: https://aws.amazon.com/service-terms/
 #   Privacy Notice: https://aws.amazon.com/privacy/
-license=('LicenseRef-AWS-IPL')
+license=('LicenseRef-Kiro')
 depends=('gcc-libs' 'glibc' 'sh' 'xz')
 optdepends=('bash-completion: bash tab completion support'
             'zsh-completions: zsh tab completion support')
@@ -40,6 +40,8 @@ build() {
 }
 
 package() {
+    install -Dm644 Kiro-LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+
     cd kirocli
     install -Dm755 bin/$_name "$pkgdir/usr/bin/$_name"
     install -Dm755 bin/$_name-chat "$pkgdir/usr/bin/$_name-chat"
@@ -47,9 +49,6 @@ package() {
     install -Dm755 bin/q "$pkgdir/usr/bin/q"
     install -Dm755 bin/q "$pkgdir/usr/bin/qchat"
 
-    install -Dm644 "$srcdir/Kiro-LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    # Install shell completions
     install -Dm644 $_name.bash "$pkgdir/usr/share/bash-completion/completions/$_name"
     install -Dm644 $_name.zsh "$pkgdir/usr/share/zsh/site-functions/_$_name"
     install -Dm644 $_name.fish "$pkgdir/usr/share/fish/vendor_completions.d/$_name.fish"
