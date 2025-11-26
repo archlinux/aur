@@ -1,0 +1,12 @@
+pkgbase = hypr-cycle-git
+	pkgdesc = A fast and monitor-aware workspace cycler for Hyprland, written in Rust
+	pkgver = 0.3.0.1.gd8f54f4
+	pkgrel = 1
+	url = https://github.com/christopherdolan/hypr-cycle.git
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = hypr-cycle-git::git+https://github.com/christopherdolan/hypr-cycle.git
+	sha256sums = SKIP
+
+pkgname = hypr-cycle-git
