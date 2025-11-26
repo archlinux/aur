@@ -1,19 +1,18 @@
 pkgbase = clearlooks-phenix-gtk-theme-git
-	pkgdesc = GTK3 theme visually close to Clearlooks (jsane-h8ms fork, git version)
-	pkgver = 7.0.1.r414.abaffa3
+	pkgdesc = GTK3 theme visually close to Clearlooks (git version)
+	pkgver = 7.1
 	pkgrel = 1
-	url = https://github.com/jsane-h8ms/clearlooks-phenix
+	url = https://github.com/jpfleury/clearlooks-phenix
 	arch = any
 	license = GPL3
 	makedepends = inkscape
 	makedepends = git
 	depends = gtk-engines
 	optdepends = mist-icon-theme: a visually compatible icon theme
+	optdepends = gnome-themes-extra: provides theme fallbacks
 	provides = clearlooks-phenix-gtk-theme
 	conflicts = clearlooks-phenix-gtk-theme
-	source = git+https://github.com/jsane-h8ms/clearlooks-phenix.git
-	source = 001-explicit-units.patch
+	source = git+https://github.com/jpfleury/clearlooks-phenix.git
 	sha256sums = SKIP
-	sha256sums = f17c1a0ed905014b1699ca4a62172f0245bc7108e09efd6e35837a34726d7be8
 
 pkgname = clearlooks-phenix-gtk-theme-git
