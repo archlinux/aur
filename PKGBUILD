@@ -1,15 +1,15 @@
 # Maintainer: Daniel Wilhelm <concat(shield, wed) @ outlook.com>
 
 pkgname=wwphone
-pkgver=4.1.9
-pkgrel=2
+pkgver=4.2.6
+pkgrel=1
 pkgdesc="A proprietary CTI and SIP client from wwcom"
 arch=('x86_64')
 license=('custom:"Copyright (c) 2025 by wwcom ag"')
 url="https://www.wwcom.ch/"
 
 source=("https://wwcom.ch/downloads/wwphone_${pkgver//./_}.deb")
-sha256sums=('b3e53045990c6a514d1483d0007d59a5f2cf420aeed893f2794ae09c340b627c')
+sha256sums=('9f227d8fa1f262f7ecb67ac8288369cb61f235f6db5feac0c213e845cf953d25')
 
 depends=(
   "alsa-lib"
