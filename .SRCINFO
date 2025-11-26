@@ -1,0 +1,18 @@
+pkgbase = lua51-ldbus
+	pkgdesc = Lua Bindings to dbus.
+	pkgver = r135.6d4909c
+	pkgrel = 1
+	url = https://github.com/daurnimator/ldbus
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = luarocks
+	makedepends = git
+	depends = lua51
+	depends = libdbus
+	source = git+https://github.com/daurnimator/ldbus.git#commit=6d4909c983c8a0e2c7384bac8055c628aa524ea2
+	md5sums = SKIP
+
+pkgname = lua51-ldbus
