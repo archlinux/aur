@@ -1,7 +1,7 @@
 pkgbase = atk-a9-udev
 	pkgdesc = udev rule for the ATK A9 Mouse
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL
 	source = 70-atk-a9.rules

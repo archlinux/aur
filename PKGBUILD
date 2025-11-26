@@ -1,8 +1,8 @@
-# Maintainer: crian <crian84@gmail.com>
+# Maintainer: crian <crian84 at gmail dot com>
 
 pkgname=atk-a9-udev
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='udev rule for the ATK A9 Mouse'
 arch=('any')
 license=('GPL')
