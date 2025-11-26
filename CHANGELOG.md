@@ -7,13 +7,21 @@ Certification Authorities (CA) certificates.
 The format is based on Keep a Changelog (see https://keepachangelog.com),
 and this project versioning is YYYYMMDD.
 
-## Update to 20251007
+## 20251127
+
+### Added
+
+- AC_SAFETECH_RFB_v5.crt
+- AC_VALID_BRASIL_V12.crt
+- Autoridade_Certificadora_SERPRO_v5.crt
+
+## 20251007
 
 ### Added
 
 - AC_Safeweb_v12.crt
 
-## Update to 20250822
+## 20250822
 
 ### Deleted
 
