@@ -1,5 +1,5 @@
 pkgname=simple-go-snake
-pkgver=4.0.1
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="High-performance terminal Snake game written in Go"
 arch=('x86_64' 'aarch64')
