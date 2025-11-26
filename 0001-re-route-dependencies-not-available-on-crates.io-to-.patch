@@ -21,7 +21,7 @@ index 4b1671ea..086de77a 100644
  
      "pxar-bin",
  ]
-@@ -112,7 +110,6 @@ pbs-tools = { path = "pbs-tools" }
+@@ -116,7 +110,6 @@ pbs-tools = { path = "pbs-tools" }
  # regular crates
  anyhow = "1.0"
  async-trait = "0.1.56"
@@ -29,7 +29,7 @@ index 4b1671ea..086de77a 100644
  bitflags = "2.4"
  bytes = "1.0"
  cidr = "0.3"
-@@ -125,7 +122,6 @@ flate2 = "1.0"
+@@ -129,7 +122,6 @@ flate2 = "1.0"
  foreign-types = "0.3"
  futures = "0.3"
  h2 = { version = "0.4", features = [ "stream" ] }
@@ -37,7 +37,7 @@ index 4b1671ea..086de77a 100644
  hex = "0.4.3"
  hickory-resolver = { version = "0.24.1", default-features = false, features = [ "system-config", "tokio-runtime" ] }
  http-body-util = "0.1"
-@@ -162,141 +158,51 @@ xdg = "2.2"
+@@ -166,154 +166,60 @@ xdg = "2.2"
  zstd = "0.13"
  zstd-safe = "7"
  
@@ -99,10 +99,14 @@ index 4b1671ea..086de77a 100644
 -proxmox-log.workspace = true
 -proxmox-ldap.workspace = true
 -proxmox-metrics.workspace = true
+-proxmox-network-api = { workspace = true, features = [ "impl" ] }
 -proxmox-notify = { workspace = true, features = [ "pbs-context" ] }
 -proxmox-openid.workspace = true
+-proxmox-product-config.workspace = true
+-proxmox-rate-limiter = { workspace = true, features = [ "shared-rate-limiter" ] }
 -proxmox-rest-server = { workspace = true, features = [ "rate-limited-stream" ] }
 -proxmox-router = { workspace = true, features = [ "cli", "server"] }
+-proxmox-s3-client.workspace = true
 -proxmox-schema = { workspace = true, features = [ "api-macro" ] }
 -proxmox-section-config.workspace = true
 -proxmox-serde = { workspace = true, features = [ "serde_json" ] }
@@ -139,6 +143,7 @@ index 4b1671ea..086de77a 100644
 -#pbs-api-types = { path = "../proxmox/pbs-api-types" }
 +pbs-api-types = { path = "../proxmox/pbs-api-types" }
  #proxmox-acme = { path = "../proxmox/proxmox-acme" }
+ #proxmox-api-macro = { path = "../proxmox/proxmox-api-macro" }
  #proxmox-apt = { path = "../proxmox/proxmox-apt" }
 -#proxmox-apt-api-types = { path = "../proxmox/proxmox-apt-api-types" }
 -#proxmox-async = { path = "../proxmox/proxmox-async" }
@@ -155,36 +160,46 @@ index 4b1671ea..086de77a 100644
 +proxmox-compression = { path = "../proxmox/proxmox-compression" }
 +proxmox-config-digest = { path = "../proxmox/proxmox-config-digest" }
  #proxmox-daemon = { path = "../proxmox/proxmox-daemon" }
--#proxmox-fuse = { path = "../proxmox-fuse" }
 -#proxmox-http = { path = "../proxmox/proxmox-http" }
+-#proxmox-http-error = { path = "../proxmox/proxmox-http-error" }
 -#proxmox-human-byte = { path = "../proxmox/proxmox-human-byte" }
 -#proxmox-io = { path = "../proxmox/proxmox-io" }
 -#proxmox-lang = { path = "../proxmox/proxmox-lang" }
--#proxmox-log = { path = "../proxmox/proxmox-log" }
-+proxmox-fuse = { path = "../proxmox-fuse" }
 +proxmox-http = { path = "../proxmox/proxmox-http" }
++proxmox-http-error = { path = "../proxmox/proxmox-http-error" }
 +proxmox-human-byte = { path = "../proxmox/proxmox-human-byte" }
 +proxmox-io = { path = "../proxmox/proxmox-io" }
 +proxmox-lang = { path = "../proxmox/proxmox-lang" }
-+proxmox-log = { path = "../proxmox/proxmox-log" }
  #proxmox-ldap = { path = "../proxmox/proxmox-ldap" }
+-#proxmox-log = { path = "../proxmox/proxmox-log" }
++proxmox-log = { path = "../proxmox/proxmox-log" }
  #proxmox-metrics = { path = "../proxmox/proxmox-metrics" }
+ #proxmox-network-api = { path = "../proxmox/proxmox-network-api" }
+ #proxmox-network-types = { path = "../proxmox/proxmox-network-types" }
 -#proxmox-notify = { path = "../proxmox/proxmox-notify" }
 +proxmox-notify = { path = "../proxmox/proxmox-notify" }
  #proxmox-openid = { path = "../proxmox/proxmox-openid" }
+-#proxmox-product-config = { path = "../proxmox/proxmox-product-config" }
++proxmox-product-config = { path = "../proxmox/proxmox-product-config" }
+-#proxmox-rate-limiter = { path = "../proxmox/proxmox-rate-limiter" }
++proxmox-rate-limiter = { path = "../proxmox/proxmox-rate-limiter" }
  #proxmox-rest-server = { path = "../proxmox/proxmox-rest-server" }
 -#proxmox-router = { path = "../proxmox/proxmox-router" }
 +proxmox-router = { path = "../proxmox/proxmox-router" }
  #proxmox-rrd = { path = "../proxmox/proxmox-rrd" }
  #proxmox-rrd-api-types = { path = "../proxmox/proxmox-rrd-api-types" }
+-#proxmox-s3-client = { path = "../proxmox/proxmox-s3-client" }
++proxmox-s3-client = { path = "../proxmox/proxmox-s3-client" }
 -#proxmox-schema = { path = "../proxmox/proxmox-schema" }
 -#proxmox-section-config = { path = "../proxmox/proxmox-section-config" }
--#proxmox-serde = { path = "../proxmox/proxmox-serde" }
--#proxmox-shared-memory = { path = "../proxmox/proxmox-shared-memory" }
--#proxmox-sortable-macro = { path = "../proxmox/proxmox-sortable-macro" }
 +proxmox-schema = { path = "../proxmox/proxmox-schema" }
 +proxmox-section-config = { path = "../proxmox/proxmox-section-config" }
+ #proxmox-sendmail = { path = "../proxmox/proxmox-sendmail" }
+-#proxmox-serde = { path = "../proxmox/proxmox-serde" }
 +proxmox-serde = { path = "../proxmox/proxmox-serde" }
+ #proxmox-shared-cache = { path = "../proxmox/proxmox-shared-cache" }
+-#proxmox-shared-memory = { path = "../proxmox/proxmox-shared-memory" }
+-#proxmox-sortable-macro = { path = "../proxmox/proxmox-sortable-macro" }
 +proxmox-shared-memory = { path = "../proxmox/proxmox-shared-memory" }
 +proxmox-sortable-macro = { path = "../proxmox/proxmox-sortable-macro" }
  #proxmox-subscription = { path = "../proxmox/proxmox-subscription" }
@@ -200,8 +215,10 @@ index 4b1671ea..086de77a 100644
 +proxmox-uuid = { path = "../proxmox/proxmox-uuid" }
 +proxmox-worker-task = { path = "../proxmox/proxmox-worker-task" }
  
+-#proxmox-fuse = {path = "../proxmox-fuse" }
 -#pathpatterns = {path = "../pathpatterns" }
 -#pxar = { path = "../pxar" }
++proxmox-fuse = {path = "../proxmox-fuse" }
 +pathpatterns = {path = "../pathpatterns" }
 +pxar = { path = "../pxar" }
  
