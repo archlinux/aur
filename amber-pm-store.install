@@ -1,0 +1,10 @@
+# amber-pm-store.install
+post_install() {
+xdg-mime default apm-store-handler.desktop x-scheme-handler/apmstore
+update-mime-database /usr/share/mime || true
+}
+
+post_upgrade() {
+xdg-mime default apm-store-handler.desktop x-scheme-handler/apmstore
+update-mime-database /usr/share/mime || true
+}

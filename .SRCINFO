@@ -1,12 +1,15 @@
 pkgbase = amber-pm-store
 	pkgdesc = Get apps and run in Amber-PM container
 	pkgver = 0.1
-	pkgrel = 1
-	url = https://gitee.com/amber-ce/amber-pm-store/
+	pkgrel = 2
+	url = https://gitee.com/spark-store-project/apm-store
+	install = amber-pm-store.install
 	arch = x86_64
 	license = custom
 	depends = amber-package-manager
-	source = amber-pm-store-0.1.tar.gz::https://gitee.com/amber-ce/amber-pm-store/repository/archive/0.1.tar.gz
-	sha256sums = 3b487400db675c684ec6568ea50136f3bb3d98163e727ae8135f798c87930f4f
+	depends = zenity
+	depends = qt5-tools
+	source = amber-pm-store-0.1.tar.gz::https://gitee.com/spark-store-project/apm-store/repository/archive/0.0.1.zip
+	sha256sums = cf0380d3fd0bf0dd871bf69818d84fb66fa3591e39d96f611b485951c2c0dff8
 
 pkgname = amber-pm-store
