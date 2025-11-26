@@ -5,14 +5,14 @@
 
 pkgbase=jellyfin-git
 pkgname=(jellyfin-git jellyfin-web-git jellyfin-server-git)
-pkgver=10.12.0.r27989.f124223
+pkgver=10.12.0.r28000.082ba58
 pkgrel=1
 pkgdesc='The Free Software Media System'
 arch=('any')
 url='https://jellyfin.org'
 _url='https://github.com/jellyfin/jellyfin'
 license=('GPL2')
-makedepends=('dotnet-sdk>=9' 'npm' 'git')
+makedepends=('dotnet-sdk-9.0' 'npm' 'git')
 provides=('jellyfin')
 conflicts=('jellyfin')
 source=('git+https://github.com/jellyfin/jellyfin.git'
@@ -94,7 +94,7 @@ package_jellyfin-server-git() {
   pkgdesc='Jellyfin server backend'
   _pkgname="${pkgname%-server-git}"
   depends=(
-    'aspnet-runtime>=9'
+    'aspnet-runtime-9.0'
     'ffmpeg'
     'sqlite'
   )

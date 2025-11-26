@@ -1,11 +1,11 @@
 pkgbase = jellyfin-git
 	pkgdesc = The Free Software Media System
-	pkgver = 10.12.0.r27989.f124223
+	pkgver = 10.12.0.r28000.082ba58
 	pkgrel = 1
 	url = https://jellyfin.org
 	arch = any
 	license = GPL2
-	makedepends = dotnet-sdk>=9
+	makedepends = dotnet-sdk-9.0
 	makedepends = npm
 	makedepends = git
 	provides = jellyfin
@@ -30,8 +30,8 @@ pkgbase = jellyfin-git
 	sha512sums = 0d49d770f076ea8b644bf9e0fce49c1e36591625da53220d61cea9980c38aade4b97ef97af9ec2bf9ebe4ce0a9ef6cecf1a9c86e227dc89add50e39bc3fbcce1
 
 pkgname = jellyfin-git
-	depends = jellyfin-web-git=10.12.0.r27989.f124223
-	depends = jellyfin-server-git=10.12.0.r27989.f124223
+	depends = jellyfin-web-git=10.12.0.r28000.082ba58
+	depends = jellyfin-server-git=10.12.0.r28000.082ba58
 
 pkgname = jellyfin-web-git
 	pkgdesc = Jellyfin web client
@@ -40,7 +40,7 @@ pkgname = jellyfin-web-git
 
 pkgname = jellyfin-server-git
 	pkgdesc = Jellyfin server backend
-	depends = aspnet-runtime>=9
+	depends = aspnet-runtime-9.0
 	depends = ffmpeg
 	depends = sqlite
 	provides = jellyfin-server
