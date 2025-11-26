@@ -1,0 +1,8 @@
+[lib32-xcb-util]
+source = "gitlab"
+gitlab = "xorg/lib/libxcb-util"
+host = "gitlab.freedesktop.org"
+
+include_regex = ".*xcb-util-.*"
+use_max_tag = true
+prefix = "xcb-util-"
