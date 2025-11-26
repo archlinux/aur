@@ -1,7 +1,7 @@
 # Maintainer: alba4k <blaskoazzolaaaron@gmail.com>
 pkgname=albafetch-bin
 pkgver=4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Neofetch, but written in C; both faster and worse than the original (binary build)"
 arch=(x86_64 aarch64)
 url="https://github.com/alba4k/albafetch"
@@ -24,7 +24,6 @@ package() {
 
     install -Dm644 "$srcdir/../LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "$srcdir/../README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
-    install -Dm644 "$srcdir/../MANUAL.md" "$pkgdir/usr/share/doc/${pkgname}/MANUAL.md"
 
     install -Dm644 "$srcdir/../albafetch.conf" "$pkgdir/etc/xdg/albafetch.conf"
 }
