@@ -1,0 +1,4 @@
+[lib32-slang]
+source = 'regex'
+url = 'https://www.jedsoft.org/releases/slang/'
+regex = 'slang-([\d.]+).tar'
