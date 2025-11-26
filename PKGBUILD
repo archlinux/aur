@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libquicktime-git
-pkgver=r983.g2729591
-pkgrel=2
+pkgver=r987.g2213b76
+pkgrel=1
 pkgdesc="Library for reading and writing quicktime files"
 arch=('i686' 'x86_64')
 url="https://libquicktime.sourceforge.net/"
-license=('LGPL')
-depends=('glibc' 'alsa-lib' 'faac' 'faad2' 'gtk2' 'lame' 'libjpeg-turbo' 'libxaw'
+license=('LGPL-2.1-or-later')
+depends=('glibc' 'alsa-lib' 'faac' 'faad2' 'gtk4' 'lame' 'libjpeg-turbo' 'libxaw'
          'libxv' 'schroedinger'
          'libavcodec.so' 'libswscale.so' 'libvorbisenc.so' 'libvorbisfile.so'
          'libvorbis.so' 'libx264.so')

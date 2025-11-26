@@ -1,11 +1,11 @@
 pkgbase = libquicktime-git
 	pkgdesc = Library for reading and writing quicktime files
-	pkgver = r983.g2729591
-	pkgrel = 2
+	pkgver = r987.g2213b76
+	pkgrel = 1
 	url = https://libquicktime.sourceforge.net/
 	arch = i686
 	arch = x86_64
-	license = LGPL
+	license = LGPL-2.1-or-later
 	makedepends = git
 	makedepends = doxygen
 	makedepends = mesa-libgl
@@ -13,7 +13,7 @@ pkgbase = libquicktime-git
 	depends = alsa-lib
 	depends = faac
 	depends = faad2
-	depends = gtk2
+	depends = gtk4
 	depends = lame
 	depends = libjpeg-turbo
 	depends = libxaw
@@ -25,7 +25,7 @@ pkgbase = libquicktime-git
 	depends = libvorbisfile.so
 	depends = libvorbis.so
 	depends = libx264.so
-	provides = libquicktime=r983.g2729591
+	provides = libquicktime=r987.g2213b76
 	conflicts = libquicktime
 	source = git+https://git.code.sf.net/p/libquicktime/git
 	sha256sums = SKIP
