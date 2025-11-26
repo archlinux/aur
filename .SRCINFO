@@ -1,6 +1,6 @@
 pkgbase = prometheus-nvidia-gpu-exporter-git
 	pkgdesc = Prometheus exporter for NVIDIA GPU metrics
-	pkgver = 0.2.1.r1.g4906510
+	pkgver = 0.2.2.r1.gb942879
 	pkgrel = 1
 	url = https://github.com/plazonic/nvidia_gpu_prometheus_exporter
 	arch = x86_64

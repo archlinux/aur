@@ -3,7 +3,7 @@
 _name=nvidia_gpu_prometheus_exporter
 _pkgname=prometheus-nvidia-gpu-exporter
 pkgname=prometheus-nvidia-gpu-exporter-git
-pkgver=0.2.1.r1.g4906510
+pkgver=0.2.2.r1.gb942879
 pkgrel=1
 pkgdesc="Prometheus exporter for NVIDIA GPU metrics"
 arch=(x86_64)
@@ -69,7 +69,7 @@ package() {
   # systemd files
   install -vDm 644 $_pkgname.conf "$pkgdir"/etc/conf.d/$_pkgname
   install -vDm 644 $_pkgname.service -t "$pkgdir"/usr/lib/systemd/system/
-  install -vDm 644 $_pkgname.sysusers -t "$pkgdir"/usr/lib/sysusers.d/
+  install -vDm 644 $_pkgname.sysusers "$pkgdir"/usr/lib/sysusers.d/$_pkgname.conf
 
   cd $_name
 
