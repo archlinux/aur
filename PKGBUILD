@@ -2,7 +2,7 @@
 
 _pkgname=passless
 pkgname="${_pkgname}"
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="FIDO2 security token emulator "
 arch=('x86_64' 'aarch64')
@@ -59,4 +59,5 @@ package() {
     install -Dm0644 contrib/systemd/passless.service "$pkgdir/usr/lib/systemd/user/passless.service"
     install -Dm0644 contrib/udev/90-passless.rules "$pkgdir/usr/lib/udev/rules.d/90-passless.rules"
     install -Dm0644 contrib/sysusers.d/passless.conf "$pkgdir/usr/lib/sysusers.d/passless.conf"
+    install -Dm0644 contrib/modules-load.d/fido.conf "$pkgdir/etc/modules-load.d/fido.conf"
 }
