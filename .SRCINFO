@@ -1,7 +1,7 @@
 pkgbase = cambalache
 	pkgdesc = A new RAD tool for Gtk 4 and 3
-	pkgver = 0.96.1
-	pkgrel = 4
+	pkgver = 0.96.3
+	pkgrel = 1
 	url = https://gitlab.gnome.org/jpu/cambalache
 	arch = x86_64
 	license = LGPL-2.1-only
@@ -33,7 +33,7 @@ pkgbase = cambalache
 	depends = webkit2gtk-4.1
 	depends = webkitgtk-6.0
 	depends = wlroots0.18
-	source = https://gitlab.gnome.org/jpu/cambalache/-/archive/0.96.1/cambalache-0.96.1.tar.gz
-	sha512sums = 69875a1799e54b71f747458524d059ad84e8c2dfe5fa077c72da8efb72199c4a496c270432a4c74199aad5bcd5bcfca037088d2e5a55b0ecc2951569c95e79c5
+	source = https://gitlab.gnome.org/jpu/cambalache/-/archive/0.96.3/cambalache-0.96.3.tar.gz
+	sha512sums = e7c530cb00650a655ef8d1e72b79bb6f1c9c4567b9ef37ec441c14988d054d2d134c5ee7ed3491a82a4ce131204343bb885c3bf5322c80c29e72d92149b82643
 
 pkgname = cambalache

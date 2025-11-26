@@ -3,8 +3,8 @@
 # shellcheck shell=bash disable=SC2034,SC2164
 
 pkgname=cambalache
-pkgver=0.96.1
-pkgrel=4
+pkgver=0.96.3
+pkgrel=1
 pkgdesc="A new RAD tool for Gtk 4 and 3"
 arch=('x86_64')
 url="https://gitlab.gnome.org/jpu/cambalache"
@@ -15,7 +15,7 @@ depends=('at-spi2-core' 'cairo' 'dconf' 'gdk-pixbuf2' 'glib2' 'graphene' 'gtk3' 
          'wayland' 'webkit2gtk-4.1' 'webkitgtk-6.0' 'wlroots0.18')
 makedepends=('git' 'gobject-introspection' 'meson' 'ninja' 'wayland-protocols')
 source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('69875a1799e54b71f747458524d059ad84e8c2dfe5fa077c72da8efb72199c4a496c270432a4c74199aad5bcd5bcfca037088d2e5a55b0ecc2951569c95e79c5')
+sha512sums=('e7c530cb00650a655ef8d1e72b79bb6f1c9c4567b9ef37ec441c14988d054d2d134c5ee7ed3491a82a4ce131204343bb885c3bf5322c80c29e72d92149b82643')
 
 prepare() {
   # Use project's Casilda dependency
