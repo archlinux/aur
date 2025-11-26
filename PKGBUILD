@@ -4,7 +4,7 @@
 # Contributor: Peter Sutton (foxxy) <foxxy@foxdogstudios.com>
 
 pkgname=ngrok
-pkgver=3.33.0
+pkgver=3.33.1
 pkgrel=1
 pkgdesc='A tunneling, reverse proxy for developing and understanding networked, HTTP services'
 url='https://ngrok.com'
@@ -12,15 +12,15 @@ license=('LicenseRef-custom')
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 optdepends=('bash-completion: Bash completion support')
 source=("TERMS-OF-SERVICE.txt")
-source_x86_64=("https://bin.equinox.io/a/m2HKeLr9d8y/ngrok-v3-3.33.0-linux-amd64.tar.gz")
-source_i686=("https://bin.equinox.io/a/hZJJyxQ3rz1/ngrok-v3-3.33.0-linux-386.tar.gz")
-source_armv7h=("https://bin.equinox.io/a/4ajHiraMwvX/ngrok-v3-3.33.0-linux-arm.tar.gz")
-source_aarch64=("https://bin.equinox.io/a/3RHHaRTaETk/ngrok-v3-3.33.0-linux-arm64.tar.gz")
+source_x86_64=("https://bin.equinox.io/a/bNzUz3YQtcB/ngrok-v3-3.33.1-linux-amd64.tar.gz")
+source_i686=("https://bin.equinox.io/a/7jCkVgxrtdP/ngrok-v3-3.33.1-linux-386.tar.gz")
+source_armv7h=("https://bin.equinox.io/a/hPGy7FMQzZZ/ngrok-v3-3.33.1-linux-arm.tar.gz")
+source_aarch64=("https://bin.equinox.io/a/8Ke6HQWUP1A/ngrok-v3-3.33.1-linux-arm64.tar.gz")
 sha256sums=('d1fce3c7e78d5f7e5307238ee5f371b7a10911aeb249e3358e945eaa8cf2f1b2')
-sha256sums_i686=('c6226cd0ec7e871de0dca2dd981af4708e3957e70be01698dfa75a0ccffaf415')
-sha256sums_x86_64=('d4b67a33af9df9641484e1822855f77f572a1421ad6f1eeda9ff25b2b292abda')
-sha256sums_armv7h=('e25ee2fed6d810adf731ecf3550c54bd62dc3b56a8878c6b77f61cf505ca4aef')
-sha256sums_aarch64=('47eebbd07842559a31ca5e9366dbc147174c98bf68592ef1adf905007f834c88')
+sha256sums_i686=('388e3247c39c744dd38394a4cf4b1f3ce0940d2f8e54d6ed15b276f1e98b366a')
+sha256sums_x86_64=('7d5cf30be47a38d937958dff61a2b175a289bdbf72fdc20774a6dceeaaaa3dbf')
+sha256sums_armv7h=('6329f264fc94f3d9a344a538de2394c69b680eda1a095e3fdf2e8878a7ca9757')
+sha256sums_aarch64=('b46a58629343017e0877a02e533b889224695d0479275fe6f3a6b84b16e0f8dd')
 
 # In order to make Ngrok's built-in updater happy, we need to avoid modifying the binary
 options=(!strip)
