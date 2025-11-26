@@ -1,0 +1,17 @@
+pkgbase = python-dllist
+	pkgdesc = List the shared libraries loaded by the current process
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/wardbrian/dllist
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = python-dllist-2.0.0.tar.gz::https://github.com/wardbrian/dllist/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 9e22902e0ca31f6cc76ea259eace25f2e52f6a4b35b956e95cff166c772503b3
+
+pkgname = python-dllist
