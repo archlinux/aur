@@ -1,7 +1,7 @@
 # Maintainer: Pando85 <pando855@gmail.com>
 _pkgname=passless
 pkgname="${_pkgname}-bin"
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="FIDO2 security token emulator"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=("https://github.com/pando85/passless/releases/download/v${pkgver}/passle
         "passless-${pkgver}.tar.gz::https://github.com/pando85/passless/archive/refs/tags/v${pkgver}.tar.gz"
         "https://github.com/pando85/passless/releases/download/v${pkgver}/passless-completions-${pkgver}.tar.gz"
         "passless.install")
-sha256sums=('6bb1c20fdf884011e1b30dea38ec20cf6ea4b2a4db0ea3c51e85a19709d689f0'
+sha256sums=('c7d0f216bd4f4e92eda91fab3df91922af29efa2948c5809744f24f35b819efa'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -48,4 +48,6 @@ package() {
 		"${pkgdir}/usr/lib/udev/rules.d/90-passless.rules"
 	install -Dm0644 "passless-${pkgver}/contrib/sysusers.d/passless.conf" \
 		"${pkgdir}/usr/lib/sysusers.d/passless.conf"
+	install -Dm0644 "passless-${pkgver}/contrib/modules-load.d/fido.conf" \
+		"${pkgdir}/etc/modules-load.d/fido.conf"
 }
