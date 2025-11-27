@@ -1,9 +1,9 @@
 # Maintainer: ind4skylivey <your.email@example.com>
-# MateriaTrack - Final Fantasy-themed CLI time tracker
+# MatteriaTrack - Final Fantasy-themed CLI time tracker
 
 pkgname=materiatrack
-pkgver=1.0.3
-pkgrel=8
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="Mystical Final Fantasy-themed CLI time tracker based on Zeit"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ind4skylivey/matteria-track"
@@ -17,10 +17,10 @@ optdepends=(
 provides=('materiatrack' 'mtrack')
 conflicts=('materiatrack-git' 'materiatrack-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ind4skylivey/matteria-track/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8a51681613fcb885868d9e0c35c321c29c5660d0be2cc15811a4de6509874327')
+sha256sums=('92cb8bf4f1a6073bff61839cd146208417541ec4f5673cb18482cc4b3e5dbc37')
 
 source_x86_64=("materiatrack-$pkgver-x86_64.tar.gz::https://github.com/ind4skylivey/matteria-track/releases/download/v$pkgver/materiatrack-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('b03c323358a0c4254285ae1a716c85ee05192ebc8a61a27e1c3cf89d205b03de')
+sha256sums_x86_64=('032d7c781e877ae8fc097705be6ff35fdd653cb7412968e218156ad3e663af68')
 
 prepare() {
     # On x86_64 we use the prebuilt binary artifact; no prepare needed.
