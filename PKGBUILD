@@ -2,7 +2,7 @@
 # Contributor: Liberty Raptor <libertyraptor at protonmail dot com>
 
 pkgname=xemu-bin
-pkgver=0.8.113
+pkgver=0.8.115
 pkgrel=1
 pkgdesc="Emulator for the original Xbox console"
 arch=(x86_64)
@@ -12,7 +12,7 @@ provides=(xemu)
 conflicts=(xemu xemu-git)
 options=(!debug)
 source=(xemu-$pkgver.AppImage::https://github.com/xemu-project/xemu/releases/download/v$pkgver/xemu-v$pkgver-x86_64.AppImage)
-sha256sums=('e95f15d273ebeeeeb3bb9673bcb480f8e4275f024015fc917e74b46ffe1cda3e')
+sha256sums=('1c9de55d04caa9bd4f63ab0488c969cb96ae577c5018b82d29337ce6ea533235')
 
 prepare() {
   # Extract files from AppImage (only if exists, in case of using '--noextract').
