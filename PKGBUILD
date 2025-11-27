@@ -1,8 +1,8 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
-
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 pkgname=ncl
 pkgver=6.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Ncar Command Language, is an interpreted language designed specifically for scientific data analysis and visualization'
 url='http://www.ncl.ucar.edu'
 license=('APACHE')
@@ -25,7 +25,8 @@ source=(ncl-$pkgver.tar.gz::https://github.com/NCAR/ncl/archive/$pkgver.tar.gz
         ncl-gdal.patch::https://src.fedoraproject.org/rpms/ncl/raw/main/f/ncl-gdal.patch
         ncl-proj8.patch::https://src.fedoraproject.org/rpms/ncl/raw/main/f/ncl-proj8.patch
         ncl-format.patch::https://src.fedoraproject.org/rpms/ncl/raw/main/f/ncl-format.patch
-        ncl-boz.patch::https://src.fedoraproject.org/rpms/ncl/raw/main/f/ncl-boz.patch)
+        ncl-boz.patch::https://src.fedoraproject.org/rpms/ncl/raw/main/f/ncl-boz.patch
+        ncl-gcc15.patch::https://src.fedoraproject.org/rpms/ncl/raw/main/f/ncl-gcc15.patch)
 optdepends=('ncl-highres: High-resolution coastlines (RANGS and GSHHS)')
 sha256sums=('cad4ee47fbb744269146e64298f9efa206bc03e7b86671e9729d8986bb4bc30e'
             '1766327add038495fa3499e9b7cc642179229750f7201b94f8e1b7bee76f8480'
@@ -41,7 +42,8 @@ sha256sums=('cad4ee47fbb744269146e64298f9efa206bc03e7b86671e9729d8986bb4bc30e'
             '0ae96df73ac8902b1cd4bab203c45c4bc58b2f645ed094768884f9149066849a'
             'f960b172438485f664a2ce72c47daf5ccd6f3ff81ecd5866ae746c2ae8300529'
             'adb5e0eaa5edcedf0276979431dff2fba3fe7850a5bace3a3071ca858bc8b3b5'
-            '64f3502c9deab48615a4cbc26073173081c0774faf75778b044d251e45d238f7')
+            '64f3502c9deab48615a4cbc26073173081c0774faf75778b044d251e45d238f7'
+            'e1861055e58695279fed24480216d7cb46b476af67cda2f4f6557fc239208b24')
          
 build() {
     # copy triangle library
@@ -59,6 +61,7 @@ build() {
     patch -Np1 --ignore-whitespace -i ../ncl-proj8.patch
     patch -Np1 --ignore-whitespace -i ../ncl-format.patch
     patch -Np1 --ignore-whitespace -i ../ncl-boz.patch
+    patch -Np1 --ignore-whitespace -i ../ncl-gcc15.patch
     
     # Spurrious exec permissions
     find -name '*.[fh]' -exec chmod -x {} +
