@@ -4,7 +4,7 @@
 # shellcheck disable=SC2034,SC2154,SC2164
 
 pkgname=wsl2-ssh-agent
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="A bridge from WSL2 ssh client to Windows ssh-agent.exe service"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ url="https://github.com/mame/wsl2-ssh-agent"
 license=('MIT')
 makedepends=('go>=1.18')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mame/wsl2-ssh-agent/archive/v${pkgver}.tar.gz")
-sha256sums=('f8aa881bd477e9f12ed487dc325a79b50732b835c7d421fff80177f6ff9ade48')
+sha256sums=('766ee25b4871b56275c7af4677863e981ba9ce0ed809b238baca6edd4162c057')
 
 build() {
   export GOPATH="$srcdir"/gopath
