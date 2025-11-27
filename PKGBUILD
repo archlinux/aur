@@ -1,4 +1,4 @@
-# Maintainer: alba4k <blaskoazzolaaaron@gmail.com>
+# Maintainer: alba4k <blaskoazzolaaaron[at]gmail.com>
 pkgname=albafetch-git
 pkgver=4.2.1.r121.gef119272
 pkgrel=1
@@ -39,6 +39,5 @@ package() {
     install -Dm644 albafetch.conf $pkgdir/etc/xdg/albafetch.conf
 	install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 	install -Dm644 README.md $pkgdir/usr/share/doc/$pkgname/README.md
-	install -Dm644 MANUAL.md $pkgdir/usr/share/doc/$pkgname/MANUAL.md
 }
 
