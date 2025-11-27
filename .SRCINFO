@@ -1,40 +1,18 @@
 pkgbase = ttf-lxgw-xihei
 	pkgdesc = 霞鶩晰黑。一款衍生於「IPAex ゴシック」的舊字形寫法中文字型。A Chinese font derived from IPAex Gothic.
-<<<<<<< HEAD
-	pkgver = 0.503
-||||||| parent of 247d1b8 (update PKGBUILD)
-	pkgver = 0.502.2
-=======
 	pkgver = 0.512.1
->>>>>>> 247d1b8 (update PKGBUILD)
 	pkgrel = 1
 	url = https://github.com/lxgw/LxgwXiHei
 	changelog = changelog.txt
 	arch = any
 	license = custom:IPA
 	conflicts = ttf-lxgw-xihei
-<<<<<<< HEAD
-	source = ttf-lxgw-xihei-0.503-CL-1.ttf::https://github.com/lxgw/LxgwXiHei/releases/download/v0.503/LXGWXiHeiCL.ttf
-	source = ttf-lxgw-xihei-0.503-MN-1.ttf::https://github.com/lxgw/LxgwXiHei/releases/download/v0.503/LXGWXiHeiMN.ttf
-||||||| parent of 247d1b8 (update PKGBUILD)
-	source = ttf-lxgw-xihei-0.502.2-CL-1.ttf::https://github.com/lxgw/LxgwXiHei/releases/download/v0.502.2/LXGWXiHeiCL.ttf
-	source = ttf-lxgw-xihei-0.502.2-MN-1.ttf::https://github.com/lxgw/LxgwXiHei/releases/download/v0.502.2/LXGWXiHeiMN.ttf
-=======
 	source = ttf-lxgw-xihei-0.512.1-CL-1.ttf::https://github.com/lxgw/LxgwXiHei/releases/download/v0.512.1/LXGWXiHeiCL.ttf
 	source = ttf-lxgw-xihei-0.512.1-MN-1.ttf::https://github.com/lxgw/LxgwXiHei/releases/download/v0.512.1/LXGWXiHeiMN.ttf
->>>>>>> 247d1b8 (update PKGBUILD)
 	source = LICENSE_CHT.md
 	source = LICENSE.md
-<<<<<<< HEAD
-	sha256sums = d7789de0ca4954ea900cd75b1aa1f7735b3ce20d116a1723f56b888ce8e536e6
-	sha256sums = e9408f431996b4a9c1227a0f26f2ab4001cdbfab412ece085485a4703009d745
-||||||| parent of 247d1b8 (update PKGBUILD)
-	sha256sums = b084d24f31f92cf8953fa2f64ecfe0957b5ba0f0affde929483b0ec783966e2a
-	sha256sums = f438e6759dd94ed830cd3e08f3b9567b6a50bf00cf5cd65404ab6d81d1795d66
-=======
 	sha256sums = d4303386d2633984e5a55d1da55db346cd5e1b1393f267156fd6028c4afc670b
 	sha256sums = 03c96aa2ea6b5de740bb89472988a59ceb695b4dffd1f4d7c6d589422f3cb0a0
->>>>>>> 247d1b8 (update PKGBUILD)
 	sha256sums = e33bc6a5f48e8fef08f7ab74b24b199c2d6b1495d7a6fc5cc285c1e44d768877
 	sha256sums = 18e639e1d5d575cb92694c79b2aed1781a234eb5be4200c1479a6c27e11fddcc
 
