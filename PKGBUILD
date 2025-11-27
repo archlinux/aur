@@ -1,25 +1,38 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="uncover"
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Quickly discover exposed hosts on the internet using multiple search engines"
-arch=('aarch64' 'armv7h' 'i686' 'x86_64')
+arch=(
+  'aarch64'
+  'armv7h'
+  'i686'
+  'x86_64'
+)
 url="https://github.com/projectdiscovery/${pkgname}"
-license=('MIT')
-depends=('glibc')
-makedepends=('git' 'go')
+license=(
+  'MIT'
+)
+depends=(
+  'glibc'
+)
+makedepends=(
+  'git'
+  'go'
+)
 _pkgsrc="${url##*/}"
-source=("${_pkgsrc}::git+${url}.git#tag=v${pkgver}")
-b2sums=('3acfa050ff3a6f3ce3757f46a66ff361147ef06f05b44a4a9a44311431480702aa38d8af0d95054a9f408c5336e8dfa9f3e52fbb17231488f3393cc8a6561090')
+source=(
+  "${_pkgsrc}::git+${url}.git#tag=v${pkgver}"
+)
+b2sums=('f9b7d7258eb65e369e4083b1f764e222203eb2d56cfcb974768044ae03a52c776cb1f378e1274b8599971d569821fc88ca43fd94e0e9a6cedf0d8c832a04cccb')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
-  go mod download -x
-  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
-  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
+  go mod download -modcacherw -x
+  go mod verify
 
   mkdir -p "build"
 }
