@@ -1,0 +1,16 @@
+pkgbase = php56-xdebug
+	pkgdesc = php56 debugging extension
+	pkgver = 2.5.5
+	pkgrel = 2
+	url = http://www.xdebug.org
+	arch = x86_64
+	license = GPL
+	depends = php56>=5.6.17-3
+	options = !makeflags
+	backup = etc/php56/conf.d/xdebug.ini
+	source = https://www.xdebug.org/files/xdebug-2.5.5.tgz
+	source = xdebug.ini
+	sha512sums = 9faab421bd90c03734c047d8c6dcc021c8bc665eb36781c692f194d04c7dca24fe1eb920ca8dc407e5bf4ae0912c4b917587f940f34b07171a8881d4cf8695d1
+	sha512sums = 738e6939a129a557d307a1659dfdfb0a0ded783b31c6c9a85f18cfa380a13afef4386cccce5a9ad3e1afcc66a2dedbebf29fa96d91f618a76af4a4d9e504f74e
+
+pkgname = php56-xdebug
