@@ -1,9 +1,8 @@
 pkgbase = udunits
 	pkgdesc = A tool for calculations of physical quantities
 	pkgver = 2.2.28
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.unidata.ucar.edu/software/udunits/
-	install = udunits.install
 	arch = i686
 	arch = x86_64
 	license = MIT
