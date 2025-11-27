@@ -1,0 +1,10 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!update.sh
+!metabase
+!metabase.conf
+!metabase.service
+!metabase.sysusers
+!metabase.tmpfiles
