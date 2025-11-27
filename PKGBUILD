@@ -1,7 +1,7 @@
 # Maintainer: hyprarcher <hyprarcher@proton.me>
 pkgname=wayscriber
-pkgver=0.8.5
-pkgrel=2
+pkgver=0.8.6
+pkgrel=1
 pkgdesc='Screen annotation tool for Wayland compositors'
 arch=('x86_64' 'aarch64')
 url='https://wayscriber.com'
@@ -25,7 +25,7 @@ makedepends=(
 optdepends=(
     'wayscriber-configurator: GUI configurator (F11)'
 )
-conflicts=('wayscriber-debug<0.8.5')
+conflicts=('wayscriber-debug<0.8.6')
 replaces=('wayscriber-debug')
 source=("git+https://github.com/devmobasa/wayscriber.git#tag=v$pkgver")
 sha256sums=('SKIP')
