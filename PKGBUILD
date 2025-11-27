@@ -1,7 +1,7 @@
 # Maintainer: Tu Nombre <tu_email@dominio.com>
 pkgname=portaldrop-bin
 _pkgname=portaldrop
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="AirDrop universal para Linux (Sin instalar nada en el móvil)"
 arch=('x86_64')
