@@ -2,7 +2,7 @@
 
 _pkgname="etr"
 pkgname="${_pkgname}-bin"
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc='ETR - ECMP Traceroute'
 arch=('aarch64' 'x86_64')
@@ -16,8 +16,8 @@ install=etr.install
 source_aarch64=("${_pkgname}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64")
 source_x86_64=("${_pkgname}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64")
 
-sha256sums_aarch64=('12caa191f1b4047f2bad1fa2c4cad136f810a193ad765760be78e506b6ab897e')
-sha256sums_x86_64=('3b255f7db75a268154d91971106906afba692689599cbbc401a017ae5482fa01')
+sha256sums_aarch64=('4f036bc4ba4a61273a3d96aab995e73d120fe5a53c066ed418f1a5f7e12e13d5')
+sha256sums_x86_64=('660057596077cbc5a1d28a5b15b2a119c25da6bb0a94850e48f26f6c216bda3d')
 
 options=(!debug)
 
