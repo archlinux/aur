@@ -1,7 +1,7 @@
 pkgbase = google-antigravity-bin
 	pkgdesc = Google Antigravity Agentic IDE (Binary Release)
-	pkgver = 1.11.5
-	pkgrel = 2
+	pkgver = 1.11.9
+	pkgrel = 1
 	url = https://antigravity.google
 	arch = x86_64
 	license = custom
@@ -18,9 +18,9 @@ pkgbase = google-antigravity-bin
 	provides = google-antigravity
 	conflicts = google-antigravity
 	options = !strip
-	source = https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/1.11.5-5234145629700096/linux-x64/Antigravity.tar.gz
+	source = https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/1.11.9-4787439284912128/linux-x64/Antigravity.tar.gz
 	source = google-antigravity.desktop
-	sha256sums = 4e03151a55743cf30fac595abb343c9eb5a3b6a80d2540136d75b4ead8072112
+	sha256sums = 193a4a61da608c526fbc329670e892ab0a961d3a65ce49485de1ca08804e472d
 	sha256sums = cf6c09424e74e645bc87eb17f987c25b61bb12a01220686f3312080b44861071
 
 pkgname = google-antigravity-bin
