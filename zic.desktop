@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Zic Player
+Comment=A fast and lightweight TUI music player written in python
+Exec=zic-player
+Icon=zic-player
+Terminal=true
+Type=Application
+Categories=AudioVideo;Audio;Player;
+Keywords=music;player;audio;m4a;mp3;
+StartupNotify=true
+MimeType=audio/mpeg;audio/mp4;audio/x-m4a;audio/flac;audio/ogg;

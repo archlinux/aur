@@ -1,0 +1,16 @@
+pkgbase = zic-player
+	pkgdesc = A fast and lightweight TUI music player written in python
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/daradege/zic
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-pygame
+	depends = python-pydub
+	depends = python-textual
+	depends = ffmpeg
+	source = zic-player-1.0.1.tar.gz::https://github.com/daradege/zic/archive/1.0.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = zic-player
