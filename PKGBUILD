@@ -74,16 +74,24 @@ check() {
 
 package() {
     local prebuilt_dir="$srcdir/materiatrack-$pkgver-x86_64-unknown-linux-gnu"
-    if [[ -d "$prebuilt_dir" ]]; then
-        install -Dm755 "$prebuilt_dir/materiatrack" "$pkgdir/usr/bin/materiatrack"
+    local flat_root="$srcdir"
+
+    if [[ -d "$prebuilt_dir" || -f "$flat_root/materiatrack" ]]; then
+        local root="$prebuilt_dir"
+        if [[ ! -d "$root" ]]; then
+            root="$flat_root"
+        fi
+
+        install -Dm755 "$root/materiatrack" "$pkgdir/usr/bin/materiatrack"
         ln -s materiatrack "$pkgdir/usr/bin/mtrack"
 
-        if [[ -d "$prebuilt_dir/man" ]]; then
+        if [[ -d "$root/man" ]]; then
             install -d "$pkgdir/usr/share/man/man1"
-            cp -a "$prebuilt_dir/man/." "$pkgdir/usr/share/man/man1/"
+            cp -a "$root/man/." "$pkgdir/usr/share/man/man1/"
         fi
-        if [[ -d "$prebuilt_dir/completions" ]]; then
-            for f in "$prebuilt_dir"/completions/*; do
+
+        if [[ -d "$root/completions" ]]; then
+            for f in "$root"/completions/*; do
                 [[ -e "$f" ]] || continue
                 case "$f" in
                     *_materiatrack) install -Dm644 "$f" "$pkgdir/usr/share/zsh/site-functions/_materiatrack" ;;
@@ -91,9 +99,21 @@ package() {
                     *.fish) install -Dm644 "$f" "$pkgdir/usr/share/fish/vendor_completions.d/materiatrack.fish" ;;
                 esac
             done
+        else
+            # Generate completions on the fly if missing in the artifact
+            install -d "$pkgdir/usr/share/bash-completion/completions" "$pkgdir/usr/share/zsh/site-functions" "$pkgdir/usr/share/fish/vendor_completions.d"
+            "$pkgdir/usr/bin/materiatrack" completions bash --out-dir "$pkgdir/usr/share/bash-completion/completions" || true
+            mv "$pkgdir/usr/share/bash-completion/completions/materiatrack.bash" "$pkgdir/usr/share/bash-completion/completions/materiatrack" 2>/dev/null || true
+            "$pkgdir/usr/bin/materiatrack" completions zsh --out-dir "$pkgdir/usr/share/zsh/site-functions" || true
+            "$pkgdir/usr/bin/materiatrack" completions fish --out-dir "$pkgdir/usr/share/fish/vendor_completions.d" || true
         fi
-        install -Dm644 "$prebuilt_dir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-        install -Dm644 "$prebuilt_dir/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+        if [[ -f "$root/LICENSE" ]]; then
+            install -Dm644 "$root/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+        fi
+        if [[ -f "$root/README.md" ]]; then
+            install -Dm644 "$root/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+        fi
         return 0
     fi
 
