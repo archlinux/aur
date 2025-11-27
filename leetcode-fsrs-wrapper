@@ -1,0 +1,45 @@
+#!/bin/bash
+# LeetCode FSRS CLI Wrapper Script
+# This script provides a zero-dependency way to run the CLI
+
+# Find Python interpreter
+PYTHON=$(which python3 2>/dev/null || which python 2>/dev/null)
+
+if [ -z "$PYTHON" ]; then
+    echo "Error: Python interpreter not found" >&2
+    echo "Please install Python 3.8 or later" >&2
+    exit 1
+fi
+
+# Check Python version
+PYTHON_VERSION=$($PYTHON -c "import sys; print('.'.join(map(str, sys.version_info[:2])))")
+if [ "$PYTHON_VERSION" = "3.7" ]; then
+    echo "Warning: Python 3.7 detected, but Python 3.8+ is recommended" >&2
+fi
+
+# Run the CLI with inline Python code
+"$PYTHON" -c "
+import sys
+import os
+
+# Add current directory to Python path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_dir = os.path.join(current_dir, '..', '..', 'share', 'leetcode-fsrs-cli')
+
+# Try to import and run the CLI
+try:
+    # Add the package to Python path
+    sys.path.insert(0, os.path.join(project_dir, 'src'))
+
+    # Import and run the CLI
+    from leetcode_fsrs_cli.cli import cli
+
+    if __name__ == '__main__':
+        cli()
+
+except ImportError as e:
+    print(f'Error: Could not import leetcode_fsrs_cli: {e}', file=sys.stderr)
+    print('This package requires the full source code to be installed.', file=sys.stderr)
+    print('Please install the regular leetcode-fsrs-cli package instead.', file=sys.stderr)
+    sys.exit(1)
+" "$@"
