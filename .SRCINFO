@@ -1,13 +1,13 @@
 pkgbase = chromium-bypass-paywalls-clean
 	pkgdesc = Chromium extension to bypass paywalls
-	pkgver = 4.2.5.3
+	pkgver = 4.2.5.6
 	pkgrel = 1
 	url = https://gitflic.ru/project/magnolia1234/bpc_uploads
 	install = chromium-bypass-paywalls-clean.install
 	arch = any
 	license = MIT
 	makedepends = jq
-	source = bypass-paywalls-chrome-clean-4.2.5.3.zip::https://gitflic.ru/project/magnolia1234/bpc_uploads/blob/raw?file=bypass-paywalls-chrome-clean-master.zip
+	source = bypass-paywalls-chrome-clean-4.2.5.6.zip::https://gitflic.ru/project/magnolia1234/bpc_uploads/blob/raw?file=bypass-paywalls-chrome-clean-master.zip
 	sha256sums = SKIP
 
 pkgname = chromium-bypass-paywalls-clean
