@@ -1,6 +1,6 @@
 pkgbase = lz4-git
 	pkgdesc = Extremely Fast Compression algorithm
-	pkgver = 1.9.4.r514.g5e677416
+	pkgver = 1.10.0.r216.g3c08d0d8
 	pkgrel = 1
 	url = https://lz4.github.io/lz4/
 	arch = i686
@@ -9,7 +9,8 @@ pkgbase = lz4-git
 	license = GPL-2.0-or-later
 	makedepends = git
 	depends = glibc
-	provides = lz4=1:1.9.4.r514.g5e677416
+	provides = lz4=1:1.10.0.r216.g3c08d0d8
+	provides = liblz4.so
 	conflicts = lz4
 	options = staticlibs
 	source = git+https://github.com/lz4/lz4.git
