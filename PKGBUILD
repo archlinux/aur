@@ -1,7 +1,7 @@
 # Maintainer: Pranit Bauva <pranit@bauva.com>
 pkgname=python-databricks-agent
 _pkgname=databricks-agents
-pkgver=1.8.0
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Mosaic AI Agent Framework SDK"
 arch=(any)
@@ -24,9 +24,9 @@ depends=(
 )
 makedepends=(python-installer)
 _wheel="databricks_agents-${pkgver}-py3-none-any.whl"
-source=("https://files.pythonhosted.org/packages/69/e9/0301192f3f934f2e989430324b282803c40166b258c52ac1fdf73759f1e9/${_wheel}")
+source=("https://files.pythonhosted.org/packages/78/24/fc27ab4d378a3f94d4065de551202a8ef4660620e870ae086444c4a1e9a3/${_wheel}")
 noextract=("${_wheel}")
-sha256sums=('adc2743c431630d42f5e963bd2792880db2aef91030e9b71576e3900ce185ec3')
+sha256sums=('4957833dcd71622475a6ac9291929fd795131fda3aaebd37c9af873cf1db02dc')
 
 package() {
   python -m installer --destdir="$pkgdir" "$srcdir/$_wheel"
