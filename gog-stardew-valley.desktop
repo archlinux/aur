@@ -1,27 +1,12 @@
 [Desktop Entry]
 Name=Stardew Valley
-Comment=You’ve inherited your grandfather’s old farm plot in Stardew
-Valley. Armed with hand-me-down tools and a few coins, you set out to
-begin your new life. Can you learn to live off the land and turn these
-overgrown fields into a thriving home?
-Comment[pl_PL]=W Stardew Valley przejmujesz po dziadku jego starą
-rolniczą działkę. Mając do dyspozycji tylko odziedziczone narzędzia i
-trochę grosza, wyruszasz, aby rozpocząć nowe życie. Czy nauczysz się
-zarabiać na rolnictwie i zamienisz te zarośnięte pola we wspaniały
-dom?
-Comment[de_DE]=Du hast das Ackerland deines Großvaters in Stardew
-Valley geerbt. Ausgestattet mit ein paar alten Werkzeugen und etwas
-Kleingeld willst du dir eine neue Existenz aufbauen. Schaffst du es,
-von dem Land zu leben und die überwucherten Felder zum Gedeihen zu
-bringen?
-Comment[ru_RU]=Дедушка оставил вам в наследство старую ферму в
-Стардью-Вэлли. У вас в кармане пара монет и простые инструменты — все,
-что нужно для начала новой жизни. Сможете ли вы прокормиться
-земледелием и превратить этот заросший клочок земли в цветущий сад?
+Comment=You’ve inherited your grandfather’s old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life. Can you learn to live off the land and turn these overgrown fields into a thriving home?
+Comment[pl_PL]=W Stardew Valley przejmujesz po dziadku jego starą rolniczą działkę. Mając do dyspozycji tylko odziedziczone narzędzia i trochę grosza, wyruszasz, aby rozpocząć nowe życie. Czy nauczysz się zarabiać na rolnictwie i zamienisz te zarośnięte pola we wspaniały dom?
+Comment[de_DE]=Du hast das Ackerland deines Großvaters in Stardew Valley geerbt. Ausgestattet mit ein paar alten Werkzeugen und etwas Kleingeld willst du dir eine neue Existenz aufbauen. Schaffst du es, von dem Land zu leben und die überwucherten Felder zum Gedeihen zu bringen?
+Comment[ru_RU]=Дедушка оставил вам в наследство старую ферму в Стардью-Вэлли. У вас в кармане пара монет и простые инструменты — все, что нужно для начала новой жизни. Сможете ли вы прокормиться земледелием и превратить этот заросший клочок земли в цветущий сад?
 Exec=gog-stardew-valley
 Icon=gog-stardew-valley
 Type=Application
 Terminal=false
 StartupNotify=true
 Categories=Game;
-Encoding=UTF-8
