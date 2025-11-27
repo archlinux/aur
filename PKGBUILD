@@ -13,13 +13,13 @@ depends=(
     'ffmpeg'
 )
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/daradege/zic/archive/refs/heads/main.tar.gz")  # استفاده از main branch
+source=("$pkgname-$pkgver.tar.gz::https://github.com/daradege/zic/archive/refs/heads/main.tar.gz")
 sha256sums=('SKIP')
 
 package() {
-  cd "$srcdir/zic-main"
+  cd "$srcdir/Zic-main"
   
-  python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
+  python setup.py install
   
   install -Dm644 "zic.desktop" \
     "$pkgdir/usr/share/applications/zic-player.desktop"
