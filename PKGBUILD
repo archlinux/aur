@@ -2,8 +2,8 @@
 
 pkgname=gst-thumbnailers
 pkgver=0.1
-_commit=057b8836b449ddd3a08243c7b70746341e28a4d9
-pkgrel=1
+pkgrel=2
+_commit=a169c0e3084347646679c21e434ccb0dced582e3
 pkgdesc="A simple gstreamer thumbnailer written in Rust"
 arch=(x86_64)
 url="https://gitlab.gnome.org/sophie-h/$pkgname"
@@ -20,7 +20,7 @@ makedepends=(
 conflicts=(gstreamer-thumbnailer gst-video-thumbnailer)
 replaces=(gstreamer-thumbnailer gst-video-thumbnailer)
 source=(git+$url.git#commit=$_commit)
-sha256sums=('0ab39df11d6859984ac661b6044ca5f75bcd3a39c72445d55d5833ed90bb3092')
+sha256sums=('c95d33fd1bbb1846d040bfcd782893dec3cf9c8d1d43a886df194fe1593d736e')
 
 build() {
   arch-meson $pkgname build
