@@ -1,7 +1,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='keylightd-bin'
-pkgver=0.0.46
+pkgver=0.0.47
 pkgrel=1
 pkgdesc='Daemon and CLI tool for managing HTTP-based Key Lights, including Elgato models'
 url='https://github.com/jmylchreest/keylightd'
@@ -12,13 +12,13 @@ conflicts=('keylightd')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/keylightd/releases/download/v${pkgver}/keylightd_${pkgver}_linux_arm64.tar.gz"
                  "${pkgname}_${pkgver}_aarch64_sbom.spdx.json::https://github.com/jmylchreest/keylightd/releases/download/v${pkgver}/keylightd_${pkgver}_linux_arm64_sbom.spdx.json")
-sha256sums_aarch64=('815a5c722c96563e4fffecea01f5738c722d515d4c11274a720ca17646743268'
-                    'cc2f9d8293a67d2e5fbfae40f17bfb6bccfb8d8e47c89d70d5da22a961fd4cce')
+sha256sums_aarch64=('b24a3146c83d27550607428f2f326454bdcd516424ac74858e7cd529d2a4c89e'
+                    '748b28f71384d836822ad8f88ec26ec588dabd6f5d67652de1e7db050545a39b')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/keylightd/releases/download/v${pkgver}/keylightd_${pkgver}_linux_amd64.tar.gz"
                "${pkgname}_${pkgver}_x86_64_sbom.spdx.json::https://github.com/jmylchreest/keylightd/releases/download/v${pkgver}/keylightd_${pkgver}_linux_amd64_sbom.spdx.json")
-sha256sums_x86_64=('8b19170920996bbc508c08ba8d14f20507057c809577bdb6db6cd32651701e7c'
-                   '9a8ff2b82c683fb3b1cb5f1819c54f86935c80159d7dbe32f9de410b49e9ef75')
+sha256sums_x86_64=('8e2b79cbe608a54b5cede0f482ed14bd6f321feec090f9c6b80f5dea33815440'
+                   '6045a7330ffc3ad9b8b1b2969cefe136b15220b7f311ddaed4d7db4d3bcc58a2')
 
 package() {
   # binaries
