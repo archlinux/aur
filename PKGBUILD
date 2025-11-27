@@ -1,14 +1,14 @@
 # Maintainer: Ashish Singh <ashish.singh1@live.in>
 pkgname=salome-bootstrap
-pkgver=9.13.0
-pkgrel=2
+pkgver=9.15.0
+pkgrel=1
 pkgdesc="Required for SALOME KERNEL"
 url="https://www.salome-platform.org"
 license=('LGPL2+')
 depends=('salome-configuration' 'cppunit' 'python' 'swig')
 makedepends=('cmake')
 arch=('any')
-source=("git+https://github.com/SalomePlatform/salome_bootstrap.git")
+source=("git+https://github.com/SalomePlatform/salome_bootstrap.git#tag=V${pkgver//\./_}")
 md5sums=('SKIP')
 
 build () {
