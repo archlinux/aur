@@ -8,6 +8,14 @@ post_install() {
   local NC='\033[0m' # No Color
 
   echo -e ""
+  echo -e "${RED}╔════════════════════════════════════════════════════════════════════════════╗${NC}"
+  echo -e "${RED}║              ${BOLD}DISCONTINUED - MAINTENANCE STOPPED${NC}${RED}                            ║${NC}"
+  echo -e "${RED}╚════════════════════════════════════════════════════════════════════════════╝${NC}"
+  echo -e ""
+  echo -e "${YELLOW}NOTE: This package is no longer maintained.${NC}"
+  echo -e "The maintainer has withdrawn support due to community preference for unhardened methods."
+  echo -e "Please migrate to 'kiro-bin' or use the wiki instructions as requested."
+  echo -e ""
   echo -e "${BLUE}╔════════════════════════════════════════════════════════════════════════════╗${NC}"
   echo -e "${BLUE}║              ${BOLD}KIRO-BIN-HARDENED - Installation Complete${NC}${BLUE}                     ║${NC}"
   echo -e "${BLUE}╚════════════════════════════════════════════════════════════════════════════╝${NC}"

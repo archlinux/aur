@@ -1,7 +1,7 @@
 pkgbase = kiro-bin-hardened
-	pkgdesc = The AI IDE for prototype to production (Hardened for High-Security/Corporate Environments)
+	pkgdesc = [DISCONTINUED] The AI IDE for prototype to production (Hardened for High-Security/Corporate Environments)
 	pkgver = 0.6.29
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://kiro.dev/
 	install = kiro-bin-hardened.install

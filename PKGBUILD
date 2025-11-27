@@ -4,9 +4,9 @@
 pkgname=kiro-bin-hardened
 _name="kiro"
 pkgver=0.6.29
-pkgrel=1
+pkgrel=2
 epoch=1
-pkgdesc='The AI IDE for prototype to production (Hardened for High-Security/Corporate Environments)'
+pkgdesc='[DISCONTINUED] The AI IDE for prototype to production (Hardened for High-Security/Corporate Environments)'
 # Hardening: Strict permissions, AppArmor profile, and dependency enforcement.
 arch=('x86_64')
 url='https://kiro.dev/'
