@@ -2,7 +2,7 @@
 
 _name="lxst"
 pkgname="python-${_name}"
-pkgver=0.4.2
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Lightweight Extensible Signal Transport for Reticulum"
 arch=(
@@ -40,7 +40,7 @@ source=(
 noextract=(
   "${source[@]##*/}"
 )
-sha256sums=('f9f1a8c0cb7ae6ba7e16b9d54d00ab7dd0dcb2e8b75ddbeb653be094ece6f8b4')
+sha256sums=('deb46fa4c4e5924d7833a7a947e9d85dde465564a69fe49e9157a45390539840')
 
 package() {
   local python_version="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
