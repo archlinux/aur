@@ -25,9 +25,9 @@ prepare() {
 	cd "$_archive"
 	# Upstream lockfile not synced
 	pushd rust;   cargo update; popd
-	pushd rust;   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"; popd
-	pushd gitxet; cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"; popd
-	# pushd libxet; cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"; popd
+	pushd rust;   cargo fetch --locked --target "$(rustc --print host-tuple)"; popd
+	pushd gitxet; cargo fetch --locked --target "$(rustc --print host-tuple)"; popd
+	# pushd libxet; cargo fetch --locked --target "$(rustc --print host-tuple)"; popd
 }
 
 build() {
