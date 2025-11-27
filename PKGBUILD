@@ -20,7 +20,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ind4skylivey/matteria-track
 sha256sums=('92cb8bf4f1a6073bff61839cd146208417541ec4f5673cb18482cc4b3e5dbc37')
 
 source_x86_64=("materiatrack-$pkgver-x86_64.tar.gz::https://github.com/ind4skylivey/matteria-track/releases/download/v$pkgver/materiatrack-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('032d7c781e877ae8fc097705be6ff35fdd653cb7412968e218156ad3e663af68')
+sha256sums_x86_64=('c262a7b56600bfe3d9413fcdf5533cef1230ac55e607917eaaa5a23bd01c6996')
 
 prepare() {
     # On x86_64 we use the prebuilt binary artifact; no prepare needed.
