@@ -1,8 +1,8 @@
 # Maintainer: lilikoi <jamilbio20@gmail.com>
 pkgname='chatgpt.sh'
-pkgver=0.121.1
+pkgver=0.121.2
 pkgrel=1
-_commit=17796cd1c50d83765dab72385d6d25617574ac5d
+_commit=36256259687df3a923e9719e7dbf710fb9906e20
 pkgdesc="Wrapper for ChatGPT, STT, and TTS. Features Ollama, Gemini, Anthropic, and more"
 url='https://gitlab.com/fenixdragao/shellchatgpt'
 arch=('any')
@@ -23,11 +23,11 @@ optdepends=(
 	'dialog: file picker (kdialog, zenity, vifm, ranger, nnn)'
 	'yt-dlp: dump YouTube captions'
 )
-source=("${pkgname}-${pkgver}::git+${url}.git#commit=${_commit}")
+source=("${pkgname}::git+${url}.git#commit=${_commit}")
 sha256sums=('SKIP')
 
 package() {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgname}"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 "man/${pkgname}.1" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
 	install -Dm644 "man/${pkgname}.txt" "$pkgdir/usr/share/doc/${pkgname}/${pkgname}.txt"
