@@ -2,7 +2,7 @@
 
 pkgbase=obsidian
 pkgname=(${pkgbase}-{bin,appimage})
-pkgver=1.10.3
+pkgver=1.10.6
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/obsidianmd/obsidian-releases"
@@ -23,9 +23,9 @@ source_aarch64=(
 
 sha256sums=('a94e20705d4b67501f225d74f4460b746a258e52aa6bc522aed1e26ac42dbef9'
             'febbd56ffe802968b7e848b468f2f2762f5927d6934b4ee70569977aa5d3f843')
-sha256sums_x86_64=('c2745551c3f4113d96625491060f320c57d315905541ff0e30a694dbe3a9b39c'
-                   '713a0e52a44d3faec1d2566c4ba10d63c49e190c76de09b43bc80a97a8fb6b90')
-sha256sums_aarch64=('e01026f643d4a20d1b732bfe33c9ad5cdfd3dde7b9f3ba9b79d6c63b8b78f44e')
+sha256sums_x86_64=('7e2fcf3fa6da54715d88a17ac906c87ca397c9d1e15ac6a0f6ba74f097a749d6'
+                   '162d753076d0610e4dccfdccf391c13af5fcb557ba7574b77f0e90ac3c522b1c')
+sha256sums_aarch64=('9dc3a7e3d75310c97e25152d5699044a62fdb33c0fe77e4314d00558ca999607')
 noextract=("Obsidian-${pkgver}-${CARCH}.AppImage")
 
 package_obsidian-bin() {
@@ -42,7 +42,7 @@ package_obsidian-bin() {
         'util-linux-libs'
         'libsecret'
     )
-    optdepends=('libappindicator-gtk3: tray icon support')
+    optdepends=('libappindicator: tray icon support')
     install="obsidian-bin.install"
 
     bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}/"
