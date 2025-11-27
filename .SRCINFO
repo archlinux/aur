@@ -1,16 +1,15 @@
 pkgbase = jjazzlab-bin
 	pkgdesc = A complete and open application dedicated to backing tracks generation.
-	pkgver = 5.0.0
-	pkgrel = 2
+	pkgver = 5.0.1
+	pkgrel = 1
 	url = https://www.jjazzlab.org/
-	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = LGPL-2.1-or-later
 	depends = fluidsynth
-	source = https://github.com/jjazzboss/JJazzLab/releases/download/5.0.0-win-linux/JJazzLab-5.0.0.-linux.tar.xz
+	source = https://github.com/jjazzboss/JJazzLab/releases/download/5.0.1/JJazzLab-5.0.1-linux-x64.tar.xz
 	source = jjazzlab.desktop
-	sha256sums = ab2caf309020eb7568f438f36934da2d46f8078ef16ac782a5d0f5b4eebe4057
+	sha256sums = 5fa0235909c2081129e7d126cb5e7dc36a3aa4eff75ae1543f0ad3d6033a424a
 	sha256sums = 0c11ad2c50439741a43629e551b9134e51b043c8c5250e1f47768dc9b443a034
 
 pkgname = jjazzlab-bin
