@@ -5,6 +5,7 @@ pkgbase = pandoc-plantuml-filter-py
 	url = https://pypi.org/project/pandoc-plantuml-filter
 	arch = any
 	license = MIT
+	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-pandocfilters
 	optdepends = pandoc-cli: using the filter

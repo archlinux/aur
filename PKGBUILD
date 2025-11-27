@@ -9,6 +9,7 @@ arch=('any')
 url='https://pypi.org/project/pandoc-plantuml-filter'
 license=('MIT')
 depends=('python' 'python-pandocfilters')
+makedepends=('python-setuptools-scm')
 optdepends=('pandoc-cli: using the filter')
 conflicts=('pandoc-plantuml-filter')
 replaces=('pandoc-plantuml-filter')
