@@ -1,7 +1,7 @@
 pkgbase = ripsecrets
 	pkgdesc = A command-line tool to prevent committing secret keys into your source code
 	pkgver = 0.1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sirwart/ripsecrets
 	arch = x86_64
 	license = MIT

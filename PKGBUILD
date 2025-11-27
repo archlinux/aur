@@ -3,7 +3,7 @@
 
 pkgname=ripsecrets
 pkgver=0.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line tool to prevent committing secret keys into your source code'
 arch=('x86_64')
 url='https://github.com/sirwart/ripsecrets'
@@ -45,6 +45,12 @@ package() {
 
   # binary
   install -vDm755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
+
+  # Install shell completions
+  outdir=$(find target/release/build -maxdepth 1 -type d -name "$pkgname-*" | head -n1)/out
+  install -Dm644 "$outdir/$pkgname.bash" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+  install -Dm644 "$outdir/_$pkgname" "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+  install -Dm644 "$outdir/$pkgname.fish" "$pkgdir/usr/share/fish/completions/$pkgname.fish"
 
   # documentation
   install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
