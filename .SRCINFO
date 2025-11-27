@@ -1,6 +1,6 @@
 pkgbase = cp210x-overclock-dkms
 	pkgdesc = Kernel module for silab cp210x, with patch of cp2102 max baudrate up to 1.5 MHz
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://git.kernel.org
 	install = cp210x-overclock.install
@@ -12,14 +12,15 @@ pkgbase = cp210x-overclock-dkms
 	arch = aarch64
 	license = GPL2
 	depends = dkms
-	depends = bc
-	source = cp210x.c::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/plain/drivers/usb/serial/cp210x.c?h=v6.6.30
 	source = 0001-extend-the-highest-baudrate-of-cp2102-to-be-1.5-MHz.patch
 	source = dkms.conf
 	source = Makefile
-	sha256sums = 1e19c80e90b1c73a74495f14dfe79183edf644db09a2d16e7d406d2c11b252a3
+	source = cp210x_v6.16.c
+	source = cp210x_v6.17.c
 	sha256sums = 519f2bff643716b39ef1742d6360d111ec30d17289c702e4f42f50ca5d6b59b4
-	sha256sums = ebff1ec55c7561a9e1711be07d556d4e414963c2636eed6d3eb55b5ce6776221
-	sha256sums = 85da35a9d01fb8fe9e14beae345234f304c1712f7b1d9fff8edcd02e6f9f934d
+	sha256sums = 33c1290f202398791a01100f378e089c78838c1a192320f646dbc9c0e238d0a9
+	sha256sums = fa6ac0d379a7db6dd0dff470abd6230340c9e7a119fa47a110c8029aa82219d3
+	sha256sums = 3fc058f7536d33dbdaa25e0d28304a9dba439e4b1a7734a539168cd5282f4d6f
+	sha256sums = 65c329f6be6b09d0b4a3ed2150274480b0caae2e36fa597e436208e757f563b0
 
 pkgname = cp210x-overclock-dkms
