@@ -1,40 +1,18 @@
 pkgbase = ttf-lxgw-zhisong
 	pkgdesc = 霞鶩緻宋。一款衍生於「IPAex 明朝」的舊字形寫法中文字型。A Chinese font derived from IPAex Mincho.
-<<<<<<< HEAD
-	pkgver = 0.503
-||||||| parent of c6d5bbe (update PKGBUILD)
-	pkgver = 0.502
-=======
 	pkgver = 0.512
->>>>>>> c6d5bbe (update PKGBUILD)
 	pkgrel = 1
 	url = https://github.com/lxgw/LxgwZhiSong
 	changelog = changelog.txt
 	arch = any
 	license = custom:IPA
 	conflicts = ttf-lxgw-zhisong
-<<<<<<< HEAD
-	source = ttf-lxgw-zhisong-0.503-CL-1.ttf::https://github.com/lxgw/LxgwZhiSong/releases/download/v0.503/LXGWZhiSongCL.ttf
-	source = ttf-lxgw-zhisong-0.503-MN-1.ttf::https://github.com/lxgw/LxgwZhiSong/releases/download/v0.503/LXGWZhiSongMN.ttf
-||||||| parent of c6d5bbe (update PKGBUILD)
-	source = ttf-lxgw-zhisong-0.502-CL-1.ttf::https://github.com/lxgw/LxgwZhiSong/releases/download/v0.502/LXGWZhiSongCL.ttf
-	source = ttf-lxgw-zhisong-0.502-MN-1.ttf::https://github.com/lxgw/LxgwZhiSong/releases/download/v0.502/LXGWZhiSongMN.ttf
-=======
 	source = ttf-lxgw-zhisong-0.512-CL-1.ttf::https://github.com/lxgw/LxgwZhiSong/releases/download/v0.512/LXGWZhiSongCL.ttf
 	source = ttf-lxgw-zhisong-0.512-MN-1.ttf::https://github.com/lxgw/LxgwZhiSong/releases/download/v0.512/LXGWZhiSongMN.ttf
->>>>>>> c6d5bbe (update PKGBUILD)
 	source = LICENSE_CHT.md
 	source = LICENSE.md
-<<<<<<< HEAD
-	sha256sums = 9aaf5b6b56969ad5198f7d0c89ea55c2908259608945adf72317a6c5f5132633
-	sha256sums = 66d99e563b2eba23b2abcf485e7adfe274b22f2a8dff498d38f5929e8a657051
-||||||| parent of c6d5bbe (update PKGBUILD)
-	sha256sums = 4f03233d8ebce9f7c06160c48d5861dba6bb514771f63af64c2805596b28178b
-	sha256sums = 26f3de80c389a22b03ef1669de0d499954fbfa4fc51fa2f232fdf5ed04f1571e
-=======
 	sha256sums = d5cc05ef3d07b9ce1acb2540801c364afa885c50ad4ed6a80a3475342e93e58d
 	sha256sums = 50ed18f277c705c9965755e65c56f05969b9c3d434f1aa1bd886ae5139c63038
->>>>>>> c6d5bbe (update PKGBUILD)
 	sha256sums = e33bc6a5f48e8fef08f7ab74b24b199c2d6b1495d7a6fc5cc285c1e44d768877
 	sha256sums = 18e639e1d5d575cb92694c79b2aed1781a234eb5be4200c1479a6c27e11fddcc
 
