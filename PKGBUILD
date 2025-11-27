@@ -6,7 +6,7 @@
 pkgname=kwin-hifps
 pkgver=6.5.3
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=3
+pkgrel=4
 pkgdesc='An easy to use, but flexible, Wayland compositor - patched for high refresh rate animation smoothness'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
