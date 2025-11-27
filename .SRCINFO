@@ -1,14 +1,14 @@
 pkgbase = playit-bin
 	pkgdesc = The playit program
-	pkgver = 0.16.3
+	pkgver = 0.16.4
 	pkgrel = 1
 	url = https://github.com/playit-cloud/playit-agent
 	arch = x86_64
 	license = BSD-2-Clause
 	conflicts = playit
-	source = playit-0.16.3.deb::https://playit-cloud.github.io/ppa/data/playit_0.16.3_amd64.deb
+	source = playit-0.16.4.deb::https://playit-cloud.github.io/ppa/data/playit_0.16.4_amd64.deb
 	source = LICENSE.txt::https://raw.githubusercontent.com/playit-cloud/playit-agent/master/LICENSE.txt
-	sha256sums = 2bc1b4923ccbc46f6e67f100c9ec067dc6f44c2f1197fd8a39f126e7372c4716
+	sha256sums = b716061097333a463763a4ea523d71100bd3bfa80f2b489de1d7a30aa73d0758
 	sha256sums = SKIP
 
 pkgname = playit-bin
