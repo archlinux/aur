@@ -1,0 +1,4 @@
+[mcard-toolbox]
+source = "regex"
+url = "https://www.nsc.vrm.lt/downloads.htm"
+regex = 'Toolbox_LT-([\d.]+).zip'

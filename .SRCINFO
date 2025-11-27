@@ -1,17 +1,20 @@
 pkgbase = mcard-toolbox
 	pkgdesc = mCard Toolbox by Softemia (required for current Lithuanian ID cards)
-	pkgver = 1.4.0.0
+	pkgver = 1.6.0.0
 	pkgrel = 1
 	url = https://www.nsc.vrm.lt/downloads.htm
 	arch = x86_64
 	license = LicenseRef-Softemia
 	license = BSL-1.0
+	makedepends = patchelf
 	depends = gcc-libs
 	depends = glibc
+	depends = hicolor-icon-theme
 	depends = openjpeg2
+	depends = openssl
 	depends = pcsclite
 	depends = qt5-base
-	source = https://www.nsc.vrm.lt/files/Toolbox_LT-1.4.0.0.zip
-	sha256sums = 35b4a289484731f1ca86f3447816706a5ccb1c8344c6805b3a452c206d0e20d7
+	source = https://www.nsc.vrm.lt/files/Toolbox_LT-1.6.0.0.zip
+	sha256sums = ebaaab120e09960a8259bfc13313ae1774a72b9d1099bae9157fe34f8ec4a5ed
 
 pkgname = mcard-toolbox
