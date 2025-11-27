@@ -1,6 +1,6 @@
 pkgbase = habit-tracker
 	pkgdesc = A TUI habit tracking application written in C++
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/OxidizedToast/habit-tracker
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = habit-tracker
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = git
-	source = habit-tracker::git+https://github.com/OxidizedToast/habit-tracker.git#tag=v1.0.2
+	source = habit-tracker::git+https://github.com/OxidizedToast/habit-tracker.git#tag=v1.1.0
 	sha256sums = SKIP
 
 pkgname = habit-tracker

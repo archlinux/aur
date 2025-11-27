@@ -3,7 +3,7 @@
 
 
 pkgname=habit-tracker
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A TUI habit tracking application written in C++"
 arch=('x86_64')
