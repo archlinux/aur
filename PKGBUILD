@@ -25,7 +25,7 @@ provides=('wayscriber')
 conflicts=('wayscriber' 'wayscriber-debug')
 replaces=('wayscriber-debug')
 source_x86_64=("wayscriber-v0.8.6-linux-x86_64.tar.gz::https://github.com/devmobasa/wayscriber/releases/download/v0.8.6/wayscriber-v0.8.6-linux-x86_64.tar.gz")
-sha256sums_x86_64=('845791d96627ea66edf8be41b7acce526dd016d154890a1c0c26a722c938fe39')
+sha256sums_x86_64=('be559f5594c525371b2eaf892f8830b0609deb2064f5b5d259302b80de318d42')
 
 _tarball="wayscriber-v${pkgver}-linux-${CARCH}.tar.gz"
 
