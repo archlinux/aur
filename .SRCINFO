@@ -1,6 +1,8 @@
 pkgbase = pacnew
+	pkgdesc = an interactive tool to help manage .pacnew files
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/larsch/pacnew
 	arch = any
 	license = MIT
 	depends = diffutils
