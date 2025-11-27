@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=jxl-rs
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A work-in-progress reimplementation of a JPEG XL decoder in Rust, aiming to be conforming, safe, and fast."
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=('BSD-3-Clause')
 depends=('glibc' 'lcms2' 'gcc-libs')
 makedepends=('cargo')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('204621c974385dfc438ff9c871662ed36cef3838290b38a31d2b87dd330c469e')
+sha256sums=('583b36295eed3131c75610ebb0c4c0631c0c2a2e2aba703fe3a3e3094291b0de')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
