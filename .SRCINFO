@@ -1,0 +1,22 @@
+pkgbase = materiatrack
+	pkgdesc = Mystical Final Fantasy-themed CLI time tracker based on Zeit
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/ind4skylivey/matteria-track
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = sqlite
+	depends = gnupg
+	optdepends = libnotify: desktop notifications
+	optdepends = git: git commit integration
+	provides = materiatrack
+	provides = mtrack
+	conflicts = materiatrack-git
+	conflicts = materiatrack-bin
+	source = materiatrack-1.0.3.tar.gz::https://github.com/ind4skylivey/matteria-track/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 9958f84456b9cc9673d73fa1758866030f49ff277b6f7ca18e43c04199fe8096
+
+pkgname = materiatrack
