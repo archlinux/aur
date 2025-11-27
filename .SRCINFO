@@ -1,6 +1,6 @@
 pkgbase = anytype-bin
 	pkgdesc = Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users.
-	pkgver = 0.51.1
+	pkgver = 0.51.2
 	pkgrel = 1
 	url = https://anytype.io/
 	arch = x86_64
@@ -10,14 +10,14 @@ pkgbase = anytype-bin
 	provides = anytype
 	conflicts = anytype
 	conflicts = anytype-legacy
-	noextract = Anytype-0.51.1.AppImage
+	noextract = Anytype-0.51.2.AppImage
 	options = !strip
 	options = !debug
-	source = Anytype-0.51.1.AppImage::https://github.com/anyproto/anytype-ts/releases/download/v0.51.1/Anytype-0.51.1.AppImage
+	source = Anytype-0.51.2.AppImage::https://github.com/anyproto/anytype-ts/releases/download/v0.51.2/Anytype-0.51.2.AppImage
 	source = anytype.desktop
 	source = anytype.png
-	sha256sums = b0df3ec8a0fd35e6c5173e494d52b2138596af0fcaaff06e58daa71b1569007f
-	sha256sums = 853a0de7550f606535483c2460488b948d4e85f969cca4bee119f0222385fe11
+	sha256sums = 085047b93e25ba212c51ef117c233f1907ebdc5e7dbf818e8b92c99aa5e1b51b
+	sha256sums = 9b3d11c909b30d342554cea3d01150c65ff35e552fe8bdc3dd0930af563dbf24
 	sha256sums = 41dede6dc49b7fc9beebc92437f8d0257f209f149e909b570a877cc1d7463251
 
 pkgname = anytype-bin
