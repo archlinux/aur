@@ -13,11 +13,11 @@ depends=(
     'ffmpeg'
 )
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/daradege/zic/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/daradege/zic/archive/refs/heads/main.tar.gz")  # استفاده از main branch
 sha256sums=('SKIP')
 
 package() {
-  cd "$srcdir/zic-$pkgver"
+  cd "$srcdir/zic-main"
   
   python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
   

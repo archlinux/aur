@@ -10,7 +10,7 @@ pkgbase = zic-player
 	depends = python-pydub
 	depends = python-textual
 	depends = ffmpeg
-	source = zic-player-1.0.1.tar.gz::https://github.com/daradege/zic/archive/1.0.1.tar.gz
+	source = zic-player-1.0.1.tar.gz::https://github.com/daradege/zic/archive/refs/heads/main.tar.gz
 	sha256sums = SKIP
 
 pkgname = zic-player
