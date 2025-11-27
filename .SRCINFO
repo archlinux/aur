@@ -1,6 +1,6 @@
 pkgbase = alpaca-ai
 	pkgdesc = An Ollama client. Chat with local AI models or connect to third party AI providers like ChatGPT , Gemini and more
-	pkgver = 8.3.1
+	pkgver = 8.4.2
 	pkgrel = 1
 	url = https://github.com/Jeffser/alpaca
 	arch = any
@@ -56,7 +56,7 @@ pkgbase = alpaca-ai
 	depends = webkitgtk-6.0
 	depends = blueprint-compiler
 	options = !debug
-	source = alpaca-ai-8.3.1.tar.gz::https://github.com/Jeffser/alpaca/archive/refs/tags/8.3.1.tar.gz
-	b2sums = 5076701dedf97d7fd540b37cfbe70e9ac6e771a07b1dd0f0257c544d3349ce4a60daa1d9e5002c4d15d4817661e451b883fba1e09766624e5150c50989bcb78b
+	source = alpaca-ai-8.4.2.tar.gz::https://github.com/Jeffser/alpaca/archive/refs/tags/8.4.2.tar.gz
+	b2sums = a2ed33228f2a9563a828d81bcfe31368efa9aa1ba48e72e69df19fe2b2650d8cb2cf703aaba7a5a2f0d61a3f6892a801e65ea5f06e361071763d9b1d8f2d9c7d
 
 pkgname = alpaca-ai
