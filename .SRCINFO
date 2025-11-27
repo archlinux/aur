@@ -1,6 +1,6 @@
 pkgbase = mixing-station
 	pkgdesc = Mixer remote control for multiple mixers
-	pkgver = 2.6.2
+	pkgver = 2.6.3
 	pkgrel = 1
 	url = https://mixingstation.app/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = mixing-station
 	conflicts = mixing-station-pc-bin
 	replaces = mixing-station-pc
 	replaces = mixing-station-pc-bin
-	source = mixing-station-2.6.2-1.zip::https://mixingstation.app/backend/api/web/download/update/mixing-station-pc/release
+	source = mixing-station-2.6.3-1.zip::https://mixingstation.app/backend/api/web/download/update/mixing-station-pc/release
 	source = mixing-station
 	source = copyright.txt
 	source = ms-icon.png::https://mixingstation.app/ms-docs/assets/ms.png
