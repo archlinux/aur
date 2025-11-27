@@ -8,7 +8,7 @@ pkgbase = habit-tracker
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = git
-	source = habit-tracker::git+https://github.com/OxidizedToast/habit-tracker.git#tag=v1.1.0
+	source = habit-tracker::git+https://github.com/OxidizedToast/habit-tracker.git#tag=v1.1.0-release
 	sha256sums = SKIP
 
 pkgname = habit-tracker

@@ -11,7 +11,7 @@ url="https://github.com/OxidizedToast/habit-tracker"
 license=('MIT')
 depends=()
 makedepends=('cmake' 'gcc' 'git')
-source=("$pkgname::git+$url.git#tag=v$pkgver")
+source=("$pkgname::git+$url.git#tag=v$pkgver-release")
 sha256sums=('SKIP')
 
 build() {
