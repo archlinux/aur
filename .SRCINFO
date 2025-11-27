@@ -1,6 +1,6 @@
 pkgbase = kazumi
 	pkgdesc = 基于自定义规则的番剧采集APP，支持流媒体在线观看，支持弹幕
-	pkgver = 1.9.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://kazumi.app
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = kazumi
 	depends = libcdio
 	depends = libcdio-paranoia
 	depends = libdvdnav
-	source = kazumi-1.9.0.tar.gz::https://github.com/Predidit/Kazumi/archive/refs/tags/1.9.0.tar.gz
-	sha256sums = 5c8e8336ea6d493489c842e40926590e2102c9920534d2abab199493e0939f2c
+	source = kazumi-1.9.1.tar.gz::https://github.com/Predidit/Kazumi/archive/refs/tags/1.9.1.tar.gz
+	sha256sums = d589d3a21a9e9d9f49e2264b7516502f6e463e9adc25a355e864088c772a766e
 
 pkgname = kazumi
