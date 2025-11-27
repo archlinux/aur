@@ -1,6 +1,6 @@
 # Maintainer: Benoit Brummer (Trougnouf) <trougnouf@gmail.com>
 pkgname=cfait
-pkgver=0.1.9
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A simple, elegant, and lightweight CalDAV task / TODO manager (TUI & GUI)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 # Use SKIP in git. CI will replace this with the real hash.
-sha256sums=('39fc984f688087230ca8ebc7f1caae0fcbe313386d70573ce70407ff5e1e7cc2')
+sha256sums=('f690f81b52247d34e13cc1969ddc09d8551b76768d747cbdee6b6fbe2213a1d1')
 replaces=('rustycal' 'rustache' 'fairouille')
 
 build() {
