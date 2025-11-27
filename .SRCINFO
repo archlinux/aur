@@ -1,0 +1,16 @@
+pkgbase = pacnew
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = diffutils
+	depends = bash
+	depends = coreutils
+	depends = findutils
+	depends = grep
+	depends = sed
+	conflicts = pacnew-git
+	source = https://github.com/larsch/pacnew/archive/refs/tags/v1.0.tar.gz
+	sha256sums = db7a43d8a8ac5cddce70f25b6e2bd0a9b51fc2bab991fbd3486364948daa76d3
+
+pkgname = pacnew
