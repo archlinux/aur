@@ -1,10 +1,10 @@
 # Maintainer: willemw <willemw12@gmail.com>
-# Conributor: Daniel Menelkir <dmenelkir@gmail.com>
+# Contributor: Daniel Menelkir <dmenelkir@gmail.com>
 
 pkgname=wttrbar-git
-pkgver=0.12.0.r1.g583afc8
+pkgver=0.13.0.r0.g6727237
 pkgrel=1
-pkgdesc='Show the weather in Waybar, using the great wttr.io'
+pkgdesc='Show the weather in Waybar, using the great wttr.in'
 arch=(x86_64)
 url=https://github.com/bjesus/wttrbar
 license=(MIT)
@@ -20,21 +20,24 @@ pkgver() {
 }
 
 prepare() {
-  export RUSTUP_TOOLCHAIN=stable
   cd $pkgname
-  cargo update
+
+  export RUSTUP_TOOLCHAIN=stable
+  cargo update # Only in a VCS package build
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
   cd $pkgname
+
+  export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
 
 check() {
-  export RUSTUP_TOOLCHAIN=stable
   cd $pkgname
+
+  export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --all-features
 }
 

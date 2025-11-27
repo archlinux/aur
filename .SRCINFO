@@ -1,7 +1,7 @@
 pkgbase = wttrbar-git
-	pkgdesc = Show the weather in Waybar, using the great wttr.io
-	pkgver = 0.7.1.r0.g40a68d0
-	pkgrel = 2
+	pkgdesc = Show the weather in Waybar, using the great wttr.in
+	pkgver = 0.13.0.r0.g6727237
+	pkgrel = 1
 	url = https://github.com/bjesus/wttrbar
 	arch = x86_64
 	license = MIT
