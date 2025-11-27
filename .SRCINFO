@@ -1,7 +1,7 @@
 pkgbase = v2dat-git
 	pkgdesc = A cli tool that can unpack v2ray data packages
 	pkgver = r2.47b8ee5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/urlesistiana/v2dat
 	arch = x86_64
 	arch = armv7h

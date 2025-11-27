@@ -2,7 +2,7 @@
 _pkgname=v2dat
 pkgname=${_pkgname}-git
 pkgver=r2.47b8ee5
-pkgrel=1
+pkgrel=2
 pkgdesc="A cli tool that can unpack v2ray data packages"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/urlesistiana/v2dat"
@@ -39,6 +39,7 @@ build() {
     -modcacherw \
     ../
   go run ../ completion bash >bash-completion
+  go run ../ completion fish >fish-completion
   go run ../ completion zsh >zsh-completion
 }
 
@@ -46,5 +47,6 @@ package() {
   cd "${srcdir}/${_pkgname}/build"
   install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 bash-completion "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+  install -Dm644 fish-completion "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
   install -Dm644 zsh-completion "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
 }
