@@ -40,7 +40,7 @@ package_uutils-coreutils-git(){
   cd ${pkgbase%-git}
   unset optdepends
   make install DESTDIR="$pkgdir" PREFIX=/usr PROFILE=release-fast MULTICALL=y LN="ln -f" \
-    PROG_PREFIX=uu- LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} LOCALES=n SKIP_UTILS="arch shred shuf factor kill more uptime hostname"
+    PROG_PREFIX=uu- LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} #LOCALES=n SKIP_UTILS="arch shred shuf factor kill more uptime hostname"
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgbase%-git}
 }
 
