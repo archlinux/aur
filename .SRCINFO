@@ -1,0 +1,20 @@
+pkgbase = canon-lbp2900-capt
+	pkgdesc = CUPS driver for Canon LBP2900/LBP3000 CAPT printers (reverse-engineered)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/gauravyad69/Canon-LBP2900B
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = cups
+	depends = cups
+	depends = glibc
+	provides = captdriver
+	conflicts = captdriver
+	source = canon-lbp2900-capt-0.3.0.tar.gz::https://github.com/gauravyad69/Canon-LBP2900B/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 88e0cb030981230ec7fdbf65b08781b1f54dccbe5be1126dce1312762a3a6ac6
+
+pkgname = canon-lbp2900-capt
