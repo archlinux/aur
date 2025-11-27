@@ -17,7 +17,7 @@ sha256sums=('475acd61bff0b6ee4ec58aa566b442355e88d9efe18267c58c1501f3fb93f4bc')
 
 prepare() {
 	cd "$_archive"
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 _srcenv() {
