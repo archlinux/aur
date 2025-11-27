@@ -33,7 +33,8 @@ options=('!emptydirs')
 build() {
 	cmake -B build -S "$srcdir/$_pkgname-$pkgver" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DCMAKE_BUILD_TYPE=None
+		-DCMAKE_BUILD_TYPE=None \
+                -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 	make -C build
 }
 
