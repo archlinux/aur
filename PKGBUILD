@@ -1,16 +1,11 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Lars Christensen <larsch@belunktum.dk>
 pkgname=pacnew
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc=""
+pkgdesc="an interactive tool to help manage .pacnew files"
 arch=(any)
-url=""
+url="https://github.com/larsch/pacnew"
 license=('MIT')
 groups=()
 depends=(diffutils bash coreutils findutils grep sed)
