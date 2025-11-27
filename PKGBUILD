@@ -1,6 +1,6 @@
 pkgname=erigon
 pkgdesc='Ethereum implementation on the efficiency frontier.'
-pkgver=3.2.2
+pkgver=3.3.0
 pkgrel=2
 epoch=1
 url='https://github.com/erigontech/erigon'
@@ -8,15 +8,15 @@ arch=('x86_64' 'aarch64')
 license=('GPL3')
 makedepends=('go')
 depends=('glibc')
-source=("https://github.com/erigontech/erigon/archive/refs/tags/v3.2.2.tar.gz")
-b2sums=('ce5f3146f035643c82b3a76e6590bc7c55f7e8cbd338ebfe51e3dc2268cd1b924fe3541a5ee57d7c52f67c0b838a920f4baaf069e918b011b334889fba34099c')
+source=("https://github.com/erigontech/erigon/archive/refs/tags/v3.3.0.tar.gz")
+b2sums=('c2a579a00c4984d5d910a394ae33ffd9cec9a652cd7d11d0369ab6d00dafd013918991f680ff45e9bdc0b9befa2b370c6e8c17eb36f38837ccc190ce18c27b9b')
 
 build() {
     cd ${pkgname}-${pkgver}
 
     export CGO_LDFLAGS="$LDFLAGS"
     export GIT_TAG="v${pkgver}"
-    make erigon devnet downloader integration rpcdaemon sentry txpool sentinel caplin
+    make erigon downloader integration rpcdaemon sentry txpool sentinel caplin
 }
 
 package() {
