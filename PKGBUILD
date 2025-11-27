@@ -1,9 +1,9 @@
 # Maintainer: Tu Nombre <tu_email@dominio.com>
 pkgname=portaldrop-bin
 _pkgname=portaldrop
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
-pkgdesc="AirDrop universal para Linux (Sin instalar nada en el móvil)"
+pkgdesc="AirDrop universal para Linux. Transfiere archivos por WiFi vía QR sin instalar nada en el móvil (Python/Qt6)"
 arch=('x86_64')
 url="https://github.com/danitxu79/PortalDrop" # <--- Tu URL del repo
 license=('MIT')
@@ -19,7 +19,7 @@ source=(
 )
 
 # Nota: Deberás generar estos hash con 'updpkgsums' o 'makepkg -g'
-sha256sums=('b24a32484ed751974f073f968b45db6e7172d37a93f78d6353af5f86e6d3e62c'
+sha256sums=('b80cd57a4de71e053dae20a69d3d1108c48d47bc012ec51c50e0b9fc1055aba6'
             '5a3caf47e0012f35afdb9cdbafe3c19d37f5383b60b62f705994279ed626e2a8')
 
 package() {
