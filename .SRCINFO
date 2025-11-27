@@ -1,20 +1,37 @@
 pkgbase = elfutils-git
 	pkgdesc = Utilities and libraries to handle ELF object files and DWARF debugging information
-	pkgver = 0.191.r34.g30b5592a
+	pkgver = 0.194.r16.g4a5cf8be
 	pkgrel = 1
 	url = https://sourceware.org/elfutils/
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
+	makedepends = bzip2
+	makedepends = curl
+	makedepends = libarchive
+	makedepends = libmicrohttpd
+	makedepends = sqlite
+	makedepends = xz
+	makedepends = zlib
+	makedepends = zstd
+	depends = gcc-libs
 	depends = glibc
-	depends = bzip2
+	depends = json-c
+	depends = libarchive.so
+	depends = libbz2.so
+	depends = libcurl.so
+	depends = liblzma.so
+	depends = libmicrohttpd.so
+	depends = libsqlite3.so
+	depends = libz.so
+	depends = libzstd.so
 	depends = sh
-	depends = xz
-	depends = zlib
-	provides = elfutils=0.191.r34.g30b5592a
-	provides = libelf
+	provides = elfutils=0.194.r16.g4a5cf8be
+	provides = debuginfod=0.194.r16.g4a5cf8be
+	provides = libelf=0.194.r16.g4a5cf8be
 	conflicts = elfutils
+	conflicts = debuginfod
 	conflicts = libelf
 	options = staticlibs
 	source = git+https://sourceware.org/git/elfutils.git
