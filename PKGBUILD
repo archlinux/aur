@@ -1,6 +1,6 @@
 # Maintainer: Daniel Serrano <dani.eus79@gmail.com>
 pkgname=visagevault
-pkgver=1.6.14
+pkgver=1.6.15
 pkgrel=1
 pkgdesc="Gestor de fotografías inteligente con reconocimiento facial (Código Fuente)"
 arch=('any') # 'any' porque es Python puro, corre en cualquier arquitectura
@@ -33,7 +33,7 @@ makedepends=('git') # Necesario para descargar
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/danitxu79/visagevault/releases/download/v${pkgver}/visagevault-${pkgver}.tar.gz")
 
 # Generar checksums con 'updpkgsums' antes de subir, o usar SKIP para desarrollo
-sha256sums=('a13cba4fc7ff63e2c07fdea72d25d8b0d06fb029793ec02d6f0c9d77b6a39da0')
+sha256sums=('4b603b02a7f3d750fdf703bec1019850074d9d60486c1779f0c8fe573d5e4d56')
 
 # No hay función build() porque Python no se "compila" en binario,
 # pero podemos pre-compilar el bytecode para que arranque más rápido.
