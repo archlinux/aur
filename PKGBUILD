@@ -4,7 +4,7 @@
 pkgname=mullvad-vpn-beta
 _pkgver=2025.14
 _channel=beta
-_rel=1
+_rel=2
 pkgver=${_pkgver}.${_channel}${_rel}  # beta
 #pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
@@ -43,7 +43,7 @@ source=(
   'no-publish.diff'
   "${pkgname%-beta}.sh"
 )
-sha256sums=('09f0abcfef0746defb3457827455ba2fca56f09904abfbcca164f3a8a51d73fd'
+sha256sums=('d46a8b977535e3d22ae48f07c5795d703711174082808ffd85f4fe6a7c450b31'
             'SKIP'
             'SKIP'
             '5773f4ea5b7e0db8340e0614d1b027237cb827a5db135ee633d491c271a7e499'
@@ -86,7 +86,7 @@ prepare() {
   mkdir -p build/shell-completions
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 
   pushd "desktop/packages/${pkgname%-beta}"
   export npm_config_cache="$srcdir/npm_cache"
