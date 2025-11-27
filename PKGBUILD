@@ -55,7 +55,7 @@ _appid=dev.zed.Zed-Dev
 
 prepare() {
 	cd "$pkgname"
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cargo fetch --locked --target "$(rustc --print host-tuple)"
 	export DO_STARTUP_NOTIFY="true"
 	export APP_ICON="zed"
 	export APP_NAME="Zed"
