@@ -1,7 +1,7 @@
 # Maintainer: Wiktor Zykubek <dev at wzykubek dot xyz>
 pkgname=sieveman
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal ManageSieve protocol client."
 arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv7h' 'aarch64' 'riscv64')
 license=('ISC')
