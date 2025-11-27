@@ -1,6 +1,6 @@
 # Maintainer: Zeus-Deus
 pkgname=hyprmode
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Super+P style display mode switcher for Hyprland with auto Omarchy theming"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python-textual' 'hyprland' 'alacritty')
 optdepends=('python-tomli: Optional for Python < 3.11 for Omarchy theming support')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Zeus-Deus/hyprmode/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a49a813b63ea063b6b340e9059fffac40fa90a4236fa9e658985f4cc7b405a43')
+sha256sums=('062a9273aaffe99bab9d17bcb791eda9c28115a9d4f8cf16c412c163b2925514')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
