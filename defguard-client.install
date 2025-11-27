@@ -3,6 +3,7 @@ set -e
 
 GROUP_NAME="defguard"
 SERVICE_NAME="defguard-service"
+RESOLVED_SERVICE_NAME="systemd-resolved.service"
 
 post_install() {
 
@@ -42,10 +43,16 @@ post_install() {
             fi
         fi
 
-        # Handle systemd service
+        # Handle systemd services
         if [ -d /run/systemd/system ]; then
             # Reload systemd to recognize new service file
             systemctl daemon-reload
+
+            # Enable resolved service
+            systemctl enable "$RESOLVED_SERVICE_NAME"
+
+            # Start the resolved service now
+            systemctl start "$RESOLVED_SERVICE_NAME"
 
             # Enable service to start on boot
             systemctl enable "$SERVICE_NAME"
