@@ -7,3 +7,16 @@ path = [
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "libifd-cyberjack6.udev",
+]
+SPDX-FileCopyrightText = [
+    "2011-2019, Reinhard Tartler <siretart@debian.org>",
+    "2011-2019, Frank Neuber <sct@kernelport.com>",
+    "2010-2011, Martin Preuss <martin@libchipcard.de>",
+]
+SPDX-License-Identifier = "GPL-2.0-or-later"
+
+
