@@ -1,3 +1,13 @@
+# 1.17.2
+
+- Fix: Remote GitHub MCP Connection Fails with 401 Unauthorized.
+- Fix: LSP Server Discovery Fails for Servers Without --version Flag.
+- Fix: Model Context Protocol (MCP) Configuration Wizard Fails for Servers with No Input Fields.
+
+^ Thanks to @Avtrkrb for finding and handling these fixes.
+
+If there are any problems, feedback or thoughts please drop an issue or message us through Discord! Thank you for using Nanocoder. 🙌
+
 # 1.17.1
 
 - Fix: Use virtual documents instead of temp files to prevent linters running on diff previews within the VS Code plugin.
