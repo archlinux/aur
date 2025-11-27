@@ -1,5 +1,6 @@
-pkgname=php56-xdebug
-_pkgbase="${pkgname#php56-}"
+pkgname=php56-xdebug-fixed
+#_pkgbase="${pkgname#php56-}"
+_pkgbase="xdebug"
 pkgver=2.5.5
 _pkgver="$(echo "${pkgver}" | tr '[:lower:]' '[:upper:]')"
 pkgrel=2
