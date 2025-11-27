@@ -1,26 +1,24 @@
 # Maintainer: Luke Featherston <lukefeatherston1223 at gmail dot com>
 pkgname=gearlever
-pkgver=3.4.7
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="Manage AppImages with ease"
 arch=('x86_64')
 url="https://mijorus.it/projects/gearlever/"
 license=('GPL-3.0-or-later')
 depends=('7zip' 'binutils' 'dconf' 'dwarfs-bin' 'fuse2' 'gdk-pixbuf2' 'glibc' 'glib2' 'gtk4'
-	 'hicolor-icon-theme' 'libadwaita' 'squashfs-tools' 'pango' 'python' 'python-dbus' 'python-gobject'
-	 'python-pyxdg' 'python-requests' 'zlib')
+	 'hicolor-icon-theme' 'libadwaita' 'squashfs-tools' 'pango' 'python' 'python-dbus'
+	 'python-desktop-entry-lib' 'python-ftputil' 'python-gobject' 'python-pyxdg'
+	 'python-requests' 'zlib')
 makedepends=('gettext' 'meson')
 checkdepends=('appstream' 'desktop-file-utils')
 optdepends=('libxml2-legacy: required for LibreOffice appimage')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mijorus/gearlever/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b05160bae877fbf8d33a60785d80cde245e5c3d083170111cbff0b08061534e4')
+sha256sums=('3dedd60328700ef15f68eba2888c4fc34ce4c98f269681be8635440ee8312e83')
 
 prepare() {
    cd "${srcdir}/${pkgname}-${pkgver}"
-   # Arch command doesn't seem to exist on arch linux so instead we can substitute it for 'uname' for now
-   sed -i "s/\(\['arch'\]\)/['uname', '-m']/g" src/AppDetails.py src/models/UpdateManager.py
-
    # Arch linux uses the 7z command instead of the 7zz included in gearlever (both official 7zip)
    sed -i "s/7zz/7z/g" src/providers/AppImageProvider.py
 

@@ -1,6 +1,6 @@
 pkgbase = gearlever
 	pkgdesc = Manage AppImages with ease
-	pkgver = 3.4.7
+	pkgver = 4.0.3
 	pkgrel = 1
 	url = https://mijorus.it/projects/gearlever/
 	arch = x86_64
@@ -24,6 +24,8 @@ pkgbase = gearlever
 	depends = pango
 	depends = python
 	depends = python-dbus
+	depends = python-desktop-entry-lib
+	depends = python-ftputil
 	depends = python-gobject
 	depends = python-pyxdg
 	depends = python-requests
@@ -31,7 +33,7 @@ pkgbase = gearlever
 	optdepends = libxml2-legacy: required for LibreOffice appimage
 	options = !strip
 	options = !debug
-	source = gearlever-3.4.7.tar.gz::https://github.com/mijorus/gearlever/archive/refs/tags/3.4.7.tar.gz
-	sha256sums = b05160bae877fbf8d33a60785d80cde245e5c3d083170111cbff0b08061534e4
+	source = gearlever-4.0.3.tar.gz::https://github.com/mijorus/gearlever/archive/refs/tags/4.0.3.tar.gz
+	sha256sums = 3dedd60328700ef15f68eba2888c4fc34ce4c98f269681be8635440ee8312e83
 
 pkgname = gearlever
