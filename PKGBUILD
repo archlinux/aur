@@ -22,10 +22,10 @@ prepare() {
   cd youki
 
   # create directory for build artifacts
-  mkdir build
+  mkdir -p build
 
   # download dependencies
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
