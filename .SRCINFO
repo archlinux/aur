@@ -1,15 +1,19 @@
 pkgbase = libb2-git
-	pkgdesc = C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp hash functions
-	pkgver = 0.98.1
+	pkgdesc = C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp
+	pkgver = 0.98.1.r22.g643decf
 	pkgrel = 1
-	url = https://blake2.net/
+	url = https://www.blake2.net/
+	arch = i686
 	arch = x86_64
-	license = custom:CC0
+	license = CC0-1.0
 	makedepends = git
-	provides = libb2=0.98.1
+	depends = gcc-libs
+	depends = glibc
+	provides = libb2=0.98.1.r22.g643decf
+	provides = libb2.so
 	conflicts = libb2
-	source = git+https://github.com/BLAKE2/libb2
+	options = staticlibs
+	source = git+https://github.com/BLAKE2/libb2.git
 	sha256sums = SKIP
 
 pkgname = libb2-git
-

@@ -1,51 +1,50 @@
-# Maintainer: Jesin <Jesin00@gmail.com>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: Jesin <Jesin00@gmail.com>
+
 pkgname=libb2-git
-_name="${pkgname%-git}"
-pkgver=0.98.1
+pkgver=0.98.1.r22.g643decf
 pkgrel=1
-arch=(x86_64)
-pkgdesc='C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp hash functions'
-url=https://blake2.net/
-license=(custom:CC0)
-makedepends=(git)
-provides=("$_name=${pkgver%%+*}")
-conflicts=("$_name")
-source=("git+https://github.com/BLAKE2/$_name")
-sha256sums=(SKIP)
+pkgdesc="C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp"
+arch=('i686' 'x86_64')
+url="https://www.blake2.net/"
+license=('CC0-1.0')
+depends=('gcc-libs' 'glibc')
+makedepends=('git')
+provides=("libb2=$pkgver" 'libb2.so')
+conflicts=('libb2')
+options=('staticlibs')
+source=("git+https://github.com/BLAKE2/libb2.git")
+sha256sums=('SKIP')
 
-# libb2's build system discards the $CFLAGS variable.
-# We can get around this by putting those flags in $CC.
-export CC="${CC-cc} $CFLAGS"
-
-prepare() {
-	cd "$_name"
-	# If there are no tags, tag the initial commit so pkgver() can work.
-	[ -n "$(git tag)" ] || git tag 0.0 "$(git rev-list --max-parents=0 --reverse HEAD | head -n1)"
-	autoreconf -fisv
-}
 
 pkgver() {
-	cd "$_name"
-	local v="$(git describe --tags)"
-	v="${v#v}"
-	printf %s "${v//-/+}"
+  cd "libb2"
+
+  _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
+  _rev=$(git rev-list --count "$_tag"..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
 build() {
-	cd "$_name"
-	./configure --prefix=/usr --disable-static --enable-shared "--build=$CHOST" #--disable-native --enable-fat
-	# Uncomment the flags at the end of the previous line if you intend
-	# to distribute the binary package to other computers.
-	make
+  cd "libb2"
+
+  ./autogen.sh
+  ./configure \
+    --prefix="/usr" \
+    --disable-native \
+    --enable-fat
+  make
 }
 
 check() {
-	cd "$_name"
-	make check
+  cd "libb2"
+
+  #make check
 }
 
 package() {
-	cd "$_name"
-	make "DESTDIR=$pkgdir" install
-	install -Dm644 "-t$pkgdir/usr/share/licenses/$_name" COPYING
+  cd "libb2"
+
+  make DESTDIR="$pkgdir" install
 }
