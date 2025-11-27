@@ -6,7 +6,7 @@
 
 pkgname=chatterino2
 pkgver=2.5.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Second installment of the Twitch chat client series "Chatterino"'
 arch=('x86_64')
 url=https://chatterino.com
@@ -137,7 +137,7 @@ check() {
     ./server 127.0.0.1:9050 127.0.0.1:9052 &
     popd
     ctest --test-dir build --output-on-failure
-    kill %1
+    kill %+
     pifpaf_stop
 }
 
