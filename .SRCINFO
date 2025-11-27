@@ -1,13 +1,12 @@
 pkgbase = ttf-mintysis
 	pkgdesc = A sans-serif font
 	pkgver = 1.002
-	pkgrel = 3
+	pkgrel = 4
 	url = http://arkandis.tuxfamily.org/adffonts.html
 	arch = any
 	groups = ttf-adf-fonts
-	license = custom:conflicting information:GPL or OFL 1.1
+	license = GPL-2.0-or-later WITH Font-exception-2.0
 	source = http://arkandis.tuxfamily.org/fonts/Mintysis-20120623.zip
 	sha256sums = 53774b17a783756037448e15e2756987ff451391a86619285bc9459b80463450
 
 pkgname = ttf-mintysis
-
