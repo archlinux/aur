@@ -1,0 +1,19 @@
+--- a/Telegram/SourceFiles/info/profile/info_profile_top_bar.cpp
++++ b/Telegram/SourceFiles/info/profile/info_profile_top_bar.cpp
+@@ -1855,9 +1855,13 @@ void TopBar::setupButtons(
+ 			st::infoTopBarScale);
+ 		_back->QWidget::show();
+ 		_back->setDuration(0);
+-		_back->toggleOn(isLayer || isSide
+-			? _backToggles.value()
+-			: rpl::single(wrap == Wrap::Narrow));
++
++		if (isLayer || isSide) {
++			_back->toggleOn(_backToggles.value());
++		} else {
++			_back->toggleOn(rpl::single(wrap == Wrap::Narrow));
++		}
++
+ 		_back->entity()->clicks() | rpl::to_empty | rpl::start_to_stream(
+ 			_backClicks,
+ 			_back->lifetime());
