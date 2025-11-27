@@ -1,7 +1,7 @@
 pkgbase = wayscriber
 	pkgdesc = Screen annotation tool for Wayland compositors
-	pkgver = 0.8.6
-	pkgrel = 1
+pkgver = 0.8.6
+pkgrel = 1
 	url = https://wayscriber.com
 	install = wayscriber.install
 	arch = x86_64
