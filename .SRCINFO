@@ -1,6 +1,6 @@
 pkgbase = python-intersphinx-registry
 	pkgdesc = This package provides convenient utilities and data to write a sphinx config file.
-	pkgver = 0.2510.17
+	pkgver = 0.2511.25
 	pkgrel = 1
 	url = https://github.com/Quansight-Labs/intersphinx_registry
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = python-intersphinx-registry
 	makedepends = python-flit-core
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/i/intersphinx_registry/intersphinx_registry-0.2510.17.tar.gz
-	source = 0.2510.17-test_basic.py::https://github.com/Quansight-Labs/intersphinx_registry/raw/refs/tags/0.2510.17/tests/test_basic.py
-	md5sums = 0ac922c1be09d2eee1f9bb221e013804
+	source = https://files.pythonhosted.org/packages/source/i/intersphinx_registry/intersphinx_registry-0.2511.25.tar.gz
+	source = 0.2511.25-test_basic.py::https://github.com/Quansight-Labs/intersphinx_registry/raw/refs/tags/0.2511.25/tests/test_basic.py
+	md5sums = c4e856c7c0b07e55b05be75970784306
 	md5sums = eea8ea533c4d906be19ffb096eb37eb1
 
 pkgname = python-intersphinx-registry

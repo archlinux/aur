@@ -5,7 +5,7 @@ _pname=${pkgbase#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
 # "python-${_pname}-doc")
-pkgver=0.2510.17
+pkgver=0.2511.25
 pkgrel=1
 pkgdesc="This package provides convenient utilities and data to write a sphinx config file."
 arch=('any')
@@ -18,7 +18,7 @@ checkdepends=('python-pytest-xdist'
               'python-requests')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "${pkgver}-test_basic.py::https://github.com/Quansight-Labs/intersphinx_registry/raw/refs/tags/${pkgver}/tests/test_basic.py")
-md5sums=('0ac922c1be09d2eee1f9bb221e013804'
+md5sums=('c4e856c7c0b07e55b05be75970784306'
          'eea8ea533c4d906be19ffb096eb37eb1')
 
 prepare() {
