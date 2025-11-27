@@ -1,20 +1,21 @@
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Alberto Redondo <albertomost at gmail dot com>
 # Contributor: Mario Finelli <mario at finel dot li>
 # Contributor: eagletmt <eagletmt at gmail dot com>
 
 _gemname=oauth
 pkgname=ruby-$_gemname
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='OAuth for Ruby'
 arch=('any')
 url='https://github.com/oauth-xx/oauth-ruby'
 license=('MIT')
-depends=('ruby-oauth-tty' 'ruby-snaky_hash' 'ruby-version_gem')
+depends=('ruby-base64' 'ruby-oauth-tty' 'ruby-snaky_hash' 'ruby-version_gem')
 makedepends=('ruby-rdoc')
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('e29a96f9accd2b269caa5941d82f37d484ffe5da777a699feb766c51c856fb86')
+sha256sums=('71ca1b534561bf31a9b2aee01147384064b555e796d1a0fe2591806bb4bdd633')
 options=(!emptydirs)
 
 package() {
