@@ -1,0 +1,22 @@
+pkgbase = qetrc
+	pkgdesc = Electronic Train Running Chart implemented with Qt - C++ reimplementation of pyETRC
+	pkgver = 1.9.3
+	pkgrel = 1
+	url = https://github.com/CDK6182CHR/qETRC
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = base-devel
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = qt6-xcb-private-headers
+	optdepends = qt6-doc: for Qt documentation
+	provides = qetrc
+	options = !strip
+	source = git+https://github.com/CDK6182CHR/qETRC.git#tag=V1.9.3
+	sha256sums = SKIP
+
+pkgname = qetrc
