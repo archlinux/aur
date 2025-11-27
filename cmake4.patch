@@ -1,0 +1,250 @@
+From bf3b66ff1ee699bbf1d35a01c131fd5a835e0b50 Mon Sep 17 00:00:00 2001
+From: Riedler <git@riedler.wien>
+Date: Wed, 2 Jul 2025 14:06:48 +0200
+Subject: [PATCH 1/2] update CmakeLists to support cmake>=4.0.0
+
+---
+ CMakeLists.txt                       | 2 +-
+ liblsdj/CMakeLists.txt               | 2 +-
+ liblsdj/test/CMakeLists.txt          | 2 +-
+ lsdj_clean/CMakeLists.txt            | 2 +-
+ lsdj_mono/CMakeLists.txt             | 2 +-
+ lsdj_wavetable_import/CMakeLists.txt | 2 +-
+ lsdsng_export/CMakeLists.txt         | 2 +-
+ lsdsng_import/CMakeLists.txt         | 2 +-
+ 8 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 18783a6..926719d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0.0)
++cmake_minimum_required(VERSION 3.0.0...4.0.0)
+ 
+ # Create the project
+ project(lsdj)
+diff --git a/liblsdj/CMakeLists.txt b/liblsdj/CMakeLists.txt
+index 9c29d99..599caa3 100644
+--- a/liblsdj/CMakeLists.txt
++++ b/liblsdj/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0.0)
++cmake_minimum_required(VERSION 3.0.0...4.0.0)
+ 
+ if (APPLE)
+   # Add global definitions and include directories
+diff --git a/liblsdj/test/CMakeLists.txt b/liblsdj/test/CMakeLists.txt
+index 52d291b..e281283 100644
+--- a/liblsdj/test/CMakeLists.txt
++++ b/liblsdj/test/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0.0 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.0.0...4.0.0 FATAL_ERROR)
+ 
+ set(SOURCES
+ 	file.cpp
+diff --git a/lsdj_clean/CMakeLists.txt b/lsdj_clean/CMakeLists.txt
+index 14a44f0..a001ff8 100644
+--- a/lsdj_clean/CMakeLists.txt
++++ b/lsdj_clean/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0.0)
++cmake_minimum_required(VERSION 3.0.0...4.0.0)
+ 
+ set(Boost_USE_STATIC_LIBS ON)
+ find_package(Boost REQUIRED COMPONENTS program_options)
+diff --git a/lsdj_mono/CMakeLists.txt b/lsdj_mono/CMakeLists.txt
+index 6a5bc7d..a2c11ac 100644
+--- a/lsdj_mono/CMakeLists.txt
++++ b/lsdj_mono/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0.0)
++cmake_minimum_required(VERSION 3.0.0...4.0.0)
+ 
+ set(SOURCES
+ 	../common/common.hpp
+diff --git a/lsdj_wavetable_import/CMakeLists.txt b/lsdj_wavetable_import/CMakeLists.txt
+index 2803b4d..8e5607a 100644
+--- a/lsdj_wavetable_import/CMakeLists.txt
++++ b/lsdj_wavetable_import/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0.0)
++cmake_minimum_required(VERSION 3.0.0...4.0.0)
+ 
+ # Create the executable target
+ add_executable(lsdj-wavetable-import main.cpp wavetable_importer.hpp wavetable_importer.cpp ../common/common.hpp ../common/common.cpp)
+diff --git a/lsdsng_export/CMakeLists.txt b/lsdsng_export/CMakeLists.txt
+index a8f1c34..acdf8cf 100644
+--- a/lsdsng_export/CMakeLists.txt
++++ b/lsdsng_export/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0.0)
++cmake_minimum_required(VERSION 3.0.0...4.0.0)
+ 
+ # Create the executable target
+ add_executable(lsdsng-export main.cpp exporter.hpp exporter.cpp ../common/common.hpp ../common/common.cpp)
+diff --git a/lsdsng_import/CMakeLists.txt b/lsdsng_import/CMakeLists.txt
+index f6c4abd..27409ef 100644
+--- a/lsdsng_import/CMakeLists.txt
++++ b/lsdsng_import/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.0.0)
++cmake_minimum_required(VERSION 3.0.0...4.0.0)
+ 
+ # Create the executable target
+ add_executable(lsdsng-import main.cpp importer.hpp importer.cpp ../common/common.hpp ../common/common.cpp)
+
+From d35840289f1aed27851f712f6e5f2d6ec1ad6bf6 Mon Sep 17 00:00:00 2001
+From: Riedler <git@riedler.wien>
+Date: Wed, 2 Jul 2025 15:15:35 +0200
+Subject: [PATCH 2/2] migrated to Catch2 v3.8.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+v2 doesn't seem to support cmake>=4.0.0 at all…
+
+migrated as per as per https://github.com/catchorg/Catch2/blob/devel/docs/migrate-v2-to-v3.md#how-to-migrate-projects-from-v2-to-v3
+---
+ dependency/Catch2           | 2 +-
+ liblsdj/test/CMakeLists.txt | 2 +-
+ liblsdj/test/format.cpp     | 2 +-
+ liblsdj/test/main.cpp       | 2 +-
+ liblsdj/test/project.cpp    | 8 ++++----
+ liblsdj/test/sav.cpp        | 4 ++--
+ liblsdj/test/song.cpp       | 2 +-
+ liblsdj/test/vio.cpp        | 2 +-
+ 8 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/dependency/Catch2 b/dependency/Catch2
+index 42e368d..2b60af8 160000
+--- a/dependency/Catch2
++++ b/dependency/Catch2
+@@ -1 +1 @@
+-Subproject commit 42e368dd0aedc122798008d8c4f583fea3296a97
++Subproject commit 2b60af89e23d28eefc081bc930831ee9d45ea58b
+diff --git a/liblsdj/test/CMakeLists.txt b/liblsdj/test/CMakeLists.txt
+index e281283..b968fe1 100644
+--- a/liblsdj/test/CMakeLists.txt
++++ b/liblsdj/test/CMakeLists.txt
+@@ -20,7 +20,7 @@ target_compile_definitions(test PRIVATE RESOURCES_FOLDER="${CMAKE_SOURCE_DIR}/re
+ 
+ target_link_libraries(test
+ 	PRIVATE
+-	Catch2::Catch2
++	Catch2::Catch2WithMain
+ 	liblsdj
+ 	)
+ 
+diff --git a/liblsdj/test/format.cpp b/liblsdj/test/format.cpp
+index e3e767e..2abd11a 100644
+--- a/liblsdj/test/format.cpp
++++ b/liblsdj/test/format.cpp
+@@ -6,7 +6,7 @@
+ #include <lsdj/table.h>
+ 
+ #include <cassert>
+-#include <catch2/catch.hpp>
++#include <catch2/catch_all.hpp>
+ 
+ using namespace Catch;
+ 
+diff --git a/liblsdj/test/main.cpp b/liblsdj/test/main.cpp
+index 339e8db..5f4247d 100644
+--- a/liblsdj/test/main.cpp
++++ b/liblsdj/test/main.cpp
+@@ -1,2 +1,2 @@
+ #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
+-#include <catch2/catch.hpp>
+\ No newline at end of file
++#include <catch2/catch_all.hpp>
+\ No newline at end of file
+diff --git a/liblsdj/test/project.cpp b/liblsdj/test/project.cpp
+index 976cd6b..499f755 100644
+--- a/liblsdj/test/project.cpp
++++ b/liblsdj/test/project.cpp
+@@ -3,7 +3,7 @@
+ #include <algorithm>
+ #include <array>
+ #include <cassert>
+-#include <catch2/catch.hpp>
++#include <catch2/catch_all.hpp>
+ #include <cstring>
+ #include <lsdj/compression.h>
+ 
+@@ -29,7 +29,7 @@ SCENARIO( "Project creation and querying", "[project]" )
+ 
+ 			THEN( "The name should be empty")
+ 			{
+-				REQUIRE_THAT(name.data(), Equals(""));
++				REQUIRE_THAT(name.data(), Matchers::Equals(""));
+ 				REQUIRE(lsdj_project_get_name_length(project) == 0);
+ 			}
+ 		}
+@@ -44,7 +44,7 @@ SCENARIO( "Project creation and querying", "[project]" )
+                 name.fill('\0');
+ 				strncpy(name.data(), lsdj_project_get_name(project), name.size());
+ 
+-				REQUIRE_THAT(name.data(), Equals("NAME"));
++				REQUIRE_THAT(name.data(), Matchers::Equals("NAME"));
+ 				REQUIRE(lsdj_project_get_name_length(project) == 4);
+ 			}
+ 		}
+@@ -113,7 +113,7 @@ SCENARIO( "Project creation and querying", "[project]" )
+                 name.fill('\0');
+ 				strncpy(name.data(), lsdj_project_get_name(project), name.size());
+ 
+-				REQUIRE_THAT(name.data(), Equals("MYSONG"));
++				REQUIRE_THAT(name.data(), Matchers::Equals("MYSONG"));
+ 				REQUIRE(lsdj_project_get_version(copy) == 16);
+ 
+ 				auto bufferCopy = lsdj_project_get_song_const(project);
+diff --git a/liblsdj/test/sav.cpp b/liblsdj/test/sav.cpp
+index f855250..4ca6d7f 100644
+--- a/liblsdj/test/sav.cpp
++++ b/liblsdj/test/sav.cpp
+@@ -3,7 +3,7 @@
+ #include <algorithm>
+ #include <array>
+ #include <cassert>
+-#include <catch2/catch.hpp>
++#include <catch2/catch_all.hpp>
+ #include <cstring>
+ 
+ #include "file.hpp"
+@@ -104,7 +104,7 @@ SCENARIO( "Saves", "[sav]" )
+                 name.fill('\0');
+                 strncpy(name.data(), lsdj_project_get_name(copy), name.size());
+ 
+-				REQUIRE_THAT( name.data(), Equals("MYSONG") );
++				REQUIRE_THAT( name.data(), Matchers::Equals("MYSONG") );
+ 				REQUIRE( lsdj_project_get_version(copy) == 16 );
+ 
+ 				auto bufferCopy = lsdj_project_get_song_const(project);
+diff --git a/liblsdj/test/song.cpp b/liblsdj/test/song.cpp
+index 5f8acec..952e407 100644
+--- a/liblsdj/test/song.cpp
++++ b/liblsdj/test/song.cpp
+@@ -1,7 +1,7 @@
+ #include <lsdj/song.h>
+ 
+ #include <array>
+-#include <catch2/catch.hpp>
++#include <catch2/catch_all.hpp>
+ #include <cstring>
+ 
+ #include <lsdj/chain.h>
+diff --git a/liblsdj/test/vio.cpp b/liblsdj/test/vio.cpp
+index 51bf2dd..e999ddb 100644
+--- a/liblsdj/test/vio.cpp
++++ b/liblsdj/test/vio.cpp
+@@ -1,7 +1,7 @@
+ #include <lsdj/vio.h>
+ 
+ #include <array>
+-#include <catch2/catch.hpp>
++#include <catch2/catch_all.hpp>
+ #include <cstring>
+ 
+ using namespace Catch;

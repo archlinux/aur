@@ -9,3 +9,6 @@
 2.2.0_457-1
 	fixed versioning
 	fixed compilation (git-lfs was missing)
+
+2.2.0_457-2
+	fixed compilation with cmake>=4.0.0

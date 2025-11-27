@@ -3,7 +3,7 @@
 _pkgname=liblsdj
 pkgname=${_pkgname}-git
 pkgver=2.2.0_457
-pkgrel=1
+pkgrel=2
 changelog=CHANGELOG
 pkgdesc='Library for working with the LSDj save file format'
 arch=('any')
@@ -12,9 +12,9 @@ license=('MIT')
 provides=('lsdsng-export' 'lsdsng-import' 'lsdj-mono' 'lsdj-wavetable-import')
 depends=()
 makedepends=('cmake' 'git' 'git-lfs')
-source=("$_pkgname::git+https://github.com/stijnfrishert/libLSDJ.git"
-		"Catch2::git+https://github.com/catchorg/Catch2.git")
-sha256sums=('SKIP' 'SKIP')
+source=("$_pkgname::git+$url.git"
+		'cmake4.patch')
+sha256sums=('SKIP' '91054b22c5afd64693c3cedb392f618c3c59bb126698e3c0887e4f6a498b81be')
 
 pkgver() {
     cd $_pkgname
@@ -23,17 +23,18 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	echo "init"
-	git submodule init dependency/Catch2
-	echo "url"
-	git config submodule.Catch2.url "$srcdir/Catch2"
-	echo "update"
-	git submodule update --init
-	echo "rest"
+	
+	# fixes compatibility with cmake>4
+	# see: https://github.com/stijnfrishert/libLSDJ/pull/108/
+	git apply -3 "$srcdir"/cmake4.patch
+	
+	msg2 "update submodules..."
+	git submodule update --init --depth 1
+	msg2 "prepare build using cmake..."
 	mkdir build -p
 	cd build
 	cmake -DCMAKE_BUILD_TYPE=Release ..
-	echo "victory!"
+	msg2 "victory!"
 }
 
 build() {
@@ -42,10 +43,7 @@ build() {
 }
 
 package() {
-	cd $_pkgname
-	install -Dm644 LICENSE \
-		"$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-	cd build
+	cd $_pkgname/build
 	install -Dm755 "./lsdsng_export/lsdsng-export" \
 		-t "$pkgdir/usr/bin/"
 	install -Dm755 "./lsdsng_import/lsdsng-import" \
