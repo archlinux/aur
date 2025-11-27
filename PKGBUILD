@@ -2,7 +2,7 @@
 
 pkgname=paip
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='like cat but through llm'
 url='https://github.com/kotarac/paip'
 arch=(x86_64)

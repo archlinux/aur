@@ -1,7 +1,7 @@
 pkgbase = paip
 	pkgdesc = like cat but through llm
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kotarac/paip
 	arch = x86_64
 	license = GPL-2.0-only
