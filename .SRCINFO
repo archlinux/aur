@@ -1,14 +1,14 @@
 pkgbase = wsl2-ssh-agent-bin
 	pkgdesc = A bridge from WSL2 ssh client to Windows ssh-agent.exe service (Pre-compiled)
-	pkgver = 0.9.6
+	pkgver = 0.9.7
 	pkgrel = 1
 	url = https://github.com/mame/wsl2-ssh-agent
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	source_x86_64 = wsl2-ssh-agent-bin-0.9.6_x86_64::https://github.com/mame/wsl2-ssh-agent/releases/download/v0.9.6/wsl2-ssh-agent
-	sha256sums_x86_64 = 0d080edabe300ef94f858f1a937188eccd96115e875fb22da3c54479cbd57207
-	source_aarch64 = wsl2-ssh-agent-bin-0.9.6_aarch64::https://github.com/mame/wsl2-ssh-agent/releases/download/v0.9.6/wsl2-ssh-agent-arm64
-	sha256sums_aarch64 = 1e054c288464fed58a4a2dd22ebcae2993776e17ef13a6d254d4c70201d4cfc6
+	source_x86_64 = wsl2-ssh-agent-bin-0.9.7_x86_64::https://github.com/mame/wsl2-ssh-agent/releases/download/v0.9.7/wsl2-ssh-agent
+	sha256sums_x86_64 = 281c64f6079598de1a455292d533f3ae21837980a3d3012074bc14ad695325d8
+	source_aarch64 = wsl2-ssh-agent-bin-0.9.7_aarch64::https://github.com/mame/wsl2-ssh-agent/releases/download/v0.9.7/wsl2-ssh-agent-arm64
+	sha256sums_aarch64 = e9cb0347a72ca68a511e48779080b80a22af1bf670e5a52c9f35f95951ce5221
 
 pkgname = wsl2-ssh-agent-bin
