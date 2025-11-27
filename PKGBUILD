@@ -30,7 +30,7 @@ package() {
 	cd "$srcdir/"
 	mkdir "$pkgdir/opt"
 	cp -r "beatoraja${pkgver}-modernchic" "$pkgdir/opt/beatoraja"
-	chmod -R 755 "$pkgdir/opt/beatoraja"
-	install -Dm755 beatoraja.sh "$pkgdir/usr/bin/beatoraja"
+	chmod -R 777 "$pkgdir/opt/beatoraja"
+	install -Dm777 beatoraja.sh "$pkgdir/usr/bin/beatoraja"
 	install -Dm644 beatoraja.desktop "$pkgdir/usr/share/applications/beatoraja.desktop"
 }
