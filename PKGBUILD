@@ -24,7 +24,7 @@ options=(!lto)
 
 prepare() {
   cd "$_pkgname"
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 pkgver() {
