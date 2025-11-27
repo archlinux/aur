@@ -1,6 +1,6 @@
 pkgbase = visagevault
 	pkgdesc = Gestor de fotografías inteligente con reconocimiento facial (Código Fuente)
-	pkgver = 1.6.11
+	pkgver = 1.6.13
 	pkgrel = 1
 	url = https://github.com/danitxu79/visagevault
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = visagevault
 	provides = visagevault
 	conflicts = visagevault
 	conflicts = visagevault-bin
-	source = visagevault-1.6.11.tar.gz::https://github.com/danitxu79/visagevault/archive/refs/tags/v1.6.11.tar.gz
-	sha256sums = 9c7d6ed941710aeb0f0c19343fd7dc1de73f90ebfcd961bd14bcc8dec0ac718f
+	source = visagevault-1.6.13.tar.gz::https://github.com/danitxu79/visagevault/releases/download/v1.6.13/visagevault-1.6.13.tar.gz
+	sha256sums = a76acf9f0d5f36067cffd1493a139ff0bf951269be6923f47d99e39fc78d5df2
 
 pkgname = visagevault
