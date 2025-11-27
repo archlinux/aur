@@ -1,6 +1,6 @@
 # Maintainer: FoxMoss <foxmoss@mediaology.com>
 pkgname=dote-wm
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="A window manager framework for web technology"
 arch=('x86_64')
