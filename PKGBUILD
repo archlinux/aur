@@ -8,7 +8,7 @@ url="https://github.com/oven-sh/bun"
 license=('MIT')
 #depends=(c-ares libarchive libuv mimalloc tcc zlib zstd)
 makedepends=(
-  ccache clang cmake git go icu libdeflate libiconv libtool lld llvm ninja pkgconf python ruby ruby-getoptlong rust unzip zig
+  clang cmake git go icu libdeflate libiconv libtool lld llvm ninja pkgconf python ruby ruby-getoptlong rust sccache unzip zig
 )
 conflicts=(bun-bin bun-git)
 source=(bun::git+$url.git#tag=bun-v$pkgver
@@ -17,7 +17,7 @@ source=(bun::git+$url.git#tag=bun-v$pkgver
 b2sums=('cbd6a92d36c249707fb65e107eed36be43d32d0b45995a30831858b2efb5c6457cfae9d955d42125ce5dcfbc8714ab4f6c0155c0a8a75b5888b57eeac37d1a15'
         'a9b1261a222a8e156a5d39c963be47cb31da420f2e6e5779385f30f1a896c94a117c85c6476732871ac9e309021c23d8588146040c7150d05c6a0147bed8c7a9'
         'ba86bf7d8ff3c6b0aa1b26a2eaf7d0ca480ff42fde59b75f3290de3f197a07ec8fd926c96287436e29d5dedb9632ffe9e1f8d44ebfa7f9df804874bc889afc2d')
-options=(ccache lto)
+options=(lto)
 
 _j=$(( $(nproc) / 2 + 1 )) # Chooses parallel job count automatically
 
@@ -58,11 +58,12 @@ build() {
   mkdir -p vendor/zig
   ln -sf /usr/lib/zig vendor/zig/lib 
   ln -sf /usr/bin/zig vendor/zig/zig
-  # CC="/usr/lib/llvm19/bin/clang" CXX="/usr/lib/llvm19/bin/clang++" \
-  CMAKE_LINKER_TYPE="mold" \
-  CXXFLAGS="-Wno-unused-result -Wno-character-conversion ${CXXFLAGS}" bun ./scripts/build.mjs -GNinja -B $srcdir/build -S $srcdir/bun -Wno-dev -DCMAKE_BUILD_TYPE=Release -DUSE_STATIC_LIBATOMIC=OFF \
-        -DENABLE_CCACHE=ON -DENABLE_LTO=ON -DENABLE_ASAN=OFF -DUSE_STATIC_SQLITE=OFF -DWEBKIT_LOCAL=ON -DWEBKIT_PATH=$srcdir/WebKitBuild/output  -j$_j -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-        -DFETCHCONTENT_FULLY_DISCONNECTED=ON -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" -DLLVM_VERSION=20.1.8 -DZIG_PATH="/usr/lib/zig" -DLLVM_VERSION=21.1.4
+  
+  CXXFLAGS="-Wno-unused-result -Wno-character-conversion ${CXXFLAGS}" cmake -GNinja -B $srcdir/build -S $srcdir/bun -Wno-dev -DCMAKE_BUILD_TYPE=Release -DUSE_STATIC_LIBATOMIC=OFF \
+        -DENABLE_LTO=ON -DENABLE_ASAN=OFF -DUSE_STATIC_SQLITE=OFF -DWEBKIT_LOCAL=ON -DWEBKIT_PATH=$srcdir/WebKitBuild/output \
+        -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" -DZIG_PATH="/usr/lib/zig" -DLLVM_VERSION=21.1.4
+
+  ninja -C $srcdir/build -j$_j bun
 }
 
 build_webkit(){
