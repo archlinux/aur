@@ -12,9 +12,9 @@ HIFPS_TARGET_TIMER_INTERVAL=4
 pkgbase=qt6-base-hifps
 pkgname=(qt6-base-hifps
          qt6-xcb-private-headers-hifps)
-_pkgver=6.10.0
+_pkgver=6.10.1
 pkgver=${_pkgver/-/}
-pkgrel=5
+pkgrel=1
 pkgdesc='A cross-platform application and UI framework - patched for high refresh rates for animations'
 arch=(x86_64)
 url='https://www.qt.io'
