@@ -1,8 +1,8 @@
 # Maintainer: Sylvester Keil <sylvester@keil.or.at>
 
 pkgname='tropy-bin'
-pkgver='1.17.0'
-pkgrel=2
+pkgver='1.17.2'
+pkgrel=1
 pkgdesc='Explore your research photos'
 arch=('x86_64')
 url='https://tropy.org'
@@ -13,8 +13,12 @@ depends=(
   'glib2'
   'glibc'
   'hicolor-icon-theme'
+  'libvips'
   'sh'
   'xdg-utils')
+optdepends=(
+  'libheif: for heif support'
+  'poppler-glib: for pdf support')
 optdepends=()
 makedepends=()
 provides=('tropy')
@@ -23,10 +27,10 @@ options=(!strip)
 
 source=(
   'tropy.sh'
-  "https://github.com/tropy/tropy/releases/download/v${pkgver}/tropy-${pkgver}-x64.tar.bz2")
+  "https://github.com/tropy/tropy/releases/download/v${pkgver}/tropy-${pkgver}-x64-shared.tar.bz2")
 
 sha256sums=('034914456ca6e70ebd929ffd96cce2d7b84744d5eae2ce0467fa42ade71f7f92'
-            '23c61a88bd1cd9655899b6525bece6943a4c33c28464d1c6048ab5f8a466b625')
+            '1e378083d4d743e7f8f8c007cea3cd19e39231ef3ed294fd064c850550a08207')
 
 package() {
   install -dm755 "${pkgdir}/usr/lib/tropy"
@@ -64,5 +68,5 @@ package() {
 
   cd app.asar.unpacked
   install -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" \
-    LICENSE LICENSE.chromium.html LICENSE.third-party.txt
+    LICENSE LICENSE.chromium.html
 }
