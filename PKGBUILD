@@ -4,7 +4,7 @@
 
 pkgbase=uutils-coreutils-git
 pkgname=($pkgbase coreutils-uutils)
-pkgver=0.4.0.r140.g4ee588e
+pkgver=0.4.0.r191.gb9f97d4
 pkgrel=1
 pkgdesc="Rust rewrite of coreutils"
 url=https://github.com/uutils/coreutils
@@ -17,23 +17,21 @@ options=(zipman)
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 source=("${pkgname%-git}::git+${url}.git"
-"glibc-2.42.patch::https://git.launchpad.net/~juliank/ubuntu/+source/rust-coreutils/plain/debian/patches/glibc-2.42.patch?h=ubuntu/devel&id=a16e77bec0546ee51770a891a24468e8048242e3"
+nix-no-unwrap.patch::https://github.com/nix-rust/nix/commit/172e1d94cae6f6a5c5815917b4d0ff5151f71527.patch
 nix-rust0.30.1.tar.gz::https://github.com/nix-rust/nix/archive/refs/tags/v0.30.1.tar.gz
 )
 sha256sums=('SKIP'
-            '3516ae0e2a4fe5fc4996e0f7c9952213f5b7394c739c79f31bafd2ba2a9e2ebb'
+            '1ee6ca44c4c4f4f8a0874c6ff09351d48de554b5c29791fd903626523ab31c5c'
             '31742bef74cad04c8bd8c9a7301323e3df35847f5b776024221cbd2060cd5ed7')
 pkgver() {
   cd ${pkgname%-git}
   git describe --long --tags --abbrev=7 | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
-noextract=(nix-rust0.30.1.tar.gz)
 prepare(){
-  cd ${pkgname%-git}
-  mkdir -p rust-vendor/nix; bsdtar -xf ../nix-rust0.30.1.tar.gz -C rust-vendor/nix --strip-components=1
-  git apply -v -p1 "${srcdir}/glibc-2.42.patch"
-  echo -e "[patch.crates-io]\nnix = { path = \"rust-vendor/nix\" }" >> Cargo.toml
+  echo -e "[patch.crates-io]\nnix = { path = \"../nix-0.30.1\" }" >> ${pkgname%-git}/Cargo.toml
+  cd nix-0.30.1
+  git apply -v -p1 ../nix-no-unwrap.patch
 }
 # Packaging guideline cause double build.
 export RUSTONIG_DYNAMIC_LIBONIG=1
@@ -42,7 +40,7 @@ package_uutils-coreutils-git(){
   cd ${pkgbase%-git}
   unset optdepends
   make install DESTDIR="$pkgdir" PREFIX=/usr PROFILE=release-fast MULTICALL=y LN="ln -f" \
-    PROG_PREFIX=uu- LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} #LOCALES=n SKIP_UTILS="arch kill more uptime hostname"
+    PROG_PREFIX=uu- LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} LOCALES=n SKIP_UTILS="arch shred shuf factor kill more uptime hostname"
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgbase%-git}
 }
 
