@@ -16,11 +16,13 @@ options=('!strip') # Importante para binarios de PyInstaller para no romperlos
 source=(
     "${_pkgname}::${url}/releases/download/v${pkgver}/${_pkgname}"
     "${_pkgname}.png::https://raw.githubusercontent.com/danitxu79/PortalDrop/main/portaldrop-512.png"
+    "${_pkgname}.metainfo.xml::https://raw.githubusercontent.com/danitxu79/PortalDrop/main/portaldrop.metainfo.xml"
 )
 
 # Nota: Deberás generar estos hash con 'updpkgsums' o 'makepkg -g'
 sha256sums=('9a76ceb906fa5302861b735a986519b2dc5432082615e383c014b08c0ae5d9eb'
-            '5a3caf47e0012f35afdb9cdbafe3c19d37f5383b60b62f705994279ed626e2a8')
+            '5a3caf47e0012f35afdb9cdbafe3c19d37f5383b60b62f705994279ed626e2a8'
+            'e954b9fc2278e9d3140306939f026b0dd5482061a26b59e2425bc6843f77b257')
 
 package() {
     # 1. Instalar el binario
