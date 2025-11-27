@@ -2,7 +2,7 @@
 pkgname=qtscrcpy-bin
 _pkgname=QtScrcpy
 pkgver=3.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Android real-time display control software.(Prebuilt version)"
 arch=('x86_64')
 url="https://blog.csdn.net/rankun1/article/details/87970523"
@@ -25,7 +25,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('67e5d1ed99abef8595ceba83608cc551834e6914a1f187ad15a0e09d13bea611'
-            'b3e9c2ea2115387e381b4f66d286e59c0ad4a16b94eed5313b03ce05fadc8863')
+            'e468cebce5ab345d61d109de5426e9263643f915d881599774402c89292f141f')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
