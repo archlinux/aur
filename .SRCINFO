@@ -1,0 +1,22 @@
+pkgbase = python-stamina
+	pkgdesc = Production-grade retries for Python
+	pkgver = 25.1.0
+	pkgrel = 1
+	url = https://github.com/hynek/stamina
+	changelog = CHANGELOG.md
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-anyio
+	checkdepends = python-dirty-equals
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-hatch-fancy-pypi-readme
+	makedepends = python-hatch-vcs
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-tenacity
+	source = python-stamina-25.1.0.tar.gz::https://github.com/hynek/stamina/archive/25.1.0.tar.gz
+	sha256sums = 63d4deccdf17ac586d6c8c4fdaece98c8ec358f44390e9a87c7695835554af48
+
+pkgname = python-stamina
