@@ -1,7 +1,7 @@
 pkgbase = materiatrack
 	pkgdesc = Mystical Final Fantasy-themed CLI time tracker based on Zeit
 	pkgver = 1.0.3
-	pkgrel = 6
+	pkgrel = 8
 	url = https://github.com/ind4skylivey/matteria-track
 	arch = x86_64
 	arch = aarch64

@@ -3,7 +3,7 @@
 
 pkgname=materiatrack
 pkgver=1.0.3
-pkgrel=6
+pkgrel=8
 pkgdesc="Mystical Final Fantasy-themed CLI time tracker based on Zeit"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ind4skylivey/matteria-track"
@@ -78,10 +78,20 @@ package() {
         install -Dm755 "$prebuilt_dir/materiatrack" "$pkgdir/usr/bin/materiatrack"
         ln -s materiatrack "$pkgdir/usr/bin/mtrack"
 
-        install -Dm644 "$prebuilt_dir/man/materiatrack.1" "$pkgdir/usr/share/man/man1/materiatrack.1"
-        install -Dm644 "$prebuilt_dir/completions/materiatrack.bash" "$pkgdir/usr/share/bash-completion/completions/materiatrack"
-        install -Dm644 "$prebuilt_dir/completions/_materiatrack" "$pkgdir/usr/share/zsh/site-functions/_materiatrack"
-        install -Dm644 "$prebuilt_dir/completions/materiatrack.fish" "$pkgdir/usr/share/fish/vendor_completions.d/materiatrack.fish"
+        if [[ -d "$prebuilt_dir/man" ]]; then
+            install -d "$pkgdir/usr/share/man/man1"
+            cp -a "$prebuilt_dir/man/." "$pkgdir/usr/share/man/man1/"
+        fi
+        if [[ -d "$prebuilt_dir/completions" ]]; then
+            for f in "$prebuilt_dir"/completions/*; do
+                [[ -e "$f" ]] || continue
+                case "$f" in
+                    *_materiatrack) install -Dm644 "$f" "$pkgdir/usr/share/zsh/site-functions/_materiatrack" ;;
+                    *.bash) install -Dm644 "$f" "$pkgdir/usr/share/bash-completion/completions/materiatrack" ;;
+                    *.fish) install -Dm644 "$f" "$pkgdir/usr/share/fish/vendor_completions.d/materiatrack.fish" ;;
+                esac
+            done
+        fi
         install -Dm644 "$prebuilt_dir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
         install -Dm644 "$prebuilt_dir/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
         return 0
