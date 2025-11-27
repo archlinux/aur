@@ -21,12 +21,21 @@ sha256sums=('8a51681613fcb885868d9e0c35c321c29c5660d0be2cc15811a4de6509874327')
 
 prepare() {
     cd "$srcdir/matteria-track-$pkgver"
+    # Avoid user/global RUSTFLAGS that might force lld and break bundled libs
+    export RUSTFLAGS=""
+    export CC="${CC:-/usr/bin/cc}"
+    export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER="${CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER:-/usr/bin/cc}"
+
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "$srcdir/matteria-track-$pkgver"
+    export RUSTFLAGS=""
+    export CC="${CC:-/usr/bin/cc}"
+    export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER="${CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER:-/usr/bin/cc}"
+
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
