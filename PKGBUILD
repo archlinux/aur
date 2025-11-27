@@ -2,7 +2,7 @@
 _pkgname='unbted'
 pkgname="${_pkgname}-git"
 pkgver=1.2.2.r2.g0d1e1f2
-pkgrel=1
+pkgrel=2
 pkgdesc="Una's NBT Editor - an advanced interactive command-line NBT editor"
 arch=('any')
 url="https://git.sleeping.town/unascribed/${_pkgname}"
@@ -10,7 +10,7 @@ license=('GPL-3.0-only' 'Apache-2.0' 'MIT')
 groups=()
 depends=()
 makedepends=('git' 'java-environment<=24')
-provides=("${_pkgname}")
+provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 replaces=()
 backup=()
