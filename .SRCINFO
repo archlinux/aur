@@ -1,8 +1,8 @@
 pkgbase = vapoursynth-plugin-soifunc-git
 	pkgdesc = Plugin for Vapoursynth: soifunc (GIT version)
-	pkgver = 132.dd6208a
+	pkgver = 163.ca385ee
 	pkgrel = 1
-	url = https://github.com/shssoichiro/soifunc
+	url = https://codeberg.org/Soichiro/soifunc
 	arch = any
 	license = MIT
 	makedepends = git
@@ -16,7 +16,7 @@ pkgbase = vapoursynth-plugin-soifunc-git
 	optdepends = vapoursynth-plugin-dfttest2-cpu: dfttest support, CPU version
 	provides = vapoursynth-plugin-soifunc
 	conflicts = vapoursynth-plugin-soifunc
-	source = soifunc::git+https://github.com/shssoichiro/soifunc.git
+	source = soifunc::git+https://codeberg.org/Soichiro/soifunc.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-soifunc-git
