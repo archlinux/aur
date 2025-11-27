@@ -3,7 +3,7 @@
 
 pkgname=tokei-git
 epoch=1
-pkgver=13.0.0_alpha.1.r1012.e7fa7ab
+pkgver=13.0.0.r1101.5b597c0
 pkgrel=1
 pkgdesc='A blazingly fast CLOC(Count Lines Of Code) program'
 arch=('i686' 'x86_64' 'aarch64')
