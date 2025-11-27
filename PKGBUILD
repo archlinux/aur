@@ -9,29 +9,27 @@
 : ${_build_pgo:=try}
 
 : ${_build_level:=3}
-: ${_build_git:=true}
 
 unset _pkgtype
 [[ "${_build_instrumented::1}" == "t" ]] && _pkgtype+="-instrumented"
 [[ "${_build_level::1}" == "2" ]] && _pkgtype+="-x64v2"
 [[ "${_build_level::1}" == "3" ]] && _pkgtype+="-avx"
 [[ "${_build_level::1}" == "4" ]] && _pkgtype+="-x64v4"
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
+_pkgtype+="-git"
 
 _pkgname="pcsx2"
 pkgname="$_pkgname${_pkgtype:-}"
-pkgver=2.3.311.r1.gf45840a
+pkgver=2.5.333.r0.g7942ee4
 pkgrel=1
 pkgdesc='PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
 license=('GPL-3.0-or-later')
-arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4')
+arch=('x86_64')
 
 depends=(
-  kddockwidgets-qt6 # AUR
+  kddockwidgets
   libpcap
   libpng
-  libpulse
   libwebp
   libxi
   libxrandr
@@ -64,71 +62,79 @@ optdepends=(
   'gstreamer: Backup sound player for RetroAchievements'
 )
 
-if [ "${_build_git::1}" == "t" ]; then
-  provides=("$_pkgname")
-  conflicts=("$_pkgname")
-  _commit="master"
-
-  pkgver() {
-    cd "$_pkgsrc"
-    git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-      | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
-  }
-fi
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 options=('!debug' 'lto')
 install="$_pkgname.install"
 
-_source_pcsx2() {
-  _pkgsrc="$_pkgname"
-  source+=("$_pkgsrc"::"git+$url.git#commit=$_commit")
-  sha256sums+=('SKIP')
-}
-
-_source_pcsx2_patches() {
-  source+=("pcsx2_patches"::"git+https://github.com/PCSX2/pcsx2_patches.git")
-  sha256sums+=('SKIP')
-}
-
-_source_pcsx2
-_source_pcsx2_patches
+_pkgsrc="$_pkgname"
+source=(
+  "$_pkgsrc"::"git+$url.git${_commit:+#commit=$_commit}"
+  "pcsx2_patches"::"git+https://github.com/PCSX2/pcsx2_patches.git"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
 
 prepare() {
-  _submodule_update() {
-    local _module
-    for _module in "${_submodules[@]}"; do
-      git submodule init "${_module##*::}"
-      git submodule set-url "${_module##*::}" "$srcdir/${_module%::*}"
-      git -c protocol.file.allow=always submodule update "${_module##*::}"
-    done
-  }
-
   cd "$_pkgsrc"
 
   # prevent march=native
   sed -E -e 's@^(\s*)(add_compile_options\(.*march=native.*\))@\1message("skip: march=native")@' \
-    -i "cmake/BuildParameters.cmake"
+    -i cmake/BuildParameters.cmake
 
   # adjust data path
   sed -E -e '/CMAKE_INSTALL_FULL_DATADIR/s@/PCSX2\b@/'"${_pkgname}@" \
-    -i "pcsx2/CMakeLists.txt" \
-    "cmake/BuildParameters.cmake"
+    -i pcsx2/CMakeLists.txt \
+    cmake/BuildParameters.cmake
 
   # relax requirements
   sed -E -e 's&^(find_package\s*\(plutos?vg) [0-9.]* ([A-Z]+\))$&\1 \2&' \
-    -i "cmake/SearchForStuff.cmake"
+    -i cmake/SearchForStuff.cmake
 }
 
-_build_pcsx2() (
+pkgver() {
+  cd "$_pkgsrc"
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+}
+
+build() (
+  export CC CXX CFLAGS CXXFLAGS LDFLAGS
+  CC=clang
+  CXX=clang++
+  LDFLAGS="${_ldflags[@]//*fuse-ld*/} -fuse-ld=lld"
+
+  if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
+    local _cflags _cxxflags
+    _cflags=(
+      -march=x86-64-v${_build_level::1} -O3
+      $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CFLAGS}")
+    )
+    CFLAGS="${_cflags[@]}"
+
+    _cxxflags=(
+      -march=x86-64-v${_build_level::1} -O3
+      $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CXXFLAGS}")
+    )
+    CXXFLAGS="${_cxxflags[@]}"
+  fi
+
   echo "Building pcsx2..."
   local _cmake_pcsx2
 
-  _cmake_pcsx2+=(
+  _cmake_pcsx2=(
     -S "$_pkgsrc"
     -B build_pcsx2
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
+    -DCMAKE_SKIP_RPATH=ON
+    -DENABLE_TESTS=$CHECKFUNC
+    -Wno-dev
+
     -DENABLE_SETCAP=OFF
     -DPACKAGE_MODE=ON
     -DUSE_ASAN=OFF
@@ -136,8 +142,6 @@ _build_pcsx2() (
     -DUSE_VULKAN=ON
     -DWAYLAND_API=ON
     -DX11_API=ON
-    -DENABLE_TESTS=OFF
-    -Wno-dev
   )
 
   if [[ ${_build_level::1} =~ ^[2-4]$ ]] || [[ ${CARCH: -2} =~ ^v[0-9]$ ]]; then
@@ -164,43 +168,15 @@ _build_pcsx2() (
 
   cmake "${_cmake_pcsx2[@]}"
   cmake --build build_pcsx2
-)
 
-_build_pcsx2_patches() (
+  echo "Archiving game patches..."
   cd pcsx2_patches
   7z a -mx=9 -r ../patches.zip patches/.
 )
 
-build() (
-  export CC CXX CFLAGS CXXFLAGS LDFLAGS
-  CC=clang
-  CXX=clang++
-
-  local _ldflags=(${LDFLAGS})
-  LDFLAGS="${_ldflags[@]//*fuse-ld*/} -fuse-ld=lld"
-
-  if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
-    local _cflags _cxxflags
-    _cflags=(
-      -march=x86-64-v${_build_level::1} -O3
-      $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CFLAGS}")
-    )
-    CFLAGS="${_cflags[@]}"
-
-    _cxxflags=(
-      -march=x86-64-v${_build_level::1} -O3
-      $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CXXFLAGS}")
-    )
-    CXXFLAGS="${_cxxflags[@]}"
-  fi
-
-  _build_pcsx2
-  _build_pcsx2_patches
-)
-
 package() {
   DESTDIR="$pkgdir" cmake --install build_pcsx2
-  ln -srf "$pkgdir/usr/bin"/{pcsx2-qt,$_pkgname}
+  ln -sf pcsx2-qt "$pkgdir/usr/bin/$_pkgname"
 
   install -Dm644 patches.zip -t "$pkgdir/usr/share/$_pkgname/resources/"
 
