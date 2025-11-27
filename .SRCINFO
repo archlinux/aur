@@ -1,6 +1,6 @@
 pkgbase = parrot-cli
 	pkgdesc = Intelligent roasts of failed commands
-	pkgver = 1.7.3
+	pkgver = 1.7.4
 	pkgrel = 1
 	url = https://github.com/tenseleyFlow/parrot
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = parrot-cli
 	provides = parrot
 	conflicts = parrot-cli-git
 	install = parrot-cli.install
-	source = git+https://github.com/tenseleyFlow/parrot.git#tag=v1.7.3
+	source = git+https://github.com/tenseleyFlow/parrot.git#tag=v1.7.4
 	sha256sums = SKIP
 
 pkgname = parrot-cli
