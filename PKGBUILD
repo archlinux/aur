@@ -3,7 +3,7 @@
 
 pkgname=materiatrack
 pkgver=1.0.3
-pkgrel=3
+pkgrel=6
 pkgdesc="Mystical Final Fantasy-themed CLI time tracker based on Zeit"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ind4skylivey/matteria-track"
@@ -73,52 +73,29 @@ check() {
 }
 
 package() {
-    if [[ $CARCH == "x86_64" ]]; then
-        tar -xzf "$srcdir/materiatrack-$pkgver-x86_64.tar.gz" -C "$srcdir"
-        cd "$srcdir"
-        install -Dm755 "materiatrack" "$pkgdir/usr/bin/materiatrack"
+    local prebuilt_dir="$srcdir/materiatrack-$pkgver-x86_64-unknown-linux-gnu"
+    if [[ -d "$prebuilt_dir" ]]; then
+        install -Dm755 "$prebuilt_dir/materiatrack" "$pkgdir/usr/bin/materiatrack"
         ln -s materiatrack "$pkgdir/usr/bin/mtrack"
 
-        if [ -f "man/materiatrack.1" ]; then
-            install -Dm644 "man/materiatrack.1" "$pkgdir/usr/share/man/man1/materiatrack.1"
-        fi
-        if [ -f "completions/materiatrack.bash" ]; then
-            install -Dm644 "completions/materiatrack.bash" \
-                "$pkgdir/usr/share/bash-completion/completions/materiatrack"
-        fi
-        if [ -f "completions/_materiatrack" ]; then
-            install -Dm644 "completions/_materiatrack" \
-                "$pkgdir/usr/share/zsh/site-functions/_materiatrack"
-        fi
-        if [ -f "completions/materiatrack.fish" ]; then
-            install -Dm644 "completions/materiatrack.fish" \
-                "$pkgdir/usr/share/fish/vendor_completions.d/materiatrack.fish"
-        fi
-        install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-        install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+        install -Dm644 "$prebuilt_dir/man/materiatrack.1" "$pkgdir/usr/share/man/man1/materiatrack.1"
+        install -Dm644 "$prebuilt_dir/completions/materiatrack.bash" "$pkgdir/usr/share/bash-completion/completions/materiatrack"
+        install -Dm644 "$prebuilt_dir/completions/_materiatrack" "$pkgdir/usr/share/zsh/site-functions/_materiatrack"
+        install -Dm644 "$prebuilt_dir/completions/materiatrack.fish" "$pkgdir/usr/share/fish/vendor_completions.d/materiatrack.fish"
+        install -Dm644 "$prebuilt_dir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+        install -Dm644 "$prebuilt_dir/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
         return 0
     fi
 
-    cd "$srcdir/matteria-track-$pkgver"
+    cd "$srcdir/matteria-track-$pkgver" || exit 1
 
     install -Dm755 "target/release/materiatrack" "$pkgdir/usr/bin/materiatrack"
     ln -s materiatrack "$pkgdir/usr/bin/mtrack"
 
-    if [ -f "man/materiatrack.1" ]; then
-        install -Dm644 "man/materiatrack.1" "$pkgdir/usr/share/man/man1/materiatrack.1"
-    fi
-    if [ -f "completions/materiatrack.bash" ]; then
-        install -Dm644 "completions/materiatrack.bash" \
-            "$pkgdir/usr/share/bash-completion/completions/materiatrack"
-    fi
-    if [ -f "completions/_materiatrack" ]; then
-        install -Dm644 "completions/_materiatrack" \
-            "$pkgdir/usr/share/zsh/site-functions/_materiatrack"
-    fi
-    if [ -f "completions/materiatrack.fish" ]; then
-        install -Dm644 "completions/materiatrack.fish" \
-            "$pkgdir/usr/share/fish/vendor_completions.d/materiatrack.fish"
-    fi
+    install -Dm644 "man/materiatrack.1" "$pkgdir/usr/share/man/man1/materiatrack.1"
+    install -Dm644 "completions/materiatrack.bash" "$pkgdir/usr/share/bash-completion/completions/materiatrack"
+    install -Dm644 "completions/_materiatrack" "$pkgdir/usr/share/zsh/site-functions/_materiatrack"
+    install -Dm644 "completions/materiatrack.fish" "$pkgdir/usr/share/fish/vendor_completions.d/materiatrack.fish"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
