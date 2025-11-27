@@ -1,6 +1,6 @@
 # Maintainer: Stevezxc <stevezhou586 at gmail dot com>
 pkgname=('ttf-lxgw-neo-zhisong-screen' 'ttf-lxgw-neo-zhisong-screen-full')
-pkgver=25.11.22
+pkgver=25.11.27
 pkgrel=1
 pkgdesc="霞鹜新致宋屏幕阅读版。"
 arch=('any')
@@ -9,8 +9,8 @@ license=('IPA')
 source=("${pkgname[0]}-${pkgver}-${pkgrel}.ttf::${url}/releases/download/${pkgver}/LXGWNeoZhiSongScreen.ttf"
         "${pkgname[1]}-${pkgver}-${pkgrel}.ttf::${url}/releases/download/${pkgver}/LXGWNeoZhiSongScreenFull.ttf"
         LICENSE.md)
-sha256sums=('f2b1f1e1b5317620c13967f8cdad5404853c38567f0b01c8710df518e1aafdb1'
-            '37913ff54c0eb42a1482fd5da569c762763b30896cbb79e4d2021d20251f35f8'
+sha256sums=('17c20c8777122925fcdcff6c44f9a0e3184769bdf95cefbe0fa74552a058c38b'
+            'e4981024aa24733d8b5a45148f565ef7b5b0873efb16df5a806ba0af89656722'
             'daf91386d6f9a6a78e4e736c0c00375cae30214ac5c1dab2479f0a05fcb63edd')
 
 package_ttf-lxgw-neo-zhisong-screen() {
