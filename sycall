@@ -56,6 +56,8 @@ def masked_input(prompt="[syscall] password: "):
     print()
     return password
 
+
+
 RUNTIME_DIR = Path(os.environ.get("XDG_RUNTIME_DIR", f"/run/user/{os.getuid()}"))
 CACHE_DIR = RUNTIME_DIR / "syscall"
 CACHE_FILE = CACHE_DIR / "timestamp"
@@ -63,6 +65,7 @@ CONFIG_FILE = CACHE_DIR / "config"
 
 HELPER = "/usr/lib/syscall-helper"
 DEFAULT_MINUTES = 3
+
 
 def load_config():
     if CONFIG_FILE.exists():
@@ -104,38 +107,57 @@ def seconds_left():
     lifetime = load_config() * 60
     return max(0, int(lifetime - (time.time() - ts)))
 
-def pam_authenticate():
+
+
+
+def pam_authenticate_once():
 
     import pam
     pw = masked_input("[syscall] password: ")
     auth = pam.pam()
-
     return auth.authenticate(os.getlogin(), pw, service="syscall")
 
+def pam_authenticate_loop():
+
+    while True:
+        if pam_authenticate_once():
+            return True
+        print("[syscall] Incorrect password. Try again.")
+
+
+
+
 def run_command(cmd):
+
     if cache_valid():
         return subprocess.run([HELPER] + cmd).returncode
 
 
-    if pam_authenticate():
+    if pam_authenticate_loop():
         return subprocess.run([HELPER] + cmd).returncode
 
-    print("Authentication failed.")
+
     return 1
+
 
 def enable_cache(minutes):
     save_config(minutes)
+    print(f"[syscall] Enable passwordless mode for {minutes} minutes")
 
-    if pam_authenticate():
+
+    if pam_authenticate_loop():
         save_timestamp()
-        print(f"Cache enabled for {minutes} minutes.")
+        print(f"[syscall] Passwordless mode enabled for {minutes} minutes.")
     else:
-        print("Authentication failed. Cache not enabled.")
+        print("[syscall] Authentication failed. Cache not enabled.")
+
+
+
 
 def main():
     ensure_wheel_member()
 
-    parser = argparse.ArgumentParser(description="syscall — minimal sudo-like privilege elevation tool for Linux.")
+    parser = argparse.ArgumentParser(description="syscall — minimal sudo-like privilege elevation tool.")
     parser.add_argument("--enable", type=int, help="Enable passwordless mode for N minutes")
     parser.add_argument("--disable", action="store_true", help="Disable passwordless mode")
     parser.add_argument("--status", action="store_true", help="Show current passwordless status")
@@ -150,15 +172,15 @@ def main():
 
         if args.disable:
             clear_cache()
-            print("Passwordless mode disabled.")
+            print("[syscall] Passwordless mode disabled.")
             return
 
         if args.status:
             if cache_valid():
                 left = seconds_left()
-                print(f"Passwordless mode active ({left}s remaining).")
+                print(f"[syscall] Passwordless mode active ({left}s remaining).")
             else:
-                print("Passwordless mode is NOT active.")
+                print("[syscall] Passwordless mode is NOT active.")
             return
 
         if not args.cmd:
@@ -170,6 +192,7 @@ def main():
     except KeyboardInterrupt:
         print("\nCancelled by user.")
         exit(1)
+
 
 if __name__ == "__main__":
     main()

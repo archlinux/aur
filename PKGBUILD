@@ -1,5 +1,5 @@
 pkgname=syscall
-pkgver=1.3
+pkgver=1.4
 pkgrel=3
 pkgdesc="minimal sudo‑like privilege elevation tool for Linux. "
 arch=('x86_64' 'aarch64')

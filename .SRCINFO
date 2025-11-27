@@ -1,6 +1,6 @@
 pkgbase = syscall
 	pkgdesc = minimal sudo‑like privilege elevation tool for Linux.
-	pkgver = 1.3
+	pkgver = 1.4
 	pkgrel = 3
 	url = https://github.com/0xraincandy/syscall
 	arch = x86_64
