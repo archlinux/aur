@@ -13,6 +13,9 @@ install="$pkgname".install
 source=(http://deb.debian.org/debian/pool/main/p/posh/posh_"$pkgver".tar.xz)
 sha256sums=('3584292529b0d8274ccc76adf1acefcca8ad9a1a5d7d7448f099c129401ffa3c')
 
+# Silence warnings caused by old coding style.
+CFLAGS+=' -Wno-old-style-declaration -Wno-old-style-definition'
+
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
