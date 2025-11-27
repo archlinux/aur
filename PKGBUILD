@@ -1,7 +1,7 @@
 # Maintainer: hyprarcher <hyprarcher@proton.me>
 pkgname=wayscriber-bin
 pkgver=0.8.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Screen annotation tool for Wayland compositors (prebuilt binaries)'
 arch=('x86_64')
 url='https://wayscriber.com'
@@ -21,6 +21,7 @@ depends=(
 optdepends=(
     'wayscriber-configurator: GUI configurator (F11)'
 )
+backup=('usr/lib/systemd/user/wayscriber.service')
 provides=('wayscriber')
 conflicts=('wayscriber' 'wayscriber-debug')
 replaces=('wayscriber-debug')
