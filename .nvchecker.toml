@@ -1,0 +1,4 @@
+[vim-molokai]
+source = 'regex'
+url = 'https://www.vim.org/scripts/script.php?script_id=2340'
+regex = '<b>([\d.]+)</b>'
