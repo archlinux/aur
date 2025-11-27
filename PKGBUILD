@@ -1,19 +1,19 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libmicrohttpd-git
-pkgver=0.9.75.r737.g46357a33
+pkgver=1.0.2.r14.gba8f88fc
 pkgrel=1
 pkgdesc="A small C library that make it easy to run an HTTP server as part of another application"
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/libmicrohttpd/"
-license=('LGPL')
+license=('LGPL-2.1-or-later')
 depends=('glibc' 'gnutls')
 makedepends=('git')
 checkdepends=('curl')
-provides=("libmicrohttpd=$pkgver")
+provides=("libmicrohttpd=$pkgver" 'libmicrohttpd.so')
 conflicts=('libmicrohttpd')
 options=('staticlibs')
-source=("git+https://git.gnunet.org/libmicrohttpd.git")
+source=("git://git.gnunet.org/libmicrohttpd.git")
 sha256sums=('SKIP')
 
 
