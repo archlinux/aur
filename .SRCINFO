@@ -1,19 +1,18 @@
 pkgbase = unbted
 	pkgdesc = Una's NBT Editor - an advanced interactive command-line NBT editor
-	pkgver = 1.2.1
-	pkgrel = 2
-	url = https://github.com/unascribed/unbted
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://git.sleeping.town/unascribed/unbted
 	arch = any
 	license = GPL-3.0-only
 	license = Apache-2.0
 	license = MIT
-	makedepends = gradle<9
-	makedepends = java-environment<=17
-	source = unbted-1.2.1.tar.gz::https://github.com/unascribed/unbted/archive/refs/tags/v1.2.1.tar.gz
-	source = unbted
-	sha256sums = e821b897ddd49cfe0e2a50998a9e8156b448f34ed6948f185f9cc86fd3c57d38
+	makedepends = java-environment=8
+	source = unbted-1.2.2.tar.gz::https://git.sleeping.town/unascribed/unbted/archive/v1.2.2.tar.gz
+	source = unbted.sh
+	sha256sums = bcc84c62fa3723857c199915c375d72b51d82fa0efdc34f0518bb32df148e5f0
 	sha256sums = a3437bc297bd9a3754c4c975563b9a0676cbc06c2a3ff5f21766b74fcb8c9d46
 
 pkgname = unbted
-	depends = java-runtime>=17
+	depends = java-runtime>=8
 	depends = sh
