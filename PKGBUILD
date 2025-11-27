@@ -4,7 +4,7 @@ _pkgname="hellfire"
 pkgname="$_pkgname-browser-bin"
 
 _pkgver=147.0a1
-_pkgverx=""
+_pkgverx="_FP1"
 pkgver=${_pkgver}${_pkgverx}
 
 pkgrel=1
@@ -54,15 +54,12 @@ optdepends=(
   'speech-dispatcher: Text-to-Speech'
   'xdg-desktop-portal: Screensharing with Wayland'
 )
-makedepends=(
-  7zip
-)
 
 source=("${_pkgname}.desktop" 'default128.png' 'LICENSE.md')
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 source_x86_64=("https://github.com/CYFARE/HellFire/releases/download/v${pkgver}/hellfire-${_pkgver}.en-US.linux-x86_64.7z")
-sha256sums_x86_64=('30f37ca279f9034d26888bbe6510341c9823fc86c69cfe11a3c08313728a0f66')
+sha256sums_x86_64=('821ead210840f3aa9d4e36133333b17d47446cc5592a054ee37f4be8d3ad2206')
 
 package() {
   mkdir -p ${pkgdir}/opt/${_pkgname}
@@ -70,9 +67,7 @@ package() {
 
   cd ${srcdir} || exit
 
-  7za x hellfire-${_pkgver}.en-US.linux-x86_64.7z -o${_pkgname}
-
-  cp -r ${_pkgname}/firefox/* ${pkgdir}/opt/${_pkgname}/
+  cp -r firefox/* ${pkgdir}/opt/${_pkgname}/
 
   ln -srf ${pkgdir}/opt/${_pkgname}/firefox ${pkgdir}/usr/bin/${_pkgname}
 
