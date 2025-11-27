@@ -8,6 +8,7 @@ pkgbase = llama-swap-bin
 	license = MIT
 	provides = llama-swap
 	conflicts = llama-swap
+	backup = etc/llama-swap/config.yaml
 	source = CONFIG-174.yaml::https://raw.githubusercontent.com/mostlygeek/llama-swap/v174/config.example.yaml
 	source = llama-swap.service
 	sha256sums = ff6c21ecdc18b426386573544f0178f98525ac711af91a243fbfbf0fbce64a04

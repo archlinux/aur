@@ -16,6 +16,8 @@ license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
+backup=("etc/llama-swap/config.yaml")
+
 source=("CONFIG-${pkgver}.yaml::${_urlraw}/config.example.yaml"
         "llama-swap.service")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[0]}.tar.gz")
