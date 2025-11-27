@@ -1,17 +1,17 @@
 # Maintainer: George Sofianos <george at sofianos dot dev>
 
 # Release notes https://rocm.docs.amd.com/en/latest/about/release-notes.html
-_amdgpu_repo='https://repo.radeon.com/amdgpu/7.1/ubuntu'
-_rocm_repo='https://repo.radeon.com/rocm/apt/7.1'
-_opencl_lib='opt/rocm-7.1.0/opencl/lib'
-_rocm_lib='opt/rocm-7.1.0/lib'
-_hip_lib='opt/rocm-7.1.0/hip/lib/'
+_amdgpu_repo='https://repo.radeon.com/amdgpu/7.1.1/ubuntu'
+_rocm_repo='https://repo.radeon.com/rocm/apt/7.1.1'
+_opencl_lib='opt/rocm-7.1.1/opencl/lib'
+_rocm_lib='opt/rocm-7.1.1/lib'
+_hip_lib='opt/rocm-7.1.1/hip/lib/'
 _amdgpu="opt/amdgpu/lib/x86_64-linux-gnu"
 _amdgpu_pro="opt/amdgpu-pro/lib/x86_64-linux-gnu/"
 
 pkgname=opencl-amd
 pkgdesc="ROCm components repackaged from AMD's Ubuntu releases (ROCr runtime, OpenCL runtime, HIP runtime) - This package is intended to work along with the free amdgpu stack."
-pkgver=7.1.0
+pkgver=7.1.1
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -27,48 +27,48 @@ optdepends=('clinfo' 'opencl-amd-dev')
 
 source=(
 # ROCm runtime essentials
-"https://repo.radeon.com/rocm/apt/7.1/pool/main/a/amd-smi-lib/amd-smi-lib_26.1.0.70100-20~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/7.1/pool/main/c/comgr/comgr_3.0.0.70100-20~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/7.1/pool/main/h/hsa-amd-aqlprofile/hsa-amd-aqlprofile_1.0.0.70100-20~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/7.1/pool/main/h/hsa-rocr/hsa-rocr_1.18.0.70100-20~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/7.1/pool/main/h/hsa-rocr-dev/hsa-rocr-dev_1.18.0.70100-20~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/7.1/pool/main/h/hip-runtime-amd/hip-runtime-amd_7.1.25424.70100-20~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/7.1/pool/main/r/rocm-core/rocm-core_7.1.0.70100-20~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/7.1/pool/main/r/rocminfo/rocminfo_1.0.0.70100-20~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/7.1/pool/main/r/rocm-opencl/rocm-opencl_2.0.0.70100-20~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/7.1/pool/main/r/rocm-opencl-dev/rocm-opencl-dev_2.0.0.70100-20~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/7.1/pool/main/r/rocm-smi-lib/rocm-smi-lib_7.8.0.70100-20~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/7.1/pool/main/r/rocm-device-libs/rocm-device-libs_1.0.0.70100-20~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/7.1.1/pool/main/a/amd-smi-lib/amd-smi-lib_26.2.0.70101-38~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/7.1.1/pool/main/c/comgr/comgr_3.0.0.70101-38~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/7.1.1/pool/main/h/hsa-amd-aqlprofile/hsa-amd-aqlprofile_1.0.0.70101-38~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/7.1.1/pool/main/h/hsa-rocr/hsa-rocr_1.18.0.70101-38~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/7.1.1/pool/main/h/hsa-rocr-dev/hsa-rocr-dev_1.18.0.70101-38~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/7.1.1/pool/main/h/hip-runtime-amd/hip-runtime-amd_7.1.52802.70101-38~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/7.1.1/pool/main/r/rocm-core/rocm-core_7.1.1.70101-38~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/7.1.1/pool/main/r/rocminfo/rocminfo_1.0.0.70101-38~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/7.1.1/pool/main/r/rocm-opencl/rocm-opencl_2.0.0.70101-38~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/7.1.1/pool/main/r/rocm-opencl-dev/rocm-opencl-dev_2.0.0.70101-38~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/7.1.1/pool/main/r/rocm-smi-lib/rocm-smi-lib_7.8.0.70101-38~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/7.1.1/pool/main/r/rocm-device-libs/rocm-device-libs_1.0.0.70101-38~24.04_amd64.deb"
 # ROCm runtime other
-"https://repo.radeon.com/rocm/apt/7.1/pool/main/r/rocprofiler/rocprofiler_2.0.70100.70100-20~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/7.1/pool/main/r/rocprofiler-dev/rocprofiler-dev_2.0.70100.70100-20~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/7.1/pool/main/r/rocprofiler-plugins/rocprofiler-plugins_2.0.70100.70100-20~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/7.1/pool/main/r/rocprofiler-register/rocprofiler-register_0.6.0.70100-20~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/7.1/pool/main/r/rocm-dbgapi/rocm-dbgapi_0.77.4.70100-20~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/7.1/pool/main/r/rocm-debug-agent/rocm-debug-agent_2.1.0.70100-20~24.04_amd64.deb"
-"https://repo.radeon.com/rocm/apt/7.1/pool/main/r/rocm-gdb/rocm-gdb_16.3.70100-20~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/7.1.1/pool/main/r/rocprofiler/rocprofiler_2.0.70101.70101-38~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/7.1.1/pool/main/r/rocprofiler-dev/rocprofiler-dev_2.0.70101.70101-38~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/7.1.1/pool/main/r/rocprofiler-plugins/rocprofiler-plugins_2.0.70101.70101-38~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/7.1.1/pool/main/r/rocprofiler-register/rocprofiler-register_0.6.0.70101-38~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/7.1.1/pool/main/r/rocm-dbgapi/rocm-dbgapi_0.77.4.70101-38~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/7.1.1/pool/main/r/rocm-debug-agent/rocm-debug-agent_2.1.0.70101-38~24.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/7.1.1/pool/main/r/rocm-gdb/rocm-gdb_16.3.70101-38~24.04_amd64.deb"
 )
 
 sha256sums=(
-"64dd00d15c81b77b69c5be5083b441d5e2b451bb5c592685875e57cc0fc47732"
-"c52aa27638f3a40edb9db3136912c574670848befd20d671a5c017832d6a1378"
-"c2d9ec8b786995c3464b89aadc19c2b8ac3594d811514309b4baef03f0631e56"
-"635de96e14e6b70d4a2dbed9427b86e5c36c88a20bcc873d3f7d620ca711e18c"
-"dcd460b579c9d073e9d4ab85a5a07a78913f90a5c7df2f3ce77e0d7eb2de065e"
-"c5bab8b4b588656acdacf96ec9970cb54e859b50da79a5a9b1cbac942dd38223"
-"afbb518300fa51b21795c1d27828af13369699046b5b3034455d4c581c314fc4"
-"3152a17a552c6cc7f2f50c0dfeea1464e2856c8f000ccc289c1d4f8bd349bd78"
-"d5c465305933aa9c68ebbb1fcac19b708756cd345880468fe13dc8b915510f9b"
-"3c793b617a5c6f59117954017d18998cb93135711ff45f18e2fc445dd9f5649e"
-"4c98b6833eafa2b39afce2eae5c10d092aabda0e2e45eb983857a278dc812181"
-"f935d843dcf54db67072056e9fdfbd702464cfa6a36a0fccb4b5eaed3d70c4d2"
-"c20201d45438dbd7239d6bf0f03e8d4452c8a38ef048851db3ed01afa309db65"
-"33c022b1e3c1e5f14b73c8358638e084d6bd1004fc11540a2a364e4d8ace650d"
-"505574fcf595de3a9a9f2efc7037b60e334e5a19cddef2b24f2abbb2d1c84779"
-"df3f016d466c28934aaace47c3194af30b40019d0c03e26acadbd095ffde6f94"
-"02cedc8cfa1383bb3be4a5962635d041a12ecc8a37ac03e61f26bf2bab81ea36"
-"8ef3f62aea31210aea848c64a800ca4e126c3f4116bad09a1d902541d46aca45"
-"f8972a11c4171ca5598d677caec496692c89243029705601a392a47b7b81c355"
+"58580c1e9a32090273bfa7b74974649ada0a0a6118f6e1b159f4a35664ac0cda"
+"0bf2d4ba3c0ff7a1a1818916f05ee164acb1151ea8685ae11e2c2aae7710eaf7"
+"357ff34fbce9c006596cc5c29816a7bd7bd18146d49327ef82bfe659469383b7"
+"0c2cc838d3cef73fa405a02e72c2bad1f24ef041a7d46bafa19d7dc0620230d8"
+"e5a23a8ad94614a5178943b4e26c49a2bf5c70cd9a66d653f6ec17910157948f"
+"b5d86645329574b89d57a8cc836153ec4bf3488a7b12df25e70117404c1da451"
+"4098bbfea0e37c23d593d626a6472d6b9d5484bf6c87bc47b4f33d7939cc3161"
+"3c5d9f908c0c3b03cec68b71feb40c27bf06161b06e9d0cbbca10836a806322e"
+"44abc9a826dbef1d2ab2915e5e642b3cf8872ab7cba806b6181631e75f97b11b"
+"fca577ebbaefd6f59664e7e4fafb2b7bb00a75738b5d2fbbf08b3eae99d12216"
+"090855a6f74931d9eb8f31e1040cf07d1482bc153ee2621ecdf6d0a57f7307a8"
+"d5e97c155473486e8ba7b2ba6b49c666301cd7accfe30f8afba6bf3aa8fb0083"
+"ac4aca006af2f88dcc775381146aff2c69924e8d1e3da2884585a07df5232fdc"
+"e9a5bf895137fa52b72fcf29caaa0792b5681a9b7c47abd9cd06c557400bc216"
+"43abba44e7b3ee0c306229c8f43142d0edf8932f2ae738b8c320ebd493cb5b5b"
+"dd1078b96457d92c0e81eccfe4ed61e341f3334ba39b3f468cfb1337fd52ab3f"
+"de91f519472c058b617d4fe53ef512e2c9fc89927114003803c01386ba707112"
+"c2c324b41082132751115c9b58c5674230daf9117013a9842e432e8961c18206"
+"b5730fb34f854cc785fdaf671e32bb2709f31f6eed8497352c106ab27f8ed370"
 )
 
 package() {
@@ -86,7 +86,7 @@ package() {
 	done
 
 	mv "${srcdir}/opt/" "${pkgdir}/"
-	mv "${pkgdir}/opt/rocm-7.1.0" "${pkgdir}/opt/rocm"	
+	mv "${pkgdir}/opt/rocm-7.1.1" "${pkgdir}/opt/rocm"	
 
 	mkdir -p "${pkgdir}/opt/amdgpu/share/libdrm"
 	cd "${pkgdir}/opt/amdgpu/share/libdrm"
