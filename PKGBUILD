@@ -22,7 +22,7 @@ optdepends=(
     'wayscriber: integrate with the running daemon and CLI'
 )
 source=("git+https://github.com/devmobasa/wayscriber.git#tag=v0.8.6")
-sha256sums=('a815b981fa615dfeca9b59a2ef2408d8f44358f1a19bf2ae8bfb0afaff03f2b9')
+sha256sums=('SKIP')
 
 prepare() {
     cd wayscriber
