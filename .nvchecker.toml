@@ -1,0 +1,4 @@
+[microcad]
+source = "git"
+git = "https://codeberg.org/microcad/microcad.git"
+prefix = "v"
