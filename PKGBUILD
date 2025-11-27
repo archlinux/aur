@@ -1,7 +1,7 @@
 # Maintainer: Andreas Hemmerle <andreas.hemmerle@gmail.com>
 pkgname=adbfileexplorer-git
 pkgver=git
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple File Explorer for adb devices'
 arch=(any)
 license=('GPL-3.0-only')
@@ -9,10 +9,8 @@ url='https://github.com/Aldeshov/ADBFileExplorer'
 depends=(
   'android-tools'
   'python>=3.8'
-  'python-adb-shell'
   'python-cffi'
   'python-cryptography'
-  'python-libusb1'
   'python-pyasn1'
   'python-pycparser'
   'python-pyqt5'
@@ -22,14 +20,18 @@ depends=(
   'python-setuptools'
 )
 makedepends=('gendesk' 'git')
-#source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Aldeshov/ADBFileExplorer/archive/refs/tags/v${pkgver}.tar.gz")
-#sha512sums=('2d423ec6ceced3220d5252e3b8973247a71b02ce642d01bde61e1bbeb0678585ed34d0fe3e8cf9c1f9865829ae61873a549d9fe3a5172711ccb5cfa1870967f4')
+# optdepends=(
+#   'python-adb-shell: Python implementation of ADB'
+#   'python-libusb1: Only needed if you choose the Python implementation of ADB'
+# )
+# source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Aldeshov/ADBFileExplorer/archive/refs/tags/v${pkgver}.tar.gz")
+# sha512sums=('2d423ec6ceced3220d5252e3b8973247a71b02ce642d01bde61e1bbeb0678585ed34d0fe3e8cf9c1f9865829ae61873a549d9fe3a5172711ccb5cfa1870967f4')
 source=(
   "${pkgname}::git+https://github.com/Aldeshov/ADBFileExplorer.git"
   'startup.patch'
 )
 sha256sums=('SKIP'
-            '244a7be80ff1ce0006d8691dace430e91ece600c567474d22586a86a773cff76')
+            '234e8e8689347675781fb232161f28c60762860c184f91c60fd3e556efa5c5cc')
 _realname='ADBFileExplorer'
 
 

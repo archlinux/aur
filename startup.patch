@@ -17,7 +17,7 @@
  export PYTHONPATH=$path:$PYTHONPATH
 +
 +# WorkAround for dark designs
-+export XDG_CURRENT_DESKTOP=GNOME
-+export GTK_THEME=Default
++# export XDG_CURRENT_DESKTOP=GNOME
++# export GTK_THEME=Default
 +
  python ./src/app
