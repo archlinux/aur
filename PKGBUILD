@@ -1,7 +1,7 @@
 # Maintainer: Pando85 <pando855@gmail.com>
 _pkgname=passless
 pkgname="${_pkgname}-bin"
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="FIDO2 security token emulator"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=("https://github.com/pando85/passless/releases/download/v${pkgver}/passle
         "passless-${pkgver}.tar.gz::https://github.com/pando85/passless/archive/refs/tags/v${pkgver}.tar.gz"
         "https://github.com/pando85/passless/releases/download/v${pkgver}/passless-completions-${pkgver}.tar.gz"
         "passless.install")
-sha256sums=('c7d0f216bd4f4e92eda91fab3df91922af29efa2948c5809744f24f35b819efa'
+sha256sums=('1d7fc3a5d4885a4feec8ae8d43ce313d09ed6ef927ae40a2387cca0af7af6d15'
             'SKIP'
             'SKIP'
             'SKIP')
