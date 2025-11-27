@@ -1,7 +1,7 @@
 # Maintainer: Emiliano Bovetti <emiliano.bovetti at gmail dot com>
 
 pkgname=topiary-bin
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='Topiary is a tool in the Tree-sitter ecosystem, designed for formatter authors and formatter users'
 url='https://github.com/tweag/topiary'
@@ -11,8 +11,8 @@ provides=(topiary)
 conflicts=(topiary)
 source_x86_64=("https://github.com/tweag/topiary/releases/download/v${pkgver}/topiary-cli-x86_64-unknown-linux-gnu.tar.xz")
 source_aarch64=("https://github.com/tweag/topiary/releases/download/v${pkgver}/topiary-cli-aarch64-unknown-linux-gnu.tar.xz")
-sha512sums_x86_64=('7926e8caccfd497aee2a430f76c558c6e7a18594c8c56ecca2661701ae3a3c924bbd8b468fa00d8c7b307efb3f279e765ae6d320ac5103c4c59016cc15fbe3de')
-sha512sums_aarch64=('e4001e3e5c09b0ffe174cb30a3d7e198050a23ee46c6ad723f909b35fda2dd774b4eed109a9ef6a7f29c1b87a1199668df79b076ee53824ba9d55e8e9ce01364')
+sha512sums_x86_64=('beb8c23d7c0103ec90e644ac56dc7441e3d57b1c3e3a150f95151b00ecdb3aac9e7ae7cf7e31943f8a286e557e9b73c7e3f99828b6def11b981610b5526394d9')
+sha512sums_aarch64=('204b1aa0257dfb426b07bc3c11a79f29b96419ddca8a4d7b050dd2207716775cdfadd8d335d16d86e47b666c86968d5aafedfbe15b9bfc3caa18e445882d4fc1')
 
 package() {
   install -Dm 755 \
