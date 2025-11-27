@@ -2,7 +2,7 @@
 
 pkgbase=python-luwen
 pkgname=(python-luwen luwencpp)
-pkgver=0.7.16.r0.gfbad73b
+pkgver=0.7.16
 pkgrel=2
 pkgdesc="Python package for the tenstorrent system interface library"
 arch=('x86_64')
@@ -13,11 +13,6 @@ depends=()
 provides=("python-luwen")
 source=("luwen::git+https://github.com/tenstorrent/luwen.git")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd luwen
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//'
-}
 
 build() {
     cd luwen
