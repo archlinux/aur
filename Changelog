@@ -1,9 +1,14 @@
 -------------------------------------------------------
  Changelog    : wg_tool
- Tags         : 8.0.rc2 ➙ 9.0.1
-              : 2025-09-16 ➙ 2025-10-30
+ Tags         : 8.1.0 ➙ 9.1.0
+              : 2025-09-17 ➙ 2025-11-27
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2025-11-27   : 9.1.0
+              - Bug fix for issue #19: key roll fails, as reported by @hubbleshare
+ 2025-10-30   ⋯
+              - update Docs Changelogs
 
  2025-10-30   : 9.0.1
               - * Add support for *IP Groups*.
@@ -37,57 +42,3 @@
                 Fix typo in gateway report which made handshake be dropped.
               - update Docs/wg_tool.pdf Docs/Changelogs
               - update Docs/wg_tool.pdf Docs/Changelogs
-
- 2025-09-17   : 8.0.0
-              - Release 8.0.0
-                New vpn info variable: dns_lookup_ipv6
-                  When true, hostnames listed in "dns" lists are now queried for
-                  IPv6 as well as IPv4 address(es). These are used in the wireguard configs.
-                  Defaults to false.
- 2025-09-16   ⋯
-              - fix couple typos
-              - Add html link in Docs pointing to pre-build html docs.
-                Remove old license file
-              - update Docs/wg_tool.pdf Docs/Changelogs
-
- 2025-09-16   : 8.0.rc2
-              - **Major Version 8.0.0**
-            
-                * Re-write pretty much from scratch. New design and fresh start.
-                * Modern coding standards: PEP-8, PEP-257 and PEP-484 style and type annotations
-                * Can now manage multiple VPNs
-                * Each VPN has a number of *accounts* and each account may have multiple profiles.
-                  Some profiles may be gateways (can be connected to) while others are clients
-                  (connect to one or more gateways).
-                * Support more use cases than earlier versions.
-                * Provide walk through working examples of 3 common use cases
-                * The enhancements require significant data format changes.
-            
-                  To make the upgrade as simple and easy as possble,
-                  existing data from earlier versions can be auto migrated to
-                  the new format with the *-migrate* option.
-            
-                * Network manipulations are now built on the *py-cidr* module.
-            
-                * New way to modify profiles.
-            
-                  The *--edit* option creates a text file. The file
-                  uses standard TOML (key = value) format. Simply edit the file and then
-                  use the *--merge* option to incorporate those changes.
-            
-                  This is simple and clean and makes it easy to modify whatever may be needed
-                  in one quick edit and merge.
-            
-                  There are still many command line options which can be particularly helpful
-                  making bulk changes.
-            
-                * Improved command line help.
-            
-                  Command line option help is now organized by category:
-            
-                    migrate, edit/merge, reporting, general and stored options.
-            
-                * Document most features including migration, importing, and
-                  making modifications.
- 2025-08-19   ⋯
-              - update Docs/Changelogs Docs/wg_tool.pdf
