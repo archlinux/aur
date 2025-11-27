@@ -3,7 +3,7 @@
 
 pkgname=prek
 pkgver=0.2.18
-pkgrel=1
+pkgrel=2
 pkgdesc="⚡ Better 'pre-commit', re-engineered in Rust"
 arch=('x86_64')
 url='https://github.com/j178/prek'
@@ -51,6 +51,14 @@ package() {
 
   # binary
   install -vDm755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
+
+  # shell completion
+  install -Dm644 <(COMPLETE=bash "$pkgdir/usr/bin/$pkgname") \
+    "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+  install -Dm644 <(COMPLETE=zsh "$pkgdir/usr/bin/$pkgname") \
+    "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+  install -Dm644 <(COMPLETE=fish "$pkgdir/usr/bin/$pkgname") \
+    "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
 
   # documentation
   install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md

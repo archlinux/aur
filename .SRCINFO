@@ -1,7 +1,7 @@
 pkgbase = prek
 	pkgdesc = ⚡ Better 'pre-commit', re-engineered in Rust
 	pkgver = 0.2.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/j178/prek
 	arch = x86_64
 	license = MIT
