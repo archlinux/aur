@@ -1,7 +1,7 @@
 pkgbase = wayscriber
-	pkgdesc = Screen annotation tool for Wayland compositors (formerly hyprmarker)
+	pkgdesc = Screen annotation tool for Wayland compositors
 	pkgver = 0.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wayscriber.com
 	install = wayscriber.install
 	arch = x86_64
@@ -19,12 +19,7 @@ pkgbase = wayscriber
 	depends = grim
 	depends = slurp
 	optdepends = wayscriber-configurator: GUI configurator (F11)
-	provides = hyprmarker
-	conflicts = hyprmarker<0.8.5
-	conflicts = hyprmarker-debug<0.8.5
 	conflicts = wayscriber-debug<0.8.5
-	replaces = hyprmarker
-	replaces = hyprmarker-debug
 	replaces = wayscriber-debug
 	source = git+https://github.com/devmobasa/wayscriber.git#tag=v0.8.5
 	sha256sums = SKIP
