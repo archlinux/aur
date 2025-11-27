@@ -1,0 +1,19 @@
+pkgbase = portaldrop-bin
+	pkgdesc = AirDrop universal para Linux (Sin instalar nada en el móvil)
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/danitxu79/PortalDrop
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	depends = fuse2
+	provides = portaldrop
+	conflicts = portaldrop
+	options = !strip
+	source = portaldrop::https://github.com/danitxu79/PortalDrop/releases/download/v1.3/portaldrop
+	source = portaldrop.png::https://raw.githubusercontent.com/danitxu79/PortalDrop/main/portaldrop-512.png
+	sha256sums = b24a32484ed751974f073f968b45db6e7172d37a93f78d6353af5f86e6d3e62c
+	sha256sums = 5a3caf47e0012f35afdb9cdbafe3c19d37f5383b60b62f705994279ed626e2a8
+
+pkgname = portaldrop-bin
