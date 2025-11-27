@@ -1,6 +1,6 @@
 pkgbase = nwjs-bin
 	pkgdesc = Runtime based on Chromium and node.js
-	pkgver = 0.105.0
+	pkgver = 0.106.0
 	pkgrel = 1
 	url = https://nwjs.io
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = nwjs-bin
 	optdepends = nw-gyp: native add-on build tool for node-webkit
 	optdepends = nwjs-ffmpeg-codecs: playback of proprietary video/audio
 	options = !debug
-	source = nwjs-sdk-0.105.0.tar.gz::https://dl.nwjs.io/v0.105.0/nwjs-sdk-v0.105.0-linux-x64.tar.gz
+	source = nwjs-sdk-0.106.0.tar.gz::https://dl.nwjs.io/v0.106.0/nwjs-sdk-v0.106.0-linux-x64.tar.gz
 	source = nwjs.png::https://raw.githubusercontent.com/nwjs/website/refs/heads/master/public/img/logo.png
 	source = nwjs.desktop
-	sha256sums = 42ab4ed29c60b15cdcc5380416cb2573699846447dde93e21af887e334701399
+	sha256sums = 17512bfcce4777a306185fb6929fd5829ce1a474c28fb941d29b2329bf039b85
 	sha256sums = 0f1643f16302b2e7de66fdf91ae370a65c3811052e0c43a2908d49f60ee5a5e4
 	sha256sums = 161b2c1a8c429ef0773bd4a7e9a5befd52bf30575c17c7180e9701e77b48950b
 
