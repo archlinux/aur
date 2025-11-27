@@ -2,11 +2,11 @@
 
 _plug=soifunc
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=0.12.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
-url='https://github.com/shssoichiro/soifunc'
+url='https://codeberg.org/Soichiro/soifunc'
 license=('MIT')
 depends=('vapoursynth'
   'vapoursynth-plugin-znedi3'
@@ -20,8 +20,8 @@ optdepends=('vapoursynth-plugin-bm3dcuda: BM3D support, GPU version'
   'vapoursynth-plugin-mlrt-ext-models-rife: frame interpolation functions'
 )
 makedepends=('python-installer')
-source=("https://files.pythonhosted.org/packages/fb/c6/06022ef57b9f46c566e2188898f43f2f08288e37cfb252f342e899a4348b/soifunc-0.12.0-py3-none-any.whl")
-sha256sums=('97ae447011d7f8afc67f7e34bb50244178c95d68da234523770bfe96e1ea239e')
+source=("https://files.pythonhosted.org/packages/69/8e/90673591a14dbbda790e19d7cf55c175b0f125aa61ddc6fa0baf1352c4a4/soifunc-0.14.0-py3-none-any.whl")
+sha256sums=('8528c419373c53a77d1f31bc0c2c2a21534412c81d87581cf3ee10b96eb93c17')
 
 package() {
   python -m installer --destdir="$pkgdir" "${_plug}-${pkgver}-py3-none-any.whl"
