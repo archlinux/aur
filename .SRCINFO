@@ -1,16 +1,15 @@
 pkgbase = python-class-registry
 	pkgdesc = The intersection of the Registry and Factory patterns
-	pkgver = 4.0.6
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = https://github.com/todofixthis/class-registry
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
-	makedepends = python-wheel
+	makedepends = python-poetry-core
 	depends = python
-	source = https://github.com/todofixthis/class-registry/archive/4.0.6.tar.gz
-	sha512sums = da6d328359aae7488b1a34b4248e480c2f5e9c52e1f82bfeeba2be6d43a6014231fec0c32430e9f73c6761206197bb7e3db0b6bad9c847a5643d1609c3534293
+	source = https://github.com/todofixthis/class-registry/archive/5.1.1.tar.gz
+	sha512sums = 1e4983d19bbcbfd75bab08d754dad362cc3fb9eb24507c0db5db7c664f89c26f1115b5255bc1687846b27677735a60b2385b2b212e0bf529dbd06bfbd6bc611f
 
 pkgname = python-class-registry
