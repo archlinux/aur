@@ -1,0 +1,5 @@
+# makepkg build artifacts
+pkg/
+src/
+venice-cli-bin-*
+venice-linux-amd64
