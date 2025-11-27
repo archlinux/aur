@@ -1,14 +1,13 @@
 pkgbase = ttf-symbols-adf
 	pkgdesc = Two fonts of symbols, named 'Arrows ADF' and 'Bullets ADF'
 	pkgver = 1.001
-	pkgrel = 1
+	pkgrel = 2
 	url = http://arkandis.tuxfamily.org/adffonts.html
 	arch = any
 	groups = ttf-adf-fonts
-	license = custom:GPL with font exception
+	license = GPL-2.0-or-later WITH Font-exception-2.0
 	conflicts = ttf-adf
 	source = http://arkandis.tuxfamily.org/fonts/SymbolADF.zip
 	sha256sums = 4d8b7e7af9e3fa8149398f515d564200161fa3ca33423dee3b1e6b90d030e780
 
 pkgname = ttf-symbols-adf
-
