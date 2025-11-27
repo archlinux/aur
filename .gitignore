@@ -2,3 +2,6 @@ pkg/
 src/
 python-mlflow-*.tar.zst
 python-mlflow-*.tar.gz
+*.whl
+.claude/
+*.tar.gz*
