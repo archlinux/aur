@@ -2,12 +2,12 @@
 
 _omit_dlls=false
 _dotnet_ver=9.0
-_runtime_ver=7
-_sdk_ver=108
+_runtime_ver=9
+_sdk_ver=110
 
 pkgname='openshock-desktop-bin'
 pkgdesc='An OpenShock application with module support (pre-built version)'
-pkgver='1.0.0'
+pkgver='1.1.1'
 pkgrel='1'
 arch=('x86_64')
 url='https://github.com/OpenShock/Desktop'
