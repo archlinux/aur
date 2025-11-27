@@ -1,0 +1,13 @@
+pkgbase = home-assistant-lsp
+	pkgdesc = Home Assistant LSP from vscode-home-assistant
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/keesschollaart81/vscode-home-assistant
+	arch = any
+	license = MIT
+	depends = nodejs
+	source = vscode-home-assistant-2.2.0.zip::https://open-vsx.org/api/keesschollaart/vscode-home-assistant/2.2.0/file/keesschollaart.vscode-home-assistant-2.2.0.vsix
+	sha256sums = 2c973745101e547107b0c9542abdedd6e7a20cbc5858bccfde471d1a7d3ce152
+	b2sums = fc491939c0296ce405ded62fbef16004101549d2890f24ab480203616cd239807c360b17e59f2c298ce25d68b121389cdbdaaf7b797ad44a87cb7026ceb6a92d
+
+pkgname = home-assistant-lsp
