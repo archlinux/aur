@@ -2,7 +2,7 @@
 pkgname=defguard-client
 pkgsrc=defguard-client
 pkgver=1.5.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Defguard VPN Multi-Factor Authentication Desktop Client"
 arch=('x86_64')
 url="https://github.com/DefGuard/client"
