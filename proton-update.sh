@@ -13,8 +13,6 @@ set -e
 LINE="IgnorePkg = proton-cachyos"
 FILE="/etc/pacman.conf"
 
-BASE_URL="https://packages.cachyos.org/package/cachyos/x86_64/proton-cachyos"
-
 URL_SUFFIX=$(curl -s https://packages.cachyos.org/package/cachyos/x86_64/proton-cachyos | grep -oP 'proton-cachyos-[^"]+\.pkg\.tar\.zst' | sort -V | head -n1)
 
 URL="https://cdn77.cachyos.org/repo/x86_64/cachyos/$URL_SUFFIX"
