@@ -2,7 +2,7 @@ pkgbase = sentinelx
 	pkgdesc = Tu Guardián de Red para Linux. Simple. Potente. Inteligente. (Compila desde fuente)
 	pkgver = 1.4.2
 	pkgrel = 1
-	url = https://github.com/danitxu79/SentinelX
+	url = https://github.com/AnabasaSoft/SentinelX
 	arch = x86_64
 	license = LGPL3
 	makedepends = git
@@ -16,7 +16,7 @@ pkgbase = sentinelx
 	provides = sentinelx
 	conflicts = sentinelx
 	conflicts = sentinelx-bin
-	source = git+https://github.com/danitxu79/SentinelX.git#tag=v1.4.2
+	source = git+https://github.com/AnabasaSoft/SentinelX.git#tag=v1.4.2
 	sha256sums = a0b3a8b8585c8cf428f679df83a79a89571a1219d0e34fd8c30bca181bf8eb48
 
 pkgname = sentinelx

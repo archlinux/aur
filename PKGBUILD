@@ -1,10 +1,10 @@
-# Maintainer: Daniel Serrano Armenta <dani.eus79@gmail.com>
+# Maintainer: Daniel Serrano Armenta <anabasasoft@gmail.com>
 pkgname=sentinelx
 pkgver=1.4.2
 pkgrel=1
 pkgdesc="Tu Guardián de Red para Linux. Simple. Potente. Inteligente. (Compila desde fuente)"
 arch=('x86_64')
-url="https://github.com/danitxu79/SentinelX"
+url="https://github.com/AnabasaSoft/SentinelX"
 license=('LGPL3')
 provides=('sentinelx')
 conflicts=('sentinelx' 'sentinelx-bin')
@@ -16,7 +16,7 @@ depends=('python' 'polkit' 'clamav' 'hicolor-icon-theme')
 makedepends=('git' 'python-pip' 'python-setuptools' 'base-devel')
 
 # Descargamos el código fuente exacto de la versión
-source=("git+https://github.com/danitxu79/SentinelX.git#tag=v${pkgver}")
+source=("git+https://github.com/AnabasaSoft/SentinelX.git#tag=v${pkgver}")
 sha256sums=('a0b3a8b8585c8cf428f679df83a79a89571a1219d0e34fd8c30bca181bf8eb48')
 
 build() {
