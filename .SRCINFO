@@ -1,6 +1,6 @@
 pkgbase = tosu-git
 	pkgdesc = Memory reader and PP counters provider for osu! and osu! Lazer
-	pkgver = r1405.089f883
+	pkgver = r1408.b326e47
 	pkgrel = 1
 	url = https://github.com/tosuapp/tosu
 	install = notice.install

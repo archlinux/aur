@@ -3,7 +3,7 @@
 # Contributor: Mikhail Babynichev <i@kotrik.ru>
 
 pkgname=tosu-git
-pkgver=r1405.089f883
+pkgver=r1408.b326e47
 pkgrel=1
 pkgdesc="Memory reader and PP counters provider for osu! and osu! Lazer"
 arch=('x86_64')
