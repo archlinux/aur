@@ -1,6 +1,6 @@
 # Maintainer: Ly-sec <itslysec@gmail.com>
 pkgname=noctalia
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A simple CLI for installing and updating noctalia-shell"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT' 'Apache')
 depends=('glibc' 'gcc-libs' 'openssl')
 makedepends=('cargo' 'git' 'clang')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/noctalia-dev/noctalia-cli/archive/v$pkgver.tar.gz")
-sha256sums=('869bc7290b3fd243f077b1f226e2ca343842feeb0c7a9cbdf864185e8a6b3181')
+sha256sums=('0eec6e6949c0d2434a029a432806f07a41c678ea73418f5e205ee14b09fef9b5')
 
 prepare() {
   cd "$srcdir/noctalia-cli-$pkgver"

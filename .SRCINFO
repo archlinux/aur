@@ -1,6 +1,6 @@
 pkgbase = noctalia
 	pkgdesc = A simple CLI for installing and updating Noctalia components
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/noctalia-dev/noctalia-cli
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = noctalia
 	depends = openssl
 	makedepends = cargo
 	makedepends = git
-	source = noctalia-0.3.1.tar.gz::https://github.com/noctalia-dev/noctalia-cli/archive/v0.3.1.tar.gz
-	sha256sums = 869bc7290b3fd243f077b1f226e2ca343842feeb0c7a9cbdf864185e8a6b3181
+	source = noctalia-0.4.0.tar.gz::https://github.com/noctalia-dev/noctalia-cli/archive/v0.4.0.tar.gz
+	sha256sums = 0eec6e6949c0d2434a029a432806f07a41c678ea73418f5e205ee14b09fef9b5
 
 pkgname = noctalia
