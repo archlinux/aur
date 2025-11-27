@@ -7,7 +7,7 @@
 # Contributor: Nick B <Shirakawasuna at gmail _dot_com>
 
 _pkgname=ggplot2
-_pkgver=4.0.0
+_pkgver=4.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -44,6 +44,7 @@ optdepends=(
   r-ggplot2movies
   r-hexbin
   r-hmisc
+  r-hms
   r-knitr
   r-mapproj
   r-maps
@@ -51,9 +52,9 @@ optdepends=(
   r-munsell
   r-profvis
   r-quantreg
+  r-quarto
   r-ragg
   r-rcolorbrewer
-  r-rmarkdown
   r-roxygen2
   r-sf
   r-svglite
@@ -64,9 +65,9 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "$_pkgname-fix-snapshots.patch::https://github.com/tidyverse/ggplot2/pull/5917/commits/7908e224e03fce65ce910cd85f3de3b2846970d6.patch")
-md5sums=('22eb62f9579e90530b2841626c9ec8d6'
+md5sums=('93a563d9f72740b128535bd3db892279'
          'c1beb06c438ec674a22babfb6ca987a8')
-b2sums=('34d5961c7860e01f010318f46b5470b435ac06f23a78154b534746bd50691b5653b6b54abcab3f4103df6ac9b539e166b17a6b97f3f41f48269fd4173b56e9c3'
+b2sums=('1464bb1d43060726a6c857e8fd3e4d6cce791aef922f230e34be43373bc8ec7077e99a5557bdf02dd61dd9867249a12c2f8a5f25560a9f3bc366b06f3ba3a397'
         'b01d6fd2c0d251fa64792fa22ccd7627f44d2cd9e1d11b3b4c085244fa14fcc074a07e9106d301e25cd51532f23e65536045e173a1c061d1d51732d0ee80a670')
 
 #prepare() {
