@@ -1,7 +1,9 @@
 # Maintaner: Sergey A. <murlakatamenka@disroot.org>
+#
+# shellcheck disable=SC2034,SC2164
 
 pkgname=rust-parallel
-pkgver=1.18.1
+pkgver=1.19.0
 pkgrel=1
 pkgdesc='Fast parallel command runner, written in Rust'
 arch=('x86_64' 'aarch64')
@@ -11,7 +13,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5230a9fec7bee668f5c069bb4ab7401844d16426d8954cd95d138e2c1331c22e')
+sha256sums=('73c71fccd95d427339275b731ef697997cae963f9c2ad1c47535063720d781ba')
 
 prepare() {
   cd "$pkgname-$pkgver"
