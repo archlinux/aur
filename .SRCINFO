@@ -1,7 +1,7 @@
 pkgbase = lxqt-qt5plugin
 	pkgdesc = LXQt platform integration for Qt
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lxqt/lxqt-qtplugin
 	arch = x86_64
 	groups = lxqt
@@ -15,6 +15,6 @@ pkgbase = lxqt-qt5plugin
 	depends = libQt5XdgIconLoader.so
 	source = git+https://github.com/lxqt/lxqt-qtplugin?signed#tag=1.4.1
 	validpgpkeys = 19DFDF3A579BD509DBB572D8BE793007AD22DF7E
-	sha256sums = 022d1eacc98ac0b089dacef65f265c27bd7a6caed404112b2d3a34a1e2c75e35
+	sha256sums = 35275cd161863119fe3bccdebd82e56d5d38207820afb3c25c4eeb97a21f8f9f
 
 pkgname = lxqt-qt5plugin

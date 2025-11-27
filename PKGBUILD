@@ -4,7 +4,7 @@
 _pkgname=lxqt-qtplugin
 pkgname=lxqt-qt5plugin
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="LXQt platform integration for Qt"
 arch=("x86_64")
 groups=("lxqt")
@@ -16,7 +16,7 @@ makedepends=("git" "lxqt-build-tools-qt5")
 source=(
 	"git+https://github.com/lxqt/$_pkgname?signed#tag=$pkgver"
 )
-sha256sums=('022d1eacc98ac0b089dacef65f265c27bd7a6caed404112b2d3a34a1e2c75e35')
+sha256sums=('35275cd161863119fe3bccdebd82e56d5d38207820afb3c25c4eeb97a21f8f9f')
 validpgpkeys=(
 	"19DFDF3A579BD509DBB572D8BE793007AD22DF7E"  # Pedram Pourang <tsujan2000@gmail.com>
 )
@@ -24,7 +24,8 @@ validpgpkeys=(
 build() {
 	cmake -B build -S "$srcdir/$_pkgname" \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
-	  -DCMAKE_BUILD_TYPE=None
+	  -DCMAKE_BUILD_TYPE=None \
+	  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 	cmake --build build
 }
 
