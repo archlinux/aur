@@ -1,6 +1,6 @@
 pkgbase = renoise
 	pkgdesc = A music composition program
-	pkgver = 3.5.3
+	pkgver = 3.5.4
 	pkgrel = 1
 	url = https://www.renoise.com
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = renoise
 	provides = dssi-host
 	conflicts = renoise3-demo
 	options = !strip
-	source_x86_64 = file://rns_353_linux_x86_64.tar.gz
+	source_x86_64 = file://rns_354_linux_x86_64.tar.gz
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = file://rns_353_linux_arm64.tar.gz
+	source_aarch64 = file://rns_354_linux_arm64.tar.gz
 	sha256sums_aarch64 = SKIP
 	sha256sums_armv7h = SKIP
 
