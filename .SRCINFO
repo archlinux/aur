@@ -1,6 +1,6 @@
 pkgbase = ftnn-desktop
 	pkgdesc = FTNN富途牛牛桌面版
-	pkgver = 15.40.13908
+	pkgver = 15.41.14008
 	pkgrel = 1
 	url = https://www.futunn.com/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ftnn-desktop
 	depends = glibc
 	depends = qt5-base
 	depends = hicolor-icon-theme
-	source = https://softwaredownload.futunn.com/FTNN_desktop_15.40.13908_amd64.deb
+	source = https://softwaredownload.futunn.com/FTNN_desktop_15.41.14008_amd64.deb
 	sha256sums = SKIP
 
 pkgname = ftnn-desktop
