@@ -2,7 +2,7 @@
 
 pkgname='oscgoesbrrr'
 pkgdesc='Make haptics in real life go BRRR from VRChat'
-pkgver='1.42.0'
+pkgver='1.44.0'
 pkgrel='1'
 arch=('x86_64')
 url='https://osc.toys/'
@@ -14,7 +14,7 @@ source=("https://github.com/OscToys/OscGoesBrrr/archive/refs/tags/release/$pkgve
         "LICENSE-v$pkgver::https://raw.githubusercontent.com/OscToys/OscGoesBrrr/refs/tags/release/$pkgver/LICENSE"
         'oscgoesbrrr'
         'OscGoesBrrr.desktop')
-sha256sums=('c27a1e248c5f537208ceae32e7ac6a5430d2e9d5081a533792acf449cf63ffb4'
+sha256sums=('2fb0c5a048444ba27313fc771cafbe9f046bee1973994dff3c1cc47471e4cf2d'
             'fc17405da5786602c4667eb9b69e4bff644be78f5d96c489ae0fc7ddb9b5fd1d'
             '17250df54b4cb3471f8b3baca68bd4686629a6e62f56c283ebd67036bae57cb9'
             'a02770d23b90d39de35ddb45b4910444339712885c905318ee81444ff98bdd2b')
