@@ -1,7 +1,7 @@
 pkgbase = valdi-git
 	pkgdesc = A cross-platform UI framework that delivers native performance without sacrificing developer velocity
-	pkgver = r21.g0155e71
-	pkgrel = 5
+	pkgver = r54.g81c7829
+	pkgrel = 1
 	url = https://github.com/Snapchat/Valdi
 	arch = aarch64
 	arch = x86_64
@@ -15,12 +15,10 @@ pkgbase = valdi-git
 	depends = bazelisk
 	depends = fontconfig
 	depends = java-environment=17
-	provides = valdi=1.0.1
+	provides = valdi
 	source = valdi::git-lfs+https://github.com/Snapchat/Valdi.git
-	source = no-hard-apt.patch
 	source = no-bazel-sandbox.patch
 	sha256sums = SKIP
-	sha256sums = 79d03b3c203783dd31d5a369dc7be98a2b51708da698cf01b705e6180563435c
 	sha256sums = 58e6f24f65fc70628fcc19bebf0b05592d607f4ef1c7bba44c2642f8650e21a0
 
 pkgname = valdi-git
