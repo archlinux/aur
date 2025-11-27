@@ -22,8 +22,8 @@ sha256sums=('SKIP')
 prepare() {
   cd "${srcdir}/qETRC"
 
-  # Initialize and update submodules
-  git config submodule."external/SARibbon".url "$srcdir/qETRC/external/SARibbon"
+  # Initialize submodules and ensure they use the correct remote URLs
+  git submodule sync --recursive
   git submodule update --init --recursive --depth=1
 
   # Create build directory
