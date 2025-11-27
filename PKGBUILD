@@ -1,20 +1,22 @@
-# Maintainer: nullobsi <me at nullob dot si>
+# Maintainer: koh11235813 <koh11235813 at gmail dot com>
+# Contributor: nullobsi <me at nullob dot si>
 pkgname=beatoraja-modernchic
-pkgver=0.8.5
+pkgver=0.8.8
 pkgrel=1
 pkgdesc="Cross-platform rhythm game based on Java and libGDX."
 arch=('x86_64')
 url="https://github.com/exch-bms2/beatoraja"
 license=('GPL3' 'unknown')
 groups=()
-optdepends=('java8-openjfx: JFX when not using official binary')
-depends=('java-runtime-openjdk=8')
+optdepends=('mesa: for OpenGL support (recommended)')
+depends=('xorg-xrandr' 'jre21-openjdk' 'java21-openjfx')
 makedepends=()
 install=
-source=("https://mocha-repository.info/download/beatoraja${pkgver}-modernchic.zip" 'beatoraja.sh')
+source=("https://mocha-repository.info/download/beatoraja${pkgver}-modernchic.zip" 'beatoraja.sh' 'beatoraja.desktop')
 noextract=()
-sha256sums=('1e23fef219cf54abdec821a25c9699ad271ad79d8e156f3c691c9b653bad6032'
-            'e3ecfadd046942b8e1bbf686e6d5e0573cc312b6d463f45b2940056cf4239f78')
+sha256sums=('c89c2890e95d34251dbcfb57ab2d4e2f61121a9e38ebf6990507af7ad1a5a7b4'
+            'e71a8db5b93b768b04dc558e0b4478bf2edcaf890fd424873a7a0f760f0ee06b'
+            'de5e7ec93e501d139502d7433fcc67e1c305b8dc10c25edf362178274808f773')
 
 build() {
 	cd "$srcdir/beatoraja${pkgver}-modernchic"
@@ -28,6 +30,7 @@ package() {
 	cd "$srcdir/"
 	mkdir "$pkgdir/opt"
 	cp -r "beatoraja${pkgver}-modernchic" "$pkgdir/opt/beatoraja"
-	chmod -R 777 "$pkgdir/opt/beatoraja"
-	install -D beatoraja.sh "$pkgdir/usr/bin/beatoraja"
+	chmod -R 755 "$pkgdir/opt/beatoraja"
+	install -Dm755 beatoraja.sh "$pkgdir/usr/bin/beatoraja"
+	install -Dm644 beatoraja.desktop "$pkgdir/usr/share/applications/beatoraja.desktop"
 }

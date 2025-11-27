@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=beatoraja
+Comment=Cross-platform rhythm game
+Exec=beatoraja
+Terminal=false
+Categories=Game;
