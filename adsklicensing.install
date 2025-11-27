@@ -26,3 +26,18 @@ pre_remove() {
 post_remove() {
 	userdel adsklic
 }
+
+pre_upgrade() {
+	# Autodesk requests that the service be stopped before upgrading
+	if systemctl is-active --quiet adsklicensing.service; then
+		touch /tmp/adsklicensing-was-running.flag
+		systemctl stop adsklicensing.service
+	fi
+}
+
+post_upgrade() {
+	if [ -f /tmp/adsklicensing-was-running.flag ]; then
+		systemctl start adsklicensing.service
+		rm -f /tmp/adsklicensing-was-running.flag
+	fi
+}
