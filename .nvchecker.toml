@@ -1,0 +1,5 @@
+[protoc-gen-go-grpc]
+source = "git"
+git = "https://github.com/grpc/grpc-go.git"
+include_regex = "^cmd/protoc-gen-go-grpc/v.*"
+prefix = "cmd/protoc-gen-go-grpc/v"
