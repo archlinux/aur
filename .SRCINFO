@@ -1,0 +1,21 @@
+pkgbase = ameba-git
+	pkgdesc = A static code analysis tool for Crystal
+	pkgver = r1531.4b3d33028
+	pkgrel = 1
+	url = https://github.com/crystal-ameba/ameba
+	arch = any
+	license = MIT
+	makedepends = crystal>=1.18.0
+	makedepends = shards
+	makedepends = make
+	depends = gc
+	depends = gcc-libs
+	depends = libevent
+	depends = libyaml
+	depends = pcre2
+	provides = ameba
+	conflicts = ameba
+	source = git+https://github.com/crystal-ameba/ameba
+	md5sums = SKIP
+
+pkgname = ameba-git
