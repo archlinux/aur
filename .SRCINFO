@@ -1,14 +1,13 @@
 pkgbase = ttf-irianis
 	pkgdesc = A serif font
 	pkgver = 1.006
-	pkgrel = 1
+	pkgrel = 2
 	url = http://arkandis.tuxfamily.org/adffonts.html
 	arch = any
 	groups = ttf-adf-fonts
-	license = custom:GPL with font exception
+	license = GPL-2.0-or-later WITH Font-exception-2.0
 	conflicts = ttf-adf
 	source = http://arkandis.tuxfamily.org/fonts/Irianis-Std-20100729.zip
 	sha256sums = 5a252bf7fbfca67aa421798f2fbe48c2f5d46208330633499553b308ef6d3bf2
 
 pkgname = ttf-irianis
-
