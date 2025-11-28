@@ -8,6 +8,7 @@ pkgbase = fsel-git
 	makedepends = cargo
 	makedepends = git
 	optdepends = chafa: image previews in clipboard mode
+	optdepends = cclip: clipboard history
 	provides = fsel
 	conflicts = fsel
 	source = fsel-git::git+https://github.com/Mjoyufull/fsel.git
