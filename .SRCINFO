@@ -1,19 +1,18 @@
 pkgbase = python-safehttpx
 	pkgdesc = A small Python library created to help developers protect their applications from Server Side Request Forgery (SSRF) attacks.
-	pkgver = 0.1.6
-	pkgrel = 4
+	pkgver = 0.1.7
+	pkgrel = 1
 	url = https://github.com/gradio-app/safehttpx
 	arch = any
 	license = Apache-2.0
 	checkdepends = python-pytest
-	checkdepends = python-pytest-asyncio
 	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
 	depends = python-httpx
-	source = https://files.pythonhosted.org/packages/source/s/safehttpx/safehttpx-0.1.6.tar.gz
-	sha256sums = b356bfc82cee3a24c395b94a2dbeabbed60aff1aa5fa3b5fe97c4f2456ebce42
+	source = https://files.pythonhosted.org/packages/source/s/safehttpx/safehttpx-0.1.7.tar.gz
+	sha256sums = db201c0978c41eddb8bb480f3eee59dd67304fdd91646035e9d9a720049a9d23
 
 pkgname = python-safehttpx
