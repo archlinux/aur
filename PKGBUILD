@@ -4,7 +4,7 @@
 set -u
 pkgname='pev'
 #pkgname+='-git'
-pkgver='0.84'
+pkgver='0.85'
 pkgrel=1
 pkgdesc='command line toolkit to work with and analyze PE (Portable Executables) binaries'
 arch=('i686' 'x86_64')
@@ -14,18 +14,19 @@ license=('GPL-2.0-only')
 depends=('glibc' 'openssl') # 'pcre'
 #_verwatch=('https://sourceforge.net/projects/pev/rss' ".*<title>.*/${pkgname}-\([0-9\.]\+\)\.tar\.gz\].*" 'f')
 _srcdir="readpe-${pkgver%.r*}"
+_giturl='https://github.com/mentebinaria/readpe'
 source=(
-  "${_srcdir}.tar.gz::https://github.com/mentebinaria/readpe/archive/refs/tags/v${pkgver%.r*}.tar.gz"
+  "${_srcdir}.tar.gz::${_giturl}/archive/refs/tags/v${pkgver%.r*}.tar.gz"
 )
-md5sums=('c8beb0beeadacc576ef3c44049c9960d')
-sha256sums=('2d0dc383735802db62234297ae1703ccbf4b6d2f2754e284eb90d6f0a57aa670')
+md5sums=('99275d85513968ebdadd5518e2e32b36')
+sha256sums=('2747a3ee87c7fb1ed0a13242816752a94603adb6ae0d9f507b019ac582c394eb')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
   makedepends+=('git')
   conflicts=("${pkgname%-git}")
   provides=("${pkgname%-git}=${pkgver%.r*}")
   _srcdir='readpe'
-  source[0]='git+https://github.com/mentebinaria/readpe.git'
+  source[0]='git+${_giturl}.git'
   md5sums[0]='SKIP'
   sha256sums[0]='SKIP'
 pkgver() {
@@ -41,7 +42,7 @@ fi
 build() {
   set -u
   cd "${_srcdir}"
-  nice make prefix='/usr'
+  make prefix='/usr'
   set +u
 }
 
