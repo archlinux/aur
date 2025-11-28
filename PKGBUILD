@@ -4,7 +4,7 @@
 # Contributor: Richard Mathot <rim at odoo dot com>
 _pkgbase=r8152
 pkgname=${_pkgbase}-dkms
-pkgver=2.20.1.20250814
+pkgver=2.21.4
 pkgrel=1
 pkgdesc="A kernel module for Realtek RTL8152/RTL8153/RTL8154/RTL8156 Based USB Ethernet Adapters"
 url="http://www.realtek.com"
@@ -18,7 +18,7 @@ source=(
     "https://github.com/wget/realtek-r8152-linux/archive/v${pkgver}.tar.gz"
     'dkms.conf'
 )
-sha512sums=('a5ed2c6eb2eed553f5bb18095447f3c563c4d09c6307664392a6c41786429c012a88b86b66c08a3c904a787df48794e384b2b28faf0038d21552df293b41eef8'
+sha512sums=('6617cf7cb50fd35b97b5e3f2e47118f30af06654a809bf6b35d24a039591ab960b5ce54696fd67ae57955a5184904fdc9ad4c06c332aa9ce26c7b33fb30a4a12'
             '1a89004b40ee4f23c1d6fab7fe14ff5786362248cb16cedb21f144acda05b1c46afa5b38de065fad8fe712fdf65625063a3e312651a2a371cd00c9625d19f2c0')
 
 package() {
