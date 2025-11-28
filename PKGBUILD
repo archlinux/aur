@@ -29,7 +29,8 @@ pkgname="${pkgbase}"
 #_pkgver='5.80';  _dl='8/0100007658/38';_suffix1='m17n';_suffix2='04'
 #_pkgver='6.00'; _dl='8/0100007658/42';_suffix1='m17n';_suffix2='08' # more drivers than 8/0100007658/43
 #_pkgver='6.00'; _dl='8/0100007658/43';_suffix1='m17n';_suffix2='03'
-_pkgver='6.10';  _dl='8/0100007658/45';_suffix1='m17n';_suffix2='01'
+#_pkgver='6.10';  _dl='8/0100007658/45';_suffix1='m17n';_suffix2='01'
+_pkgver='6.20';  _dl='8/0100007658/47';_suffix1='m17n';_suffix2='20'
 pkgver="${_pkgver}.${_suffix2}"
 pkgrel=1
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
@@ -59,8 +60,8 @@ options=('!emptydirs' '!strip' '!libtool' '!debug')
 source=(
   "https://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-${_suffix1}-${_suffix2}.tar.gz"
 )
-md5sums=('ce4483bddf5a1a0ac3bc1fd8d742ca73')
-sha512sums=('8d993c2f37ee6103db46b4dccce7ca4378b1f0af854d586462a10b23d9faf80d9a8657ea108e4aa8e43a77caf3d3007e3dffb912bfa06b4a642eb73d173bf796')
+md5sums=('5b42c627a2079fd65cfdc611c6f61b82')
+sha512sums=('ac5ed49da292f4cf84652863762806d2fd3bdb0322c362e405151fb5769a3af5f11c21fe606395eeff933cc88a47fa1d1c3dbd232188cdf0d0db596562d7f868')
 
 build() {
   set -u

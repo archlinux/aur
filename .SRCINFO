@@ -1,6 +1,6 @@
 pkgbase = cnrdrvcups-lb-bin
 	pkgdesc = CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers
-	pkgver = 6.10.01
+	pkgver = 6.20.20
 	pkgrel = 1
 	url = https://www.canon-europe.com/support/business/products/office-printers/imagerunner/series/imagerunner-1730i.html
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = cnrdrvcups-lb-bin
 	optdepends = cairo: for cnsetuputil2
 	optdepends = pango: for cnsetuputil2
 	optdepends = at-spi2-core: for cnsetuputil2
-	provides = cnrdrvcups-lb=6.10
+	provides = cnrdrvcups-lb=6.20
 	conflicts = cndrvcups-lb
 	conflicts = cndrvcups-common-lb
 	conflicts = cndrvcups-lb-bin
@@ -34,8 +34,8 @@ pkgbase = cnrdrvcups-lb-bin
 	options = !strip
 	options = !libtool
 	options = !debug
-	source = https://gdlp01.c-wss.com/gds/8/0100007658/45/linux-UFRII-drv-v610-m17n-01.tar.gz
-	md5sums = ce4483bddf5a1a0ac3bc1fd8d742ca73
-	sha512sums = 8d993c2f37ee6103db46b4dccce7ca4378b1f0af854d586462a10b23d9faf80d9a8657ea108e4aa8e43a77caf3d3007e3dffb912bfa06b4a642eb73d173bf796
+	source = https://gdlp01.c-wss.com/gds/8/0100007658/47/linux-UFRII-drv-v620-m17n-20.tar.gz
+	md5sums = 5b42c627a2079fd65cfdc611c6f61b82
+	sha512sums = ac5ed49da292f4cf84652863762806d2fd3bdb0322c362e405151fb5769a3af5f11c21fe606395eeff933cc88a47fa1d1c3dbd232188cdf0d0db596562d7f868
 
 pkgname = cnrdrvcups-lb-bin
