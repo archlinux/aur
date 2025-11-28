@@ -1,7 +1,7 @@
 pkgbase = standardnotes-desktop
-	pkgdesc = An end-to-end encrypted notes app for digitalists and professionals.
+	pkgdesc = Think fearlessly with end-to-end encrypted notes and files.
 	pkgver = 3.198.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://standardnotes.com
 	arch = x86_64
 	arch = aarch64

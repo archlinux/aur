@@ -1,12 +1,13 @@
-# Maintainer: 
+# Maintainer: Rooki <aur at rooki dot xyz>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: lsf
 # Contributor: Daniel Haß <aur@hass.onl>
+
 pkgname=standardnotes-desktop
 pkgver=3.198.5
-pkgrel=1
+pkgrel=2
 _electronversion=35
-pkgdesc="An end-to-end encrypted notes app for digitalists and professionals."
+pkgdesc="Think fearlessly with end-to-end encrypted notes and files."
 arch=('x86_64' 'aarch64')
 url="https://standardnotes.com"
 license=('GPL-3.0-or-later')
