@@ -3,7 +3,7 @@
 
 pkgname=llama.cpp-vulkan
 _pkgname=${pkgname%%-vulkan}
-pkgver=b7169
+pkgver=b7179
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Vulkan GPU optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -33,7 +33,7 @@ provides=(${_pkgname})
 conflicts=(${_pkgname} libggml ggml stable-diffusion.cpp)
 options=(lto !debug)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('55117d14403fc168ce1d74d9a27570c716b279cf92ccb383b88043b4580880e8')
+sha256sums=('5fe58a6795c94dd71075607f79875dfce25232bea40813d9c69f38b4705956c2')
 
 prepare() {
   ln -sf "${_pkgname}-${pkgver}" llama.cpp
