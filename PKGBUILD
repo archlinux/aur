@@ -21,11 +21,15 @@ conflicts=("$_name" 'amazon-q-bin')
 replaces=('amazon-q' 'amazon-q-bin')
 install='kiro-cli.install'
 source=('Kiro-LICENSE.txt')
-source_x86_64=("$_name-$pkgver-x86_64.zip::https://desktop-release.q.us-east-1.amazonaws.com/$pkgver/kirocli-x86_64-linux.zip")
-source_aarch64=("$_name-$pkgver-aarch64.zip::https://desktop-release.q.us-east-1.amazonaws.com/$pkgver/kirocli-aarch64-linux.zip")
+source_x86_64=("$_name-$pkgver-x86_64.tar.zst::https://desktop-release.q.us-east-1.amazonaws.com/$pkgver/kirocli-x86_64-linux.tar.zst")
+source_aarch64=("$_name-$pkgver-aarch64.tar.zst::https://desktop-release.q.us-east-1.amazonaws.com/$pkgver/kirocli-aarch64-linux.tar.zst")
+sha256sums=('771836b4e338ba240ef4add028a0276f084c9e1c22fb5bb7fdcd83b87576bf2e')
+sha256sums_aarch64=('2bb9b6fa10ab271ed8af14d30f5a56bb9d75b13ed50ae3b016f7056726ef6073')
+sha256sums_x86_64=('c669de045b6b4a0661bde18d6e158fad7b01106d12d5673acc7fd4219af50044')
 b2sums=('4fee11387ffa92e8fba85ca53dcd51906efb5aa0d581002510a66e63916e439c836539de374db5e5b5a4470a1790b6dc0348e7ceb555a8de4dd5210b6c0f7a01')
-b2sums_aarch64=('0ed7991607d5568f9f28830546fd2bf01370e45da1a2ee7f555cb929e2e4d3b6ed5d1d0cab9c9bd336b9667716c09a47601623a499e84c59bf951827b5a3c4f0')
-b2sums_x86_64=('e4f9e6b03bb2c0f154b8ab8140e929fb234e39f2ce7abec0d19d1b85b10bfb5b037e99920a361492f322532ed2b6a8a581c4f18cc4f0ed0b33746ddf9ceb4bc6')
+b2sums_aarch64=('c002d196acdeb5544619d457165335082908ca7be1d5161fd1a1e2968135dad6d752e0c7b7f66dc7d398a373954b59d3e100a0f502fff38c6c636cfb362e90ad')
+b2sums_x86_64=('d23965e4c90e1c6665a26045a29c697e20b1c4277d9746fdb82de6a3932afa92ef6ad7046fbaed80ee549b97fc31be8e97e9e3156104eb284686958a16dff715')
+
 
 prepare() {
     cd kirocli/bin
