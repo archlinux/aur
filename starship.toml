@@ -41,13 +41,13 @@ disabled = false
 
 [username]
 show_always = true
-style_user = "bg:#0ed600"
+style_user = "bg:#0ed600 fg:000000"
 style_root = "bg:#0ed600 fg:ff0000"
 format = '[ $user ]($style)'
 disabled = false
 
 [directory]
-style = "bg:#00d679"
+style = "bg:#00d679 fg:000000"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -60,84 +60,84 @@ truncation_symbol = "…/"
 
 [c]
 symbol = " "
-style = "bg:#1000a3"
+style = "bg:#1000a3 fg:000000"
 format = '[ $symbol ($version) ]($style)'
 
 [cpp]
 symbol = " "
-style = "bg:#1000a3"
+style = "bg:#1000a3 fg:000000"
 format = '[ $symbol ($version) ]($style)'
 
 [docker_context]
 symbol = " "
-style = "bg:#ea00ff"
+style = "bg:#ea00ff fg:000000"
 format = '[ $symbol $context ]($style)'
 
 [elixir]
 symbol = " "
-style = "bg:#1000a3"
+style = "bg:#1000a3 fg:000000"
 format = '[ $symbol ($version) ]($style)'
 
 [elm]
 symbol = " "
-style = "bg:#1000a3"
+style = "bg:#1000a3 fg:000000"
 format = '[ $symbol ($version) ]($style)'
 
 [git_branch]
 symbol = ""
-style = "bg:#0038a1"
+style = "bg:#0038a1 fg:000000"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "bg:#0038a1"
+style = "bg:#0038a1 fg:000000"
 format = '[$all_status$ahead_behind ]($style)'
 
 [golang]
 symbol = " "
-style = "bg:#1000a3"
+style = "bg:#1000a3 fg:000000"
 format = '[ $symbol ($version) ]($style)'
 
 [gradle]
-style = "bg:#1000a3"
+style = "bg:#1000a3 fg:000000"
 format = '[ $symbol ($version) ]($style)'
 
 [haskell]
 symbol = " "
-style = "bg:#1000a3"
+style = "bg:#1000a3 fg:000000"
 format = '[ $symbol ($version) ]($style)'
 
 [java]
 symbol = " "
-style = "bg:#1000a3"
+style = "bg:#1000a3 fg:000000"
 format = '[ $symbol ($version) ]($style)'
 
 [julia]
 symbol = " "
-style = "bg:#1000a3"
+style = "bg:#1000a3 fg:000000"
 format = '[ $symbol ($version) ]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:#1000a3"
+style = "bg:#1000a3 fg:000000"
 format = '[ $symbol ($version) ]($style)'
 
 [nim]
 symbol = "󰆥 "
-style = "bg:#1000a3"
+style = "bg:#1000a3 fg:000000"
 format = '[ $symbol ($version) ]($style)'
 
 [rust]
 symbol = ""
-style = "bg:#1000a3"
+style = "bg:#1000a3 fg:000000"
 format = '[ $symbol ($version) ]($style)'
 
 [scala]
 symbol = " "
-style = "bg:#1000a3"
+style = "bg:#1000a3 fg:000000"
 format = '[ $symbol ($version) ]($style)'
 
 [time]
 disabled = false
 time_format = "%R" 
-style = "bg:#6d0035"
+style = "bg:#6d0035 fg:000000"
 format = '[ $time ]($style)'

@@ -1,6 +1,6 @@
 # Maintainer: rsahwe <rsahwe@gmx.net>
 pkgname=evcolors
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Ev color themes'
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=(
 source=('evcolors.theme' 'starship.toml')
 validpgpkeys=()
 sha256sums=('d0a2f1649a5998381df25d8a5c14ca2f2ecfcb6db538affc92095cb5aa1ddc44'
-            'e41f048952080b42000328eedf4cf0030bbb800be328f663ef41b334942865ee')
+            '391f49afc19b9f235181949f6b27e4a4857bb6e62deb82ccd388d91fd738c603')
 
 check() {
 	: # TODO: FIGURE OUT CHECK
