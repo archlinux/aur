@@ -4,7 +4,7 @@
 _srcname=CJK-character-count
 
 pkgname=cjk-character-count
-pkgver=0.22
+pkgver=0.50
 pkgrel=1
 pkgdesc='Program that counts the amount of CJK characters based on Unicode ranges and Chinese encoding standards 字体汉字计数软件'
 arch=('any')
@@ -23,7 +23,7 @@ source=(
   'CJK-character-count-zhs.desktop'
   'CJK-character-count-zht.desktop'
 )
-sha256sums=('60e68234df2fb2ce7ef58e3620eaa8de6a0051494ecdac8a5b0f8365a1579638'
+sha256sums=('aa4e3efb5608a6ddfbb2214703c651c58c1b8762e9ed9e3ff42a158b48b0de8f'
             '867a30183690e88ce0da13fd7c51abd7a436540fee24deefc68ac4dc8d19fae6'
             '34301f6b1b4812d97ba74f42382437a5794e4d1334ebc0f4dd514278b7fde5d0'
             'df70a15a2b93fb55521aa88f187eee20416d3923edaa6544502ce63891b17173')
