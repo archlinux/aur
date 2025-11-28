@@ -1,6 +1,6 @@
 # Maintainer: Victor RH <blitzkriegfc@gmail.com>
 pkgname=antigravity-preview
-pkgver=1.11.5
+pkgver=1.11.9
 pkgrel=1
 pkgdesc="Google Antigravity - AI-powered development environment (Preview)"
 arch=('x86_64')
@@ -26,11 +26,11 @@ optdepends=(
 provides=('antigravity')
 conflicts=('antigravity')
 options=(!strip)
-source=("${pkgname}-${pkgver}.tar.gz::https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/1.11.5-5234145629700096/linux-x64/Antigravity.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/1.11.9-4787439284912128/linux-x64/Antigravity.tar.gz"
         "antigravity.desktop"
         "antigravity-url-handler.desktop"
         "antigravity.png")
-sha256sums=('4e03151a55743cf30fac595abb343c9eb5a3b6a80d2540136d75b4ead8072112'
+sha256sums=('193a4a61da608c526fbc329670e892ab0a961d3a65ce49485de1ca08804e472d'
             '0ce166cb6f0819f1afbdd35f7cc5a8ca97c2faa5fad05f3037c4e82a4da8f8a7'
             'a9cf56cf75208d89817aaf1f71b8deaee03cc21579fe4f0042f396cb6c4e9fb0'
             'd1d32e0d6901c44206ccaa74f8c4b23c5a7293cfd4bbec52de80522afa692f8b')
