@@ -1,13 +1,12 @@
 pkgbase = otf-mintspirit
 	pkgdesc = A sans-serif font
 	pkgver = 1.005
-	pkgrel = 3
+	pkgrel = 4
 	url = http://arkandis.tuxfamily.org/adffonts.html
 	arch = any
 	groups = otf-adf-fonts
-	license = custom:"OFL 1.1"
+	license = OFL-1.1
 	source = http://arkandis.tuxfamily.org/fonts/MintSpirit-20150322.zip
 	sha256sums = 338f6e5f3660e393c534e214c2654f93aa1d83587e230f7d0186068612aef871
 
 pkgname = otf-mintspirit
-
