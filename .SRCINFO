@@ -2,7 +2,7 @@ pkgbase = endcord-git
 	pkgdesc = Feature rich Discord TUI client.
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/mzivic7/endcord
+	url = https://github.com/sparklost/endcord
 	arch = any
 	license = GPL-3.0-only
 	makedepends = python>=3.12
@@ -18,7 +18,7 @@ pkgbase = endcord-git
 	provides = endcord
 	conflicts = endcord
 	options = !strip
-	source = git+https://github.com/mzivic7/endcord.git
+	source = git+https://github.com/sparklost/endcord.git
 	sha256sums = SKIP
 
 pkgname = endcord-git
