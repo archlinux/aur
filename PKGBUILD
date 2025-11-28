@@ -1,6 +1,6 @@
 # Maintainer: Andersmmg <andersmmg at duck dot com>
 pkgname=ark-vcs-bin
-pkgver=0.13.2
+pkgver=0.13.3
 pkgrel=1
 pkgdesc="VCS built from the ground up for performance and ease of use. Pre-compiled."
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('ark-vcs')
 source=("ark-vcs.png")
 source_x86_64=("https://ark-vcs.com/static/versions/Ark-Vcs_${pkgver//./_}_linux.zip")
 sha256sums=("SKIP")
-sha256sums_x86_64=('c72a948f20c5c9108cb1fcea6186702aad05e8893a267c965e915736cae6cdf8')
+sha256sums_x86_64=('fe6a14636748a76105915d6dcf4a395761e3931513b5819e2cf24249b2f6c134')
 
 prepare() {
   mv "${srcdir}/Ark-Vcs_${pkgver//./_}" "$srcdir/$pkgname-$pkgver"
