@@ -2,13 +2,13 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-cachyos
-_srctag=10.0-20251120
+_srctag=10.0-20251126
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=10.3.0
 _xaliaver=0.4.6
-pkgrel=3
+pkgrel=1
 epoch=1
 
 source=(
@@ -254,8 +254,6 @@ prepare() {
     git remote set-url origin https://github.com/CachyOS/proton-cachyos.git
     git submodule update --init --filter=tree:0 --recursive ${_submodules[@]}
 
-    ./patches/apply.sh
-
     for rustlib in gst-plugins-rs; do
     pushd $rustlib
         export RUSTUP_TOOLCHAIN=stable
@@ -338,7 +336,7 @@ package() {
         $(find "${_monodir}" -iname "*x86_64.dll" -or -iname "*x86_64.exe")
 }
 
-b2sums=('4280eb89e0704d0d79de3ff6ffa1bc6e1ffc522727a6bb17a37746cb85a7292a7e6c05b553eca1dfa1aa3f1b637e3ce6314114ff82b34891fe904ec3128a463d'
+b2sums=('117cdc4d7a941b534c8cd73ef83ce945185b66e7d20b36cb941e1e5468006b69454f6fae6e7af60194c9c69d45196a867def76b1b1408b2da88269901b58ef4d'
         '2a73c12585b502ae11188482cbc9fb1f45f95bfe4383a7615011104b132f4845f9813d01fb40277e1934fab5f1b35ab40b4f4a66a9967463dd1d666a666904e9'
         '62856a88266b4757602c0646e024f832974a93f03b9df253fd4895d4f11a41b435840ad8f7003ec85a0d8087dec15f2e096dbfb4b01ebe4d365521e48fd0c5c0'
         'a3a63b1e8cf072923512923ccd7419fbdb4c9747b0a3c29111d2bda36ab1fd95d0fd4283f74126cfe0c60e639ce3d173d69efdb3d97bf2b39142eb3ed3a27ef7'
