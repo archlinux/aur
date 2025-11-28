@@ -4,14 +4,14 @@
 
 pkgname='kanzi-git'
 _pkgname="${pkgname/-git}"
-pkgver=2.4.0.r33.gbe9e643a
+pkgver=2.4.0.r58.gc2166c5e
 pkgrel=1
 pkgdesc='Modern, modular, portable and efficient lossless data compressor and decompressor (development version)'
 arch=('aarch64' 'x86_64')
 url='https://github.com/flanglet/kanzi-cpp'
 source=("$_pkgname::git+$url.git")
 license=('Apache-2.0')  # SPDX-License-Identifier: Apache-2.0
-provides=('kanzi') #'libkanzi.so')
+provides=('kanzi' 'libkanzi.so')
 conflicts=("${provides[@]}")
 depends=('gcc-libs' 'glibc')
 makedepends=('cmake' 'git')
@@ -38,8 +38,7 @@ build() {
   mkdir -p build \
   && cd build    \
   && cmake ..    \
-  && make kanzi  #\
-  #&& make libkanzi_shared
+  && make kanzi
 }
 
 package() {
@@ -52,19 +51,20 @@ package() {
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     {README,SECURITY}.md
 
-  #install -vDm0644 -t "$pkgdir/usr/lib" \
-  #  src/build/libkanzi.a
-  #install -vDm0755 -t "$pkgdir/usr/lib" \
-  #  src/build/libkanzi.so
+  install -vDm0755 -t "$pkgdir/usr/lib" \
+    src/build/libkanzi.so
 
-  #install -vDm0644 -t "$pkgdir/usr/include/kanzi" \
-  #  src/*.hpp
+  install -vDm0644 -t "$pkgdir/usr/include/kanzi" \
+    src/*.hpp
 
-  #_inc=(api bitstream entropy io transform util)
-  #for _dir in "${_inc[@]}"; do
-  #  install -vDm0644 -t "$pkgdir/usr/include/kanzi/$_dir" \
-  #    "src/$_dir"/*.hpp
-  #done
+  _inc=(api bitstream entropy io transform util)
+  for _dir in "${_inc[@]}"; do
+    install -vDm0644 -t "$pkgdir/usr/include/kanzi/$_dir" \
+      "src/$_dir"/*.hpp
+  done
+
+  cd "$pkgdir/usr/share/doc" \
+  && ln -vfs "$pkgname" "$_pkgname"
 }
 
 sha256sums=('SKIP')
