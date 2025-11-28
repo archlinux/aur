@@ -3,7 +3,7 @@
 _pkgauthor=davidesantangelo
 _pkgname=fastrace
 pkgname=${_pkgname}
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A fast, dependency-free traceroute implementation in pure C"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('gcc' 'make')
 depends=('glibc' 'gcc-libs')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e9787fa43b6b95af8e439674a73b107b9d0357bdf45f1ffce8408ed2164a44a6')
+sha256sums=('b8c79571191266f0f3ef58033b24bb27c81182bfd4f99cd868e778e6876b08bd')
 
 build() {
 	cd ${pkgname}-${pkgver} || exit 1
