@@ -4,12 +4,12 @@
 pkgname=otf-symbols-adf
 _fontname=SymbolsADF
 pkgver=1.001
-pkgrel=1
+pkgrel=2
 pkgdesc="Two fonts of symbols, named 'Arrows ADF' and 'Bullets ADF'"
 arch=('any')
 conflicts=('otf-adf')
 url="http://arkandis.tuxfamily.org/adffonts.html"
-license=('custom:GPL with font exception')
+license=('GPL-2.0-or-later WITH Font-exception-2.0')
 groups=('otf-adf-fonts')
 source=("http://arkandis.tuxfamily.org/fonts/SymbolADF.zip")
 
@@ -21,15 +21,9 @@ build() {
 }
 
 package() {
-    mkdir -p "${pkgdir}/usr/share/fonts/OTF"
+    install -d "${pkgdir}/usr/share/fonts/OTF"
     install -Dm644 "${srcdir}/${_fontname}/OTF/"*.otf\
                    "${pkgdir}/usr/share/fonts/OTF"
-
     install -Dm644 "${srcdir}/${_fontname}/NOTICE"\
-                   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    echo -ne "********************************************************************************\n\n"\
-                >> "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    cat "${srcdir}/${_fontname}/OTF/COPYING"\
-                >> "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    sed -e "s/\r//g" -i "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+                   "${pkgdir}/usr/share/licenses/${pkgname}/Font-exception-2.0.txt"
 }
