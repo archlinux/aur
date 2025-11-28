@@ -15,6 +15,6 @@ pkgbase = leetcode-fsrs-cli
 	replaces = leetcode-fsrs-cli
 	backup = etc/leetcode-fsrs-cli/config.json
 	source = https://github.com/SaintFore/LeetCodeCLI/archive/refs/tags/v1.5.0.tar.gz
-	sha256sums = 84fcd3e12457381ad6b95c043b85e877884df35ec8e34141047d76a25d903a7a
+	sha256sums = a5760f05bc61c593299cdf8110a2a9c19b56f12c5406ecb0674ff3b4b112af88
 
 pkgname = leetcode-fsrs-cli
