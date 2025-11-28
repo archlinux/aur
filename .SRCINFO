@@ -1,6 +1,6 @@
 pkgbase = fritzcallindicator
 	pkgdesc = Show taskbar notifications for incoming calls from the Fritz!Box.
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/ElTh0r0/fritzcallindicator/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = fritzcallindicator
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = hicolor-icon-theme
-	source = fritzcallindicator-0.8.0.tar.gz::https://github.com/ElTh0r0/fritzcallindicator/archive/v0.8.0.tar.gz
-	sha256sums = 4e087b156fc67ee3e9856ae74037d0149c98700047b79606fc5016bd6b637585
+	source = fritzcallindicator-0.9.0.tar.gz::https://github.com/ElTh0r0/fritzcallindicator/archive/v0.9.0.tar.gz
+	sha256sums = 5989e538728677c5c531cccb4d33f01c35a631d770124aec313cea585df593aa
 
 pkgname = fritzcallindicator
