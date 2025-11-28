@@ -1,16 +1,18 @@
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: lukasbecker2 [at] [common mail ending from the company with for the most used search engine in the us and the eu]
 # Contributor: Manuel Mendez <mmendez534@gmail.com>
-# Submitter: Robin Martinjak <rob@kingofnerds.net>
+# Contributor: Robin Martinjak <rob@kingofnerds.net>
 
-# vim:set ts=2 sw=2 et:
-
+set -u
 pkgname='makeself'
-pkgver='2.5.0'
-pkgrel='1'
+#pkgname+='-git'
+pkgver=2.6.0
+pkgrel=1
 pkgdesc='Utility to create self-extracting packages'
 arch=('any')
-url='http://megastep.org/makeself'
-license=('GPL')
+#url='http://megastep.org/makeself'
+url='https://makeself.io/'
+license=('GPL-2.0-or-later')
 depends=('bash')
 optdepends=(
   'gzip: compression support'
@@ -29,21 +31,41 @@ optdepends=(
   #'sha256sum: digest support' # coreutils
   'tar: archive support'
 )
-source=("${pkgname}-release-${pkgver}.tar.gz::https://github.com/megastep/${pkgname}/archive/release-${pkgver}.tar.gz")
-md5sums=('0c0811d2134edafd7ac311e66fbdfb19')
-sha256sums=('705d0376db9109a8ef1d4f3876c9997ee6bed454a23619e1dbc03d25033e46ea')
-sha512sums=('cd0ce98579f00a02f9559848b39e0a6efea9df1866073d419f0b6560034cc186ed8315f8b4589e03f626b040727d9ae646bc2abaebe4f4da556b87617bdd770f')
+_srcdir="${pkgname%-git}-release-${pkgver%.r*}"
+source=("${_srcdir}.tar.gz::https://github.com/megastep/${pkgname%-git}/archive/release-${pkgver%.r*}.tar.gz")
+md5sums=('8eaa1239b39a44674bcf514216c9fbab')
+sha256sums=('3af5218dfb80d20a156d3c50fa0d510c7b244d9676813659f8d220bc95405f07')
+
+if [ "${pkgname%-git}" != "${pkgname}" ]; then
+  _srcdir="${pkgname}"
+  source[0]="${_srcdir}::git+https://github.com/megastep/makeself.git"
+  md5sums[0]='SKIP'
+  sha256sums[0]='SKIP'
+  conflicts=('makeself')
+  provides=("makeself=${pkgver%%.r*}")
+  makedepends+=('git')
+pkgver() {
+  cd "${pkgname}"
+  git describe --long --tags | sed 's/^release-//;s/-/.r/;s/-/./g'
+}
+elif [ "${pkgver%%.r*}" != "${pkgver}" ]; then
+pkgver() {
+  printf '%s\n' "${pkgver%%.r*}"
+}
+fi
 
 prepare() {
-  cd "${pkgname}-release-${pkgver}"
+  cd "${_srcdir}"
   sed -e 's|^HEADER=.*|HEADER=/usr/share/makeself/makeself-header.sh|' -i 'makeself.sh'
 }
 
 package() {
-  cd "${pkgname}-release-${pkgver}"
-  #install -Dpm644 'makeself.lsm' 'README.md' -t "${pkgdir}/usr/share/${pkgname}/"
+  cd "${_srcdir}"
+  install -Dpm644 'README.md' -t "${pkgdir}/usr/share/makeself/"
   install -Dpm644 'makeself.1' -t "${pkgdir}/usr/share/man/man1/"
   install -Dpm755 'makeself.sh' "${pkgdir}/usr/bin/makeself"
-  install -Dpm755 'makeself-header.sh' -t "${pkgdir}/usr/share/${pkgname}/"
+  install -Dpm755 'makeself-header.sh' -t "${pkgdir}/usr/share/makeself/"
 }
+set +u
 
+# vim:set ts=2 sw=2 et:
