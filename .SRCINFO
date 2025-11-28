@@ -1,7 +1,7 @@
 pkgbase = next-rust-release-date
-	pkgdesc = When&#x27;s the next Rust release?
-	pkgver = 0.2.0
-	pkgrel = 3
+	pkgdesc = When&#39;s the next Rust release?
+	pkgver = 0.2.2
+	pkgrel = 1
 	url = https://crates.io/crates/next-rust-release-date
 	arch = aarch64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = next-rust-release-date
 	makedepends = cargo
 	makedepends = cargo-auditable
 	depends = gcc-libs
-	source = next-rust-release-date-0.2.0.tar.gz::https://static.crates.io/crates/next-rust-release-date/0.2.0/download
-	sha512sums = 1989219159382aa07b6ce43967ed70b10a045487c02bab78b4d65122b82887a1940fabfa2d285aa7350f416259e9faa080d2952b2a18d3b3db84e50bde7bdf49
+	source = next-rust-release-date-0.2.2.tar.gz::https://static.crates.io/crates/next-rust-release-date/0.2.2/download
+	sha512sums = d6d1aad31141f4720c8c299941cff9c95b39e40bbce2546da49f79e03ed2d49dd5b61637d7b44509b21da25f5d52f6e6c8cf9a2ad43f7a71f0ba187bde189ad0
 
 pkgname = next-rust-release-date

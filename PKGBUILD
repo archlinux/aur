@@ -2,19 +2,19 @@
 # Maintainer: Dominic Meiser [git at msrd0 dot de]
 
 _crate="next-rust-release-date"
-_cratever="0.2.0"
+_cratever="0.2.2"
 pkgname="next-rust-release-date"
-pkgver=0.2.0
-pkgrel=3
-pkgdesc='When&#x27;&quot;&#x27;&quot;&#x27;s the next Rust release?'
+pkgver=0.2.2
+pkgrel=1
+pkgdesc='When&#39;&#34;&#39;&#34;&#39;s the next Rust release?'
 url='https://crates.io/crates/next-rust-release-date'
 license=('Apache-2.0' 'MIT')
 
 depends=('gcc-libs')
 makedepends=('cargo' 'cargo-auditable')
 
-source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/next-rust-release-date/0.2.0/download")
-sha512sums=('1989219159382aa07b6ce43967ed70b10a045487c02bab78b4d65122b82887a1940fabfa2d285aa7350f416259e9faa080d2952b2a18d3b3db84e50bde7bdf49')
+source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/next-rust-release-date/0.2.2/download")
+sha512sums=('d6d1aad31141f4720c8c299941cff9c95b39e40bbce2546da49f79e03ed2d49dd5b61637d7b44509b21da25f5d52f6e6c8cf9a2ad43f7a71f0ba187bde189ad0')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
