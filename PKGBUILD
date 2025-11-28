@@ -2,7 +2,7 @@
 
 pkgname=protoc-gen-connect-go
 _pkgname=connect-go
-pkgver=1.18.1
+pkgver=1.19.1
 pkgrel=1
 pkgdesc='Protoc plugin to generate Go code'
 arch=(x86_64)
@@ -16,7 +16,7 @@ makedepends=(
 )
 options=(!debug)
 source=(${_pkgname}::git+${_ghurl}.git#tag=v${pkgver})
-sha256sums=('71ace32118a07e53ae5609c6095d4ce052dd2bf77237f46625585644abf0dfa7')
+sha256sums=('f7591148998df7571b86d6325a786e166393a4794e31e7937257b8fe1c738990')
 
 prepare() {
   cd ${_pkgname}
