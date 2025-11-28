@@ -1,5 +1,5 @@
 pkgname=mingw-w64-verdict
-pkgver=1.4.2
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Compute quality functions of 2 and 3-dimensional regions (mingw-w64)"
 arch=('any')
@@ -9,17 +9,15 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://github.com/sandialabs/verdict/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('225c8c5318f4b02e7215cefa61b5dc3f99e05147ad3fefe6ee5a3ee5b828964b')
+sha256sums=('d12d1cd41c6568997df348a72cc2973a662fae1b3634a068ea2201b5f7383186')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd $srcdir/verdict-$pkgver
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DVERDICT_ENABLE_TESTING=OFF ..
-    make
-    popd
+    ${_arch}-cmake -DVERDICT_ENABLE_TESTING=OFF -B build-${_arch} .
+    make -C build-${_arch}
   done
 }
 
