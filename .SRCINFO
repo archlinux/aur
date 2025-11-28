@@ -1,0 +1,22 @@
+pkgbase = alia-can
+	pkgdesc = User-friendly shell alias manager with automatic backups, cross-shell support, and modern Qt6 GUI
+	pkgver = BETA.r3.g946375d
+	pkgrel = 1
+	url = https://github.com/alia-can/alia-can
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = clang
+	makedepends = qt6-base
+	makedepends = base-devel
+	makedepends = git
+	depends = qt6-base
+	depends = gcc-libs
+	depends = glibc
+	optdepends = bash: for bash shell support
+	optdepends = zsh: for zsh shell support
+	optdepends = fish: for fish shell support
+	source = git+https://github.com/alia-can/alia-can.git
+	sha256sums = SKIP
+
+pkgname = alia-can
