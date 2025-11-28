@@ -93,9 +93,7 @@ build() {
     cd "${srcdir}/${pkgname%-git}.git"
     _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
-    NODE_ENV=production     pnpm -c vite build -c vite.config.preload.ts
-    NODE_ENV=production     pnpm -c vite build -c vite.config.main.ts
-    NODE_ENV=production     pnpm -c vite build -c vite.config.ts
+    NODE_ENV=production     pnpm run build
     NODE_ENV=production     pnpm -c exec "electron-builder build --linux dir -c.electronDist=${electronDist} -c electron-builder.config.cjs"
 }
 package() {
