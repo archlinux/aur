@@ -2,7 +2,7 @@
 
 pkgname=kwin-effects-forceblur-git
 pkgver=r441.a97689a
-pkgrel=1
+pkgrel=2
 pkgdesc="KWin Better Blur DX effect fork with window class force blur feature (Wayland & X11)"
 arch=(x86_64)
 url="https://github.com/xarblu/kwin-effects-better-blur-dx"
@@ -24,7 +24,7 @@ pkgver() {
 }
 
 build() {
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S "$pkgname"
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DBETTERBLUR_X11=OFF -B build -S "$pkgname"
     make -C build
 }
 
