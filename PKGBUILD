@@ -2,7 +2,7 @@
 pkgbase=protonmail-bridge-free
 pkgname=(protonmail-bridge-free protonmail-bridge-free-core)
 pkgver=3.21.2
-pkgrel=8
+pkgrel=9
 pkgdesc="Integrate ProtonMail account with any program that supports IMAP and SMTP"
 arch=(x86_64)
 url="https://github.com/ProtonMail/proton-bridge"
