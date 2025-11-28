@@ -3,7 +3,7 @@
 
 _pkgname=sshpilot
 pkgname=${_pkgname}-bin
-pkgver=4.5.1
+pkgver=4.6.0
 pkgrel=1
 _pgrel=1
 pkgdesc="SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support."
@@ -23,7 +23,7 @@ options=(!strip)
 source=("https://raw.githubusercontent.com/mfat/${_pkgname}/refs/tags/v${pkgver}/LICENSE")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-${_pgrel}_all.deb")
 sha512sums=('714d66c4a17e6dfc1553521af2be03f4579fac64048c0b96c592177562b01fc70a8e184bb21725e11ef96a54bf466ae1abd4992b8940f0fe2c0859d6a166a2ef')
-sha512sums_x86_64=('f077a8c1817c4e9e7c0c4541eabf5c74913c95c61b85ab2146c8c4e0cd6647d9bae71061cead039191e1275ae2d95150a655e65003d3fe0d0adf7156d962e3ad')
+sha512sums_x86_64=('dac199c5cc468bfc8f20792336f0cc8c8728e70db256a4f21c39958db163d990ece9325d827aa0637b434d23f0e36eccc3bd62f0a2a19355075b252951f067b9')
 
 package() {
     cd "${pkgdir}"
@@ -37,8 +37,6 @@ package() {
     
     install -Dm644 "${pkgdir}/usr/lib/python3/dist-packages/sshpilot"/*.py "${pkgdir}${site_packages}/sshpilot/"
     install -Dm644 "${pkgdir}/usr/lib/python3/dist-packages/sshpilot/resources"/* "${pkgdir}${site_packages}/sshpilot/resources/"
-    
-    
     
     install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
