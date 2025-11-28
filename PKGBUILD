@@ -29,14 +29,15 @@ fi
 
 _pkgname='adminer'
 pkgname="${_pkgname}-git"
-pkgver=5.3.0.r0.g1cfc8451
+pkgver=5.4.0.r0.g6f339bac
 pkgrel=1
 pkgdesc='a web based SQL management tool supporting MySQL, PostgreSQL, SQLite, MS SQL, Oracle, Firebird, SimpleDB, Elasticsearch and MongoDB. Formerly phpMinAdmin.'
 arch=('any')
 url='https://www.adminer.org'
 license=('Apache-2.0' 'GPL-2.0-only')
 depends=('php>=7.0') # 5.1.0 last version compatible with php56
-optdepends=('mariadb' 'apache' 'adminer-skins: various CSS skins for adminer' 'postgresql' 'sqlite: for sqlite3' 'sqlite2')
+optdepends=('mariadb' 'apache' 'postgresql' 'sqlite: for sqlite3' 'sqlite2')
+#optdepends+=('adminer-skins: various CSS skins for adminer')
 makedepends=('git')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
