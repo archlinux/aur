@@ -190,7 +190,7 @@ if [ $MODE == "IMPORT" ]; then
             echo "  AUR packages, will be installed using yay or paru"
         fi
         if [ $CONFIGS ]; then
-            echo "  configs, will override your dotfiles (if they already exist) in ~/.config/"
+            echo "  configs, will override your dotfiles (if they already exist) in XDG_CONFIG_HOME (${XDG_CONFIG_HOME})"
         fi
         if [ $ETC ]; then
             echo "  etc, will override your files (if they already exist) in /etc/"
