@@ -3,7 +3,7 @@
 # Based on obs-backgroundremoval PKGBUILD by PedroHLC <root@pedrohlc.com>
 pkgname=obs-backgroundremoval-git
 _pkgname="${pkgname%-git}"
-pkgver=1.3.3.r1.g1ce5693
+pkgver=1.3.5.r1.gfbd855d
 pkgrel=1
 pkgdesc='Background removal plugin for OBS studio'
 arch=('x86_64')
@@ -30,6 +30,7 @@ build() {
     -DENABLE_FRONTEND_API=ON \
     -DENABLE_QT=ON \
     -DUSE_PKGCONFIG=ON \
+    -DUSE_SYSTEM_ONNXRUNTIME=ON \
     -GNinja
   cmake --build build
 }
