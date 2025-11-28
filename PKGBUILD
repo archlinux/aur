@@ -15,7 +15,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd schedtoold/
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
