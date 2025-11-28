@@ -1,0 +1,7 @@
+[lobster-language-bin]
+source = "github"
+github = "aardappel/lobster"
+prefix = "v"
+use_release_name=false
+use_latest_release=true
+include_prereleases=false

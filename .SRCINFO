@@ -1,0 +1,17 @@
+pkgbase = lobster-language-bin
+	pkgdesc = Lobster programming language
+	pkgver = 2025.4
+	pkgrel = 1
+	url = https://github.com/aardappel/lobster
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	depends = mesa
+	conflicts = lobster
+	conflicts = lobster-language
+	source = lobster-language-bin-2025.4.zip::https://github.com/aardappel/lobster/releases/download/v2025.4/lobster_linux_release.zip
+	source = LICENSE.txt::https://raw.githubusercontent.com/aardappel/lobster/refs/tags/v2025.4/dev/LICENSE.txt
+	sha512sums = ed84ef9a105ba41d14b2e122b2563d42a81a26c485e75bfc16e9a1462236751c1184b9c2921c3ca3d15450391aef64142ac352e30e363c4dd6e206f16c9522b5
+	sha512sums = 98f6b79b778f7b0a15415bd750c3a8a097d650511cb4ec8115188e115c47053fe700f578895c097051c9bc3dfb6197c2b13a15de203273e1a3218884f86e90e8
+
+pkgname = lobster-language-bin
