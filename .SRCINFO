@@ -1,6 +1,6 @@
 pkgbase = darklua-bin
 	pkgdesc = Transform Lua 5.1 and Roblox Luau code using configurable rules.
-	pkgver = 0.17.2
+	pkgver = 0.17.3
 	pkgrel = 1
 	url = https://github.com/seaofvoices/darklua
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = darklua-bin
 	depends = glibc
 	depends = gcc-libs
 	provides = darklua
-	source_x86_64 = https://github.com/seaofvoices/darklua/releases/download/v0.17.2/darklua-linux-x86_64.zip
-	sha256sums_x86_64 = a62f99863049ab9ec8b90ac710965a7bed5f2419b61bfc42a4afa49cfa90372e
-	source_aarch64 = https://github.com/seaofvoices/darklua/releases/download/v0.17.2/darklua-linux-aarch64.zip
-	sha256sums_aarch64 = ea48cf961552974eb79e312264b3fb6c2d0d405b5a8a8251c40c71ca2017f757
+	source_x86_64 = https://github.com/seaofvoices/darklua/releases/download/v0.17.3/darklua-linux-x86_64.zip
+	sha256sums_x86_64 = 389d131279d87e2970b57a26e35276babd78dd16273a730a4370d3646b6f3198
+	source_aarch64 = https://github.com/seaofvoices/darklua/releases/download/v0.17.3/darklua-linux-aarch64.zip
+	sha256sums_aarch64 = 2cb1f0948d04f76068bd26d096a0f6a583d9531548a7c5a10360c7b510f4792f
 
 pkgname = darklua-bin
