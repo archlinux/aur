@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aya-bin
 _pkgname=AYA
-pkgver=1.14.1
+pkgver=1.14.2
 _electronversion=30
 pkgrel=1
 pkgdesc="A desktop application for easily controlling android devices, which can be considered as a GUI wrapper for ADB.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('adefeb9e193a20c6f24f3edfe4a3b52fadc6db08f8a4e4971c713ddae574cf34'
+sha256sums=('27ac157324191973c121250c1f2bbaeee8fbff626cffd309605a1b7c1c2f6967'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
