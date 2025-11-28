@@ -1,6 +1,6 @@
 pkgbase = mahjong
 	pkgdesc = The classical game of Mah Jong (multiplayer)
-	pkgver = 1.17
+	pkgver = 1.17.2
 	pkgrel = 1
 	url = https://mahjong.julianbradfield.org/
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = mahjong
 	depends = harfbuzz
 	depends = fontconfig
 	depends = freetype2
-	source = http://mahjong.julianbradfield.org/Source/mj-1.17-src.tar.gz
-	md5sums = 075963063ece871be1845d6fe7fb5972
-	sha256sums = ec21fb35715130ee647c18e64b9b030a089265fdf03ba141f09701b3be6889d9
+	source = http://mahjong.julianbradfield.org/Source/mj-1.17.2-src.tar.gz
+	md5sums = fec3dc03dc9496b0ed6e0bbb82af395e
+	sha256sums = f701a51704a55adde83e75670096841835cf1878e6a33623ea7894476d2d83c6
 
 pkgname = mahjong
