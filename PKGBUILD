@@ -1,7 +1,7 @@
 # Maintainer: Daniel Serrano Armenta <anabasasoft@gmail.com>
 pkgname=portaldrop-bin
 _pkgname=portaldrop
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="AirDrop universal para Linux. Transfiere archivos por WiFi vía QR sin instalar nada en el móvil (Python/Qt6)"
 arch=('x86_64')

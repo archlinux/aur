@@ -1,6 +1,6 @@
 pkgbase = portaldrop-bin
 	pkgdesc = AirDrop universal para Linux. Transfiere archivos por WiFi vía QR sin instalar nada en el móvil (Python/Qt6)
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/anabasasoft/PortalDrop
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = portaldrop-bin
 	provides = portaldrop
 	conflicts = portaldrop
 	options = !strip
-	source = portaldrop::https://github.com/anabasasoft/PortalDrop/releases/download/v1.6.1/portaldrop
+	source = portaldrop::https://github.com/anabasasoft/PortalDrop/releases/download/v1.6.2/portaldrop
 	source = portaldrop.png::https://raw.githubusercontent.com/anabasasoft/PortalDrop/main/portaldrop-512.png
 	source = portaldrop.metainfo.xml::https://raw.githubusercontent.com/anabasasoft/PortalDrop/main/portaldrop.metainfo.xml
 	sha256sums = 9a76ceb906fa5302861b735a986519b2dc5432082615e383c014b08c0ae5d9eb
