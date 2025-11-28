@@ -3,7 +3,7 @@
 _name=safehttpx
 pkgname=python-$_name
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A small Python library created to help developers protect their applications from Server Side Request Forgery (SSRF) attacks.'
 arch=('any')
 url='https://github.com/gradio-app/safehttpx'
@@ -25,7 +25,7 @@ check() {
     -vv
     --disable-warnings
   )
-  pytest "${pytest_options[@]}" test/test.py
+  PYTHONPATH=$PWD pytest "${pytest_options[@]}" test/test.py
 }
 
 package() {
