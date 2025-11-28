@@ -1,16 +1,16 @@
 pkgbase = beamup-bin
 	pkgdesc = A tool for installing languages (support for Gleam, Erlang and Elixir) that run on the Erlang VM (BEAM) (Prebuilt version)
-	pkgver = 0.6.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://tsloughter.github.io/beamup/
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
-	provides = beamup=0.6.0
+	provides = beamup=0.8.0
 	conflicts = beamup
-	source_x86_64 = beamup-bin-0.6.0-x86_64.tar.xz::https://github.com/tsloughter/beamup//releases/download/v0.6.0/beamup-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = c3968e6d55e40c81719a00c5a85b4ac3394ac5c28ff9fdfb928c6c8dda4dc3ce
-	source_aarch64 = beamup-bin-0.6.0-aarch64.tar.gz::https://github.com/tsloughter/beamup//releases/download/v0.6.0/beamup-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = f1af36983597af266475d072c7b399f8fba73c01b9c0d9b0752d4295e462d438
+	source_x86_64 = beamup-bin-0.8.0-x86_64.tar.xz::https://github.com/tsloughter/beamup//releases/download/v0.8.0/beamup-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = ad665433acf69d8cee7e585cfcb0b20482e98055d6d7a79ef075cda5b01f7a6b
+	source_aarch64 = beamup-bin-0.8.0-aarch64.tar.gz::https://github.com/tsloughter/beamup//releases/download/v0.8.0/beamup-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 130514a92fa69f71edbb65045853cf2dae08f6632bdedb8a15ea1243f056872a
 
 pkgname = beamup-bin

@@ -1,7 +1,7 @@
 # Maintainer: rintim <rintim@foxmail.com>
 
 pkgname=beamup-bin
-pkgver=0.6.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A tool for installing languages (support for Gleam, Erlang and Elixir) that run on the Erlang VM (BEAM) (Prebuilt version)"
 arch=('x86_64' 'aarch64')
@@ -22,6 +22,6 @@ package() {
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE" beamup-x86_64-unknown-linux-gnu/LICENSE
 }
 
-sha256sums_x86_64=('c3968e6d55e40c81719a00c5a85b4ac3394ac5c28ff9fdfb928c6c8dda4dc3ce')
-sha256sums_aarch64=('f1af36983597af266475d072c7b399f8fba73c01b9c0d9b0752d4295e462d438')
+sha256sums_x86_64=('ad665433acf69d8cee7e585cfcb0b20482e98055d6d7a79ef075cda5b01f7a6b')
+sha256sums_aarch64=('130514a92fa69f71edbb65045853cf2dae08f6632bdedb8a15ea1243f056872a')
 
