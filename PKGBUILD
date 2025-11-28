@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=chronograph
-pkgver=5.2
+pkgver=5.3
 pkgrel=1
 pkgdesc="Sync lyrics of your loved songs"
 arch=('any')
@@ -28,7 +28,7 @@ makedepends=(
   'meson'
 )
 source=("Chronograph-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7fb5d93378ca722a48210ae19e26836d9a8ffa10171be5e5604dfd35689f7c78')
+sha256sums=('495caa6d0c7c4a77c5fe9a17481ba84f0dd5c2b33474289da414cdf27b591bae')
 
 build() {
   arch-meson "Chronograph-$pkgver" build
