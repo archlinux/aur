@@ -1,17 +1,17 @@
 pkgbase = rubick-bin
 	pkgdesc = Electron based open source toolbox, free integration of rich plug-ins.(Prebuilt version.Use system-wide electron) 基于 electron 的开源工具箱，自由集成丰富插件。
-	pkgver = 4.3.5
+	pkgver = 4.3.7
 	pkgrel = 1
 	url = https://rubickcenter.github.io/rubick/
 	arch = x86_64
 	license = MIT
 	depends = electron26
-	provides = rubick=4.3.5
+	provides = rubick=4.3.7
 	conflicts = rubick
-	source = rubick-4.3.5.deb::https://github.com/rubickCenter/rubick/releases/download/v4.3.5/rubick_4.3.5_amd64.deb
-	source = LICENSE-4.3.5::https://raw.githubusercontent.com/rubickCenter/rubick/v4.3.5/LICENSE
+	source = rubick-4.3.7.deb::https://github.com/rubickCenter/rubick/releases/download/v4.3.7/rubick_4.3.7_amd64.deb
+	source = LICENSE-4.3.7::https://raw.githubusercontent.com/rubickCenter/rubick/v4.3.7/LICENSE
 	source = rubick.sh
-	sha256sums = f6d5f48f80edc3e6813e85e094936e62037c3bd21bd7af66649df35512b4a128
+	sha256sums = e1a1e711eef229e8aedd646794a1dbec24984d662706bbad0225fa69f1d63dbd
 	sha256sums = 98ec3482acc93db8661b6a794744e5eaca088cf75312d15f196abb5db7e52b77
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
