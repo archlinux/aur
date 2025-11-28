@@ -1,6 +1,6 @@
 pkgbase = openchrom-bin
 	pkgdesc = Visualization and analysis of mass spectrometric and chromatographic data
-	pkgver = 1.5.33
+	pkgver = 1.5.34
 	pkgrel = 1
 	url = https://openchrom.net/
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = openchrom-bin
 	conflicts = openchrom
 	noextract = openchrom_linux.x86_64_1.5.27.tar.gz
 	options = !strip
-	source = https://products.lablicate.com/openchrom/1.5.33/openchrom_linux.x86_64_1.5.33.tar.gz
+	source = https://products.lablicate.com/openchrom/1.5.34/openchrom_linux.x86_64_1.5.34.tar.gz
 	source = openchrom.desktop
 	source = openchrom.png
-	sha256sums = ecf5e3154d3d4f43abe366c5ba89d6fb21925e3eef4ed90403fac2ffa78d0911
+	sha256sums = cd52a5c3d5c3f0339c23aae03c615856248d70c8d7b3616ea95d9bad39d100e4
 	sha256sums = 700aaa0a38757cd12d389598746a375df8e53c133ea7e73c59b5d3f252b336f1
 	sha256sums = 5668c08f75ec9ad00123e857b03502291cea1aaaf69e6641067386e17486ef7f
 
