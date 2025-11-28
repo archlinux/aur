@@ -1,21 +1,18 @@
 pkgbase = sign-and-seal
 	pkgdesc = Simple PDF Signer for Linux (Sign & Seal) - Compiled from source
-	pkgver = 1.11
+	pkgver = 1.12
 	pkgrel = 1
 	url = https://github.com/AnabasaSoft/SignAndSeal
 	arch = x86_64
 	license = LGPL3
 	makedepends = python
-	makedepends = python-pyinstaller
-	makedepends = python-pillow
-	makedepends = python-pymupdf
-	makedepends = python-pyqt6
 	makedepends = git
 	depends = glibc
 	depends = zlib
+	depends = fuse2
 	provides = sign-and-seal
 	conflicts = sign-and-seal-bin
-	source = https://github.com/AnabasaSoft/SignAndSeal/archive/refs/tags/v1.11.tar.gz
-	sha256sums = 99c192e913580cc65bd4df6071ca67c3b568487e3a3421ce11ad4f27e2a18e49
+	source = https://github.com/AnabasaSoft/SignAndSeal/archive/refs/tags/v1.12.tar.gz
+	sha256sums = 7c220360ac843a1b07586297adec45e1f8cd61dd7731c9ed5b30a802a33bb2dc
 
 pkgname = sign-and-seal
