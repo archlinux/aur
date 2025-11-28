@@ -1,7 +1,7 @@
 # Maintainer: Sevilze <sevilzcubing@gmail.com>
 pkgname=ani2hyprtui-bin
 _pkgname=ani2hyprtui
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A TUI tool to convert animated cursors to Hyprcursor format"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('ani2hypr' 'ani2hyprtui')
 conflicts=('ani2hypr' 'ani2hyprtui')
 depends=('gcc-libs') 
 source=("$url/releases/download/v$pkgver/$_pkgname-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('3e1059b012b63d77c7f6e6c2381d5001fbdf7b283ee203d78c71a81486847abe')
+sha256sums=('b6286fdda04d5049b4c56b48ce3f23f39d32c426f1496d1d92e22745b6e43007')
 
 package() {
     cd "$srcdir"
