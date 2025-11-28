@@ -1,21 +1,27 @@
 pkgbase = brother-dcpt300
-	pkgdesc = Driver for the Brother DCP-T300 multifuncional printer
+	pkgdesc = Brother DCP-T300 printer driver (CUPS + LPR)
 	pkgver = 3.0.2
-	pkgrel = 2
-	url = http://solutions.brother.com/linux/en_us/index.html
+	pkgrel = 1
+	url = https://support.brother.com/g/b/faqtop.aspx?c=us_ot&lang=en&prod=dcpt300_all
 	install = brother-dcpt300.install
 	arch = i686
 	arch = x86_64
-	license = custom:brother
-	depends = a2ps
+	license = LicenseRef-Brother
 	depends = cups
-	depends = lib32-glibc
-	source = fix_lp.patch
-	source = http://download.brother.com/welcome/dlf101958/dcpt300lpr-3.0.2-0.i386.rpm
-	source = http://download.brother.com/welcome/dlf101959/dcpt300cupswrapper-3.0.2-0.i386.rpm
-	md5sums = 164dd5eaeb33bb89c5ba6a6a547b65b8
-	md5sums = a0299c04635a1db426f0d4c65200b3ab
-	md5sums = add52c42190a557a4294150a5a27905f
+	depends = ghostscript
+	depends = perl
+	depends = bash
+	depends = a2ps
+	optdepends = sane: scanning support
+	optdepends = brscan4: making dcpt300 available to sane
+	optdepends = brscan-skey: scankey support if connected via usb
+	noextract = dcpt300cupswrapper-3.0.2-0.i386.deb
+	noextract = dcpt300lpr-3.0.2-0.i386.deb
+	source = https://download.brother.com/welcome/dlf101961/dcpt300cupswrapper-3.0.2-0.i386.deb
+	source = https://download.brother.com/welcome/dlf101960/dcpt300lpr-3.0.2-0.i386.deb
+	sha256sums = e356f4a0446e1a1362221b88903bb29061c4d051ac426c2c2bc2e896ca203960
+	sha256sums = fb46231309028c037d852318677c19fa3ff91b2369014be68691be9102f65750
+	depends_x86_64 = lib32-glibc
+	depends_x86_64 = lib32-gcc-libs
 
 pkgname = brother-dcpt300
-

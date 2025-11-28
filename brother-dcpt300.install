@@ -1,27 +1,18 @@
 post_install() {
-	# lpr
-	/opt/brother/Printers/dcpt300/inf/setupPrintcapij dcpt300 -i
-	
-	# cupswrapper
-	/opt/brother/Printers/dcpt300/cupswrapper/cupswrapperdcpt300
-	
-	systemctl restart cups.service
+	if systemctl is-active --quiet cups.service; then
+		echo "Restarting CUPS..."
+		systemctl restart cups.service
+	fi
+	echo "Register the printer using the web interface at http://localhost:631/"
 }
 
 post_upgrade() {
-	/bin/true
+	post_install
 }
 
-pre_remove() {
-	# lpr
-	/opt/brother/Printers/dcpt300/inf/setupPrintcapij dcpt300 -e
-	
-	# cupswrapper
-	/opt/brother/Printers/dcpt300/cupswrapper/cupswrapperdcpt300 -e
+post_remove() {
+	if systemctl is-active --quiet cups.service; then
+		echo "Restarting CUPS..."
+		systemctl restart cups.service
+	fi
 }
-
-op=$1
-shift
-
-$op "$@"
-
