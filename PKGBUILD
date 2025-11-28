@@ -2,7 +2,7 @@
 
 pkgname=dokku
 pkgver=0.37.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('x86_64')
 url='https://github.com/dokku/dokku'
@@ -43,14 +43,16 @@ source=("${url}/archive/v${pkgver}.zip"
         "builder-dockerfile-core-post-extract-fix.patch"
         "builder-lambda-core-post-extract-fix.patch"
         "builder-nixpacks-core-post-extract-fix.patch"
-        "builder-pack-core-post-extract-fix.patch")
+        "builder-pack-core-post-extract-fix.patch"
+        "builder-railpack-core-post-extract-fix.patch")
 sha256sums=('b51f58a4ceb68978cb4f49d6fea23501c551c293e1783651ad6e7dee56f528ba'
             '8830ca7b44118da8e2f35aca271429cfa93e7f21126df6696a0d0d608d979f2b'
             'fd979a3d612396316603f7677cdcdb7d25c7fecf99c97a8d1458262684913fdd'
             'bae0fa706e39f5491df96ec81ebd0f5ad60c3e9843dd1c88e01a761731f20d3a'
             '19bdb2c6bd90114351f36fb33f197ddb559f7a27144fa8dea1fdfdb2c2e22b29'
             'aea707f7ff5cbd0cab8dced6a7554975098695416306092d6d4e78e8edca6c20'
-            '2221d30d319d216658d43ad9f652305c1bb7a27ccb71b43b7efe8aaf5cefa5a7')
+            '2221d30d319d216658d43ad9f652305c1bb7a27ccb71b43b7efe8aaf5cefa5a7'
+            'aed3a8cba52caee778cca47377a7bda780eab3be867451ba7d9a305b10e9fac7')
 install="${pkgname}.install"
 
 build() {
@@ -71,6 +73,7 @@ build() {
   patch -p1 -i "$srcdir/builder-lambda-core-post-extract-fix.patch"
   patch -p1 -i "$srcdir/builder-nixpacks-core-post-extract-fix.patch"
   patch -p1 -i "$srcdir/builder-pack-core-post-extract-fix.patch"
+  patch -p1 -i "$srcdir/builder-railpack-core-post-extract-fix.patch"
 
   # Add .core and build go plugins
   for plugin in plugins/*; do

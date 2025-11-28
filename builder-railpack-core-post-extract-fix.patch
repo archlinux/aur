@@ -1,0 +1,11 @@
+--- a/plugins/builder-railpack/core-post-extract 2025-09-16 23:02:16.791027084 +0200
++++ b/plugins/builder-railpack/core-post-extract 2025-09-16 23:02:09.600984239 +0200
+@@ -10,7 +10,7 @@
+   declare APP="$1" SOURCECODE_WORK_DIR="$2"
+   local NEW_RAILPACK_JSON="$(fn-builder-railpack-computed-railpackjson-path "$APP")"
+
+-  pushd "$TMP_WORK_DIR" >/dev/null
++  pushd "$SOURCECODE_WORK_DIR" >/dev/null
+
+    if [[ -z "$NEW_RAILPACK_JSON" ]]; then
+      return
