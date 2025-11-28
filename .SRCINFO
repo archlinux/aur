@@ -1,14 +1,13 @@
 pkgbase = otf-mekanus
 	pkgdesc = A serif font
 	pkgver = 1.005
-	pkgrel = 1
+	pkgrel = 2
 	url = http://arkandis.tuxfamily.org/adffonts.html
 	arch = any
 	groups = otf-adf-fonts
-	license = custom:GPL with font exception
+	license = GPL-2.0-or-later WITH Font-exception-2.0
 	conflicts = otf-adf
 	source = http://arkandis.tuxfamily.org/fonts/Mekanus-Std-20111025.zip
 	sha256sums = 4ee5671b78b7f0c9b3d291971cb45dfa6812ba758e395da55cc617e1ea88a2a7
 
 pkgname = otf-mekanus
-
