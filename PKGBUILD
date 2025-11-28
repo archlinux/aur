@@ -1,7 +1,7 @@
 # Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 
 pkgname=throne
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cmake' 'gendesk' 'git' 'go' 'protobuf' 'qt6-tools' 'vulkan-headers
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "${pkgname}.sh"
         "git+https://github.com/throneproj/routeprofiles.git#branch=rule-set")
-sha256sums=('ae3003d36dad6c66019b4075a4818f3a409fc3c086bc74a61e0c8b29ca24b99c'
+sha256sums=('93e27024822cbad7f57b03690c89ad7e853eee8d0f62497193207b5f0424b5d5'
             'b0797f3a45d1c94f5ef93f3dc5979cee633ca1bbcaf5a3c15b3bcf139af8dc62'
             'SKIP')
 
