@@ -1,6 +1,6 @@
 # Maintainers: Théo Le Calvar <tlc@kher.nl>
 pkgname=cecil-bin
-pkgver=8.72.3
+pkgver=8.73.0
 pkgrel=1
 pkgdesc="Static site generator"
 url="https://cecil.app/"
@@ -20,7 +20,7 @@ DLAGENTS=("https::/usr/bin/curl \
 )
 
 source=("${_pkgsrc_file}"::"${_pkgsrc_url}")
-sha256sums=('da215f60be81cc03b05c614b00189ba93368aee40d3ab05c4dd017facd3b1290')
+sha256sums=('162ccf60a3d6f7111ee267bf1cc32f06ea9c076a8c4b301f5aedff805891b71e')
 
 package() {
     mkdir -p "${pkgdir}/usr/bin/"
