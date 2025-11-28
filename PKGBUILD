@@ -57,6 +57,9 @@ package() {
     # Install system-wide configuration file
     install -Dm644 settings.ini.example "$pkgdir/etc/wshowlyrics/settings.ini"
 
+    # Install systemd user service file
+    install -Dm644 wshowlyrics.service "$pkgdir/usr/lib/systemd/user/wshowlyrics.service"
+
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 
