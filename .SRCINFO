@@ -1,6 +1,6 @@
 pkgbase = ani2hyprtui-bin
 	pkgdesc = A TUI tool to convert animated cursors to Hyprcursor format
-	pkgver = 0.1.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Sevilze/ani2hyprtui
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ani2hyprtui-bin
 	provides = ani2hyprtui
 	conflicts = ani2hypr
 	conflicts = ani2hyprtui
-	source = https://github.com/Sevilze/ani2hyprtui/releases/download/v0.1.0/ani2hyprtui-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = SKIP
+	source = https://github.com/Sevilze/ani2hyprtui/releases/download/v0.2.1/ani2hyprtui-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 3e1059b012b63d77c7f6e6c2381d5001fbdf7b283ee203d78c71a81486847abe
 
 pkgname = ani2hyprtui-bin
