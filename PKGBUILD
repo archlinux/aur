@@ -2,7 +2,7 @@
 
 pkgname=python-nxp-codecheck
 _name=${pkgname#python-}
-pkgver=0.3.14
+pkgver=0.3.15
 pkgrel=1
 pkgdesc="Simple set of checking tools for accepting code quality for NXP python projects"
 arch=(any)
@@ -36,7 +36,7 @@ conflicts=(${_name})
 replaces=(${_name})
 _name=${_name//-/_}
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('b94afc1facf64ed777207ab8e5ea4798d440153ac44419bce39df6746cdbdacd17d1abb92118a162a966ccdd48d253ecc8ccfd9e1a28a1d5614c37ccafab0eda')
+sha512sums=('2d5e15d092d36926108ab174430e7cf3561f52b1aaa0fdbc7ec44c36f3564a54a6ed20e07bc07094764c9a02b9431e107fd7f3e1991c752437c06718bdea3a1e')
 
 build() {
   cd ${srcdir}/$_name-$pkgver
