@@ -11,6 +11,6 @@ pkgbase = numr
 	depends = gcc-libs
 	depends = openssl
 	source = numr-0.1.3.tar.gz::https://github.com/nasedkinpv/numr/archive/v0.1.3.tar.gz
-	sha256sums = ec81a1fac0ba5d74a46f9e4bed894ebd7bb292481b8c6025f7089e3066770b57
+	sha256sums = 8381d14106ac7ffdde4e9dd359223fba92dcff2baf0e10023696ce926b082ad5
 
 pkgname = numr
