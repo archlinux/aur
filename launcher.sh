@@ -54,7 +54,4 @@ if [ "${DEV_TOOLS}" = "1" ] || [ "${DEV_TOOLS}" = "true" ]; then
     ALL_FLAGS="--remote-debugging-port=${DEBUG_PORT} --auto-open-devtools-for-tabs ${ALL_FLAGS}"
 fi
 
-# Prepend bundled vendor libraries to loader path (fallback for missing system libs)
-export LD_LIBRARY_PATH="/usr/lib/perplexity/vendor-libs:${LD_LIBRARY_PATH}"
-
 exec "$ELECTRON_BIN" "/usr/lib/perplexity" $ALL_FLAGS "$@"
