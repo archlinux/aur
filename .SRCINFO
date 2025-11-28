@@ -1,6 +1,6 @@
 pkgbase = topgrade
 	pkgdesc = Upgrade all the things
-	pkgver = 16.5.0
+	pkgver = 16.6.0
 	pkgrel = 1
 	url = https://topgrade-rs.github.io
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = topgrade
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	depends = gcc-libs
-	source = topgrade-16.5.0.tar.gz::https://github.com/topgrade-rs/topgrade/archive/refs/tags/v16.5.0.tar.gz
-	sha256sums = a9ef518f34fc7ad2d6c1f1fb0400d2ee860da2ba2ca99bcfd506778d40a9b125
+	source = topgrade-16.6.0.tar.gz::https://github.com/topgrade-rs/topgrade/archive/refs/tags/v16.6.0.tar.gz
+	sha256sums = 29b3ef91e171c217c0e1e324e6b49ffcad6a3a867b4f9395ac92776a1f50f858
 
 pkgname = topgrade
