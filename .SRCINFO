@@ -1,6 +1,6 @@
 pkgbase = proton-mail
 	pkgdesc = Proton official desktop application for Proton Mail and Proton Calendar
-	pkgver = 1.10.1
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://proton.me/mail
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = proton-mail
 	source = proton-mail.desktop
 	source = proton-mail.sh
 	b2sums = SKIP
-	b2sums = dbaec179f629964aac699677b09219e0494426c624d00896c18177263e38dac7fb0383702d9cf22fc617a77809d826d5a8a2348f4a31a6ec069ce642af3671be
+	b2sums = f0a2b4eca51362b204f487c6484e07080b2d953f38acb3b7ce81a05394fe2f57e5fd42f8806111c467aa528e539654a6b1adc3965328668c4734b3eecf3407e9
 	b2sums = 8e85e7543d433d57739d730707826baeadfadd537aed38ba487c7360fe5a69b0cd6e1989be13ebd5bceadc4b888bb3c1c1b17f02f7a5daadad7a2d1b2e0b1f89
 
 pkgname = proton-mail

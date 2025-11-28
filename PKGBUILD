@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=proton-mail
-pkgver=1.10.1
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar'
 arch=('any')
