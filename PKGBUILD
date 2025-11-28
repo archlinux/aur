@@ -54,10 +54,17 @@ package() {
     install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname"
     install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
 
-    cd ProtonWebClients-$pkgver/applications/inbox-desktop
+    cd ProtonWebClients/applications/inbox-desktop
+
+    # Find the output directory (supports any architecture)
+    local _outdir=$(find out -maxdepth 1 -type d -name "Proton Mail-linux-*" | head -1)
+    if [[ -z "$_outdir" ]]; then
+        echo "Error: Could not find Proton Mail output directory" >&2
+        return 1
+    fi
 
     install -dm755 "$pkgdir/usr/share/$pkgname"
-    cp -r "out/Proton Mail-linux-x64/resources"/* "$pkgdir/usr/share/$pkgname/"
+    cp -r "$_outdir/resources"/* "$pkgdir/usr/share/$pkgname/"
 
     cd assets
     install -Dm644 icons/icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
