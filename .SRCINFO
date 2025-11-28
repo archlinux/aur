@@ -1,6 +1,6 @@
 pkgbase = python-dessert
 	pkgdesc = Assertion introspection via AST rewriting
-	pkgver = 1.6.1
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://github.com/getslash/dessert
 	arch = any
@@ -18,7 +18,8 @@ pkgbase = python-dessert
 	depends = python-atomicwrites
 	depends = python-attrs
 	depends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/d/dessert/dessert-1.6.1.tar.gz
-	sha256sums = 53e5a06afa394c8c6a4556c08054f1fd28986bd7bcd1d69f92722af5e97627c1
+	depends = python-pathlib2
+	source = https://files.pythonhosted.org/packages/source/d/dessert/dessert-1.6.3.tar.gz
+	sha256sums = a3113bd5bca112e99a968dcf74afe8841c4e370a936ebeec61b8d9dfb91b8ef6
 
 pkgname = python-dessert
