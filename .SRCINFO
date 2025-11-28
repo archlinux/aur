@@ -1,13 +1,13 @@
 pkgbase = openhab5-addons
 	pkgdesc = addons for openhab5 open source home automation software
-	pkgver = 5.0.2
+	pkgver = 5.0.3
 	pkgrel = 1
 	url = http://www.openhab.org/
 	arch = any
 	license = EPL
 	depends = openhab5
 	conflicts = openhab5-snapshot-addons
-	source = openhab-addons-5.0.2.kar::https://openhab.jfrog.io/artifactory/libs-release/org/openhab/distro/openhab-addons/5.0.2/openhab-addons-5.0.2.kar
-	sha256sums = 0da4a8887afe0b4c9808f35cc033290f608c25eb99bcf6943e73ab59e78894d0
+	source = openhab-addons-5.0.3.kar::https://openhab.jfrog.io/artifactory/libs-release/org/openhab/distro/openhab-addons/5.0.3/openhab-addons-5.0.3.kar
+	sha256sums = 94418677d1b4938da42ef7b88fd72c666ac3829c648aba2930af61625e657368
 
 pkgname = openhab5-addons
