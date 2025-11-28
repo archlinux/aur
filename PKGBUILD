@@ -1,6 +1,6 @@
 # Maintainer: MojArch
 pkgname=opera-developer
-pkgver=125.0.5720.0  # ← Change this when updating
+pkgver=125.0.5727.1  # ← Change this when updating
 pkgrel=1           # ← Reset to 1 when bumping pkgver
 pkgdesc='A fast and secure web browser and Internet suite - developer stream'
 arch=('x86_64')
