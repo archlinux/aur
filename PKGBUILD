@@ -8,17 +8,33 @@ pkgdesc='Proton official desktop application for Proton Mail and Proton Calendar
 arch=('any')
 url='https://proton.me/mail'
 license=('GPL-3.0-or-later')
-depends=('bash' 'electron36' 'hicolor-icon-theme')
-makedepends=('git' 'nodejs-lts-jod' 'yarn')
+_electron=electron36
+depends=('bash' "$_electron" 'hicolor-icon-theme')
+makedepends=('git' 'jq' 'nodejs-lts-jod' 'yarn')
 source=("ProtonWebClients-$pkgver::git+https://github.com/ProtonMail/WebClients.git#branch=release/inbox-desktop@$pkgver"
         'proton-mail.desktop'
         'proton-mail.sh')
 b2sums=('SKIP'
         'f0a2b4eca51362b204f487c6484e07080b2d953f38acb3b7ce81a05394fe2f57e5fd42f8806111c467aa528e539654a6b1adc3965328668c4734b3eecf3407e9'
-        'd71722fd78770b2025464fcde201b4ab18e58afc269105ea389a6d4665a6a0801adcece53507004c56722ba8954ee7fd6b5de3eec3b099c6cc67e206f14cf4aa')
+        '8e85e7543d433d57739d730707826baeadfadd537aed38ba487c7360fe5a69b0cd6e1989be13ebd5bceadc4b888bb3c1c1b17f02f7a5daadad7a2d1b2e0b1f89')
 
 prepare() {
     cd ProtonWebClients-$pkgver
+
+    local _electronver=$(jq -r '.devDependencies.electron | ltrimstr("^")' applications/inbox-desktop/package.json)
+    if [[ -z "$_electronver" || "$_electronver" == "null" ]]; then
+        echo "Failed to read electron version from source" >&2
+        exit 1
+    fi
+    if [[ "electron${_electronver%%.*}" != "$_electron" ]]; then
+        echo "Electron version mismatch: source requires electron${_electronver%%.*} but PKGBUILD specifies $_electron" >&2
+        exit 1
+    fi
+
+    # Change electron binary name to the target electron
+    sed "s|/usr/bin/electron|/usr/bin/$_electron|" -i "$srcdir/proton-mail.sh"
+
+    # Limit workspace applications to inbox-desktop
     sed -i 's/"applications\/\*",/"applications\/inbox-desktop",/' package.json
 }
 
