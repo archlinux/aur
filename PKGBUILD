@@ -24,7 +24,14 @@ pkgver() {
 }
 
 build() {
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DBETTERBLUR_X11=OFF -B build -S "$pkgname"
+    local _cmake_args=(-DCMAKE_INSTALL_PREFIX=/usr)
+
+    # On Wayland, disable the X11 plugin, which currently fails to build
+    if [[ ${XDG_SESSION_TYPE} == wayland ]]; then
+        _cmake_args+=(-DBETTERBLUR_X11=OFF)
+    fi
+
+    cmake "${_cmake_args[@]}" -B build -S "$pkgname"
     make -C build
 }
 
