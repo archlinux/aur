@@ -7,7 +7,7 @@ _pkgver=147.0a1
 _pkgverx="_FP1"
 pkgver=${_pkgver}${_pkgverx}
 
-pkgrel=1
+pkgrel=2
 pkgdesc="Optimized Firefox for GNU/Linux"
 url="https://github.com/CYFARE/HellFire"
 license=('MPL')
@@ -67,7 +67,7 @@ package() {
 
   cd ${srcdir} || exit
 
-  cp -r firefox/* ${pkgdir}/opt/${_pkgname}/
+  cp -r $(pwd)/firefox/* ${pkgdir}/opt/${_pkgname}/
 
   ln -srf ${pkgdir}/opt/${_pkgname}/firefox ${pkgdir}/usr/bin/${_pkgname}
 

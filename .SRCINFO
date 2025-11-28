@@ -1,7 +1,7 @@
 pkgbase = hellfire-browser-bin
 	pkgdesc = Optimized Firefox for GNU/Linux
 	pkgver = 147.0a1_FP1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CYFARE/HellFire
 	arch = x86_64
 	license = MPL
