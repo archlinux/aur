@@ -1,14 +1,13 @@
 pkgbase = otf-electrum
 	pkgdesc = A serif font
 	pkgver = 1.005
-	pkgrel = 1
+	pkgrel = 2
 	url = http://arkandis.tuxfamily.org/adffonts.html
 	arch = any
 	groups = otf-adf-fonts
-	license = custom:GPL with font exception
+	license = GPL-2.0-or-later WITH Font-exception-2.0
 	conflicts = otf-adf
 	source = http://arkandis.tuxfamily.org/fonts/Electrum-Exp-20100711.zip
 	sha256sums = ab7053d7fec89e34c190852073ba212e133858df007beb14ed68199efd32a858
 
 pkgname = otf-electrum
-
