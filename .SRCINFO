@@ -1,0 +1,24 @@
+pkgbase = voxtype
+	pkgdesc = Push-to-talk voice-to-text for Wayland Linux systems
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/peteonrails/voxtype
+	install = voxtype.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = clang
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	optdepends = ydotool: keyboard simulation for typing output
+	optdepends = wl-clipboard: clipboard support
+	optdepends = libnotify: desktop notifications
+	optdepends = pipewire: audio capture (recommended)
+	optdepends = pulseaudio: audio capture (alternative)
+	backup = etc/voxtype/config.toml
+	source = voxtype-0.1.0.tar.gz::https://github.com/peteonrails/voxtype/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = voxtype

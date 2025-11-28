@@ -1,0 +1,17 @@
+post_install() {
+    echo "==> Post-installation steps:"
+    echo "    1. Add your user to the 'input' group:"
+    echo "       sudo usermod -aG input \$USER"
+    echo "    2. Log out and back in for group changes to take effect"
+    echo "    3. Enable and start the ydotool daemon:"
+    echo "       systemctl --user enable --now ydotool"
+    echo "    4. Download a whisper model:"
+    echo "       voxtype setup --download"
+    echo "    5. Start voxtype:"
+    echo "       systemctl --user enable --now voxtype"
+    echo "    Or run manually: voxtype"
+}
+
+post_upgrade() {
+    post_install
+}
