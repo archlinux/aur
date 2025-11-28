@@ -1,6 +1,6 @@
 pkgbase = anytype-alpha-bin
 	pkgdesc = Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users.
-	pkgver = 0.51.7
+	pkgver = 0.51.11
 	pkgrel = 1
 	url = https://github.com/anyproto/anytype-ts
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = anytype-alpha-bin
 	conflicts = anytype-legacy
 	conflicts = anytype-electron-bin
 	conflicts = anytype-bin
-	source = https://github.com/anyproto/anytype-ts/releases/download/v0.51.7-alpha/anytype_0.51.7-alpha_amd64.deb
-	source = https://raw.githubusercontent.com/anyproto/anytype-ts/refs/tags/v0.51.7-alpha/LICENSE.md
-	sha256sums = ca4babe2c7d271f727e1f51ed6a692224cc3406a71bced189d634bec636fc945
+	source = https://github.com/anyproto/anytype-ts/releases/download/v0.51.11-alpha/anytype_0.51.11-alpha_amd64.deb
+	source = https://raw.githubusercontent.com/anyproto/anytype-ts/refs/tags/v0.51.11-alpha/LICENSE.md
+	sha256sums = d4ead5ce1e90b42e39f8478562794ef7375d65bd246eb3e14465fdc21c49d412
 	sha256sums = daad9eb95adc6262b07115ba2cf87cd4c64acaca4b45d48e0fd3b15a72a31dc1
 
 pkgname = anytype-alpha-bin
