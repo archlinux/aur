@@ -75,38 +75,18 @@ prepare() {
     sed -e '/^#include <stdio.h>/ a #include <stdlib.h>' -i 'src/makeproto.c'
   fi
 
-  # Switch to built in link,unlink declarations
-  # cd "${srcdir}"; cp -pr "${_srcdir}" a/; ln -s "${_srcdir}" b; false
-  # diff -pNaru5 a b > '0001-trans.c-unistd.h-link-unlink.patch'
-  patch -Nup1 -i '../0001-trans.c-unistd.h-link-unlink.patch'
-
-  # The mess in make install is too big to fix with sed
-  # cp -p Makefile{,.orig}; false
-  # diff -pNau5 Makefile{.orig,} > '0000-make-install.patch'
-  #patch -d 'src' -Nup0 -i "${srcdir}/0000-make-install.patch"
-
+  local _patches=()
+  # _patches+=("0000-make-install.patch") # The mess in make install is too big to fix with sed
   # Make package compatible
   # Fix high thread count make
   # Set LDFLAGS
-  #cd "${srcdir}"; cp -pr "${_srcdir}" a/; ln -s "${_srcdir}" b; false
-  # diff -pNaru5 a b > '0000-make-install-again.patch'
-  patch -Nup1 -i '../0000-make-install-again.patch'
-
+  _patches+=('0000-make-install-again.patch')
+  _patches+=('0001-trans.c-unistd.h-link-unlink.patch') # Switch to built in link,unlink declarations
   if [ "${_opt_32bit}" -ne 0 ]; then
-    #cd "${srcdir}"; cp -pr "${_srcdir}" a/; ln -s "${_srcdir}" b; false
-    # diff -pNaru5 a b > '0002-makefile-32bit-compile.patch'
-    patch -Nup1 -i '../0002-makefile-32bit-compile.patch'
+    _patches+=('0002-makefile-32bit-compile.patch')
   fi
-
-  # Get rid of a generated code warning
-  #cd "${srcdir}"; cp -pr "${_srcdir}" a/; ln -s "${_srcdir}" b; false
-  # diff -pNaru5 a b > '0003-sys.p2crc-MainType-int.patch'
-  patch -Nup1 -i '../0003-sys.p2crc-MainType-int.patch'
-
-  # Fix warning in 64 bit generated code
-  #cd "${srcdir}"; cp -pr "${_srcdir}" a/; ln -s "${_srcdir}" b; false
-  # diff -pNaru5 a b > '0004-_OutMem-64-bit-compile.patch'
-  patch -Nup1 -i '../0004-_OutMem-64-bit-compile.patch'
+  _patches+=('0003-sys.p2crc-MainType-int.patch') # Get rid of a generated code warning
+  _patches+=('0004-_OutMem-64-bit-compile.patch') # Fix warning in 64 bit generated code
 
   # get rid of home for make test examples check()
   rm -r "../${_srcdir}/home/"
@@ -115,10 +95,28 @@ prepare() {
   rm 'examples/basic' 'examples/cref' 'examples/e' 'examples/fact' 'examples/self' examples/*.c
   rm -r 'examples/c/'
 
-  # point examples check to the just compiled test version
-  # cd "${srcdir}"; cp -pr "${_srcdir}" a/; ln -s "${_srcdir}" b; false
-  # diff -pNaru5 a b > '1000-examples-Makefile-change-binaries.patch'
-  patch -Nup1 -i '../1000-examples-Makefile-change-binaries.patch'
+  _patches+=('1000-examples-Makefile-change-binaries.patch') # point examples check to the just compiled test version
+
+  local _pt _ptf=() _pts=()
+  for _pt in "${_patches[@]}"; do
+    set +u; msg2 "Patch ${_pt}"; set -u
+    if patch -Nufp1 --no-backup-if-mismatch -i "${srcdir}/${_pt}"; then
+      _pts+=("${_pt}")
+    else
+      _ptf+=("${_pt}")
+    fi
+  done
+  if [ "${#_ptf[@]}" -gt 0 ]; then
+     if [ "${#_pts[@]}" -gt 0 ]; then
+       printf 'Patch success %s\n' "${_pts[@]}"
+       printf 'Warning: Some old patches may need to be removed even if they are successful\n'
+     fi
+     printf 'Patch failed %s\n' "${_ptf[@]}"
+     set +x
+     false
+  fi
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
 
   if [ "${_opt_32bit}" -ne 0 ]; then
     sed -e '# 32 bit compile' \
@@ -134,12 +132,13 @@ prepare() {
 build() {
   set -u
   cd "${_srcdir}"
+  local _opts='-Wno-error=incompatible-pointer-types -std=gnu17'
   set +u; msg2 'make check() executable'; set -u
-  make -C 'src' OPT='-O2 -s' ABSHOMEDIR="${srcdir}/${_checkdir}/usr/lib/p2c"
+  make -C 'src' OPT="-O2 -s ${_opts}" ABSHOMEDIR="${srcdir}/${_checkdir}/usr/lib/p2c"
   mv src/p2c{,_test}
   make -C 'src' newhome
   set +u; msg2 'make package() executable'; set -u
-  make -C 'src' OPT='-O2 -s'
+  make -C 'src' OPT="-O2 -s ${_opts}"
   set +u
 }
 
