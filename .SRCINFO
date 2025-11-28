@@ -8,6 +8,7 @@ pkgbase = ddhx
 	makedepends = git
 	makedepends = dub
 	makedepends = dmd
+	depends = glibc
 	depends = gcc-libs
 	provides = ddhx
 	conflicts = ddhx

@@ -13,7 +13,7 @@ pkgdesc="Console hexadecimal file viewer"
 arch=('x86_64')
 url="https://github.com/dd86k/ddhx"
 license=('MIT')
-depends=('gcc-libs')
+depends=('glibc' 'gcc-libs')
 makedepends=('git' 'dub' 'dmd')
 provides=("ddhx")
 conflicts=("ddhx")
@@ -32,16 +32,16 @@ prepare()
 
 build() {
 	cd "${srcdir}/${pkg_name_ver}"
-	dub build -b release-nobounds
+  dub build -b release-nobounds
 }
 
 package() {
-	cd "${srcdir}/${pkg_name_ver}"
-	install -D ddhx "${pkgdir}/usr/bin/ddhx"
-	install -D -m 0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -D -m 0644 README "${pkgdir}/usr/share/doc/${_pkgname}/README"
-	#install -D -m 0644 docs/ddhx.1 "${pkgdir}/usr/share/man/man1/ddhx.1"
-	#install -D -m 0644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  cd "${srcdir}/${pkg_name_ver}"
+  install -D ddhx "${pkgdir}/usr/bin/ddhx"
+  install -D -m 0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m 0644 README "${pkgdir}/usr/share/doc/${_pkgname}/README"
+  #install -D -m 0644 docs/ddhx.1 "${pkgdir}/usr/share/man/man1/ddhx.1"
+  #install -D -m 0644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 }
 
 #
