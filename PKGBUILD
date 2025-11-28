@@ -3,7 +3,7 @@
 # Contributor: peippo <christoph+aur@christophfink.com>
 
 _pkgname=sf
-_pkgver=1.0-22
+_pkgver=1.0-23
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -74,9 +74,9 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-tests.patch")
-md5sums=('d3b0fd9b6f514fce6e8ccc0976f28822'
+md5sums=('222033f42fe48439c1912eb078220541'
          '1f0ac4a99a8706821bc498b734be839f')
-b2sums=('bc9a3d7ae476bb88586657571457f764fe95cf85ee649d4d4836ae2f087637757545afe921fa33eaf1af72e3f6ceec558a6667b9f25092865e0de2fefb9fcfaf'
+b2sums=('7d32493410c0bab54d99f0b525001bc32fb12c07481897b65bddcd83ad42ee4dcce6e4dd063f56d9cf02bb3f91569c235300fb7f8452c7685286094eb97916ed'
         '988ca59b2da630b1c730865f95f4b2c1ce3a88ed67ce49823914ce50f3fe6972ae44a5cb28037cd043e753ec062ab9ec19a4f7f70c05042e010005afec20cb11')
 
 prepare() {
