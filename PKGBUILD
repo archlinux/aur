@@ -4,7 +4,7 @@
 pkgname=( ttf-anybody ttf-anybody-variable)
 pkgbase=ttf-anybody
 pkgver=1.111
-pkgrel=1
+pkgrel=2
 pkgdesc='Sans Serif font by Ty Finck'
 url=https://www.etceteratype.co/anybody
 license=(OFL-1.1)
