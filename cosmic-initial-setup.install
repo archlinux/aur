@@ -1,4 +1,0 @@
-post_install() {
-  getent passwd cosmic-initial-setup >/dev/null || useradd --system --badname \
-    --home-dir /run/cosmic-initial-setup/ --no-create-home --shell /bin/false cosmic-initial-setup
-}

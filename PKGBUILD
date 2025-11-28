@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-initial-setup-git
-pkgver=1.0.0.beta.1.1.r42.g947186e
+pkgver=1.0.0.beta.8.r2.g4684354
 pkgrel=1
 pkgdesc="COSMIC Initial Setup"
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,6 @@ makedepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-install="${pkgname%-git}.install"
 source=('git+https://github.com/pop-os/cosmic-initial-setup.git')
 sha256sums=('SKIP')
 
@@ -34,7 +33,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 
   git lfs install --local
   git remote add network-origin https://github.com/pop-os/cosmic-initial-setup
