@@ -1,0 +1,3 @@
+[waybar]
+source = "git"
+git = "https://github.com/umtdg/Waybar.git"
