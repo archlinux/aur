@@ -1,6 +1,6 @@
 # Maintainer: hengtseChou <hankthedev@gmail.com>
 pkgname=lnk
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="🔗 Git-native dotfiles management that doesn't suck. "
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3df383982edf86756dfc1cbbe32a98583128c61798b2d83be41c4d2253b08441')
+sha256sums=('aeb60a34139af39fe9a495cf15b261e2c743dd757599737a1db36dd1ae997b96')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
