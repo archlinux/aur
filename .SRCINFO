@@ -1,6 +1,6 @@
 pkgbase = psst-bin
 	pkgdesc = Fast and multi-platform Spotify client with native GUI
-	pkgver = 2025.11.26_adcff3f
+	pkgver = 2025.11.28_74fa177
 	pkgrel = 1
 	url = https://github.com/jpochyla/psst
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = psst-bin
 	depends = gtk3
 	depends = alsa-lib
 	depends = openssl
-	source = psst-linux-x86_64-2025.11.26_adcff3f::https://github.com/jpochyla/psst/releases/download/rolling/psst-linux-x86_64
+	source = psst-linux-x86_64-2025.11.28_74fa177::https://github.com/jpochyla/psst/releases/download/rolling/psst-linux-x86_64
 	source = psst.desktop::https://raw.githubusercontent.com/jpochyla/psst/refs/heads/main/.pkg/psst.desktop
 	source = logo_32.png::https://github.com/jpochyla/psst/blob/main/psst-gui/assets/logo_32.png?raw=true
 	source = logo_64.png::https://github.com/jpochyla/psst/blob/main/psst-gui/assets/logo_64.png?raw=true
