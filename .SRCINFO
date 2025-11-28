@@ -1,0 +1,15 @@
+pkgbase = star-bin
+	pkgdesc = A Unix command line bookmark manager
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Fruchix/star
+	arch = x86_64
+	license = Apache-2.0
+	depends = bash
+	depends = zsh
+	provides = star
+	conflicts = star
+	source_x86_64 = star-x86_64-2.0.0.tgz::https://github.com/Fruchix/star/releases/download/v2.0.0/star-2.0.0.tar.gz
+	sha256sums_x86_64 = f477b43359d14df86ced45a072a4da19316195bba3d2cc9664a7e7d3468fccc5
+
+pkgname = star-bin
