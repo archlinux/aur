@@ -17,7 +17,7 @@ url='https://www.openswan.org'
 _giturl='https://github.com/xelerance/Openswan'
 license=('GPL' 'custom')
 depends=('gmp' 'perl' 'iproute2')
-optdepends=('python2')
+#optdepends=('python2')
 makedepends=('flex' 'bison')
 #makedepends+=('xmlto' 'docbook-xsl')
 conflicts=('ipsec-tools' 'strongswan')
@@ -43,11 +43,33 @@ prepare() {
   set -u
   cd "${_srcdir}"
 
-  # Change install paths to Arch defaults
-  sed -e 's|/usr/local|/usr|;s|libexec/ipsec|lib/openswan|;s|)/sbin|)/bin|' -i 'Makefile.inc'
-
-  # Replace invalid init script paths with systemd script path
-  sed -e 's/^INC_RCDIRS.*/INC_RCDIRS\?\=\/usr\/lib\/systemd\/scripts/' -i 'Makefile.inc'
+  #cp -p 'Makefile.inc' 'Makefile.Arch.inc'
+  local _seds=(
+    -e '# Change install paths to Arch defaults'
+    -e 's|/usr/local|/usr|'
+    -e 's|libexec/ipsec|lib/openswan|'
+    -e 's|)/sbin|)/bin|'
+    -e '# Replace invalid init script paths with systemd script path'
+    -e 's/^INC_RCDIRS.*/INC_RCDIRS\?\=\/usr\/lib\/systemd\/scripts/'
+  )
+  sed "${_seds[@]}" -i 'Makefile.inc'
+  test '!' -s 'Makefile.Arch.inc' || echo "${}"
+  _seds=(
+    -e '# Disable halt on warnings for unmaintained code'
+    #-e 's:-Werror:-Wno-error:g'
+    -e 's:-Werror::g'
+  )
+  sed -E "${_seds[@]}" -i 'programs/Makefile.program'
+  _seds=(
+    -e '# fix misdetection of gcc>=10'
+    -e 's/GCC_VERSION_GE_46:=/&true\n#/g'
+  )
+  sed -E "${_seds[@]}" -i 'Makefile.common'
+  _seds=(
+    -e '# remove egrep warning'
+    -e 's:\begrep\b:grep -E:g'
+  )
+  sed -E "${_seds[@]}" -i 'Makefile' 'Makefile.top' 'contrib/sarefnc/scripts/alta' 'programs/barf/barf.in' 'programs/ipsec/ipsec.in' 'programs/look/look.in' packaging/utils/{backup,errcheck,kerneldiff,kernelpatch,manlink,nattpatch,patcher,prepcand,sarefpatch,update-natt}
 
   set +u
 }
@@ -67,7 +89,9 @@ build() {
   if [ "${pkgver}" = '2.6.52.1' ]; then
     CFLAGS+=' -fcommon'
   fi
-  make USE_XAUTH='true' USE_OBJDIR='true' programs
+  CFLAGS="${CFLAGS//_FORTIFY_SOURCE/_FORTIFY_SRC_DISABLED}"
+  export USERCOMPILEEXTRA='-std=gnu17'
+  make USE_XAUTH='true' USE_OBJDIR='true' programs # V=1
   set +u
 }
 

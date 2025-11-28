@@ -13,7 +13,6 @@ pkgbase = openswan
 	depends = gmp
 	depends = perl
 	depends = iproute2
-	optdepends = python2
 	conflicts = ipsec-tools
 	conflicts = strongswan
 	options = !makeflags
