@@ -5,13 +5,14 @@ _appname=firebot
 pkgver="${_mainver}.65.0"
 _appver="${pkgver}-beta1"
 #_appver="${pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful all-in-one bot for Twitch streamers. Updates to Stable and Beta releases"
 arch=('x86_64')
 url="https://github.com/crowbartools/Firebot"
 provides=("firebot")
 conflicts=("firebot")
 license=('GPL3')
+makedepends=("desktop-file-utils")
 source=("${url}/releases/download/v${_appver}/${_appname}-v${_appver}-linux-x64.tar.gz"
         "${_appname}.sh"
         "logo.svg"

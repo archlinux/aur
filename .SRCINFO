@@ -1,10 +1,11 @@
 pkgbase = firebot-beta-bin
 	pkgdesc = A powerful all-in-one bot for Twitch streamers. Updates to Stable and Beta releases
 	pkgver = 5.65.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crowbartools/Firebot
 	arch = x86_64
 	license = GPL3
+	makedepends = desktop-file-utils
 	provides = firebot
 	conflicts = firebot
 	source = https://github.com/crowbartools/Firebot/releases/download/v5.65.0-beta1/firebot-v5.65.0-beta1-linux-x64.tar.gz
