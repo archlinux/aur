@@ -6,13 +6,15 @@
 
 set -u
 pkgname='justniffer'
-pkgver='0.6.9'
-pkgrel='1'
-pkgdesc='TCP sniffer. It reassembles and reorders packets and displays the tcp flow in a customizable way.'
-arch=('i686' 'x86_64')
+pkgver=0.6.12
+pkgrel=1
+pkgdesc="TCP sniffer. It reassembles and reorders packets and displays the TCP flow in a customizable way."
+arch=('x86_64')
+arch+=('i686')
+url="https://onotelli.github.io/justniffer/"
 url='http://justniffer.sourceforge.net'
 _giturl='https://github.com/onotelli/justniffer'
-license=('GPL-3.0-only')
+license=('GPL-3.0-or-later')
 depends=('glibc' 'gcc-libs' 'libpcap' 'boost-libs' 'python') # 'libnids' the package includes its own custom version of libnids
 #depends+=('python')
 # I suspect python2 is a makedepends. No python code goes into the package.
@@ -26,9 +28,9 @@ source=("${_srcdir//-/_}.tar.gz::${_giturl}/archive/refs/tags/v${pkgver}.tar.gz"
 if [ "$(vercmp "${pkgver}" "0.6.0")" -ge 0 ]; then
   _srcdir+='/main'
 fi
-md5sums=('84edbd37226d9297bcde147060cee8fa'
+md5sums=('8b08fae3922de7ef1981c5c516316cd3'
          '53c7d7dd2f38aaf727fedc9236de8bff')
-sha256sums=('593f278e9e97ab94d6c3d9c94902bbd70e32d40a9d9c60fb772c41cd00a3c5c8'
+sha256sums=('9a388d88e41a2cad8b8a6605a3ff6d781ca83e5cc1d30c795e884a44c5763202'
             '1c819bdb553f022fed906aece6d114de8c0bbdec8c4f6b7aa1a16c964fdb816e')
 
 prepare() {
