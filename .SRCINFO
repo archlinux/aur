@@ -1,7 +1,7 @@
 pkgbase = ttf-anybody
 	pkgdesc = Sans Serif font by Ty Finck
 	pkgver = 1.111
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.etceteratype.co/anybody
 	arch = any
 	license = OFL-1.1
