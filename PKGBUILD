@@ -4,7 +4,7 @@ pkgbase=mkdocstrings-python
 _pyname=("${pkgbase//-/_}")
 pkgname=("${pkgbase}")
 #"${pkgbase}-doc")
-pkgver=1.19.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A Python handler for mkdocstrings"
 url="https://mkdocstrings.github.io"
@@ -25,7 +25,6 @@ makedepends=('python-pdm-backend'
 #             'mkdocstrings'
 #             )
 checkdepends=('python-pytest'
-#             'python-pytest-xdist'
               'python-griffe'
               'mkdocstrings'
               'python-beautifulsoup4'
@@ -33,7 +32,7 @@ checkdepends=('python-pytest'
               'mkdocs-material')
 #source=("https://github.com/mkdocstrings/mkdocstrings/archive/refs/tags/${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('917aac66cf121243c11db5b89f66b0ded6c53ec0de5318ff5e22424eb2f2e57c')
+sha256sums=('4d872290f595221740a304bebca5b3afa4beafe84cc6fd27314d52dc3fbb4676')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
