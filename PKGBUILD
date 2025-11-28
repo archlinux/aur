@@ -6,163 +6,211 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 set -u
-_pkgname='imagemagick'
-pkgbase="${_pkgname}-git"
-#_srcdir="${pkgbase}"
-_srcdir='ImageMagick'
-pkgname=("${pkgbase}"{,-doc})
-pkgver=7.0.10.59.r18323.gf548a590c
+pkgname=imagemagick
+pkgname+='-git'
+pkgver=7.1.2.8.r35.g85c04c1
+_pkgver=${pkgver%.*}-${pkgver##*.}
+_pkgver="${pkgver%%.r*}"
+_pkgver="${_pkgver%.*}-${_pkgver##*.}"
 pkgrel=1
 pkgdesc='An image viewing/manipulation program'
-arch=('x86_64')
-url="https://www.imagemagick.org/"
+url='https://www.imagemagick.org/'
+arch=(x86_64)
 license=(custom)
-makedepends=('ghostscript' 'openexr' 'libwmf' 'librsvg' 'libxml2' 'openjpeg2' 'libraw' 'opencl-headers' 'libwebp' 'libzip'
-             'chrpath' 'ocl-icd' 'glu' 'ghostpcl' 'ghostxps' 'libheif' 'jbigkit' 'lcms2' 'libxext' 'liblqr' 'libraqm' 'libpng' 'djvulibre')
+license=('ImageMagick')
+depends=(bzip2
+         cairo
+         fftw
+         fontconfig
+         freetype2
+         gcc-libs
+         glib2
+         glibc
+         lcms2
+         liblqr
+         libltdl
+         libpng
+         libraqm
+         libxext
+         libxml2
+         xz
+         zlib)
+depends+=('libwmf' 'openjpeg2' 'perl' 'libraw' 'libultrahdr' 'libheif' 'libzip' 'djvulibre' 'libjxl' 'openexr' 'librsvg' 'pango' 'bash' 'libx11' 'jbigkit' 'libwebp' 'libtiff' 'libjpeg-turbo')
+optdepends=('ghostscript: PS/PDF support'
+            'jbigkit: JBIG support'
+            'libheif: HEIF support'
+            'libjpeg-turbo: JPEG support'
+            'libjxl: JPEG XL support'
+            'libraw: DNG support'
+            'librsvg: SVG support'
+            'libtiff: TIFF support'
+            'libultrahdr: UHDR support'
+            'libwebp: WEBP support'
+            'libwmf: WMF support'
+            'libzip: OpenRaster support'
+            'ocl-icd: OpenCL support'
+            'openexr: OpenEXR support'
+            'openjpeg2: JPEG2000 support'
+            'djvulibre: DJVU support'
+            'pango: Text rendering')
+options+=(!emptydirs libtool)
+backup=(etc/ImageMagick-7/{colors,delegates,log,mime,policy,quantization-table,thresholds,type,type-{dejavu,ghostscript}}.xml)
+provides=(libmagick)
+makedepends=(chrpath
+             djvulibre
+             ghostscript
+             git
+             glu
+             jbigkit
+             libheif
+             libjpeg-turbo
+             libjxl
+             libraw
+             librsvg
+             libultrahdr
+             libwebp
+             libwmf
+             libzip
+             ocl-icd
+             opencl-headers
+             openexr
+             openjpeg2)
+#makedepends+=('libxml2' 'ghostpcl' 'ghostxps' 'lcms2' 'libxext' 'liblqr' 'libraqm 'libpng')
 #makedepends+=('libltdl' 'libxt' 'fontconfig')
-makedepends+=('patch' 'git')
-checkdepends=(gsfonts ttf-dejavu)
-_relname=ImageMagick-${pkgver%%.*}
-_verwatch=("${url/script/download/}" 'ImageMagick-\([-0-9\.]\+\)\.tar\.bz2' 'l')
-_archlink='https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/imagemagick/trunk/@@@'
-source=(
-  #"${_srcdir}::git+http://git.imagemagick.org/repos/ImageMagick.git"
-  "git+https://github.com/ImageMagick/ImageMagick.git"
-  "${_archlink//@@@/arch-fonts.diff}"
+checkdepends=(gsfonts
+              ttf-dejavu)
+replaces=(imagemagick-doc)
+#_verwatch=("${url/script/download/}" 'ImageMagick-\([-0-9\.]\+\)\.tar\.bz2' 'l')
+#_archlink='https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/imagemagick/trunk/@@@'
+_srcdir='ImageMagick'
+source=(git+https://github.com/ImageMagick/ImageMagick#tag=$_pkgver)
+source+=(
+  #"${_archlink//@@@/arch-fonts.diff}" # Fix up typemaps to match our packages, where possible
 )
-md5sums=('SKIP'
-         '9772162111fe9c74b3299cadc973a889')
-sha256sums=('SKIP'
-            'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
+md5sums=('49b7f8e2106e814dda6c121d4b1fe224')
+sha256sums=('3468666570fab914250c05f4ade6f9843d021e5bfe66a7f1c0ed4039f90cbc42')
 #validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')  # Lexie Parsimoniae
+#validpgpkeys=(C305FEBD4C4081119CB3C12CE640E67B2C7F96AA)  # Dirk Lemstra <dirk@lemstra.org>
 
+# optdepends in makedepends makes namcap complain
+_clean_opt() {
+  local _md _od _odc _oda=("${optdepends[@]}")
+  optdepends=()
+  for _od in "${_oda[@]}"; do
+    _odc="${_od%%:*}"
+    for _md in "${makedepends[@]}" "${depends[@]}"; do
+      #printf 'Check %s %s\n' "${_md}" "${_odc}"
+      if [ "${_md}" = "${_odc}" ]; then
+        #printf 'Kill %s\n' "${_od}"
+        _od=''
+        break
+      fi
+    done
+    if [ ! -z "${_od}" ]; then
+      optdepends+=("${_od}")
+    fi
+  done
+}
+_clean_opt
+#printf "optdepends+=('%s')\n" "${optdepends[@]}"; exit 1
+
+if [ "${pkgname%-git}" != "${pkgname}" ]; then
+  source[0]='git+https://github.com/ImageMagick/ImageMagick.git'
+  md5sums[0]='SKIP'
+  sha256sums[0]='SKIP'
+  conflicts=('imagemagick')
+  provides=("imagemagick=${pkgver%%.r*}")
 pkgver() {
   set -u
-  cd "${_srcdir}/"
-  local _version="$(grep -o -m1 '[0-9]\+\.[0-9]\+\.[0-9\.-]\+' 'ChangeLog')"
-  printf '%s.r%s.g%s' "${_version//-/.}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${_srcdir}"
+  git describe --long --abbrev=7 | sed -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
   set +u
 }
+elif [ "${pkgver%%.r*}" != "${pkgver}" ]; then
+pkgver() {
+  set -u
+  printf '%s\n' "${pkgver%%.r*}"
+  set +u
+}
+fi
 
 prepare() {
   set -u
-  mkdir -p docpkg/usr/share
-
   cd "${_srcdir}"
 
-  # Fix up typemaps to match our packages, where possible
-  patch -p1 -i ../arch-fonts.diff
+  # Apply patches
+  local _pt
+  for _pt in "${source[@]%%::*}"; do
+    _pt="${_pt##*/}"
+    case "${_pt}" in
+    *.patch)
+      set +u; msg2 "*** Applying patch ${_pt}"; set -u
+      patch --no-backup-if-mismatch -Np1 -i "${srcdir}/${_pt}"
+      ;;
+    esac
+  done
 
   set +u
 }
 
-_configure() {
+build() {
   set -u
   cd "${_srcdir}"
 if [ ! -s 'Makefile' ]; then
-  autoreconf --force --install
+  #autoreconf --force --install
   ./configure \
-    --prefix='/usr' \
-    --sysconfdir='/etc' \
+    --prefix=/usr \
+    --sysconfdir=/etc \
     --enable-shared \
-    --with-dejavu-font-dir='/usr/share/fonts/TTF' \
-    --with-gs-font-dir='/usr/share/fonts/gsfonts' \
-    PSDelegate='/usr/bin/gs' \
-    XPSDelegate='/usr/bin/gxps' \
-    PCLDelegate='/usr/bin/gpcl6' \
+    --disable-static \
+    --with-dejavu-font-dir=/usr/share/fonts/TTF \
+    --with-gs-font-dir=/usr/share/fonts/gsfonts \
+    PSDelegate=/usr/bin/gs \
+    XPSDelegate=/usr/bin/gxps \
+    PCLDelegate=/usr/bin/gpcl6 \
     --enable-hdri \
     --enable-opencl \
     --without-gslib \
     --with-djvu \
+    --with-fftw \
+    --with-jxl \
     --with-lqr \
     --with-modules \
     --with-openexr \
     --with-openjp2 \
     --with-perl \
-    --with-perl-options='INSTALLDIRS=vendor' \
+    --with-perl-options='INSTALLDIRS=vendor INSTALL_BASE=' \
     --with-rsvg \
+    --with-uhdr \
     --with-webp \
     --with-wmf \
     --with-xml \
     --without-autotrace \
     --without-dps \
-    --without-fftw \
     --without-fpx \
     --without-gcc-arch \
     --without-gvc
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 fi
-  cd "${srcdir}"
-  set +u
-}
-
-build() {
-  _configure
-  set -u
-  cd "${_srcdir}"
-  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  nice make -s -j "${_nproc}"
+  make
   set +u
 }
 
 check_disabled() {
   cd "${_srcdir}"
   ulimit -n 4096
-  make -s -j1 check
+  make check
 }
 
-package_imagemagick-git() {
-  set -u
-  depends=(libltdl lcms2 fontconfig libxext liblqr libraqm libpng libxml2)
-  optdepends=('ghostscript: PS/PDF support'
-              'libheif: HEIF support'
-              'libraw: DNG support'
-              'librsvg: SVG support'
-              'libwebp: WEBP support'
-              'libwmf: WMF support'
-              'libxml2: Magick Scripting Language'
-              'ocl-icd: OpenCL support'
-              'openexr: OpenEXR support'
-              'openjpeg2: JPEG2000 support'
-              'djvulibre: DJVU support'
-              'pango: Text rendering'
-              'imagemagick-doc: manual and API docs')
-  options=(!emptydirs libtool)
-  backup=(etc/$_relname/{colors,delegates,log,mime,policy,quantization-table,thresholds,type,type-{dejavu,ghostscript}}.xml)
-  conflicts=(imagemagick6)
-  provides=(libmagick)
-  replaces=(imagemagick6 libmagick)
-  provides+=("${_pkgname}=${pkgver%.r*}")
-  conflicts+=("${_pkgname}")
-
+package() {
   cd "${_srcdir}"
-  make -s -j1 DESTDIR="${pkgdir}" install
+  make DESTDIR="$pkgdir" install
 
-  find "${pkgdir}/usr/lib/perl5" -name '*.so' -exec chrpath -d {} +
-  rm "${pkgdir}"/etc/$_relname/type-{apple,urw-base35,windows}.xml
-  rm "${pkgdir}"/usr/lib/*.la
+  find "$pkgdir/usr/lib/perl5" -name '*.so' -exec chrpath -d {} +
+  rm "$pkgdir"/etc/ImageMagick-*/type-{apple,urw-base35,windows}.xml
+  rm "$pkgdir"/usr/lib/*.la
 
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE NOTICE
-
-# Split docs
-  mv "${pkgdir}/usr/share/doc" "${srcdir}/docpkg/usr/share/"
-
-# Harden security policy https://bugs.archlinux.org/task/62785
-  sed -e '/<\/policymap>/i \ \ <policy domain="delegate" rights="none" pattern="gs" \/>' -i "$pkgdir"/etc/ImageMagick-7/policy.xml
-  set +u
+  install -Dm644 LICENSE NOTICE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
 
-package_imagemagick-git-doc() {
-  set -u
-  pkgdesc+=" (manual and API docs)"
-  provides=("${_pkgname}-doc")
-  conflicts=("${_pkgname}-doc")
-  depends=("${_pkgname}")
-
-  mv docpkg/* "${pkgdir}"
-
-  cd "${_srcdir}"
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE NOTICE
-  set +u
-}
 set +u
