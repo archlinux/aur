@@ -1,10 +1,10 @@
-# Maintainer: Daniel Serrano <dani.eus79@gmail.com>
+# Maintainer: Daniel Serrano <anabasasoft@gmail.com>
 pkgname=visagevault
-pkgver=1.6.15
+pkgver=1.6.16
 pkgrel=1
 pkgdesc="Gestor de fotografías inteligente con reconocimiento facial (Código Fuente)"
 arch=('any') # 'any' porque es Python puro, corre en cualquier arquitectura
-url="https://github.com/danitxu79/visagevault"
+url="https://github.com/anabasasoft/visagevault"
 license=('LGPL3')
 provides=('visagevault')
 conflicts=('visagevault' 'visagevault-bin')
@@ -30,10 +30,10 @@ depends=(
 makedepends=('git') # Necesario para descargar
 
 # Descargamos el código fuente directamente del Tag de GitHub
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/danitxu79/visagevault/releases/download/v${pkgver}/visagevault-${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/anabasasoft/visagevault/releases/download/v${pkgver}/visagevault-${pkgver}.tar.gz")
 
 # Generar checksums con 'updpkgsums' antes de subir, o usar SKIP para desarrollo
-sha256sums=('4b603b02a7f3d750fdf703bec1019850074d9d60486c1779f0c8fe573d5e4d56')
+sha256sums=('08a59144b65863a7c8c76eb26d06e96bef21acd95e08558b06fbc3b1aa68ff46')
 
 # No hay función build() porque Python no se "compila" en binario,
 # pero podemos pre-compilar el bytecode para que arranque más rápido.
