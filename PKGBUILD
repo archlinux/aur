@@ -2,7 +2,7 @@
 # Contributor: Sashanoraa <sasha@noraa.gay>
 
 pkgname=license
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc='A tool to easily add a license to your project'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ optdepends=(
     'xclip: required for interactive scripts: set-license, copy-header'
     'wl-clipboard: required for interactive scripts: set-license, copy-header'
 )
-sha256sums=('a4637ce1b5a3ce58f84fb078f5df6de696028de97bafd956fa28ba91cff75224')
+sha256sums=('e7eca671edbe67bf983b5a12a86e8dd8a200db3ead61304ab9c4c198d366b84e')
 
 prepare() {
     cd $pkgname-$pkgver
