@@ -1,7 +1,7 @@
 # Maintainer: Alois <aloisianer@proton.me>
 pkgname=tensamin-bin
 _pkgname=tensamin
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="True E2EE, decentralized messages. Open source and privacy first."
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=(c-ares
 		 libxss)
 provides=('tensamin')
 conflicts=('tensamin' 'tensamin-git')
-source=("https://github.com/Tensamin/Frontend/releases/download/desktop-v${pkgver}/tensamin_${pkgver}_amd64.deb")
+source=("https://github.com/Tensamin/Frontend/releases/download/v${pkgver}/tensamin_${pkgver}_amd64.deb")
 sha256sums=('SKIP')
 
 package() {
