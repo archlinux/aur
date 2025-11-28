@@ -1,14 +1,13 @@
 pkgbase = otf-gillius
 	pkgdesc = A sans-serif font
 	pkgver = 1.009
-	pkgrel = 1
+	pkgrel = 2
 	url = http://arkandis.tuxfamily.org/adffonts.html
 	arch = any
 	groups = otf-adf-fonts
-	license = custom:GPL with font exception
+	license = GPL-2.0-or-later WITH Font-exception-2.0
 	conflicts = otf-adf
 	source = http://arkandis.tuxfamily.org/fonts/Gillius-Collection-20110312.zip
 	sha256sums = a74f1c9ecbdeb4751ac410f77dbe7210379dc87300c7a3afa19dcc354513f0bd
 
 pkgname = otf-gillius
-
