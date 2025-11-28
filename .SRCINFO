@@ -1,6 +1,6 @@
 pkgbase = hslinkupper
 	pkgdesc = HSLinkUpper is a simple tool that allows you to config HSLink.
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/HSLink/HSLinkNexus
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = hslinkupper
 	replaces = hslinkupper
 	options = !strip
 	options = !debug
-	source = HSLinkNexus-1.2.2.tar.gz::https://github.com/HSLink/HSLinkNexus/archive/refs/tags/v1.2.2.tar.gz
-	sha256sums = 3fc1882cfcebef1328d05b473d9ba61ed169171dbb2e7c915dedfa1aa11c3b2d
+	source = HSLinkNexus-1.2.3.tar.gz::https://github.com/HSLink/HSLinkNexus/archive/refs/tags/v1.2.3.tar.gz
+	sha256sums = 2bdfc69d1b6c5b78bbcec89579cc5588eb06c6386464a0c59f806be1a97af547
 
 pkgname = hslinknexus
