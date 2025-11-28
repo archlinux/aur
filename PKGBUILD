@@ -2,7 +2,7 @@
 _base=gmpy
 pkgname=pypy3-${_base}2
 pkgdesc="Interface to GMP, MPFR, and MPC"
-pkgver=2.2.2a1
+pkgver=2.3.0a2
 pkgrel=1
 arch=(any)
 url="https://github.com/aleaxit/${_base}"
