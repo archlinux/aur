@@ -1,19 +1,18 @@
 pkgbase = libftd3xx
 	pkgdesc = Library that allows a direct access to a FTDI USB3.0 chip (FT60x) based device. Proprietary FTDI drivers BETA.
-	pkgver = 0.5.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://www.ftdichip.com/
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = glibc
-	depends = libusbx>=1.0.8
+	depends = libusb>=1.0.8
 	options = !strip
 	options = staticlibs
-	source = http://www.ftdichip.com/Drivers/D3XX/Linux/d3xx-linux-x86_64-0.5.0.tar.zip
-	source = http://www.ftdichip.com/Drivers/FTDriverLicenceTerms.htm
-	md5sums = ff272a3e2781313d2adbef78b37e00ec
-	md5sums = 5aa57df28165cb16ffdf2f2989417841
+	source = https://ftdichip.com/wp-content/uploads/2025/11/libftd3xx-linux-x86_64-1.1.0.tgz
+	source = LICENSE.html::https://ftdichip.com/driver-licence-terms/
+	md5sums = d98bc867aabf4f0368c619d19d3e5740
+	md5sums = f561247e19b5b704f60b65741cffbcd7
 
 pkgname = libftd3xx
-
