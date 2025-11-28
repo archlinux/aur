@@ -1,0 +1,6 @@
+pkg/
+src/
+build_env/
+*.tar.gz
+SignAndSeal-*/
+*.tar.gz.zst
