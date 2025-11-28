@@ -8,10 +8,10 @@ url='https://www.perforce.com/products/helix-core-apps/merge-diff-tool-p4merge'
 license=('custom')
 provides=("p4merge=${pkgver}")
 conflicts=('p4merge')
-source=("https://www.perforce.com/downloads/perforce/r$pkgver/bin.linux26x86_64/p4v.tgz"
+source=("https://filehost.perforce.com/perforce/r$pkgver/bin.linux26x86_64/p4v.tgz"
         "p4admin.desktop"
         "p4merge.desktop")
-sha256sums=('41b19e0f4617fed5ffacfb221f06e57cc9e36e0155a2b06f98ce9e6d63091add'
+sha256sums=('af03851bf6574ad30b52ce93cc716dcc80105939fba76617102c180c54e3d925'
             'SKIP'
             'SKIP')
 
