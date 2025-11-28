@@ -1,6 +1,6 @@
 # Maintainer: Ben Alex <ben.alex@acegi.com.au>
 pkgname=openhab5
-pkgver=5.0.2
+pkgver=5.0.3
 pkgrel=1
 pkgdesc="openhab5 open source home automation software"
 arch=("any")
@@ -25,7 +25,7 @@ source=("openhab-${pkgver}.tar.gz::https://openhab.jfrog.io/artifactory/libs-rel
         "${pkgname}.patch"
         "karaf_wrapper.sh"
         "${pkgname}.hook")
-sha256sums=('9d5d8815951d1638a4cb08d430226ec670179cbbd4620cb16d0251b4bb9f9377'
+sha256sums=('c75157d4a412f6fdc28924dee562244e728ea2c51b75a86c362f1c5adc62fcf1'
             '0150dd2a2708b2229e7ad7e980a516b7259fd2f06300cd2de0a7aeced381ca0b'
             'a12ac4b13481c9eb8c7472650f8231a8ff99ecc589302a62b59e819680b10fed'
             '40f9769e7c9b43abcb9705a3762bf11bfa0b6906601dd09b68a9585452a9608b'
