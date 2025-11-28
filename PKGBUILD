@@ -7,10 +7,15 @@ pkgdesc="A collection of device specific configuration files"
 arch=('any')
 url="https://github.com/ChimeraOS/device-quirks"
 license=('MIT')
-depends=('acpica'
-         'cpio'
-         'systemd'
-         'swh-plugins')
+depends=(
+	'acpica'
+	'cpio'
+	'systemd'
+	'swh-plugins'
+	'lv2'
+	'bankstown'
+	'lsp-plugins-lv2'
+)
 makedepends=('git')
 source=("${_pkgbase}::git+https://github.com/honjow/device-quirks.git#branch=dev")
 md5sums=('SKIP')
@@ -66,13 +71,13 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/pipewire/hardware-profiles"
 	cp -rv usr/share/pipewire/hardware-profiles/* "${pkgdir}/usr/share/pipewire/hardware-profiles/."
 
-	# Install wireplumber hardware configs 
+	# Install wireplumber hardware configs
 	mkdir -p "${pkgdir}/usr/share/wireplumber/hardware-profiles"
 	cp -rv usr/share/wireplumber/hardware-profiles/* "${pkgdir}/usr/share/wireplumber/hardware-profiles/."
-	
+
 	install -dm755 "${pkgdir}/usr/share/wireplumber/wireplumber.conf.d"
 	install -v -m644 -D -t "${pkgdir}/usr/share/wireplumber/wireplumber.conf.d/" usr/share/wireplumber/wireplumber.conf.d/*
-	
+
 	#Install device-quirks config
 	mkdir -p "${pkgdir}/etc/device-quirks"
 	cp -rv etc/device-quirks/* "${pkgdir}/etc/device-quirks/."
