@@ -1,7 +1,7 @@
 # Maintainer: Do1e <https://aur.archlinux.org/account/Do1e>
 
 pkgname=python-mijia-api
-pkgver=2.0.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A Python API for Xiaomi Mijia"
 arch=('any')
@@ -9,21 +9,20 @@ url='https://github.com/Do1e/mijia-api'
 license=('GPL-3.0')
 depends=(
   'python>=3.9'
-  'python-pillow>=11.0.0'
-  'python-qrcode>=8.0'
-  'python-requests>=2.32.3'
+  'python-pillow>=11.3.0'
+  'python-pycryptodome>=3.23.0'
+  'python-qrcode>=8.2'
+  'python-requests>=2.32.5'
+  'python-tzlocal>=1:5.3.1'
 )
-makedepends=(python-poetry)
+makedepends=(uv)
 
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/03/22/91109afb6f513f65324b1ec8ed1cdc3a3c800dadc8d3d01cdcc2e6024e99/mijiaapi-2.0.2.tar.gz")
-sha256sums=('ef36cd7a616c4449ea26f22d64a88de7d87b69494b5c41abf0206d8df41a51b1')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/24/92/9773d6686df863d25c1e3b4d2b60090beae48416bada817e49194a41bf23/mijiaapi-3.0.0.tar.gz")
+sha256sums=('083d2b9b68479b6e7aff79ce5ab66019763a0bdc141d31141ca60ded25d5a0a7')
 
 build() {
   cd "mijiaapi-$pkgver"
-  original_venv_setting=$(poetry config virtualenvs.create --local)
-  poetry config virtualenvs.create false
-  poetry build
-  poetry config virtualenvs.create "$original_venv_setting"
+  uv build
 }
 
 package() {
