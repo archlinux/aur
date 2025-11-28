@@ -1,15 +1,18 @@
 pkgbase = liteloader-qqnt-patcher
 	pkgdesc = A Patcher for LiteLoaderQQNT
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LiteLoaderQQNT/LiteLoaderQQNT
+	install = liteloader-qqnt-patcher.install
 	arch = any
 	license = MIT
 	depends = liteloader-qqnt
 	provides = liteloader-qqnt-patcher
+	source = LiteLoaderQQNT.js
 	source = patcher.sh
 	source = liteloader-qqnt-patcher-notify.hook
-	sha256sums = 6e9a8f2a1ecf639ed66a2926ca7a92e9c733930c3e7898d4c10966a437646a0e
+	sha256sums = 2e35c441765403daca5a80416717550adb8f718a8558580ed682e65248831ee6
+	sha256sums = f9c76f919cfa72a3579637a5e585699f62d98ae7fabafd2796b97d3355ae842b
 	sha256sums = 589c85d842387cfedad6128f8f9311869c01a74be1c6b32e38011ac1f4015292
 
 pkgname = liteloader-qqnt-patcher

@@ -1,7 +1,7 @@
 # Maintainers: kobe-koto <k at koto dot cc>
 pkgname="liteloader-qqnt-patcher"
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Patcher for LiteLoaderQQNT"
 arch=('any')
 url="https://github.com/LiteLoaderQQNT/LiteLoaderQQNT"
@@ -13,7 +13,7 @@ install=liteloader-qqnt-patcher.install
 source=("LiteLoaderQQNT.js"
         "patcher.sh"
         "liteloader-qqnt-patcher-notify.hook")
-sha256sums=('c7ef5c650bc3ddfe2ae120da2110211da6c329cdb0746bfb1091d6b25edd2607'
+sha256sums=('2e35c441765403daca5a80416717550adb8f718a8558580ed682e65248831ee6'
             'f9c76f919cfa72a3579637a5e585699f62d98ae7fabafd2796b97d3355ae842b'
             '589c85d842387cfedad6128f8f9311869c01a74be1c6b32e38011ac1f4015292')
 
