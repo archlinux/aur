@@ -1,6 +1,6 @@
 pkgbase = wine-cachyos-opt
 	pkgdesc = A compatibility layer for running Windows programs, with extra CachyOS flavour (installs under /opt)
-	pkgver = 10.0.20251120
+	pkgver = 10.0.20251126
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/CachyOS/wine-cachyos
@@ -121,7 +121,7 @@ pkgbase = wine-cachyos-opt
 	options = !staticlibs
 	options = !lto
 	options = !debug
-	source = wine-cachyos::git+https://github.com/CachyOS/wine-cachyos.git#tag=cachyos-10.0-20251120-wine
+	source = wine-cachyos::git+https://github.com/CachyOS/wine-cachyos.git#tag=cachyos-10.0-20251126-wine
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.4/wine-gecko-2.47.4-x86.tar.xz
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.4/wine-gecko-2.47.4-x86_64.tar.xz
 	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-10.3.0/wine-mono-10.3.0-x86.tar.xz
@@ -130,7 +130,7 @@ pkgbase = wine-cachyos-opt
 	source = wine-binfmt.conf
 	validpgpkeys = 5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
 	validpgpkeys = DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D
-	b2sums = 5fffbac61356c61a0d6088cfa30b6d3a5e71cd8fcc7b51e2da8d2484983c4d4784f45fd865aef332ca7c35b1d5e361ee3a22c33cddab365055e1f4b804989a38
+	b2sums = da063120716e9f4c5914b3e67df4cc258d7c85b5a593c493835896cd403691b3503b24ed763b90a8e09837f408b6d2f0fb353091d3ea657fdce401e3cd5c0d24
 	b2sums = 2a73c12585b502ae11188482cbc9fb1f45f95bfe4383a7615011104b132f4845f9813d01fb40277e1934fab5f1b35ab40b4f4a66a9967463dd1d666a666904e9
 	b2sums = 62856a88266b4757602c0646e024f832974a93f03b9df253fd4895d4f11a41b435840ad8f7003ec85a0d8087dec15f2e096dbfb4b01ebe4d365521e48fd0c5c0
 	b2sums = a3a63b1e8cf072923512923ccd7419fbdb4c9747b0a3c29111d2bda36ab1fd95d0fd4283f74126cfe0c60e639ce3d173d69efdb3d97bf2b39142eb3ed3a27ef7
