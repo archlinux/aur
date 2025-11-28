@@ -1,0 +1,14 @@
+pkgbase = boost175
+	pkgdesc = Free peer-reviewed portable C++ source libraries (version 1.75)
+	pkgver = 1.75.0
+	pkgrel = 1
+	url = https://www.boost.org
+	arch = any
+	license = BSL-1.0
+	makedepends = icu
+	makedepends = openmpi
+	depends = gcc-libs
+	source = https://archives.boost.io/release/1.75.0/source/boost_1_75_0.tar.gz
+	md5sums = SKIP
+
+pkgname = boost175
