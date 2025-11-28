@@ -1,6 +1,6 @@
 pkgname=rusty-pipes
-pkgver=0.5.8
-pkgrel=2
+pkgver=0.5.9
+pkgrel=1
 pkgdesc="A MIDI-controlled virtual pipe organ simulator compatible with GrandOrgue and Hauptwerk sample sets."
 arch=('x86_64')
 url="https://github.com/dividebysandwich/rusty-pipes"
@@ -9,11 +9,11 @@ depends=('alsa-lib' 'gcc-libs' 'jack' 'libx11' 'libxkbcommon' 'wayland' 'mesa' '
 makedepends=('rust' 'cargo')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/dividebysandwich/rusty-pipes/archive/refs/tags/v$pkgver.tar.gz"
-    "rusty-pipes.desktop::https://raw.githubusercontent.com/dividebysandwich/rusty-pipes/v$pkgver/assets/rusty-pipes.desktop"
-    "rusty-pipes-text.desktop::https://raw.githubusercontent.com/dividebysandwich/rusty-pipes/v$pkgver/assets/rusty-pipes-text.desktop"
-    "rusty-pipes.png::https://raw.githubusercontent.com/dividebysandwich/rusty-pipes/v$pkgver/assets/rusty-pipes.png"
+    "rusty-pipes-$pkgver.desktop::https://raw.githubusercontent.com/dividebysandwich/rusty-pipes/v$pkgver/assets/rusty-pipes.desktop"
+    "rusty-pipes-text-$pkgver.desktop::https://raw.githubusercontent.com/dividebysandwich/rusty-pipes/v$pkgver/assets/rusty-pipes-text.desktop"
+    "rusty-pipes-$pkgver.png::https://raw.githubusercontent.com/dividebysandwich/rusty-pipes/v$pkgver/assets/rusty-pipes.png"
 )
-sha256sums=('f69014588b3d3e5fe012de6ef7b54eb38690e0beff245880906e284f3025af81'
+sha256sums=('c010f1af46b94503005cffc1d14b061eaaa4ecbb5ae728f0605e167ec5b5f902'
             'cd1eafd36d3185bed9dfe4a83f1c9b94575fa56c0ebc3a878fd9b8b6c7820341'
             'b54f72270c8bcd5557b1724dd2875ebc89bef247caffa2b75b7985f4d8f463ac'
             'bc867e93be2660685875873d33991ab343860b311cbf06cde753007e1d6a6990')
@@ -42,10 +42,10 @@ package() {
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     
     # Install the desktop file (for the menu)
-    install -Dm644 "$srcdir/rusty-pipes.desktop" "$pkgdir/usr/share/applications/rusty-pipes.desktop"
-    install -Dm644 "$srcdir/rusty-pipes-text.desktop" "$pkgdir/usr/share/applications/rusty-pipes-text.desktop"
+    install -Dm644 "$srcdir/rusty-pipes-$pkgver.desktop" "$pkgdir/usr/share/applications/rusty-pipes.desktop"
+    install -Dm644 "$srcdir/rusty-pipes-text-$pkgver.desktop" "$pkgdir/usr/share/applications/rusty-pipes-text.desktop"
     
     # Install the icon
-    install -Dm644 "$srcdir/rusty-pipes.png" "$pkgdir/usr/share/pixmaps/rusty-pipes.png"
+    install -Dm644 "$srcdir/rusty-pipes-$pkgver.png" "$pkgdir/usr/share/pixmaps/rusty-pipes.png"
 
 }
