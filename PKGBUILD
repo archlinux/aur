@@ -4,7 +4,7 @@ pkgver=0.1.2
 pkgrel=1
 pkgdesc="Discord rich presence integration for cmus music player"
 arch=('any')
-url="https://github.com/mzivic7/$pkgname"
+url="https://github.com/sparklost/$pkgname"
 license=('GPL-3.0-only')
 depends=('cmus')
 makedepends=('python>=3.11' 'python-pipenv' 'git')
