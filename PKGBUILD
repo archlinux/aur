@@ -16,7 +16,7 @@
 
 set -u
 pkgname='ghostpdl'
-pkgver='10.05.1'
+pkgver='10.06.0'
 pkgrel='1'
 pkgdesc='Ghostscript RIP for PS, PDF, PCL-5, PCL-XL, SVG and XPS.'
 arch=('i686' 'x86_64')
@@ -27,10 +27,10 @@ depends+=('glibc' 'gcc-libs' 'perl' 'tcl' 'python' 'fontconfig' 'libcups' 'bash'
 #_verwatch=('http://downloads.ghostscript.com/public/' "${pkgname}-\(.*\)\.tar\.bz2" 'l')
 #source=("${_verwatch[0]}${pkgname}-${pkgver}.tar.bz2") # .gz and .bz2 are available. Unpacking .bz2 is a LOT slower so is not suited for package testing.
 _giturl="https://github.com/ArtifexSoftware/${pkgname}-downloads"
-_verwatch=("${_giturl}/releases.atom" '\s\+<title>Ghostscript/GhostPDL \([0-9\.]\+\)</title>.*' 'f')
+#_verwatch=("${_giturl}/releases.atom" '\s\+<title>Ghostscript/GhostPDL \([0-9\.]\+\)</title>.*' 'f')
 source=("${_giturl}/releases/download/gs${pkgver//./}/${pkgname}-${pkgver}.tar.xz")
-md5sums=('d675adc5e9aecf06a00ded7b29eab7be')
-sha256sums=('320d97f46f2f1f0e770a97d2a9ed8699c8770e46987e3a3de127855856696eb9')
+md5sums=('93be1cdd3d374953365ecf7f90afdb8f')
+sha256sums=('3602056368cf649026231e2d65250b5860c023f3d4a0d9c35e6605e28e543ec1')
 
 prepare() {
   set -u
