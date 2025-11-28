@@ -1,6 +1,6 @@
 pkgbase = turnon
 	pkgdesc = Turn on devices in your local network
-	pkgver = 2.9.3
+	pkgver = 2.9.4
 	pkgrel = 1
 	url = https://codeberg.org/swsnr/turnon
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = turnon
 	depends = gcc-libs
 	depends = glib2
 	depends = glibc
-	source = git+https://codeberg.org/swsnr/turnon.git#tag=v2.9.3
-	md5sums = 0bf1f23969644cb815fe7b58dfb0f262
+	source = git+https://codeberg.org/swsnr/turnon.git#tag=v2.9.4
+	md5sums = 58f684f6b643d5874d96a341a02919e0
 
 pkgname = turnon
