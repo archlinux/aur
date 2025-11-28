@@ -10,6 +10,7 @@ pkgbase = lobster-language
 	depends = mesa
 	depends = gcc
 	conflicts = lobster
+	conflicts = lobster-language-bin
 	source = lobster-language-2025.4.tar.gz::https://github.com/aardappel/lobster/archive/refs/tags/v2025.4.tar.gz
 	sha512sums = 8f6401e3d255ff13461487ab43cfdff8988918e77d81ebef1f50348c910dcbcf2e0586c458121347523882185a95a4c3400140dbc430cdaaf39e78b248d6303d
 

@@ -9,7 +9,7 @@ url="https://github.com/aardappel/lobster"
 license=('Apache-2.0')
 depends=('cmake' 'mesa' 'gcc')
 makedepends=('git')
-conflicts=('lobster')
+conflicts=('lobster' 'lobster-language-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aardappel/lobster/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('8f6401e3d255ff13461487ab43cfdff8988918e77d81ebef1f50348c910dcbcf2e0586c458121347523882185a95a4c3400140dbc430cdaaf39e78b248d6303d')
 
