@@ -1,7 +1,7 @@
 # Maintainer: Christopher Dolan <siricandobhikkhu@gmail.com>
 pkgname=hypr-cycle
 giturl="https://github.com/christopherdolan/hypr-cycle.git"
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A fast and monitor-aware workspace cycler for Hyprland, written in Rust"
 provides=(${pkgname}-git)
@@ -11,7 +11,7 @@ url="${giturl}"
 license=('MIT')
 source=("$pkgname-$pkgver::https://github.com/christopherdolan/hypr-cycle/releases/download/v${pkgver}/hypr-cycle")
 
-sha256sums=('ea2ec7dfcc0abbcac8e7944dee6519d6071b3c61644e89aa7ace53f578e9cb35')
+sha256sums=('da9c0efd7aa295f13385ede0cbbc29ce4d6f1b256dd224b4fc42538eb66371f4')
 
 package() {
     install -Dm755 "$srcdir/$pkgname-$pkgver" "$pkgdir/usr/bin/hypr-cycle"
