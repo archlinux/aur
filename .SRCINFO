@@ -1,0 +1,10 @@
+pkgbase = mchose-ace68-udev
+	pkgdesc = udev rule for the Mchose Ace68 keyboard
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	source = 70-mchose-ace68.rules
+	sha256sums = SKIP
+
+pkgname = mchose-ace68-udev
