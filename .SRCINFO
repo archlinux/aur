@@ -1,20 +1,23 @@
 pkgbase = salome-kernel
 	pkgdesc = Implements general services of SALOME platform
-	pkgver = 9.14.0
-	pkgrel = 3
+	pkgver = 9.15.0
+	pkgrel = 1
 	url = https://www.salome-platform.org
 	arch = any
 	license = LGPL2+
 	makedepends = cmake
+	makedepends = git
 	depends = salome-configuration
 	depends = python-psutil
 	depends = omniorbpy
 	depends = python-h5py-openmpi
 	depends = salome-bootstrap
+	depends = swig40
+	depends = boost175
 	optdepends = doxygen: Documentation
 	optdepends = graphviz: Documentation
 	optdepends = python-sphinx: Documentation
-	source = git+https://github.com/SalomePlatform/kernel.git
+	source = git+https://github.com/SalomePlatform/kernel.git#tag=V9_15_0
 	md5sums = SKIP
 
 pkgname = salome-kernel

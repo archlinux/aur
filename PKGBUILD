@@ -1,18 +1,18 @@
 # Maintainer: Ashish Singh <ashish.singh1@live.in>
 
 pkgname=salome-kernel
-pkgver=9.14.0
-pkgrel=3
+pkgver=9.15.0
+pkgrel=1
 pkgdesc="Implements general services of SALOME platform"
 url="https://www.salome-platform.org"
 license=('LGPL2+')
-depends=('salome-configuration' 'python-psutil' 'omniorbpy' 'python-h5py-openmpi' 'salome-bootstrap')
+depends=('salome-configuration' 'python-psutil' 'omniorbpy' 'python-h5py-openmpi' 'salome-bootstrap' 'swig40' 'boost175')
 optdepends=('doxygen: Documentation'
             'graphviz: Documentation'
             'python-sphinx: Documentation')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 arch=('any')
-source=("git+https://github.com/SalomePlatform/kernel.git")
+source=("git+https://github.com/SalomePlatform/kernel.git#tag=V${pkgver//\./_}")
 md5sums=('SKIP')
 
 _basedir=/opt/salome
@@ -97,6 +97,8 @@ build () {
   export SALOMEBOOTSTRAP_INCLUDE_DIRS="${_basedir}/__RUN_SALOME__/include/salome"
   # Add SALOMEBOOTSTRAP libraries folder to LD_LIBRARY_PATH to enable finding of KERNELBasics library
   export LD_LIBRARY_PATH="${_salome_lib_dir}:$LD_LIBRARY_PATH"
+  export PATH=/opt/swig-4.0.2/bin:$PATH
+  export SWIG_EXECUTABLE=/opt/swig-4.0.2/bin/swig
   echo "${srcdir}/kernel"
   cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=Release -DSALOME_USE_MPI=ON \
 	  -DCONFIGURATION_ROOT_DIR=$_config_root_dir -DOMNIORBPY_ROOT_DIR=/usr/lib/python3.13/site-packages/omniORB -DSALOME_BUILD_DOC=OFF \
@@ -104,6 +106,8 @@ build () {
 	  -DCMAKE_INCLUDE_PATH=$_basedir/include/salome \
 	  -DSALOME_CONFIG_DIR=${srcdir}/kernel \
           -DSALOMEBOOTSTRAP_KERNELBasics=$_salome_lib_dir/libKERNELBasics.so \
+	  -DSALOME_CMAKE_DEBUG=ON \
+	  -DBOOST_ROOT_DIR=/opt/boost-1.75.0 \
 	  ..
   make
 }
