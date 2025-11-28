@@ -2,8 +2,10 @@
 pkgname=hypr-cycle
 giturl="https://github.com/christopherdolan/hypr-cycle.git"
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and monitor-aware workspace cycler for Hyprland, written in Rust"
+provides=(${pkgname}-git)
+conflicts=(${pkgname}-git)
 arch=('x86_64')
 url="${giturl}"
 license=('MIT')
