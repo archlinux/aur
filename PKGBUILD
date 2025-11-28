@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 _electron=electron36
 depends=('bash' "$_electron" 'hicolor-icon-theme')
 makedepends=('git' 'jq' 'nodejs-lts-jod' 'yarn')
-source=("ProtonWebClients-$pkgver::git+https://github.com/ProtonMail/WebClients.git#branch=release/inbox-desktop@$pkgver"
+source=("ProtonWebClients::git+https://github.com/ProtonMail/WebClients.git#branch=release/inbox-desktop@$pkgver"
         'proton-mail.desktop'
         'proton-mail.sh')
 b2sums=('SKIP'
@@ -19,7 +19,7 @@ b2sums=('SKIP'
         '8e85e7543d433d57739d730707826baeadfadd537aed38ba487c7360fe5a69b0cd6e1989be13ebd5bceadc4b888bb3c1c1b17f02f7a5daadad7a2d1b2e0b1f89')
 
 prepare() {
-    cd ProtonWebClients-$pkgver
+    cd ProtonWebClients
 
     local _electronver=$(jq -r '.devDependencies.electron | ltrimstr("^")' applications/inbox-desktop/package.json)
     if [[ -z "$_electronver" || "$_electronver" == "null" ]]; then
@@ -39,14 +39,14 @@ prepare() {
 }
 
 build() {
-    cd ProtonWebClients-$pkgver
+    cd ProtonWebClients
     export YARN_CACHE_FOLDER="$srcdir/.yarn-cache"
     yarn install
     yarn workspace proton-inbox-desktop package
 }
 
 check() {
-    cd ProtonWebClients-$pkgver
+    cd ProtonWebClients
     yarn workspace proton-inbox-desktop test
 }
 

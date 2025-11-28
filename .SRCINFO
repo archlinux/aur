@@ -12,7 +12,7 @@ pkgbase = proton-mail
 	depends = bash
 	depends = electron36
 	depends = hicolor-icon-theme
-	source = ProtonWebClients-1.10.1::git+https://github.com/ProtonMail/WebClients.git#branch=release/inbox-desktop@1.10.1
+	source = ProtonWebClients::git+https://github.com/ProtonMail/WebClients.git#branch=release/inbox-desktop@1.11.0
 	source = proton-mail.desktop
 	source = proton-mail.sh
 	b2sums = SKIP
