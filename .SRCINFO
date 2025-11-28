@@ -1,0 +1,21 @@
+pkgbase = python-ttkthemes-git
+	pkgdesc = Group of themes for the ttk extensions for Tkinter (git version)
+	pkgver = 3.3.0.0.g85c4b53
+	pkgrel = 1
+	url = https://github.com/TkinterEP/ttkthemes
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pillow
+	depends = tk
+	provides = python-ttkthemes
+	conflicts = python-ttkthemes
+	source = git+https://github.com/TkinterEP/ttkthemes.git
+	sha256sums = SKIP
+
+pkgname = python-ttkthemes-git
