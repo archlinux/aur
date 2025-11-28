@@ -1,7 +1,7 @@
 ## Maintainer: Adam <classygopher@gmail.com>
 pkgname=bolt-launcher
 pkgver=0.20.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Free open-source third-party implementation of the Jagex Launcher"
 license=('AGPL3')
 url="https://bolt.adamcake.com/"
@@ -9,10 +9,10 @@ arch=('x86_64')
 depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'fmt' 'gcc-libs' 'gdk-pixbuf2'
          'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libarchive' 'libdrm' 'libx11' 'libxcb'
          'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'luajit'
-         'mesa' 'nspr' 'nss' 'pango')
+         'mesa' 'nspr' 'nss' 'pango' 'libffi')
 makedepends=('cmake' 'git')
 optdepends=('jre17-openjdk: runelite/hdos' 'gtk2: rs3' 'openssl-1.1: rs3' 'umu-launcher: osrs official client')
-source=("git+https://github.com/Adamcake/Bolt.git#tag=${pkgver}"
+source=("git+https://codeberg.org/Adamcake/Bolt.git#tag=${pkgver}"
         "https://adamcake.com/cef/cef-139.0.7258.139-linux-x86_64-minimal-ungoogled.tar.xz"
         "fmt.patch"
         "cef-no-fortify.patch")
