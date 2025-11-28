@@ -44,12 +44,12 @@ _opt_phpver='php56'    # php56 for now, php when avantfax is php7 compatible
 set -u
 pkgname='avantfax'
 _pkgnick="${pkgname}" # 'ArchFAX' # Changing this for an upgrade leaves cruft in many files.
-pkgver='3.4.0'
+pkgver='3.4.1'
 pkgrel='1'
 pkgdesc='a web-based application for managing faxes on HylaFAX fax servers'
 arch=('any') #('i686' 'x86_64')
 url='http://www.avantfax.com/'
-license=('GPLv2')
+license=('GPL-2.0-only')
 depends=(
   'hylafax' 'sudo' 'ghostscript' 'gsfonts' 'dash'
   'apache' "${_opt_phpver}" "${_opt_phpver}-apache"
@@ -59,6 +59,7 @@ depends=(
   'html2ps' # AUR in May 2015
   'mariadb' 'psutils' 'libtiff' 'libpng' 'imagemagick' 'netpbm' 'giflib'
 )
+depends+=('php56-cli')
 optdepends=('tesseract: OCR incoming faxes for document keyword searches' # not enabled in local-config, might already work
 #            'AvantFAX-support: iFax Solutions can help configure your fax system'
 )
@@ -82,13 +83,13 @@ source=(
   'avantfax.phb.service'
   'avantfax.phb.timer'
 )
-md5sums=('e9d1e54bf70401dddddb3e98e377515a'
+md5sums=('1985ea0885d1d847248dbba94c0c067c'
          'daa42347b4b089aa7c0a5a8b55d4537c'
          '10d6468f628c5522a7e2aabf034eb3d5'
          '5150cfa5c94562d94bc8e87392632fbd'
          '1d2da10d483f92a454e2c047a88f2241'
          '1329f1d50831ee5b48f32caf5278ad04')
-sha256sums=('f7aa18446a7227b2876142ebb3be391b77c8d56755a78fdb4921e9c82f95b167'
+sha256sums=('8321e6e9ff022dbbf2a2e7b79ac1956189d4aa30fbec4510c289eaf1e495249b'
             'ebd4fb7dd1b5ec7f9ad4f5ec03dcfaa9fde32c3137d52656007bf2df94b28670'
             '2c633cd03dd234cfbcf6d0530be573e9eaa2b1e92876faa946895bf99bfb3ebc'
             '057be12012e2bd10c8400cac9a2612b9d66ea1535476671f28dbf633c8eb6972'
