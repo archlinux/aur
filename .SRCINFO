@@ -1,7 +1,7 @@
 pkgbase = citron
 	pkgdesc = Nintendo Switch emulator forked from yuzu.
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://citron-emu.org
 	arch = x86_64
 	license = GPL-2.0-or-later

@@ -2,7 +2,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=citron
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://citron-emu.org
@@ -100,12 +100,6 @@ prepare() {
     git config submodule.externals/SPIRV-Headers.url "${srcdir}"/SPIRV-Headers
     git -c protocol.file.allow=always submodule update
   popd
-
-  # Compatibilité Boost 1.88
-  find . -type f \( -name '*.cpp' -o -name '*.h' \) | xargs sed -i 's/\bboost::asio::io_service\b/boost::asio::io_context/g'
-  find . -type f \( -name '*.cpp' -o -name '*.h' \) | xargs sed -i 's/\bboost::asio::io_service::strand\b/boost::asio::strand<boost::asio::io_context::executor_type>/g'
-  find . -type f \( -name '*.cpp' -o -name '*.h' \) | xargs sed -i 's|#include *<boost/process/async_pipe.hpp>|#include <boost/process/v1/async_pipe.hpp>|g'
-  find . -type f \( -name '*.cpp' -o -name '*.h' \) | xargs sed -i 's/\bboost::process::async_pipe\b/boost::process::v1::async_pipe/g'
 
   # Ensure cubeb is used from externals
   sed -i '386d;387d;388d' CMakeLists.txt
