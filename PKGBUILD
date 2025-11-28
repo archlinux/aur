@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=gnuastro
-pkgver=0.23
+pkgver=0.24
 pkgrel=1
 pkgdesc='Programs and library functions for the manipulation and analysis of astronomical data'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('gsl' 'wcslib' 'libgit2' 'ghostscript' 'libjpeg')
 optdepends=('ds9: for astscript-fits-view')
 url='https://www.gnu.org/software/gnuastro/'
 source=("http://ftpmirror.gnu.org/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('f22fd194f8c3d80645438f4b3906153e')
+md5sums=('bffa8bf64cb889cc587b0f23288a61d8')
 
 prepare() {
   cd $pkgname-$pkgver
