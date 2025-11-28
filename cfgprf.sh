@@ -129,10 +129,11 @@ if [ $HELP ]; then
     exit
 fi
 
-if [ $HOME == "/root" ]; then
+if [ $HOME == "/root" ] && ! [ $ROOT ]; then
     HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
     if [ $HOME == "/root" ]; then
         echo "cannot run as root, you need to run this as user, but sudo works"
+        echo "or use --root"
         exit 1
     fi
 fi
