@@ -1,44 +1,30 @@
 # Maintainer: SaintFore <saintfore@example.com>
 pkgname=leetcode-fsrs-cli-bin
-pkgver=1.5.1
+pkgver=1.5.5
 pkgrel=1
-pkgdesc="A CLI tool for LeetCode practice using FSRS spaced repetition algorithm (minimal dependency version)"
-arch=('any')
+pkgdesc="A CLI tool for LeetCode practice using FSRS spaced repetition algorithm (Binary Version)"
+arch=('x86_64')
 url="https://github.com/SaintFore/LeetCodeCLI"
 license=('MIT')
-depends=('python' 'python-click')
+depends=('glibc')
 provides=('leetcode-fsrs-cli')
 conflicts=('leetcode-fsrs-cli')
 replaces=('leetcode-fsrs-cli')
 
-source=("https://github.com/SaintFore/LeetCodeCLI/archive/refs/tags/v1.5.1.tar.gz")
-sha256sums=('7a365b0438fb53a550c8d406d43fc04fcbd2c3f50f6989696d09babf49f73dcf')
+source=("https://github.com/SaintFore/LeetCodeCLI/releases/download/v$pkgver/leetcode-fsrs-linux-x86_64"
+        "https://raw.githubusercontent.com/SaintFore/LeetCodeCLI/v$pkgver/LICENSE"
+        "https://raw.githubusercontent.com/SaintFore/LeetCodeCLI/v$pkgver/README.md")
+sha256sums=('5259af38f52a459835a42f3f22e742ce13082978e0aedb76588e44033de3bbe1'
+            'eeb2575ca0495a0245f39f79c24f984f1c154c48b5910688ab2cbd761e68fe86'
+            '905a265642794bb7689717609c871ec8e80ac52443d033c696ecf92c83a01d86')
 
 package() {
-  cd "LeetCodeCLI-${pkgver}"
-
-  # Install Python package
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-
+  # Install binary
+  install -Dm755 leetcode-fsrs-linux-x86_64 "$pkgdir/usr/bin/leetcode-fsrs"
+  
   # Install license
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  
   # Install documentation
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-
-  # Create installation message
-  install -d "${pkgdir}/usr/share/leetcode-fsrs-cli"
-  cat > "${pkgdir}/usr/share/leetcode-fsrs-cli/INSTALL" << EOF
-LeetCode FSRS CLI (Minimal Dependency Version) has been installed!
-
-To get started:
-1. Run: leetcode-fsrs init
-2. Then: leetcode-fsrs practice
-
-Your data will be stored in: ~/.config/leetcode-fsrs-cli/
-
-This version has minimal dependencies (only python-click).
-
-For more information, see: leetcode-fsrs --help
-EOF
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
