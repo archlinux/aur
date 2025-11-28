@@ -3,11 +3,11 @@
 
 _pkgname="ipfs-desktop"
 pkgname="${_pkgname}-bin"
-pkgver=0.46.2
+pkgver=0.47.0
 pkgrel=1
 pkgdesc="Desktop client for the InterPlanetary File System"
 arch=('x86_64')
-url="https://docs.ipfs.tech/install/ipfs-desktop/"
+url="https://docs.ipfs.tech/install/ipfs-desktop"
 _url="https://github.com/ipfs/${_pkgname}"
 license=('MIT')
 depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2'
@@ -17,16 +17,14 @@ depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2'
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 _pkgsrc="${_pkgname}-${pkgver}"
-#noextract=("${_pkgsrc}-x86_64.deb")
-source=("${_pkgsrc}-CHANGELOG.md::${_url}/raw/refs/tags/v${pkgver}/CHANGELOG.md"
-        "${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/README.md"
-        "${_pkgsrc}-LICENSE::${_url}/raw/refs/tags/v${pkgver}/LICENSE")
+source=("${_pkgsrc}-CHANGELOG.md::${_url}/raw/v${pkgver}/CHANGELOG.md"
+        "${_pkgsrc}-README.md::${_url}/raw/v${pkgver}/README.md"
+        "${_pkgsrc}-LICENSE::${_url}/raw/v${pkgver}/LICENSE")
 source_x86_64=("${_pkgsrc}-x86_64.tar.xz::${_url}/releases/download/v${pkgver}/${_pkgsrc}-linux-x64.tar.xz")
-#source_x86_64=("${_pkgsrc}-x86_64.deb::${_url}/releases/download/v${pkgver}/${_pkgsrc}-linux-amd64.deb")
-b2sums=('7e70bb519c6bf64afe4fbf667fd632f98489b15bec4dd7a7574d0182becff4d869ff620f71ee9f8e3d94aa3ab6fc8170f84247af2b2a8f28a4111983681ce0ea'
-        '8b3a57abc8f5a0748d3e90deb7511eb7b5c7514f60cdb1029e24016b85fe2584fe32797ea6c2ccb41d1af1644c50b77b5148831db23edc0ef9f7a35f9b2a5b03'
+b2sums=('c8022253feae12faf10b9a4796b478d0f031c46b447068f98b7785d95a3f42633cd42700098d2934fd0adc89ae1fde3589ee489399e1b8e582838304d26e8653'
+        '907aa96f8f51db2434295a519cc6bb85987f8c2f95eba359b97ebbe65526ec5f3c79a2bc48c8d971bd531ebf114e5bdbde88e903e73c1461d80f5fa7dac88d7e'
         '2c3fb2af6c8e92bcacb15b3878b1125fd4f8b4d48e37b2b3ce818517b7a7a94f68ef3c155e8d8cb5b2d39727fe916e293b892c48ee59167b4ee564bbedc70d9d')
-b2sums_x86_64=('4b177db9977d92b7354cd6c576a410c53d70334a0f868894d813bb8ac334f11930a57d13ced5cc814481393449df09f9b6f167831b4d6d849f96fe51bef36d39')
+b2sums_x86_64=('4d7a60b9598c86e02e3ab741ab433fee059ac968ceb147e23f2440b7ce83cf891810e909acb142f7829e746727f7774cabac45c0fe50d0a62ac4edd242e9a495')
 
 prepare() {
   cd "${srcdir}"
@@ -44,16 +42,14 @@ build() {
 #  cd "usr/share"
 #  rm -rf "doc"
 
-#  cd "applications"
-  cd "$srcdir"
+  cd "${srcdir}"
 #  sed -i "s|opt/IPFS Desktop|opt/${_pkgname}|g" "${_pkgname}.desktop"
 }
 
 package() {
   cd "${srcdir}"
   install -vdm755 "${pkgdir}/opt/${_pkgname}"
-  cp -vr "${_pkgsrc}-linux-x64"/* "${pkgdir}/opt/${_pkgname}/"
-#  cp -vr --no-preserve=ownership "${_pkgsrc}-linux-x64"/* "${pkgdir}"
+  cp -vr --no-preserve=ownership "${_pkgsrc}-linux-x64"/* "${pkgdir}/opt/${_pkgname}/"
 
   install -vDm644 "${_pkgsrc}-CHANGELOG.md" "${pkgdir}/usr/share/doc/${_pkgname}/CHANGELOG.md"
   install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
