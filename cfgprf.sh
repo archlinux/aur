@@ -55,8 +55,13 @@ while true; do
       CONFIRM=1
       shift # past argument
       ;;
-    -s|--follow-symlinks)
-      FOLLOWSYMLINKS=1
+    # sorry for changing what -s does
+    -s|--symlinks)
+      SYMLINKS=1
+      shift # past argument
+      ;;
+    -r|--root)
+      ROOT=1
       shift # past argument
       ;;
     -P|--profile)
