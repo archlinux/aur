@@ -1,6 +1,6 @@
 #!/bin/sh
 
-OPTS=$(getopt -o hiepcAEdaysP: --long help,import,export,packages,configs,configs-opts,etc,dotdirs,dotdirs-opts:,aur,all,yes,follow-symlinks,profile: -n 'cfgprf' -- "$@")
+OPTS=$(getopt -o hiepcAEdaysrP: --long help,import,export,packages,configs,configs-opts,etc,dotdirs,dotdirs-opts:,aur,all,yes,symlinks,root,profile: -n 'cfgprf' -- "$@")
 
 if [ $? -ne 0 ]; then
   echo "failed to parse options" >&2
