@@ -1,12 +1,12 @@
 # Maintainer: Lars Christensen <larsch@belunktum.dk>
 pkgname=pacnew
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 epoch=
 pkgdesc="an interactive tool to help manage .pacnew files"
 arch=(any)
 url="https://github.com/larsch/pacnew"
-license=('MIT')
+license=('Unlicense')
 groups=()
 depends=(diffutils bash coreutils findutils grep sed)
 makedepends=()
@@ -19,22 +19,10 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/larsch/pacnew/archive/refs/tags/v$pkgver.tar.gz")
+source=("pacnew-v1.1.tar.gz::https://github.com/larsch/pacnew/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('db7a43d8a8ac5cddce70f25b6e2bd0a9b51fc2bab991fbd3486364948daa76d3')
+sha256sums=('8793f74fa51a6aad61058a990fa2e9ebbaa53725b449b2ed09dd62e16230d174')
 validpgpkeys=()
-
-prepare() {
-	cd "$pkgname-$pkgver"
-}
-
-build() {
-	cd "$pkgname-$pkgver"
-}
-
-check() {
-	cd "$pkgname-$pkgver"
-}
 
 package() {
 	cd "$pkgname-$pkgver"
