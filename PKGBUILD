@@ -2,7 +2,7 @@
 
 _name=ollama-gui
 pkgname="${_name}-tk"
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="tkinter-based Ollama GUI"
 arch=(any)
@@ -14,7 +14,7 @@ depends=(
 optdepends=(
 )
 source=($pkgname-$pkgver.tar.gz::https://github.com/chyok/ollama-gui/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('5c6805de0ec966c11554d6f94d36f8f18fc484408d27f4dbb19f5138fa1ee10acd4b4b70f0d984e468e48da47df18ebbceefef1b528115d581f59ae6fef64495')
+sha512sums=('5969f14474f29a77571a88e9122b7ec1fe5292ea589a23a479dad448182da495f30659024d287d96f44c7b232fc0429e431359eca3bac5012b9c01221644314b')
 
 build() {
   cd "$_name-$pkgver";
