@@ -4,7 +4,7 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Wayland Linux systems"
 arch=('x86_64' 'aarch64')
-url="https://github.com/peteonrails/voxtype"
+url="https://voxtype.io"
 license=('MIT')
 depends=(
     'alsa-lib'
