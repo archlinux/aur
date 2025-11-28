@@ -4,7 +4,7 @@
 
 _pkgname="ipfs-desktop"
 pkgname="${_pkgname}-appimage"
-pkgver=0.46.2
+pkgver=0.47.0
 pkgrel=1
 pkgdesc="Desktop client for the InterPlanetary File System"
 arch=('x86_64')
@@ -20,10 +20,10 @@ source=("${_pkgsrc}-CHANGELOG.md::${_url}/raw/v${pkgver}/CHANGELOG.md"
         "${_pkgsrc}-README.md::${_url}/raw/v${pkgver}/README.md"
         "${_pkgsrc}-LICENSE::${_url}/raw/v${pkgver}/LICENSE")
 source_x86_64=("${_pkgsrc}-x86_64.AppImage::${_url}/releases/download/v${pkgver}/${_pkgsrc}-linux-x86_64.AppImage")
-b2sums=('7e70bb519c6bf64afe4fbf667fd632f98489b15bec4dd7a7574d0182becff4d869ff620f71ee9f8e3d94aa3ab6fc8170f84247af2b2a8f28a4111983681ce0ea'
-        '8b3a57abc8f5a0748d3e90deb7511eb7b5c7514f60cdb1029e24016b85fe2584fe32797ea6c2ccb41d1af1644c50b77b5148831db23edc0ef9f7a35f9b2a5b03'
+b2sums=('c8022253feae12faf10b9a4796b478d0f031c46b447068f98b7785d95a3f42633cd42700098d2934fd0adc89ae1fde3589ee489399e1b8e582838304d26e8653'
+        '907aa96f8f51db2434295a519cc6bb85987f8c2f95eba359b97ebbe65526ec5f3c79a2bc48c8d971bd531ebf114e5bdbde88e903e73c1461d80f5fa7dac88d7e'
         '2c3fb2af6c8e92bcacb15b3878b1125fd4f8b4d48e37b2b3ce818517b7a7a94f68ef3c155e8d8cb5b2d39727fe916e293b892c48ee59167b4ee564bbedc70d9d')
-b2sums_x86_64=('142e1091a32238866e8a76faa559125019d91edbe771494a7ce38006426119cc7be9331034d3aec9ace956aded0cfe0d3b02d176cdd656f0ceb8ce0a52642c12')
+b2sums_x86_64=('87d5692ad0836d4a915c06f9bd475edc800238e64f04b1ebed97104779f1bf3772f3fa2bd63b0e4379920175deb0d2d143a1079cce49d6129d2c61da2b7fe2f8')
 
 prepare() {
   cd "${srcdir}"
