@@ -1,4 +1,4 @@
-pkgbase = freenet
+pkgbase = hyphanet
 	pkgdesc = A peer-to-peer platform for censorship-resistant communication and publishing
 	pkgver = 0.7.5.1497
 	pkgrel = 1
@@ -32,4 +32,4 @@ pkgbase = freenet
 	b2sums = 63bf5cd76cea610b362144c207121f9de54febcccf8347c21aecc25382f564292493a8a3b4fd2c7af18ca6feb041978164241d81d77dd1542619482cd7cbadbb
 	b2sums = 54828750ac0283e4328635bb61d0edd695391d433d85a6612b2288520a58b40b312d5759b38487e093e150aedee3659e6bed3827d936171d2d252aea2cbced1d
 
-pkgname = freenet
+pkgname = hyphanet

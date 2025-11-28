@@ -11,7 +11,7 @@ _wot=next
 
 _plugins=('WebOfTrust')
 
-pkgname=freenet
+pkgname=hyphanet
 pkgver=0.7.5.1497
 pkgrel=1
 pkgdesc="A peer-to-peer platform for censorship-resistant communication and publishing"
