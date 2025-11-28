@@ -261,10 +261,10 @@ if [ $MODE == "IMPORT" ]; then
 
             tar -xf $PROFILE >/dev/null 2>&1
 
-            if [ $FOLLOWSYMLINKS ]; then
-                rsync -aK "config/" "$HOME/.config/" >/dev/null
+            if [ $SYMLINKS ]; then
+                rsync -a "config/" "$XDG_CONFIG_HOME" >/dev/null
             else
-                rsync -a "config/" "$HOME/.config/" >/dev/null
+                rsync -aK "config/" "$XDG_CONFIG_HOME" >/dev/null
             fi
 
         else
@@ -285,10 +285,10 @@ if [ $MODE == "IMPORT" ]; then
 
                 tar -xf $PROFILE >/dev/null 2>&1
 
-                if [ $FOLLOWSYMLINKS ]; then
-                    rsync -aK "etc/" "/etc/"
-                else
+                if [ $SYMLINKS ]; then
                     rsync -a "etc/" "/etc/"
+                else
+                    rsync -aK "etc/" "/etc/"
                 fi
 
             else
@@ -307,10 +307,10 @@ if [ $MODE == "IMPORT" ]; then
 
             tar -xf $PROFILE >/dev/null 2>&1
 
-            if [ $FOLLOWSYMLINKS ]; then
-                rsync -aK "dotdirs/" "${HOME}/"
-            else
+            if [ $SYMLINKS ]; then
                 rsync -a "dotdirs/" "${HOME}/"
+            else
+                rsync -aK "dotdirs/" "${HOME}/"
             fi
 
         else
@@ -373,7 +373,7 @@ elif [ $MODE == "EXPORT" ]; then
 
         mkdir "config"
 
-        # so many excludes cause some programs like vscode and discord (electron in general) abuse ~/.config/
+        # so many excludes cause some programs like vscode and discord (electron in general) abuse XDG_CONFIG_HOME
         EXCLUDE=(
             "--exclude=*.log"
             "--exclude=*.tmp"
@@ -382,12 +382,12 @@ elif [ $MODE == "EXPORT" ]; then
             "--exclude=sessionData"
         )
 
-        rsync ${EXCLUDE[@]} -am "$HOME/.config/" "config/"
+        rsync ${EXCLUDE[@]} -am "${XDG_CONFIG_HOME}" "config/"
 
-        if [ $FOLLOWSYMLINKS ]; then
-            tar -rhf $PROFILE "config" >/dev/null 2>&1
-        else
+        if [ $SYMLINKS ]; then
             tar -rf $PROFILE "config" >/dev/null 2>&1
+        else
+            tar -rhf $PROFILE "config" >/dev/null 2>&1
         fi
 
     fi
@@ -404,10 +404,10 @@ elif [ $MODE == "EXPORT" ]; then
 
             rsync -am "/etc/" "etc/"
 
-            if [ $FOLLOWSYMLINKS ]; then
-                tar -rhf $PROFILE "etc" > /dev/null 2>&1
+            if [ $SYMLINKS ]; then
+                tar -rf $PROFILE "etc" > /dev/null 2>&1
             else
-                tar -rf $PROFILE "etc" >/dev/null 2>&1
+                tar -rhf $PROFILE "etc" >/dev/null 2>&1
             fi
 
         fi
@@ -420,9 +420,11 @@ elif [ $MODE == "EXPORT" ]; then
 
         mkdir "dotdirs"
 
-        # this is even more absurd than ~/.config/
+        # this is even more absurd than XDG_CONFIG_HOME
         EXCLUDE=(
             "--exclude=.config/"
+            # idk if this is really useful but yeah
+            "--exclude=${XDG_CONFIG_HOME}"
             "--exclude=*.ssh"
             "--exclude=*gnupg"
             "--exclude=*gpg"
@@ -452,10 +454,10 @@ elif [ $MODE == "EXPORT" ]; then
         # i'm sorry for this
         rsync "${EXCLUDE[@]}" -am --include=.*/*** --include=*/ --exclude=* $HOME/ dotdirs/
 
-        if [ $FOLLOWSYMLINKS ]; then
-            tar -rhf $PROFILE "dotdirs" >/dev/null 2>&1
-        else
+        if [ $SYMLINKS ]; then
             tar -rf $PROFILE "dotdirs" >/dev/null 2>&1
+        else
+            tar -rhf $PROFILE "dotdirs" >/dev/null 2>&1
         fi
 
     fi
