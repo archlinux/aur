@@ -1,0 +1,143 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[](#005935)\
+$status\
+[](bg:#0ed600 fg:#005935)\
+$username\
+[](bg:#00d679 fg:#0ed600)\
+$directory\
+[](fg:#00d679 bg:#0038a1)\
+$git_branch\
+$git_status\
+[](fg:#0038a1 bg:#1000a3)\
+$c\
+$elixir\
+$elm\
+$golang\
+$gradle\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$nim\
+$rust\
+$scala\
+[](fg:#1000a3 bg:#ea00ff)\
+$docker_context\
+[](fg:#ea00ff bg:#6d0035)\
+$time\
+[ ](fg:#6d0035)\
+"""
+
+add_newline = false
+
+[status]
+success_style = "bg:#005935 fg:#00FF00"
+failure_style = "bg:#005935 fg:#FF0000"
+success_symbol = "0"
+format = "[$status ]($style)"
+disabled = false
+
+[username]
+show_always = true
+style_user = "bg:#0ed600"
+style_root = "bg:#0ed600 fg:ff0000"
+format = '[ $user ]($style)'
+disabled = false
+
+[directory]
+style = "bg:#00d679"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[c]
+symbol = " "
+style = "bg:#1000a3"
+format = '[ $symbol ($version) ]($style)'
+
+[cpp]
+symbol = " "
+style = "bg:#1000a3"
+format = '[ $symbol ($version) ]($style)'
+
+[docker_context]
+symbol = " "
+style = "bg:#ea00ff"
+format = '[ $symbol $context ]($style)'
+
+[elixir]
+symbol = " "
+style = "bg:#1000a3"
+format = '[ $symbol ($version) ]($style)'
+
+[elm]
+symbol = " "
+style = "bg:#1000a3"
+format = '[ $symbol ($version) ]($style)'
+
+[git_branch]
+symbol = ""
+style = "bg:#0038a1"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "bg:#0038a1"
+format = '[$all_status$ahead_behind ]($style)'
+
+[golang]
+symbol = " "
+style = "bg:#1000a3"
+format = '[ $symbol ($version) ]($style)'
+
+[gradle]
+style = "bg:#1000a3"
+format = '[ $symbol ($version) ]($style)'
+
+[haskell]
+symbol = " "
+style = "bg:#1000a3"
+format = '[ $symbol ($version) ]($style)'
+
+[java]
+symbol = " "
+style = "bg:#1000a3"
+format = '[ $symbol ($version) ]($style)'
+
+[julia]
+symbol = " "
+style = "bg:#1000a3"
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#1000a3"
+format = '[ $symbol ($version) ]($style)'
+
+[nim]
+symbol = "󰆥 "
+style = "bg:#1000a3"
+format = '[ $symbol ($version) ]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#1000a3"
+format = '[ $symbol ($version) ]($style)'
+
+[scala]
+symbol = " "
+style = "bg:#1000a3"
+format = '[ $symbol ($version) ]($style)'
+
+[time]
+disabled = false
+time_format = "%R" 
+style = "bg:#6d0035"
+format = '[ $time ]($style)'

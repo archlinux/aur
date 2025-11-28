@@ -1,6 +1,6 @@
 # Maintainer: rsahwe <rsahwe@gmx.net>
 pkgname=evcolors
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Ev color themes'
 arch=('any')
@@ -10,10 +10,12 @@ makedepends=()
 checkdepends=()
 optdepends=(
 	'btop: using the btop theme'
+	'starship: use theme with "export STARSHIP_CONFIG=/usr/share/evcolors/starship.theme"'
 )
-source=('evcolors.theme')
+source=('evcolors.theme' 'starship.toml')
 validpgpkeys=()
-sha256sums=('d0a2f1649a5998381df25d8a5c14ca2f2ecfcb6db538affc92095cb5aa1ddc44')
+sha256sums=('d0a2f1649a5998381df25d8a5c14ca2f2ecfcb6db538affc92095cb5aa1ddc44'
+            'e41f048952080b42000328eedf4cf0030bbb800be328f663ef41b334942865ee')
 
 check() {
 	: # TODO: FIGURE OUT CHECK
@@ -25,5 +27,6 @@ build() {
 
 package() {
 	install -Dm644 "${srcdir}/evcolors.theme" "${pkgdir}/usr/share/btop/themes/evcolors.theme"
+	install -Dm644 "${srcdir}/starship.toml" "${pkgdir}/usr/share/evcolors/starship.toml"
 }
 
