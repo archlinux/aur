@@ -20,9 +20,9 @@ source=(
 )
 
 # Nota: Deberás generar estos hash con 'updpkgsums' o 'makepkg -g'
-sha256sums=('9a76ceb906fa5302861b735a986519b2dc5432082615e383c014b08c0ae5d9eb'
+sha256sums=('ad11c471562e6344089390bc2e7e225b4cb1e77688bc4256e21c4d4109ca84fc'
             '5a3caf47e0012f35afdb9cdbafe3c19d37f5383b60b62f705994279ed626e2a8'
-            '45bab058980482da0a8dcde8e0704973678b7909f1013a3aa220be9c85e7411e')
+            'f071a18f080afd494f001e89b4ecfb4c044f7a3a53b7b35da9580a98081ddd35')
 
 package() {
     # 1. Instalar el binario
