@@ -1,4 +1,4 @@
-# Maintainer: karboncore
+# Contributor: karboncore
 
 pkgname=python-humps-git
 pkgver=365.a0f712b
@@ -7,8 +7,8 @@ pkgdesc='Convert strings (and dictionary keys) between snake case, camel case an
 arch=(any)
 url=https://github.com/nficano/humps
 license=(unlicense)
-depends=(python python-poetry)
-makedepends=(git python-build python-wheel python-installer)
+depends=(python)
+makedepends=(git python-build python-poetry-core python-installer)
 provides=(${pkgname%-git})
 source=(git+https://github.com/nficano/humps.git)
 sha256sums=(SKIP)
