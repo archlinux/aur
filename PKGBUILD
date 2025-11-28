@@ -1,7 +1,7 @@
 # Maintainer: k1f0 <generic at k1f0.mozmail.com>
 
 pkgname=goup-rs
-pkgver=0.16.1
+pkgver=0.16.5
 pkgrel=1
 _patch=""
 pkgdesc='an elegant Go version manager write in rust'
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 makedepends=('cargo' 'git')
 provides=('go' "${pkgname%-rs}")
 source=("${pkgname}-${pkgver}${_patch}::${url}/archive/refs/tags/v${pkgver}${_patch}.tar.gz")
-b2sums=('d12a77c1edcbedaef58707697e3b560c8b27f8e2d6f144535a5a644d19308b49101188a5578d193482aab117d27c609b3cc0d23724a35b2c2f52f156cbfeb69f')
+b2sums=('f4205a45bf097489ed2683f26bc71a50dd77d93f88986dbb3bbebfb713ccec4c689f64509ab448971dd116d2d1f4b3125a23342f8026b9f3b9491117ee0a565d')
 options=(!debug !lto)
 
 prepare() {
