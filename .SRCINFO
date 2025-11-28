@@ -1,14 +1,13 @@
 pkgbase = otf-ornements
 	pkgdesc = A font of ornamental elements
 	pkgver = 1.001
-	pkgrel = 1
+	pkgrel = 2
 	url = http://arkandis.tuxfamily.org/adffonts.html
 	arch = any
 	groups = otf-adf-fonts
-	license = custom:GPL with font exception
+	license = GPL-2.0-or-later WITH Font-exception-2.0
 	conflicts = otf-adf
 	source = http://arkandis.tuxfamily.org/fonts/OrnementsADF.zip
 	sha256sums = 97a4a5f71db57e80fa5edb73c27d736c9b5c4de972b5bc072bba5854d27fa571
 
 pkgname = otf-ornements
-
