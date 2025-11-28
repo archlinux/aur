@@ -1,7 +1,7 @@
 pkgbase = seadrive-daemon
 	pkgdesc = SeaDrive daemon with FUSE interface
-	pkgver = 3.0.17
-	pkgrel = 2
+	pkgver = 3.0.18
+	pkgrel = 1
 	url = https://github.com/haiwen/seadrive-fuse
 	arch = x86_64
 	license = GPL-3.0-only
@@ -18,7 +18,7 @@ pkgbase = seadrive-daemon
 	depends = jansson
 	depends = glibc
 	depends = libwebsockets
-	source = seadrive-daemon-3.0.17.tar.gz::https://github.com/haiwen/seadrive-fuse/archive/refs/tags/v3.0.17.tar.gz
-	b2sums = 109e336cfa388a973bc0cd1a6f241067616f4f576175fd0170da5ef783c9c01ffd582e64d598e57177181fd4b10dfb025b8d03d8ea0041bf084087d91022b2ae
+	source = seadrive-daemon-3.0.18.tar.gz::https://github.com/haiwen/seadrive-fuse/archive/refs/tags/v3.0.18.tar.gz
+	b2sums = 16b5c8c37cc2aca3c184b721ea557bffb8c58b4bc61f90f909cd625a6ddc62d084bc7842a1c698a2f90ab3a22e1fcd22e90ea0ad0f34af8e1493862930636c3d
 
 pkgname = seadrive-daemon
