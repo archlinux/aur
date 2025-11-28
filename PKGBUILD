@@ -1,4 +1,5 @@
-# Maintainer: bbaster <bbaster at tutanota dot org>
+# Maintainer: hmarcelino <henry_marcelino at outlook dot com>
+# Contributor: bbaster <bbaster at tutanota dot org>
 
 pkgname=flashpoint-launcher-bin
 pkgver=14.0.3_20251103
@@ -58,6 +59,6 @@ package() {
 	cp -rp "${pkgdir}/opt/Flashpoint/Launcher/licenses/" "${pkgdir}/usr/share/licenses/flashpoint"
 	install -Dm644 "${srcdir}/flashpoint-archive.desktop" "${pkgdir}/usr/share/applications/flashpoint-archive.desktop"
 
-    echo "Removing uneeded src folder"
+    echo "Removing uneeded src folder..."
     rm -rf "${pkgdir}/opt/Flashpoint/src"
 }
