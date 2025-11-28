@@ -2,7 +2,7 @@
 pkgname=qtscrcpy-bin
 _pkgname=QtScrcpy
 pkgver=3.3.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Android real-time display control software.(Prebuilt version)"
 arch=('x86_64')
 url="https://blog.csdn.net/rankun1/article/details/87970523"

@@ -1,7 +1,7 @@
 pkgbase = qtscrcpy-bin
 	pkgdesc = Android real-time display control software.(Prebuilt version)
 	pkgver = 3.3.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://blog.csdn.net/rankun1/article/details/87970523
 	arch = x86_64
 	license = Apache-2.0
