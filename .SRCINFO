@@ -1,0 +1,13 @@
+pkgbase = ttf-anybody
+	pkgdesc = Sans Serif font by Ty Finck
+	pkgver = 1.111
+	pkgrel = 1
+	url = https://www.etceteratype.co/anybody
+	arch = any
+	license = OFL-1.1
+	source = Anybody-1.111.tar.gz::https://github.com/Etcetera-Type-Co/anybody/archive/refs/tags/v1.111.tar.gz
+	b2sums = 34356ba9c3a983dcd4740d298f7accf94febac75135f6fe3b253876f9b97f9debd291eade0444f3038a12897f46419d4b8d05ea188c1dc07c9dbd6a21b957931
+
+pkgname = ttf-anybody
+
+pkgname = ttf-anybody-variable
