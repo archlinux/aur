@@ -1,18 +1,23 @@
 # Maintainer: Samsagax <samsagax at gmail dot com>
 _pkgbase=chimeraos-device-quirks
 pkgname=${_pkgbase}-sk
-_srctag=v1.6.1
+_srctag=v1.7.0
 pkgver=${_srctag#v}
 pkgrel=1
 pkgdesc="A collection of device specific configuration files"
 arch=('any')
 url="https://github.com/ChimeraOS/device-quirks"
 license=('MIT')
-depends=('acpica'
-         'cpio'
-         'systemd'
-		 'alsa-tools'
-         'swh-plugins')
+depends=(
+	'acpica'
+	'cpio'
+	'systemd'
+	'alsa-tools'
+	'swh-plugins'
+	'lv2'
+	'bankstown'
+	'lsp-plugins-lv2'
+)
 makedepends=('git')
 source=("${_pkgbase}::git+https://github.com/honjow/device-quirks.git#tag=${_srctag}")
 sha256sums=('SKIP')
@@ -64,13 +69,13 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/pipewire/hardware-profiles"
 	cp -rv usr/share/pipewire/hardware-profiles/* "${pkgdir}/usr/share/pipewire/hardware-profiles/."
 
-	# Install wireplumber hardware configs 
+	# Install wireplumber hardware configs
 	mkdir -p "${pkgdir}/usr/share/wireplumber/hardware-profiles"
 	cp -rv usr/share/wireplumber/hardware-profiles/* "${pkgdir}/usr/share/wireplumber/hardware-profiles/."
-	
+
 	install -dm755 "${pkgdir}/usr/share/wireplumber/wireplumber.conf.d"
 	install -v -m644 -D -t "${pkgdir}/usr/share/wireplumber/wireplumber.conf.d/" usr/share/wireplumber/wireplumber.conf.d/*
-	
+
 	#Install device-quirks config
 	mkdir -p "${pkgdir}/etc/device-quirks"
 	cp -rv etc/device-quirks/* "${pkgdir}/etc/device-quirks/."
