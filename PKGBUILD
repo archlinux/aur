@@ -1,6 +1,6 @@
 # Maintainer: Ashe Sterling <ashe.sterling@outlook.com>
 pkgname=kiwi-soundboard
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="An oddly specific soundboard daemon and control application."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('WTFPL-2-or-later')
 depends=()
 makedepends=('glibc' 'gcc')
 source=("${pkgname}-v${pkgver}.tar.gz::https://gitlab.com/ashe.sterling/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('36b2bee478c2218a073c54e6acbdc98c0da9ad98aeb7732ff716485713d74332')
+sha256sums=('ebd4f51ecc2ee22d75b2c14ff28f3a9554916f673a488a940e8c5f9d182940d5')
 
 build() {
 	cd "$srcdir/${pkgname}-v${pkgver}"
