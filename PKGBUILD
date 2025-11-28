@@ -9,7 +9,7 @@
 
 pkgname=allusion-appimage-rafauc
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Allusion is a tool built for artists, aimed to help you organize your Visual Library – A single place that contains your entire collection of references, inspiration and any other kinds of images."
 arch=('x86_64')
 url='https://github.com/RafaUC/Allusion'
@@ -26,7 +26,7 @@ source_x86_64=("Allusion-${gitver}.AppImage::https://github.com/RafaUC/Allusion/
                "LICENSE::https://raw.githubusercontent.com/RafaUC/Allusion/refs/heads/master/LICENSE"
                )
 noextract=("Allusion-${gitver}.AppImage")
-sha256sums_x86_64=('6fd68e6e6575b9e02030f1796dbd536165f671bb5e5bcd89c313f63d056be73b'
+sha256sums_x86_64=('434d2e3a11dc853040e561c1e66eb7bfe8d5e11a9bac14bd5c9601787b3a07d7'
                    'df1225b564f5301ce2a092e63856012db0370861c317bfa65586e06a842f2438'
                    'fdaccc7f6521f98b22b31b5996f65929b33068b86aaacd6ec00727b1a5fee2fa'
                    '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903')
