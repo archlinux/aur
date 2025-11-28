@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _appname=cherry-studio
 pkgname="${_appname}-electron-bin"
-_pkgname=Cherry-Studio
-pkgver=1.6.7
-_electronversion=37
+_pkgname='Cherry Studio'
+pkgver=1.7.0
+_electronversion=38
 pkgrel=1
 pkgdesc="🍒A desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -20,6 +20,14 @@ provides=("${_appname}=${pkgver}")
 conflicts=("${_appname}")
 depends=(
     "electron${_electronversion}"
+    'python'
+    'python-defusedxml'
+    'python-numpy'
+    'python-lxml'
+    'python-six'
+    'python-yaml'
+    'python-pillow'
+    'python-playwright'
 )
 optdepends=(
     'ollama: Use your local LLM'
@@ -28,14 +36,14 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-aarch64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.rpm")
-sha256sums=('d1b489cc814a65133cc03c83bbc3df0db10f197e05a7af5e369f09e32ee04e22'
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-x86_64.rpm")
+sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('91f8fb3555039554c53e3fa6882dfc26b21ee28205397caf0bc876ca088cc2bf')
-sha256sums_x86_64=('f4b0ed9e9f0f3617deeb205e55e3f5bf55958974ff62b6aec5a6499f4339b0df')
+sha256sums_aarch64=('8af6e2cb2f8de13e5c6b148d6fd9f78f437812d7c166f76af4c6288ae41c1a70')
+sha256sums_x86_64=('6eca974e055df3f78e094ac4c0354c066d4c887870c5f3bf8a855f5422b0491c')
 _get_electron_version() {
-    _elec_ver="$(strings "${srcdir}/opt/${_pkgname//-/ }/${_appname//-/}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
@@ -48,20 +56,21 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     _get_electron_version
     sed -i -e "
-        s/\"\/opt\/${_pkgname//-/ }\/${_appname//-/}\"/${pkgname%-bin}/g
-        s/Icon=${_appname//-/}/Icon=${pkgname%-bin}/g
-    " "${srcdir}/usr/share/applications/${_appname//-/}.desktop"
-    find "${srcdir}/opt/${_pkgname//-/ }/resources" -type d -exec chmod 755 {} +
+        s/\"\/opt\/${_pkgname}\/${_pkgname}\"/${pkgname%-bin}/g
+        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    find "${srcdir}/opt/${_pkgname}/resources" -type d \( -name "darwin" -o -name "win32" \) -exec rm -rf {} +
+    find "${srcdir}/opt/${_pkgname}/resources" -type d -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/${_pkgname//-/ }/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname//-/ }/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/"{app.asar.unpacked,claude-code-plugins} "${pkgdir}/usr/lib/${pkgname%-bin}"
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_appname//-/}.png" \
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${_pkgname}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
-    install -Dm644 "${srcdir}/usr/share/applications/${_appname//-/}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
