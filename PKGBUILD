@@ -5,7 +5,7 @@ pkgname="$_pkgname-bin"
 _pkgver=4.4-rc.1
 pkgver=4.4_rc1
 _pkgfmt=_linux_mono_
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform 2D and 3D game engine"
 url="https://www.redotengine.org/"
 license=('MIT')
@@ -74,7 +74,7 @@ package() {
 
   cd ${srcdir} || exit
 
-  cp -r redot-mono/out/linuxbsd/${_arch2}/tools-mono/* ${pkgdir}/opt/${_pkgname}/
+  cp -r $(pwd)/out/linuxbsd/${_arch2}/tools-mono/* ${pkgdir}/opt/${_pkgname}/
 
   # move into directory
   cd ${pkgdir}/opt/${_pkgname}
