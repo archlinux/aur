@@ -52,6 +52,7 @@ gnupg/
 
 # Internal files
 tkginstaller-bin/
+gotkg/
 
 # GitHub files
 .github/
