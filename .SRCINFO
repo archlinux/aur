@@ -1,14 +1,13 @@
 pkgbase = otf-universalis
 	pkgdesc = A sans-serif font
 	pkgver = 1.009
-	pkgrel = 1
+	pkgrel = 2
 	url = http://arkandis.tuxfamily.org/adffonts.html
 	arch = any
-	groups = adf-fonts
-	license = custom:GPL with font exception
+	groups = otf-adf-fonts
+	license = GPL-2.0-or-later WITH Font-exception-2.0
 	conflicts = otf-adf
 	source = http://arkandis.tuxfamily.org/fonts/Universalis-Std-20110904.zip
 	sha256sums = a084f5ee421d9c7aff53ff424b8df8108a6b49f93e1b0bed0f29730ce9ace889
 
 pkgname = otf-universalis
-
