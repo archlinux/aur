@@ -1,6 +1,6 @@
 # Maintainer: SaintFore <saintfore@example.com>
 pkgname=leetcode-fsrs-cli
-pkgver=1.5.7
+pkgver=1.5.8
 pkgrel=1
 pkgdesc="A CLI tool for LeetCode practice using FSRS spaced repetition algorithm"
 arch=('any')
@@ -15,7 +15,7 @@ replaces=('leetcode-fsrs-cli')
 backup=('etc/leetcode-fsrs-cli/config.json')
 
 source=("https://github.com/SaintFore/LeetCodeCLI/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('48b7aafef242d9e9ee27b739995c7634babeb70db91f520a458929f1fd7de795')
+sha256sums=('b23589c9c212dc2514c2b5a330f0b67294084e2686a462347f1b6c0cc108bb22')
 
 build() {
   cd "LeetCodeCLI-$pkgver"
