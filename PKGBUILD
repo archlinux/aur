@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=dolfinx
 pkgdesc="Next generation FEniCS problem solving environment"
-pkgver=0.10.0.post3
+pkgver=0.10.0.post4
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/FEniCS/${pkgname}"
@@ -14,7 +14,7 @@ checkdepends=(catch2)
 #   'parmetis: for parallel graph partitioning'
 #   'slepc: for use SLEPc eigen solver')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('4afaf283214336d897afb35a187dce01cdf2c6b5026d123946fa71dfdaab3472119f1a165668d924eeb24a12b2a6e1d1922d27d737791842adbb870948a16aff')
+sha512sums=('45df9c5c8a14b3e0b3a2439bf506ff8d8fa1df23af2ed37a6587db1d5d12e94d5a9a8998766968a2900edf683757230e667d000c8bf1b5aad2713ab297143ad4')
 
 build() {
   export LDFLAGS="-lkahip $LDFLAGS"
