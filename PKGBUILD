@@ -1,7 +1,7 @@
 #Maintainer: Okabe Zero-Link (okbzl). Email: okabezerolink@gmail.com
 
 pkgname=system3-sdl2
-pkgver=1.6.2
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="SDL2 port of AliceSoft's System3 game engine."
 arch=(x86_64)

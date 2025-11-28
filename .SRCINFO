@@ -1,6 +1,6 @@
 pkgbase = system3-sdl2
 	pkgdesc = SDL2 port of AliceSoft's System3 game engine.
-	pkgver = 1.6.2
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/kichikuou/system3-sdl2
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = system3-sdl2
 	depends = sdl2_ttf
 	depends = sdl2_mixer
 	depends = rtmidi
-	provides = system3=1.6.2
-	source = system3-sdl2::git+https://github.com/kichikuou/system3-sdl2.git#tag=v1.6.2
+	provides = system3=1.7.0
+	source = system3-sdl2::git+https://github.com/kichikuou/system3-sdl2.git#tag=v1.7.0
 	sha256sums = SKIP
 
 pkgname = system3-sdl2
