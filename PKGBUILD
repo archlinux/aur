@@ -1,9 +1,11 @@
 # Maintainer: Christopher Dolan <siricandobhikkhu@gmail.com>
 pkgname=hypr-cycle-git
 giturl="https://github.com/christopherdolan/hypr-cycle.git"
-pkgver=0.4.0.0.gdce6a26
+pkgver=0.4.0.4.g3edd8a1
 pkgrel=1
 pkgdesc="A fast and monitor-aware workspace cycler for Hyprland, written in Rust"
+provides=("hypr-cycle")
+conflicts=("hypr-cycle")
 arch=('x86_64')
 url="${giturl}"
 license=('MIT')
