@@ -1,19 +1,19 @@
-# Contributor: Anonymous
+# Contributor: Ordoban <gabba.head@gmx.de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-extutils-builder'
-pkgver='0.017'
-pkgrel='2'
+pkgver='0.018'
+pkgrel='1'
 pkgdesc="An overview of the foundations of the ExtUtils::Builder Plan framework"
 arch=('any')
 license=('Artistic-1.0')
 options=('!emptydirs')
-depends=('perl-extutils-config>=0' 'perl>=5.010')
+depends=('perl-extutils-config>=0' 'perl-extutils-helpers>=0.027' 'perl>=5.010')
 makedepends=()
 url='https://metacpan.org/release/ExtUtils-Builder'
 source=("http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/ExtUtils-Builder-$pkgver.tar.gz")
-md5sums=('d2f6bbec86bd4686104347924fd29e7a')
-sha512sums=('b430726b6b93461ee486c98bfa118ad79b5c3ca3d74f4e217c4d3f3d36b63e4802ea38fd7349213d90370914ef89dcfa8d2fa45a2d0182bc33d1f7cc77c9289e')
+md5sums=('73416f09432d80a1596c637eec2731b0')
+sha512sums=('88fc4757625be083e1bb0c2c1c22e6013e81c069258a8eb5e8c2665a5f52019be3b5367c6d8847d75cf54949e40a4c2ed65284b02e9153a1a62026efbd63a8ca')
 _distdir="ExtUtils-Builder-$pkgver"
 
 build() {
