@@ -1,6 +1,6 @@
 pkgbase = r-spatstat.model
 	pkgdesc = Parametric Statistical Modelling for the 'spatstat' Family
-	pkgver = 3.4.2
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=spatstat.model
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = r-spatstat.model
 	optdepends = r-spatial
 	optdepends = r-spatstat
 	optdepends = r-spatstat.linnet
-	source = https://cran.r-project.org/src/contrib/spatstat.model_3.4-2.tar.gz
-	sha256sums = 5434d3a257cee4cf5c32f0f3007e6f2ac8aebbcd030524e67f1684778bb0ce97
+	source = https://cran.r-project.org/src/contrib/spatstat.model_3.5-0.tar.gz
+	sha256sums = 666bd66d3fa6c6011b0c0ae476b9356502407bf4a6cdc6a73f459bba68c97942
 
 pkgname = r-spatstat.model

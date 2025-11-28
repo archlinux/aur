@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=spatstat.model
-_pkgver=3.4-2
+_pkgver=3.5-0
 pkgname=r-${_pkgname,,}
-pkgver=3.4.2
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Parametric Statistical Modelling for the 'spatstat' Family"
 arch=('x86_64')
@@ -33,7 +33,7 @@ optdepends=(
   r-spatstat.linnet
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5434d3a257cee4cf5c32f0f3007e6f2ac8aebbcd030524e67f1684778bb0ce97')
+sha256sums=('666bd66d3fa6c6011b0c0ae476b9356502407bf4a6cdc6a73f459bba68c97942')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
