@@ -2,8 +2,8 @@
 
 pkgname=perplexity
 pkgver=1.4.0
-pkgrel=1
-commit='56f9cbb33f2cbc23f64944c5c06e9df2d5026996'
+pkgrel=2
+commit='059b5e2989fb24109135607763e03453bebe1ea4'
 pkgdesc='Native Perplexity AI client for Linux'
 arch=('x86_64')
 url='https://github.com/mazixs/perplexity'
@@ -23,7 +23,7 @@ source=(
   'perplexity.install'
 )
 sha256sums=('SKIP'
-            '2cffb28aff1a7059b8d2ff876dee249cd6c907b4e4f57f6f4e781b8bfbe82c4d'
+            'e2e3ca2a7838a3602be2e5293c661a821f69e0f2b21774d99e4fe5f7c78390c0'
             '553ae2c5fecc8a5bab7aedcd07450d89f0220c46695fac488d4aa074330eb3c7'
             'd43b2da02e60f303e96a38e04a6e77117e9d84f527c9352f782caf50d5980006'
             '01692302be8137ce1f61e6a4c0f680818053bded7ebd8ea2ee3a47cc1d9f71af'
@@ -56,9 +56,26 @@ package() {
   install -Dm755 "${srcdir}/launcher.sh" "${pkgdir}/usr/bin/perplexity"
   install -Dm644 "${srcdir}/default.conf" "${pkgdir}/etc/perplexity/default.conf"
 
-  # Устанавливаем desktop файл и иконку
+  # Устанавливаем desktop файл
   install -Dm644 "${srcdir}/perplexity.desktop" \
                  "${pkgdir}/usr/share/applications/perplexity.desktop"
-  install -Dm644 "${srcdir}/perplexity.png" \
-                 "${pkgdir}/usr/share/pixmaps/perplexity.png"
+
+  # Устанавливаем иконки из репозитория (все размеры)
+  if [ -d "usr/share/icons" ]; then
+    install -dm755 "${pkgdir}/usr/share/icons"
+    cp -r usr/share/icons/* "${pkgdir}/usr/share/icons/"
+    
+    # Хак: переименовываем 512x512 иконку в Perplexity.png (с большой буквы)
+    # чтобы соответствовать StartupWMClass=Perplexity в некоторых DE
+    if [ -f "${pkgdir}/usr/share/icons/hicolor/512x512/apps/Perplexity.png" ]; then
+       # Уже с большой буквы (если в репо так)
+       :
+    elif [ -f "${pkgdir}/usr/share/icons/hicolor/512x512/apps/perplexity.png" ]; then
+       mv "${pkgdir}/usr/share/icons/hicolor/512x512/apps/perplexity.png" \
+          "${pkgdir}/usr/share/icons/hicolor/512x512/apps/Perplexity.png"
+    fi
+  fi
+
+  # Fallback: копируем 512px иконку в pixmaps как Perplexity.png
+  install -Dm644 "${srcdir}/perplexity.png" "${pkgdir}/usr/share/pixmaps/Perplexity.png"
 }
