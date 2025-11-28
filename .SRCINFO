@@ -1,6 +1,6 @@
 pkgbase = clash-verge-rev-autobuild-bin
 	pkgdesc = Continuation of Clash Verge | A Clash Meta GUI based on Tauri
-	pkgver = 2.4.4+autobuild.1127.3cd6e88
+	pkgver = 2.4.4+autobuild.1128.34aa268
 	pkgrel = 1
 	url = https://github.com/clash-verge-rev/clash-verge-rev
 	install = .install
@@ -22,11 +22,11 @@ pkgbase = clash-verge-rev-autobuild-bin
 	options = !strip
 	source = .install
 	sha256sums = 35b576cd9d0ae453ead9f65537451137069150a91364f0560ea14100e79b35e3
-	source_x86_64 = Clash.Verge_2.4.4+autobuild.1127.3cd6e88_amd64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/autobuild/Clash.Verge_2.4.4+autobuild.1127.3cd6e88_amd64.deb
-	sha256sums_x86_64 = a9fe2cf387057e969e44a92475508b59c2bc7337f93a0dad7541f5e20f943589
-	source_aarch64 = Clash.Verge_2.4.4+autobuild.1127.3cd6e88_arm64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/autobuild/Clash.Verge_2.4.4+autobuild.1127.3cd6e88_arm64.deb
-	sha256sums_aarch64 = 9210b932edd37a402a86cb2c0fc3e9b3884c978edd86688190025f2533ac0b3f
-	source_armv7h = Clash.Verge_2.4.4+autobuild.1127.3cd6e88_armhf.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/autobuild/Clash.Verge_2.4.4+autobuild.1127.3cd6e88_armhf.deb
-	sha256sums_armv7h = 7efa985ff235f07585200062a3a0f7dbf39b6467400b424b80b83200fec712b3
+	source_x86_64 = Clash.Verge_2.4.4+autobuild.1128.34aa268_amd64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/autobuild/Clash.Verge_2.4.4+autobuild.1128.34aa268_amd64.deb
+	sha256sums_x86_64 = 527be21b333de95ddd5c4b88e7bbe31e0692f45d1d0e67456557e13fc5617008
+	source_aarch64 = Clash.Verge_2.4.4+autobuild.1128.34aa268_arm64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/autobuild/Clash.Verge_2.4.4+autobuild.1128.34aa268_arm64.deb
+	sha256sums_aarch64 = 0628d87dbb0cab13e2c47139c5467e813be707f274b669aa7a598d668975ff3e
+	source_armv7h = Clash.Verge_2.4.4+autobuild.1128.34aa268_armhf.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/autobuild/Clash.Verge_2.4.4+autobuild.1128.34aa268_armhf.deb
+	sha256sums_armv7h = 243d041c73add6aa6fbd629e6500ef7f1e309e32afd3320fb0d965e5830ff9ee
 
 pkgname = clash-verge-rev-autobuild-bin
