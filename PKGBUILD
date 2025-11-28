@@ -3,7 +3,7 @@
 
 pkgname=btrustbiss
 pkgver=3.44
-pkgrel=1
+pkgrel=2
 pkgdesc="Browser independent signing service."
 arch=('x86_64')
 url="https://www.b-trust.org"
