@@ -24,7 +24,7 @@ post_upgrade() {
     echo "   omazed setup"
     echo ""
     echo "   This will:"
-    echo "   • Replace old themes with new ones."
+    echo "   • Replace old themes with new ones"
     echo "   • Migrate to omarchy hooks automatically"
     echo ""
 }
@@ -37,7 +37,7 @@ post_remove() {
     echo "   • Theme files in ~/.config/zed/themes/ (preserved)"
     echo ""
     echo "To remove themes:"
-    echo "   rm ~/.config/zed/themes/{catppuccin,catppuccin-latte,everforest,gruvbox,kanagawa,matte-black,nord,osaka-jade,ristretto,rose-pine,tokyo-night,flexoki-light}*.json"
+    echo "   rm ~/.config/zed/themes/*.json"
     echo ""
     echo "Thank you for using Omazed!"
     echo ""
