@@ -1,0 +1,4 @@
+[kiro-cli-bin]
+source = "jq"
+url = "https://desktop-release.q.us-east-1.amazonaws.com/latest/manifest.json"
+filter = ".version"
