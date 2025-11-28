@@ -7,9 +7,22 @@ pkgbase = makeself-git
 	license = GPL-2.0-or-later
 	makedepends = git
 	depends = bash
-	provides = makeself
+	optdepends = gzip: compression support
+	optdepends = bzip2: compression support
+	optdepends = pbzip2: compression support
+	optdepends = xz: compression support
+	optdepends = lzop: compression support (lzo)
+	optdepends = lz4: compression support
+	optdepends = zstd: compression support
+	optdepends = pigz: compression support
+	optdepends = gnupg: encryption support
+	optdepends = openssl: encryption support
+	optdepends = ncompress: compression support
+	optdepends = tar: archive support
+	provides = makeself=2.6.0
 	conflicts = makeself
 	source = makeself-git::git+https://github.com/megastep/makeself.git
+	md5sums = SKIP
 	sha256sums = SKIP
 
 pkgname = makeself-git
