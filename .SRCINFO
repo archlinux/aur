@@ -1,13 +1,13 @@
 pkgbase = reactgame
 	pkgdesc = A simple reaction training game written in C# (.NET 6.0)
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/BlitDev/ReactGame
 	arch = x86_64
 	license = GPL3
-	makedepends = dotnet-sdk
+	makedepends = dotnet-sdk-6.0
 	depends = git
-	depends = dotnet-runtime
+	depends = dotnet-runtime-6.0
 	options = !strip
 	source = https://codeberg.org/BlitDev/ReactGame/archive/1.3.1.tar.gz
 	sha256sums = 33807eff2b2f3ba94762d93c729d4b9c603f7d4025827a75c92fc1068f0dece4
