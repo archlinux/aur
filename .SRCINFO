@@ -1,6 +1,6 @@
 pkgbase = xtreamium-proxy
 	pkgdesc = Xtreamium Proxy Service
-	pkgver = 1.4.29
+	pkgver = 1.4.30
 	pkgrel = 1
 	url = https://github.com/xtreamium/xtreamium-proxy
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = xtreamium-proxy
 	provides = xtreamium-proxy
 	conflicts = xtreamium-proxy
 	backup = etc/xtreamium-proxy/appsettings.json
-	source = https://github.com/xtreamium/xtreamium-proxy/releases/download/v1.4.29/xtreamium-proxy-linux.tar.gz
+	source = https://github.com/xtreamium/xtreamium-proxy/releases/download/v1.4.30/xtreamium-proxy-linux.tar.gz
 	sha256sums = SKIP
 
 pkgname = xtreamium-proxy
