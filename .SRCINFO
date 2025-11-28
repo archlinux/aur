@@ -1,0 +1,23 @@
+pkgbase = cortexide-bin
+	pkgdesc = CortexIDE - Open-source AI code editor (Cursor alternative). Binary release.
+	pkgver = 1.99.30.0.2
+	pkgrel = 1
+	url = https://opencortexide.com
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = libxtst
+	depends = libxkbfile
+	depends = glibc
+	provides = cortexide
+	conflicts = cortexide
+	options = !strip
+	source = https://github.com/OpenCortexIDE/cortexide-binaries/releases/download/1.99.30.0.2/CortexIDE-linux-x64-1.99.30.0.2.tar.gz
+	source = cortexide.desktop
+	sha256sums = 8502aa26aeb5cd6fd9cf81a383cc484da05e0380a5dc866793eb14fb72ff0be3
+	sha256sums = dfcd78f455daa4e53c2751547f4397e814251310047e7dc73c43ae7ddbf07153
+
+pkgname = cortexide-bin
