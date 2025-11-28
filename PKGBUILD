@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Bruce Zhang
 pkgname=rubick
-pkgver=4.3.5
+pkgver=4.3.7
 _electronversion=26
 _nodeversion=18
 pkgrel=1
@@ -30,7 +30,7 @@ source=(
 	"${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
 	"${pkgname}.sh"
 )
-sha256sums=('d8dacb565018a3ae31d3c0cef478663ae6aac698b38e51873e23d31c972b9e3f'
+sha256sums=('2bdedee94dd53bedfa0f8243d7473a2fd160eb671582ddcd680aa70e9ab90645'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -38,8 +38,13 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver="$(grep -m 1 '"electron":' "${srcdir}/${pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
+	_get_electron_version
 	sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -47,7 +52,6 @@ prepare() {
         s/@cfgdirname@/${pkgname}/g
         s/@options@//g
     " "${srcdir}/${pkgname}.sh"
-	_ensure_local_nvm
 	gendesk -q -f -n \
 		--pkgname="${pkgname}" \
 		--pkgdesc="${pkgdesc}" \
@@ -76,6 +80,7 @@ prepare() {
 		} >> .yarnrc
 		find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
 	fi
+	_ensure_local_nvm
 	cp .yarnrc feature
 	sed -i "s/deb/dir/g" vue.config.js
 	sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
@@ -86,6 +91,7 @@ prepare() {
 }
 build() {
 	local electronDist="/usr/lib/electron${_electronversion}"
+	_ensure_local_nvm
 	cd "${srcdir}/${pkgname}-${pkgver}/feature"
 	NODE_ENV=production 	yarn run build
 	cd "${srcdir}/${pkgname}-${pkgver}"
