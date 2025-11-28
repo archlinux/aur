@@ -1,0 +1,16 @@
+pkgbase = c64_tap_tool-git
+	pkgdesc = command tool, for handling with c64 tap files
+	pkgver = r32.2d8c8a5
+	pkgrel = 1
+	url = https://github.com/ThKattanek/c64_tap_tool
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	provides = c64_tap_tool
+	conflicts = c64_tap_tool
+	source = git+https://github.com/ThKattanek/c64_tap_tool.git
+	sha256sums = SKIP
+
+pkgname = c64_tap_tool-git
