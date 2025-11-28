@@ -5,7 +5,7 @@
 # Their install doesn't install it so they don't seem too serious about it.
 
 _opt_DKMS=1           # This can be toggled between installs
-#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/4.19.*/modules.alias))"
+#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/4.19.*/vmlinuz))"
 
 # ls -l /dev/ttyF[0-9]*
 # lsmod | grep -i ax99100
@@ -23,7 +23,8 @@ pkgname='asix-ax99100'
 #pkgver='1.7.0'; _dl='1162'; _x=''
 #pkgver='1.8.0'; _dl='1229'; _x=''
 #pkgver='1.9.0'; _dl='1484'; _x=''
-pkgver='2.1.0'; _dl='1726'; _x='x'
+#pkgver='2.1.0'; _dl='1726'; _x='x'
+pkgver='2.3.0'; _dl='1956'; _x='x'
 pkgrel='1'
 pkgdesc='kernel module driver for Asix serial RS-232 port'
 arch=('i686' 'x86_64')
@@ -44,7 +45,7 @@ source+=(
   '0005-kernel-6.4-DEFINE_SEMAPHORE-2arg.patch'
   '0006-kernel-5.4-compiler_attributes-fallthrough.patch'
 )
-md5sums=('df5774ea4877ed7c42ea62cd4e8238e2'
+md5sums=('bc59e40e99bee27ca55edb43ece28e60'
          'e992800dddd65a174ac531448e3f1498'
          'ab3d71682ad549eb51ae8a13aa90efc5'
          '8bf51364274f661b3f88fafb23b61f87'
@@ -52,7 +53,7 @@ md5sums=('df5774ea4877ed7c42ea62cd4e8238e2'
          '3827ba41339a6ad65089287df11a5726'
          '211906a3d015a4c16f6ec52d0e5f3b23'
          'd3b9cb56f5e919d230703233279f0d17')
-sha256sums=('b00677b5663a529a163b10365fe8896917c77695b2a14865875b4127a7739fc5'
+sha256sums=('ef87b5d2d5d5f80d7fcdc8cdb57ac05ef4d62fd3439d2f08a56ddf7a783f21c8'
             '158c5a5118e9f7b109276c0639e507ad0471468cef18ebc0a1103bdf96cd2d36'
             '86b91328ed6b596aaa441aea448e6f7fb833a447483b44e869cfbf8286810e54'
             'be4b1bf9b404b6704002e6d6866af42bb69bda487f5ad063e575a374192969d5'
@@ -121,14 +122,14 @@ prepare() {
     _patches+=('0005-kernel-6.4-DEFINE_SEMAPHORE-2arg.patch')
   fi
 
-  if [ "$(vercmp "${pkgver}" '2.1.0')" -ge 0 ]; then
+  if [ "$(vercmp "${pkgver}" '2.3.0')" -lt 0 ]; then
     _patches+=('0006-kernel-5.4-compiler_attributes-fallthrough.patch')
   fi
 
   local _pt _ptf=() _pts=()
   for _pt in "${_patches[@]}"; do
     set +u; msg2 "Patch ${_pt}"; set -u
-    if patch -Nufp1 -i "${srcdir}/${_pt}"; then
+    if patch -Nufp1 --no-backup-if-mismatch -i "${srcdir}/${_pt}"; then
       _pts+=("${_pt}")
     else
       _ptf+=("${_pt}")
@@ -160,7 +161,7 @@ prepare() {
     -e 's:^RM_PATH:#&:g'
     -e '# Disable all clean items to use built in clean'
     -e '/^clean:/,/^$/ s:^\t:#&:g'
-    -e 's@^clean:@&\n\t$(MAKE) -C $(KDIR) M=$(PWD) clean@g'
+    -e 's@^clean:@&\n\t$(MAKE) -C $(KDIR)/build/ M=$(PWD) clean@g'
     -e '/spi_test/ s:^#\trm:\trm:g'
     -e '# Fix paths for package:g'
     -e '/^install:/,/^$/ s:/usr/:"$(DESTDIR)"&:g'
@@ -271,7 +272,7 @@ BUILT_MODULE_NAME[0]="${_modulename}"
 BUILT_MODULE_LOCATION[0]=""
 # Using all processors doesn't compile this tiny module any faster.
 MAKE[0]="make -j1 modules"
-CLEAN[0]="make -j1 clean"
+#CLEAN[0]="make -j1 clean"
 # The install version is .ko.gz. The DKMS version is .ko. No conflicts.
 DEST_MODULE_LOCATION[0]="/kernel/drivers/tty/serial"
 EOF
