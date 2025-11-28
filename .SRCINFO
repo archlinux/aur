@@ -2,7 +2,7 @@ pkgbase = easyeffects-record
 	pkgdesc = Automated player and recorder for Easy Effects, allowing re-recording one or multiple songs with applied effects.
 	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://github.com/mzivic7/easyeffects-record
+	url = https://github.com/sparklost/easyeffects-record
 	arch = any
 	license = GPL-3.0-only
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = easyeffects-record
 	depends = easyeffects
 	depends = ffmpeg
 	depends = pipewire
-	source = git+https://github.com/mzivic7/easyeffects-record.git
+	source = git+https://github.com/sparklost/easyeffects-record.git
 	sha256sums = SKIP
 
 pkgname = easyeffects-record
