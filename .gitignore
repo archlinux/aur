@@ -2,7 +2,10 @@
 !.gitignore
 !.nvchecker.toml
 !.SRCINFO
-!LICENSE
 !PKGBUILD
-!*.desktop
+!proton-mail.desktop
 !proton-mail.sh
+!LICENSE
+!LICENSES/
+!LICENSES/*
+!REUSE.toml

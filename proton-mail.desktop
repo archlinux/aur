@@ -8,3 +8,4 @@ Type=Application
 StartupNotify=true
 Categories=Network;Email;
 MimeType=x-scheme-handler/mailto;
+

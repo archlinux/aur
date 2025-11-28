@@ -14,7 +14,7 @@ source=("ProtonWebClients-$pkgver::git+https://github.com/ProtonMail/WebClients.
         'proton-mail.desktop'
         'proton-mail.sh')
 b2sums=('SKIP'
-        'dbaec179f629964aac699677b09219e0494426c624d00896c18177263e38dac7fb0383702d9cf22fc617a77809d826d5a8a2348f4a31a6ec069ce642af3671be'
+        'f0a2b4eca51362b204f487c6484e07080b2d953f38acb3b7ce81a05394fe2f57e5fd42f8806111c467aa528e539654a6b1adc3965328668c4734b3eecf3407e9'
         'd71722fd78770b2025464fcde201b4ab18e58afc269105ea389a6d4665a6a0801adcece53507004c56722ba8954ee7fd6b5de3eec3b099c6cc67e206f14cf4aa')
 
 prepare() {
