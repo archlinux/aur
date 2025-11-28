@@ -1,0 +1,14 @@
+pkgbase = user-last-login-tool
+	pkgdesc = Generates a CSV report detailing the last login time for system users (SRE tool).
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/DanLinX2004X/user-last-login-tool
+	arch = any
+	license = MIT
+	depends = bash
+	depends = shadow
+	depends = util-linux
+	source = user-last-login-tool-1.0.0.tar.gz::https://github.com/DanLinX2004X/user-last-login-tool/archive/v1.0.0.tar.gz
+	sha256sums = a0a6d4bc71cd4e6625dfe0e31c1e13a2bb7dfa404085e6bfaa6809ac0ca97434
+
+pkgname = user-last-login-tool
