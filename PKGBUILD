@@ -10,6 +10,7 @@ backup=("etc/${pkgname}/${pkgname}.conf")
 makedepends=(
   'go'
   'make'
+  'unzip'
 )
 source=("${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
   "${pkgname}.conf"
