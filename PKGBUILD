@@ -5,7 +5,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=2.5.26.r0.g0e649bc70b
+pkgver=2.5.336.r0.ge3063d6cd6
 pkgrel=1
 pkgdesc='PlayStation 2 emulator'
 arch=(x86_64)
@@ -34,7 +34,7 @@ depends=(
     soundtouch
     wayland
     xcb-util-cursor
-    kddockwidgets-qt6
+    kddockwidgets
 )
 makedepends=(
     7zip

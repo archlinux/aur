@@ -1,6 +1,6 @@
 pkgbase = pcsx2-git
 	pkgdesc = PlayStation 2 emulator
-	pkgver = 2.5.26.r0.g0e649bc70b
+	pkgver = 2.5.336.r0.ge3063d6cd6
 	pkgrel = 1
 	url = https://github.com/PCSX2/pcsx2
 	install = pcsx2-git.install
@@ -38,7 +38,7 @@ pkgbase = pcsx2-git
 	depends = soundtouch
 	depends = wayland
 	depends = xcb-util-cursor
-	depends = kddockwidgets-qt6
+	depends = kddockwidgets
 	optdepends = alsa-utils: Sound player for RetroAchievements
 	optdepends = gstreamer: Backup sound player for RetroAchievements
 	optdepends = libpipewire: Pipewire support
