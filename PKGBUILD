@@ -2,7 +2,7 @@
 pkgname=tbamud-git
 _pkgname=tbamud
 pkgver=r610.be8de64
-pkgrel=1
+pkgrel=2
 pkgdesc="A DikuMUD derivative, multiplayer text-based RPG server (development version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tbamud/tbamud"
@@ -39,6 +39,9 @@ build() {
   # Accept license preemptively
   touch src/.accepted
 
+  # Force a pre-C23 standard so 'bool' and 'false' are not keywords
+  export CFLAGS+=" -std=gnu17"
+
   ./configure --prefix=/usr
   cd src
   make
@@ -67,4 +70,3 @@ package() {
   # Install license
   install -Dm644 "$srcdir/$_pkgname/doc/license.txt" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
-

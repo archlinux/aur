@@ -1,7 +1,7 @@
 pkgbase = tbamud-git
 	pkgdesc = A DikuMUD derivative, multiplayer text-based RPG server (development version)
 	pkgver = r610.be8de64
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tbamud/tbamud
 	install = tbamud.install
 	arch = x86_64
