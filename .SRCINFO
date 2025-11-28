@@ -1,14 +1,13 @@
 pkgbase = otf-oldania
 	pkgdesc = A modern gothic font
 	pkgver = 1.007
-	pkgrel = 1
+	pkgrel = 2
 	url = http://arkandis.tuxfamily.org/adffonts.html
 	arch = any
 	groups = otf-adf-fonts
-	license = custom:GPL with font exception
+	license = GPL-2.0-or-later WITH Font-exception-2.0
 	conflicts = otf-adf
 	source = http://arkandis.tuxfamily.org/fonts/Oldania-Std-20150406.tar.gz
 	sha256sums = 2fdf0e56e8f3a9408325bf9f904f36b561ce35b10d4eb35c1f0ef3f69c867af2
 
 pkgname = otf-oldania
-
