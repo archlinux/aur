@@ -1,0 +1,13 @@
+pkgbase = otf-tenhamasen-font
+	pkgdesc = Hand-written style Japanese font like signboards at Tenhama-line. 天竜浜名湖鉄道(天浜線)の駅名看板風手書きフォント
+	pkgver = 3
+	pkgrel = 1
+	url = https://www.hama365.info/tenhamasenfont/
+	arch = any
+	license = custom
+	source = https://www.hama365.info/tenhamasenfont/download/TenhamasenFontVer3.zip
+	source = LICENSE
+	sha256sums = a0f2bcf4b53296fdfb250e62d585d513917cba2524b7677d72ed622300583880
+	sha256sums = d0db091ee0767e5622c746e332a34cd71d844cfaf092d44c3f3fbf540457d89a
+
+pkgname = otf-tenhamasen-font
