@@ -1,6 +1,6 @@
 # Maintainer: Lluciocc <llucio.cc00@example.com>
 pkgname=connex
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Modern Wi-Fi Manager for Hyprland/ArchLinux with GTK3 interface"
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
 )
 makedepends=('git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('a5d6e485979b60aba91ee9a578a89fdb8756928d9795093ab57e850c0fb96cca')
+sha256sums=('bfc4c34088107ab216b4a6c08168e9726a28727157991cc17dfe6631d816b213')
 
 # For local development, use:
 # source=("connex.py")
