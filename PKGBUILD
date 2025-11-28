@@ -1,10 +1,18 @@
 pkgname=neovim-cmp-git
-pkgver=0.0.1.r161.g04e0ca3
-pkgrel=1
 pkgdesc="Autocompletion plugin for Neovim"
+pkgver=0.0.2.r24.gd97d85e
+pkgrel=1
 arch=('any')
 url="https://github.com/hrsh7th/nvim-cmp"
 license=('MIT')
+
+conflicts=(
+  'neovim-cmp'
+)
+
+provides=(
+  'neovim-cmp'
+)
 
 groups=(
   'neovim-plugins'
