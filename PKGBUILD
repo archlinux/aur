@@ -1,9 +1,9 @@
-# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Ivan Wu <2967948168 at qq dot com>
 
 _hkgname=adblock2privoxy
 pkgname=$_hkgname
-pkgver=2.0.1
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Convert adblock config files to privoxy format"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('ghc-libs' 'haskell-case-insensitive' 'haskell-http-conduit' 'haskell-m
 makedepends=('ghc')
 options=('!emptydirs')
 source=("https://hackage.haskell.org/package/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('064f501995eef83146ed49ccf83856faee8ab7e6e1fd70013d8bb1e12a3a1411')
+sha256sums=('8a6113404ad8254da885c8f0f7cb837f136d5ef4baf9d8b25ee14e6c0a47d0be')
 
 build() {
     cd $srcdir/$_hkgname-$pkgver

@@ -1,6 +1,6 @@
 pkgbase = adblock2privoxy
 	pkgdesc = Convert adblock config files to privoxy format
-	pkgver = 2.0.1
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/essandess/adblock2privoxy
 	arch = x86_64
@@ -16,8 +16,7 @@ pkgbase = adblock2privoxy
 	depends = haskell-old-locale
 	depends = haskell-strict
 	options = !emptydirs
-	source = https://hackage.haskell.org/package/adblock2privoxy-2.0.1/adblock2privoxy-2.0.1.tar.gz
-	sha256sums = 064f501995eef83146ed49ccf83856faee8ab7e6e1fd70013d8bb1e12a3a1411
+	source = https://hackage.haskell.org/package/adblock2privoxy-2.3.1/adblock2privoxy-2.3.1.tar.gz
+	sha256sums = 8a6113404ad8254da885c8f0f7cb837f136d5ef4baf9d8b25ee14e6c0a47d0be
 
 pkgname = adblock2privoxy
-
