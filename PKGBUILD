@@ -1,11 +1,12 @@
-# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
-# Conributor: fordperfect (AUR user)
+# Maintainer: spiritfader (AUR user)
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: fordperfect (AUR user)
 # Based on unigine-valley by ajs124 and meyithi
 
 pkgname=unigine-superposition
 _pkgname=Unigine_Superposition
 pkgver=1.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Interactive 3D benchmark: walk through a lab of a lone professor"
 arch=('x86_64')
 url="https://benchmark.unigine.com/superposition"
@@ -36,7 +37,7 @@ options=('!strip')
 _tarname="${_pkgname}-${pkgver}.run"
 source=("${_tarname}::https://assets.unigine.com/d/${_tarname}" "Superposition.desktop")
 noextract=("${_tarname}")
-b2sums=('f0447b0ccd860e653c2308637c93ed29ec851ff9923251edbd37a14b021149038f1c252deb0f3c4954fd4508883b1a2994a87b34a5e18902cef6c82c6ccc6b6b'
+b2sums=('8e6e3d9107004d162a71158af2b90c2b7c62c7a4cf5bfdbb54ff086b38b06be44af36df4abe98f6a224a566aa7bc9a8f9b27d605d2bd9cf70cb2887937a4fdb2'
         '1d9987b5a910b86dac2e252c3187a6a07095da81d06dfafbd2c16bcacb72f602c183334fb6b3c03c7b35418f8dc6e4f2d34a44ab22831d66b67d9e5ed45bc93e')
 PKGEXT='.pkg.tar.zst'
 COMPRESSZST=(zstd --compress --fast --stdout --quiet --threads=0 -)
