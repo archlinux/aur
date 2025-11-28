@@ -11,6 +11,7 @@ depends=()
 makedepends=('cargo' 'git')
 optdepends=(
     'chafa: image previews in clipboard mode'
+    'cclip: clipboard history'
 )
 provides=('fsel')
 conflicts=('fsel')
