@@ -1,7 +1,7 @@
 # Maintainer: Stipe Kotarac <stipe@kotarac.net>
 
 pkgname=jay-git
-pkgver=r1363.7beaad90
+pkgver=v1.11.0.r154.ge81b31b
 pkgrel=1
 pkgdesc='A Wayland Compositor'
 arch=('x86_64')
@@ -45,7 +45,7 @@ prepare() {
 
 pkgver() {
   cd jay/
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
