@@ -1,6 +1,6 @@
 pkgname=omazed
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Live theme switching for Zed in Omarchy - automatically synchronize your Zed editor theme with your Omarchy system theme"
 arch=('any')
 url="https://github.com/aps6/omazed"
