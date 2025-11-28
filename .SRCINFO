@@ -1,14 +1,13 @@
 pkgbase = otf-tribun
 	pkgdesc = A serif font
 	pkgver = 1.017
-	pkgrel = 1
+	pkgrel = 2
 	url = http://arkandis.tuxfamily.org/adffonts.html
 	arch = any
 	groups = otf-adf-fonts
-	license = custom:GPL with font exception
+	license = GPL-2.0-or-later WITH Font-exception-2.0
 	conflicts = otf-adf
 	source = http://arkandis.tuxfamily.org/fonts/Tribun-Std-20120228.zip
 	sha256sums = c7860e371a1f8b04bc9c7eb5d1e4fae0fddb4cc4cb0565db30db205db464a840
 
 pkgname = otf-tribun
-
