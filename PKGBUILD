@@ -1,7 +1,7 @@
 # Maintainer: Do1e <https://aur.archlinux.org/account/Do1e>
 
 pkgname=python-njulogin
-pkgver=3.5.1
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="The Nanjing University login module, which can be used to login to the various campus web sites"
 arch=('any')
@@ -17,17 +17,14 @@ depends=(
   'python-onnxruntime>=1.20.0'
   'python-cryptography>=43.0.0'
 )
-makedepends=(python-poetry)
+makedepends=(uv)
 
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/3b/8c/5f600b660e90b111168cbe33829a7dd6e67f2508bb9bd1fc95b85541b94e/njulogin-3.5.1.tar.gz")
-sha256sums=('35b093816d082f3e1a101db729ee4aedb8a3ffa39dcd31dc7551a721e1ad9d62')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/5c/13/4df6f4804ae8029092ac4fb87f0864ec0437372c16c85a192b2b6f893dd1/njulogin-3.6.1.tar.gz")
+sha256sums=('ba3a25ed08aaf1220c6771cc8f35ca2ffe3cec738d3fbd1fccfb8f69e1030fd2')
 
 build() {
   cd "njulogin-$pkgver"
-  original_venv_setting=$(poetry config virtualenvs.create --local)
-  poetry config virtualenvs.create false
-  poetry build
-  poetry config virtualenvs.create "$original_venv_setting"
+  uv build
 }
 
 package() {
