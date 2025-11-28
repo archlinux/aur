@@ -3,7 +3,7 @@
 # Contributor: Isaac Freund <ifreund@ifreund.xyz>
 
 pkgname=zsh-abbr
-pkgver=6.3.3
+pkgver=6.4.0
 pkgrel=1
 pkgdesc='The zsh manager for auto-expanding abbreviations, inspired by fish shell.'
 arch=('any')
@@ -13,9 +13,9 @@ depends=('zsh')
 makedepends=('git')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver::git+${url}.git#tag=v${pkgver}"
-		"zsh-job-queue::git+https://github.com/olets/zsh-job-queue.git#commit=80327a7")
-b2sums=('7440f45bbf7f4cd73f2674eeba0a267c18b57f0b1a809d2ad78a52202e1aa502c6ad4a96a1c727b99cfcb231e6ebe825759839bd9f629174d2cd9f10b09155a1'
-        'a9cb18e69ba78ad49c938ae7286593b3bbee2e6314adddd711b70543b25cf5fd372a9dbcd86749370abd764344aff0e4070c2791f9a016d5a84b9a5fb323b1b4')
+		"zsh-job-queue::git+https://github.com/olets/zsh-job-queue.git#commit=9e99082")
+b2sums=('d998b58fe79e6e2b58e84b0d8f62b3d875068adda5e25da73e6bbed7ab21e356ba64770975ad2c34c70f18136fd3c72b3678bde0a172a79dfcb2446d18304e5d'
+        '39c06c8bebb4eb8501a09afe55df46eb8d9e091f88e50e337fddf89c2ba4d363bab0dc46d71294b0f47baee5fd788cec7975410d1c40ad9297a3f2d0f74216c0')
 
 prepare() {
 	cd $pkgname-$pkgver
