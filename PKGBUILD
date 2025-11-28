@@ -1,6 +1,6 @@
 # Maintainer: Pochang Chen <johnchen902@gmail.com>
 pkgname=wlchewing-git
-pkgver=v0.2.1.r0.2a02c6b
+pkgver=v0.4.1.r0.487280c
 pkgrel=1
 pkgdesc="Wayland Chinese zhuyin input method with libchewing "
 arch=('x86_64')

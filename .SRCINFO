@@ -1,6 +1,6 @@
 pkgbase = wlchewing-git
 	pkgdesc = Wayland Chinese zhuyin input method with libchewing
-	pkgver = v0.2.1.r0.2a02c6b
+	pkgver = v0.4.1.r0.487280c
 	pkgrel = 1
 	url = https://github.com/xdavidwu/wlchewing
 	arch = x86_64
