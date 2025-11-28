@@ -2,16 +2,18 @@ pkgdesc="This package provides Moomoo desktop client"
 url='https://www.moomoo.com/'
 
 pkgname='moomoo'
-pkgver='15.39.13808'
+pkgver='15.39.13818'
 arch=('x86_64')
 pkgrel=1
 license=("HTML Tidy")
 
-depends=()
+depends=(
+    libglvnd
+)
 provides=(moomoo)
 options=(!debug !strip)
 source=("${pkgname}-${pkgver}.deb::https://softwaredownload.futustatic.com/moomoo_desktop_${pkgver}_amd64.deb")
-sha256sums=('c80838b0691fe6a63f73f61def68c9ce380d6d7eb37f731c52c625d13b4fafc2')
+sha256sums=('4de7170c86e5ae20c4ffd2b0e83bd8de36e85f5d57fd4a0eeeb6c02d8f7edb85')
 
 package() {
     # Extract data
@@ -35,4 +37,7 @@ Version=$PRODUCT_EXTERNAL_VERSION"
     USER_DESKTOP_FILE="${pkgdir}/usr/share/applications/$APP_TYPE.desktop"
     echo "$DESKTOP_CONTENT" > "$USER_DESKTOP_FILE"
     chmod 644 "$USER_DESKTOP_FILE"
+
+    ln -sf /usr/lib/libEGL.so "${pkgdir}/${INSTALL_DIR}/libEGL.so"
+    ln -sf /usr/lib/libGLEv2.so "${pkgdir}/${INSTALL_DIR}/libGLESv2.so"
 }
