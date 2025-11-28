@@ -1,7 +1,7 @@
 # Maintainer: JonasAlv
 pkgname=zap-elec
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple web wrapper for WhatsApp Web"
 arch=('x86_64')
 url="https://github.com/JonasAlv/zap-elec"
@@ -15,10 +15,9 @@ sha256sums_x86_64=('SKIP')
 package() {
   cd "$srcdir"
 
-  # Extract .deb file (which is an ar archive)
+  # Extract .deb file
   ar x "zap-elec_${pkgver}_amd64.deb"
 
-  # Extract data archive into package directory
   if [[ -f data.tar.xz ]]; then
     tar -xf data.tar.xz -C "$pkgdir"
   elif [[ -f data.tar.gz ]]; then
@@ -27,4 +26,8 @@ package() {
     echo "No data.tar archive found!"
     return 1
   fi
+
+  # make symlink
+  mkdir -p "$pkgdir/usr/bin"
+  ln -sf /opt/zap-elec/whatsapp "$pkgdir/usr/bin/zap-elec"
 }
