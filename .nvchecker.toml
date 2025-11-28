@@ -1,0 +1,3 @@
+[ttf-astrolabe]
+source = "git"
+git = "https://github.com/aliftype/astrolabe.git"

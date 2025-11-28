@@ -1,0 +1,11 @@
+pkgbase = ttf-astrolabe
+	pkgdesc = Astrolabe is a Kufic typeface
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://aliftype.com/astrolabe
+	arch = any
+	license = OFL-1.1
+	source = https://github.com/aliftype/astrolabe/releases/download/v1.00/Astrolabe-1.00.zip
+	sha256sums = eb303929c9a614df9f71b05f201e2813e8df1ad0af353cfff7f10f35faba768d
+
+pkgname = ttf-astrolabe
