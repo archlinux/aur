@@ -4,7 +4,7 @@
 
 _name=marimo
 pkgname=marimo
-pkgver=0.17.8
+pkgver=0.18.1
 pkgrel=1
 pkgdesc="A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps"
 arch=(any)
@@ -13,6 +13,7 @@ license=('Apache-2.0')
 options=(!debug)
 
 depends=(
+    'python<3.14' # for python-msgspec package compatibility
     'python-click>=8.0' 'python-click<9'
     'python-jedi>=0.18.0'
     'python-markdown>=3.6' 'python-markdown<4'
@@ -29,7 +30,7 @@ depends=(
     'python-itsdangerous>=2.0.0'
     'python-narwhals>=2.0.0'
     'python-packaging'
-    'python-msgspec>=0.19.0' # Using original version instead of marimo's
+    'python-msgspec>=0.19.0' # TODO: change once the package is updated
 )
 
 optdepends=(
@@ -52,7 +53,7 @@ makedepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('bf68aaf733007e1aa61cfc8fb6739543df11d8e64148a14c9975f1a41439b25b')
+sha256sums=('aec2e69851e89386148437d0a29f80c31bc28ab40907757b122d13762ccbbd0e')
 
 build() {
     cd $_name-$pkgver || exit
