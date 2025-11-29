@@ -1,6 +1,6 @@
 pkgbase = leetcode-fsrs-cli
 	pkgdesc = A CLI tool for LeetCode practice using FSRS spaced repetition algorithm
-	pkgver = 1.6.3
+	pkgver = 1.6.4
 	pkgrel = 1
 	url = https://github.com/SaintFore/LeetCodeCLI
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = leetcode-fsrs-cli
 	conflicts = leetcode-fsrs-cli
 	replaces = leetcode-fsrs-cli
 	backup = etc/leetcode-fsrs-cli/config.json
-	source = https://github.com/SaintFore/LeetCodeCLI/archive/refs/tags/v1.6.3.tar.gz
-	sha256sums = 7cba74510ade29c135afdb84beb8332ca2e5b9b257e8a72e56c0ff67bece962f
+	source = https://github.com/SaintFore/LeetCodeCLI/archive/refs/tags/v1.6.4.tar.gz
+	sha256sums = 942fec137f80ff3eef53cf1b7acb4e4890f72cb0abb2a730c75126dbd8c92853
 
 pkgname = leetcode-fsrs-cli
