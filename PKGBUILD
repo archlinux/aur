@@ -3,7 +3,7 @@
 pkgname=heidisql
 pkgver=12.13.1.1
 pkgrel=15
-pkgdesc="Metapackage for HeidiSQL - wrapper script (install heidisql-qt6 or heidisql-gtk2)"
+pkgdesc="Metapackage for HeidiSQL - wrapper script (install a provider of your choice for heidisql-client)"
 arch=(x86_64)
 url="http://www.heidisql.com/"
 license=('GPL-2.0')
