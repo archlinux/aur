@@ -1,0 +1,8 @@
+[powershell-preview-bin]
+source = "github"
+github = "PowerShell/PowerShell"
+use_max_release = true
+include_prereleases = true
+prefix = "v"
+from_pattern = "-preview."
+to_pattern = "preview"

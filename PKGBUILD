@@ -1,43 +1,71 @@
-# Maintainer: Thiago França da Silva <tfsthiagobr98@outlook.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Thiago França da Silva <tfsthiagobr98@outlook.com>
 
-pkgname=powershell-preview-bin
-_pkgver=7.4.0-preview.6
-_version=7-preview
-pkgver=${_pkgver/-/.}
+_basename="powershell"
+_pkgname="${_basename}-preview"
+pkgname="${_pkgname}-bin"
+pkgver=7.6.0preview5
+_pkgver="${pkgver//preview/-preview.}"
 pkgrel=1
-pkgdesc='A cross-platform automation and configuration tool/framework (binary preview package)'
-arch=('x86_64')
-url='https://github.com/Powershell/Powershell'
-depends=('krb5' 'gcc-libs' 'glibc' 'lttng-ust' 'zlib' 'openssl' 'icu')
-provides=('powershell')
-options=(staticlibs !strip)
-install=powershell-preview.install
-sha256sums=('2EEAA3C725E80F22D6AA6147C4D0721BE2ED17340FCB706FEA47EBE9F0033C33')
-source=("https://github.com/PowerShell/PowerShell/releases/download/v${_pkgver}/powershell-preview_${_pkgver}-1.deb_amd64.deb")
-
-# omi fix (details here https://github.com/jborean93/omi/): not tested, feedback needed
-# comment the two lines above and uncomment these lines down here
-#source=(
-#  "https://github.com/PowerShell/PowerShell/releases/download/v${_pkgver}/powershell-preview_${_pkgver}-1.deb_amd64.deb"
-#  "https://github.com/jborean93/omi/releases/download/v2.2.1-pwsh/glibc-1.1.tar.gz"
-#)
-#sha256sums=('7a28a1d06c3790f9cb1b5fe7bf5df1a72bf01f8dcaa9bed1c53656739d53c64c'
-#            '28434376D4A14F42805578D49C08D85611DE8D2984B868C8317BCA2E68D33434')
+pkgdesc="A cross-platform automation and configuration tool/framework"
+arch=(
+  'aarch64'
+  'armv7h'
+  'x86_64'
+)
+url="https://microsoft.com/PowerShell"
+_url="https://github.com/PowerShell/PowerShell"
+license=(
+  'MIT'
+)
+depends=(
+  'gcc-libs'
+  'glibc'
+)
+optdepends=(
+  'lttng-ust2.12: CoreCLR tracing'
+)
+provides=(
+  "${_basename}=${pkgver}"
+  "${_pkgname}=${pkgver}"
+)
+conflicts=(
+  "${_basename}"
+)
+options=(
+  # '!strip'
+)
+install="${_basename}.install"
+source_aarch64=(
+  "${_url}/releases/download/v${_pkgver}/${_basename}-${_pkgver}-linux-arm64.tar.gz"
+)
+source_armv7h=(
+  "${_url}/releases/download/v${_pkgver}/${_basename}-${_pkgver}-linux-arm32.tar.gz"
+)
+source_x86_64=(
+  "${_url}/releases/download/v${_pkgver}/${_basename}-${_pkgver}-linux-x64.tar.gz"
+)
+noextract=(
+  "${source_aarch64[@]##*/}"
+  "${source_armv7h[@]##*/}"
+  "${source_x86_64[@]##*/}"
+)
+sha256sums_aarch64=('1c6035915493cbbb862b9c672f87dbd08acd13e638c38ce393dec4e3bf99a51e')
+sha256sums_armv7h=('1ecb77ec12170fa3f12e012f0c6a76a6027e8fcf31bcba6a148c9e65a55bbe52')
+sha256sums_x86_64=('ec5ef3f98c2a63efcd38d93076c0f99c63700abe49839699c907491589997adc')
 
 package() {
-  bsdtar xf data.tar.gz
+  local source_carch="source_${CARCH}[0]"
+  local source_arch="${!source_carch}"
+  local source_artifact="${source_arch##*/}"
 
-  mv usr "${pkgdir}"
-  mv opt "${pkgdir}"
+  install -vd "${pkgdir}/usr/bin" \
+              "${pkgdir}/usr/lib/${_basename}" \
+              "${pkgdir}/usr/share/licenses/${_basename}"
 
-  # also omi fix
-  #cp -f libmi.so ${pkgdir}/opt/microsoft/powershell/$_version/libmi.so
-  #cp -f libpsrpclient.so ${pkgdir}/opt/microsoft/powershell/$_version/libpsrpclient.so
-  #chmod 644 ${pkgdir}/opt/microsoft/powershell/$_version/libmi.so ${pkgdir}/opt/microsoft/powershell/$_version/libpsrpclient.so
+  bsdtar -xf "${source_artifact}" -C "${pkgdir}/usr/lib/${_basename}" --no-same-owner
+  chmod +x "${pkgdir}/usr/lib/${_basename}/pwsh"
 
-  cd "${pkgdir}"
-  cp -r usr/local/share usr
-  rm -rf usr/local
-
-  chmod 755 opt/microsoft/powershell/$_version/pwsh
+  ln -vsf "/usr/lib/${_basename}/pwsh" "${pkgdir}/usr/bin/pwsh"
+  ln -vsf "/usr/lib/${_basename}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${_basename}/LICENSE.txt"
 }

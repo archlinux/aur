@@ -1,5 +1,6 @@
-powershell*.pkg.*
-powershell*.deb
-pkg
-src
-*.tar.gz
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!.nvchecker.toml
+!*.install
