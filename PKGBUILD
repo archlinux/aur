@@ -1,7 +1,7 @@
 # Maintainer: Martin Chang <marty188586@gmail.com>
 
 pkgname=tt-flash
-pkgver=3.4.10
+pkgver=3.4.11
 pkgrel=1
 pkgdesc="Tenstorrent Firmware Update Utility"
 arch=('any')
@@ -9,10 +9,10 @@ url='https://github.com/tenstorrent/tt-flash'
 license=('Apache')
 makedepends=(python-build python-installer python-wheel)
 depends=(python-yaml python-luwen python-tabulate python-tomli python-tt-tools-common)
-provides=('tt-flash=3.4.9')
+provides=('tt-flash=3.4.10')
 conflicts=("tt-flash")
 source=("tt-flash::git+https://github.com/tenstorrent/tt-flash.git#tag=v${pkgver}")
-sha256sums=('6b06609f5dba4c8fcc3370846d6e07c0d179e1b4d55d2a626779c0f7d1030745')
+sha256sums=('2f29e3662a6272ba52f509b291b2dc83e31fe8792002a1e3df5466f40b2973c5')
 
 build() {
     cd tt-flash
