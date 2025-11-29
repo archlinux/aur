@@ -2,7 +2,7 @@
 
 _pkgname=qtcreator-qodeassist-plugin
 pkgname=${_pkgname}-bin
-pkgver=0.9.2
+pkgver=0.9.3
 _qtcreatorver=18.0.0
 pkgrel=1
 pkgdesc="QodeAssist is an AI-powered coding assistant plugin for Qt Creator v$_qtcreatorver"
