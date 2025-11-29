@@ -1,15 +1,15 @@
 # Maintainer: Melanie Scheirer <mel@nie.rs>
-# Contributor: Georg Pfahler <georg@grgw.de>
+# Contributor: johnnybash <georg at grgw dot de>
 
 pkgname=rbdoom3-bfg-git
-pkgver=r2027.a51833e4
+pkgver=r2730.4f97527a
 pkgrel=1
 pkgdesc="Doom 3 BFG Edition with soft shadows, cleaned up source, Linux and 64 bit Support"
 arch=(i686 x86_64)
 url="https://github.com/RobertBeckebans/RBDOOM-3-BFG"
 license=(GPL3)
 depends=(ffmpeg glew openal sdl2)
-makedepends=(cmake git rapidjson zip directx-shader-compiler)
+makedepends=(cmake git rapidjson zip directx-shader-compiler ispc vulkan-headers)
 optdepends=('doom3bfg-data: packaged game data files')
 provides=(rbdoom3-bfg)
 conflicts=(rbdoom-3-bfg)
