@@ -2,9 +2,6 @@
 Type = Path
 Operation = Install
 Operation = Upgrade
-Target = usr/lib/code*/package.json
-Target = opt/visual-studio-code*/resources/app/package.json
-Target = opt/vscodium*/resources/app/package.json
 Target = usr/share/applications/code*.desktop
 Target = usr/share/applications/vscode*.desktop
 Target = usr/share/applications/vscodium*.desktop

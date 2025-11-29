@@ -1,8 +1,5 @@
 post_install() {
   for file in \
-    /usr/lib/code*/package.json \
-    /opt/visual-studio-code*/resources/app/package.json \
-    /opt/vscodium*/resources/app/package.json \
     /usr/share/applications/code*.desktop \
     /usr/share/applications/vscode*.desktop \
     /usr/share/applications/vscodium*.desktop; do

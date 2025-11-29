@@ -1,6 +1,6 @@
 pkgbase = vscode-xdg-patch-hook
-	pkgdesc = Pacman hooks that patch VSCode files for improved XDG experience (#15741, #129953, #214741)
-	pkgver = 1.0.3
+	pkgdesc = Pacman hooks that patch VSCode files for improved XDG experience (#15741, #214741)
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/vscode-xdg-patch-hook
 	install = vscode-xdg-patch-hook.install
@@ -15,7 +15,7 @@ pkgbase = vscode-xdg-patch-hook
 	options = !debug
 	source = vscode-xdg-patch.hook
 	source = apply-xdg-patch.sh
-	b2sums = e4637eb7057ff9cf58daf3468591929938d8b659c980bc0c8f26b97a959735e19221bad6da2312ee1e8770024eb8a27599013ab80fb4a5b32110e10e93a4d80b
-	b2sums = 5fb3921a21e05064bff5c29c3eb2008ded1f3b7880e051352b6859bb9b2ee5c87b13ed41457c9384327a12e6f16beb8fe8b553459f7337688c870e04e2c48632
+	b2sums = 0b88468f8a9fbf730f5b853c78651610c7c88875be2755b46b83012a497d5d48029ca746bcffbe460006401e9bb24c16ebd72c3776f2b5c9777dab7c6df10505
+	b2sums = 7b76279f6f35e69be0977e9fe803764b86e8a733bbe489c19a5e9d005dbfe6c25bd8a7d42126dcac3a61826ac9b91035bf9d41e5323e2e789ed7654b4ba61ab9
 
 pkgname = vscode-xdg-patch-hook
