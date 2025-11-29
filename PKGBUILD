@@ -4,13 +4,13 @@
 _basename=heidisql
 pkgname=${_basename}-gtk2-bin
 pkgver=12.13.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, and SQLite databases. (GTK2)"
 arch=('x86_64')
 _barch=('amd64')
 url="https://github.com/HeidiSQL/HeidiSQL"
 license=('GPL-2.0')
-conflicts=("${_basename}")
+conflicts=("${_basename}" heidisql-common)
 provides=("${_basename}")
 replaces=("heidisql-bin")
 depends=('gtk2' 'libperconaserverclient' 'mariadb-libs' 'postgresql-libs' 'sqlite')
