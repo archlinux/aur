@@ -1,3 +1,4 @@
+# Maintainer: Toria <ninetailedtori@uwu.gal>
 # Maintainer: Darjan Krijan [https://disc-kuraudo.eu]
 # Contributor: Jesse R Codling <codling@umich.edu>
 # Manual download of 'aocl-linux-aocc-${pkgver}.tar.gz' required from upstream
@@ -5,15 +6,19 @@
 
 pkgbase=aocl
 pkgname=(aocl-aocc aocl-gcc)
+_major=5-1
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD Optimizing CPU Libraries"
 arch=('x86_64')
 license=('custom')
-url="https://developer.amd.com/amd-aocl/"
+DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
+_url_aocc="https://download.amd.com/developer/eula/aocl/aocl-${_major}/aocl-linux-aocc-${pkgver}.tar.gz"
+_url_gcc="https://download.amd.com/developer/eula/aocl/aocl-${_major}/aocl-linux-gcc-${pkgver}.tar.gz"
+url="https://www.amd.com/en/developer/aocl.html"
 source=(
-	"local://${pkgbase}-linux-aocc-${pkgver}.tar.gz"
-	"local://${pkgbase}-linux-gcc-${pkgver}.tar.gz"
+	"$_url_aocc"
+	"$_url_gcc"
 	"${pkgbase}-aocc.install"
 	"${pkgbase}-gcc.install"
 	"modulefile"
@@ -21,11 +26,16 @@ source=(
 options=('staticlibs' '!strip')
 makedepends=('patchelf')
 optdepends=('env-modules')
-sha256sums=('2a12eb1270fc1cf16618664008dc872d37cc2bd690c492e468c8f2c6937f9488'
-            '73ad28baaa1096972804c1a1d42b8ed4724c0b98b60806e94ef6322bc86afa8b'
+_sha256sum1=$(curl -A 'Mozilla' "$url" | grep --perl-regexp '\w{64}(?=\<\/td\>)' --only-matching | sed -n '1 p')
+_sha256sum2=$(curl -A 'Mozilla' "$url" | grep --perl-regexp '\w{64}(?=\<\/td\>)' --only-matching | sed -n '4 p')
+sha256sums=("$_sha256sum1"
+            "$_sha256sum2"
             '4f58524e1948b2cb470b856546b87656b2fbce0b98b0d43d345fcedb101f1295'
             'fe5245a7b34253a67105ee5e6bb868bbb69ebf318af32dc81e1cdd7d7277b639'
             'bbf75a4d30aa4f8c4eb46d3c6193c011c43683352266fa56314f16212e409965')
+# NB: I should've made my checksum variable lambdas such that they will find all sums,
+# even if AMD change their website, but if they remove the </td> tag from the end,
+# this may fail. In which case, we can possible YOLO remove the lookahead.
 
 package_aocl-aocc() {
 	install=${pkgname}.install
