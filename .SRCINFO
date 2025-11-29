@@ -10,6 +10,7 @@ pkgbase = clipse-git
 	depends = glibc
 	depends = libx11
 	depends = libxfixes
+	depends = libxtst
 	optdepends = xclip
 	optdepends = wl-clipboard
 	provides = clipse

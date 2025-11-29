@@ -12,6 +12,7 @@ depends=(
     "glibc"
     "libx11"
     "libxfixes"
+    "libxtst"
 )
 makedepends=(
     "go"
