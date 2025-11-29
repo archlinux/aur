@@ -2,11 +2,11 @@
 
 pkgname=('php-geoip' 'php-legacy-geoip')
 pkgver=1.1.1
-pkgrel=13
+pkgrel=14
 pkgdesc="GeoIP module for PHP"
 arch=('x86_64')
 url="https://pecl.php.net/package/geoip"
-license=('PHP')
+license=('PHP-3.01')
 depends=('geoip')
 makedepends=('php' 'php-legacy')
 source=(https://pecl.php.net/get/geoip-$pkgver.tgz

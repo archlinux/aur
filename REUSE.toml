@@ -26,4 +26,4 @@ path = [
     "php8.patch",
 ]
 SPDX-FileCopyrightText = "php-geoip contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
+SPDX-License-Identifier = "PHP-3.01"

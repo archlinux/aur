@@ -1,10 +1,10 @@
 pkgbase = php-geoip
 	pkgdesc = GeoIP module for PHP
 	pkgver = 1.1.1
-	pkgrel = 13
+	pkgrel = 14
 	url = https://pecl.php.net/package/geoip
 	arch = x86_64
-	license = PHP
+	license = PHP-3.01
 	makedepends = php
 	makedepends = php-legacy
 	depends = geoip
