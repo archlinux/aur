@@ -1,10 +1,10 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=endcord-lite
-pkgver=1.0.0.alpha.23
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Feature rich Discord TUI client. Lite version without ASCII media support."
 arch=('any')
-url="https://github.com/mzivic7/endcord"
+url="https://github.com/sparklost/endcord"
 license=('GPL-3.0-only')
 provides=('endcord-lite')
 conflicts=('endcord-lite')
