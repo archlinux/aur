@@ -49,7 +49,7 @@ build() {
 
     echo -e "\e[1m\e[92m==>\e[0m \e[1mBuilding Millennium...\e[0m"
 
-    cmake --preset=linux-release -G "Ninja" -DDISTRO_ARCH=ON
+    cmake -GNinja --preset=linux-release -DDISTRO_ARCH=ON
     cmake --build build --config Release
 }
 
