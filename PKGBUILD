@@ -1,7 +1,7 @@
 # Maintainer: kotontrion <kotontrion@tutanota.de>
 pkgname=aylurs-gtk-shell
 _pkgname=ags
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Aylurs's Gtk Shell (AGS), An eww inspired gtk widget system."
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=('libastal-meta: provides all astal libs, needed for eg bluetooth, au
             'gtk-layer-shell: required when using gtk3'
            )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Aylur/ags/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1c6c6c3f8a59a02a1e0e823822929bc958ca5857f039b08ba16a33f8c5b4f88d')
+sha256sums=('b8b859207b52dd2c83202f9c45630136b7f5cdbf4c098c90fa3b8ff652c220ac')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
