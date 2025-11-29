@@ -1,7 +1,7 @@
 # Maintainer: snafu
 # Maintainer: Hyacinthe Cartiaux <hyacinthe dot cartiaux at free dot fr>
 pkgname=env-modules
-pkgver=5.6.0
+pkgver=5.6.1
 pkgrel=2
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ checkdepends=('dejagnu')
 optdepends=('nagelfar' 'python-sphinx')
 install=env-modules.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/envmodules/modules/releases/download/v${pkgver}/modules-${pkgver}.tar.gz")
-sha256sums=('9dd78f1543012acd3a1a14ba86dc1dca8f7d176396ea3f0027a92dcf5ff2057c')
+sha256sums=('b175e57860e62d87b6118a79cc2d76e857e5774a9ff78558d6726122760b0034')
 
 # Install locations:
 install_prefix=/usr

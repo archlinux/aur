@@ -1,6 +1,6 @@
 pkgbase = env-modules
 	pkgdesc = Provides for an easy dynamic modification of a user's environment via modulefile.
-	pkgver = 5.6.0
+	pkgver = 5.6.1
 	pkgrel = 2
 	url = https://envmodules.io/
 	install = env-modules.install
@@ -14,7 +14,7 @@ pkgbase = env-modules
 	optdepends = nagelfar
 	optdepends = python-sphinx
 	backup = etc/modules/init/modulerc
-	source = env-modules-5.6.0.tar.gz::https://github.com/envmodules/modules/releases/download/v5.6.0/modules-5.6.0.tar.gz
-	sha256sums = 9dd78f1543012acd3a1a14ba86dc1dca8f7d176396ea3f0027a92dcf5ff2057c
+	source = env-modules-5.6.1.tar.gz::https://github.com/envmodules/modules/releases/download/v5.6.1/modules-5.6.1.tar.gz
+	sha256sums = b175e57860e62d87b6118a79cc2d76e857e5774a9ff78558d6726122760b0034
 
 pkgname = env-modules
