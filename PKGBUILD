@@ -1,7 +1,7 @@
-# Maintainer: SZanko szanko at protonmail dot com
+# Contributor: SZanko szanko at protonmail dot com
 
 pkgname=python-benedict
-pkgver=0.33.0
+pkgver=0.35.0
 pkgrel=1
 pkgdesc="dict subclass with keylist/keypath support, I/O shortcuts (base64, csv, json, pickle, plist, query-string, toml, xml, yaml) and many utilities."
 arch=('any')
@@ -18,29 +18,30 @@ depends=(
 	'python-fsutil'
 	'python-openpyxl'
 	'python-slugify'
-	'python-pyaml'
-	'python-requests'
-	'python-six'
 	'python-toml'
 	'python-xlrd'
 	'python-xmltodict'
+	'python-useful-types'
+	'python-typing_extensions'
+	'python-yaml'
 )
 makedepends=(
 	'python-build'
 	'python-installer'
+	'python-setuptools'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=(
-	'161472c40c6e666098097a2ed8b6810aae65bb9919adfb96048a3737b7093242'
+	'93a0fda49d817cc92c7c72fa6ab29b9581f5bc86e8e4892069e730304bd3d180'
 )
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	python3 -m build --wheel --skip-dependency-check
+	python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    python3 -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
