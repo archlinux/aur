@@ -2,8 +2,8 @@
 
 pkgdesc='a description language for modeling parameterizable geometric objects'
 pkgname=microcad
-pkgver=0.2.16
-pkgrel=2
+pkgver=0.2.17
+pkgrel=1
 url="https://codeberg.org/$pkgname/$pkgname"
 arch=(x86_64)
 license=(AGPL-3.0-or-later)
@@ -16,11 +16,10 @@ makedepends=(cargo
              ninja)
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e7379f21883c8c9fdefd1eb4b31a15570f1470de304b58b35a3010349ced5194')
+sha256sums=('dbc6dd4eb9d3645b582ee37b1c2af8edacdca508aa6643895298cb008fb0738f')
 
 prepare() {
 	cd "$pkgname"
-	cargo update
 	cargo fetch --locked --target "$(rustc --print host-tuple)"
 	sed -i -e '/tests/d' Cargo.toml
 }
@@ -29,9 +28,6 @@ _srcenv() {
 	cd "$pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	# https://github.com/WilstonOreo/manifold-rs/issues/7
-	export MANIFOLD_USE_BUILTIN_CLIPPER2=ON
-	RUSTFLAGS+=' -L native=/usr/lib'
 }
 
 build() {
