@@ -2,19 +2,19 @@
 # Contributor: Alexey Stukalov <astukalov@gmail.com>
 
 pkgname=smartgit
-pkgver=24.1.5
+pkgver=25.1.100
 _pkgver=$(echo "${pkgver//./_}" | cut -d_ -f -4)
 pkgrel=1
 pkgdesc='Git client with Hg and SVN support.'
 arch=('any')
-url="http://www.syntevo.com/smartgit"
+url="https://www.smartgit.dev/"
 license=('LicenseRef-custom')
 depends=('desktop-file-utils' 'git' 'gtk3' 'which')
 optdepends=('mercurial: hg repositories support')
 replaces=('smartgithg')
-source=("https://www.syntevo.com/downloads/${pkgname}/${pkgname}-linux-${_pkgver}.tar.gz"
+source=("https://download.smartgit.dev/${pkgname}/${pkgname}-${_pkgver}-linux-amd64.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('62ab9e4dbc00f4a7171091b94de5a43f3ccdc809e7250d7e55062ca99292dbf2'
+sha256sums=('c66279d31b3c88e23b8f9081dd14286bd70a31abaf79016a479bde81a720c5bd'
             'bb5665e9c93640b311dbe8b633da65e3c72a712a3dc9655c3274a3542a688a32')
 
 package() {
