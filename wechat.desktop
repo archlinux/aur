@@ -15,9 +15,6 @@ SingleMainWindow=true
 Actions=nosandbox;opendir;share;quit;
 StartupWMClass=wechat
 StartupNotify=true
-X-Flatpak-RenamedFrom=wechat.desktop;
-X-Flatpak-Tags=proprietary;
-X-Flatpak=com.qq.weixin;
 
 [Desktop Action nosandbox]
 Name=Toggle Sandbox...
