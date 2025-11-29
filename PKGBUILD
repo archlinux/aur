@@ -1,7 +1,7 @@
 # Maintainer: vicrodh <vicrodh[at]gmail[dot]com>
 pkgname=majusb
 pkgver=0.2.0.alpha
-pkgrel=2
+pkgrel=3
 _tag=0.2.0-alpha
 pkgdesc="A graphical tool to create bootable USB drives from Linux or Windows ISOs"
 arch=('x86_64')
@@ -51,7 +51,7 @@ package() {
   install -Dm644 assets/icons/icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/majusb-bootable-creator.svg"
 
   # Install desktop file
-  install -Dm644 majusb-bootable-creator.desktop "$pkgdir/usr/share/applications/majusb-bootable-creator.desktop"
+  install -Dm644 assets/majusb-bootable-creator.desktop "$pkgdir/usr/share/applications/majusb-bootable-creator.desktop"
 
   # Install polkit policy file for privilege escalation
   install -Dm644 com.github.vicrodh.majusb.policy "$pkgdir/usr/share/polkit-1/actions/com.github.vicrodh.majusb.policy"

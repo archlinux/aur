@@ -1,7 +1,7 @@
 pkgbase = majusb
 	pkgdesc = A graphical tool to create bootable USB drives from Linux or Windows ISOs
 	pkgver = 0.2.0.alpha
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vicrodh/usb-bootable-creator
 	arch = x86_64
 	license = MIT
