@@ -5,22 +5,17 @@ pkgdesc="A command line tool to read PDF files directly in the terminal"
 arch=('x86_64')
 url="https://github.com/Josehpequeno/lumus"
 license=('MIT')
-depends=('poppler' 'wv' 'unrtf' 'tidy' 'tesseract' 'leptonica' 'go')
+depends=('poppler' 'wv' 'unrtf' 'tidy' 'tesseract' 'leptonica')
+makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Josehpequeno/lumus/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
-
 build() {
-    # Comandos para construir o seu projeto, por exemplo:
-    go build -o $pkgname
+    cd "$srcdir/$pkgname-$pkgver"
+    go build -o lumus .
 }
 
 package() {
-    # Criar diretório de instalação
-    mkdir -p "$pkgdir/usr/bin"
-
-    # Copiar o executável lumus para o diretório de instalação
-    cp "$pkgname" "$pkgdir/usr/bin/"
-    # Instalar o executável construído
-    install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
+    cd "$srcdir/$pkgname-$pkgver"
+    install -Dm755 lumus "$pkgdir/usr/bin/lumus"
 }

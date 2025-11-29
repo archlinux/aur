@@ -1,17 +1,17 @@
 pkgbase = lumus
 	pkgdesc = A command line tool to read PDF files directly in the terminal
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/Josehpequeno/lumus
 	arch = x86_64
 	license = MIT
+	makedepends = go
 	depends = poppler
 	depends = wv
 	depends = unrtf
 	depends = tidy
 	depends = tesseract
 	depends = leptonica
-	depends = go
 	source = lumus-1.0.1.tar.gz::https://github.com/Josehpequeno/lumus/archive/refs/tags/v1.0.1.tar.gz
 	sha256sums = SKIP
 
