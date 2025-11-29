@@ -1,7 +1,7 @@
 # Maintainer: zeroz <zeroz@none.cx>
 
 pkgname=checkpac
-pkgver=0.9.7
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Simple and fast package check and lookup utility for Arch Linux with AUR support"
 arch=('any')
