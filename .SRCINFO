@@ -1,7 +1,7 @@
 pkgbase = heidisql-qt6
 	pkgdesc = A lightweight GUI for managing MySQL, PostgreSQL, and SQLite databases (Qt6)
 	pkgver = 12.13.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.heidisql.com/
 	arch = x86_64
 	license = GPL-2.0
@@ -12,7 +12,6 @@ pkgbase = heidisql-qt6
 	makedepends = binutils
 	makedepends = qt6pas
 	depends = qt6pas
-	depends = heidisql
 	depends = heidisql-common
 	depends = mariadb-libs
 	depends = postgresql-libs
