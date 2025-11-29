@@ -4,7 +4,7 @@
 pkgname=aocc
 _major=5-0
 pkgver=5.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="AMD Optimizing C/C++ Compiler"
 arch=('x86_64')
 license=('custom')
@@ -22,10 +22,9 @@ sha256sums=("$_sha256sum" "1740216760f755dc031d54f06c29333bca73f728d89a706f405b4
 # even if AMD change their website, but if they remove the </td> tag from the end,
 # this may fail. In which case, we can possible YOLO remove the lookahead.
 
-# default flags for compiler
-# edit this to your liking for default flags for your architecutre
-# like e.g. "-O3 -march=znver2 -mtune=znver2"
-_default_flags=""
+# Default compiler flags
+# This by default sets your flags to CFLAGS, but you may replace them.
+_default_flags="$CFLAGS"
 
 # path hardcoded in aocc.install. if you change this, change paths there as well
 _aocc_prefix=/opt/aocc
