@@ -1,6 +1,6 @@
 pkgbase = gog-baldurs-gate-2-enhanced-edition
 	pkgdesc = Your story begins anew in the exotic southern kingdom of Amn, amidst the opulence of the sinister capital city of Athkatla. GOG Version. Linux native.
-	pkgver = 2.6.6.0.47292
+	pkgver = 2.6.6.0.81762
 	pkgrel = 1
 	url = http://www.gog.com/game/baldurs_gate_2_enhanced_edition
 	arch = i686
