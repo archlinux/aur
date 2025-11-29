@@ -1,7 +1,7 @@
 pkgbase = waybar-temp-fan-power
 	pkgdesc = Highly customizable Wayland bar for Sway and Wlroots based compositors (with temperature module fan and power support)
 	pkgver = 0.14.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/umtdg/Waybar
 	arch = x86_64
 	license = MIT
@@ -41,6 +41,8 @@ pkgbase = waybar-temp-fan-power
 	depends = upower
 	depends = wayland
 	optdepends = otf-font-awesome: Icons in the default configuration
+	provides = waybar
+	conflicts = waybar
 	backup = etc/xdg/waybar/config.jsonc
 	backup = etc/xdg/waybar/style.css
 	source = waybar-temp-fan-power-0.14.0.tar.gz::https://github.com/umtdg/Waybar/archive/0.14.0.tar.gz
