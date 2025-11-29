@@ -1,15 +1,15 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 
 pkgname=orca-slicer-git
-pkgver=2.3.1.r25470.266bfeb
+pkgver=2.3.2.r28108.f71e09a
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
 license=('AGPL-3.0-only')
 depends=('bash' 'cairo' 'dbus' 'expat' 'fontconfig' 'freetype2' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 
-         'gst-plugins-base-libs' 'gstreamer' 'gtk3' 'hicolor-icon-theme' 'libglvnd' 'libjpeg-turbo' 'libpng'
-         'libspnav' 'libx11' 'pango' 'python' 'ttf-nanum' 'wayland' 'webkit2gtk-4.1' 'zlib' 'zstd')
+         'gst-plugins-base-libs' 'gstreamer' 'gtk3' 'hicolor-icon-theme' 'libglvnd' 'libjpeg-turbo' 'libspnav'
+         'libtiff' 'libx11' 'pango' 'python' 'ttf-nanum' 'wayland' 'webkit2gtk-4.1' 'zlib' 'zstd')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'glew' 'libigl' 'm4' 'ninja' 'pkgconf' 'wayland-protocols')
 optdepends=('mesa: Enables Zink fallback workaround for NVIDIA on Wayland'
             'mesa-utils: for detecting renderer'
@@ -32,7 +32,6 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-
   # abuse FLATPAK IF statement to build against some system libs
   sed -i 's/if(FLATPAK)/if(true)/' deps/CMakeLists.txt
   # revert: Link libspnav statically (#9964)
@@ -72,12 +71,10 @@ build() {
 
 package() {
   cd $pkgname
-  
   DESTDIR="$pkgdir" ninja -C build install
   install -d "$pkgdir/usr/lib/OrcaSlicer/"
   mv "$pkgdir/usr/bin/orca-slicer" "$pkgdir/usr/lib/OrcaSlicer/"
   install -Dm755 ../orca-slicer-wrapper.sh "$pkgdir/usr/bin/orca-slicer"
-  install -Dm644 doc/*.md -t "$pkgdir/usr/share/doc/OrcaSlicer/"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/OrcaSlicer/LICENSE"
   rm -rf "$pkgdir/usr/LICENSE.txt"
 }

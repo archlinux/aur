@@ -1,6 +1,6 @@
 pkgbase = orca-slicer-git
 	pkgdesc = G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)
-	pkgver = 2.3.1.r25470.266bfeb
+	pkgver = 2.3.2.r28108.f71e09a
 	pkgrel = 1
 	url = https://github.com/SoftFever/OrcaSlicer
 	arch = x86_64
@@ -30,8 +30,8 @@ pkgbase = orca-slicer-git
 	depends = hicolor-icon-theme
 	depends = libglvnd
 	depends = libjpeg-turbo
-	depends = libpng
 	depends = libspnav
+	depends = libtiff
 	depends = libx11
 	depends = pango
 	depends = python
