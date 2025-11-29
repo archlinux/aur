@@ -11,7 +11,6 @@ pkgbase = feishu-bin
 	depends = gtk3
 	depends = nss
 	depends = xdg-utils
-	depends = dnsmasq
 	provides = bytedance-feishu
 	provides = feishu
 	conflicts = feishu
