@@ -1,18 +1,23 @@
+# Maintainer: Toria <ninetailedtori@uwu.gal>
 # Maintainer: Darjan Krijan [https://disc-kuraudo.eu]
-# Manual download of '${pkgname}-compiler-${pkgver}.tar' required from upstream
 
 pkgname=aocc
+_major=5-0
 pkgver=5.0.0
 pkgrel=2
 pkgdesc="AMD Optimizing C/C++ Compiler"
 arch=('x86_64')
 license=('custom')
-url="https://developer.amd.com/amd-aocc/"
-source=("local://aocc-compiler-${pkgver}.tar" "local://modulefile")
+DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
+_url="https://download.amd.com/developer/eula/aocc/aocc-${_major}/aocc-compiler-${pkgver}.tar"
+url="https://www.amd.com/en/developer/aocc.html"
+source=("$_url"
+        "modulefile")
 options=('staticlibs' '!strip' 'libtool')
 optdepends=('env-modules')
 install=aocc.install
-sha256sums=("966fac2d2c759e9de6e969c10ada7a7b306c113f7f1e07ea376829ec86380daa" "SKIP")
+_sha256sum=$(curl -A 'Mozilla' "$url" | grep --perl-regexp '\w{64}(?=\<\/td\>)' --only-matching | sed -n '1 p')
+sha256sums=("$_sha256sum" "1740216760f755dc031d54f06c29333bca73f728d89a706f405b41e737bfc56f")
 
 # default flags for compiler
 # edit this to your liking for default flags for your architecutre
