@@ -1,6 +1,6 @@
 pkgbase = vpngate-git
 	pkgdesc = Simple CLI client for VPNGate
-	pkgver = 20251129.r1
+	pkgver = 20251125.r1
 	pkgrel = 1
 	url = https://github.com/davegallant/vpngate
 	arch = i686

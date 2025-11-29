@@ -1,6 +1,6 @@
 # Maintainer: Mila <aldair@waifu.club>
 pkgname=vpngate-git
-pkgver=20251129.r1
+pkgver=20251125.r1
 pkgrel=1
 pkgdesc="Simple CLI client for VPNGate"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
