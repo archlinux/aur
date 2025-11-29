@@ -138,6 +138,13 @@ package_wxwidgets-qt5-git() {
   rm -r "${pkgdir}"/usr/share/locale
 
   mv "${pkgdir}"/usr/bin/wx-config{,-qt} # Conflicts with wx-gtk3
+
+  # Rename wxWidgets-x.y folder to wxWidgets
+  matches=("${pkgdir}"/usr/lib/cmake/wxWidgets-*)
+  if [ ${#matches[@]} -eq 1 ] && [ -d "${matches[0]}" ]; then
+    mv "${matches[0]}" "${pkgdir}/usr/lib/cmake/wxWidgets"
+  fi
+
   # Rename cmake files for coinstallability
   mv "${pkgdir}"/usr/lib/cmake/wxWidgets{,Qt}
   for _f in "${pkgdir}"/usr/lib/cmake/wxWidgetsQt/*; do
