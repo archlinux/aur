@@ -1,7 +1,7 @@
 # Maintainer: Erzkanzler <erzkanzler@braincalibration.de>
 pkgname=ballerburg
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Classical castle combat game"
 arch=(i686 x86_64)
 url="https://baller.frama.io/"

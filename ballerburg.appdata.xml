@@ -19,9 +19,9 @@
       modern operating systems.
     </p>
   </description>
-  <url type="homepage">http://baller.tuxfamily.org/</url>
+  <url type="homepage">https://baller.frama.io/</url>
   <screenshots>
-    <screenshot type="default">http://baller.tuxfamily.org/screenshot1.png</screenshot>
-    <screenshot>http://baller.tuxfamily.org/screenshot2.png</screenshot>
+    <screenshot type="default">https://baller.frama.io/screenshot1.png</screenshot>
+    <screenshot>https://baller.frama.io/screenshot2.png</screenshot>
   </screenshots>
 </application>

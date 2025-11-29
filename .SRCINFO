@@ -1,7 +1,7 @@
 pkgbase = ballerburg
 	pkgdesc = Classical castle combat game
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://baller.frama.io/
 	arch = i686
 	arch = x86_64
