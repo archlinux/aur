@@ -1,2 +1,9 @@
-*.tar.*
-Feature-Compat-Class-*/
+*
+# dev tools
+!.editorconfig
+!.gitignore
+!.nvchecker.toml
+!.shellcheckrc
+# actual package
+!PKGBUILD
+!.SRCINFO
