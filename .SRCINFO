@@ -1,0 +1,23 @@
+pkgbase = sneemok
+	pkgdesc = Wayland screenshot annotation tool with clipboard support
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://codeberg.com/fn3x/sneemok
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = zig
+	makedepends = wayland-protocols
+	makedepends = git
+	depends = wayland
+	depends = cairo
+	depends = dbus
+	depends = libxkbcommon
+	depends = wl-clipboard
+	optdepends = xdg-desktop-portal: Screenshot capture support
+	optdepends = xdg-desktop-portal-hyprland: For Hyprland users
+	optdepends = xdg-desktop-portal-wlr: For wlroots-based compositors
+	source = sneemok-0.2.3.tar.gz::https://codeberg.com/fn3x/sneemok/archive/v0.2.3.tar.gz
+	sha256sums = 67cbcb07c4e44d2911a5b6537641a8d793d79c38508223687c062cc648bfcc59
+
+pkgname = sneemok
