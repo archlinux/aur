@@ -1,6 +1,6 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
-_name=langchain_openai
+_name=langchain-openai
 pkgname=python-$name
 pkgver=1.1.0
 pkgrel=1
