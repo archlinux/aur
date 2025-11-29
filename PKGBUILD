@@ -1,11 +1,11 @@
 # Maintainer: Benoit Brummer (Trougnouf) <trougnouf@gmail.com>
 pkgname=cfait-git
 _pkgname=cfait
-pkgver=v0.1.6.r8.gd98351d
+pkgver=v0.2.2.r0.g06e69db
 pkgrel=1
-pkgdesc="A simple, elegant, and lightweight CalDAV task / TODO manager (TUI & GUI) (git version)"
+pkgdesc="A powerful, simple, elegant, and lightweight CalDAV tasks / TODO manager (TUI & GUI, git version)"
 arch=('x86_64')
-url="https://gitlab.com/trougnouf/cfait"
+url="https://github.com/trougnouf/cfait"
 license=('GPL3')
 depends=('fontconfig' 'libx11' 'libxcursor' 'libxi' 'libxrandr' 'libxcb' 'vulkan-driver')
 makedepends=('cargo' 'git')
@@ -39,3 +39,4 @@ package() {
   install -Dm644 "assets/cfait.desktop" "$pkgdir/usr/share/applications/cfait.desktop"
   install -Dm644 "assets/cfait.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/cfait.svg"
 }
+
