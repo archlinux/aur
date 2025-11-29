@@ -1,0 +1,22 @@
+pkgbase = python-abx-spec-config
+	pkgdesc = The common shared interfaces for the ABX ArchiveBox plugin ecosystem.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://pypi.org/project/abx-spec-config
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-abx
+	depends = python-benedict
+	depends = python-pydantic
+	depends = python-pydantic-core
+	depends = python-pydantic-settings
+	depends = python-rich
+	depends = python-toml
+	source = https://pypi.python.org/packages/source/a/abx-spec-config/abx_spec_config-0.1.0.tar.gz
+	md5sums = e8745bb8d2a4c9c341107de906f0eff8
+
+pkgname = python-abx-spec-config
