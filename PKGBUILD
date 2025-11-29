@@ -10,8 +10,7 @@ license=('MIT')
 makedepends=('git')
 depends=(
   'quickshell'
-  'ttf-roboto'
-  'inter-font'
+  'imagemagick'
   'gpu-screen-recorder'
   'brightnessctl'
 )
