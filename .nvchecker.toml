@@ -1,0 +1,4 @@
+[libxmlrpc]
+source = 'regex'
+url = 'https://sourceforge.net/projects/xmlrpc-c/best_release.json'
+regex = 'xmlrpc-c-([\d.]+).tgz'
