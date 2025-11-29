@@ -1,0 +1,7 @@
+post_install() {
+  echo "*"
+  echo "* Hint: For an improved experience with kwin-x11-lite, the author also recommends"
+  echo "*       this guide he wrote:"
+  echo "*       https://gist.github.com/guiodic/2bcc8f2f126d14b1f8a439f644fdc2c9"
+  echo "*"
+}
