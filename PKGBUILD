@@ -26,7 +26,7 @@ depends=(
   # perl: 'Symbol'
   'perl-test-simple' # 'Test2::V0'
 )
-options=('!emptydirs' 'purge')
+options=(!emptydirs purge)
 source=("https://cpan.metacpan.org/authors/id/J/JM/JMATES/Test2-Tools-Command-${pkgver}.tar.gz")
 b2sums=('790d27943feaa1f521fa8168766ec5758606b882240bf87c9fc37da00b5158b88ac6eeac4d1228e9d1c5256d7b40ba81e0cff893fa46d7c5e6c2c857f4b25f64')
 
