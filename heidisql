@@ -1,0 +1,67 @@
+#!/bin/sh
+
+HS_DIR=/usr/share/heidisql
+export HS_DIR
+
+EXEC="$HS_DIR/heidisql"
+FORCE_VARIANT=""
+ARGS=""
+while [ "$#" -gt 0 ]; do
+	case "$1" in
+		--gtk2)
+			FORCE_VARIANT="gtk2"
+			;;
+		--qt5)
+			FORCE_VARIANT="qt5"
+			;;
+		--qt6)
+			FORCE_VARIANT="qt6"
+			;;
+		*)
+			ARGS=$ARGS" \"$1\""
+			;;
+	esac
+	shift 1
+done
+
+# Prefer GTK2, fallback to Qt6, then Qt5, otherwise use the default binary
+if [ "$FORCE_VARIANT" = "gtk2" ]; then
+	if [ -x "$HS_DIR/heidisql-gtk2" ]; then
+		EXEC="$HS_DIR/heidisql-gtk2"
+	else
+		echo "Error: --gtk2 requested but heidisql-gtk2 is not installed." >&2
+		exit 1
+	fi
+elif [ "$FORCE_VARIANT" = "qt5" ]; then
+	if [ -x "$HS_DIR/heidisql-qt5" ]; then
+		EXEC="$HS_DIR/heidisql-qt5"
+	else
+		echo "Error: --qt5 requested but heidisql-qt5 is not installed." >&2
+		exit 1
+	fi
+elif [ "$FORCE_VARIANT" = "qt6" ]; then
+	if [ -x "$HS_DIR/heidisql-qt6" ]; then
+		EXEC="$HS_DIR/heidisql-qt6"
+	else
+		echo "Error: --qt6 requested but heidisql-qt6 is not installed." >&2
+		exit 1
+	fi
+elif [ -x "$HS_DIR/heidisql-gtk2" ]; then
+	EXEC="$HS_DIR/heidisql-gtk2"
+elif [ -x "$HS_DIR/heidisql-qt6" ]; then
+	EXEC="$HS_DIR/heidisql-qt6"
+elif [ -x "$HS_DIR/heidisql-qt5" ]; then
+	EXEC="$HS_DIR/heidisql-qt5"
+elif [ ! -x "$EXEC" ]; then
+	echo "Error: No HeidiSQL variant found. Please install heidisql-gtk2, heidisql-qt6, or heidisql-qt5." >&2
+	exit 1
+fi
+
+if [ -n "$LD_LIBRARY_PATH" ]; then
+export LD_LIBRARY_PATH="$HS_DIR:$LD_LIBRARY_PATH"
+else
+export LD_LIBRARY_PATH="$HS_DIR"
+fi
+
+# execute the program
+/bin/bash -c "exec -a $0 $EXEC $ARGS" "$0"

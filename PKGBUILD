@@ -1,21 +1,22 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=heidisql-common
 pkgver=12.13.1.1
-pkgrel=2
-pkgdesc="Shared files for HeidiSQL (locale files, ini files, documentation)"
+pkgrel=3
+pkgdesc="Shared files for HeidiSQL (wrapper script, locale files, ini files, documentation)"
 arch=(x86_64)
 url="http://www.heidisql.com/"
 license=('GPL-2.0')
-makedepends=(lazarus make fpc gettext binutils)
 
 _deb_filename="heidisql_${pkgver}_amd64.deb"
 source=(
   "https://github.com/HeidiSQL/HeidiSQL/archive/v${pkgver}.tar.gz"
   "${_deb_filename}::https://github.com/HeidiSQL/HeidiSQL/releases/download/v${pkgver}/${_deb_filename}"
+  heidisql
 )
 noextract=("${_deb_filename}")
 sha256sums=('e9db116b0f3d8aa2300fde3266056452425304791393d84786ac9c0350ddc2b5'
-            'e871bb5cf92476d026bd8c5887cb2a83e6f13877adb077ef5fbdd2edf2936122')
+            'e871bb5cf92476d026bd8c5887cb2a83e6f13877adb077ef5fbdd2edf2936122'
+            '46ef8b2c4207d88dd732b70dbc6c012ab0dd7b40d3229227ecfee9153eff3feb')
 
 prepare() {
   cd "${srcdir}/HeidiSQL-${pkgver}"
@@ -72,5 +73,9 @@ package() {
   mkdir -p "${pkgdir}/usr/share/doc/heidisql"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/heidisql/"
   install -Dm644 LICENSE "${pkgdir}/usr/share/doc/heidisql/"
+  install -Dm644 package-skeleton/usr/share/doc/heidisql/copyright "${pkgdir}/usr/share/doc/heidisql/"
+
+  # Install wrapper script that selects the appropriate variant (gtk2/qt5/qt6)
+  install -Dm755 "${srcdir}/heidisql" "${pkgdir}/usr/bin/heidisql"
 }
 
