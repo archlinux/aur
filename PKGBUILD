@@ -3,7 +3,7 @@
 _pkgauthor=kraanzu
 _pkgname=dooit
 pkgname=${_pkgname}-bin
-pkgver=3.3.3
+pkgver=3.3.4
 pkgrel=1
 pkgdesc="A todo manager that you didn't ask for, but needed!"
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -19,7 +19,7 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/v${pkgver}/linux-${_pkgname}")
 sha256sums=('33504ada23da37774e0d02d99a3a61328f3df017a2bf8468525cd30bb86f57ec'
             '795ff2bce675c7c69ae378c903925f9d1c9277bc9579e9b4b84423fc10772ec4')
-sha256sums_x86_64=('24f64bcfe460bc9509ea944a2276b3671138eca86eb667596e1cfb0e4b55f7a8')
+sha256sums_x86_64=('36748950897321e3909f1716d17a1036f1a38a6e4b9db8f8fb0cae72b04f1d34')
 
 package() {
   cd "$srcdir/" || exit
