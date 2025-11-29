@@ -29,3 +29,4 @@ package() {
     install -Dm644 "completion/bash/checkpac-completion.bash" \
         "$pkgdir/usr/share/bash-completion/completions/checkpac"
 }
+sha256sums=('0b1dcf6e41c1aefe7faf32763918bcf10549a36d1ff8d15dee7a62714973a44d')
