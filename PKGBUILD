@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=wisp-calendar
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A beautiful text-based calendar with visual aesthetics for Arch Linux"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=()
 install="${pkgname}.install"
 
 # The source files are in the same directory as the PKGBUILD
-source=("wisp-calendar")
+source=("git+https://github.com/Gianluska/wisp-calendar.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 prepare() {
