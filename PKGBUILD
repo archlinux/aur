@@ -1,7 +1,7 @@
 # Maintainer: Matt Quintanilla <matt at matt quintanilla . xyz>
 pkgname="kwin-effect-rounded-corners-x11"
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Rounds the corners of your windows (x11)"
 url="https://github.com/matinlotfali/KDE-Rounded-Corners"
 license=("GPL-3.0-only")
@@ -14,9 +14,6 @@ makedepends=(
   'cmake'
   'extra-cmake-modules'
   'ninja'
-)
-optdepends=(
-  'kwin-effect-rounded-corners: for Wayland support'
 )
 
 
