@@ -1,0 +1,21 @@
+pkgbase = vpngate-git
+	pkgdesc = Simple CLI client for VPNGate
+	pkgver = 20251129.r1
+	pkgrel = 1
+	url = https://github.com/davegallant/vpngate
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	arch = riscv64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = go
+	depends = openvpn
+	source = vpngate-git::git+https://github.com/davegallant/vpngate.git
+	sha256sums = SKIP
+
+pkgname = vpngate-git
