@@ -1,6 +1,6 @@
 pkgbase = classisland-bin
 	pkgdesc = 适用于班级大屏的课表小工具（预编译二进制包）。Class schedule displaying tool for interactive whiteboards in classrooms. (Pre-built binary package)
-	pkgver = 1.7.106.0
+	pkgver = 1.7.106.2
 	pkgrel = 1
 	url = https://github.com/ClassIsland/ClassIsland
 	install = classisland-bin.install
@@ -18,9 +18,9 @@ pkgbase = classisland-bin
 	options = !debug
 	source = classisland.sh
 	sha256sums = 5342aed758213e2068c1a41c696b317b935fe491158fc750f454156686a35388
-	source_x86_64 = https://github.com/ClassIsland/ClassIsland/releases/download/1.7.106.0/ClassIsland_app_linux_x64_selfContained_deb.deb
-	sha256sums_x86_64 = 687174b86634d7dc588b94161a0a1aa086bca0d7356e720267edcda8d0d7f56c
-	source_aarch64 = https://github.com/ClassIsland/ClassIsland/releases/download/1.7.106.0/ClassIsland_app_linux_arm64_selfContained_deb.deb
-	sha256sums_aarch64 = e859342d3e52dff199b46ecedf7bbbe4451f0aa4e056df503c40e3700e44efbb
+	source_x86_64 = https://github.com/ClassIsland/ClassIsland/releases/download/1.7.106.2/ClassIsland_app_linux_x64_selfContained_deb.deb
+	sha256sums_x86_64 = 3727cbe423045ec8418368b592b75da5d6822c62b73b68308255b353415a77c0
+	source_aarch64 = https://github.com/ClassIsland/ClassIsland/releases/download/1.7.106.2/ClassIsland_app_linux_arm64_selfContained_deb.deb
+	sha256sums_aarch64 = c166ae3b87f3834b0a3ceef6fc4e45658f295896b71b701baafe950158142a7c
 
 pkgname = classisland-bin
