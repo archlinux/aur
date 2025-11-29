@@ -2,7 +2,7 @@
 # Maintainer: devnullvoid <devnullvoid.space@gmail.com>
 
 pkgname='pvetui-bin'
-pkgver=1.0.12
+pkgver=1.0.13
 pkgrel=1
 pkgdesc='A terminal user interface (TUI) for Proxmox VE'
 url='https://github.com/devnullvoid/pvetui'
@@ -13,14 +13,14 @@ conflicts=('pvetui' 'pvetui-git')
 depends=('glibc')
 optdepends=('kitty: Better terminal support' 'alacritty: Better terminal support')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/devnullvoid/pvetui/releases/download/v1.0.12/pvetui_1.0.12_linux_arm64.tar.gz")
-sha256sums_aarch64=('d0bcbb3a9990704ae6105e39d4ca478716a203d63628664e37bde93011cc1050')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/devnullvoid/pvetui/releases/download/v1.0.13/pvetui_1.0.13_linux_arm64.tar.gz")
+sha256sums_aarch64=('d2dca30bf173f0a71466f6eca729fd9efdc00de08e77661fe34d7290017bf169')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/devnullvoid/pvetui/releases/download/v1.0.12/pvetui_1.0.12_linux_386.tar.gz")
-sha256sums_i686=('ead7418b3eca0e7286f9a9d2d4a0b37c731098984a5a9bd831517d40fc55f4b2')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/devnullvoid/pvetui/releases/download/v1.0.13/pvetui_1.0.13_linux_386.tar.gz")
+sha256sums_i686=('b332130dd0a417883232ea481d2a59f3c3e2e2caa63d2cc43976ac35a3262da8')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/devnullvoid/pvetui/releases/download/v1.0.12/pvetui_1.0.12_linux_amd64.tar.gz")
-sha256sums_x86_64=('c3f78827baa9e8b3b2d822803c0a10bb90be5f1987dfe550563ab3a9325cd1ce')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/devnullvoid/pvetui/releases/download/v1.0.13/pvetui_1.0.13_linux_amd64.tar.gz")
+sha256sums_x86_64=('b154a86b3e343744fa370300edacd97adf2f44e91e783ef92ecaad0078d06525')
 
 package() {
   # Install binary
@@ -30,7 +30,7 @@ package() {
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/pvetui/LICENSE"
   install -Dm644 "./THIRD_PARTY_LICENSES.md" "${pkgdir}/usr/share/licenses/pvetui/THIRD_PARTY_LICENSES.md"
   install -Dm644 "./internal/vnc/novnc/LICENSE.txt" "${pkgdir}/usr/share/licenses/pvetui/noVNC/LICENSE.txt"
-  install -Dm644 "./internal/vnc/novnc/vendor/pako/LICENSE" "${pkgdir}/usr/share/licenses/pvetui/noVNC/LICENSE.pako"
+  install -Dm644 "./internal/vnc/novnc/lib/pako/LICENSE" "${pkgdir}/usr/share/licenses/pvetui/noVNC/LICENSE.pako"
 
   # Install documentation
   install -Dm644 "./README.md" "${pkgdir}/usr/share/doc/pvetui/README.md"
