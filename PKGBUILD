@@ -1,7 +1,7 @@
 # Maintainer: Victor RH <blitzkriegfc@gmail.com>
 
 pkgname=perimeter81-rpm
-pkgver=10.0.3.933
+pkgver=10.0.4.947
 pkgrel=1
 pkgdesc='Perimeter81 VPN agent application (RPM-based build)'
 arch=('x86_64')
@@ -20,12 +20,6 @@ source=("https://static.perimeter81.com/agents/linux/Perimeter81_${pkgver}.rpm"
         'perimeter81-nm-dispatcher'
         'LICENSE')
 
-sha256sums=('b92b892a25b07b7ef1f91d4b83546bbeca11863abd1b88b6cf0af179fd7cbb3b'
-            '4c3e3e4a1aad73b42ab809aabb716ac6a425cd0b51357b926a139dcde7264453'
-            '0eacb755870ce09037d2dc2d128398a68fc0e33d70428e0a45b11e3d5679d13e'
-            'bcfd35efaf12d069e4595b28c7c3f8ed72569bfb4edc5b36e014bb2badb3ff41'
-            '78e991bf388f96c29c576df747e9f596e05bcbd6059c1effba99eb9543dfb148'
-            'c505b227d3f2222305800c16805f29b8da3bf841bf71df36674a695528bd0731')
 
 package() {
     # Extract RPM contents
@@ -62,3 +56,9 @@ package() {
     ln -s /opt/Perimeter81/artifacts/daemon-creator \
         "${pkgdir}/usr/bin/p81-helper-daemon-creator"
 }
+sha256sums=('b59596a48d2185d88cb96e0495e91cce4f8895448fd1b645257957ab89557084'
+            '4c3e3e4a1aad73b42ab809aabb716ac6a425cd0b51357b926a139dcde7264453'
+            '0eacb755870ce09037d2dc2d128398a68fc0e33d70428e0a45b11e3d5679d13e'
+            'bcfd35efaf12d069e4595b28c7c3f8ed72569bfb4edc5b36e014bb2badb3ff41'
+            '78e991bf388f96c29c576df747e9f596e05bcbd6059c1effba99eb9543dfb148'
+            'c505b227d3f2222305800c16805f29b8da3bf841bf71df36674a695528bd0731')
