@@ -1,0 +1,25 @@
+pkgbase = majusb
+	pkgdesc = A graphical tool to create bootable USB drives from Linux or Windows ISOs
+	pkgver = 0.2.0.alpha
+	pkgrel = 1
+	url = https://github.com/vicrodh/usb-bootable-creator
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = gtk4
+	depends = glib2
+	depends = polkit
+	depends = coreutils
+	depends = util-linux
+	depends = dosfstools
+	depends = ntfs-3g
+	depends = parted
+	depends = rsync
+	depends = wimlib
+	depends = gptfdisk
+	source = majusb-0.2.0.alpha.tar.gz::https://github.com/vicrodh/usb-bootable-creator/archive/refs/tags/v0.2.0.alpha.tar.gz
+	sha256sums = SKIP
+
+pkgname = majusb

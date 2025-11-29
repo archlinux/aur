@@ -1,0 +1,16 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=MajUSB Bootable Creator
+Name[es]=MajUSB Creador de USB Arrancable
+Comment=Create bootable USB drives for Linux or Windows ISOs
+Comment[es]=Crea USB arrancables para ISOs de Linux o Windows
+Exec=rust-usb-bootable-creator
+Icon=majusb-bootable-creator
+Terminal=false
+StartupNotify=true
+Categories=System;Utility;FileTools;
+Keywords=usb;boot;iso;flash;drive;installer;usb-bootable;
+Keywords[es]=usb;arrancar;iso;flash;unidad;instalador;usb-arrancable;
+MimeType=application/x-cd-image;application/x-iso9660-image;
+StartupWMClass=com.github.vicrodh.MajUSB

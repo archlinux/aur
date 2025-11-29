@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC
+ "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+
+  <vendor>MajUSB Bootable Creator</vendor>
+  <vendor_url>https://github.com/vicrodh/usb-bootable-creator</vendor_url>
+
+  <action id="com.github.vicrodh.majusb.write">
+    <description>MajUSB: Write to USB devices</description>
+    <description xml:lang="es">MajUSB: Escribir en dispositivos USB</description>
+    <message>Authentication is required to write to USB devices</message>
+    <message xml:lang="es">Se requiere autenticación para escribir en dispositivos USB</message>
+    <icon name="majusb"></icon>
+    <defaults>
+      <allow_any>auth_admin</allow_any>
+      <allow_inactive>auth_admin</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/bin/majusb-cli</annotate>
+  </action>
+
+</policyconfig>
