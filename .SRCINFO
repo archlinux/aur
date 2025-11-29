@@ -1,5 +1,5 @@
 pkgbase = ch57x-keyboard-tool
-	pkgdesc = Command-line tool for programming ch57x macro keyboards
+  pkgdesc="Command-line tool for programming ch57x and ch55x macro keyboards like ch552 or ch552g"
 	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/kriomant/ch57x-keyboard-tool
@@ -7,6 +7,7 @@ pkgbase = ch57x-keyboard-tool
 	arch = aarch64
 	license = MIT
 	license = Apache-2.0
+  keywords=('keyboard' 'macro' 'keypad' 'ch57x' 'ch55x' 'ch552' 'ch552g' 'ch554' 'hotkey' 'aliexpress')
 	makedepends = cargo
 	depends = libusb
 	source = ch57x-keyboard-tool-1.6.2.tar.gz::https://github.com/kriomant/ch57x-keyboard-tool/archive/refs/tags/v1.6.2.tar.gz
