@@ -1,0 +1,8 @@
+# udev rules for ch57x macro keyboards
+# Allows non-root users to program the keyboard
+
+# Vendor: 1189 (Trisat Industrial Co., Ltd.)
+# Product IDs: 8890, 8840, 8842
+SUBSYSTEM=="usb", ATTR{idVendor}=="1189", ATTR{idProduct}=="8890", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="1189", ATTR{idProduct}=="8840", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTR{idVendor}=="1189", ATTR{idProduct}=="8842", TAG+="uaccess"

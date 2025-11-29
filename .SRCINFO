@@ -1,0 +1,17 @@
+pkgbase = ch57x-keyboard-tool
+	pkgdesc = Command-line tool for programming ch57x macro keyboards
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://github.com/kriomant/ch57x-keyboard-tool
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	depends = libusb
+	source = ch57x-keyboard-tool-1.6.2.tar.gz::https://github.com/kriomant/ch57x-keyboard-tool/archive/refs/tags/v1.6.2.tar.gz
+	source = 50-ch57x-keyboard.rules
+	sha256sums = bd8ba2b59987a29d4ad4afcdf90b79d54d200d3ab803711d28851222f81bbfb5
+	sha256sums = 26de73e625f2ce8d3b1f753378a40f754c1c69e32e71900fd0e9298ee792075f
+
+pkgname = ch57x-keyboard-tool
