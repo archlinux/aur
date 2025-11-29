@@ -5,7 +5,7 @@
 pkgname=perl-tree-rb-xs
 pkgver=0.19
 pkgrel=1
-pkgdesc='Red/Black Tree implemented in C, with similar API to Tree::RB'
+pkgdesc='Red/Black Tree and LRU Cache implemented in C'
 arch=('any')
 url='https://metacpan.org/dist/Tree-RB-XS'
 license=('GPL-1.0-or-later OR Artistic-1.0-Perl')
@@ -32,7 +32,7 @@ checkdepends=(
   'perl-lib'
   'perl-parent'
 )
-options=('!emptydirs' 'purge')
+options=(!emptydirs purge)
 source=("https://cpan.metacpan.org/authors/id/N/NE/NERDVANA/Tree-RB-XS-${pkgver}.tar.gz")
 b2sums=('06b34a7fcd98bc1067c328aa34290e7535ffb05c1df810688c247f1949aad208e9674374c918558b00cd730e211b8922b1cd84cb9b4dfb9c8132087d0c8da79a')
 

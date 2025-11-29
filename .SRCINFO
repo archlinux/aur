@@ -1,5 +1,5 @@
 pkgbase = perl-tree-rb-xs
-	pkgdesc = Red/Black Tree implemented in C, with similar API to Tree::RB
+	pkgdesc = Red/Black Tree and LRU Cache implemented in C
 	pkgver = 0.19
 	pkgrel = 1
 	url = https://metacpan.org/dist/Tree-RB-XS
