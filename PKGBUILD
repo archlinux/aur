@@ -2,7 +2,7 @@
 
 _name=jsonschema-rs
 pkgname=python-$_name
-pkgver=0.37.1
+pkgver=0.37.3
 pkgrel=1
 pkgdesc="A high-performance JSON Schema validator for Python."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'gcc-libs' 'glibc')
 makedepends=('python-maturin' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-flask' 'python-hypothesis' 'python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('6cff33ebabc4fe76567de843382b9b2c42323d9f481766c2a2b3f98c9112b2ba')
+sha256sums=('34c1503916dbf584e8229e53be7ba5bbe2808ee891671608c5d16fb85b630696')
 
 build() {
   cd "$srcdir"/${_name//-/_}-$pkgver
@@ -27,7 +27,7 @@ check() {
   cd "$srcdir"/${_name//-/_}-$pkgver
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest "${pytest_options[@]}" crates/jsonschema-py/tests-py
+  test-env/bin/python -P -m pytest "${pytest_options[@]}" crates/jsonschema-py/tests-py
 }
 
 package() {
