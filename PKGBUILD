@@ -1,23 +1,21 @@
 # Maintainer: Fabian Maurer <dark.shadow4@web.de>
 pkgname="rimsort-git"
-pkgver=r1638.e4c49856
+pkgver=r2015.6548feb1
 pkgrel=1
 pkgdesc="A Mod Manager For Rimworld game"
 arch=("x86_64")
 url="https://github.com/RimSort/RimSort"
 license=("GPL3")
-makedepends=(python patchelf git uv)
+makedepends=(python git uv)
 depends=(
     "python"
 )
 source=("git+https://github.com/RimSort/RimSort.git"
-        "gcc-wrapper.sh"
         "RimSort.desktop"
         "RimSort.sh")
 sha512sums=('SKIP'
-            'cd23307d2f03a87e9a2c892193fa30294278d480ba1674ccf4813d0ff07daf8d06e3ea026fddccebe000b21603502c260e39b2617690e4031dd5672f43154190'
-            'b12eaf50aa20f390fd01f71610c2993feac3fc835d49ee2ed0c3f650fcb86baeebaf50da38e0d649d9a715694662c27ea84f406ea6798eeaade67da21865c0a4'
-            '090612cebedfc3bbeb2297b4863eaad2a6d9e4b1a52fe701acf0201e1d16736b7e9314af9436ab9c19e93c0656d551ed6fd210c963d2ba2f50721c93b69de793')
+            'db841cbb8094361c99fe4f263221c1b6da5b16e1cf80badab1b60c23608d3f823eb55ee88eea2219ee2273941bdd1e49ea69f2724f379e96880c30ed4089149a'
+            '59ef6734505a8888f341b179d781cb6096da1984d60f70c6362bc7c8eba8c5e6625ab6d85f999726c57c29a9fdb5953c682d3b63cf7d1e2d05b1e2513a9c9c3f')
 
 OPTIONS=(!strip)
 
@@ -30,16 +28,19 @@ pkgver() {
 build() {
     cd "$srcdir/RimSort"
     uv sync --group build
-    export CC="$srcdir/gcc-wrapper.sh"
-    uv run python distribute.py
+    git submodule update --init --recursive
 }
 
 package() {
-    cd "$srcdir/RimSort/build/__main__.dist"
+    cd "$srcdir/RimSort"
 
     # Main Files
     install -dm755 "$pkgdir/opt/rimsort/"
-    cp -r ./* "$pkgdir/opt/rimsort/"
+    cp -r .venv "$pkgdir/opt/rimsort/"
+    cp -r submodules "$pkgdir/opt/rimsort/"
+    cp -r app "$pkgdir/opt/rimsort/"
+    cp -r themes "$pkgdir/opt/rimsort/"
+    cp pyproject.toml "$pkgdir/opt/rimsort/"
 
     # Icon
     install -Dm644 "./themes/default-icons/AppIcon_a.png" "$pkgdir/usr/share/pixmaps/RimSort.png"

@@ -2,7 +2,7 @@
 Name=RimSort
 Comment=A Mod Manager For Rimworld game
 GenericName=Mod Manager
-Exec=/opt/rimsort/RimSort
+Exec=/opt/rimsort/RimSort.sh
 Icon=RimSort
 Type=Application
 Categories=Game

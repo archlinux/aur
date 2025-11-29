@@ -1,2 +1,3 @@
 #!/bin/sh
-/opt/rimsort/RimSort $@
+cd /opt/rimsort
+uv run --no-sync -m app
