@@ -1,7 +1,7 @@
-# Maintainer: SZanko szanko at protonmail dot com
+# Contributor: SZanko szanko at protonmail dot com
 
 pkgname=python-fsutil
-pkgver=0.8.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="file-system utilities for lazy devs."
 arch=('any')
@@ -13,17 +13,18 @@ depends=(
 makedepends=(
 	'python-build'
 	'python-installer'
+	'python-setuptools'
 )
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('efc3421c7ca84aa1a2035e421174b2cfdf073bf01633b723980f9115b0e3b806')
+sha256sums=('3a4a430996e2c385963cd4c9fb7338d0cbeac0a74b44e95bf31ef5adffd87017')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	python3 -m build --wheel --skip-dependency-check 
+	python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    python3 -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
