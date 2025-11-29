@@ -1,7 +1,7 @@
 pkgbase = runbox
 	pkgdesc = A popup runbox for both wayland and x11
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 4
 	url = https://gitlab.lmao.sbs/Gerg0Vagyok/RunBox
 	arch = x86_64
 	license = MIT
