@@ -1,0 +1,16 @@
+pkgbase = python-a2s
+	pkgdesc = Python package for querying Source and GoldSource servers
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://pypi.org/project/python-a2s
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/python_a2s/python_a2s-1.4.1.tar.gz
+	sha256sums = b30fe1356ac2cbdfa83fb2eec63629801d2abf4cd169ab5dfaf354545cddcf79
+
+pkgname = python-a2s
