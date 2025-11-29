@@ -1,4 +1,4 @@
-pkgbase = faal
+pkgbase = faal-bin
 	pkgdesc = Simple application menu because why not
 	pkgver = 1.0.2
 	pkgrel = 1
@@ -15,4 +15,4 @@ pkgbase = faal
 	sha256sums = 44cdc382e03b790ee588517788e7d962ed1bb63e0767f13499488a2177ea1a8a
 	sha256sums = d96585293c5ebc2dc94a8eae952be12ff22639924a42e4a0ebda4ae0e779301f
 
-pkgname = faal
+pkgname = faal-bin

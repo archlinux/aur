@@ -1,6 +1,6 @@
 # Polokalap - Polokalap@autizm.us
 
-pkgname=faal
+pkgname=faal-bin
 pkgver=1.0.2
 pkgrel=1
 pkgdesc="Simple application menu because why not"
