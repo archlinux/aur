@@ -1,0 +1,15 @@
+pkgbase = pulsar-x3-python
+	pkgdesc = Control Pulsar X3 gaming mouse on Linux - GUI and CLI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jonkristian/pulsar-x3-python
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pyusb
+	depends = python-gobject
+	depends = libadwaita
+	source = pulsar-x3-python-0.1.0.tar.gz::https://github.com/jonkristian/pulsar-x3-python/archive/v0.1.0.tar.gz
+	sha256sums = 29607dfbd513fa82acbd65590a7a9fa49043d96ca60ea428098171690899dc2c
+
+pkgname = pulsar-x3-python
