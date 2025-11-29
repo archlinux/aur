@@ -2,7 +2,7 @@
 
 pkgname=subtitleedit-cli-git
 _gitname=subtitleedit-cli
-pkgver=57.a9d04e3
+pkgver=61.540b0fd
 pkgrel=1
 pkgdesc='Subtitle Edit CLI (without System.Drawing)'
 arch=('any')
@@ -30,12 +30,9 @@ build() {
 
 package() {
     cd "${srcdir}/${_gitname}"
-
-    install -Dm755 "src/se-cli/bin/Release/net8.0/seconv" "${pkgdir}/opt/${_gitname}/seconv"
-    install -Dm644 "src/se-cli/bin/Release/net8.0/seconv.dll" "${pkgdir}/opt/${_gitname}/seconv.dll"
-    install -Dm644 "src/se-cli/bin/Release/net8.0/seconv.runtimeconfig.json" "${pkgdir}/opt/${_gitname}/seconv.runtimeconfig.json"
+    mkdir -p "${pkgdir}/opt/${_gitname}"
+    cp -r src/se-cli/bin/Release/net8.0/* "${pkgdir}/opt/${_gitname}"
     mkdir -p "${pkgdir}/usr/bin"
     ln -s "/opt/${_gitname}/seconv" "${pkgdir}/usr/bin/seconv"
-
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
