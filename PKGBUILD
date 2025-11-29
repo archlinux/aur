@@ -1,4 +1,4 @@
-# Maintainer: Damglador <vse.stopchanskyi@gmail.com>
+# Maintainer: Damglador <damglador@gmail.com>
 # Thanks to copygirl for the main vintagestory packages, which this one is based on
 
 pkgname=vintagestory-unstable
@@ -8,7 +8,7 @@ _pkgname=vintagestory
 # "unstable" for release candidates and "pre" for testing releases before big updates.
 _release=unstable
 # _pkgver is separate to allow specifying pre-release versions such as "-rc.1".
-_pkgver=1.21.2-rc.3
+_pkgver=1.21.6-rc.1
 
 # makepkg doesn't support hyphens in pkgver, so we'll strip them as per `vercmp`.
 pkgver=${_pkgver//-/}
@@ -24,10 +24,10 @@ source=("https://cdn.vintagestory.at/gamefiles/$_release/vs_client_linux-x64_$_p
         "$_pkgname.desktop"
         "vsmodinstall-handler.desktop"
         "font.conf")
-md5sums=("SKIP"
-         "059254de5906f7802403433c2f0fd627"
-         "f086616f754a92eb4c39889d43abffd5"
-         "9912e111cef7077cab433290c9995b6f")
+md5sums=('e41e11b2a0c95f2d7e635969d8f51c48'
+         '059254de5906f7802403433c2f0fd627'
+         'f086616f754a92eb4c39889d43abffd5'
+         '9912e111cef7077cab433290c9995b6f')
 
 prepare() {
 	# Remove install script provided by developers
