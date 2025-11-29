@@ -3,7 +3,7 @@
 
 pkgname=perl-feature-compat-class
 pkgver=0.07
-pkgrel=2
+pkgrel=3
 pkgdesc="Make 'class' syntax available in older Perl versions"
 arch=('any')
 url='https://metacpan.org/dist/Feature-Compat-Class'
@@ -19,6 +19,8 @@ optdepends=(
 checkdepends=(
   ## tests_requires
   'perl-test-simple>=0.88' # 'Test::More'
+  # t/99pod.t
+  'perl-test-pod>=1.00'
 )
 makedepends=(
   ## configure_requires

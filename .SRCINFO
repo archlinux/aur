@@ -1,11 +1,12 @@
 pkgbase = perl-feature-compat-class
 	pkgdesc = Make 'class' syntax available in older Perl versions
 	pkgver = 0.07
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/dist/Feature-Compat-Class
 	arch = any
 	license = GPL-1.0-or-later OR Artistic-1.0-Perl
 	checkdepends = perl-test-simple>=0.88
+	checkdepends = perl-test-pod>=1.00
 	makedepends = perl-module-build>=0.4004
 	depends = perl>=5.14
 	optdepends = perl-object-pad>=0.806: support for Perl versions older than 5.40
