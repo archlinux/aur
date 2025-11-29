@@ -2,8 +2,8 @@
 # Contributor: AliaCan Community
 
 pkgname=alia-can
-pkgver=BETA.r3.g946375d
-pkgrel=1
+pkgver=RELEASE.r17.g4f9a1bc
+pkgrel=2
 pkgdesc="User-friendly shell alias manager with automatic backups, cross-shell support, and modern Qt6 GUI"
 arch=('x86_64')
 url="https://github.com/alia-can/alia-can"
