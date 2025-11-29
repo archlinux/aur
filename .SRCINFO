@@ -1,0 +1,17 @@
+pkgbase = mistral.rs-git
+	pkgdesc = Blazingly fast LLM inference
+	pkgver = v0.6.0.r149.gd24c6e58b
+	pkgrel = 1
+	url = https://github.com/EricLBuehler/mistral.rs
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = openssl
+	provides = mistralrs-server
+	conflicts = mistralrs-server
+	source = git+https://github.com/EricLBuehler/mistral.rs
+	sha256sums = SKIP
+
+pkgname = mistral.rs-git
