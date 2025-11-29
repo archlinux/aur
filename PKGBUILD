@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-ext-applet-apps-menu-git
 _app_id=dev.dominiccgeh.CosmicAppletAppsMenu
-pkgver=0.1.6.r17.gcafd314
+pkgver=0.1.6.r18.g7462dda
 pkgrel=1
 pkgdesc="Category based menu for apps for COSMIC™️ DE"
 arch=('x86_64')
-url="https://github.com/leb-kuchen/cosmic-ext-applet-apps-menu"
+url="https://github.com/bGVia3VjaGVu/cosmic-ext-applet-apps-menu"
 license=('GPL-3.0-or-later')
 depends=('cosmic-applets')
 makedepends=('cargo' 'git')
@@ -16,7 +16,7 @@ conflicts=(
   'apps-menu-applet-for-cosmic_tm-git'
   'apps-menu-applet-for-cosmic-git'
 )
-source=('git+https://github.com/leb-kuchen/cosmic-ext-applet-apps-menu.git')
+source=('git+https://github.com/bGVia3VjaGVu/cosmic-ext-applet-apps-menu.git')
 sha256sums=('SKIP')
 
 pkgver() {
