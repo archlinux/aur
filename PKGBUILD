@@ -2,7 +2,7 @@
 # Maintainer: Infisical, Inc <support@infisical.com>
 
 pkgname='infisical-bin'
-pkgver=0.43.35
+pkgver=0.43.36
 pkgrel=1
 pkgdesc='The official Infisical CLI'
 url='https://infisical.com'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('cli')
 conflicts=('cli')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Infisical/cli/releases/download/v0.43.35/cli_0.43.35_linux_arm64.tar.gz")
-sha256sums_aarch64=('40e2fcc2f8c53643a5011e8dbb6e09112484f50f3f465ddea894c78e3ce177b4')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Infisical/cli/releases/download/v0.43.36/cli_0.43.36_linux_arm64.tar.gz")
+sha256sums_aarch64=('02fba186ef32c63c26aff4c51122e337da45901e3f125950bd642f6742553bb5')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/Infisical/cli/releases/download/v0.43.35/cli_0.43.35_linux_armv7.tar.gz")
-sha256sums_armv7h=('3f7604ccd81855d36a894ab4d585d0c377de48887c6cb9934cb89c16350552c0')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/Infisical/cli/releases/download/v0.43.36/cli_0.43.36_linux_armv7.tar.gz")
+sha256sums_armv7h=('e9b58b24c78bbf779281f6cbf8fa3d8dfb0342a2ec2feed9f57edc6f094423ce')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/Infisical/cli/releases/download/v0.43.35/cli_0.43.35_linux_386.tar.gz")
-sha256sums_i686=('81efb29cb1e793dc9346ba3e6a32d199408fc7f4fea5874779b931a97b5d6331')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/Infisical/cli/releases/download/v0.43.36/cli_0.43.36_linux_386.tar.gz")
+sha256sums_i686=('8e2f8d384ac91ff5037907261cba25450e9f33d872a07dba3abc16f9c1750700')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Infisical/cli/releases/download/v0.43.35/cli_0.43.35_linux_amd64.tar.gz")
-sha256sums_x86_64=('2320dc6d933f7b4a44e948d1a87a9be649e99f748d6ab6a5dd621c23e639c568')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Infisical/cli/releases/download/v0.43.36/cli_0.43.36_linux_amd64.tar.gz")
+sha256sums_x86_64=('5d1f6b3af05dde1f0513d324534939d3f9c9731b0ce0a061f447f2d0920fb406')
 
 package() {
   # bin
