@@ -9,8 +9,7 @@ url="https://github.com/noctalia-dev/noctalia-shell"
 license=('MIT')
 depends=(
   'quickshell'
-  'ttf-roboto'
-  'inter-font'
+  'imagemagick'
   'gpu-screen-recorder'
   'brightnessctl'
 )
