@@ -1,5 +1,5 @@
 pkgname=python-asyncinotify
-pkgver=4.2.1
+pkgver=4.3.2
 pkgrel=1
 pkgdesc='A simple optionally-async python inotify library, focused on simplicity of use and operation, and leveraging modern Python features'
 arch=(any)
@@ -10,7 +10,7 @@ source=(
   "https://pypi.io/packages/source/a/asyncinotify/asyncinotify-$pkgver.tar.gz"
 )
 sha256sums=(
-  '8078b0b0d81c19043141ab0fc5654e89a4d3023dc3e4486aaa245b1ff5f5ddc9'
+  '3321deedc443c8402229a423623d3ae2fc17c433b9b9bfe170828ee0c7ea3871'
 )
 
 build() {
