@@ -19,7 +19,8 @@ optdepends=(
 checkdepends=(
   ## tests_requires
   'perl-test-simple>=0.88' # 'Test::More'
-  # t/99pod.t
+
+  ## t/99pod.t
   'perl-test-pod>=1.00'
 )
 makedepends=(
