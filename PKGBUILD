@@ -37,12 +37,12 @@ prepare() {
     "config/vkBasalt.conf"
 }
 
-build_64-bit() {
+_build_64-bit() {
   arch-meson --buildtype=release build -D b_lto=true
   meson compile -C build
 }
 
-build_32-bit() {
+_build_32-bit() {
   export ASFLAGS="${ASFLAGS} --32"
   export CFLAGS="${CFLAGS} -m32"
   export CXXFLAGS="${CXXFLAGS} -m32"
@@ -56,8 +56,8 @@ build_32-bit() {
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver//_/-}"
 
-  build_64-bit
-  build_32-bit
+  _build_64-bit
+  _build_32-bit
 }
 
 package_vkbasalt-redemp-git() {

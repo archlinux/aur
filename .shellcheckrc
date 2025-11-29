@@ -3,6 +3,7 @@ shell=bash
 
 # Enable all additional checks.
 enable=all
+extended-analysis=true
 
 # Some PKGBUILD variables will only be used by makepkg.
 # See https://www.shellcheck.net/wiki/SC2034
