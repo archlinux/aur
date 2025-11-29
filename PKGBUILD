@@ -3,7 +3,7 @@
 # Contributor: Frank Vanderham <twelve_dot_eighty_at_gmail_dot_com>
 
 pkgname=pam_mount-git
-pkgver=2.21.r0.g18ae8ad
+pkgver=2.22.r1.g64dfcc8
 pkgrel=1
 pkgdesc='A PAM module that can mount volumes for a user session'
 arch=('x86_64')
@@ -29,7 +29,7 @@ prepare() {
   cd "${srcdir}/${pkgname}"
 
   aclocal
-  libtoolize
+  libtoolize --no-warnings
   autoreconf --install
   automake --add-missing
   autoreconf
@@ -55,5 +55,5 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}"
 
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" LIBTOOLFLAGS=--no-warnings install
 }
