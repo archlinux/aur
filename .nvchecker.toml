@@ -1,0 +1,5 @@
+[parm-bin]
+source = "github"
+github = "yhoundz/parm"
+use_latest_release = true
+prefix = "v"

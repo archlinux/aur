@@ -1,0 +1,20 @@
+pkgbase = parm-bin
+	pkgdesc = Cross platform package installer and lifecycle manager using GitHub Releases.
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/yhoundz/parm
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	provides = parm
+	conflicts = parm
+	source = LICENSE-0.1.4::https://raw.githubusercontent.com/yhoundz/parm/v0.1.4/LICENSE
+	source = README-0.1.4.md::https://raw.githubusercontent.com/yhoundz/parm/v0.1.4/README.md
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = 30fb5bbb0c2f818a9e6b0d6fa5bb83560ebe7b8a0725caa26db4f538a01be171
+	source_x86_64 = parm-x86_64-0.1.4.tgz::https://github.com/yhoundz/parm/releases/download/v0.1.4/parm-linux-amd64.tar.gz
+	sha256sums_x86_64 = 6016785d90fa9bb6fcc632e3cc610c56850ba072a865f3bc0aa8782766ddbbe1
+	source_aarch64 = parm-aarch64-0.1.4.tgz::https://github.com/yhoundz/parm/releases/download/v0.1.4/parm-linux-arm64.tar.gz
+	sha256sums_aarch64 = f045c0eb51f34ca679a51ea77d6bc0eb3e972e8c9060cad478bd3f168840bff6
+
+pkgname = parm-bin
