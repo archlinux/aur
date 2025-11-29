@@ -1,0 +1,5 @@
+[rargs-bin]
+source = "github"
+github = "lotabout/rargs"
+use_latest_release = true
+prefix = "v"
