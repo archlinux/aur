@@ -3,7 +3,7 @@
 pkgname=moneymanagerex
 # HINT: ! ALSO UPDATE COMMIT HASHES IN source !
 pkgver=1.9.1
-pkgrel=7
+pkgrel=8
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
@@ -57,12 +57,12 @@ prepare() {
   git -c protocol.file.allow=always submodule update
   
   # Workaround for https://github.com/moneymanagerex/moneymanagerex/issues/5243 https://github.com/moneymanagerex/moneymanagerex/issues/7728
-  #  Until my patch is merged and released in a future mmex version
+  #  Until mmex >=v1.9.2
 
   git config user.name "Your Name"
   git config user.email "your.email@example.com"
 
-  git cherry-pick 79a0d96981967096bc7d2ef228177d4d97c3b1ab
+  git cherry-pick f86aa161236467c1699f207a8bfa4c7dc3d32af7
 }
 
 build() {
