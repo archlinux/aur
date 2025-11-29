@@ -36,15 +36,15 @@ package() {
   # issues with bwrap, though.
   env -u LD_PRELOAD \
     bwrap --unshare-all --die-with-parent \
-    --bind "${pkgdir}"/opt /opt \
-    --bind "${srcdir}/sgx_linux_x64_sdk_${_pkgver}.bin" /sgx_linux_x64_sdk.bin \
-    --dev /dev \
-    --tmpfs /tmp \
-    --ro-bind /usr /usr \
-    --ro-bind /lib /lib \
-    --ro-bind /bin /bin \
-    --ro-bind /lib64 /lib64 \
-    /sgx_linux_x64_sdk.bin --prefix /opt/intel
+      --bind "${pkgdir}"/opt /opt \
+      --bind "${srcdir}/sgx_linux_x64_sdk_${_pkgver}.bin" /sgx_linux_x64_sdk.bin \
+      --dev /dev \
+      --tmpfs /tmp \
+      --ro-bind /usr /usr \
+      --ro-bind /lib /lib \
+      --ro-bind /bin /bin \
+      --ro-bind /lib64 /lib64 \
+      /sgx_linux_x64_sdk.bin --prefix /opt/intel
 
   # The uninstall script shouldn't be used with this package.
   rm "${pkgdir}/opt/intel/sgxsdk/uninstall.sh"
