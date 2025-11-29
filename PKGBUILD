@@ -14,7 +14,7 @@ arch=('x86_64')
 license=('GPL-2.0-or-later')
 depends=('pam')
 optdepends=('xss-lock: lock screen on suspend or after inactivity')
-backup=(etc/pam.d/physlock)
+backup=('etc/pam.d/physlock')
 source=("physlock-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "physlock.pam")
 b2sums=('a43f151c1660c38bd028f80742637a51d5108e6769161c88fb269ac03c827e49bd20e521b8face6aa6a71a8ab65ddf8662e81e8251b74c13388070ed04d4e13b'
