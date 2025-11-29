@@ -1,7 +1,7 @@
 pkgbase = sieveman
 	pkgdesc = Universal ManageSieve protocol client.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wzykubek/sieveman
 	arch = x86_64
 	arch = i686

@@ -1,7 +1,7 @@
 # Maintainer: Wiktor Zykubek <dev at wzykubek dot xyz>
 pkgname=sieveman
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal ManageSieve protocol client."
 arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv7h' 'aarch64' 'riscv64')
 license=('ISC')
@@ -18,6 +18,11 @@ prepare() {
 
 build() {
     cd "${pkgname}-${pkgver}"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
     make VERSION=$pkgver
 }
 
