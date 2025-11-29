@@ -1,6 +1,6 @@
 pkgbase = leetcode-fsrs-cli-bin
 	pkgdesc = A CLI tool for LeetCode practice using FSRS spaced repetition algorithm (Binary Version)
-	pkgver = 1.6.3
+	pkgver = 1.6.4
 	pkgrel = 1
 	url = https://github.com/SaintFore/LeetCodeCLI
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = leetcode-fsrs-cli-bin
 	provides = leetcode-fsrs-cli
 	conflicts = leetcode-fsrs-cli
 	replaces = leetcode-fsrs-cli
-	source = leetcode-fsrs-cli-bin-1.6.3::https://github.com/SaintFore/LeetCodeCLI/releases/download/v1.6.3/leetcode-fsrs-linux-x86_64
-	source = https://raw.githubusercontent.com/SaintFore/LeetCodeCLI/v1.6.3/LICENSE
-	source = https://raw.githubusercontent.com/SaintFore/LeetCodeCLI/v1.6.3/README.md
-	sha256sums = 8fc041322ead19c2bbe432700f6502088286d02dac634b76744ad1ded283c195
+	source = leetcode-fsrs-cli-bin-1.6.4::https://github.com/SaintFore/LeetCodeCLI/releases/download/v1.6.4/leetcode-fsrs-linux-x86_64
+	source = https://raw.githubusercontent.com/SaintFore/LeetCodeCLI/v1.6.4/LICENSE
+	source = https://raw.githubusercontent.com/SaintFore/LeetCodeCLI/v1.6.4/README.md
+	sha256sums = 05161b24849cf3ca2e74dcd9fead01bc8d28bc035ae0d1b878628b7dc0fff964
 	sha256sums = eeb2575ca0495a0245f39f79c24f984f1c154c48b5910688ab2cbd761e68fe86
 	sha256sums = 905a265642794bb7689717609c871ec8e80ac52443d033c696ecf92c83a01d86
 
