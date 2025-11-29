@@ -1,0 +1,15 @@
+pkgbase = ninjabrain-bot
+	pkgdesc = Stronghold calculator for Minecraft Speedrunning
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/Ninjabrain1/Ninjabrain-Bot
+	arch = any
+	license = unknown
+	depends = java-runtime>=8
+	noextract = Ninjabrain-Bot-1.5.1.jar
+	source = https://github.com/Ninjabrain1/Ninjabrain-Bot/releases/download/1.5.1/Ninjabrain-Bot-1.5.1.jar
+	source = ninjabrain-bot.sh
+	sha256sums = 471bbd0361224ebebd7cb05422646ff912c2d8b9a8b1ac080f20cf21a45caddc
+	sha256sums = cf7b6f76b63ca82bb96a7b376448a3986d799b1b9bfa58e82b1af3a26dff6514
+
+pkgname = ninjabrain-bot
