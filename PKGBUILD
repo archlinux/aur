@@ -40,7 +40,7 @@ checkdepends=(
   'perl-test-simple>=1.302200' # "Test2::V0"
   'perl-test-without-module'
 )
-options=('!emptydirs' 'purge')
+options=(!emptydirs purge)
 source=("https://cpan.metacpan.org/authors/id/J/JO/JONASS/String-License-v${pkgver}.tar.gz")
 b2sums=('733af1f8edfc3ba402f475ada43435ec698b0f227543927efcd0dbeff10401869da418b8770e517d3380509e3ac8f27892ac4c1269df33b8420d8445c87cc2ce')
 
