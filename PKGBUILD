@@ -1,10 +1,10 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=endcord
-pkgver=1.0.0.alpha.23
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Feature rich Discord TUI client."
 arch=('any')
-url="https://github.com/mzivic7/$pkgname"
+url="https://github.com/sparklost/$pkgname"
 license=('GPL-3.0-only')
 provides=('endcord')
 conflicts=('endcord')

@@ -1,8 +1,8 @@
 pkgbase = endcord
 	pkgdesc = Feature rich Discord TUI client.
-	pkgver = 1.0.0.alpha.23
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/mzivic7/endcord
+	url = https://github.com/sparklost/endcord
 	arch = any
 	license = GPL-3.0-only
 	optdepends = xclip: clipboard support on X11
@@ -13,7 +13,7 @@ pkgbase = endcord
 	provides = endcord
 	conflicts = endcord
 	options = !strip
-	source = endcord.tar.gz::https://github.com/mzivic7/endcord/releases/download/1.0.0.alpha.23/endcord-1.0.0.alpha.23-linux.tar.gz
+	source = endcord.tar.gz::https://github.com/sparklost/endcord/releases/download/1.0.0/endcord-1.0.0-linux.tar.gz
 	sha256sums = SKIP
 
 pkgname = endcord
