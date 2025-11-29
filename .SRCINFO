@@ -1,0 +1,19 @@
+pkgbase = python-abx-pkg
+	pkgdesc = System package manager interfaces with Python type hints.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://pypi.org/project/abx-pkg/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-platformdirs
+	depends = python-pydantic
+	depends = python-pydantic-core
+	depends = python-typing_extensions
+	source = https://pypi.python.org/packages/source/a/abx-pkg/abx_pkg-0.6.0.tar.gz
+	md5sums = 7a1fc9332c5007274111ac21c12bf05b
+
+pkgname = python-abx-pkg
