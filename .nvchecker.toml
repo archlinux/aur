@@ -1,0 +1,6 @@
+[tinyemu]
+source = 'regex'
+url = 'https://bellard.org/tinyemu/'
+regex = 'jslinux-([\d-]+).tar'
+from_pattern = '-'
+to_pattern = '_'
