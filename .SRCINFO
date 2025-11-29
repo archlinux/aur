@@ -1,14 +1,14 @@
 pkgbase = vot-cli-live
 	pkgdesc = VOT-CLI with Yandex live voices support
 	pkgver = 1.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fantomcheg/vot-cli-live
 	arch = any
 	license = Unlicense
 	makedepends = npm
-	depends = bun
 	depends = nodejs
-	depends = sh
+	optdepends = ffmpeg: for merging video and audio streams
+	optdepends = yt-dlp: for downloading original video and audio
 	provides = vot-cli
 	conflicts = vot-cli
 	options = !debug
