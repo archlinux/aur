@@ -1,27 +1,47 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
-# Contributor: Liviu Cristian Mirea-Ghiban <liviu dot mirea at wecodepixels dot com>
-# Contributor (Qt5 version's aur package): kekmacska <kekmacska2 at protonmail dot com>
 pkgname=heidisql-qt5
-pkgver=12.13.1.1_4_ge95aca86_dirty_qt5_1
-pkgrel=2
-pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases. Qt5 version, avoids GTK2-based base version's deprecated gtk2 dependency, uses qt5-base, a still supported package instead."
-arch=('x86_64')
+pkgver=12.13.1.1
+pkgrel=3
+pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, and SQLite databases (Qt5)"
+arch=(x86_64)
 url="http://www.heidisql.com/"
-license=('GPL')
-depends=(qt5pas qt5-base mariadb-libs)
-optdepends=(sqlite libperconaserverclient postgresql-libs)
-# using the deb because it already conveniently includes related files like icons and a desktop entry (not included in the .tar.xz). Currently dropbox only, upstream only packaged it there. I will use the github releases as soon as i can.
-source=("https://www.dropbox.com/scl/fi/09vlj6hf0a1w8ok5qk4wg/heidisql_12.13.1.1-4-ge95aca86-dirty-qt5-1_amd64.deb?rlkey=izfkl52khll2hivris8zjh6fg&st=3ztpaxsc&dl=0")
-install="$pkgname.install"
-sha256sums=('c7198c987a01ac55f498c9af1fe055aed6b432fbe0c488539bc8cdd413b1b0c1')
+license=('GPL-2.0')
+makedepends=(lazarus make fpc gettext binutils qt5pas)
+depends=(qt5pas heidisql-common mariadb-libs postgresql-libs libperconaserverclient sqlite)
+provides=(heidisql-client heidisql)
+
+source=("https://github.com/HeidiSQL/HeidiSQL/archive/v${pkgver}.tar.gz")
+sha256sums=('e9db116b0f3d8aa2300fde3266056452425304791393d84786ac9c0350ddc2b5')
+
+prepare() {
+  cd "${srcdir}/HeidiSQL-${pkgver}"
+  
+  # Patch: Force both Qt5 and GTK2 versions to use the same config directory (.config/heidisql)
+  # This ensures settings are shared between both variants
+  echo "Patching config directory to use shared 'heidisql' folder"
+  sed -i 's|FDirnameUserAppData := GetAppConfigDir(False);|// Force shared config directory: always use "heidisql" regardless of executable name\
+    if GetEnvironmentVariable('"'"'XDG_CONFIG_HOME'"'"').IsEmpty then\
+      FDirnameUserAppData := GetEnvironmentVariable('"'"'HOME'"'"') + '"'"'/.config/heidisql'"'"'\
+    else\
+      FDirnameUserAppData := GetEnvironmentVariable('"'"'XDG_CONFIG_HOME'"'"') + '"'"'/heidisql'"'"';|' source/apphelpers.pas
+}
+
+build() {
+  cd "${srcdir}/HeidiSQL-${pkgver}"
+  
+  mkdir -p ./out/qt5
+  lazbuild --lazarusdir=/usr/lib/lazarus -B --bm=Release --ws=qt5 heidisql.lpi
+  mv -v ./out/heidisql ./out/qt5/heidisql
+}
 
 package() {
-  cd "${pkgdir}"
-  # this extracts all into the pkgdir
-  tar xf "${srcdir}/data.tar.gz"
-  # fix directory permissions
-  find . -type d -exec chmod 755 {} +
-  chmod 775 usr/share/doc/heidisql usr/share/heidisql/locale
-	echo "\e[31mheidisql-debug is installed too. If you don't need it, you can remove it with the following command:\e[0m"
-	echo "\e[32m sudo pacman -R heidisql-debug\e[0m"
+  cd "${srcdir}/HeidiSQL-${pkgver}"
+  
+  mkdir -p "${pkgdir}/usr/share/heidisql"
+  install -Dm755 "out/qt5/heidisql" "${pkgdir}/usr/share/heidisql/heidisql-qt5"
+  
+  install -Dm644 "package-skeleton/usr/share/applications/heidisql.desktop" \
+    "${pkgdir}/usr/share/applications/heidisql-qt5.desktop"
+  sed -i 's/^Exec=heidisql/Exec=heidisql --qt5/' "${pkgdir}/usr/share/applications/heidisql-qt5.desktop"
+  sed -i 's/^Name=HeidiSQL/Name=HeidiSQL (Qt5)/' "${pkgdir}/usr/share/applications/heidisql-qt5.desktop"
 }
