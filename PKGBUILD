@@ -24,7 +24,7 @@ optdepends=(
     'xdg-desktop-portal-wlr: For wlroots-based compositors'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8b135dc8804801db445ce30b125d499cc26162663c58a505b76aef54eb509ed8')
+sha256sums=('02226f73b19152d65c4ddc60dc88a6b06b62f2f06d7519e18bd42604fca2cfa7')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
