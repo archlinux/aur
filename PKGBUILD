@@ -26,7 +26,8 @@ checkdepends=(
   'perl-io'          # "IO::Handle"
   'perl'             # "IPC::Open3"
   'perl-test-simple' # "Test::More"
-  # See https://github.com/preaction/Log-Any/commit/c2cc64c245f90068f7135895e3c3f642d587703c
+
+  ## t/proxy-with-stack-trace.t
   'perl-devel-stacktrace>=2.00'
 )
 optdepends=(
