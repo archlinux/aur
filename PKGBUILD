@@ -3,7 +3,7 @@
 pkgname=moneymanagerex
 # HINT: ! ALSO UPDATE COMMIT HASHES IN source !
 pkgver=1.9.1
-pkgrel=8
+pkgrel=9
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
@@ -62,7 +62,7 @@ prepare() {
   git config user.name "Your Name"
   git config user.email "your.email@example.com"
 
-  git cherry-pick f86aa161236467c1699f207a8bfa4c7dc3d32af7
+  git cherry-pick 3f8a07c2a9329c06650fa899735f1ccaacea001b
 }
 
 build() {
