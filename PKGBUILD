@@ -2,8 +2,9 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: lsf
 # Contributor: Adam Hose <adis@blad.is>
+# Contributor: Ryan Steed <ryan.steed.usa@pm.me>
 pkgname=opensnitch-git
-pkgver=1.7.2.r34.cb2feeb6
+pkgver=1.7.2.r71.9b1ae176
 pkgrel=1
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -35,7 +36,8 @@ optdepends=(
  'logrotate: logfile rotation'
  'opensnitch-ebpf-module-git: eBPF process monitor method (non-hardened kernel only)'
  'python-pyasn: display network names of IP'
- 'python-qt-material-git: extra ui themes')
+ 'python-qt-material-git: extra ui themes'
+ 'qt6-svg')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=(
@@ -55,7 +57,7 @@ source=(
   "${_arch_git_url}tmpfiles.conf"
 )
 sha256sums=('SKIP'
-            '9c3b312492c8127ca5e766cc5d6a8f8abcc5212be0d012e9f91c0258db4e9970'
+            'd4a8a88e15e1f2759964b53dce05bccd9842ccba22b9c10c50763ad4d03680e6'
             'd88cfe1acce3389ab577958048e5b642fc3b34d12f2f2f69123113bfe49d0099'
             '812824386d1ef72effd10c193d4fcbe371bf987a072cea77f9bc45bd526dc36e'
             'e77d2f6a6ada2761a987828e00c7725dee0c06bdb8793ae414d0df7fb1eb44a7'
@@ -154,14 +156,14 @@ package() {
 
   install -d "$pkgdir/etc/${pkgname%-git}d/rules"
   install -Dm755 "daemon/${pkgname%-git}d" -t "$pkgdir/usr/bin"
-  install -Dm644 "daemon/${pkgname%-git}d.service" -t \
+  install -Dm644 "daemon/data/init/${pkgname%-git}d.service" -t \
     "$pkgdir/usr/lib/systemd/system"
   install -vDm644 "$srcdir/tmpfiles.conf" \
     "$pkgdir/usr/lib/tmpfiles.d/${pkgname%-git}.conf"
   # install -Dm644 "daemon/${pkgname%-git}d-ebpf.service" -t \
     # "$pkgdir/usr/lib/systemd/system"
-  install -Dm644 daemon/default-config.json -t "$pkgdir/etc/${pkgname%-git}d"
-  install -Dm644 daemon/system-fw.json -t "$pkgdir/etc/${pkgname%-git}d"
+  install -Dm644 daemon/data/default-config.json -t "$pkgdir/etc/${pkgname%-git}d"
+  install -Dm644 daemon/data/system-fw.json -t "$pkgdir/etc/${pkgname%-git}d"
   install -Dm644 "utils/packaging/daemon/deb/debian/${pkgname%-git}.logrotate" \
     "$pkgdir/etc/logrotate.d/${pkgname%-git}"
 
