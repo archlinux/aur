@@ -1,0 +1,18 @@
+pkgbase = python-abx-spec-abx-pkg
+	pkgdesc = The ABX plugin specification for Binaries and BinProviders.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://pypi.org/project/abx-spec-abx-pkg/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-abx
+	depends = python-abx-pkg
+	depends = python-abx-spec-config
+	source = https://pypi.python.org/packages/source/a/abx-spec-abx-pkg/abx_spec_abx_pkg-0.1.1.tar.gz
+	md5sums = 045de2166af3710b8fe4fc76a8b59881
+
+pkgname = python-abx-spec-abx-pkg
