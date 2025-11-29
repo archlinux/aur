@@ -1,0 +1,18 @@
+pkgbase = kwin-x11-sonic-bin
+	pkgdesc = kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for XLibre
+	pkgver = 6.5.3
+	pkgrel = 2.2
+	url = https://github.com/Sonic-DE/kwin-x11-sonic
+	arch = x86_64
+	license = custom
+	provides = kwin-x11
+	provides = kwin-x11-lite-bin
+	conflicts = kwin-x11
+	conflicts = kwin-x11-lite-bin
+	replaces = kwin-x11-lite-bin
+	noextract = kwin-x11-6.5.3-2.2-x86_64.pkg.tar.zst
+	options = !strip
+	source = https://x11libre.net/repo/arch_based/x86_64/kwin-x11-6.5.3-2.2-x86_64.pkg.tar.zst
+	sha256sums = c25756507110f1f0562d5a4b7325a82209aeaec206a9cfb0bbd4c410d9cd5efb
+
+pkgname = kwin-x11-sonic-bin
