@@ -1,6 +1,6 @@
 pkgname=mcp-language-server
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Model Context Protocol server that proxies LSP language servers"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/isaacphi/mcp-language-server"

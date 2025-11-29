@@ -1,7 +1,7 @@
 pkgbase = mcp-language-server
 	pkgdesc = Model Context Protocol server that proxies LSP language servers
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/isaacphi/mcp-language-server
 	arch = x86_64
 	arch = aarch64
