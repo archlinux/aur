@@ -1,13 +1,13 @@
 pkgbase = binjr-bin
 	pkgdesc = Time Series Data Browser
-	pkgver = 3.25.0
+	pkgver = 3.26.0
 	pkgrel = 1
 	url = https://binjr.eu/
 	arch = x86_64
 	license = Apache
 	provides = binjr
-	source = https://github.com/binjr/binjr/releases/download/v3.25.0/binjr-3.25.0_linux-amd64.tar.gz
-	source = https://github.com/binjr/binjr/releases/download/v3.25.0/binjr-3.25.0_linux-amd64.tar.gz.asc
+	source = https://github.com/binjr/binjr/releases/download/v3.26.0/binjr-3.26.0_linux-amd64.tar.gz
+	source = https://github.com/binjr/binjr/releases/download/v3.26.0/binjr-3.26.0_linux-amd64.tar.gz.asc
 	validpgpkeys = 20CAEC83151CCC7CE12DF29EAF45EEEFB23702CB
 	sha512sums = SKIP
 	sha512sums = SKIP
