@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-ext-applet-emoji-selector-git
-pkgver=0.1.5.r38.g1b2eb23
+pkgver=0.1.5.r43.g4530c2d
 pkgrel=1
 pkgdesc="Emoji Selector for COSMIC™️ DE"
 arch=('x86_64')
-url="https://github.com/leb-kuchen/cosmic-ext-applet-emoji-selector"
+url="https://github.com/bGVia3VjaGVu/cosmic-ext-applet-emoji-selector"
 license=('MPL-2.0 AND MIT')
 depends=(
   'cosmic-applets'
@@ -16,8 +16,12 @@ makedepends=(
   'just'
 )
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}" 'cosmic-applet-emoji-selector-git' 'emoji-selector-applet-for-cosmic-git')
-source=('git+https://github.com/leb-kuchen/cosmic-ext-applet-emoji-selector.git')
+conflicts=(
+  "${pkgname%-git}"
+  'cosmic-applet-emoji-selector-git'
+  'emoji-selector-applet-for-cosmic-git'
+)
+source=('git+https://github.com/bGVia3VjaGVu/cosmic-ext-applet-emoji-selector.git')
 sha256sums=('SKIP')
 
 pkgver() {
