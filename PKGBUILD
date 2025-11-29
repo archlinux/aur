@@ -4,7 +4,7 @@
 #
 # shellcheck disable=SC2034,SC2154
 pkgname=kctrl-bin
-pkgver=0.59.0
+pkgver=0.59.1
 pkgrel=1
 pkgdesc='Continuous delivery and package management for Kubernetes.'
 url='https://carvel.dev/kapp-controller'
@@ -13,10 +13,10 @@ license=(apache-2.0)
 install=''
 conflicts=(kctrl)
 provides=(kctrl)
-source_x86_64=(kctrl-v0.59.0::https://github.com/carvel-dev/kapp-controller/releases/download/v0.59.0/kctrl-linux-amd64)
-source_aarch64=(kctrl-v0.59.0::https://github.com/carvel-dev/kapp-controller/releases/download/v0.59.0/kctrl-linux-arm64)
-sha256sums_x86_64=(96d098ab5e897acba8e7b36f6e9be731b53517cfc3f34380c5f3f24a7ac2a8dc)
-sha256sums_aarch64=(f78201bc2f56c3010a05e6cd2bea9cbb39ad2249ca38a40cebec19ea5eb058b4)
+source_x86_64=(kctrl-v0.59.1::https://github.com/carvel-dev/kapp-controller/releases/download/v0.59.1/kctrl-linux-amd64)
+source_aarch64=(kctrl-v0.59.1::https://github.com/carvel-dev/kapp-controller/releases/download/v0.59.1/kctrl-linux-arm64)
+sha256sums_x86_64=(3cf09ba4ea90e3b44de569ddacaeaa9b1cf930772dee67dbb2a4deefa3c187a8)
+sha256sums_aarch64=(efd2d439701ccbb63738d584f14509a234f8df94ab34c4700de2e27ce78a7bbd)
 package () 
 { 
     set -eo pipefail;
