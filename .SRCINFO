@@ -6,7 +6,6 @@ pkgbase = perl-feature-compat-try
 	arch = any
 	license = GPL-1.0-or-later OR Artistic-1.0-Perl
 	checkdepends = perl-test-simple>=0.88
-	checkdepends = perl-test-pod>=1.00
 	makedepends = perl-module-build>=0.4004
 	depends = perl>=5.14
 	optdepends = perl-syntax-keyword-try>=0.27: support for Perl versions older than 5.35.8
