@@ -2,7 +2,7 @@
 
 _pyname=django-htmx
 pkgname=python-$_pyname
-pkgver=1.26.0
+pkgver=1.27.0
 pkgrel=1
 pkgdesc='Extensions for using Django with htmx'
 arch=(any)
@@ -16,7 +16,7 @@ makedepends=(python-{build,installer,wheel}
 checkdepends=(python-pytest)
 _archive="$_pyname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('55a2bb6a6a4411fb0d8a79fd981a3e36d7dc1d9dc8b3be7110f9112a1ab96a46')
+sha256sums=('541f54c6451a7a4a9365e47dcfc0c74fae4a7a9ea2f5bac0a7f0498b6c7d99d3')
 
 build() {
 	cd "$_archive"
