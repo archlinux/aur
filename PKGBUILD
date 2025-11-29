@@ -2,7 +2,7 @@
 
 pkgname=python-numba-cuda
 _name=numba-cuda
-pkgver=0.21.1
+pkgver=0.21.2
 pkgrel=1
 pkgdesc="The CUDA target for Numba"
 url="https://github.com/NVIDIA/numba-cuda"
@@ -11,7 +11,7 @@ license=('BSD-2-Clause')
 depends=(python-numba cuda python-cuda)
 makedepends=(python-wheel python-setuptools python-installer gcc)
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2929f63c7e473f3b422a23fe5c4a5a06f980a3a2419663de5878fac883062b2d')
+sha256sums=('27f6b1d0101565bf285f669b6ba91b99808797ff4d3174ae9a186eab557a8bdf')
 
 build() {
     cd $_name-$pkgver
