@@ -1,6 +1,6 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Wayland Linux systems"
 arch=('x86_64' 'aarch64')
