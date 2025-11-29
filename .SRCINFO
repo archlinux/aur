@@ -1,11 +1,14 @@
 pkgbase = perl-string-escape
 	pkgdesc = Backslash escapes, quoted phrase, word elision, etc.
 	pkgver = 2010.002
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/dist/String-Escape
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	checkdepends = perl-test-simple
+	checkdepends = perl-test-pod>=1.22
+	checkdepends = perl-test-pod-coverage>=1.08
+	checkdepends = perl-pod-coverage>=0.18
 	makedepends = perl-extutils-makemaker>=6.3002
 	options = !emptydirs
 	options = purge
