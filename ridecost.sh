@@ -1,6 +1,18 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-export JAVA_HOME=$(archlinux-java-run --min 17 --java-home)
+JAVA_HOME="$(archlinux-java-run --min 17 --java-home)"
+export JAVA_HOME
 
-java -cp "/usr/share/java/ridecost/*" io.gitlab.vitalijr2.ridecost.cli.RideCost "$@"
+CLASSPATH='/usr/share/java/ridecost/*'
+
+if [[ -f /usr/share/java/slf4j/slf4j-api.jar &&
+      -f /usr/share/java/slf4j/slf4j-jdk-platform-logging.jar &&
+      -f /usr/share/java/slf4j/slf4j-simple.jar ]]; then
+  CLASSPATH+=":/usr/share/java/slf4j/slf4j-api.jar"
+  CLASSPATH+=":/usr/share/java/slf4j/slf4j-jdk-platform-logging.jar"
+  CLASSPATH+=":/usr/share/java/slf4j/slf4j-simple.jar"
+fi
+
+exec java -cp "$CLASSPATH" io.gitlab.vitalijr2.ridecost.cli.RideCost "$@"
 

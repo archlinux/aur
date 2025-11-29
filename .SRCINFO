@@ -1,6 +1,6 @@
 pkgbase = ridecost
 	pkgdesc = Mileage-Based Ride Cost Command-Line Tool.
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://gitlab.com/ride-cost/ride-cost-cli
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = ridecost
 	depends = java-runtime>=17
 	depends = archlinux-java-run
 	depends = bash
-	source = ridecost-1.1.0.tar.bz2::https://gitlab.com/ride-cost/ride-cost-cli/-/archive/v1.1.0/ride-cost-cli-v1.1.0.tar.bz2
+	source = ridecost-1.1.1.tar.bz2::https://gitlab.com/ride-cost/ride-cost-cli/-/archive/v1.1.1/ride-cost-cli-v1.1.1.tar.bz2
 	source = ridecost.sh
-	sha256sums = 7cfb69f3d962e3e1b1855a1e9050a42a60bd309fb11a477851b23cb6eea41d76
-	sha256sums = 9ad9cb0cd127fcef26016d7b82df2cc3a06f41ba8f522bcab25cbb17bf34bb4f
+	sha256sums = 3650971b5f262929fad22dbea685bf455f358c1af2c9c220ba5a3bea8bf3dcc8
+	sha256sums = 63f1f5855132ecef82b4551c276bfd20ef3e627262d3553aa391e4fa65038959
 
 pkgname = ridecost
