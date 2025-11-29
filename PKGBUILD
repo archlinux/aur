@@ -1,5 +1,5 @@
 pkgname=mathematica-documentation-zh-cn
-pkgver=14.2.0
+pkgver=14.3.0
 pkgrel=1
 pkgdesc="Mathematica Documentation (zh-cn)"
 url="http://www.wolfram.com/mathematica/"
@@ -7,7 +7,7 @@ license=("proprietary")
 arch=('any')
 depends=('mathematica-light')
 source=("local://WLDocs_${pkgver}_LIN_Chinese.sh")
-sha256sums=('1cd2ea4ff9201804771d0725448bfbdb90d6d2b1db016c188db213cdc8a6fbbc')
+sha256sums=('2b45a44860c0c45bc7892c28d1e7de675cac41f6533c687c7f30623d1634522c')
 
 prepare() {
     warning "Building Mathematica Documentation (zh-cn) takes around 10GiB of space for 'makepkg'."
