@@ -1,0 +1,18 @@
+pkgbase = python-oras
+	pkgdesc = OCI Registry As Storage (ORAS) Python client library
+	pkgver = 0.2.38
+	pkgrel = 1
+	url = https://github.com/oras-project/oras-py
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-jsonschema
+	depends = python-requests
+	optdepends = python-docker: support for docker config authentication
+	optdepends = python-boto3: support for AWS ECR authentication
+	source = https://files.pythonhosted.org/packages/source/o/oras/oras-0.2.38.tar.gz
+	sha256sums = 58482f78275cb5cc9fdf135248ca878a19204428a51bd3a1ca24c32714d35341
+
+pkgname = python-oras
