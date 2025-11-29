@@ -1,0 +1,18 @@
+pkgbase = python-abx
+	pkgdesc = The common shared interfaces for the ABX ArchiveBox plugin ecosystem.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://pypi.org/project/abx
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-benedict
+	depends = python-pluggy
+	depends = python-pydantic
+	source = https://pypi.python.org/packages/source/a/abx/abx-0.1.0.tar.gz
+	md5sums = 0887c3aedff379bf93f1e39d198ce98d
+
+pkgname = python-abx
