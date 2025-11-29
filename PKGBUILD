@@ -1,7 +1,7 @@
 # Maintainer: vicrodh <vicrodh[at]gmail[dot]com>
 pkgname=majusb
 pkgver=0.2.0.alpha
-pkgrel=1
+pkgrel=2
 _tag=0.2.0-alpha
 pkgdesc="A graphical tool to create bootable USB drives from Linux or Windows ISOs"
 arch=('x86_64')
