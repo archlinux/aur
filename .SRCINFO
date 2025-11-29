@@ -19,7 +19,7 @@ pkgbase = majusb
 	depends = rsync
 	depends = wimlib
 	depends = gptfdisk
-	source = majusb-0.2.0.alpha.tar.gz::https://github.com/vicrodh/usb-bootable-creator/archive/refs/tags/v0.2.0.alpha.tar.gz
+	source = majusb-0.2.0-alpha.tar.gz::https://github.com/vicrodh/usb-bootable-creator/archive/refs/tags/v0.2.0-alpha.tar.gz
 	sha256sums = SKIP
 
 pkgname = majusb
