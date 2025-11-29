@@ -1,7 +1,7 @@
 # Maintainer: Callum Webb <callum.s.webb@gmail.com>
 pkgname=ninjabrain-bot
 pkgver=1.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Stronghold calculator for Minecraft Speedrunning"
 arch=(any)
 url="https://github.com/Ninjabrain1/Ninjabrain-Bot"

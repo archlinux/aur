@@ -18,6 +18,8 @@ path = [
     "*.desktop",
     "*.hook",
     "ninjabrain-bot.sh",
+    "ninjabrain-bot.desktop",
+    "icon.png"
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
