@@ -1,0 +1,21 @@
+pkgbase = dosbox-pure-unleashed-bin
+	pkgdesc = DOSBox reimagined with a friendly interface, ZIP loading and save states
+	pkgver = 1.0_preview4
+	pkgrel = 1
+	url = https://github.com/schellingb/dosbox-pure-unleashed
+	arch = x86_64
+	license = GPL2
+	depends = libgl
+	depends = libx11
+	provides = dosbox-pure-unleashed
+	conflicts = dosbox-pure-unleashed
+	conflicts = dosbox-pure-unleashed-git
+	options = !strip
+	source = dosbox-pure-unleashed-1.0_preview4.zip::https://github.com/schellingb/dosbox-pure-unleashed/releases/download/1.0-preview4/dosbox_pure_unleashed-linux-x64-1.0-preview4.zip
+	source = dosbox-pure-unleashed.png
+	source = LICENSE::https://github.com/schellingb/dosbox-pure-unleashed/raw/main/LICENSE
+	sha256sums = cffcce676ac39571e7f4eeb6bbd2593625e14cb84310aa76ed03d287b96ef302
+	sha256sums = dbc60121b55da42d2f4f2f19b92bc741d073be313d28a16699572ce3942a89dc
+	sha256sums = 61e0922747762a12e88a47ab66ef4ed026148361900440086b4863145973a374
+
+pkgname = dosbox-pure-unleashed-bin
