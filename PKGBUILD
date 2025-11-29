@@ -1,6 +1,6 @@
 # Maintainer: nasedkinpv <nasedkinpv@users.noreply.github.com>
 pkgname=numr
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A text calculator for natural language expressions with a vim-style TUI"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nasedkinpv/numr/archive/v$pkgver.tar.gz")
-sha256sums=('ef2bc8641cdacf58d801c4d8a553a4c2961ee32abba37efd729c0891ff3eead9')
+sha256sums=('0e2097a9022c94205c473512172c8eed3450b6bdd025c24d1c8193480da73ca9')
 
 prepare() {
     cd "$pkgname-$pkgver"
