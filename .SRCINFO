@@ -1,4 +1,4 @@
-pkgbase = python-
+pkgbase = python-langchain-openai
 	pkgdesc = An integration package connecting OpenAI and LangChain.
 	pkgver = 1.1.0
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = python-
 	source = https://files.pythonhosted.org/packages/source/l/langchain-openai/langchain_openai-1.1.0.tar.gz
 	sha256sums = 9a33280c2e8315d013d64e6b15e583be347beb0d0f281755c335ae504ad0c184
 
-pkgname = python-
+pkgname = python-langchain-openai
