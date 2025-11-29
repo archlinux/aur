@@ -14,7 +14,7 @@ makedepends=('perl-extutils-makemaker>=6.3002')
 checkdepends=(
   'perl-test-simple' # "Test::More"
 )
-options=('!emptydirs' 'purge')
+options=(!emptydirs purge)
 source=("https://cpan.metacpan.org/authors/id/E/EV/EVO/String-Escape-${pkgver}.tar.gz"
         '0001-backslash.patch')
 b2sums=('d012323bdf10b9c8e47c90dfe1bbb064e09c7a0b00c469d9285d8a9a7ad1ee80b1d30b1fff1d5218d4491a36780174526273775dac790db2f22c0a22cc01fb14'
