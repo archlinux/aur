@@ -21,11 +21,9 @@ pkgbase = kst
 	depends = libmatio
 	depends = netcdf-cxx
 	source = git+https://invent.kde.org/graphics/kst-plot.git#tag=v2.1-2024-10-20
-	source = svn://anonsvn.kde.org/home/kde/trunk/l10n-kf5
 	source = cmake4.patch
 	source = hdf5_include.patch
 	source = hdf5_cpp.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = c93de37e5856fc10b4c6aa814f1b477582484c5f34c37af998854112dc1f6ed7
 	sha256sums = 0281a90c1ae5104a2624683d5aa4579fa71659412f61ffd90f29ff39f5bf933b
