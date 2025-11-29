@@ -11,7 +11,7 @@ depends=()
 provides=(wireguard-gui-bin)
 conflicts=(wireguard-gui)
 source_x86_64=("wireguard-gui-${pkgver}.AppImage::https://github.com/0xle0ne/wireguard-gui/releases/download/${pkgver}-stable/wireguard-gui_${pkgver}_amd64.AppImage")
-sha256sums_x86_64=('5aea6245ffe6b3d142841f930ffeab9e14c9ae1488e40c203971f0b1e49b4e55')
+sha256sums_x86_64=('6db3f1712eb3d35945da6a9a00da5aa23851dd7471d8d1b8b655a3bd20118eed')
 
 package() {
 	install -Dm755 *.AppImage "$pkgdir/opt/wireguard-gui/wireguard-gui.appimage"
