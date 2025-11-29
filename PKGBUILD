@@ -8,6 +8,7 @@ url="https://github.com/kriomant/ch57x-keyboard-tool"
 license=('MIT' 'Apache-2.0')
 depends=('libusb')
 makedepends=('cargo')
+keywords=('keyboard' 'macro' 'keypad' 'ch57x' 'ch55x' 'ch552' 'ch552g' 'ch554' 'hotkey' 'aliexpress')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kriomant/ch57x-keyboard-tool/archive/refs/tags/v$pkgver.tar.gz"
         "50-ch57x-keyboard.rules")
 sha256sums=('bd8ba2b59987a29d4ad4afcdf90b79d54d200d3ab803711d28851222f81bbfb5'

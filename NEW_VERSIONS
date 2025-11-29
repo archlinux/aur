@@ -1,0 +1,5 @@
+  Когда выйдет новая версия upstream, нужно будет:
+  1. Обновить pkgver в PKGBUILD
+  2. Запустить updpkgsums для обновления чексумм
+  3. Перегенерировать .SRCINFO: makepkg --printsrcinfo > .SRCINFO
+  4. Закоммитить и запушить
