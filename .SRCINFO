@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-10.0-bin
 	pkgver = 10.0.0.sdk100
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
