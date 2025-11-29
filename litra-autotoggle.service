@@ -1,0 +1,12 @@
+[Unit]
+Description=Automatically toggle Logitech Litra based on webcam state
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/litra-autotoggle
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
