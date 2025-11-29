@@ -1,11 +1,12 @@
 # Maintainer: Wiktor Zykubek <dev at wzykubek dot xyz>
 pkgname=sieveman
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal ManageSieve protocol client."
 arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv7h' 'aarch64' 'riscv64')
 license=('ISC')
 url="https://github.com/wzykubek/sieveman"
+depends=('glibc')
 makedepends=('go>=1.23.5')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wzykubek/sieveman/archive/v${pkgver}.tar.gz")
 sha256sums=('b24d3c631ac32f8f81fe192e18b642105e8a219531d97193f825a8f2d42c12c7')
