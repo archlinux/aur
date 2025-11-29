@@ -1,0 +1,14 @@
+pkgbase = mcp-language-server
+	pkgdesc = Model Context Protocol server that proxies LSP language servers
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/isaacphi/mcp-language-server
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = BSD-3-Clause
+	makedepends = go
+	source = mcp-language-server-0.1.1.tar.gz::https://github.com/isaacphi/mcp-language-server/archive/refs/tags/v0.1.1.tar.gz
+	b2sums = 9fd6632a93fe63e14261df82e938174cfb8f106ce58aeb741733bffcafec1217a7f3e973f485a47550976eab393f412a5515572a5be678f535f66e1881d06d42
+
+pkgname = mcp-language-server
