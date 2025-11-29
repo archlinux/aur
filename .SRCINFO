@@ -1,0 +1,16 @@
+pkgbase = python-abx-spec-django
+	pkgdesc = Add your description here.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://pypi.org/project/abx-spec-django
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-abx
+	source = https://pypi.python.org/packages/source/a/abx-spec-django/abx_spec_django-0.1.0.tar.gz
+	md5sums = 474ca2a37d9cf6a334946deb05677d0a
+
+pkgname = python-abx-spec-django
