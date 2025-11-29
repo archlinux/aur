@@ -1,0 +1,3 @@
+[python-django-rich]
+source = "git"
+git = "https://github.com/adamchainz/django-rich.git"

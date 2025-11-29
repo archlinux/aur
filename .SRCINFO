@@ -1,0 +1,17 @@
+pkgbase = python-django-rich
+	pkgdesc = Extensions for using Rich with Django.
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/adamchainz/django-rich
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-django
+	depends = python-rich
+	source = django-rich::https://github.com/adamchainz/django-rich/archive/refs/tags/2.2.0.tar.gz
+	sha256sums = 1a5b49d6fad0de4231a035b3541578a932d1a5c1b46317a143d5f9f13748499f
+
+pkgname = python-django-rich
