@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-vulkan
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with Vulkan GPU optimizations)
-	pkgver = b7192
+	pkgver = b7197
 	pkgrel = 1
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = llama.cpp-vulkan
 	conflicts = stable-diffusion.cpp
 	options = lto
 	options = !debug
-	source = llama.cpp-vulkan-b7192.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b7192.tar.gz
-	sha256sums = 70340d5204f61dc36578861282e3449d3e6c86368b3248b952ee6e7cd7e8ddb4
+	source = llama.cpp-vulkan-b7197.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b7197.tar.gz
+	sha256sums = d5d3f35a86fed46a1824a2b30fe259a96e813347e2a96978ec0014e0dbe0ee6e
 
 pkgname = llama.cpp-vulkan
