@@ -2,7 +2,7 @@
 pkgname=ch57x-keyboard-tool
 pkgver=1.6.2
 pkgrel=1
-pkgdesc="Command-line tool for programming ch57x macro keyboards"
+pkgdesc="Command-line tool for programming ch57x and ch55x macro keyboards like ch552 or ch552g"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kriomant/ch57x-keyboard-tool"
 license=('MIT' 'Apache-2.0')
