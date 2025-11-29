@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=cfspeedtest-bin
-pkgver=1.4.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Unofficial CLI for speed.cloudflare.com"
 arch=('x86_64' 'aarch64')
@@ -12,9 +12,9 @@ conflicts=("${pkgname::-4}")
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
 source_x86_64=("$url/releases/download/v${pkgver}/${pkgname::-4}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$url/releases/download/v${pkgver}/${pkgname::-4}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums=('942b85fc54bcf0f654b986d4808027e00ba34be63bc21cb7f525e9f2ff54f884')
-sha256sums_x86_64=('e8f892598baaa18b4e2481881ccfe191720bea53e4517c1c0dd568d952488779')
-sha256sums_aarch64=('a31b096a6a3a9e62433e5a82494b8ef5ba4899d0f8f8f26d398ddf5ecbae84e1')
+sha256sums=('cd93abf6c3afb0a1a2617485795f99093ad19928f39a93f1f858023aed9abf06')
+sha256sums_x86_64=('44c677ca6dc1e2e129700e85bea808fe68ed2ae56be90665410aa902ea98f3e9')
+sha256sums_aarch64=('daf596a78d77ddcf759cf9672e8f6e4e0b056055f79a849ecdf753b9117b1767')
 validpgpkeys=()
 
 package() {
