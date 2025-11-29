@@ -2,7 +2,7 @@
 pkgname=deadlock-modmanager-git
 _pkgname=${pkgname%-git}
 pkgdesc='A mod manager for the Valve game Deadlock (latest git build)'
-pkgver=0.10.1.r41.ge7160f0
+pkgver=0.10.1.r42.g216944d
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/deadlock-mod-manager/deadlock-mod-manager"
