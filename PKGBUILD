@@ -1,5 +1,5 @@
 pkgname=mathematica-documentation-en
-pkgver=14.2.0
+pkgver=14.3.0
 pkgrel=1
 pkgdesc="Mathematica Documentation (en)"
 url="http://www.wolfram.com/mathematica/"
@@ -7,7 +7,7 @@ license=("proprietary")
 arch=('any')
 depends=('mathematica-light')
 source=("local://WLDocs_${pkgver}_LIN.sh")
-sha256sums=('a15bc3103c1af632a054d06faa4f3b7f3d8cab3dc7224670de65fd467c6e0526')
+sha256sums=('863eb6d347d7f00f644f6adb46fa1044ebc9815383da6236569bb61fb2297848')
 
 prepare() {
     warning "Building Mathematica Documentation (en) takes around 10GiB of space for 'makepkg'."
