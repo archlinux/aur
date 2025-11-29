@@ -1,32 +1,35 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Andreas Hauser <andy-aur@splashground.de>
 # Contributor: Beej Jorgensen <beej@beej.us>
 
 pkgname=fann
 pkgver=2.2.0
-pkgrel=5
-pkgdesc='Fast artificial neural network library'
-url='http://leenissen.dk/fann/'
+pkgrel=6
+pkgdesc='Fast Artificial Neural Network Library'
+url='https://leenissen.dk/fann/'
 arch=('x86_64')
-license=('LGPL2.1')
-depends=('glibc')
-makedepends=('cmake')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/libfann/fann/archive/${pkgver}.tar.gz")
+license=('LGPL-2.0-or-later')
+depends=(
+    'glibc')
+makedepends=(
+    'cmake')
+source=("https://github.com/libfann/fann/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('f31c92c1589996f97d855939b37293478ac03d24b4e1c08ff21e0bd093449c3c')
 
 build() {
-    cd "${pkgname}-${pkgver}"
-    
-    cmake \
+    cmake -B build -S "${pkgname}-${pkgver}" \
+        -G 'Unix Makefiles' \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -Wno-dev \
-        .
-        
-    make
+        -DCMAKE_POLICY_VERSION_MINIMUM:STRING='3.5' \
+        -Wno-dev
+    cmake --build build
+}
+
+check() {
+    ctest --test-dir build --output-on-failure
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
-    
-    make DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
 }
