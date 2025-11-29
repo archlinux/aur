@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=keep-me-awake
 _app_id=de.swsnr.keepmeawake
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Inhibit screensaver and suspend in GNOME"
 arch=('x86_64' 'aarch64')
@@ -18,12 +18,12 @@ makedepends=(
   'just'
 )
 source=("git+https://codeberg.org/swsnr/keep-me-awake.git#tag=v$pkgver")
-sha256sums=('54772659abb27c6535d4ee430487a77511c05b927263545d95e590cccc7d5c7d')
+sha256sums=('e921a3f23cbaf3e4f463bb35f49e291a90037bdcadad95f0a9f8e87a9aa65489')
 
 prepare() {
   cd "$pkgname"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
