@@ -2,7 +2,7 @@
 
 pkgname=waybar-temp-fan-power
 pkgver=0.14.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors (with temperature module fan and power support)'
 arch=('x86_64')
 url="https://github.com/umtdg/Waybar"
@@ -45,6 +45,7 @@ makedepends=(
     'glib2-devel' # gdbus-codegen
     'scdoc' # For generating manpages
     'wayland-protocols'
+    'git'
 )
 backup=(
     etc/xdg/waybar/config.jsonc
@@ -55,8 +56,8 @@ optdepends=(
 )
 conflicts=('waybar')
 provides=('waybar')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/umtdg/Waybar/archive/$pkgver.tar.gz")
-b2sums=('4c4558de389a6bbd3b3e8416745c8689721635bdbd4656969b1ecd6b95e2fea59ab74cfcccc65f83644a731ccbb80f16e4cf5dce66882fb38afbf672f5ab64ed')
+source=("Waybar-$pkgver::git+https://github.com/umtdg/waybar#branch=temperature-fan-power")
+sha256sums=("SKIP")
 
 build() {
     cd "Waybar-$pkgver"
