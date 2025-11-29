@@ -1,6 +1,6 @@
 # Maintainer: qr243vbi
 pkgname=(nekobox nekobox-core)
-pkgver=5.8.12
+pkgver=5.8.13
 pkgrel=1
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'qt6-grpc')
 makedepends+=('cmake' 'gendesk' 'go' 'protobuf' 'qt6-tools' 'vulkan-headers' 'cpio' 'upx')
 source=("https://github.com/qr243vbi/nekobox/releases/download/${pkgver}/nekobox-unified-source-${pkgver}.tar.xz")
-sha256sums=("a10440cfea8a778fe84c41933b81743805dafb31f9c01d4425cfddecfd7e1498")
+sha256sums=("37be1037edb4b8046a0632fcc6564842a7babab9cfe5ec7ea65af01b02226d48")
 
 
 prepare() {
@@ -67,6 +67,6 @@ package_nekobox() {
     cp *.js "${pkgdir}/usr/lib/NekoBox"
     cp -RfvT "res/public" "${pkgdir}/usr/lib/NekoBox/public"
     echo "${pkgver}" > "${pkgdir}/usr/lib/NekoBox/version.txt"
-    install -Dm644 res/public/On.png "${pkgdir}/usr/share/pixmaps/nekobox.png"
+    install -Dm644 res/public/icon.png "${pkgdir}/usr/share/pixmaps/nekobox.png"
 }
 
