@@ -1,0 +1,13 @@
+pkgbase = flatpak-extract
+	pkgdesc = a CLI app for extracting .flatpak files
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/faveoled/flatpak-extract
+	arch = x86_64
+	license = MIT
+	depends = python
+	depends = ostree
+	source = https://raw.githubusercontent.com/faveoled/flatpak-extract/6b3d9df404b95998530de82c7a59d7a20228a5f1/local/flatpak-extract/flatpak-extract.py
+	sha256sums = 7a37aa5b953ca192935e7bfad2f95b9b51458978ec4116e489f07288db6f283b
+
+pkgname = flatpak-extract
