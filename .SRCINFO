@@ -1,0 +1,15 @@
+pkgbase = minisystool
+	pkgdesc = MiniSysTool – simple GTK tool
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/sidegemninja/minisystool.git
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = gcc
+	makedepends = pkgconf
+	depends = gtk3
+	source = minisystool::git+https://github.com/sidegemninja/minisystool.git
+	md5sums = SKIP
+
+pkgname = minisystool
