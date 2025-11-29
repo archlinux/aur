@@ -14,6 +14,6 @@ pkgbase = qtcreator-qodeassist-plugin-bin
 	conflicts = qodeassist
 	conflicts = QodeAssist
 	source = qtcreator-qodeassist-plugin-0.9.3.7z::https://github.com/Palm1r/QodeAssist/releases/download/v0.9.3/QodeAssist-v0.9.3-QtC18.0.0-Linux-x64.7z
-	sha256sums = 965507ddd9ed5be5a5c7334e04043907527e367b0b806c0e9522a29769a85bac
+	sha256sums = 57fe7b8f09ac13833ae535ba2839c2f56129daae0d54c71ede971cf7e1018aca
 
 pkgname = qtcreator-qodeassist-plugin-bin

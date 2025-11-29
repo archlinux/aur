@@ -14,7 +14,7 @@ depends=("qtcreator>=${_qtcreatorver}")
 provides=("$_pkgname" 'qodeassist' 'QodeAssist')
 conflicts=("$_pkgname" 'qodeassist' 'QodeAssist')
 source=("${_pkgname}-$pkgver.7z::${url}/releases/download/v${pkgver}/QodeAssist-v${pkgver}-QtC$_qtcreatorver-Linux-x64.7z")
-sha256sums=('965507ddd9ed5be5a5c7334e04043907527e367b0b806c0e9522a29769a85bac')
+sha256sums=('57fe7b8f09ac13833ae535ba2839c2f56129daae0d54c71ede971cf7e1018aca')
 
 package() {
     install -D "${srcdir}/lib/qtcreator/plugins/libQodeAssist.so" "${pkgdir}/usr/lib/qtcreator/plugins/libQodeAssist.so"
