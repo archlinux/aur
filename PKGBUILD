@@ -4,7 +4,7 @@ _name1=logfire-api
 _name0=logfire
 pkgbase=python-$_name0
 pkgname=(python-$_name1 python-$_name0)
-pkgver=4.14.2
+pkgver=4.15.1
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/logfire'
@@ -84,7 +84,7 @@ checkdepends=('python-httpx'
               # 'python-openinference-instrumentation-litellm'
               'litellm')
 source=("$_name0-$pkgver::git+$url.git#tag=v$pkgver")
-sha256sums=('b534a73c26821e499808b0ef17538377e3d862a29b68e207d11de5c6db0b0b9b')
+sha256sums=('aeba41894e2b2ae2a735190f6a28bc1d0eea43389da8c58a85b514d4e6a52c81')
 
 prepare(){
   cd "$srcdir"/$_name0-$pkgver
@@ -100,6 +100,7 @@ build() {
 check() {
   local pytest_options=(
     -vv
+    --disable-warnings
     -n auto
     --dist=loadgroup
     # Test for Logfire developers
@@ -108,18 +109,14 @@ check() {
     --ignore tests/otel_integrations/test_celery.py
     --ignore tests/otel_integrations/test_mysql.py
     --ignore tests/otel_integrations/test_redis.py
-    # Failed
+    # Fails if there is others packages supported by opentelemetry-instrumentation
     --deselect tests/test_cli.py::test_inspect
-    # Need to update packages
-    --deselect tests/otel_integrations/test_pydantic_ai_mcp.py::test_pydantic_ai_mcp_sampling
-    --deselect tests/otel_integrations/test_langchain.py::test_instrument_langchain
+    # Need openinference-instrumentation-litellm package
+    --deselect tests/otel_integrations/test_litellm.py::test_litellm_instrumentation
+    --deselect tests/test_logfire_api.py::test_runtime[with_logfire]
   )
   cd "$srcdir"/$_name0-$pkgver
-  python -m venv --system-site-packages test-env
-  test-env/bin/pip install -U openinference-instrumentation-litellm
-  test-env/bin/python -m installer $_name1/dist/*.whl
-  test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest "${pytest_options[@]}" tests
+  PYTHONPATH=$PWD:$PWD/$_name1 pytest "${pytest_options[@]}" tests
 }
 
 package_python-logfire-api() {
