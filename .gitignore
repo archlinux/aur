@@ -6,5 +6,4 @@
 !.shellcheckrc
 # actual package
 !PKGBUILD
-!0001-backslash.patch
 !.SRCINFO

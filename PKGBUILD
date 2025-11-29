@@ -16,15 +16,15 @@ checkdepends=(
 )
 options=(!emptydirs purge)
 source=("https://cpan.metacpan.org/authors/id/E/EV/EVO/String-Escape-${pkgver}.tar.gz"
-        '0001-backslash.patch')
+        'https://sources.debian.org/data/main/libs/libstring-escape-perl/2010.002-3/debian/patches/backslash.patch')
 b2sums=('d012323bdf10b9c8e47c90dfe1bbb064e09c7a0b00c469d9285d8a9a7ad1ee80b1d30b1fff1d5218d4491a36780174526273775dac790db2f22c0a22cc01fb14'
         'ec04c8d074159fbf7b8f0bb79c674ccec6b270a3804b80eabebcc5f6bbcee3ce526aef281ac0da85bc7babdae412e36210b5321c4ebc47123ad7f211a4c8e2a4')
 
 prepare() {
   cd "${srcdir}/String-Escape-${pkgver}"
 
-  # From https://sources.debian.org/patches/libstring-escape-perl/2010.002-3/backslash.patch/
-  patch -p1 -i "${srcdir}/0001-backslash.patch"
+  # Description: escape a double quote in a regexp
+  patch -p1 -i "${srcdir}/backslash.patch"
 }
 
 build() {
