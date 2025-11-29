@@ -1,0 +1,22 @@
+--- a/compiler/src/main.rs
++++ b/compiler/src/main.rs
+@@ -179,7 +179,7 @@ mod hip {
+             #[cfg(windows)]
+             let lib_name = "amdhip64_6.dll\0";
+             #[cfg(unix)]
+-            let lib_name = "libamdhip64.so.6\0";
++            let lib_name = "libamdhip64.so\0";
+             let library = unsafe { libloading::Library::new(lib_name)? };
+             Ok(Self(library))
+         }
+--- a/ext/hip_runtime-sys/build.rs
++++ b/ext/hip_runtime-sys/build.rs
+@@ -13,7 +13,7 @@ fn main() -> Result<(), VarError> {
+             println!("cargo:rustc-link-search=native=C:\\Windows\\System32");
+         };
+     } else {
+-        println!("cargo:rustc-link-lib=dylib:+verbatim=libamdhip64.so.6");
++        println!("cargo:rustc-link-lib=dylib:+verbatim=libamdhip64.so");
+         println!("cargo:rustc-link-search=native=/opt/rocm/lib/");
+     }
+     Ok(())
