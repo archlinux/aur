@@ -1,4 +1,4 @@
-# Maintainer: Thomas Baag <aur@spam.b2ag.de>
+# Maintainer: Erzkanzler <erzkanzler@braincalibration.de>
 pkgname=ballerburg
 pkgver=1.2.3
 pkgrel=1
