@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie (yochananmarqos) <mark.wagie@proton.me>
 
 pkgname=xapp-symbolic-icons
-pkgver=1.0.2
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="A set of symbolic icons for GTK applications and projects"
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=(
 )
 
 source=("git+https://github.com/xapp-project/xapp-symbolic-icons.git#tag=${pkgver}")
-sha256sums=('cdf91c4d793b5de88cbc806d86d9fb1a0ee6dbd398a2fabf7fe59cd34e5a1f0a')
+sha256sums=('6a9c1c4ed65648c32121658d180762551feea4562794599f66cccde73bef8415')
 
 build() {
   arch-meson "$pkgname" build
