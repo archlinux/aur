@@ -1,6 +1,6 @@
 pkgbase = python-pssh
 	pkgdesc = Parallel versions of the openssh tools ssh, scp, rsync, nuke, slurp
-	pkgver = 2.3.5
+	pkgver = 2.3.6
 	pkgrel = 13
 	url = https://github.com/lilydjwg/pssh
 	changelog = python-pssh.changelog
@@ -12,7 +12,7 @@ pkgbase = python-pssh
 	makedepends = python-wheel
 	depends = openssh
 	depends = python
-	source = https://github.com/lilydjwg/pssh/archive/refs/tags/v2.3.5.tar.gz
-	sha256sums = 97277f9d08b512c6a1b6dc5eac9677f34038096bae24484452d326137ba0d080
+	source = https://github.com/lilydjwg/pssh/archive/refs/tags/v2.3.6.tar.gz
+	sha256sums = dfe1b898e483377213b44b8316a81fd6e1bbe427e1607e76be18366071c04c85
 
 pkgname = python-pssh
