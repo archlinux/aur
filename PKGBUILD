@@ -9,6 +9,7 @@ arch=('any')
 license=('GPL')
 depends=('clang')
 provides=('cc' 'cxx')
+conflicts=('clangbincc')
 install="${pkgname}.install"
 source=("${pkgname}.hook")
 b2sums=('191b062389ce98dcab8d943cb77363d811af8e5c616d4de41765619fe21ca9d4523db396c75454d29a24ec930a272e624844f8f35a39de370ad06b2d2be2dc70')
