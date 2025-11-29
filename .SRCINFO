@@ -1,8 +1,8 @@
 pkgbase = fcitx5-hazkey
 	pkgdesc = Japanese input method for fcitx5, powered by azooKey engine
 	pkgver = 0.2.0
-	pkgrel = 2
-	url = https://github.com/7ka-Hiira/fcitx5-hazkey
+	pkgrel = 4
+	url = https://hazkey.hiira.dev/
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
@@ -10,9 +10,12 @@ pkgbase = fcitx5-hazkey
 	makedepends = swift-language
 	depends = fcitx5>=5.0.4
 	depends = qt6-base
-	depends = libprotobuf-lite.so=33.0.0-64
+	depends = libprotobuf-lite.so
 	optdepends = hazkey-zenzai: Zenzai neural conversion support
-	provides = hazkey-server
+	provides = hazkey-server=0.2.0
+	provides = hazkey-settings=0.2.0
+	conflicts = hazkey-server
+	conflicts = hazkey-settings
 	source = https://github.com/7ka-Hiira/fcitx5-hazkey/archive/refs/tags/0.2.0.tar.gz
 	source = azooKey_dictionary_storage-v3.0.1.tar.gz::https://codeload.github.com/azooKey/azooKey_dictionary_storage/zip/refs/tags/v3.0.1
 	source = azooKey_emoji_dictionary_storage-08f82252fb90ef8f0949a7e3c554e9e1787ce121::https://codeload.github.com/azooKey/azooKey_emoji_dictionary_storage/zip/08f82252fb90ef8f0949a7e3c554e9e1787ce121
