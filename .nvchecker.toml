@@ -1,0 +1,4 @@
+[python-sorl-thumbnail]
+source = "git"
+git = "https://github.com/jazzband/sorl-thumbnail.git"
+prefix = "v"
