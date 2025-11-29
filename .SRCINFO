@@ -1,12 +1,10 @@
 pkgbase = heidisql
-	pkgdesc = Metapackage for HeidiSQL - wrapper script (install a provider of your choice for heidisql-client)
+	pkgdesc = Metapackage for HeidiSQL (install a provider of your choice for heidisql-client)
 	pkgver = 12.13.1.1
-	pkgrel = 15
+	pkgrel = 16
 	url = http://www.heidisql.com/
-	arch = x86_64
+	arch = any
 	license = GPL-2.0
 	depends = heidisql-client
-	source = heidisql
-	sha256sums = 46ef8b2c4207d88dd732b70dbc6c012ab0dd7b40d3229227ecfee9153eff3feb
 
 pkgname = heidisql
