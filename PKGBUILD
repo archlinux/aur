@@ -1,27 +1,19 @@
 # Maintainer: snafu
+# Contributor: Hyacinthe Cartiaux <hyacinthe dot cartiaux at free dot fr>
 pkgname=env-modules
 pkgver=5.6.0
-pkgrel=1
-epoch=
+pkgrel=2
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
 arch=('i686' 'x86_64')
-url="https://sourceforge.net/projects/modules/"
-license=('GPL2')
-groups=()
-depends=('tcl>=7.4' 'procps')
+url="https://envmodules.io/"
+license=('GPL-2.0')
+depends=('tcl>=8.5' 'procps')
 makedepends=('less')
 checkdepends=('dejagnu')
-optdepends=('nagelfar''python-sphinx')
-provides=()
-conflicts=(env-modules)
-replaces=(env-modules)
-options=()
+optdepends=('nagelfar' 'python-sphinx')
 install=env-modules.install
-changelog=
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/envmodules/modules/archive/v${pkgver}.tar.gz")
-noextract=()
-sha256sums=('41b60fd0b8a5b996fa927f840cef1234cf54f28eb0168b633317927b7371028e')
-validpgpkeys=()
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/envmodules/modules/releases/download/v${pkgver}/modules-${pkgver}.tar.gz")
+sha256sums=('9dd78f1543012acd3a1a14ba86dc1dca8f7d176396ea3f0027a92dcf5ff2057c')
 
 # Install locations:
 install_prefix=/usr
