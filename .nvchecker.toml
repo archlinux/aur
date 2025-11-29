@@ -1,0 +1,3 @@
+[python-drf-spectacular]
+source = "git"
+git = "https://github.com/tfranzel/drf-spectacular.git"
