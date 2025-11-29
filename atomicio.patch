@@ -1,0 +1,66 @@
+diff --git a/atomicio.c b/atomicio.c
+index 3930a07..8a15e6c 100644
+--- a/atomicio.c
++++ b/atomicio.c
+@@ -37,11 +37,7 @@
+  * ensure all of data on socket comes through. f==read || f==write
+  */
+ ssize_t
+-atomicio(f, fd, _s, n)
+-	ssize_t (*f) ();
+-	int fd;
+-	void *_s;
+-	size_t n;
++atomicio(ssize_t (*f)(int, void *, size_t), int fd, void *_s, size_t n)
+ {
+ 	char *s = _s;
+ 	ssize_t res, pos = 0;
+diff --git a/client.c b/client.c
+index 0a0a022..a898dec 100644
+--- a/client.c
++++ b/client.c
+@@ -298,11 +298,11 @@ client_sendmsg(struct client *cli, struct msg *msg)
+ 		return (-1);
+ 
+ 	xbuflen = htonl(buflen);
+-	if (atomicio(write, cli->s, &xbuflen, sizeof(xbuflen)) !=
++	if (atomicio((ssize_t (*)(int, void *, size_t))write, cli->s, &xbuflen, sizeof(xbuflen)) !=
+ 	    sizeof(xbuflen))
+ 	    return (-1);
+ 
+-	if (atomicio(write, cli->s, buf, buflen) == buflen)
++	if (atomicio((ssize_t (*)(int, void *, size_t))write, cli->s, buf, buflen) == buflen)
+ 		return (0);
+ 
+ 	return (-1);
+diff --git a/trickledu.c b/trickledu.c
+index c4c4a89..3a4fe0a 100644
+--- a/trickledu.c
++++ b/trickledu.c
+@@ -153,11 +153,11 @@ trickled_sendmsg(struct msg *msg)
+ 		return (-1); 	/* XXX fail? */
+ 
+ 	xbuflen = htonl(buflen);
+-	if (atomicio(libc_write, trickled_sock, &xbuflen, sizeof(xbuflen)) !=
++	if (atomicio((ssize_t (*)(int,  void *, size_t))libc_write, trickled_sock, &xbuflen, sizeof(xbuflen)) !=
+ 	    sizeof(xbuflen))
+ 	    return (-1);
+ 
+-	if (atomicio(libc_write, trickled_sock, buf, buflen) == buflen)
++	if (atomicio((ssize_t (*)(int,  void *, size_t))libc_write, trickled_sock, buf, buflen) == buflen)
+ 		return (0);
+ 
+  fail:
+diff --git a/util.h b/util.h
+index b00059c..2b44451 100644
+--- a/util.h
++++ b/util.h
+@@ -41,7 +41,7 @@
+ #define MAX(a, b) ((a) > (b) ? (a) : (b))
+ #define MIN(a, b) ((a) < (b) ? (a) : (b))
+ 
+-ssize_t    atomicio(ssize_t (*)(), int, void *, size_t);
++ssize_t    atomicio(ssize_t (*f)(int, void *, size_t), int, void *, size_t);
+ char      *get_progname(char *);
+ 
+ 
