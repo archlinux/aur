@@ -4,7 +4,7 @@
 
 pkgbase=uutils-coreutils-git
 pkgname=($pkgbase coreutils-uutils)
-pkgver=0.4.0.r191.gb9f97d4
+pkgver=0.4.0.r216.g5be7f83
 pkgrel=1
 pkgdesc="Rust rewrite of coreutils"
 url=https://github.com/uutils/coreutils
@@ -17,21 +17,21 @@ options=(zipman)
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 source=("${pkgname%-git}::git+${url}.git"
-nix-no-unwrap.patch::https://github.com/nix-rust/nix/commit/172e1d94cae6f6a5c5815917b4d0ff5151f71527.patch
-nix-rust0.30.1.tar.gz::https://github.com/nix-rust/nix/archive/refs/tags/v0.30.1.tar.gz
+"libc0.2.177.tar.gz::https://github.com/rust-lang/libc/archive/refs/tags/0.2.177.tar.gz"
 )
-sha256sums=('SKIP'
-            '1ee6ca44c4c4f4f8a0874c6ff09351d48de554b5c29791fd903626523ab31c5c'
-            '31742bef74cad04c8bd8c9a7301323e3df35847f5b776024221cbd2060cd5ed7')
+sha256sums=('SKIP' 'dd77fdde7bc6b8a71f41f88ccb82558ef826c5ce3ebc7f7ecbc3ccd24cd5d3c2')
 pkgver() {
   cd ${pkgname%-git}
   git describe --long --tags --abbrev=7 | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare(){
-  echo -e "[patch.crates-io]\nnix = { path = \"../nix-0.30.1\" }" >> ${pkgname%-git}/Cargo.toml
-  cd nix-0.30.1
-  git apply -v -p1 ../nix-no-unwrap.patch
+  # glibc changed baud consts...
+  (cd ${pkgname%-git} && cargo update -p libc) # inject patched libc to nix
+  echo -e "[patch.crates-io]\nlibc = { path = \"../libc-0.2.177\" }" >> ${pkgname%-git}/Cargo.toml
+  for _b in 0 50 75 110 134 150 200 300 600 1200 1800 2400 4800 9600 19200 38400 57600 115200 230400 460800 500000 576000 921600 1000000 1152000 1500000 2000000 2500000 3000000 3500000 4000000;do
+    sed -i "s/pub const B${_b}: crate::speed_t =.*;/pub const B${_b}: crate::speed_t = ${_b};/" libc-0.2.177/src/unix/linux_like/linux/gnu/b64/x86_64/mod.rs
+  done
 }
 # Packaging guideline cause double build.
 export RUSTONIG_DYNAMIC_LIBONIG=1

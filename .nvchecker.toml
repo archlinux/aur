@@ -1,3 +1,0 @@
-[uutils-coreutils-git]
-source = "git"
-git = "https://github.com/uutils/coreutils.git"
