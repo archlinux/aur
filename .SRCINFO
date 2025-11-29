@@ -1,7 +1,7 @@
 pkgbase = overlayroot
 	pkgdesc = Overlay the root filesystem with a tmpfs filesystem.
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hilderingt/archlinux-overlayroot
 	arch = any
 	license = GPLv3
