@@ -8,15 +8,21 @@ pkgrel=2
 pkgdesc="Micropolis, Unix version of SimCity 1 rewrited in Java"
 arch=("any")
 url="https://github.com/jason17055/micropolis-java"
-license=("custom:GPL3")
+license=("custom:GPL-3.0")
 makedepends=("apache-ant" "java-runtime>=7")
-depends=("java-environment>=7")
+depends=("java-environment>=8")
 provides=("micropolisj" "micropolis-java-git" "micropolisj-git")
 source=("git+https://github.com/jason17055/micropolis-java.git"
 	"LICENSE"
 	"0001-Update-build.xml.patch"
 	"micropolis-java.sh"
 	"micropolis-java.desktop")
+sha256sums=('SKIP'
+            '61c025f07597bc0527bdaef8b04ba1709d83b5e4e7b1e5c409440a5955e7a0df'
+            '93d3311d0152c2d9df1554c6e86ca96743067375f017beb2cc41ee0c21a5d76a'
+            'b4d8007fda696c22cf161553e952beb05a1d73a4830c558ac8e249d5b583d2d0'
+            '7de7124283566f8a6e6d7dbd68f9c3859a7d3efa2fab5c9ef1fa8379df928fda')
+
 
 pkgver() {
 	cd "${pkgname}"
@@ -58,8 +64,4 @@ package(){
 		"${pkgdir}/usr/share/applications/micropolis-java.desktop"
 }
 
-md5sums=('SKIP'
-         'b95118d1c60c6649ab9403cbaa4abb86'
-	 'e86ada5ce25f6016597844816ba41379'
-         '666a4f5a7641791379f005b26e4851ff'
-         '5d0667a3049111b4e7e9f07f1992bc01')
+
