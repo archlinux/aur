@@ -1,9 +1,9 @@
 *
 # dev tools
+!.editorconfig
 !.gitignore
 !.nvchecker.toml
 !.shellcheckrc
-!.editorconfig
 # actual package
 !PKGBUILD
 !.SRCINFO
