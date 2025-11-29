@@ -1,20 +1,22 @@
 pkgbase = nuclei-openocd
 	pkgdesc = nuclei-openocd 是 Nuclei Studio IDE 的调试工具。
-	pkgver = 2025.02
+	pkgver = 2025.10
 	pkgrel = 1
-	url = https://www.nucleisys.com/download.php
+	url = https://github.com/riscv-mcu/riscv-openocd
 	arch = x86_64
-	license = LicenseRef-unknow
-	makedepends = libftdi-compat
-	makedepends = libusb-compat
-	makedepends = hidapi
-	makedepends = libudev.so
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = capstone
+	depends = glibc
+	depends = hidapi
+	depends = jimtcl
+	depends = libftdi-compat
+	depends = libjaylink
+	depends = libusb
 	optdepends = nucleistudioide: Nuclei Studio IDE 是基于 MCU Eclipse IDE 开发的一款针对芯来公司处理器核产品的集成开发环境工具，用于 RISC-V 开发继承了 Eclipse IDE 平台的各种优势。
 	optdepends = jlink-software-and-documentation: Segger JLink software & documentation pack for Linux
 	optdepends = embedded-studio-risc-v: Segger Embedded Studio for RISC-V
-	options = !strip
-	options = !debug
-	source = https://download.nucleisys.com/upload/files/toochain/openocd/nuclei-openocd-2025.02-linux-x64.tgz
-	sha256sums = acb11b3d856394479b466dcf833116b36f9adff660a54c0f02ae5516c2a10b09
+	source = nuclei-openocd::git+https://github.com/riscv-mcu/riscv-openocd.git#branch=nuclei/2025.10
+	sha256sums = SKIP
 
 pkgname = nuclei-openocd
