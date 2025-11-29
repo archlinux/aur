@@ -19,6 +19,7 @@ build() {
   export GOBIN="${srcdir}/bin"
   mkdir -p "${GOPATH}" "${GOMODCACHE}" "${GOCACHE}" "${GOBIN}"
   go install -buildmode=pie -trimpath -mod=readonly -ldflags="-s -w" .
+  chmod -R u+w "${GOPATH}" "${GOMODCACHE}" "${GOCACHE}"
 }
 
 package() {
