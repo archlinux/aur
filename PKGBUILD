@@ -6,7 +6,7 @@ arch=('i686' 'x86_64')
 url="https://kst-plot.kde.org"
 license=('GPL-2.0')
 depends=('hdf5' 'gsl' 'qt5-base' 'qt5-svg' 'muparser' 'cfitsio' 'libtiff' 'libmatio' 'netcdf-cxx')
-makedepends=('git' 'cmake' 'qt5-tools' 'subversion' 'pkgconf')
+makedepends=('git' 'cmake' 'qt5-tools')
 source=("git+https://invent.kde.org/graphics/kst-plot.git#tag=v2.1-2024-10-20"
         "cmake4.patch"
         "hdf5_include.patch"
