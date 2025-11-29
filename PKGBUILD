@@ -2,19 +2,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-dbd-csv'
-pkgver='0.60'
+pkgver='0.62'
 pkgrel='1'
 pkgdesc="DBI driver for CSV files"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-dbi>=0' 'perl-sql-statement>=1.405' 'perl-text-csv-xs>=1.01' 'perl>=5.8.1')
+depends=('perl-dbi' 'perl-sql-statement>=1.405' 'perl-text-csv-xs>=1.01' 'perl>=5.8.1')
 makedepends=('perl-dbi>=1.628')
 url='https://metacpan.org/release/DBD-CSV'
-source=('http://search.cpan.org/CPAN/authors/id/H/HM/HMBRAND/DBD-CSV-0.60.tgz')
-md5sums=('bd3e3adc710d67b34ad4501791d4c49d')
-sha512sums=('d5ccf984022001e6a51301107a807a312885dabae243f0d2418265a1672b4c96b173ebf0cf2b30a194fe115ea026c3e23c97b11c607c8efe3902257d99a00089')
-_distdir="DBD-CSV-0.60"
+source=('http://search.cpan.org/CPAN/authors/id/H/HM/HMBRAND/DBD-CSV-0.62.tgz')
+md5sums=('3d03d2540028eaece5a7e3594903e5e4')
+sha512sums=('088b182c502725ea63ed5d7d618560bbdb58ce4dd37e5b536c9ba88b4b5c5ee79f20026512950a009b6d82f0db83a870588af2ab63d46bf9cfa88094133b4239')
+_distdir="DBD-CSV-0.62"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
