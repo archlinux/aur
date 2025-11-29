@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgname=jellyfin-media-player-git
-pkgver=r1893.811ca84
+pkgver=r1900.e8e97f1
 pkgrel=1
 pkgdesc='Jellyfin Desktop Client'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/jellyfin/jellyfin-media-player'
 provides=('jellyfin-media-player')
 conflicts=('jellyfin-media-player')
 depends=('mpv' 'mpvqt' 'libcec' 'sdl2' 'p8-platform' 'protobuf' 'qt6-webengine' 'qt6-declarative')
-makedepends=('cmake' 'git' 'python')
+makedepends=('cmake' 'git' 'ninja' 'python')
 source=('git+https://github.com/jellyfin/jellyfin-media-player.git')
 sha256sums=('SKIP')
 
@@ -25,12 +25,12 @@ build() {
   mkdir build
   cmake \
     -B build \
-    -DCMAKE_BUILD_TYPE='Debug' \
+    -G Ninja \
+    -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX='/usr/' \
     -DCMAKE_SKIP_RPATH=1 \
     -DCHECK_FOR_UPDATES=OFF \
     -DUSE_STATIC_MPVQT=OFF \
-    -DQTROOT=build/qt \
     -Wno-dev
   cmake --build build
 }
