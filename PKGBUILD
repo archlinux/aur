@@ -5,11 +5,11 @@
 
 pkgname=fann-git
 pkgver=2.2.0.r189.g3907e1b
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast Artificial Neural Network Library (git version)'
 url='https://leenissen.dk/fann/'
 arch=('x86_64')
-license=('LGPL-2.0-or-later')
+license=('LGPL-2.1-or-later')
 depends=(
     'gcc-libs'
     'glibc')
