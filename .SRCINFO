@@ -1,6 +1,6 @@
 pkgbase = python-luwen
 	pkgdesc = Python package for the tenstorrent system interface library
-	pkgver = 0.7.18
+	pkgver = 0.7.19
 	pkgrel = 1
 	url = https://github.com/tenstorrent/luwen
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = python-luwen
 	makedepends = maturin
 	makedepends = python-installer
 	makedepends = protobuf
-	provides = python-luwen=0.7.16
+	provides = python-luwen=0.7.18
 	source = luwen::git+https://github.com/tenstorrent/luwen.git
 	sha256sums = SKIP
 
