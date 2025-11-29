@@ -1,7 +1,7 @@
 pkgbase = waybar-lyric
 	pkgdesc = A waybar module for song lyric
 	pkgver = 0.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nadim147c/waybar-lyric
 	arch = x86_64
 	license = AGPL-3.0-only
