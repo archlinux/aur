@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-10.0-bin
 	pkgver = 10.0.0.sdk100
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
@@ -40,7 +40,7 @@ pkgname = dotnet-runtime-10.0-bin
 	depends = libunwind
 	depends = zlib
 	depends = openssl
-	optdepends = lttng-ust: CoreCLR tracing
+	optdepends = lttng-ust2.12: CoreCLR tracing
 	provides = dotnet-runtime=10.0.0
 	provides = dotnet-runtime-10.0
 	conflicts = dotnet-runtime=10.0.0

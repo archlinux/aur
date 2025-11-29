@@ -15,19 +15,19 @@ pkgver=10.0.0.sdk100
 _runtimever=10.0.0
 _sdkver=10.0.100
 _short_ver=10.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.microsoft.com/net/core'
 license=('MIT')
 options=('staticlibs')
 source=('dotnet.sh')
-source_x86_64=("https://builds.dotnet.microsoft.com/dotnet/Sdk/${_sdkver}/dotnet-sdk-${_sdkver}-linux-x64.tar.gz")
 source_armv7h=("https://builds.dotnet.microsoft.com/dotnet/Sdk/${_sdkver}/dotnet-sdk-${_sdkver}-linux-arm.tar.gz")
 source_aarch64=("https://builds.dotnet.microsoft.com/dotnet/Sdk/${_sdkver}/dotnet-sdk-${_sdkver}-linux-arm64.tar.gz")
+source_x86_64=("https://builds.dotnet.microsoft.com/dotnet/Sdk/${_sdkver}/dotnet-sdk-${_sdkver}-linux-x64.tar.gz")
 sha512sums=('768151c7179fb6a126b3de9cae01e363e8894f6fab384b1e2c5066c2adca4578638983b1b62aea10dd18045e6d6e8f8ea13280481134de94f004a118919b2c06')
-sha512sums_x86_64=('f78dbac30c9af2230d67ff5c224de3a5dbf63f8a78d1c206594dedb80e6909d2cc8a9d865d5105c72c2fd2aa266fc0c6c77dedac60408cbccf272b116bd11b07')
 sha512sums_armv7h=('45f2d7fd05670a5a14fa480889e45920782277575dba0da44c259997d059d64070b40ac7aae9f0c3a3076d9fed5b787854a8abdc2dfdb4783b449c05c1c9b49c')
 sha512sums_aarch64=('24fc2b105ab8484c34213ef57ac4e6a36a6593241f0ebc6cf0a40ec2f5fea2d76de85c4b87b2a53814d194e32ec1288dd5053cd6f52768d79cd0ac948cbf84ea')
+sha512sums_x86_64=('f78dbac30c9af2230d67ff5c224de3a5dbf63f8a78d1c206594dedb80e6909d2cc8a9d865d5105c72c2fd2aa266fc0c6c77dedac60408cbccf272b116bd11b07')
 
 package_dotnet-host-10.0-bin() {
   pkgdesc='A generic driver for the .NET Core Command Line Interface (binary) - .NET 10.0 LTS'
@@ -38,10 +38,11 @@ package_dotnet-host-10.0-bin() {
   )
   conflicts=('dotnet-host')
 
-  install -dm 755 "${pkgdir}"/usr/{bin,lib,share/{dotnet,licenses/dotnet-host-10.0}}
-  cp -dr --no-preserve='ownership' dotnet host "${pkgdir}"/usr/share/dotnet/
+  install -dm 755 "${pkgdir}"/usr/{bin,lib,share/{dotnet,dnx,licenses/dotnet-host-10.0}}
+  cp -dr --no-preserve='ownership' dotnet host dnx "${pkgdir}"/usr/share/dotnet/
   cp -dr --no-preserve='ownership' LICENSE.txt ThirdPartyNotices.txt "${pkgdir}"/usr/share/licenses/dotnet-host-10.0
   ln -sf /usr/share/dotnet/dotnet "${pkgdir}"/usr/bin/dotnet
+  ln -sf /usr/share/dotnet/dnx "${pkgdir}"/usr/bin/dnx
   ln -sf /usr/share/dotnet/host/fxr/"${_runtimever}"/libhostfxr.so "${pkgdir}"/usr/lib/libhostfxr.so
   install -Dm 644 "${srcdir}"/dotnet.sh -t "${pkgdir}"/etc/profile.d/
 }
@@ -57,7 +58,7 @@ package_dotnet-runtime-10.0-bin() {
     'zlib'
     'openssl'
   )
-  optdepends=('lttng-ust: CoreCLR tracing')
+  optdepends=('lttng-ust2.12: CoreCLR tracing')
   provides=("dotnet-runtime=${_runtimever}" "dotnet-runtime-${_short_ver}")
 
   conflicts=("dotnet-runtime=${_runtimever}" "dotnet-runtime-${_short_ver}")
