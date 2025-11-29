@@ -3,7 +3,7 @@
 
 set -u
 pkgname='sflowtool'
-pkgver='6.08'
+pkgver='6.09'
 pkgrel='1'
 pkgdesc='CLI utility and scripts for analyzing sFlow data'
 arch=('i686' 'x86_64')
@@ -15,16 +15,16 @@ makedepends=('automake')
 #_verwatch=('http://www.inmon.com/technology/sflowTools.php' ".*/${pkgname}-\([0-9\.]\+\)\.tar\.gz" 'l')
 _giturl="https://github.com/sflow/${pkgname}"
 #_verwatch=("${_giturl}/releases" "${_giturl#*github.com}/archive/v\(.*\)\.tar\.gz" 'l') #rss
-_verwatch=("${_giturl}/releases.atom" '\s\+<title>sflowtool\sversion\s\([^<]\+\)</title>.*' 'f') #rss
+#_verwatch=("${_giturl}/releases.atom" '\s\+<title>sflowtool\sversion\s\([^<]\+\)</title>.*' 'f') #rss
 _srcdir="${pkgname}-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz::${_giturl}/archive/v${pkgver}.tar.gz"
         #"http://www.inmon.com/bin/${pkgname}-${pkgver}.tar.gz"
         'http://www.inmon.com/bin/sflowutils.tar.gz'
         'LICENSE')
-md5sums=('afd0dd9765a8bfe231dbdb85294b56f7'
+md5sums=('80fe39f7916a8a093b68de4ed870738d'
          '644ef83ca05c9446ebce60302a03a33b'
          'd3dc05048a11e4ca3b5a7940d0552d07')
-sha256sums=('4181744d0dcf34cb78958966002ab4e3f969a68577a94edd4bdc9daeb3ac36d9'
+sha256sums=('8fbf22e5ed5279ba06a9aef50aebc892e109dc6e3c36b420fb086a4e2d4ed901'
             '45f6a0f96bdb6a1780694b9a4ef9bbd2fd719b9f7f3355c6af1427631b311d56'
             '863b86b7a4fc7632cfc3f9ead7e76f6e7751aca8b64030ff97b3b46f991c6482')
 
