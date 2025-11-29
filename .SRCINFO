@@ -13,6 +13,8 @@ pkgbase = litra-autotoggle
 	makedepends = pkg-config
 	depends = hidapi
 	source = litra-autotoggle-0.7.0.tar.gz::https://github.com/timrogers/litra-autotoggle/archive/refs/tags/v0.7.0.tar.gz
+	source = litra-autotoggle.service
 	sha256sums = 9d4b994ab1689f59e62f9fc5a325c4e99840508e1d7455ffaa980893e86531b0
+	sha256sums = 4a0ed4c8ccbd3449ba47a63c26da7c4e2964872aa674fa162c32f4127037a299
 
 pkgname = litra-autotoggle
