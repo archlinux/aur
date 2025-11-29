@@ -11,6 +11,9 @@ while [ "$#" -gt 0 ]; do
 		--gtk2)
 			FORCE_VARIANT="gtk2"
 			;;
+		--qt5)
+			FORCE_VARIANT="qt5"
+			;;
 		--qt6)
 			FORCE_VARIANT="qt6"
 			;;
@@ -21,12 +24,19 @@ while [ "$#" -gt 0 ]; do
 	shift 1
 done
 
-# Prefer GTK2, fallback to Qt6, otherwise use the default binary
+# Prefer GTK2, fallback to Qt6, then Qt5, otherwise use the default binary
 if [ "$FORCE_VARIANT" = "gtk2" ]; then
 	if [ -x "$HS_DIR/heidisql-gtk2" ]; then
 		EXEC="$HS_DIR/heidisql-gtk2"
 	else
 		echo "Error: --gtk2 requested but heidisql-gtk2 is not installed." >&2
+		exit 1
+	fi
+elif [ "$FORCE_VARIANT" = "qt5" ]; then
+	if [ -x "$HS_DIR/heidisql-qt5" ]; then
+		EXEC="$HS_DIR/heidisql-qt5"
+	else
+		echo "Error: --qt5 requested but heidisql-qt5 is not installed." >&2
 		exit 1
 	fi
 elif [ "$FORCE_VARIANT" = "qt6" ]; then
@@ -40,8 +50,10 @@ elif [ -x "$HS_DIR/heidisql-gtk2" ]; then
 	EXEC="$HS_DIR/heidisql-gtk2"
 elif [ -x "$HS_DIR/heidisql-qt6" ]; then
 	EXEC="$HS_DIR/heidisql-qt6"
+elif [ -x "$HS_DIR/heidisql-qt5" ]; then
+	EXEC="$HS_DIR/heidisql-qt5"
 elif [ ! -x "$EXEC" ]; then
-	echo "Error: No HeidiSQL variant found. Please install heidisql-gtk2 or heidisql-qt6." >&2
+	echo "Error: No HeidiSQL variant found. Please install heidisql-gtk2, heidisql-qt6, or heidisql-qt5." >&2
 	exit 1
 fi
 

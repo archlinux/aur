@@ -1,5 +1,5 @@
 msg() {
-    printf "%b" "\e[1;31m==> WARNING: This package now provides the native Linux version of HeidiSQL. To copy your settings click on File > Import settings and select /home/username/.heidisql/portable_settings.txt\nThere is also the old version available as heidisql-wine.\n\e[0m"
+    printf "%b" "\e[1;31m==> WARNING: This package now provides the native Linux version of HeidiSQL. To copy your settings click on File > Import settings and select ~/.heidisql/portable_settings.txt\nThere is also the old version available as heidisql-wine.\n\e[0m"
 }
 
 post_upgrade() {
