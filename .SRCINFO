@@ -1,0 +1,16 @@
+pkgbase = python-useful-types
+	pkgdesc = Useful types for Python.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/hauntsaninja/useful_types
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-flit-core
+	depends = python
+	depends = python-typing_extensions
+	source = python-useful-types-0.2.1.tar.gz::https://github.com/hauntsaninja/useful_types/archive/v0.2.1.tar.gz
+	sha256sums = eda401a958cfdb041dd4642f002a1cdff321a7e0c6c6ca7b33a7e879235e8370
+
+pkgname = python-useful-types
