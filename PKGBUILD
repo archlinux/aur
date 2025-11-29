@@ -1,4 +1,4 @@
-# Maintainer: SZanko, szanko at protonmail dot com
+# Contributor: SZanko, szanko at protonmail dot com
 
 pkgbase="mailchecker"
 pkgname=(
@@ -10,7 +10,7 @@ pkgname=(
 	#"rust-mailchecker"
 )
 _pkgname="mailchecker"
-pkgver="5.0.9"
+pkgver="6.0.19"
 pkgrel="1"
 pkgdesc='Cross-language email validation. Backed by a database of over 30 000 throwable email domains.'
 arch=('any')
@@ -18,11 +18,10 @@ url='https://github.com/FGRibreau/mailchecker/'
 license=('MIT')
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=(
-  '00499726c1df4da852d99d28ec19957c211adcfb0afcbfed1ed26268daa0826d'
+  'b2c58c93333351df52d53fb44602d38949373ce886907c596d715b24d8c3d01c'
 )
 makedepends=(
 'python-setuptools'
-'nodejs'
 'npm'
 'python-installer'
 'python-build'
@@ -37,8 +36,8 @@ build() {
 
   msg "Building Python 3"
   cd "$srcdir/${_pkgname}-${pkgver}/platform/python"
-  sed -E -i "s/version[[:space:]]*=(.*)/version = '${pkgver}',/g" setup.py
-  python3 -m build --wheel --skip-dependency-check
+#  sed -E -i "s/version[[:space:]]*=(.*)/version = '${pkgver}',/g" setup.py
+  python -m build --wheel --no-isolation
 
   #msg "Building Ruby Gem"
   #cd "$srcdir/${_pkgname}-${pkgver}"
@@ -49,12 +48,12 @@ build() {
 
 package_python-mailchecker() {
   depends=(
-	'python-distribute'
+	'python'
   )
   cd "$srcdir/${_pkgname}-${pkgver}/platform/python"
-  python3 -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/*.whl
   cd "$srcdir/${_pkgname}-${pkgver}"
-  install -Dm644 LICENSE-MIT "${pkgdir}/usr/share/licenses/python-mailchecker/LICENSE.txt"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/python-mailchecker/LICENSE.txt"
 }
 
 package_ruby-mailchecker() {
