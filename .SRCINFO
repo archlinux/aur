@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-preview
 	pkgdesc = Previewer for VapourSynth scripts
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-preview
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = vapoursynth-preview
 	depends = vapoursynth>=R69
 	depends = vapoursynth-plugin-vsengine
 	depends = vapoursynth-plugin-vsjetpack
-	source = https://github.com/Jaded-Encoding-Thaumaturgy/vs-preview/archive/refs/tags/v0.18.0.tar.gz
-	b2sums = ac6e8ad15f44e76a02dd6c5ce7a626afc3aad49d1e4f9000d9d47ec00dd525f6cc9b45aba3f57baff148839114ac84f00a9be37085b63719159452ce33cbca03
+	source = https://github.com/Jaded-Encoding-Thaumaturgy/vs-preview/archive/refs/tags/v0.18.1.tar.gz
+	b2sums = dbc0dd2fd8a7f9388d4983530dcf2852682dd2b33e03c0680fdbb3320eb1679f9b36f0b14c4bedcafce25f1a3e6db65be079787f1d3b9d9fe245fcf9e1138a00
 
 pkgname = vapoursynth-preview
