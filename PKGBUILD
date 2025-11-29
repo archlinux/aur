@@ -1,31 +1,48 @@
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Andreas Hauser <andy-aur@splashground.de>
 # Contributor: Beej Jorgensen <beej@beej.us>
-# Maintainer: Thomas Laroche <tho.laroche@gmail.com>
+# Maintainer : Thomas Laroche <tho.laroche@gmail.com>
+
 pkgname=fann-git
-pkgver=2.2.0.r57.g0e6fa25
+pkgver=2.2.0.r189.g3907e1b
 pkgrel=1
-pkgdesc="Fast artificial neural network library"
-url="http://leenissen.dk/fann/"
-arch=('i686' 'x86_64')
-license=('LGPL2.1')
-makedepends=('cmake')
-source=("$pkgname::git+https://github.com/libfann/fann.git")
-md5sums=('SKIP')
-conflicts=('fann')
+pkgdesc='Fast Artificial Neural Network Library (git version)'
+url='https://leenissen.dk/fann/'
+arch=('x86_64')
+license=('LGPL-2.0-or-later')
+depends=(
+    'gcc-libs'
+    'glibc')
+makedepends=(
+    'cmake'
+    'git')
 provides=('fann')
+conflicts=('fann')
+source=('git+https://github.com/libfann/fann.git')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git -C fann describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-  cd $srcdir/$pkgname
-  cmake -D CMAKE_INSTALL_PREFIX=/usr .
-  make
+    cmake -B build -S fann \
+        -G 'Unix Makefiles' \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -Wno-dev
+    cmake --build build
+}
+
+check() {
+    cd build/tests
+    ./fann_tests
 }
 
 package() {
-  cd $srcdir/$pkgname
-  make DESTDIR=$pkgdir install
+    DESTDIR="$pkgdir" cmake --install build
+    rm -r "${pkgdir}/usr/include"/{gmock,gtest}
+    rm -r "${pkgdir}/usr/lib/cmake/GTest"
+    rm "${pkgdir}/usr/lib/pkgconfig"/{gmock*,gtest*}
+    rm "${pkgdir}/usr/lib"/lib{gmock*,gtest*}
 }

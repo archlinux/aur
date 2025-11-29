@@ -1,16 +1,17 @@
 pkgbase = fann-git
-	pkgdesc = Fast artificial neural network library
-	pkgver = 2.2.0.r57.g0e6fa25
+	pkgdesc = Fast Artificial Neural Network Library (git version)
+	pkgver = 2.2.0.r189.g3907e1b
 	pkgrel = 1
-	url = http://leenissen.dk/fann/
-	arch = i686
+	url = https://leenissen.dk/fann/
 	arch = x86_64
-	license = LGPL2.1
+	license = LGPL-2.0-or-later
 	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
 	provides = fann
 	conflicts = fann
-	source = fann-git::git+https://github.com/libfann/fann.git
-	md5sums = SKIP
+	source = git+https://github.com/libfann/fann.git
+	sha256sums = SKIP
 
 pkgname = fann-git
-
