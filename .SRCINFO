@@ -1,7 +1,7 @@
 pkgbase = ninjabrain-bot
 	pkgdesc = Stronghold calculator for Minecraft Speedrunning
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ninjabrain1/Ninjabrain-Bot
 	arch = any
 	license = unknown
