@@ -1,8 +1,8 @@
 # Maintainer: Kirill Zhumarin <kirill.zhumarin@gmail.com>
 pkgname=pmb887x-emu-git
-pkgver=0.0.17
+pkgver=0.1.0
 pkgrel=1
-pkgdesc='Infioen PMB887x-based phones emulator.'
+pkgdesc='Infineon PMB887x-based phones emulator.'
 arch=(any)
 url='https://github.com/siemens-mobile-hacks/pmb887x-emu'
 license=(GPL-2.0)
@@ -67,7 +67,7 @@ makedepends=(
 	zlib
 	zstd
 )
-source=(git+https://github.com/siemens-mobile-hacks/pmb887x-emu#branch=next)
+source=(git+https://github.com/siemens-mobile-hacks/pmb887x-emu)
 sha256sums=('SKIP')
 
 prepare() {

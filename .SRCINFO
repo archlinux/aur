@@ -1,6 +1,6 @@
 pkgbase = pmb887x-emu-git
-	pkgdesc = Infioen PMB887x-based phones emulator.
-	pkgver = 0.0.17
+	pkgdesc = Infineon PMB887x-based phones emulator.
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/siemens-mobile-hacks/pmb887x-emu
 	arch = any
@@ -66,7 +66,7 @@ pkgbase = pmb887x-emu-git
 	depends = systemd-libs
 	depends = libudev.so
 	depends = capstone
-	source = git+https://github.com/siemens-mobile-hacks/pmb887x-emu#branch=next
+	source = git+https://github.com/siemens-mobile-hacks/pmb887x-emu
 	sha256sums = SKIP
 
 pkgname = pmb887x-emu-git
