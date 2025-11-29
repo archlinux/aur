@@ -1,7 +1,7 @@
 pkgbase = gst-thumbnailers
 	pkgdesc = A simple gstreamer thumbnailer written in Rust
 	pkgver = 1.0alpha.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/sophie-h/gst-thumbnailers
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -10,6 +10,7 @@ pkgbase = gst-thumbnailers
 	makedepends = rust
 	depends = glib2
 	depends = gstreamer
+	depends = glycin
 	conflicts = gstreamer-thumbnailer
 	conflicts = gst-video-thumbnailer
 	replaces = gstreamer-thumbnailer
