@@ -1,0 +1,5 @@
+*.log
+*.zst
+/kst-plot/
+/l10n-kf5/
+/src/
