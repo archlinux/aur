@@ -1,5 +1,5 @@
 pkgbase = ch57x-keyboard-tool
-  pkgdesc="Command-line tool for programming ch57x and ch55x macro keyboards like ch552 or ch552g"
+  pkgdesc=Command-line tool for programming ch57x and ch55x macro keyboards like ch552 or ch552g
 	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/kriomant/ch57x-keyboard-tool
