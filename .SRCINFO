@@ -1,0 +1,13 @@
+pkgbase = astro8-computer
+	pkgdesc = Custom 16-bit homebrew CPU, emulator, renderer, PCB, and language
+	pkgver = 3.4.3_alpha
+	pkgrel = 1
+	url = https://github.com/sam-astro/Astro8-Computer
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = sdl2
+	source = astro8-computer.tar.gz::https://github.com/sam-astro/Astro8-Computer/archive/refs/tags/v3.4.3-alpha.tar.gz
+	sha512sums = SKIP
+
+pkgname = astro8-computer
