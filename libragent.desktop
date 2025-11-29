@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=LibrAgent
+Comment=A desktop app for AI agents with built-in tools
+Exec=libragent
+Icon=libragent
+Categories=Utility;Development;
+Terminal=false
