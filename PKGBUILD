@@ -1,6 +1,5 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-# https://github.com/yhoundz/parm/releases/download/v0.1.4/parm-linux-amd64.tar.gz
 _pkgauthor=yhoundz
 _pkgname=parm
 pkgname=${_pkgname}-bin
@@ -25,7 +24,6 @@ sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '30fb5bbb0c2f818a9e6b0d6fa5bb83560ebe7b8a0725caa26db4f538a01be171')
 sha256sums_x86_64=('6016785d90fa9bb6fcc632e3cc610c56850ba072a865f3bc0aa8782766ddbbe1')
 sha256sums_aarch64=('f045c0eb51f34ca679a51ea77d6bc0eb3e972e8c9060cad478bd3f168840bff6')
-
 
 
 package() {
