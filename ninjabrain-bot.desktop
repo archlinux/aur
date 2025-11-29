@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Ninjabrain Bot
+Comment=Stronghold calculator for Minecraft Speedrunning
+Exec=ninjabrain-bot
+Icon=ninjabrain-bot
+Terminal=false
+Categories=Game;Utility;
+Keywords=minecraft;speedrun;stronghold;mcsr;

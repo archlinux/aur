@@ -9,7 +9,11 @@ pkgbase = ninjabrain-bot
 	noextract = Ninjabrain-Bot-1.5.1.jar
 	source = https://github.com/Ninjabrain1/Ninjabrain-Bot/releases/download/1.5.1/Ninjabrain-Bot-1.5.1.jar
 	source = ninjabrain-bot.sh
+	source = ninjabrain-bot.desktop
+	source = icon.png
 	sha256sums = 471bbd0361224ebebd7cb05422646ff912c2d8b9a8b1ac080f20cf21a45caddc
 	sha256sums = cf7b6f76b63ca82bb96a7b376448a3986d799b1b9bfa58e82b1af3a26dff6514
+	sha256sums = d43900bd5be3d3bb99dedbebe3082c6dc57a8d6042ba02117a3db0ef078f6428
+	sha256sums = a47f8cfc8320c3c9610b77b0ff38278631f0ed5a4b6f0fe3f287dc821a5630fa
 
 pkgname = ninjabrain-bot
