@@ -3,7 +3,7 @@
 _name=drf-spectacular
 pkgname=python-$_name
 pkgver=0.29.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Sane and flexible OpenAPI (3.0.3 & 3.1) schema generation for Django REST framework."
 arch=('any')
 url="https://github.com/tfranzel/${_name}"
@@ -48,5 +48,6 @@ check() {
 package() {
 	cd "$_name-$pkgver"
 	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/python-drf-spectacular/LICENSE"
 }
 sha256sums=('8403ac1d4ee192d67a97c6a5d417e7e956af266f012436993340f91dd800ed80')
