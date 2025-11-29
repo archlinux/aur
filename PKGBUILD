@@ -11,29 +11,58 @@ provides=('magelab')
 conflicts=('magelab')
 options=('!strip' '!emptydirs')
 source=("LICENSE::https://raw.githubusercontent.com/majesticio/magelab/refs/heads/main/LICENSE")
-source_x86_64=("magelab_${pkgver}_amd64.deb::https://cdn.crabnebula.app/asset/01KA7YQAT9XXAF9JK9FVTWRA1K")
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('1c51c7e797aaab0d21ac1095c3b9319d20cdb9b974372aff3fa7661b72e80000')
+
+_magelab_zst_asset="magelab-bin-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst"
+_magelab_zst_url="https://cdn.crabnebula.app/asset/01KB78VGBKG7ZDM6MMV15V7C5R"
+_magelab_zst_sha256='f7ff92a2c8a36f062e83ed7b846e1d7a7dd028cc5d2e8326152de688bf73f985'
+_magelab_deb_asset="magelab_${pkgver}_amd64.deb"
+_magelab_deb_url="https://cdn.crabnebula.app/asset/01KA7YQAT9XXAF9JK9FVTWRA1K"
+_magelab_deb_sha256='dee860dbc948b85f5c136f0cf3073e55fbbad81a550278a51655e8860aef9b16'
+
+if [[ ${MAGELAB_BUILD_FROM_DEB:-0} != 0 ]]; then
+  _magelab_source_type='deb'
+  source_x86_64=("${_magelab_deb_asset}::${MAGELAB_DEB_URL:-${_magelab_deb_url}}")
+  sha256sums_x86_64=("${MAGELAB_DEB_SHA256:-${_magelab_deb_sha256}}")
+else
+  _magelab_source_type='pkg'
+  source_x86_64=("${_magelab_zst_asset}::${MAGELAB_ZST_URL:-${_magelab_zst_url}}")
+  sha256sums_x86_64=("${MAGELAB_ZST_SHA256:-${_magelab_zst_sha256}}")
+  noextract=("${_magelab_zst_asset}")
+fi
 
 prepare() {
   cd "${srcdir}"
-  bsdtar -xf "magelab_${pkgver}_amd64.deb"
+  if [[ "${_magelab_source_type}" == 'deb' ]]; then
+    bsdtar -xf "${_magelab_deb_asset}"
+  fi
 }
 
 package() {
   cd "${srcdir}"
-  local data_tar
-  data_tar=$(find "${PWD}" -maxdepth 1 -name 'data.tar.*' -print -quit)
-  bsdtar -xf "${data_tar}" -C "${pkgdir}"
 
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  if [[ "${_magelab_source_type}" == 'pkg' ]]; then
+    local pkgroot="${srcdir}/pkgroot"
+    rm -rf "${pkgroot}"
+    mkdir -p "${pkgroot}"
+    bsdtar -xf "${_magelab_zst_asset}" -C "${pkgroot}" \
+      --exclude='.PKGINFO' \
+      --exclude='.BUILDINFO' \
+      --exclude='.MTREE' \
+      --exclude='.INSTALL' \
+      --exclude='.CHANGELOG'
+    cp -a "${pkgroot}/." "${pkgdir}/"
+  else
+    local data_tar
+    data_tar=$(find "${PWD}" -maxdepth 1 -name 'data.tar.*' -print -quit)
+    bsdtar -xf "${data_tar}" -C "${pkgdir}"
 
-  install -d "${pkgdir}/usr/lib/${pkgname}"
-  mv "${pkgdir}/usr/bin/magelab" "${pkgdir}/usr/lib/${pkgname}/magelab.real"
-  ln -s ../magelab/bin "${pkgdir}/usr/lib/${pkgname}/bin"
-  install -Dm755 "${pkgdir}/usr/bin/run" "${pkgdir}/usr/lib/${pkgname}/run"
+    install -d "${pkgdir}/usr/lib/${pkgname}"
+    mv "${pkgdir}/usr/bin/magelab" "${pkgdir}/usr/lib/${pkgname}/magelab.real"
+    ln -s ../magelab/bin "${pkgdir}/usr/lib/${pkgname}/bin"
+    install -Dm755 "${pkgdir}/usr/bin/run" "${pkgdir}/usr/lib/${pkgname}/run"
 
-  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/magelab" <<'WRAPPER'
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/magelab" <<'WRAPPER'
 #!/bin/bash
 set -uo pipefail
 REAL_BIN="/usr/lib/magelab-bin/magelab.real"
@@ -68,4 +97,7 @@ fi
 
 exit ${status}
 WRAPPER
+  fi
+
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

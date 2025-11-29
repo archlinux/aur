@@ -1,12 +1,19 @@
-# update the url for the cdn first, then pull it down and update the checksum
-rm -rf src pkg
-makepkg -od --skipchecksums
-updpkgsums
+# magelab-bin release checklist
 
-# update SRCINFO
-makepkg --printsrcinfo > .SRCINFO
-
-# check install
-makepkg -si
-magelab  # verify it launches
-
+1. Prep metadata
+   - Bump pkgver/pkgrel as needed.
+   - Update `_magelab_deb_url` to the latest upstream deb and set `_magelab_deb_sha256` using `sha256sum magelab_<ver>_amd64.deb`.
+2. Build from the deb
+   - `rm -rf src pkg`
+   - `MAGELAB_BUILD_FROM_DEB=1 makepkg -od`
+   - This produces `magelab-bin-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst` rooted at the repo top.
+3. Publish the Arch package
+   - Upload the new `.pkg.tar.zst` to the CDN.
+   - Update `_magelab_zst_url` to the uploaded asset URL.
+   - Update `_magelab_zst_sha256` with `sha256sum magelab-bin-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst`.
+4. Refresh AUR metadata
+   - `makepkg --printsrcinfo > .SRCINFO`
+5. Final verification
+   - `makepkg -si` (default, downloads from the hosted zst)
+   - `MAGELAB_BUILD_FROM_DEB=1 makepkg -si` to ensure the deb path still repackages cleanly.
+   - Launch `magelab` to confirm it starts.
