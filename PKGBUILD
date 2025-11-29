@@ -2,7 +2,7 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio
 _pkgname="Cherry Studio"
-pkgver=1.6.7
+pkgver=1.7.0
 _electron=electron38
 pkgrel=1
 pkgdesc="A desktop client that supports for multiple LLM providers.(Use system-wide electron)"
@@ -14,6 +14,7 @@ depends=(
     "${_electron}"
     libvips
     imagemagick
+    ripgrep
 )
 makedepends=(
     'gendesk'
@@ -31,8 +32,8 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('58c9c2eed243febc74bce535da363098a7ac3e5f7c39eaf48cf26d71b60d1bbc'
-            '44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463')
+sha256sums=('daa4150fe6cbf5d1c9c1eb34ca1d85db1d4f0ba4a5e181f8eda00534f8f9b512'
+    '44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463')
 
 prepare() {
     sed -e "s|__ELECTRON__|${_electron}|g" -i "${srcdir}/${pkgname}.sh"
@@ -67,6 +68,12 @@ build() {
     export NODE_ENV=production
     yarn run build:unpack
 }
+_clean() {
+    cd ${pkgdir}/usr/lib/${pkgname}/app.asar.unpacked/node_modules
+    rm -rf "@libsql/linux-x64-musl"
+    rm -rf "@anthropic-ai/claude-agent-sdk/vendor/ripgrep"/{*-darwin,*-win32,arm64-linux}
+    ln -sf /usr/bin/rg "@anthropic-ai/claude-agent-sdk/vendor/ripgrep/x64-linux/rg"
+}
 package() {
 
     install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
@@ -83,4 +90,5 @@ package() {
         res="${res%.png}"
         install -Dm644 "$f" "${pkgdir}/usr/share/icons/hicolor/${res}/apps/${pkgname}.png"
     done
+    _clean
 }
