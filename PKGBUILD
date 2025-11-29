@@ -13,12 +13,6 @@ license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 makedepends=('perl-extutils-makemaker>=6.3002')
 checkdepends=(
   'perl-test-simple' # "Test::More"
-
-  ## t/91-pod.t
-  'perl-test-pod>=1.22'
-  ## t/92-pod-coverage.t
-  'perl-test-pod-coverage>=1.08'
-  'perl-pod-coverage>=0.18'
 )
 options=(!emptydirs purge)
 source=("https://cpan.metacpan.org/authors/id/E/EV/EVO/String-Escape-${pkgver}.tar.gz"

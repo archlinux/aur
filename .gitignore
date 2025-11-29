@@ -1,9 +1,2 @@
-*
-# dev tools
-!.editorconfig
-!.gitignore
-!.nvchecker.toml
-!.shellcheckrc
-# actual package
-!PKGBUILD
-!.SRCINFO
+*.tar.*
+String-Escape-*/
