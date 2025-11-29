@@ -1,8 +1,7 @@
 #!/bin/sh
 
 add_mime_type() {
-  if ! grep -q -E "^MimeType=.*\b${1};" "$2"
-  then
+  if ! grep -q -E "^MimeType=.*\b${1};" "$2"; then
     sed -i -E "s#^(MimeType=.*;)\$#\1${1};#" "$2"
   fi
 }
@@ -22,19 +21,19 @@ fix_214741() {
   add_mime_type 'text/plain' "$1"
 }
 
-while read -r file
-do
-  case "$file" in
+while read -r file; do
+  case "${file}" in
     *.desktop)
-      fix_214741 "$file"
-      fix_15741 "$file"
-      echo "patched $file"
+      fix_214741 "${file}"
+      fix_15741 "${file}"
+      echo "patched ${file}"
       ;;
     */package.json)
-      fix_129953 "$file"
-      echo "patched $file"
+      fix_129953 "${file}"
+      echo "patched ${file}"
       ;;
     *)
-      echo "unexpected file: $file"
+      echo "unexpected file: ${file}"
+      ;;
   esac
 done

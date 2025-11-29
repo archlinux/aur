@@ -6,7 +6,7 @@ _updatable_files() {
     /usr/share/applications/code*.desktop \
     /usr/share/applications/vscode*.desktop \
     /usr/share/applications/vscodium*.desktop \
-      2>/dev/null \
+    2> /dev/null \
     | grep -v -E '\-url-handler.desktop$'
 }
 
