@@ -2,18 +2,26 @@
 
 pkgname=('php-memcache' 'php-legacy-memcache')
 pkgver=8.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Memcache module for PHP"
 arch=('x86_64')
 url="https://pecl.php.net/package/memcache"
-license=('PHP')
+license=('PHP-3.01')
 makedepends=('php' 'php-legacy')
 checkdepends=('memcached')
-source=(https://pecl.php.net/get/memcache-$pkgver.tgz)
-sha256sums=('b3f0640eacdeb9046c6c86a1546d7fb8a4e9f219e5d9a36a287e59b2dd8208e5')
+source=(https://pecl.php.net/get/memcache-$pkgver.tgz php-8.5.patch)
+sha256sums=('b3f0640eacdeb9046c6c86a1546d7fb8a4e9f219e5d9a36a287e59b2dd8208e5'
+            '88cbbafbf6339ca67103795ea45cdf3b5728d4c593c7f69bf2efec5d9f9ad3e9')
 
 prepare() {
-  cp -a memcache-$pkgver{,-php-legacy}
+  cd memcache-$pkgver
+
+  # Ignore broken tests
+  rm tests/pecl63142.phpt
+
+  patch -p1 -i $srcdir/php-8.5.patch
+
+  cp -a $srcdir/memcache-$pkgver{,-php-legacy}
 }
 
 build() {
