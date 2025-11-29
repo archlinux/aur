@@ -1,7 +1,7 @@
 pkgbase = heidisql-qt6-git
 	pkgdesc = A lightweight GUI for managing MySQL, PostgreSQL, Microsoft SQL and SQLite databases (Qt6)
 	pkgver = r262.93bf989a
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.heidisql.com/
 	arch = x86_64
 	license = GPL-2.0
@@ -13,15 +13,15 @@ pkgbase = heidisql-qt6-git
 	makedepends = qt6pas
 	makedepends = git
 	depends = qt6pas
+	depends = heidisql
 	depends = heidisql-common
 	depends = mariadb-libs
 	depends = postgresql-libs
 	depends = libperconaserverclient
 	depends = sqlite
 	depends = freetds
-	provides = heidisql-client
-	provides = heidisql
 	provides = heidisql-qt6
+	provides = heidisql-client
 	conflicts = heidisql-qt6
 	source = heidisql-qt6-git::git+https://github.com/HeidiSQL/HeidiSQL.git#branch=lazarus
 	sha256sums = SKIP
