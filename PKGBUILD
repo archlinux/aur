@@ -18,6 +18,9 @@ optdepends=('env-modules')
 install=aocc.install
 _sha256sum=$(curl -A 'Mozilla' "$url" | grep --perl-regexp '\w{64}(?=\<\/td\>)' --only-matching | sed -n '1 p')
 sha256sums=("$_sha256sum" "1740216760f755dc031d54f06c29333bca73f728d89a706f405b41e737bfc56f")
+# NB: I should've made my checksum variable lambdas such that they will find all sums,
+# even if AMD change their website, but if they remove the </td> tag from the end,
+# this may fail. In which case, we can possible YOLO remove the lookahead.
 
 # default flags for compiler
 # edit this to your liking for default flags for your architecutre
