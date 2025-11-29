@@ -2,12 +2,12 @@
 
 pkgname=subtitleedit-cli-git
 _gitname=subtitleedit-cli
-pkgver=43.e80c64d
+pkgver=57.a9d04e3
 pkgrel=1
 pkgdesc='Subtitle Edit CLI (without System.Drawing)'
 arch=('any')
 url='https://www.nikse.dk/SubtitleEdit'
-license=('GPL3')
+license=('LGPL')
 depends=('dotnet-runtime-8.0')
 optdepends=('tesseract: OCR support'
             'ffmpeg: Waveform extraction')
