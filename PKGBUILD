@@ -3,7 +3,7 @@
 
 pkgname=venera-bin
 pkgdesc="A comic reader that support reading local and network comics."
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/venera-app/venera"
@@ -11,7 +11,7 @@ license=('GPL-3.0-only')
 depends=('at-spi2-core' 'cairo' 'fontconfig' 'gcc-libs' 'glib2' 'glibc' 'gdk-pixbuf2' 'gtk3' 'harfbuzz' 'libepoxy' 'libsoup3' 'pango' 'webkit2gtk-4.1')
 conflicts=('venera')
 source=("${url}/releases/download/v${pkgver}/venera_${pkgver}_amd64.deb")
-sha256sums=('50b35a2e6c9cbae468eaf2efa28b2e2ece8879ecef1825ca8aa5fbb40245aed9')
+sha256sums=('add0fafe9dad695064f7d0cd056881f7aa4198bb8228a525e374f70d0e1f9a57')
 
 package() {
     tar -I zstd -xf data.tar.zst --numeric-owner -C "${pkgdir}/"
