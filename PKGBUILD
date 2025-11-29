@@ -9,7 +9,7 @@
 pkgbase='vkbasalt-redemp-git'
 pkgname=("${pkgbase}" "lib32-${pkgbase}")
 pkgver=r470.d5c38ed
-pkgrel=1
+pkgrel=2
 pkgdesc='A Vulkan post-processing layer. (Redemp fork)'
 arch=('x86_64')
 url='https://github.com/Redemp/vkBasalt'
@@ -64,7 +64,6 @@ package_vkbasalt-redemp-git() {
   depends=("${_depends[@]}")
   provides=('vkbasalt')
   conflicts=('vkbasalt')
-  install=vkbasalt.install
 
   cd "${srcdir}/${pkgbase}-${pkgver//_/-}"
 
