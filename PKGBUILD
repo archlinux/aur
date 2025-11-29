@@ -1,7 +1,7 @@
 # Maintainer: macaquinyo <miamigoelmacaco@proton.me>
 # Contributor: 
 pkgname=yomikiru-bin
-pkgver=2.22.5
+pkgver=2.23.0
 pkgrel=1
 pkgdesc="An offline desktop reader for manga, comics, webtoons, and novels. Offers a customizable reading experience with extensive settings, shortcuts, themes and layouts."
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('unzip: .cbz support')
 options=('!emptydirs' '!debug' '!lto')
 install=${pkgname}.install
 source_x86_64=("https://github.com/mienaiyami/yomikiru/releases/download/v${pkgver}/Yomikiru-v${pkgver}-amd64.deb")
-sha512sums_x86_64=('83d96ffab1f9a94116d385f453f708f0eee4d0a0878e34e3ed981299e5f9296a2118b33188d4e9ff6bb452587176aa6c8981a30e974e09cb057c8529e283e2a0')
+sha512sums_x86_64=('')
 
 package(){
 	# Extract package data
