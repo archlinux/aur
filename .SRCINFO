@@ -1,0 +1,11 @@
+pkgbase = wisp-calendar
+	pkgdesc = A modern calendar application for Arch Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/your-username/wisp-calendar
+	install = wisp-calendar.install
+	arch = any
+	license = MIT
+	depends = bash
+
+pkgname = wisp-calendar

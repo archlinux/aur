@@ -1,0 +1,76 @@
+#!/bin/bash
+
+# This is an optional install script for AUR packages
+# Rename this file to match your package name (e.g., mypackage.install)
+# and reference it in PKGBUILD with: install="${pkgname}.install"
+
+# post_install()
+# Run after the package is installed
+post_install() {
+    echo "Package installed successfully!"
+
+    # Example: Update system caches
+    # update-desktop-database -q
+    # gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+    # update-mime-database usr/share/mime &> /dev/null
+
+    # Example: Create necessary directories
+    # mkdir -p /var/lib/mypackage
+
+    # Example: Set permissions
+    # chmod 755 /usr/bin/mypackage
+
+    # Example: Enable systemd service
+    # systemctl enable mypackage.service
+
+    # Example: Show important information to user
+    # cat <<EOF
+    # ==> Important: Configure your settings in /etc/mypackage/config
+    # ==> Run 'systemctl start mypackage' to start the service
+    # EOF
+}
+
+# pre_upgrade()
+# Run before the package is upgraded
+pre_upgrade() {
+    # Example: Stop service before upgrade
+    # systemctl stop mypackage.service
+    :
+}
+
+# post_upgrade()
+# Run after the package is upgraded
+post_upgrade() {
+    post_install
+
+    # Example: Restart service after upgrade
+    # systemctl daemon-reload
+    # systemctl restart mypackage.service
+}
+
+# pre_remove()
+# Run before the package is removed
+pre_remove() {
+    # Example: Stop and disable service
+    # systemctl stop mypackage.service
+    # systemctl disable mypackage.service
+    :
+}
+
+# post_remove()
+# Run after the package is removed
+post_remove() {
+    echo "Package removed successfully!"
+
+    # Example: Clean up caches
+    # update-desktop-database -q
+    # gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+    # Example: Remove user data (optional, usually not recommended)
+    # rm -rf /var/lib/mypackage
+
+    # Example: Show message to user
+    # echo "Configuration files in /etc/mypackage have been preserved"
+}
+
+# vim:set ts=4 sw=4 et:
