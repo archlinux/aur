@@ -64,9 +64,7 @@ check() {
   cd "${srcdir}/App-Licensecheck-v${pkgver}"
 
   export PERL_MM_USE_DEFAULT=1
-  # test results ignored, but that's what Fedora does too:
-  # https://src.fedoraproject.org/rpms/licensecheck/blob/main/f/licensecheck.spec
-  LC_ALL=C.UTF-8 make test || :
+  LC_ALL=C.UTF-8 make test
 }
 
 package() {
