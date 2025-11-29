@@ -1,5 +1,5 @@
 # Maintainer: snafu
-# Contributor: Hyacinthe Cartiaux <hyacinthe dot cartiaux at free dot fr>
+# Maintainer: Hyacinthe Cartiaux <hyacinthe dot cartiaux at free dot fr>
 pkgname=env-modules
 pkgver=5.6.0
 pkgrel=2
