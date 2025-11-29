@@ -1,6 +1,6 @@
 pkgbase = pypy3-fonttools
 	pkgdesc = Tools to manipulate font files
-	pkgver = 4.60.1
+	pkgver = 4.61.0
 	pkgrel = 1
 	url = https://github.com/fonttools/fonttools
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = pypy3-fonttools
 	makedepends = pypy3-setuptools
 	makedepends = pypy3-cython
 	depends = pypy3
-	source = fonttools-4.60.1.tar.gz::https://github.com/fonttools/fonttools/archive/4.60.1.tar.gz
-	sha512sums = 50e887f7cfa3a35ba5ca606fe0ce4766185272804bbd05e880cc47b0b73b4af865d902e5a34391bca1fed45275bd1b7922c0bb2b1c6685b9a2aa7026ae70d104
+	source = fonttools-4.61.0.tar.gz::https://github.com/fonttools/fonttools/archive/4.61.0.tar.gz
+	sha512sums = 4c5de3f63fb721817e5225cf928a4dde18c326cc495997452aba9fba057ddf3ddff6410f7ac178ba8fa17d78c11235c02d5898f9f9736cc9a421e20f49459c56
 
 pkgname = pypy3-fonttools
