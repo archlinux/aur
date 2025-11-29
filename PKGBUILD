@@ -2,7 +2,7 @@
 
 pkgname=kissfft-git
 _pkgname=kissfft
-pkgver=390.7bce415
+pkgver=401.39c9781
 pkgrel=1
 pkgdesc='A Fast Fourier Transform (FFT) library that tries to Keep it Simple, Stupid'
 arch=('x86_64' 'aarch64')
@@ -68,6 +68,9 @@ package() {
 	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	install -dm755 "${pkgdir}/usr/share/pkgconfig"
+
+	install -Dm644 "build/${_pkgname}-config.cmake" "${pkgdir}/usr/lib/cmake/${_pkgname}/${_pkgname}-config.cmake"
+	install -Dm644 "build/${_pkgname}-config-version.cmake" "${pkgdir}/usr/lib/cmake/${_pkgname}/${_pkgname}-config-version.cmake"
 
 	_data_types=(
 		"float"
