@@ -1,0 +1,24 @@
+diff -aur a/src/data.h b/src/data.h
+--- a/src/data.h	2025-11-29 17:44:14.808443146 +0000
++++ b/src/data.h	2025-11-29 17:44:35.261524377 +0000
+@@ -19,6 +19,8 @@
+  * along with freeserf.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#include <cstdint>
++
+ #ifndef SRC_DATA_H_
+ #define SRC_DATA_H_
+ 
+diff -aur a/src/freeserf_endian.h b/src/freeserf_endian.h
+--- a/src/freeserf_endian.h	2025-11-29 17:36:12.632910033 +0000
++++ b/src/freeserf_endian.h	2025-11-29 17:37:02.738645997 +0000
+@@ -19,6 +19,8 @@
+  * along with freeserf.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#include <stdint.h>
++
+ #ifndef SRC_FREESERF_ENDIAN_H_
+ #define SRC_FREESERF_ENDIAN_H_
+ 
