@@ -1,8 +1,8 @@
 pkgbase = anarch-git
 	pkgdesc = Anarch, the suckless FPS game
-	pkgver = r814.8eadf20
+	pkgver = 1.0.r127
 	pkgrel = 1
-	url = https://codeberg.org/drummyfish/Anarch.git
+	url = https://gitlab.com/drummyfish/anarch.git
 	arch = x86_64
 	arch = aarch64
 	license = CC0
@@ -10,7 +10,7 @@ pkgbase = anarch-git
 	depends = sdl2
 	conflicts = anarch
 	conflicts = anarch-bin
-	source = git+https://codeberg.org/drummyfish/Anarch.git
+	source = git+https://gitlab.com/drummyfish/anarch.git
 	sha256sums = SKIP
 
 pkgname = anarch-git
