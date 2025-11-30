@@ -3,7 +3,7 @@
 pkgname=kissfft-git
 _pkgname=kissfft
 pkgver=401.39c9781
-pkgrel=1
+pkgrel=2
 pkgdesc='A Fast Fourier Transform (FFT) library that tries to Keep it Simple, Stupid'
 arch=('x86_64' 'aarch64')
 url='https://github.com/mborgerding/kissfft'
@@ -51,9 +51,12 @@ build() {
 
 		cp Makefile.bak Makefile
 		# shellcheck disable=SC2086
-		cmake -B build -DCMAKE_INSTALL_PREFIX="/usr" ${_cmake_args}
+		cmake \
+			-B build \
+			-DCMAKE_INSTALL_PREFIX="/usr" \
+			-D CMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
+			${_cmake_args}
 		make -C build all
-		#PREFIX="${srcdir}/usr" make install
 	done
 }
 
