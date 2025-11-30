@@ -1,12 +1,11 @@
 # Maintainer: terrorwolf <jan.jr03+aur@gmail.com>
 pkgname=opendeck-bin
 pkgver=v2.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform desktop application that provides functionality for stream controller devices."
 arch=('x86_64')
 url="https://github.com/nekename/OpenDeck"
 license=('GPL-3.0')
-makedepends=(git dpkg)
 depends=(libappindicator-gtk3 webkit2gtk-4.1)
 optdepends=(
 'wine: Needed to support Windows-only plugins'
