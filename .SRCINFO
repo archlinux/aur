@@ -6,7 +6,7 @@ pkgbase = wl-tray-bridge-git
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = git
-	makedepends = rust>=1.84.0
+	makedepends = cargo
 	depends = libpango-1.0.so
 	depends = libpangocairo-1.0.so
 	depends = libwayland-client.so

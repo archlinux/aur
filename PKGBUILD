@@ -14,7 +14,7 @@ depends=(
 )
 makedepends=(
   git
-  'rust>=1.84.0'
+  cargo
 )
 options=(!lto)
 source=('wl-tray-bridge::git+https://github.com/mahkoh/wl-tray-bridge.git#branch=master')
@@ -27,11 +27,13 @@ pkgver() {
 
 build() {
   cd wl-tray-bridge/
+  export RUSTUP_TOOLCHAIN=stable
   cargo build --release --locked
 }
 
 check() {
   cd wl-tray-bridge/
+  export RUSTUP_TOOLCHAIN=stable
   cargo test --release --locked
 }
 
