@@ -5,7 +5,7 @@ pkgname=equibop-bin
 _appname=equibop-desktop
 pkgver=3.1.3
 _electronversion=39
-pkgrel=1
+pkgrel=2
 pkgdesc="A Vesktop fork cross platform electron-based desktop app aiming to give you a snappier Discord experience with Equicord pre-installed"
 arch=(
     'aarch64'
@@ -28,7 +28,7 @@ depends=(
 options=('!strip')
 source=("${pkgname%-bin}.sh"
         "equibop.install"
-        "icon.png::${url}/raw/v${pkgver}/static/icon.png")
+        "icon.png::https://raw.githubusercontent.com/Equicord/Equibop/v${pkgver}/static/icon.png")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.tar.gz")
 sha256sums=('28e852632bc479a8c9bb84c2d9b629c35a621618448fbc1e0bbea21dfaef19a1'
