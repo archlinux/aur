@@ -1,7 +1,7 @@
 # Maintainer: lazywalker <l4zywalk3r@gmail.com>
 
 pkgname=rgrc
-pkgver=0.4.3.r0.g4197800
+pkgver=0.5.1.r1.g1b5e566
 pkgrel=1
 pkgdesc='Rusty Generic Colouriser - like grc but faster and with more features'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -38,6 +38,14 @@ build() {
   export CARGO_TARGET_DIR=target
   export CFLAGS="${CFLAGS} -ffat-lto-objects"
   cargo build --frozen --release --no-default-features
+
+  # Generate shell completions
+  target/release/${pkgname} --completions=zsh > etc/zsh.compl
+  target/release/${pkgname} --completions=bash > etc/bash.compl
+  target/release/${pkgname} --completions=fish > etc/fish.compl
+
+  # Generate man pages
+  gzip -fk doc/rgrc.1
 }
 
 check() {
@@ -59,9 +67,11 @@ package() {
 
   # Install shell completions
   install -Dm 0644 etc/zsh.compl -t "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}/"
+  install -Dm 0644 etc/bash.compl -t "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -Dm 0644 etc/fish.compl -t "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
 
   # Install man pages
-	install -Dm 0644 doc/rgrc.1 -t "${pkgdir}/usr/share/man/man1/"
+	install -Dm 0644 doc/rgrc.1.gz -t "${pkgdir}/usr/share/man/man1/"
 
   # Install license
 	install -Dm 0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
