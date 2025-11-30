@@ -50,13 +50,13 @@ Version=1.0
 Name=Myune Music
 Comment=一个基于 Flutter (Dart) 实现的简洁本地音乐播放器，支持 Windows / Linux 双端。
 Comment[zh_CN]=一个基于 Flutter (Dart) 实现的简洁本地音乐播放器，支持 Windows / Linux 双端。
-Exec=/usr/bin/myune-music
+Exec=/usr/bin/myune_music
 Icon=myune_music
 Terminal=false
 Type=Application
 Categories=AudioVideo;Player;Music;Utility;
 Keywords=音乐;播放器;本地;Flutter;Dart;Audio;Music;Player;
-StartupWMClass=myune-music
+StartupWMClass=myune_music
 MimeType=audio/mpeg;audio/flac;audio/wav;audio/ogg;audio/aac;
 NoDisplay=false
 StartupNotify=true       
@@ -79,7 +79,7 @@ EOF
         # do
                 # patchelf "${pkgdir}/usr/lib/${_pkgname}/myune_music"  --add-needed "$lib"
         # done
-        ln -s "${pkgdir}/usr/lib/${_pkgname}/myune_music" "${pkgdir}/usr/bin/myune-music"
+        ln -s "/usr/lib/${_pkgname}/myune_music" "${pkgdir}/usr/bin/myune_music"
 
 }
 
