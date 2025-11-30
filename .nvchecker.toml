@@ -1,0 +1,3 @@
+[python-lia-web]
+source = "git"
+git = "https://github.com/patrick91/lia.git"
