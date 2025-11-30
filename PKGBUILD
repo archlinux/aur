@@ -1,6 +1,6 @@
 # Maintainer: Vincent B. <vb@luminar.eu.org>
 pkgname=restate-cli
-pkgver=1.3.2
+pkgver=1.5.5
 pkgrel=1
 epoch=
 pkgdesc="Building resilient applications made easy! (CLI)"
@@ -21,8 +21,8 @@ install=
 changelog=
 source_x86_64=("https://restate.gateway.scarf.sh/v${pkgver}/restate-cli-x86_64-unknown-linux-musl.tar.xz")
 source_aarch64=("https://restate.gateway.scarf.sh/v${pkgver}/restate-cli-aarch64-unknown-linux-musl.tar.xz")
-sha256sums_x86_64=('d3e24515a3ac20af66450cc09550d13e9870e14e29f8362ef25dfed63561100b')
-sha256sums_aarch64=('8ee2cbe1165ea18c6ad6f40e2691c2765ed2f46880c285770f102d5e766f3c37')
+sha256sums_x86_64=('6f24c3b9275b0e9e7c6f4bdaab414e2e82aacd4a60c6118123c4259da23c5f89')
+sha256sums_aarch64=('0f3171e71c92792371599b5992f1e466c67f232172b30dd03e370a83b7571b3e')
 noextract=()
 
 package() {
