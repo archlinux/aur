@@ -12,14 +12,14 @@ groups=()
 
 depends=(
 	'libyaml'
-	'java-runtime-headless'
+	'jdk-openjdk'
 )
 makedepends=(
 	'cmake'
 	'git'
 	'go'
 	'gradle'
-	'java-environment=17'
+	'jdk17-openjdk'
 	'pkg-config'
 	'rsync'
 	'unzip'
@@ -79,6 +79,8 @@ build() {
 	git apply "${srcdir}/0002-builds_otel.sh.patch"
 
 	echo "--- Building otel ..."
+	export JAVA_HOME='/usr/lib/jvm/java-17-openjdk'
+	export PATH="${JAVA_HOME}/bin:${PATH}"
 	java --version
 	CGO_ENABLED=1 ./builds/otel.sh "$_destdir"
 
