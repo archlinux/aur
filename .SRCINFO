@@ -15,7 +15,7 @@ pkgbase = vapoursynth-plugin-svpflow
 	conflicts = vapoursynth-plugin-svpflow1
 	conflicts = vapoursynth-plugin-svpflow2-bin
 	source = svpflow1-src-4.5.0.205.zip::https://www.svp-team.com/files/gpl/svpflow1-src.zip
-	source = https://www.svp-team.com/files/svp4-linux.4.6.263.tar.bz2
+	source = https://web.archive.org/web/20250904130553if_/https://www.svp-team.com/files/svp4-linux.4.6.263.tar.bz2
 	sha256sums = c384b3b969d66f2e22003f87b644fa79ce9093a8af326f7fc79cc305239d05f3
 	sha256sums = 1f24435451d59936a7fd28b7423190a42df36b7d306b2d747741e4efda171bdf
 
