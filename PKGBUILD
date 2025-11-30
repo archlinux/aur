@@ -9,7 +9,7 @@
 
 _pkgname="beekeeper-studio"
 pkgname="$_pkgname-bin"
-pkgver=5.4.11
+pkgver=5.4.12
 pkgrel=1
 pkgdesc="Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more"
 arch=('x86_64' 'aarch64')
@@ -33,8 +33,8 @@ noextract=(
     "${_pkgname}-${pkgver}-aarch64.tar.xz"
 )
 sha256sums=('9e83b98f1773a830db2b30043051d4e179fea73cdb0168feb7b2965ee6075ebf')
-sha256sums_x86_64=('25e72463670de6dffdab9b7cd53b97bf82a9ead6cc601a35d0cc5f837ec6ae9b')
-sha256sums_aarch64=('a45ed02b278b6de1cc38ab7626c130cc8ae9355b8b7b92943d99a27f4ea8b7a1')
+sha256sums_x86_64=('013bc1010bb50401d24f0d32d00406d7cfed2af6d1f55c4030aeb8a8e152baa9')
+sha256sums_aarch64=('85395c3e4b37800e25e047b709220c7f33dc882e8b8da7e392f2f8ea4f3b4ac5')
 
 package() {
     # Install commercial license
