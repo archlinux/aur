@@ -1,7 +1,7 @@
 # Maintainer
 
 pkgname=lib32-libbpf
-pkgver=1.5.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='Library for loading eBPF programs and reading and manipulating eBPF objects from user-space'
 url='https://github.com/libbpf/libbpf'
@@ -18,8 +18,8 @@ makedepends=(
 )
 provides=(libbpf.so)
 source=("git+${url}#tag=v${pkgver}")
-sha512sums=('2b4087d1c84985630c96fce807146cb699676069d55a5f57781f9fbef6135513df5d055a8286f86fd3de03cccd85450924748c52f4cb5868c5a158d99bb8bf2a')
-b2sums=('4d62738d8097a7d9be34fcbf2d546621cfb11d28db79e313fcbf7885e3e16a5f76357840cc1b072cc76d184090e6f4d7ca92d144ce5e172af875450a8f09dac5')
+sha512sums=('7007ec4239f1ccc11c803dcdd834e97fe00e2528db0c17b4500d854957924ccd2d437ee7a00c76f2aacb336f3b001414fa66d6de0d0d3fc7c5d0896eb289b05a')
+b2sums=('3dfa86acf5f4cae1079a90bfc28100878fcc74ba70180ad469f702dca09d0c32d83344708722640af46fb7b45980542d1501c6ef9123d2eaea2aef8db9811a5e')
 
 build() {
   export CC='gcc -m32'
