@@ -1,7 +1,7 @@
 pkgbase = plexamp-appimage
 	pkgdesc = Modern music client for Plex
 	pkgver = 4.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://plexamp.com
 	arch = x86_64
 	makedepends = imagemagick
