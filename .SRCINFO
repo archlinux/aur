@@ -1,7 +1,7 @@
 pkgbase = scratch2
 	pkgdesc = Create stories, games, and animations, share with others around the world
 	pkgver = 2.0.461
-	pkgrel = 1
+	pkgrel = 2
 	url = https://scratch.mit.edu/
 	arch = any
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = scratch2
 	depends = libxtst
 	depends = alsa-lib
 	noextract = Scratch-461.air
-	source = https://scratch.mit.edu/scratchr2/static/sa/Scratch-461.air
+	source = https://download.scratch.mit.edu/scratch2download/sa/Scratch-461.air
 	source = scratch2
 	source = scratch2.desktop
 	source = scratch2.xml
@@ -23,4 +23,3 @@ pkgbase = scratch2
 	sha512sums = 101f5c3a475e3a4426f1ee961749e327be19f3d12591253bd5193aebfa6801069614f4ec0fadd229cef1cfb131fd02bf604215f92dd40ebd1bc565ad226a51ad
 
 pkgname = scratch2
-

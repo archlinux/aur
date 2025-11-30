@@ -1,9 +1,11 @@
-# Maintainer: Amiad Bareli <amiad@hatul.info>
+# Maintainer: Jason Go <jasongo@jasongo.net>
+# Contributor: Amiad Bareli <amiad@hatul.info>
 # Contributor: relrel <relrelbachar@gmail.com>
+
 pkgname=scratch2
 _ver=461
 pkgver="2.0.$_ver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Create stories, games, and animations, share with others around the world"
 arch=('any')
 url="https://scratch.mit.edu/"
@@ -11,7 +13,7 @@ license=('GPL')
 depends=(adobe-air-sdk libxt libxtst alsa-lib)
 depends_x86_64+=(lib32-libxt lib32-libxtst lib32-alsa-lib)
 makedepends=(unzip)
-source=("https://scratch.mit.edu/scratchr2/static/sa/Scratch-$_ver.air" "$pkgname" "$pkgname.desktop" "$pkgname.xml" "scratchLocalData.sol")
+source=("https://download.scratch.mit.edu/scratch2download/sa/Scratch-$_ver.air" "$pkgname" "$pkgname.desktop" "$pkgname.xml" "scratchLocalData.sol")
 sha512sums=('cc0d98bcc90540a5b913941f57f21e87ea1bb4468260a2cb66c9688a9c25bbe4081ace6370fd2d9f66cfc8877ca5664de1e7efede7afdce004af840b71bbc46f'
             '378551bee811e16a1139139b78d0f4e0471c67c5e1076eaaf2e137378bc44e7e3b55788fe58681da44ea8d359c6ce343f0729b2aa80dbbbd695954c3efb1515a'
             'e32fd12f4fbb35fa7c60d658a83d0186424c404a89064bc16f1c7df501bc325e77bdfa2f9fb291ccdd42bd4ca96fb8c51b282194d058f2b7e25b552c86f34b0f'
