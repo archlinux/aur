@@ -1,0 +1,16 @@
+pkgbase = salatux-git
+	pkgdesc = CLI tool to fetch prayers times, with emphasis in waybar integration
+	pkgver = r0.0.1.abcdef
+	pkgrel = 1
+	url = https://github.com/guemidiborhane/salatux
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = salatux
+	conflicts = salatux
+	source = salatux-git::git+https://github.com/guemidiborhane/salatux.git
+	sha256sums = SKIP
+
+pkgname = salatux-git
