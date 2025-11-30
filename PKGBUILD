@@ -6,17 +6,20 @@ pkgrel=2
 pkgdesc="Opensource Settlers 1 clone (requires original game file)"
 arch=('i686' 'x86_64')
 url="http://jonls.dk/freeserf/"
-license=('GPL3')
-depends=('sdl2' 'sdl2_mixer' 'sdl2_image')
+license=('GPL-3.0-or-later')
+depends=('gcc-libs' 'glibc' 'sdl2' 'sdl2_mixer' 'sdl2_image')
 makedepends=('cmake' 'libxmp')
 optdepends=('libxmp: Amiga audio playback')
 install=freeserf.install
 source=(${pkgname}-${pkgver}.tar.xz::"https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${_pkgname}.tar.xz"
-        "cstdint.patch")
+        "cstdint.patch"
+        "stdint.patch")
 md5sums=('956fa204197ec29d688b0fbfbb50bd93'
-         '98a869d79db05db90d22bf69cdba159d')
+         '98a869d79db05db90d22bf69cdba159d'
+         'c1f38720166aaaae40f3b016096c2498')
 sha1sums=('24913d2716eff5d71b08a3de8439750d4db627c3'
-          'a451fc22da6d2d7754ddb7f6437d96e99d03df46')
+          'a451fc22da6d2d7754ddb7f6437d96e99d03df46'
+          'dc73a1923f96c8eb4c39b79100b31cdcc0e350d4')
 
 prepare() {
   mkdir ${_pkgname}/build
@@ -25,10 +28,13 @@ prepare() {
   # https://github.com/freeserf/freeserf/pull/526
   cd ${_pkgname}
   patch -p1 -i "${srcdir}/cstdint.patch"
+  # More build fixes
+  patch -p1 -i "${srcdir}/stdint.patch"
 }
 
 build() {
   cd ${_pkgname}/build
+  export CMAKE_POLICY_VERSION_MINIMUM=3.5
   cmake -DCMAKE_BUILD_TYPE="None" -DCMAKE_INSTALL_PREFIX="/usr" ..
   make
 }
