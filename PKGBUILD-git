@@ -10,7 +10,7 @@ depends=(
     'wayland'
     'cairo'
     'dbus'
-    'libwlroots0.19.so'
+    'wlroots0.19'
 )
 makedepends=(
     'zig'
