@@ -9,7 +9,7 @@ pkgbase = xcalibrate-git
 	depends = python-numpy
 	provides = xcalibrate
 	conflicts = xcalibrate
-	source = xcalibrate::git+https://github.com/reinderien/xcalibrate.git
+	source = https://github.com/reinderien/xcalibrate/archive/refs/tags/0.9.tar.gz
 	sha256sums = SKIP
 
 pkgname = xcalibrate-git
