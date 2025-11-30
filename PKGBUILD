@@ -2,9 +2,9 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
-pkgver=287.250602.0
+pkgver=315.251125.0
 pkgrel=1
-_emsdk_ver=3.1.59  ## Check ci/containers/linux-build.dockerfile for version
+_nodeversion=22
 pkgdesc="The desktop client for Tutanota, the secure e-mail service."
 arch=('x86_64')
 url="https://tuta.com/secure-email"
@@ -17,17 +17,18 @@ depends=(
 )
 makedepends=(
   'cargo'
-#  'emscripten'  ## Fails to build with >=4.0.3
+  'emscripten'
   'git'
   'nvm'
   'python'
+  'rust-wasm'
 )
 source=("git+https://github.com/tutao/tutanota.git#tag=$pkgname-release-$pkgver"
         'git+https://github.com/P-H-C/phc-winner-argon2.git'
         'git+https://github.com/open-quantum-safe/liboqs.git'
-        'git+https://github.com/emscripten-core/emsdk.git'
+        'git+https://github.com/tutao/Signal-FTS5-Extension.git'
         "$pkgname.desktop")
-sha256sums=('77e187e4a382a9215d6fccf36355011a01f9e4a7b4105edccd23e0430bd1aa24'
+sha256sums=('9d7d5c6cdc92fcc1b4e5a51529463b3ab299586355fb9a59a335ef3f53952bd9'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -48,17 +49,16 @@ prepare() {
   git submodule init
   git config submodule.libs/webassembly/phc-winner-argon2.url "$srcdir/phc-winner-argon2"
   git config submodule.libs/webassembly/liboqs.url "$srcdir/liboqs"
+  git config submodule.libs/Signal-FTS5-Extension.url "$srcdir/Signal-FTS5-Extension"
   git -c protocol.file.allow=always submodule update
+
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --target "$(rustc --print host-tuple)"
 
   export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
-  nvm install
+  nvm install "${_nodeversion}"
   npm ci
-
-  "$srcdir/emsdk/emsdk" install "${_emsdk_ver}"
-
-  export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -67,9 +67,12 @@ build() {
   export npm_config_cache="$srcdir/npm_cache"
   export RUSTUP_TOOLCHAIN=stable
   _ensure_local_nvm
-  "$srcdir/emsdk/emsdk" activate "${_emsdk_ver}"
-  source "$srcdir/emsdk/emsdk_env.sh"
-  export PATH="${PATH}:$srcdir/emsdk/upstream/bin:/emsdk/upstream/emscripten"
+
+  # Manually build sqlcipher extension to avoid build failure
+  pushd node_modules/@signalapp/sqlcipher/deps/extension
+  cargo build --release --target ${CARCH}-unknown-linux-gnu
+  popd
+
   npm run build-packages
   node desktop --custom-desktop-release --unpacked
 }
