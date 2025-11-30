@@ -1,14 +1,14 @@
 # Maintainer: Fritz Prix <fritzprix@gmail.com>
 pkgname=libragent
 pkgver=0.3.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop app for AI agents with built-in tools"
 arch=('x86_64')
 url="https://github.com/fritzprix/libr-agent"
 license=('MIT')
 depends=('webkit2gtk-4.1' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libsecret')
 makedepends=('git' 'cargo' 'nodejs' 'pnpm')
-source=("git+https://github.com/fritzprix/libr-agent.git#tag=v${pkgver}"
+source=("${pkgname}::git+https://github.com/fritzprix/libr-agent.git#tag=v${pkgver}"
         "libragent.desktop")
 sha256sums=('SKIP'
             'SKIP')
