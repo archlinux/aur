@@ -1,8 +1,8 @@
 pkgbase = taskfile-to-tasks-python-git
 	pkgdesc = Convert Taskfile.yml to an editor tasks format, like VSCode and Zed tasks.json
 	pkgver = 1.0.0
-	pkgrel = 1
-	url = https://github.com/H3mul/TaskfileToTasks
+	pkgrel = 2
+	url = https://github.com/H3mul/taskfile-to-tasks
 	arch = any
 	license = MIT
 	makedepends = git
@@ -11,7 +11,7 @@ pkgbase = taskfile-to-tasks-python-git
 	provides = taskfile-to-tasks
 	conflicts = taskfile-to-tasks
 	options = !debug
-	source = git+https://github.com/H3mul/TaskfileToTasks.git
+	source = git+https://github.com/H3mul/taskfile-to-tasks.git
 	md5sums = SKIP
 
 pkgname = taskfile-to-tasks-python-git
