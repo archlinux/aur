@@ -2,7 +2,7 @@
 
 _name="Astor"
 pkgname=${_name,,}
-pkgver=7.6.0
+pkgver=7.6.2
 _jarfile="${_name}-${pkgver}-jar-with-dependencies.jar"
 pkgrel=1
 pkgdesc="A graphical Tango control system administration tool"
@@ -16,7 +16,7 @@ source=(
   launcher astor.desktop
 )
 sha256sums=(
-  "2eb5235b2da4e270baafce2057884bc8fedb93142990cb262b1adfa2ea17e96a"
+  "20c946cd4203a913d5cd798ec449b8ec3fd666bf618bde1f14adb0d3f9818fb2"
   "49f16c646996c55fa65f66b8eb8c948950834a93e9a75c71c9fd1b110d401eee"
   "af5373fa86149fe10becc1effe6f82df250f8d48b71135412319c8701b304bb3"
 )
