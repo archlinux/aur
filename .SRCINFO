@@ -1,6 +1,6 @@
 pkgbase = numr
 	pkgdesc = A text calculator for natural language expressions with a vim-style TUI
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/nasedkinpv/numr
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = numr
 	makedepends = git
 	depends = gcc-libs
 	depends = openssl
-	source = numr-0.1.6.tar.gz::https://github.com/nasedkinpv/numr/archive/v0.1.6.tar.gz
-	sha256sums = 4c4d3b900c564226724ad3f15ec5c9b021d4a8efc86e5a9c9c6a71d0042298d8
+	source = numr-0.1.7.tar.gz::https://github.com/nasedkinpv/numr/archive/v0.1.7.tar.gz
+	sha256sums = fc430051f6fa4328e904eb09e09d8428321e6ac85854c017ec4911249bfd9017
 
 pkgname = numr
