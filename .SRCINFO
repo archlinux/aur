@@ -1,7 +1,7 @@
 pkgbase = zur-git
 	pkgdesc = An AUR helper written in Zig
-	pkgver = 0.7.3.r0.gb99bef4
-	pkgrel = 1
+	pkgver = 0.7.3.r1.gb486daa
+	pkgrel = 2
 	url = https://github.com/hspak/zur
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = zur-git
 	depends = pacman
 	provides = zur-git
 	conflicts = zur-git
+	conflicts = zur
 	source = git+https://github.com/hspak/zur
 	sha256sums = SKIP
 
