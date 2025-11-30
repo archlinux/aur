@@ -1,0 +1,5 @@
+[dxconvert]
+source = "regex"
+url = "https://dxconvert.martintarenskeen.nl/"
+regex = 'DXconvert-(\d+\.\d+(?:\.\d+)?).zip'
+encoding = "utf-8"
