@@ -1,0 +1,17 @@
+pkgbase = brother-dcpj928n
+	pkgdesc = LPR driver and CUPS wrapper for Brother DCP-J928N
+	pkgver = 3.5.1
+	pkgrel = 1
+	url = https://support.brother.co.jp/j/b/producttop.aspx?c=jp&lang=ja&prod=dcpj928n
+	arch = i686
+	arch = x86_64
+	license = LicenseRef-Brother
+	depends = cups
+	depends = perl
+	optdepends = brscan5
+	optdepends = brscan-skey
+	source = https://download.brother.com/welcome/dlf106110/dcpj928npdrv-3.5.1-1.i386.rpm
+	sha256sums = e9c60a35a345577dab160e69fc7a21d683fc30e81f93243e8abcf5d128c48b9b
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-dcpj928n
