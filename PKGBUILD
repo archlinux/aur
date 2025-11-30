@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.12.5.r12.gaa5c045
+pkgver=0.12.5.r28.g78e301c
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (CLI)"
 arch=('aarch64' 'x86_64')
@@ -11,7 +11,6 @@ depends=(
 	'gcc-libs'
 	'glibc'
 	'glslang>=15'
-	'hicolor-icon-theme'
 	'pugixml>=1.14'
 	'sdl3>=3.1.8'
 	'sdl3_mixer'
@@ -56,10 +55,12 @@ source=(
 	"$_pkgname-libusb::git+https://github.com/shadps4-emu/ext-libusb.git"
 	"$_pkgname-sirit::git+https://github.com/shadps4-emu/sirit.git"
 	"$_pkgname-tracy::git+https://github.com/shadps4-emu/tracy.git"
+	"miniz::git+https://github.com/richgel999/miniz.git"
 	"nlohmann-json::git+https://github.com/nlohmann/json.git"
 	"zydis::git+https://github.com/zyantific/zydis.git"
 )
 b2sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -83,18 +84,17 @@ prepare() {
 	git config submodule.externals/discord-rpc.url ../$_pkgname-discord-rpc
 	git config submodule.externals/ext-libusb.url ../$_pkgname-libusb
 	git config submodule.externals/hwinfo.url ../$_pkgname-hwinfo
+	git config submodule.externals/json.url ../nlohmann-json
 	git config submodule.externals/LibAtrac9.url ../$_pkgname-libatrac9
+	git config submodule.externals/miniz.url ../miniz
 	git config submodule.externals/sirit.url ../$_pkgname-sirit
 	git config submodule.externals/tracy.url ../$_pkgname-tracy
-	git config submodule.externals/json.url ../nlohmann-json
 	git config submodule.externals/zydis.url ../zydis
 	git -c protocol.file.allow=always submodule update
 	# remove hardcoded flag
 	sed -i '/-march=/d' CMakeLists.txt
 	# use system glslang
 	sed -i '/find_package/s/glslang 15/glslang/' CMakeLists.txt
-	# use system sdl3_mixer
-	sed -i 's/SDL3_Mixer::SDL3_Mixer/SDL3_mixer::SDL3_mixer/' externals/CMakeLists.txt
 }
 
 build() {

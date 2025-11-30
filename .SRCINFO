@@ -1,6 +1,6 @@
 pkgbase = shadps4-git
 	pkgdesc = Sony PlayStation 4 emulator (CLI)
-	pkgver = 0.12.5.r12.gaa5c045
+	pkgver = 0.12.5.r28.g78e301c
 	pkgrel = 1
 	url = https://shadps4.net/
 	arch = aarch64
@@ -31,14 +31,13 @@ pkgbase = shadps4-git
 	depends = gcc-libs
 	depends = glibc
 	depends = glslang>=15
-	depends = hicolor-icon-theme
 	depends = pugixml>=1.14
 	depends = sdl3>=3.1.8
 	depends = sdl3_mixer
 	optdepends = renderdoc: for graphics debugging
 	optdepends = shadps4-qtlauncher: for official Qt GUI
 	optdepends = vulkan-validation-layers: for vulkan debugging
-	provides = shadps4=0.12.5.r12.gaa5c045
+	provides = shadps4=0.12.5.r28.g78e301c
 	conflicts = shadps4
 	source = shadps4::git+https://github.com/shadps4-emu/shadPS4.git
 	source = shadps4-discord-rpc::git+https://github.com/shadps4-emu/ext-discord-rpc.git
@@ -48,8 +47,10 @@ pkgbase = shadps4-git
 	source = shadps4-libusb::git+https://github.com/shadps4-emu/ext-libusb.git
 	source = shadps4-sirit::git+https://github.com/shadps4-emu/sirit.git
 	source = shadps4-tracy::git+https://github.com/shadps4-emu/tracy.git
+	source = miniz::git+https://github.com/richgel999/miniz.git
 	source = nlohmann-json::git+https://github.com/nlohmann/json.git
 	source = zydis::git+https://github.com/zyantific/zydis.git
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -65,7 +66,6 @@ pkgname = shadps4-git
 	depends = gcc-libs
 	depends = glibc
 	depends = glslang>=15
-	depends = hicolor-icon-theme
 	depends = pugixml>=1.14
 	depends = sdl3>=3.1.8
 	depends = sdl3_mixer
