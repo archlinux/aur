@@ -1,8 +1,8 @@
-# Contributor: Kyle Keen <keenerd@gmail.com>
 # Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=littleutils
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc='Utilities for compression, file manipulation, text cleanup, and images/PDF optimization'
 arch=('x86_64')
@@ -16,6 +16,7 @@ depends=(
     'file'
     'gifsicle'
     'ghostscript'
+    'glibc'
     'gzip'
     'img2pdf'
     'imlib2'
@@ -36,7 +37,7 @@ depends=(
 optdepends=('wget: for download capability in the to-* recompression utilities')
 conflicts=('file-rename-utils')
 source=("https://sourceforge.net/projects/littleutils/files/littleutils-source/${pkgver}/littleutils-${pkgver}.tar.lz")
-sha256sums=('c9a28acb408bc36d8f9c6e05ff4b59284a875785c4a30ed5baefe63bb53bfe6a')
+sha256sums=('1528fd0445a641db1402605052f554b40a7ad1113772c517841a361c0c6eca35')
 
 build() {
     cd "littleutils-${pkgver}"
