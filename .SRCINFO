@@ -1,0 +1,15 @@
+pkgbase = clipr
+	pkgdesc = Small CLI utitlity reading/writing system clipboard.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/BonnyAD9/clipr/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	options = !debug
+	source = https://github.com/BonnyAD9/clipr/archive/refs/tags/v0.1.2.tar.gz
+	md5sums = SKIP
+
+pkgname = clipr
