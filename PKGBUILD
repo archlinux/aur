@@ -6,21 +6,17 @@ arch=('x86_64')
 url='https://vikunja.io/'
 license=('AGPL3')
 backup=('etc/vikunja/config.yml')
-makedepends=('go' 'mage' 'pnpm')
+makedepends=('git' 'go' 'mage' 'pnpm')
 source=(
-  "https://kolaente.dev/vikunja/vikunja/archive/v${pkgver}.tar.gz"
+  "$pkgname::git+https://github.com/go-vikunja/vikunja#tag=v$pkgver"
   'vikunja.service'
   'vikunja.sysusers'
   'vikunja.tmpfiles'
 )
-sha256sums=('703ac07e960802b3f478354a11e87ecafed6631a9025ef4277296698af498b89'
+sha256sums=('686d8a13adcefbecd15890b633cb409eebbbbd937a8f5fefa499dc7e916acb3b'
             'c12fa547366d7b604584fbb611840861790fe3cfae0be3f0b0a98f87a89076e3'
             '0a666743be3deaa16a436681d18003b11a1660b5fe7868fa25af2de11c7624f7'
             'e2facf1add86ae6d5ee0ce8c3c006a16e5d50b7d57fbd6519c17e31b9d7d75a5')
-b2sums=('d2945e35788df5e2c8055e345e3fee4c03fd8cf5e24e90f5f11c69dff086f753f4effd85441a9af5f6da673085a4d067858199c52dd1376ec41a93892f1bf57c'
-        'e19d6812475f173a233fc05d3ff6a0dd0abe103d33164e498c9726b5a869fafd35ae05c7a26dd0e00c79af277acff0231cc888481acbcfd808467e5fb32a93d1'
-        '4e5d1a620469da1ae6f432bb8fa945d2c2e38de5c05538c824c746d65f9b3ef98c7638231ae8f58d5d328be2158b9ea3913a0992b2fec7f5f8e8d5da87c4825c'
-        '9cdabd84e553b016030328b347d1ee1dcec13f00bdc8549a684a9c745b966939b88acde06d876b55643f4bf0a1f34ac6f6b06ac88ccda9e4a08a32e2ae3e23bd')
 
 build() {
   cd "${srcdir}/${pkgname}"
