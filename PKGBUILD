@@ -1,11 +1,11 @@
 # Maintainer: GreyXor <greyxor@protonmail.com>
 
 pkgname=kmscon-aetf-git
-pkgver=v9.1.0.r44.g85397b6
+pkgver=v9.1.0.r70.gd8aced5
 pkgrel=1
 pkgdesc='Linux KMS/DRM based virtual Console Emulator (git development version)'
 arch=('x86_64')
-url='https://github.com/Aetf/kmscon'
+url='https://github.com/kmscon/kmscon'
 license=('MIT')
 depends=(
     'bash'

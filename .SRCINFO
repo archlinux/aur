@@ -1,8 +1,8 @@
 pkgbase = kmscon-aetf-git
 	pkgdesc = Linux KMS/DRM based virtual Console Emulator (git development version)
-	pkgver = v9.1.0.r44.g85397b6
+	pkgver = v9.1.0.r70.gd8aced5
 	pkgrel = 1
-	url = https://github.com/Aetf/kmscon
+	url = https://github.com/kmscon/kmscon
 	arch = x86_64
 	license = MIT
 	makedepends = check
@@ -24,7 +24,7 @@ pkgbase = kmscon-aetf-git
 	provides = kmscon
 	conflicts = kmscon
 	backup = etc/kmscon/kmscon.conf
-	source = kmscon-aetf-git::git+https://github.com/Aetf/kmscon.git
+	source = kmscon-aetf-git::git+https://github.com/kmscon/kmscon.git
 	sha256sums = SKIP
 
 pkgname = kmscon-aetf-git
