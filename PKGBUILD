@@ -1,7 +1,7 @@
 #!/bin/bash
 # Maintainer: Swapnil Ingle <ingleswapnil2004@gmail.com>
 pkgname=quazaar
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A cross-platform LAN media control system using WebSockets"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/codershubinc/quazaar"
 license=('MIT')
 makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
+sha256sums=('934414414af02881b1b5ce1f1c86cec9a82a484320ab48f151966c2a10e32299')
 
 build() {
     cd "$pkgname-$pkgver"
