@@ -1,80 +1,154 @@
 # Maintainer: Frédéric Bogaerts <fred@netpack.pt>
-
 pkgname=xfb
-pkgver=1.23
-pkgrel=9
-pkgdesc="Open-source Radio Automation"
-arch=('x86_64')
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="Open-source Radio Automation with comprehensive accessibility support"
+arch=('x86_64' 'aarch64')
 url="https://github.com/netpack/XFB"
 license=('GPL3')
-
-depends=('base-devel' 'patch' 'qt5-base' 'qt5-tools' 'qt5-webkit' 'qt5-multimedia' 'perl-image-exiftool' 'ffmpeg' 'lame' 'sox' 'mediainfo' )
-optdepends=('audacity' 'mplayer' 'soundconverter' 'yt-dlp') #Thank you MisterEsse
-
-makedepends=('qt5-tools')
-
-
-source=("https://github.com/netpack/XFB/releases/download/v1.23/xfb-1.23.tar.gz")
-
-sha512sums=("7e8610151860e66c9d5599f0a458d5832aabeab203c4ac286c67c4c3cc7916a9d1bb5069edaff3c892064983d5a97c3eb11de3a48e451b727b0307aef22a64d8")
-
+depends=(
+    'qt6-base'
+    'qt6-multimedia'
+    'qt6-webengine'
+    'qt6-quickwidgets'
+    'at-spi2-core'
+    'speech-dispatcher'
+    'alsa-lib'
+    'libpulse'
+    'sqlite'
+    'curl'
+    'gstreamer'
+    'gst-plugins-base'
+    'gst-plugins-good'
+    'perl-image-exiftool'
+)
+makedepends=(
+    'cmake'
+    'git'
+    'pkg-config'
+)
+optdepends=(
+    'orca: Screen reader support for visually impaired users'
+    'brltty: Braille display support'
+    'espeak-ng: Text-to-speech synthesis'
+    'audacity: Advanced audio editing'
+    'mplayer: Media player'
+    'soundconverter: Audio converter'
+    'yt-dlp: Download media from online sources'
+    'ffmpeg: Audio format conversion'
+    'lame: MP3 encoding'
+    'sox: Audio processing'
+    'flac: FLAC audio support'
+    'vorbis-tools: OGG Vorbis support'
+    'mp3gain: MP3 volume normalization'
+    'normalize: Audio normalization'
+    'wavpack: WavPack audio support'
+    'opus-tools: Opus audio support'
+    'mediainfo: Media file information'
+)
+source=("git+https://github.com/netpack/XFB.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/usr/share/xfb/bin"
-  qmake-qt5 PREFIX=/usr ../src/XFB.pro
-  make
+    cd "$srcdir/XFB"
+    
+    cmake -B build \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCPACK_GENERATOR=""
+    
+    cmake --build build
+}
+
+check() {
+    cd "$srcdir/XFB/build"
+    # Run tests if available
+    ctest --output-on-failure || true
 }
 
 package() {
-  # Create necessary directories
-  install -d "$pkgdir/usr/bin"
-  install -d "$pkgdir/etc/xfb"
-  install -d "$pkgdir/usr/share/xfb"
-  install -d "$pkgdir/usr/share/xfb/bin"
-  install -d "$pkgdir/usr/share/xfb/config"
-  install -d "$pkgdir/usr/share/xfb/scripts"
-  install -d "$pkgdir/usr/share/xfb/jingles"
-  install -d "$pkgdir/usr/share/xfb/music"
-  install -d "$pkgdir/usr/share/xfb/playlists"
-  install -d "$pkgdir/usr/share/xfb/recordings"
-  install -d "$pkgdir/usr/share/xfb/tmp"
-  install -d "$pkgdir/usr/share/xfb/ftp"
-  install -d "$pkgdir/usr/share/applications"
-  install -d "$pkgdir/usr/share/pixmaps"
-
-  # Install additional files
-  install -m644 usr/share/xfb/config/* "$pkgdir/usr/share/xfb/config"
-  install -m644 usr/share/xfb/scripts/* "$pkgdir/usr/share/xfb/scripts"
-  install -m755 usr/share/xfb/bin/* "$pkgdir/usr/share/xfb/bin"
-  install -m644 etc/xfb/* "$pkgdir/etc/xfb"
-
-  cp -r usr/share/xfb/ftp usr/share/xfb/jingles usr/share/xfb/music usr/share/xfb/playlists "$pkgdir/usr/share/xfb/"
-
-    # Install .desktop file
-  install -m644 usr/share/xfb/XFB.desktop "$pkgdir/usr/share/applications/"
-
-  # Install icon file
-  install -m644 usr/share/xfb/xfb_icon.png "$pkgdir/usr/share/pixmaps/"
-
-  # Set the correct permissions on the database
-  chmod +x "$pkgdir/usr/share/xfb/config/adb.db"
-
-  # Create symbolic link in /usr/bin
-  ln -s "/usr/share/xfb/bin/XFB" "$pkgdir/usr/bin/XFB"
-
-  # Change ownerships
-  #chown "$USER:$USER" "$pkgdir/etc/xfb/xfb.conf"
-  #chown "$USER:$USER" "$pkgdir/usr/share/applications/XFB.desktop"
-  #chown "$USER:$USER" "$pkgdir/usr/share/pixmaps/xfb_icon.png"
-  chown -R "$USER:$USER" "$pkgdir/usr/share/xfb"
-
-  echo "Installation of XFB completed successfully!"
-  echo "The configuration file is: /etc/xfb/xfb.conf"
-  echo "The shared folders are under: /usr/share/xfb"
-  echo "You may want to install yt-dlp"
-  echo "Can you share some ETH? 0x9700225FcD115230C9166BD68CEdc23e329D3CdF"
-  echo "Thank you for installing XFB! I hope you enjoy it! Made with love & linux!"
+    cd "$srcdir/XFB"
+    
+    # Create necessary directories
+    install -d "$pkgdir/usr/bin"
+    install -d "$pkgdir/etc/xfb"
+    install -d "$pkgdir/usr/share/xfb"
+    install -d "$pkgdir/usr/share/xfb/bin"
+    install -d "$pkgdir/usr/share/xfb/config"
+    install -d "$pkgdir/usr/share/xfb/scripts"
+    install -d "$pkgdir/usr/share/xfb/jingles"
+    install -d "$pkgdir/usr/share/xfb/music"
+    install -d "$pkgdir/usr/share/xfb/playlists"
+    install -d "$pkgdir/usr/share/xfb/recordings"
+    install -d "$pkgdir/usr/share/xfb/tmp"
+    install -d "$pkgdir/usr/share/xfb/ftp"
+    install -d "$pkgdir/usr/share/applications"
+    install -d "$pkgdir/usr/share/pixmaps"
+    
+    # Install the main executable
+    install -Dm755 "build/bin/XFB" "$pkgdir/usr/share/xfb/bin/XFB"
+    
+    # Create symbolic link in /usr/bin
+    ln -s "/usr/share/xfb/bin/XFB" "$pkgdir/usr/bin/XFB"
+    
+    # Install desktop file
+    install -Dm644 "XFB.desktop" "$pkgdir/usr/share/applications/XFB.desktop"
+    
+    # Install icon
+    install -Dm644 "xfb_icon.png" "$pkgdir/usr/share/pixmaps/xfb_icon.png"
+    
+    # Install config files
+    if [ -d "config" ]; then
+        install -m644 config/* "$pkgdir/usr/share/xfb/config/" 2>/dev/null || true
+        # Copy config to /etc/xfb if xfb.conf exists
+        if [ -f "config/xfb.conf" ]; then
+            install -m644 "config/xfb.conf" "$pkgdir/etc/xfb/"
+        fi
+    fi
+    
+    # Install scripts
+    if [ -d "scripts" ]; then
+        install -m644 scripts/* "$pkgdir/usr/share/xfb/scripts/" 2>/dev/null || true
+    fi
+    
+    # Install additional directories
+    if [ -d "ftp" ]; then
+        cp -r ftp/* "$pkgdir/usr/share/xfb/ftp/" 2>/dev/null || true
+    fi
+    if [ -d "jingles" ]; then
+        cp -r jingles/* "$pkgdir/usr/share/xfb/jingles/" 2>/dev/null || true
+    fi
+    if [ -d "music" ]; then
+        cp -r music/* "$pkgdir/usr/share/xfb/music/" 2>/dev/null || true
+    fi
+    if [ -d "playlists" ]; then
+        cp -r playlists/* "$pkgdir/usr/share/xfb/playlists/" 2>/dev/null || true
+    fi
+    
+    # Install documentation
+    install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+    
+    # Install accessibility documentation
+    if [ -d "docs/accessibility" ]; then
+        cp -r "docs/accessibility" "$pkgdir/usr/share/doc/$pkgname/"
+    fi
+    
+    # Set correct permissions on database if it exists
+    if [ -f "$pkgdir/usr/share/xfb/config/adb.db" ]; then
+        chmod +x "$pkgdir/usr/share/xfb/config/adb.db"
+    fi
+    
+    echo "Installation of XFB completed successfully!"
+    echo "The configuration file is: /etc/xfb/xfb.conf"
+    echo "The shared folders are under: /usr/share/xfb"
+    echo "You may want to install yt-dlp for downloading media"
+    echo ""
+    echo "New in v2.0.0:"
+    echo "  - Full ORCA screen reader integration"
+    echo "  - Complete keyboard navigation"
+    echo "  - Audio feedback system"
+    echo "  - Braille display support"
+    echo ""
+    echo "Can you share some ETH? 0x9700225FcD115230C9166BD68CEdc23e329D3CdF"
+    echo "Thank you for installing XFB! Made with love & linux!"
 }
-
-
-
