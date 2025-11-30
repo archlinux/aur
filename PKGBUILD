@@ -4,7 +4,7 @@
 
 pkgname=audiobookshelf
 pkgver=2.30.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Self-hosted audiobook server for managing and playing audiobooks"
 arch=("x86_64" "aarch64")
@@ -29,8 +29,14 @@ sha256sums=('1f35924925671a23181b814123cd12d89ffd4fa0a1f40ab33791fa9480d047cf'
 
 build() {
     cd "${pkgname}-${pkgver}"
+    # build client
     npm run client
-    npm ci --only=production
+
+    # build server
+    # workaround for https://github.com/advplyr/audiobookshelf/issues/4876
+    npm install --cache "${srcdir}/npm-cache"
+    npm ci --omit=dev
+
     find {client/dist,node_modules,server} -type f -name "*.map" | xargs rm -rf
     sed -i '1i #!/usr/bin/node\n' index.js
 }
