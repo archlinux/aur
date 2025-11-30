@@ -13,9 +13,9 @@
 #
 # SOME MORE NOTES:
 #
-# This package is huge. The download alone is a 118GB tar (in SI units),
-# and the final zstd-compressed package is another 79GB.
-# Reserve at least 470GB in total for building.
+# This package is huge. The download alone is a 103GB tar (in SI units),
+# and the final zstd-compressed package is another 65GB.
+# Reserve at least 375GB in total for building.
 #
 # It can also take several hours to build,
 # being mostly limited by I/O and single-thread performance.
@@ -29,9 +29,9 @@
 
 pkgname=vitis
 _srcname=FPGAs_AdaptiveSoCs_Unified_SDI
-_pkgver=2025.1  # used in install paths
+_pkgver=2025.2  # used in install paths
 pkgver=${_pkgver}
-_more_ver=0530_0145
+_more_ver=1114_2157
 pkgrel=1
 pkgdesc="FPGA/CPLD design suite for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vitis.html"
@@ -51,7 +51,7 @@ depends=(
     'inetutils'                 # `hostname` for setupEnv.sh
     'libsecret'                 # libsecret-1.so.0
     'libxcrypt-compat'          # needed by setup tools
-    'ncurses5-compat-libs'      # albeit provided internally
+    'ncurses5-compat-libs'      # albeit provided internally -- still needed?
     'openssl-1.1'               # for DocNav
     'unzip'                     # for Vitis
     'zip'                       # for Vitis
@@ -64,9 +64,13 @@ depends=(
     'glib2'                     # for libsecret
     'glibc'                     # libc.so libm.so
     'libglvnd'                  # (via gtk3) libEGL.so.1 libGL.so.1
+    'libpcap'                   # libpcap.so.1
+    'libpfm'                    # libpfm.so.4
     'libx11'                    # libX11-xcb.so.1
-    'libxcb'                    # libxcb-dri3.so.0
+    'libxcursor'                # libXcursor.so.1
     'libxft'                    # libXft.so.2
+    'libxshmfence'              # libxshmfence.so.1
+    'libxxf86vm'                # libXxf86vm.so.1
     'pango'                     # libpango-1.0.so.0 libpangocairo-1.0.so.0 libpangoft2-1.0.so.0
     'pcre2'                     # for glib2
     'util-linux-libs'           # libuuid.so.1
@@ -84,7 +88,6 @@ optdepends=(
     'net-tools: AIE tools'
     'nss: for Vitis tools'
     'openssl: AIE tools'
-    'openssl-1.0'               # closest to RH compat-openssl10
     'python'
     'util-linux: fdisk for Vitis tools'
     'xorg-server-xvfb: for Vitis xsct as fallback X11 display'
@@ -112,7 +115,7 @@ source=("file:///${_srcname}_${pkgver}_${_more_ver}.tar"
         'spoof_homedir.c')
 
 # checksum from https://www.xilinx.com/support/download.html
-md5sums=('144b21e7a231081821d13f85495dd809'
+md5sums=('5e793c6b88de5123a09f024253fc2527'
          '69d14ad64f6ec44e041eaa8ffcb6f87c')
 
 # takes forever for probably minimal gain
