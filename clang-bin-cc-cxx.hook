@@ -7,6 +7,5 @@ Target = gcc
 [Action]
 Description = Re-pointing /usr/bin/cc and /usr/bin/c++ symlink to clang and clang++
 When = PostTransaction
-Exec = /usr/bin/ln -sfT clang /usr/bin/cc
-Exec = /usr/bin/ln -sfT clang++ /usr/bin/c++
+Exec = /usr/bin/ln -sfT clang /usr/bin/cc; /usr/bin/ln -sfT clang++ /usr/bin/c++
 Depends = clang

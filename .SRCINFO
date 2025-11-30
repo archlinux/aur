@@ -1,6 +1,6 @@
 pkgbase = clang-bin-cc-cxx
 	pkgdesc = Relink /bin/cc to clang, and /bin/cxx to clang++.
-	pkgver = 0.2
+	pkgver = 1
 	pkgrel = 1
 	install = clang-bin-cc-cxx.install
 	arch = any
