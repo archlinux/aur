@@ -1,6 +1,6 @@
 pkgbase = axenc-git
 	pkgdesc = Axen language compiler (git development branch)
-	pkgver = 0.1.0.r2.g7f4db1b
+	pkgver = 0.1.0.r31.g4f09033
 	pkgrel = 1
 	url = https://github.com/arsoniv/axenc
 	arch = x86_64
