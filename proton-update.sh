@@ -1,9 +1,14 @@
 #!/bin/bash
-
 set -e
 
+CYAN='\033[0;36m'
+RED='\033[0;31m'
+YELLOW='\033[0;33m'
+MAGENTA='\033[0;35m'
+NC='\033[0m'
+
 if [ "$EUID" -ne 0 ]; then
-    echo "This script must be run with sudo or as root."
+    echo -e "  ${RED}Error::${YELLOW} This script must be run with sudo or as root.${NC}"
     exit 1
 fi
 
@@ -11,10 +16,9 @@ LINE="IgnorePkg = proton-cachyos"
 FILE="/etc/pacman.conf"
 
 if ! grep -Fxq "$LINE" "$FILE"; then
-    echo ":: Adding "$LINE" to $FILE"
+    echo -e "${CYAN}:: Adding ${YELLOW}"$LINE" ${CYAN}to ${YELLOW}$FILE${NC}"
     echo "[options]" | tee -a "$FILE" > /dev/null
     echo "$LINE" | tee -a "$FILE" > /dev/null
-    echo "  Added '$LINE' to $FILE"
 fi
 
 mkdir -p /usr/share/proton-update
@@ -41,7 +45,7 @@ URL="https://cdn77.cachyos.org/repo/x86_64/cachyos/$URL_SUFFIX"
 echo ":: Checking for updates"
 
 if [ "$URL" = "$URL_CACHED" ] && pacman -Q proton-cachyos &>/dev/null; then
-    echo "  No new proton-cachyos version detected"
+    echo -e "  ${MAGENTA}No new proton-cachyos version detected${NC}"
     rm -r "$DIR"
     exit
 fi
