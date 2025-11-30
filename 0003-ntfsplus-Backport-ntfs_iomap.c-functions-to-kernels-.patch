@@ -1,4 +1,4 @@
-From 3865635d63b5369380eaf823d8bf96adbc7ba1d8 Mon Sep 17 00:00:00 2001
+From 2e50f4be4d04253b9ce21a110db605c3af88e332 Mon Sep 17 00:00:00 2001
 From: shadichy <shadichy@blisslabs.org>
 Date: Mon, 3 Nov 2025 17:49:51 +0700
 Subject: [PATCH 3/7] ntfsplus: Backport ntfs_iomap.c functions to kernels
@@ -10,10 +10,10 @@ Subject: [PATCH 3/7] ntfsplus: Backport ntfs_iomap.c functions to kernels
  2 files changed, 30 insertions(+)
 
 diff --git a/fs/ntfsplus/ntfs_iomap.c b/fs/ntfsplus/ntfs_iomap.c
-index a6d2c9e01..5381ad904 100644
+index c9fd99982..7f21a2e74 100644
 --- a/fs/ntfsplus/ntfs_iomap.c
 +++ b/fs/ntfsplus/ntfs_iomap.c
-@@ -681,6 +681,7 @@ const struct iomap_ops ntfs_dio_iomap_ops = {
+@@ -677,6 +677,7 @@ const struct iomap_ops ntfs_dio_iomap_ops = {
  	.iomap_end		= ntfs_write_iomap_end,
  };
  
@@ -21,7 +21,7 @@ index a6d2c9e01..5381ad904 100644
  static ssize_t ntfs_writeback_range(struct iomap_writepage_ctx *wpc,
  		struct folio *folio, u64 offset, unsigned int len, u64 end_pos)
  {
-@@ -702,3 +703,28 @@ const struct iomap_writeback_ops ntfs_writeback_ops = {
+@@ -698,3 +699,28 @@ const struct iomap_writeback_ops ntfs_writeback_ops = {
  	.writeback_range	= ntfs_writeback_range,
  	.writeback_submit	= iomap_ioend_writeback_submit,
  };
@@ -67,5 +67,5 @@ index b1a5d55fa..eac0c9c60 100644
  extern const struct iomap_ops ntfs_read_iomap_ops;
  extern const struct iomap_ops ntfs_page_mkwrite_iomap_ops;
 -- 
-2.51.2
+2.52.0
 

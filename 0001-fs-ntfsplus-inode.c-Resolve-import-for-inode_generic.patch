@@ -1,4 +1,4 @@
-From 0a5e79236137afa20d19870abb8ec81a4b63cd55 Mon Sep 17 00:00:00 2001
+From 90ab573854436667c061be508817f269835e52a9 Mon Sep 17 00:00:00 2001
 From: shadichy <shadichy@blisslabs.org>
 Date: Thu, 23 Oct 2025 01:19:10 +0700
 Subject: [PATCH 1/7] fs/ntfsplus/inode.c: Resolve import for
@@ -9,7 +9,7 @@ Subject: [PATCH 1/7] fs/ntfsplus/inode.c: Resolve import for
  1 file changed, 6 insertions(+)
 
 diff --git a/fs/ntfsplus/inode.c b/fs/ntfsplus/inode.c
-index 2b8e0d67c..28925d204 100644
+index f577ef28b..fb5f40e19 100644
 --- a/fs/ntfsplus/inode.c
 +++ b/fs/ntfsplus/inode.c
 @@ -9,6 +9,12 @@
@@ -26,5 +26,5 @@ index 2b8e0d67c..28925d204 100644
  #include "misc.h"
  #include "ntfs.h"
 -- 
-2.51.2
+2.52.0
 

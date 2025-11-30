@@ -1,4 +1,4 @@
-From c32db40ab35bcaf91462bbd072a8d0d18f191c44 Mon Sep 17 00:00:00 2001
+From 731ee528ae18f8cc779cc230713e1147192acc07 Mon Sep 17 00:00:00 2001
 From: shadichy <shadichy@blisslabs.org>
 Date: Thu, 6 Nov 2025 16:39:19 +0700
 Subject: [PATCH 2/7] ntfsplus: Resolve iomap_* arguments (temporarily) for
@@ -12,10 +12,10 @@ Subject: [PATCH 2/7] ntfsplus: Resolve iomap_* arguments (temporarily) for
  4 files changed, 30 insertions(+), 8 deletions(-)
 
 diff --git a/fs/ntfsplus/aops.c b/fs/ntfsplus/aops.c
-index 50c804be3..b90b40aa8 100644
+index 9a1b3b80a..d9784dfc9 100644
 --- a/fs/ntfsplus/aops.c
 +++ b/fs/ntfsplus/aops.c
-@@ -461,9 +461,13 @@ static int ntfs_writepages(struct address_space *mapping,
+@@ -447,9 +447,13 @@ static int ntfs_writepages(struct address_space *mapping,
  {
  	struct inode *inode = mapping->host;
  	struct ntfs_inode *ni = NTFS_I(inode);
@@ -29,7 +29,7 @@ index 50c804be3..b90b40aa8 100644
  		.ops		= &ntfs_writeback_ops,
  	};
  
-@@ -488,7 +492,12 @@ static int ntfs_writepages(struct address_space *mapping,
+@@ -474,7 +478,12 @@ static int ntfs_writepages(struct address_space *mapping,
  		return -EACCES;
  	}
  
@@ -43,10 +43,10 @@ index 50c804be3..b90b40aa8 100644
  
  static int ntfs_swap_activate(struct swap_info_struct *sis,
 diff --git a/fs/ntfsplus/file.c b/fs/ntfsplus/file.c
-index b4114017b..e2e506a62 100644
+index aebc2b48b..ab7bb4ff7 100644
 --- a/fs/ntfsplus/file.c
 +++ b/fs/ntfsplus/file.c
-@@ -291,7 +291,7 @@ int ntfs_setattr(struct mnt_idmap *idmap, struct dentry *dentry,
+@@ -290,7 +290,7 @@ int ntfsp_setattr(struct mnt_idmap *idmap, struct dentry *dentry,
  			/* Serialize against page faults */
  			if (NInoNonResident(NTFS_I(vi)) &&
  			    attr->ia_size < old_size) {
@@ -55,7 +55,7 @@ index b4114017b..e2e506a62 100644
  							  &ntfs_read_iomap_ops,
  							  &ntfs_iomap_folio_ops, NULL);
  				if (err)
-@@ -310,7 +310,7 @@ int ntfs_setattr(struct mnt_idmap *idmap, struct dentry *dentry,
+@@ -309,7 +309,7 @@ int ntfsp_setattr(struct mnt_idmap *idmap, struct dentry *dentry,
  				loff_t len = min_t(loff_t,
  							round_up(old_size, PAGE_SIZE) - old_size,
  							attr->ia_size - old_size);
@@ -64,7 +64,7 @@ index b4114017b..e2e506a62 100644
  						       NULL, &ntfs_read_iomap_ops,
  						       &ntfs_iomap_folio_ops, NULL);
  			}
-@@ -629,7 +629,7 @@ static ssize_t ntfs_file_write_iter(struct kiocb *iocb, struct iov_iter *from)
+@@ -627,7 +627,7 @@ static ssize_t ntfs_file_write_iter(struct kiocb *iocb, struct iov_iter *from)
  
  			offset = iocb->ki_pos;
  			iocb->ki_flags &= ~IOCB_DIRECT;
@@ -73,7 +73,7 @@ index b4114017b..e2e506a62 100644
  					&ntfs_write_iomap_ops, &ntfs_iomap_folio_ops,
  					NULL);
  			if (written < 0) {
-@@ -649,7 +649,7 @@ static ssize_t ntfs_file_write_iter(struct kiocb *iocb, struct iov_iter *from)
+@@ -647,7 +647,7 @@ static ssize_t ntfs_file_write_iter(struct kiocb *iocb, struct iov_iter *from)
  							 end >> PAGE_SHIFT);
  		}
  	} else {
@@ -82,7 +82,7 @@ index b4114017b..e2e506a62 100644
  				&ntfs_iomap_folio_ops, NULL);
  	}
  out:
-@@ -935,7 +935,7 @@ static long ntfs_fallocate(struct file *file, int mode, loff_t offset, loff_t le
+@@ -1021,7 +1021,7 @@ static long ntfs_fallocate(struct file *file, int mode, loff_t offset, loff_t le
  
  			to = min_t(loff_t, (start_vcn + 1) << vol->cluster_size_bits,
  				   end_offset);
@@ -91,7 +91,7 @@ index b4114017b..e2e506a62 100644
  					       &ntfs_read_iomap_ops,
  					       &ntfs_iomap_folio_ops, NULL);
  			if (err < 0 || (end_vcn - start_vcn) == 1)
-@@ -946,7 +946,7 @@ static long ntfs_fallocate(struct file *file, int mode, loff_t offset, loff_t le
+@@ -1032,7 +1032,7 @@ static long ntfs_fallocate(struct file *file, int mode, loff_t offset, loff_t le
  			loff_t from;
  
  			from = (end_vcn - 1) << vol->cluster_size_bits;
@@ -100,7 +100,7 @@ index b4114017b..e2e506a62 100644
  					       &ntfs_read_iomap_ops,
  					       &ntfs_iomap_folio_ops, NULL);
  			if (err < 0 || (end_vcn - start_vcn) == 1)
-@@ -998,7 +998,7 @@ static long ntfs_fallocate(struct file *file, int mode, loff_t offset, loff_t le
+@@ -1084,7 +1084,7 @@ static long ntfs_fallocate(struct file *file, int mode, loff_t offset, loff_t le
  			loff_t len = min_t(loff_t,
  					   round_up(old_size, PAGE_SIZE) - old_size,
  					   offset - old_size);
@@ -110,10 +110,10 @@ index b4114017b..e2e506a62 100644
  					       &ntfs_iomap_folio_ops, NULL);
  		}
 diff --git a/fs/ntfsplus/inode.c b/fs/ntfsplus/inode.c
-index 28925d204..9bb036293 100644
+index fb5f40e19..7ed279c7b 100644
 --- a/fs/ntfsplus/inode.c
 +++ b/fs/ntfsplus/inode.c
-@@ -2416,7 +2416,7 @@ int ntfs_extend_initialized_size(struct inode *vi, const loff_t offset,
+@@ -2434,7 +2434,7 @@ int ntfs_extend_initialized_size(struct inode *vi, const loff_t offset,
  		return err;
  
  	if (!NInoCompressed(ni) && old_init_size < offset) {
@@ -123,10 +123,10 @@ index 28925d204..9bb036293 100644
  				       NULL, &ntfs_read_iomap_ops,
  				       &ntfs_iomap_folio_ops, NULL);
 diff --git a/fs/ntfsplus/inode.h b/fs/ntfsplus/inode.h
-index 0966f5916..88f524a50 100644
+index 95fee0fd2..ae3377bc7 100644
 --- a/fs/ntfsplus/inode.h
 +++ b/fs/ntfsplus/inode.h
-@@ -351,4 +351,17 @@ int ntfs_extend_initialized_size(struct inode *vi, const loff_t offset,
+@@ -350,4 +350,17 @@ int ntfs_extend_initialized_size(struct inode *vi, const loff_t offset,
  		const loff_t new_size);
  void ntfs_set_vfs_operations(struct inode *inode, mode_t mode, dev_t dev);
  
@@ -145,5 +145,5 @@ index 0966f5916..88f524a50 100644
 +
  #endif /* _LINUX_NTFS_INODE_H */
 -- 
-2.51.2
+2.52.0
 

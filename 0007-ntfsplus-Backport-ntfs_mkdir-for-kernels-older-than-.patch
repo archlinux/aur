@@ -1,6 +1,6 @@
-From b8791b1f1092cab6bf0da0d40780aa160e16bfef Mon Sep 17 00:00:00 2001
+From d2746f2b6feb9a585c0f3b8dc8d611c2977c958a Mon Sep 17 00:00:00 2001
 From: shadichy <shadichy@blisslabs.org>
-Date: Sun, 2 Nov 2025 14:20:59 +0700
+Date: Sun, 30 Nov 2025 17:59:54 +0700
 Subject: [PATCH 7/7] ntfsplus: Backport `ntfs_mkdir` for kernels older than
  6.15
 
@@ -9,10 +9,10 @@ Subject: [PATCH 7/7] ntfsplus: Backport `ntfs_mkdir` for kernels older than
  1 file changed, 16 insertions(+), 6 deletions(-)
 
 diff --git a/fs/ntfsplus/namei.c b/fs/ntfsplus/namei.c
-index d3f9dc629..d9731f7fb 100644
+index 911f9139c..c4b81243e 100644
 --- a/fs/ntfsplus/namei.c
 +++ b/fs/ntfsplus/namei.c
-@@ -968,7 +968,7 @@ static int ntfs_unlink(struct inode *dir, struct dentry *dentry)
+@@ -1037,7 +1037,7 @@ static int ntfs_unlink(struct inode *dir, struct dentry *dentry)
  	return err;
  }
  
@@ -21,7 +21,7 @@ index d3f9dc629..d9731f7fb 100644
  		struct dentry *dentry, umode_t mode)
  {
  	struct super_block *sb = dir->i_sb;
-@@ -979,20 +979,20 @@ static struct dentry *ntfs_mkdir(struct mnt_idmap *idmap, struct inode *dir,
+@@ -1048,20 +1048,20 @@ static struct dentry *ntfs_mkdir(struct mnt_idmap *idmap, struct inode *dir,
  	int uname_len;
  
  	if (NVolShutdown(vol))
@@ -37,7 +37,7 @@ index d3f9dc629..d9731f7fb 100644
 +		return -ENOMEM;
  	}
  
- 	err = ntfs_check_bad_char(uname, uname_len);
+ 	err = ntfs_check_bad_windows_name(vol, uname, uname_len);
  	if (err) {
  		kmem_cache_free(ntfs_name_cache, uname);
 -		return ERR_PTR(err);
@@ -45,7 +45,7 @@ index d3f9dc629..d9731f7fb 100644
  	}
  
  	if (!(vol->vol_flags & VOLUME_IS_DIRTY))
-@@ -1002,13 +1002,23 @@ static struct dentry *ntfs_mkdir(struct mnt_idmap *idmap, struct inode *dir,
+@@ -1071,13 +1071,23 @@ static struct dentry *ntfs_mkdir(struct mnt_idmap *idmap, struct inode *dir,
  	kmem_cache_free(ntfs_name_cache, uname);
  	if (IS_ERR(ni)) {
  		err = PTR_ERR(ni);
@@ -72,5 +72,5 @@ index d3f9dc629..d9731f7fb 100644
  {
  	struct inode *vi = dentry->d_inode;
 -- 
-2.51.2
+2.52.0
 

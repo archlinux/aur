@@ -1,4 +1,4 @@
-From 821b0a9182edc2c8afe8074323c43294acf26158 Mon Sep 17 00:00:00 2001
+From bb2881163b588e973a076d871366f8d199072a63 Mon Sep 17 00:00:00 2001
 From: shadichy <shadichy@blisslabs.org>
 Date: Thu, 6 Nov 2025 16:56:54 +0700
 Subject: [PATCH 6/7] ntfsplus: Update `iomap_zero_range`, `iomap_page_mkwrite`
@@ -10,10 +10,10 @@ Subject: [PATCH 6/7] ntfsplus: Update `iomap_zero_range`, `iomap_page_mkwrite`
  2 files changed, 16 insertions(+), 2 deletions(-)
 
 diff --git a/fs/ntfsplus/file.c b/fs/ntfsplus/file.c
-index f10f1a07b..d8c4859d0 100644
+index ea4defa85..b9a0a38c2 100644
 --- a/fs/ntfsplus/file.c
 +++ b/fs/ntfsplus/file.c
-@@ -683,7 +683,7 @@ static vm_fault_t ntfs_filemap_page_mkwrite(struct vm_fault *vmf)
+@@ -681,7 +681,7 @@ static vm_fault_t ntfs_filemap_page_mkwrite(struct vm_fault *vmf)
  	sb_start_pagefault(inode->i_sb);
  	file_update_time(vmf->vma->vm_file);
  
@@ -23,10 +23,10 @@ index f10f1a07b..d8c4859d0 100644
  	return ret;
  }
 diff --git a/fs/ntfsplus/inode.h b/fs/ntfsplus/inode.h
-index 88f524a50..2a78a17de 100644
+index ae3377bc7..3e67b16d2 100644
 --- a/fs/ntfsplus/inode.h
 +++ b/fs/ntfsplus/inode.h
-@@ -351,17 +351,31 @@ int ntfs_extend_initialized_size(struct inode *vi, const loff_t offset,
+@@ -350,17 +350,31 @@ int ntfs_extend_initialized_size(struct inode *vi, const loff_t offset,
  		const loff_t new_size);
  void ntfs_set_vfs_operations(struct inode *inode, mode_t mode, dev_t dev);
  
@@ -60,5 +60,5 @@ index 88f524a50..2a78a17de 100644
  
  #endif /* _LINUX_NTFS_INODE_H */
 -- 
-2.51.2
+2.52.0
 

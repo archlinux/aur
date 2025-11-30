@@ -1,4 +1,4 @@
-From 7924bbee6bd9a6777572ab9bc2bc5a95e09f7fe4 Mon Sep 17 00:00:00 2001
+From 7e266dd67e68e76e0ae647cc6016c51d172ac788 Mon Sep 17 00:00:00 2001
 From: shadichy <shadichy@blisslabs.org>
 Date: Sun, 2 Nov 2025 04:35:50 +0700
 Subject: [PATCH 5/7] ntfsplus: compress.c: using `page->index` instead of
@@ -9,7 +9,7 @@ Subject: [PATCH 5/7] ntfsplus: compress.c: using `page->index` instead of
  1 file changed, 29 insertions(+), 4 deletions(-)
 
 diff --git a/fs/ntfsplus/compress.c b/fs/ntfsplus/compress.c
-index 5de465a00..4f741c890 100644
+index a801ad6eb..500fc5054 100644
 --- a/fs/ntfsplus/compress.c
 +++ b/fs/ntfsplus/compress.c
 @@ -109,7 +109,14 @@ static void zero_partial_compressed_page(struct page *page,
@@ -58,7 +58,7 @@ index 5de465a00..4f741c890 100644
  	u32 cb_size = ni->itype.compressed.block_size;
  	u64 cb_size_mask = cb_size - 1UL;
  	s64 vcn;
-@@ -827,7 +846,13 @@ int ntfs_read_compressed_block(struct folio *folio)
+@@ -826,7 +845,13 @@ int ntfs_read_compressed_block(struct folio *folio)
  		if (page) {
  			ntfs_error(vol->sb,
  				"Still have pages left! Terminating them with extreme prejudice.  Inode 0x%lx, page index 0x%lx.",
@@ -74,5 +74,5 @@ index 5de465a00..4f741c890 100644
  			kunmap_local(page_address(page));
  			unlock_page(page);
 -- 
-2.51.2
+2.52.0
 

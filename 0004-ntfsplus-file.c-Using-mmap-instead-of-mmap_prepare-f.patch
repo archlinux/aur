@@ -1,4 +1,4 @@
-From ce45b50ca1d01cc446b008873709513fc68a8154 Mon Sep 17 00:00:00 2001
+From 94680b0e897bbcb9d9d5589d3efa952dc0c34eb9 Mon Sep 17 00:00:00 2001
 From: shadichy <shadichy@blisslabs.org>
 Date: Thu, 6 Nov 2025 20:26:04 +0700
 Subject: [PATCH 4/7] ntfsplus: file.c: Using `mmap` instead of `mmap_prepare`
@@ -9,10 +9,10 @@ Subject: [PATCH 4/7] ntfsplus: file.c: Using `mmap` instead of `mmap_prepare`
  1 file changed, 24 insertions(+), 6 deletions(-)
 
 diff --git a/fs/ntfsplus/file.c b/fs/ntfsplus/file.c
-index e2e506a62..f10f1a07b 100644
+index ab7bb4ff7..ea4defa85 100644
 --- a/fs/ntfsplus/file.c
 +++ b/fs/ntfsplus/file.c
-@@ -694,9 +694,10 @@ static const struct vm_operations_struct ntfs_file_vm_ops = {
+@@ -692,9 +692,10 @@ static const struct vm_operations_struct ntfs_file_vm_ops = {
  	.page_mkwrite	= ntfs_filemap_page_mkwrite,
  };
  
@@ -25,7 +25,7 @@ index e2e506a62..f10f1a07b 100644
  	struct inode *inode = file_inode(file);
  
  	if (NVolShutdown(NTFS_SB(file->f_mapping->host->i_sb)))
-@@ -705,14 +706,14 @@ static int ntfs_file_mmap_prepare(struct vm_area_desc *desc)
+@@ -703,14 +704,14 @@ static int ntfs_file_mmap_prepare(struct vm_area_desc *desc)
  	if (NInoCompressed(NTFS_I(inode)))
  		return -EOPNOTSUPP;
  
@@ -43,7 +43,7 @@ index e2e506a62..f10f1a07b 100644
  
  		if (NTFS_I(inode)->initialized_size < to) {
  			err = ntfs_extend_initialized_size(inode, to, to);
-@@ -723,10 +724,23 @@ static int ntfs_file_mmap_prepare(struct vm_area_desc *desc)
+@@ -721,10 +722,23 @@ static int ntfs_file_mmap_prepare(struct vm_area_desc *desc)
  
  
  	file_accessed(file);
@@ -68,7 +68,7 @@ index e2e506a62..f10f1a07b 100644
  static int ntfs_fiemap(struct inode *inode, struct fiemap_extent_info *fieinfo,
  		u64 start, u64 len)
  {
-@@ -1016,7 +1030,11 @@ const struct file_operations ntfs_file_ops = {
+@@ -1102,7 +1116,11 @@ const struct file_operations ntfs_file_ops = {
  	.read_iter	= ntfs_file_read_iter,
  	.write_iter	= ntfs_file_write_iter,
  	.fsync		= ntfs_file_fsync,
@@ -81,5 +81,5 @@ index e2e506a62..f10f1a07b 100644
  	.release	= ntfs_file_release,
  	.splice_read	= ntfs_file_splice_read,
 -- 
-2.51.2
+2.52.0
 
