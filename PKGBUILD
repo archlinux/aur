@@ -3,19 +3,19 @@
 
 pkgname=merlin-git
 _pkgname=merlin
-pkgver=20160325
+pkgver=20251119
 pkgrel=1
 pkgdesc="Context sensitive completion for OCaml in Vim and Emacs (ocamlmerlin binary only)"
-arch=('i686' 'x86_64')
-depends=('ocaml' 'ocaml-findlib' 'ocaml-yojson')
-makedepends=('git')
-url="https://github.com/the-lambda-church/merlin"
+arch=('x86_64')
+depends=('ocaml' 'ocaml-findlib' 'ocaml-yojson' 'ocaml-csexp')
+makedepends=('git' 'dune')
+url="https://github.com/ocaml/merlin"
 license=('MIT')
-source=(git+https://github.com/the-lambda-church/merlin)
+source=(git+https://github.com/ocaml/merlin)
 sha256sums=('SKIP')
 options=('!strip')
 provides=('merlin')
-conflicts=('merlin' 'vim-ocaml-merlin-git')
+conflicts=('merlin')
 
 pkgver() {
   cd ${_pkgname}
@@ -25,15 +25,13 @@ pkgver() {
 build() {
   cd ${_pkgname}
 
-  ./configure --prefix "/usr"
-  make ocamlmerlin
+  dune build --release
 }
 
 package() {
-   cd ${_pkgname}
+  cd ${_pkgname}
 
-  install -Dm 644 LICENSE_MIT.txt "$pkgdir/usr/share/licenses/${pkgname}/LICENSE_MIT.txt"
+  dune install --destdir "${pkgdir}" --prefix="/usr" --libdir="/usr/lib/ocaml" --docdir "/usr/share/doc"
 
-  make DESTDIR="$pkgdir" install-binary
+  install -Dm644 LICENSE -t $pkgdir/usr/share/licenses/$pkgname
 }
-
