@@ -1,0 +1,4 @@
+[python-strawberry-graphql-django]
+source = "git"
+git = "https://github.com/strawberry-graphql/strawberry-django.git"
+prefix = "v"

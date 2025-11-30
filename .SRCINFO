@@ -1,0 +1,23 @@
+pkgbase = python-strawberry-graphql-django
+	pkgdesc = Strawberry GraphQL Django extension
+	pkgver = 0.67.2
+	pkgrel = 1
+	url = https://github.com/strawberry-graphql/strawberry-django
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-setuptools
+	depends = python
+	depends = python-django
+	depends = python-asgiref
+	depends = python-strawberry-graphql
+	depends = python-graphql-core
+	depends = python-typing_extensions
+	optdepends = python-django-choices-field
+	optdepends = python-debug-toolbar
+	source = strawberry-graphql-django-0.67.2.tar.gz::https://github.com/strawberry-graphql/strawberry-django/archive/refs/tags/v0.67.2.tar.gz
+	sha256sums = b496c5295062a767de68b3acaea383602337954b23c175e7e4df609bb05be7d5
+
+pkgname = python-strawberry-graphql-django
