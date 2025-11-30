@@ -1,6 +1,6 @@
 pkgbase = adbmanager
 	pkgdesc = ADB manager for Android devices
-	pkgver = 3.9
+	pkgver = 4.0
 	pkgrel = 1
 	url = https://github.com/AKotov-dev/adbmanager
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = adbmanager
 	depends = nmap
 	depends = sakura
 	depends = 7zip
-	source = adbmanager-3.9.tar.gz::https://github.com/AKotov-dev/adbmanager/archive/refs/tags/v3.9.tar.gz
+	source = adbmanager-4.0.tar.gz::https://github.com/AKotov-dev/adbmanager/archive/refs/tags/v4.0.tar.gz
 	source = adbmanager.desktop
 	source = adbmanager.png
-	sha256sums = a550973cdbd64444b73eef2e3fbe0d6ac74aa34589ecc8f5ee1579e1ed3ac8a9
+	sha256sums = 130e96cf84645b716bdb8544dfb54ed04591bd7f25d9af938dbac0038f203bac
 	sha256sums = dfcea6314f6c08ae8efad0503f15669c20e10589d967718f5f44b313cf4ea922
 	sha256sums = 39cdcaa6d98f543486b6b5720b43007db0e191444f282934405e42ad77ecbbfa
 

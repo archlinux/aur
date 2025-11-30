@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=adbmanager
-pkgver=3.9
+pkgver=4.0
 pkgrel=1
 pkgdesc="ADB manager for Android devices"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('lazarus')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop"
         "$pkgname.png")
-sha256sums=('a550973cdbd64444b73eef2e3fbe0d6ac74aa34589ecc8f5ee1579e1ed3ac8a9'
+sha256sums=('130e96cf84645b716bdb8544dfb54ed04591bd7f25d9af938dbac0038f203bac'
             'dfcea6314f6c08ae8efad0503f15669c20e10589d967718f5f44b313cf4ea922'
             '39cdcaa6d98f543486b6b5720b43007db0e191444f282934405e42ad77ecbbfa')
 
