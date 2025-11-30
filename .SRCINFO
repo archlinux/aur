@@ -4,7 +4,7 @@ pkgbase = crossmacro
 	pkgrel = 1
 	url = https://github.com/alper-han/CrossMacro
 	arch = x86_64
-	license = MIT
+	license = GPL-3.0
 	makedepends = dotnet-sdk>=10.0
 	makedepends = git
 	depends = dotnet-runtime>=10.0
@@ -18,6 +18,6 @@ pkgbase = crossmacro
 	depends = libxrandr
 	options = !strip
 	source = crossmacro-1.0.0.tar.gz::https://github.com/alper-han/CrossMacro/archive/v1.0.0.tar.gz
-	sha256sums = 6e32b422f44b521346cabc3989c98ec1ee3261282bb5b8964842733bec5bd3f3
+	sha256sums = ac0db9881e014fa4f9ee2b2b899c66591d261e2990844c4fab8234ee4e1e9bb6
 
 pkgname = crossmacro

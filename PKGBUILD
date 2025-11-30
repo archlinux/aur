@@ -5,11 +5,11 @@ pkgrel=1
 pkgdesc="Mouse Macro Automation Tool for Linux Wayland"
 arch=('x86_64')
 url="https://github.com/alper-han/CrossMacro"
-license=('MIT')
+license=('GPL-3.0')
 depends=('dotnet-runtime>=10.0' 'zlib' 'openssl' 'icu' 'krb5' 'fontconfig' 'libx11' 'libxcursor' 'libxrandr')
 makedepends=('dotnet-sdk>=10.0' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v${pkgver}.tar.gz")
-sha256sums=('6e32b422f44b521346cabc3989c98ec1ee3261282bb5b8964842733bec5bd3f3')
+sha256sums=('ac0db9881e014fa4f9ee2b2b899c66591d261e2990844c4fab8234ee4e1e9bb6')
 options=('!strip')
 
 build() {
