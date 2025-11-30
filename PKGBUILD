@@ -1,27 +1,25 @@
-# Maintainer: Twann <twann@ctemplar.com>
+# Maintainer: Camelia Lavender <cam (at) camelia (dot) dev>
 
 pkgname=python-argumentor
-pkgver=0.0.5
+pkgver=2.0.0
 pkgrel=1
-provides=("$pkgname")
-pkgdesc="A simple, copylefted, lightweight library to work with command-line arguments in Python"
-url="https://codeberg.org/twann/${pkgname}"
+pkgdesc="a simple and lightweight library to build complex command-line tools"
+url="https://codeberg.org/camelia/python-argumentor"
 arch=("any")
-license=("GPL3")
-makedepends=("python>=3" "python-setuptools")
+license=("LGPL3")
+makedepends=("python>=3" "python-setuptools" "python-build" "python-installer" "python-wheel")
 depends=("python>=3")
-source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/twann/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=("8664b5bc18a4bdf69d8ec4cd0df1d9b9de4323bd01acc96b131ab8a139d733a8aebcc46fa5799da331f7f5283f9813f747e08756e9bbea3f6a984949f1c8bc4b")
+source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/camelia/python-argumentor/archive/${pkgver}.tar.gz")
+sha512sums=("e61557005df9b56fa8b44547726536525fc32fdd5474be460f7062ee14d84ca6f3ebfc98781212210afd750001f01904bad95b64023582eb68b192acc36a69fd")
 
 build()
 {
         cd "$srcdir/$pkgname"
-        python setup.py clean --all
-	python setup.py build
+	python -m build
 }
 
 package()
 {
         cd "$srcdir/$pkgname"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }

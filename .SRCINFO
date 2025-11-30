@@ -1,15 +1,17 @@
 pkgbase = python-argumentor
-	pkgdesc = A simple, copylefted, lightweight library to work with command-line arguments in Python
-	pkgver = 0.0.5
+	pkgdesc = a simple and lightweight library to build complex command-line tools
+	pkgver = 2.0.0
 	pkgrel = 1
-	url = https://codeberg.org/twann/python-argumentor
+	url = https://codeberg.org/camelia/python-argumentor
 	arch = any
-	license = GPL3
+	license = LGPL3
 	makedepends = python>=3
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python>=3
-	provides = python-argumentor
-	source = python-argumentor-0.0.5.tar.gz::https://codeberg.org/twann/python-argumentor/archive/v0.0.5.tar.gz
-	sha512sums = 8664b5bc18a4bdf69d8ec4cd0df1d9b9de4323bd01acc96b131ab8a139d733a8aebcc46fa5799da331f7f5283f9813f747e08756e9bbea3f6a984949f1c8bc4b
+	source = python-argumentor-2.0.0.tar.gz::https://codeberg.org/camelia/python-argumentor/archive/2.0.0.tar.gz
+	sha512sums = e61557005df9b56fa8b44547726536525fc32fdd5474be460f7062ee14d84ca6f3ebfc98781212210afd750001f01904bad95b64023582eb68b192acc36a69fd
 
 pkgname = python-argumentor
