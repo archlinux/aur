@@ -1,7 +1,7 @@
 pkgbase = overskride
 	pkgdesc = A simple yet powerful bluetooth client
 	pkgver = 0.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kaii-lb/overskride
 	arch = x86_64
 	arch = aarch64
@@ -15,6 +15,6 @@ pkgbase = overskride
 	depends = libadwaita
 	depends = libpulse
 	source = https://github.com/kaii-lb/overskride/archive/refs/tags/v0.6.5.tar.gz
-	sha256sums = 2a8256e7d1e1909d7f0f63650746fb9e816c2c718aa69da27cc5eb13d42e9945
+	sha256sums = 4b814da989277f2809f219ffd9d55c050d83a0117e724f44265e83a40627d495
 
 pkgname = overskride
