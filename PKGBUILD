@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=wisp-calendar
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="A beautiful text-based calendar with visual aesthetics for Arch Linux"
 arch=('any')
