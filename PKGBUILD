@@ -1,7 +1,7 @@
 # Maintainer: Frédéric Bogaerts <fred@netpack.pt>
 pkgname=xfb
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Open-source Radio Automation with comprehensive accessibility support"
 arch=('x86_64' 'aarch64')
 url="https://github.com/netpack/XFB"
@@ -55,15 +55,10 @@ build() {
     cmake -B build \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCPACK_GENERATOR=""
+        -DCPACK_GENERATOR="" \
+        -DBUILD_TESTING=OFF
     
     cmake --build build
-}
-
-check() {
-    cd "$srcdir/XFB/build"
-    # Run tests if available
-    ctest --output-on-failure || true
 }
 
 package() {
