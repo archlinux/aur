@@ -1,6 +1,6 @@
 # Maintainer: hkamori
 pkgname=mimose-bin
-pkgver=1.6.0
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="Mimose – App that combines Spotify, Soundcloud, VK and Deezer."
 arch=('x86_64')
