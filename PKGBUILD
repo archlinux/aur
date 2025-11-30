@@ -3,7 +3,7 @@
 pkgname=('vulkan-caps-viewer-x11' 'vulkan-caps-viewer-wayland')
 pkgbase=vulkan-caps-viewer
 pkgver=4.10
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Vulkan Hardware Capability Viewer"
 arch=('x86_64' 'aarch64')
@@ -21,13 +21,14 @@ sha256sums=('0cecd1c605999dfd2fb73e883d8c6e9a884951d5473e11f3a6649dfaefb7e977'
             'SKIP')
 
 prepare() {
+
+  # Create build directories
+  mkdir -p build-x11 build-wayland
+
   cd VulkanCapsViewer
   git submodule init
   git config submodule.Vulkan-Headers.url "$srcdir/Vulkan-Headers"
   git -c protocol.file.allow=always submodule update
-
-  # Create build directories
-  mkdir -p build-x11 build-wayland
 }
 
 build() {
