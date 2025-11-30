@@ -1,20 +1,19 @@
 pkgname=uaspl
-pkgver=1.2.2
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Utilidad Automatizada para la Seguridad y Protección en Linux"
 arch=('any')
 url="https://github.com/KevinCrrl/UASPL"
-license=('GPL3')
-source=("https://github.com/KevinCrrl/UASPL/releases/download/${pkgver}/UASPL-${pkgver}.tar.xz")
-sha256sums=("0761fd9c04203002b262a7901c4449c05577971e345a8afc25efcd0c67f6810c")
+license=('GPL3 and MIT')
+source=("${url}/archive/refs/tags/${pkgver}/${pkgver}.tar.gz")
+sha512sums=("2f72ef00b7de099627a7b2119b4bf0ae23f87f3412ff538b51ee9a11a745a52ae21053d098d749b63817e0d01c0655c81d36e2c404800fd0841f0a5ca4a7d572")
 conflicts=('uaspl-bin')
 depends=(
     'python'
     'python-customtkinter'
     'python-pyxdg'
-    'python-colorama'
     'python-jsonschema'
-    'python-pyfiglet'
+    'polkit'
     'clamav'
     'rkhunter'
     'ufw'
@@ -26,12 +25,17 @@ makedepends=(
 )
 
 build() {
-    cd "${srcdir}/UASPL-${pkgver}"
+    __uaspldir="$srcdir/UASPL-$pkgver"
+    cd "$__uaspldir/src/"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/UASPL-${pkgver}"
+    __uaspldir="$srcdir/UASPL-$pkgver"
+    cd "$__uaspldir/src/"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 "$__uaspldir/src/uasplc_sh/uasplc.sh" "$pkgdir/usr/bin/uasplc"
+    install -Dm644 "$__uaspldir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$__uaspldir/src/UASPL.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/UASPL.png"
+    install -Dm644 "$__uaspldir/src/UASPL.desktop" "$pkgdir/usr/share/applications/UASPL.desktop"
 }
