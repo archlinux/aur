@@ -13,6 +13,8 @@ depends=(
   'imagemagick'
   'gpu-screen-recorder'
   'brightnessctl'
+  'ffmpeg'
+  'qt6-multimedia'
 )
 optdepends=(
   'cliphist: For clipboard history support'
