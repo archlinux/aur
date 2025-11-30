@@ -2,7 +2,7 @@
 
 pkgname=winghexexplorer2
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='一个自由强大跨平台的十六进制编辑器 / A free, powerful, cross-platform hex editor'
 url="https://github.com/Wing-summer/WingHexExplorer2"
 
@@ -39,9 +39,9 @@ build() {
         -D CMAKE_INSTALL_PREFIX=/opt
         -D CMAKE_BUILD_TYPE=Release
         -D WINGHEX_USE_FRAMELESS=ON
-        -D BUILD_TEST_PLUGIN=OFF
-        -D BUILD_SHARED_MEM_EXT=OFF
-        -D ANGEL_LSP=ON
+        -D WINGHEX_BUILD_TEST_PLUGIN=OFF
+        -D WINGHEX_BUILD_SHARED_MEM_EXT=OFF
+        -D WINGHEX_ANGEL_LSP=ON
     )
     cmake -S . -B build "${_flags[@]}"
     cmake --build build -- -j"$(nproc)"
