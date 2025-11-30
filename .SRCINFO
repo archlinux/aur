@@ -1,0 +1,21 @@
+pkgbase = cheatshh
+	pkgdesc = Interactive CLI for managing command line cheatsheets, written in shell script
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/AnirudhG07/cheatshh
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = bash
+	depends = python
+	depends = python-setuptools
+	provides = cheatshh
+	conflicts = python-cheatshh
+	replaces = python-cheatshh
+	source = cheatshh-1.1.1.tar.gz::https://github.com/AnirudhG07/cheatshh/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = 2df5bf602c32ab1fdf7f163d4132970072c4b98d2aec2697dac46f4e36670704
+
+pkgname = cheatshh
