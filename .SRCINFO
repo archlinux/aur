@@ -1,6 +1,6 @@
 pkgbase = libragent
 	pkgdesc = A desktop app for AI agents with built-in tools
-	pkgver = 0.3.22
+	pkgver = 0.3.23
 	pkgrel = 1
 	url = https://github.com/fritzprix/libr-agent
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = libragent
 	makedepends = cargo
 	makedepends = nodejs
 	makedepends = pnpm
+	makedepends = clang
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = libappindicator-gtk3
 	depends = librsvg
 	depends = libsecret
-	options = !lto
-	source = libragent::git+https://github.com/fritzprix/libr-agent.git#tag=v0.3.22
+	source = libragent::git+https://github.com/fritzprix/libr-agent.git#tag=v0.3.23
 	source = libragent.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP

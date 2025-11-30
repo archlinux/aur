@@ -1,18 +1,17 @@
 # Maintainer: Fritz Prix <fritzprix@gmail.com>
 pkgname=libragent
-pkgver=0.3.22
+pkgver=0.3.23
 pkgrel=1
 pkgdesc="A desktop app for AI agents with built-in tools"
 arch=('x86_64')
 url="https://github.com/fritzprix/libr-agent"
 license=('MIT')
 depends=('webkit2gtk-4.1' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libsecret')
-makedepends=('git' 'cargo' 'nodejs' 'pnpm')
+makedepends=('git' 'cargo' 'nodejs' 'pnpm' 'clang')
 source=("${pkgname}::git+https://github.com/fritzprix/libr-agent.git#tag=v${pkgver}"
         "libragent.desktop")
 sha256sums=('SKIP'
             'SKIP')
-options=('!lto')
 
 prepare() {
   cd "$pkgname"
@@ -25,8 +24,20 @@ build() {
   export TAURI_SIGNING_PRIVATE_KEY=""
   export TAURI_SIGNING_KEY_PASSWORD=""
   
-  # Build the application
-  pnpm tauri build
+  # Fix for ring build issues in AUR environment
+  # ring crate can fail with GCC or when CFLAGS interfere with assembly compilation
+  export CC=clang
+  export CXX=clang++
+  unset CFLAGS
+  unset CXXFLAGS
+  unset LDFLAGS
+  
+  # Build the frontend
+  pnpm build
+  
+  # Build the backend (skip bundling to avoid linuxdeploy errors)
+  cd src-tauri
+  cargo build --release
 }
 
 package() {
