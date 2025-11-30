@@ -2,7 +2,7 @@
 # Maintainer: Ratakor <ratakor@disroot.org>
 
 pkgname=clang-bin-cc-cxx
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="Relink /bin/cc to clang, and /bin/cxx to clang++."
 arch=('any')
