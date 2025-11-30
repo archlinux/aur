@@ -1,14 +1,14 @@
 pkgbase = adobe-air-sdk
 	pkgdesc = Adobe Air Software Development Kit and Runtime Environment
 	pkgver = 2.6
-	pkgrel = 11
+	pkgrel = 12
 	url = https://web.archive.org/web/20110822171715/http://kb2.adobe.com/cps/853/cpsid_85304.html
 	install = adobe-air-sdk.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = gcc-libs
-	depends = libxml2
+	depends = libxml2-legacy
 	depends = nss
 	depends = gtk2
 	depends = libxslt

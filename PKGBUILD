@@ -3,13 +3,13 @@
 
 pkgname=adobe-air-sdk
 pkgver=2.6
-pkgrel=11
+pkgrel=12
 pkgdesc='Adobe Air Software Development Kit and Runtime Environment'
 arch=('i686' 'x86_64')
 url='https://web.archive.org/web/20110822171715/http://kb2.adobe.com/cps/853/cpsid_85304.html'
 license=('custom')
 options=('!strip' 'staticlibs')
-depends=('gcc-libs' 'libxml2' 'nss' 'gtk2' 'libxslt')
+depends=('gcc-libs' 'libxml2-legacy' 'nss' 'gtk2' 'libxslt')
 depends_x86_64+=('lib32-gcc-libs' 'lib32-libxml2' 'lib32-nss' 'lib32-gtk2' 'lib32-libxslt')
 install=$pkgname.install
 source=('https://web.archive.org/web/20150416000138/http://airdownload.adobe.com/air/lin/download/2.6/AdobeAIRSDK.tbz2')
