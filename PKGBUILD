@@ -1,7 +1,7 @@
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
 pkgname=emilua
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lua execution engine"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/emilua/emilua"
@@ -21,7 +21,7 @@ build() {
 }
 
 check() {
-	meson test --print-errorlogs -C build
+	MESON_NUM_PROCESSES=1 meson test --print-errorlogs -C build
 }
 
 package() {
