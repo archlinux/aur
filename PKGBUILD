@@ -3,7 +3,7 @@
 _name=sorl-thumbnail
 pkgname=python-$_name
 pkgver=13.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Thumbnails for Django."
 arch=('any')
 url="https://github.com/jazzband/$_name"
@@ -56,4 +56,4 @@ package() {
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 sha256sums=('99b21fbb9ff11a896a5ff5e4831daa4aab5fb8cbe95b26f2c170288013d069e8'
-            'be5b60fb6f38ddc1b8ca865e0b8ac4f8d6bd621feb7908870cdb2f8997685c3e')
+            '7bb5abe72047bdcd7f0ca82b5c78db0f1bac5f386a9933e701fa3fee3cdb5abd')
