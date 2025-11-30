@@ -1,7 +1,7 @@
 # Maintainer: ycna07 <aozakitouko at foxmail dot com>
 pkgname=myune_music-bin
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="一个基于 Flutter (Dart) 实现的简洁本地音乐播放器，支持 Windows / Linux 双端。"
 arch=('x86_64')
 _pkgname=${pkgname%-bin} 
