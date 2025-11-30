@@ -1,7 +1,7 @@
 pkgbase = openmodelica-bin
-	pkgdesc = A complete Modelica modeling and simulation environment (from Debian Trixie binaries)
+	pkgdesc = A complete Modelica modeling and simulation environment (from Debian binaries)
 	pkgver = 1.25.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openmodelica.org/
 	arch = x86_64
 	license = OSMC-PL
