@@ -8,6 +8,7 @@ arch=('x86_64')
 provides=('Quazaar')
 conflicts=('Quazaar')
 replaces=('Quazaar')
+maintainer="Swapnil Ingle <ingleswapnil2004@gmail.com>"
 url="https://github.com/codershubinc/quazaar"
 license=('MIT')
 makedepends=('go' 'git')
