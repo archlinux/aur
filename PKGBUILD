@@ -1,3 +1,5 @@
+# Maintainer: Thorben Günther <admin@xenrox.net>
+ 
 pkgname='vikunja'
 pkgver='0.24.6'
 pkgrel=3
