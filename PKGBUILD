@@ -1,6 +1,6 @@
 # Maintainer: Jai-JAP <jai dot jap dot 318 at gmail dot com>
 pkgname=keymapper-bin
-pkgver=4.12.3
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="A cross-platform context-aware keyremapper"
 arch=(x86_64 aarch64)
@@ -14,10 +14,10 @@ source=(autostart.desktop)
 sha256sums=('b3312492e497b5976501a42445b70309183811da545257742f7b99364cdca402')
 
 source_x86_64=(${pkgname%-bin}-amd64.tgz::${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-Linux-x86_64.tar.gz)
-sha256sums_x86_64=('ac060ee5dedb83b6203f0c8574e67aa1f2a7797cf19a22ce364208e273a5613c')
+sha256sums_x86_64=('0a8cb0b4a46ba0c91b5c8a4edd203a78f8c31eec8ff8da03c73d62fa613286f9')
 
 source_aarch64=(${pkgname%-bin}-arm64.tgz::${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-Linux-arm64.tar.gz)
-sha256sums_aarch64=('69ae1a9eaf6b42c108e9fde7afa87f9b6c7dd718d993ab42f6e11b121ae516e7')
+sha256sums_aarch64=('1053c630a76c40fe9e158d92b1facc56b6d16b248282c8416359672101c1af41')
 
 _arch=${CARCH/aarch64/arm64}
 
