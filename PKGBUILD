@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 # Contributor: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
 pkgname=downlords-faf-client
-pkgver=2025.11.1
+pkgver=2025.11.2
 _pkgver="${pkgver//./_}"
 _filename="faf_unix_${_pkgver}.tar.gz"
 pkgrel=1
@@ -15,7 +15,7 @@ source=("https://github.com/FAForever/downlords-faf-client/releases/download/v${
         "https://github.com/FAForever/downlords-faf-client/raw/develop/src/media/appicon/128.png"
         'DownlordsFafClient.desktop'
         'downlords-faf-client')
-sha256sums=('703cec57d2d3bd9bcb25d6df7779240ccd6473c867baaee1326fbf4491364740'
+sha256sums=('1daa6a9decfb6674fa43115516863fb7f1ee957d79cfbae011e252611fa1d19d'
             '2a5803ca2dd463aa4b53d79cff7f30e3aa7beb0d874b39c8ef59e679fbde9d3d'
             '3fd2b21da9de9f9c02dd89ee07f49c559dbb2de15f4e86a9b31f6353f608ffa6'
             'aea47646ad51ffc45747faf1a2da51cf96d10aab61e3d7ca71013d934149e4f0')
