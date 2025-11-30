@@ -1,7 +1,7 @@
 pkgbase = python-language-data
 	pkgdesc = Languages supplementary data for python-langcodes
-	pkgver = 1.3.0
-	pkgrel = 3
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = https://github.com/georgkrause/language_data
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = python-language-data
 	depends = python
 	depends = python-langcodes
 	depends = python-marisa-trie
-	source = https://files.pythonhosted.org/packages/source/l/language_data/language_data-1.3.0.tar.gz
-	sha256sums = 7600ef8aa39555145d06c89f0c324bf7dab834ea0b0a439d8243762e3ebad7ec
+	source = https://files.pythonhosted.org/packages/source/l/language_data/language_data-1.4.0.tar.gz
+	sha256sums = 800e6457e7beda781c156e02d7707e38db2ded026472e07e2c055dc8446ee574
 
 pkgname = python-language-data
