@@ -1,6 +1,6 @@
 pkgbase = netparty-git
 	pkgdesc = A tool for hassle-free LAN parties over the Internet
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://gitlab.com/Taro94/netparty
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = netparty-git
 	makedepends = git
 	depends = wireguard-tools
 	depends = iproute2
+	optdepends = firejail: recommended for run-game mode
 	options = !strip
 	source = git+https://gitlab.com/Taro94/netparty.git
 	md5sums = SKIP
