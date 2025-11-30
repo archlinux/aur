@@ -6,7 +6,7 @@
 
 pkgname=chatterino2
 pkgver=2.5.4
-pkgrel=4
+pkgrel=5
 pkgdesc='Second installment of the Twitch chat client series "Chatterino"'
 arch=('x86_64')
 url=https://chatterino.com
@@ -97,13 +97,18 @@ prepare() {
     done
 
     # Remove Qt 5 compat requirement (TODO: Remove this after next Chatterino update)
-    git cherry-pick -n c5ced77f9bb54dcc1cb29e863a7c7c55db9ac786 || true
+    git cherry-pick c5ced77f9bb54dcc1cb29e863a7c7c55db9ac786 || true
     git restore -WS CHANGELOG.md
     git commit --no-edit
 
     # Workaround to make testHttp test pass with httpbin
     sed -i 's/_EQ(lua->get<QByteArray>("data"), c.data/_THAT(lua->get<QByteArray>("data"), testing::HasSubstr(c.data)/' \
         tests/src/Plugins.cpp
+
+    # Change the test ports to less likely to be used ones (should reduce the likolihood of test failures)
+    sed -i 's/:9050/:64050/g' tests/src/{BasicPubSub,BttvLiveUpdates,Plugins,SeventvEventAPI,TwitchPubSubClient,WebSocketPool}.cpp
+    sed -i 's/:9051/:64051/' tests/src/NetworkHelpers.hpp
+    sed -i 's/:9052/:64052/' tests/src/{Plugins,WebSocketPool}.cpp
 }
 
 build() {
@@ -133,8 +138,8 @@ check() {
     CGO_ENABLED=0 go build -trimpath -mod=readonly -modcacherw
 
     # Actually run the tests
-    eval `pifpaf run httpbin --port 9051`
-    ./server 127.0.0.1:9050 127.0.0.1:9052 &
+    eval `pifpaf run httpbin --port 64051`
+    ./server 127.0.0.1:64050 127.0.0.1:64052 &
     popd
     ctest --test-dir build --output-on-failure
     kill %+
