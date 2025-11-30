@@ -7,7 +7,7 @@ pkgbase = quazaar
 	license = MIT
 	makedepends = go
 	makedepends = git
-		source = quazaar-0.1.4.tar.gz::https://github.com/codershubinc/quazaar/archive/refs/tags/v0.1.4.tar.gz
-		sha256sums = 934414414af02881b1b5ce1f1c86cec9a82a484320ab48f151966c2a10e32299
+	source = quazaar-0.1.4.tar.gz::https://github.com/codershubinc/quazaar/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 934414414af02881b1b5ce1f1c86cec9a82a484320ab48f151966c2a10e32299
 
 pkgname = quazaar
