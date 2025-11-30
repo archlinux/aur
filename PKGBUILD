@@ -4,11 +4,11 @@
 # Contributor: David Herrmann <dh.herrmann@googlemail dot com>
 
 pkgname=kmscon
-pkgver=9.1.0
+pkgver=9.2.0
 pkgrel=1
 pkgdesc='Terminal emulator based on Kernel Mode Setting (KMS)'
 arch=('x86_64')
-url='https://github.com/Aetf/kmscon/'
+url='https://github.com/kmscon/kmscon'
 license=('MIT')
 depends=(
     'bash'
@@ -24,8 +24,8 @@ depends=(
     'systemd-libs'
 )
 makedepends=('check' 'libxslt' 'docbook-xsl' 'linux-api-headers' 'meson')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Aetf/kmscon/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('56427c29cb581db22f7ebf76bc8678dc8948700cce39b60be001a88d1d297beb')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('69b8e63d2a48514d5802fba7a284ae6ce307488f1c47ac523582d599141ed4cf')
 
 build() {
   meson setup build $pkgname-$pkgver \
