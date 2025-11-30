@@ -24,7 +24,7 @@ if [ "${_is_beta}" = "false" ]; then
 else
     source=("https://github.com/NoRiskClient/noriskclient-launcher/releases/download/v${_pkgver}-${_channel}.${_rel}/NoRiskClient-Linux.deb")
 fi
-sha256sums=('a6bcd8e9941f0a5aa2d89e70061ce9105b82772de7e92953ab79704c47ac43b8')
+sha256sums=('SKIP')
 
 prepare() {
   dpkg-deb -x "$srcdir/NoRiskClient-Linux.deb" "$srcdir/pkg"

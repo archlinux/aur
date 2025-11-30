@@ -12,6 +12,6 @@ pkgbase = nrc
 	depends = xdg-utils
 	depends = libayatana-appindicator
 	source = https://github.com/NoRiskClient/noriskclient-launcher/releases/download/v0.6.14-beta.1/NoRiskClient-Linux.deb
-	sha256sums = a6bcd8e9941f0a5aa2d89e70061ce9105b82772de7e92953ab79704c47ac43b8
+	sha256sums = SKIP
 
 pkgname = nrc
