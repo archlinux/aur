@@ -1,3 +1,4 @@
 [fan-control]
 source = "git"
 git = "https://github.com/wiiznokes/fan-control.git"
+ignored = "2025.3.0"
