@@ -1,13 +1,14 @@
 pkgbase = python-strawberry-graphql
 	pkgdesc = Python GraphQL library based on dataclasses
 	pkgver = 0.287.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/strawberry-graphql/strawberry
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
 	checkdepends = python-pytest-mock
+	checkdepends = python-pytest-emoji
 	checkdepends = python-inline-snapshot
 	checkdepends = python-asgiref
 	checkdepends = python-libcst

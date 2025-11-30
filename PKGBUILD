@@ -3,7 +3,7 @@
 _name=strawberry-graphql
 pkgname=python-$_name
 pkgver=0.287.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python GraphQL library based on dataclasses"
 arch=('any')
 url="https://github.com/strawberry-graphql/strawberry"
@@ -48,6 +48,7 @@ checkdepends=(
 	'python-pytest'
 	'python-pytest-asyncio'
 	'python-pytest-mock'
+	'python-pytest-emoji'
 	'python-inline-snapshot'
 	'python-asgiref'
 	'python-libcst'
