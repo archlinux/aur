@@ -1,7 +1,7 @@
 pkgbase = zap-elec
 	pkgdesc = Simple web wrapper for WhatsApp Web
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/JonasAlv/zap-elec
 	install = zap-elec.install
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = zap-elec
 	depends = libnotify
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/JonasAlv/zap-elec/releases/download/v1.0.0/zap-elec_1.0.0_amd64.deb
+	source_x86_64 = https://github.com/JonasAlv/zap-elec/releases/download/v1.0.0/zap-elec-1.0.0-amd64.deb
 	sha256sums_x86_64 = SKIP
 
 pkgname = zap-elec
