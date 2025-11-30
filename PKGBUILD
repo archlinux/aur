@@ -1,7 +1,7 @@
 # Contributor: Étienne Deparis <etienne@depar.is> (stable goodvibes AUR pkg)
 
 pkgname=goodvibes-git
-pkgver=0.8.1.r3.g8486def
+pkgver=0.8.3.r3.g209f20c
 pkgrel=1
 pkgdesc="Lightweight internet radio player"
 arch=('i686' 'x86_64')
@@ -28,9 +28,8 @@ pkgver() {
 
 build() {
     cd goodvibes-git
-    meson --prefix=/usr build
-    cd build
-    ninja
+    meson setup --reconfigure --prefix=/usr build
+    ninja -C build
 }
 
 package() {
