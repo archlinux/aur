@@ -11,7 +11,9 @@ pkgver="${_upstreamver}"
 pkgrel=1
 pkgdesc="CLI-driven Terminal User Interface (TUI) that enables you to assign the numerous lines emitted by your scripts to visual, collapsible blocks called steps"
 arch=('any')
-url='https://github.com/xavierog/moulti'
+url='https://moulti.run/'
+# url='https://pypi.org/project/moulti/'
+# url='https://github.com/xavierog/moulti'
 license=('MIT')
 
 provides=("${_pypi_package}")
@@ -20,8 +22,9 @@ conflicts=("python-${pkgname}")
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 depends=('bash' 'python' 'python-argcomplete' 'python-pyperclip' 'python-rich' 'python-textual' 'python-typing_extensions' 'python-unidiff' 'ansible-core' 'python-ensurepath')
 
-source=("${_pypi_package}-${_upstreamver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7b260b8febddf278fc9c917c6eb3081016a0c7532c93696dc03322854af70a90')
+source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
+# source=("${_pypi_package}-${_upstreamver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('cdfca85e4e345ac686a7e99cb5081a22116ef1f74ba7b15e1144aabeaf3c8f44')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${pkgver}/"
@@ -35,8 +38,6 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
 
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -Dm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
-    install -Dm644 "Documentation.md" "${pkgdir}/usr/share/doc/${pkgname}/DOCUMENTATION.md"
 
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
