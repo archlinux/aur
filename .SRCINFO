@@ -1,31 +1,50 @@
 pkgbase = pcoip-client
-	pkgdesc = Teradici PCOIP client
-	pkgver = 23.01.1
-	pkgrel = 2
-	url = https://teradici.com/
+	pkgdesc = HP Anywhere PCOIP client
+	pkgver = 25.10.1
+	pkgrel = 1
+	url = https://anyware.hp.com/
 	arch = x86_64
-	license = custom:Teradici
+	license = custom:HPAnywhere
 	makedepends = fakeroot
 	makedepends = patchelf
-	depends = openssl-1.1
-	depends = pcsclite
-	depends = qt5-declarative
-	depends = qt5-graphicaleffects
-	depends = qt5-networkauth
-	depends = qt5-quickcontrols
-	depends = qt5-quickcontrols2
-	depends = protobuf3.12
-	depends = hiredis0.14
-	depends = ffmpeg4.4
-	source = https://dl.teradici.com/DeAdBCiUYInHcSTy/pcoip-client/deb/ubuntu/pool/jammy/main/p/pc/pcoip-client_23.01.1-22.04/pcoip-client_23.01.1-22.04_amd64.deb
-	source = LICENSE.pdf::https://docs.teradici.com/sites/default/files/documents/2022-02/EULA%20%28Feb%202022%29.pdf
-	sha256sums = bbaf1e643e77e239968ec108e9dbee9ade17f47bb4694c8bbf97fdc229a9903f
+	depends = libcap>=2.10
+	depends = libxcb>=1.7.5
+	depends = pcsclite>=1.3.3
+	depends = alsa-lib>=1.0.17
+	depends = dbus>=1.9.14
+	depends = libdrm>=2.4.38
+	depends = libglvnd
+	depends = expat>=2.1
+	depends = fontconfig>=2.12.6
+	depends = freetype2>=2.9.1
+	depends = mesa>=21.1.0
+	depends = glib2>=2.26.0
+	depends = krb5>=1.17
+	depends = nspr>=4.9
+	depends = nss>=3.30
+	depends = protobuf-21
+	depends = libpulse>=0.99.1
+	depends = systemd>=183
+	depends = libva>=2.1.0
+	depends = libx11>=1.2.99.901
+	depends = xcb-util-image>=0.2.1
+	depends = xcb-util-keysyms>=0.4.0
+	depends = xcb-util-renderutil
+	depends = xcb-util-wm>=0.4.1
+	depends = xcb-util>=0.4.0
+	depends = libxext
+	depends = libxi>=1.2.99.4
+	depends = libxkbcommon-x11>=0.5.0
+	depends = zlib>=1.4.0
+	depends = libpng>=1.6.2
+	source = https://dl.anyware.hp.com/DeAdBCiUYInHcSTy/pcoip-client/deb/ubuntu/pool/jammy/main/p/pc/pcoip-client_25.10.1-22.04/pcoip-client_25.10.1-22.04_amd64.deb
+	source = LICENSE.pdf::https://anyware.hp.com/sites/default/files/documents/2025-06/HP%20Anyware%20EULA_June2025_0.pdf
+	sha256sums = 68439e6f51f0b79c9a8602716025b832e0fdc9bdb06357dfad6d406debe47339
 	sha256sums = c1ce23848fb8d3b08cfcb87ab9fc0572e14e274740e8142ebd07a18c050dd16e
 
 pkgname = pcoip-client
-	install = pcoip-client.install
 
 pkgname = pcoip-client-clipboard
-	pkgdesc = Teradici PCOIP client clipboard synchronization plugin
+	pkgdesc = HP Anywhere PCOIP client clipboard synchronization plugin
 	depends = pcoip-client
-	depends = graphicsmagick
+	depends = graphicsmagick>=1.3.26

@@ -1,4 +1,0 @@
-post_install() {
-	setcap "cap_setgid+p" "/usr/bin/pcoip-client"
-	setcap "cap_setgid+i" "/usr/lib/pcoip-client/usb-helper"
-}
