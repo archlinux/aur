@@ -14,7 +14,7 @@ _debug=false
 _generic_release=false
 
 ## real pkgrel is the eval one
-pkgver=10.18.w53.s2d58cc0
+pkgver=10.20.w0.s54f4c57
 pkgrel=1
 eval pkgrel=1
 
@@ -33,12 +33,12 @@ _enabled_staging=()
 
 ## if all staging patches are to be applied, what (array of) patches to omit?
 ## e.g. "Compiler_Warnings user32-. . ."
-_disabled_staging=(ntdll-Serial_Port_Detection oleaut32_VarAdd winedevice-Default_Drivers dsound-EAX ntdll-Junction_Points mountmgr-DosDevices ntdll-NtDevicePath ws2_32-af_unix)
+_disabled_staging=(user32-msgbox-Support-WM_COPY-mesg winedevice-Default_Drivers dsound-EAX mountmgr-DosDevices)
                    # some patches are known to cause performance issues with path/directory traversal
                    # dsound-EAX causes crashing in osu! with compat. mode enabled
 
 ## main AUR version control setting, wine/staging base will be taken from this if custompatches=false (default)
-_patchbase_tag="11-04-2025-82275b13-2d58cc0e"
+_patchbase_tag="11-29-2025-4dfbf077-54f4c57f"
 
 ## to use this, set this to true, create a "custompatches" folder in the top-level PKGBUILD directory, and place your patches there.
 ## the patches from the wine-osu-patches git repo will no longer be applied, but you can copy them to the
@@ -49,8 +49,8 @@ _custompatches=false
 ## (custompatches=true) uses wine/staging master if empty, uses given commit or tag if set
 ##                     (if you want to update them to current master, just set them empty)
 ## (custompatches=false) ignored and overwritten by upstream commits from patchbase repo
-_desired_wine_commit=82275b13a24613947d1da00cd85209dbfaf5465f
-_desired_staging_commit=2d58cc0eb9975536f8adf291facf327ebd5c919a
+_desired_wine_commit=4dfbf077cf708e4bbffa8e086d78d6652bbd69d8
+_desired_staging_commit=54f4c57fd6d8724b72c091c9f714795cd763ba45
 
 ## (custompatches=true) ignore the _desired_wine_commit above and take the wine commit from the "upstream-commit" file in the staging repo
 _use_staging_upstream=false
@@ -99,23 +99,38 @@ _llvm_mingw_prefdir=
 ################################################################################################################################
 ################################################################################################################################
 
-_wow64build=${_wow64build:-"$(cat "${_where}/buildiswow64")"}
-if [ "$_wow64build" = "true" ]; then _wowname="-wow64"; else _wowname=""; fi
+_pkgname_base=wine-osu
+_pkgname_add=
 
-pkgname=wine-osu-spectator"${_wowname}"
+# add -wow64 to the end of the pkgname if wow64
+_wow64build=${_wow64build:-"$(cat "${_where}/buildiswow64")"}
+if [ "$_wow64build" = "true" ]; then _pkgname_add+="-wow64"; fi
+
+options=('!staticlibs' '!lto')
+# add -debug if debug
+if [ "${_debug}" != "true" ]; then options+=('!buildflags' '!debug');
+                              else options+=('debug' '!strip'); _strip_package=false; _pkgname_add+="-dbg"; fi
+if [ "${_strip_package}" != "true" ]; then options+=('!strip'); fi
+
+# I'm sticking my username here for AUR and package identification, and for "legacy reasons" (I don't want to change the AUR package name),
+# the extra identifiers come after that.
+pkgname="${_pkgname_base}"-spectator"${_pkgname_add}"
+
+# e.g. wine-osu-wow64-debug instead of wine-osu-spectator-wow64-debug
+_pkgname_short="${_pkgname_base}${_pkgname_add}"
 
 pkgdesc="A compatibility layer for running Windows programs, but with osu! specific patches (doesn't conflict with other Wine installations)"
 if [ "$_wow64build" = "true" ]; then pkgdesc+=" (WoW64 version)"; fi
 
-install=wine"${_wowname}".install
+# .install files can't refer to variables, so this is hardcoded.
+if [ "${pkgname}" = "wine-osu-spectator-wow64" ] || [ "${pkgname}" = "wine-osu-spectator" ]; then
+  if [ "$_wow64build" = "true" ]; then _installname="wine-wow64.install"; else _installname="wine.install"; fi
+  install="${_installname}"
+fi
+
 url="http://www.winehq.com"
 arch=(x86_64)
 license=(LGPL)
-
-options=('!staticlibs' '!lto')
-if [ "${_debug}" != "true" ]; then options+=('!buildflags' '!debug')
-                              else options+=('debug' '!strip'); _strip_package=false; fi
-if [ "${_strip_package}" != "true" ]; then options+=('!strip'); fi
 
 if [ "${_generic_release}" = "true" ]; then
   COMPRESSZST=(zstd --threads=0 --auto-threads=logical --sparse -c -z -q --ultra -22 -)
@@ -303,7 +318,8 @@ _set_vars() {
       _cc="$(command -v gcc)"
       _cxx="$(command -v g++)"
 
-      _extra_native_flags+=" -static-libgcc -floop-nest-optimize -fgraphite-identity -mtls-dialect=gnu2" # graphite opts + gcc opts
+      _extra_native_flags+=" -static-libgcc -mtls-dialect=gnu2"
+      [ "${_debug}" != "true" ] && _extra_native_flags+=" -floop-nest-optimize -fgraphite-identity" || _extra_cross_flags+=" -fvar-tracking-assignments"
       if [ "${_use_lto}" = "true" ]; then # requires lto-fixup.patch
         makedepends+=(lld) # bfd is so slow
 
@@ -362,6 +378,7 @@ _set_vars() {
 
       _extra_cross_flags+=" -fmsc-version=1933 -ffunction-sections -fdata-sections"
       _extra_crossld_flags+=" -Wl,/FILEALIGN:4096,/OPT:REF,/OPT:ICF,/HIGHENTROPYVA:NO"
+      [ "${_debug}" = "true" ] && { _extra_crossld_flags+=" -Wl,/DEBUG:DWARF"; _extra_cppflags+=" -DNO_COMPILER_EXCEPTIONS"; }
       if [ "${_use_mingw}" = "msvc" ]; then _extra_cross_flags+=" ${_polly_flags:-}"; fi
     elif [ "${_use_mingw}" = "nomingw" ]; then
       _cross64="$(command -v gcc)"
@@ -377,14 +394,20 @@ _set_vars() {
       _cross32="$(command -v i686-w64-mingw32-gcc)"
       _crossxx32="$(command -v i686-w64-mingw32-g++)"
 
-      _extra_cross_flags+=" -floop-nest-optimize -fgraphite-identity -mtls-dialect=gnu2" # graphite opts + mingw-gcc opts
+      _extra_cross_flags+=" -mtls-dialect=gnu2"
+      [ "${_debug}" != "true" ] && _extra_cross_flags+=" -floop-nest-optimize -fgraphite-identity" || _extra_cross_flags+=" -fvar-tracking-assignments"
       _extra_crossld_flags+=" -Wl,-O2,--sort-common,--as-needed,--file-alignment=4096"
     fi
 
-    CPPFLAGS="-D_GNU_SOURCE -D_TIME_BITS=64 -D_FILE_OFFSET_BITS=64 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG"
-    _common_cflags="${_cpu_target} ${_extra_common_flags:-} -pipe -O3 -mfpmath=sse -fno-strict-aliasing -fwrapv -fno-semantic-interposition \
+    CPPFLAGS="-D_GNU_SOURCE -D_TIME_BITS=64 -D_FILE_OFFSET_BITS=64 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0 -DNDEBUG -D_NDEBUG ${_extra_cppflags}"
+    _common_cflags="${_cpu_target} ${_extra_common_flags:-} -pipe -mfpmath=sse -fno-strict-aliasing -fwrapv -fno-semantic-interposition \
                     -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -w"
-    [ "${_debug}" = "true" ] && _common_cflags="${_common_cflags} -g"
+
+    if [ "${_debug}" = "true" ]; then
+      _common_cflags="${_common_cflags} -Og -g2 -gdwarf-4"
+    else
+      _common_cflags="${_common_cflags} -O3"
+    fi
 
     _GCC_FLAGS="${_common_cflags:-} ${_lto_flags:-} ${_extra_native_flags:-} ${CPPFLAGS:-} -ffunction-sections -fdata-sections" # only for the non-mingw side
     _CROSS_FLAGS="${_common_cflags:-} ${_extra_cross_flags:-} ${CPPFLAGS:-}" # only for the mingw side
@@ -728,7 +751,7 @@ build() { _set_vars;
     # configure cache
     _confcachedir="${_where}"/.confcaches
     _compilerwithflagshash="$(sha512sum - < <(printf '%s' "${CPPFLAGS}${CFLAGS}${LDFLAGS}${CROSSCFLAGS}${CROSSLDFLAGS}${_compilerhash}") | cut -d ' ' -f 1)"
-    _confcacheprefix="${_confcachedir}"/"${pkgver%.w*}-${pkgrel}-${_compilerwithflagshash}${_wowname}"
+    _confcacheprefix="${_confcachedir}"/"${pkgver%.w*}-${pkgrel}-${_compilerwithflagshash}${_pkgname_add}"
 
     if [ ! -d "${_confcachedir}" ]; then
       mkdir "${_confcachedir}" || \
@@ -887,7 +910,8 @@ package() { _set_vars;
   cp "${srcdir}"/winestart ./opt/"${pkgname}"/bin/winestart
   chmod +x ./opt/"${pkgname}"/bin/winestart
   install -d ./usr/bin
-  ln -sf /opt/"${pkgname}"/bin/winestart "${pkgdir}"/usr/bin/wine-osu"${_wowname}"
+
+  ln -sf /opt/"${pkgname}"/bin/winestart "${pkgdir}/usr/bin/${_pkgname_short}"
 
   # should work, but doesn't for some reason?
   # if [ "${_wow64build}" != "true" ] && (git -C "${srcdir}"/"${pkgname}"/ merge-base --is-ancestor 765ea3470ad96dfcbd8ce4c239225206ea41be8a HEAD &> /dev/null); then
@@ -907,7 +931,7 @@ package() { _set_vars;
 ## ccache configuration (taken from https://raw.githubusercontent.com/openglfreak/wine-tkg-userpatches/next/config/ccache.cfg)
 ## only with _devenv=true
 _prep_ccache() {
-  export CCACHE_DIR="${XDG_CACHE_HOME:-${HOME}/.cache}/ccache/wine${_wowname}"
+  export CCACHE_DIR="${XDG_CACHE_HOME:-${HOME}/.cache}/ccache/${_pkgname_short}"
   mkdir -p "${CCACHE_DIR}"
   export CCACHE_BASEDIR="${CCACHE_BASEDIR:-"${srcdir}"}"
   "${_ccache}" --set-config=compression=true \
