@@ -1,7 +1,7 @@
 pkgbase = chronograph
 	pkgdesc = Sync lyrics of your loved songs
 	pkgver = 5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Dzheremi2/Chronograph
 	arch = any
 	license = GPL-3.0-or-later
@@ -15,6 +15,7 @@ pkgbase = chronograph
 	depends = python-charset-normalizer
 	depends = python-dgutils
 	depends = python-gobject
+	depends = python-httpx
 	depends = python-idna
 	depends = python-magic
 	depends = python-mutagen

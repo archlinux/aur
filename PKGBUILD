@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=chronograph
 pkgver=5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Sync lyrics of your loved songs"
 arch=('any')
 url="https://github.com/Dzheremi2/Chronograph"
@@ -15,6 +15,7 @@ depends=(
   'python-charset-normalizer'
   'python-dgutils'
   'python-gobject'
+  'python-httpx'
   'python-idna'
   'python-magic'
   'python-mutagen'
