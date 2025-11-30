@@ -1,0 +1,20 @@
+pkgbase = zap-elec
+	pkgdesc = Simple web wrapper for WhatsApp Web
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/JonasAlv/zap-elec
+	arch = x86_64
+	license = MIT
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = libnotify
+	depends = gtk3
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/JonasAlv/zap-elec/releases/download/v1.0.0/zap-elec-1.0.0-x64.pacman
+	sha256sums_x86_64 = SKIP
+
+pkgname = zap-elec
