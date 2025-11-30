@@ -1,7 +1,7 @@
 pkgbase = haskell-bytestring-lexing
 	pkgdesc = Efficiently parse and produce common integral and fractional numbers.
 	pkgver = 0.5.0.15
-	pkgrel = 5
+	pkgrel = 6
 	url = https://wrengr.org/software/hackage.html
 	arch = x86_64
 	license = BSD

@@ -3,7 +3,7 @@
 _hkgname=bytestring-lexing
 pkgname=haskell-bytestring-lexing
 pkgver=0.5.0.15
-pkgrel=5
+pkgrel=6
 pkgdesc="Efficiently parse and produce common integral and fractional numbers."
 url="https://wrengr.org/software/hackage.html"
 license=("BSD")
