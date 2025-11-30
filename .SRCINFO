@@ -1,6 +1,6 @@
 pkgbase = dedupe
 	pkgdesc = Earn back file space by hardlinking unchanging duplicate files
-	pkgver = 20240126
+	pkgver = 20251130
 	pkgrel = 1
 	url = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8
 	install = .INSTALL
@@ -9,14 +9,15 @@ pkgbase = dedupe
 	checkdepends = curl
 	checkdepends = unzip
 	checkdepends = b3sum
+	checkdepends = zstd
 	depends = zsh>=5.9
 	optdepends = b3sum: Faster hashing function
-	source = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8/raw/ba580ed64348b6b053a0848ed0d3ed38679a9119/dedupe
-	source = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8/raw/ba580ed64348b6b053a0848ed0d3ed38679a9119/dedupe.1
-	source = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8/raw/ba580ed64348b6b053a0848ed0d3ed38679a9119/dedupe.conf.example
+	source = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8/raw/f688c40967fec5fe940b491634f7d267203d33d4/dedupe
+	source = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8/raw/f688c40967fec5fe940b491634f7d267203d33d4/dedupe.1
+	source = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8/raw/f688c40967fec5fe940b491634f7d267203d33d4/dedupe.conf.example
 	source = https://gist.githubusercontent.com/donnaken15/2e1345bdb44cae19fa395f188fc3bef3/raw/925e9c4c261255b5d60e03668aeeaa878eee031e/dotload
 	validpgpkeys = 73311CF24AE4FF33
-	b2sums = eef6929590c65cb1e6b223ec5d6d6695f935a4f699f7405fe2bea41abbe98ffea1900ad8916a191b943b8819c4e471739aca1b21ae8515e76c1e114bbbe32bd7
+	b2sums = 809d0453eddfffd7815dfeae5b11e1248a6c75a7bb5c3c95340c3d75ebdb89cc74bdd00b429e90f5fdef2c3c05eb03912da7b1558e0ad898370cd018444d7f4b
 	b2sums = f1dd7d224f48a003ea94a8582e2a5ac077f6cf950404fcf5f5c857188d6c2ec017a3f7ca7ff02e558df67dcc47d62e4bbbf766b5169ada9efef1aa62be9fb30b
 	b2sums = a37b531dd41138d10092784c61c782f9fba0af2892310a284a36864fe07b5f4f9b706e630c1afc01c0b13b423db5d7caa11291b3513751bdfedde24347085b38
 	b2sums = a692dc3c77b676a236ba9ec94731318d4d2b048ba0965a9ac7ffbf19b7fd06526de424446fbbdf89f3a5ab0764da5ad8e7221bea4f082d01983c91de9272d534
