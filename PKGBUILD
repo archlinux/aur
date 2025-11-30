@@ -36,7 +36,7 @@ package() {
   echo "Installing desktop launch file to $pkgdir/usr/bin/Plexamp.AppImage"
   install -Dm755 squashfs-root/${_desktop_name} "$pkgdir"/usr/share/applications/${_desktop_name}
   echo "Installing icons"
-  install -Dm644 squashfs-root/usr/share/icons/hicolor/scalable/plexamp.svg $pkgdir/usr/share/icons/hicolor/scalable/plexamp.svg
+  install -Dm644 squashfs-root/usr/share/icons/hicolor/scalable/plexamp.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/plexamp.svg
   for res in "16x16" "32x32" "48x48" "64x64" "128x128" "256x256" "512x512"; do
     mkdir -p squashfs-root/usr/share/icons/hicolor/$res/apps/
     magick squashfs-root/usr/share/icons/hicolor/scalable/plexamp.svg -size $res squashfs-root/usr/share/icons/hicolor/$res/apps/plexamp.png
