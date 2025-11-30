@@ -1,18 +1,20 @@
 pkgbase = marble-marcher-ce
 	pkgdesc = A video game demo that uses a fractal physics engine and fully procedural rendering to produce beautiful and unique gameplay unlike anything you've seen before.
 	pkgver = 1.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WAUthethird/Marble-Marcher-Community-Edition
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	makedepends = cmake
-	depends = sfml
+	depends = sfml2
 	depends = anttweakbar
 	depends = glm
 	depends = eigen
 	depends = glew
 	source = marble-marcher-ce::git+https://github.com/WAUthethird/Marble-Marcher-Community-Edition#tag=1.4.6
+	source = 0001-Optimize-CMakeLists-to-detect-SFML2.patch
 	sha256sums = SKIP
+	sha256sums = 10f63aa36137ac5f1b7eec565fb1b072c6fc3c06764fe60890130f0bca17e883
 
 pkgname = marble-marcher-ce

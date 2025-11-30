@@ -1,0 +1,61 @@
+From 6ce6e5c7099444e4ea7c15b81be7a0deae767c67 Mon Sep 17 00:00:00 2001
+From: Jochem Broekhoff <broekhoff.jochem@gmail.com>
+Date: Sun, 30 Nov 2025 12:12:34 +0100
+Subject: [PATCH] Optimize CMakeLists to detect SFML2
+
+---
+ CMakeLists.txt     | 10 ++++++----
+ src/CMakeLists.txt | 12 ++++++++++++
+ 2 files changed, 18 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a7a4d05..3c19021 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -43,6 +43,7 @@ elseif(UNIX)
+ 	find_package(OpenGL REQUIRED)
+ 	find_package(Eigen3 REQUIRED)
+ 	find_package(glm REQUIRED)
++	find_package(SFML 2.6 COMPONENTS system window graphics audio REQUIRED)
+ endif()
+ 
+ 
+@@ -123,10 +124,11 @@ elseif(UNIX)
+ 		libAntTweakBar.so	
+ 		${GLEW_LIBRARIES}
+ 		stdc++fs
+-		libsfml-system.so
+-		libsfml-window.so
+-		libsfml-graphics.so
+-		libsfml-audio.so
++		sfml-system
++		sfml-window
++		sfml-graphics
++		sfml-audio
++		Eigen3::Eigen
+ 	)
+ 	install(TARGETS MarbleMarcher
+ 	    COMPONENT linapp
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 0a7e653..4e3d641 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -40,3 +40,15 @@ add_library(MarbleMarcherSources
+   SoundSystem.h
+   SoundSystem.cpp
+ )
++
++target_link_libraries(MarbleMarcherSources
++    ${OPENGL_LIBRARIES}
++    libAntTweakBar.so
++    ${GLEW_LIBRARIES}
++    stdc++fs
++    sfml-system
++    sfml-window
++    sfml-graphics
++    sfml-audio
++    Eigen3::Eigen
++)
+-- 
+2.52.0
+

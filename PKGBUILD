@@ -1,14 +1,14 @@
 # Maintainer: Jochem Broekhoff <(lastname) dot (firstname) @ gmail.com>
 pkgname=marble-marcher-ce
 _pkgtag=1.4.6
-pkgver=$(echo "${_pkgtag}" | sed "s/-//;s/v//")
-pkgrel=1
+pkgver=${_pkgtag//[-v]/}
+pkgrel=2
 pkgdesc="A video game demo that uses a fractal physics engine and fully procedural rendering to produce beautiful and unique gameplay unlike anything you've seen before."
 arch=('x86_64')
 license=('GPL2')
 url="https://github.com/WAUthethird/Marble-Marcher-Community-Edition"
 
-depends=("sfml"
+depends=("sfml2"
          "anttweakbar"
          "glm"
          "eigen"
@@ -17,40 +17,39 @@ depends=("sfml"
 makedepends=("git"
              "cmake")
 
-source=("${pkgname}::git+https://github.com/WAUthethird/Marble-Marcher-Community-Edition#tag=${_pkgtag}")
-sha256sums=("SKIP")
+source=(
+    "${pkgname}::git+https://github.com/WAUthethird/Marble-Marcher-Community-Edition#tag=${_pkgtag}"
+    "0001-Optimize-CMakeLists-to-detect-SFML2.patch")
+sha256sums=(
+    "SKIP"
+    "10f63aa36137ac5f1b7eec565fb1b072c6fc3c06764fe60890130f0bca17e883")
 
 prepare() {
+    cd "${pkgname}"
+
     # Patch CMakeLists.txt with the correct prefix
     # NOTE: This is a temporary solution
     sed -e "s/\\/home\\/MMCE/\\/usr\\/share\\/${pkgname}/" \
-        -i "${pkgname}/CMakeLists.txt"
+        -i "CMakeLists.txt"
+
+    # Apply further custom patches
+    patch -Np1 -i "$srcdir/0001-Optimize-CMakeLists-to-detect-SFML2.patch"
 }
 
 build() {
     cd "${pkgname}"
 
-    mkdir -p build
-    cd build
-    cmake ..
-    cd ..
+    cmake -S . -B build
     cmake --build build
 }
 
 package() {
-    cd "${pkgname}/build"
-
     # General install
-    DESTDIR="${pkgdir}/" make install
+    DESTDIR="${pkgdir}/" cmake --install "${pkgname}"/build
 
-    # Launcher script
+    # Main binary symlink
     mkdir -p "${pkgdir}/usr/bin"
-    cat >"${pkgdir}/usr/bin/${pkgname}" <<EOF
-#!/bin/sh
-cd "/usr/share/${pkgname}"
-./MarbleMarcher
-EOF
-    chmod 755 "${pkgdir}/usr/bin/${pkgname}"
+    ln -s "/usr/share/${pkgname}/MarbleMarcher" "${pkgdir}/usr/bin/${pkgname}"
 
     # Desktop Entry
     mkdir -p "${pkgdir}/usr/share/applications"
