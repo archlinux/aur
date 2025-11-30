@@ -1,3 +1,4 @@
+# Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=cmus-auto-lyrics
 pkgver=0.2.2
 pkgrel=1
