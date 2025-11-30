@@ -5,7 +5,7 @@ pkgname=(
   'aider-chat-dwash96'
 )
 _gitpkgname=aider-ce
-pkgver=0.88.21
+pkgver=0.88.30
 pkgrel=1
 pkgdesc='AI pair programming in your terminal - dwash96 fork with MCP support'
 arch=('any')
@@ -84,7 +84,7 @@ source=(
   'fix-build-from-tarball.patch'
 )
 
-sha512sums=('9906bc4d77553e36c6d2cebd59128dbf212797866af7bb8df10228b5f6b8a54064e98e97347a1f33952d72e06e2e5621d64e36739864a6ded318510feb685d40'
+sha512sums=('50bcb6eafc00c100315264fde6fb3865e7c3b9bda0e62af75d20e44f2f46516a11dc59b8d942ea601f27a8c7da0b6d71aa36af27f588d8811aaf56da4628fa08'
             'd06a880fbfbd394b37cca7c3c2243090a641c6d22eae7ce90afc5d906b1884d1b17c0ac8c97ec371fd6c4f8472555d86bb123bae90de101a10a0489ce202af78'
             'd5c1ae47bda83bf477fa5b1c9d172b7b5a6bff59b8563b768141f4c191b7e8f79e1dc9056d0a7b3113283513fc1ca50fabeabb2b288155a9001627d2cab222c5'
             '7a6c7b96f148d047bf4619dcfb748af28fb3e7adabcd5d612ad7318dc9e26d73cacc712de26b5f4c0de577b873c5b71c15c3bc149041435e7baa20bbc949f9c2')
@@ -136,9 +136,9 @@ build() {
   test-env/bin/python -m installer dist/*.whl
   mkdir -p completions/{bash,zsh}
   "test-env/bin/${_gitpkgname}" --shell-completions bash \
-    > 'completions/bash/aider'
+    > 'completions/bash/aider-ce'
   "test-env/bin/${_gitpkgname}" --shell-completions zsh \
-    > 'completions/zsh/_aider'
+    > 'completions/zsh/_aider-ce'
 
   cd aider/website
 
@@ -203,8 +203,8 @@ package_aider-chat-dwash96() {
 
   echo >&2 'Packaging shell completions'
   install -D -m 644 -t "${pkgdir}/usr/share/bash-completion/completions" \
-    'completions/bash/aider'
+    'completions/bash/aider-ce'
   install -D -m 644 -t "${pkgdir}/usr/share/zsh/site-functions" \
-    'completions/zsh/_aider'
+    'completions/zsh/_aider-ce'
 }
 
