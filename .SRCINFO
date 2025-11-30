@@ -1,6 +1,6 @@
 pkgbase = firedragon-catppuccin-bin
 	pkgdesc = Floorp fork build using custom branding and settings
-	pkgver = 12.5.1
+	pkgver = 12.6.0
 	pkgrel = 1
 	epoch = 1
 	url = https://firedragon.garudalinux.org
@@ -36,12 +36,12 @@ pkgbase = firedragon-catppuccin-bin
 	backup = usr/lib/firedragon/firedragon.cfg
 	backup = usr/lib/firedragon/distribution/policies.json
 	source = firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon
-	source = https://gitlab.com/garuda-linux/firedragon/firedragon12/-/raw/v12.5.1/assets/firedragon.desktop
+	source = https://gitlab.com/garuda-linux/firedragon/firedragon12/-/raw/v12.6.0/assets/firedragon.desktop
 	sha256sums = 61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0
 	sha256sums = 53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560
-	source_x86_64 = firedragon-catppuccin-v12.5.1-linux-x64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.5.1/downloads/firedragon-catppuccin-linux-x64.tar.xz
-	sha256sums_x86_64 = 48b308b135ef1dd70c06e58e79aea9405db948b8e4a69b30ba2c2c1b6a1f3cff
-	source_aarch64 = firedragon-catppuccin-v12.5.1-linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.5.1/downloads/firedragon-catppuccin-linux-arm64.tar.xz
-	sha256sums_aarch64 = 65e25e1838e208fed2a5fa67f22cd5a2c146b4459bbafdf44baed67945b838aa
+	source_x86_64 = firedragon-catppuccin-v12.6.0-linux-x64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.6.0/downloads/firedragon-catppuccin-linux-x64.tar.xz
+	sha256sums_x86_64 = 772bf30d3d99e7e2b29b9bca5b33f6aad5b81c8b403c09ea619e671e60ddf302
+	source_aarch64 = firedragon-catppuccin-v12.6.0-linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.6.0/downloads/firedragon-catppuccin-linux-arm64.tar.xz
+	sha256sums_aarch64 = 86d0e4bf1d99b31c57ef6f501c743fbbed947083af6ad389c417898bd7b296eb
 
 pkgname = firedragon-catppuccin-bin
