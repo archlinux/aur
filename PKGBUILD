@@ -5,7 +5,7 @@
 
 pkgname=tango-database
 _pkgname=TangoDatabase
-pkgver=5.26
+pkgver=5.28
 pkgrel=1
 _pkgver=Database-Release-${pkgver}
 groups=("tango-controls")
@@ -25,7 +25,7 @@ source=(
   "tango-database.service" "collate.patch" "fortify.patch" "tango-db.conf" "create_db_user.sql" "check_and_create_db.sh"
 )
 sha256sums=(
-  "3b3f99d4cbe1fe0eb3e86deb1a5d0f988968433e67f754658368ed2e4667cbd8"
+  "326f0878e25d5edd52aed994ca374ca110a6b2fa0a4c7579632e4e79fbaa8ecb"
   "a0e7dc022acc43d4eb96828ba0362bc1397607d5850e1b69ce5aa5ae90a74386"
   "a48e929dfffc7831cf2cb783aa51d38ddbfb3ee04bfa57d07947de8134f61ac3"
   "9938ca3c375254380961b1f361f38140045c2641f353d1be2840f25b3f26d29a"
