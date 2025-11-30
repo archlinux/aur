@@ -1,5 +1,5 @@
 pkgname=dpdk-lts
-pkgver=25.07
+pkgver=25.11
 pkgrel=1
 pkgdesc='A set of libraries and drivers for fast packet processing'
 arch=($CARCH)
@@ -13,6 +13,7 @@ options=()
 depends=(
   sh
   bpf
+  dlpack
   dtc
   gcc-libs
   glibc
@@ -30,8 +31,6 @@ depends=(
   python-scapy
   python-pyelftools
   zlib
-  #AUR
-  dlpack
 )
 makedepends=(
   doxygen
@@ -46,7 +45,7 @@ checkdepends=()
 source=(
   "http://fast.dpdk.org/rel/dpdk-$pkgver.tar.xz"
 )
-sha256sums=('6886cbedc350bb8cbef347d10367d6259e36435627fbb27d578adbdc0d3b410d')
+sha256sums=('52e90d2a531ef3ded0283bd91abc94980698f1f6471fa09658a0217cf6609526')
 
 prepare() {
   meson subprojects download --sourcedir="${srcdir}/dpdk-$pkgver"
