@@ -42,7 +42,7 @@ pkgbase = expressvpn-beta
 	source = https://www.expressvpn.works/clients/linux/expressvpn-linux-universal-5.0.1.11498.run.asc
 	source = expressvpn.sysusers
 	validpgpkeys = 1D0B09AD6C93FEE93FDDBD9DAFF2A1415F6A3A38
-	sha256sums = 8c743c890b6cf0f209e56ad02f6626f4ed7ad78a3a2405272411b37599cf89f2
+	sha256sums = f36ed43a95fc8a12db9238b509f0314a73ec8200979bc3c88418ed493565749a
 	sha256sums = SKIP
 	sha256sums = 33ea79001be5dbc45122255c2fec4dd9e0396fdf19330b72fd770d33c398faf5
 

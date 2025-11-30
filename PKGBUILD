@@ -19,7 +19,7 @@ install=expressvpn.install
 _url="https://www.expressvpn.works/clients/linux"
 source=("${_url}/${_name}-linux-universal-${pkgver}.run"{,.asc}
         expressvpn.sysusers)
-sha256sums=('8c743c890b6cf0f209e56ad02f6626f4ed7ad78a3a2405272411b37599cf89f2'
+sha256sums=('f36ed43a95fc8a12db9238b509f0314a73ec8200979bc3c88418ed493565749a'
             'SKIP'
             '33ea79001be5dbc45122255c2fec4dd9e0396fdf19330b72fd770d33c398faf5')
 validpgpkeys=('1D0B09AD6C93FEE93FDDBD9DAFF2A1415F6A3A38')
