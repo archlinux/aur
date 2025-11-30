@@ -6,8 +6,8 @@
 
 pkgname=jbofihe-git
 epoch=2
-pkgver=0.43.19.gcc6fe66
-pkgrel=5
+pkgver=0.44
+pkgrel=1
 pkgdesc='Tools to operate on Lojban text. main feature: approximate translation to English (development version)'
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/lojban/jbofihe"
@@ -38,11 +38,14 @@ build() {
 
   for _makefile in {.,dfasyn}/Makefile; do
     # shellcheck disable=SC2016
-    sed -i 's/^CFLAGS=/CFLAGS+= -Wno-implicit-int -Wno-implicit-function-declaration $(LDFLAGS) /g' "$_makefile"
+    #sed -i 's/^CFLAGS=/CFLAGS+= -Wno-implicit-int -Wno-implicit-function-declaration $(LDFLAGS) /g' "$_makefile"
+    # It seems we no longer need the ‘-Wno-implicit-*’ flags.
+    # However, ‘+=’ is still needed for full RELRO.
+    sed -i 's/^CFLAGS=/CFLAGS += $(LDFLAGS) /g' "$_makefile"
   done
 
   echo "Running make…"
-  # There is a Perl script that expects the locale to be an English one.
+  # There is a Perl script that expects an English locale.
   env LANG=C LC_ALL=C make all
 }
 
