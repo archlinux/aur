@@ -1,0 +1,42 @@
+post_install() {
+    echo ""
+    echo "======================================================================="
+    echo "  RDB - Retrieval Database Installation Complete"
+    echo "======================================================================="
+    echo ""
+    echo "IMPORTANT: FAISS dependency must be installed separately."
+    echo ""
+    echo "The python-faiss package in AUR is currently unmaintained and may"
+    echo "not build successfully. We recommend one of these alternatives:"
+    echo ""
+    echo "For GPU support:" 
+    echo "  pip install --user --break-system-packages faiss-gpu"
+    echo ""
+    echo "For CPU support:" 
+    echo "Option 1 - Using pip (recommended for most users):"
+    echo "  pip install --user --break-system-packages faiss-cpu"
+    echo ""
+    echo "Option 2 - Using conda (if you have it installed):"
+    echo "  conda install -c conda-forge faiss-cpu"
+    echo ""
+    echo "After installing FAISS, verify RDB works with:"
+    echo "  rdb --help"
+    echo ""
+    echo "======================================================================="
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "RDB has been upgraded. Run 'rdb --help' to see changes."
+    echo ""
+}
+
+post_remove() {
+    echo ""
+    echo "RDB has been removed."
+    echo ""
+    echo "If you installed FAISS via pip, you can remove it with:"
+    echo "  pip uninstall faiss-cpu"
+    echo ""
+}
