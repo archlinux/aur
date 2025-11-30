@@ -21,6 +21,7 @@ conflicts=("python-${pkgname}")
 depends=('bash' 'python' 'python-setuptools')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 
+# source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 source=("${_pypi_package}-${_upstreamver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('2df5bf602c32ab1fdf7f163d4132970072c4b98d2aec2697dac46f4e36670704')
 
