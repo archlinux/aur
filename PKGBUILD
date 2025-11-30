@@ -9,7 +9,7 @@ license=('GPL-3.0')
 depends=('dotnet-runtime>=10.0' 'zlib' 'openssl' 'icu' 'krb5' 'fontconfig' 'libx11' 'libxcursor' 'libxrandr')
 makedepends=('dotnet-sdk>=10.0' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v${pkgver}.tar.gz")
-sha256sums=('28007800db67cba6577f19e557240ff02f2b5d1e8165d500e1efd745f107040a')
+sha256sums=('5f8fcc2e410eb17ce46c110016347fd9776fc9d881ca60c7820db8d04b2e66ed')
 options=('!strip')
 
 build() {
