@@ -2,7 +2,7 @@
 
 pkgname=kitch-bin
 pkgver=26.1.9
-pkgrel=5
+pkgrel=6
 pkgdesc="The itch.io desktop app (beta channel) (binary release)"
 url="https://itchio.itch.io/kitch"
 license=('MIT')
@@ -15,7 +15,7 @@ depends=('alsa-lib' 'at-spi2-core' 'bash' 'cairo' 'dbus' 'expat' 'glib2'
          'libxrandr' 'mesa' 'nspr' 'nss' 'pango')
 optdepends=('firejail: sandbox preference'
             'wine: Windows games')
-source=("itch-linux-amd64-$pkgver.zip::https://broth.itch.ovh/itch/linux-amd64/$pkgver/archive/default"
+source=("itch-linux-amd64-$pkgver.zip::https://broth.itch.zone/itch/linux-amd64/$pkgver/archive/default"
         "https://github.com/itchio/itch/raw/31d8d2f5646f9c6ab93cdd3a8bd1be6f59c687af/LICENSE")
 sha256sums=('9324777a2edf37d3afaa39b073050c2a5d3a07fec45d21171813af9e6b3fd6a3'
             '747d5f4b6f82e28fbd50e192ee6e977159e4848cb55e0cc6ee04219832932d7c')
