@@ -1,6 +1,6 @@
 pkgbase = jarl-bin
 	pkgdesc = Fast linter for the R language
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/etiennebacher/jarl
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = jarl-bin
 	depends = glibc
 	depends = zlib
 	options = !debug
-	source_x86_64 = jarl-bin-0.2.0.tar.gz::https://github.com/etiennebacher/jarl/releases/download/0.2.0/jarl-x86_64-unknown-linux-gnu.tar.gz
-	source_x86_64 = https://raw.githubusercontent.com/etiennebacher/jarl/refs/tags/0.2.0/LICENSE
-	provides_x86_64 = jarl=0.2.0
-	sha256sums_x86_64 = ffa769bd993cbcd264fdc9931abb334e534fc78db8d07e0e523a64bab93b9709
+	source_x86_64 = jarl-bin-0.2.1.tar.gz::https://github.com/etiennebacher/jarl/releases/download/0.2.1/jarl-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = https://raw.githubusercontent.com/etiennebacher/jarl/refs/tags/0.2.1/LICENSE
+	provides_x86_64 = jarl=0.2.1
+	sha256sums_x86_64 = a597b183b8d7db0e740f0513d842bc171ef9f3915efb21e9e0c9fb4d6972df9d
 	sha256sums_x86_64 = 79725ebd381352c76377a38ad2e9bf763abe79d72892f9343d609ed603733adf
 
 pkgname = jarl-bin
