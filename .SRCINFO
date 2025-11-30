@@ -1,7 +1,7 @@
 pkgbase = prismlauncher-offline
 	pkgdesc = Prism Launcher fork with offline account support enabled (built from source)
 	pkgver = 9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Diegiwg/PrismLauncher-Cracked
 	arch = x86_64
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = prismlauncher-offline
 	depends = qt6-base
 	depends = qt6-5compat
 	depends = qt6-svg
+	depends = qt6-networkauth
 	depends = qt6-imageformats
 	depends = java-runtime
 	depends = zlib
