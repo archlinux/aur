@@ -18,6 +18,6 @@ pkgbase = crossmacro
 	depends = libxrandr
 	options = !strip
 	source = crossmacro-1.0.0.tar.gz::https://github.com/alper-han/CrossMacro/archive/v1.0.0.tar.gz
-	sha256sums = 739935835c9a016dd0bebcee4bec75e022e74ceecc44815784593b9c8309def6
+	sha256sums = 6e32b422f44b521346cabc3989c98ec1ee3261282bb5b8964842733bec5bd3f3
 
 pkgname = crossmacro
