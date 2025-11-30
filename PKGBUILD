@@ -1,5 +1,5 @@
 pkgname=cmdcreate
-pkgver=0.7.6
+pkgver=0.7.7
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/owen-debiasio/cmdcreate"
