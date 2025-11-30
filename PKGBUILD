@@ -12,10 +12,12 @@ md5sums=('SKIP')
 
 build() {
     cd "$srcdir/$pkgname"
-    make
+    chmod +x build.sh
+    ./build.sh
 }
 
 package() {
     cd "$srcdir/$pkgname"
     install -Dm755 minisystool "$pkgdir/usr/bin/minisystool"
 }
+
