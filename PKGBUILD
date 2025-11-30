@@ -1,26 +1,27 @@
 # Maintainer: Zynix <crossmacro@zynix.net>
 pkgname=crossmacro
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Mouse Macro Automation Tool for Linux Wayland"
 arch=('x86_64')
 url="https://github.com/alper-han/CrossMacro"
 license=('GPL-3.0')
-depends=('dotnet-runtime>=10.0' 'zlib' 'openssl' 'icu' 'krb5' 'fontconfig' 'libx11' 'libxcursor' 'libxrandr')
+depends=('zlib' 'openssl' 'icu' 'krb5' 'fontconfig' 'libx11' 'libxcursor' 'libxrandr')
 makedepends=('dotnet-sdk>=10.0' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v${pkgver}.tar.gz")
-sha256sums=('5f8fcc2e410eb17ce46c110016347fd9776fc9d881ca60c7820db8d04b2e66ed')
+sha256sums=('b71494fb561924c29dc5fca52004c907016eec339744945385941c0c81fabf4f')
 options=('!strip')
 
 build() {
     cd "CrossMacro-${pkgver}"
     
-    # Restore and build .NET application
     dotnet restore
     dotnet publish src/CrossMacro.UI/CrossMacro.UI.csproj \
         -c Release \
         -r linux-x64 \
-        --self-contained false \
+        --self-contained true \
+        -p:PublishTrimmed=false \
+        -p:PublishAot=false \
         -o publish/
 }
 
