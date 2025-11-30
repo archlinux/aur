@@ -1,7 +1,7 @@
 pkgbase = python-sorl-thumbnail
 	pkgdesc = Thumbnails for Django.
 	pkgver = 13.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jazzband/sorl-thumbnail
 	arch = any
 	license = BSD-3-Clause
