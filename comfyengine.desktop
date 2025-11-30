@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=ComfyEngine
+Comment=Best memory scanner ever!
+Exec=comfyengine
+Icon=comfyengine
+Terminal=false
+Type=Application
+Categories=Utility;Development;

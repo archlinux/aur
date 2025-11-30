@@ -1,0 +1,19 @@
+pkgbase = comfyengine-git
+	pkgdesc = Qt-based memory scanner inspired by Cheat Engine, works natively on Linux. Made by Kashi.
+	pkgver = 0.r3.g1befc2d
+	pkgrel = 1
+	url = https://github.com/kashithecomfy/ComfyEngine
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = capstone
+	provides = comfyengine
+	conflicts = comfyengine
+	source = git+https://github.com/kashithecomfy/ComfyEngine.git
+	sha256sums = SKIP
+
+pkgname = comfyengine-git
