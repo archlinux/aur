@@ -27,25 +27,25 @@ source=("sneemok-0.3.4.tar.gz::https://codeberg.org/fn3x/sneemok/archive/v0.3.4.
 sha256sums=('52ff0d555ecd354e0f1802273a933e6f557ec8c84da404b573b883f7bdd42879')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname"
     
     export HOME="$srcdir"
     zig build -Doptimize=ReleaseSafe --prefix /usr
 }
 
 check() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname"
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname"
     
     DESTDIR="$pkgdir" zig build install -Doptimize=ReleaseSafe --prefix /usr
     
-    # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     
-    # Install systemd user service (optional)
-    install -Dm644 contrib/systemd/sneemok.service \
-        "$pkgdir/usr/lib/systemd/user/sneemok.service"
+    if [ -f contrib/systemd/sneemok.service ]; then
+      install -Dm644 contrib/systemd/sneemok.service \
+          "$pkgdir/usr/lib/systemd/user/sneemok.service"
+    fi
 }
