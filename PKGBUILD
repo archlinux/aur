@@ -3,9 +3,7 @@
 pkgname=geany-ai-chat
 pkgver=1.2.0
 pkgrel=1
-pkgdesc="Geany plugin for AI-powered chat functionality. " \
-	"The plugin allows users to interact with an AI chatbot " \
-	"using emojis and text input."
+pkgdesc="Geany plugin for AI-powered chat functionality. The plugin allows users to interact with an AI chatbot using emojis and text input."
 arch=('any')
 url="https://github.com/n-engine/geany-ai-chat"
 license=('MIT')

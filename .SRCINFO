@@ -1,13 +1,13 @@
 pkgbase = geany-ai-chat
-	pkgdesc = Geany plugin for AI-powered chat functionality. The plugin allows users to interact with an AI chatbot using emojis and text input
-	pkgver = 1.1.1
+	pkgdesc = Geany plugin for AI-powered chat functionality. The plugin allows users to interact with an AI chatbot using emojis and text input.
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/n-engine/geany-ai-chat
 	arch = any
 	license = MIT
 	depends = geany
 	depends = gtksourceview3
-	source = https://github.com/n-engine/geany-ai-chat/archive/v1.1.1.tar.gz
-	sha256sums = c37ecf99916eb9dff90f22f6d1110bc4053e96bd2e5fc55c2abc43ba07c2a824
+	source = https://github.com/n-engine/geany-ai-chat/archive/v1.2.0.tar.gz
+	sha256sums = 07a5c846eb5e1f0ddf5c766f0de0ea29eb388d117fdee49a42b116fedfca4a06
 
 pkgname = geany-ai-chat
