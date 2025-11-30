@@ -41,7 +41,9 @@ package() {
     export HOME="$srcdir"
     DESTDIR="$pkgdir" zig build install -Doptimize=ReleaseSafe --prefix /usr
     
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    if [ -f LICENSE ]; then
+      install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    fi
     
     if [ -f contrib/systemd/sneemok.service ]; then
       install -Dm644 contrib/systemd/sneemok.service \
