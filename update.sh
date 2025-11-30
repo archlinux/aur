@@ -8,11 +8,14 @@ VERSION=$(curl --silent https://plexamp.plex.tv/plexamp.plex.tv/desktop/latest-l
 echo "Latest Plexamp Linux version:"
 echo $VERSION
 
+RELEASE=1
+
 if [ $PKGBUILD_VERSION != $VERSION ]; then
 	echo "Newer version found, starting download"
 	curl -O https://plexamp.plex.tv/plexamp.plex.tv/desktop/Plexamp-$VERSION.AppImage
 
 	sed -i "s/^pkgver=.*/pkgver=$VERSION/" PKGBUILD
+	sed -i "s/^pkgrel=.*/pkgrel=$RELEASE/" PKGBUILD
 	makepkg
 	CHKSUM="$(sha512sum Plexamp-$VERSION.AppImage | cut -d' ' -f1)"
 	sed -i "s/^sha512sums=.*/sha512sums=('$CHKSUM')/;s/^pkgrel=.*/pkgrel=1/" PKGBUILD
