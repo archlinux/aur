@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=wisp-calendar
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="A beautiful text-based calendar with visual aesthetics for Arch Linux"
 arch=('any')
@@ -26,8 +26,8 @@ build() {
 }
 
 package() {
-    # Install the executable
-    install -Dm755 "${srcdir}/wisp-calendar" "${pkgdir}/usr/bin/wisp-calendar"
+    # Install the executable (from cloned repo directory)
+    install -Dm755 "${srcdir}/${pkgname}/wisp-calendar" "${pkgdir}/usr/bin/wisp-calendar"
 }
 
 # vim:set ts=4 sw=4 et:
