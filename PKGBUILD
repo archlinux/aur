@@ -16,8 +16,8 @@
 # Maintainer: Tim Hildering <hilderingt@posteo.net>
 
 pkgname=archlinux-overlayroot
-pkgver=0.9.1
-pkgrel=2
+pkgver=0.9.2
+pkgrel=1
 pkgdesc="Overlay the root filesystem with a tmpfs filesystem."
 arch=('any')
 url="https://github.com/hilderingt/archlinux-overlayroot"
@@ -43,9 +43,9 @@ build() {
 package() {
   install -D -m 644 "$srcdir/archlinux-overlayroot/install.sh" "$pkgdir/usr/lib/initcpio/install/ovlroot"
   install -D -m 644 "$srcdir/archlinux-overlayroot/hook.sh" "$pkgdir/usr/lib/initcpio/hooks/ovlroot"
-  install -D -m 755 "$srcdir/archlinux-overlayroot/mount.ovlroot" "$pkgdir/usr/bin/mount.ovlroot"
+  install -D -m 555 "$srcdir/archlinux-overlayroot/mount.ovlroot" "$pkgdir/usr/bin/mount.ovlroot"
   mkdir -p "$pkgdir/usr/share/ovlroot"
-  install -D -m 644 "$srcdir/archlinux-overlayroot/ovlroot.sh" "$pkgdir/usr/share/ovlroot/ovlroot.sh"
-  install -D -m 644 "$srcdir/ovlroot-helper" "$pkgdir/usr/share/ovlroot/ovlroot-helper"
+  install -D -m 444 "$srcdir/archlinux-overlayroot/ovlroot.sh" "$pkgdir/usr/share/ovlroot/ovlroot.sh"
+  install -D -m 555 "$srcdir/ovlroot-helper" "$pkgdir/usr/share/ovlroot/ovlroot-helper"
   install -d -m 700 -o root -g root "$pkgdir/etc/ovlroot.d"
 }
