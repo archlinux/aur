@@ -10,8 +10,7 @@ depends=(
     'wayland'
     'cairo'
     'dbus'
-    'libxkbcommon'
-    'wl-clipboard'
+    'wlroots0.19'
 )
 makedepends=(
     'zig'

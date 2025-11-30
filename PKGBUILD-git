@@ -10,8 +10,7 @@ depends=(
     'wayland'
     'cairo'
     'dbus'
-    'libxkbcommon'
-    'wl-clipboard'
+    'wlroots0.19'
 )
 makedepends=(
     'zig'
@@ -52,10 +51,8 @@ package() {
     
     DESTDIR="$pkgdir" zig build install -Doptimize=ReleaseSafe --prefix /usr
     
-    # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     
-    # Install systemd user service (optional)
     if [ -f contrib/systemd/sneemok.service ]; then
         install -Dm644 contrib/systemd/sneemok.service \
             "$pkgdir/usr/lib/systemd/user/sneemok.service"
