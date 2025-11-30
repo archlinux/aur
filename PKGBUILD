@@ -6,8 +6,8 @@
 
 pkgname=jbofihe-git
 epoch=2
-pkgver=v0.44.r0.g652c20e
-pkgrel=2
+pkgver=0.44.r0.g652c20e
+pkgrel=3
 pkgdesc='Tools to operate on Lojban text. main feature: approximate translation to English (development version)'
 arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/lojban/jbofihe"
@@ -22,7 +22,7 @@ pkgver() {
   cd jbofihe
 
   git describe --tags --long --abbrev=7 \
-  | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  | sed 's/\([^-]*-g\)/r\1/;s/^v//;s/-/./g'
 }
 
 prepare() {
