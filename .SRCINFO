@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libxslt
 	pkgdesc = XML stylesheet transformation library (mingw-w64)
-	pkgver = 1.1.44
+	pkgver = 1.1.45
 	pkgrel = 1
 	url = http://xmlsoft.org/XSLT/
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = mingw-w64-libxslt
 	options = staticlibs
 	options = !buildflags
 	options = !emptydirs
-	source = https://gitlab.gnome.org/GNOME/libxslt/-/archive/v1.1.44/libxslt-v1.1.44.tar.bz2
+	source = https://gitlab.gnome.org/GNOME/libxslt/-/archive/v1.1.45/libxslt-v1.1.45.tar.bz2
 	source = 0003-fix-concurrent-directory-creation.all.patch
-	sha256sums = 11ce6ca9d449d3f15e0dde93075887d0ad4e1573e8b68e80e09dbee78648b184
+	sha256sums = 8e00aa4e1749ee7244d08683ce2bb6fec7fd99baa6ef5d5f091274b318e6925e
 	sha256sums = fc23bd3c9e62a28cb1c020cebc83ca7532a5a7a21c2e4748b72d13ac7716a851
 
 pkgname = mingw-w64-libxslt
