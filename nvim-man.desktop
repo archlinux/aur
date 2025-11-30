@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Neovim Manpage Viewer
+NoDisplay=true
+Exec=nvim-man %U
+Terminal=true
+Type=Application
+StartupNotify=false
+MimeType=x-scheme-handler/man

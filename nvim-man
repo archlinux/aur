@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+if [ -n "$1" ]; then
+  exec nvim "+hide Man ${1#man:}"
+fi
+
+pname="$(basename "$0")"
+echo "Example usage: $pname man:ls(1)"
+exit 1

@@ -1,0 +1,15 @@
+pkgbase = neovim-man
+	pkgdesc = View manpages with Neovim by default
+	pkgver = 1
+	pkgrel = 2
+	arch = any
+	depends = neovim
+	depends = sh
+	source = nvim-man
+	source = nvim-man.desktop
+	source = env.conf
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = neovim-man
