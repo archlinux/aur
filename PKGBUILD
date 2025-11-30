@@ -7,7 +7,7 @@ url="https://github.com/sidegemninja/minisystool.git"
 license=('custom')
 depends=('gtk3')
 makedepends=('git' 'gcc' 'pkgconf')
-source=("$pkgname::git+https://github.com/sidegemninja/minisystool.git")
+source=("$pkgname::git+https://codeberg.org/sidegemninja/minisystool.git")
 md5sums=('SKIP')
 
 build() {

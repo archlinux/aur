@@ -9,7 +9,7 @@ pkgbase = minisystool
 	makedepends = gcc
 	makedepends = pkgconf
 	depends = gtk3
-	source = minisystool::git+https://github.com/sidegemninja/minisystool.git
+	source = minisystool::git+https://codeberg.org/sidegemninja/minisystool.git
 	md5sums = SKIP
 
 pkgname = minisystool
