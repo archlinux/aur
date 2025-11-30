@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-ext-calculator-git
 _app_id=dev.edfloreshz.Calculator
-pkgver=0.2.0.r14.gbb770fa
+pkgver=0.2.0.r9.g29853d5
 pkgrel=1
 pkgdesc="Calculator for the COSMIC desktop."
 arch=('x86_64' 'aarch64')
