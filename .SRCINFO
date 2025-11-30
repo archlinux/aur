@@ -1,0 +1,20 @@
+pkgbase = dockd-cmake3dot5-git
+	pkgdesc = Lenovo ThinkPad Dock Management Daemon
+	pkgver = 1.21.r13.g0f96047
+	pkgrel = 1
+	url = https://github.com/libthinkpad/dockd
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = pkg-config
+	depends = libthinkpad-git
+	depends = libxrandr
+	provides = dockd
+	conflicts = dockd
+	options = !strip
+	source = git+https://github.com/libthinkpad/dockd
+	md5sums = SKIP
+
+pkgname = dockd-cmake3dot5-git
