@@ -1,3 +1,4 @@
+# Maintainer: GreyXor <greyxor@protonmail.com>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Chris Tam <lchris314 at gmail dot com>
 # Contributor: Daniel Micay <danielmicay at gmail dotcom>
