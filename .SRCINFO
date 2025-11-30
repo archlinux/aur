@@ -14,7 +14,7 @@ pkgbase = pqhex
 	source = pqhex.ico
 	source = pqhex.desktop
 	sha256sums = SKIP
-	sha256sums = 657c802cfd37460d06d908eadbd05723e64bfa4cd76368c7d2202b90f25a7368
+	sha256sums = 8b3742983ea97064c8d635f7571cbd6a4be428b5ffb64a436b805d2d1efac52b
 	sha256sums = aaea65499cd447e1324aebcbfac1123887a9d7d2e433942a23615cc694154daf
 
 pkgname = pqhex-git
