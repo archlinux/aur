@@ -1,0 +1,20 @@
+pkgbase = adastra-bin
+	pkgdesc = An 18+ romance visual novel with a whole bunch of sci-fi and political intrigue mixed in. (bundled Ren'Py)
+	pkgver = 17
+	pkgrel = 1
+	url = https://echoproject.itch.io/adastra
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = itchio-dlagent
+	depends = bash
+	options = !strip
+	options = !debug
+	source = adastra.desktop
+	source = adastra.sh
+	source = Adastra-17-linux.tar.bz2::itch://echoproject/adastra/2364968
+	b2sums = de1b2f5134d09dd2cde851c075eb1fb5ce3dab478a1e3fcf2a6a48179901827171703c77d5941ebbedaa001d3c285dd60412e6d0128eef73219e63939cf408f7
+	b2sums = 03b5c8ffcb29602b6715fdf22e96ec016776777b5eb003de2f0c2af3ba7dcffa41596428093ff646cc8284a057125bcf85bae45de567dce254c6ac6e6f838f20
+	b2sums = 2aa130be087787ab21dc2d20f83b6fa080b461e41b0f5dc2c0a563ba72747840ae41df6ce459b59a72a22c86d509d1016da94652d6529e544f18a53fef936e22
+
+pkgname = adastra-bin

@@ -1,0 +1,12 @@
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Adastra
+Comment=Science fiction gay furry romance visual novel
+Exec=/usr/bin/adastra
+Icon=adastra
+Terminal=false
+Categories=Game
+Keywords=Renpy;VisualNovel;Furry;LGBT;SciFi;
+StartupNotify=true
