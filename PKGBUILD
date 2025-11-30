@@ -1,6 +1,6 @@
 # Maintainer: Firstpick firstpick1992@proton.me
 pkgname=pacsea-bin
-pkgver=0.5.2
+pkgver=0.5.3
 _tag="v$pkgver"
 pkgrel=1
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (binary version)"
@@ -37,13 +37,14 @@ optdepends=(
     'semgrep-bin: static analysis checks'
     'shellcheck: lint shell scripts'
     'downgrade: Downgrade of Packages'
+    'pacman-contrib: Update Check'
 )
 provides=("pacsea=${pkgver}")
 conflicts=('pacsea' 'pacsea-git')
 source=("Pacsea::https://github.com/Firstp1ck/Pacsea/releases/download/${_tag}/Pacsea"
         "Pacsea-${_tag}.tar.gz::https://github.com/Firstp1ck/Pacsea/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('fd5c0ec7616445bdf41c1ca92fe8745a9cf73102fd6829e7d26dfa77fe32694a'
-            '2edba0e83bf99d9b62494061fd64f753d461f95cff85e9d9253ba4a6abc1f68e')
+sha256sums=('ce7a296b1f4db63049698632e0d84e04082856e6ead326f122cfb26a63f27b0f'
+            '4db4d492c44f525c2642efc5889b86fe36637ed2fc5c68d2b451702a35325ffa')
 
 package() {
   # GitHub tarballs from tags extract to Pacsea-<version> (without 'v' prefix)
