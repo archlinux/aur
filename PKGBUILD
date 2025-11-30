@@ -2,40 +2,39 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 pkgname=('vulkan-caps-viewer-x11' 'vulkan-caps-viewer-wayland')
 pkgbase=vulkan-caps-viewer
-pkgver=4.03
+pkgver=4.10
 pkgrel=1
 epoch=1
 pkgdesc="Vulkan Hardware Capability Viewer"
 arch=('x86_64' 'aarch64')
 url="https://vulkan.gpuinfo.org"
 license=('LGPL-3.0-or-later')
-makedepends=(
-  'git'
-  'qt5-wayland'
-  'qt5-x11extras'
+depends=(
+  'hicolor-icon-theme'
+  'qt6-base'
   'vulkan-icd-loader'
 )
+makedepends=('git')
 source=("git+https://github.com/SaschaWillems/VulkanCapsViewer.git#tag=$pkgver"
         'git+https://github.com/KhronosGroup/Vulkan-Headers.git')
-sha256sums=('643e4e49a839579552b7a5c272409337ae2a727f4f34e9a87be279ee3be7a259'
+sha256sums=('0cecd1c605999dfd2fb73e883d8c6e9a884951d5473e11f3a6649dfaefb7e977'
             'SKIP')
 
 prepare() {
-
-  # Create build directories
-  mkdir -p build-x11 build-wayland
-
   cd VulkanCapsViewer
   git submodule init
   git config submodule.Vulkan-Headers.url "$srcdir/Vulkan-Headers"
   git -c protocol.file.allow=always submodule update
+
+  # Create build directories
+  mkdir -p build-x11 build-wayland
 }
 
 build() {
 
   # X11
   pushd build-x11
-  qmake-qt5 ../VulkanCapsViewer \
+  qmake6 ../VulkanCapsViewer \
     DEFINES+=X11 \
     CONFIG+=release \
     PREFIX=/usr
@@ -44,7 +43,7 @@ build() {
 
   # Wayland
   pushd build-wayland
-  qmake-qt5 ../VulkanCapsViewer \
+  qmake6 ../VulkanCapsViewer \
     DEFINES+=WAYLAND \
     CONFIG+=release \
     PREFIX=/usr
@@ -54,11 +53,7 @@ build() {
 
 package_vulkan-caps-viewer-x11() {
   pkgdesc+=" (X11)"
-  depends=(
-    'hicolor-icon-theme'
-    'qt5-x11extras'
-    'vulkan-icd-loader'
-  )
+  depends+=('libxcb')
   provides=('vulkan-caps-viewer')
   conflicts=('vulkan-caps-viewer')
 
@@ -71,11 +66,7 @@ package_vulkan-caps-viewer-x11() {
 
 package_vulkan-caps-viewer-wayland() {
   pkgdesc+=" (Wayland)"
-  depends=(
-    'hicolor-icon-theme'
-    'qt5-wayland'
-    'vulkan-icd-loader'
-  )
+  depends+=('wayland')
   provides=('vulkan-caps-viewer')
   conflicts=('vulkan-caps-viewer')
 
