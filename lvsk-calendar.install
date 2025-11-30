@@ -1,0 +1,69 @@
+#!/bin/bash
+
+post_install() {
+    cat <<'EOF'
+
+    ╭──────────────────────────────────────────────────────────╮
+    │                                                          │
+    │                   lvsk calendar v0.2.6                   │
+    │                                                          │
+    │           minimalist text-based calendar with            │
+    │               an elegant esthetic for Arch               │
+    │                                                          │
+    ╰──────────────────────────────────────────────────────────╯
+
+    Usage
+      lvsk-calendar
+
+    Navigation
+      hjkl       • day navigation
+      [] or ←→   • month navigation
+      t          • jump to today
+      q          • quit
+
+    Features
+      • Elegant design
+      • Hyprland floating window support (auto-configured)
+      • Vim-style navigation
+      • Minimalist aesthetic with maximum clarity
+
+    ─────────────────────────────────────────────────────────────
+
+EOF
+}
+
+post_upgrade() {
+    cat <<'EOF'
+
+    ╭──────────────────────────────────────────────────────────╮
+    │                                                          │
+    │              lvsk calendar updated • v0.2.6              │
+    │                                                          │
+    ╰──────────────────────────────────────────────────────────╯
+
+    Changelog
+      • Orbital ASCII background illustration
+      • Optimized rendering for instant navigation
+      • Improved visual hierarchy and spacing
+      • Enhanced Hyprland integration
+
+    ─────────────────────────────────────────────────────────────
+
+EOF
+}
+
+post_remove() {
+    cat <<'EOF'
+
+    ╭──────────────────────────────────────────────────────────╮
+    │                                                          │
+    │              lvsk calendar has been removed              │
+    │                                                          │
+    │                  thanks for using lvsk                   │
+    │                                                          │
+    ╰──────────────────────────────────────────────────────────╯
+
+EOF
+}
+
+# vim:set ts=4 sw=4 et:
