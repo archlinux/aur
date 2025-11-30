@@ -6,8 +6,8 @@
 
 pkgname=anytype-alpha-bin
 _pkgname=anytype
-_truetag="-alpha" # Usually -alpha, but sometimes they do the next version as -beta ( blank is stable, this package only updates for alpha/beta versions ) which is weird
-pkgver=0.51.13
+_truetag="-alpha" # Usually -alpha, but sometimes they do the next version as -beta which is weird ( blank is stable, this package only updates for alpha/beta versions )
+pkgver=0.51.15
 pkgrel=1
 pkgdesc="Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users."
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
 	"https://github.com/anyproto/anytype-ts/releases/download/v${pkgver}${_truetag}/anytype_${pkgver}${_truetag}_amd64.deb"
 	"https://raw.githubusercontent.com/anyproto/anytype-ts/refs/tags/v${pkgver}${_truetag}/LICENSE.md"
 )
-sha256sums=('387bc13073a8233bb2312f4301677b7f704770cc6ec272589f53a57c681a5208'
+sha256sums=('3bba161666448a729b928d1bf161947bdcf2fd7dd04d91afb32b3578aeb507eb'
             'daad9eb95adc6262b07115ba2cf87cd4c64acaca4b45d48e0fd3b15a72a31dc1')
 
 package() {
