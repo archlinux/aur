@@ -2,7 +2,7 @@
 
 pkgname=rgrc
 pkgver=0.5.1.r2.gdb80e65
-pkgrel=1
+pkgrel=2
 pkgdesc='Rusty Generic Colouriser - like grc but faster and with more features'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://github.com/lazywalker/rgrc'
@@ -40,9 +40,9 @@ build() {
   cargo build --frozen --release --no-default-features
 
   # Generate shell completions
-  target/release/${pkgname} --completions=zsh > etc/zsh.compl
-  target/release/${pkgname} --completions=bash > etc/bash.compl
-  target/release/${pkgname} --completions=fish > etc/fish.compl
+  target/release/${pkgname} --completions=zsh > etc/_${pkgname}
+  target/release/${pkgname} --completions=bash > etc/${pkgname}
+  target/release/${pkgname} --completions=fish > etc/${pkgname}.fish
 
   # Generate man pages
   gzip -fk doc/rgrc.1
@@ -66,9 +66,9 @@ package() {
 	install -Dm 0644 share/conf.* -t "${pkgdir}/usr/share/${pkgname}/"
 
   # Install shell completions
-  install -Dm 0644 etc/zsh.compl -t "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}/"
-  install -Dm 0644 etc/bash.compl -t "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-  install -Dm 0644 etc/fish.compl -t "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -Dm 0644 etc/_${pkgname} -t "${pkgdir}/usr/share/zsh/site-functions/"
+  install -Dm 0644 etc/${pkgname} -t "${pkgdir}/usr/share/bash-completion/completions/"
+  install -Dm 0644 etc/${pkgname}.fish -t "${pkgdir}/usr/share/fish/vendor_completions.d/"
 
   # Install man pages
 	install -Dm 0644 doc/rgrc.1.gz -t "${pkgdir}/usr/share/man/man1/"
