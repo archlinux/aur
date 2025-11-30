@@ -1,6 +1,6 @@
 # Maintainer: k4ditano <k4ditano@h2r.es>
 pkgname=notnative-app-bin
-pkgver=0.1.14
+pkgver=0.1.15
 pkgrel=1
 pkgdesc="Note-taking application with Vim-like keybindings, MCP server (40+ tools), AI chat, and smart tags (binary package)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
 provides=('notnative-app')
 conflicts=('notnative-app')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/notnative-app-bin-$pkgver-x86_64.tar.gz")
-sha256sums=('8e813e43f3393023b4acbe2656ad440b57ef93280f78a0b5bff7e169b28b4ca6')
+sha256sums=('1c18e7f0c0ae1f8785e378c712a8027544d45ec7c4904daa4531488be6540aa1')
 
 package() {
     cd "$srcdir"
