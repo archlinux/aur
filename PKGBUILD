@@ -2,7 +2,7 @@
 # Maintainer: Jax Young <jaxvanyang@gmail.com>
 
 pkgname=dooit
-pkgver=3.3.3
+pkgver=3.3.4
 pkgrel=1
 pkgdesc="A TUI Todo Manager"
 url="https://github.com/dooit-org/dooit"
@@ -26,7 +26,7 @@ makedepends=(
     'python-poetry-core>=1.0.0'
 )
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
-sha256sums=('b69aad735d779dfc9a006e2f040d8802ef4fc1a2a2dfa338eeb2ec49e2140f8b')
+sha256sums=('a14dea1a297be88dd92735023c630ee61f62ce31a89cb951b0bcad519ad586b6')
 
 build() {
     cd "$pkgname-$pkgver"
