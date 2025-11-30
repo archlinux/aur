@@ -1,10 +1,9 @@
-# Maintainer: Kyle Manna <kyle(at)kylemanna(dot)com>
-# Co-Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
+# Maintainer: wheat32
 
 pkgname=expressvpn-beta
 _name=expressvpn
-pkgver=4.1.1.10039
-pkgrel=2
+pkgver=5.0.1.11498
+pkgrel=1
 pkgdesc="Proprietary VPN client for Linux"
 arch=('x86_64' 'aarch64')
 depends=('bash' 'dbus' 'fontconfig' 'freetype2' 'gcc-libs' 'glib2' 'glibc' 'iptables' 'libatomic_ops'
