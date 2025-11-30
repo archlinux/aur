@@ -2,7 +2,7 @@
 
 pkgname=projtlauncher
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A modernized, community-driven Minecraft launcher based on the MultiMC/Prism Launcher lineage.'
 url='https://projtlauncher.yongdohyun.org.tr'
 arch=(x86_64 aarch64)
@@ -42,7 +42,7 @@ optdepends=(
   'flite: minecraft voice narration'
 )
 source=(
-  "git+https://github.com/Project-Tick/ProjT-Launcher.git#tag=${pkgver}?submodules"
+  "git+https://github.com/Project-Tick/ProjT-Launcher.git#tag=${pkgver}-${pkgrel}?submodules"
   {lionshead,batch,mdi}.license
 )
 sha256sums=('SKIP' '2ee3ba8d96e9882150783b6444651ea4a65d779532ecac8646f2ecd3a48c2770' '009e25d32aab6dbae193aac4b82fa1a26cb07f288225b2906da425a0f219bc4c' '32646946afc31ef5a4ce2cbb5a5a68a9f552c540a78ef23344c51c3efca58fa6')

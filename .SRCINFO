@@ -1,7 +1,7 @@
 pkgbase = projtlauncher
 	pkgdesc = A modernized, community-driven Minecraft launcher based on the MultiMC/Prism Launcher lineage.
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projtlauncher.yongdohyun.org.tr
 	arch = x86_64
 	arch = aarch64
@@ -34,7 +34,7 @@ pkgbase = projtlauncher
 	optdepends = xorg-xrandr: for older minecraft versions
 	optdepends = java-runtime=8: for older minecraft versions
 	optdepends = flite: minecraft voice narration
-	source = git+https://github.com/Project-Tick/ProjT-Launcher.git#tag=0.0.3?submodules
+	source = git+https://github.com/Project-Tick/ProjT-Launcher.git#tag=0.0.3-2?submodules
 	source = lionshead.license
 	source = batch.license
 	source = mdi.license
