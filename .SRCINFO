@@ -1,0 +1,24 @@
+pkgbase = android-gcc-cross-bin
+	pkgdesc = A GCC cross-compiler targeting Android
+	pkgver = 15.2.0
+	pkgrel = 20251130
+	url = https://github.com/AmanoTeam/Pino
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = LGPL-3.0
+	provides = android-gcc-cross
+	conflicts = android-gcc-cross
+	options = !strip
+	options = staticlibs
+	source_i686 = https://github.com/AmanoTeam/Pino/releases/download/gcc-15/i386-unknown-linux-gnu.tar.xz
+	sha256sums_i686 = aa3b49b969157f31c9e91e51f1fcc3478101f7e4b5a55dfa913db8b721a3b53d
+	source_x86_64 = https://github.com/AmanoTeam/Pino/releases/download/gcc-15/x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 1bdaeaeed8e1f8ab5c55b0ae8754e1d7b1fbca631669f71ceb330ee0c2371d4a
+	source_aarch64 = https://github.com/AmanoTeam/Pino/releases/download/gcc-15/aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 61a2b8958bb2dc4538a0faafca0250f443267424167814eadc695bd3c1010767
+	source_armv7h = https://github.com/AmanoTeam/Pino/releases/download/gcc-15/arm-unknown-linux-gnueabihf.tar.xz
+	sha256sums_armv7h = 79e951ee98e48abdb7a8d2323836ecdf6efc39445192a5e2d5ac7445175032e6
+
+pkgname = android-gcc-cross-bin
