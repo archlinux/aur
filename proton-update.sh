@@ -1,5 +1,13 @@
 #!/bin/bash
 
+mkdir -p /usr/share/proton-update
+
+if [ ! -f "/usr/share/proton-update/url" ]; then
+    touch "/usr/share/proton-update/url"
+fi
+
+URL_CACHED=$(cat "/usr/share/proton-update/url")
+
 DIR=$(mktemp -d)
 cd "$DIR"
 
@@ -16,6 +24,13 @@ FILE="/etc/pacman.conf"
 URL_SUFFIX=$(curl -s https://packages.cachyos.org/package/cachyos/x86_64/proton-cachyos | grep -oP 'proton-cachyos-[^"]+\.pkg\.tar\.zst' | sort -V | head -n1)
 
 URL="https://cdn77.cachyos.org/repo/x86_64/cachyos/$URL_SUFFIX"
+
+if [ "$URL" = "$URL_CACHED" ]; then
+    echo "No new proton-cachyos version detected"
+    exit
+fi
+
+echo "$URL" > "/usr/share/proton-update/url"
 
 curl "$URL" --output proton-cachyos.pkg.tar.zst 
 
