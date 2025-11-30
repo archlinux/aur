@@ -2,7 +2,7 @@
 
 _upname=FoundryTools
 pkgname=python-foundrytools
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='A library to work with fonts in Python (exctracted from ftcli)'
 arch=(any)
@@ -25,7 +25,7 @@ makedepends=(python-{build,installer,wheel}
              python-setuptools)
 _archive="$_upname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('0c4c811339c24d9a4aad3196148e4232ef30f3dfa5d573bf621b75ce15a66b08')
+sha256sums=('192866953c1f44bafce8c00259d3a6e02a36c8368f593eed59515fc99893747e')
 
 build() {
 	cd "$_archive"
