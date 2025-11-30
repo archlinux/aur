@@ -2,7 +2,7 @@ pkgbase = lcdtest
 	pkgdesc = A utility to display LCD monitor test patterns.
 	pkgver = 1.18
 	pkgrel = 3
-	url = http://www.brouhaha.com/~eric/software/lcdtest/
+	url = https://github.com/Energoblock/lcdtest/
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -10,7 +10,7 @@ pkgbase = lcdtest
 	depends = sdl_image
 	depends = sdl_ttf
 	depends = ttf-liberation
-	source = http://www.brouhaha.com/~eric/software/lcdtest/download/lcdtest-1.18.tar.gz
+	source = https://github.com/Energoblock/lcdtest/releases/download/1.18/lcdtest-1.18.tar.gz
 	sha512sums = 74b0739c5dcc5ff9307ca526b4a6bbd92d6e58a83ceeed5a37a4064e3e4ed0cbdfe7a2a70cd56ba1a7305c3fd72510e10a02098aab11828062a3999cac944ab7
 
 pkgname = lcdtest
