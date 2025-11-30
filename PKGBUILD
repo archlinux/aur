@@ -1,7 +1,7 @@
 # Maintainer: Frédéric Bogaerts <fred@netpack.pt>
 pkgname=xfb
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source Radio Automation with comprehensive accessibility support"
 arch=('x86_64' 'aarch64')
 url="https://github.com/netpack/XFB"
@@ -10,7 +10,7 @@ depends=(
     'qt6-base'
     'qt6-multimedia'
     'qt6-webengine'
-    'qt6-quickwidgets'
+    'qt6-declarative'
     'at-spi2-core'
     'speech-dispatcher'
     'alsa-lib'

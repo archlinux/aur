@@ -1,7 +1,7 @@
 pkgbase = xfb
 	pkgdesc = Open-source Radio Automation with comprehensive accessibility support
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/netpack/XFB
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = xfb
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = qt6-webengine
-	depends = qt6-quickwidgets
+	depends = qt6-declarative
 	depends = at-spi2-core
 	depends = speech-dispatcher
 	depends = alsa-lib
