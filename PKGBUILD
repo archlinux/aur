@@ -1,11 +1,11 @@
 pkgname=arch-update-manager-bin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A Linux Mint inspired GTK4-based update manager for Arch Linux (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/destbg/arch-update-manager"
 license=('MIT')
-depends=('gtk4' 'vte4' 'polkit' 'pacman' 'timeshift')
+depends=('gtk4' 'vte4' 'polkit' 'pacman' 'timeshift' 'expect')
 provides=('arch-update-manager')
 conflicts=('arch-update-manager')
 optdepends=('paru: AUR helper support'
@@ -14,8 +14,8 @@ source=(
   "arch-update-manager-${pkgver}-x86_64.tar.gz::${url}/releases/download/${pkgver}/arch-update-manager-${pkgver}-x86_64.tar.gz"
   "${pkgname%-bin}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('2f3772a74a740a186ed11032c6a6d7e898cc39987e6484773d07b70546fff1a4'
-            '3f8b93cc0ce116abf4a8f79d3a5cecb6861e305c0d623552e07b3cef4a8942a4')
+sha256sums=('42e7563b7c82427ef0df27610f6cf283705f6883b2acdcd1170de1cb0ec08d62'
+            '631c9ba311d273d894e521b408fbae0ca80f2089803700953b530d5452183b1c')
 
 package() {
   cd "$srcdir"
