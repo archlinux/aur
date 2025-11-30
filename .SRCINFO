@@ -1,7 +1,7 @@
 pkgbase = perl-uri-nested
 	pkgdesc = Nested URIs
 	pkgver = 0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/URI-Nested
 	arch = any
 	license = PerlArtistic

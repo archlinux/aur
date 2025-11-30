@@ -3,7 +3,7 @@
 
 pkgname='perl-uri-nested'
 pkgver='0.10'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Nested URIs"
 arch=('any')
 license=('PerlArtistic' 'GPL')
