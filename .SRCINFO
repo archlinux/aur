@@ -1,6 +1,6 @@
 pkgbase = realvnc-rvnc-connect
 	pkgdesc = VNC remote desktop software by RealVNC
-	pkgver = 8.1.0
+	pkgver = 8.2.2
 	pkgrel = 1
 	url = https://www.realvnc.com/en/connect/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = realvnc-rvnc-connect
 	depends = libxtst
 	optdepends = cups
 	optdepends = avahi
-	source_x86_64 = https://downloads.realvnc.com/download/file/realvnc-connect/RealVNC-Connect-8.1.0-Linux-x64.deb
+	source_x86_64 = https://downloads.realvnc.com/download/file/realvnc-connect/RealVNC-Connect-8.2.2-Linux-x64.deb
 	sha256sums_x86_64 = 1ff03c74d04ac57727a277866c63f61e22e08b84db1285fd0e4b76df68ed8cdc
 
 pkgname = realvnc-rvnc-connect

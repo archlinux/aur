@@ -1,6 +1,6 @@
 # Maintainer: basz <echo c3BhdGllZ2FtZXNAZ21haWwuY29tCg== | base64 -d>
 pkgname=realvnc-rvnc-connect
-pkgver=8.1.0
+pkgver=8.2.2
 pkgrel=1
 pkgdesc="VNC remote desktop software by RealVNC"
 arch=('x86_64')
@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 source_x86_64=("https://downloads.realvnc.com/download/file/realvnc-connect/RealVNC-Connect-${pkgver}-Linux-x64.deb")
-sha256sums_x86_64=('1ff03c74d04ac57727a277866c63f61e22e08b84db1285fd0e4b76df68ed8cdc')
+sha256sums_x86_64=('5ccee5791cea2bbc43989eccbf49efbae7f1df640b52c42601273048bcd708ca')
 
 package() {
 	bsdtar -xv -C "${pkgdir}" -f "${srcdir}/data.tar.xz"
