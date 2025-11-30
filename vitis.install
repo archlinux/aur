@@ -7,11 +7,7 @@ POST INSTALL INFO
 failed. To reinstall run the following script:
 
    ⚠️ The installer uses sudo.
-   /opt/Xilinx/$pkgver/Vitis/data/emulation/qemu/comp/qemu_scripts/qemu/x86_64-qemu-xilinx-nativesdk-standalone -d /opt/Xilinx/Vitis/$pkgver/data/emulation/qemu/comp/qemu -y
+   $_installprefix/$pkgver/Vitis/data/emulation/qemu/comp/qemu_scripts/qemu/x86_64-qemu-xilinx-nativesdk-standalone -d $_installprefix/Vitis/$pkgver/data/emulation/qemu/comp/qemu -y
 
-EOF
-
-    cat <<"EOF"
-2. The install path changed in 2025.1 from `/opt/Xilinx/{Vitis,Vivado}/VERSION` to `/opt/Xilinx/VERSION/{Vitis,Vivado}`. Change your shortcuts if needed.
 EOF
 }

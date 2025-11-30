@@ -31,13 +31,13 @@
 # editions. "Vitis (Unified Software Platform)" includes Vivado.
 #
 # Selecting only the features or component support you need will save space.
-# Two example configuration files for 2025.1
+# Two example configuration files for 2025.2
 # `install_config-{vitis,vivado}.txt` are included, which enable support for
 # Spartan-7 only – so add/remove features as needed. If you want to create the
 # install configuration yourself, follow the following steps:
 #
-# 1. tar xf *.tar
-# 2. ./xsetup -b ConfigGen
+# 1. `tar xf *.tar`
+# 2. `./xsetup -b ConfigGen`
 # 3. edit the generated config file.
 #    You don't have to modify `Destination`. It is overridden by the
 #    `--location` argument 
@@ -67,8 +67,8 @@
 #
 # If you later want to add more features to your installation, you may want to
 # repackage. If you did not remove the extracted installation archive files
-# (`src`) and would like to save the time for checksum and extraction for
-# repackaging, then use:
+# (`src`) and would like to save the time (checksum and extraction) before,
+# then use:
 #
 # makepkg --noextract -f
 
@@ -78,8 +78,8 @@ pkgname=(vivado)
 _installprefix=/opt/Xilinx
 
 _srcname=FPGAs_AdaptiveSoCs_Unified_SDI
-pkgver=2025.1
-_more_ver=0530_0145
+pkgver=2025.2
+_more_ver=1114_2157
 pkgrel=1
 pkgdesc="FPGA/CPLD design suite for AMD devices"
 url="https://www.xilinx.com/products/design-tools/vivado.html"
@@ -108,7 +108,7 @@ source=(
 )
 
 md5sums=(
-    '144b21e7a231081821d13f85495dd809'
+    '5e793c6b88de5123a09f024253fc2527'
     # Checksum from https://www.xilinx.com/support/download.html
 
     '69d14ad64f6ec44e041eaa8ffcb6f87c'
@@ -239,9 +239,3 @@ EOF
 
     package_common_post
 }
-# Note:
-# The installer tries to download
-# https://download.amd.com/opendownload/installer/installer_patch_2025.1_2025.1_0530_0145.zip
-# which leads to 404 as of 2025-06-09. Maybe it is only applied if it can be
-# downloaded. The error can be seen in the debug logs in
-# `$HOME/.Xilinx/xinstall/xinstall-*.log`.

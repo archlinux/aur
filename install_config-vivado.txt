@@ -4,10 +4,10 @@ Edition=Vivado ML Standard
 Product=Vivado
 
 # Path where AMD FPGAs & Adaptive SoCs software will be installed.
-Destination=/tools/Xilinx
+Destination=
 
 # Choose the Products/Devices the you would like to install.
-Modules=xcvm1102:0,Zynq UltraScale+ MPSoCs:0,Kintex UltraScale+ FPGAs:0,Virtex UltraScale+ 58G FPGAs:0,Vitis Model Composer(A toolbox for Simulink):0,Artix-7 FPGAs:0,Install devices for Alveo and edge acceleration platforms:0,Vitis Embedded Development:0,Zynq-7000 All Programmable SoC:0,Virtex UltraScale+ HBM FPGAs:0,xcve2202:0,Spartan UltraScale+:0,xcve2002:0,Vitis Networking P4:0,Kintex UltraScale FPGAs:0,Power Design Manager (PDM):0,Virtex UltraScale+ FPGAs:0,Artix UltraScale+ FPGAs:0,xcv80:0,Spartan-7 FPGAs:1,DocNav:0,xcve2102:0,xcve2302:0,Install Devices for Kria SOMs and Starter Kits:0,Kintex-7 FPGAs:0
+Modules=xcv80:0,Zynq UltraScale+ MPSoCs:0,Kintex UltraScale+ FPGAs:0,Virtex UltraScale+ 58G FPGAs:0,xcve2202:0,Vitis Model Composer(A toolbox for Simulink):0,Artix-7 FPGAs:0,Install devices for Alveo and edge acceleration platforms:0,Vitis Embedded Development:0,xcvm1102:0,Zynq-7000 All Programmable SoC:0,xcve2002:0,Virtex UltraScale+ HBM FPGAs:0,Spartan UltraScale+:0,xcve2302:0,Vitis Networking P4:0,Kintex UltraScale FPGAs:0,Power Design Manager (PDM):0,Virtex UltraScale+ FPGAs:0,Artix UltraScale+ FPGAs:0,Spartan-7 FPGAs:1,DocNav:0,Versal RF Series ES1:0,Install Devices for Kria SOMs and Starter Kits:0,xcve2102:0,Kintex-7 FPGAs:0
 
 # Choose the post install scripts you'd like to run as part of the finalization step. Please note that some of these scripts may require user interaction during runtime.
 InstallOptions=Acquire or Manage a License Key:0
@@ -17,7 +17,7 @@ InstallOptions=Acquire or Manage a License Key:0
 CreateProgramGroupShortcuts=1
 
 # Choose the name of the Start menu/Application menu shortcut. This setting will be ignored if you choose NOT to create shortcuts.
-ProgramGroupFolder=Xilinx Design Tools
+ProgramGroupFolder=AMD Adaptive SoC and FPGA Tools
 
 # Choose whether shortcuts will be created for All users or just the Current user. Shortcuts can be created for all users only if you run the installer as administrator.
 CreateShortcutsForAllUsers=0
