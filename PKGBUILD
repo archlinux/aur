@@ -1,6 +1,6 @@
 # Maintainer: Fritz Prix <fritzprix@gmail.com>
 pkgname=libragent
-pkgver=0.3.23
+pkgver=0.3.25
 pkgrel=1
 pkgdesc="A desktop app for AI agents with built-in tools"
 arch=('x86_64')
@@ -32,12 +32,9 @@ build() {
   unset CXXFLAGS
   unset LDFLAGS
   
-  # Build the frontend
-  pnpm build
-  
-  # Build the backend (skip bundling to avoid linuxdeploy errors)
-  cd src-tauri
-  cargo build --release
+  # Build the application using tauri build to ensure assets are bundled
+  # --no-bundle skips creating deb/rpm/appimage which avoids linuxdeploy issues
+  pnpm tauri build --no-bundle
 }
 
 package() {
