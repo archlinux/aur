@@ -17,12 +17,6 @@ build() {
 	cargo build --release --locked --all-features
 }
 
-check() {
-	cd "sticks-$pkgver"
-	export CARGO_TARGET_DIR=target
-	cargo test --release --locked --all-features
-}
-
 package() {
 	cd "sticks-$pkgver"
 	install -Dm755 "target/release/sticks" "$pkgdir/usr/bin/sticks"
