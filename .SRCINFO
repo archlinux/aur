@@ -1,0 +1,31 @@
+pkgbase = myune_music-bin
+	pkgdesc = 一个基于 Flutter (Dart) 实现的简洁本地音乐播放器，支持 Windows / Linux 双端。
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/xiaobaimc/myune_music-bin
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = patchelf
+	depends = gtk3
+	depends = gcc-libs
+	depends = glibc
+	depends = libayatana-appindicator
+	depends = libayatana-indicator
+	depends = harfbuzz
+	depends = fontconfig
+	depends = libepoxy
+	depends = zlib
+	depends = ayatana-ido
+	depends = gdk-pixbuf2
+	depends = at-spi2-core
+	depends = cairo
+	depends = pango
+	depends = libdbusmenu-glib
+	depends = glib2
+	provides = myune_music=0.8.0
+	conflicts = myune_music
+	options = !debug
+	source = myune_music-0.8.0.tar.xz::https://github.com/xiaobaimc/myune_music-bin/releases/download/v0.8.0/MyuneMusic_v0.8.0_linux-x64.tar.xz
+	sha256sums = 5d8cb4e1b2886f22509b1955408a02ebec6ccbc88b157cb6ee0c9600c146c97c
+
+pkgname = myune_music-bin
