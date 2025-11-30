@@ -1,7 +1,7 @@
 # Maintainer: Frédéric Bogaerts <fred@netpack.pt>
 pkgname=xfb
 pkgver=2.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Open-source Radio Automation with comprehensive accessibility support"
 arch=('x86_64' 'aarch64')
 url="https://github.com/netpack/XFB"
