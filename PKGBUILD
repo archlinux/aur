@@ -39,7 +39,7 @@ package() {
   install -Dm644 squashfs-root/usr/share/icons/hicolor/scalable/plexamp.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/plexamp.svg
   for res in "16x16" "32x32" "48x48" "64x64" "128x128" "256x256" "512x512"; do
     mkdir -p squashfs-root/usr/share/icons/hicolor/$res/apps/
-    magick squashfs-root/usr/share/icons/hicolor/scalable/plexamp.svg -resize $res squashfs-root/usr/share/icons/hicolor/$res/apps/plexamp.png
+    magick -background none squashfs-root/usr/share/icons/hicolor/scalable/plexamp.svg -trim -resize $res squashfs-root/usr/share/icons/hicolor/$res/apps/plexamp.png
     install -Dm644 squashfs-root/usr/share/icons/hicolor/$res/apps/plexamp.png $pkgdir/usr/share/icons/hicolor/$res/apps/plexamp.png
   done
 }
