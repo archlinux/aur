@@ -1,0 +1,4 @@
+[zxspectrum-utils]
+source = "regex"
+url = "https://sourceforge.net/projects/zxspectrumutils/rss?path=/"
+regex = '<!\[CDATA\[/zxspectrum-utils-(.*).tar.gz\]\]>'

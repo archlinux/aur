@@ -1,0 +1,17 @@
+pkgbase = zxspectrum-utils
+	pkgdesc = Package of utils for crossdevelopment for ZX Spectrum
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://sourceforge.net/projects/zxspectrumutils/
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = glibc
+	depends = libjpeg
+	depends = libpng
+	depends = libx11
+	source = https://downloads.sourceforge.net/zxspectrumutils/files/zxspectrum-utils-1.1.tar.gz
+	md5sums = da141a0109b46bf862a6cd7a23aff82d
+	sha1sums = 517d697baedc596168281ff0893e9e7670cc2243
+	sha256sums = 5db4145083e5ee84cb67effd75e3fc6f602992a7f6273ff61500337981f77147
+
+pkgname = zxspectrum-utils
