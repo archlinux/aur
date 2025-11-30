@@ -1,5 +1,6 @@
 [protoc-gen-go-grpc-bin]
-source = "git"
-git = "https://github.com/grpc/grpc-go.git"
+source = "github"
+github = "grpc/grpc-go"
+use_max_release = true
 include_regex = "^cmd/protoc-gen-go-grpc/v.*"
 prefix = "cmd/protoc-gen-go-grpc/v"
