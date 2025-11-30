@@ -3,7 +3,7 @@
 
 _pkgname=dexed
 pkgname=$_pkgname-git
-pkgver=0.9.8.r16.gf20667e
+pkgver=1.0.1.r0.gbce5dee
 pkgrel=1
 pkgdesc='A software synth closely modelled on the Yamaha DX7 (git version)'
 arch=(x86_64)
@@ -76,7 +76,7 @@ b2sums=('SKIP'
 
 pkgver() {
   cd $_pkgname
-  git describe --tags --long --exclude 'NIGHTLY' | sed -e 's/^v//' -e 's/-/.r/' -e 's/-/./g'
+  git describe --tags --long --exclude 'Nightly' | sed -e 's/^v//' -e 's/-/.r/' -e 's/-/./g'
 }
 
 prepare() {
