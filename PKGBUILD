@@ -1,6 +1,6 @@
 # Maintainer: Fritz Prix <fritzprix@gmail.com>
 pkgname=libragent
-pkgver=0.3.17
+pkgver=0.3.21
 pkgrel=1
 pkgdesc="A desktop app for AI agents with built-in tools"
 arch=('x86_64')
