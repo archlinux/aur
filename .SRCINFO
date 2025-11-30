@@ -1,0 +1,14 @@
+pkgbase = alter
+	pkgdesc = Simple account switcher for Git.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/AmaseCocoa/alter
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	source = alter-0.1.0.tar.gz::https://github.com/AmaseCocoa/alter/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = aa75d4416eb479a2faa0ee9cdb85b51912b4aad4928a38e06ee37036dd108aed
+
+pkgname = alter
