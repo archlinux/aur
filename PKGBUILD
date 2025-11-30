@@ -1,0 +1,48 @@
+_dotnet_sdk_version=10.0
+_dotnet_runtime_version=9.0
+pkgname=roslyn-ls
+pkgver=2.100.11
+pkgrel=1
+pkgdesc="Language server behind C# Dev Kit for Visual Studio Code"
+arch=(x86_64)
+url=https://github.com/dotnet/roslyn/tree/main/src/LanguageServer
+license=(MIT)
+# Require CLI command `dotnet run-api`, available since dotnet sdk 10.
+depends=(gcc-libs glibc "dotnet-sdk>=10.0" "dotnet-runtime-$_dotnet_runtime_version")
+makedepends=("dotnet-sdk-$_dotnet_sdk_version" "dotnet-targeting-pack-$_dotnet_runtime_version")
+source=("roslyn-VSCode-CSharp-$pkgver.tar.gz::https://github.com/dotnet/roslyn/archive/refs/tags/VSCode-CSharp-$pkgver.tar.gz"
+        # It is in where the Assembly is, and not writable by normal user.
+        # We move it to ${XDG_CACHE_HOME:-$HOME/.cache}/Microsoft/CodeAnalysis/LanguageServer.
+        # See also: https://github.com/dotnet/roslyn/issues/76892
+        "0001-move-cache-directory.diff")
+sha256sums=('b4c8f6b7676e130362e5dae9e64026e2b47c637da833c0e8382cbe7c928939d7'
+            '39817ac608d5eb5d36ab350faa00afde8fdd89e0e6f229a48bfa6374736a4217')
+
+prepare() {
+    cd "$srcdir/roslyn-VSCode-CSharp-$pkgver"
+    patch -Np1 -i ../0001-move-cache-directory.diff
+    _rid="$(dotnet --info | grep RID | cut -d : -f 2 | xargs)"
+    # They do not publish an executable when no rid specified...
+    dotnet restore ./src/LanguageServer/Microsoft.CodeAnalysis.LanguageServer/Microsoft.CodeAnalysis.LanguageServer.csproj \
+        --runtime="$_rid"
+}
+
+build() {
+    cd "$srcdir/roslyn-VSCode-CSharp-$pkgver"
+    _rid="$(dotnet --info | grep RID | cut -d : -f 2 | xargs)"
+    dotnet publish ./src/LanguageServer/Microsoft.CodeAnalysis.LanguageServer/Microsoft.CodeAnalysis.LanguageServer.csproj \
+        --no-restore --no-self-contained --runtime="$_rid" --configuration Release \
+        --property:PublishReadyToRun=false
+}
+
+package() {
+    mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/lib"
+    _rid="$(dotnet --info | grep RID | cut -d : -f 2 | xargs)"
+    cd "$srcdir/roslyn-VSCode-CSharp-$pkgver"
+    cp -a --no-preserve=ownership \
+        "artifacts/LanguageServer/Release/net$_dotnet_runtime_version/$_rid" \
+        "$pkgdir/usr/lib/$pkgname"
+    ln -srf "$pkgdir/usr/lib/$pkgname/Microsoft.CodeAnalysis.LanguageServer" \
+            "$pkgdir/usr/bin/Microsoft.CodeAnalysis.LanguageServer"
+    install -Dm644 License.txt "$pkgdir/usr/share/licenses/$pkgname/Licenses.txt"
+}

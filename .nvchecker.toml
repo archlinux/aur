@@ -1,0 +1,5 @@
+[roslyn-ls]
+source = "github"
+github = "dotnet/vscode-csharp"
+prefix = "v"
+use_latest_release = true

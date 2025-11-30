@@ -1,0 +1,12 @@
+diff -ur a/src/LanguageServer/Microsoft.CodeAnalysis.LanguageServer/Program.cs b/src/LanguageServer/Microsoft.CodeAnalysis.LanguageServer/Program.cs
+--- a/src/LanguageServer/Microsoft.CodeAnalysis.LanguageServer/Program.cs	2025-11-19 09:13:57.000000000 +0800
++++ b/src/LanguageServer/Microsoft.CodeAnalysis.LanguageServer/Program.cs	2025-11-30 10:40:20.033622270 +0800
+@@ -101,7 +101,7 @@
+     var assemblyLoader = new CustomExportAssemblyLoader(extensionManager, loggerFactory);
+     var typeRefResolver = new ExtensionTypeRefResolver(assemblyLoader, loggerFactory);
+ 
+-    var cacheDirectory = Path.Combine(Path.GetDirectoryName(typeof(Program).Assembly.Location)!, "cache");
++    var cacheDirectory = Path.Combine(Environment.GetEnvironmentVariable("XDG_CACHE_HOME") ?? Path.Combine(Environment.GetEnvironmentVariable("HOME")!, ".cache"), "Microsoft", "CodeAnalysis", "LanguageServer");     
+ 
+     using var exportProvider = await LanguageServerExportProviderBuilder.CreateExportProviderAsync(AppContext.BaseDirectory, extensionManager, assemblyLoader, serverConfiguration.DevKitDependencyPath, cacheDirectory, loggerFactory, cancellationToken);
+ 
