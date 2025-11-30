@@ -1,6 +1,6 @@
 pkgname=pastelock
-pkgver=0.1.1
-pkgrel=1
+pkgver=0.1.3
+pkgrel=2
 pkgdesc="Encrypted clipboard manager with login, scrollable history and text/image paste storage"
 arch=('any')
 url="https://gitlab.com/E-Gamma-102/pastelock"
@@ -49,7 +49,7 @@ EOF
 [Desktop Entry]
 Type=Application
 Name=PasteLock
-Comment=Encrypted cross-device paste manager and clipbaord scroller
+Comment=Encrypted clipboard manager with login, scrollable history and text/image paste storage
 Exec=pastelock
 Terminal=false
 Categories=Utility;
@@ -59,4 +59,3 @@ EOF
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
   fi
 }
-sha256sums=('dc0c4d9c91d85ebe2bce83ed469ea5f13056f50b90f7f1ead716b41a0639c65c')
