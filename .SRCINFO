@@ -1,6 +1,6 @@
 pkgbase = cc-switch-bin
 	pkgdesc = Claude Code & Codex 供应商配置管理工具
-	pkgver = 3.7.1
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://github.com/farion1231/cc-switch
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cc-switch-bin
 	depends = libayatana-appindicator
 	depends = webkit2gtk-4.1
 	depends = gtk3
-	source = CC-Switch-v3.7.1-Linux.deb::https://github.com/farion1231/cc-switch/releases/download/v3.7.1/CC-Switch-v3.7.1-Linux.deb
-	md5sums = 42166658b01f1379ad23b9e96ff852c7
+	source = CC-Switch-v3.8.0-Linux.deb::https://github.com/farion1231/cc-switch/releases/download/v3.8.0/CC-Switch-v3.8.0-Linux.deb
+	md5sums = 034478efebe60e48539cad865a3e65e1
 
 pkgname = cc-switch-bin
