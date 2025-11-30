@@ -1,0 +1,15 @@
+pkgbase = python-pytest-emoji
+	pkgdesc = A pytest plugin that adds emojis to your test result report 😍
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/hackebrot/pytest-emoji
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python-pytest
+	source = pytest-emoji-0.2.0.tar.gz::https://github.com/hackebrot/pytest-emoji/archive/refs/tags/0.2.0.tar.gz
+	sha256sums = 29ebe826a1b791cd814a65be9743963d42855a47dcbecb8b2ce5323473d85b91
+
+pkgname = python-pytest-emoji

@@ -1,0 +1,3 @@
+[python-pytest-emoji]
+source = "git"
+git = "https://github.com/hackebrot/pytest-emoji.git"
