@@ -1,0 +1,15 @@
+pkgbase = sph-utils-git
+	pkgdesc = basic file, shell and text manipulation utilities
+	pkgver = c73f71b
+	pkgrel = 1
+	url = https://github.com/sph-mn/sph-utils
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	provides = sph-utils
+	conflicts = sph-utils
+	source = git+https://github.com/sph-mn/sph-utils.git
+	md5sums = SKIP
+
+pkgname = sph-utils-git
