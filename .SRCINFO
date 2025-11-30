@@ -1,11 +1,11 @@
 pkgbase = snd-hda-macbookpro-dkms-git
 	pkgdesc = Kernel driver for sound on Macs with Cirrus 8409 HDA chips
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/davidjo/snd_hda_macbookpro
 	install = snd_hda_macbookpro.install
 	arch = any
-	license = unknown
+	license = GPL-2.0-only
 	depends = git
 	depends = gcc
 	depends = make
