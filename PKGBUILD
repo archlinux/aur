@@ -2,7 +2,7 @@
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=253.28294.169
+_buildver=253.28294.251
 _veryear=2025
 _verrelease=3
 _verextra=
