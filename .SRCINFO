@@ -1,0 +1,18 @@
+pkgbase = python-ctkmessagebox
+	pkgdesc = A modern messagebox for CustomTkinter
+	pkgver = 2.7
+	pkgrel = 1
+	url = https://github.com/Akascape/CTkMessagebox
+	arch = any
+	license = CC0-1.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-customtkinter
+	depends = tk
+	source = python-ctkmessagebox-2.7.tar.gz::https://files.pythonhosted.org/packages/source/c/ctkmessagebox/ctkmessagebox-2.7.tar.gz
+	sha512sums = SKIP
+
+pkgname = python-ctkmessagebox
