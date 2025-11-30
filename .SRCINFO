@@ -1,13 +1,16 @@
 pkgbase = ttf-impallari-lobster-font
-	pkgdesc = A lovely bold condensed script font (TTF), from Pablo Impallari
-	pkgver = 1.7
-	pkgrel = 2
+	pkgdesc = A lovely bold condensed script font, from Pablo Impallari
+	pkgver = 2.1
+	pkgrel = 1
 	url = https://github.com/impallari/The-Lobster-Font
 	arch = any
 	groups = impallari-fonts
-	license = OFL
-	source = lobster-font-1.7.zip::https://github.com/impallari/The-Lobster-Font/archive/master.zip
-	sha256sums = 501ebbe8ebcadeb33d5b21786c57023236b996ed71a8900f0475e5252a996863
+	license = OFL-1.1-RFN
+	source = lobster-font-2.1.tar.gz::https://github.com/impallari/The-Lobster-Font/archive/ee431d49dcf5ab3d894214acd5b6dc93d80a63d5.tar.gz
+	sha256sums = 79e06a4d4032ed5b69da5fc46a99ea4d844268524a6aa5ee9c66c114209f48c4
 
 pkgname = ttf-impallari-lobster-font
+	pkgdesc = A lovely bold condensed script font, from Pablo Impallari (TTF)
 
+pkgname = otf-impallari-lobster-font
+	pkgdesc = A lovely bold condensed script font, from Pablo Impallari (OTF)

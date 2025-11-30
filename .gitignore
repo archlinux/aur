@@ -1,5 +1,5 @@
 pkg/
 src/
-ttf-impallari-lobster-font-*.pkg.tar.xz
-ttf-impallari-lobster-font-*.pkg.tar.zst
-lobster-font-*.zip
+otf-impallari-lobster-font-*.pkg.tar.*
+ttf-impallari-lobster-font-*.pkg.tar.*
+lobster-font-*.tar.gz
