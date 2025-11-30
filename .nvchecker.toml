@@ -1,0 +1,4 @@
+[pinit]
+source = "github"
+github = "ryonakano/pinit"
+use_latest_release = true
