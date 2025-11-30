@@ -1,0 +1,19 @@
+pkgbase = python-openmemory
+	pkgdesc = Local-first long-term memory engine for AI apps and agents (Python SDK)
+	pkgver = 1.0.2
+	pkgrel = 2
+	url = https://github.com/CaviraOSS/OpenMemory
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-dotenv
+	depends = python-openai
+	depends = python-numpy
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/o/openmemory_py/openmemory_py-1.0.2.tar.gz
+	sha256sums = 8ee46dffc86df3fabad8e84a684fe9a230418a350d71806d939ba62afb6c1c5b
+
+pkgname = python-openmemory
