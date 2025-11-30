@@ -10,7 +10,7 @@ depends=(
     'wayland'
     'cairo'
     'dbus'
-    'wlroots0.19'
+    'libwlroots0.19.so'
 )
 makedepends=(
     'zig'
@@ -28,8 +28,7 @@ sha256sums=('52ff0d555ecd354e0f1802273a933e6f557ec8c84da404b573b883f7bdd42879')
 build() {
     cd "$srcdir/$pkgname"
     
-    export HOME="$srcdir"
-    zig build -Doptimize=ReleaseSafe --prefix /usr
+    zig build -Doptimize=ReleaseSafe
 }
 
 check() {
@@ -39,6 +38,7 @@ check() {
 package() {
     cd "$srcdir/$pkgname"
     
+    export HOME="$srcdir"
     DESTDIR="$pkgdir" zig build install -Doptimize=ReleaseSafe --prefix /usr
     
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
