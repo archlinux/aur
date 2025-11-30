@@ -1,0 +1,4 @@
+[python-django-choices-field]
+source = "git"
+git = "https://github.com/bellini666/django-choices-field.git"
+prefix = "v"
