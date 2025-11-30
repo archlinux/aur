@@ -1,0 +1,15 @@
+pkgbase = mproc
+	pkgdesc = Small CLI utitlity to measure process runtime and memory usage.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/BonnyAD9/mproc/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	options = !debug
+	source = https://github.com/BonnyAD9/mproc/archive/refs/tags/v0.2.1.tar.gz
+	md5sums = SKIP
+
+pkgname = mproc
