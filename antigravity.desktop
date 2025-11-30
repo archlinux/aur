@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Antigravity
+Comment=Agentic IDE (sandboxed to ~/AntigravityWorkspace)
+Exec=/usr/bin/antigravity %U
+Terminal=false
+Type=Application
+Icon=antigravity
+Categories=Development;IDE;
+StartupWMClass=Antigravity
+MimeType=x-scheme-handler/antigravity;
