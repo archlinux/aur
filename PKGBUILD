@@ -1,6 +1,6 @@
 #!/bin/bash
 # Maintainer: Swapnil Ingle <ingleswapnil2004@gmail.com>
-pkgname=Quazaar
+pkgname=quazaar
 pkgver=0.1.4
 pkgrel=1
 pkgdesc="A cross-platform LAN media control system using WebSockets"
