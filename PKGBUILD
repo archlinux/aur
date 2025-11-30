@@ -1,7 +1,7 @@
 # Maintainers: arraen, thadah
 pkgname="synergy3-bin"
-pkgver="3.4.0"
-pkgrel="2"
+pkgver="3.5.0"
+pkgrel="1"
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="https://symless.com/synergy"
 license=('unknown')
