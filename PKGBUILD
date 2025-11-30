@@ -1,7 +1,8 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: slaphappybee <anna dot bellec at pm dot me>
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=hotline-miami-gog
-pkgver=2.0.0.3
+pkgver=2.0.0.4
 pkgrel=1
 pkgdesc="2D top-down action video game (gog.com version)"
 url="http://gog.com"
@@ -13,7 +14,7 @@ depends_x86_64=('lib32-libxrandr' 'lib32-fontconfig' 'lib32-libxi' 'lib32-glu' '
 source=("gog_hotline_miami_$pkgver.sh::gogdownloader://hotline_miami/installer_linux_en"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('c8f181abcff33ee3c3ac5d7de8d40c477c83bb0dca974b0d523084d7c414e88f'
+sha256sums=('8a7fad25d855f4769e89f4bd0ed5a72410906f040856ab225128a6daeb61577b'
             'a306f962134e56702e3211724b51e9a4d4abc99d55bb369f9c7a41d77e561bb7'
             '4080c3e3e129360152736c24e5019057d8dbbd08a62a3f6d77796ab6cd91e762')
 PKGEXT=".pkg.tar"
