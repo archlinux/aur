@@ -1,6 +1,6 @@
 pkgbase = waybar-weather
 	pkgdesc = A weather module for waybar with automatic geolocation
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/wneessen/waybar-weather
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = waybar-weather
 	license = MIT
 	makedepends = go
 	options = !debug
-	source = https://github.com/wneessen/waybar-weather/archive/refs/tags/v0.2.5.tar.gz
-	sha256sums = 92eb01935cda17bea636a35ad653286244b90ebc09a2f4eead129457c61d433c
+	source = https://github.com/wneessen/waybar-weather/archive/refs/tags/v0.2.6.tar.gz
+	sha256sums = 400ae7b0d4aaa946d2b5d4c1079806a19c28406ff25698c6a55ca507b45604fb
 
 pkgname = waybar-weather
