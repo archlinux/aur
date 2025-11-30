@@ -1,6 +1,6 @@
 pkgbase = r-rcdk
 	pkgdesc = Interface to the 'CDK' Libraries
-	pkgver = 3.8.1
+	pkgver = 3.8.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rcdk
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-rcdk
 	optdepends = r-rmarkdown
 	optdepends = r-runit
 	optdepends = r-xtable
-	source = https://cran.r-project.org/src/contrib/rcdk_3.8.1.tar.gz
-	sha256sums = 2726b934dedbb61ca0cfd94b086bc47fbbc29f4042e867ca64b37dc06d96bc95
+	source = https://cran.r-project.org/src/contrib/rcdk_3.8.2.tar.gz
+	sha256sums = 6fe80388eb219fa490ea1ff1cd0681ab554ec95de79cfb250056834f3a643bb1
 
 pkgname = r-rcdk
