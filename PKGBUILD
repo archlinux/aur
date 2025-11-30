@@ -3,7 +3,7 @@
 
 pkgname=recyclarr-bin
 _pkgname="${pkgname%-bin}"
-pkgver=7.5.1
+pkgver=7.5.2
 pkgrel=1
 pkgdesc='Automatically synchronize recommended settings from the TRaSH guides to your Sonarr/Radarr instances'
 arch=(x86_64 aarch64 armv7h)
@@ -40,9 +40,9 @@ sha256sums=('0dde0ee4db0e535bad3b4f20a2a30736c4656f8987f2d5dc70e53fbee4c34c41'
             'e8a2959e079a6a77c3eefaf77defd69e76944c2a1378257dcaf0286abde002a6'
             '458b7c0550f3c2e41f63bac197ce55a5699432ee24080f7917b001c0eec2c7ec'
             'f0b6b437fad6072f55be0eb57c4eaf6a44eecda4588633edd5ad716ea3e41c7d')
-sha256sums_x86_64=('f13623e27c3affad34baa0f282e19ad13101c90f26d5ec967c5a23b09fe365e9')
-sha256sums_aarch64=('c19a35f24b22211405c85023a8e8c9d9c47b2dc5b8c8d58539ca9589f7bc3f8d')
-sha256sums_armv7h=('15789ececdc714496ead3fbb6653ee4d81a25f7b659e3ec40b800749bd9c9d52')
+sha256sums_x86_64=('6f38d5fa6f894d17604fab8aa71e6186cebc7a60235e7a3461a44546acd10978')
+sha256sums_aarch64=('d166f61c842297299bf408ae138ec95b59fd85d4eae2f66d482c6ccfcaf00618')
+sha256sums_armv7h=('1461fa3d8695b995dd730a9a049431fb813cec401885cd6306bcb901e339558f')
 
 package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
