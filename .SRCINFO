@@ -1,6 +1,6 @@
 pkgbase = xosview2
 	pkgdesc = A lightweight system monitor
-	pkgver = 2.3.1
+	pkgver = 2.3.4
 	pkgrel = 1
 	url = http://xosview.sourceforge.net/
 	arch = x86_64
@@ -13,8 +13,7 @@ pkgbase = xosview2
 	depends = libxft
 	depends = libxpm
 	depends = libsm
-	source = https://downloads.sourceforge.net/project/xosview/xosview2-2.3.1.tar.gz
-	sha512sums = 75ea06dd0542773d465a3aa4cc617f28a537dcb7c2acf87b30ea0845a0a59dcd36127a8b167d7e23974bcd39f9a9338e1277fc8e440b18da921bc427b5ee616d
+	source = https://downloads.sourceforge.net/project/xosview/xosview2-2.3.4.tar.gz
+	sha512sums = 828334778102c55d8776c3aa7d63fcca860f7e036841274931c1ae0d59ed45a96fd365ac0cefb2df55b4f572d24996bb221ce564a037ff8be4050f9effab731f
 
 pkgname = xosview2
-

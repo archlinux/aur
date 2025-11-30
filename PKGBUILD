@@ -1,7 +1,7 @@
 # Maintainer: Kolei Chen <chenkolei at gmail dot com>
 
 pkgname=xosview2
-pkgver=2.3.1
+pkgver=2.3.4
 pkgrel=1
 pkgdesc="A lightweight system monitor"
 url="http://xosview.sourceforge.net/"
@@ -9,7 +9,7 @@ license=('GPL' 'BSD')
 arch=('x86_64' 'armv7h' 'aarch64')
 depends=('gawk' 'libxext' 'libxft' 'libxpm' 'libsm')
 source=("https://downloads.sourceforge.net/project/xosview/xosview2-${pkgver}.tar.gz")
-sha512sums=('c90fc4f79d1f776eba90620376d318302135fc18e79a49e1aa57607276b57d46c66eb647ad92b3ac314b74d64247887e81e1541f81dd276e1e5ef2206e241060')
+sha512sums=('828334778102c55d8776c3aa7d63fcca860f7e036841274931c1ae0d59ed45a96fd365ac0cefb2df55b4f572d24996bb221ce564a037ff8be4050f9effab731f')
 
 prepare() {
 	cd $srcdir/$pkgname-$pkgver
