@@ -40,7 +40,7 @@ pkgbase = xfb
 	optdepends = wavpack: WavPack audio support
 	optdepends = opus-tools: Opus audio support
 	optdepends = mediainfo: Media file information
-	source = git+https://github.com/netpack/XFB.git#tag=v2.0.0
+	source = git+https://github.com/netpack/XFB.git#tag=v2.0.0.5
 	sha256sums = SKIP
 
 pkgname = xfb

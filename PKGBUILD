@@ -46,7 +46,7 @@ optdepends=(
     'opus-tools: Opus audio support'
     'mediainfo: Media file information'
 )
-source=("git+https://github.com/netpack/XFB.git#tag=v${pkgver}")
+source=("git+https://github.com/netpack/XFB.git#tag=v${pkgver}.${pkgrel}")
 sha256sums=('SKIP')
 
 build() {
