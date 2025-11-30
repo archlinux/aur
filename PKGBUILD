@@ -1,6 +1,6 @@
 pkgname=cmdcreate
 pkgver=0.7.7
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/owen-debiasio/cmdcreate"
 license=('MIT')
