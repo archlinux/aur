@@ -1,19 +1,19 @@
 # Maintainer: ChadAPSheridan <chad.sheridan@cysec.ca>
 
 pkgname=rivalcfg-tray
-pkgver=0.9.3
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A GTK-based GUI for Rivalcfg tray indicator"
 arch=('x86_64')
 url="https://github.com/ChadAPSheridan/RivalCfgGuiGTK"
 license=('GPL')
-# runtime dependencies: gtk3 for UI, libayatana-appindicator for indicators, hidapi/rivalcfg for device access,
-# librsvg provides rsvg-convert used at runtime to render SVGs to PNG for the indicator
+# runtime dependencies: gtk (gtk3 for most distributions packaging this project), libayatana-appindicator for indicators,
+# hidapi/rivalcfg for device access. librsvg provides rsvg-convert used at runtime to render SVGs to PNG for the indicator
 depends=('gtk3' 'libayatana-appindicator' 'hidapi' 'rivalcfg' 'librsvg')
 makedepends=('cargo' 'rust')
 # Use GitHub release tarball (uploaded by the workflow)
-source=("https://github.com/ChadAPSheridan/RivalCfgGuiGTK/releases/download/v0.9.3/RivalCfgGuiGTK-0.9.3.tar.gz")
-sha256sums=(a0e906a2e2d2692b10a48bf5ba1c4460eb48f713edcbd8e4e4368605229705de)  # Replace with the actual checksum
+source=("https://github.com/ChadAPSheridan/RivalCfgGuiGTK/releases/download/v1.0.1/RivalCfgGuiGTK-1.0.1.tar.gz")
+sha256sums=(cbe6455a553d6ea7fae31099a89af63965156d889b295dccab27b9f9b86f5c5b)  # Replace with the actual checksum
 
 build() {
   cd "$srcdir/RivalCfgGuiGTK-$pkgver"

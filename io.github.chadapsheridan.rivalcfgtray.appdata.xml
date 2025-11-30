@@ -15,7 +15,7 @@
       <li>System tray icon showing battery level</li>
       <li>Quick access to mouse settings</li>
       <li>Wayland compatibility</li>
-      <li>GTK4-based interface</li>
+      <li>GTK-based interface</li>
     </ul>
   </description>
   <screenshots>
@@ -28,7 +28,7 @@
   <url type="bugtracker">https://github.com/ChadAPSheridan/RivalCfgGuiGTK/issues</url>
   <developer_name>Chad Sheridan</developer_name>
   <releases>
-    <release version="0.9.3" date="2025-09-22">
+    <release version="1.0.1" date="2025-11-30">
       <description>
         <p>Initial release of RivalCfg Tray</p>
         <ul>
