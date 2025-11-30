@@ -1,0 +1,31 @@
+# Maintainer: mAmineChniti <m.aminechniti@gmail.com>
+pkgname=sticks-aur
+pkgver=0.3.3
+pkgrel=1
+pkgdesc="A tool for managing C and C++ projects"
+arch=('x86_64')
+url="https://github.com/mAmineChniti/sticks"
+license=('MIT')
+depends=('gcc')
+makedepends=('rust' 'cargo')
+source=("sticks-$pkgver.tar.gz::https://github.com/mAmineChniti/sticks/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('85b54690239075126dedbcf34dc6b8b36261f1407caf47c7043d492cc18a7227')
+
+build() {
+	cd "sticks-$pkgver"
+	export CARGO_TARGET_DIR=target
+	cargo build --release --locked --all-features
+}
+
+check() {
+	cd "sticks-$pkgver"
+	export CARGO_TARGET_DIR=target
+	cargo test --release --locked --all-features
+}
+
+package() {
+	cd "sticks-$pkgver"
+	install -Dm755 "target/release/sticks" "$pkgdir/usr/bin/sticks"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/sticks-aur/LICENSE"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/sticks-aur/README.md"
+}
