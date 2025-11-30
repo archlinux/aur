@@ -1,0 +1,20 @@
+pkgbase = libretro-skyemu-git
+	pkgdesc = SkyEmu is a multi-system emulator, supporting Game Boy, Game Boy Color and Nintendo DS
+	pkgver = 4.r8.g246ba26
+	pkgrel = 2
+	url = https://github.com/skylersaleh/SkyEmu
+	arch = x86_64
+	license = MIT
+	makedepends = cmake>=3.15
+	makedepends = git
+	makedepends = ninja
+	depends = gcc-libs
+	depends = glibc
+	depends = libgl
+	depends = libretro-core-info
+	provides = libretro-skyemu
+	conflicts = libretro-skyemu
+	source = skyemu::git+https://github.com/skylersaleh/SkyEmu.git
+	sha256sums = SKIP
+
+pkgname = libretro-skyemu-git
