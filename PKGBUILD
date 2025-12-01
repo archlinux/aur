@@ -1,11 +1,11 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
-# Maintainer: Richard Lees <git zero at bitservices dot io>
+# Contributor: Richard Lees <git zero at bitservices dot io>
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 # Contributor: farwayer <farwayer@gmail.com>
 
 pkgname=ruby-excon
 _gemname="${pkgname#ruby-}"
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Usable, fast, simple HTTP 1.1 for Ruby'
 arch=('any')
@@ -15,7 +15,7 @@ depends=('ruby-logger')
 makedepends=('git' 'rubygems' 'ruby-rdoc')
 options=('!emptydirs')
 source=("$pkgname::git+$url#tag=v$pkgver")
-b2sums=('fc07239a85d0a9f6c4b2925683321a5b3eaf907ab9683e4a171c376244a76d3944511fe1b1346d16d7251d435c4d857db636a62c401f8a352963adb8a6ff981e')
+b2sums=('e02c7bbfa2ae625b91de98334db953a18c1616cd87b6615b28e3f48ada0b738a5b8962ab058ad2e49a40ffbf345cd7fa1ba0b43107b1eb77c91c9cc4d6d433de')
 
 pkgver() {
   cd "$pkgname"
