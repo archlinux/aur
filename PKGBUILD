@@ -2,7 +2,7 @@
 pkgname=random-access-kjv
 pkgdesc="Access Random KJV Bible location for reading. from local server in browser or from command line"
 pkgver=v1.0.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/pumenis/random-access-kjv"
 license=('MIT')
@@ -19,7 +19,7 @@ pkgver() {
 build() {
     cd "$srcdir/$pkgname"
     go build -o build/random-access-kjv ./
-    go build -o build/randfromogb ./randfromkjv/
+    go build -o build/randfromkjv ./randfromkjv/
 }
 
 package() {
