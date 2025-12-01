@@ -1,7 +1,7 @@
 pkgbase = zl-compressor
 	pkgdesc = Sidechain and oversample capable compressor plugin by ZL Audio
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zl-audio.github.io/plugins/zlcompressor/
 	arch = x86_64
 	groups = zl-audio
@@ -35,3 +35,16 @@ pkgname = zl-compressor-lv2
 	groups = zl-audio
 	groups = pro-audio
 	groups = lv2-plugins
+
+pkgname = zl-compressor
+	depends = alsa-lib
+	depends = libx11
+	depends = libxinerama
+	depends = libxext
+	depends = freetype2
+	depends = fontconfig
+	depends = webkit2gtk
+	depends = glu
+	depends = libc++
+	depends = zl-compressor-vst
+	depends = zl-compressor-lv2
