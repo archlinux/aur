@@ -1,5 +1,5 @@
 pkgbase = kmscon
-	pkgdesc = Terminal emulator based on Kernel Mode Setting (KMS)
+	pkgdesc = Kernel Mode Setting (KMS) and DRM based virtual Console Emulator
 	pkgver = 9.2.0
 	pkgrel = 1
 	url = https://github.com/kmscon/kmscon
@@ -19,9 +19,8 @@ pkgbase = kmscon
 	depends = libxkbcommon
 	depends = mesa
 	depends = pango
-	depends = pixman
 	depends = systemd-libs
 	source = kmscon-9.2.0.tar.gz::https://github.com/kmscon/kmscon/archive/refs/tags/v9.2.0.tar.gz
-	sha256sums = 69b8e63d2a48514d5802fba7a284ae6ce307488f1c47ac523582d599141ed4cf
+	b2sums = 949f8d05d773ba877ec6546577fb24c7397204554ec4ec079b798cfa7a38312db383797b7d9182bec939770bec6270d9f01dcb9e512baef6c7a14d8c5e0aa704
 
 pkgname = kmscon

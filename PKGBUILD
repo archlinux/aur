@@ -7,7 +7,7 @@
 pkgname=kmscon
 pkgver=9.2.0
 pkgrel=1
-pkgdesc='Terminal emulator based on Kernel Mode Setting (KMS)'
+pkgdesc='Kernel Mode Setting (KMS) and DRM based virtual Console Emulator'
 arch=('x86_64')
 url='https://github.com/kmscon/kmscon'
 license=('MIT')
@@ -21,18 +21,15 @@ depends=(
     'libxkbcommon'
     'mesa'
     'pango'
-    'pixman'
     'systemd-libs'
 )
 makedepends=('check' 'libxslt' 'docbook-xsl' 'linux-api-headers' 'meson')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('69b8e63d2a48514d5802fba7a284ae6ce307488f1c47ac523582d599141ed4cf')
+b2sums=('949f8d05d773ba877ec6546577fb24c7397204554ec4ec079b798cfa7a38312db383797b7d9182bec939770bec6270d9f01dcb9e512baef6c7a14d8c5e0aa704')
 
 build() {
-  meson setup build $pkgname-$pkgver \
-   --prefix=/usr \
-   --libexecdir=lib \
-   -D werror=false
+  arch-meson build "$pkgname-$pkgver" \
+    -D werror=false
   meson compile -C build
 }
 
