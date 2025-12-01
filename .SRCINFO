@@ -27,6 +27,7 @@ pkgbase = python-mlflow
 	depends = python-databricks-cli
 	depends = python-entrypoints
 	depends = python-gitpython
+	depends = python-graphene
 	depends = python-pyaml
 	depends = python-protobuf
 	depends = python-pytz

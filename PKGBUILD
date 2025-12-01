@@ -11,7 +11,7 @@ depends=('python' 'python-alembic' 'python-docker' 'python-flask' 'python-numpy'
     'python-scipy' 'python-pandas' 'python-prometheus-flask-exporter'
     'python-querystring-parser' 'python-sqlalchemy' 'gunicorn'
     'python-click' 'python-cloudpickle' 'python-databricks-cli'
-    'python-entrypoints' 'python-gitpython' 'python-pyaml'
+    'python-entrypoints' 'python-gitpython' 'python-graphene' 'python-pyaml'
     'python-protobuf' 'python-pytz' 'python-requests' 'python-packaging'
     'python-importlib-metadata' 'python-sqlparse' 'python-opentelemetry-sdk'
     'python-opentelemetry-exporter-otlp-proto-common' 'python-databricks-agent')
