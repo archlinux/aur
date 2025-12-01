@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lynxhub-bin
 _pkgname=LynxHub
-pkgver=3.2.0
+pkgver=3.3.0
 _electronversion=38
 pkgrel=1
 pkgdesc="Manage and launch all your AI from a single dashboard.(Prebuild version.Use system-wide electron)"
@@ -22,8 +22,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/V${pkgver}/${_pkgname}-V${pkgver}-linux_aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/V${pkgver}/${_pkgname}-V${pkgver}-linux_x86_64.rpm")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('820cc922a8c93c192b1a9cd86138eb27d35eebc0b91532819f0e4c8c50960a2b')
-sha256sums_x86_64=('b207652244ecdc438fd26f7bf53e306a5fe719c6e46b79f2808d2c181e68be45')
+sha256sums_aarch64=('7f707da668293a86aecf302cc01b85b58099688ed3cbd9e9ed9206f0c200cb02')
+sha256sums_x86_64=('1b3ef6f81ee46006de467f45b55e322a693d12cfafe0088a2d749aeb8a44d508')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
