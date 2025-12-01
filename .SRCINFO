@@ -16,7 +16,7 @@ pkgbase = moonbit-bin
 	source = https://cli.moonbitlang.cn/cores/core-latest.tar.gz#filename=moonbit-core-0.1.20251117.tar.gz
 	source = moon.sh
 	sha256sums = 59e7173fd2d000f8860cd97faa35dbbe55c12a90aa7a7a33d194fe3e96d0d8a9
-	sha256sums = 0848dedb0c189d783135fd15253553204f92b86871b586d2af22e621c7845060
+	sha256sums = af451a67bff828168a90ee8c195e0e120ee46e87942436fa7bbe323716de5f5e
 	sha256sums = a7ba404eb6995d8573e81fbe6c302fa5de96081585dc0420d29e4b419056c6a3
 
 pkgname = moonbit-bin
