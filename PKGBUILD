@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=musicat-bin
 _pkgname=Musicat
-pkgver=0.14.1
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="A sleek desktop music player and tagger for offline music 🪕 With experimental features like map view, GPT analysis, artist toolkit.(Prebuilt version)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
     'webkit2gtk-4.1'
 )
 source=("${pkgname}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('bb90ba8fd1eaa1ca57b82ed35bdfdb6d748100d577ffd83269855f56fa1920cd')
+sha256sums=('ca29cfccb533b9b26118ada18987e81cb2b16b7c5a193f5f8efafc440ac34900')
 prepare() {
     sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
