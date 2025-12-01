@@ -1,7 +1,7 @@
 pkgbase = openjdk-liberica17-full-bin
 	pkgdesc = Liberica 17 includes LibericaFX, which is based on OpenJFX 17 and Minimal VM, where suitable.
-	pkgver = 17+10+17.0.14
-	pkgrel = 3
+	pkgver = 17+15+17.0.17
+	pkgrel = 1
 	url = https://https://bell-sw.com/pages/downloads
 	install = install_openjdk-liberica17-full-bin.sh
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = openjdk-liberica17-full-bin
 	provides = jdk17-openjdk=17
 	provides = jre17-openjdk-headless=17
 	provides = java17-openjfx=17
-	source = https://download.bell-sw.com/java/17.0.14+10/bellsoft-jdk17.0.14+10-linux-amd64-full.tar.gz
-	sha1sums = 4aa376c5bcf24c2001510487ca0243e157536e22
+	source = https://download.bell-sw.com/java/17.0.17+15/bellsoft-jdk17.0.17+15-linux-amd64-full.tar.gz
+	sha1sums = 0806c22845b10ce3d9bbf5574041af87088701c0
 
 pkgname = openjdk-liberica17-full-bin
