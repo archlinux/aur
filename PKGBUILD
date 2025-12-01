@@ -1,6 +1,6 @@
 # Maintainer: Falko Galperin <dr (dot) asasteghof (at) gmail (dot) com>
 pkgname=python-pypdfium2
-pkgver=4.30.0
+pkgver=5.1.0
 pkgrel=1
 # Notice should always be explicitly included in the description, according to pypdfium2's README.
 pkgdesc="An ABI-level Python 3 binding to PDFium (unofficial AUR package)"
@@ -8,17 +8,18 @@ arch=(any)
 url="https://github.com/pypdfium2-team/pypdfium2"
 license=('Apache' 'BSD')
 depends=('python>=3.7.0')
-makedepends=('python-setuptools>=33.0.0' 'git' 'python-wheel>0.38.1' 'python-installer'
+makedepends=('python-setuptools>=70.1.0' 'git' 'python-installer'
 	'python-build' 'python-toml' 'python-setuptools-scm>=3.4.3' 'python-packaging')
 optdepends=('python-pillow: support PIL image objects for raster graphics'
-	'python-numpy: support numpy arrays for raster graphics')
+	'python-numpy: support numpy arrays for raster graphics'
+	"python-opencv: to save with pypdfium2's numpy adapter in the rendering CLI")
 changelog=$pkgname.changelog.md
 _name=${pkgname#python-}
-_ctypesgencommit="ebd495b1733b60132151154d6358fd1eb336a36a"
+_ctypesgencommit="a04e09a0a51e39988dcd4b43911f656663366fef"
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
 	# This is a pypdfium2-specific fork of the actual ctypesgen, hence we need to download it here.
 	"ctypesgen::git+https://github.com/pypdfium2-team/ctypesgen#commit=$_ctypesgencommit")
-sha256sums=("48b5b7e5566665bc1015b9d69c1ebabe21f6aee468b509531c3c8318eeee2e16"
+sha256sums=("46335ca30a1584b804a6824da84d2e846b4b954bdfc342d035b7bf15ed9a14e5"
 	"SKIP") # No checksums for git sources.
 
 build() {
@@ -39,5 +40,5 @@ package() {
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -d "$pkgdir/usr/share/licenses/$pkgname"
 	# We include those LICENSES included by pyproject.toml.
-	install -Dm644 LICENSES/{Apache-2.0.txt,BSD-3-Clause.txt,CC-BY-4.0.txt,LicenseRef-PdfiumThirdParty.txt} .reuse/dep5 "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 LICENSES/*.txt "$pkgdir/usr/share/licenses/$pkgname/"
 }
