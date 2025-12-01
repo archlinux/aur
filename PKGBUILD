@@ -3,7 +3,7 @@
 pkgname=python-pysubs2
 _name=${pkgname#python-}
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python library for editing subtitle files'
 arch=(any)
 url=https://pypi.org/project/pysubs2
@@ -21,4 +21,6 @@ build() {
 package() {
     cd "$_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -D -m644 LICENSE.txt \
+      "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 }
