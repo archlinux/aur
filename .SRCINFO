@@ -1,0 +1,24 @@
+pkgbase = argos
+	pkgdesc = Light weight front-end for Mopidy music server
+	pkgver = 1.16.1
+	pkgrel = 1
+	url = https://github.com/orontee/argos
+	install = argos.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = python
+	depends = glib2
+	depends = gobject-introspection-runtime
+	depends = python
+	depends = gtk3
+	depends = python-aiohttp
+	depends = python-expandvars
+	depends = python-gobject
+	depends = python-pyxdg
+	depends = python-zeroconf
+	source = https://github.com/orontee/argos/archive/refs/tags/v1.16.1.tar.gz
+	sha256sums = b7fbe277f7464ebc8226f395d021fffcbf842c218445951a1ee1c3c817d2a214
+
+pkgname = argos
