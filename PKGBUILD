@@ -1,6 +1,6 @@
 pkgname=pastelock
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 pkgdesc="Encrypted clipboard manager with login, scrollable history and text/image paste storage"
 arch=('any')
 url="https://gitlab.com/E-Gamma-102/pastelock"
@@ -25,7 +25,7 @@ makedepends=()
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://gitlab.com/E-Gamma-102/pastelock/-/archive/v${pkgver}/pastelock-v${pkgver}.tar.gz"
 )
-sha256sums=('SKIP')
+sha256sums=('318c1549b9e69d6cf8c364660ec36cd19711a1a0d792b2e3d9de5fdd46dbcad9')
 
 build() {
   cd "${srcdir}/pastelock-v${pkgver}"

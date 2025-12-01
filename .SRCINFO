@@ -1,7 +1,7 @@
 pkgbase = pastelock
 	pkgdesc = Encrypted clipboard manager with login, scrollable history and text/image paste storage
-	pkgver = 0.1.3
-	pkgrel = 2
+	pkgver = 0.1.4
+	pkgrel = 1
 	url = https://gitlab.com/E-Gamma-102/pastelock
 	arch = any
 	license = custom
@@ -18,7 +18,7 @@ pkgbase = pastelock
 	depends = python-xlib
 	depends = python-customtkinter
 	depends = python-ctkmessagebox
-	source = pastelock-0.1.3.tar.gz::https://gitlab.com/E-Gamma-102/pastelock/-/archive/v0.1.3/pastelock-v0.1.3.tar.gz
-	sha256sums = SKIP
+	source = pastelock-0.1.4.tar.gz::https://gitlab.com/E-Gamma-102/pastelock/-/archive/v0.1.4/pastelock-v0.1.4.tar.gz
+	sha256sums = 318c1549b9e69d6cf8c364660ec36cd19711a1a0d792b2e3d9de5fdd46dbcad9
 
 pkgname = pastelock
