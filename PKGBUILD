@@ -2,7 +2,7 @@
 
 pkgname=python-mlflow
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source platform for the machine learning lifecycle'
 arch=('x86_64')
 url='https://mlflow.org'
