@@ -1,6 +1,6 @@
 pkgbase = cleanuparr
 	pkgdesc = Tool for automating the cleanup of unwanted or blocked files in Sonarr, Radarr, and supported download clients like qBittorrent, Deluge and Transmission.
-	pkgver = 2.4.6
+	pkgver = 2.4.7
 	pkgrel = 1
 	url = https://cleanuparr.github.io/Cleanuparr
 	install = cleanuparr.install
@@ -16,14 +16,14 @@ pkgbase = cleanuparr
 	conflicts = cleanuparr-bin
 	options = !debug
 	options = !strip
-	source = git+https://github.com/Cleanuparr/Cleanuparr.git#tag=v2.4.6
+	source = git+https://github.com/Cleanuparr/Cleanuparr.git#tag=v2.4.7
 	source = git+https://github.com/Cleanuparr/qbittorrent-net-client.git
 	source = git+https://github.com/Cleanuparr/Transmission.API.RPC.git
 	source = cleanuparr.service
 	source = cleanuparr.sysusers
 	source = cleanuparr.tmpfiles
 	source = cleanuparr.install
-	sha256sums = dbe4b013ee473bd12b1a8f0ae0b46eb3584c14db7e27f516ff45780ac432ebe6
+	sha256sums = 42fe0663308fded0fea91054ed9cfd3086feda92fc52fce212d7afd27a8e010e
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = e64633347d71185ef886314a74881f81ea70cbb896f285547dfd7739ecbe0188
