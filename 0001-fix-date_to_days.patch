@@ -1,0 +1,52 @@
+From 0905318a229e6cc1c410da5b2a3a2c1468af7972 Mon Sep 17 00:00:00 2001
+From: EricLin0509 <ericlin050914@gmail.com>
+Date: Mon, 1 Dec 2025 10:55:07 +0800
+Subject: [PATCH] [Bug fix] date_to_days: Fix potential array out-of-bounds
+ access
+
+---
+ src/libs/date-to-days.h | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/src/libs/date-to-days.h b/src/libs/date-to-days.h
+index 8051a4e..a089938 100644
+--- a/src/libs/date-to-days.h
++++ b/src/libs/date-to-days.h
+@@ -27,29 +27,29 @@ static inline int
+ date_to_days(int year, int month, int day)
+ {
+     /* Check is valid date */
+-    if (year < 1) return 0;
++    if (year < 1970 || year > 9999) return 0;
+     if (month < 1 || month > 12) return 0;
+     if (day < 1 || day > 31) return 0;
+ 
+     /* Turn years to days */
+-    int year_days = (year - 1) * 365 +
+-                    (year - 1) / 4 -
+-                    (year - 1) / 100 +
+-                    (year - 1) / 400;
++    int year_days = (year - 1970) * 365 +
++                    (year - 1970) / 4 -
++                    (year - 1970) / 100 +
++                    (year - 1970) / 400;
+ 
+     /* Turn months to days */
+     const bool current_year_is_leap_year = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+ 
+     static const int cumulative_days[] = { // Use cumulative days to calculate the dates of each month
+-        0, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334
++        0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365
+     };
+ 
+-    int month_days = cumulative_days[month];
++    int month_days = cumulative_days[month - 1];
+     if (current_year_is_leap_year && month > 2) month_days += 1; // If current month is greater than February and current year is leap year, add 1 to the month_days
+ 
+     const int max_day = 
+         (month == 2 && current_year_is_leap_year) ? 29 : 
+-        (cumulative_days[month+1] - cumulative_days[month]);
++        (cumulative_days[month] - cumulative_days[month - 1]);
+ 
+     if (day > max_day) return 0; // Check is valid day again
+ 
