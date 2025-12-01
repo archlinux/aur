@@ -1,7 +1,7 @@
 # Maintainer: Aaron Kaiser <a_kaiser+arch at posteo dot de>
 
 pkgname=age-plugin-xwing
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=0
 pkgdesc='X-Wing plugin for age'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=('MIT')
 depends=()
 makedepends=(cargo)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('295c24a6f94c248d5a2b62c5d9a38213508d49cb43c07b417a580343f68107a4')
+sha256sums=('e9015d4b9c16db4a85851853929bb3c75f2602e8a49f4ba74013846890d93a61')
 
 prepare() {
   cd "age-plugin-xwing-$pkgver"
