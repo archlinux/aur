@@ -1,0 +1,4 @@
+[lazyjournal-bin]
+source = "github"
+github = "Lifailon/lazyjournal"
+use_latest_release = true
