@@ -1,0 +1,11 @@
+post_install() {
+    echo "================================================"
+    echo "The agents for different platforms are in the following path:"
+    echo "Agent path: /usr/share/ligolo-ng"
+    echo "================================================"
+}
+
+post_upgrade() {
+  post_install
+}
+
