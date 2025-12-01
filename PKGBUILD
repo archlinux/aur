@@ -11,8 +11,9 @@ makedepends=('git' 'cargo')
 depends=('ca-certificates' 'openssl')
 arch=('x86_64')
 provides=('infomaniak-dyndns-wildcard')
+backup=('etc/conf.d/infomaniak-dyndns-wildcard')
 validpgpkeys=('D1AC5180F5837E1CD69D6CA2D13067073B9A98A9')
-source=("$_name::git+$url.git"
+source=("$_name::git+$url.git?signed"
         "env"
         "service")
 b2sums=('SKIP'
@@ -51,6 +52,6 @@ package() {
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_name"
   install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$_name/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$_name/README.md"
-  install -Dm600 env "$pkgdir/etc/conf.d/$_name"
-  install -Dm600 service "$pkgdir/etc/conf.d/$_name.service"
+  install -Dm600 $srcdir/env "$pkgdir/etc/conf.d/$_name"
+  install -Dm644 $srcdir/service "$pkgdir/etc/systemd/system/$_name.service"
 }
