@@ -2,7 +2,7 @@
 
 _name="pycodec2"
 pkgname="python-${_name}"
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Python's interface to codec 2"
 arch=('aarch64' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools>=79')
 # checkdepends=('python-pytest')
 _pkgsrc="${url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('46a491f4c8e2328cb633b40ef6dccbd2ea08da51f6b76e795c4d7a439f8d355b')
+sha256sums=('15a486b16eb582050e00f4b8de1e4cb855665a32b6d9496aa4cba3b1254b9eb7')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"

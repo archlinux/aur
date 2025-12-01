@@ -1,6 +1,6 @@
 pkgbase = python-pycodec2
 	pkgdesc = Python's interface to codec 2
-	pkgver = 4.1.0
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = https://github.com/gregorias/pycodec2
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = python-pycodec2
 	depends = glibc
 	depends = python>=3.10
 	depends = python-numpy>=2
-	source = pycodec2-4.1.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pycodec2/pycodec2-4.1.0.tar.gz
-	sha256sums = 46a491f4c8e2328cb633b40ef6dccbd2ea08da51f6b76e795c4d7a439f8d355b
+	source = pycodec2-4.1.1.tar.gz::https://files.pythonhosted.org/packages/source/p/pycodec2/pycodec2-4.1.1.tar.gz
+	sha256sums = 15a486b16eb582050e00f4b8de1e4cb855665a32b6d9496aa4cba3b1254b9eb7
 
 pkgname = python-pycodec2
