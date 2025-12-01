@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=crankshaft
 pkgname="${_pkgname}-client-bin"
-pkgver=1.11.0
+pkgver=1.11.1
 _electronversion=12
 pkgrel=1
 pkgdesc="A fast, feature-rich krunker client written in typescript.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-${CARCH}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-portable-linux-x86_64.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b68221f10620d6fce50993b9714413b3536eb2a95a906f2e726ae9ecdc0d2954'
+sha256sums=('1312388b332492c3ee9d32a110d03bcfbb40002263eedae0060438a4afc0d283'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
