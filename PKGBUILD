@@ -2,7 +2,7 @@
 
 _plug=dvdsrc2
 pkgname="vapoursynth-plugin-${_plug}-git"
-pkgver=beta1.11.g84f4cfc
+pkgver=beta1.14.gb80ba8b
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -12,16 +12,19 @@ depends=(
   'vapoursynth'
   'a52dec'
   'libmpeg2'
-  'libdvdread'
+  'libdvdcss'
 )
 makedepends=(
   'git'
+  'meson'
   'cargo'
 )
+options=(!lto)
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/jsaowji/dvdsrc2.git")
-sha256sums=('SKIP')
+source=("${_plug}::git+https://github.com/jsaowji/dvdsrc2.git"
+        "libdvdread::git+https://code.videolan.org/videolan/libdvdread.git")
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "${_plug}"
@@ -30,6 +33,10 @@ pkgver() {
 
 prepare() {
   cd "${_plug}"
+  git submodule init
+  git config submodule.vendored_libdvdread/dvdread.url "${srcdir}/libdvdread"
+  git -c protocol.file.allow=always submodule update
+
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
