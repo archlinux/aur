@@ -1,20 +1,21 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: CpanBot <cpanbot at sch bme hu>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-mojox-renderer-xslate'
-pkgver='0.09'
+pkgver='0.14'
 pkgrel='1'
 pkgdesc="Text::Xslate renderer for Mojo"
 arch=('any')
 license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
-depends=('perl-mojolicious>=3' 'perl-text-xslate>=0.2013' 'perl-try-tiny')
-makedepends=()
-url='http://search.cpan.org/dist/MojoX-Renderer-Xslate'
-source=('http://search.cpan.org/CPAN/authors/id/G/GR/GRAY/MojoX-Renderer-Xslate-0.09.tar.gz')
-md5sums=('49be2805556bc3e9c71ca6343f16c3bf')
-sha512sums=('8b23e5931dbadf761d2cdfadd0e7bb44ee9f8992413ebfd741217b97fbcc416f69a74160bcc24b8786c59778ad2a95e7d89717371d01b9e1125eba8efe681022')
-_distdir="MojoX-Renderer-Xslate-0.09"
+options=('!emptydirs' 'purge')
+depends=('perl-mojolicious>=5.81' 'perl-text-xslate>=0.2013' 'perl-try-tiny')
+makedepends=('perl-mojolicious')
+url='https://metacpan.org/release/MojoX-Renderer-Xslate'
+source=('https://search.cpan.org/CPAN/authors/id/H/HJ/HJANSEN/MojoX-Renderer-Xslate-0.14.tar.gz')
+md5sums=('7e40bf4b0d88df9b1b842b60e95cea0c')
+sha512sums=('a89c02f51f296e077a9d1b9c2d1d79445f934ab4fdb0497f49d5f2a485c852f1cba8b94eaf60b2714f3250f45808b68231f4619aa22f0535cb9d951ff89da771')
+b2sums=('4631bc9e611884ee824ac148a8b16e911358837dc8d9dba59180b4eaf966465ae1d6ad177077b0c6bbac18ce43a5666182a67f53a45ec740976c4d985498e3b7')
+_distdir="MojoX-Renderer-Xslate-0.14"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,8 +40,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
