@@ -1,7 +1,7 @@
---- src/qdmr-0.12.1/dist/99-qdmr.rules.orig	2025-01-03 12:22:29.000000000 +0100
-+++ src/qdmr-0.12.1/dist/99-qdmr.rules	2025-01-18 21:27:28.486921809 +0100
+--- src/qdmr/dist/99-qdmr.rules.orig	2025-11-30 19:39:26.302016776 +0100
++++ src/qdmr/dist/99-qdmr.rules	2025-11-30 19:41:14.401533766 +0100
 @@ -1,12 +1,12 @@
- # Radioddity RD-73
+ # Radioddity GD-73
 -SUBSYSTEM=="usb", ATTRS{idVendor}=="1206", ATTRS{idProduct}=="0227", MODE="660", GROUP="dialout"
 +SUBSYSTEM=="usb", ATTRS{idVendor}=="1206", ATTRS{idProduct}=="0227", MODE="660", GROUP="uucp"
  
@@ -14,5 +14,5 @@
 -SUBSYSTEM=="usb", ATTRS{idVendor}=="15a2", ATTRS{idProduct}=="0073", MODE="660", GROUP="dialout"
 +SUBSYSTEM=="usb", ATTRS{idVendor}=="15a2", ATTRS{idProduct}=="0073", MODE="660", GROUP="uucp"
  
- # Anytone AT-D868UV, AT-D878UV, etc
  # Ignore this device in Modem Manager
+ # Anytone AT-D868UV, AT-D878UV, AT-D578UV (II) (GD32)
