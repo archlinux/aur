@@ -1,0 +1,9 @@
+*.zst
+*.rpm
+*.zip
+ifcx64.cfg
+src/
+pkg/
+*.pkg.tar.zst
+*.tar.gz
+*.tgz

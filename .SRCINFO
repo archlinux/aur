@@ -1,0 +1,22 @@
+pkgbase = gosuslugi-plugin
+	pkgdesc = Crypto Interface Web Browser Plugin for ESIA https://gosuslugi.ru/
+	pkgver = 1.3.19.0
+	pkgrel = 1
+	url = https://www.gosuslugi.ru/landing/gosplugin
+	arch = x86_64
+	license = unknown
+	makedepends = sed
+	makedepends = tar
+	makedepends = coreutils
+	makedepends = unzip
+	makedepends = libarchive
+	depends = pcsc-tools
+	depends = glibc
+	depends = acsccid
+	depends = xcb-util
+	optdepends = cryptopro-csp-k1: with digital signature sign in
+	provides = gosplugin
+	source_x86_64 = Gosplugin_Linux-Debian_Installer.deb.zip::https://gu-st.ru/content/Gosplugin/Gosplugin_Linux-Debian_Installer.deb.zip
+	sha256sums_x86_64 = 5cce84af9529ae636a6732393b40f99287f1c1f046b356ab909607156cdadda1
+
+pkgname = gosuslugi-plugin
