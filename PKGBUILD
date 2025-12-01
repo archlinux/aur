@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="CutefishOS's full-screen application launcher"
 arch=('x86_64')
 url="https://github.com/cutefishos/launcher"
-license=('GPL')
+license=('GPL-3.0-or-later')
 groups=('cutefish')
 depends=('fishui' 'kwindowsystem5' 'libcutefish')
 makedepends=('extra-cmake-modules' 'ninja' 'qt5-tools')
@@ -18,18 +18,14 @@ sha512sums=('c439e259bb7e82ba2dacac55f792a3d78db6c4c2c194d01a1ac0dc36ff73c632dce
 prepare() {
   cd launcher-$pkgver
   patch -p1 -i ../62cb76ed.patch # Fix build
-  sed -e '/add_dependencies/d' -i CMakeLists.txt
 }
 
 build() {
-  cd launcher-$pkgver
-
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .
-  make
-  make translations
+  cmake -G Ninja -B build -S launcher-$pkgver \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
 }
 
 package() {
-  cd launcher-$pkgver
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
