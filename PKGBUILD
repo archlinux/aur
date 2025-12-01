@@ -31,7 +31,7 @@ fi
 
 pkgname=${_pkgname}-dkms-staging-git
 pkgver=2.3.5.r0.gab38521f31
-pkgrel=2
+pkgrel=3
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch) with compatibility patches for latest stable kernel."
 arch=('any')
 url="https://zfsonlinux.org/"
@@ -45,6 +45,8 @@ source=("${_pkgname}::git+${_git_repo}#${_git_branch}"
         "69-zfs-dkms-check.hook"
         "zfs-dkms-check"
         "Fix-LLVM-21-Wuninitialized-const-pointer-warning.patch::https://github.com/openzfs/zfs/commit/9acedbaceec362d08a33ebfe7c4c7efcee81d094.patch?full_index=1"
+        "Fix-clang-zvol_id-make-array-length-properly-known-at-compile-time.patch::https://github.com/openzfs/zfs/commit/b7e00c7397bfc504ec9d46eeb41ab7980adb21df.patch?full_index=1"
+        "Fix-clang-config-kmap_atomic-initialise-test-data.patch::https://github.com/openzfs/zfs/commit/bfd137d92b8972e5b709ea1eb7be875c21b3242d.patch?full_index=1"
         "linux618-replace_nth_page.patch::https://github.com/darkbasic/zfs/commit/9ae69e2f11c7ff12a8a14f24d49c12d0c6f7b4d5.patch?full_index=1"
         "linux618-convert_ida_simple_calls.patch::https://github.com/darkbasic/zfs/commit/2525b7726e3547af6e1a9ddc2b55b03b0eb51b32.patch?full_index=1"
         "linux618-block_device_operations_getgeo_takes_struct_gendisk.patch::https://github.com/darkbasic/zfs/commit/a8b443445897daf82883abec3f95cbf762908f0f.patch?full_index=1"
@@ -57,6 +59,8 @@ sha256sums=('SKIP'
             '6c793cdbcf0c758b7bc78dcac85d116052b7a66416e4c54179cb0955687b3875'
             '59656435058e41620f15b5691ef1f753355fe81c01a562d92b7c8028aa527b1f'
             'd4c85e438f8bc9619b4980bdc460074a581058e3043cb1c493eab1b19c560cdb'
+            '23e320ae7f6fd10ca7cc81377e44656ec702d2d8655236170f91bf95d95531ef'
+            '49875a8df1ba450bb3d85aedee1c252c99e189c26b28b8085b2f59c6bca6b69b'
             'ff5c0fabcb4762f2bc3d98110b3a378f3feb785ad4a710966747bdf22dd1d6f5'
             'd7ef11ca273e0012505df302cb7a5906b097e72735919701886493b903b20f02'
             'facd4ccee7bd4528afd18d7728fae2c9884537acb3bf528e0a63a7c9f3e9d3fa'
