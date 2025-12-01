@@ -8,7 +8,7 @@
 
 pkgname=gittyup
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical Git client (GitAhead fork)'
 url="https://murmele.github.io/${pkgname^}"
 _url="https://github.com/Murmele/${pkgname^}"
@@ -87,6 +87,8 @@ package() {
 	DESTDIR="$pkgdir" cmake --install build
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" "${pkgname^}/LICENSE.md"
 	pushd "$pkgdir/usr"
+	# https://github.com/Murmele/Gittyup/issues/904
+	rm -f bin/git2
 	rm -f lib/libQt*.so.* lib/*.a
 	rm -rf include lib/{cmake,pkgconfig,Plugins}
 	mv bin/{indexer,relauncher} "share/${pkgname^}"
