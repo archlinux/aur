@@ -1,14 +1,17 @@
 pkgbase = perl-kwalify
 	pkgdesc = Kwalify schema for data structures
-	pkgver = 1.23
+	pkgver = 1.24
 	pkgrel = 1
-	url = http://search.cpan.org/~SREZIC/Kwalify-1.23/
+	url = https://metacpan.org/release/Kwalify
 	arch = any
-	license = GPL
 	license = PerlArtistic
-	depends = perl>=5.10.0
+	license = GPL
+	depends = perl
 	options = !emptydirs
-	source = https://cpan.perl.org/modules/by-authors/id/S/SR/SREZIC/Kwalify-1.23.tar.gz
-	md5sums = 32a9791b25295e2590c316c64fd9d891
+	options = purge
+	source = https://search.cpan.org/CPAN/authors/id/S/SR/SREZIC/Kwalify-1.24.tar.gz
+	md5sums = f185547115888ebbba6e3842631e50c3
+	sha512sums = 879ddf0cdb02034a5b41968cc095fbc04762d535700d24ac0a5fddf52556f9c9e087044491eebc610d0ab1776cbb0f1b6a971e2770288d77fea0fe1e8f5fb41e
+	b2sums = 4c78aae2eea423cbd8bc9869d4a8232dcbbd0f9945ce44063639ce77741001cc4cec8211dfa28542cf8d021d369c7972d3a4de847bad87807fcb9d74db516c5c
 
 pkgname = perl-kwalify
