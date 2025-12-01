@@ -15,7 +15,9 @@ validpgpkeys=('D1AC5180F5837E1CD69D6CA2D13067073B9A98A9')
 source=("$_name::git+$url.git"
         "env"
         "service")
-b2sums=()
+b2sums=('SKIP'
+        'a8fd4f4d98fa8124b5d5ac96bd78761a032da73c9b384e50995ec6b0d93c57120cc6f42aa33f246c32fe932c7639948964f82d8c6fed54941eba92bb10d9e5b2'
+        'c9662e910cca1efdd7679dbe5c651bf408dde209d44c9ba01b620dfbd9e2531c8f46e55b2a389a024930d691e8d9f203d5dc01e5040e40c768967186ba1a7292')
 
 pkgver() {
   cd "$_name"
