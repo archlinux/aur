@@ -1,0 +1,15 @@
+pkgbase = privacy-dots
+	pkgdesc = Script that displays the status of your microphone, camera, location and screen sharing.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/alvaniss/privacy-dots
+	arch = any
+	license = GPL-3.0-or-later
+	depends = pipewire
+	depends = v4l2loopback-dkms
+	depends = jq
+	depends = dbus
+	source = git+https://github.com/alvaniss/privacy-dots.git
+	sha256sums = SKIP
+
+pkgname = privacy-dots
