@@ -1,12 +1,12 @@
 pkgbase = age-plugin-xwing
 	pkgdesc = X-Wing plugin for age
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 0
 	url = https://github.com/Rixxc/age-plugin-xwing
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = https://github.com/Rixxc/age-plugin-xwing/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 295c24a6f94c248d5a2b62c5d9a38213508d49cb43c07b417a580343f68107a4
+	source = https://github.com/Rixxc/age-plugin-xwing/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = e9015d4b9c16db4a85851853929bb3c75f2602e8a49f4ba74013846890d93a61
 
 pkgname = age-plugin-xwing
