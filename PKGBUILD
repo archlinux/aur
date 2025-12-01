@@ -7,8 +7,8 @@
 # Contributor: Angelo Theodorou <encelo@gmail.com>
 
 pkgname=gittyup
-pkgver=1.4.0
-pkgrel=5
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='Graphical Git client (GitAhead fork)'
 url="https://murmele.github.io/${pkgname^}"
 _url="https://github.com/Murmele/${pkgname^}"
@@ -18,25 +18,26 @@ depends=(cmark
          git
          hunspell
          hicolor-icon-theme
+         icu
          libsecret
          libssh2
          lua
          lua-lpeg
          openssl
-         qt5-base)
+         qt6-base)
 makedepends=(cmake
              libgnome-keyring
-             qt5-tools
-             qt5-translations)
+             qt6-tools
+             qt6-translations)
 optdepends=('git-lfs: git-lfs support'
             'libgnome-keyring: for GNOME Keyring for auth credentials'
-            'qt5-translations: translations')
+            'qt6-translations: translations')
 source=("git+$_url.git#tag=${pkgname}_v$pkgver"
-        "$pkgname-libgit2::git+https://github.com/stinb/libgit2.git" # a fork, not the official upstream!
+        "$pkgname-libgit2::git+https://github.com/Murmele/libgit2.git"
         "$pkgname-lexilla::git+https://github.com/ScintillaOrg/lexilla.git"
         "$pkgname-scintillua::git+https://github.com/orbitalquark/scintillua.git"
         "$pkgname-zip::git+https://github.com/kuba--/zip.git")
-sha256sums=('06e1d79a3a3062c2ab37ad3a0a8f67d74d0c19210a9defac2b5e9e68e70feb1f'
+sha256sums=('1d5f9751084b63cfc9bfb0d9b1600b968084896091fc5b08b74de338921d10b8'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -44,8 +45,6 @@ sha256sums=('06e1d79a3a3062c2ab37ad3a0a8f67d74d0c19210a9defac2b5e9e68e70feb1f'
 
 prepare() {
 	cd "${pkgname^}"
-	# https://github.com/Murmele/Gittyup/issues/766
-	git cherry-pick -n d36eba172a01d541945d59427b4f643aaed55da0
 	git submodule init
 	for submodule in cmark git hunspell libssh2 openssl; do
 		git config "submodule.dep/$submodule/$submodule.update" none
@@ -57,28 +56,25 @@ prepare() {
 }
 
 build() {
-	local _flags=(
-		-W no-dev
+	local cmake_options=(
 		-D CMAKE_BUILD_TYPE=Release
 		-D CMAKE_INSTALL_PREFIX=/usr
 		-D CMAKE_INSTALL_DATADIR=share
 		-D LUA_MODULES_PATH=/usr/lib/lua/5.4
-		-D BUILD_SHARED_LIBS=OFF
-		-D DEBUG_OUTPUT=OFF
-		-D ENABLE_UPDATE_OVER_GUI=OFF
-		-D GENERATE_APPDATA=OFF
-		-D USE_SYSTEM_CMARK=ON
-		-D USE_SYSTEM_GIT=ON
-		-D USE_SYSTEM_HUNSPELL=ON
-		-D USE_SYSTEM_LIBGIT2=OFF # system libgit2 too new
-		-D USE_SYSTEM_LIBSSH2=ON
-		-D USE_SYSTEM_LUA=ON
-		-D USE_SYSTEM_OPENSSL=ON
-		-D USE_SYSTEM_QT=ON
+		-D BUILD_SHARED_LIBS=Off
+		-D DEBUG_OUTPUT=Off
+		-D ENABLE_UPDATE_OVER_GUI=Off
+		-D GENERATE_APPDATA=Off
+		-D USE_SYSTEM_CMARK=On
+		-D USE_SYSTEM_GIT=On
+		-D USE_SYSTEM_HUNSPELL=On
+		-D USE_SYSTEM_LIBGIT2=Off # system libgit2 too new
+		-D USE_SYSTEM_LIBSSH2=On
+		-D USE_SYSTEM_LUA=On
+		-D USE_SYSTEM_OPENSSL=On
+		-D USE_SYSTEM_QT=On
 	)
-	cmake "${_flags[@]}" \
-		-B build \
-		-S "${pkgname^}"
+	cmake -B build -S "${pkgname^}" -W no-dev "${cmake_options[@]}"
 	cmake --build build
 }
 
