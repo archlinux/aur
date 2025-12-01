@@ -1,0 +1,15 @@
+pkgbase = python-riscv-model
+	pkgdesc = A Python model of the RISC-V ISA, intended for automated testing and verification.
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = https://pypi.org/project/riscv-model/
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = riscv-model-0.6.6.tar.gz::https://files.pythonhosted.org/packages/source/r/riscv-model/riscv-model-0.6.6.tar.gz
+	sha256sums = dfff035b75ed36de33a99f95f1098697be308d4c7161a99407b82df22fd54d69
+
+pkgname = python-riscv-model
