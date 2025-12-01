@@ -1,7 +1,7 @@
 # Maintainer: Hristo Voyvodov <hristo.voyvodov@hotmail.com>
 
 pkgname=subctl
-pkgver=0.21.0
+pkgver=0.21.2
 pkgrel=0
 pkgdesc='The subctl command-line utility simplifies the deployment and maintenance of Submariner by automating interactions with the Submariner Operator and providing diagnostic features.'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(Apache)
 depends=()
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/submariner-io/subctl/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f8c3594026b9f5447ef2e77cd1a1c254bcbf3dd3c6416b863d873c59dae0b1b2')
+sha256sums=('5d632037d0893bc8b0bc57a238637d7b044b81da5d582bb3a223c0a7d1479602')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
