@@ -1,6 +1,6 @@
 # Maintainer: Tobi Lutke <tobi@shopify.com>
 pkgname=try-cli
-pkgver=1.2.2
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="A fast, interactive CLI tool for managing ephemeral development workspaces"
 arch=('x86_64' 'aarch64')
