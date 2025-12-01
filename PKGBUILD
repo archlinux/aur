@@ -12,8 +12,10 @@ provides=('prismlauncher-offline')
 conflicts=('prismlauncher')
 source=("prismlauncher-cracked::git+https://github.com/Diegiwg/PrismLauncher-Cracked.git"
         "libnbtplusplus::git+https://github.com/PrismLauncher/libnbtplusplus.git"
-        "filesystem::git+https://github.com/gulrak/filesystem.git")
+        "filesystem::git+https://github.com/gulrak/filesystem.git"
+        "qfile-open-checks.patch")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP')
 
@@ -27,6 +29,8 @@ prepare() {
     # Fix Java 7 to Java 8 compatibility
     sed -i 's/-target 7 -source 7/-target 8 -source 8/g' libraries/javacheck/CMakeLists.txt
     sed -i 's/-target 7 -source 7/-target 8 -source 8/g' libraries/launcher/CMakeLists.txt
+
+    patch -p1 -i "${srcdir}/qfile-open-checks.patch"
 }
 
 build() {

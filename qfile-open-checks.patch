@@ -1,0 +1,172 @@
+diff --git a/launcher/Application.cpp b/launcher/Application.cpp
+index 816f7b8ab..ba902dc4c 100644
+--- a/launcher/Application.cpp
++++ b/launcher/Application.cpp
+@@ -1858,7 +1858,9 @@ bool Application::handleDataMigration(const QString& currentData,
+ 
+     auto setDoNotMigrate = [&nomigratePath] {
+         QFile file(nomigratePath);
+-        file.open(QIODevice::WriteOnly);
++        if (!file.open(QIODevice::WriteOnly)) {
++            qWarning() << "Failed to create migration marker at" << nomigratePath;
++        }
+     };
+ 
+     // create no-migrate file if user doesn't want to migrate
+diff --git a/launcher/modplatform/helpers/OverrideUtils.cpp b/launcher/modplatform/helpers/OverrideUtils.cpp
+index 60983a5cf..94cdf6ef7 100644
+--- a/launcher/modplatform/helpers/OverrideUtils.cpp
++++ b/launcher/modplatform/helpers/OverrideUtils.cpp
+@@ -15,7 +15,9 @@ void createOverrides(const QString& name, const QString& parent_folder, const QS
+     FS::ensureFilePathExists(file_path);
+ 
+     QFile file(file_path);
+-    file.open(QFile::WriteOnly);
++    if (!file.open(QFile::WriteOnly)) {
++        return;
++    }
+ 
+     QDirIterator override_iterator(override_path, QDirIterator::Subdirectories);
+     while (override_iterator.hasNext()) {
+@@ -43,7 +45,9 @@ QStringList readOverrides(const QString& name, const QString& parent_folder)
+ 
+     QStringList previous_overrides;
+ 
+-    file.open(QFile::ReadOnly);
++    if (!file.open(QFile::ReadOnly)) {
++        return {};
++    }
+ 
+     QString entry;
+     do {
+diff --git a/launcher/modplatform/legacy_ftb/PackInstallTask.cpp b/launcher/modplatform/legacy_ftb/PackInstallTask.cpp
+index c04c0b2f3..98127434e 100644
+--- a/launcher/modplatform/legacy_ftb/PackInstallTask.cpp
++++ b/launcher/modplatform/legacy_ftb/PackInstallTask.cpp
+@@ -36,6 +36,7 @@
+ #include "PackInstallTask.h"
+ 
+ #include <QtConcurrent>
++#include <QDebug>
+ 
+ #include "BaseInstance.h"
+ #include "FileSystem.h"
+@@ -158,25 +159,29 @@ void PackInstallTask::install()
+     QFile packJson(m_stagingPath + "/minecraft/pack.json");
+     QDir jarmodDir = QDir(m_stagingPath + "/unzip/instMods");
+     if (packJson.exists()) {
+-        packJson.open(QIODevice::ReadOnly | QIODevice::Text);
+-        QJsonDocument doc = QJsonDocument::fromJson(packJson.readAll());
+-        packJson.close();
+-
+-        // we only care about the libs
+-        QJsonArray libs = doc.object().value("libraries").toArray();
+-
+-        foreach (const QJsonValue& value, libs) {
+-            QString nameValue = value.toObject().value("name").toString();
+-            if (!nameValue.startsWith("net.minecraftforge")) {
+-                continue;
++        if (!packJson.open(QIODevice::ReadOnly | QIODevice::Text)) {
++            qWarning() << "Failed to open pack manifest for reading at" << packJson.fileName();
++        } else {
++            QJsonDocument doc = QJsonDocument::fromJson(packJson.readAll());
++            packJson.close();
++
++            // we only care about the libs
++            QJsonArray libs = doc.object().value("libraries").toArray();
++
++            foreach (const QJsonValue& value, libs) {
++                QString nameValue = value.toObject().value("name").toString();
++                if (!nameValue.startsWith("net.minecraftforge")) {
++                    continue;
++                }
++
++                GradleSpecifier forgeVersion(nameValue);
++
++                components->setComponentVersion("net.minecraftforge",
++                                                forgeVersion.version().replace(m_pack.mcVersion, "").replace("-", ""));
++                packJson.remove();
++                fallback = false;
++                break;
+             }
+-
+-            GradleSpecifier forgeVersion(nameValue);
+-
+-            components->setComponentVersion("net.minecraftforge", forgeVersion.version().replace(m_pack.mcVersion, "").replace("-", ""));
+-            packJson.remove();
+-            fallback = false;
+-            break;
+         }
+     }
+ 
+diff --git a/launcher/ui/dialogs/AboutDialog.cpp b/launcher/ui/dialogs/AboutDialog.cpp
+index a8d60aef1..eb3295f03 100644
+--- a/launcher/ui/dialogs/AboutDialog.cpp
++++ b/launcher/ui/dialogs/AboutDialog.cpp
+@@ -124,7 +124,9 @@ QString getCreditsHtml()
+ QString getLicenseHtml()
+ {
+     QFile dataFile(":/documents/COPYING.md");
+-    dataFile.open(QIODevice::ReadOnly);
++    if (!dataFile.open(QIODevice::ReadOnly)) {
++        return {};
++    }
+     QString output = markdownToHTML(dataFile.readAll());
+     return output;
+ }
+diff --git a/tests/Library_test.cpp b/tests/Library_test.cpp
+index 9826abbdf..5b97902df 100644
+--- a/tests/Library_test.cpp
++++ b/tests/Library_test.cpp
+@@ -48,7 +48,10 @@ class LibraryTest : public QObject {
+     LibraryPtr readMojangJson(const QString path)
+     {
+         QFile jsonFile(path);
+-        jsonFile.open(QIODevice::ReadOnly);
++        if (!jsonFile.open(QIODevice::ReadOnly)) {
++            qWarning() << "Failed to open" << path << "for reading";
++            return {};
++        }
+         auto data = jsonFile.readAll();
+         jsonFile.close();
+         ProblemContainer problems;
+diff --git a/tests/MojangVersionFormat_test.cpp b/tests/MojangVersionFormat_test.cpp
+index 9ff5d78c0..1c8800a01 100644
+--- a/tests/MojangVersionFormat_test.cpp
++++ b/tests/MojangVersionFormat_test.cpp
+@@ -9,7 +9,10 @@ class MojangVersionFormatTest : public QObject {
+     static QJsonDocument readJson(const QString path)
+     {
+         QFile jsonFile(path);
+-        jsonFile.open(QIODevice::ReadOnly);
++        if (!jsonFile.open(QIODevice::ReadOnly)) {
++            qWarning() << "Failed to open" << path << "for reading";
++            return {};
++        }
+         auto data = jsonFile.readAll();
+         jsonFile.close();
+         return QJsonDocument::fromJson(data);
+@@ -17,7 +20,8 @@ class MojangVersionFormatTest : public QObject {
+     static void writeJson(const char* file, QJsonDocument doc)
+     {
+         QFile jsonFile(file);
+-        jsonFile.open(QIODevice::WriteOnly | QIODevice::Text);
++        QVERIFY2(jsonFile.open(QIODevice::WriteOnly | QIODevice::Text),
++                 qPrintable(QString("Failed to open %1 for writing").arg(file)));
+         auto data = doc.toJson(QJsonDocument::Indented);
+         qDebug() << QString::fromUtf8(data);
+         jsonFile.write(data);
+diff --git a/tests/Version_test.cpp b/tests/Version_test.cpp
+index 4c67cc544..869eddebf 100644
+--- a/tests/Version_test.cpp
++++ b/tests/Version_test.cpp
+@@ -106,7 +106,8 @@ class VersionTest : public QObject {
+ 
+         QFile vector_file{ test_vector_dir.absoluteFilePath("test_vectors.txt") };
+ 
+-        vector_file.open(QFile::OpenModeFlag::ReadOnly);
++        QVERIFY2(vector_file.open(QFile::OpenModeFlag::ReadOnly),
++                 qPrintable(QString("Failed to open %1").arg(vector_file.fileName())));
+ 
+         int test_number = 0;
+         const QString test_name_template{ "FlexVer test #%1 (%2)" };
