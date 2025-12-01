@@ -1,15 +1,16 @@
+# Maintainer: Elio <ancibrothers@gmail.com>
 # Maintainer: <christoph+aur@christophfink.com>
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=rlang
-_cranver=1.1.4
+_cranver=1.1.6
 pkgname=r-${_cranname,,}
 pkgdesc="Functions for Base Types and Core R and ‘Tidyverse’ Features"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 
 arch=("i686" "x86_64")
 depends=(
@@ -51,7 +52,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("970519ce46e1f52bc206acbda5467324c04ba60d36d0eff833e88caadf9c3d960cd904f480c7fd3df84c56ac338540d2b3c4b8bfea0b9fb9ccd6a3ef6ac45acf")
+b2sums=("1bb41661fa0dc2407acac0aaf6862ae35f8c6e6b91200cdc67698212e3f1787d7cfb63636f511460b1b6303d1892ac7363f46ef689c7eb611b1ed6faa9c8f8f5")
 
 build() {
     mkdir -p "${srcdir}/build/"
