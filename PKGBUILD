@@ -1,25 +1,38 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="html2markdown"
-pkgver=2.4.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Convert HTML to Markdown. Even works with entire websites and can be extended through rules."
-arch=('aarch64' 'i686' 'x86_64')
+arch=(
+  'aarch64'
+  'i686'
+  'x86_64'
+)
 url="https://html-to-markdown.com"
 _url="https://github.com/JohannesKaufmann/html-to-markdown"
-license=('MIT')
-depends=('glibc')
-makedepends=('git' 'go')
+license=(
+  'MIT'
+)
+depends=(
+  'glibc'
+)
+makedepends=(
+  'git'
+  'go'
+)
 _pkgsrc="${_url##*/}"
-source=("${_pkgsrc}::git+${_url}.git#tag=v${pkgver}")
-b2sums=('654c854582f24bcf752c7ade03e6b8bad95898ecec4fdc942b0643894108e2e654c0533bae80edae44b61858ce52e506f3e4400eba606b14b0cce1a2708ed7e4')
+source=(
+  "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}"
+)
+b2sums=('d703e024b9064302ad37e5beb6cfaf062302d091b03071637356482d6e82fa236e2aa554c0d6cd6ef774a118adc0e1ea97d1514571f9fcfa5531b753ca78e698')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
-  go get -v ./...
-  chmod -R ug+Xwr "${GOMODCACHE}"
+  go mod download -modcacherw -x
+  go mod verify
 
   mkdir -p "build"
 }
@@ -34,10 +47,13 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   cd "${srcdir}/${_pkgsrc}"
+  local build_commit="$(git rev-parse HEAD)"
+  local build_date="$(date --utc --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +"%Y-%m-%dT%H:%M:%SZ")"
+
   go build -v -o "build/${pkgname}" -ldflags "\
     -X main.version=${pkgver}-${pkgrel} \
-    -X main.commit=$(git rev-parse HEAD) \
-    -X main.date=$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+    -X main.commit=${build_commit} \
+    -X main.date=${build_date}" \
     ./"cli/${pkgname}"
 }
 
