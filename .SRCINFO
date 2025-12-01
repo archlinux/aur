@@ -1,0 +1,11 @@
+pkgbase = hyper-mcp-bin
+	pkgdesc = Hyper-MCP is a tool for managing Minecraft servers
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/tuananh/hyper-mcp
+	arch = x86_64
+	license = Apache-2.0
+	source = https://github.com/tuananh/hyper-mcp/releases/download/v0.1.8/hyper-mcp-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 248b7f42357e11514d9e4f0183b291fff04bccf2b0a012d2f5103f40dfee4740
+
+pkgname = hyper-mcp-bin
