@@ -1,4 +1,5 @@
-# Maintainer: Hecori (https://github.com/Hecori/obsolete-appimagetool-gms2)
+# Maintainer: Sadie (zulc22)
+# Original author: Hecori (https://github.com/Hecori/obsolete-appimagetool-gms2)
 # Contributor: Ayami
 # Contributor: ahmubashshir
 
