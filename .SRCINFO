@@ -1,6 +1,6 @@
 pkgbase = partition-vacuum
 	pkgdesc = A daemon to monitor partition free space and delete old files
-	pkgver = 1.0.0
+	pkgver = v0.0.3
 	pkgrel = 1
 	url = https://github.com/akayami/partition-vacuum
 	arch = x86_64
