@@ -9,7 +9,7 @@
 _pkgbase=wireshark
 pkgbase="${_pkgbase}-libsmi"
 pkgname=('wireshark-libsmi-cli' 'wireshark-libsmi-qt')
-pkgver=4.6.0
+pkgver=4.6.1
 pkgrel=1
 pkgdesc='Network traffic and protocol analyzer/sniffer with SNMP OID resolution'
 url='https://www.wireshark.org/'
@@ -62,9 +62,9 @@ source=(
   "git+https://gitlab.com/wireshark/wireshark.git#tag=v${pkgver}"
   wireshark.sysusers
 )
-sha512sums=('953dcabbde75b5c045c778f804ce1c0daaafdb376b73706c0fed2a2434d4301fc246ae6e4f6f1ae73c7830b475204610dee06c00c54fcc7c1e2000c078712269'
+sha512sums=('5783b7ea0619f401097d53f3fbe2282c86a3661ced1a4a0885e5c45d9a4bd9a9e186d0cb12dbef63ff97a67b95dce016aef1703632612923b5b047a7604c7c83'
             '3956c1226e64f0ce4df463f80b55b15eed06ecd9b8703b3e8309d4236a6e1ca84e43007336f3987bc862d8a5e7cfcaaf6653125d2a34999a0f1357c52e7c4990')
-b2sums=('a30563c1f4b34d754a7354a2d80fbafa865e6aa10f10e1086a0f48ed52d00ca42f634bc53f06bcb871fc88b6a0fd729829854e49fbee15c8191a56112e9025f7'
+b2sums=('ce190f2b52a7fa73effd4bd7997dbaf69435399779ae8b9d513f5640b18e766d78b8b43fe79344a25cda345887d334b5e142ce052091c77cc05aa73bad972ea4'
         '3cebcc993f51eaf0e09673c77e0436598593ef5eff306d880415ccc8eecb32fee93c9a6986f1a7bb0835ab7f9732369d7c5a07e6c053d6293e73a1ea84c58a5c')
 
 build() {
