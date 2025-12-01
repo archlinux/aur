@@ -1,0 +1,14 @@
+# -*- sh -*-
+
+post_install() {
+  cat <<__EOT__
+»  The ftr_site_config needed by unmerdify can be found in
+»  	/usr/share/ftr-site-config
+__EOT__
+}
+
+post_upgrade() {
+  post_install "$@"
+}
+
+# eof
