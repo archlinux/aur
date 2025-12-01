@@ -1,5 +1,5 @@
 pkgbase = hyper-mcp-bin
-	pkgdesc = Hyper-MCP is a tool for managing Minecraft servers
+	pkgdesc = Hyper-MCP is a webassembly plugin based mcp server
 	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/tuananh/hyper-mcp
