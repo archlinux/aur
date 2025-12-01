@@ -10,8 +10,8 @@ clean:
 
 .PHONY: image
 image:
-	@docker build -t kfilt-aur-packager .
+	@podman build --platform linux/amd64 -t kfilt-aur-packager .
 
 .PHONY: image-build
 image-build: #image
-	@docker run --rm -it kfilt-aur-packager
+	@podman run --rm -it kfilt-aur-packager
