@@ -1,6 +1,6 @@
 pkgbase = tchap-desktop
 	pkgdesc = Desktop app for Tchap.
-	pkgver = 4.17.1
+	pkgver = 4.18.0
 	pkgrel = 1
 	url = https://github.com/tchapgouv/tchap-desktop
 	install = tchap-desktop.install
@@ -16,9 +16,12 @@ pkgbase = tchap-desktop
 	depends = pango
 	depends = webkit2gtk-4.1
 	depends = gst-plugins-good
+	depends = libappindicator
+	depends = libayatana-appindicator
+	depends = sqlcipher
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/tchapgouv/tchap-desktop/releases/download/tchap-4.17.1/tchap-desktop_4.17.1_amd64.deb
-	sha256sums_x86_64 = bf69e0568d29329843bff575fe12bc154a549dba23375ab4e6834d9f143ea144
+	source_x86_64 = https://github.com/tchapgouv/tchap-desktop/releases/download/tchap-4.18.0/Tchap_4.18.0_amd64.deb
+	sha256sums_x86_64 = 7b227902c34a55f43386719139dd1c5a98c16dd693ea08e6841ff07026d1e889
 
 pkgname = tchap-desktop
