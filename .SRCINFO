@@ -1,0 +1,24 @@
+pkgbase = ttf-adobe-source-han-serif-cjk-variables
+	pkgver = 2.003R
+	pkgrel = 1
+	url = https://github.com/adobe-fonts/source-han-serif
+	arch = any
+	license = OFL-1.1
+	options = !debug
+	source = https://github.com/adobe-fonts/source-han-serif/releases/download/2.003R/02_SourceHanSerif-VF.zip
+	sha256sums = 86608d4c1162f80a2f2605a70d3f2072764609598271ee38eb24ea1eaa22dac8
+
+pkgname = ttf-adobe-source-han-serif-cn-variables
+	pkgdesc = Adobe Source Han Serif Subset TTF - Simplified Chinese TrueType fonts
+
+pkgname = ttf-adobe-source-han-serif-hk-variables
+	pkgdesc = Adobe Source Han Serif Subset TTF - Traditional Chinese (Hong Kong) TrueType fonts
+
+pkgname = ttf-adobe-source-han-serif-tw-variables
+	pkgdesc = Adobe Source Han Serif Subset TTF - Traditional Chinese (Taiwan) Chinese TrueType fonts
+
+pkgname = ttf-adobe-source-han-serif-jp-variables
+	pkgdesc = Adobe Source Han Serif Subset TTF - Japanese TrueType fonts
+
+pkgname = ttf-adobe-source-han-serif-kr-variables
+	pkgdesc = Adobe Source Han Serif Subset TTF - Korean TrueType fonts
