@@ -2,6 +2,7 @@
 
 _pkgname=palm-os-sdk
 pkgname=palm-os-sdk-git
+pkgver=r16.1fa2206
 pkgrel=1
 pkgdesc='Palm OS SDK files'
 arch=('any')
