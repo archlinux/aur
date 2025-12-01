@@ -1,7 +1,7 @@
 pkgbase = happ-desktop
 	pkgdesc = Happ is a mobile application designed for convenient proxy server management, powered by the robust Xray core.
-	pkgver = 1.2.6.195
-	pkgrel = 2
+	pkgver = 1.2.6
+	pkgrel = 3
 	url = https://github.com/Happ-proxy/happ-desktop
 	arch = x86_64
 	license = custom
