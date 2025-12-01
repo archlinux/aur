@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 
 pkgname=kwin-effects-forceblur-git
-pkgver=r441.a97689a
+pkgver=r452.89c263b
 pkgrel=2
 pkgdesc="KWin Better Blur DX effect fork with window class force blur feature (Wayland & X11)"
 arch=(x86_64)
@@ -24,14 +24,7 @@ pkgver() {
 }
 
 build() {
-    local _cmake_args=(-DCMAKE_INSTALL_PREFIX=/usr)
-
-    # On Wayland, disable the X11 plugin, which currently fails to build
-    if [[ ${XDG_SESSION_TYPE} == wayland ]]; then
-        _cmake_args+=(-DBETTERBLUR_X11=OFF)
-    fi
-
-    cmake "${_cmake_args[@]}" -B build -S "$pkgname"
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -B build -S "$pkgname"
     make -C build
 }
 

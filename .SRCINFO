@@ -1,6 +1,6 @@
 pkgbase = kwin-effects-forceblur-git
 	pkgdesc = KWin Better Blur DX effect fork with window class force blur feature (Wayland & X11)
-	pkgver = r441.a97689a
+	pkgver = r452.89c263b
 	pkgrel = 2
 	url = https://github.com/xarblu/kwin-effects-better-blur-dx
 	install = kwin-effects-forceblur-git.install
