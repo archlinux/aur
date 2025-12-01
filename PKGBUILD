@@ -1,6 +1,6 @@
 # Maintainer: grimsteel <admin at vocabustudy dot org>
 pkgname=usaco-cli-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A command line tool for USACO"
 url="https://github.com/grimsteel/usaco-cli"
@@ -10,7 +10,7 @@ optdepends=("org.freedesktop.secrets: encrypted credential backend")
 source=(
     "https://github.com/grimsteel/usaco-cli/releases/download/v$pkgver/usaco-x86_64-unknown-linux-gnu"
 )
-sha256sums=('0e566bd5db0bf34d1ab1ac9eb786cf5fd74bc985d48d48a22b8210d17c633470')
+sha256sums=('fd35635e166e315fd253651655fd86250d0e83bd75b99ca3fe866445fcbde013')
 
 
 package() {

@@ -1,12 +1,12 @@
 pkgbase = usaco-cli-bin
 	pkgdesc = A command line tool for USACO
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/grimsteel/usaco-cli
 	arch = x86_64
 	license = GPL-3.0-or-later
 	optdepends = org.freedesktop.secrets: encrypted credential backend
-	source = https://github.com/grimsteel/usaco-cli/releases/download/v0.4.0/usaco-x86_64-unknown-linux-gnu
-	sha256sums = 0e566bd5db0bf34d1ab1ac9eb786cf5fd74bc985d48d48a22b8210d17c633470
+	source = https://github.com/grimsteel/usaco-cli/releases/download/v0.5.0/usaco-x86_64-unknown-linux-gnu
+	sha256sums = fd35635e166e315fd253651655fd86250d0e83bd75b99ca3fe866445fcbde013
 
 pkgname = usaco-cli-bin
