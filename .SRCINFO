@@ -1,10 +1,12 @@
 pkgbase = voxelcore
 	pkgdesc = Minecraft-like game engine in C++ with OpenGL
-	pkgver = 0.30.1
+	pkgver = 0.30.2
 	pkgrel = 1
 	url = https://github.com/MihailRis/voxelcore
 	arch = x86_64
 	license = custom
+	makedepends = cmake
+	makedepends = sed
 	makedepends = entt
 	depends = gcc-libs
 	depends = bash
@@ -23,9 +25,9 @@ pkgbase = voxelcore
 	options = lto
 	options = strip
 	options = !debug
-	source = https://github.com/MihailRis/voxelcore/archive/refs/tags/v0.30.1.zip
+	source = https://github.com/MihailRis/voxelcore/archive/refs/tags/v0.30.2.zip
 	source = voxelcore.sh
-	sha256sums = 96ab508b317466148292d26445fb138d2d9b2be51dab03c524fd34852368226e
+	sha256sums = 28be34deb901ea8b6061305e1479953a3c439dd35d241d790137fb0eba4f34ee
 	sha256sums = 9766b3fcdd35932709d9f8f7bd8c322d139f830440eb649bdff9a45cc14ef02e
 
 pkgname = voxelcore
