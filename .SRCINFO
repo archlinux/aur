@@ -1,0 +1,23 @@
+pkgbase = ytconverter
+	pkgdesc = Terminal-based YouTube video/audio downloader using yt-dlp and ffmpeg
+	pkgver = 4.0.2.1
+	pkgrel = 1
+	url = https://github.com/kaifcodec/ytconverter
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-colorama
+	depends = python-httpx
+	depends = yt-dlp
+	depends = ffmpeg
+	provides = ytconverter
+	conflicts = python-ytconverter
+	replaces = python-ytconverter
+	source = https://files.pythonhosted.org/packages/source/y/ytconverter/ytconverter-4.0.2.1.tar.gz
+	sha256sums = af4d67dbd43ef1a4c9127dd40db3aa1405061fe69b2657b34e6a8cd76d2e53fd
+
+pkgname = ytconverter
