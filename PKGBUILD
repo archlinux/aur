@@ -2,6 +2,7 @@
 
 _appimage='iloader-linux-amd64.AppImage'
 
+pkgbase='iloader'
 pkgname='iloader-appimage'
 pkgver=1.1.3
 pkgrel=1

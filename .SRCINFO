@@ -1,4 +1,4 @@
-pkgbase = iloader-appimage
+pkgbase = iloader
 	pkgdesc = User-friendly sideloader
 	pkgver = 1.1.3
 	pkgrel = 1
