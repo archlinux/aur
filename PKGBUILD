@@ -4,7 +4,7 @@ pkgname=prefixer
 pkgdesc="Modern Proton Prefix management tool"
 
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 
 arch=('any')
 
@@ -27,5 +27,5 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   mkdir -p $pkgdir/usr/share/prefixer/tweaks
-  install -Dm644 $srcdir/prefixer/data/tweaks/* $pkgdir/usr/share/prefixer/tweaks
+  install -Dm644 $srcdir/prefixer-${pkgver}/prefixer/data/tweaks/* $pkgdir/usr/share/prefixer/tweaks
 }
