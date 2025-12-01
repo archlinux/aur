@@ -1,7 +1,7 @@
 pkgbase = openjdk-liberica8-full-bin
 	pkgdesc = Liberica 8 includes LibericaFX, which is based on OpenJFX 8 and Minimal VM, where suitable.
-	pkgver = 8+7+8u442
-	pkgrel = 3
+	pkgver = 8+11+8u472
+	pkgrel = 1
 	url = https://https://bell-sw.com/pages/downloads
 	install = install_openjdk-liberica8-full-bin.sh
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = openjdk-liberica8-full-bin
 	provides = jdk8-openjdk=8
 	provides = jre8-openjdk-headless=8
 	provides = java8-openjfx=8
-	source = https://download.bell-sw.com/java/8u442+7/bellsoft-jdk8u442+7-linux-amd64-full.tar.gz
-	sha1sums = f71ec4ec84b39392da645ac637170ac6c3e1c67a
+	source = https://download.bell-sw.com/java/8u472+11/bellsoft-jdk8u472+11-linux-amd64-full.tar.gz
+	sha1sums = ff9f4b2fc62bb977e6675eb9d666cf085dd2c23d
 
 pkgname = openjdk-liberica8-full-bin
