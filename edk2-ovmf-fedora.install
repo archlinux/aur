@@ -20,11 +20,7 @@ post_install() {
     # Latest news regarding this package
     echo
     echo "What's new on the \"edk2-ovmf-fedora\" package?"
-    echo "- Upgraded to the latest packaged version of Nov. 8, 2025"
-    #echo "  (latest Fedora OS release on Oct. 28, 2025)"
-    echo
-    echo "- Removed \"Conflicts with 'edk2-ovmf-fedora-bin' package\" from this AUR package"
-    echo "  - That conflicting package doesn't exist (and it no longer does)"
+    echo "- Upgraded to the latest packaged version of Nov 19, 2025"
     echo
     echo "You can read more here:"
     echo "- \"Recent Activity\" section -> https://packages.fedoraproject.org/pkgs/edk2/edk2-ovmf/"
@@ -66,11 +62,7 @@ post_upgrade() {
     # Latest news regarding this package
     echo
     echo "What's new on the \"edk2-ovmf-fedora\" package?"
-    echo "- Upgraded to the latest packaged version of Nov. 8, 2025"
-    #echo "  (latest Fedora OS release on Oct. 28, 2025)"
-    echo
-    echo "- Removed \"Conflicts with 'edk2-ovmf-fedora-bin' package\" from this AUR package"
-    echo "  - That conflicting package doesn't exist (and it no longer does)"
+    echo "- Upgraded to the latest packaged version of Nov 19, 2025"
     echo
     echo "You can read more here:"
     echo "- \"Recent Activity\" section -> https://packages.fedoraproject.org/pkgs/edk2/edk2-ovmf/"
