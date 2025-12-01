@@ -1,0 +1,4 @@
+post_install() {
+	echo "Config auto-generates on first use"
+	echo "Optional: See 'omarchy-workspace-manager waybar --help' for Waybar integration"
+}

@@ -1,0 +1,33 @@
+# Maintainer: jtaw5649 <213313463+jtaw5649 at users dot noreply dot github dot com>
+pkgname=omarchy-workspace-manager
+pkgver=1.2.0
+pkgrel=1
+pkgdesc="Paired dual-monitor workspace management for Hyprland"
+arch=('any')
+url="https://github.com/jtaw5649/omarchy-workspace-manager"
+license=('MIT')
+depends=('hyprland' 'jq' 'socat')
+install=omarchy-workspace-manager.install
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('b962778bc41f72f0d5939c9777bd0b90426235faac4b41f56b46762fdf20e4c3')
+
+package() {
+	cd "$srcdir/$pkgname-$pkgver"
+
+	install -dm755 "$pkgdir/usr/share/$pkgname"
+	cp -r lib config "$pkgdir/usr/share/$pkgname/"
+
+	install -Dm755 bin/omarchy-workspace-manager "$pkgdir/usr/share/$pkgname/bin/omarchy-workspace-manager"
+
+	install -dm755 "$pkgdir/usr/bin"
+	cat > "$pkgdir/usr/bin/omarchy-workspace-manager" <<'EOF'
+#!/usr/bin/env bash
+export OWM_ROOT="/usr/share/omarchy-workspace-manager"
+export OWM_CONFIG_PATH="${OWM_CONFIG_PATH:-$HOME/.config/omarchy-workspace-manager/paired.json}"
+exec "$OWM_ROOT/bin/omarchy-workspace-manager" "$@"
+EOF
+	chmod 755 "$pkgdir/usr/bin/omarchy-workspace-manager"
+
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
