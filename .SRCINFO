@@ -1,19 +1,17 @@
 pkgbase = uamp
 	pkgdesc = Universal Advanced Music Player written in rust.
-	pkgver = 0.6.5
+	pkgver = 0.6.6
 	pkgrel = 1
 	url = https://bonnyad9.github.io/uamp/
 	arch = x86_64
 	license = GPL-3.0-or-later
-	makedepends = git
 	makedepends = cargo
 	depends = gcc-libs
 	depends = alsa-lib
 	depends = glibc
 	depends = hicolor-icon-theme
-	provides = uamp
 	options = !debug
-	source = https://github.com/BonnyAD9/uamp/archive/refs/tags/v0.6.5.tar.gz
+	source = https://github.com/BonnyAD9/uamp/archive/refs/tags/v0.6.6.tar.gz
 	md5sums = SKIP
 
 pkgname = uamp
