@@ -1,0 +1,133 @@
+From e527eaccaa065a4c1eec13091904fb6c35fbb967 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Mon, 1 Dec 2025 19:56:03 +0100
+Subject: [PATCH] Add Wayland support
+
+This allows applications based on FishUI to run under Wayland.
+---
+ src/desktop/menupopupwindow.cpp               |  2 +
+ src/platforms/linux/blurhelper/windowblur.cpp |  4 +-
+ src/platforms/linux/windowhelper.cpp          | 42 ++-----------------
+ src/platforms/linux/windowhelper.h            |  1 -
+ 4 files changed, 8 insertions(+), 41 deletions(-)
+
+diff --git a/src/desktop/menupopupwindow.cpp b/src/desktop/menupopupwindow.cpp
+index 2239f8f..f3406d4 100644
+--- a/src/desktop/menupopupwindow.cpp
++++ b/src/desktop/menupopupwindow.cpp
+@@ -107,6 +107,8 @@ void MenuPopupWindow::dismissPopup()
+     m_dismissed = true;
+     emit popupDismissed();
+     hide();
++    setMouseGrabEnabled(false);
++    setKeyboardGrabEnabled(false);
+ }
+ 
+ void MenuPopupWindow::updateGeometry()
+diff --git a/src/platforms/linux/blurhelper/windowblur.cpp b/src/platforms/linux/blurhelper/windowblur.cpp
+index 4a88578..7f0f68e 100644
+--- a/src/platforms/linux/blurhelper/windowblur.cpp
++++ b/src/platforms/linux/blurhelper/windowblur.cpp
+@@ -24,6 +24,8 @@
+ #include <QScreen>
+ #include <QX11Info>
+ 
++#include <KWindowSystem>
++
+ #include <xcb/xcb.h>
+ #include <xcb/shape.h>
+ #include <xcb/xcb_icccm.h>
+@@ -115,7 +117,7 @@ void WindowBlur::onViewVisibleChanged(bool visible)
+ 
+ void WindowBlur::updateBlur()
+ {
+-    if (!m_view)
++    if (!KWindowSystem::isPlatformX11() || !m_view)
+         return;
+ 
+     xcb_connection_t *c = QX11Info::connection();
+diff --git a/src/platforms/linux/windowhelper.cpp b/src/platforms/linux/windowhelper.cpp
+index 4a9512d..4a2ec6d 100644
+--- a/src/platforms/linux/windowhelper.cpp
++++ b/src/platforms/linux/windowhelper.cpp
+@@ -49,17 +49,8 @@ static uint qtEdgesToXcbMoveResizeDirection(Qt::Edges edges)
+ 
+ WindowHelper::WindowHelper(QObject *parent)
+     : QObject(parent)
+-    , m_moveResizeAtom(0)
+     , m_compositing(false)
+ {
+-    // create move-resize atom
+-    // ref: https://github.com/qt/qtbase/blob/9db7cc79a26ced4997277b5c206ca15949133240/src/plugins/platforms/xcb/qxcbwindow.cpp
+-    xcb_connection_t* connection(QX11Info::connection());
+-    const QString atomName(QStringLiteral("_NET_WM_MOVERESIZE"));
+-    xcb_intern_atom_cookie_t cookie(xcb_intern_atom(connection, false, atomName.size(), qPrintable(atomName)));
+-    QScopedPointer<xcb_intern_atom_reply_t> reply(xcb_intern_atom_reply(connection, cookie, nullptr));
+-    m_moveResizeAtom = reply ? reply->atom : 0;
+-
+     onCompositingChanged(KWindowSystem::compositingActive());
+     connect(KWindowSystem::self(), &KWindowSystem::compositingChanged, this, &WindowHelper::onCompositingChanged);
+ }
+@@ -71,44 +62,17 @@ bool WindowHelper::compositing() const
+ 
+ void WindowHelper::startSystemMove(QWindow *w)
+ {
+-    doStartSystemMoveResize(w, 16);
++    w->startSystemMove();
+ }
+ 
+ void WindowHelper::startSystemResize(QWindow *w, Qt::Edges edges)
+ {
+-    doStartSystemMoveResize(w, edges);
++    w->startSystemResize(edges);
+ }
+ 
+ void WindowHelper::minimizeWindow(QWindow *w)
+ {
+-    KWindowSystem::minimizeWindow(w->winId());
+-}
+-
+-void WindowHelper::doStartSystemMoveResize(QWindow *w, int edges)
+-{
+-    const qreal dpiRatio = qApp->devicePixelRatio();
+-
+-    xcb_connection_t *connection(QX11Info::connection());
+-    xcb_client_message_event_t xev;
+-    xev.response_type = XCB_CLIENT_MESSAGE;
+-    xev.type = m_moveResizeAtom;
+-    xev.sequence = 0;
+-    xev.window = w->winId();
+-    xev.format = 32;
+-    xev.data.data32[0] = QCursor::pos().x() * dpiRatio;
+-    xev.data.data32[1] = QCursor::pos().y() * dpiRatio;
+-
+-    if (edges == 16)
+-        xev.data.data32[2] = 8; // move
+-    else
+-        xev.data.data32[2] = qtEdgesToXcbMoveResizeDirection(Qt::Edges(edges));
+-
+-    xev.data.data32[3] = XCB_BUTTON_INDEX_1;
+-    xev.data.data32[4] = 0;
+-    xcb_ungrab_pointer(connection, XCB_CURRENT_TIME);
+-    xcb_send_event(connection, false, QX11Info::appRootWindow(),
+-                   XCB_EVENT_MASK_SUBSTRUCTURE_REDIRECT | XCB_EVENT_MASK_SUBSTRUCTURE_NOTIFY,
+-                   (const char *)&xev);
++    w->setWindowStates(w->windowStates() | Qt::WindowMinimized);
+ }
+ 
+ void WindowHelper::onCompositingChanged(bool enabled)
+diff --git a/src/platforms/linux/windowhelper.h b/src/platforms/linux/windowhelper.h
+index 67ce561..9eef2dc 100644
+--- a/src/platforms/linux/windowhelper.h
++++ b/src/platforms/linux/windowhelper.h
+@@ -47,7 +47,6 @@ private:
+     void onCompositingChanged(bool enabled);
+ 
+ private:
+-    xcb_atom_t m_moveResizeAtom;
+     bool m_compositing;
+ };
+ 
+-- 
+2.52.0
+
