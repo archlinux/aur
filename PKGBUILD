@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=artery-isp-console-bin
-pkgver=3.0.16
+pkgver=3.0.17
 pkgrel=1
 # epoch=1
 pkgdesc="Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程序。使用该应用程序,用户可以通过 UART 端口或者 USB 端口配置操作 Artery 的 MCU 设备。"
@@ -25,7 +25,7 @@ install=${pkgname}.install
 _pkg_file_name=Artery_ISP_Console_Linux-${arch}_V${pkgver}.zip
 source=("${_pkg_file_name}::https://www.arterytek.com/download/Program%20and%20Debug/Artery_ISP_Console_Linux-${arch}_V${pkgver}.zip"
     ${pkgname}.install)
-sha256sums=('1f830f3e82b91050c739b6cf473d4ee874596d8aeada018dd57a2a405e14d4b0'
+sha256sums=('d955143e93becc0022313133df992522c32bbf5de483a3162b6c94a4945c92ec'
             'a5c4d923298e09eef75b9481ea4fd83998d01c1d3605f118edd42f89ee17e619')
 noextract=()
 
