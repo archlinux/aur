@@ -1,7 +1,7 @@
 # Maintainer: Milhan Hadjadji <xmoncocox@gmail.com>
 pkgname=palemachine
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="a youtube downloader for servers"
 arch=('x86_64')
 url="https://github.com/Xmoncoco/palemachine"
