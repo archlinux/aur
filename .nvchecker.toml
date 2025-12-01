@@ -1,0 +1,3 @@
+[user-scanner]
+source = "pypi"
+pypi = "user-scanner"
