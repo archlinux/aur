@@ -1,6 +1,6 @@
 pkgbase = kontur-talk
 	pkgdesc = Enterprise video conferencing client app
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://kontur.ru/talk
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = kontur-talk
 	depends = xdg-utils
 	depends = util-linux-libs
 	provides = kontur-talk
-	source = https://st.ktalk.host/ktalk-app/linux/ktalk3.2.0amd64.deb
-	sha256sums = 819c41d94b65dedd442098ab852b58ff7cb267cf76a40b5721ddc574bdab6905
+	source = https://st.ktalk.host/ktalk-app/linux/ktalk3.3.0amd64.deb
+	sha256sums = 3232768ebc44b7cdaf918dd9b7b7187f133bc5b5737ab5a5516f2269f0f806e8
 
 pkgname = kontur-talk
