@@ -7,7 +7,7 @@ url="https://www.gosuslugi.ru/landing/gosplugin"
 license=('unknown')
 depends=('pcsc-tools' 'glibc' 'acsccid' 'xcb-util')
 optdepends=('cryptopro-csp-k1: with digital signature sign in'
-            'rutoken-plugin: add rutoken pcsc#11 lib')
+            'rutoken-pkcs: add rutoken pcsc#11 lib')
 makedepends=('sed' 'tar' 'coreutils' 'unzip' 'libarchive')
 provides=('gosplugin')
 
