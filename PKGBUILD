@@ -1,7 +1,7 @@
 # Maintainer: Izumi Wang <aur at izumis dot moe>
 
 pkgname=mihomo
-pkgver=1.19.16
+pkgver=1.19.17
 pkgrel=1
 pkgdesc="Mihomo Kernel by MetaCubeX, formerly known as Clash.Meta"
 arch=("x86_64" 'aarch64')
@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
         "config.yaml")
-sha256sums=('34a506732bf29fb6c39c3e69d226999d3bf0420751a10679528177896583d551'
+sha256sums=('8f340d40609a55cf02e4a630d51f9515a46780fcfd125deaf2019ecb9b1ee58a'
             '7b60925a78c9a4b726833e194b395cabddf89b364a5c721522cb78aaece33e79'
             '81a93a53a59dee006bfaa3f8b6490e654ea8a929cd2acb136136b5f7d569aad4'
             '60b5e5308d9aec711e797c402b82899ea0f20951de9baca1594884fbe21f8acc'
