@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=at32-ide-bin
-pkgver=1.0.13
+pkgver=1.0.14
 pkgrel=1
 # epoch=1
 pkgdesc="AT32 IDE 是个跨平台 ARM 嵌入式系统的软件开发环境。 它包含一系列的 Eclipse 插件和工具。该插件可让用户在 AT32 IDE 开发环境下创建、建置和调试 AT32
@@ -38,7 +38,7 @@ options=(!strip !emptydirs !staticlibs)
 install=${pkgname}.install
 _pkg_file_name=AT32_IDE_V${pkgver}_Linux-${arch}
 source=("${_pkg_file_name}.zip::https://www.arterytek.com/download/AT32%20IDE/${_pkg_file_name}.zip")
-sha256sums=('2857cd6be7d3d2dc3fd3ecf6de6bb2543f0396eccd014a895b332ffcd172d0a9')
+sha256sums=('e975168e5a23ce48fa774abec39bb087f3f40cb5aa366d05c742a49b1c81237b')
 noextract=(${_pkg_file_name}.zip)
 
 package() {
