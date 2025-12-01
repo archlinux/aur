@@ -10,7 +10,6 @@ pkgbase = ytconverter
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python
-	depends = python-colorama
 	depends = python-httpx
 	depends = yt-dlp
 	depends = ffmpeg

@@ -22,7 +22,7 @@ provides=("${_pypi_package}")
 replaces=("python-${pkgname}")
 conflicts=("python-${pkgname}")
 
-depends=('python' 'python-colorama' 'python-httpx' 'yt-dlp' 'ffmpeg')
+depends=('python' 'python-httpx' 'yt-dlp' 'ffmpeg')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
