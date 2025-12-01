@@ -2,7 +2,7 @@
 
 pkgname="libjpeg-turbo-official"
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Official binaries compiled by the libjpeg-turbo project (v6b API/ABI, libjpeg.so.62)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/libjpeg-turbo/libjpeg-turbo'
@@ -11,8 +11,10 @@ depends=('glibc')
 optdepends=('java-runtime>=8: for TurboJPEG Java wrapper')
 provides=(
   'libjpeg6'
-  'libjpeg.so=62-64'
-  'libturbojpeg.so=0-64'
+  'libjpeg.so.62'
+  'libjpeg.so.62.4.0'
+  'libturbojpeg.so.0'
+  'libturbojpeg.so.0.4.0'
 )
 conflicts=('libjpeg6')
 options=(!buildflags !makeflags !debug)
