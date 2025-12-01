@@ -2,7 +2,7 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='libyang'
-pkgver='3.13.6'
+pkgver='4.2.2'
 pkgrel='1'
 pkgdesc='A YANG data modelling language parser and toolkit written (and providing API) in C'
 url="https://github.com/CESNET/${pkgname}"
@@ -10,10 +10,10 @@ arch=('x86_64' 'aarch64' 'armv7h')
 license=('BSD')
 depends=('pcre2')
 makedepends=('cmake' 'doxygen' 'graphviz')
-checkdepends=('cmocka')
+checkdepends=('cmocka' 'expect')
 conflicts=('libyang-git' 'libyang-devel-git')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('5cd5018f39c830f97d70616c003990287ce5e820ae2792763a49e2a1f63af8d6')
+sha256sums=('6d1c7b68d96d7e304ac900ea3ccce3d1a7f182c3fed7e934132fbeb306d34397')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
