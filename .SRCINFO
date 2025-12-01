@@ -1,6 +1,6 @@
 pkgbase = eddiscovery-proton
 	pkgdesc = Captains log and 3d star map for Elite Dangerous. Runs in ED's Proton-GE prefix
-	pkgver = 19.0.11
+	pkgver = 19.0.12
 	pkgrel = 1
 	url = https://github.com/EDDiscovery/EDDiscovery
 	install = eddiscovery-proton.install
@@ -13,10 +13,10 @@ pkgbase = eddiscovery-proton
 	optdepends = ttf-ms-fonts
 	provides = eddiscovery
 	conflicts = eddiscovery
-	source = eddiscovery-proton-19.0.11.zip::https://github.com/EDDiscovery/EDDiscovery/releases/download/Release_19.0.11/EDDiscovery.Portable.19.0.11.zip
+	source = eddiscovery-proton-19.0.12.zip::https://github.com/EDDiscovery/EDDiscovery/releases/download/Release_19.0.12/EDDiscovery.Portable.19.0.12.zip
 	source = eddiscovery-proton
 	source = eddiscovery-proton.desktop
-	md5sums = e86f3678701d53d55ef445cd215d7388
+	md5sums = 5e17d95f531e9556b7de60e95778ee18
 	md5sums = e4c15c73cfd8083eb070f16757817f54
 	md5sums = a8c216a08d8e75a133236983e6458803
 

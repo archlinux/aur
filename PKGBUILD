@@ -1,6 +1,6 @@
 # Maintainer: Alexander Mot <alexander@amot.dev>
 pkgname=eddiscovery-proton
-pkgver=19.0.11
+pkgver=19.0.12
 pkgrel=1
 epoch=
 pkgdesc="Captains log and 3d star map for Elite Dangerous. Runs in ED's Proton-GE prefix"
@@ -22,7 +22,7 @@ changelog=
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/Release_${pkgver}/EDDiscovery.Portable.$pkgver.zip"
         "eddiscovery-proton"
 		"eddiscovery-proton.desktop")
-md5sums=('e86f3678701d53d55ef445cd215d7388'
+md5sums=('5e17d95f531e9556b7de60e95778ee18'
          'e4c15c73cfd8083eb070f16757817f54'
          'a8c216a08d8e75a133236983e6458803')
 noextract=()
@@ -56,7 +56,7 @@ package() {
     # Install desktop file
     install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-    # Install Icons (Auto-detect valid sizes)
+    # Install icons (auto-detect valid sizes)
     cd icons
     for icon in *.png; do
         res=$(echo "$icon" | cut -d'_' -f4 | cut -d'x' -f1)
