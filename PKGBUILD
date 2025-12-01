@@ -1,8 +1,8 @@
 # Maintainer: Aubrey Carlson (Carlson) <aubreycarlson24@outlook.com>
 
-_javaver=24
-_bellver=37
-_jdkver=24
+_javaver=25
+_bellver=13
+_jdkver=25.0.1
 
 pkgname="openjdk-liberica-full-bin"
 pkgver="${_javaver}+${_bellver}+${_jdkver}"
@@ -12,30 +12,30 @@ arch=('x86_64')
 url='https://bell-sw.com/pages/downloads'
 license=('custom')
 depends=('java-environment-common>=3'
-         'java-runtime-common>=3'
-         'ca-certificates-utils')
+  'java-runtime-common>=3'
+  'ca-certificates-utils')
 provides=("java-environment=${_javaver}"
-          "java-environment-openjdk=${_javaver}"
-          "java-runtime=${_javaver}"
-          "java-runtime-openjdk=${_javaver}"
-          "java-runtime-headless=${_javaver}"
-          "java-runtime-headless-openjdk=${_javaver}"
-          "jre-openjdk=${_javaver}"
-          "jdk-openjdk=${_javaver}"
-          "jre-openjdk-headless=${_javaver}"
-          "java-openjfx=${_javaver}"
-          "java${_javaver}-environment=${_javaver}"
-          "java${_javaver}-environment-openjdk=${_javaver}"
-          "java${_javaver}-runtime=${_javaver}"
-          "java${_javaver}-runtime-openjdk=${_javaver}"
-          "java${_javaver}-runtime-headless=${_javaver}"
-          "java${_javaver}-runtime-headless-openjdk=${_javaver}"
-          "jre${_javaver}-openjdk=${_javaver}"
-          "jdk${_javaver}-openjdk=${_javaver}"
-          "jre${_javaver}-openjdk-headless=${_javaver}"
-          "java${_javaver}-openjfx=${_javaver}")
+  "java-environment-openjdk=${_javaver}"
+  "java-runtime=${_javaver}"
+  "java-runtime-openjdk=${_javaver}"
+  "java-runtime-headless=${_javaver}"
+  "java-runtime-headless-openjdk=${_javaver}"
+  "jre-openjdk=${_javaver}"
+  "jdk-openjdk=${_javaver}"
+  "jre-openjdk-headless=${_javaver}"
+  "java-openjfx=${_javaver}"
+  "java${_javaver}-environment=${_javaver}"
+  "java${_javaver}-environment-openjdk=${_javaver}"
+  "java${_javaver}-runtime=${_javaver}"
+  "java${_javaver}-runtime-openjdk=${_javaver}"
+  "java${_javaver}-runtime-headless=${_javaver}"
+  "java${_javaver}-runtime-headless-openjdk=${_javaver}"
+  "jre${_javaver}-openjdk=${_javaver}"
+  "jdk${_javaver}-openjdk=${_javaver}"
+  "jre${_javaver}-openjdk-headless=${_javaver}"
+  "java${_javaver}-openjfx=${_javaver}")
 source=("https://download.bell-sw.com/java/${_jdkver}+${_bellver}/bellsoft-jdk${_jdkver}+${_bellver}-linux-amd64-full.tar.gz")
-sha1sums=("868b5c716265373dabf84e7329bcfa70bef27b20")
+sha1sums=('caa86daacb7c24462449e3f717cd2bdc7923cd21')
 install="install_${pkgname}.sh"
 
 _jvmdir="/usr/lib/jvm/${pkgname}"
@@ -46,10 +46,10 @@ package() {
   cp -a . "${pkgdir}${_jvmdir}"
 
   # Conf
-  install -dm 755 "${pkgdir}/etc"
-  cp -r conf "${pkgdir}/etc/${pkgname}"
+  install -dm 755 "${pkgdir}/etc/openjdk-liberica"
+  cp -r conf "${pkgdir}/etc/openjdk-liberica/${pkgname}"
   rm -r "${pkgdir}${_jvmdir}/conf"
-  ln -s /etc/${pkgname} "${pkgdir}${_jvmdir}/conf"
+  ln -s /etc/openjdk-liberica/${pkgname} "${pkgdir}${_jvmdir}/conf"
 
   # Legal
   install -dm 755 "${pkgdir}/usr/share/licenses"
