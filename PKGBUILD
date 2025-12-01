@@ -1,3 +1,4 @@
+# Maintainer: GreyXor <greyxor@protonmail.com>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 # Contributor: David Herrmann <dh.herrmann@gmail.com>
 
@@ -6,20 +7,20 @@ pkgver=4.3.0
 pkgrel=1
 pkgdesc='Terminal-emulator State Machine'
 arch=('x86_64')
-url="https://www.freedesktop.org/wiki/Software/kmscon/$pkgname"
+url='https://github.com/kmscon/libtsm'
 license=('MIT')
 depends=('glibc')
 makedepends=('meson' 'check' 'libxkbcommon')
 options=(!libtool)
-source=("https://github.com/Aetf/libtsm/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('7e858bece0df5b0cc61fbcc99275f6828bf54007a88fa8459a8447a7ee7e67ad')
+source=("${url}/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+b2sums=('fc8071011e4c8833c96e6e2aa09490ddd51f6468e11c87e3ae58f818db29b11c737d9c6440539be108a636f36dabee1148beaf6a24a59f4f102bc99b52eee95c')
 
 build() {
-  arch-meson "$pkgname-$pkgver" build
-  meson compile -C build
+    arch-meson "$pkgname-$pkgver" build
+    meson compile -C build
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
+  meson install -C build --destdir="$pkgdir"
   install -Dm644 $pkgname-$pkgver/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
