@@ -1,6 +1,6 @@
 pkgbase = python-jsonschema-rs
 	pkgdesc = A high-performance JSON Schema validator for Python.
-	pkgver = 0.37.3
+	pkgver = 0.37.4
 	pkgrel = 1
 	url = https://github.com/Stranger6667/jsonschema
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-jsonschema-rs
 	depends = python
 	depends = gcc-libs
 	depends = glibc
-	source = https://files.pythonhosted.org/packages/source/j/jsonschema-rs/jsonschema_rs-0.37.3.tar.gz
-	sha256sums = 34c1503916dbf584e8229e53be7ba5bbe2808ee891671608c5d16fb85b630696
+	source = https://files.pythonhosted.org/packages/source/j/jsonschema-rs/jsonschema_rs-0.37.4.tar.gz
+	sha256sums = 67f36f1c445c70f9975d17a84ce37f79593f6234d7eb292830d7749e5fa58ff4
 
 pkgname = python-jsonschema-rs
