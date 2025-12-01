@@ -1,7 +1,7 @@
 # Maintainer: Chuan Ji <chuan@jichu4n.com>
 
 pkgname=prc-tools-remix
-pkgver=2.3.5
+pkgver=2.3.6
 pkgrel=1
 pkgdesc='C/C++ toolchain for Palm OS'
 arch=('i686' 'pentium4' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=(
   'palm-os-sdk-git: Palm OS SDK files'
   'pilrc: Palm OS resource compiler')
 source=("https://github.com/jichu4n/prc-tools-remix/archive/v${pkgver}.tar.gz")
-sha256sums=('d8c29e81c197ba7801d8331eddcb94990f780c96b3ccea83b60b08d8349c96a8')
+sha256sums=('0d8da2c2a4458f24a371f6739922b0cd019ae968d205d291a5a9dfe5a9c78f09')
 # Options:
 # - !makeflags: Parallel builds result in build errors.
 # - !buildflags: Default build flags result in build errors.
