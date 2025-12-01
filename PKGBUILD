@@ -1,8 +1,8 @@
-# Maintainer: physkets <physkets // at // tutanota dot com>
+# Contributor: physkets <physkets // at // tutanota dot com>
 
 pkgname=fmlib
-pkgver=1.3
-pkgrel=5
+pkgver=1.4
+pkgrel=1
 pkgdesc="A fortran multiple-precision arithmetic library"
 arch=('x86_64')
 url="https://dmsmith.lmu.build/"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('libgfortran.so')
 makedepends=('gcc-fortran')
 source=("FM_files_${pkgver}.zip::https://dmsmith.lmu.build/FM${pkgver}/FM_files.zip")
-sha256sums=('5553b8e5fcd0e875fa591df0b2dd08d92c2aa90e455d0909a391bd305334a645') 
+sha256sums=('8493921a5168a5ec78cd99ab86bd55f5ce3cdfbff306c18423f5f5bd14c2f90d') 
 
 build() {
     cd "$srcdir/FM_files/"
