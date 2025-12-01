@@ -5,6 +5,7 @@ pkgbase = dotlink
 	url = https://github.com/amyreese/dotlink
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-flit-core
 	makedepends = python-installer
