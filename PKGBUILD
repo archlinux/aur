@@ -3,7 +3,7 @@
 _pkgauthor=projectdiscovery
 _pkgname=katana
 pkgname=${_pkgname}-bin
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A next-generation crawling and spidering framework"
 arch=('x86_64' 'i686' 'aarch64')
@@ -19,9 +19,9 @@ conflicts=("${_pkgname}")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_${_barch[0]}.zip")
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_${_barch[1]}.zip")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_${_barch[2]}.zip")
-sha256sums_x86_64=('67c67e0508a66849cbcc3431cdf92aa93cc5114cbb169eda07e0a8acd1cbbc28')
-sha256sums_i686=('e06c56781722c6a4887f7220b8ffa6ee1dea77a1722c6d086f19f7c7a77995f2')
-sha256sums_aarch64=('4a0c15c18bb39702c276ac3f07630f1d8a3bbacf798c8d75478b8749b46d5aa4')
+sha256sums_x86_64=('abac886b742c0f6aa3c68a69bc1c75fb56f9be98c59cc5eb08a9ab054fa86531')
+sha256sums_i686=('e09772c9bcbbe4c2dc6e590697f0090d2c775637af6ab0fe5ed427cb0d898d42')
+sha256sums_aarch64=('5288308266469e441b5e60536bdbdc876efcc9bf9f4c7698b562636af8b9cb25')
 
 options=(!strip)
 

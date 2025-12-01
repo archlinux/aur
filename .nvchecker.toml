@@ -1,0 +1,6 @@
+[katana-bin]
+source = "github"
+github = "projectdiscovery/katana"
+use_latest_release = true
+prefix = "v"
+
