@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=text2vec
-_pkgver=0.6.4
+_pkgver=0.6.6
 pkgname=r-${_pkgname,,}
-pkgver=0.6.4
+pkgver=0.6.6
 pkgrel=1
 pkgdesc='Modern Text Mining Framework for R'
 arch=('x86_64')
@@ -32,7 +32,7 @@ optdepends=(
   r-udpipe
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('50d8086d9937532266ae683f446107bb23cd07bfce0873a2028c7ff8c9dd546a')
+sha256sums=('7354502ae7f1d20e59d409c023466c6028006cbd688bc6c52e0b30c9f3a69694')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
