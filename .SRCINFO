@@ -1,5 +1,5 @@
 pkgbase = tlp-git
-	pkgver = 1.8.0.r179.e2681cb
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://linrunner.de/en/tlp/tlp.html
 	install = tlp.install
@@ -27,7 +27,7 @@ pkgname = tlp-git
 	provides = tlp
 	conflicts = laptop-mode-tools
 	conflicts = pm-utils
-	conflicts = power-profiles-daemon
+	conflicts = tuned
 	conflicts = tlp
 	backup = etc/tlp.conf
 
@@ -44,6 +44,7 @@ pkgname = tlp-pd-git
 	depends = python-dbus
 	depends = python-gobject
 	depends = tlp
+	provides = power-profiles-daemon
 	provides = tlp-pd
 	conflicts = power-profiles-daemon
 	conflicts = tlp-pd
