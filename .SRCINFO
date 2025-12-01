@@ -1,6 +1,6 @@
 pkgbase = cpan2aur2git
 	pkgdesc = CPAN2AUR wrapper
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/bence98/cpan2aur2git
 	arch = any
