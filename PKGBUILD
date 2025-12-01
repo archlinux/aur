@@ -1,16 +1,19 @@
 # Maintainer: Sébastien TERRIER <ouinouin at ouinouin dot eu>
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
-_pkgname=citron
 pkgname=citron-git
-pkgver=0.11.0.r10.gfd59237
+pkgver=0.11.0.r25.g32c4a90
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=(x86_64)
 url=https://citron-emu.org
 license=(GPL-2.0-or-later)
 provides=('citron')
-depends=('qt6-base' 'qt6-webengine' 'ffmpeg' 'sdl2-compat' 'hicolor-icon-theme' 'brotli' 'libusb' 'enet' 'opus' 'fmt' 'zydis' 'glibc' 'boost-libs' 'gcc-libs' 'lz4' 'openssl' 'zstd' 'libva' 'zlib' 'openal')
-makedepends=('git' 'cmake' 'glslang' 'ninja' 'doxygen' 'nlohmann-json' 'vulkan-headers' 'boost' 'qt6-tools' 'qt6-multimedia' 'rapidjson' 'vulkan-headers' 'vulkan-utility-libraries' 'catch2')
+depends=('qt6-base' 'qt6-webengine' 'ffmpeg' 'sdl2-compat' 'hicolor-icon-theme' 'brotli'
+	 'libusb' 'enet' 'opus' 'fmt' 'zydis' 'glibc' 'boost-libs' 'gcc-libs' 'lz4' 'openssl'
+	 'zstd' 'libva' 'zlib' 'openal' 'speexdsp')
+makedepends=('git' 'cmake' 'glslang' 'ninja' 'doxygen' 'nlohmann-json' 'vulkan-headers' 'boost'
+	     'qt6-tools' 'qt6-multimedia' 'rapidjson' 'vulkan-headers' 'vulkan-utility-libraries'
+	     'catch2')
 optdepends=('gamemode: Gamemoded support')
 conflicts=('citron')
 options=(!debug)
@@ -63,12 +66,12 @@ b2sums=('SKIP'
         'SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/${pkgname::-4}"
   git describe --tags --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g;s/canary.refresh.//g'
 }
 
 prepare() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/${pkgname::-4}"
 
   #patch -Rp1 < "$srcdir/moc.diff"
   git rm -f externals/SDL
@@ -111,12 +114,6 @@ prepare() {
     git -c protocol.file.allow=always submodule update
   popd
 
-  # Compatibility Boost 1.88
-  find . -type f \( -name '*.cpp' -o -name '*.h' \) | xargs sed -i 's/\bboost::asio::io_service\b/boost::asio::io_context/g'
-  find . -type f \( -name '*.cpp' -o -name '*.h' \) | xargs sed -i 's/\bboost::asio::io_service::strand\b/boost::asio::strand<boost::asio::io_context::executor_type>/g'
-  find . -type f \( -name '*.cpp' -o -name '*.h' \) | xargs sed -i 's|#include *<boost/process/async_pipe.hpp>|#include <boost/process/v1/async_pipe.hpp>|g'
-  find . -type f \( -name '*.cpp' -o -name '*.h' \) | xargs sed -i 's/\bboost::process::async_pipe\b/boost::process::v1::async_pipe/g'
-
   # Ensure cubeb is used from externals
   sed -is 's/if (ENABLE_CUBEB/if (ENABLE_SWAG/' CMakeLists.txt
   # Fix for qt 6.10.0
@@ -142,10 +139,9 @@ build() {
   esac
   cd "$srcdir"
   
-  cmake -B build -GNinja -S "$_pkgname" \
+  cmake -B build -GNinja -S "${pkgname::-4}" \
     -DCITRON_USE_BUNDLED_VCPKG=OFF \
     -DCITRON_USE_BUNDLED_QT=OFF \
-    -DCITRON_USE_BUNDLED_QT=ON \
     -DCITRON_USE_BUNDLED_FFMPEG=OFF \
     -DCITRON_USE_EXTERNAL_VULKAN_HEADERS=OFF \
     -DCITRON_USE_EXTERNAL_VULKAN_UTILITY_LIBRARIES=OFF \
@@ -156,35 +152,39 @@ build() {
     -DCITRON_ENABLE_LTO=ON \
     -DCITRON_USE_QT_MULTIMEDIA=ON \
     -DCITRON_USE_QT_WEB_ENGINE=ON \
+    -DCITRON_DOWNLOAD_TIME_ZONE_DATA=ON \
     -DENABLE_QT_TRANSLATION=ON \
     -DUSE_DISCORD_PRESENCE=ON \
-    -DBUNDLE_SPEEX=ON \
     -DCITRON_USE_FASTER_LD=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG" \
     -DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG" \
     -DTITLE_BAR_FORMAT_RUNNING="citron | ${pkgver} {}" \
     -DTITLE_BAR_FORMAT_IDLE="citron | ${pkgver} {}" \
-    -DBUNDLE_SPEEX=ON \
-    -DCMAKE_SYSTEM_PROCESSOR=x86_64 \
+    -DBUILD_ID="archlinux.org" \
+    -DCMAKE_SYSTEM_PROCESSOR=$CARCH \
     -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_C_COMPILER=gcc \
     -DCMAKE_CXX_COMPILER=g++ \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
-    
+    -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
+    -DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS" \
+    -DCMAKE_C_FLAGS="$CFLAGS" \
+    -DCMAKE_CXX_FLAGS="$CXXFLAGS"
+
   cmake --build build
 } 
 
 package() {
   cd "$srcdir"
   DESTDIR="$pkgdir/" cmake --install build
-  cd "$srcdir/$_pkgname/LICENSES"
+  cd "$srcdir/${pkgname::-4}/LICENSES"
   for file in *.txt;
   do
     install -Dm644 $file "$pkgdir/usr/share/licenses/$pkgname/$file"
   done
 
-  install -Dm644 "$srcdir/$_pkgname/dist/72-citron-input.rules" "$pkgdir/usr/lib/udev/rules.d/72-citron-input.rules"
+  install -Dm644 "$srcdir/${pkgname::-4}/dist/72-citron-input.rules" "$pkgdir/usr/lib/udev/rules.d/72-citron-input.rules"
   sed -i 's/KERNEL==/ACTION!="remove", KERNEL==/' "$pkgdir/usr/lib/udev/rules.d/72-citron-input.rules"
 
 }
