@@ -1,6 +1,6 @@
 pkgbase = python-mistral-common
 	pkgdesc = set of tools to help you work with Mistral models
-	pkgver = 1.8.5
+	pkgver = 1.8.6
 	pkgrel = 1
 	url = https://pypi.org/project/mistral-common
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python-mistral-common
 	makedepends = python-poetry
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/m/mistral-common/mistral_common-1.8.5.tar.gz
-	sha256sums = 9f6204ede9c807f09040a208a9381ae78ef93e2e5a9cd5202dc12e712a025de8
+	source = https://files.pythonhosted.org/packages/source/m/mistral-common/mistral_common-1.8.6.tar.gz
+	sha256sums = c61702720093f7a06508e81923917b04e35062b9ff396b8512b9c4d1139767ee
 
 pkgname = python-mistral-common
