@@ -53,5 +53,5 @@ package() {
   install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$_name/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$_name/README.md"
   install -Dm600 $srcdir/env "$pkgdir/etc/conf.d/$_name"
-  install -Dm644 $srcdir/service "$pkgdir/etc/systemd/system/$_name.service"
+  install -Dm644 $srcdir/service "$pkgdir/usr/lib/systemd/system/$_name.service"
 }
