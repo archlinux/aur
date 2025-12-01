@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=darkwrite-bin
 _pkgname=Darkwrite
-pkgver=0.5.3_alpha.2
-_electronversion=35
+pkgver=1.0.0_beta.2
+_electronversion=39
 pkgrel=1
 pkgdesc="The eye-candy note taking and to-do application for all desktops.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -15,17 +15,16 @@ depends=(
 )
 makedepends=(
     'asar'
-    'fuse2'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver//_/-}/${_pkgname}-Linux-${pkgver//_/-}.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver//_/-}/${_pkgname}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('3f5a484a37195ad959e25e731ba84f9c03e1f16c9f8798a9ed99fd31b78b5b95'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+sha256sums=('ddd8103b7be5b3185a166e8b3537b6f4a60f164acb71ca4c1886f4c925a523a2'
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/squashfs-root/@darkwriteapp-desktop" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/squashfs-root/@darkwriteapp-desktop" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
@@ -47,6 +46,7 @@ prepare() {
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
     sed -i "s/\.\.\/resources\/icon\.png/\.\.\/icon\.png/g" "${srcdir}/app.asar.unpacked/dist-electron/main.js"
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
+    find "${srcdir}/squashfs-root/resources" -type d -name "darwin" -exec rm -rf {} +
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
 }
 package() {
