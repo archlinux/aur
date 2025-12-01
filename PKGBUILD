@@ -2,7 +2,7 @@
 
 _pkgname="adbmanager"
 pkgname="$_pkgname-qt6"
-pkgver=3.9
+pkgver=4.0
 pkgrel=1
 pkgdesc="ADB manager for Android devices (Qt6)"
 url="https://github.com/AKotov-dev/adbmanager"
@@ -18,7 +18,7 @@ conflicts=("$_pkgname")
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a550973cdbd64444b73eef2e3fbe0d6ac74aa34589ecc8f5ee1579e1ed3ac8a9')
+sha256sums=('130e96cf84645b716bdb8544dfb54ed04591bd7f25d9af938dbac0038f203bac')
 
 prepare() {
   cd "$_pkgsrc"
