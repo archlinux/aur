@@ -6,8 +6,7 @@ arch=('x86_64')
 url="https://www.gosuslugi.ru/landing/gosplugin"
 license=('unknown')
 depends=('pcsc-tools' 'glibc' 'acsccid' 'xcb-util')
-optdepends=('cryptopro-csp-k1: with digital signature sign in')
-optdepends=('rutoken-pkcs: add rutoken pcsc#11 lib')
+optdepends=('cryptopro-csp-k1: with digital signature sign in' 'rutoken-pkcs: add rutoken pcsc#11 lib')
 makedepends=('sed' 'tar' 'coreutils' 'unzip' 'libarchive')
 provides=('gosplugin')
 
