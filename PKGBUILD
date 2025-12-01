@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Zaoqi
 pkgname=electerm
-pkgver=2.3.113
+pkgver=2.3.118
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -31,7 +31,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('08ea7a02f62796e881d3533e2b5b2307ce967bf5d894f40d5bb168b2e7a8c070'
+sha256sums=('a5c7bfbb4b2d1abde0e5fad47fadd93665fdfb994b16a25e90f2f725f3c363c7'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
