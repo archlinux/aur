@@ -1,6 +1,6 @@
 # Maintainer: jtaw5649 <213313463+jtaw5649 at users dot noreply dot github dot com>
 pkgname=omarchy-workspace-manager
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Paired dual-monitor workspace management for Hyprland"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('hyprland' 'jq' 'socat')
 install=omarchy-workspace-manager.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e9f186521522d4b94ae37504b56d0c29d6188fcca08f27a7cf5fe8b5768c68a5')
+sha256sums=('38c475f6095d78eec7ddf7b7b105f5d7ab188c4063c38913b2cd69bc56beafba')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
