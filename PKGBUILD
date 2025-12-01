@@ -1,10 +1,10 @@
 # Maintainer: sfn
 
 pkgbase='zl-splitter'
-pkgname=('zl-splitter-vst' 'zl-splitter-lv2')
+pkgname=('zl-splitter-vst' 'zl-splitter-lv2' 'zl-splitter')
 groups=('zl-audio' 'pro-audio')
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 options=()
 pkgdesc="Sidechain and oversample capable splitter plugin by ZL Audio"
 arch=('x86_64')
@@ -56,4 +56,8 @@ package_zl-splitter-lv2() {
 	mkdir -p ${pkgdir}/usr/lib/lv2/ZL\ Splitter.lv2
 	cp -r "${srcdir}/ZLSplitter/Builds/ZLSplitter_artefacts/LV2/ZL Splitter.lv2" "${pkgdir}/usr/lib/lv2/ZL Splitter.lv2"
 	install -Dm755 ${srcdir}/ZLSplitter/LICENSE.md ${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.md"
+}
+
+package_zl-splitter() {
+	depends+=('zl-splitter-vst' 'zl-splitter-lv2')
 }
