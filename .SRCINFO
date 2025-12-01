@@ -1,6 +1,6 @@
 pkgbase = epson-inkjet-printer-escpr2-bin
 	pkgdesc = Epson inkjet printer driver 2 (ESC/P-R) used with CUPS
-	pkgver = 1.2.36
+	pkgver = 1.2.37
 	pkgrel = 1
 	url = https://download.ebz.epson.net/man/linux/escpr2.html
 	arch = armv7h
@@ -14,11 +14,11 @@ pkgbase = epson-inkjet-printer-escpr2-bin
 	provides = epson-inkjet-printer-escpr2
 	provides = libescpr2.so
 	conflicts = epson-inkjet-printer-escpr2
-	noextract = epson-inkjet-printer-escpr2-1.2.36-armv7h.deb
-	noextract = epson-inkjet-printer-escpr2-1.2.36-x86_64.deb
-	source_armv7h = epson-inkjet-printer-escpr2-1.2.36-armv7h.deb::https://download-center.epson.com/f/module/6539c0c0-4ae5-4821-8dc5-57410cb5fa07/epson-inkjet-printer-escpr2_1.2.36_armhf.deb
-	sha256sums_armv7h = f767be76d6901522ebff58bab024fc82cb3593878fdc8eb3aaa409956ba7773d
-	source_x86_64 = epson-inkjet-printer-escpr2-1.2.36-x86_64.deb::https://download-center.epson.com/f/module/b23b67b1-fd68-428b-a0b1-0b8dd37cece1/epson-inkjet-printer-escpr2_1.2.36-1_amd64.deb
-	sha256sums_x86_64 = 9276048d8911fb264fa5f9bfda7458572e6dee300de6ff05c246cfc20b6e6780
+	noextract = epson-inkjet-printer-escpr2-1.2.37-armv7h.deb
+	noextract = epson-inkjet-printer-escpr2-1.2.37-x86_64.deb
+	source_armv7h = epson-inkjet-printer-escpr2-1.2.37-armv7h.deb::https://download-center.epson.com/f/module/ed611ece-addd-4194-8142-8915c2214a18/epson-inkjet-printer-escpr2_1.2.37_armhf.deb
+	sha256sums_armv7h = c3cfd58632c9f9f9ccdda061b3a0c7dee465a056b0b5677c5f1be1a8a819534d
+	source_x86_64 = epson-inkjet-printer-escpr2-1.2.37-x86_64.deb::https://download-center.epson.com/f/module/3b192413-573d-4178-bdfb-bac1f94d1b4b/epson-inkjet-printer-escpr2_1.2.37-1_amd64.deb
+	sha256sums_x86_64 = a020dd2ba95aff1ce8276373d940966bfacfeb9f9bff397cc4408c7bc781fbf3
 
 pkgname = epson-inkjet-printer-escpr2-bin

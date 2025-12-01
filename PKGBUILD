@@ -2,7 +2,7 @@
 
 _pkgname="epson-inkjet-printer-escpr2"
 pkgname="${_pkgname}-bin"
-pkgver=1.2.36
+pkgver=1.2.37
 pkgrel=1
 pkgdesc="Epson inkjet printer driver 2 (ESC/P-R) used with CUPS"
 arch=(
@@ -32,17 +32,21 @@ makedepends=(
 )
 _pkgsrc="${_pkgname}-${pkgver}"
 source_armv7h=(
-  "${_pkgsrc}-armv7h.deb::https://download-center.epson.com/f/module/6539c0c0-4ae5-4821-8dc5-57410cb5fa07/${_pkgname}_${pkgver}_armhf.deb"
+  # curl -sSL 'https://download-center.epson.com/api/v1/modules/?device_id=XP-970%20Series&os=DEBARM32&region=US&language=en' |
+  #   jq -r '.items[] | select(.module_name == "Epson Inkjet Printer Driver 2 (ESC/P-R) for Linux" and .cti_category == "Drivers")'
+  "${_pkgsrc}-armv7h.deb::https://download-center.epson.com/f/module/ed611ece-addd-4194-8142-8915c2214a18/${_pkgname}_${pkgver}_armhf.deb"
 )
 source_x86_64=(
-  "${_pkgsrc}-x86_64.deb::https://download-center.epson.com/f/module/b23b67b1-fd68-428b-a0b1-0b8dd37cece1/${_pkgname}_${pkgver}-1_amd64.deb"
+  # curl -sSL 'https://download-center.epson.com/api/v1/modules/?device_id=XP-970%20Series&os=DEBX64&region=US&language=en' |
+  #   jq -r '.items[] | select(.module_name == "Epson Inkjet Printer Driver 2 (ESC/P-R) for Linux" and .cti_category == "Drivers")'
+  "${_pkgsrc}-x86_64.deb::https://download-center.epson.com/f/module/3b192413-573d-4178-bdfb-bac1f94d1b4b/${_pkgname}_${pkgver}-1_amd64.deb"
 )
 noextract=(
   "${source_armv7h[@]%%::*}"
   "${source_x86_64[@]%%::*}"
 )
-sha256sums_armv7h=('f767be76d6901522ebff58bab024fc82cb3593878fdc8eb3aaa409956ba7773d')
-sha256sums_x86_64=('9276048d8911fb264fa5f9bfda7458572e6dee300de6ff05c246cfc20b6e6780')
+sha256sums_armv7h=('c3cfd58632c9f9f9ccdda061b3a0c7dee465a056b0b5677c5f1be1a8a819534d')
+sha256sums_x86_64=('a020dd2ba95aff1ce8276373d940966bfacfeb9f9bff397cc4408c7bc781fbf3')
 # DLAGENTS+=(
 #   'https::/usr/bin/curl -A "Mozilla" -qgb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'
 # )
@@ -61,7 +65,7 @@ prepare() {
 package() {
   cd "${srcdir}/${_pkgsrc}-${CARCH}"
   if [ -d "usr" ]; then
-    cp -vr --no-preserve=ownership "usr" "${pkgdir}"
+    cp -va --no-preserve=ownership "usr" "${pkgdir}"
   fi
   
   cd "opt/${_pkgname}"
@@ -80,7 +84,7 @@ package() {
   for dir in "lib" "lib64"; do
     [ -d "${dir}" ] || continue
     find "${dir}" -maxdepth 1 -type f,l -execdir \
-      cp -vP --preserve=mode,ownership "{}" "${pkgdir}/usr/lib/{}" \;
+      cp -va --preserve=mode,ownership "{}" "${pkgdir}/usr/lib/{}" \;
   done
 
   if [ -d "ppds" ]; then
