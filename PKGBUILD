@@ -17,7 +17,7 @@ b2sums=('c84fb6490f532ade8746a098217f7ef887d2c4d45bd9e20b189a39856222b3bd278a519
 
 prepare() {
   cd WuMing-${pkgver}
-  git apply ../0001-fix-date_to_days.patch
+  patch -p1 < ../0001-fix-date_to_days.patch
 }
 
 build() {
