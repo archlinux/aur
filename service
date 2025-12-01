@@ -1,0 +1,31 @@
+[Unit]
+Description=A dynamic DNS client for Infomaniak
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+EnvironmentFile=/etc/conf.d/infomaniak-dyndns-wildcard
+ExecStart=/usr/bin/infomaniak-dyndns-wildcard
+SyslogIdentifier=infomaniak-dyndns-wildcard
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_INET AF_INET6
+SystemCallArchitectures=native
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+PrivateDevices=yes
+PrivateUsers=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+RestrictNamespaces=yes
+RestrictRealtime=yes
+SystemCallFilter=~@privileged
+SystemCallFilter=@system-service
+
+[Install]
+WantedBy=multi-user.target

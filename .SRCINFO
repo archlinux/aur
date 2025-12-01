@@ -1,0 +1,18 @@
+pkgbase = infomaniak-dyndns-wildcard-git
+	pkgdesc = A dynamic DNS client for wildcard domain on Infomaniak
+	pkgver = v1.0.1.r0.ge39bf47
+	pkgrel = 1
+	url = https://github.com/Its-Alex/infomaniak-dyndns-wildcard
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = ca-certificates
+	depends = openssl
+	provides = infomaniak-dyndns-wildcard
+	source = infomaniak-dyndns-wildcard::git+https://github.com/Its-Alex/infomaniak-dyndns-wildcard.git
+	source = env
+	source = service
+	validpgpkeys = D1AC5180F5837E1CD69D6CA2D13067073B9A98A9
+
+pkgname = infomaniak-dyndns-wildcard-git
