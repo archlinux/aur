@@ -1,0 +1,4 @@
+[libjpeg-turbo-official]
+source = "github"
+github = "libjpeg-turbo/libjpeg-turbo"
+use_latest_release = true
