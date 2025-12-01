@@ -7,6 +7,12 @@ url="https://github.com/saltnpepper97/stasis"
 license=('MIT')
 depends=('rust' 'systemd')
 makedepends=('git' 'cargo')
+optdepends=(
+  'libnotify: for desktop notifications'
+  'playerctl: enhanced media player detection'
+  'pipewire-pulse: audio sink detection for media handling'
+  'pulseaudio: audio sink detection for media handling (alternative to pipewire-pulse)'
+)
 provides=('stasis')
 conflicts=('stasis')
 options=('!debug')
