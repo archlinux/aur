@@ -4,8 +4,8 @@
 
 _pkgname=pamac
 pkgname=${_pkgname}-all
-pkgver=11.7.3+10+g52ee429
-_commit=52ee429e1fd8555d0fb54d8d46b968a46b3aefe8
+pkgver=11.7.4
+_commit=188905011b64f385c72c5c8f795237bf894390fa
 pkgrel=1
 pkgdesc='A GUI frontend for libalpm (everything in one package - snap, flatpak, appindicator, aur, appstream)'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -23,7 +23,7 @@ conflicts=('pamac' 'pamac-gtk' 'pamac-common' 'pamac-aur' 'pamac-aur-git' 'pamac
 provides=("pamac=$pkgver-$pkgrel")
 options=(!emptydirs)
 source=("git+${url}.git#commit=${_commit}")
-sha256sums=('7f55b73884c077fcf7b27f8682871a40b941802e9038229ac2b14ef4f816c0d1')
+sha256sums=('465f0bfa3aa0ac536c9838ffc934f2ee9bbf0ee403ed202fa86ce2ecfd601707')
 
 _srcdir="$_pkgname"
 
