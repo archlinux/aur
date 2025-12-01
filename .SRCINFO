@@ -1,10 +1,10 @@
 pkgbase = python-periodictable
 	pkgdesc = Extensible periodic table of the elements
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://periodictable.readthedocs.org
 	arch = any
-	license = public domain
+	license = LicenseRef-Public-Domain
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools

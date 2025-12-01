@@ -3,11 +3,11 @@
 pkgname='python-periodictable'
 _pkgname='periodictable'
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Extensible periodic table of the elements"
 url="http://periodictable.readthedocs.org"
 arch=("any")
-license=('public domain')
+license=('LicenseRef-Public-Domain')
 makedepends=('python-build' 'python-installer' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pkienzle/periodictable/archive/v$pkgver.tar.gz")
 md5sums=('cafa51731c6693e1f85a6f7a7bcff393')
