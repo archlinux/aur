@@ -5,8 +5,8 @@ pkgdesc="A modern Wayland idle manager designed for simplicity and effectiveness
 arch=('x86_64')
 url="https://github.com/saltnpepper97/stasis"
 license=('MIT')
-depends=('rust' 'systemd')
-makedepends=('git' 'cargo')
+depends=('systemd' 'dbus' 'libinput' 'wayland')
+makedepends=('git' 'cargo' 'rust')
 optdepends=(
   'libnotify: for desktop notifications'
   'playerctl: enhanced media player detection'
@@ -29,13 +29,14 @@ build() {
   cargo build --release --locked
 }
 
-
 package() {
   cd "$srcdir/stasis"
-
+  # Install binary
   install -Dm755 "target/release/stasis" "$pkgdir/usr/bin/stasis"
+  # Install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "examples/stasis.rune" "$pkgdir/etc/stasis/stasis.rune"
+  # Install example configuration
+  install -Dm644 "examples/stasis.rune" "$pkgdir/usr/share/doc/$pkgname/stasis.rune"
+  # Install systemd user service file
   install -Dm644 "systemd/stasis.service" "$pkgdir/usr/lib/systemd/user/stasis.service"
 }
-
