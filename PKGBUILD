@@ -1,7 +1,7 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Gianlucca Claudino <gianluccaclaudino@gmail.com>
 
 pkgname=lvsk-calendar
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="A beautiful text-based calendar with visual aesthetics for Arch Linux"
 arch=('any')
