@@ -1,7 +1,7 @@
 pkgbase = pilrc
 	pkgdesc = Palm OS resource compiler
 	pkgver = 3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pilrc.sourceforge.net/
 	arch = i686
 	arch = pentium4
@@ -13,4 +13,3 @@ pkgbase = pilrc
 	sha256sums = f3d6ea3c77f5d2a00707f4372a212377ab7bd77b3d68c3db7e28a553b235903f
 
 pkgname = pilrc
-
