@@ -28,9 +28,8 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
 b2sums=('949f8d05d773ba877ec6546577fb24c7397204554ec4ec079b798cfa7a38312db383797b7d9182bec939770bec6270d9f01dcb9e512baef6c7a14d8c5e0aa704')
 
 build() {
-  arch-meson build "$pkgname-$pkgver" \
-    -D werror=false
-  meson compile -C build
+    arch-meson "$pkgname-$pkgver" build
+    meson compile -C build
 }
 
 package() {
