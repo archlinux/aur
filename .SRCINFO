@@ -1,0 +1,17 @@
+pkgbase = kraftkit-git
+	pkgdesc = Build and use highly customized and ultra-lightweight unikernels
+	pkgver = v0.12.3.r139.gbe63531f.0.gbe63531
+	pkgrel = 1
+	url = https://unikraft.org/docs/cli
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = go
+	depends = bash
+	depends = glibc
+	provides = kraftkit
+	conflicts = kraftkit-bin
+	source = git+https://github.com/unikraft/kraftkit.git
+	b2sums = SKIP
+
+pkgname = kraftkit-git
