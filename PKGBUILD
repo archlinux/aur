@@ -5,11 +5,11 @@
 
 pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.3.22.r5.geeed5e7.pandoc.3.8.2.1
-_pandoc_type=stock
-_pandoc_ver=3.8.2.1
-_pandoc_lua_ver=0.5.0.1
-_pandoc_commit=09c9be2c12c50bc4a6a590fb43b92eb67758af94
+pkgver=0.3.22.r6.g7aa8e9e.pandoc.3.8.3
+_pandoc_type=version
+_pandoc_ver=3.8.3
+_pandoc_lua_ver=0.5.0.2
+_pandoc_commit=568dab14533940ecee16824097400f1eabf13869
 pkgrel=1
 pkgdesc='Pandoc filter for cross-references (static build)'
 arch=('i686' 'x86_64')
@@ -77,6 +77,8 @@ prepare() {
   _pandoc_bound=$(awk -F. '/[0-9]+\./{$NF++;print}' OFS=. <<<"${_pandoc_ver}")
   sed -i "/pandoc.*< \?$_pandoc_ver/s#< \?[0-9.]*#<$_pandoc_bound#" \
       pandoc-crossref.cabal package.yaml
+
+  _bumpVer asciidoc 0.1
 }
 
 build() {
