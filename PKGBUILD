@@ -1,16 +1,16 @@
 # Maintainer: Franck Lominé <flomine@insa-rennes.fr>
 
 pkgname=wapt-agent
-pkgver=2.6.1.17472
+pkgver=2.6.1.17576
 pkgrel=1
 pkgdesc="WAPT Agent"
 arch=('x86_64')
 url="https://www.wapt.fr/en/doc/"
 license=('custom')
 optdepends=('syslog-ng')
-source=("https://wapt.tranquil.it/debian/wapt-2.6.1.17472/pool/main/t/tis-waptagent/tis-waptagent_2.6.1.17472-21f6d4b3-amd64_amd64.deb"
+source=("https://wapt.tranquil.it/debian/wapt-2.6.1.17576/pool/main/t/tis-waptagent/tis-waptagent_2.6.1.17576-407e255f-amd64_amd64.deb"
         "LICENSE")
-b2sums=('53c8953532acc1c33f3badea8d06bdf00c1061f1e03625e829287ef738bb26e68080551e16a7402743f07d0998ceedfde5df3389612b948b375832684dfda008'
+b2sums=('06d02af5d701aa90a944a663e0dd60f279a2199ac34ea0d4882a426073253ca26562cbbe4fb2286bec0b2d645488695597209169b20930657c3c90841ac917eb'
         'cd5269b8c3c36750904835e589d401e868c808df46ee265aa63b8720a09d066448f03b20c7e45949ae5ef59bf3ca90d73d15a0e18ce786f91ee51193e615c501')
 
 package() {
