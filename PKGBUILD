@@ -3,18 +3,41 @@
 
 _pkgname=polari
 pkgname=$_pkgname-git
-pkgver=3.27.2+28+g11a9192
+pkgver=49.0+4+g0da6032d
 pkgrel=1
 pkgdesc="An IRC Client for GNOME"
 arch=(i686 x86_64)
 license=(GPL)
 url="https://wiki.gnome.org/Apps/Polari"
-depends=(gjs gtk3 telepathy-glib telepathy-idle telepathy-mission-control telepathy-logger)
-makedepends=(intltool gobject-introspection desktop-file-utils appdata-tools gnome-common)
+depends=(
+  dconf
+  gcc-libs
+  gjs
+  glib2
+  glibc
+  gnome-keyring
+  gtk4
+  hicolor-icon-theme
+  libadwaita
+  libgirepository
+  libsoup3
+  telepathy-glib
+  telepathy-idle
+  telepathy-logger
+  telepathy-mission-control
+  tracker3
+)
+makedepends=(
+  appstream
+  git
+  gobject-introspection
+  meson
+  yelp-tools
+)
+optdepends=('webkit2gtk-4.1: URL preview feature')
 replaces=($_pkgname)
 provides=($_pkgname-$pkgver)
 conflicts=($_pkgname)
-groups=(gnome-extra)
 source=("git+https://gitlab.gnome.org/GNOME/${_pkgname}.git")
 sha256sums=('SKIP')
 
@@ -24,13 +47,10 @@ pkgver() {
 }
 
 build() {
-  cd $_pkgname
-  [ -d _build ] && rm -rf _build
-  meson build --prefix=/usr --buildtype=release
-  ninja -C build
+  arch-meson polari build
+  meson compile -C build
 }
 
 package() {
-  cd $_pkgname
-  DESTDIR=${pkgdir} ninja -C build install
+  meson install -C build --destdir "$pkgdir"
 }
