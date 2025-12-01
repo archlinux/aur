@@ -19,7 +19,7 @@ sha512sums_aarch64=('968be143c47fcc23d11dbf72edd796ca24e8d2969a48f2b97a0e88bcaa2
 
 package(){
         # Extract package data
-        tar -xI unzstd -f data.tar.zst -C "${pkgdir}"
+        tar -xJf data.tar.xz -C "${pkgdir}"
 
         mkdir ${pkgdir}/usr/share/perl5/vendor_perl/
         mv ${pkgdir}/usr/share/perl5/KasmVNC ${pkgdir}/usr/share/perl5/vendor_perl/KasmVNC
