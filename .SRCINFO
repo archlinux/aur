@@ -1,6 +1,6 @@
 pkgbase = dotpush
 	pkgdesc = A tool to back up dotfiles and push to GitHub.
-	pkgver = 1.0.3
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/woterr/dotpush
 	install = dotpush.install
@@ -13,7 +13,7 @@ pkgbase = dotpush
 	depends = python-keyring
 	depends = python-requests
 	depends = python-installer
-	source = dotpush-1.0.3.tar.gz::https://github.com/woterr/dotpush/releases/download/v1.0.3/dotpush-1.0.3.tar.gz
-	sha256sums = a87a4fe9e2537777d85c040cd7f2bad233437213bbc5f80f8661569e2a709e13
+	source = dotpush-1.1.1.tar.gz::https://github.com/woterr/dotpush/releases/download/v1.1.1/dotpush-1.1.1.tar.gz
+	sha256sums = b362128f86969d8f39175fba94d0794d7a7b1b3ba45ca50be01dfd506179d05e
 
 pkgname = dotpush
