@@ -1,6 +1,5 @@
-# Maintainer: Your Name <your@email.com>
 pkgname=fflash
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Simple USB flash drive formatter tool"
 arch=('x86_64')
