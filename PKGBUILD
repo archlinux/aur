@@ -2,14 +2,14 @@
 
 pkgname=libcutefish
 pkgver=0.7
-pkgrel=5
+pkgrel=6
 pkgdesc="System library for Cutefish applications"
 arch=('x86_64')
 url="https://github.com/cutefishos/libcutefish"
-license=('GPL')
-depends=('bluez-qt5' 'libkscreen5' 'networkmanager-qt5' 'qt5-quickcontrols2'
+license=('GPL-3.0-or-later')
+depends=('bluez-qt5' 'libcanberra' 'libkscreen5' 'libpulse' 'networkmanager-qt5' 'qt5-quickcontrols2' 'qt5-sensors'
          # via dbus:
-         'accountsservice' 'kio5' 'qt5-sensors')
+         'accountsservice' 'kio5')
 makedepends=('extra-cmake-modules' 'ninja' 'qt5-tools')
 source=("https://github.com/cutefishos/libcutefish/archive/$pkgver/$pkgname-$pkgver.tar.gz"
          libkscreen-5.27.patch)
@@ -25,13 +25,11 @@ prepare() {
 }
 
 build() {
-  cd $pkgname-$pkgver
-
-  cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr .
-  ninja
+  cmake -G Ninja -B build -S $pkgname-$pkgver \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
 }
 
 package() {
-  cd $pkgname-$pkgver
-  DESTDIR="$pkgdir" ninja install
+  DESTDIR="$pkgdir" cmake --install build
 }

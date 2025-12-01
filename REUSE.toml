@@ -26,4 +26,4 @@ path = [
     "libkscreen-5.27.patch",
 ]
 SPDX-FileCopyrightText = "libcutefish contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
+SPDX-License-Identifier = "GPL-3.0-or-later"
