@@ -1,6 +1,6 @@
 pkgbase = omarchy-workspace-manager
 	pkgdesc = Paired dual-monitor workspace management for Hyprland
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/jtaw5649/omarchy-workspace-manager
 	install = omarchy-workspace-manager.install
@@ -9,7 +9,7 @@ pkgbase = omarchy-workspace-manager
 	depends = hyprland
 	depends = jq
 	depends = socat
-	source = omarchy-workspace-manager-1.2.1.tar.gz::https://github.com/jtaw5649/omarchy-workspace-manager/archive/v1.2.1.tar.gz
-	sha256sums = fa322d78c113839b7a2c8ddeb440457c9251906ea6cd12bf8b232a69c7ac5532
+	source = omarchy-workspace-manager-1.2.2.tar.gz::https://github.com/jtaw5649/omarchy-workspace-manager/archive/v1.2.2.tar.gz
+	sha256sums = e9f186521522d4b94ae37504b56d0c29d6188fcca08f27a7cf5fe8b5768c68a5
 
 pkgname = omarchy-workspace-manager
