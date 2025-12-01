@@ -1,6 +1,6 @@
 pkgbase = pandoc-sile-git
 	pkgdesc = Conversion between markup formats (sile fork, static build)
-	pkgver = 3.8.2.1.r12.gf8652ee44
+	pkgver = 3.8.3.r12.ga3b567515
 	pkgrel = 1
 	url = https://pandoc.org
 	arch = x86_64
@@ -22,11 +22,11 @@ pkgbase = pandoc-sile-git
 	optdepends = texlive-fontsrecommended: for pdf output using latex or xelatex engines
 	optdepends = texlive-latex: for pdf output using pdflatex engine
 	optdepends = texlive-xetex: for pdf output using xelatex engine
-	provides = pandoc=3.8.2.1
-	provides = pandoc-cli=3.8.2.1
+	provides = pandoc=3.8.3
+	provides = pandoc-cli=3.8.3
 	conflicts = pandoc-cli
 	conflicts = haskell-pandoc
-	source = pandoc-sile-git::git+https://github.com/alerque/pandoc.git#branch=sile-3.8.2.1
+	source = pandoc-sile-git::git+https://github.com/alerque/pandoc.git#branch=sile-3.8.3
 	sha256sums = SKIP
 
 pkgname = pandoc-sile-git
