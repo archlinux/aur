@@ -10,7 +10,6 @@ license=(GPL-3.0-or-later)
 depends=(
   glib2
   gobject-introspection-runtime
-  python
   gtk3
   python-aiohttp
   python-expandvars
@@ -24,7 +23,7 @@ makedepends=(
   python
 )
 source=(
-  "https://github.com/orontee/argos/archive/refs/tags/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::https://github.com/orontee/argos/archive/refs/tags/v$pkgver.tar.gz"
 )
 sha256sums=('b7fbe277f7464ebc8226f395d021fffcbf842c218445951a1ee1c3c817d2a214')
 
