@@ -1,0 +1,12 @@
+pkgbase = random-access-ogb
+	pkgver = v1.1.0
+	pkgrel = 0
+	url = https://github.com/pumenis/random-access-ogb
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/pumenis/random-access-ogb.git#tag=v1.1.0
+	sha256sums = SKIP
+
+pkgname = random-access-ogb
