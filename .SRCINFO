@@ -1,0 +1,26 @@
+pkgbase = python-langchain-postgres
+	pkgdesc = This package contains the LangChain integration with Postgres
+	pkgver = 0.0.16
+	pkgrel = 1
+	url = https://github.com/langchain-ai/langchain-postgres
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pytest
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = ruff
+	makedepends = mypy
+	depends = python-langchain-core
+	depends = python-pytest
+	depends = python-asyncpg
+	depends = python-pgvector
+	depends = python-psycopg
+	depends = python-psycopg-pool
+	depends = python-sqlalchemy
+	depends = python-numpy
+	source = langchain-postgres-0.0.16.tar.gz::https://files.pythonhosted.org/packages/source/l/langchain-postgres/langchain_postgres-0.0.16.tar.gz
+	b2sums = fd4fd4182f91d4e6ba6cc37788dd0e5f559dc9f4682d7b0f97ffcbb891d361e633a6d15f6dce8431a3563b9879f5e4479fe8456b5889994a2678ead5c1f2b4d0
+
+pkgname = python-langchain-postgres
