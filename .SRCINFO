@@ -1,6 +1,6 @@
 pkgbase = jay-git
 	pkgdesc = A Wayland Compositor
-	pkgver = 1.11.0.r154.ge81b31b
+	pkgver = 1.11.0.r171.gf5ed6f8
 	pkgrel = 1
 	url = https://github.com/mahkoh/jay
 	install = jay.install

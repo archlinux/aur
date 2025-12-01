@@ -1,7 +1,7 @@
 # Maintainer: Stipe Kotarac <stipe@kotarac.net>
 
 pkgname=jay-git
-pkgver=1.11.0.r154.ge81b31b
+pkgver=1.11.0.r171.gf5ed6f8
 pkgrel=1
 pkgdesc='A Wayland Compositor'
 arch=('x86_64')
@@ -37,15 +37,15 @@ source=('jay::git+https://github.com/mahkoh/jay.git#branch=master')
 install=jay.install
 sha512sums=('SKIP')
 
+pkgver() {
+  cd jay/
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
   cd jay/
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-}
-
-pkgver() {
-  cd jay/
-  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
