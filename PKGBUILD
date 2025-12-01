@@ -21,7 +21,7 @@ package(){
         # Extract package data
         tar -xJf data.tar.xz -C "${pkgdir}"
 
-        mkdir ${pkgdir}/usr/share/perl5/vendor_perl/
+        mkdir -p ${pkgdir}/usr/share/perl5/vendor_perl/
         mv ${pkgdir}/usr/share/perl5/KasmVNC ${pkgdir}/usr/share/perl5/vendor_perl/KasmVNC
 
         ln -s /usr/bin/kasmvncserver ${pkgdir}/usr/bin/vncserver
