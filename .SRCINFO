@@ -1,6 +1,6 @@
 pkgbase = lynxhub
 	pkgdesc = Manage and launch all your AI from a single dashboard.(Use system-wide electron)
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/KindaBrazy/LynxHub
 	arch = any
@@ -15,9 +15,9 @@ pkgbase = lynxhub
 	depends = libsecret
 	depends = python
 	conflicts = lynxhub
-	source = lynxhub-3.2.0::git+https://github.com/KindaBrazy/LynxHub#tag=V3.2.0
+	source = lynxhub-3.3.0::git+https://github.com/KindaBrazy/LynxHub#tag=V3.3.0
 	source = lynxhub.sh
-	sha256sums = d88fb4a114982e3b9529d28347c521521f4c35f1986bddc4fc3b0710e5024269
+	sha256sums = d199f128315d2e02236e386f6124c4dcc75750b7fd05018c2318491560aa2762
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = lynxhub
