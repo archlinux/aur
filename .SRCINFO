@@ -1,6 +1,6 @@
 pkgbase = virtme-ng-git
 	pkgdesc = A tool that allows to easily and quickly recompile and test a Linux kernel, starting from the source code.
-	pkgver = 1.32.r115.g07b109d
+	pkgver = 1.39.r4.g9119b0f
 	pkgrel = 1
 	url = https://github.com/arighi/virtme-ng
 	arch = x86_64
@@ -15,13 +15,15 @@ pkgbase = virtme-ng-git
 	depends = coreutils
 	depends = gcc-libs
 	depends = glibc
-	depends = python
+	depends = python>=3.10
 	depends = python-argcomplete
 	depends = python-argparse-manpage
 	depends = python-requests
 	depends = python-setuptools
 	depends = qemu
 	depends = virtiofsd
+	optdepends = python-anyio: AnyIO support
+	optdepends = python-mcp: Model Context Protocol (MCP) server support
 	provides = virtme=$pkgver
 	conflicts = virtme-ng
 	conflicts = virtme-git

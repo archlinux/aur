@@ -3,7 +3,7 @@
 
 _srcname=virtme-ng
 pkgname=$_srcname-git
-pkgver=1.32.r115.g07b109d
+pkgver=1.39.r4.g9119b0f
 pkgrel=1
 pkgdesc="A tool that allows to easily and quickly recompile and test a Linux kernel, starting from the source code."
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
   coreutils
   gcc-libs
   glibc
-  python
+  "python>=3.10"
   python-argcomplete
   python-argparse-manpage
   python-requests
@@ -30,6 +30,10 @@ makedepends=(
   python-installer
   python-wheel
 )
+optdepends=(
+    "python-anyio: AnyIO support"
+    "python-mcp: Model Context Protocol (MCP) server support"
+)
 provides=('virtme=$pkgver')
 conflicts=('virtme-ng' 'virtme-git')
 source=("git+${url}.git"
@@ -43,6 +47,7 @@ pkgver() {
 }
 
 prepare() {
+    git -C "$srcdir/$_srcname" clean -dfx
     cd "$srcdir/${_srcname}"
     git submodule update --init --filter=tree:0 --recursive
 }
