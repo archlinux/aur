@@ -1,6 +1,6 @@
 pkgbase = crush-bin
 	pkgdesc = A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
-	pkgver = 0.19.4
+	pkgver = 0.20.1
 	pkgrel = 1
 	url = https://charm.sh/crush
 	license = FSL-1.1-MIT
@@ -8,15 +8,15 @@ pkgbase = crush-bin
 	provides = crush
 	arch = aarch64
 	source_aarch64 = https://github.com/charmbracelet/crush/releases/download/v${pkgver}/crush_${pkgver}_Linux_arm64.tar.gz
-	sha256sums_aarch64 = a2561aa0fa3e9f33ebd02efb1ebf472c84e557b7ae0effafa87e881c7c107d5b
+	sha256sums_aarch64 = 24e4a7d47ccd53f32700ba0b7df581657330fbbd863e903096894a8a2e192c8a
 	arch = armv7h
 	source_armv7h = https://github.com/charmbracelet/crush/releases/download/v${pkgver}/crush_${pkgver}_Linux_armv7.tar.gz
-	sha256sums_armv7h = c79d9e1b65e3bc5db20d686ed16bf907b40a88151c5f3bf3cbe7aa99e469dd2e
+	sha256sums_armv7h = 2586d277215e9ba0d31c32e7c96b29b0b0ebcbfbd74e9e330c870a7d37efb530
 	arch = i686
 	source_i686 = https://github.com/charmbracelet/crush/releases/download/v${pkgver}/crush_${pkgver}_Linux_i386.tar.gz
-	sha256sums_i686 = ee0cf69879f2fb4cb75233623e14d8b62c76baf148eb41e5038daa77e46da18a
+	sha256sums_i686 = ba1ede3a7b9e52226134ce04bbc6eb679a1e5e2a2f297462b5c3963050001845
 	arch = x86_64
 	source_x86_64 = https://github.com/charmbracelet/crush/releases/download/v${pkgver}/crush_${pkgver}_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = a317326d2154d6c47d706313beddb439ebf7fe5e92b0eb851df248a83e7dc035
+	sha256sums_x86_64 = ae2a8890c9d623ead50a4b03045c860a4b79db3b32dd057fd6416c8a29aa4c66
 	
 pkgname = crush-bin
