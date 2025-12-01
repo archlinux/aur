@@ -1,16 +1,15 @@
 pkgbase = python-pyfltk
 	pkgdesc = A Python wrapper for the Fast Light Tool Kit library
-	pkgver = 1.3.8
+	pkgver = 1.4.4.0
 	pkgrel = 1
-	url = http://pyfltk.sourceforge.net/
+	url = https://pyfltk.sourceforge.io
 	arch = x86_64
-	license = LGPL
-	makedepends = swig>=4.0
+	license = LGPL-2.0-only
+	makedepends = swig>=4.4
 	makedepends = python-setuptools
-	depends = fltk>=1.3.8
-	depends = python>=3.8
-	depends = glu
-	source = https://downloads.sourceforge.net/pyfltk/pyFltk-1.3.8.tar.gz
-	sha1sums = 2d9bdb9fdfd5c8d96df19f98554445c6482a3da4
+	depends = fltk>=1.4.4
+	depends = python>=3.13
+	source = https://downloads.sourceforge.net/pyfltk/pyfltk-1.4.4.0.tar.gz
+	sha1sums = 1a8877dba50d1cb213dbd9228f62b0cb5c05ce0c
 
 pkgname = python-pyfltk
