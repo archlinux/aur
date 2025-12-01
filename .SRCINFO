@@ -1,0 +1,17 @@
+pkgbase = sqlite3-pcre
+	pkgdesc = Sqlite3 extension for REGEXP matching support
+	pkgver = 0.1
+	pkgrel = 1
+	epoch = 0
+	url = https://git.altlinux.org/people/at/packages/?p=sqlite3-pcre.git
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = CC0-1.0
+	makedepends = doxygen
+	makedepends = sqlite
+	makedepends = pcre
+	source = https://git.altlinux.org/people/at/packages?p=sqlite3-pcre.git;a=snapshot;h=HEAD;sf=tgz
+	b2sums = 541f0803917e65b06fd325660021bf1f30a53030f8be0e046598eba9e346bb5688476cb6451b71e6cfbc03140826c4a071368f4b136d34f7af2b2e216e0c0bf8
+
+pkgname = sqlite3-pcre
