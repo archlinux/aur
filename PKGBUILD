@@ -4,8 +4,8 @@
 
 pkgname=libpamac-full
 _pkgname=libpamac
-pkgver=11.7.3
-_commit=29b31e251eb9eac3804955489c285851eb2aca97
+pkgver=11.7.4
+_commit=b260c6c28b076375ae80656072cd9bd74f0f6d63
 pkgrel=1
 epoch=1
 pkgdesc='Library for Pamac package manager based on libalpm - flatpak and snap support enabled'
@@ -29,7 +29,7 @@ options=(!emptydirs)
 provides=($_pkgname)
 conflicts=('libpamac-aur' 'libpamac-flatpak' $_pkgname 'libpamac-full-dev')
 source=("git+${url}.git#commit=${_commit}")
-sha256sums=('7a0e6abfa5f1ea1f1530301566aacb0acffaf95d93d36a6811dcd874460ca57d')
+sha256sums=('13f531db76921740e7d5b2478cc774d29757313ff4a85befe5c683c6b0cd0d47')
 install='pamac.install'
 
 _srcdir="$_pkgname"
