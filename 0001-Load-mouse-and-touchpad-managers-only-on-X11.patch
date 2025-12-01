@@ -1,0 +1,44 @@
+From 3cebdc4b85187aa971fc43875d05bb12a34eb104 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Mon, 1 Dec 2025 19:45:34 +0100
+Subject: [PATCH] Load mouse and touchpad managers only on X11
+
+These modules are not supported on Wayland.
+---
+ settings-daemon/application.cpp | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/settings-daemon/application.cpp b/settings-daemon/application.cpp
+index 049cb56..3004d47 100644
+--- a/settings-daemon/application.cpp
++++ b/settings-daemon/application.cpp
+@@ -28,6 +28,7 @@
+ #include <QTranslator>
+ #include <QLocale>
+ #include <QTimer>
++#include <QX11Info>
+ 
+ #include <sys/stat.h>
+ #include <sys/types.h>
+@@ -42,10 +43,16 @@ Application::Application(int &argc, char **argv)
+     , m_brightnessManager(new BrightnessManager(this))
+     , m_upowerManager(new UPowerManager(this))
+     , m_language(Language::self())
+-    , m_mouse(new Mouse)
+-    , m_touchpad(new TouchpadManager)
+ //    , m_kwinTimer(new QTimer(this))
+ {
++    if (QX11Info::isPlatformX11()) {
++        m_mouse = new Mouse;
++        m_touchpad = new TouchpadManager;
++    } else {
++        m_mouse = nullptr;
++        m_touchpad = nullptr;
++    }
++
+     initTrash();
+ 
+     new DBusAdaptor(this);
+-- 
+2.52.0
+

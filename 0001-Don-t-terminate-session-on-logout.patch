@@ -1,0 +1,32 @@
+From a15a61deb4d3d903d0756675a81db48e5e20e9bb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Mon, 1 Dec 2025 13:26:36 +0100
+Subject: [PATCH] Don't terminate session on logout
+
+Terminating the session causes that the logout hangs for a while due to
+unresponsive process.
+---
+ session/processmanager.cpp | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/session/processmanager.cpp b/session/processmanager.cpp
+index 2fba357..1de297b 100644
+--- a/session/processmanager.cpp
++++ b/session/processmanager.cpp
+@@ -81,13 +81,6 @@ void ProcessManager::logout()
+     s.start("killall", QStringList() << "kglobalaccel5");
+     s.waitForFinished(-1);
+ 
+-    QDBusInterface iface("org.freedesktop.login1",
+-                        "/org/freedesktop/login1/session/self",
+-                        "org.freedesktop.login1.Session",
+-                        QDBusConnection::systemBus());
+-    if (iface.isValid())
+-        iface.call("Terminate");
+-
+     QCoreApplication::exit(0);
+ }
+ 
+-- 
+2.52.0
+

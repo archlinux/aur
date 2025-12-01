@@ -23,7 +23,11 @@ SPDX-License-Identifier = "0BSD"
 
 [[annotations]]
 path = [
+    "0001-Allow-to-override-Qt-platformtheme.patch",
+    "0001-Don-t-terminate-session-on-logout.patch",
+    "0001-Load-mouse-and-touchpad-managers-only-on-X11.patch",
+    "0001-Start-kglobalacceld-on-login.patch",
     "fix-build.patch",
 ]
 SPDX-FileCopyrightText = "cutefish-core contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
+SPDX-License-Identifier = "GPL-3.0-or-later"

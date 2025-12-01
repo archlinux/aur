@@ -1,0 +1,33 @@
+From 534b268e0ae5f674ad86d4de0d64600670d8229c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Mon, 1 Dec 2025 13:22:12 +0100
+Subject: [PATCH] Allow to override Qt platformtheme
+
+The Cutefish platformtheme supports Qt 5 only, causing that Qt 6
+applications unthemed. After this change, the QT_QPA_PLATFORMTHEME and
+QT_PLATFORM_PLUGIN environment variables are not set if they are already
+defined.
+---
+ session/application.cpp | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/session/application.cpp b/session/application.cpp
+index 51be657..8c8b325 100644
+--- a/session/application.cpp
++++ b/session/application.cpp
+@@ -179,8 +179,10 @@ void Application::initEnvironments()
+     qputenv("XDG_SESSION_DESKTOP", "Cutefish");
+ 
+     // Qt
+-    qputenv("QT_QPA_PLATFORMTHEME", "cutefish");
+-    qputenv("QT_PLATFORM_PLUGIN", "cutefish");
++    if (qEnvironmentVariableIsEmpty("QT_QPA_PLATFORMTHEME"))
++        qputenv("QT_QPA_PLATFORMTHEME", "cutefish");
++    if (qEnvironmentVariableIsEmpty("QT_PLATFORM_PLUGIN"))
++        qputenv("QT_PLATFORM_PLUGIN", "cutefish");
+ 
+     qputenv("QT_AUTO_SCREEN_SCALE_FACTOR", "0");
+ 
+-- 
+2.52.0
+

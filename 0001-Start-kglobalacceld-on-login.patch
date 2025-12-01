@@ -1,0 +1,25 @@
+From 2afabfeb34967cf77ec708570e79fa8d0a16b7e8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Mon, 1 Dec 2025 13:28:27 +0100
+Subject: [PATCH] Start kglobalacceld on login
+
+This is needed for some keyboard shortcuts like Alt-Tab to work with KWin 6.
+---
+ session/processmanager.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/session/processmanager.cpp b/session/processmanager.cpp
+index 1de297b..a4e0097 100644
+--- a/session/processmanager.cpp
++++ b/session/processmanager.cpp
+@@ -107,6 +107,7 @@ void ProcessManager::startDesktopProcess()
+ 
+     QList<QPair<QString, QStringList>> list;
+     // Desktop components
++    list << qMakePair(QString("/usr/lib/kglobalacceld"), QStringList());
+     list << qMakePair(QString("cutefish-notificationd"), QStringList());
+     list << qMakePair(QString("cutefish-statusbar"), QStringList());
+     list << qMakePair(QString("cutefish-dock"), QStringList());
+-- 
+2.52.0
+
