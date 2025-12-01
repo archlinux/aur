@@ -47,6 +47,7 @@ package_tlp-git() {
   conflicts=(
     laptop-mode-tools
     pm-utils
+    tuned
     tlp
   )
   backup=(etc/tlp.conf)
