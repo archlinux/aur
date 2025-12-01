@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="System default icon theme of CutefishOS"
 arch=('any')
 url="https://github.com/cutefishos/icons"
-license=('GPL')
+license=('GPL-3.0-or-later')
 groups=('cutefish')
 depends=()
 makedepends=('extra-cmake-modules' 'ninja')
@@ -14,13 +14,11 @@ source=("https://github.com/cutefishos/icons/archive/$pkgver/$pkgname-$pkgver.ta
 sha512sums=('064f81cf8f9ac6d3fdf3eff4500df0c349335432c49fd2d7a01cc84060b97372c2ea92998670cf68e0f1e8f099aedb9164a285af4f74da47bb750754649df464')
 
 build() {
-  cd icons-$pkgver
-
-  cmake -GNinja -DCMAKE_INSTALL_PREFIX=/usr .
-  ninja
+  cmake -G Ninja -B build -S icons-$pkgver \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
 }
 
 package() {
-  cd icons-$pkgver
-  DESTDIR="$pkgdir" ninja install
+  DESTDIR="$pkgdir" cmake --install build
 }
