@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=lock
-pkgver=1.8.2
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Process data with GnuPG 🔒'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gtk4' 'libadwaita')
 makedepends=('blueprint-compiler' 'git' 'meson')
 source=("${pkgname}::git+https://github.com/konstantintutsch/Lock.git#tag=v${pkgver}")
-b2sums=('2d29694cdb07c87204cc99a0ee309fe6b3d34fadd993bbc4a2dd25c0a7be1cc10bc95d8cc54eb2e97decc6360893dd1d774f18670dac9e56a5c744086224f7ef')
+b2sums=('205ab88a1c8b8c8728c222cc25b10311ad4fc14e5daffe51863ad7bdeab166732b164840a220e1f54475d2fda32e469f2d347325bf5cff21b04373b0d545737a')
 
 build() {
   arch-meson "${pkgname}" build
