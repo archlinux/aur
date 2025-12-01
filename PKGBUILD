@@ -1,7 +1,7 @@
 # Maintainer : Kitestramuort <kitestramuort@autistici.org>
 
 pkgname=harp
-pkgver=1.28.1
+pkgver=1.29
 pkgrel=1
 pkgdesc="Data harmonization toolset for scientific earth observation data"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python' 'hdf4' 'hdf5' 'r' 'stc-coda')
 provides=('harp')
 source=("https://github.com/stcorp/harp/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('20cf6ee614a9b7f6b56b97d7f58d18a1')
+md5sums=('9e7348a83ca79e2638e25d1c0fcfb8f0')
 
 build() {
 	cd ${pkgname}-${pkgver}

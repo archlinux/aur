@@ -11,6 +11,6 @@ pkgbase = harp
 	depends = r
 	depends = stc-coda
 	provides = harp
-	source = https://github.com/stcorp/harp/releases/download/1.28/harp-1.28.1.tar.gz
+	source = https://github.com/stcorp/harp/releases/download/1.29/harp-1.29.tar.gz
 	md5sums = 6780cfeaf8b9deef0f99d189ad41d5ce
 pkgname = harp
