@@ -1,6 +1,6 @@
 pkgbase = at32-openocd-bin
 	pkgdesc = AT32 OpenOCD 支持 AT32 MCU调试、编程及边界扫描
-	pkgver = 2.0.7
+	pkgver = 2.0.8
 	pkgrel = 1
 	url = https://www.arterytek.com/cn/support/tools.jsp
 	install = at32-openocd-bin.install
@@ -22,11 +22,11 @@ pkgbase = at32-openocd-bin
 	provides = AT32OpenOCD
 	conflicts = at32-openocd
 	conflicts = AT32OpenOCD
-	noextract = OpenOCD_Linux_x86-64_V2.0.7.zip
+	noextract = OpenOCD_Linux_x86-64_V2.0.8.zip
 	options = !strip
 	options = !emptydirs
 	options = !staticlibs
-	source = OpenOCD_Linux_x86-64_V2.0.7.zip::https://www.arterytek.com/download/AT32%20IDE/OpenOCD_Linux_x86-64_V2.0.7.zip
-	sha256sums = e233946cfd92deb9d59860ee5819312009537b2a429aa4d21c193b6f7b522963
+	source = OpenOCD_Linux_x86-64_V2.0.8.zip::https://www.arterytek.com/download/AT32%20IDE/OpenOCD_Linux_x86-64_V2.0.8.zip
+	sha256sums = 9a409d1a7e90ccefca95ea841809d6b3f205d764262270332bb9ddcdd70428d9
 
 pkgname = at32-openocd-bin
