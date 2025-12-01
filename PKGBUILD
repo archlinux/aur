@@ -3,7 +3,7 @@
 # Contributor: d6k283tix <d6k283tix@mozmail.com>
 pkgname=codegpt-bin
 _pkgname=CodeGPT
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A CLI written in Go language that writes git commit messages or do a code review brief for you using ChatGPT AI (gpt-4, gpt-3.5-turbo model) and automatically installs a git prepare-commit-msg hook"
 arch=(
@@ -20,9 +20,9 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.xz::${url}/releases/download/
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.xz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm-7.xz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.xz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.xz")
 sha256sums=('11d290bc694f8f7fa7393406a3b47c0f51c06093634c6e24c21bb6dd74e5874b')
-sha256sums_aarch64=('330e60475c45aec326f5e6eadb44b9de5f401746d8534983e1a9bb2c79c55c1f')
-sha256sums_armv7h=('f4a4458741ebbb94f49d774140ab0df1d6b76fa7c863c484d34bcaee84f02a8b')
-sha256sums_x86_64=('fcd9ea2ef1c916651f9f94f37891e83dabdd29b0a367ca19c367bcfd57c0f703')
+sha256sums_aarch64=('f1bcb35f56eccec57ef34e7edee1baa5692cdc8d50c7ce977d54e83309a2c5f4')
+sha256sums_armv7h=('0aed98a9572d07b2d88794a9446fc355dec240fe2903791e6d7185d123342744')
+sha256sums_x86_64=('39782cfda31ac058da9c4dc11bc76640306f9ef84c9992c7fd5592dbb1fb1975')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
