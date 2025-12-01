@@ -6,7 +6,7 @@ pkgname=${_reponame}-dkms
 pkgver=4.15.2
 pkgrel=1
 pkgdesc="TUXEDO Computers kernel module drivers. Compatibility check disabled - works when using identical models from other brands, example being TUXEDO Pulse 14 Gen 4 and Schenker Via 14 Pro (M24)"
-url="https://gitlab.com/kreny/${_reponame}"
+url="https://gitlab.com/kronerm/${_reponame}"
 license=("GPL-2.0-or-later")
 arch=('x86_64')
 depends=('dkms')
@@ -29,7 +29,7 @@ provides=('tuxedo-drivers-dkms'
 	'ite_8297'
 	'ite_829x')
 conflicts=('tuxedo-drivers-dkms' 'tuxedo-keyboard-dkms' 'tuxedo-keyboard-ite-dkms')
-source=($pkgname-$pkgver.tar.gz::https://gitlab.com/kreny/${_reponame}/-/archive/v${pkgver}-patched.${pkgrel}/tuxedo-drivers-v${pkgver}-patched.${pkgrel}.tar.gz)
+source=($pkgname-$pkgver.tar.gz::https://gitlab.com/kronerm/${_reponame}/-/archive/v${pkgver}-patched.${pkgrel}/tuxedo-drivers-v${pkgver}-patched.${pkgrel}.tar.gz)
 sha256sums=('6b76fd02c4fed554011a6cc652e94d439e59c93e6400357d55d432638d16554d')
 sha512sums=('dd7a048dd90fb1a0b3f49fb8f7e1bfe516aba246876f9fae3b1eef495fe889d7211bb5b6e7676f214328efe235d15a71b62f16b9ad839e51a3a5d5edd1b2b9dc')
 
