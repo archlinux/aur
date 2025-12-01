@@ -1,10 +1,10 @@
 # Maintainer: sfn
 
 pkgbase='zl-equalizer'
-pkgname=('zl-equalizer-vst' 'zl-equalizer-lv2')
+pkgname=('zl-equalizer-vst' 'zl-equalizer-lv2' 'zl-equalizer')
 groups=('zl-audio' 'pro-audio')
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 options=()
 pkgdesc="Parametric, dynamic equalizer plugin by ZL Audio"
 arch=('x86_64')
@@ -51,4 +51,8 @@ package_zl-equalizer-lv2() {
 	mkdir -p ${pkgdir}/usr/lib/lv2/
 	cp -r ${srcdir}/ZLEqualizer/Builds/ZLEqualizer_artefacts/LV2/* ${pkgdir}/usr/lib/lv2/
 	install -Dm755 ${srcdir}/ZLEqualizer/LICENSE.md ${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.md"
+}
+
+package_zl-equalizer() {
+  depends+=('zl-equalizer-vst' 'zl-equalizer-lv2')
 }

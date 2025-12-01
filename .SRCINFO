@@ -1,7 +1,7 @@
 pkgbase = zl-equalizer
 	pkgdesc = Parametric, dynamic equalizer plugin by ZL Audio
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zl-audio.github.io/plugins/zlequalizer2/
 	arch = x86_64
 	groups = zl-audio
@@ -33,3 +33,16 @@ pkgname = zl-equalizer-lv2
 	groups = zl-audio
 	groups = pro-audio
 	groups = lv2-plugins
+
+pkgname = zl-equalizer
+	depends = alsa-lib
+	depends = libx11
+	depends = libxinerama
+	depends = libxext
+	depends = freetype2
+	depends = fontconfig
+	depends = webkit2gtk
+	depends = glu
+	depends = nlopt
+	depends = zl-equalizer-vst
+	depends = zl-equalizer-lv2
