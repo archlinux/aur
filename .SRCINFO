@@ -1,6 +1,6 @@
 pkgbase = html2markdown-bin
 	pkgdesc = Convert HTML to Markdown. Even works with entire websites and can be extended through rules.
-	pkgver = 2.4.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://html-to-markdown.com
 	arch = aarch64
@@ -9,11 +9,13 @@ pkgbase = html2markdown-bin
 	license = MIT
 	provides = html2markdown
 	conflicts = html2markdown
-	source_aarch64 = html2markdown-2.4.0-aarch64.tar.gz::https://github.com/JohannesKaufmann/html-to-markdown/releases/download/v2.4.0/html-to-markdown_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 52d45368d6dd8e770f4a75cd89c44dbcea99c8b344a2d2ea7025ebfcbc5c91bd
-	source_i686 = html2markdown-2.4.0-i686.tar.gz::https://github.com/JohannesKaufmann/html-to-markdown/releases/download/v2.4.0/html-to-markdown_Linux_i386.tar.gz
-	sha256sums_i686 = fef965b92c2075f6853d7b82c6629f3a386346a0ca274db973a261993a009d9c
-	source_x86_64 = html2markdown-2.4.0-x86_64.tar.gz::https://github.com/JohannesKaufmann/html-to-markdown/releases/download/v2.4.0/html-to-markdown_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = ed22e7c6de1c1ec166e2026b4d18519b4151b15d41606362c2d7e8981ad1528d
+	source = html2markdown-2.5.0-ESCAPING.md::https://github.com/JohannesKaufmann/html-to-markdown/raw/refs/tags/v2.5.0/ESCAPING.md
+	sha256sums = 74545f65ae3774ef2fe4ecc48b208305929860e95cfda3f227bc4eb507e8e5b4
+	source_aarch64 = html2markdown-2.5.0-aarch64.tar.gz::https://github.com/JohannesKaufmann/html-to-markdown/releases/download/v2.5.0/html-to-markdown_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 3ef28c5e030986e9b082b42984178692136258381f66e3208218a17a3278cee4
+	source_i686 = html2markdown-2.5.0-i686.tar.gz::https://github.com/JohannesKaufmann/html-to-markdown/releases/download/v2.5.0/html-to-markdown_Linux_i386.tar.gz
+	sha256sums_i686 = a7b1c67961d55a3b28a05ea573949473c1428a8c2eab561731f0fdbfcc83f439
+	source_x86_64 = html2markdown-2.5.0-x86_64.tar.gz::https://github.com/JohannesKaufmann/html-to-markdown/releases/download/v2.5.0/html-to-markdown_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 0c741a0949c255fec6f693796fcbda564120e459a66251364f0d2a50c3b1047b
 
 pkgname = html2markdown-bin
