@@ -29,6 +29,7 @@ build(){
 
 package(){
   cd "${srcdir}/${pkgname}-${pkgver}"
+  # Fix errors on modern C compilers
   make DESTDIR="$pkgdir" install
   install -d "${pkgdir}/usr/share/doc/pilrc"
   cp -dr --no-preserve=ownership doc/* "${pkgdir}/usr/share/doc/pilrc/"
