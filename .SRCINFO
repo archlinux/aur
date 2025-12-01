@@ -1,7 +1,7 @@
 pkgbase = cutefish-settings
 	pkgdesc = System Settings application for Cutefish Desktop
 	pkgver = 0.8
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/cutefishos/settings
 	arch = x86_64
 	groups = cutefish
@@ -12,7 +12,6 @@ pkgbase = cutefish-settings
 	makedepends = git
 	depends = fishui
 	depends = fontconfig
-	depends = freetype2
 	depends = icu
 	depends = libxcursor
 	depends = bluez-qt5
