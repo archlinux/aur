@@ -7,6 +7,7 @@ pkgname='iloader-appimage'
 pkgver=1.1.3
 pkgrel=1
 pkgdesc='User-friendly sideloader'
+url='https://github.com/nab138/iloader'
 arch=('x86_64')
 license=('MIT')
 source=("https://github.com/nab138/iloader/releases/latest/download/$_appimage")
