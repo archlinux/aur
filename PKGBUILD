@@ -1,7 +1,7 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=ruby-formatador
-pkgver=1.2.1
+pkgver=1.2.3
 pkgrel=1
 pkgdesc='STDOUT text formatting'
 arch=(any)
@@ -19,7 +19,7 @@ checkdepends=(
 )
 options=(!emptydirs)
 source=(https://github.com/geemus/formatador/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('22a11f4f0e152a7d27eb5f34a6ea2c9eb2ce43c6ed76bf30c10ed84064beba42')
+sha256sums=('a5b0303ec28f6fa666cf0d9bf8ec84f26c8a963cc998572f7c8059cb4a1b4f7b')
 
 build() {
   local _gemdir="$(gem env gemdir)"
