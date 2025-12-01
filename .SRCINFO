@@ -1,0 +1,21 @@
+pkgbase = ocamel-git
+	pkgdesc = Ollama için Gelişmiş Qt6 Arayüzü: RAG, Web Gezgini ve Vibe Coding
+	pkgver = r4.4e73cb3
+	pkgrel = 1
+	url = https://gitlab.com/stdqman/ocamel
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = base-devel
+	depends = qt6-base
+	depends = qt6-webengine
+	depends = ollama
+	depends = ripgrep
+	depends = clang
+	provides = ocamel
+	conflicts = ocamel
+	source = git+https://gitlab.com/stdqman/ocamel
+	sha256sums = SKIP
+
+pkgname = ocamel-git
