@@ -1,8 +1,8 @@
 # Maintainer: lazywalker <l4zywalk3r@gmail.com>
 
 pkgname=rgrc
-pkgver=0.5.1.r2.gdb80e65
-pkgrel=2
+pkgver=0.6.1.r4.gcd01469
+pkgrel=1
 pkgdesc='Rusty Generic Colouriser - like grc but faster and with more features'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://github.com/lazywalker/rgrc'
@@ -62,6 +62,7 @@ package() {
 
   # Install binary and config files
   install -Dm 0755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin/"
+  install -Dm 0755 "target/release/rgrv" -t "${pkgdir}/usr/bin/"
 	install -Dm 0644 etc/rgrc.conf -t "${pkgdir}/etc/"
 	install -Dm 0644 share/conf.* -t "${pkgdir}/usr/share/${pkgname}/"
 
