@@ -2,9 +2,9 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts66
-pkgver=6.6.117
+pkgver=6.6.118
 pkgrel=1
-pkgdesc='LTS Linux'
+pkgdesc="LTS ${pkgver%.*} Linux"
 url='https://www.kernel.org'
 arch=(x86_64)
 makedepends=(
@@ -25,10 +25,10 @@ makedepends=(
   texlive-latexextra
 )
 options=('!strip')
-_srcname=linux-$pkgver
-_srctag=v$pkgver
+_srcname=linux-${pkgver%.*}
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
+  https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/patch-${pkgver}.xz
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch
   0003-Default-to-maximum-amount-of-ASLR-bits.patch
@@ -42,8 +42,19 @@ validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('643b31079222fdbda70cfdd0b68c514f05a3926104be4762a4685f62818b43d1'
+md5sums=('452098d80ba925af3a4ab35998f3aef5'
+         'SKIP'
+         '00d7a360d1bd3bb1835ee1912514ad65'
+         'cb32cb125ea45ac05782630dfc9fc951'
+         'c99abef85da3185e66da920deb9897f3'
+         'c308b5c13e18863919a366bd4a4f5159'
+         'c1f10e50f7ca23d07ae83ae6252854d5'
+         '25032e45b830ad198d84d7bb4a239da6'
+         '02019468600cb42d60c8cf5daf346e14'
+         '645c20da36fc5ac07eabc6ad025c660d')
+sha256sums=('d926a06c63dd8ac7df3f86ee1ffc2ce2a3b81a2d168484e76b5b389aba8e56d0'
             'SKIP'
+            '05340ef14b9ec3b3e1caa5637908aa292175765eb42022a3263573c5f76391e6'
             '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
             '2f23be91455e529d16aa2bbf5f2c7fe3d10812749828fc752240c21b2b845849'
             '6400a06e6eb3a24b650bc3b1bba9626622f132697987f718e7ed6a5b8c0317bc'
@@ -51,15 +62,6 @@ sha256sums=('643b31079222fdbda70cfdd0b68c514f05a3926104be4762a4685f62818b43d1'
             '6d886ff7f1fed2f32a9f2d8932c11786bb06742e203a55990c6b1f77a247be59'
             '467cd55071c616f9bec55d88c37efaf579b6c9f7b33c9c30aaf74583cd450a7f'
             'edc98e741c25e3eda366f6e4675e0350efea8630b9f76799c0b9e0abf065cbc0')
-b2sums=('8c2e2852da8d1454d58709bacc45a425f85ca04f35636f5f984f470b974627be5b74ed4fe7c27d9a28ebaed3c701960b3194769cd1b308b00d7362ba115687e4'
-        'SKIP'
-        '02a10396c92ab93124139fc3e37b1d4d8654227556d0d11486390da35dfc401ff5784ad86d0d2aa7eacac12bc451aa2ff138749748c7e24deadd040d5404734c'
-        '5dc21a7a6f0b840e6a671dcf09a865e42f0e2c000d5e45d3f3202c02946a8ab2207858d0b2ef1004648b8c2963efb428298b263c8494be806dfc9b6af66d5413'
-        'ba6ebe349b3757411364a9ba2deaa30a8d71a247d518c159385977c2b4782771bda4edfc96bd954808617c9ba984d832471b63c11f5bd6003369bfe4051df31f'
-        '7a63b8e28249e10b8c808f540c88827a5276d60b3b15b590c2bb6140a4b695af6f180517d104567b4799bdd048ce5d78dd01f5b13d8a96c3b24f3d98d6e4d2b1'
-        'f96a0bd31cf73a712347fc95dbffbc1979f4e8db93323a78717907904789dad99da9cc2d69d24f5b75a437874676ca7c12608691d0c301535867b9ddb09d621e'
-        '759760ea903208e7ee21ac53ac9cc5c559b826f08c600d2c2169f6d08b86bb4d5bfceb7abe4e1d77f5d988e10777a8ec47c401a7c69e74d21816daec1d293df3'
-        'a27355a12e90c6f8c24a2afaadd3d6dfc198504c1ab8536f33dea2b0dfc8b667640694d8229879b898d6a23465ea471239c9686ebd33024c29d51fdf67c8693b')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -72,15 +74,25 @@ prepare() {
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    src="${src%.zst}"
-    [[ $src = *.patch ]] || continue
-    echo "Applying patch $src..."
-    patch -Np1 < "../$src"
+  local _src
+  for _src in "${source[@]}"; do
+    _src="${_src%%::*}"
+    _src="${_src##*/}"
+    case "${_src}" in
+    *.patch)
+      msg2 "Applying patch $_src..."
+      patch -Np1 < "../$_src"
+      ;;
+    patch-*)
+      _src="${_src%.*}"
+      msg2 "Applying patch $_src..."
+      patch -Np1 -s < "../$_src"
+      ;;
+    esac
   done
+
+  #cd '..'; cp -pr "${_srcname}" 'a'; ln -s "${_srcname}" 'b'; cd "${_srcname}"; false
+  # diff -pNaru5 'a' 'b' > 0000-$RANDOM.patch
 
   echo "Setting config..."
   cp ../config .config
@@ -93,7 +105,6 @@ prepare() {
 
 build() {
   cd $_srcname
-
   if ! :; then
     export PATH="${PWD}:${PATH}"
     cat > 'gcc' << EOF
@@ -105,7 +116,7 @@ exec /usr/bin/gcc -std='gnu17' "\$@"
 EOF
     chmod 755 'gcc'
   fi
-  nice -n1 make -j1 htmldocs < /dev/null &
+  nice -n1 make -j1 htmldocs < /dev/null & # SPHINXOPTS='--keep-going'
   local _pid_docs="$!"
   nice -n2 make all
   wait "${_pid_docs}"
@@ -157,23 +168,13 @@ _package() {
     X11
     Zlib
   )
-  depends=(
-    coreutils
-    initramfs
-    kmod
-  )
+  depends=(coreutils kmod initramfs)
   optdepends=(
     'wireless-regdb: to set the correct wireless channels of your country'
     'linux-firmware: firmware images needed for some devices'
   )
-  provides=(
-    KSMBD-MODULE
-    VIRTUALBOX-GUEST-MODULES
-    WIREGUARD-MODULE
-  )
-  replaces=(
-    wireguard-lts
-  )
+  provides=(KSMBD-MODULE VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  replaces=(wireguard-lts)
 
   cd $_srcname
   local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
@@ -383,11 +384,7 @@ _package-docs() {
   install -vDm 644 LICENSES/preferred/{BSD*,MIT} -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-pkgname=(
-  "$pkgbase"
-  "$pkgbase-headers"
-  "$pkgbase-docs"
-)
+pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
