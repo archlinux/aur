@@ -2,7 +2,7 @@
 # Maintainer: Filip Mikina <filipmikina at gmail dot com>
 
 pkgname='hyprdynamicmonitors-bin'
-pkgver=1.3.10
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Dynamic monitor configuration for Hyprland.'
 url='https://github.com/fiffeek/hyprdynamicmonitors'
@@ -12,14 +12,14 @@ provides=('hyprdynamicmonitors-bin')
 conflicts=('hyprdynamicmonitors')
 optdepends=('hyprland' 'upower')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v1.3.10/hyprdynamicmonitors_Linux_arm64.tar.gz")
-sha256sums_aarch64=('bf3da588aa8f851e0774d86c56b06e54e8a1dab374a9f59bcb509bf0eb5bb3bc')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v1.4.0/hyprdynamicmonitors_Linux_arm64.tar.gz")
+sha256sums_aarch64=('8a62f4e7570bc3b162e70207b6ed1c1acd61c2e7f4ec866f77f3b5c6cd20bd91')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v1.3.10/hyprdynamicmonitors_Linux_i386.tar.gz")
-sha256sums_i686=('2db7734907498207f4bfb2fbf12c9da495301ee0dcd7e9060a978c9dfe4b5e90')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v1.4.0/hyprdynamicmonitors_Linux_i386.tar.gz")
+sha256sums_i686=('dae8a718f94f931a69307bb235788bd608aae379f030e7d3f5087b03fe4c3539')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v1.3.10/hyprdynamicmonitors_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('4e07ab7791d1f728ca276de7b8e839b0ea5016e4bfc11b400e77090f70ee2c9b')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fiffeek/hyprdynamicmonitors/releases/download/v1.4.0/hyprdynamicmonitors_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('1a188f975dee39113ae36872195c052159a92939c07461907427a47e35297589')
 
 package() {
   # bin
@@ -31,6 +31,11 @@ package() {
   # systemd
   install -Dm644 "./infrastructure/systemd/hyprdynamicmonitors.service" "${pkgdir}/usr/lib/systemd/user/hyprdynamicmonitors.service"
   install -Dm644 "./infrastructure/systemd/hyprdynamicmonitors-prepare.service" "${pkgdir}/usr/lib/systemd/user/hyprdynamicmonitors-prepare.service"
+
+  # themes
+  install -d -m 755 "${pkgdir}/usr/share/hyprdynamicmonitors"
+  install -d -m 755 "${pkgdir}/usr/share/hyprdynamicmonitors/themes"
+  cp -r themes/* "${pkgdir}/usr/share/hyprdynamicmonitors/themes"
 
   # completions
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
