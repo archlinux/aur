@@ -3,7 +3,7 @@
 
 pkgname='pvetui-bin'
 pkgver=1.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal user interface (TUI) for Proxmox VE'
 url='https://github.com/devnullvoid/pvetui'
 arch=('aarch64' 'i686' 'x86_64')
@@ -29,8 +29,8 @@ package() {
   # Install license
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/pvetui/LICENSE"
   install -Dm644 "./THIRD_PARTY_LICENSES.md" "${pkgdir}/usr/share/licenses/pvetui/THIRD_PARTY_LICENSES.md"
-  install -Dm644 "./internal/vnc/novnc/LICENSE.txt" "${pkgdir}/usr/share/licenses/pvetui/noVNC/LICENSE.txt"
-  install -Dm644 "./internal/vnc/novnc/lib/pako/LICENSE" "${pkgdir}/usr/share/licenses/pvetui/noVNC/LICENSE.pako"
+  install -Dm644 "./NOVNC_LICENSE.txt" "${pkgdir}/usr/share/licenses/pvetui/noVNC/LICENSE.txt"
+  install -Dm644 "./PAKO_LICENSE.txt" "${pkgdir}/usr/share/licenses/pvetui/noVNC/LICENSE.pako"
 
   # Install documentation
   install -Dm644 "./README.md" "${pkgdir}/usr/share/doc/pvetui/README.md"
