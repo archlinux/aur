@@ -1,4 +1,5 @@
 # Maintainer: AstroSteveo <stevengmjr at gmail dot com>
+
 pkgname=cursor-appimage
 pkgver=0.47.9
 pkgrel=1
