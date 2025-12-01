@@ -1,0 +1,11 @@
+--- lib/spack/spack/environment/environment.py	2025-11-14 23:35:12.000000000 +0100
++++ lib/spack/spack/environment/environment.py	2025-12-01 11:00:48.016960157 +0100
+@@ -64,7 +64,7 @@
+ _active_environment_error: Optional[spack.config.ConfigFormatError] = None
+ 
+ #: default path where environments are stored in the spack tree
+-default_env_path = os.path.join(spack.paths.var_path, "environments")
++default_env_path = os.path.join("/opt", "spack", "var", "spack", "environments")
+ 
+ 
+ #: Name of the input yaml file for an environment

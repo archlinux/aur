@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Derumigny nderumigny <at> gmail <dot> com
 pkgname=spack
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A flexible package manager for supercomputer that supports multiple versions, configurations, platforms, and compilers."
 arch=('i686' 'x86_64')
 url="https://spack.io/"
@@ -19,6 +19,7 @@ source=(
         spack.csh
         spack.env.sh.patch
         spack.patch
+        environment.py.patch
       )
 sha256sums=(
         '518474f546e87723c43b80143d83a51c065a8d54333c8140da6f48bc7d9e50c1'
@@ -30,6 +31,7 @@ sha256sums=(
         '7b427625d7890dbc0ae493da095a4d7de47742fd3b02e3f42d7ee52e3599a4ac'
         'd7a700e62d55008c11af88d368977a5947e541cb279c2ed6a70be967f8e699be'
         '55dc48adbba01c953e9be97c8dbca3c1e04fe11aecef37d7a5e0536ea8ea0132'
+        '733c9631ca354210722998094a1ca0e7c17a5a0a016e04d465fb872dee434683'
 )
 _spackcfg=etc/spack/defaults/base/config.yaml
 _spacksetenv_sh=share/spack/setup-env.sh
@@ -43,8 +45,9 @@ prepare() {
   sed -i "s/lmod:.*/lmod: \/var\/lib\/spack\/modules\/lmod/g" ${_spackcfg}
   sed -i "s/dotkit:.*/dotkit: \/var\/lib\/spack\/modules\/dotkit/g" ${_spackcfg}
   sed -i "s/\$spack\/var\/spack\/stage/\/var\/lib\/spack\/stage/g" ${_spackcfg}
+  patch -p0 < ${srcdir}/environment.py.patch
 
-  # Corresct error at build
+  # Correct errors at build stage
   rm lib/spack/docs/_static/spack-logo-text.svg
   rm lib/spack/docs/_static/spack-logo-white-text.svg
   ln -s ../../../../share/spack/logo/spack-logo-text.svg lib/spack/docs/_static/spack-logo-text.svg
