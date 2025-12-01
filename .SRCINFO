@@ -1,10 +1,10 @@
 pkgbase = ecubus-pro-bin
 	pkgdesc = A powerful automotive ECU development tool Easy of use, Cross platform, Multi dongle, Powerful script ability, CLI support
-	pkgver = 0.8.56
-	pkgrel = 4
+	pkgver = 0.8.57
+	pkgrel = 5
 	url = https://github.com/ecubus/EcuBus-Pro
 	arch = x86_64
-	license = MIT
+	license = Apache-2.0
 	makedepends = libarchive
 	depends = sh
 	depends = dbus
@@ -19,10 +19,10 @@ pkgbase = ecubus-pro-bin
 	optdepends = python-udsoncan: Implementation of the Unified Diagnostic Service (UDS) protocol (ISO-14229) used in the automotive industry.
 	provides = ecubus-pro
 	conflicts = ecubus-pro
-	noextract = EcuBus-Pro_0.8.56_amd64.deb
+	noextract = EcuBus-Pro_0.8.57_amd64.deb
 	options = !debug
 	options = !strip
-	source = EcuBus-Pro_0.8.56_amd64.deb::https://github.com/ecubus/EcuBus-Pro/releases/download/v0.8.56/EcuBus-Pro_0.8.56_amd64.deb
-	sha256sums = 5986ea2ab723ad59ef3254f4d12f567527547ac7de83ce4804707b6d8736394c
+	source = EcuBus-Pro_0.8.57_amd64.deb::https://github.com/ecubus/EcuBus-Pro/releases/download/v0.8.57/EcuBus-Pro_0.8.57_amd64.deb
+	sha256sums = 5c9f34bb64d343bc228ef89cb6f9aa718eba5733f30b2b5893dce640d6fe83f5
 
 pkgname = ecubus-pro-bin
