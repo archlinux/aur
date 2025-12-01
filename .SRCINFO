@@ -1,6 +1,6 @@
 pkgbase = 02engine-bin
 	pkgdesc = Mod of Scratch with a compiler and more features.02Engine.Better Scratch.Made from Turbowarp.
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/02engine/
 	arch = x86_64

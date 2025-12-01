@@ -1,7 +1,7 @@
 # Maintainer: LuoTianyi_arm64 <2153585992@qq.com>
 pkgname=02engine-bin
 provides=('02engine')
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 source=('.INSTALL::https://github.com/02engine/02engine-aur/releases/download/INSTALL/INSTALL')
 pkgdesc='Mod of Scratch with a compiler and more features.02Engine.Better Scratch.Made from Turbowarp.'
