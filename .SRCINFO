@@ -1,0 +1,18 @@
+pkgbase = ftr-site-config-git
+	pkgdesc = Full-Text RSS: Site-specific article extraction rules (development version)
+	pkgver = 2025.12.1.r3746.g44ec894
+	pkgrel = 1
+	url = https://github.com/fivefilters/ftr-site-config
+	arch = any
+	license = CC0-1.0
+	makedepends = findutils
+	makedepends = git
+	provides = ftr-site-config
+	conflicts = ftr-site-config
+	options = !strip
+	source = ftr-site-config::git+https://github.com/fivefilters/ftr-site-config.git
+	source = CC0-1.0.txt::https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ftr-site-config-git
