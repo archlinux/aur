@@ -1,7 +1,7 @@
 pkgbase = openjdk-liberica21-full-bin
 	pkgdesc = Liberica 21 includes LibericaFX, which is based on OpenJFX 21 and Minimal VM, where suitable.
-	pkgver = 21+10+21.0.6
-	pkgrel = 3
+	pkgver = 21+15+21.0.9
+	pkgrel = 1
 	url = https://https://bell-sw.com/pages/downloads
 	install = install_openjdk-liberica21-full-bin.sh
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = openjdk-liberica21-full-bin
 	provides = jdk21-openjdk=21
 	provides = jre21-openjdk-headless=21
 	provides = java21-openjfx=21
-	source = https://download.bell-sw.com/java/21.0.6+10/bellsoft-jdk21.0.6+10-linux-amd64-full.tar.gz
-	sha1sums = 23606bff0959f7249fbbee49e68796f2afbf9d5b
+	source = https://download.bell-sw.com/java/21.0.9+15/bellsoft-jdk21.0.9+15-linux-amd64-full.tar.gz
+	sha1sums = a3083b5adcd93b67e2f5a2276c92fad1916d53ec
 
 pkgname = openjdk-liberica21-full-bin
