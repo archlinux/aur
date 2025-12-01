@@ -1,7 +1,7 @@
 # Maintainer: Frédéric Bogaerts <fred@netpack.pt>
 pkgname=xfb
 pkgver=2.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Open-source Radio Automation with comprehensive accessibility support"
 arch=('x86_64' 'aarch64')
 url="https://github.com/netpack/XFB"
@@ -46,7 +46,7 @@ optdepends=(
     'opus-tools: Opus audio support'
     'mediainfo: Media file information'
 )
-source=("git+https://github.com/netpack/XFB.git#tag=v${pkgver}.${pkgrel}")
+source=("git+https://github.com/netpack/XFB.git#tag=v2.0.0.5")
 sha256sums=('SKIP')
 
 build() {
