@@ -1,0 +1,18 @@
+pkgbase = dora-git
+	pkgdesc = A feature-rich TUI file explorer written in bash
+	pkgver = r169.d075a05
+	pkgrel = 1
+	url = https://github.com/Feeeeddmmmeee/dora
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = coreutils
+	depends = grep
+	depends = file
+	optdepends = xdg-utils: opening non-text files
+	optdepends = highlight: colorized file previews
+	source = git+https://github.com/Feeeeddmmmeee/dora
+	sha256sums = SKIP
+
+pkgname = dora-git
