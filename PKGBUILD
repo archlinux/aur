@@ -1,6 +1,8 @@
+# Maintainer: Pumenis <mindia dot e at aol dot com>
 pkgname=random-access-ogb
+pkgdesc="Access Random Old Georgian Bible location for reading. from local server in browser or from command line"
 pkgver=v1.1.0
-pkgrel=0
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/pumenis/random-access-ogb"
 license=('MIT')
