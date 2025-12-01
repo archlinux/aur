@@ -1,4 +1,5 @@
-# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Maintainer: OpenSauce <opensauce04@gmail.com>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=icewm-extra-themes
 _oldname=icewm-themes
@@ -12,7 +13,7 @@ provides=($_oldname)
 conflicts=($_oldname)
 replaces=($_oldname)
 depends=(icewm)
-makedepends=(markdown)
+makedepends=(discount)
 source=("https://github.com/bbidulock/icewm-extra-themes/releases/download/$pkgver/$pkgname-$pkgver.tar.lz")
 md5sums=('8bb4a8bc7fbde0ac083c4f277d205642')
 
