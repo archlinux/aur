@@ -1,0 +1,24 @@
+pkgbase = palemachine
+	pkgdesc = a youtube downloader for servers
+	pkgver = 0.1.0
+	pkgrel = 2
+	url = https://github.com/Xmoncoco/palemachine
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = sqlite
+	depends = python
+	depends = openssl
+	depends = ffmpeg
+	depends = python-yt-dlp
+	source = palemachine-0.1.0.tar.gz::https://github.com/Xmoncoco/palemachine/archive/refs/tags/v0.1.0.tar.gz
+	source = palemachine.service
+	source = palemachine.sysusers
+	source = palemachine.tmpfiles
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = palemachine
