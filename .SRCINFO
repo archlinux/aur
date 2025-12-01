@@ -1,6 +1,6 @@
 pkgbase = codequill-bin
 	pkgdesc = Organize, edit, and preview code efficiently.(Prebuilt version)
-	pkgver = 2.0.6
+	pkgver = 2.0.7
 	pkgrel = 1
 	url = https://github.com/The-Best-Codes/codequill
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = codequill-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = codequill=2.0.6
+	provides = codequill=2.0.7
 	conflicts = codequill
-	source = codequill-2.0.6.rpm::https://github.com/The-Best-Codes/codequill/releases/download/v2.0.6/CodeQuill-2.0.6-1.x86_64.rpm
-	source = LICENSE-2.0.6::https://raw.githubusercontent.com/The-Best-Codes/codequill/v2.0.6/LICENSE
-	sha256sums = 17104b94213b0ccff2f7ac0dc576d390297ba659a3a566982eb2b402384b6760
+	source = codequill-2.0.7.rpm::https://github.com/The-Best-Codes/codequill/releases/download/v2.0.7/CodeQuill-2.0.7-1.x86_64.rpm
+	source = LICENSE-2.0.7::https://raw.githubusercontent.com/The-Best-Codes/codequill/v2.0.7/LICENSE
+	sha256sums = 4d0d875d07dc938477c180023aff66f096a4b5d24100e20ca2ada42d8e376186
 	sha256sums = e2622fda505a7eabcf269cffe9708431c6704d9fc8dbfaef1d642dad323cea9c
 
 pkgname = codequill-bin
