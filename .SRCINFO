@@ -1,0 +1,25 @@
+pkgbase = hyprgrab-git
+	pkgdesc = A screenshot and screen recording tool for Hyprland
+	pkgver = r35.7c86178
+	pkgrel = 1
+	url = https://github.com/Luengor/hyprgrab
+	arch = x86_64
+	license = 0BSD
+	makedepends = git
+	makedepends = make
+	makedepends = clang
+	depends = hyprland
+	depends = grim
+	depends = slurp
+	depends = wl-clipboard
+	depends = libnotify
+	depends = jq
+	depends = glibc
+	depends = gcc-libs
+	depends = wl-screenrec
+	provides = hyprgrab
+	conflicts = hyprgrab
+	source = hyprgrab-r35.7c86178::git+https://github.com/Luengor/hyprgrab.git
+	sha256sums = SKIP
+
+pkgname = hyprgrab-git
