@@ -1,7 +1,7 @@
 # Maintainer: Chuan Ji <chuan@jichu4n.com>
 
+_pkgname=palm-os-sdk
 pkgname=palm-os-sdk-git
-pkgver=r1.6958f76
 pkgrel=1
 pkgdesc='Palm OS SDK files'
 arch=('any')
@@ -17,7 +17,7 @@ source=("git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
+  cd "${srcdir}/palm-os-sdk"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
