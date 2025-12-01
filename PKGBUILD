@@ -4,11 +4,11 @@
 pkgname='python-pyoidc'
 _name=${pkgname#python-}
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A complete OpenID Connect implementation in Python'
 arch=('any')
 url='https://github.com/CZ-NIC/pyoidc'
-license=('Apache')
+license=('Apache-2.0')
 depends=(
   'python'
   'python-requests'
