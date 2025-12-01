@@ -2,7 +2,7 @@
 
 pkgname=ligolo-ng
 pkgver=0.8.2
-pkgrel=2
+pkgrel=1
 pkgdesc="An advanced, yet simple, tunneling/pivoting tool that uses a TUN interface."
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/nicocha30/ligolo-ng"

@@ -1,13 +1,17 @@
 pkgbase = ligolo-ng
-	pkgdesc = A simple, light and fast reverse proxy for pentesters
-	pkgver = 1.0.0.r5.g1234567
+	pkgdesc = An advanced, yet simple, tunneling/pivoting tool that uses a TUN interface.
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/nicocha30/ligolo-ng
+	install = ligolo-ng.install
 	arch = x86_64
-	license = GPL
-	makedepends = git
-	depends = go
-	source = ligolo-ng-git::git+https://github.com/nicocha30/ligolo-ng.git
-	sha256sums = SKIP
+	arch = armv7h
+	arch = aarch64
+	makedepends = go
+	provides = ligolo-ng
+	conflicts = ligolo-ng
+	conflicts = ligolo
+	source = ligolo-ng-0.8.2.tar.gz::https://github.com/nicocha30/ligolo-ng/archive/refs/tags/v0.8.2.tar.gz
+	sha256sums = d13231959fbbcf607f1be0b8d6a7f11693a0fd7a34a187b6ea64b3493e44e3f4
 
-pkgname = ligolo-ng-git
+pkgname = ligolo-ng
