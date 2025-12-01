@@ -3,7 +3,7 @@
 # Contributor: frichtlm <frichtlm@gmail.com>
 
 _pkgname=bindr
-_pkgver=0.1.2
+_pkgver=0.1.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,8 +21,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2e707ad431db6f3bda28f5686fc4d09b')
-b2sums=('29e20f59a43dc57bdc0448c0ad6f514fc28bc28b548d671c546f37f6e93483771b0714e82a1739cc194c65901b0c049966dee9c47c47185efa28861ebdfb09c1')
+md5sums=('e18d3b4d2abf54bcd69b9c11a5785fe3')
+b2sums=('f50ea0e9bcf08adaf50014278683ec3a3a9806524b663c36379a84c64448ce4ca66b0aa294ca08605a302cb5aa36f6d40cae149d29cc8329ea51ba29650f08c0')
 
 build() {
   mkdir build
