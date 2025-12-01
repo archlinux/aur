@@ -1,6 +1,6 @@
 pkgbase = libcapsule
 	pkgdesc = Load libraries from host system into a container.
-	pkgver = 0.20240916.0
+	pkgver = 0.20251201.0
 	pkgrel = 1
 	url = https://gitlab.collabora.com/vivek/libcapsule
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = libcapsule
 	depends = glibc
 	depends = libelf
 	options = !emptydirs
-	source = git+https://gitlab.collabora.com/vivek/libcapsule.git#tag=v0.20240916.0
-	sha256sums = 974da4d2f23efed930942d4d0c0c123614cae3d091408bb538bf00123c04f410
+	source = git+https://gitlab.collabora.com/vivek/libcapsule.git#tag=v0.20251201.0
+	sha256sums = aeea92e4ecb300551cf1b880af2517cc9bab625aefb337424a78a74654cdc94f
 
 pkgname = libcapsule
