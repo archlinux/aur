@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sleek-bin
-pkgver=2.0.20
-_electronversion=34
+pkgver=2.0.22
+_electronversion=38
 pkgrel=1
 pkgdesc="todo.txt manager for Linux, Windows and MacOS, free and open-source (FOSS).(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -23,11 +23,11 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x86_64.rpm")
 sha256sums=('0cbf66efd20da740b34fc36b0154d12185daca9af19d7c4363df6ec926da573c'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('a8cdc0e483fb87a16b22dabc32ee439065f27d9995b0f4ffa4d14ed8060237d2')
-sha256sums_x86_64=('2a57a01bc1e9c35866b7ace5c9d273178312bdae874f0b4ff05bc60f3b729a88')
+sha256sums_aarch64=('0f4bd9f812a0a9baa19803926aa397781347d9468533788034887af42fb278bd')
+sha256sums_x86_64=('6c79a45f77f5acf2f5a179cb3228d456a847a405bd29329b1b73235549fb4b60')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
