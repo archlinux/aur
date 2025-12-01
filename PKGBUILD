@@ -1,119 +1,49 @@
-# Maintainer: AstroSteveo <stevengmjr at gmail dot com>
-
 pkgname=cursor-appimage
-pkgver=0.47.9
+pkgver=2.1.42
 pkgrel=1
-pkgdesc="Cursor App - AI-first coding environment with auto-updates, stability patches and AppImage packaging"
+pkgdesc="AI-first coding environment (AppImage version)"
 arch=('x86_64')
-url="https://www.cursor.com/"
-license=('custom:Proprietary')
-depends=('gtk3' 'nss' 'alsa-lib' 'curl')
-makedepends=('jq')
-provides=('cursor')
-conflicts=('cursor-bin' 'cursor-bin-patched' 'cursor-extracted' 'cursor-electron')
+url="https://www.cursor.com"
+license=('LicenseRef-Cursor_EULA')
+depends=('fuse2' 'xdg-utils' 'hicolor-icon-theme')
 options=(!strip)
+_commit=2e353c5f5b30150ff7b874dee5a87660693d9de6
 
-_pkgver() {
-	# Get the latest version information from API
-	if command -v curl >/dev/null 2>&1 && command -v jq >/dev/null 2>&1; then
-		local api_response=$(curl -s "https://www.cursor.com/api/download?platform=linux-x64&releaseTrack=latest")
-		if [ $? -eq 0 ] && [ -n "$api_response" ]; then
-			local version=$(echo "$api_response" | jq -r '.version')
-			local url=$(echo "$api_response" | jq -r '.downloadUrl')
-			local hash_id=$(echo "$url" | cut -d '/' -f 5)
+source=(
+  "cursor-${pkgver}.AppImage::https://downloads.cursor.com/production/${_commit}/linux/x64/Cursor-${pkgver}-x86_64.AppImage"
+)
+sha512sums=('891f4793bad3d4c3ba411cbce837a91576d526f9a31c62b755158e212d178bf7818b8d7ac7d2ffd653cd13708ff25e4842e4f8486c1c9a45f3368993ee08306a')
 
-			if [ -n "$version" ] && [ -n "$hash_id" ]; then
-				echo "${version} ${hash_id}"
-				return 0
-			fi
-		fi
-	fi
+prepare() {
+  chmod +x "${srcdir}/cursor-${pkgver}.AppImage"
 }
-
-_get_info() {
-	read -r pkgver hashid <<<"$(_pkgver)"
-	echo "pkgver=${pkgver}"
-	echo "hashid=${hashid}"
-}
-
-eval "$(_get_info)"
-
-source_x86_64=("https://downloads.cursor.com/production/${hashid}/linux/x64/Cursor-${pkgver}-x86_64.AppImage")
-noextract=("$(basename "${source_x86_64[0]}")")
-
-# Generate SHA512 checksum dynamically or use SKIP
-sha512sums_x86_64=('SKIP')
 
 package() {
-	mkdir -p "${pkgdir}/opt/"
-	install -Dm755 "${srcdir}/$(basename ${source_x86_64[0]})" "${pkgdir}/opt/tmp.AppImage"
+  install -d "${pkgdir}/opt/cursor"
+  install -m755 "${srcdir}/cursor-${pkgver}.AppImage" "${pkgdir}/opt/cursor/cursor.AppImage"
 
-	# Extract the AppImage
-	cd "${pkgdir}/opt"
-	"${pkgdir}/opt/tmp.AppImage" --appimage-extract >/dev/null || exit 1
-	rm "${pkgdir}/opt/tmp.AppImage"
+  # Extract AppImage to provide icons + desktop launcher
+  cd "${pkgdir}/opt/cursor"
+  ./cursor.AppImage --appimage-extract >/dev/null
 
-	# Find and fix main.js files with a summary at the end
-	found_minheight=0
-
-	while read -r file; do
-		if grep -q ",minHeight" "$file"; then
-			echo "Applying titlebar fix at ${file}"
-			sed -i 's/,minHeight/,frame:false,minHeight/g' "$file"
-			found_minheight=1
-		fi
-	done < <(find squashfs-root/ -type f -name 'main.js')
-
-	# Check if we found and fixed any files
-	if [ "$found_minheight" -eq 0 ]; then
-		echo "minHeight not found, skipping titlebar fix"
-	fi
-	mv squashfs-root cursor
-	chmod -R a+rX cursor
-
-	# Create bin launcher
-	install -Dm755 /dev/null "${pkgdir}/usr/bin/cursor"
-	echo "Applying fix for trace trap (core dumped)"
-	cat <<SCRIPT >"${pkgdir}/usr/bin/cursor"
+  # Main binary wrapper
+  install -d "${pkgdir}/usr/bin"
+  cat > "${pkgdir}/usr/bin/cursor" <<'EOF'
 #!/bin/bash
-XDG_CONFIG_HOME=\${XDG_CONFIG_HOME:-~/.config}
+exec /opt/cursor/cursor.AppImage "$@"
+EOF
+  chmod 755 "${pkgdir}/usr/bin/cursor"
 
-# Environment fix that prevents crashes
-export XDG_DATA_DIRS="/usr/share:/usr/local/share"
+  # Desktop entry
+  install -Dm644 squashfs-root/cursor.desktop \
+    "${pkgdir}/usr/share/applications/cursor.desktop"
 
-# Add stability flags by default
-DEFAULT_FLAGS="--no-sandbox"
-
-# Allow users to override command-line options
-[[ -f "\$XDG_CONFIG_HOME/cursor-flags.conf" ]] && \
-   CURSOR_USER_FLAGS="\$(sed 's/#.*//' "\$XDG_CONFIG_HOME/cursor-flags.conf" | tr '\n' ' ')"
-
-# Launch with both default and user flags
-exec /opt/cursor/AppRun \$DEFAULT_FLAGS "\$@" \$CURSOR_USER_FLAGS
-SCRIPT
-
-	# Install icon and desktop file
-	install -Dm644 "cursor/code.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/cursor.png"
-	install -Dm644 /dev/null "${pkgdir}/usr/share/applications/cursor.desktop"
-	cat <<DESKTOP >"${pkgdir}/usr/share/applications/cursor.desktop"
-[Desktop Entry]
-Name=Cursor
-Comment=AI-first code editor - What will you create today?
-Exec=/usr/bin/cursor %U
-Terminal=false
-Type=Application
-Icon=cursor
-StartupWMClass=Cursor
-MimeType=text/plain;text/x-js;text/javascript;text/x-python;text/x-c;text/x-java;
-Categories=Development;IDE;
-DESKTOP
-}
-
-post_install() {
-	echo "================================================================"
-	echo "Cursor has been installed with stability patches and titlebar fix."
-	echo "Custom flags can be added to: ~/.config/cursor-flags.conf"
-	echo "Current version: ${pkgver}"
-	echo "================================================================"
-	update-desktop-database -q
+  # Icons
+  for size in 16 32 48 64 128 256 512; do
+    icon="squashfs-root/usr/share/icons/hicolor/${size}x${size}/apps/cursor.png"
+    if [[ -f "$icon" ]]; then
+      install -Dm644 "$icon" \
+        "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/cursor.png"
+    fi
+  done
 }
