@@ -47,7 +47,6 @@ package_tlp-git() {
   conflicts=(
     laptop-mode-tools
     pm-utils
-    power-profiles-daemon
     tlp
   )
   backup=(etc/tlp.conf)
@@ -80,6 +79,7 @@ package_tlp-pd-git() {
     tlp
   )
   provides=(
+    power-profiles-daemon
     tlp-pd
   )
   conflicts=(
