@@ -2,13 +2,13 @@
 
 pkgname=cutefish-statusbar
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Top status bar of CutefishOS"
 arch=('x86_64')
 url="https://github.com/cutefishos/statusbar"
-license=('GPL')
+license=('GPL-3.0-or-later')
 groups=('cutefish')
-depends=('fishui' 'libcutefish' 'libdbusmenu-qt5' 'qt5-svg')
+depends=('fishui' 'libcutefish')
 makedepends=('extra-cmake-modules' 'ninja' 'qt5-tools')
 source=("https://github.com/cutefishos/statusbar/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         'fix-build.patch')
@@ -17,17 +17,20 @@ sha512sums=('d1f54e9e0da3ee3219abf7ecea84e285ba3333919a8017ba4bc1c355fe50fbc00aa
 
 prepare() {
   cd statusbar-$pkgver
-  patch -Np1 -i ../fix-build.patch
+
+  # Fix build
+  patch -p1 -i ../fix-build.patch
+
+  # Disable layer effect when the Qt Quick software backend is used
+  sed -i 's/layer\.enabled: true/layer.enabled: GraphicsInfo.api !== GraphicsInfo.Software/' qml/*.qml
 }
 
 build() {
-  cd statusbar-$pkgver
-
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .
-  make
+  cmake -G Ninja -B build -S statusbar-$pkgver \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build build
 }
 
 package() {
-  cd statusbar-$pkgver
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
