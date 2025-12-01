@@ -1,6 +1,6 @@
 *.tar.*
 src/
 pkg/
-kops-bin-*
+kops-beta-bin-*
 kops-linux-*
 utils
