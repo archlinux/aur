@@ -2,7 +2,7 @@
 
 pkgname=linyaps-store-minimalist-bin
 _pkgname=OpenList.Desktop
-pkgver=1.0.4
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Linyaps Store Minimalist"
 arch=('x86_64')
@@ -29,15 +29,15 @@ makedepends=('libarchive')
 optdepends=("linyaps: Next-Gen Universal Package Manager for Linux (linglong)")
 backup=()
 options=('!strip' '!debug')
-source=("${url}/releases/download/${pkgver}/${pkgver}-x86_64.deb")
-sha256sums=('f5d61914b71e6772c8dd0d93ecfebe050d53d3f8f1c65227be2dc6455d9f11f5')
-noextract=("${pkgver}-x86_64.deb")
+source=("${url}/releases/download/${pkgver}/linux-${pkgver}-x86_64.deb")
+sha256sums=('16d4a59be73ddff33864de30adc8847e15ad625bf8adb92b9dfcd2b71de11d81')
+noextract=("linux-${pkgver}-x86_64.deb")
 
 package() {
     cd "$srcdir"/
-    mkdir -pv ${pkgver}-x86_64
-    bsdtar -xf ${pkgver}-x86_64.deb -C ${pkgver}-x86_64
-    cd ${pkgver}-x86_64
+    mkdir -pv linux-${pkgver}-x86_64
+    bsdtar -xf linux-${pkgver}-x86_64.deb -C linux-${pkgver}-x86_64
+    cd linux-${pkgver}-x86_64
     bsdtar -xf data.tar.xz --numeric-owner -C ${pkgdir}/
     chown -R root:root ${pkgdir}
 }
