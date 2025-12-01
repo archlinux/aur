@@ -1,6 +1,6 @@
 pkgbase = fflash
 	pkgdesc = Simple USB flash drive formatter tool
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Nick-cpp/fflash
 	arch = x86_64
