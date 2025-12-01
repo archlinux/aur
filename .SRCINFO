@@ -1,6 +1,6 @@
 pkgbase = mommy
 	pkgdesc = mommy's here to support you~
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/fwdekker/mommy
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = mommy
 	optdepends = man-db: for manual pages
 	optdepends = fish: for tab completion
 	optdepends = zsh: for tab completion
-	source = git+https://github.com/fwdekker/mommy.git#tag=v1.6.0
+	source = git+https://github.com/fwdekker/mommy.git#tag=v1.7.0
 	sha256sums = SKIP
 
 pkgname = mommy
