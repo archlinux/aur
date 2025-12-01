@@ -3,7 +3,7 @@
 pkgbase=fm-scripts
 pkgname=('fm-scripts' 'fm-scripts-dolphin')
 pkgver=30.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A set of actions for extending the functionality of the GNOME Files (fm), Nemo, Caja, Dolphin, Thunar and PCManFM-Qt file managers.'
 url=https://github.com/cfgnunes/fm-scripts
 arch=('x86_64')

@@ -1,7 +1,7 @@
 pkgbase = fm-scripts
 	pkgdesc = A set of actions for extending the functionality of the GNOME Files (fm), Nemo, Caja, Dolphin, Thunar and PCManFM-Qt file managers.
 	pkgver = 30.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cfgnunes/fm-scripts
 	arch = x86_64
 	license = MIT

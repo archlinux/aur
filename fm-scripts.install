@@ -2,8 +2,8 @@
 
 post_install() {
   cat >&2 << 'EOF'
-  ## To install nautilus-scripts for the logged-in user, Run:
-  ln -sf /opt/nautilus-scripts/ $HOME/.local/share/nautilus/scripts
+  ## To install fm-scripts for the logged-in user, Run:
+  ln -sf /opt/fm-scripts/ $HOME/.local/share/nautilus/scripts
 EOF
 }
 
