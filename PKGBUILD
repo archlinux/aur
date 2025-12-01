@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-camera
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="Camera application for the COSMIC™ desktop environment"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ makedepends=(
   'just'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b9fed0354134f1c7fe3a46906a060e3980a894cb336de7def23bd87cb30ffd63')
+sha256sums=('0722cae0cf14516e42942802f4c750cdaa20ab5111c2df52f004e0423d7c1d46')
 
 prepare() {
   cd "$pkgname-$pkgver"

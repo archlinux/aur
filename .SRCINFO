@@ -1,6 +1,6 @@
 pkgbase = cosmic-camera
 	pkgdesc = Camera application for the COSMIC™ desktop environment
-	pkgver = 0.1.11
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://github.com/FreddyFunk/cosmic-camera
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = cosmic-camera
 	depends = libxkbcommon
 	depends = seatd
 	depends = systemd-libs
-	source = cosmic-camera-0.1.11.tar.gz::https://github.com/FreddyFunk/cosmic-camera/archive/refs/tags/v0.1.11.tar.gz
-	sha256sums = b9fed0354134f1c7fe3a46906a060e3980a894cb336de7def23bd87cb30ffd63
+	source = cosmic-camera-0.1.12.tar.gz::https://github.com/FreddyFunk/cosmic-camera/archive/refs/tags/v0.1.12.tar.gz
+	sha256sums = 0722cae0cf14516e42942802f4c750cdaa20ab5111c2df52f004e0423d7c1d46
 
 pkgname = cosmic-camera
