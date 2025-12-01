@@ -1,11 +1,11 @@
 pkgbase = python-pytest-filedata
 	pkgdesc = Easily load test data from files
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/20c/pytest-filedata
 	changelog = CHANGELOG.md
 	arch = any
-	license = Apache
+	license = Apache-2.0
 	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer

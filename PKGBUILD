@@ -2,11 +2,11 @@
 
 pkgname=python-pytest-filedata
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily load test data from files"
 arch=('any')
 url="https://github.com/20c/pytest-filedata"
-license=('Apache')
+license=('Apache-2.0')
 depends=('python-decorator' 'python-requests-mock' 'python')
 makedepends=('python-build' 'python-installer' 'python-poetry-core')
 checkdepends=('python-pytest')
