@@ -1,4 +1,3 @@
-# Maintainer: hkamori
 pkgname=mimose-bin
 pkgver=1.7.3
 pkgrel=1
@@ -13,8 +12,8 @@ depends=(
   libxss libxtst mesa nspr nss pango util-linux-libs xdg-utils
 )
 options=('!strip')
-source=("https://github.com/0xhkamori/mimose-aur/releases/download/v${pkgver}/mimose-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('33ef2ab492d8d585db63c4b62d946fb22bba51f78d6606ec1678bdbf6ab9c3c0')
+source=("https://github.com/0xhkamori/mimose-binaries/releases/download/v1.7.3-20251201-152259/mimose-1.7.3-1-x86_64.pkg.tar.zst")
+sha256sums=('a3d9c7737aa0d1bf087ef4e810fef11e820a5f1ad379db0a88a6bde8e5fc0d05')
 
 package() {
   cp -a * "${pkgdir}/"
