@@ -37,6 +37,6 @@ pkgbase = mimose-bin
 	depends = xdg-utils
 	options = !strip
 	source = https://github.com/0xhkamori/mimose-binaries/releases/download/v1.7.3-20251201-152259/mimose-1.7.3-1-x86_64.pkg.tar.zst
-	sha256sums = a3d9c7737aa0d1bf087ef4e810fef11e820a5f1ad379db0a88a6bde8e5fc0d05
+	sha256sums = 03b84272f2e98bea6aaabe90695d74b813f8bf30f394612ad091e4d1dd794589
 
 pkgname = mimose-bin
