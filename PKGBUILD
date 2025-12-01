@@ -2,7 +2,7 @@
 
 pkgname=intellij-idea-open-eap
 _versionbase=2025.3
-_tagsuffix=beta
+_tagsuffix=rc
 _tag="idea/${_versionbase}-${_tagsuffix}"
 # Uncomment to print proper $_build value after updating values above:
 # curl "https://raw.githubusercontent.com/JetBrains/intellij-community/refs/tags/$_tag/build.txt"
@@ -27,7 +27,7 @@ source=("git+https://github.com/JetBrains/intellij-community.git#tag=$_tag"
   idea-android::"git+https://github.com/JetBrains/android.git#tag=$_tag"
   idea.desktop
   idea.sh)
-sha256sums=('e87aac984bdd963551827c70457f55c3b56ffacc03d5edc6fc71d64e9394e6a6'
+sha256sums=('90d6b909c7068b01e8a66e112d383fbee61d9319ea5d8eb1a067656be52912c8'
             '04b308ef3b22d637822147b50ab26222930779f45f5fc70b7eac513d09d8da6f'
             '9dd68cba50136455153a765c3442e12d21f1a0a5ad3597b2fd5fd1e5ceed372e'
             'b7fc5d44d81702d36a0bf50e0e1050a5d1000907aadf7634df541f289659c2ce')
