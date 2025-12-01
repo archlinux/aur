@@ -1,7 +1,7 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 
 pkgname=mdns-browser
-pkgver=0.27.8
+pkgver=0.28.1
 pkgrel=1
 pkgdesc="A cross platform mDNS browsing app written in Rust using tauri and leptos"
 arch=('x86_64')
@@ -12,11 +12,11 @@ conflicts=('mdns-browser-bin')
 makedepends=('cargo' 'cargo-auditable' 'git' 'file' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rust' 'rust-wasm' 'trunk')
 options=('!strip' '!emptydirs')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
-sha256sums=('5f63a2b18e20315fd33925b99d1f96839cd8f2857bd2ad44f49b780ba7c90300')
+sha256sums=('e06851279df83d3a5ec14455d3f4e4dafa0521090267f621e0c91321ea10d1a9')
 _builddir="$pkgname-$pkgname-v$pkgver"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
-    cargo --locked install tauri-cli@2.9.4
+    cargo --locked install tauri-cli@2.9.5
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
     cargo fetch --locked --target wasm32-unknown-unknown
 }
@@ -27,9 +27,7 @@ build() {
     export CFLAGS="${CFLAGS//-flto=auto//}"
     # build the normal binary without bundling first
     cargo --locked --frozen auditable tauri build --no-bundle
-    # The --no-sign option does not seem to work, therefore we need to swallow any errors here
-    # See https://github.com/tauri-apps/tauri/issues/14581 for more information
-    cargo --locked --frozen auditable tauri build -b deb --no-sign || true
+    cargo --locked --frozen auditable tauri build -b deb --no-sign
 }
 check() {
     cd "$srcdir/$_builddir" || exit 1
