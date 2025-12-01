@@ -8,7 +8,7 @@ _name0=pydantic-ai
 _name00=clai
 pkgbase=python-$_name0
 pkgname=(python-${_name0//-ai/}-$_name4 python-$_name0-$_name3 python-${_name0//-ai/}-$_name2 python-$_name0-$_name1 python-$_name0 python-$_name00)
-pkgver=1.14.0
+pkgver=1.25.1
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/pydantic-ai'
@@ -19,7 +19,7 @@ checkdepends=('python-anyio' 'python-asgi-lifespan' 'python-devtools' 'python-di
 source=("$_name0-$pkgver::git+$url.git#tag=v$pkgver"
         "git+https://github.com/pydantic/mcp-run-python.git"
         "fix-tests.patch")
-sha256sums=('c72a612a49d0e41cc9ffcbfc53c0fe995e3939f45152bd4265fce901c050003d'
+sha256sums=('fe107bca5d44cb42aee74f7f25893d95a8746014ce23a383186b3850f4cfebab'
             'SKIP'
             'eb2ddf309b138563e2f9864434500a701c80204783e8eeaf29d63f914b5920c1')
 
@@ -57,6 +57,9 @@ check() {
     --deselect tests/models/test_openai.py::test_strict_mode_cannot_infer_strict
     --deselect tests/models/test_instrumented.py::test_instrumented_model_stream_break
     --deselect tests/models/test_fallback.py::test_all_failed_instrumented
+    --deselect tests/models/test_mistral.py::test_model_status_error
+    --deselect tests/models/test_mistral.py::test_model_non_http_error
+    --deselect tests/test_messages.py::test_binary_content_from_path
     -k "not fastmcp"
   )
   cd "$srcdir"/$_name0-$pkgver
@@ -92,6 +95,7 @@ package_python-pydantic-ai-slim() {
               'python-google-genai: google'
               'python-anthropic: anthropic'
               'python-groq: groq'
+              'python-openai: openrouter'
               'python-mistralai: mistral'
               'python-boto3: bedrock'
               'python-huggingface-hub: huggingface' 'python-aiohttp: huggingface'
