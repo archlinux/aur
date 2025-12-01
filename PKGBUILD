@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=donutbrowser-bin
-_pkgname='Donut Browser'
-pkgver=0.12.3
+_pkgname=Donut
+pkgver=0.13.2
 pkgrel=1
 pkgdesc="A powerful browser orchestrator that puts you in control of your browsing experience. 🍩(Prebuilt version)"
 arch=(
@@ -18,10 +18,10 @@ depends=(
     'gdk-pixbuf2'
     'webkit2gtk-4.1'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /.}-${pkgver}-1.aarch64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /.}-${pkgver}-1.x86_64.rpm")
-sha256sums_aarch64=('cdd32e13dea11c4fcd5a5b7277320f98dc5e8d34f56bbb7349a73c22b3c71b33')
-sha256sums_x86_64=('54ede850c18b392d34100fb4419bb5b497a2902268e4554b2d605bd4c020fa95')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.x86_64.rpm")
+sha256sums_aarch64=('b708a161042b5eacbfd3e07502c30c516693a6ec394a7ce343dece1fc3b19e8b')
+sha256sums_x86_64=('3dd21d55a19dd7d29e71814fb33ac0704b1cb0e76f73a40be13fd6db917c159b')
 package() {
     install -Dm755 "${srcdir}/usr/bin/"* -t "${pkgdir}/usr/bin"
     _icon_sizes=(32x32 128x128 256x256@2 512x512)
