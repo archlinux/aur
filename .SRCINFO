@@ -14,6 +14,7 @@ pkgbase = gosuslugi-plugin
 	depends = glibc
 	depends = acsccid
 	depends = xcb-util
+	optdepends = cryptopro-csp-k1: with digital signature sign in
 	optdepends = rutoken-pkcs: add rutoken pcsc#11 lib
 	provides = gosplugin
 	source_x86_64 = Gosplugin_Linux-Debian_Installer.deb.zip::https://gu-st.ru/content/Gosplugin/Gosplugin_Linux-Debian_Installer.deb.zip
