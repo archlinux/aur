@@ -1,6 +1,6 @@
 # cfgprf
 
-a tool for exporting and importing files in ~/.config, /etc/, dot directories in ~, pacman packages & AUR packages for Arch Linux.
+a tool for exporting and importing files in XDG_CONFIG_HOME, /etc/, dot directories in HOME, pacman packages & AUR packages for Arch Linux.
 
 it is [available on the AUR](https://aur.archlinux.org/packages/cfgprf)
 
