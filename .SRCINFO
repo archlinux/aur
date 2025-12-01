@@ -1,6 +1,6 @@
 pkgbase = cherry-studio-electron-bin
 	pkgdesc = 🍒A desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://cherry-ai.com/
 	arch = aarch64
@@ -17,15 +17,15 @@ pkgbase = cherry-studio-electron-bin
 	depends = python-pillow
 	depends = python-playwright
 	optdepends = ollama: Use your local LLM
-	provides = cherry-studio=1.7.0
+	provides = cherry-studio=1.7.1
 	conflicts = cherry-studio
-	source = LICENSE-1.7.0::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v1.7.0/LICENSE
+	source = LICENSE-1.7.1::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v1.7.1/LICENSE
 	source = cherry-studio-electron.sh
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = cherry-studio-electron-1.7.0-aarch64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v1.7.0/Cherry-Studio-1.7.0-aarch64.rpm
-	sha256sums_aarch64 = 8af6e2cb2f8de13e5c6b148d6fd9f78f437812d7c166f76af4c6288ae41c1a70
-	source_x86_64 = cherry-studio-electron-1.7.0-x86_64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v1.7.0/Cherry-Studio-1.7.0-x86_64.rpm
-	sha256sums_x86_64 = 6eca974e055df3f78e094ac4c0354c066d4c887870c5f3bf8a855f5422b0491c
+	source_aarch64 = cherry-studio-electron-1.7.1-aarch64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v1.7.1/Cherry-Studio-1.7.1-aarch64.rpm
+	sha256sums_aarch64 = 96debc948ec301ad83db89ce4ec041aaca0df8ed710d67723346ff5f3d2bb80c
+	source_x86_64 = cherry-studio-electron-1.7.1-x86_64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v1.7.1/Cherry-Studio-1.7.1-x86_64.rpm
+	sha256sums_x86_64 = 43010d91d72731970a9e9443335057cd450cb3b8df9ea67bb2ef9e35f069a006
 
 pkgname = cherry-studio-electron-bin
