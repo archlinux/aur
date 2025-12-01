@@ -1,7 +1,7 @@
 pkgbase = cursor-appimage
 	pkgdesc = AI-first coding environment (AppImage version)
 	pkgver = 2.1.42
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.cursor.com
 	arch = x86_64
 	license = LicenseRef-Cursor_EULA

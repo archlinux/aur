@@ -1,7 +1,7 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 pkgname=cursor-appimage
 pkgver=2.1.42
-pkgrel=2
+pkgrel=3
 pkgdesc="AI-first coding environment (AppImage version)"
 arch=('x86_64')
 url="https://www.cursor.com"
@@ -19,34 +19,42 @@ sha512sums=('891f4793bad3d4c3ba411cbce837a91576d526f9a31c62b755158e212d178bf7818
 
 prepare() {
   chmod +x "${srcdir}/cursor-${pkgver}.AppImage"
+  
+  # Extract AppImage to access metadata
+  cd "${srcdir}"
+  ./cursor-${pkgver}.AppImage --appimage-extract >/dev/null
+  
+  # Update desktop entry to use installed paths
+  if [[ -f squashfs-root/cursor.desktop ]]; then
+    sed -i 's|^Exec=.*|Exec=/opt/cursor/cursor.AppImage %F|' squashfs-root/cursor.desktop
+    sed -i 's|^Icon=.*|Icon=cursor|' squashfs-root/cursor.desktop
+  fi
 }
 
 package() {
-  install -d "${pkgdir}/opt/cursor"
-  install -m755 "${srcdir}/cursor-${pkgver}.AppImage" "${pkgdir}/opt/cursor/cursor.AppImage"
-
-  # Extract AppImage to provide icons + desktop launcher
-  cd "${pkgdir}/opt/cursor"
-  ./cursor.AppImage --appimage-extract >/dev/null
+  local appimage="${srcdir}/cursor-${pkgver}.AppImage"
+  local extract_dir="${srcdir}/squashfs-root"
+  
+  # Install AppImage
+  install -Dm755 "$appimage" "${pkgdir}/opt/cursor/cursor.AppImage"
 
   # Main binary wrapper
-  install -d "${pkgdir}/usr/bin"
-  cat > "${pkgdir}/usr/bin/cursor" <<'EOF'
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/cursor" <<'EOF'
 #!/bin/bash
 exec /opt/cursor/cursor.AppImage "$@"
 EOF
-  chmod 755 "${pkgdir}/usr/bin/cursor"
 
   # Desktop entry
-  install -Dm644 squashfs-root/cursor.desktop \
-    "${pkgdir}/usr/share/applications/cursor.desktop"
+  if [[ -f "${extract_dir}/cursor.desktop" ]]; then
+    install -Dm644 "${extract_dir}/cursor.desktop" \
+      "${pkgdir}/usr/share/applications/cursor.desktop"
+  fi
 
-  # Icons
+  # Icons - install all available sizes
+  local icon_dir="${extract_dir}/usr/share/icons/hicolor"
   for size in 16 32 48 64 128 256 512; do
-    icon="squashfs-root/usr/share/icons/hicolor/${size}x${size}/apps/cursor.png"
-    if [[ -f "$icon" ]]; then
-      install -Dm644 "$icon" \
-        "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/cursor.png"
-    fi
+    local icon="${icon_dir}/${size}x${size}/apps/cursor.png"
+    [[ -f "$icon" ]] && install -Dm644 "$icon" \
+      "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/cursor.png"
   done
 }
