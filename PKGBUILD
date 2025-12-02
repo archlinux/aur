@@ -1,13 +1,13 @@
 # Maintainer: 30p87 <30p87@30p87.de>
 
 pkgname=iocaine-git
-pkgver=r565.f72e9ac
+pkgver=r601.59e336c
 pkgrel=1
 pkgdesc='The deadliest poison known to AI'
 arch=('any')
 url='https://iocaine.madhouse-project.org/'
 license=('MIT')
-makedepends=('cargo')
+makedepends=('cargo' 'just')
 optdepends=('nginx: when using nginx as reverse proxy'
 			'caddy: when using caddy as reverse proxy')
 backup=('etc/iocaine/config.kdl')
@@ -38,6 +38,7 @@ prepare() {
 
 build() {
 	cd "${pkgname%-git}"
+	just update assets
 	cargo build -r
 }
 
