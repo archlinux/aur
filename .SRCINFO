@@ -1,19 +1,19 @@
 pkgbase = breitbandmessung-bin
 	pkgdesc = Die Breitbandmessung Desktop-App erlaubt es Ihnen, die tatsächliche Datenübertragungsrate Ihres Breitbandanschlusses zu messen. Weitere Informationen erhalten Sie unter https://breitbandmessung.de
-	pkgver = 3.10.0
+	pkgver = 3.11.0
 	pkgrel = 1
 	url = https://breitbandmessung.de/desktop-app
 	arch = x86_64
 	license = custom:proprietary-zafaco-GmbH
 	makedepends = asar
 	depends = net-tools
-	provides = breitbandmessung=3.10.0
+	provides = breitbandmessung=3.11.0
 	conflicts = breitbandmessung
-	replaces = breitbandmessung<=3.10.0
+	replaces = breitbandmessung<=3.9.0
 	options = !strip
-	source = breitbandmessung-3.10.0.deb::https://download.breitbandmessung.de/bbm/Breitbandmessung-linux.deb
+	source = breitbandmessung-3.11.0.deb::https://download.breitbandmessung.de/bbm/Breitbandmessung-linux.deb
 	source = LICENSE
-	sha256sums = 2e1d5b555ee1a755ef428793a3190eb53e5376aedac940f347a0ff5600d22164
+	sha256sums = 90db91fb370a11d67da741c46a39854374c8533d73d80a34f7c40d08aeb1e658
 	sha256sums = SKIP
 
 pkgname = breitbandmessung-bin
