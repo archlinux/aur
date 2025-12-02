@@ -2,4 +2,4 @@
 pkg/
 src/
 venice-cli-bin-*
-venice-linux-amd64
+venice-linux-amd64-*
