@@ -3,39 +3,36 @@
 _pkgbase="zig-waybar-contrib"
 pkgname="$_pkgbase"
 pkgver=1.4.2
-pkgrel=2
-pkgdesc="High-performance Waybar modules written in Zig for efficient system monitoring"
+pkgrel=3
+pkgdesc='High-performance Waybar modules written in Zig for efficient system monitoring'
 arch=('x86_64')
-url="https://github.com/erffy/${_pkgbase}"
+url="https://github.com/erffy/$_pkgbase"
 license=('GPL3')
-source=("git+$url.git#tag=$pkgver")
-md5sums=('SKIP')
-
 depends=()
-makedepends=('git' 'zig>=0.15.0')
+makedepends=('git' )
 optdepends=(
-  'fakeroot: is required for the updates module'
-  'rocm-smi-lib: AMD GPU backend'
-  'amdsmi: AMD GPU backend'
-  'cuda: NVIDIA GPU backend'
+  'fakeroot: required for the updates module'
+  'rocm-smi-lib: AMD GPU Backend'
+  'amdsmi: AMD GPU Backend'
+  'cuda: NVIDIA GPU Backend'
 )
-
-provides=("$_pkgbase")
-conflicts=("$_pkgbase")
+source=("$_pkgbase::git+$url.git#tag=$pkgver")
+sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$_pkgbase"
-  zig build -Drelease
+  cd "$_pkgbase"
+  
+  zig build --summary all -Drelease
 }
 
 package() {
-  cd "$srcdir/$_pkgbase/zig-out/bin"
-
-  for bin in *; do
-    [[ -x "$bin" && ! -d "$bin" ]] || continue
-    install -Dm755 "$bin" "$pkgdir/usr/bin/waybar-module-$bin"
+  cd "$_pkgbase"
+  
+  for bin in zig-out/bin/*; do
+    [[ -x "$bin" && -f "$bin" ]] || continue
+    install -Dm755 $bin "$pkgdir/usr/bin/waybar-module-$bin"
   done
-
-  install -Dm644 "$srcdir/$_pkgbase/config.waybar.jsonc" "$pkgdir/etc/zig-waybar-contrib/config.jsonc"
-  install -Dm644 "$srcdir/$_pkgbase/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  
+  install -Dm644 config.waybar.jsonc "$pkgdir/usr/share/$_pkgbase/config.jsonc"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
