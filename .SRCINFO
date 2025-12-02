@@ -10,6 +10,7 @@ pkgbase = facsimile
 	makedepends = gcc-fortran
 	makedepends = fortran-fpm
 	depends = glibc
+	depends = gcc-libs
 	source = git+https://github.com/FortranGoingOnForty/facsimile.git#tag=v0.9.1
 	sha256sums = SKIP
 
