@@ -1,12 +1,11 @@
 pkgbase = nordpass-bin
 	pkgdesc = NordPass password manager (Snap release)
 	pkgver = 7.1.32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nordpass.com
 	arch = x86_64
 	license = custom
 	makedepends = squashfs-tools
-	makedepends = jq
 	depends = gtk3
 	depends = libsecret
 	depends = alsa-lib

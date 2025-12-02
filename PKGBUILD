@@ -1,16 +1,16 @@
 # Maintainer: Hristo Voyvodov <hristo.voyvodov@hotmail.com>
 # Contributor: Carson Mullins <SeptemAUR@pm.me>
 _snapinfo=$(curl -sH 'Snap-Device-Series: 16' http://api.snapcraft.io/v2/snaps/info/nordpass)
-_snapdownloadurl=$(jq '."channel-map"[]."download"."url"' <<< "${_snapinfo}" | xargs)
+_snapdownloadurl=$(sed -E 's/.*"download":?[^}]*"url":"?([^,"]*)"?.*/\1/' <<< "${_snapinfo}" | xargs)
 pkgname='nordpass-bin'
-pkgver=$(jq '."channel-map"[]."version"' <<< "${_snapinfo}" | xargs)
-pkgrel=1
+pkgver=$(sed -E 's/.*"version":"?([^,"]*)"?.*/\1/' <<< "${_snapinfo}" | xargs)
+pkgrel=2
 pkgdesc="NordPass password manager (Snap release)"
 arch=('x86_64')
 url='https://nordpass.com'
 license=('custom')
 depends=('gtk3' 'libsecret' 'alsa-lib' 'nss')
-makedepends=('squashfs-tools' 'jq' )
+makedepends=('squashfs-tools' )
 options=('!strip')
 provides=('nordpass')
 
