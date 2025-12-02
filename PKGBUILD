@@ -37,7 +37,7 @@ build () {
   cd Iosevka
   npm install
   npm update
-  NO_COLOR=1 npm run build -- contents::IosevkaCustom
+  NO_COLOR=1 npm run build -- --jCmd=4 contents::IosevkaCustom
 }
 
 package () {
