@@ -1,6 +1,6 @@
 pkgbase = crnch-bin
 	pkgdesc = Blazing-fast Rust CLI tool for intelligent PNG/JPG/PDF compression (pre-built binary)
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/KartikHalkunde/crnch
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = crnch-bin
 	depends = oxipng
 	provides = crnch
 	conflicts = crnch
-	source = https://github.com/KartikHalkunde/crnch/releases/download/v0.1.0/crnch-0.1.0-x86_64-linux.tar.gz
-	sha256sums = 361f42ec65bbff013fefe8c190fe2a843e501b5bfe09da2274c5665edfa39e41
+	source = https://github.com/KartikHalkunde/crnch/releases/download/v0.1.1/crnch-0.1.1-x86_64-linux.tar.gz
+	sha256sums = 7c25a75dc82bcf6aeb7470aa167576ee385a61c81ebf45995921e0284e1e61ac
 
 pkgname = crnch-bin

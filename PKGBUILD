@@ -1,6 +1,6 @@
 # Maintainer: Kartik Halkunde <your-email@example.com>
 pkgname=crnch-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Blazing-fast Rust CLI tool for intelligent PNG/JPG/PDF compression (pre-built binary)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('ghostscript' 'imagemagick' 'pngquant' 'jpegoptim' 'oxipng')
 provides=('crnch')
 conflicts=('crnch')
 source=("https://github.com/KartikHalkunde/crnch/releases/download/v${pkgver}/crnch-${pkgver}-x86_64-linux.tar.gz")
-sha256sums=('361f42ec65bbff013fefe8c190fe2a843e501b5bfe09da2274c5665edfa39e41')
+sha256sums=('7c25a75dc82bcf6aeb7470aa167576ee385a61c81ebf45995921e0284e1e61ac')
 
 package() {
     install -Dm755 "crnch" "$pkgdir/usr/bin/crnch"
