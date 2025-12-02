@@ -2,7 +2,7 @@
 # Contributor: Markus Weimar <mail@markusweimar.de>
 _pkgname=ttf-iosevka
 pkgname=${_pkgname}-git
-pkgver=1702579105
+pkgver=1764695706
 pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
@@ -29,7 +29,7 @@ build () {
   cd Iosevka
   npm install
   npm update
-  NO_COLOR=1 npm run build -- ttf::Iosevka
+  NO_COLOR=1 npm run build -- --jCmd=4 ttf::Iosevka
 }
 
 package () {
