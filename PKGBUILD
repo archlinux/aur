@@ -15,6 +15,10 @@ options=('!strip')
 build() {
     cd "CrossMacro-${pkgver}"
     
+    # Skip workload integrity check - resolves AUR build errors
+    # CrossMacro doesn't use any special workloads (MAUI, Blazor, etc.)
+    export DOTNET_SKIP_WORKLOAD_INTEGRITY_CHECK=1
+    
     dotnet restore
     dotnet publish src/CrossMacro.UI/CrossMacro.UI.csproj \
         -c Release \
