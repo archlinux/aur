@@ -1,6 +1,6 @@
 # Maintainer: Boris Barbulovski <bbarbulovski@gmail.com>
 pkgname=('cfrds' 'python-cfrds')
-pkgver='0.9.6'
+pkgver='0.9.7'
 pkgrel=1
 options=(!debug)
 pkgdesc='Client side ColdFusion RDS protocol.'
@@ -15,7 +15,7 @@ source=(
 )
 
 sha512sums=(
-    'cdd6bbab451c6ad1a624e7d63a3c3f5b2af569c3d6f373da8e678b1f1670976432868a109ac8daecf87bfc6d506dacc653e39c1dfbbb8138fb278a3fadb503c8'
+    'd0ef378254e44e24b4150c8eb987c8934973ec9ae5f687115f90ce4cad4bc71d0c35ec5eadaff4dd7611f2d373aa7e49082904ed7132d07c795e6d639587dd52'
 )
 
 build() {
