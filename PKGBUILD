@@ -1,7 +1,7 @@
 # Maintainer: MLM-stuff gfxoxinzh@mozmail.com
 pkgname=inkscape-bin
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Professional vector graphics editor - Prebuilt AppImage"
 arch=('x86_64')
 url="https://inkscape.org"
