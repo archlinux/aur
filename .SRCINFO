@@ -1,7 +1,7 @@
 pkgbase = ocaml-merlin-lib
 	pkgdesc = Low-level compiler interfaces and the standard higher-level merlin protocol
-	pkgver = 5.6
-	pkgrel = 2
+	pkgver = 5.6_504
+	pkgrel = 1
 	url = https://ocaml.github.io/merlin
 	arch = x86_64
 	license = MIT
