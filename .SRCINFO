@@ -1,6 +1,6 @@
 pkgbase = commitlint-config-conventional
 	pkgdesc = Commitlint config enforcing conventional commits
-	pkgver = 19.8.1
+	pkgver = 20.0.0
 	pkgrel = 1
 	url = https://github.com/conventional-changelog/commitlint
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = commitlint-config-conventional
 	makedepends = npm
 	depends = commitlint
 	depends = nodejs
-	noextract = commitlint-config-conventional-19.8.1.tgz
-	source = commitlint-config-conventional-19.8.1.tgz::https://registry.npmjs.org/@commitlint/config-conventional/-/config-conventional-19.8.1.tgz
-	sha256sums = a4071ba08556ebca7f2d2ed9f279143155720186e890a30d1026bed78441e8c3
+	noextract = commitlint-config-conventional-20.0.0.tgz
+	source = commitlint-config-conventional-20.0.0.tgz::https://registry.npmjs.org/@commitlint/config-conventional/-/config-conventional-20.0.0.tgz
+	sha256sums = 02f7e0573fb1ac59d494936821fd20da9e63a63f1d3011a67dee4670a56fd7c3
 
 pkgname = commitlint-config-conventional
