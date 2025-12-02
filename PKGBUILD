@@ -5,7 +5,7 @@ pkgname=(plasma-workspace-sonic plasma-x11-session-sonic)
 pkgver=6.5.3
 _pkgver=6.5.3.3
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=2
+pkgrel=2.7
 pkgdesc='KDE Plasma Workspace, light version with fixes and improvements for X11 session, for XLibre'
 arch=(x86_64)
 url='https://github.com/Sonic-DE/plasma-workspace-sonic'
@@ -148,7 +148,7 @@ package_plasma-workspace-sonic() {
   conflicts=(plasma-workspace plasma-wayland-session plasma-workspace-lite)
   provides=(plasma-workspace plasma-workspace-lite)
   replaces=(plasma-workspace-lite)
-  groups=(sonic-de)
+  groups=(sonicde)
 
   DESTDIR="$pkgdir" cmake --install build
 
@@ -162,7 +162,7 @@ package_plasma-x11-session-sonic() {
   provides=(plasma-x11-session plasma-x11-session-lite)
   conflicts=(plasma-x11-session plasma-x11-session-lite)
   replaces=(plasma-x11-session-lite)
-  groups=(sonic-de)
+  groups=(sonicde)
 
   install -Dm644 build/login-sessions/plasmax11.desktop -t "$pkgdir"/usr/share/xsessions
 }

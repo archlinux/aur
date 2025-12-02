@@ -1,7 +1,7 @@
 pkgbase = plasma-workspace-sonic
 	pkgdesc = KDE Plasma Workspace, light version with fixes and improvements for X11 session, for XLibre
 	pkgver = 6.5.3
-	pkgrel = 2
+	pkgrel = 2.7
 	url = https://github.com/Sonic-DE/plasma-workspace-sonic
 	arch = x86_64
 	groups = plasma
@@ -121,7 +121,7 @@ pkgbase = plasma-workspace-sonic
 	sha256sums = ee80130c5ef3f222164572704acd659fce80183bbc1dee75affc57de526dc1fd
 
 pkgname = plasma-workspace-sonic
-	groups = sonic-de
+	groups = sonicde
 	depends = accountsservice
 	depends = appstream-qt
 	depends = dbus
@@ -242,7 +242,7 @@ pkgname = plasma-workspace-sonic
 
 pkgname = plasma-x11-session-sonic
 	pkgdesc = Plasma X11 session, lite edition, for XLibre
-	groups = sonic-de
+	groups = sonicde
 	depends = plasma-workspace-sonic
 	depends = kwin-x11-sonic
 	provides = plasma-x11-session
