@@ -1,10 +1,10 @@
 pkgbase = r-pkgload
 	pkgdesc = Simulate Package Installation and Attach
-	pkgver = 1.4.0
-	pkgrel = 1
+	pkgver = 1.4.1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=pkgload
 	arch = any
-	license = GPL-3.0-only
+	license = MIT
 	depends = r>=3.4.0
 	depends = r-cli>=3.3.0
 	depends = r-desc
@@ -13,9 +13,8 @@ pkgbase = r-pkgload
 	depends = r-lifecycle
 	depends = r-pkgbuild
 	depends = r-processx
-	depends = r-rlang>=1.0.3
+	depends = r-rlang>=1.1.1
 	depends = r-rprojroot
-	depends = r-withr>=2.4.3
 	optdepends = r-bitops
 	optdepends = r-jsonlite
 	optdepends = r-mathjaxr
@@ -23,8 +22,10 @@ pkgbase = r-pkgload
 	optdepends = r-rcpp
 	optdepends = r-remotes
 	optdepends = r-rstudioapi
+	optdepends = r-testthat>=3.2.1.1
 	optdepends = r-usethis
-	source = https://cran.r-project.org/src/contrib/pkgload_1.4.0.tar.gz
-	b2sums = 620aaefc9dd10573d941d78a8fcb93b87c3e455c9e58a86a492ca5e56bc5adb4f4cf65ac0311891fb564d433ae4dd776d38ef3d98050ae33f7dc56fc9547aada
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/pkgload_1.4.1.tar.gz
+	b2sums = 420c80559a16a9feeced024a9e34dd175968a31d90bafd80522a86c03a65db617b7ee7a72df279e86dd4010765a1a1dde1dfb5cd4e91f826751684ef45e19bf9
 
 pkgname = r-pkgload
