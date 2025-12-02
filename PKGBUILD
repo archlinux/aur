@@ -1,7 +1,7 @@
 # Maintainer: Dustin <dustin.pilgrim1997@gmail.com>
 
 pkgname=dstl
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A fast, keyboard-driven TUI application launcher with fuzzy search"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=()
 makedepends=('rust' 'cargo')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0996c646247db829ac06e9e51cf396bad4a21834eced147476eca4b59d6802b2')
+sha256sums=('00576b99dea17ac7afb743a1aca5beb618041f710a9914472e7a47223d999343')
 
 prepare() {
     cd "$pkgname-$pkgver"
