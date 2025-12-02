@@ -3,9 +3,8 @@
 
 pkgname=ffmpeg-full
 pkgver=8.0.1
-pkgrel=1
+pkgrel=2
 _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
-_obs_studio_ver='32.0.2'
 _whispercpp_ver='1.8.2'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
@@ -139,6 +138,7 @@ makedepends=(
     'clang'
     'cmake'
     'cuda'
+    'decklink-sdk'
     'ffnvcodec-headers'
     'git'
     'gmp'
@@ -160,7 +160,6 @@ provides=(
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         'git+https://github.com/lensfun/lensfun.git'
-        "https://github.com/obsproject/obs-studio/archive/${_obs_studio_ver}/obs-studio-${_obs_studio_ver}.tar.gz"
         "https://github.com/ggml-org/whisper.cpp/archive/v${_whispercpp_ver}/whisper.cpp-${_whispercpp_ver}.tar.gz"
         '010-ffmpeg-add-svt-hevc.patch'
         "020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
@@ -170,11 +169,12 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '060-ffmpeg-whisper.cpp-fix-pkgconfig.patch'
         '080-ffmpeg-cuda13-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/f8a300c6739ea2ca648579d7faf3ae9811b9f19a'
         '100-ffmpeg-add-opencv4-support.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/c4ce51ee62205c74604767f1b7dab6a036edac7f'
+        '110-ffmpeg-add-playback-support-to-decklink-sdk14.3-devices.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/0cd75dbfa0fc6c213cf9240b3c03c809070c5209'
+        '120-ffmpeg-add-decklink-sdk14.3-build-support.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/27e94281d1c880b4cae28738e35c0d6f9a58f06b'
         'LICENSE')
 sha256sums=('05ee0b03119b45c0bdb4df654b96802e909e0a752f72e4fe3794f487229e5a41'
             'SKIP'
             'SKIP'
-            '39e99b9fbdc77e7e87cfd9c7e8709d1d427627bad5b21b791019c887c8598d13'
             'bcee25589bb8052d9e155369f6759a05729a2022d2a8085c1aa4345108523077'
             'ccdc1cab97d1fe5a454cd57fbd2bb865256092d715fd7f380c30cc3f42891b3c'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
@@ -184,6 +184,8 @@ sha256sums=('05ee0b03119b45c0bdb4df654b96802e909e0a752f72e4fe3794f487229e5a41'
             '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
             '79e3fbc30c86e0db789af78e79dc23227e5f6887531bcd52b2defa8526d1455b'
             'f5b448f7e6e567273f74ed6e62ed25d8470f6bc9183c247993f1c03e78b57587'
+            'd1c4bdbcdd5a852f46639e0cb3dbf0b4a71884487c9fbcdb38139a1e5e96ddaf'
+            'ee89e0759f5233d390e3a23415e2664aae38bbe89e10d49ecda8a06c26bd21ee'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
@@ -197,6 +199,8 @@ prepare() {
     patch -d "whisper.cpp-${_whispercpp_ver}" -Np1 -i "${srcdir}/060-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/080-ffmpeg-cuda13-fix.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/100-ffmpeg-add-opencv4-support.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/110-ffmpeg-add-playback-support-to-decklink-sdk14.3-devices.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/120-ffmpeg-add-decklink-sdk14.3-build-support.patch"
 }
 
 build() {
@@ -237,7 +241,6 @@ build() {
     printf '%s\n' '  -> Running ffmpeg configure script...'
     
     export CFLAGS+=' -isystem/opt/cuda/include'
-    export CFLAGS+=" -isystem${srcdir}/obs-studio-${_obs_studio_ver}/plugins/decklink/linux/decklink-sdk"
     export LDFLAGS+=' -L/opt/cuda/lib64'
     
     # fix build of libavfilter/asrc_flite.c with gcc 14
