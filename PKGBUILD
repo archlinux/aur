@@ -1,4 +1,5 @@
 # Maintainer: Marco Russo <tray-kebab-uneven@duck.com>
+# Maintainer: Matthew Johnston <warmwaffles@gmail.com>
 pkgname=expert-git
 pkgver=r788.dca68d8d
 pkgrel=3
