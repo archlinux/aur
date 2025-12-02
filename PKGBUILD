@@ -1,7 +1,7 @@
 # Maintainer: Guoyi <kuoi@bioarchlinux.org>
 
 _pkgname=ggtangle
-_pkgver=0.0.7
+_pkgver=0.0.9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-scatterpie
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f635d0efe86220e4ff68ab35f7e4068b')
-b2sums=('fcfde3ed847d7e825acac06d1a417101f648a80c18cb5e24c661b27e7d9a892eb12572497e1359b8ab327b8f93928ca191c63b6f45f446afa90a195e10e64854')
+md5sums=('a9b8e06cc6c2de1c6127c032568ab03c')
+b2sums=('899812dd95a8a34e84ca1a5f5602548f1cbb900ed1290b313a2c2491be789d4bf18a570f9496ec75aa76f81017dc93519ca0f333eaa2e414c6a0d40ab9635799')
 
 build() {
   mkdir build
