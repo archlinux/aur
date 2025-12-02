@@ -1,0 +1,9 @@
+pegasus-frontend-git*
+pegasus-frontend-stable-git*
+!pegasus-frontend-stable-git.install
+pegasus-frontend/
+pegasus-frontend-translations/
+pegasus-theme-grid/
+pkg/
+SortFilterProxyModel/
+src/
