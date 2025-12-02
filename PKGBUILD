@@ -3,13 +3,13 @@
 _pkgbase="zig-waybar-contrib"
 pkgname="$_pkgbase"
 pkgver=1.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc='High-performance Waybar modules written in Zig for efficient system monitoring'
 arch=('x86_64')
 url="https://github.com/erffy/$_pkgbase"
 license=('GPL3')
 depends=()
-makedepends=('git' )
+makedepends=('git' 'zig>=0.15.0')
 optdepends=(
   'fakeroot: required for the updates module'
   'rocm-smi-lib: AMD GPU Backend'
