@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FGNet
-_pkgver=3.42.0
+_pkgver=3.44.0
 pkgname=r-${_pkgname,,}
-pkgver=3.42.0
+pkgver=3.44.0
 pkgrel=1
 pkgdesc='Functional Gene Networks derived from biological enrichment analyses'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-topgo
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0a4ce840509c8d6fb0a7e3f38865e7f0dcd31d8582f6da29887d316726bfff7c')
+sha256sums=('0f859a4cd7286bb59691054c52aab9ca29c473b942883798ab996172af3039bd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
