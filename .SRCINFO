@@ -1,12 +1,12 @@
 pkgbase = libinput-gestures-git
 	pkgdesc = Actions gestures on your touchpad using libinput
-	pkgver = 2.80.r2.g367e124
-	pkgrel = 1
+	pkgver = 2.81.r0.g9552f0d
+	pkgrel = 2
 	url = https://github.com/bulletmark/libinput-gestures
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
-	depends = libinput
+	depends = libinput-tools
 	depends = python
 	depends = python-dbus
 	depends = python-gobject
