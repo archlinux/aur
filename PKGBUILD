@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=INDEED
-_pkgver=2.22.0
+_pkgver=2.24.0
 pkgname=r-${_pkgname,,}
-pkgver=2.22.0
+pkgver=2.24.0
 pkgrel=1
 pkgdesc='Interactive Visualization of Integrated Differential Expression and Differential Network Analysis for Biomarker Candidate Selection Package'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9baad01d0e55bc77ff5bfd0b511b0086d5bfe9e6cd6d4c2bb4cf83495f9be0b6')
+sha256sums=('59316432583df4c8d79260c5504002efc66e59bc763ad4491a9caa47efceac68')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

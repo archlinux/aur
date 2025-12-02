@@ -1,6 +1,6 @@
 pkgbase = r-indeed
 	pkgdesc = Interactive Visualization of Integrated Differential Expression and Differential Network Analysis for Biomarker Candidate Selection Package
-	pkgver = 2.22.0
+	pkgver = 2.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/INDEED
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-indeed
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/INDEED_2.22.0.tar.gz
-	sha256sums = 9baad01d0e55bc77ff5bfd0b511b0086d5bfe9e6cd6d4c2bb4cf83495f9be0b6
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/INDEED_2.24.0.tar.gz
+	sha256sums = 59316432583df4c8d79260c5504002efc66e59bc763ad4491a9caa47efceac68
 
 pkgname = r-indeed
