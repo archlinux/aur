@@ -4,45 +4,42 @@
 # Contributor: Daniel Varga <varga dot daniel at gmx dot de>
 
 pkgname=emulationstation-git
-_gitname=EmulationStation
 pkgrel=1
 epoch=1
-pkgver=2.4.1.r856.g3f96d34e
-pkgdesc="Emulation Station is a flexible emulator front-end supporting keyboardless navigation and custom system themes. Active fork by the RetroPie project."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+pkgver=2.4.1.r866.ga72ca013
+pkgdesc="Flexible emulator front-end supporting keyboardless navigation and custom system themes. Active fork by the RetroPie project."
+arch=(x86_64 i686 armv6h armv7h)
 url="https://github.com/RetroPie/EmulationStation"
-license=('MIT')
-makedepends=('git' 'cmake' 'rapidjson')
-depends=('freeimage' libvlc 'curl')
+license=(MIT)
+depends=(freeimage libvlc curl pugixml freetype2 sdl2 alsa-lib glibc gcc-libs libglvnd)
+makedepends=(git cmake rapidjson)
+provides=(emulationstation)
+conflicts=(emulationstation)
 source=('git+https://github.com/RetroPie/EmulationStation.git')
-md5sums=('SKIP')
-provides=('emulationstation')
+sha256sums=('SKIP')
 
 pkgver() {
-    cd $srcdir/$_gitname
-    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-    cd "$srcdir/$_gitname"
-    git submodule update --init
+  cd EmulationStation
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/$_gitname"
-    mkdir -p "$srcdir/$_gitname/build"
-    cd "$srcdir/$_gitname/build"
-    cmake ..\
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-        -DCMAKE_BUILD_TYPE=RELEASE
-    make
+  local _flags=(
+
+  )
+
+  cmake -B build -S "EmulationStation" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    "${_flags[@]}"
+
+  cmake --build build
 }
 
 package() {
-    cd $_gitname
+    cd EmulationStation
     # No install target..., should be fixed upstream
     # make DESTDIR="$pkgdir" install
-    install -Dm755 "$srcdir/$_gitname/emulationstation" "$pkgdir/usr/bin/emulationstation"
-    install -Dm644 "$srcdir/$_gitname/LICENSE.md" "$pkgdir/usr/share/licenses/emulationstation-git/LICENSE"
+    install -Dm755 "emulationstation" -t "${pkgdir}/usr/bin/"
+    install -Dm644 "LICENSE.md" -t "$pkgdir/usr/share/licenses/${pkgname}/"
 }
