@@ -1,7 +1,7 @@
 pkgbase = vegastrike-engine
 	pkgdesc = A spaceflight simulator in massive universe
 	pkgver = 0.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.vega-strike.org/
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -15,7 +15,7 @@ pkgbase = vegastrike-engine
 	depends = gtk3
 	depends = libvorbis
 	depends = openal
-	depends = sdl
+	depends = sdl2
 	depends = glu
 	depends = glibc
 	depends = gcc-libs
@@ -26,8 +26,10 @@ pkgbase = vegastrike-engine
 	depends = expat
 	depends = libjpeg-turbo
 	source = git+https://github.com/vegastrike/Vega-Strike-Engine-Source#tag=v0.9.1
+	source = vegastrike-engine-boost-1.89.patch
 	source = vegastrike-engine-Add-missing-header.patch
 	sha256sums = 602cb322ba7ffa07885e00631892083592ecad8d9687d136734029187dd2dce5
+	sha256sums = ce05dc2123c496a77d91c68c14d7f23288295ef2ea6b94924689a69fb0124fda
 	sha256sums = beb8280fcf695de4d420ea271d3bfff0d9780127bc2c13b8b9cc5fd6deb4038d
 
 pkgname = vegastrike-engine

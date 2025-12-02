@@ -1,0 +1,23 @@
+From 1aed6e3d700c1493148b183c69a5860ebfe87efc Mon Sep 17 00:00:00 2001
+From: "Stephen G. Tuggy" <sgt@stephengtuggy.com>
+Date: Mon, 17 Nov 2025 22:38:25 -0800
+Subject: [PATCH] engine/CMakeLists.txt: Hopefully fix macOS error about
+ boost-system being nonexistent
+
+---
+ engine/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/engine/CMakeLists.txt b/engine/CMakeLists.txt
+index a1e67759f2..6f28215fb0 100644
+--- a/engine/CMakeLists.txt
++++ b/engine/CMakeLists.txt
+@@ -360,7 +360,7 @@ ENDIF (Python3_FOUND)
+ # Find Boost with boost_python library
+ MESSAGE(STATUS "Always using system Boost now")
+ SET(BOOST_PYTHON_COMPONENT "python${Python3_VERSION_MAJOR}${Python3_VERSION_MINOR}")
+-FIND_PACKAGE(Boost COMPONENTS ${BOOST_PYTHON_COMPONENT} log log_setup date_time system filesystem thread chrono atomic program_options REQUIRED)
++FIND_PACKAGE(Boost COMPONENTS ${BOOST_PYTHON_COMPONENT} log log_setup date_time filesystem thread chrono atomic program_options REQUIRED)
+ IF (Boost_FOUND)
+     # VERSION_EQUAL / VERSION_GREATER requires a version in the form X.Y.Z
+     # Until CMake v3.15, Boost_VERSION is in the form as written in boost/version.hpp (e.g. 106700)
