@@ -3,7 +3,7 @@
 # This PKGBUILD downloads and installs PraxisLIVE from official GitHub releases.
 
 pkgname=praxis-live-bin
-pkgver=6.3.0
+pkgver=6.4.0
 pkgrel=1
 pkgdesc="Hybrid visual IDE for live programming"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('jack: for JACK audio support'
 options=('!strip')
 install=praxis-live-bin.install
 source=("praxislive_${pkgver}-${pkgrel}_amd64.deb::https://github.com/praxis-live/praxis-live/releases/download/v${pkgver}/praxislive_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums=('bb361ca693b99ca189b7e6fa4d77ac3bba1651b368c2be8c72115e96511e4895')
+sha256sums=('63ee576f42bfb030f6f477ec656c5c40a37c6bc80fc15083dabcd9aa6703e2b3')
 
 package() {
   cd "${srcdir}"
