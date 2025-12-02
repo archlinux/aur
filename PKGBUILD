@@ -1,14 +1,18 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgbase=nvidia-open-git
-pkgname=('nvidia-open-git' 'nvidia-open-dkms-git')
-pkgver=575.64.r0.gfade1f7b2
+pkgname=(
+    'nvidia-open-git'
+    'nvidia-open-dkms-git')
+pkgver=580.105.08.r0.g2af9f1f0f
 pkgrel=1
 pkgdesc='NVIDIA open kernel modules (git version)'
 arch=('x86_64')
 url='https://github.com/NVIDIA/open-gpu-kernel-modules/'
-license=('MIT' 'GPL-2.0-only')
-makedepends=('git' 'linux-headers')
+license=('MIT AND GPL-2.0-only')
+makedepends=(
+    'git'
+    'linux-headers')
 options=('!buildflags' '!lto' '!strip')
 source=('git+https://github.com/NVIDIA/open-gpu-kernel-modules.git'
         '110-nvidia-open-change-dkms-conf.patch'
@@ -16,14 +20,14 @@ source=('git+https://github.com/NVIDIA/open-gpu-kernel-modules.git'
         '130-nvidia-open-reproducible-build.patch'
         '140-nvidia-open-gcc-sls.patch'
         '150-nvidia-open-make-modeset-fbdev-default.patch'
-        '160-nvidia-open-linux6.15-fix.patch')
+        '160-nvidia-open-Fix-build-with-kernel-6.18.patch')
 sha256sums=('SKIP'
             '009724e2e07b7be589ba455f225a9742d88a3a29383f2f220cb830ef4c8b7aea'
             'b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45'
             '5340f33cdd19024a4501fee3d475af152c39f277d44422c65d447db263a0d501'
-            '4393d135782b55d014b4c30b4c6327dedb85543844f5c299e66eec7dbd5667ba'
-            'b7cb5ba0e6348f8310421134ddc815e58c5bef87e74ae2dabb240582ff0619ca'
-            '4510eecef976c79ee4626fa5dbeecd316d554b5344c0e73503a47b1506e1d0af')
+            'b498128faffe3b7ccdf210b5cdbb8da75b8e3a381d2c9b82355c344405e4e916'
+            '5f457abcb62de09148c14ceca060243c2c1152485dd99323641c2077f47d5a5e'
+            'bfa6966808342ec945c975bdfb9e929a6287229664927f6e42507fba84f3a47b')
 
 prepare() {
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/110-nvidia-open-change-dkms-conf.patch"
@@ -31,7 +35,7 @@ prepare() {
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/130-nvidia-open-reproducible-build.patch"
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/140-nvidia-open-gcc-sls.patch"
     patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/150-nvidia-open-make-modeset-fbdev-default.patch"
-    patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/160-nvidia-open-linux6.15-fix.patch"
+    patch -d open-gpu-kernel-modules -Np1 -i "${srcdir}/160-nvidia-open-Fix-build-with-kernel-6.18.patch"
     
     sed -i "s/__VERSION_STRING/${pkgver%%.r*}/" open-gpu-kernel-modules/kernel-open/dkms.conf
     
@@ -61,7 +65,10 @@ build() {
 }
 
 package_nvidia-open-git() {
-    depends=('linux' 'libglvnd' "nvidia-utils>=$(sed 's/\.r.*//;s/\.[^\.]*$//' <<< "$pkgver")")
+    depends=(
+        'libglvnd'
+        'linux'
+        "nvidia-utils>=$(sed 's/\.r.*//;s/\.[^\.]*$//' <<< "$pkgver")")
     provides=("nvidia-open=${pkgver}" 'NVIDIA-MODULE')
     conflicts=('nvidia-open' 'NVIDIA-MODULE')
     
@@ -83,7 +90,10 @@ package_nvidia-open-git() {
 
 package_nvidia-open-dkms-git() {
     pkgdesc="$(sed 's/(\(git[[:space:]]version\)/(sources; \1/' <<< "$pkgdesc")"
-    depends=('dkms' 'libglvnd' "nvidia-utils>=$(sed 's/\.r.*//;s/\.[^\.]*$//' <<< "$pkgver")")
+    depends=(
+        'dkms'
+        'libglvnd'
+        "nvidia-utils>=$(sed 's/\.r.*//;s/\.[^\.]*$//' <<< "$pkgver")")
     provides=("nvidia-open=${pkgver}" 'NVIDIA-MODULE')
     conflicts=('nvidia-open' 'NVIDIA-MODULE')
     

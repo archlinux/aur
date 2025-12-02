@@ -11,7 +11,7 @@
  #if defined(NV_DRM_FBDEV_AVAILABLE)
 --- a/kernel-open/nvidia-drm/nvidia-drm-os-interface.c
 +++ b/kernel-open/nvidia-drm/nvidia-drm-os-interface.c
-@@ -41,7 +41,7 @@
+@@ -38,7 +38,7 @@
  #include <drm/drmP.h>
  #endif
  
