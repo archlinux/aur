@@ -2,7 +2,7 @@
 
 pkgname=tea-wind-bin
 _pkgname=wind
-pkgver=25.1.2.05281
+pkgver=25.3.2.11180
 pkgrel=1
 pkgdesc="Wind financial terminal, 万得金融终端"
 arch=("x86_64")
@@ -15,12 +15,12 @@ pkgprefix="com.wind.wft-kylinV10SP1"
 pkgsuffix="amd64.deb"
 source=("https://d-cdn.wind.com.cn/windnet/linux/${pkgprefix}_${pkgsuffix}.zip")
 
-sha512sums=('ef1d521e5646efd5647d7ad94db8fd339230a1420a886a285d6037f112adbd2d26334687143e2598d712703042fcfb3fdfd90def5296f3dc1a0c65923f922910')
+sha512sums=('28e042da30751c2080f3eefdc0b7d50c217c802e743854d466ce4dfc3fa9feec93980ee624281df52107cf86dbdfbc8917ead6973a7713494fb16599af748c24')
 
 prepare(){
     cd ${srcdir}
     unzip -o ${pkgprefix}_${pkgsuffix}.zip
-    ar p "${pkgprefix}_${pkgver}_${pkgsuffix}" data.tar.xz | tar xJf -
+    ar p "com.wind.wft_${pkgver}_${pkgsuffix}" data.tar.xz | tar xJf -
 
 }
 package(){
