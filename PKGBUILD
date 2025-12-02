@@ -1,14 +1,14 @@
-# Maintainer: Hugo Courtial <hugo@courtial.me>
+# Contributor: Hugo Courtial <hugo@courtial.me>
 pkgname=spasm-ng-git
-pkgver=v0.5.beta.2.63.g61d8ff5
+pkgver=v0.5.beta.3.9.g5f0786d
 pkgrel=1
 pkgdesc="z80 assembler with extra features for TI calculators"
 arch=('any')
 url="https://github.com/alberthdev/spasm-ng"
 license=('GPL')
 depends=('gmp' 'openssl')
-makedepends=('gcc' 'make')
-source=('spasm-ng::git://github.com/alberthdev/spasm-ng')
+makedepends=('gcc' 'make' 'git')
+source=('spasm-ng::git+https://github.com/alberthdev/spasm-ng')
 md5sums=('SKIP')
 
 pkgver() {
@@ -18,7 +18,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/spasm-ng"
-  make version opt spasm
+  make version opt spasm -j1
 }
 
 package() {

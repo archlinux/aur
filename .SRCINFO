@@ -1,16 +1,16 @@
 pkgbase = spasm-ng-git
 	pkgdesc = z80 assembler with extra features for TI calculators
-	pkgver = v0.5.beta.2.63.g61d8ff5
+	pkgver = v0.5.beta.3.9.g5f0786d
 	pkgrel = 1
 	url = https://github.com/alberthdev/spasm-ng
 	arch = any
 	license = GPL
 	makedepends = gcc
 	makedepends = make
+	makedepends = git
 	depends = gmp
 	depends = openssl
-	source = spasm-ng::git://github.com/alberthdev/spasm-ng
+	source = spasm-ng::git+https://github.com/alberthdev/spasm-ng
 	md5sums = SKIP
 
 pkgname = spasm-ng-git
-
