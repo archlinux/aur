@@ -1,0 +1,16 @@
+pkgbase = archland-settings
+	pkgdesc = Settings application for Archland
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/archland-linux/settings
+	arch = any
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	depends = gjs
+	depends = gtk4
+	depends = libadwaita
+	source = archland-settings-1.0.1.tar.gz::https://github.com/archland-linux/settings/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 21f52af8a39a1ec26d65a6f0e47acbbfe14d9c3c19a82298bf331a9f30e03a14
+
+pkgname = archland-settings
