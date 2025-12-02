@@ -1,0 +1,10 @@
+[Unit]
+Description=Luanti multiplayer server w/ %i.conf server config
+After=syslog.target network.target
+
+[Service]
+User=luanti
+ExecStart=/usr/bin/luantiserver --config /etc/luanti/%i.conf --map-dir /var/lib/luanti/%i/
+
+[Install]
+WantedBy=multi-user.target
