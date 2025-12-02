@@ -9,7 +9,7 @@ pkgbase = iloader
 	noextract = iloader-linux-amd64.AppImage
 	options = !strip
 	options = !debug
-	source = https://github.com/nab138/iloader/releases/latest/download/iloader-linux-amd64.AppImage
+	source = https://github.com/nab138/iloader/releases/download/v1.1.3/iloader-linux-amd64.AppImage
 	sha256sums = SKIP
 
 pkgname = iloader-appimage

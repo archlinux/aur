@@ -1,24 +1,21 @@
 # Maintainer: Spoorloos <mick.negenman@icloud.com>
 
+_version='1.1.3'
 _appimage='iloader-linux-amd64.AppImage'
+_checksum='8c7248bb696a2898c6e13beff8bf643636b3762b85276ad5d2326fc35746ee26'
 
 pkgbase='iloader'
 pkgname='iloader-appimage'
-pkgver=1.1.3
-pkgrel=1
+pkgver=$_version
+pkgrel=2
 pkgdesc='User-friendly sideloader'
 url='https://github.com/nab138/iloader'
 arch=('x86_64')
 license=('MIT')
-source=("https://github.com/nab138/iloader/releases/latest/download/$_appimage")
-sha256sums=('SKIP')
-makedepends=('jq')
+source=("https://github.com/nab138/iloader/releases/download/v$_version/$_appimage")
+sha256sums=($_checksum)
 noextract=($_appimage)
 options=(!strip !debug)
-
-pkgver() {
-    curl -s https://api.github.com/repos/nab138/iloader/releases/latest | jq -r '.tag_name' | sed 's/^v//'
-}
 
 prepare() {
     chmod +x "$srcdir/$_appimage"
@@ -30,7 +27,7 @@ build() {
     sed -i \
         -e "s|Exec=.*|Exec=/usr/bin/iloader|" \
         -e "s|Icon=.*|Icon=/usr/share/icons/hicolor/256x256/apps/iloader.png|" \
-        "squashfs-root/iloader.desktop"
+        "$srcdir/squashfs-root/iloader.desktop"
 }
 
 package() {
