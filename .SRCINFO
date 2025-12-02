@@ -1,7 +1,7 @@
 pkgbase = moocs-collect-cli
 	pkgdesc = CLI tool to download lecture slides from INIAD MOOCs (from source)
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yu7400ki/moocs-collect
 	arch = x86_64
 	license = MIT
