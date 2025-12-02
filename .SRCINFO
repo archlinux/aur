@@ -1,6 +1,6 @@
 pkgbase = typhoon-bin
 	pkgdesc = A stylish weather app based on Stormcloud
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/archisman-panigrahi/typhoon
 	arch = any
@@ -17,9 +17,10 @@ pkgbase = typhoon-bin
 	depends = webkit2gtk
 	depends = imagemagick
 	depends = libportal
+	depends = libnotify
 	provides = typhoon
 	conflicts = typhoon
-	source = https://github.com/archisman-panigrahi/typhoon/releases/download/v1.2/typhoon_1.2_all.deb
-	sha256sums = f9a6d5e323bcfdb2ec38be4bab4fe4aa85ac99b13f9668f3ee1880c45f73053c
+	source = https://github.com/archisman-panigrahi/typhoon/releases/download/v1.3/typhoon_1.3_all.deb
+	sha256sums = c31c457f39a49922da1a46704fb59a86a3048e62892af1d0b773a835d3c13996
 
 pkgname = typhoon-bin
