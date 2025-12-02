@@ -1,0 +1,19 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "README.md",
+    ".SRCINFO",
+    ".nvchecker.toml",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "fix-git-rev.patch",
+    "modify-base-path.patch",
+]
+SPDX-FileCopyrightText = "x16-emulator contributors and Arch Linux contributors"
+SPDX-License-Identifier = "BSD-2-Clause"
