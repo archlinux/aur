@@ -1,6 +1,6 @@
 pkgbase = r-cimice
 	pkgdesc = CIMICE-R: (Markov) Chain Method to Inferr Cancer Evolution
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CIMICE
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-cimice
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-webshot
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CIMICE_1.16.0.tar.gz
-	sha256sums = 00600df1cf81868825c58b1ab34b7986fd283bc3b8a93bb1852d855a34ce6bf7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CIMICE_1.18.0.tar.gz
+	sha256sums = 40a096a55eaf68943f714f00f63aa257a22cc91e3691155f7e7ba4bb5f0bd482
 
 pkgname = r-cimice
