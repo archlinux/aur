@@ -1,7 +1,7 @@
 pkgbase = python-zoekt-py-git
 	pkgdesc = A modern, fully typed Python client and CLI for interacting with Zoekt, a fast, scalable code search engine
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/udbhav-44/zoekt-py
 	arch = any
 	license = MIT

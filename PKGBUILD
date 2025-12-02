@@ -1,7 +1,7 @@
 # Maintainer: H3mul <phil.d324@gmail.com>
 pkgname=python-zoekt-py-git
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern, fully typed Python client and CLI for interacting with Zoekt, a fast, scalable code search engine"
 arch=('any')
 url="https://github.com/udbhav-44/zoekt-py"
