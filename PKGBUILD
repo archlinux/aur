@@ -1,13 +1,13 @@
 # Maintainer: Angelo Theodorou <encelo at gmail dot com>
 
 pkgname=ncine-git
-pkgver=r449.d80f0e6
+pkgver=r524.a2a94ce
 pkgrel=1
 pkgdesc="A cross-platform 2D game engine"
 arch=('i686' 'x86_64')
 url="http://ncine.github.io"
 license=('MIT')
-depends=('glfw' 'openal' 'libvorbis' 'libwebp' 'lua' 'hicolor-icon-theme')
+depends=('glfw' 'openal' 'libvorbis' 'libpng' 'libwebp' 'lua' 'hicolor-icon-theme')
 makedepends=('git' 'cmake')
 conflicts=('ncine')
 provides=('ncine')
@@ -47,7 +47,6 @@ build() {
         -DNCINE_BUILD_ANDROID=OFF\
         -DNCINE_STRIP_BINARIES=ON\
         -DNCINE_ADDRESS_SANITIZER=OFF\
-        -DNCINE_GCC_HARDENING=ON\
         -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
