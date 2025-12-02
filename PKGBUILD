@@ -2,7 +2,7 @@
 
 pkgname=cutefish-settings
 pkgver=0.8
-pkgrel=11
+pkgrel=12
 pkgdesc="System Settings application for Cutefish Desktop"
 arch=('x86_64')
 url="https://github.com/cutefishos/settings"
@@ -30,6 +30,9 @@ prepare() {
   # Disable layer effect when the Qt Quick software backend is used
   sed -i 's/import QtQuick 2.4$/import QtQuick 2.8/
           s/layer\.enabled: true/layer.enabled: GraphicsInfo.api !== GraphicsInfo.Software/' src/qml/*.qml src/qml/*/*.qml
+
+  # Show launcher only in Cutefish
+  echo 'OnlyShowIn=Cutefish;' >> cutefish-settings.desktop
 }
 
 build() {
