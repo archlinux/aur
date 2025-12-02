@@ -1,4 +1,4 @@
-# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Bernhard Landauer <oberon@manjaro.org>
 # Contributor: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: korrode <korrode at gmail>
@@ -6,11 +6,11 @@
 
 pkgname=palemoon-gtk3-bin
 epoch=1
-pkgver=33.8.1.2
+pkgver=33.9.1
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('x86_64')
-url="https://linux.palemoon.org/"
+url="http://linux.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('alsa-lib'
     'dbus-glib'
@@ -24,10 +24,12 @@ provides=("palemoon=$pkgver")
 conflicts=('palemoon')
 options=('!strip')
 source=(palemoon.desktop-${pkgver}::"https://repo.palemoon.org/MoonchildProductions/Pale-Moon/raw/tag/${pkgver}_Release/palemoon/branding/official/palemoon.desktop"
-    "https://rm-eu.palemoon.org/release/palemoon-${pkgver}.linux-x86_64-gtk3.tar.xz"{,.sig})
+       "https://rm-eu.palemoon.org/release/palemoon-${pkgver}.linux-x86_64-gtk3.tar.xz"{,.sig}) # EU link
+#      "https://rm-us.palemoon.org/release/palemoon-${pkgver}.linux-x86_64-gtk3.tar.xz"{,.sig}) # US link
+# link to latest tarball: https://www.palemoon.org/download.shtml
 sha256sums=('b3803b30b5e6b9589387b7162cd24247da242fe77c0aed0d09bc51338d36d7d8'
-    'e83cc65e93559c7b3439ab06ac756477e76403741f200bded4fa71c8960897e4'
-    'SKIP')
+            'f35d9de2a1f9fb3139a5a87f175d1a468e922b14bf1886658e96209a94e423d8'
+            'SKIP')
 validpgpkeys=('439F46F42C6AE3D23CF52E70865E6C87C65285EC' # T. Wine
               '3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC') # Moonchild, see https://forum.palemoon.org/viewtopic.php?f=1&t=7176
 
