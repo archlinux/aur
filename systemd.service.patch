@@ -1,15 +1,12 @@
 --- iocaine/data/iocaine.service	2025-07-18 19:00:29.998251290 +0200
 +++ iocaine.n/data/iocaine.service	2025-07-18 19:13:31.869608457 +0200
-@@ -7,11 +7,11 @@
+@@ -7,10 +7,10 @@
  Description=iocaine, the deadliest poison known to AI
  
  [Service]
 +User=iocaine
  Type=notify
--ExecStart=/usr/local/bin/iocaine --config-file /usr/local/etc/iocaine/config.toml start
--ExecReload=/usr/local/bin/iocaine --config-file /usr/local/etc/iocaine/config.toml reload
-+ExecStart=/usr/bin/iocaine --config-file /etc/webapps/iocaine/iocaine.toml start
-+ExecReload=/usr/bin/iocaine --config-file /etc/webapps/iocaine/iocaine.toml reload
+ ExecStart=/usr/bin/iocaine --config-path /etc/iocaine/config.kdl start
  Restart=on-failure
 -DynamicUser=true
  UMask=0077
