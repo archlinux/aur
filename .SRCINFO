@@ -1,10 +1,43 @@
 pkgbase = immich-machine-learning
 	pkgdesc = Machine learning server for the Immich photo management system
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
-	makedepends = uv>=0.8.15
-	depends = python312
+	license = AGPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.11
+	depends = onnxruntime>=1.23.0
+	depends = python-onnxruntime<2
+	depends = python-aiocache>=0.12.1
+	depends = python-aiocache<1.0
+	depends = python-fastapi>=0.95.2
+	depends = python-fastapi<1.0
+	depends = python-ftfy>=6.1.1
+	depends = gunicorn>=21.1.0
+	depends = python-huggingface-hub>=0.20.1
+	depends = python-insightface>=0.7.3
+	depends = python-insightface<1.0
+	depends = python-numpy>=2.3.4
+	depends = python-opencv>=4.7.0.72
+	depends = python-opencv<5.0
+	depends = python-orjson>=3.9.5
+	depends = python-pillow>=9.5.0
+	depends = python-pydantic>=2.0.0
+	depends = python-pydantic<3
+	depends = python-pydantic-settings>=2.5.2
+	depends = python-pydantic-settings<3
+	depends = python-python-multipart>=0.0.6
+	depends = python-python-multipart<1.0
+	depends = python-rich>=13.4.2
+	depends = python-tokenizers>=0.15.0
+	depends = python-tokenizers<1.0
+	depends = uvicorn>=0.22.0
+	depends = uvicorn<1.0
+	depends = python-rapidocr>=3.1.0
+	depends = python-ml-dtypes>=0.5.0
+	depends = python-albumentationsx
 	optdepends = libva-mesa-driver: GPU acceleration
 	optdepends = mesa-utils: GPU acceleration
 	optdepends = vulkan-driver: Vulkan support
@@ -14,6 +47,6 @@ pkgbase = immich-machine-learning
 	source = immich-2.3.1.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v2.3.1.tar.gz
 	source = immich-machine-learning.service
 	sha256sums = 20bd60862447e7e369189f9390f8e013b50101cf2fb7561ed47793bcb63c6cc8
-	sha256sums = ce6fae49e23d705b8d08205d981bb217eaf55347a499a8d0492b7ed95b520cff
+	sha256sums = f9215f428f5bd596a24c0cce90ccfa3724d8caf33d7b5811e73b2b5277c111cd
 
 pkgname = immich-machine-learning
