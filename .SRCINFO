@@ -1,14 +1,14 @@
 pkgbase = goenv
 	pkgdesc = Like pyenv and rbenv, but for Go.
-	pkgver = 2.2.32
+	pkgver = 2.2.33
 	pkgrel = 1
 	url = https://github.com/syndbg/goenv
 	arch = i686
 	arch = x86_64
 	license = MIT
-	source = goenv-2.2.32.tar.gz::https://github.com/syndbg/goenv/archive/2.2.32.tar.gz
-	source = go-build-2.2.32.tar.gz::https://github.com/go-nv/goenv/archive/refs/tags/2.2.32.tar.gz
-	md5sums = 8fdb3ea4f23edcb5caa967cbc14cefc7
-	md5sums = 8fdb3ea4f23edcb5caa967cbc14cefc7
+	source = goenv-2.2.33.tar.gz::https://github.com/syndbg/goenv/archive/2.2.33.tar.gz
+	source = go-build-2.2.33.tar.gz::https://github.com/go-nv/goenv/archive/refs/tags/2.2.33.tar.gz
+	md5sums = ae714f64ce82e7e45cb2f53fb80809d5
+	md5sums = ae714f64ce82e7e45cb2f53fb80809d5
 
 pkgname = goenv
