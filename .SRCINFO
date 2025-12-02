@@ -1,0 +1,15 @@
+pkgbase = sheet-git
+	pkgdesc = sheet is a minimal(ish) tui frontend for feh/swaybg
+	pkgver = r6.4b5d1a3
+	pkgrel = 1
+	url = https://codeberg.org/unixextremist/sheet
+	arch = x86_64
+	license = WTFPL
+	depends = ncurses
+	optdepends = viu: for image preview
+	optdepends = feh: Needs either feh or swaybg to work
+	optdepends = swaybg: Needs either feh or swaybg to work
+	source = sheet-git::git+https://codeberg.org/unixextremist/sheet.git
+	sha256sums = SKIP
+
+pkgname = sheet-git
