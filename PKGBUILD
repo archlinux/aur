@@ -2,13 +2,13 @@
 # Contributor: Evert Vorster <evorster@gmail.com>
 
 pkgname=vegastrike-engine-release-git
-pkgver=0.9.1.r0.gf648e2c99
+pkgver=0.9.1.r15.g9edc3c116
 pkgrel=1
 pkgdesc="A spaceflight simulator in massive universe"
 arch=(x86_64)
 url="https://www.vega-strike.org/"
 license=(GPL-3.0-or-later)
-depends=(boost-libs python freeglut gtk3 libvorbis openal sdl glu
+depends=(boost-libs python freeglut gtk3 libvorbis openal sdl2 glu
 
          # namcap implicit depends
          glibc gcc-libs glib2 zlib libpng libglvnd expat libjpeg-turbo)
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
 
 prepare() {
   cd Vega-Strike-Engine-Source
-  patch -Np1 -i ../vegastrike-engine-Add-missing-header.patch
+  #patch -Np1 -i ../vegastrike-engine-Add-missing-header.patch
 }
 
 pkgver() {
