@@ -1,11 +1,11 @@
-# Maintainer: ivanich
+# Maintainer: acidicX
 pkgname=kodi-addon-inputstream-adaptive-any
-pkgver=21.5.13
+pkgver=21.5.18
 pkgrel=1
 pkgdesc="Inputstream adaptive without kodi-dev dependency, so it can be built on any architecture"
 _koditarget=Omega
 _gitname=inputstream.adaptive
-_kodiver=21.2
+_kodiver=21.3
 arch=('any')
 url="https://github.com/xbmc/${_gitname}"
 license=('GPL')
@@ -17,10 +17,11 @@ depends=('kodi')
 source=("https://github.com/xbmc/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz"
         "https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
 )
-
+sha256sums=('a62ef86fc616c37ff7fa53ff7dfe2a73ee21f48af306a9f82c5bb5fe05245dad'
+            'a60afcb556e4a00cb19fc35b7e77758107c9a8096c6ce9b66af5f92396be31aa')
 
 prepare() {
-        cd xbmc-${_kodiver}-${_koditarget}
+        cd ${_gitname}-${pkgver}-${_koditarget}
 }
 
 build() {
@@ -28,12 +29,13 @@ build() {
         cd "${_gitname}-${pkgver}-${_koditarget}/build"
 
         cmake \
-                -DCMAKE_INSTALL_PREFIX=/usr \
-                -DCMAKE_INSTALL_LIBDIR=/usr/lib/kodi \
-                -DCMAKE_BUILD_TYPE=Release \
-                -DBUILD_SHARED_LIBS=1 \
-                -DADDONS_TO_BUILD=${_gitname} \
-                -DADDONS_SRC_PREFIX=../.. \
+                -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
+                -D CMAKE_INSTALL_PREFIX=/usr \
+                -D CMAKE_INSTALL_LIBDIR=/usr/lib/kodi \
+                -D CMAKE_BUILD_TYPE=Release \
+                -D BUILD_SHARED_LIBS=1 \
+                -D ADDONS_TO_BUILD=${_gitname} \
+                -D ADDONS_SRC_PREFIX=../.. \
                 ../../xbmc-${_kodiver}-${_koditarget}/cmake/addons
         make
 }
@@ -44,5 +46,3 @@ package() {
         mv .install/lib "${pkgdir}/usr/"
         mv .install/share "${pkgdir}/usr/"
 }
-sha256sums=('2cde7954b0a73d353edc2af14306e4e42e6bf9e7f26100a54b937cb80c1309a8'
-            'da3a5df663684664b9383b65f1c06568222629d935084a59e4e641fcdcb6c383')
