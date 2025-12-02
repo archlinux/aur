@@ -2,7 +2,7 @@
 
 pkgname=ns3-simple
 pkgver=3.45
-pkgrel=1
+pkgrel=2
 pkgdesc='Discrete-event network simulator for Internet systems'
 arch=('x86_64')
 url='https://www.nsnam.org/'
