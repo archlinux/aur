@@ -1,0 +1,16 @@
+pkgbase = timesup
+	pkgdesc = A lightweight terminal timer with desktop notifications that runs as a daemon
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/neonvoidx/timesup
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = alsa-lib
+	depends = libnotify
+	source = timesup-0.2.0.tar.gz::https://github.com/neonvoidx/timesup/archive/refs/tags/0.2.0.tar.gz
+	sha256sums = 6bc98cb67c3e6e718245806038d73a9f49822808bbad4759b8973f56eb90d616
+
+pkgname = timesup
