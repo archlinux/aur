@@ -1,0 +1,11 @@
+# Do not make manual changes to this file.
+# It will be overridden by package upgrades.
+# Use `systemctl edit photoprism-vision` instead!
+
+[Unit]
+Description=Photoprism Vision Service
+
+[Service]
+User=photoprism
+Restart=no
+ExecStart=/usr/bin/photoprism vision run

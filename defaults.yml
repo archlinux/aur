@@ -1,5 +1,7 @@
 AssetsPath: /usr/share/photoprism
+ModelsPath: /usr/share/photoprism
 ConfigPath: /var/lib/photoprism/config
 ImportPath: /var/lib/photoprism/import
 OriginalsPath: /var/lib/photoprism/originals
 StoragePath: /var/lib/photoprism/storage
+VisionYaml: /var/lib/photoprism/config/vision.yml
