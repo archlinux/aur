@@ -1,7 +1,7 @@
 pkgbase = gog-stardew-valley
 	pkgdesc = You’ve inherited your grandfather’s old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life.
 	pkgver = 1.6.15
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://stardewvalley.net/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = gog-stardew-valley
 	options = staticlibs
 	source = gog-stardew-valley
 	source = gog-stardew-valley.desktop
-	source = local:///stardew_valley_1_6_15_24357_8705766150_78675.sh
+	source = stardew_valley_1_6_15_24357_8705766150_78675.sh::gogdownloader://stardew_valley/en3installer0
 	sha256sums = 9f51b56b351824493c381731f29175b0897fa0dc4169a9b9160b5a12003883dc
 	sha256sums = e92d45ae16c650ac477467a1517c71ff57ae165b49a039f5f488702f9907eb7f
 	sha256sums = 9aae7496d119289f1617d6a9c3d749f37cd32cd13e34d320015abc2c1b5570ef
