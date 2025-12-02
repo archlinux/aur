@@ -3,12 +3,12 @@
 pkgname=python-nashpy
 _name="Nashpy"
 arch=("any")
-pkgver=0.0.41
+pkgver=0.0.43
 pkgrel=1
 pkgdesc="A python library for 2 player games"
 url="https://github.com/drvinceknight/Nashpy"
 source=("https://github.com/drvinceknight/Nashpy/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("958c28eace070903be33e295b0025335798aeedb0d05e22484b80b4670990a90425835db6cc6cf008eedb466f4a4c10ae33e242327b8e0f4d49bed7c33ac9941")
+sha512sums=("e9d9052970633255f3e2e87cb6237271b8aff0811a1ce79dcd154286a99314023caa143341659ca2b14c8643ffda12d361182230b254c862ec4c67296be6ab01")
 
 depends=(python)
 makedepends=(python-build python-installer python-wheel python-flit-core)
