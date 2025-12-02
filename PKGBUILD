@@ -2,14 +2,14 @@
 # Contributor: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=antimicrox-git
-pkgver=3.3.3.r2.g7a39dc43
-pkgrel=1
+pkgver=3.5.1.r10.g805a323c
+pkgrel=2
 pkgdesc='Map keyboard and mouse actions to gamepad buttons, inspired by qjoypad. Antimicro fork'
 url="https://github.com/AntiMicroX/antimicroX"
-arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
-license=(GPL3)
-depends=(qt5-base libxtst hicolor-icon-theme sdl2)
-makedepends=(git cmake qt5-tools itstool extra-cmake-modules)
+arch=(x86_64 i686 pentium4 armv7h aarch64)
+license=(GPL-3.0-or-later)
+depends=(qt6-base libxtst hicolor-icon-theme sdl2)
+makedepends=(git cmake qt6-tools itstool extra-cmake-modules vulkan-headers)
 conflicts=(antimicrox)
 provides=(antimicrox)
 source=("git+https://github.com/AntiMicroX/antimicroX.git")
@@ -21,12 +21,15 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S antimicroX \
+  local _flags=(
+    -DANTIMICROX_PKG_VERSION="$pkgver"
+    -DUSE_QT6_BY_DEFAULT=ON
+  )
+
+  cmake -B build -S "antimicroX" -Wno-dev \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DWITH_X11=ON \
-    -DWITH_XTEST=ON \
-    -DWITH_UINPUT=ON \
-    -DAPPDATA=ON
+    "${_flags[@]}"
 
   cmake --build build
 }
