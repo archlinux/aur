@@ -1,9 +1,7 @@
 post_install() {
     echo ""
-    echo "============================================"
     echo "If you wish to run tosu without needing sudo:"
     echo "sudo setcap cap_sys_ptrace=eip /opt/tosu/tosu"
-    echo "============================================"
     echo ""
 }
 

@@ -1,5 +1,5 @@
 pkgbase = tosu-git
-	pkgdesc = Memory reader and PP counters provider for osu! and osu! Lazer
+	pkgdesc = Memory reader and PP counters provider for osu! and osu! Lazer - git version
 	pkgver = r1408.b326e47
 	pkgrel = 1
 	url = https://github.com/tosuapp/tosu
@@ -13,8 +13,7 @@ pkgbase = tosu-git
 	makedepends = python
 	provides = tosu
 	conflicts = tosu
-	options = !strip
-	source = git+https://github.com/tosuapp/tosu.git
+	source = tosu::git+https://github.com/tosuapp/tosu.git
 	source = tosu-bin.sh::https://aur.archlinux.org/cgit/aur.git/plain/tosu-bin.sh?h=tosu
 	source = notice.install
 	sha256sums = SKIP
