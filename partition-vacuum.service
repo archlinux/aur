@@ -1,0 +1,12 @@
+[Unit]
+Description=Partition Vacuum Daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/partition-vacuum
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
