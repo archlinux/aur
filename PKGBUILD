@@ -500,6 +500,11 @@ fi
 prepare() {
   cd ffmpeg-src
 
+  if [[ $FFMPEG_OBS_DECKLINK == 'ON' ]]; then
+    git cherry-pick -n 0cd75dbfa0fc6c213cf9240b3c03c809070c5209
+    git cherry-pick -n 27e94281d1c880b4cae28738e35c0d6f9a58f06b
+  fi
+
   if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     git cherry-pick -n c4ce51ee62205c74604767f1b7dab6a036edac7f
   fi
@@ -534,30 +539,6 @@ prepare() {
   if [[ $FFMPEG_OBS_CUDA == 'ON' ]]; then
     sed -i 's/nvccflags -std=c++11/nvccflags -std=c++14/g' configure
     sed -i 's/arch=compute_60,code=sm_60/arch=compute_75,code=sm_75/g' configure
-  fi
-
-  if [[ $FFMPEG_OBS_DECKLINK == 'ON' ]]; then
-    ## Fix HAVE_PTHREAD_SETNAME_NP redefinition with SDL2 and the threads option
-    sed -i 's/pthread_set/ffmpeg_pthread_set/g' configure
-    sed -i 's/HAVE_PTHREAD_SET/HAVE_FFMPEG_PTHREAD_SET/g' libavutil/thread.h
-
-    sed -i 's|DeckLinkAPI.h|DeckLinkAPI_v14_2_1.h|g' \
-      libavdevice/decklink_common_c.h \
-      libavdevice/decklink_common.cpp \
-      libavdevice/decklink_enc.cpp \
-      libavdevice/decklink_dec.cpp
-    sed -i 's|DeckLinkAPIDispatch.cpp|DeckLinkAPIDispatch_v14_2_1.cpp|g' libavdevice/decklink_common.cpp
-
-    sed -i 's|CreateDeckLinkIteratorInstance|CreateDeckLinkIteratorInstance_v14_2_1|g' libavdevice/decklink_common.cpp
-    sed -i 's|CreateDeckLinkAPIInformationInstance|CreateDeckLinkAPIInformationInstance_v14_2_1|g' libavdevice/decklink_common.cpp
-
-    sed -i 's|IDeckLinkMemoryAllocator|IDeckLinkMemoryAllocator_v14_2_1|g' libavdevice/decklink_dec.cpp
-    sed -i 's|IDeckLinkInput \*|IDeckLinkInput_v14_2_1 \*|g' \
-      libavdevice/decklink_common.h \
-      libavdevice/decklink_common.cpp
-    sed -i 's|IDeckLinkInput,|IDeckLinkInput_v14_2_1,|g' libavdevice/decklink_dec.cpp
-    sed -i 's|IDeckLinkInputCallback|IDeckLinkInputCallback_v14_2_1|g' libavdevice/decklink_dec.cpp
-    sed -i 's|IDeckLinkVideoInputFrame|IDeckLinkVideoInputFrame_v14_2_1|g' libavdevice/decklink_dec.cpp
   fi
 }
 
