@@ -1,7 +1,7 @@
 # Maintainer: Gianlucca Claudino <gianluccaclaudino@gmail.com>
 
 pkgname=lvsk-calendar
-pkgver=0.2.9
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A beautiful text-based calendar with visual aesthetics for Arch Linux"
 arch=('any')
@@ -43,6 +43,14 @@ package() {
     install -Dm644 "${srcdir}/${pkgname}/src/ui/header.sh" "${pkgdir}/usr/share/${pkgname}/src/ui/header.sh"
     install -Dm644 "${srcdir}/${pkgname}/src/ui/calendar.sh" "${pkgdir}/usr/share/${pkgname}/src/ui/calendar.sh"
     install -Dm644 "${srcdir}/${pkgname}/src/ui/footer.sh" "${pkgdir}/usr/share/${pkgname}/src/ui/footer.sh"
+
+    # Install example configuration and backgrounds
+    install -Dm644 "${srcdir}/${pkgname}/config.example.sh" "${pkgdir}/usr/share/doc/${pkgname}/config.example.sh"
+    install -Dm644 "${srcdir}/${pkgname}/backgrounds/orbital.sh" "${pkgdir}/usr/share/doc/${pkgname}/backgrounds/orbital.sh"
+    install -Dm644 "${srcdir}/${pkgname}/backgrounds/minimal.sh" "${pkgdir}/usr/share/doc/${pkgname}/backgrounds/minimal.sh"
+    install -Dm644 "${srcdir}/${pkgname}/backgrounds/stars.sh" "${pkgdir}/usr/share/doc/${pkgname}/backgrounds/stars.sh"
+    install -Dm644 "${srcdir}/${pkgname}/backgrounds/none.sh" "${pkgdir}/usr/share/doc/${pkgname}/backgrounds/none.sh"
+    install -Dm644 "${srcdir}/${pkgname}/backgrounds/README.md" "${pkgdir}/usr/share/doc/${pkgname}/backgrounds/README.md"
 }
 
 # vim:set ts=4 sw=4 et:

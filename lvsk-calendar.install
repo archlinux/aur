@@ -5,7 +5,7 @@ post_install() {
 
     ╭──────────────────────────────────────────────────────────╮
     │                                                          │
-    │                   lvsk calendar v0.2.9                   │
+    │                   lvsk calendar v0.3.0                   │
     │                                                          │
     │           minimalist text-based calendar with            │
     │               an elegant esthetic for Arch               │
@@ -38,7 +38,7 @@ post_upgrade() {
 
     ╭──────────────────────────────────────────────────────────╮
     │                                                          │
-    │              lvsk calendar updated • v0.2.9              │
+    │              lvsk calendar updated • v0.3.0              │
     │                                                          │
     ╰──────────────────────────────────────────────────────────╯
 
