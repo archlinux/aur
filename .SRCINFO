@@ -1,6 +1,6 @@
 pkgbase = r-mscoreutils
 	pkgdesc = Core Utils for Mass Spectrometry Data
-	pkgver = 1.21.0
+	pkgver = 1.22.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MsCoreUtils
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = r-mscoreutils
 	optdepends = r-roxygen2
 	optdepends = r-testthat
 	optdepends = r-vsn
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MsCoreUtils_1.21.0.tar.gz
-	sha256sums = c78e59bfdbb1af66389581a56aebe83c72a7ba8c385fe37dd53ba162525b93d1
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MsCoreUtils_1.22.1.tar.gz
+	sha256sums = f421e2507745cce7d412f6713ee8d5212a6b4369ea87e4412820928264fe2cef
 
 pkgname = r-mscoreutils
