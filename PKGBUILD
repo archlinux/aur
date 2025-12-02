@@ -1,6 +1,6 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=mdbook-i18n-helpers
-pkgver=0.3.5
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Gettext translation support for mdbook"  
 arch=(x86_64)
@@ -8,18 +8,16 @@ url="https://github.com/google/mdbook-i18n-helpers"
 license=('Apache-2.0')
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('7cac78e4f518f326e5fc1ff95e79e7e0e58330cb8ac6e4b559d9659cf69bb1ab')
+sha256sums=('82a64b6c27dc99a20968cc85a89dcfe0d36f82e2c9bc3b4342a2ffc55158822f')
 
 prepare() {
     cd $pkgname-$pkgver
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target $(rustc --print host-tuple)
 }
 
 build() {
     cd $pkgname-$pkgver
-    # Fails when -flto is set without -ffat-lto-objects
-    export CFLAGS+=' -ffat-lto-objects'
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features

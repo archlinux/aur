@@ -1,12 +1,12 @@
 pkgbase = mdbook-i18n-helpers
 	pkgdesc = Gettext translation support for mdbook
-	pkgver = 0.3.5
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/google/mdbook-i18n-helpers
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
-	source = mdbook-i18n-helpers-0.3.5.tar.gz::https://static.crates.io/crates/mdbook-i18n-helpers/mdbook-i18n-helpers-0.3.5.crate
-	sha256sums = 7cac78e4f518f326e5fc1ff95e79e7e0e58330cb8ac6e4b559d9659cf69bb1ab
+	source = mdbook-i18n-helpers-0.4.0.tar.gz::https://static.crates.io/crates/mdbook-i18n-helpers/mdbook-i18n-helpers-0.4.0.crate
+	sha256sums = 82a64b6c27dc99a20968cc85a89dcfe0d36f82e2c9bc3b4342a2ffc55158822f
 
 pkgname = mdbook-i18n-helpers
