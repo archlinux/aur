@@ -1,4 +1,4 @@
 [cosmic-camera]
 source = "git"
-git = "https://github.com/FreddyFunk/cosmic-camera.git"
+git = "https://github.com/cosmic-utils/camera.git"
 prefix = "v"
