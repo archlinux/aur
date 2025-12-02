@@ -1,7 +1,7 @@
 pkgbase = python-ftfy
 	pkgdesc = Fixes mojibake and other problems with Unicode, after the fact
 	pkgver = 6.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LuminosoInsight/python-ftfy
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = python-ftfy
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = python
 	depends = python-wcwidth
 	source = ftfy-6.3.1.tar.gz::https://files.pythonhosted.org/packages/source/f/ftfy/ftfy-6.3.1.tar.gz
 	sha256sums = 9b3c3d90f84fb267fe64d375a07b7f8912d817cf86009ae134aa03e1819506ec
