@@ -1,6 +1,6 @@
 pkgbase = r-diffustats
 	pkgdesc = Diffusion scores on biological networks
-	pkgver = 1.28.0
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/diffuStats
 	arch = x86_64
@@ -24,8 +24,8 @@ pkgbase = r-diffustats
 	optdepends = r-reshape2
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/diffuStats_1.28.0.tar.gz
-	md5sums = b7ced3e30943161349328bc91bd5dd24
-	b2sums = 7c94a1a46aac782a0686146a22b38be0e3039f651f8ac7a154f584a4d3ca13fa691daeae812c54f999fa8295262f922f186f98191c377f142b6a67868151c833
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/diffuStats_1.30.0.tar.gz
+	md5sums = d66467c23ce2aaf97842b36f26985f92
+	b2sums = 6f99a41ac3348973febefa72b91b9aa4fd63a07ceb492a0097fdecf18314d505268a7b41d7d0a9294bf88357548e61b188e55906603ca89aa58e16939a3501e4
 
 pkgname = r-diffustats
