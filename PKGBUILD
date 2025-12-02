@@ -16,6 +16,7 @@ makedepends=(
   'texlive-bin'
   'texlive-fontsextra'
   'texlive-langcyrillic'
+  'texlive-langenglish'
   'texlive-langgerman'
   'texlive-latexextra'
   'texlive-luatex'
