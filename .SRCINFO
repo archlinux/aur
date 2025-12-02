@@ -1,0 +1,24 @@
+pkgbase = ttkweather-bin
+	pkgdesc = TTKWeather forecast program, you can query the future weather conditions, based on Qt.(Prebuilt version)天气预报程序，可以查询未来的天气状况
+	pkgver = 3.2.0.0
+	pkgrel = 1
+	url = https://github.com/Greedysky/TTKWeather
+	arch = x86_64
+	license = GPL-3.0-only
+	license = LGPL-3.0-only
+	depends = qt6-base
+	depends = libgpg-error
+	depends = openssl
+	depends = libxcb
+	depends = freetype2
+	provides = ttkweather=3.2.0.0
+	conflicts = ttkweather
+	options = !strip
+	source = ttkweather-3.2.0.0.deb::https://github.com/Greedysky/TTKWeather/releases/download/3.2.0.0/TTKWeather-3.2.0.0-ubuntu-24.04-qt6-x64.deb
+	source = ttkweather.desktop
+	source = ttkweather.sh
+	sha256sums = 8e006e90440a2e9e21ef2c1a5a8d9020be2d2360fef2a4110636145c35aa8e56
+	sha256sums = 16b7d171eccb2850cb3e664f8ba9313a50a618fe0de696709f1d336d04e97226
+	sha256sums = 4d70d090ce2d42eb020e170ac032345c954ecc723da08c4fb8e50624eba16a43
+
+pkgname = ttkweather-bin
