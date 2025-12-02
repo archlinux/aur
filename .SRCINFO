@@ -1,6 +1,6 @@
 pkgbase = pg-gvm
 	pkgdesc = Greenbone Library for helper functions in PostgreSQL
-	pkgver = 22.6.11
+	pkgver = 22.6.12
 	pkgrel = 1
 	url = https://github.com/greenbone/pg-gvm
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = pg-gvm
 	depends = glib2
 	depends = libical
 	depends = postgresql
-	source = pg-gvm-22.6.11.tar.gz::https://github.com/greenbone/pg-gvm/archive/v22.6.11.tar.gz
-	source = pg-gvm-22.6.11.tar.gz.asc::https://github.com/greenbone/pg-gvm/releases/download/v22.6.11/pg-gvm-22.6.11.tar.gz.asc
+	source = pg-gvm-22.6.12.tar.gz::https://github.com/greenbone/pg-gvm/archive/v22.6.12.tar.gz
+	source = pg-gvm-22.6.12.tar.gz.asc::https://github.com/greenbone/pg-gvm/releases/download/v22.6.12/pg-gvm-22.6.12.tar.gz.asc
 	source = 0001_not-sbin.patch
 	validpgpkeys = 8AE4BE429B60A59B311C2E739823FAA60ED1E580
-	sha512sums = 2d47d28fd51455b61f908450f2789c7d6493cd1c53643d16cfe8bf5b98e792bba3f42de6c52428fa67b1aaa874646ee8bf6c14870b7a6713d381b78ad0edf3c9
+	sha512sums = c1f3738fb3b85e40b30d12c8e1eadc731010582ed50607bea5d97273e915d1e9f8ca2965bf6ea53312c35fd147492156b6c32cee9871004ed7f90d537629721a
 	sha512sums = SKIP
 	sha512sums = 724ad7720f6ce75747b26478e27fad18b678af6361b4c1a5fe5bb6563265d7db78761b74995c04ea57ad78fb9fd0408d237440f04958bebc03bd6cddb2432481
 
