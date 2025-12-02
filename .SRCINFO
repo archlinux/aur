@@ -8,7 +8,7 @@ pkgbase = r-r6
 	depends = r>=3.6
 	optdepends = r-lobstr
 	optdepends = r-testthat>=3.0.0
-	source = https://cran.r-project.org/src/contrib/R6_2.6.1.tar.gz
+	source = https://cloud.r-project.org/src/contrib/R6_2.6.1.tar.gz
 	b2sums = 5cd595f908bd17908e9eaf5ccacbccfd6eea794584e7e7f1ff0bf20c3286f6fd11e63b2190d85f7bd0ddd33744c1c2d53e269c2107dbda9e84885599d8a28abb
 
 pkgname = r-r6

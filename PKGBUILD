@@ -40,7 +40,8 @@ optdepends=(
 #     "r-testthat"
 # )
 
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+# It uses cloud.r-project.org instead of cran to make use of the CDN.
+source=("https://cloud.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 b2sums=("5cd595f908bd17908e9eaf5ccacbccfd6eea794584e7e7f1ff0bf20c3286f6fd11e63b2190d85f7bd0ddd33744c1c2d53e269c2107dbda9e84885599d8a28abb")
 
 build() {
