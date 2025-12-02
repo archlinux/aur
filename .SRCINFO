@@ -1,6 +1,6 @@
 pkgbase = pano-scrobbler-bin
 	pkgdesc = Feature packed cross-platform music tracker
-	pkgver = 4.14
+	pkgver = 4.15
 	pkgrel = 1
 	url = https://github.com/kawaiiDango/pano-scrobbler
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = pano-scrobbler-bin
 	provides = pano-scrobbler
 	conflicts = pano-scrobbler
 	options = !strip
-	source_x86_64 = pano-scrobbler-414-linux-x64.tar.gz::https://github.com/kawaiiDango/pano-scrobbler/releases/download/414/pano-scrobbler-linux-x64.tar.gz
-	sha256sums_x86_64 = 2646104ac5bc3008596a0cdb1c647d28ff56e7e1dce5f744465560d1b4f6c522
-	source_aarch64 = pano-scrobbler-414-linux-arm64.tar.gz::https://github.com/kawaiiDango/pano-scrobbler/releases/download/414/pano-scrobbler-linux-arm64.tar.gz
-	sha256sums_aarch64 = c15ecdd861ea46c41577e2d887d2a0e8192796f62027c8e09fb3ba90c07ff120
+	source_x86_64 = pano-scrobbler-415-linux-x64.tar.gz::https://github.com/kawaiiDango/pano-scrobbler/releases/download/415/pano-scrobbler-linux-x64.tar.gz
+	sha256sums_x86_64 = 27c4c1c5a009e18ca77eda9ceba98ce91e8787f477f7927646a1bc30907d978c
+	source_aarch64 = pano-scrobbler-415-linux-arm64.tar.gz::https://github.com/kawaiiDango/pano-scrobbler/releases/download/415/pano-scrobbler-linux-arm64.tar.gz
+	sha256sums_aarch64 = 90aa3f21f5e5962ae60376821d04068633794950962b3bb932ac1f2d043219d6
 
 pkgname = pano-scrobbler-bin
