@@ -8,7 +8,7 @@ pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Prag
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
 license=('custom:OFL')
-makedepends=('git' 'nodejs>=12.22.0' 'npm' 'ttfautohint')
+makedepends=('git' 'nodejs>=12.22.0' 'npm' 'ttfautohint-cli')
 depends=()
 conflicts=(${_pkgname})
 provides=(${_pkgname})

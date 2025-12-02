@@ -8,7 +8,7 @@ pkgbase = ttf-iosevka-custom-git
 	makedepends = git
 	makedepends = nodejs>=12.22.0
 	makedepends = npm
-	makedepends = ttfautohint
+	makedepends = ttfautohint-cli
 	provides = ttf-iosevka-custom
 	conflicts = ttf-iosevka-custom
 	source = private-build-plans.toml.example
