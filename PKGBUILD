@@ -1,37 +1,39 @@
 # Maintainer: Zhiwei Chen <condy0919@gmail.com>
+# Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
 
 pkgname=merlin
-pkgver=5.3
-_pkgver=$pkgver-502 # Yes, it builds
+_pkgver=5.6-504
+pkgver=${_pkgver/-/_} # No hypen in $pkgver
 pkgrel=1
 pkgdesc="Context sensitive completion for OCaml in Vim and Emacs"
 arch=('x86_64')
-depends=('ocaml' 'ocaml-yojson' 'ocaml-csexp')
-makedepends=('git' 'dune')
-url="https://github.com/ocaml/merlin"
+depends=('glibc' 'ocaml' 'ocaml-csexp' 'ocaml-merlin-lib' 'python' 'zstd')
+makedepends=('dune' 'ocaml-alcotest')
+checkdepends=('jq' 'ocaml-menhir')
+url="https://ocaml.github.io/merlin"
 license=('MIT')
-source=("${url}/releases/download/v${_pkgver}/${pkgname}-${_pkgver}.tbz")
-sha256sums=('2cea46f12397fa6e31ef0c0d4f5e11c1cfd916ee49420694005c95ebb3aa24bc')
+source=("${pkgname}-${_pkgver}.tbz::https://github.com/ocaml/merlin/releases/download/v${_pkgver}/merlin-${_pkgver}.tbz")
+b2sums=('06fead7fdc112b48611ab88f83ad34e7f125d61b171efdac9c43a5d52a6201aa7f8459f87ea29bbab7e0ec02b9fddc37d82871baf91e393da9afa63f69282783')
 options=('!strip')
-conflicts=('vim-ocaml-merlin-git')
 
 build() {
-  cd "${srcdir}/${pkgname}-${_pkgver}"
-
-  # no tests built
-  rm -rf tests
-
-  make all
+    cd $srcdir/merlin-$_pkgver
+    dune build -p merlin
 }
 
+check() {
+    cd $srcdir/merlin-$_pkgver
+    dune test --release --verbose
+
+}
 package() {
-  cd "${srcdir}/${pkgname}-${_pkgver}"
+    cd $srcdir/merlin-$_pkgver
 
-  DESTDIR="${pkgdir}" dune install merlin --prefix="/usr" --libdir="/usr/lib/ocaml"
+    DESTDIR="${pkgdir}" dune install -p merlin \
+	   --prefix "/usr" \
+	   --libdir "/usr/lib/ocaml" \
+	   --docdir "/usr/share/doc/$pkgname"
 
-  # Dune installs documentation in /usr/doc, fix that.
-  install -dm755 "${pkgdir}/usr/share/"
-  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
-
-  rm "${pkgdir}"/usr/lib/ocaml/${pkgname}/dune-package
+    install -d $pkgdir/usr/share/licenses/$pkgname/
+    mv $pkgdir/usr/share/doc/$pkgname/$pkgname/LICENSE $pkgdir/usr/share/licenses/$pkgname/
 }
