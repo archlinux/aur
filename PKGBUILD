@@ -1,5 +1,5 @@
 pkgname=arch-update-manager-bin
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A Linux Mint inspired GTK4-based update manager for Arch Linux (prebuilt binary)"
 arch=('x86_64')
@@ -14,8 +14,8 @@ source=(
   "arch-update-manager-${pkgver}-x86_64.tar.gz::${url}/releases/download/${pkgver}/arch-update-manager-${pkgver}-x86_64.tar.gz"
   "${pkgname%-bin}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('42e7563b7c82427ef0df27610f6cf283705f6883b2acdcd1170de1cb0ec08d62'
-            '631c9ba311d273d894e521b408fbae0ca80f2089803700953b530d5452183b1c')
+sha256sums=('6be5486dbbc6a8f0eee14bc51ac4d95124b022da2606d6b0ec362a4ddd18a15d'
+            'c9b15e06f312e35412d33dcb20dc2e8771224f2f88696aeade8b56b9e8a5c46e')
 
 package() {
   cd "$srcdir"
