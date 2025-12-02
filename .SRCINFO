@@ -1,12 +1,12 @@
 pkgbase = otf-openmoji
 	pkgdesc = Open source emojis for designers, developers and everyone else!
-	pkgver = 15.1.0
+	pkgver = 16.0.0
 	pkgrel = 1
 	url = https://openmoji.org/
 	arch = any
 	license = CC-BY-SA-4.0
 	depends = fontconfig
-	source = otf-openmoji-15.1.0.zip::https://github.com/hfg-gmuend/openmoji/releases/download/15.1.0/openmoji-font.zip
-	sha256sums = 9c157abb27203a3e2f13d5e000c8773015e3e373d3da3c263c1ed917cacbb6de
+	source = otf-openmoji-16.0.0.zip::https://github.com/hfg-gmuend/openmoji/releases/download/16.0.0/openmoji-font.zip
+	sha256sums = 4ff90e4fbdcf29bfe5c6ff477bc5c61a1280945bcc13113a63f8560590b0edbb
 
 pkgname = otf-openmoji
