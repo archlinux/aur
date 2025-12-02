@@ -1,24 +1,30 @@
-# Maintainer: Jan64X <jan.petrlik@protonmail.com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=wifiman-desktop
-pkgver=1.1.3
-pkgrel=2
-pkgdesc="WiFiman Desktop - Network analysis tool by Ubiquiti"
+pkgver=1.2.8
+pkgrel=1
+pkgdesc="Network analysis and WiFi speed testing tool by Ubiquiti"
 arch=('x86_64')
-url="https://www.ui.com/download/app/wifiman-desktop"
-license=('custom')
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'iw' 'libayatana-appindicator' 'libsoup' 'net-tools' 'openssl' 'pango' 'resolvconf' 'webkit2gtk' 'systemd')
-makedepends=('debtap')
-source=("https://desktop.wifiman.com/${pkgname}-${pkgver}-amd64.deb")
-sha256sums=('cbffe1caaca6b6011daca66dde68a54dbe29a7e4c310341fe917a16200e78730')
-
-prepare() {
-    cd "$srcdir"
-    ar x "${pkgname}-${pkgver}-amd64.deb"
-}
+url="https://ui.com"
+license=('LicenseRef-unknown')
+depends=(
+  'bash'
+  'gtk3'
+  'iw'
+  'libayatana-appindicator'
+  'libsoup3'
+  'net-tools'
+  'networkmanager'
+  'webkit2gtk-4.1'
+  'wireless_tools'
+  'systemd'
+)
+install="$pkgname.install"
+source=("https://desktop.wifiman.com/$pkgname-$pkgver-amd64.deb")
+sha256sums=('47e31bc317e7055f5571859e33534cd3c2d7d4ccfdf9fcb8afab9920bc9d964b')
 
 package() {
-    cd "$srcdir"
-    bsdtar -xf data.tar.* -C "$pkgdir/"
-    install -d "$pkgdir/usr/lib/systemd/system"
-    ln -s "/usr/lib/wi-fiman-desktop/$pkgname.service" "$pkgdir/usr/lib/systemd/system/"
+  bsdtar -xvf data.tar.gz -C "$pkgdir/"
+
+  install -d "$pkgdir/usr/lib/systemd/system"
+  ln -s "/usr/lib/wifiman-desktop/$pkgname.service" "$pkgdir/usr/lib/systemd/system/"
 }

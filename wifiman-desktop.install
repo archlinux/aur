@@ -1,0 +1,4 @@
+post_remove() {
+  # Remove leftover service.json & wifiman-desktop.log
+  rm -rf /usr/lib/wifiman-desktop/
+}
