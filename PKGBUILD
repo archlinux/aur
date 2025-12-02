@@ -2,7 +2,7 @@
 
 pkgname=python-taxi
 _name=taxi
-pkgver=6.3.1
+pkgver=6.3.2
 pkgrel=3
 pkgdesc="Timesheeting tool that focuses on simplicity"
 arch=('any')
@@ -16,7 +16,7 @@ source=(
     taxi-complete.bash
     taxi-complete.zsh
 )
-sha512sums=('fb1ab86d06b3272f9cdec3f22298b0b5353e6efd489f6941da88b5f28c8584f6b91c9280d2ab6fdda0a063fb5e1f444b33f0947830ebd8fbcb879ca143316254'
+sha512sums=('54eb0282aeebd4d0925ac9de316ab42ddd6a246ec8d79f9f53eee7857718212b644a2ac0650bfba4e3ae90080792d44fcbef94b2874ad7ac6cb5b6d6bc740046'
             '006e058e78737f3e9da2da7a31e66b5b6b220c3a4c952cc911de8d093a13cb3df63cbf9a12fc4fb9a1b6a59031f5d44396871f49333956e24b9c58a487872152'
             '3bbb8f968dc1a6fabcc0b974441c59e09255b98706713b9c3737f985ca807ab41992885455e4afdfc8556e244f0abf6ebfb2dcd0ffbd657ed95100d85c9fba2b')
 
