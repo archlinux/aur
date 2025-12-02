@@ -4,7 +4,7 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="A modern GNOME application to browse and manage AUR packages with GTK4 and Libadwaita"
 arch=('any')
-url="https://aur.archlinux.org/packages/gnome-aur-manager"
+url="https://github.com/yourusername/gnome-aur-manager"
 license=('GPL-3.0-or-later')
 depends=(
     'python>=3.10'
@@ -17,7 +17,6 @@ depends=(
 )
 optdepends=(
     'gnome-software-packagekit-plugin: Integration with GNOME Software Center'
-    'gnome-software-packagekit-plugin-appstream-git: Enhanced AppStream integration'
 )
 makedepends=()
 provides=("${pkgname}")
@@ -25,7 +24,7 @@ conflicts=()
 backup=()
 
 source=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('4a8a2d48e2d032868059d2b588b03b7640eee77d4d95420b1f9c15f195e7b387')
+sha256sums=('e2a9486bc72d7a0dace6e3173929634afb8bdeabde19556a8a259be33ccfbcbc')
 
 package() {
     cd "${srcdir}/${pkgname}"
