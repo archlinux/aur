@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ecostats
-_pkgver=1.2.1
+_pkgver=1.2.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -52,8 +52,8 @@ optdepends=(
   r-vgam
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('89bd47d789ac907fe69fde7ccf302514')
-b2sums=('f9554835788c9ede1650727e5d67ae4103ec87d2667ad58c5c855b20240d42a5fc704210b861f3d0d70f3eab523b9d3409763f669bf060647123a86f6f78a344')
+md5sums=('375fbd0ede9b607449bf498960efb749')
+b2sums=('3cf32b5899f08943beb5cc7069c7a8db06367345c46c09e38b52f52fa3522ba2d0323ddebf5e61790dfd8f6e584cf1a324f863260fb0b729ffb9afa9a5d6aecf')
 
 build() {
   mkdir build
