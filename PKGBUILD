@@ -1,10 +1,9 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=8.1.r121735.gbe99d2c0b2
+pkgver=8.1.r121953.g27e94281d1
 pkgrel=1
 _svt_hevc_ver='ed80959ebb5586aa7763c91a397d44be1798587c'
-_obs_studio_ver='32.0.2'
 _whispercpp_ver='1.8.2'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
@@ -139,6 +138,7 @@ makedepends=(
     'clang'
     'cmake'
     'cuda'
+    'decklink-sdk'
     'ffnvcodec-headers'
     'git'
     'gmp'
@@ -162,7 +162,6 @@ provides=(
 conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
         'git+https://github.com/lensfun/lensfun.git'
-        "https://github.com/obsproject/obs-studio/archive/${_obs_studio_ver}/obs-studio-${_obs_studio_ver}.tar.gz"
         "https://github.com/ggml-org/whisper.cpp/archive/v${_whispercpp_ver}/whisper.cpp-${_whispercpp_ver}.tar.gz"
         '010-ffmpeg-add-svt-hevc.patch'
         "020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
@@ -173,13 +172,12 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         'LICENSE')
 sha256sums=('SKIP'
             'SKIP'
-            '39e99b9fbdc77e7e87cfd9c7e8709d1d427627bad5b21b791019c887c8598d13'
             'bcee25589bb8052d9e155369f6759a05729a2022d2a8085c1aa4345108523077'
-            'c774053b7279fc79966491dac275cded87eff0483feeb42b52e4f727f746a984'
+            '102a582b1b3cc2b0d02c711cc18f9f17dc79401dea5be1cd45e706792d9a14a3'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-            '4096e3909c9b0141095e8d578b5ab70e48d854e63190ddf3a58ee45aa1c01ef9'
+            '7c845ce2a3746b66d512d789dee19c26c8545bfd1e10c70e473905845980d929'
             '1c4f328bfb0dfedf4478f7b3659bcd08c591823a389b9e9e4eb8c35b0b3e0356'
-            'bde0a8007f793e09a02fd5d70769a1dbdec0da83d3f70f320a6975c6040a6bc0'
+            '26b22494a697afd71b15393f0711cb453cb7132a6d819bd1e89c3a613fbc8f85'
             '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
@@ -236,10 +234,7 @@ build() {
     cd ffmpeg
     printf '%s\n' '  -> Running ffmpeg configure script...'
     
-    local _decklink_include="-isystem${srcdir}/obs-studio-${_obs_studio_ver}/plugins/decklink/linux/decklink-sdk"
     export CFLAGS+=' -isystem/opt/cuda/include'
-    export CFLAGS+=" ${_decklink_include}"
-    export CXXFLAGS+=" ${_decklink_include}"
     export LDFLAGS+=' -L/opt/cuda/lib64'
     
     # fix build of libavfilter/asrc_flite.c with gcc 14
