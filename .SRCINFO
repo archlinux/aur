@@ -1,18 +1,20 @@
 pkgbase = cutefish-screenshot
 	pkgdesc = Screenshot tool for CutefishOS
 	pkgver = 0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cutefishos/screenshot
 	arch = x86_64
 	groups = cutefish
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = extra-cmake-modules
 	makedepends = ninja
 	makedepends = qt5-tools
 	depends = fishui
 	source = https://github.com/cutefishos/screenshot/archive/0.8/cutefish-screenshot-0.8.tar.gz
 	source = fix-build.patch
+	source = 0001-Use-common-icon-name.patch
 	sha512sums = e664f67987390b7be018102a552d66a87184aa7d8ceedde425e3f0beb7b952ce66d4b9fe10031816e0cf222d7755469bda78ecb112c68a74e719aef3f11f3050
 	sha512sums = a44cb33d8f2f40a3e8f20464578b59c8405851668ce1f1d32f3503e7e6ba984ec8ecef4021393593ce68988b355c7fda7ec9c65f582e76ce74715db49d6d3cc9
+	sha512sums = 10d67343748790c897ddb0211ed714bd4bf0733bfea1dae7f3e5556c6372a7bef698be5cd67bded93e97c1c3c1321636fca2c82dec2b7a5a342815bda26fcf7a
 
 pkgname = cutefish-screenshot

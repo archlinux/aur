@@ -1,0 +1,51 @@
+From 700c1df0f22d8b8fa77e62a9a8fe779948aef42a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Tue, 2 Dec 2025 03:00:12 +0100
+Subject: [PATCH] Use common icon name
+
+---
+ cutefish-screenshot.desktop | 4 ++--
+ src/screenshotview.cpp      | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/cutefish-screenshot.desktop b/cutefish-screenshot.desktop
+index 9dc10ab..fcbe1ec 100644
+--- a/cutefish-screenshot.desktop
++++ b/cutefish-screenshot.desktop
+@@ -2,8 +2,8 @@
+ Name=Screenshot
+ Name[zh_CN]=截图
+ Exec=cutefish-screenshot
+-Icon=cutefish-screenshot
++Icon=applets-screenshooter
+ Terminal=false
+ Type=Application
+ StartupNotify=true
+-Categories=Settings;
+\ No newline at end of file
++Categories=Settings;
+diff --git a/src/screenshotview.cpp b/src/screenshotview.cpp
+index f51e7d2..b7427df 100644
+--- a/src/screenshotview.cpp
++++ b/src/screenshotview.cpp
+@@ -93,7 +93,7 @@ void ScreenshotView::saveFile(QRect rect)
+             QList<QVariant> args;
+             args << "cutefish-screenshot";
+             args << ((unsigned int) 0);
+-            args << "cutefish-screenshot";
++            args << "applets-screenshooter";
+             args << "";
+             args << tr("The picture has been saved to %1").arg(fileName);
+             args << QStringList();
+@@ -124,7 +124,7 @@ void ScreenshotView::copyToClipboard(QRect rect)
+         QList<QVariant> args;
+         args << "cutefish-screenshot";
+         args << ((unsigned int) 0);
+-        args << "cutefish-screenshot";
++        args << "applets-screenshooter";
+         args << "";
+         args << tr("The picture has been saved to the clipboard");
+         args << QStringList();
+-- 
+2.52.0
+
