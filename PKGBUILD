@@ -15,7 +15,7 @@ arch=('x86_64' 'aarch64')
 license=('MPL2')
 depends=(dbus
          dbus-glib
-         ffmpeg
+         ffmpeg4.4
          gtk3
          libxss
          libxt
