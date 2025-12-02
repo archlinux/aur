@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/Broderick-Westrope/tetrigo"
 license=('GPL-3.0-only')
 depends=('glibc')
-makedepends=('go')
+makedepends=('go>=1.23')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('0347e2739e6fd7fc37667eb8873030f700d26e824d124d73ff8eb49c910946a8')
 
