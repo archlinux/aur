@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=tree-sitter-dockerfile-git
-pkgver=0.1.0.r0.gb25f86c
+pkgver=0.2.0.r2.g971acdd
 pkgrel=1
 pkgdesc="Dockerfile grammar for tree-sitter"
 arch=('x86_64')
@@ -22,22 +22,16 @@ pkgver() {
 	)
 }
 
-prepare() {
-	cd "$pkgname"
-	tree-sitter generate
-}
-
 build() {
-	cd "$pkgname/src/"
-	cc $CFLAGS -std=c99 -c parser.c
-	cc $LDFLAGS -shared parser.o -o "$srcdir/parser.so"
+    cd "$pkgname"
+    make
 }
 
 package() {
-	install -Dvm 644 parser.so "$pkgdir/usr/lib/libtree-sitter-dockerfile.so"
+        cd "$pkgname"
+	install -Dvm 644 libtree-sitter-dockerfile.so "$pkgdir/usr/lib/libtree-sitter-dockerfile.so"
 	install -d "$pkgdir/usr/share/nvim/runtime/parser/"
 	ln -s "/usr/lib/libtree-sitter-dockerfile.so" "$pkgdir/usr/share/nvim/runtime/parser/dockerfile.so"
-	cd "$pkgname"
 	install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dvm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
