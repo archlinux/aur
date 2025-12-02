@@ -1,8 +1,9 @@
-# Maintainer: Fidel Ramos <archlinux.shklm@simplelogin.com>
+# Maintainer: Luis Aranguren <pizzaman@hotmail.com>
+# Contributor: Fidel Ramos <archlinux.shklm@simplelogin.com>
 
 pkgname=electrum-abc-bin
 pkgdesc='Lightweight eCash wallet'
-pkgver=5.4.2
+pkgver=5.4.4
 pkgrel=1
 url='https://bitcoinabc.org/electrum'
 arch=('x86_64')
@@ -13,7 +14,7 @@ validpgpkeys=(D77BFAEDC2C0AD61D9D5DC32B838D022AFCF71C9 # Pierre K <pierrekn@gmai
 _appimage="ElectrumABC-${pkgver}-${arch}.AppImage"
 _pkgbin=electrum-abc
 source_x86_64=("https://github.com/Bitcoin-ABC/ElectrumABC/releases/download/${pkgver}/${_appimage}")
-sha256sums_x86_64=('89c972bc6d304d1b39ddc0d32aaa9bd0daac57345e87acfc0d135da55eaea8c6')
+sha256sums_x86_64=('61630638b87d734d8d58935c0bac8cdc32e6617f93ca58414009981456bebd53')
 
 package() {
     # Extract files
