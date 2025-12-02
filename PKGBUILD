@@ -12,10 +12,10 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "palemachine.service"
         "palemachine.sysusers"
         "palemachine.tmpfiles")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=('997d14e2e789c7bbc8474a00989794c36f893be1c7f5f0d52a631ebe2fd40c47'
+            '2c06540f3c60c44c858930d67ac22dfbef1a0ed4eb55044246f79f89d3e35fef'
+            '400e42fc588f97abb5dafd90440dcd6066091c891aaad506b9235859af6826f9'
+            '1c48f8dfa298a2224f09e9c8c5240f54162d2a7eecf7540221e2bb2f0303b7fb')
 
 prepare() {
     cd "$pkgname-$pkgver"
