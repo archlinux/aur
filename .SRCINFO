@@ -10,12 +10,15 @@ pkgbase = r-rlang
 	optdepends = r-cli>=3.1.0
 	optdepends = r-covr
 	optdepends = r-crayon
+	optdepends = r-desc
 	optdepends = r-fs
 	optdepends = r-glue
 	optdepends = r-knitr
 	optdepends = r-magrittr
 	optdepends = r-pillar
+	optdepends = r-pkgload
 	optdepends = r-rmarkdown
+	optdepends = r-testthat
 	optdepends = r-tibble
 	optdepends = r-usethis
 	optdepends = r-vctrs>=0.2.3
