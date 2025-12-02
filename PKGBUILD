@@ -83,7 +83,6 @@ EOF
 
   ./ns3 configure \
     --build-profile=default \
-    --enable-build-version \
     --enable-dpdk \
     --enable-eigen \
     --enable-examples \
