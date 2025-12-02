@@ -1,6 +1,6 @@
 # Maintainer: mst-mkt <mail@keito.dev>
 pkgname=moocs-collect-cli-git
-pkgver=0.3.1.11.g2407a19
+pkgver=1.0.1.0.g07071b0
 pkgrel=1
 pkgdesc="CLI tool to download lecture slides from INIAD MOOCs (latest git version)"
 arch=('x86_64')
@@ -19,8 +19,8 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/moocs-collect/collect-cli"
-  cargo build --release --locked
+  cd "$srcdir/moocs-collect"
+  cargo build --release --locked -p collect-cli
 }
 
 package() {
