@@ -1,6 +1,6 @@
 pkgbase = crossmacro
 	pkgdesc = Mouse Macro Automation Tool for Linux Wayland
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/alper-han/CrossMacro
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = crossmacro
 	depends = libxcursor
 	depends = libxrandr
 	options = !strip
-	source = crossmacro-0.3.0.tar.gz::https://github.com/alper-han/CrossMacro/archive/v0.3.0.tar.gz
-	sha256sums = 64b78bc82d7251bbcaace93176c3e8f55d794124ba0a2d54f0d519d9704f3f68
+	source = crossmacro-0.3.1.tar.gz::https://github.com/alper-han/CrossMacro/archive/v0.3.1.tar.gz
+	sha256sums = 218b7b200466a7fac2a9bc3abf971b1b7f8f743ac4ca8af48b17f230413eae70
 
 pkgname = crossmacro
