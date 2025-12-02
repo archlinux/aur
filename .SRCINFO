@@ -1,7 +1,7 @@
 pkgbase = picoasm
 	pkgdesc = Assembler for the Xilinx PicoBlaze-3 soft-core processor
 	pkgver = 0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://marksix.home.xs4all.nl/picoasm.html
 	arch = i686
 	arch = x86_64
@@ -15,4 +15,3 @@ pkgbase = picoasm
 	md5sums = c3f2ce172a4b88ace764bc46d5b938e1
 
 pkgname = picoasm
-

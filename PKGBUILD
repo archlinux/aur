@@ -2,7 +2,7 @@
 
 pkgname=picoasm
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Assembler for the Xilinx PicoBlaze-3 soft-core processor"
 arch=("i686" "x86_64")
 url="http://marksix.home.xs4all.nl/picoasm.html"
@@ -15,7 +15,7 @@ md5sums=(58ef733437fff17bf73801270dd543d5 c3f2ce172a4b88ace764bc46d5b938e1)
 
 build() {
   cd "$srcdir/Picoasm"
-  patch -p1 <../../picoasm.patch
+  patch -p1 <../picoasm.patch
   make
 }
 
