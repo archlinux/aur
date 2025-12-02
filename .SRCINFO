@@ -12,6 +12,7 @@ pkgbase = gnome-aur-manager
 	depends = yay
 	depends = gnome-console
 	depends = pacman
+	depends = gnome-software-packagekit-plugin-appstream-git
 	optdepends = gnome-software-packagekit-plugin: Integration with GNOME Software Center
 	provides = gnome-aur-manager
 	source = gnome-aur-manager-1.0.0.tar.gz

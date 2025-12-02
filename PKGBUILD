@@ -14,6 +14,7 @@ depends=(
     'yay'
     'gnome-console'
     'pacman'
+    'gnome-software-packagekit-plugin-appstream-git'
 )
 optdepends=(
     'gnome-software-packagekit-plugin: Integration with GNOME Software Center'
