@@ -1,6 +1,6 @@
 pkgbase = codanna
 	pkgdesc = X-ray vision for your agent - Code assistant with understanding of functions, relationships, and implementations
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/bartolli/codanna
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = codanna
 	makedepends = pkg-config
 	depends = openssl
 	options = !lto
-	source = codanna-0.8.2.tar.gz::https://github.com/bartolli/codanna/archive/v0.8.2.tar.gz
-	sha256sums = e477508a83c65f8d1d6ff35c28695b2cf1a4ce4a0a3c754da07b0c5c99e88ca8
+	source = codanna-0.8.3.tar.gz::https://github.com/bartolli/codanna/archive/v0.8.3.tar.gz
+	sha256sums = 8752987d1c8dd165bd7a9f600b9c71478b75d3dcbe78a49448dcf1e29d8fe4aa
 
 pkgname = codanna
