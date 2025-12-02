@@ -1,6 +1,6 @@
 pkgbase = python-pretty_midi
 	pkgdesc = Python functions and classes for handling MIDI data conveniently.
-	pkgver = 0.2.10
+	pkgver = 0.2.11
 	pkgrel = 2
 	url = https://pypi.org/project/pretty_midi
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-pretty_midi
 	conflicts = pretty_midi
 	conflicts = python-pretty_midi
 	options = !strip
-	source = pretty_midi-0.2.10.tar.gz::https://files.pythonhosted.org/packages/source/p/pretty_midi/pretty_midi-0.2.10.tar.gz
-	sha256sums = ea6e192f94044674e833336ea1f415318ddf28e320302ac7b109edff0d4534bd
+	source = pretty_midi-0.2.11.tar.gz::https://files.pythonhosted.org/packages/source/p/pretty_midi/pretty_midi-0.2.11.tar.gz
+	sha256sums = dda81d643f71a0e91843a8644b312c0380237f1e63d5c6188225785c8d58cc67
 
 pkgname = python-pretty_midi
