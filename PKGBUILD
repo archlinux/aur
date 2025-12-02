@@ -4,8 +4,8 @@ pkgbase=dms-shell-git
 _pkgbase=${pkgbase%-git}
 _pkgname=DankMaterialShell
 pkgname=($_pkgbase-git $_pkgbase-hyprland-git $_pkgbase-niri-git)
-pkgver=0.5.0.r10.gdb584b7
-pkgrel=2
+pkgver=0.6.2.r193.g75af444
+pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
 url="https://github.com/AvengeMedia/$_pkgname"
@@ -30,12 +30,16 @@ source=(
         "dms.service"
         "completions.bash"
         "completions.fish"
-        "completions.zsh")
+        "completions.zsh"
+        "danklogo.svg"
+        "dms-open.desktop")
 sha256sums=('SKIP'
             '513be09c9a4f56fe1274b6bc823d2eafaa3f3da9892bd668767844b83c94011a'
             '61e116dd2fe4cd87ab203f6a3d193404dd5f3c0c0f6dc262439a64411bcb30c4'
             '8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667'
-            '41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d')
+            '41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d'
+            '540c27cacf8ac512b62f88c1613d6e3f42ba96e3dce47acbb8283471d1730bab'
+            '9382aa73056c4921f63f6be40d2ab68aa36e6ea716e0d4227dff68cb316a1ff3')
 pkgver() {
     cd "$_pkgname"
     git describe --long --tags --abbrev=7 --match="v*" HEAD 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || echo "0.0.0.r0.$(git rev-parse --short=7 HEAD)"
@@ -75,6 +79,8 @@ package_dms-shell-git() {
 	install -Dm0644 "completions.bash" "$pkgdir/usr/share/bash-completion/completions/dms"
 	install -Dm0644 "completions.zsh" "$pkgdir/usr/share/zsh/site-functions/_dms"
 	install -Dm0644 "completions.fish" "$pkgdir/usr/share/fish/vendor_completions.d/dms.fish"
+	install -Dm0644 "dms-open.desktop" "$pkgdir/usr/share/applications/dms-open.desktop"
+	install -Dm0644 "danklogo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/danklogo.svg"
 }
 
 package_dms-shell-hyprland-git() {
