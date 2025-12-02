@@ -1,6 +1,6 @@
 pkgbase = xgo
 	pkgdesc = The first AI-native programming language that integrates software engineering into a unified whole
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/goplus/xgo
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = xgo
 	provides = xgo
 	conflicts = goplus
 	replaces = goplus
-	source = https://github.com/goplus/xgo/archive/refs/tags/v1.5.2.tar.gz
-	sha256sums = 68ef472acd5853f69d5378845d92619c51834a637092e2bf0924ad1cea2dd1ac
+	source = https://github.com/goplus/xgo/archive/refs/tags/v1.5.3.tar.gz
+	sha256sums = af10b9e8d3980e4c4f4b9bf3d341e3d1dd72d1324ca26825b360c3ce865b7da0
 
 pkgname = xgo
