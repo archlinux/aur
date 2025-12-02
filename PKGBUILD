@@ -5,14 +5,14 @@
 
 _pkgname="logseq-desktop"
 pkgname="$_pkgname-bin"
-pkgver=0.10.14
+pkgver=0.10.15
 pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
 license=('AGPL-3.0-or-later')
 arch=('x86_64' 'aarch64')
 
-provides=("$_pkgname=$pkgver")
+provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 options=('!debug' '!strip')
@@ -26,13 +26,12 @@ _pkgext="zip"
 source_x86_64=("$url/releases/download/$pkgver/Logseq-linux-x64-$pkgver.$_pkgext")
 source_aarch64=("$url/releases/download/$pkgver/Logseq-linux-arm64-$pkgver.$_pkgext")
 
-sha256sums_x86_64=('11b3837d3549e43db24a4211e5b589559f554e4a10d59f03e13a26f30e1b8db6')
-sha256sums_aarch64=('0986b9cad64ba81544a3de7f9cd03fb3baabf078e2b12cf0fcd4ea48d4b13485')
+sha256sums_x86_64=('cfa7afc2d4311efedb1d21508858ebeaff2f3eb896254c2b569a5dc8e2aa3803')
+sha256sums_aarch64=('cc7e00e8cca676fd962640d7f50a2c7e05ab6a83ed2501df35cb91baf097f478')
 
 # appimage - missing icon
 if [[ "${_pkgext::1}" == "A" ]]; then
   source+=("$_pkgname-$pkgver.png"::"$url/raw/$pkgver/resources/icons/logseq.png")
-  sha256sums+=('2c04bad999ef75b874bd185b84c4df560486685f5a36c2801224ef9b67642006')
 fi
 
 prepare() {
