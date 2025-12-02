@@ -1,6 +1,6 @@
 pkgbase = serialportassistant-bin
 	pkgdesc = A cross-platform serial port assistant.(Prebuilt version)一个跨平台的串口助手
-	pkgver = 0.5.31
+	pkgver = 0.5.32
 	pkgrel = 1
 	url = https://github.com/KangLin/SerialPortAssistant
 	arch = aarch64
@@ -11,13 +11,13 @@ pkgbase = serialportassistant-bin
 	depends = qt6-serialport
 	depends = qt6-base
 	depends = cmark
-	provides = serialportassistant-0.5.31
+	provides = serialportassistant-0.5.32
 	conflicts = serialportassistant
 	source = serialportassistant.sh
 	sha256sums = 46f66d0030a40bf6ccf01e73eb2927cdf75fe74f6c72765c259874049fa1a163
-	source_aarch64 = serialportassistant-0.5.31-aarch64.deb::https://github.com/KangLin/SerialPortAssistant/releases/download/v0.5.31/serialportassistant_0.5.31_ubuntu-24.04_arm64.deb
-	sha256sums_aarch64 = 0305e20dd50a75a3eac5497cb0739426b3f4deddd5e1a2c63d12519009ce9939
-	source_x86_64 = serialportassistant-0.5.31-x86_64.deb::https://github.com/KangLin/SerialPortAssistant/releases/download/v0.5.31/serialportassistant_0.5.31_ubuntu-24.04_amd64.deb
-	sha256sums_x86_64 = 1f36ecca77dcd870e0c2ac31eb9d5bab39667b7cb9806f50514dbb3871c14784
+	source_aarch64 = serialportassistant-0.5.32-aarch64.deb::https://github.com/KangLin/SerialPortAssistant/releases/download/v0.5.32/serialportassistant_0.5.32_ubuntu-24.04_arm64.deb
+	sha256sums_aarch64 = 5018b11f5c1335c941e0f55470391792214ba08b672b0116bc0881e3d9323e42
+	source_x86_64 = serialportassistant-0.5.32-x86_64.deb::https://github.com/KangLin/SerialPortAssistant/releases/download/v0.5.32/serialportassistant_0.5.32_ubuntu-24.04_amd64.deb
+	sha256sums_x86_64 = 4578c156b153a3aa5df534713c609d505dba193fbbc256a864bcdfbadedea704
 
 pkgname = serialportassistant-bin

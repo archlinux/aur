@@ -2,7 +2,7 @@
 pkgname=serialportassistant-bin
 _pkgname=SerialPortAssistant
 _appname="io.github.KangLin.${_pkgname}"
-pkgver=0.5.31
+pkgver=0.5.32
 pkgrel=1
 pkgdesc="A cross-platform serial port assistant.(Prebuilt version)一个跨平台的串口助手"
 arch=(
@@ -24,8 +24,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_ubuntu-24.04_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_ubuntu-24.04_amd64.deb")
 sha256sums=('46f66d0030a40bf6ccf01e73eb2927cdf75fe74f6c72765c259874049fa1a163')
-sha256sums_aarch64=('0305e20dd50a75a3eac5497cb0739426b3f4deddd5e1a2c63d12519009ce9939')
-sha256sums_x86_64=('1f36ecca77dcd870e0c2ac31eb9d5bab39667b7cb9806f50514dbb3871c14784')
+sha256sums_aarch64=('5018b11f5c1335c941e0f55470391792214ba08b672b0116bc0881e3d9323e42')
+sha256sums_x86_64=('4578c156b153a3aa5df534713c609d505dba193fbbc256a864bcdfbadedea704')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
