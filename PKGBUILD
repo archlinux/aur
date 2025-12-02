@@ -2,7 +2,7 @@
 pkgname=scantailor-universal-git
 pkgdesc="ScanTailor Universal - a fork based on Enhanced+Featured+Master versions of ST"
 pkgver=r1552.f280e04a
-pkgrel=1
+pkgrel=2
 arch=("x86_64")
 url="https://github.com/trufanov-nok/scantailor-universal"
 license=("GPL3")
@@ -22,7 +22,7 @@ makedepends=(
     "git"
     "ninja"
 )
-provides=("scantailor")
+provides=("scantailor" "scantailor-universal")
 conflicts=("scantailor-universal" "scantailor" "scantailor-advanced" "scantailor-advanced-git")
 source=("scantailor-universal::git+https://github.com/trufanov-nok/scantailor-universal.git")
 sha256sums=('SKIP')
@@ -53,4 +53,8 @@ build() {
 package() {
     cd "${srcdir}/scantailor-universal"
     DESTDIR="${pkgdir}" cmake --install build
+
+    # Create the symlink for the GUI
+    # This makes 'scantailor' launch 'scantailor-universal'
+    ln -s scantailor-universal "${pkgdir}/usr/bin/scantailor"
 }
