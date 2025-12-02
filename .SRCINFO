@@ -13,6 +13,6 @@ pkgbase = bab
 	provides = bab
 	
 	source = https://github.com/bab-sh/bab/archive/refs/tags/v${pkgver}.tar.gz
-	sha256sums = c1f97b6b981e5a514aabc5997794ba8b4f92a2ee0feae17f84e31eebd19b6f65
+	sha256sums = fe15a76c42fc97998567800d757344f5fca0009e64bfa91988d799ea00015e68
 	
 pkgname = bab
