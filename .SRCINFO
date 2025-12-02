@@ -1,26 +1,28 @@
 pkgbase = r-units
 	pkgdesc = Measurement Units for R Vectors
-	pkgver = 0.8.5
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=units
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = r>=3.0.2
+	depends = r>=3.5.0
 	depends = r-rcpp>=0.12.10
 	depends = udunits
-	optdepends = r-dplyr>=1.0.0
-	optdepends = r-ggplot2>=3.2.1
-	optdepends = r-knitr
-	optdepends = r-magrittr
-	optdepends = r-measurements
 	optdepends = r-nistunits
-	optdepends = r-pillar>=1.3.0
-	optdepends = r-rmarkdown
-	optdepends = r-vctrs>=0.3.1
-	optdepends = r-vdiffr
+	optdepends = r-measurements
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/units_0.8-5.tar.gz
-	b2sums = 873bb6ddf2217c5d43bbe854a96525b9ccd1b3fea306b4a6d7f52ca548232923924b55c1998f061cade0b44251abd8df764cb961d50402831ebf6557942ee8ea
+	optdepends = r-magrittr
+	optdepends = r-pillar>=1.3.0
+	optdepends = r-dplyr>=1.0.0
+	optdepends = r-vctrs>=0.3.1
+	optdepends = r-ggplot2>=3.2.1
+	optdepends = r-testthat>=3.0.0
+	optdepends = r-vdiffr
+	optdepends = r-knitr
+	optdepends = r-rvest
+	optdepends = r-rmarkdown
+	source = https://cloud.r-project.org/src/contrib/units_1.0-0.tar.gz
+	b2sums = 5e9c871c763fa7ea3747bdd8f728b516f0a2e781c8312f91c40120de1b136da037d91da0dabe8e7b05999a44be2d2f344d325eae59701a1905fca9daeab39223
 
 pkgname = r-units
