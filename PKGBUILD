@@ -4,19 +4,19 @@ _pkgname1=kwin-x11
 _pkgname2="${_pkgname1}-sonic"
 pkgname="${_pkgname2}-bin"
 pkgver=6.5.3
-pkgrel=2.2
+pkgrel=2.6
 pkgdesc="kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for XLibre"
 arch=(x86_64)
 url="https://github.com/Sonic-DE/${_pkgname2}"
-license=('custom')
+license=('GPL-2.0-or-later')
 options=(!strip)
-source=("https://x11libre.net/repo/arch_based/x86_64/${_pkgname1}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
+source=("https://x11libre.net/repo/arch_based/x86_64/${_pkgname2}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 noextract=("${_pkgname1}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 provides=($_pkgname kwin-x11 "${_pkgname1}-lite-bin")
 conflicts=($_pkgname kwin-x11 "${_pkgname1}-lite-bin")
 replaces=("${_pkgname1}-lite-bin")
 
-sha256sums=('c25756507110f1f0562d5a4b7325a82209aeaec206a9cfb0bbd4c410d9cd5efb')
+sha256sums=('f6c31c55b6d804c50d53e60c10801ac026dc170b02a26bfe07c62826093a7653')
 
 package() {
   tar -xf "${_pkgname1}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}" usr
