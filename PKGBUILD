@@ -35,5 +35,5 @@ build() {
 package() {
   cd ${_pkgname}-${pkgver}
   l3build install --full --texmfhome ${pkgdir}/usr/share/texmf
-  install -Dm644 LICENSE_info "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
