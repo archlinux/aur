@@ -1,0 +1,19 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=TTKOCR
+Name[zh_CN]=文字识别
+Name[zh_TW]=文字識別
+GenericName=TTKOCR
+GenericName[zh_CN]=文字识别
+GenericName[zh_TW]=文字識別
+Comment=TTKOCR
+Comment[zh_CN]=文字识别
+Comment[zh_TW]=文字識別
+Icon=ttkocr
+Exec=ttkocr
+Terminal=false
+Keywords=multimedia;ocr;
+Categories=Utility;OCR;Qt;
+MimeType=
+X-KDE-StartupNotify=false
