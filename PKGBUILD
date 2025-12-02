@@ -6,8 +6,8 @@ pkgdesc="a youtube downloader for servers"
 arch=('x86_64')
 url="https://github.com/Xmoncoco/palemachine"
 license=('MIT')
-depends=('gcc-libs' 'sqlite' 'python' 'openssl' 'ffmpeg' 'yt-dlp')
-makedepends=('cargo')
+depends=('gcc-libs' 'sqlite' 'python' 'openssl' 'ffmpeg' 'yt-dlp' 'zstd')
+makedepends=('cargo' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "palemachine.service"
         "palemachine.sysusers"
