@@ -1,0 +1,20 @@
+pkgbase = ocaml-dot-merlin-reader
+	pkgdesc = Reads config files for merlin
+	pkgver = 5.6_504
+	pkgrel = 1
+	url = https://ocaml.github.io/merlin
+	arch = x86_64
+	license = MIT
+	checkdepends = jq
+	checkdepends = ocaml-menhir
+	makedepends = dune
+	makedepends = ocaml-alcotest
+	depends = glibc
+	depends = ocaml
+	depends = ocaml-csexp
+	depends = ocaml-merlin-lib
+	options = !strip
+	source = ocaml-dot-merlin-reader-5.6-504.tbz::https://github.com/ocaml/merlin/releases/download/v5.6-504/merlin-5.6-504.tbz
+	b2sums = 06fead7fdc112b48611ab88f83ad34e7f125d61b171efdac9c43a5d52a6201aa7f8459f87ea29bbab7e0ec02b9fddc37d82871baf91e393da9afa63f69282783
+
+pkgname = ocaml-dot-merlin-reader
