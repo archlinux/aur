@@ -69,7 +69,7 @@ optdepends=(
 #     "r-testthat>=3.0.0"
 # )
 
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+source=("https://cloud.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 b2sums=("76c29a6bd6f4323871c21fab5498f2b3a0776cdd4211cf05ca304c0afc3be0f6fc4d3b845e5a7eaa874d39558cb7184c38cb03ca29f3f1dfa222dc4ece5fdda8")
 
 build() {
