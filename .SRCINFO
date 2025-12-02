@@ -1,0 +1,24 @@
+pkgbase = ttkdownloader-bin
+	pkgdesc = TTKDownloader imitates xunlei downloader, based on Qt.(Prebuilt version)下载器模仿迅雷
+	pkgver = 3.2.0.0
+	pkgrel = 1
+	url = https://github.com/Greedysky/TTKDownloader
+	arch = x86_64
+	license = GPL-3.0-only
+	license = LGPL-3.0-only
+	depends = qt6-base
+	depends = libgpg-error
+	depends = openssl
+	depends = libxcb
+	depends = freetype2
+	provides = ttkdownloader=3.2.0.0
+	conflicts = ttkdownloader
+	options = !strip
+	source = ttkdownloader-3.2.0.0.deb::https://github.com/Greedysky/TTKDownloader/releases/download/3.2.0.0/TTKDownloader-3.2.0.0-ubuntu-24.04-qt6-x64.deb
+	source = ttkdownloader.desktop
+	source = ttkdownloader.sh
+	sha256sums = 21502c2b8300635f595125c7bee3f060f533ca3dd7832a9b870024ea7fdd303e
+	sha256sums = 2e068b82f43b579789122c44a36895ac84a5b1723b050c78595adc3845514c04
+	sha256sums = 4d70d090ce2d42eb020e170ac032345c954ecc723da08c4fb8e50624eba16a43
+
+pkgname = ttkdownloader-bin
