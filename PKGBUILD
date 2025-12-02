@@ -409,4 +409,9 @@ package() {
     make -C ffmpeg DESTDIR="$pkgdir" install
     install -D -m755 ffmpeg/tools/qt-faststart -t "${pkgdir}/usr/bin"
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    sed -i \
+        -e 's|-llensfun ||' \
+        -e 's|-lwhisper ||' \
+        -e "s|-L${srcdir}/staging/lib ||g" \
+        "${pkgdir}/usr/lib/pkgconfig/libavfilter.pc"
 }
