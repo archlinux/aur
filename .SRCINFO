@@ -1,6 +1,6 @@
 pkgbase = python-eval-type-backport
 	pkgdesc = Like typing._eval_type, but lets older Python versions use newer typing features.
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/alexmojaki/eval_type_backport
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-eval-type-backport
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python
-	source = eval-type-backport-0.3.0.tar.gz::https://files.pythonhosted.org/packages/source/e/eval_type_backport/eval_type_backport-0.3.0.tar.gz
-	sha256sums = 1638210401e184ff17f877e9a2fa076b60b5838790f4532a21761cc2be67aea1
+	source = eval-type-backport-0.3.1.tar.gz::https://files.pythonhosted.org/packages/source/e/eval_type_backport/eval_type_backport-0.3.1.tar.gz
+	sha256sums = 57e993f7b5b69d271e37482e62f74e76a0276c82490cf8e4f0dffeb6b332d5ed
 
 pkgname = python-eval-type-backport
