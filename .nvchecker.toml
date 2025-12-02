@@ -1,0 +1,5 @@
+[amalgo-bin]
+source = "github"
+github = "Broderick-Westrope/amalgo"
+use_latest_release = true
+prefix = "v"
