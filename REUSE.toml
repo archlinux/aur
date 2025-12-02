@@ -26,4 +26,4 @@ path = [
     "fix-build.patch",
 ]
 SPDX-FileCopyrightText = "cutefish-filemanager contributors"
-SPDX-License-Identifier = "TODO-Choose-a-license"
+SPDX-License-Identifier = "GPL-3.0-or-later"
