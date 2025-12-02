@@ -2,7 +2,7 @@
 
 pkgname=gosplugin
 pkgver=1.3.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Crypto Interface Web Browser Plugin for https://gosuslugi.ru/'
 arch=('x86_64')
 url="https://www.gosuslugi.ru/help/faq/esignature/3842"
@@ -44,8 +44,9 @@ package() {
 	mv "${srcdir}/usr/lib64" "${srcdir}/usr/lib"
 
 	cp -a "${srcdir}/usr" "${pkgdir}"
-	install -D "${srcdir}/opt/iitrust/gosuslugi_plugin/bin/gosuslugi_plugin" "${pkgdir}/opt/iitrust/gosuslugi_plugin/bin/gosuslugi_plugin"
-	install -D 'gosuslugi_plugin.sh' "${pkgdir}/opt/iitrust/gosuslugi_plugin/bin/gosuslugi_plugin.sh"
 	cp -a "${srcdir}/etc" "${pkgdir}"
+	cp -a "${srcdir}/opt" "${pkgdir}"
+
+	install -D 'gosuslugi_plugin.sh' "${pkgdir}/opt/iitrust/gosuslugi_plugin/bin/gosuslugi_plugin.sh"
 }
 
