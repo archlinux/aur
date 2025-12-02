@@ -3,10 +3,10 @@
 # Maintainer: Lawrence Stalder <lawrence.stalder@pm.me>
 
 pkgname=nym-vpnd
-pkgver=1.19.0
+pkgver=1.20.0
 # upstream version
-_pkgver=1.19.0
-_release_tag=nym-vpn-core-v1.19.0
+_pkgver=1.20.0
+_release_tag=nym-vpn-core-v1.20.0
 pkgrel=1
 pkgdesc='NymVPN daemon as a systemd service'
 arch=('x86_64')
@@ -20,7 +20,7 @@ options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_release_tag.tar.gz"
     'nym-vpnd.service')
 sha256sums=(
-    '8005871d9a45701b8f5cdae751015f224dc28853e2ad5ba024aca52cca187db7' 
+    'b367ad7f3e82267386580c0666488a972b59eab95917e3f0139fdf02e5e31c52' 
     '66d5b043cbef2ae0ba19cc7685c7b42808515b8b520b0dd15a0c313ca039f6d6')
 _srcdir="nym-vpn-client-$_release_tag"
 
