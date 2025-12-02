@@ -2,7 +2,7 @@
 
 pkgname=python-pretty_midi
 _name=pretty_midi
-pkgver=0.2.10
+pkgver=0.2.11
 pkgrel=2
 epoch=
 pkgdesc="Python functions and classes for handling MIDI data conveniently."
@@ -29,7 +29,7 @@ makedepends=(
 options=('!strip')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('ea6e192f94044674e833336ea1f415318ddf28e320302ac7b109edff0d4534bd')
+sha256sums=('dda81d643f71a0e91843a8644b312c0380237f1e63d5c6188225785c8d58cc67')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
