@@ -1,6 +1,6 @@
 # Maintainer: Tomasz <tomasz@example.com>
 pkgname=partition-vacuum
-pkgver=v0.0.6.r0.g8c40d30
+pkgver=v0.0.7.r0.g3a3c085
 pkgrel=1
 pkgdesc="A daemon to monitor partition free space and delete old files"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ source=("partition-vacuum::git+https://github.com/akayami/partition-vacuum.git"
         "config.toml")
 sha256sums=('SKIP'
             'ecfed78a591df4f4c58b65fa49508688babce2c0f9dc66969d37e8047414d01a'
-            'e55a25f35a235942ba6b3138fa82543ca9b7fa95ab982f57c7d78cdef0eafa79')
+            '71d1d4ef685f073ff6d8464d2bf800722078a4a7f8d03b607ee37566ef94054e')
 
 backup=('etc/partition-vacuum/config.toml')
 

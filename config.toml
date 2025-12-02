@@ -5,5 +5,4 @@ human_readable = true
 dry_run = true
 
 #[[location]]
-#partition = "/"
 #target_dirs = ["/tmp", "/tmp2"]
