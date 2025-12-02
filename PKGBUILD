@@ -1,36 +1,47 @@
-# Maintainer: yjun <jerrysteve1101 at gmail dot com>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: yjun <jerrysteve1101 at gmail dot com>
 pkgname=mqttx-bin
-_pkgname=${pkgname%-bin}
+_pkgname=MQTTX
 pkgver=1.12.1
-pkgrel=1
-pkgdesc="A cross-platform MQTT 5.0 client tool open sourced by EMQ"
-arch=('x86_64')
-url="https://github.com/emqx/MQTTX"
-license=('Apache')
-depends=('electron33')
-makedepends=('squashfs-tools')
-source=(${_pkgname^^}-${pkgver}.snap::"https://github.com/emqx/MQTTX/releases/download/v${pkgver}/${_pkgname^^}_${pkgver}_amd64.snap"
-        "${_pkgname}.sh")
-sha256sums=('791a1f227ea5a68475a574d2d63c025d848d5ba340ca3d0f428c741806003fda'
-            '735d91b5f674b830d761a56fdef8e577077e9738e92143e75394acdecf38cba1')
-
+_electronversion=33
+pkgrel=2
+pkgdesc="A cross-platform MQTT 5.0 client tool open sourced by EMQ.(Prebuilt version.Use system-wide electron)"
+arch=(
+    'aarch64'
+    'x86_64'
+)
+url="https://mqttx.app/"
+_ghurl="https://github.com/emqx/MQTTX"
+license=('Apache-2.0')
+conflicts=("${pkgname%-bin}")
+provides=("${pkgname%-bin}=${pkgver}")
+depends=(
+    "electron${_electronversion}"
+)
+source=("${pkgname%-bin}.sh")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.x86_64.rpm")
+sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums_aarch64=('a8e227241af7b0bcb26ccabe7bbab43df6153935560be94b59a9f88a9cbfca96')
+sha256sums_x86_64=('19bc2427699650b684afeef6841177ff92cf82eb490884848de32d0d96677d1d')
+_get_electron_version() {
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
-  unsquashfs -f ${_pkgname^^}-${pkgver}.snap /resources/app.asar \
-                                           /meta/gui/icon.png \
-                                           /meta/gui/${_pkgname}.desktop
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " "${srcdir}/${pkgname%-bin}.sh"
+    _get_electron_version
+    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
-
 package() {
-  # app.asar
-  install -Dm644 squashfs-root/resources/app.asar -t ${pkgdir}/usr/share/${_pkgname}
-  # electron wrapper
-  install -Dm755 ${_pkgname}.sh ${pkgdir}/usr/bin/${_pkgname}
-  # icon
-  install -Dm644 squashfs-root/meta/gui/icon.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
-  # desktop entry
-  install -Dm644 squashfs-root/meta/gui/${_pkgname}.desktop -t ${pkgdir}/usr/share/applications
-  sed -i 's|${SNAP}/meta/gui/icon.png|mqttx|g' ${pkgdir}/usr/share/applications/${_pkgname}.desktop
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
-
-# vim: set sw=2 ts=2 et:
