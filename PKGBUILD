@@ -1,6 +1,6 @@
 pkgname=uaspl
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilidad Automatizada para la Seguridad y Protección en Linux"
 arch=('any')
 url="https://github.com/KevinCrrl/UASPL"
@@ -17,6 +17,7 @@ depends=(
     'clamav'
     'rkhunter'
     'ufw'
+    'systemd'
 )
 makedepends=(
     'python-build'
@@ -25,17 +26,17 @@ makedepends=(
 )
 
 build() {
-    __uaspldir="$srcdir/UASPL-$pkgver"
-    cd "$__uaspldir/src/"
+    _uaspldir="$srcdir/UASPL-$pkgver"
+    cd "$_uaspldir/src/"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    __uaspldir="$srcdir/UASPL-$pkgver"
-    cd "$__uaspldir/src/"
+    _uaspldir="$srcdir/UASPL-$pkgver"
+    cd "$_uaspldir/src/"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm755 "$__uaspldir/src/uasplc_sh/uasplc.sh" "$pkgdir/usr/bin/uasplc"
-    install -Dm644 "$__uaspldir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "$__uaspldir/src/UASPL.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/UASPL.png"
-    install -Dm644 "$__uaspldir/src/UASPL.desktop" "$pkgdir/usr/share/applications/UASPL.desktop"
+    install -Dm755 "$_uaspldir/src/uasplc_sh/uasplc.sh" "$pkgdir/usr/bin/uasplc"
+    install -Dm644 "$_uaspldir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$_uaspldir/src/UASPL.png" "$pkgdir/usr/share/icons/hicolor/48x48/apps/UASPL.png"
+    install -Dm644 "$_uaspldir/src/UASPL.desktop" "$pkgdir/usr/share/applications/UASPL.desktop"
 }
