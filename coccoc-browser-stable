@@ -1,0 +1,9 @@
+#!/bin/sh
+
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-"$HOME/.config"}
+
+if [ -r "$XDG_CONFIG_HOME/coccoc-browser-stable-flags.conf" ]; then
+    COCCOC_USER_FLAGS="$(grep -v '^#' "$XDG_CONFIG_HOME/coccoc-browser-stable-flags.conf")"
+fi
+
+exec /opt/coccoc/browser/coccoc-browser $COCCOC_USER_FLAGS "$@"
