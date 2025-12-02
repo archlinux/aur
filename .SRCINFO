@@ -1,6 +1,6 @@
 pkgbase = python-markitdown
 	pkgdesc = Utility tool for converting various files to Markdown
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/microsoft/markitdown
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = python-markitdown
 	depends = python-cobble
 	depends = python-olefile
 	depends = python-magika
-	source = python-markitdown-0.1.3.tar.gz::https://github.com/microsoft/markitdown/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = 613182b011dbd4dab12d455a9c09059cbe011bf3c495ee690e7c57c385cb9c69
+	source = python-markitdown-0.1.4.tar.gz::https://github.com/microsoft/markitdown/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = fc3201f1cbc7438dff7861104cd3b6328ac298ee94e518ac844cb32192d2ef4b
 
 pkgname = python-markitdown
