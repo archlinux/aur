@@ -6,7 +6,7 @@ pkgname=(
     'openvino-intel-gpu-plugin-git'
     'openvino-intel-npu-plugin-git'
     'python-openvino-git')
-pkgver=2025.3.0.r121.g08360718162
+pkgver=2025.4.0.r204.g0eb9180da04
 pkgrel=1
 pkgdesc='A toolkit for optimizing and deploying deep learning models (git version)'
 arch=('x86_64')
@@ -56,8 +56,7 @@ source=('git+https://github.com/openvinotoolkit/openvino.git'
         'git+https://github.com/herumi/xbyak_riscv.git'
         '010-openvino-change-install-paths.patch'
         '020-openvino-disable-werror.patch'
-        '030-openvino-protobuf23-fix.patch'
-        '040-openvino-fix-version-check.patch')
+        '030-openvino-protobuf23-fix.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -81,10 +80,9 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'f595a7d868acf53952b52bcfad598b888bd309306699e52f98e5e96a57304f50'
+            '83284640b364d7fd6a90d6341b0d3426f98e0d56b8775c052d60db8abed3e0bf'
             'd5ff4b19ca9daf2b052650d2d7f60297239091c68e57fd7d5637508be0ef0e52'
-            'e22a5dae3b99f57a846b9309984403a0af9ce445e6aed0dea1d632116e404aed'
-            '8721d6522af1b3e27379ffa19b1aa6816f59fc92e8f641a1d14313aaedd718df')
+            '40baef7755aed910f1d65b24200170181191ea7e4c10739428adf32faeb28695')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
@@ -127,9 +125,6 @@ prepare() {
     patch -d openvino -Np1 -i "${srcdir}/020-openvino-disable-werror.patch"
     patch -d openvino -Np1 -i "${srcdir}/030-openvino-protobuf23-fix.patch"
     
-    # # https://github.com/openvinotoolkit/openvino/issues/31618
-    patch -d openvino -Np1 -i "${srcdir}/040-openvino-fix-version-check.patch"
-    
     install -d -m755 {benchmark_app,licenses}
     install -d -m755 intel-gpu-plugin/usr/lib/openvino
     install -d -m755 intel-npu-plugin/usr/{bin,{lib,share/doc}/openvino}
@@ -164,7 +159,6 @@ build() {
         -DENABLE_AVX2:BOOL='OFF' \
         -DENABLE_AVX512F:BOOL='OFF' \
         -DENABLE_CLANG_FORMAT:BOOL='OFF' \
-        -DENABLE_CPPLINT:BOOL='OFF' \
         -DENABLE_INTEL_NPU:BOOL='ON' \
         -DENABLE_INTEL_NPU_PROTOPIPE:BOOL='OFF' \
         -DENABLE_NCC_STYLE:BOOL='OFF' \

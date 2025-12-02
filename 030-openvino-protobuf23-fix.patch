@@ -9,7 +9,7 @@
  #endif
  
  #include <fstream>
-@@ -71,7 +71,7 @@ ONNX_FRONTEND_C_API void* get_front_end_data() {
+@@ -77,7 +77,7 @@ ONNX_FRONTEND_C_API void* get_front_end_data() {
  #    ifdef OV_PROTOBUF_ABSL_IS_USED
      absl::SetGlobalVLogLevel(0);
  #    else

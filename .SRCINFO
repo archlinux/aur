@@ -1,6 +1,6 @@
 pkgbase = openvino-git
 	pkgdesc = A toolkit for optimizing and deploying deep learning models (git version)
-	pkgver = 2025.3.0.r121.g08360718162
+	pkgver = 2025.4.0.r204.g0eb9180da04
 	pkgrel = 1
 	url = https://docs.openvino.ai/
 	arch = x86_64
@@ -50,7 +50,6 @@ pkgbase = openvino-git
 	source = 010-openvino-change-install-paths.patch
 	source = 020-openvino-disable-werror.patch
 	source = 030-openvino-protobuf23-fix.patch
-	source = 040-openvino-fix-version-check.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -74,10 +73,9 @@ pkgbase = openvino-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = f595a7d868acf53952b52bcfad598b888bd309306699e52f98e5e96a57304f50
+	sha256sums = 83284640b364d7fd6a90d6341b0d3426f98e0d56b8775c052d60db8abed3e0bf
 	sha256sums = d5ff4b19ca9daf2b052650d2d7f60297239091c68e57fd7d5637508be0ef0e52
-	sha256sums = e22a5dae3b99f57a846b9309984403a0af9ce445e6aed0dea1d632116e404aed
-	sha256sums = 8721d6522af1b3e27379ffa19b1aa6816f59fc92e8f641a1d14313aaedd718df
+	sha256sums = 40baef7755aed910f1d65b24200170181191ea7e4c10739428adf32faeb28695
 
 pkgname = openvino-git
 	depends = gcc-libs
@@ -88,7 +86,7 @@ pkgname = openvino-git
 	depends = snappy
 	optdepends = openvino-intel-gpu-plugin-git: for Intel GPU plugin
 	optdepends = openvino-intel-npu-plugin-git: for Intel NPU plugin
-	provides = openvino=2025.3.0.r121.g08360718162
+	provides = openvino=2025.4.0.r204.g0eb9180da04
 	provides = intel-openvino-git
 	conflicts = openvino
 	conflicts = intel-openvino-git
@@ -101,7 +99,7 @@ pkgname = openvino-intel-gpu-plugin-git
 	depends = intel-compute-runtime
 	depends = ocl-icd
 	depends = onetbb
-	depends = openvino=2025.3.0.r121.g08360718162
+	depends = openvino=2025.4.0.r204.g0eb9180da04
 	depends = pugixml
 	provides = openvino-intel-gpu-plugin
 	conflicts = openvino-intel-gpu-plugin
@@ -114,7 +112,7 @@ pkgname = openvino-intel-npu-plugin-git
 	depends = intel-npu-driver
 	depends = onetbb
 	depends = opencv
-	depends = openvino=2025.3.0.r121.g08360718162
+	depends = openvino=2025.4.0.r204.g0eb9180da04
 	depends = pugixml
 	provides = openvino-intel-npu-plugin
 	conflicts = openvino-intel-npu-plugin
@@ -123,7 +121,7 @@ pkgname = python-openvino-git
 	pkgdesc = Python bindings for OpenVINO (git version)
 	depends = gcc-libs
 	depends = glibc
-	depends = openvino=2025.3.0.r121.g08360718162
+	depends = openvino=2025.4.0.r204.g0eb9180da04
 	depends = python
 	depends = python-numpy
 	depends = python-openvino-telemetry
