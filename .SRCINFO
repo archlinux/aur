@@ -14,7 +14,7 @@ pkgbase = gnome-aur-manager
 	depends = pacman
 	optdepends = gnome-software-packagekit-plugin: Integration with GNOME Software Center
 	provides = gnome-aur-manager
-	source = gnome-aur-manager-1.0.0.tar.gz
-	sha256sums = e2a9486bc72d7a0dace6e3173929634afb8bdeabde19556a8a259be33ccfbcbc
+	source = gnome-aur-manager-1.0.0.tar.gz::https://github.com/OMNIDROID2995/gnome-aur-manager/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 24a25b240346649c5cf57eda3a44a7f0b72d4a2469fca45474127265321c4fd9
 
 pkgname = gnome-aur-manager

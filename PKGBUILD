@@ -23,8 +23,8 @@ provides=("${pkgname}")
 conflicts=()
 backup=()
 
-source=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('e2a9486bc72d7a0dace6e3173929634afb8bdeabde19556a8a259be33ccfbcbc')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/OMNIDROID2995/gnome-aur-manager/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('24a25b240346649c5cf57eda3a44a7f0b72d4a2469fca45474127265321c4fd9')
 
 package() {
     cd "${srcdir}/${pkgname}"
