@@ -11,6 +11,7 @@ pkgdesc='Securely erase data from magnetic and solid-state memory'
 arch=('i686' 'x86_64')
 url='https://jetico.com/downloads/data-wiping/'
 license=('unknown')
+depends=('glibc')
 _srcdir="${pkgname}-${_pkgver}"
 source=("https://www.jetico.com/file-downloads/linux/BCWipe-${_pkgver}.tar.gz")
 md5sums=('b2372f6f3a3ce969d51bea7a876907c2')
@@ -19,7 +20,8 @@ sha256sums=('9df8cebf07dc38c53c76728c428d4b180b7cb2479f69a7d6965f99fcb1b2cfc2')
 build() {
   cd "${_srcdir}"
 
-  ./configure --prefix='/usr'
+  CFLAGS="${CFLAGS} -std=gnu17" \
+  ./configure --enable-pthreads --prefix='/usr'
 
   nice make root="${pkgdir}"
 }
