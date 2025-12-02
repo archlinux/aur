@@ -2,19 +2,19 @@
 
 _pkgname=dlib
 pkgname=python-${_pkgname}-git
-pkgver=19.24.6.r4.gfafdac3
-pkgrel=2
+pkgver=20.0.r29.g49b7cba
+pkgrel=1
 pkgdesc="Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques. -- git non-CUDA version"
 arch=('x86_64')
 url="http://www.dlib.net/"
 license=('BSL-1.0')
 depends=('cblas' 'giflib' 'lapack' 'libjpeg-turbo' 'libpng' 'python' 'ffmpeg')
-makedepends=('git' 'boost' 'cmake' 'python-setuptools' 'sqlite')
+makedepends=('git' 'boost' 'cmake' 'python-setuptools' 'sqlite' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('sqlite')
 provides=('python-dlib')
 conflicts=('python-dlib' 'python-dlib-cuda')
 source=("git+https://github.com/davisking/dlib.git")
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
@@ -23,10 +23,10 @@ pkgver() {
 
 build(){
 	cd "${_pkgname}"
-	python setup.py build --no DLIB_USE_CUDA
+	DLIB_USE_CUDA=OFF python -m build --wheel --no-isolation
 }
 
 package(){
 	cd "${_pkgname}"
-	python setup.py install --skip-build --prefix=/usr --root="$pkgdir" --optimize=1
+	python -m installer --destdir="${pkgdir}" dist/*.whl
 }

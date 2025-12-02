@@ -1,7 +1,7 @@
 pkgbase = python-dlib-git
 	pkgdesc = Dlib is a general purpose cross-platform C++ library designed using contract programming and modern C++ techniques. -- git non-CUDA version
-	pkgver = 19.24.6.r4.gfafdac3
-	pkgrel = 2
+	pkgver = 20.0.r29.g49b7cba
+	pkgrel = 1
 	url = http://www.dlib.net/
 	arch = x86_64
 	license = BSL-1.0
@@ -10,6 +10,9 @@ pkgbase = python-dlib-git
 	makedepends = cmake
 	makedepends = python-setuptools
 	makedepends = sqlite
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = cblas
 	depends = giflib
 	depends = lapack
@@ -22,6 +25,6 @@ pkgbase = python-dlib-git
 	conflicts = python-dlib
 	conflicts = python-dlib-cuda
 	source = git+https://github.com/davisking/dlib.git
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = python-dlib-git
