@@ -1,0 +1,59 @@
+From ffcd3281a0efe6372ee538b6f6236e407472bd59 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Tue, 2 Dec 2025 01:45:14 +0100
+Subject: [PATCH] Remove hidden apps if already added
+
+Without this, hidden apps may remain on the list when they changed.
+Also, don't convert desktop environment name to uppercase to compare it properly.
+---
+ src/launchermodel.cpp | 17 +++++++++++++----
+ 1 file changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/src/launchermodel.cpp b/src/launchermodel.cpp
+index 63ad749..fa669ed 100755
+--- a/src/launchermodel.cpp
++++ b/src/launchermodel.cpp
+@@ -39,7 +39,7 @@ static QByteArray detectDesktopEnvironment()
+     const QByteArray desktop = qgetenv("XDG_CURRENT_DESKTOP");
+ 
+     if (!desktop.isEmpty())
+-        return desktop.toUpper();
++        return desktop;
+ 
+     return QByteArray("UNKNOWN");
+ }
+@@ -366,19 +366,28 @@ void LauncherModel::addApp(const QString &fileName)
+ 
+     DesktopProperties desktop(fileName, "Desktop Entry");
+ 
+-    if (desktop.contains("Terminal") && desktop.value("Terminal").toBool())
++    if (desktop.contains("Terminal") && desktop.value("Terminal").toBool()) {
++        if (index >= 0 && index <= m_appItems.size())
++            QMetaObject::invokeMethod(this, "removeApp", Q_ARG(QString, fileName));
+         return;
++    }
+ 
+     if (desktop.contains("OnlyShowIn")) {
+         const QStringList items = desktop.value("OnlyShowIn").toString().split(';');
+ 
+-        if (!items.contains(detectDesktopEnvironment()))
++        if (!items.contains(detectDesktopEnvironment())) {
++            if (index >= 0 && index <= m_appItems.size())
++                QMetaObject::invokeMethod(this, "removeApp", Q_ARG(QString, fileName));
+             return;
++        }
+     }
+ 
+     if (desktop.value("NoDisplay").toBool() ||
+-        desktop.value("Hidden").toBool())
++        desktop.value("Hidden").toBool()) {
++        if (index >= 0 && index <= m_appItems.size())
++            QMetaObject::invokeMethod(this, "removeApp", Q_ARG(QString, fileName));
+         return;
++    }
+ 
+     QString appName = desktop.value(QString("Name[%1]").arg(QLocale::system().name())).toString();
+     QString appExec = desktop.value("Exec").toString();
+-- 
+2.52.0
+

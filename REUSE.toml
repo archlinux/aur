@@ -20,3 +20,10 @@ path = [
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "0001-Remove-hidden-apps-if-already-added.patch",
+]
+SPDX-FileCopyrightText = "cutefish-launcher contributors"
+SPDX-License-Identifier = "GPL-3.0-or-later"
