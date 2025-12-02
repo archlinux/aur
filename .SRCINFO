@@ -8,6 +8,7 @@ pkgbase = whis
 	depends = gcc-libs
 	depends = openssl
 	depends = alsa-lib
+	depends = libx11
 	source = https://github.com/frankdierolf/whis/releases/download/v0.5.5/whis-v0.5.5-x86_64-linux.tar.gz
 	sha256sums = 6cbbfeeefe4c712f3852e096b64e7c9bdac964a23d7c76a9629d5e4dfd4d988c
 
