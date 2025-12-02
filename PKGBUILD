@@ -1,9 +1,9 @@
 # Maintainer: zayn7lie <zayn7lie.ber7+git@gmail.com>
 
 pkgname="trezor-suite"
-pkgver="25.11.2"
+pkgver="25.11.3"
 pkgrel=0
-pkgdesc="The Trezor Suite app makes it easy and secure to manage, buy, sell, and swap your crypto—all in one place."
+pkgdesc="The simplier, the safer. This AUR just install the AppImage and .desktop without other things."
 arch=("x86_64")
 options=(!strip !debug)
 _pkgname="Trezor-Suite-$pkgver-linux-$arch"
@@ -14,8 +14,8 @@ source=(
     #"https://github.com/trezor/$pkgname/releases/download/v$pkgver/$_pkgname.AppImage.asc"
 )
 sha512sums=(
-    "ffe7c60b8077d37996f8727bb8eccfad02d0b687d955d9d09ebcb767909ca72189166fb8b4601d99c147560615f357e569b787d74e6afa9711de12614d36fc26"
-    #"c2ad9da055049ce63839f237d053e689283714a36edffd50469ca8e1839303ce2738371ddc91e5c18b52475884b01214cfd8ddc3e3845bf22ce4fc5344ae0234"
+    "d3436773bc58dec9cfe604b91b3b33804dcc553359ea3522538dc3ebc3f3e1a63380d68f9fc24cba1de40b4c9bc66e076879d9f440b812b69af54e603bc32adf"
+    # echo '00Nnc7xY3snP5gS5GzszgE3MVTNZ6jUiU43D68Pz4aYzgNaPn8JMuh3kC0ybxm4HaHnZ9EC4Eraa9U5gO8Mq3w==' | base64 -d | od -An -tx1 | tr -d ' \n'
 )
 
 prepare() {

@@ -1,13 +1,13 @@
 pkgbase = trezor-suite
-	pkgdesc = The Trezor Suite app makes it easy and secure to manage, buy, sell, and swap your crypto—all in one place.
-	pkgver = 25.11.2
+	pkgdesc = The simplier, the safer. This AUR just install the AppImage and .desktop without other things.
+	pkgver = 25.11.3
 	pkgrel = 0
 	url = https://github.com/trezor/trezor-suite
 	arch = x86_64
 	license = custom:T-RSL
 	options = !strip
 	options = !debug
-	source = https://github.com/trezor/trezor-suite/releases/download/v25.11.2/Trezor-Suite-25.11.2-linux-x86_64.AppImage
-	sha512sums = ffe7c60b8077d37996f8727bb8eccfad02d0b687d955d9d09ebcb767909ca72189166fb8b4601d99c147560615f357e569b787d74e6afa9711de12614d36fc26
+	source = https://github.com/trezor/trezor-suite/releases/download/v25.11.3/Trezor-Suite-25.11.3-linux-x86_64.AppImage
+	sha512sums = d3436773bc58dec9cfe604b91b3b33804dcc553359ea3522538dc3ebc3f3e1a63380d68f9fc24cba1de40b4c9bc66e076879d9f440b812b69af54e603bc32adf
 
 pkgname = trezor-suite
