@@ -1,14 +1,14 @@
 pkgbase = xml2abc
 	pkgdesc = Python utility that translates MusicXML into ABC+ notation
-	pkgver = 145
+	pkgver = 174
 	pkgrel = 1
 	url = https://wim.vree.org/svgParse/xml2abc.html
 	arch = any
 	license = unknown
 	depends = python
-	source = https://wim.vree.org/svgParse/xml2abc.py-145.zip
+	source = https://wim.vree.org/svgParse/xml2abc.py-174.zip
 	source = xml2abc
-	sha256sums = d62af1295a2f75fbcd099c4811955fbcb62002328b4249b41e724e237650a719
+	sha256sums = f3fedda00cf27d1f5003839d1ef63e7c2f13abecf9452fe451f69f80737e08f9
 	sha256sums = a7d043c0f692063a596b63b605be6e14afc28acfc5438135a11314d7df943cb6
 
 pkgname = xml2abc
