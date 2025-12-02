@@ -3,12 +3,12 @@
 _pkgname=ttf-iosevka
 pkgname=${_pkgname}-git
 pkgver=1764695706
-pkgrel=1
+pkgrel=2
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
 license=('custom:OFL')
-makedepends=('git' 'nodejs>=12.22.0' 'npm' 'ttfautohint')
+makedepends=('git' 'nodejs>=12.22.0' 'npm' 'ttfautohint-cli')
 depends=()
 conflicts=(${_pkgname})
 provides=(${_pkgname})
