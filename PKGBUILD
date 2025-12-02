@@ -8,17 +8,19 @@ url="https://github.com/zfogg/ascii-chat"
 license=('MIT')
 depends=()
 makedepends=(
+  'git'
+  'pkg-config'
   'cmake'
   'ninja'
   'clang'
   'llvm'
   'llvm-libs'
-  'pkg-config'
   'musl'
   'mimalloc'
   'zstd'
   'libsodium'
   'portaudio'
+  'doxygen'
 )
 optdepends=(
   'v4l-utils: webcam device utilities'
@@ -29,9 +31,13 @@ sha256sums=('e3f855af056e314f8451118f71eebb12b3ee1f3c6b2c27a829dad82a5b710ef8')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  mkdir -p .git
-  echo "ref: refs/tags/v$pkgver" > .git/HEAD
-  touch .git/index
+  # Create a real git repo with the version tag so git describe works
+  git init -q
+  git config user.email "build@localhost"
+  git config user.name "Build"
+  git add -A
+  git commit -q -m "v$pkgver"
+  git tag "v$pkgver"
 }
 
 build() {
@@ -48,6 +54,9 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build
+  cmake --build build --target shared-lib
+  cmake --build build --target static-lib
+  cmake --build build --target docs
 }
 
 package() {

@@ -11,6 +11,7 @@ pkgbase = ascii-chat
 	makedepends = llvm
 	makedepends = llvm-libs
 	makedepends = pkg-config
+	makedepends = git
 	makedepends = musl
 	makedepends = mimalloc
 	makedepends = zstd
