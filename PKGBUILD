@@ -1,7 +1,7 @@
 # Maintainer: Gianlucca Claudino <gianluccaclaudino@gmail.com>
 
 pkgname=lvsk-calendar
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="A beautiful text-based calendar with visual aesthetics for Arch Linux"
 arch=('any')
@@ -28,6 +28,9 @@ build() {
 package() {
     # Install the main executable
     install -Dm755 "${srcdir}/${pkgname}/lvsk-calendar" "${pkgdir}/usr/bin/lvsk-calendar"
+
+    # Install the launcher (for floating window support)
+    install -Dm755 "${srcdir}/${pkgname}/lvsk-calendar-launcher" "${pkgdir}/usr/bin/lvsk-calendar-launcher"
 
     # Install the modular source files
     install -Dm644 "${srcdir}/${pkgname}/src/config.sh" "${pkgdir}/usr/share/${pkgname}/src/config.sh"
