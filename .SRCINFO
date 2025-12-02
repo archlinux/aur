@@ -1,0 +1,18 @@
+pkgbase = polyfill-glibc-git
+	pkgdesc = Post-compilation tool to enable running binaries compiled on newer glibc systems on older ones
+	pkgver = r0
+	pkgrel = 1
+	url = https://github.com/corsix/polyfill-glibc
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = ninja
+	depends = glibc
+	provides = polyfill-glibc
+	conflicts = polyfill-glibc
+	source = polyfill-glibc-git::git+https://github.com/corsix/polyfill-glibc.git
+	sha256sums = SKIP
+
+pkgname = polyfill-glibc-git
