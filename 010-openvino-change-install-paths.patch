@@ -64,7 +64,7 @@
      # symbolic links
 --- a/src/common/util/src/file_util.cpp
 +++ b/src/common/util/src/file_util.cpp
-@@ -417,9 +417,9 @@ ov::util::FilePath ov::util::get_compiled_plugin_path(const std::string& plugin)
+@@ -422,9 +422,9 @@ ov::util::FilePath ov::util::get_compiled_plugin_path(const std::string& plugin)
  
      // plugin can be found either:
  
@@ -113,8 +113,8 @@
 +                          FOLDER ${CMAKE_CURRENT_SOURCE_DIR} OUTPUT_NAME ov-${TARGET_NAME}
                            CXX_STANDARD 17)
  
- #
-@@ -76,13 +76,13 @@ set_target_properties(${TARGET_NAME} PROPERTIES
+ if (WIN32)
+@@ -80,13 +80,13 @@ endif()
  #
  
  install(TARGETS ${TARGET_NAME}
