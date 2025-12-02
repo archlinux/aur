@@ -2,7 +2,7 @@
 
 _pkgname=passless
 pkgname="${_pkgname}"
-pkgver=0.5.4
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="FIDO2 security token emulator "
 arch=('x86_64' 'aarch64')
