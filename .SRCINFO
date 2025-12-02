@@ -1,7 +1,7 @@
 pkgbase = kwin-x11-sonic
 	pkgdesc = kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for XLibre
 	pkgver = 6.5.3
-	pkgrel = 2
+	pkgrel = 2.6
 	url = https://github.com/Sonic-DE/kwin-x11-sonic
 	install = kwin-x11-sonic.install
 	arch = x86_64
