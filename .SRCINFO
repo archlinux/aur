@@ -1,6 +1,6 @@
 pkgbase = shadps4-qtlauncher-pre-release-bin
 	pkgdesc = The official Qt launcher for shadps4 emulator (Pre-release version)
-	pkgver = 20251124.e123aa8
+	pkgver = 20251201.0d56f29
 	pkgrel = 1
 	url = https://github.com/shadps4-emu/shadps4-qtlauncher
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = shadps4-qtlauncher-pre-release-bin
 	provides = shadps4-qtlauncher
 	conflicts = shadps4-qtlauncher
 	options = !strip
-	source = https://github.com/shadps4-emu/shadps4-qtlauncher/releases/download/shadPS4QtLauncher-2025-11-24-e123aa853bc6adda5a2485a9e33874541acdc067/shadPS4QtLauncher-linux-qt-2025-11-24-e123aa8.zip
+	source = https://github.com/shadps4-emu/shadps4-qtlauncher/releases/download/shadPS4QtLauncher-2025-12-01-0d56f29269af7447f1030d99d3e24bb54f363019/shadPS4QtLauncher-linux-qt-2025-12-01-0d56f29.zip
 	sha256sums = SKIP
 
 pkgname = shadps4-qtlauncher-pre-release-bin

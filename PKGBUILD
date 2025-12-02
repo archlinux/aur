@@ -1,7 +1,7 @@
 # Maintainer: italoghost <eduprodive at posteo dot me>
 pkgname=shadps4-qtlauncher-pre-release-bin
 _pkgname=shadPS4QtLauncher
-_pkgid=net.shadps4.shadPS4
+_pkgid=net.shadps4.shadps4-qtlauncher
 _url="$(curl -s "$(curl -s "https://api.github.com/repos/shadps4-emu/shadps4-qtlauncher/releases" | jq -r '.[] | select(.prerelease == true) | .url')" | awk -F'"' '/browser_download_url.*shadPS4QtLauncher-linux-qt.*zip/ {print $4}')"
 _date="$(echo $_url | awk -F '[-/]' -v OFS="-" '{print $11,$12,$13}')"
 _pkgver="$(echo $_url | awk -F '[-/]' '{print $14}')"
@@ -42,7 +42,7 @@ package() {
     ln -sf "/opt/${_pkgname}/AppRun" "$pkgdir/usr/bin/${pkgname%-pre-release-bin}"
 
     # icon
-    install -Dm644 "$pkgdir/opt/${_pkgname}/${_pkgid}.svg" -t "$pkgdir/usr/share/pixmaps"
+    install -Dm644 "$pkgdir/opt/${_pkgname}/net.shadps4.shadPS4.svg" -t "$pkgdir/usr/share/pixmaps"
 
     # launcher
     install -Dm644 "$pkgdir/opt/${_pkgname}/${_pkgid}.desktop" -t "$pkgdir/usr/share/applications"
