@@ -1,6 +1,6 @@
 pkgbase = tree-sitter-dockerfile-git
 	pkgdesc = Dockerfile grammar for tree-sitter
-	pkgver = 0.1.0.r0.gb25f86c
+	pkgver = 0.2.0.r2.g971acdd
 	pkgrel = 1
 	url = https://github.com/camdencheek/tree-sitter-dockerfile
 	arch = x86_64
