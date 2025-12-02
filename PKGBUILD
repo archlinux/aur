@@ -1,6 +1,6 @@
 # Maintainer: BonnyAD9 (Bonny4)
 pkgname=mproc
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Small CLI utitlity to measure process runtime and memory usage."
 arch=(x86_64)
