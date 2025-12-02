@@ -27,7 +27,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/OMNIDROID2995/gnome-aur
 sha256sums=('24a25b240346649c5cf57eda3a44a7f0b72d4a2469fca45474127265321c4fd9')
 
 package() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     
     # Install Python source files
     install -dm755 "${pkgdir}/usr/lib/${pkgname}"
