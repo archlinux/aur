@@ -1,0 +1,17 @@
+pkgbase = go-boot
+	pkgdesc = The bare metal Go UEFI boot manager
+	pkgver = v1.1
+	pkgrel = 1
+	url = https://github.com/usbarmory/go-boot
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = make
+	makedepends = go
+	provides = go-boot
+	source = https://github.com/usbarmory/tamago-go/archive/refs/tags/tamago-go1.25.4.tar.gz
+	source = https://github.com/usbarmory/go-boot/archive/refs/tags/v1.1.tar.gz
+	sha256sums = 4f90155cd7c450c3087620df954d779633b0d08de1caca5cdeddcd83de328044
+	sha256sums = c659b09b15f365d21e4d708fd9cbeb89f12d176f8298a71118ae0d9d49af4434
+
+pkgname = go-boot
