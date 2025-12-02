@@ -11,6 +11,7 @@ _urlraw="https://raw.githubusercontent.com/Control-D-Inc/ctrld/v${pkgver}"
 license=('MIT')
 provides=('ctrld')
 backup=('etc/controld/ctrld.toml')
+options=(!strip)
 source=(
         "${url}/releases/download/v${pkgver}/ctrld_${pkgver}_linux_amd64.tar.gz"
         "README-${pkgver}.md::${_urlraw}/README.md"
