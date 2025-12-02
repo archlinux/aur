@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NetPathMiner
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.46.0
 pkgrel=1
 pkgdesc='NetPathMiner for Biological Network Construction, Path Mining and Visualization'
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0281743858cd778c1cca54f27d576d86265f7154666a1001377d3a4a17f104cc')
+sha256sums=('4ec100f37daee98490c4246a742e13684d0dba73a645704619ec786a51d3dba1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
