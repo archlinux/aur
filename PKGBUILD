@@ -3,7 +3,7 @@
 _pkgauthor=sammcj
 _pkgname=gollama
 pkgname=${_pkgname}-bin
-pkgver=1.37.5
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Go manage your Ollama models"
 arch=('x86_64' 'aarch64')
@@ -21,9 +21,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${pkgver}-${arch[0]}.zip::${url}/releases/download/v${pkgver}/${_pkgname}-linux-${_barch[0]}.zip")
 source_aarch64=("${_pkgname}-${pkgver}-${arch[1]}.zip::${url}/releases/download/v${pkgver}/${_pkgname}-linux-${_barch[1]}.zip")
 sha256sums=('2624502660e8f7965bb276ea8c83586e6302b4e32f2b6d4d5249953e35caf610'
-            '80da23a8c427378e85cf46942e58d1951979a17d0f8b0aee428716a09c411f12')
-sha256sums_x86_64=('aac5801a0b45e025314eaa6404a7bed22ded25634c9cd644453683e9a0642ac4')
-sha256sums_aarch64=('3f9378dcaac25cc26554b9b63364269af7aa0f9fcf8ab89eb45c367309d6af00')
+            '328f19c0e51ba23ea23cfbeeb52af0e979ccf48dc629b5fe5be36b2a560185db')
+sha256sums_x86_64=('c8addede491b7968fbc3caaa8501f4e4e555ee06baabf864cb7934e15eab79e8')
+sha256sums_aarch64=('ff324fbcd33ac29552940a8abae36a610367c48ea61f7250dd1ab4461ba79be5')
 
 
 
