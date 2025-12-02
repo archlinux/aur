@@ -2,7 +2,7 @@
 
 pkgbase=datagrip
 pkgname=(datagrip datagrip-jre)
-pkgver=2025.2.5
+pkgver=2025.3
 pkgrel=1
 pkgdesc='Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity'
 arch=('any')
@@ -14,7 +14,7 @@ options=('!strip')
 source=("https://download.jetbrains.com/${pkgbase}/${pkgbase}-${pkgver}.tar.gz"
         jetbrains-datagrip.desktop
         LICENSE)
-b2sums=('d68540aea75bcfad4288c0b00962a00f357df4e26085115b9372a1d5c7d12b856deb4b3a132ddbb3e114ebb821569b3d3948b3cf9e7b21f9e146735e4866cf19'
+b2sums=('75984c3fe34b8c8725be438098b0718ca053baf8a33ca73f0cdc95c4b1d93c2e7d247029811923d8997a2fccd0a351d8a368106b645900927b03818722b269ca'
         'a06ba3ed28a0e972f3b09b4713754da81970c3520df78730ce078b6d2097b3e79461a649f214e096081bb39e663779bcc143fa8695eaa53bbbab49521099030e'
         'dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77')
 
