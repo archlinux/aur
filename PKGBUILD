@@ -1,6 +1,6 @@
-# Maintainer: Frédéric Logier <fredix@protonmail.com>
+# Maintainer: Frédéric Logier <fredix@nomad.wf>
 pkgname=gibson
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 epoch=
 pkgdesc="A simple markdown go blog"
