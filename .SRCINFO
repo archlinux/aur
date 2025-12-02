@@ -1,0 +1,24 @@
+pkgbase = ttkocr-bin
+	pkgdesc = TTKOCR recognizes text in images and PDFs, based on Qt.(Prebuilt version)识别图片以及PDF中的文字
+	pkgver = 3.2.0.0
+	pkgrel = 1
+	url = https://github.com/Greedysky/TTKOCR
+	arch = x86_64
+	license = GPL-3.0-only
+	license = LGPL-3.0-only
+	depends = qt6-base
+	depends = libgpg-error
+	depends = openssl
+	depends = libxcb
+	depends = freetype2
+	provides = ttkocr=3.2.0.0
+	conflicts = ttkocr
+	options = !strip
+	source = ttkocr-3.2.0.0.deb::https://github.com/Greedysky/TTKOCR/releases/download/3.2.0.0/TTKOCR-3.2.0.0-ubuntu-24.04-qt6-x64.deb
+	source = ttkocr.desktop
+	source = ttkocr.sh
+	sha256sums = dd829b066f2ec3b5c33c88898eb71fd58dce09837a00e3fda9612e702adfcc88
+	sha256sums = a312b81018c0c7e233295736dd9525461b6145f63728bc471bb07591ec166f85
+	sha256sums = 4d70d090ce2d42eb020e170ac032345c954ecc723da08c4fb8e50624eba16a43
+
+pkgname = ttkocr-bin
