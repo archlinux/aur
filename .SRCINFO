@@ -1,6 +1,6 @@
 pkgbase = chirpity-bin
 	pkgdesc = Desktop application to identify bird vocalisations in lengthy audio files. Uses either BirdNET or a native AI model tuned for the calls of nocturnal migrants.(Prebuilt version.Use system-wide electron)
-	pkgver = 5.5.2
+	pkgver = 5.6.1
 	pkgrel = 1
 	url = https://chirpity.mattkirkland.co.uk/
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = chirpity-bin
 	depends = electron39
 	depends = python
 	depends = ffmpeg
-	provides = chirpity=5.5.2
+	provides = chirpity=5.6.1
 	conflicts = chirpity
-	source = chirpity-5.5.2-x86_64.AppImage::https://github.com/Mattk70/Chirpity-Electron/releases/download/v5.5.2/Chirpity-5.5.2.AppImage
-	source = LICENSE-5.5.2.txt::https://raw.githubusercontent.com/Mattk70/Chirpity-Electron/v5.5.2/license.txt
+	source = chirpity-5.6.1-x86_64.AppImage::https://github.com/Mattk70/Chirpity-Electron/releases/download/v5.6.1/Chirpity-5.6.1.AppImage
+	source = LICENSE-5.6.1.txt::https://raw.githubusercontent.com/Mattk70/Chirpity-Electron/v5.6.1/license.txt
 	source = chirpity.sh
-	sha256sums = 6c6a702a03929d955f8b3c918976a22a5344001f3d6813909eafa79a44bf324a
+	sha256sums = 28846ae07bb45cbd84917738b5ccedbc943eb7d53fc6ac466ad093ab01e211c6
 	sha256sums = 04d5c28567bb68b3c647742455c90091e2ea2b6708da27679889e1f80dd838ed
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
