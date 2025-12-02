@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Trezor Suite
+Exec=/opt/trezor-suite/Trezor-Suite-25.11.3-linux-x86_64.AppImage
+Terminal=false
+Type=Application
+Icon=trezor-suite
+StartupWMClass=Trezor Suite
+X-AppImage-Version=25.11.3
+Comment=Trezor Suite desktop application
+MimeType=x-scheme-handler/trezorsuite;x-scheme-handler/bitcoin;x-scheme-handler/litecoin;x-scheme-handler/bitcoincash;x-scheme-handler/bitcoingold;x-scheme-handler/dash;x-scheme-handler/digibyte;x-scheme-handler/dogecoin;x-scheme-handler/namecoin;x-scheme-handler/vertcoin;x-scheme-handler/zcash;
+Categories=Utility;

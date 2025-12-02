@@ -1,0 +1,2 @@
+#!/bin/sh
+/opt/trezor-suite/trezor-suite.AppImage "$@"
