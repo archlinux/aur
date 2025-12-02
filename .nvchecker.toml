@@ -1,0 +1,5 @@
+[tetrigo-bin]
+source = "github"
+github = "Broderick-Westrope/tetrigo"
+use_latest_release = true
+prefix = "v"

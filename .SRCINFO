@@ -1,0 +1,16 @@
+pkgbase = tetrigo-bin
+	pkgdesc = Play Tetris in your terminal.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Broderick-Westrope/tetrigo
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	provides = tetrigo
+	conflicts = tetrigo
+	source_x86_64 = tetrigo-x86_64-0.2.0.tgz::https://github.com/Broderick-Westrope/tetrigo/releases/download/v0.2.0/tetrigo_0.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 33447244393d15c58e39907b28977cb96b4861e3331d7d6c2d717cc1936aec5b
+	source_aarch64 = tetrigo-aarch64-0.2.0.tgz::https://github.com/Broderick-Westrope/tetrigo/releases/download/v0.2.0/tetrigo_0.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = b62e409d9222d632c1b2e445c1eec843c54fa9c657f4809a7d53e3d4f970191f
+
+pkgname = tetrigo-bin
