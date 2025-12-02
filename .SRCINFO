@@ -1,6 +1,6 @@
 pkgbase = lvsk-calendar
 	pkgdesc = A beautiful text-based calendar with visual aesthetics for Arch Linux
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/Gianluska/lvsk-calendar
 	install = lvsk-calendar.install
@@ -8,7 +8,7 @@ pkgbase = lvsk-calendar
 	license = MIT
 	depends = bash
 	depends = coreutils
-	source = git+https://github.com/Gianluska/lvsk-calendar.git#tag=v0.2.7
+	source = git+https://github.com/Gianluska/lvsk-calendar.git#tag=v0.2.8
 	sha256sums = SKIP
 
 pkgname = lvsk-calendar

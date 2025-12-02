@@ -1,7 +1,7 @@
 # Maintainer: Gianlucca Claudino <gianluccaclaudino@gmail.com>
 
 pkgname=lvsk-calendar
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="A beautiful text-based calendar with visual aesthetics for Arch Linux"
 arch=('any')
@@ -26,8 +26,20 @@ build() {
 }
 
 package() {
-    # Install the executable (from cloned repo directory)
+    # Install the main executable
     install -Dm755 "${srcdir}/${pkgname}/lvsk-calendar" "${pkgdir}/usr/bin/lvsk-calendar"
+
+    # Install the modular source files
+    install -Dm644 "${srcdir}/${pkgname}/src/config.sh" "${pkgdir}/usr/share/${pkgname}/src/config.sh"
+    install -Dm644 "${srcdir}/${pkgname}/src/utils.sh" "${pkgdir}/usr/share/${pkgname}/src/utils.sh"
+    install -Dm644 "${srcdir}/${pkgname}/src/navigation.sh" "${pkgdir}/usr/share/${pkgname}/src/navigation.sh"
+    install -Dm644 "${srcdir}/${pkgname}/src/input.sh" "${pkgdir}/usr/share/${pkgname}/src/input.sh"
+
+    # Install UI components
+    install -Dm644 "${srcdir}/${pkgname}/src/ui/background.sh" "${pkgdir}/usr/share/${pkgname}/src/ui/background.sh"
+    install -Dm644 "${srcdir}/${pkgname}/src/ui/header.sh" "${pkgdir}/usr/share/${pkgname}/src/ui/header.sh"
+    install -Dm644 "${srcdir}/${pkgname}/src/ui/calendar.sh" "${pkgdir}/usr/share/${pkgname}/src/ui/calendar.sh"
+    install -Dm644 "${srcdir}/${pkgname}/src/ui/footer.sh" "${pkgdir}/usr/share/${pkgname}/src/ui/footer.sh"
 }
 
 # vim:set ts=4 sw=4 et:
