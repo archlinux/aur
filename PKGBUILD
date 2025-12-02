@@ -1,7 +1,7 @@
 # Maintainer: claybie <claybie at claybie dot org>
 
 pkgname='pak'
-pkgver='1.0.1'
+pkgver='1.1'
 pkgrel='1'
 pkgdesc='A fork of pac-wrapper with commands styled toward apk (alpine package keeper).'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
 )
 provides=('pak')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('7f24bdf4b75ec6246a5e2df76bbb1133db2f69bce1cdf1336bae4bc8b0d1edab')
+sha256sums=('3827ea5609d9e58565ce7bcf27ea67f71ce31435d5cac6b2d3dd3a434ddf60e7')
 
 package() {
   cd "$pkgname-$pkgver"

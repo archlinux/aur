@@ -1,6 +1,6 @@
 pkgbase = pak
 	pkgdesc = A fork of pac-wrapper with commands styled toward apk (alpine package keeper).
-	pkgver = 1.0.1
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/claybie/pak
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = pak
 	optdepends = sudo
 	optdepends = opendoas
 	provides = pak
-	source = pak-1.0.1.tar.gz::https://github.com/claybie/pak/archive/refs/tags/1.0.1.tar.gz
-	sha256sums = 7f24bdf4b75ec6246a5e2df76bbb1133db2f69bce1cdf1336bae4bc8b0d1edab 
+	source = pak-1.1.tar.gz::https://github.com/claybie/pak/archive/refs/tags/1.1.tar.gz
+	sha256sums = 3827ea5609d9e58565ce7bcf27ea67f71ce31435d5cac6b2d3dd3a434ddf60e7
 
 pkgname = pak
