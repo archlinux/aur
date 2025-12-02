@@ -1,0 +1,17 @@
+pkgbase = hperf
+	pkgdesc = GUI tool for visualizing and annotating Linux perf traces
+	pkgver = 6.14.5
+	pkgrel = 1
+	url = https://www.poirrier.ca/hperf/
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = gcc
+	makedepends = make
+	depends = perf
+	depends = binutils
+	optdepends = highlight: Syntax highlighting for source code
+	provides = hperf
+	source = https://www.poirrier.ca/hperf/hperf-6.14.5.tar.gz
+	sha256sums = 6e812aab6e1ef93aeafec8cd143fe31c181289978d39d39293754e6fd50b96a2
+
+pkgname = hperf
