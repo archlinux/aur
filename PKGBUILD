@@ -13,7 +13,7 @@ depends=()
 conflicts=(${_pkgname})
 provides=(${_pkgname})
 source=('private-build-plans.toml.example')
-sha256sums=('06c50b69add84b3bf4fcfdec4b190ef130942440877a0842e3a575d54fe5909e')
+sha256sums=('5a1f479e082ec2ca7aed60ec65e55c9ff475cb6f0f14c1b9b8850bc3b9d2db90')
 
 prepare () {
   rm -rf Iosevka
