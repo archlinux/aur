@@ -1,6 +1,6 @@
 pkgbase = ca-certificates-icp_br
 	pkgdesc = Brazilian government Certification Authorities
-	pkgver = 20251125
+	pkgver = 20251201
 	pkgrel = 1
 	url = https://www.gov.br/iti/pt-br/assuntos/repositorio/repositorio-ac-raiz
 	changelog = CHANGELOG.md
@@ -8,8 +8,8 @@ pkgbase = ca-certificates-icp_br
 	license = unknown
 	makedepends = unzip
 	depends = ca-certificates-utils
-	noextract = icpbr_certs-20251125-1.zip
-	source = icpbr_certs-20251125-1.zip::http://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/ACcompactado.zip
-	sha512sums = f16bed1d4924fdc59ada7af0d2e8ecffa595c1be6805b62c0835369bc97c8a3d08e38353a2208c4bf996529b1f0f348dedbf03845b225bcdb1a73a4aefe1902f
+	noextract = icpbr_certs-20251201-1.zip
+	source = icpbr_certs-20251201-1.zip::http://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/ACcompactado.zip
+	sha512sums = cf67390b71ff2ec01450100274d42758c384dd614061b28099e335107f8664f746a99ce2dbc5bf3dda41ef2488e53e905b949096d0ae6034ba164c9bbc77a253
 
 pkgname = ca-certificates-icp_br
