@@ -1,6 +1,6 @@
 pkgbase = partition-vacuum
 	pkgdesc = A daemon to monitor partition free space and delete old files
-	pkgver = v0.0.5
+	pkgver = v0.0.6
 	pkgrel = 1
 	url = https://github.com/akayami/partition-vacuum
 	arch = x86_64
@@ -14,6 +14,6 @@ pkgbase = partition-vacuum
 	source = config.toml
 	sha256sums = SKIP
 	sha256sums = ecfed78a591df4f4c58b65fa49508688babce2c0f9dc66969d37e8047414d01a
-	sha256sums = c591203fc5c3ab11c8c269ce5f46b8085b281c8bb3c18a4f5d08668b9cf3907f
+	sha256sums = e55a25f35a235942ba6b3138fa82543ca9b7fa95ab982f57c7d78cdef0eafa79
 
 pkgname = partition-vacuum
