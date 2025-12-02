@@ -1,6 +1,6 @@
 pkgbase = cfspeedtest-bin
 	pkgdesc = Unofficial CLI for speed.cloudflare.com
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/code-inflation/cfspeedtest/
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = cfspeedtest-bin
 	depends = gcc-libs
 	provides = cfspeedtest
 	conflicts = cfspeedtest
-	source = https://github.com/code-inflation/cfspeedtest//archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = cd93abf6c3afb0a1a2617485795f99093ad19928f39a93f1f858023aed9abf06
-	source_x86_64 = https://github.com/code-inflation/cfspeedtest//releases/download/v2.0.0/cfspeedtest-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 44c677ca6dc1e2e129700e85bea808fe68ed2ae56be90665410aa902ea98f3e9
-	source_aarch64 = https://github.com/code-inflation/cfspeedtest//releases/download/v2.0.0/cfspeedtest-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = daf596a78d77ddcf759cf9672e8f6e4e0b056055f79a849ecdf753b9117b1767
+	source = https://github.com/code-inflation/cfspeedtest//archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = d4be9ee03851d4383544911a0d2e88d7835113fc3091a65ccf3f98ba5439da61
+	source_x86_64 = https://github.com/code-inflation/cfspeedtest//releases/download/v2.0.1/cfspeedtest-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 9e5def0c5628b80f479f1de189ce74cac1f94dd46634799ee4af3ace702a2f55
+	source_aarch64 = https://github.com/code-inflation/cfspeedtest//releases/download/v2.0.1/cfspeedtest-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = d53b36ea3bc1feb692e3874c7414ca25bb16e05436426bad3b476876cfee5ed3
 
 pkgname = cfspeedtest-bin
