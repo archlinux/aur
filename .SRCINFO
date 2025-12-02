@@ -1,0 +1,23 @@
+pkgbase = python-withoutbg
+	pkgdesc = AI-powered background removal with local and cloud options
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://withoutbg.com/
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-click
+	depends = python-huggingface-hub
+	depends = python-numpy
+	depends = python-onnxruntime
+	depends = python-pillow
+	depends = python-requests
+	depends = python-tqdm
+	source = https://files.pythonhosted.org/packages/source/w/withoutbg/withoutbg-1.0.2.tar.gz
+	sha256sums = a035fc2026e75c6b9ca9b4cf630ad0e52207df69b4a5d1d1f4d6b81c92b2ea6a
+
+pkgname = python-withoutbg
