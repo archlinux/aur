@@ -1,7 +1,7 @@
 # Maintainer: fuero <fuerob@gmail.com>
 pkgname=gonzo
 # renovate: datasource=github-releases depName=control-theory/gonzo
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=2
 pkgdesc='TUI log analysis tool'
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('932ae964a50af247cbb288f55b92ed0e57adfcdbe8de4ed5c4514c85ec9c48aa5b8562aa83c465d55f262d1f28076130ef92d421e0c7c61e550751033d9b8fdd')
-b2sums=('c33089092d388908a6f1039bc8fbe46752b4ffa847fee82411e8c90d88ec9eb42087e0db1403ff44830b978b244c6f26414b8732e60cc6e2f0b454c0058f4b58')
+sha512sums=('3babbc1492639a24e8fc5fe7df120a24d25c1605ee891c0f79ed1ef1f9a6bc1e098f95141357fb999849c292acdd40de8a93e66dd8fbb829585164d77c77677b')
+b2sums=('13e7721ce008ffd29a32e20e09348305a242be0d4879941780efd9b910d3763bf979ddd8596c1c74995cde5ea0bf8a9e4668526105f7768cef18c24570ceaca0')
 
 build() {
   local _x _commit
