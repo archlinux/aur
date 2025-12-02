@@ -2,7 +2,7 @@
 
 _pkgname=openmp
 pkgname=mingw-w64-${_pkgname}
-pkgver=21.1.6
+pkgver=21.1.7
 pkgrel=1
 pkgdesc='LLVM OpenMP Runtime Library (mingw-w64)'
 url='https://openmp.llvm.org/'
@@ -17,9 +17,9 @@ source=(
 	"$_source_base/$_pkgname-$pkgver.src.tar.xz"{,.sig}
 	"$_source_base/cmake-$pkgver.src.tar.xz"{,.sig}
 )
-sha256sums=('47ce66334725d3919cbdc9a506245ba12c77e1c15d1347c1f7917289624eb7db'
+sha256sums=('0f892ed2e85e1a9bc9f55699aec0a5a020c9f0a77ce8d29fb4cdf3aee1b72033'
             'SKIP'
-            'e364f135fa14c343d70cac96f577f44e8e20bf026682f647f8c3c5687a0bebd1'
+            'f25ca011e4453ac035e940aa729d482d08eb83a91b4aaf1f230dc9ea28cadfa4'
             'SKIP')
 validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstellar@redhat.com>
               'D574BD5D1D0E98895E3BF90044F2485E45D59042'  # Tobias Hieta <tobias@hieta.se>
