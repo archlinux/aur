@@ -2,7 +2,7 @@
 
 pkgname=python-healpy
 _pyname=${pkgname#python-}
-pkgver=1.18.1
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="Python package to manipulate healpix maps"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ makedepends=('python-setuptools-scm>=8.0'
 optdepends=('python-healpy-doc: Documentation for healpy')
 checkdepends=('python-pytest')   # requests -> pooch -> scipy
 source=("https://files.pythonhosted.org/packages/source/h/healpy/healpy-${pkgver}.tar.gz")
-md5sums=('e29dbb0b8ed5318dc415b954effc2ea8')
+md5sums=('e8f084aa64545af7c3efe692de268afc')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -40,8 +40,8 @@ check() {
 
     # skip tests that cost lots of time
     cp build/lib.linux-${CARCH}-cpython-$(get_pyver)/${_pyname}/*-$(get_pyver)-*.so lib/healpy
-    pytest \
-        --deselect=test/test_pixelweights.py::test_pixelweights_local_datapath || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
+#       --deselect=test/test_pixelweights.py::test_pixelweights_local_datapath #|| warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
 }
 
 package() {
