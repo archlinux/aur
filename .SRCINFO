@@ -1,0 +1,22 @@
+pkgbase = tuios-web-bin
+	pkgdesc = Web terminal server for TUIOS - Serves TUIOS through the browser
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/Gaurav-Gosain/tuios
+	license = MIT
+	conflicts = tuios
+	provides = tuios
+	arch = aarch64
+	source_aarch64 = https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/tuios-web_${pkgver}_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 65c6737066b94cf4082d8875757383ad7609b11bd5ca5f3c5faa82d4afbf8b7f
+	arch = armv7h
+	source_armv7h = https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/tuios-web_${pkgver}_Linux_armv7.tar.gz
+	sha256sums_armv7h = 02484392abdac68393dded2bc65c0bf11b0273744f027326e64e4dd6a5ffb023
+	arch = i686
+	source_i686 = https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/tuios-web_${pkgver}_Linux_i386.tar.gz
+	sha256sums_i686 = eda4bf39e7cf46695dd5f2cb0182c2d9f52d5704d95b3c035e8f651c8bc574cb
+	arch = x86_64
+	source_x86_64 = https://github.com/Gaurav-Gosain/tuios/releases/download/v${pkgver}/tuios-web_${pkgver}_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 72d4a106b2eecab9ccd76c39ed501d1a50404d57161668591b1296685030e577
+	
+pkgname = tuios-web-bin
