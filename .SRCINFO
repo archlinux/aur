@@ -1,6 +1,6 @@
 pkgbase = x16-emulator
 	pkgdesc = An emulator for The 8-Bit Guy's Commander X16
-	pkgver = r48
+	pkgver = r49
 	pkgrel = 1
 	url = http://commanderx16.com/
 	arch = x86_64
@@ -12,12 +12,12 @@ pkgbase = x16-emulator
 	depends = gcc-libs
 	depends = glibc
 	depends = sdl2
-	depends = x16-rom=r48
+	depends = x16-rom=r49
 	depends = zlib
-	source = x16-emulator-r48.tar.gz::https://github.com/X16Community/x16-emulator/archive/r48.tar.gz
+	source = x16-emulator-r49.tar.gz::https://github.com/X16Community/x16-emulator/archive/r49.tar.gz
 	source = fix-git-rev.patch
 	source = modify-base-path.patch
-	md5sums = eda067c18d446b8d637e1271c4a8ce96
+	md5sums = 247ca1cde07e287667c35423f0b9fe9e
 	md5sums = 26c41ecd2e2676eaa7237334c8cb4bd7
 	md5sums = 0e76560b039fb58a85b4448ff6b64eb6
 

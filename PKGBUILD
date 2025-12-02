@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 # Contributor: Julien Savard <juju@juju2143.ca>
 pkgname=x16-emulator
-pkgver=r48
+pkgver=r49
 pkgrel=1
 pkgdesc="An emulator for The 8-Bit Guy's Commander X16"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
     "modify-base-path.patch"
 )
 
-md5sums=('eda067c18d446b8d637e1271c4a8ce96'
+md5sums=('247ca1cde07e287667c35423f0b9fe9e'
          '26c41ecd2e2676eaa7237334c8cb4bd7'
          '0e76560b039fb58a85b4448ff6b64eb6')
 
