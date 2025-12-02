@@ -11,7 +11,7 @@ pkgbase = r-diffobj
 	depends = r-crayon>=1.3.2
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/diffobj_0.3.6.tar.gz
+	source = https://cloud.r-project.org/src/contrib/diffobj_0.3.6.tar.gz
 	b2sums = f1dd3138845bf8617e98a07fe567f0a40e814113ccd2788f13af190423b809c751f3dc613854da78a4d151d4dc591bc1c1166f0d2a2f7eb06fdeaae9e76147da
 
 pkgname = r-diffobj
