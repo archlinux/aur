@@ -12,7 +12,7 @@ pkgbase = r-utf8
 	optdepends = r-knitr
 	optdepends = r-rlang
 	optdepends = r-rmarkdown
-	optdepends = r-testhat>=3.0.0
+	optdepends = r-testthat>=3.0.0
 	optdepends = r-withr
 	source = https://cloud.r-project.org/src/contrib/utf8_1.2.6.tar.gz
 	b2sums = a25246c7881602d5543400fe0db17200a82e93dd19a30d6ff18e52790490915bfc30f5f490de0c6af139aaf8fbd5624e1fcbe4beab47c4fb99f6ca1db37a34bc

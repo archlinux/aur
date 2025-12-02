@@ -22,7 +22,7 @@ optdepends=(
     "r-knitr"
     "r-rlang"
     "r-rmarkdown"
-    "r-testhat>=3.0.0"
+    "r-testthat>=3.0.0"
     "r-withr"
 )
 makedepends=()
