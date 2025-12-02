@@ -1,11 +1,13 @@
 pkgbase = ciwiki
 	pkgdesc = Personnal or familly wiki with low ressource requirement.
 	pkgver = 3.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/ciwiki/
 	arch = i686
 	arch = x86_64
 	license = GPL
+	depends = bash
+	depends = glibc
 	source = https://sourceforge.net/projects/ciwiki/files/ciwiki-3.0.5.tar.gz
 	md5sums = ab12779f45dd58054db0c66a24b157b9
 
