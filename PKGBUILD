@@ -2,7 +2,7 @@
 
 pkgname=fortran-fpm
 pkgver=0.12.0
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="A Fortran package manager and build system"
 arch=('any')
@@ -10,8 +10,7 @@ url="https://fpm.fortran-lang.org/"
 license=('MIT')
 groups=()
 depends=("git")
-# makedepends=("gcc-fortran")
-makedepends=("gcc12-fortran")
+makedepends=("gcc-fortran")
 checkdepends=()
 optdepends=()
 provides=()
@@ -39,14 +38,12 @@ prepare() {
 build() {
   cd "$srcdir/${pkgname##*-}-$pkgver"
 
-  gfortran-12 -J _bootstrap/  _bootstrap/fpm.F90 -o _bootstrap/fpm
+  gfortran -J _bootstrap/  _bootstrap/fpm.F90 -o _bootstrap/fpm
 }
 
 check() {
   cd "$srcdir/${pkgname##*-}-$pkgver"
 
-  # -- compile tests with gfortran 12 until bug is resolved
-  export FPM_FC="$(command -v gfortran-12)"
   _bootstrap/fpm test
 }
 
