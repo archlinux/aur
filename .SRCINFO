@@ -1,6 +1,6 @@
 pkgbase = gvm-libs
 	pkgdesc = greenbone-vulnerability-manager libraries
-	pkgver = 22.32.0
+	pkgver = 22.33.0
 	pkgrel = 1
 	url = https://github.com/greenbone/gvm-libs
 	arch = x86_64
@@ -31,10 +31,10 @@ pkgbase = gvm-libs
 	provides = libgvm_osp.so=22-64
 	provides = libgvm_util.so=22-64
 	replaces = openvas-libraries
-	source = gvm-libs-22.32.0.tar.gz::https://github.com/greenbone/gvm-libs/archive/v22.32.0.tar.gz
-	source = gvm-libs-22.32.0.tar.gz.asc::https://github.com/greenbone/gvm-libs/releases/download/v22.32.0/gvm-libs-22.32.0.tar.gz.asc
+	source = gvm-libs-22.33.0.tar.gz::https://github.com/greenbone/gvm-libs/archive/v22.33.0.tar.gz
+	source = gvm-libs-22.33.0.tar.gz.asc::https://github.com/greenbone/gvm-libs/releases/download/v22.33.0/gvm-libs-22.33.0.tar.gz.asc
 	validpgpkeys = 8AE4BE429B60A59B311C2E739823FAA60ED1E580
-	sha256sums = 85f7d78163ea89a69eb484accefb4188dc921105e7475b190c6eb5d579ea8ab1
+	sha256sums = efdbd553036400c274d6b1cf1b18c31bf1afc10e51a744675435e07f6141faba
 	sha256sums = SKIP
 
 pkgname = gvm-libs
