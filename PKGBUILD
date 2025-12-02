@@ -3,9 +3,8 @@
 
 pkgname=ffmpeg-decklink
 pkgver=8.0.1
-pkgrel=1
+pkgrel=2
 epoch=1
-_obs_studio_ver='32.0.1'
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
 arch=('x86_64')
 url='https://ffmpeg.org/'
@@ -84,6 +83,7 @@ makedepends=(
   amf-headers
   avisynthplus
   clang
+  decklink-sdk
   ffnvcodec-headers
   frei0r-plugins
   ladspa
@@ -109,25 +109,27 @@ provides=(
   'libswresample.so')
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
-        "https://github.com/obsproject/obs-studio/archive/${_obs_studio_ver}/obs-studio-${_obs_studio_ver}.tar.gz"
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
+        '110-ffmpeg-add-playback-support-to-decklink-sdk14.3-devices.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/0cd75dbfa0fc6c213cf9240b3c03c809070c5209'
+        '120-ffmpeg-add-decklink-sdk14.3-build-support.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/27e94281d1c880b4cae28738e35c0d6f9a58f06b'
         'LICENSE')
 sha256sums=('05ee0b03119b45c0bdb4df654b96802e909e0a752f72e4fe3794f487229e5a41'
             'SKIP'
-            '906278ccedb5ed919e586697467eb7fa4205fceeda127386ce5b74026113ba96'
             '5cb2475de410f5696072687af88e91461cdacd1bb636ac14a3b348e3383934f1'
+            'd1c4bdbcdd5a852f46639e0cb3dbf0b4a71884487c9fbcdb38139a1e5e96ddaf'
+            'ee89e0759f5233d390e3a23415e2664aae38bbe89e10d49ecda8a06c26bd21ee'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
 prepare() {
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/110-ffmpeg-add-playback-support-to-decklink-sdk14.3-devices.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/120-ffmpeg-add-decklink-sdk14.3-build-support.patch"
 }
 
 build() {
     cd "ffmpeg-${pkgver}"
     printf '%s\n' '  -> Running ffmpeg configure script...'
-    
-    export CFLAGS+=" -isystem${srcdir}/obs-studio-${_obs_studio_ver}/plugins/decklink/linux/decklink-sdk"
     
     # fix build with v4l2-utils 1.30 with gcc 14 and later
     export CFLAGS+=' -Wno-error=incompatible-pointer-types'
