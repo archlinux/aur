@@ -1,6 +1,6 @@
 pkgbase = ascii-chat
 	pkgdesc = Video chat in your terminal
-	pkgver = 0.3.12
+	pkgver = 0.3.13
 	pkgrel = 1
 	url = https://github.com/zfogg/ascii-chat
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = ascii-chat
 	makedepends = libsodium
 	makedepends = portaudio
 	optdepends = v4l-utils: webcam device utilities
-	source = ascii-chat-0.3.12-full.tar.gz::https://github.com/zfogg/ascii-chat/releases/download/v0.3.12/ascii-chat-0.3.12-full.tar.gz
-	sha256sums = 8fd96a4eb28d336491fb9121a7544f7f58190398cd67f6b04ed4a5e4ce1b6cb4
+	source = ascii-chat-0.3.13-full.tar.gz::https://github.com/zfogg/ascii-chat/releases/download/v0.3.13/ascii-chat-0.3.13-full.tar.gz
+	sha256sums = e3f855af056e314f8451118f71eebb12b3ee1f3c6b2c27a829dad82a5b710ef8
 
 pkgname = ascii-chat
