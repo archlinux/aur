@@ -1,0 +1,22 @@
+pkgbase = dnst
+	pkgdesc = A DNS administration toolbox including re-implementations of important ldns programs
+	pkgver = 0.1.0alpha
+	pkgrel = 1
+	url = https://github.com/NLnetLabs/dnst
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cargo
+	makedepends = python-toml
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-sphinx-tabs
+	makedepends = python-sphinx-copybutton
+	makedepends = python-sphinx-notfound-page
+	depends = openssl
+	depends = glibc
+	depends = gcc-libs
+	options = !lto
+	source = dnst-0.1.0alpha.tar.gz::https://github.com/NLnetLabs/dnst/archive/refs/tags/v0.1.0-alpha.tar.gz
+	sha256sums = bff3d70ca78bb82a77c01a5dc8c055dfb9974c2500dfe9022cdaf976c12e70ea
+
+pkgname = dnst
