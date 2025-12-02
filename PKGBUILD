@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=taskfile-to-tasks-python-git
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Convert Taskfile.yml to an editor tasks format, like VSCode and Zed tasks.json"
 arch=('any')
 url="https://github.com/H3mul/taskfile-to-tasks"
@@ -26,5 +26,5 @@ build() {
 
 package() {
   cd "${srcdir}/taskfile-to-tasks"
-  python setup.py install --root="${pkgdir}" --optimize=1
+  pip install --root="${pkgdir}" --no-deps --ignore-installed --prefix="/usr" .
 }
