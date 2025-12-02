@@ -1,7 +1,7 @@
 # Maintainer: Michael Rydén (zynex(at)zoik.se)
 
 pkgname=avbroot
-pkgver=3.23.1
+pkgver=3.23.3
 pkgrel=1
 pkgdesc="Application for patching Android A/B-style OTA images for root access"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('rust' 'gcc' 'git')
 options=('!debug')
 
 source=("https://github.com/chenxiaolong/avbroot/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6ce39007b4612d4c363487bef8376038d801ce20fe32f90246531acffc2bee9c')
+sha256sums=('6b323e217c029a97086b5e839551b1467e2eb72163f6b4240501f7d3b761e7e0')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
