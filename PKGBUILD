@@ -1,7 +1,7 @@
 # Maintainer: rsahwe <rsahwe@gmx.net>
 pkgname=evcolors
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Ev color themes'
 arch=('any')
 license=('MIT')
@@ -10,7 +10,7 @@ makedepends=()
 checkdepends=()
 optdepends=(
 	'btop: using the btop theme'
-	'starship: use theme with "export STARSHIP_CONFIG=/usr/share/evcolors/starship.theme"'
+	'starship: use theme with "export STARSHIP_CONFIG=/usr/share/evcolors/starship.toml"'
 )
 source=('evcolors.theme' 'starship.toml')
 validpgpkeys=()
