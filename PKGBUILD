@@ -14,10 +14,11 @@ pkgrel=5
 
 arch=("any")
 depends=(
-    "r>=3.0"
+    "r>=3.6"
 )
 optdepends=(
-    "r-pryr"
+    "r-lobstr"
+    "r-testthat>=3.0.0"
 )
 
 # The unittests for `r-r6` have multiple circular
