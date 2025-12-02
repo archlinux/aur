@@ -9,7 +9,7 @@ arch=(x86_64)
 url="https://github.com/Mastermindzh/tidal-hifi"
 license=("custom:MIT")
 depends=(libxss nss gtk3)
-makedepends=(nodejs npm libxcrypt-compat python)
+makedepends=(nodejs npm libxcrypt-compat python git)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Mastermindzh/tidal-hifi/archive/refs/tags/${pkgver}.tar.gz"
         "https://patch-diff.githubusercontent.com/raw/Mastermindzh/tidal-hifi/pull/731.diff"
         "tidal-hifi.desktop")

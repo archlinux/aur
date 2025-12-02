@@ -9,6 +9,7 @@ pkgbase = tidal-hifi
 	makedepends = npm
 	makedepends = libxcrypt-compat
 	makedepends = python
+	makedepends = git
 	depends = libxss
 	depends = nss
 	depends = gtk3
