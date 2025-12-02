@@ -6,7 +6,7 @@ pkgdesc="Voice-to-text transcription CLI using OpenAI Whisper API"
 arch=('x86_64')
 url="https://whis.ink"
 license=('MIT')
-depends=('gcc-libs' 'openssl')
+depends=('gcc-libs' 'openssl' 'alsa-lib')
 source=("https://github.com/frankdierolf/whis/releases/download/v$pkgver/$pkgname-v$pkgver-x86_64-linux.tar.gz")
 sha256sums=('6cbbfeeefe4c712f3852e096b64e7c9bdac964a23d7c76a9629d5e4dfd4d988c')
 
