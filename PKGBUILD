@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=netpad-bin
 _pkgname=NetPad
-pkgver=0.10.0
+pkgver=0.11.0
 _electronversion=36
 pkgrel=1
 pkgdesc="A cross-platform C# editor and playground.(Prebuilt version.Use system-wide electron)"
@@ -26,12 +26,12 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/tareqimbasher/NetPad/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('dd01b082e6882eb02371c717687a38de9f896f7d2322b40b6babb0e73df18085'
+sha256sums=('20cb773d64a695344cf23e01e4359ec8119ed6e62c47bc0890d02fe346dc3b02'
             '43485534798b716310ae2a0edeebb00e97ff0e42e5fde13ff2994e2bc82348f6'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
-    _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
+    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
