@@ -15,10 +15,6 @@ if [ $PKGBUILD_VERSION != $VERSION ]; then
 	curl -O https://downloads.metabase.com/latest/metabase.jar
 	
 	sed -i "s/^pkgver=.*/pkgver=$VERSION/" PKGBUILD
-        #makepkg
-        #CHKSUM="$(sha512sum metabase.jar | cut -d' ' -f1)"
-        #sed -i "s/^sha512sums=.*/sha512sums=('$CHKSUM')/;s/^pkgrel=.*/pkgrel=1/" PKGBUILD
-        #makepkg
 	CHKSUM="$(b2sum metabase.jar | cut -d' ' -f1)"
 	echo $CHKSUM
 
