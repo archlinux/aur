@@ -3,7 +3,7 @@
 _pkgauthor=Martchus
 _pkgname=tageditor
 pkgname=${_pkgname}-bin
-pkgver=3.9.8
+pkgver=3.9.9
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska"
@@ -22,9 +22,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "ICON-${pkgver}.svg::${_urlraw}/resources/icons/hicolor/scalable/apps/tageditor.svg")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[0]}-pc-linux-gnu.tar.xz")
 sha256sums=('c03cea027b4b40e4402fabd08557736727ec3d5bc54ad64ab6472de432198cad'
-            '52cb9b25f1280db821c3042e4815c8850930e7ca25aa4744e77f106641888bad'
+            '360e26199123be22e199bab00ad1cda3bea3dddf8a1b8d96df4df55ef396d90d'
             'd12704a39f79dcaaf7f14ac158542b2e5e2d37ec53a4cbd5d5a5f292a8e4228e')
-sha256sums_x86_64=('25920a9663218ef924559d89802a503e3122707517727c9f6a974072a5d13b42')
+sha256sums_x86_64=('0cdfe2c5fe393e7940148c4f2d742fcc2995574e995a2afcd5f0560d867a7678')
 
 
 prepare() {

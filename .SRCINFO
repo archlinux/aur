@@ -1,6 +1,6 @@
 pkgbase = tageditor-bin
 	pkgdesc = A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska
-	pkgver = 3.9.8
+	pkgver = 3.9.9
 	pkgrel = 1
 	url = https://github.com/Martchus/tageditor
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = tageditor-bin
 	depends = glibc
 	provides = tageditor
 	conflicts = tageditor
-	source = LICENSE-3.9.8::https://raw.githubusercontent.com/Martchus/tageditor/v3.9.8/LICENSE
-	source = README-3.9.8.md::https://raw.githubusercontent.com/Martchus/tageditor/v3.9.8/README.md
-	source = ICON-3.9.8.svg::https://raw.githubusercontent.com/Martchus/tageditor/v3.9.8/resources/icons/hicolor/scalable/apps/tageditor.svg
+	source = LICENSE-3.9.9::https://raw.githubusercontent.com/Martchus/tageditor/v3.9.9/LICENSE
+	source = README-3.9.9.md::https://raw.githubusercontent.com/Martchus/tageditor/v3.9.9/README.md
+	source = ICON-3.9.9.svg::https://raw.githubusercontent.com/Martchus/tageditor/v3.9.9/resources/icons/hicolor/scalable/apps/tageditor.svg
 	sha256sums = c03cea027b4b40e4402fabd08557736727ec3d5bc54ad64ab6472de432198cad
-	sha256sums = 52cb9b25f1280db821c3042e4815c8850930e7ca25aa4744e77f106641888bad
+	sha256sums = 360e26199123be22e199bab00ad1cda3bea3dddf8a1b8d96df4df55ef396d90d
 	sha256sums = d12704a39f79dcaaf7f14ac158542b2e5e2d37ec53a4cbd5d5a5f292a8e4228e
-	source_x86_64 = tageditor-x86_64-3.9.8.tar.gz::https://github.com/Martchus/tageditor/releases/download/v3.9.8/tageditor-3.9.8-x86_64-pc-linux-gnu.tar.xz
-	sha256sums_x86_64 = 25920a9663218ef924559d89802a503e3122707517727c9f6a974072a5d13b42
+	source_x86_64 = tageditor-x86_64-3.9.9.tar.gz::https://github.com/Martchus/tageditor/releases/download/v3.9.9/tageditor-3.9.9-x86_64-pc-linux-gnu.tar.xz
+	sha256sums_x86_64 = 0cdfe2c5fe393e7940148c4f2d742fcc2995574e995a2afcd5f0560d867a7678
 
 pkgname = tageditor-bin
