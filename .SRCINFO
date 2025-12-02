@@ -1,33 +1,34 @@
 pkgbase = r-testthat
 	pkgdesc = Unit Testing for R
-	pkgver = 3.2.2
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=testthat
 	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = r>=3.6.0
-	depends = r-brio>=1.1.3
-	depends = r-callr>=3.7.3
-	depends = r-cli>=3.6.1
-	depends = r-desc>=1.4.2
-	depends = r-digest>=0.6.33
-	depends = r-evaluate>=1.0.1
-	depends = r-jsonlite>=1.8.7
-	depends = r-lifecycle>=1.0.3
+	depends = r>=4.1.0
+	depends = r-brio>=1.1.5
+	depends = r-callr>=3.7.6
+	depends = r-cli>=3.6.5
+	depends = r-desc>=1.4.3
+	depends = r-evaluate>=1.0.4
+	depends = r-jsonlite>=2.0.0
+	depends = r-lifecycle>=1.0.4
 	depends = r-magrittr>=2.0.3
-	depends = r-pkgload>=1.3.2.1
+	depends = r-pkgload>=1.4.0
 	depends = r-praise>=1.0.0
-	depends = r-processx>=3.8.2
-	depends = r-ps>=1.7.5
-	depends = r-r6>=2.5.1
-	depends = r-rlang>=1.1.1
-	depends = r-waldo>=0.6.0
+	depends = r-processx>=3.8.6
+	depends = r-ps>=1.9.1
+	depends = r-r6>=2.6.1
+	depends = r-rlang>=1.1.6
+	depends = r-waldo>=0.6.2
 	depends = r-withr>=3.0.2
 	optdepends = r-covr
 	optdepends = r-curl>=0.9.5
 	optdepends = r-diffviewer>=0.1.0
+	optdepends = r-digest>=0.6.33
 	optdepends = r-knitr
+	optdepends = r-gh
 	optdepends = r-rmarkdown
 	optdepends = r-rstudioapi
 	optdepends = r-s7
@@ -35,7 +36,7 @@ pkgbase = r-testthat
 	optdepends = r-usethis
 	optdepends = r-vctrs>=0.1.0
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/testthat_3.2.2.tar.gz
-	b2sums = 10ec4de0db26f16aa99885b47ec27ca0bbc4535b073179e34c88388bbdeb261c167575b3792906239df116367dec2ec7cdd1a5c764f6f1c428653563e523fe3c
+	source = https://cran.r-project.org/src/contrib/testthat_3.3.1.tar.gz
+	b2sums = 76c29a6bd6f4323871c21fab5498f2b3a0776cdd4211cf05ca304c0afc3be0f6fc4d3b845e5a7eaa874d39558cb7184c38cb03ca29f3f1dfa222dc4ece5fdda8
 
 pkgname = r-testthat
