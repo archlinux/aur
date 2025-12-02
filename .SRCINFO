@@ -1,6 +1,6 @@
 pkgbase = r-cellnoptr
 	pkgdesc = Training of boolean logic models of signalling networks using prior knowledge networks and perturbation data
-	pkgver = 1.54.0
+	pkgver = 1.56.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CellNOptR
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = r-cellnoptr
 	optdepends = r-readr
 	optdepends = r-runit
 	optdepends = r-tidyr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CellNOptR_1.54.0.tar.gz
-	sha256sums = bc1d437bc66207d2d6fc0e4a4153de9957b6f31ff228a364c9b4937cdb007485
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CellNOptR_1.56.0.tar.gz
+	sha256sums = 91c725070b08809ccdd2378ad619afddb124b47062fc5e018c8452880192925c
 
 pkgname = r-cellnoptr
