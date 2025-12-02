@@ -1,0 +1,16 @@
+pkgbase = network-monitor-bin
+	pkgdesc = A real-time network connection monitoring tool built with Rust and GTK4, displaying active connections with live I/O statistics in a modern graphical interface
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/grigio/network-monitor?
+	arch = x86_64
+	license = GPL3
+	depends = gtk4
+	depends = libadwaita
+	options = !strip
+	source = network-monitor.desktop
+	b2sums = b26148c283b7087648f96456e742e1a6fe3146abefe5123aa97e130a332d8011501ef498b3624929b2e54209063fc1fb755592c7b2193e0b879d5e07c78b9c41
+	source_x86_64 = network-monitor-bin-0.3.0.tar.gz::https://github.com/grigio/network-monitor/releases/download/v0.3.0/network-monitor-x64.tar.gz
+	b2sums_x86_64 = 6aa28a9d68db0f66e91a00aabe86145a97f0167beb141e67e578d31b3652dd478bd89e6bfc4bd2bfa3cce7e01e4ee61bd6ad8db3d8057ff302a5f4ae9c686f74
+
+pkgname = network-monitor-bin

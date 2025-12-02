@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Network Monitor
+Comment=Display active connections with live I/O statistics
+Exec=network-monitor
+#Icon=network
+Type=Application
+Categories=Utility
