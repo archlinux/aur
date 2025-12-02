@@ -4,14 +4,14 @@ pkgver=0.1.1
 pkgrel=1
 pkgdesc="A modern, fully typed Python client and CLI for interacting with Zoekt, a fast, scalable code search engine"
 arch=('any')
-url="https://github.com/H3mul/zoekt-py"
+url="https://github.com/udbhav-44/zoekt-py"
 license=('MIT')
 depends=('python' 'python-pip')
 makedepends=('git')
 provides=('zoekt-py')
 conflicts=('zoekt-py')
 options=('!debug')
-source=("git+${url}.git")
+source=("git+https://github.com/H3mul/zoekt-py.git")
 md5sums=('SKIP')
 
 pkgver() {
