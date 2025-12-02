@@ -1,7 +1,7 @@
 pkgbase = slpct
 	pkgdesc = redattore atti gratuito per il Processo Civile Telematico
-	pkgver = 1.36.0
-	pkgrel = 9
+	pkgver = 1.36.1
+	pkgrel = 10
 	url = https://github.com/Marx79/Slpct.git
 	arch = any
 	license = GPL-3.0-or-later

@@ -1,7 +1,7 @@
 # Maintainer: Giovanni De Paola <avvdepaola at proton dot me>
 pkgname=slpct
-pkgver=1.36.0
-pkgrel=9
+pkgver=1.36.1
+pkgrel=10
 pkgdesc="redattore atti gratuito per il Processo Civile Telematico"
 arch=('any')
 url='https://github.com/Marx79/Slpct.git'
