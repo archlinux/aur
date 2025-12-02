@@ -1,0 +1,22 @@
+pkgbase = xav-dynamic-notq-git
+	pkgdesc = The Most Efficient Chunked or Target Quality AV1/AV2 Encoding Framework
+	pkgver = r111.4fc1c3d
+	pkgrel = 1
+	url = https://github.com/emrakyz/xav
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = nasm
+	depends = ffmpeg
+	depends = svt-av1
+	depends = ffms2
+	depends = mkvtoolnix-cli
+	provides = xav
+	provides = xav-git
+	conflicts = xav
+	conflicts = xav-git
+	source = git+https://github.com/emrakyz/xav.git
+	sha256sums = SKIP
+
+pkgname = xav-dynamic-notq-git
