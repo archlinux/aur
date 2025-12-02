@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Echo
+Comment=Horror visual novel
+Exec=/usr/bin/echo-vn
+Icon=echo-vn
+Terminal=false
+Categories=Game
+Keywords=Renpy;VisualNovel;Furry;LGBT;Horror;
+StartupNotify=true

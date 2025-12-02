@@ -1,0 +1,20 @@
+pkgbase = echo-vn-bin
+	pkgdesc = A horror visual novel about a small, isolated, desert town located somewhere in the southwestern states. (bundled Ren'Py)
+	pkgver = 1.01
+	pkgrel = 1
+	url = https://echoproject.itch.io/echo
+	arch = x86_64
+	arch = i686
+	license = custom
+	makedepends = itchio-dlagent
+	depends = bash
+	options = !strip
+	options = !debug
+	source = echo-vn.desktop
+	source = echo-vn.sh
+	source = Echo-1.01-linux.tar.bz2::itch://echoproject/echo/5524813
+	b2sums = 0ae6f4fa7c49f6078593857e4826d79443e710090fb49617f488a2a4dabb94f137febb586f4e66950dade896d6eb39e82948aab721513fbb3d9236c4abd78a32
+	b2sums = a04b87d368e017001ed0ce75b70bab3482539b167110c835b2b15398119da5d29107ae9971d2ccd1798b6117eca253215a9c50d8df7a79ef58c4f893ae712718
+	b2sums = aa806e99ed4cf3d62a183d17bd910917d842ec0d8fa453f163ef14054898c12f969cb3cb8b464387517463ce5c30853157b26af337a2f6722988f6539a905c0f
+
+pkgname = echo-vn-bin
