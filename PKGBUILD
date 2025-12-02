@@ -1,7 +1,7 @@
 # Maintainer: Thomas J Faughnan Jr <thomas@faughnan.net>
 
 pkgname=imessage-exporter
-pkgver=3.1.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc='Export iMessage data and run diagnostics'
 arch=(x86_64)
@@ -12,7 +12,7 @@ makedepends=(cargo)
 optdepends=('imagemagick: image conversion support'
             'ffmpeg: audio and video conversion support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('928b1637642514a41ddc2c3c689d1952e88419e779cebb8ffa11c74f26c3135842aa3aa9760f06ea3773651a17c4a77e99a53dd1c40fd9d743078ca1f05940dc')
+sha512sums=('3f7eb3adf5486f62c4ecd79eb3391b9ad4abfaf526c1ca58910cd817c95c5f8f58124f6d71a30d0194c6be8d2fee7927df95a58c2ec87beeee9755cd1d15e60d')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -31,6 +31,15 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
+}
+
+check() {
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    # https://github.com/ReagentX/imessage-exporter/issues/613
+    export TZ=America/Los_Angeles
+    # https://github.com/ReagentX/imessage-exporter/issues/640
+    # cargo test --workspace --frozen --all-features
 }
 
 package() {
