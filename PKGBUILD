@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OncoSimulR
-_pkgver=4.10.0
+_pkgver=4.12.0
 pkgname=r-${_pkgname,,}
-pkgver=4.10.0
+pkgver=4.12.0
 pkgrel=1
 pkgdesc='Forward Genetic Simulation of Cancer Progression with Epistasis'
 arch=('x86_64')
@@ -35,7 +35,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e53e4705eeb1310b19424bbfb2a0b7bd7a37decc9f8e7634efd8ddadd12546df')
+sha256sums=('d96a1d0b2c9cd5a1de4697b70ff5508292f1496c8927a4214bec7d3e6ec3c9a3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
