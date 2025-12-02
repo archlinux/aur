@@ -1,6 +1,6 @@
 pkgbase = r-nethet
 	pkgdesc = A bioconductor package for high-dimensional exploration of biological network heterogeneity
-	pkgver = 1.40.0
+	pkgver = 1.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/nethet
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = r-nethet
 	optdepends = r-knitr
 	optdepends = r-testthat
 	optdepends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/nethet_1.40.0.tar.gz
-	sha256sums = d48fbb8f43fcdf4caec96ff049e832029125db5714b7a2a0fbc2c30aedd330e5
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/nethet_1.42.0.tar.gz
+	sha256sums = bf3c03104cd472d044bd57054d8d4fb681b23eadf1f3bccaf690325eaa2ead50
 
 pkgname = r-nethet
