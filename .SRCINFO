@@ -1,4 +1,3 @@
-Using commit: c3462e68
 pkgbase = pegasus-frontend-stable-git
 	pkgdesc = Stable version of Pegasus Frontend: A cross platform, customizable frontend for launching emulators and managing your game collection.
 	pkgver = alpha16.r82.gc3462e68
