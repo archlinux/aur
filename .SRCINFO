@@ -2,7 +2,7 @@ pkgbase = gnome-aur-manager
 	pkgdesc = A modern GNOME application to browse and manage AUR packages with GTK4 and Libadwaita
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/yourusername/gnome-aur-manager
+	url = https://github.com/OMNIDROID2995/gnome-aur-manager
 	arch = any
 	license = GPL-3.0-or-later
 	depends = python>=3.10
