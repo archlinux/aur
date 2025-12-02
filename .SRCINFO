@@ -1,6 +1,6 @@
 pkgbase = decker
 	pkgdesc = Multimedia platform for creating interactive documents
-	pkgver = 1.61
+	pkgver = 1.62
 	pkgrel = 1
 	url = http://beyondloom.com/decker/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = decker
 	depends = hicolor-icon-theme
 	depends = sdl2
 	depends = sdl2_image
-	source = decker-1.61.tar.gz::https://github.com/JohnEarnest/Decker/archive/refs/tags/v1.61.tar.gz
-	sha256sums = 85c4eb42a1a986f997438317a7cca54a4b27bff9a621c2b6e7c55e1288439287
+	source = decker-1.62.tar.gz::https://github.com/JohnEarnest/Decker/archive/refs/tags/v1.63.tar.gz
+	sha256sums = b27fa1eac53b3355551b75bc83e012b6240493a7a47ce5e113600d210c76d5f6
 
 pkgname = decker

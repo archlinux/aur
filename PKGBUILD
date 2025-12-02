@@ -1,7 +1,9 @@
 # Maintainer: Chris Mounce <christophermounce@gmail.com>
 
 pkgname=decker
-pkgver=1.61
+pkgver=1.62
+# HACK: Version 1.62 was mis-tagged in Git. Remove this variable once versions match tags again.
+_pkgver=1.63
 pkgrel=1
 pkgdesc="Multimedia platform for creating interactive documents"
 arch=('x86_64')
@@ -9,17 +11,17 @@ url="http://beyondloom.com/decker/"
 license=('MIT')
 makedepends=('xxd')
 depends=('glibc' 'hicolor-icon-theme' 'sdl2' 'sdl2_image')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/JohnEarnest/Decker/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('85c4eb42a1a986f997438317a7cca54a4b27bff9a621c2b6e7c55e1288439287')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/JohnEarnest/Decker/archive/refs/tags/v$_pkgver.tar.gz")
+sha256sums=('b27fa1eac53b3355551b75bc83e012b6240493a7a47ce5e113600d210c76d5f6')
 
 build() {
-    cd "$srcdir/Decker-$pkgver"
+    cd "$srcdir/Decker-$_pkgver"
     make -j1 EXTRA_FLAGS='-Wl,-z,now,-z,shstk' lilt decker docs
 }
 
 package() {
     # Install app itself
-    cd "$srcdir/Decker-$pkgver"
+    cd "$srcdir/Decker-$_pkgver"
     DESTDIR="$pkgdir" PREFIX="/usr" make install
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 
