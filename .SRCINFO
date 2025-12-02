@@ -12,6 +12,7 @@ pkgbase = x16-rom
 	makedepends = pandoc
 	makedepends = python
 	optdepends = x16-emulator: emulator for the ROMs
+	options = !makeflags
 	source = x16-rom-r48.tar.gz::https://github.com/X16Community/x16-rom/archive/r48.tar.gz
 	source = https://raw.githubusercontent.com/X16Community/x16-emulator/r48/github-pandoc.css
 	md5sums = 3c6a1d1b9daf50ab3bcbb5fe8245c591

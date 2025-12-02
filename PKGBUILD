@@ -11,6 +11,11 @@ groups=('commander-x16')
 depends=()
 makedepends=('cc65' 'lzsa' 'pandoc' 'python')
 optdepends=('x16-emulator: emulator for the ROMs')
+
+# Workaround for GitHub issue 363
+# See also: https://github.com/X16Community/x16-rom/issues/363#issuecomment-3603227037
+options=('!makeflags')
+
 install=x16-rom.install
 
 source=(
