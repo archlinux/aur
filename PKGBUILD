@@ -3,7 +3,7 @@
 
 pkgref=keyd
 pkgname=keyd-openrc
-pkgver=2.5.0.r3.393d341
+pkgver=2.5.0.r91.30434c9
 pkgrel=1
 arch=('x86_64' 'aarch64')
 pkgdesc='A key remapping daemon for linux'
@@ -13,6 +13,7 @@ makedepends=(git)
 depends=(openrc)
 provides=($pkgref)
 conflicts=($pkgref)
+options=('!debug')
 install=$pkgref.install
 optdepends=('python3: for keyd-application-mapper')
 source=('git+https://github.com/rvaiya/keyd.git'
@@ -29,8 +30,8 @@ pkgver() {
 }
 
 prepare(){ 
-	cd $srcdir
-	patch $pkgref/Makefile Makefile.patch
+	cd "$srcdir/$pkgref"
+	patch -Np1 -i "$srcdir/Makefile.patch"
 }
 
 build() {
