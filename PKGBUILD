@@ -1,9 +1,9 @@
 pkgname=dotify
-pkgver=2.0.7
-pkgrel=3
+pkgver=2.1.3
+pkgrel=4
 pkgdesc="Next-generation music player with a modern interface and advanced features"
 arch=('x86_64')
-url="https://sourceforge.net/projects/dotify/"
+url="https://sourceforge.net/projects/dotify/files/dotify/Dotify_2.1.3_amd64.deb/download"
 license=('proprietary')
 depends=(
   'webkit2gtk-4.1'
@@ -22,12 +22,15 @@ depends=(
   'hicolor-icon-theme'
 )
 
-source=("dotify-${pkgver}.deb::https://sourceforge.net/projects/dotify/files/dotify/Dotify_${pkgver}_amd64.deb/download")
+source=("https://sourceforge.net/projects/dotify/files/dotify/Dotify_2.1.3_amd64.deb/download")
 sha256sums=('SKIP')
 
 package() {
   cd "${srcdir}"
 
-  ar x "dotify-${pkgver}.deb"
+  # Распаковка .deb
+  ar x download
+
+  # Извлечение содержимого пакета
   tar -xf data.tar.* -C "${pkgdir}"
 }
