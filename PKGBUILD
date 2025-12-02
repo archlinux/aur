@@ -1,6 +1,6 @@
 # Maintainer: RAprogramm <andrey.rozanov.vl@gmail.com>
 pkgname=logi-mx
-pkgver=0.3.1
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Logitech MX Master 3S configuration tool and daemon with system tray"
 arch=('x86_64')
