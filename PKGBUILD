@@ -1,7 +1,7 @@
 # Maintainer: dragoneki <dragoneki at proton dot me>
 pkgname=krunner-bazaar
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="KRunner plugin for bazaar"
 arch=('x86_64')
 url="https://github.com/ublue-os/krunner-bazaar"
