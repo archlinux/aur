@@ -1,24 +1,21 @@
 pkgbase = tev
-	pkgdesc = High dynamic range (HDR) image comparison tool for graphics people. Supports primarily OpenEXR files.
-	pkgver = 2.5.2
+	pkgdesc = High dynamic range (HDR) image viewer for people who care about colors
+	pkgver = 2.6.3
 	pkgrel = 1
 	url = https://github.com/Tom94/tev
 	arch = i686
 	arch = x86_64
-	license = LicenseRef-BSD
+	arch = arm
+	license = GPL3
 	makedepends = clang
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
 	makedepends = wayland-protocols
 	depends = hicolor-icon-theme
-	depends = jbigkit
 	depends = libc++
 	depends = libc++abi
-	depends = libdeflate
 	depends = libglvnd
-	depends = libpng
-	depends = libwebp
 	depends = libxrandr
 	depends = libxinerama
 	depends = libxcursor
@@ -27,7 +24,7 @@ pkgbase = tev
 	depends = wayland
 	provides = tev
 	conflicts = tev
-	source = tev::git+https://github.com/Tom94/tev.git#tag=v2.5.2
+	source = tev::git+https://github.com/Tom94/tev.git#tag=v2.6.3
 	md5sums = SKIP
 
 pkgname = tev

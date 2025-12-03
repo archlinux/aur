@@ -1,20 +1,19 @@
 # Maintainer: Kevin Masson <hi@oktomus.com>
 # Maintainer: Alex Hirzel <alex at hirzel period us>
-# Maintainer: Chuyan Zhang <develop@zcy.moe>
+# Maintainer: Chuyan Zhang <develop at zcy dot moe>
 
 _pkgname=tev
 pkgname=${_pkgname}
-pkgver=2.5.2
+pkgver=2.6.3
 pkgrel=1
-pkgdesc="High dynamic range (HDR) image comparison tool for graphics people. Supports primarily OpenEXR files."
-arch=("i686" "x86_64")
+pkgdesc="High dynamic range (HDR) image viewer for people who care about colors"
+arch=("i686" "x86_64" "arm")
 url="https://github.com/Tom94/tev"
-license=('LicenseRef-BSD')
-depends=("hicolor-icon-theme" "jbigkit" "libc++" "libc++abi" "libdeflate" "libglvnd" "libpng" "libwebp" "libxrandr" "libxinerama" "libxcursor" "libxi" "libxkbcommon" "wayland")
+license=('GPL3')
+depends=("hicolor-icon-theme" "libc++" "libc++abi" "libglvnd" "libxrandr" "libxinerama" "libxcursor" "libxi" "libxkbcommon" "wayland")
 makedepends=("clang" "cmake" "git" "ninja" "wayland-protocols")
 provides=("tev")
 conflicts=("tev")
-install=
 source=("${_pkgname}::git+${url}.git#tag=v${pkgver}")
 md5sums=("SKIP")
 OPTIONS=(!lto)
