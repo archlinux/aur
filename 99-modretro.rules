@@ -1,0 +1,6 @@
+# If rules fail to reload automatically, we can refresh udev rules
+# with the command "udevadm control --reload"
+# 
+# These rules enable MRUpdater to access the Chromatic via USB by overriding/defining the USB rules.
+ACTION=="add", ATTR{idVendor}=="33aa", ATTR{idProduct}=="0120", MODE:="666"
+ATTRS{idVendor}=="374e", ATTRS{idProduct}=="0101", MODE:="0666"
