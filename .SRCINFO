@@ -1,0 +1,21 @@
+pkgbase = excel2tex
+	pkgdesc = onvert Excel/LibreOffice Calc table to LaTex compatible tabularx
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://github.com/gucio321/excel2tex
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	arch = riscv64
+	license = DWTFPL
+	makedepends = go>=1.24
+	depends = libx11
+	depends = git
+	options = !lto
+	source = excel2tex-3.3.0.tar.gz::https://github.com/gucio321/excel2tex/archive/v3.3.0.tar.gz
+
+pkgname = excel2tex
