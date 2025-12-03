@@ -1,37 +1,51 @@
-# Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
+# Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
+# Maintainer: Zhiwei Chen <condy0919@gmail.com>
+# Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
-pkgname=merlin-git
-_pkgname=merlin
-pkgver=20251119
+_basename=merlin
+pkgname=$_basename-git
+_pkgver=5.6-504
+pkgver=v5.6.504.r38.gd6fd03b # No hypen in $pkgver
 pkgrel=1
-pkgdesc="Context sensitive completion for OCaml in Vim and Emacs (ocamlmerlin binary only)"
+pkgdesc="Low-level compiler interfaces and the standard higher-level merlin protocol"
 arch=('x86_64')
-depends=('ocaml' 'ocaml-findlib' 'ocaml-yojson' 'ocaml-csexp')
-makedepends=('git' 'dune')
-url="https://github.com/ocaml/merlin"
+depends=('glibc' 'ocaml' 'ocaml-csexp' 'python' 'zstd')
+makedepends=('dune' 'git' 'ocaml-alcotest')
+checkdepends=('jq' 'ocaml-menhir')
+url="https://ocaml.github.io/merlin"
 license=('MIT')
-source=(git+https://github.com/ocaml/merlin)
-sha256sums=('SKIP')
+source=("${pkgname}::git+https://github.com/ocaml/merlin.git")
+b2sums=('SKIP')
 options=('!strip')
-provides=('merlin')
-conflicts=('merlin')
 
 pkgver() {
-  cd ${_pkgname}
-  git log -1 --format="%cd" --date=short | sed "s|-||g"
+    cd $srcdir/$pkgname
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    git -C $srcdir/$pkgname clean -dxf
 }
 
 build() {
-  cd ${_pkgname}
-
-  dune build --release
+    cd $srcdir/$pkgname
+    dune build -p merlin
 }
 
+check() {
+    cd $srcdir/$pkgname
+    dune test --release --verbose
+
+}
 package() {
-  cd ${_pkgname}
+    cd $srcdir/$pkgname
 
-  dune install --destdir "${pkgdir}" --prefix="/usr" --libdir="/usr/lib/ocaml" --docdir "/usr/share/doc"
+    DESTDIR="${pkgdir}" dune install -p merlin \
+	   --prefix "/usr" \
+	   --libdir "/usr/lib/ocaml" \
+	   --docdir "/usr/share/doc/$pkgname"
 
-  install -Dm644 LICENSE -t $pkgdir/usr/share/licenses/$pkgname
+    install -d $pkgdir/usr/share/licenses/$pkgname/
+    mv $pkgdir/usr/share/doc/$pkgname/merlin/LICENSE $pkgdir/usr/share/licenses/$pkgname/
 }
