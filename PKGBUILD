@@ -2,7 +2,7 @@
 
 _name=biosppy
 pkgname=python-${_name,,}
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="A toolbox for biosignal processing written in Python."
 arch=('any')
@@ -24,12 +24,12 @@ makedepends=('python-installer' 'python-wheel')
 
 _whl="${_name//-/_}-$pkgver-py2.py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py2.py3-none-any.whl")
-sha256sums=(0d4e9d6cc2d6f5c0682e8747383002660b8eb761440cf090bcf845fa60a28d5a)
+sha256sums=(3612ac67bbe6e42556a2f53ecb3595441f44fe1e888d0b3dd9b21eb91b732ca0)
 
 noextract=("$_whl")
 package() {
     _python_version="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
     python -m installer --destdir="$pkgdir" "$_whl"
-    _license_path="${pkgdir}/usr/lib/python${_python_version}/site-packages/${_name}-${pkgver}.dist-info/LICENSE"
+    _license_path="${pkgdir}/usr/lib/python${_python_version}/site-packages/${_name}-${pkgver}.dist-info/licenses/LICENSE"
     install -Dm644 "${_license_path}" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
