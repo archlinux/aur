@@ -1,6 +1,6 @@
 pkgbase = python-entry-points-txt
 	pkgdesc = Read & write entry_points.txt files
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/jwodder/entry-points-txt
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-entry-points-txt
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/e/entry-points-txt/entry_points_txt-0.2.1.tar.gz
-	sha256sums = 2bca930f93d510cb1629c434954f7c7166b98c3cc968df7fd3fc270bc3cf06e9
+	source = https://files.pythonhosted.org/packages/source/e/entry-points-txt/entry_points_txt-0.3.0.tar.gz
+	sha256sums = 957f508508a761671f18870edd9deb83b36844c66251e9c8a0df55ee8ae0bf52
 
 pkgname = python-entry-points-txt
