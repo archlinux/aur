@@ -8,5 +8,5 @@ pkgbase = every_shell_script
 	depends = java-runtime>=17
   source = https://www.github.com/hifigraz/every_shell_script/archive/refs/tags/20251203.tar.gz)
 	sha256sums = 539b0677c1bd89d6744a405f8de76c19dfeacfc6bf4d1d4325bd96167866758a
-pkgname = filius
+pkgname = every_shell_script
 
