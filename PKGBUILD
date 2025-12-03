@@ -5,7 +5,7 @@
 # Contributor: David Herrmann <dh.herrmann@googlemail dot com>
 
 pkgname=kmscon
-pkgver=9.2.0
+pkgver=9.2.1
 pkgrel=1
 pkgdesc='Kernel Mode Setting (KMS) and DRM based virtual Console Emulator'
 arch=('x86_64')
@@ -26,7 +26,7 @@ depends=(
 )
 makedepends=('check' 'libxslt' 'docbook-xsl' 'linux-api-headers' 'meson')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('949f8d05d773ba877ec6546577fb24c7397204554ec4ec079b798cfa7a38312db383797b7d9182bec939770bec6270d9f01dcb9e512baef6c7a14d8c5e0aa704')
+b2sums=('6fb3852e4941b9274af5debc17f668b8ca2c784f2a1c9cb56079d509ae3cb896bea58190d71f6913edc4282b1f9d1132688b2bde221bb72c2725519d9291d23d')
 
 build() {
     arch-meson "$pkgname-$pkgver" build
