@@ -1,15 +1,16 @@
 pkgbase = r-httr2
 	pkgdesc = Perform HTTP Requests and Process the Responses
-	pkgver = 1.0.7
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=httr2
 	arch = any
 	license = MIT
 	depends = r>=3.4
 	depends = r-cli>=3.0.0
-	depends = r-curl>=5.2.2
+	depends = r-curl>=6.4.0
 	depends = r-glue
 	depends = r-magrittr
+	depends = r-lifecycle
 	depends = r-openssl
 	depends = r-r6
 	depends = r-rappdirs
@@ -31,7 +32,7 @@ pkgbase = r-httr2
 	optdepends = r-tibble
 	optdepends = r-webfakes
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/httr2_1.0.7.tar.gz
-	sha256sums = b622b8017a7795814879606d89fab36b952e4bce02d6ac13b037de4cd56af7c0
+	source = https://cran.r-project.org/src/contrib/httr2_1.2.1.tar.gz
+	sha256sums = 2728c37f5507740f41bde94703f74f67fc901ad122b1a58e8ad3af4224fd831e
 
 pkgname = r-httr2
