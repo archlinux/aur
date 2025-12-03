@@ -1,14 +1,13 @@
-pkgbase = pkgbase
-	pkgdesc = Paranoia Secret Space Encryptor File and Text desktop utilities from Paranoiaworks
-	pkgver = 15.0.8_1
+pkgbase = vex-tui-bin
+	pkgdesc = A beautiful, fast, and feature-rich terminal-based Excel and CSV viewer
+	pkgver = 1.1.0
 	pkgrel = 1
-	url = https://paranoiaworks.mobi
+	url = https://github.com/CodeOne45/vex-tui
 	arch = x86_64
-	license = custom
-	options = !strip
-	source = https://paranoiaworks.mobi/download/files/pfte_15.0.8-1_amd64.deb
-	source = license.txt
-	sha256sums = 31b3fae30d3e26804f5ed77bbd66920e824042a239c94720023dded78c571e3c
-	sha256sums = f23431d1e94d187fe3e0254b8a530a875d8615bbe451e9d3f564627835e7d527
+	license = MIT
+	provides = vex-tui
+	conflicts = vex-tui
+	source = https://github.com/CodeOne45/vex-tui/releases/download/v1.1.0/vex-tui_1.1.0_linux_amd64.tar.gz
+	sha256sums = 1bdfcedc6835002a722ded1ac23e12b782d05e07990b8878e66edd7fb3d7dc12
 
-pkgname = sse-bin
+pkgname = vex-tui-bin
