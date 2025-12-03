@@ -4,14 +4,14 @@
 # Contributor: @pychuang (logseq-desktop-git)
 
 ## options
-: ${_nodeversion:=20}
+: ${_nodeversion=22}
 : ${_install_path:=usr/share}
-: ${_electron_version=34}
+: ${_electron_version=38}
 
 _pkgname="logseq-desktop"
 pkgname="$_pkgname"
-pkgver=0.10.14
-pkgrel=3
+pkgver=0.10.15
+pkgrel=1
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
 license=('AGPL-3.0-or-later')
@@ -32,7 +32,7 @@ makedepends=(
 _pkgsrc="logseq-${pkgver}"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/${pkgver}.$_pkgext")
-sha256sums=('0e6da0a48933f4c7c4fcdd0e195e0eb7d6eeb8fad4eb1a6226910f78345d1777')
+sha256sums=('06089c37e944f90c499977ebfd6c71b8aae2a183186bdd3f6416a55d14925399')
 
 _nvm_env() {
   # avoid cluttering user home, while allowing data to be cached
@@ -46,8 +46,8 @@ _nvm_env() {
 
   # set up nvm
   source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-  nvm install $_nodeversion
-  nvm use $_nodeversion
+  nvm install "${_nodeversion:-lts/*}"
+  nvm use "${_nodeversion:-lts/*}"
 }
 
 build() (
@@ -57,12 +57,12 @@ build() (
   export ELECTRON_OVERRIDE_DIST_PATH="/usr/lib/electron${_electron_version:-}"
 
   sed -E -e 's#("electron"): "[^"]+",#\1: "'${_electron_version}'",#' \
-    -i "$_pkgsrc/package.json"
+    -i "$_pkgsrc/resources/package.json"
 
   cd "$_pkgsrc"
 
   npm install -g yarn
-  npm_config_build_from_source=true yarn install --force
+  yarn install --force
 
   # create and sync files to folder `static`
   yarn gulp:build

@@ -1,7 +1,7 @@
 pkgbase = logseq-desktop
 	pkgdesc = Privacy-first, open-source platform for knowledge sharing and management
-	pkgver = 0.10.14
-	pkgrel = 3
+	pkgver = 0.10.15
+	pkgrel = 1
 	url = https://github.com/logseq/logseq
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -11,9 +11,9 @@ pkgbase = logseq-desktop
 	makedepends = nvm
 	makedepends = patchelf
 	makedepends = python-setuptools
-	depends = electron34
-	source = logseq-0.10.14.tar.gz::https://github.com/logseq/logseq/archive/refs/tags/0.10.14.tar.gz
-	sha256sums = 0e6da0a48933f4c7c4fcdd0e195e0eb7d6eeb8fad4eb1a6226910f78345d1777
+	depends = electron38
+	source = logseq-0.10.15.tar.gz::https://github.com/logseq/logseq/archive/refs/tags/0.10.15.tar.gz
+	sha256sums = 06089c37e944f90c499977ebfd6c71b8aae2a183186bdd3f6416a55d14925399
 
 pkgname = logseq-desktop
-	depends = electron34
+	depends = electron38
