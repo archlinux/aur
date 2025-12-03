@@ -1,9 +1,9 @@
 # Maintainer: Blair Bonnett <blair.bonnett@gmail.com>
 
 pkgname=python314
-pkgver=3.14.0
+pkgver=3.14.1
 pkgrel=1
-_pyver=3.14.0
+_pyver=3.14.1
 _pybasever=3.14
 _pymajver=3
 pkgdesc="Major release 3.14 of the Python high-level programming language"
@@ -41,7 +41,7 @@ source=(
   "https://www.python.org/ftp/python/${_pyver}/Python-${pkgver}.tar.xz"{,.sigstore}
 )
 md5sums=(
-  '41389edaf9c643263cbed9b5ed307df8'
+  '8fa3959c3365c8052b344cd3b8167ff4'
   'SKIP'
 )
 
