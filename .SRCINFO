@@ -1,6 +1,6 @@
 pkgbase = python-jaxlib-bin
 	pkgdesc = XLA library for JAX - binary package
-	pkgver = 0.7.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/google/jax
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = python-jaxlib-bin
 	depends = python-ml-dtypes>=0.2.0
 	depends = python-numpy>=1.24
 	depends = python-scipy>=1.10
-	provides = python-jaxlib=0.7.0
+	provides = python-jaxlib=0.8.1
 	conflicts = python-jaxlib
-	noextract = jaxlib-0.7.0-cp313-cp313-manylinux2014_x86_64.whl
-	source_x86_64 = https://files.pythonhosted.org/packages/cp313/j/jaxlib/jaxlib-0.7.0-cp313-cp313-manylinux2014_x86_64.whl
-	sha256sums_x86_64 = df31664a53c13a9263bca0e8c39e0380a0ccae0b1c125376df63a480d9cb2087
-	source_aarch64 = https://files.pythonhosted.org/packages/cp313/j/jaxlib/jaxlib-0.7.0-cp313-cp313-manylinux2014_aarch64.whl
-	sha256sums_aarch64 = 5b7393c8694a17ed522e9553e06791dd76b4789b3448d085d0ed4ffbad77a2e7
+	noextract = jaxlib-0.8.1-cp313-cp313-manylinux_2_27_x86_64.whl
+	source_x86_64 = https://files.pythonhosted.org/packages/cp313/j/jaxlib/jaxlib-0.8.1-cp313-cp313-manylinux_2_27_x86_64.whl
+	sha256sums_x86_64 = d245bd6a279c72ca5f796df84cdd64d7c9c8abc4b8d89adf4acf45898dab958b
+	source_aarch64 = https://files.pythonhosted.org/packages/cp313/j/jaxlib/jaxlib-0.8.1-cp313-cp313-manylinux_2_27_aarch64.whl
+	sha256sums_aarch64 = bd697c171ace1e2e9d6ed910a78f385b3c4095cee290b0255aa58848f2acdeab
 
 pkgname = python-jaxlib-bin
