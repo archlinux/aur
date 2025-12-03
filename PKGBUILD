@@ -16,20 +16,20 @@ sha256sums=('61fdf777b4c955a96ab0676c9036d8eff96a7a6c396ffed83a40cef34141140e')
 prepare() {
     cd "ks-aur-scanner-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "ks-aur-scanner-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all
+    cargo build --release --all
 }
 
 check() {
     cd "ks-aur-scanner-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --release --all
+    cargo test --release --all
 }
 
 package() {
