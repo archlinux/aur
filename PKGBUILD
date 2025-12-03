@@ -2,7 +2,7 @@
 
 pkgname=sshpilot
 pkgver=4.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc='SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support.'
 url='https://github.com/mfat/sshpilot'
 license=('GPL-3.0-only')
@@ -17,7 +17,7 @@ _srcdir="${pkgname}-${pkgver}"
 package() {
 	depends+=(
 		'python-gobject' 'python-cairo' 'python-paramiko' 'python-cryptography' 'python-matplotlib'
-		'libadwaita' 'vte4' 'sshpass' 'libsecret')
+		'libadwaita' 'vte4' 'sshpass' 'libsecret' 'gtksourceview5')
 
 	cd "${_srcdir}"
 
