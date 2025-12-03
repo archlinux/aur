@@ -3,7 +3,7 @@
 _pkgauthor=mcandre
 _pkgname=kirill
 pkgname=${_pkgname}-bin
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="A JSON document integrity checker"
@@ -21,8 +21,8 @@ conflicts=("${_pkgname}"{,-git})
 source=("${_pkgname}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}.tgz"
         "README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE.md")
-sha256sums=('74eb3b3d81b16211737ec24d2ea413fe5c848674bb284cf2000e3bc9e704f34c'
-            '9f3d80f818a24e32022f459deeb60b435018840cd206a61acc96e5b5de27eb58'
+sha256sums=('234d2523735a0ee7d5940c14df201d41ea13562a741b4cfd8b97f480c98405d7'
+            '06e9ee3002385ba67cc213997862392bffe0b3a24155a3905955bc00c9ca49ab'
             '101d1171849ca84c68bc5a59bbd8e54f18a4f8ab7e9bdc3d3fdfb7c173ffbf7f')
 
 BIN_FOLDER="${_pkgname}-${pkgver}/${CARCH}-unknown-linux-${_clib}"
