@@ -6,7 +6,7 @@ pkgdesc="Convert MS Excel/LibreOffice Calc table to LaTex."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/gucio321/excel2tex"
 options=(!lto)
-license=('DWTFPL')
+license=('WTFPL')
 depends=(
   'libx11'
 )
