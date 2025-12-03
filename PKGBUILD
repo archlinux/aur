@@ -4,8 +4,8 @@
 pkgname=adguardhome-bin
 _name=${pkgname%-bin}
 _upstream_name=AdGuardHome
-pkgver=0.107.69
-pkgrel=3
+pkgver=0.107.70
+pkgrel=1
 pkgdesc='Network-wide ads and trackers blocking DNS server'
 arch=('armv7h' 'aarch64' 'i686' 'riscv64' 'x86_64')
 url='https://github.com/AdguardTeam/AdGuardHome'
@@ -14,17 +14,17 @@ provides=("$_name")
 conflicts=("$_name")
 options=('!debug' '!strip')
 source=("$_name.service")
-source_armv7h=("$url/releases/download/v$pkgver/${_upstream_name}_linux_armv7.tar.gz")
-source_aarch64=("$url/releases/download/v$pkgver/${_upstream_name}_linux_arm64.tar.gz")
-source_i686=("$url/releases/download/v$pkgver/${_upstream_name}_linux_386.tar.gz")
-source_riscv64=("$url/releases/download/v$pkgver/${_upstream_name}_linux_riscv64.tar.gz")
-source_x86_64=("$url/releases/download/v$pkgver/${_upstream_name}_linux_amd64.tar.gz")
+source_armv7h=("$_upstream_name-${pkgver}_armv7h.tar.gz::$url/releases/download/v$pkgver/${_upstream_name}_linux_armv7.tar.gz")
+source_aarch64=("$_upstream_name-${pkgver}_aarch64.tar.gz::$url/releases/download/v$pkgver/${_upstream_name}_linux_arm64.tar.gz")
+source_i686=("$_upstream_name-${pkgver}_i686.tar.gz::$url/releases/download/v$pkgver/${_upstream_name}_linux_386.tar.gz")
+source_riscv64=("$_upstream_name-${pkgver}_riscv64::$url/releases/download/v$pkgver/${_upstream_name}_linux_riscv64.tar.gz")
+source_x86_64=("$_upstream_name-${pkgver}_x86_64::$url/releases/download/v$pkgver/${_upstream_name}_linux_amd64.tar.gz")
 sha256sums=('cd50ab7fa526078e30b8a3d0ff504cbf0aad713818ad922d99236b0a246ae204')
-sha256sums_armv7h=('38c1914641eb954d4f9af99128d3e425b2d29eac163183fee5f63a74029d916f')
-sha256sums_aarch64=('34298af99fda196ddbc617da01bc9d8b5ca3fc7636717d786c5a96f6b4dfa0ae')
-sha256sums_i686=('9846d676fe8af9a75293f72710f4d825e7847162dc44e617e1ef3b4b5f6a8f0e')
-sha256sums_riscv64=('daf432f3468a0382c86c1291a83c8138c52dcf7002a8238442843ba4ec88d36e')
-sha256sums_x86_64=('36d82638a30d436d18db3e6f8aaeabe8d5f684e0d451127b8d18d5553a3e5325')
+sha256sums_armv7h=('e9cde2634a2d939cb6ab6a10e53877517aa5f6f5baaa49e6daf5a5be8202ca98')
+sha256sums_aarch64=('c6adddce2a1b9de55064b305d6499c466c8cba16a7e8010e009232e016038f1d')
+sha256sums_i686=('fc50b159a6d4f239b31154a6e2a7dd31e5e6f042ea6473d9bc53f62279c8b898')
+sha256sums_riscv64=('53fb4e2a8c1515303d6a0af5bfb8a1279b59f54caa94196162fb2905173ad4ca')
+sha256sums_x86_64=('5bacf3957e153dd8202e25861064ba264f1a1c203db532381ea6c0f4f05ca992')
 
 package() {
     install -Dm755 "$_upstream_name/$_upstream_name" "$pkgdir/usr/bin/$_name"
