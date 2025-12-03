@@ -1,7 +1,7 @@
 pkgbase = python-sklearn-compat
 	pkgdesc = Ease support for compatible scikit-learn estimators across versions
-	pkgver = 0.1.3
-	pkgrel = 2
+	pkgver = 0.1.4
+	pkgrel = 1
 	url = https://github.com/sklearn-compat/sklearn-compat
 	arch = any
 	license = BSD3-Clause
@@ -9,8 +9,8 @@ pkgbase = python-sklearn-compat
 	makedepends = python-wheel
 	depends = python>=3.8
 	depends = python-scikit-learn>=1.2
-	noextract = sklearn_compat-0.1.3-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/s/sklearn-compat/sklearn_compat-0.1.3-py3-none-any.whl
-	sha256sums = a8aaf8ef711988cbd63f187c5560b5f16b25df663aaa1d2d0e1291341d339f80
+	noextract = sklearn_compat-0.1.4-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/s/sklearn-compat/sklearn_compat-0.1.4-py3-none-any.whl
+	sha256sums = 52b67b2e6cd3117f690fbfb5a522b633da6c6dd22da54f03b946f2ecc6b146eb
 
 pkgname = python-sklearn-compat
