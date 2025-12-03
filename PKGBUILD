@@ -1,12 +1,13 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 pkgname=genwallet-git
-pkgver=0.4.1.r20.5a043be
+pkgver=0.5.1.r29.541d38a
 pkgrel=1
 pkgdesc="Ethereum wallet generator with pattern matching"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kewlfft/genwallet"
 license=('GPL3')
-makedepends=('rust' 'cargo' 'libsecp256k1' 'pkg-config')
+options=(!lto)
+makedepends=('rust' 'cargo' 'git')
 source=("$pkgname::git+https://github.com/kewlfft/genwallet.git")
 sha256sums=('SKIP')
 
@@ -19,17 +20,17 @@ pkgver() {
 build() {
   cd "$pkgname"
   
-  # Set environment variables for secp256k1-sys to use system library
-  export SECP256K1_SYS_USE_PKG_CONFIG=1
-  export SECP256K1_SYS_USE_VENDORED=0
-  
-  # Set explicit linker flags (preserves existing RUSTFLAGS)
-  export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-lsecp256k1"
-  
-  # Optimize build environment
+  # Optimize build environment for maximum performance
+  # CARGO_INCREMENTAL=0 ensures reproducible builds and can help with optimization
   export CARGO_INCREMENTAL=0
   
-  # Build with release optimizations (profile settings from .cargo/config.toml)
+  # Clean build for reproducible, optimized binary
+  cargo clean
+  
+  # Build with release optimizations
+  # Note: LTO is disabled via options=(!lto) due to linker issues with secp256k1-sys
+  # Other optimizations (opt-level=3, target-cpu=native, etc.) are in .cargo/config.toml
+  # secp256k1-sys will use vendored build by default (faster and more reliable)
   cargo build --release
 }
 
