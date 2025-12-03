@@ -11,7 +11,7 @@ pkgbase = excel2tex
 	arch = armv6h
 	arch = aarch64
 	arch = riscv64
-	license = DWTFPL
+	license = WTFPL
 	makedepends = go>=1.24
 	depends = libx11
 	options = !lto
