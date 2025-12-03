@@ -3,7 +3,7 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=mingw-w64-cmocka
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc='Elegant unit testing framework for C with support for mock objects (mingw-w64)'
 url='https://cmocka.org/'
@@ -11,10 +11,10 @@ arch=('any')
 license=('Apache')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-wine')
-options=(!strip !buildflags staticlibs)
+options=(!strip !buildflags staticlibs !debug)
 source=(https://cmocka.org/files/1.1/cmocka-${pkgver}.tar.xz{,.asc}
         'cmake.patch')
-sha512sums=('fe451893474dce1270e12af707a9a8fe1f0217e1782b4e1a67d25dadf56ff4a5e7dbc9ba4431f774aedffa46a40a28a6a0488df24feefb2f93e90fd2369c2c88'
+sha512sums=('59c3d8732c5558abf4dd9aedac2d5e41cf7693c26a88932449c3dec7be7903c479515f15b4ab8876e4b03f3b4b68460ef34bc6ce079677262638c15e29da37ef'
             'SKIP'
             'a7e862f1b68ee72a10c6820c3739e01eab0cef8d4014b605ea1c14d4869891b854197ba8ee823a12e886c232bf117d028904e737a0597eca48d1072330bfa00d')
 validpgpkeys=('8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D') # Andreas Schneider <asn@cryptomilk.org>
@@ -41,6 +41,12 @@ build() {
 }
 
 check() {
+  # some tests require XDG_RUNTIME_DIR to be set
+  if [ -z "$XDG_RUNTIME_DIR" ]
+  then
+    export XDG_RUNTIME_DIR="/run/user/$(id -u)"
+  fi
+
   for _arch in ${_architectures}; do
     cd "${srcdir}"/build-${_arch}
     WINEDEBUG=-all make test
