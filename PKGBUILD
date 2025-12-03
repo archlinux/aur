@@ -7,8 +7,8 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="anyrun"
 pkgname="$_pkgname"
-pkgver=25.9.3
-pkgrel=2
+pkgver=25.12.0
+pkgrel=1
 pkgdesc="A wayland native, highly customizable runner"
 url="https://github.com/anyrun-org/anyrun"
 license=('GPL-3.0-only')
@@ -26,7 +26,7 @@ options=('!lto' '!strip')
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('189c6d7965a67b93a3b7e2f084604a549e94ae9bc94d851d857cc9d1b21eb5ed')
+sha256sums=('4213a2f65fd6139829128d3c7a7f4b54fec3181f8d549e212021341dd10c3d50')
 
 prepare() {
   cd "$_pkgsrc"
