@@ -1,13 +1,13 @@
 pkgbase = pktstat-go-bin
 	pkgdesc = Simple ethernet interface traffic monitor and reporting tool, replacement for pktstat
-	pkgver = 0.3.1
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/dkorunic/pktstat
 	arch = x86_64
 	license = MIT
 	provides = pktstat
 	conflicts = pktstat
-	source = https://github.com/dkorunic/pktstat/releases/download/v0.3.1/pktstat_0.3.1_linux_amd64.pkg.tar.zst
-	sha256sums = 38ce4d424251e9a1ccfeecdb3ff109056ee1a4ea7c74ba11a0641affc4987971
+	source = https://github.com/dkorunic/pktstat/releases/download/v0.4.1/pktstat_0.4.1_linux_amd64.pkg.tar.zst
+	sha256sums = 590afef11358f8d0b87994ff92cfb7c7452f84ecb8cf947a4dd2f297ea04454c
 
 pkgname = pktstat-go-bin
