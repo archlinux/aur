@@ -32,9 +32,8 @@ source=(
     "$url/raw/refs/heads/main/configs/config.example.yaml"
     "$url/raw/refs/heads/main/README.md"
     "$url/raw/refs/heads/main/LICENSE-MIT"
-    "$url/raw/refs/heads/main/LICENSE-APACHE"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 options=('!strip')
 
 package() {
@@ -52,8 +51,6 @@ package() {
     # Install documentation
     install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
     
-    # Install licenses
+    # Install license
     install -Dm644 "$srcdir/LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
-    # Install Apache license if download succeeded (may not exist in repository yet)
-    [ -f "$srcdir/LICENSE-APACHE" ] && install -Dm644 "$srcdir/LICENSE-APACHE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE" || true
 }
