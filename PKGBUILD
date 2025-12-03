@@ -2,7 +2,7 @@
 
 _name=mcp
 pkgname=python-$_name
-pkgver=1.22.0
+pkgver=1.23.1
 pkgrel=1
 pkgdesc='Model Context Protocol SDK.'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'p
 checkdepends=('python-pytest' 'python-trio' 'python-pytest-xdist' 'python-pytest-examples' 'python-inline-snapshot' 'python-dirty-equals' 'python-rich' 'python-typer' 'python-dotenv' 'python-websockets' 'python-requests' 'uv' 'ruff')
 optdepends=('python-rich: rich' 'python-typer: cli' 'python-dotenv: cli' 'python-websockets: ws')
 source=("$_name::git+$url.git#tag=v$pkgver")
-sha256sums=('3741b3945bf904ad632a4736059b4029fae7a7f16dc14863dbb650285999359f')
+sha256sums=('bc0fd18c2b40d4ede7fb80fc582ee2c0a67249d11391d5881b0457a602ed61d9')
 
 prepare(){
   cd "$srcdir"/$_name
@@ -29,6 +29,7 @@ build() {
 check() {
   local pytest_options=(
     -vv
+    --disable-warnings
   )
   cd "$srcdir"/$_name
   python -m venv --system-site-packages test-env
