@@ -2,7 +2,7 @@
 
 pkgname="bzfs"
 _name="bzfs"
-pkgver=1.14.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="ZFS dataset replication tool."
 url='https://github.com/whoschek/bzfs'
@@ -23,7 +23,7 @@ makedepends=(
   'python-setuptools'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('3d96e590dbdf642fec99f90afd029082daf78a6d5302f1c684e5d7b6f0d03b2a')
+sha256sums=('c22831b1d0468cd3ef6c89177dd290eabba2d4fc0818c38172cbd1a8694a4fdd')
 
 build(){
   cd "${pkgname}-${pkgver}"
