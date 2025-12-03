@@ -25,6 +25,8 @@ makedepends=(
 optdepends=(
   'v4l-utils: webcam device utilities'
 )
+provides=('ascii-chat')
+conflicts=('ascii-chat')
 
 source=("$pkgname-$pkgver-full.tar.gz::https://github.com/zfogg/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-full.tar.gz")
 sha256sums=('17a4a5138aa0c7812b37868038d49249c05721e198a7b61483604720ee0e178d')
@@ -32,6 +34,7 @@ sha256sums=('17a4a5138aa0c7812b37868038d49249c05721e198a7b61483604720ee0e178d')
 prepare() {
   cd "$pkgname-$pkgver"
   # Create a real git repo with the version tag so git describe works
+  rm -rf .git
   git init -q
   git config user.email "build@localhost"
   git config user.name "Build"
