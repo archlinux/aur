@@ -1,7 +1,7 @@
 pkgbase = lunarvim-git
 	pkgdesc = An IDE layer for Neovim with sane defaults
 	pkgver = 1.4.0.r5.gaa51c20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LunarVim/LunarVim
 	arch = any
 	license = GPL-3.0-only

@@ -5,7 +5,7 @@
 _pkgname="lunarvim"
 pkgname="$_pkgname-git"
 pkgver=1.4.0.r5.gaa51c20
-pkgrel=1
+pkgrel=2
 pkgdesc="An IDE layer for Neovim with sane defaults"
 url="https://github.com/LunarVim/LunarVim"
 license=('GPL-3.0-only')
@@ -82,7 +82,7 @@ package() {
     install -Dm755 "$info" "$pkgdir/usr/share/lunarvim/prebuild/nvim-treesitter/parser-info/${info##/*/}"
   done
 
-  install -Dm755 /dev/stdin -t "$pkgdir/usr/bin/lvim" << 'END'
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/lvim" << 'END'
 #!/usr/bin/env sh
 
 export LUNARVIM_RUNTIME_DIR="${LUNARVIM_RUNTIME_DIR:-$HOME/.local/share/lunarvim}"
