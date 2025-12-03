@@ -3,7 +3,7 @@
 options=(!debug !strip)
 
 pkgname=msdf-atlas-gen-git
-pkgver=1.3.r4.g77804c2
+pkgver=1.3.r5.g94390ed
 pkgrel=1
 pkgdesc="MSDF font atlas generator"
 url=https://github.com/Chlumsky/msdf-atlas-gen
