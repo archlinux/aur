@@ -2,7 +2,7 @@
 
 pkgname=searxng-git
 _pkgname=searxng
-pkgver=r8653.0f153cd
+pkgver=r9103.5450d22
 pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
@@ -15,8 +15,8 @@ depends=('uwsgi'
 provides=('searxng')
 conflicts=('searx' 'searx-git')
 backup=('etc/searxng/settings.yml' 'etc/uwsgi/vassals/searxng.ini')
-_giturl="https://github.com/HLFH/searxng"
-_gitbranch="redis-to-valkey-migration"
+_giturl="https://github.com/searxng/searxng"
+_gitbranch="master"
 source=(git+$_giturl#branch=$_gitbranch
         'searxng.ini'
         'searxng.sysusers'
