@@ -1,6 +1,6 @@
-# Maintainer: whiteman808 <whiteman808@paraboletancza.org>
-# Old Maintainer: Jeff Henson <jeff@henson.io>
-# Old Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: whiteman808 <whiteman808 at paraboletancza dot org>
+# Contributor: Jeff Henson <jeff at henson dot io>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: darkhz <kmachanwenw at gmail dot com>
 
 pkgname=bluetuith
