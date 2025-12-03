@@ -6,7 +6,7 @@ pkgname=(
     'openvino-intel-gpu-plugin-git'
     'openvino-intel-npu-plugin-git'
     'python-openvino-git')
-pkgver=2025.4.0.r204.g0eb9180da04
+pkgver=2025.4.0.r214.g5d95073296d
 pkgrel=1
 pkgdesc='A toolkit for optimizing and deploying deep learning models (git version)'
 arch=('x86_64')
@@ -21,7 +21,6 @@ makedepends=(
     'onetbb'
     'opencv'
     'patchelf'
-    'protobuf'
     'pugixml'
     'pybind11'
     'python'
@@ -40,6 +39,7 @@ source=('git+https://github.com/openvinotoolkit/openvino.git'
         'git+https://github.com/KhronosGroup/OpenCL-Headers.git'
         'git+https://github.com/KhronosGroup/OpenCL-CLHPP.git'
         'git+https://github.com/onnx/onnx.git'
+        'git+https://github.com/protocolbuffers/protobuf.git'
         'git+https://github.com/intel/ittapi.git'
         'git+https://github.com/nithinn/ncc.git'
         'git+https://github.com/oneapi-src/oneDNN.git'
@@ -55,8 +55,7 @@ source=('git+https://github.com/openvinotoolkit/openvino.git'
         'git+https://github.com/ARM-software/kleidiai.git'
         'git+https://github.com/herumi/xbyak_riscv.git'
         '010-openvino-change-install-paths.patch'
-        '020-openvino-disable-werror.patch'
-        '030-openvino-protobuf23-fix.patch')
+        '020-openvino-disable-werror.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -80,9 +79,9 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             '83284640b364d7fd6a90d6341b0d3426f98e0d56b8775c052d60db8abed3e0bf'
-            'd5ff4b19ca9daf2b052650d2d7f60297239091c68e57fd7d5637508be0ef0e52'
-            '40baef7755aed910f1d65b24200170181191ea7e4c10739428adf32faeb28695')
+            'd5ff4b19ca9daf2b052650d2d7f60297239091c68e57fd7d5637508be0ef0e52')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
@@ -101,7 +100,7 @@ prepare() {
     git -C openvino config --local submodule.thirdparty/ocl/cl_headers.url "${srcdir}/OpenCL-Headers"
     git -C openvino config --local submodule.thirdparty/ocl/clhpp_headers.url "${srcdir}/OpenCL-CLHPP"
     git -C openvino config --local submodule.thirdparty/onnx.url "${srcdir}/onnx"
-    git -C openvino config --local submodule.thirdparty/protobuf.update none
+    git -C openvino config --local submodule.thirdparty/protobuf.url "${srcdir}/protobuf"
     git -C openvino config --local submodule.src/bindings/python/thirdparty/pybind11.update none
     git -C openvino config --local submodule.thirdparty/ittapi/ittapi.url "${srcdir}/ittapi"
     git -C openvino config --local submodule.ncc.url "${srcdir}/ncc"
@@ -123,7 +122,6 @@ prepare() {
     
     patch -d openvino -Np1 -i "${srcdir}/010-openvino-change-install-paths.patch"
     patch -d openvino -Np1 -i "${srcdir}/020-openvino-disable-werror.patch"
-    patch -d openvino -Np1 -i "${srcdir}/030-openvino-protobuf23-fix.patch"
     
     install -d -m755 {benchmark_app,licenses}
     install -d -m755 intel-gpu-plugin/usr/lib/openvino
@@ -167,14 +165,13 @@ build() {
         -DENABLE_SAMPLES:BOOL='OFF' \
         -DENABLE_SYSTEM_FLATBUFFERS:BOOL='ON' \
         -DENABLE_SYSTEM_OPENCL:BOOL='ON' \
-        -DENABLE_SYSTEM_PROTOBUF:BOOL='ON' \
+        -DENABLE_SYSTEM_PROTOBUF:BOOL='OFF' \
         -DENABLE_SYSTEM_PUGIXML:BOOL='ON' \
         -DENABLE_SYSTEM_SNAPPY:BOOL='ON' \
         -DENABLE_SYSTEM_TBB:BOOL='ON' \
         -DENABLE_TBBBIND_2_5:BOOL='OFF' \
         -DOpenCL_HPP:FILEPATH="${srcdir}/openvino/thirdparty/ocl/clhpp_headers/include/CL/opencl.hpp" \
         -DOpenCL_INCLUDE_DIR:PATH="${srcdir}/openvino/thirdparty/ocl/cl_headers" \
-        -DProtobuf_USE_STATIC_LIBS:BOOL='OFF' \
         -Wno-dev
     cmake --build build
     
@@ -188,7 +185,6 @@ package_openvino-git() {
         'gcc-libs'
         'glibc'
         'onetbb'
-        'protobuf'
         'pugixml'
         'snappy')
     optdepends=(
