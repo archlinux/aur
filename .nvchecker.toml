@@ -1,2 +1,6 @@
 ["zls0.14-bin"]
+# source = "jq"
+# url = "https://builds.zigtools.org/index.json"
+# filter = "keys[]"
+# include_regex = "0.14.*"
 source = "manual"
