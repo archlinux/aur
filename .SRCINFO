@@ -1,22 +1,22 @@
 pkgbase = youtube-music-for-desktop-bin
 	pkgdesc = Unofficial Youtube Music Desktop App, with LastFM support.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.17.5
+	pkgver = 0.17.11
 	pkgrel = 1
 	url = https://youtube-music.app/
 	arch = aarch64
 	arch = x86_64
 	license = CC0-1.0
 	makedepends = fuse2
-	depends = electron33
-	provides = youtube-music-for-desktop=0.17.5
+	depends = electron36
+	provides = youtube-music-for-desktop=0.17.11
 	conflicts = youtube-music-for-desktop
-	source = LICENSE-0.17.5::https://raw.githubusercontent.com/Venipa/ytmdesktop2/v0.17.5/LICENSE
+	source = LICENSE-0.17.11::https://raw.githubusercontent.com/Venipa/ytmdesktop2/v0.17.11/LICENSE
 	source = youtube-music-for-desktop.sh
 	sha256sums = 33c4de6d76721945c9346b3b1024fe56f2fbb6bebbb0e761656232520a6defa6
-	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
-	source_aarch64 = youtube-music-for-desktop-0.17.5-aarch64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v0.17.5/YouTube-Music-for-Desktop-0.17.5-arm64.AppImage
-	sha256sums_aarch64 = f31fb588f6d5c55596fabf450b385bd646b8e7d1dd9d5eb0372e2a2e55024b5a
-	source_x86_64 = youtube-music-for-desktop-0.17.5-x86_64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v0.17.5/YouTube-Music-for-Desktop-0.17.5.AppImage
-	sha256sums_x86_64 = 6659771590972efb50dad0f8e71d09714fb06e77cd9131180ae36216b562b68f
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source_aarch64 = youtube-music-for-desktop-0.17.11-aarch64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v0.17.11/YouTube-Music-for-Desktop-0.17.11-arm64.AppImage
+	sha256sums_aarch64 = 8a4627dfeeb0a46dfc3326164a42954845b0680263573c15ff169b5d62763e08
+	source_x86_64 = youtube-music-for-desktop-0.17.11-x86_64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v0.17.11/YouTube-Music-for-Desktop-0.17.11.AppImage
+	sha256sums_x86_64 = 3bfd514372b02ab54dc249eb236ed01fdc1123ae01f5b655ae1cf062b0abeaf6
 
 pkgname = youtube-music-for-desktop-bin
