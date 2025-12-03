@@ -3,7 +3,7 @@ pkgname=serialportassistant-bin
 _pkgname=SerialPortAssistant
 _appname="io.github.KangLin.${_pkgname}"
 pkgver=0.5.32
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform serial port assistant.(Prebuilt version)一个跨平台的串口助手"
 arch=(
     'aarch64'
@@ -24,8 +24,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_ubuntu-24.04_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_ubuntu-24.04_amd64.deb")
 sha256sums=('46f66d0030a40bf6ccf01e73eb2927cdf75fe74f6c72765c259874049fa1a163')
-sha256sums_aarch64=('5018b11f5c1335c941e0f55470391792214ba08b672b0116bc0881e3d9323e42')
-sha256sums_x86_64=('4578c156b153a3aa5df534713c609d505dba193fbbc256a864bcdfbadedea704')
+sha256sums_aarch64=('13820ddc4689dba91b5a91e5bbd29ec8e0c502795d9ecbef0496fe6695b3811a')
+sha256sums_x86_64=('5750621e94928a43b167d54fc5959cb307a5f83919bbb6e324177fb99b2b1a4a')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
@@ -44,14 +44,11 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/"{bin,etc,lib} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/"{bin,etc,lib,share} "${pkgdir}/usr/lib/${pkgname%-bin}"
     ln -sf "/usr/lib/libcmark.so" "${pkgdir}/usr/lib/${pkgname%-bin}/lib/libcmark.so.0.30.2"
     install -Dm644 "${srcdir}/opt/${_pkgname}/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/opt/${_pkgname}/share/pixmaps/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/opt/${_pkgname}/share/metainfo/${_appname}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${pkgname%-bin}.metainfo.xml"
     install -Dm644 "${srcdir}/opt/${_pkgname}/share/doc/${_pkgname}/"* -t "${pkgdir}/usr/share/doc/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/${_pkgname}/share/icons/hicolor/128x128/apps/${_appname}.png" \
-        "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname%-bin}.png"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/share/icons/"rabbit-* "${pkgdir}/usr/share/icons"
     cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/share/"{style,translations} "${pkgdir}/usr/share"
 }
