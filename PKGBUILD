@@ -4,8 +4,8 @@
 
 pkgname=python-langcodes
 _pkgname=langcodes
-pkgver=3.5.0
-pkgrel=3
+pkgver=3.5.1
+pkgrel=1
 pkgdesc='A toolkit for working with and comparing the standardized codes for languages'
 arch=('any')
 url="https://github.com/georgkrause/langcodes"
@@ -25,7 +25,7 @@ checkdepends=(
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/georgkrause/langcodes/archive/refs/tags/v${pkgver}.tar.gz"
 )
-b2sums=('90e20a1118ada01b819c32687cdf30882df5c0eb28a27bd2e45639d18380218e1d8ce28b5e55b4c603e709a4edfa6260471f97bf65266a638170d9f9ddab4020')
+b2sums=('91459ba68b27ba90a399c2f9bb08d0aa9b9fc1d39f01b5e8e59abe0275041afd3b974c5e0e01adce7139d3a5f13ff962d121be9603816bbf9b6239e2e42c6ea5')
 
 build() {
   cd "$_pkgname-$pkgver"
