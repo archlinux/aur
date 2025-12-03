@@ -1,4 +1,7 @@
-*
-!PKGBUILD
-!.SRCINFO
-!.gitignore
+*.old
+*.orig
+*.rej
+*.tar*
+*.log
+pkg/
+src/

@@ -1,6 +1,6 @@
 pkgbase = sh-elf-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files for the SuperH (bare-metal) target
-	pkgver = 2.36.1
+	pkgver = 2.39
 	pkgrel = 1
 	url = http://www.gnu.org/software/binutils/
 	arch = x86_64
@@ -8,12 +8,11 @@ pkgbase = sh-elf-binutils
 	arch = armv7h
 	license = GPL
 	depends = zlib
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.36.1.tar.bz2
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.36.1.tar.bz2.sig
-	validpgpkeys = EAF1C276A747E9ED86210CBAC3126D3B4AE55E93
+	depends = libelf
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.39.tar.bz2
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.39.tar.bz2.sig
 	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
-	sha512sums = 5c40cfe05b922492627db71990dd2ba6030fd2de4bdba3f53a3f274543ff161fb56e2f6bdac107e0ffdcfd095e499c54e1157ee1865723baefa67b5b4d3da201
+	sha512sums = faa592dd48fc715901ad704ac96dbd34b1792c51e77c7a92a387964b0700703c74be07de45cc4751945c8c0674368c73dc17bbc563d1d2cd235b5ebd8c6e7efb
 	sha512sums = SKIP
 
 pkgname = sh-elf-binutils
-

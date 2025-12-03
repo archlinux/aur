@@ -1,19 +1,19 @@
-# Maintainer: David P. <megver83@parabola.nu>
+# Maintainer: whiteman808 <whiteman808 at paraboletancza dot org>
+# Maintainer: David P. <megver83 at parabola dot nu>
 
 _target=sh-elf
 pkgname=$_target-binutils
-pkgver=2.36.1
+pkgver=2.39
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the SuperH (bare-metal) target'
-arch=('x86_64' 'i686' 'armv7h')
+arch=(x86_64 i686 armv7h)
 url='http://www.gnu.org/software/binutils/'
 license=(GPL)
-depends=(zlib)
+depends=(zlib libelf)
 source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2{,.sig})
-sha512sums=('5c40cfe05b922492627db71990dd2ba6030fd2de4bdba3f53a3f274543ff161fb56e2f6bdac107e0ffdcfd095e499c54e1157ee1865723baefa67b5b4d3da201'
+sha512sums=('faa592dd48fc715901ad704ac96dbd34b1792c51e77c7a92a387964b0700703c74be07de45cc4751945c8c0674368c73dc17bbc563d1d2cd235b5ebd8c6e7efb'
             'SKIP')
-validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93'  # Tristan Gingold <gingold@adacore.com>
-              '3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
+validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
 
 prepare() {
   cd binutils-$pkgver
