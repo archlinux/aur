@@ -4,8 +4,8 @@ pkgbase=nvidia-open-beta
 pkgname=(
     'nvidia-open-beta'
     'nvidia-open-beta-dkms')
-pkgver=580.105.08
-pkgrel=2
+pkgver=590.44.01
+pkgrel=1
 epoch=1
 pkgdesc='NVIDIA open kernel modules (beta version)'
 arch=('x86_64')
@@ -19,15 +19,13 @@ source=("https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/NVIDIA-
         '120-nvidia-open-linux-rt-gift.patch'
         '130-nvidia-open-reproducible-build.patch'
         '140-nvidia-open-gcc-sls.patch'
-        '150-nvidia-open-make-modeset-fbdev-default.patch'
-        '160-nvidia-open-Fix-build-with-kernel-6.18.patch')
-sha256sums=('59c518a2014f83efaf2a9f539b3097c55e74e8878aca01aedb59e92e3116080d'
-            'c803380056e2419fdc3c54d485a790fb166c287913b5d0f2ee05484d075fe3b8'
+        '150-nvidia-open-make-modeset-fbdev-default.patch')
+sha256sums=('8ef621af31e017887b16f8901bb7ee944f051a85997c1550c5daa8fbd6ec118b'
+            'b41f452930d0cf38b8806e402c78c8a5179031b702c29a1e63391ca1120af1e6'
             'b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45'
             '5340f33cdd19024a4501fee3d475af152c39f277d44422c65d447db263a0d501'
             'b498128faffe3b7ccdf210b5cdbb8da75b8e3a381d2c9b82355c344405e4e916'
-            '5f457abcb62de09148c14ceca060243c2c1152485dd99323641c2077f47d5a5e'
-            'bfa6966808342ec945c975bdfb9e929a6287229664927f6e42507fba84f3a47b')
+            '5f457abcb62de09148c14ceca060243c2c1152485dd99323641c2077f47d5a5e')
 
 prepare() {
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/110-nvidia-open-change-dkms-conf.patch"
@@ -35,7 +33,6 @@ prepare() {
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/130-nvidia-open-reproducible-build.patch"
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/140-nvidia-open-gcc-sls.patch"
     patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/150-nvidia-open-make-modeset-fbdev-default.patch"
-    patch -d "NVIDIA-kernel-module-source-${pkgver}" -Np1 -i "${srcdir}/160-nvidia-open-Fix-build-with-kernel-6.18.patch"
     
     [ -d dkms-src ] && rm -rf dkms-src
     cp -a "NVIDIA-kernel-module-source-${pkgver}/kernel-open" dkms-src
