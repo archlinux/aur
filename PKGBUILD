@@ -5,7 +5,7 @@
 _pkgroot=ament_lint
 _pkgname=ament_cmake_mypy
 pkgname=ros2-jazzy-ament_cmake_mypy
-pkgver=0.17.2
+pkgver=0.17.3
 pkgrel=1
 pkgdesc="The CMake API for ament_mypy to perform static type analysis on python code with mypy."
 url="https://github.com/ament/ament_lint"
@@ -15,7 +15,7 @@ makedepends=('cmake')
 depends=('boost' 'ros2-jazzy')
 checkdepends=('gtest' 'python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ament/ament_lint/archive/${pkgver}.tar.gz")
-sha256sums=('1404cdea90e26392e55e2e5b78e00b7c78df29ca9ae7373ddf67c331535d81e9')
+sha256sums=('8315ab062f14511cc3cc4449ccc5df43f94fe78f4bb72b583ca3fad2edcec6ac')
 
 prepare() {
   mkdir -p $srcdir/build
