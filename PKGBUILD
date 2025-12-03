@@ -1,4 +1,5 @@
 # Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
+# Maintainer: Zhiwei Chen <condy0919@gmail.com>
 
 _ocamlname=merlin-lib
 _basename=ocaml-$_ocamlname
