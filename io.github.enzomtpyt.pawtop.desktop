@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Pawtop
+GenericName=Internet Messenger
+Comment=Pawtop is a custom Discord desktop app
+Type=Application
+Exec=/usr/bin/pawtop
+Icon=pawtop
+Categories=Network;InstantMessaging;
+StartupWMClass=pawtop
+Keywords=discord;vencord;pawtop
