@@ -2,7 +2,9 @@
 
 a = Analysis(
     ["main.py"],
-    pathex=[],
+    pathex=[
+        '/usr/lib'
+    ],
     binaries=[],
     datas=[("icon.ico", "."), ("data.json", ".")],
     hiddenimports=[
