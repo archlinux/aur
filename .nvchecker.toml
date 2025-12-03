@@ -1,0 +1,4 @@
+[aim-bin]
+source = "github"
+github = "mihaigalos/aim"
+use_latest_release = true

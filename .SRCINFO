@@ -1,0 +1,22 @@
+pkgbase = aim-bin
+	pkgdesc = A command line download/upload tool with resume
+	pkgver = 1.8.6
+	pkgrel = 1
+	url = https://github.com/mihaigalos/aim
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = zlib
+	provides = aim
+	conflicts = aim
+	source_x86_64 = aim-x86_64-1.8.6.tgz::https://github.com/mihaigalos/aim/releases/download/1.8.6/aim-1.8.6-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f1bf13d0d4b4ef54bacc7e8702ac73a6dbd66d49cf92451b91a30022e617ec4f
+	source_i686 = aim-i686-1.8.6.tgz::https://github.com/mihaigalos/aim/releases/download/1.8.6/aim-1.8.6-i686-unknown-linux-gnu.tar.gz
+	sha256sums_i686 = 4f40b46121fb365c0950671f491bf7459d2b05da8f9c860ebebf4d2cbe943d0f
+	source_aarch64 = aim-aarch64-1.8.6.tgz::https://github.com/mihaigalos/aim/releases/download/1.8.6/aim-1.8.6-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = a0b9b398fc031a828d1520ecb7a7b414dc4810025d77fc5a08bd70601642999f
+
+pkgname = aim-bin
