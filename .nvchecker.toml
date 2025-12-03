@@ -1,0 +1,4 @@
+[rapidraw]
+source = "git"
+git = "https://github.com/CyberTimon/RapidRAW.git"
+prefix = "v"
