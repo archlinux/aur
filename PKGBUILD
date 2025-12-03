@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'git' 'clang')
 provides=('aur-scanner' 'aur-scan')
-conflicts=('aur-scanner')
+conflicts=('aur-scanner' 'ks-aur-scanner')
 source=("git+https://github.com/KiefStudioMA/ks-aur-scanner.git")
 sha256sums=('SKIP')
 
