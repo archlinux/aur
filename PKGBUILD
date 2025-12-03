@@ -1,14 +1,13 @@
 # Maintainer: Leonie Ain <me@koyu.space>
 pkgname=input
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial community-developed port of the Input application for Work Louder devices on Linux"
 arch=('x86_64')
 url="https://github.com/worklouder/input-linux"
 license=('custom')
 depends=('libusb')
 makedepends=('curl' 'p7zip' 'npm' 'asar' 'python311' 'git')
-optdepends=('libfuse2: Required for AppImage support')
 source=(
     "input4linux-${pkgver}.sh::https://raw.githubusercontent.com/worklouder/input-linux/main/input4linux-${pkgver}.sh"
     "install-udev-worklouder.sh::https://raw.githubusercontent.com/worklouder/input-linux/main/patch/dist-electron/scripts/install-udev-worklouder.sh"

@@ -1,7 +1,7 @@
 pkgbase = input
 	pkgdesc = Unofficial community-developed port of the Input application for Work Louder devices on Linux
 	pkgver = 0.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/worklouder/input-linux
 	arch = x86_64
 	license = custom
@@ -12,7 +12,6 @@ pkgbase = input
 	makedepends = python311
 	makedepends = git
 	depends = libusb
-	optdepends = libfuse2: Required for AppImage support
 	source = input4linux-0.8.2.sh::https://raw.githubusercontent.com/worklouder/input-linux/main/input4linux-0.8.2.sh
 	source = install-udev-worklouder.sh::https://raw.githubusercontent.com/worklouder/input-linux/main/patch/dist-electron/scripts/install-udev-worklouder.sh
 	source = appicon.png::https://raw.githubusercontent.com/worklouder/input-linux/main/patch/dist/assets/appicon.png
