@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=playdate-sdk
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc='SDK for the Playdate console with Lua and C APIs, docs, and a simulator'
 arch=('x86_64')
@@ -22,7 +22,7 @@ depends=(
   'pango'
   'python'
   'systemd-libs'
-  'webkit2gtk'
+  'webkit2gtk-4.1'
   'xdg-utils'
   'zlib'
 )
@@ -43,7 +43,7 @@ source=(
   'playdate-simulator.shim'
 )
 
-sha512sums=('05c09e8be1c08e189c1bfc640c6edf50f4f4d3111243ef7ff7fa38758dfd126a19504c04e906ac6bb2c55d178f19498fbf92da2c2b01ed3615ec4741574e0646'
+sha512sums=('3ef3062db16fad6561d64ac71f963e9e90a3436b993de5f56f52242011e532e310bd194495d9e1f91e2fb390c0a92a256ea8e3a585b4df2eeadbe089fa6d865b'
             '7286f35bff63253ff430860ce6a3ce52dfd88bcd90e6dd6cfcbeb90a76b38d2341d4fc428259d00eac7b67c2b94e0319e3d438a67e76e8016d8cd36be1123677'
             'ed30d6745f686e985bd54cd23c5a8e9bee95bad7209d065871bf461dc8321dea032583d6a3da9fa9909efca2969dde0954777a55ba42b4974c49ed1993101c92'
             '361a60c924c91370fe33a76261c32e3f6fcf044d83b14e3c17fb3749d8794ad20a0535f4d1a44713b880364bb699e2b54ade922b3b769bd506e352cdfed6fab0')
