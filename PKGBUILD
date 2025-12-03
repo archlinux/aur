@@ -1,9 +1,10 @@
 # Maintainer: algebro <algebro at tuta dot io>
+# Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
 pkgver=r6813.b745534e
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64' 'aarch64')
 url='https://github.com/grumpycoders/pcsx-redux.git'
@@ -158,6 +159,7 @@ prepare() {
   git submodule init
   git config submodule.deps/lua-compat-5.3.url "$srcdir/lua-compat-5.3"
   git -c protocol.file.allow=always submodule update deps/lua-compat-5.3
+  sed -i 's/convert/magick convert/g' "$srcdir/$_pkgname/Makefile"
 }
 
 build() {
