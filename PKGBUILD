@@ -2,7 +2,7 @@
 
 pkgname=rutoken-plugin
 pkgver=4.11.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The Rutoken plugin is necessary for connecting USB devices with the browser, it allows you to identify devices and work with them."
 arch=('i686' 'x86_64')
 url="https://www.rutoken.ru/support/download/rutoken-plugin/"
@@ -19,8 +19,6 @@ sha256sums_x86_64=('01876a9a51e30476a40b92061130e388921e51aab90824c17001d0e6cb6e
 package() {
 	cp -r "${srcdir}/usr/lib64/mozilla/native-messaging-hosts" "${srcdir}/usr/lib/mozilla/"
 	rm -rf "${srcdir}/usr/lib64"
-	rm -f "${srcdir}/opt/aktivco/rutokenplugin/librtpkcs11ecp.so"
-	ln -s /opt/aktivco/rutokenecp/x86_64/librtpkcs11ecp.so "${srcdir}/opt/aktivco/rutokenplugin/librtpkcs11ecp.so"
 
 	find "${srcdir}" -type d | sed "s#^${srcdir}#${pkgdir}#g" | tail -n +2 | xargs install -d
 	eval $(find ${srcdir} -type f -exec bash -c 'echo install \"{}\" \"@$(dirname {})\"\;' \; | sed "s#@${srcdir}#${pkgdir}#g")
