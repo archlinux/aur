@@ -1,0 +1,130 @@
+pkgbase = libjpeg6-turbo-bin
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = https://github.com/libjpeg-turbo/libjpeg-turbo
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	license = IJG
+	makedepends = cmake
+	makedepends = glibc
+	makedepends = pkgconf
+	noextract = libjpeg-turbo-official32_3.1.2_amd64.deb
+	options = staticlibs
+	options = !buildflags
+	options = !makeflags
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/3.1.2/libjpeg-turbo-official_3.1.2_amd64.deb
+	source_x86_64 = https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/3.1.2/libjpeg-turbo-official32_3.1.2_amd64.deb
+	sha256sums_x86_64 = e42e8319a632a1e3f13fc394cf06d9bf017b2db1546d0b41d6d6246a8a979078
+	sha256sums_x86_64 = 79de6043643e86b87967b8c8c148bb602be5db88701d2207d683e16ecd7332ea
+	source_aarch64 = https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/3.1.2/libjpeg-turbo-official_3.1.2_arm64.deb
+	sha256sums_aarch64 = d9c159ac87edcb4a3f56cbb39e3fb4b511bbcd40117775534b72a4b5b6741b8e
+
+pkgname = libjpeg6-turbo-bin
+	pkgdesc = Official v6b binaries compiled by the libjpeg-turbo project (libjpeg62, 64-bit)
+	depends = glibc
+	optdepends = java-runtime>=8: for TurboJPEG Java wrapper
+	optdepends = libjpeg6-turbo-doc: Documentation
+	provides = libjpeg6
+	provides = libjpeg62
+	provides = libjpeg.so=62
+	provides = libturbojpeg.so=0
+	conflicts = libjpeg6
+	conflicts = libjpeg62
+
+pkgname = libjpeg6-turbo-utils-bin
+	pkgdesc = Official v6b binaries compiled by the libjpeg-turbo project (utilities, 64-bit)
+	depends = glibc
+	depends = libjpeg6-turbo-bin
+	optdepends = java-runtime>=8: for TurboJPEG Java wrapper
+	optdepends = libjpeg6-turbo-doc: Documentation
+	provides = libjpeg6-turbo-utils
+	provides = libjpeg6-turbo-progs
+	provides = libjpeg6-utils
+	provides = libjpeg6-progs
+	provides = libjpeg62-turbo-utils
+	provides = libjpeg62-turbo-progs
+	provides = libjpeg62-utils
+	provides = libjpeg62-progs
+	conflicts = libjpeg6-turbo-utils
+	conflicts = libjpeg6-turbo-progs
+	conflicts = libjpeg6-utils
+	conflicts = libjpeg6-progs
+	conflicts = libjpeg62-turbo-utils
+	conflicts = libjpeg62-turbo-progs
+	conflicts = libjpeg62-utils
+	conflicts = libjpeg62-progs
+
+pkgname = libjpeg6-turbo-devel-bin
+	pkgdesc = Official v6b binaries compiled by the libjpeg-turbo project (header files, 64-bit)
+	depends = libjpeg6-turbo-bin
+	optdepends = java-runtime>=8: for TurboJPEG Java wrapper
+	optdepends = libjpeg6-turbo-doc: Documentation
+	optdepends = cmake: for compilation
+	optdepends = pkgconf: for compilation
+	provides = libjpeg6-turbo-dev
+	provides = libjpeg6-turbo-devel
+	provides = libjpeg6-turbo-headers
+	provides = libjpeg6-turbo-static
+	provides = libjpeg6-dev
+	provides = libjpeg6-devel
+	provides = libjpeg6-headers
+	provides = libjpeg6-static
+	provides = libjpeg62-turbo-dev
+	provides = libjpeg62-turbo-devel
+	provides = libjpeg62-turbo-headers
+	provides = libjpeg62-turbo-static
+	provides = libjpeg62-dev
+	provides = libjpeg62-devel
+	provides = libjpeg62-headers
+	provides = libjpeg62-static
+	provides = libjpeg.a
+	provides = libturbojpeg.a
+
+pkgname = libjpeg6-turbo-doc
+	pkgdesc = Official v6b binaries compiled by the libjpeg-turbo project (Documentation)
+	provides = libjpeg6-turbo-doc
+	provides = libjpeg6-doc
+	provides = libjpeg62-turbo-doc
+	provides = libjpeg62-doc
+
+pkgname = lib32-libjpeg6-turbo-bin
+	pkgdesc = Official v6b binaries compiled by the libjpeg-turbo project (libjpeg62, 32-bit)
+	depends = glibc
+	optdepends = java-runtime>=8: for TurboJPEG Java wrapper
+	optdepends = libjpeg6-turbo-doc: Documentation
+	provides = lib32-libjpeg6
+	provides = lib32-libjpeg62
+	provides = libjpeg.so=62
+	provides = libturbojpeg.so=0
+	conflicts = lib32-libjpeg6
+	conflicts = lib32-libjpeg62
+
+pkgname = lib32-libjpeg6-turbo-devel-bin
+	pkgdesc = Official v6b binaries compiled by the libjpeg-turbo project (header files, 32-bit)
+	depends = lib32-libjpeg6-turbo-bin
+	depends = libjpeg6-turbo-devel-bin
+	optdepends = java-runtime>=8: for TurboJPEG Java wrapper
+	optdepends = libjpeg6-turbo-doc: Documentation
+	optdepends = cmake: for compilation
+	optdepends = pkgconf: for compilation
+	provides = lib32-libjpeg6-turbo-dev
+	provides = lib32-libjpeg6-turbo-devel
+	provides = lib32-libjpeg6-turbo-headers
+	provides = lib32-libjpeg6-turbo-static
+	provides = lib32-libjpeg6-dev
+	provides = lib32-libjpeg6-devel
+	provides = lib32-libjpeg6-headers
+	provides = lib32-libjpeg6-static
+	provides = lib32-libjpeg62-turbo-dev
+	provides = lib32-libjpeg62-turbo-devel
+	provides = lib32-libjpeg62-turbo-headers
+	provides = lib32-libjpeg62-turbo-static
+	provides = lib32-libjpeg62-dev
+	provides = lib32-libjpeg62-devel
+	provides = lib32-libjpeg62-headers
+	provides = lib32-libjpeg62-static
+	provides = libjpeg.a
+	provides = libturbojpeg.a
