@@ -2,13 +2,13 @@
 # Contributor: Sabit Maulana <sbtmul@gmail.com>
 # Maintainer: aliu <double-a, r-o-n to the 0-1-3-0 at ur gmail.com>
 pkgname=larksuite-bin
-pkgver=7.50.14
+pkgver=7.54.11
 _pkgtyp=stable
-pkgrel=2
+pkgrel=1
 pkgdesc="Collaboration suite service for office messaging, calendars, meetings, docs..."
 arch=('x86_64')
 url="https://www.larksuite.com"
-_licensever=1.2.1436
+_licensever=1.2.1444
 license=('LicenseRef-Lark-User-${_licensever}')
 depends=('gtk3' 'nspr' 'nss' 'libpulse' 'libmfx' 'alsa-lib')
 optdepends=('appmenu-gtk-module: Appmenu support')
@@ -20,8 +20,8 @@ source=(Lark-linux_x64-${pkgver}.deb::https://www.larksuite.com/api/package_info
 	LICENSE-${_licensever}.html::http://www.larksuite.com/en_us/user-terms-of-service)
 DLAGENTS=("https::/usr/bin/sh -c curl\ -LO\ \"\$\(curl\ \'%u\'\ \|\ grep\ -oP\ \'\(\?\<=\"download_link\":\"\)\[\^\"\]\*\'\ --\ \|\ sed\ \'s/\\\\\\\\u0026/\\\&/g\'\ --\)\""
 	"http::/usr/bin/sh -c curl\ -L\ %u\ \|\ sed\ \'s/abUuid\":\"\[\^\"\]\*/abUuid\":\"418/\'\ \|\ sed\ \'s/countryCode\":\"\[\^\"\]\*/countryCode\":\"LI/\'\ \>\ %o")
-sha256sums=('708d2a0cd1b431c42d6f2d6dcdd566e62c6218cb88bee3687c02ca2a9855b52d'
-            'efa190acdb6d4da399cb981de4debdef03dc3e187bcce0ffc8e306f6df386c6e')
+sha256sums=('aab402e6b30c25cf4e6e9d505e4431a4f902dbdbe4b4a6d2a143d599942a01d9'
+            '7378273bd0456bf323ac2eea532bf7fb3202559fa328401e9b50bcd42c876c31')
 
 package() {
 	# License
