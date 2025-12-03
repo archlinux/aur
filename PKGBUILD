@@ -2,11 +2,11 @@
 
 pkgname='vim-colorscheme-mustang'
 pkgver=20080926
-pkgrel=2
+pkgrel=3
 pkgdesc="Dark Vim colorscheme for coders. Supports GUI and terminal modes."
 arch=('any')
 url="http://hcalves.deviantart.com/art/Mustang-Vim-Colorscheme-98974484"
-license=('custom')
+license=('LicenseRef-custom')
 depends=('vim-runtime')
 source=('mustang.vim')
 md5sums=('4ebb0d162c4e91638324dcf2fa52abfa')

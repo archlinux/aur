@@ -1,13 +1,12 @@
 pkgbase = vim-colorscheme-mustang
 	pkgdesc = Dark Vim colorscheme for coders. Supports GUI and terminal modes.
 	pkgver = 20080926
-	pkgrel = 2
+	pkgrel = 3
 	url = http://hcalves.deviantart.com/art/Mustang-Vim-Colorscheme-98974484
 	arch = any
-	license = custom
+	license = LicenseRef-custom
 	depends = vim-runtime
 	source = mustang.vim
 	md5sums = 4ebb0d162c4e91638324dcf2fa52abfa
 
 pkgname = vim-colorscheme-mustang
-
