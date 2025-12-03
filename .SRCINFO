@@ -1,6 +1,6 @@
 pkgbase = sshpilot-git
 	pkgdesc = SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support.
-	pkgver = r2241.gb0d9e5a
+	pkgver = r2381.g4b82496
 	pkgrel = 1
 	url = https://github.com/mfat/sshpilot
 	arch = any
@@ -16,6 +16,7 @@ pkgbase = sshpilot-git
 	depends = vte4
 	depends = sshpass
 	depends = libsecret
+	depends = gtksourceview5
 	provides = sshpilot
 	conflicts = sshpilot
 	source = git+https://github.com/mfat/sshpilot.git

@@ -4,12 +4,12 @@
 
 _pkgname=sshpilot
 pkgname="$_pkgname-git"
-pkgver=r2241.gb0d9e5a
+pkgver=r2381.g4b82496
 pkgrel=1
 pkgdesc='SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support.'
 url='https://github.com/mfat/sshpilot'
 license=('GPL-3.0-only')
-depends=('python' 'python-gobject' 'python-cairo' 'python-paramiko' 'python-cryptography' 'python-matplotlib' 'libadwaita' 'vte4' 'sshpass' 'libsecret')
+depends=('python' 'python-gobject' 'python-cairo' 'python-paramiko' 'python-cryptography' 'python-matplotlib' 'libadwaita' 'vte4' 'sshpass' 'libsecret' 'gtksourceview5')
 makedepends=('git')
 arch=('any')
 sha256sums=('SKIP')
