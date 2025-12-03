@@ -23,3 +23,9 @@ pkgbase = dnst-git
 	sha256sums = SKIP
 
 pkgname = dnst-git
+
+pkgname = dnst-ldns-git
+	pkgdesc = dnst re-implementation of important ldns programs
+	depends = dnst
+	provides = ldns
+	conflicts = ldns
