@@ -1,6 +1,6 @@
 # Maintainer: mako yass <m.arcus.yass@gmail.com>
 pkgname=defter-scrolling
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A better way of scrolling, for mice"
 arch=('any')
