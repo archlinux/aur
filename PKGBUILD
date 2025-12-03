@@ -1,6 +1,6 @@
 # Maintainer: Zachary Fogg <me@zfo.gg>
 pkgname=ascii-chat
-pkgver=0.3.14
+pkgver=0.3.15
 pkgrel=1
 pkgdesc="Video chat in your terminal"
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver-full.tar.gz::https://github.com/zfogg/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-full.tar.gz")
-sha256sums=('2625dce912125599ee6efbea5778ec8dfba67404ee370fb6aa11ecba983b07e7')
+sha256sums=('71066ddf5fd19fb6727a3420ee452531eceae15a9c2662c9ee7cef5ff39b1ad2')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -52,7 +52,8 @@ build() {
 
   cmake -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DASCIICHAT_LLVM_CONFIG_EXECUTABLE=/usr/bin/llvm-config
   cmake --build build
   cmake --build build --target shared-lib
   cmake --build build --target static-lib
