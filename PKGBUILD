@@ -2,7 +2,7 @@
 
 pkgname=linyaps-store-minimalist-bin
 _pkgname=OpenList.Desktop
-pkgver=1.0.9
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Linyaps Store Minimalist"
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=("linyaps: Next-Gen Universal Package Manager for Linux (linglong)")
 backup=()
 options=('!strip' '!debug')
 source=("${url}/releases/download/${pkgver}/linux-${pkgver}-x86_64.deb")
-sha256sums=('16d4a59be73ddff33864de30adc8847e15ad625bf8adb92b9dfcd2b71de11d81')
+sha256sums=('834c215dfef30f079f3a057cadfb1f389efd5cc33e19e76320744d1e8d8e8baa')
 noextract=("linux-${pkgver}-x86_64.deb")
 
 package() {
