@@ -1,7 +1,7 @@
 pkgbase = volume-pulse
 	pkgdesc = a lightweight volume control applet utility for Linux
-	pkgver = 0.2.9
-	pkgrel = 3
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/VC365/volume-pulse
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -10,7 +10,7 @@ pkgbase = volume-pulse
 	depends = libnotify
 	depends = gtk2
 	optdepends = pavucontrol: For mixer functionality
-	source = https://github.com/VC365/volume-pulse/releases/download/v0.2.9/volume-pulse_v0.2.9.tar.xz
+	source = https://github.com/VC365/volume-pulse/releases/download/v0.3.1/volume-pulse_v0.3.1.tar.xz
 	sha256sums = 0c299019f983ba583a54ea05cc8e607dbeb424bb1d84943987e96e2aa4877e41
 
 pkgname = volume-pulse
