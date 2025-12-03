@@ -8,14 +8,12 @@ url="https://github.com/xi-ve/openvr-space-calibrator-linux"
 license=('MIT')
 install="${pkgname}.install"
 depends=('glfw-x11' 'mesa' 'libx11' 'libxrandr' 'libxinerama' 'libxcursor' 'libxi')
-makedepends=('cmake' 'base-devel' 'eigen' 'pkgconf')
+makedepends=('cmake' 'base-devel' 'eigen' 'pkgconf' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xi-ve/openvr-space-calibrator-linux/archive/main.tar.gz"
         "openvr-headers.tar.gz::https://github.com/ValveSoftware/openvr/archive/master.tar.gz"
-        "imgui.tar.gz::https://github.com/ocornut/imgui/archive/refs/heads/master.tar.gz"
         "eigen.tar.gz::https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz"
         "openvr-space-calibrator-install.sh")
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -25,6 +23,15 @@ prepare() {
   
   if [ -d "build" ]; then
     rm -rf build
+  fi
+  
+  if [ ! -d "lib/imgui" ]; then
+    echo "Cloning ImGui submodule..."
+    mkdir -p lib
+    git clone --depth 1 https://github.com/ocornut/imgui.git lib/imgui || {
+      echo "Error: Failed to clone imgui submodule"
+      exit 1
+    }
   fi
   
   if [ ! -d "../lib/openvr/headers" ]; then
@@ -43,18 +50,6 @@ prepare() {
       echo "OpenVR library extracted successfully (alternative path)"
     else
       echo "Note: Could not extract OpenVR library from tarball (register-overlay may not build)"
-    fi
-  fi
-  
-  if [ ! -d "../WindowsEdition/OpenVR-SpaceCalibrator/lib/imgui" ]; then
-    echo "Extracting ImGui..."
-    mkdir -p ../WindowsEdition/OpenVR-SpaceCalibrator/lib
-    if [ -d "${srcdir}/imgui-master" ]; then
-      mv "${srcdir}/imgui-master" ../WindowsEdition/OpenVR-SpaceCalibrator/lib/imgui
-    else
-      tar -xzf "${srcdir}/imgui.tar.gz" -C ../WindowsEdition/OpenVR-SpaceCalibrator/lib --strip-components=1 imgui-master 2>/dev/null || \
-      tar -xzf "${srcdir}/imgui.tar.gz" -C ../WindowsEdition/OpenVR-SpaceCalibrator/lib --strip-components=0 2>/dev/null && \
-      mv ../WindowsEdition/OpenVR-SpaceCalibrator/lib/imgui-master ../WindowsEdition/OpenVR-SpaceCalibrator/lib/imgui 2>/dev/null || true
     fi
   fi
   
