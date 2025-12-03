@@ -1,16 +1,14 @@
 pkgbase = libzlog
 	pkgdesc = a reliable pure C logging library
-	pkgver = 1.2.15
+	pkgver = 1.2.18
 	pkgrel = 1
-	url = http://hardysimpson.github.com/zlog
+	url = https://github.com/hardysimpson/zlog
 	arch = i686
 	arch = x86_64
-	license = LGPL
-	makedepends = lyx
-	makedepends = hevea
+	license = Apache-2.0
 	depends = glibc
-	source = https://github.com/HardySimpson/zlog/archive/1.2.15.tar.gz
-	md5sums = 155f841543f947bf21112ae4328e7152
+	provides = libzlog.so
+	source = libzlog-1.2.18.tar.gz::https://github.com/hardysimpson/zlog/archive/1.2.18.tar.gz
+	sha256sums = 3977dc8ea0069139816ec4025b320d9a7fc2035398775ea91429e83cb0d1ce4e
 
 pkgname = libzlog
-
