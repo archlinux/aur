@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=MR Updater
+Icon=mrupdater
+Comment=ModRetro Chromatic firmware updater
+Exec=mrupdater
+Terminal=false
+Type=Application
+StartupWMClass=MRUpdater
+Categories=Utility;

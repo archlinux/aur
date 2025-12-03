@@ -1,0 +1,17 @@
+# Build artifacts
+pkg/
+src/
+*.pkg.tar.zst
+*.pkg.tar.xz
+
+# Downloaded sources
+*.zip
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+
+# AppImage extraction
+squashfs-root/
+
+# Makepkg files
+*.log
