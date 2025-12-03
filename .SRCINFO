@@ -1,6 +1,6 @@
 pkgbase = markpix-bin
 	pkgdesc = A modern cross-platform image annotation tool built with Tauri (Binary)
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/jswysnemc/markpix
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = markpix-bin
 	conflicts = markpix
 	options = !strip
 	options = !debug
-	source = markpix-0.2.0::https://github.com/jswysnemc/markpix/releases/download/v0.2.0/markpix-0.2.0.x86_64
+	source = markpix-0.3.0::https://github.com/jswysnemc/markpix/releases/download/v0.3.0/markpix-0.3.0_x86_64
 	source = LICENSE::https://raw.githubusercontent.com/jswysnemc/markpix/main/LICENSE
 	source = markpix.png::https://raw.githubusercontent.com/jswysnemc/markpix/main/src-tauri/icons/icon.png
-	sha256sums = a2427764eca0b7c64e179fb7cb6a333d9efc47d65a1406e78f795845d5999fe6
+	sha256sums = 6ab779227ca279a6e6936794d0955a827760d57be542cf796f7cf487e24345a6
 	sha256sums = 9a46a71b6c82da530bc5f2d5e568bc4ae5d1d0f3e95510a85ab2cfbf048c6c24
 	sha256sums = 4a47002bdb250f027d14af191999ebe7f5daa6669e81e41a32bcd27a700ff066
 

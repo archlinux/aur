@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=markpix-bin
 _pkgname=markpix
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A modern cross-platform image annotation tool built with Tauri (Binary)"
 arch=('x86_64')
@@ -23,11 +23,11 @@ depends=(
 
 # 这里假设 GitHub Release 的文件名是 markpix-0.1.1amd64
 # 如果你的文件名不同，请修改 source 结尾的部分
-source=("${_pkgname}-${pkgver}::https://github.com/jswysnemc/markpix/releases/download/v${pkgver}/markpix-${pkgver}.x86_64"
+source=("${_pkgname}-${pkgver}::https://github.com/jswysnemc/markpix/releases/download/v${pkgver}/markpix-${pkgver}_x86_64"
         "LICENSE::https://raw.githubusercontent.com/jswysnemc/markpix/main/LICENSE"
         "markpix.png::https://raw.githubusercontent.com/jswysnemc/markpix/main/src-tauri/icons/icon.png")
 
-sha256sums=('a2427764eca0b7c64e179fb7cb6a333d9efc47d65a1406e78f795845d5999fe6'
+sha256sums=('6ab779227ca279a6e6936794d0955a827760d57be542cf796f7cf487e24345a6'
             '9a46a71b6c82da530bc5f2d5e568bc4ae5d1d0f3e95510a85ab2cfbf048c6c24'
             '4a47002bdb250f027d14af191999ebe7f5daa6669e81e41a32bcd27a700ff066')
 
