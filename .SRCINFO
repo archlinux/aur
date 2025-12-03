@@ -1,6 +1,6 @@
 pkgbase = ascii-chat-git
 	pkgdesc = Video chat in your terminal (development version)
-	pkgver = 0.3.33.r3.g7ff0a3e
+	pkgver = 0.3.49.r1.gf60ce5b
 	pkgrel = 1
 	url = https://github.com/zfogg/ascii-chat
 	arch = x86_64
@@ -21,6 +21,11 @@ pkgbase = ascii-chat-git
 	optdepends = v4l-utils: webcam device utilities
 	provides = ascii-chat
 	conflicts = ascii-chat
+	options = strip
+	options = staticlibs
+	options = lto
+	options = docs
+	options = ccache
 	source = ascii-chat-git::git+https://github.com/zfogg/ascii-chat.git
 	sha256sums = SKIP
 

@@ -1,6 +1,6 @@
 # Maintainer: Zachary Fogg <me@zfo.gg>
 pkgname=ascii-chat-git
-pkgver=0.3.33.r3.g7ff0a3e
+pkgver=0.3.49.r1.gf60ce5b
 pkgrel=1
 pkgdesc="Video chat in your terminal (development version)"
 arch=('x86_64')
@@ -27,6 +27,7 @@ optdepends=(
 )
 provides=('ascii-chat')
 conflicts=('ascii-chat')
+options=('strip' 'staticlibs' 'lto' 'docs' 'ccache')
 
 source=("$pkgname::git+https://github.com/zfogg/ascii-chat.git")
 sha256sums=('SKIP')
