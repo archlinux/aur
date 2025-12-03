@@ -1,7 +1,7 @@
 pkgbase = davinci-ffmpeg-encoder-plugin
 	pkgdesc = FFmpeg Encoder Plugin for DaVinci Resolve Studio
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/EdvinNilsson/ffmpeg_encoder_plugin
 	arch = x86_64
 	license = GPL-3.0-or-later
