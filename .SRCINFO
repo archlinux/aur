@@ -55,7 +55,7 @@ pkgname = python-opentelemetry-instrumentation-langchain
 	optdepends = python-langchain
 
 pkgname = python-opentelemetry-instrumentation-openai-agents-v2
-	pkgdesc = OpenTelemetry OpenAI Agents instrumentation (barebones)
+	pkgdesc = OpenTelemetry Official OpenAI Agents instrumentation
 	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai/opentelemetry-instrumentation-openai-agents-v2
 	depends = python-opentelemetry-api
 	depends = python-opentelemetry-instrumentation

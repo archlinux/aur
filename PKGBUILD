@@ -91,7 +91,7 @@ _pkgdescs=(
     "Rich Console Exporter for OpenTelemetry"
     "OpenTelemetry"
     "OpenTelemetry Official Langchain instrumentation"
-    "OpenTelemetry OpenAI Agents instrumentation (barebones)"
+    "OpenTelemetry Official OpenAI Agents instrumentation"
     "OpenTelemetry Official OpenAI instrumentation"
     "OpenTelemetry Official VertexAI instrumentation"
     "OpenTelemetry Official Weaviate Client Instrumentation"
