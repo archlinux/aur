@@ -1,6 +1,6 @@
 pkgbase = power-options-daemon
 	pkgdesc = The core daemon for Power Options, a blazingly fast power management solution.
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/thealexdev23/power-options
 	install = daemon.install
@@ -19,7 +19,7 @@ pkgbase = power-options-daemon
 	optdepends = xautolock: needed to configure system suspend timeout
 	provides = power-options-daemon
 	conflicts = power-options-daemon-git
-	source = power-options-daemon-1.2.2.tar.gz::https://github.com/thealexdev23/power-options/archive/v1.2.2.tar.gz
+	source = power-options-daemon-1.2.3.tar.gz::https://github.com/thealexdev23/power-options/archive/v1.2.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = power-options-daemon
