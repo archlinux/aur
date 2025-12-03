@@ -1,7 +1,7 @@
 # Maintainer: MojArch
 pkgname=opera-developer
 pkgver=126.0.5734.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Fast, secure, easy-to-use web browser
  Opera is a fast, secure, and user-friendly web browser.
  It includes a built-in ad blocker, Video pop-out, and free VPN.(Developer Stream)'
@@ -26,6 +26,7 @@ depends=(
     'at-spi2-core'
     'dbus'
     'libxkbcommon'
+    'egl-gbm'
 )
 optdepends=(
     'opera-developer-ffmpeg-codecs'
