@@ -1,7 +1,7 @@
 pkgbase = filemanager1-common-git
 	pkgdesc = Customizable implementation of org.freedesktop.FileManager1
 	pkgver = r9.7f51612
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/boydaihungst/org.freedesktop.FileManager1.common
 	arch = x86_64
 	license = MIT
@@ -21,6 +21,7 @@ pkgbase = filemanager1-common-git
 	optdepends = yazi: `yazi` wrapper support
 	provides = filemanager1-common
 	conflicts = filemanager1-common
+	conflicts = nautilus
 	source = filemanager1-common::git+https://github.com/boydaihungst/org.freedesktop.FileManager1.common
 	b2sums = SKIP
 

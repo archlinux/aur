@@ -2,7 +2,7 @@
 
 pkgname=filemanager1-common-git
 pkgver=r9.7f51612
-pkgrel=1
+pkgrel=2
 pkgdesc='Customizable implementation of org.freedesktop.FileManager1'
 arch=('x86_64')
 url='https://github.com/boydaihungst/org.freedesktop.FileManager1.common'
@@ -16,7 +16,7 @@ optdepends=('bash: shell interpreter for the built-in wrappers'
 	'vifm: `vifm` wrapper support'
 	'yazi: `yazi` wrapper support')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" 'nautilus')
 source=("${pkgname%-git}::git+$url")
 b2sums=('SKIP')
 
