@@ -1,6 +1,6 @@
 pkgbase = python-dscribe
 	pkgdesc = Creating feature transformations in applications of ML to materials science
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://singroup.github.io/dscribe/
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-dscribe
 	depends = python-scikit-learn
 	depends = python-joblib>=1.0.0
 	depends = python-sparse
-	source = https://files.pythonhosted.org/packages/source/d/dscribe/dscribe-2.1.1.tar.gz
-	sha256sums = 444484b7070255257383d191936f8bb5e4b11c1ba8eb4ac22c7273e82f9c8bdd
+	source = https://files.pythonhosted.org/packages/source/d/dscribe/dscribe-2.1.2.tar.gz
+	sha256sums = 5cbc88f1be444c7590e315868a4e7ea88e11cee4311575f8e1d26bb834d43c97
 
 pkgname = python-dscribe
