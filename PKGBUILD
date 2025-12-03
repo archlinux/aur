@@ -11,6 +11,7 @@ pkgdesc='Kernel Mode Setting (KMS) and DRM based virtual Console Emulator'
 arch=('x86_64')
 url='https://github.com/kmscon/kmscon'
 license=('MIT')
+backup=('etc/kmscon/kmscon.conf')
 depends=(
     'bash'
     'glibc'
