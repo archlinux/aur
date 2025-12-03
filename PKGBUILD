@@ -1,7 +1,7 @@
 # Maintainer: gucio321
 pkgname=excel2tex
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="onvert Excel/LibreOffice Calc table to LaTex compatible tabularx"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/gucio321/excel2tex"
@@ -13,7 +13,7 @@ depends=(
 )
 makedepends=('go>=1.24')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gucio321/excel2tex/archive/v${pkgver}.tar.gz")
-#sha256sums=('7ea30d870a7c0e817376fa4ce42753ec201638eed958fe36a71abc0b31ff6a77')
+sha256sums=('d8e9155c0d971cd4f74af577df139537d554ccb42748f13a3872e05eab783b2a')
 
 build() {
   export GOPATH="$srcdir"/gopath
