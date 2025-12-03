@@ -15,6 +15,7 @@ gab, Get another beer, is a AUR helper inspired by the yet-another-yogurt repo.
 - Clone the repo: ```git clone https://github.com/Kolton-splendid/gab.git```
 - Enter the directory: ```cd gab```
 - Compile and install: ```makepkg -si```
+(or install gabtwo from AUR.)
 
 # USAGE:
 - Install package: ```gab -S <pkg>```
