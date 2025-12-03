@@ -2,16 +2,16 @@
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=libdaq
-pkgver=3.0.22
+pkgver=3.0.23
 pkgrel=1
 pkgdesc='Data Acquisition library for packet I/O.'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://www.snort.org/'
-license=('GPL')
+license=('GPL-2.0-only')
 depends=('libpcap' 'libnetfilter_queue')
 makedepends=('ca-certificates')
 source=("libdaq-${pkgver}.tar.gz::https://github.com/snort3/libdaq/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('42ab45b765e914b13c321ccbef832b6a494200a097c2ee4828e861377206f01e71a1e5bc4d0258923c37ef195959c330f2cc2212b248801792c7acfb27327323')
+sha512sums=('404c1a1e6169bb9134f978a80569bd749da9102dd32b9646c660815c940b32101cc3a8f89fb5b4ed1cb7c20d0605c35310af0156c01bbe4ffca41c523ba094ab')
 provides=('libdaq-nfqueue')
 conflicts=('libdaq-nfqueue')
 replaces=('libdaq-nfqueue')
