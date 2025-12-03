@@ -1,6 +1,6 @@
 pkgbase = prefixer
 	pkgdesc = Modern Proton Prefix management tool
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/wojtmic/prefixer
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = prefixer
 	depends = python-json5
 	depends = python-requests
 	depends = python-click
-	source = prefixer-1.2.3.tar.gz::https://github.com/wojtmic/prefixer/archive/refs/tags/1.2.3.tar.gz
-	sha256sums = 047dbc7346a0a17a755e6c30baa165648faf6a6aa57b7519665b7034743bbd3e
+	source = prefixer-1.2.4.tar.gz::https://github.com/wojtmic/prefixer/archive/refs/tags/1.2.4.tar.gz
+	sha256sums = 43cf79ba40c3d0e109ca0ba2c4bbf9fe80fdf70bade665e4488333564a138fa3
 
 pkgname = prefixer
