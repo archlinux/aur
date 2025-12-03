@@ -1,18 +1,19 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 
 pkgname=zenus
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="A beautiful note-taking app built with Tauri with Local, Server and Client mode"
 arch=('x86_64')
 url="https://github.com/skorotkiewicz/zenus"
 license=('MIT')
 depends=('webkit2gtk' 'gtk3')
-# depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator')
 options=(!strip)
-source_x86_64=("zenus-${pkgver}-x86_64.deb::https://github.com/skorotkiewicz/zenus/releases/download/app-v${pkgver}/zenus_${pkgver}_amd64.deb")
-
-sha256sums_x86_64=('SKIP')
+source_x86_64=(
+    "zenus-${pkgver}-x86_64.deb::https://github.com/skorotkiewicz/zenus/releases/download/${pkgver}/zenus_${pkgver}_amd64.deb"
+    "zenus-headless-${pkgver}::https://github.com/skorotkiewicz/zenus/releases/download/${pkgver}/zenus-headless-x86_64-unknown-linux-gnu"    
+)
+sha256sums_x86_64=('SKIP' 'SKIP')
 
 package() {
     # Unpacking deb
@@ -33,6 +34,7 @@ package() {
         cp -r "${srcdir}/usr/share/"* "${pkgdir}/usr/share/"
     fi
     
-    # Set permissions
-    chmod +x "${pkgdir}/usr/bin/zenus"
+    # Install zenus-headless binary
+    msg2 "Installing zenus-headless..."
+    install -Dm755 "${srcdir}/zenus-headless-${pkgver}" "${pkgdir}/usr/bin/zenus-headless"
 }

@@ -3,3 +3,5 @@
 *.part
 pkg
 src
+TMP
+zenus*
