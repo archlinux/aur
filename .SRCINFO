@@ -1,14 +1,15 @@
-pkgbase = pkgbase
-	pkgdesc = Paranoia Secret Space Encryptor File and Text desktop utilities from Paranoiaworks
-	pkgver = 15.0.8_1
+pkgbase = data-peek-bin
+	pkgdesc = A minimal, fast SQL client desktop application for developers
+	pkgver = 0.4.0
 	pkgrel = 1
-	url = https://paranoiaworks.mobi
+	url = https://www.datapeek.dev
 	arch = x86_64
-	license = custom
+	license = MIT
+	depends = hicolor-icon-theme
+	provides = data-peek
+	conflicts = data-peek
 	options = !strip
-	source = https://paranoiaworks.mobi/download/files/pfte_15.0.8-1_amd64.deb
-	source = license.txt
-	sha256sums = 31b3fae30d3e26804f5ed77bbd66920e824042a239c94720023dded78c571e3c
-	sha256sums = f23431d1e94d187fe3e0254b8a530a875d8615bbe451e9d3f564627835e7d527
+	source = https://github.com/Rohithgilla12/data-peek/releases/download/v0.4.0/data-peek-0.4.0-amd64.deb
+	sha256sums = 0e468a3b181af48e0783bbaaf4648ac6f4004fbf1a8167c10838b627b24b483d
 
-pkgname = sse-bin
+pkgname = data-peek-bin
