@@ -7,6 +7,7 @@ Group=openlinkhub
 WorkingDirectory=/var/lib/openlinkhub
 ExecStart=/usr/bin/openlinkhub
 ExecReload=/bin/kill -s HUP $MAINPID
+Restart=on-failure
 RestartSec=5
 
 [Install]

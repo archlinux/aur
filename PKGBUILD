@@ -4,7 +4,7 @@ pkgname=openlinkhub-bin
 _upstreamname=OpenLinkHub
 _binlocation=/usr/bin/"${pkgname%-*}"
 _applocation=/var/lib/"${pkgname%-*}"
-pkgver=0.6.6
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Open source Linux interface for iCUE LINK Hub and other Corsair AIOs, Hubs. [Current Binary Release - amd64/x86_64]"
 arch=('x86_64')
@@ -29,11 +29,12 @@ source=(
 	"${pkgname%-*}".tmpfiles
 )
 noextract=("${_upstreamname}_${pkgver}_amd64.tar.gz")
-sha256sums=('ce2e750794529315c9b35513bd15ebfaae94e0d8571f1404738eff7ba7bb12c3'
+sha256sums=('6f2739b4f64a791ed4cfdb4012a900121d1e5695ffb117b72ce3834e4af15183'
             '0820bcc60c77bd23178f4766f92f01dae2a75ae704ad6ac40ecf598a55002d36'
             '8c9f747bc6484290cb97b40e5904dc02cce2672e59e0f6ad720a1cd6a7b9d900'
-            'dab02810b18e9d9bc7a20a84394998e492c61a464973be8f49d08a724a94ff09'
+            '858fd197e13a6bc2756e090f622adcac0d02d20007c366d0dff93258898e256e'
             '70c1d136ed639a84c6aca077df51ff857c32df8db5d74cc7df48f463708bdd0b')
+
 prepare() {
 	mkdir -p "${pkgname%-*}"
 	tar -xzf "${_upstreamname}_${pkgver}_amd64.tar.gz" -C "${pkgname%-*}" --strip-components=1
@@ -42,7 +43,6 @@ prepare() {
 package() {
 	install -bDm 644 "${pkgname%-*}.service" "$pkgdir/usr/lib/systemd/system/${pkgname%-*}.service"
 	install -bDm 644 "${pkgname%-*}.sysusers" "$pkgdir/usr/lib/sysusers.d/${pkgname%-*}.conf"
-
 	install -bDm 644 "${pkgname%-*}.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/${pkgname%-*}.conf"
 	install -bd -m 755 "${pkgdir}$_applocation/"{database,static,web,api}
 	cp -r "${pkgname%-*}"/database/* "${pkgdir}"$_applocation/database/
