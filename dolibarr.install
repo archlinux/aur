@@ -13,10 +13,11 @@ post_upgrade() {
 	new=`expr $1 : '\([0-9]*\.[0-9]*\.\)'`"0"
 	if [ $old == $new ]
 	then
-		if [ $old == '20.0.0' ]
-		then
-			old='19.0.0'
-		fi	
+	  case $old in
+	    '20.0.0') old='19.0.0' ;;
+	    '21.0.0') old='20.0.0' ;;
+	    '22.0.0') old='21.0.0' ;;
+	  esac	
 	fi
 	rm /var/lib/dolibarr/install.lock
 	cd /usr/share/dolibarr/htdocs/install
