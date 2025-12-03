@@ -1,6 +1,6 @@
 # Maintainer: Zachary Fogg <me@zfo.gg>
 pkgname=ascii-chat
-pkgver=0.3.33
+pkgver=0.3.55
 pkgrel=1
 pkgdesc="Video chat in your terminal"
 arch=('x86_64')
@@ -30,7 +30,7 @@ conflicts=('ascii-chat')
 options=('strip' 'staticlibs' 'lto' 'docs' 'ccache')
 
 source=("$pkgname-$pkgver-full.tar.gz::https://github.com/zfogg/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-full.tar.gz")
-sha256sums=('17a4a5138aa0c7812b37868038d49249c05721e198a7b61483604720ee0e178d')
+sha256sums=('6414fd3d213dd12668e9a342185324e48e97969dc1fb3de67d558bb14f082a52')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -51,6 +51,9 @@ build() {
   export CFLAGS="${CFLAGS//-Wp,-D_FORTIFY_SOURCE=?/}"
   export CFLAGS="${CFLAGS//-D_FORTIFY_SOURCE=?/}"
   export CFLAGS="$CFLAGS -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0"
+
+  # PortAudio's SSL cert expired Dec 2025 - skip TLS verification for downloads
+  export CMAKE_TLS_VERIFY=0
 
   cmake -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \

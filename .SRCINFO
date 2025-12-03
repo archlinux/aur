@@ -1,6 +1,6 @@
 pkgbase = ascii-chat
 	pkgdesc = Video chat in your terminal
-	pkgver = 0.3.33
+	pkgver = 0.3.55
 	pkgrel = 1
 	url = https://github.com/zfogg/ascii-chat
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = ascii-chat
 	options = lto
 	options = docs
 	options = ccache
-	source = ascii-chat-0.3.33-full.tar.gz::https://github.com/zfogg/ascii-chat/releases/download/v0.3.33/ascii-chat-0.3.33-full.tar.gz
-	sha256sums = 17a4a5138aa0c7812b37868038d49249c05721e198a7b61483604720ee0e178d
+	source = ascii-chat-0.3.55-full.tar.gz::https://github.com/zfogg/ascii-chat/releases/download/v0.3.55/ascii-chat-0.3.55-full.tar.gz
+	sha256sums = 6414fd3d213dd12668e9a342185324e48e97969dc1fb3de67d558bb14f082a52
 
 pkgname = ascii-chat
