@@ -13,8 +13,8 @@
 
 pkgname=mesa-rk35xx-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=25.3.0_devel.213318.ca493b5c453.d41d8cd
-pkgrel=3
+pkgver=26.0.0_devel.215518.858364be71e.d41d8cd
+pkgrel=1
 arch=($CARCH)
 makedepends=(
     'git'
@@ -355,7 +355,7 @@ build () {
         -D video-codecs=all
         -D vulkan-drivers=swrast,virtio,panfrost,gfxstream
         -D vulkan-layers=device-select,overlay
-        -D tools=[]
+        -D tools=panfrost
         -D zstd=enabled
         -D buildtype=plain
         --wrap-mode=nofallback
@@ -377,10 +377,13 @@ build () {
 package() {
     DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C _build install
 
-    # remove script file from /usr/bin
-    # https://gitlab.freedesktop.org/mesa/mesa/issues/2230
-    rm "${pkgdir}/usr/bin/mesa-overlay-control.py"
-    rmdir "${pkgdir}/usr/bin"
+    # we want to keep debug tools here
+    ## remove script file from /usr/bin
+    ## https://gitlab.freedesktop.org/mesa/mesa/issues/2230
+    #rm "${pkgdir}/usr/bin/mesa-overlay-control.py"
+    # and we also access panfrost query tools, see panfrost_texfeatures
+    # https://gitlab.freedesktop.org/mesa/mesa/-/blob/main/docs/drivers/panfrost/texcomp.rst
+    #rmdir "${pkgdir}/usr/bin"
 
     # indirect rendering
     ln -s /usr/lib/libGLX_mesa.so.0 "${pkgdir}/usr/lib/libGLX_indirect.so.0"

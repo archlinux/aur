@@ -1,7 +1,7 @@
 pkgbase = mesa-rk35xx-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 25.3.0_devel.213318.ca493b5c453.d41d8cd
-	pkgrel = 3
+	pkgver = 26.0.0_devel.215518.858364be71e.d41d8cd
+	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = aarch64
 	license = custom
