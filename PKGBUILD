@@ -1,7 +1,7 @@
 # Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 
 pkgname=pstack
-pkgver=2.14.3
+pkgver=2.15
 pkgrel=1
 pkgdesc='Print stack traces from running processes, or core files.'
 arch=(x86_64)
@@ -9,7 +9,7 @@ url='https://github.com/peadar/pstack'
 license=(BSD)
 makedepends=(cmake python xz zlib)
 source=("$url/archive/v$pkgver.tar.gz")
-b2sums=('4e2f8edeaf233d0498afe42c3dbbeb4c52d1841aa73332bc4dd33621f51e28fa449922b990d66931364f610dc2e4948fa7aa98ecde53325f5428c50dc84f3d96')
+b2sums=('3e10d046e14b40419fe1f700bd14e4f7729869286f54b94ac0310497da1aedde28747c9603dc560443abbe3cafd32e49575e94db3b68474c93428f2e26a221b4')
 
 build() {
     cd $pkgname-$pkgver
