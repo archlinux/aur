@@ -1,0 +1,24 @@
+pkgbase = ufw-manager-git
+	pkgdesc = TUI-based UFW firewall rule manager (git version)
+	pkgver = r2.1bb671a
+	pkgrel = 1
+	url = https://git.flouda.net/flouda/ufw-manager
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.11
+	depends = python-textual
+	depends = python-rich
+	depends = python-click
+	depends = python-pydantic
+	depends = ufw
+	provides = python-ufw-manager
+	conflicts = python-ufw-manager
+	source = git+https://git.flouda.net/flouda/ufw-manager.git
+	sha256sums = SKIP
+
+pkgname = ufw-manager-git
