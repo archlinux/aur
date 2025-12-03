@@ -1,19 +1,19 @@
-# Maintainer: Marcin Wieczorek <marcin@marcin.co>
+# Contributor: Marcin Wieczorek <marcin@marcin.co>
 # Contributor: Anton Shestakov <engored@ya.ru>
 
 _pkgname=supermodel
 pkgname=$_pkgname-git
-pkgver=r963.78f5056
+pkgver=r1258.3e94dd0
 pkgrel=1
 pkgdesc='A Sega Model 3 Arcade Emulator'
 arch=('i686' 'x86_64')
-url='http://www.supermodel3.com/'
-license=('GPL3')
+url='http://supermodel3.com'
+license=('GPL-3.0-or-later')
 depends=('mesa' 'sdl' 'zlib' 'glu' 'sdl2_net')
 makedepends=('git')
 install=supermodel.install
-source=("$_pkgname::git+https://github.com/trzy/Supermodel.git")
-md5sums=('SKIP')
+source=("$_pkgname::git+https://github.com/trzy/Supermodel")
+b2sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
