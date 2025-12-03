@@ -2,7 +2,7 @@
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
-pkgver=r6790.718f0912
+pkgver=r6813.b745534e
 pkgrel=1
 pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64' 'aarch64')
@@ -56,7 +56,6 @@ source=("${_pkgname}::git+https://github.com/grumpycoders/pcsx-redux.git"
         'git+https://github.com/uriparser/uriparser.git'
         'git+https://github.com/taocpp/PEGTL.git'
         'git+https://github.com/grumpycoders/psxlua.git'
-        'pcsx-redux.sh'
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -87,8 +86,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '21db8ce528f3240388d55d1f309ebc6060bb1145cce50553659e73fb6f89d326')
+            'SKIP')
 
 pkgver() {
   cd "$_pkgname"
@@ -168,13 +166,7 @@ build() {
 }
 
 package() {
-  install -Dm755 pcsx-redux.sh "$pkgdir/usr/bin/pcsx-redux"
-  install -Dm644 "$_pkgname/resources/pcsx-redux.desktop" "$pkgdir/usr/share/applications/pcsx-redux.desktop"
-  install -Dm644 "$_pkgname/resources/pcsx-redux.ico" "$pkgdir/opt/pcsx-redux/pcsx-redux.ico"
-  install -Dm644 "$_pkgname/i18n/el.po" "$pkgdir/opt/pcsx-redux/el.po"
-  install -Dm644 "$_pkgname/i18n/fr.po" "$pkgdir/opt/pcsx-redux/fr.po"
-  install -Dm644 "$_pkgname/i18n/pcsx-redux.pot" "$pkgdir/opt/pcsx-redux/pcsx-redux.pot"
-  install -Dm644 "$_pkgname/third_party/noto/NotoMono-Regular.ttf" "$pkgdir/opt/pcsx-redux/fonts/NotoMono-Regular.ttf"
-  install -Dm644 "$_pkgname/third_party/noto/NotoSans-Regular.ttf" "$pkgdir/opt/pcsx-redux/fonts/NotoSans-Regular.ttf"
-  install -Dm755 "$_pkgname/pcsx-redux" "$pkgdir/opt/pcsx-redux/pcsx-redux"
+    cd "$srcdir/$_pkgname"
+    install -dm755 "$pkgdir/usr"
+    make DESTDIR="$pkgdir/usr" install
 }

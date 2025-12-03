@@ -52,7 +52,6 @@ pkgbase = pcsx-redux-git
 	source = git+https://github.com/uriparser/uriparser.git
 	source = git+https://github.com/taocpp/PEGTL.git
 	source = git+https://github.com/grumpycoders/psxlua.git
-	source = pcsx-redux.sh
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -83,6 +82,5 @@ pkgbase = pcsx-redux-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 21db8ce528f3240388d55d1f309ebc6060bb1145cce50553659e73fb6f89d326
 
 pkgname = pcsx-redux-git
