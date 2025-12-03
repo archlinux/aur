@@ -1,20 +1,21 @@
 pkgbase = sdl3_mixer-git
 	pkgdesc = A simple multi-channel audio mixer (Version 3)
-	pkgver = r1879.e32ba24
+	pkgver = r2118.7d6e46a
 	pkgrel = 1
 	url = https://github.com/libsdl-org/SDL_mixer
 	arch = x86_64
 	license = zlib
 	makedepends = fluidsynth
 	makedepends = git
-	depends = sdl3
+	makedepends = cmake
+	depends = sdl3-git
 	depends = libvorbis
 	depends = libmodplug
 	depends = mpg123
 	depends = flac
 	depends = opusfile
 	optdepends = fluidsynth: MIDI software synth, replaces built-in timidity
-	provides = sdl3_mixer
+	provides = sdl3_mixer=$pkgver
 	conflicts = sdl3_mixer
 	source = git+https://github.com/libsdl-org/SDL_mixer
 	sha512sums = SKIP
