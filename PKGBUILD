@@ -1,6 +1,6 @@
 # Maintainer: k4ditano <k4ditano@h2r.es>
 pkgname=notnative-app-bin
-pkgver=0.1.15
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Note-taking application with Vim-like keybindings, MCP server (40+ tools), AI chat, and smart tags (binary package)"
 arch=('x86_64')
@@ -13,30 +13,17 @@ optdepends=(
 )
 provides=('notnative-app')
 conflicts=('notnative-app')
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/notnative-app-bin-$pkgver-x86_64.tar.gz")
-sha256sums=('a01364e2b62a4056f26b8ab77a53aead28beee4c5c38f0dd512c5a6c8afb19ea')
-
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/notnative-$pkgver-x86_64.tar.gz")
+sha256sums=('be5aca528c300ee79e0cead0a5a40bacb8824ebc54c6e4e16b4c703ca7b12379')
 package() {
     cd "$srcdir"
-
-    # Instalar binario
     install -Dm755 "notnative-app" "$pkgdir/usr/bin/notnative-app"
-    
-    # Instalar script de control
     install -Dm755 "notnative-control.sh" "$pkgdir/usr/bin/notnative-control"
-    
-    # Instalar archivos de desktop
     install -Dm644 "notnative.desktop" "$pkgdir/usr/share/applications/notnative.desktop"
-    
-    # Instalar assets
     install -Dm644 "assets/style.css" "$pkgdir/usr/share/notnative-app/assets/style.css"
     install -Dm644 "assets/logo/logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/notnative.svg"
     install -Dm644 "assets/logo/logo.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/notnative.png"
     install -Dm644 "assets/logo/logo.png" "$pkgdir/usr/share/pixmaps/notnative.png"
-    
-    # Instalar documentación
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 2>/dev/null || true
-    install -Dm644 "docs/MCP_INTEGRATION.md" "$pkgdir/usr/share/doc/$pkgname/MCP_INTEGRATION.md" 2>/dev/null || true
-    install -Dm644 "docs/BACKGROUND_CONTROL.md" "$pkgdir/usr/share/doc/$pkgname/BACKGROUND_CONTROL.md" 2>/dev/null || true
 }
