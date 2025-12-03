@@ -1,7 +1,7 @@
 pkgbase = excel2tex
 	pkgdesc = onvert Excel/LibreOffice Calc table to LaTex compatible tabularx
 	pkgver = 3.3.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/gucio321/excel2tex
 	arch = i686
 	arch = pentium4
