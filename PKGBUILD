@@ -1,15 +1,15 @@
-maintainer=dest4590@collapseloader.org
+# Maintainer: dest4590 <dest4590@collapseloader.org>
 pkgname=collapseloader-git
-pkgver=latest
+pkgver=r556.0346b46
 pkgrel=1
 pkgdesc="GUI utility for launching Minecraft clients, built with Rust and Tauri (git version)"
 arch=('x86_64')
 url="https://github.com/dest4590/CollapseLoader"
-license=('MIT')
-depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator')
-makedepends=('rust' 'cargo' 'npm' 'nodejs' 'git' 'clang' 'base-devel')
+license=('GPL-3.0-only')
+depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'zstd')
+makedepends=('rust' 'cargo' 'npm' 'git' 'base-devel' 'pkgconf')
 provides=('collapseloader')
-conflicts=('collapseloader')
+conflicts=('collapseloader-bin')
 source=("git+https://github.com/dest4590/CollapseLoader.git")
 sha256sums=('SKIP')
 
@@ -21,58 +21,68 @@ pkgver() {
 prepare() {
     cd "CollapseLoader"
     
-    cargo install tauri-cli --locked
-    
+    # Установка зависимостей npm
     npm install
 }
 
 build() {
     cd "CollapseLoader"
     
-    export RUSTC_WRAPPER=""
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    export ZSTD_SYS_USE_PKG_CONFIG=1
     
-    cargo tauri build 2>&1 | tee build.log || {
-        if [ -f "src-tauri/target/release/collapseloader" ]; then
-            echo "Binary built successfully, ignoring bundling errors"
-            return 0
-        else
-            echo "Failed to build binary"
-            return 1
-        fi
-    }
+    # Собираем только бинарник без бандлов
+    cargo build --release --manifest-path=src-tauri/Cargo.toml
 }
 
 package() {
     cd "CollapseLoader"
     
-    install -Dm755 "src-tauri/target/release/collapseloader" "${pkgdir}/usr/bin/collapseloader"
+    # Определяем имя бинарника
+    local binary_name="collapseloader"
     
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/collapseloader.desktop" <<EOF
+    # Проверяем разные возможные пути к бинарнику
+    if [ -f "src-tauri/target/release/${binary_name}" ]; then
+        install -Dm755 "src-tauri/target/release/${binary_name}" \
+            "${pkgdir}/usr/bin/${binary_name}"
+    elif [ -f "target/release/${binary_name}" ]; then
+        install -Dm755 "target/release/${binary_name}" \
+            "${pkgdir}/usr/bin/${binary_name}"
+    else
+        echo "Error: Binary not found!"
+        return 1
+    fi
+    
+    # Установка .desktop файла
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${binary_name}.desktop" <<EOF
 [Desktop Entry]
-Version=1.0
+Version=0.2.3
 Type=Application
 Name=CollapseLoader
 Comment=GUI utility for launching Minecraft clients
-Exec=collapseloader
-Icon=collapseloader
+Exec=${binary_name}
+Icon=${binary_name}
 Terminal=false
-Categories=Game;
+Categories=Game;Utility;
 Keywords=minecraft;launcher;
 EOF
     
+    # Установка иконок
     for size in 32 64 128 256; do
         if [ -f "src-tauri/icons/${size}x${size}.png" ]; then
             install -Dm644 "src-tauri/icons/${size}x${size}.png" \
-                "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/collapseloader.png"
+                "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${binary_name}.png"
         fi
     done
     
+    # Установка главной иконки
     if [ -f "src-tauri/icons/icon.png" ]; then
         install -Dm644 "src-tauri/icons/icon.png" \
-            "${pkgdir}/usr/share/pixmaps/collapseloader.png"
+            "${pkgdir}/usr/share/pixmaps/${binary_name}.png"
     fi
     
-    # Install license if exists
+    # Установка лицензии
     if [ -f "LICENSE" ]; then
         install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     fi
