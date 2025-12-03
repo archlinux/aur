@@ -1,6 +1,6 @@
 # Maintainer: Henry-ZHR <henry-zhr@qq.com>
 pkgname=python-mdtex2html
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="python3-library to convert Markdown with included LaTeX-Formulas to HTML with MathML"
 arch=('any')
@@ -14,8 +14,9 @@ makedepends=('git'
              'python-setuptools'
              'python-wheel'
              'python-installer')
-_tag='a4f2345cc0a53a4d317e46f917ed0d991ee8c9d5' # git rev-parse "v${pkgver}"
-source=("${pkgname}::git+${url}.git#tag=${_tag}")
+# Use commit for now because v1.3.2 tag doesn't include version code changes
+_commit='4caeffd6e791b94e692bb354c1e7d9b58b6e0b11'
+source=("${pkgname}::git+${url}.git#commit=${_commit}")
 sha512sums=('SKIP')
 
 prepare() {
