@@ -23,7 +23,7 @@ build() {
   export CGO_ENABLED=1
 
   cd "$srcdir/$pkgname-$pkgver"
-  go build -v .
+  go build -trimpath -mod=readonly -modcacherw -v .
 }
 
 package() {
