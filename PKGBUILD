@@ -1,4 +1,5 @@
-# Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
+# Maintainer: whiteman808 <whiteman808 at paraboletancza dot org>
+# Contributor: Dušan Simić <dusan.simic1810 at gmail dot com>
 
 pkgname=ufetch-git
 pkgver=0.3.r0.g12b68fa
