@@ -1,7 +1,7 @@
 pkgbase = dms-shell-git
 	pkgdesc = Desktop shell for wayland compositors built with Quickshell & GO
 	pkgver = 0.6.2.r193.g75af444
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = x86_64
 	arch = aarch64
@@ -29,7 +29,7 @@ pkgbase = dms-shell-git
 	source = danklogo.svg
 	source = dms-open.desktop
 	sha256sums = SKIP
-	sha256sums = 513be09c9a4f56fe1274b6bc823d2eafaa3f3da9892bd668767844b83c94011a
+	sha256sums = bd57738a777d58ea38de7a887ec7b7bcc7809a9d104d7ec782c20d7bbaf4821a
 	sha256sums = 61e116dd2fe4cd87ab203f6a3d193404dd5f3c0c0f6dc262439a64411bcb30c4
 	sha256sums = 8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667
 	sha256sums = 41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d
