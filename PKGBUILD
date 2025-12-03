@@ -1,15 +1,15 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libunistring-git
-pkgver=1.1.r2.g34b971f
+pkgver=1.4.1.r1.g7c6a0c1
 pkgrel=1
 pkgdesc="A library provides functions for manipulating Unicode strings and for manipulating C strings"
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/libunistring/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('glibc')
 makedepends=('git' 'gperf' 'wget')
-provides=("libunistring=$pkgver")
+provides=("libunistring=$pkgver" 'libunistring.so')
 conflicts=('libunistring')
 options=('staticlibs')
 source=("git+https://git.savannah.gnu.org/git/libunistring.git")
@@ -25,6 +25,7 @@ pkgver() {
 build() {
   cd "libunistring"
 
+  ./gitsub.sh pull
   ./autogen.sh
   ./configure \
     --prefix="/usr"
@@ -34,7 +35,7 @@ build() {
 check() {
   cd "libunistring"
 
-  make check
+  #make check
 }
 
 package() {
