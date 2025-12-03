@@ -1,0 +1,25 @@
+pkgbase = gst-plugin-spotify-kingosticks
+	pkgdesc = GStreamer Spotify plugin, for use with mopidy-spotify
+	pkgver = 0.15.0_alpha.1_4
+	pkgrel = 1
+	url = https://gstreamer.freedesktop.org/
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	license = MPL-2.0
+	makedepends = git
+	makedepends = rust
+	depends = gstreamer
+	depends = gcc-libs
+	depends = glibc
+	depends = glib2
+	provides = gst-plugins-rs
+	provides = gst-plugin-spotify
+	conflicts = gst-plugins-rs
+	conflicts = gst-plugins-rs-git
+	conflicts = gst-plugin-spotify
+	options = !lto
+	source = gst-plugins-rs::git+https://gitlab.freedesktop.org/kingosticks/gst-plugins-rs.git#tag=gst-plugin-spotify_0.15.0-alpha.1-4
+	sha256sums = 692d8f9e4610e1f0e35f2ffd17440a92c656723db1a5284212a67560a25a6072
+
+pkgname = gst-plugin-spotify-kingosticks

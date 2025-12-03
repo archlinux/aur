@@ -1,0 +1,5 @@
+/gst-plugins-rs
+/src
+/pkg
+/*.tar
+/*.zst
