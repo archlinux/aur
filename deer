@@ -1,0 +1,61 @@
+#!/bin/bash
+
+cat <<'EOF'
+
+   /|       |\
+`__\\       //__'
+   ||      ||
+ \__`\     |'__/
+   `_\\   //_'
+   _.,:---;,._
+   \_:     :_/
+     |@. .@|
+     |     |
+     ,\.-./ \
+     ;;`-'   `---__________-----.-.
+     ;;;                         \_\
+     ';;;                         |
+      ;    |                      ;
+       \   \     \        |      /
+        \_, \    /        \     |\
+          |';|  |,,,,,,,,/ \    \ \_
+          |  |  |           \   /   |
+          \  \  |           |  / \  |
+           | || |           | |   | |
+           | || |           | |   | |
+           | || |           | |   | |
+           |_||_|           |_|   |_|
+          /_//_/           /_/   /_/
+
+EOF
+
+cpu=$(grep -m1 "model name" /proc/cpuinfo | cut -d: -f2 | sed 's/^ //')
+gpu=$(lspci 2>/dev/null | grep -Ei "vga|3d|display" | head -n1 | cut -d':' -f3 | sed 's/^ //')
+
+if [ -x /usr/bin/hostname ]; then
+    hostname=$(/usr/bin/hostname)
+elif [ -x /bin/hostname ]; then
+    hostname=$(/bin/hostname)
+else
+    hostname=$(uname -n)
+fi
+
+os=$(grep "^PRETTY_NAME=" /etc/os-release | cut -d= -f2 | tr -d '"')
+kernel=$(uname -r)
+
+de=""
+[ -n "$XDG_CURRENT_DESKTOP" ] && de=$XDG_CURRENT_DESKTOP
+
+wm=""
+if command -v wmctrl >/dev/null 2>&1; then
+    wm=$(wmctrl -m 2>/dev/null | grep Name | cut -d: -f2 | sed 's/^ //')
+fi
+[ -z "$wm" ] && [ -n "$XDG_SESSION_DESKTOP" ] && wm=$XDG_SESSION_DESKTOP
+
+echo "GPU: $gpu"
+echo "CPU: $cpu"
+echo "Hostname: $hostname"
+echo "OS: $os"
+echo "Kernel: $kernel"
+[ -n "$de" ] && echo "DE: $de"
+[ -n "$wm" ] && [ "$wm" != "$de" ] && echo "WM: $wm"

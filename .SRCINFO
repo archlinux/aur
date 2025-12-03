@@ -1,0 +1,16 @@
+pkgbase = deer
+	pkgdesc = A simple system fetch script with ASCII art
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = bash
+	depends = coreutils
+	depends = grep
+	depends = sed
+	depends = procps-ng
+	depends = pciutils
+	source = deer
+	sha256sums = SKIP
+
+pkgname = deer
