@@ -1,6 +1,7 @@
-src/
-pkg/
-msi-keyboard-git/
-*.tar.zst
-*.tar.zst.sig
+*.old
+*.orig
+*.rej
+*.tar*
 *.log
+pkg/
+src/

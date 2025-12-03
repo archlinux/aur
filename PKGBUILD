@@ -1,4 +1,4 @@
-# Maintainer: whiteman808 <whiteman808@paraboletancza.org>
+# Maintainer: whiteman808 <whiteman808 at paraboletancza dot org>
 pkgname=msi-keyboard-git
 pkgver='r6.9336442'
 pkgrel=2
