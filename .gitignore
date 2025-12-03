@@ -1,6 +1,7 @@
-*.tar.bz2
-*.tar.xz
-*.tar.zst
+*.old
+*.orig
+*.rej
+*.tar*
 *.log
 pkg/
 src/
