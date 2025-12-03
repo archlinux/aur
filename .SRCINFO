@@ -1,7 +1,7 @@
 pkgbase = sparkle-bin
 	pkgdesc = Another Mihomo GUI
-	pkgver = 1.6.14
-	pkgrel = 2
+	pkgver = 1.6.15
+	pkgrel = 1
 	url = https://github.com/xishang0128/sparkle
 	arch = x86_64
 	arch = aarch64
@@ -31,13 +31,13 @@ pkgbase = sparkle-bin
 	depends = nss
 	depends = systemd-libs
 	depends = libxfixes
-	provides = sparkle=1.6.14
+	provides = sparkle=1.6.15
 	conflicts = sparkle
 	conflicts = sparkle-git
 	conflicts = sparkle-electron-git
-	source = https://github.com/xishang0128/sparkle/releases/download/1.6.14/sparkle-linux-1.6.14-amd64.deb
-	sha256sums = 17dbe4fcdd8f82389c9fc8690a183b358fc2ae5c626b3f5cdc62ae4499ea13c6
-	source_aarch64 = https://github.com/xishang0128/sparkle/releases/download/1.6.14/sparkle-linux-1.6.14-arm64.deb
-	sha256sums_aarch64 = 6e27c804bf3ddd87adc987802825a21c73f4982a4cf973b1ad7ad3754bc8d5c5
+	source = https://github.com/xishang0128/sparkle/releases/download/1.6.15/sparkle-linux-1.6.15-amd64.deb
+	sha256sums = e9618c166b14affd7b97165df90d8496582cf1fb67d9845bfe5c26491eeea8b1
+	source_aarch64 = https://github.com/xishang0128/sparkle/releases/download/1.6.15/sparkle-linux-1.6.15-arm64.deb
+	sha256sums_aarch64 = 968d7dc704aa3604f107166e34857b72adaa13ddf1b5bc67b27ecadef44e9ab7
 
 pkgname = sparkle-bin
