@@ -23,13 +23,13 @@ pkgname=(scst-dkms
 
 _supported_linux=
 # uncomment this line if you use linux or custom build other kernel versions with "provides=(linux)"
-#_supported_linux="linux<6.18"
+#_supported_linux="linux<6.19"
 # multiple packages versionning checks are poorly handled by pacman still as I write this.
 # this package still is not compatible to newer version without upstream newer patches
 #	linux vanilla could be called "pkgname=linux-vanilla  ;provides=(linux)"
 
 # official release . commit pull stepping . patching stepping
-pkgver=3.9.7.7
+pkgver=3.9.8.7
 # do not flag out-of-date unless it is incompatible with latest kernel version, or an important upstream commit as been pushed
 
 # increase pkgrel as you customize this package, 0 worked well so far (should be 1 officially)
@@ -43,7 +43,7 @@ arch=('x86_64')
 license=(GPL-2.0-only)
 
 # no need for iscsi digest and version parsing patches since 1ba89c391e032aba5d4be3842a1682ed897b921a and 314659ed7c7b6ca3bad2f92d2cbddd4e452ddbf1
-source=("git+https://github.com/SCST-project/scst.git#commit=6543c4c316ebe03e6afa5235544df78c26643c14"
+source=("git+https://github.com/SCST-project/scst.git#commit=7d0b1d2588f98625b20b0cd508df188327531470"
         'pr_dif_vmp_files_location.patch'
 #       'iscsi_kernel_digest.patch'
 #       'version_parsing.patch'
@@ -59,6 +59,7 @@ source=("git+https://github.com/SCST-project/scst.git#commit=6543c4c316ebe03e6af
         'dkms-qla2x.conf'
         )
 # previously tested:
+#commit=6543c4c316ebe03e6afa5235544df78c26643c14
 #commit=5072f0ce5819fca7139f999c4bccd0b5cbe2a208
 #commit=d0b970fad01e2869ed3fa05e5803fcdfa0e20636
 #commit=17eb80e049f170120f7c0c0abfc1798a12b28700
@@ -349,6 +350,8 @@ package_scst-admin-util() {
   # fix perl-module install settings
   export PREFIX="/usr"
   make -C ${_pkgbase}/scstadmin install
+  # remove unprefixed unrequested systemd unit file
+  rm -fr "${pkgdir}"/lib
   # rename scst init script to more explicit name
   mv "${pkgdir}"/usr/lib/scst/{scst,service}
 
