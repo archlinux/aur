@@ -3,7 +3,7 @@
 pkgname=prefixer
 pkgdesc="Modern Proton Prefix management tool"
 
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 
 arch=('any')
@@ -15,7 +15,7 @@ depends=('python>3.13' 'python-vdf' 'python-json5' 'python-requests' 'python-cli
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wojtmic/prefixer/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('16fb8614d48a6e72e3827da1c8b276af85e9cf76bf2f49c70311c64f1c15348b')
+sha256sums=('047dbc7346a0a17a755e6c30baa165648faf6a6aa57b7519665b7034743bbd3e')
 
 build() {
   cd "$srcdir/prefixer-${pkgver}"
@@ -26,6 +26,24 @@ package() {
   cd "$srcdir/prefixer-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  mkdir -p $pkgdir/usr/share/prefixer/tweaks
-  install -Dm644 $srcdir/prefixer-${pkgver}/prefixer/data/tweaks/* $pkgdir/usr/share/prefixer/tweaks
+  install -d "$pkgdir/usr/share/prefixer/tweaks"
+  cp -r prefixer/data/tweaks/* "$pkgdir/usr/share/prefixer/tweaks/"
+  chmod -R u=rwX,go=rX "$pkgdir/usr/share/prefixer/tweaks"
+
+  echo "Generating shell completions..."
+  install -d "$pkgdir/usr/share/zsh/site-functions"
+  install -d "$pkgdir/usr/share/bash-completion/completions"
+  install -d "$pkgdir/usr/share/fish/vendor_completions.d"
+
+  export PATH="$pkgdir/usr/bin:$PATH"
+  export PYTHONPATH="$pkgdir/usr/lib/python3.13/site-packages"
+
+  _PREFIXER_COMPLETE=zsh_source prefixer > \
+      "$pkgdir/usr/share/zsh/site-functions/_prefixer"
+
+  _PREFIXER_COMPLETE=bash_source prefixer > \
+      "$pkgdir/usr/share/bash-completion/completions/prefixer"
+
+  _PREFIXER_COMPLETE=fish_source prefixer > \
+      "$pkgdir/usr/share/fish/vendor_completions.d/prefixer.fish"
 }
