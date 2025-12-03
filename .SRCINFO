@@ -1,6 +1,6 @@
 pkgbase = hnefatafl-copenhagen
 	pkgdesc = Copenhagen Hnefatafl client.
-	pkgver = 4.3.0
+	pkgver = 4.4.0
 	pkgrel = 1
 	url = https://hnefatafl.org
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = hnefatafl-copenhagen
 	depends = alsa-lib
 	provides = hnefatafl-copenhagen
 	conflicts = hnefatafl-copenhagen
-	source = https://github.com/dcampbell24/hnefatafl/archive/refs/tags/v4.3.0.tar.gz
-	sha256sums = cfd2071a52f1ad1fa175227fb1f7df9abcbcdde5c688c3c3219a6f14f3038c6c
+	source = https://github.com/dcampbell24/hnefatafl/archive/refs/tags/v4.4.0.tar.gz
+	sha256sums = 2aeddca9a51a595850fed6a2839a4afab7faff64e52accd499f2dbb216916c5e
 
 pkgname = hnefatafl-copenhagen
