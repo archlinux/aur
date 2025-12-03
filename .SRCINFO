@@ -1,21 +1,21 @@
 pkgbase = freefilesync
 	pkgdesc = Folder comparison and synchronization software
-	pkgver = 14.5
+	pkgver = 14.6
 	pkgrel = 1
 	url = https://freefilesync.org
 	arch = x86_64
 	license = custom
 	depends = wxwidgets-gtk3
-	noextract = FreeFileSync_14.5_Source.zip.1
-	source = FreeFileSync_14.5_Source.zip.1::https://freefilesync.org/download/FreeFileSync_14.5_Source.zip
-	source = FreeFileSync_14.5_Source.zip::https://freefilesync.org/download/FreeFileSync_14.5_Source.zip
+	noextract = FreeFileSync_14.6_Source.zip.1
+	source = FreeFileSync_14.6_Source.zip.1::https://freefilesync.org/download/FreeFileSync_14.6_Source.zip
+	source = FreeFileSync_14.6_Source.zip::https://freefilesync.org/download/FreeFileSync_14.6_Source.zip
 	source = FreeFileSync.desktop
 	source = RealTimeSync.desktop
 	source = gui.patch
 	sha256sums = SKIP
-	sha256sums = faa7e3d737f7579c71b6f5e009ad100c346110f4374338a2e5e2a23324ae5146
+	sha256sums = 3924f640884f84a97d421e271c89e8e5700998b3cd922d1b539035657714553c
 	sha256sums = 590d87707240529ca893199f852143f5d7c7266cb050e37e615900b013ac3d51
 	sha256sums = 82439b4b81b0a72652befad9b9db52ffbc0180f307c92205aa5ab344f9f82830
-	sha256sums = e35d1edc33bafdd104ea442eedb46778b7afe43db8b7b122c6f7e29b9de43927
+	sha256sums = f63ae8deba10a8f7ed8f907e355d0cfecf458263fea8ebc2612cb29b41124187
 
 pkgname = freefilesync

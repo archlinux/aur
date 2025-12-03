@@ -1,12 +1,11 @@
-diff --git b/FreeFileSync/Source/ui/gui_status_handler.cpp a/FreeFileSync/Source/ui/gui_status_handler.cpp
---- b/FreeFileSync/Source/ui/gui_status_handler.cpp
-+++ a/FreeFileSync/Source/ui/gui_status_handler.cpp
-@@ -70,27 +70,35 @@ void StatusHandlerTemporaryPanel::showStatsPanel()
+diff --git a/FreeFileSync/Source/ui/gui_status_handler.cpp b/FreeFileSync/Source/ui/gui_status_handler.cpp
+--- a/FreeFileSync/Source/ui/gui_status_handler.cpp
++++ b/FreeFileSync/Source/ui/gui_status_handler.cpp
+@@ -70,27 +70,33 @@ void StatusHandlerTemporaryPanel::showStatsPanel()
                  //case wxAUI_DOCK_CENTRE:
          }
  
 +        wxAuiPaneInfoArray& paneArray = mainDlg_.auiMgr_.GetAllPanes();
-+
          const bool statusRowTaken = [&]
          {
 -            for (wxAuiPaneInfo& paneInfo : mainDlg_.auiMgr_.GetAllPanes())
@@ -30,7 +29,6 @@ diff --git b/FreeFileSync/Source/ui/gui_status_handler.cpp a/FreeFileSync/Source
 +            for (size_t i = 0; i < paneArray.size(); ++i)
 +            {
 +                wxAuiPaneInfo& paneInfo = paneArray[i];
-+
                  if (&paneInfo != &statusPanel &&
                      paneInfo.dock_layer     == statusPanel.dock_layer &&
                      paneInfo.dock_direction == statusPanel.dock_direction &&
