@@ -1,6 +1,6 @@
 pkgbase = python-sphinx-gallery
 	pkgdesc = Sphinx extension to automatically generate an examples gallery
-	pkgver = 0.19.0
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = http://sphinx-gallery.github.io
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-sphinx-gallery
 	makedepends = python-setuptools-scm
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/s/sphinx_gallery/sphinx_gallery-0.19.0.tar.gz
-	md5sums = bef91dd3e20de28ab4358220d449ca1b
+	source = https://files.pythonhosted.org/packages/source/s/sphinx_gallery/sphinx_gallery-0.20.0.tar.gz
+	md5sums = b1bb113c129e22496ee4f1d602b194ad
 
 pkgname = python-sphinx-gallery
 	depends = python-sphinx>=5
