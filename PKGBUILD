@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=teleport-client
-pkgver=18.4.1
+pkgver=18.4.2
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure - Client-only (tsh, tctl)"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('go>=1.16.0', 'git' 'cargo')
 provides=('teleport-client' 'tctl' 'tsh')
 conflicts=('teleport' 'teleport-client-bin' 'tctl' 'tsh')
 source=("${pkgname%-*}-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('27832666caee07377adddabfd8051db75ad9325f2e01a38feba046352b8a8ce5')
+sha256sums=('e8eee83be5070894207d2308c5da4feedafe1530d9e9fbcd62045058839e7163')
 
 prepare() {
   cd "${pkgname%-*}-${pkgver}"
