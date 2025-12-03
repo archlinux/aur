@@ -1,0 +1,20 @@
+pkgbase = cascade
+	pkgdesc = A friendly DNSSEC signing solution: sensible defaults, controllability, observability and flexibility.
+	pkgver = 0.1.0alpha5
+	pkgrel = 1
+	url = https://github.com/NLnetLabs/cascade
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cargo
+	depends = openssl
+	depends = glibc
+	depends = gcc-libs
+	options = !lto
+	source = cascade-0.1.0alpha5.tar.gz::https://github.com/NLnetLabs/cascade/archive/refs/tags/v0.1.0-alpha5.tar.gz
+	source = cascade.sysusers
+	source = cascade.tmpfiles
+	sha256sums = 88d80ec178fb83ea9521d3bcff8e0ffd460c94601e54b151de136ea7303ce6e5
+	sha256sums = 48caabb8a6e636198c31c5930d9aef8a8e68f5e195809aea9bdfcf9b022115cd
+	sha256sums = 61a157e34740983ad0f24e7878ad97058c766c8ab4a2d5f2aa93e1cd25ffda83
+
+pkgname = cascade
