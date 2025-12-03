@@ -1,0 +1,16 @@
+pkgbase = hyprdrover
+	pkgdesc = A lightweight session manager for Hyprland
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/S-Sigdel/hyprdrover
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	source = hyprdrover-0.1.1.tar.gz::https://github.com/S-Sigdel/hyprdrover/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = ab39f4005dc16c11a0a3ee290ba9aa38630ac0b8e7c5ec020f3f4ef4bb2a200c
+
+pkgname = hyprdrover
