@@ -1,0 +1,18 @@
+pkgbase = musage-bin
+	pkgdesc = A command line memory usage information tool
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/mihaigalos/musage
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	provides = musage
+	conflicts = musage
+	source_x86_64 = musage-x86_64-0.1.6.tgz::https://github.com/mihaigalos/musage/releases/download/0.1.6/musage-0.1.6-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 8b54b6320592f8c8107d60a658059af77ac0f01c90d16816ed2acb20f36b4cf1
+	source_aarch64 = musage-aarch64-0.1.6.tgz::https://github.com/mihaigalos/musage/releases/download/0.1.6/musage-0.1.6-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = a26dba2bfebc411170c9e6345e43f1650d0cb064ed538bf340d1ab2a6ae964f5
+
+pkgname = musage-bin

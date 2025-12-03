@@ -1,0 +1,4 @@
+[musage-bin]
+source = "github"
+github = "mihaigalos/musage"
+use_latest_release = true
