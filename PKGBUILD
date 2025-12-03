@@ -2,7 +2,8 @@
 
 _name=livekit
 pkgname=python-$_name
-pkgver=1.0.19
+pkgver=1.0.20
+_livekit_ffi_ver=0.12.40
 pkgrel=1
 pkgdesc="Python Real-time SDK for LiveKit."
 arch=('x86_64' 'aarch64')
@@ -16,15 +17,15 @@ source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_na
         "https://github.com/livekit/python-sdks/raw/refs/tags/rtc-v$pkgver/livekit-rtc/tests/test_echo_capture.wav"
         "https://github.com/livekit/python-sdks/raw/refs/tags/rtc-v$pkgver/livekit-rtc/tests/test_echo_render.wav"
         "https://github.com/livekit/python-sdks/raw/refs/tags/rtc-v$pkgver/livekit-rtc/tests/test_processed.wav")
-source_x86_64=("https://github.com/livekit/rust-sdks/releases/download/rust-sdks/livekit-ffi@0.12.39/ffi-linux-x86_64.zip")
-source_aarch64=("https://github.com/livekit/rust-sdks/releases/download/rust-sdks/livekit-ffi@0.12.39/ffi-linux-arm64.zip")
-sha256sums=('1617162fe42ae2d3b18745ef0e40a15bcab7bd27aef6e6f47787f03865f55b07'
+source_x86_64=("https://github.com/livekit/rust-sdks/releases/download/rust-sdks/livekit-ffi@$_livekit_ffi_ver/ffi-linux-x86_64.zip")
+source_aarch64=("https://github.com/livekit/rust-sdks/releases/download/rust-sdks/livekit-ffi@$_livekit_ffi_ver/ffi-linux-arm64.zip")
+sha256sums=('3ea407906830c2e4d85552ec38ad511f99fa173b40ff7ee1fd1139ebded70fa5'
             'ac5cba8b2477ab55c9bc5f95faffcd3d9b9ad4e6a01d79308fbe6eeef733ce80'
             '90626c2c532dfb8313ae52501a9500f1c90235570aab8ff1367e7f91fb697a7e'
             'cf50f57f00fa941ab612c57c24a28811b93c878d3c98edcb4a8f21508aa8e566'
             '8a48eb2f6a2143b4bc6adfe306983637f628fffc9d550c60b4ebcecd506d6245')
-sha256sums_x86_64=('884d43b002029fb4dce7f9c5d3837941687c3460b438da48b12b056037f4c603')
-sha256sums_aarch64=('2fe9e451466f2d718cc8a27f0f75d2dbaed4897da056ac10444c9091ce4a3e22')
+sha256sums_x86_64=('f6331d12c0c101dfee98496c2cb922eae109663abeb98add4c3b8a8a321eb5ff')
+sha256sums_aarch64=('b11980379eec8f3cd87aaaedacfda5330475ec154aaec1e0d9e45814ee3a94eb')
 
 prepare(){
   cp -f test_audio.wav "$srcdir"/$_name-$pkgver/tests/test_audio.wav
@@ -43,6 +44,7 @@ build() {
 check() {
   local pytest_options=(
     -vv
+    --disable-warnings
   )
   cd "$srcdir"/$_name-$pkgver
   PYTHONPATH=$PWD/$_name pytest "${pytest_options[@]}" tests
