@@ -2,7 +2,7 @@
 
 pkgname=zitadel
 pkgver=4.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Identity infrastructure, simplified for you"
 arch=('x86_64')
 url="https://github.com/zitadel/zitadel/"
@@ -17,18 +17,21 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/zitadel/zitadel/archive/ref
         "zitadel.sysusers"
         "zitadel.tmpfiles"
         "config.yaml"
-        "init.yaml")
+        "init.yaml"
+        "Makefile")
 sha512sums=('6c6f7579ff4926cbf405275c6ca71339d7106a289e5bda6311b70d66912ae2794b60971722ae336a68d1566a7ccb9dd4daa962f028103bb5d200b26a35d82b75'
             '2d2a004537ff632daae1b9931764c1404495cf42ccf1bb96fbb7b6f47c0188b0f2da3e548fd7d90cebe5ab5045399729af3f1799564d11914df80dff244d10a5'
             'f497d8fdc43327a7bacc957b6c583a3dd81f3d1fe387869463cb23c5c0a8efcd04772f3fc528c528ebc6cb55d29e0d11ddf73bc7db7cf61655267b964bcc2f12'
             '7b847d89fb3d231d25a053b0a9a7fee2b184d17553b321fc403c86b122f349a65346a7e1522e1caa7e2c2dcef742358322e85ea1c2a0dd578e6e180a19553508'
             'c8beaaf1beecf3d8df7b1b8f6a954911d76e64dc26faabb8f58f5ef5029849f7297719814c898bb002eb21b36d3e7221d1ffcd47cec3d6b326c8e3e7d43dd5bf'
-            '5595aac0f6154548dd79343da2c846dbd2fa723168992f16e57720812d463f76c4341b95571074e4e7ebd2da9c42d3b5a19fc189f5b397b0e9be721c857cfb09')
+            '5595aac0f6154548dd79343da2c846dbd2fa723168992f16e57720812d463f76c4341b95571074e4e7ebd2da9c42d3b5a19fc189f5b397b0e9be721c857cfb09'
+            '26dacc2a121eb23750f43d0e40eea57ef09607c0646b0d88feac06ada48deeada2c78d3b318c3a49ae89d7be79e21b65193a6872021f019a99ffb0a8a6c17020')
 backup=('etc/zitadel/master.key'
         'etc/zitadel/config.yaml')
 install="zitadel.install"
 
 build() {
+  cp Makefile "$pkgname-$pkgver"
   cd "$pkgname-$pkgver"
   local _gobin
   _gobin="$(go env GOPATH)"/bin
