@@ -3,7 +3,7 @@
 
 _pkgname=vgmtrans
 pkgname=${_pkgname}-git
-pkgver=r1384.d5429c6
+pkgver=r1465.e9ff182
 pkgrel=1
 pkgdesc="Converter for sequenced videogame music"
 arch=("x86_64")
@@ -12,9 +12,9 @@ license=("BSD-3-Clause" "Zlib")
 depends=("hicolor-icon-theme" "qt6-base" "qt6-svg")
 makedepends=("cmake" "git" "qt6-tools")
 source=("${_pkgname}::git+${url}"
-        "git+https://github.com/zlib-ng/minizip-ng.git"
+        "git+https://github.com/rtissera/libchdr.git"
         "git+https://github.com/gabime/spdlog.git"
-        "git+https://github.com/zlib-ng/zlib-ng.git")
+        "git+https://github.com/madler/zlib.git")
 sha256sums=("SKIP"
             "SKIP"
             "SKIP"
@@ -25,7 +25,7 @@ prepare() {
 
 	# Setup the submodules
 	git submodule init
-	for module in minizip-ng spdlog zlib-ng; do
+	for module in libchdr spdlog zlib; do
 		git config submodule.lib/"${module}".url "${srcdir}/${module}"
 		git -c protocol.file.allow=always submodule update lib/"${module}"
 	done

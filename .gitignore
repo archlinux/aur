@@ -1,8 +1,10 @@
 # Ignore makepkg auto-generated stuff
+libchdr/
 minizip-ng/
 pkg/
 spdlog/
 src/
 vgmtrans/
+zlib/
 zlib-ng/
 *.pkg.tar.zst
