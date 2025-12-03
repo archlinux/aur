@@ -9,7 +9,7 @@ pkgdesc="Hybrid visual IDE for live programming"
 arch=('x86_64')
 url='https://www.praxislive.org/'
 license=('GPL3')
-depends=('java-runtime>=21' 'glibc' 'gcc-libs')
+depends=('java-runtime>=25' 'glibc' 'gcc-libs')
 optdepends=('jack: for JACK audio support'
             'pipewire-jack: alternative JACK implementation')
 options=('!strip')

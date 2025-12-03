@@ -16,12 +16,12 @@ post_install() {
     in the default_options line.
 
 ==> Java Requirements:
-    PraxisLIVE v6.3.0 requires Java 21 or higher.
+    PraxisLIVE v6.4.0 requires Java 25 or higher.
     Current Java version: $(java -version 2>&1 | head -1)
     
     If you see "Unsupported major.minor version" errors:
-      - Install jdk-openjdk (Java 23+) or jdk21-openjdk
-      - Or set JAVA_HOME to point to a Java 21+ installation
+      - Install jdk-openjdk (ensure it is version 25+)
+      - Or set JAVA_HOME to point to a Java 25+ installation
 
 ==> Additional information:
     - Documentation: https://docs.praxislive.org/
@@ -36,11 +36,14 @@ post_upgrade() {
 
 ==> PraxisLIVE has been upgraded to version ${2}
 
-==> What's new in v6.3.0:
-    - Updated to Apache NetBeans 26 platform and Java 24
-    - Fixed issue with occasional orphaned processes after exit
-    - Improved video output window support and mouse position mapping
-    - Updated libP5X to v4.43.0.2
+==> What's new in v6.4.0:
+    - Updated to Apache NetBeans 27 platform and Java 25
+    - Fixed issue with bundling CORE in projects
+    - Fixed issue with mode detection during editor opening
+    - Added Property.Sync API for binding property values
+    - Added Trigger.Timer API for one-shot or periodic timers
+    - Added childrenChanged() hook in codeable roots and containers
+    - Added eval() for executing Pcl scripts from components
 
 ==> For full changelog, visit:
     https://github.com/praxis-live/praxis-live/releases/tag/v${2}
