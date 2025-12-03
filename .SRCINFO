@@ -21,6 +21,11 @@ pkgbase = ascii-chat
 	optdepends = v4l-utils: webcam device utilities
 	provides = ascii-chat
 	conflicts = ascii-chat
+	options = strip
+	options = staticlibs
+	options = lto
+	options = docs
+	options = ccache
 	source = ascii-chat-0.3.33-full.tar.gz::https://github.com/zfogg/ascii-chat/releases/download/v0.3.33/ascii-chat-0.3.33-full.tar.gz
 	sha256sums = 17a4a5138aa0c7812b37868038d49249c05721e198a7b61483604720ee0e178d
 
