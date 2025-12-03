@@ -1,13 +1,14 @@
 pkgbase = libjson
-	pkgdesc = libjson is a small C library and small codebase that packs an efficient parser and a configurable printer
-	pkgver = 0.8
+	pkgdesc = A JSON parser and printer library in C
+	pkgver = 0.8.r54.ga63d882
 	pkgrel = 1
-	url = http://projects.snarc.org/libjson/
+	url = https://github.com/vincenthz/libjson
 	arch = i686
 	arch = x86_64
-	license = LGPL
-	source = http://projects.snarc.org/libjson/download/libjson-0.8.tar.gz
-	md5sums = f8eddc87510d399a2532a9b0d74c2455
+	license = LGPL-2.1-only
+	depends = glibc
+	provides = libjson.so
+	source = libjson-0.8.r54.ga63d882.tar.gz::https://github.com/vincenthz/libjson/archive/a63d8823b492477cc10ccd5edc6d79d2a34be585.tar.gz
+	sha256sums = cf15f01baaa9102ffde0dcdd76b735a1230c4216367ef3fa4370200886df03e3
 
 pkgname = libjson
-

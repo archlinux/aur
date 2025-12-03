@@ -1,44 +1,30 @@
 # Contributor: Philanecros Heliostein <philanecros@gmail.com>
 
-pkgname='libjson'
-pkgver='0.8'
-pkgrel='1'
-pkgdesc="libjson is a small C library and small codebase that packs an efficient parser and a configurable printer"
-
+pkgname=libjson
+pkgver=0.8.r54.ga63d882
+_commit=a63d8823b492477cc10ccd5edc6d79d2a34be585
+pkgrel=1
+pkgdesc="A JSON parser and printer library in C"
 arch=('i686' 'x86_64')
-
-url="http://projects.snarc.org/libjson/"
-license=('LGPL')
-
-#groups=()
-
-#depends=()
-#makedepends=()
-#optdepends=()
-
-#provides=()
-#conflicts=()
-#replaces=()
-
-#backup=()
-#options=()
-
-#install=
-#changelog=
-
-source=('http://projects.snarc.org/libjson/download/libjson-0.8.tar.gz')
-#noextract=()
-md5sums=('f8eddc87510d399a2532a9b0d74c2455')
+url="https://github.com/vincenthz/libjson"
+license=('LGPL-2.1-only')
+depends=('glibc')
+provides=("$pkgname.so")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
+sha256sums=('cf15f01baaa9102ffde0dcdd76b735a1230c4216367ef3fa4370200886df03e3')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "$pkgname-$_commit"
+    make
+}
 
-  make CFLAGS:='-Wall -Os -fPIC'
+check() {
+    cd "$pkgname-$_commit"
+    make tests
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  make DESTDIR="${pkgdir}" install
+    cd "$pkgname-$_commit"
+    make DESTDIR="${pkgdir}" install
 }
 
