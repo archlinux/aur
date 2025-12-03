@@ -1,8 +1,8 @@
 # Maintainer: Vladimir Stoiakin <VStoiakin at lavabit dot com>
 
 pkgname=rutoken
-pkgver=2.17.5.0
-pkgrel=2
+pkgver=2.18.1.0
+pkgrel=1
 pkgdesc="Support for cryptographic tokens from Aktiv-Soft JSC"
 url="https://www.rutoken.ru/support/download/"
 arch=('x86_64')
@@ -14,9 +14,9 @@ options=('!strip')
 source=("https://download.rutoken.ru/Rutoken/Utilites/rtAdmin/3.1/Linux/rtadmin.zip"
         "https://download.rutoken.ru/Rutoken/PKCS11Lib/${pkgver}/Linux/x64/librtpkcs11ecp-${pkgver}-1.x86_64.rpm"
         "sd-rutoken")
-sha256sums=('fb434d6d68147f4f8719167f345a2accee46a83df76e24a87ce1072a50bf9521'
-            'f110cab4dd45d846d2a646a11c5e0e4fda952b08c4e872b6f366866262f53523'
-            'SKIP')
+b2sums=('74a32be7b93d839e4afc31eb1733020826114c06f1b787bb6e9d8121de6662262822e15bf439a292e6199114df42fb76a44d4bd60772184c243b8a41dc61008a'
+        '200024a1435a89520b76ebee92b1bb63e0f56241d336d1180f2aebec810c955b08302d9e632daf4d7f68e97305c805b9d794c06a699e6c383ec51a924cf9d604'
+        'SKIP')
 
 package() {
   install -Dm755 "glibc-x86_64/rtadmin" "$pkgdir/usr/bin/rtadmin"
