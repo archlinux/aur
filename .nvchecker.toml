@@ -1,0 +1,4 @@
+[vbisam]
+source = "regex"
+url = "https://sourceforge.net/projects/vbisam/rss?path=/vbisam2"
+regex = '<!\[CDATA\[/vbisam2/vbisam-(.*).tar.gz\]\]>'

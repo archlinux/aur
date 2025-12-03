@@ -1,0 +1,16 @@
+pkgbase = vbisam
+	pkgdesc = ISAM file handler compatible with the leading commercial ISAM
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://sourceforge.net/projects/vbisam/
+	arch = i686
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	depends = glibc
+	provides = libvbisam.so
+	source = https://downloads.sourceforge.net/vbisam/files/vbisam-2.0.tar.gz
+	md5sums = 49a06507793007d9bb40d203f8a22f02
+	sha1sums = e5e4e565991ca3172af7424f6e3c271723f873f8
+	b2sums = db9f658ef7864dd0eac2a93ba88b1b838591b07f063906617264d008ad5cdf57e67dc3bf5e000489ec35cb139df679e96f702a974bde0fb82af9d9e5cf704770
+
+pkgname = vbisam
