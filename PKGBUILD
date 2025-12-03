@@ -9,7 +9,7 @@ license=('MIT')
 install="${pkgname}.install"
 depends=('glfw-x11' 'mesa' 'libx11' 'libxrandr' 'libxinerama' 'libxcursor' 'libxi')
 makedepends=('cmake' 'base-devel' 'eigen' 'pkgconf' 'git')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xi-ve/openvr-space-calibrator-linux/archive/main.tar.gz"
+source=("git+https://github.com/xi-ve/openvr-space-calibrator-linux.git#branch=main"
         "openvr-headers.tar.gz::https://github.com/ValveSoftware/openvr/archive/master.tar.gz"
         "eigen.tar.gz::https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz"
         "openvr-space-calibrator-install.sh")
@@ -19,20 +19,14 @@ sha256sums=('SKIP'
             'SKIP')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-main"
+  cd "${srcdir}/openvr-space-calibrator-linux"
   
   if [ -d "build" ]; then
     rm -rf build
   fi
   
-  if [ ! -d "lib/imgui" ]; then
-    echo "Cloning ImGui submodule..."
-    mkdir -p lib
-    git clone --depth 1 https://github.com/ocornut/imgui.git lib/imgui || {
-      echo "Error: Failed to clone imgui submodule"
-      exit 1
-    }
-  fi
+  echo "Initializing git submodules..."
+  git submodule update --init --recursive
   
   if [ ! -d "../lib/openvr/headers" ]; then
     echo "Extracting OpenVR headers..."
@@ -67,7 +61,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-main"
+  cd "${srcdir}/openvr-space-calibrator-linux"
   
   export CFLAGS="${CFLAGS//-ffile-prefix-map=* /} -Wno-format-security"
   export CXXFLAGS="${CXXFLAGS//-ffile-prefix-map=* /} -Wno-format-security"
@@ -76,7 +70,7 @@ build() {
   cd build
   
   OPENVR_HEADERS=""
-  PROJECT_ROOT="${srcdir}/${pkgname}-main"
+  PROJECT_ROOT="${srcdir}/openvr-space-calibrator-linux"
   
   for path in \
     "${PROJECT_ROOT}/../lib/openvr/headers" \
@@ -135,7 +129,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-main"
+  cd "${srcdir}/openvr-space-calibrator-linux"
   
   # Install register-overlay utility if built
   if [ -f build/bin/register-overlay ]; then
