@@ -1,0 +1,11 @@
+pkgbase = lol-lint
+pkgdesc = A strict linter for LOLCODE that validates syntax and semantics
+pkgver = 0.1.1
+pkgrel = 1
+url = https://github.com/jerankda/lol-lint
+arch = x86_64
+license = MIT
+source = lol-lint-0.1.1.tar.gz::https://github.com/jerankda/lol-lint/releases/download/v0.1.1/lol-lint-linux-x86_64.tar.gz
+sha256sums = 7ecf3edb0201be32d0b32b02e22b9ad9fa09216116370f740ac4e8eb558462b3
+
+pkgname = lol-lint
