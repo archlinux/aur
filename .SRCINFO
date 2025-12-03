@@ -1,0 +1,16 @@
+pkgbase = arch-news-guard
+	pkgdesc = A CLI tool that checks for risky Arch Linux news before running a system update.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Dacraezy1/arch-news-guard
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-beautifulsoup4
+	depends = python-rich
+	source = arch-news-guard-1.0.0.tar.gz::https://github.com/Dacraezy1/arch-news-guard/archive/v1.0.0.tar.gz
+	sha256sums = 634a473fe5549fc56b57931081ce434a1cb8a753ddc9edc6eab8b5263e2e287f
+
+pkgname = arch-news-guard
