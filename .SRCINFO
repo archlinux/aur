@@ -1,7 +1,7 @@
 pkgbase = pano-scrobbler-bin
 	pkgdesc = Feature packed cross-platform music tracker
 	pkgver = 4.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kawaiiDango/pano-scrobbler
 	arch = x86_64
 	arch = aarch64
