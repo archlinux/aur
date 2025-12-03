@@ -1,13 +1,14 @@
 # Maintainer: MojArch
 pkgname=opera-developer
-pkgver=125.0.5727.1  # ← Change this when updating
-pkgrel=1           # ← Reset to 1 when bumping pkgver
+pkgver=126.0.5734.0
+pkgrel=1
 pkgdesc='A fast and secure web browser and Internet suite - developer stream'
 arch=('x86_64')
 url='https://www.opera.com/computer'
 license=('custom:opera')
 provides=('opera-developer')
 depends=(
+    'qt5-base'
     'gtk3'
     'alsa-lib'
     'libnotify'
@@ -19,9 +20,14 @@ depends=(
     'shared-mime-info'
     'hicolor-icon-theme'
     'upower'
+    'cups'
+    'at-spi2-core'
+    'dbus'
+    'libxkbcommon'
 )
 optdepends=(
     'opera-developer-ffmpeg-codecs'
+    'cairo'
 )
 
 # Base URL
