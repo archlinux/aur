@@ -1,8 +1,10 @@
 _dotnet_version=10.0
 _system_libs=true
+# TODO: change to false to use system runtime when dotnet 10 is in extra.
+_self_contained=true
 
 pkgname=clonedash-git
-pkgver=r1782.g6ecd0c4
+pkgver=r1804.gc0702f1
 pkgrel=1
 pkgdesc="An open-source, from scratch clone of Muse Dash (a parkour rhythm game)."
 arch=("x86_64")
@@ -40,13 +42,17 @@ if "$_system_libs"
 then
     depends+=(sdl3)
 fi
+if ! "$_self_contained"
+then
+    depends+=("dotnet-runtime-$_dotnet_version")
+fi
 
 prepare() {
     cd "$srcdir/CloneDash"
     find "$srcdir" -mindepth 1 -maxdepth 1 \( -name "*.diff" -o -name "*.patch" \) \
         -printf "Applying %p...\n" \
         -exec patch -Np1 -i {} \;
-    dotnet restore -p:NoWarn=NU1605
+    dotnet restore --runtime "$_rid" -p:NoWarn=NU1605
 }
 
 pkgver() {
@@ -58,20 +64,23 @@ pkgver() {
 
 build() {
     cd "$srcdir/CloneDash"
-    dotnet build "CloneDash/Clone Dash.csproj" \
-        -c Release --framework "net$_dotnet_version" --runtime "$_rid" -p:NoWarn=NU1605
-    dotnet build "Nucleus.ModelEditor/Nucleus.ModelEditor.csproj" \
-        -c Release --framework "net$_dotnet_version" --runtime "$_rid" -p:NoWarn=NU1605
+    dotnet build --no-restore -c Release -p:NoWarn=NU1605 --self-contained="$_self_contained"
 }
 
 package() {
     cd "$srcdir/CloneDash"
     mkdir -p "$pkgdir/usr/lib/clonedash" "$pkgdir/usr/bin"
-    cp -a --no-preserve=ownership -t "$pkgdir/usr/lib/clonedash" \
-        "CloneDash/bin/Release/net$_dotnet_version/$_rid/." \
-        "Nucleus.ModelEditor/bin/Release/net$_dotnet_version/$_rid/."
+    if "$_self_contained"
+    then
+        cp -a --no-preserve=ownership -t "$pkgdir/usr/lib/clonedash" \
+            "CloneDash/bin/Release/net$_dotnet_version/$_rid/." \
+            "Nucleus.ModelEditor/bin/Release/net$_dotnet_version/$_rid/."
+    else
+        cp -a --no-preserve=ownership -t "$pkgdir/usr/lib/clonedash" \
+            "CloneDash/bin/Release/net$_dotnet_version/." \
+            "Nucleus.ModelEditor/bin/Release/net$_dotnet_version/."
+    fi
     ln -srfv "$pkgdir/usr/lib/clonedash/Clone Dash" "$pkgdir/usr/bin/CloneDash"
-    #find "$pkgdir/usr/lib/clonedash/runtimes" -maxdepth 1 -mindepth 1 -type d ! -name "$_rid" -exec rm -rf {} \;
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 "$srcdir/com.github.marchc1.CloneDash.desktop" \
         "$pkgdir/usr/share/applications/com.github.marchc1.CloneDash.desktop"
@@ -81,7 +90,13 @@ package() {
         "$pkgdir/usr/share/icons/hicolor/64x64/apps/com.github.marchc1.CloneDash.png"
     if "$_system_libs"
     then
-        rm "$pkgdir/usr/lib/clonedash/libSDL3.so"
+        find "$pkgdir/usr/lib/clonedash" -type f -name libSDL3.so \
+            -printf "Removing %P...\n" -delete
+    fi
+    if ! "$_self_contained"
+    then
+        find "$pkgdir/usr/lib/clonedash/runtimes" -maxdepth 1 -mindepth 1 -type d ! -name "$_rid" \
+            -printf "Removing %P...\n" -exec rm -rf {} +
     fi
 }
 
