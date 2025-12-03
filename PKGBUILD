@@ -60,5 +60,6 @@ package() {
 
   install -Dm 644 "io.github.enzomtpyt.pawtop.desktop" "$pkgdir/usr/share/applications/io.github.enzomtpyt.pawtop.desktop"
   install -Dm 644 "$_pkgname-$pkgver/static/icon.png" "$pkgdir/usr/share/pixmaps/${pkgname}.png"
+  install -Dm 644 "$_pkgname-$pkgver/static/icon.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
   install -Dm 644 "$_pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
