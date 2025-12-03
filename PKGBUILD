@@ -9,8 +9,8 @@ license=('GPL3')
 depends=('fontconfig' 'libx11' 'libxcursor' 'libxi' 'libxrandr' 'libxcb' 'vulkan-driver')
 makedepends=('cargo')
 options=('!lto')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('84ff8d0635c12b612144b31d51938f0e9afc87a1fa14ec1ca81063285c51e843')
+source=("cfait-source-v0.2.4.tar.gz::https://codeberg.org/trougnouf/cfait/releases/download/v0.2.4/cfait-source-v0.2.4.tar.gz")
+sha256sums=('92ff182a42db71ed14d7fdd9a1074e3f11ef77eaf852d4ab0a34664120281757')
 replaces=('rustycal' 'rustache' 'fairouille')
 
 build() {
