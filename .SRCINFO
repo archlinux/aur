@@ -1,14 +1,14 @@
 pkgbase = huggle
 	pkgdesc = Anti-vandalism tool for use on MediaWiki-based projects
 	pkgver = 3.4.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://en.wikipedia.org/wiki/Wikipedia:Huggle
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cmake
-	depends = qt5-multimedia
-	depends = qt5-webengine
+	depends = qt6-multimedia
+	depends = qt6-webengine
 	depends = yaml-cpp
 	conflicts = libircclient
 	source = https://github.com/huggle/huggle3-qt-lx/releases/download/3.4.14/huggle_3.4.14.tar.gz

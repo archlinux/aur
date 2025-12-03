@@ -3,12 +3,12 @@
 # Contributor: Alex Xu <alex_y_xu dot yahoo at ca>
 pkgname=huggle
 pkgver=3.4.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Anti-vandalism tool for use on MediaWiki-based projects"
 arch=('i686' 'x86_64')
 url="https://en.wikipedia.org/wiki/Wikipedia:Huggle"
 license=('GPL-3.0-or-later')
-depends=('qt5-multimedia' 'qt5-webengine' 'yaml-cpp')
+depends=('qt6-multimedia' 'qt6-webengine' 'yaml-cpp')
 makedepends=('cmake')
 conflicts=('libircclient') # A different, unrelated, libircclient
 source=(
@@ -41,6 +41,7 @@ build() {
         -DWEB_ENGINE=ON \
         -DBUILD_SHARED_LIBS=OFF \
         -DHUGGLE_EXT=TRUE \
+        -DQT6_BUILD=TRUE \
         -Wno-dev \
 
     make -C build
