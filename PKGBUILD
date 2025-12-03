@@ -2,7 +2,7 @@
 
 _name=nolds
 pkgname=python-${_name,,}
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='Nonlinear measures for dynamical systems (based on one-dimensional time series)'
 arch=('any')
@@ -15,7 +15,7 @@ depends=('python'
 makedepends=('python-installer' 'python-wheel')
 _whl="${_name//-/_}-$pkgver-py2.py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py2.py3-none-any.whl")
-sha256sums=(91fa5982432d306f9889129bf2f270080cfa11cba69c528a00bdf2abe0e3819b)
+sha256sums=(ba3fc9c30ba7a2c6eb8756eeb644dcf0d18e597ebe9ae170371b4b5c760213cc)
 
 noextract=("$_whl")
 package() {
