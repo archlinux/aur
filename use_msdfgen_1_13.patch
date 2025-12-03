@@ -1,0 +1,65 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5b7f6db..faccfee 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -72,6 +72,11 @@ if(MSDF_ATLAS_USE_VCPKG)
+     set(MSDFGEN_VCPKG_FEATURES_SET ON)
+ endif()
+ 
++if(MSDF_ATLAS_INSTALL)
++    include(GNUInstallDirs)
++    include(CMakePackageConfigHelpers)
++endif()
++
+ # Version is specified in vcpkg.json
+ project(msdf-atlas-gen VERSION ${MSDF_ATLAS_VERSION} LANGUAGES CXX)
+ 
+@@ -103,7 +108,7 @@ target_compile_definitions(msdf-atlas-gen PUBLIC
+     MSDF_ATLAS_COPYRIGHT_YEAR=${MSDF_ATLAS_COPYRIGHT_YEAR}
+ )
+ target_include_directories(msdf-atlas-gen INTERFACE
+-    $<INSTALL_INTERFACE:include>
++    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+ )
+ if(MSDF_ATLAS_NO_ARTERY_FONT)
+@@ -150,8 +155,6 @@ endif()
+ 
+ # Installation
+ if(MSDF_ATLAS_INSTALL)
+-    include(GNUInstallDirs)
+-    include(CMakePackageConfigHelpers)
+     set(MSDF_ATLAS_CONFIG_PATH "lib/cmake/msdf-atlas-gen")
+ 
+     # install tree package config
+diff --git a/msdf-atlas-gen/image-save.hpp b/msdf-atlas-gen/image-save.hpp
+index 50e3b22..52ce43f 100644
+--- a/msdf-atlas-gen/image-save.hpp
++++ b/msdf-atlas-gen/image-save.hpp
+@@ -19,7 +19,7 @@ template <int N>
+ bool saveImageText(const msdfgen::BitmapConstRef<float, N> &bitmap, const char *filename, YDirection outputYDirection);
+ 
+ template <int N>
+-bool saveImage(const msdfgen::BitmapConstRef<byte, N> &bitmap, ImageFormat format, const char *filename, YDirection outputYDirection) {
++bool saveImage(const msdfgen::BitmapConstRef<byte, N> &bitmap, ImageFormat format, const char *filename, YDirection outputYDirection = YDirection::BOTTOM_UP) {
+     switch (format) {
+     #ifndef MSDFGEN_DISABLE_PNG
+         case ImageFormat::PNG:
+@@ -48,7 +48,7 @@ bool saveImage(const msdfgen::BitmapConstRef<byte, N> &bitmap, ImageFormat forma
+ }
+ 
+ template <int N>
+-bool saveImage(const msdfgen::BitmapConstRef<float, N> &bitmap, ImageFormat format, const char *filename, YDirection outputYDirection) {
++bool saveImage(const msdfgen::BitmapConstRef<float, N> &bitmap, ImageFormat format, const char *filename, YDirection outputYDirection = YDirection::BOTTOM_UP) {
+     switch (format) {
+     #ifndef MSDFGEN_DISABLE_PNG
+         case ImageFormat::PNG:
+@@ -61,7 +61,7 @@ bool saveImage(const msdfgen::BitmapConstRef<float, N> &bitmap, ImageFormat form
+         case ImageFormat::RGBA:
+             return msdfgen::saveRgba(bitmap, filename);
+         case ImageFormat::FL32:
+-            return msdfgen::saveFl32(bitmap, filename);
++            return msdfgen::saveFl32(msdfgen::BitmapConstSection<float, N>(bitmap), filename);
+         case ImageFormat::TEXT:
+             return false;
+         case ImageFormat::TEXT_FLOAT:

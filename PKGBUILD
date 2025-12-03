@@ -14,8 +14,15 @@ makedepends=(git cmake gcc make)
 provides=(msdf-atlas-gen=$pkgver)
 conflicts=(msdf-atlas-gen-git)
 
-source=("${pkgname}-${pkgver}.tag.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+source=("${pkgname}-${pkgver}.tag.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+		"use_msdfgen_1_13.patch")
+sha256sums=('SKIP' 'd1f23b2b927f25c9e3d8cf5a5ebcd1ece8be5ff2c4bc5b9c866eeaa84c676d19')
+
+prepare() {
+	cd "$srcdir/${pkgname}-${pkgver}"
+
+	patch --forward --strip=1 --input="$srcdir/use_msdfgen_1_13.patch"
+}
 
 build()
 {

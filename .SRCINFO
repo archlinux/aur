@@ -19,6 +19,8 @@ pkgbase = msdf-atlas-gen
 	options = !debug
 	options = !strip
 	source = msdf-atlas-gen-1.3.tag.gz::https://github.com/Chlumsky/msdf-atlas-gen/archive/refs/tags/v1.3.tar.gz
+	source = use_msdfgen_1_13.patch
 	sha256sums = SKIP
+	sha256sums = d1f23b2b927f25c9e3d8cf5a5ebcd1ece8be5ff2c4bc5b9c866eeaa84c676d19
 
 pkgname = msdf-atlas-gen
