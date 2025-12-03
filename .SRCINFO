@@ -1,0 +1,13 @@
+pkgbase = gab
+	pkgdesc = gab, Get another beer, is a AUR helper inspired by the yet-another-yogurt repo.
+	pkgver = 0.1
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	depends = curl
+	depends = cjson
+	source = gab.c
+	md5sums = SKIP
+
+pkgname = gab
