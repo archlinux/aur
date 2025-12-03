@@ -3,7 +3,7 @@
 _pkgname=open-webui
 pkgname=${_pkgname}-no-venv
 pkgver=0.6.41
-pkgrel=1
+pkgrel=2
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama, built without creating virtualenv"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
@@ -46,6 +46,7 @@ depends=(python
         python-importlib-metadata
         python-pyjwt
         python-langchain
+        python-langchain-classic
         python-langchain-community
         python-langchain-core
         python-langchain-text-splitters
@@ -111,11 +112,13 @@ conflicts=('open-webui-git' 'open-webui')
 provides=('open-webui')
 source=("git+https://github.com/open-webui/open-webui.git#tag=v$pkgver"
         "build-only-backend.patch"
+        "fix-langchain-1.0.0-imports.patch"
         "open-webui.service"
         "open-webui.conf")
 
 b2sums=('66cdc36d552a26aaaeb79d7c79aa632d6a5b72de7002cf547ad74c4887c989505ea6045b2d611995075395f9682297312e24fb995426591f80ca172b48388aa8'
         '36ee27927719cd6cf761a62cd89404129326595f9cde35555f5fe5e2a616bac55346eba2a2882dd883f0d6b1a77e6da64c22521f7a7a18ca0d0b2eeac4781814'
+        '08b46ba47027773040b4bf4f6cf1b14298cb7a15fdc856f6277651ac6981418a46598684d793b7af9879b51294257b42b14c83ea19d31203befde43c0c79a173'
         'f5dd97d4809160f3cc183a8c86ad5ead33163ba009fde2bb92935f766b6688f86bedecff9f1c805393d7e77736dd481d3da1d22cef6941a22bb0ef3856aee484'
         '9e9935cec52386c2397d53a02adf0befd82d9f6e7b95997abe75c156f7d2c0e29e67c9fe550da7e42c54faf97800de7501226b4ee6305530c5ced286dfed86a3')
 options=(!strip !debug)
@@ -140,6 +143,7 @@ prepare() {
     # Backend part
     cd "${_pkgname}"
     patch -i ../build-only-backend.patch
+    patch -p1 -i ../fix-langchain-1.0.0-imports.patch
 }
 
 build() {
