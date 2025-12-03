@@ -1,11 +1,12 @@
 # Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
+# Maintainer: Zhiwei Chen <condy0919@gmail.com>
 
 _ocamlname=merlin-lib
 pkgname=ocaml-$_ocamlname
 _pkgver=5.6-504
 pkgver=${_pkgver/-/_} # No hypen in $pkgver
 pkgrel=1
-pkgdesc="Low-level compiler interfaces and the standard higher-level merlin protocol"
+pkgdesc="Low-level compiler interfaces and the standard higher-level merlin protocol library"
 arch=('x86_64')
 depends=('glibc' 'ocaml' 'ocaml-csexp')
 makedepends=('dune' 'ocaml-alcotest')
