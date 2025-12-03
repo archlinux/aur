@@ -1,0 +1,27 @@
+pkgbase = input
+	pkgdesc = Unofficial community-developed port of the Input application for Work Louder devices on Linux
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/worklouder/input-linux
+	arch = x86_64
+	license = custom
+	makedepends = curl
+	makedepends = p7zip
+	makedepends = npm
+	makedepends = asar
+	makedepends = python311
+	makedepends = git
+	depends = libusb
+	optdepends = libfuse2: Required for AppImage support
+	source = input4linux-0.8.2.sh::https://raw.githubusercontent.com/worklouder/input-linux/main/input4linux-0.8.2.sh
+	source = install-udev-worklouder.sh::https://raw.githubusercontent.com/worklouder/input-linux/main/patch/dist-electron/scripts/install-udev-worklouder.sh
+	source = appicon.png::https://raw.githubusercontent.com/worklouder/input-linux/main/patch/dist/assets/appicon.png
+	source = input.desktop
+	source = start.sh
+	sha256sums = 4cffd8b8183dbfec4d5f773bafb96b488f5b0f4de0c0e5965ce633a243e61052
+	sha256sums = a113e63e71520ee320e3d4ec4fb2369bc4d3bc976190efc10b3c96f0307d1d81
+	sha256sums = f8d48a97e3d02e3c4eb87bfe5adbeb39cec4ca1e6dfe3c00f7cca24212c9c20b
+	sha256sums = 7290b288ee526c9db71f5084d66b2af4f2cd0e703a4aa9af8b81b5a5ffd95c15
+	sha256sums = bd88e218ff07d212df33848d362d068d09eb397a1cf683e15b47295df307d08a
+
+pkgname = input

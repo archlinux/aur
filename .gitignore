@@ -1,0 +1,22 @@
+# Build artifacts
+src/
+pkg/
+input-app/
+
+# Downloaded sources
+input4linux-*.sh
+install-udev-worklouder.sh
+appicon.png
+
+# makepkg artifacts
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.pkg.tar.*
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*~

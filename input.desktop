@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Input
+Comment=Configuration tool for Work Louder devices
+Exec=input
+Icon=/usr/share/pixmaps/input.png
+Terminal=false
+Categories=Utility;Settings;
+Keywords=keyboard;macro;worklouder;
