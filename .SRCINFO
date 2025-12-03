@@ -1,6 +1,6 @@
 pkgbase = sk-chos-tool
 	pkgdesc = A custom configs tool for sk-chimeros
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/honjow/sk-chos-config.git
 	install = sk-chos-tool.install
@@ -15,7 +15,7 @@ pkgbase = sk-chos-tool
 	replaces = sk-chos-tool-git
 	options = !strip
 	source = sk-chos-tool-2.16.0.tar.gz::https://github.com/honjow/sk-chos-config/archive/refs/tags/v2.16.0.tar.gz
-	source = sk-chos-tool-3.0.0.AppImage::https://github.com/honjow/sk-chos-tool/releases/download/v3.0.0/sk_chos_tool-latest-x86_64.AppImage
+	source = sk-chos-tool-3.1.0.AppImage::https://github.com/honjow/sk-chos-tool/releases/download/v3.1.0/sk_chos_tool-latest-x86_64.AppImage
 	sha256sums = SKIP
 	sha256sums = SKIP
 
