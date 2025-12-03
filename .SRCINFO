@@ -1,0 +1,18 @@
+pkgbase = dusage-bin
+	pkgdesc = A command line disk usage information tool
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/mihaigalos/dusage
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	provides = dusage
+	conflicts = dusage
+	source_x86_64 = dusage-x86_64-0.4.0.tgz::https://github.com/mihaigalos/dusage/releases/download/0.4.0/dusage-0.4.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 6d31179d81bc2bc63e5307090323c58b2e692feb1f6aefe089f56a2ef509f429
+	source_aarch64 = dusage-aarch64-0.4.0.tgz::https://github.com/mihaigalos/dusage/releases/download/0.4.0/dusage-0.4.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 305bb775e8f4f051abb8f77d5826a721e347313af0a85716e737a7be4aa56f38
+
+pkgname = dusage-bin

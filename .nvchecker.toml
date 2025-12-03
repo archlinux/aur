@@ -1,0 +1,4 @@
+[dusage-bin]
+source = "github"
+github = "mihaigalos/dusage"
+use_latest_release = true
