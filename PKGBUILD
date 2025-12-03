@@ -1,8 +1,8 @@
-# Maintainer: whiteman808 <whiteman808@paraboletancza.org>
-# Contributor: Bastien "neitsab" Traverse <neitsab@archlinux.org>
-# Contributor: Michael Dorst <m@mdorst.net>
-# Contributor: Caleb Maclennan <caleb@alerque.com>
-# Contributor: Konstantin Stepanov <me@kstep.me>
+# Maintainer: whiteman808 <whiteman808 at paraboletancza dot org>
+# Contributor: Bastien "neitsab" Traverse <neitsab at archlinux dot org>
+# Contributor: Michael Dorst <m at mdorst dot net>
+# Contributor: Caleb Maclennan <caleb at alerque dot com>
+# Contributor: Konstantin Stepanov <me at kstep dot me>
 
 pkgname=cargo-pkgbuild-git
 _pkgname=cargo-pkgbuild
