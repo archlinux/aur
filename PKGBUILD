@@ -1,4 +1,5 @@
-# Maintainer: Daniel Peukert <daniel@peukert.cc>
+# Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
+# Contributor: Daniel Peukert <daniel@peukert.cc>
 _projectname='async'
 pkgname="ocaml-$_projectname"
 pkgver='0.17.0'
@@ -7,7 +8,18 @@ pkgdesc='Monadic concurrency library for OCaml'
 arch=('x86_64' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml>=5.1.0' 'ocaml-async_kernel>=0.17.0' 'ocaml-async_log>=0.17.0' 'ocaml-async_rpc_kernel>=0.17.0' 'ocaml-async_unix>=0.17.0' 'ocaml-core>=0.17.0' 'ocaml-core_kernel>=0.17.0' 'ocaml-core_unix>=0.17.0' 'ocaml-ppx_jane>=0.17.0' 'ocaml-textutils>=0.17.0')
+depends=(
+    'ocaml>=5.1.0'
+    'ocaml-async_kernel>=0.17.0'
+    'ocaml-async_log>=0.17.0'
+    'ocaml-async_rpc_kernel>=0.17.0'
+    'ocaml-async_unix>=0.17.0'
+    'ocaml-core>=0.17.0'
+    'ocaml-core_kernel>=0.17.0'
+    'ocaml-core_unix>=0.17.0'
+    'ocaml-ppx_jane>=0.17.0'
+    'ocaml-textutils>=0.17.0'
+)
 makedepends=('dune>=3.11.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
