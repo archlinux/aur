@@ -1,7 +1,7 @@
 # Maintainer: gucio321
 pkgname=excel2tex
 pkgver=3.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="onvert Excel/LibreOffice Calc table to LaTex compatible tabularx"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/gucio321/excel2tex"
@@ -32,5 +32,5 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 excel2tex /usr/bin/exel2tex
+  install -Dm755 excel2tex $pkgdir/usr/bin/exel2tex
 }
