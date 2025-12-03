@@ -1,6 +1,6 @@
 pkgbase = whis
 	pkgdesc = Voice-to-text transcription CLI using OpenAI Whisper API
-	pkgver = 0.5.7
+	pkgver = 0.5.8
 	pkgrel = 1
 	url = https://whis.ink
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = whis
 	depends = alsa-lib
 	depends = libx11
 	depends = libxtst
-	source = https://github.com/frankdierolf/whis/releases/download/v0.5.7/whis-v0.5.7-x86_64-linux.tar.gz
-	sha256sums = ff38a9784a0bcd0cd463a892e63d309655a5054fb06b70d0d493c43edc9b5ed1
+	source = https://github.com/frankdierolf/whis/releases/download/v0.5.8/whis-v0.5.8-x86_64-linux.tar.gz
+	sha256sums = c0e27a54d5d036c686864d7753f2745f114cb81f573128b6ac846479ceaa11a2
 
 pkgname = whis
