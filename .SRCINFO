@@ -1,7 +1,7 @@
 pkgbase = gosplugin
 	pkgdesc = Crypto Interface Web Browser Plugin for https://gosuslugi.ru/
 	pkgver = 1.3.19.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gosuslugi.ru/help/faq/esignature/3842
 	arch = x86_64
 	license = unknown
@@ -45,6 +45,8 @@ pkgbase = gosplugin
 	depends = util-linux-libs
 	depends = zlib
 	depends = zstd
+	optdepends = rutoken-pkcs
+	optdepends = jacartauc
 	source = https://gu-st.ru/content/Gosplugin/Gosplugin_Linux-Debian_Installer.deb.zip
 	source = gosuslugi_plugin.sh
 	sha256sums = 5cce84af9529ae636a6732393b40f99287f1c1f046b356ab909607156cdadda1

@@ -2,7 +2,7 @@
 
 pkgname=gosplugin
 pkgver=1.3.19.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Crypto Interface Web Browser Plugin for https://gosuslugi.ru/'
 arch=('x86_64')
 url="https://www.gosuslugi.ru/help/faq/esignature/3842"
@@ -47,6 +47,7 @@ depends=(
     'zlib'
     'zstd'
 )
+optdepends=('rutoken-pkcs' 'jacartauc')
 makedepends=('grep' 'libarchive')
 
 source=(
@@ -116,6 +117,15 @@ package() {
 	    install -D "${srcdir}/opt/iitrust/gosuslugi_plugin/lib/${file}" "${pkgdir}/opt/iitrust/gosuslugi_plugin/lib/${file}"
 	done
 	rm -rf "${srcdir}/opt/iitrust/gosuslugi_plugin/lib"
+
+	unused=(
+		'tokens'
+		'xdg-open.sh'
+		'librutoken.so'
+	)
+	for file in "${unused[@]}"; do
+		rm -rf "${srcdir}/opt/iitrust/gosuslugi_plugin/bin/${file}"
+	done
 
 	cp -a "${srcdir}/usr" "${pkgdir}"
 	cp -a "${srcdir}/etc" "${pkgdir}"
