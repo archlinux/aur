@@ -1,0 +1,27 @@
+pkgbase = filemanager1-common-git
+	pkgdesc = Customizable implementation of org.freedesktop.FileManager1
+	pkgver = r9.7f51612
+	pkgrel = 1
+	url = https://github.com/boydaihungst/org.freedesktop.FileManager1.common
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = dbus
+	depends = glib2
+	depends = libsystemd.so
+	optdepends = bash: shell interpreter for the built-in wrappers
+	optdepends = lf: `lf` wrapper support
+	optdepends = nnn: `nnn` wrapper support
+	optdepends = ranger: `ranger` wrapper support
+	optdepends = vifm: `vifm` wrapper support
+	optdepends = yazi: `yazi` wrapper support
+	provides = filemanager1-common
+	conflicts = filemanager1-common
+	source = filemanager1-common::git+https://github.com/boydaihungst/org.freedesktop.FileManager1.common
+	b2sums = SKIP
+
+pkgname = filemanager1-common-git
