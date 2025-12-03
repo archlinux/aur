@@ -1,0 +1,19 @@
+pkgbase = python-uuid-utils
+	pkgdesc = Drop-in replacement for Python UUID with bindings in Rust
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/aminalaee/uuid-utils
+	arch = any
+	license = BSD-3-Clause
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-maturin
+	depends = python
+	depends = python-typing_extensions
+	source = python-uuid-utils-0.12.0.tar.gz::https://github.com/aminalaee/uuid-utils/archive/refs/tags/0.12.0.tar.gz
+	b2sums = 2e7d322a6004ce7d8326aa2ba9fb072118bcc74040a6ed2734e3f2113ba356269d2424b2bab88d846fb6dd603f7c4656ff5b9df64f879dca8028ffc7681467a1
+
+pkgname = python-uuid-utils
