@@ -1,0 +1,20 @@
+pkgbase = ocaml-merlin-lib-git
+	pkgdesc = Low-level compiler interfaces and the standard higher-level merlin protocol library
+	pkgver = v5.6.504.r38.gd6fd03b
+	pkgrel = 1
+	url = https://ocaml.github.io/merlin
+	arch = x86_64
+	license = MIT
+	checkdepends = jq
+	checkdepends = ocaml-menhir
+	makedepends = dune
+	makedepends = git
+	makedepends = ocaml-alcotest
+	depends = glibc
+	depends = ocaml
+	depends = ocaml-csexp
+	options = !strip
+	source = ocaml-merlin-lib-git::git+https://github.com/ocaml/merlin.git
+	b2sums = SKIP
+
+pkgname = ocaml-merlin-lib-git
