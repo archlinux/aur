@@ -5,5 +5,5 @@ update:
 	makepkg --printsrcinfo > .SRCINFO
 
 clean:
-	rm -rf pkg src liblad*y lady*
+	rm -rf pkg src liblady* lady*
 
