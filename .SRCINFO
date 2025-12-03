@@ -1,6 +1,6 @@
 pkgbase = r-multibridge
 	pkgdesc = Evaluating Multinomial Order Restrictions with Bridge Sampling
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=multibridge
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = r-multibridge
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/multibridge_1.2.0.tar.gz
-	sha256sums = 6d334cfa81bef12aedaa8a12c606c38c202aa8d8ecdcb735bea03de8464c742a
+	source = https://cran.r-project.org/src/contrib/multibridge_1.3.0.tar.gz
+	sha256sums = ac8f779961ce702d8a226c36e97d396685ac7eb890269c3e874253ac41216d89
 
 pkgname = r-multibridge
