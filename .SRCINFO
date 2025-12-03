@@ -1,6 +1,6 @@
 pkgbase = musicat
 	pkgdesc = A sleek desktop music player and tagger for offline music 🪕 With experimental features like map view, GPT analysis, artist toolkit.
-	pkgver = 0.15.0
+	pkgver = 0.15.2
 	pkgrel = 1
 	url = https://github.com/basharovV/musicat
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = musicat
 	depends = alsa-lib
 	depends = webkit2gtk-4.1
 	conflicts = musicat
-	source = musicat-0.15.0::git+https://github.com/basharovV/musicat#tag=v0.15.0
-	sha256sums = 2e901651358bb05fdf21b4cace3388d30c4ae86597832817c1d449bfa20e3e4e
+	source = musicat-0.15.2::git+https://github.com/basharovV/musicat#tag=v0.15.2
+	sha256sums = 4ec6596ec6f9cdc958198ae14b3a4f8c9a64db076c2b5a18acce5660bc006499
 
 pkgname = musicat
