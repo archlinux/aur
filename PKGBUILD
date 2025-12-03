@@ -1,7 +1,7 @@
-# Maintainer: whiteman808 <whiteman808@paraboletancza.org>
-# Contributor: mh4ckwascut <mh4ckt3mh4ckt1c4s@protonmail.com>
-# Contributor: M0ustach3 <pablobondialuttiau@gmail.com>
-# Contributor: kpcyrd <git@rxv.cc>
+# Maintainer: whiteman808 <whiteman808 at paraboletancza dot org>
+# Contributor: mh4ckwascut <mh4ckt3mh4ckt1c4s at protonmail dot com>
+# Contributor: M0ustach3 <pablobondialuttiau at gmail dot com>
+# Contributor: kpcyrd <git at rxv dot cc>
 
 pkgname=recon-ng-git
 _pkgname=recon-ng
