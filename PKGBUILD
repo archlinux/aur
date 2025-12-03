@@ -3,15 +3,15 @@
 pkgname=snort-nfqueue
 _pkgname=snort3
 _openappid=33380
-pkgver=3.9.7.0
+pkgver=3.10.0.0
 pkgrel=1
 pkgdesc='A lightweight network IDS / IPS with NFQUEUE and OpenAppID support.'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://www.snort.org'
-license=('GPL')
+license=('GPL-2.0-only')
 provides=('snort')
 conflicts=('snort')
-depends=('gperftools' 'hwloc' 'hyperscan' 'libdaq>=3.0.22' 'libdnet' 'libmnl' 'libnetfilter_queue' 'libpcap' 'libunwind' 'luajit' 'lz4' 'openssl' 'pcre2' 'pulledpork' 'xz' 'zlib')
+depends=('gperftools' 'hwloc' 'hyperscan' 'libdaq>=3.0.22' 'libdnet' 'libmnl' 'libnetfilter_queue' 'libpcap' 'libunwind' 'luajit' 'lz4' 'numactl' 'openssl' 'pcre2' 'pulledpork' 'xz' 'zlib')
 makedepends=('cmake' 'pkgconf')
 backup=('etc/snort/snort.lua'
         'etc/snort/snort_defaults.lua'
@@ -31,7 +31,7 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/snort3/snort3/archive/
         'snort.sysusers'
         'snort.tmpfiles'
         'snort.service')
-sha256sums=('83a611ef3e60ef3f97de08537f7070c50f6acb52eaff9db48f3a464b573ab22d'
+sha256sums=('fbd6619e612998330f8459486158a3ea571473218628d9011982aaf238e480e2'
             '3046c5af1dd81a104f13d8e895226ef64bca7fa358238fb5f29c659081eaee2a'
             'b7797a2479798c7c055173bb606fb537fb53f5c867f967d47477211193ffe86d'
             '55ae10b6d24abadb03dd4f010fdf71e077370227db6835e48881836a8ea082a8'
