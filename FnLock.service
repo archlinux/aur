@@ -1,23 +1,32 @@
 [Unit]
-Description=Toggle Fn Lock on Modifier Key Press
+Description=Dynamic Fn Lock Toggle based on Modifier Keys
+Documentation=https://example.com/your-script-docs  # Optional: add if you host docs
 After=multi-user.target
-Wants=network.target
+# Wait for the platform device providing fn_lock
+Requires=VPC2004:00.device
+After=VPC2004:00.device
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python3 /usr/bin/FnLock
+User=auto-fn-lock
+Group=input
+ExecStart=/usr/bin/python3 /usr/local/bin/auto_fn_lock.py
 Restart=on-failure
-RestartSec=5
-
-ProtectSystem=full
-ProtectHome=read-only
-NoNewPrivileges=true
-PrivateTmp=true
-ReadWritePaths=/sys/bus/platform/devices/VPC2004:00/fn_lock /dev/input
-CapabilityBoundingSet=CAP_SYS_ADMIN CAP_DAC_OVERRIDE
+RestartSec=10
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=no
+DevicePolicy=strict
+DeviceAllow=/dev/input/event* r
+ReadWritePaths=/sys/bus/platform/devices/VPC2004:00/fn_lock
+CapabilityBoundingSet=CAP_DAC_OVERRIDE CAP_SYS_NICE CAP_SETUID CAP_SETGID
+AmbientCapabilities=CAP_DAC_OVERRIDE CAP_SYS_NICE
 StandardOutput=journal
 StandardError=journal
-User=root
+
+# Environment=PYTHONUNBUFFERED=1
 
 [Install]
 WantedBy=multi-user.target
