@@ -1,6 +1,6 @@
 pkgbase = whispering-bin
 	pkgdesc = An open-source transcription application that provides global speech-to-text functionality, with options such as keyboard shortcuts and automatic copy and paste to make dictating as seamless as possible.(Prebuilt version)
-	pkgver = 7.7.2
+	pkgver = 7.8.0
 	pkgrel = 1
 	url = https://epicenter.so/
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = whispering-bin
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
 	depends = alsa-lib
-	provides = whispering=7.7.2
+	provides = whispering=7.8.0
 	conflicts = whispering
-	source = whispering-7.7.2.rpm::https://github.com/epicenter-so/epicenter/releases/download/v7.7.2/Whispering-7.7.2-1.x86_64.rpm
-	source = LICENSE-7.7.2::https://raw.githubusercontent.com/epicenter-so/epicenter/v7.7.2/LICENSE
-	sha256sums = 48572b2857e94dd39029ce00666073045dd41b37cb37e2467e821594f9bd4f52
-	sha256sums = c619bbe548615d39e9928c5f86dc1c3a76defc9f99e35273f539aad092fedb9a
+	source = whispering-7.8.0.rpm::https://github.com/epicenter-so/epicenter/releases/download/v7.8.0/Whispering-7.8.0-1.x86_64.rpm
+	source = LICENSE-7.8.0::https://raw.githubusercontent.com/epicenter-so/epicenter/v7.8.0/LICENSE
+	sha256sums = 3469302f0188287a1c2027af5ac6f0a0162a2bbedd806a5985a57a10ca5aa74d
+	sha256sums = 0b4eb79f55f8cb810c9b17fffa2c7823aed78b85d6d290e939e4c53511414c9d
 
 pkgname = whispering-bin
