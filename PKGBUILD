@@ -1,15 +1,18 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Kyle Keen <keenerd@gmail.com>
+
 pkgname=liblfds
 pkgver=7.1.1
-pkgrel=1
+pkgrel=2
 _subname='liblfds711'
 pkgdesc="Lock free data structures for C."
 arch=('i686' 'x86_64')
-url="http://www.liblfds.org/"
+url="https://www.liblfds.org/"
 license=('custom:none')
 depends=('glibc')
-source=(http://www.liblfds.org/downloads/$pkgname%20release%20$pkgver%20source.tar.bz2)
-md5sums=('2a4cb6d64d8d9333b050059e4a1b7782')
+provides=("$pkgname.so")
+source=("$pkgname-$pkgver.tar.bz2::$url/downloads/$pkgname%20release%20$pkgver%20source.tar.bz2")
+sha256sums=('4cb93868e5830bc02214b90bb76bdce836c38007757eec96d56eb5d9a4b78c47')
 
 build() {
     cd "$srcdir/${pkgname}${pkgver}/$_subname"
