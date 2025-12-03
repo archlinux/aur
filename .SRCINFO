@@ -1,20 +1,19 @@
 pkgbase = libvisio2svg
 	pkgdesc = VSS/VSD (Visio Stencil/Drawing) to SVG conversion library
-	pkgver = 0.5.5
-	pkgrel = 3
+	pkgver = 0.5.6
+	pkgrel = 1
 	url = https://github.com/kakwa/libvisio2svg
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = cmake
 	depends = librevenge
 	depends = libvisio
 	depends = libemf2svg
 	depends = libxml2
 	depends = libwmf
-	provides = libvisio2svg
-	conflicts = libvisio2svg-git
-	source = libvisio2svg-0.5.5.tar.gz::https://github.com/kakwa/libvisio2svg/archive/0.5.5.tar.gz
-	sha512sums = 42b0a66f839885aa46022a6fb9dda40143586a14a0a880eb8af71a749de312f8b6ed00f1c4e2f9e438814dcabb638672a2f2b2d5c85be015ce6ee4dc59ae8765
+	provides = libVisio2Svg.so=0.5.6
+	provides = libTitleGenerator.so=0.5.6
+	source = libvisio2svg-0.5.6.tar.gz::https://github.com/kakwa/libvisio2svg/archive/0.5.6.tar.gz
+	sha512sums = 2a199a7eac038ca24c56e8a549ce264e657fcf6a80c50ff7c5a6ea8c63c7285e87e40c1db49bb377a158776e14eb403aa23984b0c2a51c8f55a2a40ca984f099
 
 pkgname = libvisio2svg
-
