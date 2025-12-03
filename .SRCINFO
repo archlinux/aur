@@ -1,6 +1,6 @@
 pkgbase = qt6-base-headless
 	pkgdesc = A cross-platform application and UI framework - headless build, no QtGui or QtWidgets
-	pkgver = 6.10.0
+	pkgver = 6.10.1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -28,10 +28,10 @@ pkgbase = qt6-base-headless
 	optdepends = mariadb-libs: MariaDB driver
 	provides = qt6-base
 	conflicts = qt6-base
-	source = git+https://code.qt.io/qt/qtbase#tag=v6.10.0
+	source = git+https://code.qt.io/qt/qtbase#tag=v6.10.1
 	source = qt6-base-cflags.patch
 	source = qt6-base-nostrip.patch
-	sha256sums = be60bf981a67824c2a27155d794eb30d10a6daa71db37695668a8a703acff929
+	sha256sums = fa40e720d488d256704d6a7dfc23dd178eda5e4774dfdfdf1f63cdb52d53cf86
 	sha256sums = 5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78
 	sha256sums = 4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094
 

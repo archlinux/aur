@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt6-base-headless
-pkgver=6.10.0
+pkgver=6.10.1
 pkgrel=1
 arch=(x86_64)
 url='https://www.qt.io'
@@ -37,17 +37,23 @@ _pkgfn=qtbase
 source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$pkgver
         qt6-base-cflags.patch
         qt6-base-nostrip.patch)
-sha256sums=('be60bf981a67824c2a27155d794eb30d10a6daa71db37695668a8a703acff929'
+sha256sums=('fa40e720d488d256704d6a7dfc23dd178eda5e4774dfdfdf1f63cdb52d53cf86'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
             '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
 
 prepare() {
   patch -d $_pkgfn -p1 < qt6-base-cflags.patch # Use system CFLAGS
   patch -d $_pkgfn -p1 < qt6-base-nostrip.patch # Don't strip binaries with qmake
-  git -C $_pkgfn cherry-pick -n a374ab6ce9f01f1f559403ec377cde990a689890 # Fix yakuake
 }
 
 build() {
+  # Set no_direct_extern_access based on architecture
+  if [[ $CARCH == "aarch64" ]]; then
+    _no_direct_extern_access=OFF
+  else
+    _no_direct_extern_access=ON
+  fi
+
   cmake -B build -S "$_pkgfn" -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
@@ -63,7 +69,7 @@ build() {
     -DFEATURE_journald=ON \
     -DFEATURE_openssl_linked=ON \
     -DFEATURE_system_sqlite=ON \
-    -DFEATURE_no_direct_extern_access=ON \
+    -DFEATURE_no_direct_extern_access=$_no_direct_extern_access \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DCMAKE_MESSAGE_LOG_LEVEL=STATUS \
     \
