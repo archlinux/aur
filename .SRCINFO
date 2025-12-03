@@ -1,6 +1,6 @@
 pkgbase = python-altgraph
 	pkgdesc = A graph (network) package for constructing graphs, BFS and DFS traversals, topological sort, shortest paths, etc. with graphviz output.
-	pkgver = 0.17.4
+	pkgver = 0.17.5
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/altgraph
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-altgraph
 	makedepends = python-wheel
 	depends = python
 	depends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/a/altgraph/altgraph-0.17.4.tar.gz
-	sha256sums = 1b5afbb98f6c4dcadb2e2ae6ab9fa994bbb8c1d75f4fa96d340f9437ae454406
+	source = https://files.pythonhosted.org/packages/source/a/altgraph/altgraph-0.17.5.tar.gz
+	sha256sums = c87b395dd12fabde9c99573a9749d67da8d29ef9de0125c7f536699b4a9bc9e7
 
 pkgname = python-altgraph
