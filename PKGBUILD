@@ -2,7 +2,7 @@
 pkgname=cfait-git
 _pkgname=cfait
 pkgver=v0.2.3.r9.g0fc9bf0
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful, simple, elegant, and lightweight CalDAV tasks / TODO manager (TUI & GUI, git version)"
 arch=('x86_64')
 url="https://codeberg.org/trougnouf/cfait"
