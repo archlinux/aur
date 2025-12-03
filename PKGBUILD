@@ -4,12 +4,12 @@
 
 pkgname=stardict-langdao-ec-gb
 pkgver=2.4.2
-pkgrel=7
+pkgrel=8
 pkgdesc='LangDao English-Chinese Dictionary for StarDict'
 arch=('any')
 url='http://download.huzheng.org/'
 license=('GPL')
-source=("https://web.archive.org/web/20230602022440/http://download.huzheng.org/zh_CN/$pkgname-$pkgver.tar.bz2")
+source=("http://download.huzheng.org/zh_CN/$pkgname-$pkgver.tar.bz2")
 b2sums=('1c2b0857e8022560ebca3513dfdb9de32bbac185ed5871d7cedd9b133364cfc484425101c9298b981f1a2991800ff1ba478e9fcf66394f3b18425203145b4df3')
 
 package()
