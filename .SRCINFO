@@ -1,8 +1,8 @@
 pkgbase = trayclock
 	pkgdesc = trayclock is a simple analog clock for the sys-tray
 	pkgver = 0.3.7
-	pkgrel = 3
-	url = http://www.jezra.net/projects/trayclock
+	pkgrel = 5
+	url = https://web.archive.org/web/20190226202419/http://www.jezra.net/projects/trayclock
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -16,4 +16,3 @@ pkgbase = trayclock
 	md5sums = f36e4e8a487b52d56d16eda208d74e74
 
 pkgname = trayclock
-

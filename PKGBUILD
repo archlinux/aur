@@ -1,10 +1,12 @@
-# Maintainer: timttmy <marshall\\dot//cleave\\at//tiscali\\dot//co\\dot//uk>
+# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Contributor: timttmy <marshall\\dot//cleave\\at//tiscali\\dot//co\\dot//uk>
 
 pkgname=trayclock
 pkgver=0.3.7
-pkgrel=4
+pkgrel=5
 pkgdesc="trayclock is a simple analog clock for the sys-tray"
-url="http://www.jezra.net/projects/trayclock"
+#url="http://www.jezra.net/projects/trayclock"
+url="https://web.archive.org/web/20190226202419/http://www.jezra.net/projects/trayclock"
 #groups=()
 depends=('gtk2' 'librsvg')
 makedepends=('gcc' 'make' 'intltool' 'pkgconfig')
