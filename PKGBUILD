@@ -8,8 +8,8 @@ url="https://github.com/jerankda/lol-lint"
 license=('MIT')
 depends=()
 makedepends=()
-source=("$pkgname-$pkgver.tar.gz::https://github.com/jerankda/$pkgname/releases/download/v$pkgver/$pkgname-$arch-unknown-linux-gnu.tar.gz")
-sha256sums=('PLACEHOLDER_SHA256')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jerankda/$pkgname/releases/download/v$pkgver/$pkgname-linux-$arch.tar.gz")
+sha256sums=('7ecf3edb0201be32d0b32b02e22b9ad9fa09216116370f740ac4e8eb558462b3')
 
 package() {
     install -Dm755 "$srcdir/lol-lint" "$pkgdir/usr/bin/lol-lint"
