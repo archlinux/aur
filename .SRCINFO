@@ -1,6 +1,6 @@
 pkgbase = power-options-tray
 	pkgdesc = A system tray item for Power Options, a blazingly fast power management solution.
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/thealexdev23/power-options
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = power-options-tray
 	depends = yad
 	provides = power-options-tray
 	conflicts = power-options-tray-git
-	source = power-options-tray-1.2.2.tar.gz::https://github.com/thealexdev23/power-options/archive/v1.2.2.tar.gz
-	sha256sums = dedfed512b073560fece67d167b7f4f04b4649d33cfdafc4bd84a6cea9234daf
+	source = power-options-tray-1.2.3.tar.gz::https://github.com/thealexdev23/power-options/archive/v1.2.3.tar.gz
+	sha256sums = b2cba289feea0414c172cdfef3e7a9b7cf4f07a810668b1b560fcda1eda52888
 
 pkgname = power-options-tray
