@@ -1,0 +1,21 @@
+pkgbase = pipeview-bin
+	pkgdesc = A command line pipe inspection utility
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/mihaigalos/pipeview
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	provides = pipeview
+	conflicts = pipeview
+	source_x86_64 = pipeview-x86_64-0.3.3.tgz::https://github.com/mihaigalos/pipeview/releases/download/0.3.3/pipeview-0.3.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e7629ac63512b735c0c734d4d7babd3c73c741ac95f6c09d4e767c586314efae
+	source_i686 = pipeview-i686-0.3.3.tgz::https://github.com/mihaigalos/pipeview/releases/download/0.3.3/pipeview-0.3.3-i686-unknown-linux-gnu.tar.gz
+	sha256sums_i686 = b377d7f2483616c2f8625048641af7bc3ee40930e7045ef2204a4b6509d35e75
+	source_aarch64 = pipeview-aarch64-0.3.3.tgz::https://github.com/mihaigalos/pipeview/releases/download/0.3.3/pipeview-0.3.3-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 6431963a4cf95fa3616309ab84a4591dbb7b9a972113fcac7a35bc4276c06ab2
+
+pkgname = pipeview-bin

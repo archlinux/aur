@@ -1,0 +1,4 @@
+[pipeview-bin]
+source = "github"
+github = "mihaigalos/pipeview"
+use_latest_release = true
