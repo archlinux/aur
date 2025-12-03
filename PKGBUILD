@@ -1,6 +1,6 @@
 # Maintainer: Frédéric Logier <fredix@nomad.wf>
 pkgname=gibson
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 epoch=
 pkgdesc="A simple markdown go blog"
