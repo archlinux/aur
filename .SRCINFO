@@ -1,6 +1,6 @@
 pkgbase = intel-graphics-compiler-git
 	pkgdesc = Intel Graphics Compiler for OpenCL (git version)
-	pkgver = 2.22.0.r100.g29d2efd56
+	pkgver = 2.24.2.r83.ga56148d46
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/intel/intel-graphics-compiler/
@@ -37,6 +37,6 @@ pkgbase = intel-graphics-compiler-git
 	sha256sums = b47ada280614670a467f80e9f8c67542050983f238f2f4b3fa17682855faf9bf
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = fead474a0cde0cd5b66619780dd3f7b902b3d1ab2296ee27ca8f0cadc4eb67f7
+	sha256sums = d2efb42a4562789a101af66e9731fe75bb89ddc9a916845fcf002fe8d7ceca70
 
 pkgname = intel-graphics-compiler-git

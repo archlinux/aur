@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-graphics-compiler-git
-pkgver=2.22.0.r100.g29d2efd56
+pkgver=2.24.2.r83.ga56148d46
 _llvmmaj=16
 _llvmver="${_llvmmaj}.0.6"
 pkgrel=1
@@ -39,7 +39,7 @@ sha256sums=('SKIP'
             'b47ada280614670a467f80e9f8c67542050983f238f2f4b3fa17682855faf9bf'
             'SKIP'
             'SKIP'
-            'fead474a0cde0cd5b66619780dd3f7b902b3d1ab2296ee27ca8f0cadc4eb67f7')
+            'd2efb42a4562789a101af66e9731fe75bb89ddc9a916845fcf002fe8d7ceca70')
 
 prepare() {
     # rename to prevent SPIRV-LLVM-Translator from being included
@@ -68,7 +68,7 @@ pkgver() {
 }
 
 build() {
-    # Prevent IGC to load LLVM 15+ symbols
+    # Prevent IGC to load LLVM 17+ symbols
     CFLAGS+=' -fno-semantic-interposition'
     CXXFLAGS+=' -fno-semantic-interposition'
     LDFLAGS+=' -Wl,-Bsymbolic'
