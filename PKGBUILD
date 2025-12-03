@@ -2,9 +2,9 @@
 
 pkgbase=nvidia-flip-cpu-git
 pkgname=("$pkgbase")
-pkgdesc="A Tool for Visualizing and Communicating Errors in Rendered Images - CUDA version"
-pkgver="v1.6"
-_versionhash="79675788aa642fbb4732effe2b45b082ff4c4d52"
+pkgdesc="A Tool for Visualizing and Communicating Errors in Rendered Images - CPU version"
+pkgver="v1.7"
+_versionhash="b475eb4bf394ab877c42166c9eb0a84a02cc5b14"
 pkgrel=1
 epoch=1
 url="https://github.com/NVlabs/flip"

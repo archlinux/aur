@@ -1,6 +1,6 @@
 pkgbase = nvidia-flip-cpu-git
-	pkgdesc = A Tool for Visualizing and Communicating Errors in Rendered Images - CUDA version
-	pkgver = v1.6
+	pkgdesc = A Tool for Visualizing and Communicating Errors in Rendered Images - CPU version
+	pkgver = v1.7
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/NVlabs/flip
