@@ -1,6 +1,6 @@
 pkgbase = term39
 	pkgdesc = A modern terminal multiplexer with classic MS-DOS aesthetic, built with Rust. Full-screen interface with window management and complete terminal emulation.
-	pkgver = 0.16.7
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/alejandroqh/term39
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = term39
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = term39-0.16.7.tar.gz::https://github.com/alejandroqh/term39/archive/v0.16.7.tar.gz
-	sha256sums = 3965da0a921b1c90365f2626d2a4a18317b026a9fe6b63b7e91cf62d03aa2f86
+	source = term39-0.17.0.tar.gz::https://github.com/alejandroqh/term39/archive/v0.17.0.tar.gz
+	sha256sums = af8221a50e3c9341579dd13e3714cccaa238947361c28ae74566f2c9b2d4c66d
 
 pkgname = term39
