@@ -1,5 +1,5 @@
 pkgbase = dnst
-	pkgdesc = A DNS administration toolbox including re-implementations of important ldns programs
+	pkgdesc = A DNS administration toolbox
 	pkgver = 0.1.0alpha
 	pkgrel = 1
 	url = https://github.com/NLnetLabs/dnst
@@ -20,3 +20,9 @@ pkgbase = dnst
 	sha256sums = bff3d70ca78bb82a77c01a5dc8c055dfb9974c2500dfe9022cdaf976c12e70ea
 
 pkgname = dnst
+
+pkgname = dnst-ldns
+	pkgdesc = dnst re-implementation of important ldns programs
+	depends = dnst
+	provides = ldns
+	conflicts = ldns
