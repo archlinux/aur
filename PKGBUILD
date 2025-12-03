@@ -16,6 +16,7 @@ _url_github='https://github.com/withoutbg/withoutbg'
 url='https://withoutbg.com/'
 license=('Apache-2.0')
 
+provides=("${_pypi_package}")
 depends=('python' 'python-click' 'python-huggingface-hub' 'python-numpy' 'python-onnxruntime' 'python-pillow' 'python-requests' 'python-tqdm')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 
