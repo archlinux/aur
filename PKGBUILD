@@ -3,10 +3,10 @@
 
 pkgname=tscat
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Prepend a timestamp to each line of STDIN"
 arch=('i686' 'x86_64' 'aarch64')
-url="https://www.gerg.ca/software/tscat/"
+url="https://web.archive.org/web/20180624203631if_/http://www.gerg.ca/software/tscat/"
 makedepends=('gcc' 'make')
 license=('MIT')
 source=(https://web.archive.org/web/20180624203722if_/http://www.gerg.ca/software/tscat/tscat-1.0.tar.gz

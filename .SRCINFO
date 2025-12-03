@@ -1,8 +1,8 @@
 pkgbase = tscat
 	pkgdesc = Prepend a timestamp to each line of STDIN
 	pkgver = 1.0
-	pkgrel = 3
-	url = https://www.gerg.ca/software/tscat/
+	pkgrel = 4
+	url = https://web.archive.org/web/20180624203631if_/http://www.gerg.ca/software/tscat/
 	arch = i686
 	arch = x86_64
 	arch = aarch64
