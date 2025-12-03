@@ -1,5 +1,10 @@
 post_install(){
     echo "To enable luaunbound, add the following to the global section of your 'prosody.cfg.lua':"
-    echo "RunScript 'use\_unbound.lua'"
+    echo 'RunScript "/usr/lib/prosody/net/unbound.lua"'
+    echo "This line replaces the 'RunScript \"use_unbound.lua\"' line recommended"
+    echo "by the package upon install."
+    echo
+    echo "In /usr/lib/prosody/net/unbound.lua, add the line"
+    echo "package.cpath=package.cpath.."/usr/lib/prosody/util/?.so";"
     echo "More config info can be found in /usr/share/doc/luaunbound/README"
 }

@@ -1,5 +1,6 @@
-# Maintainer: fordprefect <fordprefect@dukun.de>
-# Contributor: jhass <me@jhass.eu>
+# Maintainer: whiteman808 <whiteman808 at paraboletancza dot org>
+# Contributor: fordprefect <fordprefect at dukun dot de>
+# Contributor: jhass <me at jhass dot eu>
 pkgname=luaunbound
 pkgver=1.0.0
 epoch=1
