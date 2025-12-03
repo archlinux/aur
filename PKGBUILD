@@ -1,7 +1,7 @@
-pkgname=gab
+pkgname=gabtwo
 pkgver=0.2
 pkgrel=1
-pkgdesc="gab, Get another beer, is a AUR helper inspired by the yet-another-yogurt repo."
+pkgdesc="gab, Get another beer, is a AUR helper inspired by the yet-another-yogurt repo. (this is a retry of the original package gab.)"
 arch=('x86_64')
 license=('GPL v3.0')
 depends=('curl' 'cjson')
