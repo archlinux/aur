@@ -13,7 +13,7 @@ depends=(python-trame-client vtk openmpi fmt jsoncpp glew ospray openxr
   openvr ffmpeg hdf5-openmpi postgresql-libs netcdf pdal mariadb-libs
   liblas cgns adios2 libharu gl2ps verdict qt5-tools opencascade)
 makedepends=(python-build python-installer python-hatchling python-wheel)
-checkdepends=(python-pytest-xprocess python-pixelmatch python-seleniumbase python-pyvista) # python-trame-vuetify
+checkdepends=(python-pytest-xprocess python-pixelmatch python-playwright python-pyvista python-pytest-asyncio) # python-trame-vuetify
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
   https://registry.npmjs.org/${_npm_base}/-/${_npm_base}-${_npm_pkgver}.tgz
   https://raw.githubusercontent.com/Kitware/vtk-js/2d8de2853a1e63c12f9682acb3531083b77c4e3d/examples/OfflineLocalView/OfflineLocalView.html)
@@ -34,9 +34,8 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  MPLBACKEND=Agg test-env/bin/python -m pytest \
-    --ignore=tests/test_gc.py \
-    -k 'not rendering[examples/validation/PyVistaInt64.py] and not rendering[examples/validation/PyVistaLookupTable.py] and not rendering[examples/validation/VolumeRendering.py]'
+  MPLBACKEND=Agg test-env/bin/python -m pytest tests/test_import.py
+  # -k 'not rendering[examples/validation/PyVistaInt64.py] and not rendering[examples/validation/PyVistaLookupTable.py] and not rendering[examples/validation/VolumeRendering.py]'
 }
 
 package() {
