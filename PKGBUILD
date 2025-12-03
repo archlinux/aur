@@ -4,7 +4,7 @@
 
 pkgname=kismet-full-git
 pkgver=2025_11_R0.r12232.20251107.97d2dd89c
-pkgrel=2
+pkgrel=3
 pkgdesc="A sniffer, WIDS, and wardriving tool for Wi-Fi, Bluetooth, Zigbee, RF. Latest git checkout, built with as many features as possible."
 url="https://www.kismetwireless.net/"
 arch=(
