@@ -4,7 +4,7 @@
 
 _name=tslearn
 pkgname=python-${_name,,}
-pkgver=0.6.4
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='A machine learning toolkit dedicated to time-series data'
 arch=('any')
@@ -13,7 +13,7 @@ license=('BSD-2-Clause')
 depends=('python' 'python-numpy' 'python-scipy' 'python-scikit-learn' 'python-numba' 'python-joblib' 'python-tensorflow')
 makedepends=('python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=(9efcd8afe3ef55186f57f4c3ccb45ae353d6f85f7aea2e420032c34a99345705)
+sha256sums=(2598920b60e374ea7d890f2e3b39aa13c7ec77417b7691dcb38ef9ca74545a14)
 makedepends=(python-build python-installer python-wheel)
 
 build() {
