@@ -1,0 +1,21 @@
+pkgbase = randompass-bin
+	pkgdesc = A simple static password generator
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mihaigalos/randompass
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	provides = randompass
+	conflicts = randompass
+	source_x86_64 = randompass-x86_64-1.0.0.tgz::https://github.com/mihaigalos/randompass/releases/download/1.0.0/randompass-1.0.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = bb3fb72c4590ff94685d8b69979f02a89135bd5184587c988d9649198d23da78
+	source_i686 = randompass-i686-1.0.0.tgz::https://github.com/mihaigalos/randompass/releases/download/1.0.0/randompass-1.0.0-i686-unknown-linux-gnu.tar.gz
+	sha256sums_i686 = faeb5a00717c3d079fd463dc78821fceb4f4612e6cb5b951e45383ce16fe1536
+	source_aarch64 = randompass-aarch64-1.0.0.tgz::https://github.com/mihaigalos/randompass/releases/download/1.0.0/randompass-1.0.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 3c0e7fb32dbff1a629efc759b5ae069bebeb937449a66859e95454cc6da7c472
+
+pkgname = randompass-bin

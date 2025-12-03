@@ -1,0 +1,4 @@
+[randompass-bin]
+source = "github"
+github = "mihaigalos/randompass"
+use_latest_release = true
