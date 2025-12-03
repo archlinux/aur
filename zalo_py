@@ -1,6 +1,7 @@
 #!/bin/python
 from pystray import Icon, MenuItem, Menu
 from PIL import Image
+import sys
 import os
 import subprocess
 
@@ -11,11 +12,14 @@ electron22_path = "/usr/bin/electron22"
 app_asar = os.path.join(app_path, "app.asar")
 icon_path = os.path.join(app_path, "icon.png")
 
-# Start the Zalo application
-process = subprocess.Popen([electron22_path, app_asar])
+def start_zalo():
+    return subprocess.Popen([electron22_path, app_asar] + sys.argv[1:])
 
-def option1():
-    os.system(f'{electron22_path} {app_asar}')
+# Start the Zalo application
+process = start_zalo()
+
+def open_app():
+    start_zalo()
 
 def exit_action(icon, item):
     process.kill()
@@ -26,7 +30,7 @@ image = Image.open(icon_path)
 
 # Create the tray menu
 menu = Menu(
-    MenuItem('Mở Zalo', lambda: option1()),
+    MenuItem('Mở Zalo', lambda: open_app()),
     MenuItem('Thoát', exit_action)
 )
 
@@ -35,4 +39,3 @@ icon = Icon("Custom Tray Icon", image, "Zalo", menu)
 
 # Run the icon
 icon.run()
-
