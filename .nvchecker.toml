@@ -1,0 +1,5 @@
+[lx-bin]
+source = "github"
+github = "rasros/lx"
+use_latest_release = true
+prefix = "v"

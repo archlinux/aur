@@ -1,0 +1,16 @@
+pkgbase = lx-bin
+	pkgdesc = A small CLI tool that converts selected files into clean, consistent Markdown-fenced blocks, making it easy to provide precise, repeatable context to LLMs
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/rasros/lx
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = lx
+	conflicts = lx
+	source_x86_64 = lx-x86_64-1.0.0.tgz::https://github.com/rasros/lx/releases/download/v1.0.0/lx_1.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8fbdb469d017a2eefadba9082bc617f64fe710283b431ef23657ad947d67c6f9
+	source_aarch64 = lx-aarch64-1.0.0.tgz::https://github.com/rasros/lx/releases/download/v1.0.0/lx_1.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = be4613150c8ee15e88b90c3ec26558c56cc3591b7c489d578ab8a26cccd5761b
+
+pkgname = lx-bin
