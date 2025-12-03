@@ -1,7 +1,7 @@
 # Maintainer: gucio321
 pkgname=excel2tex
 pkgver=3.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="onvert Excel/LibreOffice Calc table to LaTex compatible tabularx"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/gucio321/excel2tex"
@@ -9,10 +9,6 @@ options=(!lto)
 license=('DWTFPL')
 depends=(
   'libx11'
-)
-optdepends=(
-  'sudo: privilege elevation'
-  'doas: privilege elevation'
 )
 makedepends=('go>=1.24')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gucio321/excel2tex/archive/v${pkgver}.tar.gz")
@@ -32,5 +28,5 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 excel2tex $pkgdir/usr/bin/exel2tex
+  install -Dm755 excel2tex $pkgdir/usr/bin/excel2tex
 }
