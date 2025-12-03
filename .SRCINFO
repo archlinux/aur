@@ -1,6 +1,6 @@
 pkgbase = jot-git
 	pkgdesc = A single-purpose tool for capturing a thought before it disappears
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/bjarneo/omarchy-jot
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = jot-git
 	depends = gjs
 	depends = gtk4
 	depends = libadwaita
-	source = jot-git-1.3.0.tar.gz::https://github.com/bjarneo/omarchy-jot/archive/v1.3.0.tar.gz
-	sha256sums = SKIP
+	source = jot-git-1.3.1.tar.gz::https://github.com/bjarneo/omarchy-jot/archive/v1.3.1.tar.gz
+	sha256sums = 6d78d09976e2547b98eb6f39f8dd00f5f056092764a93e54fe1d0750ee8838f1
 
 pkgname = jot-git
