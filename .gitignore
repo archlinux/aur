@@ -1,9 +1,6 @@
 pkg/
 src/
-<<<<<<< HEAD
 *.AppImage
 *.tar.zst
-=======
 *.tar.xz
 x[lL]ights-*
->>>>>>> 1f0b1d8 (Initial Commit)
