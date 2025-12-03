@@ -5,7 +5,7 @@
 _pkgbase=tosu
 
 pkgname=${_pkgbase}-git
-pkgver=r1408.b326e47
+pkgver=4.15.3.r0.gb326e47
 pkgrel=1
 pkgdesc="Memory reader and PP counters provider for osu! and osu! Lazer - git version"
 arch=('x86_64')
@@ -13,10 +13,10 @@ url="https://github.com/tosuapp/tosu"
 license=('LGPL3')
 groups=()
 depends=()
-makedepends=('git' 'npm' 'pnpm' 'nodejs>=20' 'python')
+makedepends=('git' 'npm' 'pnpm' 'nodejs>=20' 'python' 'gcc')
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
-options=()
+options=("!strip")
 install=notice.install
 source=("${_pkgbase}::git+${url}.git"
         "tosu-bin.sh::https://aur.archlinux.org/cgit/aur.git/plain/tosu-bin.sh?h=tosu"
@@ -27,7 +27,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "${_pkgbase}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    git describe --long --tags | sed 's/^v//;s/_/./;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
