@@ -1,0 +1,3 @@
+[python-langchain-classic]
+source = "pypi"
+pypi = "langchain-classic"
