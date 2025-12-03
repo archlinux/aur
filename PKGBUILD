@@ -1,7 +1,7 @@
 # Maintainer: Benoit Brummer (Trougnouf) <trougnouf@gmail.com>
 pkgname=cfait
 pkgver=0.2.4
-pkgrel=1
+pkgrel=3
 pkgdesc="A powerful, simple, elegant, and lightweight CalDAV tasks / TODO manager (TUI & GUI)"
 arch=('x86_64')
 url="https://codeberg.org/trougnouf/cfait"
