@@ -1,7 +1,7 @@
 # Maintainer: Charlie Wolf <charlie@wolf.is>
 pkgname=claude-code-router
 _full_pkgname="@musistudio/${pkgname}"
-pkgver=1.0.65
+pkgver=1.0.72
 pkgrel=1
 pkgdesc="This is a tool for routing Claude Code requests to different models, and you can customize any request."
 arch=('any')
@@ -10,7 +10,7 @@ license=('LicenseRef-claude-code-router')
 depends=('nodejs' 'claude-code')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$_full_pkgname/-/$pkgname-$pkgver.tgz")
-b2sums=('e5b1c560a3d9d20da1f75eb551001b16e1d784a5d8855357ff99ba442fde163a11153417733db7baf187b3160ce4ca7f1a905bd74473334e1c9912d8e40c5334')
+b2sums=('442c762e4c9c037a24473781d461ca3d6570bc7ad5046d00b9e8fa00c30a8c5d3b510314727eee8ec386ff7b873fd46049fc34bb436bc6670d318ccc06a16cfd')
 noextract=("${pkgname}-${pkgver}.tgz")
 
 package() {
