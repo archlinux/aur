@@ -1,5 +1,5 @@
 pkgname=gab
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="gab, Get another beer, is a AUR helper inspired by the yet-another-yogurt repo."
 arch=('x86_64')
