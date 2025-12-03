@@ -1,3 +1,7 @@
-*.deb
-*.tar*
-LICENSE
+# Ignore everything
+*
+
+# Except these files...
+!.SRCINFO
+!PKGBUILD
+
