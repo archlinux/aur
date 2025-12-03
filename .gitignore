@@ -2,7 +2,10 @@
 !.gitignore
 !.nvchecker.toml
 !.SRCINFO
-!LICENSE
 !PKGBUILD
 !*.desktop
 !*.patch
+!LICENSE
+!LICENSES/
+!LICENSES/*
+!REUSE.toml
