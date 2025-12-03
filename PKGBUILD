@@ -1,6 +1,6 @@
 # Maintainer: Zachary Fogg <me@zfo.gg>
 pkgname=ascii-chat
-pkgver=0.3.13
+pkgver=0.3.14
 pkgrel=1
 pkgdesc="Video chat in your terminal"
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver-full.tar.gz::https://github.com/zfogg/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-full.tar.gz")
-sha256sums=('e3f855af056e314f8451118f71eebb12b3ee1f3c6b2c27a829dad82a5b710ef8')
+sha256sums=('2625dce912125599ee6efbea5778ec8dfba67404ee370fb6aa11ecba983b07e7')
 
 prepare() {
   cd "$pkgname-$pkgver"
