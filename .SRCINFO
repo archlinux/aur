@@ -1,14 +1,14 @@
 pkgbase = solidity-bin
 	pkgdesc = Contract-Oriented Programming Language
-	pkgver = 0.8.30
+	pkgver = 0.8.31
 	pkgrel = 1
-	url = https://github.com/ethereum/solidity
+	url = https://github.com/argotorg/solidity
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = glibc
 	provides = solidity
 	conflicts = solidity
-	source = solidity-0.8.30.bin::https://github.com/ethereum/solidity/releases/download/v0.8.30/solc-static-linux
-	sha512sums = aba73a6c10d153575a541f56aac17d2c4a28431068fab788b055e734ddb1690fc5577c19b846be84fedb4add87d7baf6cfb9bbad838f4a4f6539a9c5e6a73089
+	source = solidity-0.8.31.bin::https://github.com/argotorg/solidity/releases/download/v0.8.31/solc-static-linux
+	sha512sums = 509aea4497e039ef75b97a99941fe7d6581108bd8a872a029559cef9bb559272537ab392c52bb01fbc6aa944e588afb9a008bf41a69b4922e30af25f9eb0f8a1
 
 pkgname = solidity-bin
