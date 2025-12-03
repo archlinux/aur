@@ -1,5 +1,5 @@
-pkgbase = gab
-	pkgdesc = gab, Get another beer, is a AUR helper inspired by the yet-another-yogurt repo.
+pkgbase = gabtwo
+	pkgdesc = gab, Get another beer, is a AUR helper inspired by the yet-another-yogurt repo. (this is a retry of the original package gab.)
 	pkgver = 0.2
 	pkgrel = 1
 	arch = x86_64
@@ -10,4 +10,4 @@ pkgbase = gab
 	source = gab.c
 	md5sums = SKIP
 
-pkgname = gab
+pkgname = gabtwo
