@@ -1,0 +1,25 @@
+pkgbase = dnst-git
+	pkgdesc = A DNS administration toolbox including re-implementations of important ldns programs
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/NLnetLabs/dnst
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = cargo
+	makedepends = python-toml
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-sphinx-tabs
+	makedepends = python-sphinx-copybutton
+	makedepends = python-sphinx-notfound-page
+	depends = openssl
+	depends = glibc
+	depends = gcc-libs
+	provides = dnst
+	conflicts = dnst
+	options = !lto
+	source = git+https://github.com/NLnetLabs/dnst.git
+	sha256sums = SKIP
+
+pkgname = dnst-git
