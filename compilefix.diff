@@ -1,0 +1,20 @@
+diff --git latencytop-0.5/fsync.c latencytop-0.5.patched/fsync.c
+index 1706571..aec6202 100644
+--- latencytop-0.5/fsync.c
++++ latencytop-0.5.patched/fsync.c
+@@ -32 +32 @@
+-#include <time.h>
++#include <sys/time.h>
+@@ -54 +54 @@ static GList *fsync_data;
+-static chain_file(struct fsync_process *proc, char *filename)
++static void chain_file(struct fsync_process *proc, char *filename)
+@@ -78 +78 @@ static chain_file(struct fsync_process *proc, char *filename)
+-static report_file(char *process, char *file)
++static void report_file(char *process, char *file)
+diff --git latencytop-0.5/gtk_display.c latencytop-0.5.patched/gtk_display.c
+index 14d79f8..057d349 100644
+--- latencytop-0.5/gtk_display.c
++++ latencytop-0.5.patched/gtk_display.c
+@@ -597 +597 @@ static void create_targets_window(void)
+-static load_icons(void)
++static void load_icons(void)
