@@ -1,7 +1,7 @@
 # Maintainer: Manuel Wiesinger <manuel {you know what belongs here} unikraft {and here} io>
 
 pkgname=kraftkit
-pkgver=0.12.3
+pkgver=0.12.4
 pkgrel=1
 pkgdesc='Build and use highly customized and ultra-lightweight unikernels'
 arch=('x86_64')
@@ -15,10 +15,12 @@ depends=('bash' 'glibc')
 makedepends=('git' 'go')
 #checkdepens=('')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
-b2sums=('09fe60a4ac87e5e4189f46a1fc2e9387687fab259a396ebf9611bace6ce275ac943f822f01f941956fd5b887ad3663e1b04d4f7541a0cb25440633ce10e3c826')
+b2sums=('440ce880b60104d45c9e75b4c48d3098d9ccd07e0d8909f8964f2ac7bb4aaa5ffbbcf9b14f96d77400669cf9067b970c7de15f8e467fc48d477656f1c100e70b')
 
 prepare() {
     cd $srcdir/$pkgname
+
+    git clean -dxf
 
     # TODO: Double check with upstream
     # Check SSH signature
@@ -44,10 +46,10 @@ build() {
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
     # Build kraft
-    go build -tags "containers_image_storage_stub,containers_image_openpgp,netgo,osusergo" ./cmd/kraft/main.go
+    go build -v -tags "containers_image_storage_stub,containers_image_openpgp,netgo,osusergo" ./cmd/kraft/main.go
 
     # Build man pages
-    make man
+    go run -tags "containers_image_storage_stub,containers_image_openpgp,osusergo,netgo" ./tools/genman --uncompressed generate ./docs/man/
 }
 
 # TODO: Figure out how to idiomatically clean up buildkit containers
