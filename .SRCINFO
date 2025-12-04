@@ -1,33 +1,26 @@
 pkgbase = ghidra-git
 	pkgdesc = Software reverse engineering framework (git)
-	pkgver = 11.4.2.r872.d4c463fa9a
-	pkgrel = 1
+	pkgver = 11.4.3.r1035.ccfea7e4c0
+	pkgrel = 2
 	url = https://www.nsa.gov/ghidra
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
-	makedepends = java-environment=21
 	makedepends = git
 	makedepends = gradle
-	makedepends = unzip
 	makedepends = python-pip
 	depends = bash
-	depends = java-environment>=21
+	depends = java-environment=21
 	depends = python
-	depends = polkit
-	optdepends = python-protobuf: GDB integration
+	optdepends = ghidra-desktop: Desktop Entry
+	optdepends = python-protobuf: Debugger integration
+	optdepends = gdb: GDB Debugger integration
+	optdepends = lldb: LLDB Debugger integration
+	optdepends = pam: GhidraServer support
 	provides = ghidra
 	conflicts = ghidra
-	conflicts = ghidra-dev
-	conflicts = ghidra-desktop
 	options = !strip
 	source = git+https://github.com/NationalSecurityAgency/ghidra
-	source = ghidra.desktop
-	source = ghidra-root.desktop
-	source = ghidra.policy
 	sha512sums = SKIP
-	sha512sums = a85b8b3276e2ff4ed8bda6470c15d02711ebaa48463c775cd2a36549fad738e9fe073dab80f8c57646490ffc959cdc27e9d25b1dc2a5810b0ddb249b5dc99a9b
-	sha512sums = c717029cf31860e27b5563c3ff4b2740d4b1997bc50481214e24c38f12d9acbfa9ca2cbfe594d43071fbf8420ac8f022119c2c23ddef0c717d96860e22eb35c3
-	sha512sums = 0a35f58b1820ac65ce37d09b0a6904ab7018c773c73ecd29bcfda37cbd27f34af868585084b5cd408b1066b7956df043cb1573a1e3d890e173be737d2de51401
 
 pkgname = ghidra-git

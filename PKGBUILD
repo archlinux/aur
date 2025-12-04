@@ -5,46 +5,46 @@
 # Contributor: Danny Bautista <pyrolagus@gmail.com>
 # Contributor: nullableVoidPtr <nullableVoidPtr _ gmail _ com>
 
+
+# TODO: remove this
+#-- Checklist --#
+# - include upgrade instructions disclaimer on upgrade ?? (cf. https://github.com/NationalSecurityAgency/ghidra/blob/master/GhidraDocs/GettingStarted.md#general-upgrade-instructions)
+# - idem for server
+
 pkgname=ghidra-git
-pkgver=11.4.2.r872.d4c463fa9a
-pkgrel=1
+pkgver=11.4.3.r1035.ccfea7e4c0
+pkgrel=2
 pkgdesc='Software reverse engineering framework (git)'
 arch=('x86_64' 'aarch64') # Not sure aarch64 is correct here. Please confirm it to me in the comments if you can test that!
-options=(!strip)
 url='https://www.nsa.gov/ghidra'
 license=('Apache-2.0')
 provides=('ghidra')
-conflicts=(
-  'ghidra'
-  'ghidra-desktop'
-)
 depends=(
   'bash'
-  'java-environment>=21'
+  'java-environment=21'
   'python'
-  'polkit'
 )
 makedepends=(
-  'java-environment=21'
   'git'
   'gradle'
-  'unzip'
   'python-pip'
 )
 optdepends=(
-  'python-protobuf: GDB integration'
+  'ghidra-desktop: Desktop Entry'
+  'python-protobuf: Debugger integration'
+  'gdb: GDB Debugger integration'
+  'lldb: LLDB Debugger integration'
+  'pam: GhidraServer support' # should already be there as it is a dependency of the base package through systemd
+  # 'python-psutil: GDB integration'
 )
+conflicts=('ghidra')
+
+options=('!strip')
 source=(
   "git+https://github.com/NationalSecurityAgency/ghidra"
-  'ghidra.desktop'
-  'ghidra-root.desktop'
-  'ghidra.policy'
 )
 sha512sums=(
   'SKIP'
-  'a85b8b3276e2ff4ed8bda6470c15d02711ebaa48463c775cd2a36549fad738e9fe073dab80f8c57646490ffc959cdc27e9d25b1dc2a5810b0ddb249b5dc99a9b'
-  'c717029cf31860e27b5563c3ff4b2740d4b1997bc50481214e24c38f12d9acbfa9ca2cbfe594d43071fbf8420ac8f022119c2c23ddef0c717d96860e22eb35c3'
-  '0a35f58b1820ac65ce37d09b0a6904ab7018c773c73ecd29bcfda37cbd27f34af868585084b5cd408b1066b7956df043cb1573a1e3d890e173be737d2de51401'
 )
 _pkgname="${pkgname/-git/}"
 _stop='\e[m'
@@ -65,14 +65,11 @@ prepare() {
   # Check Java version (thanks @ignapk)
   JDK_VERSION=$(java -version 2>&1)
   if [[ ! $JDK_VERSION =~ 2[1-9]\.0 ]]; then
-    echo "FAILURE: You seem to have jdk21 or above installed correctly but your system defaults to another java version. To enable it please type: sudo archlinux-java set java-17-openjdk"
+    echo "FAILURE: You seem to have jdk21 or above installed correctly but your system defaults to another java version. To enable it please type: sudo archlinux-java set java-21-openjdk"
     exit 1
   fi
 
-  # DEPRECATED PATCH - GP-793 corrected missing IP info - https://github.com/NationalSecurityAgency/ghidra/commit/70675fce99a4c6e6e650729e5dda6ccbbbbbd40d
-#  echo -e "${_prefix}[PATCH] - GP-793 corrected missing IP info (https://github.com/NationalSecurityAgency/ghidra/commit/70675fce99a4c6e6e650729e5dda6ccbbbbbd40d)"
-#  patch --no-backup-if-mismatch --forward --strip=2 --input="${srcdir}/0000-GP-793-corrected-missing-IP-info.patch"
-
+  # NOTE: this already fetches the correct version for all the build dependencies, including ghidra-data and python ones, but ghidra wants to use system python so python-protobuf is still needed for debugger support
   echo -e "${_prefix}Setting up the build dependencies"
   gradle --parallel --init-script gradle/support/fetchDependencies.gradle
 
@@ -110,22 +107,15 @@ package() {
   echo -e "${_prefix}Extracting the zip archive"
   _appver=$(grep -oP '(?<=^application.version=).*$' Ghidra/application.properties)
   _relname=$(grep -oP '(?<=^application.release.name=).*$' Ghidra/application.properties)
-  unzip -u build/dist/ghidra_"${_appver}_${_relname}_$(date +"%Y%m%d")"_linux_*.zip -d "$pkgdir"/opt
+  bsdtar xf build/dist/ghidra_"${_appver}_${_relname}_$(date +"%Y%m%d")"_linux_*.zip -C "$pkgdir"/opt
 
   echo -e "${_prefix}Setting up a versionless directory name"
   mv "$pkgdir"/opt/ghidra{_"${_appver}_${_relname}",}
 
   echo -e "${_prefix}Setting up /usr/bin launchers"
   ln -s /opt/ghidra/ghidraRun "$pkgdir"/usr/bin/ghidra
+  ln -s /opt/ghidra/support/pyghidraRun "${pkgdir}"/usr/bin/pyghidra
   ln -s /opt/ghidra/support/analyzeHeadless "$pkgdir"/usr/bin/ghidra-headless
-
-  echo -e "${_prefix}Setting up desktop shortcuts"
-  install -Dm 644 ../ghidra.desktop -t "$pkgdir"/usr/share/applications
-  install -Dm 644 ../ghidra-root.desktop -t "$pkgdir"/usr/share/applications
-
-  echo -e "${_prefix}Setting up desktop icon"
-  install -Dm 644 Ghidra/Framework/Gui/src/main/resources/images/GhidraIcon64.png "$pkgdir"/usr/share/pixmaps/ghidra.png
-
-  echo -e "${_prefix}Setting up policy file for the \"run as root\" desktop shortcut"
-  install -Dm 644 ../ghidra.policy -t "$pkgdir"/usr/share/polkit-1/actions
 }
+
+# vim: ts=2 sw=2 et:
