@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=FENTLAUNCHER
+Comment=Minecraft Launcher for FENTCRAFT
+Exec=/opt/fentlauncher/FENTLAUNCHER
+Icon=fentlauncher
+Categories=Games;
+StartupWMClass=FENTLAUNCHER
+Terminal=false
+StartupNotify=true

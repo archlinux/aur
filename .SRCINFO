@@ -1,0 +1,15 @@
+pkgbase = fentlauncher
+	pkgdesc = Minecraft Launcher for FENTCRAFT
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://fentcraft.fun
+	arch = x86_64
+	license = custom
+	depends = icu
+	depends = krb5
+	depends = zlib
+	depends = openssl
+	options = !strip
+	options = !debug
+
+pkgname = fentlauncher
