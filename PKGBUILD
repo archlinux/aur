@@ -1,8 +1,8 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="certbot-dns-porkbun"
-pkgver=0.9.1
-pkgrel=2
+pkgver=0.11.0
+pkgrel=1
 pkgdesc="Plugin for certbot to obtain certificates using a DNS TXT record for Porkbun domains"
 arch=("any")
 license=("MIT")
@@ -14,7 +14,7 @@ depends=("certbot>=1.18.0"
          "python-tldextract")
 makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
 source=("https://github.com/infinityofspace/certbot_dns_porkbun/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('a193d5f7f924500386761844256cc7d9c890961bb78c9f67a76de832375afe0f33ea2e741a22aa141f8774d27977c2337ec4304e3bf037f99c6e34bf31639035')
+b2sums=('7bc3f96d059d5cbb6433346f7b641b34e1cf5b3b855edba806cc320d9dda8dc4b8c042308ada0a7d5f3cf6a0c6c713f7f8eaa0829180188162ee3b8cefb8444b')
 
 build(){
  cd "certbot_dns_porkbun-$pkgver"
