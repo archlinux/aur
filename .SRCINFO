@@ -1,7 +1,7 @@
 pkgbase = codex-acp
 	pkgdesc = ACP adapter for OpenAI Codex
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zed-industries/codex-acp
 	arch = x86_64
 	arch = aarch64
