@@ -1,0 +1,16 @@
+pkgbase = halbMeta
+	pkgdesc = A metapackage for my personal software
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/halbTeufel/halbMeta
+	arch = any
+	license = MIT
+	depends = librewolf-bin
+	depends = git
+	depends = neovim
+	depends = htop
+	depends = vlc
+	depends = vscodium-bin
+	optdepends = supertuxkart
+
+pkgname = halbMeta
