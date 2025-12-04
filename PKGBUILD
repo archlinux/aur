@@ -2,7 +2,7 @@
 
 _name=kraftkit
 pkgname=$_name-git
-pkgver=v0.12.3.r139.gbe63531f.0.gbe63531
+pkgver=v0.12.4.r0.gef72e31
 pkgrel=1
 pkgdesc='Build and use highly customized and ultra-lightweight unikernels'
 arch=('x86_64')
@@ -43,7 +43,7 @@ build() {
     go build -tags "containers_image_storage_stub,containers_image_openpgp,netgo,osusergo" ./cmd/kraft/main.go
 
     # Build man pages
-    make man
+    go run -tags "containers_image_storage_stub,containers_image_openpgp,osusergo,netgo" ./tools/genman --uncompressed generate ./docs/man/
 }
 
 # TODO: Figure out how to idiomatically clean up buildkit containers

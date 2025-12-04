@@ -1,6 +1,6 @@
 pkgbase = kraftkit-git
 	pkgdesc = Build and use highly customized and ultra-lightweight unikernels
-	pkgver = v0.12.3.r139.gbe63531f.0.gbe63531
+	pkgver = v0.12.4.r0.gef72e31
 	pkgrel = 1
 	url = https://unikraft.org/docs/cli
 	arch = x86_64
