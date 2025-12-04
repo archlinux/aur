@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simpleshell-git
 _pkgname=SimpleShell
-pkgver=0.1.13.r0.g469ccf4
+pkgver=0.2.4.r0.g273c45f
 _electronversion=38
 _nodeversion=22
 pkgrel=1
