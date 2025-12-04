@@ -2,7 +2,7 @@
 
 pkgname=bibiman
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A TUI for fast and simple interacting with your BibLaTeX database.'
 url='https://codeberg.org/lukeflo/bibiman'
 license=('GPL-3.0-or-later')
@@ -36,4 +36,7 @@ check() {
 package() {
     cd $pkgname
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+
+    install -Dm644 "man/bibiman.1" "$pkgdir/usr/share/man/man1/bibiman.1"
+    install -Dm644 "man/bibiman.toml.5" "$pkgdir/usr/share/man/man5/bibiman.toml.5"
 }

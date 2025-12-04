@@ -1,7 +1,7 @@
 pkgbase = bibiman
 	pkgdesc = A TUI for fast and simple interacting with your BibLaTeX database.
 	pkgver = 0.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/lukeflo/bibiman
 	arch = x86_64
 	license = GPL-3.0-or-later
