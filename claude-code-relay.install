@@ -2,6 +2,10 @@ post_install() {
     systemd-sysusers cc-relay-server.conf
     systemd-tmpfiles --create cc-relay-server.conf
 
+    # Set config file permissions so cc-relay user can read it
+    chown root:cc-relay /etc/cc-relay-server/config.toml
+    chmod 640 /etc/cc-relay-server/config.toml
+
     echo "==> Claude Code Relay has been installed."
     echo ""
     echo "    1. Edit /etc/cc-relay-server/config.toml with your credentials"
@@ -12,5 +16,6 @@ post_install() {
 }
 
 post_upgrade() {
-    post_install
+    systemd-sysusers cc-relay-server.conf
+    systemd-tmpfiles --create cc-relay-server.conf
 }

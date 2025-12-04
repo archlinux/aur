@@ -50,10 +50,34 @@ package() {
 
     install -Dm755 "target/release/cc-relay-server" "$pkgdir/usr/bin/cc-relay-server"
 
-    install -Dm640 "$srcdir/config.toml" "$pkgdir/etc/cc-relay-server/config.toml"
+    install -Dm644 "$srcdir/config.toml" "$pkgdir/etc/cc-relay-server/config.toml"
     install -Dm644 "config.example.toml" "$pkgdir/usr/share/doc/$pkgname/config.example.toml"
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    # MIT License (inline since not in tarball)
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/licenses/$pkgname/LICENSE" <<EOF
+MIT License
+
+Copyright (c) 2024 wakaka6
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+EOF
 
     install -Dm644 "$srcdir/cc-relay-server.service" "$pkgdir/usr/lib/systemd/system/cc-relay-server.service"
     install -Dm644 "$srcdir/cc-relay-server.sysusers" "$pkgdir/usr/lib/sysusers.d/cc-relay-server.conf"
