@@ -1,14 +1,14 @@
 pkgbase = dooit
 	pkgdesc = A TUI Todo Manager
 	pkgver = 3.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dooit-org/dooit
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-poetry-core>=1.0.0
+	makedepends = python-hatchling
 	depends = python>=3.9
 	depends = python-pyperclip>=1.9.0
 	depends = python-yaml>=6.0.2

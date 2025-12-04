@@ -3,7 +3,7 @@
 
 pkgname=dooit
 pkgver=3.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI Todo Manager"
 url="https://github.com/dooit-org/dooit"
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=(
     'python-build'
     'python-installer'
     'python-wheel'
-    'python-poetry-core>=1.0.0'
+    'python-hatchling'
 )
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
 sha256sums=('a14dea1a297be88dd92735023c630ee61f62ce31a89cb951b0bcad519ad586b6')
