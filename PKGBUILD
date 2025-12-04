@@ -1,7 +1,7 @@
 # Maintainer: CoutCin <cout.cin.xw@gmail.com>
 pkgname=cherry-studio-git-c
 pkgver=1.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Cherry Studio支持多服务商集成的AI对话客户端"
 arch=('x86_64')
 url="https://cherry-ai.com/"
@@ -22,7 +22,7 @@ package() {
   install -Dm755 "$pkgname-$pkgver.AppImage" "$pkgdir/opt/Cherry-Studio/Cherry-Studio.AppImage"
 
   ./$pkgname-$pkgver.AppImage --appimage-extract
-  install -Dm644 "$srcdir/squashfs-root/usr/share/icons/hicolor/1024x1024/apps/Cherry Studio.png" "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/Cherry-Studio.png"
+  install -Dm644 "$srcdir/squashfs-root/usr/share/icons/hicolor/1024x1024/apps/Cherry Studio.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/Cherry-Studio.png"
   rm -rf squashfs-root
 
   # 创建启动器链接（可选）
