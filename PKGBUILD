@@ -2,7 +2,7 @@
 
 pkgname=pragtical-git
 _pkgname=pragtical
-pkgver=3.7.1.1762916552
+pkgver=3.7.1.1764884612
 pkgrel=1
 pkgdesc='The practical and pragmatic code editor.'
 arch=('x86_64')
@@ -28,7 +28,7 @@ pkgver() {
 build() {
   cd "${_pkgname}"
   arch-meson --wrap-mode default --buildtype release \
-    -Db_lto=true -Duse_system_lua=true \
+    -Db_lto=true --force-fallback-for=sdl3_image -Duse_system_lua=true \
     build
   meson compile -C build
 }
