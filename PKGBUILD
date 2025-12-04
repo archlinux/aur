@@ -1,6 +1,6 @@
 # Maintainer: Andrey Vazhenin
 pkgname=windscribe-no-systemd
-pkgver=2.14.12
+pkgver=2.18.8
 pkgrel=1
 pkgdesc="Windscribe GUI tool for Linux"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('windscribe')
 conflicts=('windscribe-cli' 'windscribe')
 options=('!strip')
 install=windscribe-no-systemd.install
-source=("https://deploy.totallyacdn.com/desktop-apps/${pkgver}/windscribe_${pkgver}_x86_64.pkg.tar.zst")
+source=("https://deploy.totallyacdn.com/desktop-apps/${pkgver}/windscribe_${pkgver}_amd64.pkg.tar.zst")
 sha1sums=('e04d96b77362917c3fa99ca50941698045e6c99c')
 
 package() {
