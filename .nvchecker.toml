@@ -1,0 +1,5 @@
+[amber-search-bin]
+source = "github"
+github = "dalance/amber"
+use_latest_release = true
+prefix = "v"
