@@ -3,7 +3,7 @@
 pkgname=prefixer
 pkgdesc="Modern Proton Prefix management tool"
 
-pkgver=1.2.5
+pkgver=1.2.6
 pkgrel=1
 
 arch=('any')
@@ -15,7 +15,7 @@ depends=('python>3.13' 'python-vdf' 'python-json5' 'python-requests' 'python-cli
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wojtmic/prefixer/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('af6e86be273a620b6e7e2ba0d7e3d95ec0f71d821db79722f1a0d4fb77bac859')
+sha256sums=('7d622a68c8d7b24bc6d7febd4ab3179b6d8d7fd3b46838153b93583ce3f5aa36')
 
 build() {
   cd "$srcdir/prefixer-${pkgver}"
