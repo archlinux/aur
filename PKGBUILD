@@ -1,8 +1,9 @@
-# Maintainer: David P. <megver83@parabola.nu>
+# Maintainer: whiteman808 <whiteman808 at paraboletancza dot org>
+# Contributor: David P. <megver83 at parabola dot nu>
 
 _target=sh-elf
 pkgname=$_target-newlib
-pkgver=4.1.0
+pkgver=4.5.0.20241231
 pkgrel=1
 _upstream_ver=$pkgver
 pkgdesc='A C standard library implementation intended for use on embedded systems (SuperH bare metal)'
@@ -12,7 +13,7 @@ license=(BSD)
 makedepends=($_target-gcc)
 options=(!emptydirs !strip)
 source=(https://sourceware.org/pub/newlib/newlib-$_upstream_ver.tar.gz)
-sha256sums=('f296e372f51324224d387cc116dc37a6bd397198756746f93a2b02e9a5d40154')
+sha256sums=('33f12605e0054965996c25c1382b3e463b0af91799001f5bb8c0630f2ec8c852')
 
 build() {
   mkdir newlib-build
