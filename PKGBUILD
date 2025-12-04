@@ -8,10 +8,12 @@
 : ${_install_path:=usr/share}
 : ${_electron_version=38}
 
+: ${_commit:=5c03c594ab02e6dce671534a0877655565fa52de}
+
 _pkgname="logseq-desktop"
 pkgname="$_pkgname"
 pkgver=0.10.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Privacy-first, open-source platform for knowledge sharing and management"
 url="https://github.com/logseq/logseq"
 license=('AGPL-3.0-or-later')
@@ -29,10 +31,10 @@ makedepends=(
   'python-setuptools'
 )
 
-_pkgsrc="logseq-${pkgver}"
+_pkgsrc="logseq-$_commit"
 _pkgext="tar.gz"
-source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/${pkgver}.$_pkgext")
-sha256sums=('06089c37e944f90c499977ebfd6c71b8aae2a183186bdd3f6416a55d14925399')
+source=("logseq-$pkgver-${_commit::7}.$_pkgext"::"$url/archive/$_commit.$_pkgext")
+sha256sums=('61f4d08cc9346962380878e93545c58625f73e193572e2a85461989a955b5980')
 
 _nvm_env() {
   # avoid cluttering user home, while allowing data to be cached
@@ -73,9 +75,9 @@ build() (
   # build
   yarn cljs:release
 
-  # package javascript files to an executable
+  # package javascript files
   cd "static"
-  npm_config_build_from_source=true yarn install --force
+  yarn install --force
   yarn electron-forge package
 )
 
