@@ -3,11 +3,11 @@
 pkgname=python-pillow-avif-plugin
 _pkgname=pillow-avif-plugin
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A pillow plugin that adds avif support via libavif"
 arch=('x86_64')
 url="https://github.com/fdintino/pillow-avif-plugin"
-license=('MIT')
+license=('BSD-2-Clause')
 depends=(
   'python'
   'python-pillow'

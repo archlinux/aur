@@ -1,10 +1,10 @@
 pkgbase = python-pillow-avif-plugin
 	pkgdesc = A pillow plugin that adds avif support via libavif
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fdintino/pillow-avif-plugin
 	arch = x86_64
-	license = MIT
+	license = BSD-2-Clause
 	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
