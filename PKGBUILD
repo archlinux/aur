@@ -8,24 +8,21 @@ url="https://fentcraft.fun"
 license=('custom')
 depends=('icu' 'krb5' 'zlib' 'openssl')
 options=('!strip' '!debug')
+source=("https://github.com/xxanqw/fentlauncher-pkg/releases/download/v${pkgver}/FentLauncher-Linux-x64.tar.gz"
+        "fentlauncher.desktop"
+        "https://github.com/xxanqw/fentlauncher-pkg/releases/download/v${pkgver}/icon.png")
+sha256sums=('036c3e9523e33b596277b9a7ee1cdaf1bb255b10a2832ab8a74b5a7b2a72c93f'
+            '520dffc0682a23b0446c3ddfd57afca33e458623ca7ac4f8440643b8e8e3acbb'
+            'ab126f045e6fc1d87198571d311a19487a76160fd4c1a2b3e1df6dc503daec5e')
 
 package() {
-    # $startdir refers to the directory where PKGBUILD is located (scripts/)
-    local publish_dir="$startdir/../bin/Release/net9.0/linux-x64/publish"
-    
-    msg2 "Installing binaries from $publish_dir..."
-    
     install -d "$pkgdir/opt/fentlauncher"
-    
-    if [ -d "$publish_dir" ]; then
-        cp -r "$publish_dir/"* "$pkgdir/opt/fentlauncher/"
-    else
-        error "Publish directory not found: $publish_dir"
-        return 1
-    fi
+    cp -r "$srcdir/"* "$pkgdir/opt/fentlauncher/"
+    # Clean up non-app files if any were copied (like the desktop file or icon if they are in srcdir root)
+    rm -f "$pkgdir/opt/fentlauncher/fentlauncher.desktop" "$pkgdir/opt/fentlauncher/icon.png"
     
     chmod 755 "$pkgdir/opt/fentlauncher/FENTLAUNCHER"
 
-    install -Dm644 "$startdir/fentlauncher.desktop" "$pkgdir/usr/share/applications/fentlauncher.desktop"
-    install -Dm644 "$startdir/../Assets/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/fentlauncher.png"
+    install -Dm644 "fentlauncher.desktop" "$pkgdir/usr/share/applications/fentlauncher.desktop"
+    install -Dm644 "icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/fentlauncher.png"
 }
