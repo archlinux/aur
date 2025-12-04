@@ -5,7 +5,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=mapserver
-pkgver=8.4.1
+pkgver=8.6.0
 pkgrel=1
 pkgdesc="Platform for publishing spatial data and interactive mapping applications to the web"
 arch=(i686 x86_64)
@@ -38,7 +38,7 @@ depends=(
 makedepends=(cmake swig)
 provides=(python-mapserver)
 source=("http://download.osgeo.org/mapserver/mapserver-${pkgver}.tar.gz")
-md5sums=('45f933ed9fd521e80018cd4bf25a3f4e')
+md5sums=('e6f15c414e7ada32b4a17fa9da12fd7b')
 
 build() {
   cd "${pkgname}-${pkgver}"
