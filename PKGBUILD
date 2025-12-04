@@ -3,7 +3,7 @@
 _pkgauthor=unkn0wn-root
 _pkgname=resterm
 pkgname=${_pkgname}-bin
-pkgver=0.9.0
+pkgver=0.9.1
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc='Terminal REST client for .http/.rest files with HTTP, GraphQL and gRPC support'
@@ -24,8 +24,8 @@ source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_p
 
 sha256sums=('69bc8d0e826b5bb133e6ff78837f6aa210020479c0202068eaca6ae8ee988418'
             'c9eba087c97e8c336c3f514b38d2ecfe66d3535b80b0a269a5314f2310c36cba')
-sha256sums_x86_64=('f78cb103069619f3de27b9d773da3692662cdba8e8207b7b6769cd8b5315207a')
-sha256sums_aarch64=('fda9befada74e51c7f4380d02aa5064e1513501f9006367fe56a3bd2d6195c7b')
+sha256sums_x86_64=('734c4dda5ede614558664f1a5b0b29d8329a7e37b45c5b52704ff3ce40f24ae9')
+sha256sums_aarch64=('e9499cd97e887d31ebc19ed7a78c32cc165ccdc56c0d74ac77b88a44c8e24b48')
 
 package() {
     cd "${srcdir}" || exit 1
