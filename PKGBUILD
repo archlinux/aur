@@ -8,7 +8,7 @@
 _target=xtensa-elf
 pkgname=$_target-binutils
 pkgver=2.45.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the Xtensa target'
 arch=('x86_64' 'i686' 'armv7h')
 url="https://www.gnu.org/software/binutils/"
@@ -62,6 +62,7 @@ package() {
 
   # Remove file conflicting with host binutils and manpages for MS Windows tools
   rm "$pkgdir"/usr/share/man/man1/$_target-{dlltool,windres,windmc}*
+  rm "$pkgdir"/usr/lib/bfd-plugins/libdep.so
 
   # Remove info documents that conflict with host version
   rm -r "$pkgdir"/usr/share/info

@@ -1,7 +1,7 @@
 pkgbase = xtensa-elf-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files for the Xtensa target
 	pkgver = 2.45.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/binutils/
 	arch = x86_64
 	arch = i686
