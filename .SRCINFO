@@ -1,7 +1,7 @@
 pkgbase = box64
 	pkgdesc = Linux Userspace x86_64 Emulator with a twist
 	pkgver = 0.3.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ptitSeb/box64
 	install = box64.install
 	arch = x86_64
