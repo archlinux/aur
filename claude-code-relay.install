@@ -1,0 +1,16 @@
+post_install() {
+    systemd-sysusers cc-relay-server.conf
+    systemd-tmpfiles --create cc-relay-server.conf
+
+    echo "==> Claude Code Relay has been installed."
+    echo ""
+    echo "    1. Edit /etc/cc-relay-server/config.toml with your credentials"
+    echo "    2. Start the service: systemctl start cc-relay-server"
+    echo "    3. Enable on boot: systemctl enable cc-relay-server"
+    echo ""
+    echo "    Logs: journalctl -u cc-relay-server -f"
+}
+
+post_upgrade() {
+    post_install
+}

@@ -1,0 +1,35 @@
+# Claude Relay Service Configuration (System Install)
+# Edit this file with your actual credentials
+
+[server]
+host = "127.0.0.1"
+port = 3000
+database_path = "/var/lib/cc-relay/relay.db"
+log_level = "info"
+
+api_keys = [
+    # "your-api-key-1",
+]
+
+[session]
+sticky_ttl_seconds = 3600
+renewal_threshold_seconds = 300
+unavailable_cooldown_seconds = 3600
+
+# Add your accounts below. Examples:
+#
+# [[accounts]]
+# type = "claude-api"
+# id = "claude-1"
+# name = "Claude API"
+# priority = 100
+# enabled = true
+# api_key = "sk-ant-api03-xxxx"
+#
+# [[accounts]]
+# type = "claude-oauth"
+# id = "claude-oauth-1"
+# name = "Claude OAuth"
+# priority = 100
+# enabled = true
+# refresh_token = "your-refresh-token"
