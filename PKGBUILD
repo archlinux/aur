@@ -3,9 +3,9 @@
 
 _pkgname="candy"
 pkgname="${_pkgname}-bin"
-pkgver=6.1.2
+pkgver=6.1.4
 pkgrel=1
-pkgdesc="A simple networking tool"
+pkgdesc="A tool for creating and managing a virtual network implemented in C++"
 arch=('aarch64' 'armv7h' 'loong64' 'riscv64' 'x86_64')
 url="https://github.com/lanthora/candy"
 license=('MIT')
@@ -22,11 +22,11 @@ source_riscv64=("${_pkgsrc}-riscv64.tar.gz::${url}/releases/download/v${pkgver}/
 source_x86_64=("${_pkgsrc}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc//-/_}+linux_x86_64.tar.gz")
 sha256sums=('80e9eace4c80dc740e9d17d64ce2cc5f9b8ca41b057bfe8c2c31e849f8f7aeb5'
             '7abc3e1f887be8cf25e77d95486a22a7b6d62f368e864785d995138db7220dcf')
-sha256sums_aarch64=('184ea32d44adc93869de3e0d9812180485ec3d3b9589613afe7e83ffd49fc9b5')
-sha256sums_armv7h=('0281d5f7d1eb32d0770db63fca2a0f5e4d8822542a4afaaa0a1409d5e566bd5b')
-sha256sums_loong64=('3b0caeb6430776c0cbca6ced950891300ce26290bc26dfa627b138074639ae77')
-sha256sums_riscv64=('e8f00fe74e7f2ca41f1a53c8e603d840637d215caf8045d083688a542b175d83')
-sha256sums_x86_64=('c2d3d26ee475799085f336c2588c64018588d6a238cc5077903d9cba062f1a75')
+sha256sums_aarch64=('4f8add46be1318a7fd90e6e0bbd7cee5c0e935821cb1c3df826a58db2af3df53')
+sha256sums_armv7h=('8f19c2eeb5daa497dd1329ee6e888ba234db0473543ef40b506c0237a2c915be')
+sha256sums_loong64=('448f7213edea4dfb2412edd669648ee8e9cd97a22f56f973fbc519bbe9490afb')
+sha256sums_riscv64=('b0a54230b3a1eff959ed3349e35e1196af49496801df35f984f182cf809f9fef')
+sha256sums_x86_64=('2c56d7de9c3c14202ac2de567dcf4e6b94292c1f1caf3447b11a93865b258eb4')
 
 package() {
   cd "${srcdir}"
