@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=darkwrite-bin
 _pkgname=Darkwrite
-pkgver=1.0.0_beta.2
+pkgver=1.0.1_beta.1
 _electronversion=39
 pkgrel=1
 pkgdesc="The eye-candy note taking and to-do application for all desktops.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver//_/-}/${_pkgname}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ddd8103b7be5b3185a166e8b3537b6f4a60f164acb71ca4c1886f4c925a523a2'
+sha256sums=('d2439e7f1bb3416b257c33922f1bdc59422a441ab73395223f4cbf413717d9cd'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/@darkwriteapp-desktop" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
