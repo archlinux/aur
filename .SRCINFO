@@ -1,0 +1,18 @@
+pkgbase = noteminder-bin
+	pkgdesc = A sleek, minimal note-taking desktop app that docks at the edge of your screen and supports rich text editing, color-coding, and intelligent reminders.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/hypn05/NoteMinder
+	arch = x86_64
+	license = MIT
+	depends = electron27
+	provides = noteminder=1.1.5
+	conflicts = noteminder
+	source = noteminder-1.1.5-x86_64.AppImage::https://github.com/hypn05/NoteMinder/releases/download/v1.1.5/NoteMinder-1.1.5.AppImage
+	source = LICENSE-1.1.5::https://raw.githubusercontent.com/hypn05/NoteMinder/v1.1.5/LICENSE
+	source = noteminder.sh
+	sha256sums = df92a10191037fa4a23cba5001895b8094f47374763e0a319b001da4b0f2e367
+	sha256sums = ff674cc0e327d0ee1662950ea33c666c4cbd61126063902e56e0cfaae1917bd7
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+
+pkgname = noteminder-bin
