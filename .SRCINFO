@@ -1,6 +1,6 @@
 pkgbase = libelectron
 	pkgdesc = A meta package for electron and electron dependencies.
-	pkgver = 2025.7
+	pkgver = 2025.8
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/libelectron/libelectron
 	arch = x86_64
@@ -8,10 +8,9 @@ pkgbase = libelectron
 	license = GPL
 	makedepends = unzip
 	depends = npm
-	depends = libelectron-electron-meta
 	depends = git
 	depends = icu
-	source = https://gitlab.com/linuxbombay/libelectron/libelectron/-/archive/2025.7/libelectron-2025.7.tar.bz2
-	sha256sums = 695dc8ba1e87baeeaa10bb2d60cc9d4d7e8b37fd5dd05af6b72c43a258bbd11d
+	source = https://gitlab.com/linuxbombay/libelectron/libelectron/-/archive/2025.8/libelectron-2025.8.tar.bz2
+	sha256sums = 1b43455353e4d8c6b6c181e9cedae4dee1a496b12b178c3e549921ebd5d6eed1
 
 pkgname = libelectron
