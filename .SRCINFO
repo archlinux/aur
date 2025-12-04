@@ -1,14 +1,14 @@
 pkgbase = smassh
 	pkgdesc = TUI based typing test application inspired by MonkeyType
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kraanzu/smassh
 	arch = any
 	license = GPL-3.0-only
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-poetry-core>=1.0.0
+	makedepends = python-hatchling
 	depends = python>=3.8.1
 	depends = python-textual>=0.81.0
 	depends = python-click>=8.1.7
