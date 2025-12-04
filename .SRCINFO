@@ -1,11 +1,11 @@
 pkgbase = ggjj
 	pkgdesc = GG - Gui for JJ
-	pkgver = 0.29.0
+	pkgver = 0.35.1
 	pkgrel = 1
 	url = https://github.com/gulbanana/gg
 	arch = x86_64
 	license = APACHE
-	source = https://github.com/gulbanana/gg/releases/download/v0.29.0/gg_0.29.0_amd64.deb
-	sha256sums = bca82ad61c958b138184126b2ba77823dabf289ffbd111b7523e3a9bcd08a99d
+	source = https://github.com/gulbanana/gg/releases/download/v0.35.1/gg_0.35.1_amd64.deb
+	sha256sums = 3e78bdea0aca66ce59a116734dcd8e1b45e6a049c10618ce02c15ceadfda2cc7
 
 pkgname = ggjj
