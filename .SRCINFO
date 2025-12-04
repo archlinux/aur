@@ -31,8 +31,8 @@ pkgbase = mayaflux-dev-bin
 	optdepends = vulkan-extra-tools: additional Vulkan tools
 	provides = MayaFlux
 	conflicts = MayaFlux
-	source = MayaFlux-0.1.0-dev-Linux.tar.gz::https://github.com/MayaFlux/MayaFlux/releases/download/v0.1.0-dev/MayaFlux-0.1.0-dev-Linux.tar.gz
-	source = MayaFlux-0.1.0-dev-Linux.tar.gz::https://github.com/MayaFlux/MayaFlux/releases/download/v0.1.0-dev/MayaFlux-0.1.0-dev-Linux.tar.gz.sha256
+	source = MayaFlux-0.1.0-dev-linux-arch.tar.gz::https://github.com/MayaFlux/MayaFlux/releases/download/v0.1.0-dev/MayaFlux-0.1.0-dev-linux-arch.tar.gz
+	source = MayaFlux-0.1.0-dev-linux-arch.tar.gz::https://github.com/MayaFlux/MayaFlux/releases/download/v0.1.0-dev/MayaFlux-0.1.0-dev-linux-arch.tar.gz.sha256
 	sha256sums = SKIP
 	sha256sums = SKIP
 

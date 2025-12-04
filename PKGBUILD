@@ -41,17 +41,17 @@ optdepends=(
 provides=('MayaFlux')
 conflicts=('MayaFlux')
 source=(
-    "MayaFlux-${pkgver}-dev-Linux.tar.gz::https://github.com/MayaFlux/MayaFlux/releases/download/v${pkgver}-dev/MayaFlux-${pkgver}-dev-Linux.tar.gz"
-    "MayaFlux-${pkgver}-dev-Linux.tar.gz::https://github.com/MayaFlux/MayaFlux/releases/download/v${pkgver}-dev/MayaFlux-${pkgver}-dev-Linux.tar.gz.sha256"
+    "MayaFlux-${pkgver}-dev-linux-arch.tar.gz::https://github.com/MayaFlux/MayaFlux/releases/download/v${pkgver}-dev/MayaFlux-${pkgver}-dev-linux-arch.tar.gz"
+    "MayaFlux-${pkgver}-dev-linux-arch.tar.gz::https://github.com/MayaFlux/MayaFlux/releases/download/v${pkgver}-dev/MayaFlux-${pkgver}-dev-linux-arch.tar.gz.sha256"
 )
 sha256sums=('SKIP' 'SKIP')
 
 prepare() {
     echo "Verifying package integrity..."
 
-    local expected_sha=$(cat "MayaFlux-${pkgver//_/-}-Linux.tar.gz.sha256")
+    local expected_sha=$(cat "MayaFlux-${pkgver//_/-}-linux-arch.tar.gz.sha256")
 
-    local actual_sha=$(sha256sum "MayaFlux-${pkgver//_/-}-Linux.tar.gz" | cut -d' ' -f1)
+    local actual_sha=$(sha256sum "MayaFlux-${pkgver//_/-}-linux-arch.tar.gz" | cut -d' ' -f1)
 
     echo "Expected SHA256: $expected_sha"
     echo "Actual SHA256:   $actual_sha"
@@ -77,8 +77,8 @@ package() {
     install -d "$pkgdir/usr/share/licenses/$pkgname"
 
     # Extract the pre-built tarball
-    if [ -f "MayaFlux-${pkgver}-dev-Linux.tar.gz" ]; then
-        tar -xzf "MayaFlux-${pkgver}-dev-Linux.tar.gz" -C "$srcdir"
+    if [ -f "MayaFlux-${pkgver}-dev-linux-arch.tar.gz" ]; then
+        tar -xzf "MayaFlux-${pkgver}-dev-linux-arch.tar.gz" -C "$srcdir"
     fi
 
     # Copy files from extracted package
