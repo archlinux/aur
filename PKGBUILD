@@ -1,7 +1,7 @@
 # Contributor: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 
 pkgname=ty-bin
-pkgver=0.0.1-alpha.29 # datasource=github-tags depName=astral-sh/ty
+pkgver=0.0.1-alpha.30 # datasource=github-tags depName=astral-sh/ty
 pkgver="${pkgver//-/_}"
 pkgrel=1
 pkgdesc='An extremely fast Python type checker and language server, written in Rust.'
@@ -22,10 +22,10 @@ source_x86_64=("ty-x86_64-${pkgver}.tgz::${_baseurl}/ty-x86_64-unknown-linux-gnu
 source=("LICENSE-${pkgver}::${url}/raw/refs/tags/${pkgver//_/-}/LICENSE")
 
 sha256sums=('860e3d7a86b84e6a7012c7a635fc64df475cebc6cce34dfeb73a5982ec58176c')
-sha256sums_aarch64=('8fb5325acc17a1d41df00812c2c531ff6f34af99cd74e6db78f25cf7ba5bde27')
-sha256sums_armv7=('c910a866e0568b87860c0047717eeb7e7b49653decd43fe1ad7cf809840ced8c')
-sha256sums_i686=('3389c9e721a8e227370d8bc7ddd32dd3d040b18365493953de57962ff6204d74')
-sha256sums_x86_64=('c48df9d599abadc8206f181f0ab6fa3af6dcb58c25f795d3512a099215c8e0a9')
+sha256sums_aarch64=('efcd06510b96b006a974d853d24d2a6cb672787b0faecc9a72392322a585e752')
+sha256sums_armv7=('a4930654b448f3a538aa318e70521f237adcf27d1b9a095b6c72d2094c23d7a7')
+sha256sums_i686=('9b752b16b336ca52aa5d8598c8829a22a9e20130f8a928747d177b1f6f1e420e')
+sha256sums_x86_64=('efd7e6abeaaec8714257c52f2ad87cc523df604880079aa22a40a34efe1caee1')
 
 package() {
 
