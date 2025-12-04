@@ -4,7 +4,7 @@
 
 _name=loro
 pkgname=python-loro
-pkgver=1.8.2
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Python bindings for Loro CRDT"
 arch=(any)
@@ -22,7 +22,7 @@ makedepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('d22dc17cbec652ed8bf627f801a0a32e27a87b4476a2ab96f45a02d163d733ae')
+sha256sums=('0d205fee88e0373fb3dcbcdb224d0c2acabdf3fa0796e9af18ecbac699f98afb')
 
 build() {
     cd $_name-$pkgver || exit
