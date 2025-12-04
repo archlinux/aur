@@ -1,10 +1,11 @@
-# Maintainer: David P. <megver83@parabola.nu>
+# Maintainer: whiteman808 <whiteman808 at paraboletancza dot org>
+# Contributor: David P. <megver83 at parabola dot nu>
 
 _target=sh-elf
 pkgname=$_target-gcc
-_pkgver=10.2.0
+_pkgver=15.2.0
 pkgver=$_pkgver
-_islver=0.22
+_islver=0.27
 pkgrel=1
 pkgdesc='The GNU Compiler Collection - cross compiler for SuperH (bare-metal) target'
 arch=(x86_64 i686 armv7h)
@@ -15,10 +16,10 @@ makedepends=(gmp mpfr $_target-newlib)
 optdepends=("$_target-newlib: Standard C library ($_target target)")
 options=(!emptydirs !strip)
 source=(https://gcc.gnu.org/pub/gcc/releases/gcc-$_pkgver/gcc-$_pkgver.tar.xz{,.sig}
-        http://isl.gforge.inria.fr/isl-$_islver.tar.bz2)
-sha512sums=('42ae38928bd2e8183af445da34220964eb690b675b1892bbeb7cd5bb62be499011ec9a93397dba5e2fb681afadfc6f2767d03b9035b44ba9be807187ae6dc65e'
+        https://libisl.sourceforge.io/isl-$_islver.tar.bz2)
+sha512sums=('89047a2e07bd9da265b507b516ed3635adb17491c7f4f67cf090f0bd5b3fc7f2ee6e4cc4008beef7ca884b6b71dffe2bb652b21f01a702e17b468cca2d10b2de'
             'SKIP'
-            'fc2c9796979610dd51143dcefe4f5c989c4354571cc5a1fcc6b932fd41f42a54f6b43adfd289af61be7bd06f3a523fa6a7d7ee56680e32d8036beb4c188fa668')
+            'e14ab1a622d3f6219b264b8e2512487aecd6725b7b88f40bc8f31651bfe7d89db4649aae12eaa0052dd904bac21607f63c83fbab73251767425d91989a969f7e')
 validpgpkeys=(33C235A34C46AA3FFB293709A328C3A2C3C45C06  # Jakub Jelinek <jakub@redhat.com>
               13975A70E63C361C73AE69EF6EEB81F8981C74C7) # Richard Guenther <richard.guenther@gmail.com>
 if [ -n "$_snapshot" ]; then
@@ -48,6 +49,9 @@ build() {
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
   CFLAGS=${CFLAGS/-pipe/}
   CXXFLAGS=${CXXFLAGS/-pipe/}
+
+  CFLAGS+=' -Wno-error=format-security'
+  CXXFLAGS+=' -Wno-error=format-security'
   
   $srcdir/$_basedir/configure \
     --target=$_target \
