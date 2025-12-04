@@ -1,0 +1,24 @@
+pkgbase = iloader-bin
+	pkgdesc = User friendly sideloader
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/nab138/iloader
+	arch = x86_64
+	license = MIT
+	depends = usbmuxd
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = cairo
+	depends = glibc
+	depends = glib2
+	depends = libsoup3
+	depends = hicolor-icon-theme
+	depends = gdk-pixbuf2
+	depends = gcc-libs
+	conflicts = iloader-appimage
+	source = https://github.com/nab138/iloader/releases/download/v1.1.4/iloader-linux-amd64.deb
+	source = LICENSE::https://github.com/nab138/iloader/raw/refs/heads/main/LICENSE
+	sha256sums = 898dcb5f8835536e0d0e88f024c8bad12cc71e04cc51f29541e9a1a17524e4f1
+	sha256sums = c6e929e3490b6475e382b4f74aaddd068deb3bf27cca2109821591e692dfcb3b
+
+pkgname = iloader-bin
