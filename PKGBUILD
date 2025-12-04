@@ -88,6 +88,9 @@ package() {
         [ -f "$doc" ] && install -Dm644 "$doc" "$pkgdir/usr/share/doc/$pkgname/$(basename $doc)" || true
     done
     
+    # Install logo/icon
+    install -Dm644 logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/wayvid.svg"
+    
     # Install licenses
     install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
     # Install Apache license if it exists
