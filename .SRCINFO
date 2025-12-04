@@ -1,6 +1,6 @@
 pkgbase = casual-pre-loader-git
 	pkgdesc = TF2 particle modifications via some wizardry.
-	pkgver = 1.7.2
+	pkgver = 1.7.2.2.gf46f28a
 	pkgrel = 1
 	url = https://github.com/cueki/casual-pre-loader
 	install = casual-pre-loader.install
@@ -16,7 +16,7 @@ pkgbase = casual-pre-loader-git
 	depends = python-requests>=2.32.5
 	depends = python-packaging>=25.0
 	depends = python-platformdirs
-	depends = python-pygithub
+	depends = python-pygithub-git>=v2.8.0
 	source = git+https://github.com/cueki/casual-pre-loader
 	source = git+https://github.com/cueki/studiomdl
 	sha256sums = SKIP
