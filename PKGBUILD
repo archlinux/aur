@@ -11,7 +11,7 @@ license=('GPL-3.0-only')
 depends=('qt6-base' 'libusb')
 makedepends=('cmake' 'git' 'ninja')
 optdepends=('ezp-chip-data-editor: QT based editor chip database for EZP2019, EZP2019+, EZP2020, EZP2023, EZP2025, MinPro programmer devices'
-			'imsprog: MSProg - software for CH341A-based programmers to work with I2C, SPI and MicroWire EEPROM/Flash chips')
+            'imsprog: MSProg - software for CH341A-based programmers to work with I2C, SPI and MicroWire EEPROM/Flash chips')
 source=("git+https://github.com/bigbigmdm/SFP-Master.git")
 sha256sums=(SKIP)
 
