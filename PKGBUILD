@@ -1,6 +1,6 @@
 pkgname=halbmeta
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="A metapackage for my personal software"
 arch=('any')
 license=('MIT')
@@ -25,12 +25,17 @@ depends=(
   # Development
   'vscodium-bin'
   'git'
+  'python'
+  'jdk-openjdk'
+  'docker'
 
   # Hacking
   'wireshark-qt'
   'nmap'
   'metasploit'
   'burpsuite'
+  'john'
+  'hydra'
 
   # Misc
   'torbrowser-launcher'
