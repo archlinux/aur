@@ -1,7 +1,7 @@
 pkgbase = feishin-bin
 	pkgdesc = A player for your self-hosted music server
 	pkgver = 0.22.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jeffvli/feishin
 	arch = x86_64
 	arch = aarch64
