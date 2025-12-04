@@ -1,11 +1,14 @@
 pkgbase = smpeg0
 	pkgdesc = SDL MPEG Player Library - Legacy version 0.4.5
 	pkgver = 0.4.5
-	pkgrel = 2
+	pkgrel = 5
 	url = https://icculus.org/smpeg/
 	arch = x86_64
 	license = LGPL-2.0-only
 	makedepends = subversion
+	depends = sh
+	depends = sdl>=1:1
+	depends = sdl<1:2
 	depends = gcc-libs
 	depends = glibc
 	depends = glu
@@ -14,8 +17,6 @@ pkgbase = smpeg0
 	depends = libxau
 	depends = libxcb
 	depends = libxdmcp
-	depends = sdl>=1:1
-	depends = sdl<1:2
 	source = smpeg0-0.4.5::svn://svn.icculus.org/smpeg/tags/release_0_4_5
 	sha256sums = SKIP
 
