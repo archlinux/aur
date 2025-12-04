@@ -5,20 +5,22 @@
 
 pkgname=openlp
 pkgver=3.1.7
-pkgrel=1
+pkgrel=3
 pkgdesc="Church presentation software."
 arch=('any')
 url='http://openlp.org/'
 license=('GPLv2')
 makedepends=('qt5-tools' 'python-pip' 'python-setuptools')
 depends=('python>=3.10' 'python-pyqt5' 'phonon-qt5'
-        'python-chardet' 'python-lxml' 'python-beautifulsoup4' 'python-pyenchant' 
-        'python-mako' 'python-appdirs' 'python-pyodbc' 
-        'python-pyqt5-webengine' 'qt5-multimedia' 'python-pyqt5-webengine' 'python-alembic' 
-        'python-qtawesome' 'python-websockets' 'python-flask' 'python-flask-cors' 
-        'python-waitress' 'python-qrcode' 'python-pymediainfo')
+        'python-chardet' 'python-lxml' 'python-beautifulsoup4' 'python-pyenchant'
+        'python-mako' 'python-appdirs' 'python-pyodbc'
+        'qt5-multimedia' 'python-alembic'
+        'python-qtawesome' 'python-websockets' 'python-flask' 'python-flask-cors'
+        'python-waitress' 'python-qrcode' 'python-pymediainfo' 'qt5-webchannel' 'python-pyqt5')
 
-optdepends=('libreoffice: Display impress presentations'
+optdepends=('qt5-webengine: Web interface and remote control (AUR)'
+            'python-pyqt5-webengine: Web interface and remote control (AUR)'
+            'libreoffice: Display impress presentations'
             'python-vlc: Multimedia playback'
             'python-mysql-connector: Use a mysql/mariadb database'
             'python-psycopg2: Use a postgresql database')
