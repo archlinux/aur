@@ -1,0 +1,24 @@
+[Unit]
+Description=Claude Code Relay Server
+Documentation=https://github.com/wakaka6/claude-code-relay
+After=network.target
+
+[Service]
+Type=simple
+User=cc-relay
+Group=cc-relay
+WorkingDirectory=/var/lib/cc-relay
+ExecStart=/usr/bin/cc-relay-server --config /etc/cc-relay-server/config.toml
+Restart=on-failure
+RestartSec=5
+
+Environment=RUST_LOG=info
+
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/cc-relay
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

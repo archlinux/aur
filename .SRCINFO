@@ -1,0 +1,23 @@
+pkgbase = claude-code-relay
+	pkgdesc = High-performance AI API relay service for Claude, Gemini, and OpenAI
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/wakaka6/claude-code-relay
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = cc-relay-server
+	backup = etc/cc-relay-server/config.toml
+	source = claude-code-relay-0.2.0.tar.gz::https://github.com/wakaka6/claude-code-relay/archive/refs/tags/v0.2.0.tar.gz
+	source = cc-relay-server.service
+	source = cc-relay-server.sysusers
+	source = cc-relay-server.tmpfiles
+	sha256sums = a73ec49af76352d0276afe5ced773a08f3e06db81a31bc2303fb54fe9db7c171
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = claude-code-relay
