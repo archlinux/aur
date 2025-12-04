@@ -6,7 +6,7 @@
 # ci|skipcheck|
 
 pkgname=shepherd
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Service manager that looks after the herd."
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
   "https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz"
   shepherd.install
 )
-sha256sums=('3beb005370bf0339c567d068a7ad9fb69f0e8850894db01c34635955f7717ff5'
+sha256sums=('e488c585c8418df6e8f476dca81b72910f337c9cd3608fb467de5260004000d6'
             'd7a0b895b8d59ace7abd761a7be17ab1c8db358e98ff301d800a5a4fa558dff7')
 
 prepare() {
