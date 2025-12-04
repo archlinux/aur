@@ -2,7 +2,7 @@
 # Contributor: Ciro Scognamiglio <ciro.scognamiglio88 at gmail dot com>
 
 pkgname='bzr-player'
-pkgver='2.0.86'
+pkgver='2.0.87'
 pkgrel='1'
 pkgdesc='Audio player supporting a wide array of multi-platform exotic file formats'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('hicolor-icon-theme' 'qt6-base' 'qt6-svg' 'qt-advanced-docking-system')
 makedepends=('cmake' 'dos2unix' 'gendesk' 'git' 'git-lfs' 'libglvnd' 'ninja' 'patchutils' 'qt6-declarative'
   'sdl2-compat' 'vulkan-headers')
 source=("git+https://github.com/aargirakis/BZRPlayer.git#tag=$pkgver")
-sha256sums=('adb6d417a5e494ff6840b9a9042706cff53b617b0a4957dfdb4cbaca8c0e7efb')
+sha256sums=('54d0516c9e24f19eb902f06ab25ee35a3cb6fa8b0feffcbbe247c5bc4b90eb38')
 
 prepare() {
   cd BZRPlayer
