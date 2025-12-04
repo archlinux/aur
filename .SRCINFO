@@ -1,7 +1,7 @@
 pkgbase = printnotes-git
 	pkgdesc = A better way to take notes inspired by Google Keep and Obsidian (git version)
 	pkgver = r232.5037f0c
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/RoBoT095/printnotes
 	arch = x86_64
 	license = GPL-3.0-only
@@ -12,6 +12,8 @@ pkgbase = printnotes-git
 	conflicts = printnotes-bin
 	options = !strip
 	source = git+https://github.com/RoBoT095/printnotes.git
+	source = printnotes.desktop
 	sha256sums = SKIP
+	sha256sums = 354c3b8b032da2fe45153c097fdccfaa4ee2bb15c69325515fc16ef311046ac6
 
 pkgname = printnotes-git

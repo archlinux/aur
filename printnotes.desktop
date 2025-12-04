@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=PrintNotes
+Comment=A better way to take notes inspired by Google Keep and Obsidian
+Exec=/opt/printnotes/printnotes
+Icon=printnotes
+Terminal=false
+Type=Application
+Categories=Office;TextEditor;
+StartupNotify=true
