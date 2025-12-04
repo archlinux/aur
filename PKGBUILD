@@ -4,8 +4,8 @@
 
 pkgname=python-tidalapi
 _name=${pkgname#python-}
-pkgver=0.8.8
-pkgrel=2
+pkgver=0.8.9
+pkgrel=1
 pkgdesc='Unofficial API for TIDAL music streaming service.'
 arch=('any')
 url='https://github.com/tamland/python-tidal'
@@ -21,14 +21,19 @@ depends=(
 )
 makedepends=('python-poetry')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('f378e5f8c56c0a0e59ac75880f50b986132e2e0a992da061646b5abe97704c75')
+sha256sums=('623bfccdc048b7257e0b91172674c0d0dec70d0fe11fea516238ab53e90685b6')
 
 build() {
 	cd "$_name-$pkgver"
 	python -m build --wheel --no-isolation
 }
 
-## tests require an active Tidal session
+check() {
+	## tests require an active Tidal session
+	## just check we can import tidalapi
+	cd "$_name-$pkgver"
+	python -c 'import tidalapi'
+}
 
 package() {
 	export PYTHONHASHSEED=0
