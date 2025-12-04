@@ -14,7 +14,7 @@ conflicts=("${pkgname%-git}")
 install="${pkgname%-git}.install"
 source=("git+${url}.git" "${pkgname%-git}.service" "001-fix-icon-n-style-locations.patch" "002-fix-other-icon-path.patch")
 sha256sums=('SKIP'
-            '8ff1c82788f7cb6bf06151e6632aa4006eb09337daf03faa4866d23075b39e1b'
+            '3151795e5231780865b4523107478dd1998fe3c183bd59dee70ae68f470a7659'
             '227d85df7f71187c87e24388104f0127b13a680c1e859a90a14864a0d29e1fdf'
             '0db58e3a6185418677a5c4f2ea15d7a1becf08bc2d955b8ffb9783190dd4666c')
 
