@@ -1,4 +1,5 @@
 #!/bin/sh
 
 DEFAULT_JVM_OPTS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
-exec java $DEFAULT_JVM_OPTS  -Djava.net.preferIPv4Stack=true  -cp '/usr/share/java/ffdec/lib' -jar '/usr/share/java/ffdec/ffdec.jar' "$@"
+eval set -- $DEFAULT_JVM_OPTS -cp /usr/share/java/ffdec/lib  -jar '/usr/share/java/ffdec/ffdec.jar' "$@"
+exec java "$@"
