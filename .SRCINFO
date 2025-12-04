@@ -1,0 +1,14 @@
+pkgbase = textlint-rule-preset-jtf-style
+	pkgdesc = Textlint rule preset for JTF style guide
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = https://github.com/textlint-ja/textlint-rule-preset-JTF-style
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = textlint
+	source = https://registry.npmjs.org/textlint-rule-preset-jtf-style/-/textlint-rule-preset-jtf-style-3.0.3.tgz
+	sha256sums = daaa2d2a3c51ba2f9a9d2e2af47bcba504aefb03f57c5fa7377408bdae13f680
+
+pkgname = textlint-rule-preset-jtf-style
