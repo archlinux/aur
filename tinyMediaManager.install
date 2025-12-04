@@ -2,14 +2,14 @@ source /usr/share/makepkg/util/message.sh
 
 post_upgrade() {
   if [ -d /usr/share/tinyMediaManager/data/ ]; then
-    warning 'This package no longer stores user data in /usr/share/tinyMediaManager/. Please migrate the data to $HOME/.tiny-media-manager'
+    warning 'This package no longer stores user data in /usr/share/tinyMediaManager/. Please migrate the data to HOME_DIR/.local/share/tinyMediaManager/'
     warning '$ mkdir $HOME/.tiny-media-manager/'
-    warning '$ find /usr/share/tinyMediaManager/ -maxdepth 1 -user $USER -exec mv --interactive "{}" $HOME/.tiny-media-manager/ ";"'
+    warning '$ find /usr/share/tinyMediaManager/ -maxdepth 1 -user $USER -exec mv --interactive "{}" $HOME/.local/share/tinyMediaManager/ ";"'
     warning ''
     warning 'tinyMediaManager v4 changed to a subscription based license model, see https://www.tinymediamanager.org/blog/version-4-0/'
   fi
   if [ -d HOME_DIR/.tiny-media-manager ]; then
-    warning "This package no longer stores user data in $HOME/.tiny-media-manager. Please migrate the data to .local/share/tinyMediaManager"
+    warning 'This package no longer stores user data in HOME_DIR/.tiny-media-manager. Please migrate the data to HOME_DIR/.local/share/tinyMediaManager/'
     warning '$ mkdir -p $HOME/.local/share/tinyMediaManager/'
     warning '$ cp -r $HOME/.tiny-media-manager/{backup,data} $HOME/.local/share/tinyMediaManager'
     warning 'Optional remove the old data directory'

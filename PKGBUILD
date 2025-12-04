@@ -6,7 +6,7 @@
 
 _gitname=tinyMediaManager
 pkgname=tiny-media-manager
-pkgver=5.2.3
+pkgver=5.2.4
 pkgrel=1
 pkgdesc="A multi-OS media managment tool"
 arch=('any')
@@ -22,14 +22,14 @@ source=("tmm_${pkgver}_linux.tar.xz::https://archive.tinymediamanager.org/v${pkg
         "tinymediamanager"
         "tinymediamanager-cli")
 
-sha256sums=('7d7615dce2938879a9e268d6fbb077e8a75837552e256865aca416aeec890170'
+sha256sums=('ba6fc0a80a366b08cbd0d67cbcaea16f35da42e002ba3f1de7b9fb5329f304c9'
             '24e9538f8fcb6fcb7db954efca66354177d09bdc58bc28a91e481475c2044c36'
             'd97b2206915a882c034149f3fa097445bb8bb350441bf8fdf331245e11be4f6c'
             'd6cc87cf9166f0c47940ffa6c279a9c2bc237533ebf38afb2a387532019f5675')
 
 prepare() {
-  sed -i "s|HOME_DIR|${HOME}|" "${startdir}/tinyMediaManager.install"
-  sed -i "s/VERSION/${pkgver}/" "${startdir}/tinyMediaManager.desktop"
+  sed -i "s|HOME_DIR|${HOME}|g" "${startdir}/tinyMediaManager.install"
+  sed -i "s/VERSION/${pkgver}/g" "${startdir}/tinyMediaManager.desktop"
 }
 
 package() {
