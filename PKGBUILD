@@ -16,7 +16,8 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_reponame"
-    git describe --tags --long 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./' || echo "$pkgver"
+    git describe --tags --long 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./' || \
+        printf "0.1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
