@@ -1,6 +1,6 @@
 pkgbase = sticks-aur
 	pkgdesc = A tool for managing C and C++ projects
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/mAmineChniti/sticks
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = sticks-aur
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc
-	source = sticks-0.3.3.tar.gz::https://github.com/mAmineChniti/sticks/archive/refs/tags/v0.3.3.tar.gz
-	sha256sums = 85b54690239075126dedbcf34dc6b8b36261f1407caf47c7043d492cc18a7227
+	source = sticks-0.3.4.tar.gz::https://github.com/mAmineChniti/sticks/archive/refs/tags/v0.3.4.tar.gz
+	sha256sums = 45ede171e559a1c4f2d6180247b628412162397e42454bdd43cdc369c235a722
 
 pkgname = sticks-aur

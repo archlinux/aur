@@ -1,6 +1,6 @@
 # Maintainer: mAmineChniti <m.aminechniti@gmail.com>
 pkgname=sticks-aur
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="A tool for managing C and C++ projects"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc')
 makedepends=('rust' 'cargo')
 source=("sticks-$pkgver.tar.gz::https://github.com/mAmineChniti/sticks/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('85b54690239075126dedbcf34dc6b8b36261f1407caf47c7043d492cc18a7227')
+sha256sums=('45ede171e559a1c4f2d6180247b628412162397e42454bdd43cdc369c235a722')
 
 build() {
 	cd "sticks-$pkgver"
