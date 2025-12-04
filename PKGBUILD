@@ -2,7 +2,7 @@
 # Contact me about packaging issues tho. <bjoel2@i2pmail.org>
 
 pkgname="intel-metrics-discovery-git"
-pkgver=metrics.discovery.1.14.182.r0.g1524a7a
+pkgver=1.14.183.r0.g1b7f810
 pkgrel=1
 pkgdesc="User mode library that provides access to GPU performance data"
 arch=('x86_64')
@@ -11,6 +11,7 @@ license=('MIT')
 options=(!strip staticlibs)
 depends=('libdrm' 'gcc-libs' 'glibc')
 makedepends=('git' 'cmake')
+provides=('intel-metrics-discovery' 'libigdmd.so')
 source=("${pkgname}::git+https://github.com/intel/metrics-discovery.git")
 sha256sums=('SKIP')
 
