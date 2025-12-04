@@ -5,7 +5,7 @@
 # Contributor: Scott Horowitz <stonecrest[at]gmail[dot]com>
 
 pkgname=sonata
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc='Elegant GTK+3 music client for MPD'
 url='https://github.com/multani/sonata'
@@ -16,7 +16,7 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 optdepends=('python-tagpy: metadata editing support'
             'python-dbus: multimedia keys support')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/multani/sonata/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('ef441a4acc0e0a741b121a7b48afd925f474e0e8834d00b08807169ad772d970')
+sha256sums=('787ba839697d7924ed6b84652f22273cda25d6c742b4da40dbb6b8bf1252019f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
