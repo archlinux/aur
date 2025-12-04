@@ -1,6 +1,6 @@
 pkgbase = jackett-bin
 	pkgdesc = Use many torrent trackers with software that supports torznab/potato feeds.
-	pkgver = 0.24.399
+	pkgver = 0.24.402
 	pkgrel = 1
 	url = https://github.com/Jackett/Jackett
 	arch = x86_64
@@ -23,11 +23,11 @@ pkgbase = jackett-bin
 	sha256sums = 4cb8d61d3a7a85595af0d347e14729056cecdcbd96640a10ba7c0c02da4a3741
 	sha256sums = f865c06ffd21a12d37bf05953d9b483819c0f4e43d243a56db33986113fc40e4
 	sha256sums = 64022e15565a609f449090f02d53ee90ef95cffec52ae14f99e4e2132b6cffe1
-	source_x86_64 = Jackett.Binaries.LinuxAMDx64-0.24.399.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.24.399/Jackett.Binaries.LinuxAMDx64.tar.gz
-	sha256sums_x86_64 = 40f887769ff5a31e20e15c2a644a622d5e4cc14564716cf7e55032ee0ce495cd
-	source_aarch64 = Jackett.Binaries.LinuxARM64-0.24.399.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.24.399/Jackett.Binaries.LinuxARM64.tar.gz
-	sha256sums_aarch64 = 45935f97b68a82fcda069fa248e57b2f402ab5bf5ece7c5f65a3a36b6ca3fe69
-	source_armv7h = Jackett.Binaries.LinuxARM32-0.24.399.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.24.399/Jackett.Binaries.LinuxARM32.tar.gz
-	sha256sums_armv7h = aa408e0f6020dcda8dfa49a340dc5053b2f3c7329bcff3c7740a4c9307544776
+	source_x86_64 = Jackett.Binaries.LinuxAMDx64-0.24.402.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.24.402/Jackett.Binaries.LinuxAMDx64.tar.gz
+	sha256sums_x86_64 = 18d4c99e94fe6d57284e377d6e8846f879db889187518e69f677f2df5da54dba
+	source_aarch64 = Jackett.Binaries.LinuxARM64-0.24.402.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.24.402/Jackett.Binaries.LinuxARM64.tar.gz
+	sha256sums_aarch64 = 36f30c02e1385b32ae7d42ef1c3c95ad8e2d7f4b3a41b371a90db6f0aa19d308
+	source_armv7h = Jackett.Binaries.LinuxARM32-0.24.402.tar.gz::https://github.com/Jackett/Jackett/releases/download/v0.24.402/Jackett.Binaries.LinuxARM32.tar.gz
+	sha256sums_armv7h = f4e09983c120f5aff373885418c15294e3c06e677b5e8bc123de9ee8f99aed48
 
 pkgname = jackett-bin
