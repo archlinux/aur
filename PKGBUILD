@@ -1,7 +1,7 @@
 # Maintainer: Timur Bagautdinov <mr.bagautdinov14 at gmail dot com>
 
 pkgname="voxelcore"
-pkgver=0.30.3
+pkgver=0.30.4
 pkgrel=1
 pkgdesc="Minecraft-like game engine in C++ with OpenGL"
 url="https://github.com/MihailRis/$pkgname"
@@ -14,7 +14,7 @@ source=(
     "$url/archive/refs/tags/v$pkgver.zip"
     "voxelcore.sh"
 )
-sha256sums=("185c07a976b5c4bc1772d2d2bfdae3aa856334b7ce235ee74bcb290f57a57eab"
+sha256sums=("0798e4de9dbf5865646b6132a679355c1fdf31d9e56845d208649e3c7c0df5ca"
             "9766b3fcdd35932709d9f8f7bd8c322d139f830440eb649bdff9a45cc14ef02e")
 
 prepare() {
