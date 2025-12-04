@@ -1,0 +1,22 @@
+pkgbase = wifiman-desktop-bin
+	pkgdesc = WiFi analysis and network insights tool by Ubiquiti
+	pkgver = 1.2.8
+	pkgrel = 1
+	url = https://desktop.wifiman.com/
+	arch = x86_64
+	license = custom
+	depends = net-tools
+	depends = iw
+	depends = openresolv
+	depends = libayatana-appindicator
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = wifiman-desktop
+	conflicts = wifiman-desktop
+	conflicts = wi-fiman-desktop
+	replaces = wi-fiman-desktop
+	options = !strip
+	source = wifiman-desktop-bin-1.2.8.deb::https://desktop.wifiman.com/wifiman-desktop-1.2.8-amd64.deb
+	sha256sums = 47e31bc317e7055f5571859e33534cd3c2d7d4ccfdf9fcb8afab9920bc9d964b
+
+pkgname = wifiman-desktop-bin
