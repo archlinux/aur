@@ -1,23 +1,26 @@
-# Contributor: Plague-doctor <plague at privacyrequired dot com >
-
+# Maintainer: Plague Doctor <plague@example.com>
 pkgname=mullvad-tray
-pkgver=0.3
+pkgver=0.9.9
 pkgrel=1
-pkgdesc="Mullvad VPN connection status in system tray."
-arch=('any')
-depends=('python' 'python-pyqt5')
+pkgdesc="System tray indicator for Mullvad VPN connection status"
+arch=('x86_64')
 url="https://gitlab.com/Plague_Doctor/mullvad-tray"
-license=('GPL3')
-source=("https://gitlab.com/Plague_Doctor/mullvad-tray/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2")
-md5sums=('71a8620f85341ab737b29748f22a0c95')
+license=('GPL-3.0-only')
+depends=('gtk4' 'libadwaita')
+source=(
+    "mullvad-tray-${pkgver}::https://gitlab.com/api/v4/projects/76826601/packages/generic/mullvad-tray/v${pkgver}/mullvad-tray"
+    "mullvad-tray-${pkgver}.sha256::https://gitlab.com/api/v4/projects/76826601/packages/generic/mullvad-tray/v${pkgver}/mullvad-tray.sha256"
+)
+sha256sums=('SKIP' 'SKIP')
+
+prepare() {
+    # Verify checksum
+    cd "$srcdir"
+    # The sha256 file expects 'mullvad-tray', but we downloaded as 'mullvad-tray-${pkgver}'
+    ln -sf "mullvad-tray-${pkgver}" "mullvad-tray"
+    sha256sum -c "mullvad-tray-${pkgver}.sha256"
+}
 
 package() {
-    cd "$pkgname-$pkgver"
-    install -d "$pkgdir/"{usr/bin,usr/share/pixmaps,usr/share/applications,opt/$pkgname/images}
-    cp -R "$srcdir/$pkgname-$pkgver/images" $pkgdir/opt/$pkgname
-    cp  "$pkgname.py" "$pkgname.ui" $pkgdir/opt/$pkgname/
-    ln -s /opt/$pkgname/$pkgname.py $pkgdir/usr/bin/$pkgname
-
-    install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-    install -Dm644 "$srcdir/$pkgname-$pkgver/images/$pkgname-logo.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    install -Dm755 "$srcdir/mullvad-tray-${pkgver}" "$pkgdir/usr/bin/$pkgname"
 }
