@@ -2,21 +2,22 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts54
-pkgver=5.4.301
+pkgver=5.4.302
 pkgrel=1
-pkgdesc='LTS 5.4 Linux'
-url="https://www.kernel.org/"
+pkgdesc="LTS ${pkgver%.*} Linux"
+url='https://www.kernel.org'
 arch=(x86_64)
-license=(GPL2)
-depends=('systemd>=256.6') # put this in for a couple versions to prevent upgrade failures
+license=('GPL-2.0-only')
+#depends=('systemd>=256.6') # put this in for a couple versions to prevent upgrade failures
 makedepends=(
   bc kmod libelf cpio perl tar xz
   xmlto python-six python-sphinx python-sphinx_rtd_theme graphviz imagemagick
 )
 options=('!strip')
-_srcname=linux-$pkgver
+_srcname=linux-${pkgver%.*}
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
+  https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/patch-${pkgver}.xz
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
   0003-Add-support-for-ZSTD-compressed-kernel.patch
@@ -33,8 +34,22 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('b7718766d060e6714bbe47004c71c360e844758f42fbf62cbaa5571119527962'
+md5sums=('ce9b2d974d27408a61c53a30d3f98fb9'
+         'SKIP'
+         'b169933993bdbc4972663a51bfe7fe79'
+         '794009ce8142a0ea7f60a9085be92138'
+         '074581f2923b790209504cc9c152d96f'
+         '3ca57f3b588b74637bc589cfe973354e'
+         'ed318d5dbe8471cf2c153ade2ecba95a'
+         '95dcd182168ace8a713277a8cf46ef93'
+         'd15820a808c3cc159e6e5916a8c05e8f'
+         'fa086fd4a4072d9ffff4e9fcfefaf3ea'
+         '584ea2bdaa1f0dcf62f9107a0d3bb7ad'
+         'cd0564552862fbb33fa7b8e7c0396708'
+         '971de9df4a1f24d3753387cfd8f8eeb4')
+sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
+            'c42358b8b729639cbde757ff03aed797717ba702345091400efdf7089c4a7c0d'
             'b439f57b84bc98730c0265695abb92385ee4dcd35a5c00d4cb3d3155c75fb491'
             '4fd74bb2a7101d700fba91806141339d8c9e46a14f8fc1fe276cfb68f1eec0f5'
             '8b604b7dc447b5f1f6f0b6239d5dd3ec6a5336cba78ac6dcef8f3e59357bd8c0'
@@ -62,9 +77,17 @@ prepare() {
   for _src in "${source[@]}"; do
     _src="${_src%%::*}"
     _src="${_src##*/}"
-    [[ $_src = *.patch ]] || continue
-    msg2 "Applying patch $_src..."
-    patch -Np1 < "../$_src"
+    case "${_src}" in
+    *.patch)
+      msg2 "Applying patch $_src..."
+      patch -Np1 < "../$_src"
+      ;;
+    patch-*)
+      _src="${_src%.*}"
+      msg2 "Applying patch $_src..."
+      patch -Np1 -s < "../$_src"
+      ;;
+    esac
   done
 
   #cd '..'; cp -pr "${_srcname}" 'a'; ln -s "${_srcname}" 'b'; cd "${_srcname}"; false
@@ -91,7 +114,7 @@ exec /usr/bin/gcc -std='gnu17' "\$@"
 EOF
     chmod 755 'gcc'
   fi
-  nice -n1 make -j1 htmldocs & # -i SPHINXOPTS='-T --keep-going' &
+  nice -n1 make -j1 htmldocs < /dev/null & # -i SPHINXOPTS='-T --keep-going' &
   local _pid_docs="$!"
   nice -n2 make all
   wait "${_pid_docs}"
@@ -150,10 +173,10 @@ _package-headers() {
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
@@ -181,7 +204,7 @@ _package-headers() {
   echo "Stripping build tools..."
   local file
   while read -rd '' file; do
-    case "$(file -bi "$file")" in
+    case "$(file -Sib "$file")" in
       application/x-sharedlib\;*)      # Libraries (.so)
         strip -v $STRIP_SHARED "$file" ;;
       application/x-archive\;*)        # Libraries (.a)
