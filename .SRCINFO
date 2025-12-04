@@ -1,7 +1,7 @@
 pkgbase = mouseless
 	pkgdesc = A replacement for the mouse in Linux
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/jbensmann/mouseless
 	install = mouseless.install
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mouseless
 	makedepends = go
 	makedepends = git
 	conflicts = mouseless-bin
-	source = https://github.com/jbensmann/mouseless/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 63d837a17e1ad066afa4610966125eb8dc17ce6e47eeeb95a616446d6149a63d
+	source = https://github.com/jbensmann/mouseless/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 741b85049f6c9ac0e15c0e68b88b655cbe592fe4110eb7594c1d21b1d6d04dc8
 
 pkgname = mouseless

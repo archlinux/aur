@@ -1,8 +1,8 @@
 # Maintainer: Mikata Riko <sanbikappa at qq dot com>
 
 pkgname='mouseless'
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="A replacement for the mouse in Linux"
 arch=('x86_64' 'aarch64')
 license=('MIT')
@@ -13,7 +13,7 @@ source=(
     "https://github.com/jbensmann/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-    "63d837a17e1ad066afa4610966125eb8dc17ce6e47eeeb95a616446d6149a63d"
+    "741b85049f6c9ac0e15c0e68b88b655cbe592fe4110eb7594c1d21b1d6d04dc8"
 )
 install="${pkgname}.install"
 
@@ -36,7 +36,6 @@ package() {
     install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
     cp -r example_configs "${pkgdir}/usr/share/doc/${pkgname}"
     cp README.md "${pkgdir}/usr/share/doc/${pkgname}"
-    cp mouseless.service "${pkgdir}/usr/share/doc/${pkgname}/mouseless.service.example"
 
     install -dm755 "${pkgdir}/usr/lib/udev/rules.d"
     install -dm755 "${pkgdir}/usr/lib/systemd/system"
