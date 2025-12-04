@@ -1,0 +1,12 @@
+--- a/src/pillow_avif/_avif.c
++++ b/src/pillow_avif/_avif.c
+@@ -1064,7 +1064,7 @@ avif_decoder_dealloc(AvifDecoderObject *self) {
+     Py_TYPE(self)->tp_free((PyObject *)self);
+ }
+
+-PyObject *
+-AvifCodecVersions() {
++static PyObject *
++AvifCodecVersions(PyObject *self, PyObject *args) {
+     char codecVersions[256];
+     avifCodecVersions(codecVersions);

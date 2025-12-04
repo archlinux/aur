@@ -1,0 +1,13 @@
+# Build artifacts
+*.tar.gz
+*.pkg.tar.zst
+*.pkg.tar.xz
+pkg/
+src/
+repo/
+
+# Logs
+*.log
+
+# Do not ignore PKGBUILD LICENSE
+!LICENSE
