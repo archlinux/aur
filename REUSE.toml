@@ -53,7 +53,7 @@ path = [
     "config",
     "PATCH-asus-wmi-fixup-screenpad-brightness.patch",
     "PATCH-v5-00-11-Improvements-to-S5-power-consumption.patch",
-    "PATCH-v8-01-10-HID-asus-simplify-RGB-init-sequence.patch"
+    "PATCH-v10-00-11-HID-asus-Fix-ASUS-ROG-Laptop-s-Keyboard-backlight-handling.patch"
     "0002-platform-x86-asus-armoury-move-existing-tunings-to-a.patch",
     "asus-patch-series.patch"
 ]

@@ -4,7 +4,7 @@
 
 pkgbase=linux-g14
 pkgver=6.18.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux-g14'
 url="https://gitlab.com/dragonn/linux-g14.git"
 _url='https://github.com/archlinux/linux'
@@ -57,7 +57,7 @@ source=(
   0003-platform-x86-asus-armoury-add-support-for-FA507UV.patch
   0001-platform-x86-asus-armoury-fix-only-DC-tunables-being.patch
 
-  PATCH-v8-01-10-HID-asus-simplify-RGB-init-sequence.patch
+  PATCH-v10-00-11-HID-asus-Fix-ASUS-ROG-Laptop-s-Keyboard-backlight-handling.patch
 
   0001-acpi-proc-idle-skip-dummy-wait.patch
   PATCH-v5-00-11-Improvements-to-S5-power-consumption.patch
@@ -88,7 +88,7 @@ sha256sums=('9106a4605da9e31ff17659d958782b815f9591ab308d03b0ee21aad6c7dced4b'
             'SKIP'
             '1461db929834dad3b39595dcff5650afcb69465be1f3a11d6f63e89ed3904910'
             'SKIP'
-            '2ff20dad1b55dac1a880e589a74b2345ba80493939f000edeae168be397fea41'
+            '1c1568b06b57a1db79120b0430a8c88130702eab06507572dd18030d901adad2'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             '11e570d8a355c2c6ccd413b7ecea9ae1f9b9801eb9a16249f8c4c5e6c80a1ead'
             '47d8cea0e2edb636ff86b4c331e91e71396302fc4bbf9610b6bf62b0f745f755'
@@ -103,7 +103,7 @@ sha256sums=('9106a4605da9e31ff17659d958782b815f9591ab308d03b0ee21aad6c7dced4b'
             'b837555c1dd960d448bea5099134fa9a1d6868f98851c65800caabf5356006c6'
             '89e1dddffde4f38e5f63645e116c1e9fad63c2fd8101c787b4d1cc0032eac4e7'
             'e1d4954d0ca79d1857683bd87bab44f8088a08e16a0754ed46f1c462f6e5a34b'
-            'c909206ef875381d2d7accf42034bc75e33978b1e85a06b84306608f853663bd'
+            '93f054d3a81ae4c32c92ea92e86ed6d1a250cb3d40a14ec5f01c532eb0a694b0'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             '83d40f889a96c492e15fcaf16914c864e8d0ac7fb85148690badef61e89d7afa'
             '590752012b37a21c92b59ab98189f56f405a4722572dd87b39c925bb89bb17c4'
