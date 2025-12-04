@@ -1,0 +1,20 @@
+# Build artifacts
+*.tar.gz
+*.tar.xz
+*.zip
+*.whl
+pkg/
+src/
+TensorRT-*/
+
+# Makepkg files
+*.log
+*.sig
+*.pkg.tar*
+
+# Downloaded sources
+LICENSE
+
+# Checksums
+*.sha256
+*.md5
