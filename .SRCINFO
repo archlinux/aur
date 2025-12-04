@@ -1,22 +1,22 @@
 pkgbase = standardnotes-desktop
 	pkgdesc = Think fearlessly with end-to-end encrypted notes and files.
-	pkgver = 3.198.5
-	pkgrel = 2
+	pkgver = 3.201.3
+	pkgrel = 1
 	url = https://standardnotes.com
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
-	makedepends = git
 	makedepends = libxcrypt-compat
 	makedepends = python
 	makedepends = python-setuptools
 	makedepends = yarn
 	depends = electron35
 	depends = libsecret
-	source = standardnotes-3.198.5.tar.gz::https://github.com/standardnotes/app/archive/refs/tags/@standardnotes/desktop@3.198.5.tar.gz
+	options = !strip
+	source = standardnotes-3.201.3.tar.gz::https://github.com/standardnotes/app/archive/refs/tags/@standardnotes/desktop@3.201.3.tar.gz
 	source = standard-notes.desktop
 	source = standard-notes.sh
-	sha256sums = 9de0b04d364ad0e3a086c52178c3416fe55d91962bf64b6bcd73ec8abbba758a
+	sha256sums = 759728fe2dfdf97665902d6fa988e452af826b3ec879c9938b5045cc9e2f1f12
 	sha256sums = 274cd3914ff2a6a0999485a26cbded3ad597763482a90eee8ee34490ddffda00
 	sha256sums = 3ef9a5d2b4f2ba2e5b210a492c7398073f3cdd472d989e5ce2d4c6105d905666
 
