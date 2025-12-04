@@ -1,0 +1,10 @@
+[Unit]
+Description=Custom implementation of org.freedesktop.Filemanager1
+
+[Service]
+Type=dbus
+BusName=org.freedesktop.FileManager1
+ExecStart=/usr/lib/org.freedesktop.FileManager1.common/file_manager_dbus
+
+[Install]
+WantedBy=default.target

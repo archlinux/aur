@@ -1,0 +1,10 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    ".SRCINFO",
+    "filemanager1-common.service",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
