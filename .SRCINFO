@@ -1,0 +1,20 @@
+pkgbase = mommy-git
+	pkgdesc = mommy's here to support you~
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/fwdekker/mommy
+	arch = any
+	license = Unlicense
+	checkdepends = shellspec
+	checkdepends = man-db
+	makedepends = make
+	depends = sh
+	optdepends = man-db: for manual pages
+	optdepends = fish: for tab completion
+	optdepends = zsh: for tab completion
+	provides = mommy=1.8.0
+	conflicts = mommy
+	source = git+https://github.com/fwdekker/mommy.git
+	sha256sums = SKIP
+
+pkgname = mommy-git
