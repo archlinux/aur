@@ -1,7 +1,7 @@
 pkgbase = krunner-bazaar
 	pkgdesc = KRunner plugin for bazaar
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ublue-os/krunner-bazaar
 	arch = x86_64
 	license = Apache-2.0
