@@ -4,7 +4,7 @@ pkgbase=python-ndcube
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=2.3.4
+pkgver=2.3.5
 pkgrel=1
 pkgdesc="Package for multi-dimensional contiguious and non-contiguious coordinate aware arrays"
 arch=('any')
@@ -12,7 +12,7 @@ url="https://docs.sunpy.org/projects/ndcube"
 license=('BSD-2-Clause')
 makedepends=('python-setuptools-scm>=6.0.0'
              'python-build'
-             'python-installer'
+             'python-installer')
 #            'python-sphinx-automodapi'
 #            'python-sphinx-changelog'
 #            'python-sphinx-gallery'
@@ -21,8 +21,9 @@ makedepends=('python-setuptools-scm>=6.0.0'
 #            'python-gwcs'
 #            'python-sunpy'
 #            'python-mpl-animators'
+#            'python-reproject'
 #            'graphviz'
-             )  # wheel required by new setuptools, matplotlib <- mpl-animators
+#            )  # wheel required by new setuptools, matplotlib <- mpl-animators
 # circular deps
 #checkdepends=('python-pytest-doctestplus'
 #              'python-pytest-mpl'
@@ -48,7 +49,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #       "https://github.com/sunpy/data/raw/404adbc/sunpy/v1/AIA20110607_063305_1600_lowres.fits"
 #       "https://github.com/sunpy/ndcube/raw/main/changelog/README.rst"
 #)
-md5sums=('d0a78ce5eacd98216167e17eb98adb85')
+md5sums=('38edbb6dba80ed2f5280fae612bd0c8d')
 #        'SKIP')
 
 #prepare() {
