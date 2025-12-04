@@ -1,6 +1,6 @@
 pkgbase = portable-git
 	pkgdesc = Portable Sandboxing framework
-	pkgver = 11.0.beta.1.r33.gf8ffab78
+	pkgver = 11.0.rc.3.r16.gc3ca9b81
 	pkgrel = 1
 	url = https://github.com/Kraftland/portable
 	arch = any
