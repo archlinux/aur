@@ -1,0 +1,14 @@
+pkgbase = textlint-rule-preset-ja-technical-writing
+	pkgdesc = Textlint rule preset for JTF style guide
+	pkgver = 12.0.2
+	pkgrel = 1
+	url = https://github.com/textlint-ja/textlint-rule-preset-JTF-style
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = textlint
+	source = https://registry.npmjs.org/textlint-rule-preset-ja-technical-writing/-/textlint-rule-preset-ja-technical-writing-12.0.2.tgz
+	sha256sums = c4db594ad34d262c94af69d1616785cbea1d41364595abdf770f850c7e32b14f
+
+pkgname = textlint-rule-preset-ja-technical-writing
