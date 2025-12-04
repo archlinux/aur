@@ -1,0 +1,43 @@
+post_install() {
+    echo ">>> Loading i2c-dev kernel module..."
+    modprobe i2c-dev 2>/dev/null || true
+
+    echo ">>> Enabling asus-rog-touchpad service..."
+    systemctl daemon-reload
+    systemctl enable asus-rog-touchpad.service
+
+    cat <<EOF
+
+==> ASUS ROG Touchpad Numpad Driver installed!
+
+    To start the service now:
+        sudo systemctl start asus-rog-touchpad
+
+    Usage:
+        - Tap top-right corner to toggle numpad
+        - Tap top-left corner to cycle brightness (numpad on)
+        - Tap top-left corner to open calculator (numpad off)
+
+    Commands:
+        systemctl status asus-rog-touchpad   - Check status
+        journalctl -u asus-rog-touchpad -f   - View logs
+
+EOF
+}
+
+post_upgrade() {
+    echo ">>> Reloading systemd and restarting service..."
+    systemctl daemon-reload
+    systemctl try-restart asus-rog-touchpad.service
+}
+
+pre_remove() {
+    echo ">>> Stopping and disabling service..."
+    systemctl stop asus-rog-touchpad.service 2>/dev/null || true
+    systemctl disable asus-rog-touchpad.service 2>/dev/null || true
+}
+
+post_remove() {
+    systemctl daemon-reload
+    echo ">>> Service removed. i2c-dev.conf kept in /etc/modules-load.d/"
+}

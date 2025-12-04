@@ -1,0 +1,18 @@
+pkgbase = asus-rog-touchpad-numpad
+	pkgdesc = Linux driver for ASUS ROG laptop touchpad numpad overlay with LED backlight control
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/spinualexandru/asus-rog-touchpad-driver
+	install = asus-rog-touchpad-numpad.install
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = libevdev
+	backup = etc/modules-load.d/i2c-dev.conf
+	source = git+https://github.com/spinualexandru/asus-rog-touchpad-driver.git
+	sha256sums = SKIP
+
+pkgname = asus-rog-touchpad-numpad
