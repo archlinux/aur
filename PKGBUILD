@@ -2,7 +2,7 @@
 # Maintainer: Pairadux
 
 pkgname='muxly-bin'
-pkgver=0.16.1
+pkgver=0.17.0
 pkgrel=1
 pkgdesc='A lightweight CLI for handling TMUX sessions with ease'
 url='https://github.com/Pairadux/muxly'
@@ -12,13 +12,13 @@ provides=('Muxly')
 conflicts=('Muxly')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Pairadux/Muxly/releases/download/v${pkgver}/Muxly_Linux_arm64.tar.gz")
-sha256sums_aarch64=('905bcc7f998d594392678bcc46e5a30009eace3076b643b3a01f65bdddb74c17')
+sha256sums_aarch64=('49db719c8ffbc6bd1386b43e08708179d0b0b0dada0eec89de6fc9dca91af5bc')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/Pairadux/Muxly/releases/download/v${pkgver}/Muxly_Linux_i386.tar.gz")
-sha256sums_i686=('934be14b142e16a20365deb987ce3accf836faf497d9768b9f5e2e30786a94f1')
+sha256sums_i686=('24efe098e75daddd22a15c383b922c3a7bd63bf0e1d46fa9606aeaa3bee2a78f')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Pairadux/Muxly/releases/download/v${pkgver}/Muxly_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('dfee17b6bcfe219299c6621c3021e7dbe4e9dc7db4630afe6b96f77a1c9fb365')
+sha256sums_x86_64=('0bc9c5413d0220a3a796dd56a29f90b57df362d18e5c649b9a8e3308c034e85e')
 
 package() {
   install -Dm755 "./Muxly" "${pkgdir}/usr/bin/Muxly"
