@@ -7,6 +7,7 @@ pkgbase = anyrun
 	license = GPL-3.0-only
 	makedepends = cargo
 	depends = gtk4-layer-shell
+	conflicts = anyrun-provider
 	options = !lto
 	options = !strip
 	source = anyrun-25.12.0.tar.gz::https://github.com/anyrun-org/anyrun/archive/refs/tags/v25.12.0.tar.gz

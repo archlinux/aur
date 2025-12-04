@@ -25,6 +25,8 @@ makedepends=(
   'cargo'
 )
 
+conflicts=("${_pkgname[1]}")
+
 options=('!lto' '!strip')
 
 _pkgsrc=(
