@@ -1,6 +1,6 @@
 # Maintainer: Corey Mwamba <contact dot me at coreymwamba dot co dot uk>
 pkgname=waybar-niri-taskbar
-pkgver=0.3.0+niri.25.08
+pkgver=0.4.0+niri.25.11
 _pkgname="${pkgname/waybar-/}-${pkgver/+/-}"
 pkgrel=1
 pkgdesc="A simple taskbar for Niri, written in Rust: release version"
@@ -11,7 +11,7 @@ depends=('niri' 'waybar' 'gtk3')
 makedepends=('rust' 'cargo')
 conflicts=('waybar-niri-taskbar-git')
 source=("https://github.com/LawnGnome/${pkgname/waybar-/}/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a493e70aec0c60ff4782a73f7c26ac8fb4cefb9c2c7ee1ef5f664a3911e54694')
+sha256sums=('25306fdce45d492d1f630cc74ada5e53e521b3f58d04ddb50ef1b68a644269e5')
 build() {
   cd "$_pkgname"
   cargo build --release --locked
