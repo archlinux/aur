@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Mousegun
+Comment=Retro first-person shooter
+Exec=/usr/bin/mousegun
+Icon=mousegun
+Terminal=false
+Categories=Game
+Keywords=FPS;Furry
+StartupNotify=true
