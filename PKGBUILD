@@ -1,9 +1,9 @@
 # Maintainer: lanthora <lanthora@outlook.com>
 
 pkgname=candy-git
-pkgver=6.0.5.r1.g3179695
+pkgver=6.1.4.r1.gf5e40a0
 pkgrel=1
-pkgdesc="A simple networking tool"
+pkgdesc="A tool for creating and managing a virtual network implemented in C++"
 url="https://github.com/lanthora/candy"
 license=('MIT')
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64' 'loong64')
