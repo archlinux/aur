@@ -2,7 +2,7 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-cars-bonus
-pkgver=25.0414
+pkgver=25.0902
 pkgrel=1
 pkgdesc="Additional RVGL cars used for special events."
 url='https://re-volt.io/online/cars/bonus'
