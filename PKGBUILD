@@ -2,7 +2,7 @@
 pkgname=codex-acp
 _realname=codex-acp
 pkgver='0.6.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="ACP adapter for OpenAI Codex"
 arch=('x86_64' 'aarch64')
 url="https://github.com/zed-industries/codex-acp"
@@ -12,6 +12,7 @@ conflicts=("${_realname}")
 depends=(
   'openai-codex'
 )
+options=('!debug')
 makedepends=()
 optdepends=()
 

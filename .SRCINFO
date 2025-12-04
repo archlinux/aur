@@ -9,6 +9,7 @@ pkgbase = codex-acp
 	depends = openai-codex
 	provides = codex-acp
 	conflicts = codex-acp
+	options = !debug
 	source_x86_64 = codex-acp-0.6.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/zed-industries/codex-acp/releases/download/v0.6.0/codex-acp-0.6.0-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums_x86_64 = 4ec913ab92f83128be00d1ca5fc8166ebc21ea9b4a8b855e884bbadef64ec0f0
 	source_aarch64 = codex-acp-0.6.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/zed-industries/codex-acp/releases/download/v0.6.0/codex-acp-0.6.0-aarch64-unknown-linux-gnu.tar.gz
