@@ -4,24 +4,21 @@
 pkgname=vutronmusic-bin
 _pkgname=VutronMusic
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="高颜值的第三方网易云播放器，支持本地音乐播放、离线歌单、桌面歌词、Touch Bar歌词、Mac状态栏歌词显示"
 arch=('x86_64')
 url="https://github.com/stark81/VutronMusic"
 license=('MIT')
 depends=(
-  'desktop-file-utils'
-  'gtk4'
-  'hicolor-icon-theme'
   'at-spi2-core'
+  'gtk3'
   'libnotify'
   'libsecret'
   'libxss'
   'libxtst'
   'nss'
-  'util-linux-libs'
+  'xdg-utils'
 )
-optdepends=('libappindicator-gtk3')
 makedepends=(
   'gendesk'
 )
