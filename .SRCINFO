@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-dmetrics-git
 	pkgdesc = Plugin for Vapoursynth: dmetrics (GIT version)
 	pkgver = r11.adec0f3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vapoursynth/dmetrics
 	arch = x86_64
 	license = GPL-2.0

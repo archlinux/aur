@@ -3,15 +3,15 @@
 _plug=dmetrics
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r11.adec0f3
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/vapoursynth/dmetrics'
 license=('GPL-2.0')
 depends=('vapoursynth')
 makedepends=(
-	'git'
-	'meson'
+    'git'
+    'meson'
 )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -34,6 +34,6 @@ build() {
 }
 
 package(){
-	DESTDIR="$pkgdir" ninja -C build install
+    DESTDIR="$pkgdir" ninja -C build install
     install -Dm644 "${srcdir}/${_plug}/Copying" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
