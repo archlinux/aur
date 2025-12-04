@@ -1,0 +1,97 @@
+From 1dee8f3f30ea88e4f358739014d7631df57139f7 Mon Sep 17 00:00:00 2001
+From: Jonas Karlsson <jonaskarlsson@fripost.org>
+Date: Thu, 4 Dec 2025 20:19:53 +0100
+Subject: [PATCH] Fix user data paths
+
+---
+ Loap/Constants/PathConstants.cs | 10 ++++++----
+ Loap/Progress/LoapProgress.cs   |  7 +++++++
+ Loap/UI/Hotkeys.cs              |  7 +++++++
+ LoapCore/L3DImport/L3DLoader.cs |  4 ++--
+ 4 files changed, 22 insertions(+), 6 deletions(-)
+
+diff --git a/Loap/Constants/PathConstants.cs b/Loap/Constants/PathConstants.cs
+index 807dcdf..a398eb6 100644
+--- a/Loap/Constants/PathConstants.cs
++++ b/Loap/Constants/PathConstants.cs
+@@ -14,20 +14,22 @@ namespace Loap.Constants
+         public const string EXT_GENERAL = ".lpmi";
+ 
+         public static string AppPath => AppDomain.CurrentDomain.BaseDirectory!;
++        public static string AppDataPath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Loap");
++        public static string UserDataPath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Loap");
+ 
+         private static string SETTINGS_FILE = "Loap.ini";
+         private static string HOTKEYS_FILE = "hotkeys" + EXT_GENERAL;
+         private static string PROGRESS_FILE = "progress" + EXT_GENERAL;
+-        public static string SettingsFile => Path.Combine(AppPath, SETTINGS_FILE);
+-        public static string HotkeysFile => Path.Combine(AppPath, HOTKEYS_FILE);
+-        public static string ProgressFile => Path.Combine(AppPath, PROGRESS_FILE);
++        public static string SettingsFile => Path.Combine(AppDataPath, SETTINGS_FILE);
++        public static string HotkeysFile => Path.Combine(AppDataPath, HOTKEYS_FILE);
++        public static string ProgressFile => Path.Combine(UserDataPath, PROGRESS_FILE);
+ 
+         private const string DATA_FOLDER = "data";
+         public static string DataPath => Path.Combine(AppPath, DATA_FOLDER);
+ 
+         private const string REPLAY_FOLDER = "replay";
+         public const string AUTO_REPLAY_FOLDER = "Auto";
+-        public static string ReplayPath => Path.Combine(AppPath, REPLAY_FOLDER);
++        public static string ReplayPath => Path.Combine(UserDataPath, REPLAY_FOLDER);
+ 
+         private const string ENTITIES_FOLDER = "entities";
+         private const string GRAPHICS_FOLDER = "gfx";
+diff --git a/Loap/Progress/LoapProgress.cs b/Loap/Progress/LoapProgress.cs
+index 5355a0b..22e6552 100644
+--- a/Loap/Progress/LoapProgress.cs
++++ b/Loap/Progress/LoapProgress.cs
+@@ -59,6 +59,13 @@ namespace Loap.Progress
+ 
+         public static void SaveProgressFile()
+         {
++            var directoryPath = Path.GetDirectoryName(PathConstants.ProgressFile);
++
++            if (!string.IsNullOrEmpty(directoryPath) && !Directory.Exists(directoryPath))
++            {
++                Directory.CreateDirectory(directoryPath);
++            }
++
+             DataItemWriter.SaveToFile(PathConstants.ProgressFile, _ProgressData);
+         }
+     }
+diff --git a/Loap/UI/Hotkeys.cs b/Loap/UI/Hotkeys.cs
+index 9fcb4c1..d7d4a78 100644
+--- a/Loap/UI/Hotkeys.cs
++++ b/Loap/UI/Hotkeys.cs
+@@ -169,6 +169,13 @@ namespace Loap.UI
+                 entry.SaveToDataItem(dst);
+             }
+ 
++            var directoryPath = Path.GetDirectoryName(PathConstants.HotkeysFile);
++
++            if (!string.IsNullOrEmpty(directoryPath) && !Directory.Exists(directoryPath))
++            {
++                Directory.CreateDirectory(directoryPath);
++            }
++
+             DataItemWriter.SaveToFile(PathConstants.HotkeysFile, result);
+         }
+     }
+diff --git a/LoapCore/L3DImport/L3DLoader.cs b/LoapCore/L3DImport/L3DLoader.cs
+index 0a3fba6..8afbeb8 100644
+--- a/LoapCore/L3DImport/L3DLoader.cs
++++ b/LoapCore/L3DImport/L3DLoader.cs
+@@ -14,8 +14,8 @@ namespace LoapCore.L3DImport
+ 
+         public static L3DLevel LoadL3DLevelFromFiles(string levelFilename, string metablockFilename)
+         {
+-            using FileStream lF = new FileStream(levelFilename, FileMode.Open);
+-            using FileStream mF = new FileStream(metablockFilename, FileMode.Open);
++            using FileStream lF = new FileStream(levelFilename, FileMode.Open, FileAccess.Read, FileShare.Read);
++            using FileStream mF = new FileStream(metablockFilename, FileMode.Open, FileAccess.Read, FileShare.Read);
+             return LoadL3DLevelFromStreams(lF, mF);
+         }
+ 
+-- 
+2.52.0
+

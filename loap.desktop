@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Loap
+Comment=Loap - A clone of the classic DOS game Lemmings 3D
+Exec=loap
+Icon=loap
+Terminal=false
+Categories=Game;LogicGame
