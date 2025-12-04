@@ -1,6 +1,6 @@
 pkgname=halbmeta
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A metapackage for my personal software"
 arch=('any')
 license=('MIT')
@@ -21,8 +21,10 @@ depends=(
   'libreoffice-fresh'
   'gimp'
   'filezilla'
+  'unzip'
 
   # Development
+  'base-devel'
   'vscodium-bin'
   'git'
   'python'
