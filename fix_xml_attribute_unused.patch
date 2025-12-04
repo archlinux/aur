@@ -1,0 +1,13 @@
+--- sra-tools-3.3.0/libs/kxml/xml.c	2025-12-03 06:50:45.000000000 +0530
++++ sra-tools-3.3.0.new/libs/kxml/xml.c	2025-12-04 12:47:03.055086046 +0530
+@@ -171,6 +171,10 @@
+ }
+ #endif
+ 
++#ifndef ATTRIBUTE_UNUSED
++#define ATTRIBUTE_UNUSED __attribute__((unused))
++#endif
++
+ static void s_xmlGenericErrorDefaultFunc(void *ctx ATTRIBUTE_UNUSED,
+     const char *msg,
+     ...)
