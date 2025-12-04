@@ -1,7 +1,7 @@
 pkgbase = python-pkb-client
 	pkgdesc = Unofficial client for the Porkbun API
-	pkgver = 2.0.0
-	pkgrel = 2
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://github.com/infinityofspace/pkb_client
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = python-pkb-client
 	depends = python-requests
 	depends = python-responses
 	depends = python-dnspython
-	source = https://github.com/infinityofspace/pkb_client/archive/refs/tags/v2.0.0.tar.gz
-	b2sums = 587d72f87243d246ea3c2dcf0429cbc7d7c39bb805e315f2aa4b2e17980cc5ac34ba7a472bd49a87865e2aa5967c5b3eaa3f8211ee688e128fbb75675a6fd44c
+	source = https://github.com/infinityofspace/pkb_client/archive/refs/tags/v2.2.0.tar.gz
+	b2sums = a5dcb40898ef1712271c4af753e0ffcee3c53e32c6b499da6b8651e10a7ea092357498b33a243f38537263427f7801f9e5a61db6d96befc8e5bd92f7813df19e
 
 pkgname = python-pkb-client
