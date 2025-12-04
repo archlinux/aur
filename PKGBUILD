@@ -2,7 +2,7 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-tracks-circuit
-pkgver=25.0414
+pkgver=25.0902
 pkgrel=1
 pkgdesc="Additional RVGL tracks used for drifting and other special events."
 url='https://re-volt.io/online/tracks/circuit'
@@ -18,5 +18,9 @@ sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/rvgl_io_tracks_circuit"
+
+    # Fix filenames
+    mv gfx/room12x16y.bmp gfx/room12x16.bmp
+
     find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }
