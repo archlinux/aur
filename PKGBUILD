@@ -1,7 +1,7 @@
 # Maintainer: Lucas Mindello <lucas at mindello dot com dot br>
 
 pkgname=homeassistant-osagent-bin
-pkgver=1.7.2
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Home Assistant OS Agent"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'armv6h' 'armv5tel')
@@ -14,27 +14,27 @@ conflicts=('homeassistant-osagent')
 case "$CARCH" in
   x86_64)
     _arch="amd64"
-    _checksum="6a5a437d809d2ec251fa08d3edc07893e7e3233cb2278c7a389d0e068d0767ed7ea287a6b2d01f1b0d3ced67bb23c4d70bc7f3bde5c000daa1e3e6150bc26659"
+    _checksum="8faee71395e4768ff8e8530b6c11a929a883383c44344ef8a93ec8e00a3aa412718550f580224436cb1704d8d6ebf8907bdbb962684d28c2a8f6b1fb801d74ea"
     ;;
   i686)
     _arch="386"
-    _checksum="a1d3a8698163ca3009d03168e8bb14927e8ec6b94eeb2769d76ee4d8ecca9567076eea3e5a4ed771de8d2b8bef1a28445cb1f47b78d17e355a42abd5be3a50bf"
+    _checksum="399bcaf3b8d58af85b54953afad1776a4237b81561b94e1884ac89a901bad93cef319d5043e44eee8d579ff93a3faafab732bd5dbb833da61fbc8ea347006fc8"
     ;;
   aarch64)
     _arch="arm64"
-    _checksum="0b344f5390985b3e3d973145f9c0bdf66039e9d2912a5b3f8b3ecb7b870f1f9420c8e8a74a26cfb779ab688cc196b1a6b01652bec8c4add8c42b73c19bd054b4"
+    _checksum="9486dcc6f8717e2346d14b1a6942023f5eb85a838d8cbcb4f1c4799ccbad49d4c48cbd998c8a3f6035cc18d17cc2a96542fdde0e4a8843d8f2e3e5be61912243"
     ;;
   armv7h)
     _arch="armv7"
-    _checksum="a351eb0041e835010fc170478ded6b6b90373011fd4d2a7f5cb57a25dcccfa0540961e6e8f78cc158d69e6fa6ca4ddc34a42147894496f644a4907ebbe7f29b3"
+    _checksum="fab13d471cf3a782d07c52712961a69d2bf4cbc1c6bc1d7ac008dcec926ddae7007bbde2a2a7db391efde5df30494a5f1782e9cfa854a1c39431277433b2674d"
     ;;
   armv6h)
     _arch="armv6"
-    _checksum="167933781068c079e046f5a71fff1052d927be3210ceb2025dd10fee7a22454e5d9cecd59ec1fae0ee658f0e8f1c0fb7eec2cf3f8baa981a174f49ecde0961fb"
+    _checksum="8b6cd9a1460a86ddbb83b7725c05177cab06fd83dad265f04f8f5bc04a6d30a83b744338615c90723063df7aea9e1fd2a1f1e663da672203430960bda7573f9e"
     ;;
   armv5tel)
     _arch="armv5"
-    _checksum="43a2d013609d2b32d3b04c7e35fadc881069bff1430a328c855454e1faee8384f831b2a48168cd8a0cd8e0929064077c09ed5dc6b6aa9e7257fba6612ed38c02"
+    _checksum="5764e5ac31c4cabee71026ebe9297b9bba86efd8db2da1aeefb8f749a08847d920f91c9f6839fc5446689f797e70c5e594264bd15b7781959991da80d7c96860"
     ;;
   *)
     echo "Arquitetura não suportada: $CARCH"
