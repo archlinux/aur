@@ -1,8 +1,7 @@
-pkgbase = halbMeta
+pkgbase = halbmeta
 	pkgdesc = A metapackage for my personal software
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/halbTeufel/halbMeta
 	arch = any
 	license = MIT
 	depends = librewolf-bin
@@ -13,4 +12,4 @@ pkgbase = halbMeta
 	depends = vscodium-bin
 	optdepends = supertuxkart
 
-pkgname = halbMeta
+pkgname = halbmeta
