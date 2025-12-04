@@ -1,14 +1,18 @@
 pkgbase = mullvad-tray
 	pkgdesc = System tray indicator for Mullvad VPN connection status
-	pkgver = 0.9.9
+	pkgver = 0.9.10
 	pkgrel = 1
 	url = https://gitlab.com/Plague_Doctor/mullvad-tray
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = gtk4
 	depends = libadwaita
-	source = mullvad-tray-0.9.9::https://gitlab.com/api/v4/projects/76826601/packages/generic/mullvad-tray/v0.9.9/mullvad-tray
-	source = mullvad-tray-0.9.9.sha256::https://gitlab.com/api/v4/projects/76826601/packages/generic/mullvad-tray/v0.9.9/mullvad-tray.sha256
+	source = mullvad-tray-0.9.10::https://gitlab.com/api/v4/projects/76826601/packages/generic/mullvad-tray/v0.9.10/mullvad-tray
+	source = mullvad-tray-0.9.10.sha256::https://gitlab.com/api/v4/projects/76826601/packages/generic/mullvad-tray/v0.9.10/mullvad-tray.sha256
+	source = mullvad-logo.png
+	source = mullvad-tray.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 

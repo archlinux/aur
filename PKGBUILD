@@ -1,6 +1,6 @@
 # Maintainer: Plague Doctor <plague@example.com>
 pkgname=mullvad-tray
-pkgver=0.9.9
+pkgver=0.9.10
 pkgrel=1
 pkgdesc="System tray indicator for Mullvad VPN connection status"
 arch=('x86_64')
@@ -10,8 +10,10 @@ depends=('gtk4' 'libadwaita')
 source=(
     "mullvad-tray-${pkgver}::https://gitlab.com/api/v4/projects/76826601/packages/generic/mullvad-tray/v${pkgver}/mullvad-tray"
     "mullvad-tray-${pkgver}.sha256::https://gitlab.com/api/v4/projects/76826601/packages/generic/mullvad-tray/v${pkgver}/mullvad-tray.sha256"
+    "mullvad-logo.png"
+    "mullvad-tray.desktop"
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
     # Verify checksum
@@ -22,5 +24,12 @@ prepare() {
 }
 
 package() {
+    # Install binary
     install -Dm755 "$srcdir/mullvad-tray-${pkgver}" "$pkgdir/usr/bin/$pkgname"
+
+    # Install icon
+    install -Dm644 "$srcdir/mullvad-logo.png" "$pkgdir/usr/share/pixmaps/mullvad-tray.png"
+
+    # Install desktop entry
+    install -Dm644 "$srcdir/mullvad-tray.desktop" "$pkgdir/usr/share/applications/mullvad-tray.desktop"
 }
