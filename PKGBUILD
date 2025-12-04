@@ -3,7 +3,7 @@
 _pkgauthor=mcandre
 _pkgname=tug
 pkgname=${_pkgname}-bin
-pkgver=0.0.18
+pkgver=0.0.19
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Multi-platform Docker rescue ship"
@@ -20,7 +20,7 @@ conflicts=("${_pkgname}"{,-git})
 source=("${_pkgname}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}.tgz"
         "README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE.md")
-sha256sums=('651c36a3a89ecb122fbeb2182e0222d5c9b23268707dea8fff91da906c4eb156'
+sha256sums=('56fdf9d7e584432d0a2f7a63222379e56a84739eb81b6f0e4fc5e9e004ade408'
             '451c83e154a1ea9a799853b50af0f83e73276dfdf1d052372b7aad613b05a25e'
             '319362074fd4edb39f6d61509c06d94b24ed06639657094dfa19b9135f19d882')
 
