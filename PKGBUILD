@@ -2,7 +2,7 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-stunts
-pkgver=25.0415
+pkgver=25.0902
 pkgrel=1
 pkgdesc="Additional Stunt Arena levels for RVGL."
 url='https://re-volt.io/online/tracks/battle'
