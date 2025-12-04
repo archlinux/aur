@@ -1,16 +1,16 @@
 pkgbase = mint-bin
 	pkgdesc = A refreshing language for the front-end web
-	pkgver = 0.27.0
+	pkgver = 0.28.1
 	pkgrel = 1
 	url = https://github.com/mint-lang/mint
 	arch = x86_64
 	license = BSD
 	conflicts = mint
-	noextract = mint-0.27.0-linux-x86_64
+	noextract = mint-0.28.1-linux-x86_64
 	noextract = LICENSE
-	source = https://github.com/mint-lang/mint/releases/download/0.27.0/mint-0.27.0-linux-x86_64
+	source = https://github.com/mint-lang/mint/releases/download/0.28.1/mint-0.28.1-linux-x86_64
 	source = https://raw.githubusercontent.com/mint-lang/mint/master/LICENSE
-	sha256sums = 32e149d1b2d58ede368d6eac716e77785ffb68b14fdb5e336bf038ec97f21a74
+	sha256sums = 5e69bed9bbd544f741a0900d73c387b4ebd184c1a47150857bd4bfd4e46ab0f2
 	sha256sums = 6b4ecb1a9202a35540d0405ddd88439bb4644a127afc02ee26428ca5d5c0bd9f
 
 pkgname = mint-bin
