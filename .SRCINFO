@@ -1,9 +1,11 @@
 pkgbase = fake86-git
 	pkgdesc = An 8086 PC emulator written in C - git version
 	pkgver = 2020.05.09.gd275349
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lgblgblgb/fake86.git
+	arch = i486
 	arch = i686
+	arch = pentium4
 	arch = x86_64
 	license = GPL2
 	makedepends = git
@@ -14,4 +16,3 @@ pkgbase = fake86-git
 	sha256sums = SKIP
 
 pkgname = fake86-git
-
