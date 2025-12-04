@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=rsop-open
 _gitname=rsop
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='Simple, fast & configurable tool to open and preview files'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("${_gitname}-${pkgver}.tar.gz::https://github.com/desbma/${_gitname}/archive/${pkgver}.tar.gz")
-sha512sums=('aa16a8410ecc77b7d204a7db91171724fdf8fb642e64f9a2b5e633d75e841434327fd6cd16e2ac36ef5ba656fc1abe864f06a9a1ffeb0eef3ab149da563549a7')
+sha512sums=('7dcd0bac61bd580e30f6f1dd073854f064b1e98d27f0bc2d6d5a5ad53e8488339fde14bbd04daad1428e156dd16be8307ce0fb287af69c2772a4d3fd07a7d808')
 
 prepare() {
     cd "${_gitname}-${pkgver}"
