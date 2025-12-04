@@ -1,7 +1,7 @@
 #Maintainer: Larzid <juanitocampamocha@gmail.com>
 pkgname=sotw
 pkgver=1.8.4
-pkgrel=6
+pkgrel=7
 epoch=
 pkgdesc="Shadow Of The Wyrm by Julian Day - Development branch."
 arch=('x86_64')
@@ -27,6 +27,7 @@ build() {
  	cd shadow-of-the-wyrm
  	# Put the assets in the right folder
  	cp -R ../assets ./
+ 	sed -i 's/"boost_system",//g' ${srcdir}/shadow-of-the-wyrm/premake5.lua
 	premake5 --lua_include=/usr/include/lua5.1 --lua_link=lua5.1 gmake
 	make config=release
 }
