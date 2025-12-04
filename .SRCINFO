@@ -1,6 +1,6 @@
 pkgbase = python-mytimer
 	pkgdesc = A Geeky Timer for Terminal Enthusiasts
-	pkgver = 2.3
+	pkgver = 2.4
 	pkgrel = 1
 	url = https://github.com/sepandhaghighi/mytimer
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-mytimer
 	depends = python-nava
 	depends = python-art
 	depends = python-jdatetime
-	source = https://files.pythonhosted.org/packages/source/m/mytimer/mytimer-2.3.tar.gz
-	sha256sums = 21de1eda4a9a6e9dbc999d559c7f6e002f0904d2b190999dbb5c077ea2a9d110
+	source = https://files.pythonhosted.org/packages/source/m/mytimer/mytimer-2.4.tar.gz
+	sha256sums = e4bc450ec69b854af1f2e30fbb5431153feff7e94779232dccc0e31450414ee9
 
 pkgname = python-mytimer

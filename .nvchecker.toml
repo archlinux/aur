@@ -1,0 +1,3 @@
+[python-mytimer]
+source = "pypi"
+pypi = "mytimer"
