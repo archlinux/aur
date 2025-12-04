@@ -1,7 +1,7 @@
 pkgbase = liskvork
 	pkgdesc = Modern multi-platform gomoku game server
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://liskvork.org
 	arch = x86_64
 	license = EUPL
