@@ -23,8 +23,8 @@ source=("${pkgname%-git}.sh")
 source_aarch64=("${pkgname%-git}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}-pre.${pkgrel}/${_pkgname}-linux-arm64.deb")
 source_x86_64=("${pkgname%-git}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}-pre.${pkgrel}/${_pkgname}-linux-amd64.deb")
 sha256sums=('3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
-sha256sums_aarch64=('fb5991a9ae426ae03cb78add1b359eb7dee9e9beefe57fd8c7c43557f4c97fd3')
-sha256sums_x86_64=('d1b7fb6b68204287b8071dc2d03ce1fb87165b84887bc80fd23047fef728329f')
+sha256sums_aarch64=('d1b7fb6b68204287b8071dc2d03ce1fb87165b84887bc80fd23047fef728329f')
+sha256sums_x86_64=('fb5991a9ae426ae03cb78add1b359eb7dee9e9beefe57fd8c7c43557f4c97fd3')
 prepare() {
     sed -i -e "
       s/@appname@/${pkgname%-git}/g
