@@ -1,6 +1,6 @@
 pkgbase = ascii-chat-git
 	pkgdesc = Video chat in your terminal (development version)
-	pkgver = 0.3.49.r1.gf60ce5b
+	pkgver = 0.3.51.r0.gea3cf9f
 	pkgrel = 1
 	url = https://github.com/zfogg/ascii-chat
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = ascii-chat-git
 	makedepends = portaudio
 	makedepends = doxygen
 	optdepends = v4l-utils: webcam device utilities
+	optdepends = openssh: ssh-agent support for key authentication
 	provides = ascii-chat
 	conflicts = ascii-chat
 	options = strip

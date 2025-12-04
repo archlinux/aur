@@ -1,6 +1,6 @@
 # Maintainer: Zachary Fogg <me@zfo.gg>
 pkgname=ascii-chat-git
-pkgver=0.3.49.r1.gf60ce5b
+pkgver=0.3.51.r0.gea3cf9f
 pkgrel=1
 pkgdesc="Video chat in your terminal (development version)"
 arch=('x86_64')
@@ -24,6 +24,7 @@ makedepends=(
 )
 optdepends=(
   'v4l-utils: webcam device utilities'
+  'openssh: ssh-agent support for key authentication'
 )
 provides=('ascii-chat')
 conflicts=('ascii-chat')
