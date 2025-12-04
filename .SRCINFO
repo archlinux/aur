@@ -1,0 +1,19 @@
+pkgbase = python-torchprofile
+	pkgdesc = Profiler to count the number of MACs / FLOPs of PyTorch models
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/zhijian-liu/torchprofile
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	depends = python-pytorch
+	depends = python-torchvision
+	source = python-torchprofile-0.0.4.tar.gz::https://github.com/zhijian-liu/torchprofile/archive/refs/tags/v0.0.4.tar.gz
+	sha256sums = eceb3826ffed31781ce18d2cef6741406596ef56afeca0d8934bb1db49bd9d58
+
+pkgname = python-torchprofile
