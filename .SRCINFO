@@ -1,0 +1,16 @@
+pkgbase = image-metahub-bin
+	pkgdesc = A desktop application for browsing, searching, and organizing AI-generated images locally. Designed for performance with large collections, focusing on powerful metadata filtering and complete privacy.(Prebuilt version.Use system-wide electron)
+	pkgver = 0.9.6_rc
+	pkgrel = 1
+	url = https://imagemetahub.com/
+	arch = x86_64
+	license = MPL-2.0
+	depends = electron38
+	provides = image-metahub=0.9.6_rc
+	conflicts = image-metahub
+	source = image-metahub-0.9.6_rc-x86_64.AppImage::https://github.com/LuqP2/Image-MetaHub/releases/download/v0.9.6-rc/Image.MetaHub-0.9.6-rc.AppImage
+	source = image-metahub.sh
+	sha256sums = ac97a9a00021d764735428a89330625b7c66f986777680a515ad203d6720d21f
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+
+pkgname = image-metahub-bin
