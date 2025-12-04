@@ -1,0 +1,12 @@
+Index: pam/pam_thinkfinger.c
+===================================================================
+--- pam/pam_thinkfinger.c
++++ pam/pam_thinkfinger.c
+@@ -66,7 +66,7 @@ static void pam_thinkfinger_log (const pam_thinkfinger_s *pam_thinkfinger, int t
+ 		va_start (ap, format);
+ 		vsnprintf (message, sizeof(message), format, ap);
+ 		va_end(ap);
+-		pam_syslog (pam_thinkfinger->pamh, type, message);
++		pam_syslog (pam_thinkfinger->pamh, type, "%s", message);
+ 	}
+ }
