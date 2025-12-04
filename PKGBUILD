@@ -1,11 +1,11 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-hardened
-_pkgver=6.17.8.hardened2
-_kernver=6.17.8
-_hardenedver=hardened2
+_pkgver=6.17.10.hardened1
+_kernver=6.17.10
+_hardenedver=hardened1
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
-_KERNNAME=6.17.8-hardened2-1-hardened
+_KERNNAME=6.17.10-hardened1-1-hardened
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}-hardened"
 pkgname=("${_pkgname}-versioned-bin"
          "${_pkgname}-versioned-headers-bin"
@@ -21,9 +21,9 @@ arch=(x86_64)
 license=(GPL2)
 options=('!strip')
 
-_kernpkg=linux-hardened-6.17.8.hardened2-1-x86_64.pkg.tar.zst
-_headerspkg=linux-hardened-headers-6.17.8.hardened2-1-x86_64.pkg.tar.zst
-_docspkg=linux-hardened-docs-6.17.8.hardened2-1-x86_64.pkg.tar.zst
+_kernpkg=linux-hardened-6.17.10.hardened1-1-x86_64.pkg.tar.zst
+_headerspkg=linux-hardened-headers-6.17.10.hardened1-1-x86_64.pkg.tar.zst
+_docspkg=linux-hardened-docs-6.17.10.hardened1-1-x86_64.pkg.tar.zst
 
 source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
         "https://archive.archlinux.org/packages/.all/${_headerspkg}"
@@ -31,9 +31,9 @@ source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('37d5709e91eb3f73edba919c3b7269f5af98a8ff411f578e52d1be22f4fb0e52'
-            'b813914cef88b028375ac17379e78bfe4dcf90b37d80c8deb98e9d7a713a248a'
-            '4a86df3236962bba3a575227e3cf198447d6f80afdbf04ded18d5a875b4e464a')
+sha256sums=('baf141e9be9056ef795148079e3c4fb8cbbc0af3cb3265a671d05d4ac7cab27f'
+            'db73ce00c48494116e252d0d0a1043d7f06f7ac27eed001bfb87bea74b7d8025'
+            'e441e95e6578f90eec924e7b0fd89002b3462054a9d22cf9a24cfbb7ba4b7946')
 
 package_linux-hardened-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -51,7 +51,7 @@ package_linux-hardened-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.17.8.hardened2-1-hardened-bin() {
+package_linux6.17.10.hardened1-1-hardened-bin() {
   pkgdesc="The Security-Hardened Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -70,7 +70,7 @@ package_linux6.17.8.hardened2-1-hardened-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux6.17.8.hardened2-1-hardened-headers-bin() {
+package_linux6.17.10.hardened1-1-hardened-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Security-Hardened Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -79,7 +79,7 @@ package_linux6.17.8.hardened2-1-hardened-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux6.17.8.hardened2-1-hardened-docs-bin() {
+package_linux6.17.10.hardened1-1-hardened-docs-bin() {
   pkgdesc="Documentation for the Security-Hardened Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
