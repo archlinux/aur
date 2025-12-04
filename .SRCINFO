@@ -1,6 +1,6 @@
 pkgbase = crit-bin
 	pkgdesc = Rust cross-compiler
-	pkgver = 0.0.11
+	pkgver = 0.0.12
 	pkgrel = 1
 	url = https://github.com/mcandre/crit
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = crit-bin
 	provides = crit
 	conflicts = crit
 	conflicts = crit-git
-	source = crit-0.0.11.tgz::https://github.com/mcandre/crit/releases/download/v0.0.11/crit-0.0.11.tgz
-	source = README-0.0.11.md::https://raw.githubusercontent.com/mcandre/crit/v0.0.11/README.md
-	source = LICENSE-0.0.11::https://raw.githubusercontent.com/mcandre/crit/v0.0.11/LICENSE.md
-	sha256sums = 2b43d239b29042bacfd334d85f4745a4a1c38032e764c553d4547d0410fe9b0b
+	source = crit-0.0.12.tgz::https://github.com/mcandre/crit/releases/download/v0.0.12/crit-0.0.12.tgz
+	source = README-0.0.12.md::https://raw.githubusercontent.com/mcandre/crit/v0.0.12/README.md
+	source = LICENSE-0.0.12::https://raw.githubusercontent.com/mcandre/crit/v0.0.12/LICENSE.md
+	sha256sums = b2071916bef99cc979cab565ed66f87aeb7ec82f6619a011856dda98aa343ac5
 	sha256sums = f6b5c38c03788a96d35470441d55587b0475e948896d59b950f0ae8e95067f55
 	sha256sums = 57f53599a9a2272ea3ac34a2ca701bb512fec522b905ef5fc06671cd1636eeec
 
