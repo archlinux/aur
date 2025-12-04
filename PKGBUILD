@@ -43,7 +43,7 @@ build() {
   sed -i "s|GIT_BRANCH =.*|GIT_BRANCH = \"${_gitbranch}\"|g" searx/version_frozen.py
   
   # patch setup.py
-  sed "/'static\/themes\/\*\/\*',/a\'static/themes/*/*/*'," setup.py
+  sed -i "/'static\/themes\/\*\/\*'/a\            'static/themes/*/*/*'," setup.py
 
   # generate the wheel using the system python-build
   python -m build --no-isolation --wheel
