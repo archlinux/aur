@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Python library to find duplicate images using hashing and CNNs"
 arch=('x86_64')
 url="https://github.com/idealo/imagededup"
-license=('Apache')
+license=('Apache-2.0')
 depends=(
   'python'
   'python-numpy'
