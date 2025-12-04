@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Derumigny nderumigny <at> gmail <dot> com
 pkgname=spack
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A flexible package manager for supercomputer that supports multiple versions, configurations, platforms, and compilers."
 arch=('i686' 'x86_64')
 url="https://spack.io/"
@@ -85,5 +85,7 @@ package() {
 
   # Fix mode to match polkit.
   install -d -o root -g polkitd -m 755 ${pkgdir}/usr/share/polkit-1/rules.d
+
+  chown spack:spack /usr/lib/python${PYTHON_VERSION}/site-packages/etc/spack/
   popd
 }
