@@ -1,0 +1,20 @@
+pkgbase = prompt-evaluator-bin
+	pkgdesc = An open-source toolkit for evaluating, testing, and comparing LLM prompts. It provides a GUI-driven workflow for running prompt tests, tracking token usage, visualizing results, and ensuring reliability across models like OpenAI, Claude, and Gemini.(Prebuilt version.Use system-wide electron)
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://taqelah.sg/
+	arch = x86_64
+	license = MIT
+	depends = electron28
+	provides = prompt-evaluator=0.0.1
+	conflicts = prompt-evaluator
+	options = !emptydirs
+	options = !strip
+	source = prompt-evaluator-0.0.1.deb::https://github.com/syamsasi99/prompt-evaluator/releases/download/v0.0.1/prompt-evaluator_0.0.1_amd64.deb
+	source = LICENSE-0.0.1::https://raw.githubusercontent.com/syamsasi99/prompt-evaluator/v0.0.1/LICENSE
+	source = prompt-evaluator.sh
+	sha256sums = fd1b5d524c281a1a32e2b1f67d11222081faff2ef8c2da09f0f3673d524e694b
+	sha256sums = 9e5f1f1de55ea476ac6c20d6a81fb2e30f5f9ac39121d4c96699c1c1481a9c83
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+
+pkgname = prompt-evaluator-bin
