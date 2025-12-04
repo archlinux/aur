@@ -1,15 +1,15 @@
 pkgbase = beads-bin
 	pkgdesc = Graph-based memory + issue tracker for coding agents (binary release)
-	pkgver = 0.28.0
+	pkgver = 0.29.0
 	pkgrel = 1
 	url = https://github.com/steveyegge/beads
 	arch = x86_64
 	license = MIT
-	provides = bd=0.28.0
-	provides = beads=0.28.0
+	provides = bd=0.29.0
+	provides = beads=0.29.0
 	conflicts = beads
 	options = !strip
-	source_x86_64 = beads-0.28.0-linux-amd64.tar.gz::https://github.com/steveyegge/beads/releases/download/v0.28.0/beads_0.28.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 9ff19ccc16714fdae468185f412e36ae677879937caa5fbb8f05c10b039df99d
+	source_x86_64 = beads-0.29.0-linux-amd64.tar.gz::https://github.com/steveyegge/beads/releases/download/v0.29.0/beads_0.29.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 67fff26d4078fb56f5af5926d14fa568249c43c39f3459fcf5500c09b9fedfea
 
 pkgname = beads-bin
