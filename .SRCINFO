@@ -1,6 +1,6 @@
 pkgbase = ascii-chat-git
 	pkgdesc = Video chat in your terminal (development version)
-	pkgver = 0.3.51.r0.gea3cf9f
+	pkgver = 0.3.55.r0.gc59e4c0
 	pkgrel = 1
 	url = https://github.com/zfogg/ascii-chat
 	arch = x86_64

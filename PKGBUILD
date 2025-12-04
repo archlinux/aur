@@ -1,6 +1,6 @@
 # Maintainer: Zachary Fogg <me@zfo.gg>
 pkgname=ascii-chat-git
-pkgver=0.3.51.r0.gea3cf9f
+pkgver=0.3.55.r0.gc59e4c0
 pkgrel=1
 pkgdesc="Video chat in your terminal (development version)"
 arch=('x86_64')
