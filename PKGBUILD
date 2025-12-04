@@ -1,6 +1,6 @@
 # Alfred Roos alfred@stensatter.se
 pkgname=imagine-term-git
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 epoch=
 pkgdesc="Imagine is a program that displays images and video in the terminal."
@@ -13,7 +13,9 @@ conflicts=(imagine)
 md5sums=()
 
 prepare() {
-	git clone https://github.com/spynets/imagine
+		git clone https://github.com/spynets/imagine
+		cd imagine
+		git submodule update --init --recursive
 }
 
 build() {
