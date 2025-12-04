@@ -1,0 +1,3 @@
+[python-asyncer]
+source = "pypi"
+pypi = "asyncer"
