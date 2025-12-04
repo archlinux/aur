@@ -1,0 +1,17 @@
+pkgbase = vibecoder-git
+	pkgdesc = AI-orchestrated coding agent colony
+	pkgver = r1123.f0d2be6
+	pkgrel = 1
+	url = https://github.com/steveyegge/vc
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	conflicts = vc
+	conflicts = vercel
+	options = !debug
+	source = git+https://github.com/steveyegge/vc.git
+	b2sums = SKIP
+
+pkgname = vibecoder-git
