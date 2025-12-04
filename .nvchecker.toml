@@ -1,0 +1,5 @@
+[app2unit]
+source = "github"
+github = "Vladimir-csp/app2unit"
+use_max_tag = true
+prefix = "v"

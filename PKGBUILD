@@ -2,7 +2,7 @@
 
 _pkgauthor=Vladimir-csp
 pkgname=app2unit
-pkgver=1.1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Utility to launch commands as systemd user units"
 url="https://github.com/${_pkgauthor}/${pkgname}"
@@ -21,7 +21,7 @@ makedepends=(
 )
 
 source=("https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('481f5750e2469ecd923a5382794a37cfba91f700ec78d5c257707fe17c1fbdb9')
+sha256sums=('cb2ff757c27765d99a8311f350bd94f8bd0fc8f6792095064a92be8769dad026')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}" || exit
