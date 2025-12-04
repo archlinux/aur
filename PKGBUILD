@@ -1,5 +1,5 @@
 # Maintainer: whiteman808 <whiteman808 at paraboletancza dot org>
-# Maintainer: David P. <megver83 at parabola dot nu>
+# Contributor: David P. <megver83 at parabola dot nu>
 
 _target=sh-elf
 pkgname=$_target-binutils
