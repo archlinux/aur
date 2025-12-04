@@ -1,6 +1,6 @@
 pkgbase = bottles
 	pkgdesc = Easily manage wine and proton prefix
-	pkgver = 60.0
+	pkgver = 60.1
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/bottlesdevs/Bottles
@@ -43,9 +43,9 @@ pkgbase = bottles
 	optdepends = vkd3d
 	optdepends = vulkan-icd-loader
 	optdepends = wine
-	source = Bottles-60.0.tar.gz::https://github.com/bottlesdevs/Bottles/archive/refs/tags/60.0.tar.gz
+	source = Bottles-60.1.tar.gz::https://github.com/bottlesdevs/Bottles/archive/refs/tags/60.1.tar.gz
 	source = remove-flatpak-checks.patch
-	sha256sums = 3e0468f9f73f0d96e9a5b366c12b20ba86cbebe1b685f637ec749be1b9f60a9c
-	sha256sums = 0fadcc38adba5eb4b1a6cb532f638e2d387dd01fabcdd825093a40cdc1e64cf5
+	sha256sums = 3cdc91fab113859fcb695210fe991039a4f41643cdd9c8d0d992cbb6dd4591ea
+	sha256sums = ace4e81428e7991b58a2d5427cc7d3fe2dbee13b2c957fe7dfff334773a7f3b0
 
 pkgname = bottles
