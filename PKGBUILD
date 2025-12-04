@@ -4,7 +4,7 @@
 
 set -u
 pkgname=networkminer
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 pkgdesc='A Network Forensic Analysis Tool for advanced Network Traffic Analysis, sniffer and packet analyzer'
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('mono')
 _srcname="NetworkMiner_${pkgver//\./-}"
 source=("${_srcname}.zip::https://www.netresec.com/?download=NetworkMiner")
-sha256sums=('5d074a54e2f2f26d0a2cf5a2833ab08345f1a0eeba2bdf746835545ec23e3032')
+sha256sums=('782e3d4d0b917a5aadf59966ab7d21ab30dbd593eff14e426f2b580a2e3f89e1')
 
 package() {
   set -u
