@@ -2,14 +2,14 @@
 # Based on the 'community/openttd' PKGBUILD by Vesa Kaihlavirta <vegai@iki.fi>, Alexander F. Rødseth <xyproto@archlinux.org>, and Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=openttd-jgrpp
-pkgver=0.68.1
+pkgver=0.68.2
 pkgrel=1
 pkgdesc="Engine for running Transport Tycoon Deluxe with JGR's patch pack"
 arch=(x86_64)
 url='http://www.tt-forums.net/viewtopic.php?f=33&t=73469'
-license=(GPL-3.0-only)
-makedepends=(cmake ninja)
+license=('GPL-2.0-only' 'BSD-3-Clause' 'LGPL-2.1-or-later' 'MIT' 'Zlib')
 depends=(fluidsynth fontconfig hicolor-icon-theme lzo sdl2-compat)
+makedepends=(cmake ninja)
 optdepends=(
   'openttd-jgrpp-opengfx: free graphics'
   'openttd-jgrpp-opensfx: free sound set'
@@ -17,7 +17,7 @@ optdepends=(
 )
 options=(!debug)
 source=("https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-$pkgver.tar.gz")
-b2sums=('25a2d53ec1c43f0a4d4969eb2c4cfc187f84af37a5bf63016179894f74d85ed93946b992b38595e91fa9b1df9406b47e7ff07ac38b11f0a2a4919ad7babd766e')
+b2sums=('085a7124cde3317fa70ab2f9a597283ba9994b225e9b16d8579929876e8c9fe780d4d539f2e22e9887e0e1330a9b4115751d15c8ca6f47c8996b739e83ec724d')
 
 _dirname=OpenTTD-patches-jgrpp
 
@@ -40,4 +40,6 @@ package() {
   DESTDIR="$pkgdir" ninja -C build install
 
   sed -i "s|^Name=OpenTTD+JGRPP$|Name=OpenTTD (JGR Patch Pack)|g" "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+  install -D -m644 "$_dirname-$pkgver/COPYING.md" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
