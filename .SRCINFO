@@ -1,7 +1,7 @@
 pkgbase = python-langchain-ollama
 	pkgdesc = This package contains the LangChain integration with Ollama
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/langchain-ai/langchain/tree/master/libs/partners/ollama
 	arch = any
 	license = MIT
@@ -18,6 +18,7 @@ pkgbase = python-langchain-ollama
 	depends = python-pytest-socket
 	depends = python-syrupy
 	depends = python-ollama
+	depends = python-uuid-utils
 	source = langchain-ollama-1.0.0.tar.gz::https://files.pythonhosted.org/packages/source/l/langchain-ollama/langchain_ollama-1.0.0.tar.gz
 	b2sums = b8e634592ee53140cb2cecf8b9c1cdbec02cc26f78793351f2e44a070190f1b38a1786131126c8229f0c6109ccdc59a5be98afdac0cd0cd584daeecb9b4c9906
 
