@@ -1,12 +1,13 @@
-# Maintainer (Arch): Allan McRae <allan@archlinux.org>
+# Maintainer: whiteman808 <whiteman808 at paraboletancza dot org>
+# Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: André Silva <emulatorman@hyperbola.info>
 # Contributor: Márcio Silva <coadde@hyperbola.info>
-# Maintainer: Luke R. <g4jc@openmailbox.org>
-# Maintainer: David P. <megver83@parabola.nu>
+# Contributor: Luke R. <g4jc@openmailbox.org>
+# Contributor: David P. <megver83@parabola.nu>
 
 _target=xtensa-elf
 pkgname=$_target-binutils
-pkgver=2.34
+pkgver=2.45.1
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the Xtensa target'
 arch=('x86_64' 'i686' 'armv7h')
@@ -14,10 +15,9 @@ url="https://www.gnu.org/software/binutils/"
 license=('GPL')
 depends=('zlib')
 source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2{,.sig})
-sha512sums=('f47e7304e102c7bbc97958a08093e27796b9051d1567ce4fbb723d39ef3e29efa325ee14a1bdcc462a925a7f9bbbc9aee28294c6dc23850f371030f3835a8067'
+sha512sums=('a5934bc5ec5d6fac45fe6f9ab863e7aa0f0608348e32dc2794f2a4aebba703992d5d30b5107afee0571aecfd4788a73a5bb3b0ee1028249547765b5787dd0274'
             'SKIP')
-validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93'  # Tristan Gingold <gingold@adacore.com>
-              '3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
+validpgpkeys=('5EF3A41171BB77E6110ED2D01F3D03348DB1A3E2')
 
 prepare() {
   cd binutils-$pkgver
