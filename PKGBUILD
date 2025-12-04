@@ -1,9 +1,10 @@
 # Maintainer: Toria <ninetailedtori@uwu.gal>
 
+_pkgname="mommy"
 pkgname="mommy-git"
 pkgdesc="mommy's here to support you~"
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 url="https://github.com/fwdekker/mommy"
 license=("Unlicense")
 arch=("any")
@@ -17,16 +18,16 @@ source=("git+https://github.com/fwdekker/mommy.git")
 sha256sums=("SKIP")
 
 pkgver() {
-    cd $srcdir/$_pkgdir
+    cd $srcdir/$_pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 check() {
-    cd "$pkgname"
+    cd $srcdir/$_pkgname
     make test/unit
 }
 
 package() {
-    cd "$pkgname"
+    cd $srcdir/$_pkgname
     make prefix="$pkgdir/usr/" install
 }
