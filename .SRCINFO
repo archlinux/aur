@@ -1,7 +1,7 @@
 pkgbase = harmonoid-bin
 	pkgdesc = Plays & manages your music library. Looks beautiful & juicy. Playlists, visuals, synced lyrics, pitch shift, volume boost & more.
 	pkgver = 0.3.16
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/harmonoid/harmonoid
 	arch = x86_64
 	license = LicenseRef-PolyForm-Strict-1.0.0
