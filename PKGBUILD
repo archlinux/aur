@@ -3,7 +3,7 @@
 pkgname=searxng-git
 _pkgname=searxng
 pkgver=r9106.3c7545c
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
 url="https://searxng.github.io/searxng/"
