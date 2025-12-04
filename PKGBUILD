@@ -1,7 +1,7 @@
 # Maintainer: Ethan THIERRY <ethan@thierry.id>
 pkgname=liskvork
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern multi-platform gomoku game server"
 arch=('x86_64')
 url="https://liskvork.org"
@@ -12,7 +12,7 @@ sha256sums=('SKIP')
 
 build() {
 	cd "$pkgname-$pkgver"
-	zig build -Dbin_name=$pkgname
+	zig build -Dbin_name=$pkgname -Doptimize=ReleaseSafe
 }
 
 package() {
