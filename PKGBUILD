@@ -2,7 +2,7 @@
 # Contributor: Svitozar Cherepii <razotivs@gmail.com>
 
 pkgname=rvgl-io-skins-bonus
-pkgver=25.0414
+pkgver=25.0902
 pkgrel=1
 pkgdesc="Additional skins for RVGL default and community cars."
 url='https://re-volt.io/online/cars'
@@ -18,5 +18,10 @@ sha256sums=('SKIP')
 
 package() {
     cd "$srcdir/rvgl_io_skins_bonus"
+
+    # Fix filenames
+    mv cars/phat/carYECA.bmp cars/phat/caryeca.bmp
+    mv cars/xm250/carzod.BMP cars/xm250/carzod.bmp
+
     find * -type f -exec install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }
