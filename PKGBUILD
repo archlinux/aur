@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=catdata
-_pkgver=1.2.4
+_pkgver=1.2.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Categorical Data"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -35,8 +35,8 @@ optdepends=(
   r-vgam
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f01789b27f0514e073d456f6875e23d7')
-b2sums=('0e73203a60a56fceb4176f47966eec76cd78f4abba13d77a93fb44f353f7fda4d5e509065f7a321143c5c79fae3464ad559da34d0a76fe5df042dafa26cd926f')
+md5sums=('337ed4887c9d8e628802de1f612ff899')
+b2sums=('c67cc9b5c5696a773c912cf249a80f8f37a3b4bbc9a39cec874653f3945ac41a3affef4474755788f07268f2a0a9e3540a0c7692d656082c48ad809fd4141244')
 
 build() {
   mkdir build
