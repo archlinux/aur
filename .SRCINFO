@@ -1,13 +1,13 @@
 pkgbase = nautilus-konsole
 	pkgdesc = Just a very simple extension to open a directory in Konsole using Nautilus.
 	pkgver = 0.0.1
-	pkgrel = 1
-	url = https://github.com/abdurehman4/nautilus-konsole
+	pkgrel = 2
+	url = https://github.com/abdurehmanimran/nautilus-konsole
 	arch = any
 	license = GPL
 	depends = nautilus-python
 	provides = nautilus-konsole
-	source = git+https://github.com/abdurehman4/nautilus-konsole.git
+	source = git+https://github.com/abdurehmanimran/nautilus-konsole.git
 	md5sums = SKIP
 
 pkgname = nautilus-konsole
