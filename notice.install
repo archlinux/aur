@@ -1,7 +1,9 @@
 post_install() {
     echo ""
-    echo "If you wish to run tosu without needing sudo:"
-    echo "sudo setcap cap_sys_ptrace=eip /opt/tosu/tosu"
+    echo "If you wish to run tosu without sudo: sudo setcap cap_sys_ptrace=eip /opt/tosu/tosu"
+    echo ""
+    echo "To start tosu automatically on login: systemctl --user enable --now tosu.service"
+    echo "Or enable it globally: sudo systemctl enable --now tosu.service"
     echo ""
 }
 

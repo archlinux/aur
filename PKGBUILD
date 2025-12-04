@@ -1,5 +1,4 @@
 # Maintainer: uwuclxdy
-# Maintainer: Mikhail Babynichev <i@kotrik.ru>
 # Contributor: Mikhail Babynichev <i@kotrik.ru>
 
 _pkgbase=tosu
@@ -10,20 +9,22 @@ pkgrel=1
 pkgdesc="Memory reader and PP counters provider for osu! and osu! Lazer - git version"
 arch=('x86_64')
 url="https://github.com/tosuapp/tosu"
-license=('LGPL3')
-groups=()
-depends=()
+license=('LGPL-3.0-only')
 makedepends=('git' 'npm' 'pnpm' 'nodejs>=20' 'python' 'gcc')
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 options=("!strip")
 install=notice.install
 source=("${_pkgbase}::git+${url}.git"
-        "tosu-bin.sh::https://aur.archlinux.org/cgit/aur.git/plain/tosu-bin.sh?h=tosu"
-        "notice.install")
+        "notice.install"
+        "tosu-bin.sh"
+        "tosu.service"
+        "tosu-system.service")
 sha256sums=('SKIP'
-            'ada3abbdb7bd09dea02e8149a63dc3a730bd300186ac3a136d624acaaa9d225f'
-            'ce227974fc8151bb7c45361c8ba1db539d56e0729998f8087825fae13dcb0f16')
+            'e59b923dae16cc0152b0e7515dc994b856a97f5ca3243934a3c32695a316981b'
+            '6b7537506b8805d36c5257f58538bafdd1125db14fa642020c418ed6fa6b6231'
+            '741763acdc2777c3c1af4c58888a969c1334466dd43562897994a9434e7a6961'
+            '5d70f67abeea2ec89f15f6a4efeb00fabc98dee4742c9b2ba6198d4388900b53')
 
 pkgver() {
     cd "${_pkgbase}"
@@ -39,7 +40,7 @@ build() {
     cd "${_pkgbase}"
     export MAKEFLAGS=""
     export CXXFLAGS="${CXXFLAGS} -Wno-error=format-security"
-    pnpm install --frozen-lockfile
+    pnpm install --frozen-lockfile --no-optional
     pnpm run build:linux
 }
 
@@ -48,4 +49,6 @@ package() {
     install -Dm755 "packages/tosu/dist/tosu" "${pkgdir}/opt/tosu/tosu"
     install -d -m777 "${pkgdir}/opt/tosu"
     install -Dm755 "${srcdir}/tosu-bin.sh" "${pkgdir}/usr/bin/tosu"
+    install -Dm644 "${srcdir}/tosu.service" "${pkgdir}/usr/lib/systemd/user/tosu.service"
+    install -Dm644 "${srcdir}/tosu-system.service" "${pkgdir}/usr/lib/systemd/system/tosu.service"
 }

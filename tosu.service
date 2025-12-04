@@ -1,0 +1,11 @@
+[Unit]
+Description=tosu service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/tosu
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
