@@ -1,0 +1,14 @@
+pkgbase = ls-x
+	pkgdesc = Imagine ls command, but better
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/desyatkoff/lsx
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = https://github.com/desyatkoff/lsx/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 124baa2aa5175d6146314de13b99914e4bf062514bb8c0e2a52e8d8e96396f31
+
+pkgname = ls-x
