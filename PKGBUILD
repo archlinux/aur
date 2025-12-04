@@ -10,7 +10,7 @@ depends=('qt6-base' 'krunner' 'ki18n' 'kcoreaddons')
 makedepends=('cmake' 'extra-cmake-modules' 'git')
 optdepends=('bazaar: install if not using the flatpak version')
 source=("https://github.com/ublue-os/krunner-bazaar/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ceef3e7641985af7cafe21fbaa03a3ca6d5d4436f9f8f7cc1f3e64b099791f3b')
+sha256sums=('f925b455642aa3c3be77f2fcc05e2398078f3e54afb010ff9b2d56b389dbd25a')
 
 build() {
   cd "${pkgname}-${pkgver}"
