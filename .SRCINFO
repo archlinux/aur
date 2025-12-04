@@ -1,7 +1,7 @@
 pkgbase = windscribe-no-systemd
 	pkgdesc = Windscribe GUI tool for Linux
-	pkgver = 2.14.12
-	pkgrel = 1
+	pkgver = 2.18.8
+	pkgrel = 2
 	url = https://windscribe.com/guides/linux
 	install = windscribe-no-systemd.install
 	arch = x86_64

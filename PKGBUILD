@@ -1,7 +1,7 @@
 # Maintainer: Andrey Vazhenin
 pkgname=windscribe-no-systemd
 pkgver=2.18.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Windscribe GUI tool for Linux"
 arch=('x86_64')
 url="https://windscribe.com/guides/linux"
