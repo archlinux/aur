@@ -12,7 +12,7 @@ conflicts=('windscribe-cli' 'windscribe')
 options=('!strip')
 install=windscribe-no-systemd.install
 source=("https://deploy.totallyacdn.com/desktop-apps/${pkgver}/windscribe_${pkgver}_amd64.pkg.tar.zst")
-sha1sums=('e04d96b77362917c3fa99ca50941698045e6c99c')
+sha1sums=('f2163eeb67afb807dd841e06e67e807ccf1543c6')
 
 package() {
 	mv ${srcdir}/etc ${pkgdir}
