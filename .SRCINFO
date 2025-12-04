@@ -1,7 +1,7 @@
 pkgbase = python-eduvpn-client
 	pkgdesc = Linux client and Python client API for eduVPN
 	pkgver = 4.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/eduVPN/linux-app
 	arch = any
 	license = GPL-3.0-or-later
@@ -12,15 +12,9 @@ pkgbase = python-eduvpn-client
 	depends = python
 	depends = gobject-introspection-runtime
 	depends = glib2
-	depends = python-requests-oauthlib
-	depends = python-pynacl
-	depends = dbus-python
 	depends = python-gobject
 	depends = hicolor-icon-theme
 	depends = python-eduvpn_common>=3.0.0
-	depends = python-pyqt5
-	depends = libibus
-	depends = libgexiv2
 	depends = libsecret
 	depends = gdk-pixbuf2
 	depends = libnotify
