@@ -1,0 +1,6 @@
+src
+pkg
+*.deb
+*.pkg.tar.zst
+参考
+README.md
