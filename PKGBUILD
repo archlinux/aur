@@ -1,6 +1,6 @@
 # Maintainer: Tomasz <tomasz@example.com>
 pkgname=partition-vacuum
-pkgver=v0.0.7.r0.g3a3c085
+pkgver=v0.0.8.r0.gc4f8a0f
 pkgrel=1
 pkgdesc="A daemon to monitor partition free space and delete old files"
 arch=('x86_64' 'aarch64')
