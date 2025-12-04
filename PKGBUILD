@@ -3,7 +3,7 @@
 
 _pkgname=sshpilot
 pkgname=${_pkgname}-bin
-pkgver=4.6.2
+pkgver=4.6.3
 pkgrel=1
 _pgrel=1
 pkgdesc="SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support."
@@ -23,7 +23,7 @@ options=(!strip)
 source=("https://raw.githubusercontent.com/mfat/${_pkgname}/refs/tags/v${pkgver}/LICENSE")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-${_pgrel}_all.deb")
 sha512sums=('714d66c4a17e6dfc1553521af2be03f4579fac64048c0b96c592177562b01fc70a8e184bb21725e11ef96a54bf466ae1abd4992b8940f0fe2c0859d6a166a2ef')
-sha512sums_x86_64=('62cc69f1b431a9c5cc03b4834ac779464ca6f3d135c486e68a9e5dbbe9e44eb3599ddd4b69eca7ebf60f4a7117b1e6ac94f32389db102b7735e6afef26be24d6')
+sha512sums_x86_64=('fb8f2e67f19de27d02d21629682fea834a496f7353ec9615111d4d69a6a296402b0e11add2352d35640ef6e4f94d21503aa94d7115529544823bc8aef4ff812c')
 
 package() {
     cd "${pkgdir}"
