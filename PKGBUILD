@@ -1,6 +1,6 @@
 # Maintainer: Spinu Alexandru <spinualexandru@outlook.com>
 pkgname=asus-rog-touchpad-numpad
-pkgver=0.1.0
+pkgver=0.1.0.r5.1b25327
 pkgrel=1
 pkgdesc="Linux driver for ASUS ROG laptop touchpad numpad overlay with LED backlight control"
 arch=('x86_64')
@@ -16,8 +16,11 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_reponame"
-    git describe --tags --long 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./' || \
+    if git describe --tags --long &>/dev/null; then
+        git describe --tags --long | sed 's/^v//;s/-/.r/;s/-/./'
+    else
         printf "0.1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    fi
 }
 
 prepare() {
