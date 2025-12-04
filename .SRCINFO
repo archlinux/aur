@@ -1,0 +1,11 @@
+pkgbase = mytm
+	pkgdesc = Global theme manager plugin for MyCTL
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/mydehq/mytm
+	arch = any
+	license = GPL3
+	depends = myctl
+	sha256sums = SKIP
+
+pkgname = mytm
