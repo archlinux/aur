@@ -25,8 +25,8 @@ source_aarch64=("xmcl-${pkgver}-arm64.tar.xz::https://github.com/Voxelum/x-minec
 
 sha256sums=('4375d3753d3035aa868a04810d96d896045078f364f0d096986ab66d4b68f0b4'
             '312763b5fa502280a694a78fd1e55a400b345e7d571020ee863e67db8f1eaec4')
-sha256sums_x86_64=('f43b737276c610accdc7c97b49c899b029b603c572d43cea871a36e86a161d3d')
-sha256sums_aarch64=('22f565e6a0d64a8f998381b748b919356c5678c31b1fd323e06b257aee45b801')
+sha256sums_x86_64=('429c006d7a067000188c84e741bd6fb0bc62ef22829e519fa160b67b3e8cc827')
+sha256sums_aarch64=('b40a2a013325117982aaa3c4211935103b8d9a038dfebb0bf6fdf34c407e1200')
 
 prepare() {
   # Extract the appropriate archive based on architecture
