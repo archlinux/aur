@@ -24,6 +24,7 @@ makedepends=(
 )
 optdepends=(
   'v4l-utils: webcam device utilities'
+  'openssh: ssh-agent support for key authentication'
 )
 provides=('ascii-chat')
 conflicts=('ascii-chat')
