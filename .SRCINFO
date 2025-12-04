@@ -1,0 +1,18 @@
+pkgbase = gatha-bin
+	pkgdesc = A simple and elegant music player built with Electron, HTML, CSS, and JavaScript. It allows users to play, pause, skip, and navigate through their music library with a clean and intuitive interface.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Neiums/Gatha
+	arch = x86_64
+	license = MIT
+	depends = electron39
+	provides = gatha=1.0.1
+	conflicts = gatha
+	source = gatha-1.0.1.deb::https://github.com/Neiums/Gatha/releases/download/v1.0.1/Gatha_1.0.1_amd64.deb
+	source = LICENSE-1.0.1::https://raw.githubusercontent.com/Neiums/Gatha/v1.0.1/LICENSE
+	source = gatha.sh
+	sha256sums = e3c9cba57d0187c1d2dc8432ce51b30eddd346f9b83d8301bf15e5c6bc06b9f5
+	sha256sums = 990fc3a34a52a95ffca92297e3b13438b4bfb7d3e938079ed428b6108da7d04c
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+
+pkgname = gatha-bin
