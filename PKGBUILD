@@ -4,7 +4,7 @@
 # Service Author: Stefan Zipproth
 
 pkgname=ditana-koboldcpp
-pkgver=1.98.1
+pkgver=1.103
 pkgrel=1
 pkgdesc="A systemd service that runs KoboldCpp with the gemma language model locally, giving you AI chat privately on your PC."
 arch=('x86_64')
@@ -44,7 +44,7 @@ source=(
     'LICENSE'
 )
 sha256sums=(
-    '56923c49c98b5f633fad81a5b391084b133fbc1b9090dc93010aa86f1c51ecb2'
+    '2c46e8cfd3a9855a711f0b792a7c4eb0469474a0289c6066b61ffd3d040d6436'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -61,7 +61,7 @@ build() {
 package() {
     cd "$srcdir/koboldcpp-$pkgver"
 
-    install -Dm644 -t                                            "$pkgdir/usr/share/koboldcpp" ./*.so ./*.embd
+    install -Dm644 -t                                            "$pkgdir/usr/share/koboldcpp" ./*.so embd_res/*.embd
     install -Dm644 -t                                            "$pkgdir/usr/share/koboldcpp/kcpp_adapters" kcpp_adapters/*
     install -Dm755 "koboldcpp.py"                                "$pkgdir/usr/share/koboldcpp/koboldcpp.py"
     install -Dm644 "$srcdir/logical_sampler_gemma_instruct.json" "$pkgdir/usr/share/koboldcpp/logical_sampler_gemma_instruct.json"
