@@ -5,12 +5,6 @@
 # Contributor: Danny Bautista <pyrolagus@gmail.com>
 # Contributor: nullableVoidPtr <nullableVoidPtr _ gmail _ com>
 
-
-# TODO: remove this
-#-- Checklist --#
-# - include upgrade instructions disclaimer on upgrade ?? (cf. https://github.com/NationalSecurityAgency/ghidra/blob/master/GhidraDocs/GettingStarted.md#general-upgrade-instructions)
-# - idem for server
-
 pkgname=ghidra-git
 pkgver=11.4.3.r1035.ccfea7e4c0
 pkgrel=2
