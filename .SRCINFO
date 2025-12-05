@@ -25,7 +25,7 @@ pkgbase = darkly-bin
 	conflicts = darkly
 	options = !emptydirs
 	options = !debug
-	source = https://github.com/Bali10050/darkly/releases/download/v0.5.26/darkly-${version}-x86_64.pkg.zst
+	source = https://github.com/Bali10050/darkly/releases/download/v0.5.26/darkly-0.5.26-x86_64.pkg.zst
 	sha256sums = b328e4642f94661bf8fd51fe23a10e008f753b3368dbf6f43727f6af813e0623
 
 pkgname = darkly-bin
