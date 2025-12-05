@@ -1,0 +1,25 @@
+pkgbase = access-irc
+	pkgdesc = Accessible IRC client with GTK3 and screen reader support
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/destructatron/access-irc
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-gobject
+	depends = python-miniirc
+	depends = gtk3
+	depends = at-spi2-core
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gspell
+	optdepends = python-numpy: for sound generation
+	optdepends = python-scipy: for sound generation
+	source = access-irc-1.5.0.tar.gz::https://github.com/destructatron/access-irc/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = dae0136ef588836782c10034813934856c62f31e7813f6c77e6b1928bc258bee
+
+pkgname = access-irc
