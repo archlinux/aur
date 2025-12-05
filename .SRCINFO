@@ -9,6 +9,6 @@ pkgbase = ulaa-browser
 	conflicts = ulaa-browser-stable
 	options = !debug
 	source_x86_64 = Ulaa-Browser-v2.37.4-1.deb::https://downloads.zohocdn.com/ulaa-browser/release/linux/stable/Ulaa-Browser-v2.37.4-amd64.deb
-	sha256sums_x86_64 = c033e6f0923d53700d1d5547218fc47cce0fcef81670c7d081f276bcc48967ca
+	sha256sums_x86_64 = ae26afc0cb084489cc9d2f770eb98f5563e3fe4a46352e3f4c612eb1cc98110f
 
 pkgname = ulaa-browser

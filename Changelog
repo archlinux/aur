@@ -1,2 +1,4 @@
-2.37.4-1 [2025-11-18]
-- Updated with the latest security patches and performance enhancements. Chromium engine updated to 142.0.7444.176.
+2.38.0-1 [2025-12-03]
+- [Desktop][UI][Preferences] Implemented "Manage Security Keys" in the Preferences page. 
+- [Linux][BugFix] Corrected the update instructions for Flatpak installation.
+- Updated with the latest security patches and performance enhancements. Chromium engine updated to 143.0.7499.92.
