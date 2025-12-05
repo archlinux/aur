@@ -2,7 +2,7 @@
 
 _opt_DKMS=1           # This can be toggled between installs
 
-#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/5.10.*/modules.alias))"
+#export KERNELRELEASE="$(basename $(dirname /usr/lib/modules/6.12.*/vmlinuz))"
 
 # Todo: Unable to trigger timer to see if it works
 # Todo: modprobe snx with conflicting major, again modeprobe snx crashes kernel
@@ -98,7 +98,8 @@ pkgname='sunix-snx'
 #pkgver='2.0.4_3'; _dl='2017/20171122180114'
 #pkgver='2.0.5_0'; _dl='2021/20210407180737'
 #pkgver='2.0.7_0'; _dl='2022/20220531161341'
-pkgver='2.0.8_0'; _dl='2023/20230427142706'
+#pkgver='2.0.8_0'; _dl='2023/20230427142706'
+pkgver='2.1.0_0'; _dl='2024/20241029154956'
 pkgrel='1'
 pkgdesc='kernel module driver for Sunix SUN1889 SUN1989 SUN1999 SUN2212 SUN2410 UL7502AQ UL7512EQ UL7522EQ PCI PCIe multi I/O parallel serial RS-232 422 485 port Dell Lenovo Acer Startech'
 arch=('i686' 'x86_64')
@@ -128,8 +129,9 @@ source=(
   '0007-kernel-6.4-DEFINE_SEMAPHORE-2arg.patch'
   '0008-kernel-6.6-struct-tty_operations-write-size_t.patch'
   '0009-kernel-6.4-class_create-1arg.patch'
+  '0010-kernel-6.12-no_llseek-NULL.patch'
 )
-md5sums=('04bd8a61796fabbef2bcae349dd8fae0'
+md5sums=('7e1d89a8bfc47e1fd44e68cbcb1d6de2'
          '71564d580faaf72ab3518c298883742e'
          'e3604145fb2b1678da395a600e4cf1ed'
          'a16e94419d504663c50d3d7522b0c019'
@@ -138,8 +140,9 @@ md5sums=('04bd8a61796fabbef2bcae349dd8fae0'
          '920cdd39dc868c2d216c23d180d9eb3e'
          '7e16e1860e93a08a0591be4bfc8ca558'
          '4b38b409ec2d9aa23b51578587e7033c'
-         'd967f1bf0e7a16a778931223404fd046')
-sha256sums=('0997586558e219656543b5740e5202f31d2476dd0399e74d768277e862bb4746'
+         'd967f1bf0e7a16a778931223404fd046'
+         '57b5367c7b78c7eaeb3211f93d82ef06')
+sha256sums=('b8274bfb008a793dab2bb4a79fc2deda10bb064e3478ba8fd8cc1cd7140e4132'
             '4ea9275ca8122543c25f17112d4c374dc39de32e3d9d1d0aa5488bacd514750d'
             'ab0ef161b7c7053299b18ab9b697047d37142e9e88d53d40ac087f64522a55dd'
             '12a9d8f11c60cef0e70d0d5cba684146beb32eef76e7519728e2e4453f671251'
@@ -148,7 +151,8 @@ sha256sums=('0997586558e219656543b5740e5202f31d2476dd0399e74d768277e862bb4746'
             '71d3be91c017166ea523f0f1c7bc5d1e66d828d1de60923b24947be4cb960e01'
             '6e98100a00af103ac21a7054519296ebc1958f7e15f129199189a63c6de5332c'
             '628cb175f7b30e74d1c2f3ca78ccb9a9e4301f1d8e8756d25435581959e312a5'
-            '2fedbe6763ce6b7363af62264794fce05ff7bc28e377cc580f697c7b5553df5c')
+            '2fedbe6763ce6b7363af62264794fce05ff7bc28e377cc580f697c7b5553df5c'
+            '7cb45c28e543cc3834f6daf2ba2b0a6141b16c1b33846a4ad94b9531a652a534')
 
 if [ "${_opt_DKMS}" -ne 0 ]; then
   depends+=('linux' 'dkms' 'linux-headers')
@@ -226,48 +230,44 @@ prepare() {
 
   sed -e 's:\r$::g' -i $(grep -slrF $'\r')
 
-  #cp -pr "${srcdir}/${_srcdir}"{,.orig-0000}; false
-  #diff -pNaru5 snx_V2.0.4.3{.orig-0000,} > '0000-Kernel-4-15-timers.patch'
-  #patch -Nup1 -i "${srcdir}/0000-Kernel-4-15-timers.patch"
+  find -type 'f' -name '*.ko.unsigned' -delete
 
-  #cp -pr "${srcdir}/${_srcdir}"{,.orig-0000}; false
-  #diff -pNaru5 snx_V2.0.5.0{.orig-0000,} > '0001-kernel-4.7-async-initialized.patch'
-  #patch -Nup1 -i "${srcdir}/0001-kernel-4.7-async-initialized.patch"
-
-  #cp -pr "${srcdir}/${_srcdir}"{,.orig-0000}; false
-  #diff -pNaru5 snx_V2.0.5.0{.orig-0000,} > '0002-kernel-5.12-tty-low_latency.patch'
-  #patch -Nup1 -i "${srcdir}/0002-kernel-5.12-tty-low_latency.patch"
-
-  #cp -pr "${srcdir}/${_srcdir}"{,.orig-0000}; false
-  #diff -pNaru5 snx_V2.0.5.0{.orig-0000,} > '0003-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch'
-  patch -Nup1 --no-backup-if-mismatch -i "${srcdir}/0003-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch"
+  local _patches=()
+  #_patches+=('0000-Kernel-4-15-timers.patch')
+  #_patches+=('0001-kernel-4.7-async-initialized.patch')
+  #_patches+=('0002-kernel-5.12-tty-low_latency.patch')
+  #_patches+=('0003-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch')
 
   # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08799.html [PATCH 5/8] tty: drop alloc_tty_driver
   # http://lkml.iu.edu/hypermail/linux/kernel/2107.2/08801.html [PATCH 7/8] tty: drop put_tty_driver
-  #cp -pr "${srcdir}/${_srcdir}"{,.orig-0000}; false
-  #diff -pNaru5 snx_V2.0.5.0{.orig-0000,} > '0004-kernel-5.15-alloc_tty_driver-put_tty_driver.patch'
-  patch -Nup1 --no-backup-if-mismatch -i "${srcdir}/0004-kernel-5.15-alloc_tty_driver-put_tty_driver.patch"
+  #_patches+=('0004-kernel-5.15-alloc_tty_driver-put_tty_driver.patch')
+  #_patches+=('0005-kernel-6.0-set_termios-const-ktermios.patch') # https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
+  #_patches+=('0006-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch')
+  #_patches+=('0007-kernel-6.4-DEFINE_SEMAPHORE-2arg.patch')
+  #_patches+=('0008-kernel-6.6-struct-tty_operations-write-size_t.patch')
+  #_patches+=('0009-kernel-6.4-class_create-1arg.patch')
+  _patches+=('0010-kernel-6.12-no_llseek-NULL.patch')
 
-  # https://lore.kernel.org/linux-arm-kernel/20220816115739.10928-9-ilpo.jarvinen@linux.intel.com/T/
+  local _pt _ptf=() _pts=()
+  for _pt in "${_patches[@]}"; do
+    set +u; msg2 "Patch ${_pt}"; set -u
+    if patch -Nup1 --no-backup-if-mismatch -i "${srcdir}/${_pt}"; then
+      _pts+=("${_pt}")
+    else
+      _ptf+=("${_pt}")
+    fi
+  done
+  if [ "${#_ptf[@]}" -gt 0 ]; then
+     if [ "${#_pts[@]}" -gt 0 ]; then
+       printf 'Patch success %s\n' "${_pts[@]}"
+       printf 'Warning: Some old patches may need to be removed even if they are successful\n'
+     fi
+     printf 'Patch failed %s\n' "${_ptf[@]}"
+     set +x
+     false
+  fi
   #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-  # diff -pNaru5 'a' 'b' > '0005-kernel-6.0-set_termios-const-ktermios.patch'
-  patch -Nup1 -i "${srcdir}/0005-kernel-6.0-set_termios-const-ktermios.patch"
-
-  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
-  # diff -pNaru5 'a' 'b' > '0006-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch'
-  patch -Nup1 -i "${srcdir}/0006-kernel-6.1-TTY_DRIVER_MAGIC-remove-dead-code.patch"
-
-  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; cd "${_srcdir}"; false
-  # diff -pNaru5 'a' 'b' > '0007-kernel-6.4-DEFINE_SEMAPHORE-2arg.patch'
-  patch -Nup1 -i "${srcdir}/0007-kernel-6.4-DEFINE_SEMAPHORE-2arg.patch"
-
-  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; cd "${_srcdir}"; false
-  # diff -pNaru5 'a' 'b' > '0008-kernel-6.6-struct-tty_operations-write-size_t.patch'
-  patch -Nup1 -i "${srcdir}/0008-kernel-6.6-struct-tty_operations-write-size_t.patch"
-
-  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; cd "${_srcdir}"; false
-  # diff -pNaru5 'a' 'b' > '0009-kernel-6.4-class_create-1arg.patch'
-  patch -Nup1 -i "${srcdir}/0009-kernel-6.4-class_create-1arg.patch"
+  #diff -pNaru5 'a' 'b' > "0000-$RANDOM.patch"
 
   set +u
 }

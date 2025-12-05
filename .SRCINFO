@@ -1,6 +1,6 @@
 pkgbase = sunix-snx
 	pkgdesc = kernel module driver for Sunix SUN1889 SUN1989 SUN1999 SUN2212 SUN2410 UL7502AQ UL7512EQ UL7522EQ PCI PCIe multi I/O parallel serial RS-232 422 485 port Dell Lenovo Acer Startech
-	pkgver = 2.0.8_0
+	pkgver = 2.1.0_0
 	pkgrel = 1
 	url = http://www.sunix.com/
 	install = sunix-snx-install.sh
@@ -16,7 +16,7 @@ pkgbase = sunix-snx
 	depends = linux
 	depends = dkms
 	depends = linux-headers
-	source = http://www.sunix.com/en/download.php?file=driver&file_link=download/driver/2023/20230427142706_snx_V2.0.8.0.zip
+	source = http://www.sunix.com/en/download.php?file=driver&file_link=download/driver/2024/20241029154956_snx_V2.1.0.0.zip
 	source = 0001-kernel-4.7-async-initialized.patch
 	source = 0002-kernel-5.12-tty-low_latency.patch
 	source = 0003-kernel-5.14-task_struct.state-unsigned-tty-flow-tty.patch
@@ -26,7 +26,8 @@ pkgbase = sunix-snx
 	source = 0007-kernel-6.4-DEFINE_SEMAPHORE-2arg.patch
 	source = 0008-kernel-6.6-struct-tty_operations-write-size_t.patch
 	source = 0009-kernel-6.4-class_create-1arg.patch
-	md5sums = 04bd8a61796fabbef2bcae349dd8fae0
+	source = 0010-kernel-6.12-no_llseek-NULL.patch
+	md5sums = 7e1d89a8bfc47e1fd44e68cbcb1d6de2
 	md5sums = 71564d580faaf72ab3518c298883742e
 	md5sums = e3604145fb2b1678da395a600e4cf1ed
 	md5sums = a16e94419d504663c50d3d7522b0c019
@@ -36,7 +37,8 @@ pkgbase = sunix-snx
 	md5sums = 7e16e1860e93a08a0591be4bfc8ca558
 	md5sums = 4b38b409ec2d9aa23b51578587e7033c
 	md5sums = d967f1bf0e7a16a778931223404fd046
-	sha256sums = 0997586558e219656543b5740e5202f31d2476dd0399e74d768277e862bb4746
+	md5sums = 57b5367c7b78c7eaeb3211f93d82ef06
+	sha256sums = b8274bfb008a793dab2bb4a79fc2deda10bb064e3478ba8fd8cc1cd7140e4132
 	sha256sums = 4ea9275ca8122543c25f17112d4c374dc39de32e3d9d1d0aa5488bacd514750d
 	sha256sums = ab0ef161b7c7053299b18ab9b697047d37142e9e88d53d40ac087f64522a55dd
 	sha256sums = 12a9d8f11c60cef0e70d0d5cba684146beb32eef76e7519728e2e4453f671251
@@ -46,5 +48,6 @@ pkgbase = sunix-snx
 	sha256sums = 6e98100a00af103ac21a7054519296ebc1958f7e15f129199189a63c6de5332c
 	sha256sums = 628cb175f7b30e74d1c2f3ca78ccb9a9e4301f1d8e8756d25435581959e312a5
 	sha256sums = 2fedbe6763ce6b7363af62264794fce05ff7bc28e377cc580f697c7b5553df5c
+	sha256sums = 7cb45c28e543cc3834f6daf2ba2b0a6141b16c1b33846a4ad94b9531a652a534
 
 pkgname = sunix-snx
