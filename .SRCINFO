@@ -1,7 +1,7 @@
 pkgbase = homeassistant-supervised
 	pkgdesc = Home Assistant Supervised
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.home-assistant.io/
 	install = .INSTALL
 	arch = any
