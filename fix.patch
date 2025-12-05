@@ -1,0 +1,33 @@
+--- ./usr/lib/python3.13/site-packages/semgrep/tracing.py	2025-12-04 23:35:00.000000000 -0300
++++ /usr/lib/python3.13/site-packages/semgrep/tracing.py	2025-12-05 00:38:51.221740916 -0300
+@@ -34,7 +34,7 @@
+ from opentelemetry.exporter.otlp.proto.http._log_exporter import OTLPLogExporter
+ from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
+ from opentelemetry.instrumentation.requests import RequestsInstrumentor
+-from opentelemetry.sdk._logs import LogData
++from opentelemetry.sdk._logs import ReadWriteLogRecord, ReadableLogRecord
+ from opentelemetry.sdk._logs import LoggerProvider
+ from opentelemetry.sdk._logs import LoggingHandler
+ from opentelemetry.sdk._logs import LogRecordProcessor
+@@ -122,10 +122,10 @@
+         self.base_processor: LogRecordProcessor = base_processor
+         self.scan_info: Optional[ScanInfo] = None
+ 
+-    def on_emit(self: "ScanInfoLogProcessor", log_data: LogData) -> None:
++    def on_emit(self: "ScanInfoLogProcessor", log_record: ReadWriteLogRecord) -> None:
+         if self.scan_info:
+             scan_info_dict = scan_info_to_dict(self.scan_info)
+-            log_record = log_data.log_record
++            log_record=log_record.log_record,
+             mut_attrs = dict(log_record.attributes)  # type: ignore
+             for k, v in scan_info_dict.items():
+                 mut_attrs[k] = v
+@@ -133,7 +133,7 @@
+             attrs = BoundedAttributes(attributes=mut_attrs)
+             log_record.attributes = attrs
+ 
+-        self.base_processor.on_emit(log_data)
++        self.base_processor.on_emit(log_record)
+ 
+     def shutdown(self: "ScanInfoLogProcessor") -> None:
+         self.base_processor.shutdown()  # type: ignore
