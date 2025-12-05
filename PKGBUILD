@@ -3,13 +3,13 @@
 name=chromium-gost
 pkgname=chromium-gost
 url="https://github.com/deemru/Chromium-Gost"
-pkgver=137.0.7151.69
-pkgrel=2
+pkgver=142.0.7444.176
+pkgrel=1
 pkgdesc="Chromium-Gost — веб-браузер с открытым исходным кодом на основе Chromium с поддержкой криптографических алгоритмов ГОСТ при установке защищённых соединений через интерфейс msspi"
 arch=('x86_64')
 license=('MIT')
 source=("https://github.com/deemru/Chromium-Gost/releases/download/${pkgver}/chromium-gost-${pkgver}-linux-amd64.deb")
-sha256sums=('7eead04577b9acf03ba479bdaf0072936f7626324b604e90984590ef5e08ea29')
+sha256sums=('f9dd962c65cdc4eb3bbb6ff766ea175dcf9fd5d5de8f374aaff24120880f1b93')
 
 makedepends=(
 )
