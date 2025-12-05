@@ -1,8 +1,8 @@
 # Maintainer: Sving1024 <sving1024@outlook.com>
 _name=accesser
 pkgname=python-${_name}
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.11.1
+pkgrel=1
 arch=('any')
 pkgdesc="A tool for solving SNI RST"
 url="https://github.com/URenko/Accesser"
@@ -34,8 +34,8 @@ source=(
     "https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz"
     "accesser.service"
 )
-sha256sums=('4a50982230d0d995121f474f4d44656121126acda91c03051b27256a57d96877'
-            '0ab7e33edd1b9294cb7f47224bae146846a0007d319c30000a564f02e7c16e4d')
+sha256sums=('0e516e8a5bbbdda3e9aa8d774ff30b11d68bcfc6d777e9b88af73ef4e50c7951'
+            '278c2a5d4d7452f39071558d75cfd81f348e739686b403b7046127fd08473246')
 backup=(
     'etc/accesser/pac'
     'etc/accesser/config.toml'
