@@ -1,0 +1,3 @@
+[val]
+source = "git"
+git = "https://github.com/terror/val.git"
