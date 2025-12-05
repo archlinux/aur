@@ -5,10 +5,7 @@ pkgname=(
   solarus-launcher
   solarus-editor
 )
-pkgver=2.0.r20251111.434dc1c
-# branch v2.0
-_date=20251111
-_commit=434dc1cfcac0e89d0ec46dc34c19e25f2dcc9482
+pkgver=2.0.2
 pkgrel=2
 pkgdesc="A lightweight, free and open-source 2D game engine for Action-RPGs"
 arch=("i686" "x86_64")
@@ -19,23 +16,12 @@ makedepends=(
   "zip"
 )
 source=(
-  # "https://gitlab.com/solarus-games/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz"
-  "https://gitlab.com/solarus-games/${pkgname}/-/archive/${_commit}/${pkgname}-${_commit}.tar.gz"
-  "custom_editor.patch"
-  "qt_desktop_filename.patch"
+  "https://gitlab.com/solarus-games/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz"
 )
-# _rootdir=$pkgname-v$pkgver
-_rootdir=$pkgname-$_commit
 sha256sums=(
-  'SKIP'
-  'a0f7fb7eb4d181fa794de762c532dca248151dc9363745803caee6e7d48f3ba0'
-  '8732c20ef6b59e4e7860884e2a8414aa648f0dc82535bd1b2575e15fab6d558e'
+  'c5e0341387eb0b3012dff6f292f06f90dc86af44b41dfa94dac9a841de5f86b7'
 )
-
-pkgver() {
-  cd "$_rootdir"
-  printf "2.0.r%s.%s" "${_date}" "${_commit::7}"
-}
+_rootdir=$pkgname-v$pkgver
 
 prepare() {
   set -x
@@ -64,8 +50,6 @@ prepare() {
     -DSOLARUS_DIR=.. \
     -DSOLARUS_LIBRARY=../build/libsolarus.so \
     -B build
-  patch -p1 -i "$srcdir"/custom_editor.patch
-  patch -p1 -i "$srcdir"/qt_desktop_filename.patch
 }
 
 build() {
