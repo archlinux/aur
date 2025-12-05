@@ -8,10 +8,10 @@ url="https://git.roshless.me/gofu/fup"
 arch=('x86_64' 'i686')
 license=("GPL")
 makedepends=('go')
-source=("https://git.roshless.me/gofu/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+source=("https://git.roshless.me/gofu/$pkgname/archive/$pkgver.tar.gz")
 
 build() {
-	cd $pkgname-$pkgver
+	cd $pkgname
 
 	go build \
 	    -trimpath \
@@ -23,9 +23,9 @@ build() {
 }
 
 package() {
-	cd $pkgname-$pkgver
+	cd $pkgname
 	install -Dm755 $pkgname -t "$pkgdir/usr/bin/"
 	install -Dm755 dist/config.yml -t "$pkgdir/usr/share/$pkgname"
 }
 
-sha256sums=('4c817969c0884756c5c9d710dccd01f9af07c01f8b7ea869c2ffcbc53c7c9649')
+sha256sums=('0732641096b7b2483790b4f1dde93bf2c7a1d6f029a0396736f45f5296f8ae04')

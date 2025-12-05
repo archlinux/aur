@@ -7,7 +7,7 @@ pkgbase = fup
 	arch = i686
 	license = GPL
 	makedepends = go
-	source = https://git.roshless.me/gofu/fup/-/archive/4/fup-4.tar.gz
-	sha256sums = 4c817969c0884756c5c9d710dccd01f9af07c01f8b7ea869c2ffcbc53c7c9649
+	source = https://git.roshless.me/gofu/fup/archive/4.tar.gz
+	sha256sums = 0732641096b7b2483790b4f1dde93bf2c7a1d6f029a0396736f45f5296f8ae04
 
 pkgname = fup
