@@ -1,0 +1,36 @@
+--- a/py/torch_tensorrt/csrc/register_tensorrt_classes.cpp
++++ b/py/torch_tensorrt/csrc/register_tensorrt_classes.cpp
+@@ -1,3 +1,6 @@
++// Fix for glog 0.7.x compatibility
++#include <glog/export.h>
++
+ #include "tensorrt_classes.h"
+
+ namespace torch_tensorrt {
+--- a/py/torch_tensorrt/csrc/tensorrt_backend.cpp
++++ b/py/torch_tensorrt/csrc/tensorrt_backend.cpp
+@@ -1,3 +1,6 @@
++// Fix for glog 0.7.x compatibility
++#include <glog/export.h>
++
+ #include "torch/csrc/jit/passes/lower_graph.h"
+
+ #include "tensorrt_backend.h"
+--- a/py/torch_tensorrt/csrc/tensorrt_classes.cpp
++++ b/py/torch_tensorrt/csrc/tensorrt_classes.cpp
+@@ -1,3 +1,6 @@
++// Fix for glog 0.7.x compatibility
++#include <glog/export.h>
++
+
+ #include "tensorrt_classes.h"
+
+--- a/py/torch_tensorrt/csrc/torch_tensorrt_py.cpp
++++ b/py/torch_tensorrt/csrc/torch_tensorrt_py.cpp
+@@ -1,3 +1,6 @@
++// Fix for glog 0.7.x compatibility
++#include <glog/export.h>
++
+ #include "pybind11/pybind11.h"
+ #include "pybind11/stl.h"
+
