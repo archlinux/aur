@@ -1,11 +1,11 @@
 pkgbase = maple-mono-nf-cn-unhinted
 	pkgdesc = Open source monospace font with round corner, ligatures and Nerd-Font icons for IDE and terminal, fine-grained customization options.
-	pkgver = 7.8
+	pkgver = 7.9
 	pkgrel = 1
 	url = https://github.com/subframe7536/maple-font
 	arch = any
 	license = OFL 1.1
-	source = https://github.com/subframe7536/maple-font/releases/download/v7.8/MapleMono-NF-CN-unhinted.zip
-	sha256sums = c531c2f499480c42c6c085acabff19554c332a3c03d9af8471e32c422f23f23a
+	source = https://github.com/subframe7536/maple-font/releases/download/v7.9/MapleMono-NF-CN-unhinted.zip
+	sha256sums = ab88522932cf4015dffeaef6dedc59a22a5fefecdcc6e583d9fcd997da5b7cac
 
 pkgname = maple-mono-nf-cn-unhinted
