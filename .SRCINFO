@@ -1,6 +1,6 @@
 pkgbase = pacsea-bin
 	pkgdesc = Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (binary version)
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/Firstp1ck/Pacsea
 	arch = x86_64
@@ -39,14 +39,13 @@ pkgbase = pacsea-bin
 	optdepends = semgrep-bin: static analysis checks
 	optdepends = shellcheck: lint shell scripts
 	optdepends = downgrade: Downgrade of Packages
-	optdepends = pacman-contrib: Update Check
-	provides = pacsea=0.6.0
+	provides = pacsea=0.6.1
 	conflicts = pacsea
 	conflicts = pacsea-git
 	options = !strip
-	source = Pacsea::https://github.com/Firstp1ck/Pacsea/releases/download/v0.6.0/Pacsea
-	source = Pacsea-v0.6.0.tar.gz::https://github.com/Firstp1ck/Pacsea/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = 2ab946bb2b995c4889df6d0553d1567f6d57fcf6f98fa368809d7e79590f9ca7
-	sha256sums = 17d08117723e7074e7ea09bc87529d09afb6b98a0d4087d615654b9f4441ce41
+	source = Pacsea::https://github.com/Firstp1ck/Pacsea/releases/download/v0.6.1/Pacsea
+	source = Pacsea-v0.6.1.tar.gz::https://github.com/Firstp1ck/Pacsea/archive/refs/tags/v0.6.1.tar.gz
+	sha256sums = 50f4735aa6209205172414dc80b5b9bc34cbd63ebb86536ab3eaee08c99fe929
+	sha256sums = f9383dda57b959826fc2e45a166e0e5c8fc1d1e1f3b65ed0da8bd1dd0f8f4567
 
 pkgname = pacsea-bin
