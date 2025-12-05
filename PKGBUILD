@@ -88,6 +88,11 @@ build() {
   { set +x; } 2>/dev/null
 
   sed -i '1s|.*|#!/opt/sickchill/app/bin/python|' build/bin/SickChill
+
+  # Patch for error "TypeError: ExtensionManager._load_one_plugin() got an unexpected keyword argument 'verify_requirements'"
+  if ((SICKCHILL_LATEST_COMMIT)); then
+    sed -i 's| \(verify_requirements=False,\)| #\1|' build/lib/python*/site-packages/subliminal/extensions.py
+  fi
 }
 
 package() {
