@@ -1,7 +1,7 @@
 pkgbase = fentlauncher
 	pkgdesc = Minecraft Launcher for FENTCRAFT
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fentcraft.fun
 	arch = x86_64
 	license = custom
@@ -14,7 +14,7 @@ pkgbase = fentlauncher
 	source = https://github.com/xxanqw/fentlauncher-pkg/releases/download/v1.0.5/FentLauncher-Linux-x64.tar.gz
 	source = fentlauncher.desktop
 	source = https://github.com/xxanqw/fentlauncher-pkg/releases/download/v1.0.5/icon.png
-	sha256sums = b2912d01514c5fe67c157dfad3629471c1095d696ac9f48fd33ced9e40cd0549
+	sha256sums = 6421f1b71b2afa9af8b8e49a66f06a28504f331b5b591c0f205a91c79068cac3
 	sha256sums = 520dffc0682a23b0446c3ddfd57afca33e458623ca7ac4f8440643b8e8e3acbb
 	sha256sums = ab126f045e6fc1d87198571d311a19487a76160fd4c1a2b3e1df6dc503daec5e
 
