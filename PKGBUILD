@@ -1,7 +1,7 @@
 # Maintainer: Maciej <macrionyn@proton.me>
 
 pkgname=tinte
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Wallpaper utility and theme generator for Wayland"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('gjs' 'gtk4' 'libadwaita' 'libsoup3' 'imagemagick' 'matugen')
 provides=('tinte')
 conflicts=('tinte')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Maciejonos/tinte/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d8348bc56b65cb43322f4e9a717b5a491bbe4e9187ad22b6472f3019dfa241ee')
+sha256sums=('85c37211c5622f564a18cda5e9abaf36e87b6daa0d548883226ed4f42fea70cb')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
