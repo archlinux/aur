@@ -1,7 +1,7 @@
 # Maintainer: Egor Gavrilov (gavrilovegor519-2@yandex.ru)
 pkgbase=gigabyte-gaming-gimate-archlinux-configs
 pkgname=gigabyte-gaming-gimate-archlinux-configs
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Configs for Gigabyte Gaming GiMATE-enabled laptops"
 arch=(any)
