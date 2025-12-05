@@ -1,10 +1,10 @@
 # Maintainer: Ali Yaghoubi <fakeshinigami110@gmail.com>
 pkgname=custom-ime
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="A CLI tool for creating and managing custom Input Method Engines for fcitx5"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
-url="https://github.com/omikami1/custom-IME"
+url="https://github.com/fakeshinigami110/custom-IME"
 license=('GPL3')
 depends=(
     'fcitx5'
@@ -21,8 +21,8 @@ depends=(
     'unicode-cldr-annotations'           
 )
 makedepends=('go'  'git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/omikami1/custom-IME/archive/v$pkgver.tar.gz")
-sha256sums=('1ae5e7642cecbea040ffe63bfd037684ebc565b0d135ad6d4ad8c1af438eee7b')  
+source=("$pkgname-$pkgver.tar.gz::https://github.com/fakeshinigami110/custom-IME/archive/v$pkgver.tar.gz")
+sha256sums=('cd065a5fa2bb27f4b78f5b012a5942c52044687a951afd49817a36e9c1494774')  
 
 prepare() {
   cd "$pkgname-$pkgver"

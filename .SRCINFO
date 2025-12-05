@@ -1,6 +1,6 @@
 pkgbase = custom-ime
 	pkgdesc = A CLI tool for creating and managing custom Input Method Engines for fcitx5
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/omikami1/custom-IME
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = custom-ime
 	depends = dbus
 	depends = fmt
 	depends = unicode-cldr-annotations
-	source = custom-ime-1.0.0.tar.gz::https://github.com/omikami1/custom-IME/archive/v1.0.0.tar.gz
-	sha256sums = 1ae5e7642cecbea040ffe63bfd037684ebc565b0d135ad6d4ad8c1af438eee7b
+	source = custom-ime-1.0.1.tar.gz::https://github.com/omikami1/custom-IME/archive/v1.0.1.tar.gz
+	sha256sums = cd065a5fa2bb27f4b78f5b012a5942c52044687a951afd49817a36e9c1494774
 
 pkgname = custom-ime
