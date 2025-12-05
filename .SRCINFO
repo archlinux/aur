@@ -1,0 +1,14 @@
+pkgbase = podpisgov
+	pkgdesc = An application for digital signatures by Poland government.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://podpis.gov.pl/ui/wp/podpis-gov
+	arch = x86_64
+	license = CC-BY-NC-4.0
+	license = LGPL-3.0-only
+	license = GPL-3.0-only
+	depends = libappindicator-gtk2
+	source = podpisgov.tar.gz::https://pz.gov.pl/PodpisGOV/linux/PodpisGOV.tar.gz
+	sha256sums = 0a6f5aa745b12c64be33c62822bd0efed355444c08accf60d2d28ce1a1ee8d1e
+
+pkgname = podpisgov
