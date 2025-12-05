@@ -1,6 +1,6 @@
 pkgbase = libindi-rtklib
 	pkgdesc = INDI driver for products manufactured by indi-rtklib
-	pkgver = 2.1.6
+	pkgver = 2.1.7
 	pkgrel = 1
 	url = http://www.indilib.org/index.php?title=Main_Page
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = libindi-rtklib
 	license = LGPL-2.1-or-later
 	makedepends = cmake
 	depends = glibc
-	depends = libindi=2.1.6
-	source = https://github.com/indilib/indi-3rdparty/archive/v2.1.6.tar.gz
-	sha256sums = a02159706b633d6ab92aa234930ed2a8c8cf08189bc9e09f2cf808dc52ec0a6b
+	depends = libindi=2.1.7
+	source = https://github.com/indilib/indi-3rdparty/archive/v2.1.7.tar.gz
+	sha256sums = 4d1e3ee713af1bac2e86627d5fed3c542187f2246168f195b3ec802607c71e8b
 
 pkgname = libindi-rtklib
