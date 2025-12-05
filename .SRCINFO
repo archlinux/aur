@@ -1,6 +1,6 @@
 pkgbase = qdmr-git
-	pkgdesc = A GUI application for configuring and programming cheap DMR radios
-	pkgver = 0.13.2.r0.gcd8eeed
+	pkgdesc = A GUI application for configuring and programming cheap DMR radios - git version
+	pkgver = 0.13.2.r1.gd5fa8c2
 	pkgrel = 1
 	url = https://github.com/hmatuschek/qdmr
 	arch = x86_64

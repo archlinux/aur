@@ -3,9 +3,9 @@
 # Contributor: Dan Nixon <dan@dan-nixon.com>
 
 pkgname=qdmr-git
-pkgver=0.13.2.r0.gcd8eeed
+pkgver=0.13.2.r1.gd5fa8c2
 pkgrel=1
-pkgdesc="A GUI application for configuring and programming cheap DMR radios"
+pkgdesc="A GUI application for configuring and programming cheap DMR radios - git version"
 arch=('x86_64')
 url="https://github.com/hmatuschek/qdmr"
 license=('GPL-3.0-or-later')
