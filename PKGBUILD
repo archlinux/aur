@@ -1,9 +1,9 @@
 # Maintainer: miaoermua <miaoermua@gmail.com>
-# Updated for native pacman package support with multi-arch
+# Updated for native pacman package support with multi-arch(arm64/amd64)
 
 _pkgname=splayer
 pkgname=splayer
-pkgver=3.0.0_beta.5
+pkgver=3.0.0_beta.6
 pkgrel=2
 pkgdesc="Splayer | A minimalist music player"
 arch=('x86_64' 'aarch64')
@@ -33,10 +33,10 @@ options=(!strip !debug)
 
 if [ "$CARCH" = "x86_64" ]; then
     _arch_pkg="x64"
-    _sha256="b59aa7b032c55f9cdb4fb1b003595f276e6582397227faf55b5e4425b75c9a8c"
+    _sha256="d12773f70f78ddf9775cff6595d34c5843b435059936bc7bce19ec3680d7afb4"
 elif [ "$CARCH" = "aarch64" ]; then
     _arch_pkg="aarch64"
-    _sha256="1e3970f337aa870c71431b4d4c762f276d9bd220ccbd5bbe003e0e3daf2763e8"
+    _sha256="3d165bfa12d5cd47ae09a4d32deeb0303043dff5d40878f5ce77bc9e3245c3f3"
 else
     error "Unsupported architecture: $CARCH"
     exit 1

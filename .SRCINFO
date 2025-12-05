@@ -1,7 +1,7 @@
 pkgbase = splayer
 	pkgdesc = Splayer | A minimalist music player
-	pkgver = 3.0.0_beta.5
-	pkgrel = 2
+	pkgver = 3.0.0_beta.6
+	pkgrel = 1
 	url = https://github.com/imsyy/SPlayer
 	arch = x86_64
 	arch = aarch64
@@ -20,14 +20,14 @@ pkgbase = splayer
 	depends = libnotify
 	optdepends = http-parser: required by some Electron builds
 	optdepends = libappindicator: for system tray icon support
-	provides = splayer=3.0.0_beta.5
+	provides = splayer=3.0.0_beta.6
 	conflicts = splayer
-	noextract = splayer-3.0.0-beta.5-x64.pacman
+	noextract = splayer-3.0.0-beta.6-x64.pacman
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/imsyy/SPlayer/releases/download/v3.0.0-beta.5/splayer-3.0.0-beta.5-x64.pacman
-	sha256sums_x86_64 = b59aa7b032c55f9cdb4fb1b003595f276e6582397227faf55b5e4425b75c9a8c
-	source_aarch64 = https://github.com/imsyy/SPlayer/releases/download/v3.0.0-beta.5/splayer-3.0.0-beta.5-aarch64.pacman
-	sha256sums_aarch64 = 1e3970f337aa870c71431b4d4c762f276d9bd220ccbd5bbe003e0e3daf2763e8
+	source_x86_64 = https://github.com/imsyy/SPlayer/releases/download/v3.0.0-beta.6/splayer-3.0.0-beta.6-x64.pacman
+	sha256sums_x86_64 = d12773f70f78ddf9775cff6595d34c5843b435059936bc7bce19ec3680d7afb4
+	source_aarch64 = https://github.com/imsyy/SPlayer/releases/download/v3.0.0-beta.6/splayer-3.0.0-beta.6-aarch64.pacman
+	sha256sums_aarch64 = 3d165bfa12d5cd47ae09a4d32deeb0303043dff5d40878f5ce77bc9e3245c3f3
 
 pkgname = splayer
