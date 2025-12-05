@@ -1,7 +1,7 @@
 # Maintainers: kobe-koto <admin[at]koto.cc>, Ketal_Q_ray <k[at]ketal.icu>
 pkgname="liteloader-qqnt-git"
 _pkgname="LiteLoaderQQNT"
-pkgver=1.3.0.r32.gec5b588
+pkgver=1.4.1.r3.g9628031
 pkgrel=1
 pkgdesc="轻量, 简洁, 开源的 QQNT 插件加载器"
 arch=('any')
@@ -35,11 +35,11 @@ build() {
 
 package() {
 	# Copy LiteLoaderQQNT files
-	install -dm755 "${pkgdir}/opt/LiteLoaderQQNT/"
-	cp -r $srcdir/LiteLoaderQQNT/* "${pkgdir}/opt/LiteLoaderQQNT/"
-	chmod -Rf 755 "${pkgdir}/opt/LiteLoaderQQNT/"
+	install -dm755 "${pkgdir}/usr/lib/node_modules/LiteLoaderQQNT/"
+	cp -r $srcdir/LiteLoaderQQNT/* "${pkgdir}/usr/lib/node_modules/LiteLoaderQQNT/"
+	chmod -Rf 755 "${pkgdir}/usr/lib/node_modules/LiteLoaderQQNT/"
 
 	# Clean up
-	cd $pkgdir/opt/LiteLoaderQQNT
+	cd $pkgdir/usr/lib/node_modules/LiteLoaderQQNT
 	rm -rf .git .github .gitignore README.md README_EN.md
 }
