@@ -28,7 +28,7 @@ optdepends=(
 )
 provides=('ascii-chat')
 conflicts=('ascii-chat')
-options=('strip' 'staticlibs' 'lto' 'docs' 'ccache')
+options=('staticlibs' 'lto' 'docs' 'ccache')
 
 source=("$pkgname::git+https://github.com/zfogg/ascii-chat.git")
 sha256sums=('SKIP')
