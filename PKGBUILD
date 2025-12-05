@@ -1,6 +1,6 @@
 # Maintainer: Mark Collins <tera_1225 hatt hotmail.com>
 pkgname=borgwarehouse
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="WebUI for a BorgBackup central repository server"
 arch=("x86_64")
@@ -35,12 +35,12 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "sysusers-${pkgname}.conf"
         "${pkgname}.tmpfiles"
         "fix-env-nodocker.patch")
-sha256sums=('b42d664064a15f3dd95d8f6c8fe4dd20cf900873f17a470c74ea4877bc88c569'
+sha256sums=('d1bb2cbd1ecdfebefb3f32149eb78de16a001594a2d154fbc5ae50b0a8c4c0d2'
             '4e5b300b524cd43fb6ad823168375c0d1893e993d5e60a6724dac70272d3e308'
             '6753277459e56e7bf3ed168e03ecbc29a24c58dd64dde946d43fed93c5363c6d'
             '5668cbdd26b701514a89ff17175bcc058bfdb0ac0b5c665cf2d8b555179c5446'
             '3f22c300895bff34b8da9719d378e5d11b232bd0143fee8ed6132186652f3dcd'
-            'd4f56d93028a838ebc60aa7a763d63ef1d4efeb4260fcc93216548541159b2e9'
+            '82978ae331edbd8bd9df65dc5d4797c36199edb25b3db469d8dbb26afae81a7c'
             '4b4178d54516a5f727ab2afc534e2a7f5fd5270a50ba378a11a12674b9e80f9e')
 
 prepare() {
@@ -64,9 +64,8 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   
   echo "Cleaning up source dir"  
-  rm -R docker tests
-  rm .prettierrc.json .pre-commit-config.yaml
-  fd --threads 1 --no-ignore --hidden 'docker' -x rm -R 
+  rm -R .husky docker tests 
+  rm .commitlintrc.mjs .dockerignore .prettierrc.json .pre-commit-config.yaml Dockerfile docker-compose.yml eslint.config.mjs vitest.config.ts 
   fd --threads 1 --no-ignore --hidden '.git' -x rm -R
   
   echo "Applying correct permissions"
