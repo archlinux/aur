@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=IntelliJ IDEA open-source version
+Name=IntelliJ IDEA (open-source version)
 Comment=Develop with pleasure!
 Exec=/usr/bin/idea %f
 Icon=idea
