@@ -2,7 +2,7 @@
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=pyprland
 pkgver=2.5.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Customize your Hyprland with scratchpads, menus, easy monitor layout and other extensions"
 arch=(any)
 url="https://github.com/hyprland-community/pyprland"
