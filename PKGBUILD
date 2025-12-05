@@ -46,7 +46,7 @@ _source_patch() {
     'fix-igraph-calls.patch'
   )
   sha256sums+=(
-    'e58487f7689805b8c811a6ec18e9a2c7086d28fc620bef02c3541041e9a10ac3'
+    '7f5bce57a8ef4a045a8feaa446ff76daf964428c435ca0655485d6a5c5debbe5'
   )
 }
 
