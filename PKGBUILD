@@ -3,7 +3,7 @@
 # Contributor: Tomasz Zok
 
 pkgname=pandoc-eisvogel-template
-pkgver=3.2.1
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="A clean pandoc LaTeX template to convert your markdown files to PDF or LaTeX."
 arch=('any')
@@ -12,7 +12,7 @@ license=('BSD-3-Clause')
 depends=('pandoc')
 makedepends=('bash' 'git' 'tar' 'zip')
 source=("git+$url#tag=v$pkgver")
-sha512sums=('517781ec455a31abab2001543eadae86cc1edb5dd4c174bf94f5b8b93c68013093e4fb419faf745f246cead94e63899c17cc0ea29056a9bcc04d91f9ad490670')
+sha512sums=('756103b14aacd070eedea78bb9ed8cd0268fcd4eef2927d5d62e7a8324f28f2c5e43d4734baaf810f942f792fbb40cb9a8544e470265740891f83f910a557a09')
 
 prepare() {
 	chmod u+x pandoc-latex-template/tools/release.sh
