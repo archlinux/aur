@@ -1,43 +1,44 @@
-# Maintainer: Adam Perkowski <adas1per@protonmail.com>
+
+# Maintainer: Rooki <aur at rooki dot xyz>
+# Contributor: Adam Perkowski <adas1per@protonmail.com>
 # https://github.com/adamperkowski/PKGBUILDs
 
 pkgname=feluda
-pkgver=1.9.7
+pkgver=1.10.3
 pkgrel=1
 pkgdesc='Detect license usage restrictions in your project'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/anistark/$pkgname"
 license=('MIT')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('31afcdd2a822ebd74bca98fc9d0f3b63e3b36ffd6a7497040dac37a00e55aefc')
-makedepends=('cargo')
 depends=('glibc' 'gcc-libs' 'openssl')
+makedepends=('cargo')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('c78b3511e09ea3681eeaac5bf84a128dfcea594d0af4d4b2ea8cbd6ae3ece74c')
 options=('!lto')
 
 prepare() {
-  cd "$pkgname-$pkgver"
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cd "$pkgname-$pkgver"
-  cargo build --release --frozen
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --release --locked
 }
 
 check() {
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cd "$pkgname-$pkgver"
-  cargo test --release --locked
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo test --locked
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+    cd "$pkgname-$pkgver"
+    install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
-
-# vim: ts=2 sw=2 et:
