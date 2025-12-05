@@ -1,14 +1,14 @@
 pkgbase = nodejs-appium-storage-plugin
 	pkgdesc = Appium plugin for server-side file storage
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://www.npmjs.com/package/@appium/storage-plugin
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = npm
 	depends = nodejs
-	noextract = nodejs-appium-storage-plugin-1.0.3.tgz
-	source = nodejs-appium-storage-plugin-1.0.3.tgz::https://registry.npmjs.org/@appium/storage-plugin/-/storage-plugin-1.0.3.tgz
-	sha256sums = 1b45a06c50dd811e5c3f88ef381e8c9452cceb44005b19cc37b10d3ce3f46702
+	noextract = nodejs-appium-storage-plugin-1.0.4.tgz
+	source = nodejs-appium-storage-plugin-1.0.4.tgz::https://registry.npmjs.org/@appium/storage-plugin/-/storage-plugin-1.0.4.tgz
+	sha256sums = d80e9d6cd1adc0bd473c35357505c2cfc02ea89af395eac5c1dad1e7ef8adb34
 
 pkgname = nodejs-appium-storage-plugin
