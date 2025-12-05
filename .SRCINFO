@@ -1,7 +1,7 @@
 pkgbase = pyprland-git
 	pkgdesc = Easy scratchpads, menus, smart monitor placement and more hyprland tweaks (GIT version)
 	pkgver = r1424.5293179
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/fdev31/pyprland
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = pyprland-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry
+	makedepends = python-pillow
 	makedepends = gcc
 	depends = python
 	depends = python-aiofiles
