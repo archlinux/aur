@@ -1,6 +1,6 @@
 pkgbase = tixati
 	pkgdesc = Tixati is a peer-to-peer file sharing program that uses the popular BitTorrent protocol
-	pkgver = 3.39
+	pkgver = 3.42
 	pkgrel = 1
 	url = http://www.tixati.com/
 	arch = i686
@@ -14,13 +14,13 @@ pkgbase = tixati
 	source = LICENSE
 	validpgpkeys = 9DEA5E350F9D285E46D3B7E3CE737F191AF5DCFB
 	sha256sums = SKIP
-	source_i686 = https://download.tixati.com/tixati-3.39-1.i686.manualinstall.tar.gz
-	source_i686 = https://download.tixati.com/tixati-3.39-1.i686.manualinstall.tar.gz.asc
-	sha256sums_i686 = d7c87463c17870067512afdfffbeb8d2e8ee080fa07032bef345e129ade4f1fe
+	source_i686 = https://download.tixati.com/tixati-3.42-1.i686.manualinstall.tar.gz
+	source_i686 = https://download.tixati.com/tixati-3.42-1.i686.manualinstall.tar.gz.asc
+	sha256sums_i686 = 4b680efb4fa2c9dca74cd4fc3be267c5fc421f357a9e8338c75cf14a8b20067d
 	sha256sums_i686 = SKIP
-	source_x86_64 = https://download.tixati.com/tixati-3.39-1.x86_64.manualinstall.tar.gz
-	source_x86_64 = https://download.tixati.com/tixati-3.39-1.x86_64.manualinstall.tar.gz.asc
-	sha256sums_x86_64 = 56b44c64d3f746488b0e54bf56c1554b8ab5a477ab8eb749064d9f03ea308768
+	source_x86_64 = https://download.tixati.com/tixati-3.42-1.x86_64.manualinstall.tar.gz
+	source_x86_64 = https://download.tixati.com/tixati-3.42-1.x86_64.manualinstall.tar.gz.asc
+	sha256sums_x86_64 = b6e7a3a104375bd3f2bc004f89e89895edd0632d8928da83bd1968ad2c4fb877
 	sha256sums_x86_64 = SKIP
 
 pkgname = tixati
