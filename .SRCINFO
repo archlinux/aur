@@ -1,7 +1,7 @@
 pkgbase = pyglossary
 	pkgdesc = convert dictionary files/glossaries with various formats
-	pkgver = 5.2.0
-	pkgrel = 2
+	pkgver = 5.2.1
+	pkgrel = 1
 	url = https://github.com/ilius/pyglossary
 	arch = any
 	license = GPL-3.0-or-later
@@ -27,7 +27,7 @@ pkgbase = pyglossary
 	optdepends = gtk4: Required for the new Gtk4-based interface
 	optdepends = python-psutil: Required to show memory usage
 	optdepends = python-polib: Required for gettext support
-	source = pyglossary-5.2.0.tar.gz::https://github.com/ilius/pyglossary/archive/refs/tags/5.2.0.tar.gz
-	sha256sums = 86a7247fab2e7a5ff9783854b009db56e1b2a632af7202fdfb691a2b05f291c0
+	source = pyglossary-5.2.1.tar.gz::https://github.com/ilius/pyglossary/archive/refs/tags/5.2.1.tar.gz
+	sha256sums = 75b88573c403db9ecf8020116200e5a82b818f4f00cc6ae95df0d105dafc98b7
 
 pkgname = pyglossary
