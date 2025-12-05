@@ -1,6 +1,6 @@
 pkgbase = bcunit
 	pkgdesc = Lightweight system for writing, administering, and running unit tests in C
-	pkgver = 5.4.37
+	pkgver = 5.4.66
 	pkgrel = 1
 	url = https://gitlab.linphone.org/BC/public/bcunit
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = bcunit
 	makedepends = cmake
 	makedepends = git
 	depends = glibc
-	source = https://github.com/BelledonneCommunications/bcunit/archive/refs/tags/5.4.37.tar.gz
+	source = https://github.com/BelledonneCommunications/bcunit/archive/refs/tags/5.4.66.tar.gz
 	sha256sums = SKIP
 
 pkgname = bcunit
