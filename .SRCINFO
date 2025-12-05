@@ -1,7 +1,7 @@
 pkgbase = ytsurf
 	pkgdesc = YouTube in your terminal. Clean and distraction-free.
-	pkgver = 3.0.1
-	pkgrel = 1
+	pkgver = 3.0.2
+	pkgrel = 2
 	url = https://github.com/Stan-breaks/ytsurf
 	arch = any
 	license = GPL-3.0-or-later
@@ -15,7 +15,7 @@ pkgbase = ytsurf
 	depends = ffmpeg
 	optdepends = rofi: GUI launcher alternative to fzf
 	optdepends = sentaku: A minimalist selecter alternative
-	source = ytsurf-3.0.1.tar.gz::https://github.com/Stan-breaks/ytsurf/archive/refs/tags/v3.0.1.tar.gz
-	sha256sums = 953237fa1c96b0103f26c9b5b9fdb4b6780d15f44990aa1895f23b7f1b4e38ba
+	source = ytsurf-3.0.2.tar.gz::https://github.com/Stan-breaks/ytsurf/archive/refs/tags/v3.0.2.tar.gz
+	sha256sums = 6a071efea99cc6ec89c4e504b53720c1dcb03aec37138aab42a2ed1cdd7bf8ed
 
 pkgname = ytsurf
