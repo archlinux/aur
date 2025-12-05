@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.1] - 2025-12-05
+### Changed
+- Updated dependencies
+- Updated min dart sdk version to 3.10.0
+
 ## [1.4.0] - 2025-10-19
 ### Changed
 - Updated dependencies
@@ -97,6 +102,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial release
 
+[1.4.1]: https://github.com/Skycoder42/podman_backup/compare/v1.4.0...v1.4.1
 [1.4.0]: https://github.com/Skycoder42/podman_backup/compare/v1.3.5...v1.4.0
 [1.3.5]: https://github.com/Skycoder42/podman_backup/compare/v1.3.4...v1.3.5
 [1.3.4]: https://github.com/Skycoder42/podman_backup/compare/v1.3.3...v1.3.4
