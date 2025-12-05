@@ -3,7 +3,7 @@
 pkgname=python-torch-tensorrt
 _pkgname=torch-tensorrt
 pkgver=2.9.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Easily achieve the best inference performance for any PyTorch model on the NVIDIA platform"
 arch=('x86_64')
 url="https://github.com/pytorch/TensorRT"
@@ -28,7 +28,7 @@ makedepends=(
     'python-wheel'
     'python-setuptools'
     'pybind11'
-    'python-ninja'
+    'ninja'
 )
 optdepends=(
     'python-pydot: for engine visualization features'
