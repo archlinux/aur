@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=spaMM
-_pkgver=4.5.0
+_pkgver=4.6.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=('CECILL-2.0')
 depends=(
   gsl
   r-backports
-  r-crayon
+  r-cli
   r-geometry
   r-gmp
   r-minqa
@@ -21,6 +21,7 @@ depends=(
   r-pbapply
   r-proxy
   r-rcpp
+  r-reformulas
   r-roi
 )
 makedepends=(
@@ -32,6 +33,7 @@ checkdepends=(
 optdepends=(
   r-agridat
   r-blackbox
+  r-fmesher
   r-foreach
   r-future
   r-future.apply
@@ -49,9 +51,9 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "$_pkgname-LICENSE::http://www.cecill.info/licences/Licence_CeCILL_V2-en.txt")
-md5sums=('36fc71641d03dfa436e37eb0eb8109d0'
+md5sums=('5858efcf9d87a024805b50b80db9cfde'
          '599cf91b33571e942d3ba5f9623b8011')
-b2sums=('7a5fd8a9e592ce0e5e2d54f6f397c19f34d7f0b66126073f4b37b25d0c3d1071e2ace16629bc8da0d49efe92304114eb8dfb58476315ee8e0849c6788c7536fc'
+b2sums=('37e60018483c426fd53fefe12bf812c269d8e15024fc8a00343aa6774d03f5769e2925db0699d8ef504f846decb0ee817ada47fde1b7c9a03b0ea6237864fd99'
         'ff97dacc39b8597e670dbaf5bc0f0e4db73eada273708433fc227fa72c054a30a67dbc7b2416089d68f09ab65da721e5b30711022c41047d9cf706731d568038')
 
 build() {
