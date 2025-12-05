@@ -1,7 +1,7 @@
 # Maintainer: Gianlucca Claudino <gianluccaclaudino@gmail.com>
 
 pkgname=lvsk-calendar
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A beautiful text-based calendar with visual aesthetics for Arch Linux"
 arch=('any')
@@ -50,7 +50,6 @@ package() {
     install -Dm644 "${srcdir}/${pkgname}/backgrounds/minimal.sh" "${pkgdir}/usr/share/doc/${pkgname}/backgrounds/minimal.sh"
     install -Dm644 "${srcdir}/${pkgname}/backgrounds/stars.sh" "${pkgdir}/usr/share/doc/${pkgname}/backgrounds/stars.sh"
     install -Dm644 "${srcdir}/${pkgname}/backgrounds/none.sh" "${pkgdir}/usr/share/doc/${pkgname}/backgrounds/none.sh"
-    install -Dm644 "${srcdir}/${pkgname}/backgrounds/README.md" "${pkgdir}/usr/share/doc/${pkgname}/backgrounds/README.md"
 }
 
 # vim:set ts=4 sw=4 et:
