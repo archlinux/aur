@@ -2,8 +2,8 @@
 
 pkgname=python-lynxpresence
 _name=${pkgname#python-}
-pkgver=4.4.1
-pkgrel=3
+pkgver=4.6.2
+pkgrel=1
 pkgdesc='Discord RPC and Rich Presence wrapper library'
 url='https://github.com/C0rn3j/lynxpresence'
 arch=(any)
@@ -17,7 +17,7 @@ makedepends=(
 	python-wheel
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('5ed8884030c9d6051763959502c2ab005dccb468daeb8ae2e174b7b4e9efb7be6f1cff5b1e8a2a289f312b7b5d0dd8a585f52a18bcbcc46a356956dbb19f0fb6')
+b2sums=('5ecb6d6e233bb5c155025c3ee2e0244fa0fe4c68d70c2f88056277d9f3eee405c1a751eda681470767477a3cd2a789699d174a3b077b6ce9a748b88717aebece')
 
 build() {
 	cd $_name-$pkgver
