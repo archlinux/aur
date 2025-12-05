@@ -14,7 +14,7 @@ provides=("fresh-editor")
 conflicts=("fresh-editor")
 options=('!debug')
 source=("https://github.com/sinelaw/fresh/releases/download/v$pkgver/fresh-editor-$CARCH-unknown-linux-gnu.tar.xz")
-sha256sums=("eb7fe2e102b62c178c17df6bf3cd52bca19fb7f6edf0025d66ee348f121c909b")
+sha256sums=("22b1e49df93373c9b7237c8b75be09512268f1bf16dbe0dcc762048f8f4c14de")
 
 package() {
     install -Dm755 fresh -t "$pkgdir/usr/bin"
