@@ -1,6 +1,6 @@
 pkgbase = simracing-hwdb-git
 	pkgdesc = Collection of hwdb entries for various simracing equipment to fix detection in games/proton
-	pkgver = 0.0.1
+	pkgver = 0.0.1.r0
 	pkgrel = 1
 	url = https://github.com/JacKeTUs/simracing-hwdb
 	arch = any
