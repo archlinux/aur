@@ -1,7 +1,7 @@
 pkgbase = smpeg0
 	pkgdesc = SDL MPEG Player Library - Legacy version 0.4.5
 	pkgver = 0.4.5
-	pkgrel = 5
+	pkgrel = 8
 	url = https://icculus.org/smpeg/
 	arch = x86_64
 	license = LGPL-2.0-only

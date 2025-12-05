@@ -8,7 +8,7 @@
 
 pkgname=smpeg0
 pkgver=0.4.5
-pkgrel=5
+pkgrel=8
 pkgdesc="SDL MPEG Player Library - Legacy version 0.4.5"
 arch=($CARCH)
 url=https://icculus.org/smpeg/
@@ -41,10 +41,15 @@ prepare(){
 	# configure script is broken
 	# configure script ignores flags
 	# manually append flags
-	sed Makefile -i -e "/^CPPFLAGS/ s|$| $CPPFLAGS                                 |g" # preprocessor
-	sed Makefile -i -e "/^CFLAGS/   s|$| $CFLAGS   -std=c11                        |g"
-	sed Makefile -i -e "/^CXXFLAGS/ s|$| $CXXFLAGS -std=c++11 -Wno-error=narrowing |g"
-	sed Makefile -i -e "/^LDFLAGS/  s|$| $LDFLAGS                                  |g"
+	export CFLAGS="$CFLAGS -std=c11"
+	export CXXFLAGS="$CXXFLAGS -std=c++11 -Wno-error=narrowing"
+	sed Makefile -i -e "/^CPPFLAGS/ s|$| $CPPFLAGS |g" # preprocessor
+	sed Makefile -i -e "/^CFLAGS/   s|$| $CFLAGS   |g"
+	sed Makefile -i -e "/^CXXFLAGS/ s|$| $CXXFLAGS |g"
+	sed Makefile -i -e "/^LDFLAGS/  s|$| $LDFLAGS  |g"
+
+	# smpeg0 /usr/bin/plaympeg in conflict with smpeg
+	sed plaympeg.1 -i -e "s/plaympeg/plaympeg0/g" -e "s/PLAYMPEG/PLAYMPEG0/g"
 
 }
 
@@ -53,8 +58,17 @@ build() {
 }
 
 package(){
+
 	make -C $pkgname-$pkgver DESTDIR="$pkgdir" install
-	rm "$pkgdir"/usr/share/man/man1/gtv.1
+
+	cd "$pkgdir"/usr
+	mv bin/plaympeg{,0}
+
+	cd share/man/man1
+	rm gtv.1
+	#sh
+	mv plaympeg{,0}.1
+
 }
 
 # vim: set ai nosi noet ts=2 sts=2 sw=2:
