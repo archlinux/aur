@@ -17,6 +17,8 @@ prepare() {
   cd "${pkgname}"
   git remote set-url origin ${_giturl}
   git submodule update --force --init --recursive
+
+  curl -L https://github.com/OpenModelica/OpenModelica/pull/14760.patch | patch -p1
 }
 
 build() {
