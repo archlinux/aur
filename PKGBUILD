@@ -3,8 +3,8 @@
 pkgname=nuggetvpn-bin
 _pkgname=nuggetvpn
 pkgver=0.3.1
-pkgrel=3
-pkgdesc="Modern, lightweight, and fast VPN client built with Tauri v2 and Svelte 5 (Binary release)"
+pkgrel=4
+pkgdesc="Modern, lightweight, and fast VPN client built with Tauri v2 and React 19 (Binary release)"
 arch=('x86_64')
 url="https://github.com/Rigby-Foundation/nuggetvpn"
 license=('GPL3')
