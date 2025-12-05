@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=redisinsight-git
 _pkgname='Redis Insight'
-pkgver=2.68.0.r65.g07e2fb0
-_electronversion=33
+pkgver=2.70.1.r423.g190bd10
+_electronversion=39
 _nodeversion=22
 pkgrel=1
 pkgdesc="Desktop manager that provides an intuitive and efficient GUI for Redis, allowing you to interact with your databases, monitor, and manage your data."
@@ -43,10 +43,19 @@ _ensure_local_nvm() {
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
 }
+_get_electron_version() {
+    _elec_ver="$(grep -m 1 '"electron":' "${srcdir}/${pkgname//-/.}/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
+    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+}
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
-    _ensure_local_nvm
-    gendesk -q -f -n --pkgname="${pkgname%-git}" --pkgdesc="${pkgdesc}" --categories="Development" --name="${_pkgname}" --exec="${pkgname%-git} --no-sandbox %U"
+    _get_electron_version
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Development" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-git} --no-sandbox %U"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
@@ -70,6 +79,7 @@ prepare() {
         echo "${pkgname%-git}"/{./,api,desktop,ui} | xargs -n 1 cp .yarnrc
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
+    _ensure_local_nvm
     #find "${pkgname%-git}" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" -i package.json
     NODE_ENV=development    yarn --cwd "${pkgname%-git}" add -D "redisinsight-plugin-sdk" "react-json-tree" "@antv/x6" "@antv/x6-react-shape" "plotly.js-dist-min" "@antv/hierarchy"
@@ -79,9 +89,9 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
-    NODE_ENV=production     yarn run build:ui
+    _ensure_local_nvm
+    NODE_ENV=production     npx patch-package
     NODE_ENV=production     yarn run build:statics
-    NODE_ENV=production     yarn run build:api
     NODE_ENV=production     yarn ts-node ./scripts/prebuild.js dist
     NODE_ENV=production     yarn run build:prod
     local electronDist="/usr/lib/electron${_electronversion}"
@@ -96,6 +106,6 @@ package() {
         install -Dm644 "${srcdir}/${pkgname//-/.}/resources/icons/${_icons}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
     done
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
