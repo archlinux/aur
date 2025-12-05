@@ -1,6 +1,6 @@
 pkgbase = oatbar
 	pkgdesc = Powerful and customizable DE and WM status bar
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/igor-petruk/oatbar
 	arch = x86_64
@@ -16,6 +16,6 @@ pkgbase = oatbar
 	provides = oatbar-stats
 	provides = oatctl
 	source = oatbar-0.1.0.tar.gz::https://static.crates.io/crates/oatbar/oatbar-0.1.0.crate
-	sha256sums = SKIP
+	sha256sums = 5724e895302dd65fc507774a057d2cc525f99a3930891993474e7ddff61a056a
 
 pkgname = oatbar
