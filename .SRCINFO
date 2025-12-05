@@ -1,6 +1,6 @@
 pkgbase = sot
 	pkgdesc = Command-line System Obervation Tool
-	pkgver = 4.4.2
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/anistark/sot
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = sot
 	provides = sot
 	conflicts = python-sot
 	replaces = python-sot
-	source = sot-4.4.2.tar.gz::https://github.com/anistark/sot/archive/refs/tags/v4.4.2.tar.gz
-	sha256sums = 7ef208f5154f99abe8fd4600b577d78efad15600934b1d5a707425cb7ea86640
+	source = sot-5.0.0.tar.gz::https://github.com/anistark/sot/archive/refs/tags/v5.0.0.tar.gz
+	sha256sums = 36d617756c7d315b3e0886bac8fcdbc2130ed40afaaaaa33aae3b5e79075855b
 
 pkgname = sot

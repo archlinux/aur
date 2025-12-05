@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='4.4.2'
+_upstreamver='5.0.0'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='sot'
@@ -21,7 +21,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 depends=('python' 'python-textual' 'python-distro' 'python-psutil' 'python-py-cpuinfo' 'python-rich')
 
 source=("${_pypi_package}-${_upstreamver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7ef208f5154f99abe8fd4600b577d78efad15600934b1d5a707425cb7ea86640')
+sha256sums=('36d617756c7d315b3e0886bac8fcdbc2130ed40afaaaaa33aae3b5e79075855b')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${pkgver}/"
