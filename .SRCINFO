@@ -1,0 +1,14 @@
+pkgbase = eshare-bin
+	pkgdesc = EShare screen sharing application (prebuilt vendor binary)
+	pkgver = 7.6.1023
+	pkgrel = 1
+	url = https://eshare.app/
+	arch = x86_64
+	license = unknown
+	provides = eshare
+	conflicts = eshare
+	replaces = eshare
+	source = local://eshare-7.6.1023-x86_64.pkg.tar.zst
+	sha256sums = SKIP
+
+pkgname = eshare-bin
