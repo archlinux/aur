@@ -1,6 +1,6 @@
 # Maintainer: Zack <zack@internetuniverse.org>
 pkgname=nautilus-plus
-pkgver=50.3
+pkgver=50.4
 pkgrel=1
 pkgdesc="Enhanced GNOME file manager with fast search, animated thumbnails, and more"
 arch=('x86_64')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 build() {
     cd "\$srcdir/nautilus-fork"
-    arch-meson build -D docs=false -D tests=none -D packagekit=false
+    arch-meson build -D docs=false -D tests=none -D packagekit=false -D extensions=false
     meson compile -C build
 }
 
