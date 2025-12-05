@@ -1,6 +1,6 @@
 pkgbase = r-crul
 	pkgdesc = HTTP Client
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=crul
 	arch = any
@@ -9,8 +9,10 @@ pkgbase = r-crul
 	depends = r-curl
 	depends = r-httpcode
 	depends = r-jsonlite
+	depends = r-lifecycle
 	depends = r-mime
 	depends = r-r6
+	depends = r-rlang
 	depends = r-urltools
 	optdepends = r-fauxpas
 	optdepends = r-knitr
@@ -18,7 +20,7 @@ pkgbase = r-crul
 	optdepends = r-roxygen2
 	optdepends = r-testthat
 	optdepends = r-webmockr
-	source = https://cran.r-project.org/src/contrib/crul_1.5.0.tar.gz
-	sha256sums = db733778d2815f9d974b00e8df7c821cd638e069e08d73adfa606add201ebd9d
+	source = https://cran.r-project.org/src/contrib/crul_1.6.0.tar.gz
+	sha256sums = c58f77ea1b5aae7ad2c10d598d50b1269596d2d78ce1ee9a80e1aca2485c5c09
 
 pkgname = r-crul
