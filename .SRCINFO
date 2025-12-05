@@ -28,6 +28,7 @@ pkgbase = hyprland-hidpi-xprop-git
 	depends = hyprland-guiutils-git
 	depends = hyprlang-git
 	depends = hyprutils-git
+	depends = hyprwire-git
 	depends = libdisplay-info
 	depends = libdrm
 	depends = libglvnd

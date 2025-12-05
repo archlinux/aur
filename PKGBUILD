@@ -28,6 +28,7 @@ depends=(
   hyprland-guiutils-git
   hyprlang-git
   hyprutils-git
+  hyprwire-git
   libdisplay-info
   libdrm
   libglvnd
