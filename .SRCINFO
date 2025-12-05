@@ -23,7 +23,7 @@ pkgbase = homeassistant-supervised
 	optdepends = apparmor: enhanced security
 	conflicts = docker-desktop
 	backup = etc/docker/daemon.json
-	source = git+https://github.com/home-assistant/supervised-installer.git#tag=f5951143a17a45013a6c4c5364a6c39e19d23f03
+	source = git+https://github.com/home-assistant/supervised-installer.git#tag=212dbc6c596626f2a383d0d7f03daecb44eeb8b6
 	md5sums = SKIP
 
 pkgname = homeassistant-supervised
