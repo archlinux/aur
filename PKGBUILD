@@ -3,8 +3,8 @@
 _pkgname="mommy"
 pkgname="mommy-git"
 pkgdesc="mommy's here to support you~"
-pkgver=1.8.0
-pkgrel=3
+pkgver=1.8.0.r2.gda73abe
+pkgrel=1
 url="https://github.com/fwdekker/mommy"
 license=("Unlicense")
 arch=("any")
@@ -18,16 +18,16 @@ source=("git+https://github.com/fwdekker/mommy.git")
 sha256sums=("SKIP")
 
 pkgver() {
-    cd $srcdir/$_pkgname
+    cd "$srcdir/$_pkgname" || exit
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 check() {
-    cd $srcdir/$_pkgname
+    cd "$srcdir/$_pkgname" || exit
     make test/unit
 }
 
 package() {
-    cd $srcdir/$_pkgname
+    cd "$srcdir/$_pkgname" || exit
     make prefix="$pkgdir/usr/" install
 }
