@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gerbil-bin
 _pkgname=Gerbil
-pkgver=1.15.0
+pkgver=1.15.1
 _electronversion=38
 pkgrel=1
 pkgdesc="A desktop app for running Large Language Models locally.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('10477e75424569292849bd5116a1922cd6235217233aaacfa2d969c20f6fa118'
+sha256sums=('743d56820245d0f9e029f7c97be020e1585e4935b7332b787620219654ce3cd3'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
