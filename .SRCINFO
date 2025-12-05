@@ -1,0 +1,17 @@
+pkgbase = bluevein
+	pkgdesc = Bluetooth dual-boot key synchronization service
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/meowrch/BlueVein
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = rust
+	makedepends = cargo
+	depends = dbus
+	provides = bluevein
+	conflicts = bluevein-git
+	conflicts = bluevein-bin
+	source = bluevein-0.1.1.tar.gz::https://github.com/meowrch/BlueVein/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 25ca0647665b1cc19839c3213a0303626d6e5094ce6836d56519bf276a8e1a9c
+
+pkgname = bluevein
