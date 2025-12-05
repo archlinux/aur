@@ -5,8 +5,8 @@
 
 pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.3.22.r6.g7aa8e9e.pandoc.3.8.3
-_pandoc_type=version
+pkgver=0.3.22.r9.g214d42a.pandoc.3.8.3
+_pandoc_type=stock
 _pandoc_ver=3.8.3
 _pandoc_lua_ver=0.5.0.2
 _pandoc_commit=568dab14533940ecee16824097400f1eabf13869
