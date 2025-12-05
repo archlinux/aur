@@ -1,6 +1,6 @@
 pkgbase = homeassistant-osagent-bin
 	pkgdesc = Home Assistant OS Agent
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/home-assistant/os-agent
 	arch = i686
@@ -13,10 +13,10 @@ pkgbase = homeassistant-osagent-bin
 	depends = udisks2
 	provides = homeassistant-osagent
 	conflicts = homeassistant-osagent
-	source = https://github.com/home-assistant/os-agent/releases/download/1.8.0/os-agent_1.8.0_linux_amd64.tar.gz
+	source = https://github.com/home-assistant/os-agent/releases/download/1.8.1/os-agent_1.8.1_linux_amd64.tar.gz
 	source = haos-agent.service
 	source = io.hass.conf
-	sha512sums = 8faee71395e4768ff8e8530b6c11a929a883383c44344ef8a93ec8e00a3aa412718550f580224436cb1704d8d6ebf8907bdbb962684d28c2a8f6b1fb801d74ea
+	sha512sums = c76e71696381503884bcc7402927aeb5104f36c77234284b14bbbc8482c546bfe25e9f8e8f305a4ba9312e74e3f6a0cbcc28e5f45d130069d31b4c3a11ba199a
 	sha512sums = 5642b88671de8bde85c6888cb9febc8b3a88b443a42f881db7eb5255b91d2a6eb55030f53b41cdc83591cf9b00c5e2823d76fc5841938a87e9106729fed73ed0
 	sha512sums = bf965cf393b03a162d44eefac795c965b816da49faf2d49c6cb207044b871dccbbf2158ea77b44d38a36c55ffa0916c414577904a902d1e34cc17173420a4f68
 
