@@ -3,14 +3,18 @@
 _pkgauthor=pvolok
 _pkgname=mprocs
 pkgname=${_pkgname}-bin
+pkgdesc="Run multiple commands in parallel"
+
 pkgver=0.7.3
 pkgrel=1
 _pkgvername=v${pkgver}
-pkgdesc="Run multiple commands in parallel"
+
 arch=('x86_64' 'aarch64')
 _barch=('x86_64' 'aarch64')
+
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
+
 license=('MIT')
 
 provides=("${_pkgname}")
