@@ -10,6 +10,7 @@ pkgbase = python-torch-tensorrt
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = pybind11
+	makedepends = ninja
 	depends = python
 	depends = python-pytorch-cuda
 	depends = python-numpy

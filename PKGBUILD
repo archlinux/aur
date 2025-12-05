@@ -28,6 +28,7 @@ makedepends=(
     'python-wheel'
     'python-setuptools'
     'pybind11'
+    'ninja'
 )
 optdepends=(
     'python-pydot: for engine visualization features'
