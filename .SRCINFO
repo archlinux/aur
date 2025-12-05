@@ -1,0 +1,13 @@
+pkgbase = lazylora
+	pkgdesc = Unofficial terminal user interface for Algorand Blockchain exploration
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/aorumbayev/lazylora
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = lazylora-0.5.0.tar.gz::https://github.com/aorumbayev/lazylora/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 43d480dc39e30552af4cfcb88fc1924ff6d2df9b9ccc1f775b6e5c66c04db96a
+
+pkgname = lazylora
