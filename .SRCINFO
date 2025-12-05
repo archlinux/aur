@@ -1,0 +1,21 @@
+pkgbase = datum-gateway
+	pkgdesc = Decentralized Alternative Templates for Universal Mining
+	pkgver = 0.4.0beta
+	pkgrel = 1
+	url = https://ocean.xyz
+	arch = x86_64
+	groups = bitcoin
+	license = LicenseRef-MIT-OCEAN
+	makedepends = cmake
+	makedepends = git
+	depends = libmicrohttpd
+	depends = libsodium
+	depends = curl
+	depends = jansson
+	depends = glibc
+	backup = etc/datum-gateway/config.json
+	source = datum-gateway::git+https://github.com/OCEAN-xyz/datum_gateway.git#tag=v0.4.0beta?signed
+	validpgpkeys = 1A3E761F19D2CC7785C5502EA291A2C45D0C504A
+	sha256sums = eed645c674089f9f26255d01910e74299bae1482488d486b3e9d07f3e7b13215
+
+pkgname = datum-gateway
