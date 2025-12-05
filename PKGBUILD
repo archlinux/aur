@@ -28,7 +28,7 @@ optdepends=(
 )
 provides=('ascii-chat')
 conflicts=('ascii-chat')
-options=('strip' 'staticlibs' 'lto' 'docs' 'ccache')
+options=('staticlibs' 'lto' 'docs' 'ccache')
 
 source=("$pkgname-$pkgver-full.tar.gz::https://github.com/zfogg/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-full.tar.gz")
 sha256sums=('6414fd3d213dd12668e9a342185324e48e97969dc1fb3de67d558bb14f082a52')

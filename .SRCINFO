@@ -22,7 +22,6 @@ pkgbase = ascii-chat
 	optdepends = openssh: ssh-agent support for key authentication
 	provides = ascii-chat
 	conflicts = ascii-chat
-	options = strip
 	options = staticlibs
 	options = lto
 	options = docs
