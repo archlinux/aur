@@ -1,1 +1,1 @@
-require(String.raw`/opt/LiteLoaderQQNT`)
+require(String.raw`/usr/lib/node_modules/LiteLoaderQQNT/`)

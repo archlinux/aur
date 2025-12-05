@@ -2,7 +2,7 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!patcher.sh
+!liteloader-qqnt-patcher.sh
 !liteloader-qqnt-patcher.install
 !liteloader-qqnt-patcher-notify.hook
 !LiteLoaderQQNT.js

@@ -7,4 +7,4 @@ Target=opt/QQ/resources/app/package.json
 [Action]
 Description=Notify to Patch QQ for LiteLoaderQQNT
 When=PostTransaction
-Exec=/bin/sh -c "/bin/echo -e '\n>>> \e[1;36mThe target file was updated.\e[0m\n>>> \e[1;33mTo patch LinuxQQ for LiteLoaderQQNT, remember to run:\e[0m sudo /opt/LiteLoaderQQNT/patcher/patcher.sh\n'"
+Exec=/bin/sh -c "/bin/echo -e '\n>>> \e[1;36mThe target file was updated.\e[0m\n>>> \e[1;33mTo patch LinuxQQ for LiteLoaderQQNT, remember to run:\e[0m sudo liteloader-qqnt-patcher upgrade\n'"

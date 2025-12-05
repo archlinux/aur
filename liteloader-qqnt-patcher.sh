@@ -2,14 +2,13 @@
 
 TARGET_FILE="/opt/QQ/resources/app/package.json"
 BACKUP_SUFFIX=".LLQQNT.bak"
-SRC_FOLDER="/opt/LiteLoaderQQNT/patcher"
 
 PATCH_CONTENT="./app_launcher/LiteLoaderQQNT.js"
 
 apply_patch() {
     local backup_file="${TARGET_FILE}${BACKUP_SUFFIX}"
 
-    echo ">>> Trying to patch ${TARGET_FILE} for LiteLoaderQQNT..."
+    
 
     if [ ! -f "$TARGET_FILE" ]; then
         echo "!!! ERROR: ${TARGET_FILE} not found."
