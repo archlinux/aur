@@ -2,7 +2,7 @@
 pkgname=pacsea-bin
 pkgver=0.6.1
 _tag="v$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast TUI for searching, inspecting, and queueing pacman/AUR packages written in Rust (binary version)"
 arch=('x86_64')
 url="https://github.com/Firstp1ck/Pacsea"
@@ -42,7 +42,7 @@ provides=("pacsea=${pkgver}")
 conflicts=('pacsea' 'pacsea-git')
 source=("Pacsea::https://github.com/Firstp1ck/Pacsea/releases/download/${_tag}/Pacsea"
         "Pacsea-${_tag}.tar.gz::https://github.com/Firstp1ck/Pacsea/archive/refs/tags/${_tag}.tar.gz")
-sha256sums=('50f4735aa6209205172414dc80b5b9bc34cbd63ebb86536ab3eaee08c99fe929'
+sha256sums=('850bb886bfa5240e0ea247ac7690056c9756317a16b4d17d354ebd8fe78ef80c'
             'f9383dda57b959826fc2e45a166e0e5c8fc1d1e1f3b65ed0da8bd1dd0f8f4567')
 
 package() {
