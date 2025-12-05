@@ -5,7 +5,7 @@
 # Based on PKGBUILD for https://aur.archlinux.org/packages/bitwig-studio
 
 pkgname='studio-one-7'
-pkgver='7.1.1.104411'
+pkgver='7.2.3.108761'
 pkgrel='1'
 pkgdesc='Digital audio workstation for music production, remixing and live performance'
 arch=('x86_64')
@@ -19,7 +19,7 @@ conflicts=()
 options=(!strip)
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download \"studioone7-x86_64.deb\" manually from https://my.presonus.com')
 source=('manual://studioone7-x86_64.deb')
-sha256sums=('98008346c4e568e5c471546b428d3f32fdf6a0df36c98bd7e3a718ebfb78f2b6')
+sha256sums=('c9cac512e5a75a584c4ac2a303510d964767f4ad310bac0ff863668bff538052')
 
 package() {
   # Unpack package contents
