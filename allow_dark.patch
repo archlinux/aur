@@ -1,36 +1,36 @@
 diff -ru a/browser/components/preferences/main.js b/browser/components/preferences/main.js
 --- a/browser/components/preferences/main.js
 +++ b/browser/components/preferences/main.js
-@@ -4577,6 +4577,7 @@
+@@ -534,7 +534,8 @@
+       document.getElementById("web-appearance-rfp-warning")?.remove();
+       const chooser = document.getElementById("web-appearance-chooser");
+       const container = document.getElementById("webAppearanceGroup");
+-      const rfp = Services.prefs.getBoolPref("privacy.resistFingerprinting", false);
++      const rfp = Services.prefs.getBoolPref("privacy.resistFingerprinting", false) &&
++      	!Services.prefs.getBoolPref("privacy.override_rfp_for_color_scheme", false);
  
-     FORCED_COLORS_QUERY.addEventListener("change", this);
-     Services.prefs.addObserver("privacy.resistFingerprinting", this);
-+    Services.prefs.addObserver("privacy.override_rfp_for_color_scheme", this);
-     Services.obs.addObserver(this, "look-and-feel-changed");
-     this._update();
+       if (chooser) {
+         chooser.style.opacity = rfp ? "0.3" : "1";
+@@ -568,6 +569,7 @@
+       },
+     };
+     Services.prefs.addObserver("privacy.resistFingerprinting", prefObserver);
++    Services.prefs.addObserver("privacy.override_rfp_for_color_scheme", prefObserver);
+ 
+     const ensurePaneReady = cb => {
+       const id = "webAppearanceGroup";
+@@ -589,6 +591,7 @@
+     return () => {
+       FORCED_COLORS_QUERY.removeEventListener("change", emitChange);
+       Services.prefs.removeObserver("privacy.resistFingerprinting", prefObserver);
++      Services.prefs.removeObserver("privacy.override_rfp_for_color_scheme", prefObserver);
+     };
    },
-@@ -4608,6 +4609,7 @@
- 
-   destroy() {
-     Services.prefs.removeObserver("privacy.resistFingerprinting", this);
-+    Services.prefs.removeObserver("privacy.override_rfp_for_color_scheme", this);
-     Services.obs.removeObserver(this, "look-and-feel-changed");
-     FORCED_COLORS_QUERY.removeEventListener("change", this);
-   },
-@@ -4645,7 +4647,8 @@
-     this.warning.hidden = !FORCED_COLORS_QUERY.matches;
- 
-     document.getElementById("web-appearance-rfp-warning")?.remove();
--    if (Services.prefs.getBoolPref("privacy.resistFingerprinting")) {
-+    if (Services.prefs.getBoolPref("privacy.resistFingerprinting") &&
-+        !Services.prefs.getBoolPref("privacy.override_rfp_for_color_scheme")) {
-       document.getElementById("web-appearance-chooser").style.opacity = 0.3;
-       document.getElementById("web-appearance-chooser").style.pointerEvents = "none";
-       const infoBox = document.createElement("div");
+   visible: () => {
 diff -ru a/dom/base/Document.cpp b/dom/base/Document.cpp
 --- a/dom/base/Document.cpp
 +++ b/dom/base/Document.cpp
-@@ -20371,7 +20371,8 @@
+@@ -20391,7 +20391,8 @@
  
  ColorScheme Document::PreferredColorScheme(IgnoreRFP aIgnoreRFP) const {
    if (ShouldResistFingerprinting(RFPTarget::CSSPrefersColorScheme) &&
@@ -43,7 +43,7 @@ diff -ru a/dom/base/Document.cpp b/dom/base/Document.cpp
 diff -ru a/modules/libpref/init/StaticPrefList.yaml b/modules/libpref/init/StaticPrefList.yaml
 --- a/modules/libpref/init/StaticPrefList.yaml
 +++ b/modules/libpref/init/StaticPrefList.yaml
-@@ -15991,6 +15991,12 @@
+@@ -16123,6 +16123,12 @@
    value: false
    mirror: always
  
