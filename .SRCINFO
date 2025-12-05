@@ -1,0 +1,22 @@
+pkgbase = openxenmanager-xcpng-git
+	pkgdesc = Opensource XCP-NG Management Interface
+	pkgver = 0.0.r83.r293.ga2d497e
+	pkgrel = 1
+	url = https://github.com/oytunistrator/openxenmanager-xcpng
+	arch = any
+	license = GPL2
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = python-configobj
+	depends = python-raven
+	depends = gtk-vnc
+	provides = openxenmanager-xcpng
+	conflicts = openxenmanager-xcpng
+	source = git+https://github.com/oytunistrator/openxenmanager-xcpng.git
+	sha256sums = SKIP
+
+pkgname = openxenmanager-xcpng-git
