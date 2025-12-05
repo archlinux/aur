@@ -1,6 +1,6 @@
 pkgbase = d-buddy-git
 	pkgdesc = A simple TUI for browsing D-Bus messages, built with Rust and Ratatui.
-	pkgver = 0.1.1.r50.ffa7808
+	pkgver = 0.1.1.r20.gfa6925e
 	pkgrel = 1
 	url = https://github.com/withholm/d-buddy
 	arch = x86_64
