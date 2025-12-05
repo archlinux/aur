@@ -5,7 +5,7 @@
 # Contributor: rabyte <rabyte*gmail>
 
 pkgname='dtrx'
-pkgver='8.7.0'
+pkgver='8.7.1'
 pkgrel='1'
 pkgdesc='An intelligent archive extraction tool'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   'lha: to extract lzh archives'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('c966c8911a56207fa05d51add755e6e8d4b74322aef8ef8169d81b2cad577342')
+sha256sums=('d3be625ce7860c82d5159a551bbd215eada8a11cf4f82557e4f77eabc0986e43')
 
 
 build() {
