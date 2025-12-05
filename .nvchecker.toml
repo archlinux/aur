@@ -1,0 +1,5 @@
+[trakt-cli-bin]
+source = "github"
+github = "angristan/trakt-cli"
+use_latest_release = true
+prefix = "v"
