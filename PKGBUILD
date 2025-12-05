@@ -2,8 +2,8 @@
 
 pkgname=nuggetvpn-bin
 _pkgname=nuggetvpn
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.3.1
+pkgrel=3
 pkgdesc="Modern, lightweight, and fast VPN client built with Tauri v2 and Svelte 5 (Binary release)"
 arch=('x86_64')
 url="https://github.com/Rigby-Foundation/nuggetvpn"
@@ -14,7 +14,7 @@ depends=('webkit2gtk-4.1' 'gtk3' 'libappindicator-gtk3' 'openssl' 'glibc')
 options=('!strip')
 
 source_x86_64=("NuggetVPN_${pkgver}_amd64.deb::https://github.com/Rigby-Foundation/nuggetvpn/releases/download/v${pkgver}/NuggetVPN_${pkgver}_amd64.deb")
-sha256sums_x86_64=('937a8ca9427a07e9ef2513734180188c5c06241f4091f0264b7fdbe797656211')
+sha256sums_x86_64=('c5112d7929820bdd3c3fd8e1f81ad42e9e670f543911a54108bb05492856f08d')
 
 package() {
     bsdtar -O -xf "$srcdir/NuggetVPN_${pkgver}_amd64.deb" data.tar* | bsdtar -C "$pkgdir" -x
@@ -27,7 +27,7 @@ package() {
     cat <<EOF > "$pkgdir/usr/share/applications/${_pkgname}.desktop"
 [Desktop Entry]
 Type=Application
-Version=1.0
+Version=0.3.1
 Name=NuggetVPN
 Comment=${pkgdesc}
 Exec=env WEBKIT_DISABLE_COMPOSITING_MODE=1 /usr/bin/${_pkgname} %U
