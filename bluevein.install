@@ -1,0 +1,15 @@
+post_install() {
+  echo ""
+  echo "==> BlueVein has been installed successfully!"
+  echo "==> To start using BlueVein, enable and start the service:"
+  echo ""
+  echo "    sudo systemctl enable --now bluevein"
+  echo ""
+  echo "==> Check service status:"
+  echo "    sudo systemctl status bluevein"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}
