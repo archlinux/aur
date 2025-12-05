@@ -1,7 +1,7 @@
 # Maintainer: Lucas Mindello <lucas at mindello dot com dot br>
 
 pkgname=homeassistant-osagent
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Home Assistant OS Agent"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=(
     'git'
 )
 install=INSTALL
-_tag=e0aa28aa99226bbcd4ca091f4ce550c47f95850c # git rev-parse "$pkgver"
+_tag=88e86c3e43b310ee577d8b93ba49a4a772b1de60 # git rev-parse "$pkgver"
 source=("git+https://github.com/home-assistant/os-agent.git#tag=${_tag}")
 md5sums=('SKIP')
 
