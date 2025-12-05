@@ -2,7 +2,7 @@
 
 pkgname='oatbar'
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful and customizable DE and WM status bar'
 arch=('x86_64')
 url="https://oatbar.app/"
