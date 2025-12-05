@@ -3,7 +3,7 @@
 # Contributor: Dan Nixon <dan@dan-nixon.com>
 
 pkgname=qdmr-git
-pkgver=0.13.2.r1.gd5fa8c2
+pkgver=0.13.2.r2.gf019e90
 pkgrel=1
 pkgdesc="A GUI application for configuring and programming cheap DMR radios - git version"
 arch=('x86_64')
