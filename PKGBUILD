@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=wlink-git
-pkgver=0.1.1.r3.g217f0e5
+pkgver=0.1.1.r7.g057724f
 pkgrel=1
 pkgdesc="wlink - WCH-Link(RV) command line tool"
 arch=($CARCH)
@@ -14,11 +14,12 @@ depends=(
     gcc-libs
     glibc
     libusb
-    systemd-libs)
+    systemd-libs
+)
 makedepends=(
-    cargo
     git
-    rust)
+    rust
+)
 backup=()
 options=('!strip' '!debug')
 install=
@@ -27,8 +28,9 @@ sha256sums=('SKIP')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
-    #     cd "${srcdir}/${pkgname}/"
-    #     git tag --delete nightly
+    cd "${srcdir}/${pkgname}/"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 pkgver() {
