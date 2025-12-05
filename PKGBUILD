@@ -4,14 +4,14 @@
 # Contributor: jorge_barroso <jorge.barroso.11@gmail.com
 
 pkgname=4th
-pkgver=3.64.1
+pkgver=3.64.2
 pkgrel=1
 pkgdesc="A Forth Compiler"
 arch=('i686' 'x86_64')
 url="http://www.xs4all.nl/~thebeez/4tH/index.html"
 license=('LGPL')
 source=("4th-${pkgver}-unix.tar.gz::http://sourceforge.net/projects/forth-4th/files/4th-${pkgver}/4th-${pkgver}-unix.tar.gz/download")
-sha256sums=('f96ea74cdb2aadfdc3bebf8d6d2cf7b8976b5d56c1237387479bffaecede9fe3')
+sha256sums=('b9f422b910cf99c63315241fd7a72e652ace11b1f78adabbc99628f3bccfb358')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/sources/"
