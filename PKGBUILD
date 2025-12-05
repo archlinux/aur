@@ -14,6 +14,7 @@ makedepends=('zig>=0.14')
 optdepends=(
   'falcond-profiles: default falcond profiles'
   'scx-scheds: SCX CPU schedulers'
+  'power-profiles-daemon: power profiles handling'
 )
 conflicts=("$pkgname-bin" "$pkgname-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
