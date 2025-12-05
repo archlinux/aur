@@ -1,0 +1,30 @@
+# Build directories
+src/
+pkg/
+
+# Package files
+*.pkg.tar.*
+*.pkg.tar
+*.tar.*
+
+# Source files (downloaded automatically)
+*.rpm
+*.deb
+*.tar.gz
+*.tar.xz
+*.tar.bz2
+*.zip
+
+# Temporary files
+*.log
+*.tmp
+*~
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
