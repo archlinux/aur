@@ -3,7 +3,7 @@
 _module="cxxheaderparser"
 _pkgname="python-$_module"
 pkgname="$_pkgname-git"
-pkgver=1.6.0.r0.g23cf0ac
+pkgver=1.6.1.r0.g3abac6d
 pkgrel=1
 pkgdesc="Parse C++ header files and generate a data structure representing the class"
 url="https://github.com/robotpy/cxxheaderparser"
@@ -16,8 +16,9 @@ depends=(
 makedepends=(
   'git'
   'python-build'
+  'python-hatch-vcs'
+  'python-hatchling'
   'python-installer'
-  'python-setuptools'
   'python-wheel'
 )
 
