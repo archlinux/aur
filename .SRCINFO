@@ -18,12 +18,12 @@ pkgbase = nzportable-bin
 	source = https://gitlab.com/linuxbombay/nzp/nzp-packaging/-/archive/1.0.6.1/nzp-packaging-1.0.6.1.tar.bz2
 	sha256sums = 1e12a4017f50ef12c7bf7b5e9603c7608b83fd3690ede4b88bf62d4ef85bd1c2
 	source_x86_64 = nzportable-2.0.0indev20251202072827-linux64.zip::https://gitlab.com/linuxbombay/nzp/binaries/2.0.0indev20251202072827/-/raw/main/nzportable-linux64.zip
-	sha256sums_x86_64 = 04371d590aa72a06421ad4860fc45d644a69253fd4b136bc2e5067e8ace13988
+	sha256sums_x86_64 = 76ea5247442b4481178ffbf33d891a83a954349befa3895214a0c8c156f972f5
 	source_i686 = nzportable-2.0.0indev20251202072827-linux32.zip::https://gitlab.com/linuxbombay/nzp/binaries/2.0.0indev20251202072827/-/raw/main/nzportable-linux32.zip
-	sha256sums_i686 = 560c7edbafc6185564932ab1d7d10e3f7b17842a77202656f3202dc6321e2bb6
+	sha256sums_i686 = 8b473ac0f11a4129f6f44dd979e88b7d8c80c4a916378bfc60ec15114bdad470
 	source_aarch64 = nzportable-2.0.0indev20251202072827-linuxarm64.zip::https://gitlab.com/linuxbombay/nzp/binaries/2.0.0indev20251202072827/-/raw/main/nzportable-linuxarm64.zip
-	sha256sums_aarch64 = 1fbddac1332ff2443907740d45abe39db56131a9480b1cb6cb03c161d4d886c6
+	sha256sums_aarch64 = 982552edb5603b7823d081be43de3f54cc0feead17047b8d91855d0ab3ccd9d6
 	source_armv7l = nzportable-2.0.0indev20251202072827-linuxarmhf.zip::https://gitlab.com/linuxbombay/nzp/binaries/2.0.0indev20251202072827/-/raw/main/nzportable-linuxarmhf.zip
-	sha256sums_armv7l = 37f8a0e04dc369197fc7c4e4e94f38815a337ef1d73e7b40487f5ab6dcec9475
+	sha256sums_armv7l = 2a88bb1c5ac2bb761c505d6914718ccd33399362541c16c8f3cbb4c712797f7b
 
 pkgname = nzportable-bin
