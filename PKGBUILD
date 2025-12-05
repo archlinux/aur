@@ -4,10 +4,10 @@ pkgname=ttea
 pkgrel=1
 pkgver=1.3.1
 pkgdesc="CLI tea manager"
-url="https://git.roshless.me/~roshless/ttea"
+url="https://git.roshless.me/roshless/ttea"
 arch=('x86_64' 'i686')
 license=("GPL")
-source=("https://git.roshless.me/roshless/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+source=("https://git.roshless.me/roshless/$pkgname/archive/$pkgver.tar.gz")
 makedepends=('meson')
 depends=('glibc')
 optdepends=(
@@ -17,7 +17,7 @@ optdepends=(
 )
 
 build() {
-	arch-meson $pkgname-$pkgver build
+	arch-meson $pkgname build
 	meson compile -C build
 }
 
@@ -25,4 +25,4 @@ package() {
 	meson install -C build --destdir "$pkgdir"
 }
 
-sha512sums=('08814e6cf45614cccef8a75e04529e7af3f7da343a95930b7167d8be6c5476e9f7ac74a58584dcf9428f29418a0b67b9b7baa9c7ad5a546bff6f16ba5a97def8')
+sha512sums=('b6f268bfbefdc5d2c5be0fb83784129e89feeba2ff5fc5e5630434ee2f37a9bc40aef8d19325522e80a99530018dcf0c30cf8cf0f9caa0d18392ac992118c8b4')
