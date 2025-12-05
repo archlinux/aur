@@ -1,0 +1,24 @@
+post_install() {
+    echo "==> To enable search-cache daemon on login:"
+    echo "    systemctl --user enable --now search-cache.service"
+    echo ""
+    echo "==> Configure indexed directories in ~/.config/search-cache/config.toml"
+    echo "    Example: Add your home directory to the directories array"
+    echo ""
+    echo "==> Then rebuild the index:"
+    echo "    sc rebuild --force"
+}
+
+post_upgrade() {
+    echo "==> Restart the search-cache daemon:"
+    echo "    systemctl --user restart search-cache.service"
+    echo ""
+    echo "==> Rebuild index if upgrading from a version without dotfile support:"
+    echo "    sc rebuild --force"
+}
+
+post_remove() {
+    echo "==> To clean up, remove:"
+    echo "    ~/.config/search-cache/"
+    echo "    ~/.local/share/search-cache/"
+}
