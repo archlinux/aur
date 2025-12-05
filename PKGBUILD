@@ -4,7 +4,7 @@
 pkgname=antigravity-bin-hardened
 pkgver=1.11.14
 _buildid=1764918088
-pkgrel=2
+pkgrel=3
 pkgdesc="Google Antigravity - Agentic Development Platform (Hardened for High-Security/Corporate Environments)"
 # Hardening: Strict permissions, AppArmor profile, and dependency enforcement.
 arch=('x86_64')
@@ -26,6 +26,7 @@ b2sums=('a9e30b0cae6f4f53f989f1df73f8cceee990cbaa969dcaef414fdef6ff1d6d405edbb12
         '8743125f8f27728230b716059228756bcd2b8b5e08c35c7b318f43596f8108d13d50c37181e3715083dfa291b8899f78289dd5c3572a9d3ee2338ab3745543ea')
 
 package() {
+    install -d "$pkgdir/opt/antigravity"
     cd "$srcdir"
     # The .deb file is extracted by makepkg, resulting in data.tar.xz (or .gz/.zst)
     # We need to extract that to get the actual files.
