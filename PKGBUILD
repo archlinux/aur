@@ -1,7 +1,6 @@
 # Maintainer:
 
 : ${_build_deps:=true}
-: ${_ver_kddockwidgets:=2.3.0}
 : ${_ver_plutovg:=1.3.1}
 : ${_ver_plutosvg:=0.0.7}
 
@@ -10,13 +9,14 @@
 _pkgname="pcsx2"
 pkgname="$_pkgname"
 pkgver=2.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 
 depends=(
+  kddockwidgets
   libpcap
   libpng
   libwebp
@@ -40,6 +40,13 @@ makedepends=(
   ## pcsx2
   shaderc
   qt6-tools
+
+  # cubeb, no sound if not present
+  alsa-lib
+  jack
+  libpulse
+  sndio
+  speexdsp
 
   # patches
   7zip
@@ -65,15 +72,11 @@ sha256sums=(
 if [ "${_build_deps::1}" != "t" ]; then
   eval "depends+=(
     ## AUR
-    kddockwidgets-qt6
     plutosvg
     plutovg
   )"
 else
   eval "depends+=(
-    # kddockwidgets
-    qt6-declarative
-
     # plutosvg
     freetype2
   )"
@@ -82,16 +85,13 @@ else
     patchelf
   )"
 
-  _pkgsrc_kddockwidgets="kddockwidgets"
   _pkgsrc_plutovg="plutovg"
   _pkgsrc_plutosvg="plutosvg"
   source+=(
-    "$_pkgsrc_kddockwidgets"::"git+https://github.com/KDAB/KDDockWidgets.git${_ver_kddockwidgets:+#tag=v$_ver_kddockwidgets}"
     "$_pkgsrc_plutovg"::"git+https://github.com/sammycage/plutovg.git${_ver_plutovg:+#tag=v$_ver_plutovg}"
     "$_pkgsrc_plutosvg"::"git+https://github.com/sammycage/plutosvg.git${_ver_plutosvg:+#tag=v$_ver_plutosvg}"
   )
   sha256sums+=(
-    'SKIP'
     'SKIP'
     'SKIP'
   )
@@ -126,23 +126,15 @@ build() (
   CXX=clang++
   LDFLAGS="$(sed -E -e 's&\S*fuse-ld\S*&&g' <<< "$LDFLAGS") -fuse-ld=lld"
 
-  local _cmake_options _cmake_kddockwidgets _cmake_plutovg _cmake_plutosvg
+  local _cmake_options _cmake_plutovg _cmake_plutosvg
   _cmake_options=(
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
     -DCMAKE_SKIP_RPATH=ON
+    -DENABLE_TESTS=$CHECKFUNC
     -Wno-dev
-  )
-
-  _cmake_kddockwidgets=(
-    -DBUILD_SHARED_LIBS=ON
-    -DKDDockWidgets_EXAMPLES=OFF
-    -DKDDockWidgets_FRONTENDS='qtwidgets;qtquick'
-    -DKDDockWidgets_NO_SPDLOG=ON
-    -DKDDockWidgets_QT6=ON
-    -DKDDockWidgets_X11EXTRAS=OFF
   )
 
   _cmake_plutovg=(
@@ -158,10 +150,10 @@ build() (
   _cmake_pcsx2=(
     -DDISABLE_ADVANCE_SIMD=ON # misnamed; enables multi-arch
     -DENABLE_SETCAP=OFF
-    -DENABLE_TESTS=$CHECKFUNC
     -DPACKAGE_MODE=ON
     -DUSE_ASAN=OFF
     -DUSE_BACKTRACE=OFF
+    -DUSE_SANITIZERS=OFF # cubeb
     -DUSE_VULKAN=ON
     -DWAYLAND_API=ON
     -DX11_API=ON
@@ -170,7 +162,6 @@ build() (
   local _deps i _source _options
   if [[ "${_build_deps::1}" == t ]]; then
     _deps=(
-      kddockwidgets
       plutovg
       plutosvg
     )

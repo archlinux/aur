@@ -1,7 +1,7 @@
 pkgbase = pcsx2
 	pkgdesc = PlayStation 2 emulator
 	pkgver = 2.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/PCSX2/pcsx2
 	install = pcsx2.install
 	arch = x86_64
@@ -15,8 +15,14 @@ pkgbase = pcsx2
 	makedepends = ninja
 	makedepends = shaderc
 	makedepends = qt6-tools
+	makedepends = alsa-lib
+	makedepends = jack
+	makedepends = libpulse
+	makedepends = sndio
+	makedepends = speexdsp
 	makedepends = 7zip
 	makedepends = patchelf
+	depends = kddockwidgets
 	depends = libpcap
 	depends = libpng
 	depends = libwebp
@@ -24,7 +30,6 @@ pkgbase = pcsx2
 	depends = libxrandr
 	depends = qt6-base
 	depends = sdl3
-	depends = qt6-declarative
 	depends = freetype2
 	optdepends = alsa-utils: Sound player for RetroAchievements
 	optdepends = gstreamer: Backup sound player for RetroAchievements
@@ -32,10 +37,8 @@ pkgbase = pcsx2
 	options = lto
 	source = pcsx2::git+https://github.com/PCSX2/pcsx2.git#commit=e4af1c424451c6b65c5c387404315cef77e9901b
 	source = pcsx2_patches::git+https://github.com/PCSX2/pcsx2_patches.git
-	source = kddockwidgets::git+https://github.com/KDAB/KDDockWidgets.git#tag=v2.3.0
 	source = plutovg::git+https://github.com/sammycage/plutovg.git#tag=v1.3.1
 	source = plutosvg::git+https://github.com/sammycage/plutosvg.git#tag=v0.0.7
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
