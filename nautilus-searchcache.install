@@ -1,0 +1,18 @@
+post_install() {
+    echo "==> nautilus-searchcache installed!"
+    echo ""
+    echo "==> Make sure search-cache daemon is running:"
+    echo "    systemctl --user enable --now search-cache.service"
+    echo ""
+    echo "==> Configure indexed directories via:"
+    echo "    Nautilus Preferences -> Search Cache Directories"
+    echo "    Or: sc config add-dir /path/to/directory"
+    echo ""
+    echo "==> Rebuild index after configuration:"
+    echo "    sc rebuild --force"
+}
+
+post_upgrade() {
+    echo "==> Restart Nautilus to use the new version:"
+    echo "    nautilus -q"
+}

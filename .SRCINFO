@@ -1,0 +1,30 @@
+pkgbase = nautilus-searchcache
+	pkgdesc = GNOME file manager with fast search-cache integration
+	pkgver = 50.alpha
+	pkgrel = 1
+	url = https://github.com/johnzfitch/nautilus-fork
+	install = nautilus-searchcache.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = gobject-introspection
+	makedepends = libxml2
+	makedepends = appstream
+	depends = glib2
+	depends = gtk4
+	depends = libadwaita
+	depends = gnome-desktop-4
+	depends = libportal-gtk4
+	depends = tracker3
+	depends = gst-plugins-base-libs
+	depends = libcloudproviders
+	depends = gnome-autoar
+	optdepends = search-cache: Fast trigram-based file search (recommended)
+	provides = nautilus
+	conflicts = nautilus
+	replaces = nautilus
+	source = git+https://github.com/johnzfitch/nautilus-fork.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = nautilus-searchcache
