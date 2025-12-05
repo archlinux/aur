@@ -1,3 +1,6 @@
+# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Contributor: Qichen Liu [@qichenliu]
+
 pkgname=asciit
 pkgver=1.0.0
 pkgrel=1
@@ -5,28 +8,23 @@ pkgdesc="A more compact and intuitive ASCII table highlighting digits and letter
 arch=('x86_64')
 url="https://github.com/Q1CHENL/asciit"
 license=('MIT')
-# depends=('dependency1' 'dependency2')
-source=("https://github.com/Q1CHENL/asciit/archive/refs/tags/v1.0.0.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Q1CHENL/asciit/archive/refs/tags/v${pkgver}.tar.gz")
+depends=('glibc' 'gcc-libs')
+makedepends=('cargo')
 sha256sums=('SKIP')
 
-# executed in src directory, which is created by makepkg
 prepare() {
-    tar -xzf v1.0.0.tar.gz
-    cd asciit-1.0.0
-    # Prepare the build environment, if necessary
+    cd "${pkgname}-${pkgver}"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
 build() {
-    # Build commands go here
-	cd "$pkgname-$pkgver"
-    cargo build --release
+    cd "${pkgname}-${pkgver}"
+    cargo build --release --frozen
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    # Install the package into the package directory
-    # For example:
-    install -Dm755 "target/release/asciit" "$pkgdir/usr/bin/asciit"
+    cd "${pkgname}-${pkgver}"
+    install -Dm755 "target/release/asciit" "${pkgdir}/usr/bin/asciit"
 }
-
-# Optionally define check() to run a test suite

@@ -5,7 +5,10 @@ pkgbase = asciit
 	url = https://github.com/Q1CHENL/asciit
 	arch = x86_64
 	license = MIT
-	source = https://github.com/Q1CHENL/asciit/archive/refs/tags/v1.0.0.tar.gz
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	source = asciit-1.0.0.tar.gz::https://github.com/Q1CHENL/asciit/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = asciit
