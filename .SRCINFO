@@ -1,6 +1,6 @@
 pkgbase = monitor-remote-control
 	pkgdesc = Remote monitor control via DDC/CI with GUI interface for brightness, color, input switching and auto-brightness
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/DonutsDelivery/Auto-Brightness
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = monitor-remote-control
 	depends = python-pyqt6
 	depends = kirigami
 	depends = python-monitor-control
-	optdepends = wmctrl: fullscreen window detection for automatic brightness adjustment
+	optdepends = edid-decode: improved fullscreen detection on multi-monitor setups
 	source = git+https://github.com/DonutsDelivery/Auto-Brightness.git
 	sha256sums = SKIP
 

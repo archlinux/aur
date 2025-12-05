@@ -1,13 +1,13 @@
 # Maintainer: DonutsDelivery <megusta52@proton.me>
 pkgname=monitor-remote-control
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Remote monitor control via DDC/CI with GUI interface for brightness, color, input switching and auto-brightness"
 arch=('any')
 url="https://github.com/DonutsDelivery/Auto-Brightness"
 license=('MIT')
 depends=('python' 'python-requests' 'ddcutil' 'python-pyqt6' 'kirigami' 'python-monitor-control')
-optdepends=('wmctrl: fullscreen window detection for automatic brightness adjustment')
+optdepends=('edid-decode: improved fullscreen detection on multi-monitor setups')
 makedepends=('git')
 source=("git+https://github.com/DonutsDelivery/Auto-Brightness.git")
 sha256sums=('SKIP')
