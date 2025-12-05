@@ -1,6 +1,6 @@
 # Expresso-Kit
 ☕ A TUI + CLI tool for validating git repositories with docker-compose and environment configuration support
-> For my Italian friends, I know it's ESpresso, not EXpresso, but the idea is to play around with the name and convey speed and satisfaction (for coffee lovers, of course).
+> For my Italian friends, I know it's ESpresso, not EXpresso, but the idea is to play around with the name and convey speed and satisfaction (for coffee lovers, of course☕♥️).
 
 [![CI](https://github.com/amindWalker/expresso-kit/actions/workflows/ci-test.yml/badge.svg)](https://github.com/amindWalker/expresso-kit/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -26,8 +26,6 @@ expresso-kit clone https://github.com/user/repo
 expresso-kit
 ```
 
----
-
 ## Table of Contents
 
 - [Installation](#installation)
@@ -43,8 +41,6 @@ expresso-kit
 - [Output Formats](#output-formats)
 - [Configuration](#configuration)
 - [GitHub Actions Integration](#github-actions-integration)
-
----
 
 ## Installation
 
@@ -62,9 +58,7 @@ cargo install --path crates/expresso-kit
 ### Prerequisites
 
 - Git (required for clone operations)
-- Rust 1.75+ (for building from source)
-
----
+- Rust 1.91+ (for building from source)
 
 ## Quick Start
 
@@ -74,8 +68,6 @@ Expresso-Kit helps you validate project configurations including:
 - **Docker Compose files** (`docker-compose.yml`, `compose.yml`)
 - **Required files** (customizable list)
 - **Cross-validation** between env vars and docker-compose references
-
----
 
 ## Commands
 
@@ -182,8 +174,6 @@ $ expresso-kit validate --required-files ".env,docker-compose.yml,README.md"
   ✓ docker-compose.yml
   ✓ README.md
 ```
-
----
 
 ### discover
 
@@ -297,8 +287,6 @@ $ expresso-kit discover --env-only
      Action: Copy .env.example to .env
 ```
 
----
-
 ### clone
 
 Clone a git repository and optionally validate its configuration.
@@ -368,8 +356,6 @@ $ expresso-kit clone https://github.com/example/service --dest ~/projects/my-ser
 
 ✓ Clone complete (validation skipped)
 ```
-
----
 
 ### list-services
 
@@ -464,8 +450,6 @@ $ expresso-kit list-services --format json --with-env
 }
 ```
 
----
-
 ### check-deps
 
 Check system dependencies required for Expresso-Kit operations.
@@ -512,8 +496,6 @@ $ expresso-kit check-deps --format json
   "all_available": true
 }
 ```
-
----
 
 ### init-workflow
 
@@ -592,8 +574,6 @@ $ expresso-kit init-workflow --paths "./services/api,./services/web" --compose -
 ✓ Workflow generated successfully!
 ```
 
----
-
 ## TUI Mode
 
 Launch the interactive Terminal User Interface by running `expresso-kit` without any subcommand:
@@ -648,8 +628,6 @@ The TUI provides a dashboard with four tabs:
 | ❗ | Error - has critical issues |
 | `-` | Pending - not yet processed |
 
----
-
 ## Output Formats
 
 Expresso-Kit supports three output formats for all commands:
@@ -685,8 +663,6 @@ Produces annotations like:
 ::notice file=.env.sample::Sample file found with 12 variables
 ```
 
----
-
 ## Configuration
 
 Expresso-Kit can be configured via `.expresso-kit.toml` in your project root:
@@ -715,8 +691,6 @@ required_files = [".env"]
 [required_files]
 default = [".env"]
 ```
-
----
 
 ## GitHub Actions Integration
 
@@ -787,8 +761,6 @@ jobs:
         run: expresso-kit validate --format github
 ```
 
----
-
 ## File Pattern Recognition
 
 Expresso-Kit automatically recognizes various file patterns:
@@ -813,8 +785,6 @@ Expresso-Kit automatically recognizes various file patterns:
 - **Go**: `go.mod`
 - **Docker**: `Dockerfile`
 
----
-
 ## Exit Codes
 
 | Code | Meaning |
@@ -825,19 +795,13 @@ Expresso-Kit automatically recognizes various file patterns:
 | `3` | File system error |
 | `4` | Git operation error |
 
----
-
 ## License
 
 MIT License - see [LICENSE](LICENSE) for details.
 
----
-
 ## Contributing
 
 Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
----
 
 <p align="center">
   Made with ☕ and 🦀 by <a href="https://github.com/amindWalker">amindWalker</a>
