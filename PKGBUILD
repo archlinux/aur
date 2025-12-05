@@ -3,7 +3,7 @@
 # Contributor: Sebastian Baberowski <sebastian@baberowski.com>
 
 pkgname=libqhy
-pkgver=2.1.6
+pkgver=2.1.7
 pkgrel=1
 pkgdesc="libqhy used by INDI QHY drivers. Please note that for sake of simplicity package version follows libindi versionning."
 url="http://www.indilib.org/index.php?title=Main_Page"
@@ -13,7 +13,7 @@ depends=(libusb gcc-libs glibc )
 conflicts=(libqhy-git)
 makedepends=(cmake)
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
-sha256sums=("a02159706b633d6ab92aa234930ed2a8c8cf08189bc9e09f2cf808dc52ec0a6b")
+sha256sums=("4d1e3ee713af1bac2e86627d5fed3c542187f2246168f195b3ec802607c71e8b")
 
 prepare() {
   mkdir -p build
