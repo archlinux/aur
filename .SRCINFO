@@ -1,6 +1,6 @@
 pkgbase = express
 	pkgdesc = Official Express App for Linux
-	pkgver = 3.52.21
+	pkgver = 3.53.22
 	pkgrel = 1
 	url = https://express.ms/download/deb
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = express
 	depends = libsecret
 	optdepends = libappindicator-gtk3
 	options = !strip
-	source = https://updates.express.ms/desktop/eXpress_3.52.21_amd64.deb
-	sha256sums = d4315e41b1da168a1f8c1bdd50622aab4fa871a9070b3d0c227100c75d809694
+	source = https://updates.express.ms/desktop/eXpress_3.53.22_amd64.deb
+	sha256sums = 094a4e2f8301f2784551e6345277c612cc80577e2370299fa870fe6942240c18
 
 pkgname = express
