@@ -1,13 +1,36 @@
+## 0.0.367 - 2025-12-04
+
+- GPT-5.1-Codex-Max is now available in GitHub Copilot CLI
+
+## 0.0.366 - 2025-12-03
+
+- Add `infer` property to control custom agent tool visibility
+- Add CLI executables to GitHub release artifacts
+- Add apply_patch toolchain for OpenAI Codex models
+
+## 0.0.365 - 2025-11-25
+
+- Add `--silent` option to suppress stats output for scripting
+
+## 0.0.364 - 2025-11-25
+
+- Add syntax highlighting for diffs
+- Fix light theme markdown rendering
+
+## 0.0.363 - 2025-11-24
+
+- Opus 4.5, GPT-4.1 and GPT-5-Mini are now available in GitHub Copilot CLI
+- Image data paste now prioritizes pasting contents of image files instead of their file icons.
+- Improved timeline rendering of shell tool names
+- Add support for GITHUB_ASKPASS environment variable for authentication
+- MCP servers work in `--prompt` mode
+
 ## 0.0.362 - 2025-11-20
 
 - Fix issues with image drag and drop on Windows
 - Shell commands are no longer included in Bash and PowerShell history files
 - Paste image data from your clipboard directly into the CLI
 - Cleanup and update prompts and tool instructions to be more fluid
-
-## 0.0.361 - 2025-11-18
-
-- Gemini 3 Pro is now available in GitHub Copilot CLI
 
 ## 0.0.360 - 2025-11-18
 
@@ -192,7 +215,7 @@
 
 - Removed the "Windows support is experimental" warning -- we've made some big strides in improving Windows support the last two weeks! Please continue to report any issues/feedback
 - Improved debugging by including the Copilot API request ID for model calls errors and stack traces for client errors
-- Fixed an issue where consecutive orphaned tool calls led to a "Each `tool_use` block must have a corresponding `tool_result` block in the next message" message (fixes https://github.com/github/copilot-cli/issues/102)
+- Fixed an issue where consecutive orphaned tool calls led to a "Each `tool_use` block must have a corresponding `tool_result` block in the next message" message (fixes https://github.com/github/copilot-cli/issues/102)
 - Added a prompt to approve new paths in `-p` mode. Also added `--allow-all-paths` argument that approves access to all paths.
 - Changed parsing of environment variables in MCP server configuration to treat the value of the `env` section as literal values (fixes https://github.com/github/copilot-cli/issues/26).
   Customers who have configured MCP Servers for use with the CLI will need to make a slight modification to their `~/.copilot/mcp-config.json`. For any servers they have added with an `env` section, they will need to go add a `$` to the start of the "value" pair of the key value pair of each entry in the env-block, so to have the values treated as references to environment variables.
@@ -264,7 +287,7 @@
 
 ## 0.0.334 - 2025-10-03
 
-- Improved the experience of pasting large content: when pasting more than 10 lines, it's displayed as a compact token like `[Paste #1 - 15 lines]` instead of flooding the terminal.
+- Improved the experience of pasting large content: when pasting more than 10 lines, it's displayed as a compact token like `[Paste #1 - 15 lines]` instead of flooding the terminal.
 - Added a warning when conversation context approaches ≤20% remaining of the model's limit that truncation will soon occur. At this point, we recommend you begin a new session (improves https://github.com/github/copilot-cli/issues/29)
 - Removed the on-exit usage stats from the persisted session history
 - Added the current version to startup logs to aid in bug reporting
@@ -325,4 +348,3 @@
 - Improved the error message received when using a PAT that is missing the "Copilot Requests" permission (fixes https://github.com/github/copilot-cli/issues/46 )
 - Improved the output of `/user list` to make it clearer which is the current user
 - Improved PowerShell parsing of `ForEach-Object` and detection of command name expressions (e.g.,`& $someCommand`)
-
