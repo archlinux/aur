@@ -1,6 +1,6 @@
 # Maintainer: Void Modding team
 pkgname=void-mod-manager-git
-pkgver=r61.a083acf
+pkgver=r62.f083c3a
 pkgrel=1
 pkgdesc="A simple mod manager made for Linux"
 arch=('x86_64' 'aarch64')
