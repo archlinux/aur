@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=AutoSubSync
 Comment=Automatic subtitle synchronization tool.
-Exec=autosubsync %f
+Exec=assy %f
 Icon=autosubsync
 Terminal=false
 Type=Application
