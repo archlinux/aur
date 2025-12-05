@@ -1,0 +1,13 @@
+pkgbase = cmd
+	pkgdesc = Fuzzy finder for PATH binaries without external dependencies ( fzf / etc ) - real-time substring search
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/felipefacundes/cmd-fuzzy-finder
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	source = git+https://github.com/felipefacundes/cmd-fuzzy-finder.git
+	sha256sums = SKIP
+
+pkgname = cmd
