@@ -21,7 +21,6 @@ pkgbase = thorium-browser-avx-bin
 	depends = nss
 	depends = pango
 	provides = thorium-browser
-	provides = chromium
 	conflicts = thorium-browser
 	conflicts = thorium-browser-avx2-bin
 	conflicts = chromium
