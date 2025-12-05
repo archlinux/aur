@@ -1,6 +1,6 @@
 # Maintainer: Johnathon Schultz <jomoschultz+aur [at] gmail [dot] com>
 pkgname=('nvidia-sync' 'nvidia-sync-terminal-fix')
-pkgver=0.41.22
+pkgver=0.49.10
 pkgrel=1
 arch=('x86_64')
 url="https://build.nvidia.com/spark/connect-to-your-spark/sync"
@@ -11,7 +11,7 @@ source=(
 	"https://workbench.download.nvidia.com/stable/linux/debian/pool/proprietary/n/nvidia-sync/nvidia-sync_${pkgver}_amd64.deb"
 	"nvidia-sync-terminal-launcher.sh"
 )
-sha256sums=('fc1ed403fc018a000cf03983ce70a7b6736cb8b0c5fbb08a376062f35a2aa36f'
+sha256sums=('0693da62452d71c193e8658bce5bf460143fa2c07e85f468434f648f9361c101'
             '1cd21fa2618882fae08d26211638c53d60e54573ca8dee42803692fe71a2af4e')
 
 package_nvidia-sync() {
