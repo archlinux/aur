@@ -1,6 +1,6 @@
 pkgbase = flying-carpet
 	pkgdesc = File transfer between Android, iOS, Linux, macOS, and Windows over ad hoc WiFi
-	pkgver = 9.0.6
+	pkgver = 9.0.9
 	pkgrel = 1
 	url = https://github.com/spieglt/FlyingCarpet
 	arch = aarch64
@@ -17,10 +17,9 @@ pkgbase = flying-carpet
 	depends = gtk3
 	depends = hicolor-icon-theme
 	depends = libsoup3
-	depends = pango
 	depends = webkit2gtk-4.1
 	replaces = flyingcarpet-cli
-	source = FlyingCarpet-9.0.6.tar.gz::https://github.com/spieglt/FlyingCarpet/archive/refs/tags/v9.0.6.tar.gz
-	b2sums = 2a82b89d2156f668e0949a363bcedbdbd45fff9363d907b7e1c3ea1f4c7cf978c0fd776b303ef08751479de2c45991c5e9921b35033dd70c9d41b2a0955ceca4
+	source = FlyingCarpet-9.0.9.tar.gz::https://github.com/spieglt/FlyingCarpet/archive/refs/tags/v9.0.9.tar.gz
+	b2sums = 6b42cac4c8ad4002067c19fb285e90eba86e099c25e85f5876740f44a1b97f52a5d4e27dcea489d0d023da179e2c7989fba6c080e6dca0ec8ab836ee3718a7fa
 
 pkgname = flying-carpet
