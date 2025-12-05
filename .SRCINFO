@@ -6,6 +6,8 @@ pkgbase = falcond
 	arch = x86_64
 	license = MIT
 	makedepends = zig>=0.14
+	optdepends = falcond-profiles: default falcond profiles
+	optdepends = scx-scheds: SCX CPU schedulers
 	conflicts = falcond-bin
 	conflicts = falcond-git
 	source = falcond-1.1.9.tar.gz::https://github.com/PikaOS-Linux/falcond/archive/refs/tags/v1.1.9.tar.gz

@@ -11,6 +11,10 @@ arch=('x86_64')
 url='https://github.com/PikaOS-Linux/falcond'
 license=('MIT')
 makedepends=('zig>=0.14')
+optdepends=(
+  'falcond-profiles: default falcond profiles'
+  'scx-scheds: SCX CPU schedulers'
+)
 conflicts=("$pkgname-bin" "$pkgname-git")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
