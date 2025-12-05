@@ -1,6 +1,6 @@
 # Maintainer: Aaron Rubesh <contact@aaronrubesh.io>
 pkgname=antigravity-bin
-pkgver=1.11.13_1764808015
+pkgver=1.11.14_1764918088
 pkgrel=1
 pkgdesc="Google Antigravity - Agentic Development Platform"
 arch=('x86_64')
@@ -10,8 +10,8 @@ depends=('alsa-lib' 'at-spi2-core' 'bash' 'cairo' 'dbus' 'expat' 'gcc-libs' 'gli
 provides=('antigravity')
 conflicts=('antigravity')
 options=('!strip')
-source=("https://us-central1-apt.pkg.dev/projects/antigravity-auto-updater-dev/pool/antigravity-debian/antigravity_1.11.13-1764808015_amd64_8bc342d4c140b28c7fdd0f945033f696.deb")
-sha256sums=('4304347e9257ecbc75e0e023f42fe6dcc0c87bae093b4acfacc021a91c2703f6')
+source=("https://us-central1-apt.pkg.dev/projects/antigravity-auto-updater-dev/pool/antigravity-debian/antigravity_1.11.14-1764918088_amd64_acf73c2fd8e096dca6a2d5535d58efc5.deb")
+sha256sums=('67138611cf331f8186b1a013856a9823a7a9bfd2b1243290103f2b66917ae49c')
 
 package() {
     # Extract the data.tar.* from the deb package.
