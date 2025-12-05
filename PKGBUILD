@@ -2,8 +2,8 @@
 
 pkgname=searxng-git
 _pkgname=searxng
-pkgver=r9106.3c7545c
-pkgrel=2
+pkgver=r9110.3f91ac4
+pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
 url="https://searxng.github.io/searxng/"
@@ -44,9 +44,6 @@ build() {
   sed -i "s|GIT_URL =.*|GIT_URL = \"${_giturl}\"|g" searx/version_frozen.py
   sed -i "s|GIT_BRANCH =.*|GIT_BRANCH = \"${_gitbranch}\"|g" searx/version_frozen.py
   
-  # patch setup.py
-  sed -i "/'static\/themes\/\*\/\*'/a\            'static/themes/*/*/*'," setup.py
-
   # generate the wheel using the system python-build
   python -m build --no-isolation --wheel
 }
