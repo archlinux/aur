@@ -1,100 +1,74 @@
-# Maintainer: Mufaro <contact@mufaro.dev>
+# Maintainer: Aaron Rubesh <contact@aaronrubesh.io>
 pkgname=antigravity-bin
-pkgver=1.11.9
-_buildid=4787439284912128
+pkgver=1.11.13_1764808015
 pkgrel=1
-pkgdesc="Google Antigravity - Agentic Development Platform (Pre-built Binary)"
+pkgdesc="Google Antigravity - Agentic Development Platform"
 arch=('x86_64')
-url="https://antigravity.google/"
-license=('Proprietary')
-depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst' 'xdg-utils' 'glibc' 'nspr' 'at-spi2-core' 'libdrm' 'mesa')
+url="https://antigravity.google"
+license=('custom')
+depends=('alsa-lib' 'at-spi2-core' 'bash' 'cairo' 'dbus' 'expat' 'gcc-libs' 'glib2' 'glibc' 'gtk3' 'libcups' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxkbfile' 'libxrandr' 'mesa' 'nspr' 'nss' 'pango' 'systemd-libs')
+provides=('antigravity')
+conflicts=('antigravity')
 options=('!strip')
-source=("${pkgname}-${pkgver}.tar.gz::https://edgedl.me.gvt1.com/edgedl/release2/j0qc3/antigravity/stable/${pkgver}-${_buildid}/linux-x64/Antigravity.tar.gz")
-sha256sums=('193a4a61da608c526fbc329670e892ab0a961d3a65ce49485de1ca08804e472d')
+source=("https://us-central1-apt.pkg.dev/projects/antigravity-auto-updater-dev/pool/antigravity-debian/antigravity_1.11.13-1764808015_amd64_8bc342d4c140b28c7fdd0f945033f696.deb")
+sha256sums=('4304347e9257ecbc75e0e023f42fe6dcc0c87bae093b4acfacc021a91c2703f6')
 
 package() {
+    # Extract the data.tar.* from the deb package.
+    cd "$srcdir"
+    
+    if [ -f "data.tar.xz" ]; then
+        tar -xf data.tar.xz
+    elif [ -f "data.tar.zst" ]; then
+        tar -xf data.tar.zst
+    elif [ -f "data.tar.gz" ]; then
+        tar -xf data.tar.gz
+    else
+        msg "Error: Could not find data.tar.* inside deb archive."
+        return 1
+    fi
+
+    # Create target directories
     install -d "$pkgdir/opt/antigravity"
-
-    _extracted_dir=$(find "$srcdir" -maxdepth 1 -type d -name "Antigravity*" | head -n 1)
-
-    if [ -z "$_extracted_dir" ]; then
-        echo "Error: Could not find extracted directory."
-        exit 1
-    fi
-
-    cp -r "$_extracted_dir"/* "$pkgdir/opt/antigravity/"
-
-    install -d "$pkgdir/usr/bin"
-    
-    if [ -f "$pkgdir/opt/antigravity/Antigravity" ]; then
-        chmod +x "$pkgdir/opt/antigravity/Antigravity"
-        ln -s "/opt/antigravity/Antigravity" "$pkgdir/usr/bin/antigravity"
-    elif [ -f "$pkgdir/opt/antigravity/antigravity" ]; then
-        chmod +x "$pkgdir/opt/antigravity/antigravity"
-        ln -s "/opt/antigravity/antigravity" "$pkgdir/usr/bin/antigravity"
-    else
-        echo "Error: Could not find binary in /opt/antigravity"
-        exit 1
-    fi
-
-    install -d "$pkgdir/usr/share/pixmaps"
-    
-    _icon_path="$pkgdir/opt/antigravity/resources/app/resources/linux/code.png"
-    if [ -f "$_icon_path" ]; then
-        ln -s "/opt/antigravity/resources/app/resources/linux/code.png" "$pkgdir/usr/share/pixmaps/antigravity.png"
-    else
-        _found_icon=$(find "$pkgdir/opt/antigravity" -name "*.png" | head -n 1)
-        if [ -n "$_found_icon" ]; then
-            _rel_path=${_found_icon#$pkgdir}
-            ln -s "$_rel_path" "$pkgdir/usr/share/pixmaps/antigravity.png"
-        fi
-    fi
-
     install -d "$pkgdir/usr/share/applications"
+    install -d "$pkgdir/usr/bin"
+    install -d "$pkgdir/usr/share/pixmaps"
+    install -d "$pkgdir/usr/share/licenses/$pkgname"
 
-    cat > "$pkgdir/usr/share/applications/antigravity-url-handler.desktop" <<EOF
-[Desktop Entry]
-Name=Antigravity - URL Handler
-Comment=Experience liftoff
-GenericName=Text Editor
-Exec=/usr/bin/antigravity --open-url %U
-Icon=antigravity
-Type=Application
-NoDisplay=true
-StartupNotify=true
-Categories=Utility;TextEditor;Development;IDE;
-MimeType=x-scheme-handler/antigravity;
-Keywords=vscode;
-EOF
+    # Move application content to /opt/antigravity
+    cp -r usr/share/antigravity/* "$pkgdir/opt/antigravity/"
+    
+    # Install License(s)
+    # Look for common license files in the extracted directory
+    # Based on file listing, we know LICENSES.chromium.html exists.
+    if [ -f "usr/share/antigravity/LICENSES.chromium.html" ]; then
+        install -m644 "usr/share/antigravity/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
+    fi
+    # Also check for a standard LICENSE file
+    if [ -f "usr/share/antigravity/LICENSE" ]; then
+        install -m644 "usr/share/antigravity/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    elif [ -f "usr/share/antigravity/resources/app/LICENSE.txt" ]; then
+        # Sometimes hidden in resources
+        install -m644 "usr/share/antigravity/resources/app/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    fi
 
-    cat > "$pkgdir/usr/share/applications/antigravity.desktop" <<EOF
-[Desktop Entry]
-Name=Antigravity
-Comment=Experience liftoff
-GenericName=Text Editor
-Exec=/usr/bin/antigravity %F
-Icon=antigravity
-Type=Application
-StartupNotify=false
-StartupWMClass=Antigravity
-Categories=TextEditor;Development;IDE;
-MimeType=application/x-antigravity-workspace;
-Actions=new-empty-window;
-Keywords=vscode;
+    # Handle Desktop files
+    for desktop_file in usr/share/applications/*.desktop; do
+        if [ -f "$desktop_file" ]; then
+            sed 's|/usr/share/antigravity/antigravity|/opt/antigravity/antigravity|g' "$desktop_file" > "$pkgdir/usr/share/applications/$(basename "$desktop_file")"
+            chmod 644 "$pkgdir/usr/share/applications/$(basename "$desktop_file")"
+        fi
+    done
 
-[Desktop Action new-empty-window]
-Name=New Empty Window
-Name[cs]=Nové prázdné okno
-Name[de]=Neues leeres Fenster
-Name[es]=Nueva ventana vacía
-Name[fr]=Nouvelle fenêtre vide
-Name[it]=Nuova finestra vuota
-Name[ja]=新しい空のウィンドウ
-Name[ko]=새 빈 창
-Name[ru]=Новое пустое окно
-Name[zh_CN]=新建空窗口
-Name[zh_TW]=開新空視窗
-Exec=/usr/bin/antigravity --new-window %F
-Icon=antigravity
-EOF
+    # Create symlink for the executable
+    ln -s /opt/antigravity/antigravity "$pkgdir/usr/bin/antigravity"
+    
+    # Create symlink for the icon, if found
+    if [ -f "$pkgdir/opt/antigravity/resources/app/resources/linux/code.png" ]; then
+        ln -s /opt/antigravity/resources/app/resources/linux/code.png "$pkgdir/usr/share/pixmaps/antigravity.png"
+    fi
+
+    # Set executable permissions
+    chmod 755 "$pkgdir/opt/antigravity/antigravity"
+    chmod 755 "$pkgdir/opt/antigravity/chrome_crashpad_handler" 2>/dev/null || true
 }
