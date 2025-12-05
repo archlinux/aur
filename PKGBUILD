@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=umu-launcher-git
-pkgver=1.2.1.r1.5783092e
+pkgver=1.3.0.r22.4ed61d10
 pkgrel=1
 pkgdesc="This is the Unified Launcher for Windows Games on Linux, to run Proton with fixes outside of Steam"
 arch=('x86_64')
@@ -54,6 +54,7 @@ depends_x86_64=(
   lib32-vulkan-icd-loader
 )
 makedepends=(
+  cargo
   git
   scdoc
   python-build
@@ -70,6 +71,8 @@ _origin="https://github.com/Open-Wine-Components/umu-launcher.git"
 source=(
   "git+$_origin"
 )
+
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir"/umu-launcher
@@ -97,4 +100,3 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-sha256sums=('SKIP')
