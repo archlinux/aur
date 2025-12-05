@@ -1,7 +1,7 @@
 # Maintainer: Alejandro Valdes  <alejandrovaldes at live dot com>
 pkgname=yuview
 _pkgname=YUView
-pkgver=2.13
+pkgver=2.14
 pkgrel=1
 pkgdesc="The Free and Open Source Cross Platform YUV Viewer with an advanced analytics toolset"
 arch=('x86_64')
