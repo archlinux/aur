@@ -7,7 +7,7 @@ _checksum='3bf27878516de1488e30cdb2a049c7094efccc9c3c8bee464481f754f9033c87'
 pkgbase='iloader'
 pkgname='iloader-appimage'
 pkgver=$_version
-pkgrel=1
+pkgrel=2
 pkgdesc='User-friendly sideloader'
 url='https://github.com/nab138/iloader'
 arch=('x86_64')
@@ -39,7 +39,7 @@ package() {
 
     # Create a symlink for appimage in /usr/bin/
     mkdir -p "$pkgdir/usr/bin"
-    ln -s "$pkgdir/opt/iloader/$_appimage" "$pkgdir/usr/bin/iloader"
+    ln -s "/opt/iloader/$_appimage" "$pkgdir/usr/bin/iloader"
 
     # Install desktop file
     install -Dm644 "$srcdir/squashfs-root/iloader.desktop" \
