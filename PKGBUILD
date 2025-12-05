@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 
 pkgname=zenus
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="A beautiful note-taking app built with Tauri with Local, Server and Client mode"
 arch=('x86_64')
