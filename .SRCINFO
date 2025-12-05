@@ -10,7 +10,7 @@ pkgbase = rivetui-git
 	depends = glibc
 	depends = cargo
 	depends = rust
-	source = rivetui-0.2.8.tar.gz::https://github.com/YetAnotherMechanicusEnjoyer/Rivet/archive/refs/tags/v0.2.8.tar.gz
+	source = rivetui-git-0.2.8.tar.gz::https://github.com/YetAnotherMechanicusEnjoyer/Rivet/archive/refs/tags/v0.2.8.tar.gz
 	sha256sums = SKIP
 
 pkgname = rivetui-git
