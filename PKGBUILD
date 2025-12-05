@@ -8,7 +8,7 @@ pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=10.3.0
 _xaliaver=0.4.6
-pkgrel=1
+pkgrel=2
 epoch=1
 
 source=(
@@ -295,12 +295,6 @@ build() {
 
     SUBJOBS=$([[ "$MAKEFLAGS" =~ -j\ *([1-9][0-9]*) ]] && echo "${BASH_REMATCH[1]}" || echo "$(nproc)") \
         make -j1 dist
-
-    cd dist
-    sed -r \
-      -e "s|##BUILD_NAME##|proton-cachyos-${_srctag} (native)|" \
-      -e "s|##INTERNAL_TOOL_NAME##|${pkgname}|" \
-      "${srcdir}/compatibilitytool.vdf.template" > compatibilitytool.vdf
 }
 
 package() {
@@ -310,14 +304,22 @@ package() {
     rm -rf dst-* obj-* src-* pfx-*
 
     local _compatdir="${pkgdir}/usr/share/steam/compatibilitytools.d"
-    mkdir -p "${_compatdir}/${pkgname}"
-    rsync --delete -arx dist/* "${_compatdir}/${pkgname}"
+    mkdir -p "${_compatdir}"
+    sed -r \
+      -e "s|##INSTALL_PATH##|/opt/${pkgname}|" \
+      -e "s|##DISPLAY_NAME##|proton-cachyos-${_srctag} (native)|" \
+      -e "s|##INTERNAL_TOOL_NAME##|${pkgname}|" \
+      "${srcdir}/compatibilitytool.vdf.template" > "${_compatdir}/${pkgname}.vdf"
+
+    local _installdir="${pkgdir}/opt/"
+    mkdir -p "${_installdir}/${pkgname}"
+    rsync --delete -arx dist/* "${_installdir}/${pkgname}"
 
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-    mv "${_compatdir}/${pkgname}"/{PATENTS.AV1,LICENSE{,.OFL}} \
+    mv "${_installdir}/${pkgname}"/{PATENTS.AV1,LICENSE{,.OFL}} \
         "${pkgdir}/usr/share/licenses/${pkgname}"
 
-    cd "${_compatdir}/${pkgname}/files"
+    cd "${_installdir}/${pkgname}/files"
 
     local _geckodir="share/wine/gecko/wine-gecko-${_geckover}"
     i686-w64-mingw32-strip --strip-debug \
@@ -341,4 +343,4 @@ b2sums=('117cdc4d7a941b534c8cd73ef83ce945185b66e7d20b36cb941e1e5468006b69454f6fa
         '62856a88266b4757602c0646e024f832974a93f03b9df253fd4895d4f11a41b435840ad8f7003ec85a0d8087dec15f2e096dbfb4b01ebe4d365521e48fd0c5c0'
         'a3a63b1e8cf072923512923ccd7419fbdb4c9747b0a3c29111d2bda36ab1fd95d0fd4283f74126cfe0c60e639ce3d173d69efdb3d97bf2b39142eb3ed3a27ef7'
         '4d30eea9306392790677a4e19f7e416a387aaf10c4a7681aa8fcd94faf07be81a984b28ba1437428d7c215c5ecdbba70993091547068fbdc224e809c3f7abd85'
-        'ded33c991713dc02ff144978ac0f657b3835c51bce7a633d1ae9ca21479868172bdbdd5feba94e1f5d6bfecb54d1a000d1673395fdd9d68e7bab12bdcb978cc5')
+        'f0a81d83e644ca074a6bf54fc74ae12f5bd047e29d87fab528fba20e4b8d013547ad4b26e912c2b3218a75114f5c76b64aa84fdbc3054d3a1d9bf96635c6212b')
