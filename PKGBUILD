@@ -13,10 +13,23 @@ depends=("gcc-libs" "glibc")
 provides=("fresh-editor")
 conflicts=("fresh-editor")
 options=('!debug')
-source=("https://github.com/sinelaw/fresh/releases/download/v$pkgver/fresh-editor-$CARCH-unknown-linux-gnu.tar.xz")
-sha256sums=("22b1e49df93373c9b7237c8b75be09512268f1bf16dbe0dcc762048f8f4c14de")
+source=("https://github.com/sinelaw/fresh/releases/download/v$pkgver/fresh-editor-$CARCH-unknown-linux-gnu.tar.xz"
+        "LICENSE")
+sha256sums=("22b1e49df93373c9b7237c8b75be09512268f1bf16dbe0dcc762048f8f4c14de"
+            "SKIP")
 
 package() {
+    cd "fresh-editor-$CARCH-unknown-linux-gnu"
+
+    # Binary
     install -Dm755 fresh -t "$pkgdir/usr/bin"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    # Documentation
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+    # License
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    # Plugins
+    cp -r plugins "$pkgdir/usr/share/$pkgname/"
 }
