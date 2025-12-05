@@ -1,7 +1,7 @@
 # Maintainer: Lehel Gyuro <lehel@freemail.hu>
 
 pkgname=libpigpiod
-pkgver=2.1.6
+pkgver=2.1.7
 pkgrel=1
 pkgdesc="INDI driver for products manufactured by pigpiod"
 url="http://www.indilib.org/index.php?title=Main_Page"
