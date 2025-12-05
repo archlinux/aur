@@ -1,6 +1,6 @@
 pkgbase = libindi-toupbase
 	pkgdesc = INDI driver for products manufactured by indi-toupbase
-	pkgver = 2.1.6
+	pkgver = 2.1.7
 	pkgrel = 1
 	url = http://www.indilib.org/index.php?title=Main_Page
 	arch = i686
@@ -8,30 +8,30 @@ pkgbase = libindi-toupbase
 	arch = aarch64
 	license = LGPL-2.1-or-later
 	makedepends = cmake
-	makedepends = libtoupcam=2.1.6
-	makedepends = libbressercam=2.1.6
-	makedepends = libmeadecam=2.1.6
-	makedepends = libogmacam=2.1.6
-	makedepends = libstarshootg=2.1.6
-	makedepends = libtscam=2.1.6
-	makedepends = libomegonprocam=2.1.6
-	makedepends = libnncam=2.1.6
-	makedepends = libaltaircam=2.1.6
-	makedepends = libmallincam=2.1.6
-	makedepends = libsvbonycam=2.1.6
-	depends = libindi=2.1.6
-	depends = libtoupcam=2.1.6
-	depends = libbressercam=2.1.6
-	depends = libmeadecam=2.1.6
-	depends = libogmacam=2.1.6
-	depends = libstarshootg=2.1.6
-	depends = libtscam=2.1.6
-	depends = libomegonprocam=2.1.6
-	depends = libnncam=2.1.6
-	depends = libaltaircam=2.1.6
-	depends = libmallincam=2.1.6
-	depends = libsvbonycam=2.1.6
-	source = https://github.com/indilib/indi-3rdparty/archive/v2.1.6.tar.gz
-	sha256sums = a02159706b633d6ab92aa234930ed2a8c8cf08189bc9e09f2cf808dc52ec0a6b
+	makedepends = libtoupcam=2.1.7
+	makedepends = libbressercam=2.1.7
+	makedepends = libmeadecam=2.1.7
+	makedepends = libogmacam=2.1.7
+	makedepends = libstarshootg=2.1.7
+	makedepends = libtscam=2.1.7
+	makedepends = libomegonprocam=2.1.7
+	makedepends = libnncam=2.1.7
+	makedepends = libaltaircam=2.1.7
+	makedepends = libmallincam=2.1.7
+	makedepends = libsvbonycam=2.1.7
+	depends = libindi=2.1.7
+	depends = libtoupcam=2.1.7
+	depends = libbressercam=2.1.7
+	depends = libmeadecam=2.1.7
+	depends = libogmacam=2.1.7
+	depends = libstarshootg=2.1.7
+	depends = libtscam=2.1.7
+	depends = libomegonprocam=2.1.7
+	depends = libnncam=2.1.7
+	depends = libaltaircam=2.1.7
+	depends = libmallincam=2.1.7
+	depends = libsvbonycam=2.1.7
+	source = https://github.com/indilib/indi-3rdparty/archive/v2.1.7.tar.gz
+	sha256sums = 4d1e3ee713af1bac2e86627d5fed3c542187f2246168f195b3ec802607c71e8b
 
 pkgname = libindi-toupbase
