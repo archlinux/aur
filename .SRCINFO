@@ -1,6 +1,6 @@
 pkgbase = hal-emsec-git
 	pkgdesc = Hardware Analyzer for Hardware Reversing from emsec
-	pkgver = 4.4.1.r302.g9900bf1
+	pkgver = 4.5.0.r38.g2d0e2fd
 	pkgrel = 1
 	url = https://github.com/emsec/hal
 	arch = x86_64
@@ -24,6 +24,8 @@ pkgbase = hal-emsec-git
 	provides = hal-emsec
 	conflicts = hal-emsec
 	source = hal-emsec::git+https://github.com/emsec/hal.git#branch=master
+	source = fix-igraph-calls.patch
 	sha256sums = SKIP
+	sha256sums = e58487f7689805b8c811a6ec18e9a2c7086d28fc620bef02c3541041e9a10ac3
 
 pkgname = hal-emsec-git
