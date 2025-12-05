@@ -11,9 +11,11 @@ options=('!buildflags' '!strip' 'staticlibs')
 license=('GPL')
 url="https://sourceforge.net/projects/mingw/"
 source=("http://download.sourceforge.net/mingw/Other/UserContributed/regex/mingw-regex-${pkgver}/mingw-libgnurx-${pkgver}-src.tar.gz"
-        "mingw-w64-libgnurx-honor-destdir.patch")
-md5sums=('35c8fed3101ca1f253e9b6b1966661f6'
-         '2d87c59177adf5ec13dbcc02acc4a450')
+        mingw-w64-libgnurx-honor-destdir.patch
+        stdbool.patch)
+sha256sums=('7147b7f806ec3d007843b38e19f42a5b7c65894a57ffc297a76b0dcd5f675d76'
+            '7db74e71a2612e1720f68acea7c9bc24873be1d533c1eed4db58c4fd923e1ec1'
+            '101add52fa902a99fef470bd6cba26d39eb0a67f59db7706ff710036dcb968c6')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"      
 
@@ -21,6 +23,7 @@ prepare()
 {
   cd "$srcdir/mingw-libgnurx-${pkgver}"
   patch -Np0 -i ../mingw-w64-libgnurx-honor-destdir.patch
+  patch -p0 -i ../stdbool.patch
 }
 
 build()

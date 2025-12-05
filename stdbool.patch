@@ -1,0 +1,23 @@
+--- regex_internal.h    2007-04-27 22:29:51.000000000 +0300
++++ "regex_internal (Copy).h"   2025-12-04 04:41:43.462761447 +0300
+@@ -26,6 +26,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <stdbool.h>
+
+ #if defined(__MINGW32_VERSION) || defined(_MSC_VER)
+ #define strcasecmp stricmp
+@@ -43,11 +44,6 @@
+ #if defined HAVE_WCTYPE_H || defined _LIBC
+ # include <wctype.h>
+ #endif /* HAVE_WCTYPE_H || _LIBC */
+-#if defined HAVE_STDBOOL_H || defined _LIBC
+-# include <stdbool.h>
+-#else
+-typedef enum { false, true } bool;
+-#endif /* HAVE_STDBOOL_H || _LIBC */
+ #if defined HAVE_STDINT_H || defined _LIBC
+ # include <stdint.h>
+ #endif /* HAVE_STDINT_H || _LIBC */
+
