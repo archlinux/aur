@@ -1,4 +1,5 @@
-# Maintainer: Chip Collier <photex@gmail.com>
+# Maintainer: Yegor Pomortsev <yegor@pomortsev.com>
+# Contributor: Chip Collier <photex@gmail.com>
 # Upstream: PreSonus Audio Electronics, Inc.
 
 # Based on PKGBUILD for https://aur.archlinux.org/packages/bitwig-studio
