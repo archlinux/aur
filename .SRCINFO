@@ -1,6 +1,6 @@
 pkgbase = nautilus-plus
 	pkgdesc = Enhanced GNOME file manager with fast search, animated thumbnails, and more
-	pkgver = 50.6
+	pkgver = 50.7
 	pkgrel = 1
 	url = https://github.com/johnzfitch/nautilus-fork
 	install = nautilus-plus.install
