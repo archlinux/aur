@@ -1,0 +1,12 @@
+[adtrack2-bin]
+source = "regex"
+url = "https://adlibtracker.net/files/revision.htm"
+regex = "\\(Windows/Linux\\) version ([^<]*)"
+ignored = "2.4.25"  # see https://adlibtracker.net/messageboard.php
+
+# # Not using `htmlparser` as long as we have to ignore v2.4.25.
+# source = "htmlparser"
+# url = "https://adlibtracker.net/files/revision.htm"
+# xpath = "/html/body/div/p/span[contains(text(), '(Windows/Linux) version')]/text()"
+# from_pattern = ".* \\(Windows/Linux\\) version (.*)"
+# to_pattern = "\\1"

@@ -7,4 +7,4 @@ Exec=adtrack2
 Icon=adtrack2
 Terminal=false
 StartupNotify=false
-Categories=Application;Multimedia;
+Categories=AudioVideo;Audio;Sequencer;

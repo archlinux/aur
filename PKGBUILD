@@ -1,19 +1,23 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=adtrack2-bin
 pkgver=2.4.24
-pkgrel=5
+pkgrel=6
 pkgdesc='Adlib Tracker II, OPL3 music tracker'
 arch=(x86_64)
 url="http://www.adlibtracker.net"
-license=(LGPL) # the source code has LGPL at the top of the files
-depends=(sdl2)
-source=("http://www.adlibtracker.net/files/adtrack-2.4.24-linux-bin-debian-stretch-x86.tar.gz"
+license=('GPL-3.0-or-later') # the source code has GPL at the top of the files
+depends=('bash' 'lib32-glibc' 'lib32-sdl12-compat')
+optdepends=('lib32-alsa-lib: sound support for ALSA'
+            'lib32-pipewire: sound support for Pipewire'
+            'lib32-libpulse: sound support for PulseAudio')
+source=("https://adlibtracker.net/files/adtrack-2.4.24-linux-bin-debian-stretch-x86.tar.gz"
         adtrack2.desktop
         adtrack2.sh
         LICENSE)
 sha256sums=('fdfbb29ae5da944d082a1d33331532745bdfca92acea67eabeae3ff446ec8b17'
-            'c6393a8159cdb8e2de29c82930cb19d5532aa38ab5e4b81d4baf0fac4580fcbf'
+            'f99d6fb998ec8475abb9b258d115ff2ee02fb7e00350fc9aba82c54d0807908c'
             '5ab9050335471e8bd7d8c5c3da8c646d3b47dabef404d4e3cdab23ca3423a03e'
             'c38f322ecc2ebc88c1c775614543fbc6acad72ec13cb9ff6c023c3f5247de39f')
 

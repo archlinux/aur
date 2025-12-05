@@ -1,19 +1,23 @@
 pkgbase = adtrack2-bin
 	pkgdesc = Adlib Tracker II, OPL3 music tracker
 	pkgver = 2.4.24
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.adlibtracker.net
 	arch = x86_64
-	license = LGPL
-	depends = sdl2
-	source = http://www.adlibtracker.net/files/adtrack-2.4.24-linux-bin-debian-stretch-x86.tar.gz
+	license = GPL-3.0-or-later
+	depends = bash
+	depends = lib32-glibc
+	depends = lib32-sdl12-compat
+	optdepends = lib32-alsa-lib: sound support for ALSA
+	optdepends = lib32-pipewire: sound support for Pipewire
+	optdepends = lib32-libpulse: sound support for PulseAudio
+	source = https://adlibtracker.net/files/adtrack-2.4.24-linux-bin-debian-stretch-x86.tar.gz
 	source = adtrack2.desktop
 	source = adtrack2.sh
 	source = LICENSE
 	sha256sums = fdfbb29ae5da944d082a1d33331532745bdfca92acea67eabeae3ff446ec8b17
-	sha256sums = c6393a8159cdb8e2de29c82930cb19d5532aa38ab5e4b81d4baf0fac4580fcbf
+	sha256sums = f99d6fb998ec8475abb9b258d115ff2ee02fb7e00350fc9aba82c54d0807908c
 	sha256sums = 5ab9050335471e8bd7d8c5c3da8c646d3b47dabef404d4e3cdab23ca3423a03e
 	sha256sums = c38f322ecc2ebc88c1c775614543fbc6acad72ec13cb9ff6c023c3f5247de39f
 
 pkgname = adtrack2-bin
-
