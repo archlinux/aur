@@ -1,6 +1,6 @@
 pkgbase = flying-carpet-bin
 	pkgdesc = File transfer between Android, iOS, Linux, macOS, and Windows over ad hoc WiFi
-	pkgver = 9.0.0
+	pkgver = 9.0.9
 	pkgrel = 1
 	url = https://github.com/spieglt/FlyingCarpet
 	arch = x86_64
@@ -17,12 +17,12 @@ pkgbase = flying-carpet-bin
 	depends = webkit2gtk-4.1
 	provides = flying-carpet
 	conflicts = flying-carpet
-	noextract = flying-carpet-9.0.0-x86_64.deb
-	source = flying-carpet-9.0.0-README.md::https://github.com/spieglt/FlyingCarpet/raw/refs/tags/v9.0.0/README.md
-	source = flying-carpet-9.0.0-LICENSE.txt::https://github.com/spieglt/FlyingCarpet/raw/refs/tags/v9.0.0/LICENSE.txt
-	sha256sums = 370292cc735281eb94a0d5d4538912012d03a85eaa4234bab4e9ac900067fbdf
+	noextract = flying-carpet-9.0.9-x86_64.deb
+	source = flying-carpet-9.0.9-README.md::https://github.com/spieglt/FlyingCarpet/raw/refs/tags/v9.0.9/README.md
+	source = flying-carpet-9.0.9-LICENSE.txt::https://github.com/spieglt/FlyingCarpet/raw/refs/tags/v9.0.9/LICENSE.txt
+	sha256sums = 02926e6f66a22662379baadc51b93993e03187bf3b21cb12a278f60230d5ab7e
 	sha256sums = 68fc3b3e41307c4fb2f0174896f9549240e84b60865064f8dd70dffa65f7b5b1
-	source_x86_64 = flying-carpet-9.0.0-x86_64.deb::https://github.com/spieglt/FlyingCarpet/releases/download/v9.0.0/linux_FlyingCarpet_9.0.0_amd64.deb
-	sha256sums_x86_64 = e24a074fb488bd0a5a1a053ea5a795f7b85e51590fbe2fff48e203f8550388b7
+	source_x86_64 = flying-carpet-9.0.9-x86_64.deb::https://github.com/spieglt/FlyingCarpet/releases/download/v9.0.9/linux_FlyingCarpet_9.0.9_amd64.deb
+	sha256sums_x86_64 = 861145598eb50aece47044bec4027b129a8daf2055d3f6583f3f31714eeed499
 
 pkgname = flying-carpet-bin
