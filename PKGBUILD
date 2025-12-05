@@ -1,14 +1,13 @@
 # Maintainer: Koutheir Attouchi <koutheir at gmail dot com>
 _github_user_name='sevaa'
 pkgname=dwex
-pkgver=4.56
+pkgver=4.60
 pkgrel=1
 pkgdesc='GUI viewer for DWARF debug information'
 arch=('x86_64')
 url="https://github.com/${_github_user_name}/${pkgname}"
 license=('BSD-3-Clause')
-depends=('python>=3.6.1' 'python-filebytes>=0.10.1' 'python-pyelftools>=0.32' \
-         'python-pyqt6>=6.9' 'qt6-svg>=6.9')
+depends=('python>=3.6.1' 'python-pyelftools>=0.32' 'python-pyqt6>=6.9' 'qt6-svg>=6.9')
 makedepends=('python-setuptools>=1:79')
 checkdepends=()
 optdepends=()
@@ -18,7 +17,7 @@ install=
 source=("https://github.com/${_github_user_name}/${pkgname}/archive/refs/tags/${pkgver}.tar.gz" \
         "${pkgname}.png" "${pkgname}.desktop")
 noextract=()
-sha256sums=(1da59ed96e6e46320a2b8c4c3a305fc1ec498571d7369d728634dd9bec3e6e29 \
+sha256sums=(a459394589ad05d7376c3f340f425651edf7ae4241f2c4bd9bc192372ccde614 \
             d92d16891381310a4b18cc8ae59a1a0ac99a07ca80599a7e3c003970622ba03f \
             155036828925419fe6ab40d600d5e5ada249e1b47095d17bddf7aa694a0cdb6d)
 validpgpkeys=()
