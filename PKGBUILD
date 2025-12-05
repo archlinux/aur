@@ -1,0 +1,57 @@
+# Maintainer: Christopher Dorrell <dorrellkc@gmail.com>
+pkgname=tux-assistant
+pkgver=0.9.76
+pkgrel=1
+pkgdesc="GTK4/Libadwaita Linux system configuration tool - simplifies post-installation setup"
+arch=('any')
+url="https://github.com/dorrellkc/Tux-Assistant"
+license=('GPL-3.0-or-later')
+depends=(
+    'python'
+    'python-gobject'
+    'gtk4'
+    'libadwaita'
+    'python-requests'
+    'polkit'
+    'python-dbus'
+    'webkit2gtk-4.1'
+)
+optdepends=(
+    'speedtest-cli: for network speed tests'
+    'samba: for network file sharing'
+    'gnome-shell: for GNOME extension management'
+)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/dorrellkc/Tux-Assistant/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('c3c3e9e66cee4f7e061e601ae33107c937dfe274e0b13a241be098e4ff136d1d')
+
+package() {
+    cd "$srcdir/Tux-Assistant-$pkgver"
+    
+    # Install to /opt/tux-assistant
+    install -dm755 "$pkgdir/opt/tux-assistant"
+    cp -r tux "$pkgdir/opt/tux-assistant/"
+    cp -r assets "$pkgdir/opt/tux-assistant/"
+    cp -r data "$pkgdir/opt/tux-assistant/"
+    cp -r scripts "$pkgdir/opt/tux-assistant/"
+    install -Dm755 tux-assistant.py "$pkgdir/opt/tux-assistant/"
+    install -Dm755 tux-helper "$pkgdir/opt/tux-assistant/"
+    install -Dm644 VERSION "$pkgdir/opt/tux-assistant/"
+    
+    # Install launcher script
+    install -dm755 "$pkgdir/usr/bin"
+    echo '#!/bin/bash' > "$pkgdir/usr/bin/tux-assistant"
+    echo 'cd /opt/tux-assistant && python tux-assistant.py "$@"' >> "$pkgdir/usr/bin/tux-assistant"
+    chmod 755 "$pkgdir/usr/bin/tux-assistant"
+    
+    # Install tux-helper to /usr/bin
+    install -Dm755 tux-helper "$pkgdir/usr/bin/tux-helper"
+    
+    # Install desktop file
+    install -Dm644 data/com.tuxassistant.app.desktop "$pkgdir/usr/share/applications/com.tuxassistant.app.desktop"
+    
+    # Install icon
+    install -Dm644 assets/icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/tux-assistant.svg"
+    
+    # Install polkit policy
+    install -Dm644 data/com.tuxassistant.helper.policy "$pkgdir/usr/share/polkit-1/actions/com.tuxassistant.helper.policy"
+}
