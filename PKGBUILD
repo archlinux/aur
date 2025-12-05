@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 _pkgname=libretro-dolphin
 pkgname=$_pkgname-git
-pkgver=r33044.89a4df725d
+pkgver=r44842.df2b1a754b
 pkgrel=1
 pkgdesc="Nintendo GameCube/Wii core"
 arch=('x86_64')
@@ -13,30 +13,31 @@ depends=(
 	'enet'
 	'gcc-libs'
 	'glibc'
+	'glslang'
 	'libretro-core-info'
 	'libx11'
 	'libxi'
-	'libxrandr'
 	'pugixml'
 )
 makedepends=(
 	'bluez-libs'
 	'bzip2'
 	'cmake'
-	'cubeb'
 	'curl'
 	'fmt'
 	'git'
 	'hidapi'
-	'libegl'
-	'libevdev'
-	'libpng'
+	'libgl'
+	'libspng'
 	'libsystemd'
 	'libusb'
+	'lz4'
 	'lzo'
 	'mbedtls2'
+	'minizip-ng'
 	'python'
 	'sfml'
+	'vulkan-headers'
 	'xorgproto'
 	'xxhash'
 	'xz'
@@ -47,11 +48,23 @@ provides=("$_pkgname=${pkgver#r}")
 conflicts=("$_pkgname")
 source=(
 	"$_pkgname::git+$url.git"
-	'use-system-libs.patch'
+	"cpp-ipc::git+https://github.com/mutouyun/cpp-ipc.git"
+	"cpp-optparse::git+https://github.com/weisslj/cpp-optparse.git"
+	"imgui::git+https://github.com/ocornut/imgui.git"
+	"implot::git+https://github.com/epezent/implot.git"
+	"tinygltf::git+https://github.com/syoyo/tinygltf.git"
+	"vulkan-memory-allocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
+	"watcher::git+https://github.com/e-dant/watcher.git"
 )
 b2sums=(
 	'SKIP'
-	'5c21d83d249ec4205aa75c4cef4d322c1c0c332496133b698ca08bd2a63eb1f2cce3968125924125ac44547b5db200a1228e77fe26862082632cd0c8ca37e01c'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
 )
 
 pkgver() {
@@ -60,19 +73,27 @@ pkgver() {
 }
 
 prepare() {
-	patch -d $_pkgname -Np1 < use-system-libs.patch
+	cd $_pkgname
+	git config submodule.Externals/cpp-ipc/cpp-ipc.url ../cpp-ipc
+	git config submodule.Externals/cpp-optparse/cpp-optparse.url ../cpp-optparse
+	git config submodule.Externals/imgui/imgui.url ../imgui
+	git config submodule.Externals/implot/implot.url ../implot
+	git config submodule.Externals/tinygltf/tinygltf.url ../tinygltf
+	git config submodule.Externals/VulkanMemoryAllocator.url ../vulkan-memory-allocator
+	git config submodule.Externals/watcher/watcher.url ../watcher
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
-	cmake -S $_pkgname -B build \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
-		-DENABLE_LTO=OFF \
-		-DENABLE_TESTS=OFF \
-		-DLIBRETRO=ON \
-		-DUSE_SHARED_ENET=ON \
+	local options=(
+		-D CMAKE_BUILD_TYPE=Release
+		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
+		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
+		-D ENABLE_LTO=OFF
+		-D LIBRETRO=ON
 		-Wno-dev
+	)
+	cmake "${options[@]}" -B build -S $_pkgname
 	cmake --build build
 }
 
@@ -80,22 +101,19 @@ package() {
 	depends+=(
 		'libbluetooth.so'
 		'libbz2.so'
-		'libcubeb.so'
 		'libcurl.so'
 		'libEGL.so'
-		'libevdev.so'
 		'libfmt.so'
 		'libGLX.so'
 		'libhidapi-hidraw.so'
+		'liblz4.so'
 		'liblzma.so'
 		'liblzo2.so'
 		'libmbedcrypto.so'
 		'libmbedtls.so'
 		'libmbedx509.so'
-		'libpng16.so'
 		'libsfml-network.so'
-		'libsfml-system.so'
-		'libudev.so'
+		'libspng.so'
 		'libusb-1.0.so'
 		'libxxhash.so'
 		'libz.so'
