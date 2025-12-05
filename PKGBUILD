@@ -2,7 +2,7 @@
 
 reponame=Rivet
 pkgname=rivetui
-pkgver=0.2.11
+pkgver=0.2.12
 pkgrel=1
 pkgdesc="A Terminal UI Discord Client in Rust"
 arch=('i686' 'x86_64' 'aarch64')
