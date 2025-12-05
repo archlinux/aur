@@ -1,5 +1,5 @@
 pkgbase = sing-box-beta-bin
-	pkgdesc = The universal proxy platform.
+	pkgdesc = The universal proxy platform (beta binary version).
 	pkgver = 1.13.0~alpha.27
 	pkgrel = 1
 	url = https://sing-box.sagernet.org/
