@@ -1,4 +1,4 @@
-# Maintainer: ravi0li <mail+aur at moritz dot pw>
+# Maintainer: Rubonnek <wilson.e.alvarez@rubonnek.com>
 pkgname=hledger-flow-bin
 _gitname=${pkgname%-bin}
 pkgver=0.16.0
