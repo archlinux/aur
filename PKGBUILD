@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=('libarchive')
 provides=('thorium-browser')
-conflicts=('thorium-browser' 'thorium-browser-avx2-bin' 'chromium')
+conflicts=('thorium-browser' 'thorium-browser-avx2-bin')
 replaces=('thorium-browser-avx')
 
 source=("https://github.com/Alex313031/thorium/releases/download/M${pkgver}/thorium-browser_${pkgver}_AVX.rpm")

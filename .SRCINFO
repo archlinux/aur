@@ -23,7 +23,6 @@ pkgbase = thorium-browser-avx-bin
 	provides = thorium-browser
 	conflicts = thorium-browser
 	conflicts = thorium-browser-avx2-bin
-	conflicts = chromium
 	replaces = thorium-browser-avx
 	noextract = thorium-browser_130.0.6723.174_AVX.rpm
 	source = https://github.com/Alex313031/thorium/releases/download/M130.0.6723.174/thorium-browser_130.0.6723.174_AVX.rpm
