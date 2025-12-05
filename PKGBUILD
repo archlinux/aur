@@ -4,7 +4,7 @@ pkgbase=python-sshfs
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=2025.10.0
+pkgver=2025.11.0
 pkgrel=1
 pkgdesc="SSH Filesystem -- Async SSH/SFTP backend for fsspec"
 arch=('any')
@@ -18,14 +18,12 @@ checkdepends=('python-pytest-asyncio'
 #             'python-pytest-xdist'
               'python-fsspec'
               'python-asyncssh'
-              'python-typing_extensions'
-              'python-cryptography'
               'python-mock-ssh-server'
-              'python-importlib-metadata')
+              'python-importlib-metadata')  # cryptography, typing_extensions <- asyncssh
 #             'openssh'
 #             'openbsd-netcat'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('6dfc136422a93e5704c2106dc2655a5d')
+md5sums=('3df11a59c2b6f493c0035a5c43636915')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
