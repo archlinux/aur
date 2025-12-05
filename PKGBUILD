@@ -1,38 +1,9 @@
 # -----------------------------------------------------------------------------
-# Author: damachine (christkue79@gmail.com)
-# Maintainer: damachine <christkue79@gmail.com>
-# Website: https://github.com/damachine
-# Copyright: (c) 2025 damachine
-# License: MIT
-# Version: 1.0
-#   This software is provided "as is", without warranty of any kind, express or implied.
-#   I do not guarantee that it will work as intended on your system.
-#
-# Info:
-#   CoolerDash 'PKGBUILD' - For Arch/AUR building!
-#   This 'PKGBUILD' is hosted on AUR and is intended for automatic updates via AUR.
-#   This 'PKGBUILD' is designed for Arch Linux and derivatives.
-#   Build system for CoolerDash (C99 compliant).
-#   Project coding standards and packaging notes (see README for details)
-#
-# Details:
-#   This PKGBUILD handles build, install, dependencies, and packaging for Arch/AUR.
-#   Edit dependencies, paths, and user as needed for your system.
-#   Do not run as root. Use dedicated user for security.
-#   Ensure all required dependencies are installed.
-#   It uses color output and Unicode icons for better readability. All paths and dependencies are configurable.
-#   See 'README.md' for further details.
-#
-# Build:
-#   'makepkg -si'
-#
-# Dependency:
-#   'cairo' 'coolercontrol' 'jansson' 'libcurl-gnutls' 'libinih' are required for core functionality.
-#   'ttf-roboto' is required for proper font rendering on the LCD.
-#   All dependencies are documented in 'README.md'.
+# Created by: damachine (christkue79 at gmail dot com)
+# Website: https://github.com/damachine/coolerdash
 # -----------------------------------------------------------------------------
 pkgname=coolerdash-git
-pkgver=2.0.1.r0.gaa751ee
+pkgver=2.0.2.r0.g21cacc5
 pkgrel=1
 provides=('coolerdash')
 replaces=('coolerdash')
@@ -45,7 +16,7 @@ depends=('cairo' 'coolercontrol' 'jansson' 'libcurl-gnutls' 'libinih' 'ttf-robot
 makedepends=('gcc' 'make' 'pkg-config' 'git')
 backup=('etc/coolerdash/config.ini')
 install=coolerdash.install
-_commit=aa751ee077b4b1ad47e9cb0223f2b172d1b06075
+_commit=21cacc597a4434b9fdb20c7cdbe8f145e3968fc6
 source=("git+https://github.com/damachine/coolerdash.git#commit=$_commit")
 sha256sums=('SKIP') # SKIP for git repo source
 
