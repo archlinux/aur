@@ -1,7 +1,7 @@
 # Maintainer: Mike Simpson <oatbar@mikesimps.aleeas.com>
 
 pkgname='oatbar'
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Powerful and customizable DE and WM status bar'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('pango' 'cairo' 'libxcb' 'pkgconf')
 makedepends=('cargo')
 provides=('oatbar-desktop' 'oatbar-keyboard' 'oatbar-stats' 'oatctl')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('SKIP')
+sha256sums=('5724e895302dd65fc507774a057d2cc525f99a3930891993474e7ddff61a056a')
 
 package() {
   export RUSTUP_TOOLCHAIN=stable
