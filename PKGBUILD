@@ -1,5 +1,5 @@
 pkgname=chatgtk_client-git
-pkgver=0.2.28.g052e7be
+pkgver=0.2.31.g9e7273e
 pkgrel=1
 pkgdesc="GTK3 client for OpenAI, Gemini, Grok and Claude APIs with voice and tools"
 arch=('any')
@@ -19,8 +19,7 @@ depends=(
 )
 makedepends=('git')
 optdepends=(
-  'texlive-core: LaTeX support for math rendering'
-  'dvipng: Render LaTeX formulas to images'
+  'texlive-latexrecommended: LaTeX support for math rendering'
   'beets: Music library management for the music control tool'
   'playerctl: MPRIS control for music playback'
 )
