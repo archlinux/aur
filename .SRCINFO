@@ -1,6 +1,6 @@
 pkgbase = sickchill-git
 	pkgdesc = Automatic video library manager for TV shows
-	pkgver = 2024.3.1.r0.20250822.latest
+	pkgver = 2024.3.1.r0.20251205.latest
 	pkgrel = 1
 	url = https://sickchill.github.io
 	install = sickchill-git.install
