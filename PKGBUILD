@@ -27,7 +27,7 @@ optdepends=(
     'opera-ffmpeg-codecs: playback of proprietary video/audio'
     'upower: opera battery save'
 )
-nwjs_ffmpeg_version=0.106.0
+nwjs_ffmpeg_version=0.104.1
 source=(
     "https://get.geo.opera.com/ftp/pub/${pkgname}/desktop/${pkgver}/linux/${pkgname}-stable_${pkgver}_amd64.deb"
     "opera"
@@ -44,7 +44,7 @@ sha512sums=('a18fb192c06f13b89f5ab3fc7d51102fe39b3509100aea131a92a562dab93a146b2
             'aaaa4435a3b6a08bf8e6ad4802afcbf111c1e8f477054251f031b70ae57ac1234fa19048121d64c878dc3b1de03522ce7ef11a263a86dc7062f643d569ecff82'
             '800d62321344ff4e3521ff20fae281cad9206bae80e60965784d144f8bf852f756cbc21f4c9d8d4e93d026da7ca10e0eda7601c83a6d8d85125831eacb907d9a'
             '43d4a066758805597527dbdfc95b4c8ad4b22c5db812b9493e50f8820c72f30c1e431bed40fdb821ab0c23a63aa31dc0e946ab708cc23ac617446964fa6b96f2'
-            'bd5bf7e918f8f56c6c53cb6c2c13c456621d0f02a3c433d97ac22e3c29a816ed9c2810e33cf341c7244452fbcaf22aa4d48d19e642d09e1c9d097bca2c90d1ac')
+            '63d790ea889d66d9fc3d03555cd72c612b2a2434bddb69a78903fb78149a805c2b69cc743028370f1ace7ab2ea4b31cc9ac832ad3b3ed1fb0bc4b01bd43e7658')
 
 prepare() {
     sed -e "s/%pkgname%/$pkgname/g" -i "$srcdir/opera"
