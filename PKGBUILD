@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yet-another-electron-term
 _pkgname=YAET
-pkgver=2.0.2
-_electronversion=31
+pkgver=2.1.2
+_electronversion=35
 _nodeversion=22
 pkgrel=1
 pkgdesc="A remote connection tool based on angular + electron supporting SSH Telnet WinRM, RDP VNC, SCP/SFTP FTP SAMBA.(Use system-wide electron)"
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('c9753d4368f59183cc3e129a739102e60eb03295e8fa81ab625a3e079132ee63'
+sha256sums=('7e19f0ed4ef881609dee155939cdecab8598ff2f93132bc6cbe9cf4897dc9bf4'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
