@@ -5,7 +5,7 @@ pkgname=(
 #  'ctranslate2-docs'
 )
 pkgbase=ctranslate2
-pkgver=4.6.1
+pkgver=4.6.2
 pkgrel=1
 pkgdesc="A C++ and Python library for efficient inference with Transformer models."
 arch=('x86_64')
@@ -36,7 +36,7 @@ makedepends=(
 #  'python-pytorch'
 #  'python-yaml'
 #)
-options=('!lto')  ## lto-wrapper fails with CUDA options enabled
+#options=('!lto')  ## lto-wrapper fails with CUDA options enabled
 source=("git+https://github.com/OpenNMT/CTranslate2.git#tag=v$pkgver"
         'git+https://github.com/jarro2783/cxxopts.git'
         'git+https://github.com/NVIDIA/thrust.git'
@@ -46,7 +46,7 @@ source=("git+https://github.com/OpenNMT/CTranslate2.git#tag=v$pkgver"
         'git+https://github.com/google/ruy.git'
         'git+https://github.com/pytorch/cpuinfo.git'
         'git+https://github.com/NVIDIA/cub.git')
-sha256sums=('a757df346fd124f5eabec228f22b42a7131209fb662ba131713682319f09651f'
+sha256sums=('7ad9d4389141e7bad3836db4ebb50bfd13b00a21e8ac79967d92d0c7db1f2609'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -84,16 +84,6 @@ prepare() {
 }
 
 build() {
-
-  ## WITH_CUDA='ON'
-  ## CUDA_DYNAMIC_LOADING='ON'
-  ## CUDA_ARCH_LIST='Common'
-  # Only supports up to CUDA 12.4
-
-  ## WITH_CUDNN='ON'
-  # hard dependency if enabled, however convolution layers will not be supported on
-  # GPU if CUDA is enabled without it
-
   local cmake_options=(
     -B build
     -S CTranslate2
@@ -102,16 +92,22 @@ build() {
     -D CMAKE_INSTALL_PREFIX='/usr'
     -D CMAKE_C_COMPILER='gcc-14'
     -D CMAKE_CXX_COMPILER='g++-14'
-    -D CMAKE_BUILD_TYPE='RelWithDebInfo'
-    -D CMAKE_INSTALL_PREFIX='/usr'
     -D OPENMP_RUNTIME='COMP'
     -D WITH_MKL='OFF'
     -D WITH_DNNL='OFF'
     -D WITH_OPENBLAS='ON'
     -D OPENBLAS_INCLUDE_DIR='/usr/include/openblas'
     -D WITH_RUY='ON'
+    # Only supports up to CUDA 12.4
+#    -D WITH_CUDA='ON'
+#    -D CUDA_DYNAMIC_LOADING='ON'
+#    -D CUDA_ARCH_LIST='Common'
+    # hard dependency if enabled, however convolution layers will not be supported on
+    # GPU if CUDA is enabled without it
+#    -D WITH_CUDNN='ON'
     -D CMAKE_POLICY_VERSION_MINIMUM='3.5'
     -D ENABLE_CPU_DISPATCH='OFF'
+#    -D BUILD_TESTS='ON'
   )
   cmake "${cmake_options[@]}"
   cmake --build build
@@ -173,9 +169,9 @@ package_python-ctranslate2() {
   install -Dm644 ../LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-#package_ctranslate2-docs() {
-#  pkgdesc+=" (docs)"
+package_ctranslate2-docs() {
+  pkgdesc+=" (docs)"
 
-#  cd CTranslate2
-#  cp -r docs/build/* "$pkgdir/usr/share/doc/$pkgbase"
-#}
+  cd CTranslate2
+  cp -r docs/build/* "$pkgdir/usr/share/doc/$pkgbase"
+}
