@@ -4,8 +4,8 @@
   {
     "##INTERNAL_TOOL_NAME##"
     {
-      "install_path" "."
-      "display_name" "##BUILD_NAME##"
+      "install_path" "##INSTALL_PATH##"
+      "display_name" "##DISPLAY_NAME##"
       "from_oslist"  "windows"
       "to_oslist"    "linux"
     }
