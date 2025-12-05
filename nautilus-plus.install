@@ -1,0 +1,24 @@
+post_install() {
+    echo "==> nautilus-plus installed!"
+    echo ""
+    echo "==> Features:"
+    echo "    - Fast trigram-indexed search (requires search-cache)"
+    echo "    - Animated WebP/GIF/APNG thumbnails"
+    echo "    - Show Hidden Files toggle in Preferences"
+    echo "    - Improved thumbnail scaling"
+    echo "    - Auto-syncs with upstream GNOME Nautilus"
+    echo ""
+    echo "==> RECOMMENDED: Install search-cache for fast search:"
+    echo "    yay -S search-cache"
+    echo ""
+    echo "    Then enable the daemon:"
+    echo "    systemctl --user enable --now search-cache.service"
+    echo ""
+    echo "    Configure indexed directories in Nautilus Preferences"
+    echo "    or via: sc config add-dir /path/to/directory"
+}
+
+post_upgrade() {
+    echo "==> Restart Nautilus to use the new version:"
+    echo "    nautilus -q"
+}
