@@ -1,6 +1,6 @@
 pkgbase = asciit
 	pkgdesc = A more compact and intuitive ASCII table highlighting digits and letters
-	pkgver = 1.0.0
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/Q1CHENL/asciit
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = asciit
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	source = asciit-1.0.0.tar.gz::https://github.com/Q1CHENL/asciit/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = SKIP
+	source = asciit-1.0.3.tar.gz::https://github.com/Q1CHENL/asciit/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 841c5a2eb6c7cb0cfbb6d6603db1951e7b03cd28d9d3169c4dfb196178539fd9
 
 pkgname = asciit
