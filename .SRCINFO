@@ -1,13 +1,13 @@
 pkgbase = wdckit
 	pkgdesc = Western Digital ATA/SCSI command line utility
-	pkgver = 3.1.1.0
+	pkgver = 3.2.0.0
 	pkgrel = 1
 	url = https://westerndigital.com/
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	makedepends = libarchive
-	source = https://s3.e2e4.ru/k0ste/pkgbuild/wdckit-3.1.1.0.zip
-	sha256sums = b19272b9227da9839e7265ce16409209a7245a54459c3e7357f5a6ce9e355380
+	source = https://s3.e2e4.ru/k0ste/pkgbuild/wdckit-3.2.0.0.zip
+	sha256sums = 3ae213e574e5a79397f2928195e84f7915569b30b5131d0e14c670d7cb699f58
 
 pkgname = wdckit

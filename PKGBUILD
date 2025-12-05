@@ -3,7 +3,7 @@
 
 pkgname='wdckit'
 _path="opt/wdc/${pkgname}"
-pkgver='3.1.1.0'
+pkgver='3.2.0.0'
 pkgrel='1'
 pkgdesc="Western Digital ATA/SCSI command line utility"
 url='https://westerndigital.com/'
@@ -11,9 +11,9 @@ license=('custom')
 arch=('x86_64' 'aarch64')
 makedepends=('libarchive')
 # Source file is covered with Cloudflare challenge
-# https://files.hddguru.com/index.php?action=downloadfile&filename=wdckit-3.1.1.0.zip&directory=Software/Western%20Digital&
+# https://files.hddguru.com/index.php?action=downloadfile&filename=wdckit-3.2.0.0.zip&directory=Software/Western%20Digital&
 source=("https://s3.e2e4.ru/k0ste/pkgbuild/${pkgname}-${pkgver}.zip")
-sha256sums=('b19272b9227da9839e7265ce16409209a7245a54459c3e7357f5a6ce9e355380')
+sha256sums=('3ae213e574e5a79397f2928195e84f7915569b30b5131d0e14c670d7cb699f58')
 
 _file_arch=$([[ "${CARCH}" == 'x86_64' ]] && echo -n "${pkgname}-${pkgver}-${CARCH}-rpm" || echo -n "${pkgname}-${pkgver}-${CARCH}_deb")
 _pkg_arch=$([[ "${CARCH}" == 'x86_64' ]] && echo -n "${pkgname}-${pkgver}.${CARCH}.rpm" || echo -n "${pkgname}_${pkgver}_${CARCH}.deb")
