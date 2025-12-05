@@ -1,7 +1,7 @@
 # Maintainer: Josef Zoller <josef@walterzollerpiano.com>
 pkgname=zed-preview-bin
 pkgver=0.216.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter"
 arch=('x86_64' 'aarch64')
 url="https://zed.dev"
@@ -36,7 +36,7 @@ package() {
     desktop_file_path='share/applications/zed-preview.desktop'
 
     sed -i "s|Icon=zed|Icon=/usr/share/icons/${pkgname%-preview-bin}.png|g" "$desktop_file_path"
-    sed -i "s|Exec=zed|Exec=/usr/lib/zed/zed-editor|g" "$desktop_file_path"
+    sed -i "s|Exec=zed|Exec=/usr/bin/zeditor|g" "$desktop_file_path"
 
     install -d "$pkgdir/usr/bin"
     install -d "$pkgdir/usr/lib/zed"
