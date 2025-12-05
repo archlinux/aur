@@ -1,8 +1,9 @@
 [Desktop Entry]
-Name=AutoSubsync
-Comment=Sync subtitles automatically
-Exec=autosubsync
-Icon=/opt/autosubsync/_internal/assets/icon.ico
+Name=AutoSubSync
+Comment=Automatic subtitle synchronization tool.
+Exec=autosubsync %f
+Icon=autosubsync
 Terminal=false
 Type=Application
-Categories=AudioVideo;
+Categories=AudioVideo;Video;Utility;
+StartupWMClass=AutoSubSync
