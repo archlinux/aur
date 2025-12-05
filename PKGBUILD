@@ -5,7 +5,7 @@
 pkgname='konica-minolta-bizhub-c554e-series'
 epoch=1
 pkgver='1.27'
-pkgrel=1
+pkgrel=2
 pkgdesc='CUPS PostScript driver for KONICA MINOLTA bizhub C554e Series (C554e/C454e/C364e/C284e/C224e)'
 url="https://www.konicaminolta.eu/eu-en/support/download-centre"
 arch=("any")
@@ -17,7 +17,7 @@ depends=(
 install="${pkgname}.install"
 _distdir="KMbeuUXv${pkgver//./_}_multi_language"
 source=(
-  "KMbeuUXv${pkgver//./_}_multi_language.tar.gz::https://dl.konicaminolta.eu/en?tx_kmdownloadcentersite_downloadproxy[fileId]=b3bacdb5247893337442504faeed7c49&tx_kmdownloadcentersite_downloadproxy[documentId]=142542&tx_kmdownloadcentersite_downloadproxy[system]=KonicaMinolta&tx_kmdownloadcentersite_downloadproxy[language]=EN&type=1558521685"
+  "KMbeuUXv${pkgver//./_}_multi_language.tar.gz::https://dl.konicaminolta.eu/en/?tx_kmdownloadproxy_downloadproxy[fileId]=b3bacdb5247893337442504faeed7c49&tx_kmdownloadproxy_downloadproxy[documentId]=142542&tx_kmdownloadproxy_downloadproxy[system]=KonicaMinolta&tx_kmdownloadproxy_downloadproxy[language]=EN&type=1558521685"
   'LICENSE'
 )
 sha512sums=('8032a66d2a212610d6ebfa9da51e4281e748643b1f284a55e1fed089b32e332b7864c5fdaed7cfc6dd437912b5e38bedc0cfa9e4e424d2ae0adba17bc56d4e00'
