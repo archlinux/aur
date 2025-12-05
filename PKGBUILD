@@ -3,14 +3,18 @@
 _pkgauthor=bmarse
 _pkgname=tododo
 pkgname=${_pkgname}-bin
+pkgdesc="The todo manager that should be extinct"
+
 pkgver=0.7.0
 pkgrel=1
 _pkgvername=v${pkgver}-stable
-pkgdesc="The todo manager that should be extinct"
+
 arch=('x86_64' 'i686' 'aarch64')
 _barch=('amd64' '386' 'arm64')
+
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
+
 license=('MIT')
 
 depends=('glibc')
