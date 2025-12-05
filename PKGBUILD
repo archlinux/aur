@@ -1,7 +1,7 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: snemc1 <snemc@qq.com>
 pkgname=markpix-bin
 _pkgname=markpix
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A modern cross-platform image annotation tool built with Tauri (Binary)"
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=("${_pkgname}-${pkgver}::https://github.com/jswysnemc/markpix/releases/do
         "LICENSE::https://raw.githubusercontent.com/jswysnemc/markpix/main/LICENSE"
         "markpix.png::https://raw.githubusercontent.com/jswysnemc/markpix/main/src-tauri/icons/icon.png")
 
-sha256sums=('6ab779227ca279a6e6936794d0955a827760d57be542cf796f7cf487e24345a6'
+sha256sums=('df35af1429d9cbc11ec15cd9a230e5e0f988cfb62d5e9dc3f63a7b819a7c0671'
             '9a46a71b6c82da530bc5f2d5e568bc4ae5d1d0f3e95510a85ab2cfbf048c6c24'
             '4a47002bdb250f027d14af191999ebe7f5daa6669e81e41a32bcd27a700ff066')
 
