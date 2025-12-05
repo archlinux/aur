@@ -1,6 +1,6 @@
 # Maintainer: Hailey <me@haileyok.com>
 pkgname=goat-cli
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Go AT protocol CLI tool"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=()
 makedepends=('go')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bluesky-social/goat/archive/v$pkgver.tar.gz")
-sha256sums=('3a341fe0cee62cf4dd025db9fb220d06c954f70250812a14bb51a7ba3380f9a4')
+sha256sums=('a0a12d6e767f07039970b61dd855b537404f380c7468a42b1929e5e9f3ff57be')
 
 build() {
 	cd "goat-$pkgver"

@@ -1,13 +1,13 @@
 pkgbase = goat-cli
 	pkgdesc = Go AT protocol CLI tool
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/bluesky-social/goat
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	options = !debug
-	source = goat-cli-0.1.2.tar.gz::https://github.com/bluesky-social/goat/archive/v0.1.2.tar.gz
-	sha256sums = 3a341fe0cee62cf4dd025db9fb220d06c954f70250812a14bb51a7ba3380f9a4
+	source = goat-cli-0.2.0.tar.gz::https://github.com/bluesky-social/goat/archive/v0.2.0.tar.gz
+	sha256sums = a0a12d6e767f07039970b61dd855b537404f380c7468a42b1929e5e9f3ff57be
 
 pkgname = goat-cli
