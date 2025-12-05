@@ -1,7 +1,7 @@
 # Maintainer: Gianlucca Claudino <gianluccaclaudino@gmail.com>
 
 pkgname=lvsk-calendar
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A beautiful text-based calendar with visual aesthetics for Arch Linux"
 arch=('any')

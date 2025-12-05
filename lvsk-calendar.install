@@ -3,32 +3,40 @@
 post_install() {
     cat <<'EOF'
 
-    ╭──────────────────────────────────────────────────────────╮
-    │                                                          │
-    │                   lvsk calendar v0.3.0                   │
-    │                                                          │
-    │           minimalist text-based calendar with            │
-    │               an elegant esthetic for Arch               │
-    │                                                          │
-    ╰──────────────────────────────────────────────────────────╯
+                       |               |
+                       | \ \   /  __|  |  /
+                       |  \ \ / \__ \    <
+                      _|   \_/  ____/ _|\_\
 
-    Usage
-      lvsk-calendar
+    ─────────────────────────────────────────────────────────
 
-    Navigation
-      hjkl       • day navigation
-      [] or ←→   • month navigation
-      t          • jump to today
-      q          • quit
+     lvsk-calendar v0.3.1
+     minimalist terminal calendar
 
-    Features
-      • Elegant design with week numbers
-      • Hyprland floating window support (auto-configured)
-      • Vim-style navigation
-      • Minimalist aesthetic with maximum clarity
-      • Modular component-based architecture
+    ─────────────────────────────────────────────────────────
 
-    ─────────────────────────────────────────────────────────────
+    🚀 Quick Start
+
+       lvsk-calendar              → open in current terminal
+       lvsk-calendar-launcher     → floating window (Hyprland)
+
+    ⌨️  Navigation
+
+       ↑↓←→  or  hjkl    → navigate
+       [  ]              → previous/next month
+       t                 → jump to today
+       q                 → quit
+
+    📚 Resources
+
+       Repository: github.com/Gianluska/lvsk-calendar
+       Issues: github.com/Gianluska/lvsk-calendar/issues
+
+    ─────────────────────────────────────────────────────────
+
+                    Made with ❤️ from Brazil
+
+    ─────────────────────────────────────────────────────────
 
 EOF
 }
@@ -36,11 +44,19 @@ EOF
 post_upgrade() {
     cat <<'EOF'
 
-    ╭──────────────────────────────────────────────────────────╮
-    │                                                          │
-    │              lvsk calendar updated • v0.3.0              │
-    │                                                          │
-    ╰──────────────────────────────────────────────────────────╯
+                       |               |
+                       | \ \   /  __|  |  /
+                       |  \ \ / \__ \    <
+                      _|   \_/  ____/ _|\_\
+
+    ─────────────────────────────────────────────────────────
+
+     ✨ lvsk-calendar updated to v0.3.1
+
+     💡 Tip: Check ~/.config/lvsk-calendar/config.sh for new
+        customization options!
+
+    ─────────────────────────────────────────────────────────
 
 EOF
 }
@@ -48,13 +64,28 @@ EOF
 post_remove() {
     cat <<'EOF'
 
-    ╭──────────────────────────────────────────────────────────╮
-    │                                                          │
-    │              lvsk calendar has been removed              │
-    │                                                          │
-    │                  thanks for using lvsk                   │
-    │                                                          │
-    ╰──────────────────────────────────────────────────────────╯
+                       |               |
+                       | \ \   /  __|  |  /
+                       |  \ \ / \__ \    <
+                      _|   \_/  ____/ _|\_\
+
+    ─────────────────────────────────────────────────────────
+
+     lvsk-calendar has been removed
+
+    ─────────────────────────────────────────────────────────
+
+     Your configuration is still preserved at:
+     ~/.config/lvsk-calendar/
+
+     To completely remove all files:
+     rm -rf ~/.config/lvsk-calendar
+
+    ─────────────────────────────────────────────────────────
+
+     Thanks for using lvsk-calendar! 🙏
+
+    ─────────────────────────────────────────────────────────
 
 EOF
 }
