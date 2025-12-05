@@ -1,0 +1,5 @@
+[asciit]
+source = "github"
+github = "Q1CHENL/asciit"
+prefix = "v"
+use_latest_release = true
