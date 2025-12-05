@@ -1,0 +1,21 @@
+pkgbase = expresso-kit
+	pkgdesc = Automated project validator for local/cloud environments with TUI and CLI support
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/amindWalker/expresso-kit
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	optdepends = docker: container runtime support
+	optdepends = docker-compose: multi-container orchestration
+	optdepends = git: repository cloning and validation
+	conflicts = expresso-kit-bin
+	conflicts = expresso-kit-git
+	source = expresso-kit-0.1.0.tar.gz::https://github.com/amindWalker/expresso-kit/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = expresso-kit
