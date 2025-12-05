@@ -4,7 +4,7 @@
 _pkgname=pgvector
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="pgvector support for Python"
 arch=('any')
@@ -13,7 +13,7 @@ license=('MIT')
 depends=(python-numpy)
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}.tar.gz")
-b2sums=('3a852b6d09227919288fed97fc2c72389ff5bf006ae5a9ca01f55b5fa5022336f82fd3764725da1f99c630db87a6dafc46777872133685fabfe8da302d295751')
+b2sums=('59d00d9de6e91ab0420f75bf0af6e88d89aedc5078142205a5f19f31afe556eb7948afb00024479729f505c144fc662eb6564af615f643826563d30397a8cabf')
 
 build() {
     cd "${_pipname}-${pkgver}"

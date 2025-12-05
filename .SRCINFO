@@ -1,6 +1,6 @@
 pkgbase = python-pgvector
 	pkgdesc = pgvector support for Python
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/pgvector/pgvector-python
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-pgvector
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-numpy
-	source = pgvector-0.4.1.tar.gz::https://files.pythonhosted.org/packages/source/p/pgvector/pgvector-0.4.1.tar.gz
-	b2sums = 3a852b6d09227919288fed97fc2c72389ff5bf006ae5a9ca01f55b5fa5022336f82fd3764725da1f99c630db87a6dafc46777872133685fabfe8da302d295751
+	source = pgvector-0.4.2.tar.gz::https://files.pythonhosted.org/packages/source/p/pgvector/pgvector-0.4.2.tar.gz
+	b2sums = 59d00d9de6e91ab0420f75bf0af6e88d89aedc5078142205a5f19f31afe556eb7948afb00024479729f505c144fc662eb6564af615f643826563d30397a8cabf
 
 pkgname = python-pgvector
