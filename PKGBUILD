@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="safecloset"
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Cross-platform Secure TUI Secret Locker"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('edd9b51b67e4da102558847d42205b1a9bf26895a6bb4707bfa5ec299c337a7e')
+sha256sums=('8059c48fc008c6d9b941290d76380145c6ff6b8a0484004763e478bf95e37c92')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
