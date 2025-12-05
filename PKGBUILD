@@ -1,7 +1,7 @@
 # Polokalap - Polokalap@autizm.us
 
 pkgname=faal
-pkgver=1.0.4
+pkgver=1.0.4.1
 pkgrel=1
 pkgdesc="Simple application menu because why not"
 arch=('x86_64')
