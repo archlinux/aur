@@ -1,7 +1,7 @@
 # Maintainer:  Lukas K. <lu@0x83.eu>
 
 pkgname=horizon-eda
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="free EDA package written in C++"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ source=(
   "https://github.com/horizon-eda/horizon/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '499102738195691d55570d743ece77422c7fa4cc946f6cb76df956d9ff6ae42f'
+  '6b605f7e4c46d894a64997e0f60eba937e7d68d908b4d715cd2dde3364bd79a2'
 )
 
 prepare() {
