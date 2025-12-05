@@ -1,0 +1,17 @@
+pkgbase = python-miniirc
+	pkgdesc = A straightforward IRC client library for Python
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://github.com/luk3yx/miniirc
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	optdepends = python-certifi: for SSL certificate verification
+	source = https://files.pythonhosted.org/packages/source/m/miniirc/miniirc-1.10.0.tar.gz
+	sha256sums = 9811ed325924359be622563510842715012f7c7b23430545cfdeb7ff80e2eaf8
+
+pkgname = python-miniirc
