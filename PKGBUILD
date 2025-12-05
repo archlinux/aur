@@ -2,7 +2,7 @@
 
 pkgname=pragtical-git
 _pkgname=pragtical
-pkgver=3.7.1.1764884612
+pkgver=3.7.1.1764961398
 pkgrel=1
 pkgdesc='The practical and pragmatic code editor.'
 arch=('x86_64')
@@ -27,9 +27,13 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
-  arch-meson --wrap-mode default --buildtype release \
-    -Db_lto=true --force-fallback-for=sdl3_image -Duse_system_lua=true \
+  arch-meson --wrap-mode default --buildtype release -Db_lto=true \
+    -Db_pgo=generate --force-fallback-for=sdl3_image -Duse_system_lua=true \
     build
+  meson compile -C build
+  SDL_VIDEO_DRIVER="dummy" \
+    ./scripts/run-local build run -n scripts/lua/pgo.lua
+  meson configure -Db_pgo=use build
   meson compile -C build
 }
 
