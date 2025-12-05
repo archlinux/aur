@@ -1,0 +1,14 @@
+[libhal1-bin]
+source = "htmlparser"
+url = "https://archive.debian.org/debian/pool/main/h/hal/"
+xpath = "//a[starts-with(text(), 'libhal1_')][contains(text(), '_amd64.deb')][last()]"
+from_pattern = 'libhal1_(\d+)\.(\d+)\.(\d+).(.+)_amd64.deb'
+to_pattern = '\1.\2.\3_\4'
+
+# [libhal1-bin]
+# source = "gitlab"
+# host = "gitlab.freedesktop.org"
+# gitlab = "archived-projects/hal/hal"
+# use_max_tag = true
+# from_pattern = 'HAL_(\d+)_(\d+)_(\d+)'
+# to_pattern = '\1.\2.\3'
