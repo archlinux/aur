@@ -15,7 +15,7 @@ optdepends=(
     'wl-clipboard: for clipboard support on Wayland'
 )
 makedepends=('cargo' 'git')
-source=("${_pkgname}::git+${url}@main")
+source=("${_pkgname}::git+${url}")
 sha256sums=('SKIP')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
