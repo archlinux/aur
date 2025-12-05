@@ -1,9 +1,0 @@
-post_upgrade() {
-  # Remove old desktop files if they exist
-  if [ -f /usr/share/applications/io.github.equicord.equibop.desktop ]; then
-    rm -f /usr/share/applications/io.github.equicord.equibop.desktop
-  fi
-  if [ -f /usr/share/applications/equibop.desktop ]; then
-    rm -f /usr/share/applications/equibop.desktop
-  fi
-}
