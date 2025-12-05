@@ -1,0 +1,11 @@
+pkgbase = path-utils
+	pkgdesc = useful .bashrc PATH generation tools
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Remenod/path-utils
+	arch = x86_64
+	license = MIT
+	source = path-utils::git+https://github.com/Remenod/path-utils.git
+	sha256sums = SKIP
+
+pkgname = path-utils
