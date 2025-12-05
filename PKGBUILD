@@ -4,7 +4,7 @@
 
 pkgname=python-coqui-trainer
 _pkgname=coqui-ai-Trainer
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='General purpose model trainer for PyTorch - idiap fork'
 arch=(any)
@@ -15,7 +15,7 @@ makedepends=(python-hatchling python-installer python-build python-wheel python-
 provides=(python-coqui-ai-trainer)
 conflicts=(python-coqui-ai-trainer)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/idiap/coqui-ai-Trainer/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('fb14cecbb289d1d553ab28fbbb7f6074')
+md5sums=('bc49887dca865f70514dc41581cb9052')
 
 build() {
   cd $_pkgname-$pkgver
