@@ -3,7 +3,7 @@
 
 pkgname=python-editdistance
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast implementation of the edit distance(Levenshtein distance)"
 arch=('x86_64')
 license=('MIT')
@@ -17,6 +17,11 @@ makedepends=('cython'
              'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aflc/editdistance/archive/v$pkgver.tar.gz")
 sha512sums=('2e8c01d6414c82ecb06f03c756938e099be2b36134705ebe302a38fea1f914a43c698c620bc6be0e9cc628b71c7c8bf8d069ea38e186945bd717e366108ddc3c')
+
+prepare() {
+  cd editdistance-$pkgver
+  sed -i '/^license/s/{text = \(.*\)}$/\1/' pyproject.toml
+}
 
 build() {
   cd editdistance-$pkgver
