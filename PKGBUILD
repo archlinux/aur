@@ -15,7 +15,7 @@ depends=(
   'libxdamage' 'mesa' 'nspr' 'nss' 'pango'
 )
 makedepends=('libarchive')
-provides=('thorium-browser' 'chromium')
+provides=('thorium-browser')
 conflicts=('thorium-browser' 'thorium-browser-avx2-bin' 'chromium')
 replaces=('thorium-browser-avx')
 
