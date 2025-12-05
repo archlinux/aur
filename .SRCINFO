@@ -1,7 +1,7 @@
 pkgbase = mommy-git
 	pkgdesc = mommy's here to support you~
 	pkgver = 1.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/fwdekker/mommy
 	arch = any
 	license = Unlicense
