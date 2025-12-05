@@ -6,7 +6,7 @@
 _name=semgrep
 pkgname=${_name}-bin
 pkgver=1.144.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight static analysis for many languages. Find bug variants with patterns that look like source code."
 arch=(x86_64)
 url=https://github.com/returntocorp/semgrep
