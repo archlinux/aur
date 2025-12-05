@@ -4,7 +4,7 @@
 
 pkgname=fresh-editor
 pkgver=0.1.20
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight, fast terminal-based text editor with LSP support and TypeScript plugins"
 url="https://sinelaw.github.io/fresh/"
 license=("GPL-2.0-only")
@@ -21,8 +21,10 @@ sha256sums=("22b1e49df93373c9b7237c8b75be09512268f1bf16dbe0dcc762048f8f4c14de"
 package() {
     cd "fresh-editor-$CARCH-unknown-linux-gnu"
 
-    # Binary
-    install -Dm755 fresh -t "$pkgdir/usr/bin"
+    # Binary (installed alongside plugins, symlinked from /usr/bin)
+    install -Dm755 fresh "$pkgdir/usr/share/$pkgname/fresh"
+    install -dm755 "$pkgdir/usr/bin"
+    ln -s "/usr/share/$pkgname/fresh" "$pkgdir/usr/bin/fresh"
 
     # Documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
