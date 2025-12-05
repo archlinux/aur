@@ -1,8 +1,8 @@
 # Maintainer: OfficialKris <37947442+OfficialKris@users.noreply.github.com>
 
 pkgname=go-boot
-_pkgname="go-boot-1.1"
-pkgver=v1.1
+_pkgname="go-boot-1.2.1"
+pkgver=v1.2.1
 pkgrel=1
 pkgdesc="The bare metal Go UEFI boot manager"
 arch=(x86_64)
@@ -13,16 +13,16 @@ depends=()
 makedepends=('git' 'make' 'go')
 provides=('go-boot')
 source=(
-    "https://github.com/usbarmory/tamago-go/archive/refs/tags/tamago-go1.25.4.tar.gz"
-    "https://github.com/usbarmory/go-boot/archive/refs/tags/v1.1.tar.gz"
+    "https://github.com/usbarmory/tamago-go/archive/refs/tags/tamago-go1.25.5.tar.gz"
+    "https://github.com/usbarmory/go-boot/archive/refs/tags/v1.2.1.tar.gz"
 )
 sha256sums=(
-    '4f90155cd7c450c3087620df954d779633b0d08de1caca5cdeddcd83de328044'
-    'c659b09b15f365d21e4d708fd9cbeb89f12d176f8298a71118ae0d9d49af4434'
+    '55ef8422851454c793a3645377daef32ae48a8af4cc4a14d980732c38bbad165'
+    '8338112ee2269f3e4fd29f2dcfd835001b7706810a80a089e37accfb5ecbb4b8'
 )
 
 build() {
-    cd "${srcdir}/tamago-go-tamago-go1.25.4/src"
+    cd "${srcdir}/tamago-go-tamago-go1.25.5/src"
 
     ./make.bash
     cd ../bin
