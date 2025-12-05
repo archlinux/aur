@@ -35,7 +35,7 @@ package() {
 
     # Install documentation
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 "USAGE.md" "$pkgdir/usr/share/doc/$pkgname/USAGE.md"
+    [[ -f "USAGE.md" ]] && install -Dm644 "USAGE.md" "$pkgdir/usr/share/doc/$pkgname/USAGE.md"
 
     # Install license
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
