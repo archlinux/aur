@@ -2,7 +2,7 @@
 # Maintainer: Bipin Kumar <kbipinkumar@pm.me>
 
 pkgname=amrfinderplus
-pkgver=4.2.4
+pkgver=4.2.5
 pkgrel=1
 _tag=amrfinder_v${pkgver}
 pkgdesc="Identify Antimicrobial resistance genes in assembled bacterial nucleotide and protein sequence. https://doi.org/10.1038/s41598-021-91456-0"
@@ -20,7 +20,7 @@ depends=(
         )
 makedepends=('git')
 source=(amrfinderplus::git+https://github.com/ncbi/amr.git#tag=${_tag})
-sha256sums=('c83a4c904857530e59518fca0af13ab097452a616e8c254b184f89bc50fcfbd0')
+sha256sums=('d8ea06a8dd03fb78350c4045b987277c885a05c8242bb84cbac4470c5365c416')
 
 prepare() {
   cd ${pkgname}
