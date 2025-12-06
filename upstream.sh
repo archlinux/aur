@@ -33,11 +33,13 @@ pkg_get_update_params() {
 	# Download and calculate SHA256
 	local tmpdir tmpfile sha256
 	tmpdir="$(mktemp -d)"
-	trap 'rm -rf "${tmpdir}"' EXIT
 	tmpfile="${tmpdir}/${filename}"
 
 	curl -fsSL --retry 3 --retry-delay 2 -o "${tmpfile}" "${url}"
 	sha256="$(sha256sum "${tmpfile}" | awk '{print $1}')"
+
+	# Cleanup
+	rm -rf "${tmpdir}"
 
 	# Return: url filename pkgver hash_algo checksum
 	printf '%s %s %s %s %s\n' "${url}" "${filename}" "${version}" "sha256" "${sha256}"
