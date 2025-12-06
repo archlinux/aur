@@ -1,13 +1,13 @@
 pkgbase = neocities-deploy
 	pkgdesc = Command-line tool for deploying your Neocities site
-	pkgver = 0.1.16
+	pkgver = 0.1.18
 	pkgrel = 1
 	url = https://github.com/kugland/neocities-deploy
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	options = !lto
-	source = neocities-deploy-0.1.16.tar.gz::https://github.com/kugland/neocities-deploy/archive/refs/tags/v0.1.16.tar.gz
-	sha256sums = 6a0f67dff79b8c5427a625b1506568f5c3fac348eedf1e8a63f38d2fd3b4093f
+	source = neocities-deploy-0.1.18.tar.gz::https://github.com/kugland/neocities-deploy/archive/refs/tags/v0.1.18.tar.gz
+	sha256sums = 3b77711799f28dd7e6ed2577e143c783ce0e58541ab21dfd174eb32027bd13fa
 
 pkgname = neocities-deploy
