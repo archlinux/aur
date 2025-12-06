@@ -1,6 +1,8 @@
 [Unit]
 Description=BorgWarehouse periodic tasks
 Documentation=https://borgwarehouse.com/docs/admin-manual/debian-installation/#cron-jobs
+After=borgwarehouse.service
+Requires=borgwarehouse.service
 
 [Service]
 Type=oneshot

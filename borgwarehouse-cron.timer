@@ -2,6 +2,7 @@
 Description=Borgwarehouse periodic job
 
 [Timer]
+OnBootSec=10min
 OnUnitActiveSec=1d
 
 [Install]
