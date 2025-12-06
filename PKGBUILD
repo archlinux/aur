@@ -4,7 +4,7 @@
 org=zed-industries
 realname=claude-code-acp
 pkgname=$realname
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Use Claude Code from any ACP client such as Zed!"
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('Apache-2.0')
 makedepends=('npm')
 depends=('nodejs')
 source=("https://registry.npmjs.org/@$org/$realname/-/$realname-$pkgver.tgz")
-sha256sums=('1d301e9293af695b7a0e0d75e6424ff9ab76991b70419d2b266ec44cdcbccdd7')
+sha256sums=('8db0a1aec4e501b4907ce22605a15474d0f6bd817ecc06a09caf71fad1f0be9f')
 
 package() {
   npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${realname}-${pkgver}.tgz"
