@@ -12,7 +12,8 @@ echo $VERSION
 
 if [ $PKGBUILD_VERSION != $VERSION ]; then
 	echo "Newer version found, starting download"
-	curl -O https://downloads.metabase.com/latest/metabase.jar
+	#curl -O https://downloads.metabase.com/latest/metabase.jar
+	curl -O https://downloads.metabase.com/v$VERSION.x/metabase.jar
 	
 	sed -i "s/^pkgver=.*/pkgver=$VERSION/" PKGBUILD
 	CHKSUM="$(b2sum metabase.jar | cut -d' ' -f1)"
