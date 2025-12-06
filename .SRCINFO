@@ -1,6 +1,6 @@
 pkgbase = khazaur
 	pkgdesc = Unified package manager for Arch Linux supporting AUR, repos, Flatpak, Snap, and Debian packages
-	pkgver = 0.4.7bugfix
+	pkgver = 0.4.8bugfix
 	pkgrel = 1
 	url = https://github.com/os-guy-original/khazaur
 	arch = x86_64
