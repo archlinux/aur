@@ -1,4 +1,5 @@
-# Maintainer: Nathaniel van Diepen <eeems@eeems.email>
+# Maintainer: XZS <d dot f dot fischer at web dot de>
+# Contributor: Nathaniel van Diepen <eeems@eeems.email>
 # Contributor: scybernaut <scybernaut at scybernaut dot me>
 # Contributor: Guoyi Zhang <GuoyiZhang at malacology dot net>
 
