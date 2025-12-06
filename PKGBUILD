@@ -2,7 +2,7 @@
 
 pkgname="spritz-wine-bin"
 _pkgname=${pkgname%-bin}-tkg
-pkgver=10.20
+pkgver=11.0
 pkgrel=1
 buildrel=1
 pkgdesc="A compatibility layer for running Windows programs, with experimental custom patches for games (doesn't conflict with other Wine installations)"
@@ -21,7 +21,7 @@ depends=(
     'systemd-libs'          'wayland'
 )
 source=("https://github.com/NelloKudo/spritz-wine-aur/releases/download/${_pkgname}-${pkgver}-${buildrel}/${_pkgname}-staging-wow64-${pkgver}-${buildrel}-x86_64.tar.xz")
-sha256sums=('12e9509116d223fd37ed5049fbfda23f7618ceeacab5eca244fb755a78130371')
+sha256sums=('3ba964d9738f1fce1468f77c8f2de50f5f6645e877185d45e52484f723608f90')
 
 package() {
     # Install to /opt
