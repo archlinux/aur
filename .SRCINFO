@@ -1,6 +1,6 @@
 pkgbase = cjsh
 	pkgdesc = POSIX shell scripting meets Modern Shell Features
-	pkgver = 4.0.0
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/CadenFinley/CJsShell
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = cjsh
 	makedepends = cmake
 	makedepends = git
 	depends = gcc-libs
-	source = cjsh-4.0.0.tar.gz::https://github.com/CadenFinley/CJsShell/archive/4.0.0.tar.gz
-	sha256sums = 4e6ca12f41d4a7c16ef8e16033bc3bc8341bbb5babf291175710e169a072667f
+	source = cjsh-4.1.0.tar.gz::https://github.com/CadenFinley/CJsShell/archive/4.1.0.tar.gz
+	sha256sums = 0137172b5578ad01ddc8840c4232c04d3e526dfe09c513fbfef2ffddedaf93d1
 
 pkgname = cjsh
