@@ -1,4 +1,4 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Robert L Box <robertbox514@gmail.com>
 
 pkgname=pwncat
 pkgver=0.1.2
