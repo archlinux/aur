@@ -2,7 +2,7 @@
 
 _name=mcp
 pkgname=python-$_name
-pkgver=1.23.1
+pkgver=1.23.2
 pkgrel=1
 pkgdesc='Model Context Protocol SDK.'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-hatchling' 'python-uv-dynamic-versioning' 'python-build' 'p
 checkdepends=('python-pytest' 'python-trio' 'python-pytest-xdist' 'python-pytest-examples' 'python-inline-snapshot' 'python-dirty-equals' 'python-rich' 'python-typer' 'python-dotenv' 'python-websockets' 'python-requests' 'uv' 'ruff')
 optdepends=('python-rich: rich' 'python-typer: cli' 'python-dotenv: cli' 'python-websockets: ws')
 source=("$_name::git+$url.git#tag=v$pkgver")
-sha256sums=('bc0fd18c2b40d4ede7fb80fc582ee2c0a67249d11391d5881b0457a602ed61d9')
+sha256sums=('acb47e1f924529d284859f5fdd7449b68e25dda0ef89bfae24c9cd389c603ce5')
 
 prepare(){
   cd "$srcdir"/$_name
@@ -35,7 +35,7 @@ check() {
   python -m venv --system-site-packages test-env
   ln -s /usr/bin/ruff test-env/bin/ruff
   test-env/bin/python -P -m installer dist/*.whl
-  UV_PYTHON_PREFERENCE=only-system test-env/bin/python -m pytest "${pytest_options[@]}" tests
+  UV_PYTHON_PREFERENCE=only-system test-env/bin/python -P -m pytest "${pytest_options[@]}" tests
 }
 
 package() {
