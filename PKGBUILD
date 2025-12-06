@@ -1,6 +1,6 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 pkgname=sdl3
-pkgver=3.2.26
+pkgver=3.2.28
 pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 3)"
 arch=('x86_64')
@@ -45,7 +45,7 @@ optdepends=(
   'libdecor: Wayland client decorations'
 )
 source=("https://github.com/libsdl-org/SDL/releases/download/release-${pkgver}/SDL3-${pkgver}.tar.gz"{,.sig})
-sha512sums=('cdc280946657bc84772198a45512be073e65b3a1875bb688946570d77cecf9b6b468c73044b7ef3287e2cb90b31640799298b22b6ca7806edea7dbf13f31a45b'
+sha512sums=('9d7d54cd91a30d7a1f2999d98ff155232a629ff082d1b3a00b00c32ee3ff009820a1b0d9daf981a2f454bcf667cdb687948050c9b6f2ca98cb34f68754812b8a'
             'SKIP')
 validpgpkeys=('1528635D8053A57F77D1E08630A59377A7763BE6') # Sam Lantinga
 
