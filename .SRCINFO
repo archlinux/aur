@@ -1,0 +1,16 @@
+pkgbase = sddm-theme-obscure-git
+	pkgdesc = A minimal SDDM theme with IPA character password masking
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/saatvik333/obscure-sddm-theme
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = sddm
+	depends = qt6-5compat
+	provides = sddm-theme-obscure
+	conflicts = sddm-theme-obscure
+	source = sddm-theme-obscure-git::git+https://github.com/saatvik333/obscure-sddm-theme.git
+	sha256sums = SKIP
+
+pkgname = sddm-theme-obscure-git
