@@ -1,6 +1,6 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 pkgname=genwallet-git
-pkgver=0.6.1.r35.a118bfe
+pkgver=0.6.2.r37.81946bf
 pkgrel=1
 pkgdesc="Ethereum wallet generator with pattern matching"
 arch=('x86_64' 'aarch64')
