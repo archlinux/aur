@@ -1,15 +1,15 @@
 # Contributor: Andreas Baumann <abaumann at yahoo dot com>
 # Contributor: Chris Brannon <cmbrannon (at) cox.net>
 
-pkgname=pcc-libs-git
-pkgver=20230806
-pkgrel=4
+pkgname=i686-elf-pcc-libs-git
+pkgver=20250703
+pkgrel=1
 pkgdesc="Libraries for the Portable C Compiler."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/PortableCC/"
 license=('custom')
-provides=(pcc-libs)
-conflicts=(pcc-libs)
+provides=(i686-elf-pcc-libs)
+conflicts=(i686-elf-pcc-libs)
 makedepends=('git')
 options=('!lto')
 source=($pkgname::git+https://github.com/PortableCC/pcc-libs.git license)
@@ -23,7 +23,9 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
 
-  ./configure --prefix=/usr || return 1
+  ./configure --prefix=/usr \
+	--host=i386-unknown-linux \
+	|| return 1
 
   make CC=gcc || return 1
 }
