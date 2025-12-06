@@ -1,7 +1,7 @@
 # Maintainer: Hai Zhang <dreaming.in.code.zh@gmail.com>
 
 pkgname=android-emulator
-pkgver=36.2.12
+pkgver=36.3.10
 pkgrel=1
 pkgdesc='Google Android Emulator'
 arch=('x86_64')
@@ -11,14 +11,14 @@ depends=('dbus' 'expat' 'gcc-libs' 'glibc' 'libbsd' 'libice' 'libpng'
          'libpulse' 'libsm' 'libtiff' 'libx11' 'libxcb' 'libxext'
          'libxi' 'libxkbfile' 'nspr' 'nss' 'util-linux-libs' 'zlib')
 install="${pkgname}.install"
-source=('https://dl.google.com/android/repository/emulator-linux_x64-14214601.zip'
+source=('https://dl.google.com/android/repository/emulator-linux_x64-14472402.zip'
         "${pkgname}.sh"
         "${pkgname}.csh"
         'package.xml')
-sha1sums=('b87561b33f5f1df3647519628c3597353dbf534d'
+sha1sums=('90cf9a2d3d9f802998345bc8251b482a84f9c72e'
           '80c9b3ffc8865b5f8e55b1ffed36c08ee7a9d8ad'
           'e1485ef14463f275005cae43a0a1e43ce52354ca'
-          '17eeb70e0d4275094507c4ddbaf8309fcd3ca60a')
+          'f5e7fc8630c302716cf8ef8f8bea35101190242e')
 
 package() {
   install -Dm755 "${pkgname}.sh" "${pkgdir}/etc/profile.d/${pkgname}.sh"
