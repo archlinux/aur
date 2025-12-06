@@ -36,12 +36,15 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    # Force bundled SQLite to avoid system library conflicts
+    export SQLX_OFFLINE=true
     cargo build --frozen --release
 }
 
 check() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
+    export SQLX_OFFLINE=true
     cargo test --frozen
 }
 
