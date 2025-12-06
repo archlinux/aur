@@ -3,7 +3,7 @@
 _pkgname="mommy"
 pkgname="mommy-git"
 pkgdesc="mommy's here to support you~"
-pkgver=1.8.0.r2.gda73abe
+pkgver=1.8.0.r4.g9a1378d
 pkgrel=1
 url="https://github.com/fwdekker/mommy"
 license=("Unlicense")
