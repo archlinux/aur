@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=elephant-windows
-pkgver=2.16.1
+pkgver=2.17.0
 pkgrel=1
 pkgdesc='windows provider for elephant'
 url='https://github.com/abenz1267/elephant'
@@ -12,7 +12,7 @@ makedepends=('go')
 conflicts=('elephant-windows')
 provides=('elephant-windows')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2fcf0ce5e060f304a6a175a4528feef05b417238baae31cce9966be495784b1a')
+sha256sums=('5f28a39d4eea2447d7fc5b2651ebd0cf91b3e141064690ec2cc259af1764459e')
 
 build() {
     cd elephant-${pkgver}/internal/providers/windows
