@@ -2,7 +2,7 @@
 
 pkgname=onlyoffice-documentserver-bin
 pkgver=9.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('x86_64')
 url="https://github.com/ONLYOFFICE/DocumentServer"
@@ -33,7 +33,7 @@ options=('!strip')
 prepare() {
   cd ${srcdir}
   chmod -R 770 var
-  cp ${srcdir}/usr/lib64/*.so* ${srcdir}/var/www/onlyoffice/documentserver/server/FileConverter/bin/
+  #cp ${srcdir}/usr/lib64/*.so* ${srcdir}/var/www/onlyoffice/documentserver/server/FileConverter/bin/
   sed -i -e 's|/var/www/onlyoffice|/usr/share/webapps/onlyoffice|g' -e 's|/etc/onlyoffice/documentserver|/etc/webapps/onlyoffice/documentserver|g' etc/onlyoffice/documentserver/production-linux.json
   #enable mobile editor
   sed -i 's/isSupportEditFeature=function(){return!1}/isSupportEditFeature=function(){return 1}/g' ${srcdir}/var/www/onlyoffice/documentserver/web-apps/apps/{documenteditor,presentationeditor,spreadsheeteditor}/mobile/dist/js/app.js
