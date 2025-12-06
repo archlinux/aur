@@ -34,4 +34,7 @@ package() {
 
     # this extracts all into the pkgdir
     tar -xf "${srcdir}/data.tar.zst"
+
+    # fix .desktop
+    sed -i 's/Name=loopi/Name=Loopi/g' "./usr/share/applications/loopi.desktop"
 }
