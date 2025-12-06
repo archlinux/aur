@@ -6,7 +6,7 @@
 
 _pkgname="floorp"
 pkgname="$_pkgname-bin"
-pkgver=12.7.0
+pkgver=12.8.2
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -41,8 +41,8 @@ sha256sums=(
   '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
   '71f1bee3ae03473884d7c202b4dfb260f8d68470d6c79695d1208fb944b6f5c8'
 )
-sha256sums_x86_64=('8e97cbac7090cc3734eb63ce23e69495a0080dc881c6123b1b3b18bc7b6def62')
-sha256sums_aarch64=('d66d9d978902e22dc0c312e1f267e0f2537c8b0427857acb75532ef07b095c9d')
+sha256sums_x86_64=('af6b51be10476d08b8d3cbb26ce2c9381370d43bd761bac9e928be78ea932210')
+sha256sums_aarch64=('f41e7cfe694075c061fe42cda625e47639d432830c89045d4708ed10d61798f3')
 
 package() {
   depends=(
@@ -64,10 +64,10 @@ package() {
     -define png:compression-strategy=0
   )
 
-  for i in 32 48 64 128; do
+  for i in 16 32 48 64 128; do
     local _icon_dest="$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
     mkdir -pm755 "$_icon_dest"
-    ln -sf "/usr/lib/floorp/browser/chrome/icons/default/default${i}.png" "$_icon_dest/$_pkgname.png"
+    ln -sf "/$_install_path/floorp/browser/chrome/icons/default/default${i}.png" "$_icon_dest/$_pkgname.png"
   done
 
   for i in 256 512; do
