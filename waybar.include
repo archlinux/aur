@@ -1,0 +1,7 @@
+"custom/kanshi": {
+  "format": "󰍹  {}",
+  "tooltip": false,
+  "exec": "echo 'kanshi'",
+  "on-click": "~/.local/bin/kanshi-menu",
+  "return-type": "string"
+}

@@ -1,0 +1,18 @@
+pkgbase = kanshi-menu
+	pkgdesc = A simple menu to switch kanshi profiles using fzf, with waybar integration
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/yourusername/kanshi-menu
+	arch = any
+	license = MIT
+	depends = bash
+	depends = kanshi
+	depends = fzf
+	depends = libnotify
+	optdepends = waybar: for waybar integration
+	source = kanshi-menu.sh
+	source = waybar.include
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = kanshi-menu
