@@ -4,7 +4,7 @@ _sdk=9.0
 _Name="SS14.Launcher"
 _pkgname="${_Name,,}"
 pkgname="${_pkgname}-bin"
-pkgver=0.35.0
+pkgver=0.36.1
 pkgrel=1
 pkgdesc="Space Station 14 launcher"
 arch=('aarch64' 'x86_64')
@@ -28,7 +28,7 @@ source=("${_pkgsrc}-all.zip::${_url}/releases/download/v${pkgver}/${_Name}_Linux
         "${_pkgsrc}-README.md::${_url}/raw/refs/tags/v${pkgver}/Readme.md"
         "${_pkgsrc}-LICENSE::${_url}/raw/refs/tags/v${pkgver}/LICENSE.txt"
         "${_pkgname}.svg::https://github.com/space-wizards/asset-dump/raw/refs/heads/master/icon.svg")
-sha256sums=('1faae8d65337e0eacb9570742a87a3ccc5c08babfd4c47d985f0205537c2b068'
+sha256sums=('f11280cef408d35fb1d33032bfd3d42bafd88c9d48f1231c8be607638d00b1a2'
             'a4fe3a4ff1dcddaf4ce428f91a068bada67090a4f670730fb29f828c4a8a6f71'
             '0fbcce2a4bb551dab1e360febc2b26c5abbad45e91c4d7b78203735e6b8e807e'
             'a047c810a26088cc1fd1df73036bd5b4cfb441c0697a2cbd583733d08474f37e')
