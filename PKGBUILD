@@ -13,7 +13,7 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git opencl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=25.3.0_devel.213019.7ef5653b11a
+pkgver=26.0.0_devel.215663.6b67ca2e8fa
 pkgrel=1
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
@@ -22,9 +22,9 @@ makedepends=(git meson ninja libglvnd python-packaging python-mako xorgproto lib
                             python-ply libunwind libxdamage vulkan-icd-loader xcb-util-keysyms python-pyaml libdisplay-info)
 # In order to keep the package simple and ease troubleshooting only use one llvm implementation
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layers libva-mesa-driver vulkan-swrast vulkan-virtio vulkan-driver opengl-driver vulkan-mesa-device-select)
+provides=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layers libva-mesa-driver vulkan-swrast vulkan-virtio vulkan-driver opengl-driver vulkan-mesa-implicit-layers)
 conflicts=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layers libva-mesa-driver vulkan-swrast mesa-vdpau vulkan-virtio
-                vulkan-nouveau mesa-libgl vulkan-gfxstream vulkan-dzn vulkan-mesa-device-select
+                vulkan-nouveau mesa-libgl vulkan-gfxstream vulkan-dzn vulkan-mesa-implicit-layers
 )
 # mixing components from different mesa versions is a bad idea, conflict with everything unique provided by extra/mesa
 
