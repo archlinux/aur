@@ -1,9 +1,8 @@
 pkgbase = yay-gui-manager-git
 	pkgdesc = Graphical interface for the yay AUR helper
-	pkgver = r72.48cf0eb
+	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/ahmoodio/yay-gui-manager
-	install = yay-gui-manager-git.install
 	arch = any
 	license = MIT
 	makedepends = git

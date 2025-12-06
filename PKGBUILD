@@ -1,6 +1,6 @@
 pkgname=yay-gui-manager-git
 _pkgname=yay-gui-manager
-pkgver=r72.48cf0eb
+pkgver=0
 pkgrel=1
 pkgdesc="Graphical interface for the yay AUR helper"
 arch=('any')
@@ -10,7 +10,6 @@ depends=('python' 'python-pyqt5' 'yay')
 makedepends=('git')
 provides=('yay-gui-manager')
 conflicts=('yay-gui-manager')
-install="${pkgname}.install"
 
 source=(
   "git+https://github.com/ahmoodio/yay-gui-manager.git"
@@ -30,7 +29,7 @@ pkgver() {
 }
 
 build() {
-  # Pure Python app – nothing to build
+  # Python + PyQt5 app, nothing to build
   return 0
 }
 
@@ -46,12 +45,11 @@ package() {
     "${pkgdir}/usr/share/applications/yay-gui.desktop"
 
   # Icon (from AUR repo)
-  if [[ -f "${srcdir}/yay-gui.png" ]]; then
-    install -Dm644 "${srcdir}/yay-gui.png" \
-      "${pkgdir}/usr/share/icons/hicolor/256x256/apps/yay-gui.png"
-  fi
+  install -Dm644 "${srcdir}/yay-gui.png" \
+    "${pkgdir}/usr/share/icons/hicolor/256x256/apps/yay-gui.png"
 
   # License
   install -Dm644 "LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+

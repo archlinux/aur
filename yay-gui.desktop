@@ -1,8 +1,12 @@
 [Desktop Entry]
+Type=Application
+Version=1.0
 Name=Yay GUI Manager
-Comment=Graphical interface for yay AUR helper
+GenericName=Package Manager Frontend
+Comment=Graphical interface for the yay AUR helper
 Exec=yay-gui-manager
 Icon=yay-gui
 Terminal=false
-Type=Application
-Categories=System;Utility;
+Categories=System;PackageManager;Utility;
+Keywords=pacman;yay;aur;packages;gui;
+
