@@ -1,6 +1,6 @@
 pkgbase = hopper4
 	pkgdesc = Reverse engineering tool that lets you disassemble, decompile and debug your applications
-	pkgver = 5.19.3
+	pkgver = 5.19.4
 	pkgrel = 1
 	url = https://www.hopperapp.com/
 	changelog = ChangeLog
@@ -12,9 +12,9 @@ pkgbase = hopper4
 	depends = qt5-base
 	provides = hopperv4
 	conflicts = hopperv4
-	source = https://www.hopperapp.com/downloader/hopperv4/Hopper-v4-5.19.3-Linux-demo.pkg.tar.xz
+	source = Hopper-v4-5.19.4-Linux-demo.pkg.tar.xz::https://www.hopperapp.com/downloader/public/Hopper-v4-5.19.4-Linux-demo.pkg.tar.xz
 	source = LICENSE
-	sha1sums = 832e403d42aac1fec93e4f602338544d3fd2e4f1
+	sha1sums = 0da31b9caf75fd8a650f61020f0ef8b99ef5b507
 	sha1sums = c3f410d29524eb02a8bf3dc1b29aaeb82b1844e6
 
 pkgname = hopper4

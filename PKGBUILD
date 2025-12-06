@@ -2,7 +2,7 @@
 
 pkgname=hopper4
 _pkgname=hopperv4
-pkgver=5.19.3
+pkgver=5.19.4
 pkgrel=1
 pkgdesc="Reverse engineering tool that lets you disassemble, decompile and debug your applications"
 arch=(x86_64)
@@ -13,15 +13,17 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 _filename="Hopper-v4-${pkgver}-Linux-demo.pkg.tar.xz"
-_dl_url="https://www.hopperapp.com/downloader/hopperv4/${_filename}"
+_dl_url="https://www.hopperapp.com/downloader/public/${_filename}"
 _referer="https://www.hopperapp.com/download/"
+
+DLAGENTS=('https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -A Mozilla/5.0 -o %o %u')
 
 source=("${_filename}::${_dl_url}"
         'LICENSE')
 
 # sha1 on https://www.hopperapp.com/download.html
-sha1sums=('832e403d42aac1fec93e4f602338544d3fd2e4f1'
-          'c3f410d29524eb02a8bf3dc1b29aaeb82b1844e6')
+sha1sums=('0da31b9caf75fd8a650f61020f0ef8b99ef5b507'
+           'c3f410d29524eb02a8bf3dc1b29aaeb82b1844e6')
 changelog=ChangeLog
 
 package() {
