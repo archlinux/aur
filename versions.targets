@@ -1,0 +1,11 @@
+<Project>
+  <ItemGroup>
+    <KnownFrameworkReference Update="@(KnownFrameworkReference)">
+      <LatestRuntimeFrameworkVersion Condition="'%(TargetFramework)' == '%DOTNET_TARGET_FRAMEWORK%'">%DOTNET_RUNTIME_VERSION%</LatestRuntimeFrameworkVersion>
+      <TargetingPackVersion Condition="'%(TargetFramework)' == '%DOTNET_TARGET_FRAMEWORK%'">%DOTNET_RUNTIME_VERSION%</TargetingPackVersion>
+    </KnownFrameworkReference>
+    <KnownAppHostPack Update="@(KnownAppHostPack)">
+      <AppHostPackVersion Condition="'%(TargetFramework)' == '%DOTNET_TARGET_FRAMEWORK%'">%DOTNET_RUNTIME_VERSION%</AppHostPackVersion>
+    </KnownAppHostPack>
+  </ItemGroup>
+</Project>

@@ -3,5 +3,6 @@
 !.gitignore
 !.SRCINFO
 !.nvchecker.toml
+!versions.targets
 !*.patch
 !*.diff
