@@ -3,8 +3,8 @@
 
 _pkgname=ImHex
 pkgname=${_pkgname,,}
-pkgver=1.37.4
-pkgrel=2
+pkgver=1.38.0
+pkgrel=1
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
 license=('GPL-2.0-or-later')
@@ -19,28 +19,12 @@ optdepends=('dotnet-runtime: support for .NET scripts')
 provides=('imhex-patterns')
 conflicts=('imhex-patterns-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/WerWolv/ImHex/releases/download/v$pkgver/Full.Sources.tar.gz"
-        "imhex-patterns-$pkgver.tar.gz::https://github.com/WerWolv/ImHex-Patterns/archive/refs/tags/ImHex-v$pkgver.tar.gz"
-        fmt-update.patch
-        patterns-fmt-update.patch)
-sha256sums=('711481cc8dfc368d1b88f5d3e8a44d65f23fa43eb9db092599924f3a4cf1aaa2'
-            '541eddc8cc427d1aeb749bc455911fccc87f64a7784bd4bbc35ecb7b56c03ad5'
-            'cfd6afdea025fdcd215f6a72c8a81853bccc1db01b0920e27c371fa86bca2c41'
-            '4eaa595c0a25ae29e998681644b4d8b06df4fc51226639a5c9bb447d990aa95f')
-b2sums=('11f93ca310ddec8ec7d074d5450a02f3147d40aaa92387fbe7fce3be08445e129bbd7336d923e971a2f7f2b6df778a6210de73060cb91abe85161e7fd88588b7'
-        'c8699f9f26faeae784b4c4cb14b682d0f4d0c544ef8c9596b8688c19e6066d7101a7c32979ee807cd4a05225fe2548a8759b1fd0a07c578ea5c0fcdb9f104e69'
-        '95b48f077d47af4b430477e5581f4da3f34e2d27920a038bcd5d4affb812c4de3801aba89053b9ffa394eb501a1c2eede40de0a9d7d940a9be292e3ac74dd2f3'
-        '46eea8e7a7133ac2b5d37c02ca892cdbebaf68204947936757708f72e37d3ba332f3cd908a06d0e4bbd4a1a19c2f1f8d6bb6e01606e97dd383584c9f6060f40f')
+        "imhex-patterns-$pkgver.tar.gz::https://github.com/WerWolv/ImHex-Patterns/archive/refs/tags/ImHex-v$pkgver.tar.gz")
+sha256sums=('dc4bb8e6a3800d59da284b92f56ca9816a32790aa11121a9a143b1a078c5d8d6'
+            'eb211d696f409f3747942d6f7139e56dae76c3c073e1fee0471a3e7ed82b5f28')
+b2sums=('f04fad694b841e0d63e2ccf2efb3a249213231c8b08fd5cfb8582c5fe901e262d8f48eede81254d0f1ec3d539eb9621b5142e607c5738ee9c04c8ea903eb9f55'
+        '4e5706fd22c2cc16e8486b87bd3df50ef68c6aa4448a2790be99f6623e75ce744f2201e75a03b61bf6145efd3dacbc3287e388e6dfb47897edd3d0d8ed9f99d1')
 options=(!lto)
-
-prepare() {
-  cd "$_pkgname"
-
-  patch -Np1 -i "$srcdir/fmt-update.patch"
-
-  cd lib/external/pattern_language
-
-  patch -Np1 -i "$srcdir/patterns-fmt-update.patch"
-}
 
 build() {
   export CXXFLAGS="$CXXFLAGS -Wno-inconsistent-missing-override"
@@ -68,6 +52,9 @@ build() {
 }
 
 package() {
+  test -e "$srcdir/ImHex-Patterns" && rm "$srcdir/ImHex-Patterns"
+  ln -s "$srcdir/ImHex-Patterns-ImHex-v$pkgver" "$srcdir/ImHex-Patterns"
+
   DESTDIR="$pkgdir" cmake --install build
 
   # Remove updater
