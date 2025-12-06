@@ -1,6 +1,6 @@
 # Maintainer: dimtpap <dimtpap@protonmail.com>
 pkgname=coppwr
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='Low level PipeWire control GUI'
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('coppwr')
 makedepends=('cargo' 'clang')
 optdepends=('xdg-desktop-portal: Camera and Screencast XDP support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dimtpap/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=("a2079048eaed887a04f25cad2ec51d574c93b0d6131a5853b44b9247496fb07e")
+sha256sums=("adfeb504b9fdcad4ce5a390f8011d7e61a0f05c6f96b63e139fd124fa97cd085")
 
 options=(!lto) # The project uses thin LTO and without this won't build
 
