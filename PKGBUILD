@@ -8,26 +8,15 @@
 
 pkgname=xpadneo-dkms
 pkgver=0.10.0
-_commit=a16acb03e7be191d47ebfbc8ca1d5223422dac3e
-pkgrel=0.1
+_commit=fc1b13afc8dbaf85fc8ea8dadac460cee1ebda06
+pkgrel=0.2
 pkgdesc='Advanced Linux Driver for Xbox One Wireless Gamepad'
 arch=('any')
 url='https://github.com/atar-axis/xpadneo'
 license=('GPL-3.0-or-later')
 depends=('dkms' 'bluez' 'bluez-utils')
-source=("xpadneo-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz"
-        '0001-drop-etc-files.patch')
-b2sums=('0e2b1ebd17c63b5592ed40f32b2b48fed15d71214e799bc1495308f6e21ad7f6f64ea6e3eab77e7e2883e0dc2f1eea9fa532f3ebe300e999e50d328df70995ed'
-        'fd04ac0f92d1ae0568462636390aadd6c4ad54dee01ea81d89e63ab486bb91ce56d7e90ca19952c037f27d9ef01ebd04f02db373096792134518879633014224')
-
-prepare() {
-  cd "xpadneo-${_commit}"
-
-  # Upstream uses dkms.post_install to create modprobe and udev files in
-  # /etc. In Arch, it makes more sense to create these files in /usr/lib
-  # and let pacman take care of them. Won't be needed on v0.10+
-  patch -Np1 -i "${srcdir}/0001-drop-etc-files.patch"
-}
+source=("xpadneo-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz")
+b2sums=('21b9e043ef727a8a52999d40a4ded213dd692717aadb8da0bebbc6893b10ffa005ae277cee6e9337e915ae0fa0510e086372a5b41829dd23cde7fb4ad02cde62')
 
 package() {
   cd "xpadneo-${_commit}"

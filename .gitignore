@@ -4,5 +4,4 @@
 !.nvchecker.toml
 # actual package
 !PKGBUILD
-!0001-drop-etc-files.patch
 !.SRCINFO
