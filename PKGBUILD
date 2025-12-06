@@ -1,6 +1,6 @@
 # Maintainer: ind4skylivey <https://github.com/ind4skylivey>
 pkgname=optiscaler-universal
-pkgver=0.1.1_alpha
+pkgver=0.1.1_alpha2
 pkgrel=1
 pkgdesc="Intelligent OptiScaler configuration tool for Linux gaming - automatically optimizes GPU settings"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=(
     'python: for advanced YAML parsing'
 )
 source=("$pkgname-${pkgver/_/-}.tar.gz::$url/archive/v${pkgver/_/-}.tar.gz")
-sha256sums=('058175fc8e6f3be7a86c3b82faae3f110eba8ac8183d171ed098e9701b3dd580')
+sha256sums=('af15ed06b5eab1a7175b30ac1838c897ecd5969809da5e5296f6bdd2cd2a90eb')
 
 package() {
     cd "$srcdir/0ptiscaler4linux-${pkgver/_/-}"
