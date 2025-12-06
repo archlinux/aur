@@ -1,6 +1,6 @@
 pkgbase = plasma-weather-plus
 	pkgdesc = plasma天气插件
-	pkgver = 4.3
+	pkgver = 4.4.3
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/tully-t/weather-widget-plus
