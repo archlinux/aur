@@ -2,10 +2,11 @@
 # Contributor: Tom K <tomk@runbox.com>
 # Contributor: Aaron Ali <t0nedef@causal.ca>
 # Contributor: McNoggins <gagnon88 AT gmail DOT com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Sean Teo <sawntoe@gmail.com>
 
 pkgname=mpb
-pkgver=1.11.1
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="A program for computing the band structures and electromagnetic modes"
 arch=('i686' 'x86_64')
@@ -13,8 +14,8 @@ url="https://mpb.readthedocs.io"
 license=('GPL')
 depends=('lapack' 'hdf5' 'fftw' 'libctl' 'guile')
 makedepends=('gcc-fortran')
-source=(https://github.com/NanoComp/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('dc55b081c56079727dac92d309f8e4ea84ca6eea9122ec24b7955f8c258608e1')
+source=("https://github.com/NanoComp/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('8d2b206254b217f66a53c1ad20cc0c369b93b0e71ee671d68e333a583eaaeda4')
 
 prepare() {
   cp -r $pkgname-$pkgver $pkgname-inv
