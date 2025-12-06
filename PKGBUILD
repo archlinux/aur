@@ -1,11 +1,11 @@
 # Maintainer:  Rubin Simons <me@rubin55.org
 
-_sdk=9.0
+_sdk=10.0
 _Name="FsAutoComplete"
 _pkgname="${_Name,,}"
 pkgname="${_pkgname}-bin"
 pkgver=0.81.0
-pkgrel=1
+pkgrel=2
 pkgdesc="F# language server using Language Server Protocol (LSP)"
 arch=('any')
 url="https://ionide.io/Tools/fsac.html"
