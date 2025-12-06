@@ -1,0 +1,12 @@
+--- a/cpp/CMakeLists.txt
++++ b/cpp/CMakeLists.txt
+@@ -81,6 +81,9 @@ endif()
+ # Add TensorRT LLM Gen export interface and CUDA support
+ add_compile_definitions("TLLM_GEN_EXPORT_INTERFACE")
+ add_compile_definitions("TLLM_ENABLE_CUDA")
++
++# Fix for glog 0.7.0+ compatibility
++add_compile_definitions("GLOG_USE_GLOG_EXPORT")
+ 
+ set(BINDING_TYPE
+     "nanobind"
