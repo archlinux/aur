@@ -56,8 +56,8 @@ build() {
     # Use system zstd library instead of building from source
     export ZSTD_SYS_USE_PKG_CONFIG=1
     
-    # Build with all features including GUI
-    cargo build --frozen --release --all-features --features gui
+    # Build GUI and CLI tools
+    cargo build --frozen --release --workspace
 }
 
 check() {
@@ -70,10 +70,9 @@ check() {
 package() {
     cd "$srcdir/wayvid"
     
-    # Install binaries
-    install -Dm755 target/release/wayvid "$pkgdir/usr/bin/wayvid"
-    install -Dm755 target/release/wayvid-ctl "$pkgdir/usr/bin/wayvid-ctl"
+    # Install binaries (v0.5: GUI-first, no standalone daemon)
     install -Dm755 target/release/wayvid-gui "$pkgdir/usr/bin/wayvid-gui"
+    install -Dm755 target/release/wayvid-ctl "$pkgdir/usr/bin/wayvid-ctl"
     
     # Install systemd user service
     install -Dm644 systemd/wayvid.service "$pkgdir/usr/lib/systemd/user/wayvid.service"
@@ -90,6 +89,9 @@ package() {
     
     # Install logo/icon
     install -Dm644 logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/wayvid.svg"
+    
+    # Install desktop file
+    install -Dm644 packaging/wayvid-gui.desktop "$pkgdir/usr/share/applications/wayvid.desktop"
     
     # Install licenses
     install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
