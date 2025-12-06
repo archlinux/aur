@@ -1,6 +1,6 @@
 pkgbase = dano-bin
 	pkgdesc = A hashdeep/md5tree (but much more) for media files
-	pkgver = 0.9.1
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/kimono-koans/dano
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = dano-bin
 	optdepends = flac: to import FLAC file's checksums
 	provides = dano
 	conflicts = dano
-	source_x86_64 = https://github.com/kimono-koans/dano/releases/download/0.9.1/dano_0.9.1-1_amd64.deb
-	sha256sums_x86_64 = cfd777fca6e116aa2d0b81386c49caa8f890a51f9324fe8c1057d2974130b5cc
+	source_x86_64 = https://github.com/kimono-koans/dano/releases/download/0.10.1/dano_0.10.1-1_amd64.deb
+	sha256sums_x86_64 = bfa808e723e686de91d47c838a4a03ddd1fa7d1eef7741e5a10a95dfc069bb17
 
 pkgname = dano-bin
