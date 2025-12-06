@@ -1,0 +1,5 @@
+[flow-browser-bin]
+source = "github"
+github = "MultiboxLabs/flow-browser"
+use_latest_release = true
+prefix = "v"

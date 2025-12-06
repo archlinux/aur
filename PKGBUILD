@@ -3,7 +3,7 @@
 
 pkgname=flow-browser-bin
 _pkgname=Flow
-pkgver=0.8.3
+pkgver=0.8.4
 _electronversion=36
 pkgrel=1
 pkgdesc="A modern, tabbed web browser with Chrome extension support—built on Electron.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7c1401c8c21ecf64326fade882ae5f310b1435e53a82ef52366f54c5b3629db7'
+sha256sums=('02e427aea8d0299e799587e028d5a58c55c341456aebf573ca37eb9de817c7ea'
             '291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980')
 prepare() {
     sed -i -e "
