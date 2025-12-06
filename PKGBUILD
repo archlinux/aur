@@ -6,23 +6,14 @@
 
 pkgname=google-java-format
 pkgver=1.33.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Reformats Java source code to comply with Google Java Style'
 url='https://github.com/google/google-java-format'
-arch=('any')
-license=('Apache-2.0 AND NCSA')
-depends=('java-runtime' 'bash')
-source=(
-  "https://github.com/google/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-all-deps.jar"
-  "$pkgname"
-  "https://raw.githubusercontent.com/google/$pkgname/master/LICENSE"
-)
-sha256sums=('697707af07c7753f29cba415c6a76b7882702ff464f807da98b28069b8751910'
-            '5869a6ec4dd3c681b06e9a0fa1cdef30d0ee722d48115ff4a5e1efb01947e100'
-            '2c7e23c8000fe553b6f380b5e365dd72198439174f1b6821d5e3b190b54af0dc')
+arch=('x86_64')
+license=('Apache-2.0')
+source=("https://github.com/google/$pkgname/releases/download/v$pkgver/${pkgname}_linux-x86-64")
+sha256sums=('968a5a033bd8cf0d42dc8c361c5e26b1cc549245206b937f2e1c4618a5e36865')
 
 package() {
-  install -Dm755 "$srcdir/$pkgname-$pkgver-all-deps.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
-  install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 LICENSE* -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm755 "$srcdir/${pkgname}_linux-x86-64" "$pkgdir/usr/bin/$pkgname"
 }
