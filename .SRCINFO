@@ -1,7 +1,7 @@
 pkgbase = path-utils
 	pkgdesc = useful .bashrc PATH generation tools
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Remenod/path-utils
 	arch = x86_64
 	license = MIT
