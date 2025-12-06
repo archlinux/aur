@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cutecosmic-git
-pkgver=0.1.r0.g896d445
+pkgver=0.1.r1.g1469fa3
 pkgrel=1
 pkgdesc="Qt platform theme for the COSMIC™ Desktop environment"
 arch=('x86_64')
@@ -14,7 +14,6 @@ makedepends=(
   'cargo'
   'cmake'
   'git'
-  'vulkan-headers'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
