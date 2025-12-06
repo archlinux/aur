@@ -2,7 +2,7 @@
 
 _name=openai-agents
 pkgname=python-$_name
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="OpenAI Agents SDK."
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=('python-numpy: voice' 'python-websockets: voice'
             'python-redis: redis'
             'python-dapr: dapr' 'python-grpcio: dapr')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('067d2b66669c390c840effeb02d80939b4ac4a4db53e9735b74895a6d916b840')
+sha256sums=('1012aee224518292778fb4b07eb9148b0b5efa5cd87fd32ec656296aba885612')
 
 build() {
   cd "$srcdir"/${_name//-/_}-$pkgver
@@ -30,6 +30,7 @@ build() {
 check() {
   local pytest_options=(
     -vv
+    --disable-warnings
   )
   cd "$srcdir"/${_name//-/_}-$pkgver
   PYTHONPATH=$PWD/src OPENAI_API_KEY=fake-for-tests pytest "${pytest_options[@]}" tests
