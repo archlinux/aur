@@ -1,0 +1,15 @@
+pkgbase = niri-settings
+	pkgdesc = GUI application in Qt for configuring niri
+	pkgver = 7395f05
+	pkgrel = 1
+	url = https://github.com/yourusername/input-settings
+	arch = any
+	license = GPLv2.0
+	depends = python
+	depends = python-pyqt6
+	depends = qt6-wayland
+	depends = niri
+	source = git+https://github.com/stefonarch/niri-settings.git
+	md5sums = SKIP
+
+pkgname = niri-settings
