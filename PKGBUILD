@@ -22,14 +22,8 @@ build() {
   # Optimize build environment for maximum performance
   export CARGO_INCREMENTAL=0
 
-  # Disable system flags that hurt performance
-  unset CPPFLAGS
-  unset CFLAGS
-  unset CXXFLAGS
-  unset LDFLAGS
+  # Disable system RUSTFLAGS to allow local optimizations (target-cpu=native) to take precedence
   unset RUSTFLAGS
-  unset CC
-  unset CXX
 
   # We rely on the project's own .cargo/config.toml and Cargo.toml
   # for all optimization flags (target-cpu, LTO, etc.)
