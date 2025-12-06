@@ -7,7 +7,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=vttest
-pkgver=20241208
+pkgver=20251205
 pkgrel=1
 pkgdesc="Tool for testing VT100 compatibility of terminals"
 arch=(x86_64 i686)
@@ -15,7 +15,7 @@ url="https://invisible-island.net/vttest"
 license=(MIT)
 depends=(glibc)
 source=("https://invisible-island.net/archives/vttest/vttest-${pkgver}.tgz")
-sha256sums=('8fee3bac7e87d4aa4a217bd2b38ab9910c3b8cf9a605b450c76ccc0ad2a6519d')
+sha256sums=('cd6886f9aefe6a3f6c566fa61271a55710901a71849c630bf5376aa984bf77cc')
 
 build() {
   cd "${pkgname}-${pkgver}"
