@@ -1,6 +1,6 @@
 pkgbase = leenfetch
 	pkgdesc = modern, minimal, and the fastest neofetch like system information tool, written in Rust.
-	pkgver = 1.0.4
+	pkgver = 1.1.0
 	pkgrel = 2
 	url = https://github.com/drunkleen/leenfetch
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = leenfetch
 	depends = gcc-libs
 	provides = leenfetch
 	conflicts = leenfetch
-	source = leenfetch-1.0.4.tar.gz::https://github.com/drunkleen/leenfetch/archive/refs/tags/v1.0.4.tar.gz
+	source = leenfetch-1.1.0.tar.gz::https://github.com/drunkleen/leenfetch/archive/refs/tags/v1.1.0.tar.gz
 	sha256sums = 1dc856b8c59117ecf54fc77a7cc8f08cec7d618a6ef66979a00b8dc3431d5ba8
 
 pkgname = leenfetch
