@@ -1,0 +1,14 @@
+pkgbase = ruby-text-table
+	pkgdesc = Allows you to easily create and format plain text tables, useful when working with the terminal or when you want to quickly print formatted tables to a dot-matrix printer.
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://rubygems.org/gems/text-table
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = text-table-1.2.4.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/text-table-1.2.4.gem
+	b2sums = 1aaf6f7a9bfd892fcd9211a120a59b84d4c46837d113deca9c79aca46ddfe87efdbc4b7b99c424a5e280a4c4dcb63d560b8d3d44fa288a8357ba60785d3e2651
+
+pkgname = ruby-text-table
