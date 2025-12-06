@@ -1,7 +1,7 @@
 pkgbase = viennarna
 	pkgdesc = RNA Secondary Structure Prediction and Comparison
-	pkgver = 2.7.0
-	pkgrel = 2
+	pkgver = 2.7.1
+	pkgrel = 1
 	url = https://www.tbi.univie.ac.at/RNA
 	arch = x86_64
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = viennarna
 	makedepends = gcc-fortran
 	options = staticlibs
 	options = !strip
-	source = http://www.tbi.univie.ac.at/RNA/packages/source/ViennaRNA-2.7.0.tar.gz
-	sha256sums = 32aa599bc4e8982d173fa638def5a96781322ad53b4ff2013e429a9961cad0e7
+	source = http://www.tbi.univie.ac.at/RNA/packages/source/ViennaRNA-2.7.1.tar.gz
+	sha256sums = f8bc6bf07886a0015f9ba7379b4ae9dcfc272ecd16cb69243067b07088e841de
 
 pkgname = viennarna
 	depends = perl
@@ -33,13 +33,13 @@ pkgname = viennarna
 	provides = RNAforester=2.0
 	provides = kinwalker=2.0
 	provides = RNAxplorer=0.9
-	provides = viennarna2=2.7.0
-	provides = libRNA=2.7.0
+	provides = viennarna2=2.7.1
+	provides = libRNA=2.7.1
 
 pkgname = python-rna
 	depends = python
-	depends = viennarna=2.7.0
+	depends = viennarna=2.7.1
 
 pkgname = perl-rna
 	depends = perl
-	depends = viennarna=2.7.0
+	depends = viennarna=2.7.1
