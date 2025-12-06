@@ -1,0 +1,23 @@
+pkgbase = rclone-tgdrive-bin
+	pkgdesc = rclone fork from tgdrive GitHub releases
+	pkgver = 1.71.0
+	pkgrel = 1
+	url = https://github.com/tgdrive/rclone
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = unzip
+	depends = glibc
+	provides = rclone
+	conflicts = rclone
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = rclone-v1.71.0-linux-amd64.zip::https://github.com/tgdrive/rclone/releases/download/v1.71.0/rclone-v1.71.0-linux-amd64.zip
+	sha256sums_x86_64 = c9b6e7ea44d73e5fef38e7716982c20a21d03c9523a7ec6015e65c183c2ee7d9
+	source_aarch64 = rclone-v1.71.0-linux-arm64.zip::https://github.com/tgdrive/rclone/releases/download/v1.71.0/rclone-v1.71.0-linux-arm64.zip
+	sha256sums_aarch64 = df2742ff27d98fd2bc7b4e84c3ef2cbeda6d5bfa2d576f017e0f155f85b726a5
+	source_armv7h = rclone-v1.71.0-linux-arm-v7.zip::https://github.com/tgdrive/rclone/releases/download/v1.71.0/rclone-v1.71.0-linux-arm-v7.zip
+	sha256sums_armv7h = bcc0b8a9d4dc2bf88276681274a4046953198c4f020babd39a655fddf3076ef2
+
+pkgname = rclone-tgdrive-bin
