@@ -1,4 +1,4 @@
-pkgname=notes
+pkgname=note
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A simple, terminal-based notes manager written in Bash."

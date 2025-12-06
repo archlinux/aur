@@ -1,4 +1,4 @@
-pkgbase = notes
+pkgbase = note
 	pkgdesc = A simple, terminal-based notes manager written in Bash.
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = notes
 	source = https://raw.githubusercontent.com/simon-msdos/notes/main/notes.sh
 	sha256sums = SKIP
 
-pkgname = notes
+pkgname = note
