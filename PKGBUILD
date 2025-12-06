@@ -1,4 +1,4 @@
-# Maintainer: tippfehlr <tippfehlr at tippfehlr dot eu>
+# Maintainer: tippfehlr <tippfehlr@tippfehlr.dev>
 
 pkgname=servicer
 pkgver=0.1.13
@@ -9,23 +9,22 @@ license=("MIT")
 arch=("x86_64" "aarch64")
 provides=("servicer")
 conflicts=("servicer")
-_tag=5cf82e8ff6947278b46887b09161bc72b05b04d5 # git rev-parse v${pkgver}
-source=("$pkgname::git+$url#tag=${_tag}")
+source=("$pkgname::git+$url#tag=v$pkgver")
 makedepends=("git" "rust")
-sha256sums=("SKIP")
+sha512sums=('9f46882fcd83726b562b85773650f45186ff9fcfc193d442eb58f5ad7b8d4290549372ccb918293b4439df6c8a4ea3f9f9d97c1d4fc0df39c3438b2635150e8e')
 
 prepare() {
-	cd "$srcdir/$pkgname"
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cd $pkgname
+	cargo fetch --locked --target $(rustc --print host-tuple)
 }
 
 build() {
-	cd "$srcdir/$pkgname"
-	cargo build --frozen --release
+	cd $pkgname
+	cargo build --frozen --release --all-features
 }
 
 package() {
-	cd "$srcdir/$pkgname"
-	install -Dm755 target/release/servicer "${pkgdir}/usr/bin/servicer"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+	cd $pkgname
+	install -Dm755 target/release/servicer "$pkgdir/usr/bin/servicer"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

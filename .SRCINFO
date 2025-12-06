@@ -10,7 +10,7 @@ pkgbase = servicer
 	makedepends = rust
 	provides = servicer
 	conflicts = servicer
-	source = servicer::git+https://github.com/servicer-labs/servicer#tag=5cf82e8ff6947278b46887b09161bc72b05b04d5
-	sha256sums = SKIP
+	source = servicer::git+https://github.com/servicer-labs/servicer#tag=v0.1.13
+	sha512sums = 9f46882fcd83726b562b85773650f45186ff9fcfc193d442eb58f5ad7b8d4290549372ccb918293b4439df6c8a4ea3f9f9d97c1d4fc0df39c3438b2635150e8e
 
 pkgname = servicer
