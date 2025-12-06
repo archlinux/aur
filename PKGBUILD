@@ -8,13 +8,13 @@ pkgname=(
   sqlitestudio-plugins
 )
 _pkgname=SQLiteStudio
-pkgver=3.4.17
+pkgver=3.4.18
 pkgrel=1
 pkgdesc='Database manager for SQLite'
 arch=(i686 x86_64)
 url='https://sqlitestudio.pl'
 _git='https://github.com/pawelsalawa/sqlitestudio'
-license=('GPL3')
+license=('GPL-3.0-or-later AND custom')
 depends=(
   qt5-script
   qt5-declarative
@@ -27,13 +27,13 @@ makedepends=(
   tcl
 )
 source=(
-  ${_git}/archive/refs/tags/${pkgver}.tar.gz
+  ${_git}/archive/${pkgver}.tar.gz
   ${pkgbase}.desktop
 )
 noextract=(
   ${pkgver}.tar.gz
 )
-sha256sums=('17662e1aa9bc3e70639a51a34a12ba707e52a475d2742fa8ab9ecad621ff6caf'
+sha256sums=('40972e38cc3d052685908706099a1e0f3e7f9e1ea37026730e4bb463fc58f1a8'
             'c5a26a9b9003b04274887a0e0febda13eea49bb46c618eaad0b5b5c88b1cc1d2')
 
 prepare(){
@@ -55,7 +55,7 @@ build(){
   cd "$srcdir"/output/build/Plugins
   ver="$(python -c"import sys;print(sys.version_info.major,sys.version_info.minor,sep='.')")"
   qmake ../../../Plugins \
-  	"PYTHON_VERSION = $ver" \
+    "PYTHON_VERSION = $ver" \
     "INCLUDEPATH += $srcdir/SQLiteStudio3/coreSQLiteStudio" \
     "INCLUDEPATH += /usr/include/python$ver"
   (
@@ -85,4 +85,4 @@ package_sqlitestudio-plugins(){
   cd $srcdir/output/build/Plugins
   make INSTALL_ROOT="$pkgdir/usr" install
 }
-# vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:
+# vim:set noet sts=0 sw=4 ts=4:
