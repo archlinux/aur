@@ -1,8 +1,8 @@
 # Maintainer: kneesdev <kneesdev@naver.com>
 pkgname=duelsplus
 _pkgname=duelsplus
-pkgver=2.8.0
-pkgrel=2
+pkgver=2.8.1
+pkgrel=1
 pkgdesc="Lightweight, custom Minecraft Proxy designed to enhance your experience on Hypixel Duels."
 arch=('x86_64')
 url="https://duelsplus.com"
@@ -13,7 +13,7 @@ provides=('duelsplus')
 conflicts=('duelsplus-bin')
 _appimage="Duels+-${pkgver}-x64.AppImage"
 source=("${_appimage}::https://launcher-updates.duelsplus.com/download/flavor/default/${pkgver}/linux_64/${_appimage}")
-sha256sums=('851cdca534e3112b845c5b846840001e7c1c810917160e5bec63d7ccd0f406c9')
+sha256sums=('02742e599f2aeda17ecb458b9b62d633fee4b08aed970dae2040eab56e0abbce')
 
 prepare() {
     chmod +x "${_appimage}"
