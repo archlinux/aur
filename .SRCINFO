@@ -1,6 +1,6 @@
 pkgbase = nextpnr-nexus-nightly
 	pkgdesc = nextpnr portable FPGA place and route tool - for nexus
-	pkgver = 20251205_nextpnr_0.9_43_gc46f2bbd
+	pkgver = 20251206_nextpnr_0.9_43_gc46f2bbd
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/nextpnr
