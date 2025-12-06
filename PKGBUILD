@@ -1,18 +1,18 @@
 # Maintainer: Karl Essinger <xkaess22@gmail.com>
 pkgname=supportboi
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A support ticket Discord bot with automated interviews and rendered HTML transcripts"
 arch=("x86_64")
 url="https://github.com/KarlOfDuty/SupportBoi"
 license=('GPL-3.0-or-later')
 options=('!debug' '!strip')
 depends=(
-  "dotnet-runtime-9.0"
+  "dotnet-runtime>=9"
   "mysql"
 )
 makedepends=(
-  "dotnet-sdk-9.0"
+  "dotnet-sdk>=9"
 )
 conflicts=(
   "supportboi-git"
