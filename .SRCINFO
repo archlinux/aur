@@ -1,6 +1,6 @@
 pkgbase = wfrc-git
 	pkgdesc = Wrapper of wf-recorder/wl-screenrec, make screencast on wlroots compositor with shorcut easily.
-	pkgver = r30.f39dc41
+	pkgver = r36.c04ab6f
 	pkgrel = 1
 	url = https://github.com/Vescrity/wfrc
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = wfrc-git
 	depends = libnotify
 	depends = libpulse
 	depends = wl-clipboard
+	optdepends = pulse-native-provider: To record audio in the screencast
 	optdepends = wf-recorder: Default backend.
 	optdepends = wl-screenrec: Another backend.
 	provides = wfrc
