@@ -2,18 +2,18 @@
 pkgbase='bw-pinentry'
 pkgname=('bw-pinentry' 'bw-pinentry-debug')
 pkgdesc='A pinentry wrapper around the bitwarden CLI to use your vault for GPG-Key storage.'
-pkgver='1.0.3'
+pkgver='1.0.4'
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Skycoder42/bw-pinentry'
 license=('BSD')
 depends=('pinentry' 'bitwarden-cli')
-source=("sources.tar.gz::https://github.com/Skycoder42/bw-pinentry/archive/refs/tags/v1.0.3.tar.gz"
-        "bin.tar.xz::https://github.com/Skycoder42/bw-pinentry/releases/download/v1.0.3/binaries-linux.tar.xz"
-        "debug.tar.xz::https://github.com/Skycoder42/bw-pinentry/releases/download/v1.0.3/binaries-linux-debug-symbols.tar.xz")
-b2sums=('e8af65e2e526c708adff1872ca23b1053b03419b715996ffd56ddd27e189f58dc9ce5aa0f3aae861a7f4cd49d482494b5c1a1a3b9d9a873ab33a50e2cee95e4e'
-        '7fbe4ab670fb75c74d96b07f76ec2a446eb79c46de42e516f59b9d26a9886cc3b2692aa0759f7d59cee4595a9f8b3a333bcfe8183691f15bae0154f3cda2eb13'
-        'a4337b7ecfd46c0200d5d769e54d618f5e6658df3691abc79f2a3e50780d2d12b1e0521c298b4fb8ba2c9911c67b049365f151ce76325567705bbe3d5e76334a')
+source=("sources.tar.gz::https://github.com/Skycoder42/bw-pinentry/archive/refs/tags/v1.0.4.tar.gz"
+        "bin.tar.xz::https://github.com/Skycoder42/bw-pinentry/releases/download/v1.0.4/binaries-linux.tar.xz"
+        "debug.tar.xz::https://github.com/Skycoder42/bw-pinentry/releases/download/v1.0.4/binaries-linux-debug-symbols.tar.xz")
+b2sums=('8e14e50e9558141ea4d83cff2e76802bbe10941c6f36e640ae5494c438df4fb74433d5f883356e6a0799da580ddc1b555b9099064cf594eb180081b0fab558fc'
+        'cbd3902984cd13d8d3743e0ad9c6544bd7fb6b352d7a562052af31e4f7ac4c1eb783bf2bb52385f4bc2f4776035187012f02e19b4cb0920281d65af2cf62b27b'
+        '4426334bd942dd14ea53de44670c74db58bec68f998db0754096cf6344ad77e18e0750621a04cecfabc9628990891024d66fdf0772a620bf142fa21971efad20')
 changelog='CHANGELOG.md'
 options=('!strip')
 _pkgdir="$pkgbase-$pkgver"
