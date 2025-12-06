@@ -13,7 +13,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
 md5sums=('SKIP')
-options=('!debug')
+options=('!debug' '!lto')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
