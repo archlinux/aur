@@ -3,12 +3,18 @@
 _sdk=9.0
 _Name="YoutubeDownloader"
 pkgname="${_Name,,}"
-pkgver=1.15.1
+pkgver=1.15.2
 pkgrel=1
 pkgdesc="Downloads videos and playlists from YouTube"
-arch=('aarch64' 'armv7h' 'x86_64')
+arch=(
+  'aarch64'
+  'armv7h'
+  'x86_64'
+)
 url="https://github.com/Tyrrrz/${_Name}"
-license=('MIT')
+license=(
+  'MIT'
+)
 depends=(
   "dotnet-runtime-${_sdk}"
   'ffmpeg'
@@ -17,16 +23,18 @@ makedepends=(
   "dotnet-sdk-${_sdk}"
   'gendesk'
 )
-options=('!strip' '!debug')
+options=(
+  '!strip'
+  '!debug'
+)
 _pkgsrc="${url##*/}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         "${pkgname}_xdg_settings.patch")
-b2sums=('899e7f4824c135b467a940dcf87e2151e837de0f8a70d04a0ec8cbffa7fb3fe8f7ec6b144713aaf3077c6b4259aa408430d60bca6da2310713d953c20a023126'
+b2sums=('ade36fe6ba9d461b5852faaa15b23f463f806cfe8ddf2972e21c4300cc6e46ee912abea3bc7a5f5c30f38cba91addc61a9d6f00cb7025aa1cb9132cac4c71448'
         '422e82520465e646ddc1a0f2d0dbd0c624141df292a5e6a5ebd4cee9c4025769ae518e8c373d35632ee804148b68de109232d64ebd33c455eb81d6dbf3663817')
 
 if   [ "${CARCH}" = 'aarch64' ]; then _msarch=arm64;
 elif [ "${CARCH}" = 'armv7h'  ]; then _msarch=arm;
-elif [ "${CARCH}" = 'i686'    ]; then _msarch=x86;
 elif [ "${CARCH}" = 'x86_64'  ]; then _msarch=x64; fi
 
 _srcenv() {
