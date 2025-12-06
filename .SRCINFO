@@ -1,14 +1,14 @@
 pkgbase = testdisk-wip
 	pkgdesc = Checks and undeletes partitions. Includes PhotoRec signature based recovery tool. WIP version
-	pkgver = 7.2
-	pkgrel = 4
+	pkgver = 7.3
+	pkgrel = 1
 	url = https://www.cgsecurity.org/wiki/TestDisk
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = qt5-tools
 	depends = libjpeg
 	depends = ntfsprogs
@@ -16,7 +16,7 @@ pkgbase = testdisk-wip
 	optdepends = qt5-base: QPhotoRec GUI
 	provides = testdisk
 	conflicts = testdisk
-	source = https://www.cgsecurity.org/testdisk-7.2-WIP.tar.bz2
+	source = https://www.cgsecurity.org/testdisk-7.3-WIP.tar.bz2
 	md5sums = SKIP
 
 pkgname = testdisk-wip

@@ -1,12 +1,12 @@
 # Contributor: Steven Honeyman <stevenhoneyman at gmail com>
 
 pkgname=testdisk-wip
-pkgver=7.2
-pkgrel=4
+pkgver=7.3
+pkgrel=1
 pkgdesc="Checks and undeletes partitions. Includes PhotoRec signature based recovery tool. WIP version"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.cgsecurity.org/wiki/TestDisk"
-license=('GPL')
+license=(GPL-2.0-or-later)
 depends=('libjpeg' 'ntfsprogs')
 optdepends=('libewf: support EnCase files'
             'qt5-base: QPhotoRec GUI')
