@@ -1,5 +1,5 @@
 pkgname=scrcpy-wrapper
-pkgver=0.1.3
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='A simple wrapper for scrcpy'
 url='https://github.com/Bluemangoo/scrcpy-wrapper'
@@ -8,16 +8,16 @@ makedepends=('cargo')
 depends=('scrcpy')
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Bluemangoo/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('f02f05ee6d8e20a569191bfb490ecdfc3fafa8ad3f229350a05053ef752c58812930775be85c8ee01e24fb9aa8eb4ec167b8f6e7b7b833d83e01f25feaf43333')
+b2sums=('8703630a2c790712ae57abe941f8c1ea986b6792f9117b86db01fc1a7381cbf493ab537f0cde9f84659fd0d44606cb638f3e8f4076dc9a2973b9ef941126e772')
 
 prepare() {
-    cd $srcdir/$pkgname-$pkgver
+    cd "$srcdir/$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd $srcdir/$pkgname-$pkgver
+    cd "$srcdir/$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
