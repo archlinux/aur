@@ -1,0 +1,18 @@
+pkgbase = pyvideokit
+	pkgdesc = A collection of FFmpeg utility scripts
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Evilchuck666/pyvideokit
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = ffmpeg
+	depends = sox
+	source = PyVideoKit-0.1.0.tar.gz::https://github.com/Evilchuck666/PyVideoKit/archive/v0.1.0.tar.gz
+	md5sums = 87af70bca62d4a7115498c8cd1be219a
+
+pkgname = pyvideokit
