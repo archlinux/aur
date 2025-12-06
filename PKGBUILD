@@ -4,7 +4,7 @@
 # basic info
 pkgname="vinyl"
 _gitname="vinyl-theme"
-pkgver=6.5.2
+pkgver=6.5.3
 pkgrel=2
 pkgdesc="Vinyl Theme for KDE Plasma 6"
 url="https://github.com/ekaaty/vinyl-theme"
@@ -24,10 +24,10 @@ makedepends=(
 options=(!emptydirs !debug)
 
 source=(
-    "${url}/archive/refs/tags/v6.5.2.tar.gz"
+    "${url}/archive/refs/tags/v6.5.3.tar.gz"
 )
 
-sha256sums=('ac9351114c3b4f0caacf13b75ee2bc7f156c00ca220e4fbb0b95583bd578ebe8')
+sha256sums=('3610db21accb4f51bce125ad29897a041b9c66292161e23cd9521dd8916b9a18')
 
 depends=(
   'kdecoration'
