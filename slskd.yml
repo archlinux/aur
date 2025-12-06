@@ -1,14 +1,14 @@
-# slskdn configuration
+# slskd configuration
 # See https://github.com/snapetech/slskdn for full documentation
 
 soulseek:
   username: 
   password: 
-  description: slskdn user
+  description: slskd user
 
 directories:
-  downloads: /var/lib/slskdn/downloads
-  incomplete: /var/lib/slskdn/incomplete
+  downloads: /var/lib/slskd/downloads
+  incomplete: /var/lib/slskd/incomplete
 
 web:
   port: 5030
