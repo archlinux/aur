@@ -1,6 +1,6 @@
 pkgbase = qt6-interfaceframework
 	pkgdesc = Tools and core APIs for implementing Middleware APIs, Middleware Back ends, and Middleware Services
-	pkgver = 6.10.0
+	pkgver = 6.10.1
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = qt6-interfaceframework
 	depends = gcc-libs
 	depends = glibc
 	depends = qt6-base
-	source = git+https://code.qt.io/qt/qtinterfaceframework#tag=v6.10.0
+	source = git+https://code.qt.io/qt/qtinterfaceframework#tag=v6.10.1
 	sha256sums = 8362426fffe01ac83c3b6152ee51afbe02a3406fb1b460bc4323700bc5cb4777
 
 pkgname = qt6-interfaceframework

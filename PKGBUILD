@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Kalisiak <tomasz.kalisiak3@gmail.com>
 
 pkgname=qt6-interfaceframework
-_pkgver=6.10.0
+_pkgver=6.10.1
 pkgver=${_pkgver/-/}
 pkgrel=1
 arch=(x86_64)
