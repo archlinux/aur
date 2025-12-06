@@ -8,8 +8,11 @@ Wants=network-online.target
 Type=simple
 User=slskd
 Group=slskd
-ExecStart=/usr/lib/slskd/slskd --config /etc/slskd/slskd.yml
+# Config search order: --config flag, working dir, ~/.local/share/slskd/
+# Users with existing configs in /var/lib/slskd/.local/share/slskd/ will be found automatically
+ExecStart=/usr/lib/slskd/slskd
 WorkingDirectory=/var/lib/slskd
+Environment="HOME=/var/lib/slskd"
 Restart=on-failure
 RestartSec=10
 
