@@ -4,7 +4,7 @@
 
 pkgname='kanzi-git'
 _pkgname="${pkgname/-git}"
-pkgver=2.4.0.r58.gc2166c5e
+pkgver=2.4.0.r82.g380ee037
 pkgrel=1
 pkgdesc='Modern, modular, portable and efficient lossless data compressor and decompressor (development version)'
 arch=('aarch64' 'x86_64')
@@ -29,7 +29,7 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname/src"
+  cd "$srcdir/$_pkgname"
 
   export CXXFLAGS="-std=c++20 $CXXFLAGS"
   test -n "$LTOFLAGS" && export CXXFLAGS="$CXXFLAGS $LTOFLAGS"
@@ -45,14 +45,14 @@ package() {
   cd "$srcdir/$_pkgname"
 
   install -vDm0755 -t "$pkgdir/usr/bin" \
-    src/build/kanzi
+    build/kanzi
   install -vDm0644 -t "$pkgdir/usr/share/man/man1" \
     kanzi.1.gz
   install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     {README,SECURITY}.md
 
   install -vDm0755 -t "$pkgdir/usr/lib" \
-    src/build/libkanzi.so
+    build/libkanzi.so
 
   install -vDm0644 -t "$pkgdir/usr/include/kanzi" \
     src/*.hpp
