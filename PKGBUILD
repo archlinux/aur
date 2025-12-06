@@ -7,23 +7,24 @@ pkgdesc="avrdude wrapper for embedded rust development"
 url="https://github.com/Rahix/avr-hal/tree/main/ravedude"
 license=("MIT OR Apache-2.0")
 arch=("x86_64" "aarch64")
-source=("git+https://github.com/Rahix/avr-hal#tag=ravedude-$pkgver")
+# this fetches all of avr-hal. An alternative could be crates.io, but the license would be missing.
+source=("git+https://github.com/Rahix/avr-hal#tag=ravedude-$pkgver") 
 depends=("avrdude")
 makedepends=("git" "cargo")
 sha512sums=('118659e4f1b349e0b4316b5b39bfc6809216bc4458533b4186c258900000797b678e81c091c5dbf3a4d6d10bbe2014435b42c9fbb71902d155a8206213c77fd9')
 
 prepare() {
-    cd "$srcdir/avr-hal/ravedude"
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cd avr-hal/ravedude
+	cargo fetch --locked --target $(rustc --print host-tuple)
 }
 
 build() {
-    cd "$srcdir/avr-hal/ravedude"
-    cargo build --frozen --release
+	cd avr-hal/ravedude
+	cargo build --frozen --release --all-features
 }
 
 package() {
-    cd "$srcdir/avr-hal/ravedude"
-    install -Dm755 target/release/ravedude -t "$pkgdir/usr/bin/"
-    install -Dm644 ../LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname/"
+	cd avr-hal/ravedude
+	install -Dm755 target/release/ravedude -t "$pkgdir/usr/bin/"
+	install -Dm644 ../LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
