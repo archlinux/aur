@@ -1,14 +1,14 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=ndecrypt
 pkgname=$_pkgname-git
-pkgver=0.4.2.r0.g415b3f1
+pkgver=0.5.0.r1.ge637920
 pkgrel=1
 pkgdesc="DS/3DS Encryption Tool"
 arch=('x86_64')
 url="https://github.com/SabreTools/NDecrypt"
 license=('MIT')
 depends=('gcc-libs' 'glibc')
-makedepends=('dotnet-sdk>=9' 'git')
+makedepends=('dotnet-sdk>=10' 'git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
@@ -22,7 +22,7 @@ pkgver() {
 build() {
 	local options=(
 		--configuration Release
-		--framework net9.0
+		--framework net10.0
 		--output build
 		--runtime linux-x64
 		--self-contained false
@@ -33,7 +33,7 @@ build() {
 }
 
 package() {
-	depends+=('dotnet-runtime-9.0')
+	depends+=('dotnet-runtime-10.0')
 	# shellcheck disable=SC2154
 	install -d "$pkgdir"/usr/{bin,lib}
 	cp -dr --no-preserve=ownership build "$pkgdir"/usr/lib/$_pkgname
