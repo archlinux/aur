@@ -5,14 +5,14 @@ pkgrel=1
 epoch=
 pkgdesc="A simple saturation plugin"
 arch=('i686' 'x86_64')
-url="https://github.com/hannesbraun/rsaturation"
+url="https://sr.ht/~hannes/rsaturation"
 license=('custom')
 groups=('lv2-plugins')
 depends=('glibc')
 makedepends=('git' 'cmake')
 provides=("${pkgname%-lv2-git}")
 conflicts=("${pkgname%-lv2-git}")
-source=('rsaturation-lv2::git+https://github.com/hannesbraun/rsaturation')
+source=('rsaturation-lv2::git+https://sr.ht/~hannes/rsaturation')
 md5sums=('SKIP')
 
 
