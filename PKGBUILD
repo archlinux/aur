@@ -2,6 +2,7 @@
 # Contributor: Kyle De'Vir (QuartzDragon) <kyle.devir.33@proton.me>
 
 pkgname=bcachefs-tools-git
+pkgname=(bcachefs-tools-git bcachefs-dkms-git)
 _pkgname=bcachefs-tools
 # Keep epoch=1 to preserve upgrade ordering from the previous date-based
 # VCS pkgver scheme used in AUR history.
@@ -12,9 +13,6 @@ pkgdesc="Bcachefs userspace tools (Git version) with FUSE support enabled"
 arch=('x86_64')
 url="https://github.com/koverstreet/bcachefs-tools"
 license=('GPL-2.0-only')
-provides=("$_pkgname=${pkgver%%.r*}")
-conflicts=("$_pkgname")
-
 depends=(
     'bash'
     'fuse3'
@@ -80,20 +78,20 @@ build() {
     make "${make_args[@]}" all
 }
 
-package() {
+package_bcachefs-tools-git() {
+    provides=("bcachefs-tools=${pkgver%%.r*}")
+    conflicts=(bcachefs-tools)
+
     cd "$_pkgname"
     local -a make_args=("${_common_make_args[@]}" "DESTDIR=$pkgdir")
 
-    make "${make_args[@]}" install
+    # run install but not install_dkms
+    make "${make_args[@]}" install -o install_dkms
 
     # replace incompatible initcpio hooks
     rm -rf "$pkgdir"/usr/lib/initcpio/*
     install -Dm644 arch/etc/initcpio/hooks/bcachefs -t "$pkgdir/usr/lib/initcpio/hooks"
     install -Dm644 arch/etc/initcpio/install/bcachefs -t "$pkgdir/usr/lib/initcpio/install"
-
-    # Remove DKMS sources installed by upstream makefile.
-    # Userspace tools stay here; kernel module is provided elsewhere to avoid mismatches.
-    rm -rf "$pkgdir/usr/src"
 
     # Shell completions
     "$pkgdir/usr/bin/bcachefs" completions bash \
@@ -102,4 +100,18 @@ package() {
         | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_bcachefs"
     "$pkgdir/usr/bin/bcachefs" completions zsh \
         | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/bcachefs.fish"
+}
+
+package_bcachefs-dkms-git() {
+    pkgdesc="Bcachefs out-of-tree module (Git version)"
+    depends=(
+        dkms
+    )
+    provides=("bcachefs-dkms=${pkgver%%.r*}")
+    conflicts=(bcachefs-dkms)
+
+    cd "$_pkgname"
+    local -a make_args=("${_common_make_args[@]}" "DESTDIR=$pkgdir")
+
+    make "${make_args[@]}" install_dkms
 }

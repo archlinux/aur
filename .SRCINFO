@@ -33,9 +33,15 @@ pkgbase = bcachefs-tools-git
 	depends = libudev.so
 	depends = systemd-libs
 	depends = udev
-	provides = bcachefs-tools=1.36.1
-	conflicts = bcachefs-tools
 	source = git+https://github.com/koverstreet/bcachefs-tools.git
 	sha256sums = SKIP
 
 pkgname = bcachefs-tools-git
+	provides = bcachefs-tools=1.36.1
+	conflicts = bcachefs-tools
+
+pkgname = bcachefs-dkms-git
+	pkgdesc = Bcachefs out-of-tree module (Git version)
+	depends = dkms
+	provides = bcachefs-dkms=1.36.1
+	conflicts = bcachefs-dkms
