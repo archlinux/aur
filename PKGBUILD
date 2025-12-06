@@ -2,13 +2,13 @@
 
 _pkgname=fht-compositor
 pkgname="$_pkgname-git"
-pkgver=25.10.1.r707.bb423a3
+pkgver=25.10.1.r713.ec2e39e
 pkgrel=1
 pkgdesc='A dynamic tiling Wayland compositor (git development version)'
 arch=('x86_64')
 url="https://github.com/nferhat/$_pkgname"
 license=('GPL-3.0-or-later')
-source=("git+https://github.com/nferhat/fht-compositor.git")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 makedepends=(
     'cargo'
@@ -53,12 +53,12 @@ build() {
 package() {
     cd "$srcdir/$_pkgname"
 
-    install -Dm755 target/opt/fht-compositor "$pkgdir/usr/bin/fht-compositor"
-    install -Dm644 res/systemd/fht-compositor.service "$pkgdir/usr/lib/systemd/user/fht-compositor.service"
-    install -Dm644 res/systemd/fht-compositor-shutdown.target "$pkgdir/usr/lib/systemd/user/fht-compositor-shutdown.target"
-    install -Dm755 res/systemd/fht-compositor-session "$pkgdir/usr/bin/fht-compositor-session"
-    install -Dm644 res/systemd/fht-compositor.desktop "$pkgdir/usr/share/wayland-sessions/fht-compositor.desktop"
-    install -Dm644 res/fht-compositor.portal "$pkgdir/usr/share/xdg-desktop-portal/portals/fht-compositor.portal"
-    install -Dm644 res/fht-compositor-portals.conf "$pkgdir/usr/share/xdg-desktop-portal/fht-compositor-portals.conf"
+    install -Dm755 target/opt/fht-compositor "$pkgdir/usr/bin/$_pkgname"
+    install -Dm644 res/systemd/fht-compositor.service "$pkgdir/usr/lib/systemd/user/$_pkgname.service"
+    install -Dm644 res/systemd/fht-compositor-shutdown.target "$pkgdir/usr/lib/systemd/user/$_pkgname-shutdown.target"
+    install -Dm755 res/systemd/fht-compositor-session "$pkgdir/usr/bin/$_pkgname-session"
+    install -Dm644 res/systemd/fht-compositor.desktop "$pkgdir/usr/share/wayland-sessions/$_pkgname.desktop"
+    install -Dm644 res/fht-compositor.portal "$pkgdir/usr/share/xdg-desktop-portal/portals/$_pkgname.portal"
+    install -Dm644 res/fht-compositor-portals.conf "$pkgdir/usr/share/xdg-desktop-portal/$_pkgname-portals.conf"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 }

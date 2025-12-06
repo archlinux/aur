@@ -1,6 +1,6 @@
 pkgbase = fht-compositor-git
 	pkgdesc = A dynamic tiling Wayland compositor (git development version)
-	pkgver = 25.10.1.r707.bb423a3
+	pkgver = 25.10.1.r713.ec2e39e
 	pkgrel = 1
 	url = https://github.com/nferhat/fht-compositor
 	arch = x86_64
