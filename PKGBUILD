@@ -1,7 +1,7 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=kiro-ide
-pkgver=0.7.5
+pkgver=0.7.21
 pkgrel=1
 epoch=1
 pkgdesc='The AI IDE for prototype to production'
@@ -36,12 +36,9 @@ depends=(
     'libxkbfile'
     'libxrandr'
     'mesa'
-    'nodejs'
     'nspr'
     'nss'
     'pango'
-    'perl'
-    'python'
     'systemd-libs'
 )
 conflicts=('kiro')
@@ -56,9 +53,9 @@ source=(
     "kiro-workspace.xml"
     "Kiro-LICENSE.txt"
 )
-b2sums=('bd3979fed18d3c8c308dedb4b5bef96d04787fd26e277479f21f8397577d47be8b55ad004e51200064a6df8e9e9b32779f9255c5511ab572649b3d0ac0b9ee26'
+b2sums=('f581fdf4023a16a81d01a63fff233f09ed3a1cb23c3553ce19961490d283d77aacf65df6d614e12387dac5bb449da96a65b757a6f2016001f61b816c210fbd0f'
         '09676f21f9b2821f7fb789fde98f1825f53d1df64ab74932ec2117f6cf06985bc5795ea7a016d90e9318035b2dd7c2f9706dccf44eb4cd092e4268a5f4760a26'
-        '116355b6ce34a0c412c8622056a6257accaa40cfd5fff85b38110398ae024254d529215aca24530fab1e0f81fca1b4711d59248b1e60923a212495d85d9bd5de'
+        'a71a3443042ef1723ce67962e0918d15712a1c90a876042b81b7f59553c18cad73a6dabeb332031f123419c8b98272fccff3353060bec4e9fe54a989bf4d84fd'
         'd7afb1d5c54c8789e21e0f598837af95f52ea6e8f99708d38c7166b926022ce88cfd246b5fc530f5f1dbfbde1b4633658e441af7356cdee289013e363bd7eab8'
         '7c4eca51844645ee6e642be3cdeb3120ebd4fe308d7f60236b2118536bf5717aff23bb71a308978e491275cdb2ef2e78a295d1554553add681071b909d72ac6b'
         'c422bc883f40209fb165740fdf339911de868acc8a72033730ac07e3c5fd76604737b7efe0b4f894b70520dbd214c5504bd34c284e7c1f0a4438f1f35eee0dbb'
@@ -80,6 +77,8 @@ package() {
     ln -s /opt/Kiro/bin/kiro "$pkgdir/usr/bin/kiro"
 
     install -Dm644 Kiro-LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+    install -Dm644 Kiro/LICENSES.chromium.html \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
 
     install -dm755 "$pkgdir/usr/share/pixmaps"
     ln -s /opt/Kiro/resources/app/resources/linux/code.png "$pkgdir/usr/share/pixmaps/kiro.png"
