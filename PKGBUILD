@@ -4,7 +4,7 @@ _pkgname=neocities-deploy
 pkgname=$_pkgname-bin
 pkgdesc='Command-line tool for deploying your Neocities site (prebuilt statically-linked binary)'
 url="https://github.com/kugland/$_pkgname"
-pkgver=0.1.16
+pkgver=0.1.18
 pkgrel=1
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 license=('GPL-3.0-or-later')
@@ -13,11 +13,11 @@ source_x86_64=("$_pkgname-$pkgver-bin-x86_64.tar.gz::${url}/releases/download/v$
 source_i686=("$_pkgname-$pkgver-bin-i686.tar.gz::${url}/releases/download/v$pkgver/$_pkgname-Linux-i686-musl.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-bin-aarch64.tar.gz::${url}/releases/download/v$pkgver/$_pkgname-Linux-aarch64-musl.tar.gz")
 source_armv7h=("$_pkgname-$pkgver-bin-arm.tar.gz::${url}/releases/download/v$pkgver/$_pkgname-Linux-arm-musl.tar.gz")
-sha256sums=('6a0f67dff79b8c5427a625b1506568f5c3fac348eedf1e8a63f38d2fd3b4093f')
-sha256sums_x86_64=('09c5443c81cec777c54a69929fec19dd2db26c71d14b91f40999f3fb2336f200')
-sha256sums_i686=('eca98216d179ae1cb736c58ebb66db4df231d0da37657a22dc423bf4461bc768')
-sha256sums_aarch64=('2be934c423e92b2480e0874fdce2761c12fab8b3b3399b424ff456a54a489a45')
-sha256sums_armv7h=('7cec2a374cdd66a2454c2d9bef1e19f2d9fe0c04d68ae9f905bcc07ff3132de9')
+sha256sums=('3b77711799f28dd7e6ed2577e143c783ce0e58541ab21dfd174eb32027bd13fa')
+sha256sums_x86_64=('c8dbe5432dac58bdf97bd29bf13253bffe15749d2f68cbf4b73308418a97bb72')
+sha256sums_i686=('552f1a5080d2bde1abf5ca4927ec4cbe705f49a42edc8af0a1ae8aba72badbe1')
+sha256sums_aarch64=('4c50c4920d0849c75e65d87b0098c2d734219eee8dd673426855e87594d9e558')
+sha256sums_armv7h=('846666b6d5827f0b5bd0c6920ed2d197c6b85623381483e11f3ff145e1467385')
 
 package() {
     cd "$srcdir"
