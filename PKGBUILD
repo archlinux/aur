@@ -2,7 +2,7 @@
 pkgname=rclone-tgdrive-bin
 pkgver=1.71.0
 pkgrel=1
-pkgdesc="rclone fork from tgdrive GitHub releases"
+pkgdesc="rclone with teldrive added"
 arch=("x86_64" "aarch64" "armv7h")
 url="https://github.com/tgdrive/rclone"
 license=("MIT")

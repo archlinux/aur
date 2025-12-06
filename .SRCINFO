@@ -1,5 +1,5 @@
 pkgbase = rclone-tgdrive-bin
-	pkgdesc = rclone fork from tgdrive GitHub releases
+	pkgdesc = rclone with teldrive added
 	pkgver = 1.71.0
 	pkgrel = 1
 	url = https://github.com/tgdrive/rclone
