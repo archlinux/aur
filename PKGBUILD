@@ -2,7 +2,7 @@
 
 pkgname=tangent-dev-bin
 _pkgname=${pkgname%-dev-bin}
-_pkgver=0.11.0-beta.1
+_pkgver=0.11.0-beta.2
 pkgver=${_pkgver/-/}
 pkgrel=1
 pkgdesc="Open source markdown note-taking app with linked notes and visual map"
@@ -16,7 +16,7 @@ conflicts=('tangent' 'tangent-bin')
 source=("$_pkgname-$pkgver.AppImage::https://suchnsuch-public.s3.us-east-2.amazonaws.com/${_pkgname^}/Releases/${_pkgname^}-${_pkgver}.AppImage"
         "tangent.desktop")
 noextract=("$_pkgname-$pkgver.AppImage")
-sha256sums=('81bf389876fd2e58cda99ba596c03046a35561c04d7ec4831a0888cf2d99eda5'
+sha256sums=('c9aa5d31a53e02f4a96cbc636d77df97c53fa6bf820a6820fde5e681b504a9a7'
             '7bd7e95acdf937c38adaf0456b60e07d501f8235499d13c872f89238fde7bd72')
 
 prepare() {
