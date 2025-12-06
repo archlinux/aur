@@ -29,7 +29,7 @@ pkgver() {
 }
 
 build() {
-  # Python + PyQt5 app, nothing to build
+  # Python + PyQt5 app, nothing to compile
   return 0
 }
 
@@ -52,4 +52,3 @@ package() {
   install -Dm644 "LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
