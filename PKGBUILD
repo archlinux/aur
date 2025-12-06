@@ -30,6 +30,7 @@ build() {
   cd "$srcdir/$_pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  unset CFLAGS CXXFLAGS LDFLAGS
   cargo build --frozen --release --all-features
 }
 
