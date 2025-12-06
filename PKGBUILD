@@ -1,9 +1,9 @@
-# Maintainer: snapetech <snapetech@github.com>
+# Maintainer: snapetech <slskdn@proton.me>
 # slskdn - drop-in replacement for slskd with enhanced features (build from source)
 pkgname=slskdn
 _pkgname=slskd
-pkgver=0.24.1.slskdn.3
-pkgrel=2
+pkgver=0.24.1.slskdn.6
+pkgrel=1
 pkgdesc="A modern client-server application for the Soulseek file sharing network (enhanced fork)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/snapetech/slskdn"
@@ -13,9 +13,9 @@ makedepends=('dotnet-sdk-8.0' 'nodejs' 'npm')
 optdepends=(
     'docker: for containerized deployment'
 )
-provides=('slskd')
-conflicts=('slskd' 'slskdn-bin')
-replaces=('slskd')
+provides=('slskd' 'slskd-bin')
+conflicts=('slskd' 'slskd-bin' 'slskdn-bin')
+replaces=('slskd' 'slskd-bin')
 backup=('etc/slskd/slskd.yml')
 install=slskd.install
 source=(
