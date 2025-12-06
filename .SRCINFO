@@ -1,7 +1,7 @@
 pkgbase = hypryou-utils
-	pkgdesc = Replacement for hyprland-qtutils as part of HyprYou project.
+	pkgdesc = Replacement for hyprland-qtutils as part of HyprYou project
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/koeqaife/hyprland-material-you
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,9 @@ pkgbase = hypryou-utils
 	makedepends = gcc
 	depends = gtk4
 	provides = hyprland-qtutils
+	provides = hyprland-guiutils
 	conflicts = hyprland-qtutils
+	conflicts = hyprland-guiutils
 	source = hypryou-utils-1.0.0.tar.gz::https://github.com/koeqaife/hyprland-material-you/archive/refs/heads/v2.tar.gz
 	sha256sums = SKIP
 
