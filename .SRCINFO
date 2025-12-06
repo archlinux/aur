@@ -1,7 +1,7 @@
 pkgbase = vrcx-bin
 	pkgdesc = Friendship management tool for VRChat (extracted AppImage version)
 	pkgver = 2025.12.06
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vrcx.app/
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = vrcx-bin
 	depends = alsa-lib
 	depends = nspr
 	depends = hicolor-icon-theme
-	depends = dotnet-runtime-10.0
+	depends = dotnet-runtime-9.0
 	depends = gtk3
 	depends = libnotify
 	depends = libxss

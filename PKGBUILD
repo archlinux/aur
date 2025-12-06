@@ -3,14 +3,14 @@
 _omit_libs=true
 _omit_dlls=false
 _electron_ver=38
-_dotnet_ver=10.0
-_runtime_ver=0
-_sdk_ver=100
+_dotnet_ver=9.0
+_runtime_ver=9
+_sdk_ver=110
 
 pkgname='vrcx-bin'
 pkgdesc='Friendship management tool for VRChat (extracted AppImage version)'
 pkgver='2025.12.06'
-pkgrel='1'
+pkgrel='2'
 arch=('x86_64')
 url='https://vrcx.app/'
 license=('MIT')
