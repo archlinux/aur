@@ -1,31 +1,37 @@
 pkgbase = jalv-git
-	pkgdesc = A simple but fully featured LV2 host for Jack (git version)
-	pkgver = 1.6.7.r530.08ca5ba
+	pkgdesc = A simple but fully featured LV2 host for JACK (git version)
+	pkgver = 1.8.0.r922.5a288e3
 	pkgrel = 1
-	url = http://drobilla.net/software/jalv/
-	arch = i686
+	url = https://drobilla.net/software/jalv/
 	arch = x86_64
-	license = custom:ISC
+	license = ISC
 	makedepends = git
-	makedepends = gtk2
 	makedepends = gtk3
 	makedepends = gtkmm
-	makedepends = lv2>=1.17.2
+	makedepends = lilv>=0.26.0
+	makedepends = lv2>=0.18.0
 	makedepends = python
 	makedepends = qt5-base
+	makedepends = serd>=0.32.2
+	makedepends = sord>=0.6.16
+	makedepends = sratom>=0.6.4
+	makedepends = suil>=0.10.0
+	makedepends = zix>=0.8.0
+	depends = glibc
 	depends = jack
-	depends = lilv
-	depends = suil
-	optdepends = gtk2: Gtk+ 2.x frontend
-	optdepends = gtk3: Gtk+ 3.x frontend
-	optdepends = gtkmm: Gtk++ 2.x frontend
+	optdepends = gtk3: Gtk 3.x frontend
 	optdepends = qt5-base: Qt 5.x frontend
 	provides = jalv
 	conflicts = jalv
-	source = jalv::git+http://gitlab.com/drobilla/jalv.git
-	source = autowaf::git+https://gitlab.com/drobilla/autowaf.git
-	md5sums = SKIP
-	md5sums = SKIP
+	source = jalv::git+https://gitlab.com/drobilla/jalv.git
+	sha256sums = SKIP
 
 pkgname = jalv-git
-
+	depends = glibc
+	depends = jack
+	depends = libjack.so
+	depends = liblilv-0.so
+	depends = libserd-0.so
+	depends = libsratom-0.so
+	depends = libzix-0.so
+	depends = libsuil-0.so
