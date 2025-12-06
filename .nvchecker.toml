@@ -1,0 +1,5 @@
+[loopi-bin]
+source = "github"
+github = "Dyan-Dev/loopi"
+use_latest_release = true
+prefix = "v"
