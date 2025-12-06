@@ -9,8 +9,8 @@ pkgbase = focus-stack-git
 	makedepends = sed
 	makedepends = gcc
 	depends = opencv
-	provides = focust-stack
-	conflicts = focust-stack
+	provides = focus-stack
+	conflicts = focus-stack
 	source = git+https://github.com/PetteriAimonen/focus-stack.git
 	sha256sums = SKIP
 
