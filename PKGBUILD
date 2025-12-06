@@ -1,6 +1,6 @@
 # Maintainer: Chris Hayen <chris at shotgun dot dev>
 pkgname=shotgun-lang
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="A systems programming language"
 arch=('x86_64')
