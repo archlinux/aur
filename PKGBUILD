@@ -3,14 +3,14 @@
 
 pkgname=i686-elf-pcc-git
 pkgver=20251115
-pkgrel=1
+pkgrel=2
 pkgdesc="A Portable C Compiler."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/PortableCC/"
 license=('custom')
 makedepends=('bison' 'flex' 'git')
 options=('!lto')
-depends=('i686-elf-pcc-libs')
+depends=('i686-elf-pcc-libs' 'i686-elf-binutils')
 provides=(i686-elf-pcc)
 conflicts=(i686-elf-pcc)
 source=(
