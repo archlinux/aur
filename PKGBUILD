@@ -2,7 +2,7 @@
 
 pkgdesc='a description language for modeling parameterizable geometric objects'
 pkgname=microcad
-pkgver=0.2.17
+pkgver=0.2.18
 pkgrel=1
 url="https://codeberg.org/$pkgname/$pkgname"
 arch=(x86_64)
@@ -16,12 +16,11 @@ makedepends=(cargo
              ninja)
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('dbc6dd4eb9d3645b582ee37b1c2af8edacdca508aa6643895298cb008fb0738f')
+sha256sums=('56a2244438c39010aacc232a4262a76b5afbe37452076cf0c8d0006e6137634d')
 
 prepare() {
 	cd "$pkgname"
 	cargo fetch --locked --target "$(rustc --print host-tuple)"
-	sed -i -e '/tests/d' Cargo.toml
 }
 
 _srcenv() {
