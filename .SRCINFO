@@ -1,6 +1,6 @@
 pkgbase = python-deepxde
 	pkgdesc = Library for scientific machine learning
-	pkgver = 1.14.0
+	pkgver = 1.15.0
 	pkgrel = 1
 	url = https://github.com/lululxvi/deepxde
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-deepxde
 	optdepends = python-pytorch: backend: PyTorch backend support
 	optdepends = python-flax: JAX backend support
 	optdepends = python-paddlepaddle: PaddlePaddle backend support
-	source = deepxde-1.14.0.tar.gz::https://github.com/lululxvi/deepxde/archive/v1.14.0.tar.gz
-	sha512sums = 63136bf3cde5fba4599d6fc12cd486642fbfd610e526c4e0d4f46b8cbcd8f57ebadb1627af999a8facef52eef69ad0d9499182382ee820ef2912c34a0f88158b
+	source = deepxde-1.15.0.tar.gz::https://github.com/lululxvi/deepxde/archive/v1.15.0.tar.gz
+	sha512sums = 29b21b6d765ebc4fea39820db77400c7679b0acecbf6e1e75cf472bbea3b12555c9373c6e9b09058049126978584c780db0ea1e79b8a8f55a28480b2aa5fc961
 
 pkgname = python-deepxde
