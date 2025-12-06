@@ -1,0 +1,13 @@
+pkgbase = tachyonterm-bin
+	pkgdesc = A headless, AI-native terminal emulator written in Rust.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/xtoxico/tachyonterm
+	arch = x86_64
+	license = MIT
+	provides = tachyonterm
+	conflicts = tachyonterm
+	source = https://github.com/xtoxico/tachyonterm/releases/download/v0.1.0/tachyonterm-0.1.0-x86_64.tar.gz
+	sha256sums = b0a0aead62eca42c2749413bbdc62ba574e0551c336e25cfab9c42886139d559
+
+pkgname = tachyonterm-bin
