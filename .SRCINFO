@@ -1,6 +1,6 @@
 pkgbase = python-google-genai
 	pkgdesc = GenAI Python SDK.
-	pkgver = 1.52.0
+	pkgver = 1.53.0
 	pkgrel = 1
 	url = https://github.com/googleapis/python-genai
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = python-google-genai
 	checkdepends = python-pillow
 	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-xdist
 	checkdepends = python-mcp
 	checkdepends = python-aiohttp
 	checkdepends = python-sentencepiece
@@ -29,7 +30,7 @@ pkgbase = python-google-genai
 	optdepends = python-aiohttp: aiohttp
 	optdepends = python-sentencepiece: local-tokenizer
 	optdepends = python-protobuf: local-tokenizer
-	source = https://github.com/googleapis/python-genai/archive/refs/tags/v1.52.0.tar.gz
-	sha256sums = 069dbd659dee45e7ba9db6be9a2df853ef2659ab8146b0856a07d5c17edcf083
+	source = https://github.com/googleapis/python-genai/archive/refs/tags/v1.53.0.tar.gz
+	sha256sums = 0134d03e011f92fc2912d6551fa7bfcd6d81292787ae5e20a085f323cf5093a2
 
 pkgname = python-google-genai
