@@ -1,4 +1,4 @@
-# Maintainer: tippfehlr <tippfehlr at tippfehlr dot eu>
+# Maintainer: tippfehlr <tippfehlr@tippfehlr.dev>
 
 pkgname=servicer-bin
 pkgver=0.1.13
@@ -9,24 +9,14 @@ license=("MIT")
 arch=("x86_64" "aarch64")
 provides=("servicer")
 conflicts=("servicer")
-depends=(glibc gcc-libs)
-_prefix=$pkgname-$pkgver-$pkgrel
-source_x86_64=(
-	"$_prefix-servicer::$url/releases/download/v$pkgver/servicer-$CARCH-unknown-linux-gnu"
-	"$_prefix-LICENSE::https://raw.githubusercontent.com/servicer-labs/servicer/master/LICENSE"
-)
-source_aarch64=(
-	"$_prefix-servicer::$url/releases/download/v$pkgver/servicer-$CARCH-unknown-linux-gnu"
-	"$_prefix-LICENSE::https://raw.githubusercontent.com/servicer-labs/servicer/master/LICENSE"
-)
-sha256sums_x86_64=(
-	"4a3fb1d9c04e7bb705c7ce68a89dd625647d5da6937d4ae450321b5acaa62946"
-	"2ef4d276242ac95eb4005255e73fce401e38ed70354b15aa53b516195db47151"
-)
-sha256sums_aarch64=(
-	"bdb626724589d71308a73b09dd07357710ff1e9a12659ec3b02f31617cdb54e0"
-	"2ef4d276242ac95eb4005255e73fce401e38ed70354b15aa53b516195db47151"
-)
+depends=("glibc" "gcc-libs")
+_prefix=$pkgname-$pkgver
+source=("$_prefix-LICENSE::https://raw.githubusercontent.com/servicer-labs/servicer/master/LICENSE")
+source_x86_64=("$_prefix-servicer::$url/releases/download/v$pkgver/servicer-x86_64-unknown-linux-gnu")
+source_aarch64=("$_prefix-servicer::$url/releases/download/v$pkgver/servicer-aarch64-unknown-linux-gnu")
+sha512sums=('778e038b9358fea1bf0466292a11f07a77f86b774c956e25fb89a746700e4f1f062fee0c46375c0e30e16ebb90965c6db0914c0442272eeffd2c6167d8bcb44a')
+sha512sums_x86_64=('443fba105a8bac6fcb0328269e0c6d2cd4d19d84d68bc8f78d5da250a968949342e851a08d0f40f1cde22cf66df7f60ec8c43ec7b6b56d7e2ff4703a21d0ff28')
+sha512sums_aarch64=('6b729f564225bc8cb0e64a5abf84df387796ef0c97bcfcd6bf74a314f2320fd8a2719c19349899901bdab88a9f202ef6b724545d39392bdaf0d946f4f45bc385')
 
 package() {
 	install -Dm755 $_prefix-servicer -t "$pkgdir/usr/bin"
