@@ -1,0 +1,14 @@
+pkgbase = ruby-array_include_methods
+	pkgdesc = Array include methods missing from the basic Ruby array API.
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://rubygems.org/gems/array_include_methods
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = array_include_methods-1.5.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/array_include_methods-1.5.1.gem
+	b2sums = 3b974f9283a0a18c76e5c00efe1dcfe0a7c189bb320a1f263b853fda1123d5010b5495896148344a8002350ca2151c375dc969697d76d86d9714eb6e3950a24c
+
+pkgname = ruby-array_include_methods
