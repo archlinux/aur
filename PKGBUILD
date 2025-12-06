@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=azahar
 pkgname=$_pkgname-git
-pkgver=2123.rc2.r38.g068fec0
+pkgver=2123.rc2.r57.g9996a07
 pkgrel=1
 pkgdesc="Nintendo 3DS emulator based on Citra"
 arch=('x86_64')
@@ -86,13 +86,8 @@ prepare() {
 	git -c protocol.file.allow=always submodule update
 	# ignore unneeded missing submodules
 	sed -i '/check_submodules_present()/d' ../../CMakeLists.txt
-	# fix zstd include
-	sed -i 's|zstd/contrib/seekable_format/||' ../../src/common/zstd_compression.cpp
 	# use system spirv-tools
 	sed -i '/spirv-tools/d' ../../externals/CMakeLists.txt
-	# fix qt include dir
-	sed -i '/COMPONENTS/s/ Gui /&GuiPrivate /' ../../src/citra_qt/CMakeLists.txt
-	sed -i '/Qt6Gui_PRIVATE_INCLUDE_DIRS/c target_link_libraries(citra_qt PRIVATE Qt6::GuiPrivate)' ../../src/citra_qt/CMakeLists.txt
 }
 
 build() {

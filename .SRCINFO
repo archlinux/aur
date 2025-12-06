@@ -1,6 +1,6 @@
 pkgbase = azahar-git
 	pkgdesc = Nintendo 3DS emulator based on Citra
-	pkgver = 2123.rc2.r38.g068fec0
+	pkgver = 2123.rc2.r57.g9996a07
 	pkgrel = 1
 	url = https://azahar-emu.org/
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = azahar-git
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = sdl2
-	provides = azahar=2123.rc2.r38.g068fec0
+	provides = azahar=2123.rc2.r57.g9996a07
 	conflicts = azahar
 	source = azahar::git+https://github.com/azahar-emu/azahar.git
 	source = azahar-compatibility-list::git+https://github.com/azahar-emu/compatibility-list.git
