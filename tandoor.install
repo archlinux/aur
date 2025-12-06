@@ -12,6 +12,5 @@ post_upgrade() {
         export $(cat /etc/tandoor/tandoor.conf |grep "^[^#]" | xargs)
         python manage.py migrate
         python manage.py collectstatic --no-input
-        python manage.py collectstatic_js_reverse
 }
 
