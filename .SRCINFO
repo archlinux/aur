@@ -1,0 +1,21 @@
+pkgbase = hyprwallhaven-bin
+	pkgdesc = A CLI tool for managing Wallhaven wallpapers on Hyprland with fuzzel integration (Binary)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/AnatolyRugalev/hyprwallhaven
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = fuzzel
+	depends = hyprpaper
+	provides = hyprwallhaven
+	conflicts = hyprwallhaven
+	conflicts = hyprwallhaven-git
+	source = https://github.com/AnatolyRugalev/hyprwallhaven/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = f7e69591a369e5cb91dbd0bf1348e8080b1dded6da599bd7f9e5acb762d5dad2
+	source_x86_64 = hyprwallhaven-linux-amd64-v0.1.1::https://github.com/AnatolyRugalev/hyprwallhaven/releases/download/v0.1.1/hyprwallhaven-linux-amd64
+	sha256sums_x86_64 = 751a9decb2a2a3594f8808010683429a90cfac59c68667cb8c7a71c5e90cbf9d
+	source_aarch64 = hyprwallhaven-linux-aarch64-v0.1.1::https://github.com/AnatolyRugalev/hyprwallhaven/releases/download/v0.1.1/hyprwallhaven-linux-aarch64
+	sha256sums_aarch64 = 3c36edb4552defaa322cb18d1898ec3295f48fecee97d45f23273c64b34c0720
+
+pkgname = hyprwallhaven-bin
