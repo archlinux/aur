@@ -1,6 +1,6 @@
 pkgbase = tinyetl-bin
 	pkgdesc = Fast, zero-config ETL in a single binary
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/alrpal/TinyETL
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = tinyetl-bin
 	depends = openssl
 	depends = unixodbc
 	options = !debug
-	source_x86_64 = tinyetl-bin-0.9.0.tar.gz::https://github.com/alrpal/TinyETL/releases/download/v0.9.0/tinyetl-linux-x86_64.tar.gz
-	source_x86_64 = https://raw.githubusercontent.com/alrpal/TinyETL/refs/tags/v0.9.0/LICENSE
-	provides_x86_64 = TinyETL=0.9.0
-	sha256sums_x86_64 = ffeb3064519f6a1b19aa92bf873a7b3ee5831bc9c5247f03b4f23506cbdfa604
+	source_x86_64 = tinyetl-bin-0.10.0.tar.gz::https://github.com/alrpal/TinyETL/releases/download/v0.10.0/tinyetl-linux-x86_64.tar.gz
+	source_x86_64 = https://raw.githubusercontent.com/alrpal/TinyETL/refs/tags/v0.10.0/LICENSE
+	provides_x86_64 = TinyETL=0.10.0
+	sha256sums_x86_64 = 518d5376a183db9d24e5961dee110895c5a5d32144f7de2053882c8528c42009
 	sha256sums_x86_64 = 91d18da4d08bc2712c854a5d200b85cd6ee90351d898b221785a820646e02116
 
 pkgname = tinyetl-bin
