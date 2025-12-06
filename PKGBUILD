@@ -1,5 +1,4 @@
-# Maintainer: yum13241 <coolcrew45 at disroot dot org>
-# Contributor: Jean-Marc Lenoir <archlinux "at" jihemel "dot" com>
+# Maintainer: voxan24 <admin at hessfr dot fr>
 
 # To enable macOS guests support, uncomment the line below:
 #_enable_macOS_guests=y
@@ -68,14 +67,14 @@ DLAGENTS=("https::/usr/bin/curl -fLC - --connect-to softwareupdate-prod.broadcom
 
 
 source=(
-	"https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/core/VMware-Workstation-${_pkgver/_/-}.${CARCH}.bundle.tar"
-	"https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-linux-${_tools_version/_/-}.${CARCH}.component.tar"
-	"https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-linuxPreGlibc25-${_tools_version/_/-}.${CARCH}.component.tar"
-	"https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-netware-${_tools_version/_/-}.${CARCH}.component.tar"
-	"https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-solaris-${_tools_version/_/-}.${CARCH}.component.tar"
-	"https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-windows-${_tools_version/_/-}.${CARCH}.component.tar"
-	"https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-winPre2k-${_tools_version/_/-}.${CARCH}.component.tar"
-	"https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${pkgver}/${_buildver}/linux/packages/vmware-tools-winPreVista-${_tools_version/_/-}.${CARCH}.component.tar"
+	"https://voxhost.fr/vmware-aur/16/VMware-Workstation-${_pkgver/_/-}.${CARCH}.bundle.tar"
+	"https://voxhost.fr/vmware-aur/16/vmware-tools-linux-${_tools_version/_/-}.${CARCH}.component.tar"
+	"https://voxhost.fr/vmware-aur/16/vmware-tools-linuxPreGlibc25-${_tools_version/_/-}.${CARCH}.component.tar"
+	"https://voxhost.fr/vmware-aur/16/vmware-tools-netware-${_tools_version/_/-}.${CARCH}.component.tar"
+	"https://voxhost.fr/vmware-aur/16/vmware-tools-solaris-${_tools_version/_/-}.${CARCH}.component.tar"
+	"https://voxhost.fr/vmware-aur/16/vmware-tools-windows-${_tools_version/_/-}.${CARCH}.component.tar"
+	"https://voxhost.fr/vmware-aur/16/vmware-tools-winPre2k-${_tools_version/_/-}.${CARCH}.component.tar"
+	"https://voxhost.fr/vmware-aur/16/vmware-tools-winPreVista-${_tools_version/_/-}.${CARCH}.component.tar"
 
 	'vmware-bootstrap'
 	'vmware-vix-bootstrap'
