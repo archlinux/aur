@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=voidsprite
+GenericName=Sprite editor
+Comment=Free C++ sprite editor
+Exec=/usr/bin/voidsprite %U
+Icon=com.github.counter185.voidsprite
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Graphics;
+Keywords=art;pixel;sprite;
+MimeType=image/png;image/svg+xml;image/jpeg;image/bmp;image/tiff;image/webp;image/gif;image/x-pcx;image/targa;image/x-xcf;image/x-voidsn;
