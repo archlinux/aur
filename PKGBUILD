@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable
 epoch=1
-pkgver=10.0.1
+pkgver=11.0
 pkgrel=1
 epoch=1
 pkgdesc="Portable Sandboxing framework"
@@ -16,6 +16,7 @@ makedepends+=(git)
 
 depends=(
 	"libnotify"
+	"findutils"
 	pipewire
 	"procps-ng"
 	"coreutils"
@@ -53,14 +54,15 @@ checkdepends=()
 
 source=(portable::git+https://github.com/Kraftland/portable.git#tag=${pkgver})
 
-md5sums=('da6638e4fb507fdff1d318154e3176a2')
+md5sums=('73cc9d2275ee89bf220c40835ead0eed')
 
 
 function package() {
 	cd portable
-	install -Dm755 portable.sh "${pkgdir}/usr/bin/portable"
+	install -vDm755 portable.sh "${pkgdir}/usr/bin/portable"
 	install -d "${pkgdir}/usr/lib/"
 	cp -r "${srcdir}/portable/lib" "${pkgdir}/usr/lib/portable"
 	install -t "${pkgdir}/usr/share/portable" -Dm755 "${srcdir}/portable/share"/*
-	install -Dm755 portable-pools "${pkgdir}/usr/bin/portable-pools"
+	install -vDm755 portable-pools "${pkgdir}/usr/bin/portable-pools"
+	install -vDm755 portable-packer "${pkgdir}/usr/bin/portable-packer"
 }

@@ -1,6 +1,6 @@
 pkgbase = portable
 	pkgdesc = Portable Sandboxing framework
-	pkgver = 10.0.1
+	pkgver = 11.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Kraftland/portable
@@ -9,6 +9,7 @@ pkgbase = portable
 	makedepends = git
 	makedepends = libarchive
 	depends = libnotify
+	depends = findutils
 	depends = pipewire
 	depends = procps-ng
 	depends = coreutils
@@ -36,7 +37,7 @@ pkgbase = portable
 	provides = portable
 	options = !debug
 	options = !strip
-	source = portable::git+https://github.com/Kraftland/portable.git#tag=10.0.1
-	md5sums = da6638e4fb507fdff1d318154e3176a2
+	source = portable::git+https://github.com/Kraftland/portable.git#tag=11.0
+	md5sums = 73cc9d2275ee89bf220c40835ead0eed
 
 pkgname = portable
