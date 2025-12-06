@@ -1,0 +1,3 @@
+[python-dashing]
+source = "pypi"
+pypi = "dashing"
