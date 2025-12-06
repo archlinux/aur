@@ -11,6 +11,11 @@ makedepends=('git')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
+pkgver() {
+    cd "$srcdir/hei-cursors"
+    git describe --long --tags 2>/dev/null | sed 's/^v//; s/-/.r/; s/-/./'
+}
+
 package() {
     cd "$srcdir/hei-cursors"
 
