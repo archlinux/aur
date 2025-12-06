@@ -1,7 +1,7 @@
 # Maintainer: rawalrauf <rawalbaloch78@gmail.com>
 pkgname=waybar-active-last
 pkgver=0.14.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors (with active-last patch)'
 arch=('x86_64')
 url='https://github.com/Alexays/Waybar/'
@@ -20,7 +20,7 @@ depends=(
   'spdlog'
   'wayland'
   'fmt'
-  'jack2'
+  'jack'
   'libxkbcommon'
   'upower'
   'gpsd'
