@@ -1,7 +1,7 @@
 # Maintainer: rawalrauf <rawalbaloch78@gmail.com>
 pkgname=waybar-active-last
 pkgver=0.14.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors (with active-last patch)'
 arch=('x86_64')
 url='https://github.com/Alexays/Waybar/'
@@ -64,7 +64,7 @@ build() {
               --wrap-mode=default \
               -D b_lto=false \
               -D b_pie=true \
-              -D cava=enabled \
+              -D cava=disabled \
               build
   meson compile -C build
 }
