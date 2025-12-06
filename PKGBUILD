@@ -10,7 +10,7 @@ license=('Apache')
 
 source=("https://github.com/openshift/okd/releases/download/${pkgver//_/-}/openshift-client-linux-${pkgver//_/-}.tar.gz")
 
-sha256sums=('f1e531171cf0cca701274bf983312bef613757c8f0e61533ec31798c928794aa')
+sha256sums=('39c5ccc222e28fec28f353dbda6ea8bc9aa40b99b1dfb86868da4fe8c09ff08b')
 
 prepare() {
 	# generate completion
