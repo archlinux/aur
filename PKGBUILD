@@ -1,8 +1,9 @@
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Sean Teo <sawntoe@gmail.com>
 
 pkgname=meep
-pkgver=1.27.0
+pkgver=1.31.0
 pkgrel=1
 pkgdesc="A free finite-difference time-domain simulation software package"
 arch=('x86_64')
@@ -13,7 +14,7 @@ makedepends=('gcc-fortran' 'suitesparse' 'swig')
 optdepends=('h5utils: for visualization and conversion of scientific data')
 options=('!libtool' '!makeflags' 'staticlibs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NanoComp/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('7bdadb8562f82a461e3bc73227599bda9e9fa5dbf861d96cd04ce581d1089c0b')
+sha256sums=('aba2956c91c95f9fc12b598dbfd30e2aea1ac4c0fad54bd8ee307f4a23f44224')
 
 build() {
   cd $pkgname-$pkgver
