@@ -1,0 +1,24 @@
+pkgbase = githeat
+	pkgdesc = CLI-driven Terminal User Interface (TUI) that enables you to assign the numerous lines emitted by your scripts to visual, collapsible blocks called steps
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/AmmsA/Githeat
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-yaml
+	depends = python-dateutil
+	depends = python-blessed
+	depends = python-gitpython
+	depends = python-xtermcolor
+	provides = githeat
+	conflicts = python-githeat
+	replaces = python-githeat
+	source = https://files.pythonhosted.org/packages/source/g/githeat/githeat-0.2.0.tar.gz
+	sha256sums = 9d5350773740de24858c59e64b06f5afd38305df0f245123879ca4bcdfd3dce0
+
+pkgname = githeat
