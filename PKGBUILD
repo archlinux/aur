@@ -2,7 +2,7 @@
 
 pkgname=python-django-channels
 _pypi_pkgname=channels
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="Developer-friendly asynchrony for Django"
 arch=(any)
@@ -21,7 +21,7 @@ depends=(
 )
 optdepends=()
 source=("https://pypi.io/packages/source/c/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('97413ffd674542db08e16a9ef09cd86ec0113e5f8125fbd33cf0854adcf27cdb')
+sha256sums=('f2bb6bfb73ad7fb4705041d07613c7b4e69528f01ef8cb9fb6c21d9295f15667')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
