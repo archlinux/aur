@@ -1,20 +1,21 @@
 # Maintainer: Crazybrain <crazybrain plus aur at tuta dot com>
 
 pkgname=ss14.launcher
-pkgver=0.35.0
+pkgver=0.36.1
 pkgrel=1
 pkgdesc="Space Station 14 launcher"
 arch=('x86_64' 'aarch64')
 url='https://spacestation14.com'
 license=('MIT')
-depends=('dotnet-runtime-9.0' 'gtk3' 'openal')
-makedepends=('dotnet-sdk-9.0')
+_dotnetver='10'
+depends=("dotnet-runtime-${_dotnetver}.0" 'gtk3' 'openal')
+makedepends=("dotnet-sdk-${_dotnetver}.0")
 optdepends=("soundfont-fluid: soundfont for in-game MIDI instuments needed for servers that don't provide their own")
 source=("${pkgname}.v${pkgver}.tar.gz::https://github.com/space-wizards/SS14.Launcher/archive/refs/tags/v${pkgver}.tar.gz"
         "https://github.com/space-wizards/Robust.LoaderApi/archive/86a02eef163156fe899eb498acd488e8d7063a0e.zip"
         'spacestation14.svg'::'https://raw.githubusercontent.com/space-wizards/asset-dump/master/icon.svg'
         'ss14.launcher.desktop')
-sha256sums=('0804126b7a03fe344ed27a838193bc324d606feac184146a759c18d8adc7fc0f'
+sha256sums=('89aaaffdb2a1372325d0075b64d12b40fea58e622c1cceb60d62c627681890c4'
             '3af8d3f2439791365ebe6643ccec3697a2e7e1de65b45fd197f56d8bf81da12e'
             'a047c810a26088cc1fd1df73036bd5b4cfb441c0697a2cbd583733d08474f37e'
             '53d7aa0900c8a68f7161a7865f10d09046ec33cb916dfd47659a27ed9864f049')
@@ -48,8 +49,8 @@ package() {
     install -Dm644 "$srcdir/SS14.Launcher-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     mkdir -p "$pkgdir/usr/lib/$pkgname/loader"
-    install -Dm644 "$srcdir/SS14.Launcher-$pkgver/SS14.Launcher/bin/Release/net9.0/linux-$_RIDARCH/publish/"* "$pkgdir/usr/lib/$pkgname/"
-    install -Dm644 "$srcdir/SS14.Launcher-$pkgver/SS14.Loader/bin/Release/net9.0/linux-$_RIDARCH/publish/"* "$pkgdir/usr/lib/$pkgname/loader/"
+    install -Dm644 "$srcdir/SS14.Launcher-$pkgver/SS14.Launcher/bin/Release/net${_dotnetver}.0/linux-$_RIDARCH/publish/"* "$pkgdir/usr/lib/$pkgname/"
+    install -Dm644 "$srcdir/SS14.Launcher-$pkgver/SS14.Loader/bin/Release/net${_dotnetver}.0/linux-$_RIDARCH/publish/"* "$pkgdir/usr/lib/$pkgname/loader/"
     chmod +x "$pkgdir/usr/lib/$pkgname/SS14.Launcher" "$pkgdir/usr/lib/$pkgname/loader/SS14.Loader"
 
     mkdir -p "$pkgdir/usr/bin"
