@@ -7,13 +7,13 @@
 : ${_widgets:=GTK2}
 
 [[ "$_widgets" == "GTK2" ]] \
-  && : ${_cksum=65b678cfc1a88954668075259e884b70cba2dcbbd75d3adda620aabe9341be70}
+  && : ${_cksum=84eeba5c9efc5df79b4e38bd6533afaf959f17e25796f2be5d682b8f36d2ea56}
 
 : ${_pkgtype:=-${_widgets,,}-bin}
 
 _pkgname="peazip"
 pkgname="$_pkgname${_pkgtype:?}"
-pkgver=10.7.0
+pkgver=10.8.0
 pkgrel=1
 pkgdesc="Cross-platform file and archive manager (${_widgets})"
 url="https://github.com/peazip/PeaZip"
@@ -33,10 +33,10 @@ optdepends=(
 )
 
 case "${_widgets::1}" in
-  g|G)
+  g | G)
     _depends+=("${_widgets,,}")
     ;;
-  q|Q)
+  q | Q)
     _depends+=("${_widgets,,}-base")
     ;;
 esac
