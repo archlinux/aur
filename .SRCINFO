@@ -1,7 +1,7 @@
 pkgbase = kanshi-menu
 	pkgdesc = A simple menu to switch kanshi profiles using fzf, with waybar integration
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vadika/kanshi-menu
 	arch = any
 	license = MIT
