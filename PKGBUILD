@@ -14,7 +14,7 @@ makedepends=('gcc-fortran' 'suitesparse' 'swig')
 optdepends=('h5utils: for visualization and conversion of scientific data')
 options=('!libtool' '!makeflags' 'staticlibs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/NanoComp/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('aba2956c91c95f9fc12b598dbfd30e2aea1ac4c0fad54bd8ee307f4a23f44224')
+sha256sums=('f70afc658ba5cf1c86636ed5d95f8733c677beb4818009ce85169047d032251c')
 
 build() {
   cd $pkgname-$pkgver
