@@ -6,7 +6,7 @@ pkgdesc="A simple menu to switch kanshi profiles using fzf, with waybar integrat
 arch=('any')
 url="https://github.com/vadika/kanshi-menu"
 license=('MIT')
-depends=('bash' 'kanshi' 'fzf' 'libnotify')
+depends=('bash' 'kanshi' 'fzf' 'libnotify' 'xdg-terminal-exec')
 optdepends=('waybar: for waybar integration')
 source=("kanshi-menu.sh"
         "waybar.include")

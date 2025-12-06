@@ -42,7 +42,7 @@ Add the content from `waybar.include` to your waybar config's modules section:
   "format": "󰍹  {}",
   "tooltip": false,
   "exec": "echo 'kanshi'",
-  "on-click": "kanshi-menu",
+  "on-click": "xdg-terminal-exec kanshi-menu",
   "return-type": "string"
 }
 ```

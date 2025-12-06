@@ -2,6 +2,6 @@
   "format": "󰍹  {}",
   "tooltip": false,
   "exec": "echo 'kanshi'",
-  "on-click": "/usr/bin/kanshi-menu",
+  "on-click": "xdg-terminal-exec kanshi-menu",
   "return-type": "string"
 }
