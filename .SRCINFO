@@ -1,7 +1,7 @@
 pkgbase = waybar-active-last
 	pkgdesc = Highly customizable Wayland bar for Sway and Wlroots based compositors (with active-last patch)
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Alexays/Waybar/
 	arch = x86_64
 	license = MIT
@@ -26,7 +26,7 @@ pkgbase = waybar-active-last
 	depends = jack2
 	depends = libxkbcommon
 	depends = upower
-	depends = libgps
+	depends = gpsd
 	depends = gtk-layer-shell
 	depends = wireplumber
 	depends = libsndio.so

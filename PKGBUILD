@@ -1,7 +1,7 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: rawalrauf <rawalbaloch78@gmail.com>
 pkgname=waybar-active-last
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors (with active-last patch)'
 arch=('x86_64')
 url='https://github.com/Alexays/Waybar/'
@@ -23,7 +23,7 @@ depends=(
   'jack2'
   'libxkbcommon'
   'upower'
-  'libgps'
+  'gpsd'
   'gtk-layer-shell'
   'wireplumber'
   'libsndio.so'
