@@ -1,4 +1,4 @@
-pkgname=note
+pkgname=clinotes
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A simple, terminal-based notes manager written in Bash."
@@ -12,5 +12,6 @@ sha256sums=('SKIP')
 
 package() {
   install -d "$pkgdir"/usr/bin
-  install -m 755 "$srcdir"/notes.sh "$pkgdir"/usr/bin/note
+  # Install the script as 'clinotes'
+  install -m 755 "$srcdir"/notes.sh "$pkgdir"/usr/bin/clinotes
 }
