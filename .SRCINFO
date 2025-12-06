@@ -1,7 +1,7 @@
 pkgbase = martypc
 	pkgdesc = An IBM PC/XT emulator written in Rust
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dbalsom/martypc
 	install = martypc.install
 	arch = x86_64

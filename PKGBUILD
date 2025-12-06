@@ -1,13 +1,13 @@
 # Maintainer: Lili1228 <aur at lili dot lgbt>
 pkgname=martypc
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An IBM PC/XT emulator written in Rust'
 arch=(x86_64 aarch64)
 depends=(alsa-lib bzip2 libudev.so # explicit
 gcc-libs glibc) # implicit
 # clang because gcc won't link ffi
-# rustup because it doesn't compile with nightly
+# rustup because it doesn't compile with stable (trait_alias)
 makedepends=(clang rustup)
 url="https://github.com/dbalsom/${pkgname}"
 license=(MIT)
@@ -19,7 +19,6 @@ sha512sums=('be12b839be504cd2dae7f0dbc35e57fc0e05badd2ec267c8ffc9c8d07aca5e656a6
 prepare() {
 	cd ${pkgname}-${pkgver}
 	export RUSTUP_TOOLCHAIN=nightly
-	export CC=clang
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -27,6 +26,7 @@ build() {
 	cd ${pkgname}-${pkgver}
 	export RUSTUP_TOOLCHAIN=nightly
 	export CARGO_TARGET_DIR=target
+	export CC=clang
 	cargo b --frozen --profile release-lto -F use_winit,use_wgpu,sound,opl,use_gilrs,use_serialport
 }
 
