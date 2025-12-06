@@ -1,7 +1,7 @@
 # Maintainer: Aaron Rubesh <contact@aaronrubesh.io>
 pkgname=antigravity-bin
 pkgver=1.11.14_1764918088
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Antigravity - Agentic Development Platform"
 arch=('x86_64')
 url="https://antigravity.google"
