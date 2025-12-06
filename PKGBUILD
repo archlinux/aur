@@ -3,9 +3,9 @@
 # For source-based build, use wayvid-git instead.
 
 pkgname=wayvid
-pkgver=0.4.4
+pkgver=0.5.0
 pkgrel=1
-pkgdesc="Dynamic video wallpaper engine for Wayland with Steam Workshop and Niri support (pre-compiled binary)"
+pkgdesc="Animated wallpaper manager for Wayland with GUI and Steam Workshop support (pre-compiled binary)"
 arch=('x86_64')
 url="https://github.com/YangYuS8/wayvid"
 license=('MIT')
@@ -22,7 +22,6 @@ optdepends=(
     'libva-mesa-driver: AMD GPU hardware acceleration'
     'nvidia-utils: NVIDIA GPU hardware acceleration'
     'steam: Steam Workshop integration for Wallpaper Engine imports'
-    'niri: Workspace-aware performance optimizations'
 )
 provides=('wayvid')
 conflicts=('wayvid-git')
@@ -32,15 +31,16 @@ source=(
     "$url/raw/refs/heads/main/configs/config.example.yaml"
     "$url/raw/refs/heads/main/README.md"
     "$url/raw/refs/heads/main/LICENSE-MIT"
+    "$url/raw/refs/heads/main/logo.svg"
+    "$url/raw/refs/heads/main/packaging/wayvid-gui.desktop"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 options=('!strip')
 
 package() {
-    # Install binaries
-    install -Dm755 "$srcdir/wayvid" "$pkgdir/usr/bin/wayvid"
-    install -Dm755 "$srcdir/wayvid-ctl" "$pkgdir/usr/bin/wayvid-ctl"
+    # Install binaries (v0.5: GUI-first, no standalone daemon)
     install -Dm755 "$srcdir/wayvid-gui" "$pkgdir/usr/bin/wayvid-gui"
+    install -Dm755 "$srcdir/wayvid-ctl" "$pkgdir/usr/bin/wayvid-ctl"
     
     # Install systemd service
     install -Dm644 "$srcdir/wayvid.service" "$pkgdir/usr/lib/systemd/user/wayvid.service"
@@ -50,6 +50,12 @@ package() {
     
     # Install documentation
     install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+    
+    # Install logo/icon
+    install -Dm644 "$srcdir/logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/wayvid.svg"
+    
+    # Install desktop file
+    install -Dm644 "$srcdir/wayvid-gui.desktop" "$pkgdir/usr/share/applications/wayvid.desktop"
     
     # Install license
     install -Dm644 "$srcdir/LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
