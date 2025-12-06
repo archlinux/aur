@@ -3,7 +3,7 @@
 pkgbase=sherpa-onnx
 pkgname=("${pkgbase}" "python-${pkgbase}")
 pkgver=1.12.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Speech-to-text, text-to-speech, speaker diarization, and VAD using next-gen Kaldi with onnxruntime without Internet connection."
 arch=("x86_64" "aarch64" "arm" "riscv64")
 url="https://github.com/k2-fsa/${pkgbase}"
