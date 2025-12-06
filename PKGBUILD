@@ -28,6 +28,7 @@ build() {
 check() {
   local pytest_options=(
     -vv
+    --disable-warnings
     -n auto
     --dist=loadscope
     # Need Gemini developer API or Vertex AI API
