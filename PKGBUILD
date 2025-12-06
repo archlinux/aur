@@ -3,12 +3,12 @@
 pkgname=hopper4
 _pkgname=hopperv4
 pkgver=5.19.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Reverse engineering tool that lets you disassemble, decompile and debug your applications"
 arch=(x86_64)
 url="https://www.hopperapp.com/"
 license=('Commercial')
-depends=('hicolor-icon-theme' 'libbsd' 'libdispatch' 'qt5-base')
+depends=('hicolor-icon-theme' 'libbsd' 'libdispatch' 'libxml2' 'qt5-base')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
