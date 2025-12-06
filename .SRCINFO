@@ -1,0 +1,21 @@
+pkgbase = gg-jujutsu
+	pkgdesc = A GUI for the version control system Jujutsu.
+	pkgver = 0.35.2
+	pkgrel = 1
+	url = https://github.com/gulbanana/gg
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	makedepends = npm
+	depends = gdk-pixbuf2
+	depends = glibc
+	depends = glib2
+	depends = gtk3
+	depends = pango
+	depends = webkit2gtk-4.1
+	source = gg::git+https://github.com/gulbanana/gg.git#tag=v0.35.2
+	b2sums = bcae3d9698ed21a612d6a02a3daedeb639e12a1fe8cd09cb841e2310560847a4d6936755a6ddbcf8a706be4afe772a4aa9fc1567e52d5768e0a9bf2050d9c35f
+
+pkgname = gg-jujutsu
