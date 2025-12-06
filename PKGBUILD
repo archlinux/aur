@@ -2,7 +2,7 @@
 
 _pyname=cxxheaderparser
 pkgname=python-${_pyname}
-pkgver=1.5.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Parse C++ header files and generate a data structure representing the class"
 arch=('any')
@@ -16,8 +16,8 @@ makedepends=(
   'python-wheel'
 )
 source=("$pkgname-$pkgver::git+$url#tag=$pkgver")
-sha256sums=('280426e2877bbc231a22454f4140725fe55954ec5d653f9f4c2753cdce611e1b')
-b2sums=('e190fe6fcd6030744b100e0810424d1965bb99cb017e19a4d357f09d920e6f1e4f8342963cd5fafcd51326aed686bf3e67e745bd1602ddba6b64c6d3a7540ad3')
+sha256sums=('3da102ae0371fbf6f513e8e81a57de2156ca529d15efbc297637fe5e562dc007')
+b2sums=('025d7c6c20ef9966ae0bbff0872e6455564975f04d9a236a3fe2b2a02cd44dc58aab4c7d038d4c0e48520dd2a632313db7f9c5228208925565b24efa20c2a0c6')
 
 build() {
   cd ${pkgname}-${pkgver}
