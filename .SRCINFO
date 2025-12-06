@@ -1,5 +1,5 @@
 pkgbase = githeat
-	pkgdesc = CLI-driven Terminal User Interface (TUI) that enables you to assign the numerous lines emitted by your scripts to visual, collapsible blocks called steps
+	pkgdesc = Interactive heatmap for your git repos
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/AmmsA/Githeat

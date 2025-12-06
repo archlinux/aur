@@ -9,7 +9,7 @@ _pypi_package='githeat'
 pkgname="${_pypi_package}"
 pkgver="${_upstreamver}"
 pkgrel=1
-pkgdesc="CLI-driven Terminal User Interface (TUI) that enables you to assign the numerous lines emitted by your scripts to visual, collapsible blocks called steps"
+pkgdesc="Interactive heatmap for your git repos"
 
 license=('MIT')
 arch=('any')
