@@ -13,7 +13,9 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/hei-cursors"
-    git describe --tags --long --always | sed 's/[^0-9A-Za-z.]/./g'
+    local commits=$(git rev-list --count HEAD)
+    local hash=$(git rev-parse --short HEAD)
+    echo "1.0.r${commits}.g${hash}"
 }
 
 package() {
