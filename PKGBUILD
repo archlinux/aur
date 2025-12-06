@@ -12,5 +12,5 @@ sha256sums=('SKIP')
 
 package() {
   install -d "$pkgdir"/usr/bin
-  install -m 755 "$srcdir"/notes.sh "$pkgdir"/usr/bin/notes
+  install -m 755 "$srcdir"/notes.sh "$pkgdir"/usr/bin/note
 }
