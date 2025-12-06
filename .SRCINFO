@@ -1,0 +1,17 @@
+pkgbase = focus-stack-git
+	pkgdesc = Fast and easy focus stacking
+	pkgver = 1.3.r33.gd8532c8
+	pkgrel = 1
+	url = https://github.com/PetteriAimonen/focus-stack
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = sed
+	makedepends = gcc
+	depends = opencv
+	provides = focust-stack
+	conflicts = focust-stack
+	source = git+https://github.com/PetteriAimonen/focus-stack.git
+	sha256sums = SKIP
+
+pkgname = focus-stack-git
