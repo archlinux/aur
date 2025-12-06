@@ -1,13 +1,13 @@
 pkgbase = supportboi-git
 	pkgdesc = A support ticket Discord bot with automated interviews and rendered HTML transcripts. Dev build.
-	pkgver = 4.0.1.5.gitfaeee02
+	pkgver = 4.0.1.7.gitc9de729
 	pkgrel = 1
 	url = https://github.com/KarlOfDuty/SupportBoi
 	install = supportboi.install
 	arch = x86_64
 	license = GPL-3.0-or-later
-	makedepends = dotnet-sdk-9.0
-	depends = dotnet-runtime-9.0
+	makedepends = dotnet-sdk>=9
+	depends = dotnet-runtime>=9
 	depends = mysql
 	conflicts = supportboi
 	options = !debug
