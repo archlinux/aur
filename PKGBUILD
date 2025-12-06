@@ -1,3 +1,5 @@
+# Maintainer: Ryan Yuan <ryanyuanzhehan@gmail.com>
+# Contributor: 漓翎_cub
 pkgname=hei-cursors-git
 pkgver=1.0.r3.g2b59d1e
 pkgrel=1
