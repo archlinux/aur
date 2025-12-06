@@ -1,5 +1,5 @@
 pkgbase = python-livekit-agents
-	pkgver = 1.3.5
+	pkgver = 1.3.6
 	pkgrel = 1
 	arch = x86_64
 	arch = aarch64
@@ -19,9 +19,9 @@ pkgbase = python-livekit-agents
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://github.com/livekit/agents/archive/refs/tags/livekit-agents@1.3.5.tar.gz
-	source = https://github.com/livekit/agents/raw/refs/tags/livekit-agents@1.3.5/livekit-plugins/livekit-plugins-silero/livekit/plugins/silero/resources/silero_vad.onnx
-	sha256sums = 3d7962410ce7d8b94b734dacd476e37be7a6583a29fbe1b0b32f70c729286ff3
+	source = https://github.com/livekit/agents/archive/refs/tags/livekit-agents@1.3.6.tar.gz
+	source = https://github.com/livekit/agents/raw/refs/tags/livekit-agents@1.3.6/livekit-plugins/livekit-plugins-silero/livekit/plugins/silero/resources/silero_vad.onnx
+	sha256sums = b7124eb3fe90078b26710e17dc25af49fdefc5d9cae09732e01add38091d2305
 	sha256sums = 597d30b3ec076608d059477bb14cfeffdf951bf5cae370d38f65d33bbfe82004
 
 pkgname = python-livekit-agents
@@ -99,6 +99,7 @@ pkgname = python-livekit-agents
 	optdepends = python-livekit-plugins-turn-detector: turn-detector
 	optdepends = python-livekit-plugins-ultravox: ultravox
 	optdepends = python-livekit-plugins-upliftai: upliftai
+	optdepends = python-livekit-plugins-gradium: gradium
 
 pkgname = python-livekit-plugins-anam
 	pkgdesc = Agent Framework plugin for anam.
@@ -131,7 +132,7 @@ pkgname = python-livekit-plugins-aws
 	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-aws
 	depends = python-livekit-agents
 	depends = python-aioboto3
-	depends = python-amazon-transcribe
+	depends = python-aws_sdk_transcribe_streaming
 	optdepends = python-aws-sdk-bedrock-runtime: realtime
 	optdepends = python-aws-sdk-signers: realtime
 	optdepends = python-boto3: realtime
@@ -232,6 +233,14 @@ pkgname = python-livekit-plugins-google
 	depends = python-google-cloud-texttospeech
 	depends = python-google-genai
 	depends = python-livekit-agents
+	optdepends = 
+
+pkgname = python-livekit-plugins-gradium
+	pkgdesc = Agent Framework plugin for Gradium.
+	url = https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-gradium
+	depends = python-livekit-agents
+	depends = python-aiohttp
+	depends = python-livekit
 	optdepends = 
 
 pkgname = python-livekit-plugins-groq

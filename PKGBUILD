@@ -2,10 +2,10 @@
 
 _name0=livekit-agents
 _name1=livekit-plugins
-_plugins=(anam anthropic assemblyai avatartalk aws azure baseten bey bithuman cartesia clova deepgram elevenlabs fal fireworksai fishaudio gladia google groq hedra hume inworld langchain lmnt minimal minimax mistralai neuphonic nltk nvidia openai resemble rime rtzr sarvam silero simli smallestai soniox speechify speechmatics spitch tavus turn-detector ultravox upliftai)
+_plugins=(anam anthropic assemblyai avatartalk aws azure baseten bey bithuman cartesia clova deepgram elevenlabs fal fireworksai fishaudio gladia google gradium groq hedra hume inworld langchain lmnt minimal minimax mistralai neuphonic nltk nvidia openai resemble rime rtzr sarvam silero simli smallestai soniox speechify speechmatics spitch tavus turn-detector ultravox upliftai)
 pkgbase=python-$_name0
 pkgname=(python-$_name0 ${_plugins[@]/#/python-$_name1-})
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 _plugins_pkgdesc=('Agent Framework plugin for anam.'
                   'Agent Framework plugin for services from Anthropic.'
@@ -25,6 +25,7 @@ _plugins_pkgdesc=('Agent Framework plugin for anam.'
                   "Agent Framework plugin for voice synthesis with Fish Audio's API."
                   "Agent Framework plugin for services using Gladia's API."
                   'Agent Framework plugin for services from Google Cloud.'
+                  'Agent Framework plugin for Gradium.'
                   'Groq inference plugin for LiveKit Agents.'
                   'Agent Framework plugin for Hedra Avatar.'
                   'Hume TTS plugin for LiveKit agents.'
@@ -57,7 +58,7 @@ _plugins_depends=("'python-livekit-agents'"
                   "'python-livekit-agents' 'python-anthropic' 'python-httpx'"
                   "'python-livekit-agents'"
                   "'python-livekit-agents'"
-                  "'python-livekit-agents' 'python-aioboto3' 'python-amazon-transcribe'"
+                  "'python-livekit-agents' 'python-aioboto3' 'python-aws_sdk_transcribe_streaming'"
                   "'python-livekit-agents' 'python-azure-cognitiveservices-speech'"
                   "'python-livekit-agents' 'python-aiohttp' 'python-livekit'"
                   "'python-livekit-agents'"
@@ -71,6 +72,7 @@ _plugins_depends=("'python-livekit-agents'"
                   "'python-livekit-agents' 'python-av' 'python-numpy' 'python-fish-audio-sdk'"
                   "'python-livekit-agents' 'python-av' 'python-numpy' 'python-aiohttp'"
                   "'python-google-auth' 'python-google-cloud-speech' 'python-google-cloud-texttospeech' 'python-google-genai' 'python-livekit-agents'"
+                  "'python-livekit-agents' 'python-aiohttp' 'python-livekit'"
                   "'python-livekit-agents' 'python-av' 'python-numpy' 'python-livekit-plugins-openai' 'python-aiohttp' 'python-livekit'"
                   "'python-livekit-agents'"
                   "'python-aiohttp' 'python-livekit-agents'"
@@ -129,6 +131,7 @@ _plugins__optdepends=(""
                       ""
                       ""
                       ""
+                      ""
                       "'python-google-auth: vertex'"
                       ""
                       ""
@@ -152,7 +155,7 @@ makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel'
 checkdepends=('python-dotenv' 'python-pytest' 'python-pytest-asyncio' 'python-jiwer' 'python-scipy' 'python-tiktoken' 'python-nltk' 'nltk-data' 'python-docstring-parser' 'python-speechmatics-rt')
 source=("$_repo/archive/refs/tags/$_name0@$pkgver.tar.gz"
         "$_repo/raw/refs/tags/$_name0@$pkgver/$_name1/$_name1-silero/${_name1//-//}/silero/resources/silero_vad.onnx")
-sha256sums=('3d7962410ce7d8b94b734dacd476e37be7a6583a29fbe1b0b32f70c729286ff3'
+sha256sums=('b7124eb3fe90078b26710e17dc25af49fdefc5d9cae09732e01add38091d2305'
             '597d30b3ec076608d059477bb14cfeffdf951bf5cae370d38f65d33bbfe82004')
 
 prepare(){
@@ -176,6 +179,7 @@ build() {
 check() {
   local pytest_options=(
     -vv
+    --disable-warnings
     # Import problem need to be fixed by developers
     --ignore tests/test_llm.py
     --ignore tests/test_vad.py
@@ -255,7 +259,8 @@ package_python-livekit-agents() {
               'python-livekit-plugins-tavus: tavus'
               'python-livekit-plugins-turn-detector: turn-detector'
               'python-livekit-plugins-ultravox: ultravox'
-              'python-livekit-plugins-upliftai: upliftai')
+              'python-livekit-plugins-upliftai: upliftai'
+              'python-livekit-plugins-gradium: gradium')
   cd "$srcdir"/${_name0//livekit-/}-$_name0-$pkgver
   python -m installer --destdir="$pkgdir" $_name0/dist/*.whl
 }
