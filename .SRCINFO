@@ -1,0 +1,19 @@
+pkgbase = querycat-bin
+	pkgdesc = Use SQL to query different data sources like logs, JSON, CSV, XML, etc.
+	pkgver = 0.17.1
+	pkgrel = 1
+	url = https://github.com/krasninja/querycat
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = qcat
+	conflicts = querycat
+	source = README-0.17.1.md::https://raw.githubusercontent.com/krasninja/querycat/v0.17.1/README.md
+	sha256sums = bf85525dfeee9c8649ea1bc9eaa20ad46cda01d9239003de02e1cc3ec41b9f12
+	source_x86_64 = querycat-x86_64-0.17.1.tgz::https://github.com/krasninja/querycat/releases/download/v0.17.1/qcat-0.17.1-linux-x64.tar.gz
+	sha256sums_x86_64 = 70221c5352e99eb5a3015da491345d5052a8ce935ab72ee306daa832ea2686c0
+	source_aarch64 = querycat-aarch64-0.17.1.tgz::https://github.com/krasninja/querycat/releases/download/v0.17.1/qcat-0.17.1-linux-arm64.tar.gz
+	sha256sums_aarch64 = 427f9aa3d192d90f6b7b15259788933613d596090184d24885f77f1ba7b428d8
+
+pkgname = querycat-bin
