@@ -11,6 +11,6 @@ pkgbase = xpadneo-dkms
 	source = xpadneo-v0.9.8.tar.gz::https://github.com/atar-axis/xpadneo/archive/v0.9.8.tar.gz
 	source = 0001-drop-etc-files.patch
 	b2sums = 1cddb91cdd4b055fda5c09112af5441da621c07b14f61a0094cbfffa9a7b746491bff6ea0858a28b1e91a204af2822d005a28ed3b1354b6a367a3eee0fc7250c
-	b2sums = 72d59fc99c8fdd66b3b6bfa45a302114e54e7d1621addde8086723a7c18a6ecc080da7497ac7d43de19c460424a05bba35c51ea0d92cf86498fe9223aceba453
+	b2sums = fd04ac0f92d1ae0568462636390aadd6c4ad54dee01ea81d89e63ab486bb91ce56d7e90ca19952c037f27d9ef01ebd04f02db373096792134518879633014224
 
 pkgname = xpadneo-dkms

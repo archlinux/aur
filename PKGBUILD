@@ -17,31 +17,34 @@ depends=('dkms' 'bluez' 'bluez-utils')
 source=("xpadneo-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         '0001-drop-etc-files.patch')
 b2sums=('1cddb91cdd4b055fda5c09112af5441da621c07b14f61a0094cbfffa9a7b746491bff6ea0858a28b1e91a204af2822d005a28ed3b1354b6a367a3eee0fc7250c'
-        '72d59fc99c8fdd66b3b6bfa45a302114e54e7d1621addde8086723a7c18a6ecc080da7497ac7d43de19c460424a05bba35c51ea0d92cf86498fe9223aceba453')
+        'fd04ac0f92d1ae0568462636390aadd6c4ad54dee01ea81d89e63ab486bb91ce56d7e90ca19952c037f27d9ef01ebd04f02db373096792134518879633014224')
 
 prepare() {
-  cd "xpadneo-${pkgver}/hid-xpadneo"
+  cd "xpadneo-${pkgver}"
 
   # Upstream uses dkms.post_install to create modprobe and udev files in
   # /etc. In Arch, it makes more sense to create these files in /usr/lib
   # and let pacman take care of them. Won't be needed on v0.10+
-  patch -i "${srcdir}/0001-drop-etc-files.patch"
+  patch -Np1 -i "${srcdir}/0001-drop-etc-files.patch"
 
   # Set the current version in DKMS config file.
-  sed "s/@DO_NOT_CHANGE@/v${pkgver}/" dkms.conf.in > dkms.conf
+  sed "s/@DO_NOT_CHANGE@/v${pkgver}/" hid-xpadneo/dkms.conf.in > hid-xpadneo/dkms.conf
 }
 
 package() {
-  cd "xpadneo-${pkgver}/hid-xpadneo"
+  cd "xpadneo-${pkgver}"
 
-  # Module source
-  install -Dm0644 -t "${pkgdir}/usr/src/hid-xpadneo-v${pkgver}/src" src/*
+  # Runtime requirements
+  install -Dm0644 -t "${pkgdir}/usr/lib/modprobe.d" hid-xpadneo/etc-modprobe.d/*
+  install -Dm0644 -t "${pkgdir}/usr/lib/udev/rules.d" hid-xpadneo/etc-udev-rules.d/*
 
   # DKMS files
-  install -Dm0644 -t "${pkgdir}/usr/src/hid-xpadneo-v${pkgver}" Makefile dkms.conf
-  install -Dm0755 -t "${pkgdir}/usr/src/hid-xpadneo-v${pkgver}" dkms.post_install dkms.post_remove
+  TARGET_DIR="${pkgdir}/usr/src/hid-xpadneo-v${pkgver}"
+  install -Dm0644 -t "${TARGET_DIR}" hid-xpadneo/{Makefile,dkms.conf}
+  install -Dm0755 -t "${TARGET_DIR}" hid-xpadneo/dkms.post_{install,remove}
 
-  # Module dependencies
-  install -Dm0644 -t "${pkgdir}/usr/lib/modprobe.d" etc-modprobe.d/*
-  install -Dm0644 -t "${pkgdir}/usr/lib/udev/rules.d" etc-udev-rules.d/*
+  # Module source
+  cd hid-xpadneo
+  find src/ -type d -exec install -d "${TARGET_DIR}/{}" \;
+  find src/ -type f -not -name '.*' -exec install -T -m0644 '{}' "${TARGET_DIR}/{}" \;
 }
