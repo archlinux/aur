@@ -1,6 +1,6 @@
 pkgbase = amazon-corretto-25-bin
   pkgdesc = No-cost, multiplatform, production-ready distribution of OpenJDK
-  pkgver = 25.0.1.8.1
+  pkgver = 25.0.1.9.1
   pkgrel = 1
   url = https://aws.amazon.com/corretto/
   arch = x86_64
