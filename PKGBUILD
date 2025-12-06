@@ -1,6 +1,6 @@
 # Maintainer: Zynix <crossmacro@zynix.net>
 pkgname=crossmacro
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Mouse Macro Automation Tool for Linux Wayland"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0')
 depends=('zlib' 'openssl' 'icu' 'krb5' 'fontconfig' 'libx11' 'libxcursor' 'libxrandr')
 makedepends=('dotnet-sdk>=10.0' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v${pkgver}.tar.gz")
-sha256sums=('e8e043684c3c5beab6cf41a9c02ca50318665a3eb78efa5c8954b0e8e6892315')
+sha256sums=('c58823564cb9b8c865e7032b160f36f97c5a575a6c37f6cae7f37394e025efde')
 options=('!strip')
 
 build() {
