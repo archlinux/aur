@@ -2,10 +2,10 @@
 
 _pkgname="redot-mono"
 pkgname="$_pkgname-bin"
-_pkgver=4.4-rc.1
-pkgver=4.4_rc1
+_pkgver=4.4-stable
+pkgver=4.4
 _pkgfmt=_linux_mono_
-pkgrel=2
+pkgrel=1
 pkgdesc="A multi-platform 2D and 3D game engine"
 url="https://www.redotengine.org/"
 license=('MIT')
@@ -63,10 +63,10 @@ source_i686=("https://github.com/Redot-Engine/redot-engine/releases/download/red
 source_armv7h=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${_pkgver}/Redot_v${_pkgver}${_pkgfmt}${_arch}.zip")
 source_aarch64=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-${_pkgver}/Redot_v${_pkgver}${_pkgfmt}${_arch}.zip")
 
-sha256sums_x86_64=('a4e8a7dd3e157c0d24f0a9b5ca7b993e241bbe62417f415631fab4fb914ada51')
-sha256sums_i686=('3910214ab66d4b0e516149c25ef7a97e7f2a062eafe48bed8141ef4eb2b1544f')
-sha256sums_armv7h=('7888afe4a56a0f6e19f5ad6a4a7d1da4c29dea4b3d2e9fea78b45576b6381aed')
-sha256sums_aarch64=('affd1732c78720313bd332303dfa49ec792616c3a087ca135d281a3a297e090b')
+sha256sums_x86_64=('d79eb93fe24f800d04b15fb93aabcec9a500e6961f6af0becb72d745580b42e2')
+sha256sums_i686=('0c0196e1b340f1df6743768a88915a5364db515913a0a7f076f02f4f9ca819d0')
+sha256sums_armv7h=('24ed7490848862d2f6fd734a5c8f5b6e66841dfb2bb1464c4e41ddfc64299a5a')
+sha256sums_aarch64=('b5cd27ed8cf2a677566c38dffcabac586dd9f3de9a289ce88f136a6f282d4935')
 
 package() {
   mkdir -p ${pkgdir}/opt/${_pkgname}
@@ -74,7 +74,7 @@ package() {
 
   cd ${srcdir} || exit
 
-  cp -r $(pwd)/out/linuxbsd/${_arch2}/tools-mono/* ${pkgdir}/opt/${_pkgname}/
+  cp -r $(pwd)/* ${pkgdir}/opt/${_pkgname}/
 
   # move into directory
   cd ${pkgdir}/opt/${_pkgname}
