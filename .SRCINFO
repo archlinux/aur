@@ -24,7 +24,7 @@ pkgbase = nautilus-plus
 	provides = nautilus
 	conflicts = nautilus
 	replaces = nautilus
-	source = git+https://github.com/johnzfitch/nautilus-plus.git#tag=v${pkgver}
+	source = git+https://github.com/johnzfitch/nautilus-plus.git#tag=v50.8
 	sha256sums = SKIP
 
 pkgname = nautilus-plus

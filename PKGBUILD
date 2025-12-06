@@ -13,16 +13,16 @@ provides=('nautilus')
 conflicts=('nautilus')
 replaces=('nautilus')
 install=nautilus-plus.install
-source=("git+https://github.com/johnzfitch/nautilus-plus.git#tag=v\${pkgver}")
+source=("git+https://github.com/johnzfitch/nautilus-plus.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
-    cd "\$srcdir/nautilus-plus"
+    cd "$srcdir/nautilus-plus"
     arch-meson build -D docs=false -D tests=none -D packagekit=false -D extensions=false
     meson compile -C build
 }
 
 package() {
-    cd "\$srcdir/nautilus-plus"
-    meson install -C build --destdir "\$pkgdir"
+    cd "$srcdir/nautilus-plus"
+    meson install -C build --destdir "$pkgdir"
 }
