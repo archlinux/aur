@@ -1,18 +1,18 @@
 pkgbase = libdng-git
-        pkgdesc = Interface library between libtiff and the world to make sure the output is valid DNG
-        pkgver = r43.9c7b18e
-        pkgrel = 1
-        url = https://gitlab.com/megapixels-org/libdng
-        arch = x86_64
-        arch = aarch64
-        license = MIT
-        makedepends = meson
-        makedepends = libtiff
-        makedepends = scdoc
-        provides = libdng
-        conflicts = libdng
-        replaces = libdng
-        source = libdng-git::git+https://gitlab.com/megapixels-org/libdng.git#branch=master
-        md5sums = SKIP
+	pkgdesc = Interface library between libtiff and the world to make sure the output is valid DNG
+	pkgver = r59.438df53
+	pkgrel = 1
+	url = https://gitlab.com/megapixels-org/libdng
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = meson
+	makedepends = libtiff
+	makedepends = scdoc
+	provides = libdng
+	conflicts = libdng
+	replaces = libdng
+	source = libdng-git::git+https://gitlab.com/megapixels-org/libdng.git#branch=master
+	md5sums = SKIP
 
 pkgname = libdng-git
