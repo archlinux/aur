@@ -21,7 +21,6 @@ makedepends=(
   'desktop-file-utils'
   'git'
   'qt6-tools'
-  'vulkan-headers'
 )
 source=("git+https://github.com/saturneric/GpgFrontend#tag=v$pkgver"
         'git+https://github.com/qt/qttranslations.git'

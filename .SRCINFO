@@ -9,7 +9,6 @@ pkgbase = gpgfrontend
 	makedepends = desktop-file-utils
 	makedepends = git
 	makedepends = qt6-tools
-	makedepends = vulkan-headers
 	depends = gpgme
 	depends = gtest
 	depends = hicolor-icon-theme
