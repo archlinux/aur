@@ -1,7 +1,7 @@
 # Maintainer: Remenod remenod@gmail.com
 pkgname=path-utils
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="useful .bashrc PATH generation tools"
 arch=('x86_64')
 url="https://github.com/Remenod/path-utils"
