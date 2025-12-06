@@ -1,6 +1,6 @@
 pkgbase = optiscaler-universal
 	pkgdesc = Intelligent OptiScaler configuration tool for Linux gaming - automatically optimizes GPU settings
-	pkgver = 0.1.0
+	pkgver = 0.1.1_alpha
 	pkgrel = 1
 	url = https://github.com/ind4skylivey/0ptiscaler4linux
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = optiscaler-universal
 	optdepends = mesa-utils: for Mesa/AMD/Intel GPU detection
 	optdepends = git-lfs: for downloading OptiScaler binaries
 	optdepends = python: for advanced YAML parsing
-	source = optiscaler-universal-0.1.0.tar.gz::https://github.com/ind4skylivey/0ptiscaler4linux/archive/v0.1.0.tar.gz
-	sha256sums = fe21d6fef1aeef7f8060e6cd1b8faafa0867d52aad1f5de7e202adf921c388e5
+	source = optiscaler-universal-0.1.1-alpha.tar.gz::https://github.com/ind4skylivey/0ptiscaler4linux/archive/v0.1.1-alpha.tar.gz
+	sha256sums = 058175fc8e6f3be7a86c3b82faae3f110eba8ac8183d171ed098e9701b3dd580
 
 pkgname = optiscaler-universal
