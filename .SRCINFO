@@ -1,21 +1,23 @@
 pkgbase = d2rloader-git
 	pkgdesc = Cross-platform Diablo 2 Resurrected Loader written in Python/Qt
-	pkgver = v1.3.2.r0.gaee4c8b
+	pkgver = v1.3.6.r0.gab6dca8
 	pkgrel = 1
 	url = https://github.com/sh4nks/d2rloader
 	arch = any
 	license = MIT
 	makedepends = python-hatch
+	makedepends = python-installer
 	depends = git
 	depends = pyside6
 	depends = python-psutil
 	depends = python-pydantic
 	depends = python-unidecode
 	depends = python-loguru
+	depends = python-pluggy
 	depends = lutris
 	depends = wmctrl
 	optdepends = gamemode: use gamemode to run D2R instances
-	provides = d2rloader=v1.3.2.r0.gaee4c8b
+	provides = d2rloader=v1.3.6.r0.gab6dca8
 	conflicts = d2rloader
 	source = d2rloader::git+https://github.com/sh4nks/d2rloader.git
 	sha256sums = SKIP
