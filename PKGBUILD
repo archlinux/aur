@@ -2,7 +2,7 @@
 pkgname=python-adafruit-platformdetect
 _pypi_foldername=Adafruit_PlatformDetect
 _pypi_pkgname=adafruit_platformdetect
-pkgver=3.84.1
+pkgver=3.85.0
 pkgrel=1
 pkgdesc="Platform detection for use by libraries like Adafruit-Blinka"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=(
 'python-setuptools-scm'
 )
 depends=('python')
-sha256sums=('2ed292fd292e3487db53c261e2879ae1831c607a8eb947beea20df6b5d24e42b')
+sha256sums=('58350aa93dd166c4b67ba3c947b07a2d7320d14e65b92e5873fdf64d03e3f93d')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
