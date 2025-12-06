@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=statmake
-pkgver=1.1.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Dump, merge and compile Visual TrueType data in UFO3 with FontTools'
 arch=(any)
@@ -18,7 +18,7 @@ makedepends=(python-{build,installer,wheel}
              python-hatch-vcs)
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('8818fc182c742adedeb8375dc000745854323aa6e8a6aec104be951b3c721817')
+sha256sums=('591b2218256ca12b06e4168392cd01531b8952bf444bcbd46a97302968856ca9')
 
 build() {
 	cd "$_archive"
