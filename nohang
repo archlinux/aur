@@ -1,0 +1,11 @@
+#!/sbin/openrc-run
+
+description="Starts the nohang low memory handler"
+command="/usr/sbin/nohang"
+command_args="--config /etc/nohang/nohang-desktop.conf --monitor"
+supervisor=supervise-daemon
+
+depend() {
+	need localmount
+	use logger
+}
