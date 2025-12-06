@@ -1,0 +1,5 @@
+[alevt]
+source = "gitlab"
+gitlab = "alevt/alevt"
+use_max_tag = true
+prefix = "v"

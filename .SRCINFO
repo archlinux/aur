@@ -1,18 +1,15 @@
 pkgbase = alevt
-	pkgdesc = A teletext/videotext decoder and browser for the vbi device and X11
-	pkgver = 1.6.3
-	pkgrel = 4
-	url = http://www.goron.de/~froese
+	pkgdesc = X11 Teletext/Videotext browser
+	pkgver = 1.8.3
+	pkgrel = 1
+	url = https://gitlab.com/alevt/alevt
 	install = alevt.install
-	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
+	depends = glibc
 	depends = libpng
 	depends = libx11
-	source = http://fossies.org/linux/misc/old/alevt-1.6.3.tar.gz
-	source = alevt.desktop
-	md5sums = 9d3878030ca25fe76c5d4f288f7b4d0d
-	md5sums = 10dbfcafa9ff0b5f9ce17ab98e7eadec
+	source = https://gitlab.com/alevt/alevt/-/archive/v1.8.3/alevt-v1.8.3.tar.gz
+	sha256sums = 2772ac34c2a88bd4432198926f52b2f690d259ddf46359c6a85189e90bc26e40
 
 pkgname = alevt
-
