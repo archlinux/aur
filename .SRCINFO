@@ -1,7 +1,7 @@
 pkgbase = gmsh
 	pkgdesc = An automatic 3D finite element mesh generator with pre and post-processing facilities
 	pkgver = 4.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gmsh.info
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -11,7 +11,7 @@ pkgbase = gmsh
 	makedepends = ann
 	makedepends = cairo
 	makedepends = cgns
-	makedepends = fltk
+	makedepends = fltk1.3
 	makedepends = glu
 	makedepends = lapack
 	makedepends = med-openmpi
