@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=spotatui
-pkgver=0.27.15
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="A Spotify client for the terminal written in Rust, powered by Ratatui"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP') # Run 'updpkgsums' to update this
+sha256sums=('a75c2b6b25fc4bdefed498f27097b2a3a89f5cfc83c197abf067ba6f44c40b22')
 
 prepare() {
   cd "$pkgname-$pkgver"
