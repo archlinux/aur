@@ -16,5 +16,5 @@ prepare() {
 }
 
 package() {
-    cp -r "$srcdir/usr" "$pkgdir/"
+    cp -r opt usr "$pkgdir/"
 }
