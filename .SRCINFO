@@ -1,7 +1,7 @@
 pkgbase = python-tensorrt-llm
 	pkgdesc = TensorRT LLM provides users with an easy-to-use Python API to define Large Language Models (LLMs) and supports state-of-the-art optimizations to perform inference efficiently on NVIDIA GPUs
 	pkgver = 1.2.0rc4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NVIDIA/TensorRT-LLM
 	arch = x86_64
 	license = Apache-2.0
@@ -65,6 +65,7 @@ pkgbase = python-tensorrt-llm
 	depends = cudnn
 	depends = tensorrt
 	depends = nccl
+	depends = rdma-core
 	optdepends = python-evaluate: for evaluation metrics
 	optdepends = python-blobfile: for blob file operations
 	optdepends = triton-inference-server: for Triton deployment
