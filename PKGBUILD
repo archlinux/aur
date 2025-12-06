@@ -1,6 +1,6 @@
 # Maintainer: LargeModGames <LargeModGames@gmail.com>
 pkgname=spotatui
-pkgver=0.28.2
+pkgver=0.28.5
 pkgrel=1
 pkgdesc="A Spotify client for the terminal written in Rust, powered by Ratatui"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('openssl')
 makedepends=('cargo' 'clang')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2bfbeb95cbfda2afcd122858c35f7808041e4df4454ebe868166d50d6869f9c9')
+sha256sums=('69562968260c96150d6620aae1c0072471cfadd44c84973f7982886b22ed8823')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -21,13 +21,14 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   # Override RUSTFLAGS to avoid LLD linker issues with ring crate
-  export RUSTFLAGS=""
+  export RUSTFLAGS="-C linker-features=-lld"
   cargo build --frozen --release --all-features
 }
 
 check() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
+  export RUSTFLAGS="-C linker-features=-lld"
   cargo test --frozen --all-features
 }
 
