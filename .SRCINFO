@@ -1,0 +1,12 @@
+pkgbase = onemessage-bin
+	pkgdesc = OneMessage 中移集成
+	pkgver = 2.35.0
+	pkgrel = 1
+	url = https://office.hecmcc.com:9003/cmict/file/resource/download/onemsgdownload
+	arch = x86_64
+	license = unknown
+	depends = gtk3
+	source = https://office.hecmcc.com:9003/cmict/file/resource/download/onemsgdownload/OneMessage2.0.deb
+	sha256sums = 0d95ef00e4bce48e3774a2e086fee227cf5128c633432e973f01dc014429c124
+
+pkgname = onemessage-bin
