@@ -18,11 +18,11 @@ package() {
     cd "$srcdir"
     
     if [ -f "data.tar.xz" ]; then
-        tar -xf data.tar.xz
+        tar -xf data.tar.xz --no-same-owner
     elif [ -f "data.tar.zst" ]; then
-        tar -xf data.tar.zst
+        tar -xf data.tar.zst --no-same-owner
     elif [ -f "data.tar.gz" ]; then
-        tar -xf data.tar.gz
+        tar -xf data.tar.gz --no-same-owner
     else
         msg "Error: Could not find data.tar.* inside deb archive."
         return 1
