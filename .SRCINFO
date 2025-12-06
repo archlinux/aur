@@ -1,8 +1,8 @@
 pkgbase = nautilus-plus
 	pkgdesc = Enhanced GNOME file manager with fast search, animated thumbnails, and more
-	pkgver = 50.7
+	pkgver = 50.8
 	pkgrel = 1
-	url = https://github.com/johnzfitch/nautilus-fork
+	url = https://github.com/johnzfitch/nautilus-plus
 	install = nautilus-plus.install
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -24,7 +24,7 @@ pkgbase = nautilus-plus
 	provides = nautilus
 	conflicts = nautilus
 	replaces = nautilus
-	source = git+https://github.com/johnzfitch/nautilus-fork.git#tag=v${pkgver}
+	source = git+https://github.com/johnzfitch/nautilus-plus.git#tag=v${pkgver}
 	sha256sums = SKIP
 
 pkgname = nautilus-plus
