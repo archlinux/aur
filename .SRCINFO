@@ -1,6 +1,6 @@
 pkgbase = aichat-git
 	pkgdesc = Using ChatGPT/GPT-3.5/GPT-4 in the terminal
-	pkgver = 0.22.0.r37.gb82eb89
+	pkgver = 0.30.0.r25.g4ddc28d
 	pkgrel = 1
 	url = https://github.com/sigoden/aichat
 	arch = i686

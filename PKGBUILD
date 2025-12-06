@@ -1,6 +1,6 @@
 pkgname=aichat-git
 _pkgname=aichat
-pkgver=0.22.0.r37.gb82eb89
+pkgver=0.30.0.r25.g4ddc28d
 pkgrel=1
 pkgdesc="Using ChatGPT/GPT-3.5/GPT-4 in the terminal"
 arch=('i686' 'x86_64')
