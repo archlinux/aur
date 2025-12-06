@@ -23,7 +23,7 @@ package() {
     
     # Install theme files
     install -dm755 "${pkgdir}/usr/share/sddm/themes/obscure"
-    cp -r Main.qml theme.conf metadata.desktop assets "${pkgdir}/usr/share/sddm/themes/obscure/"
+    cp -r Main.qml theme.conf metadata.desktop README.md assets "${pkgdir}/usr/share/sddm/themes/obscure/"
     
     # Install license
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
