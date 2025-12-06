@@ -30,11 +30,11 @@ package() {
     # Install application to /usr/lib/slskd (same location as original slskd)
     install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
     
-    # Copy all files from tarball except our packaging files
+    # Copy all files from zip except our packaging files
     for f in "${srcdir}"/*; do
         fname=$(basename "$f")
         case "$fname" in
-            slskd.service|slskd.yml|slskd.sysusers|*.tar.gz)
+            slskd.service|slskd.yml|slskd.sysusers|*.zip)
                 continue
                 ;;
             *)
