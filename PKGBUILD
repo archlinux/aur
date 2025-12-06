@@ -5,7 +5,7 @@
 # Contributor: Daniel Haß <aur@hass.onl>
 
 pkgname=standardnotes-desktop
-pkgver=3.201.3
+pkgver=3.201.4
 pkgrel=1
 _electronversion=35
 pkgdesc="Think fearlessly with end-to-end encrypted notes and files."
@@ -26,7 +26,7 @@ options=('!strip')
 source=("standardnotes-$pkgver.tar.gz::https://github.com/standardnotes/app/archive/refs/tags/@standardnotes/desktop@${pkgver}.tar.gz"
         "standard-notes.desktop"
         "standard-notes.sh")
-sha256sums=('759728fe2dfdf97665902d6fa988e452af826b3ec879c9938b5045cc9e2f1f12'
+sha256sums=('fbb1fd19e2ea263a3526678ecc6415df3c4692633137d6c1d1501c8d4e0e7578'
             '274cd3914ff2a6a0999485a26cbded3ad597763482a90eee8ee34490ddffda00'
             '3ef9a5d2b4f2ba2e5b210a492c7398073f3cdd472d989e5ce2d4c6105d905666')
 
