@@ -18,7 +18,6 @@ pkgbase = opera
 	depends = hicolor-icon-theme
 	optdepends = qt6-base
 	optdepends = qt5-base
-	optdepends = opera-ffmpeg-codecs: playback of proprietary video/audio
 	optdepends = upower: opera battery save
 	options = !strip
 	options = !zipman
