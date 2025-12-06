@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=blavaan
-_pkgver=0.5-8
+_pkgver=0.5-9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,6 +14,7 @@ depends=(
   r-bayesplot
   r-coda
   r-future.apply
+  r-igraph
   r-lavaan
   r-loo
   r-mnormt
@@ -39,8 +40,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('eae8d16d00892c002e61ce7fad35f5a5')
-b2sums=('3c7c785c1137da7546d2a391b26decdc2ba4092039d09a5a712934b89214c197ad92ed13f545cb78ecaa8d528fc135d579e1b7604894f79a1745f08797873dbe')
+md5sums=('43c89fcf50efe74fa3e33478d1e0cd64')
+b2sums=('b6819fbd3feb08e0d580ac4af323bdec7c6584a962815624236b31c697baf37beea9607aa5c5496256e10bf84ddeace3df09f49e1f062f37eb7fd068dc474221')
 
 build() {
   mkdir build
