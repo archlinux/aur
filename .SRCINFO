@@ -1,6 +1,6 @@
 pkgbase = lilv-git
 	pkgdesc = A C library interface to the LV2 plug-in standard with Python bindings (git version)
-	pkgver = 0.25.1.r1620.17f153f
+	pkgver = 0.26.2.r1652.56e1224
 	pkgrel = 1
 	url = http://drobilla.net/software/lilv
 	arch = x86_64
@@ -8,19 +8,18 @@ pkgbase = lilv-git
 	license = 0BSD
 	makedepends = git
 	makedepends = libsndfile
-	makedepends = serd
-	makedepends = sord
-	makedepends = sratom
-	makedepends = zix
+	makedepends = serd>=0.30.10
+	makedepends = sord>=0.16.20
+	makedepends = sratom>=0.6.10
+	makedepends = zix>=0.6.0
 	depends = glibc
 	depends = lv2>=1.18.2
-	depends = sord>=0.16.19
-	depends = python
 	optdepends = bash-completion: completion for bash
 	optdepends = libsndfile: lv2apply utility
+	optdepends = python: for Python bindings
 	optdepends = python-numpy: for Python bindings
 	provides = lilv
-	provides = lilv=0.25.1
+	provides = lilv=0.26.2
 	provides = lilv-docs
 	provides = python-lilv
 	conflicts = lilv
@@ -32,14 +31,12 @@ pkgbase = lilv-git
 pkgname = lilv-git
 	depends = glibc
 	depends = lv2>=1.18.2
-	depends = sord>=0.16.19
-	depends = python
 	depends = libserd-0.so
 	depends = libsord-0.so
 	depends = libsratom-0.so
 	depends = libzix-0.so
 	provides = lilv
-	provides = lilv=0.25.1
+	provides = lilv=0.26.2
 	provides = lilv-docs
 	provides = python-lilv
 	provides = liblilv-0.so

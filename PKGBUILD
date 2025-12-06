@@ -4,24 +4,24 @@
 
 _pkgname=lilv
 pkgname=$_pkgname-git
-pkgver=0.25.1.r1620.17f153f
+pkgver=0.26.2.r1652.56e1224
 pkgrel=1
 pkgdesc='A C library interface to the LV2 plug-in standard with Python bindings (git version)'
 arch=(x86_64)
 url='http://drobilla.net/software/lilv'
 license=(ISC 0BSD)
-depends=(glibc 'lv2>=1.18.2' 'sord>=0.16.19' python)
-makedepends=(git libsndfile serd sord sratom zix)
+depends=(glibc 'lv2>=1.18.2')
+makedepends=(git libsndfile 'serd>=0.30.10' 'sord>=0.16.20' 'sratom>=0.6.10' 'zix>=0.6.0')
 optdepends=(
     "bash-completion: completion for bash"
     "libsndfile: lv2apply utility"
+    "python: for Python bindings"
     "python-numpy: for Python bindings"
 )
 provides=($_pkgname "$_pkgname=${pkgver//.r*/}" $_pkgname-docs python-$_pkgname)
 conflicts=($_pkgname $_pkgname-docs python-$_pkgname)
 source=("$_pkgname::git+https://gitlab.com/lv2/$_pkgname.git")
 sha256sums=('SKIP')
-
 
 pkgver() {
   cd $_pkgname
