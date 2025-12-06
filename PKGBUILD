@@ -2,7 +2,7 @@
 
 _name=ddgs
 pkgname=python-$_name
-pkgver=9.9.2
+pkgver=9.9.3
 pkgrel=1
 pkgdesc="Dux Distributed Global Search. A metasearch library that aggregates results from diverse web search services."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-click' 'python-primp' 'python-lxml' 'python-httpx' 'py
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-dependency')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1b4cb2b000cb68bfcc1cb4497cbf61e5e6749f1fc01fbf33817808b90fa96b4d')
+sha256sums=('e58be56a473b5a4908a3134fe00cdcb8f2654895a5d378b65e4b7861104bfe6d')
 
 build() {
     cd "$srcdir"/$_name-$pkgver
@@ -22,6 +22,7 @@ build() {
 check() {
   local pytest_options=(
     -vv
+    --disable-warnings
   )
   cd "$srcdir"/$_name-$pkgver
   PYTHONPATH=$PWD pytest "${pytest_options[@]}" tests
