@@ -9,6 +9,7 @@ arch=('x86_64')
 url="https://github.com/snapetech/slskdn"
 license=('AGPL-3.0-or-later')
 depends=()
+makedepends=('unzip')
 optdepends=(
     'docker: for containerized deployment'
 )
@@ -18,7 +19,7 @@ replaces=('slskd')
 backup=('etc/slskd/slskd.yml')
 install=slskd.install
 source=(
-    "https://github.com/snapetech/slskdn/releases/download/${pkgver//.slskdn/-slskdn}/slskdn-${pkgver//.slskdn/-slskdn}-linux-x64.tar.gz"
+    "https://github.com/snapetech/slskdn/releases/download/${pkgver//.slskdn/-slskdn}/slskdn-${pkgver//.slskdn/-slskdn}-linux-x64.zip"
     "slskd.service"
     "slskd.yml"
     "slskd.sysusers"
