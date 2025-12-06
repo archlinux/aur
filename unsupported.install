@@ -1,0 +1,12 @@
+post_upgrade() {
+	cat <<-MSG
+		Note that the upstream maintaier has declared this extension as
+		unmaintained and recommends to switch to "AppIndicator and 
+		KStatusNotifierItem Support" which is available from the official
+		Arch Linux Extra repository as "gnome-shell-extension-appindicator".
+	MSG
+}
+
+post_install() {
+  post_upgrade
+}
