@@ -1,0 +1,16 @@
+pkgbase = pkg-sync
+	pkgdesc = An interactive system health manager for Arch Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Dacraezy1/pkg-sync
+	arch = x86_64
+	license = MIT
+	depends = pacman
+	depends = pacman-contrib
+	depends = curl
+	optdepends = yay: for AUR updates
+	optdepends = paru: alternative AUR helper
+	source = https://github.com/Dacraezy1/pkg-sync/archive/v1.0.0.tar.gz
+	sha256sums = b371490750be1953186d9df419b29e7163319664776994ce9477d760efd71a7a
+
+pkgname = pkg-sync
