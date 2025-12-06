@@ -1,7 +1,7 @@
 # Maintainer: Arzet Ro <arzeth0@gmail.com>
 pkgname=python-deepspeed
 pkgver=0.18.2
-pkgrel=1
+pkgrel=2
 pkgdesc="DeepSpeed is a deep learning optimization library that makes distributed training and inference easy, efficient, and effective."
 #depends=(python python-hjson ninja python-numpy python-packaging python-psutil python-py-cpuinfo python-pydantic python-pynvml python-pytorch python-tqdm)
 #depends+=(python-cupy python-huggingface-hub tensorboard python-transformers python-mpi4py python-tabulate python-fairscale python-safetensors)
@@ -11,7 +11,6 @@ python-einops
 python-hjson
 python-pytorch
 python-torchvision
-python-torchaudio
 python-py-cpuinfo
 libaio
 ca-certificates
