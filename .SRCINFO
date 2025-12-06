@@ -1,0 +1,20 @@
+pkgbase = python-sentence-stream
+	pkgdesc = Small sentence splitter for text streams
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/OHF-Voice/sentence-stream
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-regex
+	source = git+https://github.com/OHF-Voice/sentence-stream.git#tag=v1.2.1
+	sha256sums = c28b1129a756bc2246e7bc051114bd49796eafdd436a4b18917ad209d2ffef1d
+
+pkgname = python-sentence-stream
