@@ -1,6 +1,6 @@
 pkgbase = python-pynini
 	pkgdesc = For compiling, optimizing, and applying grammar rules
-	pkgver = 2.1.6
+	pkgver = 2.1.7
 	pkgrel = 1
 	url = https://www.opengrm.org/twiki/bin/view/GRM/Pynini
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-pynini
 	depends = python
 	depends = python-absl
 	depends = openfst
-	source = https://files.pythonhosted.org/packages/source/p/pynini/pynini-2.1.6.tar.gz
-	sha512sums = 985411a153978c1ea79294e9aa30a59706f19c34697ec31c0610952fe18ed4d2aadd2fc4937e425ad0775dde5b22cada608b9e889e132c803288a147f28c65fe
+	source = https://files.pythonhosted.org/packages/source/p/pynini/pynini-2.1.7.tar.gz
+	sha512sums = d96bdc8d28edc51fd3a1c7d4f17725a0e32e44c0742f3ae4f65ea9d817f8deb2fffe4e43defb00f5c5c96a132698934312093c4206f96e6efffbbb57d9fa19f5
 
 pkgname = python-pynini
