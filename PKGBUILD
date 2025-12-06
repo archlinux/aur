@@ -1,10 +1,10 @@
 # Maintainer: snapetech <slskdn@proton.me>
-# slskdn - drop-in replacement for slskd with enhanced features
+# 🔋 slskdn - The batteries-included Soulseek web client
 pkgname=slskdn-bin
 _pkgname=slskd
-pkgver=0.24.1.slskdn.6
+pkgver=0.24.1.slskdn.7
 pkgrel=1
-pkgdesc="A modern client-server application for the Soulseek file sharing network (enhanced fork) - binary release"
+pkgdesc="🔋 The batteries-included Soulseek web client. A feature-rich fork of slskd with wishlist, smart ranking, tabbed browsing & more"
 arch=('x86_64')
 url="https://github.com/snapetech/slskdn"
 license=('AGPL-3.0-or-later')
@@ -25,7 +25,7 @@ source=(
     "slskd.yml"
     "slskd.sysusers"
 )
-sha256sums=('4855b828a4321f30d3c3bab1982cf7205317830149f26fbc0beb54e9ae7609a7' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('bc85181ab33e7c5bce582b4a266b2c7e8152af0feb8de0cc68b4e8da6c10a51e' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
     # Install application to /usr/lib/slskd (same location as original slskd)
