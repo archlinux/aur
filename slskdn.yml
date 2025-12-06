@@ -1,0 +1,26 @@
+# slskdn configuration
+# See https://github.com/snapetech/slskdn for full documentation
+
+soulseek:
+  username: 
+  password: 
+  description: slskdn user
+
+directories:
+  downloads: /var/lib/slskdn/downloads
+  incomplete: /var/lib/slskdn/incomplete
+
+web:
+  port: 5030
+  # Uncomment to set authentication
+  # authentication:
+  #   username: admin
+  #   password: changeme
+
+# shares:
+#   directories:
+#     - /path/to/music
+
+# Logging
+# serilog:
+#   minimum_level: Information

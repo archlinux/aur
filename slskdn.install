@@ -1,0 +1,41 @@
+post_install() {
+    echo ">>> Creating slskdn user and group..."
+    systemd-sysusers
+    
+    echo ">>> Setting up directories..."
+    chown -R slskdn:slskdn /var/lib/slskdn
+    
+    echo ""
+    echo ">>> slskdn has been installed!"
+    echo ""
+    echo "    1. Edit the configuration:"
+    echo "       sudo nano /etc/slskdn/slskdn.yml"
+    echo ""
+    echo "    2. Add your Soulseek credentials and shared directories"
+    echo ""
+    echo "    3. Start the service:"
+    echo "       sudo systemctl enable --now slskdn"
+    echo ""
+    echo "    4. Access the web UI at:"
+    echo "       http://localhost:5030"
+    echo ""
+}
+
+post_upgrade() {
+    echo ">>> Restarting slskdn service..."
+    systemctl daemon-reload
+    systemctl try-restart slskdn
+}
+
+pre_remove() {
+    echo ">>> Stopping slskdn service..."
+    systemctl stop slskdn
+    systemctl disable slskdn
+}
+
+post_remove() {
+    echo ">>> slskdn has been removed."
+    echo "    User data remains in /var/lib/slskdn"
+    echo "    Config remains in /etc/slskdn"
+    echo "    Remove manually if desired."
+}
