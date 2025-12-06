@@ -1,0 +1,16 @@
+pkgbase = lazytyper-bin
+	pkgdesc = LazyTyper 桌面客户端（官方 AppImage 重打包，含内置依赖）
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://lazytyper.com
+	arch = x86_64
+	license = proprietary
+	provides = lazytyper=1.8.1
+	conflicts = lazytyper
+	conflicts = lazytyper-git
+	conflicts = lazytyper-appimage
+	options = !strip
+	source = LazyTyper-1.8.1.AppImage::https://github.com/oldcai/LazyTyper-releases/releases/download/v1.8.1-linux/LazyTyper-x86_64.AppImage
+	sha256sums = 82d8f965a484be0ef7c661107ac014bfefd50589ef36d76eb15ab93f5ad1428a
+
+pkgname = lazytyper-bin
