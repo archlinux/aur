@@ -1,0 +1,21 @@
+pkgbase = megapixels-git
+	pkgdesc = GTK4 camera application that knows how to deal with the media request api
+	pkgver = r476.3ed974a
+	pkgrel = 1
+	url = https://gitlab.com/megapixels-org/Megapixels
+	arch = x86_64
+	arch = aarch64
+	license = LGPL
+	makedepends = meson
+	depends = gtk4
+	depends = zbar
+	depends = feedbackd
+	depends = libdng
+	depends = libmegapixels
+	provides = megapixels
+	conflicts = megapixels
+	replaces = megapixels
+	source = megapixels-git::git+https://gitlab.com/megapixels-org/Megapixels.git
+	md5sums = SKIP
+
+pkgname = megapixels-git
