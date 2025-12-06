@@ -2,7 +2,7 @@
 pkgname=alistral
 _reponame=Alistral
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Power tools for Listenbrainz"
 arch=('x86_64')
 url="https://github.com/RustyNova016/$_reponame"
@@ -41,4 +41,13 @@ package() {
 
     install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/$pkgname/"
     install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+
+    # Generate completions
+    for comp in bash fish zsh; do
+        "$pkgdir/usr/bin/$pkgname" --generate $comp > $comp
+    done
+
+    install -Dm644 bash -T "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+    install -Dm644 fish -T "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
+    install -Dm644 zsh  -T "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
