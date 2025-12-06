@@ -9,7 +9,7 @@ license=('MIT')
 depends=('openssl')
 makedepends=('cargo' 'clang')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fbeea1a63953efda2b24251e1a459aa36f7594674db6d7535cf1d14f89b488cc')
+sha256sums=('8697ef7fef1765dcae997a3eef39b3ca7215327389f53cb08f937cd7a78c9f5b')
 
 prepare() {
   cd "$pkgname-$pkgver"

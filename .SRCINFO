@@ -9,6 +9,6 @@ pkgbase = spotatui
 	makedepends = clang
 	depends = openssl
 	source = spotatui-0.28.1.tar.gz::https://github.com/LargeModGames/spotatui/archive/refs/tags/v0.28.1.tar.gz
-	sha256sums = fbeea1a63953efda2b24251e1a459aa36f7594674db6d7535cf1d14f89b488cc
+	sha256sums = 8697ef7fef1765dcae997a3eef39b3ca7215327389f53cb08f937cd7a78c9f5b
 
 pkgname = spotatui
