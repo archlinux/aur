@@ -1,5 +1,5 @@
 pkgbase = tkginstaller-git
-	pkgdesc = Helper for using the TKG packages from the Frogging-Family repositories
+	pkgdesc = AIO helper for the TKG packages from the Frogging-Family repositories
 	pkgver = 0.27.8
 	pkgrel = 1
 	url = https://github.com/damachine/tkginstaller
