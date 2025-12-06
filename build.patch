@@ -3,20 +3,3 @@
 @@ -2 +2 @@
 -    "name": "VRCX",
 +    "name": "vrcx",
-# .no-updater doesn't work when after building
-# https://github.com/vrcx-team/VRCX/issues/1490
-@@ -89 +89,2 @@
--            "src-electron/libs/linux/libopenvr_api.so"
-+            "src-electron/libs/linux/libopenvr_api.so",
-+            ".no-updater"
-
-# Login.vue remains updater when use --no-updater
-# https://github.com/vrcx-team/VRCX/issues/1489
---- a/src/views/Login/Login.vue
-+++ b/src/views/Login/Login.vue
-@@ -3,3 +2,0 @@
--        <el-tooltip placement="top" :content="t('view.login.updater')">
--            <el-button type="default" size="small" :icon="Download" circle @click="showVRCXUpdateDialog"></el-button>
--        </el-tooltip>
-@@ -162 +158,0 @@
--    const { showVRCXUpdateDialog } = useVRCXUpdaterStore();
