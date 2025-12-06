@@ -1,0 +1,5 @@
+[python-deepspeed]
+source = 'github'
+github = 'deepspeedai/DeepSpeed'
+use_latest_release = true
+prefix = 'v'
