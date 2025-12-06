@@ -1,8 +1,8 @@
-# Maintainer: snapetech <snapetech@github.com>
+# Maintainer: snapetech <slskdn@proton.me>
 # slskdn - drop-in replacement for slskd with enhanced features
 pkgname=slskdn-bin
 _pkgname=slskd
-pkgver=0.24.1.slskdn.4
+pkgver=0.24.1.slskdn.6
 pkgrel=1
 pkgdesc="A modern client-server application for the Soulseek file sharing network (enhanced fork) - binary release"
 arch=('x86_64')
@@ -13,9 +13,9 @@ makedepends=('unzip')
 optdepends=(
     'docker: for containerized deployment'
 )
-provides=('slskd')
-conflicts=('slskd')
-replaces=('slskd')
+provides=('slskd' 'slskd-bin')
+conflicts=('slskd' 'slskd-bin')
+replaces=('slskd' 'slskd-bin')
 backup=('etc/slskd/slskd.yml')
 options=('!strip')
 install=slskd.install
@@ -25,7 +25,7 @@ source=(
     "slskd.yml"
     "slskd.sysusers"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('de18233dd81df6e630e91f8c83321fcb83620d97557bac1a14246a113be2679c' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
     # Install application to /usr/lib/slskd (same location as original slskd)
