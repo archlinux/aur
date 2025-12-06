@@ -5,7 +5,7 @@
 # Contributor:  <tigersoldi at gmail dot com>
 
 pkgname=google-java-format
-pkgver=1.32.0
+pkgver=1.33.0
 pkgrel=1
 pkgdesc='Reformats Java source code to comply with Google Java Style'
 url='https://github.com/google/google-java-format'
@@ -17,7 +17,7 @@ source=(
   "$pkgname"
   "https://raw.githubusercontent.com/google/$pkgname/master/LICENSE"
 )
-sha256sums=('b8efc4a512242392aaed8fb6d5baa5373e7050190f63dd05c67b8ec255c017ff'
+sha256sums=('697707af07c7753f29cba415c6a76b7882702ff464f807da98b28069b8751910'
             '5869a6ec4dd3c681b06e9a0fa1cdef30d0ee722d48115ff4a5e1efb01947e100'
             '2c7e23c8000fe553b6f380b5e365dd72198439174f1b6821d5e3b190b54af0dc')
 
