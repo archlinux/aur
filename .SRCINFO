@@ -12,6 +12,7 @@ pkgbase = megapixels-git
 	depends = feedbackd
 	depends = libdng
 	depends = libmegapixels
+	depends = postprocessd
 	provides = megapixels
 	conflicts = megapixels
 	replaces = megapixels
