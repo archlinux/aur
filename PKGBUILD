@@ -14,11 +14,11 @@ depends=(
     "nss"
     "pcsclite"
     "qt6-base"
+    "qt6-wayland"
 )
 optdepends=(
     "gnome-shell-extension-appindicator: System tray indicator extension for GNOME desktop"
     "libappindicator: System tray support for desktop environments"
-    "qt6-wayland: Wayland support"
 )
 install="${pkgname}.install"
 source=(
