@@ -1,6 +1,6 @@
 # Maintainer: Karl Essinger <xkaess22@gmail.com>
 pkgname=scpdiscord-git
-pkgver=3.3.1.3.git7c9c181
+pkgver=3.3.1.6.gitf26a986
 pkgrel=1
 pkgdesc="A very customisable Discord bot + SCP:SL plugin combo. Dev build."
 arch=("x86_64")
@@ -8,10 +8,10 @@ url="https://github.com/KarlOfDuty/SCPDiscord"
 license=('GPL-3.0-or-later')
 options=('!debug' '!strip')
 depends=(
-  "dotnet-runtime-9.0"
+  "dotnet-runtime>=9"
 )
 makedepends=(
-  "dotnet-sdk-9.0"
+  "dotnet-sdk>=9"
 )
 #checkdepends=()
 #optdepends=()
