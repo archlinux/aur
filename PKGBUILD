@@ -1,7 +1,9 @@
 # Maintainer: snapetech <snapetech@github.com>
+# slskdn - drop-in replacement for slskd with enhanced features (build from source)
 pkgname=slskdn
+_pkgname=slskd
 pkgver=0.24.1.slskdn.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern client-server application for the Soulseek file sharing network (enhanced fork)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/snapetech/slskdn"
@@ -12,14 +14,17 @@ optdepends=(
     'docker: for containerized deployment'
 )
 provides=('slskd')
-conflicts=('slskd')
-backup=('etc/slskdn/slskdn.yml')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/snapetech/slskdn/archive/refs/tags/${pkgver//.slskdn/-slskdn}.tar.gz")
-sha256sums=('SKIP')
-
-pkgver() {
-    echo "${pkgver}"
-}
+conflicts=('slskd' 'slskdn-bin')
+replaces=('slskd')
+backup=('etc/slskd/slskd.yml')
+install=slskd.install
+source=(
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/snapetech/slskdn/archive/refs/tags/${pkgver//.slskdn/-slskdn}.tar.gz"
+    "slskd.service"
+    "slskd.yml"
+    "slskd.sysusers"
+)
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 build() {
     cd "${srcdir}/slskdn-${pkgver//.slskdn/-slskdn}"
@@ -30,7 +35,7 @@ build() {
     npm run build
     cd ../..
     
-    # Build backend
+    # Build backend (not self-contained, uses system .NET)
     dotnet publish src/slskd/slskd.csproj \
         -c Release \
         -o publish \
@@ -41,30 +46,32 @@ build() {
 package() {
     cd "${srcdir}/slskdn-${pkgver//.slskdn/-slskdn}"
     
-    # Install application
-    install -dm755 "${pkgdir}/usr/lib/${pkgname}"
-    cp -r publish/* "${pkgdir}/usr/lib/${pkgname}/"
+    # Install application to /usr/lib/slskd (same location as original slskd)
+    install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
+    cp -r publish/* "${pkgdir}/usr/lib/${_pkgname}/"
     
     # Install web assets
-    install -dm755 "${pkgdir}/usr/lib/${pkgname}/wwwroot"
-    cp -r src/web/build/* "${pkgdir}/usr/lib/${pkgname}/wwwroot/"
+    install -dm755 "${pkgdir}/usr/lib/${_pkgname}/wwwroot"
+    cp -r src/web/build/* "${pkgdir}/usr/lib/${_pkgname}/wwwroot/"
     
-    # Create wrapper script
+    # Make binary executable
+    chmod +x "${pkgdir}/usr/lib/${_pkgname}/slskd"
+    
+    # Create symlink /usr/bin/slskd -> /usr/lib/slskd/slskd
     install -dm755 "${pkgdir}/usr/bin"
-    cat > "${pkgdir}/usr/bin/${pkgname}" << 'WRAPPER'
-#!/bin/bash
-exec /usr/lib/slskdn/slskd "$@"
-WRAPPER
-    chmod +x "${pkgdir}/usr/bin/${pkgname}"
+    ln -sf "/usr/lib/${_pkgname}/slskd" "${pkgdir}/usr/bin/${_pkgname}"
     
-    # Install systemd service
-    install -Dm644 "${srcdir}/slskdn.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    # Install systemd service as slskd.service
+    install -Dm644 "${srcdir}/slskd.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
     
-    # Install default config
-    install -Dm644 "${srcdir}/slskdn.yml" "${pkgdir}/etc/${pkgname}/slskdn.yml"
+    # Install sysusers config
+    install -Dm644 "${srcdir}/slskd.sysusers" "${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf"
     
-    # Create data directories
-    install -dm755 "${pkgdir}/var/lib/${pkgname}"
-    install -dm755 "${pkgdir}/var/lib/${pkgname}/downloads"
-    install -dm755 "${pkgdir}/var/lib/${pkgname}/incomplete"
+    # Install default config to /etc/slskd/slskd.yml
+    install -Dm644 "${srcdir}/slskd.yml" "${pkgdir}/etc/${_pkgname}/${_pkgname}.yml"
+    
+    # Create data directories at /var/lib/slskd
+    install -dm755 "${pkgdir}/var/lib/${_pkgname}"
+    install -dm755 "${pkgdir}/var/lib/${_pkgname}/downloads"
+    install -dm755 "${pkgdir}/var/lib/${_pkgname}/incomplete"
 }

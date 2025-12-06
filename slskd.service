@@ -1,15 +1,15 @@
 [Unit]
-Description=slskdn - Soulseek client/server (enhanced fork)
+Description=slskd - Soulseek client/server
 Documentation=https://github.com/snapetech/slskdn
 After=network-online.target
 Wants=network-online.target
 
 [Service]
 Type=simple
-User=slskdn
-Group=slskdn
-ExecStart=/usr/bin/slskdn --config /etc/slskdn/slskdn.yml
-WorkingDirectory=/var/lib/slskdn
+User=slskd
+Group=slskd
+ExecStart=/usr/lib/slskd/slskd --config /etc/slskd/slskd.yml
+WorkingDirectory=/var/lib/slskd
 Restart=on-failure
 RestartSec=10
 
@@ -18,7 +18,7 @@ NoNewPrivileges=yes
 ProtectSystem=strict
 ProtectHome=yes
 PrivateTmp=yes
-ReadWritePaths=/var/lib/slskdn
+ReadWritePaths=/var/lib/slskd
 
 [Install]
 WantedBy=multi-user.target
