@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python' 'ffmpeg' 'sox')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/Evilchuck666/$_pkgname/archive/v$pkgver.tar.gz")
-md5sums=('87af70bca62d4a7115498c8cd1be219a')
+md5sums=('c144df4555504d19932c7d6d687138ce')
 
 build() {
     cd "$srcdir/$_pkgname-$pkgver"
