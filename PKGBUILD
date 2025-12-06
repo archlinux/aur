@@ -1,17 +1,21 @@
 pkgname=python-wyoming
 _pkgname=wyoming
 pkgdesc="Peer-to-peer protocol for voice assistants"
-pkgver=1.6.1
+pkgver=1.8.0
 pkgrel=1
 arch=(any)
 url="https://github.com/rhasspy/wyoming"
 license=('MIT')
 depends=(python)
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-checkdepends=('python-pytest' 'python-pytest-asyncio')
-optdepends=('python-zeroconf: Zeroconf support')
-source=("git+https://github.com/rhasspy/wyoming.git#tag=${pkgver}")
-b2sums=('8e1048152e9cb6211f85f0ddfb523f4e258a281cced2a8ec4d470e561a2ea840a207ff91904fb26abb9330cef6a5bf8e99c5b0973ef2cf30be2a0f97e7af7a9c')
+checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-flask' 'python-zeroconf')
+optdepends=(
+	'python-zeroconf: Zeroconf support'
+	'python-flask: http'
+	'python-swagger-ui-py: http'
+)
+source=("git+https://github.com/rhasspy/wyoming.git#tag=v${pkgver}")
+b2sums=('3e3a13224a13c350efb4fdf01fdef7ee5612af4fc6706e66d11477773d701141e509cf7883e949745c19a675844c9b8c3811f4b3ee688f5b4671d8ef26af02a6')
 
 build() {
   cd $_pkgname
