@@ -2,9 +2,8 @@
 
 pkgname=python-pycapnp
 _name=pycapnp
-pkgver=2.0.0
-_commit=78dd54e64155c7b4513008b5295803d6dab9fde8
-pkgrel=7
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="A cython wrapping of the C++ Cap'n Proto library"
 url="https://github.com/capnproto/pycapnp"
 license=(BSD-2-Clause)
@@ -29,20 +28,8 @@ checkdepends=(
   python-pytest-asyncio
 )
 optdepends=('python-jinja: for capnpc-cython')
-source=(git+$url#commit=$_commit
-        cython3.patch)
-sha512sums=('7ea804afbe5afd05ae7295fc7e7c2f5dfb4688b2bebb97a69a1bac619382057882e8bd359956ba9ff1fbee7398024a38b9fb083586d1dee69a8a95b0157f48e4'
-            '75f48922b25f622715a8a3cccb167e134acac27e0a9c8c70f5ca379f6c67491cc216299ab21283dc94c9ed5ef826ee761ea05745de8cb66d2f30751f25a0b392')
-
-pkgver() {
-  cd $_name
-  git describe --tags | sed 's/^[vV]//;s/-/+/g'
-}
-
-prepare() {
-  cd $_name
-  patch -p1 -i ../cython3.patch
-}
+source=("git+$url#tag=v$pkgver")
+sha512sums=('0468dba04d0ca9b49dbe9bf04720d14ae4a87077dac3d9ee6f3344a69cacce26034cba1e2078481c747d89bd225625c3e2eb655a1d8e4fb4c79be9acf97f8ce2')
 
 build() {
   cd $_name
@@ -50,20 +37,10 @@ build() {
 }
 
 check() {
-  local pytest_options=(
-    -vv
-  )
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-
   cd $_name
-  # install to temporary location, as importlib is used
-  python -m installer --destdir=test_dir dist/*.whl
-  export PYTHONPATH="$PWD/test_dir/$site_packages:$PYTHONPATH"
-# Disable tests that fail on the build server
-  pytest "${pytest_options[@]}" test \
-    --deselect test/test_examples.py::test_ssl_async_example \
-    --deselect test/test_examples.py::test_ssl_reconnecting_async_example \
-    --deselect test/test_examples.py::test_async_ssl_calculator_example
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -Pm pytest
 }
 
 package() {
