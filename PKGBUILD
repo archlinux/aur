@@ -2,7 +2,7 @@
 pkgname=gg-jujutsu
 
 pkgver=0.35.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A GUI for the version control system Jujutsu.'
 arch=(x86_64 aarch64)
 url='https://github.com/gulbanana/gg'
@@ -19,6 +19,10 @@ makedepends=(
   cargo
   git
   npm
+)
+provides=(gg-jujutsu)
+conflicts=(
+  gg-jujutsu-bin
 )
 
 source=("gg::git+https://github.com/gulbanana/gg.git#tag=v${pkgver}")
