@@ -1,0 +1,62 @@
+diff '--color=auto' -ura ../old/mpb/fields.c ./mpb/fields.c
+--- ../old/mpb/fields.c	2025-12-06 19:24:57.511365726 +0800
++++ ./mpb/fields.c	2025-12-06 19:25:50.747920823 +0800
+@@ -16,6 +16,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include <stdlib.h>
+ #include <math.h>
+ #include <ctype.h>
+diff '--color=auto' -ura ../old/mpb/field-smob.c ./mpb/field-smob.c
+--- ../old/mpb/field-smob.c	2025-12-06 19:24:57.511030431 +0800
++++ ./mpb/field-smob.c	2025-12-06 19:34:32.769516879 +0800
+@@ -16,6 +16,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include <stdlib.h>
+ 
+ #include "config.h"
+diff '--color=auto' -ura ../old/mpb/material_grid.c ./mpb/material_grid.c
+--- ../old/mpb/material_grid.c	2025-12-06 19:24:57.511077791 +0800
++++ ./mpb/material_grid.c	2025-12-06 19:25:50.748206124 +0800
+@@ -16,6 +16,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include <stdlib.h>
+ #include <math.h>
+ 
+diff '--color=auto' -ura ../old/mpb/material_grid_opt.c ./mpb/material_grid_opt.c
+--- ../old/mpb/material_grid_opt.c	2025-12-06 19:24:57.511324057 +0800
++++ ./mpb/material_grid_opt.c	2025-12-06 19:26:12.318993575 +0800
+@@ -18,6 +18,7 @@
+ /* optimization routines for material grids */
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include <stdlib.h>
+ #include <math.h>
+ 
+diff '--color=auto' -ura ../old/mpb/transform.c ./mpb/transform.c
+--- ../old/mpb/transform.c	2025-12-06 19:24:57.510968363 +0800
++++ ./mpb/transform.c	2025-12-06 19:33:57.693783427 +0800
+@@ -17,6 +17,7 @@
+ 
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include <stdlib.h>
+ #include <math.h>
+ 
+@@ -207,4 +208,4 @@
+         symvals.items[ib] = compute_symmetry(ib+1, W, w);
+     }
+     return symvals;
+-}
+\ No newline at end of file
++}

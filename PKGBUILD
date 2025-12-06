@@ -18,6 +18,7 @@ source=("https://github.com/NanoComp/$pkgname/releases/download/v$pkgver/$pkgnam
 sha256sums=('8d2b206254b217f66a53c1ad20cc0c369b93b0e71ee671d68e333a583eaaeda4')
 
 prepare() {
+  patch -d $pkgname-$pkgver -Np1 -i ../../include_string_h.patch
   cp -r $pkgname-$pkgver $pkgname-inv
   cp -r $pkgname-$pkgver $pkgname-mpi
   cp -r $pkgname-$pkgver $pkgname-inv-mpi
