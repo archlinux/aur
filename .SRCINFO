@@ -1,7 +1,7 @@
 pkgbase = qtjambi
 	pkgdesc = QtJambi is Qt bindings for the Java programming language originally developed by Trolltech
 	pkgver = 6.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OmixVisualization/qtjambi
 	arch = x86_64
 	license = LGPL
@@ -15,7 +15,7 @@ pkgbase = qtjambi
 	makedepends = qt6-base=6.10.1
 	makedepends = qt6-declarative=6.10.1
 	options = !debug
-	source = https://github.com/OmixVisualization/qtjambi/archive/refs/tags/v6.10.0.tar.gz
+	source = https://github.com/OmixVisualization/qtjambi/archive/refs/tags/v6.10.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = qtjambi
