@@ -1,7 +1,7 @@
 # Maintainer: Jérôme de Courval <decje9@gmail.com>
 pkgname=tandoor-recipes-git
-pkgver=1.2.2.r1199.a497a6b7
-pkgrel=3
+pkgver=1.2.2.r4132.c5fcfd07a
+pkgrel=1
 pkgdesc=""
 arch=('any')
 url="https://github.com/TandoorRecipes/recipes"
@@ -43,7 +43,7 @@ pkgver() {
 
 
 build() {
-	cd "$srcdir/recipes/vue"
+	cd "$srcdir/recipes/vue3"
 	yarn --cache-folder "$srcdir/yarn-cache" --ignore-engines install 
 	yarn --cache-folder "$srcdir/yarn-cache" build
 }
@@ -65,6 +65,6 @@ package() {
 	cd recipes
 	install -Dm644 .env.template "$pkgdir/etc/tandoor/tandoor.conf"
 	mkdir -p "$pkgdir/usr/share/tandoor"
-	rm -rf "$srcdir/recipes/vue/node_modules/.cache"
-	cp -r manage.py vue recipes cookbook "$pkgdir/usr/share/tandoor"
+	rm -rf "$srcdir/recipes/vue3/node_modules/.cache"
+	cp -r manage.py vue3 recipes cookbook "$pkgdir/usr/share/tandoor"
 }
