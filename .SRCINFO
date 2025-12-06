@@ -1,6 +1,6 @@
 pkgbase = python-groq
 	pkgdesc = The official Python library for the groq API.
-	pkgver = 0.37.0
+	pkgver = 0.37.1
 	pkgrel = 1
 	url = https://github.com/groq/groq-python
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = python-groq
 	depends = python-sniffio
 	optdepends = python-aiohttp: aiohttp
 	optdepends = python-httpx-aiohttp: aiohttp
-	source = https://github.com/groq/groq-python/archive/refs/tags/v0.37.0.tar.gz
-	sha256sums = d58bd3948516402fdbc28f2c452e20e0b8a470919cda92bfcdcf74fb81887d9d
+	source = https://github.com/groq/groq-python/archive/refs/tags/v0.37.1.tar.gz
+	sha256sums = e1fcee7c60fe4e633a9de14216d6ff455e496f02a84d67ba9907a450ede78dc7
 
 pkgname = python-groq

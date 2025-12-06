@@ -2,7 +2,7 @@
 
 _name=groq
 pkgname=python-$_name
-pkgver=0.37.0
+pkgver=0.37.1
 pkgrel=1
 pkgdesc='The official Python library for the groq API.'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-hatchling' 'python-hatch-fancy-pypi-readme' 'python-build' 
 checkdepends=('python-respx' 'python-pytest' 'python-pytest-asyncio' 'python-time-machine' 'python-dirty-equals' 'python-rich' 'python-pytest-xdist' 'python-aiohttp' 'python-httpx-aiohttp' 'npm' 'nodejs')
 optdepends=('python-aiohttp: aiohttp' 'python-httpx-aiohttp: aiohttp')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d58bd3948516402fdbc28f2c452e20e0b8a470919cda92bfcdcf74fb81887d9d')
+sha256sums=('e1fcee7c60fe4e633a9de14216d6ff455e496f02a84d67ba9907a450ede78dc7')
 
 build() {
   cd "$srcdir"/$_name-python-$pkgver
