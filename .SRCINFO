@@ -1,0 +1,17 @@
+pkgbase = git-cc
+	pkgdesc = a git extension to help write conventional commits
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/Skalt/git-cc
+	arch = x86_64
+	arch = aarch64
+	license = PolyForm-Noncommercial-1.0.0
+	license = LicenseRef-PolyForm-Free-Trial-1.0.0
+	makedepends = go
+	depends = glibc
+	provides = git-cc
+	options = !debug
+	source = git-cc-0.2.6.tar.gz::https://github.com/Skalt/git-cc/archive/refs/tags/v0.2.6.tar.gz
+	sha256sums = 91888a0adb2bc6c4e26b3a95fff239732bec109d8dbe5a04cad81716eb63f15b
+
+pkgname = git-cc
