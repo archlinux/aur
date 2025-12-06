@@ -5,14 +5,14 @@ pkgrel=1
 epoch=
 pkgdesc=""
 arch=('i686' 'x86_64')
-url="https://github.com/hannesbraun/delta-limiter"
+url="https://sr.ht/~hannes/delta-limiter"
 license=('custom')
 groups=('lv2-plugins')
 depends=('glibc')
 makedepends=('git' 'cmake')
 provides=("${pkgname%-lv2--git}")
 conflicts=("${pkgname%-lv2-git}")
-source=('delta-limiter-lv2::git+https://github.com/hannesbraun/delta-limiter')
+source=('delta-limiter-lv2::git+https://sr.ht/~hannes/delta-limiter')
 md5sums=('SKIP')
 
 
