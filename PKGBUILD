@@ -28,18 +28,19 @@ prepare() {
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " "${srcdir}/${pkgname%-bin}.sh"
+    " "${srcdir}/flow-browser.sh"
     bsdtar -xf "${srcdir}/data."*
 
-    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    sed -i "s/Name=Flow/Name=Flow Browser/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    sed -i "s/Icon=flow-browser/Icon=\/usr\/share\/pixmaps\/flow-browser.png/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/Flow.desktop"
+    sed -i "s/Name=Flow/Name=Flow Browser/g" "${srcdir}/usr/share/applications/Flow.desktop"
+    sed -i "s/Icon=flow-browser/Icon=\/usr\/share\/pixmaps\/flow-browser.png/g" "${srcdir}/usr/share/applications/Flow.desktop"
+    sed -i "s/Exec=Flow --ozone-platform-hint=auto/Exec=flow-browser --ozone-platform-hint=auto/g" "${srcdir}/usr/share/applications/Flow.desktop"
 }
 
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/Flow.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/usr/share/applications/Flow.desktop" -t "${pkgdir}/usr/share/applications"
 }
