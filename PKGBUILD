@@ -1,8 +1,8 @@
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoakanter@gmail.com>
 _pkgname="asus-5606-fan-state"
 pkgname="${_pkgname}-git"
-pkgver=r17.81a8dee
-pkgrel=2
+pkgver=r18.7c00387
+pkgrel=1
 pkgdesc="Script to set the fan state on the ZenBook S 16 UM5606 and Vivobook M5606"
 arch=('any')
 url="https://github.com/ThatOneCalculator/${_pkgname}"
@@ -22,6 +22,7 @@ pkgver() {
 }
 
 package() {
-    install -Dm755 "$srcdir"/"$_pkgname"/fan_state "$pkgdir/usr/bin/fan_state"
-    install -Dm644 "$srcdir"/"$_pkgname"/README.md "$pkgdir/usr/share/doc/fan_state"
+    install -Dm755 "$srcdir/$_pkgname"/fan_state "$pkgdir/usr/bin/fan_state"
+    install -Dm644 "$srcdir/$_pkgname"/asus-fan-permissions.service "$pkgdir/usr/lib/systemd/system/asus-fan-permissions.service"
+    install -Dm644 "$srcdir/$_pkgname"/README.md "$pkgdir/usr/share/doc/fan_state"
 }
