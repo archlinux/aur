@@ -1,0 +1,20 @@
+pkgbase = trashy-bin
+	pkgdesc = a cli system trash manager, alternative to rm and trash-cli
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/oberblastmeister/trashy
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	provides = trashy
+	conflicts = trashy
+	conflicts = trash-cli
+	source = trashy-bin-2.0.0.tar.gz::https://github.com/oberblastmeister/trashy/releases/download/v2.0.0/trash-x86_64-unknown-linux-gnu.tar.gz
+	source = LICENSE-MIT::https://raw.githubusercontent.com/oberblastmeister/trashy/v2.0.0/LICENSE-MIT
+	source = LICENSE-APACHE::https://raw.githubusercontent.com/oberblastmeister/trashy/v2.0.0/LICENSE-APACHE
+	sha256sums = a122c8994c6884629c0157fe9d375c9a156a14b236ccbb1aee28b08c3fa59a13
+	sha256sums = aec51b90033e3af830ba9fee7f5644c2b58bede1331dd7051867856724982f75
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	depends_x86_64 = gcc-libs
+
+pkgname = trashy-bin
