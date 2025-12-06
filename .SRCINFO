@@ -1,7 +1,7 @@
 pkgbase = karakeep
 	pkgdesc = A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search
 	pkgver = 0.29.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/karakeep-app/karakeep
 	arch = x86_64
 	arch = aarch64
