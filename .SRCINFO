@@ -1,0 +1,24 @@
+pkgbase = roxybrowser-bin
+	pkgdesc = Premier Antidetect Browser - Streamline Your Workflow Effortlessly
+	pkgver = 3.6.1
+	pkgrel = 1
+	url = https://roxybrowser.com
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	optdepends = libappindicator-gtk3: for system tray icon support
+	provides = roxybrowser
+	conflicts = roxybrowser
+	options = !strip
+	source_x86_64 = roxybrowser-3.6.1.deb::https://dl.roxybrowser.com/app-download/Linux-64-latest
+	sha256sums_x86_64 = SKIP
+
+pkgname = roxybrowser-bin
