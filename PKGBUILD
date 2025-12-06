@@ -2,7 +2,7 @@
 
 pkgname=vivictpp
 pkgdesc='An easy to use tool for subjective comparison of the visual quality of different encodings of the same video source.'
-pkgver=1.3.1
+pkgver=1.3.2
 # Uncomment for releases with hyphens
 # _pkgver=$(echo "$pkgver" | tr '~' -)
 pkgrel=1
@@ -19,10 +19,10 @@ makedepends=('cmake'
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 # See https://wiki.archlinux.org/title/Arch_package_guidelines#Package_sources for how to generate this
-_tag="c133c1df0bd7edfcb6e7a3fb04372d8a73dd350a"
+_tag="fcd4bf5aca4b2f9de92ee36e9c7ecd6da8b918f3"
 source=("git+https://github.com/vivictorg/vivictpp.git#tag=${_tag}"
   "meson_build.patch")
-sha256sums=('b224af5711bb25ef648c3b5e13baccb5f2b31c96d0a9ddea7358a50c56d1cdfa'
+sha256sums=('bc5fabd6678686e1b47f204e559321da90abc649044732f7a92e116e5ab6777d'
   '966dcc43a7c125df5dc141db2c6ca7a87694676a3af07867b0702a53921d011e')
 options=(!lto)
 
