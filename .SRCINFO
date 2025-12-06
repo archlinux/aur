@@ -1,0 +1,19 @@
+pkgbase = crates-lsp
+	pkgdesc = Language Server implementation for Cargo.toml
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/MathiasPius/crates-lsp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	provides = crates-lsp
+	conflicts = crates-lsp
+	options = !debug
+	options = !lto
+	source = crates-lsp-0.4.3.tar.gz::https://github.com/MathiasPius/crates-lsp/archive/v0.4.3.tar.gz
+	sha512sums = 738eb7e4e76a03c06a2360412ebb457d8d58cabaff6084425dd43b9b3195ab7396e25f75474ef5f209aeee21e1035258c862252e5b33dcfc0af8e847f74fc66c
+
+pkgname = crates-lsp
