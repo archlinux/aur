@@ -2,9 +2,9 @@
 _pkgname=GitVersion
 pkgname=gitversion
 # renovate: datasource=github-releases depName=GitTools/GitVersion
-pkgver=6.4.0
+pkgver=6.5.1
 pkgrel=4
-_dotnet_version=9.0
+_dotnet_version=10.0
 pkgdesc='From git log to SemVer in no time'
 arch=('x86_64')
 url="https://github.com/GitTools/GitVersion"
@@ -18,8 +18,8 @@ depends=('glibc')
 makedepends=(
   "dotnet-sdk>=${_dotnet_version}"
 )
-sha512sums=('0f15df3c339e978a34e7b5d6ee77af1ccb6be7e702099003faf6ebba23f41e9bbbb0e69199e734ce2cd05f225b39d6c783d151f10e745b98c5e11739750b3c60'
-            '323ad7b23bed74b8b2530a3555f0ca4d350244d1cda5603217393f661754cfa193806886fe4d24efda1d96779bbfa7097603850bb778ca9b906518778e06c77e')
+sha512sums=('65fe0316017766d76fa5b203b26e4b5ec0c48156a3feeee63d2b7fcba30c9e7b48f1ceeb76241964f63f5c16674a81e93ed14b8ea0f6cadafc925a59fbfc3550'
+            'aa2f668c93555b3cfb27a611c5c2620992562d605d3b346b45bf71774d78eb4f5e5fc4ec7ecf1aa56a4a3adcb141f3669ae5c571bb45974ceeda88fedcec3dd4')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
