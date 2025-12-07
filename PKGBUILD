@@ -4,7 +4,7 @@
 # Contributer: Toni Foerster <stonerl@skeps.de>, AndrÃ© Klitzing <aklitzing@online.de>
 
 pkgname=po-debconf
-pkgver=1.0.21+nmu1
+pkgver=1.0.22
 pkgrel=1
 pkgdesc="Debian manage translated Debconf templates files with gettext"
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL')
 changelog=ChangeLog
 depends=(gettext perl intltool)
 source=(https://deb.debian.org/debian/pool/main/p/po-debconf/${pkgname}_${pkgver}_all.deb)
-sha256sums=('613e31942c17b582e8c76db1077240f177f2f67bad22e5f4f8e5bee523d6f54b')
+sha256sums=('e40fb5a74cb23cf5d25f49474a8092af35d855fba4a32c6f9bb4fba85d4dae68')
 
 build() {
 	cd $srcdir
