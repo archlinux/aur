@@ -4,7 +4,7 @@
 
 pkgname=gnome-shell-extension-stealmyfocus-git
 pkgver=5
-pkgrel=2
+pkgrel=3
 pkgdesc="Shell Extension that let window that demand attention to steal focus"
 arch=(any)
 license=(GPLv2)
@@ -43,7 +43,8 @@ package_20_version() {
   local min="${compatibles[0]}"
   depends+=("gnome-shell>=$(prefix "${min%%.*}")3.$min")
   if [ "${compatibles[-1]}" != $(
-    gnome-shell --version | grep -Po '(?<=GNOME Shell 3\.)[[:digit:]]+'
+    LD_PRELOAD= gnome-shell --version | \
+      grep -Po '(?<=GNOME Shell 3\.)[[:digit:]]+'
   ) ]; then
     let max=${compatibles[-1]%%.*}+1
     depends+=("gnome-shell<$(prefix "$max")3.$max")
