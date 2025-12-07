@@ -4,9 +4,9 @@
 
 pkgbase=linux-fsync-nobara-bin
 pkgname=${pkgbase}
-pkgver=6.17.10
+pkgver=6.17.11
 pkgrel=1
-build_id=9853979
+build_id=9883013
 fedora=43
 extras=200.nobara.fc${fedora}
 printf -v l_build_id %08d%s ${build_id}
@@ -30,9 +30,9 @@ validpgpkeys=(
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
 
-sha256sums=('2850eeebbeec0ee701952643e724f4741bd185606af5d25a2f62cbf8adc427b6'
-            '496275e9277455cf484bec1dfea66678a2abee59ab41058e7d4f5b8346e4b894'
-            '1b44bfe5ce168557a273e47d2a18a5c299c0197696b0c754bcfcef40406c7664')
+sha256sums=('605b2a3fa4843022f3e327db7fc3a6a793c4ee741bfda5dbba2566c8056b9f45'
+            'f90bcf78eb41f1b0bb605f4c55c3bd7f2f22d00f042853f2c11d92bcdb73a7d9'
+            '0f9633abc1e14d903e13dd527facfc6575b9597582f6d25d18823192055d10b2')
 
 package() {
 
