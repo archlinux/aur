@@ -4,8 +4,8 @@ _sdk=10.0
 _Name="FsAutoComplete"
 _pkgname="${_Name,,}"
 pkgname="${_pkgname}-bin"
-pkgver=0.81.0
-pkgrel=2
+pkgver=0.82.0
+pkgrel=1
 pkgdesc="F# language server using Language Server Protocol (LSP)"
 arch=('any')
 url="https://ionide.io/Tools/fsac.html"
@@ -27,8 +27,8 @@ source=("dotnet-tool-common.sh"
         "${_pkgsrc}-CHANGELOG.md::${_url}/raw/refs/tags/v${pkgver}/CHANGELOG.md"
         "${_pkgsrc}-LICENSE.md::${_url}/raw/refs/tags/v${pkgver}/LICENSE.md")
 sha256sums=('8569a77543f4db3ce10517dd1614bc1d7200f8e746370c59ceb8b58cff267f8f'
-            '5e7e78a800641b4156e0937049f2be918626234deeccd807b336f59052243142'
-            '2bd10e9562a09582765f001d09fb3897fa276ed739c71c713c7a90321e751cac'
+            '7e2fe7d15c17cd5e223951d536d7cd8e3a592ca804193ab40b6a8bebe0683122'
+            '6d959c2b3b88e5ed42b48638a04d669d6728ab31339fb4713c126d4acf23899c'
             '1ee6b06043c1f7eca730ecb0e4d2272c451077f6c96ff66fdd252d29843ba482')
 
 if   [ "${CARCH}" = 'aarch64' ]; then _msarch=arm64;
