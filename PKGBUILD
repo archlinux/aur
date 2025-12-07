@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/heiher/natmap"
 license=('MIT')
 depends=('glibc')
-makedepends=('git' 'make')
+makedepends=('git' 'make' 'gcc')
 provides=('natmap')
 conflicts=('natmap')
 
