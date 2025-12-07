@@ -74,7 +74,13 @@ prepare() {
     git submodule set-branch --branch '87-based' 'src/3rdparty'
     git -c protocol.file.allow='always' submodule update
   else
-    mv "${srcdir}/${_srcdir87}"/* 'src/3rdparty/' # Neither patch nor git-apply work with symlinks
+    cd "${srcdir}/${_srcdir87}"
+    local _d
+    for _d in *; do
+      rm -rf "${srcdir}/${_srcdir}/src/3rdparty/${_d}"
+      mv "${_d}" "${srcdir}/${_srcdir}/src/3rdparty/" # Neither patch nor git-apply work with symlinks
+    done
+    cd "${srcdir}/${_srcdir}"
   fi
 
   # Why does the qtwebengine git download compile and the archive download doesn't?
