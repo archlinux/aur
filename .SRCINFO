@@ -1,12 +1,12 @@
 pkgbase = gnome-defaults-list
 	pkgdesc = Default file associations for GNOME environment
-	pkgver = 48.0
-	pkgrel = 2
+	pkgver = 49.2
+	pkgrel = 1
 	url = https://tracker.debian.org/pkg/gnome-session
 	arch = any
 	license = GPL
 	license = LGPL
-	source = https://deb.debian.org/debian/pool/main/g/gnome-session/gnome-session_48.0-2.debian.tar.xz
-	sha256sums = 04cfebc881b78a0c857b2968f08aa3b61b74e885a56737479c140faa64bd5519
+	source = https://deb.debian.org/debian/pool/main/g/gnome-session/gnome-session_49.2-1.debian.tar.xz
+	sha256sums = 28e76b08be7624e653dbf00a045fdf3ce491b7eb72cc769c71961fe110067b9f
 
 pkgname = gnome-defaults-list
