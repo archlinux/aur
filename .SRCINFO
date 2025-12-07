@@ -1,7 +1,7 @@
 pkgbase = csharp-ls
 	pkgdesc = Roslyn-based LSP language server for C#
 	pkgver = 0.20.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/razzmatazz/csharp-language-server
 	arch = x86_64
 	license = MIT

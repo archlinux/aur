@@ -1,7 +1,7 @@
 _dotnet_version=9.0
 pkgname="csharp-ls"
 pkgver=0.20.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Roslyn-based LSP language server for C#"
 arch=("x86_64")
 url="https://github.com/razzmatazz/csharp-language-server"
@@ -17,7 +17,7 @@ prepare() {
     # Most of the time our dotnet version is lower than global.json
     rm global.json
 
-    dotnet restore
+    dotnet restore --runtime "$(dotnet --info | grep RID | cut -d : -f 2 | xargs)"
 }
 
 build(){
@@ -26,12 +26,14 @@ build(){
         -c Release \
         --self-contained false \
         --no-restore \
-        --framework "net$_dotnet_version"
+        --framework "net$_dotnet_version" \
+        --runtime "$(dotnet --info | grep RID | cut -d : -f 2 | xargs)" \
+        -p:NoWarn=FS3397
 }
 package(){
     cd "$srcdir/csharp-language-server-$pkgver"
     mkdir -p "$pkgdir/usr/bin" "$pkgdir/usr/lib"
-    cp -av --no-preserve=ownership "src/CSharpLanguageServer/bin/Release/net$_dotnet_version/publish" \
+    cp -av --no-preserve=ownership "src/CSharpLanguageServer/bin/Release/net$_dotnet_version/$(dotnet --info | grep RID | cut -d : -f 2 | xargs)/publish" \
         "$pkgdir/usr/lib/csharp-ls"
     ln -srfv "$pkgdir/usr/lib/csharp-ls/CSharpLanguageServer" "$pkgdir/usr/bin/csharp-ls"
     install -Dm644 "$srcdir/csharp-language-server-$pkgver/LICENSE" \
