@@ -1,4 +1,4 @@
-# Maintainer: Mike Pento <mpento@darkforge.net>
+# Maintainer: Mike Pento <mjpento@gmail.com>
 
 # IMPORTANT!!! Modify this list for your specific installation
 _module_list=(
@@ -35,14 +35,15 @@ containsElement () {
 }
 
 pkgname=e-modules-extra-git
-pkgver=20241111
+pkgver=20251207
 pkgrel=2
 pkgdesc="Enlightenment modules: Extra unsupported modules in Git not already packaged elsewhere"
 arch=('i686' 'x86_64')
 url="https://git.enlightenment.org/"
-license=('GPL' 'MIT')
+license=('GPL-1.0-or-later' 'MIT')
+options+=('!debug')
 
-depends=('enlightenment')
+depends=('enlightenment' 'efl' 'glibc')
   containsElement "elev8" "${_module_list[@]}" && depends+=('v8<3.19.16')
   containsElement "empris" "${_module_list[@]}" && depends+=('e_dbus')
   containsElement "everything-websearch" "${_module_list[@]}" && depends+=('e_dbus')
@@ -77,7 +78,7 @@ build() {
       --prefix=/usr \
       --disable-static
 
-    make
+    make CFLAGS+=-std=gnu17
   done
 }
 
