@@ -1,0 +1,18 @@
+pkgbase = winjitsu
+	pkgdesc = A slick, animated window management tool for Linux (X11)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Evilchuck666/winjitsu
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = xdotool
+	depends = xorg-xrandr
+	source = WinJitsu-0.1.0.tar.gz::https://github.com/Evilchuck666/WinJitsu/archive/refs/tags/v0.1.0.tar.gz
+	md5sums = c6a1c6e40f66997302ecb9a85699e61f
+
+pkgname = winjitsu
