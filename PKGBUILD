@@ -12,7 +12,7 @@ conflicts=('mtc')
 
 source=("https://github.com/JuansesDev/MTC/releases/download/V.${pkgver}/mtc-linux-x64-${pkgver}.tar.gz")
 
-sha256sums=('56bcb09c08d6057feec71540f416ff4bf3782fe8ceaa0d404d93af09b84a65fc')
+sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
 
 package() {
     # Crear directorios destino
