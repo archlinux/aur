@@ -1,6 +1,6 @@
 pkgbase = aimp
 	pkgdesc = A powerful free audio player (v6 Alpha, Unstable)
-	pkgver = 6.00.3021
+	pkgver = 6.00.3022
 	pkgrel = 1
 	url = https://www.aimp.ru
 	arch = x86_64
@@ -17,6 +17,6 @@ pkgbase = aimp
 	provides = aimp
 	conflicts = aimp
 	source = https://www.aimp.ru/files/windows/builds/aimp-nightly-x86_64.pkg.tar.zst
-	sha256sums = a094908eaa89488b460a5ed8a221551c4e32c121f643b4aad4601738400b5f19
+	sha256sums = 97b7c6791520edc3c437fee9d66c4ae7db3810004ac47ea50a320f70214225d0
 
 pkgname = aimp
