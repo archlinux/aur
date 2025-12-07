@@ -1,0 +1,18 @@
+pkgbase = sysinfoviewer
+	pkgdesc = A comprehensive system information viewer built with wxWidgets
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/Magpiny/sysinfoviewer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	depends = wxwidgets-gtk3
+	depends = curl
+	depends = alsa-lib
+	optdepends = lm_sensors: Additional hardware monitoring support
+	optdepends = smartmontools: Disk health information
+	source = sysinfoviewer-0.2.4.tar.gz::https://github.com/Magpiny/sysinfoviewer/archive/v0.2.4.tar.gz
+	sha256sums = 6f88940c83923bacf223b8893e5558794e887b9ee5edfeac3e96d8463467fb70
+
+pkgname = sysinfoviewer
