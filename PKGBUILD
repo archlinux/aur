@@ -4,7 +4,7 @@
 # binaries for faster installation. For building from source, see lazylora.
 
 pkgname=lazylora-bin
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Unofficial terminal user interface for Algorand Blockchain exploration (binary package)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('MIT')
 provides=('lazylora')
 conflicts=('lazylora')
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::https://github.com/aorumbayev/lazylora/releases/download/v${pkgver}/lazylora-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('fdc34e9d0b2e10dda012267b752aa93025cd6609b68f9d9a51db557259e32eca')
+sha256sums_x86_64=('7da42145c1fa496d2ca6f30dbcbc6b19447dd39fc2d9bc1691b508e9336054c2')
 
 package() {
     # Install binary
