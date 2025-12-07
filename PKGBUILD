@@ -1,8 +1,8 @@
 # Maintainer: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=texttest
-pkgver=4.4.3
-_commit=d3f20fdd3295b4241d8d689d2f2b85d02f99c556
+pkgver=4.4.5
+_commit=5c69626ecf1491f431eb9874b84e0cd700d7eef9
 pkgrel=1
 pkgdesc="A tool for text-based functional testing"
 arch=(any)
@@ -28,7 +28,7 @@ makedepends=(
 )
 optdepends=('python-boto: for Amazon EC2 support')
 source=("$pkgname-$_commit.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('18e91b4109372180ca829fee1cd5863d7e83c8762f916f9e1295a0586757b3d4')
+sha256sums=('61492e34a6a67ecd4128b0b3d88fcb070bf73feb2e8c841901f7cda07d65ab96')
 
 pkgver() {
   cd $pkgname-$_commit

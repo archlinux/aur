@@ -1,6 +1,6 @@
 pkgbase = texttest
 	pkgdesc = A tool for text-based functional testing
-	pkgver = 4.4.3
+	pkgver = 4.4.5
 	pkgrel = 1
 	url = https://github.com/texttest/texttest
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = texttest
 	depends = python-pillow
 	depends = python-psutil
 	optdepends = python-boto: for Amazon EC2 support
-	source = texttest-d3f20fdd3295b4241d8d689d2f2b85d02f99c556.tar.gz::https://github.com/texttest/texttest/archive/d3f20fdd3295b4241d8d689d2f2b85d02f99c556.tar.gz
-	sha256sums = 18e91b4109372180ca829fee1cd5863d7e83c8762f916f9e1295a0586757b3d4
+	source = texttest-5c69626ecf1491f431eb9874b84e0cd700d7eef9.tar.gz::https://github.com/texttest/texttest/archive/5c69626ecf1491f431eb9874b84e0cd700d7eef9.tar.gz
+	sha256sums = 61492e34a6a67ecd4128b0b3d88fcb070bf73feb2e8c841901f7cda07d65ab96
 
 pkgname = texttest
