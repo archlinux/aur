@@ -6,13 +6,13 @@
 
 pkgname=armory
 pkgver=0.96.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Full-featured Bitcoin wallet management application"
 arch=('i686' 'x86_64')
 url="https://github.com/goatpig/BitcoinArmory"
 license=('AGPL3' 'MIT')
 depends=('crypto++' 'qt4' 'python2' 'python2-twisted' 'python2-pyqt4' 'python2-bsddb' 'python2-psutil')
-makedepends=('gcc' 'make' 'swig3')
+makedepends=('swig3')
 optdepends=('bitcoin-daemon: Communicate with the Bitcoin network')
 provides=('armory')
 conflicts=('armory' 'armory-git' 'armory-bin' 'armory-goatpig-git')

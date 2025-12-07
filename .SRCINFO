@@ -1,15 +1,13 @@
 pkgbase = armory
 	pkgdesc = Full-featured Bitcoin wallet management application
 	pkgver = 0.96.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/goatpig/BitcoinArmory
 	install = armory.install
 	arch = i686
 	arch = x86_64
 	license = AGPL3
 	license = MIT
-	makedepends = gcc
-	makedepends = make
 	makedepends = swig3
 	depends = crypto++
 	depends = qt4
