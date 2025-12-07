@@ -15,7 +15,7 @@ license=('LicenseRef-GPL-3.0')
 depends=('glib2' 'glibc' 'gcc-libs' 'webkit2gtk-4.1' 'umu-launcher' 'libappindicator' 'libayatana-appindicator')
 makedepends=('unzip')
 source=('https://github.com/Drop-OSS/drop-app/releases/download/v0.3.4/Drop.Desktop.Client_0.3.4_amd64.deb')
-sha256sums=('c40a9e37db92614396af4eee811e00d268150314b644fef839de8d4b7b8b3963')
+sha256sums=('6473ced0769f64ec2c901f2718dda60c86ec4e09c4f89fbf6acfce1b0bb99d19')
 
 prepare() {
         tar -zxvf data.tar.gz
