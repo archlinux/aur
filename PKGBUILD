@@ -1,0 +1,30 @@
+# Maintainer: Nate Craft <secondarynate at icloud dot com>
+pkgname=dashi
+pkgver=1.0.0
+pkgrel=1
+pkgdesc=""
+arch=('x86_64')
+url="https://github.com/nate-craft/dashi"
+license=('MIT')
+depends=()
+conflicts=()
+source=("https://github.com/nate-craft/dashi/releases/download/${pkgver}/dashi-${pkgver}-x86_64-unknown-linux-gnu"
+    "90-backlight.rules" "30-bluetooth.rules")
+sha256sums=('7c0b8ba78fb97efe7ac23533c935644283cd37b08a54e619b66ba4a3d3ce4dfc'             '3157113d400685886ef5a45b714a76d59bc08e0c1e7f8fb2b6dc7b2529daa55f'             'd3b14a1e63bfa865386e1556b11eb642ccad91ddb36938803e55c08effe59e50') 
+
+package() {
+    install -Dm755 "${srcdir}/dashi-${pkgver}-x86_64-unknown-linux-gnu" "${pkgdir}/usr/bin/dashi"
+    install -Dm644 "90-backlight.rules" "${pkgdir}/etc/udev/rules.d/90-backlight.rules"
+    install -Dm644 "30-bluetooth.rules" "${pkgdir}/etc/polkit-1/rules.d/30-bluetooth.rules"
+}
+
+post_install() {
+    echo "Reloading udev and polkit..."
+    sudo udevadm control --reload
+    sudo udevadm trigger
+    sudo systemctl restart polkit
+    echo "Dashi installed to /usr/bin/dashi"
+    echo "If brightness/bluetooth is not functional immediately, restart your system."
+    echo "Please run the following command to enable basic functionality."
+    echo "sudo usermod -aG wheel $USER"
+}

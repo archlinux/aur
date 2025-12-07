@@ -1,0 +1,14 @@
+pkgbase = dashi
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nate-craft/dashi
+	arch = x86_64
+	license = MIT
+	source = https://github.com/nate-craft/dashi/releases/download/1.0.0/dashi-1.0.0-x86_64-unknown-linux-gnu
+	source = 90-backlight.rules
+	source = 30-bluetooth.rules
+	sha256sums = 7c0b8ba78fb97efe7ac23533c935644283cd37b08a54e619b66ba4a3d3ce4dfc
+	sha256sums = 3157113d400685886ef5a45b714a76d59bc08e0c1e7f8fb2b6dc7b2529daa55f
+	sha256sums = d3b14a1e63bfa865386e1556b11eb642ccad91ddb36938803e55c08effe59e50
+
+pkgname = dashi
