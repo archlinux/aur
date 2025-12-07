@@ -73,4 +73,8 @@ package() {
 	install -Dm0755 -t "$pkgdir/usr/bin/" target/release/{graphene-cli,graphite}
 	install -d "$pkgdir$_cef_path"
 	cp -a target/release/build/cef-dll-sys-*/out/cef_linux_x86_64/. "$pkgdir$_cef_path"
+
+	install -Dm644 -t "$pkgdir/usr/share/applications/" desktop/assets/art.graphite.Graphite.desktop
+	install -Dm644 -t "$pkgdir/usr/share/pixmaps/" branding/app-icons/graphite.{png,svg}
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
 }
