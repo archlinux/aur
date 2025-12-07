@@ -2,7 +2,7 @@
 _base=colour-science
 pkgname=python-${_base}
 pkgdesc="Colour Science for Python"
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 arch=(any)
 url="https://${_base}.org"
@@ -19,7 +19,7 @@ optdepends=('python-matplotlib: for plot diagrams'
   'python-trimesh: for plot the section contour of given hull along given axis and origin')
   # 'python-xxhash: '
 source=(${_base//-science/}-${pkgver}.tar.gz::https://github.com/${_base}/${_base//-science/}/archive/v${pkgver}.tar.gz)
-sha512sums=('074262ba14ce66e833d3780e2ddf74e77ea915609f8a92bb94916f9b03d9b3a6a7e058d86f50e84542883bb7beca5c57e3fe75dc5f7f5f576411a270390f4935')
+sha512sums=('25a484be6750e5acc08c59a92532b1fe567ab59ed12e602559d3e28a4fa68ef0820e57a7f3db879911b5df157d4425465b8e346fa30342fdfcdbc32b24142dc3')
 
 build() {
   cd ${_base//-science/}-${pkgver}

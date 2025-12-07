@@ -1,6 +1,6 @@
 pkgbase = python-colour-science
 	pkgdesc = Colour Science for Python
-	pkgver = 0.4.6
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://colour-science.org
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-colour-science
 	optdepends = python-pydot: for plot automatic colour conversion graph using Graphviz
 	optdepends = python-tqdm: for compute hull section
 	optdepends = python-trimesh: for plot the section contour of given hull along given axis and origin
-	source = colour-0.4.6.tar.gz::https://github.com/colour-science/colour/archive/v0.4.6.tar.gz
-	sha512sums = 074262ba14ce66e833d3780e2ddf74e77ea915609f8a92bb94916f9b03d9b3a6a7e058d86f50e84542883bb7beca5c57e3fe75dc5f7f5f576411a270390f4935
+	source = colour-0.4.7.tar.gz::https://github.com/colour-science/colour/archive/v0.4.7.tar.gz
+	sha512sums = 25a484be6750e5acc08c59a92532b1fe567ab59ed12e602559d3e28a4fa68ef0820e57a7f3db879911b5df157d4425465b8e346fa30342fdfcdbc32b24142dc3
 
 pkgname = python-colour-science
