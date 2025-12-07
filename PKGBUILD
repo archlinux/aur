@@ -34,8 +34,8 @@ pkgname=('roccat-tools-common'
          'roccat-tools-tyon'
          'roccat-tools-nyth')
 pkgbase=roccat-tools
-pkgver=5.9.0
-pkgrel=3
+pkgver=5.9.1
+pkgrel=1
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
@@ -47,10 +47,10 @@ source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-too
         'fix-multiple-definitions.patch'
         '90-uinput.rules'
         'uhid.conf')
-sha256sums=('6f6766309bace2aece09910912d4a6d8bec61c9b4432f4f3ed388ebf7e16408a'
-            '6268347c22392606c1ea3ea265a43607ed708b5428faa87c0ed1f6d776edb80b'
-            '097a333b61921698d60f448e66c34c57905d2098aca998d987be782a0e4862ff'
-            '0d328038322f62ff1f3319666df5f8f58c0a028415a917ad247b0446c1ff90f5')
+sha512sums=('ef314c683af7a6223571912b29c7a83cb833c89a8e160bf1195981565cbe6633b6b1fc4463e85fb42182423282c57dc4f75dfe33b2367c1d5d1fa96aff0b30c4'
+            '201486e62451939b4881c57daf22056d326a8de89a152c321fbe9d5e34940e18b8737a835da2552d6766622d754fbcec977086fdb74a61a9eb41620aa99a1aff'
+            'ce975718e6cafc1df4b228e4cb2865f7dde4b98295693cd501f0ed34159a222a24af4ac872f11579539449d4c2b5d83e2a6dc429be02eaa545b0fc4d23e63627'
+            '8d78d6771ff6f43ad3c594c0d9fafb4d4e724658e06e12d3c1d4c42d77e316f46eb3d97a6357f522ed6993de10d223deca6fbf31dc1c04e84d1ea9a0b788c200')
 
 prepare() {
   cd "$srcdir/$pkgbase-$pkgver"
