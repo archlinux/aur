@@ -25,15 +25,17 @@ _binaries=(
 
 prepare() {
   cd "$pkgname"
+  cd "deps"
+  rmdir rust-jack
+  git clone https://codeberg.org/unspeaker/rust-jack
+  rmdir tengri
+  git clone https://codeberg.org/unspeaker/tengri
+  cd ..
   cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "$pkgname"
-  cd "deps"
-  rmdir rust-jack
-  git clone https://codeberg.org/unspeaker/rust-jack
-  cd ..
   export RUSTFLAGS=-Awarnings
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
