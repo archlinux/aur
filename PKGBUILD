@@ -15,8 +15,8 @@ depends=(
   pixman
   libxkbcommon
   pcre2
-  xorg-xwayland
   libxcb
+  xorg-xwayland
   'libwlroots-0.19.so'
   'scenefx0.4'
 )
