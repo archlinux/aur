@@ -1,0 +1,22 @@
+pkgbase = lib32-libhal1-bin
+	pkgdesc = Hardware Abstraction Layer by freedesktop.org (libhal.so.1, 32-bit)
+	pkgver = 0.5.14_8
+	pkgrel = 1
+	url = https://www.freedesktop.org/wiki/Software/hal/
+	arch = x86_64
+	license = AFL-2.1
+	license = GPL-2.0-or-later
+	depends = glibc
+	provides = lib32-libhal
+	provides = lib32-libhal1
+	provides = libhal.so=1
+	conflicts = lib32-libhal
+	conflicts = lib32-libhal1
+	options = !buildflags
+	options = !makeflags
+	options = !strip
+	options = !debug
+	source = https://archive.debian.org/debian/pool/main/h/hal/libhal1_0.5.14-8_i386.deb
+	sha256sums = 14b7fd650798ff06bf2d11db9508bf5caae65273b81211c838d2f0ae7d55e31d
+
+pkgname = lib32-libhal1-bin
