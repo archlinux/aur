@@ -36,7 +36,7 @@ pkgbase = mimose-bin
 	depends = util-linux-libs
 	depends = xdg-utils
 	options = !strip
-	source = https://github.com/0xhkamori/mimose-binaries/releases/download/v1.8.8-20251207-014723/mimose-1.8.8-1-x86_64.pkg.tar.zst
-	sha256sums = bc320245e6b55e158bba35e005a5c8db6ec1c380f3f2c82b34e098a37f8b5f57
+	source = https://github.com/0xhkamori/mimose-binaries/releases/download/v1.8.8-20251207-020308/mimose-1.8.8-1-x86_64.pkg.tar.zst
+	sha256sums = 23ba64966fe3d22b844116715cfc26f4898808a75e061815a37192bfe050f260
 
 pkgname = mimose-bin
