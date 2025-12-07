@@ -2,18 +2,18 @@
 # Contributor: Peter Wu <lekensteyn at gmail dot com>
 # Contributor: Andreas Schönfelder <passtschu at freenet dot de>
 pkgname=dex2jar
-pkgver=2.4
+pkgver=2.4.33
 pkgrel=1
-pkgdesc="Tools to work with android .dex and java .class files"
+pkgdesc="Tools to work with android .dex and java .class files. ThexXTURBOXx's fork."
 arch=(any)
-url="https://github.com/pxb1988/dex2jar"
+url="https://github.com/thexxturboxx/dex2jar"
 license=('Apache')
 depends=('java-runtime' 'bash')
-source=("https://github.com/pxb1988/dex2jar/releases/download/v${pkgver}/dex-tools-v${pkgver}.zip")
-sha256sums=('ee7c45eb3c1d2474a6145d8d447e651a736a22d9664b6d3d3be5a5a817dda23a')
+source=("https://github.com/thexxturboxx/dex2jar/releases/download/${pkgver}/dex-tools-${pkgver}.zip")
+sha256sums=('18fa855b5572e76e8134282299472b22fd9f53d11a2417f9077e63e82928a0b5')
 
 package() {
-  cd "$srcdir/dex-tools-v$pkgver"
+  cd "$srcdir/dex-tools-$pkgver"
 
   mkdir -p "$pkgdir/usr/bin/"
   mkdir -p "$pkgdir/opt/dex2jar/lib/"
