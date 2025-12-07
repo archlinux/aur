@@ -1,0 +1,17 @@
+diff --git a/package.json b/package.json
+index e3ea795de..42fe3fe39 100644
+--- a/package.json
++++ b/package.json
+@@ -120,6 +120,11 @@
+     "@leafygreen-ui/select": "^17.0.1",
+     "@leafygreen-ui/text-input": "^16.2.1",
+     "@leafygreen-ui/tokens": "^4.0.0",
+-    "@leafygreen-ui/typography": "^22.2.2"
++    "@leafygreen-ui/typography": "^22.2.2",
++    "electron": "%%ELECTRON_VERSION%%",
++    "electron-to-chromium": "latest",
++    "ssh2": "1.16.0",
++    "nan": "2.23.0",
++    "html-webpack-plugin": "5.6.5"
+   }
+ }
