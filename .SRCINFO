@@ -1,0 +1,18 @@
+pkgbase = rustfs-bin
+	pkgdesc = 🚀 High-performance distributed object storage for MinIO alternative.
+	pkgver = 1.0.0_alpha.72
+	pkgrel = 1
+	url = https://github.com/rustfs/rustfs
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	source = rustfs.service
+	source = rustfs.env
+	sha256sums = 29aed584b39c63ca8054f9519848dcd47918e9c5272712745fef08b4058ad3d2
+	sha256sums = e38071aeabc5e7d85e546e81545df89e9d2de01938c4764a701321f5bc30f356
+	source_x86_64 = rustfs-1.0.0-alpha.72-x86_64.zip::https://github.com/rustfs/rustfs/releases/download/1.0.0-alpha.72/rustfs-linux-x86_64-musl-v1.0.0-alpha.72.zip
+	sha256sums_x86_64 = 8632a924ef8e1328ff72c9ea0f26ebb9d25d890249c287138d900fb4f22f0658
+	source_aarch64 = rustfs-1.0.0-alpha.72-aarch64.zip::https://github.com/rustfs/rustfs/releases/download/1.0.0-alpha.72/rustfs-linux-aarch64-musl-v1.0.0-alpha.72.zip
+	sha256sums_aarch64 = 077adb3f4ccae0e1d133a99f50b2a9b9fe1f8237c34c3bc4551ea685df2095fb
+
+pkgname = rustfs-bin
