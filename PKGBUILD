@@ -6,7 +6,7 @@ epoch=
 pkgdesc="An helical representation of a solar system."
 arch=('x86_64')
 url="https://github.com/Nerter29/helical-cli"
-license=('unknown')
+license=('GPL-3.0-or-later')
 groups=()
 depends=('glibc')
 makedepends=('git' 'zig')
@@ -40,4 +40,5 @@ build() {
 package() {
 	cd "$srcdir/helical-cli"
 	install -Dm755 helical "$pkgdir/usr/bin/helical"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
