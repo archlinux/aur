@@ -6,7 +6,8 @@ pkgdesc=""
 arch=('x86_64')
 url="https://github.com/nate-craft/dashi"
 license=('MIT')
-depends=()
+depends=('libpulse' 'libnotify')
+optdepends=('gammastep: provides nightshift')
 conflicts=()
 source=("https://github.com/nate-craft/dashi/releases/download/${pkgver}/dashi-${pkgver}-x86_64-unknown-linux-gnu"
     "90-backlight.rules" "30-bluetooth.rules")
