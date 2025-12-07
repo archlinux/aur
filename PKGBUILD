@@ -14,8 +14,8 @@ sha256sums=('7c0b8ba78fb97efe7ac23533c935644283cd37b08a54e619b66ba4a3d3ce4dfc'  
 
 package() {
     install -Dm755 "${srcdir}/dashi-${pkgver}-x86_64-unknown-linux-gnu" "${pkgdir}/usr/bin/dashi"
-    install -Dm644 "90-backlight.rules" "${pkgdir}/etc/udev/rules.d/90-backlight.rules"
-    install -Dm644 "30-bluetooth.rules" "${pkgdir}/etc/polkit-1/rules.d/30-bluetooth.rules"
+    install -Dm644 "${srcdir}/90-backlight.rules" "${pkgdir}/etc/udev/rules.d/90-backlight.rules"
+    install -Dm644 "${srcdir}/30-bluetooth.rules" "${pkgdir}/etc/polkit-1/rules.d/30-bluetooth.rules"
 }
 
 post_install() {
