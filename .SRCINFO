@@ -1,14 +1,15 @@
 pkgbase = vvdec
 	pkgdesc = Fraunhofer versatile video decoder
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hhi.fraunhofer.de/en/departments/vca/technologies-and-solutions/h266-vvc/fraunhofer-versatile-video-decoder-vvdec.html
 	arch = i686
 	arch = x86_64
 	license = BSD-3-Clause-Clear
 	makedepends = cmake
 	depends = gcc-libs
-	options = staticlibs
+	depends = glibc
+	provides = libvvdec.so
 	source = vvdec-3.1.0-src.tar.gz::https://github.com/fraunhoferhhi/vvdec/archive/refs/tags/v3.1.0.tar.gz
 	sha256sums = e3e5093acfdcbfd2159f3d0166d451d7ccabd293ed30f3762b481c9c6c0a7512
 

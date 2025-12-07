@@ -2,14 +2,14 @@
 
 pkgname=vvdec
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fraunhofer versatile video decoder"
 arch=('i686' 'x86_64')
 url="https://www.hhi.fraunhofer.de/en/departments/vca/technologies-and-solutions/h266-vvc/fraunhofer-versatile-video-decoder-vvdec.html"
 license=('BSD-3-Clause-Clear')
-depends=('gcc-libs')
+depends=('gcc-libs' 'glibc')
 makedepends=('cmake')
-options=('staticlibs')
+provides=('libvvdec.so')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/fraunhoferhhi/vvdec/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('e3e5093acfdcbfd2159f3d0166d451d7ccabd293ed30f3762b481c9c6c0a7512')
 
@@ -24,6 +24,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
+    -DBUILD_SHARED_LIBS=ON \
     ./
   cmake --build "_build"
 }
