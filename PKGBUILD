@@ -1,7 +1,7 @@
 # Maintainer: tam1m <tbacc plus aur at pm dot me>
 _pkgname=pipeweaver
 pkgname=${_pkgname}-git
-pkgver=r220.21f0375
+pkgver=r316.45d0579
 pkgrel=1
 pkgdesc="An audio management tool for Linux built on top of PipeWire, designed specifically with streaming and broadcasting in mind."
 arch=('x86_64')
@@ -43,19 +43,8 @@ package() {
   install -m644 daemon/resources/icons/pipeweaver.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/pipeweaver.png"
   install -d "${pkgdir}/usr/share/pixmaps"
   install -m644 daemon/resources/icons/pipeweaver-large.png "${pkgdir}/usr/share/pixmaps/pipeweaver.png"
-
-
   install -d "${pkgdir}/usr/share/applications"
-  cat > "${pkgdir}/usr/share/applications/pipeweaver.desktop" <<EOF
-[Desktop Entry]
-Name=PipeWeaver
-Comment=An Audio Mixer built upon Pipewire
-Exec=pipeweaver-daemon
-Icon=pipeweaver
-Terminal=false
-Type=Application
-Categories=AudioVideo;Audio;Mixer;
-StartupNotify=false
-Keywords=audio
-EOF
+  install -m644 daemon/resources/desktop/pipeweaver.desktop "${pkgdir}/usr/share/applications/pipeweaver.desktop"
 }
+
+

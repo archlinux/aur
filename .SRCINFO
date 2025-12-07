@@ -1,6 +1,6 @@
 pkgbase = pipeweaver-git
 	pkgdesc = An audio management tool for Linux built on top of PipeWire, designed specifically with streaming and broadcasting in mind.
-	pkgver = r220.21f0375
+	pkgver = r316.45d0579
 	pkgrel = 1
 	url = https://github.com/pipeweaver/pipeweaver
 	arch = x86_64
