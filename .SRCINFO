@@ -8,7 +8,7 @@ pkgbase = tek
 	makedepends = cargo
 	depends = pipewire-jack
 	depends = gcc-libs
-	source = tek-0.2.0.rc7.tar.gz::https://codeberg.org/unspeaker/tek/archive/0.2.0-rc.7.tar.gz
-	sha256sums = 41c0e5388ce19584a3ab05e491206fc331b9e09d976ed19ee135f697fb2c2ce9
+	source = tek-0.3.0-rc.1.tar.gz::https://codeberg.org/unspeaker/tek/archive/0.3.0-rc.1.tar.gz
+	sha256sums = 13dd96aef8590346160e3c9fdebdc22cc40f46fdb7e8f80e3d5a7c843fd4a298
 
 pkgname = tek

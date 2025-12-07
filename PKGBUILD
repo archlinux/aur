@@ -3,15 +3,15 @@
 # Contributor: Orhun Parmaksız <orhun@archlinux.org>
 
 pkgname=tek
-_pkgver=0.2.0-rc.7
-pkgver=0.2.0.rc7
-pkgrel=2
+_pkgver=0.3.0-rc.1
+pkgver=0.3.0-rc.1
+pkgrel=1
 pkgdesc='A colorful music making program for your linux terminal'
 arch=('x86_64')
 url="https://codeberg.org/unspeaker/$pkgname"
 license=('custom:tek')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_pkgver.tar.gz")
-sha256sums=('41c0e5388ce19584a3ab05e491206fc331b9e09d976ed19ee135f697fb2c2ce9')
+sha256sums=('13dd96aef8590346160e3c9fdebdc22cc40f46fdb7e8f80e3d5a7c843fd4a298')
 makedepends=('cargo')
 depends=('pipewire-jack' 'gcc-libs')
 
