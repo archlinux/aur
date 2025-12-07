@@ -5,7 +5,7 @@
 
 pkgname=feluda
 pkgver=1.10.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Detect license usage restrictions in your project'
 arch=('x86_64' 'aarch64')
 url="https://github.com/anistark/$pkgname"
@@ -26,6 +26,10 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export CARGO_PROFILE_RELEASE_DEBUG=false
+    export CARGO_PROFILE_RELEASE_STRIP=symbols
+    export RUSTFLAGS="--remap-path-prefix=$srcdir=/ --remap-path-prefix=$(pwd)=/"
+    export OPENSSL_NO_VENDOR=1
     cargo build --release --locked
 }
 
@@ -33,12 +37,13 @@ check() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo test --locked -- --skip test_extreme_edge_case_packages
+    export OPENSSL_NO_VENDOR=1
+    cargo test --locked
 }
 
 package() {
     cd "$pkgname-$pkgver"
-    install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+    install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }

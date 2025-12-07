@@ -1,7 +1,7 @@
 pkgbase = feluda
 	pkgdesc = Detect license usage restrictions in your project
 	pkgver = 1.10.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/anistark/feluda
 	arch = x86_64
 	arch = aarch64
