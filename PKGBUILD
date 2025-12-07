@@ -1,5 +1,6 @@
-# Maintainer: Harrison <contact@htv04.com>
-# Co-Maintainer: Kaleb Elwert <belak@coded.io>
+# Maintainer: arbitar <aur@arbi.in>
+# Original Maintainer: Harrison <contact@htv04.com>
+# Original Co-Maintainer: Kaleb Elwert <belak@coded.io>
 
 pkgname=picotron
 pkgver=0.2.1e
