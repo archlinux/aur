@@ -1,12 +1,10 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=wchisp-git
-pkgver=0.3.0.r12.g37bd09d
+pkgver=0.3.0.r28.g9eaf3dc
 pkgrel=1
 pkgdesc="WCH ISP Tool in Rust"
-arch=(x86_64
-    aarch64
-    riscv64)
+arch=($CARCH)
 url="https://github.com/ch32-rs/wchisp"
 license=('GPL-2.0-only')
 provides=(${pkgname%-git})
@@ -16,11 +14,12 @@ depends=(
     gcc-libs
     glibc
     libusb
-    systemd-libs)
+    systemd-libs
+)
 makedepends=(
-    cargo
     git
-    rust)
+    rust
+)
 backup=()
 options=('!lto')
 install=
@@ -29,8 +28,9 @@ sha256sums=('SKIP')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
-    #     cd "${srcdir}/${pkgname}/"
-    #     git tag --delete nightly
+    cd "${srcdir}/${pkgname}/"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 pkgver() {
