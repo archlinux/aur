@@ -29,7 +29,7 @@ package() {
     # Install desktop entry
     install -Dm644 "${srcdir}/kimai.desktop" "${pkgdir}/usr/share/applications/kimai.desktop"
 
-    # Install icon
-    install -Dm644 "${pkgdir}/opt/kimai/lib/kimai_logo.png" \
-        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/kimai.png" 2>/dev/null || true
+    # Install icon (from source)
+    install -Dm644 "${srcdir}/kimai/lib/kimai.png" \
+        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/kimai.png"
 }
