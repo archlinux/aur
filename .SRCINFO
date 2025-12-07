@@ -1,7 +1,7 @@
 pkgbase = hei-cursors-git
 	pkgdesc = Hei Cursor Theme. Created by Bilibili user 1013625945 (漓翎_cub), ported by GitHub user Tseshongfeeshur (Ryan).
 	pkgver = 0.r1.g0000000
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/Tseshongfeeshur/hei-cursors
 	arch = any
 	license = MIT
