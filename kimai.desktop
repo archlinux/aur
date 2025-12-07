@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Kimai
+Comment=Desktop client for Kimai Time Tracking
+Exec=/usr/bin/kimai
+Icon=kimai
+Terminal=false
+Categories=Office;ProjectManagement;
+Keywords=time;tracking;kimai;
+StartupWMClass=kimai

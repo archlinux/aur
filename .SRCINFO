@@ -1,0 +1,19 @@
+pkgbase = kimai
+	pkgdesc = Desktop client for Kimai Time Tracking Server
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/progeek-de/kimai-client
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = hicolor-icon-theme
+	optdepends = libnotify: desktop notifications
+	conflicts = kimai-git
+	options = !strip
+	source = kimai-1.1.1.tar.gz::https://github.com/progeek-de/kimai-client/releases/download/v1.1.1/kimai-1.1.1-linux-portable.tar.gz
+	source = kimai.desktop
+	source = kimai.sh
+	sha256sums = 1547c0629ca836041811c9f2418e900dbc0ff1679fd0a4d89ecec13e2c9199a1
+	sha256sums = cd16b8c4a81e0eca333a4cf1b725bc5b8893caeca93331cd0955e41733201027
+	sha256sums = 188cf417849b5a5afb15b4d9fc5ced12c137b070de30851600ffc802b388995a
+
+pkgname = kimai
