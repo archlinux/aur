@@ -17,6 +17,6 @@ pkgbase = textmerger
 	options = !debug
 	options = !strip
 	source = textmerger-2.1.1-1-x86_64.pkg.tar.zst::https://github.com/pierspad/textmerger/releases/download/v2.1.1/textmerger-2.1.1-1-x86_64.pkg.tar.zst
-	sha256sums = ef174ede71281fb0beaf6901d086a640de2a4646f8a17c4392ea003c45bdbaa9
+	sha256sums = 3575bd3e99a80de33fba7872431288940185b471e851ff4551007bc68346e2ca
 
 pkgname = textmerger
