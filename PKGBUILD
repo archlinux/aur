@@ -3,7 +3,7 @@ _target='compass-readonly'
 _edition=' Readonly'
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='r19333.gf6f6c48a6'
+pkgver='r19381.ge0b515baf'
 pkgrel='1'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - git version'
@@ -19,28 +19,21 @@ conflicts=("$_pkgname")
 backup=('etc/mongodb-compass.conf')
 source=(
 	"$pkgname::git+https://github.com/mongodb-js/compass"
-	'ignore-fix-ts-errors.diff'
 	'hadron-build-ffmpeg.diff'
 	'fix-argv.diff'
-	'fix-local-storage.diff'
 	'update-dependencies.diff'
 	'mongodb-compass.conf'
 )
 b2sums=('SKIP'
-        'd392a97281780657529841933474b370f0ae9df9a063aa95a7c90ae43f82baacbef3840e2a3eabd0848d84dc19665cc6f7ea5a2311f1dc2eda9d03eff9be2eea'
         'c0f139a686be88867b54ee530bd95bf51e71ccf2d07f25a8a70fffdfc7592ff017fd386641170a80596f855b2df39da5dc05fc563c018540fc3bc610e16971e1'
         '925dbea3aa18e5ac3529276f0c5d4c42d7ae5cb81cc9e5df3b411af751b8314e9a20bd0c5c7af144d2cdd11a26634a11aa7c064545d96003566640f5005375df'
-        '17d17d30bda15430b3a8fe15207ab41dc6820461aad52df07bf7b7a0ecc342c5605bdf57673aab24f8a136560b6cad30b059fadb2f2e271cacda6a2b903daa40'
-        'a3c850d924e3f55e1319dd5c2fceb02ca07220a4a95e77847b53a2321e0268741fb0c62a712af99e10a5c50de3e5ee5af272d3465e9556510fdc46abe8edab9d'
+        '66067db3cd9a69d9d5cf8fc7e1f0907e92a43569ff5d1aeab7e466bba8bb749e0e9e4e2ff07634c64a4b411f860d12db580507b9c0d6ba55f18bb7e6d166c212'
         '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
 
 _sourcedirectory="$pkgname"
 
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
-
-	# Ignore/fix IconButton TS errors
-	patch --forward -p1 < "$srcdir/ignore-fix-ts-errors.diff"
 
 	# Don't use the bundled ffmpeg
 	patch --forward -p1 < "$srcdir/hadron-build-ffmpeg.diff"
@@ -50,9 +43,6 @@ prepare() {
 
 	# Set npm overrides for various dependencies
 	patch --forward -p1 < "$srcdir/update-dependencies.diff"
-
-	# Fix broken build with node=>25.1.0 due to localStorage behavior changes (https://github.com/nodejs/node/pull/60351)
-	patch --forward -p1 < "$srcdir/fix-local-storage.diff"
 
 	# Set system Electron version for ABI compatibility
 	sed -i "s|%%ELECTRON_VERSION%%|$(cat "/usr/lib/$_electronpkg/version")|g" 'package.json'
@@ -64,9 +54,6 @@ prepare() {
 	## ssh2 - fix build with current node/kernel version
 	## html-webpack-plugin - fix build with node>=25.1.0
 	npm update electron electron-to-chromium nan ssh2 html-webpack-plugin --package-lock-only
-
-	# Add missing dependencies that don't get installed by default for some reason
-	npm install '@aws-sdk/client-sts@3.713.0' '@aws-sdk/credential-provider-web-identity@3.713.0'
 
 	# Run the bootstrap command
 	HUSKY=0 GYP_DEFINES='libmongocrypt_link_type=dynamic' npm run bootstrap

@@ -1,13 +1,13 @@
 diff --git a/package.json b/package.json
-index 62f965c4b..fcc3ede16 100644
+index e3ea795de..42fe3fe39 100644
 --- a/package.json
 +++ b/package.json
-@@ -133,6 +133,11 @@
-     "@leafygreen-ui/text-area": "^10.0.2",
-     "@leafygreen-ui/card": "^12.0.2",
-     "@leafygreen-ui/logo": "^10.0.2",
--    "@leafygreen-ui/tabs": "^17.0.4"
-+    "@leafygreen-ui/tabs": "^17.0.4",
+@@ -120,6 +120,11 @@
+     "@leafygreen-ui/select": "^17.0.1",
+     "@leafygreen-ui/text-input": "^16.2.1",
+     "@leafygreen-ui/tokens": "^4.0.0",
+-    "@leafygreen-ui/typography": "^22.2.2"
++    "@leafygreen-ui/typography": "^22.2.2",
 +    "electron": "%%ELECTRON_VERSION%%",
 +    "electron-to-chromium": "latest",
 +    "ssh2": "1.16.0",
