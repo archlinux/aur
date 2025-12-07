@@ -1,7 +1,7 @@
 pkgbase = qtjambi
 	pkgdesc = QtJambi is Qt bindings for the Java programming language originally developed by Trolltech
 	pkgver = 6.10.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/OmixVisualization/qtjambi
 	arch = x86_64
 	license = LGPL
@@ -12,8 +12,47 @@ pkgbase = qtjambi
 	makedepends = jdk25-openjdk
 	makedepends = make
 	makedepends = patch
+	makedepends = qt6-3d=6.10.1
+	makedepends = qt6-5compat=6.10.1
 	makedepends = qt6-base=6.10.1
+	makedepends = qt6-charts=6.10.1
+	makedepends = qt6-connectivity=6.10.1
+	makedepends = qt6-datavis3d=6.10.1
 	makedepends = qt6-declarative=6.10.1
+	makedepends = qt6-graphs=6.10.1
+	makedepends = qt6-grpc=6.10.1
+	makedepends = qt6-httpserver=6.10.1
+	makedepends = qt6-imageformats=6.10.1
+	makedepends = qt6-languageserver=6.10.1
+	makedepends = qt6-location=6.10.1
+	makedepends = qt6-lottie=6.10.1
+	makedepends = qt6-mqtt=6.10.1
+	makedepends = qt6-multimedia=6.10.1
+	makedepends = qt6-multimedia-ffmpeg=6.10.1
+	makedepends = qt6-multimedia-gstreamer=6.10.1
+	makedepends = qt6-networkauth=6.10.1
+	makedepends = qt6-positioning=6.10.1
+	makedepends = qt6-quick3d=6.10.1
+	makedepends = qt6-quick3dphysics=6.10.1
+	makedepends = qt6-quickeffectmaker=6.10.1
+	makedepends = qt6-quicktimeline=6.10.1
+	makedepends = qt6-remoteobjects=6.10.1
+	makedepends = qt6-scxml=6.10.1
+	makedepends = qt6-sensors=6.10.1
+	makedepends = qt6-serialbus=6.10.1
+	makedepends = qt6-serialport=6.10.1
+	makedepends = qt6-shadertools=6.10.1
+	makedepends = qt6-speech=6.10.1
+	makedepends = qt6-svg=6.10.1
+	makedepends = qt6-tools=6.10.1
+	makedepends = qt6-translations=6.10.1
+	makedepends = qt6-virtualkeyboard=6.10.1
+	makedepends = qt6-wayland=6.10.1
+	makedepends = qt6-webchannel=6.10.1
+	makedepends = qt6-webengine=6.10.1
+	makedepends = qt6-websockets=6.10.1
+	makedepends = qt6-webview=6.10.1
+	makedepends = qt6-xcb-private-headers=6.10.1
 	options = !debug
 	source = https://github.com/OmixVisualization/qtjambi/archive/refs/tags/v6.10.1.tar.gz
 	sha256sums = SKIP
