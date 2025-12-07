@@ -2,7 +2,7 @@
 
 pkgname=koito
 _pkgname=Koito
-pkgver=0.0.13
+pkgver=0.0.14
 pkgrel=1
 pkgdesc='Modern, themeable scrobbler that you can use with any program that scrobbles to ListenBrainz'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
   "koito.service"
   "koito.env"
 )
-sha256sums=('6c0275620806fc4dfbaa4661f8467bd1f76c9523404a3018b5e657179c881f3b'
+sha256sums=('78df9cc7ff7ff4a30615d154c774b6fb611892e061d4e271ee55de26e58f42ce'
   '512c7911ef7d04561ddc0ccc70d240617be60cdedbfab3bfd43b2ee80d1d43bb'
   'e001fae2ecb86bfc5425f4ca2a1c4bcee7522a63406cc1e218a901770197474d')
 
