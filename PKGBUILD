@@ -13,7 +13,7 @@ license=('custom:tek')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_pkgver.tar.gz")
 sha256sums=('13dd96aef8590346160e3c9fdebdc22cc40f46fdb7e8f80e3d5a7c843fd4a298')
 makedepends=('cargo')
-depends=('pipewire-jack' 'gcc-libs')
+depends=('pipewire-jack' 'gcc-libs' 'git')
 
 _binaries=(
   "${pkgname}_arranger"
@@ -30,6 +30,10 @@ prepare() {
 
 build() {
   cd "$pkgname"
+  cd "deps"
+  rmdir rust-jack
+  git clone https://codeberg.org/unspeaker/rust-jack
+  cd ..
   export RUSTFLAGS=-Awarnings
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features

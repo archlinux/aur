@@ -8,6 +8,7 @@ pkgbase = tek
 	makedepends = cargo
 	depends = pipewire-jack
 	depends = gcc-libs
+	depends = git
 	source = tek-0.3.0-rc.1.tar.gz::https://codeberg.org/unspeaker/tek/archive/0.3.0-rc.1.tar.gz
 	sha256sums = 13dd96aef8590346160e3c9fdebdc22cc40f46fdb7e8f80e3d5a7c843fd4a298
 
