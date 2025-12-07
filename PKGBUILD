@@ -1,7 +1,7 @@
 # Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
 pkgname=carl-calendar
 _pkgname=carl
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 makedepends=('rust' 'cargo')
 depends=('glibc' 'gcc-libs')
@@ -10,7 +10,7 @@ pkgdesc="A colorful commandline calendar with ical support. Similar to cal, but 
 license=('MIT' 'CC0-1.0')
 url="https://github.com/b1rger/carl"
 source=("$url/archive/refs/tags/v$pkgver/$_pkgname-$pkgver.tar.gz")
-sha256sums=('5356882e5efd1e3a06470d157f9a8e2a6ed76917dcbcfa20a1cae90c4c6d6510')
+sha256sums=('82518ea8fbd89985c40591a1b2c030b969829e9ce12ac52cd4923bd852dcd884')
 install="carl.install"
 
 prepare() {
