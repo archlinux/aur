@@ -1,7 +1,7 @@
 pkgbase = python-pywhispercpp-cuda
 	pkgdesc = Python bindings for whisper.cpp with CUDA support (NVIDIA GPU)
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Absadiki/pywhispercpp
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = python-pywhispercpp-cuda
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	makedepends = git
 	makedepends = cuda
 	depends = python
