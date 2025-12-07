@@ -1,19 +1,19 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="frp-panel"
-pkgver=0.1.24
+pkgver=0.1.25
 pkgrel=1
 pkgdesc="A multi node frp webui and for frp server and client management"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/VaalaCat/${pkgname}"
 backup=("etc/${pkgname}/"{client,master,server}.env)
 license=("GPL-3.0-or-later")
-makedepends=("go" "pnpm" "unzip")
+makedepends=("go" "nodejs-lts" "pnpm" "unzip")
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
         "${pkgname}.tmpfiles"
         "${pkgname}@.service")
-sha256sums=('2aae977ae0ee13390bf0effa33dcc0187aaaaabebc5c803df512c0537fa4096f'
+sha256sums=('e5a86b7ddf24581e9e44dc7f9b7a6b0134b14ab49ae51d917fb833d13e9cebc9'
             'd909eac5b51218404824363ce35886fcd2a8065773ffecde8f64855a107369a0'
             'd9a6f0f90fa446d2c7f34a7a1a36a21402ccf1db6a0d56cea5b7218117a9e84e')
 
