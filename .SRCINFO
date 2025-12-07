@@ -1,6 +1,6 @@
 pkgbase = shq-git
 	pkgdesc = shell queue
-	pkgver = 0.1.0.r7.g05cdb4e
+	pkgver = 0.2.0.r4.g11a9ba3
 	pkgrel = 1
 	url = https://codeberg.org/tippfehlr/shq
 	arch = i686
