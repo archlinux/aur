@@ -14,7 +14,7 @@
 # You can use TMPDIR in $srcdir by exporting TMPDIR_FIX with some value.
 
 pkgname=telegram-desktop-dev
-pkgver=6.2.2
+pkgver=6.3.6
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('x86_64')
@@ -86,7 +86,7 @@ source=(
   "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
   "git+https://github.com/tdlib/td.git#tag=${_td_commit}"
 )
-sha512sums=('20b8b0d7abd4d1e936e3096d408b002a38d6a81140a14a83a7f404d889369952c418fa58aa3d1f28853aa4a2d75c715bb7908b4e71f142ef04df46b7c6e89a63'
+sha512sums=('739df5d0e3951df7883ba1db5fcf3ae1e084e9c5b8b67c4b55e46b3d132938f196a3e4e99f974d2109dd6d6edc9966aa15ba42b35b2cf4176191b7a8050dfb54'
             '6dc6e684a0bf35bb83f6fa6579a0da82d604190b222f2cd2de9b8ef5b93f5f18ac9a8733e2c5cf2a64ed9933b346ea31e26a4bcc0039956280ec2deef9649457')
 
 prepare() {
