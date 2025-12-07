@@ -7,6 +7,7 @@ pkgbase = natmap-git
 	license = MIT
 	makedepends = git
 	makedepends = make
+	makedepends = gcc
 	depends = glibc
 	provides = natmap
 	conflicts = natmap
