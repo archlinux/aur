@@ -1,6 +1,6 @@
 # Maintainer: Martynas Mickevičius <self at 2m dot lt>
 pkgname=ucm-bin
-pkgver=0.5.37
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Unison language code manager'
 arch=('x86_64')
@@ -10,13 +10,11 @@ depends=('gmp' 'zlib')
 
 source=("ucm-$pkgver::https://github.com/unisonweb/unison/releases/download/release%2F$pkgver/ucm-linux-x64.tar.gz"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/unisonweb/unison/release/$pkgver/LICENSE")
-sha256sums=('780a9a137f0cfeca4cdedd00affb09c0634f68d4ff3fd2df9f6648b16ef9912f'
+sha256sums=('44ac79fba0ac2efad394b2ab78a4a780f346d18d0ea2699e52899721cd1e86c6'
             '26537a8bd08791aef2f335fd296b00023b292546b8a1b35223c11abca39cd6ed')
 
 package() {
   install -D -m755 ucm "$pkgdir/usr/share/ucm/ucm"
-  cp -rv "$srcdir/racket" "$pkgdir/usr/share/ucm/racket"
-  cp -rv "$srcdir/runtime" "$pkgdir/usr/share/ucm/runtime"
   cp -rv "$srcdir/ui" "$pkgdir/usr/share/ucm/ui"
   cp -rv "$srcdir/unison" "$pkgdir/usr/share/ucm/unison"
   install -Dm644 LICENSE-$pkgver "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
