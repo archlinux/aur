@@ -10,7 +10,7 @@ depends=('zlib' 'icu' 'openssl')
 provides=('mtc')
 conflicts=('mtc')
 
-source=("https://github.com/JuansesDev/MTC/releases/download/V${pkgver}/mtc-linux-x64-${pkgver}.tar.gz")
+source=("https://github.com/JuansesDev/MTC/releases/download/V.${pkgver}/mtc-linux-x64-${pkgver}.tar.gz")
 
 sha256sums=('56bcb09c08d6057feec71540f416ff4bf3782fe8ceaa0d404d93af09b84a65fc')
 
