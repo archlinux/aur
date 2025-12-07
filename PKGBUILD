@@ -1,7 +1,7 @@
 # Maintainer: Nate Craft <secondarynate at icloud dot com>
 pkgname=dashi
 pkgver=1.0.1
-pkgrel=2
+pkgrel=1
 pkgdesc="Minimal shell for linux window managers"
 arch=('x86_64')
 url="https://github.com/nate-craft/dashi"
