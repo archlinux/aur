@@ -1,6 +1,6 @@
 pkgbase = oss-cad-suite-build-bin
 	pkgdesc = Nightly builds of open-source FPGA tools
-	pkgver = 20251130
+	pkgver = 20251207
 	pkgrel = 1
 	url = https://github.com/YosysHQ/oss-cad-suite-build
 	install = path.install
@@ -14,9 +14,9 @@ pkgbase = oss-cad-suite-build-bin
 	options = !strip
 	source = path.install
 	sha256sums = 478fef6781eeda227e7b4b0a560ff9ab5b7a55ed5ba904eca84d69a3a473181e
-	source_x86_64 = https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2025-11-30/oss-cad-suite-linux-x64-20251130.tgz
-	sha256sums_x86_64 = fee4db15a8cb4a3cb947796ee0d24a9639b5a12c2ce39044224ace929dae95c4
-	source_aarch64 = https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2025-11-30/oss-cad-suite-linux-arm64-20251130.tgz
-	sha256sums_aarch64 = c5ab663f87121d55845cfd1d103a1d2ca28c3f58c5ca4b6387e18c12c666be6f
+	source_x86_64 = https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2025-12-07/oss-cad-suite-linux-x64-20251207.tgz
+	sha256sums_x86_64 = 4762286657090c1db3f2da489469fab376eacb0818d8d2be8f9695fb2d77b757
+	source_aarch64 = https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2025-12-07/oss-cad-suite-linux-arm64-20251207.tgz
+	sha256sums_aarch64 = 663ff0d9613b2503e9587dc092ebba8c12f4003e9257a545f3c17a8f2fb85783
 
 pkgname = oss-cad-suite-build-bin
