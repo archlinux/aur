@@ -1,0 +1,26 @@
+pkgbase = python-pywhispercpp-rocm
+	pkgdesc = Python bindings for whisper.cpp with ROCm support (AMD GPU)
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/Absadiki/pywhispercpp
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = git
+	makedepends = rocm-hip-sdk<7
+	makedepends = rocm-opencl-sdk<7
+	depends = python
+	depends = python-numpy
+	depends = rocm-hip-runtime<7
+	provides = python-pywhispercpp
+	conflicts = python-pywhispercpp
+	conflicts = python-pywhispercpp-cpu
+	conflicts = python-pywhispercpp-cuda
+	source = git+https://github.com/Absadiki/pywhispercpp.git#commit=4ab96165f84e8eb579077dfc3d0476fa5606affe
+	sha256sums = SKIP
+
+pkgname = python-pywhispercpp-rocm
