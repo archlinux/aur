@@ -19,9 +19,9 @@ license=(GPL3)
 makedepends=(
     unzip
 )
-_commit_sha="617b5526e3ff9efb72066e6ba174ea6041f4440c"
+_commit_sha="00c9d2a2e379f5fffdbef9e95fa64bb5cca89122"
 source=("${pkgname}"-"${pkgver}".zip::"$_ghurl"/archive/"$_commit_sha".zip)
-sha256sums=('50711646055e4a1d08459f757615d30fd450cd8470c879ceebd842144f703361')
+sha256sums=('b2ff06764ec781345eb70fcf5e327a9c52e901a4390a1558dbb617e75bb8bac1')
 
 package_vencord-bin() {
     pkgdesc+=" (replaces Vesktop's built-in Vencord)"
