@@ -1,6 +1,6 @@
 pkgbase = superproductivity-bin
 	pkgdesc = ToDo list and Time Tracking
-	pkgver = 16.5.3
+	pkgver = 16.5.4
 	pkgrel = 1
 	url = http://super-productivity.com/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = superproductivity-bin
 	provides = superproductivity
 	conflicts = superproductivity
 	conflicts = superproductivity-git
-	source = superproductivity-16.5.3-amd64.deb::https://github.com/johannesjo/super-productivity/releases/download/v16.5.3/superProductivity-amd64.deb
-	sha256sums = 30655e9483adfcc5d89772f2e519fb94b39b95a5df179d59e07974841ca28feb
+	source = superproductivity-16.5.4-amd64.deb::https://github.com/johannesjo/super-productivity/releases/download/v16.5.4/superProductivity-amd64.deb
+	sha256sums = f142f7176f132c21784f9cd1bb3290ba8e7ebdeaa90d86ad2bb5cba756795b0c
 
 pkgname = superproductivity-bin
