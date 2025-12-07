@@ -1,14 +1,14 @@
 pkgbase = markdown-link-check
 	pkgdesc = Checks aliveness of hyperlinks in markdown documents
-	pkgver = 3.13.7
+	pkgver = 3.14.2
 	pkgrel = 1
 	url = https://github.com/tcort/markdown-link-check
 	arch = any
 	license = ISC
 	makedepends = npm
 	depends = nodejs
-	noextract = markdown-link-check-3.13.7.tgz
-	source = https://registry.npmjs.org/markdown-link-check/-/markdown-link-check-3.13.7.tgz
-	sha256sums = 89fcb6c9dbb306486e3a99e5ec809811fe325e8c9290bd90b9b9cfebb697588c
+	noextract = markdown-link-check-3.14.2.tgz
+	source = https://registry.npmjs.org/markdown-link-check/-/markdown-link-check-3.14.2.tgz
+	sha256sums = 4ece340e0ae2a97512ed3edea990f63be0a377c608e4be98ab5450336b13819c
 
 pkgname = markdown-link-check
