@@ -1,6 +1,6 @@
 pkgbase = java17-openjfx
 	pkgdesc = Java OpenJFX 17 client application platform (open-source implementation of JavaFX)
-	pkgver = 17.0.17.u1
+	pkgver = 17.0.18.u1
 	pkgrel = 1
 	url = https://wiki.openjdk.java.net/display/OpenJFX/Main
 	arch = x86_64
@@ -29,20 +29,20 @@ pkgbase = java17-openjfx
 	makedepends = webkit2gtk
 	makedepends = zip
 	makedepends = gcc13
-	source = java17-openjfx-17.0.17.u1.tar.gz::https://github.com/openjdk/jfx17u/archive/refs/tags/17.0.17+1.tar.gz
+	source = java17-openjfx-17.0.18.u1.tar.gz::https://github.com/openjdk/jfx17u/archive/refs/tags/17.0.18+1.tar.gz
 	source = gradle.properties
 	source = java-openjfx-flags.patch
 	source = java-openjfx-no-xlocale.patch
 	source = java-openjfx-gstreamer-lite-gcc10-compat.patch
 	source = java-openjfx-env_compiler.patch
 	source = webcore_mapfile-vers.patch
-	b2sums = 171f7d517e5b54191ffc4cee04d572c2152168712c90b734bade23dafd68a05d750c72a997021748abfead36963245a24be213e9b88fbe8d6807b8e874848c10
+	b2sums = f4b0708b5eba8a1bb1b9bbf50ffe278d81c003c112511b7ee274684283d6a5b9620a16d044bb60be0d540712ca349bd92882402d510da1dd15c3b2b9daac3f6e
 	b2sums = a77fd8814a5978827de01a652f7b945f3439df04606434ced8998c8d77a82985292490e6965299aeb52f9da3d8069b4091d75519bd4ec8a15f70bc6d28b13498
 	b2sums = a56a5cfebb44cdbe3ada9c6da88fda6427a5bd1bf9fcc491df289c4f5c0e96ac3614c619aaf9428340f11e9dabf0a85fc7db4f49754c2700587cc66fc15372fd
 	b2sums = 13216615c01b8d48d17889ffa22668c38568870d83ab30c542eb5b5620db305f02efb1acb99d9b5e89eb0a73a134bb336cb301f4de4e8855cae50efb099e384e
 	b2sums = 119fa1cc5da2cdefa22bbe9b6f76581faa74e05fa7b6e5576470fc0251c6e257f122fbba03754cc01f7c7251145cfa1cab4ffc2f9d59ff0c175a121e943a0f64
 	b2sums = 189f689fb43447b0aeb3cfac561be94f76b243bcf31736c528b9a1b9a528d71b7cb6d3a801b42d8cd10a235a6a8b1bdd31de39d2e09523c3b6a34e5e03d67770
-	b2sums = 9381ff71b79aefabcae901848f2f1bc9baa70c9d2b2676a1c5f5fb4250a6b456d840039fb4d7d10e620e913c049f8fa0f469c1c44621d8f54b255146485003db
+	b2sums = f1ccc2e64632e83de9309ade3c3e24186b6ef77f91078d24ab483b05981b5bf01441da191bbbb046542fa2cf2f54b2c0fbe6ae1d313c1c54a82cb6c4751eff82
 
 pkgname = java17-openjfx
 	depends = java-runtime-openjdk=17
