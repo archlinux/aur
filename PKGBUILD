@@ -6,7 +6,7 @@
 # Contributor: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 # Contributor: The_Decryptor
 
-_commit=d838d9e609bac49deb8c027d64397821734471ab
+_commit=df3d192f701e48864459fff80bc81135c339b7b0
 pkgname=h2o-git
 pkgver=2.2.0.8482
 pkgrel=1
@@ -23,7 +23,7 @@ options=('lto')
 source=("git+https://github.com/h2o/h2o.git#commit=${_commit}?signed/"
 #        "neverbleed-fix-when-lacking-engines.patch"
         'h2o.service')
-sha256sums=('1bbb89587cdfcc73cca1d123f130107a4202980c92e981d1417f5842552ef68a'
+sha256sums=('4fdf067d4ae6e5ccc7abeaa4b78b499cc4a015d81ac2ae4afb3fffdbaa8a5a9b'
             '7fccdeb1a89134b48674764dc243f8967eb1234679e401af93e210fbf0934b62')
 backup=('etc/h2o.conf')
 provides=('h2o' 'libh2o')
