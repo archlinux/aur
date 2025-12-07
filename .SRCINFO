@@ -1,6 +1,6 @@
 pkgbase = dcshowcase
 	pkgdesc = A high-performance, cross-platform tool to analyze your Discord Data Package
-	pkgver = r9.a077ae0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/compiledkernel-idk/dc-showcase
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = dcshowcase
 	provides = dcshowcase
 	conflicts = dcshowcase
 	options = !strip
-	source = git+https://github.com/compiledkernel-idk/dc-showcase.git
-	sha256sums = SKIP
+	source = https://github.com/compiledkernel-idk/dc-showcase/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = c1122b37d3f4c2cd370fc558f2b8d4a169d16eabc24f617b741b70d6ad751071
 
 pkgname = dcshowcase
