@@ -1,0 +1,16 @@
+pkgbase = vitsel-clap-bin
+	pkgdesc = Minimal Rust CLAP synth with PolyBLEP oscillators, ADSR, and zero-delay TPT SVF
+	pkgver = 0.7.4
+	pkgrel = 1
+	url = https://github.com/mlm-games/vitsel-clap
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	optdepends = clap-host: A CLAP host to load the plugin (not required by yadaw)
+	provides = vitsel-clap
+	conflicts = vitsel-clap
+	options = !strip
+	source = Vitsel-0.7.4.clap::https://github.com/mlm-games/vitsel-clap/releases/download/v0.7.4/Vitsel-linux.clap
+	sha256sums = cba17e8ae134e2a046b23d154d05e589add7093b1641f3a888370b1b0c0d53c5
+
+pkgname = vitsel-clap-bin
