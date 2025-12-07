@@ -1,0 +1,17 @@
+pkgbase = doudou-bin
+	pkgdesc = Stream your music with ease and style
+	pkgver = 8.0.0
+	pkgrel = 1
+	url = https://gitlab.com/Openlyst/doudou
+	arch = x86_64
+	license = unknown
+	depends = mpv
+	depends = gtk3
+	depends = libmpv.so
+	provides = doudou
+	conflicts = doudou
+	options = !strip
+	source = doudou-bin-8.0.0.zip::https://gitlab.com/Openlyst/doudou/-/jobs/12346738485/artifacts/download
+	sha256sums = SKIP
+
+pkgname = doudou-bin
