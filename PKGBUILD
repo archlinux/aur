@@ -1,8 +1,8 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname='extrae'
 pkgdesc='Instrumentation framework to generate execution traces of the most used parallel runtimes (from BSC).'
-pkgver='4.3.3.20250926'
-libaddr2line_commit=70b1ab0087acf35d5825b2341b2b03cb3cce3e24
+pkgver='5.0.0.20251201'
+libaddr2line_commit=2c580cba4764faf5605592ae201f892df937ef12
 pkgrel='2'
 arch=('x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
@@ -12,8 +12,8 @@ source=("https://github.com/bsc-performance-tools/$pkgname/archive/${pkgver%.*}.
         "https://github.com/bsc-performance-tools/libaddr2line/archive/${libaddr2line_commit}.tar.gz"
         extrae-Fix-make-DESTDIR-.-install-for-Extrae-4.0.2.patch
         extrae-Fix-references-to-the-build-directory.patch)
-sha512sums=(413446487410a2b4d33c9e1b8270c1e11e4be735c02b6bbee604530a7c068b5a806e2eeb6aafd93eba04d19915c77751dd760b746d2766092c97c3e7e9b79901
-            32f564d56e68606b69b262fc055c317aa5986482ccd84cd150fd037d01d0575bd5d70a0fd1fda9f3cd281af70e06472c50ead66e9f6a83f329b305256e9a7dff
+sha512sums=(796ef0a4adbc5dd1009d1ed0bdfcffaab350bced78ffab0557483d9cd0aa683809e10a876344e054bd1668fa1eeff59f05d51672e834d4a898186f30dd4dfe24
+            1fe33bd210ad770921ca5af6d3ee5b9f530448a79b17f52546a43ae4c8afbdc9fe81a1209af9526eb8690548ded44a3c5c0aa7e4ce6214723e191953bf591c32
             e90d108ac4531d68ba8bced44db71139cb7b4273f97ec994582150eb9d4f71960c525c1b3ad2fac95d678f91494b5299bfb00513a0a58cc5b6d916eb930af2d5
             a5085d4e974a98cb6266502e06bd2b5a45e213f7d322e8f6cffccbaf92a7f414641b6e6578f87f76dbbb3e4f89b3c268dc33e813c13ea5512e52d1b241317f2a)
 
@@ -37,11 +37,7 @@ build() {
 	cd "$srcdir/$pkgname-${pkgver%.*}"
 
 	# For now, ignore new errors from GCC 14 (see https://gcc.gnu.org/gcc-14/porting_to.html)
-	export CFLAGS="$CFLAGS -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -Wno-error=int-conversion"
-
-	# Avoid build failures under GCC 15 due to function declarations without parameters
-	# (see https://gcc.gnu.org/gcc-15/porting_to.html#c23-fn-decls-without-parameters)
-	export CFLAGS="$CFLAGS -std=gnu17"
+	export CFLAGS="$CFLAGS -Wno-error=incompatible-pointer-types -Wno-error=int-conversion"
 
 	# NOTE: The following optional features are NOT enabled:
 	# * Automatic instrumentation (with dyninst)
