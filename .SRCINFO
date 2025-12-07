@@ -1,7 +1,7 @@
 pkgbase = python-elasticsearch7.13
 	pkgdesc = Python client for Elasticsearch (legacy 7.13.* version - before the UnsupportedProductError check)
 	pkgver = 7.13.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/elastic/elasticsearch-py
 	arch = any
 	license = Apache-2.0
@@ -27,7 +27,7 @@ pkgbase = python-elasticsearch7.13
 	source = fix-deprecations.diff
 	source = remove-simplejson-dep.diff
 	b2sums = 442190229084c39fcfdb20218cd8e2beb63789050fdf64da568c39b34779ee1c95ba7d90da7bd4a5795aa708e9d940f9e202dc8fb52eaef0d8c04b0a16aa754b
-	b2sums = ed42045499adb04a155dcddf3f164ec1696d92f8ca0b9b12f9ff68a3415ab0ef0475aa87a64e97c8dfd25e55e8dc3c0698a54e8ccb7c44de34d3dc39b3fe9562
+	b2sums = 0016df97ea4cf466f45b6a14f19d5cf1a17feacfff7adcfb99e73e8271c4a88ae6f143e618b80e7821d599344700f4b95ff4375c578a914858fda6d68dfa08a1
 	b2sums = cd23bf99eb188c92981c686d55d82feaf710e17905682b8d1bae6393298b3f881a7c9b15ae2d551ec80a07ba9e89051b4cd6a9af9733c9295bc9b682b45545d6
 
 pkgname = python-elasticsearch7.13
