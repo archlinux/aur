@@ -1,11 +1,11 @@
 pkgbase = grype-db-bin
 	pkgdesc = Application to create a Grype vulnerability database from upstream vulnerability data sources
-	pkgver = 0.46.2
+	pkgver = 0.47.0
 	pkgrel = 1
 	url = https://github.com/anchore/grype-db
 	arch = x86_64
 	license = Apache-2.0
-	source = https://github.com/anchore/grype-db/releases/download/v0.46.2/grype-db_0.46.2_linux_amd64.tar.gz
-	sha256sums = 942cab70d67caab563ce6a501787390b1697606dfdd914cd3f6e13516acd9f75
+	source = https://github.com/anchore/grype-db/releases/download/v0.47.0/grype-db_0.47.0_linux_amd64.tar.gz
+	sha256sums = 2430a1357388b7c46dbca783433da0322eae249f422a2bfc716d0e3ee2563bc0
 
 pkgname = grype-db-bin
