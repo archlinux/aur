@@ -1,6 +1,6 @@
 pkgbase = distroshelf
 	pkgdesc = A GUI for Distrobox Containers
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/ranfdev/DistroShelf
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = distroshelf
 	depends = libadwaita
 	depends = vte4
 	depends = which
-	source = DistroShelf-1.2.0.tar.gz::https://github.com/ranfdev/DistroShelf/archive/refs/tags/v1.2.0.tar.gz
-	sha256sums = 94560cebcded2e8ea92c30d8817c5e07d563aea7f5065e75e963da9fc05c8aaf
+	source = DistroShelf-1.3.0.tar.gz::https://github.com/ranfdev/DistroShelf/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = 8a3cdbb02e49d13a7a02c35e91beb9367e5f33efc1ff5f51511c0568d77e52f8
 
 pkgname = distroshelf
