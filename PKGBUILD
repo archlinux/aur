@@ -12,9 +12,9 @@ depends=('perl-http-message')
 makedepends=()
 checkdepends=('perl-test-deep')
 url='https://metacpan.org/dist/HTTP-Body'
-source=('https://cpan.metacpan.org/authors/id/G/GE/GETTY/HTTP-Body-1.23.tar.gz')
+source=("https://cpan.metacpan.org/authors/id/G/GE/GETTY/HTTP-Body-$pkgver.tar.gz")
 md5sums=('067c2c71d20ed0b364187cdb75b69d40')
-_distdir="HTTP-Body-1.23"
+_distdir="HTTP-Body-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
