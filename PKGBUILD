@@ -2,7 +2,7 @@
 pkgname=dashi
 pkgver=1.0.0
 pkgrel=1
-pkgdesc=""
+pkgdesc="Minimal shell for linux window managers"
 arch=('x86_64')
 url="https://github.com/nate-craft/dashi"
 license=('MIT')
@@ -17,15 +17,4 @@ package() {
     install -Dm755 "${srcdir}/dashi-${pkgver}-x86_64-unknown-linux-gnu" "${pkgdir}/usr/bin/dashi"
     install -Dm644 "${srcdir}/90-backlight.rules" "${pkgdir}/etc/udev/rules.d/90-backlight.rules"
     install -Dm644 "${srcdir}/30-bluetooth.rules" "${pkgdir}/etc/polkit-1/rules.d/30-bluetooth.rules"
-}
-
-post_install() {
-    echo "Reloading udev and polkit..."
-    sudo udevadm control --reload
-    sudo udevadm trigger
-    sudo systemctl restart polkit
-    echo "Dashi installed to /usr/bin/dashi"
-    echo "If brightness/bluetooth is not functional immediately, restart your system."
-    echo "Please run the following command to enable basic functionality."
-    echo "sudo usermod -aG wheel $USER"
 }

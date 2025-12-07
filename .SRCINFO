@@ -1,4 +1,5 @@
 pkgbase = dashi
+	pkgdesc = Minimal shell for linux window managers
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/nate-craft/dashi
