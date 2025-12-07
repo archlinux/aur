@@ -1,7 +1,7 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
 pkgver=5.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Cellframe blockchain node with a powerful SDK'
 arch=('x86_64' 'aarch64')
 url='https://cellframe.net'
@@ -12,7 +12,7 @@ optdepends=('logrotate: For using logrotate to rotate log files')
 provides=('cellframe-node' 'cellframe-node-cli' 'cellframe-node-tool' 'cellframe-node-config')
 replaces=('cellframe-node-debug')
 sha256sums=('SKIP'
-            'cce1ee2859200d2cb5afe6d7d6fc2cfefc56eadc0ffd6ec267b42604157efa5f'
+            '4930420b4921791b0d14c1e5ce1630c79a9dc3114a89d0f7d4327b611028ff29'
             'd2b4ab803ca9df63052b4c3ae85c469271abd1257ce6d463ac280b7363e1dec3'
             '5fab0cfadc8366ebd2be9d06ff36dbd3a84b18f679ea3babb3c739e7e13acefd'
             '50e65fe5407024a71c2fa27d379901ece965e0fb788070665cf3a194b402d901'
@@ -20,7 +20,7 @@ sha256sums=('SKIP'
             '9b7be4cb912290ed1164dbc3c5f6714c5a9525cc41a4d7ba3115cdbe312a9320'
             'a6b504ce331ef5953f38db6f2b3c18c3d5ed796eed29381bbe76a931cf3f9fa5')
 source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=880a51eda17b797298a5389c8387c9ae6d0e9483
-		https://pub.cellframe.net/python/python-cellframe/pycfhelpers/master/pycfhelpers-1.0.9-py3-none-any.whl
+		https://pub.cellframe.net/python/python-cellframe/pycfhelpers/master/pycfhelpers-1.0.6-py3-none-any.whl
 		https://pub.cellframe.net/python/python-cellframe/pycftools/master/pycftools-1.0.0-py3-none-any.whl
 		cellframe-node.logrotate
 		cellframe-node.service
