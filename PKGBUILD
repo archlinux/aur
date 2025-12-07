@@ -1,6 +1,6 @@
 # Maintainer: Plague Doctor <plague@example.com>
 pkgname=mullvad-tray
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="System tray indicator for Mullvad VPN connection status"
 arch=('x86_64')
