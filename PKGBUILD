@@ -1,18 +1,18 @@
-# Maintainer: JuansesDev <juansesdevcontact@gmail.com>
+# Maintainer: JuansesDev <juansesdev@gmail.com>
 pkgname=mtc-bin
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Modular Template CLI for .NET"
 arch=('x86_64')
-url="[https://github.com/JuansesDev/MTC](https://github.com/JuansesDev/MTC)"
+url="https://github.com/JuansesDev/MTC"
 license=('MIT')
 depends=('zlib' 'icu' 'openssl')
 provides=('mtc')
 conflicts=('mtc')
 
-source=("[https://github.com/JuansesDev/MTC/releases/download/V.1.0.0/mtc-linux-x64-1.0.0.tar.gz](https://github.com/JuansesDev/MTC/releases/download/V.1.0.0/mtc-linux-x64-1.0.0.tar.gz)")
+source=("https://github.com/JuansesDev/MTC/releases/download/V${pkgver}/mtc-linux-x64-${pkgver}.tar.gz")
 
-sha256sums=('AQUI_VA_EL_HASH_SHA256_DEL_TAR_GZ_LINUX')
+sha256sums=('56bcb09c08d6057feec71540f416ff4bf3782fe8ceaa0d404d93af09b84a65fc')
 
 package() {
     # Crear directorios destino
