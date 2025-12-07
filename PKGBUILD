@@ -1,6 +1,6 @@
 pkgname=psst-bin
 pkgver=2025.12.03_3846f9c
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast and multi-platform Spotify client with native GUI"
 arch=('x86_64')
 url="https://github.com/jpochyla/psst"
@@ -22,6 +22,12 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
+
+pkgver() {
+    curl -s "https://api.github.com/repos/jpochyla/psst/releases/tags/rolling" | \
+    grep -oP '"name":\s*"[^"]*\(\K[^)]+' | \
+    sed 's/-/_/'
+}
 
 package() {
     install -Dm755 "psst-linux-x86_64-${pkgver}" "$pkgdir/usr/bin/psst"
