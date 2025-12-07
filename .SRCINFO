@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-stealmyfocus-git
 	pkgdesc = Shell Extension that let window that demand attention to steal focus
 	pkgver = 5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/v-dimitrov/gnome-shell-extension-stealmyfocus
 	install = notice.install
 	arch = any

@@ -4,7 +4,7 @@
 
 pkgname=gnome-shell-extension-stealmyfocus-git
 pkgver=5
-pkgrel=3
+pkgrel=4
 pkgdesc="Shell Extension that let window that demand attention to steal focus"
 arch=(any)
 license=(GPLv2)
@@ -30,8 +30,9 @@ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 depends[125]=gnome-shell
 
+readonly prefixes=(3. 1:3. 1:)
 prefix() {
-  [ "$1" -le 30 ] || echo 1:
+  echo "${prefixes[(( ("$1" > 30) + ("$1" >= 40) ))]}"
 }
 
 package_20_version() {
@@ -41,13 +42,13 @@ package_20_version() {
     tr -d '\n' | grep -Po '(?<="shell-version": \[)[^\[\]]*(?=\])' | \
     tr '\n," ' '\n' | sed 's/3\.//g;/^$/d' | sort -n -t. -k 1,1))
   local min="${compatibles[0]}"
-  depends+=("gnome-shell>=$(prefix "${min%%.*}")3.$min")
+  depends+=("gnome-shell>=$(prefix "${min%%.*}")$min")
   if [ "${compatibles[-1]}" != $(
     LD_PRELOAD= gnome-shell --version | \
-      grep -Po '(?<=GNOME Shell 3\.)[[:digit:]]+'
+      sed -n 's/^GNOME Shell \(3\.\)\?\([[:digit:]]\+\).*$/\2/p'
   ) ]; then
     let max=${compatibles[-1]%%.*}+1
-    depends+=("gnome-shell<$(prefix "$max")3.$max")
+    depends+=("gnome-shell<$(prefix "$max")$max")
   fi
   unset depends[125]
 }
