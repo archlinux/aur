@@ -1,7 +1,7 @@
 pkgbase = wiliwili-wayland
 	pkgdesc = 专为手柄控制设计的第三方跨平台B站客户端, 使用 Wayland 运行并阻止唤醒独显
-	pkgver = 1.5.2
-	pkgrel = 3
+	pkgver = 1.5.3
+	pkgrel = 1
 	url = https://github.com/xfangfang/wiliwili
 	arch = x86_64
 	arch = aarch64
@@ -28,11 +28,11 @@ pkgbase = wiliwili-wayland
 	depends = libpng
 	provides = wiliwili
 	conflicts = wiliwili
-	source = wiliwili::git+https://github.com/xfangfang/wiliwili.git#tag=v1.5.2
+	source = wiliwili::git+https://github.com/xfangfang/wiliwili.git#tag=v1.5.3
 	source = wiliwili.sh
 	source = cn.xfangfang.wiliwili.desktop
 	source = portable-config
-	sha512sums = 7c88ed18be429bab8abdacf2063591eabf9f7fe82bd95c6a202b0af6807a755d4926a276872a995b3aa52c3de7f128ccfc884f8d95006989d63373f4c69d07bf
+	sha512sums = bb1dd440c05d735d5574850e30b658db7574f70c824585abc29fc0f7c8983e6ffb7ca20e06c33f9542ed9a345476d61654ce8147da6770e06c3ca5c860c9c540
 	sha512sums = cc97c4bdb168538d2f2485c3f54cb6ae11e3765b66848ae35ec8790b5fcba481a5170cdbcafc9b12e9498dcf8b8442b29843cbe9b6d8cbe425fccce71206df5e
 	sha512sums = 6dd399c8bb5950caa0e774922751af48ef16e7fe4c4daf4a67693a1183913e9b052461bb28aa287061358572f38920f6ddc0112e9a69a3385d5c0a0214d0684d
 	sha512sums = ae7d1aaf6be7377387e08e768098c68ccdccf23fd7976d8a5f9785b157cd26f44aeb3f5e9442910e59a7f73d788d99bfb9374e697becb52410797f1e8543f63b
