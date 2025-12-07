@@ -2,10 +2,10 @@
 # Old Maintainer: JinguTech <xiuluo dot android at gmail dot com>
 # Contributor: Alkindi42
 
-_electron=electron37
-_node=18
+_electron=electron39
+_node=24
 pkgname=joplin-beta
-pkgver=3.5.7
+pkgver=3.5.9
 pkgrel=1
 pkgdesc="A note taking and to-do application with synchronization capabilities (beta version)"
 arch=("x86_64")
@@ -19,7 +19,7 @@ conflicts=('joplin' 'joplin-desktop' 'joplin-appimage')
 source=("joplin-${pkgver}.tar.gz::https://github.com/laurent22/joplin/archive/v${pkgver}.tar.gz"
         "joplin.desktop"
         "joplin-desktop.sh")
-sha256sums=('868a65b11f60ea9a7453718c9234cf5a7cadc567c4fbbd3641e9815d0909ba67'
+sha256sums=('a49c7ee86100261d3751dd8a4ec1442021b8f80ba208ed93a664242b94a54d47'
             '9e26cd5f41d08c3c2804cf4f34cb867090371423ccbe250a890fac006d405deb'
             'bfa32ec8c64d9a81b0b288640d1ccbaf8a2ad5bc86226a0760f05f0077932b0a')
 
