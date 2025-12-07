@@ -1,7 +1,7 @@
 # Maintainer: Sergey Desyatkov <sergeidesyatkov@gmail.com>
 
 pkgname=ls-x
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Imagine ls command, but better"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('124baa2aa5175d6146314de13b99914e4bf062514bb8c0e2a52e8d8e96396f31')
+sha256sums=('b6844996bdba2d8990016daceff49948de6279637900a50e8f9204305dedd7ef')
 
 build() {
     cd "$srcdir/lsx-$pkgver"
