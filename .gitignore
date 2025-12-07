@@ -1,0 +1,46 @@
+# AUR package build artifacts
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+*.pkg.tar.bz2
+*.pkg.tar.lzo
+*.pkg.tar.lrz
+*.pkg.tar.lz4
+*.pkg.tar.zst.sig
+
+# Source tarballs (downloaded during build)
+*.tar.gz
+*.tar.xz
+*.tar.bz2
+*.zip
+
+# Build directories
+pkg/
+src/
+*.orig
+
+# makepkg logs
+makepkg.log
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Python cache (if any)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
