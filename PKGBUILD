@@ -2,7 +2,7 @@
 pkgname=voidsprite-git 
 _pkgver=07.12.2025
 pkgver=0.0.0+git
-pkgrel=3
+pkgrel=4
 pkgdesc='Free pixelart editor made in SDL3 C++'
 url='https://github.com/counter185/voidsprite'
 source=('voidsprite::git+https://github.com/counter185/voidsprite.git')
@@ -34,7 +34,7 @@ build() {
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/share/voidsprite" "$pkgdir"/usr/{bin,share/{applications,licenses/voidsprite,metainfo,mime/packages,icons/hicolor}}
+    mkdir -p "$pkgdir/usr/share/voidsprite" "$pkgdir"/usr/{bin,share/{applications,licenses/voidsprite,metainfo,mime/packages,icons/hicolor,voidsprite,thumbnailers}}
     install -m755 "$srcdir/voidsprite/cmake/build/src/voidsprite" "$pkgdir/usr/bin/voidsprite"
     for x in appfont-MPLUSRounded1c-Medium.ttf appfontcyr-ZenKakuGothicNew-Medium.ttf appfontjp-NotoSansJP-Medium.ttf; do
         install -m644 "$srcdir/voidsprite/cmake/build/src/$x" "$pkgdir/usr/share/voidsprite/$x"
@@ -55,5 +55,8 @@ package() {
         mkdir -p "$pkgdir"/usr/share/icons/hicolor/"$size"/apps/
         install -m644 "$srcdir/voidsprite/freesprite/linux/icons/$size.png" "$pkgdir"/usr/share/icons/hicolor/"$size"/apps/com.github.counter185.voidsprite.png
     done
+
+    install -m644 "$srcdir/voidsprite/freesprite/linux/voidsprite.thumbnailer" "$pkgdir/usr/share/thumbnailers/voidsprite.thumbnailer"
+    install -m644 "$srcdir/voidsprite/freesprite/linux/voidsprite_thumbnailer" "$pkgdir/usr/share/voidsprite/thumbnailer"
 }
 
