@@ -1,6 +1,6 @@
 # Maintainer: mozi1924 <mozi1924@arasaka.ltd>
 pkgname=natmap-git
-pkgver=20250101.9c7f922
+pkgver=20250924r7.g6f0eaf8
 pkgrel=1
 pkgdesc="TCP/UDP port mapping for full cone NAT"
 arch=('any')

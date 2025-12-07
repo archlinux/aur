@@ -1,6 +1,6 @@
 pkgbase = natmap-git
 	pkgdesc = TCP/UDP port mapping for full cone NAT
-	pkgver = 20250101.9c7f922
+	pkgver = 20250924r7.g6f0eaf8
 	pkgrel = 1
 	url = https://github.com/heiher/natmap
 	arch = any
