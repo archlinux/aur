@@ -1,14 +1,14 @@
 pkgbase = vencord
 	pkgdesc = The cutest Discord client mod
-	pkgver = 1.13.6
+	pkgver = 1.13.7
 	pkgrel = 1
 	url = https://vencord.dev
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = pnpm
-	source = git+https://github.com/Vendicated/Vencord.git#tag=v1.13.6
-	sha256sums = 6f73a7a97148832dafaee45e16d557548b6fdc4d80b79c1db1828967312d3464
+	source = git+https://github.com/Vendicated/Vencord.git#tag=v1.13.7
+	sha256sums = e636baa6d4fab2b4c1973887a4600e402cfdfa333c2f34b1e417bf65d29494fc
 
 pkgname = vencord
 	pkgdesc = The cutest Discord client mod (replaces Vesktop's built-in Vencord)
