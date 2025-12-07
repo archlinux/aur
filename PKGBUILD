@@ -1,7 +1,7 @@
 # Maintainer: JuansesDev <juansesdev@gmail.com>
 pkgname=mtc-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modular Template CLI for .NET"
 arch=('x86_64')
 url="https://github.com/JuansesDev/MTC"
@@ -9,6 +9,7 @@ license=('MIT')
 depends=('zlib' 'icu' 'openssl')
 provides=('mtc')
 conflicts=('mtc')
+options=('!strip')
 
 source=("https://github.com/JuansesDev/MTC/releases/download/V.${pkgver}/mtc-linux-x64-${pkgver}.tar.gz")
 
