@@ -8,7 +8,7 @@ arch=('x86_64')
 url="http://git.kernel.org/?p=utils/kernel/kmod/kmod.git;a=summary"
 license=('GPL2')
 depends=('lib32-zlib' 'lib32-xz')
-makedepends=('gcc-multilib')
+makedepends=('gcc-multilib' 'scdoc')
 options=('!libtool')
 validpgpkeys=('EAB33C9690013C733916AC839BA2A5A630CBEA53')  # Lucas DeMarchi
 source=("https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-$pkgver.tar."{xz,sign})
