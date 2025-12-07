@@ -1,6 +1,6 @@
 # Maintainer: Sultan <berkkapla82@proton.me>
 pkgname=dcshowcase
-pkgver=r1.0847769
+pkgver=r9.a077ae0
 pkgrel=1
 pkgdesc="A high-performance, cross-platform tool to analyze your Discord Data Package"
 arch=('x86_64')
