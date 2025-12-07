@@ -12,8 +12,8 @@ depends=(
   libxss libxtst mesa nspr nss pango util-linux-libs xdg-utils
 )
 options=('!strip')
-source=("https://github.com/0xhkamori/mimose-binaries/releases/download/v1.8.8-20251207-145109/mimose-1.8.8-1-x86_64.pkg.tar.zst")
-sha256sums=('6c4d8e599d6d7d8d1c4a0ac7a93c75d2b3caaab9adf3ff27db1aeca5ce1008a0')
+source=("https://github.com/0xhkamori/mimose-binaries/releases/download/v1.8.8-20251207-151744/mimose-1.8.8-1-x86_64.pkg.tar.zst")
+sha256sums=('50b76c16a38d5a90521421b8723ef184991b2cdf5d538240b5539d3f73a2cdb7')
 
 package() {
   cp -a * "${pkgdir}/"
