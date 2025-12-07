@@ -1,7 +1,7 @@
 # Maintainer: Vitor Mariano <vitor.mariano@gmail.com>
 
 pkgname=regex-tui
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A simple TUI to visualize regular expressions right in your terminal."
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vitor-mariano/regex-tui/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ae9028dbabf20ccc1390299a1545270c46f7146d70581e1f2c57b48f266a16a6')
+sha256sums=('9a5a8f2fb589bdf8d5d1dbf11d96fad077ac4391060e62e59697de9b58362a35')
 
 build() {
     cd "$pkgname-$pkgver"
