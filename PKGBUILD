@@ -1,6 +1,6 @@
 # Maintainer: Maxim Kim <exynil@gmail.com>
 pkgname=clipbox
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A powerful clipboard manager for Wayland with rofi integration"
 arch=('x86_64' 'aarch64')
