@@ -7,14 +7,6 @@
 #       |_|                         |_|    |___/
 #
 
-## Make sure that we catch this error fast
-try:
-    import requests
-except ImportError:
-    import sys
-
-    sys.exit("Please install requests: pacman -S python-requests")
-
 
 ## Check the arguments before iterpreting the rest of the script
 ## and before sourcing other stuff.
@@ -33,6 +25,7 @@ args = parser.parse_args()
 import hashlib
 import re
 import sys
+import urllib.request
 
 
 class SourceInfoReader:
@@ -47,10 +40,13 @@ class SourceInfoReader:
         return match.group(1).strip()
 
 
+def url_get(url: str) -> bytes:
+    with urllib.request.urlopen(url, timeout=30) as response:
+        return response.read()
+
+
 def sha256_of_remote_resource(remote_url: str) -> str:
-    request = requests.get(remote_url, timeout=30)
-    request.raise_for_status()
-    return hashlib.sha256(request.content).hexdigest()
+    return hashlib.sha256(url_get(remote_url)).hexdigest()
 
 
 def update_file(path: Path, substitutions: list[tuple[re.Pattern, str]]):
