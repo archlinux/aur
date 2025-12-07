@@ -1,4 +1,4 @@
-# Maintainer: Dvd-Znf <email@dvdznf.xyz>
+# Maintainer: voxa, <admin at hessfr dot fr>
 # Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Truocolo <truocolo@aol.com>
 # Contributor: Julian Mac Kenzie <jukiangm@gmail.com>
@@ -10,8 +10,8 @@
 # shellcheck disable=SC2034
 _py="python"
 pkgname="blivet-gui"
-pkgver=2.4.1
-pkgrel=3
+pkgver=2.6.0
+pkgrel=1
 pkgdesc='GUI tool for storage configuration'
 arch=(
   'x86_64'
@@ -29,12 +29,11 @@ depends=(
   'adwaita-icon-theme')
 makedepends=(
   'git'
-  'make'
   "${_py}-setuptools")
 source=(
   "${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha512sums=(
-  '9594d3faebcd02d9142a180e25651411690faa71e53a4d961d14d8e7d6f7a7916d084ebbf7117d48c85274eea8c16fe99f09232ec526263ae72a0798aae591bf')
+  'e1ea4579aa10b44ac2ab79afff61fa5dc952661fabca893aac26766893ccd81a54118ad9744d76fa95480e2a25d1627f425548fe6086baae50aabfe1ba278d7c')
 
 build() {
   cd \
