@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python' 'xdotool' 'xorg-xrandr')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/Evilchuck666/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('c6a1c6e40f66997302ecb9a85699e61f')
+md5sums=('b25920fd0b050b4794d82dd672a66e5d')
 
 build() {
     cd "$_pkgname-$pkgver"

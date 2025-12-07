@@ -13,6 +13,6 @@ pkgbase = winjitsu
 	depends = xdotool
 	depends = xorg-xrandr
 	source = WinJitsu-0.1.0.tar.gz::https://github.com/Evilchuck666/WinJitsu/archive/refs/tags/v0.1.0.tar.gz
-	md5sums = c6a1c6e40f66997302ecb9a85699e61f
+	md5sums = b25920fd0b050b4794d82dd672a66e5d
 
 pkgname = winjitsu
