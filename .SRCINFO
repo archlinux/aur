@@ -1,13 +1,13 @@
 pkgbase = sourcegit
 	pkgdesc = GUI client for GIT users
 	pkgver = 2025.39
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sourcegit-scm/sourcegit
 	arch = x86_64
 	license = MIT
-	makedepends = dotnet-sdk-9.0
+	makedepends = dotnet-sdk-10.0
 	makedepends = desktop-file-utils
-	depends = dotnet-runtime-9.0
+	depends = dotnet-runtime-10.0
 	depends = git
 	depends = xdg-utils
 	optdepends = git-credential-manager: third-party authentication support

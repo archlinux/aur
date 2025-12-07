@@ -2,14 +2,14 @@
 
 pkgname=sourcegit
 pkgver=2025.39
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI client for GIT users"
 arch=('x86_64')
 url='https://github.com/sourcegit-scm/sourcegit'
 license=('MIT')
-depends=('dotnet-runtime-9.0' 'git' 'xdg-utils')
+depends=('dotnet-runtime-10.0' 'git' 'xdg-utils')
 optdepends=('git-credential-manager: third-party authentication support')
-makedepends=('dotnet-sdk-9.0' 'desktop-file-utils')
+makedepends=('dotnet-sdk-10.0' 'desktop-file-utils')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sourcegit-scm/sourcegit/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('e56ef33410ad9d9dce2a767d2f846521dac285ec757b2656bc1ce3dc38ea0e9c')
@@ -19,8 +19,6 @@ sha256sums=('e56ef33410ad9d9dce2a767d2f846521dac285ec757b2656bc1ce3dc38ea0e9c')
 prepare() {
     cd "$pkgname-$pkgver"
 
-    rm global.json
-    sed -ie 's/net10.0/net9.0/g' src/SourceGit.csproj
     desktop-file-edit build/resources/_common/applications/sourcegit.desktop \
         --set-icon=sourcegit --set-key=Exec --set-value=sourcegit
 }
