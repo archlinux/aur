@@ -51,14 +51,16 @@ build() {
 	cd "$pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	unset CARGO_TARGET_DIR
-	
+
 	pushd frontend
 	(
-		RUSTFLAGS+=' --cfg=web_sys_unstable_apis'
+		RUSTFLAGS+=" -C target-feature=+bulk-memory"
+		RUSTFLAGS+=" -C link-arg=--max-memory=4294967296"
+		RUSTFLAGS+=" --cfg=web_sys_unstable_apis"
 		npm run build-native
 	)
 	popd
-	
+
 	CFLAGS+=' -ffat-lto-objects'
 	CXXFLAGS+=" -fno-lto"
 	RUSTFLAGS+=" -C link-arg=-Wl,-rpath=$_cef_path"
