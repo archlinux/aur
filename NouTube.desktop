@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=NouTube
+Exec=/opt/noutube/NouTube
+Terminal=false
+Type=Application
+Icon=NouTube
+StartupWMClass=NouTube
+Comment=YouTube and YouTube Music in a single app
+MimeType=x-scheme-handler/noutube;
+Categories=Utility;
