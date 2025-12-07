@@ -1,7 +1,7 @@
 # Maintainer: DreamMaoMao <maoopzopaasnmakslpo@gmail.com>
 
 pkgname=mangowc-wlonly-git
-pkgver=r1048.001ce04
+pkgver=r1111.16b62f6
 pkgrel=1
 pkgdesc="mangowc without scenefx"
 url="https://github.com/DreamMaoMao/mangowc/tree/wl-only"
@@ -15,6 +15,8 @@ depends=(
   pixman
   libxkbcommon
   pcre2
+  libxcb
+  xorg-xwayland
   'libwlroots-0.20.so'
 )
 
