@@ -1,8 +1,8 @@
 diff --git a/tests.py b/tests.py
-index 5d32b1e..69d20a5 100644
+index d24f6d4..404e7ce 100644
 --- a/tests.py
 +++ b/tests.py
-@@ -110,7 +110,7 @@ class Test(unittest.TestCase):
+@@ -121,7 +121,7 @@ class Test(unittest.TestCase):
                  continue
              print("Testing {0}: ".format(sample_path), end="")
              parsed_report = parsedmarc.parse_report_file(
@@ -11,7 +11,7 @@ index 5d32b1e..69d20a5 100644
              )["report"]
              parsedmarc.parsed_aggregate_reports_to_csv(parsed_report)
              print("Passed!")
-@@ -118,7 +118,7 @@ class Test(unittest.TestCase):
+@@ -129,7 +129,7 @@ class Test(unittest.TestCase):
      def testEmptySample(self):
          """Test empty/unparasable report"""
          with self.assertRaises(parsedmarc.ParserError):
@@ -20,7 +20,7 @@ index 5d32b1e..69d20a5 100644
  
      def testForensicSamples(self):
          """Test sample forensic/ruf/failure DMARC reports"""
-@@ -129,7 +129,7 @@ class Test(unittest.TestCase):
+@@ -140,7 +140,7 @@ class Test(unittest.TestCase):
              with open(sample_path) as sample_file:
                  sample_content = sample_file.read()
                  parsed_report = parsedmarc.parse_report_email(sample_content)["report"]
@@ -29,7 +29,7 @@ index 5d32b1e..69d20a5 100644
              parsedmarc.parsed_forensic_reports_to_csv(parsed_report)
              print("Passed!")
  
-@@ -141,7 +141,7 @@ class Test(unittest.TestCase):
+@@ -152,7 +152,7 @@ class Test(unittest.TestCase):
              if os.path.isdir(sample_path):
                  continue
              print("Testing {0}: ".format(sample_path), end="")

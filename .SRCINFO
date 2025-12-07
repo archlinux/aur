@@ -1,6 +1,6 @@
 pkgbase = parsedmarc
 	pkgdesc = Python package and CLI for parsing aggregate and forensic DMARC reports
-	pkgver = 8.18.7
+	pkgver = 9.0.3
 	pkgrel = 1
 	url = https://github.com/domainaware/parsedmarc
 	arch = any
@@ -10,7 +10,8 @@ pkgbase = parsedmarc
 	makedepends = python-hatchling>=1.27.0
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python
+	depends = python>=3.9.0
+	depends = python<3.14.0
 	depends = python-azure-core
 	depends = python-azure-identity>=1.8.0
 	depends = python-azure-monitor-ingestion>=1.0.0
@@ -40,9 +41,9 @@ pkgbase = parsedmarc
 	optdepends = perl-email-outlook-message: Microsoft Outlook email parsing
 	optdepends = perl-email-address: Microsoft Outlook email parsing
 	optdepends = geoip2-database: for using an up-to-date IP to Country database
-	source = parsedmarc-8.18.7.tar.gz::https://github.com/domainaware/parsedmarc/archive/6.18.7.tar.gz
+	source = parsedmarc-9.0.3.tar.gz::https://github.com/domainaware/parsedmarc/archive/9.0.3.tar.gz
 	source = run-tests-offline.diff
-	b2sums = 8fb14ba267fd1518e074a9984996a0e81cfb6446dc0015a30f3a3e75943c9cd032c60bc3af7a7586d82b197a38b61baf202d815344cd8de04cb537097cbeec64
-	b2sums = 72b3826cb1a61eb4004e4763aefd9996a0c28bee387a36ecd8d4837f1b33a265c1691ff0e11478d10ce30adeb49c277f24eb737067d6ca090bb9967e0895429d
+	b2sums = 273204894e9e24a47d28b3ec685b7df2f03652b2b5fbaa5287b71693316a05526c05e40f9d43d09789619f4e37a9364bc001d9b4d0098ae9d52efe473b03447a
+	b2sums = ab75ba1048a73305aede8bb9c490a1c63d666a03cd808d32b7ffc92be39ef70e7f47ab26f34e5ce499b9b425376ca3eb801175f8c80c7ae296e643aee05f84c9
 
 pkgname = parsedmarc
