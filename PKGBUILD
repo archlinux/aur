@@ -7,7 +7,7 @@ pkgrel=1
 arch=(any)
 url="https://${_base}.org"
 license=(BSD-3-Clause)
-depends=(python-imageio python-scipy) # boost openexr libpng libtiff
+depends=(python-numpy) # boost openexr libpng libtiff
 makedepends=(python-build python-installer python-hatchling python-wheel)
 checkdepends=(python-pytest-xdist python-networkx python-pydot python-av python-trimesh) # openimageio
 optdepends=('python-matplotlib: for plot diagrams'
@@ -16,6 +16,7 @@ optdepends=('python-matplotlib: for plot diagrams'
   'python-pandas: for use dataframes'
   'python-pydot: for plot automatic colour conversion graph using Graphviz'
   'python-tqdm: for compute hull section'
+  'python-imageio'
   'python-trimesh: for plot the section contour of given hull along given axis and origin')
   # 'python-xxhash: '
 source=(${_base//-science/}-${pkgver}.tar.gz::https://github.com/${_base}/${_base//-science/}/archive/v${pkgver}.tar.gz)
