@@ -1,7 +1,7 @@
 # Maintainer: buj <buj351@outlook.com>
 pkgname=voidsprite-git 
 _pkgver=07.12.2025
-pkgver="$(echo $_pkgver | tr '.' $'\n' | tac | paste -s -d '.')"+git
+pkgver=0.0.0+git
 pkgrel=2
 pkgdesc='Free pixelart editor made in SDL3 C++'
 url='https://github.com/counter185/voidsprite'
