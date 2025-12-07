@@ -12,8 +12,8 @@ pkgbase = mages-bin
 	conflicts = mages
 	options = !strip
 	source_x86_64 = mages-0.9.7-x86_64.AppImage::https://github.com/mlm-games/mages/releases/download/0.9.7/mages-0.9.7-x86_64.AppImage
-	sha256sums_x86_64 = 8f42fb904c452c5159708e008b74f0073e46a8b05f22237540d4d5058334ecd4
+	sha256sums_x86_64 = cece4114f04bc346692e33581620ce89b9ff7f66e6ddb5535fe3b472846585e3
 	source_aarch64 = mages-0.9.7-aarch64.AppImage::https://github.com/mlm-games/mages/releases/download/0.9.7/mages-0.9.7-aarch64.AppImage
-	sha256sums_aarch64 = d1de48dee4acd441d4d1b191ed1c608dd648aed3dbdc51d20bc2cf8c5ad0322a
+	sha256sums_aarch64 = 77badbb51eaf37f3358182722a7679495adf84a5cda9fb2a25233cf00e1c28fb
 
 pkgname = mages-bin
