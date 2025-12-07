@@ -1,6 +1,6 @@
 pkgbase = cobang
 	pkgdesc = A QR code scanner desktop app for Linux
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/hongquan/CoBang
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = cobang
 	depends = python-pillow
 	depends = python-qrcode
 	depends = zbar
-	source = CoBang-2.3.0.tar.gz::https://github.com/hongquan/CoBang/archive/refs/tags/v2.3.0.tar.gz
-	sha256sums = 21cdcbf9b10c63db4d76c3081785ba50c58207df3d93c829295b1c5904f3dda6
+	source = CoBang-2.3.1.tar.gz::https://github.com/hongquan/CoBang/archive/refs/tags/v2.3.1.tar.gz
+	sha256sums = 2267aa941e8e654a8a8f39743dc0a0d6344d7666e933dcb4213ef05408bfa617
 
 pkgname = cobang
