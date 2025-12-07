@@ -8,16 +8,16 @@ license=('BSD 3')
 depends=('boost-libs')
 makedepends=('cmake' 'boost' 'gcc' 'make' 'git')
 source=("$pkgname::git+https://git.lysator.liu.se/love/cheeseburger.git#tag=v$pkgver")
-sha256sums=('SKIP')  # Not needed for Git sources
+sha256sums=('SKIP') # Not needed for Git sources
 options=('!debug')
 
 build() {
-  cmake -B build -S "$pkgname" \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
-  cmake --build build
+    cmake -B build -S "$pkgname" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr
+    cmake --build build
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+    DESTDIR="$pkgdir" cmake --install build
 }
