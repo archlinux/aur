@@ -24,6 +24,7 @@ license=('GPL-2.0-or-later')
 #conflicts=("${pkgname%-git}") ### Not needed, multiple versions of the engine can be installed besides each other
 depends=('curl' 'sdl2' 'devil' 'p7zip' 'openal' 'libogg' 'libvorbis' 'libunwind' 'freetype2' 'glew' 'minizip' 'fontconfig' 'jsoncpp' )
 makedepends=('git' 'curl' 'jq'
+             'ccache' ### curently wont build without
              'ninja' 'socat' 'python-pip' 'cmake3'
 #            'clang' 'lld' ### Only needed if you want to build with the included clang toolchain
              'compdb' 'gflags')

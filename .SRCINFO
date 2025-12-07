@@ -1,6 +1,6 @@
 pkgbase = recoil-engine-rc
 	pkgdesc = A powerful free cross-platform RTS game engine. (GitHub — latest Release Candidate tag). This version is used for public engine testing in BAR — Join the Discord if you want to help
-	pkgver = 2025.06.11
+	pkgver = VERSION
 	pkgrel = 1
 	url = https://beyond-all-reason.github.io/RecoilEngine/
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = recoil-engine-rc
 	makedepends = git
 	makedepends = curl
 	makedepends = jq
+	makedepends = ccache
 	makedepends = ninja
 	makedepends = socat
 	makedepends = python-pip
@@ -29,8 +30,6 @@ pkgbase = recoil-engine-rc
 	depends = jsoncpp
 	optdepends = bar-lobby
 	optdepends = bar-lobby-git
-	options = debug
-	options = strip
 	source = recoil-engine-rc::git+https://github.com/beyond-all-reason/RecoilEngine.git
 	sha256sums = SKIP
 
