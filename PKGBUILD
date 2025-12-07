@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('go' 'make')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nurysso/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('8f19dfdc3c3612ab0a98b5fd3be77975022ee036caa8172548ec88e9c6251db3')
+sha256sums=('41f34d0f786acacc83d8bf8fdb10db7017adff6895ad12996f2f3fd1eb670880')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
