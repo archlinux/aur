@@ -34,6 +34,7 @@ _cef_path="/usr/lib/$pkgname"
 
 prepare() {
 	cd "$pkgname"
+	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$(rustc --print host-tuple)"
 	pushd frontend
 	npm run setup
@@ -46,26 +47,22 @@ pkgver() {
 		"$(git rev-parse --short=7 HEAD)"
 }
 
-_srcenv() {
+build() {
 	cd "$pkgname"
 	export RUSTUP_TOOLCHAIN=stable
 	unset CARGO_TARGET_DIR
+	
+	pushd frontend
+	(
+		RUSTFLAGS+=' --cfg=web_sys_unstable_apis'
+		npm run build-native
+	)
+	popd
+	
 	CFLAGS+=' -ffat-lto-objects'
 	CXXFLAGS+=" -fno-lto"
-	RUSTFLAGS+=' --cfg=web_sys_unstable_apis'
 	RUSTFLAGS+=" -C link-arg=-Wl,-rpath=$_cef_path"
-}
-
-build() {
-	_srcenv
-	pushd frontend
-	npm run build-native
-	popd
 	cargo build --release --frozen --package graphene-cli --package graphite-desktop
-}
-
-check() {
-	_srcenv
 }
 
 package() {
