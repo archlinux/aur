@@ -1,6 +1,6 @@
 # Maintainer: 4s3ti <4s3ti@4s3ti.net>
 
-_pkgver=1.8.2
+_pkgver=1.8.3
 _appimage="Bazecor-${_pkgver}-x64.AppImage"
 
 pkgname="bazecor"
@@ -19,7 +19,7 @@ noextract=("${_appimage}")
 # https://github.com/Dygmalab/Bazecor/releases/download/v1.4.0-rc4/Bazecor-1.4.0-rc.4-x64.AppImage
 source=("${url}/releases/download/v${_pkgver}/${_appimage}"
   "10-dygma.rules")
-sha256sums=('50a08d757dfc262a79eb4892a0a2796c7ee949484317f270f02d1c9de81ff58d'
+sha256sums=('380c0778b2db5be16529ecb14be3023938ab1c2bea669b626176de0379786097'
             'aba17eabd0f8cbb5118d6d1013e40f3991e5e7c38f97e68f3053f8f5d098ff3c')
 
 prepare() {
