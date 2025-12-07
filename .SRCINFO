@@ -1,0 +1,12 @@
+pkgbase = fastfetch-theme-manager
+	pkgdesc = A theme manager for Fastfetch made by Tasavvuf
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/itz-dev-tasavvuf/fastfetch-theme-manager
+	arch = any
+	license = MIT
+	depends = python
+	source = https://github.com/itz-dev-tasavvuf/fastfetch-theme-manager/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = fastfetch-theme-manager
