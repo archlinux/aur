@@ -1,6 +1,6 @@
 pkgbase = tux-assistant
 	pkgdesc = GTK4/Libadwaita Linux system configuration tool - simplifies post-installation setup
-	pkgver = 0.9.141
+	pkgver = 0.9.147
 	pkgrel = 1
 	url = https://github.com/dorrellkc/Tux-Assistant
 	arch = any
@@ -23,9 +23,9 @@ pkgbase = tux-assistant
 	optdepends = gnome-shell: for GNOME extension management
 	optdepends = gst-plugins-ugly: for additional audio format support
 	optdepends = gst-plugins-bad: for additional audio format support
-	source = tux-assistant-0.9.141.tar.gz::https://github.com/dorrellkc/Tux-Assistant/archive/refs/tags/v0.9.141.tar.gz
+	source = tux-assistant-0.9.147.tar.gz::https://github.com/dorrellkc/Tux-Assistant/archive/refs/tags/v0.9.147.tar.gz
 	source = tux-assistant.install
-	sha256sums = a0b3e4d33da6379fdfa6afb94d4085295c33400cecda01d9e5b9ea33e601e135
+	sha256sums = c49bed522ff45c597dbeaed8aa2c703ba33678b99b345434253a90a855c337a4
 	sha256sums = SKIP
 
 pkgname = tux-assistant
