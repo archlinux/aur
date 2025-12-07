@@ -4,7 +4,7 @@
 
 pkgname=tek
 _pkgver=0.3.0-rc.1
-pkgver=0.3.0-rc.1
+pkgver=0.3.0.rc.1
 pkgrel=1
 pkgdesc='A colorful music making program for your linux terminal'
 arch=('x86_64')
