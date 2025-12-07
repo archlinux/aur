@@ -1,5 +1,5 @@
 pkgname=mimose-bin
-pkgver=1.7.3
+pkgver=1.8.8
 pkgrel=1
 pkgdesc="Mimose – App that combines Spotify, Soundcloud, VK and Deezer."
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=(
   libxss libxtst mesa nspr nss pango util-linux-libs xdg-utils
 )
 options=('!strip')
-source=("https://github.com/0xhkamori/mimose-binaries/releases/download/v1.7.3-20251201-152259/mimose-1.7.3-1-x86_64.pkg.tar.zst")
-sha256sums=('18f732f7c29e64612a3fd92dcfb0f23d807df2a6b37e65844648eaaf132939af')
+source=("https://github.com/0xhkamori/mimose-binaries/releases/download/v1.8.8-20251207-014723/mimose-1.8.8-1-x86_64.pkg.tar.zst")
+sha256sums=('bc320245e6b55e158bba35e005a5c8db6ec1c380f3f2c82b34e098a37f8b5f57')
 
 package() {
   cp -a * "${pkgdir}/"
