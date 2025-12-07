@@ -1,0 +1,24 @@
+pkgbase = musl-gcc-cross-bin
+	pkgdesc = A GCC cross-compiler targeting Linux musl
+	pkgver = 15.2.0
+	pkgrel = 20251207
+	url = https://github.com/AmanoTeam/Raiden
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = LGPL-3.0
+	provides = musl-gcc-cross
+	conflicts = musl-gcc-cross
+	options = !strip
+	options = staticlibs
+	source_i686 = https://github.com/AmanoTeam/Raiden/releases/download/gcc-15/i386-unknown-linux-gnu.tar.xz
+	sha256sums_i686 = d19646cdd4733b767ccfd26095adb2c96ca1e97e1c0f77dec53143c177cd2b67
+	source_x86_64 = https://github.com/AmanoTeam/Raiden/releases/download/gcc-15/x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = c184ef8f059d7cc573437de2b3615454c2d8306126694895bace0fb9adb37d68
+	source_aarch64 = https://github.com/AmanoTeam/Raiden/releases/download/gcc-15/aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = feff1845d60aa5c773cd3f739f389c82e298781dc687de89eb8e3f0ab01bdb74
+	source_armv7h = https://github.com/AmanoTeam/Raiden/releases/download/gcc-15/arm-unknown-linux-gnueabihf.tar.xz
+	sha256sums_armv7h = fc4efa37d233b1628da04cda300161203ca0151471161ad65628a2fb5e2f78ed
+
+pkgname = musl-gcc-cross-bin
