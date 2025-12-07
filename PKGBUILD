@@ -2,7 +2,7 @@
 # 🔋 slskdn - The batteries-included Soulseek web client
 pkgname=slskdn-bin
 _pkgname=slskd
-pkgver=0.24.1.slskdn.16
+pkgver=0.24.1.slskdn.17
 pkgrel=1
 pkgdesc="🔋 The batteries-included Soulseek web client. A feature-rich fork of slskd with wishlist, smart ranking, tabbed browsing & more"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
     "slskd.yml"
     "slskd.sysusers"
 )
-sha256sums=('f303ad816a85667e7ae077825c92a30714d5af79487e3d5cb7ed08713c0f4c68' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('2a6ddf736a312a1085d2414328cd1619a462ac761e9d159b2edeb504a574803f' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
     # Install application to /usr/lib/slskd (same location as original slskd)
