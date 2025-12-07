@@ -1,0 +1,3 @@
+[fcitx-configtool]
+source = 'git'
+git = 'https://github.com/fcitx/fcitx-configtool'
