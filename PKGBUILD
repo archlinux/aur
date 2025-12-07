@@ -13,7 +13,7 @@ depends=(embree3 freetype2 graphite harfbuzz harfbuzz-icu libglvnd libspeechd
     libxinerama libxrandr mbedtls2 miniupnpc pcre2)
 optdepends=('pipewire-alsa: for audio support'
     'pipewire-pulse: for audio support')
-source=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-4.4-stable/Redot_v4.4-stable_linux_x64.zip")
+source=("https://github.com/Redot-Engine/redot-engine/releases/download/redot-4.4-stable/Redot_v4.4-stable_linux.x86_64.zip")
 sha256sums=('7d8b0c8fd044cda0bc542bd5800b95bc99b681b0d70d481e9dbff4a5ccfb833a')
 
 package() {
