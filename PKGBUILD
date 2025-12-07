@@ -1,19 +1,20 @@
 # Maintainer: Rubin Simons <me@rubin55.org>
 
+_sdk=10.0
 _branch=main
 _pkgname=marksman
 pkgname=${_pkgname}-git
-pkgver=r500.1928e10
-pkgrel=1
+pkgver=r512.eb43ccd
+pkgrel=2
 pkgdesc="Write Markdown with code assist and intelligence in the comfort of your favourite editor."
 arch=('any')
 url="https://github.com/artempyanykh/${_pkgname}"
 license=('GPL')
-makedepends=('dotnet-sdk' 'git')
-depends=('dotnet-runtime')
+makedepends=("dotnet-sdk-${_sdk}" "git")
+depends=("dotnet-runtime-${_sdk}")
 options=('!strip')
-source=("${pkgname}::git+${url}.git#branch=${_branch}")
-sha256sums=('SKIP')
+source=("${pkgname}::git+${url}.git#branch=${_branch}" "use-net10.patch")
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
@@ -22,7 +23,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-
+  cat "${srcdir}/use-net10.patch" | patch -p1
   # Disable dotnet telemetry
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
 

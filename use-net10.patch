@@ -1,0 +1,198 @@
+diff --git a/.github/workflows/build.yml b/.github/workflows/build.yml
+index 648390a..cc048e2 100644
+--- a/.github/workflows/build.yml
++++ b/.github/workflows/build.yml
+@@ -24,7 +24,7 @@ jobs:
+       - name: Setup dotnet
+         uses: actions/setup-dotnet@v3
+         with:
+-          dotnet-version: '9.0.x'
++          dotnet-version: '10.0.x'
+ 
+       - name: Install dependencies
+         run: dotnet restore
+diff --git a/.github/workflows/release.yml b/.github/workflows/release.yml
+index facbe1e..adfd2d2 100644
+--- a/.github/workflows/release.yml
++++ b/.github/workflows/release.yml
+@@ -41,7 +41,7 @@ jobs:
+       - name: Setup dotnet
+         uses: actions/setup-dotnet@v3
+         with:
+-          dotnet-version: "9.0.x"
++          dotnet-version: "10.0.x"
+       - name: Install dependencies
+         run: dotnet restore
+       - name: Build the release binary
+diff --git a/Benchmarks/Benchmarks.fsproj b/Benchmarks/Benchmarks.fsproj
+index 2d70f83..4c5ab31 100644
+--- a/Benchmarks/Benchmarks.fsproj
++++ b/Benchmarks/Benchmarks.fsproj
+@@ -2,7 +2,7 @@
+ 
+     <PropertyGroup>
+         <OutputType>Exe</OutputType>
+-        <TargetFramework>net9.0</TargetFramework>
++        <TargetFramework>net10.0</TargetFramework>
+     </PropertyGroup>
+ 
+     <ItemGroup>
+diff --git a/Benchmarks/Program.fs b/Benchmarks/Program.fs
+index a65be91..ff428a5 100644
+--- a/Benchmarks/Program.fs
++++ b/Benchmarks/Program.fs
+@@ -78,18 +78,18 @@ let main _ =
+     BenchmarkRunner.Run<ReferenceResolution>() |> ignore
+     0
+ // $ make bench
+-// BenchmarkDotNet v0.14.0, macOS Sequoia 15.6.1 (24G90) [Darwin 24.6.0]
+-// Apple M1 Pro, 1 CPU, 10 logical and 10 physical cores
+-// .NET SDK 9.0.100
+-//   [Host]     : .NET 9.0.0 (9.0.24.52809), Arm64 RyuJIT AdvSIMD DEBUG
+-//   DefaultJob : .NET 9.0.0 (9.0.24.52809), Arm64 RyuJIT AdvSIMD
+-
+-
++// BenchmarkDotNet v0.15.6, Linux Arch Linux
++// 13th Gen Intel Core i7-1370P 0.40GHz, 1 CPU, 20 logical and 14 physical cores
++// .NET SDK 10.0.100
++//   [Host]     : .NET 10.0.0 (10.0.0, 42.42.42.42424), X64 RyuJIT x86-64-v3 DEBUG
++//   DefaultJob : .NET 10.0.0 (10.0.0, 42.42.42.42424), X64 RyuJIT x86-64-v3
++//
++//
+ // | Method       | FolderSize | Mean       | Error     | StdDev    |
+ // |------------- |----------- |-----------:|----------:|----------:|
+-// | gotoDefTime  | 10         |   1.565 us | 0.0179 us | 0.0150 us |
+-// | findRefsTime | 10         |   9.587 us | 0.1863 us | 0.2788 us |
+-// | gotoDefTime  | 50         |   2.455 us | 0.0243 us | 0.0203 us |
+-// | findRefsTime | 50         |  50.685 us | 0.9987 us | 0.8854 us |
+-// | gotoDefTime  | 250        |   2.925 us | 0.0109 us | 0.0097 us |
+-// | findRefsTime | 250        | 339.520 us | 6.7119 us | 5.9500 us |
++// | gotoDefTime  | 10         |   2.916 us | 0.0300 us | 0.0266 us |
++// | findRefsTime | 10         |  17.125 us | 0.2131 us | 0.1993 us |
++// | gotoDefTime  | 50         |   4.011 us | 0.0248 us | 0.0207 us |
++// | findRefsTime | 50         |  84.928 us | 0.6689 us | 0.5222 us |
++// | gotoDefTime  | 250        |   5.158 us | 0.0143 us | 0.0127 us |
++// | findRefsTime | 250        | 641.349 us | 5.2700 us | 4.9296 us |
+diff --git a/LanguageServerProtocol/LanguageServerProtocol.fsproj b/LanguageServerProtocol/LanguageServerProtocol.fsproj
+index dcd9923..b8ea4fd 100644
+--- a/LanguageServerProtocol/LanguageServerProtocol.fsproj
++++ b/LanguageServerProtocol/LanguageServerProtocol.fsproj
+@@ -9,7 +9,7 @@
+     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+     <PackageReadmeFile>README.md</PackageReadmeFile>
+     <PackageProjectUrl>https://github.com/ionide/LanguageServerProtocol</PackageProjectUrl>
+-    <TargetFramework>net9.0</TargetFramework>
++    <TargetFramework>net10.0</TargetFramework>
+   </PropertyGroup>
+   <ItemGroup>
+     <!-- FsLibLog.fs comes verbatim from
+diff --git a/Makefile b/Makefile
+index 604cc5d..54f8dbe 100644
+--- a/Makefile
++++ b/Makefile
+@@ -141,7 +141,7 @@ install: publish
+ else
+ install: publish
+ 	mkdir -p $(PREFIX)/bin
+-	install -m755 Marksman/bin/Release/net9.0/$(RID)/publish/marksman $(PREFIX)/bin
++	install -m755 Marksman/bin/Release/net10.0/$(RID)/publish/marksman $(PREFIX)/bin
+ endif
+ 
+ .PHONY: uninstall
+diff --git a/MarkdigPatches/MarkdigPatches.csproj b/MarkdigPatches/MarkdigPatches.csproj
+index 9f36e07..20bb6df 100644
+--- a/MarkdigPatches/MarkdigPatches.csproj
++++ b/MarkdigPatches/MarkdigPatches.csproj
+@@ -3,7 +3,7 @@
+     <PropertyGroup>
+         <ImplicitUsings>enable</ImplicitUsings>
+         <Nullable>enable</Nullable>
+-        <TargetFramework>net9.0</TargetFramework>
++        <TargetFramework>net10.0</TargetFramework>
+     </PropertyGroup>
+ 
+     <ItemGroup>
+diff --git a/Marksman/Marksman.fsproj b/Marksman/Marksman.fsproj
+index 7df36a7..46a9e52 100644
+--- a/Marksman/Marksman.fsproj
++++ b/Marksman/Marksman.fsproj
+@@ -4,7 +4,7 @@
+         <OutputType>Exe</OutputType>
+         <AssemblyName>marksman</AssemblyName>
+         <VersionPrefix>1.0.0</VersionPrefix>
+-        <TargetFramework>net9.0</TargetFramework>
++        <TargetFramework>net10.0</TargetFramework>
+         <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+     </PropertyGroup>
+     <Target Name="Version" BeforeTargets="BeforeBuild">
+diff --git a/Tests/Tests.fsproj b/Tests/Tests.fsproj
+index c461365..302dd74 100644
+--- a/Tests/Tests.fsproj
++++ b/Tests/Tests.fsproj
+@@ -4,7 +4,7 @@
+ 
+         <IsPackable>false</IsPackable>
+         <GenerateProgramFile>false</GenerateProgramFile>
+-        <TargetFramework>net9.0</TargetFramework>
++        <TargetFramework>net10.0</TargetFramework>
+     </PropertyGroup>
+ 
+     <ItemGroup>
+diff --git a/global.json b/global.json
+index 58c9770..00b4bde 100644
+--- a/global.json
++++ b/global.json
+@@ -1,6 +1,6 @@
+ ﻿{
+   "sdk": {
+-    "version": "9.0.100",
++    "version": "10.0.100",
+     "rollForward": "latestFeature"
+   }
+ }
+diff --git a/scripts/install.bat b/scripts/install.bat
+index f06a8c6..2bf30a1 100644
+--- a/scripts/install.bat
++++ b/scripts/install.bat
+@@ -2,5 +2,5 @@
+ SET localbin="%userprofile%\.local\bin\"
+ if not exist %localbin% ( mkdir %localbin% )
+ SET rootDir=%~dp0..
+-set exePath="%rootDir%\Marksman\bin\Release\net9.0\win-x64\publish\marksman.exe"
++set exePath="%rootDir%\Marksman\bin\Release\net10.0\win-x64\publish\marksman.exe"
+ copy %exePath% %localbin% /y
+diff --git a/scripts/marksman-server.bat b/scripts/marksman-server.bat
+index 6f7ad47..66a927a 100644
+--- a/scripts/marksman-server.bat
++++ b/scripts/marksman-server.bat
+@@ -1,4 +1,4 @@
+ ﻿@ECHO OFF
+ SET rootDir=%~dp0..
+ make -C %rootDir% build
+-%rootDir%\Marksman\bin\Debug\net9.0\marksman.exe server -v=4
+\ No newline at end of file
++%rootDir%\Marksman\bin\Debug\net10.0\marksman.exe server -v=4
+\ No newline at end of file
+diff --git a/scripts/marksman-server.sh b/scripts/marksman-server.sh
+index 4d14c2b..0448401 100755
+--- a/scripts/marksman-server.sh
++++ b/scripts/marksman-server.sh
+@@ -7,4 +7,4 @@ SCRIPT_DIR=$(cd -- "$(dirname -- "$RESOLVED_PATH")" &>/dev/null && pwd)
+ TOP_DIR="$(realpath "$SCRIPT_DIR/..")"
+ make -C "$TOP_DIR" build </dev/null 1>&2
+ 
+-exec "$TOP_DIR/Marksman/bin/Debug/net9.0/marksman" "${@:1}"
++exec "$TOP_DIR/Marksman/bin/Debug/net10.0/marksman" "${@:1}"
+diff --git a/snap/snapcraft.yaml b/snap/snapcraft.yaml
+index 9878fe7..9476889 100644
+--- a/snap/snapcraft.yaml
++++ b/snap/snapcraft.yaml
+@@ -37,7 +37,7 @@ parts:
+       craftctl default
+       wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
+       chmod +x ./dotnet-install.sh
+-      ./dotnet-install.sh --channel 9.0
++      ./dotnet-install.sh --channel 10.0
+     override-build: |
+       craftctl default
+       craftctl set version="$(git describe --tags)"
