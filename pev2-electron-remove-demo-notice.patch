@@ -1,0 +1,19 @@
+diff --unified --recursive --text --new-file pev2-1.19.0.orig/example/src/views/HomeView.vue pev2-1.19.0/example/src/views/HomeView.vue
+--- pev2-1.19.0.orig/example/src/views/HomeView.vue	2025-12-07 10:48:35.141027467 +0100
++++ pev2-1.19.0/example/src/views/HomeView.vue	2025-12-07 10:49:30.648979686 +0100
+@@ -288,15 +288,6 @@
+   <MainLayout>
+     <div class="container">
+       <VersionCheck />
+-      <div class="alert alert-warning">
+-        This is the demo application for
+-        <a href="https://github.com/dalibo/pev2">PEV2</a>. It is serverless and
+-        doesn't send your plans over the internet.
+-        <br />
+-        Please consider using
+-        <a href="https://explain.dalibo.com">explain.dalibo.com</a> instead if
+-        you want to save or share your plans.
+-      </div>
+       <div class="row">
+         <div class="col-sm-7">
+           <div class="row mb-3">

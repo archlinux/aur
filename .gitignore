@@ -5,4 +5,4 @@
 !PKGBUILD
 !pev2.desktop
 !pev2.sh
-!remove-demo-notice.patch
+!pev2-electron-remove-demo-notice.patch

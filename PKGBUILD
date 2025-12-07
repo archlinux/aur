@@ -2,7 +2,7 @@
 
 pkgname=pev2-electron
 _pkgname=pev2
-pkgver=1.15.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="Postgres Explain Visualizer 2, using the system Electron package"
 arch=(any)
@@ -14,21 +14,21 @@ depends=(
 )
 makedepends=(npm)
 source=(
-  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+  "$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
+  "$pkgname-remove-demo-notice.patch"
   "pev2.sh"
   "pev2.desktop"
-  "remove-demo-notice.patch"
 )
-sha256sums=(
-  '81a2d6e52f1da878318ddeea48d0cec700fe0573d68edfcf724ef5bb395e4123'
-  'd4361d563a1c199b5887154ac5f4d8009dc2c882b409c8f4bbf00281a2e910e4'
-  '219229650df88bf6f8ffc0bb53bf2986a479d0144c0fa93949996b58ed4e7d8e'
-  '4e6d2bf9298e95e63e7bba7f2e96cfef031c0b77da88ed2e7bf0106b880f283b'
+sha512sums=(
+  '97a2bd208dae3a7c821b273236affe02cd4d1418e8b4fbbe7aeee054fe12250ea563f21f7da67aaf5d085927c2fdcfce0b7308269651c3bc4c26fe66ca7e0974'
+  'e3c854c6230b3743f761e5eaaa94ec1b8c04c7cac9eca56acf29790f58306d590d761d803eeeb278e30ba3a09665f83643281e1d775fa8f342339152b7cfce1d'
+  'bb3d507436409726d48fbacbaf48cc40909baf31c168b47aebbc21d136e8a75ae2292e244b51227b465d470f42cbafbb056bed97a900133d3c63214f0a4d839e'
+  '4131cef58d61c2c6646e2c65ca0c4e09f90a8947a4c715d0c61561dfd0ca1f417ef9f3ec24d3949af9e2e20f86e9006283d4b638ac3910fbe08f9941b6c9bb0a'
 )
 
 prepare() {
   cd $_pkgname-$pkgver
-  patch --forward --strip=1 --input="$srcdir/remove-demo-notice.patch"
+  patch -Np1 < ../$pkgname-remove-demo-notice.patch
   sed -i 's/.*husky.*//' package.json
 }
 
