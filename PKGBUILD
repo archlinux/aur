@@ -1,27 +1,22 @@
 # Maintainer: pierspad <pierpaolospadafora@proton.me>
 pkgname=prmt
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
-pkgdesc="Ultra-fast, customizable shell prompt generator"
+pkgdesc="A tool for prompt manipulation (Binary version)"
 arch=('x86_64')
 url="https://github.com/3axap4eHko/prmt"
-license=('MIT')
-depends=('gcc-libs')
-makedepends=('cargo')
-conflicts=('prmt-git')
+license=('MIT') 
 provides=('prmt')
-replaces=('prmt-git')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('65569bf5e6ad0cb56f9a9591f21fc3a2b0bc50450b16fa3c09b722f34e629175')
+conflicts=('prmt')
 
-build() {
-    cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
-}
+source=("https://github.com/3axap4eHko/prmt/releases/download/v${pkgver}/prmt-x86_64-unknown-linux-gnu-ubuntu-24.04.tar.gz")
+
+sha256sums=('2a1b3e1bbb1030f84f04ac77836ab2fbfd4418656bf4ca0d124d60f8321a4e50')
 
 package() {
-    cd "$pkgname-$pkgver"
-    install -Dm755 "target/release/prmt" "$pkgdir/usr/bin/prmt"
+    _dirname="prmt-x86_64-unknown-linux-gnu-ubuntu-24.04"
+
+    install -Dm755 "${srcdir}/${_dirname}/prmt" "${pkgdir}/usr/bin/prmt"
+
+    install -Dm644 "${srcdir}/${_dirname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
