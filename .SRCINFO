@@ -1,0 +1,16 @@
+pkgbase = helical-cli-git
+	pkgdesc = An helical representation of a solar system.
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/Nerter29/helical-cli
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = zig
+	depends = glibc
+	provides = helical-cli
+	conflicts = helical-cli
+	source = git+https://github.com/Nerter29/helical-cli.git
+	sha256sums = SKIP
+
+pkgname = helical-cli-git
