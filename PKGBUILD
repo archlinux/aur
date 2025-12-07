@@ -21,6 +21,7 @@ source=(
 	'fix-argv.diff'
 	'fix-local-storage.diff'
 	'update-dependencies.diff'
+	'update-dependencies-beta.diff'
 	'mongodb-compass.conf'
 )
 b2sums=('9f9c2c4ef8b50cfdba40c9d4135888e728d367620dfa8df372e23aa5669874dbe1b70d68d6c2bb14a3dce12edf40c2864dec315eda251569117e61f0ec8831d0'
@@ -29,6 +30,7 @@ b2sums=('9f9c2c4ef8b50cfdba40c9d4135888e728d367620dfa8df372e23aa5669874dbe1b70d6
         '925dbea3aa18e5ac3529276f0c5d4c42d7ae5cb81cc9e5df3b411af751b8314e9a20bd0c5c7af144d2cdd11a26634a11aa7c064545d96003566640f5005375df'
         '17d17d30bda15430b3a8fe15207ab41dc6820461aad52df07bf7b7a0ecc342c5605bdf57673aab24f8a136560b6cad30b059fadb2f2e271cacda6a2b903daa40'
         'a3c850d924e3f55e1319dd5c2fceb02ca07220a4a95e77847b53a2321e0268741fb0c62a712af99e10a5c50de3e5ee5af272d3465e9556510fdc46abe8edab9d'
+        '66067db3cd9a69d9d5cf8fc7e1f0907e92a43569ff5d1aeab7e466bba8bb749e0e9e4e2ff07634c64a4b411f860d12db580507b9c0d6ba55f18bb7e6d166c212'
         '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
 
 _sourcedirectory="compass-$_pkgver"
@@ -36,8 +38,10 @@ _sourcedirectory="compass-$_pkgver"
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
-	# Ignore/fix IconButton TS errors
-	patch --forward -p1 < "$srcdir/ignore-fix-ts-errors.diff"
+	if [[ ! "$_target" =~ -beta$ ]]; then
+		# Ignore/fix IconButton TS errors
+		patch --forward -p1 < "$srcdir/ignore-fix-ts-errors.diff"
+	fi
 
 	# Don't use the bundled ffmpeg
 	patch --forward -p1 < "$srcdir/hadron-build-ffmpeg.diff"
@@ -46,10 +50,16 @@ prepare() {
 	patch --forward -p1 < "$srcdir/fix-argv.diff"
 
 	# Set npm overrides for various dependencies
-	patch --forward -p1 < "$srcdir/update-dependencies.diff"
+	if [[ "$_target" =~ -beta$ ]]; then
+		patch --forward -p1 < "$srcdir/update-dependencies-beta.diff"
+	else
+		patch --forward -p1 < "$srcdir/update-dependencies.diff"
+	fi
 
-	# Fix broken build with node=>25.1.0 due to localStorage behavior changes (https://github.com/nodejs/node/pull/60351)
-	patch --forward -p1 < "$srcdir/fix-local-storage.diff"
+	if [[ ! "$_target" =~ -beta$ ]]; then
+		# Fix broken build with node=>25.1.0 due to localStorage behavior changes (https://github.com/nodejs/node/pull/60351)
+		patch --forward -p1 < "$srcdir/fix-local-storage.diff"
+	fi
 
 	# Set system Electron version for ABI compatibility
 	sed -i "s|%%ELECTRON_VERSION%%|$(cat "/usr/lib/$_electronpkg/version")|g" 'package.json'
@@ -62,8 +72,10 @@ prepare() {
 	## html-webpack-plugin - fix build with node>=25.1.0
 	npm update electron electron-to-chromium nan ssh2 html-webpack-plugin --package-lock-only
 
-	# Add missing dependencies that don't get installed by default for some reason
-	npm install '@aws-sdk/client-sts@3.713.0' '@aws-sdk/credential-provider-web-identity@3.713.0'
+	if [[ ! "$_target" =~ -beta$ ]]; then
+		# Add missing dependencies that don't get installed by default for some reason
+		npm install '@aws-sdk/client-sts@3.713.0' '@aws-sdk/credential-provider-web-identity@3.713.0'
+	fi
 
 	# Run the bootstrap command
 	HUSKY=0 GYP_DEFINES='libmongocrypt_link_type=dynamic' npm run bootstrap
