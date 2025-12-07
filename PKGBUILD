@@ -1,10 +1,10 @@
 # Maintainer: paperbenni <paperbenni@gmail.com>
 pkgname=ins
-pkgver=0.7.7
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="A powerful command-line tool for managing dotfiles, system diagnostics, and instantOS configurations"
 arch=('x86_64')
-url="https://github.com/instantOS/instantCLI"
+url="https://instantos.io"
 license=('GPL-2.0-only')
 depends=('glibc' 'gcc-libs' 'fzf' 'git' 'sqlite')
 makedepends=('rust')
