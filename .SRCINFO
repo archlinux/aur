@@ -1,13 +1,13 @@
 pkgbase = tiny4linux-gui
 	pkgdesc = A graphical interface for controlling the OBSBOT Tiny series.
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/OpenFoxes/Tiny4Linux
 	arch = x86_64
 	license = EUPL
 	makedepends = rust
 	makedepends = cargo
-	source = https://github.com/OpenFoxes/Tiny4Linux/releases/download/v2.2.0/tiny4linux-2.2.0.tar.gz
-	sha256sums = 201035002f703bb95ef27b1a00c7622402f89f610c9fbff3c002aa1d498eb01d
+	source = https://github.com/OpenFoxes/Tiny4Linux/releases/download/v2.2.1/tiny4linux-2.2.1.tar.gz
+	sha256sums = 82e2935583068aa0586cf100c8650ea6078644d39fee8bb343a9dda8677fa198
 
 pkgname = tiny4linux-gui
