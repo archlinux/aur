@@ -1,18 +1,24 @@
 # Maintainer: Dustin Pilgrim <dustin.pilgrim1997@gmail.com>
 
 pkgname=stasis
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A modern Wayland idle manager designed for simplicity and effectiveness"
 arch=('x86_64')
 url="https://github.com/saltnpepper97/stasis"
 license=('MIT')
-depends=('systemd' 'libinput' 'wayland')
-makedepends=('cargo')
+depends=('systemd' 'dbus' 'libinput' 'wayland')
+makedepends=('cargo' 'rust')
+optdepends=(
+  'libnotify: for desktop notifications'
+  'playerctl: enhanced media player detection'
+  'pipewire-pulse: audio sink detection for media handling'
+  'pulseaudio: audio sink detection for media handling (alternative to pipewire-pulse)'
+)
 conflicts=('stasis-git')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5c4c42d04ba4d4143e13db78f9183a48fc35e7a1f2d8d549477d739d5011b913')
+sha256sums=('56668223299e71ba9fa78a70d927710ef091733cea304683d0dfa58d8d8b7ffc')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -29,8 +35,11 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Install example configuration
-    install -Dm644 "examples/stasis.rune" "$pkgdir/usr/share/doc/$pkgname/stasis.rune"
+    install -Dm644 "examples/stasis.rune" "$pkgdir/usr/share/$pkgname/examples/stasis.rune"
 
     # Install systemd user service file
     install -Dm644 "systemd/stasis.service" "$pkgdir/usr/lib/systemd/user/stasis.service"
+
+    # Install python script for Media Bridge
+    install -Dm755 "scripts/media_bridge_host.py" "$pkgdir/usr/bin/media_bridge_host.py"
 }
