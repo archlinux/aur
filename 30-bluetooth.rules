@@ -1,0 +1,11 @@
+polkit.addRule(function(action, subject) {
+    if (action.lookup("unit") == "bluetooth.service" 
+            && subject.isInGroup("wheel") 
+            && (action.lookup("verb") == "start" || action.lookup("verb") == "stop")
+        ) {
+
+        return polkit.Result.YES;
+    }
+});
+
+
