@@ -4,14 +4,14 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=142.0.7444.175
+pkgver=143.0.7499.40
 pkgrel=1
 _manual_clone=0
 # The following error occures on Abseil 20250512.0:
 # Protoc has returned non-zero status: -4
 _system_abseil=0
 _system_clang=1
-_system_stdlib=libc++
+_system_stdlib=
 pkgdesc="The networking stack of Chromium put into a library"
 arch=('x86_64')
 url="https://chromium.googlesource.com/chromium/src/+/refs/heads/main/components/cronet"
@@ -30,13 +30,11 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-numeric_limits.patch
         fix-trust-store-segfault.patch
         fix-undeclared-isnan.patch
-        remove-unused-icu-targets.patch
 )
-sha256sums=('619b37ab0273f72fac859fff8dd89fbf1b7ae7e7ccb8d67bc79281b24f683bc9'
+sha256sums=('c1ffa0951b98641de2718143a41e3ae13702a220da7b38be62c8eb4d94c929d2'
             '5abc8611463b3097fc5ce58017ef918af8b70d616ad093b8b486d017d021bbdf'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
-            SKIP
             SKIP
             SKIP
             SKIP
@@ -219,8 +217,6 @@ prepare() {
   # Disables logging as it's unconfigurable, which is undesired in a library
   patch -p0 -i ../disable-logging.patch
 
-  patch -p0 -i ../remove-unused-icu-targets.patch
-
   if (( _system_abseil )); then
     # Fixes building with system Abseil
     patch -p0 -i ../abseil-fix-missing-algorithm.patch
@@ -384,7 +380,7 @@ package() {
 
   cp -r include "${pkgdir}/usr"
 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/cronet/LICENSE"
+  install -Dvm644 LICENSE "${pkgdir}/usr/share/licenses/cronet/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
