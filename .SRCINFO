@@ -1,6 +1,6 @@
 pkgbase = calcure-git
 	pkgdesc = Modern TUI calendar and task manager
-	pkgver = r301.6b10656
+	pkgver = r325.ba12ebe
 	pkgrel = 1
 	url = https://github.com/anufrievroman/calcure
 	arch = any
@@ -13,7 +13,6 @@ pkgbase = calcure-git
 	depends = python-jalali-core
 	depends = python-jdatetime
 	depends = python-icalendar
-	depends = python-taskw
 	depends = python
 	provides = calcure
 	conflicts = calcure

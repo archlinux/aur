@@ -1,12 +1,12 @@
 # Maintainer: matthewq337 <matt at mattquintanilla dot xyz>
 pkgname=calcure-git
-pkgver=r301.6b10656
+pkgver=r325.ba12ebe
 pkgrel=1
 pkgdesc='Modern TUI calendar and task manager'
 arch=('any')
 url=https://github.com/anufrievroman/calcure
 license=('MIT')
-depends=('python-holidays' 'python-jalali-core' 'python-jdatetime' 'python-icalendar' 'python-taskw' 'python')
+depends=('python-holidays' 'python-jalali-core' 'python-jdatetime' 'python-icalendar' 'python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'git' )
 provides=('calcure')
 conflicts=('calcure')
