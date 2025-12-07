@@ -6,7 +6,6 @@ pkgbase = tweakphp
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	depends = electron35
 	depends = zlib
 	noextract = tweakphp-0.13.0-x64.AppImage
 	noextract = tweakphp-0.13.0-arm64.AppImage

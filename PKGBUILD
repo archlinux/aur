@@ -6,7 +6,7 @@ pkgdesc="A desktop application with a code editor to tweak your PHP code"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tweakphp/tweakphp"
 license=('MIT')
-depends=('electron35' 'zlib')
+depends=('zlib')
 
 source_x86_64=("$pkgname-$pkgver-x64.AppImage::https://github.com/tweakphp/tweakphp/releases/download/v$pkgver/TweakPHP-$pkgver.AppImage")
 source_aarch64=("$pkgname-$pkgver-arm64.AppImage::https://github.com/tweakphp/tweakphp/releases/download/v$pkgver/TweakPHP-$pkgver-arm64.AppImage")
@@ -41,12 +41,18 @@ package() {
   install -dm755 "$pkgdir/usr/lib/$pkgname"
   cp -r squashfs-root/* "$pkgdir/usr/lib/$pkgname/"
   
+  # Fix permissions - AppImage extracts with 700, we need 755 for system-wide access
+  chmod -R a+rX "$pkgdir/usr/lib/$pkgname/"
+  
+  # chrome-sandbox needs setuid for sandboxing to work
+  chmod 4755 "$pkgdir/usr/lib/$pkgname/chrome-sandbox" || true
+  
   # Install icon
-  install -Dm644 squashfs-root/tweakphp.png "$pkgdir/usr/share/pixmaps/tweakphp.png"
+  install -Dm644 "$pkgdir/usr/lib/$pkgname/tweakphp.png" "$pkgdir/usr/share/pixmaps/tweakphp.png"
   
   # Install desktop file
-  if [ -f squashfs-root/tweakphp.desktop ]; then
-    install -Dm644 squashfs-root/tweakphp.desktop "$pkgdir/usr/share/applications/tweakphp.desktop"
+  if [ -f "$pkgdir/usr/lib/$pkgname/tweakphp.desktop" ]; then
+    install -Dm644 "$pkgdir/usr/lib/$pkgname/tweakphp.desktop" "$pkgdir/usr/share/applications/tweakphp.desktop"
     # Fix Exec path in desktop file
     sed -i 's|Exec=.*|Exec=tweakphp %U|' "$pkgdir/usr/share/applications/tweakphp.desktop"
   else
@@ -64,14 +70,15 @@ MimeType=text/x-php;
 EOF
   fi
   
-  # Create launcher script
+  # Create launcher script that uses AppRun for proper environment setup
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/tweakphp" <<EOF
 #!/bin/sh
-exec /usr/lib/$pkgname/tweakphp "\$@"
+cd /usr/lib/tweakphp
+exec env APPDIR=/usr/lib/tweakphp ./AppRun "\$@"
 EOF
 
   # Install license if available
-  if [ -f squashfs-root/LICENSE* ]; then
-    install -Dm644 squashfs-root/LICENSE* "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  if [ -f "$pkgdir/usr/lib/$pkgname/LICENSE"* ]; then
+    install -Dm644 "$pkgdir/usr/lib/$pkgname/LICENSE"* "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   fi
 }
