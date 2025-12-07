@@ -1,6 +1,6 @@
 pkgbase = ytsubconverter-bin
 	pkgdesc = A tool for creating styled YouTube subtitles
-	pkgver = 1.6.4
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = https://github.com/arcusmaximus/YTSubConverter
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = ytsubconverter-bin
 	optdepends = mitmproxy: for testing captions locally
 	provides = ytsubconverter
 	source = ytsubconverter.sh
-	source = ytsc-bin-1.6.4.tar.xz::https://github.com/arcusmaximus/YTSubConverter/releases/download/1.6.4/YTSubConverter-Linux.deb
+	source = ytsc-bin-1.6.5.tar.xz::https://github.com/arcusmaximus/YTSubConverter/releases/download/1.6.5/YTSubConverter-Linux.deb
 	sha256sums = 6f7c73b4aed185a6e19d0876fb398ac097a1aa0f2269911aea2da6cd1b5028f1
-	sha256sums = df824bb53f17986c9fe0a9a42af6db7ec6c79c34e69619b5f0b734bebfcd6947
+	sha256sums = f684737e9aa633f8860f3b0c4e71d99a6c74de77f6e1fb02ca1fe38c596fff11
 
 pkgname = ytsubconverter-bin
