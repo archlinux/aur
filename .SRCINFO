@@ -1,7 +1,7 @@
 pkgbase = mages-bin
 	pkgdesc = Mages desktop (early testing)
 	pkgver = 0.9.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mlm-games/mages
 	arch = x86_64
 	arch = aarch64

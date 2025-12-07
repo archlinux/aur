@@ -2,7 +2,7 @@
 pkgname=mages-bin
 _pkgname=mages
 pkgver=0.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Mages desktop (early testing)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mlm-games/mages"
