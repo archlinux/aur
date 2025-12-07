@@ -1,7 +1,7 @@
 pkgbase = qt6-interfaceframework
 	pkgdesc = Tools and core APIs for implementing Middleware APIs, Middleware Back ends, and Middleware Services
 	pkgver = 6.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io
 	arch = x86_64
 	groups = qt6
