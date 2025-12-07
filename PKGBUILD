@@ -1,6 +1,6 @@
 # Maintainer: Love Billenius <lovebillenius@disroot.org>
 pkgname=python-avanza-api
-pkgver=15.1.2
+pkgver=16.0.0
 pkgrel=1
 pkgdesc="A Python library for the unofficial Avanza API"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python-requests' 'python-websockets' 'python-pydantic' 'python-pyotp' 'licenses')
 makedepends=('python-setuptools' 'python-pip' 'python-build')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Qluxzz/avanza/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('52fc00a3cbbbecd2b39122f2750994ca78a2ae06cf00395deb20305ae30eb0fa')
+sha256sums=('a43a944ba657f4603d326e68931951b3dec4de804c240f608364e6c479ee3ab4')
 
 prepare() {
   cd "$srcdir/avanza-$pkgver"

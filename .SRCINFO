@@ -1,6 +1,6 @@
 pkgbase = python-avanza-api
 	pkgdesc = A Python library for the unofficial Avanza API
-	pkgver = 15.1.2
+	pkgver = 16.0.0
 	pkgrel = 1
 	url = https://github.com/Qluxzz/avanza
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-avanza-api
 	depends = python-pydantic
 	depends = python-pyotp
 	depends = licenses
-	source = python-avanza-api-15.1.2.tar.gz::https://github.com/Qluxzz/avanza/archive/refs/tags/v15.1.2.tar.gz
-	sha256sums = 52fc00a3cbbbecd2b39122f2750994ca78a2ae06cf00395deb20305ae30eb0fa
+	source = python-avanza-api-16.0.0.tar.gz::https://github.com/Qluxzz/avanza/archive/refs/tags/v16.0.0.tar.gz
+	sha256sums = a43a944ba657f4603d326e68931951b3dec4de804c240f608364e6c479ee3ab4
 
 pkgname = python-avanza-api
