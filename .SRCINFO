@@ -2,7 +2,7 @@
 # Thu Oct 19 14:33:12 UTC 2023
 pkgbase = lib32-kmod
 	pkgdesc = Linux kernel module handling
-	pkgver = 31
+	pkgver = 34.2
 	pkgrel = 1
 	url = http://git.kernel.org/?p=utils/kernel/kmod/kmod.git;a=summary
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = lib32-kmod
 	depends = lib32-zlib
 	depends = lib32-xz
 	options = !libtool
-	source = https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-31.tar.xz
-	source = https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-31.tar.sign
-	md5sums = 6165867e1836d51795a11ea4762ff66a
+	source = https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-34.2.tar.xz
+	source = https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-34.2.tar.sign
+	md5sums = 36f2cc483745e81ede3406fa55e1065a
 	md5sums = SKIP
 
 pkgname = lib32-kmod
