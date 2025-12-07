@@ -1,11 +1,11 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Zhenxi <shawndouglasyt@gmail.com>
 pkgname=doudou-bin
 pkgver=8.0.0
 pkgrel=1
-pkgdesc="Stream your music with ease and style"
+pkgdesc="Stream your music with ease and style. Source: https://gitlab.com/Openlyst/doudou"
 arch=('x86_64')
 url="https://gitlab.com/Openlyst/doudou"
-license=('unknown')
+license=('GPL3')
 depends=('mpv' 'gtk3' 'libmpv.so')
 optdepends=()
 provides=('doudou')
