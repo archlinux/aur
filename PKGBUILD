@@ -1,14 +1,14 @@
 # Maintainer: Dhanushka Jayagoda <dhanushka2001 [at] gmail [dot] com>
 
 pkgname=citeorder
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
-pkgdesc="Simple command-line tool to reorder footnotes in Markdown files"
+pkgdesc="Simple command-line tool to relabel footnotes in Markdown files in numerical order"
 arch=('x86_64')
 url="https://github.com/dhanushka2001/citeorder"
 license=('GPL-3.0-or-later')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4375bba20e0fd4a5e33a84b67728c64561ff654ce2905175202e1e03fe5e779c')
+sha256sums=('2670f355153d2c547849760e8edbb0976d007ac2db5a627816cf94a053c7a74b')
 
 build() {
     cd "$srcdir"
@@ -21,7 +21,6 @@ build() {
 
     cd build
     cc -O2 -o citeorder citeorder.c
-    strip citeorder
 }
 
 package() {
