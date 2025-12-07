@@ -4,4 +4,7 @@
 # SPDX-License-Identifier: 0BSD
 #
 
-u tandoor - "Tandoor Recipes user" /var/lib/tandoor
+
+*.log
+*.tar.gz
+*.tar.zst

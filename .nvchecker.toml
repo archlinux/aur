@@ -1,0 +1,3 @@
+[tandoor-recipes]
+source = "git"
+git = "https://github.com/TandoorRecipes/recipes.git"
