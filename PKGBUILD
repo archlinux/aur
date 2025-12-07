@@ -1,13 +1,15 @@
 # Maintainer: pierspad <pierpaolospadafora@proton.me>
 pkgname=textmerger
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Rust/Tauri GTK3 application for merging text files"
 arch=('x86_64')
 url="https://github.com/pierspad/textmerger"
 license=('GPL3')
+provides=('textmerger')
+conflicts=('textmerger')
 
-options=('!debug')
+options=('!debug' '!strip')
 
 depends=(
   'webkit2gtk-4.1'
@@ -19,41 +21,18 @@ depends=(
   'libappindicator-gtk3'
 )
 
-makedepends=('cargo' 'nodejs' 'npm')
-
 source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/pierspad/textmerger/archive/refs/tags/v$pkgver.tar.gz"
-
+  "textmerger-2.1.1-1-x86_64.pkg.tar.zst::https://github.com/pierspad/textmerger/releases/download/v$pkgver/textmerger-$pkgver-1-x86_64.pkg.tar.zst"
 )
 sha256sums=('ef174ede71281fb0beaf6901d086a640de2a4646f8a17c4392ea003c45bdbaa9')
 
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver/textmerger"
-  echo "Installing Node dependencies..."
-  npm install
-  
-  rm -f src-tauri/.cargo/config.toml
-}
-
-build() {
-  cd "$srcdir/$pkgname-$pkgver/textmerger"
-  
-  echo "Building Tauri application..."
-  sed -i 's/"active": true/"active": false/' src-tauri/tauri.conf.json
-  
-  npm run tauri build
-}
-
 package() {
-  cd "$srcdir/$pkgname-$pkgver/textmerger"
+  cd "$srcdir"
   
-  install -Dm755 "src-tauri/target/release/textmerger" "$pkgdir/usr/bin/textmerger"
-  
-  install -Dm644 "../packaging/textmerger.desktop" "$pkgdir/usr/share/applications/textmerger.desktop"
-  
-  install -Dm644 "src-tauri/icons/128x128.png" "$pkgdir/usr/share/pixmaps/textmerger.png"
-  
-  cd ..
-  install -Dm644 docs/README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 docs/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  if [ -d "usr" ]; then
+    cp -a usr "$pkgdir/"
+  else
+    echo "Error: /usr directory not found in extracted source"
+    exit 1
+  fi
 }
