@@ -1,14 +1,14 @@
 pkgbase = icy_term-bin
 	pkgdesc = IcyTERM is a BBS terminal program with allows you to connect to BBSes
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/mkrueger/icy_tools
 	arch = x86_64
 	groups = icy_tools-bin
 	license = Apache-2.0
 	provides = icy_term
-	source = https://github.com/mkrueger/icy_tools/releases/download/IcyTerm0.8.0/icy_term_linux_0.8.0.zip
-	sha256sums = 4e290f80fab9517c4749578f84870646d774b92908f0a6c8f7dce91fd1e78545
-	sha512sums = bbe5178dd36f560e6d6cf36c1545e1382447ebb96f39767dc28e2361b0508a2336eeb7953d445c711889e5ddf24b2a890a59052bd2034e6a02f60eb9b30199e2
+	source = https://github.com/mkrueger/icy_tools/releases/download/IcyTerm0.8.1/icy_term_linux_0.8.1.zip
+	sha256sums = c4396d02c61a92ca07f842e6e76049bc4f7a54f6a040e638e857e363f64bc0d7
+	sha512sums = 7ce59cf273f0018b5a94285443bfc26f0b8247c43c8c98535ce8b1253789eeeeb72593230beccad9425239032bb800c1a7236e3d555bc3dda925d424ca185986
 
 pkgname = icy_term-bin
