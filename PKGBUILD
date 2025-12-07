@@ -4,7 +4,7 @@
 
 pkgname=gnome-shell-extension-stealmyfocus-git
 pkgver=5
-pkgrel=1
+pkgrel=2
 pkgdesc="Shell Extension that let window that demand attention to steal focus"
 arch=(any)
 license=(GPLv2)
@@ -30,18 +30,23 @@ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 depends[125]=gnome-shell
 
+prefix() {
+  [ "$1" -le 30 ] || echo 1:
+}
+
 package_20_version() {
   local compatibles=($(\
     find -path ./pkg -type d -prune -o \
     -name metadata.json -exec cat '{}' \; | \
     tr -d '\n' | grep -Po '(?<="shell-version": \[)[^\[\]]*(?=\])' | \
     tr '\n," ' '\n' | sed 's/3\.//g;/^$/d' | sort -n -t. -k 1,1))
-  depends+=("gnome-shell>=3.${compatibles[0]}")
-  local max="${compatibles[-1]}"
-  if [ "$max" != $(
+  local min="${compatibles[0]}"
+  depends+=("gnome-shell>=$(prefix "${min%%.*}")3.$min")
+  if [ "${compatibles[-1]}" != $(
     gnome-shell --version | grep -Po '(?<=GNOME Shell 3\.)[[:digit:]]+'
   ) ]; then
-    depends+=("gnome-shell<3.$((${max%%.*} + 1))")
+    let max=${compatibles[-1]%%.*}+1
+    depends+=("gnome-shell<$(prefix "$max")3.$max")
   fi
   unset depends[125]
 }
