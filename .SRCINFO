@@ -1,7 +1,7 @@
 pkgbase = obs-studio-liberty
 	pkgdesc = Free, open source software for live streaming and recording. With Browser Source support. Without the need to install ffmpeg-obs, etc.
-	pkgver = 32.0.2
-	pkgrel = 2
+	pkgver = 32.0.3
+	pkgrel = 1
 	url = https://github.com/obsproject/obs-studio
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -78,7 +78,7 @@ pkgbase = obs-studio-liberty
 	optdepends = libva-intel-driver: VAAPI encoder support (<= Haswell)
 	optdepends = libva-mesa-driver: VAAPI encoder support
 	optdepends = v4l2loopback-dkms: V4L2 virtual camera output
-	provides = obs-studio=32.0.2
+	provides = obs-studio=32.0.3
 	provides = obs-vst
 	provides = obs-websocket
 	provides = obs-browser
@@ -91,7 +91,7 @@ pkgbase = obs-studio-liberty
 	conflicts = obs-studio-amf
 	conflicts = obs-studio-browser
 	conflicts = obs-vst
-	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=32.0.2
+	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=32.0.3
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
 	source = https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64_v6.tar.xz
