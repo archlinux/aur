@@ -1,5 +1,5 @@
 pkgname=cheeseburger
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A lolcat clone in C++"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ build() {
   cmake -B build -S "$pkgname" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
-  cmake --build build --parallel 4
+  cmake --build build
 }
 
 package() {
