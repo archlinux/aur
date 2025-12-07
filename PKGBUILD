@@ -6,8 +6,8 @@
 
 _pkgname="xone"
 pkgname="xone-dkms-git"
-pkgver=0.3.1.r0.g197b160
-pkgrel=1
+pkgver=0.4.12.r0.gee5af99
+pkgrel=2
 pkgdesc='Modern Linux driver for Xbox One and Xbox Series X|S controllers'
 url="https://github.com/dlundqvist/xone"
 license=('GPL-2.0-or-later')
@@ -15,12 +15,10 @@ arch=('x86_64')
 
 depends=(
   'dkms'
+  'xone-dongle-firmware'
 )
 makedepends=(
   'git'
-)
-optdepends=(
-  'xone-dongle-firmware: for wireless controllers'
 )
 
 provides=('xone-dkms')
@@ -45,9 +43,9 @@ package() {
   fi
 
   # copy module to /usr/src
-  install -dm755 "$pkgdir/usr/src/$_pkgname-$pkgver"
+  mkdir -pm755 "$pkgdir/usr/src/$_pkgname-$pkgver"
   cp -a "$_pkgsrc"/* "$pkgdir/usr/src/$_pkgname-$pkgver/"
 
   # blacklist xpad module
-  install -D -m 644 "$_pkgsrc/install/modprobe.conf" "$pkgdir/usr/lib/modprobe.d/xone-blacklist.conf"
+  install -Dm644 "$_pkgsrc/install/modprobe.conf" "$pkgdir/usr/lib/modprobe.d/xone-blacklist.conf"
 }
