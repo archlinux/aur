@@ -1,6 +1,6 @@
 # Maintainer: Qualeko qualeko@protonmail.com
 pkgname=seanime-bin
-pkgver=3.0.8
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="A self-hosted server that seamlessly integrates with your local anime collection with anilist integration."
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=('MIT')
 conflicts=()
 depends=()
 source=("https://github.com/5rahim/seanime/releases/download/v${pkgver}/seanime-${pkgver}_Linux_x86_64.tar.gz")
-sha256sums=('d25f4d0ba4ecf6bf1d188d0f981553fcce151d3c72456981ef4884c7b6016e7d')
+sha256sums=('6f649cb94834483dd614d612c77a6485b964780961d51d110806cd32ef9acc31')
 
 package() {
   install -d "${pkgdir}/usr/bin"
