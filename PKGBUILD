@@ -2,7 +2,7 @@
 pkgname=voidsprite-git 
 _pkgver=07.12.2025
 pkgver=0.0.0+git
-pkgrel=2
+pkgrel=3
 pkgdesc='Free pixelart editor made in SDL3 C++'
 url='https://github.com/counter185/voidsprite'
 source=('voidsprite::git+https://github.com/counter185/voidsprite.git')
@@ -34,7 +34,7 @@ build() {
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/share/voidsprite" "$pkgdir"/usr/{bin,share/{applications,licenses/voidsprite}}
+    mkdir -p "$pkgdir/usr/share/voidsprite" "$pkgdir"/usr/{bin,share/{applications,licenses/voidsprite,metainfo,mime/packages,icons/hicolor}}
     install -m755 "$srcdir/voidsprite/cmake/build/src/voidsprite" "$pkgdir/usr/bin/voidsprite"
     for x in appfont-MPLUSRounded1c-Medium.ttf appfontcyr-ZenKakuGothicNew-Medium.ttf appfontjp-NotoSansJP-Medium.ttf; do
         install -m644 "$srcdir/voidsprite/cmake/build/src/$x" "$pkgdir/usr/share/voidsprite/$x"
@@ -46,6 +46,14 @@ package() {
 
     for x in $(ls "$srcdir/voidsprite/OPEN_SOURCE_LICENSES"); do
         install -m644 "$srcdir/voidsprite/OPEN_SOURCE_LICENSES/$x" "$pkgdir/usr/share/licenses/voidsprite/$(echo "$x" | sed 's/License/LICENSE/g')"
+    done
+
+    install -m644 "$srcdir/voidsprite/freesprite/linux/com.github.counter185.voidsprite.metainfo.xml" "$pkgdir/usr/share/metainfo/com.github.counter185.voidsprite.metainfo.xml"
+    install -m644 "$srcdir/voidsprite/freesprite/linux/voidsn.xml" "$pkgdir/usr/share/mime/packages/voidsn.xml"
+
+    for size in 16x16 32x32 64x64 128x128 256x256 512x512; do
+        mkdir -p "$pkgdir"/usr/share/icons/hicolor/"$size"/apps/
+        install -m644 "$srcdir/voidsprite/freesprite/linux/icons/$size.png" "$pkgdir"/usr/share/icons/hicolor/"$size"/apps/com.github.counter185.voidsprite.png
     done
 }
 
