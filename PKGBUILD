@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="ipsw"
-pkgver=3.1.587
+pkgver=3.1.643
 pkgrel=1
 pkgdesc="iOS/macOS Research Swiss Army Knife"
 arch=('x86_64')
