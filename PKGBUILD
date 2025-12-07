@@ -9,23 +9,21 @@ pkgdesc='2D raster & vector editor that melds traditional layers & tools with a 
 arch=(x86_64)
 url="https://github.com/GraphiteEditor/$_pkgname"
 license=(Apache-2.0)
-depends=(gcc-libs
-         glibc
-         gtk3
-         openssl)
-makedepends=(binaryen
-             cargo
-             cargo-about
-             cargo-tauri
+depends=(alsa-lib
+         at-spi2-core
+         libcups
+         libxcomposite
+         libxdamage
+         libxkbcommon
+         libxrandr
+         mesa
+         nss
+         pango)
+makedepends=(cargo-about
              git
-             libappimage
-             libsoup
-             nodejs
              npm
-             rust-wasm
-             wasm-bindgen
-             wasm-pack
-             webkit2gtk-4.1)
+             rustup
+             wasm-pack)
 provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
