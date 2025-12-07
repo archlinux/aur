@@ -1,0 +1,10 @@
+#
+# SPDX-FileCopyrightText: 2025 Lorenz Steinert <lsteinert+aur@uraziel.de>
+#
+# SPDX-License-Identifier: 0BSD
+#
+
+
+*.log
+*.tar.gz
+*.tar.zst

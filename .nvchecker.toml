@@ -1,0 +1,4 @@
+[prometheus-clamav-exporter]
+source = "git"
+git = "https://github.com/r3kzi/clamav-prometheus-exporter.git"
+prefix = "v"
