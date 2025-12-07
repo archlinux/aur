@@ -1,6 +1,6 @@
 pkgbase = harmonymusic
 	pkgdesc = A cross platform App for streaming Music
-	pkgver = 1.12.1
+	pkgver = 1.12.2
 	pkgrel = 1
 	url = https://github.com/anandnet/Harmony-Music
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = harmonymusic
 	conflicts = harmony-music-git
 	options = !strip
 	options = !debug
-	source = harmonymusic-1.12.1+26-linux.AppImage::https://github.com/anandnet/Harmony-Music/releases/download/v1.12.1/harmonymusic-1.12.1+26-linux.AppImage
-	sha256sums = e54391e4bbc52c178628fbbdb9df5b66e6f97332f8c2e0e66f11bfdb97b726a9
+	source = harmonymusic-1.12.2.AppImage::https://github.com/anandnet/Harmony-Music/releases/download/v1.12.2/harmonymusic-1.12.2.AppImage
+	sha256sums = e0d7c42a25779ee0d2705b4b80e50baf441ecd7a6e7c08bda2ec5602fc02653e
 
 pkgname = harmonymusic
