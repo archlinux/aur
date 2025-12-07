@@ -1,0 +1,16 @@
+pkgbase = mtc-bin
+	pkgdesc = Modular Template CLI for .NET
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = [https://github.com/JuansesDev/MTC](https://github.com/JuansesDev/MTC)
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = icu
+	depends = openssl
+	provides = mtc
+	conflicts = mtc
+	source = [https://github.com/JuansesDev/MTC/releases/download/V.1.0.0/mtc-linux-x64-1.0.0.tar.gz](https://github.com/JuansesDev/MTC/releases/download/V.1.0.0/mtc-linux-x64-1.0.0.tar.gz)
+	sha256sums = AQUI_VA_EL_HASH_SHA256_DEL_TAR_GZ_LINUX
+
+pkgname = mtc-bin
