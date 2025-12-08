@@ -1,0 +1,21 @@
+diff -urN RGFW-1.8.1.orig/Makefile RGFW-1.8.1/Makefile
+--- RGFW-1.8.1.orig/Makefile	2025-11-25 19:49:07.000000000 +0100
++++ RGFW-1.8.1/Makefile	2025-12-08 21:38:58.799982517 +0100
+@@ -368,7 +368,7 @@
+ 	$(MAKE) initwayland
+ 	#$(CC) -x c $(CUSTOM_CFLAGS) -c RGFW.h -D RGFW_IMPLEMENTATION -fPIC -D RGFW_EXPORT
+ 	cp RGFW.h RGFW.c
+-	$(CC) $(CUSTOM_CFLAGS) -c RGFW.c -D RGFW_IMPLEMENTATION -fPIC -D RGFW_EXPORT
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(CUSTOM_CFLAGS) -c RGFW.c -D RGFW_IMPLEMENTATION -fPIC -D RGFW_EXPORT
+ 	rm RGFW.c
+ 
+ libRGFW$(LIB_EXT): RGFW.h RGFW$(OBJ_FILE)
+@@ -376,7 +376,7 @@
+ ifeq ($(CC), cl)
+ 	link /DLL /OUT:libRGFW.dll RGFW.obj
+ else
+-	$(CC) $(CUSTOM_CFLAGS) -shared RGFW$(OBJ_FILE) $(LIBS) -o libRGFW$(LIB_EXT)
++	$(CC) $(CFLAGS) $(CUSTOM_CFLAGS) $(LDFLAGS) -shared RGFW$(OBJ_FILE) $(LIBS) -o libRGFW$(LIB_EXT)
+ endif
+ 
+ libRGFW.a: RGFW.h RGFW$(OBJ_FILE)
