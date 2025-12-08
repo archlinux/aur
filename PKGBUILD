@@ -9,7 +9,7 @@ pkgname=(
   librsvg-noglycin-docs
 )
 pkgver=2.61.3
-pkgrel=1
+pkgrel=2
 pkgdesc="SVG rendering library, compatible with gdk-pixbuf2-noglycin"
 url="https://wiki.gnome.org/Projects/LibRsvg"
 arch=(x86_64)
@@ -73,6 +73,7 @@ package_librsvg-noglycin() {
   conflicts=(
     librsvg
   )
+  install=librsvg-noglycin.install
 
   meson install -C build --destdir "$pkgdir" --no-rebuild
 

@@ -1,0 +1,12 @@
+_update_cache() {
+    printf '%s\n' ':: Updating gdk-pixbuf2 cache...'
+    gdk-pixbuf-query-loaders --update-cache
+}
+
+post_install() {
+    _update_cache
+}
+
+post_upgrade() {
+    _update_cache
+}
