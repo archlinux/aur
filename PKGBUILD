@@ -3,7 +3,7 @@
 
 pkgname=daed-git
 _pkgname=${pkgname%-git}
-pkgver=0.9.0.r1.g1750dbe
+pkgver=1.21.1.r4.gf41f589
 pkgrel=2
 pkgdesc="A modern dashboard for dae, bundled with dae-wing (backend API server) and dae (core)."
 arch=('x86_64' 'aarch64')
@@ -41,6 +41,9 @@ prepare() {
 	git submodule init
 	git config submodule.dae-core.url "${srcdir}/dae"
 	git -c protocol.file.allow=always submodule update
+
+	export GOPATH="${srcdir}"
+	go mod download -modcacherw -x
 
 	cd dae-core
 	git config submodule.control/kern/headers.url "${srcdir}/dae_bpf_headers"
