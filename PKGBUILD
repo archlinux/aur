@@ -1,10 +1,10 @@
 # Maintainer: Toria <ninetailedtori@uwu.gal>
 
-pkgver=v2.30.0.r13.g2e18b8a3
 _pkgdir="Millennium"
 _pkgname="millennium"
 pkgname="$_pkgname-git"
-pkgrel=1
+pkgver=v2.30.0.r13.g2e18b8a3
+pkgrel=2
 pkgdesc="Millennium is an open-source low-code modding framework to create, manage and use themes/plugins for the desktop Steam Client without any low-level internal interaction or overhead."
 provides=("$_pkgname=$pkgver")
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('git' 'steam')
 makedepends=('npm' 'curl' 'zip' 'unzip' 'tar' 'cmake' 'ninja' 'lib32-gcc-libs' 'pnpm')
 depends_x86_64=('lib32-python311-bin')
 conflicts=('python-i686-bin' "$_pkgname")
-source=("git+$url.git")
+source=("git+$url.git#branch=next")
 sha256sums=('SKIP')
 options=(!debug)
 install=millennium.install
@@ -36,16 +36,11 @@ build() {
 
     echo -e "\e[1m\e[92m==>\e[0m \e[1mBuilding Millennium core assets...\e[0m"
 
-    cd sdk && pnpm install && pnpm run build && cd ..
-    cd assets && pnpm install && npm run build && cd ..
+    cd sdk          && pnpm install && pnpm run build && cd ..
+    cd src/frontend && pnpm install && pnpm run build && cd ../..
 
     mkdir -p ./shims/build/
     cp -r ./sdk/typescript-packages/loader/build/* ./shims/build/
-
-    echo -e "\e[1m\e[92m==>\e[0m \e[1mBootstrapping VCPKG...\e[0m"
-
-    ./vendor/vcpkg/bootstrap-vcpkg.sh
-    ./vendor/vcpkg/vcpkg integrate install
 
     echo -e "\e[1m\e[92m==>\e[0m \e[1mBuilding Millennium...\e[0m"
 
