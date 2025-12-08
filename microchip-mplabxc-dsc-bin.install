@@ -1,0 +1,26 @@
+message_to_user(){
+   echo '
+This package provides a file: /etc/profile.d/microchip-mplabxc-dsc-bin.sh
+It will add the toolchain binaries to the PATH variable for every user.
+It also defines XC16_TOOLCHAIN_ROOT pointing to the toolchain install dir.
+Log out and log back in to update your environment varibles.
+
+Before using MPLAB_XCDSC you have to agree with the LICENSE at:
+/usr/share/licenses/microchip-mplabxc-dsc-bin/LICENSE
+
+For using MPLAB_XCDSC with MPLAB_X (microchip-mplabx-bin), in MPLAB_X go to:
+Tools->Options->Embedded->Add
+
+and enter:
+$XCDSC_TOOLCHAIN_ROOT/bin
+'
+}
+
+post_install() {
+  message_to_user
+}
+
+post_upgrade() {
+  message_to_user
+}
+
