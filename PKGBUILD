@@ -1,12 +1,13 @@
-# Maintainer:
-# Contributor: Michał Kopeć <michal@nozomi.space>
+# Maintainer: xiota
+# Contributor: Michał Kopeć <michal (at) nozomi.space>
+# Contributor: Tomasz Pakuła <tomasz.pakula.oficjalny (at) gmail.com>
 
 ## options
 : ${_build_debug:=false}
 
 _pkgname="xone"
 pkgname="xone-dkms"
-pkgver=0.4.12
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Modern Linux driver for Xbox One and Xbox Series X|S controllers'
 url="https://github.com/dlundqvist/xone"
@@ -23,7 +24,7 @@ makedepends=(
 
 _pkgsrc="dlundqvist.xone"
 source=("$_pkgsrc"::"git+$url.git#tag=v$pkgver")
-sha256sums=('f26a07d48cd4d800d8bd5d44dac631a5a7bc84cca886d587981d7533d0dad7d9')
+sha256sums=('ace071b54e9573430df6accbb7dc92e209e875b9b8126fbba0cfcb39f03ac2ca')
 
 package() {
   # set module version
