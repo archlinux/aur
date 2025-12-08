@@ -2,7 +2,7 @@
 
 pkgname=pragtical-git
 _pkgname=pragtical
-pkgver=3.7.1.1764961398
+pkgver=3.7.1.1765167427
 pkgrel=1
 pkgdesc='The practical and pragmatic code editor.'
 arch=('x86_64')
@@ -27,13 +27,32 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
-  arch-meson --wrap-mode default --buildtype release -Db_lto=true \
-    -Db_pgo=generate --force-fallback-for=sdl3_image -Duse_system_lua=true \
+
+  local pgo
+  local lua="-Duse_system_lua=true"
+  if [ -n "$PGO" ]; then
+    pgo="-Db_lto=true"
+    lua="-Duse_system_lua=false"
+  fi
+
+  arch-meson --wrap-mode default --buildtype release $pgo \
+    -Db_pgo=generate --force-fallback-for=sdl3_image $lua \
     build
-  meson compile -C build
-  SDL_VIDEO_DRIVER="dummy" \
-    ./scripts/run-local build run -n scripts/lua/pgo.lua
-  meson configure -Db_pgo=use build
+
+  if [ -n "$PGO" ]; then
+    meson compile -C build
+    case "$XDG_SESSION_TYPE" in
+      wayland|x11)
+        ./scripts/run-local build run -n scripts/lua/pgo.lua
+        ;;
+      *)
+        SDL_VIDEO_DRIVER="dummy" \
+          ./scripts/run-local build run -n scripts/lua/pgo.lua
+        ;;
+    esac
+    meson configure -Db_pgo=use build
+  fi
+
   meson compile -C build
 }
 
