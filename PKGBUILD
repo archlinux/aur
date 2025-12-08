@@ -6,7 +6,7 @@
 
 pkgname='studio-one-7'
 pkgver='7.2.3.108761'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Digital audio workstation for music production, remixing and live performance'
 arch=('x86_64')
 url='https://www.presonus.com/'
