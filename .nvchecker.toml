@@ -1,0 +1,5 @@
+[jid-bin]
+source = "github"
+github = "simeji/jid"
+use_latest_release = true
+prefix = "v"
