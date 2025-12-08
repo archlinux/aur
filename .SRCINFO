@@ -1,6 +1,6 @@
 pkgbase = hype
 	pkgdesc = Find Hype-moments from Twitch.tv.(Use system-wide electron)
-	pkgver = 1.0.20
+	pkgver = 1.0.21
 	pkgrel = 1
 	url = https://hype.lol/
 	arch = any
@@ -14,9 +14,9 @@ pkgbase = hype
 	depends = nodejs
 	depends = ffmpeg
 	conflicts = hype
-	source = hype-1.0.20::git+https://github.com/TimIsOverpowered/Hype#tag=v1.0.20
+	source = hype-1.0.21::git+https://github.com/TimIsOverpowered/Hype#tag=v1.0.21
 	source = hype.sh
-	sha256sums = 602dc3a43ca3c8396a51f8664b86d3194fbb075ed8afd774ef687c066ec058c1
+	sha256sums = a8d36ee99682ea81e28eecca6c96193a2d7e43542f63e39638614e5f5b144854
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = hype
