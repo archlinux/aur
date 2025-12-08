@@ -8,16 +8,15 @@
 # Contributor: Ignas Anikevicius <anikevicius ð gmail đ com>
 
 pkgname=tp_smapi-lts
-pkgver=0.44
-pkgrel=136
+pkgver=0.45
+pkgrel=1
 pkgdesc="Modules for ThinkPad's SMAPI functionality"
 arch=('x86_64')
 url='https://github.com/evgeni/tp_smapi'
 license=('GPL-2.0-only')
 makedepends=('linux-lts-headers' 'git')
-_commit=6e80bb1752280bcd142d86ecd0739661bd0e8312  # tags/tp-smapi/0.44
-source=("git+https://github.com/evgeni/tp_smapi#commit=$_commit")
-sha256sums=('SKIP')
+source=("git+https://github.com/evgeni/tp_smapi#tag=tp-smapi/${pkgver}")
+sha256sums=('32d5aa976884822905390c57548307810a23963cd39f5bfb69e127f81449c6f5')
 
 pkgver() {
   cd tp_smapi
