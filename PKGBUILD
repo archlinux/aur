@@ -1,6 +1,6 @@
 # Maintainer: Adam Wahab <awahab@adhoc.tools>
 pkgname=onelab
-pkgver=r1.3
+pkgver=r251107
 pkgrel=1
 pkgdesc="Open Numerical Engineering LABoratory"
 arch=('x86_64')
@@ -13,10 +13,10 @@ optdepends=("gcc: c/c++ tutorials"
 provides=(getdp gmsh libconveks.so)
 conflicts=(getdp gmsh)
 source=("$url/files/$pkgname-Linux64.zip")
-sha256sums=('474add1bbe31c5420df659d222c641cd3642d7f991070ffac045fdc9a0dd4d4e')
+sha256sums=('7d8ff7e8648e19b4b803ffb616666b7dbfaa4fc76a32483feab0f67a1fb62b76')
 
 pkgver() {
-  printf "r%s" $(awk '/_VERSION = /{print $NF}' "$srcdir/$pkgname-Linux64/onelab.py" | tr -d "'")
+  printf "r%s" $(awk 'match($0, /([0-9]{2})\/([0-9]{2})\/20([0-9]{2})/, arr) {print arr[3] arr[2] arr[1]}' "$srcdir/$pkgname-Linux64/README.txt")
 }
 
 package() {

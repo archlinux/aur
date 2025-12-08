@@ -1,6 +1,6 @@
 pkgbase = onelab
 	pkgdesc = Open Numerical Engineering LABoratory
-	pkgver = r1.3
+	pkgver = r251107
 	pkgrel = 1
 	url = https://onelab.info
 	arch = x86_64
@@ -15,6 +15,6 @@ pkgbase = onelab
 	conflicts = getdp
 	conflicts = gmsh
 	source = https://onelab.info/files/onelab-Linux64.zip
-	sha256sums = 474add1bbe31c5420df659d222c641cd3642d7f991070ffac045fdc9a0dd4d4e
+	sha256sums = 7d8ff7e8648e19b4b803ffb616666b7dbfaa4fc76a32483feab0f67a1fb62b76
 
 pkgname = onelab
