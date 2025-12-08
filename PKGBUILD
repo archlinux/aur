@@ -6,7 +6,7 @@ pkgver=0.24.1.slskdn.22
 pkgrel=1
 pkgdesc="🔋 The batteries included, ***EXPERIMENTAL*** fork of slskd. Feature-rich, including wishlist, smart ranking, tabbed browsing, notifications & more"
 arch=('x86_64' 'aarch64')
-url="https://github.com/snapetech/slskdN"
+url="https://github.com/snapetech/slskdn"
 license=('AGPL-3.0-or-later')
 depends=('dotnet-runtime-8.0' 'aspnet-runtime-8.0')
 makedepends=('dotnet-sdk-8.0' 'nodejs' 'npm')
@@ -19,7 +19,7 @@ replaces=('slskd' 'slskd-bin' 'slskdn-bin')
 backup=('etc/slskd/slskd.yml')
 install=slskd.install
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/snapetech/slskdN/archive/refs/tags/${pkgver//.slskdN/-slskdN}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/snapetech/slskdn/archive/refs/tags/${pkgver//.slskdn/-slskdn}.tar.gz"
     "slskd.service"
     "slskd.yml"
     "slskd.sysusers"
@@ -27,7 +27,7 @@ source=(
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 build() {
-    cd "${srcdir}/slskdN-${pkgver//.slskdN/-slskdN}"
+    cd "${srcdir}/slskdn-${pkgver//.slskdn/-slskdn}"
     
     # Build frontend
     cd src/web
@@ -44,7 +44,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/slskdN-${pkgver//.slskdN/-slskdN}"
+    cd "${srcdir}/slskdn-${pkgver//.slskdn/-slskdn}"
     
     # Install application to /usr/lib/slskd (same location as original slskd)
     install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
