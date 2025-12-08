@@ -67,7 +67,9 @@ build() {
   export PATH="/opt/cuda/bin:$PATH"
   export CUDACXX="${CUDACXX:-/opt/cuda/bin/nvcc}"
   # Force CMake to use system Python (patch sets PYTHON_EXECUTABLE, but FindPython still searches PATH)
-  export CMAKE_ARGS="-DPYTHON_EXECUTABLE=/usr/bin/python -DPython3_EXECUTABLE=/usr/bin/python"
+  # Build for multiple CUDA architectures for compatibility (including 8.9 for RTX 50-series)
+  # Common architectures: 6.0 (Pascal), 7.0 (Volta), 7.5 (Turing), 8.0 (Ampere), 8.6 (Ada), 8.9 (Blackwell), 9.0 (Hopper)
+  export CMAKE_ARGS="-DPYTHON_EXECUTABLE=/usr/bin/python -DPython3_EXECUTABLE=/usr/bin/python -DCMAKE_CUDA_ARCHITECTURES=60;70;75;80;86;89;90"
   python -m build --wheel
 }
 
