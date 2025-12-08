@@ -5,7 +5,7 @@
 pkgname='cmsend-git'
 _pkgname="${pkgname/-git/}"
 pkgver=0.4.2.r0.ga8af8dc
-pkgrel=3
+pkgrel=4
 pkgdesc='CLI for sending end-to-end encrypted chatmail messages between systems (development version)'
 arch=('any')
 url='https://github.com/chatmail/cmsend'
@@ -18,7 +18,7 @@ makedepends=(
   'python-wheel'
 )
 depends=(
-  #'deltachat-rpc-server'
+  'deltachat-rpc-server'
   'python'
   'python-deltachat-rpc-client'
   'python-xdg-base-dirs'

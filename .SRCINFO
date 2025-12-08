@@ -1,7 +1,7 @@
 pkgbase = cmsend-git
 	pkgdesc = CLI for sending end-to-end encrypted chatmail messages between systems (development version)
 	pkgver = 0.4.2.r0.ga8af8dc
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/chatmail/cmsend
 	arch = any
 	license = MPL-2.0
@@ -10,6 +10,7 @@ pkgbase = cmsend-git
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = deltachat-rpc-server
 	depends = python
 	depends = python-deltachat-rpc-client
 	depends = python-xdg-base-dirs
