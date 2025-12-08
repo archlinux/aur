@@ -7,5 +7,7 @@ tmp/
 *.xz
 *.zst
 
+LICENSE-*.html
+
 pkg
 src
