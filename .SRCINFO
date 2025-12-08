@@ -1,13 +1,14 @@
 pkgbase = liskvork
 	pkgdesc = Modern multi-platform gomoku game server
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://liskvork.org
 	arch = x86_64
 	license = EUPL
 	makedepends = zig>=0.15
 	makedepends = zig<0.16
 	makedepends = git
+	makedepends = scdoc
 	source = liskvork-r0.6.1::https://git.sr.ht/~emneo/liskvork/archive/0.6.1.tar.gz
 	sha256sums = SKIP
 

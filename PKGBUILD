@@ -1,12 +1,12 @@
 # Maintainer: Ethan THIERRY <ethan@thierry.id>
 pkgname=liskvork
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern multi-platform gomoku game server"
 arch=('x86_64')
 url="https://liskvork.org"
 license=('EUPL')
-makedepends=('zig>=0.15' 'zig<0.16' 'git')
+makedepends=('zig>=0.15' 'zig<0.16' 'git' 'scdoc')
 source=("$pkgname-r$pkgver::https://git.sr.ht/~emneo/liskvork/archive/$pkgver.tar.gz")
 sha256sums=('SKIP')
 
