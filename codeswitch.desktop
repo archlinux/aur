@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=CodeSwitch
+Comment=Switch coding contexts with CodeSwitch
+Exec=codeswitch
+Icon=codeswitch
+Terminal=false
+Categories=Development;Utility;
+StartupWMClass=CodeSwitch
