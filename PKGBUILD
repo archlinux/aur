@@ -1,7 +1,7 @@
 # Maintainer: Burgess <burgess@ripvid.app>
 pkgname=ripvid
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Beautiful desktop app for downloading videos from YouTube, X/Twitter, TikTok, and 1000+ sites"
 arch=('x86_64')
 url="https://github.com/BurgessTG/ripVID"
@@ -31,4 +31,7 @@ package() {
 
     # Fix permissions
     chmod 755 "$pkgdir/usr/bin/"* 2>/dev/null || true
+
+    # Create ripvid symlink (binary is named video-downloader)
+    ln -sf video-downloader "$pkgdir/usr/bin/ripvid"
 }

@@ -1,7 +1,7 @@
 pkgbase = ripvid
 	pkgdesc = Beautiful desktop app for downloading videos from YouTube, X/Twitter, TikTok, and 1000+ sites
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BurgessTG/ripVID
 	arch = x86_64
 	license = MIT
