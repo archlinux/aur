@@ -1,15 +1,20 @@
 # Maintainer: David Keegan <me@davidkeegan.com>
 pkgname=piper-speak
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Simple text-to-speech wrapper for Piper TTS on Linux"
 arch=('any')
 url="https://github.com/kgn/piper-speak"
 license=('MIT')
-depends=('piper-tts' 'pipewire-pulse' 'wl-clipboard' 'curl')
-optdepends=('libnotify: for speak-selection notifications')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/kgn/piper-speak/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ba3acde44e0b7c9d425d0ebbdea66f8d1bce8e3c0e20ca6c7344edea18c8a60c')
+depends=('piper-tts' 'pipewire-pulse' 'wl-clipboard')
+optdepends=('libnotify: for speak-selection notifications'
+            'curl: for downloading additional voice models')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/kgn/piper-speak/archive/refs/tags/v$pkgver.tar.gz"
+        "https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/medium/en_US-lessac-medium.onnx"
+        "https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/medium/en_US-lessac-medium.onnx.json")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 package() {
     cd "$pkgname-$pkgver"
@@ -19,4 +24,8 @@ package() {
     install -Dm755 bin/piper-speak-install "$pkgdir/usr/bin/piper-speak-install"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+    # Install default voice model
+    install -Dm644 "$srcdir/en_US-lessac-medium.onnx" "$pkgdir/usr/share/piper-speak/voices/en_US-lessac-medium.onnx"
+    install -Dm644 "$srcdir/en_US-lessac-medium.onnx.json" "$pkgdir/usr/share/piper-speak/voices/en_US-lessac-medium.onnx.json"
 }

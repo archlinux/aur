@@ -1,6 +1,6 @@
 pkgbase = piper-speak
 	pkgdesc = Simple text-to-speech wrapper for Piper TTS on Linux
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/kgn/piper-speak
 	arch = any
@@ -8,9 +8,13 @@ pkgbase = piper-speak
 	depends = piper-tts
 	depends = pipewire-pulse
 	depends = wl-clipboard
-	depends = curl
 	optdepends = libnotify: for speak-selection notifications
-	source = piper-speak-1.0.0.tar.gz::https://github.com/kgn/piper-speak/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = ba3acde44e0b7c9d425d0ebbdea66f8d1bce8e3c0e20ca6c7344edea18c8a60c
+	optdepends = curl: for downloading additional voice models
+	source = piper-speak-1.1.0.tar.gz::https://github.com/kgn/piper-speak/archive/refs/tags/v1.1.0.tar.gz
+	source = https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/medium/en_US-lessac-medium.onnx
+	source = https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/medium/en_US-lessac-medium.onnx.json
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = piper-speak
