@@ -1,4 +1,5 @@
 # Maintainer: Dawood <Nurysso at proton.me>
+pkgbase=tyr
 pkgname=tyr-bin
 pkgver=0.4.4
 pkgrel=1

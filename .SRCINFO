@@ -1,4 +1,4 @@
-pkgbase = tyr-bin
+pkgbase = tyr
 	pkgdesc = Intelligent file organization powered by machine learning and simple algos
 	pkgver = 0.4.4
 	pkgrel = 1
