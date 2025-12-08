@@ -2,13 +2,15 @@ pkgbase = lib32-libnl
 	pkgdesc = Library for applications dealing with netlink sockets (32 bit)
 	pkgver = 3.11.0
 	pkgrel = 1
-	url = http://www.infradead.org/~tgr/libnl/
+	url = https://github.com/thom311/libnl/
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	makedepends = gcc-multilib
 	depends = lib32-glibc
 	depends = libnl
-	source = https://github.com/thom311/libnl/releases/download/libnl3_11_0/libnl-3.11.0.tar.gz
-	sha512sums = 69ecec6e792fc7b9c443fff8742cf45782af5c5c4664687440942eaeb616ba7b4ed2b606e33c5d86e44e6b49a9c79a1fed4b7c77781a059e13cf6a844d94530e
+	source = git+https://github.com/thom311/libnl.git#tag=libnl3_11_0?signed
+	validpgpkeys = 49EA7C670E0850E7419514F629C2366E4DFC5728
+	sha256sums = edef8939fe40a0c2985c944063f674c1205e36d047bb0d224d99fddf9072b34d
 
 pkgname = lib32-libnl

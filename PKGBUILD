@@ -12,16 +12,22 @@ arch=('x86_64')
 url='https://github.com/thom311/libnl/'
 license=('GPL')
 depends=('lib32-glibc' "${_pkgbase}")
-makedepends=('gcc-multilib')
-source=("https://github.com/thom311/libnl/releases/download/libnl${pkgver//./_}/libnl-${pkgver}.tar.gz")
-sha512sums=('69ecec6e792fc7b9c443fff8742cf45782af5c5c4664687440942eaeb616ba7b4ed2b606e33c5d86e44e6b49a9c79a1fed4b7c77781a059e13cf6a844d94530e')
+makedepends=('git' 'gcc-multilib')
+validpgpkeys=('49EA7C670E0850E7419514F629C2366E4DFC5728') # Thomas Haller <thaller@redhat.com>
+source=("git+https://github.com/thom311/libnl.git#tag=libnl${pkgver//./_}?signed")
+sha256sums=('edef8939fe40a0c2985c944063f674c1205e36d047bb0d224d99fddf9072b34d')
+
+prepare() {
+  cd "${_pkgbase}"
+  ./autogen.sh
+}
 
 build() {
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-  cd "${_pkgbase}-${pkgver}"
+  cd "${_pkgbase}"
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -32,7 +38,7 @@ build() {
 }
 
 package() {
-  cd "${_pkgbase}-${pkgver}"
+  cd "${_pkgbase}"
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/{etc,usr/{bin,include,share}}
 }
