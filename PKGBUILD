@@ -1,7 +1,7 @@
 # Maintainer: Pavel Cadersky <aur-ahshaev8@mess.cz>
 
 pkgname=mingw-w64-c-ares
-pkgver=1.34.5
+pkgver=1.34.6
 pkgrel=1
 pkgdesc="C library that performs DNS requests and name resolves asynchronously (mingw-w64)"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('mingw-w64-cmake')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://github.com/c-ares/c-ares/releases/download/v${pkgver}/c-ares-${pkgver}.tar.gz")
-sha256sums=('7d935790e9af081c25c495fd13c2cfcda4792983418e96358ef6e7320ee06346')
+sha256sums=('912dd7cc3b3e8a79c52fd7fb9c0f4ecf0aaa73e45efda880266a2d6e26b84ef5')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
