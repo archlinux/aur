@@ -1,0 +1,16 @@
+pkgbase = hyprland-plugin-virtual-desktops
+	pkgdesc = A plugin for the Hyprland compositor, implementing virtual-desktop functionality.
+	pkgver = 2.2.8
+	pkgrel = 1
+	url = https://github.com/levnikmyskin/hyprland-virtual-desktops
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = hyprland
+	makedepends = cmake
+	depends = hyprland=0.52.2
+	options = !debug
+	source = hyprland-plugin-virtual-desktops::git+https://github.com/levnikmyskin/hyprland-virtual-desktops.git#tag=v2.2.8
+	sha512sums = 78a3750eea05891220697855abb9ed53533b3c2e1a7133e58d59e9e7d828fb99fd08fe056d2974c18a5e68ea501153d504de69b5d94453f83612a0d2b4936b6b
+
+pkgname = hyprland-plugin-virtual-desktops
