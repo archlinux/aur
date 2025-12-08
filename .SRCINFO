@@ -1,7 +1,7 @@
 pkgbase = materials-bin
 	pkgdesc = A modern Material Design 3 File Manager
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bhimio1/material-3-file-explorer
 	arch = x86_64
 	license = MIT
