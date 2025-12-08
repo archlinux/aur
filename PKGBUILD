@@ -1,12 +1,12 @@
 # Maintainer: Darvin Delgado <dnmodder@gmail.com>
 pkgname=noods-git
-pkgver=r448.1c19eca
+pkgver=r574.b1fcf87
 pkgrel=1
 pkgdesc="A (hopefully!) speedy NDS emulator."
 arch=('x86_64')
 url="https://github.com/Hydr8gon/NooDS"
-license=('GPL3')
-depends=('wxgtk3' 'portaudio')
+license=('GPL-3.0-or-later')
+depends=('wxwidgets-gtk3' 'wxwidgets-common' 'alsa-lib' 'portaudio' 'libgl' 'glibc' 'gcc-libs' 'hicolor-icon-theme')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
