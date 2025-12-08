@@ -1,0 +1,3 @@
+[perl-struct-dumb]
+source = "cpan"
+cpan = "Struct-Dumb"

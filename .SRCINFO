@@ -1,18 +1,17 @@
 pkgbase = perl-struct-dumb
 	pkgdesc = Make simple lightweight record-like structures
 	pkgver = 0.14
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Struct-Dumb
+	pkgrel = 2
+	url = https://metacpan.org/dist/Struct-Dumb
 	arch = any
-	license = GPL
-	license = PerlArtistic
-	checkdepends = perl-test2-suite
+	license = GPL-1.0-or-later OR Artistic-1.0-Perl
+	checkdepends = perl-test-simple>=1.302200
+	makedepends = perl-module-build>=0.4004
 	makedepends = perl-data-dump
-	makedepends = perl-module-build
-	depends = perl>=5.10.0
 	optdepends = perl-data-dump: print in serialised format
 	options = !emptydirs
+	options = purge
 	source = https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Struct-Dumb-0.14.tar.gz
-	sha256sums = 13c148536b10e28c6e0b4e132f29e4ca6e69b5749059c44157a27e84a5459436
+	b2sums = fce3b9a9a78a27503f9cc809a312a3beba40f0e274a041b2e7f6f7f85496de9c23b4b74b2ba5156d3650040d5d9d05fd9dcb7297d430a872c04c5c3cb70a3d32
 
 pkgname = perl-struct-dumb
