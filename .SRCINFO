@@ -1,6 +1,6 @@
 pkgbase = bab
 	pkgdesc = Custom commands for every project
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://github.com/bab-sh/bab
 	arch = aarch64
@@ -13,6 +13,6 @@ pkgbase = bab
 	provides = bab
 	
 	source = https://github.com/bab-sh/bab/releases/download/v${pkgver}/bab-${pkgver}.tar.gz
-	sha256sums = 0e5aa5f6c5374b1937a7d452aa9c1b451887aea98f2e25870583ceae09dbb0ce
+	sha256sums = 5b5847db636de5f7c92005a0b15009b918173ef3e734c8d449a4aaeebeb3132a
 	
 pkgname = bab
