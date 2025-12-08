@@ -1,7 +1,7 @@
 # Maintainer: steffeno <steffeno dash etc at protonmail dot com>
 _pkgname=ly
 pkgname="$_pkgname"-git
-pkgver=1.2.0.r19.g816be74
+pkgver=1.3.0.r1.gc6446db
 pkgrel=1
 pkgdesc="TUI display manager"
 arch=(i686 x86_64 aarch64)
@@ -9,7 +9,7 @@ url="https://codeberg.org/AnErrupTion/ly.git"
 license=('custom:WTFPL')
 depends=(pam)
 makedepends=('zig>=0.14.0' git libxcb)
-optdepends=('xorg-xauth: for X server sessions')
+optdepends=('xorg-xauth: for X server sessions' 'durdraw: for animations')
 conflicts=(ly)
 provides=(ly)
 backup=(etc/"$_pkgname"/{config.ini,setup.sh})
