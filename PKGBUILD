@@ -1,10 +1,11 @@
+# Maintainer: Konstantin Liberty <jon9097 at gmail dot com>
 # Maintainer: John Gleezowood <psyrccio@gmail.com>
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 # Maintainer: Clarence <xjh.azzbcc@gmail.com>
 pkgname="ocenaudio-bin"
 _pkgname=ocenaudio
 pkgver=3.16.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform, easy to use, fast and functional audio editor"
 arch=('x86_64')
 url="https://www.ocenaudio.com/"

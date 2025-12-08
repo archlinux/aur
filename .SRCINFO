@@ -1,7 +1,7 @@
 pkgbase = ocenaudio-bin
 	pkgdesc = Cross-platform, easy to use, fast and functional audio editor
 	pkgver = 3.16.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ocenaudio.com/
 	arch = x86_64
 	license = custom
