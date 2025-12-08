@@ -1,0 +1,5 @@
+[chim-bin]
+source = "github"
+github = "jdx/chim"
+use_latest_release = true
+prefix = "v"
