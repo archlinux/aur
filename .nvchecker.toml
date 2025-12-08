@@ -1,0 +1,5 @@
+[tmlshock-bin]
+source = "github"
+github = "yorukot/tmlshock"
+use_latest_release = true
+prefix = "v"
