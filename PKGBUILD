@@ -1,6 +1,6 @@
 # Maintainer: Kamil cukrowski <kmilcukrowski@gmail.com>
 pkgname=podpisgov
-pkgver=0.0.1 # Please update pkgver manually if a newer version is released
+pkgver=1.5.5.4
 pkgrel=1
 pkgdesc="An application for digital signatures by Poland government."
 arch=('x86_64')
@@ -13,20 +13,21 @@ sha256sums=('0a6f5aa745b12c64be33c62822bd0efed355444c08accf60d2d28ce1a1ee8d1e')
 mkdir_link() {
   echo "$2 -> $1"
   install -d "$(dirname "$2")"
-  ln -s "$@"
+  ln -s "$opt/$1" "$2"
 }
 
 package() {
   # This path is hardocded in the desktop link.
-  local mydir="${pkgdir}/opt/PodpisGOV"
+  local opt=/opt/PodpisGOV
+  local mydir="${pkgdir}$opt"
   # Create the installation directory
   install -d "${mydir}"
   # Move the extracted content to the target directory
   mv "${srcdir}/PodpisGOV/"* "${mydir}/"
   # Install executable.
-  mkdir_link "${mydir}/PodpisGOV" "${pkgdir}/usr/bin/PodpisGOV"
+  mkdir_link "PodpisGOV" "${pkgdir}/usr/bin/PodpisGOV"
   # Install the desktop file
-  mkdir_link "${mydir}/PodpisGOV.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  mkdir_link "PodpisGOV.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   # Install the license file
-  mkdir_link "${mydir}/Licenses/License-pl.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  mkdir_link "Licenses/License-pl.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
