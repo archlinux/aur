@@ -5,7 +5,7 @@
 pkgname='cmsend-git'
 _pkgname="${pkgname/-git/}"
 pkgver=0.4.2.r0.ga8af8dc
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI for sending end-to-end encrypted chatmail messages between systems (development version)'
 arch=('any')
 url='https://github.com/chatmail/cmsend'
@@ -24,9 +24,8 @@ depends=(
   'python-xdg-base-dirs'
 )
 source=("$_pkgname::git+$url.git")
-replaces=('cmdsend-git')
 provides=("$_pkgname")
-conflicts=("${provides[@]}" 'cmdsend-git')
+conflicts=("${provides[@]}")
 sha256sums=('SKIP')
 
 pkgver() {
