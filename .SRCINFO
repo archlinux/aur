@@ -1,6 +1,6 @@
 pkgbase = weread-pake
 	pkgdesc = Use Pake to package WeRead.微信读书是广州腾讯科技有限公司推出的阅读软件.为用户推荐合适的书籍，并可查看微信好友的读书动态、与好友讨论正在阅读的书籍等.
-	pkgver = 3.5.1
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://weread.qq.com/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = weread-pake
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	conflicts = weread
-	source = weread-pake-3.5.1.deb::https://github.com/tw93/Pake/releases/download/V3.5.1/WeRead_x86_64.deb
-	source = LICENSE-3.5.1::https://raw.githubusercontent.com/tw93/Pake/V3.5.1/LICENSE
-	sha256sums = 2267feaa11636b2146d7acb980a71bffacb1a7d0db07856657f7a7b5bb6001e9
+	source = weread-pake-3.6.0.deb::https://github.com/tw93/Pake/releases/download/V3.6.0/WeRead_x86_64.deb
+	source = LICENSE-3.6.0::https://raw.githubusercontent.com/tw93/Pake/V3.6.0/LICENSE
+	sha256sums = 14d01328b4cb116cb78731f8417d2dfba9b75e308749b38195637c687fcba249
 	sha256sums = 462d57d8d84d48d7b40c9d2464f47be9898b3cb750690b1822587f653da06758
 
 pkgname = weread-pake
