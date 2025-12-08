@@ -1,6 +1,6 @@
 # Maintainer: David Keegan <me@davidkeegan.com>
 pkgname=piper-speak
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Simple text-to-speech wrapper for Piper TTS on Linux"
 arch=('x86_64')
@@ -18,7 +18,7 @@ sha256sums=('SKIP'
 
 build() {
     cd "$pkgname-$pkgver"
-    go build -o piper-speak ./cmd/piper-speak/
+    go build -trimpath -ldflags="-s -w" -o piper-speak ./cmd/piper-speak/
 }
 
 package() {
