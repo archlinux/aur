@@ -18,7 +18,9 @@ provides=('bytedance-lark=$pkgver' 'lark=$pkgver')
 options=('!emptydirs')
 source=(Lark-linux_x64-${pkgver}.deb::https://www.larksuite.com/api/package_info?platform=10
 	LICENSE-${_licensever}.html::http://www.larksuite.com/en_us/user-terms-of-service)
-DLAGENTS=("https::/usr/bin/sh -c curl\ -LO\ \"\$\(curl\ \'%u\'\ \|\ grep\ -oP\ \'\(\?\<=\"download_link\":\"\)\[\^\"\]\*\'\ --\ \|\ sed\ \'s/\\\\\\\\u0026/\\\&/g\'\ --\)\""
+# Generate escaped string with `printf %q {command}'; you may need to wrap in "" and escape some "" around {command}.
+# View unescaped string with `echo {escaped string}'; don't use quotes.
+DLAGENTS=("https::/usr/bin/sh -c curl\ -o\ \'%o\'\ -L\ \"\$\(curl\ \'%u\'\ \|\ grep\ -oP\ \'\(\?\<=\"download_link\":\"\)\[\^\"\]\*\'\ --\ \|\ sed\ \'s/\\\\\\\\u0026/\\\&/g\'\ --\)\""
 	"http::/usr/bin/sh -c curl\ -L\ %u\ \|\ sed\ \'s/abUuid\":\"\[\^\"\]\*/abUuid\":\"418/\'\ \|\ sed\ \'s/countryCode\":\"\[\^\"\]\*/countryCode\":\"LI/\'\ \>\ %o")
 sha256sums=('aab402e6b30c25cf4e6e9d505e4431a4f902dbdbe4b4a6d2a143d599942a01d9'
             '7378273bd0456bf323ac2eea532bf7fb3202559fa328401e9b50bcd42c876c31')
