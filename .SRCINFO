@@ -1,6 +1,6 @@
 pkgbase = slskdn-dev
 	pkgdesc = 🧪 DEV: Batteries-included Soulseek client with multi-source downloads, DHT mesh sync, and swarm mode
-	pkgver = 0.24.1.dev.202512080333
+	pkgver = 0.24.1.dev.202512080436
 	pkgrel = 1
 	url = https://github.com/snapetech/slskdn/tree/experimental/multi-source-swarm
 	install = slskd.install
@@ -18,7 +18,7 @@ pkgbase = slskdn-dev
 	source = slskd.service::https://raw.githubusercontent.com/snapetech/slskdn/experimental/multi-source-swarm/packaging/aur/slskd.service
 	source = slskd.yml::https://raw.githubusercontent.com/snapetech/slskdn/experimental/multi-source-swarm/packaging/aur/slskd.yml
 	source = slskd.sysusers::https://raw.githubusercontent.com/snapetech/slskdn/experimental/multi-source-swarm/packaging/aur/slskd.sysusers
-	sha256sums = 194752bec584ada5d7ecfb0c1fb0b102ba19d7b93e78bb48824d9da3adafa7bc
+	sha256sums = ce0eb95d193581fd3479ae651b7d00d2b901e4e574810042fae7bfdb64906262
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
