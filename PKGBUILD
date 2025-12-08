@@ -2,7 +2,7 @@
 
 pkgname=python-pywhispercpp-cuda
 pkgver=1.4.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Python bindings for whisper.cpp with CUDA support (NVIDIA GPU)"
 arch=('x86_64')
 url="https://github.com/Absadiki/pywhispercpp"
@@ -73,36 +73,90 @@ build() {
 
 package() {
   cd "$srcdir/pywhispercpp"
+
   python -m installer --destdir="$pkgdir" dist/*.whl
+
   
-  # Remove bundled libcuda*.so* - must use system /usr/lib/libcuda.so.1
-  local _python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+
+  # Figure out where site-packages landed
+
+  local _python_version
+
+  _python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+
   local _site_packages="$pkgdir/usr/lib/python$_python_version/site-packages"
+
   local _libs_dir="$_site_packages/pywhispercpp.libs"
+
   local _binary_so="$_site_packages/_pywhispercpp.cpython-*-linux-gnu.so"
-  
+
+
+
+  # 1) Remove bundled libcuda*.so* (we must use system libcuda.so.1)
+
   if [ -d "$_libs_dir" ]; then
-    # Remove bundled driver libraries
+
     find "$_libs_dir" -name "libcuda*.so*" -type f ! -name "libcudart*" -delete 2>/dev/null || true
+
     find "$_site_packages" -maxdepth 1 -name "libcuda*.so*" -type f ! -name "libcudart*" -delete 2>/dev/null || true
+
   fi
-  
-  # Fix binary rpath to include /usr/lib so it can find system libcuda.so.1
-  # The binary has rpath [$ORIGIN/pywhispercpp.libs], we add /usr/lib to search system libraries
-  for _binary in $_binary_so; do
-    if [ -f "$_binary" ]; then
-      # Get current rpath
-      _current_rpath=$(patchelf --print-rpath "$_binary" 2>/dev/null || echo "")
-      if [ -n "$_current_rpath" ]; then
-        # Add /usr/lib to rpath if not already present
-        if [[ "$_current_rpath" != *"/usr/lib"* ]]; then
-          patchelf --set-rpath "$_current_rpath:/usr/lib" "$_binary" 2>/dev/null || true
-        fi
-      else
-        # No rpath set, add /usr/lib
-        patchelf --set-rpath "/usr/lib" "$_binary" 2>/dev/null || true
-      fi
-    fi
+
+
+
+  # 2) Fix any DT_NEEDED entries that still reference private libcuda-*.so
+
+  local f needed
+
+  for f in $_binary_so "$_libs_dir"/*.so*; do
+
+    [ -f "$f" ] || continue
+
+    for needed in $(patchelf --print-needed "$f" 2>/dev/null || true); do
+
+      case "$needed" in
+
+        libcuda-*.so* )
+
+          echo "Patching $f: replace-needed $needed -> libcuda.so.1"
+
+          patchelf --replace-needed "$needed" "libcuda.so.1" "$f" 2>/dev/null || true
+
+          ;;
+
+      esac
+
+    done
+
   done
+
+
+
+  # 3) Ensure RPATH includes /usr/lib (optional but harmless)
+
+  for f in $_binary_so; do
+
+    [ -f "$f" ] || continue
+
+    local _current_rpath
+
+    _current_rpath=$(patchelf --print-rpath "$f" 2>/dev/null || echo "")
+
+    if [ -n "$_current_rpath" ]; then
+
+      if [[ "$_current_rpath" != *"/usr/lib"* ]]; then
+
+        patchelf --set-rpath "$_current_rpath:/usr/lib" "$f" 2>/dev/null || true
+
+      fi
+
+    else
+
+      patchelf --set-rpath "/usr/lib" "$f" 2>/dev/null || true
+
+    fi
+
+  done
+
 }
 
