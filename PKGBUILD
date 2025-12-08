@@ -42,5 +42,5 @@ package() {
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 
 	install -Dm 644 etc/bash_completion.d/sftpman "$pkgdir/usr/share/bash-completion/completions/sftpman"
-	install -Dm 644 etc/fish-completions/sftpman.fish "$pkgdir/usr/share/fish/completions/sftpman.fish"
+	install -Dm 644 etc/fish-completions/sftpman.fish "$pkgdir/usr/share/fish/vendor_completions.d/sftpman.fish"
 }
