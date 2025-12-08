@@ -18,8 +18,6 @@ makedepends=(
   'python-installer'
   'python-wheel'
   'python-setuptools'
-  'python-setuptools-scm'
-  'python-repairwheel'
   'git'
 )
 provides=('python-pywhispercpp')
@@ -35,7 +33,7 @@ prepare() {
 build() {
   cd "$srcdir/pywhispercpp"
   # CPU-only: no GPU environment variables set
-  python -m build --wheel --no-isolation
+  python -m build --wheel
 }
 
 package() {
