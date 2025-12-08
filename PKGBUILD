@@ -4,12 +4,12 @@
 
 _pkgname=sdrpp
 pkgname="$_pkgname-git"
-pkgver=1.0.4.r826.dd9b8db6
+pkgver=1.0.4.r845.4658a1ad
 pkgrel=1
 pkgdesc="The bloat-free SDR receiver"
 arch=(x86_64)
 url="https://www.sdrpp.org/"
-license=(GPL3)
+license=(GPL-3.0-only)
 depends=(fftw glew glfw libvolk)
 _plugindeps=(airspy airspyhf-git bladerf codec2 hackrf libad9361 libiio libsdrplay limesuite rtaudio rtl-sdr portaudio soapysdr)
 makedepends=(cmake git "${_plugindeps[@]}")

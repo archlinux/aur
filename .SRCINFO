@@ -1,10 +1,10 @@
 pkgbase = sdrpp-git
 	pkgdesc = The bloat-free SDR receiver
-	pkgver = 1.0.4.r826.dd9b8db6
+	pkgver = 1.0.4.r845.4658a1ad
 	pkgrel = 1
 	url = https://www.sdrpp.org/
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = cmake
 	makedepends = git
 	makedepends = airspy
