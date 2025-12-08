@@ -6,7 +6,7 @@ _pkgname=spotatui
 pkgname=${_pkgname}-bin
 pkgdesc="A Spotify client for the terminal written in Rust, powered by Ratatui"
 
-pkgver=0.31.0
+pkgver=0.33.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,8 +26,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[0]}.tar.gz")
 sha256sums=('b47ad91f512f5ae715df2888abf19ff0172c75de71b6423f836174bae8f8161e'
-            'cb1bfa4fe1b37c654ed3fc43b0a6b0dffc11f7a309a8491ecb10550f6cf38d46')
-sha256sums_x86_64=('d780c9abcd24b04b324d12e1d42daaccc4f723024ffcc625ac54070f1eade1d4')
+            '44d9fc6cca615538267af4a86351b97625b87392848773122dcf8b916f8d7018')
+sha256sums_x86_64=('a844b704bb601dfb78ba82f978bc0f26113401a53487623fd6537bb709e6a111')
 
 
 package() {
