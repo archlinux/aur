@@ -1,5 +1,5 @@
-# Maintainer: Petr Šťastný <aur@soptik.tech>
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Petr Šťastný <aur@soptik.tech>
 
 pkgname=desed
 pkgver=1.2.2

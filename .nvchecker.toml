@@ -1,0 +1,5 @@
+[desed]
+source = "github"
+github = "soptikha2/desed"
+use_latest_release = true
+prefix = "v"
