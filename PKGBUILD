@@ -15,16 +15,10 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation-openrc
-pkgver=17.6.4
-_buildver=24832109
+pkgver=25H2
+_buildver=24995812
 _pkgver=${pkgver}_${_buildver}
-pkgrel=3
-_tools_version=12.5.0-24276846
-_legacy_cdn_ver=17.6.3
-_legacy_cdn_buildver=24583834
-_legacy_ver=17.5.2
-_legacy_buildver=23775571
-_legacy_tools_version=12.4.0_23259341
+pkgrel=4
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC. Modified to use OpenRC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -66,18 +60,15 @@ backup=(
   'etc/conf.d/vmware'
 )
 
-DLAGENTS=("https::/usr/bin/curl -fLC - --connect-to softwareupdate-prod.broadcom.com:443:softwareupdate-prod.broadcom.com.cdn.cloudflare.net:443 --retry 3 --retry-delay 3 -o %o %u")
-
 source=(
-  "VMware-Workstation-${pkgver}-${_buildver}.${CARCH}.bundle::https://archive.org/download/vmware-workstation-full-${pkgver}-${_buildver}.${CARCH}/VMware-Workstation-Full-${pkgver}-${_buildver}.${CARCH}.bundle"
-  "https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-linux-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-linuxPreGlibc25-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-netware-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-solaris-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
-  "vmware-tools-windows-${_tools_version/_/-}-${pkgver}.${CARCH}.component.tar::https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${_legacy_cdn_ver}/${_legacy_cdn_buildver}/linux/packages/vmware-tools-windows-${_tools_version/_/-}.${CARCH}.component.tar"
-  "vmware-tools-windows-x86-${_tools_version/_/-}-${pkgver}.${CARCH}.component.tar::https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${_legacy_cdn_ver}/${_legacy_cdn_buildver}/linux/packages/vmware-tools-windows-x86-${_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-winPre2k-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
-  "https://softwareupdate-prod.broadcom.com/cds/vmw-desktop/ws/${_legacy_ver}/${_legacy_buildver}/linux/packages/vmware-tools-winPreVista-${_legacy_tools_version/_/-}.${CARCH}.component.tar"
+  "VMware-Workstation-${pkgver}-${_buildver}.${CARCH}.bundle::https://archive.org/download/VMware-Workstation-Full-${pkgver}-${_buildver}.${CARCH}/VMware-Workstation-Full-${pkgver}-${_buildver}.${CARCH}.bundle"
+
+  "https://packages-prod.broadcom.com/tools/frozen/linux/linux.iso"
+  "https://packages-prod.broadcom.com/tools/frozen/linux/linuxPreGlibc25.iso"
+  "https://packages-prod.broadcom.com/tools/frozen/netware/netware.iso"
+  "https://packages-prod.broadcom.com/tools/frozen/solaris/solaris.iso"
+  "https://packages-prod.broadcom.com/tools/frozen/windows/winPre2k.iso"
+  "https://packages-prod.broadcom.com/tools/frozen/windows/winPreVista.iso"
 
   "winVistaSP1.iso::https://packages-prod.broadcom.com/tools/frozen/windows/WindowsToolsVista/SP1/windows.iso"
   "winVistaSP2.iso::https://packages-prod.broadcom.com/tools/frozen/windows/WindowsToolsVista/SP2/windows.iso"
@@ -96,18 +87,14 @@ source=(
   'Makefile'
   'vmmon.patch'
   'vmnet.patch'
-  'linux6_15.patch'
-  'linux6_16.patch'
 )
-sha256sums=('64fbfbaeacc48865468114362a2bbaade9110cc9e87bc3bd938396ba7f19a9bd'
-            'd862be0d12796134b40e5ffc7534a5e6161b8898355fe32ca8f705a3806cbfe4'
-            'd79f79f17e5f37399046d16be3967e0cff3c9474e2cb6ea3f2c3ebea3ff68cea'
-            '4643fff3ed4f8af5a56a1c4c2084fa7327d78e58ee9b0687b98390a4b4a1ac14'
-            '196c842f758b813afb202b0db2d09d457fccafac212ca41ef3277dfe9ceaf9ec'
-            '81b63fd7f3a7f9f7b24cddb8712a592b4b3c9f269338a8897c55146c9766a18b'
-            '5078060e520cf1491d1585d9b85a311bfcde1da080fc527512840d44040eb137'
-            'd4e9884f5f11cef4e261023d895eba5b57a8a80623bff0de8b3f1c47154b2a11'
-            '20abd21da43ac31741f8bb26db1ae7d8f4ef4c5082c9a2cc3ae5da494f1b9529'
+sha256sums=('9beced8a0653c9382e9aa9917168a54bf5635e566c8cb341589d72cf14093322'
+            '4e66b286b743d9cf788c487295b1dec3c6071d657674f650aadc23e8900758ff'
+            'aef8f747bd9a6e84d139c57b8c1f8e87c83a9b9df69cd09602030190fec21973'
+            '2c89993d811f5d90f7b0e2a286e9339907055e51ecb16f25509e5c4517326487'
+            '4666b0adfec6636ecda60bfab889cbf28f06f77526442628a70789fd76823e70'
+            'a17a11d65f841d213ffc2d6681acdf849c380e77055334c7a8127c1373991ebb'
+            'aab73d3ef4668beec725541c08c41042bb22fc86cd5563310fc170b952631d8a'
             '3b8f9d6e43f5d1dff0576cb93d008c14e0434d7233872f6c63988513d2bda5d1'
             '8f1cc3181055891b98672f715e0ca7bbe4018960eae945d7a4b9f640c44c3d79'
             '67edc40e39686281f5101ced1a250648ae32e4cd5dffe4fd47bc3c7aed929d50'
@@ -120,10 +107,8 @@ sha256sums=('64fbfbaeacc48865468114362a2bbaade9110cc9e87bc3bd938396ba7f19a9bd'
             '452c1bfebac52f4808ba5f4bf2fc3eae9858f8745d60c13d3c46e7550a3e1eb1'
             '7ba8cbdb1981a9a714b4068e651cc7a20ab358dddf6cab68519d9f324ea800b3'
             '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
-            '32ae0ba7836c2212b819e3e7ec3f96667c1ac6d5083003eab1e794f0c032f640'
-            '74453f184ff57390ea0696144f0fc767cc875635595c964d5d5e7924a01c82d8'
-            '2411268a37a2aac03ea1e8b38e2da3fc31a232161f92cad824d98d9873b2586d'
-            '381a3d35f1086e16d46177d23bbc932f8ca0781c4603ef6bc27cd4a3d07eed2f')
+            '16f0780792cd66f580a0a872679cac76f8df936a0f2d90ac2d014902d46da58c'
+            'cefe79e418a7403bc0a788b1ca695a9463d6c2d9ecbf1ce15125e39e39391c2b')
 options=(!strip emptydirs !debug)
 
 if [ -z "$_remove_vmware_keymaps_dependency" ]; then
@@ -132,8 +117,8 @@ depends+=(
 )
 fi
 
-
-_isoimages=(linux linuxPreGlibc25 netware solaris windows windows-x86 winPre2k winPreVista)
+_extractedimages=(windows)
+_isoimages=(linux linuxPreGlibc25 netware solaris winPre2k winPreVista winVistaSP1 winVistaSP2)
 
 if [ -n "$_enable_macOS_guests" ]; then
 
@@ -175,16 +160,21 @@ _create_database_file() {
   sqlite3 "$database_filename" "INSERT INTO settings(key,value,component_name) VALUES('db.schemaVersion','2','vmware-installer');"
   sqlite3 "$database_filename" "CREATE TABLE components(id INTEGER PRIMARY KEY, name VARCHAR NOT NULL, version VARCHAR NOT NULL, buildNumber INTEGER NOT NULL, component_core_id INTEGER NOT NULL, longName VARCHAR NOT NULL, description VARCHAR, type INTEGER NOT NULL);"
 
+  for isoimage in ${_extractedimages[@]}
+  do
+    local version=$(cat "$srcdir/extracted/vmware-tools-$isoimage/manifest.xml" | grep -oPm1 "(?<=<version>)[^<]+")
+    sqlite3 "$database_filename" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES('vmware-tools-$isoimage','$version',${_pkgver#*_},1,'$isoimage','$isoimage',1);"
+  done
+
   for isoimage in ${_isoimages[@]}
   do
-	local version=$(cat "$srcdir/extracted/vmware-tools-$isoimage/manifest.xml" | grep -oPm1 "(?<=<version>)[^<]+")
-	sqlite3 "$database_filename" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES('vmware-tools-$isoimage','$version',${_pkgver#*_},1,'$isoimage','$isoimage',1);"
+	  sqlite3 "$database_filename" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES('vmware-tools-$isoimage','1',${_pkgver#*_},1,'$isoimage','$isoimage',1);"
   done
 
 if [ -n "$_enable_macOS_guests" ]; then
   for isoimage in ${_fusion_isoimages[@]}
   do
-	sqlite3 "$database_filename" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES('vmware-tools-$isoimage','1',${_vmware_fusion_ver_full#*_},1,'$isoimage','$isoimage',1);"
+	  sqlite3 "$database_filename" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES('vmware-tools-$isoimage','1',${_vmware_fusion_ver_full#*_},1,'$isoimage','$isoimage',1);"
   done
 fi
 }
@@ -195,14 +185,6 @@ prepare() {
 
   bash \
     "$(readlink -f "$srcdir/VMware-Workstation-${_pkgver/_/-}.${CARCH}.bundle")" \
-    --install-component "vmware-tools-linux-${_legacy_tools_version/_/-}.${CARCH}.component" \
-    --install-component "vmware-tools-linuxPreGlibc25-${_legacy_tools_version/_/-}.${CARCH}.component" \
-    --install-component "vmware-tools-netware-${_legacy_tools_version/_/-}.${CARCH}.component" \
-    --install-component "vmware-tools-solaris-${_legacy_tools_version/_/-}.${CARCH}.component" \
-    --install-component "vmware-tools-windows-${_tools_version/_/-}.${CARCH}.component" \
-    --install-component "vmware-tools-windows-x86-${_tools_version/_/-}.${CARCH}.component" \
-    --install-component "vmware-tools-winPre2k-${_legacy_tools_version/_/-}.${CARCH}.component" \
-    --install-component "vmware-tools-winPreVista-${_legacy_tools_version/_/-}.${CARCH}.component" \
     --extract "$extracted_dir"
 
 if [ -n "$_enable_macOS_guests" ]; then
@@ -274,14 +256,15 @@ package() {
     vmware-vix-core/include/* \
     "$pkgdir/usr/include/vmware-vix"
 
-  for isoimage in ${_isoimages[@]}
+  for isoimage in ${_extractedimages[@]}
   do
     install -Dm 644 "vmware-tools-$isoimage/$isoimage.iso" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso"
   done
 
-  # Add Windows Vista SP1 and SP2 ISO images
-  install -Dm 644 "$srcdir/winVistaSP1.iso" "$pkgdir/usr/lib/vmware/isoimages/winVistaSP1.iso"
-  install -Dm 644 "$srcdir/winVistaSP2.iso" "$pkgdir/usr/lib/vmware/isoimages/winVistaSP2.iso"
+  for isoimage in ${_isoimages[@]}
+  do
+    install -Dm 644 "$srcdir/$isoimage.iso" "$pkgdir/usr/lib/vmware/isoimages/$isoimage.iso"
+  done
 
   install -Dm 644 "vmware-workstation/doc/EULA" "$pkgdir/usr/share/doc/vmware-workstation/EULA"
   ln -s "/usr/share/doc/vmware-workstation/EULA" "$pkgdir/usr/share/licenses/$pkgname/VMware Workstation - EULA.txt"
@@ -413,8 +396,6 @@ fi
     msg "Patching $module module for DKMS"
     patch -p2 --read-only=ignore --directory="$dkms_dir/$module-only" < "$srcdir/$module.patch"
   done
-  patch -p1 --read-only=ignore --directory="$dkms_dir/" < "$srcdir/linux6_15.patch"
-  patch -p1 --read-only=ignore --directory="$dkms_dir/" < "$srcdir/linux6_16.patch"
 
   rm -r "$pkgdir/usr/lib/vmware/modules/source"
 

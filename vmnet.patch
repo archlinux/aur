@@ -1,71 +1,18 @@
+diff --git a/vmnet/Makefile b/vmnet/Makefile
+index fab02bf..ac8cc7f 100644
 --- a/vmnet/Makefile
 +++ b/vmnet/Makefile
-@@ -43,7 +43,11 @@
+@@ -40,8 +40,11 @@ else
+ INCLUDE      += -I$(SRCROOT)/shared
  endif
  
- 
+-
+-VM_UNAME = $(shell uname -r)
 +ifdef KVERSION
-+VM_UNAME = $(KVERSION)
++ VM_UNAME = $(KVERSION)
 +else
- VM_UNAME = $(shell uname -r)
++ VM_UNAME = $(shell uname -r)
 +endif
  
  # Header directory for the running kernel
  ifdef LINUXINCLUDE
---- a/vmnet/driver.c
-+++ b/vmnet/driver.c
-@@ -268,7 +268,7 @@
- /*
-  *----------------------------------------------------------------------
-  *
-- * init_module --
-+ * LinuxDriverInit --
-  *
-  *      linux module entry point. Called by /sbin/insmod command.
-  *      Initializes module and Registers this driver for a
-@@ -285,7 +285,7 @@
-  */
- 
- int
--init_module(void)
-+LinuxDriverInit(void)
- {
-    int retval;
- 
-@@ -347,7 +347,7 @@
- /*
-  *----------------------------------------------------------------------
-  *
-- * cleanup_module --
-+ * LinuxDriverExit --
-  *
-  *      Called by /sbin/rmmod.  Unregisters this driver for a
-  *      vnet major #, and deinitializes the modules.  The 64-bit
-@@ -364,7 +364,7 @@
-  */
- 
- void
--cleanup_module(void)
-+LinuxDriverExit(void)
- {
-    unregister_chrdev(VNET_MAJOR_NUMBER, "vmnet");
-    VNetProtoUnregister();
-@@ -1659,3 +1659,5 @@
-  * by default (i.e., neither mkinitrd nor modprobe will accept it).
-  */
- MODULE_INFO(supported, "external");
-+module_init(LinuxDriverInit);
-+module_exit(LinuxDriverExit);
---- a/vmnet/userif.c
-+++ b/vmnet/userif.c
-Fixing VMWare Player on Linux when using DHCP addresses: https://www.nikhef.nl/~janjust/vmnet/
-@@ -1030,6 +1030,9 @@
-    userIf = (VNetUserIF *)port->jack.private;
-    hubJack = port->jack.peer;
- 
-+   /* never send link down events */
-+   if (!linkUp) return 0;
-+
-    if (port->jack.state == FALSE || hubJack == NULL) {
-       return -EINVAL;
-    }
