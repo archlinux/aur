@@ -1,6 +1,6 @@
 # Maintainer: DIMFLIX <dimflix.official@gmail.com>
 pkgname=hotkeyhub-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Cheat Sheet for keybindings in hyprland, bspwm, and other WMs"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk4')
 source=(
   "$url/releases/download/v$pkgver/hotkeyhub-linux-x86_64"
 )
-sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+sha256sums=('eaf1c4baf9e4c23b9ffb3090b46a3f9760157c2d7148a07897d74e92db31e79e')
 
 package() {
   # Install binary
