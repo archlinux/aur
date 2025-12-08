@@ -1,0 +1,17 @@
+pkgbase = dax-shell
+	pkgdesc = A custom Unix shell written in C++ with support for piping, redirection, history management, and built-in commands.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/sameepkat/Dax
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = readline
+	source = git+https://github.com/sameepkat/Dax.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = dax-shell
