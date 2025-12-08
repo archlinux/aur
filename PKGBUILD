@@ -11,7 +11,7 @@ depends=('python-google-auth-oauthlib' 'python-oauthlib' 'python-google-api-pyth
 optdepends=('python-tqdm: Progress bar')
 makedepends=('python-setuptools')
 source=("$url/archive/v$pkgver/${pkgname}-v$pkgver.tar.gz")
-sha512sums=('ba5fa49666c3281c165947e7aaedb3f568d1d30be12aeaf8361d632f5d11911e6fcd975d6e95f20724ce50e85e198f884516699b55e08185026679523d000bf3')
+sha512sums=('ba5fa49666c3281c165947e7aaedb3f568d1d30be12aeaf8361d632f5d11911e6fcd975d6e95f20724ce50e85e198f884516699b55e08185026679523d000bf3')replaces=('gmailieer')
 
 build() {
   cd ${pkgname}-$pkgver
