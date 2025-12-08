@@ -1,6 +1,6 @@
 pkgbase = metricbeat-oss-bin
 	pkgdesc = Metrics collection and shipping beats component (precompiled)
-	pkgver = 8.14.3
+	pkgver = 9.2.2
 	pkgrel = 1
 	url = https://www.elastic.co/products/beats
 	install = metricbeat.install
@@ -21,11 +21,11 @@ pkgbase = metricbeat-oss-bin
 	sha512sums = 4fe502701ff903520bad50374e26cbdf8c763e1742ef50df7c7e36df9023dcd93d7862a43be775dc258e5fa8b17ccad4b141f32e00d2a984def6d99509412fb4
 	sha512sums = af3e56baecb8175bc6797559fa6b608deb07944dfce444bb227a5879e12044d49ff97c70f1ef9833010dc1d0a1aa20d76c28ab30688743ca74f4e9180c13973c
 	sha512sums = 200d37a8d39023c17784bc987553d48fd154d92ed24df6dcd6ff507a8d1af5f4c126c8d65c2dbe474357133908b71c757a12e464d1074da47eec29c4080968e7
-	source_aarch64 = metricbeat-oss-bin-8.14.3-aarch64.tar.gz::https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-oss-8.14.3-linux-arm64.tar.gz
-	sha256sums_aarch64 = ccec37c788668f5bf9f0d3670491c3c3f08c8447ef3aa284172a5e7a813d8537
-	sha512sums_aarch64 = 2a8e8e1886e3bb89b125dff91033a4e099055da571b45fb91e227436a872286fc2b349831497123978de72d8915164994243bb92e785b310f58bbf26df0c8ba5
-	source_x86_64 = metricbeat-oss-bin-8.14.3-x86_64.tar.gz::https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-oss-8.14.3-linux-x86_64.tar.gz
-	sha256sums_x86_64 = d186ba0ca1b48e6ac3e0589030a721016e52def080caac2b9534e34872def9c3
-	sha512sums_x86_64 = 8bad7e087a1799743fd561ade8530f2626e9379eb7676fccaf5e103deddd4e697a14aa5ac364f379f8a25d50e158bed5c5a69c372ec9264462d75fde0cf03900
+	source_aarch64 = metricbeat-oss-bin-9.2.2-aarch64.tar.gz::https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-oss-9.2.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = 422ce8a6d1df3d7c806c33494812d980350843724f50eac799ac43b4883598a2
+	sha512sums_aarch64 = 10c7461f68dcfbb26a8bfb5e5855f5b9cdb302ed705571cdd731342acef64d6bef20595b877b42960984cd20fb889b45c5bb24ccda0d15f7f473cd29ac514ebd
+	source_x86_64 = metricbeat-oss-bin-9.2.2-x86_64.tar.gz::https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-oss-9.2.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 13a81009491bc562107f216b2142fca26a6ad92f2f94eaec02b8a95591827618
+	sha512sums_x86_64 = 735de6b64e2450f2b46d6e1dec5123fc3011d7757b88f1d4393a221a7c07d73eddbad70f4931fd92105e7c8542db160f0e22e9b14c764d5df08ae9edcc882ad1
 
 pkgname = metricbeat-oss-bin
