@@ -1,0 +1,4 @@
+[vtracer-bin]
+source = "github"
+github = "visioncortex/vtracer"
+use_latest_release = true
