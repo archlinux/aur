@@ -4,7 +4,7 @@
 
 _name=HTMLHint
 pkgname=htmlhint
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Static Code Analysis Tool for your HTML'
 arch=('any')
@@ -14,7 +14,7 @@ depends=('nodejs')
 makedepends=('git' 'npm')
 options=('!emptydirs')
 source=("https://github.com/htmlhint/HTMLHint/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('1399b33b23f9e7b63a4e841b85f953ff5dc4e5f8933df30917d362d9d8fb61afff52d7ce2f474162b2a735c58875de4880ea99325eda6f7b1738f73f841d0d1f')
+b2sums=('8f29f8f4e1c0747a5c2019449039b2acf7146ff804dd2560fa38ff6166424df30e1d62a5c534a0d048cfd90fa1431d965d0eda87abc43ea90c02404f71528e93')
 
 prepare() {
   cd "$_name-$pkgver"
