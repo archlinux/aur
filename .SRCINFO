@@ -1,7 +1,7 @@
 pkgbase = modern-beep
 	pkgdesc = A modern Rust alternative to the classic `beep` command with support for notifications, webhooks, and remote audio playback
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skorotkiewicz/modern-beep
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = modern-beep
 	provides = beep
 	conflicts = beep
 	options = !strip
-	source_x86_64 = https://github.com/skorotkiewicz/modern-beep/releases/download/v0.1.0/beep-linux-x86_64.tar.gz
+	source_x86_64 = beep-0.1.0-linux-x86_64.tar.gz::https://github.com/skorotkiewicz/modern-beep/releases/download/v0.1.0/beep-linux-x86_64.tar.gz
 	sha256sums_x86_64 = SKIP
 
 pkgname = modern-beep
