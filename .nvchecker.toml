@@ -1,0 +1,5 @@
+[ansisvg-bin]
+source = "github"
+github = "wader/ansisvg"
+use_latest_release = true
+prefix = "v"

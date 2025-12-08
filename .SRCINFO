@@ -1,0 +1,20 @@
+pkgbase = ansisvg-bin
+	pkgdesc = Convert ANSI to SVG
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/wader/ansisvg
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = ansisvg
+	conflicts = ansisvg
+	source = LICENSE-0.3.0::https://raw.githubusercontent.com/wader/ansisvg/v0.3.0/LICENSE
+	source = README-0.3.0.md::https://raw.githubusercontent.com/wader/ansisvg/v0.3.0/README.md
+	sha256sums = 265974823e3438d015acbbb43c0f745530bd20f50b2b7cb97f5397e1027fc2cc
+	sha256sums = 68fa81485ae1d32f130f3582860e39fbb209648750e0d134206047bd719f8e73
+	source_x86_64 = ansisvg-x86_64-0.3.0.tgz::https://github.com/wader/ansisvg/releases/download/v0.3.0/ansisvg_0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = c670710a706623f2712eeec3564b6e2a7ac95d33cdc4f38a877460118e7da9d4
+	source_aarch64 = ansisvg-aarch64-0.3.0.tgz::https://github.com/wader/ansisvg/releases/download/v0.3.0/ansisvg_0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = a4136bc6f05b178fd2c2c4398f9b0497795ffe3b1e5a91c5fdc3da4b775c7a7c
+
+pkgname = ansisvg-bin
