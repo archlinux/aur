@@ -3,8 +3,8 @@
 # Tracks the experimental/multi-source-swarm branch with multi-source downloads & DHT mesh
 pkgname=slskdn-dev
 _pkgname=slskd
-pkgver=0.24.1.dev.202512081904
-_commit=57e62c59
+pkgver=0.24.1.dev.202512081942
+_commit=0b8e3eb7
 pkgrel=1
 pkgdesc="🔋 DEV: The batteries included, ***EXPERIMENTAL*** fork of slskd. Feature-rich, including multi-source downloads, DHT mesh sync, swarm mode & more"
 arch=('x86_64')
@@ -24,7 +24,8 @@ source=(
     "slskd.yml::https://raw.githubusercontent.com/snapetech/slskdn/experimental/multi-source-swarm/packaging/aur/slskd.yml"
     "slskd.sysusers::https://raw.githubusercontent.com/snapetech/slskdn/experimental/multi-source-swarm/packaging/aur/slskd.sysusers"
 )
-sha256sums=('58fe27889672eff02dc635a6211d8831073978ea91eea3199d901667e343328a' 'SKIP' 'SKIP' 'SKIP')
+# Note: First hash is SKIP (binary changes each build), others are static file hashes
+sha256sums=('06e368c38bbe6111087ee8f6fb595bd65096ddbe35ae09efa4df1ea6e00cab94' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
     # Install application to /usr/lib/slskd
