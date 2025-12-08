@@ -1,11 +1,11 @@
 # Maintainer: Sean Brar <contact@seanbrar.com>
 pkgname=igir-bin
-pkgver=3.4.2
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="A zero-setup ROM collection manager"
 arch=('x86_64')
 url="https://github.com/emmercm/igir"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("igir")
 conflicts=("igir")
 
@@ -15,7 +15,7 @@ options=(!strip)
 
 source=("igir-$pkgver-Linux-amd64.tar.gz::https://github.com/emmercm/igir/releases/download/v$pkgver/igir-$pkgver-Linux-amd64.tar.gz"
         "LICENSE::https://raw.githubusercontent.com/emmercm/igir/v$pkgver/LICENSE")
-sha256sums=('33ba971545aba64798de28f9a3619d9509eec391b7a7d545a19c24478f9fc619'
+sha256sums=('94082a7e8869908065a457e2b4794ca42bcbbb3a556d11a8a8f9daaa44b088e3'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
