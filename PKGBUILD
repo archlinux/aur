@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts66
-pkgver=6.6.118
+pkgver=6.6.119
 pkgrel=1
 pkgdesc="LTS ${pkgver%.*} Linux"
 url='https://www.kernel.org'
@@ -38,13 +38,13 @@ source=(
   config  # the main kernel config file
 )
 validpgpkeys=(
-  ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
-  647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
+  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
+  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 md5sums=('452098d80ba925af3a4ab35998f3aef5'
          'SKIP'
-         '00d7a360d1bd3bb1835ee1912514ad65'
+         '50e9be4f998efc59d469005c4bc6c085'
          'cb32cb125ea45ac05782630dfc9fc951'
          'c99abef85da3185e66da920deb9897f3'
          'c308b5c13e18863919a366bd4a4f5159'
@@ -54,7 +54,7 @@ md5sums=('452098d80ba925af3a4ab35998f3aef5'
          '645c20da36fc5ac07eabc6ad025c660d')
 sha256sums=('d926a06c63dd8ac7df3f86ee1ffc2ce2a3b81a2d168484e76b5b389aba8e56d0'
             'SKIP'
-            '05340ef14b9ec3b3e1caa5637908aa292175765eb42022a3263573c5f76391e6'
+            '355bc969c44ece514b1767d30bcf7754dd3f246f5bffb52a57288bd6c8c271cf'
             '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
             '2f23be91455e529d16aa2bbf5f2c7fe3d10812749828fc752240c21b2b845849'
             '6400a06e6eb3a24b650bc3b1bba9626622f132697987f718e7ed6a5b8c0317bc'
