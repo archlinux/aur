@@ -1,19 +1,15 @@
 pkgbase = new-lg4ff-dkms-git
 	pkgdesc = Experimental Logitech force feedback module (DKMS)
-	pkgver = 0.1.r0.ge7601c0
+	pkgver = 0.5.0.r0.g2092db1
 	pkgrel = 1
 	url = https://github.com/berarma/new-lg4ff
-	install = new-lg4ff-dkms-git.install
-	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = git
 	depends = dkms
+	provides = new-lg4ff-dkms
 	conflicts = new-lg4ff-dkms
 	source = git+https://github.com/berarma/new-lg4ff
-	source = new-lg4ff-dkms-git.install
 	md5sums = SKIP
-	md5sums = 6c5008edd485130b1a4752030bbaaa2d
 
 pkgname = new-lg4ff-dkms-git
-
