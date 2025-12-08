@@ -1,0 +1,12 @@
+pkgbase = kirasay
+	pkgdesc = Kira says things in ASCII with customizable bubbles
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/s4nj1th/kirasay
+	arch = any
+	license = MIT
+	depends = perl
+	source = https://github.com/s4nj1th/kirasay/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = kirasay
