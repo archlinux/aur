@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy-bin
 _pkgname=Escrcpy
-pkgver=1.33.0
+pkgver=1.34.1
 _electronversion=33
 pkgrel=1
 pkgdesc="📱Graphical Scrcpy to display and control Android devices powered by Electron(Prebuilt version.Use system-wide electron).使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动。"
@@ -27,8 +27,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
 source=("${pkgname%-bin}.sh")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('f4093589e63b8e7a015ea4129a4f572fdd200f45734f9836a0ebb7c364f19fae')
-sha256sums_x86_64=('e2c82903adb365a78b72a5f31f7da25a1a0e6307636cc34da47d1d1d22dac2d9')
+sha256sums_aarch64=('f374835a33fd1aa8cc9fe360565663a4225d7fac3147abed7e70edfeafaab978')
+sha256sums_x86_64=('5a6d635964fbc2d7417f5bee591956c349f18785fe684257fe8b0abcbb8cea95')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
