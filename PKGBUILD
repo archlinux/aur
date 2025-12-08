@@ -11,17 +11,17 @@ url="https://github.com/YetAnotherMechanicusEnjoyer/Rivet"
 license=('MIT')
 depends=('glibc' 'cargo' 'rust')
 
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-main.tar.gz::${url}/archive/refs/heads/main")
 sha256sums=('SKIP')
 
 build() {
-  cd "${reponame}-${pkgver}"
+  cd "${reponame}-main"
 
   cargo build --release
 }
 
 package() {
-  cd "${reponame}-${pkgver}"
+  cd "${reponame}-main"
 
   install -Dm755 "target/release/rivetui" "${pkgdir}/usr/bin/rivetui-git"
 
