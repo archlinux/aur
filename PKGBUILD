@@ -1,14 +1,14 @@
 # Maintainer: Aira Hinano <hinanoaira at hinasense dot jp>
 # Co-Maintainer: kazu0617 <archlinux at kazu0617 dot net>
 pkgname=vrcx
-pkgver=2025.10.11
+pkgver=2025.12.06
 pkgrel=1
 pkgdesc="Friendship management tool for VRChat (built with Electron)"
 arch=('x86_64')
 url="https://github.com/vrcx-team/VRCX"
 license=('MIT')
-depends=('dotnet-runtime-9.0' 'electron' 'gtk3' 'nss' 'libxss' 'gconf' 'libxrandr' 'alsa-lib')
-makedepends=('dotnet-sdk-9.0' 'git' 'nodejs' 'npm' 'imagemagick')
+depends=('dotnet-runtime' 'electron' 'gtk3' 'nss' 'libxss' 'gconf' 'libxrandr' 'alsa-lib')
+makedepends=('dotnet-sdk' 'git' 'nodejs' 'npm' 'imagemagick')
 conflicts=('vrcx-bin')
 options=(!debug !lto)
 source=(
@@ -17,21 +17,17 @@ source=(
     "build.patch"
 )
 
-sha256sums=('8f385fc02f9e9821ea451a53cfef62413638e122b45af96e787fb116022e8b49'
+sha256sums=('c40b05ef58a90a3ab16b3dc83fecb7d95c55c42bd18dc36df404fbc89682f715'
             '3e40d0056adfd86848cf0bc594bf399d9fff1f894d470bad90d2b232d17f95c5'
-            'cb78754ccba9d260e62e9b2d6f25668a98dbc71cf765e7aff173a5f43053c324')
+            'db8f2ca37e76cc81ab15f91005882248cd68b97f59f3c8a5bf54674d190ca5df')
             
 prepare() {
     cd "$srcdir/VRCX-$pkgver"
     patch -p1 < "$srcdir/build.patch"
     echo "$pkgver" > Version
+    echo "" > .no-updater
 
-    # WORKAROUND: Upstream lock file is out of sync.
-    # Prefer package.json until it gets fixed upstream.
-    # npm ci
-
-    npm install --package-lock-only --no-fund
-    npm ci --no-fund
+    npm ci --loglevel=error
 }
 
 build() {
@@ -45,13 +41,13 @@ build() {
         -t:"Restore;Clean;Build" \
         -m -r linux-x64
     
-    npm run prod-linux --no-fund
-    npm run build-electron --no-fund
+    npm run prod-linux --no-fund --loglevel=error
+    npm run build-electron --no-fund --loglevel=error
 }
 
 package() {
     cd "$srcdir/VRCX-$pkgver"
-    
+
     install -dm755 "$pkgdir/opt/vrcx"
     cp -r build/linux-unpacked/* "$pkgdir/opt/vrcx/"
     chmod +x "$pkgdir/opt/vrcx/vrcx"
